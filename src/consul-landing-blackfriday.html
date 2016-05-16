@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Black Friday Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="/arquivos/consul-landing-blackfriday.css" />
+</head>
+
+<body data-controller="landing-blackfriday">
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+
+	<section class="cleanfix section01">
+		<div class="container">
+			<div class="row">
+				<div class="col-7 title">
+					<h3>aqui a sua black friday<br/>começa mais cedo</h3>
+				</div>
+				<div class="col-5 form">
+					<h4>Preencha os dados e receba ofertas bem pensadas antes</h4>
+					<form action="" class="form-cadastro cf" method="GET" novalidate="novalidate">
+						<input type="hidden" name="xBlackFriday" value="true" />
+
+						<div class="fields">
+							<label for="txt-nome" class="label-inputs">
+								<input type="text" id="txt-nome" name="fullName" placeholder="Nome completo" class="validate[required]" />
+							</label>
+							<label for="txt-email" class="label-inputs">
+								<input type="email" id="txt-email" name="email" placeholder="E-mail" class="validate[required, custom[email]]" />
+							</label>
+
+							<br />
+
+							<table width="300" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="left">
+										<input type="checkbox" id="rules" name="rules" value="1" class="validate[required]" style="width:15px; display:block; float:left;" checked="checked" />
+										<label for="" class="lbl-aceito"><a id="termos" href="#ov-termos">li e aceito os termos</a></label>
+									</td>
+								</tr>
+								<tr align="center">
+									<td><input type="submit" class="cadastrar" value="Cadastre-se" /></td>
+								</tr>
+							</table>
+
+						</div>
+						<p class="date">É dia 27/11! Faltam apenas:</p>
+						<div id="countdownDisplay">
+							<div id="defaultCountdown"></div>
+						</div>
+
+						<span class="hr"></span>
+						<span class="hr"></span>
+					</form>
+				</div>
+			</div>
+			<div class="row"><hr class="col-12"/></div>
+		</div>
+	</section>
+
+	<section class="cleanfix sectionEsquenta">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-12 title-esquenta">
+					<h2>Esquenta Black Friday</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 box-esquenta">
+					<p>Procure pelos produtos com o <strong>selo de esquenta Black Friday</strong> e, se no dia da Black Friday esses produtos estiverem mais baratos na loja virtual Consul, devolvemos a diferença*</p>
+				</div>
+			</div>
+
+			<div class="row step-esquenta">
+
+				<div class="col-4 step-1-esquenta">
+
+					<strong>Antes da <br />Black Friday</strong>
+					<h4>R$ 2.999,00</h4>
+
+				</div>
+
+				<div class="col-4 step-2-esquenta">
+
+					<strong>No dia da <br />Black Friday</strong>
+					<h4>R$ 2.799,00</h4>
+
+				</div>
+
+				<div class="col-4 step-3-esquenta">
+
+					<strong>É reembolsado <br />a diferença</strong>
+					<h4>R$ 200</h4>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-12 nota-esquenta">
+					<p>
+						*Caso haja divergência de preço no período da Black Friday para um valor menor que o praticado nesta ação, a diferença será devolvida ao consumidor para compras realizadas na Loja Virtual Consul.
+					</p>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section class="cleanfix section02">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 mais-procurados">
+					<h2>Os Mais <br/><small>Procurados</small></h2>
+
+					<p>Listamos os produtos mais desejados<br/>da Black Friday.</p>
+					<p>Aproveite, os descontos estão<br/>imperdíveis ;)</p>
+				</div>
+				<div class="col-6 slide">
+					<vtex:contentPlaceHolder id="Carrossel" />
+				</div>
+			</div>
+			<div class="row">
+				<p class="col-12 promo">Na Black Friday o site inteiro está em promoção:</p>
+			</div>
+			<div class="row link">
+				<a href="/eletrodomesticos/geladeira---refrigerador" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link01.png" alt=""/>
+				</a>
+				<a href="/eletrodomesticos/lavadora-de-roupas" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link02.png" alt=""/>
+				</a>
+				<a href="/eletrodomesticos/micro-ondas" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link03.png" alt=""/>
+				</a>
+				<a href="/eletrodomesticos/forno" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link04.png" alt=""/>
+				</a>
+				<a href="/busca/?fq=H:153" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link05.png" alt=""/>
+				</a>
+				<a href="/eletrodomesticos/ar-condicionado" class="col-2">
+					<img src="/arquivos/consul-landing-blackfriday-link06.png" alt=""/>
+				</a>
+			</div>
+			<div class="row"><hr class="col-12"/></div>
+		</div>
+	</section>
+
+	<section class="cleanfix section03">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 title2">
+					<img src="/arquivos/consul-landing-blackfriday-title02.png" alt="Black Friday"/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					<h4>O que é?</h4>
+					<p>A <strong>Black Friday</strong> é um dia de promoções que marca o início da temporada de compras para o Natal. Diversas lojas participam dessa data, criada nos Estados Unidos e cada vez mais conhecida no Brasil, oferecendo <strong>descontos de até 90%</strong> em todas as categorias de produtos.</p>
+				</div>
+				<div class="col-4">
+					<h4>Quando é?</h4>
+					<p>A Black Friday acontece na última <strong>sexta-feira de Novembro</strong>, dia seguinte do feriado de Ação de Graças. Em 2015, a Black Friday será no dia <strong>27 de Novembro.</strong></p>
+				</div>
+				<div class="col-4">
+					<h4>Cadastre-se no site</h4>
+					<p>Receba informações e ofertas com exclusividade e prepare-se para um grande dia de promoções ;)</p>
+
+					<strong>Black Friday bem pensada é na Consul.<br/>
+					loja.consul.com.br</strong>
+				</div>
+			</div>
+			<div class="row"><hr class="col-12"/></div>
+		</div>
+	</section>
+
+	<section class="cleanfix section04">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 title3">
+					<h2>Perguntas frequentes</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4 anchor">
+					<ul>
+						<li><a href="#indisponibilidade" class="active">Indisponibilidade para região</a></li>
+						<li><a href="#reserva">Reserva de compra no carrinho</a></li>
+						<li><a href="#lentidao">Lentidão no site</a></li>
+						<li><a href="#cancelamento">Cancelamento, trocas e devoluções</a></li>
+						<li><a href="#email">E-mail de confirmação</a></li>
+						<!-- <li><a href="#participacao">Participação no Black Friday Compra Certa</a></li> -->
+						<li><a href="#produtos">Produtos participantes da Black Friday</a></li>
+					</ul>
+				</div>
+				<div class="col-8 questions">
+					<div id="indisponibilidade" class="active">
+						<h4>Por que o meu produto está indisponível para a minha região?</h4>
+						<p>Pois é verificado no sistema s no Centro de Distribuição que atende sua região há o produto disponível. Essa verificação é feita após a informado o CEP.</p>
+					</div>
+					<div id="reserva">
+						<h4>Coloquei um produto no meu carrinho de compras, ele está reservado para mim?</h4>
+						<p>Só é garantido o preço e o produto após a confirmação de compra. </p>
+					</div>
+					<div id="lentidao">
+						<h4>O site ficará lento durante o Black Friday?</h4>
+						<p>Fique tranquilo, nós estamos trabalhando para você ter a a melhor experiência de compra no Black Friday 2015! </p>
+					</div>
+					<div id="cancelamento">
+						<h4>Como cancelo, troco, ou devolvo um produto que comprei durante a Black Friday?</h4>
+						<p>Caso queira cancelar, trocar, ou devolver um produto entrar em contato com o nosso SAC. </p>
+					</div>
+					<div id="email">
+						<h4>Finalizei a compra, mas ainda não recebi o e-mail de confirmação. O pedido foi confirmado?</h4>
+						<p>Durante o Black Friday 2015, o email de confirmação de pedido pode demorar um pouquinho mais para chegar. Mas fique tranquilo, se você finalizou a compra e se a página de confirmação de pedido apareceu para você, quer dizer que o seu pedido está em nosso sistema. </p>
+					</div>
+					<!-- <div id="participacao">
+						<h4>Se eu não me cadastrar na página do Black Friday ainda poderei participar do Black Friday?</h4>
+						<p>Sim! Porém para poder realizar uma compra no Compra Certa é necessário você fazer parte do Clube de Compras.</p>
+					 						<p>E como fazer parte? Ser cliente e ou funcionário com algum de nossos parceiros. </p>
+					</div> -->
+					<div id="produtos">
+						<h4>Todos os produtos do sites estarão participando da ação Black Friday?</h4>
+						<p>Procure pelas ofertas destacadas pelo selo promocional</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<div id="modal-termos" style="display:none" data-title="Termos">
+		<p><strong>Atenção:</strong> ao optar por receber informações, seus dados pessoais serão armazenados no nosso banco de dados, e tratados de acordo com as disposições éticas e legais referentes à privacidade. Você estará, ainda, nos autorizando a transferir seus dados pessoais a terceiros, que mantenham políticas similares de proteção à privacidade.</p>
+	</div>
+
+	<div id="modal-registered" style="display:none" data-title="Usuário já cadastrado">
+		<p>Não foi possível efetuar o cadastro! <br />
+		Já existe um participante com este endereço de e-mail.</p>
+	</div>
+
+	<div id="modal-success" style="display:none" data-title="Sucesso">
+		<p>Cadastro efetuado com sucesso!</p>
+	</div>
+
+
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		var google_conversion_id = 980493561;
+		var google_custom_params = window.google_tag_params;
+		var google_remarketing_only = true;
+		/* ]]> */
+	</script>
+	<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+	<script type="text/javascript" src="/arquivos/consul-landing-blackfriday.min.js"></script>
+</body>
+</html>

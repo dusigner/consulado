@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+$supermodel-colors: (
+	'amarelo'          : ('Background' : #d2a723, 'Bullet' : $gray, 'Tooltip-bg'       : #d2a723, 'Tooltip-txt' : $gray),
+	'autumn-glimmer'   : ('Background' : #ff844b, 'Bullet' : $gray, 'Tooltip-bg'       : #ff844b, 'Tooltip-txt' : $gray),
+	'azul'             : ('Background' : #1c24cf, 'Bullet' : #ffffff, 'Tooltip-bg'     : #1c24cf, 'Tooltip-txt' : #ffffff),
+	'bege'             : ('Background' : #e2cba2, 'Bullet' : #000000, 'Tooltip-bg'     : #e2cba2, 'Tooltip-txt' : #000000),
+	'berry'            : ('Background' : #c42a2c, 'Bullet' : #ffffff, 'Tooltip-bg'     : #c42a2c, 'Tooltip-txt' : #ffffff),
+	'branco'           : ('Background' : #ffffff, 'Bullet' : $txt-gray-l, 'Tooltip-bg' : #eee, 'Tooltip-txt' : $txt-gray),
+	'chumbo'           : ('Background' : #574d4e, 'Bullet' : #ffffff, 'Tooltip-bg'     : #574d4e, 'Tooltip-txt' : #ffffff),
+	'cinza'            : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'contour-silver'   : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'crystal-blue'     : ('Background' : #048fc2, 'Bullet' : $gray, 'Tooltip-bg'       : #048fc2, 'Tooltip-txt' : #000000),
+	'empire-red'       : ('Background' : #be000a, 'Bullet' : #ffffff, 'Tooltip-bg'     : #be000a, 'Tooltip-txt' : #ffffff),
+	'grafite-metálico' : ('Background' : $gray, 'Bullet'   : $gray, 'Tooltip-bg'       : $gray, 'Tooltip-txt'   : $txt-gray),
+	'graphite'         : ('Background' : #574d4e, 'Bullet' : #ffffff, 'Tooltip-bg'     : #574d4e, 'Tooltip-txt' : #ffffff),
+	'inox'             : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'laranja'          : ('Background' : $orange, 'Bullet' : #ffffff, 'Tooltip-bg'     : $orange, 'Tooltip-txt' : #ffffff),
+	'neutro'           : ('Background' : #ffffff, 'Bullet' : $txt-gray-l, 'Tooltip-bg' : #eeeeee, 'Tooltip-txt' : $txt-gray),
+	'onix-black'       : ('Background' : #000000, 'Bullet' : #ffffff, 'Tooltip-bg'     : #000000, 'Tooltip-txt' : #ffffff),
+	'pepper'           : ('Background' : #c42a2c, 'Bullet' : #ffffff, 'Tooltip-bg'     : #c42a2c, 'Tooltip-txt' : #ffffff),
+	'pistachio'        : ('Background' : #cdd568, 'Bullet' : #000000, 'Tooltip-bg'     : #cdd568, 'Tooltip-txt' : #000000),
+	'platinum'         : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'prata'            : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'preto'            : ('Background' : #000000, 'Bullet' : #ffffff, 'Tooltip-bg'     : #000000, 'Tooltip-txt' : #ffffff),
+	'rosa'             : ('Background' : #ff7ec4, 'Bullet' : #000000, 'Tooltip-bg'     : #ff7ec4, 'Tooltip-txt' : #000000),
+	'roxo'             : ('Background' : #652c97, 'Bullet' : #ffffff, 'Tooltip-bg'     : #652c97, 'Tooltip-txt' : #ffffff),
+	'tangerine'        : ('Background' : #e44e2d, 'Bullet' : #ffffff, 'Tooltip-bg'     : #e44e2d, 'Tooltip-txt' : #ffffff),
+	'verde'            : ('Background' : #008000, 'Bullet' : #ffffff, 'Tooltip-bg'     : #008000, 'Tooltip-txt' : #ffffff),
+	'vermelho'         : ('Background' : #c42a2c, 'Bullet' : #ffffff, 'Tooltip-bg'     : #c42a2c, 'Tooltip-txt' : #ffffff),
+	'vinho'            : ('Background' : #652c97, 'Bullet' : #ffffff, 'Tooltip-bg'     : #652c97, 'Tooltip-txt' : #ffffff),
+	'não-se-aplica'    : ('Background' : #ffffff, 'Bullet' : $txt-gray-l, 'Tooltip-bg' : #eeeeee, 'Tooltip-txt' : $txt-gray),
+	'evox'             : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray),
+	'titanium'         : ('Background' : $gray, 'Bullet'   : $txt-gray, 'Tooltip-bg'   : $gray, 'Tooltip-txt'   : $txt-gray)
+);
+
+p.supermodel {
+	@include font-size(18px);
+	margin: 0 0 8px;
+}
+
+a.supermodel {
+	background-color: #7f7f7f;
+	border-radius: 50%;
+	display: inline-block;
+	font-size: 0;
+	font-weight: 700;
+	height: 22px;
+	margin-right: 11px;
+	position: relative;
+	width: 22px;
+
+	&.active:before {
+		border-radius: 50%;
+		content: '';
+		background-color: #fff;
+		height: 8px;
+		left: 0;
+		margin: -4px auto auto;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		width: 8px;
+	}
+
+	span {
+		@include font-size(14px);
+		background-color: #7f7f7f;
+		border-radius: 4px;
+		color: white;
+		left: 50%;
+		opacity: 0;
+		padding: 8px 10px;
+		position: absolute;
+		top: -50px;
+		transform: translateX(-50%);
+		transition: opacity 0.4s ease;
+		z-index: 0;
+
+		&:before {
+			bottom: -5px;
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid #7f7f7f;
+			content: '';
+			height: 0;
+			left: 50%;
+			position: absolute;
+			transform: translateX(-50%);
+			width: 0;
+		}
+	}
+
+	&:hover span { opacity: 1; z-index: 10;}
+
+	// &.Branco {
+	// 	background-color: white;
+	// 	border: 1px solid #b8b3b1;
+
+	// 	&:before { background: #b4afad; }
+
+	// 	span {
+	// 			background-color: #eeeeee;
+	// 		color: #736c6b;
+
+	// 		&:before { border-top: 8px solid #eee; }
+	// 	}
+	// }
+
+	@each $key, $value in $supermodel-colors {
+		&.#{$key} {
+			background-color: map-get($value, 'Background');
+			border: 1px solid map-get($value, 'Bullet');
+
+			&:before { background: map-get($value, 'Bullet'); }
+
+			span {
+				background-color: map-get($value, 'Tooltip-bg');
+				color: map-get($value, 'Tooltip-txt');
+
+				&:before { border-top: 8px solid map-get($value, 'Tooltip-bg'); }
+			}
+		}
+	}
+}

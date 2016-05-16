@@ -1,0 +1,24 @@
+#vtex-modal-emailCRM{
+	.modal-header{
+		padding: 0;
+	}
+	.modal-body{
+		padding: 20px;
+		button{@extend .primary-button;}
+		.step2{
+			text-align: left;
+			display: none;
+			p{text-align: center;}
+			.row{
+				margin-bottom: 5px;
+				input[type=radio]{margin-right: 10px;}
+				label,input[type=radio]{
+					cursor:pointer;
+					display: inline;
+				}
+			}
+			
+		}
+		.step3{display: none;}
+	}
+}

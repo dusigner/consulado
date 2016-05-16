@@ -1,0 +1,461 @@
+/*===================================================
+=            FILTRO - Página de listagem            =
+===================================================*/
+
+//https://www.youtube.com/watch?v=VX3lz5ph8A0
+
+// @include breakpoint(extra-large, "min") { min-height: 340px; }
+// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
+
+.filtro.hide { display: block; visibility: visible; }
+
+.filter-container {
+	background-color: $gray;
+	min-height: 80px;
+	margin: 40px 0; // retirar
+
+	body.busca-vazia & { display:none; }
+
+	.container {
+		@include singleTransition();
+		background-color: $gray;
+		position: relative;
+
+		@include breakpoint(small, "max") {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+	}
+
+	.icon-arrow-down {
+		color: $orange;
+		display: inline-block;
+		@include responsiveFont(6, 16, true);
+		margin-left: 10px;
+		transition: transform 200ms ease-out;
+	}
+
+	a {
+		display: inline-block;
+		@include responsiveFont(14, 16, true);
+		text-decoration: none;
+		vertical-align: middle;
+
+		&:hover { color: $orange; }
+	}
+
+	a, .content-more-items button {
+		@include singleTransition(90);
+	}
+
+	.filter-header {
+		@include responsiveFont(28);
+		cursor: pointer;
+		height: 82px;
+		float: right;
+		line-height: 80px;
+		// padding: 0 0 0 45px;
+		text-align: center;
+
+		&:hover {
+			// background-color: #dd0;
+			& + ul { height: auto; }
+		}
+
+		@include breakpoint(small, "min") {
+			@include hide-conditional();
+		}
+
+		// [ CATEGORIA ]
+		body.categoria & {
+			@include breakpoint(small, "max") {
+				@include show-conditional();
+				width: 50%;
+			}
+		}
+	}
+
+
+	// [ Ações]
+	&.fixed {
+		background-color: #fff;
+
+		.container {
+			border-bottom: 1px solid $gray;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 150;
+		}
+	}
+
+	&.more-items {
+		.filter-list {
+			@include breakpoint(small, "min") {
+				padding-right: 190px;
+			}
+		}
+	}
+}
+
+.filter-list {
+	@include singleTransition();
+	min-height: 80px;
+
+	@include breakpoint(small, "min") {
+		display: table;
+
+		a {
+			height: 70px;
+			line-height: 60px;
+			margin-top: 10px;
+			padding: 0 15px;
+		}
+	}
+
+	& > .filter-item {
+		display: table-cell;
+		position: relative;
+		vertical-align: middle;
+
+		//esconde por padrão os itens do menu a partir do index 5
+		&:nth-child(n+5) { display: none; }
+
+		@include breakpoint(large, "max"){
+			&:nth-child(n+3) { display: none; }
+		}
+
+		@include breakpoint(medium, "max"){
+			&:nth-child(n+2) { display: none; }
+		}
+
+		@include breakpoint(small, "max") { display: block; }
+
+		@include breakpoint(small, "min") {
+			&:first-child {
+				padding-right: 30px;
+
+				& > a, & > span {
+					font-size: 26px!important;
+					color: $txt-gray!important;
+					font-weight: 200;
+					padding: 0;
+				}
+
+				& > span {
+					font-size: 22px!important;
+				}
+
+				&:hover a { background: none!important; }
+
+			}
+		}
+
+		&.category > a {
+			color: $orange;
+			@include responsiveFont(16, 16, true);
+		}
+
+		// Itens da lista horizontal
+		// que contenham subitens
+		&.inner-items {
+			& > a { color: $txt-gray; }
+
+			&.active {
+				& a { color: $orange; }
+
+				&.filter{
+
+					& > a {display: none;}
+
+					.filter-list-inner{
+						background-color: transparent;
+						height: auto;
+						position: relative;
+						top: -5px;
+
+						a:hover{ background-color: transparent; }
+					}
+				}
+			}
+
+			// [ CATEGORIA ]
+			body.categoria &:first-child {
+
+				@include breakpoint(small, "min") {
+
+					.filter-list-inner{
+						border-radius: 10px;
+						width: 80%;
+					}
+
+				}
+
+				@include breakpoint(small, "max") {
+					border-right: 1px solid $gray;
+					text-align: center;
+					width: 50%;
+
+					& > a {
+						@include responsiveFont(28);
+						background-color: $gray;
+						border-right: 1px solid #ccc;
+						height: 80px;
+						line-height: 55px;
+					}
+
+
+				}
+
+				i{ @include responsiveFont(10, 16, true); }
+			}
+
+			&:not(.active):hover, &:not(.filter):hover {
+				@include breakpoint(small, "min") {
+
+					& > a {
+						color: $orange;
+						background-color: #fff;
+						border-radius: 20px 20px 0 0;
+
+						i{ transform: rotate(180deg); }
+					}
+
+					.filter-list-inner {
+						border: solid $gray;
+						border-width: 0 1px 3px 1px;
+						border-radius: 0 0 20px 20px;
+						height: auto;
+						overflow: inherit;
+						padding: 15px 0;
+						z-index: 100;
+					}
+				}
+
+				@include breakpoint(small, "max") {
+					.filter-list-inner {
+						height: auto;
+						overflow: inherit;
+					}
+				}
+			}
+		}
+	}
+
+	.filter-item {
+		@include breakpoint(small, "max") {
+			background-color: #fff;
+			border-top: 1px solid $gray;
+
+			a {
+				display: block;
+				font-weight: 400;
+				padding: 15px 25px;
+			}
+		}
+	}
+}
+
+
+.filter-list-inner {
+	// @include singleTransition();
+	background-color: #fff;
+
+	@include breakpoint(small, "min") {
+		height: 0;
+		overflow: hidden;
+		left: -1px;
+		min-width: 102%;
+		position: absolute;
+		top: 80px;
+		width: auto;
+	}
+
+	@include breakpoint(small, "max") {
+		height: 0;
+		overflow: hidden;
+	}
+
+	a {
+		height: auto;
+		line-height: normal;
+	}
+
+	.filter-item {
+		white-space: nowrap;
+
+		a { padding: 5px 15px; }
+
+		@include breakpoint(small, "max") {
+			background-color: $gray-l;
+			border: none;
+
+			a {
+				display: block;
+				font-weight: 400;
+				padding: 15px 25px;
+			}
+		}
+	}
+
+	.inner-items:first-child & {
+		box-shadow: 0 0 7px rgba(0,0,0,0.2);
+		left: -1px;
+		position: absolute;
+		text-align: right;
+		top: 65px;
+		width: 100%;
+		z-index: 100;
+
+		@include breakpoint(small, "max") {
+			left: inherit;
+			right: 10%;
+			width: 80%;
+
+			a { background-color: #fff; }
+		}
+	}
+}
+
+
+// Lista de itens que não cabem no contexto horizontal
+.content-more-items, .clear-filters {
+	margin-top: 10px;
+
+	@include breakpoint(small, "min") {
+		position: absolute;
+		right: 0;
+		top: 0;
+		//top: 15px;
+	}
+
+	@include breakpoint(small, "max") {
+		display: none;
+		visibility: hidden;
+	}
+
+	@include breakpoint(medium, "min") { right: 90px; }
+	@include breakpoint(medium, "max") { right: 20px; }
+
+	// Botão mais categorias
+	& > button {
+		@include responsiveFont(16);
+		background: none;
+		border: none;
+		display: block;
+		line-height: 60px;
+		font-weight: 700;
+		//padding: 13px 20px 15px 20px;
+		position: relative;
+		z-index: 11;
+
+		&:focus { outline: none; }
+	}
+}
+
+.content-more-items {
+
+	//esconde o menu de mais categorias quando tiver menos que 3 itens
+	&.items-1, &.items-2, &.items-3 { display: none; }
+
+	@include breakpoint(large, "max"){
+		&.items-3 { display: block; }
+	}
+
+	@include breakpoint(medium, "max"){
+		&.items-3 { display: block; }
+	}
+
+	&:hover {
+
+		@include breakpoint(small, "min") {
+			.more-items-list {
+				background-color: #fff;
+				opacity: 1;
+				z-index: 10;
+			}
+		}
+
+		@include breakpoint(small, "max") {
+			.more-items-list {
+				height: 100%;
+				overflow: inherit;
+			}
+		}
+
+		.icon{ transform: rotate(180deg); }
+	}
+}
+
+// Demais categorias
+.more-items-list {
+	@include singleTransition(90);
+
+	@include breakpoint(small, "min") {
+		border: solid $gray;
+		border-width: 0 1px 3px 1px;
+		border-radius: 20px;
+		min-width: 188px;
+		opacity: 0;
+		padding: 65px 0 15px 0;
+		position: absolute;
+		right: -10px;
+		top: -3px;
+		z-index: -1;
+	}
+
+	@include breakpoint(small, "max") {
+		height: 0;
+		overflow: hidden;
+	}
+
+	.item {
+		display: none;
+		@include responsiveFont(13);
+		font-weight: 700;
+		//white-space: nowrap;
+
+		a {
+			display: block;
+			padding: 5px 18px;
+			text-decoration: none;
+		}
+
+		//para os itens do tipo categoria exibe os que foram escondidos no menu, no dropdown
+		&.category{
+
+			&:nth-child(n+4) { display: block; }
+
+			@include breakpoint(large, "max"){
+				&:nth-child(n+2) { display: block; }
+			}
+
+			@include breakpoint(medium, "max"){
+				&:nth-child(n+1) { display: block; }
+			}
+		}
+	}
+}
+
+// Limpar filtros
+.clear-filters {
+
+	&:hover{
+		opacity: 0.8;
+	}
+
+	& > a {
+		color: $orange;
+		font-weight: 400;
+		@include responsiveFont(12);
+		text-transform: uppercase;
+	}
+
+	.icon {
+		font-size: 10px;
+		padding-left: 5px;
+	}
+}
+
+/*-----  End of FILTRO - Página de listagem  ------*/

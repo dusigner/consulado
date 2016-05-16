@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+.portal-notify-me-ref {
+	.notifyme-title {
+		@include font-size(18px, true, false);
+		font-weight: 700;
+		margin-bottom: 0;
+		position: relative;
+	}
+
+	fieldset {
+		border: none;
+		margin: 0;
+		padding: 0;
+
+		&.success,
+		&.error {
+			@include responsiveFont(14);
+			display: block;
+			margin: 10px 0;
+			padding: 10px;
+		}
+
+		&.success { color: $txt-gray; }
+		&.error { color: $orange; }
+	}
+
+	form p {
+		@include font-size(16px, true, false);
+		font-style: italic;
+		margin-top:0;
+	}
+
+	.notifyme-client-name,
+	.notifyme-client-email {
+		@include singleTransition();
+		@include responsiveFont(14);
+		border: 1px solid $gray;
+		background-color: $gray-l;
+		color: $txt-gray;
+		font-weight: 200;
+		height: 44px;
+
+		&:focus {
+			background-color: #fff;
+			border-color: $gray-d;
+			outline: none;
+		}
+	}
+
+	.notifyme-button-ok {
+		display: inline-block;
+		width: 100%;
+		margin-bottom: 10px;
+
+		&:before {
+			content: " ";
+			display: block;
+		}
+
+		&:focus { outline: none;}
+	}
+
+	// Placeholder color
+	@include inputPlaceholderColor( $txt-gray );
+
+	// Esconder na barra de detalhes do produto
+	.prod-details-nav & { @include hide-conditional(); }
+}
+

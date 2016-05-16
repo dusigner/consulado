@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex.cmc:productPageTitle />
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex.cmc:productRichSnippets showFacebook="1" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="produto">
+	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
+
+	<vtex:template id="0-consul-header" />
+
+	<!-- Main -->
+	<div class="main clearfix">
+
+		<div class="container clearfix">
+			<div class="row no-margin">
+
+				<!-- Breadcrumb -->
+				<section class="breadcrumb show-medium">
+					<vtex.cmc:breadCrumb />
+				</section>
+				<!-- /Breadcrumb -->
+
+				<!-- Box-left -->
+				<div class="col-v2 l7 m12 gutters-on prod-image">
+
+					<div class="prod-selos hide-small">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:hightLight />
+					</div>
+
+					<!--  Controle: imagem do produto -->
+					<div class="prod-galeria text-center">
+						<vtex.cmc:ProductImage zoom="off" />
+					</div>
+					<!-- /Controle: imagem do produto -->
+				</div>
+				<!-- /Box-left -->
+
+				<!-- Box-right -->
+				<div class="col-v2 l5 m12 gutters-on prod-info">
+
+					<!-- Breadcrumb -->
+					<section class="breadcrumb hide-medium">
+						<vtex.cmc:breadCrumb />
+					</section>
+					<!-- /Breadcrumb -->
+
+					<h1 class="lead">
+						<vtex.cmc:productName />
+						<span class="reference"><vtex.cmc:productReference/></span>
+						<span class="productSku hide"><vtex.cmc:skuReference /></span>
+					</h1>
+
+					<div class="prod-preco">
+						<vtex.cmc:skuPrice />
+					</div>
+
+					<div class="prod-selos show-medium">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:hightLight />
+					</div>
+
+					<div class="row prod-sku-selector">
+						<!--vtex.cmc:stockKeepingUnitSelection /-->
+
+						<div class="col-v2 l6 m12 select-voltage">
+							<vtex.cmc:skuSelection />
+						</div>
+
+						<div class="col-v2 l6 m12 select-color" data-product-field="13">
+
+						</div>
+
+					</div>
+
+					<div id="BuyButton" class="clearfix">
+						<vtex.cmc:BuyButton/>
+
+						<div class="secure col-v2 l2 offset-l1">
+							<i class="icon icon-lock"></i> Compra Segura
+						</div>
+					</div>
+
+					<div class="row prod-more-info">
+						<a href="https://consul.zendesk.com/hc/pt-br/articles/206265336-Informa%C3%A7%C3%B5es-de-Contrata%C3%A7%C3%A3o" class="col-v2 l4 m12" title="Informações de contratação" target="_blank">Informações de contratação</a>
+
+						<a href="#" class="col-v2 l4 m12 tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de entrega</a>
+
+						<!-- <a href="#" class="col-v2 l4 m12 entrega-premium" title="Entrega Premium" data-modal="entrega-premium">Entrega Premium</a> -->
+
+						<a href="#modal-pj" class="col-v2 l4 m12 modal-call" title="Vendas Corporativas">Vendas Corporativas</a>
+					</div>
+
+					<!--  Controle: Forma de pagamento -->
+					<!-- <div id="productPayment"><vtex.cmc:OtherPaymentMethod/></div> -->
+					<!--  /Controle: Forma de pagamento -->
+
+					<!--  Controle: disponibilidade -->
+					<!-- <vtex.cmc:Delivery /> -->
+					<!-- /Controle: disponibilidade -->
+				</div>
+				<!-- /Box-right -->
+			</div>
+		</div>
+	</div>
+
+	<div class="cont-prod-details-nav">
+		<section class="prod-details-nav">
+			<div class="container clearfix">
+				<div class="row">
+					<ul>
+						<li class="item hide"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
+						<li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
+						<li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
+						<li class="item hide"><a href="#depoimentos" class="scroll-to">Depoimentos</a></li>
+						<li class="item"><a href="#relacionados" class="scroll-to">Relacionados</a></li>
+					</ul>
+					<div class="right clearfix nav-price">
+						<div id="BuyButtonDetails"><vtex.cmc:BuyButton /></div>
+						<div class="details-preco"><vtex.cmc:skuPrice /></div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="main clearfix after-prod">
+		<section id="detalhes" class="detalhes"></section>
+
+		<section id="video" class="video"></section>
+
+		<section id="especificacoes">
+			<h2 class="title text-center">
+				Especificações <span>técnicas</span>
+				<i class="icon icon-consul-clipboard"></i>
+			</h2>
+			<div class="container"></div>
+		</section>
+
+		<section id="depoimentos">
+			<h2 class="title text-center">Depoimentos</h2>
+			<div class="container"><!--vtex.cmc:UserReview /--></div>
+		</section>
+
+		<section id="compre-junto" style="display: none;">
+		    <div class="compre-junto">
+		        <vtex.cmc:BuyTogether />
+		    </div>
+		</section>
+
+		<section id="relacionados">
+			<p class="pre-title">Relacionados</p>
+			<div class="container">
+				<div class="prateleira-slider clearfix">
+					<vtex:contentPlaceHolder id="Relacionados" />
+				</div>
+			</div>
+		</section>
+
+		<div class="hide">
+			<vtex.cmc:ProductDescription />
+			<vtex.cmc:productSpecification />
+
+			<div id="modal-sku" data-title="Selecione a voltagem">
+				<div class="row options">
+					<vtex.cmc:skuSelection />
+				</div>
+				<div class="row button">
+					<vtex.cmc:BuyButton />
+				</div>
+			</div>
+
+			<div id="modal-tipo-entrega" data-title="Tipos de entrega">
+				<!-- Texto blackfriday -->
+				<strong>Entrega Convencional</strong>
+				<ul class="list">
+					<li>Para quem não está com pressa, mas também não deseja estender seu prazo de entrega.</li>
+				</ul>
+				<br />
+
+				<strong>Entrega Convencional Agendada</strong>
+				<ul class="list">
+					<li>Para quem quer se planejar e agendar sua entrega.</li>
+				</ul>
+				<br />
+
+				<strong>Entrega Econômica</strong>
+				<ul class="list">
+					<li>Para quem prefere economizar e não tem pressa para receber seu produto.</li>
+				</ul>
+				<br />
+
+				<strong>Entrega Rápida</strong>
+				<ul class="list">
+					<li>Para quem está com pressa para adquirir seu produto.</li>
+				</ul>
+				<br />
+				<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
+			</div>
+
+			<div id="modal-entrega-premium" data-title="Entrega Premium">
+				<ul class="list">
+					<li>Tenha o melhor produto e o nosso melhor tipo de entrega.</li>
+					<li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e instalado*.</li>
+					<li>Tudo isso feito por um profissional que realmente conhece o produto!</li>
+					<li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo seu processo de entrega e tirará qualquer dúvida por email ou telefone.</li>
+					<li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa transportadora parceira entrará em contato por telefone para agendar sua entrega.</li>
+					<li>
+						<small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e Micro-Ondas.</small>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+	<!-- /Main -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>

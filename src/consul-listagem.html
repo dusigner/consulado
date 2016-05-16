@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="listagem">
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Slide -->
+	<div class="banner-principal slides hide-extra-small"><vtex:contentPlaceHolder id="BannerTopo" /></div>
+	<!-- /Slide -->
+
+	<!-- Slide mobile-->
+	<div class="banner-principal banner-mobile slides show-extra-small"><vtex:contentPlaceHolder id="BannerTopo BannerMobile" /></div>
+	<!-- /Slide mobile-->
+
+	<div class="filter-wrapper hide-extra-small">
+		<div class="container departament-nav clearfix">
+			<div class="clearfix">
+				<p class="title-filter"></p>
+				<vtex.cmc:searchNavigator keepCurrentPath="true" />
+			</div>
+		</div>
+	</div>
+
+	<div class="container list-container clearfix">
+		<div class="row gutters">
+
+			<div class="col-12 list-content">
+
+				<!-- Prateleira -->
+				<section id="prateleira">
+					<div class="top-wrapper clearfix">
+						<vtex.cmc:searchTitle />
+						<div class="order-wrapper">
+							<p class="order-title">Ordenar por</p>
+							<ul class="order-by"></ul>
+						</div>
+					</div>
+					<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="3" />
+				</section>
+				<!-- /Prateleira -->
+
+			</div>
+
+			<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
+				Ver mais <i class="icon icon-arrow-down"></i>
+			</button>
+
+		</div>
+
+	</div>
+	
+	<section id="quem-viu-clicou" style="display: none;">
+		<!--<p class="title">Quem viu, clicou</p>-->
+		<div class="container">
+			<div class="prateleira clearfix">
+				<vtex:contentPlaceHolder id="QuemViuClicou" />
+			</div>
+		</div>
+	</section>
+
+	<section id="relacionados">
+		<p class="pre-title">Para você</p>
+		<div class="container">
+			<div class="prateleira-slider clearfix">
+				<vtex:contentPlaceHolder id="Relacionados" />
+			</div>
+		</div>
+	</section>
+
+	<div class="box-compare">
+		<div class="container clearfix">
+			<p>Produtos selecionados que deseja comparar: </p>
+			<div class="right-wrapper clearfix">
+				<div class="product-list"></div>
+				<a title="Comparar" class="btn-comparar" href="#">Comparar</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal-napoleao" data-title="Novas Frost Free Consul" style="display:none;">
+
+			<div class="row napoleao-close">
+				<button type="button" class="close">X</button>
+			</div>
+
+			<div class="row napoleao-img">
+				<div class="col-md-12">
+					<img src="/arquivos/napoleao-novas-frost-free-consul.png" alt="Novas Frost Free Consul" />
+				</div>
+			</div>
+
+			<div class="row napoleao-title">
+				<div class="col-md-12">
+					<h2>Novas Frost Free Consul</h2>
+				</div>
+			</div>
+
+			<div class="row napoleao-text">
+				<div class="col-md-12">
+					<p>Tenha mais espaço <br />em sua geladeira</p>
+				</div>
+			</div>
+
+			<div class="row napoleao-button">
+				<div class="col-md-12">
+					<a href="/busca/?fq=H:184">
+						<button type="button" class="primary-button" value="Ver mais">Conheça</button>
+					</a>
+				</div>
+			</div>
+	</div>
+
+	<div id="modal-overlay-abandono" data-title="Não vá embora ainda!" style="display: none;">
+	    <div class="subtitle">
+	        Veja o que separamos para você:
+	    </div>
+		<div class="row">
+			<div class="col-md-12">
+			    <vtex:contentPlaceHolder id="OverlayAbandono" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>

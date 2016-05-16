@@ -1,0 +1,93 @@
+@if $use-com-notify == true {
+
+	@charset "UTF-8";
+
+	// ===============================================================
+	/* NOTIFY */
+	// ===============================================================
+
+	#notifyContent{
+		overflow: hidden;
+		position: fixed;
+		right: 15px;
+		top: 70px;
+		width: 275px;
+		z-index: 100;
+	}
+
+	.notify {
+		background-color: $color-button;
+		border: 1px solid $color-button;
+		cursor: pointer;
+		margin-bottom: 15px;
+		margin-left: 15px;
+
+		&:hover {
+			@include singleTransition();
+			@include vendor(box-shadow, -2px 3px 7px #aeaeae);
+			background-color: #fd3f13;
+		}
+
+		&:first-child{margin-top:0;}
+
+		.notify-holder{
+			@include fontSize(14px);
+			border: 1px solid #fff;
+			min-height: 48px;
+			padding: 10px 20px 20px 65px;
+			position:relative;
+
+			&:before {
+				background: url('#{$img-path}icons-notifications.png') 0 0 no-repeat;
+				content: ' ';
+				display:block;
+				height: 60px;
+				left: 10px;
+				position: absolute;
+				top: 10px;
+				width: 60px;
+			}
+
+			.notify-header {
+				color:#fff;
+				position: relative;
+
+				.close{
+					border: none;
+					background: none;
+					position: absolute;
+					right: -20px;
+					top: -10px;
+
+					&:hover{@include vendor(animation, rotation .7s);}
+				}
+			}
+
+			.notify-content{
+				color:#000;
+				padding-top:5px;
+			}
+		}
+
+		&.notify-bebidas .notify-holder:before{left: 15px;}
+
+		/* &.notify-co2{
+			top:100px;
+		} */
+
+		&.notify-co2 .notify-holder:before{background-position: 0 -79px;}
+
+		/* &.notify-filtro{
+			top:200px;
+		} */
+
+		&.notify-filtros .notify-holder:before{background-position: 0 -158px;}
+
+		/* &.notify-maquina{
+			top:300px;
+		} */
+
+		&.notify-maquinas .notify-holder:before{background-position: 0 -233px;}
+	}
+
+}

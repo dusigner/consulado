@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.servicos {
+	background: $gray-l;
+	margin: 0;
+	padding: 40px 0 70px 0;
+	text-align: center;
+
+	.title {
+		@include responsiveFont(38);
+		line-height: 1.14;
+		margin: 15px 0 35px;
+		font-weight: 400;
+
+		@include breakpoint(small, "max") {
+			margin-bottom: 15px;
+		}
+
+		span{
+			display: block;
+			font-weight: 300;
+		}
+	}
+
+	.icon {
+		color: #fdb912;
+		display: inline-block;
+		height: 60px;
+		margin-top: 40px;
+	}
+
+	.icon-consul-chat      { @include responsiveFont(46, 16, true); }
+	.icon-consul-clipboard { @include responsiveFont(52, 16, true); }
+	.icon-consul-boxes     { @include responsiveFont(42, 16, true); }
+
+	.box-title {
+		@include responsiveFont(18, 16, true);
+		margin: 10px 0;
+	}
+
+	.box-text {
+		@include responsiveFont(18);
+		color: $txt-gray-l;
+		padding: 0 20px;
+
+		@include breakpoint(small, "min") { min-height: 110px; }
+
+		@include breakpoint(extra-large, "min") { min-height: 80px; }
+	}
+
+	.primary-button {
+		font-weight: 400;
+		margin-top: 5px;
+		text-transform: uppercase;
+		width: 100%;
+
+		@include breakpoint(small, "min") {
+			width: 85%;
+		}
+	}
+}

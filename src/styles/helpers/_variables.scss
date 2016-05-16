@@ -1,0 +1,200 @@
+@charset "UTF-8";
+
+//------------------------------------
+//  BASE
+//------------------------------------
+
+// Website background (can use color or image)
+$website-bg-color: #ffffff !default;
+
+
+// Enable font smoothing?
+$enable-font-smoothing: true !default;
+
+
+// Base font sizes and colors
+$base-font-size         : 16px !default;
+$base-line-height       : 24px !default;
+$base-font-color        : #736c6b !default;
+$base-link-color        : #83838f !default;
+$base-heading-color     : #181818 !default;
+$base-sub-heading-color : #808080 !default;
+
+// Element spacing and line-height ratio
+$base-spacing-unit: $base-line-height !default;
+$half-spacing-unit: $base-spacing-unit / 2 !default;
+$line-height-ratio: $base-line-height / $base-font-size;
+
+
+$base-main: 1080px;
+
+//------------------------------------
+//  RESPONSIVE
+//------------------------------------
+
+// Breakpoints
+$breakpoint-map: (
+	"extra-small": 30em,
+	"small":       48em,
+	"medium":      60em,
+	"large":       70em,
+	"extra-large": 80em
+);
+
+
+//------------------------------------
+//  PATHS
+//------------------------------------
+
+$img-path	: '/arquivos/';
+$icon-path	: '//d2hzip0rm2jjhg.cloudfront.net/whirlpool/fonts/'; //jussi cdn
+$font-path	: '//d2hzip0rm2jjhg.cloudfront.net/consul/fonts/'; //jussi cdn
+
+//------------------------------------
+//  COLORS
+//------------------------------------
+$green  : #9aca3c; //NORMAL
+$orange : #f47921; //NORMAL
+$gray   : #e4e4e4; //NORMAL
+$gray-d : #736c6b; //DARK
+$gray-l : #f4f2f1; //LIGHT
+
+$txt-gray: $gray-d; //DARK
+$txt-gray-l: #b4afad; //LIGHT
+
+
+
+// Selection colors
+$selection-background:  #777777 !default;
+$selection-color:       #ffffff !default;
+
+
+// Form placeholder colors
+$placeholder-color:     #bbbbbb !default;
+
+
+// Colors used for our objects' borders, etc
+$object-ui-color:       #cccccc !default;
+$object-validate-color: #dc2828 !default;
+
+
+// Dropdown colors
+$dropdown-bg-color:     #ffffff !default;
+$dropdown-border-color: #ededed !default;
+$dropdown-hover-color:  #f3f8f8 !default;
+$dropdown-header-color: #aaaaaa !default;
+
+
+// Button font color
+$button-bg-color:         $orange !default;
+$button-font-color:       #ffffff !default;
+$button-hover-font-color: #ffffff !default;
+
+
+// Background colors
+$bg-colors: (
+	"white":  #ffffff,
+	"black":  #222222,
+	"gray":   #999999,
+	"green":  #5cb85c,
+	"blue":   #4572ed,
+	"yellow": #ed9c28,
+	"red":    #d9534f
+);
+
+
+// Type colors
+$type-colors: (
+	"white":  #ffffff,
+	"black":  #222222,
+	"gray":   #999999,
+	"green":  #468847,
+	"blue":   #4572ed,
+	"yellow": #c09853,
+	"red":    #d2322d
+);
+
+
+
+//------------------------------------
+//  Components
+//------------------------------------
+
+// Gutter size
+$gutters: 2% !default;
+
+
+// Prefix for grid columns. By default columns
+// are formatted as `.column-8`
+$column-prefix: 'col-' !default;
+
+
+// Dictate how many columns you would like your
+// grid system to use. Default is 16.
+$column-number: 12 !default;
+
+
+
+
+//------------------------------------
+//  INCLUDE
+//------------------------------------
+
+// Set whatever components you want included
+// in your project to `true` and any components
+// you do not wish to be included to `false`
+//
+// Thanks to inuitcss (https://github.com/csswizardry/inuit.css/blob/master/_defaults.scss)
+// for the idea to use feature switches in a framework. It's an absolutely brilliant idea
+// that makes customization so much easier.
+
+// Utility
+	$use-normalize:        true !default;
+	$use-clearfix:         true !default;
+	$use-vertical-rhythm:  true !default;
+
+
+// Base
+	$use-main:           true !default;
+	$use-selection:      true !default;
+	$use-container:      true !default;
+	$use-typography:     true !default;
+	$use-forms:          true !default;
+	  $use-form-styles:  false !default;
+	$use-grid:           true !default;
+	  $use-push:	     true !default;
+	  $use-pull:	     true !default;
+	$use-grid-v2:        true !default;
+
+
+// Components
+	$use-type-colors               : false !default;
+	$use-bg-colors                 : false !default;
+	$use-buttons                   : true !default;
+		$use-button-bg-colors      : false !default;
+		$use-button-styles         : false !default;
+	$use-dropdowns                 : false !default;
+	$use-navigation                : false !default;
+		$use-responsive-navigation : true !default;
+
+	$use-com-cart                  : true !default;
+	$use-com-scroll                : true !default;
+	$use-com-prateleira            : true !default;
+	$use-com-zoom                  : false !default;
+	$use-com-notify                : false !default;
+	$use-com-popup                 : false !default;
+	$use-com-slick                 : true !default;
+	$use-com-header                : true !default;
+	$use-com-tipbar                : true !default;
+	$use-com-footer                : true !default;
+	$use-com-foot-news             : true !default;
+
+
+// Helpers
+	$use-helper:      true !default;
+	$use-conditional: true !default;
+	$use-print:       true !default;
+	$debug-mode:      false !default;
+		$use-responsive-debug: false !default;
+	$animation-mode:  true !default;
+

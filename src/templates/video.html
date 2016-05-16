@@ -1,0 +1,13 @@
+<div class="video-placeholder">
+	{?iframe}
+		<iframe src="//www.youtube-nocookie.com/embed/{id}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen />
+	{:else}
+		<a href="#" data-video-id="{id}">
+			{?thumb}
+				<img class="image" src="{thumb}" alt="" />
+			{:else}
+				<img class="image cover" style="background-image: url(https://i.ytimg.com/vi/{id}/hqdefault.jpg);" />
+			{/thumb}
+		</a>
+	{/iframe}
+</div>

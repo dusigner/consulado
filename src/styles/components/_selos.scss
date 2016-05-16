@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+
+.flag.todos { display: none!important; }
+
+.flag{
+	font-size: 0;
+	margin: 0;
+	position: absolute;
+}
+
+body {
+
+	.FlagsHightLight{
+		width:30%;
+		position: absolute;
+		height:30%;
+		bottom: 0;
+		right: 0;
+		z-index:3;
+	}
+	.flag {
+		width:100%;
+		height:100%;
+		left:0;
+		background-size: contain !important;
+		&[class*="cns-colecao-1"]{
+			@include replaceText('#{$img-path}cns-selo-1.png', left, bottom);
+		}
+
+		&[class*="cns-colecao-2"]{
+			@include replaceText('#{$img-path}cns-selo-2.png', left, bottom);
+		}
+
+		&[class*="cns-colecao-3"]{
+			@include replaceText('#{$img-path}cns-selo-3.png', left, bottom);
+		}
+
+		&[class*="cns-colecao-4"]{
+			@include replaceText('#{$img-path}cns-selo-4.png', left, bottom);
+		}
+
+		&[class*="cns-colecao-5"]{
+			@include replaceText('#{$img-path}cns-selo-5.png', left, bottom);
+		}
+	}
+
+}

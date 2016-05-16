@@ -1,0 +1,494 @@
+@charset "UTF-8";
+
+.menu-department {
+	&, a, .submenu { @extend %single-transition; }
+
+	.menu-category {
+		&:before { @extend %contentBefore; }
+	}
+}
+
+.top-navigation {
+	border-bottom: 1px solid $gray;
+
+	.menu-department {
+		.first-level { @extend %slideInDown; }
+	}
+}
+
+// [ Desktop ] - Menu
+.menu-department {
+	border-top: 1px solid $gray;
+	margin: 0 auto;
+	max-width: 1110px;
+	padding: 7px 0;
+	position: relative;
+	width: 100%;
+
+	@include breakpoint(extra-large, "max") { font-size: 13px; }
+	@include breakpoint(large, "max")       { font-size: 12px; }
+	@include breakpoint(medium, "max")      { font-size: 11px; }
+
+	&.no-border { border-color: #fff; }
+
+	& > .item {
+		display: inline-block;
+		text-align: center;
+		vertical-align: middle;
+		margin-left: calculate-em(22);
+		// position:inherit!important;
+
+		@include breakpoint(large, "min") { margin-left: calculate-em(26); }
+
+		& > a {
+			@include responsiveFont(17);
+			padding: 5px 0;
+		}
+	}
+
+	a {
+		color: $green;
+		display: block;
+		text-decoration: none;
+	}
+
+	.dropdown {
+		border: 1px solid $green;
+		border-radius: 20px;
+		margin: 0 calculate-em(5) 0 0;
+
+		a[title="Departamentos"] {
+			@include responsiveFont(14);
+			height: 34px;
+			position: relative;
+			padding: 7px 24px 8px 26px;
+			text-indent: 26px;
+			text-transform: uppercase;
+			z-index: 4;
+
+			@include breakpoint(extra-large, "max") { font-size: 14px; }
+		}
+
+		.icon-hamburger {
+			cursor: pointer;
+			height: 12px;
+			left: 31px;
+			position: absolute;
+			top: 19px;
+			z-index:1;
+		}
+	}
+}
+
+// [ Desktop ] - Menu - ATIVO
+.dropdown {
+	&.topmenu-active {
+		position: initial;
+
+		a[title="Departamentos"] {
+			color: $txt-gray;
+			text-indent: 0;
+			z-index:10;
+		}
+
+		.icon-hamburger {
+			border: none;
+			left: inherit;
+			margin-top: -4px;
+			right: 25px;
+			z-index: 100;
+
+			&:before {
+				background: transparent;
+				height: 100%;
+				margin: 0;
+				top: 1px;
+				left:0;
+
+				@include icon-get( close-icon );
+			}
+		}
+
+		.first-level {
+			display: block;
+			text-align: left;
+		}
+	}
+}
+
+// Submenu
+.submenu {
+	background-color: #fff;
+	position: absolute;
+	z-index: 5;
+
+	.item {
+		line-height:inherit;
+		text-align: left;
+
+		a { display: block; }
+	}
+}
+
+// Menu - Categorias
+.menu-category {
+	@include responsiveFont(20, 16, true);
+	border: 1px solid #c2c2c2;
+	display: none;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	left: 0;
+	top: 50px;
+	padding: 42px 30px 20px 30px;
+	width: 100%;
+
+	&:before {
+		background-color: #fff;
+		border: 1px solid #c2c2c2;
+		border-bottom: 0px;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		height: 60px;
+		left: -1px;
+		right: -1px;
+		top: -60px;
+		z-index: 100;
+	}
+
+	&:after{
+		border-top: 1px solid $gray;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		width: calc(100% - 60px);
+	}
+
+	&:hover > .item { opacity: 0.6; }
+
+	& > .item {
+		display: inline-block;
+		vertical-align: top;
+		margin-right: 2%;
+		margin-bottom: 20px;
+		transition: all 0.4s ease;
+		// @extend %single-transition;
+		width: 31%;
+
+		@include breakpoint(large, "max") { text-align: center; }
+
+		&:hover { opacity: 1; }
+
+		.icon {
+			@include responsiveFont(38);
+			display: inline-block;
+			width: 48px;
+			height: 48px;
+
+			@include breakpoint(large, "min") {
+				float: left;
+				margin-bottom: 25px;
+				margin-right: 15px;
+			}
+		}
+
+		a {
+			@include responsiveFont(18);
+			font-weight: 400;
+			margin-bottom: 6px;
+		}
+	}
+}
+
+// Menu - Subcategorias
+.menu-subcategory {
+	background-color:transparent;
+	display: inline-block;
+	vertical-align: top;
+	width: calc(100% - 68px);
+	position: relative;
+
+	@include breakpoint(large, "max") { width: 100%; }
+
+	.item {
+		display: inline-block;
+		margin-right: 8px;
+
+		a {
+			@include responsiveFont(15, 16, true);
+			border: 1px solid #c2c2c2;
+			border-radius: 50px;
+			color: #736c6b;
+			font-weight: 200;
+			padding: 2px 6px;
+			transition: 0.4s all ease;
+		}
+
+		&:hover a:hover { color: #fff; }
+	}
+}
+
+$menu-colors: (
+	'gelar'      : #702c8f,
+	'cozinhar'   : #007dc3,
+	'lavar'      : #01b6dd,
+	'beber'      : #ea008a,
+	'refrescar'  : #fdb912,
+	'servicos'   : #f47921
+);
+
+@each $key, $value in $menu-colors {
+	.item-#{$key} {
+		& > a, .icon{ color: $value; }
+
+		&:hover .menu-subcategory a {
+			border-color: $value;
+			color:  $value;
+
+			&:hover { background-color: $value; }
+		}
+	}
+}
+
+// [ Mobile ] - Menu
+.menu-mobile {
+	background-color: $gray-l;
+	height: 50px;
+	overflow: hidden;
+	position: relative;
+	transition: all 300ms linear;
+
+	// Ícone menu
+	.open-menu-mobile {
+		@extend %single-transition;
+		background-color: $green;
+		cursor: pointer;
+		height: 50px;
+		width: 140px;
+		position: relative;
+		z-index: 10;
+
+		.icon-hamburger, .txt { position: absolute; }
+
+		.icon-hamburger {
+			border-color: #fff;
+			left: 30px;
+			top: 18px;
+
+			&:before { background-color: #fff; }
+		}
+
+		.txt {
+			color: #fff;
+			display: block;
+			left: 60px;
+			top: 15px;
+
+			&:before {
+				content: "MENU";
+				font-size: 14px;
+				font-weight: 700;
+			}
+		}
+
+		// &:hover {
+		// 	background-color: $gray;
+
+		// 	.icon-hamburger {
+		// 		border-color: $orange;
+
+		// 		&:before { background-color: $orange; }
+		// 	}
+
+		// 	.txt { color: $txt-gray; }
+		// }
+	}
+
+	// Submenus
+	.menu-department {
+		background-color: $gray-l;
+		border-top: 0;
+		display: none;
+		text-align: left;
+		padding: 0;
+		z-index: 10;
+
+		.menu-title {
+			cursor: pointer;
+			padding: 12px 0;
+			text-align: center;
+
+			.icon-arrow-left { left: 26px; }
+
+			.title {
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+
+		.item {
+			margin: 0;
+			padding: 0 30px;
+			text-align: left;
+			width: 100%;
+
+			&:first-child a { border: none; }
+
+			.icon {
+				@include responsiveFont(36);
+				display: inline-block;
+				margin-right: 18px;
+				vertical-align: middle;
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(20);
+				}
+			}
+
+			@each $key, $value in $menu-colors {
+				&.item-#{$key} {
+					a { color: $value; }
+				}
+			}
+		}
+
+		.item-department { background-color: #fff;}
+
+		a {
+			@include responsiveFont(16, 16, true);
+			border-top: 3px dotted $gray;
+			padding: 12px 0;
+		}
+	}
+
+	// Item departamentos
+	.sub-itens {
+		& > a { position: relative; }
+
+		.icon-arrow-right {
+			color: $gray-d;
+			right: 25px;
+		}
+	}
+
+	.submenu {
+		background-color: #fff;
+		width: 100%;
+		top: 0;
+		left: 900px;
+		padding: 0;
+
+		.item { border: none; }
+
+		&.first-level {
+			& > .item > a { padding: 6px 16px; }
+		}
+	}
+
+	.slide-right { transition: all 350ms linear; }
+
+	// Arrows
+	.icon-arrow-left,
+	.icon-arrow-right,
+	.first-level .item a:before {
+		font-size: 18px;
+		position: absolute;
+		top: 15px;
+	}
+
+	.first-level {
+		& > .item > a {
+			position: relative;
+
+			&:before {
+				@include icon-get( arrow-right );
+				color: $gray;
+				right: -4px;
+			}
+		}
+	}
+
+	.txt-gray a { color: $txt-gray; }
+
+	// Televendas
+	a[title^="Televendas"] { font-weight: 400; }
+
+
+	// Controle de ações do menu com base no item pai ( menu-mobile )
+	&.menu-active {
+		// Ícone menu
+		.open-menu-mobile {
+			background-color: $gray;
+
+			.icon-hamburger {
+				border-color: transparent;
+
+				&:before {
+					@include icon-get( close-icon );
+					background-color: transparent;
+					color: $orange;
+					font-size: 16px;
+					top: -1px;
+				}
+			}
+
+			.txt {
+				color: $txt-gray;
+
+				&:before { content: "FECHAR"; }
+			}
+		}
+
+		// Item departamento
+		.menu-department { display: block; }
+
+		// Submenu
+		&.sub-itens-active {
+			.item-department { display: none; }
+
+			.sub-itens {
+				border-top: 0;
+				height: 393px;
+
+				.first-level {
+					display: block!important;
+					left: 0 !important;
+				}
+			}
+		}
+
+		&.sub-first-itens-active {
+			.item.item-active {
+				.second-level {
+					display: block!important;
+					left: 0 !important;
+				}
+			}
+		}
+
+		&                     { height: 608px; }
+		&.sub-itens-active    { height: 353px; }
+		&.para-gelar          { height: 403px; }
+		&.para-embutir        { height: 352px; }
+		&.para-cozinhar       { height: 505px; }
+		&.para-beber          { height: 302px; }
+		&.para-refrescar      { height: 302px; }
+		&.para-lavar-e-limpar { height: 352px; }
+		&.outros              { height: 200px; }
+		&[class*="servi"]     { height: 98px; }
+	}
+}
+
+
+// Fix para iPad
+@include breakpoint(760px, "min") {
+	@include breakpoint(768px, "max") {
+		.menu-mobile {
+			@include show-conditional;
+			display: block !important;
+			visibility: visible!important;
+			width: 100%;
+		}
+
+		.top-navigation { @include hide-conditional;}
+	}
+}

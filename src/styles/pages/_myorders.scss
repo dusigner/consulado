@@ -1,0 +1,747 @@
+@charset "UTF-8";
+
+
+.custom-message {
+	@include responsiveFont(14);
+	background: white;
+	color: $gray-d;
+	text-align: center;
+	font-weight: bold;
+	padding: 7px;
+
+	p {
+		display: inline;
+	}
+	span {
+		background: $green;
+		border-radius: 50%;
+		margin-left: 15px;
+		padding:5px;
+		color: white;
+		cursor: pointer;
+	}
+}
+
+body.pedidos {
+
+	[class*='col-'] {
+		padding: 0 15px;
+	}
+
+	.container {
+		>div {
+			margin-bottom: 0;
+
+			h1 {
+				color: $green;
+			}
+		}
+	}
+
+	.box-meuspedidos {
+		padding: 0 90px;
+
+		@include breakpoint(medium, 'max') {
+			padding: 0 30px;
+		}
+
+		[class*='col-'] {
+			@include breakpoint(large, 'max') {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		.box-my-orders {
+			width: 100%;
+			max-width: 1110px;
+			margin-bottom: 30px;
+			padding: 0;
+			border: 1px solid $green;
+
+			@include breakpoint(large, 'max') {
+				max-width: 960px;
+			}
+
+			.box-order-header {
+				background: $green;
+				margin-bottom: 0;
+				padding: 6px 15px 6px 15px;
+				color: #fff;
+
+				&>div {
+					@include breakpoint(large, 'max') {
+						text-align: center !important;
+					}
+				}
+
+				.header-order-id {
+					margin-top: 5px;
+					font-weight: bold;
+
+					@include breakpoint(small, 'max') {
+						text-align: center;
+					}
+
+					span {
+						@include responsiveFont(12);
+					}
+
+					strong {
+						@include responsiveFont(24);
+
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(18);
+							text-align: center;
+						}
+					}
+				}
+
+				.header-order-status {
+					text-align: right;
+					margin-top: 5px;
+
+					@include breakpoint(small, 'max') {
+						text-align: center;
+					}
+
+					strong {
+						@include responsiveFont(24);
+						color: #ffffff;
+						font-weight: bold;
+						// letter-spacing: 1px;
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(18);
+						}
+					}
+
+				}
+			}
+
+			.box-order-body, .box-data {
+				padding: 15px;
+			}
+
+			.box-data {
+				@include responsiveFont(18);
+			}
+
+			.box-order-body {
+
+				.box-order-address {
+
+					ul {
+						li {
+							@include responsiveFont(17);
+						}
+					}
+
+				}
+
+				.box-order-shipping {
+
+					ul {
+						li {
+							@include responsiveFont(17);
+						}
+					}
+
+				}
+
+			}
+
+			.box-order-body-left {
+				padding: 15px;
+
+				.box-order-data {
+					@include responsiveFont(15);
+					border: 1px solid $gray-d;
+					padding: 10px;
+					margin-bottom: 15px;
+
+					.list-data {
+						padding-bottom: 15px;
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(14);
+							padding:0;
+						}
+						strong {
+							display: block;
+						}
+
+						span {
+							color: $base-font-color;
+							display: block;
+							@include breakpoint(small, 'max') {
+								display: none;
+							}
+						}
+					}
+
+					.list-address {
+						color: $base-font-color;
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(14);
+							display: none;
+						}
+					}
+
+					.list-payment {
+						color: $base-font-color;
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(14);
+						}
+					}
+
+				}
+			}
+
+			.box-order-states {
+				@include responsiveFont(15);
+				display: table;
+				position: relative;
+				text-align: center;
+				width: 100%;
+
+				@include breakpoint(small, 'max') {
+					display: block;
+				}
+
+				&:before {
+					content: "";
+					background-color: $txt-gray-l;
+					display: block;
+					height: 4px;
+					position: absolute;
+					width: 75%;
+					top: 72%;
+					left:11%;
+
+					@include breakpoint(small, 'max') {
+						width: 3px;
+						height: 90%;
+						top:5%;
+						left:13px;
+					}
+				}
+
+				li {
+					display: table-cell;
+					position: relative;
+					vertical-align: middle;
+
+					@include breakpoint(small, 'max') {
+						display: block;
+						padding: 5px 0;
+					}
+
+					p {
+						padding: 0 10px 0 10px;
+						color: $txt-gray-l;
+
+						@include breakpoint(small, 'max') {
+							display: block;
+							float: right;
+							height: 30px;
+							line-height: 30px;
+							margin: 0;
+							padding:0;
+							padding-left: 5px;
+							text-align: left;
+							width: 85%;
+						}
+					}
+
+					.circle {
+						display: inline-block;
+						position: relative;
+						width: 50px;
+						height: 50px;
+						border-radius: 50%;
+						border: 3px solid $txt-gray-l;
+						background: #fff;
+
+						@include breakpoint(small, 'max') {
+							display: block;
+							width: 30px;
+							height: 30px;
+						}
+					}
+
+					&.current, &.canceled {
+						.circle{
+							&:before {
+								content:"";
+								width: 0;
+								height: 0;
+								border-style: solid;
+								border-width: 0 10px 10px 10px;
+								border-color: transparent transparent $green transparent;
+								position: absolute;
+								bottom: -29px;
+								right: 23px;
+								@include breakpoint(small, 'max') {
+									display: none;
+								}
+							}
+							@include breakpoint(small, 'min') {
+								width: 70px;
+								height: 70px;
+							}
+						}
+					}
+
+					&.current {
+						.circle {
+							border: 3px solid #27ae60;
+						}
+						p {
+							color:$green;
+							font-weight: bold;
+						}
+					}
+
+					&.active{
+						.circle{
+							background: #27ae60;
+							border: 3px solid #fff;
+							&:after{
+								@include contentBefore();
+								@include responsiveFont(20);
+								@include icon-get(check-mark);
+								top:13px;
+								color: #fff;
+								position: absolute;
+								right:0;
+								left:0;
+								font-weight: bold;
+								@include breakpoint(small, 'max') {
+									    position: relative;
+									    top: 7px;
+									    font-size: 10px;
+								}
+							}
+						}
+						&.finished{
+							.circle{
+								@include breakpoint(small, 'min') {
+									width: 70px;
+									height: 70px;
+								}
+								&:after{
+									@include responsiveFont(28);
+									top:20px;
+								}
+							}
+							p {
+								color:$green;
+								font-weight: bold;
+							}
+						}
+					}
+
+					&.canceled {
+						.circle {
+							background: #c0392b;
+							border: 3px solid #fff;
+						}
+						p {
+							color:$green;
+							font-weight: bold;
+						}
+					}
+				}
+
+			}
+
+			.box-order-states-messages {
+				border-top: 3px solid $green;
+				margin-top: 25px;
+				p {
+					color: $txt-gray-l;
+					@include breakpoint(small, 'max') {
+						@include responsiveFont(14);
+					}
+				}
+			}
+		}
+	}
+
+
+	.order-products-header {
+		margin: 10px 0;
+		padding: 0 15px;
+		padding-top: 15px;
+		border-top: 2px solid $gray;
+
+		@include breakpoint(large, 'max') {
+			display: none;
+		}
+
+		div {
+			@include responsiveFont(18);
+			text-align: center;
+		}
+	}
+
+	.order-products-totals {
+		float: right;
+		width: 270px;
+		margin: 0 10px;
+		padding: 20px 0;
+
+		@include breakpoint(large, 'max') {
+			float: left;
+		}
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(14);
+			text-align: left;
+			width: 100%;
+			float: none;
+		}
+
+		&>div {
+			@include breakpoint(medium, 'max') {
+				padding: 0;
+			}
+		}
+
+		li {
+			@include responsiveFont(16);
+			width: 100%;
+			line-height: 1.4;
+			font-weight: 800;
+			span {
+				float: right;
+				padding-left:25px;
+				text-align: left;
+				width: 150px;
+			}
+		}
+	}
+
+	.order-products {
+		margin: 10px;
+		padding-top: 15px;
+
+		@include breakpoint(small, 'max') {
+			margin: 10px 0;
+		}
+
+		button {
+			margin: 0 auto;
+			width: 50%;
+		}
+
+		div {
+			@include responsiveFont(18);
+			text-align: center;
+
+			&:first-child {
+				@include breakpoint(large, 'max') {
+					display: block !important;
+					float: left;
+					width: auto !important;
+					text-align: left;
+				}
+
+				@include breakpoint(extra-small, 'max') {
+					display: block;
+					// float: none;
+				}
+			}
+
+			@include breakpoint(large, 'max') {
+				width: 78% !important;
+				text-align: left;
+			}
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(14);
+			}
+
+			&.product-name {
+				color: $txt-gray;
+				font-weight: 800;
+				text-align: left;
+			}
+
+			.order-nf {
+				padding: 5px;
+				color: #ffffff;
+				background: #acacac;
+				@include responsiveFont(11);
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.order-product-warranty {
+		margin: 0 10px;
+		margin-top: 30px;
+		text-align: left;
+
+		@include breakpoint(extra-small, 'max') {
+			margin: 0;
+		}
+
+		&>div {
+			@include breakpoint(small, 'max') {
+				text-align: left !important;
+			}
+
+			&.type {
+				@include responsiveFont(14);
+				font-weight: bold;
+			}
+
+			&.ctas {
+				text-align: center;
+
+				@include breakpoint(large, 'max') {
+					margin-top: 10px;
+					text-align: left;
+				}
+
+				@include breakpoint(small, 'max') {
+					margin-top: 10px;
+				}
+
+				button {
+					@extend .primary-button;
+					@include responsiveFont(14,16, true);
+					line-height: 0;
+
+					&.download-warranty, &.cancel-warranty {
+						width: 90px;
+						margin: 0 10px;
+						@include responsiveFont(11);
+
+						@include breakpoint(large, 'max') {
+							margin-left: 0;
+						}
+
+						@include breakpoint(extra-small, 'max') {
+							width: 80px;
+							margin: 0;
+						}
+					}
+
+					&.cancel-warranty {
+						border: 2px solid #acacac;
+						background: #acacac;
+
+						@include breakpoint(large, 'max') {
+							margin-left: 10px;
+						}
+					}
+				}
+			}
+
+			&.value {
+				@include responsiveFont(18);
+				text-align: center;
+			}
+		}
+	}
+
+	.order-product-total {
+		@include responsiveFont(16);
+		border-bottom: 2px solid $gray;
+		margin: 0;
+		padding: 10px 0px 10px 10px;
+		text-align: right;
+
+		@include breakpoint(large, 'max') {
+			text-align: left;
+		}
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(14);
+		}
+
+		@include breakpoint(extra-small, 'max') {
+			text-align: center;
+		}
+
+		&>div {
+			@include breakpoint(medium, 'max') {
+				padding: 0;
+			}
+		}
+	}
+
+	.order-total-price {
+		margin: 0;
+
+		@include breakpoint(small, 'max') {
+			padding: 0 10px;
+		}
+
+		div {
+			@include responsiveFont(18);
+			padding: 20px 10px 5px 10px;
+			text-align: right;
+			color: $txt-gray;
+
+			@include breakpoint(large, 'max') {
+				padding-left: 25px;
+				text-align: left;
+			}
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(15);
+				padding: 10px 0;
+			}
+		}
+	}
+
+	.order-show-more {
+		display: block !important;
+		padding: 0 15px;
+	}
+
+	.show-more-txt {
+		color: $green;
+		display: none;
+		font-weight: bold;
+		margin: 5px 0 5px 0;
+		text-decoration: underline;
+
+		@include breakpoint(small, 'max') {
+			display: block;
+		}
+	}
+
+	.show-detail {
+		display: none;
+
+		height: 47px;
+
+		button {
+			width: 100%;
+			height: 47px;
+			background: $green;
+			border:1px solid $green;
+			outline: inherit;
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(13);
+			}
+
+			.icon-bt-plus:before {
+				display: inline-block;
+				transition: transform 0.3s ease-in;
+				transform: rotate(0deg);
+			}
+
+			&:hover, &:focus, &:active {
+				border:none;
+				border-top: 1px solid $green;
+			}
+		}
+
+		&.active {
+			button {
+				.icon-bt-plus:before { transform: rotate(45deg); }
+			}
+		}
+
+	}
+
+	.btn, .add-warranty, .download-warranty, .cancel-warranty {
+		@extend .primary-button;
+		border-radius: 0;
+		@include font-size(14px, true, false);
+		background-image:none;
+		box-shadow: none!important;
+		text-shadow: none!important;
+		height: 35px;
+		padding: 0;
+		padding-top: 6px;
+		@include responsiveFont(16);
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include breakpoint(small, 'max') {
+			height: 25px;
+			@include responsiveFont(14);
+		}
+
+		&.invoice {
+			width: 150px;
+			background: #ffffff;
+			border: 1px solid $green;
+			color: $green;
+
+			&:hover {
+				background: $green;
+				color: #ffffff;
+			}
+		}
+	}
+
+	.add-warranty {
+		background: $green;
+		border: 1px solid $green;
+		color: #ffffff;
+
+		&:hover {
+			background: #ffffff;
+			color: $green;
+		}
+
+		@include breakpoint(medium, 'max') {
+			padding-top: 2px;
+		}
+	}
+
+	.download-warranty {
+		height: 25px;
+		padding: 4px 0 8px 0;
+		background: #ffffff;
+		border: 1px solid $green;
+		color: $green;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include breakpoint(small, 'max') {
+			height: 20px;
+		}
+
+		&:hover {
+			background: $green;
+			color: #ffffff;
+		}
+	}
+
+	.cancel-warranty {
+		height: 25px;
+		padding: 4px 0 8px 0;
+		background: #ffffff !important;
+		border: 1px solid #acacac !important;
+		color: #acacac;
+		text-align: center;
+		text-transform: uppercase;
+
+		@include breakpoint(small, 'max') {
+			height: 20px;
+		}
+
+		&:hover {
+			background: #acacac !important;
+			color: #ffffff;
+		}
+	}
+}
+
+.load{
+	position:relative;
+	max-width:100px;
+	width:100%;
+	margin: 0 auto;
+	min-height: 150px;
+	.loading{@include spinner($green, 100px);}
+}

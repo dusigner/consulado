@@ -1,0 +1,138 @@
+#vtex-cupom-10off{
+	.modal-header{
+		padding:0;
+		.close{
+			top:40px;
+			right:40px;
+			@include breakpoint(small, 'max') {
+				top:-5px;
+				right:-5px;
+			}
+		}
+	}
+	.modal-holder{
+		width:477px;
+		height:477px;
+		border-radius:50%;
+		max-width:100%;
+		padding:10px;
+		background-color: $green;
+		@include breakpoint(small, 'max') {
+			width:100%;
+			border-radius:0;
+			position: fixed;
+		    min-height: 600px;
+			left: 0;
+		}
+	}
+	.conteudo{
+		border-radius:50%;
+		width:457px;
+		height:457px;
+		overflow:auto;
+		@include breakpoint(small, 'max') {
+			width:100%;
+			height:auto;
+			border-radius:20px;
+		}
+	}
+	h1{
+		@include responsiveFont(40, 16, true);
+		font-weight:bold;
+		margin: 0 0 0 0;
+    	line-height: 30px;
+    	color:#fff;
+    	span{
+    		color:#6f2d8e;
+    	}
+	}
+	.middle{
+		max-width:360px;
+		width:100%;
+		position: relative;
+	    left: 50%;
+	    margin-left: -180px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		padding: 20px 20px;
+		float: left;
+		background-color: #6f2d8e;
+		border-radius:20px;
+		@include breakpoint(small, 'max') {
+				position: static;
+				margin: 15px auto auto auto;
+				float:none;
+			}
+		.info-cupom{
+			.valor{
+				float:left;
+				@include breakpoint(small, 'max') {
+					float:none;
+					width:100%;
+				}
+				h2{
+					@include responsiveFont(45, 16, true);
+					color:$green;
+					margin: 0;
+					line-height:25px;
+					small{
+						@include responsiveFont(34, 16, true);
+						text-transform:uppercase;
+					}
+				}
+				p{
+					margin: 0;
+					color:#fff;
+				}
+			}
+
+
+			.cupom{
+				float:right;
+				width:110px;
+				@include breakpoint(small, 'max') {
+					float:none;
+					width:100%;
+				}
+				p{
+					text-transform: uppercase;
+					margin-bottom: 5px;
+					color:#fff;
+					text-align: center;
+					margin-top: 0;
+					@include responsiveFont(10, 16, true);
+					font-weight: bold;
+					@include breakpoint(small, 'max'){
+						float:none;
+						margin-bottom: 5px;
+						text-align: center;
+						br{
+							display: none;
+						}
+					}
+				}
+				span{
+					float:right;
+					border: 2px dotted #6f2d8e;
+					padding:3px 5px;
+					color:#6f2d8e;
+					background-color: #FFF;
+					@include responsiveFont(15, 16, true);
+					font-weight: bold;
+					@include breakpoint(small, 'max'){
+						float:none;
+					}
+				}
+			}
+		}
+	}
+	.primary-button{
+		clear:both;
+	    display: block;
+	    width: 150px;
+	    margin: 15px auto auto auto;
+	    background-color: #6f2d8e;
+	    border-color:#6f2d8e;
+	    padding: 10px;
+	}
+}

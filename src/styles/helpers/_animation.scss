@@ -1,0 +1,145 @@
+@if $animation-mode == true {
+
+//------------------------------------
+//  HOW TO USE
+//------------------------------------
+// tag { animation: [animation-name] [duration] [timing-function] [delay]; }
+
+	@keyframes bounceInDown {
+		0% {
+			opacity: 0;
+			transform: translateY(-5px);
+		}
+
+		45% {
+			opacity: 1;
+			transform: translateY(12px);
+		}
+
+		80% { transform: translateY(-5px); }
+
+		100% { transform: translateY(0); }
+	}
+
+	.bounceInDown,
+	%bounceInDown { animation: bounceInDown 0.4s ease; }
+
+	@keyframes bounceInLeft {
+		0% {
+			opacity: 0;
+			transform: translateX(-210px);
+		}
+
+		60% {
+			opacity: 1;
+			transform: translateX(12px);
+		}
+
+		80% { transform: translateX(-10px); }
+
+		100% { transform: translateX(0); }
+	}
+
+	.bounceInLeft,
+	%bounceInLeft { animation: bounceInLeft 0.5s ease; }
+
+	@keyframes bounceInRight {
+		0% {
+			opacity: 0;
+			transform: translateX(210px);
+		}
+
+		60% {
+			opacity: 1;
+			transform: translateX(-30px);
+		}
+
+		80% { transform: translateX(10px); }
+
+		100% { transform: translateX(0); }
+	}
+
+	.bounceInRight,
+	%bounceInRight { animation: bounceInRight 0.5s ease; }
+
+
+	@keyframes slideInDown {
+		0% {
+			opacity: 0;
+			transform: translateY(-5);
+		}
+
+		100% { transform: translateY(0); }
+	}
+
+	.slideInDown,
+	%slideInDown { animation: slideInDown 0.3s ease; }
+
+
+
+
+	@keyframes slideInLeft {
+		0% {
+			opacity: 0;
+			transform: translateX(-210px);
+		}
+
+		100% { transform: translateX(0); }
+	}
+
+	.slideInLeft,
+	%slideInLeft { animation: slideInLeft 0.3s ease; }
+
+
+	@keyframes slideInRight {
+		0% {
+			opacity: 0;
+			transform: translateX(210px);
+		}
+
+		100% { transform: translateX(0); }
+	}
+
+	.slideInRight,
+	%slideInRight { animation: slideInRight 0.3s ease; }
+
+
+	@keyframes rotation {
+		to { transform: rotate(360deg); }
+	}
+
+	@keyframes rotateIn {
+		0% {
+			transform-origin: center center;
+			transform: rotate(-200deg);
+			opacity: 0;
+		}
+
+		100% {
+			transform-origin: center center;
+			transform: rotate(0);
+			opacity: 1;
+		}
+	}
+
+	.rotateIn,
+	%rotateIn { animation-name: rotateIn; }
+
+
+	@keyframes shake {
+		0% { transform: translateX(30px); }
+
+		20% { transform: translateX(-30px); }
+
+		40% { transform: translateX(15px); }
+
+		60% { transform: translateX(-15px); }
+
+		80% { transform: translateX(8px); }
+
+		100% { transform: translateX(0); }
+	}
+
+	.shake,
+	%shake { animation-name: shake; }
+}

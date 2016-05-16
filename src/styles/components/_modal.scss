@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.vtex-modal{
+	display: none;
+	background: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	text-align: center;
+	top: 0;
+	z-index: 99999;
+	//transition: 0.4s opacity ease;
+
+	&:before{
+		content: '';
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	.modal-holder{
+		background-color: #fff;
+		border-radius: 6px;
+		display: inline-block;
+		font-weight: 300;
+		margin: 0 auto;
+		max-width: 400px; //TROCAR P/ CADA MODAL
+		text-align: left;
+		vertical-align: middle;
+		width: 90%;
+	}
+
+	.modal-header{
+		font-size: 32px;
+		padding: .5em;
+		position: relative;
+		text-align: center;
+
+		.close{
+			background-color: #fff;
+			@include responsiveFont(22, 16, true);
+			border: 0;
+			border-radius: 50%;
+			//color: $txt-gray-l;
+			color: #f47921; /* Mudança de cor para teste*/
+			height: 34px;
+			line-height: 0.7;
+			outline: 0;
+			padding: 0;
+			position: absolute;
+			right: -17px;
+			text-align: center;
+			top: -17px;
+			width: 34px;
+
+			&:before{
+				@include icon-get('close');
+			}
+		}
+	}
+
+	.modal-content{
+		/*padding: 1em;*/
+		text-align: center;
+	}
+}
+

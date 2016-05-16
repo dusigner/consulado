@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+// ===============================================================
+/* Compare */
+// ===============================================================
+
+body.product-comparison {
+
+	tr[class*="atributos Módulo"] {
+		visibility: hidden;
+		display: none;
+	}
+
+	.produto {
+		.prateleira {
+			li {
+				width: 100%;
+				.compare, .department-nav {
+					display:none !important;
+				}
+				.box-produto {
+					img {
+						margin-top: 15%;
+					}
+				}
+				.image {
+					span {
+						min-height: 250px;
+					}
+				}
+
+				.detalhes {
+					.por, .de {
+						span {
+							display:block;
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	.comparar-outros {
+		float: right;
+
+		a {
+			@extend .primary-button;
+			@include font-size(14px, true, false);
+			margin: 20px 0;
+		}
+	}
+
+	.content-compare {
+		.topWrapper .info { display: none; }
+
+		h2 {
+			@include font-size(22px, true, false);
+			float: left;
+		}
+
+		.corpo-comparacao {
+			border-top: 3px solid #9aca3c;
+			clear: both;
+
+			li { text-align: left; }
+
+			table {
+				position: relative;
+				margin: 0;
+				padding: 0;
+				table-layout: fixed;
+				width: 100%;
+
+				table { display: none; }
+
+				tr {
+					& > * {
+						border: 1px solid #fff;
+						padding: 2em;
+						vertical-align: top;
+					}
+
+					td {
+						@include font-size(14px, true, false);
+						color: $gray-d;
+					}
+
+					&.remover {
+						&:last-child { display: none; }
+
+						td {
+							border: 0;
+							height: 0;
+							margin: 0;
+							padding: 0;
+							position: relative;
+
+							.remover-produto {
+								border: none;
+								background-color: transparent;
+								color:$gray-d;
+								font-size: 0;
+								left: 42px;
+								outline: none;
+								position: absolute;
+								top: 55px;
+								z-index: 2;
+
+								&:after {
+									@include font-size(12px, true, false);
+									content: 'Excluir';
+								}
+							}
+						}
+					}
+				}
+
+				tbody {
+					tr:first-child {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.atributos {
+				background-color: #fff;
+
+			.box {
+				.title {
+					@include font-size(12px);
+					color: #000;
+					font-weight: bold;
+				}
+
+				.description{
+					@include font-size(12px);
+					color: $gray-d;
+				}
+			}
+
+			& > * { border: 1px solid #e8edf3!important; }
+		}
+	}
+}

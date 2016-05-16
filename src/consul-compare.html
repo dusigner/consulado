@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="compare">
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<div class="container clearfix">
+
+		<!-- Breadcrumb -->
+		<section class="breadcrumb">
+			<vtex.cmc:breadCrumb />
+		</section>
+		<!-- /Breadcrumb -->
+
+		<div class="content-compare">
+			<vtex.cmc:ProductComparison ShelfLayoutId="33be8da0-7037-4956-980e-9cbf82b5d31b" />
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>

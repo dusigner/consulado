@@ -1,0 +1,664 @@
+@charset "UTF-8";
+
+// Utility helpers
+// @import "helpers/variables";
+// @import "helpers/functions";
+// @import "helpers/mixins";
+
+// // Base styles
+// @import "base/fonts";
+// @import "base/main";
+
+// // Layout styles
+// @import "layout/container";
+
+
+// ===============================================================
+/* ACCOUNT/ORDERS */
+// ===============================================================
+
+body.account, body.orders {
+
+	/* bootstrap reset */
+	@import "base/type";
+	@import "layout/container";
+
+	a { text-decoration: none!important; }
+
+	// Header
+	.header {
+		.text-search {
+			@include responsiveFont(16);
+			box-shadow: none;
+			//border-radius: 0;
+
+			&:focus { outline: none; }
+		}
+
+		.logo{ color: $green;}
+	}
+
+	.footer{
+
+		.logo, form{margin:0;}
+
+	}
+
+	.menu-department {
+
+		.icon-hamburger{ top: 10px;}
+
+		a{ color: $green;}
+	}
+
+	.vtex-bootstrap { min-height: 400px; }
+
+	.row { margin-left:0; }
+
+	.form-search {
+		.search-query {
+			//border-radius:0;
+			border: 1px solid $orange;
+		}
+	}
+
+	.footer-autocomplete { display:none; }
+
+
+	// ===============================================================
+	/* ACCOUNT */
+	// ===============================================================
+	.icon { background: none; }
+
+	.page-header {
+		border-bottom: none;
+		margin: 0;
+		padding: 0;
+
+		h1 {
+			@include font-size(36px);
+			color: #666;
+			font-weight: normal;
+			margin: 20px 0;
+			text-transform:none;
+		}
+	}
+
+	.main {
+		& > .row {
+			margin-left: 0;
+
+			&>[class*="span"] {
+				background-color: #fff;
+				border: 1px solid $gray;
+				margin: 0 0 0 3%;
+				padding: 1em;
+				width: 30.33333333333333%;
+
+				&:first-child { margin-left: 0; }
+
+				@include breakpoint(small, "max") {
+					margin-bottom: 30px;
+					margin-left: 0;
+					width: 100%;
+				}
+
+				h4 {
+					border-bottom: 1px solid $gray;
+					padding-bottom: 10px;
+				}
+
+				h5 { margin: 0; }
+
+				p { margin: 5px 0; }
+
+				a {
+					@extend .primary-button;
+
+					&#edit-data-link,
+					&.address-update {
+						//@include vendor(border-radius, 0);
+						padding: 5px 12px;
+						display: block;
+					}
+
+					&#edit-data-link {
+						margin: 10px 0;
+					}
+				}
+
+				.orders-link {
+					a {
+						display:block;
+						padding: 5px 12px;
+					}
+				}
+
+				.title { @include font-size(14px, true, false); }
+
+				.data {
+					@include font-size(12px, true, false);
+					color: $button-bg-color;
+				}
+			}
+		}
+	}
+
+	.address-display-block {
+		@include font-size(14px, true, false);
+
+		.row {
+			margin: 0;
+
+			&>[class*="span"] {
+				margin: 0;
+				width: 100%;
+			}
+
+			.address-display-unit {
+				h5, .edit-address-link{ display: none; }
+			}
+		}
+	}
+
+	.foot-news {
+		form { margin: 0; }
+
+		input[type=text] {
+			height:auto;
+			margin-bottom: 0;
+		}
+	}
+
+	.footer a, .call-newsletter { color: #fff; }
+
+
+	// ===============================================================
+	/* ORDERS */
+	// ===============================================================
+	.ordergroup {
+		@include vendor(border-radius, 0);
+
+		.btn {
+			@extend .primary-button;
+			border-radius: 0;
+			font-size: 14px;
+			background-image:none;
+			box-shadow: none!important;
+			text-shadow: none!important;
+		}
+
+		.order-status-wrapper .order-status { border-radius: 0; }
+
+		.order-status-info {
+			border: none!important;
+			float: right;
+			margin: 0 0 5px 0;
+			min-height: auto;
+			width: auto;
+
+			p { margin: 0; }
+
+			@include breakpoint(small, "min") {
+				border-top: 1px solid $gray;
+				border-bottom: 1px solid $gray;
+				padding: 10px 0;
+			}
+		}
+
+		.request-cancel {
+			@include hide-conditional(); // Botão cancelar escondido
+
+			display: block;
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+
+		.request-cancel-link {
+			@include breakpoint(small, "max") {
+				margin: 0 !important;
+				text-align: center;
+			}
+
+			a {
+				@extend .secondary-button;
+				font-size: 11px;
+				display: inline-block;
+				font-weight: 400;
+				margin: 10px 0;
+				padding: 5px 10px;
+
+				@include breakpoint(small, "max") { width: 100%; }
+			}
+		}
+	}
+}
+
+
+
+body.account {
+	[class*="icon"] { background-image: none; }
+
+	// ===============================================================
+	/* MODAL BOOTSTRAP */
+	// ===============================================================
+	.modal {
+		@include vendor(border-radius, 0);
+
+		&.hide{ z-index:-1; }
+		&.hide.fade.in {
+			visibility: visible;
+			z-index:1050;
+		}
+
+
+		form {
+			margin:0;
+
+			input[type="text"], input[type="email"], input[type="tel"], select {
+				@include vendor(border-radius, 0);
+				border: 1px solid #ccc;
+				height:40px;
+			}
+		}
+
+		.modal-header {
+			h3 {
+				@include font-size(36px);
+				font-weight: normal;
+				color: #666;
+				text-transform:none;
+			}
+		}
+
+		.modal-footer {
+			.btn {
+				@extend .primary-button;
+				@include vendor(border-radius, 0);
+				background-image:none;
+
+				&.btn-primary {
+					float:left;
+					max-width:200px;
+				}
+			}
+
+			.btn-link {
+				color:#666;
+
+				&:hover { color:#f00; }
+			}
+		}
+	}
+
+	.vtex-bootstrap .container {
+		width:inherit;
+		max-width:1280px;
+	}
+}
+
+body.orders {
+
+	.vtex-bootstrap .container {
+		@include breakpoint(extra-small, "max") { padding: 10px; }
+	}
+
+	.container h1.title {
+		@include breakpoint(extra-small, "max") { margin-bottom: 0; }
+
+		& + br { display: none; visibility: hidden; }
+	}
+
+	.visible-phone { margin: 0.5em 0; }
+
+	.header .container {
+		@include breakpoint(small, "max") {
+			padding:0;
+			width:100%;
+		}
+	}
+
+	.form-search {
+		margin-bottom: 0;
+
+		.search-query {
+			border: 1px solid $gray;
+			box-shadow: none;
+			height: 50px;
+
+			&:focus { outline: none; }
+		}
+	}
+
+	.autocomplete-search {
+		h3 {line-height: inherit;}
+	}
+
+	.vtex-bootstrap .ordergroup,
+	.vtex-bootstrap .order-info .top-row { border: none; }
+
+	.vtex-bootstrap .order-details .items{
+		border-top: 1px solid;
+		padding: 1em 0;
+	}
+
+	.myorders-list {
+		float: left;
+		width: 100%;
+
+		.ordergroup {
+			border: 1px solid $gray;
+			border-width: 1px 1px 3px 1px;
+			position: relative;
+			margin-bottom: 40px;
+			padding-bottom: 10px;
+
+			.order-info,
+			.order-details { padding: 0 20px; }
+
+			// Compra realizada em 00 / 00 / 0000
+			.order-header {
+				background-color: $gray-l;
+				float: left;
+				width: 100%;
+				padding-left: 20px;
+
+				@include breakpoint(extra-small, "max") { padding-left: 10px; }
+
+				.order-title {
+					@include responsiveFont(22);
+					height: 60px;
+					line-height: 60px;
+					margin: 0;
+					padding: 0;
+
+					@include breakpoint(small, "max") {
+						position: relative;
+						width: 50%;
+						line-height: normal;
+						padding: 7px 10px 0;
+					}
+
+					@include breakpoint(extra-small, "max") {
+						height: 100%;
+						min-height: 80px;
+					}
+
+					&, .title-ordergroup-order {
+						color: $txt-gray!important;
+						font-weight: 700;
+					}
+
+					.order-date {
+						display: inline-block;
+						font-weight: 400;
+						color: $orange;
+
+						@include breakpoint(extra-small, "min") { padding: 0 10px; }
+					}
+
+					.repeat-order {
+						@include breakpoint(small, "max") {
+							// margin: -10px auto;
+							// float: left;
+							margin: 10px auto;
+							float: none;
+
+							a{
+								position:absolute;
+								left: 100%;
+								top: 0;
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+
+			// Pedir novamente
+			.repeat-order {
+				a.btn {
+					@include responsiveFont(16);
+					margin-top: 7px;
+
+					@include breakpoint(extra-small, "max") {
+						// line-height: normal;
+						padding: 0.7em 1em;
+						margin-top: 18px;
+						position: relative;
+						width: 100%;
+					}
+				}
+			}
+
+			// Forma de pagamento | Endereço de entrega | Total
+			.order-info {
+				// display: block;
+				// float: left;
+				bottom: 0;
+				font-size: 14px;
+				width: 100%;
+
+				@include breakpoint(medium, "min") { position: absolute; }
+
+				.general-info {
+					@include breakpoint(small, "max") { width: 100%; }
+
+					.bank-invoice-print a {
+						margin-top:10px;
+
+						@include breakpoint(small, "max") { width:100%; }
+					}
+				}
+
+				.totals {
+					table {
+						float: right;
+						width: auto;
+						@include breakpoint(small, "max") { width:100%; }
+
+						tr {
+							td, th { padding: 7px 0 7px 10px; }
+
+							td { padding-left: 50px; }
+						}
+					}
+				}
+			}
+
+			// Pedido | Forma de entrega
+			.order-details {
+				font-size: 14px;
+
+				@include breakpoint(medium, "min") { padding-bottom: 175px; }
+
+				.seller-info, .showTrackingInfo{display: none}
+
+				.span3 {
+					@include breakpoint(small, "max") { width:100%; }
+				}
+
+				table, thead, tbody, th, td, tr {
+					@include breakpoint(small, "max") {
+						display: block;
+					}
+				}
+
+				thead tr {
+					@include breakpoint(small, "max") {
+						position: absolute;
+						top: -9999px;
+						left: -9999px;
+					}
+				}
+
+				tr {
+					@include breakpoint(small, "max") {
+						// border-bottom: 35px solid #fff;
+					}
+				}
+
+				td {
+					@include breakpoint(small, "max") {
+						border: none;
+						border-bottom: 1px solid #eee;
+						position: relative;
+						padding-left: 30%;
+						text-align:left;
+
+						&:before {
+							position: absolute;
+							top: 6px;
+							left: 6px;
+							width: 30%;
+							padding-right: 10px;
+							white-space: nowrap;
+							text-align:left;
+							font-weight: bold;
+						}
+					}
+				}
+
+				td:nth-of-type(1):before { @include breakpoint(small, "max") { content: "Produto";  } }
+				td:nth-of-type(3):before { @include breakpoint(small, "max") { content: "Entrega";  } }
+				td:nth-of-type(4):before { @include breakpoint(small, "max") { content: "Preço";    } }
+				td:nth-of-type(5):before { @include breakpoint(small, "max") { content: "Qtd.";     } }
+				td:nth-of-type(6):before { @include breakpoint(small, "max") { content: "Total";    } }
+
+				.showTrackingInfo a {
+					@include breakpoint(small, "max") { width:100%; }
+				}
+
+				@include breakpoint(small, "max") {
+					td.product-image { border-bottom: none; }
+
+					td.quantity-price {
+						border-bottom: 0;
+						width: 100%;
+
+						.total-selling-price {
+							display: block!important;
+							width: 100%;
+							white-space: nowrap;
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	/*=============================
+	=            Alert            =
+	=============================*/
+	.alert-info {
+		position: absolute;
+		left: 0;
+		max-width: 90%;
+		right: 0;
+		top: 8px;
+	}
+
+	/*
+	*
+	*  STATUS MOBILE
+	*  Fazer versão mobile do status de produto
+	*
+	*/
+	.order-status-wrapper{
+		text-indent: -999em;
+		 background-image: url(/arquivos/brastemp2-map-tracking.png);
+		 height:56px;
+		 position: relative;
+		 width:408px;
+		 @include breakpoint(small, "max") {
+		 	display:none;
+		 }
+	}
+
+	.order-loading-estimate {
+		display:block;
+		height: 25px;
+	    width: 408px;
+	    float:right;
+	    position: relative;
+	    padding: 20px 0 50px 0;
+	    clear: both;
+	     .realizado{
+	    	@include responsiveFont(13, 16, true);
+	    }
+	    .delivery{
+	    	float:right;
+	    	display: none;
+	    	@include responsiveFont(13, 16, true);
+	    }
+	    .box-loading {
+		 	width: 0;
+			height: 10px;
+			margin-top:5px;
+			background: #9aca3c;
+			display: block;
+			position: relative;
+		 }
+		 .box-loading-gray {
+		 	width:100%;
+		 	height: 10px;
+		 	margin-top:5px;
+		 	background: #dedede;
+		 	display: block;
+		 	position: absolute;
+		 }
+		 ul {
+			li {
+				@include responsiveFont(10px);
+				display: inline-block;
+			    color: #9aca3c;
+			    font-weight: bold;
+			    text-align: right;
+			}
+		}
+		.deliveryTitle {
+			@include responsiveFont(13, 16, true);
+			color: #736c6b;
+		}
+		.deliveryDate {
+			@include responsiveFont(13, 16, true);
+			color: #9aca3c;
+			font-weight: bold;
+		}
+		@include breakpoint(small, "max") {
+			display:none;
+		}
+	}
+
+	.order-status-wrapper > div{display:none; height:65px; position: absolute; top:0;}
+	.order-status-wrapper > div.pedido-recebido{left:0; width: 60px}
+	.order-status-wrapper > div.aguardando-pagamento{left:100px; width: 84px}
+	.order-status-wrapper > div.preparando-entrega{left:216px; width: 84px}
+	.order-status-wrapper > div.enviado{left:324px; width: 84px}
+	.order-status-wrapper > div.cancelado, .order-status-wrapper > div.processando-cancelamento{right:29px; width: 100px}
+
+	.order-status-wrapper.processando-pagamento{background-position: 0 -6px;}
+	.order-status-wrapper.preparando-entrega{background-position: 0 -122px;}
+	.order-status-wrapper.cancelado, .order-status-wrapper.processando-cancelamento{background-position: 276px -240px;}
+	.order-status-wrapper.enviado {background-position: 0 -181px;}
+
+	.order-status-wrapper.processando-pagamento .pedido-recebido,
+	.order-status-wrapper.processando-pagamento .aguardando-pagamento,
+	.order-status-wrapper.preparando-entrega .pedido-recebido,
+	.order-status-wrapper.preparando-entrega .aguardando-pagamento,
+	.order-status-wrapper.preparando-entrega .preparando-entrega,
+	.order-status-wrapper.enviado .pedido-recebido,
+	.order-status-wrapper.enviado .aguardando-pagamento,
+	.order-status-wrapper.enviado .preparando-entrega,
+	.order-status-wrapper.enviado .enviado,
+	.order-status-wrapper.cancelado .cancelado,
+	.order-status-wrapper.processando-cancelamento .cancelado{display: block}
+}
+
+
+
+@import "components/orders/order.warrantySpare";

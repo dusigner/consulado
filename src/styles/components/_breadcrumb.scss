@@ -1,0 +1,43 @@
+//------------------------------------
+//	BREADCRUMBS
+//------------------------------------
+.bread-crumb {
+	@include font-size(14px);
+	margin: 28px 0;
+
+	li {
+		display: none;
+		margin-right: 5px;
+		vertical-align: middle;
+
+		a{
+			color: $txt-gray-l;
+
+			&:before {
+				content: '\2192';
+				top: 1px;
+				margin-right: 6px;
+				display:inline-block;
+			}
+		}
+
+		&:first-child{
+			display: inline-block;
+			a {
+				font-size: 0;
+				&:before {
+					@include font-size(14px);
+					content: "Home";
+					margin-right: 0px;
+				}
+			}
+		}
+		&:first-child, &.last{
+			display: inline-block;
+		}
+	}
+
+	@include breakpoint(medium, "max") {
+		@include hide-conditional();
+	}
+}

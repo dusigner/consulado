@@ -1,0 +1,92 @@
+//------------------------------------
+//	BANNERS
+//------------------------------------
+// Banner principal DESKTOP
+.banner-principal {
+	// background-color: $orange;
+	overflow: hidden;
+	position: relative;
+	padding: 0 !important;
+
+	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
+	@include breakpoint(extra-large, "min") { min-height: 340px; }
+
+	.box-banner {
+		position: absolute;
+		top: 0;
+		width: 100%;
+
+		a {
+			display: block;
+			height: auto;
+			margin: 0 auto;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		img {
+			display: block;
+			position: relative;
+			left: 50%;
+			width: 1900px;
+			height: auto;
+			transform: translateX(-50%);
+
+			@include breakpoint(small, "max") { max-width: 100%; }
+		}
+
+		&.slick-slide { position: relative; }
+
+		&:first-child { z-index: 1; }
+	}
+
+	// [ Mobile ] - Banner principal
+	&.banner-mobile {
+		.box-banner {
+			img {
+				left: 0;
+				width: auto;
+				max-width: 100%;
+				transform: translateX(0);
+			}
+		}
+	}
+
+	// Paginação
+	// .slick-dots {
+	// 	height: 0;
+	// 	bottom: 40px;
+
+	// 	li { margin: 1px; }
+
+	// 	li, button {
+	// 		height: 20px;
+	// 		width: 20px;
+	// 		z-index: 0;
+	// 	}
+
+	// 	button:before {
+	// 		font-size: 30px;
+	// 		height: 10px;
+	// 		line-height: 10px;
+	// 		left: 0;
+	// 		top: 5px;
+	// 		z-index: -1;
+	// 	}
+	// }
+
+	// [ Mobile ] - Banner principal
+	// &.banner-mobile {
+	// 	min-height: 360px;
+
+	// 	@include breakpoint(extra-small, "max") {
+	// 		min-height: 333px;
+	// 	}
+	// }
+
+	// Esconder o banner na página de busca
+	// quando a busca não trouxer resultado.
+	.busca-vazia & {
+		@include hide-conditional();
+	}
+}

@@ -1,0 +1,48 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-more-phones" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+				<h4 class="modal-title">Telefones adicionais</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/" id="formPhones">
+
+					<fieldset class="messages">
+						<div class="phone-error-message alert alert-danger" style="display:none">
+							<strong>Atenção!</strong>
+							<ul>
+								<li>Preencha ao menos 1 telefone</li>
+							</ul>
+						</div>
+						<div class="default-message">
+							<p>Deixe conosco seus telefones para que, se necessário, possamos entrar em contato:
+						</div>
+						<div class="success-message alert alert-success">
+							Seus telefones foram atualizados com sucesso!
+						</div>
+						<div class="error-message  alert alert-danger">
+							Ocorreu um erro! Tente Novamente!
+						</div>
+					</fieldset>
+					<fieldset class="data clearfix">
+						<div>
+							<label for="CL_phone">Celular</label>
+							<input type="tel" id="CL_phone" name="phone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+						</div>
+						<div>
+							<label for="CL_homePhone">Telefone Adicional</label>
+							<input type="tel" id="CL_additionalPhone" name="xAdditionalPhone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+						</div>
+						<div>
+							<button type="submit" class="enviar" value="concluir" >Concluir</button>
+						</div>
+					</fieldset>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

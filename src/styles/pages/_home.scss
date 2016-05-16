@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+// ===============================================================
+/* HOME */
+// ===============================================================
+
+/*section[class*="home-prateleira"]{
+	border-bottom: 1px solid $gray;
+}*/
+
+/*body{
+	background-color: #000;
+}*/
+
+body > .destaque {
+	// border-top: 1px solid $gray-l;
+	// border-bottom: 1px solid $gray-l;
+	padding: 0 20px;
+	//background-color: $gray-l;
+
+	.container {
+		padding-top: 35px;
+		padding-bottom: 35px;
+
+		&:empty { @include hide-conditional(); }
+	}
+}
+
+.pre-title{
+	position: relative;
+	&:before, &:after{
+		@include contentBefore();
+		border-image: url(/arquivos/border-dots.png) 70 78 82 72 fill repeat;
+		position: absolute;
+		@include breakpoint(large, "max") {
+			display: none!important;
+		}
+	}
+}
+
+.home-prateleira-01 .prateleira.default > h2 {margin-top: 20px;}
+
+.home-prateleira-02 .pre-title:before{
+	border-width: 70px 0 0 72px;
+	height: 1235px;
+	left: -20px;
+	top: 20px;
+	width: 502px;
+}
+
+.home-prateleira-03 .pre-title{
+	&:before{
+		border-width: 0 0 70px 72px;
+		left: -20px;
+		top: -47px;
+		width: 450px;
+	}
+
+	&:after{
+		border-width: 70px 78px 0 0;
+		height: 1230px;
+		right: -45px;
+		top: 63px;
+		width: 360px;
+	}
+}
+
+.home-prateleira-04 .pre-title:before{
+	border-width: 0 78px 77px 0;
+	right: -45px;
+	top: -47px;
+	width: 470px;
+}
+

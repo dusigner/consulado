@@ -1,0 +1,108 @@
+<div id="modal-warranty" role="dialog" class="modal fade mobile garantia-modal garantia-modal-brastemp in" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close">
+				<i class="icon icon-remove item-remove-ico"></i>
+			</button>
+			<div class="modal-body">
+				<h4>Proteja seu investimento</h4>
+				<p class="submain-title">Conte com o Seguro Garantia Estendida Original</p>
+
+				<div class="garantia-box-produto">
+					<img src="{product.image}" alt="{product.name}" title="{product.name}">
+					<div class="garantia-box-produto-info">
+						<p>{product.name}</p>
+						<!--<p class="garantia-sku-produto">BRS62CR</p>-->
+					</div>
+				</div>
+
+				<div class="box-opcao-garantia box-garantia-secundaria first-box-garantia active">
+					<div class="box">
+						<input type="radio" name="warranty-value" id="warranty1" value="" checked="checked">
+						<label for="warranty1">
+							<p class="title-garantia">Somente <span>garantia do fabricante</span></p>
+							<p class="price">Sem custo</p>
+						</label>
+						<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
+						<div class="desc-garantia-sem-custo desc hide">
+							Protege o tempo estipulado pelo fabricante, com conserto de peças originais.
+						</div>
+					</div>
+				</div>
+
+				<div class="box-opcao-garantia box-garantia-primaria">
+					<div class="box">
+						<input type="radio" name="warranty-value" id="warranty2" value="{warranty.oneYear.id}">
+						<label for="warranty2">
+							<p class="garantia-recommended-mobile">Recomendado</p>
+							<p class="title-garantia">
+								<span>Garantia do fabricante</span>
+								<span class="garantia-plusicon">+ </span>1 ano
+								<span>de Garantia Estendida</span>
+							</p>
+							<p class="price">por apenas <strong>{warranty.oneYear.fullPrice|intAsCurrency}</strong></p>
+							<p class="parcela-gae">Parcele a garantia junto com o seu produto</p>
+						</label>
+						<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
+						<div class="desc-sobre-garantia desc hide">
+							<p>Após o término da garantia do fabricante, continua protegendo por mais 1 ano, com:</p>
+
+							<ul class="direitos-garantia">
+								<li>Peças originais</li>
+								<li>Pessoal especializado</li>
+								<li>Assistência técnica em todo o Brasil</li>
+							</ul>
+
+							<p class="bonus-garantia">Mais um ano de tranquilidade por menos de {warranty.oneYear.priceDay|intAsCurrency}/dia. </p>
+						</div>
+					</div>
+				</div>
+
+				<div class="box-opcao-garantia box-garantia-secundaria">
+					<div class="box">
+						<input type="radio" name="warranty-value" id="warranty3" value="{warranty.twoYear.id}">
+						<label for="warranty3">
+							<p class="title-garantia">
+								<span>Garantia do fabricante</span>
+								<span class="garantia-plusicon">+ </span>2 ano
+								<span>de Garantia Estendida</span>
+							</p>
+							<p class="price">por apenas <strong>{warranty.twoYear.fullPrice|intAsCurrency}</strong></p>
+							<p class="parcela-gae">Parcele a garantia junto com o seu produto</p>
+						</label>
+						<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
+						<div class="desc-sobre-garantia desc hide">
+							<p>Após o término da garantia do fabricante, continua protegendo por mais 2 anos, com:</p>
+
+							<ul class="direitos-garantia">
+								<li>Peças originais</li>
+								<li>Pessoal especializado</li>
+								<li>Assistência técnica em todo o Brasil</li>
+							</ul>
+
+							<p class="bonus-garantia">Mais dois anos de tranquilidade por menos de {warranty.twoYear.priceDay|intAsCurrency}/dia. </p>
+						</div>
+					</div>
+				</div>
+
+				<div class="row-product-and-action">
+
+					<div class="garantia-box-proceed">
+						<div class="garantia-box-text">
+							<a href="https://brastemp.zendesk.com/hc/pt-br/articles/203025844-Seguro-de-Garantia-Estendida-Original" class="como-funciona-brastemp" target="_blank">Saiba como funciona</a>
+							<a href="http://loja.consul.com.br/landing/garantia-estendida" class="como-funciona-consul" target="_blank">Saiba como funciona</a>
+						</div>
+						<span class="btn-continue btn-success" data-index="{productIndex}">Continuar <span>›</span></span>
+					</div>
+				</div>
+				<div class="garantia-disclaimer">
+					<p><strong>A contratação desse serviço é opcional.</strong></p>
+					<p>ATENÇÃO! Você autoriza que o pagamento do prêmio de seguro seja realizado em conjunto com o pagamento do(s) produto(s)/serviço(s) ora adquirido(s)? Informações gerais:<br/>
+					1- O segurado poderá desistir do seguro contratado no prazo de 7 (sete) dias corridos a contar da assinatura da proposta, no caso de contratação por apólice individual, ou da emissão do bilhete, no caso de contratação por bilhete, ou do efetivo pagamento do prêmio, o que ocorrer por último. No caso de pagamento de prêmio fracionado, considera-se o pagamento da primeira parcela como o efetivo pagamento.<br/>
+					2- A comercialização de seguro é opcional e fiscalizada pela SUSEP. O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização”. Acesse www.susep.gov.br ou ligue para 0800 021 8484.<br/>
+					3- A BUD COMERCIO DE ELETRODOMESTICOS LTDA é um Representante de seguros da AIG Seguros Brasil S.A. e está autorizada a comercializar o Seguro de Garantia Estendida</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

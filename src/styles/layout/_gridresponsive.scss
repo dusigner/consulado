@@ -1,0 +1,118 @@
+// Breakpoints
+$extra-large-start: 80em !default;
+$large-start:       70em !default;
+$medium-start:      60em !default;
+$small-start:       48em !default;
+$extra-small-start: 30em !default;
+$extra-small-small: 20em !default;
+
+@mixin breakpoints($point) {
+	@if $point == Extra-large {
+		@media (max-width: $extra-large-start) { @content; }
+	}
+
+	@else if $point == Large {
+		@media (max-width: $large-start) { @content; }
+	}
+
+	@else if $point == Medium {
+		@media (max-width: $medium-start){ @content; }
+	}
+
+	@else if $point == Small {
+		@media (max-width: $small-start) { @content; }
+	}
+
+	@else if $point == Extra-small {
+		@media (max-width: $extra-small-start) { @content; }
+	}
+
+	@else if $point == S-small {
+		@media (max-width: $extra-small-small) { @content; }
+	}
+
+	@else if $point == high-density {
+		@media only screen and (-webkit-max-device-pixel-ratio: 1.5),
+			   only screen and (max--moz-device-pixel-ratio: 1.5),
+			   only screen and (-o-max-device-pixel-ratio: 3/2),
+			   only screen and (max-device-pixel-ratio: 1.5) { @content; }
+	}
+
+	@else {
+		@media (max-width: $point) { @content; }
+	}
+}
+
+
+@if $use-grid-v2 == true {
+	//------------------------------------
+	//  GRID V2
+	//------------------------------------
+	[class*='#{$column-prefix}v2'] {
+		box-sizing: border-box;
+		float: left;
+		padding: 0;
+		&.gutters-on{padding: 0 1%;}
+
+		&.right { float: right; }
+
+		$i: 1;
+		@while $i <= $column-number {
+			$perc: unquote((100 / ($column-number / $i)) + "%");
+			&.l#{$i} {
+				width: $perc;
+				margin-left: 0;
+			}
+			$i: $i + 1;
+		}
+		$i: 1;
+		@while $i <= $column-number {
+			$perc: unquote((100 / ($column-number / $i)) + "%");
+			&.offset-l#{$i} {
+				margin-left: $perc;
+			}
+			$i: $i + 1;
+		}
+
+		@include breakpoints(Medium) {
+			$i: 1;
+			@while $i <= $column-number {
+				$perc: unquote((100 / ($column-number / $i)) + "%");
+				&.m#{$i} {
+					width: $perc;
+					margin-left: 0;
+				}
+				$i: $i + 1;
+			}
+			$i: 1;
+			@while $i <= $column-number {
+				$perc: unquote((100 / ($column-number / $i)) + "%");
+				&.offset-m#{$i} {
+					margin-left: $perc;
+				}
+				$i: $i + 1;
+			}
+		}
+
+		@include breakpoints(Small) {
+		// @media only screen and (min-width : 600px) {
+			$i: 1;
+			@while $i <= $column-number {
+				$perc: unquote((100 / ($column-number / $i)) + "%");
+				&.s#{$i} {
+					width: $perc;
+					margin-left: 0;
+				}
+				$i: $i + 1;
+			}
+			$i: 1;
+			@while $i <= $column-number {
+				$perc: unquote((100 / ($column-number / $i)) + "%");
+				&.offset-s#{$i} {
+					margin-left: $perc;
+				}
+				$i: $i + 1;
+			}
+		}
+	}
+}

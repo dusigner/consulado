@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Natal Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="/arquivos/consul-landing-natal.css" />
+</head>
+
+<body data-controller="landing-natal">
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Main -->
+	<section id="banner">
+		<vtex:contentPlaceHolder id="Banner" />
+	</section>
+	
+	<section id="banner-mobile">
+		<vtex:contentPlaceHolder id="Banner Mobile" />
+	</section>
+
+	<section id="select-categorias">
+		<div class="container">
+			<p>Selecione uma das categorias abaixo</p>
+
+			<ul>
+				<li>
+					<!--<input id="refrigeracao" name="category" value="refrigeracao" type="radio" class="regular-radio" data-category="refrigeracao" /><label for="refrigeracao">Refrigeracao</label>-->
+					<i class="icon icon-icecream"></i>
+					<span data-category="refrigeracao">Refrigeração</span> 
+				</li>
+				<li>
+					<!--<input id="embutir" name="category" value="embutir" type="radio" class="regular-radio" data-category="embutir" /><label for="embutir">Produtos de Embutir</label>-->
+					<i class="icon icon-pan"></i>
+					<span data-category="embutir">Produtos de Embutir</span> 
+				</li>
+				<li>
+					<!--<input id="ar" name="category" value="ar" type="radio" class="regular-radio" data-category="ar" /><label for="ar">Ar Condicionado</label>-->
+					<i class="icon icon-ice"></i>
+					<span data-category="ar">Ar Condicionado</span> 
+				</li>
+				<li>
+					<!--<input id="cervejeira" name="category" value="cervejeira" type="radio" class="regular-radio" data-category="cervejeira" /><label for="cervejeira">Cervejeira</label>-->
+					<i class="icon icon-blob"></i>
+					<span data-category="cervejeira">Cervejeira</span> 
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="produtos">
+		<div class="container">
+			<div class="refrigeracao">
+				<vtex:contentPlaceHolder id="Prateleira-Refrigeracao" />
+				
+				<div class="more">
+    				<p>Ainda não era isso?</p>
+    				<a href="/eletrodomesticos/geladeira---refrigerador" title="Veja todas as geladeiras Consul">Veja todas as geladeiras Consul</a>
+				</div>
+			</div>
+			
+			<div class="embutir">
+				<vtex:contentPlaceHolder id="Prateleira-Embutir" />
+				
+				<div class="more">
+				    <p>Ainda não era isso?</p>
+				    <a href="/busca/?fq=H:153" title="Veja todos os produtos de embutir Consul">Veja todos os produtos de embutir Consul</a>
+				</div>
+			</div>
+
+			<div class="ar">
+				<vtex:contentPlaceHolder id="Prateleira-Ar" />
+				
+				<div class="more">
+    				<p>Ainda não era isso?</p>
+    				<a href="/eletrodomesticos/ar-condicionado" title="Veja todos os ar condicionados Consul">Veja todos os ar condicionados Consul</a>
+    			</div>
+			</div>
+
+			<div class="cervejeira">
+				<vtex:contentPlaceHolder id="Prateleira-Cervejeira" />
+				
+				<div class="more">
+    				<p>Ainda não era isso?</p>
+    				<a href="/cervejeira" title="Veja todas as cervejeiras Consul">Veja todas as cervejeiras Consul</a>
+    			</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Main -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	
+	<script type="text/javascript" src="/arquivos/consul-landing-natal.min.js"></script>
+</body>
+</html>

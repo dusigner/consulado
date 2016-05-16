@@ -1,0 +1,107 @@
+#vtex-modal-overlay-abandono {
+	.compare {
+		display:none !important;
+	}
+
+	.subtitle {
+		@include responsiveFont(22, 16, true);
+	    color: #736c6b;
+	    font-weight: bold;
+	    text-align: left;
+	    padding-bottom: 2em;
+	    padding-left: 1em;
+	}
+
+	.modal-content {
+		padding-bottom: 2em;
+	}
+
+	.modal-holder {
+		max-width: 53em;
+	}
+
+	.modal-header {
+		@include responsiveFont(36, 16, true);
+		background: #fff;
+		color: $green;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: left;
+		padding-bottom: 0;
+		button {
+			color: $green;
+		}
+	}
+
+	.prateleira.default  {
+		h2, .parcelado, .total-parcelado {display: none;}
+			ul li {
+			width: 100%;
+			text-align: left;
+			.box-produto {
+				padding: 0;
+				margin: 0;
+			}
+
+			.detalhes {
+				.image {
+					float: left;
+					width: 40%;
+				}
+				.prod-info {
+					float: right;
+					width: 60%;
+					padding-left: 10%;
+					padding-right: 5%;
+					.nome {
+						@include responsiveFont(36, 16, true);
+						color: $txt-gray;
+						font-weight: 700;
+    					line-height: 1;
+    					padding-bottom: 20px;
+					}
+
+					.price { 
+						padding: 10px 0 35px 0;
+						margin:0;
+						.de {
+							@include responsiveFont(16, 16, true);
+						}
+						.por {
+							@include responsiveFont(36, 16, true);
+							color: $green;
+							.txtPor, .val {
+								font-weight: bold;
+							}
+							.off {
+								display: none;
+							}
+						}
+					}
+
+					.adicional {
+						display:none;
+					}
+
+					.discount-boleto {
+						@include responsiveFont(16, 16, true);
+						color: #000;
+						text-transform: uppercase;
+						font-weight: bold;
+					}
+
+					.btn-eu-quero {
+						@extend .primary-button;
+						width: 250px;
+						text-align: center;
+						text-transform: uppercase;
+					}
+				}
+			}
+
+			.compare {
+				display: none;
+			}
+		}
+	}	
+}

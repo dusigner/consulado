@@ -1,0 +1,162 @@
+
+body.orders,
+body.pedidos{
+	.alert-box{
+		position: fixed;
+		z-index:9999;
+		top:10px;
+		background:	$green;
+		color:#fff;
+		padding:5px 10px;
+		font-weight: bold;
+		border:2px solid darken($green, 20%);
+		transform: translate(-50%, 0%);
+		left: 50%;
+	}
+	.add-warranty{
+		@include responsiveFont(14,16,true);
+	}
+	.vtex-modal{
+		overflow-y:auto;
+		.close{opacity: 1;}
+		.modal-holder{
+			max-width:700px;
+			.modal-header{
+				padding: 2rem 0 1rem 0;
+				border:none;
+				color:$green;
+			}
+			.modal-content{
+				padding:0 30px 30px 30px;
+			}
+			input[type=text], input[type=email], input[type=password], input[type=tel], select{
+				background-color: #f4f2f1;
+    			border: 1px solid #e4e4e4;
+    			margin-bottom: 1em;
+    			height:40px;
+    			box-shadow:none;
+			}
+		}
+		button{outline:none;}
+
+	}
+
+}
+
+#vtex-selecione-garantia{
+
+	select{width: 100%}
+	h2{
+		@include responsiveFont(20,16,true);
+	    text-align: left;
+	    color: $txt-gray;
+	    line-height: 120%;
+	    font-weight: bold;
+	    margin-top: 20px;
+	    margin-bottom: 0;
+	    padding: 0;
+	}
+	h3{
+		@include responsiveFont(16,16,true);
+	    color: $txt-gray;
+	    font-weight: normal;
+	    margin-bottom: 15px;
+	    text-align: left;
+	    padding: 0;
+	    margin-top: 0;
+	}
+	p{
+		margin-bottom: 0;
+	}
+	.add{
+		@include responsiveFont(14,16,true);
+		margin:5px 0px 5px 10px;
+		display: inline-block;
+	}
+	div{
+		div p{
+			@include responsiveFont(13,16,true);
+			text-align: justify;
+		}
+		.mais{
+			color: $txt-gray;
+			font-weight: bold;
+			text-transform: uppercase;
+			@include responsiveFont(13,16,true);
+			display: inline-block;
+		}
+	}
+	.botao{text-align: right;}
+}
+
+#vtex-pagamento-garantia{
+	iframe{
+		min-height:300px;
+		border:none;
+	}
+	.back.loading{
+		width:89px;
+	}
+}
+#vtex-confirmar-dados-garantia{
+	.group{
+		width: 50%;
+		padding:0 5px;
+		float: left;
+		@include breakpoint(small, "max"){
+			width: 100%;
+		}
+	}
+	label{
+		text-align:left;
+		cursor: auto;
+	}
+	.botao{
+		clear:both;
+		width: 100%;
+		display: block;
+		min-height: 45px;
+    	margin-top: 10px;
+		.back{
+			@include responsiveFont(14,16,true);
+			float: left;
+		}
+		.confirm{
+			@include responsiveFont(14,16,true);
+			float: right;
+		}
+	}
+
+}
+.item-service{
+	.download-avulso, .download{
+		@include responsiveFont(12,16,true);
+		padding: 3px 10px;
+		@include breakpoint(medium, "min"){
+			margin-left: 10px;
+		}
+	}
+}
+
+#vtex-imprimir-garantia{
+	.modal-content{
+		table{
+			width: 100%;
+			word-break: break-all;
+		}
+		a{
+			color:$orange;
+			&:hover{
+				color:#fff;
+			}
+		}
+		@include breakpoint(small, "max") {
+			padding: 40px 10px;
+			td{
+				width:33%;
+				text-align: center;
+			}
+		}
+	}
+}
+

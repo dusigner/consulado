@@ -1,0 +1,317 @@
+
+body.teste-ab{
+	#modal-warranty {
+
+		input[type=radio], label:not(.box-opcao-garantia):before {
+			display: none !important;
+		}
+
+		&.modal {
+			border-radius: 0;
+		}
+		.close{
+			border-radius:50%;
+			color:$gray;
+			&:hover{
+				color:#fff;
+			}
+		}
+
+		.modal-body {
+			>h4{
+				text-align:center;
+				color: $green;
+				@include responsiveFont(40, 16, true);
+			}
+			.submain-title{
+				text-align: center;
+				@include breakpoint(small, "max") {
+					@include responsiveFont(18, 16, true);
+				}
+			}
+			.box-product {
+				display: inline-block;
+				margin-bottom: 1em;
+				height: auto;
+				width: 100%;
+
+				img {
+					display: inline-block;
+				}
+
+				.box-product-info {
+					margin-bottom: 15px;
+					display: inline-block;
+
+					p {
+						@include responsiveFont(14, 16, true);
+						width: 37%;
+						vertical-align: middle;
+						padding: 1em;
+						display: inline;
+					}
+
+					span {
+						@include responsiveFont(22, 16, true);
+						border-left: 2px solid $gray;
+						padding: 0.2em;
+						@include breakpoint(small, 'max') {
+							@include responsiveFont(14, 16, true);
+						}
+					}
+				}
+			}
+
+			.garantia-box-text {
+				font-weight: bold;
+				p {
+					display: inline-block;
+					@include breakpoint(small, 'max') {
+						line-height: 0.5em;
+					}
+				}
+				a {
+					color: $green;
+				}
+			}
+
+			.container-warranty {
+				width: 100%;
+				margin-bottom: 0.5em;
+
+				@include breakpoint(small, 'max') {
+					width: 100%;
+				}
+
+				.box-warranty {
+					margin: 0 auto;
+					display: inline-block;
+					vertical-align: top;
+					padding: 0.6em;
+
+					@include breakpoint(small, "max") {
+						display: block;
+						padding-bottom: 1em;
+					}
+
+					&:first-child {
+
+						article {
+							border: 3px solid $txt-gray;
+							.show-more {
+								.icon-angle-down {
+									color: $txt-gray;
+								}
+							}
+
+							.box-title-warranty {
+								padding: 1.7em;
+								line-height: 1.2em;
+								@include breakpoint(small, 'max') {
+									padding: 1em 0 0 0;
+								}
+							}
+
+							.box-info-warranty {
+								@include breakpoint(small, "max") {
+									padding: 1em 0 1em 0;
+								}
+								p {
+									font-weight: normal;
+									//padding: 3.6em 0 4em 0;
+									padding: 2em 0 2.5em 0;
+									@include breakpoint(small, "max") {
+										padding: 0;
+									}
+								}
+							}
+							.box-button {
+								button {
+									background: $txt-gray;
+									border: 3px solid $txt-gray;
+									color: #fff;
+									&:hover {
+										background: #fff;
+										color: $txt-gray;
+									}
+								}
+							}
+						}
+					}
+
+					article {
+						border: 3px solid $green;
+						border-radius: 10px;
+						margin: 0 auto;
+						width: 236px;
+						min-height: 227px;
+
+						@include breakpoint(small, "max") {
+							width: 100%;
+							margin:0 auto;
+							text-align: left;
+							min-height: auto;
+						}
+
+						.show-more {
+							display: inline-block;
+							position: absolute;
+							width: 100%;
+
+							.icon-angle-down {
+								@include responsiveFont(50, 16, true);
+								position: absolute;
+								color:$green;
+								left: 79%;
+								bottom: -0.89em;
+								transition: transform 0.3s ease-in;
+								transform: scaleY(1);
+								&.active {
+									transform: scaleY(-1);
+								}
+							}
+						}
+
+						.box-title-warranty {
+							padding-top: 0.5em;
+							@include breakpoint(small, "max") {
+								margin-left: 10%;
+								padding-top: 1em;
+							}
+							p, strong, span {
+								@include responsiveFont(14, 16, true);
+							}
+						}
+
+						.box-info-warranty {
+							text-align: center;
+
+							@include breakpoint(small, "max") {
+								text-align: left;
+								min-height: inherit;
+								margin-left: 10%;
+								padding: 0.4em 0 0.4em 0;
+							}
+
+							div {
+								@include breakpoint(small, "max") {
+									padding: 14px 0 14px 0;
+									margin: 0;
+								}
+							}
+
+							h2 {
+								@include responsiveFont(28, 16, true);
+								line-height: 1em;
+								text-transform: uppercase;
+								margin: 0;
+								color: $green;
+							}
+
+							p {
+								@include responsiveFont(14, 16, true);
+								margin: 0;
+								line-height: 1.2em;
+								font-weight: bold;
+							}
+
+							span {
+								display: inline-block;
+								line-height: 1.2em;
+								margin: 26px 0 14px 0;
+								@include breakpoint(small, 'max') {
+									margin: 0;
+								}
+							}
+							strong {
+								@include responsiveFont(20, 16, true);
+								color: $green;
+							}
+						}
+						.box-button {
+							padding-bottom: 0.7em;
+							@include breakpoint(small, "max") {
+								margin: 0 auto;
+								text-align: center;
+								padding-bottom: 1em;
+							}
+							button {
+								@extend .primary-button;
+								@include responsiveFont(15,16, true);
+								background: $green;
+								border: 3px solid $green;
+								background-image: none;
+								transition : all .3s ease;
+								display: inline-block;
+								cursor: pointer;
+								min-width: 180px;
+								min-height: 48px;
+								text-align: center;
+								text-transform: uppercase;
+								&:hover {
+									color: $green;
+								}
+								@include breakpoint(small, "max") {
+									width: 90%;
+								}
+							}
+						}
+					}
+				}
+
+				.box-info {
+					margin-left: 2.5em;
+
+					@include breakpoint(small, 'max') {
+						margin: 0;
+					}
+
+					div {
+						&:first-child {
+							vertical-align: top;
+						}
+						display: inline-block;
+					}
+					p {
+						@include responsiveFont(14, 16, true);
+						color: $txt-gray;
+						padding-right: 2em;
+						text-align: left;
+					}
+				}
+
+				.box-list {
+					text-align: left;
+					width: 63%;
+					@include breakpoint(small, "max") {
+						width: 90%;
+						margin-left: 10%;
+						padding: 0 0 1em 0;
+					}
+					p {
+						@include responsiveFont(14, 16, true);
+						display: inline-block;
+						color: $txt-gray;
+					}
+					strong {
+						@include responsiveFont(14, 16, true);
+						display: inline-block;
+						color: $txt-gray;
+						line-height: 1.2em;
+						width: 100%;
+					}
+					ul {
+						margin-top: 5px;
+						li {
+							@include responsiveFont(14, 16, true);
+							color: $txt-gray;
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+}

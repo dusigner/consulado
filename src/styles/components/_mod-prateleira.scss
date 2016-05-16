@@ -1,0 +1,459 @@
+@charset "UTF-8";
+
+@if $use-com-prateleira == true {
+
+	// ===============================================================
+	/* PRATELEIRA */
+	// ===============================================================
+
+	.prateleira-slider { position: relative; }
+
+	.prateleira {
+		&.default {
+			color: $gray-d;
+			text-align: center;
+
+			& > h2 {
+				@include responsiveFont(38);
+				font-weight: 200;
+				line-height: 1.14;
+				margin: 0 0 10px;
+			}
+
+			span { font-weight: bold; }
+
+			ul {
+				@include clearfix();
+
+				li {
+					float: left;
+					outline: none!important;
+					width: 100/3*1%;
+
+					@include breakpoint(small, "max") { width: 100%; }
+
+					article {
+						@include responsiveFont(16, 16, true);
+						margin-bottom: 25px;
+						padding: 20px;
+						position: relative;
+					}
+
+					.detalhes {
+						h3 { min-height: 80px; }
+
+						p.indisponivel {
+							line-height: 80px;
+							min-height: 80px;
+							position: relative;
+						}
+
+						// border: 1px solid #ccc;
+						.img.main {
+							@include breakpoint(small, "max") { width:100%; }
+						}
+
+						.img.hover {
+							@include breakpoint(small, "max") { width:100%; }
+							left: 0;
+							opacity: 0;
+							position: absolute;
+							top: 0;
+							visibility: hidden;
+							z-index: 1;
+							transition: opacity 400ms, visibility 400ms;
+						}
+
+						&:hover {
+							.nome { font-weight: bold; }
+
+							.img.hover {
+								opacity: 1;
+								visibility: visible;
+							}
+
+							.product_field_14 li { background-image:url('#{$img-path}selo-badge-consul.png')!important; }
+						}
+					}
+
+					a {
+						color: inherit;
+						text-decoration: none;
+
+						&.image {
+							display: block;
+							line-height: 0;
+							position: relative;
+							text-align: center;
+
+							// Revisar - Não sei se essa é a melhor opção
+							// 2h05 AM
+							&:before {
+								@include singleTransition(150);
+								background: transparent url("/arquivos/selo-badge-consul.png") left bottom no-repeat;
+								background-size: contain;
+								bottom: 0;
+								content: " ";
+								display: block;
+								height: 103px;
+								opacity: 0;
+								position: absolute;
+								right: 0;
+								width: 30%;
+								z-index: 3;
+							}
+
+							&:hover {
+								&:before { opacity: 1; }
+							}
+
+							span {
+								display:block;
+								min-height:327px;
+								position: absolute;
+
+								@include breakpoint(large, "max")       { min-height: 220px; }
+								@include breakpoint(small, "max")       { min-height: 284px; }
+								@include breakpoint(extra-small, "max") { min-height: 235px; }
+
+								&.main { z-index: 1; }
+
+								&.backup {
+									//background: transparent url("#{$img-path}noimage.png") 50% no-repeat;
+									position: relative;
+									z-index: 0;
+								}
+							}
+
+							img {
+								height: auto;
+								margin: 0 auto;
+								max-width: 100%;
+							}
+
+							.product-field {
+								bottom: 0;
+								font-size: 0;
+								position: absolute;
+								right: 0;
+								text-indent: -9999999cm;
+								z-index: 3;
+								width: 30%;
+
+								li {
+									background-color: transparent;
+									background-position: left bottom;
+									background-repeat: no-repeat;
+									background-size: contain;
+									clear: both;
+									display: none;
+									display: block;
+									height: 103px;
+									width: 100%;
+
+									&:first-child { display:block; }
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.department-nav {
+				@include responsiveFont(16, 16, true);
+				color: $txt-gray-l;
+
+				span { @include transition(color, 400); }
+
+				&:hover {
+					span { color: $orange; }
+				}
+			}
+
+			.compare {
+				color: gray;
+				display: none;
+
+				fieldset {
+					border: none;
+					display: inline-block;
+					margin: 0;
+					padding: 0;
+
+					input[type=checkbox] { display:none; }
+
+					label {
+						color: $txt-gray-l;
+						font-weight: bold;
+						position: relative;
+
+						&:before {
+							@include contentBefore();
+							background-color: transparent;
+							border: 1px solid #ccc;
+							border-radius: 3px;
+							height: 12px;
+							left: -20px;
+							position: absolute;
+							top: 6px;
+							width: 12px;
+						}
+
+						&:after {
+							@include icon-get('check-mark');
+							color: $orange;
+							display: none;
+							font-size: 10px;
+							height: 16px;
+							left: -20px;
+							position: absolute;
+							top: 5px;
+							width: 16px;
+						}
+					}
+
+					input[type=checkbox]:checked + label:after { display: inline-block; }
+				}
+			}
+		}
+
+		&.default, &.destaque {
+			.nome, h3 {
+				@include responsiveFont(20);
+				font-weight: normal;
+				margin: 1em 0 0;
+
+				span {
+					@include clearfix();
+					color: $txt-gray-l;
+					// display: block;
+					font-weight: bold;
+
+					* { display: inline; }
+
+					.product-field { font-size: 0; }
+
+					li {
+						float: none;
+						font-size: 18px;
+					}
+				}
+			}
+
+			.price {
+				margin: 1em 0;
+				// text-align: left;
+				& > p {
+					margin:0;
+
+					&.de,
+					&.por { span{font-weight: normal} }
+
+					&.de { @include responsiveFont(14, 16, true); }
+
+					&.de .val { text-decoration: line-through; }
+
+					&.por {
+						@include responsiveFont(14, 16, true);
+
+						.val:empty { display: none; }
+
+						.off {
+							background-color: $green;
+							border-radius: 10px;
+							color: #fff;
+							display: none;
+							padding: 3px;
+						}
+					}
+
+					&.adicional {
+						@include responsiveFont(18, 16, true);
+						color: $green;
+					}
+
+					&.discount-boleto { @include responsiveFont(12, 16, true); }
+				}
+			}
+		}
+	}
+
+	.destaque {
+		@include breakpoint(small, "max") { text-align: center; }
+
+		.container {
+			@include breakpoint(small, "max") { padding: 0; }
+		}
+
+		.box-produto {
+			position: relative;
+
+			.icon {
+				background: transparent no-repeat no-repeat;
+				background-size: contain;
+				display: block;
+				height: 70px;
+				max-height: 115px;
+				position: relative;
+
+				@include breakpoint(small, "min") {
+					height: 90px;
+					width: 90px;
+				}
+			}
+
+			&.Split i,
+			&.Climatizador i { background-image: url('/arquivos/feature-icon-wind.png');    }
+			&.Cooktop i      { background-image: url('/arquivos/feature-icon-chicken.png'); }
+			&.Embutir i      { background-image: url('/arquivos/feature-icon-dish.png');    }
+			&.Cervejeira i,
+			&.Geladeira i    { background-image: url('/arquivos/feature-icon-cold.png');    }
+		}
+
+		.image {
+			display: block;
+			text-align: center;
+
+			@include breakpoint(small, "max") {
+				float: left;
+				width: 100%;
+			}
+
+			@include breakpoint(small, "min") {
+				bottom: 0;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				width: 50%;
+			}
+
+			.img {
+				display: block;
+
+				@include breakpoint(small, "min") {
+					bottom: 0;
+					left: 0;
+					position: absolute;
+				}
+
+				@include breakpoint(small, "max") {
+					display: none;
+					margin-top: 5px;
+
+					&.backup { display: inline-block; }
+				}
+			}
+
+			img {
+				@include breakpoint(small, "min") { display: block; }
+			}
+		}
+
+		.content {
+			@include breakpoint(small, "max") { width: 100%; }
+
+			@include breakpoint(small, "min") {
+				float: right;
+				width: 45%;
+			}
+
+			& > a { display: inline-block; }
+		}
+
+		.icon {
+			position: absolute;
+			top: 0;
+
+			@include breakpoint(small, "min") { left: 55%; }
+
+			@include breakpoint(small, "max") {
+				background-position: top center!important;
+				width: 100%!important;
+			}
+		}
+
+		// Selo Black friday - Retirar da prateleira destaque
+		.black-friday-2015-cns {
+			display: none !important;
+			// background-size: contain;
+			// background-repeat: no-repeat;
+			// font-size: 0;
+			// height: 103px;
+			// max-width: 105px;
+			// position: relative;
+			// top: 0;
+			// z-index: 150;
+		}
+
+		h2 {
+			@include responsiveFont(32);
+			font-weight: 300;
+			line-height: 34px;
+			float: left;
+			margin-top: 90px;
+			width: 100%;
+
+			@include breakpoint(small, "max") { margin: 75px 0 5px 0; }
+
+			@include breakpoint(small, "min") {
+				margin: 110px 0 0 55%;
+				width: 45%;
+			}
+		}
+
+		.content h3.nome {
+			@include responsiveFont(24, 16, true);
+			// font-size: 30px!important;
+			color: $gray-d;
+			margin: 10px 0 0;
+		}
+
+		.price { color: $gray-d; }
+
+		.button {
+			@include responsiveFont(18);
+			font-weight: bold;
+			margin-top: 10px;
+			text-transform: uppercase;
+
+			@include breakpoint(small, "max") { @include hide-conditional(); }
+		}
+	}
+
+	//inverse mode
+	.destaque-02 {
+		.container {
+			.image {
+				left: inherit;
+				right: 0!important;
+			}
+
+			.icon { left: 0; }
+
+			h2 { margin-left: 0; }
+
+			.content { float: none!important; }
+		}
+	}
+
+	body.listagem {
+		&.categoria {
+			.prateleira.default {
+				ul:not(.slick-slider) {
+					// .compare{display:block}
+					.department-nav { display:none; }
+				}
+			}
+		}
+	}
+}
+
+
+#quem-viu-clicou {
+	display: block !important;
+	margin-top: 30px;
+
+	h2 {
+		font-size: 38px;
+	}
+}

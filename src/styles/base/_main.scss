@@ -1,0 +1,48 @@
+@if $use-main == true {
+	//------------------------------------
+	//  MAIN
+	//------------------------------------
+
+	// Variables
+	$font-size: #{($base-font-size / 16px) * 1em};
+	$line-height-integer: #{$line-height-ratio};
+
+	* {
+		&,
+		&:before,
+		&:after { box-sizing: border-box; }
+	}
+
+	html body { opacity: 1 !important; } //prevent vwo flash
+
+	html,
+	body {
+		background-color: $website-bg-color;
+		color: $base-font-color;
+		font: normal normal $font-size/$line-height-integer $base-font-family;
+		font-weight: normal;
+		margin: 0;
+
+		@if $enable-font-smoothing == true {
+			font-smooth: always;
+
+			-webkit-font-smoothing: antialiased;
+			-moz-font-smoothing: antialiased;
+		}
+	}
+
+	html[dir="rtl"] { direction: rtl; }
+
+	hr {
+		margin: 2em 0;
+		border: 1px solid #fff;
+	}
+
+	body > img, .zx_mediaslot { //remove pixels
+		height: 0;
+		width: 0;
+		display: none;
+	}
+
+	// body{position: relative;}
+}

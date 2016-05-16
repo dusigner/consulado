@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+@if $use-com-tipbar == true {
+
+	//------------------------------------
+	//  TIPBAR
+	//------------------------------------
+	.tipbar {
+		@include font-size(13px, true, false);
+		background-color: $sony-white;
+		color: $sony-txt-gray-l;
+		padding: 20px 0;
+		text-align: center;
+
+		.item {
+			@include wFull();
+			background-color: $sony-gray-l;
+			border-radius: 4px;
+			display: inline-block;
+			margin-left: 1.5%;
+			padding: 15px;
+			text-align: left;
+			max-width: 242px;
+			vertical-align: middle;
+			width: 23.5%;
+
+			&:first-child {margin-left: 0;}
+		}
+
+		.icon {
+			@include font-size(30px);
+			color: $sony-black;
+			display: block;
+			float: left;
+			height: 42px;
+			line-height: 42px;
+			margin: 0 15px 0 0;
+			text-align: center;
+			width: 42px;
+
+		}
+
+		.txt { margin: 0; }
+	}
+}

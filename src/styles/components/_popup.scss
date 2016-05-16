@@ -1,0 +1,61 @@
+@if $use-com-popup == true {
+
+	@charset "UTF-8";
+
+	// ===============================================================
+	/* VTEX POPUP */
+	// ===============================================================
+
+	.vtex-popup-shade {
+		background:#000;
+		height:100%;
+		position:fixed;
+		width:100%;
+		z-index:10000;
+	}
+
+	.vtex-popup {
+		background:#FFF;
+		left:50%;
+		margin-left:-229px;
+		min-height:222px;
+		padding:0;
+		position:fixed;
+		top:25%;
+		width:458px;
+		z-index:10001;
+
+		.popup-header {
+			.popup-title {
+				background:#e6e6e6;
+				color:#000;
+				font-size:20px;
+				font-weight:normal;
+				height:45px;
+				line-height:44px;
+				overflow:hidden;
+				text-transform:none;
+				padding:0 0 0 42px;
+			}
+
+			.close {
+				color:#000;
+				display:block;
+				height:32px;
+				position:absolute;
+				right:-13px;
+				top:16px;
+				width:32px;
+				z-index:10002;
+			}
+		}
+
+		.popup-content {
+			color:#4f4f4f;
+			font-size:12px;
+			padding:24px 28px;
+			text-align:left;
+		}
+	}
+
+}

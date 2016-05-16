@@ -1,0 +1,139 @@
+<div id="modal-warranty" role="dialog" class="modal fade garantia-modal garantia-modal-brastemp in" style="display: none;">
+	<div class="modal-dialog modal-lg">
+
+		<div class="modal-content">
+
+			<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close">
+				<i class="icon icon-remove item-remove-ico"></i>
+			</button>
+
+			 <div class="modal-body">
+				<h4>Proteja seu investimento</h4>
+				<p class="submain-title">Conte com o Seguro Garantia Estendida Original</p>
+
+				<div class="box-product">
+					<img src="{product.image}" alt="{product.name}" title="{product.name}">
+					<div class="box-product-info">
+						<p>{product.name}</p>
+						<span>{product.price|intAsCurrency}</span>
+					</div>
+				</div>
+
+				<div class="container container-warranty">
+					<div class="row">
+						<div class="col-4 box-warranty">
+							<article>
+
+							<div class="show-more">
+								<i class="fa icon-angle-down"></i>
+							</div>
+
+							<div class="box-title-warranty">
+								<strong>Somente Garantia do fabricante</strong>
+							</div>
+
+							<div class="box-info-warranty">
+								<p>Sem custo adicional</p>
+							</div>
+
+							<div class="col-8 box-list hide">
+								<p>
+									Protege o tempo estipulado pelo <br />
+									fabricante, com conserto de <br />
+									peças originais.
+								</p>
+							</div>
+
+							<div class="box-button">
+								<button type="button" class="btn btn-continue btn-success first-box-garantia" data-index="{productIndex}">Continuar</button>
+							</div>
+							</article>
+						</div>
+
+						<div class="col-4 box-warranty">
+							<article>
+
+								<div class="show-more">
+									<i class="fa icon-angle-down"></i>
+								</div>
+
+								<input type="hidden" name="warranty-value" id="warranty1" value="{warranty.oneYear.id}">
+								<div class="box-title-warranty">
+									<span> Garantia do fabricante </span>
+								</div>
+
+								<div class="box-info-warranty">
+									<p>+ 1 ANO de Seguro de <br>Garantia Estendida Original</p>
+									<div>
+										<span>10 x de <strong>{warranty.oneYear.price|intAsCurrency}</strong> ou {warranty.oneYear.fullPrice|intAsCurrency}</span>
+									</div>
+								</div>
+
+								<div class="col-8 box-list hide">
+									<strong>Após o término da Garantia do fabricante, continue protegido por mais tempo:</strong>
+									<ul>
+										<li>Peças Originais;</li>
+										<li>Equipe Especializada;</li>
+										<li>Assistência Técnica em todo o Brasil.</li>
+									</ul>
+								</div>
+
+								<div class="box-button">
+									<button type="button" class="addButton btn bg-yellow box-garantia-primaria">Adicionar</button>
+								</div>
+
+							</article>
+						</div>
+
+						<div class="col-4 box-warranty">
+							<article>
+
+								<div class="show-more">
+									<i class="fa icon-angle-down"></i>
+								</div>
+
+								<input type="radio" name="warranty-value" id="warranty2" value="{warranty.twoYear.id}">
+								<div class="box-title-warranty">
+									<span> Garantia do fabricante</span>
+								</div>
+
+								<div class="box-info-warranty">
+									<p>+ 2 ANOS de Seguro de <br>Garantia Estendida Original</p>
+									<div>
+										<span>10 x de <strong>{warranty.twoYear.price|intAsCurrency}</strong> ou {warranty.twoYear.fullPrice|intAsCurrency}</span>
+									</div>
+								</div>
+
+								<div class="col-8 box-list hide">
+									<strong>Após o término da Garantia do fabricante, continue protegido por mais tempo:</strong>
+									<ul>
+										<li>Peças Originais;</li>
+										<li>Equipe Especializada;</li>
+										<li>Assistência Técnica em todo o Brasil.</li>
+									</ul>
+								</div>
+
+								<div class="box-button">
+									<button type="button" class="addButton btn bg-yellow box-garantia-secundaria">Adicionar</button>
+								</div>
+
+							</article>
+						</div>
+					</div>
+				</div>
+
+				<div class="garantia-box-text">
+					<p>A contratação desse serviço é opcional. </p> <br>
+					<a href="http://loja.brastemp.com.br/landing/garantia-estendida" target="_blank">Saiba como funciona</a>
+				</div>
+
+				<div class="garantia-disclaimer">
+					<p>Informações gerais: <br /> Ao prosseguir, você autoriza que o pagamento do prêmio de seguro seja realizado em conjunto com o pagamento do(s) produto(s)/serviço(s) ora adquirido(s). <br /> <br />  1 - A contratação de seguro é opcional, sendo possível a desistência do contrato em até 7 (sete) dias corridos, com a devolução integral do valor pago. <br /> <br />  2 - A comercialização de seguro é opcional e fiscalizada pela SUSEP. O registro desse plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização. Acesse <a href="www.susep.gov.br" title="SUSEP" target="_blank">www.susep.gov.br</a> <br /> ou ligue para 0800 0218484. <br /> <br />  3 - A BUD COMERCIO DE ELETRODOMESTICOS LTDA é um Representante de seguros da AIG Seguros Brasil S.A. e está autorizada a comercializar o Seguro de Garantia Estendida. <br /> <br />  4 - É proibido condicionar desconto no preço de bem à aquisição do seguro. Este seguro é garantido pela AIG Seguros Brasil S.A., CNPJ 33.040.981/0001-50, com processo Susep 15414.900511/2014-42. SAC AIG (0800 702 6120, de 2ª a 6ª, das 8h às 20h e sábados ds 10h às 16h) e Ouvidoria da AIG (0800 724 0219, 2ª à 6ª, das 09h às 18h).</p>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+</div>
