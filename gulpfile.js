@@ -134,52 +134,21 @@ gulp.task('server', ['watch'], function () {
 		rewriteRules: [
 			{
 				match: new RegExp('[\"\'](?:https?:\/\/|\/\/)' + pkg.name + '.*?(\/.*?)?[\"\']', 'gm'),
-				fn: function (match, group) {
-					return '"' + ( group || '' ) + '"';
-				}
+				replace: '"$1"'
 			}
 		],
 		proxy: {
 			target: 'develop-' + ( $.util.env.account || pkg.accountName ) + '.' + environment + '.com.br/?debugcss=true&debugjs=true',
-			reqHeaders: function (config) {
-				return {
-					'host': ( $.util.env.account || pkg.accountName ) + '.vtexlocal.com.br',
-					'protocol': 'https',
-					'accept-encoding': 'identity',
-					'Cache-Control': 'private, no-cache, no-store, must-revalidate',
-					'Expires': '-1',
-					'Pragma': 'no-cache'
-				};
-			}/* ,
-			middleware: [
-				function(req, res, next) {
-					var data, end, write;
-					if (ignoreReplace.some(function(ignore) {
-						return ignore.test(req.url);
-					})) {
-						return next();
-					}
-					data = '';
-					write = res.write;
-					end = res.end;
-					res.write = function(chunk) {
-						return data += chunk;
-					};
-					res.end = function(chunk, encoding) {
-						if (chunk) {
-							data += chunk;
-						}
-						if (data) {
-							data = data.replace(/[\"\']https?:\/\/brastemp.*?(\/.*?)?[\"\']/gm, '"$1"');
-						}
-						res.write = write;
-						res.end = end;
-						return res.end(data, encoding);
-					};
-					return next();
-				},
-				require('serve-static')('./build')
-			] */
+			proxyReq: [
+				function (proxyReq) {
+					proxyReq.setHeader('host', ( $.util.env.account || pkg.accountName ) + '.vtexlocal.com.br');
+					proxyReq.setHeader('protocol', 'https');
+					proxyReq.setHeader('accept-encoding', 'identity');
+					proxyReq.setHeader('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+					proxyReq.setHeader('Expires', '-1');
+					proxyReq.setHeader('Pragma', 'no-cache');
+				}
+			]
 		},
 		serveStatic: ['./build'],
 		open: !$.util.env.no
