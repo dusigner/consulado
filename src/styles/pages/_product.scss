@@ -323,6 +323,21 @@ body.produto-indisponivel {
 			}
 		}
 	}
+
+	//Rating TrustVox
+	.trustvox-fluid-jump {
+		display: inline-block;
+		position: relative;
+		width: 225px;
+		margin-bottom: 15px;
+
+		> span {
+			position: absolute;
+			bottom: 0;
+			right: -20px;
+			width: 100px;
+		}
+	}
 }
 
 .prod-preco {
