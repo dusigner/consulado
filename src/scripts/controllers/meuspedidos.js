@@ -65,38 +65,38 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 	this.prepareRender = function( data ) {
 
-		var order = Order.user( data.orderId ).then(function( result ) {
+		// var order = Order.user( data.orderId ).then(function( result ) {
 
-				data.tracking = [];
-				data.isMessage = true;
+		// 		data.tracking = [];
+		// 		data.isMessage = true;
 
-				if(result.packageAttachment.packages.length <= 0)  return false;
+		// 		if(result.packageAttachment.packages.length <= 0)  return false;
 
-				$( result.packageAttachment.packages ).each(function(i,e) {
+		// 		$( result.packageAttachment.packages ).each(function(i,e) {
 					
-					if(e.courierStatus && e.courierStatus.finished){
-						data.currentState  = states.get( 'pedidoEntregue' );
-				 	}
+		// 			if(e.courierStatus && e.courierStatus.finished){
+		// 				data.currentState  = states.get( 'pedidoEntregue' );
+		// 		 	}
 
-					if(e.courierStatus && e.status !== 'unknown') {
-						$( e.courierStatus.data ).each(function(index, el) {
-							data.tracking[ index ] = {
-								description: el.description,
-								lastChange:  $.formatDatetimeBRL( el.lastChange )
-							};
-						});
-						data.isMessage = false;
-						data.tracking = data.tracking.reverse();
-					}
-				});
+		// 			if(e.courierStatus && e.status !== 'unknown') {
+		// 				$( e.courierStatus.data ).each(function(index, el) {
+		// 					data.tracking[ index ] = {
+		// 						description: el.description,
+		// 						lastChange:  $.formatDatetimeBRL( el.lastChange )
+		// 					};
+		// 				});
+		// 				data.isMessage = false;
+		// 				data.tracking = data.tracking.reverse();
+		// 			}
+		// 		});
 
-			}).then(function() {
+		// 	}).then(function() {
 
 				$('.box-meuspedidos').trigger('renderTracking', data);
 
-			});
+		// 	});
 
-		arrOrder.push(order);
+		// arrOrder.push(order);
 	};
 
 	this.listenRender = function() {
