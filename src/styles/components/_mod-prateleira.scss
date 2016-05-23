@@ -74,6 +74,12 @@
 
 							.product_field_14 li { background-image:url('#{$img-path}selo-badge-consul.png')!important; }
 						}
+
+						.ts-shelf-container {
+							&>div {
+								text-align: center;
+							}
+						}
 					}
 
 					a {
