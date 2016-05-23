@@ -251,6 +251,11 @@ body.produto-indisponivel {
 	@include breakpoint(small, "max") { margin-bottom: 30px; }
 }
 
+#trustvox-rating {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
 .prod-info {
 	//color: $txt-gray-l;
 
