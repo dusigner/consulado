@@ -1,46 +1,66 @@
-/* global $: true, Nitro: true */
+/**
+ * VTEX Modal Cookie v2.2.2
+ * Copyright (c) 2015 Lucas Monteverde
+ * Under MIT License
+ */
 
 require('vendors/vtex-modal');
+require('vendors/jquery.cookie');
 
-Nitro.module('sku-select', function() {
+(function(factory) {
+	'use strict';
+	if (typeof define === 'function' && define.amd) {
+		define(['jquery'], factory);
+	} else if (typeof exports !== 'undefined') {
+		module.exports = factory(require('jquery'));
+	} else {
+		factory(jQuery);
+	}
+
+}(function($) {
 
 	'use strict';
-	
-	var self = this;
-	
-	this.modalComplete = function( modal, content ){
 
-		/*content.on('change', 'input', function() {
-			
-			var input = $(this);
+	var modal = $.fn.vtexModal; //plugin override
 
-			$('input[id="' + $(this).attr('for') + '"]').prop('checked', true);
+	$.fn.vtexModal = function ( options ) {
 
-			input.prop('checked', true);
-		});*/
-		
-		// because we can't have two radios with the same name in a page;
-		content.wrap( $('<form />') );
+		var settings,
+			defaults = {
+				onClose: true,
+				cookieOptions: options.cookieOptions ? options.cookieOptions : false,
+			};
 
-		content.on('click', 'label', function() {
-			//e.preventDefault();
+		//if( options && options.cookie ) {
+		if( options ) {
+			settings = $.extend( {
+				id: this.attr('id')
+			}, defaults, options);
 
-			$(this).prev().trigger('click');
-		});
-	};
-	
-	this.buttonHandler = function(e, id, message){
-		
-		if( message === 'Por favor, selecione o modelo desejado.' ) {
+			if( ! $.cookie( settings.id ) ) {
+				if (settings.cookieOptions) {
+					options.close = function() {
+						$.cookie( settings.id , true, settings.cookieOptions);
+					};
+				}
+			}else{
+				return; //cookie is set, stop plugin execution
+			}
 
-			$('#modal-sku').vtexModal({
-				complete: self.modalComplete,
-				title: 'Selecione a <strong>voltagem</strong>'
-			});
 		}
+
+		modal.call( this, options );
 	};
 
-	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
-	
-});
+	$('div[data-modal-auto]').each(function() {
 
+		var options = $(this).data();
+
+		if( options.utmSource && options.utmSource !== $.getParameterByName('utm_source') ) {
+			return;
+		}
+
+		$(this).vtexModal( options );
+	});
+
+}));
