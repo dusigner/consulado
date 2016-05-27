@@ -21,16 +21,15 @@ require('vendors/jquery.cookie');
 
 	'use strict';
 
-	var modal = $.fn.vtexModal, //plugin override
-		settings,
-		defaults = {
-			onClose: true,
-			cookieOptions: { expires: 30, path: '/' },
-		};
+	var modal = $.fn.vtexModal; //plugin override
 
 	$.fn.vtexModal = function ( options ) {
 
-		//console.log('overhide init', this, options);
+		var settings,
+			defaults = {
+				onClose: true,
+				cookieOptions: options.cookieOptions ? options.cookieOptions : false,
+			};
 
 		//if( options && options.cookie ) {
 		if( options ) {
@@ -39,10 +38,11 @@ require('vendors/jquery.cookie');
 			}, defaults, options);
 
 			if( ! $.cookie( settings.id ) ) {
-				options.close = function() {
-					$.cookie( settings.id , true, settings.cookieOptions);
-				};
-
+				if (settings.cookieOptions) {
+					options.close = function() {
+						$.cookie( settings.id , true, settings.cookieOptions);
+					};
+				}
 			}else{
 				return; //cookie is set, stop plugin execution
 			}

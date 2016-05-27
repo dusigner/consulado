@@ -1,66 +1,45 @@
-/**
- * VTEX Modal Cookie v2.2.2
- * Copyright (c) 2015 Lucas Monteverde
- * Under MIT License
- */
+/* global $: true, Nitro: true */
 
 require('vendors/vtex-modal');
-require('vendors/jquery.cookie');
 
-(function(factory) {
-	'use strict';
-	if (typeof define === 'function' && define.amd) {
-		define(['jquery'], factory);
-	} else if (typeof exports !== 'undefined') {
-		module.exports = factory(require('jquery'));
-	} else {
-		factory(jQuery);
-	}
-
-}(function($) {
+Nitro.module('sku-select', function() {
 
 	'use strict';
+	
+	var self = this;
+	
+	this.modalComplete = function( modal, content ){
 
-	var modal = $.fn.vtexModal; //plugin override
+		/*content.on('change', 'input', function() {
+			
+			var input = $(this);
 
-	$.fn.vtexModal = function ( options ) {
+			$('input[id="' + $(this).attr('for') + '"]').prop('checked', true);
 
-		var settings,
-			defaults = {
-				onClose: true,
-				cookieOptions: options.cookieOptions ? options.cookieOptions : false,
-			};
+			input.prop('checked', true);
+		});*/
+		
+		// because we can't have two radios with the same name in a page;
+		content.wrap( $('<form />') );
 
-		//if( options && options.cookie ) {
-		if( options ) {
-			settings = $.extend( {
-				id: this.attr('id')
-			}, defaults, options);
+		content.on('click', 'label', function() {
+			//e.preventDefault();
 
-			if( ! $.cookie( settings.id ) ) {
-				if (settings.cookieOptions) {
-					options.close = function() {
-						$.cookie( settings.id , true, settings.cookieOptions);
-					};
-				}
-			}else{
-				return; //cookie is set, stop plugin execution
-			}
+			$(this).prev().trigger('click');
+		});
+	};
+	
+	this.buttonHandler = function(e, id, message){
+		
+		if( message === 'Por favor, selecione o modelo desejado.' ) {
 
+			$('#modal-sku').vtexModal({
+				complete: self.modalComplete
+			});
 		}
-
-		modal.call( this, options );
 	};
 
-	$('div[data-modal-auto]').each(function() {
+	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
+	
+});
 
-		var options = $(this).data();
-
-		if( options.utmSource && options.utmSource !== $.getParameterByName('utm_source') ) {
-			return;
-		}
-
-		$(this).vtexModal( options );
-	});
-
-}));
