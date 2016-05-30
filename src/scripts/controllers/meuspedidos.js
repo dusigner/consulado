@@ -73,7 +73,7 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 		// 		if(result.packageAttachment.packages.length <= 0)  return false;
 
 		// 		$( result.packageAttachment.packages ).each(function(i,e) {
-					
+
 		// 			if(e.courierStatus && e.courierStatus.finished){
 		// 				data.currentState  = states.get( 'pedidoEntregue' );
 		// 		 	}
@@ -211,7 +211,7 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 			if(data.paymentType) data.isBoleto = ( data.paymentType.toString().indexOf('Boleto') >= 0 && data.currentState.group === 'pagamento' ) ? true : false;
 			data.Installment			= (e.paymentData.payments[0]) ? e.paymentData.payments[0].installments : '';
 			data.boletoURL				= (e.paymentData.payments[0]) ? e.paymentData.payments[0].url : '';
-			
+
 			var slas = (e.shippingData.logisticsInfo[0]) ? e.shippingData.logisticsInfo[0].slas : '';
 			var currentSla = self.getSla( data.shippingMethod, slas);
 
@@ -237,7 +237,11 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 			return data;
 	};
-	
+
+	this.sortByDate = function(a, b) {
+			return new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime();
+	};
+
 	Order.list().done(function( orders ) {
 
 		$('.load').remove();
@@ -270,6 +274,8 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 			return curr;
 		});
+
+		orders.sort(self.sortByDate).reverse();
 
 		$( orders ).each(function(i,e) {
 
