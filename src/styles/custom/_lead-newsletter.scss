@@ -25,7 +25,7 @@
 
 		p {
 			margin: 0;
-			margin-right: 12px;
+			margin-right: 25px;
 			padding: 0;
 			color: $green;
 			@include responsiveFont(16, 16, true);
@@ -53,7 +53,7 @@
 		fieldset {
 			display: inline-block;
 			vertical-align: middle;
-			margin: 0 8px;
+			margin: 0;
 			padding: 0;
 			border: none;
 
@@ -63,10 +63,15 @@
 				margin: 10px 0;
 			}
 
+			input {
+				margin: 0 15px;
+			}
+
 			label {
 				display: inline-block;
 				position: relative;
 				width: 148px;
+				margin: 0 10px;
 				padding-left: 25px;
 				@include responsiveFont(12, 16, true);
 
@@ -85,7 +90,7 @@
 
 				@include breakpoint(extra-small, "max") {
 					width: 100%;
-					@include responsiveFont(11, 16, true);
+					margin: 0;
 
 					&:before {
 						top: 0;
@@ -102,7 +107,7 @@
 
 		input {
 			width: 150px;
-			margin: 0 8px;
+			margin: 0 10px;
 			padding: 8px;
 			border: 1px solid $gray-d;
 			border-radius: 5px;
@@ -148,9 +153,12 @@
 			color: $txt-gray;
 		}
 
-		a.secondary-button {
+		input[type="submit"] {
 			@extend .primary-button;
 			display: inline-block;
+			margin: 0;
+			margin-left: 20px;
+			padding: 0.5em;
 			margin-left: 20px;
 			background: #7f2893;
 			border: 2px solid #7f2893;
@@ -164,7 +172,7 @@
 
 			@include breakpoint(extra-small, "max") {
 				display: block;
-				max-width: 180px;
+				max-width: 170px;
 				margin: 0 auto;
 				margin-top: 20px;
 			}

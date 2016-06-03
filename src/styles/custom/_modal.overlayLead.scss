@@ -57,8 +57,22 @@
 					text-align: center;
 					@include responsiveFont(13, 16, true);
 
+					fieldset {
+						display: inline-block;
+						width: 100%;
+						vertical-align: middle;
+						margin: 0;
+						padding: 0;
+						border: none;
+
+						@include breakpoint(extra-small, "max") {
+							display: block;
+							width: 100%;
+							margin: 10px 0;
+						}
+					}
+
 					input {
-						width: 85%;
 						padding: 10px 0;
 						border-bottom: 1px solid $gray-d;
 						color: $txt-gray;
@@ -78,7 +92,7 @@
 						color: $txt-gray;
 					}
 
-					a.secondary-button {
+					input[type="submit"] {
 						@extend .primary-button;
 						display: inline-block;
 						width: 85%;
