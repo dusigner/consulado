@@ -2,9 +2,11 @@
 
 require('vendors/slick');
 require('modules/slider-banner');
+require('custom/modal.overlayLead');
+require('custom/lead-newsletter');
 //require('custom/modal.blackfriday');
 
-Nitro.controller('home', ['slider-banner'], function(){
+Nitro.controller('home', ['slider-banner','modal.overlayLead', 'lead-newsletter'], function(){
 
 	'use strict';
 
@@ -41,4 +43,3 @@ Nitro.controller('home', ['slider-banner'], function(){
 	this.setupSlider();
 
 });
-

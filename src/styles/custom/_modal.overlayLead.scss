@@ -1,0 +1,137 @@
+#vtex-modal-overlay-leads {
+	.modal-holder {
+		width: 525px;
+		max-width: 100%;
+		height: auto;
+		margin-top: 112px;
+		border-radius: 0;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+
+		@include breakpoint(extra-small, "max") {
+			max-width: 280px;
+		}
+
+		.modal-header {
+			position: relative;
+			padding: 1.25em 0.5em;
+			color: $green;
+			@include responsiveFont(22, 16, true);
+			font-weight: bold;
+			text-transform: uppercase;
+
+			&:before {
+				display: block;
+				content: '';
+				position: absolute;
+				top: -103px;
+				left: 0;
+				width: 100%;
+				height: 103px;
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+				background: $green url('http://whirlpoolqa.vteximg.com.br/arquivos/cns-bg-modal-overlay-lead.jpg') center center;
+			}
+
+			button.close {
+				top: -120px;
+				color: $green;
+
+				@include breakpoint(extra-small, "max") {
+					width: 30px;
+					height: 30px;
+					right: -10px;
+				}
+			}
+		}
+
+		.modal-content {
+			display: block;
+			width: 90%;
+			max-width: 300px;
+			margin: 0 auto;
+
+			.row {
+				&>div {
+					width: 100%;
+					text-align: center;
+					@include responsiveFont(13, 16, true);
+
+					input {
+						width: 85%;
+						padding: 10px 0;
+						border-bottom: 1px solid $gray-d;
+						color: $txt-gray;
+						outline: none;
+					}
+
+					::-webkit-input-placeholder {
+						color: $txt-gray;
+					}
+					:-moz-placeholder {
+						color: $txt-gray;
+					}
+					::-moz-placeholder {
+						color: $txt-gray;
+					}
+					:-ms-input-placeholder {
+						color: $txt-gray;
+					}
+
+					a.secondary-button {
+						@extend .primary-button;
+						display: inline-block;
+						width: 85%;
+						margin-top: 30px;
+						@include responsiveFont(14, 16, true);
+						font-weight: normal;
+						text-transform: uppercase;
+					}
+				}
+			}
+		}
+
+		p.message-success {
+			display: none;
+		}
+
+		&.success {
+			.modal-header {
+				padding: 0;
+			}
+
+			.modal-content {
+				p, form {
+					display: none;
+				}
+
+				.row {
+					margin-bottom: 0;
+				}
+			}
+
+			p.message-success {
+				display: block !important;
+				position: relative;
+				margin: 40px 0;
+				color: $orange;
+				@include responsiveFont(13, 16, true);
+				font-weight: bold;
+				text-transform: uppercase;
+
+				&:before {
+					display: block;
+					position: absolute;
+					@include contentBefore();
+					@include icon-get('check-mark');
+					top: 0;
+					left: 10px;
+					color: $green;
+					@include responsiveFont(14, 16, true);
+					font-weight: bold !important;
+					transform: translateX(-50%);
+				}
+			}
+		}
+	}
+}

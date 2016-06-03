@@ -1,0 +1,208 @@
+.lead-newsletter {
+	margin-top: 15px;
+
+	.row {
+		margin-bottom: 0;
+
+		.container {
+			padding: 10px 0;
+			border-top: 1px solid $gray-d;
+			border-bottom: 1px solid $gray-d;
+
+			@include breakpoint(extra-large, "min") {
+				width: 1100px;
+			}
+
+			@include breakpoint(medium, "max") {
+				padding: 20px;
+			}
+		}
+
+		p, form, input {
+			display: inline-block;
+			width: auto;
+		}
+
+		p {
+			margin: 0;
+			margin-right: 12px;
+			padding: 0;
+			color: $green;
+			@include responsiveFont(16, 16, true);
+			font-weight: bold;
+
+			@include breakpoint(large, "max") {
+				display: block;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			@include breakpoint(extra-small, "max") {
+				text-align: center;
+			}
+		}
+
+		form {
+			@include breakpoint(extra-small, "max") {
+				display: block;
+				width: 95%;
+				margin: 10px auto;
+			}
+		}
+
+		fieldset {
+			display: inline-block;
+			vertical-align: middle;
+			margin: 0 8px;
+			padding: 0;
+			border: none;
+
+			@include breakpoint(extra-small, "max") {
+				display: block;
+				width: 100%;
+				margin: 10px 0;
+			}
+
+			label {
+				display: inline-block;
+				position: relative;
+				width: 148px;
+				padding-left: 25px;
+				@include responsiveFont(12, 16, true);
+
+				&:before{
+					content: '';
+					display: inline-block;
+					position: absolute;
+					top: 3px;
+					left: 0;
+					width: 15px;
+					height: 15px;
+					margin-right: 5px;
+					border: 1px solid;
+					border-radius: 2px;
+				}
+
+				@include breakpoint(extra-small, "max") {
+					width: 100%;
+					@include responsiveFont(11, 16, true);
+
+					&:before {
+						top: 0;
+					}
+				}
+
+				a {
+					text-decoration: none;
+
+					span { text-decoration: underline; }
+				}
+			}
+		}
+
+		input {
+			width: 150px;
+			margin: 0 8px;
+			padding: 8px;
+			border: 1px solid $gray-d;
+			border-radius: 5px;
+			color: $txt-gray;
+			@include responsiveFont(13, 16, true);
+			outline: none;
+
+			&:first-child { margin-left: 0; }
+
+			@include breakpoint(extra-small, "max") {
+				display: block;
+				width: 100%;
+				margin: 20px auto;
+
+				&:first-child { margin-left: auto; }
+
+				&:last-child { margin-bottom: 0; }
+			}
+
+			&[type="checkbox"] { display: none; }
+
+			&[type="checkbox"]:checked + label:after{
+				@include contentBefore();
+				top: 3px;
+				left: 0;
+				width: 15px;
+				height: 15px;
+				border-radius: 2px;
+				border: 3px solid $green;
+			}
+		}
+
+		::-webkit-input-placeholder {
+			color: $txt-gray;
+		}
+		:-moz-placeholder {
+			color: $txt-gray;
+		}
+		::-moz-placeholder {
+			color: $txt-gray;
+		}
+		:-ms-input-placeholder {
+			color: $txt-gray;
+		}
+
+		a.secondary-button {
+			@extend .primary-button;
+			display: inline-block;
+			margin-left: 20px;
+			background: #7f2893;
+			border: 2px solid #7f2893;
+			@include responsiveFont(14, 16, true);
+			font-weight: normal;
+			text-transform: uppercase;
+
+			&:hover {
+				color: #7f2893;
+			}
+
+			@include breakpoint(extra-small, "max") {
+				display: block;
+				max-width: 180px;
+				margin: 0 auto;
+				margin-top: 20px;
+			}
+		}
+	}
+
+	p.message-success {
+		display: none;
+	}
+
+	&.success {
+		p, form {
+			display: none;
+		}
+
+		p.message-success {
+			display: block !important;
+			position: relative;
+			width: 280px;
+			margin: 10px auto;
+			padding-left: 30px;
+			color: $orange;
+			@include responsiveFont(13, 16, true);
+			font-weight: bold;
+			text-transform: uppercase;
+
+			&:before {
+				display: block;
+				position: absolute;
+				@include contentBefore();
+				@include icon-get('check-mark');
+				top: 0;
+				left: 15px;
+				color: $green;
+				@include responsiveFont(14, 16, true);
+				font-weight: bold !important;
+				transform: translateX(-50%);
+			}
+		}
+	}
+}

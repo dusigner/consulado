@@ -34,11 +34,11 @@ $base-main: 1080px;
 
 // Breakpoints
 $breakpoint-map: (
-	"extra-small": 30em,
-	"small":       48em,
-	"medium":      60em,
-	"large":       70em,
-	"extra-large": 80em
+	"extra-small": 30em, //480px
+	"small":       48em, //768px
+	"medium":      60em, //960px
+	"large":       70em, //1120px
+	"extra-large": 80em  //1280px
 );
 
 
