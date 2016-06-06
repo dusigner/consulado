@@ -50,8 +50,6 @@
 	// Newsletter
 	.footer-news {
 		.txt {
-			@include responsiveFont(14, 16, true);
-
 			@include responsiveFont(18, 16, true);
 			font-weight: 200;
 			width: fluidWidth(300px, 1020px);
@@ -68,7 +66,7 @@
 
 	.form-newsletter {
 		display: block;
-		float: left;
+		float: right;
 		max-width: 340px;
 		position: relative;
 		width: fluidWidth(365px, 530px);
@@ -160,11 +158,13 @@
 
 	// Redes sociais
 	.footer-redes {
+		display: inline-block;
+		position: relative;
+		left: 6.33%;
+
 		.txt {
-			@include responsiveFont(18, 16, true);
+			@include responsiveFont(14, 16, true);
 			font-weight: 200;
-			padding-left: 15px;
-			max-width: 120px;
 
 			@include breakpoint(small, "max") {
 				@include responsiveFont(20, 16, true);
@@ -182,6 +182,8 @@
 	}
 
 	.network {
+		display: inline-block;
+		float: none;
 		padding:8px 0;
 		text-align:center;
 

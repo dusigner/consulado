@@ -13,35 +13,49 @@ Nitro.module('modal.overlayLead', function(){
 
 	this.setup = function() {
 		$( 'body' ).on('mouseleave',function(e){
-			$('#modal-overlay-leads').vtexModal({
-				cookieOptions: { expires: 1, path: '/' }
-			});
-		});
+			var hasSession = sessionStorage.getItem('overlayAbandono');
 
-		$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){
-			e.preventDefault();
+			if ( (e.pageY - $(window).scrollTop()) <= 1  && !hasSession) {
+				$('#modal-overlay-leads').vtexModal({
+					cookieOptions: { expires: 1, path: '/' }
+				});
 
-			self.validateForm();
+				$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){
+					e.preventDefault();
 
-			return false;
+					$('#form-newsletter-overlay input').on('blur',function(){
+						self.validateInputs();
+					});
+
+					self.validateForm();
+
+					return false;
+				});
+
+				sessionStorage.setItem('overlayAbandono', true);
+			}
 		});
 	};
+
+	this.validateInputs = function() {
+		if($inputName.filter(':blank').length >= 1 ) {
+			$inputName.addClass('error');
+		} else {
+			$inputName.removeClass('error');
+		}
+
+		if($inputEmail.filter(':blank').length >= 1 ) {
+			$inputEmail.addClass('error');
+		} else {
+			$inputEmail.removeClass('error');
+		}
+	}
 
 	this.validateForm = function() {
 		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
 			valid = true;
 		} else {
-			if($inputName.filter(':blank').length >= 1 ) {
-				$inputName.addClass('error');
-			} else {
-				$inputName.removeClass('error');
-			}
-
-			if($inputEmail.filter(':blank').length >= 1 ) {
-				$inputEmail.addClass('error');
-			} else {
-				$inputEmail.removeClass('error');
-			}
+			self.validateInputs();
 		}
 
 		if(valid) {

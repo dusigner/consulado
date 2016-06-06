@@ -127,9 +127,31 @@
 				&:last-child { margin-bottom: 0; }
 			}
 
-			&[type="checkbox"] { display: none; }
+			&[type="checkbox"] {
+				display: none;
+
+				&.error + label {
+					a {
+						color: #f49a9a;
+					}
+
+					&:after {
+						@include contentBefore();
+						top: 3px;
+						left: 0;
+						width: 15px;
+						height: 15px;
+						border-radius: 2px;
+						border: 3px solid #f49a9a;
+					}
+				}
+			}
 
 			&[type="checkbox"]:checked + label:after{
+				a {
+					color: $txt-gray;
+				}
+
 				@include contentBefore();
 				top: 3px;
 				left: 0;

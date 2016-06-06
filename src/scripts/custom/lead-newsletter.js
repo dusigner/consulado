@@ -6,12 +6,16 @@ Nitro.module('lead-newsletter', function(){
 		$inputName = $('#form-newsletter input[name="name"]'),
 		$inputEmail = $('#form-newsletter input[name="email"]'),
 		clientURI = '/api/ds/pub/documents/CL',
-		$inputTermos = $inputTermos,
+		$inputTermos = $('#form-newsletter input[type="checkbox"]'),
 		valid = false;
 
 	this.setup = function() {
 		$('.lead-newsletter #form-newsletter').submit(function(e){
 			e.preventDefault();
+
+			$('#form-newsletter input').on('blur',function(){
+				self.validateInputs();
+			});
 
 			self.validateForm();
 
@@ -19,27 +23,31 @@ Nitro.module('lead-newsletter', function(){
 		});
 	};
 
+	this.validateInputs = function() {
+		if($inputName.filter(':blank').length >= 1 ) {
+			$inputName.addClass('error');
+		} else {
+			$inputName.removeClass('error');
+		}
+
+		if($inputEmail.filter(':blank').length >= 1 ) {
+			$inputEmail.addClass('error');
+		} else {
+			$inputEmail.removeClass('error');
+		}
+
+		if ( !$inputTermos.is(':checked') ) {
+			$inputTermos.addClass('error');
+		} else {
+			$inputTermos.removeClass('error');
+		}
+	}
+
 	this.validateForm = function() {
-		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $('input[type="checkbox"]').is(':checked')) {
+		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $inputTermos.is(':checked')) {
 			valid = true;
 		} else {
-			if($inputName.filter(':blank').length >= 1 ) {
-				$inputName.addClass('error');
-			} else {
-				$inputEmail.removeClass('error');
-			}
-
-			if($inputEmail.filter(':blank').length >= 1 ) {
-				$inputEmail.addClass('error');
-			} else {
-				$inputEmail.removeClass('error');
-			}
-
-			if ( !$('input[type="checkbox"').is(':checked') ) {
-				$inputTermos.addClass('error');
-			} else {
-				$inputTermos.removeClass('error');
-			}
+			self.validateInputs();
 		}
 
 		if(valid) {
