@@ -5,6 +5,7 @@ Nitro.module('lead-newsletter', function(){
 	var self = this,
 		$inputName = $('#form-newsletter input[name="name"]'),
 		$inputEmail = $('#form-newsletter input[name="email"]'),
+		clientURI = '/api/ds/pub/documents/CL',
 		$inputTermos = $inputTermos,
 		valid = false;
 
@@ -53,16 +54,22 @@ Nitro.module('lead-newsletter', function(){
 	this.registerNewsletter = function(name,email,termos) {
 		var data = {};
 
-		data.name = name;
+		data.firstName = name;
 		data.email = email;
-		data.termos = termos;
+		data.isNewsletterOptIn = true;
 
-		//quando finalizar
-		$('.lead-newsletter').addClass('success');
+		return $.ajax({
+			url: clientURI,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8'
+		}).done(function(){
+			$('.lead-newsletter').addClass('success');
 
-		setTimeout(function(){
-			$('.lead-newsletter').fadeOut();
-		}, 2000)
+			setTimeout(function(){
+				$('.lead-newsletter').fadeOut();
+			}, 2000)
+		});
 	};
 
 	self.setup();

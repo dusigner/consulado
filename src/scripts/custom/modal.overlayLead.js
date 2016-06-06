@@ -8,6 +8,7 @@ Nitro.module('modal.overlayLead', function(){
 	var self = this,
 		$inputName = $('#modal-overlay-leads input[name="name"]'),
 		$inputEmail = $('#modal-overlay-leads input[name="email"]'),
+		clientURI = '/api/ds/pub/documents/CL',
 		valid = false;
 
 	this.setup = function() {
@@ -52,16 +53,23 @@ Nitro.module('modal.overlayLead', function(){
 	this.registerNewsletter = function(name,email) {
 		var data = {};
 
-		data.name = name;
+		data.firstName = name;
 		data.email = email;
+		data.isNewsletterOptIn = true;
 
-		//quando finalizar
-		$('#vtex-modal-overlay-leads .modal-holder').addClass('success');
-		$('#vtex-modal-overlay-leads .modal-header').html('<button type="button" class="close"></button>');
+		return $.ajax({
+			url: clientURI,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8'
+		}).done(function(){
+			$('#vtex-modal-overlay-leads .modal-holder').addClass('success');
+			$('#vtex-modal-overlay-leads .modal-header').html('<button type="button" class="close"></button>');
 
-		setTimeout(function(){
-			$('#vtex-modal-overlay-leads .modal-holder,#vtex-modal-overlay-leads').fadeOut();
-		}, 2000)
+			setTimeout(function(){
+				$('#vtex-modal-overlay-leads .modal-holder,#vtex-modal-overlay-leads').fadeOut();
+			}, 2000)
+		});
 	};
 
 	self.setup();
