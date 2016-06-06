@@ -12,8 +12,10 @@ Nitro.module('modal.overlayLead', function(){
 		valid = false;
 
 	this.setup = function() {
-		$('#modal-overlay-leads').vtexModal({
-			cookieOptions: { expires: 0, path: '/' }
+		$( 'body' ).on('mouseleave',function(e){
+			$('#modal-overlay-leads').vtexModal({
+				cookieOptions: { expires: 1, path: '/' }
+			});
 		});
 
 		$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){

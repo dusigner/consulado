@@ -50,6 +50,8 @@
 	// Newsletter
 	.footer-news {
 		.txt {
+			@include responsiveFont(14, 16, true);
+
 			@include responsiveFont(18, 16, true);
 			font-weight: 200;
 			width: fluidWidth(300px, 1020px);
@@ -66,7 +68,7 @@
 
 	.form-newsletter {
 		display: block;
-		float: right;
+		float: left;
 		max-width: 340px;
 		position: relative;
 		width: fluidWidth(365px, 530px);
