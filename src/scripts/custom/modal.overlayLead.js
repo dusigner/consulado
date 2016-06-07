@@ -9,13 +9,12 @@ Nitro.module('modal.overlayLead', function(){
 		$inputName = $('#modal-overlay-leads input[name="name"]'),
 		$inputEmail = $('#modal-overlay-leads input[name="email"]'),
 		clientURI = '/api/ds/pub/documents/CL',
-		valid = false;
+		valid = false,
+		hasSession = sessionStorage.getItem('overlayLead');
 
 	this.setup = function() {
 		$( 'body' ).on('mouseleave',function(e){
-			var hasSession = sessionStorage.getItem('overlayAbandono');
-
-			if ( (e.pageY - $(window).scrollTop()) <= 1  && !hasSession) {
+			if ((e.pageY - $(window).scrollTop()) <= 1  && !hasSession) {
 				$('#modal-overlay-leads').vtexModal({
 					cookieOptions: { expires: 1, path: '/' }
 				});
@@ -31,8 +30,6 @@ Nitro.module('modal.overlayLead', function(){
 
 					return false;
 				});
-
-				sessionStorage.setItem('overlayAbandono', true);
 			}
 		});
 	};
@@ -81,6 +78,8 @@ Nitro.module('modal.overlayLead', function(){
 		}).done(function(){
 			$('#vtex-modal-overlay-leads .modal-holder').addClass('success');
 			$('#vtex-modal-overlay-leads .modal-header').html('<button type="button" class="close"></button>');
+
+			sessionStorage.setItem('overlayLead', true);
 
 			setTimeout(function(){
 				$('#vtex-modal-overlay-leads .modal-holder,#vtex-modal-overlay-leads').fadeOut();
