@@ -12,7 +12,7 @@
 		<div class="centralize">
 			<span>OK</span>
 			<p>
-				Estamos modernizando nossos sistemas, e por isso, até o dia 25 de fevereiro, prazos de frete, cancelamento e estornos serão alterados.
+				Estamos modernizando nossos sistemas e, por isso, até o dia 25 de fevereiro os prazos de frete, cancelamentos e estornos serão alterados.
 				<a href="https://consul.zendesk.com/hc/pt-br/articles/207800483-Aviso-Importante" title="Saiba mais" target="_blank">Saiba mais</a>
 			</p>
 		</div>
@@ -31,17 +31,25 @@
 	<div class="banner-principal banner-mobile slides show-extra-small"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
 	<!-- /Slide mobile-->
 
+	<div class="lead-newsletter">
+    	<div class="row">
+    		<div class="container">
+    			<vtex:contentPlaceHolder id="LeadNewsletter" />
+    		</div>
+    	</div>
+    </div>
+
 	<!-- Prateleira - 01 -->
 	<section class="home-prateleira-01 prateleira-slider clearfix">
 		<div class="container">
-			<!-- <p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 01 - Titulo" /></p> -->
+			<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 01 - Titulo" /></p>
 			<vtex:contentPlaceHolder id="Prateleira 01 - Conteudo" />
 		</div>
 	</section>
 	<!-- /Prateleira - 01 -->
 
 	<!-- Prateleira - 02 -->
-	<section class="home-prateleira-02 clearfix">
+	<section class="home-prateleira-02 prateleira-slider clearfix">
 		<div class="container">
 			<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 02 - Titulo" /></p>
 			<vtex:contentPlaceHolder id="Prateleira 02 - Conteudo" />
@@ -90,6 +98,14 @@
 		</div>
 	</section>
 	<!-- /Detaque - 03 -->
+
+	<div id="modal-overlay-leads" data-title="Não perca mais nossas ofertas e novidades!" style="display:none;">
+    	<div class="row">
+    		<div class="col-md-12">
+    			<vtex:contentPlaceHolder id="OverlayLeads" />
+    		</div>
+    	</div>
+    </div>
 
 	<!-- Serviços -->
 	<vtex:template id="0-consul-servicos" />
