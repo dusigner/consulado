@@ -3,28 +3,30 @@ Nitro.module('lead-newsletter', function(){
 	'use strict';
 
 	var self = this,
-		$inputName = $('#form-newsletter input[name="name"]'),
-		$inputEmail = $('#form-newsletter input[name="email"]'),
-		clientURI = '/api/ds/pub/documents/CL',
+		$inputName = $('#form-newsletter input[type="text"]'),
+		$inputEmail = $('#form-newsletter input[type="email"]'),
 		$inputTermos = $('#form-newsletter input[type="checkbox"]'),
 		valid = false,
-		hasSession = sessionStorage.getItem('headerLead');;
+		hasSession = sessionStorage.getItem('leadNewsletter'),
+		clientURI = '/api/ds/pub/documents/CL';
 
 	this.setup = function() {
-		if (!hasSession) {
-			$('.lead-newsletter').fadeIn();
+		if (sessionStorage.profileVtex.indexOf('UserId') == -1) {
+			if (!hasSession) {
+				$('.lead-newsletter').fadeIn();
 
-			$('.lead-newsletter #form-newsletter').submit(function(e){
-				e.preventDefault();
+				$('.lead-newsletter #form-newsletter').submit(function(e){
+					e.preventDefault();
 
-				$('#form-newsletter input').on('blur',function(){
-					self.validateInputs();
+					$('#form-newsletter input').on('blur',function(){
+						self.validateInputs();
+					});
+
+					self.validateForm();
+
+					return false;
 				});
-
-				self.validateForm();
-
-				return false;
-			});
+			}
 		}
 	};
 
@@ -79,7 +81,7 @@ Nitro.module('lead-newsletter', function(){
 		}).done(function(){
 			$('.lead-newsletter').addClass('success');
 
-			sessionStorage.setItem('headerLead', true);
+			sessionStorage.setItem('leadNewsletter', true);
 
 			setTimeout(function(){
 				$('.lead-newsletter').fadeOut();

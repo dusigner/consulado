@@ -6,30 +6,34 @@ Nitro.module('modal.overlayLead', function(){
 	'use strict';
 
 	var self = this,
-		$inputName = $('#modal-overlay-leads input[name="name"]'),
-		$inputEmail = $('#modal-overlay-leads input[name="email"]'),
-		clientURI = '/api/ds/pub/documents/CL',
+		$inputName = $('#modal-overlay-leads input[type="text"]'),
+		$inputEmail = $('#modal-overlay-leads input[type="email"]'),
+		$inputTermos = $('#modal-overlay-leads input[type="checkbox"]'),
 		valid = false,
-		hasSession = sessionStorage.getItem('overlayLead');
+		clientURI = '/api/ds/pub/documents/CL';
 
 	this.setup = function() {
 		$( 'body' ).on('mouseleave',function(e){
-			if ((e.pageY - $(window).scrollTop()) <= 1  && !hasSession) {
-				$('#modal-overlay-leads').vtexModal({
-					cookieOptions: { expires: 1, path: '/' }
-				});
+			if (sessionStorage.profileVtex.indexOf('UserId') == -1) {
+				var hasSession = sessionStorage.getItem('leadNewsletter');
 
-				$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){
-					e.preventDefault();
-
-					$('#form-newsletter-overlay input').on('blur',function(){
-						self.validateInputs();
+				if ((e.pageY - $(window).scrollTop()) <= 1 && !hasSession) {
+					$('#modal-overlay-leads').vtexModal({
+						cookieOptions: { expires: 1, path: '/' }
 					});
 
-					self.validateForm();
+					$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){
+						e.preventDefault();
 
-					return false;
-				});
+						$('#modal-overlay-leads input').on('blur',function(){
+							self.validateInputs();
+						});
+
+						self.validateForm();
+
+						return false;
+					});
+				}
 			}
 		});
 	};
@@ -46,6 +50,12 @@ Nitro.module('modal.overlayLead', function(){
 		} else {
 			$inputEmail.removeClass('error');
 		}
+
+		if ( !$inputTermos.is(':checked') ) {
+			$inputTermos.addClass('error');
+		} else {
+			$inputTermos.removeClass('error');
+		}
 	}
 
 	this.validateForm = function() {
@@ -57,13 +67,14 @@ Nitro.module('modal.overlayLead', function(){
 
 		if(valid) {
 			var name = $inputName.val(),
-				email = $inputEmail.val();
+				email = $inputEmail.val(),
+				termos = true;
 
-			self.registerNewsletter(name,email);
+			self.registerNewsletter(name,email,termos);
 		}
 	};
 
-	this.registerNewsletter = function(name,email) {
+	this.registerNewsletter = function(name,email,termos) {
 		var data = {};
 
 		data.firstName = name;
@@ -79,7 +90,9 @@ Nitro.module('modal.overlayLead', function(){
 			$('#vtex-modal-overlay-leads .modal-holder').addClass('success');
 			$('#vtex-modal-overlay-leads .modal-header').html('<button type="button" class="close"></button>');
 
-			sessionStorage.setItem('overlayLead', true);
+			sessionStorage.setItem('leadNewsletter', true);
+
+			$('.lead-newsletter').fadeOut();
 
 			setTimeout(function(){
 				$('#vtex-modal-overlay-leads .modal-holder,#vtex-modal-overlay-leads').fadeOut();
