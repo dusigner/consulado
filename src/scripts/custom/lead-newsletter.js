@@ -3,24 +3,33 @@ Nitro.module('lead-newsletter', function(){
 	'use strict';
 
 	var self = this,
-		$inputName = $('#form-newsletter input[name="name"]'),
-		$inputEmail = $('#form-newsletter input[name="email"]'),
-		clientURI = '/api/ds/pub/documents/CL',
+		$inputName = $('#form-newsletter input[type="text"]'),
+		$inputEmail = $('#form-newsletter input[type="email"]'),
 		$inputTermos = $('#form-newsletter input[type="checkbox"]'),
-		valid = false;
+		valid = false,
+		hasSession = sessionStorage.getItem('leadNewsletter'),
+		clientURI = '/api/ds/pub/documents/CL';
 
 	this.setup = function() {
-		$('.lead-newsletter #form-newsletter').submit(function(e){
-			e.preventDefault();
+		console.log('sessionStorage',sessionStorage);
 
-			$('#form-newsletter input').on('blur',function(){
-				self.validateInputs();
-			});
+		if (!sessionStorage.profileVtex) {
+			if (!hasSession) {
+				$('.lead-newsletter').fadeIn();
 
-			self.validateForm();
+				$('.lead-newsletter #form-newsletter').submit(function(e){
+					e.preventDefault();
 
-			return false;
-		});
+					$('#form-newsletter input').on('blur',function(){
+						self.validateInputs();
+					});
+
+					self.validateForm();
+
+					return false;
+				});
+			}
+		}
 	};
 
 	this.validateInputs = function() {
@@ -73,6 +82,8 @@ Nitro.module('lead-newsletter', function(){
 			contentType: 'application/json; charset=utf-8'
 		}).done(function(){
 			$('.lead-newsletter').addClass('success');
+
+			sessionStorage.setItem('leadNewsletter', true);
 
 			setTimeout(function(){
 				$('.lead-newsletter').fadeOut();

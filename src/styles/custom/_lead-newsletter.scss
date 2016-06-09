@@ -1,4 +1,7 @@
+@charset "UTF-8";
+
 .lead-newsletter {
+	display: none;
 	margin-top: 15px;
 
 	.row {
@@ -164,18 +167,7 @@
 			}
 		}
 
-		::-webkit-input-placeholder {
-			color: $txt-gray;
-		}
-		:-moz-placeholder {
-			color: $txt-gray;
-		}
-		::-moz-placeholder {
-			color: $txt-gray;
-		}
-		:-ms-input-placeholder {
-			color: $txt-gray;
-		}
+		@include inputPlaceholderColor($txt-gray);
 
 		input[type="submit"] {
 			@extend .primary-button;
@@ -230,7 +222,7 @@
 				@include icon-get('check-mark');
 				top: 0;
 				left: 15px;
-				color: $green;
+				color: #9aca3c;
 				@include responsiveFont(14, 16, true);
 				font-weight: bold !important;
 				transform: translateX(-50%);
