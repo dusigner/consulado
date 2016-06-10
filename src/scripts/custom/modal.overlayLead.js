@@ -59,7 +59,7 @@ Nitro.module('modal.overlayLead', function(){
 	}
 
 	this.validateForm = function() {
-		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
+		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length  < 1 && $inputTermos.is(':checked')) {
 			valid = true;
 		} else {
 			self.validateInputs();

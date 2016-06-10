@@ -14,7 +14,7 @@
 
 		.modal-header {
 			position: relative;
-			padding: 1.25em 0.5em;
+			padding: 1.25em 5em;
 			@include responsiveFont(22, 16, true);
 			font-weight: bold;
 			text-transform: uppercase;
@@ -156,6 +156,7 @@
 						@include responsiveFont(14, 16, true);
 						font-weight: normal;
 						text-transform: uppercase;
+						outline: none;
 					}
 
 					@include inputPlaceholderColor($txt-gray);

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Consul</title>
+</head>
+<body>
+    <center>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" calass="mainContent" style="max-width: 600px;" bgcolor="#ffffff" >
+            <tr>
+                <td>
+                    <!-- header -->
+                    <table class="header" width="100%" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#9ac93b">
+                        <tr>
+                            <td  align="center" valign="middle">
+                                <img style="display: block" src="http://whirlpool.vteximg.com.br/arquivos/20160804_Padronizacao_cns_logo_consul.jpg" alt="Consul">
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- end header -->
+
+                    <!-- Pre Content -->
+
+                    <table class="pre-content" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 520px;" >
+
+                                    <tr>
+                                        <td  align="center" valign="middle">
+                                            <br>
+                                            <p align="left" style="font-family: Arial, snas-serif; color: #323232; font-size: 16px; ">
+                                                Olá <strong> {{clientProfileData.firstName}}</strong>
+                                                <br>
+                                                Acompanhe o histórico de movimentação do pedido <span style="color: #9ac93b">{{sequence}}</span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- end pre Content -->
+
+                    <!-- content -->
+
+                    <table class="content" width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 520px;" >
+                                    <!-- title "Detalhes de pedido" -->
+                                    <tr>
+                                        <td align="left" valign="baseline" height="40px" >
+                                            <img style="display: block" src="http://whirlpool.vteximg.com.br/arquivos/20160804_Padronizacao_cns_detalhes_pedido.jpg" height="18" width="170" alt="Detalhes do pedido">
+                                        </td>
+                                    </tr>
+                                    <!-- end title -->
+                                    <!-- Product List    -->
+
+                                    <tr>
+                                        <td width="100%" align="cernter">
+                                            {{#each items}}
+                                            <!-- Product row -->
+                                            <table class="product" width="100%" border="1" bordercolor="#D7D7D7" cellpadding="0" cellspacing="0" align="center" style="margin-bottom: 5px">
+                                                <tr>
+                                                    <td width="100%" align="center">
+                                                        <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
+                                                            <tr>
+                                                                <td width="100%" align="center">
+
+                                                                    <table width="100%" align="center" cellpadding="0" cellspacing="0" style="max-width:510px; display: inline-block">
+                                                                        <tr>
+                                                                            <td align="center">
+                                                                                <table align="center" cellpadding="0" cellspacing="0" >
+                                                                                    <tr>
+                                                                                        <td  width="510" align="center" valign="top">
+                                                                                            <table width="100%"  align="center" cellpadding="0" cellspacing="0" >
+                                                                                                <tr>
+                                                                                                    <td align="center">
+                                                                                                        <p align="left" width="510" valign="middle" style="font-family: Arial, snas-serif; padding: 30px 10px; margin: 0; color: #555555; line-height: 25px; font-size: 16px; ">
+                                                                                                            <!-- name var -->
+                                                                                                            <span>{{name}}</span>
+                                                                                                        </p>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!-- End Product row -->
+                                            {{/each}}
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- end Product List -->
+                        <tr>
+                            <td height="30px" >
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- end content -->
+
+                    <!-- Pre Footer -->
+                    <table class="pre-footer" width="100%" border="0" cellpadding="0" cellspacing="0" align="center"  bgcolor="#F6F4F5" >
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 520px;" >
+                                    <!-- title "Historico de movimentaçao" -->
+                                    <tr>
+                                        <td align="left" valign="bottom" height="40px" >
+                                            <img style="display: block" src="http://whirlpool.vteximg.com.br/arquivos/20160804_Padronizacao_cns_historico_movimentacao.jpg" height="18" width="241" alt="Historico de movimentação">
+                                        </td>
+                                    </tr>
+                                    <!-- end title -->
+
+                                    <tr>
+                                        <td>
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" >
+                                                <tr>
+                                                    <td>
+                                                        {{#if package.courier}}
+                                                        <table align="left"  width="100%" style="max-width: 260px !important">
+                                                            <tr>
+                                                                <td  align="left" valign="top">
+                                                                    <br>
+                                                                    <p align="left" style="font-family: Arial, snas-serif; color: #323232; max-width: 220px; font-size: 14px; ">
+                                                                        <strong>Dados da Transportadora</strong>
+                                                                        <br>
+                                                                        {{package.courier}}
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        {{/if}}
+                                                        <table align="left"  width="100%" style="max-width: 260px !important">
+                                                            <tr>
+                                                                <td  align="left" valign="top" width="260">
+                                                                    <br>
+                                                                    <p align="left" style="font-family: Arial, snas-serif; color: #323232; max-width: 220px; font-size: 14px; ">
+                                                                        <strong>Enderecó de entrega</strong>
+                                                                        <br>
+                                                                        {{shippingData.address.receiverName}}<br>
+                                                                        {{shippingData.address.street}}, {{shippingData.address.number}} - {{shippingData.address.neighborhood}}<br>
+                                                                        {{shippingData.address.city}} - {{shippingData.address.state}}<br>
+                                                                        {{shippingData.address.postalCode}}
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" bgcolor="#ebebeb">
+                                                <tr>
+                                                    <td height="26" style="line-height: 26px; font-size: 12px; font-family: Arial, snas-serif; color: #323232; width:   100%; padding: 0 5px;">
+                                                        {{formatDateTime lastChange}}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <p style="font-family: Arial, snas-serif; color: #323232; font-size: 14px; ">
+                                                            <strong>Movimentação: {{package.courierStatus.data.0.description}}</strong><br>
+                                                            <strong>Data: {{formatDateTime package.courierStatus.data.0.lastChange}}</strong><br>
+                                                            <strong>{{#if package.courierStatus.data.0.city}} Cidade: {{package.courierStatus.data.0.city}} {{/if}}</strong>
+                                                        </p>
+                                                        <hr>
+                                                        <p style="font-family: Arial, snas-serif; color: #323232; font-size: 14px; ">
+                                                            <srtrong>Atenção:</srtrong>Lembramos que pedidos que contenham mais de um produto podem ser fturados em notas distintas e entregues separadamente.
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- end Pre Footer -->
+
+                    <!-- footer -->
+                    <table class="footer" width="100%" border="0" cellpadding="0" cellspacing="0" align="center"  bgcolor="#FFFFFF" >
+                        <tr>
+                            <td height="20"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 520px;" >
+                                    <tr>
+                                        <td>
+                                            <p align="left" valign="top" style="font-family: Arial, snas-serif; padding: 0; color: #555555; font-size: 16px; ">
+                                                <strong>
+                                                    Atenciosamente,<br>
+                                                    Equipe {{_accountInfo.TradingName}}
+                                                </strong>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="support" width="100%" border="0" cellpadding="0" cellspacing="0" align="center"  bgcolor="#9ac93b" >
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 520px;" >
+                                    <tr>
+                                        <td>
+
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+                                                <tr>
+                                                    <td width="40"  valign="middle">
+                                                        <img src="http://whirlpool.vteximg.com.br/arquivos/20160804_Padronizacao_cns_bt_duvidas.jpg" height="35" width="35" alt="Suporte" align="left" valign="middle">
+                                                    </td>
+                                                    <td width="220"  valign="middle">
+                                                        <p align="left" valign="middle" style="font-family: Arial, snas-serif; padding: 0; margin: 0; color: #FFFFFF; font-size: 12px; line-height: 60px">
+                                                            Duvidas ? <a href="#" style="text-decoration: underline; font-weigth: 300; color: #FFFFFF;">Clique aqui</a>
+                                                        </p>
+                                                    </td>
+
+                                                    <td height="60" valign="middle">
+                                                        <img align="right" src="http://whirlpool.vteximg.com.br/arquivos/20160804_Padronizacao_cns_logo_consul_footer.jpg" height="19" width="73" alt="">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- end footer -->
+                        </tr>
+                    </table>
+                </center>
+            </body>
+            </html>

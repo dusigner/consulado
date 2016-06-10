@@ -181,6 +181,7 @@
 			@include responsiveFont(14, 16, true);
 			font-weight: normal;
 			text-transform: uppercase;
+			outline: none;
 
 			&:hover {
 				color: #7f2893;
