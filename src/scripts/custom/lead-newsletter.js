@@ -10,9 +10,8 @@ Nitro.module('lead-newsletter', function(){
 		hasSession = sessionStorage.getItem('leadNewsletter'),
 		clientURI = '/api/ds/pub/documents/CL';
 
-	this.setup = function() {
-		if (sessionStorage.profileVtex.indexOf('UserId') == -1) {
-			if (!hasSession) {
+	this.setup = function(orderForm) {
+			if ( ! hasSession && ! orderForm.clientProfileData.email ) {
 				$('.lead-newsletter').fadeIn();
 
 				$('.lead-newsletter #form-newsletter').submit(function(e){
@@ -27,7 +26,6 @@ Nitro.module('lead-newsletter', function(){
 					return false;
 				});
 			}
-		}
 	};
 
 	this.validateInputs = function() {
@@ -89,6 +87,8 @@ Nitro.module('lead-newsletter', function(){
 		});
 	};
 
-	self.setup();
+	window.vtexjs.checkout.getOrderForm().done(function(result) {
+		self.setup(result);
+	});
 
 });

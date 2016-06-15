@@ -12,9 +12,9 @@ Nitro.module('modal.overlayLead', function(){
 		valid = false,
 		clientURI = '/api/ds/pub/documents/CL';
 
-	this.setup = function() {
-		$( 'body' ).on('mouseleave',function(e){
-			if (sessionStorage.profileVtex.indexOf('UserId') == -1) {
+	this.setup = function(orderForm) {
+		$( 'body' ).on('mouseleave',function(e) {
+			if ( ! hasSession && ! orderForm.clientProfileData.email ) {
 				var hasSession = sessionStorage.getItem('leadNewsletter');
 
 				if ((e.pageY - $(window).scrollTop()) <= 1 && !hasSession) {
@@ -22,7 +22,7 @@ Nitro.module('modal.overlayLead', function(){
 						cookieOptions: { expires: 1, path: '/' }
 					});
 
-					$('#vtex-modal-overlay-leads #form-newsletter-overlay').submit(function(e){
+					$('#vtex-modal-overlay-leads').submit(function(e){
 						e.preventDefault();
 
 						$('#modal-overlay-leads input').on('blur',function(){
@@ -100,6 +100,8 @@ Nitro.module('modal.overlayLead', function(){
 		});
 	};
 
-	self.setup();
+	window.vtexjs.checkout.getOrderForm().done(function(result) {
+		self.setup(result);
+	});
 
 });
