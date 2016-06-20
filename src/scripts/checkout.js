@@ -116,6 +116,14 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 				e.$element.attr({ 'maxlength': 35, 'data-parsley-maxlength': 35 });
 			}
 
+			if (e.$element.is('#ship-postal-code')) {
+				if ($('#ship-street').val().length > 35) {
+					$('.ship-filled-data').addClass('hide');
+					$('#ship-street').parent().removeClass('hide');
+					$('#ship-number').blur();
+					$('#ship-street').focus();
+				}
+			}
 		}));
 	};
 
