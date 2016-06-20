@@ -56,27 +56,28 @@ Nitro.module('boleto', function() {
 		}
 	});
 
-	var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span> <span>(' + cmcDiscount + '% OFF)</span><span class="gray">, por</span> '+priceCash(prodAvailable[0].bestPrice)+'</p>';
-	$('.prod-preco').append(boletoInfo);
+	if (prodAvailable.length > 0) {
+		var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span> <span>(' + cmcDiscount + '% OFF)</span><span class="gray">, por</span> '+priceCash(prodAvailable[0].bestPrice)+'</p>';
+		$('.prod-preco').append(boletoInfo);
 
-	/*
-	 * oh yeah, vtex hack!
-	 * template price.html has more variables, but price plugin doesn't
-	 * get data from global sku, so this overhide the plugin function.
-	 */
-	var price = $('.plugin-preco').data('price');
+		/*
+		 * oh yeah, vtex hack!
+		 * template price.html has more variables, but price plugin doesn't
+		 * get data from global sku, so this overhide the plugin function.
+		 */
+		var price = $('.plugin-preco').data('price');
 
-	if( price ) {
-		var getSku = price.getSku;
+		if( price ) {
+			var getSku = price.getSku;
 
-		price.getSku = function() {
-			var sku = getSku();
+			price.getSku = function() {
+				var sku = getSku();
 
-			sku.valPercentage = prodAvailable[0].valPercentage;
-			sku.cashPercentage = prodAvailable[0].cashPercentage;
+				sku.valPercentage = prodAvailable[0].valPercentage;
+				sku.cashPercentage = prodAvailable[0].cashPercentage;
 
-			return sku;
-		};
+				return sku;
+			};
+		}
 	}
-
 });
