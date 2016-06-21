@@ -1,0 +1,141 @@
+#compre-junto {
+	display: block !important;
+	max-width: 1280px;
+	margin: 90px auto;
+	padding: 0 90px;
+
+	@include breakpoint(medium, "max") {
+		width: 95%;
+		padding: 0 20px;
+	}
+
+	h4 {
+		color: $green;
+		@include responsiveFont(30, 16, true);
+		font-weight: 300;
+		text-transform: uppercase;
+
+		@include breakpoint(medium, "max") {
+			@include responsiveFont(28, 16, true);
+		}
+	}
+
+	.buy-together-content {
+		table {
+			width: 100%;
+			min-height: 250px;
+			padding: 40px;
+			//border: 2px solid $green;
+		}
+
+		tr {
+			width: 100%;
+			margin: 20px 0;
+			padding: 40px 20px;
+
+			@include breakpoint(medium, "max") {
+				display: block;
+				width: 90%;
+				margin: 20px auto;
+				padding: 40px 20px;
+				border-bottom: 1px solid $green;
+				text-align: center;
+			}
+
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+
+		.itemA, .itemB {
+			max-width: 360px;
+			padding: 0 30px;
+			text-align: center;
+
+			@include breakpoint(medium, "max") {
+				display: block;
+				width: 100%;
+				max-width: 100%;
+			}
+
+			h3 {
+				color: $base-font-color;
+				@include responsiveFont(16, 16, true);
+				text-align: left;
+
+				@include breakpoint(medium, "max") {
+					text-align: center;
+				}
+
+				a {
+					color: $base-font-color;
+				}
+			}
+		}
+
+		.plus, .equal {
+			color: $green;
+			@include responsiveFont(50, 16, true);
+			text-align: center;
+
+			@include breakpoint(medium, "max") {
+				display: block;
+				width: 100%;
+				max-width: 100%;
+			}
+		}
+
+		.buy {
+			padding-top: 20px;
+			padding-left: 40px;
+			line-height: 15px;
+
+			@include breakpoint(medium, "max") {
+				display: block;
+				width: 100%;
+				padding-left: 0;
+				text-align: center;
+			}
+
+			@include breakpoint(small, "max") {
+				text-align: left;
+			}
+
+			>strong {
+				@include responsiveFont(16, 16, true);
+			}
+
+			br + strong {
+				display: block;
+			}
+		}
+
+		p.comprar-junto {
+			width: 205px;
+
+			@include breakpoint(medium, "max") {
+				width: 100%;
+			}
+
+			a {
+				display: block;
+				width: 205px;
+				margin: 0 auto;
+				margin-top: 25px;
+				@include responsiveFont(15, 16, true);
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				@extend %primary-button;
+			}
+		}
+
+		p.more {
+			display: none;
+		}
+
+		.buy-together {
+			display: none;
+		}
+	}
+}

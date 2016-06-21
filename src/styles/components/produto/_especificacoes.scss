@@ -1,0 +1,183 @@
+#especificacoes {
+	background: #e9e9e9;
+	overflow: hidden;
+	padding: 80px 0;
+	text-align: center;
+
+	div[class^="col-"] {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	h2 {
+		position: relative;
+		margin: 0 0 85px;
+
+		&:after, &:before{
+			@include contentBefore();
+			border-image: url(/arquivos/border-dots-d.png) 70 78 82 72 fill repeat;
+			position: absolute;
+			@include breakpoint(large, "max") {
+				display: none!important;
+			}
+		}
+
+		&:before{
+			border-width: 70px 0 0 72px;
+			height: 100px;
+			left: -290px;
+			top: 20px;
+			width: 270px;
+		}
+
+		&:after{
+			border-width: 70px 0 0 0;
+			right: -1382px;
+			top: 20px;
+			width: 1270px;
+		}
+
+		span{ line-height: 0.8; }
+
+		i{
+			color: $green;
+			@include responsiveFont(60, 16, true);
+			height: 66px;
+			position: absolute;
+			right: -101px;
+			transform: rotateZ(-15deg);
+			top: 7px;
+			width: 56px;
+		}
+
+	}
+
+	h3, h4 {
+		@include font-size(14px);
+		text-align: left;
+	}
+
+	h3 {
+		font-weight: 700;
+		margin: 0;
+		padding-right: 15px;
+		text-transform: uppercase;
+	}
+
+	p {
+		font-weight: 200;
+		margin: 0;
+	}
+
+	.topic {
+		&.sparse { margin-top: 40px; }
+
+		li {
+			clear: both;
+			margin-bottom: 12px;
+
+			&:first-child {
+				border-bottom: 1px solid white;
+				height: 11px;
+				margin-bottom: 22px;
+
+				p {
+					background: #e9e9e9;
+					float: right;
+					padding-left: 15px;
+				}
+			}
+
+			&.change {
+				p {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.dimensions {
+		text-align: left;
+
+		div[class^="col-"] {
+			display:inline-block;
+
+			vertical-align:middle;
+
+			@include breakpoint(small, "max") {
+				width:50%;
+				margin-bottom: 1em;
+				margin-left: 0;
+			}
+
+			/*@include breakpoint(extra-small, "max") {
+				width:100%;
+			}*/
+		}
+
+		h3{
+			@include breakpoint(small, "max") {
+				@include font-size(10px);
+			}
+		}
+
+		p {
+			@include responsiveFont(60, 16, true);
+			font-weight: 400;
+
+			@include breakpoint(medium, "max") {
+				 @include responsiveFont(50, 16, true);
+			}
+
+			@include breakpoint(small, "max") {
+				 @include responsiveFont(30, 16, true);
+			}
+
+			span {
+				@include font-size(38px);
+
+				@include breakpoint(small, "max") {
+					 @include responsiveFont(30, 16, true);
+				}
+			}
+		}
+	}
+
+	.specs {
+
+		.col-4:last-child ul{
+			position: relative;
+
+			&:after{
+				@include contentBefore();
+				border-image: url(/arquivos/border-dots-d.png) 70 78 82 72 fill repeat;
+				border-width: 0 0 82px 72px;
+				height: 113px;
+				left: 160px;
+				position: absolute;
+				bottom: -150px;
+				width: 1100px;
+
+				@include breakpoint(large, "max") {
+					display: none!important;
+				}
+			}
+		}
+
+		h3, h4{
+			@include font-size(16px);
+			background: #e9e9e9;
+			color: $txt-gray;
+			float: left;
+		}
+
+		h4 {
+			font-weight: 200;
+			max-width: 290px;
+			margin: 0;
+		}
+
+		p { text-align: left; }
+	}
+}

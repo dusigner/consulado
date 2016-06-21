@@ -1,0 +1,202 @@
+#detalhes {
+	display: none;
+	margin-top: 45px;
+	overflow: hidden;
+
+	.col-v2 {
+		padding-left: 10px;
+		padding-right: 10px;
+		@include breakpoint(small, "max") {
+			width: 100%;
+		}
+	}
+
+	.item {
+		margin-top: 20px;
+		margin-bottom: 70px;
+		position: relative;
+
+		@include breakpoint(small, "max") {
+			margin-bottom:30px;
+		}
+
+		h3 {
+			color: $button-bg-color;
+			line-height: 1em;
+			margin-bottom: 0;
+			@include breakpoint(small, "max") {
+				margin:0;
+			}
+		}
+
+		p {
+			@include font-size(18px);
+			font-weight: 300;
+			margin-top: 10px;
+
+			@include breakpoint(small, "max") {
+				margin-bottom:0px;
+			}
+		}
+
+		.text {
+			background: #FFF;
+			padding-right: 65px;
+			position: relative;
+			z-index: 1;
+
+			@include breakpoint(small, "max") {
+				padding-right: inherit;
+			}
+		}
+
+		.image {
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			height: 100%;
+			min-height: 450px;
+			top: 0;
+		}
+
+		.text-right{
+			@include breakpoint(small, "max") {
+				text-align:left;
+			}
+		}
+
+
+		&.item-single {
+			h3 {
+				font-size: 48px;
+				font-weight: 100;
+			}
+
+			.image {
+				background-size: contain;
+				width: 80%!important;
+
+				@include breakpoint(small, "max") {
+					width: 100%!important;
+				}
+			}
+		}
+
+		&.item-full, &.item-extrafull{
+			padding-top: 480px;
+
+			@include breakpoint(small, "max") {
+				padding-top:inherit;
+			}
+
+			.image {
+				left: 0;
+				min-height: 682px;
+				position: absolute;
+				width: 100%;
+
+				@include breakpoint(small, "max") {
+					min-height: 400px;
+					position: inherit;
+				}
+			}
+
+			.text:before, .text:after{
+				background: #fff;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				width: 1150%;
+				z-index: -1;
+			}
+		}
+
+		&.item-full {
+			.text:before {
+				content: '';
+				left: -1050%;
+			}
+		}
+
+		&.item-extrafull {
+			.text {
+				padding-left: 80px;
+				padding-right: 0;
+
+				@include breakpoint(small, "max") {
+					padding-left: inherit;
+				}
+
+				&:after {
+					content: '';
+					right: -1050%;
+				}
+			}
+			.offset-m3{
+				@include breakpoint(small, "max") {
+					margin-left:inherit;
+				}
+			}
+		}
+
+		&.item-half {
+			.image {
+				float: right;
+				width: 59%;
+				z-index: 0;
+
+				@include breakpoint(small, "max") {
+					float: none;
+					width: 100%;
+				}
+			}
+
+			.container {
+				height: 100%;
+				left: 50%;
+				position: absolute;
+				transform: translateX(-50%);
+
+				@include breakpoint(small, "max") {
+					height:auto;
+					left:inherit;
+					position:inherit;
+					transform: translateX(-0%);
+				}
+
+				.row {
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%);
+
+					@include breakpoint(small, "max") {
+						position: inherit;
+						top:inherit;
+						transform: translateY(-0%);
+					}
+				}
+			}
+		}
+
+		&.item-right {
+			.text {
+				float: right;
+				padding-left: 65px;
+				padding-right: 0;
+
+				@include breakpoint(small, "max") {
+					float: inherit;
+					padding-left: inherit;
+					padding-right: inherit;
+				}
+			}
+
+			.image {
+				float:left;
+				@include breakpoint(small, "max") {
+					float:none;
+				}
+			}
+		}
+	}
+}

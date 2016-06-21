@@ -1,0 +1,39 @@
+#video {
+	display: none;
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%; /* 16:9 */
+	position: relative;
+
+	a {
+		display: block;
+
+		&:before {
+			background: transparent url('/arquivos/thumb-play.png') 0 0 no-repeat;
+			content: ' ';
+			height: 65px;
+			left: 50%;
+			margin-top: -32px;
+			margin-left: -32px;
+			max-width: 65px;
+			position: absolute;
+			top: 50%;
+			width: 65px;
+			z-index: 10;
+		}
+	}
+
+	img, iframe{
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.cover {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}
