@@ -1,90 +1,158 @@
 .prod-galeria {
 	position: relative;
+	margin-top: 28px;
 
-	#show, .slick-slider {
+	#show, .gallery.slick-slider {
 		position: relative;
-		min-height: 580px;
 
-		@include breakpoint(small, "max") {
-			min-height: 400px;
+		@include breakpoint(medium, "min") {
+			min-height: 410px;
+			max-width: 80%;
 		}
 
-		@include breakpoint(extra-small, "max") {
-			min-height: 300px;
-		}
 	}
 
+	ul.thumbs{display: none}
 
 	li:focus { outline: none; }
 
 	.thumbs/*, .slick-dots*/ {
-		// background: rgba(0,0,0,0.5);
-		border-radius: 20px;
-		margin: 20px 0;
-		position: absolute;
 		padding: 5px;
-		bottom: 45px;
+		bottom: 25px;
 		left: 50%;
 		transform: translateX(-50%);
 		width: auto;
 
-		&.slick-dots{
-			margin:0;
+		@include breakpoint(small, "max") {
+			bottom: -5px;
 		}
 
+		button{
+			&:before{color: $gray-d!important}
+			&:after{display: none}
+		}
+
+	}
+
+	.slick-dots{
+		bottom: 25px;
 		li {
-			cursor: pointer;
-			display: inline-block;
-			height: 12px;
-			margin: 4px 5px;
-			padding: 0;
-			opacity: 0.3;
-			position: relative;
-			transition: 0.4s ease all;
-			vertical-align: middle;
-			width: 12px!important;
-
-			a, button {
-				background-color: #fff;
-				border: 0;
-				border-radius: 50%;
-				color: transparent;
-				cursor: pointer;
-				display: block;
-				height: 12px;
-				font-size: 0;
-				line-height: 0;
-				opacity: 0.7;
-				padding: 4px;
-				outline: none;
-				width: 12px;
-
-				&:before { display: none; }
-
-				&.ON, &:hover {
-					background: #fff;
-					opacity: 1;
-				}
+			button{
+				background: $gray;
 			}
 
-			img { display: none; }
-
-			&.slick-active {
-				opacity: 1;
-
-				button {
-					background: #fff;
-					opacity: 1;
+			&.slick-active button{
+				background: $gray-l;
+				&:after{
+					border-color:$gray;
 				}
 			}
 		}
 	}
 
-	.slick-dots{
-		bottom: 45px;
-		li{
-			&.slick-active button {
-				background: $gray-l;
+	.gallery{
+		@include breakpoint(medium, "min") { float:right; }
+
+		.slick-prev, .slick-next{
+			top: 35%;
+			transform: translateY(-35%);
+		}
+
+		.slick-slide{
+			cursor: pointer;
+			position: relative;
+
+			a{
+				display: inline-block;
+				width: 100%;
+
+				img{width: 100%; height: auto}
+
+				&.anchor{
+					width:auto;
+				}
+
+				&:before, &:after{
+					opacity: 0;
+					transition: opacity 0.3s ease-in;
+				}
+
+				&:before{
+					@include contentBefore();
+					background:transparent url('/arquivos/cc2-selo-zoom.png') left top no-repeat;
+					width: 58px;
+					height: 67px;
+					top: 50%;
+					left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+				}
+
+				&:after{
+					@include contentBefore();
+					@include icon-get('thin-loupe-zoom');
+					@include responsiveFont(27, 16, true);
+					color: $green;
+					top: 50%;
+					left: 50%;
+					transform: translateX(-50%) translateY(-50%);
+				}
+
+				@include breakpoint(large, "min") {
+					&:hover{
+						&:before, &:after{
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			&.anchor{
+				min-height: 346px;
+
+				a{
+					width: auto;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+
+					&:hover{
+						&:before, &:after{
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.galleryThumbs{
+		max-height:353px;
+
+		@include breakpoint(medium, "min") {
+			float:left;
+			max-width:20%;
+			width: 80px;
+		}
+
+		img{
+			border:2px solid $gray;
+			margin: 10px 0;
+		}
+
+		.slick-track {
+			margin: 0 auto;
+		}
+
+
+		.slick-slide{
+			max-height:80px;
+
+			a{
+				display: inline-block;
+			}
+
+			&.slick-current{
+				img{border-color:$green;}
 			}
 		}
 	}
