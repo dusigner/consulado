@@ -1,5 +1,4 @@
 require('vendors/mfp');
-
 Nitro.module('gallery', function(){
 
 	'use strict';
@@ -7,7 +6,7 @@ Nitro.module('gallery', function(){
 	var $thumbs = $('.thumbs a'),
 		$gallery = $('<ul class="gallery" />'),
 		$galleryThumbs = $('<ul class="galleryThumbs" />'),
-		$video = $('#video');
+		$video = $('#caracteristicas h4.Video + table .value-field');
 
 	var newImages = $.map($thumbs, function(item){
 		var self = $(item);
@@ -19,9 +18,15 @@ Nitro.module('gallery', function(){
 		return '<li><a href="#" class="thumb"><img src="' + $.resizeImage( self.attr('rel'), 56, 56 ) + '" alt="' + self.find('img').attr('title') +'" width="56" height="56" /></a></li>';
 	}).join('');
 
-	if( !$video.is(':empty') ){
-		newImages += '<li class="anchor" ><a href="#video" ><img src="' + $.resizeImage( '/arquivos/cc-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
-		newThumbs += '<li><a href="#video" class="thumb anchor"><img src="' + $.resizeImage( '/arquivos/cc-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
+	if( $video.length !== 0 ){
+
+		var videoId = $video.filter('[class*="ID"]').text(),
+			thumbnail = $video.filter('[class*="Thumbnail"]').text(),
+			thumb = thumbnail ? $.getImagePath( thumbnail ) : 'https://i.ytimg.com/vi/'+ videoId +'/hqdefault.jpg';
+
+		newImages += '<li><a href="//www.youtube-nocookie.com/embed/' + videoId + '?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe"><img class="image cover" width="420" height="420" src="' + thumb + '" /></a></li>';
+		newThumbs += '<li><a href="#" class="thumb"><img src="' + $.resizeImage( '/arquivos/btp-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
+
 	}
 
 
@@ -78,25 +83,22 @@ Nitro.module('gallery', function(){
 		});
 	}
 
-	$('.thumb.anchor, .slick-slide.anchor a').click(function(e){
-		e.preventDefault();
 
-		var anchor = $(this).attr('href');
-
-		$('html, body').animate({
-			scrollTop: $(anchor).offset().top - 51
-		}, 700);
-	});
-
-	// ZOOM MAGNIFIC POP UP
-	if($(window).width() > 1024) {
+	//ZOOM MAGNIFIC POP UP
+	//if($(window).width() > 1024) {
 		$('.slick-slide:not(.slick-cloned) .popup-zoom').magnificPopup({
 			type: 'image',
 			closeOnContentClick: true,
-			disableOn: 1024,
+			//disableOn: 1024,
 			mainClass: 'mfp-no-margins mfp-with-zoom',
 			image: {
 				verticalFit: true
+			},
+			iframe: {
+				markup: '<div class="mfp-iframe-scaler" style="width:100%; height:100%">'+
+				            '<div class="mfp-close"></div>'+
+				            '<iframe class="mfp-iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="100%" height="100%"></iframe>'+
+				          '</div>'
 			},
 			gallery: {
 				enabled: true,
@@ -113,10 +115,19 @@ Nitro.module('gallery', function(){
 				}
 			}
 		});
-	}else{
+
+		/*$('.slick-slide.video:not(.slick-cloned) .popup-zoom').magnificPopup({
+			items: [
+				{
+					src: 'http://vimeo.com/123123',
+					type: 'iframe'
+				}
+			]
+		});*/
+	/*}else{
 		$('.popup-zoom').click(function(e) {
 			e.preventDefault();
 		});
-	}
+	}*/
 
 });

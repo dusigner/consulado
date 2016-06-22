@@ -1,3 +1,20 @@
+/*! Magnific Popup - v1.1.0 - 2016-02-20
+* http://dimsemenov.com/plugins/magnific-popup/
+* Copyright (c) 2016 Dmitry Semenov; */
+;(function (factory) {
+if (typeof define === 'function' && define.amd) {
+ // AMD. Register as an anonymous module.
+ define(['jquery'], factory);
+ } else if (typeof exports === 'object') {
+ // Node/CommonJS
+ factory(require('jquery'));
+ } else {
+ // Browser globals
+ factory(window.jQuery || window.Zepto);
+ }
+ }(function($) {
+
+/*>>core*/
 /**
  *
  * Magnific Popup Core JS file
@@ -119,9 +136,7 @@ MagnificPopup.prototype = {
 	 */
 	init: function() {
 		var appVersion = navigator.appVersion;
-		mfp.isIE7 = appVersion.indexOf("MSIE 7.") !== -1;
-		mfp.isIE8 = appVersion.indexOf("MSIE 8.") !== -1;
-		mfp.isLowIE = mfp.isIE7 || mfp.isIE8;
+		mfp.isLowIE = mfp.isIE8 = document.all && !document.addEventListener;
 		mfp.isAndroid = (/android/gi).test(appVersion);
 		mfp.isIOS = (/iphone|ipad|ipod/gi).test(appVersion);
 		mfp.supportsTransition = supportsTransitions();
@@ -429,7 +444,7 @@ MagnificPopup.prototype = {
 		}
 
 
-		if(mfp._lastFocusedEl) {
+		if(mfp.st.autoFocusLast && mfp._lastFocusedEl) {
 			$(mfp._lastFocusedEl).focus(); // put tab focus back
 		}
 		mfp.currItem = null;
@@ -483,10 +498,6 @@ MagnificPopup.prototype = {
 		// _mfpOn('BeforeChange', function(e, prevType, newType) { });
 
 		mfp.currItem = item;
-
-
-
-
 
 		if(!mfp.currTemplate[type]) {
 			var markup = mfp.st[type] ? mfp.st[type].markup : false;
@@ -546,8 +557,6 @@ MagnificPopup.prototype = {
 
 		mfp.contentContainer.append(mfp.content);
 	},
-
-
 
 
 	/**
@@ -651,7 +660,6 @@ MagnificPopup.prototype = {
 				e.stopPropagation();
 			}
 		}
-
 
 		options.el = $(e.mfpEl);
 		if(options.delegate) {
@@ -780,7 +788,7 @@ MagnificPopup.prototype = {
 						if(el.is('img')) {
 							el.attr('src', value);
 						} else {
-							el.replaceWith( '<img src="'+value+'" class="' + el.attr('class') + '" />' );
+							el.replaceWith( $('<img>').attr('src', value).attr('class', el.attr('class')) );
 						}
 					} else {
 						el.attr(arr[1], value);
@@ -826,7 +834,6 @@ $.magnificPopup = {
 		} else {
 			options = $.extend(true, {}, options);
 		}
-
 
 		options.isObj = true;
 		options.index = index || 0;
@@ -890,7 +897,9 @@ $.magnificPopup = {
 
 		tClose: 'Close (Esc)',
 
-		tLoading: 'Loading...'
+		tLoading: 'Loading...',
+
+		autoFocusLast: true
 
 	}
 };
@@ -946,25 +955,9 @@ $.fn.magnificPopup = function(options) {
 	return jqEl;
 };
 
+/*>>core*/
 
-//Quick benchmark
-/*
-var start = performance.now(),
-	i,
-	rounds = 1000;
-
-for(i = 0; i < rounds; i++) {
-
-}
-console.log('Test #1:', performance.now() - start);
-
-start = performance.now();
-for(i = 0; i < rounds; i++) {
-
-}
-console.log('Test #2:', performance.now() - start);
-*/
-
+/*>>inline*/
 
 var INLINE_NS = 'inline',
 	_hiddenClass,
@@ -1032,6 +1025,90 @@ $.magnificPopup.registerModule(INLINE_NS, {
 	}
 });
 
+/*>>inline*/
+
+/*>>ajax*/
+var AJAX_NS = 'ajax',
+	_ajaxCur,
+	_removeAjaxCursor = function() {
+		if(_ajaxCur) {
+			$(document.body).removeClass(_ajaxCur);
+		}
+	},
+	_destroyAjaxRequest = function() {
+		_removeAjaxCursor();
+		if(mfp.req) {
+			mfp.req.abort();
+		}
+	};
+
+$.magnificPopup.registerModule(AJAX_NS, {
+
+	options: {
+		settings: null,
+		cursor: 'mfp-ajax-cur',
+		tError: '<a href="%url%">The content</a> could not be loaded.'
+	},
+
+	proto: {
+		initAjax: function() {
+			mfp.types.push(AJAX_NS);
+			_ajaxCur = mfp.st.ajax.cursor;
+
+			_mfpOn(CLOSE_EVENT+'.'+AJAX_NS, _destroyAjaxRequest);
+			_mfpOn('BeforeChange.' + AJAX_NS, _destroyAjaxRequest);
+		},
+		getAjax: function(item) {
+
+			if(_ajaxCur) {
+				$(document.body).addClass(_ajaxCur);
+			}
+
+			mfp.updateStatus('loading');
+
+			var opts = $.extend({
+				url: item.src,
+				success: function(data, textStatus, jqXHR) {
+					var temp = {
+						data:data,
+						xhr:jqXHR
+					};
+
+					_mfpTrigger('ParseAjax', temp);
+
+					mfp.appendContent( $(temp.data), AJAX_NS );
+
+					item.finished = true;
+
+					_removeAjaxCursor();
+
+					mfp._setFocus();
+
+					setTimeout(function() {
+						mfp.wrap.addClass(READY_CLASS);
+					}, 16);
+
+					mfp.updateStatus('ready');
+
+					_mfpTrigger('AjaxContentAdded');
+				},
+				error: function() {
+					_removeAjaxCursor();
+					item.finished = item.loadError = true;
+					mfp.updateStatus('error', mfp.st.ajax.tError.replace('%url%', item.src));
+				}
+			}, mfp.st.ajax.settings);
+
+			mfp.req = $.ajax(opts);
+
+			return '';
+		}
+	}
+});
+
+/*>>ajax*/
+
+/*>>image*/
 var _imgInterval,
 	_getTitle = function(item) {
 		if(item.data && item.data.title !== undefined)
@@ -1277,6 +1354,9 @@ $.magnificPopup.registerModule('image', {
 	}
 });
 
+/*>>image*/
+
+/*>>zoom*/
 var hasMozTransform,
 	getHasMozTransform = function() {
 		if(hasMozTransform === undefined) {
@@ -1387,7 +1467,6 @@ $.magnificPopup.registerModule('zoom', {
 						animatedImg = getElToAnimate(image);
 					}
 
-
 					animatedImg.css( mfp._getOffset(true) );
 					mfp.wrap.append(animatedImg);
 					mfp.content.css('visibility', 'hidden');
@@ -1461,6 +1540,118 @@ $.magnificPopup.registerModule('zoom', {
 	}
 });
 
+
+
+/*>>zoom*/
+
+/*>>iframe*/
+
+var IFRAME_NS = 'iframe',
+	_emptyPage = '//about:blank',
+
+	_fixIframeBugs = function(isShowing) {
+		if(mfp.currTemplate[IFRAME_NS]) {
+			var el = mfp.currTemplate[IFRAME_NS].find('iframe');
+			if(el.length) {
+				// reset src after the popup is closed to avoid "video keeps playing after popup is closed" bug
+				if(!isShowing) {
+					el[0].src = _emptyPage;
+				}
+
+				// IE8 black screen bug fix
+				if(mfp.isIE8) {
+					el.css('display', isShowing ? 'block' : 'none');
+				}
+			}
+		}
+	};
+
+$.magnificPopup.registerModule(IFRAME_NS, {
+
+	options: {
+		markup: '<div class="mfp-iframe-scaler">'+
+					'<div class="mfp-close"></div>'+
+					'<iframe class="mfp-iframe" src="//about:blank" frameborder="0" allowfullscreen></iframe>'+
+				'</div>',
+
+		srcAction: 'iframe_src',
+
+		// we don't care and support only one default type of URL by default
+		patterns: {
+			youtube: {
+				index: 'youtube.com',
+				id: 'v=',
+				src: '//www.youtube.com/embed/%id%?autoplay=1'
+			},
+			vimeo: {
+				index: 'vimeo.com/',
+				id: '/',
+				src: '//player.vimeo.com/video/%id%?autoplay=1'
+			},
+			gmaps: {
+				index: '//maps.google.',
+				src: '%id%&output=embed'
+			}
+		}
+	},
+
+	proto: {
+		initIframe: function() {
+			mfp.types.push(IFRAME_NS);
+
+			_mfpOn('BeforeChange', function(e, prevType, newType) {
+				if(prevType !== newType) {
+					if(prevType === IFRAME_NS) {
+						_fixIframeBugs(); // iframe if removed
+					} else if(newType === IFRAME_NS) {
+						_fixIframeBugs(true); // iframe is showing
+					}
+				}// else {
+					// iframe source is switched, don't do anything
+				//}
+			});
+
+			_mfpOn(CLOSE_EVENT + '.' + IFRAME_NS, function() {
+				_fixIframeBugs();
+			});
+		},
+
+		getIframe: function(item, template) {
+			var embedSrc = item.src;
+			var iframeSt = mfp.st.iframe;
+
+			$.each(iframeSt.patterns, function() {
+				if(embedSrc.indexOf( this.index ) > -1) {
+					if(this.id) {
+						if(typeof this.id === 'string') {
+							embedSrc = embedSrc.substr(embedSrc.lastIndexOf(this.id)+this.id.length, embedSrc.length);
+						} else {
+							embedSrc = this.id.call( this, embedSrc );
+						}
+					}
+					embedSrc = this.src.replace('%id%', embedSrc );
+					return false; // break;
+				}
+			});
+
+			var dataObj = {};
+			if(iframeSt.srcAction) {
+				dataObj[iframeSt.srcAction] = embedSrc;
+			}
+			mfp._parseMarkup(template, dataObj, item);
+
+			mfp.updateStatus('ready');
+
+			return template;
+		}
+	}
+});
+
+
+
+/*>>iframe*/
+
+/*>>gallery*/
 /**
  * Get looped index depending on number of slides
  */
@@ -1495,8 +1686,7 @@ $.magnificPopup.registerModule('gallery', {
 		initGallery: function() {
 
 			var gSt = mfp.st.gallery,
-				ns = '.mfp-gallery',
-				supportsFastClick = Boolean($.fn.mfpFastClick);
+				ns = '.mfp-gallery';
 
 			mfp.direction = true; // true - next, false - prev
 
@@ -1541,21 +1731,12 @@ $.magnificPopup.registerModule('gallery', {
 						arrowLeft = mfp.arrowLeft = $( markup.replace(/%title%/gi, gSt.tPrev).replace(/%dir%/gi, 'left') ).addClass(PREVENT_CLOSE_CLASS),
 						arrowRight = mfp.arrowRight = $( markup.replace(/%title%/gi, gSt.tNext).replace(/%dir%/gi, 'right') ).addClass(PREVENT_CLOSE_CLASS);
 
-					var eName = supportsFastClick ? 'mfpFastClick' : 'click';
-					arrowLeft[eName](function() {
+					arrowLeft.click(function() {
 						mfp.prev();
 					});
-					arrowRight[eName](function() {
+					arrowRight.click(function() {
 						mfp.next();
 					});
-
-					// Polyfill for :before and :after (adds elements with classes mfp-a and mfp-b)
-					if(mfp.isIE7) {
-						_getEl('b', arrowLeft[0], false, true);
-						_getEl('a', arrowLeft[0], false, true);
-						_getEl('b', arrowRight[0], false, true);
-						_getEl('a', arrowRight[0], false, true);
-					}
 
 					mfp.container.append(arrowLeft.add(arrowRight));
 				}
@@ -1574,10 +1755,6 @@ $.magnificPopup.registerModule('gallery', {
 			_mfpOn(CLOSE_EVENT+ns, function() {
 				_document.off(ns);
 				mfp.wrap.off('click'+ns);
-
-				if(mfp.arrowLeft && supportsFastClick) {
-					mfp.arrowLeft.add(mfp.arrowRight).destroyMfpFastClick();
-				}
 				mfp.arrowRight = mfp.arrowLeft = null;
 			});
 
@@ -1640,70 +1817,44 @@ $.magnificPopup.registerModule('gallery', {
 	}
 });
 
-/*
-Touch Support that might be implemented some day
+/*>>gallery*/
 
-addSwipeGesture: function() {
-	var startX,
-		moved,
-		multipleTouches;
+/*>>retina*/
 
-		return;
+var RETINA_NS = 'retina';
 
-	var namespace = '.mfp',
-		addEventNames = function(pref, down, move, up, cancel) {
-			mfp._tStart = pref + down + namespace;
-			mfp._tMove = pref + move + namespace;
-			mfp._tEnd = pref + up + namespace;
-			mfp._tCancel = pref + cancel + namespace;
-		};
+$.magnificPopup.registerModule(RETINA_NS, {
+	options: {
+		replaceSrc: function(item) {
+			return item.src.replace(/\.\w+$/, function(m) { return '@2x' + m; });
+		},
+		ratio: 1 // Function or number.  Set to 1 to disable.
+	},
+	proto: {
+		initRetina: function() {
+			if(window.devicePixelRatio > 1) {
 
-	if(window.navigator.msPointerEnabled) {
-		addEventNames('MSPointer', 'Down', 'Move', 'Up', 'Cancel');
-	} else if('ontouchstart' in window) {
-		addEventNames('touch', 'start', 'move', 'end', 'cancel');
-	} else {
-		return;
-	}
-	_window.on(mfp._tStart, function(e) {
-		var oE = e.originalEvent;
-		multipleTouches = moved = false;
-		startX = oE.pageX || oE.changedTouches[0].pageX;
-	}).on(mfp._tMove, function(e) {
-		if(e.originalEvent.touches.length > 1) {
-			multipleTouches = e.originalEvent.touches.length;
-		} else {
-			//e.preventDefault();
-			moved = true;
-		}
-	}).on(mfp._tEnd + ' ' + mfp._tCancel, function(e) {
-		if(moved && !multipleTouches) {
-			var oE = e.originalEvent,
-				diff = startX - (oE.pageX || oE.changedTouches[0].pageX);
+				var st = mfp.st.retina,
+					ratio = st.ratio;
 
-			if(diff > 20) {
-				mfp.next();
-			} else if(diff < -20) {
-				mfp.prev();
+				ratio = !isNaN(ratio) ? ratio : ratio();
+
+				if(ratio > 1) {
+					_mfpOn('ImageHasSize' + '.' + RETINA_NS, function(e, item) {
+						item.img.css({
+							'max-width': item.img[0].naturalWidth / ratio,
+							'width': '100%'
+						});
+					});
+					_mfpOn('ElementParse' + '.' + RETINA_NS, function(e, item) {
+						item.src = st.replaceSrc(item, ratio);
+					});
+				}
 			}
+
 		}
-	});
-},
-*/
-
-
-$.extend(true, $.magnificPopup.defaults, {
-	tClose: 'Fechar (Esc)', // Alt text on close button
-	tLoading: 'Carregando...', // Text that is displayed during loading. Can contain %curr% and %total% keys
-	gallery: {
-		tPrev: 'Anterior', // Alt text on left arrow
-		tNext: 'Próximo', // Alt text on right arrow
-		tCounter: '%curr% de %total%' // Markup for "1 of 7" counter
-	},
-	image: {
-		tError: '<a href="%url%">A imagem</a> não pode ser carregada.' // Error message when image could not be loaded
-	},
-	ajax: {
-		tError: '<a href="%url%">O conteúdo</a> não pode ser carregado.' // Error message when ajax request failed
 	}
 });
+
+/*>>retina*/
+ _checkInstance(); }));

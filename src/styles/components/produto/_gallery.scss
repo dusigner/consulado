@@ -52,12 +52,10 @@
 
 	.gallery{
 		@include breakpoint(medium, "min") { float:right; }
-
 		.slick-prev, .slick-next{
 			top: 35%;
 			transform: translateY(-35%);
 		}
-
 		.slick-slide{
 			cursor: pointer;
 			position: relative;
@@ -66,7 +64,7 @@
 				display: inline-block;
 				width: 100%;
 
-				img{width: 100%; height: auto}
+				img{width: 100%; height: auto;}
 
 				&.anchor{
 					width:auto;
@@ -79,7 +77,7 @@
 
 				&:before{
 					@include contentBefore();
-					background:transparent url('/arquivos/cc2-selo-zoom.png') left top no-repeat;
+					background:transparent url('/arquivos/bg-loupe-zoom.png') left top no-repeat;
 					width: 58px;
 					height: 67px;
 					top: 50%;
@@ -89,12 +87,26 @@
 
 				&:after{
 					@include contentBefore();
-					@include icon-get('thin-loupe-zoom');
+					@include icon-get('consul-loupe');
 					@include responsiveFont(27, 16, true);
 					color: $green;
 					top: 50%;
 					left: 50%;
 					transform: translateX(-50%) translateY(-50%);
+				}
+
+				&.mfp-iframe{
+					&:before {
+						display: none;
+					}
+
+					&:after{
+						@include contentBefore();
+						background:transparent url('/arquivos/thumb-play.png') left top no-repeat;
+						width: 65px;
+						height: 65px;
+						@include responsiveFont(20, 16, true);
+					}
 				}
 
 				@include breakpoint(large, "min") {
@@ -108,13 +120,11 @@
 
 			&.anchor{
 				min-height: 346px;
-
 				a{
 					width: auto;
 					position: absolute;
 					top: 50%;
 					transform: translateY(-50%);
-
 					&:hover{
 						&:before, &:after{
 							opacity: 0;
@@ -124,8 +134,8 @@
 			}
 		}
 	}
-
 	.galleryThumbs{
+
 		max-height:353px;
 
 		@include breakpoint(medium, "min") {
@@ -133,27 +143,28 @@
 			max-width:20%;
 			width: 80px;
 		}
-
 		img{
 			border:2px solid $gray;
-			margin: 10px 0;
+			margin: 10px;
 		}
-
-		.slick-track {
-			margin: 0 auto;
-		}
-
-
 		.slick-slide{
 			max-height:80px;
-
 			a{
 				display: inline-block;
 			}
-
 			&.slick-current{
 				img{border-color:$green;}
 			}
 		}
+	}
+}
+.mfp-iframe-holder{
+	.mfp-content{
+		width:80%;
+
+		@include breakpoint(extra-small, "min") {
+			height:80%;
+		}
+
 	}
 }
