@@ -1,0 +1,38 @@
+#vtex-modal-sku {
+	.modal-header strong{ font-weight: 400;}
+
+	.options {
+		background: #eee;
+		margin: 0 -1em 20px;
+		padding: 21px 0;
+
+		.specification { display: none; }
+
+
+		label{
+			font-weight: 400;
+			color: $gray-d;
+
+			&:before{
+				border-color: $gray-d;
+			}
+		}
+	}
+
+	.button{
+		padding: 10px 0;
+	}
+
+	@extend #BuyButton;
+
+	.buy-button {
+		display: inline!important;
+		float: none;
+		margin: 0 auto;
+		padding: 16px 28px;
+
+		&:before{ float:none; }
+	}
+
+	.portal-notify-me-ref{display: none;}
+}

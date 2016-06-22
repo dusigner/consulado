@@ -1,0 +1,319 @@
+.prod-info {
+	//color: $txt-gray-l;
+
+	.lead {
+		color: $txt-gray;
+		font-weight: bold;
+		line-height: 1.16;
+		margin-bottom: 20px;
+
+		.productName { display: inline; }
+	}
+
+	//Rating TrustVox
+	.trustvox-fluid-jump {
+	    display: inline-block;
+	    margin-bottom: 15px;
+
+	    .trustvox-rate {
+			display: inline-block;
+		}
+
+		&>span {
+			top: -3px;
+			position: relative;
+		}
+	}
+
+	.reference, .productSku {
+		@include font-size(18px);
+		color: $txt-gray-l;
+		display: inline-block;
+		padding-left: 10px;
+		// margin-top: 15px;
+
+		div { display: inline; }
+
+		&.hide { display: none!important; }
+	}
+
+	.secure {
+		@include font-size(12px, true, false);
+		display: none;
+		text-transform: uppercase;
+
+		@include breakpoint(medium, "min") {
+			margin-top: -15px;
+			padding-left: 5px;
+
+			i {
+				@include font-size(20px);
+				left: -25px;
+				position: relative;
+				top: 30px;
+			}
+		}
+
+		@include breakpoint(medium, "max") {
+			margin: 15px 0;
+			width: 100%;
+		}
+	}
+
+	.prod-selos {
+		display:none!important;
+		margin: 20px auto;
+		text-align: center;
+
+		p {
+			//display: inline-block;
+			float: left;
+			margin-right: 20px;
+			display: none;
+			&:last-child{display: block;}
+		}
+
+		@include breakpoint(small, "max") {
+			display:block!important;
+			visibility:visible!important;
+			width: 100%;
+			position: inherit;
+			right: inherit;
+			top: inherit;
+			.flag{
+				position: static;
+			}
+		}
+	}
+}
+
+.prod-preco {
+	p { margin: 0; }
+
+	em {
+		font-style: normal;
+		&.valor-de,
+		&.valor-por,
+		&.valor-dividido {
+			strong { font-weight: normal; }
+		}
+
+		&.valor-de {
+			strong { text-decoration: line-through; }
+		}
+
+		&.valor-dividido {
+			@include font-size(12px, true, false);
+			display:block!important;
+			position: relative;
+
+			label { display:inline; }
+
+			.skuBestInstallmentValue {
+				@include font-size(28px, true, false);
+				color: $green;
+				font-weight:700;
+
+				&:before { content:"de "; }
+
+				& + span {
+					@include font-size(28px, true, false);
+					font-weight:700;
+					display: inline-block;
+					padding-left: 18px;
+				}
+			}
+
+			& > span {
+				& > span {
+					@include font-size(0px, true, false);
+					display:inline-block;
+					height:30px;
+					line-height:inherit;
+					margin-right:10px;
+					vertical-align:top;
+					text-align:center;
+				}
+			}
+
+			.skuBestInstallmentNumber {
+				@include font-size(20px, true, false);
+				color: $green;
+				font-weight:700;
+				text-align:center;
+
+				&:after {
+					@include font-size(10px, true, false);
+					content:"s/ juros";
+					display:block;
+					line-height:10px;
+					margin-top:-5px;
+				}
+			}
+		}
+
+		.preco-a-vista {
+			@include font-size(18px, true, false);
+			display:block!important;
+			color:$txt-gray-l;
+
+			span { color:$base-font-color; }
+		}
+	}
+
+	.preco-a-vista {
+		display:block!important;
+		font-size: 0;
+		color:$txt-gray-l;
+
+		&:before {
+			@include font-size(18px, true, false);
+		}
+
+		strong { @include font-size(18px, true, false); }
+
+		span {
+			@include font-size(18px, true, false);
+			color:$base-font-color;
+			display: inline;
+			font-weight: 700;
+		}
+	}
+
+	.discount-boleto {
+		@include font-size(18px, true, false);
+		color: #b4afad;
+		font-weight: 700;
+		span {
+			color:$base-font-color;
+		}
+	}
+
+	.economia-de { display:none; }
+}
+
+.prod-sku-selector {
+	margin-top: 20px;
+}
+
+.prod-sku-selector, #modal-sku {
+
+	@include breakpoint(small, "min") {
+		color: $txt-gray-l;
+	}
+
+	.specification {
+		font-size: 0;
+		margin-bottom: 4px;
+		min-height: 30px;
+
+		&:before {
+			@include responsiveFont(18, 16, true);
+			content: 'Selecione a voltagem';
+			display: block;
+			position: absolute;
+		}
+	}
+
+	.skuList, .options {
+		display: inline-block;
+		position: relative;
+
+		span { position: relative; }
+
+		input[type="radio"] {
+			position: absolute;
+			visibility: hidden;
+
+			&:hover + label, &:checked + label {
+				color: $button-bg-color;
+
+				&:before { border: 4px solid $button-bg-color; }
+			}
+		}
+
+		label {
+			@include responsiveFont(18, 16, true);
+			cursor: pointer;
+			font-weight: 700;
+			display: inline;
+			padding-left: 21px;
+			margin-right: 25px;
+			position: relative;
+			transition: 0.4s ease all;
+			vertical-align: middle;
+
+			&:before {
+				background-color: #fff;
+				border: 2px solid $txt-gray;
+				border-radius: 50%;
+				bottom: 4px;
+				content: "";
+				height: 14px;
+				left: 0;
+				position: absolute;
+				width: 14px;
+
+				@include breakpoint(small, "min") {
+					border-color: $txt-gray-l;
+				}
+			}
+		}
+	}
+
+	.nomeSku, .preco, .buy-button, .seller-data { display: none; }
+}
+
+.select-voltage,
+.select-color {
+	@include breakpoint(large, "max")  { width:100%!important; }
+	@include breakpoint(medium, "max") { width:50%!important;  }
+	@include breakpoint(small, "max")  { width:100%!important; }
+}
+
+.select-color {
+	p {
+		position: relative;
+		z-index: 1;
+	}
+
+}
+
+.select-voltage {
+	@include breakpoint(large, "max") { margin-bottom: 10px; }
+	@include breakpoint(small, "max") { margin-bottom: 30px; }
+}
+
+#BuyButton {
+	@include font-size(18px, true, false);
+
+	.buy-button-amount { display: none!important; }
+
+	.buy-button {
+		@extend .primary-button;
+		font-size: 1em;
+		float: left;
+		padding: 13px 28px;
+
+		&:before{
+			@include icon-get('consul-cart');
+			margin-right: 10px;
+			float: left;
+			@include responsiveFont(22, 16, true);
+		}
+	}
+}
+
+.prod-more-info {
+	margin-top: 15px;
+
+	a {
+		@include font-size(12px);
+		color: $txt-gray-l;
+		text-transform: uppercase;
+
+		@include breakpoint(small, "max") {
+			 @include responsiveFont(10, 16, true);
+		}
+	}
+}

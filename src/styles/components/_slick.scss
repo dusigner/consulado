@@ -10,6 +10,8 @@
 	$slick-dot-color-active: white !default;
 	$slick-prev-character: "\e602" !default;
 	$slick-next-character: "\e603" !default;
+	$slick-prev-up-character: "\e604" !default;
+	$slick-next-down-character: "\e601" !default;
 	$slick-dot-character: "•" !default;
 	$slick-dot-size: 45px !default;
 	$slick-opacity-default: 0.75 !default;
@@ -277,6 +279,28 @@
 					transform: scale(1);
 				}
 			}
+		}
+	}
+
+	.slick-vertical{
+		.slick-prev, .slick-next{
+			left: 0;
+			right: 0;
+			position: static;
+			width:100%;
+			height:auto;
+			transform: initial;
+		}
+		.slick-prev:before, .slick-next:before {
+			@include responsiveFont(16,16,true);
+		}
+
+		.slick-prev {
+			&:before { content: $slick-prev-up-character; }
+		}
+
+		.slick-next {
+			&:before { content: $slick-next-down-character; }
 		}
 	}
 

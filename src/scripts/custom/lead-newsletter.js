@@ -46,7 +46,7 @@ Nitro.module('lead-newsletter', function(){
 		} else {
 			$inputTermos.removeClass('error');
 		}
-	}
+	};
 
 	this.validateForm = function() {
 		if($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $inputTermos.is(':checked')) {
@@ -57,14 +57,13 @@ Nitro.module('lead-newsletter', function(){
 
 		if(valid) {
 			var name = $inputName.val(),
-				email = $inputEmail.val(),
-				termos = true;
+				email = $inputEmail.val();
 
-			self.registerNewsletter(name,email,termos);
+			self.registerNewsletter(name,email);
 		}
 	};
 
-	this.registerNewsletter = function(name,email,termos) {
+	this.registerNewsletter = function(name,email) {
 		var data = {};
 
 		data.firstName = name;
@@ -83,7 +82,7 @@ Nitro.module('lead-newsletter', function(){
 
 			setTimeout(function(){
 				$('.lead-newsletter').fadeOut();
-			}, 2000)
+			}, 2000);
 		});
 	};
 

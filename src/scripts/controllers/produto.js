@@ -2,20 +2,19 @@
 
 require('vendors/slick');
 require('vendors/vtex-modal');
-
-require('modules/sku-fetch');
-require('modules/gallery');
-require('modules/product-nav');
-require('modules/details');
-require('modules/specifications');
-require('modules/video');
-require('modules/selos');
-require('modules/supermodel');
-require('modules/sku-select');
-require('modules/boleto');
+// require('modules/product/video');
+require('modules/product/sku-fetch');
+require('modules/product/gallery');
+require('modules/product/product-nav');
+require('modules/product/details');
+require('modules/product/specifications');
+require('modules/product/selos');
+require('modules/product/supermodel');
+require('modules/product/sku-select');
+require('modules/product/boleto');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'video', 'selos', 'supermodel', 'sku-select', 'boleto'/*, 'special-content'*/], function() {
+Nitro.controller('produto', [/*'video', */'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto'/*, 'special-content'*/], function() {
 	'use strict';
 
 	window.alert = function(e) {

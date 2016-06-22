@@ -1,0 +1,11 @@
+#vtex-modal-tipo-entrega, #vtex-modal-entrega-premium {
+	.modal-holder { max-width: 600px; }
+
+	.modal-content {
+		@include font-size(14px);
+		padding: 1em 2em;
+		text-align: left;
+
+		.list { padding-bottom: 15px; }
+	}
+}
