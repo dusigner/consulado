@@ -25,7 +25,7 @@ Nitro.module('gallery', function(){
 			thumb = thumbnail ? $.getImagePath( thumbnail ) : 'https://i.ytimg.com/vi/'+ videoId +'/hqdefault.jpg';
 
 		newImages += '<li><a href="//www.youtube-nocookie.com/embed/' + videoId + '?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe"><img class="image cover" width="420" height="420" src="' + thumb + '" /></a></li>';
-		newThumbs += '<li><a href="#" class="thumb"><img src="' + $.resizeImage( '/arquivos/btp-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
+		newThumbs += '<li><a href="#" class="thumb"><img src="' + $.resizeImage( '/arquivos/cns-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
 
 	}
 
