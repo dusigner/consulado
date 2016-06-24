@@ -24,15 +24,16 @@ require('vendors/jquery.cookie');
 	var modal = $.fn.vtexModal; //plugin override
 
 	$.fn.vtexModal = function ( options ) {
+
 		var settings,
 			defaults = {
-				onClose: true,
 				cookieOptions: (options && options.cookieOptions) ? options.cookieOptions : false,
+				onClose: true
 			};
 
 		if( options ) {
 			settings = $.extend( {
-				id: this.attr('id')
+				id: (options && options.cookieName) ? options.cookieName : this.attr('id')
 			}, defaults, options);
 
 			if( ! $.cookie( settings.id ) ) {
@@ -44,12 +45,14 @@ require('vendors/jquery.cookie');
 			}else{
 				return; //cookie is set, stop plugin execution
 			}
+
 		}
 
 		modal.call( this, options );
 	};
 
 	$('div[data-modal-auto]').each(function() {
+
 		var options = $(this).data();
 
 		if( options.utmSource && options.utmSource !== $.getParameterByName('utm_source') ) {
@@ -58,4 +61,5 @@ require('vendors/jquery.cookie');
 
 		$(this).vtexModal( options );
 	});
+
 }));

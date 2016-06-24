@@ -13,7 +13,7 @@ Nitro.module('modal.overlayAbandono', function(){
 		if(content.length > 0) {
 			$( 'body' ).on('mouseleave',function(e) {
 				var hasSession = sessionStorage.getItem('overlayAbandono');
-				if ( (e.pageY - $(window).scrollTop()) <= 1 && !hasSession ) {
+				if ( (e.pageY - $(window).scrollTop()) <= 1 && !hasSession && !$.cookie( 'visualizacaoOverlays' ) ) {
 			  		self.render();
 				}
 			});
@@ -22,7 +22,7 @@ Nitro.module('modal.overlayAbandono', function(){
 
 	this.render = function() {
 		$('#modal-overlay-abandono').vtexModal({
-			destroy: true,
+			cookieName: 'visualizacaoOverlays',
 			cookieOptions: { expires: 1, path: '/' }
 		});
 
