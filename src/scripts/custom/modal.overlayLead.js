@@ -15,7 +15,7 @@ Nitro.module('modal.overlayLead', function(){
 
 	this.setup = function(orderForm) {
 		$( 'body' ).on('mouseleave',function(e) {
-			if ( ! hasSession /* && ! orderForm.clientProfileData.email*/ ) {
+			if ( ! hasSession && ! orderForm.clientProfileData.email ) {
 				hasSession = sessionStorage.getItem('leadNewsletter');
 
 				if ((e.pageY - $(window).scrollTop()) <= 1 && !hasSession && !$.cookie( 'visualizacaoOverlays' )) {
