@@ -27,24 +27,8 @@ Nitro.module('search', function(){
 		e.preventDefault();
 
 		$searchContainer.toggleClass('search-active');
-		
+
 		$(document).trigger('search', $searchContainer.is('.search-active') ? null : false );
-	});
-
-	$searchField.on('keyup focus', function() {
-
-		var value = $.trim( $(this).val() );
-
-		//console.info('input change', value);
-
-		if ( searchTerm !== value ) {
-			$document.trigger('search');
-
-			if( value.length >= 3) {
-				loadContent(value);
-			}
-		}
-
 	});
 
 	var loadContent = $.debounce(function(term) {
@@ -71,7 +55,7 @@ Nitro.module('search', function(){
 		.done(function(data) {
 			if( data ){
 				$content.html(data).find('.helperComplement').remove();
-				
+
 				$results = $content.find('a');
 
 				$(document).trigger('search', true);
@@ -83,6 +67,23 @@ Nitro.module('search', function(){
 		});
 
 	}, 250);
+
+	$searchField.on('keyup focus', function() {
+
+		var value = $.trim( $(this).val() );
+
+		//console.info('input change', value);
+
+		if ( searchTerm !== value ) {
+			$document.trigger('search');
+
+			if( value.length >= 3) {
+				loadContent(value);
+			}
+		}
+
+	});
+
 
 	$searchForm.submit(function(e) {
 		e.preventDefault();
@@ -97,30 +98,30 @@ Nitro.module('search', function(){
 		}
 
 		$searchBox.toggle(!!status); //force boolean
-		
+
 		$searchActionText.text( '"' + searchTerm + '"' );
-		
+
 		$searchAction.attr({
 			title: 'Buscar Por "' + searchTerm + '"',
 			href: '/' + encodeURIComponent( searchTerm )
 		});
 
 	}).keydown(function(e) {
-		
+
 		if( (e.keyCode === 40 || e.keyCode === 38) && $('body').is('.search-active') ) {
-			
+
 			var $focus = $searchContainer.find(':focus').removeClass('active');
-		
+
 			if( e.keyCode === 40 ) { //down
-				
+
 				$results.eq( $results.index($focus) + 1 ).focus().addClass('active');
-				
+
 			}else if( e.keyCode === 38 ){ //up
-				
+
 				( $results.index($focus) <= 0 ? $searchField : $results.eq( $results.index($focus) - 1) ).focus().addClass('active');
-				
+
 			}
-			
+
 			return false;
 		}
 	});
