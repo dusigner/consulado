@@ -22,21 +22,6 @@ Nitro.module('infinite-scroll', function(){
 		return;
 	}
 
-	$window.scroll( $.throttle(function() {
-		//console.log( $window.scrollTop() + $window.height() > $footer.offset().top, loading);
-
-		if( $window.scrollTop() + $window.height() > $footer.offset().top && !loading ){
-
-			var active = $prateleira.find('li[layout]').length % grid === 0;
-
-			console.log('active', active);
-
-			if( active ) {
-				loadContent();
-			}
-		}
-	}, 250) );
-
 	var loadContent = function(){
 
 		$.ajax({
@@ -64,5 +49,22 @@ Nitro.module('infinite-scroll', function(){
 			}
 		});
 	};
+
+	$window.scroll( $.throttle(function() {
+		//console.log( $window.scrollTop() + $window.height() > $footer.offset().top, loading);
+
+		if( $window.scrollTop() + $window.height() > $footer.offset().top && !loading ){
+
+			var active = $prateleira.find('li[layout]').length % grid === 0;
+
+			console.log('active', active);
+
+			if( active ) {
+				loadContent();
+			}
+		}
+	}, 250) );
+
+
 
 });

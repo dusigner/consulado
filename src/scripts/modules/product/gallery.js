@@ -11,12 +11,12 @@ Nitro.module('gallery', function(){
 	var newImages = $.map($thumbs, function(item){
 		var self = $(item);
 		return '<li><a href="' + $.resizeImage( self.attr('rel'), 1000, 1000 ) + '" class="popup-zoom"><img src="' + $.resizeImage( self.attr('rel'), 420, 420 ) + '" alt="' + self.find('img').attr('title') +'" width="420" height="420" /></a></li>';
-	}).join('');
+	});
 
 	var newThumbs = $.map($thumbs, function(item){
 		var self = $(item);
-		return '<li><a href="#" class="thumb"><img src="' + $.resizeImage( self.attr('rel'), 56, 56 ) + '" alt="' + self.find('img').attr('title') +'" width="56" height="56" /></a></li>';
-	}).join('');
+		return '<li><a href="javascript:void(0);" class="thumb"><img src="' + $.resizeImage( self.attr('rel'), 56, 56 ) + '" alt="' + self.find('img').attr('title') +'" width="56" height="56" /></a></li>';
+	});
 
 	if( $video.length !== 0 ){
 
@@ -24,10 +24,14 @@ Nitro.module('gallery', function(){
 			thumbnail = $video.filter('[class*="Thumbnail"]').text(),
 			thumb = thumbnail ? $.getImagePath( thumbnail ) : 'https://i.ytimg.com/vi/'+ videoId +'/hqdefault.jpg';
 
-		newImages += '<li><a href="//www.youtube-nocookie.com/embed/' + videoId + '?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe"><img class="image cover" width="420" height="420" src="' + thumb + '" /></a></li>';
-		newThumbs += '<li><a href="#" class="thumb"><img src="' + $.resizeImage( '/arquivos/cns-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>';
+		newImages.splice(3, 0, '<li><a href="//www.youtube-nocookie.com/embed/' + videoId + '?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe"><img class="image cover" width="420" height="420" src="' + thumb + '" /></a></li>');
+		newThumbs.splice(3, 0, '<li><a href="javascript:void(0);" class="thumb"><img src="' + $.resizeImage( '/arquivos/cns-video-icon.jpg', 56, 56 ) + '" alt="Vídeo" width="56" height="56" /></a></li>');
 
 	}
+
+	newImages = newImages.join('');
+	newThumbs = newThumbs.join('');
+
 
 
 	$('.apresentacao').replaceWith( $gallery.append( $(newImages) ));
