@@ -116,7 +116,10 @@ Nitro.module('gallery', function(){
 			callbacks: {
 				change: function() {
 					$gallery.slick('slickGoTo', this.currItem.index);
-				}
+				},
+				close: function() {
+			    	$gallery.slick('refresh');
+			    }
 			}
 		});
 
