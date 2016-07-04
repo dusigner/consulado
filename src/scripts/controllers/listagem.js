@@ -24,11 +24,12 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
 		$listContainer = $('.list-container'),
 		$searchSingle 	= $('.search-single-navigator'),
 		$listOrders 	= $('ul.order-by');
-	$(window).scroll( $.throttle(function(){
 
-		$filter.add('.filter-container').toggleClass('pinned', $(window).scrollTop() >= $listContainer.offset().top - $filter.height() );
+	// $(window).scroll( $.throttle(function(){
 
-	}, 250) ).scroll();
+	// 	$filter.add('.filter-container').toggleClass('pinned', $(window).scrollTop() >= $listContainer.offset().top - $filter.height() );
+
+	// }, 250) ).scroll();
 
 
 	var $filterOptions = $('#O:first option'),
@@ -236,5 +237,26 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
 
 
 	$('#quem-viu-clicou h2').text('Produtos em destaque');
+
+
+	//click abrir filtros no mobile
+	$('.open-filter').click(function(e){
+		e.preventDefault();
+
+		$filter.slideToggle();
+	});
+
+	var $singleFilterWrapper = $searchSingle.find('.single-filter-wrapper h5');
+	$singleFilterWrapper.click(function(e){
+		e.preventDefault();
+
+		var $singleFilterOptions = $(this).next('ul');
+
+		if (!$singleFilterOptions.hasClass('open')) {
+			$searchSingle.find('.open').slideUp().removeClass('open');
+		}
+
+		$singleFilterOptions.slideToggle().toggleClass('open');
+	});
 
 });

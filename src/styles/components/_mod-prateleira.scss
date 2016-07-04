@@ -189,6 +189,13 @@
 				color: gray;
 				display: none;
 
+				@include breakpoint(small, "max") {
+					width: 160px;
+					margin: 0 auto;
+					padding: 5px 0;
+					border: 2px solid $gray;
+				}
+
 				fieldset {
 					border: none;
 					display: inline-block;

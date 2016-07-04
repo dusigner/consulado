@@ -23,7 +23,13 @@ body.categoria .compare {
 .listagem {
 	.banner-principal { min-height: auto; }
 
-	.container > .clearfix { position: relative; }
+	.container > .clearfix {
+		position: relative;
+
+		@include breakpoint(small, "max") {
+			margin: 0 -15px;
+		}
+	}
 
 	#relacionados {
 		border-top: 1px solid $gray;
@@ -76,11 +82,21 @@ body.categoria .compare {
 .filter-wrapper {
 	@include transition(top, 600);
 	background-color: $gray;
-	font-weight: 200;
-	height: 80px;
+	padding: 5px 15px;
+	padding-bottom: 15px;
 
-	// padding: .5em 0;
-	// top: -100px;
+	@include breakpoint(medium, "min") {
+		height: 80px;
+	}
+
+	@include breakpoint(small, "max") {
+		position: absolute;
+		top: 172px !important;
+		left: 25px;
+		width: 86%;
+		z-index: 2;
+		display: none;
+	}
 
 	&:empty { @include hide-conditional(); }
 
@@ -441,14 +457,12 @@ body.categoria .compare {
 
 	@include breakpoint(small, "max") {
 		border: none!important;
-		// display: none;
-		float: none;
+		float: left;
 		margin: 0;
 		text-align: center;
 		line-height: normal;
 		position: relative;
 		padding: 0;
-		// width: 150%;
 		width: 100%;
 		z-index: 100;
 
@@ -474,10 +488,18 @@ body.categoria .compare {
 			text-align: left;
 			padding: 0 1em!important;
 
-			li a {
-				display: block;
-				height: 50px;
-				line-height: 50px;
+			li {
+				border-top: 1px solid #83838f;
+
+				&:first-child {
+					border-top: none;
+				}
+
+				a {
+					display: block;
+					height: 50px;
+					line-height: 50px;
+				}
 			}
 
 		}
@@ -538,19 +560,17 @@ body.categoria .compare {
 		}
 
 		a { @include responsiveFont(14, 16, true); }
-	}
 
-	@include breakpoint(small, "max") {
-		&:hover {
-			ul { display: block; }
+		&.shorter {
+			height: auto;
+			overflow-y: scroll;
 		}
 	}
 
-	/* @include breakpoint(extra-small, "min") { */
+	@include breakpoint(medium, "min") {
 		&:not(.active-filter):hover {
-			margin-top: 10px;
+			border-top: 10px solid $gray;
 			background-color: #fff;
-			border-radius: 20px 20px 0 0;
 
 			h5 {
 				@include transition(transform, 200);
@@ -565,7 +585,7 @@ body.categoria .compare {
 
 			ul { display: block; }
 		}
-	/* } */
+	}
 }
 
 
@@ -629,6 +649,30 @@ body.categoria .compare {
 	padding: 1em 0;
 }
 
+.open-filter {
+	display: none;
+	float: left;
+	padding-right: 0;
+
+	span {
+		display: block;
+		width: 100px;
+		padding: 10px 0;
+		color: #ffffff;
+		border-radius: 3px;
+		border: 1px solid $orange;
+		background: $orange;
+		@include responsiveFont(12, 16, true);
+		font-weight: bold;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	@include breakpoint(small, "max") {
+		display: inline-block;
+	}
+}
+
 .order-wrapper {
 	float: right;
 	position: relative;
@@ -647,7 +691,10 @@ body.categoria .compare {
 
 		span {
 			color: $txt-gray;
-			font-weight: normal;
+
+			@include breakpoint(small, "max") {
+				display: none;
+			}
 		}
 
 		&:after{
@@ -685,6 +732,10 @@ body.categoria .compare {
 		li {
 			text-align: right;
 			text-transform: lowercase;
+
+			@include breakpoint(small, "max") {
+				margin: 10px 0;
+			}
 
 			a {
 				@include responsiveFont(14, 16, true);
