@@ -8,7 +8,7 @@ body.product-comparison {
 
 	tr[class*="atributos Módulo"] {
 		visibility: hidden;
-		display: none;
+		display: none !important;
 	}
 
 	.produto {
@@ -26,6 +26,10 @@ body.product-comparison {
 				.image {
 					span {
 						min-height: 250px;
+
+						@include breakpoint(small, "max") {
+							min-height: auto;
+						}
 					}
 				}
 
@@ -44,9 +48,15 @@ body.product-comparison {
 	.comparar-outros {
 		float: right;
 
+		@include breakpoint(small, "max") {
+			display: inline-block;
+			width: 100%;
+			text-align: center;
+		}
+
 		a {
 			@extend .primary-button;
-			@include font-size(14px, true, false);
+			@include responsiveFont(14, 16, true);
 			margin: 20px 0;
 		}
 	}
@@ -55,8 +65,14 @@ body.product-comparison {
 		.topWrapper .info { display: none; }
 
 		h2 {
-			@include font-size(22px, true, false);
+			@include responsiveFont(22, 16, true);
 			float: left;
+
+			@include breakpoint(small, "max") {
+				@include responsiveFont(20, 16, true);
+				margin: 0;
+				margin-top: 20px;
+			}
 		}
 
 		.corpo-comparacao {
@@ -74,6 +90,15 @@ body.product-comparison {
 
 				table { display: none; }
 
+				@include breakpoint(small, "max") {
+					thead {
+						&>th {
+							display: block;
+							width: 100%;
+						}
+					}
+				}
+
 				tr {
 					& > * {
 						border: 1px solid #fff;
@@ -82,7 +107,7 @@ body.product-comparison {
 					}
 
 					td {
-						@include font-size(14px, true, false);
+						@include responsiveFont(14, 16, true);
 						color: $gray-d;
 					}
 
@@ -108,7 +133,7 @@ body.product-comparison {
 								z-index: 2;
 
 								&:after {
-									@include font-size(12px, true, false);
+									@include responsiveFont(12, 16, true);
 									content: 'Excluir';
 								}
 							}
@@ -122,6 +147,121 @@ body.product-comparison {
 					}
 				}
 			}
+
+			@include breakpoint(small, "max") {
+				border-top: none;
+
+				table {
+					display: inline-block;
+
+					thead {
+						display: inline-block;
+
+						&>th {
+							padding: 10px 0;
+							border-bottom: 1px solid $gray;
+							text-align: left;
+						}
+
+						tr {
+							&.remover {
+								display: none;
+
+								&+ tr {
+									width: 100%;
+
+									th {
+										display: table-cell;
+										width: 49%;
+										padding: 1em 0;
+										@include responsiveFont(13, 16, true);
+
+										&:first-child {
+											padding-left: 0;
+										}
+
+										&:last-child {
+											padding-right: 0;
+										}
+
+										.prateleira {
+											&>ul>li {
+												padding: 0 10px;
+
+												article {
+													padding: 0;
+
+													.detalhes {
+														img {
+															min-height: auto;
+														}
+
+														.FlagsHightLight, .off {
+															display: none !important;
+														}
+
+														h3 {
+															min-height: 130px;
+															@include responsiveFont(14, 16, true);
+
+															li {
+																display: block;
+																@include responsiveFont(14, 16, true);
+															}
+														}
+
+														.price {
+															margin: 10px 0;
+
+															.de {
+																@include responsiveFont(13, 16, true);
+															}
+
+															.por {
+																@include responsiveFont(15, 16, true);
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					tbody {
+						tr {
+							display: block;
+							position: relative;
+							width: 100%;
+							margin: 25px 0;
+
+							th, td {
+								padding: 0;
+								border: none !important;
+								@include responsiveFont(13, 16, true);
+								text-align: left;
+							}
+
+							th {
+								position: absolute;
+								display: block;
+								width: 100%;
+								padding-bottom: 10px;
+								border-bottom: 1px solid $gray !important;
+							}
+
+							td {
+								display: inline-block;
+								width: 49%;
+								padding-top: 40px;
+							}
+						}
+					}
+				}
+			}
 		}
 
 		.atributos {
@@ -129,13 +269,13 @@ body.product-comparison {
 
 			.box {
 				.title {
-					@include font-size(12px);
+					@include responsiveFont(12, 16, true);
 					color: #000;
 					font-weight: bold;
 				}
 
 				.description{
-					@include font-size(12px);
+					@include responsiveFont(12, 16, true);
 					color: $gray-d;
 				}
 			}

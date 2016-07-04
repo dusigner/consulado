@@ -24,4 +24,9 @@ Nitro.controller('compare', function(){
 			.text('Descritivo');
 	}
 
+	if($(window).width() <= 768) {
+		$('.corpo-comparacao thead>tr.remover').siblings('tr').find('th:first-child').insertBefore($('.corpo-comparacao thead>tr.remover'));
+		$('.corpo-comparacao thead').children('th').html('Produtos Selecionados');
+	}
+
 });
