@@ -623,6 +623,33 @@
 		}
 	}
 
+	.bt-gototop, .ph-bt-gototop{
+		display: block !important;
+		position: fixed;
+		bottom: 40px;
+		right: 18px;
+		z-index: 99;
+		width: 30px;
+		height: 35px;
+		text-decoration: none;
+
+		polygon { transition: fill 0.3s ease; }
+
+		&:before{
+			@include icon-get('arrow-up');
+			@include responsiveFont(8, 16, true);
+			color: #fff;
+			left: 8px;
+			pointer-events: none;
+			position: absolute;
+			top: 13px;
+		}
+
+		&:hover {
+			polygon { fill: $green; }
+		}
+	}
+
 	// Body mask
 	.mask {
 		@include opacity(0.5);

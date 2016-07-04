@@ -87,6 +87,7 @@ body.search-active{
 
 		@include breakpoint(small, "max") {
 			display: none;
+			max-width: 68%;
 			padding: 0;
 			@include responsiveFont(15, 16, true);
 			text-indent: 70px;

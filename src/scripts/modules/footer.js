@@ -6,17 +6,19 @@ Nitro.module('footer', function(){
 
 	'use strict';
 
-	var $footer = $('footer'),
+	var $window = $(window),
+		$footer = $('footer'),
 		accordionBtn = $('.accordion .title'),
 		accordionBox = accordionBtn.parent(),
 		$duvidasList   = $('.duvidas'),
 		$duvidasAct    = $('.duvidas li.accordion > a'),
 		//subList      = $('.sub-title b'),
-		$btnNewsletter = $('.call-newsletter');
+		$btnNewsletter = $('.call-newsletter'),
+		$toTop         = $('.bt-gototop');
 
 	// ACCORDION MENU FOOTER MOBILE
 	accordionBtn.on('click', function(e) {
-		if( $(window).width() > 767 ) return true;
+		if( $window.width() > 767 ) return true;
 
 		e.preventDefault();
 
@@ -57,15 +59,38 @@ Nitro.module('footer', function(){
 	});*/
 
 
+	//BACK TO TOP
+	var reachBottom = 0;
+
+	$window.scroll( function() {
+		if( $window.scrollTop() >= 560 ){
+			$toTop.removeClass('hide');
+			reachBottom = ( $footer.offset().top - $window.scrollTop() ) - $window.height();
+			if( reachBottom < 0 ) {
+				$toTop.css('bottom', 40 + Math.abs(reachBottom));
+			}else{
+				$toTop.css('bottom', 40);
+			}
+		} else {
+			$toTop.addClass('hide');
+		}
+	}).scroll();
+
+	$toTop.click(function(e){
+		e.preventDefault();
+		$('header').toScroll();
+	});
+
+
 	$btnNewsletter.click(function(e) {
 		e.preventDefault();
 
 		$footer.toScroll();
 	});
 
-	$(window).scroll( $.throttle(function() {
+	$window.scroll( $.throttle(function() {
 
-		if( $(window).scrollTop() >= 560 && $(window).scrollTop() + $(window).height() <= $footer.offset().top ){
+		if( $window.scrollTop() >= 560 && $window.scrollTop() + $window.height() <= $footer.offset().top ){
 			$btnNewsletter.addClass('newsletter-show');
 		}else{
 			$btnNewsletter.removeClass('newsletter-show');
