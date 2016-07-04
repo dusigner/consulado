@@ -116,6 +116,15 @@ Nitro.module('header', function(){
 	});
 
 
+	window.vtexjs.checkout.getOrderForm().done(function(result) {
+		var orderForm = result;
+
+		if (orderForm.clientProfileData.email) {
+			$('.logout').removeClass('hide');
+		}
+	});
+
+
 
 	//Fechar advertisement
 	// var advertisement = $('.advertisement');

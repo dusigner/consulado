@@ -88,7 +88,12 @@ body.search-active{
 		@include breakpoint(small, "max") {
 			display: none;
 			padding: 0;
+			@include responsiveFont(15, 16, true);
 			text-indent: 70px;
+		}
+
+		@media screen and (max-width:320px) {
+			@include responsiveFont(12, 16, true);
 		}
 
 		&:focus {

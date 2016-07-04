@@ -439,7 +439,17 @@ $menu-colors: (
 		}
 
 		// Item departamento
-		.menu-department { display: block; }
+		.menu-department {
+			display: block;
+
+			.logout {
+				display: block;
+
+				&.hide {
+					display: none;
+				}
+			}
+		}
 
 		// Submenu
 		&.sub-itens-active {
@@ -465,7 +475,7 @@ $menu-colors: (
 			}
 		}
 
-		&                     { height: 608px; }
+		&                     { height: auto; }
 		&.sub-itens-active    { height: 353px; }
 		&.para-gelar          { height: 403px; }
 		&.para-embutir        { height: 352px; }
