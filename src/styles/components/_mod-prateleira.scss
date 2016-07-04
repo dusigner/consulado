@@ -174,6 +174,14 @@
 				&:hover {
 					span { color: $orange; }
 				}
+
+				@include breakpoint(small, "max") {
+					@include responsiveFont(12, 16, true);
+					margin-bottom: 20px;
+					padding: 10px 4px;
+					border: 2px solid $txt-gray-l;
+					color: $txt-gray-l;
+				}
 			}
 
 			.compare {

@@ -72,3 +72,10 @@ body > .destaque {
 	width: 470px;
 }
 
+@include breakpoint(small, "max") {
+	.prateleira.default {
+		.slick-dots {
+			bottom: 5px;
+		}
+	}
+}
