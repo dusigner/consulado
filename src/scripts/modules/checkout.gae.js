@@ -175,7 +175,9 @@ Nitro.module('checkout.gae', function () {
 
 		console.log(product, data);
 
-		console.log(template);
+		if ( $(window).width() < 840 ) {
+			template = 'modal-warranty-mobile';
+		}
 
 		dust.render(template, data, function (err, out) {
 			if (err) {

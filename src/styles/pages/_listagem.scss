@@ -132,12 +132,15 @@ body.categoria .compare {
 	}
 
 	.navigation-tabs, .navigation {
-		// float: left;
 		height: 80px;
 		line-height: 80px;
 		position: relative;
 
-		@include breakpoint(small, "max") { display: block; }
+		@include breakpoint(small, "max") {
+			display: block;
+			height: 50px;
+			line-height: 50px;
+		}
 	}
 
 	.title-filter {
