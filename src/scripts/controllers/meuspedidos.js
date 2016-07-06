@@ -1,3 +1,4 @@
+var CRM = require('modules/store/crm');
 require('modules/orders/order.states');
 require('modules/orders/order.warranty');
 require('../../templates/myorders.html');
@@ -12,8 +13,6 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 	var loading = '<div class="load"><div class="loading"></div></div>';
 
 	var self = this, arrOrder = [];
-
-	//var trackingStates = 'entregaDoPedido';
 
 	var Order = {
 
@@ -39,125 +38,49 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 			});
 
-		},
-
-		user: function( orderId ) {
-
-			return $.ajax({
-
-				url: '/api/oms/user/orders/'+orderId,
-
-				accept: 'application/vnd.vtex.ds.v10+json',
-
-				crossDomain: true,
-
-				type: 'GET',
-
-				dataType: 'json',
-
-				contentType: 'application/json; charset=utf-8',
-
-			});
-
 		}
 
 	};
 
 	this.prepareRender = function( data ) {
+		// data.orderId = 'v16039808wrpl-01';
+		// If the request is not found show default message
+		data.isMessage = true;
 
-		// var order = Order.user( data.orderId ).then(function( result ) {
+		var order = CRM.getOrderById( data.orderId ).then(function( result ) {
+				data.tracking = [];
+				if(! result) return false;
 
-		// 		data.tracking = [];
-		// 		data.isMessage = true;
+				$(result && result.Documents).each(function(i,e) {
+					data.tracking[ i ] = {
+						description: e.description,
+						lastChange:  $.formatDatetimeBRL( e.lastChange )
+					};
+					data.isMessage = false;
+				});
 
-		// 		if(result.packageAttachment.packages.length <= 0)  return false;
-
-		// 		$( result.packageAttachment.packages ).each(function(i,e) {
-
-		// 			if(e.courierStatus && e.courierStatus.finished){
-		// 				data.currentState  = states.get( 'pedidoEntregue' );
-		// 		 	}
-
-		// 			if(e.courierStatus && e.status !== 'unknown') {
-		// 				$( e.courierStatus.data ).each(function(index, el) {
-		// 					data.tracking[ index ] = {
-		// 						description: el.description,
-		// 						lastChange:  $.formatDatetimeBRL( el.lastChange )
-		// 					};
-		// 				});
-		// 				data.isMessage = false;
-		// 				data.tracking = data.tracking.reverse();
-		// 			}
-		// 		});
-
-		// 	}).then(function() {
+			}).then(function() {
 
 				$('.box-meuspedidos').trigger('renderTracking', data);
 
-		// 	});
+			}, function (error) {
 
-		// arrOrder.push(order);
+				$('.box-meuspedidos').trigger('renderTracking', data);
+
+			})
+
+			arrOrder.push(order);
 	};
 
 	this.listenRender = function() {
 		$('.box-meuspedidos').on('renderTracking', function(event, data) {
-			dust.render( template , data , function (err, out) {
+
+			var render = dust.render( template , data , function (err, out) {
 				if (err) {
 					throw new Error('My Orders Dust error: ' + err);
 				}
 				$('.box-meuspedidos').append(out);
 			});
-		});
-	};
-
-	this.showMore = function() {
-		// Somente para mobile
-		$('.show-more-txt').on('click', function() {
-			var boxData = $(this).parent().parent().find('.list-data span');
-			var boxAddress = $(this).parent().parent().find('.list-address');
-
-			$(this).toggleClass('active');
-
-			if( $(this).hasClass('active') ) {
-
-				$(this).html('Ver menos');
-				boxData.show();
-				boxAddress.show();
-
-			} else {
-
-				$(this).html('Ver mais');
-				boxData.hide();
-				boxAddress.hide();
-
-			}
-
-		});
-
-		$('.show-detail').on('click', function() {
-			var orderId = $( this ).data('order-id');
-
-			var boxOrder = $('.box-'+orderId);
-
-			var textBoxOrder = boxOrder
-								.parent().find('button .text-show-detail');
-
-			$(this).toggleClass('active');
-
-			if( $(this).hasClass('active') ) {
-
-				textBoxOrder.html('Ver menos informações');
-
-				boxOrder.slideDown();
-
-			} else {
-
-				textBoxOrder.html('Ver mais informações');
-
-				boxOrder.slideUp();
-
-			}
-
 		});
 	};
 
@@ -242,65 +165,108 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 			return new Date(a.creationDate).getTime() - new Date(b.creationDate).getTime();
 	};
 
-	Order.list().done(function( orders ) {
+	this.showMore = function() {
+		$('.box-order-header').on('click', function() {
+			if ( $(window).width() > 840 ) { return false;	}
+			var element = $(this);
+			if(element.hasClass('js-active')) {
+			 	element.removeClass('js-active').next().stop().slideUp();
+			} else {
+				$('.box-order-header.js-active').not(this).removeClass('js-active').next().stop().slideUp();
+				element.addClass('js-active').next().stop().slideDown();
+			}
+		});
 
-		$('.load').remove();
+		$('.show-more-txt').on('click', function() {
+			if ( $(window).width() > 840 ) { return false;	}
+			var boxData = $(this).parent().parent().find('.list-data span');
+			var boxAddress = $(this).parent().parent().find('.list-address');
 
-		self.listenRender();
+			$(this).toggleClass('active');
 
-		orders.reduce(function(prev, curr, i) {
-
-			if( prev.orderGroup === curr.orderGroup ) {
-
-				delete orders[i-1];
-
-				//MERGE ITEMS
-				$( prev.items ).each(function(i, e) {
-					curr.items.push( e );
-				});
-
-				//MERGE TOTALS
-				$( prev.totals ).each(function(i, e) {
-					if (curr.totals[i]) {
-						curr.totals[i].value += e.value;
-					} else {
-						curr.totals[i] = e;
-					}
-				});
-
-				curr.value += prev.value;
-
+			if( $(this).hasClass('active') ) {
+				$(this).html('Ver menos');
+				boxData.show();
+				boxAddress.show();
+			} else {
+				$(this).html('Ver mais');
+				boxData.hide();
+				boxAddress.hide();
 			}
 
-			return curr;
 		});
+	};
 
-		orders.sort(self.sortByDate).reverse();
+	Order.list().done(function( orders ) {
+			$('.load').remove();
 
-		$( orders ).each(function(i,e) {
+			self.listenRender();
 
-			if(typeof e !== 'undefined') {
+			orders.reduce(function(prev, curr, i) {
 
-			 	var data = self.getData( e );
+				if( prev.orderGroup === curr.orderGroup ) {
 
-			 	self.prepareRender( data );
+					delete orders[i-1];
 
-			 }
+					//MERGE ITEMS
+					$( prev.items ).each(function(i, e) {
+						curr.items.push( e );
+					});
 
-		});
+					//MERGE TOTALS
+					$( prev.totals ).each(function(i, e) {
+						if (curr.totals[i]) {
+							curr.totals[i].value += e.value;
+						} else {
+							curr.totals[i] = e;
+						}
+					});
 
-		self.showMore();
+					curr.value += prev.value;
 
-	}, function() {
-		$.when.apply($, arrOrder).done( warranty.setup );
+				}
+
+				return curr;
+			});
+
+			orders.sort(self.sortByDate).reverse();
+
+					$( orders ).each(function(i,e) {
+
+						if(typeof e !== 'undefined') {
+
+						 	var data = self.getData( e );
+
+						 	self.prepareRender( data );
+
+						 }
+
+					});
+			}, function() {
+
+				var currentOrders = [];
+
+				$(arrOrder).each(function(index, promise) {
+
+					promise.always(function(e) {
+						currentOrders.push(e);
+						if(arrOrder.length == currentOrders.length) {
+							warranty.setup();
+							self.showMore();
+						}
+					});
+
+				});
+
+			});
 	});
 
-});
-
 $( document ).ajaxComplete(function( event, xhr, settings ) {
+
 	'use strict';
 
 	if ( settings.url === '/no-cache/profileSystem/getProfile' ) {
 		sessionStorage.setItem('profileVtex', xhr.responseText );
 	}
+
 });
