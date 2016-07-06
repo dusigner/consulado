@@ -6,6 +6,21 @@ var CRM = {
 
 	clientURI: '/api/ds/pub/documents/CL',
 
+	ordersURI: '/api/ds/pub/documents/SP',
+
+	getOrderById: function(orderId) {
+		return $.ajax({
+			url: CRM.ordersURI,
+			type: 'GET',
+			contentType: 'application/json; charset=utf-8',
+			data: {
+				f: 'orderId,state,city,status,description,lastChange',
+				fq: 'orderId:' + orderId
+			}
+		})
+
+	},
+
 	insertClient: function (data) {
 		return $.ajax({
 			url: CRM.clientURI,
