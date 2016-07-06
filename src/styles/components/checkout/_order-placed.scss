@@ -1,0 +1,124 @@
+body {
+	&.body-order-placed{
+		header {
+			.come-back { display: block!important; }
+		}
+
+		.seller-info { display: none; }
+
+		.page-header {
+			h1.title { color:$green; }
+		}
+
+		.alert-success {
+			color:$txt-gray;
+
+			.orderplaced-successfully { color:$txt-gray; }
+		}
+
+		.btn-continue-shop, .bank-invoice-print-link{
+			color: #736c6b;
+		}
+
+		.consul-ebit {
+			float:right;
+			margin-top: 10px;
+		}
+
+		.quantity-price, .monetary { width: auto; }
+		.orderid { color: $green; }
+
+		.cart-items {
+			border: 3px solid $gray-l;
+
+			thead {
+				background-color: $gray-l;
+
+				th {
+					font-weight: normal;
+					padding: 15px;
+				}
+			}
+
+			.product-item {
+				border-bottom: 3px solid $gray-l;
+				padding: 15px 0;
+
+				&:last-child { border:none; }
+
+				td {
+					padding: 30px 10px;
+
+					&.product-name{
+						@include responsiveFont(14);
+						font-weight:bold;
+					}
+
+					&.shipping-date, &.product-price,&.quantity, &.quantity-price{
+						@include responsiveFont(12);
+						color:$txt-gray-l;
+						font-weight:normal;
+					}
+
+					&.quantity-price {
+						color: $green;
+						font-weight:bold;
+					}
+				}
+			}
+		}
+
+		.payment-info {
+			.payments-list {
+				@include responsiveFont(14);
+
+				.bank-invoice-print-link{ margin-top: 10px; }
+			}
+		}
+
+		.general-info { margin-left: 0; }
+
+		.shipping-info {
+			display: inline-block!important;
+			border:3px solid $gray-l;
+
+			h3 { padding: 0px 15px; }
+
+			address{
+				margin-bottom: 0;
+
+				ul {
+					li {
+						border-top:1px solid $gray-l;
+						padding: 5px 15px;
+					}
+				}
+			}
+
+		}
+
+		.total-info {
+			border: 3px solid $gray-l;
+
+			.section-info-title{display: none;}
+
+			tr {
+				border-bottom: 1px solid $gray-l;
+				&.last-child { border-bottom: none; }
+
+				td {
+					padding: 10px;
+
+					&.info { text-align:right; }
+				}
+			}
+
+			tfoot {
+				td { @include responsiveFont(16); }
+				.monetary { color:$green; }
+			}
+		}
+
+		.orderplaced-hr-continue { display: none; }
+	}
+}

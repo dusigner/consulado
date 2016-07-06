@@ -1,0 +1,63 @@
+body {
+	footer{
+		position: relative;
+		z-index:10;
+		background: #94bc42;
+		color:#fff;
+
+		.footer-politica-privacidade {
+			padding: 45px 0;
+
+			a {
+				color: #ffffff;
+				font-size: 13px;
+				text-decoration: none;
+			}
+		}
+
+		.footer-selos{
+			padding:30px 0;
+
+			.txt {
+				@include responsiveFont(13);
+				line-height:50px;
+			}
+
+			img {
+				margin-left:10px;
+				margin-right:60px;
+			}
+
+			ul.selos {
+				min-width: 100px;
+				margin-bottom: 0;
+
+				&, li {
+					display: inline-block;
+					vertical-align: middle;
+				}
+
+				.digicert img{height: 35px;}
+
+				.ebit img{height: 50px;}
+			}
+		}
+
+		.footer-notes {
+			border-top: 1px solid #90b447;
+			padding-top:20px;
+			padding-bottom: 40px;
+
+			.text { @include responsiveFont(13); }
+
+			.icon-vtex {
+				background: url(/arquivos/brastemp-vtex-ico.png) no-repeat;
+				width:60px;
+				height: 14px;
+				float:right;
+			}
+		}
+	}
+}
+
+footer { z-index:0; }

@@ -1,0 +1,43 @@
+#modal-services{
+	position:absolute;
+	margin-bottom: 10%;
+	top: 10%;
+
+	.modal-body {
+		@include responsiveFont(13);
+		padding: 20px 35px;
+
+		h2 { @include responsiveFont(16); }
+
+		ul,ol {
+			li { margin-top: 20px; }
+		}
+	}
+
+	.modal-footer {
+		border:none;
+		padding:25px 35px 25px 35px;
+		background: $gray-l;
+
+		.lk-contrato{
+			display: block;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		#btn-concordo{
+			@include vendor(transition, all .3s ease);
+			color:#fff;
+			background: $orange;
+			border-color:$orange;
+
+			&:hover{
+				background: #fff;
+				color:$orange;
+			}
+		}
+	}
+}
+.add-service-container { display: none; }
+
+.product-service fieldset { display: none; }

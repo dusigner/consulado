@@ -1,0 +1,161 @@
+/*********************************************************/
+// Modal More Phones
+/*********************************************************/
+#modal-more-phones{
+	width: 640px;
+	margin-left: -330px;
+	left: 50%;
+	border-radius: 0;
+
+	.success-message, .error-message{
+		display: none;
+		text-align:center;
+	}
+
+	.modal-header {
+		padding: 15px;
+		background: $green;
+
+		h4 {
+			margin: 0;
+			color: #ffffff;
+			@include responsiveFont(26);
+			line-height: normal;
+			text-align: left;
+		}
+	}
+
+	.modal-body {
+		max-height: 520px;
+		@include breakpoint(small, "max"){
+			max-height: 400px;
+		}
+	}
+
+	#formPhones {
+		.alert-danger {
+			width: 100%;
+			margin: 0;
+			margin-bottom: 20px;
+
+			&.active {
+				display: block!important;
+			}
+		}
+
+		.data {
+			div {
+				display: inline-block;
+				vertical-align: top;
+				margin-top: 10px;
+
+				label {
+					@include responsiveFont(15);
+					font-weight: bold;
+				}
+
+				&.phone-numbers {
+					width: 310px;
+
+					input[type="tel"] {
+						height: 35px;
+						margin: 10px 0;
+						border-radius: 3px;
+					}
+				}
+
+				&.turno-ligacao {
+					margin-left: 40px;
+
+					span {
+						display: block;
+						margin-bottom: 5px;
+						@include responsiveFont(15);
+						font-weight: bold;
+					}
+
+					label {
+						position: relative;
+						display: inline;
+						@include responsiveFont(13);
+						font-weight: normal;
+
+						&:before{
+							content: '';
+							display: inline-block;
+							width: 12px;
+							height: 12px;
+							margin-right: 5px;
+							border: 1px solid;
+							border-radius: 50%;
+						}
+					}
+
+					input[type=radio] { display: none; }
+
+					input[type=radio]:checked + label:after{
+						@include contentBefore();
+						background-color: $green;
+						border-radius: 50%;
+						height:8px;
+						left: 2px;
+						top: 2px;
+						width:8px;
+					}
+				}
+
+				&.submit {
+					display: block;
+
+					.enviar {
+						color:$green;
+						border: 1px solid $green;
+						border-radius: 3px;
+						margin: 10px 0;
+						font-weight: bold;
+						@include responsiveFont(13);
+
+						&:hover {
+							background: $green;
+							color:#fff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		width: 100%;
+		top:0;
+		left:0;
+		margin:0;
+		border-radius: 0;
+
+		.modal-header {
+			padding-bottom: 0;
+			background: #ffffff;
+
+			h4 {
+				@include responsiveFont(24);
+				color: $txt-gray;
+			}
+		}
+
+		#formPhones {
+			.data {
+				div {
+					display: block !important;
+
+					&.phone-numbers {
+						width: auto;
+					}
+
+					&.turno-ligacao {
+						margin: 15px 0;
+					}
+				}
+			}
+		}
+	}
+}

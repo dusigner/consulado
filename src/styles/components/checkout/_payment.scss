@@ -1,0 +1,263 @@
+body {
+	/* Change label inputs - Checkout Payment*/
+	.custom-label-complemento:after {
+	    content: "Complemento";
+	    text-indent: 0;
+	    display: block;
+	}
+
+	.custom-label-referencia:after {
+	    content: "Referência";
+	    text-indent: 0;
+	    display: block;
+	    margin-top: -15px;
+	}
+
+	&.body-order-form {
+		.checkout-container {
+			padding-bottom: 40px;
+
+			.cart-fixed { background: #fff; }
+		}
+
+		.step {
+			@include responsiveFont(14);
+			color: $txt-gray-l;
+			padding: 0;
+
+			.accordion-heading {
+				background-color: $gray-l;
+				text-align:center;
+
+				i { display: none; }
+
+				.link-box-edit{
+					@include responsiveFont(19);
+					top: auto;
+					right:10px;
+					outline: none;
+					background: none;
+					border:none;
+					color: $txt-gray-l;
+
+					.icon-edit { display: block; }
+				}
+
+				.accordion-toggle {
+					padding: 10px 0;
+					font-weight:bold;
+					color: $txt-gray;
+					@include responsiveFont(22);
+				}
+			}
+
+			input[type="text"],
+			input[type="email"],
+			input[type="tel"],
+			select { height: 40px; }
+
+			.payment-card-number { margin-top: 30px; }
+
+			.box-installments select,
+			.payment-card-number input,
+			.payment-card-name input { width: 100%; }
+
+			.payment-card-due, .payment-card-cvv {
+				label {
+					display: block;
+					width: 100%;
+				}
+			}
+
+			.payment-card-due-month, .payment-card-due-year, .payment-card-cvv{
+				width:47%;
+
+				select, input{
+					@include responsiveFont(14);
+					line-height: 20px;
+					width:100%;
+				}
+			}
+
+			.payment-card-due-year { float:right; }
+
+			.card-flags-container { margin-bottom:7px; }
+			.payment-card-lash { display: none; }
+
+			.payment-body {
+				.payment-group {
+					width:40%;
+
+					.payment-group-list-btn { width: 100%; }
+				}
+
+				.steps-view { width:60%; }
+
+				@media screen and (max-width: 767px) {
+					.payment-group,
+					.steps-view { width:auto !important; }
+				}
+			}
+
+			.link-change-shipping { @include responsiveFont(16); }
+			.shipping-options {
+				.btn-group {
+					@include responsiveFont(14);
+
+					.shipping-option-item{
+						margin-bottom: 5px;
+						border-radius: 0;
+
+						&.active{
+							background: $gray-l;
+							color:$txt-gray;
+						}
+
+						&:hover{
+							background: $gray-l;
+							color:$txt-gray;
+						}
+					}
+				}
+
+				p { border-top:3px solid $gray-l; }
+			}
+
+			.scheduled-sla-value-container:hover{
+				background: transparent;
+				color:$txt-gray;
+			}
+			.scheduled-sla-edit{
+				margin-right: 10px;
+				color: $green;
+				border-color: $green;
+				border:none;
+
+				/*&:hover{
+					background: $orange;
+					color:#fff;
+				}*/
+			}
+
+			.link-two-cards { display: none; }
+		}
+
+		.cart-template {
+			.cart-fixed {
+				height: 100%!important;
+				position: static!important;
+			}
+
+			.summary-cart-template-holder{
+				border: 3px solid #f4f2f1;
+				height: auto!important;
+			}
+
+			h2 {
+				text-align:center;
+				background-color: $gray-l;
+				padding: 16px 0;
+				line-height:18px;
+				font-weight:bold;
+				color: $txt-gray;
+				@include responsiveFont(20);
+				margin-bottom: 0;
+			}
+
+			ul {
+				li.item:first-child {
+					border-top:none;
+					/*.shipping-date{
+						color:$txt-gray;
+					}
+					.price{
+						color:$orange;
+					}*/
+				}
+			}
+			.item {
+				border-top: 3px solid $gray-l;
+				padding: 15px;
+
+				.shipping-date { color:$txt-gray-l; }
+
+				.price { color:$green; }
+
+				.service-list {
+					width: 100%;
+					margin-top: 10px;
+				}
+			}
+
+			.cart {
+				@include vendor(border-radius, 0);
+				margin-bottom: 0;
+
+				.badge{
+					background: $green;
+					border-color: $green;
+					padding: 3px 6px;
+					color:#fff;
+				}
+			}
+
+			.link-cart {
+				@include responsiveFont(12);
+				display: inline-block;
+				text-align: center;
+				width: 100%;
+
+				a { color: $txt-gray-l; }
+			}
+
+			.summary-template-holder{
+				border: 3px solid $gray-l;
+				border-top:0;
+				margin-top:-1px;
+				@include vendor(border-radius, 0);
+
+				.totalizers{
+					border:none;
+					margin-bottom:0;
+
+					.table {
+						tr {
+							height:40px;
+
+							.info {
+								float:none;
+								text-align:right;
+							}
+
+							.monetary {
+								text-align:left;
+								width:50%;
+							}
+						}
+
+						tfoot {
+							td { @include responsiveFont(16); }
+
+							.monetary { color: $green; }
+						}
+					}
+				}
+
+				.garantiaInfo {
+					@include responsiveFont(12);
+					color: $txt-gray;
+					display: none;
+					padding: 1em;
+
+					&.active { display: block; }
+				}
+			}
+		}
+
+		.payment-confirmation-wrap{
+			position: static;
+			background: none;
+			margin-top: 10px;
+		}
+	}
+}
