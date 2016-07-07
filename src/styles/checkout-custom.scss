@@ -33,10 +33,6 @@ body{ padding: 0 !important; }
 body{
 	//font-family:$base-font-family;
 
-	@media screen and (max-width: 767px) {
-		padding:0;
-	}
-
 	a {
 		color:$txt-gray;
 		text-decoration:none;
@@ -211,6 +207,25 @@ body{
 	.item-attachments-head { display: none !important; }
 
 	.garantiaInfo{display: none;}
+
+	@media screen and (max-width: 767px) { padding:0; }
+
+	@include breakpoint(small, "max") {
+		&.body-order-form {
+			.client-pre-email {
+				padding: 0 20px;
+
+				#client-pre-email {
+					margin: 15px 0;
+				}
+
+				#btn-client-pre-email {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+	}
 }
 
 /*## BUGFIX FIREFOX #####################################*/
@@ -223,7 +238,50 @@ body{
 /*## BUGFIX FIREFOX #####################################*/
 
 
-.default-modal { background: $orange; }
+.default-modal {
+	background: $orange;
+
+	#btn-identified-user-button {
+		border: 2px solid #ffffff;
+		color: #ffffff;
+		background: transparent;
+		box-shadow: none;
+		text-shadow: none;
+
+		&:hover {
+			background: #ffffff;
+			color: $orange;
+		}
+	}
+
+	@include breakpoint(small, "max") {
+		.identified-user-message {
+			@include responsiveFont(14, 16, true);
+		}
+
+		.payment-confirmation-message {
+			width: 100%;
+		}
+
+		.masked-info-modal-body {
+			max-height: 100%;
+
+			.masked-info-hello {
+				@include responsiveFont(16, 16, true);
+			}
+
+			.masked-info-message p {
+				@include responsiveFont(15, 16, true);
+			}
+
+			.masked-info-button {
+				background: $orange;
+				border: 2px solid #ffffff;
+				color: #ffffff;
+			}
+		}
+	}
+}
 
 .modal-backdrop { background:$gray-d; }
 .modal {

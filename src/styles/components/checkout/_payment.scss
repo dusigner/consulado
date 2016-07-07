@@ -99,7 +99,12 @@ body {
 				}
 			}
 
-			.link-change-shipping { @include responsiveFont(16); }
+			.link-change-shipping {
+				width: 100%;
+				margin-top: 15px;
+				@include responsiveFont(16);
+			}
+
 			.shipping-options {
 				.btn-group {
 					@include responsiveFont(14);

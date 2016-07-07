@@ -64,6 +64,8 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 		gae.orderForm = orderForm;
 
 		if (self.isOrderForm()) {
+			$('.modal-masked-info-template .masked-info-button').text('Voltar');
+
 			gae.info();
 		}
 

@@ -216,7 +216,7 @@ Nitro.module('checkout.gae', function () {
 	};
 
 	this.link = function () {
-		var $link = $('<a href="#" class="linkWarranty btn">Adicionar Seguro de Garantia Estendida Original</a>');
+		var $link = $('<a href="#" class="linkWarranty btn">Adicionar Garantia Estendida</a>');
 
 		//adicionando link de GAE em cada item
 		$('.product-item').each(function (i) {

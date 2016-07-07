@@ -5,7 +5,7 @@ body {
 
 			.cart-items {
 				thead {
-					@include responsiveFont(14);
+					@include responsiveFont(14, 16, true);
 					background-color: $gray-l;
 
 					th {
@@ -28,13 +28,13 @@ body {
 						&:first-child { border-bottom:none; }
 
 						.brand, .seller, .shipping-date, .product-price, .quantity-price{
-							@include responsiveFont(12);
+							@include responsiveFont(12, 16, true);
 							color:$txt-gray-l;
 							font-weight:normal;
 						}
 
 						.product-name {
-							@include responsiveFont(14);
+							@include responsiveFont(14, 16, true);
 							font-weight:bold;
 						}
 
@@ -69,10 +69,10 @@ body {
 					.item-service {
 						td { padding: 10px 10px 25px 10px; }
 
-						.bundle-item-name { @include responsiveFont(14); }
+						.bundle-item-name { @include responsiveFont(14, 16, true); }
 
 						.quantity-price {
-							@include responsiveFont(12);
+							@include responsiveFont(12, 16, true);
 							color:$green;
 							font-weight:bold;
 						}
@@ -154,6 +154,40 @@ body {
 				}
 		}
 
+		@include breakpoint(small, "max") {
+			.cart-links-bottom {
+				position: relative;
+				min-height: 140px;
+				margin-bottom: 0;
+
+				.link-choose-more-products-wrapper {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					display: block;
+					width: 100%;
+					margin: 0;
+
+					#cart-choose-more-products {
+						width: 100%;
+						@include responsiveFont(15, 16, true);
+						text-align: center;
+					}
+				}
+
+				.fake-buttom {
+					position: absolute;
+					top: 0;
+					left: 0;
+					display: block;
+					width: 100%;
+					margin-bottom: 10px;
+
+					@include responsiveFont(20, 16, true);
+				}
+			}
+		}
+
 		@media screen and (max-width: 767px) {
 			.cart {
 				.cart-items {
@@ -182,7 +216,7 @@ body {
 			.totalizers {
 				tfoot {
 					tr {
-						td { @include responsiveFont(18); }
+						td { @include responsiveFont(18, 16, true); }
 					}
 				}
 			}
