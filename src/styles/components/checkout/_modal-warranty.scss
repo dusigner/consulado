@@ -37,7 +37,7 @@
 			vertical-align: top;
 			border:1px solid $gray-l;
 			padding: 10px 16px 45px;
-			min-height: 370px;
+			min-height: 440px;
 			position:relative;
 			@include vendor(border-radius, 10px);
 
@@ -70,8 +70,6 @@
 			.bonus-garantia{
 				text-align:center;
 				font-weight:bold;
-				//margin-top: 20px;
-				padding:0 30px;
 				@include responsiveFont(16);
 			}
 
@@ -318,6 +316,7 @@
 		.modal-body{
 			h4 {
 				margin-top: 55px;
+				padding: 0 10px;
 				@include responsiveFont(30, 16, true);
 			}
 
@@ -355,6 +354,7 @@
 					}
 
 					.subtitle-garantia{
+						@include responsiveFont(12, 16, true);
 						font-weight: bold;
 					}
 
@@ -425,18 +425,17 @@
 						.garantia-plusicon {
 							@include responsiveFont(18, 16, true);
 						}
+
+						.subtitle-garantia {
+							display: block;
+							color:$txt-gray;
+							@include responsiveFont(12, 16, true);
+							text-transform: lowercase;
+						}
 					}
 
-					.subtitle-garantia {
-						display: block;
-						margin: 5px 0;
-						color:$txt-gray;
-						font-size: 14px !important;
-						text-transform: lowercase;
-
-						@include breakpoint('extra-small', max) {
-							font-size: 13px !important;
-						}
+					.bonus-garantia {
+						padding: 0 30px;
 					}
 				}
 
