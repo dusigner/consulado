@@ -28,6 +28,11 @@ body {
 		.quantity-price, .monetary { width: auto; }
 		.orderid { color: $green; }
 
+		#print-bank-invoice {
+			display: block;
+			margin-top: 15px;
+		}
+
 		.cart-items {
 			border: 3px solid $gray-l;
 
@@ -50,12 +55,12 @@ body {
 					padding: 30px 10px;
 
 					&.product-name{
-						@include responsiveFont(14);
+						@include responsiveFont(14, 16, true);
 						font-weight:bold;
 					}
 
 					&.shipping-date, &.product-price,&.quantity, &.quantity-price{
-						@include responsiveFont(12);
+						@include responsiveFont(12, 16, true);
 						color:$txt-gray-l;
 						font-weight:normal;
 					}
@@ -70,9 +75,16 @@ body {
 
 		.payment-info {
 			.payments-list {
-				@include responsiveFont(14);
+				@include responsiveFont(14, 16, true);
 
 				.bank-invoice-print-link{ margin-top: 10px; }
+
+				@include breakpoint(small, "max") {
+					.order-print-bank-invoice-mini {
+						display: block;
+						width: 100%;
+					}
+				}
 			}
 		}
 
@@ -114,7 +126,7 @@ body {
 			}
 
 			tfoot {
-				td { @include responsiveFont(16); }
+				td { @include responsiveFont(16, 16, true); }
 				.monetary { color:$green; }
 			}
 		}
