@@ -13,7 +13,6 @@ Nitro.module('checkout.gae', function () {
 
 	this.setup = function() {
 		this.link();
-		this.fakeButton();
 		this.terms();
 		this.autoOpen();
 	};
@@ -43,32 +42,6 @@ Nitro.module('checkout.gae', function () {
 		}
 
 		$info.toggleClass('active', self.hasActiveWarranty() );
-	};
-
-	this.clickFakeButton = function (e) {
-		e.preventDefault();
-
-		if ( self.hasActiveWarranty() ) {
-			$('#modal-services').modal('show');
-		} else {
-			//$('.btn-place-order').trigger('click');
-			window.location.href = '#/orderform';
-		}
-
-		return false;
-	};
-
-	this.fakeButton = function () {
-
-		var $fakeButton = $('.fake-buttom');
-
-		if ( $fakeButton.length === 0 ) {
-			$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Fechar pedido</a>').appendTo('.cart-links');
-
-			$fakeButton.on('click', self.clickFakeButton);
-
-			$('.btn-place-order').addClass('hide');
-		}
 	};
 
 	this.terms = function () {

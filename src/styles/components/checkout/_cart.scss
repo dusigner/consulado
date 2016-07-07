@@ -9,7 +9,7 @@ body {
 					background-color: $gray-l;
 
 					th {
-						font-weight:normal;
+						text-transform: uppercase;
 						padding: 15px;
 					}
 				}
@@ -36,12 +36,47 @@ body {
 						.product-name {
 							@include responsiveFont(14, 16, true);
 							font-weight:bold;
+
+							&>a {
+								display: block;
+								width: 100%;
+							}
+
+							.brand {
+								display: inline-block;
+
+								&:after {
+									display: inline-block;
+									content: ' - ';
+								}
+							}
+
+							.product-service {
+								.linkWarranty {
+									@include responsiveFont(10, 16, true);
+									text-transform: uppercase;
+								}
+							}
+						}
+
+						.shipping-date {
+							.shipping-estimate-date {
+								color: $txt-gray;
+								@include responsiveFont(13, 16, true);
+								font-weight: bold;
+							}
 						}
 
 						.product-price {
-							.old-product-price { color:$txt-gray-l; }
+							.list-price {
+								@include responsiveFont(13, 16, true);
+
+								.old-product-price { color:$txt-gray-l; }
+							}
+
 							.best-price {
 								color:$txt-gray;
+								@include responsiveFont(13, 16, true);
 								font-weight:bold;
 							}
 						}
@@ -86,6 +121,7 @@ body {
 		}
 
 		.totalizers {
+			width: 46%;
 			padding: 0;
 
 			.quantity-price, .monetary{
@@ -114,7 +150,63 @@ body {
 			input[type="tel"] { padding: 16px 5px; }
 		}
 
-		.coupon-column input { height:35px; }
+		.coupon-column {
+			width: 50%;
+
+			input {
+				height:35px;
+			}
+
+			.summary-coupon {
+				float: none;
+
+				.coupon-data {
+					float: none;
+
+					.link-coupon-add {
+						padding: 15px 25px;
+						@include responsiveFont(12, 16, true);
+						font-weight: bold;
+						text-transform: uppercase;
+					}
+				}
+
+				.coupon-fieldset {
+					.coupon-label {
+						display: inline-block;
+						width: 125px;
+
+						label {
+							font-weight: bold;
+						}
+					}
+
+					.coupon-fields {
+						display: inline-block;
+
+						input {
+							height: 40px;
+						}
+
+						button {
+							padding: 8px 20px;
+							border: 2px solid $gray;
+							box-shadow: none;
+							color: $gray;
+							background: #ffffff;
+							font-weight: bold;
+							text-transform: uppercase;
+							text-shadow: none;
+
+							&:hover {
+								background: $gray;
+								color: #ffffff;
+							}
+						}
+					}
+				}
+			}
+		}
 
 		.shipping-sla-button {
 			border: none;
@@ -140,18 +232,48 @@ body {
 		}
 
 		.shipping-sla-options {
-			    @include font-size(16px);
-			    background: #fff;
-			    box-shadow: 0 0 7px rgba(0,0,0,0.2);
-			    line-height: normal;
-			    min-width: 120px;
-			    padding: 0;
-				li {
-					a {
-						transition: color 400ms ease-out;
-						&:hover { background: #fff; color: $green; }
-					}
+			@include font-size(16px);
+			background: #fff;
+			box-shadow: 0 0 7px rgba(0,0,0,0.2);
+			line-height: normal;
+			min-width: 120px;
+			padding: 0;
+			li {
+				a {
+					transition: color 400ms ease-out;
+					&:hover { background: #fff; color: $green; }
 				}
+			}
+		}
+
+		.cart-links-bottom {
+			#cart-choose-more-products {
+				margin-right: 15px;
+				padding: 15px 25px;
+				@include responsiveFont(13, 16, true);
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			.fake-buttom {
+				position: relative;
+				padding: 14px 50px;
+				padding-right: 65px;
+				@include responsiveFont(15, 16, true);
+				font-weight: bold;
+				text-transform: uppercase;
+
+				&:before {
+					display: inline-block;
+					@include font-size(16px, true, false);
+					@include contentBefore();
+					@include icon-get('arrow-right');
+					right: 40px;
+					top: 50%;
+					transform: translateY(-50%) scaleY(1);
+					transition: transform 0.2s ease-in;
+				}
+			}
 		}
 
 		@include breakpoint(small, "max") {

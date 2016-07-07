@@ -95,6 +95,8 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 
 		modify.shippingInput();
 		gae.setup();
+
+		this.fakeButton();
 	};
 
 	//state
@@ -165,6 +167,34 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 		var bankInvoice = $('.bank-invoice-print');
 		if ( bankInvoice.length > 0 ) {
 			$('.orderplaced-alert-content h4').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
+		}
+	};
+
+	this.clickFakeButton = function (e) {
+		e.preventDefault();
+
+		if ( gae.hasActiveWarranty() ) {
+			$('#modal-services').modal('show');
+		} else {
+			// window.location.href = '#/orderform';
+
+			window.hasher.replaceHash('#/payment');
+			window.hasher.replaceHash('#/shipping');
+		}
+
+		return false;
+	};
+
+	this.fakeButton = function () {
+
+		var $fakeButton = $('.fake-buttom');
+
+		if ( $fakeButton.length === 0 ) {
+			$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Fechar pedido</a>').appendTo('.cart-links');
+
+			$fakeButton.on('click', self.clickFakeButton);
+
+			$('.btn-place-order').addClass('hide');
 		}
 	};
 
