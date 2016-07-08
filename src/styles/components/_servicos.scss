@@ -6,6 +6,13 @@
 	padding: 40px 0 70px 0;
 	text-align: center;
 
+	.box {
+		&>a:first-child {
+			color: $txt-gray;
+			text-decoration: none;
+		}
+	}
+
 	.title {
 		@include responsiveFont(38);
 		line-height: 1.14;
