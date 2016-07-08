@@ -17,15 +17,28 @@ body {
 				tbody {
 					padding-bottom:20px;
 
-					td { padding:20px 10px; }
+					td {
+						padding:20px 10px;
+
+						@include breakpoint(small, "max") {
+							padding: 10px 0 !important;
+						}
+					}
 
 					.item-remove { right:7px; }
 
 					.product-item {
 						border-top: 3px solid $gray-l;
-						padding-top:20px;
+						padding: 30px 0;
+						overflow: initial;
 
-						&:first-child { border-bottom:none; }
+						&:first-child {
+							border-bottom:none;
+
+							@include breakpoint(small, "max") {
+								border-top:0 !important;
+							}
+						}
 
 						.brand, .seller, .shipping-date, .product-price, .quantity-price{
 							@include responsiveFont(12, 16, true);
@@ -52,9 +65,23 @@ body {
 							}
 
 							.product-service {
+								@include breakpoint(small, "max") {
+									position: absolute;
+									bottom: -5px;
+									left: 51%;
+									width: 95%;
+									transform: translateX(-50%);
+								}
+
 								.linkWarranty {
 									@include responsiveFont(10, 16, true);
 									text-transform: uppercase;
+
+									@include breakpoint(small, "max") {
+										margin-right:10px;
+										padding: 5px 0px;
+										line-height: normal;
+									}
 								}
 							}
 						}
@@ -68,6 +95,10 @@ body {
 						}
 
 						.product-price {
+							@include breakpoint(small, "max") {
+								margin-right: 16px;
+							}
+
 							.list-price {
 								@include responsiveFont(13, 16, true);
 
@@ -418,12 +449,20 @@ body {
 					.info{
 						@include responsiveFont(18, 16, true);
 						font-weight: 700;
+
+						@include breakpoint(small, "max") {
+							@include responsiveFont(16, 16, true);
+						}
 					}
 
 					.monetary {
 						color:$green;
 						@include responsiveFont(18, 16, true);
 						font-weight: 700;
+
+						@include breakpoint(small, "max") {
+							@include responsiveFont(16, 16, true);
+						}
 					}
 				}
 			}
@@ -431,6 +470,14 @@ body {
 
 		.coupon-column {
 			width: 50%;
+
+			@include breakpoint(small, "max") {
+				width: 100%;
+
+				.coupon{
+					width:100%;
+				}
+			}
 
 			input {
 				height:35px;
@@ -442,11 +489,22 @@ body {
 				.coupon-data {
 					float: none;
 
+					@include breakpoint(small, "max") {
+						text-align:center;
+						width:100%;
+						margin-bottom: 25px;
+					}
+
 					.link-coupon-add {
 						padding: 15px 25px;
 						@include responsiveFont(12, 16, true);
 						font-weight: bold;
 						text-transform: uppercase;
+
+						@include breakpoint(small, "max") {
+							display: inline-block !important;
+							width: 100%;
+						}
 					}
 				}
 
@@ -526,12 +584,36 @@ body {
 		}
 
 		.cart-links-bottom {
-			#cart-choose-more-products {
-				margin-right: 15px;
-				padding: 15px 25px;
-				@include responsiveFont(13, 16, true);
-				font-weight: bold;
-				text-transform: uppercase;
+			@include breakpoint(small, "max") {
+				position: relative;
+				min-height: 160px;
+				margin-bottom: 0;
+			}
+
+			.link-choose-more-products-wrapper {
+				@include breakpoint(small, "max") {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					display: block;
+					width: 100%;
+					margin: 20px 0;
+				}
+
+				#cart-choose-more-products {
+					margin-right: 15px;
+					padding: 15px 25px;
+					@include responsiveFont(13, 16, true);
+					font-weight: bold;
+					text-transform: uppercase;
+
+					@include breakpoint(small, "max") {
+						display: inline-block;
+						width: 100%;
+						@include responsiveFont(12, 16, true);
+						text-align: center;
+					}
+				}
 			}
 
 			.fake-buttom {
@@ -552,93 +634,18 @@ body {
 					transform: translateY(-50%) scaleY(1);
 					transition: transform 0.2s ease-in;
 				}
-			}
-		}
 
-		@include breakpoint(small, "max") {
-			.cart-links-bottom {
-				position: relative;
-				min-height: 140px;
-				margin-bottom: 0;
-
-				.link-choose-more-products-wrapper {
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					display: block;
-					width: 100%;
-					margin: 0;
-
-					#cart-choose-more-products {
-						width: 100%;
-						@include responsiveFont(15, 16, true);
-						text-align: center;
-					}
-				}
-
-				.fake-buttom {
+				@include breakpoint(small, "max") {
 					position: absolute;
 					top: 0;
 					left: 0;
 					display: block;
 					width: 100%;
 					margin-bottom: 10px;
-
+					margin-left: 0;
 					@include responsiveFont(20, 16, true);
 				}
 			}
 		}
-
-		@media screen and (max-width: 767px) {
-			.cart {
-				.cart-items {
-					tbody {
-						td { padding: 10px 0 !important; }
-
-						.product-item:first-child { border-top:0 !important; }
-					}
-				}
-			}
-
-			.coupon{
-				width:100% !important;
-
-				.coupon-data {
-					text-align:center;
-					width:100%;
-					margin-bottom: 25px;
-
-					.link-coupon-add {
-						display: inline-block !important;
-						width: 100%;
-					}
-				}
-			}
-			.totalizers {
-				tfoot {
-					tr {
-						td { @include responsiveFont(18, 16, true); }
-					}
-				}
-			}
-
-			.link-choose-more-products-wrapper{
-				margin-top: 20px;
-				display: block;
-				margin-bottom: 25px;
-
-				.link-choose-more-products { display: inline-block; }
-			}
-
-			.linkWarranty {
-				margin-right:10px;
-				padding: 5px 0px !important;
-				line-height: normal;
-			}
-
-			#cart-to-orderform { display: none; }
-		}
 	}
-
-	.client-pre-email .emailInfo{font-weight: 200!important}
 }
