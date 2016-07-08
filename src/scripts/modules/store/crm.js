@@ -17,7 +17,7 @@ var CRM = {
 				f: 'orderId,state,city,status,description,lastChange',
 				fq: 'orderId:' + orderId
 			}
-		})
+		});
 
 	},
 

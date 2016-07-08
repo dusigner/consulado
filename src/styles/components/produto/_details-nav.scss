@@ -1,6 +1,6 @@
 .prod-details-nav {
 	background-color: $green;
-	min-height: 95px;
+	min-height: 62px;
 	position: relative;
 	text-align: center;
 	top: 0 !important;
@@ -97,6 +97,9 @@
 		@extend %single-transition;
 		opacity: 0;
 		padding: 20px 0;
+		@include breakpoint(small, "max") {
+			padding: 10px 0;
+		}
 		display:none;
 	}
 

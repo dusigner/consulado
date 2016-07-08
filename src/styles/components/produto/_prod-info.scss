@@ -70,7 +70,12 @@
 			float: left;
 			margin-right: 20px;
 			display: none;
-			&:last-child{display: block;}
+			&:last-child{
+				display: block;
+				@include breakpoint(small, "max") {
+					display: none;
+				}
+			}
 		}
 
 		@include breakpoint(small, "max") {
@@ -113,6 +118,9 @@
 				@include font-size(28px, true, false);
 				color: $green;
 				font-weight:700;
+				@include breakpoint (small, "max") {
+					@include font-size(21px);
+				};
 
 				&:before { content:"de "; }
 
@@ -121,6 +129,10 @@
 					font-weight:700;
 					display: inline-block;
 					padding-left: 18px;
+					@include breakpoint (small, "max") {
+						@include font-size(18px);
+						padding-left: 10px;
+					};
 				}
 			}
 
@@ -133,6 +145,9 @@
 					margin-right:10px;
 					vertical-align:top;
 					text-align:center;
+					@include breakpoint (small, "max") {
+						margin-right: 5px;
+					}
 				}
 			}
 
@@ -141,6 +156,9 @@
 				color: $green;
 				font-weight:700;
 				text-align:center;
+				@include breakpoint (small, "max") {
+				@include font-size(18px);
+				}
 
 				&:after {
 					@include font-size(10px, true, false);
@@ -148,6 +166,9 @@
 					display:block;
 					line-height:10px;
 					margin-top:-5px;
+					@include breakpoint (small, "max") {
+					@include font-size(9px);
+					}
 				}
 			}
 		}
@@ -294,6 +315,10 @@
 		font-size: 1em;
 		float: left;
 		padding: 13px 28px;
+		@include breakpoint(small, "max") {
+			width: 100%;
+			padding: 13px 60px;
+		}
 
 		&:before{
 			@include icon-get('consul-cart');
@@ -313,7 +338,8 @@
 		text-transform: uppercase;
 
 		@include breakpoint(small, "max") {
-			 @include responsiveFont(10, 16, true);
+			 @include responsiveFont(14, 16, true);
+			 margin-top: 5px;
 		}
 	}
 }

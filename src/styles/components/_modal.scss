@@ -57,6 +57,11 @@
 			&:before{
 				@include icon-get('close');
 			}
+
+			@include breakpoint(small, "max") {
+				right: -14px;
+				top: -14px;
+			}
 		}
 	}
 

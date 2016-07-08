@@ -3,6 +3,11 @@
 	overflow: hidden;
 	padding: 80px 0;
 	text-align: center;
+	@include breakpoint(small, "max") {
+		padding: 10px 0;
+		.slide-none { display:none; }
+		margin: 0;
+	}
 
 	div[class^="col-"] {
 		padding-left: 10px;
@@ -12,6 +17,12 @@
 	h2 {
 		position: relative;
 		margin: 0 0 85px;
+		@include breakpoint(small, "max") {
+			@include font-size(23px);
+			margin: 0 0 10px;
+			display: inline-block;
+			padding: 0 40px 0 0;
+		}
 
 		&:after, &:before{
 			@include contentBefore();
@@ -37,7 +48,7 @@
 			width: 1270px;
 		}
 
-		span{ line-height: 0.8; }
+		span{ line-height: 0.8; display: inline-block; }
 
 		i{
 			color: $green;
@@ -48,8 +59,43 @@
 			transform: rotateZ(-15deg);
 			top: 7px;
 			width: 56px;
+			@include breakpoint(small, "max") {
+				@include font-size(26px);
+				text-align: center;
+			}
 		}
 
+	}
+
+	.title{
+		i{
+		    @include vendor(transform, rotate(-90deg));
+		    @include vendor(transition, all 300ms ease-in-out);
+		    display: none;
+
+			@include breakpoint(small, "max") {
+			    width: 26px;
+			    height: 26px;
+			    transform: rotate(-90deg);
+			    display: block;
+			    position: absolute;
+			    right: 0;
+			    top: 5px;
+			}    
+		}	
+	    .icon-consul-clipboard{
+			@include breakpoint(small, "max") {
+				display: none;
+			}
+		}
+	} 
+
+	&.open {
+		.title {
+			i {
+				@include vendor(transform, rotate(-270deg));
+			}
+		}
 	}
 
 	h3, h4 {
@@ -71,6 +117,12 @@
 
 	.topic {
 		&.sparse { margin-top: 40px; }
+		.row{
+			@include breakpoint(small, "max") {
+				border-bottom: 1px solid white;
+				height: 11px;
+			}
+		}
 
 		li {
 			clear: both;
@@ -176,8 +228,19 @@
 			font-weight: 200;
 			max-width: 290px;
 			margin: 0;
+			@include breakpoint(small, "max") {
+				padding-right: 15px;
+			}
 		}
 
-		p { text-align: left; }
+		p { 
+			text-align: left;
+			@include breakpoint(small, "max") {
+				text-align: right;
+				background: #e9e9e9;
+			    float: right;
+			    padding-left: 15px;
+			}
+		}
 	}
 }

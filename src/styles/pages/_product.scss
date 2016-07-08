@@ -21,6 +21,9 @@ body.produto {
 			//width: 100%;
 			@include font-size(38px);
 			font-weight: 400;
+			@include breakpoint(small, "max") {
+				@include font-size(24px);
+			}
 
 			span {
 				//@include font-size(78px, true, false);

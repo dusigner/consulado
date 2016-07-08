@@ -6,6 +6,11 @@
 		padding: 1em 2em;
 		text-align: left;
 
-		.list { padding-bottom: 15px; }
+		.list { 
+			padding-bottom: 15px;
+			@include breakpoint(small, "max") {
+				padding-bottom: 0;
+			}
+		}
 	}
 }

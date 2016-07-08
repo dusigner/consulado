@@ -16,6 +16,9 @@ Nitro.module('specifications', function () {
 		$caracteristicas = $('#caracteristicas'),
 		$especificacoes = $caracteristicas.find('h4.Caracteristicas-Tecnicas + table tr'),
 		$arquivos = $caracteristicas.find('h4.Arquivos + table tr'),
+		accordionBtnProduct = $('.content-toggle .title'),
+		accordionBoxProduct = accordionBtnProduct.parent(),
+		
 		specs = {
 			'Mais Informações' : 'info',
 			'Tipo do produto' : 'tipo',
@@ -107,6 +110,23 @@ Nitro.module('specifications', function () {
 		}
 
 		self.render();
+	});
+
+	// ACCORDION SPECIFICATION PRODUCTS
+	accordionBtnProduct.on('click', function(e) {
+		if( $(window).width() > 767 ) return true;
+
+		e.preventDefault();
+
+		var self = $(this);
+
+		if( self.parent().hasClass('open') ) {
+			accordionBoxProduct.removeClass( 'open' );
+			self.next().stop(true, true).slideUp();
+		} else {
+			self.parent().addClass( 'open' );
+			self.next().stop(true, true).slideDown();
+		}
 	});
 
 });

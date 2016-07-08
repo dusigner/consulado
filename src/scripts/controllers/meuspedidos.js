@@ -63,11 +63,11 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 				$('.box-meuspedidos').trigger('renderTracking', data);
 
-			}, function (error) {
+			}, function () {
 
 				$('.box-meuspedidos').trigger('renderTracking', data);
 
-			})
+			});
 
 			arrOrder.push(order);
 	};
@@ -250,7 +250,7 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
 					promise.always(function(e) {
 						currentOrders.push(e);
-						if(arrOrder.length == currentOrders.length) {
+						if(arrOrder.length === currentOrders.length) {
 							warranty.setup();
 							self.showMore();
 						}
