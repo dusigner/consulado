@@ -93,7 +93,12 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 	this.cart = function () {
 		console.info('cart');
 
-		modify.shippingInput();
+		$('.info-shipping').remove();
+
+		$('.Shipping td:first').prepend('<span class="info-shipping">Frete para</span>');
+		$('.Shipping td:first').attr('colspan','4');
+		$('.caret').removeClass('caret').addClass('icon icon-chevron-down');
+
 		gae.setup();
 
 		this.fakeButton();

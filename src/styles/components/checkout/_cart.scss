@@ -124,14 +124,24 @@ body {
 			width: 46%;
 			padding: 0;
 
+			@include breakpoint(small, "max") {
+				width: 100%;
+			}
+
 			.quantity-price, .monetary{
-				text-align: left;
 				width: auto;
+				padding-right: 34px;
+				@include responsiveFont(13, 16, true);
+				font-weight: bold;
+				text-align: right;
 			}
 
 			.info {
+				vertical-align: middle;
+				width: 55%;
 				padding-right: 30px;
-				width: 50%;
+				@include responsiveFont(13, 16, true);
+				text-transform: uppercase;
 			}
 
 			.empty { display: none; }
@@ -139,15 +149,284 @@ body {
 			.accordion-group {
 				margin-bottom: 0;
 
-				tbody,tfoot{padding:5px}
+				tbody, tfoot {
+					padding:5px;
+
+					tr {
+						border-bottom: 1px solid $gray-l;
+					}
+				}
+
+				.Items {
+					.info {
+						padding-right: 26px;
+						@include responsiveFont(13, 16, true);
+						font-weight: normal;
+						text-transform: uppercase;
+					}
+				}
+
+				.shipping-calculate {
+					.monetary {
+						display: none;
+
+						&.form-postal-code {
+							display: table-cell !important;
+							padding-left: 18px;
+
+							@include breakpoint(extra-small, "max") {
+								padding-right: 0;
+								padding-left: 0;
+							}
+
+							.shipping-form-inline {
+								text-align: right;
+
+								input.postal-code {
+									width: 90px;
+									max-width: 90px;
+									margin-right: 5px;
+									padding: 16px 5px;
+									border-radius: 0;
+
+									@include breakpoint(large, "max") {
+										width: 70px;
+										max-width: 70px;
+									}
+								}
+
+								button#cart-shipping-calculate {
+									width: 90px;
+									max-width: 90px;
+									padding: 6px 12px;
+									border: 2px solid $gray;
+									color: $txt-gray-l;
+									background: transparent;
+									text-align: center;
+									text-transform: capitalize;
+
+									&:hover {
+										background: $gray;
+										color: #ffffff;
+									}
+								}
+							}
+
+							.error {
+								text-align: left;
+							}
+
+							#cart-dont-know-postal-code {
+								display: none;
+							}
+						}
+
+						.shipping-calculate-link {
+							display: none;
+						}
+					}
+				}
+
+				.Shipping {
+					.monetary, .space {
+						display: none;
+					}
+
+					.info {
+						padding: 0;
+						text-align: left;
+						@include responsiveFont(13, 16, true);
+						font-weight: normal;
+						text-transform: uppercase;
+
+						.info-shipping {
+							display: inline-block;
+							width: 55%;
+							padding: 8px 0;
+							padding-right: 14px;
+							text-align: right;
+						}
+
+						.postal-code-for-sla {
+							display: inline-block;
+							float: right;
+							min-width: auto;
+							padding: 6px 0;
+
+							.shipping-name, .shipping-name-to {
+								display: none;
+							}
+
+							.cart-reset-postal-code {
+								padding-right: 8px;
+							}
+						}
+
+						.shipping-selected-sla-estimate {
+							display: none;
+						}
+
+						.shipping-sla-selector {
+							padding: 16px 0;
+							padding-right: 30px;
+							border-top: 1px solid $gray-l;
+							text-align: right;
+
+							@include breakpoint(extra-small, "max") {
+								padding-right: 0;
+								text-align: center;
+							}
+
+							.shipping-sla-button {
+								width: 100%;
+								text-align: right;
+								border: none;
+								box-shadow: none;
+								text-shadow: none;
+								background: #fff;
+								padding: 0;
+
+								.caret {display: none;}
+
+								&:hover, &:focus, &.btn.dropdown-toggle {
+									background: #fff;
+									box-shadow: none;
+									border: none;
+									text-shadow: none;
+								}
+
+								span {
+									color: $green;
+									font-weight: bold;
+									font-size: 12px;
+								}
+
+								@include breakpoint(extra-small, "max") {
+									text-align: center;
+								}
+							}
+
+							.shipping-estimate {
+								display: inline-block;
+								position: relative;
+								width: 55%;
+								padding: 5px 10px;
+								border: 1px solid $gray-l;
+								@include responsiveFont(13, 16, true);
+								text-align: left;
+								text-transform: initial;
+
+								&:before {
+									display: block;
+									content: 'Tipo de entrega';
+									position: absolute;
+									top: 4px;
+									left: -125px;
+									color: $gray-d;
+									@include responsiveFont(13, 16, true);
+									font-weight: normal;
+									text-transform: uppercase;
+								}
+
+								&:after {
+									display: block;
+									position: absolute;
+									@include contentBefore();
+									@include icon-get('arrow-down');
+									top: 50%;
+									right: 6px;
+									@include font-size(8px, true, false);
+									transform: translateY(-50%);
+								}
+
+								@include breakpoint(extra-small, "max") {
+									width: 90%;
+
+									&:before {
+										display: none;
+									}
+								}
+							}
+
+							.shipping-sla-options {
+								top: 41px;
+								right: 30px;
+								border-radius: 0;
+								border: 1px solid #f4f4f4;
+								text-align: left;
+								@include responsiveFont(16, 16, true);
+								background: #fff;
+								box-shadow: 0 0 7px rgba(0,0,0,0.2);
+								line-height: normal;
+								min-width: 120px;
+								padding: 0;
+
+								@include breakpoint(extra-small, "max") {
+									width: 90%;
+									max-width: 90%;
+									left: 5%;
+									right: 0;
+								}
+
+								li {
+									padding: 6px 10px;
+									border-bottom: 1px solid #f4f4f4;
+									text-transform: initial;
+
+									a {
+										padding: 0;
+										transition: color 400ms ease-out;
+
+										&:hover { background: #fff; color: $green; }
+
+										.icon-ok {
+											display: none;
+										}
+									}
+
+									&:last-child {
+										border-bottom: none;
+									}
+								}
+							}
+
+							.icon-chevron-down {
+								display: none;
+							}
+						}
+					}
+
+					.postal-code-value {
+						padding-right: 10px;
+						color: $green;
+						@include responsiveFont(13, 16, true);
+						font-weight: bold;
+					}
+
+					.icon-remove-sign {
+						@include responsiveFont(16, 16, true);
+
+						&:before {
+							content: "\f00d";
+						}
+					}
+				}
+
 				tfoot {
 					background: $gray-l;
 
-					.monetary { color:$green; }
+					.info{
+						@include responsiveFont(18, 16, true);
+						font-weight: 700;
+					}
+
+					.monetary {
+						color:$green;
+						@include responsiveFont(18, 16, true);
+						font-weight: 700;
+					}
 				}
 			}
-
-			input[type="tel"] { padding: 16px 5px; }
 		}
 
 		.coupon-column {
