@@ -7,7 +7,9 @@ Nitro.module('boleto', function() {
 	'use strict';
 
 	var boletoValue = + $('.boleto-value-cmc').text(),
-		cmcDiscount = ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5 ;
+	promoBoleto = $('.prod-selos').find("[class*='boleto-']").text(),
+	promoBoleto = (promoBoleto) ? parseInt(promoBoleto.match(/\d+/ig)) : false,
+	cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5;
 
 	var priceCash = function( price ) {
 		return _.intAsCurrency (price - (price * (cmcDiscount / 100)) );
