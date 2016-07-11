@@ -4,13 +4,15 @@ Nitro.module('percentoff', function(){
 
 	'use strict';
 
-	var boletoValue = + $('.boleto-value-cmc').text(),
-		cmcDiscount = ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5 ;
+	var boletoValue = + $('.boleto-value-cmc').text();
 
 	$('.box-produto:not(.list-percent)').each(function(){
 		var self 			= $(this),
 			valPercentage 	= self.data('percent'),
 			txtPercentage 	= self.find('.off'),
+			promoBoleto = self.find("[class*='boleto-']").text(),
+			promoBoleto = (promoBoleto) ? parseInt(promoBoleto.match(/\d+/ig)) : false,
+			cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5,
 			valProd			= self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
 			percentage;
 
