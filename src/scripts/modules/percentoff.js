@@ -10,8 +10,8 @@ Nitro.module('percentoff', function(){
 		var self 			= $(this),
 			valPercentage 	= self.data('percent'),
 			txtPercentage 	= self.find('.off'),
-			promoBoleto = self.find("[class*='boleto']").text(),
-			promoBoleto = (promoBoleto) ? parseInt(promoBoleto.match(/\d+/ig)) : false,
+			promob = self.find(".FlagsHightLight [class*='boleto']").text(),
+			promoBoleto = (promob) ? parseInt(promob.match(/\d+/ig)) : false,
 			cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5,
 			valProd			= self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
 			percentage;
