@@ -7,9 +7,23 @@ Nitro.module('boleto', function() {
 	'use strict';
 
 	var boletoValue = + $('.boleto-value-cmc').text(),
-	promoBoleto = $('.prod-selos').find("[class*='boleto']").text(),
-	promoBoleto = (promoBoleto) ? parseInt(promoBoleto.match(/\d+/ig)) : false,
-	cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5;
+	promoDiscount = {};
+
+	promoDiscount.value = [0];
+
+	$('.prod-selos:first').find('[class*="boleto"]').each(function(i,e) {
+		var promoName = $(e).text();
+		var promoValue = parseInt(promoName.match(/\d+/ig));
+		if(!isNaN( promoValue ) && promoValue > 0) {
+			promoDiscount.value.push(promoValue);
+		}
+	});
+
+	var promoBoleto = promoDiscount.value.reduce(function(prev, curr, i) {
+		return prev + curr;
+	});
+
+	var cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5;
 
 	var priceCash = function( price ) {
 		return _.intAsCurrency (price - (price * (cmcDiscount / 100)) );
