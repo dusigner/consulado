@@ -14,7 +14,6 @@ Nitro.module('percentoff', function(){
 			promoDiscount = {},
 			cmcDiscount,
 			percentage;
-
 			promoDiscount.value = [0];
 
 			self.find(".FlagsHightLight [class*='boleto']").each(function(i,e) {
