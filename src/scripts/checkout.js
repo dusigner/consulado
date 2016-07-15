@@ -181,10 +181,7 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 		if ( gae.hasActiveWarranty() ) {
 			$('#modal-services').modal('show');
 		} else {
-			// window.location.href = '#/orderform';
-
-			window.hasher.replaceHash('#/payment');
-			window.hasher.replaceHash('#/shipping');
+			window.location.href = '#/orderform';
 		}
 
 		return false;
