@@ -4,8 +4,6 @@ Nitro.module('percentoff', function(){
 
 	'use strict';
 
-	var boletoValue = + $('.boleto-value-cmc').text();
-
 	$('.box-produto:not(.list-percent)').each(function(){
 		var self = $(this),
 			valPercentage = self.data('percent'),
@@ -24,11 +22,9 @@ Nitro.module('percentoff', function(){
 				}
 			});
 
-			var promoBoleto = promoDiscount.value.reduce(function(prev, curr, i) {
+			var cmcDiscount = promoDiscount.value.reduce(function(prev, curr, i) {
 				return prev + curr;
 			});
-
-			var cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5;
 
 			if(valPercentage !== null && valPercentage !== 0){
 				percentage = Math.floor( parseFloat( valPercentage.replace(',','.').replace(' ','').replace('%','') ) );
