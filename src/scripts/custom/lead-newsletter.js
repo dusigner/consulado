@@ -69,6 +69,10 @@ Nitro.module('lead-newsletter', function(){
 		data.firstName = name;
 		data.email = email;
 		data.isNewsletterOptIn = true;
+		data.xDataCadastroLead = new Date();
+		data.xOrigemLead = 8;
+		data.xUnidadeNegocio = 2;
+		data.xCategoriaLead = 1;
 
 		return $.ajax({
 			url: clientURI,
