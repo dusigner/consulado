@@ -6,10 +6,21 @@ Nitro.module('boleto', function() {
 
 	'use strict';
 
-	var boletoValue = + $('.boleto-value-cmc').text(),
-	promoBoleto = $('.prod-selos').find("[class*='boleto']").text(),
-	promoBoleto = (promoBoleto) ? parseInt(promoBoleto.match(/\d+/ig)) : false,
-	cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5;
+	var promoDiscount = {};
+	promoDiscount.value = [0];
+
+	$('.prod-selos:first').find('[class*="boleto"]').each(function(i,e) {
+		var promoName = $(e).text();
+		var promoValue = parseInt(promoName.match(/\d+/ig));
+		if(!isNaN( promoValue ) && promoValue > 0) {
+			promoDiscount.value.push(promoValue);
+		}
+	});
+
+
+	var cmcDiscount = promoDiscount.value.reduce(function(prev, curr, i) {
+		return prev + curr;
+	});
 
 	var priceCash = function( price ) {
 		return _.intAsCurrency (price - (price * (cmcDiscount / 100)) );
@@ -53,13 +64,15 @@ Nitro.module('boleto', function() {
 	$(document).on('skuSelected.vtex', function(e, productId, sku) {
 		$('.discount-boleto, .skuPrice').remove();
 		if( sku.available ) {
-			var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span> <span>(' + cmcDiscount + '% OFF)</span><span class="gray">, por</span> '+priceCash(sku.bestPrice)+'</p>';
+			var isDiscountOff = (cmcDiscount > 0) ? ' ('+cmcDiscount+'% OFF)' : '';
+			var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> '+priceCash(sku.bestPrice)+'</p>';
 			$('.prod-preco').append(boletoInfo);
 		}
 	});
 
 	if (prodAvailable.length > 0) {
-		var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span> <span>(' + cmcDiscount + '% OFF)</span><span class="gray">, por</span> '+priceCash(prodAvailable[0].bestPrice)+'</p>';
+		var isDiscountOff = (cmcDiscount > 0) ? ' ('+cmcDiscount+'% OFF)' : '';
+		var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>'+isDiscountOff+'</span><span class="gray">, por</span> '+priceCash(prodAvailable[0].bestPrice)+'</p>';
 		$('.prod-preco').append(boletoInfo);
 
 		/*

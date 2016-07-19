@@ -4,17 +4,27 @@ Nitro.module('percentoff', function(){
 
 	'use strict';
 
-	var boletoValue = + $('.boleto-value-cmc').text();
-
 	$('.box-produto:not(.list-percent)').each(function(){
-		var self 			= $(this),
-			valPercentage 	= self.data('percent'),
-			txtPercentage 	= self.find('.off'),
-			promob = self.find(".FlagsHightLight [class*='boleto']").text(),
-			promoBoleto = (promob) ? parseInt(promob.match(/\d+/ig)) : false,
-			cmcDiscount = (promoBoleto) ? promoBoleto : ( !isNaN( boletoValue ) && boletoValue > 0 ) ? boletoValue : 5,
-			valProd			= self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
+		var self = $(this),
+			valPercentage = self.data('percent'),
+			txtPercentage = self.find('.off'),
+			valProd = self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
+			promoDiscount = {},
+			cmcDiscount,
 			percentage;
+			promoDiscount.value = [0];
+
+			self.find(".FlagsHightLight [class*='boleto']").each(function(i,e) {
+				var promoName = $(e).text();
+				var promoValue = parseInt(promoName.match(/\d+/ig));
+				if(!isNaN( promoValue ) && promoValue > 0) {
+					promoDiscount.value.push(promoValue);
+				}
+			});
+
+			var cmcDiscount = promoDiscount.value.reduce(function(prev, curr, i) {
+				return prev + curr;
+			});
 
 			if(valPercentage !== null && valPercentage !== 0){
 				percentage = Math.floor( parseFloat( valPercentage.replace(',','.').replace(' ','').replace('%','') ) );

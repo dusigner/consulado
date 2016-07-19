@@ -1,5 +1,9 @@
 #vtex-modal-tipo-entrega, #vtex-modal-entrega-premium {
-	.modal-holder { max-width: 600px; }
+	.modal-holder { 
+		max-width: 600px; 
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
 
 	.modal-content {
 		@include font-size(14px);
