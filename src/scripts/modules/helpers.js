@@ -240,6 +240,10 @@ if (!Object.keys) {
 		})), url.replace(/(ids\/[0-9]+)\//, '$1-' + width + '-' + height + '/');
 	};
 
+	$.currencyToInt = function(currency) {
+        return + currency.replace(/\D/gi, '');
+    };
+
 	$.extend($.fn, {
 		toScroll: function(offset){
 			var self = $(this);
