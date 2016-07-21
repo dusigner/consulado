@@ -16,20 +16,9 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
 
 	'use strict';
 
-	// $('.titulo-sessao')
-	// 	.after( $('.didyoumean').show() )
-	// 	.append( $('.resultado-busca-termo .value').first().show() );
-
 	var $filter 		= $('.filter-wrapper'),
-		$listContainer = $('.list-container'),
 		$searchSingle 	= $('.search-single-navigator'),
 		$listOrders 	= $('ul.order-by');
-
-	// $(window).scroll( $.throttle(function(){
-
-	// 	$filter.add('.filter-container').toggleClass('pinned', $(window).scrollTop() >= $listContainer.offset().top - $filter.height() );
-
-	// }, 250) ).scroll();
 
 
 	var $filterOptions = $('#O:first option'),

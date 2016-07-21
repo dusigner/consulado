@@ -21,7 +21,7 @@ require('modules/checkout.phones');
 require('modules/checkout.termoColeta');
 require('modules/checkout.modify');
 
-Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkout.modify'], function (gae, phones, termoColeta, modify) {
+Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], function (gae, phones, termoColeta) {
 
 	var self = this,
 		$body = $('body');
@@ -32,7 +32,6 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 
 		if (window.hasher) {
 			window.hasher.changed.add(function (current) {
-				//console.log('hasher', current, previous);
 				return self[current] && self[current].call(self);
 			});
 		}
