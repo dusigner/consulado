@@ -75,7 +75,7 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 	this.listenRender = function() {
 		$('.box-meuspedidos').on('renderTracking', function(event, data) {
 
-			var render = dust.render( template , data , function (err, out) {
+			dust.render( template , data , function (err, out) {
 				if (err) {
 					throw new Error('My Orders Dust error: ' + err);
 				}

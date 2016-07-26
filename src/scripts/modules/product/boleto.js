@@ -18,7 +18,7 @@ Nitro.module('boleto', function() {
 	});
 
 
-	var cmcDiscount = promoDiscount.value.reduce(function(prev, curr, i) {
+	var cmcDiscount = promoDiscount.value.reduce(function(prev, curr) {
 		return prev + curr;
 	});
 
@@ -64,7 +64,6 @@ Nitro.module('boleto', function() {
 	$(document).on('skuSelected.vtex', function(e, productId, sku) {
 		$('.discount-boleto, .skuPrice').remove();
 		if( sku.available ) {
-			var isDiscountOff = (cmcDiscount > 0) ? ' ('+cmcDiscount+'% OFF)' : '';
 			var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> '+priceCash(sku.bestPrice)+'</p>';
 			$('.prod-preco').append(boletoInfo);
 		}

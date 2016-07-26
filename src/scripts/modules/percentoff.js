@@ -10,11 +10,10 @@ Nitro.module('percentoff', function(){
 			txtPercentage = self.find('.off'),
 			valProd = self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
 			promoDiscount = {},
-			cmcDiscount,
 			percentage;
 			promoDiscount.value = [0];
 
-			self.find(".FlagsHightLight [class*='boleto']").each(function(i,e) {
+			self.find('.FlagsHightLight [class*="boleto"]').each(function(i,e) {
 				var promoName = $(e).text();
 				var promoValue = parseInt(promoName.match(/\d+/ig));
 				if(!isNaN( promoValue ) && promoValue > 0) {
@@ -22,7 +21,7 @@ Nitro.module('percentoff', function(){
 				}
 			});
 
-			var cmcDiscount = promoDiscount.value.reduce(function(prev, curr, i) {
+			var cmcDiscount = promoDiscount.value.reduce(function(prev, curr) {
 				return prev + curr;
 			});
 

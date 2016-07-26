@@ -81,6 +81,10 @@ Nitro.module('modal.overlayLead', function(){
 		data.firstName = name;
 		data.email = email;
 		data.isNewsletterOptIn = true;
+		data.xDataCadastroLead = new Date();
+		data.xOrigemLead = 9;
+		data.xUnidadeNegocio = 6;
+		data.xCategoriaLead = 1;
 
 		return $.ajax({
 			url: clientURI,
