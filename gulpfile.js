@@ -24,8 +24,9 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 
 gulp.task('lint', function () {
 	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js'])
-		.pipe($.jshint())
-		.pipe($.jshint.reporter('jshint-stylish'));
+	.pipe($.eslint())
+	.pipe($.eslint.format())
+	.pipe($.eslint.failAfterError());
 });
 
 gulp.task('bump', function() {
@@ -83,21 +84,6 @@ gulp.task('scripts', ['lint'], function () {
 });
 
 gulp.task('styles', function () {
-	/*  return gulp.src(paths.styles)
-		.pipe($.plumber())
-		/*.pipe($.sourcemaps.init())
-		.pipe( $.sass({
-			/rrLogToConsole: true,
-		 	outputStyle: $.util.env.production ? 'compressed' : 'nested'
-		}).on('error', $.sass.logError))* /
-		.pipe($.rubySass({
-			'sourcemap=none': true, //$.util.env.production,
-			style: $.util.env.production ? 'compressed' : 'nested'
-		}))
-		.pipe($.autoprefixer())
-		.pipe($.sourcemaps.write())
-		.pipe(gulp.dest(paths.dest)); */
-
 	return $.rubySass('src/styles/', {
 			sourcemap: ! $.util.env.production,
 			style: $.util.env.production ? 'compressed' : 'nested'
@@ -106,6 +92,10 @@ gulp.task('styles', function () {
 		.pipe($.plumber())
 		.pipe($.autoprefixer())
 		.pipe($.sourcemaps.write('.'))
+		.pipe($.postcss([
+      require('css-mqpacker')(),
+			require('cssnano')()
+    ]))
 		.pipe(gulp.dest(paths.dest));
 });
 

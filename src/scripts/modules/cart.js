@@ -6,12 +6,12 @@ require('vendors/portal-minicart');
 
 Nitro.module('cart', function() {
 
-	'use strict';
+    'use strict';
 
-	$('.minicart')
-		.minicart({
-			showMinicart: false,
-			showTotalizers: true
-		});
+    $('.minicart')
+        .minicart({
+            showMinicart: false,
+            showTotalizers: true
+        });
 
 });

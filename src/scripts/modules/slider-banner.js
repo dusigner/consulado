@@ -2,34 +2,32 @@
 
 // var bannerColor = require('modules/banner-color');
 
-Nitro.module('slider-banner', function(){
+Nitro.module('slider-banner', function() {
 
-	'use strict';
+    'use strict';
 
-	this.setupMainSlider = function(){
+    this.setupMainSlider = function() {
 
-		var $bannerPrincipal = $('.banner-principal');
+        var $bannerPrincipal = $('.banner-principal');
 
-		// bannerColor($bannerPrincipal);
+        // bannerColor($bannerPrincipal);
 
-		$bannerPrincipal.slick({
-			autoplay: true,
-			autoplaySpeed: 6000,
-			mobileFirst: true,
-			dots: true,
-			arrows: false,
-			responsive: [
-				{
-					breakpoint: 568,
-					settings: {
-						arrows: true,
-					}
-				}
-			]
-		});
+        $bannerPrincipal.slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            mobileFirst: true,
+            dots: true,
+            arrows: false,
+            responsive: [{
+                breakpoint: 568,
+                settings: {
+                    arrows: true,
+                }
+            }]
+        });
 
-	};
+    };
 
-	this.setupMainSlider();
+    this.setupMainSlider();
 
 });

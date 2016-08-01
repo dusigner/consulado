@@ -2,13 +2,14 @@
 
 require('vendors/slick');
 
-Nitro.controller('landing-wonderland', function(){
+Nitro.controller('landing-wonderland', function() {
 
-	var $slider = $('.slider');
+    var $slider = $('.slider');
 
-	$slider.slick({
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1});
+    $slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    });
 
 });

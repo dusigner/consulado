@@ -4,139 +4,138 @@ require('modules/cart');
 require('modules/search');
 require('vendors/jquery.cookie');
 
-Nitro.module('header', function(){
+Nitro.module('header', function() {
 
-	'use strict';
+    'use strict';
 
-	var $body = $('body'),
-		$document = $(document);
+    var $body = $('body'),
+        $document = $(document);
 
-	// Menu mobile
-	var topMenu    = $('.menu-department'),
-		menuMobile = $('.menu-mobile'),
-		defaultClass = 'menu-mobile show-extra-small';
+    // Menu mobile
+    var topMenu = $('.menu-department'),
+        menuMobile = $('.menu-mobile'),
+        defaultClass = 'menu-mobile show-extra-small';
 
-	topMenu.find('.dropdown > a, .icon-hamburger').click(function(e) {
-		e.preventDefault();
-		$(this).parent().toggleClass('topmenu-active');
-		topMenu.toggleClass('no-border');
-	});
+    topMenu.find('.dropdown > a, .icon-hamburger').click(function(e) {
+        e.preventDefault();
+        $(this).parent().toggleClass('topmenu-active');
+        topMenu.toggleClass('no-border');
+    });
 
-	// Click fora do menu = close
-	$(document).on('click', function(e){
-		if($('.dropdown').is('.topmenu-active') && !$(e.target).is('.dropdown *')){
-			$('.dropdown').removeClass('topmenu-active');
-			topMenu.toggleClass('no-border');
-		}
-		return;
-	});
+    // Click fora do menu = close
+    $(document).on('click', function(e) {
+        if ($('.dropdown').is('.topmenu-active') && !$(e.target).is('.dropdown *')) {
+            $('.dropdown').removeClass('topmenu-active');
+            topMenu.toggleClass('no-border');
+        }
+        return;
+    });
 
-	menuMobile.find('.open-menu-mobile').click(function(e) {
-		e.preventDefault();
+    menuMobile.find('.open-menu-mobile').click(function(e) {
+        e.preventDefault();
 
-		if ( menuMobile.hasClass('menu-active') ) {
-			menuMobile
-				.removeClass()
-				.addClass(defaultClass);
-		}
-		else {
-			menuMobile.addClass('menu-active');
-		}
-	});
+        if (menuMobile.hasClass('menu-active')) {
+            menuMobile
+                .removeClass()
+                .addClass(defaultClass);
+        } else {
+            menuMobile.addClass('menu-active');
+        }
+    });
 
-	menuMobile.find('.sub-itens > a').click(function(e) {
-		e.preventDefault();
+    menuMobile.find('.sub-itens > a').click(function(e) {
+        e.preventDefault();
 
-		menuMobile.addClass('sub-itens-active');
-	});
+        menuMobile.addClass('sub-itens-active');
+    });
 
-	menuMobile.find('.menu-title').click(function(e) {
-		e.preventDefault();
+    menuMobile.find('.menu-title').click(function(e) {
+        e.preventDefault();
 
-		menuMobile.removeClass();
+        menuMobile.removeClass();
 
-		if ( $(this).parent().hasClass('second-level') ) {
-			$(this).parent().parent().removeClass('item-active');
+        if ($(this).parent().hasClass('second-level')) {
+            $(this).parent().parent().removeClass('item-active');
 
-			menuMobile.addClass(defaultClass + ' menu-active sub-itens-active');
+            menuMobile.addClass(defaultClass + ' menu-active sub-itens-active');
 
-		} else {
-			menuMobile.addClass(defaultClass + ' menu-active');
-		}
-	});
+        } else {
+            menuMobile.addClass(defaultClass + ' menu-active');
+        }
+    });
 
-	menuMobile.find('.first-level > .item > a').click(function(e) {
-		e.preventDefault();
+    menuMobile.find('.first-level > .item > a').click(function(e) {
+        e.preventDefault();
 
-		var classItem = $(this).attr('title')
-								.replace(' ', '-')
-								.replace(' & ', '-e-')
-								.toLowerCase();
+        var classItem = $(this).attr('title')
+            .replace(' ', '-')
+            .replace(' & ', '-e-')
+            .toLowerCase();
 
-		$(this).parent().addClass('item-active');
+        $(this).parent().addClass('item-active');
 
-		menuMobile.addClass(classItem).addClass('sub-first-itens-active');
-	});
-
+        menuMobile.addClass(classItem).addClass('sub-first-itens-active');
+    });
 
 
 
 
 
-	//TODO: move mask to module;
-	$('.mask').on('click', function(e) {
-		e.preventDefault();
 
-		if( $body.is('.cart-active') ) {
-			$document.trigger('cart', false);
-		}
+    //TODO: move mask to module;
+    $('.mask').on('click', function(e) {
+        e.preventDefault();
 
-		if( $body.is('.search-active') ) {
-			$document.trigger('search', false);
-		}
+        if ($body.is('.cart-active')) {
+            $document.trigger('cart', false);
+        }
 
-		//TODO: remove class regexp;
-		$body.removeClass('menu-active');
-	});
+        if ($body.is('.search-active')) {
+            $document.trigger('search', false);
+        }
 
-	$document
-		.on('cart', function(){
+        //TODO: remove class regexp;
+        $body.removeClass('menu-active');
+    });
 
-			$body.toggleClass('cart-active');
+    $document
+        .on('cart', function() {
 
-		}).on('search', function(e, status){
+            $body.toggleClass('cart-active');
 
-			$body.toggleClass('search-active', !!status);
-		});
+        }).on('search', function(e, status) {
 
-
-	//add action to close button from vtex login
-	$('body.login').on('click', '.vtexIdUI-close', function() {
-		window.location.href = '/';
-	});
+            $body.toggleClass('search-active', !!status);
+        });
 
 
-	window.vtexjs.checkout.getOrderForm().done(function(result) {
-		var orderForm = result;
-
-		if (orderForm.clientProfileData.email) {
-			$('.logout').removeClass('hide');
-		}
-	});
+    //add action to close button from vtex login
+    $('body.login').on('click', '.vtexIdUI-close', function() {
+        window.location.href = '/';
+    });
 
 
+    window.vtexjs.checkout.getOrderForm().done(function(result) {
+        var orderForm = result;
 
-	//Fechar advertisement
-	// var advertisement = $('.advertisement');
-	// advertisement.find('span').click(function() {
-	// 	advertisement.slideUp();
+        if (orderForm.clientProfileData.email) {
+            $('.logout').removeClass('hide');
+        }
+    });
 
-	// 	$.cookie('advertisement', true, { path: '/' , expires: 1 });
-	// });
 
-	// if (! $.cookie('advertisement') ) {
-	// 	advertisement.slideDown();
-	// }
+
+    //Fechar advertisement
+    // var advertisement = $('.advertisement');
+    // advertisement.find('span').click(function() {
+    // 	advertisement.slideUp();
+
+    // 	$.cookie('advertisement', true, { path: '/' , expires: 1 });
+    // });
+
+    // if (! $.cookie('advertisement') ) {
+    // 	advertisement.slideDown();
+    // }
 
 
 });

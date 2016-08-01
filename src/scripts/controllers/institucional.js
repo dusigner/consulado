@@ -1,7 +1,7 @@
 /* global Nitro: true */
 
-Nitro.controller('institucional', function(){
+Nitro.controller('institucional', function() {
 
-	'use strict';
+    'use strict';
 
 });

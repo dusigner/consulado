@@ -4,81 +4,81 @@ require('vendors/ajax.localstorage');
 
 Nitro.module('list-more', function() {
 
-	'use strict';
+    'use strict';
 
-	var self = this,
-		$button = $('#list-more'),
-		$vitrine = $('.vitrine'),
-		$prateleira = $vitrine.find('> .prateleira'),
-		query = /load\(\'(.*)\'/.exec( $vitrine.find('> script').text() ),
-		grid = +$('#PS').val(),
-		page = 2,
-		url;
+    var self = this,
+        $button = $('#list-more'),
+        $vitrine = $('.vitrine'),
+        $prateleira = $vitrine.find('> .prateleira'),
+        query = /load\(\'(.*)\'/.exec($vitrine.find('> script').text()),
+        grid = +$('#PS').val(),
+        page = 2,
+        url;
 
-	this.loadContent = function() {
-		$.ajax({
-			url: url + page,
-			localCache: true,
-			cacheTTL: 1,
-			dataType: 'html',
-			beforeSend: function(){
-				console.log('page', page);
+    this.loadContent = function() {
+        $.ajax({
+                url: url + page,
+                localCache: true,
+                cacheTTL: 1,
+                dataType: 'html',
+                beforeSend: function() {
+                    console.log('page', page);
 
-				if( $button.is('loading') ){
-					return false;
-				}else{
-					$button.addClass('loading');
-					return true;
-				}
+                    if ($button.is('loading')) {
+                        return false;
+                    } else {
+                        $button.addClass('loading');
+                        return true;
+                    }
 
-			}
-		})
-		.done(function(data) {
-			if( data ) {
+                }
+            })
+            .done(function(data) {
+                if (data) {
 
-				$prateleira.append( data ).find('.helperComplement').remove();
+                    $prateleira.append(data).find('.helperComplement').remove();
 
-				console.log( 'active', self.isActive() );
+                    console.log('active', self.isActive());
 
-				if( self.isActive() ) {
+                    if (self.isActive()) {
 
-					page++;
+                        page++;
 
-					self.prefetch();
+                        self.prefetch();
 
-				} else {
-					$button.hide();
-				}
+                    } else {
+                        $button.hide();
+                    }
 
-			} else {
-				$button.hide();
-			}
-		})
-		.always(function() {
-			$button.removeClass('loading');
-		});
-	};
+                } else {
+                    $button.hide();
+                }
+            })
+            .always(function() {
+                $button.removeClass('loading');
+            });
+    };
 
-	this.prefetch = function() {
-		$.ajax({
-			url: url + page,
-			localCache: true,
-			cacheTTL: 1,
-			dataType: 'html'
-		});
-	};
+    this.prefetch = function() {
+        $.ajax({
+            url: url + page,
+            localCache: true,
+            cacheTTL: 1,
+            dataType: 'html'
+        });
+    };
 
-	this.isActive = function() {
-		return $prateleira.find('li[layout]').length % grid === 0;
-	};
+    this.isActive = function() {
+        return $prateleira.find('li[layout]').length % grid === 0;
+    };
 
-	if( query && query.length > 0 && this.isActive() ) {
-		url = query[1];
-	} else {
-		return;
-	}
+    if (query && query.length > 0 && this.isActive()) {
+        url = query[1];
+    } else {
+        return;
+    }
 
-	$button.click(self.loadContent).removeClass('hide');
+    $button.click(self.loadContent).removeClass('hide');
 
-	this.prefetch();
+    this.prefetch();
 });

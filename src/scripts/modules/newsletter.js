@@ -2,81 +2,81 @@
 
 require('vendors/jquery.placeholder');
 
-Nitro.module('newsletter', function () {
+Nitro.module('newsletter', function() {
 
-	'use strict';
-	
-	var self = this, 
-		$newsletter = $('.form-newsletter'),
-		$submit = $newsletter.find('[type="submit"]'),
-		$inputs = $newsletter.find('input[type="text"], input[type="email"]'),
-		$errorBox = $('<label class="error" />');
+    'use strict';
 
-	$inputs.placeholder();
+    var self = this,
+        $newsletter = $('.form-newsletter'),
+        $submit = $newsletter.find('[type="submit"]'),
+        $inputs = $newsletter.find('input[type="text"], input[type="email"]'),
+        $errorBox = $('<label class="error" />');
 
-	this.validateForm = function () {
-		
-		$newsletter.find('label.error').remove();
+    $inputs.placeholder();
 
-		$inputs
-			.removeClass('error')
-			.one('focus', function(){
-				$(this).removeClass('error').parent().find('.error').remove();
-			})
-			.each(function(){
-				var self = $(this),
-					parent = self.parent();
+    this.validateForm = function() {
 
-				if( self.is(':blank') ){
-					self.add(parent).addClass('error');
-				}else if( self.is('.email') && !self.validEmail() ){
-					self.add(parent).addClass('error');
-				}
-			});
+        $newsletter.find('label.error').remove();
 
-		var valid = $inputs.filter('.error').length === 0;
+        $inputs
+            .removeClass('error')
+            .one('focus', function() {
+                $(this).removeClass('error').parent().find('.error').remove();
+            })
+            .each(function() {
+                var self = $(this),
+                    parent = self.parent();
 
-		if(valid){
-			$submit.addClass('loading');
-		}
-		
-		console.log( 'valid', valid );
+                if (self.is(':blank')) {
+                    self.add(parent).addClass('error');
+                } else if (self.is('.email') && !self.validEmail()) {
+                    self.add(parent).addClass('error');
+                }
+            });
 
-		return valid;
-	};
-	
-	this.handleError = function() {
-		self.addErrorBox( $newsletter, $newsletter.data('msg-error') );
-	};
+        var valid = $inputs.filter('.error').length === 0;
 
-	this.addErrorBox = function(target, message) {
-		$errorBox.clone().appendTo(target).html(message);
-	};
+        if (valid) {
+            $submit.addClass('loading');
+        }
 
-	$newsletter.submit(function (e) {
-		e.preventDefault();
+        console.log('valid', valid);
 
-		$.ajax({
-			url: $newsletter.attr('action'),
-			type: $newsletter.attr('method'),
-			dataType: 'html',
-			data: $newsletter.serialize(),
-			beforeSend: self.validateForm,
-			error: self.handleError
-		})
-		.done(function ( data ) {
-			
-			if( data ) {
+        return valid;
+    };
 
-				$newsletter.addClass('success').html( $newsletter.data('msg-success') );
+    this.handleError = function() {
+        self.addErrorBox($newsletter, $newsletter.data('msg-error'));
+    };
 
-			} else {
-				self.handleError();
-			}
-		})
-		.always(function ( ) {
-			$submit.removeClass('loading');
-		});
-	});
+    this.addErrorBox = function(target, message) {
+        $errorBox.clone().appendTo(target).html(message);
+    };
+
+    $newsletter.submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+                url: $newsletter.attr('action'),
+                type: $newsletter.attr('method'),
+                dataType: 'html',
+                data: $newsletter.serialize(),
+                beforeSend: self.validateForm,
+                error: self.handleError
+            })
+            .done(function(data) {
+
+                if (data) {
+
+                    $newsletter.addClass('success').html($newsletter.data('msg-success'));
+
+                } else {
+                    self.handleError();
+                }
+            })
+            .always(function() {
+                $submit.removeClass('loading');
+            });
+    });
 
 });

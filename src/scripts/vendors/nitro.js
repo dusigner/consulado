@@ -7,114 +7,115 @@
  * Copyright (c) 2015 Lucas Monteverde
  * Under MIT License
  */
- 
+
 /* global jQuery: true */
 
-;(function($, window, document, undefined){
+;
+(function($, window, document, undefined) {
 
-	'use strict';
+    'use strict';
 
-	var Nitro = window.Nitro = (function() {
+    var Nitro = window.Nitro = (function() {
 
-		var log = false,
-			controllers = {},
-			modules = {};
+        var log = false,
+            controllers = {},
+            modules = {};
 
-		var loader = function() {
-			['controller', 'module'].forEach(function( type ) {
-				$('[data-'+ type +']', document).each(function() {
-					return Nitro[type] && Nitro[type].call( this, $(this).data(type) );
-				});
-			});
-		};
+        var loader = function() {
+            ['controller', 'module'].forEach(function(type) {
+                $('[data-' + type + ']', document).each(function() {
+                    return Nitro[type] && Nitro[type].call(this, $(this).data(type));
+                });
+            });
+        };
 
-		var debug = function() {
-			var args = Array.prototype.slice.call(arguments);
-			args.unshift('%cNitro:', 'color:blue;');
-			return log && console.info.apply(console, args);
-		};
+        var debug = function() {
+            var args = Array.prototype.slice.call(arguments);
+            args.unshift('%cNitro:', 'color:blue;');
+            return log && console.info.apply(console, args);
+        };
 
-		return {
+        return {
 
-			setup: function(dep, func) {
+            setup: function(dep, func) {
 
-				if( $.isFunction(dep) ) {
-					func = dep;
-				}
+                if ($.isFunction(dep)) {
+                    func = dep;
+                }
 
-				if( ! $.isArray(dep) ) {
-					dep = [];
-				}
+                if (!$.isArray(dep)) {
+                    dep = [];
+                }
 
-				return $(function(){
-					$(document).ready(function() {
-						func.apply({}, dep.map(Nitro.module) );
-						loader();
-					});
-				});
-			},
+                return $(function() {
+                    $(document).ready(function() {
+                        func.apply({}, dep.map(Nitro.module));
+                        loader();
+                    });
+                });
+            },
 
-			controller: function(name, dep, func) {
+            controller: function(name, dep, func) {
 
-				if( $.isFunction(dep) ) {
-					func = dep;
-				}
+                if ($.isFunction(dep)) {
+                    func = dep;
+                }
 
-				if( ! $.isArray(dep) ) {
-					dep = [];
-				}
+                if (!$.isArray(dep)) {
+                    dep = [];
+                }
 
-				if( controllers[name] ) {
+                if (controllers[name]) {
 
-					controllers[name].apply({}, controllers[name].dep.map(Nitro.module) );
+                    controllers[name].apply({}, controllers[name].dep.map(Nitro.module));
 
-					debug('controller ' + name + ' started');
+                    debug('controller ' + name + ' started');
 
-				}else if( $.isFunction(func) ) {
+                } else if ($.isFunction(func)) {
 
-					debug('defining controller', name);
+                    debug('defining controller', name);
 
-					func.dep = dep;
+                    func.dep = dep;
 
-					controllers[name] = func;
-				}
+                    controllers[name] = func;
+                }
 
-				//return controllers;
-			},
+                //return controllers;
+            },
 
-			module: function(name, dep, func) {
+            module: function(name, dep, func) {
 
-				if( $.isFunction(dep) ) {
-					func = dep;
-				}
+                if ($.isFunction(dep)) {
+                    func = dep;
+                }
 
-				if( ! $.isArray(dep) ) {
-					dep = [];
-				}
+                if (!$.isArray(dep)) {
+                    dep = [];
+                }
 
-				if( modules[name] ) {
-					
-					var m = {}; //Object.create(null);
+                if (modules[name]) {
 
-					modules[name].apply(m, modules[name].dep.map(Nitro.module) );
+                    var m = {}; //Object.create(null);
 
-					debug('modules ' + name + ' started');
+                    modules[name].apply(m, modules[name].dep.map(Nitro.module));
 
-					return m;
+                    debug('modules ' + name + ' started');
 
-				}else if( $.isFunction(func) ) {
-					debug('defining module', name);
+                    return m;
 
-					func.dep = dep;
+                } else if ($.isFunction(func)) {
+                    debug('defining module', name);
 
-					modules[name] = func;
-				}
+                    func.dep = dep;
 
-				//return modules[name];
-			}
-		};
-	})();
+                    modules[name] = func;
+                }
 
-	return Nitro;
+                //return modules[name];
+            }
+        };
+    })();
+
+    return Nitro;
 
 })(jQuery, window, document);

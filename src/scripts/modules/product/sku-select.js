@@ -4,42 +4,41 @@ require('vendors/vtex-modal');
 
 Nitro.module('sku-select', function() {
 
-	'use strict';
-	
-	var self = this;
-	
-	this.modalComplete = function( modal, content ){
+    'use strict';
 
-		/*content.on('change', 'input', function() {
-			
-			var input = $(this);
+    var self = this;
 
-			$('input[id="' + $(this).attr('for') + '"]').prop('checked', true);
+    this.modalComplete = function(modal, content) {
 
-			input.prop('checked', true);
-		});*/
-		
-		// because we can't have two radios with the same name in a page;
-		content.wrap( $('<form />') );
+        /*content.on('change', 'input', function() {
 
-		content.on('click', 'label', function() {
-			//e.preventDefault();
+        	var input = $(this);
 
-			$(this).prev().trigger('click');
-		});
-	};
-	
-	this.buttonHandler = function(e, id, message){
-		
-		if( message === 'Por favor, selecione o modelo desejado.' ) {
+        	$('input[id="' + $(this).attr('for') + '"]').prop('checked', true);
 
-			$('#modal-sku').vtexModal({
-				complete: self.modalComplete
-			});
-		}
-	};
+        	input.prop('checked', true);
+        });*/
 
-	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
-	
+        // because we can't have two radios with the same name in a page;
+        content.wrap($('<form />'));
+
+        content.on('click', 'label', function() {
+            //e.preventDefault();
+
+            $(this).prev().trigger('click');
+        });
+    };
+
+    this.buttonHandler = function(e, id, message) {
+
+        if (message === 'Por favor, selecione o modelo desejado.') {
+
+            $('#modal-sku').vtexModal({
+                complete: self.modalComplete
+            });
+        }
+    };
+
+    $('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
+
 });
-
