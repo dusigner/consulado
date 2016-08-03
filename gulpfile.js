@@ -23,7 +23,7 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	};
 
 gulp.task('lint', function () {
-	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js'])
+	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js', '!src/scripts/modules/helpers.js'])
 	.pipe($.eslint())
 	.pipe($.eslint.format())
 	.pipe($.eslint.failAfterError());
@@ -91,11 +91,11 @@ gulp.task('styles', function () {
 		.on('error', $.sass.logError)
 		.pipe($.plumber())
 		.pipe($.autoprefixer())
-		.pipe($.sourcemaps.write('.'))
 		.pipe($.postcss([
       require('css-mqpacker')(),
 			require('cssnano')()
     ]))
+		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dest));
 });
 

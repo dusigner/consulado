@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, escape:true */
+'use strict';
 
 Nitro.module('compare', function() {
 
-    'use strict';
 
     window.alert = function(e) {
         console.error(e);

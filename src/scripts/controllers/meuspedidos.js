@@ -1,3 +1,5 @@
+'use strict';
+
 var CRM = require('modules/store/crm');
 require('modules/orders/order.states');
 require('modules/orders/order.warranty');
@@ -6,7 +8,6 @@ require('../../templates/myorders.html');
 
 Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(states, warranty) {
 
-    'use strict';
 
     var template = 'myorders';
 
@@ -50,7 +51,9 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
         var order = CRM.getOrderById(data.orderId).then(function(result) {
             data.tracking = [];
-            if (!result) return false;
+            if (!result) {
+                return false;
+            }
 
             $(result && result.Documents).each(function(i, e) {
                 data.tracking[i] = {
@@ -87,7 +90,9 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
     this.getSla = function(selectedSla, slas) {
         var obj = slas.filter(function(e) {
-            if (e.name === selectedSla) return e.shippingEstimate;
+            if (e.name === selectedSla) {
+                return e.shippingEstimate;
+            }
         });
         return obj[0];
     };
@@ -132,7 +137,9 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
         data.products = e.items;
         data.totals = e.totals;
         data.totalPrice = _.formatCurrency(e.value / 100);
-        if (data.paymentType) data.isBoleto = (data.paymentType.toString().indexOf('Boleto') >= 0 && data.currentState.group === 'pagamento') ? true : false;
+        if (data.paymentType) {
+            data.isBoleto = (data.paymentType.toString().indexOf('Boleto') >= 0 && data.currentState.group === 'pagamento') ? true : false;  
+        } 
         data.Installment = (e.paymentData.payments[0]) ? e.paymentData.payments[0].installments : '';
         data.boletoURL = (e.paymentData.payments[0]) ? e.paymentData.payments[0].url : '';
 
@@ -267,8 +274,6 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 });
 
 $(document).ajaxComplete(function(event, xhr, settings) {
-
-    'use strict';
 
     if (settings.url === '/no-cache/profileSystem/getProfile') {
         sessionStorage.setItem('profileVtex', xhr.responseText);

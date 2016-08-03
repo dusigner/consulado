@@ -1,12 +1,11 @@
 /* global $: true, Nitro: true, dust:true */
 //require('vendors/dust-helpers');
-
+'use strict';
 
 require('../../templates/filters.html');
 
 Nitro.module('filters', function() {
 
-    'use strict';
 
     var self = this,
         $navigator = $('.search-single-navigator'),
@@ -80,7 +79,7 @@ Nitro.module('filters', function() {
                 item.active = true;
             }
 
-            console.log(el, item);
+            // console.log(el, item);
 
             return item;
         });
@@ -109,8 +108,8 @@ Nitro.module('filters', function() {
 
     this.render = function() {
 
-        console.log('items', items);
-        console.table('filters', items);
+        // console.log('items', items);
+        // console.table('filters', items);
 
         dust.render('filters', {
             items: items,

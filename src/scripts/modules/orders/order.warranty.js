@@ -1,3 +1,5 @@
+'use strict';
+
 var CRM = require('modules/store/crm');
 require('../../../templates/orders/warrantySpare.btnWarranty.html');
 require('../../../templates/orders/warrantySpare.btnDownloadWarranty.html');
@@ -8,7 +10,6 @@ require('../../../templates/orders/warrantySpare.modal-payment.html');
 
 Nitro.module('order.warranty', function() {
 
-    'use strict';
 
     var self = this;
 
@@ -260,7 +261,9 @@ Nitro.module('order.warranty', function() {
                 templateData.btnCancel = btnCancel;
 
                 dust.render('warrantySpare.btnDownloadWarranty', templateData, function(err, out) {
-                    if (err) throw new Error('Modal Warranty Dust error: ' + err);
+                    if (err) {
+                        throw new Error('Modal Warranty Dust error: ' + err);  
+                    } 
                     $('.items-' + order.id + '.item-' + product.id).after(out);
                 });
 
@@ -272,7 +275,9 @@ Nitro.module('order.warranty', function() {
                 dust.render('warrantySpare.btnWarranty', {
                     id: order.id
                 }, function(err, out) {
-                    if (err) throw new Error('Modal Warranty Dust error: ' + err);
+                    if (err) {
+                        throw new Error('Modal Warranty Dust error: ' + err);  
+                    } 
                     $('.items-' + order.id + '.item-' + product.id).after(out);
                 });
 

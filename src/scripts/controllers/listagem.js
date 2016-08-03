@@ -1,4 +1,5 @@
 /* global $:true, Nitro: true, _:true */
+'use strict';
 
 var enquire = require('vendors/enquire');
 require('vendors/slick');
@@ -14,7 +15,6 @@ require('custom/modal.overlayAbandono');
 
 Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
 
-    'use strict';
 
     var $filter = $('.filter-wrapper'),
         $searchSingle = $('.search-single-navigator'),

@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('vendors/jquery.placeholder');
 
 Nitro.module('newsletter', function() {
 
-    'use strict';
 
     var self = this,
         $newsletter = $('.form-newsletter'),
@@ -40,7 +40,7 @@ Nitro.module('newsletter', function() {
             $submit.addClass('loading');
         }
 
-        console.log('valid', valid);
+        // console.log('valid', valid);
 
         return valid;
     };
@@ -57,13 +57,13 @@ Nitro.module('newsletter', function() {
         e.preventDefault();
 
         $.ajax({
-                url: $newsletter.attr('action'),
-                type: $newsletter.attr('method'),
-                dataType: 'html',
-                data: $newsletter.serialize(),
-                beforeSend: self.validateForm,
-                error: self.handleError
-            })
+            url: $newsletter.attr('action'),
+            type: $newsletter.attr('method'),
+            dataType: 'html',
+            data: $newsletter.serialize(),
+            beforeSend: self.validateForm,
+            error: self.handleError
+        })
             .done(function(data) {
 
                 if (data) {

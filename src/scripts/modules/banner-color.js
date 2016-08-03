@@ -1,12 +1,14 @@
 /* global $:true, MasterColor: true */
+'use strict';
 
 require('vendors/master-color');
 
 module.exports = function(banner) {
 
-    'use strict';
 
-    if ($(window).width() < 1200) return;
+    if ($(window).width() < 1200) {
+        return;
+    }
 
     banner.find('img').each(function() {
 

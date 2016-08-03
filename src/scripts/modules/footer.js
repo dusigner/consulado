@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('modules/newsletter');
 
 Nitro.module('footer', function() {
 
-    'use strict';
 
     var $window = $(window),
         $footer = $('footer'),
@@ -18,7 +18,9 @@ Nitro.module('footer', function() {
 
     // ACCORDION MENU FOOTER MOBILE
     accordionBtn.on('click', function(e) {
-        if ($window.width() > 767) return true;
+        if ($window.width() > 767) {
+            return true;
+        }
 
         e.preventDefault();
 

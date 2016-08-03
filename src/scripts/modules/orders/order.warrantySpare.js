@@ -1,3 +1,5 @@
+'use strict';
+
 var CRM = require('modules/store/crm');
 
 require('../../../templates/orders/warrantySpare.bought.html');
@@ -7,7 +9,6 @@ require('../../../templates/orders/warrantySpare.modal-payment.html');
 
 Nitro.module('order.warrantySpare', function() {
 
-    'use strict';
 
     var self = this;
 
@@ -265,9 +266,8 @@ Nitro.module('order.warrantySpare', function() {
 
         var $orderGroup = $(button).parents('.ordergroup'),
             orderId = $orderGroup.attr('id'),
-            orderDate = $orderGroup.find('.order-date').text();
-
-        orderDate = orderDate.split('/');
+            // orderDate = $orderGroup.find('.order-date').text();
+            orderDate = orderDate.split('/');
         orderDate = orderDate[2] + '-' + orderDate[1] + '-' + orderDate[0];
 
         var itemName = $(button).prev('.cart-items').find('.product-name a').text();

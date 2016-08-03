@@ -1,4 +1,5 @@
 /* global $:true, Nitro: true */
+'use strict';
 
 require('vendors/slick');
 require('modules/slider-banner');
@@ -8,7 +9,6 @@ require('custom/lead-newsletter');
 
 Nitro.controller('home', ['slider-banner', 'modal.overlayLead', 'lead-newsletter'], function() {
 
-    'use strict';
 
     var $slider = $('.prateleira-slider .prateleira ul').not('.product-field ul');
 

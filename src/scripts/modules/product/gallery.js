@@ -1,7 +1,7 @@
+'use strict';
 require('vendors/mfp');
 Nitro.module('gallery', function() {
 
-    'use strict';
 
     var $thumbs = $('.thumbs a'),
         $gallery = $('<ul class="gallery" />'),
@@ -77,7 +77,7 @@ Nitro.module('gallery', function() {
 
     if ($(newThumbs).length <= 4) {
         $gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-            console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
+            // console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
             $galleryThumbs.find('.slick-slide').removeClass('slick-current');
             $galleryThumbs.find('.slick-slide' + '[data-slick-index=' + nextSlide + ']').addClass('slick-current');
         });

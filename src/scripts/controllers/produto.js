@@ -1,4 +1,5 @@
 /* global $: true, Nitro: true, skuJson: true */
+'use strict';
 
 require('vendors/slick');
 require('vendors/vtex-modal');
@@ -15,7 +16,6 @@ require('modules/product/boleto');
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto' /*, 'special-content'*/ ], function() {
-    'use strict';
 
     window.alert = function(e) {
         console.error(e);

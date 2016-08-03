@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true, dust:true, _:true */
+'use strict';
 
 require('../../../templates/price.html');
 
 Nitro.module('boleto', function() {
 
-    'use strict';
 
     var promoDiscount = {};
     promoDiscount.value = [0];

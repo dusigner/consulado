@@ -1,3 +1,5 @@
+'use strict';
+
 var statusGroup = {
 
     'pedidoRealizado': {
@@ -78,8 +80,6 @@ var states = {
 };
 
 Nitro.module('order.states', function() {
-
-    'use strict';
 
     this.get = function(param) {
         var state = states[param];

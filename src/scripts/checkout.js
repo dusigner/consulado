@@ -6,7 +6,7 @@ require('modules/helpers');
 
 if (VERSION) {
 
-    console.log('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
+    // console.log('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
 
     window._trackJs = window._trackJs || {};
 
@@ -207,7 +207,7 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
     };
 
     this.rioOlimpiadas = function() {
-        console.log(self.orderForm);
+        // console.log(self.orderForm);
         if (self.orderForm && self.orderForm.shippingData.address) {
             var $cep = self.orderForm.shippingData.address.postalCode;
             $cep = $.currencyToInt($cep);

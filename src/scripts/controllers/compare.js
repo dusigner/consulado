@@ -1,8 +1,8 @@
 /* global $:true, Nitro: true */
+'use strict';
 
 Nitro.controller('compare', function() {
 
-    'use strict';
 
     var removeArr = ['Manual do Produto', 'Voltagem', 'Mais Informações', 'Garantia do Fornecedor (mês)', 'Classificação Energética 220v', 'Classificação Energética 110v', 'Guia Rápido', 'Informações para Instalação'];
 

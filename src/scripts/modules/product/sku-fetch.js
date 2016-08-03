@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 Nitro.module('sku-fetch', function() {
 
-    'use strict';
 
     var objectLowerCaseProperties = function(obj, properties) {
 

@@ -28,7 +28,7 @@
     "curly": 1,
     "strict": 1,
     "eqeqeq": ["error", "smart"],
-    "no-console": 1,
+    "no-console": [1, { "allow": ["assert", "info", "error"] }],
     "no-debugger": 1,
     "no-undef": ["error", { "typeof": true }],
     "no-mixed-spaces-and-tabs": 1,

@@ -1,12 +1,11 @@
 /* global $: true, Nitro: true, dust */
+'use strict';
 
 require('vendors/ajax.localstorage');
 
 require('../../../templates/supermodel.html');
 
 Nitro.module('supermodel', function() {
-
-    'use strict';
 
     var API_ENDPOINT = '/api/catalog_system/pub/products/search',
         $holder = $('.select-color'),
@@ -15,7 +14,9 @@ Nitro.module('supermodel', function() {
 
     //console.log('supermodel', supermodel);
 
-    if (!supermodel || supermodel === '') return;
+    if (!supermodel || supermodel === '') {
+        return;  
+    } 
 
     this.processItens = function(data) {
 
@@ -47,17 +48,17 @@ Nitro.module('supermodel', function() {
     };
 
     $.ajax({
-            url: API_ENDPOINT,
-            data: {
-                fq: 'specificationFilter_' + field + ':' + supermodel.substr(0, 6) + '*'
-            },
-            dataType: 'json',
-            localCache: true
-        })
-        .then(function(data) {
-            return data && data.length > 1 ? data : [];
-        })
-        .then(this.processItens)
-        .done(this.render);
+        url: API_ENDPOINT,
+        data: {
+            fq: 'specificationFilter_' + field + ':' + supermodel.substr(0, 6) + '*'
+        },
+        dataType: 'json',
+        localCache: true
+    })
+    .then(function(data) {
+        return data && data.length > 1 ? data : [];
+    })
+    .then(this.processItens)
+    .done(this.render);
 
 });

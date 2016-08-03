@@ -2,9 +2,10 @@
 
 // var bannerColor = require('modules/banner-color');
 
+'use strict';
+
 Nitro.module('slider-banner', function() {
 
-    'use strict';
 
     this.setupMainSlider = function() {
 

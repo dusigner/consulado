@@ -1,6 +1,7 @@
+'use strict';
+
 Nitro.module('lead-newsletter', function() {
 
-    'use strict';
 
     var self = this,
         $inputName = $('#form-newsletter input[type="text"]'),
