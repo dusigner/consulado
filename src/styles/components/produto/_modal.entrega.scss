@@ -1,8 +1,9 @@
-#vtex-modal-tipo-entrega, #vtex-modal-entrega-premium {
+#vtex-modal-tipo-entrega, 
+#vtex-modal-entrega-premium {
 	.modal-holder { 
-		max-width: 600px; 
-		margin-top: 20px;
 		margin-bottom: 20px;
+		margin-top: 20px;
+		max-width: 600px; 
 	}
 
 	.modal-content {
@@ -12,7 +13,7 @@
 
 		.list { 
 			padding-bottom: 15px;
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				padding-bottom: 0;
 			}
 		}

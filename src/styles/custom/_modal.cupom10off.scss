@@ -1,138 +1,138 @@
-#vtex-cupom-10off{
-	.modal-header{
-		padding:0;
-		.close{
-			top:40px;
-			right:40px;
+#vtex-cupom-10off {
+	.modal-header {
+		padding: 0;
+		.close {
+			right: 40px;
+			top: 40px;
 			@include breakpoint(small, 'max') {
-				top:-5px;
-				right:-5px;
+				right: -5px;
+				top: -5px;
 			}
 		}
 	}
-	.modal-holder{
-		width:477px;
-		height:477px;
-		border-radius:50%;
-		max-width:100%;
-		padding:10px;
+	.modal-holder {
 		background-color: $green;
+		border-radius: 50%;
+		height: 477px;
+		max-width: 100%;
+		padding: 10px;
+		width: 477px;
 		@include breakpoint(small, 'max') {
-			width:100%;
-			border-radius:0;
-			position: fixed;
-		    min-height: 600px;
+			border-radius: 0;
 			left: 0;
+		    min-height: 600px;
+			position: fixed;
+			width: 100%;
 		}
 	}
-	.conteudo{
-		border-radius:50%;
-		width:457px;
-		height:457px;
-		overflow:auto;
+	.conteudo {
+		border-radius: 50%;
+		height: 457px;
+		overflow: auto;
+		width: 457px;
 		@include breakpoint(small, 'max') {
-			width:100%;
-			height:auto;
-			border-radius:20px;
+			border-radius: 20px;
+			height: auto;
+			width: 100%;
 		}
 	}
-	h1{
+	h1 {
 		@include responsiveFont(40, 16, true);
-		font-weight:bold;
-		margin: 0 0 0 0;
+    	color: #ffffff;
+		font-weight: bold;
     	line-height: 30px;
-    	color:#fff;
-    	span{
-    		color:#6f2d8e;
+		margin: 0 0 0 0;
+    	span {
+    		color: #6f2d8e;
     	}
 	}
-	.middle{
-		max-width:360px;
-		width:100%;
-		position: relative;
+	.middle {
+		background-color: #6f2d8e;
+		border-radius: 20px;
+		float: left;
 	    left: 50%;
+		margin-bottom: 20px;
 	    margin-left: -180px;
 		margin-top: 20px;
-		margin-bottom: 20px;
+		max-width: 360px;
 		padding: 20px 20px;
-		float: left;
-		background-color: #6f2d8e;
-		border-radius:20px;
+		position: relative;
+		width: 100%;
 		@include breakpoint(small, 'max') {
-				position: static;
+				float: none;
 				margin: 15px auto auto auto;
-				float:none;
+				position: static;
 			}
-		.info-cupom{
-			.valor{
-				float:left;
+		.info-cupom {
+			.valor {
+				float: left;
 				@include breakpoint(small, 'max') {
-					float:none;
-					width:100%;
+					float: none;
+					width: 100%;
 				}
-				h2{
+				h2 {
 					@include responsiveFont(45, 16, true);
-					color:$green;
+					color: $green;
+					line-height: 25px;
 					margin: 0;
-					line-height:25px;
-					small{
+					small {
 						@include responsiveFont(34, 16, true);
-						text-transform:uppercase;
+						text-transform: uppercase;
 					}
 				}
-				p{
+				p {
+					color: #ffffff;
 					margin: 0;
-					color:#fff;
 				}
 			}
 
 
-			.cupom{
-				float:right;
-				width:110px;
+			.cupom {
+				float: right;
+				width: 110px;
 				@include breakpoint(small, 'max') {
-					float:none;
-					width:100%;
+					float: none;
+					width: 100%;
 				}
-				p{
-					text-transform: uppercase;
-					margin-bottom: 5px;
-					color:#fff;
-					text-align: center;
-					margin-top: 0;
+				p {
 					@include responsiveFont(10, 16, true);
+					color: #ffffff;
 					font-weight: bold;
-					@include breakpoint(small, 'max'){
-						float:none;
+					margin-bottom: 5px;
+					margin-top: 0;
+					text-align: center;
+					text-transform: uppercase;
+					@include breakpoint(small, 'max') {
+						float: none;
 						margin-bottom: 5px;
 						text-align: center;
-						br{
+						br {
 							display: none;
 						}
 					}
 				}
-				span{
-					float:right;
-					border: 2px dotted #6f2d8e;
-					padding:3px 5px;
-					color:#6f2d8e;
-					background-color: #FFF;
+				span {
 					@include responsiveFont(15, 16, true);
+					background-color: #FFF;
+					border: 2px dotted #6f2d8e;
+					color: #6f2d8e;
+					float: right;
 					font-weight: bold;
-					@include breakpoint(small, 'max'){
-						float:none;
+					padding: 3px 5px;
+					@include breakpoint(small, 'max') {
+						float: none;
 					}
 				}
 			}
 		}
 	}
-	.primary-button{
-		clear:both;
-	    display: block;
-	    width: 150px;
-	    margin: 15px auto auto auto;
+	.primary-button {
 	    background-color: #6f2d8e;
-	    border-color:#6f2d8e;
+	    border-color: #6f2d8e;
+		clear: both;
+	    display: block;
+	    margin: 15px auto auto auto;
 	    padding: 10px;
+	    width: 150px;
 	}
 }

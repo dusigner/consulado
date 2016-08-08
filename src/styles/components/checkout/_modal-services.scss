@@ -1,6 +1,6 @@
-#modal-services{
-	position:absolute;
+#modal-services {
 	margin-bottom: 10%;
+	position: absolute;
 	top: 10%;
 
 	.modal-body {
@@ -9,31 +9,32 @@
 
 		h2 { @include responsiveFont(16); }
 
-		ul,ol {
+		ul,
+		ol {
 			li { margin-top: 20px; }
 		}
 	}
 
 	.modal-footer {
-		border:none;
-		padding:25px 35px 25px 35px;
 		background: $gray-l;
+		border: none;
+		padding: 25px 35px 25px 35px;
 
-		.lk-contrato{
+		.lk-contrato {
 			display: block;
 			font-weight: bold;
 			margin-bottom: 10px;
 		}
 
-		#btn-concordo{
+		#btn-concordo {
 			@include vendor(transition, all .3s ease);
-			color:#fff;
 			background: $orange;
-			border-color:$orange;
+			border-color: $orange;
+			color: #ffffff;
 
-			&:hover{
-				background: #fff;
-				color:$orange;
+			&:hover {
+				background: #ffffff;
+				color: $orange;
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 body {
-	&.body-order-placed{
+	&.body-order-placed {
 		header {
 			.come-back { display: block!important; }
 		}
@@ -7,25 +7,27 @@ body {
 		.seller-info { display: none; }
 
 		.page-header {
-			h1.title { color:$green; }
+			h1.title { color: $green; }
 		}
 
 		.alert-success {
-			color:$txt-gray;
+			color: $txt-gray;
 
-			.orderplaced-successfully { color:$txt-gray; }
+			.orderplaced-successfully { color: $txt-gray; }
 		}
 
-		.btn-continue-shop, .bank-invoice-print-link{
+		.btn-continue-shop, 
+		.bank-invoice-print-link {
 			color: #736c6b;
 		}
 
 		.consul-ebit {
-			float:right;
+			float: right;
 			margin-top: 10px;
 		}
 
-		.quantity-price, .monetary { width: auto; }
+		.quantity-price, 
+		.monetary { width: auto; }
 		.orderid { color: $green; }
 
 		#print-bank-invoice {
@@ -49,25 +51,28 @@ body {
 				border-bottom: 3px solid $gray-l;
 				padding: 15px 0;
 
-				&:last-child { border:none; }
+				&:last-child { border: none; }
 
 				td {
 					padding: 30px 10px;
 
-					&.product-name{
+					&.product-name {
 						@include responsiveFont(14, 16, true);
-						font-weight:bold;
+						font-weight: bold;
 					}
 
-					&.shipping-date, &.product-price,&.quantity, &.quantity-price{
+					&.shipping-date, 
+					&.product-price,
+					&.quantity, 
+					&.quantity-price {
 						@include responsiveFont(12, 16, true);
-						color:$txt-gray-l;
-						font-weight:normal;
+						color: $txt-gray-l;
+						font-weight: normal;
 					}
 
 					&.quantity-price {
 						color: $green;
-						font-weight:bold;
+						font-weight: bold;
 					}
 				}
 			}
@@ -77,9 +82,9 @@ body {
 			.payments-list {
 				@include responsiveFont(14, 16, true);
 
-				.bank-invoice-print-link{ margin-top: 10px; }
+				.bank-invoice-print-link { margin-top: 10px; }
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					.order-print-bank-invoice-mini {
 						display: block;
 						width: 100%;
@@ -91,17 +96,17 @@ body {
 		.general-info { margin-left: 0; }
 
 		.shipping-info {
+			border: 3px solid $gray-l;
 			display: inline-block!important;
-			border:3px solid $gray-l;
 
-			h3 { padding: 0px 15px; }
+			h3 { padding: 0 15px; }
 
-			address{
+			address {
 				margin-bottom: 0;
 
 				ul {
 					li {
-						border-top:1px solid $gray-l;
+						border-top: 1px solid $gray-l;
 						padding: 5px 15px;
 					}
 				}
@@ -112,7 +117,7 @@ body {
 		.total-info {
 			border: 3px solid $gray-l;
 
-			.section-info-title{display: none;}
+			.section-info-title {display: none;}
 
 			tr {
 				border-bottom: 1px solid $gray-l;
@@ -121,13 +126,13 @@ body {
 				td {
 					padding: 10px;
 
-					&.info { text-align:right; }
+					&.info { text-align: right; }
 				}
 			}
 
 			tfoot {
 				td { @include responsiveFont(16, 16, true); }
-				.monetary { color:$green; }
+				.monetary { color: $green; }
 			}
 		}
 

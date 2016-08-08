@@ -3,13 +3,13 @@
 	//  PRINT
 	//------------------------------------
 	@media print {
-		@page { margin: 0.5cm; }
+		@page { margin: .5cm; }
 
 		*,
 		*:before,
 		*:after {
 			background: transparent !important;
-			color: black !important;
+			color: #000000 !important;
 			filter: none !important;
 			text-shadow: none !important;
 		}
@@ -17,7 +17,7 @@
 		body {
 			background-color: #fff;
 			color: #000;
-			font: 0.57em / 1.3 $base-print-font-family;
+			font: .57em / 1.3 $base-print-font-family;
 		}
 
 		img { max-width: 100% !important; }
@@ -34,7 +34,7 @@
 		embed,
 		nav,
 		footer,
-		a[href^="#"]:after {
+		a[href^='#']:after {
 			display: none;
 			visibility: hidden;
 		}
@@ -56,19 +56,19 @@
 			word-wrap: break-word;
 
 			&[href]:after {
-				content: " (" attr(href) ")";
+				content: ' (' attr(href) ')';
 				font-size: smaller;
 			}
 		}
 
-		q:after { content: " (Source: " attr(cite) ")"; }
+		q:after { content: ' (Source: ' attr(cite) ')'; }
 
-		abbr[title]:after { content: " (" attr(title) ")"; }
+		abbr[title]:after { content: ' (' attr(title) ')'; }
 
 		a {
 			&:after,
-			&[href^="javascript:"]:after,
-			&[href^="#"]:after { content: ""; }
+			&[href^='javascript:']:after,
+			&[href^='#']:after { content: ''; }
 		}
 
 		pre,
@@ -85,7 +85,7 @@
 		ul {
 			list-style: none;
 
-			li { content: "&raquo; "; }
+			li { content: '&raquo; '; }
 		}
 	}
 }

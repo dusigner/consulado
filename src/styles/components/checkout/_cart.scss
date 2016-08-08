@@ -1,7 +1,7 @@
 body {
 	&.body-cart {
 		.cart {
-			padding:0;
+			padding: 0;
 
 			.cart-items {
 				thead {
@@ -9,46 +9,50 @@ body {
 					background-color: $gray-l;
 
 					th {
-						text-transform: uppercase;
 						padding: 15px;
+						text-transform: uppercase;
 					}
 				}
 
 				tbody {
-					padding-bottom:20px;
+					padding-bottom: 20px;
 
 					td {
-						padding:20px 10px;
+						padding: 20px 10px;
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							padding: 10px 0 !important;
 						}
 					}
 
-					.item-remove { right:7px; }
+					.item-remove { right: 7px; }
 
 					.product-item {
 						border-top: 3px solid $gray-l;
-						padding: 30px 0;
 						overflow: initial;
+						padding: 30px 0;
 
 						&:first-child {
-							border-bottom:none;
+							border-bottom: none;
 
-							@include breakpoint(small, "max") {
-								border-top:0 !important;
+							@include breakpoint(small, 'max') {
+								border-top: 0 !important;
 							}
 						}
 
-						.brand, .seller, .shipping-date, .product-price, .quantity-price{
+						.brand, 
+						.seller, 
+						.shipping-date, 
+						.product-price, 
+						.quantity-price {
 							@include responsiveFont(12, 16, true);
-							color:$txt-gray-l;
-							font-weight:normal;
+							color: $txt-gray-l;
+							font-weight: normal;
 						}
 
 						.product-name {
 							@include responsiveFont(14, 16, true);
-							font-weight:bold;
+							font-weight: bold;
 
 							&>a {
 								display: block;
@@ -59,28 +63,28 @@ body {
 								display: inline-block;
 
 								&:after {
-									display: inline-block;
 									content: ' - ';
+									display: inline-block;
 								}
 							}
 
 							.product-service {
-								@include breakpoint(small, "max") {
-									position: absolute;
+								@include breakpoint(small, 'max') {
 									bottom: -5px;
 									left: 51%;
-									width: 95%;
+									position: absolute;
 									transform: translateX(-50%);
+									width: 95%;
 								}
 
 								.linkWarranty {
 									@include responsiveFont(10, 16, true);
 									text-transform: uppercase;
 
-									@include breakpoint(small, "max") {
-										margin-right:10px;
-										padding: 5px 0px;
+									@include breakpoint(small, 'max') {
 										line-height: normal;
+										margin-right: 10px;
+										padding: 5px 0;
 									}
 								}
 							}
@@ -88,33 +92,33 @@ body {
 
 						.shipping-date {
 							.shipping-estimate-date {
-								color: $txt-gray;
 								@include responsiveFont(13, 16, true);
+								color: $txt-gray;
 								font-weight: bold;
 							}
 						}
 
 						.product-price {
-							@include breakpoint(small, "max") {
+							@include breakpoint(small, 'max') {
 								margin-right: 16px;
 							}
 
 							.list-price {
 								@include responsiveFont(13, 16, true);
 
-								.old-product-price { color:$txt-gray-l; }
+								.old-product-price { color: $txt-gray-l; }
 							}
 
 							.best-price {
-								color:$txt-gray;
 								@include responsiveFont(13, 16, true);
-								font-weight:bold;
+								color: $txt-gray;
+								font-weight: bold;
 							}
 						}
 
 						.quantity {
 							input {
-								height:35px;
+								height: 35px;
 								width: 40px;
 							}
 
@@ -122,13 +126,13 @@ body {
 						}
 
 						.quantity-price {
-							color:$green;
-							font-weight:bold;
-							padding:20px 5px;
+							color: $green;
+							font-weight: bold;
+							padding: 20px 5px;
 						}
 
 						.item-remove {
-							.item-link-remove { color:$txt-gray-l; }
+							.item-link-remove { color: $txt-gray-l; }
 						}
 					}
 
@@ -139,12 +143,12 @@ body {
 
 						.quantity-price {
 							@include responsiveFont(12, 16, true);
-							color:$green;
-							font-weight:bold;
+							color: $green;
+							font-weight: bold;
 						}
 
 						.item-remove {
-							.item-link-remove { color:$txt-gray-l; }
+							.item-link-remove { color: $txt-gray-l; }
 						}
 					}
 				}
@@ -152,27 +156,28 @@ body {
 		}
 
 		.totalizers {
-			width: 46%;
 			padding: 0;
+			width: 46%;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				width: 100%;
 			}
 
-			.quantity-price, .monetary{
-				width: auto;
-				padding-right: 34px;
+			.quantity-price, 
+			.monetary {
 				@include responsiveFont(13, 16, true);
 				font-weight: bold;
+				padding-right: 34px;
 				text-align: right;
+				width: auto;
 			}
 
 			.info {
+				@include responsiveFont(13, 16, true);
+				padding-right: 30px;
+				text-transform: uppercase;
 				vertical-align: middle;
 				width: 55%;
-				padding-right: 30px;
-				@include responsiveFont(13, 16, true);
-				text-transform: uppercase;
 			}
 
 			.empty { display: none; }
@@ -180,8 +185,9 @@ body {
 			.accordion-group {
 				margin-bottom: 0;
 
-				tbody, tfoot {
-					padding:5px;
+				tbody, 
+				tfoot {
+					padding: 5px;
 
 					tr {
 						border-bottom: 1px solid $gray-l;
@@ -190,9 +196,9 @@ body {
 
 				.Items {
 					.info {
-						padding-right: 26px;
 						@include responsiveFont(13, 16, true);
 						font-weight: normal;
+						padding-right: 26px;
 						text-transform: uppercase;
 					}
 				}
@@ -205,36 +211,36 @@ body {
 							display: table-cell !important;
 							padding-left: 18px;
 
-							@include breakpoint(extra-small, "max") {
-								padding-right: 0;
+							@include breakpoint(extra-small, 'max') {
 								padding-left: 0;
+								padding-right: 0;
 							}
 
 							.shipping-form-inline {
 								text-align: right;
 
 								input.postal-code {
-									width: 90px;
-									max-width: 90px;
-									margin-right: 5px;
-									padding: 16px 5px;
 									border-radius: 0;
+									margin-right: 5px;
+									max-width: 90px;
+									padding: 16px 5px;
+									width: 90px;
 
-									@include breakpoint(large, "max") {
-										width: 70px;
+									@include breakpoint(large, 'max') {
 										max-width: 70px;
+										width: 70px;
 									}
 								}
 
 								button#cart-shipping-calculate {
-									width: 90px;
-									max-width: 90px;
-									padding: 6px 12px;
+									background: transparent;
 									border: 2px solid $gray;
 									color: $txt-gray-l;
-									background: transparent;
+									max-width: 90px;
+									padding: 6px 12px;
 									text-align: center;
 									text-transform: capitalize;
+									width: 90px;
 
 									&:hover {
 										background: $gray;
@@ -259,23 +265,24 @@ body {
 				}
 
 				.Shipping {
-					.monetary, .space {
+					.monetary, 
+					.space {
 						display: none;
 					}
 
 					.info {
-						padding: 0;
-						text-align: left;
 						@include responsiveFont(13, 16, true);
 						font-weight: normal;
+						padding: 0;
+						text-align: left;
 						text-transform: uppercase;
 
 						.info-shipping {
 							display: inline-block;
-							width: 55%;
 							padding: 8px 0;
 							padding-right: 14px;
 							text-align: right;
+							width: 55%;
 						}
 
 						.postal-code-for-sla {
@@ -284,7 +291,8 @@ body {
 							min-width: auto;
 							padding: 6px 0;
 
-							.shipping-name, .shipping-name-to {
+							.shipping-name, 
+							.shipping-name-to {
 								display: none;
 							}
 
@@ -298,79 +306,81 @@ body {
 						}
 
 						.shipping-sla-selector {
+							border-top: 1px solid $gray-l;
 							padding: 16px 0;
 							padding-right: 30px;
-							border-top: 1px solid $gray-l;
 							text-align: right;
 
-							@include breakpoint(extra-small, "max") {
+							@include breakpoint(extra-small, 'max') {
 								padding-right: 0;
 								text-align: center;
 							}
 
 							.shipping-sla-button {
-								width: 100%;
-								text-align: right;
+								background: #ffffff;
 								border: none;
 								box-shadow: none;
-								text-shadow: none;
-								background: #fff;
 								padding: 0;
+								text-align: right;
+								text-shadow: none;
+								width: 100%;
 
 								.caret {display: none;}
 
-								&:hover, &:focus, &.btn.dropdown-toggle {
-									background: #fff;
-									box-shadow: none;
+								&:hover, 
+								&:focus, 
+								&.btn.dropdown-toggle {
+									background: #ffffff;
 									border: none;
+									box-shadow: none;
 									text-shadow: none;
 								}
 
 								span {
 									color: $green;
-									font-weight: bold;
 									font-size: 12px;
+									font-weight: bold;
 								}
 
-								@include breakpoint(extra-small, "max") {
+								@include breakpoint(extra-small, 'max') {
 									text-align: center;
 								}
 							}
 
 							.shipping-estimate {
-								display: inline-block;
-								position: relative;
-								width: 55%;
-								padding: 5px 10px;
-								border: 1px solid $gray-l;
 								@include responsiveFont(13, 16, true);
+								border: 1px solid $gray-l;
+								display: inline-block;
+								padding: 5px 10px;
+								position: relative;
 								text-align: left;
 								text-transform: initial;
+								width: 55%;
 
 								&:before {
-									display: block;
-									content: 'Tipo de entrega';
-									position: absolute;
-									top: 4px;
-									left: -125px;
-									color: $gray-d;
 									@include responsiveFont(13, 16, true);
+									color: $gray-d;
+									content: 'Tipo de entrega';
+									display: block;
 									font-weight: normal;
+									left: -125px;
+									position: absolute;
 									text-transform: uppercase;
+									top: 4px;
 								}
 
 								&:after {
+									@include contentBefore();
+									@include font-size(8px, true, false);
+									@include icon-get('arrow-down');
 									display: block;
 									position: absolute;
-									@include contentBefore();
-									@include icon-get('arrow-down');
-									top: 50%;
 									right: 6px;
-									@include font-size(8px, true, false);
+									top: 50%;
 									transform: translateY(-50%);
 								}
 
-								@include breakpoint(extra-small, "max") {
+								@include breakpoint(extra-small, 'max') {
 									width: 90%;
 
 									&:before {
@@ -380,35 +390,38 @@ body {
 							}
 
 							.shipping-sla-options {
-								top: 41px;
-								right: 30px;
-								border-radius: 0;
-								border: 1px solid #f4f4f4;
-								text-align: left;
 								@include responsiveFont(16, 16, true);
 								background: #fff;
-								box-shadow: 0 0 7px rgba(0,0,0,0.2);
+								border: 1px solid #f4f4f4;
+								border-radius: 0;
+								box-shadow: 0 0 7px rgba(0, 0, 0, .2);
 								line-height: normal;
 								min-width: 120px;
 								padding: 0;
+								right: 30px;
+								text-align: left;
+								top: 41px;
 
-								@include breakpoint(extra-small, "max") {
-									width: 90%;
-									max-width: 90%;
+								@include breakpoint(extra-small, 'max') {
 									left: 5%;
+									max-width: 90%;
 									right: 0;
+									width: 90%;
 								}
 
 								li {
-									padding: 6px 10px;
 									border-bottom: 1px solid #f4f4f4;
+									padding: 6px 10px;
 									text-transform: initial;
 
 									a {
 										padding: 0;
 										transition: color 400ms ease-out;
 
-										&:hover { background: #fff; color: $green; }
+										&:hover { 
+											background: #ffffff; 
+											color: $green; 
+										}
 
 										.icon-ok {
 											display: none;
@@ -428,17 +441,17 @@ body {
 					}
 
 					.postal-code-value {
-						padding-right: 10px;
-						color: $green;
 						@include responsiveFont(13, 16, true);
+						color: $green;
 						font-weight: bold;
+						padding-right: 10px;
 					}
 
 					.icon-remove-sign {
 						@include responsiveFont(16, 16, true);
 
 						&:before {
-							content: "\f00d";
+							content: '\f00d';
 						}
 					}
 				}
@@ -446,21 +459,21 @@ body {
 				tfoot {
 					background: $gray-l;
 
-					.info{
+					.info {
 						@include responsiveFont(18, 16, true);
 						font-weight: 700;
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
 						}
 					}
 
 					.monetary {
-						color:$green;
 						@include responsiveFont(18, 16, true);
+						color: $green;
 						font-weight: 700;
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
 						}
 					}
@@ -471,16 +484,16 @@ body {
 		.coupon-column {
 			width: 50%;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				width: 100%;
 
-				.coupon{
-					width:100%;
+				.coupon {
+					width: 100%;
 				}
 			}
 
 			input {
-				height:35px;
+				height: 35px;
 			}
 
 			.summary-coupon {
@@ -489,19 +502,19 @@ body {
 				.coupon-data {
 					float: none;
 
-					@include breakpoint(small, "max") {
-						text-align:center;
-						width:100%;
+					@include breakpoint(small, 'max') {
 						margin-bottom: 25px;
+						text-align: center;
+						width: 100%;
 					}
 
 					.link-coupon-add {
-						padding: 15px 25px;
 						@include responsiveFont(12, 16, true);
 						font-weight: bold;
+						padding: 15px 25px;
 						text-transform: uppercase;
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							display: inline-block !important;
 							width: 100%;
 						}
@@ -526,14 +539,14 @@ body {
 						}
 
 						button {
-							padding: 8px 20px;
+							background: #ffffff;
 							border: 2px solid $gray;
 							box-shadow: none;
 							color: $gray;
-							background: #ffffff;
 							font-weight: bold;
-							text-transform: uppercase;
+							padding: 8px 20px;
 							text-shadow: none;
+							text-transform: uppercase;
 
 							&:hover {
 								background: $gray;
@@ -546,104 +559,109 @@ body {
 		}
 
 		.shipping-sla-button {
+			background: #ffffff;
 			border: none;
 			box-shadow: none;
-			text-shadow: none;
-			background: #fff;
 			padding: 0;
+			text-shadow: none;
 
 			.caret {display: none;}
 
-			&:hover, &:focus, &.btn.dropdown-toggle {
-				background: #fff;
-				box-shadow: none;
+			&:hover, 
+			&:focus, 
+			&.btn.dropdown-toggle {
+				background: #ffffff;
 				border: none;
+				box-shadow: none;
 				text-shadow: none;
 			}
 
 			span {
 				color: $green;
-				font-weight: bold;
 				font-size: 12px;
+				font-weight: bold;
 			}
 		}
 
 		.shipping-sla-options {
 			@include font-size(16px);
-			background: #fff;
-			box-shadow: 0 0 7px rgba(0,0,0,0.2);
+			background: #ffffff;
+			box-shadow: 0 0 7px rgba(0, 0, 0, .2);
 			line-height: normal;
 			min-width: 120px;
 			padding: 0;
 			li {
 				a {
 					transition: color 400ms ease-out;
-					&:hover { background: #fff; color: $green; }
+					&:hover { 
+						background: #ffffff; 
+						color: $green; 
+					}
 				}
 			}
 		}
 
 		.cart-links-bottom {
-			@include breakpoint(small, "max") {
-				position: relative;
-				min-height: 160px;
+			@include breakpoint(small, 'max') {
 				margin-bottom: 0;
+				min-height: 160px;
+				position: relative;
 			}
 
 			.link-choose-more-products-wrapper {
-				@include breakpoint(small, "max") {
-					position: absolute;
+				@include breakpoint(small, 'max') {
 					bottom: 0;
-					left: 0;
 					display: block;
-					width: 100%;
+					left: 0;
 					margin: 20px 0;
+					position: absolute;
+					width: 100%;
 				}
 
 				#cart-choose-more-products {
-					margin-right: 15px;
-					padding: 15px 25px;
 					@include responsiveFont(13, 16, true);
 					font-weight: bold;
+					margin-right: 15px;
+					padding: 15px 25px;
 					text-transform: uppercase;
 
-					@include breakpoint(small, "max") {
-						display: inline-block;
-						width: 100%;
+					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
+						display: inline-block;
 						text-align: center;
+						width: 100%;
 					}
 				}
 			}
 
 			.fake-buttom {
-				position: relative;
-				padding: 14px 50px;
-				padding-right: 65px;
 				@include responsiveFont(15, 16, true);
 				font-weight: bold;
+				padding: 14px 50px;
+				padding-right: 65px;
+				position: relative;
 				text-transform: uppercase;
 
 				&:before {
-					display: inline-block;
-					@include font-size(16px, true, false);
 					@include contentBefore();
+					@include font-size(16px, true, false);
 					@include icon-get('arrow-right');
+					display: inline-block;
 					right: 40px;
 					top: 50%;
 					transform: translateY(-50%) scaleY(1);
-					transition: transform 0.2s ease-in;
+					transition: transform .2s ease-in;
 				}
 
-				@include breakpoint(small, "max") {
-					position: absolute;
-					top: 0;
-					left: 0;
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(20, 16, true);
 					display: block;
-					width: 100%;
+					left: 0;
 					margin-bottom: 10px;
 					margin-left: 0;
-					@include responsiveFont(20, 16, true);
+					position: absolute;
+					top: 0;
+					width: 100%;
 				}
 			}
 		}

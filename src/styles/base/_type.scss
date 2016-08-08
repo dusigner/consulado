@@ -42,14 +42,14 @@
 	abbr {
 		&[title],
 		&[data-original-title] {
-			cursor: help;
 			border-bottom: 1px dotted #999;
+			cursor: help;
 		}
 	}
 
 	acronym {
-		cursor: help;
 		border-bottom: 1px dashed $base-link-color;
+		cursor: help;
 	}
 
 	/*.title {
@@ -78,20 +78,19 @@
 		&:empty { display: none; visibility: hidden; }
 	}*/
 
-	.pre-title{
+	.pre-title {
 		@include responsiveFont(38);
 		font-weight: 400;
 		line-height: 1.14;
-		text-align: center;
 		margin: 45px 0 0;
+		text-align: center;
 
-		&:empty{display:none}
+		&:empty {display: none}
 	}
 
-	input.error{
-		//border:1px solid #f00!important;
-		border-color: #F49A9A!important;
+	input.error {
 		background: #FFF0F0!important;
+		border-color: #F49A9A!important;
 	}
 
 	span.error {

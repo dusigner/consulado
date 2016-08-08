@@ -1,4 +1,5 @@
-#vtex-modal-napoleao, #vtex-napoleao {
+#vtex-modal-napoleao, 
+#vtex-napoleao {
 
 	[class*='col-'] {
 		float: none;
@@ -9,32 +10,32 @@
 	}
 
 	.modal-holder {
-		position: relative;
 		background: $green;
 		border-radius: 50%;
-	    width: 100%;
 	    height: 400px;
+		position: relative;
+	    width: 100%;
 
 	    @include breakpoint(small, 'max') {
-	    	width: 90%;
-	    	height: auto;
 	    	border-radius: 10px;
+	    	height: auto;
+	    	width: 90%;
 
 	    }
 
 	    .napoleao-close {
-	    	position: absolute;
 	    	left: 44%;
+	    	position: absolute;
 	    	top: 4%;
 		    button {
 		    	@include responsiveFont(18);
 		    	background: $green;
 		    	border: none;
 		    	border-radius: 50%;
-		    	color: #fff;
+		    	color: #ffffff;
 		    	font-weight: bold;
-				width: 32px;
 				height: auto;
+				width: 32px;
 		    }
 	    }
 
@@ -47,8 +48,8 @@
 			}
 
 			img {
-				text-align: center;
 				margin: 0 auto;
+				text-align: center;
 			}
 		}
 
@@ -72,9 +73,9 @@
 			padding: 5px 0 5px 0;
 			p {
 				@include responsiveFont(18);
-				color: #fff;
-				margin: 0 auto;
+				color: #ffffff;
 				font-weight: 400;
+				margin: 0 auto;
 
 				@include breakpoint(small, 'max') {
 					@include responsiveFont(15);
@@ -93,17 +94,17 @@
 
 			button {
 				@include responsiveFont(12);
-				margin: 0 auto;
 				background: #702c8f;
 				border: 2px solid #702c8f;
+				margin: 0 auto;
 
 				@include breakpoint(small, 'max') {
 					@include responsiveFont(10);
 				}
 
 				&:hover {
+					background: #ffffff;
 					color: #702c8f;
-					background: #fff;
 				}
 			}
 		}

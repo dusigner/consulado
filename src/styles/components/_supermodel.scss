@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 $supermodel-colors: (
 	'amarelo'          : ('Background' : #d2a723, 'Bullet' : $gray, 'Tooltip-bg'       : #d2a723, 'Tooltip-txt' : $gray),
@@ -51,15 +51,15 @@ a.supermodel {
 	width: 22px;
 
 	&.active:before {
+		background-color: #fff;
 		border-radius: 50%;
 		content: '';
-		background-color: #fff;
 		height: 8px;
 		left: 0;
 		margin: -4px auto auto;
 		position: absolute;
-		top: 50%;
 		right: 0;
+		top: 50%;
 		width: 8px;
 	}
 
@@ -67,21 +67,21 @@ a.supermodel {
 		@include font-size(14px);
 		background-color: #7f7f7f;
 		border-radius: 4px;
-		color: white;
+		color: #ffffff;
 		left: 50%;
 		opacity: 0;
 		padding: 8px 10px;
 		position: absolute;
 		top: -50px;
 		transform: translateX(-50%);
-		transition: opacity 0.4s ease;
+		transition: opacity .4s ease;
 		z-index: 0;
 
 		&:before {
-			bottom: -5px;
 			border-left: 8px solid transparent;
 			border-right: 8px solid transparent;
 			border-top: 8px solid #7f7f7f;
+			bottom: -5px;
 			content: '';
 			height: 0;
 			left: 50%;
@@ -91,7 +91,10 @@ a.supermodel {
 		}
 	}
 
-	&:hover span { opacity: 1; z-index: 10;}
+	&:hover span { 
+		opacity: 1; 
+		z-index: 10;
+	}
 
 	// &.Branco {
 	// 	background-color: white;

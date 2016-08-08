@@ -7,16 +7,16 @@
 	width: 100%;
 	z-index: 20;
 
-	@include breakpoint(extra-large, "max") {
+	@include breakpoint(extra-large, 'max') {
 		@include opacity(0);
 	}
 
-	@include breakpoint(medium, "min") {
+	@include breakpoint(medium, 'min') {
 		top: -60px;
 	}
 
 	&.pinned {
-		@include breakpoint(extra-large, "max") {
+		@include breakpoint(extra-large, 'max') {
 			@include opacity(1);
 		}
 
@@ -26,9 +26,9 @@
 			min-width: 700px;
 			transform: translateX(0);
 
-			@include breakpoint(extra-large, "min") {
-				display:block!important;
-				min-width:inherit;
+			@include breakpoint(extra-large, 'min') {
+				display: block!important;
+				min-width: inherit;
 				text-align: left;
 			}
 		}
@@ -43,12 +43,12 @@
 		}*/
 
 		.nav-price {
-			display:block;
+			display: block;
 			opacity: 1;
 		}
 
 		.skuBestInstallmentValue {
-			& + span{display:none;}
+			& + span {display: none;}
 		}
 	}
 
@@ -62,10 +62,10 @@
 		min-width: 900px;
 		padding: 26px 0;
 		position: absolute;
-		transition: 0.4s ease all;
 		transform: translateX(-50%);
+		transition: .4s ease;
 
-		@include breakpoint(extra-large, "min") {
+		@include breakpoint(extra-large, 'min') {
 			min-width: inherit;
 		}
 	}
@@ -78,14 +78,15 @@
 
 		a {
 			border-radius: 22px;
-			color: #fff;
+			color: #ffffff;
 			display: inline-block;
 			padding: 8px 10px;
 			position: relative;
-			transition: color 0.4s ease,background 0.4s ease;
+			transition: color .4s ease, background .4s ease;
 
-			&:hover, &.active-nav {
-				background: white;
+			&:hover, 
+			&.active-nav {
+				background: #ffffff;
 				color: $green;
 			}
 		}
@@ -95,16 +96,16 @@
 
 	.nav-price {
 		@extend %single-transition;
+		display: none;
 		opacity: 0;
 		padding: 20px 0;
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			padding: 10px 0;
 		}
-		display:none;
 	}
 
 	.details-preco {
-		color: #fff;
+		color: #ffffff;
 		float: right;
 		text-align: right;
 
@@ -124,7 +125,7 @@
 			font-size: 0;
 
 			strong { @include responsiveFont(18, 16, true);
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					@include responsiveFont(12, 16, true);
 				}
 			}
@@ -133,7 +134,7 @@
 		.valor-dividido {
 			@include responsiveFont(18, 16, true);
 			display: block!important;
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				@include responsiveFont(12, 16, true);
 			}
 
@@ -151,18 +152,18 @@
 		.buy-button {
 			margin-left: 20px;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
+			@include responsiveFont(12, 16, true);
 				margin-left: 10px;
-				padding:10px 18px;
-				@include responsiveFont(12, 16, true);
-				&:before{
+				padding: 10px 18px;
+				&:before {
 					@include responsiveFont(14, 16, true);
 				}
 			}
 
 			&:hover {
-				border-color: $orange;
 				background-color: #fff;
+				border-color: $orange;
 			}
 		}
 	}

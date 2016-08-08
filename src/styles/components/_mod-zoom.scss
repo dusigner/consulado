@@ -1,6 +1,6 @@
 @if $use-com-zoom == true {
 
-	@charset "UTF-8";
+	@charset 'UTF-8';
 
 	// ===============================================================
 	/* Super Zoom */
@@ -13,10 +13,10 @@
 
 		// Foco do zoom
 		.zoomPup {
+			@include Opacity(.6);
 			border: 1px solid #ccc;
 			cursor: crosshair;
 			margin: 0 -2px 0 0;
-			@include Opacity(0.6);
 		}
 
 		// Janela de zoom

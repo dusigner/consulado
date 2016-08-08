@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 /*! =================================================
 	* Theme Name: Layout - Consul
@@ -17,58 +17,58 @@
 // ===============================================================
 
 // Utility helpers
-@import "helpers/variables";
-@import "helpers/functions";
-@import "helpers/mixins";
-@import "helpers/normalize";
-@import "helpers/animation";
-@import "helpers/helpers";
-@import "helpers/icons";
-@import "helpers/conditional";
-@import "helpers/debug";
-@import "helpers/responsive-debug";
-@import "helpers/family";
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/normalize';
+@import 'helpers/animation';
+@import 'helpers/helpers';
+@import 'helpers/icons';
+@import 'helpers/conditional';
+@import 'helpers/debug';
+@import 'helpers/responsive-debug';
+@import 'helpers/family';
+@import 'helpers/slick';
+@import 'helpers/mfp-main';
 
 
 // Base styles
-@import "base/fonts";
-@import "base/print";
-@import "base/main";
-@import "base/vertical-rhythm";
-@import "base/selection";
-@import "base/type";
+@import 'base/fonts';
+@import 'base/print';
+@import 'base/main';
+@import 'base/vertical-rhythm';
+@import 'base/selection';
+@import 'base/type';
 
 
 // Layout styles
-@import "layout/container";
-@import "layout/grid";
-@import "layout/gridresponsive";
-@import "layout/forms";
+@import 'layout/container';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+@import 'layout/forms';
 
 
 // Component styles
-@import "components/buttons";
-@import "components/colors";
+@import 'components/buttons';
+@import 'components/colors';
 
-@import "components/header";
-@import "components/top-menu";
-@import "components/search";
-@import "components/cart";
-@import "components/banners";
-@import "components/mod-prateleira";
-@import "components/slick";
-@import "components/mfp-main";
-@import "components/list-filtro";
+@import 'components/header';
+@import 'components/top-menu';
+@import 'components/search';
+@import 'components/cart';
+@import 'components/banners';
+@import 'components/mod-prateleira';
+@import 'components/list-filtro';
 
-@import "components/modal";
-@import "components/supermodel";
-@import "components/breadcrumb";
-@import "components/notify-me";
-@import "components/footer";
-@import "components/servicos";
-@import "components/selos";
-@import "components/modal-vendas-pj";
-@import "components/modal-emailCRM";
+@import 'components/modal';
+@import 'components/supermodel';
+@import 'components/breadcrumb';
+@import 'components/notify-me';
+@import 'components/footer';
+@import 'components/servicos';
+@import 'components/selos';
+@import 'components/modal-vendas-pj';
+@import 'components/modal-emailCRM';
 
 // @import "components/scroll";
 // @import "components/mod-zoom";
@@ -79,19 +79,19 @@
 
 
 // Pages styles
-@import "pages/home";
-@import "pages/product";
-@import "pages/listagem";
-@import "pages/institucional";
-@import "pages/compare";
-@import "pages/account";
-@import "pages/myorders";
+@import 'pages/home';
+@import 'pages/product';
+@import 'pages/listagem';
+@import 'pages/institucional';
+@import 'pages/compare';
+@import 'pages/account';
+@import 'pages/myorders';
 
 
 // Custom styles
-@import "custom/promo.lightbox";
-@import "custom/modal.overlay";
-@import "custom/modal.overlayLead";
-@import "custom/lead-newsletter";
+@import 'custom/promo.lightbox';
+@import 'custom/modal.overlay';
+@import 'custom/modal.overlayLead';
+@import 'custom/lead-newsletter';
 // @import "custom/modal.cupom10off";
 //@import "custom/modal.blackfriday";

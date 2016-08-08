@@ -1,34 +1,35 @@
 /*********************************************************/
 // Modal More Phones
 /*********************************************************/
-#modal-more-phones{
-	width: 640px;
-	margin-left: -330px;
-	left: 50%;
+#modal-more-phones {
 	border-radius: 0;
+	left: 50%;
+	margin-left: -330px;
+	width: 640px;
 
-	@include breakpoint(small, "max") {
-		top: 50%;
+	@include breakpoint(small, 'max') {
 		left: 0;
-		width: 90%;
 		margin: 0 auto;
+		top: 50%;
 		transform: translateY(-50%);
+		width: 90%;
 	}
 
-	.success-message, .error-message{
+	.success-message, 
+	.error-message {
 		display: none;
-		text-align:center;
+		text-align: center;
 	}
 
 	.modal-header {
-		padding: 15px;
 		background: $green;
+		padding: 15px;
 
 		h4 {
-			margin: 0;
-			color: #ffffff;
 			@include responsiveFont(26);
+			color: #ffffff;
 			line-height: normal;
+			margin: 0;
 			text-align: left;
 		}
 	}
@@ -39,9 +40,9 @@
 
 	#formPhones {
 		.alert-danger {
-			width: 100%;
 			margin: 0;
 			margin-bottom: 20px;
+			width: 100%;
 
 			&.active {
 				display: block!important;
@@ -51,8 +52,8 @@
 		.data {
 			div {
 				display: inline-block;
-				vertical-align: top;
 				margin-top: 10px;
+				vertical-align: top;
 
 				label {
 					@include responsiveFont(15);
@@ -62,58 +63,58 @@
 				&.phone-numbers {
 					width: 310px;
 
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
 						width: 100%;
 					}
 
-					input[type="tel"] {
+					input[type='tel'] {
+						border-radius: 3px;
 						height: 35px;
 						margin: 10px 0;
-						border-radius: 3px;
 					}
 				}
 
 				&.turno-ligacao {
 					margin-left: 40px;
 
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
 						margin-left: 0;
 					}
 
 					span {
-						display: block;
-						margin-bottom: 5px;
 						@include responsiveFont(15);
+						display: block;
 						font-weight: bold;
+						margin-bottom: 5px;
 					}
 
 					label {
-						position: relative;
-						display: inline;
 						@include responsiveFont(13);
+						display: inline;
 						font-weight: normal;
+						position: relative;
 
-						&:before{
-							content: '';
-							display: inline-block;
-							width: 12px;
-							height: 12px;
-							margin-right: 5px;
+						&:before {
 							border: 1px solid;
 							border-radius: 50%;
+							content: '';
+							display: inline-block;
+							height: 12px;
+							margin-right: 5px;
+							width: 12px;
 						}
 					}
 
 					input[type=radio] { display: none; }
 
-					input[type=radio]:checked + label:after{
+					input[type=radio]:checked + label:after {
 						@include contentBefore();
 						background-color: $green;
 						border-radius: 50%;
-						height:8px;
+						height: 8px;
 						left: 2px;
 						top: 2px;
-						width:8px;
+						width: 8px;
 					}
 				}
 
@@ -121,19 +122,19 @@
 					display: block;
 
 					.enviar {
-						color:$green;
+						@include responsiveFont(13);
 						border: 1px solid $green;
 						border-radius: 3px;
-						margin: 10px 0;
+						color: $green;
 						font-weight: bold;
-						@include responsiveFont(13);
+						margin: 10px 0;
 
 						&:hover {
 							background: $green;
-							color:#fff;
+							color: #ffffff;
 						}
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							width: 100%;
 						}
 					}

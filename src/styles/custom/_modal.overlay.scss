@@ -1,15 +1,15 @@
 #vtex-modal-overlay-abandono {
 	.compare {
-		display:none !important;
+		display: none !important;
 	}
 
 	.subtitle {
 		@include responsiveFont(22, 16, true);
 	    color: #736c6b;
 	    font-weight: bold;
-	    text-align: left;
 	    padding-bottom: 2em;
 	    padding-left: 1em;
+	    text-align: left;
 	}
 
 	.modal-content {
@@ -22,25 +22,27 @@
 
 	.modal-header {
 		@include responsiveFont(36, 16, true);
-		background: #fff;
+		background: #ffffff;
 		color: $green;
 		font-weight: bold;
-		text-transform: uppercase;
-		text-align: left;
 		padding-bottom: 0;
+		text-align: left;
+		text-transform: uppercase;
 		button {
 			color: $green;
 		}
 	}
 
 	.prateleira.default  {
-		h2, .parcelado, .total-parcelado {display: none;}
+		h2, 
+		.parcelado, 
+		.total-parcelado {display: none;}
 			ul li {
-			width: 100%;
 			text-align: left;
+			width: 100%;
 			.box-produto {
-				padding: 0;
 				margin: 0;
+				padding: 0;
 			}
 
 			.detalhes {
@@ -50,9 +52,9 @@
 				}
 				.prod-info {
 					float: right;
-					width: 60%;
 					padding-left: 10%;
 					padding-right: 5%;
+					width: 60%;
 					.nome {
 						@include responsiveFont(36, 16, true);
 						color: $txt-gray;
@@ -62,15 +64,16 @@
 					}
 
 					.price { 
+						margin: 0;
 						padding: 10px 0 35px 0;
-						margin:0;
 						.de {
 							@include responsiveFont(16, 16, true);
 						}
 						.por {
 							@include responsiveFont(36, 16, true);
 							color: $green;
-							.txtPor, .val {
+							.txtPor,
+							.val {
 								font-weight: bold;
 							}
 							.off {
@@ -80,21 +83,21 @@
 					}
 
 					.adicional {
-						display:none;
+						display: none;
 					}
 
 					.discount-boleto {
 						@include responsiveFont(16, 16, true);
-						color: #000;
-						text-transform: uppercase;
+						color: #000000;
 						font-weight: bold;
+						text-transform: uppercase;
 					}
 
 					.btn-eu-quero {
 						@extend .primary-button;
-						width: 250px;
 						text-align: center;
 						text-transform: uppercase;
+						width: 250px;
 					}
 				}
 			}

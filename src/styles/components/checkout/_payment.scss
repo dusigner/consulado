@@ -1,23 +1,23 @@
 body {
 	/* Change label inputs - Checkout Payment*/
 	.custom-label-complemento:after {
-	    content: "Complemento";
-	    text-indent: 0;
+	    content: 'Complemento';
 	    display: block;
+	    text-indent: 0;
 	}
 
 	.custom-label-referencia:after {
-	    content: "Referência";
-	    text-indent: 0;
+	    content: 'Referência';
 	    display: block;
 	    margin-top: -15px;
+	    text-indent: 0;
 	}
 
 	&.body-order-form {
 		.checkout-container {
 			padding-bottom: 40px;
 
-			.cart-fixed { background: #fff; }
+			.cart-fixed { background: #ffffff; }
 		}
 
 		.step {
@@ -27,33 +27,33 @@ body {
 
 			.accordion-heading {
 				background-color: $gray-l;
-				text-align:center;
+				text-align: center;
 
 				i { display: none; }
 
-				.link-box-edit{
+				.link-box-edit {
 					@include responsiveFont(19);
-					top: auto;
-					right:10px;
-					outline: none;
 					background: none;
-					border:none;
+					border: none;
 					color: $txt-gray-l;
+					outline: none;
+					right: 10px;
+					top: auto;
 
 					.icon-edit { display: block; }
 				}
 
 				.accordion-toggle {
-					padding: 10px 0;
-					font-weight:bold;
-					color: $txt-gray;
 					@include responsiveFont(22);
+					color: $txt-gray;
+					font-weight: bold;
+					padding: 10px 0;
 				}
 			}
 
-			input[type="text"],
-			input[type="email"],
-			input[type="tel"],
+			input[type='text'],
+			input[type='email'],
+			input[type='tel'],
 			select { height: 40px; }
 
 			.payment-card-number { margin-top: 30px; }
@@ -62,81 +62,85 @@ body {
 			.payment-card-number input,
 			.payment-card-name input { width: 100%; }
 
-			.payment-card-due, .payment-card-cvv {
+			.payment-card-due, 
+			.payment-card-cvv {
 				label {
 					display: block;
 					width: 100%;
 				}
 			}
 
-			.payment-card-due-month, .payment-card-due-year, .payment-card-cvv{
-				width:47%;
+			.payment-card-due-month, 
+			.payment-card-due-year, 
+			.payment-card-cvv {
+				width: 47%;
 
-				select, input{
+				select, 
+				input {
 					@include responsiveFont(14);
 					line-height: 20px;
-					width:100%;
+					width: 100%;
 				}
 			}
 
-			.payment-card-due-year { float:right; }
+			.payment-card-due-year { float: right; }
 
-			.card-flags-container { margin-bottom:7px; }
+			.card-flags-container { margin-bottom: 7px; }
 			.payment-card-lash { display: none; }
 
 			.payment-body {
 				.payment-group {
-					width:40%;
+					width: 40%;
 
 					.payment-group-list-btn { width: 100%; }
 				}
 
-				.steps-view { width:60%; }
+				.steps-view { width: 60%; }
 
 				@media screen and (max-width: 767px) {
 					.payment-group,
-					.steps-view { width:auto !important; }
+					.steps-view { width: auto !important; }
 				}
 			}
 
 			.link-change-shipping {
-				width: 100%;
-				margin-top: 15px;
 				@include responsiveFont(16);
+				margin-top: 15px;
+				width: 100%;
 			}
 
 			.shipping-options {
 				.btn-group {
 					@include responsiveFont(14);
 
-					.shipping-option-item{
-						margin-bottom: 5px;
+					.shipping-option-item {
 						border-radius: 0;
+						margin-bottom: 5px;
 
-						&.active{
+						&.active {
 							background: $gray-l;
-							color:$txt-gray;
+							color: $txt-gray;
 						}
 
-						&:hover{
+						&:hover {
 							background: $gray-l;
-							color:$txt-gray;
+							color: $txt-gray;
 						}
 					}
 				}
 
-				p { border-top:3px solid $gray-l; }
+				p { border-top: 3px solid $gray-l; }
 			}
 
-			.scheduled-sla-value-container:hover{
+			.scheduled-sla-value-container:hover {
 				background: transparent;
-				color:$txt-gray;
+				color: $txt-gray;
 			}
-			.scheduled-sla-edit{
-				margin-right: 10px;
-				color: $green;
+			.scheduled-sla-edit {
+				border: none;
 				border-color: $green;
-				border:none;
+				color: $green;
+				margin-right: 10px;
 
 				/*&:hover{
 					background: $orange;
@@ -153,25 +157,25 @@ body {
 				position: static!important;
 			}
 
-			.summary-cart-template-holder{
+			.summary-cart-template-holder {
 				border: 3px solid #f4f2f1;
 				height: auto!important;
 			}
 
 			h2 {
-				text-align:center;
-				background-color: $gray-l;
-				padding: 16px 0;
-				line-height:18px;
-				font-weight:bold;
-				color: $txt-gray;
 				@include responsiveFont(20);
+				background-color: $gray-l;
+				color: $txt-gray;
+				font-weight: bold;
+				line-height: 18px;
 				margin-bottom: 0;
+				padding: 16px 0;
+				text-align: center;
 			}
 
 			ul {
 				li.item:first-child {
-					border-top:none;
+					border-top: none;
 					/*.shipping-date{
 						color:$txt-gray;
 					}
@@ -184,13 +188,13 @@ body {
 				border-top: 3px solid $gray-l;
 				padding: 15px;
 
-				.shipping-date { color:$txt-gray-l; }
+				.shipping-date { color: $txt-gray-l; }
 
-				.price { color:$green; }
+				.price { color: $green; }
 
 				.service-list {
-					width: 100%;
 					margin-top: 10px;
+					width: 100%;
 				}
 			}
 
@@ -198,11 +202,11 @@ body {
 				@include vendor(border-radius, 0);
 				margin-bottom: 0;
 
-				.badge{
+				.badge {
 					background: $green;
 					border-color: $green;
+					color: #ffffff;
 					padding: 3px 6px;
-					color:#fff;
 				}
 			}
 
@@ -215,28 +219,28 @@ body {
 				a { color: $txt-gray-l; }
 			}
 
-			.summary-template-holder{
-				border: 3px solid $gray-l;
-				border-top:0;
-				margin-top:-1px;
+			.summary-template-holder {
 				@include vendor(border-radius, 0);
+				border: 3px solid $gray-l;
+				border-top: 0;
+				margin-top: -1px;
 
-				.totalizers{
-					border:none;
-					margin-bottom:0;
+				.totalizers {
+					border: none;
+					margin-bottom: 0;
 
 					.table {
 						tr {
-							height:40px;
+							height: 40px;
 
 							.info {
-								float:none;
-								text-align:right;
+								float: none;
+								text-align: right;
 							}
 
 							.monetary {
-								text-align:left;
-								width:50%;
+								text-align: left;
+								width: 50%;
 							}
 						}
 
@@ -259,10 +263,10 @@ body {
 			}
 		}
 
-		.payment-confirmation-wrap{
-			position: static;
+		.payment-confirmation-wrap {
 			background: none;
 			margin-top: 10px;
+			position: static;
 		}
 	}
 }

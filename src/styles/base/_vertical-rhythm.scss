@@ -8,19 +8,33 @@
 
 	// Declare a common bottom margin for most elements
 	// to maintain a consistent vertical rhythm.
-	h1, h2, h3, h4, h5, h6,
-	.h1, .h2, .h3, .h4, .h5, .h6,
+	h1, 
+	h2, 
+	h3, 
+	h4, 
+	h5, 
+	h6,
+	.h1, 
+	.h2, 
+	.h3, 
+	.h4, 
+	.h5, 
+	.h6,
 	/*.giga, .mega, .kilo,*/
 	hgroup,
-	blockquote, p, address,
-	fieldset, figure,
+	blockquote,
+	p,
+	address,
+	fieldset, 
+	figure,
 	pre,
-	.row, .form-item {
+	.row, 
+	.form-item {
 		margin-bottom: $base-spacing-unit;
-		margin-bottom: ($base-spacing-unit / $base-font-size) * 1rem;
+		// margin-bottom: ($base-spacing-unit / $base-font-size) * 1rem;
 	}
-	p{
-		@include breakpoint(small, "max") {
+	p {
+		@include breakpoint(small, 'max') {
 			margin-bottom: 0;
 		}
 	}
@@ -29,7 +43,7 @@
 	// Spacing for <hr> tags
 	hr {
 		margin-bottom: $base-spacing-unit - 2px;
-		margin-bottom: (($base-spacing-unit - 2px) / $base-font-size) * 1rem;
+		// margin-bottom: (($base-spacing-unit - 2px) / $base-font-size) * 1rem;
 	}
 
 

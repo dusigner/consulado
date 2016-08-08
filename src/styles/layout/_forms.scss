@@ -3,10 +3,10 @@
 	//  FORMS
 	//------------------------------------
 	input {
-		&[type="checkbox"],
-		&[type="file"],
-		&[type="image"],
-		&[type="radio"] {
+		&[type='checkbox'],
+		&[type='file'],
+		&[type='image'],
+		&[type='radio'] {
 			background: auto;
 			border: auto;
 			height: auto;
@@ -15,10 +15,10 @@
 	}
 
 	input {
-		&[type="text"],
-		&[type="email"],
-		&[type="password"],
-		&[type="tel"] {
+		&[type='text'],
+		&[type='email'],
+		&[type='password'],
+		&[type='tel'] {
 			background-color: #fff;
 			border: 0;
 			box-sizing: border-box;
@@ -29,10 +29,9 @@
 	}
 
 	input {
-		&[type="button"],
-		&[type="submit"] {
+		&[type='button'],
+		&[type='submit'] {
 			@extend .primary-button;
-			// background-color: $sony-buy-color!important;
 			font-size: 1em;
 			width: 100%;
 		}
@@ -70,7 +69,7 @@
 			textarea { height: auto; }
 
 			@include breakpoint(extra-small) {
-				input[type="submit"] {
+				input[type='submit'] {
 					display: block;
 					width: auto;
 				}
@@ -80,7 +79,7 @@
 			select:focus,
 			textarea:focus,
 			button:focus,
-			[contenteditable="true"]:focus { outline: 1px solid darken($object-ui-color, 15%); }
+			[contenteditable='true']:focus { outline: 1px solid darken($object-ui-color, 15%); }
 
 			fieldset {
 				border: 1px solid $object-ui-color;

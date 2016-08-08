@@ -1,15 +1,15 @@
-#conteudo-especial{
+#conteudo-especial {
 	text-align: center;
-	iframe{
-		border:none;
-		@include breakpoint(medium, "max") {
-			max-width:60em !important;
+	iframe {
+		border: none;
+		@include breakpoint(medium, 'max') {
+			max-width: 60em !important;
 		}
-		@include breakpoint(small, "max") {
-			max-width:48em !important;
+		@include breakpoint(small, 'max') {
+			max-width: 48em !important;
 		}
-		@include breakpoint(extra-small, "max") {
-			max-width:30em !important;
+		@include breakpoint(extra-small, 'max') {
+			max-width: 30em !important;
 		}
 	}
 }

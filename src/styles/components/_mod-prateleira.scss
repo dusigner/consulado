@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @if $use-com-prateleira == true {
 
@@ -30,7 +30,7 @@
 					outline: none!important;
 					width: 100/3*1%;
 
-					@include breakpoint(small, "max") { width: 100%; }
+					@include breakpoint(small, 'max') { width: 100%; }
 
 					article {
 						@include responsiveFont(16, 16, true);
@@ -50,18 +50,18 @@
 
 						// border: 1px solid #ccc;
 						.img.main {
-							@include breakpoint(small, "max") { width:100%; }
+							@include breakpoint(small, 'max') { width: 100%; }
 						}
 
 						.img.hover {
-							@include breakpoint(small, "max") { width:100%; }
+							@include breakpoint(small, 'max') { width: 100%; }
 							left: 0;
 							opacity: 0;
 							position: absolute;
 							top: 0;
+							transition: opacity 400ms, visibility 400ms;
 							visibility: hidden;
 							z-index: 1;
-							transition: opacity 400ms, visibility 400ms;
 						}
 
 						&:hover {
@@ -72,7 +72,7 @@
 								visibility: visible;
 							}
 
-							.product_field_14 li { background-image:url('#{$img-path}selo-badge-consul.png')!important; }
+							.product_field_14 li { background-image: url('#{$img-path}selo-badge-consul.png')!important; }
 						}
 
 						.ts-shelf-container {
@@ -96,10 +96,10 @@
 							// 2h05 AM
 							&:before {
 								@include singleTransition(150);
-								background: transparent url("/arquivos/selo-badge-consul.png") left bottom no-repeat;
+								background: transparent url('/arquivos/selo-badge-consul.png') left bottom no-repeat;
 								background-size: contain;
 								bottom: 0;
-								content: " ";
+								content: ' ';
 								display: block;
 								height: 103px;
 								opacity: 0;
@@ -114,13 +114,13 @@
 							}
 
 							span {
-								display:block;
-								min-height:327px;
+								display: block;
+								min-height: 327px;
 								position: absolute;
 
-								@include breakpoint(large, "max")       { min-height: 220px; }
-								@include breakpoint(small, "max")       { min-height: 284px; }
-								@include breakpoint(extra-small, "max") { min-height: 235px; }
+								@include breakpoint(large, 'max')       { min-height: 220px; }
+								@include breakpoint(small, 'max')       { min-height: 284px; }
+								@include breakpoint(extra-small, 'max') { min-height: 235px; }
 
 								&.main { z-index: 1; }
 
@@ -143,8 +143,8 @@
 								position: absolute;
 								right: 0;
 								text-indent: -9999999cm;
-								z-index: 3;
 								width: 30%;
+								z-index: 3;
 
 								li {
 									background-color: transparent;
@@ -152,12 +152,11 @@
 									background-repeat: no-repeat;
 									background-size: contain;
 									clear: both;
-									display: none;
 									display: block;
 									height: 103px;
 									width: 100%;
 
-									&:first-child { display:block; }
+									&:first-child { display: block; }
 								}
 							}
 						}
@@ -175,25 +174,25 @@
 					span { color: $orange; }
 				}
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					@include responsiveFont(12, 16, true);
-					margin-bottom: 20px;
-					padding: 10px 4px;
 					border: 2px solid $txt-gray-l;
 					border-radius: 50px;
 					color: $txt-gray-l;
+					margin-bottom: 20px;
+					padding: 10px 4px;
 				}
 			}
 
 			.compare {
-				color: gray;
+				color: #d3d3d3;
 				display: none;
 
-				@include breakpoint(small, "max") {
-					width: 160px;
+				@include breakpoint(small, 'max') {
+					border: 2px solid $gray;
 					margin: 0 auto;
 					padding: 5px 0;
-					border: 2px solid $gray;
+					width: 160px;
 				}
 
 				fieldset {
@@ -202,7 +201,7 @@
 					margin: 0;
 					padding: 0;
 
-					input[type=checkbox] { display:none; }
+					input[type=checkbox] { display: none; }
 
 					label {
 						color: $txt-gray-l;
@@ -239,8 +238,10 @@
 			}
 		}
 
-		&.default, &.destaque {
-			.nome, h3 {
+		&.default, 
+		&.destaque {
+			.nome, 
+			h3 {
 				@include responsiveFont(20);
 				font-weight: normal;
 				margin: 1em 0 0;
@@ -266,10 +267,10 @@
 				margin: 1em 0;
 				// text-align: left;
 				& > p {
-					margin:0;
+					margin: 0;
 
 					&.de,
-					&.por { span{font-weight: normal} }
+					&.por { span {font-weight: normal} }
 
 					&.de { @include responsiveFont(14, 16, true); }
 
@@ -301,10 +302,10 @@
 	}
 
 	.destaque {
-		@include breakpoint(small, "max") { text-align: center; }
+		@include breakpoint(small, 'max') { text-align: center; }
 
 		.container {
-			@include breakpoint(small, "max") { padding: 0; }
+			@include breakpoint(small, 'max') { padding: 0; }
 		}
 
 		.box-produto {
@@ -318,7 +319,7 @@
 				max-height: 115px;
 				position: relative;
 
-				@include breakpoint(small, "min") {
+				@include breakpoint(small, 'min') {
 					height: 90px;
 					width: 90px;
 				}
@@ -336,12 +337,12 @@
 			display: block;
 			text-align: center;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				float: left;
 				width: 100%;
 			}
 
-			@include breakpoint(small, "min") {
+			@include breakpoint(small, 'min') {
 				bottom: 0;
 				height: 100%;
 				left: 0;
@@ -352,13 +353,13 @@
 			.img {
 				display: block;
 
-				@include breakpoint(small, "min") {
+				@include breakpoint(small, 'min') {
 					bottom: 0;
 					left: 0;
 					position: absolute;
 				}
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					display: none;
 					margin-top: 5px;
 
@@ -367,14 +368,14 @@
 			}
 
 			img {
-				@include breakpoint(small, "min") { display: block; }
+				@include breakpoint(small, 'min') { display: block; }
 			}
 		}
 
 		.content {
-			@include breakpoint(small, "max") { width: 100%; }
+			@include breakpoint(small, 'max') { width: 100%; }
 
-			@include breakpoint(small, "min") {
+			@include breakpoint(small, 'min') {
 				float: right;
 				width: 45%;
 			}
@@ -386,9 +387,9 @@
 			position: absolute;
 			top: 0;
 
-			@include breakpoint(small, "min") { left: 55%; }
+			@include breakpoint(small, 'min') { left: 55%; }
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				background-position: top center!important;
 				width: 100%!important;
 			}
@@ -409,15 +410,15 @@
 
 		h2 {
 			@include responsiveFont(32);
+			float: left;
 			font-weight: 300;
 			line-height: 34px;
-			float: left;
 			margin-top: 90px;
 			width: 100%;
 
-			@include breakpoint(small, "max") { margin: 75px 0 5px 0; }
+			@include breakpoint(small, 'max') { margin: 75px 0 5px 0; }
 
-			@include breakpoint(small, "min") {
+			@include breakpoint(small, 'min') {
 				margin: 110px 0 0 55%;
 				width: 45%;
 			}
@@ -438,7 +439,7 @@
 			margin-top: 10px;
 			text-transform: uppercase;
 
-			@include breakpoint(small, "max") { @include hide-conditional(); }
+			@include breakpoint(small, 'max') { @include hide-conditional(); }
 		}
 	}
 
@@ -463,7 +464,7 @@
 			.prateleira.default {
 				ul:not(.slick-slider) {
 					// .compare{display:block}
-					.department-nav { display:none; }
+					.department-nav { display: none; }
 				}
 			}
 		}

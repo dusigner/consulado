@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // ===============================================================
 /* Listagem */
@@ -26,7 +26,7 @@ body.categoria .compare {
 	.container > .clearfix {
 		position: relative;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			margin: 0 -15px;
 		}
 	}
@@ -42,14 +42,16 @@ body.categoria .compare {
 		.title-filter { display: none; }
 	}
 
-	&.departamento, &.busca {
+	&.departamento, 
+	&.busca {
 		.title-filter:before { content: 'Filtrar por categoria'; }
 	}
 
 	&.busca {
 		// .search-single-navigator ul{ display: inline-block; }
 		// .banner-principal{display: none}
-		.banner-principal .box-banner{display: none;}
+		.banner-principal 
+		.box-banner {display: none;}
 	}
 }
 
@@ -58,7 +60,7 @@ body.categoria .compare {
 
 // Filtros
 .resultado-busca-filtro {
-	@include row();
+	@include row;
 	position: absolute;
 	top: 0;
 
@@ -75,7 +77,8 @@ body.categoria .compare {
 		float: right!important;
 		padding: 15px;
 
-		&:hover, &:focus { outline: none; }
+		&:hover, 
+		&:focus { outline: none; }
 	}
 }
 
@@ -85,23 +88,23 @@ body.categoria .compare {
 	padding: 5px 15px;
 	padding-bottom: 15px;
 
-	@include breakpoint(medium, "min") {
+	@include breakpoint(medium, 'min') {
 		height: 80px;
 	}
 
-	@include breakpoint(small, "max") {
+	@include breakpoint(small, 'max') {
+		display: none;
+		left: 25px;
 		position: absolute;
 		top: 172px !important;
-		left: 25px;
 		width: 86%;
 		z-index: 2;
-		display: none;
 	}
 
 	&:empty { @include hide-conditional(); }
 
-	&.pinned{
-		@include breakpoint(large, "max") {
+	&.pinned {
+		@include breakpoint(large, 'max') {
 			position: static!important;
 		}
 	}
@@ -117,7 +120,9 @@ body.categoria .compare {
 		}
 	}
 
-	h3, h5, ul { display: none; }
+	h3, 
+	h5, 
+	ul { display: none; }
 
 	/*.busca & {
 		h4 { margin-top: 0; }
@@ -126,17 +131,18 @@ body.categoria .compare {
 	h4 {
 		@include responsiveFont(16, 16, true);
 		display: inline-block;
-		margin-top: 0;
-		margin-right: 1.5em;
 		margin-bottom: 0;
+		margin-right: 1.5em;
+		margin-top: 0;
 	}
 
-	.navigation-tabs, .navigation {
+	.navigation-tabs, 
+	.navigation {
 		height: 80px;
 		line-height: 80px;
 		position: relative;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			display: block;
 			height: 50px;
 			line-height: 50px;
@@ -149,7 +155,7 @@ body.categoria .compare {
 		float: left;
 		margin-right: 1.5em;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			display: block;
 			float: none;
 			margin: 0;
@@ -157,7 +163,7 @@ body.categoria .compare {
 
 			&.active { color: $orange; }
 
-			&:after{
+			&:after {
 				@include icon-get('arrow-down');
 				@include responsiveFont(12, 16, true);
 				@include transition(transform, 200);
@@ -171,7 +177,7 @@ body.categoria .compare {
 
 .listagem.categoria {
 	.filter-wrapper {
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			height: auto;
 
 			.search-single-navigator {
@@ -185,10 +191,10 @@ body.categoria .compare {
 					width: 45%;
 				} */
 
-				&.active { display:block!important; }
+				&.active { display: block!important; }
 			}
 
-			.navigation-tabs{height: auto}
+			.navigation-tabs {height: auto}
 		}
 
 
@@ -196,24 +202,24 @@ body.categoria .compare {
 		// .search-single-navigator,
 		// .single-filter-wrapper { @include clearfix(); }
 
-		h4, h5 {
+		h4, 
+		h5 {
 			color: $txt-gray;
 			display: block;
 			float: left;
-			//font-weight: 400;
 			height: 80px;
 			margin: 0 1em 0 0;
 			position: relative;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				float: none;
 				height: auto;
 				padding: 0 1em;
 
-				&:after{display: none!important}
+				&:after {display: none!important}
 			}
 
-			&:after{
+			&:after {
 				@include icon-get('arrow-down');
 				@include transition(transform, 200);
 				@include responsiveFont(8, 16, true);
@@ -229,15 +235,15 @@ body.categoria .compare {
 			cursor: pointer;
 			min-width: 100px;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				border-right: none!important;
-				font-size:16px!important;
+				font-size: 16px!important;
 				margin: 0;
 				padding: 0!important;
 				width: 100%!important;
 			}
 
-			&:after{ @include responsiveFont(14, 20, true); }
+			&:after { @include responsiveFont(14, 20, true); }
 
 			&:hover {
 				@include transition(transform, 200);
@@ -254,9 +260,9 @@ body.categoria .compare {
 
 			ul {
 				@include responsiveFont(16, 12, true);
-				background: #fff;
-				box-shadow: 0 0 7px rgba(0,0,0,0.2);
+				background: #ffffff;
 				border-radius: 10px;
+				box-shadow: 0 0 7px rgba(0, 0, 0, .2);
 				display: none;
 				left: 0;
 				line-height: normal;
@@ -268,16 +274,16 @@ body.categoria .compare {
 				top: 70px;
 				z-index: 10;
 
-				@include breakpoint(small, "max") {
-					position: relative;
-					height: auto;
-					top: 0;
-					left: 0;
-					right: 0;
-					width: 100%;
-					text-align: left;
-					box-shadow: none;
+				@include breakpoint(small, 'max') {
 					background-color: transparent;
+					box-shadow: none;
+					height: auto;
+					left: 0;
+					position: relative;
+					right: 0;
+					text-align: left;
+					top: 0;
+					width: 100%;
 
 					&.active { display: block; }
 				}
@@ -287,21 +293,21 @@ body.categoria .compare {
 				a { @include responsiveFont(14, 16, true); }
 			}
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				@include responsiveFont(26, 16, true);
 				border-right: 1px solid #ccc;
-				text-align: center;
 				padding-right: 10px;
+				text-align: center;
 				width: 50%;
 
 				& ul {
 					//background-color: #dd0;
+					font-weight: bold;
 					left: inherit;
 					right: 6%;
-					z-index: 150;
-					width: 80%;
-					font-weight: bold;
 					text-rendering: optimizeLegibility;
+					width: 80%;
+					z-index: 150;
 				}
 			}
 		}
@@ -319,14 +325,13 @@ body.categoria .compare {
 	@include responsiveFont(12, 16, true);
 	color: $orange;
 	display: block;
-	// float: right;
 	margin-top: 26px;
-	text-transform: uppercase;
 	position: absolute;
-	top: 7px;
 	right: 0;
+	text-transform: uppercase;
+	top: 7px;
 
-	@include breakpoint(small, "max") {
+	@include breakpoint(small, 'max') {
 		float: none;
 		text-align: center;
 	}
@@ -337,13 +342,10 @@ body.categoria .compare {
 		margin-left: .5em;
 	}
 
-	.more-cat + &{
+	.more-cat + & {
 		right: 180px;
 	}
 }
-
-
-
 
 /*==========  DEPARTAMENTO  ==========*/
 
@@ -351,14 +353,15 @@ body.categoria .compare {
 .listagem.departamento {
 
 	.filter-wrapper {
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			height: auto;
 			position: relative;
 
 			h4 {
 				margin: 0 1em 0 0;
 
-				&, a { color: $orange;}
+				&, 
+				a { color: $orange;}
 			}
 
 			h4 { //:nth-child(n+2)
@@ -376,24 +379,24 @@ body.categoria .compare {
 				}
 			}
 
-			.single-filter-wrapper.more-cat{
+			.single-filter-wrapper.more-cat {
 				position: relative!important;
 
-				ul{
+				ul {
 					box-shadow: none!important;
-					position: relative!important;
-					top: 0!important;
 					left: 0!important;
+					position: relative!important;
 					text-align: left!important;
+					top: 0!important;
 				}
 			}
 
 			.navigation-tabs {
-				background-color: #fff;
-				box-shadow: 0 0 7px rgba(0,0,0,0.2);
+				background-color: #ffffff;
+				box-shadow: 0 0 7px rgba(0, 0, 0, .2);
 				display: none;
 				// left: 100px;
-				padding: 0.5em 1em;
+				padding: .5em 1em;
 				// position: absolute;
 				// top: 55px;
 				width: 100%;
@@ -425,11 +428,55 @@ body.categoria .compare {
 
 .single-filter-wrapper {
 	// @include transition(background-color, 400);
-	display: inline-block;
 	cursor: pointer;
+	display: inline-block;
 	margin-right: 1em;
-	padding: 0 0.5em;
+	padding: 0 .5em;
 	position: relative;
+
+	&.more-cat {
+		margin-right: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 2;
+
+		h5 {
+			@include responsiveFont(16, 16, true);
+			cursor: pointer;
+			display: block!important;
+			height: 80px;
+			line-height: 80px;
+			margin: 0;
+			padding: .1em 2.5em;
+
+			&:hover {
+				& + ul { display: block; }
+			}
+
+			&:after {
+				@include icon-get('arrow-down');
+				@include responsiveFont(8, 16, true);
+				@include transition(transform, 200);
+				color: $orange;
+				margin-left: 1em;
+			}
+		}
+
+		ul {
+			background-color: #fff;
+			font-weight: 700;
+			line-height: normal;
+			padding: 16px 10px;
+			position: absolute;
+			right: 0;
+			text-align: right;
+			top: 70px;
+			z-index: 10;
+
+			&:hover { display: block; }
+		}
+	}
 
 	.listagem.busca & {
 		line-height: normal;
@@ -458,26 +505,25 @@ body.categoria .compare {
 
 	h5 { display: block !important; }
 
-	@include breakpoint(small, "max") {
+	@include breakpoint(small, 'max') {
 		border: none!important;
 		float: left;
-		margin: 0;
-		text-align: center;
 		line-height: normal;
-		position: relative;
+		margin: 0;
 		padding: 0;
+		position: relative;
+		text-align: center;
 		width: 100%;
 		z-index: 100;
 
 		h5 {
-			background-color: #fff;
+			background-color: #ffffff;
 			border-bottom: 1px solid $gray;
 			display: block;
 			float: left;
 			height: 50px;
 			line-height: 50px;
 			margin: 0!important;
-			// padding: 0 1.7em;
 			text-align: left;
 			width: 100%;
 		}
@@ -485,11 +531,10 @@ body.categoria .compare {
 		ul {
 			background-color: $gray!important;
 			float: left;
-			// display: block!important;
-			position: relative!important;
-			top: inherit!important;
-			text-align: left;
 			padding: 0 1em!important;
+			position: relative!important;
+			text-align: left;
+			top: inherit!important;
 
 			li {
 				border-top: 1px solid #83838f;
@@ -507,57 +552,29 @@ body.categoria .compare {
 
 		}
 	}
-
-	&.more-cat {
-		float: right;
-		margin-right: 0;
-		border-radius: 20px 20px 0 0;
-
-		&:hover { z-index: 120; }
-
-		h5 {
-			@include responsiveFont(16, 16, true);
-			font-weight: 400;
-
-			&:after {
-				@include responsiveFont(16, 16, true);
-				color: $orange;
-			}
-		}
-
-		ul { font-weight: 700; }
-	}
-
+	
 	ul {
 		@include responsiveFont(16, 12, true);
 		background-color: #fff;
 		border: solid $gray;
-		border-width: 0 1px 3px 1px;
 		border-radius: 0 0 20px 20px;
+		border-width: 0 1px 3px 1px;
 		display: none;
 		font-weight: normal;
 		left: -2px;
+		line-height: normal;
 		min-width: 102%;
 		padding: 1em;
-		line-height: normal;
 		position: absolute;
 		top: 70px;
-		// text-align: center;
 		width: auto;
 		z-index: 10;
 
-		@include breakpoint(medium, "max") {
+		@include breakpoint(medium, 'max') {
 			border-radius: 0;
 		}
 
-		// li { white-space: nowrap; }
-
-		@include breakpoint(small, "max") {
-			// box-shadow: none;
-			// left: 0;
-			// position: relative;
-			// top: 0;
-			// width: 100%;
+		@include breakpoint(small, 'max') {
 
 			&.active { display: block; }
 		}
@@ -570,10 +587,10 @@ body.categoria .compare {
 		}
 	}
 
-	@include breakpoint(medium, "min") {
+	@include breakpoint(medium, 'min') {
 		&:not(.active-filter):hover {
+			background-color: #ffffff;
 			border-top: 10px solid $gray;
-			background-color: #fff;
 
 			h5 {
 				@include transition(transform, 200);
@@ -591,62 +608,6 @@ body.categoria .compare {
 	}
 }
 
-
-
-.single-filter-wrapper {
-	// background-color: #ccc;
-	display: inline-block;
-
-	&.more-cat {
-		margin-right: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		z-index: 2;
-
-		h5 {
-			@include responsiveFont(16, 16, true);
-			display: block!important;
-			cursor: pointer;
-			height: 80px;
-			line-height: 80px;
-			margin: 0;
-			padding: 0.1em 2.5em;
-
-			&:hover {
-				& + ul { display: block; }
-			}
-
-			&:after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(8, 16, true);
-				@include transition(transform, 200);
-				color: $orange;
-				margin-left: 1em;
-			}
-		}
-
-		ul {
-			// @include responsiveFont(16, 12, true);
-			background-color: #fff;
-			// box-shadow: 0 0 7px rgba(0,0,0,0.2);
-			font-weight: 700;
-			// left: 0;
-			padding: 16px 10px;
-			position: absolute;
-			right: 0;
-			line-height: normal;
-			text-align: right;
-			top: 70px;
-			z-index: 10;
-
-			&:hover { display: block; }
-		}
-	}
-}
-
-
-
 .top-wrapper {
 	margin: 1em 0;
 	padding: 1em 0;
@@ -658,28 +619,28 @@ body.categoria .compare {
 	padding-right: 0;
 
 	span {
-		display: block;
-		width: 100px;
-		padding: 10px 0;
-		color: #ffffff;
-		border-radius: 3px;
-		border: 1px solid $orange;
-		background: $orange;
 		@include responsiveFont(12, 16, true);
+		background: $orange;
+		border: 1px solid $orange;
+		border-radius: 3px;
+		color: #ffffff;
+		display: block;
 		font-weight: bold;
+		padding: 10px 0;
 		text-align: center;
 		text-transform: uppercase;
+		width: 100px;
 	}
 
-	@include breakpoint(small, "max") {
+	@include breakpoint(small, 'max') {
 		display: inline-block;
 	}
 }
 
 .order-wrapper {
 	float: right;
-	position: relative;
 	padding-right: 1em;
+	position: relative;
 
 	.order-title {
 		@include responsiveFont(18);
@@ -695,12 +656,12 @@ body.categoria .compare {
 		span {
 			color: $txt-gray;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				display: none;
 			}
 		}
 
-		&:after{
+		&:after {
 			@include icon-get('arrow-down');
 			@include transition(transform, 200);
 			@include responsiveFont(8, 16, true);
@@ -716,18 +677,18 @@ body.categoria .compare {
 
 	.order-by {
 		background-color: #ffffff;
-		box-shadow: 0 0 10px $gray;
 		border-radius: 10px;
+		box-shadow: 0 0 10px $gray;
 		min-width: 200px;
+		opacity: 0;
 		padding: 1em;
 		position: absolute;
 		right: 0;
-		opacity: 0;
 		top: 35px;
 		visibility: hidden;
 		z-index: 10;
 
-		&.active{
+		&.active {
 			opacity: 1;
 			visibility: visible;
 		}
@@ -736,7 +697,7 @@ body.categoria .compare {
 			text-align: right;
 			text-transform: lowercase;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				margin: 10px 0;
 			}
 
@@ -770,20 +731,20 @@ body.categoria .compare {
 }
 
 #list-more {
+	@include responsiveFont(18);
 	min-height: 50px;
 	outline: none;
-	@include responsiveFont(18);
 
-	@include breakpoint(small, "max") {
+	@include breakpoint(small, 'max') {
 		left: 0;
 		margin-left: 0;
 		width: 100%;
 	}
 
-	&.loading{
+	&.loading {
 		font-size: 0;
 
-		i{display: none;}
+		i {display: none;}
 	}
 
 	i {
@@ -804,12 +765,12 @@ body.categoria .compare {
 
 	.btn-comparar {
 		@extend .primary-button;
-		position: relative;
 		font-size: 1em;
 		margin: 5% auto;
 		max-width: 160px;
-		width: auto;
+		position: relative;
 		text-align: center;
+		width: auto;
 	}
 
 	p {
@@ -849,7 +810,6 @@ body.categoria .compare {
 		ul + h3 + ul { display: none; }
 
 		li {
-			// display: inline-block;
 			display: none!important;
 			margin: 0 1.5em 0 0;
 
@@ -865,7 +825,7 @@ body.categoria .compare {
 
 	.resultado-busca {
 		background-color: $green;
-		color: #fff;
+		color: #ffffff;
 		font-weight: 200;
 
 		.busca-termos {
@@ -883,8 +843,8 @@ body.categoria .compare {
 			width: 100%;
 
 			div {
-				text-align: left;
 				display: table-cell;
+				text-align: left;
 				vertical-align: middle;
 
 				& + div {
@@ -895,10 +855,10 @@ body.categoria .compare {
 		}
 	}
 
-	.busca-resultados{
+	.busca-resultados {
 		margin-bottom: 28px;
 
-		strong{
+		strong {
 			font-weight: 400;
 		}
 	}
@@ -926,6 +886,8 @@ body.categoria .compare {
 	}
 
 	&.busca-vazia {
-		.filter-wrapper, .top-wrapper, #list-more { @include hide-conditional(); }
+		.filter-wrapper, 
+		.top-wrapper, 
+		#list-more { @include hide-conditional(); }
 	}
 }

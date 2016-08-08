@@ -10,34 +10,35 @@
 		margin-right: 5px;
 		vertical-align: middle;
 
-		a{
+		a {
 			color: $txt-gray-l;
 
 			&:before {
 				content: '\2192';
-				top: 1px;
+				display: inline-block;
 				margin-right: 6px;
-				display:inline-block;
+				top: 1px;
 			}
 		}
 
-		&:first-child{
+		&:first-child {
 			display: inline-block;
 			a {
 				font-size: 0;
 				&:before {
 					@include font-size(14px);
-					content: "Home";
-					margin-right: 0px;
+					content: 'Home';
+					margin-right: 0;
 				}
 			}
 		}
-		&:first-child, &.last{
+		&:first-child, 
+		&.last {
 			display: inline-block;
 		}
 	}
 
-	@include breakpoint(medium, "max") {
+	@include breakpoint(medium, 'max') {
 		@include hide-conditional();
 	}
 }

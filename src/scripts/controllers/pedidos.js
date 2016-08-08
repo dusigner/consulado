@@ -2,7 +2,7 @@
 'use strict';
 
 require('modules/orders/order.estimateLoading');
-require('modules/orders/order.warrantySpare');
+// require('modules/orders/order.warrantySpare');
 
 Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], function(loading, warrantySpare) {
 

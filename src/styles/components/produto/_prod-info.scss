@@ -20,12 +20,13 @@
 		}
 
 		&>span {
-			top: -3px;
 			position: relative;
+			top: -3px;
 		}
 	}
 
-	.reference, .productSku {
+	.reference, 
+	.productSku {
 		@include font-size(18px);
 		color: $txt-gray-l;
 		display: inline-block;
@@ -42,7 +43,7 @@
 		display: none;
 		text-transform: uppercase;
 
-		@include breakpoint(medium, "min") {
+		@include breakpoint(medium, 'min') {
 			margin-top: -15px;
 			padding-left: 5px;
 
@@ -54,38 +55,38 @@
 			}
 		}
 
-		@include breakpoint(medium, "max") {
+		@include breakpoint(medium, 'max') {
 			margin: 15px 0;
 			width: 100%;
 		}
 	}
 
 	.prod-selos {
-		display:none!important;
+		display: none!important;
 		margin: 20px auto;
 		text-align: center;
 
 		p {
 			//display: inline-block;
+			display: none;
 			float: left;
 			margin-right: 20px;
-			display: none;
-			&:last-child{
+			&:last-child {
 				display: block;
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					display: none;
 				}
 			}
 		}
 
-		@include breakpoint(small, "max") {
-			display:block!important;
-			visibility:visible!important;
-			width: 100%;
+		@include breakpoint(small, 'max') {
+			display: block!important;
 			position: inherit;
 			right: inherit;
 			top: inherit;
-			.flag{
+			visibility: visible!important;
+			width: 100%;
+			.flag {
 				position: static;
 			}
 		}
@@ -109,27 +110,27 @@
 
 		&.valor-dividido {
 			@include font-size(12px, true, false);
-			display:block!important;
+			display: block!important;
 			position: relative;
 
-			label { display:inline; }
+			label { display: inline; }
 
 			.skuBestInstallmentValue {
 				@include font-size(28px, true, false);
 				color: $green;
-				font-weight:700;
-				@include breakpoint (small, "max") {
+				font-weight: 700;
+				@include breakpoint (small, 'max') {
 					@include font-size(21px);
 				};
 
-				&:before { content:"de "; }
+				&:before { content: 'de '; }
 
 				& + span {
 					@include font-size(28px, true, false);
-					font-weight:700;
 					display: inline-block;
+					font-weight: 700;
 					padding-left: 18px;
-					@include breakpoint (small, "max") {
+					@include breakpoint (small, 'max') {
 						@include font-size(18px);
 						padding-left: 10px;
 					};
@@ -138,14 +139,14 @@
 
 			& > span {
 				& > span {
-					@include font-size(0px, true, false);
-					display:inline-block;
-					height:30px;
-					line-height:inherit;
-					margin-right:10px;
-					vertical-align:top;
-					text-align:center;
-					@include breakpoint (small, "max") {
+					display: inline-block;
+					font-size: 0;
+					height: 30px;
+					line-height: inherit;
+					margin-right: 10px;
+					text-align: center;
+					vertical-align: top;
+					@include breakpoint (small, 'max') {
 						margin-right: 5px;
 					}
 				}
@@ -154,19 +155,19 @@
 			.skuBestInstallmentNumber {
 				@include font-size(20px, true, false);
 				color: $green;
-				font-weight:700;
-				text-align:center;
-				@include breakpoint (small, "max") {
+				font-weight: 700;
+				text-align: center;
+				@include breakpoint (small, 'max') {
 				@include font-size(18px);
 				}
 
 				&:after {
 					@include font-size(10px, true, false);
-					content:"s/ juros";
-					display:block;
-					line-height:10px;
-					margin-top:-5px;
-					@include breakpoint (small, "max") {
+					content: 's/ juros';
+					display: block;
+					line-height: 10px;
+					margin-top: -5px;
+					@include breakpoint (small, 'max') {
 					@include font-size(9px);
 					}
 				}
@@ -175,17 +176,17 @@
 
 		.preco-a-vista {
 			@include font-size(18px, true, false);
-			display:block!important;
-			color:$txt-gray-l;
+			color: $txt-gray-l;
+			display: block!important;
 
-			span { color:$base-font-color; }
+			span { color: $base-font-color; }
 		}
 	}
 
 	.preco-a-vista {
-		display:block!important;
+		color: $txt-gray-l;
+		display: block!important;
 		font-size: 0;
-		color:$txt-gray-l;
 
 		&:before {
 			@include font-size(18px, true, false);
@@ -195,7 +196,7 @@
 
 		span {
 			@include font-size(18px, true, false);
-			color:$base-font-color;
+			color: $base-font-color;
 			display: inline;
 			font-weight: 700;
 		}
@@ -206,20 +207,21 @@
 		color: #b4afad;
 		font-weight: 700;
 		span {
-			color:$base-font-color;
+			color: $base-font-color;
 		}
 	}
 
-	.economia-de { display:none; }
+	.economia-de { display: none; }
 }
 
 .prod-sku-selector {
 	margin-top: 20px;
 }
 
-.prod-sku-selector, #modal-sku {
+.prod-sku-selector, 
+#modal-sku {
 
-	@include breakpoint(small, "min") {
+	@include breakpoint(small, 'min') {
 		color: $txt-gray-l;
 	}
 
@@ -236,17 +238,19 @@
 		}
 	}
 
-	.skuList, .options {
+	.skuList, 
+	.options {
 		display: inline-block;
 		position: relative;
 
 		span { position: relative; }
 
-		input[type="radio"] {
+		input[type='radio'] {
 			position: absolute;
 			visibility: hidden;
 
-			&:hover + label, &:checked + label {
+			&:hover + label, 
+			&:checked + label {
 				color: $button-bg-color;
 
 				&:before { border: 4px solid $button-bg-color; }
@@ -256,12 +260,12 @@
 		label {
 			@include responsiveFont(18, 16, true);
 			cursor: pointer;
-			font-weight: 700;
 			display: inline;
-			padding-left: 21px;
+			font-weight: 700;
 			margin-right: 25px;
+			padding-left: 21px;
 			position: relative;
-			transition: 0.4s ease all;
+			transition: .4s ease;
 			vertical-align: middle;
 
 			&:before {
@@ -269,27 +273,30 @@
 				border: 2px solid $txt-gray;
 				border-radius: 50%;
 				bottom: 4px;
-				content: "";
+				content: '';
 				height: 14px;
 				left: 0;
 				position: absolute;
 				width: 14px;
 
-				@include breakpoint(small, "min") {
+				@include breakpoint(small, 'min') {
 					border-color: $txt-gray-l;
 				}
 			}
 		}
 	}
 
-	.nomeSku, .preco, .buy-button, .seller-data { display: none; }
+	.nomeSku, 
+	.preco, 
+	.buy-button, 
+	.seller-data { display: none; }
 }
 
 .select-voltage,
 .select-color {
-	@include breakpoint(large, "max")  { width:100%!important; }
-	@include breakpoint(medium, "max") { width:50%!important;  }
-	@include breakpoint(small, "max")  { width:100%!important; }
+	@include breakpoint(large, 'max')  { width: 100%!important; }
+	@include breakpoint(medium, 'max') { width: 50%!important;  }
+	@include breakpoint(small, 'max')  { width: 100%!important; }
 }
 
 .select-color {
@@ -301,8 +308,8 @@
 }
 
 .select-voltage {
-	@include breakpoint(large, "max") { margin-bottom: 10px; }
-	@include breakpoint(small, "max") { margin-bottom: 30px; }
+	@include breakpoint(large, 'max') { margin-bottom: 10px; }
+	@include breakpoint(small, 'max') { margin-bottom: 30px; }
 }
 
 #BuyButton {
@@ -312,19 +319,19 @@
 
 	.buy-button {
 		@extend .primary-button;
-		font-size: 1em;
 		float: left;
+		font-size: 1em;
 		padding: 13px 28px;
-		@include breakpoint(small, "max") {
-			width: 100%;
+		@include breakpoint(small, 'max') {
 			padding: 13px 60px;
+			width: 100%;
 		}
 
-		&:before{
+		&:before {
 			@include icon-get('consul-cart');
-			margin-right: 10px;
-			float: left;
 			@include responsiveFont(22, 16, true);
+			float: left;
+			margin-right: 10px;
 		}
 	}
 }
@@ -337,7 +344,7 @@
 		color: $txt-gray-l;
 		text-transform: uppercase;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			 @include responsiveFont(14, 16, true);
 			 margin-top: 5px;
 		}

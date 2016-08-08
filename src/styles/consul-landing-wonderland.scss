@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 /*! =================================================
 	* Theme Name: Layout - Consul
@@ -11,13 +11,13 @@
 */
 
 // Utility helpers
-@import "helpers/variables";
-@import "helpers/functions";
-@import "helpers/mixins";
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
 
 #banner {
 	background: url('/arquivos/consul-landing-wonderland-background.png') no-repeat center center $green;
-	color: #fff;
+	color: #ffffff;
 
 	.banner-row {
 		padding-top: 30px;
@@ -25,28 +25,28 @@
 
 		img {
 			@include breakpoint(small, 'max') {
-				width: 15%;
-				height: auto;
-				padding: 0;
-				margin: 0 auto;
 				background-size: cover;
+				height: auto;
+				margin: 0 auto;
+				padding: 0;
+				width: 15%;
 			}
 		}
 
 		h1 {
 			@include responsiveFont(60);
 			@include breakpoint(small, 'max') {
-				padding: 0;
-				margin:0;
 		   		@include responsiveFont(38);
+				margin: 0;
+				padding: 0;
 		   }
 		}
 
 		.banner-text {
 			p {
 			   @include responsiveFont(38);
-			   line-height: 1.1;
 			   font-weight: 200;
+			   line-height: 1.1;
 
 			   @include breakpoint(small, 'max') {
 			   		@include responsiveFont(31);
@@ -56,9 +56,9 @@
 
 		.banner-note {
 			@include responsiveFont(20);
-			text-align: left;
-			padding-top: 10px;
 			font-weight: 200;
+			padding-top: 10px;
+			text-align: left;
 
 			@include breakpoint(small, 'max') {
 				text-align: justify;
@@ -68,16 +68,16 @@
 }
 
 #como-funciona {
-	text-align: center;
 	padding-top: 15px;
+	text-align: center;
 
 	.como-funciona-list {
 		p {
 			@include responsiveFont(16);
+			font-weight: 200;
 			margin: 20px auto;
 			padding: 0;
 			width: 90%;
-			font-weight: 200;
 
 			@include breakpoint(small, 'max') {
 				@include responsiveFont(21);
@@ -86,8 +86,8 @@
 			}
 		}
 		.como-funciona-img {
-
 			min-height: 159px;
+
 			@include breakpoint(small, 'max') {
 				min-height: auto;
 			}
@@ -95,10 +95,10 @@
 			img {
 				padding: 0;
 				@include breakpoint(small, 'max') {
-					width: 30%;
+					background-size: cover;
 					height: auto;
 					min-height: auto;
-					background-size: cover;
+					width: 30%;
 				}
 			}
 		}
@@ -107,8 +107,8 @@
 
 #acione-consultor {
 	background: $gray;
-	text-align: center;
 	padding-top: 15px;
+	text-align: center;
 
 	.container {
 		@include breakpoint(small, 'max') {
@@ -119,30 +119,30 @@
 	.acione-consultor-list {
 
 		.col-1:before {
-			content: 'x';
 			color: $gray;
+			content: 'x';
 		}
 
 		.col-2 {
 
 			@include breakpoint(small, 'max') {
-				width: 50%;
-				padding:0 0 40px;
-				margin: 0 auto;
 				display: inline-block;
+				margin: 0 auto;
+				padding: 0 0 40px;
+				width: 50%;
 			}
 
 			&:nth-child(6) {
 				@include breakpoint(small, 'max') {
-					width: 100%;
     				padding-right: 50%;
+					width: 100%;
 				}
 			}
 
 			div {
-				text-align: center;
 				margin: 0 auto;
 				min-height: 65px;
+				text-align: center;
 				vertical-align: bottom;
 			}
 
@@ -157,11 +157,11 @@
 	.acione-consultor-note {
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(20);
-			position: absolute;
-			width: 40%;
 			height: 0;
 			left: 50%;
+			position: absolute;
 			top: 80%;
+			width: 40%;
 		}
 	}
 
@@ -172,19 +172,21 @@
 	padding-top: 15px;
 
 	@include breakpoint(small, 'max') {
-		background:none;
+		background: none;
 	}
 
 	@include breakpoint(small, 'max') {
-		padding: 0;
 		margin: 0;
+		padding: 0;
 	}
 
 	.slider {
 		.slick-slide {
 			border: none;
 			outline: none;
-			&:hover, &:focus, &:active {
+			&:hover, 
+			&:focus, 
+			&:active {
 				border: none;
 				outline: none;
 			}
@@ -211,8 +213,8 @@
 
 			@include breakpoint(small, 'max') {
 				@include responsiveFont(19);
-				text-align: justify;
 				min-height: 200px;
+				text-align: justify;
 			}
 		}
 	}
@@ -222,8 +224,8 @@
 		@include breakpoint(small, 'max') {
 			padding: 0;
 			img {
-				width: 60%;
 				height: auto;
+				width: 60%;
 			}
 		}
 	}
@@ -238,8 +240,8 @@
 
 #atendimento {
 	background: $gray;
-	text-align: center;
 	padding-top: 15px;
+	text-align: center;
 
 	.atendimento-row {
 		span {
@@ -249,18 +251,18 @@
 	}
 
 	.atendimento-list {
-		padding-bottom: 20px;
 		margin: 0;
+		padding-bottom: 20px;
 		.col-4 {
 			@include breakpoint(small, 'max') {
-				width: 33%;
-				margin: 0 auto;
 				display: inline-block;
+				margin: 0 auto;
+				width: 33%;
 			}
 			div {
-				text-align: center;
 				margin: 0 auto;
 				min-height: 65px;
+				text-align: center;
 				vertical-align: bottom;
 			}
 
@@ -291,48 +293,48 @@
 
 .icon-entrega {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -48px 0;
-	width: 64px;
 	height: 47px;
+	width: 64px;
 }
 
 .icon-telefone {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -155px -5px;
-	width: 41px;
 	height: 38px;
+	width: 41px;
 }
 
 .icon-troca {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -251px -3px;
-	width: 43px;
 	height: 43px;
+	width: 43px;
 }
 
 .icon-instalacao {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -338px -16px;
-	width: 65px;
 	height: 16px;
+	width: 65px;
 }
 
 .icon-whatsapp {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -457px -3px;
-	width: 42px;
 	height: 42px;
+	width: 42px;
 }
 
 .icon-email {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -532px -11px;
-	width: 41px;
 	height: 27px;
+	width: 41px;
 }
 
 .icon-especificacoes {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -620px -1px;
-	width: 34px;
 	height: 47px;
+	width: 34px;
 }
 
 .icon-desempenho {
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -704px -4px;
-	width: 42px;
 	height: 41px;
+	width: 42px;
 }

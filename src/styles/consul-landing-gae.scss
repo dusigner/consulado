@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 /*! =================================================
 	* Theme Name: Layout - Consul
@@ -11,109 +11,109 @@
 */
 
 // Utility helpers
-@import "helpers/variables";
-@import "helpers/functions";
-@import "helpers/mixins";
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
 
 // Base styles
-@import "base/fonts";
-@import "base/main";
+@import 'base/fonts';
+@import 'base/main';
 
 // Layout styles
-@import "layout/container";
+@import 'layout/container';
 
 $dark-gray-color: #343434;
 $green-color: #97c73d;
 
 .gae-title {
-	@include font-size(60px);
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 300;
-	color: $green-color;
-	margin: 0;
-	padding: 0;
 	@include breakpoint(extra-small, 'max') { @include font-size(40px); }
 	@include breakpoint(small, 'max') { @include font-size(40px); }
+	@include font-size(60px);
+	color: $green-color;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
 }
 
 .gae-icon-beneficios-1 {
 	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -50px 0;
-	width: 92px;
 	height: 92px;
+	width: 92px;
 }
 
 .gae-icon-beneficios-2 {
 	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -177px 0;
-	width: 92px;
 	height: 92px;
+	width: 92px;
 }
 
 .gae-icon-beneficios-3 {
 	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -307px 0;
-	width: 92px;
 	height: 92px;
+	width: 92px;
 }
 
 .gae-icon-beneficios-4 {
 	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -449px 0;
-	width: 92px;
 	height: 92px;
+	width: 92px;
 }
 
 .gae-icon-beneficios-5 {
 	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -586px 0;
-	width: 92px;
 	height: 92px;
+	width: 92px;
 }
 
 
 .gae-icon-contratar-1 {
 	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -24px 0;
-	width: 92px;
 	height: 91px;
+	width: 92px;
 }
 
 .gae-icon-contratar-2 {
 	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -150px 0;
-	width: 92px;
 	height: 91px;
+	width: 92px;
 }
 
 .gae-icon-contratar-3 {
 	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -272px 0;
-	width: 92px;
 	height: 91px;
+	width: 92px;
 }
 
 
 
 .box-gae-arrow {
-	position: absolute;
-	left:0;
-	margin-top: -30px;
-	z-index:5;
-	cursor: pointer;
 	@include breakpoint(extra-small, 'max') { display: none; }
 	@include breakpoint(small, 'max') { display: none; }
+	cursor: pointer;
+	left: 0;
+	margin-top: -30px;
+	position: absolute;
+	z-index: 5;
 
 	.circle-arrow {
-		background: #fff;
-		margin: 0 auto;
-		text-align: center;
-		position: relative;
-		width: 85px;
-		height: 60px;
+		background: #ffffff;
 		border-radius: 50%;
+		height: 60px;
+		margin: 0 auto;
+		position: relative;
+		text-align: center;
+		width: 85px;
 		&:after {
-			content: '';
 			background: url('/arquivos/consul-landing-gae-arrows.png') no-repeat -31px 0;
-			float:left;
-			width: 25px;
-			height: 14px;
-			position: absolute;
 			bottom: 15px;
+			content: '';
+			float: left;
+			height: 14px;
 			left: 31px;
+			position: absolute;
+			width: 25px;
 		}
 		&.beneficios {
 			background: $green-color;
@@ -130,53 +130,72 @@ $green-color: #97c73d;
 }
 
 section#header {
-	position: relative;
 	background: url('/arquivos/consul-landing-gae-background-01.png') no-repeat center top;
-	text-align: center;
-	padding-top: 65px;
 	height: 560px;
+	padding-top: 65px;
+	position: relative;
+	text-align: center;
 
-	@include breakpoint(extra-small, 'max') { height: auto; padding-bottom: 5%; }
-	@include breakpoint(small, 'max') { height: auto; padding-bottom: 5%; }
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
 
 	.box-logo {
 		height: 20px;
 	}
 
 	.box-gae-img-main {
-		padding-top: 2%;
-		margin: 0;
 		height: 65px;
+		margin: 0;
+		padding-top: 2%;
 	}
 
 	.box-gae-text-main {
-		padding-top: 5%;
-		line-height: 0.8;
+		color: $dark-gray-color;
 		height: 74px;
+		line-height: .8;
 		margin: 0;
+		padding-top: 5%;
+		text-transform: uppercase;
 
 		@include breakpoint(extra-small, 'max') { height: auto; }
 		@include breakpoint(small, 'max') { height: auto; }
 
-		text-transform: uppercase;
-		color: $dark-gray-color;
 		h1 {
 			@include font-size(40px);
 
-			@include breakpoint(extra-small, 'max') { line-height: 1; @include font-size(28px); }
-			@include breakpoint(small, 'max') { line-height: 1; @include font-size(28px); }
+			@include breakpoint(extra-small, 'max') { 
+				@include font-size(28px); 
+				line-height: 1; 
+			}
+
+			@include breakpoint(small, 'max') { 
+				@include font-size(28px); 
+				line-height: 1; 
+			}
 		}
 		strong {
 			@include font-size(34px);
 
-			@include breakpoint(extra-small, 'max') { line-height: 1; @include font-size(24px); }
-			@include breakpoint(small, 'max') { line-height: 1; @include font-size(24px); }
+			@include breakpoint(extra-small, 'max') { 
+				@include font-size(24px); 
+				line-height: 1; 
+			}
+			@include breakpoint(small, 'max') { 
+				@include font-size(24px); 
+				line-height: 1; 
+			}
 		}
 	}
 
 	.box-gae-what-is {
 		margin: 0;
-		padding-top:10%;
+		padding-top: 10%;
 
 		@include breakpoint(extra-small, 'max') { margin-top: 5%; }
 		@include breakpoint(small, 'max') { margin-top: 5%; }
@@ -188,8 +207,8 @@ section#header {
 		p {
 			@include font-size(18px);
 			margin: 0 auto;
-			width: 80%;
 			text-align: left;
+			width: 80%;
 
 			@include breakpoint(extra-small, 'max') { text-align: center; }
 			@include breakpoint(small, 'max') { text-align: center; }
@@ -200,17 +219,23 @@ section#header {
 
 
 section#beneficios {
-	position: relative;
 	background: $green-color;
-	text-align: center;
 	height: 620px;
+	position: relative;
+	text-align: center;
 
-	@include breakpoint(extra-small, 'max') { height: auto; padding-bottom: 5%; }
-	@include breakpoint(small, 'max') { height: auto; padding-bottom: 5%; }
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
 
 	.box-gae-beneficios {
-		padding-top: 60px;
 		margin: 0;
+		padding-top: 60px;
 		.gae-title { color: #fff; }
 	}
 
@@ -219,59 +244,65 @@ section#beneficios {
 		text-align: left;
 
 		.box-icon-beneficios {
-			width: 20%;
 			padding: 0 40px 0 0;
+			width: 20%;
 
 			@include breakpoint(extra-small, 'max') {
-				width: 100%;
+				margin: 0 auto;
 				padding: 0;
 				text-align: center;
-				margin: 0 auto;
+				width: 100%;
 			}
 
 			@include breakpoint(small, 'max') {
-				width: 100%;
+				margin: 0 auto;
 				padding: 0;
 				text-align: center;
-				margin: 0 auto;
+				width: 100%;
 			}
 
 			div { margin: 40px auto; }
 			.title-beneficios {
-				text-align: center;
 				@include font-size(20px);
 				color: #fff;
-				height: 60px;
+				display: block;
 				font-weight: bold;
+				height: 60px;
+				text-align: center;
 				text-transform: uppercase;
-				display:block;
 			}
 			.text-beneficios {
 				@include font-size(15px);
-				line-height: 1.1;
+				color: #ffffff;
 				font-weight: 300;
-				color: #fff;
+				line-height: 1.1;
 			}
 		}
 	}
 }
 
 section#contratar {
+	height: 470px;
 	position: relative;
 	text-align: center;
-	height: 470px;
 
-	@include breakpoint(extra-small, 'max') { height: auto; padding-bottom: 5%; }
-	@include breakpoint(small, 'max') { height: auto; padding-bottom: 5%; }
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
 
 	.box-gae-contratar {
-		padding-top: 60px;
 		margin: 0;
+		padding-top: 60px;
 	}
 
 	.box-gae-icons {
-		width: 70%;
 		margin: 0 auto;
+		width: 70%;
 		.box-icon-contratar {
 			margin: 0 auto;
 			padding: 0;
@@ -279,42 +310,49 @@ section#contratar {
 			h2 {
 				@include font-size(45px);
 				color: $green-color;
-				line-height: 1;
 				height: 30px;
+				line-height: 1;
 			}
 			strong {
 				@include font-size(15px);
-				 line-height: 1;
 				 color: $green-color;
+				 line-height: 1;
 			 }
 			p {
 				@include font-size(15px);
-				 line-height: 1;
-				 width: 80%;
-				 margin: 0 auto;
+				line-height: 1;
+				margin: 0 auto;
+				width: 80%;
 			 }
 		}
 	}
 }
 
 section#como-funciona {
-	position: relative;
 	background: #6f2c90;
-	text-align: center;
+	color: #ffffff;
 	height: 565px;
-	color: #fff;
+	position: relative;
+	text-align: center;
 
-	@include breakpoint(extra-small, 'max') { height: auto; padding-bottom: 5%; }
-	@include breakpoint(small, 'max') { height: auto; padding-bottom: 5%; }
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
 
 	.box-gae-title {
+		height: 100px;
 		margin: 0;
 		padding: 60px 0 60px 0;
-		height: 100px;
+
 		@include breakpoint(extra-small, 'max') { height: auto; }
 		@include breakpoint(small, 'max') { height: auto; }
 		.gae-title {
-			color: #fff;
+			color: #ffffff;
 		}
 	}
 
@@ -332,36 +370,44 @@ section#como-funciona {
 		}
 	}
 
-	.box-gae-como-funciona-text{
-		text-align: left;
+	.box-gae-como-funciona-text {
 		margin: 0 auto;
 		padding: 0;
+		text-align: left;
 
 		.gae-text-first {
-			width: 86%;
 			height: 30px;
 			margin: 0 auto;
-			@include breakpoint(extra-small, 'max') { height: auto; width: 100%; }
-			@include breakpoint(small, 'max') { height: auto; width: 100%; }
+			width: 86%;
+
+			@include breakpoint(extra-small, 'max') { 
+				height: auto; 
+				width: 100%; 
+			}
+			@include breakpoint(small, 'max') { 
+				height: auto; 
+				width: 100%; 
+			}
 		}
 
 		p {
 			@include font-size(20px);
-			line-height: 1;
 			font-weight: 200;
+			line-height: 1;
 		}
 
 		.gae-text {
-			width: 60%;
-			margin: 0 auto;
 			height: 28px;
+			margin: 0 auto;
+			width: 60%;
+
 			@include breakpoint(extra-small, 'max') { height: auto; }
 			@include breakpoint(small, 'max') { height: auto; }
 
 			p {
 				@include font-size(20px);
-				line-height: 1;
 				font-weight: 200;
+				line-height: 1;
 			}
 		}
 	}
@@ -370,8 +416,9 @@ section#como-funciona {
 		margin: 0 auto;
 		padding: 0;
 		div {
-			padding: 25px 0 40px 0;
 			height: 10px;
+			padding: 25px 0 40px 0;
+
 			@include breakpoint(extra-small, 'max') { padding: 15px 0 35px 0; }
 			@include breakpoint(small, 'max') { padding: 15px 0 35px 0; }
 
@@ -386,33 +433,45 @@ section#como-funciona {
 
 
 section#footer {
-	@include breakpoint(extra-small, 'max') { height: auto; padding-bottom: 5%; }
-	@include breakpoint(small, 'max') { height: auto; padding-bottom: 5%; }
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
 
-	position: relative;
 	color: #a3a3a3;
+	position: relative;
 
 	.box-gae-links {
+		border-bottom: 1px solid #a3a3a3;
+		margin: 0;
 		padding: 45px 0 20px 0;
 		text-align: center;
-		margin: 0;
-		border-bottom: 1px solid #a3a3a3;
 
 		@include breakpoint(extra-small, 'max') { text-align: left; }
 		@include breakpoint(small, 'max') { text-align: left; }
 
 		.box-gae-links-list {
-			padding: 0;
 			margin: 0;
+			padding: 0;
 			p {
-				padding: 0;
-				margin: 0;
-				line-height: 1;
 				display: inline-block;
-				padding-right:2px;
+				line-height: 1;
+				margin: 0;
+				padding: 0;
+				padding-right: 2px;
 
-				@include breakpoint(extra-small, 'max') { display:block; padding: 5px 0; }
-				@include breakpoint(small, 'max') { display:block; padding: 5px 0; }
+				@include breakpoint(extra-small, 'max') { 
+					display: block; 
+					padding: 5px 0; 
+				}
+				@include breakpoint(small, 'max') { 
+					display: block; 
+					padding: 5px 0; 
+				}
 			}
 			a {
 				color: $green-color;

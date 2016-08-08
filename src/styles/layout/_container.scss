@@ -3,39 +3,38 @@
 	//  CONTAINER
 	//------------------------------------
 	.container {
-		// border: 1px solid #f1f1f1;
+		@include responsive('font-size', 12px,
+			(
+				'small'       : 15px,
+				'medium'      : 16px
+			)
+		);
+
+		@include responsive('width', 95%,
+			(
+				'small'       : 768px,
+				'medium'      : 960px,
+				'large'       : 1200px,
+				'extra-large' : 1280px
+			)
+		);
+
 		margin: 0 auto;
 		padding: 0 40px;
 		width: 100%;
 
-		@include breakpoint(medium, "min") {
+		@include breakpoint(medium, 'min') {
 			padding: 0 90px;
 		}
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			padding: 0 10px;
 		}
 
-		@include breakpoint(medium, "max") {
+		@include breakpoint(medium, 'max') {
 			padding: 0 20px;
 		}
 
 
-		@include responsive("font-size", 12px,
-			(
-				"small"       : 15px,
-				"medium"      : 16px
-			)
-		);
-
-
-		@include responsive("width", 95%,
-			(
-				"small"       : 768px,
-				"medium"      : 960px,
-				"large"       : 1200px,
-				"extra-large" : 1280px
-			)
-		);
 	}
 }

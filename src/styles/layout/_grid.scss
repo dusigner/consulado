@@ -7,7 +7,7 @@
 
 		&:after {
 			clear: both;
-			content: " ";
+			content: ' ';
 			display: table;
 		}
 	}
@@ -18,8 +18,8 @@
 		&.right { float: right; }
 
 		img {
-			max-width: 100%;
 			height: auto;
+			max-width: 100%;
 		}
 	}
 
@@ -36,7 +36,7 @@
 
 
 		// Row columns
-		@include grid-setup();
+		@include grid-setup;
 
 
 		// Push
