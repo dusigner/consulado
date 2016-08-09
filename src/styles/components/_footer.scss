@@ -352,7 +352,7 @@
 			}
 		}
 
-		strong.sub-title, 
+		strong.sub-title,
 		a.sub-title {
 			@include responsiveFont(17);
 			color: #ffffff;
@@ -369,10 +369,6 @@
 
 		.duvidas {
 			padding-top: 8px;
-
-			a {
-				color: $txt-gray;
-			}
 
 			li {
 				@include responsiveFont(14);
@@ -413,7 +409,7 @@
 				}
 			}
 
-			& > h3, 
+			& > h3,
 			& > h4 {
 				margin: 0;
 				padding: .5em 50px 11px 0;
@@ -432,7 +428,7 @@
 				}
 			}
 
-			&.col-6, 
+			&.col-6,
 			&.col-5 {
 				// overflow: hidden;
 
@@ -565,7 +561,7 @@
 			}
 		}
 
-		.txt, 
+		.txt,
 		img {
 			display: inline-block;
 			float: none;
@@ -592,7 +588,7 @@
 		ul.selos {
 			min-width: 100px;
 
-			&, 
+			&,
 			li {
 				display: inline-block;
 				vertical-align: middle;
@@ -623,7 +619,7 @@
 		}
 	}
 
-	.bt-gototop, 
+	.bt-gototop,
 	.ph-bt-gototop {
 		bottom: 40px;
 		display: block !important;
