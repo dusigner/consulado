@@ -3,13 +3,12 @@
 //------------------------------------
 // Banner principal DESKTOP
 .banner-principal {
-	// background-color: $orange;
 	overflow: hidden;
-	position: relative;
 	padding: 0 !important;
+	position: relative;
 
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
-	@include breakpoint(extra-large, "min") { min-height: 340px; }
+	@include breakpoint(extra-large, 'min') { min-height: 340px; }
 
 	.box-banner {
 		position: absolute;
@@ -26,13 +25,13 @@
 
 		img {
 			display: block;
-			position: relative;
-			left: 50%;
-			width: 1900px;
 			height: auto;
+			left: 50%;
+			position: relative;
 			transform: translateX(-50%);
+			width: 1900px;
 
-			@include breakpoint(small, "max") { max-width: 100%; }
+			@include breakpoint(small, 'max') { max-width: 100%; }
 		}
 
 		&.slick-slide { position: relative; }
@@ -45,9 +44,9 @@
 		.box-banner {
 			img {
 				left: 0;
-				width: auto;
 				max-width: 100%;
 				transform: translateX(0);
+				width: auto;
 			}
 		}
 	}

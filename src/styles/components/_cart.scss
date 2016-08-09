@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // ===============================================================
 /* CART */
@@ -25,9 +25,9 @@ $cart-size: 405px;
 		line-height: 54px;
 		z-index: 10;
 
-		@include breakpoint(small, "min") { color: #fff; }
+		@include breakpoint(small, 'min') { color: #fff; }
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			@include responsiveFont(24, 16, true);
 		}
 	}
@@ -41,7 +41,7 @@ $cart-size: 405px;
 		text-decoration: none;
 		width: 50px;
 
-		@include breakpoint(small, "min") {
+		@include breakpoint(small, 'min') {
 			background: $green;
 			border-radius: 50%;
 		}
@@ -63,7 +63,7 @@ $cart-size: 405px;
 
 		&:hover { transform: scale(1.2); }
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			@include responsiveFont(20, 16, true);
 			background-color: transparent;
 			border: none;
@@ -107,23 +107,23 @@ $cart-size: 405px;
 
 		.cart-empty {
 			@include font-size(14px, true, false);
-			background-color: #fff;
+			background-color: #ffffff;
+			display: none;
 			font-weight: bold;
 			padding-bottom: 5px;
 			text-align: center;
 
-			display: none;
 		}
 
 		.cart-body {
 			@extend %bounceInDown;
+			background-color: #ffffff;
 			display: none;
-			background-color: #fff;
+			overflow: hidden;
 			padding: 10px 5px 5px 20px;
 			position: absolute;
 			right: 0;
 			top: 43px;
-			overflow: hidden;
 			width: $cart-size;
 
 			a { text-decoration: none; }
@@ -132,9 +132,9 @@ $cart-size: 405px;
 		// Tabela com os produtos
 		.product-list {
 			@include font-size(12px);
-			border-collapse: collapse;
 			border: none;
-			color: #000;
+			border-collapse: collapse;
+			color: #000000;
 			margin: 0;
 			width: 100%;
 
@@ -210,7 +210,7 @@ $cart-size: 405px;
 
 				&:before {
 					@include font-size(14px);
-					content: "x";
+					content: 'x';
 					display: inline-block;
 					font-weight: bold;
 					line-height: 5px;
@@ -233,7 +233,7 @@ $cart-size: 405px;
 					display: block;
 
 					&.totTxt   { height: 20px; }
-					&.totQuant { }
+					// &.totQuant { }
 					&.totVal   { font-weight: bold; }
 				}
 			}
@@ -241,10 +241,10 @@ $cart-size: 405px;
 
 		// Comprar
 		.cart-action {
-			text-align: right;
 			height: 100%;
 			margin-top: 10px;
 			padding: 6px 15px 5px 5px;
+			text-align: right;
 
 			.btn {
 				@include font-size(12px);

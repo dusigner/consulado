@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 .servicos {
 	background: $gray-l;
@@ -15,15 +15,15 @@
 
 	.title {
 		@include responsiveFont(38);
+		font-weight: 400;
 		line-height: 1.14;
 		margin: 15px 0 35px;
-		font-weight: 400;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			margin-bottom: 15px;
 		}
 
-		span{
+		span {
 			display: block;
 			font-weight: 300;
 		}
@@ -50,9 +50,9 @@
 		color: $txt-gray-l;
 		padding: 0 20px;
 
-		@include breakpoint(small, "min") { min-height: 110px; }
+		@include breakpoint(small, 'min') { min-height: 110px; }
 
-		@include breakpoint(extra-large, "min") { min-height: 80px; }
+		@include breakpoint(extra-large, 'min') { min-height: 80px; }
 	}
 
 	.primary-button {
@@ -61,7 +61,7 @@
 		text-transform: uppercase;
 		width: 100%;
 
-		@include breakpoint(small, "min") {
+		@include breakpoint(small, 'min') {
 			width: 85%;
 		}
 	}

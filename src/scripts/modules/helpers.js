@@ -48,7 +48,9 @@ if (!String.prototype.capitalize) {
 
 if (!Array.prototype.forEach) {
     Array.prototype.forEach = function(f, c) {
-        for (var i = 0; i < this.length; i++) f.call(c, this[i], i, this);
+        for (var i = 0; i < this.length; i++) {
+            f.call(c, this[i], i, this);  
+        } 
     };
 }
 if (!Array.prototype.map) {
@@ -72,7 +74,9 @@ if (!Array.prototype.filter) {
 if (!Array.prototype.some) {
     Array.prototype.some = function(f, c) {
         for (var i = 0; i < this.length; i++) {
-            if (f.call(c, this[i], i, this)) break;
+            if (f.call(c, this[i], i, this)) {
+                break;  
+            } 
         }
         return i < this.length;
     };
@@ -151,8 +155,9 @@ if (!Object.keys) {
         fromDate = new Date(fromDate);
         while (count < days) {
             fromDate.setDate(fromDate.getDate() + 1);
-            if (fromDate.getDay() !== 0 && fromDate.getDay() !== 6) // Skip weekends
+            if (fromDate.getDay() !== 0 && fromDate.getDay() !== 6) { // Skip weekends
                 count++;
+            }
         }
         return fromDate;
     };
@@ -198,7 +203,9 @@ if (!Object.keys) {
             $(key).each(function() {
                 var self = $(this),
                     href = self.attr('href') || '';
-                if (href.indexOf('#') !== -1 || href.indexOf('javascript') !== -1) return;
+                if (href.indexOf('#') !== -1 || href.indexOf('javascript') !== -1) {
+                    return;
+                }
                 self.attr('href', href + (href.indexOf('?') === -1 ? '?' : '&') + value);
             });
         });
@@ -254,7 +261,9 @@ if (!Object.keys) {
     $.extend($.fn, {
         toScroll: function(offset) {
             var self = $(this);
-            if (!self || self.length === 0 || !self.is(':visible')) return;
+            if (!self || self.length === 0 || !self.is(':visible')) {
+                return;
+            }
 
             $('html, body').stop().animate({
                 scrollTop: self.offset().top + (offset || 0) + 'px'

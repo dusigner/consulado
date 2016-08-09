@@ -24,24 +24,25 @@
 		margin: 0;
 
 		@if $enable-font-smoothing == true {
-			font-smooth: always;
 
-			-webkit-font-smoothing: antialiased;
 			-moz-font-smoothing: antialiased;
+			-webkit-font-smoothing: antialiased;
+			font-smooth: always;
 		}
 	}
 
-	html[dir="rtl"] { direction: rtl; }
+	html[dir='rtl'] { direction: rtl; }
 
 	hr {
-		margin: 2em 0;
 		border: 1px solid #fff;
+		margin: 2em 0;
 	}
 
-	body > img, .zx_mediaslot { //remove pixels
+	body > img, 
+	.zx_mediaslot { //remove pixels
+		display: none;
 		height: 0;
 		width: 0;
-		display: none;
 	}
 
 	// body{position: relative;}

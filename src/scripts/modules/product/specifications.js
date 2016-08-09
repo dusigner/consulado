@@ -5,11 +5,12 @@
 	eletro: Consumo Aproximado de Energia (kWh),   Eficiência Energética, Informações para Instalação , Dimensões com embalagem (LxAxP) (cm)
 */
 
+'use strict';
+
 require('../../../templates/specifications.html');
 
 Nitro.module('specifications', function() {
 
-    'use strict';
 
     var self = this,
         $holder = $('#especificacoes .container'),
@@ -40,7 +41,9 @@ Nitro.module('specifications', function() {
             key = self.find('.name-field').text(),
             value = self.find('.value-field').text();
 
-        if (ignore.indexOf(key) > 0 || value === '') return;
+        if (ignore.indexOf(key) > 0 || value === '') {
+            return;
+        }
 
         if (key in specs) {
 
@@ -83,7 +86,7 @@ Nitro.module('specifications', function() {
 
     this.render = function() {
 
-        console.log('specifications data', data);
+        // console.log('specifications data', data);
 
         dust.render('specifications', data, function(err, out) {
             if (err) {
@@ -114,7 +117,9 @@ Nitro.module('specifications', function() {
 
     // ACCORDION SPECIFICATION PRODUCTS
     accordionBtnProduct.on('click', function(e) {
-        if ($(window).width() > 767) return true;
+        if ($(window).width() > 767) {
+            return true;
+        }
 
         e.preventDefault();
 

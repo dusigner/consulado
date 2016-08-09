@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @if $use-com-header == true {
 
@@ -28,7 +28,7 @@
 	// Header
 	header {
 
-		@include breakpoint(medium, "min") {
+		@include breakpoint(medium, 'min') {
 			min-height: 120px;
 		}
 
@@ -45,12 +45,12 @@
 		a {
 			@extend %single-transition;
 			@include responsiveFont(12);
+			// margin-bottom: -2px;
 			border-bottom: 2px solid transparent;
-			font-weight: 700;
 			display: inline-block;
+			font-weight: 700;
 			line-height: 40px;
 			margin-left: 20px;
-			// margin-bottom: -2px;
 
 			&:first-child { margin-left: 0; }
 
@@ -59,9 +59,9 @@
 				color: $orange;
 			}
 
-			&[href*="tel"] { border-bottom-color: transparent; }
+			&[href*='tel'] { border-bottom-color: transparent; }
 
-			&[title*="Televendas"] { color: $txt-gray-l; }
+			&[title*='Televendas'] { color: $txt-gray-l; }
 		}
 
 		.float-right { text-align: right; }
@@ -71,15 +71,15 @@
 		margin: 0;
 		padding: 12px 0 14px 0;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			padding-bottom: 0;
 			text-align: right;
 
 			.container {
+				border-bottom: 1px solid $gray;
 				padding: 0;
 				position: relative;
 				width: 100%;
-				border-bottom: 1px solid $gray;
 			}
 
 			.cont-search,
@@ -98,7 +98,7 @@
 			.cont-search { left: 150px; }
 			.account     { left: 54%; }
 			.minicart    {
-				background-color:transparent;
+				background-color: transparent;
 				right: 15px;
 			}
 		}
@@ -107,13 +107,13 @@
 	.cont-logo {
 		text-align: left;
 
-		@include breakpoint(extra-large, "max") { width: 19%; }
+		@include breakpoint(extra-large, 'max') { width: 19%; }
 
-		@include breakpoint(extra-large, "min") {
+		@include breakpoint(extra-large, 'min') {
 			&.col-3 { width: 20%; }
 		}
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			text-align: center;
 			width: 100%;
 		}
@@ -129,7 +129,7 @@
 		position: relative;
 		vertical-align: top;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			@include responsiveFont(25.5, 16, true);
 			display: block;
 			margin: 2px auto 5px auto;
@@ -160,43 +160,39 @@
 		text-transform: uppercase;
 
 
-		@include breakpoint(extra-large, "max") { width: 22.66667%; }
+		@include breakpoint(extra-large, 'max') { width: 22.66667%; }
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 
 			.header & {
 				.hide { @include hide-conditional(); }
 
-				a{
+				a {
 					display: block;
 					font-size: 0;
-					position: relative;
 					height: 100%;
+					position: relative;
 					width: 100%;
 				}
 			}
 		}
 
-		@include breakpoint(extra-small, "max") {
+		@include breakpoint(extra-small, 'max') {
 			.header & { left: 62%; }
 		}
 
 		.icon-consul-account {
 			@include responsiveFont(40);
-			// background-image: url($icon-consul-account);
-			// background-repeat: no-repeat;
-			// background-position: 0 5px;
-			// color: #b4afad;
 			display: block;
 			float: left;
 			height: 50px;
 			line-height: 42px;
 			margin-right: 10px;
-			width:30px;
+			width: 30px;
 
-			@include breakpoint(small, "min") { color: $txt-gray-l; }
+			@include breakpoint(small, 'min') { color: $txt-gray-l; }
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				@include responsiveFont(24, 16, true);
 				line-height: 50px;
 			}
@@ -214,7 +210,7 @@
 			@include responsiveFont(12);
 			display: block;
 			left: 35%;
-			margin:0;
+			margin: 0;
 			position: absolute;
 			width: 75%;
 
@@ -223,7 +219,7 @@
 			a {
 				color: $orange;
 
-				&[href="/no-cache/user/logout"] {
+				&[href='/no-cache/user/logout'] {
 					display: block;
 					padding: 3px 0;
 				}
@@ -235,66 +231,66 @@
 			background-color: #fff;
 			color: $orange;
 			display: block;
-			position: absolute;
-			top: 0px;
-			padding: 3px 0 0 0;
 			height: 100%;
+			padding: 3px 0 0 0;
+			position: absolute;
+			top: 0;
 			width: 100%;
 
-			@include breakpoint(large, "max") { @include responsiveFont(11, 16, true); }
+			@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 		}
 	}
 }
 
 .home {
 	.advertisement {
-		display: none;
-		padding: 10px 0;
-		color: #010000;
 		background: #c7b199;
+		color: #010000;
+		display: none;
 		font-size: 14px;
+		padding: 10px 0;
 		text-align: center;
 
 		.centralize {
+			margin: 0 auto;
+			max-width: 1110px;
 			position: relative;
 			width: 95%;
-			max-width: 1110px;
-			margin: 0 auto;
 
 			>span {
-				display: block;
-				position: absolute;
-				bottom: -5px;
-				right: 0;
-				width: 30px;
-				height: 30px;
-				padding-top: 5px;
-				border-radius: 30px;
 				background: $orange;
+				border-radius: 30px;
+				bottom: -5px;
 				color: #ffffff;
 				cursor: pointer;
+				display: block;
+				height: 30px;
+				padding-top: 5px;
+				position: absolute;
+				right: 0;
+				width: 30px;
 
-				@include breakpoint(medium, "max") {
+				@include breakpoint(medium, 'max') {
+					@include vendor(transform, translateY(-50%));
 					top: 50%;
-					@include vendor(transform,translateY(-50%));
 				}
 			}
 
 			>p {
+				font-weight: 100;
 				margin: 0;
 				padding: 0;
-				font-weight: 100;
 
-				@include breakpoint(medium, "max") {
-					width: 80%;
+				@include breakpoint(medium, 'max') {
 					text-align: left;
+					width: 80%;
 				}
 
 				a {
 					color: #ffffff;
 					font-weight: bold;
 
-					@include breakpoint(medium, "max") {
+					@include breakpoint(medium, 'max') {
 						display: block;
 					}
 				}

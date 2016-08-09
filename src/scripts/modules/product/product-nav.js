@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 Nitro.module('product-nav', function() {
 
-    'use strict';
 
     var $window = $(window),
         $afterProd = $('.after-prod'),
@@ -31,8 +31,9 @@ Nitro.module('product-nav', function() {
         }
 
         var current = sections.map(function() {
-            if ($(this).is(':visible') && $(this).offset().top < top + navHeight)
+            if ($(this).is(':visible') && $(this).offset().top < top + navHeight) {
                 return this;
+            }
         });
 
         navItems.removeClass('active-nav');

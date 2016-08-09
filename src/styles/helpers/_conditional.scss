@@ -27,7 +27,7 @@
 	.hide-extra-large,
 	.hide-print,
 	.hide-hd {
-		@include show-conditional;
+		@include show-conditional();
 	}
 
 	.hide-extra-small,
@@ -37,7 +37,7 @@
 	.show-extra-large,
 	.show-print,
 	.show-hd {
-		@include hide-conditional;
+		@include hide-conditional();
 	}
 
 	@include breakpoint(small) {
@@ -46,7 +46,7 @@
 		.hide-medium,
 		.hide-large,
 		.hide-extra-large {
-			@include show-conditional;
+			@include show-conditional();
 		}
 
 		.hide-small,
@@ -54,7 +54,7 @@
 		.show-medium,
 		.show-large,
 		.show-extra-large {
-			@include hide-conditional;
+			@include hide-conditional();
 		}
 	}
 
@@ -64,7 +64,7 @@
 		.hide-extra-small,
 		.hide-large,
 		.hide-extra-large {
-			@include show-conditional;
+			@include show-conditional();
 		}
 
 		.hide-medium,
@@ -72,7 +72,7 @@
 		.show-extra-small,
 		.show-large,
 		.show-extra-large {
-			@include hide-conditional;
+			@include hide-conditional();
 		}
 	}
 
@@ -82,7 +82,7 @@
 		.hide-small,
 		.hide-medium,
 		.hide-extra-large {
-			@include show-conditional;
+			@include show-conditional();
 		}
 
 		.hide-large,
@@ -90,7 +90,7 @@
 		.show-small,
 		.show-medium,
 		.show-extra-large {
-			@include hide-conditional;
+			@include hide-conditional();
 		}
 	}
 
@@ -100,7 +100,7 @@
 		.hide-small,
 		.hide-medium,
 		.hide-large {
-			@include show-conditional;
+			@include show-conditional();
 		}
 
 		.hide-extra-large,
@@ -108,7 +108,7 @@
 		.show-small,
 		.show-medium,
 		.show-large {
-			@include hide-conditional;
+			@include hide-conditional();
 		}
 	}
 
@@ -118,10 +118,10 @@
 		   only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		   only screen and (min-device-pixel-ratio: 1.5) {
 		.show-hd {
-			@include show-conditional;
+			@include show-conditional();
 		}
 		.hide-hd {
-			@include hide-conditional;
+			@include hide-conditional();
 		}
 	}
 }

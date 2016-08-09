@@ -1,8 +1,9 @@
+'use strict';
+
 require('vendors/vtex-modal-cookie');
 
 Nitro.module('promo.lightbox', function() {
 
-    'use strict';
 
     if (vtxctx && vtxctx.categoryId === 7) {
 

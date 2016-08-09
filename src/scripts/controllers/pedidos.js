@@ -1,11 +1,11 @@
 /* global $:true, Nitro: true, vtexjs: true */
+'use strict';
 
 require('modules/orders/order.estimateLoading');
-require('modules/orders/order.warrantySpare');
+// require('modules/orders/order.warrantySpare');
 
 Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], function(loading, warrantySpare) {
 
-    'use strict';
 
     var self = this;
 
@@ -38,8 +38,9 @@ Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], fu
             $(this).prev().removeClass('span9').addClass('span3');
             $(this).removeClass('span3').addClass('span9');
             orderStatusFake = $(this).find('.order-status-wrapper span').text().replace(' ', '_').toLowerCase();
-            if (orderStatusFake === 'processando_pagamento')
+            if (orderStatusFake === 'processando_pagamento') {
                 $(this).find('.request-cancel').show();
+            }
             $(this).find('.order-status-wrapper').addClass($(this).find('.order-status-wrapper span').text().replace(' ', '-').toLowerCase());
             tooltips = tooltips + '<div class="pedido-recebido" title="' + statusFake[orderStatusFake][0] + '"></div>';
             tooltips = tooltips + '<div class="aguardando-pagamento" title="' + statusFake[orderStatusFake][1] + '"></div>';
@@ -85,7 +86,7 @@ Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], fu
                     loading.setup(obj);
 
                     $.each(obj.items, function(i, item) {
-                        console.log('Index do pedido ' + orderGroupId + ': ' + i);
+                        // console.log('Index do pedido ' + orderGroupId + ': ' + i);
                         var skuRefId = item.refId,
                             cancelado = false;
                         $('.product-item .product-name a:contains(' + item.name + ')')
@@ -140,8 +141,9 @@ Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], fu
                 $('#CG_order').val(orders[0].orderId.split('-').shift().replace(/[^0-9]/g, ''));
 
                 $.each(orders[0].items, function(elemIndex, elem) {
-                    if (elem.name === productToCompare)
+                    if (elem.name === productToCompare) {
                         $('#CG_skuRefId').val(elem.refId);
+                    }
                     $('#CG_indice').val(indexSku);
                 });
             });
@@ -154,9 +156,9 @@ Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], fu
             clientOrderId = $(this).parents('.ordergroup').attr('id');
             vtexjs.checkout.getOrders(clientOrderId).then(function(orders) {
                 clientCpf = orders[0].clientProfileData.document;
-                console.log(orders[0].orderId);
+                // console.log(orders[0].orderId);
                 clientSequenceId = orders[0].orderId.split('-').shift().replace(/[^0-9]/g, '');
-                console.log(clientSequenceId);
+                // console.log(clientSequenceId);
                 while (clientSequenceId.toString().length < 10) {
                     clientSequenceId = '0' + clientSequenceId;
                 }
@@ -180,7 +182,9 @@ Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], fu
 
     $(document).ajaxComplete(function(e, xhr, settings) {
 
-        if (!/checkout\/pub\/orders/.test(settings.url)) return;
+        if (!/checkout\/pub\/orders/.test(settings.url)) {
+            return;
+        }
 
         $('.order-details').each(function() {
 

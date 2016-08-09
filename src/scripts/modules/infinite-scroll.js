@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('vendors/ajax.localstorage');
 
 Nitro.module('infinite-scroll', function() {
 
-    'use strict';
 
     var $window = $(window),
         $footer = $('footer'),
@@ -30,7 +30,7 @@ Nitro.module('infinite-scroll', function() {
             cacheTTL: 1,
             dataType: 'html',
             beforeSend: function() {
-                console.log('page', page);
+                // console.log('page', page);
 
                 loading = true;
                 $prateleira.append(loader);
@@ -57,7 +57,7 @@ Nitro.module('infinite-scroll', function() {
 
             var active = $prateleira.find('li[layout]').length % grid === 0;
 
-            console.log('active', active);
+            // console.log('active', active);
 
             if (active) {
                 loadContent();

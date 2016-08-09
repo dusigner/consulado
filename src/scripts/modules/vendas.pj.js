@@ -41,7 +41,9 @@ Nitro.module('vendas.pj', function() {
             var data = {};
 
             $.map($inputs, function(x) {
-                if (!x.value || x.value === '') return;
+                if (!x.value || x.value === '') {
+                    return;  
+                } 
                 data[x.name] = x.value;
             });
 
@@ -51,7 +53,7 @@ Nitro.module('vendas.pj', function() {
                     $('#vtex-modal-pj .success').fadeIn();
                 })
                 .fail(function() {
-                    console.log('deu errado');
+                    // console.log('deu errado');
                     $submit.removeClass('icon-loading');
                 });
         }

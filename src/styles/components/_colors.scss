@@ -8,7 +8,7 @@
 		.bg-#{$bg-color},
 		%bg-#{$bg-color} { background-color: $color; }
 
-		@if $bg-color != "white" {
+		@if $bg-color != 'white' {
 			.bg-light-#{$bg-color},
 			%bg-light-#{$bg-color} { background-color: lighten($color, 32.5%); }
 		}

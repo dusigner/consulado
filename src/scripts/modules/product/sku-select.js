@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('vendors/vtex-modal');
 
 Nitro.module('sku-select', function() {
 
-    'use strict';
 
     var self = this;
 

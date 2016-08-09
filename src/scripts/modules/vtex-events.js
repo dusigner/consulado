@@ -1,6 +1,5 @@
+'use strict';
 module.exports = function() {
-
-    'use strict';
 
     window.vtex.events.subscribe('jussi', function(name, data) {
 

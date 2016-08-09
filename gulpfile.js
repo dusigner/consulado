@@ -8,6 +8,7 @@ var gulp		= require('gulp'),
 	named		= require('vinyl-named'),
 	path		= require('path'),
 	semver		= require('semver'),
+	sassLint = require('gulp-sass-lint'),
 	pkg			= require('./package.json');
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
@@ -22,8 +23,19 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 		dest: 'build/arquivos'
 	};
 
+gulp.task('sassLint', function () {
+	return gulp.src(['src/styles/**/*.scss', '!src/styles/helpers/*'])
+    .pipe(sassLint({
+			options: {
+				'config-file': '.sass-lint.yml'
+			}
+		}))
+    .pipe(sassLint.format());
+    // .pipe(sassLint.failOnError());
+});
+
 gulp.task('lint', function () {
-	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js'])
+	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js', '!src/scripts/modules/helpers.js'])
 	.pipe($.eslint())
 	.pipe($.eslint.format())
 	.pipe($.eslint.failAfterError());
@@ -83,7 +95,7 @@ gulp.task('scripts', ['lint'], function () {
 		.pipe(gulp.dest(paths.dest));
 });
 
-gulp.task('styles', function () {
+gulp.task('styles', ['sassLint'], function () {
 	return $.rubySass('src/styles/', {
 			sourcemap: ! $.util.env.production,
 			style: $.util.env.production ? 'compressed' : 'nested'
@@ -91,11 +103,11 @@ gulp.task('styles', function () {
 		.on('error', $.sass.logError)
 		.pipe($.plumber())
 		.pipe($.autoprefixer())
-		.pipe($.sourcemaps.write('.'))
 		.pipe($.postcss([
-      require('css-mqpacker')(),
-			require('cssnano')()
-    ]))
+	      require('css-mqpacker')(),
+				require('cssnano')()
+	    ]))
+		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dest));
 });
 

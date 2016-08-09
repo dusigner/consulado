@@ -1,9 +1,10 @@
+'use strict';
+
 require('vendors/jquery.form-validator');
 require('vendors/vtex-modal-cookie');
 
 Nitro.module('modal.overlayLead', function() {
 
-    'use strict';
 
     var self = this,
         $inputName = $('#modal-overlay-leads input[type="text"]'),

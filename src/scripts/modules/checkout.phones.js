@@ -1,4 +1,5 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('vendors/jquery.inputmask');
 
@@ -7,7 +8,6 @@ var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.phones', function() {
 
-    'use strict';
 
     var self = this,
         $formPhones = $('#formPhones'),
@@ -91,7 +91,9 @@ Nitro.module('checkout.phones', function() {
             var data = {};
 
             $.map($inputsPhones, function(x) {
-                if (!x.value || x.value === '') return;
+                if (!x.value || x.value === '') {
+                    return;
+                }
                 data[x.name] = x.value;
             });
 

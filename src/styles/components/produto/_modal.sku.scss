@@ -1,5 +1,5 @@
 #vtex-modal-sku {
-	.modal-header strong{ font-weight: 400;}
+	.modal-header strong { font-weight: 400;}
 
 	.options {
 		background: #eee;
@@ -9,17 +9,17 @@
 		.specification { display: none; }
 
 
-		label{
-			font-weight: 400;
+		label {
 			color: $gray-d;
+			font-weight: 400;
 
-			&:before{
+			&:before {
 				border-color: $gray-d;
 			}
 		}
 	}
 
-	.button{
+	.button {
 		padding: 10px 0;
 	}
 
@@ -31,8 +31,8 @@
 		margin: 0 auto;
 		padding: 16px 28px;
 
-		&:before{ float:none; }
+		&:before {float: none; }
 	}
 
-	.portal-notify-me-ref{display: none;}
+	.portal-notify-me-ref {display: none;}
 }

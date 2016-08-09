@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // ===============================================================
 /* Compare */
@@ -6,17 +6,18 @@
 
 body.product-comparison {
 
-	tr[class*="atributos Módulo"] {
-		visibility: hidden;
+	tr[class*='atributos Módulo'] {
 		display: none !important;
+		visibility: hidden;
 	}
 
 	.produto {
 		.prateleira {
 			li {
 				width: 100%;
-				.compare, .department-nav {
-					display:none !important;
+				.compare, 
+				.department-nav {
+					display: none !important;
 				}
 				.box-produto {
 					img {
@@ -27,16 +28,17 @@ body.product-comparison {
 					span {
 						min-height: 250px;
 
-						@include breakpoint(small, "max") {
+						@include breakpoint(small, 'max') {
 							min-height: auto;
 						}
 					}
 				}
 
 				.detalhes {
-					.por, .de {
+					.por, 
+					.de {
 						span {
-							display:block;
+							display: block;
 						}
 					}
 				}
@@ -48,10 +50,10 @@ body.product-comparison {
 	.comparar-outros {
 		float: right;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			display: inline-block;
-			width: 100%;
 			text-align: center;
+			width: 100%;
 		}
 
 		a {
@@ -68,7 +70,7 @@ body.product-comparison {
 			@include responsiveFont(22, 16, true);
 			float: left;
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				@include responsiveFont(20, 16, true);
 				margin: 0;
 				margin-top: 20px;
@@ -82,15 +84,15 @@ body.product-comparison {
 			li { text-align: left; }
 
 			table {
-				position: relative;
 				margin: 0;
 				padding: 0;
+				position: relative;
 				table-layout: fixed;
 				width: 100%;
 
 				table { display: none; }
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					thead {
 						&>th {
 							display: block;
@@ -122,9 +124,9 @@ body.product-comparison {
 							position: relative;
 
 							.remover-produto {
-								border: none;
 								background-color: transparent;
-								color:$gray-d;
+								border: none;
+								color: $gray-d;
 								font-size: 0;
 								left: 42px;
 								outline: none;
@@ -148,7 +150,7 @@ body.product-comparison {
 				}
 			}
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				border-top: none;
 
 				table {
@@ -158,8 +160,8 @@ body.product-comparison {
 						display: inline-block;
 
 						&>th {
-							padding: 10px 0;
 							border-bottom: 1px solid $gray;
+							padding: 10px 0;
 							text-align: left;
 						}
 
@@ -171,10 +173,10 @@ body.product-comparison {
 									width: 100%;
 
 									th {
-										display: table-cell;
-										width: 49%;
-										padding: 1em 0;
 										@include responsiveFont(13, 16, true);
+										display: table-cell;
+										padding: 1em 0;
+										width: 49%;
 
 										&:first-child {
 											padding-left: 0;
@@ -196,17 +198,18 @@ body.product-comparison {
 															min-height: auto;
 														}
 
-														.FlagsHightLight, .off {
+														.FlagsHightLight, 
+														.off {
 															display: none !important;
 														}
 
 														h3 {
-															min-height: 130px;
 															@include responsiveFont(14, 16, true);
+															min-height: 130px;
 
 															li {
-																display: block;
 																@include responsiveFont(14, 16, true);
+																display: block;
 															}
 														}
 
@@ -234,29 +237,30 @@ body.product-comparison {
 					tbody {
 						tr {
 							display: block;
+							margin: 25px 0;
 							position: relative;
 							width: 100%;
-							margin: 25px 0;
 
-							th, td {
-								padding: 0;
-								border: none !important;
+							th, 
+							td {
 								@include responsiveFont(13, 16, true);
+								border: none !important;
+								padding: 0;
 								text-align: left;
 							}
 
 							th {
-								position: absolute;
-								display: block;
-								width: 100%;
-								padding-bottom: 10px;
 								border-bottom: 1px solid $gray !important;
+								display: block;
+								padding-bottom: 10px;
+								position: absolute;
+								width: 100%;
 							}
 
 							td {
 								display: inline-block;
-								width: 49%;
 								padding-top: 40px;
+								width: 49%;
 							}
 						}
 					}
@@ -270,11 +274,11 @@ body.product-comparison {
 			.box {
 				.title {
 					@include responsiveFont(12, 16, true);
-					color: #000;
+					color: #000000;
 					font-weight: bold;
 				}
 
-				.description{
+				.description {
 					@include responsiveFont(12, 16, true);
 					color: $gray-d;
 				}

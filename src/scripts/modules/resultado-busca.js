@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 Nitro.module('resultado-busca', function() {
 
-    'use strict';
 
     var params = _.urlParams();
 
@@ -27,24 +27,24 @@ Nitro.module('resultado-busca', function() {
 
         switch (params.fq) {
 
-            case 'H:231':
-                $('.banner-dormir-100 .box-banner').show();
-                break;
+        case 'H:231':
+            $('.banner-dormir-100 .box-banner').show();
+            break;
 
-            case 'H:232':
-                $('.banner-dormir-200 .box-banner').show();
-                break;
+        case 'H:232':
+            $('.banner-dormir-200 .box-banner').show();
+            break;
 
-            case 'H:233':
-                $('.banner-dormir-400 .box-banner').show();
-                break;
+        case 'H:233':
+            $('.banner-dormir-400 .box-banner').show();
+            break;
 
-            case 'H:234':
-                $('.banner-dormir-800 .box-banner').show();
-                break;
+        case 'H:234':
+            $('.banner-dormir-800 .box-banner').show();
+            break;
 
-            default:
-                $('.banner-default .box-banner').show();
+        default:
+            $('.banner-default .box-banner').show();
         }
 
         $('.resultado-busca').remove();

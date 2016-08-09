@@ -1,26 +1,26 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
-.vtex-modal{
-	display: none;
-	background: rgba(0, 0, 0, 0.5);
+.vtex-modal {
+	//transition: .4s opacity ease;
+	background: rgba(0, 0, 0, .5);
 	bottom: 0;
+	display: none;
 	left: 0;
+	overflow-y: auto;
 	position: fixed;
 	right: 0;
 	text-align: center;
 	top: 0;
 	z-index: 99999;
-	overflow-y: auto;
-	//transition: 0.4s opacity ease;
 
-	&:before{
+	&:before {
 		content: '';
 		display: inline-block;
 		height: 100%;
 		vertical-align: middle;
 	}
 
-	.modal-holder{
+	.modal-holder {
 		background-color: #fff;
 		border-radius: 6px;
 		display: inline-block;
@@ -32,21 +32,21 @@
 		width: 90%;
 	}
 
-	.modal-header{
+	.modal-header {
 		font-size: 32px;
 		padding: .5em;
 		position: relative;
 		text-align: center;
 
-		.close{
-			background-color: #fff;
+		.close {
+			//color: $txt-gray-l;
 			@include responsiveFont(22, 16, true);
+			background-color: #fff;
 			border: 0;
 			border-radius: 50%;
-			//color: $txt-gray-l;
 			color: #f47921; /* Mudança de cor para teste*/
 			height: 34px;
-			line-height: 0.7;
+			line-height: .7;
 			outline: 0;
 			padding: 0;
 			position: absolute;
@@ -55,18 +55,18 @@
 			top: -17px;
 			width: 34px;
 
-			&:before{
+			&:before {
 				@include icon-get('close');
 			}
 
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				right: -14px;
 				top: -14px;
 			}
 		}
 	}
 
-	.modal-content{
+	.modal-content {
 		/*padding: 1em;*/
 		text-align: center;
 	}

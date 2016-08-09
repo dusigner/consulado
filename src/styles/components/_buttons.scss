@@ -7,18 +7,17 @@
 		@extend %single-transition;
 		@include font-size(16px);
 		background-color: $orange;
-		border-radius: 50px;
 		border: 2px solid $orange;
+		border-radius: 50px;
 		color: #fff;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 700;
-		padding: 0.7em 2.5em;
+		padding: .7em 2.5em;
 		position: relative;
 		text-align: center;
 		user-select: none;
 		vertical-align: baseline;
-		// white-space: nowrap;
 
 		&:hover  {
 			background: transparent;
@@ -34,14 +33,14 @@
 
 		&::-moz-focus-inner { padding: 0; }
 
-		&.loading{
+		&.loading {
 			background-color: lighten($orange, 25%)!important;
 			font-size: 0;
 			height: 50px;
 
 			&:before {
 				@include spinner($orange);
-				content: " ";
+				content: ' ';
 			}
 		}
 	}
@@ -51,7 +50,7 @@
 		@extend %primary-button;
 		background-color: transparent;
 		color: $orange;
-		padding: 0.7em 1.2em;
+		padding: .7em 1.2em;
 
 		&:hover {
 			background-color: $orange;
@@ -59,7 +58,8 @@
 		}
 	}
 
-	a.primary-button, a.secondary-button { text-decoration: none; }
+	a.primary-button, 
+	a.secondary-button { text-decoration: none; }
 
 
 $something: false;
@@ -74,7 +74,7 @@ $something: false;
 		font-family: inherit;
 		font-size: 100%;
 		line-height: 1;
-		padding: 0.5em 1em;
+		padding: .5em 1em;
 		position: relative;
 		text-align: center;
 		text-decoration: none;
@@ -83,8 +83,8 @@ $something: false;
 		white-space: nowrap;
 
 		&::-moz-focus-inner {
-			padding: 0;
 			border: 0;
+			padding: 0;
 		}
 
 		&:hover { background-color: darken($object-ui-color, 10%); }
@@ -113,10 +113,10 @@ $something: false;
 			&:active { outline: 0; }
 		}
 
-		input[type="submit"].btn {
+		input[type='submit'].btn {
 			color: $button-font-color;
 			height: auto;
-			padding: 0.5em 1em;
+			padding: .5em 1em;
 		}
 
 		button.btn { color: $button-font-color; }
@@ -129,7 +129,7 @@ $something: false;
 				&.bg-#{$bg-color}:hover { background-color: darken($color, 10%); }
 				&.bg-#{$bg-color}:active { background-color: darken($color, 5%); }
 
-				@if $bg-color != "white" {
+				@if $bg-color != 'white' {
 					&.bg-light-#{$bg-color} { background-color: lighten($color, 32.5%); }
 				}
 			}
@@ -162,7 +162,7 @@ $something: false;
 	p.btn-extra-small,
 	input.btn-extra-small {
 	  @include font-size(10px);
-	  padding: 0.25em 0.75em;
+	  padding: .25em .75em;
 	}
 
 	.btn-small,
@@ -202,7 +202,7 @@ $something: false;
 
 	  &.up {
 		.dropdown-menu {
-		  margin-bottom: 0px;
+		  margin-bottom: 0;
 		  top: auto;
 		}
 
@@ -213,9 +213,9 @@ $something: false;
 	@include breakpoint(small) {
 	  .btn-extra-small .caret,
 	  .btn-small .caret {
-		border-top: 4px solid;
-		border-right: 4px solid transparent;
 		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		border-top: 4px solid;
 	  }
 
 	  .btn.dropdown {

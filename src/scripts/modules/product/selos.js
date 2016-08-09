@@ -1,13 +1,15 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 Nitro.module('selos', function() {
 
-    'use strict';
 
     var $holder = $('.prod-selos'),
         $selos = $('#caracteristicas .value-field.Selos');
-
-    if ($selos.length === 0) return;
+        
+    if ($selos.length === 0) {
+        return;
+    }
 
     $selos = $selos.text().split(', ');
 

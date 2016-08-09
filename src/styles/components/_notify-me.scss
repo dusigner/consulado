@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 .portal-notify-me-ref {
 	.notifyme-title {
@@ -28,15 +28,15 @@
 	form p {
 		@include font-size(16px, true, false);
 		font-style: italic;
-		margin-top:0;
+		margin-top: 0;
 	}
 
 	.notifyme-client-name,
 	.notifyme-client-email {
 		@include singleTransition();
 		@include responsiveFont(14);
-		border: 1px solid $gray;
 		background-color: $gray-l;
+		border: 1px solid $gray;
 		color: $txt-gray;
 		font-weight: 200;
 		height: 44px;
@@ -50,11 +50,11 @@
 
 	.notifyme-button-ok {
 		display: inline-block;
-		width: 100%;
 		margin-bottom: 10px;
+		width: 100%;
 
 		&:before {
-			content: " ";
+			content: ' ';
 			display: block;
 		}
 

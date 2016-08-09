@@ -1,5 +1,5 @@
 /* global $: true, Nitro: true */
-
+'use strict';
 
 /*jshint strict: false */
 require('vendors/jquery.inputmask');
@@ -7,7 +7,6 @@ var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.termoColeta', function() {
 
-    'use strict';
 
     //var self = this;
 

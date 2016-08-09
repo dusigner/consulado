@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, _: true */
+'use strict';
 
 Nitro.module('percentoff', function() {
 
-    'use strict';
 
     $('.box-produto:not(.list-percent)').each(function() {
         var self = $(this),

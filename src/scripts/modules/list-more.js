@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('vendors/ajax.localstorage');
 
 Nitro.module('list-more', function() {
 
-    'use strict';
 
     var self = this,
         $button = $('#list-more'),
@@ -17,28 +17,28 @@ Nitro.module('list-more', function() {
 
     this.loadContent = function() {
         $.ajax({
-                url: url + page,
-                localCache: true,
-                cacheTTL: 1,
-                dataType: 'html',
-                beforeSend: function() {
-                    console.log('page', page);
+            url: url + page,
+            localCache: true,
+            cacheTTL: 1,
+            dataType: 'html',
+            beforeSend: function() {
+                // console.log('page', page);
 
-                    if ($button.is('loading')) {
-                        return false;
-                    } else {
-                        $button.addClass('loading');
-                        return true;
-                    }
-
+                if ($button.is('loading')) {
+                    return false;
+                } else {
+                    $button.addClass('loading');
+                    return true;
                 }
-            })
+
+            }
+        })
             .done(function(data) {
                 if (data) {
 
                     $prateleira.append(data).find('.helperComplement').remove();
 
-                    console.log('active', self.isActive());
+                    // console.log('active', self.isActive());
 
                     if (self.isActive()) {
 

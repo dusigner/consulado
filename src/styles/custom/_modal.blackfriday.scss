@@ -1,22 +1,23 @@
-#vtex-blackfriday, #vtex-blackfriday-success{
-	.modal-holder{
+#vtex-blackfriday,
+#vtex-blackfriday-success {
+	.modal-holder {
 		background-color: #000;
-		.modal-header{
-			.close{
+		.modal-header {
+			.close {
 				background-color: #000;
 			}
 		}
-		.modal-body{
+		.modal-body {
 			padding: 0 30px 30px 30px;
-			h4{
+			h4 {
 				margin: 0;
 			}
-			#rules{
+			#rules {
 				margin-top: 5px;
 			}
-			.lbl-aceito{
+			.lbl-aceito {
 				text-align: left;
-				a{text-decoration:underline;}
+				a {text-decoration: underline;}
 			}
 		}
 	}

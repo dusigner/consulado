@@ -1,4 +1,4 @@
-@charset "UTF-8";
+// @charset "UTF-8";
 
 // ===============================================================
 /* INSTITUCIONAL */
@@ -47,7 +47,7 @@
 
 		&:before {
 			border-top: 1px solid $gray;
-			content: " ";
+			content: ' ';
 			display: block;
 			position: absolute;
 			right: 0;

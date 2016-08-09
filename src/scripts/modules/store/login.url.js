@@ -1,3 +1,5 @@
+'use strict';
+
 require('modules/store/vtex-login');
 
 var CRM = require('modules/store/crm');
@@ -5,7 +7,6 @@ var CRM = require('modules/store/crm');
 
 Nitro.module('login.url', ['vtex-login'], function(vtexLogin) {
 
-    'use strict';
 
     this.setup = function() {
 

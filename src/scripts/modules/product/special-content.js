@@ -1,17 +1,17 @@
 /* global $: true, Nitro: true, dust:true */
+'use strict';
 
 require('../../../templates/special-content.html');
 
 Nitro.module('special-content', function() {
 
-    'use strict';
 
     var $content = $('td.Conteudo-Especial').text();
 
 
     if ($content) {
         var content = $content.split(',');
-        console.log('tem', content);
+        // console.log('tem', content);
         /*$('<section id="conteudo-especial"><iframe src="'+content[0]+'"/></section>').insertBefore('#especificacoes');
 
         var $iframe = $('#conteudo-especial iframe');*/

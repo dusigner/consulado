@@ -1,4 +1,5 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 require('modules/cart');
 require('modules/search');
@@ -6,7 +7,6 @@ require('vendors/jquery.cookie');
 
 Nitro.module('header', function() {
 
-    'use strict';
 
     var $body = $('body'),
         $document = $(document);

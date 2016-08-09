@@ -5,31 +5,43 @@
  */
 .noUi-target,
 .noUi-target * {
-	-webkit-touch-callout: none;
-		 -ms-touch-action: none;
-	
-	-webkit-user-select: none;
-	   -moz-user-select: none;
-		-ms-user-select: none;
-	
+
 	-moz-box-sizing: border-box;
-		 box-sizing: border-box;
+	-moz-user-select: none;
+
+	-ms-touch-action: none;
+	-ms-user-select: none;
+
+	// -webkit-touch-callout: none;
+	-webkit-user-select: none;
+
+	box-sizing: border-box;
 }
 .noUi-target {
-	position: relative;
+	border-radius: 10px;
 	direction: ltr;
+	position: relative;
 }
 .noUi-base {
-	width: 100%;
+	-webkit-transform: translate3d(0, 0, 0);
+
 	height: 100%;
 	position: relative;
+	transform: translate3d(0, 0, 0);
+	width: 100%;
 }
 .noUi-origin {
+	border: 1px solid darken($sony-blue, 10%);
+	border-radius: 10px;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
 	position: absolute;
 	right: 0;
 	top: 0;
-	left: 0;
-	bottom: 0;
+	/*box-shadow: inset 0 0 1px #FFF,
+	inset 0 1px 7px #EBEBEB,
+	0 3px 6px -3px #BBB;*/
 }
 .noUi-handle {
 	position: relative;
@@ -43,11 +55,11 @@
 .noUi-stacking + .noUi-origin {
 /* Fix stacking order in IE7, which incorrectly
    creates a new context for the origins. */
-	*z-index: -1;
+	z-index: -1;
 }
 .noUi-state-tap .noUi-origin {
-	-webkit-transition: left 0.3s, top 0.3s;
-			transition: left 0.3s, top 0.3s;
+	-webkit-transition: left .3s, top .3s;
+			transition: left .3s, top .3s;
 }
 .noUi-state-drag * {
 	cursor: inherit !important;
@@ -56,10 +68,6 @@
 /* Painting and performance;
  * Browsers can paint handles in their own layer.
  */
-.noUi-base {
-	-webkit-transform: translate3d(0,0,0);
-			transform: translate3d(0,0,0);
-}
 
 /* Slider size and handle placement;
  */
@@ -67,12 +75,12 @@
 	height: 5px;
 }
 .noUi-horizontal .noUi-handle {
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
 	background-color: $sony-blue;
+	border-radius: 50%;
+	height: 15px;
 	left: -8px;
 	top: -5px;
+	width: 15px;
 }
 
 /* Styling;
@@ -82,21 +90,14 @@
 	/*box-shadow: inset 0 1px 1px #f0f0f0;*/
 }
 .noUi-connect {
-	background-color: $sony-blue;
 	/*box-shadow: inset 0 0 3px rgba(51,51,51,0.45);*/
 	-webkit-transition: background 450ms;
-			transition: background 450ms;
+	background-color: $sony-blue;
+	transition: background 450ms;
 }
-.noUi-origin {
-	border-radius: 10px;
-}
-.noUi-target {
-	border-radius: 10px;
-	/*border: 1px solid #D3D3D3;*/
-	/*box-shadow: inset 0 1px 1px #F0F0F0, 0 3px 6px -5px #BBB;*/
-}
+
 .noUi-target.noUi-connect {
-	box-shadow: inset 0 0 3px rgba(51,51,51,0.45), 0 3px 6px -5px #BBB;
+	box-shadow: inset 0 0 3px rgba(51, 51, 51, .45), 0 3px 6px -5px #BBB;
 }
 
 /* Handles and cursors;
@@ -104,17 +105,10 @@
 .noUi-dragable {
 	cursor: w-resize;
 }
-.noUi-handle {
-	border: 1px solid darken($sony-blue, 10%);
-	border-radius: 3px;
-	cursor: pointer;
-	/*box-shadow: inset 0 0 1px #FFF,
-				inset 0 1px 7px #EBEBEB,
-				0 3px 6px -3px #BBB;*/
-}
+
 .noUi-active {
-	border: 1px solid darken($sony-blue, 30%);
 	background: darken($sony-blue, 20%);
+	border: 1px solid darken($sony-blue, 30%);
 	
 	/*box-shadow: inset 0 0 1px #FFF,
 				inset 0 1px 7px #DDD,

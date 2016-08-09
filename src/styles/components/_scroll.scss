@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @if $use-com-scroll == true {
 
@@ -8,9 +8,13 @@
 
 	@media (min-width: 768px) {
 		.scroll {
-			&, .viewport, .track { position: relative; }
+			&, 
+			.viewport, 
+			.track { position: relative; }
 
-			.overview, .scrollbar, .thumb { position: absolute; }
+			.overview, 
+			.scrollbar, 
+			.thumb { position: absolute; }
 
 			.viewport { overflow: hidden; }
 
@@ -43,21 +47,21 @@
 
 				.end {
 					display: none;
-					overflow: hidden;
 					height: 15px;
+					overflow: hidden;
 					width: 6px;
 				}
 			}
 
-			.disable { display:none; }
+			.disable { display: none; }
 		}
 
 		.noSelect {
-		-webkit-user-select:none;
-		   -moz-user-select:none;
-		 -khtml-user-select:none;
-			 -o-user-select:none;
-				user-select:none;
+		 -khtml-user-select: none;
+		   -moz-user-select: none;
+			 -o-user-select: none;
+		-webkit-user-select: none;
+				user-select: none;
 		}
 	}
 }

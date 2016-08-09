@@ -1,3 +1,4 @@
+'use strict';
 //load all controllers
 /*var fs = require('fs');
 

@@ -1,9 +1,10 @@
+'use strict';
+
 require('vendors/vtex-modal-cookie');
 var CRM = require('modules/store/crm');
 
 Nitro.module('modal.blackfriday', function() {
 
-    'use strict';
 
     var $template = '<div class="modal-body">' +
         '<div class="row">' +
@@ -53,11 +54,13 @@ Nitro.module('modal.blackfriday', function() {
 
 
         var $inputs = $('.form-cadastro').find('input[type="email"], input[type="text"], input[type="hidden"]');
-        console.log($inputs);
+        // console.log($inputs);
         var data = {};
 
         $.map($inputs, function(x) {
-            if (!x.value || x.value === '') return;
+            if (!x.value || x.value === '') {
+                return;
+            }
             data[x.name] = x.value;
         });
 

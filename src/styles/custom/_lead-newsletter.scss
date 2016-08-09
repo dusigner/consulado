@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 .lead-newsletter {
 	display: none;
@@ -8,62 +8,64 @@
 		margin-bottom: 0;
 
 		.container {
-			padding: 10px 0;
-			border-top: 1px solid $gray-d;
 			border-bottom: 1px solid $gray-d;
+			border-top: 1px solid $gray-d;
+			padding: 10px 0;
 
-			@include breakpoint(extra-large, "min") {
+			@include breakpoint(extra-large, 'min') {
 				width: 1100px;
 			}
 
-			@include breakpoint(medium, "max") {
+			@include breakpoint(medium, 'max') {
 				padding: 20px;
 			}
 		}
 
-		p, form, input {
+		p, 
+		form, 
+		input {
 			display: inline-block;
 			width: auto;
 		}
 
 		p {
+			@include responsiveFont(16, 16, true);
+			color: $green;
+			font-weight: bold;
 			margin: 0;
 			margin-right: 25px;
 			padding: 0;
-			color: $green;
-			@include responsiveFont(16, 16, true);
-			font-weight: bold;
 
-			@include breakpoint(large, "max") {
+			@include breakpoint(large, 'max') {
 				display: block;
-				width: 100%;
 				margin-bottom: 10px;
+				width: 100%;
 			}
 
-			@include breakpoint(extra-small, "max") {
+			@include breakpoint(extra-small, 'max') {
 				text-align: center;
 			}
 		}
 
 		form {
-			@include breakpoint(extra-small, "max") {
+			@include breakpoint(extra-small, 'max') {
 				display: block;
-				width: 95%;
 				margin: 10px auto;
+				width: 95%;
 			}
 		}
 
 		fieldset {
+			border: none;
 			display: inline-block;
-			vertical-align: middle;
 			margin: 0;
 			padding: 0;
-			border: none;
+			vertical-align: middle;
 
-			@include breakpoint(extra-small, "max") {
+			@include breakpoint(extra-small, 'max') {
 				display: block;
-				width: 100%;
 				margin: 10px 0;
+				width: 100%;
 			}
 
 			input {
@@ -71,29 +73,29 @@
 			}
 
 			label {
+				@include responsiveFont(12, 16, true);
 				display: inline-block;
-				position: relative;
-				width: 148px;
 				margin: 0 10px;
 				padding-left: 25px;
-				@include responsiveFont(12, 16, true);
+				position: relative;
+				width: 148px;
 
-				&:before{
-					content: '';
-					display: inline-block;
-					position: absolute;
-					top: 3px;
-					left: 0;
-					width: 15px;
-					height: 15px;
-					margin-right: 5px;
+				&:before {
 					border: 1px solid;
 					border-radius: 2px;
+					content: '';
+					display: inline-block;
+					height: 15px;
+					left: 0;
+					margin-right: 5px;
+					position: absolute;
+					top: 3px;
+					width: 15px;
 				}
 
-				@include breakpoint(extra-small, "max") {
-					width: 100%;
+				@include breakpoint(extra-small, 'max') {
 					margin: 0;
+					width: 100%;
 
 					&:before {
 						top: 0;
@@ -109,28 +111,28 @@
 		}
 
 		input {
-			width: 150px;
-			margin: 0 10px;
-			padding: 8px;
+			@include responsiveFont(13, 16, true);
 			border: 1px solid $gray-d;
 			border-radius: 5px;
 			color: $txt-gray;
-			@include responsiveFont(13, 16, true);
+			margin: 0 10px;
 			outline: none;
+			padding: 8px;
+			width: 150px;
 
 			&:first-child { margin-left: 0; }
 
-			@include breakpoint(extra-small, "max") {
+			@include breakpoint(extra-small, 'max') {
 				display: block;
-				width: 100%;
 				margin: 20px auto;
+				width: 100%;
 
 				&:first-child { margin-left: auto; }
 
 				&:last-child { margin-bottom: 0; }
 			}
 
-			&[type="checkbox"] {
+			&[type='checkbox'] {
 				display: none;
 
 				&.error + label {
@@ -140,58 +142,57 @@
 
 					&:after {
 						@include contentBefore();
-						top: 3px;
-						left: 0;
-						width: 15px;
-						height: 15px;
-						border-radius: 2px;
 						border: 3px solid #f49a9a;
+						border-radius: 2px;
+						height: 15px;
+						left: 0;
+						top: 3px;
+						width: 15px;
 					}
 				}
 			}
 
-			&[type="checkbox"]:checked + label {
+			&[type='checkbox']:checked + label {
 				a {
 					color: $txt-gray;
 				}
 
-				&:after{
+				&:after {
 					@include contentBefore();
-					top: 3px;
-					left: 0;
-					width: 15px;
-					height: 15px;
-					border-radius: 2px;
 					border: 3px solid $green;
+					border-radius: 2px;
+					height: 15px;
+					left: 0;
+					top: 3px;
+					width: 15px;
 				}
 			}
 		}
 
 		@include inputPlaceholderColor($txt-gray);
 
-		input[type="submit"] {
+		input[type='submit'] {
 			@extend .primary-button;
-			display: inline-block;
-			margin: 0;
-			margin-left: 20px;
-			padding: 0.5em;
-			margin-left: 20px;
+			@include responsiveFont(14, 16, true);
 			background: #7f2893;
 			border: 2px solid #7f2893;
-			@include responsiveFont(14, 16, true);
+			display: inline-block;
 			font-weight: normal;
-			text-transform: uppercase;
+			margin: 0;
+			margin-left: 20px;
 			outline: none;
+			padding: .5em;
+			text-transform: uppercase;
 
 			&:hover {
 				color: #7f2893;
 			}
 
-			@include breakpoint(extra-small, "max") {
+			@include breakpoint(extra-small, 'max') {
 				display: block;
-				max-width: 170px;
 				margin: 0 auto;
 				margin-top: 20px;
+				max-width: 170px;
 			}
 		}
 	}
@@ -201,31 +202,32 @@
 	}
 
 	&.success {
-		p, form {
+		p, 
+		form {
 			display: none;
 		}
 
 		p.message-success {
+			@include responsiveFont(13, 16, true);
+			color: $orange;
 			display: block !important;
-			position: relative;
-			width: 280px;
+			font-weight: bold;
 			margin: 10px auto;
 			padding-left: 30px;
-			color: $orange;
-			@include responsiveFont(13, 16, true);
-			font-weight: bold;
+			position: relative;
 			text-transform: uppercase;
+			width: 280px;
 
 			&:before {
-				display: block;
-				position: absolute;
 				@include contentBefore();
 				@include icon-get('check-mark');
-				top: 0;
-				left: 15px;
-				color: #9aca3c;
 				@include responsiveFont(14, 16, true);
+				color: #9aca3c;
+				display: block;
 				font-weight: bold !important;
+				left: 15px;
+				position: absolute;
+				top: 0;
 				transform: translateX(-50%);
 			}
 		}

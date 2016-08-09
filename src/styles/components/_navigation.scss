@@ -6,7 +6,7 @@
 	// Silent Class
 	%before-responsive-icon {
 		clear: both;
-		content: ".";
+		content: '.';
 		display: block;
 		height: 0;
 		line-height: 0;
@@ -27,7 +27,7 @@
 			cursor: pointer;
 			position: relative;
 
-			.dropdown & { margin-right: 0px; }
+			.dropdown & { margin-right: 0; }
 		}
 	}
 
@@ -39,10 +39,10 @@
 		// Naver plugin (https://github.com/benplum/Naver/)
 		.naver {
 			.naver-handle {
+				@include font-size(24px);
 				color: inherit;
 				cursor: pointer;
 				display: none;
-				@include font-size(24px);
 				text-align: right;
 				text-transform: uppercase;
 				user-select: none;
@@ -57,7 +57,7 @@
 				.naver-handle { display: block; }
 
 				.naver-wrapper {
-					height: 0px;
+					height: 0;
 					overflow: hidden;
 
 					li {
@@ -74,12 +74,12 @@
 
 		.nav-responsive {
 			&.naver .naver-handle:after {
-				content: "\2261";
+				content: '\2261';
 				text-align: right;
 			}
 
 			&.nav-responsive-text.naver {
-				.naver-handle:after { content: "\00a0 \2261"; }
+				.naver-handle:after { content: '\00a0 \2261'; }
 
 				.naver-container:before {
 					@extend %before-responsive-icon;
@@ -94,13 +94,13 @@
 				text-align: left;
 
 				&:before {
-					content: "\2261";
+					content: '\2261';
 					text-align: left;
 				}
 			}
 
 			&.nav-responsive-text.naver {
-				.naver-handle:before { content: "\2261 \00a0"; }
+				.naver-handle:before { content: '\2261 \00a0'; }
 
 				.naver-container:after {
 					@extend %before-responsive-icon;
@@ -115,13 +115,13 @@
 				text-align: center;
 
 				&:before {
-					content: "\2261";
+					content: '\2261';
 					text-align: center;
 				}
 			}
 
 			&.nav-responsive-text.naver {
-				.naver-handle:before { content: "\2261 \00a0"; }
+				.naver-handle:before { content: '\2261 \00a0'; }
 
 				.naver-container:after {
 					@extend %before-responsive-icon;

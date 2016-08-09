@@ -1,56 +1,59 @@
-#vtex-modal-pj{
+#vtex-modal-pj {
 	overflow-y: auto;
 
-	.modal-holder{
-		max-width: 600px;
+	.modal-holder {
 		margin-bottom: 20px;
-		padding:0 15px;
+		max-width: 600px;
+		padding: 0 15px;
 
-		@include breakpoint(small, "max") {
+		@include breakpoint(small, 'max') {
 			position: relative;
 			top: 50px;
 		}
 
-		.modal-header{padding: 0;}
+		.modal-header {padding: 0;}
 
-		h2{
-			font-weight: 200;
-			color:$green;
+		h2 {
 			@include responsiveFont(35, 16, true);
+			color: $green;
+			font-weight: 200;
 		}
 
-		form{
-			fieldset{
-				border:none;
-				padding: 0;
+		form {
+			fieldset {
+				border: none;
 				margin: 0;
+				padding: 0;
 
-				p{margin: 0 0 15px 0;}
+				p {margin: 0 0 15px 0;}
 
-				button{@extend .primary-button}
+				button {@extend .primary-button}
 
-				input{
-					&[type=text], &[type=email], &[type=tel]{
+				input {
+					&[type=text], 
+					&[type=email], 
+					&[type=tel] {
 						background-color: $gray-l;
-						border:1px solid $gray;
+						border: 1px solid $gray;
 					}
 
-					&.empty{
-						border-color:$orange;
+					&.empty {
+						border-color: $orange;
 					}
 				}
 
-				.padding-l{padding-left: 10px;}
+				.padding-l {padding-left: 10px;}
 
-				.padding-r{padding-right: 10px;}
+				.padding-r {padding-right: 10px;}
 
-				.padding-l,.padding-r{
-					@include breakpoint(small, "max"){padding:0;}
+				.padding-l,
+				.padding-r {
+					@include breakpoint(small, 'max') {padding: 0;}
 				}
 			}
 		}
 
-		.row{
+		.row {
 			margin-bottom: 0;
 		}
 	}

@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true */
+'use strict';
 
 Nitro.module('vtex-login', function() {
 
-    'use strict';
 
     var self = this;
 
@@ -16,7 +16,9 @@ Nitro.module('vtex-login', function() {
 
     this.setClientProfileData = function(orderForm, userData) {
 
-        if (orderForm.clientProfileData && orderForm.clientProfileData.email) return $.Deferred;
+        if (orderForm.clientProfileData && orderForm.clientProfileData.email) {
+            return $.Deferred;  
+        }
 
         var clientProfileData = $.extend({}, orderForm.clientProfileData, userData);
 

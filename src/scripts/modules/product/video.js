@@ -1,16 +1,19 @@
 /* global $: true, Nitro: true, dust: true */
 
+'use strict';
+
 require('../../../templates/video.html');
 
 Nitro.module('video', function() {
 
-    'use strict';
 
     var self = this,
         $holder = $('#video'),
         $video = $('#caracteristicas h4.Video + table .value-field');
 
-    if ($video.length === 0) return;
+    if ($video.length === 0) {
+        return;  
+    } 
 
     var thumbnail = $video.filter('[class*="Thumbnail"]').text();
 
@@ -19,7 +22,7 @@ Nitro.module('video', function() {
         thumb: thumbnail ? $.getImagePath(thumbnail) : false
     };
 
-    console.log('video data', data);
+    // console.log('video data', data);
 
     this.click = function(e) {
         e.preventDefault();

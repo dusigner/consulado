@@ -1,24 +1,25 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 
 .custom-message {
 	@include responsiveFont(14);
-	background: white;
+	background: #ffffff;
 	color: $gray-d;
-	text-align: center;
 	font-weight: bold;
 	padding: 7px;
+	text-align: center;
 
 	p {
 		display: inline;
 	}
+
 	span {
 		background: $green;
 		border-radius: 50%;
-		margin-left: 15px;
-		padding:5px;
-		color: white;
+		color: #ffffff;
 		cursor: pointer;
+		margin-left: 15px;
+		padding: 5px;
 	}
 }
 
@@ -59,11 +60,11 @@ body.pedidos {
 		}
 
 		.box-my-orders {
-			width: 100%;
-			max-width: 1110px;
-			margin-bottom: 30px;
-			padding: 0;
 			border: 1px solid $green;
+			margin-bottom: 30px;
+			max-width: 1110px;
+			padding: 0;
+			width: 100%;
 
 			@include breakpoint(large, 'max') {
 				max-width: 960px;
@@ -71,9 +72,9 @@ body.pedidos {
 
 			.box-order-header {
 				background: $green;
+				color: #ffffff;
 				margin-bottom: 0;
 				padding: 6px 15px 6px 15px;
-				color: #fff;
 
 				.icon {
 					@include vendor(transition, all 300ms ease-in-out);
@@ -99,8 +100,8 @@ body.pedidos {
 				}
 
 				.header-order-id {
-					margin-top: 5px;
 					font-weight: bold;
+					margin-top: 5px;
 
 					@include breakpoint(small, 'max') {
 						text-align: center;
@@ -121,8 +122,8 @@ body.pedidos {
 				}
 
 				.header-order-status {
-					text-align: right;
 					margin-top: 5px;
+					text-align: right;
 
 					@include breakpoint(small, 'max') {
 						text-align: center;
@@ -141,7 +142,8 @@ body.pedidos {
 				}
 			}
 
-			.box-order-body, .box-data {
+			.box-order-body, 
+			.box-data {
 				padding: 15px;
 			}
 
@@ -179,14 +181,14 @@ body.pedidos {
 				.box-order-data {
 					@include responsiveFont(15);
 					border: 1px solid $gray-d;
-					padding: 10px;
 					margin-bottom: 15px;
+					padding: 10px;
 
 					.list-data {
 						padding-bottom: 15px;
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(14);
-							padding:0;
+							padding: 0;
 						}
 						strong {
 							display: block;
@@ -231,20 +233,20 @@ body.pedidos {
 				}
 
 				&:before {
-					content: "";
 					background-color: $txt-gray-l;
+					content: '';
 					display: block;
 					height: 4px;
+					left: 11%;
 					position: absolute;
-					width: 75%;
 					top: 72%;
-					left:11%;
+					width: 75%;
 
 					@include breakpoint(small, 'max') {
-						width: 3px;
 						height: 90%;
-						top:5%;
-						left:13px;
+						left: 13px;
+						top: 5%;
+						width: 3px;
 					}
 				}
 
@@ -259,8 +261,8 @@ body.pedidos {
 					}
 
 					p {
-						padding: 0 10px 0 10px;
 						color: $txt-gray-l;
+						padding: 0 10px 0 10px;
 
 						@include breakpoint(small, 'max') {
 							display: block;
@@ -268,7 +270,7 @@ body.pedidos {
 							height: 30px;
 							line-height: 30px;
 							margin: 0;
-							padding:0;
+							padding: 0;
 							padding-left: 5px;
 							text-align: left;
 							width: 85%;
@@ -276,40 +278,41 @@ body.pedidos {
 					}
 
 					.circle {
+						background: #fff;
+						border: 3px solid $txt-gray-l;
+						border-radius: 50%;
 						display: inline-block;
+						height: 50px;
 						position: relative;
 						width: 50px;
-						height: 50px;
-						border-radius: 50%;
-						border: 3px solid $txt-gray-l;
-						background: #fff;
 
 						@include breakpoint(small, 'max') {
 							display: block;
-							width: 30px;
 							height: 30px;
+							width: 30px;
 						}
 					}
 
-					&.current, &.canceled {
-						.circle{
+					&.current, 
+					&.canceled {
+						.circle {
 							&:before {
-								content:"";
-								width: 0;
-								height: 0;
+								border-color: transparent transparent $green transparent;
 								border-style: solid;
 								border-width: 0 10px 10px 10px;
-								border-color: transparent transparent $green transparent;
-								position: absolute;
 								bottom: -29px;
+								content: '';
+								height: 0;
+								position: absolute;
 								right: 23px;
+								width: 0;
 								@include breakpoint(small, 'max') {
 									display: none;
 								}
 							}
 							@include breakpoint(small, 'min') {
-								width: 70px;
 								height: 70px;
+								width: 70px;
 							}
 						}
 					}
@@ -319,45 +322,45 @@ body.pedidos {
 							border: 3px solid #27ae60;
 						}
 						p {
-							color:$green;
+							color: $green;
 							font-weight: bold;
 						}
 					}
 
-					&.active{
-						.circle{
+					&.active {
+						.circle {
 							background: #27ae60;
 							border: 3px solid #fff;
-							&:after{
+							&:after {
 								@include contentBefore();
 								@include responsiveFont(20);
 								@include icon-get(check-mark);
-								top:13px;
 								color: #fff;
-								position: absolute;
-								right:0;
-								left:0;
 								font-weight: bold;
+								left: 0;
+								position: absolute;
+								right: 0;
+								top: 13px;
 								@include breakpoint(small, 'max') {
+									    font-size: 10px;
 									    position: relative;
 									    top: 7px;
-									    font-size: 10px;
 								}
 							}
 						}
-						&.finished{
-							.circle{
+						&.finished {
+							.circle {
 								@include breakpoint(small, 'min') {
-									width: 70px;
 									height: 70px;
+									width: 70px;
 								}
-								&:after{
+								&:after {
 									@include responsiveFont(28);
-									top:20px;
+									top: 20px;
 								}
 							}
 							p {
-								color:$green;
+								color: $green;
 								font-weight: bold;
 							}
 						}
@@ -366,10 +369,10 @@ body.pedidos {
 					&.canceled {
 						.circle {
 							background: #c0392b;
-							border: 3px solid #fff;
+							border: 3px solid #ffffff;
 						}
 						p {
-							color:$green;
+							color: $green;
 							font-weight: bold;
 						}
 					}
@@ -392,10 +395,10 @@ body.pedidos {
 
 
 	.order-products-header {
+		border-top: 2px solid $gray;
 		margin: 10px 0;
 		padding: 0 15px;
 		padding-top: 15px;
-		border-top: 2px solid $gray;
 
 		@include breakpoint(large, 'max') {
 			display: none;
@@ -409,9 +412,9 @@ body.pedidos {
 
 	.order-products-totals {
 		float: right;
-		width: 270px;
 		margin: 0 10px;
 		padding: 20px 0;
+		width: 270px;
 
 		@include breakpoint(large, 'max') {
 			float: left;
@@ -419,9 +422,9 @@ body.pedidos {
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(14);
+			float: none;
 			text-align: left;
 			width: 100%;
-			float: none;
 		}
 
 		&>div {
@@ -432,12 +435,12 @@ body.pedidos {
 
 		li {
 			@include responsiveFont(16);
-			width: 100%;
-			line-height: 1.4;
 			font-weight: 800;
+			line-height: 1.4;
+			width: 100%;
 			span {
 				float: right;
-				padding-left:25px;
+				padding-left: 25px;
 				text-align: left;
 				width: 150px;
 			}
@@ -465,8 +468,8 @@ body.pedidos {
 				@include breakpoint(large, 'max') {
 					display: block !important;
 					float: left;
-					width: auto !important;
 					text-align: left;
+					width: auto !important;
 				}
 
 				@include breakpoint(extra-small, 'max') {
@@ -476,8 +479,8 @@ body.pedidos {
 			}
 
 			@include breakpoint(large, 'max') {
-				width: 78% !important;
 				text-align: left;
+				width: 78% !important;
 			}
 
 			@include breakpoint(small, 'max') {
@@ -491,10 +494,10 @@ body.pedidos {
 			}
 
 			.order-nf {
-				padding: 5px;
-				color: #ffffff;
-				background: #acacac;
 				@include responsiveFont(11);
+				background: #acacac;
+				color: #ffffff;
+				padding: 5px;
 				text-transform: uppercase;
 			}
 		}
@@ -533,27 +536,28 @@ body.pedidos {
 
 				button {
 					@extend .primary-button;
-					@include responsiveFont(14,16, true);
+					@include responsiveFont(14, 16, true);
 					line-height: 0;
 
-					&.download-warranty, &.cancel-warranty {
-						width: 90px;
-						margin: 0 10px;
+					&.download-warranty, 
+					&.cancel-warranty {
 						@include responsiveFont(11);
+						margin: 0 10px;
+						width: 90px;
 
 						@include breakpoint(large, 'max') {
 							margin-left: 0;
 						}
 
 						@include breakpoint(extra-small, 'max') {
-							width: 80px;
 							margin: 0;
+							width: 80px;
 						}
 					}
 
 					&.cancel-warranty {
-						border: 2px solid #acacac;
 						background: #acacac;
+						border: 2px solid #acacac;
 
 						@include breakpoint(large, 'max') {
 							margin-left: 10px;
@@ -573,7 +577,7 @@ body.pedidos {
 		@include responsiveFont(16);
 		border-bottom: 2px solid $gray;
 		margin: 0;
-		padding: 10px 0px 10px 10px;
+		padding: 10px 0 10px 10px;
 		text-align: right;
 
 		@include breakpoint(large, 'max') {
@@ -604,9 +608,9 @@ body.pedidos {
 
 		div {
 			@include responsiveFont(18);
+			color: $txt-gray;
 			padding: 20px 10px 5px 10px;
 			text-align: right;
-			color: $txt-gray;
 
 			@include breakpoint(large, 'max') {
 				padding-left: 25px;
@@ -639,15 +643,14 @@ body.pedidos {
 
 	.show-detail {
 		display: none;
-
 		height: 47px;
 
 		button {
-			width: 100%;
-			height: 47px;
 			background: $green;
-			border:1px solid $green;
+			border: 1px solid $green;
+			height: 47px;
 			outline: inherit;
+			width: 100%;
 
 			@include breakpoint(small, 'max') {
 				@include responsiveFont(13);
@@ -655,12 +658,14 @@ body.pedidos {
 
 			.icon-bt-plus:before {
 				display: inline-block;
-				transition: transform 0.3s ease-in;
 				transform: rotate(0deg);
+				transition: transform .3s ease-in;
 			}
 
-			&:hover, &:focus, &:active {
-				border:none;
+			&:hover, 
+			&:focus, 
+			&:active {
+				border: none;
 				border-top: 1px solid $green;
 			}
 		}
@@ -673,29 +678,32 @@ body.pedidos {
 
 	}
 
-	.btn, .add-warranty, .download-warranty, .cancel-warranty {
+	.btn, 
+	.add-warranty, 
+	.download-warranty, 
+	.cancel-warranty {
 		@extend .secondary-button;
 		@include responsiveFont(16, 16, true);
-		background-image:none;
+		background-image: none;
 		box-shadow: none!important;
-		text-shadow: none!important;
+		font-weight: bold;
 		height: 38px;
 		padding: 0;
 		padding-top: 6px;
-		font-weight: bold;
 		text-align: center;
+		text-shadow: none!important;
 		text-transform: capitalize;
 
 		@include breakpoint(small, 'max') {
-			height: 25px;
 			@include responsiveFont(14);
+			height: 25px;
 		}
 
 		&.invoice {
-				width: 150px;
 				background: $orange;
 				border: 1px solid $orange;
 				color: #ffffff;
+				width: 150px;
 
 				&:hover {
 					background: #ffffff;
@@ -725,11 +733,11 @@ body.pedidos {
 	}
 
 	.download-warranty {
-		height: 25px;
-		padding: 4px 0 8px 0;
 		background: #ffffff;
 		border: 1px solid $green;
 		color: $green;
+		height: 25px;
+		padding: 4px 0 8px 0;
 		text-align: center;
 		text-transform: uppercase;
 
@@ -744,11 +752,11 @@ body.pedidos {
 	}
 
 	.cancel-warranty {
-		height: 25px;
-		padding: 4px 0 8px 0;
 		background: #ffffff !important;
 		border: 1px solid #acacac !important;
 		color: #acacac;
+		height: 25px;
+		padding: 4px 0 8px 0;
 		text-align: center;
 		text-transform: uppercase;
 
@@ -763,11 +771,11 @@ body.pedidos {
 	}
 }
 
-.load{
-	position:relative;
-	max-width:100px;
-	width:100%;
+.load {
 	margin: 0 auto;
+	max-width: 100px;
 	min-height: 150px;
-	.loading{@include spinner($green, 100px);}
+	position: relative;
+	width: 100%;
+	.loading {@include spinner($green, 100px);}
 }

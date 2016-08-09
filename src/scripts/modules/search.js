@@ -1,11 +1,12 @@
 /* global Nitro: true, $: true */
 
+'use strict';
+
 require('vendors/jquery.debounce');
 //require('vendors/portal-buy-button');
 
 Nitro.module('search', function() {
 
-    'use strict';
 
     var API_ENDPOINT = '/buscapagina?cc=10&sm=0&PageNumber=1',
         $document = $(document),
@@ -36,35 +37,35 @@ Nitro.module('search', function() {
         console.info('loadContent', term);
 
         $.ajax({
-                url: API_ENDPOINT,
-                data: {
-                    ft: term,
-                    PS: total,
-                    sl: layout
-                },
-                localCache: true,
-                cacheTTL: 1,
-                cacheKey: 'search:' + term,
-                dataType: 'html',
-                beforeSend: function() {
-                    searchTerm = term;
+            url: API_ENDPOINT,
+            data: {
+                ft: term,
+                PS: total,
+                sl: layout
+            },
+            localCache: true,
+            cacheTTL: 1,
+            cacheKey: 'search:' + term,
+            dataType: 'html',
+            beforeSend: function() {
+                searchTerm = term;
 
-                    $searchForm.addClass('loading').append($loader);
-                }
-            })
-            .done(function(data) {
-                if (data) {
-                    $content.html(data).find('.helperComplement').remove();
+                $searchForm.addClass('loading').append($loader);
+            }
+        })
+        .done(function(data) {
+            if (data) {
+                $content.html(data).find('.helperComplement').remove();
 
-                    $results = $content.find('a');
+                $results = $content.find('a');
 
-                    $(document).trigger('search', true);
-                }
-            })
-            .always(function() {
-                $searchForm.removeClass('loading');
-                $loader.remove();
-            });
+                $(document).trigger('search', true);
+            }
+        })
+        .always(function() {
+            $searchForm.removeClass('loading');
+            $loader.remove();
+        });
 
     }, 250);
 

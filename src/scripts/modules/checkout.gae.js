@@ -1,11 +1,11 @@
 /* global $: true, Nitro: true, dust: true, dust: true, _: true, vtexjs:true */
+'use strict';
 
 require('../../templates/modal-warranty-desktop.html');
 require('../../templates/modal-warranty-mobile.html');
 
 Nitro.module('checkout.gae', function() {
 
-    'use strict';
 
     var self = this,
         template = 'modal-warranty-desktop',
@@ -18,7 +18,7 @@ Nitro.module('checkout.gae', function() {
     };
 
     this.showMoreMobile = function() {
-        console.log('showMoreMobile');
+        // console.log('showMoreMobile');
         $('.show-more i').off().on('click', function() {
             $(this).parent().parent().parent()
                 .find('.box-list').toggleClass('hide');
@@ -58,7 +58,7 @@ Nitro.module('checkout.gae', function() {
                     return bundle.attachmentOfferings.length > 0;
                 }).forEach(function(bundle) {
 
-                    console.log('bundle', bundle);
+                    // console.log('bundle', bundle);
 
                     return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
                 });
@@ -146,7 +146,7 @@ Nitro.module('checkout.gae', function() {
             productIndex: index
         };
 
-        console.log(product, data);
+        // console.log(product, data);
 
         if ($(window).width() < 840) {
             template = 'modal-warranty-mobile';

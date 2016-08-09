@@ -1,10 +1,10 @@
 /* global $: true, Nitro: true, dust: true */
+'use strict';
 
 require('../../../templates/details.html');
 
 Nitro.module('details', function() {
 
-    'use strict';
 
     var $detalhes = $('#detalhes'),
         $modules = $('#caracteristicas h4[class*="Modulo"] + table'),
@@ -31,7 +31,9 @@ Nitro.module('details', function() {
             image: ''
         }];
 
-    if ($modules.length === 0) return;
+    if ($modules.length === 0) {
+        return;
+    }
 
     data.items = $.map($modules, function(item, i) {
 
@@ -45,7 +47,7 @@ Nitro.module('details', function() {
         };
     });
 
-    console.log('details data', data);
+    // console.log('details data', data);
 
     dust.render('details', data, function(err, out) {
         if (err) {

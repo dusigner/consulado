@@ -1,38 +1,39 @@
 
-body.teste-ab{
+body.teste-ab {
 	#modal-warranty {
 
-		input[type=radio], label:not(.box-opcao-garantia):before {
+		input[type=radio], 
+		label:not(.box-opcao-garantia):before {
 			display: none !important;
 		}
 
 		&.modal {
 			border-radius: 0;
 		}
-		.close{
-			border-radius:50%;
-			color:$gray;
-			&:hover{
-				color:#fff;
+		.close {
+			border-radius: 50%;
+			color: $gray;
+			&:hover {
+				color: #ffffff;
 			}
 		}
 
 		.modal-body {
-			>h4{
-				text-align:center;
-				color: $green;
+			>h4 {
 				@include responsiveFont(40, 16, true);
-			}
-			.submain-title{
+				color: $green;
 				text-align: center;
-				@include breakpoint(small, "max") {
+			}
+			.submain-title {
+				text-align: center;
+				@include breakpoint(small, 'max') {
 					@include responsiveFont(18, 16, true);
 				}
 			}
 			.box-product {
 				display: inline-block;
-				margin-bottom: 1em;
 				height: auto;
+				margin-bottom: 1em;
 				width: 100%;
 
 				img {
@@ -40,21 +41,21 @@ body.teste-ab{
 				}
 
 				.box-product-info {
-					margin-bottom: 15px;
 					display: inline-block;
+					margin-bottom: 15px;
 
 					p {
 						@include responsiveFont(14, 16, true);
-						width: 37%;
-						vertical-align: middle;
-						padding: 1em;
 						display: inline;
+						padding: 1em;
+						vertical-align: middle;
+						width: 37%;
 					}
 
 					span {
 						@include responsiveFont(22, 16, true);
 						border-left: 2px solid $gray;
-						padding: 0.2em;
+						padding: .2em;
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(14, 16, true);
 						}
@@ -67,7 +68,7 @@ body.teste-ab{
 				p {
 					display: inline-block;
 					@include breakpoint(small, 'max') {
-						line-height: 0.5em;
+						line-height: .5em;
 					}
 				}
 				a {
@@ -76,20 +77,20 @@ body.teste-ab{
 			}
 
 			.container-warranty {
+				margin-bottom: .5em;
 				width: 100%;
-				margin-bottom: 0.5em;
 
 				@include breakpoint(small, 'max') {
 					width: 100%;
 				}
 
 				.box-warranty {
-					margin: 0 auto;
 					display: inline-block;
+					margin: 0 auto;
+					padding: .6em;
 					vertical-align: top;
-					padding: 0.6em;
 
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
 						display: block;
 						padding-bottom: 1em;
 					}
@@ -105,22 +106,21 @@ body.teste-ab{
 							}
 
 							.box-title-warranty {
-								padding: 1.7em;
 								line-height: 1.2em;
+								padding: 1.7em;
 								@include breakpoint(small, 'max') {
 									padding: 1em 0 0 0;
 								}
 							}
 
 							.box-info-warranty {
-								@include breakpoint(small, "max") {
+								@include breakpoint(small, 'max') {
 									padding: 1em 0 1em 0;
 								}
 								p {
 									font-weight: normal;
-									//padding: 3.6em 0 4em 0;
 									padding: 2em 0 2.5em 0;
-									@include breakpoint(small, "max") {
+									@include breakpoint(small, 'max') {
 										padding: 0;
 									}
 								}
@@ -129,9 +129,9 @@ body.teste-ab{
 								button {
 									background: $txt-gray;
 									border: 3px solid $txt-gray;
-									color: #fff;
+									color: #ffffff;
 									&:hover {
-										background: #fff;
+										background: #ffffff;
 										color: $txt-gray;
 									}
 								}
@@ -143,14 +143,14 @@ body.teste-ab{
 						border: 3px solid $green;
 						border-radius: 10px;
 						margin: 0 auto;
-						width: 236px;
 						min-height: 227px;
+						width: 236px;
 
-						@include breakpoint(small, "max") {
-							width: 100%;
-							margin:0 auto;
-							text-align: left;
+						@include breakpoint(small, 'max') {
+							margin: 0 auto;
 							min-height: auto;
+							text-align: left;
+							width: 100%;
 						}
 
 						.show-more {
@@ -160,12 +160,12 @@ body.teste-ab{
 
 							.icon-angle-down {
 								@include responsiveFont(50, 16, true);
-								position: absolute;
-								color:$green;
+								bottom: -.89em;
+								color: $green;
 								left: 79%;
-								bottom: -0.89em;
-								transition: transform 0.3s ease-in;
+								position: absolute;
 								transform: scaleY(1);
+								transition: transform .3s ease-in;
 								&.active {
 									transform: scaleY(-1);
 								}
@@ -173,12 +173,14 @@ body.teste-ab{
 						}
 
 						.box-title-warranty {
-							padding-top: 0.5em;
-							@include breakpoint(small, "max") {
+							padding-top: .5em;
+							@include breakpoint(small, 'max') {
 								margin-left: 10%;
 								padding-top: 1em;
 							}
-							p, strong, span {
+							p, 
+							strong, 
+							span {
 								@include responsiveFont(14, 16, true);
 							}
 						}
@@ -186,33 +188,33 @@ body.teste-ab{
 						.box-info-warranty {
 							text-align: center;
 
-							@include breakpoint(small, "max") {
-								text-align: left;
-								min-height: inherit;
+							@include breakpoint(small, 'max') {
 								margin-left: 10%;
-								padding: 0.4em 0 0.4em 0;
+								min-height: inherit;
+								padding: .4em 0 .4em 0;
+								text-align: left;
 							}
 
 							div {
-								@include breakpoint(small, "max") {
-									padding: 14px 0 14px 0;
+								@include breakpoint(small, 'max') {
 									margin: 0;
+									padding: 14px 0 14px 0;
 								}
 							}
 
 							h2 {
 								@include responsiveFont(28, 16, true);
-								line-height: 1em;
-								text-transform: uppercase;
-								margin: 0;
 								color: $green;
+								line-height: 1em;
+								margin: 0;
+								text-transform: uppercase;
 							}
 
 							p {
 								@include responsiveFont(14, 16, true);
-								margin: 0;
-								line-height: 1.2em;
 								font-weight: bold;
+								line-height: 1.2em;
+								margin: 0;
 							}
 
 							span {
@@ -229,29 +231,29 @@ body.teste-ab{
 							}
 						}
 						.box-button {
-							padding-bottom: 0.7em;
-							@include breakpoint(small, "max") {
+							padding-bottom: .7em;
+							@include breakpoint(small, 'max') {
 								margin: 0 auto;
-								text-align: center;
 								padding-bottom: 1em;
+								text-align: center;
 							}
 							button {
 								@extend .primary-button;
-								@include responsiveFont(15,16, true);
+								@include responsiveFont(15, 16, true);
 								background: $green;
-								border: 3px solid $green;
 								background-image: none;
-								transition : all .3s ease;
-								display: inline-block;
+								border: 3px solid $green;
 								cursor: pointer;
-								min-width: 180px;
+								display: inline-block;
 								min-height: 48px;
+								min-width: 180px;
 								text-align: center;
 								text-transform: uppercase;
+								transition : all .3s ease;
 								&:hover {
 									color: $green;
 								}
-								@include breakpoint(small, "max") {
+								@include breakpoint(small, 'max') {
 									width: 90%;
 								}
 							}
@@ -283,20 +285,20 @@ body.teste-ab{
 				.box-list {
 					text-align: left;
 					width: 63%;
-					@include breakpoint(small, "max") {
-						width: 90%;
+					@include breakpoint(small, 'max') {
 						margin-left: 10%;
 						padding: 0 0 1em 0;
+						width: 90%;
 					}
 					p {
 						@include responsiveFont(14, 16, true);
-						display: inline-block;
 						color: $txt-gray;
+						display: inline-block;
 					}
 					strong {
 						@include responsiveFont(14, 16, true);
-						display: inline-block;
 						color: $txt-gray;
+						display: inline-block;
 						line-height: 1.2em;
 						width: 100%;
 					}

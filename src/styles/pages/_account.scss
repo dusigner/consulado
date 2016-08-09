@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // Utility helpers
 // @import "helpers/variables";
@@ -17,11 +17,12 @@
 /* ACCOUNT/ORDERS */
 // ===============================================================
 
-body.account, body.orders {
+body.account, 
+body.orders {
 
 	/* bootstrap reset */
-	@import "base/type";
-	@import "layout/container";
+	@import 'base/type';
+	@import 'layout/container';
 
 	a { text-decoration: none!important; }
 
@@ -30,39 +31,38 @@ body.account, body.orders {
 		.text-search {
 			@include responsiveFont(16);
 			box-shadow: none;
-			//border-radius: 0;
 
 			&:focus { outline: none; }
 		}
 
-		.logo{ color: $green;}
+		.logo { color: $green;}
 	}
 
-	.footer{
+	.footer {
 
-		.logo, form{margin:0;}
+		.logo, 
+		form {margin: 0;}
 
 	}
 
 	.menu-department {
 
-		.icon-hamburger{ top: 10px;}
+		.icon-hamburger { top: 10px;}
 
-		a{ color: $green;}
+		a { color: $green;}
 	}
 
 	.vtex-bootstrap { min-height: 400px; }
 
-	.row { margin-left:0; }
+	.row { margin-left: 0; }
 
 	.form-search {
 		.search-query {
-			//border-radius:0;
 			border: 1px solid $orange;
 		}
 	}
 
-	.footer-autocomplete { display:none; }
+	.footer-autocomplete { display: none; }
 
 
 	// ===============================================================
@@ -77,10 +77,10 @@ body.account, body.orders {
 
 		h1 {
 			@include font-size(36px);
-			color: #666;
+			color: #666666;
 			font-weight: normal;
 			margin: 20px 0;
-			text-transform:none;
+			text-transform: none;
 		}
 	}
 
@@ -88,7 +88,7 @@ body.account, body.orders {
 		& > .row {
 			margin-left: 0;
 
-			&>[class*="span"] {
+			&>[class*='span'] {
 				background-color: #fff;
 				border: 1px solid $gray;
 				margin: 0 0 0 3%;
@@ -97,7 +97,7 @@ body.account, body.orders {
 
 				&:first-child { margin-left: 0; }
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					margin-bottom: 30px;
 					margin-left: 0;
 					width: 100%;
@@ -117,9 +117,8 @@ body.account, body.orders {
 
 					&#edit-data-link,
 					&.address-update {
-						//@include vendor(border-radius, 0);
-						padding: 5px 12px;
 						display: block;
+						padding: 5px 12px;
 					}
 
 					&#edit-data-link {
@@ -129,7 +128,7 @@ body.account, body.orders {
 
 				.orders-link {
 					a {
-						display:block;
+						display: block;
 						padding: 5px 12px;
 					}
 				}
@@ -150,13 +149,14 @@ body.account, body.orders {
 		.row {
 			margin: 0;
 
-			&>[class*="span"] {
+			&>[class*='span'] {
 				margin: 0;
 				width: 100%;
 			}
 
 			.address-display-unit {
-				h5, .edit-address-link{ display: none; }
+				h5, 
+				.edit-address-link { display: none; }
 			}
 		}
 	}
@@ -165,12 +165,13 @@ body.account, body.orders {
 		form { margin: 0; }
 
 		input[type=text] {
-			height:auto;
+			height: auto;
 			margin-bottom: 0;
 		}
 	}
 
-	.footer a, .call-newsletter { color: #fff; }
+	.footer a, 
+	.call-newsletter { color: #fff; }
 
 
 	// ===============================================================
@@ -181,10 +182,10 @@ body.account, body.orders {
 
 		.btn {
 			@extend .primary-button;
+			background-image: none;
 			border-radius: 0;
-			font-size: 14px;
-			background-image:none;
 			box-shadow: none!important;
+			font-size: 14px;
 			text-shadow: none!important;
 		}
 
@@ -199,16 +200,15 @@ body.account, body.orders {
 
 			p { margin: 0; }
 
-			@include breakpoint(small, "min") {
-				border-top: 1px solid $gray;
+			@include breakpoint(small, 'min') {
 				border-bottom: 1px solid $gray;
+				border-top: 1px solid $gray;
 				padding: 10px 0;
 			}
 		}
 
 		.request-cancel {
 			@include hide-conditional(); // Botão cancelar escondido
-
 			display: block;
 			margin: 0;
 			padding: 0;
@@ -216,20 +216,20 @@ body.account, body.orders {
 		}
 
 		.request-cancel-link {
-			@include breakpoint(small, "max") {
+			@include breakpoint(small, 'max') {
 				margin: 0 !important;
 				text-align: center;
 			}
 
 			a {
 				@extend .secondary-button;
-				font-size: 11px;
 				display: inline-block;
+				font-size: 11px;
 				font-weight: 400;
 				margin: 10px 0;
 				padding: 5px 10px;
 
-				@include breakpoint(small, "max") { width: 100%; }
+				@include breakpoint(small, 'max') { width: 100%; }
 			}
 		}
 	}
@@ -238,7 +238,7 @@ body.account, body.orders {
 
 
 body.account {
-	[class*="icon"] { background-image: none; }
+	[class*='icon'] { background-image: none; }
 
 	// ===============================================================
 	/* MODAL BOOTSTRAP */
@@ -246,29 +246,32 @@ body.account {
 	.modal {
 		@include vendor(border-radius, 0);
 
-		&.hide{ z-index:-1; }
+		&.hide { z-index: -1; }
 		&.hide.fade.in {
 			visibility: visible;
-			z-index:1050;
+			z-index: 1050;
 		}
 
 
 		form {
-			margin:0;
+			margin: 0;
 
-			input[type="text"], input[type="email"], input[type="tel"], select {
+			input[type='text'], 
+			input[type='email'], 
+			input[type='tel'], 
+			select {
 				@include vendor(border-radius, 0);
 				border: 1px solid #ccc;
-				height:40px;
+				height: 40px;
 			}
 		}
 
 		.modal-header {
 			h3 {
 				@include font-size(36px);
+				color: #666666;
 				font-weight: normal;
-				color: #666;
-				text-transform:none;
+				text-transform: none;
 			}
 		}
 
@@ -276,46 +279,49 @@ body.account {
 			.btn {
 				@extend .primary-button;
 				@include vendor(border-radius, 0);
-				background-image:none;
+				background-image: none;
 
 				&.btn-primary {
-					float:left;
-					max-width:200px;
+					float: left;
+					max-width: 200px;
 				}
 			}
 
 			.btn-link {
-				color:#666;
+				color: #666666;
 
-				&:hover { color:#f00; }
+				&:hover { color: #f00; }
 			}
 		}
 	}
 
 	.vtex-bootstrap .container {
-		width:inherit;
-		max-width:1280px;
+		max-width: 1280px;
+		width: inherit;
 	}
 }
 
 body.orders {
 
 	.vtex-bootstrap .container {
-		@include breakpoint(extra-small, "max") { padding: 10px; }
+		@include breakpoint(extra-small, 'max') { padding: 10px; }
 	}
 
 	.container h1.title {
-		@include breakpoint(extra-small, "max") { margin-bottom: 0; }
+		@include breakpoint(extra-small, 'max') { margin-bottom: 0; }
 
-		& + br { display: none; visibility: hidden; }
+		& + br { 
+			display: none; 
+			visibility: hidden; 
+		}
 	}
 
-	.visible-phone { margin: 0.5em 0; }
+	.visible-phone { margin: .5em 0; }
 
 	.header .container {
-		@include breakpoint(small, "max") {
-			padding:0;
-			width:100%;
+		@include breakpoint(small, 'max') {
+			padding: 0;
+			width: 100%;
 		}
 	}
 
@@ -338,7 +344,7 @@ body.orders {
 	.vtex-bootstrap .ordergroup,
 	.vtex-bootstrap .order-info .top-row { border: none; }
 
-	.vtex-bootstrap .order-details .items{
+	.vtex-bootstrap .order-details .items {
 		border-top: 1px solid;
 		padding: 1em 0;
 	}
@@ -350,9 +356,9 @@ body.orders {
 		.ordergroup {
 			border: 1px solid $gray;
 			border-width: 1px 1px 3px 1px;
-			position: relative;
 			margin-bottom: 40px;
 			padding-bottom: 10px;
+			position: relative;
 
 			.order-info,
 			.order-details { padding: 0 20px; }
@@ -361,10 +367,10 @@ body.orders {
 			.order-header {
 				background-color: $gray-l;
 				float: left;
-				width: 100%;
 				padding-left: 20px;
+				width: 100%;
 
-				@include breakpoint(extra-small, "max") { padding-left: 10px; }
+				@include breakpoint(extra-small, 'max') { padding-left: 10px; }
 
 				.order-title {
 					@include responsiveFont(22);
@@ -373,41 +379,40 @@ body.orders {
 					margin: 0;
 					padding: 0;
 
-					@include breakpoint(small, "max") {
-						position: relative;
-						width: 50%;
+					@include breakpoint(small, 'max') {
 						line-height: normal;
 						padding: 7px 10px 0;
+						position: relative;
+						width: 50%;
 					}
 
-					@include breakpoint(extra-small, "max") {
+					@include breakpoint(extra-small, 'max') {
 						height: 100%;
 						min-height: 80px;
 					}
 
-					&, .title-ordergroup-order {
+					&, 
+					.title-ordergroup-order {
 						color: $txt-gray!important;
 						font-weight: 700;
 					}
 
 					.order-date {
+						color: $orange;
 						display: inline-block;
 						font-weight: 400;
-						color: $orange;
 
-						@include breakpoint(extra-small, "min") { padding: 0 10px; }
+						@include breakpoint(extra-small, 'min') { padding: 0 10px; }
 					}
 
 					.repeat-order {
-						@include breakpoint(small, "max") {
-							// margin: -10px auto;
-							// float: left;
-							margin: 10px auto;
+						@include breakpoint(small, 'max') {
 							float: none;
+							margin: 10px auto;
 
-							a{
-								position:absolute;
+							a {
 								left: 100%;
+								position: absolute;
 								top: 0;
 								width: 100%;
 							}
@@ -422,10 +427,9 @@ body.orders {
 					@include responsiveFont(16);
 					margin-top: 7px;
 
-					@include breakpoint(extra-small, "max") {
-						// line-height: normal;
-						padding: 0.7em 1em;
+					@include breakpoint(extra-small, 'max') {
 						margin-top: 18px;
+						padding: .7em 1em;
 						position: relative;
 						width: 100%;
 					}
@@ -434,21 +438,19 @@ body.orders {
 
 			// Forma de pagamento | Endereço de entrega | Total
 			.order-info {
-				// display: block;
-				// float: left;
 				bottom: 0;
 				font-size: 14px;
 				width: 100%;
 
-				@include breakpoint(medium, "min") { position: absolute; }
+				@include breakpoint(medium, 'min') { position: absolute; }
 
 				.general-info {
-					@include breakpoint(small, "max") { width: 100%; }
+					@include breakpoint(small, 'max') { width: 100%; }
 
 					.bank-invoice-print a {
-						margin-top:10px;
+						margin-top: 10px;
 
-						@include breakpoint(small, "max") { width:100%; }
+						@include breakpoint(small, 'max') { width: 100%; }
 					}
 				}
 
@@ -456,11 +458,11 @@ body.orders {
 					table {
 						float: right;
 						width: auto;
-						@include breakpoint(small, "max") { width:100%; }
+						@include breakpoint(small, 'max') { width: 100%; }
 
 						tr {
-							td, th { padding: 7px 0 7px 10px; }
-
+							td, 
+							th { padding: 7px 0 7px 10px; }
 							td { padding-left: 50px; }
 						}
 					}
@@ -471,66 +473,72 @@ body.orders {
 			.order-details {
 				font-size: 14px;
 
-				@include breakpoint(medium, "min") { padding-bottom: 175px; }
+				@include breakpoint(medium, 'min') { padding-bottom: 175px; }
 
-				.seller-info, .showTrackingInfo{display: none}
+				.seller-info, 
+				.showTrackingInfo {display: none}
 
 				.span3 {
-					@include breakpoint(small, "max") { width:100%; }
+					@include breakpoint(small, 'max') { width: 100%; }
 				}
 
-				table, thead, tbody, th, td, tr {
-					@include breakpoint(small, "max") {
+				table, 
+				thead, 
+				tbody, 
+				th, 
+				td, 
+				tr {
+					@include breakpoint(small, 'max') {
 						display: block;
 					}
 				}
 
 				thead tr {
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
+						left: -9999px;
 						position: absolute;
 						top: -9999px;
-						left: -9999px;
 					}
 				}
 
 				tr {
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
 						// border-bottom: 35px solid #fff;
 					}
 				}
 
 				td {
-					@include breakpoint(small, "max") {
+					@include breakpoint(small, 'max') {
 						border: none;
 						border-bottom: 1px solid #eee;
-						position: relative;
 						padding-left: 30%;
-						text-align:left;
+						position: relative;
+						text-align: left;
 
 						&:before {
-							position: absolute;
-							top: 6px;
-							left: 6px;
-							width: 30%;
-							padding-right: 10px;
-							white-space: nowrap;
-							text-align:left;
 							font-weight: bold;
+							left: 6px;
+							padding-right: 10px;
+							position: absolute;
+							text-align: left;
+							top: 6px;
+							white-space: nowrap;
+							width: 30%;
 						}
 					}
 				}
 
-				td:nth-of-type(1):before { @include breakpoint(small, "max") { content: "Produto";  } }
-				td:nth-of-type(3):before { @include breakpoint(small, "max") { content: "Entrega";  } }
-				td:nth-of-type(4):before { @include breakpoint(small, "max") { content: "Preço";    } }
-				td:nth-of-type(5):before { @include breakpoint(small, "max") { content: "Qtd.";     } }
-				td:nth-of-type(6):before { @include breakpoint(small, "max") { content: "Total";    } }
+				td:nth-of-type(1):before { @include breakpoint(small, 'max') { content: 'Produto';  } }
+				td:nth-of-type(3):before { @include breakpoint(small, 'max') { content: 'Entrega';  } }
+				td:nth-of-type(4):before { @include breakpoint(small, 'max') { content: 'Preço';    } }
+				td:nth-of-type(5):before { @include breakpoint(small, 'max') { content: 'Qtd.';     } }
+				td:nth-of-type(6):before { @include breakpoint(small, 'max') { content: 'Total';    } }
 
 				.showTrackingInfo a {
-					@include breakpoint(small, "max") { width:100%; }
+					@include breakpoint(small, 'max') { width: 100%; }
 				}
 
-				@include breakpoint(small, "max") {
+				@include breakpoint(small, 'max') {
 					td.product-image { border-bottom: none; }
 
 					td.quantity-price {
@@ -539,8 +547,8 @@ body.orders {
 
 						.total-selling-price {
 							display: block!important;
-							width: 100%;
 							white-space: nowrap;
+							width: 100%;
 						}
 					}
 				}
@@ -555,9 +563,9 @@ body.orders {
 	=            Alert            =
 	=============================*/
 	.alert-info {
-		position: absolute;
 		left: 0;
 		max-width: 90%;
+		position: absolute;
 		right: 0;
 		top: 8px;
 	}
@@ -568,54 +576,55 @@ body.orders {
 	*  Fazer versão mobile do status de produto
 	*
 	*/
-	.order-status-wrapper{
+	.order-status-wrapper {
+		background-image: url('/arquivos/brastemp2-map-tracking.png');
+		height: 56px;
+		position: relative;
 		text-indent: -999em;
-		 background-image: url(/arquivos/brastemp2-map-tracking.png);
-		 height:56px;
-		 position: relative;
-		 width:408px;
-		 @include breakpoint(small, "max") {
-		 	display:none;
+		width: 408px;
+
+		@include breakpoint(small, 'max') {
+		 	display: none;
 		 }
 	}
 
 	.order-loading-estimate {
-		display:block;
-		height: 25px;
-	    width: 408px;
-	    float:right;
-	    position: relative;
-	    padding: 20px 0 50px 0;
 	    clear: both;
-	     .realizado{
+		display: block;
+	    float: right;
+		height: 25px;
+	    padding: 20px 0 50px 0;
+	    position: relative;
+	    width: 408px;
+	     .realizado {
 	    	@include responsiveFont(13, 16, true);
 	    }
-	    .delivery{
-	    	float:right;
-	    	display: none;
+	    .delivery {
 	    	@include responsiveFont(13, 16, true);
+	    	display: none;
+	    	float: right;
 	    }
 	    .box-loading {
-		 	width: 0;
-			height: 10px;
-			margin-top:5px;
 			background: #9aca3c;
 			display: block;
+			height: 10px;
+			margin-top: 5px;
 			position: relative;
+		 	width: 0;
 		 }
 		 .box-loading-gray {
-		 	width:100%;
-		 	height: 10px;
-		 	margin-top:5px;
 		 	background: #dedede;
 		 	display: block;
+		 	height: 10px;
+		 	margin-top: 5px;
 		 	position: absolute;
+		 	width: 100%;
 		 }
 		 ul {
 			li {
 				@include responsiveFont(10px);
-				display: inline-block;
 			    color: #9aca3c;
+				display: inline-block;
 			    font-weight: bold;
 			    text-align: right;
 			}
@@ -629,21 +638,43 @@ body.orders {
 			color: #9aca3c;
 			font-weight: bold;
 		}
-		@include breakpoint(small, "max") {
-			display:none;
+		@include breakpoint(small, 'max') {
+			display: none;
 		}
 	}
 
-	.order-status-wrapper > div{display:none; height:65px; position: absolute; top:0;}
-	.order-status-wrapper > div.pedido-recebido{left:0; width: 60px}
-	.order-status-wrapper > div.aguardando-pagamento{left:100px; width: 84px}
-	.order-status-wrapper > div.preparando-entrega{left:216px; width: 84px}
-	.order-status-wrapper > div.enviado{left:324px; width: 84px}
-	.order-status-wrapper > div.cancelado, .order-status-wrapper > div.processando-cancelamento{right:29px; width: 100px}
+	.order-status-wrapper > div {
+		display: none; 
+		height: 65px; 
+		position: absolute; 
+		top: 0;
+	}
+	.order-status-wrapper > div.pedido-recebido {
+		left: 0; 
+		width: 60px;
+	}
+	.order-status-wrapper > div.aguardando-pagamento {
+		left: 100px; 
+		width: 84px;
+	}
+	.order-status-wrapper > div.preparando-entrega {
+		left: 216px; 
+		width: 84px;
+	}
+	.order-status-wrapper > div.enviado {
+		left: 324px; 
+		width: 84px;
+	}
+	.order-status-wrapper > div.cancelado, 
+	.order-status-wrapper > div.processando-cancelamento {
+		right: 29px; 
+		width: 100px;
+	}
 
-	.order-status-wrapper.processando-pagamento{background-position: 0 -6px;}
-	.order-status-wrapper.preparando-entrega{background-position: 0 -122px;}
-	.order-status-wrapper.cancelado, .order-status-wrapper.processando-cancelamento{background-position: 276px -240px;}
+	.order-status-wrapper.processando-pagamento {background-position: 0 -6px;}
+	.order-status-wrapper.preparando-entrega {background-position: 0 -122px;}
+	.order-status-wrapper.cancelado, 
+	.order-status-wrapper.processando-cancelamento {background-position: 276px -240px;}
 	.order-status-wrapper.enviado {background-position: 0 -181px;}
 
 	.order-status-wrapper.processando-pagamento .pedido-recebido,
@@ -656,9 +687,9 @@ body.orders {
 	.order-status-wrapper.enviado .preparando-entrega,
 	.order-status-wrapper.enviado .enviado,
 	.order-status-wrapper.cancelado .cancelado,
-	.order-status-wrapper.processando-cancelamento .cancelado{display: block}
+	.order-status-wrapper.processando-cancelamento .cancelado {display: block}
 }
 
 
 
-@import "components/orders/order.warrantySpare";
+// @import "components/orders/order.warrantySpare";

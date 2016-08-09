@@ -1,8 +1,9 @@
+'use strict';
+
 require('vendors/vtex-modal-cookie');
 
 Nitro.module('modal.overlayAbandono', function() {
 
-    'use strict';
 
     var self = this;
 
