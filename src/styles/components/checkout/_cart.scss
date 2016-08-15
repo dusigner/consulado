@@ -40,12 +40,12 @@ body {
 							}
 						}
 
-						.brand, 
-						.seller, 
-						.shipping-date, 
-						.product-price, 
+						.brand,
+						.seller,
+						.shipping-date,
+						.product-price,
 						.quantity-price {
-							@include responsiveFont(12, 16, true);
+							@include responsiveFont(14, 16, true);
 							color: $txt-gray-l;
 							font-weight: normal;
 						}
@@ -53,6 +53,7 @@ body {
 						.product-name {
 							@include responsiveFont(14, 16, true);
 							font-weight: bold;
+							width: 385px;
 
 							&>a {
 								display: block;
@@ -92,7 +93,7 @@ body {
 
 						.shipping-date {
 							.shipping-estimate-date {
-								@include responsiveFont(13, 16, true);
+								@include responsiveFont(14, 16, true);
 								color: $txt-gray;
 								font-weight: bold;
 							}
@@ -104,13 +105,13 @@ body {
 							}
 
 							.list-price {
-								@include responsiveFont(13, 16, true);
+								@include responsiveFont(14, 16, true);
 
 								.old-product-price { color: $txt-gray-l; }
 							}
 
 							.best-price {
-								@include responsiveFont(13, 16, true);
+								@include responsiveFont(14, 16, true);
 								color: $txt-gray;
 								font-weight: bold;
 							}
@@ -126,6 +127,7 @@ body {
 						}
 
 						.quantity-price {
+							@include responsiveFont(14, 16, true);
 							color: $green;
 							font-weight: bold;
 							padding: 20px 5px;
@@ -163,7 +165,7 @@ body {
 				width: 100%;
 			}
 
-			.quantity-price, 
+			.quantity-price,
 			.monetary {
 				@include responsiveFont(13, 16, true);
 				font-weight: bold;
@@ -185,7 +187,7 @@ body {
 			.accordion-group {
 				margin-bottom: 0;
 
-				tbody, 
+				tbody,
 				tfoot {
 					padding: 5px;
 
@@ -265,7 +267,7 @@ body {
 				}
 
 				.Shipping {
-					.monetary, 
+					.monetary,
 					.space {
 						display: none;
 					}
@@ -291,7 +293,7 @@ body {
 							min-width: auto;
 							padding: 6px 0;
 
-							.shipping-name, 
+							.shipping-name,
 							.shipping-name-to {
 								display: none;
 							}
@@ -327,8 +329,8 @@ body {
 
 								.caret {display: none;}
 
-								&:hover, 
-								&:focus, 
+								&:hover,
+								&:focus,
 								&.btn.dropdown-toggle {
 									background: #ffffff;
 									border: none;
@@ -418,9 +420,9 @@ body {
 										padding: 0;
 										transition: color 400ms ease-out;
 
-										&:hover { 
-											background: #ffffff; 
-											color: $green; 
+										&:hover {
+											background: #ffffff;
+											color: $green;
 										}
 
 										.icon-ok {
@@ -567,8 +569,8 @@ body {
 
 			.caret {display: none;}
 
-			&:hover, 
-			&:focus, 
+			&:hover,
+			&:focus,
 			&.btn.dropdown-toggle {
 				background: #ffffff;
 				border: none;
@@ -593,9 +595,9 @@ body {
 			li {
 				a {
 					transition: color 400ms ease-out;
-					&:hover { 
-						background: #ffffff; 
-						color: $green; 
+					&:hover {
+						background: #ffffff;
+						color: $green;
 					}
 				}
 			}

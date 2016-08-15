@@ -42,7 +42,7 @@ body.categoria .compare {
 		.title-filter { display: none; }
 	}
 
-	&.departamento, 
+	&.departamento,
 	&.busca {
 		.title-filter:before { content: 'Filtrar por categoria'; }
 	}
@@ -50,7 +50,7 @@ body.categoria .compare {
 	&.busca {
 		// .search-single-navigator ul{ display: inline-block; }
 		// .banner-principal{display: none}
-		.banner-principal 
+		.banner-principal
 		.box-banner {display: none;}
 	}
 }
@@ -77,7 +77,7 @@ body.categoria .compare {
 		float: right!important;
 		padding: 15px;
 
-		&:hover, 
+		&:hover,
 		&:focus { outline: none; }
 	}
 }
@@ -98,7 +98,7 @@ body.categoria .compare {
 		position: absolute;
 		top: 172px !important;
 		width: 86%;
-		z-index: 2;
+		z-index: 4;
 	}
 
 	&:empty { @include hide-conditional(); }
@@ -120,8 +120,8 @@ body.categoria .compare {
 		}
 	}
 
-	h3, 
-	h5, 
+	h3,
+	h5,
 	ul { display: none; }
 
 	/*.busca & {
@@ -136,7 +136,7 @@ body.categoria .compare {
 		margin-top: 0;
 	}
 
-	.navigation-tabs, 
+	.navigation-tabs,
 	.navigation {
 		height: 80px;
 		line-height: 80px;
@@ -202,7 +202,7 @@ body.categoria .compare {
 		// .search-single-navigator,
 		// .single-filter-wrapper { @include clearfix(); }
 
-		h4, 
+		h4,
 		h5 {
 			color: $txt-gray;
 			display: block;
@@ -360,7 +360,7 @@ body.categoria .compare {
 			h4 {
 				margin: 0 1em 0 0;
 
-				&, 
+				&,
 				a { color: $orange;}
 			}
 
@@ -552,7 +552,7 @@ body.categoria .compare {
 
 		}
 	}
-	
+
 	ul {
 		@include responsiveFont(16, 12, true);
 		background-color: #fff;
@@ -886,8 +886,8 @@ body.categoria .compare {
 	}
 
 	&.busca-vazia {
-		.filter-wrapper, 
-		.top-wrapper, 
+		.filter-wrapper,
+		.top-wrapper,
 		#list-more { @include hide-conditional(); }
 	}
 }
