@@ -45,7 +45,7 @@ body {
 						.shipping-date,
 						.product-price,
 						.quantity-price {
-							@include responsiveFont(14, 16, true);
+							@include responsiveFont(12, 16, true);
 							color: $txt-gray-l;
 							font-weight: normal;
 						}
@@ -93,7 +93,7 @@ body {
 
 						.shipping-date {
 							.shipping-estimate-date {
-								@include responsiveFont(14, 16, true);
+								@include responsiveFont(13, 16, true);
 								color: $txt-gray;
 								font-weight: bold;
 							}
@@ -105,13 +105,13 @@ body {
 							}
 
 							.list-price {
-								@include responsiveFont(14, 16, true);
+								@include responsiveFont(13, 16, true);
 
 								.old-product-price { color: $txt-gray-l; }
 							}
 
 							.best-price {
-								@include responsiveFont(14, 16, true);
+								@include responsiveFont(13, 16, true);
 								color: $txt-gray;
 								font-weight: bold;
 							}
@@ -127,7 +127,6 @@ body {
 						}
 
 						.quantity-price {
-							@include responsiveFont(14, 16, true);
 							color: $green;
 							font-weight: bold;
 							padding: 20px 5px;
