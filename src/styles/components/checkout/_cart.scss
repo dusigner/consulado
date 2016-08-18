@@ -15,7 +15,7 @@ body {
 				}
 
 				tbody {
-					padding-bottom: 20px;
+					padding-bottom: 30px;
 
 					td {
 						padding: 20px 10px;
@@ -55,6 +55,8 @@ body {
 							font-weight: bold;
 							width: 385px;
 
+							@include breakpoint(small, 'max') { width: 240px; }
+
 							&>a {
 								display: block;
 								width: 100%;
@@ -71,21 +73,22 @@ body {
 
 							.product-service {
 								@include breakpoint(small, 'max') {
-									bottom: -5px;
-									left: 51%;
+									bottom: -16px;
+									left: 52%;
 									position: absolute;
 									transform: translateX(-50%);
 									width: 95%;
 								}
 
 								.linkWarranty {
-									@include responsiveFont(10, 16, true);
+									@include responsiveFont(11, 16, true);
 									text-transform: uppercase;
 
 									@include breakpoint(small, 'max') {
+										@include responsiveFont(10, 16, true);
 										line-height: normal;
 										margin-right: 10px;
-										padding: 5px 0;
+										padding: 10px 0;
 									}
 								}
 							}
