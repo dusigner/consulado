@@ -41,7 +41,7 @@
 			vertical-align: top;
 			width: 27%;
 
-			&:hover, 
+			&:hover,
 			&.active {
 				border-color: $gray;
 
@@ -106,7 +106,7 @@
 					position: absolute;
 					visibility: hidden;
 
-					&:hover + label, 
+					&:hover + label,
 					&:checked + label {
 					//color: $button-bg-color;
 
@@ -201,7 +201,7 @@
 
 				.footer-box-opcao-garantia { background: #ebf4d8; }
 
-				&:hover, 
+				&:hover,
 				&.active {
 					.footer-box-opcao-garantia {
 						background: darken(#ebf4d8, 10) !important;
@@ -392,7 +392,7 @@
 				label {
 					display: inline-block;
 					margin: 0 10px;
-					max-width: 260px;
+					max-width: 235px;
 					padding: 20px 0;
 					position: relative;
 					text-align: left;
@@ -545,7 +545,7 @@
 						vertical-align: middle;
 						width: 100%;
 
-						span, 
+						span,
 						a {
 							display: inline-block;
 							font-weight: bold;
