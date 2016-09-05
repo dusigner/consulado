@@ -31,23 +31,23 @@ Nitro.module('order.warranty', function() {
 
         // Chamadas de ambiente de Produção
 
-        getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
+        // getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
 
-        addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
+        // addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
 
-        cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
+        // cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
 
-        printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
+        // printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
 
         // Chamadas de ambiente de QA
 
-        // getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
+        getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
 
-        // addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
+        addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
 
-        // cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
+        cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
 
-        // printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
+        printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
 
         getPlans: function(orderId, itemName) {
             return vtexjs.checkout.getOrders(orderId).then(function(orders) {
@@ -57,11 +57,9 @@ Nitro.module('order.warranty', function() {
                 $.each(orders, function(i, order) {
                     item = $.each(order.items, function(index, product) {
                         if (product.name === itemName) {
-                            //console.log('item',item);
                             return product;
                         }
                     });
-                    //console.log('item', item);
                 });
 
 
@@ -208,12 +206,9 @@ Nitro.module('order.warranty', function() {
 
         boxOrder[orderId].date = orderDate;
 
-        if ($.diffDate(dateNow, orderDate) <= 334 &&
-            boxOrder[orderId].status.toLowerCase() !== 'cancelado' &&
-            boxOrder[orderId].status.toLowerCase() !== 'pedido cancelado' &&
-            boxOrder[orderId].status.toLowerCase() !== 'aguardando pagamento') {
+        // if ($.diffDate(dateNow, orderDate) <= 334 && boxOrder[orderId].status.toLowerCase() !== 'cancelado' && boxOrder[orderId].status.toLowerCase() !== 'pedido cancelado' && boxOrder[orderId].status.toLowerCase() !== 'aguardando pagamento') {
             self.addButton(boxOrder[orderId]);
-        }
+        // }
     };
 
     this.addButton = function(order) {
@@ -244,7 +239,6 @@ Nitro.module('order.warranty', function() {
             boxPlans[order.id] = res;
 
             if (res.message === 'Sale found') {
-                //console.log('Sale found', res);
                 var btnCancel = true,
                     price = 'R$ ' + _.formatCurrency(res.price);
 
@@ -262,8 +256,8 @@ Nitro.module('order.warranty', function() {
 
                 dust.render('warrantySpare.btnDownloadWarranty', templateData, function(err, out) {
                     if (err) {
-                        throw new Error('Modal Warranty Dust error: ' + err);  
-                    } 
+                        throw new Error('Modal Warranty Dust error: ' + err);
+                    }
                     $('.items-' + order.id + '.item-' + product.id).after(out);
                 });
 
@@ -276,8 +270,8 @@ Nitro.module('order.warranty', function() {
                     id: order.id
                 }, function(err, out) {
                     if (err) {
-                        throw new Error('Modal Warranty Dust error: ' + err);  
-                    } 
+                        throw new Error('Modal Warranty Dust error: ' + err);
+                    }
                     $('.items-' + order.id + '.item-' + product.id).after(out);
                 });
 
@@ -386,7 +380,9 @@ Nitro.module('order.warranty', function() {
                     email: profileData.Email
                 },
                 sale: {
-                    id: skuInfo.orderId
+                    id: skuInfo.orderId,
+                    store: 33,
+                    sale_date: $.formatDatetime(dateNow, '-')
                 },
                 plan: {
                     id: idPlan
@@ -396,7 +392,6 @@ Nitro.module('order.warranty', function() {
 
 
         PDVBox.addPlan(data).done(function(res) {
-            //console.log(res);
             if (res.message === 'Sale inserted') {
                 $('#vtex-confirmar-dados-garantia .close').trigger('click');
 
