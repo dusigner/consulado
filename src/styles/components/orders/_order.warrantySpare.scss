@@ -1,0 +1,195 @@
+body.orders,
+body.pedidos {
+	.alert-box {
+		background:	$orange;
+		border: 2px solid darken($orange, 20%);
+		color: #ffffff;
+		font-weight: bold;
+		left: 50%;
+		padding: 5px 10px;
+		position: fixed;
+		top: 10px;
+		transform: translate(-50%, 0%);
+		z-index: 9999;
+	}
+
+	.add-warranty { @include responsiveFont(14, 16, true); }
+
+	.vtex-modal {
+		overflow-y: auto;
+
+		.close { opacity: 1; }
+
+		.modal-holder {
+			max-width: 700px;
+
+			.modal-header {
+				border: none;
+				color: $orange;
+				padding: 2rem 0 1rem 0;
+			}
+
+			.modal-content { padding: 0 30px 30px 30px; }
+
+			input[type=text],
+			input[type=email],
+			input[type=password],
+			input[type=tel],
+			select {
+				background-color: #f4f2f1;
+				border: 1px solid #e4e4e4;
+				box-shadow: none;
+				height: 40px;
+				margin-bottom: 1em;
+			}
+		}
+
+		button { outline: none; }
+	}
+}
+
+#vtex-selecione-garantia {
+	select { width: 100%; }
+
+	h2 {
+		@include responsiveFont(20, 16, true);
+		color: $txt-gray;
+		font-weight: bold;
+		line-height: 120%;
+		margin-bottom: 0;
+		margin-top: 20px;
+		padding: 0;
+		text-align: left;
+	}
+
+	h3 {
+		@include responsiveFont(16, 16, true);
+		color: $txt-gray;
+		font-weight: normal;
+		margin-bottom: 15px;
+		margin-top: 0;
+		padding: 0;
+		text-align: left;
+	}
+
+	p { margin-bottom: 0; }
+
+	.add {
+		@include responsiveFont(14, 16, true);
+		display: inline-block;
+		margin: 5px 0 5px 10px;
+	}
+
+	div {
+		div p {
+			@include responsiveFont(13, 16, true);
+			text-align: justify;
+		}
+
+		.mais {
+			@include responsiveFont(13, 16, true);
+			color: $txt-gray;
+			display: inline-block;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	.botao { text-align: right; }
+}
+
+#vtex-pagamento-garantia {
+	iframe {
+		border: none;
+		min-height: 300px;
+	}
+
+	.back.loading { width: 89px; }
+}
+
+#vtex-confirmar-dados-garantia {
+	.group {
+		float: left;
+		padding: 0 5px;
+		width: 50%;
+
+		@include breakpoint(small, 'max') { width: 100%; }
+	}
+
+	label {
+		cursor: auto;
+		text-align: left;
+	}
+
+	.botao {
+		clear: both;
+		display: block;
+		margin-top: 10px;
+		min-height: 45px;
+		width: 100%;
+
+		.back {
+			@include responsiveFont(14, 16, true);
+			float: left;
+		}
+
+		.confirm {
+			@include responsiveFont(14, 16, true);
+			float: right;
+		}
+	}
+}
+
+.item-service {
+	.download-avulso,
+	.download {
+		@include responsiveFont(12, 16, true);
+		padding: 3px 10px;
+
+		@include breakpoint(medium, 'min') { margin-left: 10px; }
+	}
+	.download {
+		border: 2px solid $orange;
+		border-radius: 2px;
+		color: $orange;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 700;
+		position: relative;
+		text-align: center;
+		transition: all .3s ease;
+		user-select: none;
+		vertical-align: baseline;
+
+		&:hover {
+			background-color: $orange;
+			color: #ffffff;
+		}
+	}
+}
+
+#vtex-imprimir-garantia {
+	.modal-content {
+		table {
+			width: 100%;
+			word-break: break-all;
+		}
+
+		a {
+			color: $orange;
+
+			&:hover {
+				color: #ffffff;
+			}
+		}
+
+		@include breakpoint(small, 'max') {
+			padding: 40px 10px;
+
+			td {
+				text-align: center;
+				width: 33%;
+			}
+		}
+	}
+}
