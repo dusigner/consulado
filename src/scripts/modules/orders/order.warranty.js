@@ -206,9 +206,9 @@ Nitro.module('order.warranty', function() {
 
         boxOrder[orderId].date = orderDate;
 
-        // if ($.diffDate(dateNow, orderDate) <= 334 && boxOrder[orderId].status.toLowerCase() !== 'cancelado' && boxOrder[orderId].status.toLowerCase() !== 'pedido cancelado' && boxOrder[orderId].status.toLowerCase() !== 'aguardando pagamento') {
+        if ($.diffDate(dateNow, orderDate) <= 334 && boxOrder[orderId].status.toLowerCase() !== 'cancelado' && boxOrder[orderId].status.toLowerCase() !== 'pedido cancelado' && boxOrder[orderId].status.toLowerCase() !== 'aguardando pagamento') {
             self.addButton(boxOrder[orderId]);
-        // }
+        }
     };
 
     this.addButton = function(order) {
