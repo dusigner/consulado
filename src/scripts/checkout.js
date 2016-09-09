@@ -71,7 +71,7 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
         if (self.isCart()) {
             self.cart();
         }
-        self.rioOlimpiadas();
+        // self.rioOlimpiadas();
     };
 
     //event
