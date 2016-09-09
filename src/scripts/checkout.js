@@ -206,19 +206,19 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
         }
     };
 
-    this.rioOlimpiadas = function() {
-        // console.log(self.orderForm);
-        if (self.orderForm && self.orderForm.shippingData.address) {
-            var $cep = self.orderForm.shippingData.address.postalCode;
-            $cep = $.currencyToInt($cep);
-            if ($cep >= 20000001 && $cep <= 23799999) {
-                window.vtex.checkout.MessageUtils.showMessage({
-                    text: 'Importante: Os prazos de entrega para a cidade do Rio de Janeiro podem sofrer atrasos durante as Olimpíadas, uma vez que muitas vias estão interditadas.',
-                    status: 'info'
-                });
-            }
-        }
-    };
+    // this.rioOlimpiadas = function() {
+    //     // console.log(self.orderForm);
+    //     if (self.orderForm && self.orderForm.shippingData.address) {
+    //         var $cep = self.orderForm.shippingData.address.postalCode;
+    //         $cep = $.currencyToInt($cep);
+    //         if ($cep >= 20000001 && $cep <= 23799999) {
+    //             window.vtex.checkout.MessageUtils.showMessage({
+    //                 text: 'Importante: Os prazos de entrega para a cidade do Rio de Janeiro podem sofrer atrasos durante as Olimpíadas, uma vez que muitas vias estão interditadas.',
+    //                 status: 'info'
+    //             });
+    //         }
+    //     }
+    // };
 
     this.init();
 
