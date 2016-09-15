@@ -1,7 +1,7 @@
 {
   "name": "consul",
   "accountName": "consul",
-  "version": "0.1.152",
+  "version": "0.6.1",
   "private": true,
   "description": "VTEX Store development tools - reverse proxy, compilation, minification, optimization and more!",
   "devDependencies": {
@@ -12,6 +12,7 @@
     "dust-loader": "lucasmonteverde/dust-loader",
     "eslint-plugin-import": "^1.12.0",
     "expose-loader": "^0.7.0",
+    "shelljs": "^0.7.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-bump": "^0.3.1",
@@ -21,8 +22,10 @@
     "gulp-newer": "^0.5.1",
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^1.4.0",
     "gulp-sass": "^2.0.4",
+    "gulp-sass-lint": "^1.2.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "json-loader": "^0.5.2",
