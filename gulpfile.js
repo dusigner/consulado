@@ -8,8 +8,9 @@ var gulp		= require('gulp'),
 	named		= require('vinyl-named'),
 	path		= require('path'),
 	semver		= require('semver'),
-	sassLint = require('gulp-sass-lint'),
-	pkg			= require('./package.json');
+	sassLint 	= require('gulp-sass-lint'),
+	pkg			= require('./package.json'),
+	shell		= require('shelljs');
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	ignoreReplace = [/\.js(\?.*)?$/, /\.css(\?.*)?$/, /\.svg(\?.*)?$/, /\.ico(\?.*)?$/, /\.woff(\?.*)?$/, /\.png(\?.*)?$/, /\.jpg(\?.*)?$/, /\.jpeg(\?.*)?$/, /\.gif(\?.*)?$/, /\.pdf(\?.*)?$/],
@@ -24,7 +25,7 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	};
 
 gulp.task('sassLint', function () {
-	return gulp.src(['src/styles/**/*.scss', '!src/styles/helpers/*'])
+	return gulp.src([paths.styles, '!src/styles/helpers/*'])
     .pipe(sassLint({
 			options: {
 				'config-file': '.sass-lint.yml'
@@ -41,9 +42,30 @@ gulp.task('lint', function () {
 	.pipe($.eslint.failAfterError());
 });
 
+gulp.task('fonts', function () {
+	return gulp.src(paths.fonts)
+		.pipe($.rename(function(file){
+			file.extname += '.css'
+		}))
+		.pipe(gulp.dest(paths.dest));
+});
+
+//get last git tag and bump version in package.json
+gulp.task('gitTag', function() {
+	if( shell.exec('git fetch --tags').code !== 0 ) {
+		shell.echo('Error: Git fetch tags failed');
+		shell.exit(1);
+	}else {
+		shell.exec('git for-each-ref --count=1 --sort=-taggerdate --format "%(tag)" refs/tags ', function(code, stdout, stderr) {
+			pkg.version = stdout.replace(/[a-z]+/,'').trim();;
+			gulp.start('bump');
+		});
+	}
+});
+
 gulp.task('bump', function() {
 	return gulp.src('package.json')
-		.pipe($.bump({version: pkg.version}))
+		.pipe($.util.env.nobump ? $.util.noop() : $.bump({ version: pkg.version }))
 		.pipe(gulp.dest('.'));
 });
 
@@ -53,11 +75,11 @@ gulp.task('scripts', ['lint'], function () {
 
 	if( $.util.env.production ) {
 
-		if( ! $.util.env.nobump ) {
+		/*if( ! $.util.env.nobump ) {
 			pkg.version = semver.inc(pkg.version, 'patch');
 
 			gulp.start('bump');
-		}
+		}*/
 
 		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
 	}
@@ -166,7 +188,19 @@ gulp.task('watch', ['scripts', 'styles', 'images'], function () {
 });
 
 gulp.task('default', ['clean'], function() {
+	gulp.start( 'server' );
+});
+
+/*gulp.task('default', ['clean'], function() {
 
 	gulp.start( $.util.env.production ? ['scripts', 'styles', 'images'] : 'server' );
 
+});
+*/
+gulp.task('deploy', ['clean', 'gitTag'], function() {
+	$.util.env.production = true;
+
+	pkg	= JSON.parse( require('fs').readFileSync('./package.json') ); //fix update pkg from bump
+
+	gulp.start( 'fonts', 'images', 'styles', 'scripts' );
 });
