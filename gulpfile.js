@@ -56,8 +56,8 @@ gulp.task('gitTag', function() {
 		shell.echo('Error: Git fetch tags failed');
 		shell.exit(1);
 	}else {
-		shell.exec('git for-each-ref --count=1 --sort=-taggerdate --format "%(tag)" refs/tags ', function(code, stdout, stderr) {
-			pkg.version = stdout.replace(/[a-z]+/,'').trim();;
+		shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function(code, stdout, stderr) {
+			pkg.version = stdout.replace('refs/tags/v','').trim();
 			gulp.start('bump');
 		});
 	}
