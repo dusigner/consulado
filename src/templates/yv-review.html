@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+  <vtex:metaTags />
+  <vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+  <vtex:template id="0-consul-head-content" />
+
+  <script type="text/javascript">
+    $(function() {
+      var zoomWaitInterval = setInterval(function(){
+        if ($('.zoomWrapperImage'))
+        {
+          $('.zoomWindow').remove();
+          $('#show .thumbs').remove();
+          $('#setaThumbs').remove();
+          $('#image-main').css('width','100px');
+          $('#image-main').css('height','100px');
+          clearInterval(zoomWaitInterval);
+        }
+      },700);
+    });
+  </script>
+</head>
+<body data-controller="listagem">
+  <!--  Header -->
+  <vtex:template id="0-consul-header" />
+  <!-- /Header -->
+
+  <div style="display:none">
+    <vtex.cmc:breadCrumb />
+  </div>
+  <div style="width:50%;margin: 0 auto;">
+    <div style="float:left;"><vtex.cmc:ProductImage Zoom="off" /></div>
+    <div style="float:left;margin-left:10px;max-width:340px">
+      <span style="font-weight: bold;"><vtex.cmc:productName /></span></div>
+    </div>
+    <br style="clear:both"/>
+    <div id="yv-show-form" style="min-height:300px; backgroundimage:
+    url(http://service.yourviews.com.br/static/images/loading.gif
+    (http://service.yourviews.com.br/static/images/loading.gif));background-repeat:no-repeat">
+    <br/><br/>Por favor aguarde...
+  </div>
+  <div class="clear"></div>
+
+  <!-- Footer -->
+  <vtex:template id="0-consul-footer" />
+  <!-- /Footer -->
+</body>
+</html>
