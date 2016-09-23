@@ -15,8 +15,9 @@
 		width: 100%;
 
 		.close {
-			border: 3px solid $orange;
-			color: $orange;
+			@include responsiveFont(18);
+			border: 3px solid $green;
+			color: $green;
 			padding: 0;
 			right: 10px;
 			top: 10px;
@@ -36,7 +37,7 @@
 			}
 
 			h2.gae-title {
-				@include responsiveFont(26);
+				@include responsiveFont(24);
 				padding: 10px 0 20px;
 				text-align: left;
 				text-transform: uppercase;
@@ -74,7 +75,7 @@
 					}
 
 					&:last-child {
-						li:nth-child(3) { border-bottom: 1px solid $orange; }
+						li:nth-child(3) { border-bottom: 1px solid $green; }
 					}
 
 					li {
@@ -91,8 +92,8 @@
 
 						&:nth-child(3) {
 							background: #f3f3f3;
-							border-left: 1px solid $orange;
-							border-right: 1px solid $orange;
+							border-left: 1px solid $green;
+							border-right: 1px solid $green;
 						}
 
 						&:first-child {
@@ -139,7 +140,7 @@
 							position: relative;
 							vertical-align: middle;
 
-							&:nth-child(3) { border-top: 1px solid $orange; }
+							&:nth-child(3) { border-top: 1px solid $green; }
 
 							span {
 								@include responsiveFont(14, 16, true);
@@ -198,8 +199,8 @@
 
 								.box-input {
 									float: left;
+									margin-left: 10px;
 									text-align: right;
-									width: 30%;
 
 									@include breakpoint('small', max) {
 										text-align: left;
@@ -232,10 +233,12 @@
 
 								.footer-box-opcao-garantia {
 									background: none;
+									bottom: 12px;
 									float: right;
+									left: 15px;
 									padding-left: 45px;
 									text-align: left;
-									width: 100%;
+									width: auto;
 
 									@include breakpoint('small', max) { width: 75%; }
 
@@ -250,9 +253,9 @@
 										padding-left: 0;
 										text-transform: uppercase;
 
-										@include breakpoint('small', max) {
-											@include responsiveFont(30);
-										}
+										@include breakpoint('small', max) { @include responsiveFont(30); }
+
+										&:before {display: none; }
 									}
 
 									&.sem-garantia {
@@ -290,7 +293,7 @@
 
 									i {
 										@include responsiveFont(23, 16, true);
-										color: $orange;
+										color: $green;
 
 										&:before {
 											transform: rotate(0);
@@ -300,14 +303,19 @@
 								}
 
 								&.first-box-garantia {
-									.box-input { width: 15%; }
+									.box-input { margin-left: 0; }
 
 									.footer-box-opcao-garantia.sem-garantia {
-										label { @include responsiveFont(15, 16, true); }
+										left: 0;
+
+										label {
+											@include responsiveFont(15, 16, true);
+											top: 0;
+										}
 
 										p {
 											@include responsiveFont(13, 16, true);
-											margin-top: 20px;
+											margin-top: 15px;
 										}
 									}
 								}
@@ -317,7 +325,7 @@
 						.item-remove-ico,
 						.item-minus-ico { color: $gray-d; }
 
-						.item-ok-ico { color: $orange; }
+						.item-ok-ico { color: $green; }
 
 						.gae-price {
 							margin-bottom: 0;
@@ -345,13 +353,9 @@
 						margin-top: .5em;
 						width: 75%;
 
-						p {
-							color: $gray-d;
-						}
+						p { color: $gray-d; }
 
-						a {
-							color: $orange;
-						}
+						a { color: $orange; }
 
 						@include breakpoint('small', max) {
 							text-align: center;
@@ -361,6 +365,8 @@
 
 					.btn-success {
 						@include responsiveFont(18);
+						background-color: $green;
+						border: 3px solid $green;
 						cursor: pointer;
 						float: right;
 						height: 50px;
@@ -372,6 +378,9 @@
 						&:hover,
 						&:focus {
 							@include responsiveFont(18);
+							background: #ffffff;
+							border: 3px solid $green;
+							color: $green;
 						}
 
 						@include breakpoint('small', max) {
@@ -416,6 +425,26 @@
 							top: 5px;
 							width: 9px;
 							z-index: 5;
+						}
+					}
+
+					label {
+						.title-garantia,
+						.garantia-recommended-mobile { color: $orange; }
+
+						.title-garantia {
+							.garantia-plusicon { color: $orange; }
+						}
+					}
+
+					.show-more { color: $gray-d; }
+				}
+
+				.row-product-and-action {
+					.garantia-box-proceed {
+						.btn-continue {
+							background-color: $green;
+							border: 3px solid $green;
 						}
 					}
 				}
