@@ -74,6 +74,8 @@ body.pedidos {
 
 	p { margin-bottom: 0; }
 
+	a { color: $green; }
+
 	.add {
 		@include responsiveFont(14, 16, true);
 		display: inline-block;
