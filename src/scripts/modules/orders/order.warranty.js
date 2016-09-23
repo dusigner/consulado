@@ -206,6 +206,12 @@ Nitro.module('order.warranty', function() {
 
         boxOrder[orderId].date = orderDate;
 
+        var timestampDays = 334*86400*1000,
+            timestampOrder = new Date(orderDate).getTime(),
+            limitBuyDate = $.formatDatetimeBRL(timestampDays + timestampOrder);
+
+        boxOrder[orderId].limitBuyDate = limitBuyDate;
+
         if ($.diffDate(dateNow, orderDate) <= 334 && boxOrder[orderId].status.toLowerCase() !== 'cancelado' && boxOrder[orderId].status.toLowerCase() !== 'pedido cancelado' && boxOrder[orderId].status.toLowerCase() !== 'aguardando pagamento') {
             self.addButton(boxOrder[orderId]);
         }
@@ -267,7 +273,8 @@ Nitro.module('order.warranty', function() {
             } else if (res.message === 'Coverages found') {
 
                 dust.render('warrantySpare.btnWarranty', {
-                    id: order.id
+                    id: order.id,
+                    limitBuyDate: order.limitBuyDate
                 }, function(err, out) {
                     if (err) {
                         throw new Error('Modal Warranty Dust error: ' + err);
