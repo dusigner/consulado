@@ -6,6 +6,8 @@
 	position: absolute;
 }
 
+$qtdColecaoSelos: 10;
+
 body {
 
 	.FlagsHightLight {
@@ -22,25 +24,11 @@ body {
 		left: 0;
 		width: 100%;
 
-		&[class*='cns-colecao-1'] { @include replaceText('#{$img-path}cns-selo-1.png', left, bottom); }
-
-		&[class*='cns-colecao-2'] { @include replaceText('#{$img-path}cns-selo-2.png', left, bottom); }
-
-		&[class*='cns-colecao-3'] { @include replaceText('#{$img-path}cns-selo-3.png', left, bottom); }
-
-		&[class*='cns-colecao-4'] { @include replaceText('#{$img-path}cns-selo-4.png', left, bottom); }
-
-		&[class*='cns-colecao-5'] { @include replaceText('#{$img-path}cns-selo-5.png', left, bottom); }
-
-		&[class*='cns-colecao-6'] { @include replaceText('#{$img-path}cns-selo-6.png', left, bottom); }
-
-		&[class*='cns-colecao-7'] { @include replaceText('#{$img-path}cns-selo-7.png', left, bottom); }
-
-		&[class*='cns-colecao-8'] { @include replaceText('#{$img-path}cns-selo-8.png', left, bottom); }
-
-		&[class*='cns-colecao-9'] { @include replaceText('#{$img-path}cns-selo-9.png', left, bottom); }
-
-		&[class*='cns-colecao-10'] { @include replaceText('#{$img-path}cns-selo-10.png', left, bottom); }
+		@for $i from 1 through $qtdColecaoSelos {
+			&[class*='cns-colecao-#{$i}'] {
+				@include replaceText('#{$img-path}cns-selo-#{$i}.png', 0, 0);
+			}
+		}
 	}
 
 }
