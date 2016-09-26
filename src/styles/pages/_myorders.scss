@@ -142,7 +142,7 @@ body.pedidos {
 				}
 			}
 
-			.box-order-body, 
+			.box-order-body,
 			.box-data {
 				padding: 15px;
 			}
@@ -293,7 +293,7 @@ body.pedidos {
 						}
 					}
 
-					&.current, 
+					&.current,
 					&.canceled {
 						.circle {
 							&:before {
@@ -539,7 +539,7 @@ body.pedidos {
 					@include responsiveFont(14, 16, true);
 					line-height: 0;
 
-					&.download-warranty, 
+					&.download-warranty,
 					&.cancel-warranty {
 						@include responsiveFont(11);
 						margin: 0 10px;
@@ -563,6 +563,11 @@ body.pedidos {
 							margin-left: 10px;
 						}
 					}
+				}
+
+				p.limit-buy-date {
+					@include responsiveFont(14);
+					font-weight: bold;
 				}
 			}
 
@@ -662,8 +667,8 @@ body.pedidos {
 				transition: transform .3s ease-in;
 			}
 
-			&:hover, 
-			&:focus, 
+			&:hover,
+			&:focus,
 			&:active {
 				border: none;
 				border-top: 1px solid $green;
@@ -678,9 +683,9 @@ body.pedidos {
 
 	}
 
-	.btn, 
-	.add-warranty, 
-	.download-warranty, 
+	.btn,
+	.add-warranty,
+	.download-warranty,
 	.cancel-warranty {
 		@extend .secondary-button;
 		@include responsiveFont(16, 16, true);

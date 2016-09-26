@@ -3,12 +3,15 @@
 
 require('../../templates/modal-warranty-desktop.html');
 require('../../templates/modal-warranty-mobile.html');
+require('../../templates/modal-warranty-desktop-teste-ab.html');
 
 Nitro.module('checkout.gae', function() {
 
+    $('body').addClass('teste-ab-gae'); //REMOVER QUANDO SUBIR TESTE AB (PRODUCAO)
 
     var self = this,
-        template = 'modal-warranty-desktop',
+        $body = $('body'),
+        template = $body.hasClass('teste-ab-gae') ? 'modal-warranty-desktop-teste-ab' : 'modal-warranty-desktop',
         $modalWarranty = $('#modal-warranty');
 
     this.setup = function() {

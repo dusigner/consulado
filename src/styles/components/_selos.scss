@@ -6,6 +6,8 @@
 	position: absolute;
 }
 
+$qtdColecaoSelos: 10;
+
 body {
 
 	.FlagsHightLight {
@@ -21,24 +23,11 @@ body {
 		height: 100%;
 		left: 0;
 		width: 100%;
-		&[class*='cns-colecao-1'] {
-			@include replaceText('#{$img-path}cns-selo-1.png', left, bottom);
-		}
 
-		&[class*='cns-colecao-2'] {
-			@include replaceText('#{$img-path}cns-selo-2.png', left, bottom);
-		}
-
-		&[class*='cns-colecao-3'] {
-			@include replaceText('#{$img-path}cns-selo-3.png', left, bottom);
-		}
-
-		&[class*='cns-colecao-4'] {
-			@include replaceText('#{$img-path}cns-selo-4.png', left, bottom);
-		}
-
-		&[class*='cns-colecao-5'] {
-			@include replaceText('#{$img-path}cns-selo-5.png', left, bottom);
+		@for $i from 1 through $qtdColecaoSelos {
+			&[class*='cns-colecao-#{$i}'] {
+				@include replaceText('#{$img-path}cns-selo-#{$i}.png', 0, 0);
+			}
 		}
 	}
 

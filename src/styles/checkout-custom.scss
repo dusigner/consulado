@@ -47,7 +47,7 @@ body {
 	header {
 		border-bottom: 3px solid $gray-l;
 
-		.cont-logo, 
+		.cont-logo,
 		.come-back {
 			line-height: 70px;
 		}
@@ -65,13 +65,13 @@ body {
 		}
 	}
 
-	#cart-title, 
-	#orderform-title, 
+	#cart-title,
+	#orderform-title,
 	.come-back {display: none !important}
 
 	.link-coupon-add,
 	.link-choose-more-products,
-	button, 
+	button,
 	input[type=submit],
 	.link-change-shipping,
 	.bank-invoice-print-link,
@@ -111,7 +111,7 @@ body {
 	    }
 	}
 
-	button, 
+	button,
 	input[type=submit],
 	.bank-invoice-print-link,
 	.btn-continue-shop,
@@ -181,7 +181,7 @@ body {
 
 	.container-main {
 		margin-top: 60px;
-		.btn-success, 
+		.btn-success,
 		.btn-continue-shop {
 			@include responsiveFont(18);
 			@include vendor(border-radius, 0);
@@ -340,6 +340,7 @@ body {
 @import 'components/checkout/footer';
 @import 'components/checkout/modal-services';
 @import 'components/checkout/modal-warranty';
+@import 'components/checkout/modal-warranty-teste-ab';
 @import 'components/checkout/modal-phones';
 
 //Para Banner Porto Seguro
