@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .lead-newsletter {
-	display: none;
+	// display: none;
 	margin-top: 15px;
 
 	.row {
@@ -12,17 +12,13 @@
 			border-top: 1px solid $gray-d;
 			padding: 10px 0;
 
-			@include breakpoint(extra-large, 'min') {
-				width: 1100px;
-			}
+			@include breakpoint(extra-large, 'min') { width: 1100px; }
 
-			@include breakpoint(medium, 'max') {
-				padding: 20px;
-			}
+			@include breakpoint(medium, 'max') { padding: 20px; }
 		}
 
-		p, 
-		form, 
+		p,
+		form,
 		input {
 			display: inline-block;
 			width: auto;
@@ -37,19 +33,15 @@
 			padding: 0;
 
 			@include breakpoint(large, 'max') {
-				display: block;
 				margin-bottom: 10px;
 				width: 100%;
 			}
 
-			@include breakpoint(extra-small, 'max') {
-				text-align: center;
-			}
+			@include breakpoint(extra-small, 'max') { text-align: center; }
 		}
 
 		form {
 			@include breakpoint(extra-small, 'max') {
-				display: block;
 				margin: 10px auto;
 				width: 95%;
 			}
@@ -68,9 +60,7 @@
 				width: 100%;
 			}
 
-			input {
-				margin: 0 15px;
-			}
+			input { margin: 0 15px; }
 
 			label {
 				@include responsiveFont(12, 16, true);
@@ -96,10 +86,6 @@
 				@include breakpoint(extra-small, 'max') {
 					margin: 0;
 					width: 100%;
-
-					&:before {
-						top: 0;
-					}
 				}
 
 				a {
@@ -136,9 +122,7 @@
 				display: none;
 
 				&.error + label {
-					a {
-						color: #f49a9a;
-					}
+					a { color: #f49a9a; }
 
 					&:after {
 						@include contentBefore();
@@ -153,9 +137,7 @@
 			}
 
 			&[type='checkbox']:checked + label {
-				a {
-					color: $txt-gray;
-				}
+				a { color: $txt-gray; }
 
 				&:after {
 					@include contentBefore();
@@ -184,9 +166,7 @@
 			padding: .5em;
 			text-transform: uppercase;
 
-			&:hover {
-				color: #7f2893;
-			}
+			&:hover { color: #7f2893; }
 
 			@include breakpoint(extra-small, 'max') {
 				display: block;
@@ -197,15 +177,11 @@
 		}
 	}
 
-	p.message-success {
-		display: none;
-	}
+	p.message-success { display: none; }
 
 	&.success {
-		p, 
-		form {
-			display: none;
-		}
+		p,
+		form { display: none; }
 
 		p.message-success {
 			@include responsiveFont(13, 16, true);
