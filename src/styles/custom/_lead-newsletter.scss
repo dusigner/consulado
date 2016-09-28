@@ -5,34 +5,40 @@
 	@include breakpoint(extra-small, 'max') { 
 		background-color: #ffffff;
 		display: block;
+	    margin: 0 auto;
+	    text-align: center;
 		width: 100%;
 	.container {
 		@include responsiveFont(15, 16, true);
 			border-bottom: 1px solid $gray-d;
 			border-top: 1px solid $gray-d;
+			font-family: 'soleto';
 			margin-top: 20px;
 	    	padding-bottom: 17px;
 			padding-top: 17px;
+			text-align: center;
 		}
 		p {
 			@include breakpoint(extra-small, 'max') {  
 				display: inline-block;
 				font-family: 'consul';
-			    left: 50px;
 			    line-height: 20px;
 			    margin-top: 0;
-			    position: relative;
 			    top: 0;
 			    width: 200px;
 			}
 		}
 		.icon-email {
+			    display: inline-block;
+		        height: 40px;
+			    width: 45px;
 			&::before {
 				@include contentBefore();
 				@include responsiveFont(27, 16, true);
 				color: $green;
 			  	content: '\e900';
 				font-family: 'whirlpool';
+				margin-top: 5px;
 			}
 		}
 	}
