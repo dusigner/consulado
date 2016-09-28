@@ -1,8 +1,56 @@
 @charset 'UTF-8';
 
+.lead-newsletter-show {
+	display: none;
+	@include breakpoint(extra-small, 'max') { 
+		background-color: #ffffff;
+		display: block;
+	    margin: 0 auto;
+	    text-align: center;
+		width: 100%;
+	.container {
+		@include responsiveFont(15, 16, true);
+			border-bottom: 1px solid $gray-d;
+			border-top: 1px solid $gray-d;
+			font-family: 'soleto';
+			margin-top: 20px;
+	    	padding-bottom: 17px;
+			padding-top: 17px;
+			text-align: center;
+		}
+		p {
+			@include breakpoint(extra-small, 'max') {  
+				display: inline-block;
+				font-family: 'consul';
+			    line-height: 20px;
+			    margin-top: 0;
+			    top: 0;
+			    width: 200px;
+			}
+		}
+		.icon-email {
+			    display: inline-block;
+		        height: 40px;
+			    width: 45px;
+			&::before {
+				@include contentBefore();
+				@include responsiveFont(27, 16, true);
+				color: $green;
+			  	content: '\e900';
+				font-family: 'whirlpool';
+				margin-top: 5px;
+			}
+		}
+	}
+}
+
 .lead-newsletter {
 	// display: none;
 	margin-top: 15px;
+
+	@include breakpoint(extra-small, 'max') { 
+		display: none;
+	}
 
 	.row {
 		margin-bottom: 0;
@@ -15,6 +63,28 @@
 			@include breakpoint(extra-large, 'min') { width: 1100px; }
 
 			@include breakpoint(medium, 'max') { padding: 20px; }
+
+			@include breakpoint(extra-small, 'max') { 
+				.btn_close {
+				    display: block;
+				    float: right;
+				    height: 27px;
+				    text-align: center;
+					width: 10px;
+					&::before {
+						color: $gray-d;
+					    content: 'x';
+					    display: block;
+					    float: right;
+					    font-size: 20px;
+					    position: relative;
+					    right: 0;
+					    text-align: right;
+					    top: 0;
+					    width: 10px;
+					}
+				}
+			}
 		}
 
 		p,
