@@ -14,11 +14,10 @@ var CRM = {
             type: 'GET',
             contentType: 'application/json; charset=utf-8',
             data: {
-                f: 'orderId,state,city,status,description,lastChange',
+                f: 'orderId,state,city,status,description,lastChange,finished',
                 fq: 'orderId:' + orderId
             }
         });
-
     },
 
     insertClient: function(data) {

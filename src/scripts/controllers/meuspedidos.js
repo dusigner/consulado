@@ -50,7 +50,11 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
         data.isMessage = true;
 
         var order = CRM.getOrderById(data.orderId).then(function(result) {
-            data.tracking = [];
+            if (!e.finished) {
+                    data.currentState  = states.get( 'pedidoEntregue' );
+                }
+
+                data.tracking = [];
             if (!result) {
                 return false;
             }
@@ -138,8 +142,8 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
         data.totals = e.totals;
         data.totalPrice = _.formatCurrency(e.value / 100);
         if (data.paymentType) {
-            data.isBoleto = (data.paymentType.toString().indexOf('Boleto') >= 0 && data.currentState.group === 'pagamento') ? true : false;  
-        } 
+            data.isBoleto = (data.paymentType.toString().indexOf('Boleto') >= 0 && data.currentState.group === 'pagamento') ? true : false;
+        }
         data.Installment = (e.paymentData.payments[0]) ? e.paymentData.payments[0].installments : '';
         data.boletoURL = (e.paymentData.payments[0]) ? e.paymentData.payments[0].url : '';
 
