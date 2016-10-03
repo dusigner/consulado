@@ -50,16 +50,16 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
         data.isMessage = true;
 
         var order = CRM.getOrderById(data.orderId).then(function(result) {
-            if (!e.finished) {
-                    data.currentState  = states.get( 'pedidoEntregue' );
-                }
-
-                data.tracking = [];
+            data.tracking = [];
             if (!result) {
                 return false;
             }
 
             $(result && result.Documents).each(function(i, e) {
+                if (!e.finished) {
+                    data.currentState  = states.get( 'pedidoEntregue' );
+                }
+
                 data.tracking[i] = {
                     description: e.description,
                     lastChange: $.formatDatetimeBRL(e.lastChange)
