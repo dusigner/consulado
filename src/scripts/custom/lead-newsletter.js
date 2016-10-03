@@ -98,6 +98,7 @@ Nitro.module('lead-newsletter', function() {
     $('.lead-newsletter-show').click(function() {
         $(this).hide();
         $('.lead-newsletter').fadeIn();
+        $('#name').focus();
     });
 
     $('.btn_close').click(function() {
