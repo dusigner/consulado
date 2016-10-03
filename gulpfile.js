@@ -162,7 +162,7 @@ gulp.task('server', ['watch'], function () {
 			}
 		],
 		proxy: {
-			target: 'develop-' + ( $.util.env.account || pkg.accountName ) + '.' + environment + '.com.br/?debugcss=true&debugjs=true',
+			target: ( $.util.env.account || pkg.accountName ) + '.' + environment + '.com.br/?debugcss=true&debugjs=true',
 			proxyReq: [
 				function (proxyReq) {
 					proxyReq.setHeader('host', ( $.util.env.account || pkg.accountName ) + '.vtexlocal.com.br');

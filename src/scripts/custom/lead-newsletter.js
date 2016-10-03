@@ -13,7 +13,7 @@ Nitro.module('lead-newsletter', function() {
 
     this.setup = function(orderForm) {
         if (!hasSession && !orderForm.clientProfileData.email) {
-            $('.lead-newsletter').fadeIn();
+            // $('.lead-newsletter').fadeIn();
 
             $('.lead-newsletter #form-newsletter').submit(function(e) {
                 e.preventDefault();
@@ -93,6 +93,16 @@ Nitro.module('lead-newsletter', function() {
 
     window.vtexjs.checkout.getOrderForm().done(function(result) {
         self.setup(result);
+    });
+
+    $('.lead-newsletter-show').click(function() {
+        $(this).hide();
+        $('.lead-newsletter').fadeIn();
+    });
+
+    $('.btn_close').click(function() {
+        $('.lead-newsletter').hide();
+        $('.lead-newsletter-show').fadeIn();
     });
 
 });
