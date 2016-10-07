@@ -15,6 +15,11 @@ require('custom/modal.overlayAbandono');
 
 Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
 
+    //REMOVER QUANDO SUBIR PRA PRODUCAO
+    $('.listagem .prateleira.default').addClass('teste-ab-listagem');
+    $('.listagem-categoria-filtros .prateleira.default').addClass('teste-ab-listagem');
+    //REMOVER QUANDO SUBIR PRA PRODUCAO
+
 
     var $filter = $('.filter-wrapper'),
         $searchSingle = $('.search-single-navigator'),
