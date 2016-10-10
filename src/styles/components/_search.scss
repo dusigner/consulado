@@ -28,7 +28,7 @@ body.search-active {
 			border-color: transparent transparent $gray transparent;
 			display: block;
 			height: 30px;
-			margin: 10px 0 0 40px;
+			margin: 10px 0 0 20px;
 			text-indent: 0;
 			width: 82%;
 		}
@@ -58,7 +58,7 @@ body.search-active {
 		top: 0;
 
 		@include breakpoint(extra-small, 'max') {
-			left: 82%;
+			left: 80%;
 		}
 
 		@include breakpoint(small, 'min') { color: $green;}
