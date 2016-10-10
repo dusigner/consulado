@@ -18,27 +18,23 @@ body.search-active {
 
 	@include breakpoint(small, 'max') {
 		@include singleTransition();
-		width: 50px;
+		background: $gray-l;
+		left: 0;
+		width: 100%;
+		z-index: 11;
 
-		&.search-active {
-			background: $gray-l;
-			left: 0;
-			width: 100%;
-			z-index: 11;
-
-			.text-search {
-				// border-bottom: 1px solid $gray;
-				border-color: transparent transparent $gray transparent;
-				display: block;
-				height: 30px;
-				margin: 10px 0 0 70px;
-				text-indent: 0;
-				width: 82%;
-			}
-
-			.icon-close-icon { display: block!important; }
-			.icon-consul-loupe { left: 15px; }
+		.text-search {
+			// border-bottom: 1px solid $gray;
+			border-color: transparent transparent $gray transparent;
+			display: block;
+			height: 30px;
+			margin: 10px 0 0 40px;
+			text-indent: 0;
+			width: 82%;
 		}
+
+		// .icon-close-icon { display: none!important; }
+		// .icon-consul-loupe { left: 15px; }
 	}
 }
 
@@ -50,27 +46,25 @@ body.search-active {
 	position: relative;
 	width: 100%;
 
-	.icon-close-icon,
 	.icon-consul-loupe {
+		color: $green;
 		cursor: pointer;
 		height: 100%;
+		left: 0;
 		line-height: 50px;
 		padding: 0 14px;
 		position: absolute;
 		top: 0;
 
-		@include breakpoint(small, 'min') { color: $green; }
-	}
+		@include breakpoint(extra-small, 'max') {
+			left: 82%;
+		}
 
-	.icon-close-icon {
-		display: none!important;
-		font-size: 13px;
-		right: 13px;
+		@include breakpoint(small, 'min') { color: $green;}
 	}
 
 	.icon-consul-loupe {
 		@include responsiveFont(28);
-		left: 0;
 	}
 
 	.text-search {
@@ -87,10 +81,10 @@ body.search-active {
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(15, 16, true);
-			display: none;
-			max-width: 68%;
+			background-color: #ffffff;
+			max-width: 72%;
 			padding: 0;
-			text-indent: 70px;
+			text-indent: 15px;
 		}
 
 		@media screen and (max-width: 320px) {
@@ -112,7 +106,7 @@ body.search-active {
 		display: none;
 		line-height: 50px;
 		position: absolute;
-		right: 10px;
+		right: 50%;
 		top: 7px;
 
 		&:before {
@@ -123,10 +117,6 @@ body.search-active {
 
 	&.loading {
 		.loader { display: block; }
-
-		@include breakpoint(medium, 'max') {
-			.icon-close-icon { display: none!important; }
-		}
 	}
 }
 

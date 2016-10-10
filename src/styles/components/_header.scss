@@ -95,7 +95,12 @@
 				z-index: 10;
 			}
 
-			.cont-search { left: 150px; }
+			.cont-search { 
+				background-color: #ffffff;
+				left: 0; 
+				top: 93px;
+				width: 100%;
+			}
 			.account     { left: 54%; }
 			.minicart    {
 				background-color: transparent;
