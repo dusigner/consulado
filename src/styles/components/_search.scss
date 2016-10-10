@@ -47,7 +47,7 @@ body.search-active {
 	width: 100%;
 
 	.icon-consul-loupe {
-		@include responsiveFont(28)
+		@include responsiveFont(28);
 		color: $green;
 		cursor: pointer;
 		height: 100%;
