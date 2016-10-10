@@ -47,6 +47,7 @@ body.search-active {
 	width: 100%;
 
 	.icon-consul-loupe {
+		@include responsiveFont(28)
 		color: $green;
 		cursor: pointer;
 		height: 100%;
@@ -61,10 +62,6 @@ body.search-active {
 		}
 
 		@include breakpoint(small, 'min') { color: $green;}
-	}
-
-	.icon-consul-loupe {
-		@include responsiveFont(28);
 	}
 
 	.text-search {
