@@ -24,13 +24,13 @@ Nitro.module('search', function() {
         total = 5;
 
 
-    $searchForm.find('> .icon').click(function(e) {
-        e.preventDefault();
+    // $searchForm.find('> .icon').click(function(e) {
+    //     e.preventDefault();
 
-        $searchContainer.toggleClass('search-active');
+    //     $searchContainer.toggleClass('search-active');
 
-        $(document).trigger('search', $searchContainer.is('.search-active') ? null : false);
-    });
+    //     $(document).trigger('search', $searchContainer.is('.search-active') ? null : false);
+    // });
 
     var loadContent = $.debounce(function(term) {
 
