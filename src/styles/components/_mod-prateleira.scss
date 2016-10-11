@@ -40,7 +40,7 @@
 					}
 
 					.detalhes {
-						h3 { min-height: 80px; }
+						h3 { min-height: 92px; }
 
 						p.indisponivel {
 							line-height: 80px;
@@ -278,6 +278,7 @@
 
 					&.por {
 						@include responsiveFont(14, 16, true);
+						height: 48px;
 
 						.val:empty { display: none; }
 
