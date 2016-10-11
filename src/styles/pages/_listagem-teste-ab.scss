@@ -1,122 +1,122 @@
 @charset 'UTF-8';
 
-// 	.listagem,
-// 	.listagem-categoria-filtros {
-// 	.prateleira.default {
+	.listagem,
+	.listagem-categoria-filtros {
+	.prateleira.default {
 
-// 		&.teste-ab-listagem {
-// 			@include breakpoint(small, 'max') {
-// 				margin-top: 30px;
+		&.teste-ab-listagem {
+			@include breakpoint(small, 'max') {
+				margin-top: 30px;
 
-// 				.compare { width: 140px; }
+				.compare { width: 140px; }
 
-// 				ul {
-// 					li {
-// 						display: inline-block;
-// 						height: auto;
-// 						vertical-align: top;
-// 						width: 48%;
+				ul {
+					li {
+						display: inline-block;
+						height: auto;
+						vertical-align: top;
+						width: 48%;
 
-// 						article {
-// 							padding: 0;
+						article {
+							padding: 0;
 
-// 							.detalhes {
-// 								.image {
-// 									img { min-height: auto; }
-// 								}
+							.detalhes {
+								.image {
+									img { min-height: auto; }
+								}
 
-// 								.img {
-// 									min-height: auto;
-// 								}
+								.img {
+									min-height: auto;
+								}
 
-// 								.prod-info {
-// 									.nome {
-// 										@include responsiveFont(14, 16, true);
-// 										font-weight: bold;
-// 										height: auto;
-// 									}
+								.prod-info {
+									.nome {
+										@include responsiveFont(14, 16, true);
+										font-weight: bold;
+										height: auto;
+									}
 
-// 									.price {
-// 										height: auto;
+									.price {
+										height: auto;
 
-// 										.de { @include responsiveFont(13, 16, true); }
+										.de { @include responsiveFont(13, 16, true); }
 
-// 										.por {
-// 											@include responsiveFont(16, 16, true);
-// 											position: relative;
+										.por {
+											@include responsiveFont(16, 16, true);
+											position: relative;
 
-// 											.juros {
-// 												left: 0;
-// 												position: absolute;
-// 												top: 20px;
-// 											}
+											.juros {
+												left: 0;
+												position: absolute;
+												top: 20px;
+											}
 
-// 											.total-parcelado { margin-top: 20px; }
-// 										}
+											.total-parcelado { margin-top: 20px; }
+										}
 
-// 										.discount-boleto {
-// 											@include responsiveFont(13, 16, true);
-// 											padding: 0;
-// 											padding-top: 20px;
+										.discount-boleto {
+											@include responsiveFont(13, 16, true);
+											padding: 0;
+											padding-top: 20px;
 
-// 											&:before { @include responsiveFont(15, 16, true); }
-// 										}
-// 									}
-// 								}
-// 							}
-// 						}
-// 					}
-// 				}
-// 			}
+											&:before { @include responsiveFont(15, 16, true); }
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 
-// 			@include breakpoint(extra-small, 'max') {
+			@include breakpoint(extra-small, 'max') {
 
-// 				ul {
-// 					li {
-// 						article {
-// 							.detalhes {
-// 								.image {
-// 									.FlagsHightLight {
-// 										.flag {
-// 											bottom: 54px;
-// 											height: 52px;
-// 											right: -19px;
-// 											width: 45px;
-// 										}
+				ul {
+					li {
+						article {
+							.detalhes {
+								.image {
+									.FlagsHightLight {
+										.flag {
+											bottom: 54px;
+											height: 52px;
+											right: -19px;
+											width: 45px;
+										}
 
-// 										.flag[class*='outlet'] {
-// 											bottom: 0;
-// 											height: 67px;
-// 											right: 0;
-// 											width: 58px;
-// 										}
-// 									}
+										.flag[class*='outlet'] {
+											bottom: 0;
+											height: 67px;
+											right: 0;
+											width: 58px;
+										}
+									}
 
-// 									.off {
-// 										@include responsiveFont(18, 16, true);
-// 										background-size: 58px 67px;
-// 										height: 67px;
-// 										padding-top: 26px;
-// 										width: 58px;
+									.off {
+										@include responsiveFont(18, 16, true);
+										background-size: 58px 67px;
+										height: 67px;
+										padding-top: 26px;
+										width: 58px;
 
-// 										small { vertical-align: initial; }
+										small { vertical-align: initial; }
 
-// 										p {
-// 											@include responsiveFont(10, 16, true);
-// 											line-height: 10px;
+										p {
+											@include responsiveFont(10, 16, true);
+											line-height: 10px;
 
-// 											em {
-// 												@include responsiveFont(10, 16, true);
-// 												vertical-align: initial;
-// 											}
-// 										}
-// 									}
-// 								}
-// 							}
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
+											em {
+												@include responsiveFont(10, 16, true);
+												vertical-align: initial;
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
