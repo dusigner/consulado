@@ -40,7 +40,10 @@
 					}
 
 					.detalhes {
-						h3 { min-height: 92px; }
+						h3 { 
+							min-height: 80px; 
+							@include breakpoint(extra-small, 'max') { min-height: 110px; }
+						}
 
 						p.indisponivel {
 							line-height: 80px;
@@ -278,7 +281,7 @@
 
 					&.por {
 						@include responsiveFont(14, 16, true);
-						height: 48px;
+						@include breakpoint(extra-small, 'max') { height: 48px; }
 
 						.val:empty { display: none; }
 
