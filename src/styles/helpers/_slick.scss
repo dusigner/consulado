@@ -187,12 +187,12 @@
 	}
 
 	.slick-prev {
-		left: -12px;
+		left: 0;
 		&:before { content: $slick-prev-character; }
 	}
 
 	.slick-next {
-		right: -12px;
+		right: 0;
 		&:before { content: $slick-next-character; }
 	}
 
