@@ -8,7 +8,10 @@
 			@include breakpoint(small, 'max') {
 				margin-top: 30px;
 
-				.compare { width: 140px; }
+				.compare { 
+					margin-bottom: 10px;
+					width: 140px; 
+				}
 
 				ul {
 					li {
