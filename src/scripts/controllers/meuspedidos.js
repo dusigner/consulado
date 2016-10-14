@@ -80,6 +80,11 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
         arrOrder.push(order);
     };
 
+    this.formatDate = function(date) {
+        var from = date.split('/');
+        return from[1] + '/' + from[0] + '/' + from[2];
+    };
+
     this.listenRender = function() {
         $('.box-meuspedidos').on('renderTracking', function(event, data) {
 
@@ -88,6 +93,15 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
                     throw new Error('My Orders Dust error: ' + err);
                 }
                 $('.box-meuspedidos').append(out);
+
+                var divList = $('.box-my-orders'); // pega todos os pedidos no DOM
+                // reordena as divs pela data do pedido
+                divList.sort(function(a, b){
+                    return new Date(self.formatDate($(b).data('order-date'))).getTime() - new Date(self.formatDate($(a).data('order-date'))).getTime();
+                });
+
+                //console.log('divList', divList);
+                $('.box-meuspedidos').html(divList); // remonta o DOM reordenado
             });
         });
     };
