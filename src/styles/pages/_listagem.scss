@@ -97,9 +97,9 @@ body.categoria .compare {
 
 	@include breakpoint(small, 'max') {
 		display: none;
-		left: 25px;
+		left: 21px;
 		position: absolute;
-		top: 172px !important;
+		top: 228px !important;
 		width: 86%;
 		z-index: 4;
 	}
