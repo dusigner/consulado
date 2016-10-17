@@ -350,3 +350,30 @@
 		}
 	}
 }
+
+// =====================================
+// TOOLS
+// ===================================
+.social {
+	height: 150px;
+    margin-top: 20px;
+    width: 100%;
+	p {
+		@include breakpoint(extra-small, 'max') {
+			font-size: 18px!important;
+			margin-bottom: 20px!important;
+			width: 210px;
+		}
+	}
+}
+
+.at-share-btn {
+	background-color: #9aca3c!important;
+}
+
+.at-style-responsive .at-share-btn {
+	margin-left: 30px!important;
+	&:first-child {
+		margin-left: 0!important;
+	}
+}
