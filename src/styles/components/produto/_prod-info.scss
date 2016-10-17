@@ -355,9 +355,12 @@
 // TOOLS
 // ===================================
 .social {
-	height: 150px;
+	height: 100px;
     margin-top: 20px;
     width: 100%;
+    @include breakpoint(extra-small, 'max') {
+    	height: 130px;
+    }
 	p {
 		@include breakpoint(extra-small, 'max') {
 			font-size: 18px!important;
