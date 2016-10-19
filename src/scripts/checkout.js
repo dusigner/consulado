@@ -184,7 +184,7 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
     this.clickFakeButton = function(e) {
         e.preventDefault();
 
-        if (gae.hasActiveWarranty()) {
+        if (gae.hasAnyActiveWarranty()) {
             $('#modal-services').modal('show');
         } else {
             window.location.href = '#/orderform';

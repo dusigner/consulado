@@ -21,7 +21,8 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 		fonts: 'src/fonts/**/*.{eot,svg,ttf,woff,woff2}',
 		images: 'src/images/**/*.{png,jpeg,jpg,gif,svg}',
 		templates: 'src/templates/*.html',
-		dest: 'build/arquivos'
+		dest: 'build/arquivos',
+		destCheckout: 'build/files'
 	};
 
 gulp.task('sassLint', function () {
@@ -114,7 +115,8 @@ gulp.task('scripts', ['lint'], function () {
 			]),
 			devtool: $.util.env.production ? '': '#source-map'
 		}))
-		.pipe(gulp.dest(paths.dest));
+		.pipe(gulp.dest(paths.dest))
+		.pipe(gulp.dest(paths.destCheckout));
 });
 
 gulp.task('styles', ['sassLint'], function () {
@@ -130,7 +132,8 @@ gulp.task('styles', ['sassLint'], function () {
 				require('cssnano')()
 	    ]))
 		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest(paths.dest));
+		.pipe(gulp.dest(paths.dest))
+		.pipe(gulp.dest(paths.destCheckout));
 });
 
 gulp.task('images', function () {
