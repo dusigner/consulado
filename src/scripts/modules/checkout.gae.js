@@ -27,9 +27,11 @@ Nitro.module('checkout.gae', function() {
         });
     };
 
-    this.hasActiveWarranty = function() {
+    this.hasAnyActiveWarranty = function() {
         return self.orderForm && self.orderForm.items && self.orderForm.items.some(function(elem) {
-            return elem.bundleItems.length > 0;
+            return elem.bundleItems.length > 0 && elem.bundleItems.some(function(bundle) {
+                return bundle.name.indexOf('Garantia') !== -1;
+            });
         });
     };
 
@@ -111,10 +113,16 @@ Nitro.module('checkout.gae', function() {
 
         //pegando valores do produto clicado
         var $self = $(this),
-            index = $self.data('index'),
-            product = self.orderForm.items[index],
-            price1 = product.offerings[0],
-            price2 = product.offerings[1];
+            index = $self.attr('data-index'),
+            product = self.orderForm.items[index];
+
+        // filtra os serviços disponiveis somente para Garantia
+        var offerings = $.grep(self.orderForm.items[index].offerings, function(value) {
+            return value.name.indexOf('Garantia') !== -1;
+        });
+
+        var price1 = offerings[0],
+            price2 = offerings[1];
 
         //swap valores
         if (price1.price > price2.price) {
@@ -189,6 +197,27 @@ Nitro.module('checkout.gae', function() {
 
     };
 
+    this.selectHasWarranty = function($select) {
+        var hasWarranty = false;
+        $select.find('option').each(function() {
+            if($(this).text().indexOf('Garantia') !== -1) {
+                hasWarranty = true;
+            }
+        });
+
+        return hasWarranty;
+    };
+
+    this.hasCurrentWarranty = function($boxService) {
+        var hasWarranty = false;
+        $boxService.each(function() {
+            if($(this).find('.bundle-item-name span').text().indexOf('Garantia') !== -1) {
+                hasWarranty = true;
+            }
+        });
+        return hasWarranty;
+    };
+
     this.link = function() {
         var $link = $('<a href="#" class="linkWarranty btn">Adicionar Seguro Garantia Estendida Original</a>');
 
@@ -196,9 +225,14 @@ Nitro.module('checkout.gae', function() {
         $('.product-item').each(function(i) {
             var $self = $(this),
                 $selfService = $(this).find('.product-service'),
-                $currentLink = $self.find('.linkWarranty');
+                $currentLink = $self.find('.linkWarranty'),
+                $currentServices = $self.nextUntil('.product-item');
 
-            if ($currentLink.length === 0) {
+            // verifica se o link de garantia já não existe disponível para o produto
+            // verifica se o select de serviços escondido possui a opção de garantia estendida
+            // verifica se já não existe uma garantia adicionada
+            // adiciona o link de adquirir garantia
+            if ($currentLink.length === 0 && self.selectHasWarranty($selfService) && !self.hasCurrentWarranty($currentServices)) {
                 $link.clone()
                     .appendTo($selfService)
                     .attr('data-index', i)
