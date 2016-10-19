@@ -138,4 +138,35 @@ body {
 
 		.orderplaced-hr-continue { display: none; }
 	}
+	// =====================================
+	// TOOLS
+	// ===================================
+	.social {
+		height: 150px;
+	    position: relative;
+	    top: 40px;
+	    width: 40%;
+	    @include breakpoint(extra-small, 'max') {
+		    height: 130px;
+		    width: 100%;
+	    }
+		p {
+			@include breakpoint(extra-small, 'max') {
+				font-size: 18px!important;
+				margin-bottom: 20px!important;
+				width: 210px;
+			}
+		}
+	}
+
+	.at-share-btn {
+		background-color: #f35216!important;
+	}
+
+	.at-style-responsive .at-share-btn {
+		margin-left: 30px!important;
+		&:first-child {
+			margin-left: 0!important;
+		}
+	}
 }
