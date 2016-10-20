@@ -71,30 +71,31 @@
 @import 'components/modal-emailCRM';
 
 
-body{
+body {
 
-    &.landing-blackfriday-2016{
-        background: #121212 url('/arquivos/bg.jpg') no-repeat;
+    &.landing-blackfriday-2016 {
+        background-color: #121212;
+        background-image: url('/arquivos/bg.jpg');
         background-position: 50% 6%; 
-
+        background-repeat: no-repeat;
     }
 
 }
 
 header {
     background-color: #9aca3d;
-    min-height: 95px !important;
     line-height: 95px;
+    min-height: 95px !important;
     text-align: center;
 
     p {
         margin: 0;
 
-        a{
+        a {
 
             display: block;
 
-            &:before{
+            &:before {
                 @include icon-get(logo-consul);
                 color: #fff;
 
@@ -105,25 +106,25 @@ header {
     }
 }
 
-.section01{ 
+.section01 { 
     text-align: center;
     
-    .title{
+    .title {
         position: relative;
     }
 
     .content-title {
 
-        h1{ 
+        h1 { 
             @include responsiveFont(70, 16, true);
-            text-transform: uppercase;
-            text-align: center;
             color: #fff;
             font-weight: 300;
             letter-spacing: .2em;
             line-height: 80px;
+            text-align: center;
+            text-transform: uppercase;
 
-            @media (max-width: 375px){
+            @media (max-width: 375px) {
                 @include responsiveFont(40, 16, true);
                 line-height: 50px;
             }
@@ -132,21 +133,21 @@ header {
                 @include responsiveFont(90, 16, true);
                 letter-spacing: .1em;
 
-                @media (max-width: 375px){
+                @media (max-width: 375px) {
                     @include responsiveFont(60, 16, true);
                 }
 
             }
 
-            span{
+            span {
                 text-align: center;
 
-                &:before{
+                &:before {
                     @include icon-get(logo-consul);
                     @include responsiveFont(40, 16, true);
                     color: #8dc63f;
 
-                    @media (max-width: 375px){
+                    @media (max-width: 375px) {
                         @include responsiveFont(20, 16, true);
                     }
                 }
@@ -155,141 +156,155 @@ header {
 
         }
 
-        h3{
-            text-transform: uppercase;
+        h3 {
+            @include responsiveFont(24, 16, true);
             color: #fff;
             font-weight: bold;
-            @include responsiveFont(24, 16, true);
+            text-transform: uppercase;
         
-            @media (max-width: 375px){
+            @media (max-width: 375px) {
                 @include responsiveFont(14, 16, true);
             }
         }
 
     }
 
-    .circulo-verde{
+    .circulo-verde {
         @include responsiveFont(18, 16, true);
-        color: #fff;
-        background-color: #8dc63f;
-        position: absolute;
-        top: 10%;
-        right: 15%;
-        z-index: 10;
-        width: 145px;
-        height: 145px;
-        border-radius: 100%;
         -moz-border-radius: 100%;
         -webkit-border-radius: 100%;
+        background-color: #8dc63f;
+        border-radius: 100%;
+        color: #fff;
+        height: 145px;
         padding: 35px 0 0 0;
+        position: absolute;
+        right: 15%;
+        top: 10%;
+        width: 145px;
+        z-index: 10;
 
-        @media (max-width: 375px){
+        @media (max-width: 375px) {
             display: none;
         }
     
-        &:before{
-            content: '';
-            width: 75px;
-            height: 75px;
-            position: absolute;
-            top: -25px;
-            right: -20px;
-            z-index: -1;
-            background-color: #8dc63f;
-            border-radius: 100%;
+        &:before {
             -moz-border-radius: 100%;
             -webkit-border-radius: 100%;
+            background-color: #8dc63f;
+            border-radius: 100%;
+            content: '';
+            height: 75px;
+            position: absolute;
+            right: -20px;
+            top: -25px;
+            width: 75px;
+            z-index: -1;
 
         }
     }
 
-    .contador{
+    .contador {
 
-        .content-contador{
+        .content-contador {
 
-            ul{
+            ul {
 
-                li{
-                    display: inline-block;
-                    background-color: #9aca3d;
-                    width: 135px;
-                    height: 135px;
-                    border-radius: 100%;
-                    -webkit-border-radius: 100%;
+                li {
                     -moz-border-radius: 100%;
-                    text-align: center;
+                    -webkit-border-radius: 100%;
+                    background-color: #9aca3d;
+                    border-radius: 100%;
+                    display: inline-block;
+                    height: 135px;
                     margin-left: 60px;
-                    vertical-align: middle;
                     position: relative;
+                    text-align: center;
+                    vertical-align: middle;
+                    width: 135px;
 
-                    @media (max-width: 375px){
-                        width: 50px;
+                    @media (max-width: 375px) {
                         height: 50px;
                         margin-left: 25px;
+                        width: 50px;
                     }
 
-                    &:first-child{
+                    &:first-child {
                         margin-left: 0;
                     }
 
-                    &:before, &:after{
-                        content: '';
-                        background-color: #fff;
-                        width: 10px;
-                        height: 10px;
-                        border-radius: 100%;
+                    &:before {
                         -moz-border-radius: 100%;
                         -webkit-border-radius: 100%;
+                        background-color: #fff;
+                        border-radius: 100%;
+                        content: '';
+                        height: 10px;
                         position: absolute;
-                        top: 55px;
                         right: -33px;
+                        top: 55px;
+                        width: 10px;
                         z-index: 10;
 
-                        @media (max-width: 375px){
-                            top: 12px;
+                        @media (max-width: 375px) {
                             right: -18px;
+                            top: 12px;
                         }
                     }
 
-                    &:after{
+                    &:after {
+                        -moz-border-radius: 100%;
+                        -webkit-border-radius: 100%;
+                        background-color: #fff;
+                        border-radius: 100%;
+                        content: '';
+                        height: 10px;
+                        position: absolute;
+                        right: -33px;
                         top: 75px;
+                        width: 10px;
+                        z-index: 10;
 
-                        @media (max-width: 375px){
+                        @media (max-width: 375px) {
                             top: 29px;
                         }
                     }
 
-                    &:last-child{
+                    &:last-child {
     
-                        &:before, &:after{
-                            display: none;
+                        &:before {
+                          display: none;
                         }
+
+                        &:after {
+                          display: none;
+                        }                         
                     }
 
-                    span{
+                    span {
                         @include responsiveFont(60, 16, true);
-                        vertical-align: middle;
                         color: #702f8e;
+                        display: inline-block;
                         font-weight: bold;
                         margin-top: 25px;
-                        display: inline-block;
                         position: relative;
+                        vertical-align: middle;
 
-                        @media (max-width: 375px){
+                        @media (max-width: 375px) {
                             @include responsiveFont(30, 16, true);
                             margin-top: 5px;
                         }
 
                     }
 
-                    p{
+                    p {
                         @include responsiveFont(20, 16, true);
                         color: #fff;
-                        text-transform: uppercase;
                         font-weight: bold;
                         margin-top: 30px;
+                        text-transform: uppercase;
 
-                        @media (max-width: 375px){
+                        @media (max-width: 375px) {
                             @include responsiveFont(12, 16, true);
                             margin-top: 10px;
                         }
@@ -304,84 +319,86 @@ header {
 
 }
 
-.sectionForm{
-    position: relative;
-    margin-top: 80px;
+.sectionForm {
     margin-bottom: 80px;
+    margin-top: 80px;
+    position: relative;
 
-    .content-leads{
+    .content-leads {
         background-color: rgba(154, 202, 61, .75);
+        color: #fff;
         padding: 30px 60px 45px 60px;
         text-align: center;
-        color: #fff;
 
-        .sucesso{
+        .sucesso {
             color: #702f8e;
             margin: 0;
         }
 
-        @media (max-width: 375px){
+        @media (max-width: 375px) {
             padding: 15px 15px 25px 15px;
         }
 
-        h3{
+        h3 {
             @include responsiveFont(26, 16, true);
-            text-transform: uppercase;
             margin-bottom: 0;
             margin-top: 0;
+            text-transform: uppercase;
 
-            @media (max-width: 375px){
+            @media (max-width: 375px) {
                 @include responsiveFont(16, 16, true);
             }
 
         }
 
-        p{
+        p {
             @include responsiveFont(18, 16, true);
             margin-top: 10px;
 
-            @media (max-width: 375px){
+            @media (max-width: 375px) {
                 @include responsiveFont(12, 16, true);
                 margin-bottom: 25px;
             }
         }
     
-        #form-leads-blackfriday-2016{
+        #form-leads-blackfriday-2016 {
 
-            input[type="text"]{
-                width: 20%;
-                padding: 0 10px;
-                line-height: 16px;
-                font-size: 16px;
-                border-radius: 5px;
+            input[type='text'] {
                 -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;
                 background-color: #fff;
-                height: 50px;
-                border: 2px solid #736c6b;
-                margin-right: 25px;
+                border-color: #736c6b; 
+                border-radius: 5px;
+                border-style: solid;
+                border-width: 2px;
                 color: #767676;
+                font-size: 16px;
+                height: 50px;
+                line-height: 16px;
+                margin-right: 25px;
+                padding: 0 10px;
+                width: 20%;
 
-                @media (max-width: 375px){
+                @media (max-width: 375px) {
                     width: 100%;
                 }
             }
 
             button {
-                background-color: #702f8e;
-                color: #fff;
                 @include responsiveFont(14, 16, true);
-                text-transform: uppercase;
-                font-weight: 300;
-                line-height: 14px;
-                padding: 0 25px;
-                height: 54px;
-                border: none;
-                border-radius: 30px;
                 -moz-border-radius: 30px;
                 -webkit-border-radius: 30px;
+                background-color: #702f8e;
+                border-radius: 30px;
+                border-width: 0;
+                color: #fff;
+                font-weight: 300;
+                height: 54px;
+                line-height: 14px;
+                padding: 0 25px;
+                text-transform: uppercase;
 
-                @media (max-width: 375px){
+                @media (max-width: 375px) {
                     width: 95%;
                 }
             }
@@ -389,70 +406,70 @@ header {
     }
 }
 
-.sectionDicas{
+.sectionDicas {
     text-align: center;
 
-    h2{
-        color: #9aca3d;
+    h2 {
          @include responsiveFont(44, 16, true);
+        color: #9aca3d;
+        font-weight: bold;
         line-height: 48px;
         text-transform: uppercase;
-        font-weight: bold;
 
-        @media (max-width: 375px){
+        @media (max-width: 375px) {
             @include responsiveFont(18, 16, true);
             line-height: 25px;
         }
     }
 
-    .content-dicas{
+    .content-dicas {
 
-        ul{
+        ul {
 
-            li{
+            li {
                 display: inline-block;
                 font-size: 0;
-                width: 20%;
-                text-align: center;
                 margin-left: 5%;
                 min-height: 250px;
-                vertical-align: top;
                 overflow: hidden;
+                text-align: center;
+                vertical-align: top;
+                width: 20%;
 
-                @media (max-width: 375px){
-                    width: 100%;
-                    margin-left: 0;
+                @media (max-width: 375px) {
                     margin-bottom: 15px;
+                    margin-left: 0;
+                    width: 100%;
                 }
 
-                &:first-child{
+                &:first-child {
                     margin-left: 0;
                 }
 
 
-                .image-entry{
-                    position: relative;
-                    height: 130px;
+                .image-entry {
                     display: table-cell;
-                    vertical-align: bottom;
-                    text-align: center;
-                    width: 100%;
+                    height: 130px;
                     min-width: 220px;                    
                     overflow: hidden;
+                    position: relative;
+                    text-align: center;
+                    vertical-align: bottom;
+                    width: 100%;
 
-                    @media (max-width: 375px){
+                    @media (max-width: 375px) {
                         min-width: 340px;    
                     
                     }
                 }
 
-                .text-entry{
-                    position: relative;
+                .text-entry {
                     margin-top: 40px;
-                    p{
-                        margin: 0;
+                    position: relative;
+                    p {
                         @include responsiveFont(18, 16, true);
                         color: #fff;
+                        margin: 0;
                     }
 
                 }
@@ -464,131 +481,125 @@ header {
 
 }
 
-.sectionDestaques{
-    text-align: center;
-    margin-top: 80px;
+.sectionDestaques {
     margin-bottom: 80px;
+    margin-top: 80px;
+    text-align: center;
 
-    h2{
+    h2 {
         color: #9aca3d;
         font-size: 44px;
+        font-weight: bold;
         line-height: 48px;
         text-transform: uppercase;
-        font-weight: bold;
 
-        @media (max-width: 375px){
+        @media (max-width: 375px) {
             @include responsiveFont(26, 16, true);
         }
     }
 
-    .content-destaques{
+    .content-destaques {
 
-        ul{
-            position: relative;
+        ul {
             margin-top: 60px;
+            position: relative;
 
-            li{
-                margin-left: 30px;
+            li {
                 display: inline-block;
+                margin-left: 30px;
                 position: relative;
                 text-align: center;
 
-                @media (max-width: 375px){
-                    width: 47%;
-                    min-height: 255px;
-                    vertical-align: top;
-                    margin-left: 3%;
-                }
+                &:first-child {
 
-                &:first-child{
-
-                    @media (max-width: 375px){
+                    @media (max-width: 375px) {
                         margin-left: 0;
                     }
 
-
-                    &:before{
+                    &:before {
                         content: url('/arquivos/ico-destaque-1.png');
-                        width: 63px;
                         height: 71px;
-                        top: -20px;
                         left: -23px;
-                    }
-
-                }
-
-                &:nth-child(2){
-
-                    &:before{
-                        content: url('/arquivos/ico-destaque-2.png');
-                        width: 70px;
-                        height: 51px;
                         top: -20px;
+                        width: 63px;
+                    }
+
+                }
+
+                &:nth-child(2) {
+
+                    &:before {
+                        content: url('/arquivos/ico-destaque-2.png');
+                        height: 51px;
                         left: -8px;
+                        top: -20px;
+                        width: 70px;
                     }
 
                 }
 
 
-                &:nth-child(3){
+                &:nth-child(3) {
 
-                    @media (max-width: 375px){
+                    @media (max-width: 375px) {
                         margin-left: 0;
                     }
 
 
-                    &:before{
+                    &:before {
                         content: url('/arquivos/ico-destaque-3.png');
-                        width: 45px;
                         height: 62px;
-                        top: -20px;
                         left: 5px;
+                        top: -20px;
+                        width: 45px;
                     }
 
                 }
 
 
-                &:last-child{
+                &:last-child {
 
-                    &:before{
+                    &:before {
                         content: url('/arquivos/ico-destaque-4.png');
-                        width: 78px;
                         height: 42px;
-                        top: -20px;
                         left: -8px;
+                        top: -20px;
+                        width: 78px;
                     
                     }
 
                 }
 
+                @media (max-width: 375px) {
+                    margin-left: 3%;
+                    min-height: 255px;
+                    vertical-align: top;
+                    width: 47%;
+                }
 
-                &:before{
+                &:before {
                     position: absolute;
                     z-index: 10;
                 }
 
-                &:first-child{
-                    margin-left: 0;
-                }
-
-                figure{
+                figure {
                     margin: 0;
 
-                    img{
+                    img {
 
-                        @media (max-width: 375px){
+                        @media (max-width: 375px) {
                             height: 100%;
                             width: 100%;
                         }
 
                     }
                 
-                    figcaption{
+                    figcaption {
                         @include responsiveFont(18, 16, true);
                         color: #fff;
-                        text-transform: uppercase;
                         font-weight: bold;
                         position: relative;
+                        text-transform: uppercase;
                         top: 30px;
                     }
                 }
