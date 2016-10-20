@@ -85,9 +85,11 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
 
                 $(inputs).addClass('erro');
 
+                $('.content-leads').append('<p class="error_p">Preencha os campos corretamente</p>');
                 if( Index.emailValidation(email) && nome !== '' ){
                     $(inputs).removeClass('erro');
-
+                    $('.content-leads .error_p').hide();
+                    
                     var data = $('#form-leads-blackfriday-2016').serialize();
 
                     var obj = Index.transformForminObj(data);
