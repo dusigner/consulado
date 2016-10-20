@@ -44,8 +44,8 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
                 minuto.html(('0' + t.minutos).slice(-2));
                 segundo.html(('0' + t.segundos).slice(-2));
 
-                if (t.total <= 0) {
-                  clearInterval(timeinterval);
+                if(t.total <= 0) {
+                    clearInterval(timeinterval);
                 }
             }
             
@@ -92,7 +92,7 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
 
                     var obj = Index.transformForminObj(data);
 
-                    CRM.insertClient(obj).done(function (val){
+                    CRM.insertClient(obj).done(function (){
 
                         $('.content-leads').append('<p class="sucesso">Você foi cadastrado</p>');
                         setTimeout(function(){
@@ -101,7 +101,7 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
                         $('#nome-bf-2016').val('');
                         $('#email-bf-2016').val('');
 
-                    }).fail(function (error){
+                    }).fail(function (){
 
                     });
 
