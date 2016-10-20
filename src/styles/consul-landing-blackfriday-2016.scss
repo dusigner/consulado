@@ -96,6 +96,7 @@ header {
             display: block;
 
             &:before {
+                @include responsiveFont(24, 16, true);
                 @include icon-get(logo-consul);
                 color: #fff;
 
@@ -266,6 +267,7 @@ header {
                         z-index: 10;
 
                         @media (max-width: 375px) {
+                            right: -18px;
                             top: 29px;
                         }
                     }
@@ -366,7 +368,7 @@ header {
             input[type='text'] {
                 -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;
-                background-color: #fff;
+                background-color: #fff !important;
                 border-color: #736c6b; 
                 border-radius: 5px;
                 border-style: solid;
@@ -378,6 +380,10 @@ header {
                 margin-right: 25px;
                 padding: 0 10px;
                 width: 20%;
+
+                &:-webkit-autofill {
+                    background-color: #fff;
+                }
 
                 @media (max-width: 375px) {
                     width: 100%;
@@ -397,6 +403,10 @@ header {
                 line-height: 14px;
                 padding: 0 25px;
                 text-transform: uppercase;
+
+                &:focus {
+                    outline: transparent;
+                }
 
                 @media (max-width: 375px) {
                     width: 95%;
