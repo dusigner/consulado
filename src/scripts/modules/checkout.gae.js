@@ -44,7 +44,7 @@ Nitro.module('checkout.gae', function() {
                 .appendTo('.orderform-template .summary-template-holder');
         }
 
-        $info.toggleClass('active', self.hasActiveWarranty());
+        $info.toggleClass('active', self.hasAnyActiveWarranty());
     };
 
     this.terms = function() {
