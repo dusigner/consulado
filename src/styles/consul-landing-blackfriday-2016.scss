@@ -337,6 +337,11 @@ header {
             margin: 0;
         }
 
+        .error_p{
+            color: #702f8e;
+            margin: 0;           
+        }
+
         @media (max-width: 375px) {
             padding: 15px 15px 25px 15px;
         }
@@ -383,6 +388,10 @@ header {
 
                 &:-webkit-autofill {
                     background-color: #fff;
+                }
+
+                &.erro{
+                    border-color: #702f8e; 
                 }
 
                 @media (max-width: 375px) {
