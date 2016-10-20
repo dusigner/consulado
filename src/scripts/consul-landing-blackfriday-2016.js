@@ -93,12 +93,16 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
                     var obj = Index.transformForminObj(data);
 
                     CRM.insertClient(obj).done(function (val){
-                        console.log(val);
-                        console.log('foi');
+
+                        $('.content-leads').append('<p class="sucesso">Você foi cadastrado</p>');
+                        setTimeout(function(){
+                            $('.content-leads .sucesso').hide();
+                        }, 5000);
+                        $('#nome-bf-2016').val('');
+                        $('#email-bf-2016').val('');
 
                     }).fail(function (error){
-                        console.log(error);
-                        console.log('n foi');
+
                     });
 
 
