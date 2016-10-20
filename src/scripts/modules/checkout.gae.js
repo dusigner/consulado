@@ -78,7 +78,9 @@ Nitro.module('checkout.gae', function() {
 
                 elem.bundleItems.forEach(function(bundle) {
                     //$.each(self.orderForm.items, function (i) {
-                    return vtexjs.checkout.removeOffering(bundle.id, elemIndex);
+                    if(bundle.name.indexOf('Garantia') !== -1) {
+                        return vtexjs.checkout.removeOffering(bundle.id, elemIndex);
+                    }
                     //});
                 });
             });
