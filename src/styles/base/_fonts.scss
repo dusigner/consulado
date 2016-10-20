@@ -3,38 +3,38 @@
 @font-face {
 	font-family: 'consul';
 	font-style: normal;
-	font-weight: 300;
+	font-weight: 300;	
 	src: url('#{$font-path}consulcoheadline_std_lt-webfont.eot'),
-		 url('#{$font-path}consulcoheadline_std_lt-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('#{$font-path}consulcoheadline_std_lt-webfont.woff2') format('woff2'),
-		 url('#{$font-path}consulcoheadline_std_lt-webfont.woff') format('woff'),
-		 url('#{$font-path}consulcoheadline_std_lt-webfont.ttf') format('truetype'),
-		 url('#{$font-path}consulcoheadline_std_lt-webfont.svg#consul') format('svg');
+		url('#{$font-path}consulcoheadline_std_lt-webfont.eot?#iefix') format('embedded-opentype'),
+		url('#{$font-path}consulcoheadline_std_lt-webfont.svg#consul') format('svg'),
+		url('#{$font-path}consulcoheadline_std_lt-webfont.ttf') format('truetype'),
+		url('#{$font-path}consulcoheadline_std_lt-webfont.woff') format('woff'),
+		url('#{$font-path}consulcoheadline_std_lt-webfont.woff2') format('woff2');
 }
-
+//
 // @font-face {
-// 	font-family: 'consul';
-// 	src: url('#{$font-path}consulcoheadline_std_rg-webfont.eot');
-// 	src: url('#{$font-path}consulcoheadline_std_rg-webfont.eot?#iefix') format('embedded-opentype'),
-// 		 url('#{$font-path}consulcoheadline_std_rg-webfont.woff2') format('woff2'),
-// 		 url('#{$font-path}consulcoheadline_std_rg-webfont.woff') format('woff'),
-// 		 url('#{$font-path}consulcoheadline_std_rg-webfont.ttf') format('truetype'),
-// 		 url('#{$font-path}consulcoheadline_std_rg-webfont.svg#consul') format('svg');
-// 	font-weight: 400;
-// 	font-style: normal;
-// }
-
-// @font-face {
-// 	font-family: 'consul';
-// 	src: url('#{$font-path}consulcoheadline_std_bd-webfont.eot');
-// 	src: url('#{$font-path}consulcoheadline_std_bd-webfont.eot?#iefix') format('embedded-opentype'),
-// 		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff2') format('woff2'),
-// 		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff') format('woff'),
-// 		 url('#{$font-path}consulcoheadline_std_bd-webfont.ttf') format('truetype'),
-// 		 url('#{$font-path}consulcoheadline_std_bd-webfont.svg#consul') format('svg');
-// 	font-weight: 700;
-// 	font-style: normal;
-// }
+//	font-family: 'consul';
+//	src: url('#{$font-path}consulcoheadline_std_rg-webfont.eot');
+//	src: url('#{$font-path}consulcoheadline_std_rg-webfont.eot?#iefix') format('embedded-opentype'),
+//		 url('#{$font-path}consulcoheadline_std_rg-webfont.woff2') format('woff2'),
+//		 url('#{$font-path}consulcoheadline_std_rg-webfont.woff') format('woff'),
+//		 url('#{$font-path}consulcoheadline_std_rg-webfont.ttf') format('truetype'),
+//		 url('#{$font-path}consulcoheadline_std_rg-webfont.svg#consul') format('svg');
+//	font-weight: 400;
+//	font-style: normal;
+//}
+//
+@font-face {
+	font-family: 'consul';
+	font-style: normal;
+	font-weight: 700;
+	src: url('#{$font-path}consulcoheadline_std_bd-webfont.eot'),
+		 url('#{$font-path}consulcoheadline_std_bd-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('#{$font-path}consulcoheadline_std_bd-webfont.svg#consul') format('svg'),
+		 url('#{$font-path}consulcoheadline_std_bd-webfont.ttf') format('truetype'),
+		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff') format('woff'),
+		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff2') format('woff2');
+}
 
 $base-font-family         : 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
 $base-print-font-family   : Georgia, 'Times New Roman', Times, serif !default;
