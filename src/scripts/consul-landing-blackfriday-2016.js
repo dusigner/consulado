@@ -96,6 +96,12 @@ Nitro.controller('landing-blackfriday-2016', [], function () {
 
                     CRM.insertClient(obj).done(function (){
 
+                        dataLayer.push({
+                            'event' : 'BTP-BF-FormSuccess',
+                            'email' : email
+                        });
+
+                            
                         $('.content-leads').append('<p class="sucesso">Você foi cadastrado</p>');
                         setTimeout(function(){
                             $('.content-leads .sucesso').hide();
