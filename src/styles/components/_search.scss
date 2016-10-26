@@ -57,7 +57,7 @@ body.search-active {
 		position: absolute;
 		top: 0;
 
-		@include breakpoint(extra-small, 'max') {
+		@include breakpoint(small, 'max') {
 			left: 80%;
 		}
 
@@ -152,18 +152,18 @@ body.search-active {
 		overflow: hidden;
 		padding: 10px 0;
 
-		&:hover, 
+		&:hover,
 		&.active {
 			color: #000000;
 
-			.image, 
+			.image,
 			.img { img { margin-bottom: -20px; } }
 
 			h3 { text-indent: 5px; }
 		}
 	}
 
-	.image, 
+	.image,
 	.img {
 		display: inline-block;
 		height: 100%;
@@ -200,8 +200,8 @@ body.search-active {
 			font-size: 0;
 
 			.product-field {
-				&, 
-				ul, 
+				&,
+				ul,
 				li { display: inline; }
 
 				ul {

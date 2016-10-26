@@ -28,9 +28,8 @@
 	// Header
 	header {
 
-		@include breakpoint(medium, 'min') {
-			min-height: 120px;
-		}
+		@include breakpoint(medium, 'min') { min-height: 120px; }
+		@include breakpoint(small, 'max') { padding-bottom: 50px; }
 
 		.container a { text-decoration: none; }
 	}
@@ -95,9 +94,9 @@
 				z-index: 10;
 			}
 
-			.cont-search { 
+			.cont-search {
 				background-color: #ffffff;
-				left: 0; 
+				left: 0;
 				top: 93px;
 				width: 100%;
 			}
