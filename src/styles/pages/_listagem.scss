@@ -936,13 +936,18 @@
 
 								.price {
 									height: auto;
+									margin-bottom: 10px;
 									min-height: 162px;
 
-									.de { @include responsiveFont(13, 16, true); }
+									.de {
+										@include responsiveFont(13, 16, true);
+										min-height: 20px;
+									}
 
 									.por {
 										@include responsiveFont(16, 16, true);
 										margin: 5px 0 !important;
+										min-height: 50px;
 										position: relative;
 
 										.juros {
@@ -962,7 +967,6 @@
 									.discount-boleto {
 										@include responsiveFont(13, 16, true);
 										padding: 0;
-										padding-top: 20px;
 
 										&:before { @include responsiveFont(15, 16, true); }
 									}

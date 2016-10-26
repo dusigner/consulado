@@ -76,7 +76,7 @@ body {
     &.landing-blackfriday-2016 {
         background-color: #121212;
         background-image: url('/arquivos/bg.jpg');
-        background-position: 50% 6%; 
+        background-position: 50% 6%;
         background-repeat: no-repeat;
     }
 
@@ -107,16 +107,16 @@ header {
     }
 }
 
-.section01 { 
+.section01 {
     text-align: center;
-    
+
     .title {
         position: relative;
     }
 
     .content-title {
 
-        h1 { 
+        h1 {
             @include responsiveFont(70, 16, true);
             color: #fff;
             font-weight: 300;
@@ -162,7 +162,7 @@ header {
             color: #fff;
             font-weight: bold;
             text-transform: uppercase;
-        
+
             @media (max-width: 375px) {
                 @include responsiveFont(14, 16, true);
             }
@@ -188,7 +188,7 @@ header {
         @media (max-width: 375px) {
             display: none;
         }
-    
+
         &:before {
             -moz-border-radius: 100%;
             -webkit-border-radius: 100%;
@@ -273,14 +273,14 @@ header {
                     }
 
                     &:last-child {
-    
+
                         &:before {
                           display: none;
                         }
 
                         &:after {
                           display: none;
-                        }                         
+                        }
                     }
 
                     span {
@@ -339,7 +339,7 @@ header {
 
         .error_p {
             color: #702f8e;
-            margin: 0;           
+            margin: 0;
         }
 
         @media (max-width: 375px) {
@@ -367,14 +367,14 @@ header {
                 margin-bottom: 25px;
             }
         }
-    
+
         #form-leads-blackfriday-2016 {
 
             input[type='text'] {
                 -moz-border-radius: 5px;
                 -webkit-border-radius: 5px;
                 background-color: #fff !important;
-                border-color: #736c6b; 
+                border-color: #736c6b;
                 border-radius: 5px;
                 border-style: solid;
                 border-width: 2px;
@@ -391,7 +391,7 @@ header {
                 }
 
                 &.erro {
-                    border-color: #702f8e; 
+                    border-color: #702f8e;
                 }
 
                 @media (max-width: 375px) {
@@ -468,15 +468,15 @@ header {
                 &:last-child {
 
                     img {
-                        width: 120px;
                         height: 120px;
+                        width: 120px;
                     }
                 }
 
                 .image-entry {
                     display: table-cell;
                     height: 130px;
-                    min-width: 220px;                    
+                    min-width: 220px;
                     overflow: hidden;
                     position: relative;
                     text-align: center;
@@ -484,8 +484,8 @@ header {
                     width: 100%;
 
                     @media (max-width: 375px) {
-                        min-width: 340px;    
-                    
+                        min-width: 340px;
+
                     }
                 }
 
@@ -591,7 +591,7 @@ header {
                         left: -8px;
                         top: -20px;
                         width: 78px;
-                    
+
                     }
 
                 }
@@ -619,7 +619,7 @@ header {
                         }
 
                     }
-                
+
                     figcaption {
                         @include responsiveFont(18, 16, true);
                         color: #fff;
