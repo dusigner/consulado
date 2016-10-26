@@ -28,7 +28,8 @@ body > .destaque {
 
 .pre-title {
 	position: relative;
-	&:before, 
+	//TO DO
+	/* &:before,
 	&:after {
 		@include contentBefore();
 		border-image: url('/arquivos/border-dots.png') 70 78 82 72 fill repeat;
@@ -36,7 +37,7 @@ body > .destaque {
 		@include breakpoint(large, 'max') {
 			display: none!important;
 		}
-	}
+	} */
 }
 
 .home-prateleira-01 .prateleira.default > h2 {margin-top: 20px;}
