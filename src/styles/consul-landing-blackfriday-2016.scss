@@ -465,6 +465,13 @@ header {
                     margin-left: 0;
                 }
 
+                &:last-child {
+
+                    img {
+                        width: 120px;
+                        height: 120px;
+                    }
+                }
 
                 .image-entry {
                     display: table-cell;
