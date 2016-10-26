@@ -55,9 +55,9 @@ body.categoria .compare {
 	}
 }
 
-.list-container { 
+.list-container {
 	margin-bottom: 65px;
-	margin-top: 55px; 
+	margin-top: 55px;
 }
 
 
@@ -898,21 +898,26 @@ body.categoria .compare {
 	.listagem,
 	.listagem-categoria-filtros {
 	.prateleira.default {
-		
+
 		@include breakpoint(small, 'max') {
 			margin-top: 30px;
 
-			.compare { 
+			.compare {
 				margin-bottom: 10px;
-				width: 140px; 
+				width: 140px;
 			}
 
 			ul {
 				li {
 					display: inline-block;
 					height: auto;
+					margin: 0 3%;
 					vertical-align: top;
-					width: 48%;
+					width: 47%;
+
+					&:nth-child(odd) { margin-left: 0; }
+
+					&:nth-child(even) { margin-right: 0; }
 
 					article {
 						padding: 0;
@@ -935,11 +940,13 @@ body.categoria .compare {
 
 								.price {
 									height: auto;
+									min-height: 162px;
 
 									.de { @include responsiveFont(13, 16, true); }
 
 									.por {
 										@include responsiveFont(16, 16, true);
+										margin: 5px 0 !important;
 										position: relative;
 
 										.juros {
@@ -949,6 +956,11 @@ body.categoria .compare {
 										}
 
 										.total-parcelado { margin-top: 20px; }
+									}
+
+									.adicional {
+										@include responsiveFont(14, 16, true);
+										margin: 5px 0 !important;
 									}
 
 									.discount-boleto {
