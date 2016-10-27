@@ -1,15 +1,18 @@
 @charset 'UTF-8';
 
 @if $use-com-footer == true {
-
-	//------------------------------------
-	//  FOOTER
-	//------------------------------------
 	.footer {
 		background: $green;
 		color: #fff;
 		position: relative;
 		z-index: 2;
+
+		@include breakpoint(extra-small, 'max') {
+			.container {
+				padding: 0 10px !important;
+				width: 100%;
+			}
+		}
 
 		a {
 			color: #fff;
@@ -61,98 +64,6 @@
 				text-align: left;
 				width: 100%;
 			}
-		}
-	}
-
-	.form-newsletter {
-		display: block;
-		float: right;
-		max-width: 340px;
-		position: relative;
-		width: fluidWidth(365px, 530px);
-
-		@include breakpoint(extra-large, 'max') {
-			float: left;
-			margin-top: 26px;
-			max-width: inherit;
-			width: 100%;
-		}
-
-		@include breakpoint(small, 'max') { margin: 18px 0; }
-
-		&.success { text-align: center }
-
-		fieldset {
-			border: 0;
-			margin: 0;
-			padding: 0;
-			width: 100%;
-		}
-
-		input.email {
-			@include responsiveFont(13);
-			background-color: #fff;
-			border: 1px solid #fff;
-			border-radius: 50px;
-			color: $txt-gray-l;
-			height: 46px;
-			margin: 0;
-			padding: 0 15px;
-			width: 100%;
-
-			&.error { border: 1px solid $object-validate-color; }
-
-			&:focus,
-			&:active { outline: none; }
-
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(15);
-				padding: 13px;
-			}
-		}
-
-		// Placeholder text color
-		@include inputPlaceholderColor ( $txt-gray-l );
-
-		.submit {
-			@include responsiveFont(11);
-			background: #fff;
-			border: none;
-			border-bottom-right-radius: 50px;
-			border-top-right-radius: 50px;
-			display: block;
-			height: 46px;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 40px;
-
-			&:focus { outline: none; }
-
-			span {
-				color: transparent;
-				font-size: 0;
-			}
-
-			&:before {
-				@include responsiveFont(15, 16, true);
-				color: $txt-gray;
-				vertical-align: bottom;
-			}
-
-			&.loading {
-				font-size: 0;
-
-				&:before {
-					@include spinner($green);
-					content: ' ';
-				}
-			}
-		}
-
-		label.error {
-			@include font-size(13px);
-			margin-top: 5px;
 		}
 	}
 
@@ -422,7 +333,7 @@
 				}
 
 				@include breakpoint(small, 'max') {
-					@include responsiveFont(24);
+					@include responsiveFont(18);
 					padding: 1em 50px 1em 0;
 				}
 			}

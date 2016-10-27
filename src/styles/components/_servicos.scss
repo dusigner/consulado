@@ -1,15 +1,80 @@
 @charset 'UTF-8';
 
+.newsletter {
+	display: none;
+
+	@include breakpoint(extra-small, 'max') {
+		display: inline-block;
+		padding: 20px 0;
+
+		.container {
+			border: none !important;
+			margin: 0 !important;
+			padding: 0 !important;
+			width: 100%;
+		}
+	}
+}
+
 .servicos {
 	background: $gray-l;
 	margin: 0;
 	padding: 40px 0 70px 0;
 	text-align: center;
 
+	@include breakpoint(extra-small, 'max') {
+		padding: 30px 0;
+
+		.container {
+			padding: 0 10px !important;
+			width: 100%;
+		}
+	}
+
 	.box {
 		&>a:first-child {
 			color: $txt-gray;
 			text-decoration: none;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		@include breakpoint(extra-small, 'max') {
+			border: 1px solid #747474;
+			display: inline-block;
+			margin: 10px 0;
+			padding: 10px;
+			padding-left: 60px;
+			position: relative;
+			text-align: left;
+			width: 100%;
+
+			&:before {
+				@include contentBefore();
+				@include icon-get('arrow-right');
+				@include responsiveFont(12, 16, true);
+				color: $orange;
+				display: block;
+				font-weight: bold !important;
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
+			.icon {
+				background-size: contain;
+				height: 30px;
+				left: 10px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 30px;
+			}
+
+			a.primary-button { display: none; }
 		}
 	}
 
@@ -19,8 +84,13 @@
 		line-height: 1.14;
 		margin: 15px 0 35px;
 
-		@include breakpoint(small, 'max') {
-			margin-bottom: 15px;
+		@include breakpoint(extra-small, 'max') {
+			@include responsiveFont(16, 16, true);
+			margin-bottom: 20px;
+			padding: 0 10px;
+			text-align: left;
+
+			span { color: $green; }
 		}
 
 		span {
@@ -42,7 +112,15 @@
 
 	.box-title {
 		@include responsiveFont(18, 16, true);
-		margin: 10px 0;
+		font-weight: normal;
+		margin: 15px 0;
+		padding: 0;
+
+		@include breakpoint(extra-small, 'max') {
+			@include responsiveFont(14, 16, true);
+			margin: 0;
+			margin-bottom: 5px;
+		}
 	}
 
 	.box-text {
@@ -53,6 +131,11 @@
 		@include breakpoint(small, 'min') { min-height: 110px; }
 
 		@include breakpoint(extra-large, 'min') { min-height: 80px; }
+
+		@include breakpoint(extra-small, 'max') {
+			@include responsiveFont(12, 16, true);
+			padding: 0;
+		}
 	}
 
 	.primary-button {
