@@ -252,7 +252,7 @@ $menu-colors: (
 
 //Menu mobile
 .menu-mobile {
-	background-color: $gray-l;
+	background-color: $green;
 	height: 50px;
 	overflow: hidden;
 	position: relative;
@@ -265,7 +265,7 @@ $menu-colors: (
 		cursor: pointer;
 		height: 50px;
 		position: relative;
-		width: 140px;
+		width: 40px;
 		z-index: 10;
 
 		.icon-hamburger,
@@ -273,7 +273,7 @@ $menu-colors: (
 
 		.icon-hamburger {
 			border-color: #fff;
-			left: 30px;
+			left: 10px;
 			top: 18px;
 
 			&:before { background-color: #fff; }
@@ -281,7 +281,7 @@ $menu-colors: (
 
 		.txt {
 			color: #ffffff;
-			display: block;
+			display: none;
 			left: 60px;
 			top: 15px;
 

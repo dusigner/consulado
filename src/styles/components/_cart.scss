@@ -28,8 +28,13 @@ $cart-size: 405px;
 		@include breakpoint(small, 'min') { color: #fff; }
 
 		@include breakpoint(small, 'max') {
-			@include responsiveFont(24, 16, true);
-		}
+ 			@include responsiveFont(22, 16, true); 
+ 			color: #ffffff;
+ 			position: relative;
+    		right: 20px;
+    		top: -9px;
+    		z-index: -10;
+ 		}
 	}
 
 	.link-cart {
@@ -44,6 +49,18 @@ $cart-size: 405px;
 		@include breakpoint(small, 'min') {
 			background: $green;
 			border-radius: 50%;
+		}
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(17);
+			    background-color: $orange;
+			    border: none;
+			    border-radius: 50%;
+			    font-weight: 400;
+			    height: 16px;
+			    line-height: 19px;
+			    top: 10px;
+			    width: 16px;
 		}
 	}
 
@@ -64,12 +81,15 @@ $cart-size: 405px;
 		&:hover { transform: scale(1.2); }
 
 		@include breakpoint(small, 'max') {
-			@include responsiveFont(20, 16, true);
+			@include responsiveFont(12, 13, true);
 			background-color: transparent;
 			border: none;
-			color: $orange;
+			color: #ffffff;
 			font-weight: normal;
-			top: 10px;
+			height: 16px;
+			right: 0;
+			top: -8px;
+			width: 16px;
 		}
 	}
 
