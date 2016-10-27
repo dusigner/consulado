@@ -6,8 +6,6 @@ require('modules/search');
 require('vendors/jquery.cookie');
 
 Nitro.module('header', function() {
-
-
     var $body = $('body'),
         $document = $(document);
 
@@ -42,44 +40,6 @@ Nitro.module('header', function() {
             menuMobile.addClass('menu-active');
         }
     });
-
-    menuMobile.find('.sub-itens > a').click(function(e) {
-        e.preventDefault();
-
-        menuMobile.addClass('sub-itens-active');
-    });
-
-    menuMobile.find('.menu-title').click(function(e) {
-        e.preventDefault();
-
-        menuMobile.removeClass();
-
-        if ($(this).parent().hasClass('second-level')) {
-            $(this).parent().parent().removeClass('item-active');
-
-            menuMobile.addClass(defaultClass + ' menu-active sub-itens-active');
-
-        } else {
-            menuMobile.addClass(defaultClass + ' menu-active');
-        }
-    });
-
-    menuMobile.find('.first-level > .item > a').click(function(e) {
-        e.preventDefault();
-
-        var classItem = $(this).attr('title')
-            .replace(' ', '-')
-            .replace(' & ', '-e-')
-            .toLowerCase();
-
-        $(this).parent().addClass('item-active');
-
-        menuMobile.addClass(classItem).addClass('sub-first-itens-active');
-    });
-
-
-
-
 
 
     //TODO: move mask to module;
@@ -136,6 +96,43 @@ Nitro.module('header', function() {
     // if (! $.cookie('advertisement') ) {
     // 	advertisement.slideDown();
     // }
+
+
+
+    menuMobile.find('.sub-itens > a').on('click',function(e) {
+        e.preventDefault();
+
+        $(this).parent().toggleClass('open');
+        $(this).siblings('.submenu').slideToggle('slow');
+    });
+
+    // menuMobile.find('.menu-title').click(function(e) {
+    //     e.preventDefault();
+
+    //     menuMobile.removeClass();
+
+    //     if ($(this).parent().hasClass('second-level')) {
+    //         $(this).parent().parent().removeClass('item-active');
+
+    //         menuMobile.addClass(defaultClass + ' menu-active sub-itens-active');
+
+    //     } else {
+    //         menuMobile.addClass(defaultClass + ' menu-active');
+    //     }
+    // });
+
+    // menuMobile.find('.first-level > .item > a').click(function(e) {
+    //     e.preventDefault();
+
+    //     var classItem = $(this).attr('title')
+    //         .replace(' ', '-')
+    //         .replace(' & ', '-e-')
+    //         .toLowerCase();
+
+    //     $(this).parent().addClass('item-active');
+
+    //     menuMobile.addClass(classItem).addClass('sub-first-itens-active');
+    // });
 
 
 });
