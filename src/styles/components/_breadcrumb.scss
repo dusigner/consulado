@@ -3,7 +3,8 @@
 //------------------------------------
 .bread-crumb {
 	@include font-size(14px);
-	margin: 28px 0;
+	margin: 15px 0 0 10px;
+	text-transform: uppercase;
 
 	li {
 		display: none;
@@ -19,11 +20,16 @@
 				margin-right: 6px;
 				top: 1px;
 			}
+
+			&:last-child {
+				color: $orange;
+			}
 		}
 
 		&:first-child {
 			display: inline-block;
 			a {
+				color: $txt-gray-l;
 				font-size: 0;
 				&:before {
 					@include font-size(14px);
@@ -38,7 +44,7 @@
 		}
 	}
 
-	@include breakpoint(medium, 'max') {
-		@include hide-conditional();
-	}
+	// @include breakpoint(medium, 'max') {
+	// 	@include hide-conditional();
+	// }
 }
