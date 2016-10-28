@@ -263,6 +263,7 @@ $menu-colors: (
 		@extend %single-transition;
 		background-color: $green;
 		cursor: pointer;
+		float: left;
 		height: 50px;
 		position: relative;
 		width: 40px;
