@@ -10,8 +10,6 @@
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
 	@include breakpoint(extra-large, 'min') { min-height: 340px; }
 
-	@include breakpoint(small, 'max') { margin-top: 65px; }
-
 	.box-banner {
 		position: absolute;
 		top: 0;

@@ -5,6 +5,7 @@
 
 	@include breakpoint(extra-small, 'max') {
 		display: inline-block;
+		margin-bottom: 0;
 		padding: 20px 0;
 
 		.container {
@@ -41,6 +42,14 @@
 			margin-right: 0;
 		}
 
+		@include breakpoint(small, 'max') {
+			a.primary-button {
+				@include responsiveFont(14, 16, true);
+				padding: 10px 20px;
+				width: 100%;
+			}
+		}
+
 		@include breakpoint(extra-small, 'max') {
 			border: 1px solid #747474;
 			display: inline-block;
@@ -65,10 +74,13 @@
 			}
 
 			.icon {
+				@include responsiveFont(24, 16, true);
 				background-size: contain;
 				height: 30px;
 				left: 10px;
+				margin-top: 0;
 				position: absolute;
+				text-align: center;
 				top: 50%;
 				transform: translateY(-50%);
 				width: 30px;
@@ -94,7 +106,7 @@
 		}
 
 		span {
-			display: block;
+			display: inline-block;
 			font-weight: 300;
 		}
 	}

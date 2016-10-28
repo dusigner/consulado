@@ -27,10 +27,11 @@
 
 	// Header
 	header {
-
-		@include breakpoint(medium, 'min') { min-height: 120px; }
+		min-height: 120px;
 
 		.container a { text-decoration: none; }
+
+		@include breakpoint(small, 'max') { min-height: 100px; }
 	}
 
 	// Pre header
@@ -131,6 +132,13 @@
 			display: none;
 			text-align: center;
 			width: 100% !important;
+		}
+	}
+
+	.cont-logo-mobile {
+		@include breakpoint(small, 'max') {
+			float: none;
+			width: auto;
 		}
 	}
 
