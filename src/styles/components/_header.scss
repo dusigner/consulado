@@ -138,7 +138,14 @@
 	.cont-logo-mobile {
 		@include breakpoint(small, 'max') {
 			float: none;
-			width: auto;
+			text-align: center;
+			width: 85%;
+
+			a {
+				display: inline-block;
+				padding: 6px 0;
+				top: 0;
+			}
 		}
 	}
 
