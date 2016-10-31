@@ -25,7 +25,7 @@
 		}
 	}
 
-	.reference, 
+	.reference,
 	.productSku {
 		@include font-size(18px);
 		color: $txt-gray-l;
@@ -218,7 +218,7 @@
 	margin-top: 20px;
 }
 
-.prod-sku-selector, 
+.prod-sku-selector,
 #modal-sku {
 
 	@include breakpoint(small, 'min') {
@@ -238,7 +238,7 @@
 		}
 	}
 
-	.skuList, 
+	.skuList,
 	.options {
 		display: inline-block;
 		position: relative;
@@ -249,7 +249,7 @@
 			position: absolute;
 			visibility: hidden;
 
-			&:hover + label, 
+			&:hover + label,
 			&:checked + label {
 				color: $button-bg-color;
 
@@ -286,9 +286,9 @@
 		}
 	}
 
-	.nomeSku, 
-	.preco, 
-	.buy-button, 
+	.nomeSku,
+	.preco,
+	.buy-button,
 	.seller-data { display: none; }
 }
 
@@ -334,6 +334,90 @@
 			margin-right: 10px;
 		}
 	}
+}
+
+.valores-parcelas {
+  margin-top: 25px;
+
+  &>p {
+    @include responsiveFont(14, 16, true);
+    display: none;
+    margin-top: 10px;
+  }
+
+  .titulo-parcelamento {
+    @include responsiveFont(11, 16, true);
+    border-bottom: 1px solid $gray;
+    cursor: pointer;
+    display: block;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    position: relative;
+    text-transform: uppercase;
+
+    &:before {
+      @include contentBefore();
+      @include icon-get('arrow-down');
+      @include responsiveFont(8, 16, true);
+      left: 85px;
+      top: 4px;
+      transform: rotate(0deg);
+      transition: transform .2s ease-in;
+    }
+
+    &.active {
+      &:before { transform: rotate(180deg); }
+    }
+  }
+
+  ul.other-payment-method-ul {
+    display: none;
+
+    li {
+      @include responsiveFont(14, 16, true);
+      color: #000;
+      margin: 5px 0;
+
+      @include breakpoint(extra-small, 'max') { margin: 10px 0; }
+
+      span {
+        &:first-child {
+          display: inline-block;
+          text-transform: lowercase;
+          width: 25px;
+
+          @include breakpoint(extra-small, 'max') { width: 20px; }
+        }
+
+        &.other-payment-method-intereset-yes {
+          font-weight: bold;
+        }
+
+        &.valor-total {
+          margin-left: 20px;
+
+          @include breakpoint(extra-small, 'max') {
+            display: block;
+            margin-left: 0;
+          }
+        }
+      }
+
+      strong {
+        display: inline-block;
+        font-weight: normal;
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100px;
+
+        @include breakpoint(extra-small, 'max') { margin: 0; }
+      }
+    }
+  }
+
+  .see-other-payment-method-link {
+    display: none;
+  }
 }
 
 .prod-more-info {
