@@ -17,6 +17,8 @@ require('modules/product/boleto');
 
 Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto' /*, 'special-content'*/ ], function() {
 
+    var self = this;
+
     window.alert = function(e) {
         console.error(e);
         return;
@@ -69,6 +71,14 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         $reference.removeClass('hide');
     });
 
+
+    $(document).ajaxComplete(function(e, xhr, settings) {
+        if (/outrasformasparcelamento/.test(settings.url)) {
+            self.valoresParcelas();
+        }
+    });
+
+
     $('.prateleira-slider .prateleira ul').not('.product-field ul').slick({
         infinite: false,
         slidesToShow: 3,
@@ -96,6 +106,45 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     });
 
 
+    //Opções de parcelamento
+    self.valoresParcelas = function() {
+        var $valoresParcelas = $('.valores-parcelas'),
+            $showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
+            $opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+
+        $showParcelas.text('Ver parcelas');
+
+        $opcoesParcelamento.find('li').each(function() {
+            var $numeroParcelas = $(this).find('span:first-child'),
+                numeroParcelas = $numeroParcelas.text().split('X')[0],
+                $valorParcela = $(this).find('strong'),
+                valorParcela = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
+                text = $numeroParcelas.text().replace('de', ''),
+                precoTotal = parseFloat(numeroParcelas * valorParcela).toFixed(2);
+
+            $(this).append('<span class="valor-total">Total: R$ ' + precoTotal.toString().replace('.',',') + '</span>');
+            $numeroParcelas.text(text);
+            $valorParcela.text('de ' + $valorParcela.text());
+        });
+
+        $showParcelas.click(function() {
+            if ($(this).hasClass('active') || $opcoesParcelamento.find('.other-payment-method-intereset-yes').length === 0) {
+                $valoresParcelas.find('>p').slideUp();
+            } else {
+                $valoresParcelas.find('>p').slideDown();
+            }
+
+            $(this).toggleClass('active');
+            $opcoesParcelamento.slideToggle();
+        });
+
+        $('.select-voltage .select.skuList label').click(function(){
+            $valoresParcelas.find('>p').slideUp();
+            $opcoesParcelamento.slideUp();
+        });
+    };
+
+
 
     //Compre Junto
     $('.comprar-junto a').text('compre junto');
@@ -121,4 +170,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         $('body').addClass('google-pla');
     }
+
+
+    self.valoresParcelas();
 });
