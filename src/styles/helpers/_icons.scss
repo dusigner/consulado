@@ -98,7 +98,7 @@ $icons: (
 	}
 }
 
-@mixin icon-hamburger ($color: $green) {
+@mixin icon-hamburger ($color: #ffffff) {
 	@extend %icon-hamburger;
 	border-bottom: 2px solid $color;
 	border-top: 2px solid $color;
