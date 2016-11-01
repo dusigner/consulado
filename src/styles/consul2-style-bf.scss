@@ -1,3 +1,5 @@
+@import 'helpers/mixins';
+@import 'helpers/variables';
 // ============================================================
 // HEADER
 // ============================================================
@@ -108,9 +110,15 @@
 			background-color: #000000;
 			border: 7px solid #000000;
 
-			.text-search {
-				border: 7px solid #000000;
-			}
+			// .text-search {
+			// 	border: 7px solid #000000;
+			// }
+		}
+	}
+
+	.form-search {
+		.text-search {
+			max-width: 82%;
 		}
 	}
 
