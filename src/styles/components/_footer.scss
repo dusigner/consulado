@@ -141,9 +141,7 @@
 					color: #ffffff;
 					margin-right: 50em;
 
-					@include breakpoint(small, 'max') {
-						@include responsiveFont(48);
-					}
+					@include breakpoint(small, 'max') { @include responsiveFont(36); }
 
 					@include breakpoint(760px, 'min') {
 						@include breakpoint(768px, 'max') {
