@@ -160,7 +160,7 @@
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(25.5, 16, true);
-			color: #ffffff;
+			color: $green;
 			display: block;
 			margin-top: 0;
 			text-align: center;
