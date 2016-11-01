@@ -27,11 +27,11 @@
 
 	// Header
 	header {
-
-		@include breakpoint(medium, 'min') { min-height: 120px; }
-		@include breakpoint(small, 'max') { padding-bottom: 50px; }
+		min-height: 120px;
 
 		.container a { text-decoration: none; }
+
+		@include breakpoint(small, 'max') { min-height: 100px; }
 	}
 
 	// Pre header
@@ -71,6 +71,7 @@
 		padding: 12px 0 14px 0;
 
 		@include breakpoint(small, 'max') {
+			padding: 0;
 			padding-bottom: 0;
 			text-align: right;
 
@@ -99,11 +100,21 @@
 				left: 0;
 				top: 93px;
 				width: 100%;
+
+				@include breakpoint(small, 'max') {
+					border: 7px solid $green;
+					top: 50px;
+				}
+
 			}
 			.account     { left: 54%; }
 			.minicart    {
 				background-color: transparent;
-				right: 15px;
+				right: 30px;
+				@include breakpoint(small, 'max') {
+					right: 0;
+					top: 0;
+				}
 			}
 		}
 	}
@@ -118,8 +129,23 @@
 		}
 
 		@include breakpoint(small, 'max') {
+			display: none;
 			text-align: center;
 			width: 100% !important;
+		}
+	}
+
+	.cont-logo-mobile {
+		@include breakpoint(small, 'max') {
+			float: none;
+			text-align: center;
+			width: 85%;
+
+			a {
+				display: inline-block;
+				padding: 6px 0;
+				top: 0;
+			}
 		}
 	}
 
@@ -134,9 +160,11 @@
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(25.5, 16, true);
+			color: #ffffff;
 			display: block;
-			margin: 2px auto 5px auto;
+			margin-top: 0;
 			text-align: center;
+			top: -40px;
 		}
 	}
 
@@ -151,9 +179,10 @@
 		text-transform: uppercase;
 
 
-		@include breakpoint(extra-large, 'max') { width: 22.66667%; }
+		// @include breakpoint(extra-large, 'max') { width: 22.66667%; }
 
 		@include breakpoint(small, 'max') {
+			display: none;
 
 			.header & {
 				.hide { @include hide-conditional(); }
