@@ -1,5 +1,5 @@
 #compre-junto {
-	display: block !important;
+	display: block;
 	margin: 90px auto;
 	max-width: 1280px;
 	padding: 0 90px;
@@ -47,7 +47,7 @@
 			}
 		}
 
-		.itemA, 
+		.itemA,
 		.itemB {
 			max-width: 360px;
 			padding: 0 30px;
@@ -74,7 +74,7 @@
 			}
 		}
 
-		.plus, 
+		.plus,
 		.equal {
 			@include responsiveFont(50, 16, true);
 			color: $green;

@@ -12,6 +12,41 @@
 	background-color: #000;
 }*/
 
+body.home {
+	section.slider {
+		h2 { display: none; }
+
+		@include breakpoint(medium, 'min') {
+			.pre-title {
+				margin: 20px 0;
+
+				span {
+					display: none;
+
+					&.subtitle {
+						color: $orange;
+						display: block;
+					}
+				}
+			}
+		}
+
+		@include breakpoint(small, 'max') {
+			border-top: none;
+			padding: 0 !important;
+
+			&:first-of-type { border-top: 1px solid $gray; }
+
+			.prateleira { margin-top: 0; }
+
+			.container {
+				padding: 0;
+				width: 100%;
+			}
+		}
+	}
+}
+
 body > .destaque {
 	// border-top: 1px solid $gray-l;
 	// border-bottom: 1px solid $gray-l;

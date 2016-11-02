@@ -1,12 +1,7 @@
 @charset 'UTF-8';
 
 @if $use-com-prateleira == true {
-
-	// ===============================================================
-	/* PRATELEIRA */
-	// ===============================================================
-
-	.prateleira-slider { position: relative; }
+.prateleira-slider { position: relative; }
 
 	.prateleira {
 		&.default {
@@ -248,6 +243,10 @@
 					input[type=checkbox]:checked + label:after { display: inline-block; }
 				}
 			}
+
+			.slick-prev { left: -12px; }
+
+			.slick-next { right: -12px; }
 		}
 
 		&.default,
@@ -282,11 +281,11 @@
 					margin: 0;
 
 					&.de,
-					&.por { 
+					&.por {
 						span {
 							@include responsiveFont(12, 16, true);
-							font-weight: normal; 
-						} 
+							font-weight: normal;
+						}
 					}
 
 					&.de { @include responsiveFont(14, 16, true); }
@@ -325,6 +324,198 @@
 					}
 
 					&.discount-boleto { @include responsiveFont(12, 16, true); }
+				}
+			}
+		}
+	}
+
+	//nova vitrine mobile
+	@include breakpoint(small, 'max') {
+		.destaque { display: none; }
+
+		section.slider {
+			.pre-title {
+				background: transparent;
+				color: $gray-d;
+				display: block !important;
+				font-size: 16px !important;
+				font-weight: bold !important;
+				margin: 0 !important;
+				padding: 15px;
+				position: relative;
+				text-align: left;
+				text-transform: initial;
+
+				&:before {
+					font-size: 16px !important;
+					font-weight: bold !important;
+				}
+
+				&:after {
+					@include contentBefore();
+					@include responsiveFont(8, 16, true);
+					@include icon-get('arrow-down');
+					color: $orange;
+					position: absolute;
+					right: 15px;
+					top: 50%;
+					transform: translateY(-50%);
+					transition: all .3s linear;
+				}
+
+				&.open {
+					background: $green;
+					border: none;
+					color: #ffffff;
+
+					&:before { color: #ffffff; }
+
+					&:after {
+						color: #ffffff;
+						top: 39%;
+						transform: rotate(180deg);
+					}
+				}
+			}
+
+			&.prateleira-slider,
+			.prateleira-slider {
+				border-bottom: 1px solid $gray;
+
+				.prateleira.default {
+					margin-top: 0;
+
+					h2 { display: none; }
+
+					ul {
+						display: none;
+						padding: 35px;
+
+						li {
+							article {
+								padding: 0;
+
+								.detalhes {
+									.image {
+										display: inline-block;
+										margin-right: 5px;
+										padding: 0;
+										vertical-align: top;
+										width: 40%;
+
+										.FlagsHightLight,
+										.off { display: none !important; }
+									}
+
+									.prod-info {
+										display: inline-block;
+										padding: 0;
+										text-align: left;
+										vertical-align: top;
+										width: 54%;
+
+										.nome {
+											margin: 0;
+											min-height: inherit;
+
+											.product-field { display: none; }
+										}
+
+										.price {
+											margin: 0;
+											min-height: inherit;
+
+											.de {
+												min-height: initial;
+
+												.txtDe,
+												.txtPor { display: none; }
+											}
+
+											.por {
+												font-size: 15px !important;
+												height: auto;
+												margin: 0 !important;
+												min-height: initial;
+
+												.juros { display: none; }
+
+												.off { display: none !important; }
+
+												.total-parcelado {
+													display: inline-block;
+													font-size: 0;
+													margin-top: 0 !important;
+													position: relative;
+
+													&:before {
+														@include responsiveFont(14, 16, true);
+														content: 'Total:';
+														display: inline-block;
+														left: 0;
+														position: absolute;
+														top: 0;
+													}
+
+													.val {
+														@include responsiveFont(14, 16, true);
+														display: inline-block;
+														padding-left: 35px;
+													}
+												}
+											}
+
+											.adicional {
+												@include responsiveFont(15, 16, true);
+											}
+
+											.discount-boleto {
+												padding-top: 0 !important;
+
+												strong { display: inline-block; }
+											}
+										}
+									}
+								}
+
+								.department-nav {
+									margin-top: 10px;
+									width: 90%;
+								}
+							}
+						}
+
+						.slick-prev,
+						.slick-next {
+							color: $gray-d;
+
+							&:before { @include responsiveFont(16, 16, true); }
+						}
+
+						.slick-prev { left: 30px; }
+
+						.slick-next { right: 30px; }
+
+						.slick-dots {
+							padding: 0;
+
+							li {
+								button { background: $gray; }
+
+								&.slick-active {
+									button {
+										background: transparent;
+
+										&:after {
+											background: transparent;
+											border: 3px solid $orange;
+											border-color: $orange;
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -506,6 +697,11 @@
 	margin-top: 30px;
 
 	h2 {
-		font-size: 38px;
+		font-size: 45px;
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(16, 16, true);
+			border-bottom: none;
+		}
 	}
 }

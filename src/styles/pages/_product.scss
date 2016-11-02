@@ -1,27 +1,47 @@
 @charset 'UTF-8';
 
-// ===============================================================
-/* Product */
-// ===============================================================
-
-/*==========  Produto  ==========*/
 body.produto {
-	// border: 10px solid #000;
 	.main {
+		section.slider {
+			h2 { display: none; }
+
+			@include breakpoint(medium, 'min') {
+				.pre-title {
+					margin: 20px 0;
+
+					span {
+						display: none;
+
+						&.subtitle {
+							color: $orange;
+							display: block;
+						}
+					}
+				}
+			}
+
+			@include breakpoint(small, 'max') {
+				border-top: none;
+				padding: 0 !important;
+
+				.container {
+					padding: 0;
+					width: 100%;
+				}
+			}
+		}
+
 		h1.lead,
 		h2.title,
 		.item h3 { @include font-size(30px); }
 
-		//h2 { color: $button-bg-color; }
-
-		h2.title, 
+		h2.title,
 		.item h3 { font-weight: 300; }
 
 		h2.title {
 			@include font-size(38px);
 			display: inline-block;
 			font-weight: 400;
-			//width: 100%;
 			@include breakpoint(small, 'max') {
 				@include font-size(24px);
 			}
@@ -29,15 +49,12 @@ body.produto {
 			span {
 				display: block;
 				font-weight: 200;
-				//@include font-size(78px, true, false);
-				//color: $button-bg-color;
-				//line-height: 0.8;
 			}
 		}
 	}
 
 	.preco-a-vista {
-		.skuPrice, 
+		.skuPrice,
 		span {
 			display: none !important;
 		}
@@ -58,7 +75,7 @@ body.produto {
 				margin-bottom: 10px;
 				position: relative;
 
-				.skuBestInstallmentNumber, 
+				.skuBestInstallmentNumber,
 				.skuBestInstallmentValue {
 					@include font-size(21px);
 					color: $txt-gray-l !important;

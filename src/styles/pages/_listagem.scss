@@ -1,9 +1,5 @@
 @charset 'UTF-8';
 
-// ===============================================================
-/* Listagem */
-// ===============================================================
-
 /* vtex hide */
 .searchResultsTime,
 .filterBy,
@@ -15,6 +11,47 @@
 .productClusterSearchableIds,
 .Marca,
 .HideMarca { display: none!important; }
+
+body.listagem {
+	&.categoria {
+		h2 { display: none; }
+
+		@include breakpoint(medium, 'min') {
+			.pre-title {
+				margin: 20px 0;
+
+				span {
+					display: none;
+
+					&.subtitle {
+						color: $orange;
+						display: block;
+					}
+				}
+			}
+		}
+
+		.prateleira.default {
+			ul:not(.slick-slider) {
+				.department-nav { display: none; }
+			}
+		}
+
+		section.slider {
+			@include breakpoint(small, 'max') {
+				border-bottom: none;
+				border-top: none !important;
+				padding-top: 0 !important;
+
+				&:first-of-type { border-top: 1px solid $gray !important; }
+
+				.prateleira { margin-top: 0; }
+
+				.container { padding: 0; }
+			}
+		}
+	}
+}
 
 .listagem {
 	.banner-principal { min-height: auto; }
@@ -905,10 +942,9 @@
 	}
 }
 
-	.listagem,
-	.listagem-categoria-filtros {
+.listagem,
+.listagem-categoria-filtros {
 	.prateleira.default {
-
 		@include breakpoint(small, 'max') {
 			margin-top: 30px;
 
