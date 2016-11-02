@@ -45,6 +45,55 @@
 		}
 	}
 
+	.menu-department {
+		.btn_bf {
+			text-transform: uppercase;
+			strong {
+				color: $green;
+				letter-spacing: 0;
+			}
+			a {
+				color: #ffffff;
+				letter-spacing: 2px;
+			}
+		}
+		.dropdown {
+				border: 1px solid #ffffff;
+			}
+		a {
+			color: #ffffff;
+		}
+	}
+
+	.dropdown {
+		&.topmenu-active {
+			a[title='Departamentos'] {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.menu-subcategory {
+		.item {
+			a {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.header {
+		.cont-search {
+			background-color: #000000;
+			border: 7px solid #000000;
+		}
+	}
+
+	.form-search {
+		.text-search {
+			max-width: 82%;
+		}
+	}
+
 	.menu-mobile {
 		background-color: #000000;
 		&.menu-active {
@@ -78,48 +127,6 @@
 			}
 
 		} 
-	}
-
-	.menu-department {
-		.dropdown {
-				border: 1px solid #ffffff;
-			}
-		a {
-			color: #ffffff;
-		}
-	}
-
-	.dropdown {
-		&.topmenu-active {
-			a[title='Departamentos'] {
-				color: #ffffff;
-			}
-		}
-	}
-
-	.menu-subcategory {
-		.item {
-			a {
-				color: #ffffff;
-			}
-		}
-	}
-
-	.header {
-		.cont-search {
-			background-color: #000000;
-			border: 7px solid #000000;
-
-			// .text-search {
-			// 	border: 7px solid #000000;
-			// }
-		}
-	}
-
-	.form-search {
-		.text-search {
-			max-width: 82%;
-		}
 	}
 
 }
