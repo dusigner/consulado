@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 @if $use-com-prateleira == true {
-.prateleira-slider { position: relative; }
+	.prateleira-slider { position: relative; }
 
 	.prateleira {
 		&.default {
@@ -288,13 +288,22 @@
 						}
 					}
 
-					&.de { @include responsiveFont(14, 16, true); }
+					&.de {
+						@include responsiveFont(14, 16, true);
 
-					&.de .val { text-decoration: line-through; }
+						.txtDe {
+							@include breakpoint (medium, 'min') { display: none; }
+						}
+
+						.val { text-decoration: line-through; }
+					}
 
 					&.por {
 						@include responsiveFont(14, 16, true);
-						@include breakpoint(extra-small, 'max') { height: 48px; }
+
+						.txtPor {
+							@include breakpoint (medium, 'min') { display: none; }
+						}
 
 						.val:empty { display: none; }
 
@@ -330,17 +339,33 @@
 	}
 
 	//nova vitrine mobile
-	@include breakpoint(small, 'max') {
-		.destaque { display: none; }
+	.prateleira-slider,
+	section.slider {
+		h2 { display: none; }
 
-		section.slider {
-			.pre-title {
+		.pre-title {
+			@include responsiveFont(30, 16, true);
+			color: $gray-d;
+			font-weight: 300;
+			margin: 20px 0;
+
+			span { display: block; }
+
+			@include breakpoint(medium, 'min') {
+				span {
+					&.opcional { display: none; }
+
+					color: $orange;
+				}
+			}
+
+			@include breakpoint(small, 'max') {
 				background: transparent;
 				color: $gray-d;
 				display: block !important;
 				font-size: 16px !important;
 				font-weight: bold !important;
-				margin: 0 !important;
+				margin: 0;
 				padding: 15px;
 				position: relative;
 				text-align: left;
@@ -368,7 +393,8 @@
 					border: none;
 					color: #ffffff;
 
-					&:before { color: #ffffff; }
+					span,
+					&:before { color: #ffffff !important; }
 
 					&:after {
 						color: #ffffff;
@@ -377,13 +403,18 @@
 					}
 				}
 			}
+		}
+	}
+
+	@include breakpoint(small, 'max') {
+		section.slider {
+			.container { width: 100%; }
 
 			&.prateleira-slider,
 			.prateleira-slider {
-				border-bottom: 1px solid $gray;
-
 				.prateleira.default {
 					margin-top: 0;
+					padding: 0 15px;
 
 					h2 { display: none; }
 
@@ -415,6 +446,8 @@
 										width: 54%;
 
 										.nome {
+											@include responsiveFont(16, 16, true);
+											font-weight: normal;
 											margin: 0;
 											min-height: inherit;
 
@@ -425,18 +458,15 @@
 											margin: 0;
 											min-height: inherit;
 
-											.de {
-												min-height: initial;
-
-												.txtDe,
-												.txtPor { display: none; }
+											.de,
+											.por {
+												span { @include responsiveFont(14, 16, true); }
 											}
+
+											.de { min-height: initial; }
 
 											.por {
 												font-size: 15px !important;
-												height: auto;
-												margin: 0 !important;
-												min-height: initial;
 
 												.juros { display: none; }
 
@@ -465,9 +495,7 @@
 												}
 											}
 
-											.adicional {
-												@include responsiveFont(15, 16, true);
-											}
+											.adicional { @include responsiveFont(14, 16, true); }
 
 											.discount-boleto {
 												padding-top: 0 !important;
@@ -478,10 +506,7 @@
 									}
 								}
 
-								.department-nav {
-									margin-top: 10px;
-									width: 90%;
-								}
+								.department-nav { display: none; }
 							}
 						}
 
@@ -492,14 +517,19 @@
 							&:before { @include responsiveFont(16, 16, true); }
 						}
 
-						.slick-prev { left: 30px; }
+						.slick-prev { left: 15px; }
 
-						.slick-next { right: 30px; }
+						.slick-next { right: 15px; }
 
 						.slick-dots {
+							bottom: 20px;
 							padding: 0;
 
+							@include breakpoint(small, 'max') { bottom: 45px; }
+
 							li {
+								margin: 0;
+
 								button { background: $gray; }
 
 								&.slick-active {

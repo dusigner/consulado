@@ -19,10 +19,24 @@
       <div class="row no-margin">
 
         <!-- Breadcrumb -->
-        <section class="breadcrumb show-medium">
+        <section class="breadcrumb">
           <vtex.cmc:breadCrumb />
         </section>
         <!-- /Breadcrumb -->
+
+        <!-- Box-right -->
+    <div class="col-v2 l5 m12 gutters-on prod-title">
+          <h1 class="lead">
+            <vtex.cmc:productName />
+            <span class="reference"><vtex.cmc:productReference/></span>
+            <span class="productSku hide"><vtex.cmc:skuReference /></span>
+          </h1>
+
+          <!-- Yourviews - estrelas -->
+          <div id="yv-review-quickreview" class="hide"></div>
+          <!-- Yourviews - estrelas -->
+    </div>
+    <!-- Box-right -->
 
         <!-- Box-left -->
         <div class="col-v2 l7 m12 gutters-on prod-image">
@@ -42,23 +56,6 @@
 
         <!-- Box-right -->
         <div class="col-v2 l5 m12 gutters-on prod-info">
-
-          <!-- Breadcrumb -->
-          <section class="breadcrumb hide-medium">
-            <vtex.cmc:breadCrumb />
-          </section>
-          <!-- /Breadcrumb -->
-
-          <!-- Yourviews - estrelas -->
-          <div id="yv-review-quickreview" class="hide"></div>
-          <!-- Yourviews - estrelas -->
-
-          <h1 class="lead">
-            <vtex.cmc:productName />
-            <span class="reference"><vtex.cmc:productReference/></span>
-            <span class="productSku hide"><vtex.cmc:skuReference /></span>
-          </h1>
-
           <div class="prod-preco">
             <vtex.cmc:skuPrice />
           </div>
@@ -89,11 +86,11 @@
             </div>
           </div>
 
-          <div class="valores-parcelas">
-            <vtex.cmc:OtherPaymentMethod/>
+        <div class="valores-parcelas">
+          <vtex.cmc:OtherPaymentMethod/>
 
-            <p>Para financiamento com juros de 0,99% a.m. - Custo Efetivo Total (CET) máximo de 12,55% a.a.</p>
-          </div>
+          <p>Para financiamento com juros de 0,99% a.m. - Custo Efetivo Total (CET) máximo de 12,55% a.a.</p>
+        </div>
 
           <!-- Go to www.addthis.com/dashboard to customize your tools -->
           <div class="social">
@@ -181,8 +178,8 @@
         </div>
     </section>
 
-    <section id="relacionados">
-      <p class="pre-title">Relacionados</p>
+    <section id="relacionados" class="slider">
+      <p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
       <div class="container">
         <div class="prateleira-slider clearfix">
           <vtex:contentPlaceHolder id="Relacionados" />

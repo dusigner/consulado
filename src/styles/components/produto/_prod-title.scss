@@ -1,0 +1,50 @@
+.prod-title {
+	float: right !important;
+
+	.lead {
+		@include font-size(36px);
+		color: #5D5858;
+		font-weight: 700;
+		line-height: 1;
+		margin: 0 0 10px;
+
+		.productName {
+			display: inline;
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(18, 16, true);
+				color: $txt-gray;
+				display: inline-block;
+				line-height: 20px;
+			}
+		}
+
+		.reference,
+		.productSku {
+			@include responsiveFont(19, 16, true);
+			color: $txt-gray;
+			display: inline-block;
+			font-weight: 200;
+			padding-left: 10px;
+
+			@include breakpoint(small, 'max') { display: none; }
+
+			div { display: inline; }
+
+			&.hide { display: none!important; }
+		}
+	}
+
+	//Rating TrustVox
+	.trustvox-fluid-jump {
+		display: inline-block;
+		margin-bottom: 15px;
+
+		.trustvox-rate { display: inline-block; }
+
+		&>span {
+			position: relative;
+			top: -3px;
+		}
+	}
+}
