@@ -1,33 +1,11 @@
 @charset 'UTF-8';
 
-// ===============================================================
-/* HOME */
-// ===============================================================
-
-/*section[class*="home-prateleira"]{
-	border-bottom: 1px solid $gray;
-}*/
-
-/*body{
-	background-color: #000;
-}*/
-
 body.home {
 	section.slider {
-		h2 { display: none; }
-
-		@include breakpoint(medium, 'min') {
-			.pre-title {
-				margin: 20px 0;
-
-				span {
-					display: none;
-
-					&.subtitle {
-						color: $orange;
-						display: block;
-					}
-				}
+		.pre-title {
+			span {
+				color: $txt-gray;
+				display: block;
 			}
 		}
 
@@ -45,13 +23,14 @@ body.home {
 			}
 		}
 	}
+
+	section.destaque {
+		@include breakpoint(small, 'max') { display: none; }
+	}
 }
 
 body > .destaque {
-	// border-top: 1px solid $gray-l;
-	// border-bottom: 1px solid $gray-l;
 	padding: 0 20px;
-	//background-color: $gray-l;
 
 	.container {
 		padding-bottom: 35px;
@@ -61,19 +40,7 @@ body > .destaque {
 	}
 }
 
-.pre-title {
-	position: relative;
-	//TO DO
-	/* &:before,
-	&:after {
-		@include contentBefore();
-		border-image: url('/arquivos/border-dots.png') 70 78 82 72 fill repeat;
-		position: absolute;
-		@include breakpoint(large, 'max') {
-			display: none!important;
-		}
-	} */
-}
+.pre-title { position: relative; }
 
 .home-prateleira-01 .prateleira.default > h2 {margin-top: 20px;}
 

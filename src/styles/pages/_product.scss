@@ -129,7 +129,6 @@ body.produto-indisponivel {
 }
 
 
-// #Douglas - Todas as classes tem o prefixo PROD - Retirei do "boby.produto".
 .prod-image { position: relative; }
 
 #trustvox-rating {
@@ -144,10 +143,7 @@ body.produto-indisponivel {
 	position: relative;
 	width: 100%;
 
-	// @include breakpoint(small, "max") {
-	// 	background-color: #ccc;
-	// 	height: 0;
-	// }
+	@include breakpoint(small, 'max') { display: none; }
 }
 
 #depoimentos {
@@ -156,6 +152,7 @@ body.produto-indisponivel {
 }
 
 @import 'components/produto/gallery';
+@import 'components/produto/prod-title';
 @import 'components/produto/prod-info';
 @import 'components/produto/selos';
 @import 'components/produto/details-nav';

@@ -62,8 +62,7 @@ Nitro.module('gallery', function() {
         responsive: [{
             breakpoint: 992,
             settings: {
-                arrows: false,
-                vertical: false
+                slidesToShow: 2
             }
         }]
     });
