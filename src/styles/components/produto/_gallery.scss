@@ -183,13 +183,15 @@
 	}
 }
 
-.mfp-iframe-holder {
-	.mfp-content {
-		width: 80%;
+.mfp-wrap {
+	height: 100% !important;
+	position: fixed !important;
 
-		@include breakpoint(extra-small, 'min') {
-			height: 80%;
+	.mfp-iframe-holder {
+		.mfp-content {
+			width: 80%;
+
+			@include breakpoint(extra-small, 'min') { height: 80%; }
 		}
-
 	}
 }

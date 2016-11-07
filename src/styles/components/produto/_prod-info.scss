@@ -168,17 +168,23 @@
 				font-weight: 700;
 				text-align: center;
 
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(14, 16, true);
-					font-weight: normal;
-				}
-
 				&::after {
 					@include font-size(10px, true, false);
 					content: 's/ juros';
 					display: block;
 					line-height: 10px;
 					margin-top: -5px;
+				}
+
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(14, 16, true);
+					font-weight: normal;
+
+					&:after {
+						@include responsiveFont(14, 16, true);
+						display: inline-block;
+						margin-left: 5px;
+					}
 				}
 			}
 		}
