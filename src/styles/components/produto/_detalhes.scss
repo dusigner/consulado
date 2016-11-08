@@ -82,7 +82,7 @@
 			}
 		}
 
-		&.item-full, 
+		&.item-full,
 		&.item-extrafull {
 			padding-top: 480px;
 
@@ -102,7 +102,7 @@
 				}
 			}
 
-			.text:before, 
+			.text:before,
 			.text:after {
 				background: #ffffff;
 				height: 100%;
@@ -222,24 +222,22 @@
 
     p {
         color: #666666;
+        display: block;
         font-size: 12px;
         font-weight: 300;
         line-height: 17px;
         margin-bottom: 0;
         margin-top: 10px;
-        display: block;
         text-transform: uppercase;
-    
-        &.p_orange{
-            color: #9aca3c;
-        }
+
+        &.p_orange { color: #9aca3c; }
     }
 
-    small{
-        font-size: 12px;
-        line-height: 16px;
+    small {
         color: #666666;
         display: block;
+        font-size: 12px;
+        line-height: 16px;
         margin-top: 20px;
     }
 }
