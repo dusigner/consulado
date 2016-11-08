@@ -185,6 +185,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         init: function (){
             Index.postToken();
             Index.getQntStoq();
+            Index.randNumber();
         },
 
         template: function (){
@@ -193,7 +194,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             content += '<div class="usuarios-ativos">'; 
             content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
-            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
+            content += '<p class="qtn_pessoas_on"><span id="pessoas_on">5</span> pessoas estão visualizando essa promoção no momento</p>';
             content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
             content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
             content += '</div>';
@@ -207,7 +208,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 
                 Index.getQntStoq();
 
-            }, 30000);
+            }, 15000);
 
         },
 
@@ -238,18 +239,17 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
                 localStorage.setItem('token', token);
 
-                 $('.produto .lead').append(Index.template);
+                Index.getURL(token);
             });
         },
 
         getURL: function (token){
-            ID_GA = '23515006';
+            ID_GA = '23514926';
             urlAPI = 'https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:' + ID_GA + '&metrics=rt:activeUsers&dimensions=rt%3ApagePath&access_token=' + token;
 
-            var i = 0;
 
-            setInterval(function (){
-                i++;
+            var refreshUser = setInterval(function (){
+
                 Index.getAPI(urlAPI).then(function (data){
 
                     var currentURL = pathname;
@@ -265,7 +265,9 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     $('#pessoas_on').html(visitas);
                 });
 
-            }, 5000);
+            }, 30000);
+
+            $('.produto .lead').append(Index.template);
         },
 
         refreshToken: function (){
@@ -281,16 +283,15 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         calcQntStoq: function (qnt110v, qnt220v){
             console.log(qnt110v);            
             console.log(qnt220v);            
-            console.log('ola');
+
             if( (qnt110v > 30) && (qnt220v > 30) ){
                 $('.usuarios-ativos').hide();
-                $('.txt_small_110').hide();
-                $('.txt_small_220').hide();
 
             } else if ( qnt110v === 0 && qnt220v > 30 ){
                 $('.usuarios-ativos').show();
                 $('.txt_small_220').hide();
                 $('#qnt_stoke').hide();
+
                 $('.qtn_pessoas_on').addClass('p_orange');
             } else if( qnt110v > 30 && qnt220v === 0 ){
                 $('.usuarios-ativos').show();
@@ -317,9 +318,12 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         randNumber: function (){
             var intervalo = setInterval(function (){
 
-                var n = Math.floor((Math.random() * 20) + 2);
+                var n = parseInt(Math.floor((Math.random() * 20) + 2) / 2);
 
-                }, 1000);
+
+                $('#pessoas_on').html(n);
+
+                }, 3000);
 
         },
 
@@ -331,5 +335,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
     $(function(){
         Index.init();
-    });  
+    });    
+ 
 });
