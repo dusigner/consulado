@@ -173,4 +173,163 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
     self.valoresParcelas();
+
+
+    var ID_GA, ACCES_TOKEN, urlAPI;
+    var qnt110v, qnt220v; 
+    var pathname = window.location.pathname;
+
+    var Index = {   
+
+
+        init: function (){
+            Index.postToken();
+            Index.getQntStoq();
+        },
+
+        template: function (){
+
+            var content = '';
+
+            content += '<div class="usuarios-ativos">'; 
+            content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
+            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
+            content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
+            content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
+            content += '</div>';
+
+            return content;
+        },
+
+        changeQntStoq: function (){
+            $('.usuarios-ativos').hide();
+            var qntEstoque = setInterval(function (){
+                
+                Index.getQntStoq();
+
+            }, 30000);
+
+        },
+
+
+        getQntStoq: function (){
+
+            Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + skuJson.productId).then(function (data){
+
+
+                qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+                qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
+
+                console.log(qnt110v);
+                console.log(qnt220v);
+
+
+                Index.calcQntStoq(qnt110v, qnt220v);
+
+            });
+            
+        },
+
+        postToken: function (){
+
+            $.post('https://www.googleapis.com/oauth2/v4/token?client_secret=vcVfvtauoijtyCY9g88gRIXO&grant_type=refresh_token&refresh_token=1%2F-xS6M_8QKU241QLNTKQgNerhukSPKUC5VEoepL8hUaxaJgmy9bdGK0eHuyiRJlLp&client_id=168418120255-nksioaabb1tdt17d8ca6vscgvbspcbds.apps.googleusercontent.com', function (data){
+                var token = data.access_token;
+
+
+                localStorage.setItem('token', token);
+
+                 $('.produto .lead').append(Index.template);
+            });
+        },
+
+        getURL: function (token){
+            ID_GA = '23515006';
+            urlAPI = 'https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:' + ID_GA + '&metrics=rt:activeUsers&dimensions=rt%3ApagePath&access_token=' + token;
+
+            var i = 0;
+
+            setInterval(function (){
+                i++;
+                Index.getAPI(urlAPI).then(function (data){
+
+                    var currentURL = pathname;
+                    var visitas = 0;
+
+                    for (var i = 0; i < data.rows.length; i++) {
+
+                       if(data.rows[i][0] === currentURL) {
+                           visitas = data.rows[i][1];
+                       }
+                    }
+
+                    $('#pessoas_on').html(visitas);
+                });
+
+            }, 5000);
+        },
+
+        refreshToken: function (){
+
+            var tokenRefresh = setInterval(function (){
+
+                Index.postToken();        
+
+            }, 3000000);
+
+        },
+
+        calcQntStoq: function (qnt110v, qnt220v){
+            console.log(qnt110v);            
+            console.log(qnt220v);            
+            console.log('ola');
+            if( (qnt110v > 30) && (qnt220v > 30) ){
+                $('.usuarios-ativos').hide();
+                $('.txt_small_110').hide();
+                $('.txt_small_220').hide();
+
+            } else if ( qnt110v === 0 && qnt220v > 30 ){
+                $('.usuarios-ativos').show();
+                $('.txt_small_220').hide();
+                $('#qnt_stoke').hide();
+                $('.qtn_pessoas_on').addClass('p_orange');
+            } else if( qnt110v > 30 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('.txt_small_110').hide();
+                $('#qnt_stoke').hide();
+                $('.qtn_pessoas_on').addClass('p_orange');
+            } else if ( qnt110v === 0 && qnt220v <= 30 ){
+                $('.usuarios-ativos').show();
+                $('.txt_small_220').hide();
+                $('.qtn_pessoas_on').addClass('p_orange');
+            } else if( qnt110v <= 30 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('.txt_small_110').hide();
+                $('.qtn_pessoas_on').addClass('p_orange');
+            } else{
+                $('.usuarios-ativos').show();
+                $('.txt_small_110').hide();
+                $('.txt_small_220').hide();
+                $('.qtn_pessoas_on').removeClass('p_orange');
+            }
+
+        },
+
+        randNumber: function (){
+            var intervalo = setInterval(function (){
+
+                var n = Math.floor((Math.random() * 20) + 2);
+
+                }, 1000);
+
+        },
+
+       
+         getAPI: function (url){
+            return $.get(url);
+        }
+    };
+
+    $(function(){
+        Index.init();
+    });  
 });
