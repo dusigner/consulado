@@ -79,7 +79,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     });
 
 
-    var $slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
+    var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
     this.setupSlider = function($currentSlider) {
         $currentSlider.not('.slick-initialized').slick({
@@ -110,7 +110,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         });
 
         //ajusta para mobile - prateleira slider
-        $('.prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
+        $('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
+
     };
 
 
@@ -195,19 +196,23 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
     //mobile - abrir vitrines
     if ($(window).width() <= 768) {
-        $('section .pre-title').click(function(e){
+        $('section.slider .pre-title').click(function(e){
             e.preventDefault();
 
-            $(this).toggleClass('open');
-
             if ($(this).hasClass('open')) {
+                $(this).removeClass('open');
+                $(this).siblings().find('.prateleira>ul').slideUp();
+            } else {
+                $('section.slider .open').siblings().find('.prateleira>ul').slideUp();
+                $('section.slider .open').removeClass('open');
+                $(this).addClass('open');
                 $(this).siblings().find('.prateleira>ul').slideDown('slow',function(){
                     self.setupSlider($(this));
                 });
-            } else {
-                $(this).siblings().find('.prateleira>ul').slideUp();
             }
         });
+
+        $('section.slider').eq(0).find('.pre-title').trigger('click');
     }
 
 
@@ -215,10 +220,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
     var ID_GA, ACCES_TOKEN, urlAPI;
-    var qnt110v, qnt220v; 
+    var qnt110v, qnt220v;
     var pathname = window.location.pathname;
 
-    var Index = {   
+    var Index = {
 
 
         init: function (){
@@ -231,7 +236,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             var content = '';
 
-            content += '<div class="usuarios-ativos">'; 
+            content += '<div class="usuarios-ativos">';
             content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
             content += '<p class="qtn_pessoas_on"><span id="pessoas_on">5</span> pessoas estão visualizando essa promoção no momento</p>';
             content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
@@ -244,7 +249,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         changeQntStoq: function (){
             $('.usuarios-ativos').hide();
             var qntEstoque = setInterval(function (){
-                
+
                 Index.getQntStoq();
 
             }, 15000);
@@ -267,7 +272,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 Index.calcQntStoq(qnt110v, qnt220v);
 
             });
-            
+
         },
 
         postToken: function (){
@@ -313,15 +318,15 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             var tokenRefresh = setInterval(function (){
 
-                Index.postToken();        
+                Index.postToken();
 
             }, 3000000);
 
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
-            console.log(qnt110v);            
-            console.log(qnt220v);            
+            console.log(qnt110v);
+            console.log(qnt220v);
 
             if( (qnt110v > 30) && (qnt220v > 30) ){
                 $('.usuarios-ativos').hide();
@@ -366,7 +371,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
-       
+
          getAPI: function (url){
             return $.get(url);
         }
@@ -374,6 +379,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
     $(function(){
         Index.init();
-    });    
- 
+    });
+
 });

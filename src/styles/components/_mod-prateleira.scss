@@ -1,7 +1,11 @@
 @charset 'UTF-8';
 
 @if $use-com-prateleira == true {
-	.prateleira-slider { position: relative; }
+	.prateleira-slider {
+		position: relative;
+
+		h2 { display: none; }
+	}
 
 	.prateleira {
 		&.default {
@@ -338,10 +342,159 @@
 		}
 	}
 
-	//nova vitrine mobile
-	.prateleira-slider,
 	section.slider {
-		h2 { display: none; }
+		border-top: 1px solid $gray;
+		margin: 0 auto;
+		max-width: 1110px !important;
+		padding: 0;
+		width: 100% !important;
+
+		.container {
+			max-width: 100%;
+			padding: 0;
+			width: 100% !important;
+
+			.row { margin: 0; }
+		}
+
+		//nova prateleira mobile
+		@include breakpoint(small, 'max') {
+			.prateleira-slider {
+				.prateleira.default {
+					margin-top: 0;
+
+					ul {
+						display: none;
+						padding: 35px;
+
+						li {
+							article {
+								margin-bottom: 0;
+								padding: 0;
+
+								.detalhes {
+									.image {
+										display: inline-block;
+										margin-right: 10px;
+										padding: 0;
+										vertical-align: top;
+										width: 40%;
+
+										.FlagsHightLight,
+										.off { display: none !important; }
+									}
+
+									.prod-info {
+										display: inline-block;
+										padding: 0;
+										text-align: left;
+										vertical-align: top;
+										width: 54%;
+
+										.nome {
+											@include responsiveFont(14, 16, true);
+											font-weight: bold;
+											margin: 0;
+											min-height: inherit;
+
+											.product-field { display: none; }
+										}
+
+										.price {
+											margin: 0;
+											min-height: inherit;
+
+											.de,
+											.por {
+												span { @include responsiveFont(12, 16, true); }
+											}
+
+											.de { min-height: initial; }
+
+											.por {
+												font-size: 15px !important;
+
+												.juros { display: none; }
+
+												.off { display: none !important; }
+
+												.total-parcelado {
+													display: inline-block;
+													font-size: 0;
+													margin-top: 0 !important;
+													position: relative;
+
+													&:before {
+														@include responsiveFont(12, 16, true);
+														content: 'Total:';
+														display: inline-block;
+														left: 0;
+														position: absolute;
+														top: 0;
+													}
+
+													.val {
+														@include responsiveFont(12, 16, true);
+														display: inline-block;
+														padding-left: 35px;
+													}
+												}
+											}
+
+											.adicional { @include responsiveFont(12, 16, true); }
+
+											.discount-boleto {
+												padding-top: 0 !important;
+
+												strong { display: inline-block; }
+											}
+										}
+									}
+								}
+
+								.department-nav { display: none; }
+							}
+						}
+
+						.slick-prev,
+						.slick-next {
+							color: $gray-d;
+
+							&:before { @include responsiveFont(16, 16, true); }
+						}
+
+						.slick-prev { left: 15px; }
+
+						.slick-next { right: 15px; }
+
+						.slick-dots {
+							bottom: 20px;
+							padding: 0;
+
+							@include breakpoint(small, 'max') { bottom: 45px; }
+
+							li {
+								margin: 0;
+
+								button { background: $gray; }
+
+								&.slick-active {
+									button {
+										background: transparent;
+
+										&:after {
+											background: transparent;
+											border: 3px solid $orange;
+											border-color: $orange;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 
 		.pre-title {
 			@include responsiveFont(30, 16, true);
@@ -400,151 +553,6 @@
 						color: #ffffff;
 						top: 39%;
 						transform: rotate(180deg);
-					}
-				}
-			}
-		}
-	}
-
-	@include breakpoint(small, 'max') {
-		section.slider {
-			.container { width: 100%; }
-
-			&.prateleira-slider,
-			.prateleira-slider {
-				.prateleira.default {
-					margin-top: 0;
-					padding: 0 15px;
-
-					h2 { display: none; }
-
-					ul {
-						display: none;
-						padding: 35px;
-
-						li {
-							article {
-								padding: 0;
-
-								.detalhes {
-									.image {
-										display: inline-block;
-										margin-right: 5px;
-										padding: 0;
-										vertical-align: top;
-										width: 40%;
-
-										.FlagsHightLight,
-										.off { display: none !important; }
-									}
-
-									.prod-info {
-										display: inline-block;
-										padding: 0;
-										text-align: left;
-										vertical-align: top;
-										width: 54%;
-
-										.nome {
-											@include responsiveFont(16, 16, true);
-											font-weight: normal;
-											margin: 0;
-											min-height: inherit;
-
-											.product-field { display: none; }
-										}
-
-										.price {
-											margin: 0;
-											min-height: inherit;
-
-											.de,
-											.por {
-												span { @include responsiveFont(14, 16, true); }
-											}
-
-											.de { min-height: initial; }
-
-											.por {
-												font-size: 15px !important;
-
-												.juros { display: none; }
-
-												.off { display: none !important; }
-
-												.total-parcelado {
-													display: inline-block;
-													font-size: 0;
-													margin-top: 0 !important;
-													position: relative;
-
-													&:before {
-														@include responsiveFont(14, 16, true);
-														content: 'Total:';
-														display: inline-block;
-														left: 0;
-														position: absolute;
-														top: 0;
-													}
-
-													.val {
-														@include responsiveFont(14, 16, true);
-														display: inline-block;
-														padding-left: 35px;
-													}
-												}
-											}
-
-											.adicional { @include responsiveFont(14, 16, true); }
-
-											.discount-boleto {
-												padding-top: 0 !important;
-
-												strong { display: inline-block; }
-											}
-										}
-									}
-								}
-
-								.department-nav { display: none; }
-							}
-						}
-
-						.slick-prev,
-						.slick-next {
-							color: $gray-d;
-
-							&:before { @include responsiveFont(16, 16, true); }
-						}
-
-						.slick-prev { left: 15px; }
-
-						.slick-next { right: 15px; }
-
-						.slick-dots {
-							bottom: 20px;
-							padding: 0;
-
-							@include breakpoint(small, 'max') { bottom: 45px; }
-
-							li {
-								margin: 0;
-
-								button { background: $gray; }
-
-								&.slick-active {
-									button {
-										background: transparent;
-
-										&:after {
-											background: transparent;
-											border: 3px solid $orange;
-											border-color: $orange;
-										}
-									}
-								}
-							}
-						}
 					}
 				}
 			}

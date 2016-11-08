@@ -21,25 +21,8 @@ body.listagem {
 		}
 
 		section.slider {
-			border-top: 1px solid $gray;
-
-			&:last-of-type { border-bottom: 1px solid $gray !important; }
-
-			.pre-title {
-				@include responsiveFont(38, 16, true);
-
-				span {
-					color: $txt-gray;
-					display: block;
-				}
-			}
-
 			@include breakpoint(small, 'max') {
-				padding-top: 0 !important;
-
-				.prateleira { margin-top: 0; }
-
-				.container { padding: 0; }
+				.slick-dots { bottom: 5px !important; }
 			}
 		}
 	}

@@ -3,31 +3,8 @@
 body.produto {
 	.main {
 		section.slider {
-			h2 { display: none; }
-
-			@include breakpoint(medium, 'min') {
-				.pre-title {
-					margin: 20px 0;
-
-					span {
-						display: none;
-
-						&.subtitle {
-							color: $orange;
-							display: block;
-						}
-					}
-				}
-			}
-
 			@include breakpoint(small, 'max') {
-				border-top: none;
-				padding: 0 !important;
-
-				.container {
-					padding: 0;
-					width: 100%;
-				}
+				.slick-dots { bottom: 65px !important; }
 			}
 		}
 
@@ -59,8 +36,6 @@ body.produto {
 			display: none !important;
 		}
 	}
-
-	#relacionados { padding: 40px 0; }
 
 	&.google-pla {
 		.prod-preco {

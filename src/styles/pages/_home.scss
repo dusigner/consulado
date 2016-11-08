@@ -1,29 +1,6 @@
 @charset 'UTF-8';
 
 body.home {
-	section.slider {
-		.pre-title {
-			span {
-				color: $txt-gray;
-				display: block;
-			}
-		}
-
-		@include breakpoint(small, 'max') {
-			border-top: none;
-			padding: 0 !important;
-
-			&:first-of-type { border-top: 1px solid $gray; }
-
-			.prateleira { margin-top: 0; }
-
-			.container {
-				padding: 0;
-				width: 100%;
-			}
-		}
-	}
-
 	section.destaque {
 		@include breakpoint(small, 'max') { display: none; }
 	}

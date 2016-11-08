@@ -202,7 +202,7 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
     enquire.unregister(queryTablet);
 
 
-    var $slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
+    var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
     this.setupSlider = function($currentSlider) {
         $currentSlider.not('.slick-initialized').slick({
@@ -233,7 +233,8 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
         });
 
         //ajusta para mobile - prateleira slider
-        $('.prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
+        $('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
+
     };
 
 
@@ -269,18 +270,22 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.ov
 
     //mobile - abrir vitrines
     if ($(window).width() <= 768) {
-        $('section .pre-title').click(function(e){
+        $('section.slider .pre-title').click(function(e){
             e.preventDefault();
 
-            $(this).toggleClass('open');
-
             if ($(this).hasClass('open')) {
+                $(this).removeClass('open');
+                $(this).siblings().find('.prateleira>ul').slideUp();
+            } else {
+                $('section.slider .open').siblings().find('.prateleira>ul').slideUp();
+                $('section.slider .open').removeClass('open');
+                $(this).addClass('open');
                 $(this).siblings().find('.prateleira>ul').slideDown('slow',function(){
                     self.setupSlider($(this));
                 });
-            } else {
-                $(this).siblings().find('.prateleira>ul').slideUp();
             }
         });
+
+        $('section.slider').eq(0).find('.pre-title').trigger('click');
     }
 });
