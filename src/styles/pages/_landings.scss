@@ -16,6 +16,14 @@ body.is-landing-page {
 		}
 	}
 
+	.breadcrumb {
+		display: none!important;
+	}
+
+	.open-filter {
+		display: none;
+	}
+
 	/**
 		[ Busca ]:
 		- Esconde o termo "landing" que aparece
