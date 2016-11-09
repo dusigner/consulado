@@ -176,25 +176,24 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
     var ID_GA, ACCES_TOKEN, urlAPI;
-    var qnt110v, qnt220v; 
+    var qnt110v, qnt220v;
     var pathname = window.location.pathname;
 
-    var Index = {   
+    var Index = {
 
 
         init: function (){
             Index.postToken();
             Index.getQntStoq();
-            Index.randNumber();
         },
 
         template: function (){
 
             var content = '';
 
-            content += '<div class="usuarios-ativos">'; 
+            content += '<div class="usuarios-ativos">';
             content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
-            content += '<p class="qtn_pessoas_on"><span id="pessoas_on">5</span> pessoas estão visualizando essa promoção no momento</p>';
+            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
             content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
             content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
             content += '</div>';
@@ -205,7 +204,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         changeQntStoq: function (){
             $('.usuarios-ativos').hide();
             var qntEstoque = setInterval(function (){
-                
+
                 Index.getQntStoq();
 
             }, 15000);
@@ -228,7 +227,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 Index.calcQntStoq(qnt110v, qnt220v);
 
             });
-            
+
         },
 
         postToken: function (){
@@ -237,35 +236,74 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 var token = data.access_token;
 
 
-                localStorage.setItem('token', token);
-
                 Index.getURL(token);
+                Index.refreshUserGet(token);
+
+                $('.usuarios-ativos').show();
+                $('.txt_small_110').hide();
+                $('.txt_small_220').hide();
             });
         },
 
+        refreshUser: function (users){
+
+            var intervalo = setInterval(function (){
+                var coe = 0;
+                users = 5;
+                var dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+
+                var rand = Math.floor((Math.random() * 10));
+
+                var end = dataRandom[rand];
+
+                if (end >= users) {
+                    coe = users  + 2;
+                } else {
+                    coe = users  + end;
+                }
+
+                $('#pessoas_on').html(coe);
+
+            }, 15000);
+            
+
+        },
+
+
+        refreshUserGet: function (token){
+
+            setInterval(function (){
+
+                Index.getURL(token);
+
+            }, 300000);
+        },
+
         getURL: function (token){
-            ID_GA = '23514926';
+            ID_GA = '23515006';
             urlAPI = 'https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:' + ID_GA + '&metrics=rt:activeUsers&dimensions=rt%3ApagePath&access_token=' + token;
 
 
-            var refreshUser = setInterval(function (){
+            Index.getAPI(urlAPI).then(function (data){
 
-                Index.getAPI(urlAPI).then(function (data){
+                var currentURL = pathname;
+                var visitas = 0;
 
-                    var currentURL = pathname;
-                    var visitas = 0;
+                for (var i = 0; i < data.rows.length; i++) {
 
-                    for (var i = 0; i < data.rows.length; i++) {
+                   if(data.rows[i][0] === currentURL) {
+                       visitas = data.rows[i][1];
+                   }
+                }
 
-                       if(data.rows[i][0] === currentURL) {
-                           visitas = data.rows[i][1];
-                       }
-                    }
+                $('#pessoas_on').html(visitas); 
 
-                    $('#pessoas_on').html(visitas);
+                Index.refreshUser(visitas);
+
+                }).fail(function (){
+                    $('#vtexIdUI-global-loader').remove();
+                    $('#vtexIdContainer').remove();
                 });
-
-            }, 30000);
 
             $('.produto .lead').append(Index.template);
         },
@@ -274,39 +312,46 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             var tokenRefresh = setInterval(function (){
 
-                Index.postToken();        
+                Index.postToken();
 
             }, 3000000);
 
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
-            console.log(qnt110v);            
-            console.log(qnt220v);            
+            console.log(qnt110v);
+            console.log(qnt220v);
 
             if( (qnt110v > 30) && (qnt220v > 30) ){
-                $('.usuarios-ativos').hide();
+                $('#qnt_stoke').hide();
+                $('.usuarios-ativos').show();
+                $('.txt_small_110').hide();
+                $('.txt_small_220').hide();
 
             } else if ( qnt110v === 0 && qnt220v > 30 ){
                 $('.usuarios-ativos').show();
                 $('.txt_small_220').hide();
+                $('.txt_small_110').show();
                 $('#qnt_stoke').hide();
-
                 $('.qtn_pessoas_on').addClass('p_orange');
             } else if( qnt110v > 30 && qnt220v === 0 ){
                 $('.usuarios-ativos').show();
                 $('.txt_small_110').hide();
+                $('.txt_small_220').show();
                 $('#qnt_stoke').hide();
                 $('.qtn_pessoas_on').addClass('p_orange');
             } else if ( qnt110v === 0 && qnt220v <= 30 ){
                 $('.usuarios-ativos').show();
                 $('.txt_small_220').hide();
+                $('.txt_small_110').show();
                 $('.qtn_pessoas_on').addClass('p_orange');
             } else if( qnt110v <= 30 && qnt220v === 0 ){
                 $('.usuarios-ativos').show();
                 $('.txt_small_110').hide();
+                $('.txt_small_220').show();
                 $('.qtn_pessoas_on').addClass('p_orange');
             } else{
+                $('#qnt_stoke').show();
                 $('.usuarios-ativos').show();
                 $('.txt_small_110').hide();
                 $('.txt_small_220').hide();
@@ -315,19 +360,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
-        randNumber: function (){
-            var intervalo = setInterval(function (){
-
-                var n = parseInt(Math.floor((Math.random() * 20) + 2) / 2);
-
-
-                $('#pessoas_on').html(n);
-
-                }, 3000);
-
-        },
-
-       
          getAPI: function (url){
             return $.get(url);
         }
@@ -335,6 +367,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
     $(function(){
         Index.init();
-    });    
- 
+    });
+
+
 });
