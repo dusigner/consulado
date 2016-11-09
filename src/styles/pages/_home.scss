@@ -17,6 +17,12 @@ body > .destaque {
 	}
 }
 
+section.slider {
+	.pre-title {
+		span { color: $txt-gray !important; }
+	}
+}
+
 .pre-title { position: relative; }
 
 .home-prateleira-01 .prateleira.default > h2 {margin-top: 20px;}

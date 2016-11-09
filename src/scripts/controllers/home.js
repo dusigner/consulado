@@ -14,15 +14,9 @@ Nitro.controller('home', ['slider-banner', 'modal.overlayLead', 'lead-newsletter
     this.setupSlider = function($currentSlider) {
         $currentSlider.not('.slick-initialized').slick({
             infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             responsive: [{
-                breakpoint: 1019,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3
-                }
-            }, {
                 breakpoint: 990,
                 settings: {
                     dots: true,
