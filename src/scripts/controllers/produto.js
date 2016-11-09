@@ -213,7 +213,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     self.valoresParcelas();
 
 
-    var ID_GA, ACCES_TOKEN, urlAPI;
+    var ID_GA, urlAPI;
     var qnt110v, qnt220v;
     var pathname = window.location.pathname;
 
@@ -257,10 +257,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
                 qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                 qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
-
-                console.log(qnt110v);
-                console.log(qnt220v);
-
 
                 Index.calcQntStoq(qnt110v, qnt220v);
 
@@ -329,19 +325,19 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
                 for (var i = 0; i < data.rows.length; i++) {
 
-                   if(data.rows[i][0] === currentURL) {
-                       visitas = data.rows[i][1];
-                   }
+                    if(data.rows[i][0] === currentURL) {
+                        visitas = data.rows[i][1];
+                    }
                 }
 
                 $('#pessoas_on').html(visitas); 
 
                 Index.refreshUser(visitas);
 
-                }).fail(function (){
-                    $('#vtexIdUI-global-loader').remove();
-                    $('#vtexIdContainer').remove();
-                });
+            }).fail(function (){
+                $('#vtexIdUI-global-loader').remove();
+                $('#vtexIdContainer').remove();
+            });
 
             $('.produto .lead').append(Index.template);
         },
@@ -357,8 +353,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
-            console.log(qnt110v);
-            console.log(qnt220v);
 
             if( (qnt110v > 30) && (qnt220v > 30) ){
                 $('#qnt_stoke').hide();
@@ -398,7 +392,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
-         getAPI: function (url){
+        getAPI: function (url){
             return $.get(url);
         }
     };
