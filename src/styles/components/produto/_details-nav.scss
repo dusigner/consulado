@@ -7,6 +7,8 @@
 	width: 100%;
 	z-index: 20;
 
+	@include breakpoint(small, 'max') { display: none; }
+
 	@include breakpoint(extra-large, 'max') {
 		@include opacity(0);
 	}

@@ -139,7 +139,7 @@
 					padding-left: 18px;
 
 					@include breakpoint (small, 'max') {
-						@include font-size(18px);
+						@include responsiveFont(14, 16, true);
 						padding-left: 10px;
 					};
 				}
@@ -156,7 +156,7 @@
 					vertical-align: top;
 
 					@include breakpoint(small, 'max') {
-						height: 35px;
+						height: auto;
 						margin-right: 5px;
 					}
 				}
@@ -363,18 +363,28 @@
 		}
 
 		@include breakpoint(small, 'max') {
-			@include responsiveFont(16, 16, true);
-			border-radius: 0;
-			bottom: 0;
-			left: 0;
-			margin: 0;
-			padding: 15px 0;
-			position: fixed;
-			width: 100%;
-			z-index: 3;
+      bottom: 0;
+      display: inline-block;
+      font-size: 0;
+      height: 54px;
+      left: 0;
+      margin: 0;
+      position: fixed;
+      text-transform: uppercase;
+      width: 100%;
+      z-index: 9999;
 
-			&:before { display: none; }
-		}
+      &:before {
+        @include responsiveFont(16, 16, true);
+        content: 'Adicionar ao carrinho';
+        display: inline-block;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+      }
+    }
 	}
 }
 
