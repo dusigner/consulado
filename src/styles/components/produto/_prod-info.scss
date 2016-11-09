@@ -1,43 +1,6 @@
+@charset 'UTF-8';
+
 .prod-info {
-	//color: $txt-gray-l;
-
-	.lead {
-		color: $txt-gray;
-		font-weight: bold;
-		line-height: 1.16;
-		margin-bottom: 20px;
-
-		.productName { display: inline; }
-	}
-
-	//Rating TrustVox
-	.trustvox-fluid-jump {
-	    display: inline-block;
-	    margin-bottom: 15px;
-
-	    .trustvox-rate {
-			display: inline-block;
-		}
-
-		&>span {
-			position: relative;
-			top: -3px;
-		}
-	}
-
-	.reference,
-	.productSku {
-		@include font-size(18px);
-		color: $txt-gray-l;
-		display: inline-block;
-		padding-left: 10px;
-		// margin-top: 15px;
-
-		div { display: inline; }
-
-		&.hide { display: none!important; }
-	}
-
 	.secure {
 		@include font-size(12px, true, false);
 		display: none;
@@ -98,6 +61,7 @@
 
 	em {
 		font-style: normal;
+
 		&.valor-de,
 		&.valor-por,
 		&.valor-dividido {
@@ -105,7 +69,32 @@
 		}
 
 		&.valor-de {
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(14, 16, true);
+				display: inline-block !important;
+			}
+
 			strong { text-decoration: line-through; }
+		}
+
+		&.valor-por {
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(14, 16, true);
+				color: $orange;
+				display: inline-block !important;
+				margin-left: 5px;
+				position: relative;
+
+				&:after {
+					@include responsiveFont(14, 16, true);
+					color: $orange;
+					content: ' ou';
+					display: inline-block;
+					position: absolute;
+					right: -20px;
+					top: 0;
+				}
+			}
 		}
 
 		&.valor-dividido {
@@ -113,15 +102,33 @@
 			display: block!important;
 			position: relative;
 
+			@include breakpoint(small, 'max') {
+				padding-left: 50px;
+				position: relative;
+
+				&:after {
+					@include responsiveFont(14, 16, true);
+					color: $orange;
+					content: 'em at\00e9';
+					display: inline-block;
+					left: 0;
+					position: absolute;
+					top: 0;
+				}
+			}
+
 			label { display: inline; }
 
 			.skuBestInstallmentValue {
 				@include font-size(28px, true, false);
 				color: $green;
 				font-weight: 700;
-				@include breakpoint (small, 'max') {
-					@include font-size(21px);
-				};
+
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(14, 16, true);
+					color: $orange;
+					font-weight: normal;
+				}
 
 				&:before { content: 'de '; }
 
@@ -130,6 +137,7 @@
 					display: inline-block;
 					font-weight: 700;
 					padding-left: 18px;
+
 					@include breakpoint (small, 'max') {
 						@include font-size(18px);
 						padding-left: 10px;
@@ -146,7 +154,9 @@
 					margin-right: 10px;
 					text-align: center;
 					vertical-align: top;
-					@include breakpoint (small, 'max') {
+
+					@include breakpoint(small, 'max') {
+						height: 35px;
 						margin-right: 5px;
 					}
 				}
@@ -154,21 +164,26 @@
 
 			.skuBestInstallmentNumber {
 				@include font-size(20px, true, false);
-				color: $green;
+				color: $orange;
 				font-weight: 700;
 				text-align: center;
-				@include breakpoint (small, 'max') {
-				@include font-size(18px);
-				}
 
-				&:after {
+				&::after {
 					@include font-size(10px, true, false);
 					content: 's/ juros';
 					display: block;
 					line-height: 10px;
 					margin-top: -5px;
-					@include breakpoint (small, 'max') {
-					@include font-size(9px);
+				}
+
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(14, 16, true);
+					font-weight: normal;
+
+					&:after {
+						@include responsiveFont(14, 16, true);
+						display: inline-block;
+						margin-left: 5px;
 					}
 				}
 			}
@@ -188,9 +203,9 @@
 		display: block!important;
 		font-size: 0;
 
-		&:before {
-			@include font-size(18px, true, false);
-		}
+		@include breakpoint(small, 'max') { display: none !important; }
+
+		&:before { @include font-size(18px, true, false); }
 
 		strong { @include font-size(18px, true, false); }
 
@@ -204,10 +219,23 @@
 
 	.discount-boleto {
 		@include font-size(18px, true, false);
-		color: #b4afad;
+		color: $txt-gray-l;
 		font-weight: 700;
-		span {
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(14, 16, true);
+			color: $orange;
+			font-weight: normal;
+		}
+
+		>span {
 			color: $base-font-color;
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(14, 16, true);
+				color: $orange;
+				font-weight: normal;
+			}
 		}
 	}
 
@@ -216,6 +244,10 @@
 
 .prod-sku-selector {
 	margin-top: 20px;
+
+	@include breakpoint(small, 'max') {
+		.select-voltage { display: none; }
+	}
 }
 
 .prod-sku-selector,
@@ -322,10 +354,6 @@
 		float: left;
 		font-size: 1em;
 		padding: 13px 28px;
-		@include breakpoint(small, 'max') {
-			padding: 13px 60px;
-			width: 100%;
-		}
 
 		&:before {
 			@include icon-get('consul-cart');
@@ -333,93 +361,107 @@
 			float: left;
 			margin-right: 10px;
 		}
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(16, 16, true);
+			border-radius: 0;
+			bottom: 0;
+			left: 0;
+			margin: 0;
+			padding: 15px 0;
+			position: fixed;
+			width: 100%;
+			z-index: 3;
+
+			&:before { display: none; }
+		}
 	}
 }
 
 .valores-parcelas {
-  margin-top: 25px;
+	margin-top: 25px;
 
-  &>p {
-    @include responsiveFont(14, 16, true);
-    display: none;
-    margin-top: 10px;
-  }
+	&>p {
+		@include responsiveFont(14, 16, true);
+		display: none;
+		margin-top: 10px;
+	}
 
-  .titulo-parcelamento {
-    @include responsiveFont(11, 16, true);
-    border-bottom: 1px solid $gray;
-    cursor: pointer;
-    display: block;
-    margin: 10px 0;
-    padding-bottom: 10px;
-    position: relative;
-    text-transform: uppercase;
+	.titulo-parcelamento {
+		@include responsiveFont(11, 16, true);
+		border-bottom: 1px solid $gray;
+		cursor: pointer;
+		display: block;
+		margin: 10px 0;
+		padding-bottom: 10px;
+		position: relative;
+		text-transform: uppercase;
 
-    &:before {
-      @include contentBefore();
-      @include icon-get('arrow-down');
-      @include responsiveFont(8, 16, true);
-      left: 85px;
-      top: 4px;
-      transform: rotate(0deg);
-      transition: transform .2s ease-in;
-    }
+		&:before {
+			@include contentBefore();
+			@include icon-get('arrow-down');
+			@include responsiveFont(8, 16, true);
+			left: 85px;
+			top: 4px;
+			transform: rotate(0deg);
+			transition: transform .2s ease-in;
+		}
 
-    &.active {
-      &:before { transform: rotate(180deg); }
-    }
-  }
+		&.active {
+			&:before { transform: rotate(180deg); }
+		}
+	}
 
-  ul.other-payment-method-ul {
-    display: none;
+	ul.other-payment-method-ul {
+		display: none;
 
-    li {
-      @include responsiveFont(14, 16, true);
-      color: #000;
-      margin: 5px 0;
+		li {
+			@include responsiveFont(14, 16, true);
+			color: #000;
+			margin: 5px 0;
 
-      @include breakpoint(extra-small, 'max') { margin: 10px 0; }
+			@include breakpoint(extra-small, 'max') { margin: 10px 0; }
 
-      &:first-child { display: none; }
+			&:first-child { display: none; }
 
-      span {
-        &:first-child {
-          display: inline-block;
-          text-transform: lowercase;
-          width: 25px;
+			span {
+				&:first-child {
+					display: inline-block;
+					text-transform: lowercase;
+					width: 25px;
 
-          @include breakpoint(extra-small, 'max') { width: 20px; }
-        }
+					@include breakpoint(extra-small, 'max') { width: 20px; }
+				}
 
-        &.other-payment-method-intereset-yes {
-          font-weight: bold;
-        }
+				&.other-payment-method-intereset-yes {
+					font-weight: bold;
+				}
 
-        &.valor-total {
-          margin-left: 20px;
+				&.valor-total {
+					margin-left: 20px;
 
-          @include breakpoint(extra-small, 'max') {
-            display: block;
-            margin-left: 0;
-          }
-        }
-      }
+					@include breakpoint(extra-small, 'max') {
+						display: block;
+						margin-left: 0;
+					}
+				}
+			}
 
-      strong {
-        display: inline-block;
-        font-weight: normal;
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 100px;
+			strong {
+				display: inline-block;
+				font-weight: normal;
+				margin-left: 10px;
+				margin-right: 10px;
+				width: 100px;
 
-        @include breakpoint(extra-small, 'max') { margin: 0; }
-      }
-    }
-  }
+				@include breakpoint(extra-small, 'max') { margin: 0; }
+			}
+		}
+	}
 
-  .see-other-payment-method-link {
-    display: none;
-  }
+	.see-other-payment-method-link {
+		display: none;
+	}
 }
 
 .prod-more-info {
@@ -431,8 +473,8 @@
 		text-transform: uppercase;
 
 		@include breakpoint(small, 'max') {
-			 @include responsiveFont(14, 16, true);
-			 margin-top: 5px;
+			@include responsiveFont(14, 16, true);
+			margin-top: 5px;
 		}
 	}
 }
@@ -442,11 +484,11 @@
 // ===================================
 .social {
 	height: 100px;
-    margin-top: 20px;
-    width: 100%;
-    @include breakpoint(extra-small, 'max') {
-    	height: 130px;
-    }
+	margin-top: 20px;
+	width: 100%;
+	@include breakpoint(extra-small, 'max') {
+		height: 130px;
+	}
 	p {
 		@include breakpoint(extra-small, 'max') {
 			font-size: 18px!important;

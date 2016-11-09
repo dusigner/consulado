@@ -1,27 +1,24 @@
 @charset 'UTF-8';
 
-// ===============================================================
-/* Product */
-// ===============================================================
-
-/*==========  Produto  ==========*/
 body.produto {
-	// border: 10px solid #000;
 	.main {
+		section.slider {
+			@include breakpoint(small, 'max') {
+				.slick-dots { bottom: 65px !important; }
+			}
+		}
+
 		h1.lead,
 		h2.title,
 		.item h3 { @include font-size(30px); }
 
-		//h2 { color: $button-bg-color; }
-
-		h2.title, 
+		h2.title,
 		.item h3 { font-weight: 300; }
 
 		h2.title {
 			@include font-size(38px);
 			display: inline-block;
 			font-weight: 400;
-			//width: 100%;
 			@include breakpoint(small, 'max') {
 				@include font-size(24px);
 			}
@@ -29,21 +26,16 @@ body.produto {
 			span {
 				display: block;
 				font-weight: 200;
-				//@include font-size(78px, true, false);
-				//color: $button-bg-color;
-				//line-height: 0.8;
 			}
 		}
 	}
 
 	.preco-a-vista {
-		.skuPrice, 
+		.skuPrice,
 		span {
 			display: none !important;
 		}
 	}
-
-	#relacionados { padding: 40px 0; }
 
 	&.google-pla {
 		.prod-preco {
@@ -58,7 +50,7 @@ body.produto {
 				margin-bottom: 10px;
 				position: relative;
 
-				.skuBestInstallmentNumber, 
+				.skuBestInstallmentNumber,
 				.skuBestInstallmentValue {
 					@include font-size(21px);
 					color: $txt-gray-l !important;
@@ -112,7 +104,6 @@ body.produto-indisponivel {
 }
 
 
-// #Douglas - Todas as classes tem o prefixo PROD - Retirei do "boby.produto".
 .prod-image { position: relative; }
 
 #trustvox-rating {
@@ -127,10 +118,7 @@ body.produto-indisponivel {
 	position: relative;
 	width: 100%;
 
-	// @include breakpoint(small, "max") {
-	// 	background-color: #ccc;
-	// 	height: 0;
-	// }
+	@include breakpoint(small, 'max') { display: none; }
 }
 
 #depoimentos {
@@ -139,6 +127,7 @@ body.produto-indisponivel {
 }
 
 @import 'components/produto/gallery';
+@import 'components/produto/prod-title';
 @import 'components/produto/prod-info';
 @import 'components/produto/selos';
 @import 'components/produto/details-nav';

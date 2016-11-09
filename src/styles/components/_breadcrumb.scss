@@ -1,9 +1,10 @@
-//------------------------------------
-//	BREADCRUMBS
-//------------------------------------
 .bread-crumb {
 	@include font-size(14px);
-	margin: 28px 0;
+	font-weight: 700;
+	margin: 30px 0;
+	text-transform: uppercase;
+
+	@include breakpoint(small, 'max') { margin: 20px 0; }
 
 	li {
 		display: none;
@@ -14,31 +15,38 @@
 			color: $txt-gray-l;
 
 			&:before {
+				color: $txt-gray-l;
 				content: '\2192';
 				display: inline-block;
 				margin-right: 6px;
 				top: 1px;
 			}
+
+			&:last-child {
+				color: $orange;
+			}
 		}
 
 		&:first-child {
 			display: inline-block;
+
 			a {
+				color: $txt-gray-l;
 				font-size: 0;
+
 				&:before {
 					@include font-size(14px);
 					content: 'Home';
 					margin-right: 0;
+
+					@include breakpoint(small, 'max') { color: $txt-gray; }
 				}
 			}
 		}
-		&:first-child, 
+
+		&:first-child,
 		&.last {
 			display: inline-block;
 		}
-	}
-
-	@include breakpoint(medium, 'max') {
-		@include hide-conditional();
 	}
 }

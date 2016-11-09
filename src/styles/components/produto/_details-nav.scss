@@ -84,7 +84,7 @@
 			position: relative;
 			transition: color .4s ease, background .4s ease;
 
-			&:hover, 
+			&:hover,
 			&.active-nav {
 				background: #ffffff;
 				color: $green;
@@ -124,10 +124,10 @@
 		.valor-por {
 			font-size: 0;
 
-			strong { @include responsiveFont(18, 16, true);
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(12, 16, true);
-				}
+			strong {
+				@include responsiveFont(18, 16, true);
+
+				@include breakpoint(small, 'max') { @include responsiveFont(12, 16, true); }
 			}
 		}
 

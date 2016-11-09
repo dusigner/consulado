@@ -1,0 +1,179 @@
+@import 'helpers/mixins';
+@import 'helpers/variables';
+// ============================================================
+// HEADER
+// ============================================================
+.blackfriday {
+	background-color: #000000;
+
+	div.account {
+		#login {
+			background-color: #000000;
+			color: #ffffff;
+		}
+	}
+
+	.minicart {
+		.cart-quantity {
+			border: none;
+		}
+	}
+
+	.pre-header {
+		background-color: #000000;
+		a {
+			&[title*='Loja Virtual'] { 
+				border-bottom-color: #ffffff;
+				color: #ffffff; 
+			}
+			&[title*='Site da Consul'] { color: #ffffff; }
+			&[title*='Televendas'] { color: #ffffff; }
+			&[title*='Central de Atendimento'] { color: #ffffff; }
+		}
+	}
+
+	.menu-category {
+		background-color: #000000;
+		&:before {
+			background-color: #000000;
+		}
+
+		& > .item {
+			a {
+				background-color: #000000;
+			}
+		}
+	}
+
+	.menu-department {
+		.btn_bf {
+			text-transform: uppercase;
+			strong {
+				color: $green;
+				letter-spacing: 0;
+			}
+			a {
+				color: #ffffff;
+				letter-spacing: 2px;
+			}
+		}
+
+		.btn_cm {
+			font-size: 14px;
+			text-transform: uppercase;
+			strong {
+				color: $green;
+			}
+			a {
+				letter-spacing: 3px;
+			}
+		}
+
+		.busca-bf {
+			display: none;
+		}
+
+		.dropdown {
+				border: 1px solid #ffffff;
+			}
+		a {
+			color: #ffffff;
+		}
+	}
+
+	.dropdown {
+		&.topmenu-active {
+			a[title='Departamentos'] {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.menu-subcategory {
+		.item {
+			a {
+				color: #ffffff;
+			}
+		}
+	}
+
+	.header {
+		.cont-search {
+			background-color: #000000;
+			border: 7px solid #000000;
+		}
+	}
+
+	.form-search {
+		.text-search {
+			max-width: 82%;
+		}
+	}
+
+	.menu-mobile {
+		background-color: #000000;
+		&.menu-active {
+			.open-menu-mobile {
+				background-color: #000000;
+			}
+		}
+		.open-menu-mobile {
+			background-color: #000000;
+		}
+		.menu-department {
+			.item-department {
+				background-color: #000000;
+			}	
+
+			.item {
+				background-color: #000000;
+				&.txt-gray {
+					a {
+						color: #ffffff;
+					}
+				}
+				&.sub-itens {
+					.submenu {
+						background-color: #000000;
+						a {
+							color: #ffffff;
+						}
+					}
+				}
+			}
+
+		} 
+	}
+
+}
+// ============================================================
+// FOOTER
+// ============================================================
+.blackfriday.footer {
+	background: #000000 url('/arquivos/footer-bg-bf-cns.jpg') 50% no-repeat;  
+	color: #ffffff;
+	position: relative;
+	z-index: 2;
+
+	.footer-duvidas {
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+	}
+
+	.footer-gray {
+		background: #000000 url('/arquivos/footer-bg-bf-cns.jpg') 50% 100% no-repeat;
+	    color: #fff;
+	    position: relative;
+	    z-index: 1;
+	}
+	.logo-vtex {
+		display: none;
+		@include breakpoint(small, 'max') {
+			display: block;
+			padding-bottom: 20px;
+		}
+	}
+}
+
+
+

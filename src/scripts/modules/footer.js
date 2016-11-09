@@ -12,8 +12,8 @@ Nitro.module('footer', function() {
         accordionBox = accordionBtn.parent(),
         $duvidasList = $('.duvidas'),
         $duvidasAct = $('.duvidas li.accordion > a'),
-        //subList      = $('.sub-title b'),
         $btnNewsletter = $('.call-newsletter'),
+        $servicos = $('.servicos'),
         $toTop = $('.bt-gototop');
 
     // ACCORDION MENU FOOTER MOBILE
@@ -53,13 +53,6 @@ Nitro.module('footer', function() {
         }
     });
 
-    // SUB-MENU FOOTER
-    /*subList.on('click', function(e) {
-    	e.preventDefault();
-    	$(this).parent().toggleClass('active');
-    	$(this).next('.icon-arrow-down').toggleClass('icon-arrow-up');
-    });*/
-
 
     //BACK TO TOP
     var reachBottom = 0;
@@ -67,11 +60,11 @@ Nitro.module('footer', function() {
     $window.scroll(function() {
         if ($window.scrollTop() >= 560) {
             $toTop.removeClass('hide');
-            reachBottom = ($footer.offset().top - $window.scrollTop()) - $window.height();
+            reachBottom = ($footer.offset().top - $window.scrollTop()) - $window.height() - 80;
             if (reachBottom < 0) {
-                $toTop.css('bottom', 40 + Math.abs(reachBottom));
+                $toTop.css('bottom', 10 + Math.abs(reachBottom));
             } else {
-                $toTop.css('bottom', 40);
+                $toTop.css('bottom', 10);
             }
         } else {
             $toTop.addClass('hide');
@@ -99,5 +92,17 @@ Nitro.module('footer', function() {
         }
 
     }, 250)).scroll();
+
+
+    //boxes atendimento -servicos
+    if ($window.width() <= 768) {
+        $servicos.find('.box:not(.box-chat)').click(function(e){
+            e.preventDefault();
+
+            var link = $(this).find('a.primary-button').attr('href');
+
+            window.location.href = link;
+        });
+    }
 
 });

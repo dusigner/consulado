@@ -1,9 +1,5 @@
 @charset 'UTF-8';
 
-// ===============================================================
-/* Listagem */
-// ===============================================================
-
 /* vtex hide */
 .searchResultsTime,
 .filterBy,
@@ -16,6 +12,22 @@
 .Marca,
 .HideMarca { display: none!important; }
 
+body.listagem {
+	&.categoria {
+		.prateleira.default {
+			ul:not(.slick-slider) {
+				.department-nav { display: none; }
+			}
+		}
+
+		section.slider {
+			@include breakpoint(small, 'max') {
+				.slick-dots { bottom: 5px !important; }
+			}
+		}
+	}
+}
+
 .listagem {
 	.banner-principal { min-height: auto; }
 
@@ -27,10 +39,7 @@
 		}
 	}
 
-	#relacionados {
-		border-top: 1px solid $gray;
-		padding-bottom: 40px;
-	}
+	#relacionados { border-top: 1px solid $gray; }
 
 	.list-content h2 { display: none; }
 
@@ -95,7 +104,7 @@
 		display: none;
 		left: 21px;
 		position: absolute;
-		top: 228px !important;
+		top: 360px !important;
 		width: 86%;
 		z-index: 4;
 	}
@@ -614,21 +623,21 @@
 
 .open-filter {
 	display: none;
-	float: left;
+	float: right;
 	padding-right: 0;
 
 	span {
 		@include responsiveFont(12, 16, true);
-		background: $orange;
-		border: 1px solid $orange;
-		border-radius: 3px;
-		color: #ffffff;
+		background: #ffffff;
+		border: 2px solid $orange;
+		border-radius: 20px;
+		color: $orange;
 		display: block;
 		font-weight: bold;
-		padding: 10px 0;
+		padding: 8px 0;
 		text-align: center;
 		text-transform: uppercase;
-		width: 100px;
+		width: 65px;
 	}
 
 	@include breakpoint(small, 'max') {
@@ -637,7 +646,7 @@
 }
 
 .order-wrapper {
-	float: right;
+	float: left;
 	padding-right: 1em;
 	position: relative;
 
@@ -645,6 +654,7 @@
 		@include responsiveFont(18);
 		color: $orange;
 		cursor: pointer;
+		display: inline;
 		font-weight: bold;
 		margin: 0;
 		text-align: right;
@@ -667,6 +677,11 @@
 			display: inline-block;
 			margin-left: 10px;
 			vertical-align: middle;
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(5, 16, true);
+				margin-left: 6px;
+			}
 		}
 
 		&.active {
@@ -709,6 +724,14 @@
 			}
 		}
 	}
+	@include breakpoint(small, 'max') {
+		.txt-filtro {
+			&:before {
+				content: 'ordenar por';
+				font-size: 16px;
+			}
+		}
+	}
 }
 
 // Content
@@ -735,9 +758,9 @@
 	outline: none;
 
 	@include breakpoint(small, 'max') {
-		left: 0;
-		margin-left: 0;
-		width: 100%;
+	    min-height: 35px;
+	    padding: 0;
+	    width: 100%;
 	}
 
 	&.loading {
@@ -891,10 +914,9 @@
 	}
 }
 
-	.listagem,
-	.listagem-categoria-filtros {
+.listagem,
+.listagem-categoria-filtros {
 	.prateleira.default {
-
 		@include breakpoint(small, 'max') {
 			margin-top: 30px;
 
@@ -947,7 +969,6 @@
 									.por {
 										@include responsiveFont(16, 16, true);
 										margin: 5px 0 !important;
-										min-height: 50px;
 										position: relative;
 
 										.juros {

@@ -1,0 +1,26 @@
+@charset 'UTF-8';
+
+// ===============================================================
+/* Landings */
+// ===============================================================
+body.is-landing-page {
+
+	/**
+		[ BANNERS ]:
+		- Força a exibição do módulo de banner nas páginas de coleção
+	 */
+	.banner-principal {
+		.box-banner {
+			display: block !important;
+			visibility: visible !important;
+		}
+	}
+
+	/**
+		[ Busca ]:
+		- Esconde o termo "landing" que aparece
+		  quando a página é criada com contexto de busca
+	 */
+	.resultado-busca { @include hide-conditional; }
+}
+

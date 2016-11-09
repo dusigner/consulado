@@ -1,24 +1,21 @@
 'use strict';
 
 Nitro.module('lead-newsletter', function() {
-
-
     var self = this,
-        $inputName = $('#form-newsletter input[type="text"]'),
-        $inputEmail = $('#form-newsletter input[type="email"]'),
-        $inputTermos = $('#form-newsletter input[type="checkbox"]'),
+        $formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
+        $inputName = $formNewsletter.find('input[type="text"]'),
+        $inputEmail = $formNewsletter.find('input[type="email"]'),
+        $inputTermos = $formNewsletter.find('input[type="checkbox"]'),
         valid = false,
         hasSession = sessionStorage.getItem('leadNewsletter'),
         clientURI = '/api/ds/pub/documents/CL';
 
     this.setup = function(orderForm) {
         if (!hasSession && !orderForm.clientProfileData.email) {
-            // $('.lead-newsletter').fadeIn();
-
-            $('.lead-newsletter #form-newsletter').submit(function(e) {
+            $formNewsletter.submit(function(e) {
                 e.preventDefault();
 
-                $('#form-newsletter input').on('blur', function() {
+                $formNewsletter.find('input').on('blur', function() {
                     self.validateInputs();
                 });
 
@@ -71,8 +68,8 @@ Nitro.module('lead-newsletter', function() {
         data.email = email;
         data.isNewsletterOptIn = true;
         data.xDataCadastroLead = new Date();
-        data.xOrigemLead = 9;
-        data.xUnidadeNegocio = 6;
+        data.xOrigemLead = 8;
+        data.xUnidadeNegocio = 2;
         data.xCategoriaLead = 1;
 
         return $.ajax({
@@ -86,7 +83,7 @@ Nitro.module('lead-newsletter', function() {
             sessionStorage.setItem('leadNewsletter', true);
 
             setTimeout(function() {
-                $('.lead-newsletter').fadeOut();
+                $('.newsletter').fadeOut();
             }, 2000);
         });
     };
@@ -95,9 +92,10 @@ Nitro.module('lead-newsletter', function() {
         self.setup(result);
     });
 
+
     $('.lead-newsletter-show').click(function() {
         $(this).hide();
-        $('.lead-newsletter').fadeIn();
+        $(this).next('.lead-newsletter').fadeIn();
         $('#name').focus();
     });
 

@@ -31,8 +31,13 @@ body.search-active {
 			margin: 10px 0 0 20px;
 			text-indent: 0;
 			width: 82%;
-		}
 
+			@include breakpoint(small, 'max') {
+				height: 36px;
+				margin: 0;
+			}
+		}
+		
 		// .icon-close-icon { display: none!important; }
 		// .icon-consul-loupe { left: 15px; }
 	}
@@ -46,6 +51,10 @@ body.search-active {
 	position: relative;
 	width: 100%;
 
+	@include breakpoint(small, 'max') {
+		margin-top: 0;
+	}
+
 	.icon-consul-loupe {
 		@include responsiveFont(28);
 		color: $green;
@@ -58,7 +67,8 @@ body.search-active {
 		top: 0;
 
 		@include breakpoint(small, 'max') {
-			left: 80%;
+			left: 85%;
+			line-height: 32px;
 		}
 
 		@include breakpoint(small, 'min') { color: $green;}
