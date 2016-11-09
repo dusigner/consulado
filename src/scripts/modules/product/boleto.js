@@ -6,24 +6,41 @@ require('../../../templates/price.html');
 Nitro.module('boleto', function() {
 
 
-    var promoDiscount = {};
-    promoDiscount.value = [0];
+    var promoDiscountBoleto = {};
+    var promoDiscountCartao = {};
+    promoDiscountBoleto.value = [0];
+    promoDiscountCartao.value = [0];
 
     $('.prod-selos:first').find('[class*="boleto"]').each(function(i, e) {
         var promoName = $(e).text();
         var promoValue = parseInt(promoName.match(/\d+/ig));
         if (!isNaN(promoValue) && promoValue > 0) {
-            promoDiscount.value.push(promoValue);
+            promoDiscountBoleto.value.push(promoValue);
         }
     });
 
+    $('.prod-selos:first').find('[class*="cartao"]').each(function(i, e) {
+        var promoName2 = $(e).text();
+        var promoValue2 = parseInt(promoName2.match(/\d+/ig));
+        if (!isNaN(promoValue2) && promoValue2 > 0) {
+            promoDiscountCartao.value.push(promoValue2);
+        }
+    });
 
-    var cmcDiscount = promoDiscount.value.reduce(function(prev, curr) {
+    var cmcDiscountBoleto = promoDiscountBoleto.value.reduce(function(prev, curr) {
         return prev + curr;
     });
 
-    var priceCash = function(price) {
-        return _.intAsCurrency(price - (price * (cmcDiscount / 100)));
+    var cmcDiscountCartao = promoDiscountCartao.value.reduce(function(prev, curr) {
+        return prev + curr;
+    });
+
+    var priceCash = function(price, type) {
+        if(type === 'boleto') {
+            return _.intAsCurrency(price - (price * (cmcDiscountBoleto / 100)));
+        } else {
+            return _.intAsCurrency(price - (price * (cmcDiscountCartao / 100)));
+        }
     };
 
     var appendOff = function(el, value) {
@@ -49,13 +66,20 @@ Nitro.module('boleto', function() {
 
             if (valPercentage >= 20) {
                 sku.valPercentage = valPercentage;
-                sku.cashPercentage = valPercentage + cmcDiscount;
+                if (cmcDiscountCartao >= cmcDiscountBoleto) {
+                    sku.cashPercentage = valPercentage + cmcDiscountCartao;
+                }else {
+                    sku.cashPercentage = valPercentage + cmcDiscountBoleto;
+                }
             }
         }
+
     });
 
     if ($prodPreco.find('.valor-de').length > 0 && prodAvailable[0].valPercentage >= 20) {
+
         appendOff($('.skuBestInstallmentValue'), prodAvailable[0].valPercentage);
+
     }
 
     // A VISTA NO BOLETO
@@ -64,14 +88,30 @@ Nitro.module('boleto', function() {
     $(document).on('skuSelected.vtex', function(e, productId, sku) {
         $('.discount-boleto, .skuPrice').remove();
         if (sku.available) {
-            var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice) + '</p>';
+            var boletoInfo;
+            if (cmcDiscountCartao >= cmcDiscountBoleto) {
+                boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
+            } else {
+                boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
+            }
+            /*console.log('cmcDiscountCartao', cmcDiscountCartao);
+            console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
             $('.prod-preco').append(boletoInfo);
         }
     });
 
     if (prodAvailable.length > 0) {
-        var isDiscountOff = (cmcDiscount > 0) ? ' (' + cmcDiscount + '% OFF)' : '';
-        var boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice) + '</p>';
+        var isDiscountOff,
+            boletoInfo;
+        if (cmcDiscountCartao >= cmcDiscountBoleto) {
+            isDiscountOff = (cmcDiscountCartao > 0) ? ' (' + cmcDiscountCartao + '% OFF)' : '';
+            boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
+        } else {
+            isDiscountOff = (cmcDiscountBoleto > 0) ? ' (' + cmcDiscountBoleto + '% OFF)' : '';
+            boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'boleto') + '</p>';
+        }
+        /*console.log('cmcDiscountCartao', cmcDiscountCartao);
+        console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
         $('.prod-preco').append(boletoInfo);
 
         /*
