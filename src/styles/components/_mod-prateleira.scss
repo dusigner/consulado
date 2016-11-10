@@ -357,6 +357,8 @@
 
 		//nova prateleira mobile
 		@include breakpoint(small, 'max') {
+			height: 66px;
+
 			.prateleira-slider {
 				.prateleira.default {
 					margin-top: 0;
@@ -519,6 +521,8 @@
 				margin: 0;
 				padding: 15px;
 				position: relative;
+				top: 50%;
+				transform: translateY(-50%);
 				text-align: left;
 				text-transform: initial;
 

@@ -22,9 +22,9 @@
 	.pre-header {
 		background-color: #000000;
 		a {
-			&[title*='Loja Virtual'] { 
+			&[title*='Loja Virtual'] {
 				border-bottom-color: #ffffff;
-				color: #ffffff; 
+				color: #ffffff;
 			}
 			&[title*='Site da Consul'] { color: #ffffff; }
 			&[title*='Televendas'] { color: #ffffff; }
@@ -123,7 +123,7 @@
 		.menu-department {
 			.item-department {
 				background-color: #000000;
-			}	
+			}
 
 			.item {
 				background-color: #000000;
@@ -142,7 +142,7 @@
 				}
 			}
 
-		} 
+		}
 	}
 
 }
@@ -150,7 +150,7 @@
 // FOOTER
 // ============================================================
 .blackfriday.footer {
-	background: #000000 url('/arquivos/footer-bg-bf-cns.jpg') 50% no-repeat;  
+	background: #000000 url('/arquivos/footer-bg-bf-cns.jpg') 50% no-repeat;
 	color: #ffffff;
 	position: relative;
 	z-index: 2;
