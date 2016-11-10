@@ -357,7 +357,8 @@
 
 		//nova prateleira mobile
 		@include breakpoint(small, 'max') {
-			height: 66px;
+			height: auto;
+			min-height: 66px;
 
 			.prateleira-slider {
 				.prateleira.default {
