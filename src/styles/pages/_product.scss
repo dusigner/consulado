@@ -104,7 +104,15 @@ body.produto-indisponivel {
 }
 
 
-.prod-image { position: relative; }
+.prod-image {
+	position: relative;
+
+	@include breakpoint(small, 'max') {
+		margin-top: 20px;
+
+		.flag { display: none !important; }
+	}
+}
 
 #trustvox-rating {
 	margin: 0 auto;
