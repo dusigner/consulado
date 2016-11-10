@@ -35,9 +35,11 @@ body.search-active {
 			@include breakpoint(small, 'max') {
 				height: 36px;
 				margin: 0;
+				max-width: 100% !important;
+				width: 100% !important;
 			}
 		}
-		
+
 		// .icon-close-icon { display: none!important; }
 		// .icon-consul-loupe { left: 15px; }
 	}
