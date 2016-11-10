@@ -521,10 +521,10 @@
 				margin: 0;
 				padding: 15px;
 				position: relative;
-				top: 50%;
-				transform: translateY(-50%);
 				text-align: left;
 				text-transform: initial;
+				top: 50%;
+				transform: translateY(-50%);
 
 				&:before {
 					font-size: 16px !important;
