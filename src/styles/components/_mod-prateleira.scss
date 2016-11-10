@@ -320,13 +320,15 @@
 
 							@include breakpoint(extra-small, 'max') {
 								border-radius: 50%;
-							    bottom: 225px;
+							    bottom: 200px;
 							    font-size: 12px;
 							    height: 40px;
 							    line-height: 14px;
 							    padding: 6px 5px;
 							    position: absolute;
+							    right: 0;
 							    width: 40px;
+							    z-index: 3;
 							}
 						}
 					}
