@@ -140,7 +140,7 @@
 
 					@include breakpoint (small, 'max') {
 						@include responsiveFont(14, 16, true);
-						padding-left: 10px;
+						padding-left: 5px;
 					};
 				}
 			}
@@ -363,6 +363,7 @@
 		}
 
 		@include breakpoint(small, 'max') {
+      border-radius: 0;
       bottom: 0;
       display: inline-block;
       font-size: 0;
@@ -378,8 +379,11 @@
         @include responsiveFont(16, 16, true);
         content: 'Adicionar ao carrinho';
         display: inline-block;
+        font-family: $base-font-family !important;
+        font-weight: bold !important;
         left: 50%;
         position: absolute;
+        text-transform: uppercase !important;
         top: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
