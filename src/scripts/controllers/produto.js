@@ -288,39 +288,15 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             if(data >= dataBF){
 
-                    coe = 0;
-                    users = 3;
-                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+                coe = Math.floor(Math.random() * (15 - 3)) + 3;
 
-                    rand = Math.floor((Math.random() * 15));
-
-                    end = dataRandom[rand];
-
-                    if (end >= users) {
-                        coe = users  + 2;
-                    } else {
-                        coe = users  + end;
-                    }
-
-                    $('#pessoas_on').html(coe);
+                $('#pessoas_on').html(coe);
 
             }else{
-                    coe = 0;
-                    users = 10;
-                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+                
+                coe = Math.floor(Math.random() * (25 - 10)) + 10;
 
-                    rand = Math.floor((Math.random() * 25));
-
-                    end = dataRandom[rand];
-
-                    if (end >= users) {
-                        coe = users  + 2;
-                    } else {
-                        coe = users  + end;
-                    }
-
-                    $('#pessoas_on').html(coe);
-
+                $('#pessoas_on').html(coe);
             }
 
             Index.refreshUser();
@@ -331,40 +307,19 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             if(data >= dataBF){
 
-                var intervalo = setInterval(function (){
-                    coe = 0;
-                    users = 3;
-                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+                setInterval(function (){
 
-                    rand = Math.floor((Math.random() * 15));
-
-                    end = dataRandom[rand];
-
-                    if (end >= users) {
-                        coe = users  + 2;
-                    } else {
-                        coe = users  + end;
-                    }
+                    coe = Math.floor(Math.random() * (15 - 3)) + 3;
 
                     $('#pessoas_on').html(coe);
 
                 }, 15000);
 
             }else{
-                var intervalo2 = setInterval(function (){
-                    coe = 0;
-                    users = 10;
-                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
 
-                    rand = Math.floor((Math.random() * 25));
+                setInterval(function (){
 
-                    end = dataRandom[rand];
-
-                    if (end >= users) {
-                        coe = users  + 2;
-                    } else {
-                        coe = users  + end;
-                    }
+                    coe = Math.floor(Math.random() * (25 - 10)) + 10;
 
                     $('#pessoas_on').html(coe);
 
@@ -373,7 +328,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             }
 
         },
-
 
         refreshUserGet: function (token){
 
