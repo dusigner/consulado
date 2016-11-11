@@ -280,7 +280,7 @@
 
 			.price {
 				margin: 1em 0;
-				// text-align: left;
+
 				& > p {
 					margin: 0;
 
@@ -349,14 +349,11 @@
 		padding: 0;
 		width: 100% !important;
 
-		&.home-prateleira-01{
-
-			.pre-title{
+		&.home-prateleira-01 {
+			.pre-title {
 				padding: 25px 15px 15px 15px;
 
-				&.open{
-					padding: 15px;
-				}
+				&.open { padding: 15px; }
 			}
 
 		}

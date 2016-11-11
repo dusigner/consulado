@@ -139,8 +139,8 @@
 					padding-left: 18px;
 
 					@include breakpoint (small, 'max') {
-						@include responsiveFont(14, 16, true);
-						padding-left: 3px;
+						@include responsiveFont(12, 16, true);
+						padding-left: 5px;
 					}
 				}
 			}
