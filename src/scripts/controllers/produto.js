@@ -213,15 +213,18 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     self.valoresParcelas();
 
 
-    var ID_GA, urlAPI;
+    var ID_GA, urlAPI, end, rand, dataRandom, coe;
     var qnt110v, qnt220v;
     var pathname = window.location.pathname;
+    var users = 0;
+    var data = new Date();
+    var dataBF = new Date('November 11, 2016 10:52:50');
 
     var Index = {
 
 
         init: function (){
-            Index.postToken();
+            Index.usersOn();
             Index.getQntStoq();
         },
 
@@ -252,7 +255,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         getQntStoq: function (){
 
-            Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + skuJson.productId).then(function (data){
+            Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId).then(function (data){
 
 
                 qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
@@ -279,27 +282,95 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             });
         },
 
-        refreshUser: function (users){
+        usersOn: function (){
+            $('.produto .prod-preco').prepend(Index.template);
 
-            var intervalo = setInterval(function (){
-                var coe = 0;
-                users = 5;
-                var dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
 
-                var rand = Math.floor((Math.random() * 10));
+            if(data >= dataBF){
 
-                var end = dataRandom[rand];
+                    coe = 0;
+                    users = 3;
+                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
 
-                if (end >= users) {
-                    coe = users  + 2;
-                } else {
-                    coe = users  + end;
-                }
+                    rand = Math.floor((Math.random() * 15));
 
-                $('#pessoas_on').html(coe);
+                    end = dataRandom[rand];
 
-            }, 15000);
-            
+                    if (end >= users) {
+                        coe = users  + 2;
+                    } else {
+                        coe = users  + end;
+                    }
+
+                    $('#pessoas_on').html(coe);
+
+            }else{
+                    coe = 0;
+                    users = 10;
+                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+
+                    rand = Math.floor((Math.random() * 25));
+
+                    end = dataRandom[rand];
+
+                    if (end >= users) {
+                        coe = users  + 2;
+                    } else {
+                        coe = users  + end;
+                    }
+
+                    $('#pessoas_on').html(coe);
+
+            }
+
+            Index.refreshUser();
+
+        },
+
+        refreshUser: function (){
+
+            if(data >= dataBF){
+
+                var intervalo = setInterval(function (){
+                    coe = 0;
+                    users = 3;
+                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+
+                    rand = Math.floor((Math.random() * 15));
+
+                    end = dataRandom[rand];
+
+                    if (end >= users) {
+                        coe = users  + 2;
+                    } else {
+                        coe = users  + end;
+                    }
+
+                    $('#pessoas_on').html(coe);
+
+                }, 15000);
+
+            }else{
+                var intervalo2 = setInterval(function (){
+                    coe = 0;
+                    users = 10;
+                    dataRandom = [-1,-2,-3,-4,-5,1,2,3,4,5];
+
+                    rand = Math.floor((Math.random() * 25));
+
+                    end = dataRandom[rand];
+
+                    if (end >= users) {
+                        coe = users  + 2;
+                    } else {
+                        coe = users  + end;
+                    }
+
+                    $('#pessoas_on').html(coe);
+
+                }, 15000);
+
+            }
 
         },
 
@@ -314,7 +385,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         getURL: function (token){
-            ID_GA = '23515006';
+            ID_GA = '23515209';
             urlAPI = 'https://www.googleapis.com/analytics/v3/data/realtime?ids=ga:' + ID_GA + '&metrics=rt:activeUsers&dimensions=rt%3ApagePath&access_token=' + token;
 
 
@@ -330,7 +401,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     }
                 }
 
-                $('#pessoas_on').html(visitas); 
+                $('#pessoas_on').html(visitas);
 
                 Index.refreshUser(visitas);
 
@@ -339,7 +410,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 $('#vtexIdContainer').remove();
             });
 
-            $('.produto .lead').append(Index.template);
+            
         },
 
         refreshToken: function (){
@@ -353,41 +424,85 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
+            var data = new Date();
+            var dataBF = new Date('November 11, 2016 10:52:50');
 
-            if( (qnt110v > 30) && (qnt220v > 30) ){
-                $('#qnt_stoke').hide();
-                $('.usuarios-ativos').show();
-                $('.txt_small_110').hide();
-                $('.txt_small_220').hide();
+            if(data >= dataBF){
 
-            } else if ( qnt110v === 0 && qnt220v > 30 ){
-                $('.usuarios-ativos').show();
-                $('.txt_small_220').hide();
-                $('.txt_small_110').show();
-                $('#qnt_stoke').hide();
-                $('.qtn_pessoas_on').addClass('p_orange');
-            } else if( qnt110v > 30 && qnt220v === 0 ){
-                $('.usuarios-ativos').show();
-                $('.txt_small_110').hide();
-                $('.txt_small_220').show();
-                $('#qnt_stoke').hide();
-                $('.qtn_pessoas_on').addClass('p_orange');
-            } else if ( qnt110v === 0 && qnt220v <= 30 ){
-                $('.usuarios-ativos').show();
-                $('.txt_small_220').hide();
-                $('.txt_small_110').show();
-                $('.qtn_pessoas_on').addClass('p_orange');
-            } else if( qnt110v <= 30 && qnt220v === 0 ){
-                $('.usuarios-ativos').show();
-                $('.txt_small_110').hide();
-                $('.txt_small_220').show();
-                $('.qtn_pessoas_on').addClass('p_orange');
-            } else{
-                $('#qnt_stoke').show();
-                $('.usuarios-ativos').show();
-                $('.txt_small_110').hide();
-                $('.txt_small_220').hide();
-                $('.qtn_pessoas_on').removeClass('p_orange');
+                if( (qnt110v > 3) && (qnt220v > 3) ){
+                    $('#qnt_stoke').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+
+                } else if ( qnt110v === 0 && qnt220v > 3 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v > 3 && qnt220v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if ( qnt110v === 0 && qnt220v <= 3 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v <= 3 && qnt220v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else{
+                    $('#qnt_stoke').show();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+                    $('.qtn_pessoas_on').removeClass('p_orange');
+                }
+
+            } else {
+
+                if( (qnt110v > 30) && (qnt220v > 30) ){
+                    $('#qnt_stoke').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+
+                } else if ( qnt110v === 0 && qnt220v > 30 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v > 30 && qnt220v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if ( qnt110v === 0 && qnt220v <= 30 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v <= 30 && qnt220v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else{
+                    $('#qnt_stoke').show();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+                    $('.qtn_pessoas_on').removeClass('p_orange');
+                }
+
             }
 
         },
