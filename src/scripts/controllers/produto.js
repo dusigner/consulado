@@ -266,9 +266,25 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 
                     Index.calcQntStoq(qnt110v, qnt220v);
                 } else{
+
                     qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
-                
+                    var nome = data[0].items[0].name;
+
                     Index.calcQntStoqOnly(qnt110v);
+
+                    if(nome === 'BIVOLT' && qnt110v === 0){
+                        console.log('ola');
+                        $('.usuarios-ativos').hide();
+
+                    }else if(nome === '110V' && qnt110v === 0){
+
+                        $('.usuarios-ativos').hide();
+
+                    }else if(nome === '220V' && qnt110v === 0){
+
+                        $('.usuarios-ativos').hide();
+                    }
+                    
                 }
 
             });
@@ -386,8 +402,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         calcQntStoqOnly: function (qnt110v){
-            var data = new Date();
-            var dataBF = new Date('November 11, 2016 10:52:50');
+            data = new Date();
+            dataBF = new Date('November 11, 2016 10:52:50');
 
             if(data >= dataBF){
 
@@ -471,8 +487,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
         calcQntStoq: function (qnt110v, qnt220v){
-            var data = new Date();
-            var dataBF = new Date('November 11, 2016 10:52:50');
+            data = new Date();
+            dataBF = new Date('November 11, 2016 10:52:50');
 
             if(data >= dataBF){
 
