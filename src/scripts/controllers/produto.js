@@ -258,10 +258,18 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId).then(function (data){
 
 
-                qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
-                qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
+                if(data[0].items.length === 2){
 
-                Index.calcQntStoq(qnt110v, qnt220v);
+                    qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+                    qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
+
+                
+                    Index.calcQntStoq(qnt110v, qnt220v);
+                } else{
+                    qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+                
+                    Index.calcQntStoqOnly(qnt110v);
+                }
 
             });
 
@@ -376,6 +384,91 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             }, 3000000);
 
         },
+
+        calcQntStoqOnly: function (qnt110v){
+            var data = new Date();
+            var dataBF = new Date('November 11, 2016 10:52:50');
+
+            if(data >= dataBF){
+
+                if( qnt110v > 3){
+                    $('#qnt_stoke').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+
+                } else if ( qnt110v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v > 3 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if ( qnt110v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v <= 3 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else{
+                    $('#qnt_stoke').show();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+                    $('.qtn_pessoas_on').removeClass('p_orange');
+                }
+
+            } else {
+
+                if( qnt110v > 30 ){
+                    $('#qnt_stoke').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+
+                } else if ( qnt110v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v > 30 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('#qnt_stoke').hide();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if ( qnt110v === 0 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else if( qnt110v <= 30 ){
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').show();
+                    $('.qtn_pessoas_on').addClass('p_orange');
+                } else{
+                    $('#qnt_stoke').show();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+                    $('.qtn_pessoas_on').removeClass('p_orange');
+                }
+
+            }
+
+        },
+
 
         calcQntStoq: function (qnt110v, qnt220v){
             var data = new Date();
