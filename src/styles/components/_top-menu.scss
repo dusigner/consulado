@@ -70,12 +70,18 @@
 		}
 
 		.icon-hamburger {
+			border-bottom: 2px solid $green;
+			border-top: 2px solid $green;
+			color: $green;
 			cursor: pointer;
 			height: 12px;
 			left: 31px;
+			margin-left: 10px;
 			position: absolute;
 			top: 19px;
 			z-index: 1;
+
+			&:before { background-color: $green; }
 		}
 	}
 }
