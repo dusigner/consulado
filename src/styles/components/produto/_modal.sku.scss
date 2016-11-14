@@ -1,38 +1,19 @@
-#vtex-modal-sku {
-	.modal-header strong { font-weight: 400;}
-
+#modal-sku {
 	.options {
 		background: #eee;
 		margin: 0 -1em 20px;
 		padding: 21px 0;
 
 		.specification { display: none; }
-
-
-		label {
-			color: $gray-d;
-			font-weight: 400;
-
-			&:before {
-				border-color: $gray-d;
-			}
-		}
 	}
-
-	.button {
-		padding: 10px 0;
-	}
-
-	@extend #BuyButton;
 
 	.buy-button {
-		display: inline!important;
-		float: none;
+		@extend .primary-button;
+		font-size: 1em;
 		margin: 0 auto;
-		padding: 16px 28px;
-
-		&:before {float: none; }
+		max-width: 160px;
+		width: auto;
 	}
 
-	.portal-notify-me-ref {display: none;}
+	.portal-notify-me-ref { display: none; }
 }
