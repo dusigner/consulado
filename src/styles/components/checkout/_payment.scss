@@ -62,7 +62,7 @@ body {
 			.payment-card-number input,
 			.payment-card-name input { width: 100%; }
 
-			.payment-card-due, 
+			.payment-card-due,
 			.payment-card-cvv {
 				label {
 					display: block;
@@ -70,12 +70,12 @@ body {
 				}
 			}
 
-			.payment-card-due-month, 
-			.payment-card-due-year, 
+			.payment-card-due-month,
+			.payment-card-due-year,
 			.payment-card-cvv {
 				width: 47%;
 
-				select, 
+				select,
 				input {
 					@include responsiveFont(14);
 					line-height: 20px;
@@ -267,6 +267,16 @@ body {
 			background: none;
 			margin-top: 10px;
 			position: static;
+		}
+
+		.box-payment-option {
+			&.bankInvoicePaymentGroup {
+				&:after {
+					color: $green;
+					content: 'O prazo de entrega do produto come\00e7 a a contar a partir da confirma\00e7 \00e3 o do pagamento, que pode variar em at\00e9  2 dias \00fa teis.';
+					font-weight: bold;
+				}
+			}
 		}
 	}
 }
