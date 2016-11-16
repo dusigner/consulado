@@ -39,6 +39,7 @@
 		body:not(.produto) {
 			padding-top: $mobile-header-height;
 			header {
+				overflow-y: scroll;
 				position: fixed;
 				top: 0;
 				width: 100%;
