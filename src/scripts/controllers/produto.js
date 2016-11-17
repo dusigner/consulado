@@ -498,7 +498,9 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     $('.txt_small_110').hide();
                     $('.txt_small_220').hide();
 
-                } else if ( qnt110v === 0 && qnt220v > 3 ){
+                } else if ( (qnt110v === 0) && (qnt220v === 0) ){
+                    $('.usuarios-ativos').hide();
+                }  else if ( qnt110v === 0 && qnt220v > 3 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
                     $('.txt_small_110').show();
@@ -536,7 +538,9 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     $('.txt_small_110').hide();
                     $('.txt_small_220').hide();
 
-                } else if ( qnt110v === 0 && qnt220v > 30 ){
+                } else if ( (qnt110v === 0) && (qnt220v === 0) ){
+                    $('.usuarios-ativos').hide();
+                }  else if ( qnt110v === 0 && qnt220v > 30 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
                     $('.txt_small_110').show();
