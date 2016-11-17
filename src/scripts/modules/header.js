@@ -37,13 +37,13 @@ Nitro.module('header', function() {
                 .removeClass()
                 .addClass(defaultClass);
 
-            $('header.blackfriday').height(100);
+            // $('header.blackfriday').height(100);
         } else {
             menuMobile.addClass('menu-active');
 
-            var altura = $(window).height();
+            /*var altura = $(window).height();
 
-            $('body').find('.menu-active').parent().parent().parent().height(altura);
+            $('body').find('.menu-active').parent().parent().parent().height(altura);*/
         }
     });
 
