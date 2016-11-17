@@ -270,6 +270,9 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                     var nome = data[0].items[0].name;
 
+                    $('.txt_small_110').hide();
+                    $('.txt_small_220').hide();
+
                     Index.calcQntStoqOnly(qnt110v);
 
                     if(nome === 'BIVOLT' && qnt110v === 0){
@@ -416,24 +419,24 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
+                    $('.txt_small_110').hide();
                     $('#qnt_stoke').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if( qnt110v > 3 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
+                    $('.txt_small_220').hide();
                     $('#qnt_stoke').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
+                    $('.txt_small_110').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if( qnt110v <= 3 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
+                    $('.txt_small_220').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else{
                     $('#qnt_stoke').show();
@@ -454,24 +457,24 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
+                    $('.txt_small_110').hide();
                     $('#qnt_stoke').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if( qnt110v > 30 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
+                    $('.txt_small_220').hide();
                     $('#qnt_stoke').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
+                    $('.txt_small_110').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else if( qnt110v <= 30 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
+                    $('.txt_small_220').hide();
                     $('.qtn_pessoas_on').addClass('p_orange');
                 } else{
                     $('#qnt_stoke').show();
