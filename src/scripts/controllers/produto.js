@@ -218,7 +218,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     var pathname = window.location.pathname;
     var users = 0;
     var data = new Date();
-    var dataBF = new Date('November 11, 2016 10:52:50');
+    var dataBF = new Date('November 24, 2016 20:00:00');
 
     var Index = {
 
@@ -403,7 +403,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         calcQntStoqOnly: function (qnt110v){
             data = new Date();
-            dataBF = new Date('November 11, 2016 10:52:50');
+            dataBF = new Date('November 24, 2016 20:00:00');
 
             if(data >= dataBF){
 
@@ -488,7 +488,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         calcQntStoq: function (qnt110v, qnt220v){
             data = new Date();
-            dataBF = new Date('November 11, 2016 10:52:50');
+            dataBF = new Date('November 24, 2016 20:00:00');
 
             if(data >= dataBF){
 
