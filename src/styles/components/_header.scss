@@ -24,6 +24,7 @@
 		}
 	}
 
+	$mobile-header-height: 100px;
 
 	// Header
 	header {
@@ -31,7 +32,19 @@
 
 		.container a { text-decoration: none; }
 
-		@include breakpoint(small, 'max') { min-height: 100px; }
+		@include breakpoint(small, 'max') { min-height: $mobile-header-height; }
+	}
+
+	@include breakpoint(small, 'max') {
+		body:not(.produto) {
+			padding-top: $mobile-header-height;
+			header {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 4;
+			}
+		}
 	}
 
 	// Pre header

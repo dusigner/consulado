@@ -36,8 +36,14 @@ Nitro.module('header', function() {
             menuMobile
                 .removeClass()
                 .addClass(defaultClass);
+
+            // $('header.blackfriday').height(100);
         } else {
             menuMobile.addClass('menu-active');
+
+            /*var altura = $(window).height();
+
+            $('body').find('.menu-active').parent().parent().parent().height(altura);*/
         }
     });
 
