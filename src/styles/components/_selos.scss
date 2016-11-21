@@ -29,6 +29,13 @@ body {
 				@include replaceText('#{$img-path}cns-selo-#{$i}.png', 0, 0);
 			}
 		}
+
+		&.cns-black-friday-2016 {
+			@include replaceText('#{$img-path}cns-selo-blackfriday-2016.png', 0, 100%);
+		}
+		&.-consull--cyber-monday-2016 {
+			@include replaceText('#{$img-path}cns-selo-cybermonday-2016.png', 0, 100%);
+		}
 	}
 
 }
