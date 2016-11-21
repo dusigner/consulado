@@ -224,8 +224,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
         init: function (){
-            Index.usersOn();
-            Index.getQntStoq();
+            Index.changeQntStoq();
         },
 
         template: function (){
@@ -234,7 +233,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             content += '<div class="usuarios-ativos">';
             content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
-            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
             content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
             content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
             content += '</div>';
@@ -243,7 +241,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         changeQntStoq: function (){
-            $('.usuarios-ativos').hide();
+            $('.produto .prod-preco').prepend(Index.template);
+            Index.getQntStoq();
             var qntEstoque = setInterval(function (){
 
                 Index.getQntStoq();
@@ -257,23 +256,24 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId).then(function (data){
 
-
                 if(data[0].items.length >= 2){
-
 
                     if(data[0].items[0].name === '110V'){
                         console.log('in');
                         qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                         qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
 
+                        Index.calcQntStoq(qnt110v, qnt220v);
+
                     }else{
                         console.log('out');
                         qnt220v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                         qnt110v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
 
+                        Index.calcQntStoq(qnt110v, qnt220v);
+
                     }
-                
-                    Index.calcQntStoq(qnt110v, qnt220v);
+            
                 } else{
 
                     qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
@@ -303,65 +303,14 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
-        usersOn: function (){
-            $('.produto .prod-preco').prepend(Index.template);
-
-
-            if(data >= dataBF){
-
-                coe = Math.floor(Math.random() * (15 - 3)) + 3;
-
-                $('#pessoas_on').html(coe);
-
-            }else{
-                
-                coe = Math.floor(Math.random() * (25 - 10)) + 10;
-
-                $('#pessoas_on').html(coe);
-            }
-
-            Index.refreshUser();
-
-        },
-
-        refreshUser: function (){
-
-            if(data >= dataBF){
-
-                setInterval(function (){
-
-                    coe = Math.floor(Math.random() * (15 - 3)) + 3;
-
-                    $('#pessoas_on').html(coe);
-
-                }, 15000);
-
-            }else{
-
-                setInterval(function (){
-
-                    coe = Math.floor(Math.random() * (25 - 10)) + 10;
-
-                    $('#pessoas_on').html(coe);
-
-                }, 15000);
-
-            }
-
-        },
-
         calcQntStoqOnly: function (qnt110v){
             data = new Date();
             dataBF = new Date('November 24, 2016 20:00:00');
 
             if(data >= dataBF){
 
-                if( qnt110v > 30 ){
-                    $('#qnt_stoke').hide();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-
+                if( qnt110v > 30 ){                    
+                    $('.usuarios-ativos').hide();
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
@@ -396,11 +345,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             } else {
 
                 if( qnt110v > 3){
-                    $('#qnt_stoke').hide();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-
+                    $('.usuarios-ativos').hide();
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
                     $('.txt_small_220').hide();
@@ -444,11 +389,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
                 if( (qnt110v > 30) && (qnt220v > 30) ){
-                    $('#qnt_stoke').hide();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-
+                    $('.usuarios-ativos').hide();
                 } else if ( (qnt110v === 0) && (qnt220v === 0) ){
                     $('.usuarios-ativos').hide();
                 }  else if ( qnt110v === 0 && qnt220v > 30 ){
@@ -484,11 +425,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             } else {
 
                 if( (qnt110v > 3) && (qnt220v > 3) ){
-                    $('#qnt_stoke').hide();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-
+                    $('.usuarios-ativos').hide();
                 } else if ( (qnt110v === 0) && (qnt220v === 0) ){
                     $('.usuarios-ativos').hide();
                 }  else if ( qnt110v === 0 && qnt220v > 3 ){
