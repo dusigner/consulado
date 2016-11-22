@@ -13,7 +13,7 @@ require('custom/modal.overlayAbandono');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
     var self = this,
         $filter = $('.filter-wrapper'),
         $searchSingle = $('.search-single-navigator'),
