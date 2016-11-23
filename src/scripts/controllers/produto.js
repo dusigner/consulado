@@ -185,7 +185,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     //inicia automaticamente prateleiras sliders no desktop
     if ($(window).width() > 768) {
         self.setupSlider($slider);
-        $('html, body').animate({scrollTop:170}, 1500);
+        $('html, body').animate({scrollTop:190}, 1500);
     }
 
 
@@ -405,13 +405,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         },
 
         callbackAPI: function (data){
-            if(data && data.status && data.status.error) {
-               console.log('erro');
-            } else {
-                console.log('foi');
-               $('#pessoas_on').html(data.data.count);
-            }
             
+            $('#pessoas_on').html(data.data.count);
 
         },
 
