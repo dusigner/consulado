@@ -33,7 +33,7 @@ body {
 		&.cns-black-friday-2016 {
 			@include replaceText('#{$img-path}cns-selo-blackfriday-2016.png', 0, 100%);
 		}
-		&.-consull--cyber-monday-2016 {
+		&.-consul--cyber-monday-2016 {
 			@include replaceText('#{$img-path}cns-selo-cybermonday-2016.png', 0, 100%);
 		}
 	}
