@@ -185,6 +185,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     //inicia automaticamente prateleiras sliders no desktop
     if ($(window).width() > 768) {
         self.setupSlider($slider);
+        $('html, body').animate({scrollTop:190}, 1500);
     }
 
 
