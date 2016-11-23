@@ -176,6 +176,12 @@ body {
 				width: auto;
 			}
 
+			.monetary {
+				@include breakpoint(small, 'max') {
+					padding-right: 50px;
+				}
+			}
+
 			.info {
 				@include responsiveFont(13, 16, true);
 				padding-right: 30px;
@@ -245,6 +251,10 @@ body {
 									text-align: center;
 									text-transform: capitalize;
 									width: 90px;
+
+									@include breakpoint(extra-small, 'max') {
+										margin-right: 50px;
+									}
 
 									&:hover {
 										background: $gray;

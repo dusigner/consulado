@@ -71,9 +71,14 @@ Nitro.module('footer', function() {
         }
     }).scroll();
 
-    $toTop.click(function(e) {
-        e.preventDefault();
-        $('header').toScroll();
+    // $toTop.click(function(e) {
+    //     e.preventDefault();
+    //     $('header').toScroll();
+    // });
+
+    $toTop.click(function(){
+        $('html, body').animate({ scrollTop: 0 }, 600);
+        //return false;
     });
 
 
