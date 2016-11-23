@@ -225,6 +225,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         init: function (){
             Index.changeQntStoq();
+            Index.getPathName();
         },
 
         template: function (){
@@ -232,7 +233,8 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             var content = '';
 
             content += '<div class="usuarios-ativos">';
-            content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>',
+            content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>';
+            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
             content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
             content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
             content += '</div>';
@@ -308,7 +310,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             if(data >= dataBF){
 
                 if( qnt110v > 30 ){
-                    $('.usuarios-ativos').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').hide();
+                    $('#qnt_stoke').hide();
 
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').show();
@@ -332,7 +337,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 
                 if( qnt110v > 3){
-                    $('.usuarios-ativos').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').hide();
+                    $('#qnt_stoke').hide();
 
                 } else if ( qnt110v === 0 ){
                     $('.usuarios-ativos').hide();
@@ -359,7 +367,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             if(data >= dataBF){
 
                 if( (qnt110v > 30) && (qnt220v > 30) ){
-                    $('.usuarios-ativos').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').hide();
+                    $('#qnt_stoke').hide();
                 } else if ( (qnt110v === 0) && (qnt220v === 0) ){
                     $('.usuarios-ativos').hide();
                 } else if ( qnt110v === 0 && qnt220v > 30 ){
@@ -394,7 +405,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             } else {
 
                 if( (qnt110v > 3) && (qnt220v > 3) ){
-                    $('.usuarios-ativos').hide();
+                    $('.usuarios-ativos').show();
+                    $('.txt_small_220').hide();
+                    $('.txt_small_110').hide();
+                    $('#qnt_stoke').hide();
                 } else if ((qnt110v === 0) && (qnt220v === 0)){
                     $('.usuarios-ativos').hide();
                 } else if ( qnt110v === 0 && qnt220v > 3 ){
@@ -428,6 +442,73 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             }
 
+        },
+
+        callbackAPI: function (data){
+            if(data && data.status && data.status.error) {
+               console.log('erro');
+            } else {
+                console.log('foi');
+               $('#pessoas_on').html(data.data.count);
+            }
+            
+
+        },
+
+        getPathName: function (){
+
+            var path = window.top.location.pathname;
+            console.log(path);
+
+            this.getSession(path, 'brastemp', Index.callbackAPI);
+
+            setInterval(function (){
+
+                Index.getSession(path, 'brastemp', Index.callbackAPI);
+
+            },  180000);
+
+        },
+
+        configs: {
+            // url: 'http://awesome.dev/mangocorp/jussi/brastemp/brastemp-usu-rios-ativos/users/current',
+            url: 'https://mangocrop-jussi-activeusers.herokuapp.com/users/current',
+            cookieName: 'vygfubhjh78'
+        },
+
+        getSession: function (path, store, callback) {
+            var content = {path: path, store: store};
+            if(this.getCookie(this.configs.cookieName)) {
+                content['c'] = this.getCookie(this.configs.cookieName);
+            }
+
+            var me = this;
+            $.post(me.configs.url, content, function (result) {
+                me.setCookie(me.configs.cookieName, result.data.c);
+                callback(result);
+            });
+        },
+
+        setCookie: function (cname, cvalue) {
+            var d = new Date();
+            d.setTime(d.getTime() + (5 * 60 * 60));
+            var expires = 'expires=' + d.toUTCString();
+            document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+        },
+
+        getCookie: function (cname) {
+            var name = cname + '=';
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) === 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return '';
         },
 
         getAPI: function (url){
