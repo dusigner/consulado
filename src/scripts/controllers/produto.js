@@ -218,8 +218,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     var qnt110v, qnt220v;
     var pathname = window.location.pathname;
     var users = 0;
-    var data = new Date();
-    var dataBF = new Date('November 24, 2016 20:00:00');
 
     var Index = {
 
@@ -301,105 +299,48 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
+
         calcQntStoqOnly: function (qnt110v){
-            data = new Date();
-            dataBF = new Date('November 24, 2016 20:00:00');
 
-            if(data >= dataBF){
+            if( qnt110v > 3){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
 
-                if( qnt110v > 30 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-
-                } else if ( qnt110v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                }else if( qnt110v <= 30 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                } else{
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                }
-
-
-            } else {
-
-
-                if( qnt110v > 3){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-
-                } else if ( qnt110v === 0 ){
-                    $('.usuarios-ativos').hide();
-                }else if( qnt110v <= 3 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                } else{
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                }
-
+            } else if ( qnt110v === 0 ){
+                $('.usuarios-ativos').hide();
+            }else if( qnt110v <= 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            } else{
+                $('#qnt_stoke').show();
+                $('.usuarios-ativos').show();
             }
-
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
-            data = new Date();
-            dataBF = new Date('November 24, 2016 20:00:00');
 
-            if(data >= dataBF){
-
-                if( (qnt110v > 30) && (qnt220v > 30) ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if ( (qnt110v === 0) && (qnt220v === 0) ){
-                    $('.usuarios-ativos').hide();
-                } else if ( qnt110v === 0 && qnt220v > 30 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if( qnt110v > 30 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if ( qnt110v === 0 && qnt220v <= 30 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                } else if( qnt110v <= 30 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                }else if(qnt110v <= 3 && qnt220v <= 3){
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                } else{
-                    $('.usuarios-ativos').hide();
-                }
-
-            } else {
-
-                if( (qnt110v > 3) && (qnt220v > 3) ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if ((qnt110v === 0) && (qnt220v === 0)){
-                    $('.usuarios-ativos').hide();
-                } else if ( qnt110v === 0 && qnt220v > 3 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if( qnt110v > 3 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').hide();
-                } else if ( qnt110v === 0 && qnt220v <= 3 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                } else if( qnt110v <= 3 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('#qnt_stoke').show();
-                }else if(qnt110v <= 3 && qnt220v <= 3){
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                }else{
-                    $('.usuarios-ativos').hide();
-                }
-
+            if( (qnt110v > 3) && (qnt220v > 3) ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if ((qnt110v === 0) && (qnt220v === 0)){
+                $('.usuarios-ativos').hide();
+            } else if ( qnt110v === 0 && qnt220v > 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if( qnt110v > 3 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if ( qnt110v === 0 && qnt220v <= 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            } else if( qnt110v <= 3 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            }else if(qnt110v <= 3 && qnt220v <= 3){
+                $('#qnt_stoke').show();
+                $('.usuarios-ativos').show();
+            }else{
+                $('.usuarios-ativos').hide();
             }
 
         },
