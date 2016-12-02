@@ -84,6 +84,39 @@
 			&:before { background-color: $green; }
 		}
 	}
+
+	// ===============================================================
+	// NATAL
+	// ===============================================================
+	.btn_natal {
+		background-color: $green;
+		border-radius: 18px;
+		padding: 0 20px 0 15px;
+
+		@include breakpoint(small, 'max') {
+			background: #ffffff;
+		}
+
+		&:before {
+			content: url('/arquivos/icon-natal.png');
+			cursor: pointer;
+			margin-right: 10px;
+			position: relative;
+    		top: 7px;
+
+			@include breakpoint(extra-small, 'max') {
+				display: none;
+			}
+		}
+		a {
+			color: #ffffff;
+			display: inline-block;
+
+			@include breakpoint(small, 'max') {
+				color: $green;
+			}
+		}
+	}
 }
 
 // [ Desktop ] - Menu - ATIVO
@@ -305,10 +338,7 @@ $menu-colors: (
 		background-color: $gray-l;
 		border-top: 0;
 		display: none;
-		height: 100%;
-		overflow-y: scroll;
 		padding: 0;
-		position: fixed;
 		text-align: left;
 		z-index: 11;
 

@@ -264,7 +264,7 @@
 				span {
 					@include clearfix();
 					color: $txt-gray-l;
-					// display: block;
+					display: block;
 					font-weight: bold;
 
 					* { display: inline; }

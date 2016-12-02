@@ -115,6 +115,9 @@ header {
     }
 
     .content-title {
+        margin: 0 auto; 
+        max-width: 700px;
+        width: 100%;
 
         h1 {
             @include responsiveFont(70, 16, true);
@@ -154,18 +157,27 @@ header {
                 }
 
             }
+        }
 
+        h3, 
+        span {
+            @include responsiveFont(40, 16, true);
+
+            @media (max-width: 375px) {
+                @include responsiveFont(24, 16, true);
+            }
         }
 
         h3 {
-            @include responsiveFont(24, 16, true);
             color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        span {
+            color: $green;
             font-weight: bold;
             text-transform: uppercase;
-
-            @media (max-width: 375px) {
-                @include responsiveFont(14, 16, true);
-            }
         }
 
     }
@@ -206,6 +218,7 @@ header {
     }
 
     .contador {
+        display: none;
 
         .content-contador {
 
@@ -325,6 +338,10 @@ header {
     margin-bottom: 80px;
     margin-top: 80px;
     position: relative;
+
+    @media (max-width: 375px) {
+        margin-top: 40px;
+    }
 
     .content-leads {
         background-color: rgba(154, 202, 61, .75);
@@ -484,7 +501,7 @@ header {
                     width: 100%;
 
                     @media (max-width: 375px) {
-                        min-width: 340px;
+                        min-width: 270px;
 
                     }
                 }

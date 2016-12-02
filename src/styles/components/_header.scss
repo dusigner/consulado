@@ -30,6 +30,17 @@
 	header {
 		min-height: 120px;
 
+		&.menu-scroll {
+			overflow-y: scroll;
+
+			@media(max-width: 768px) {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 99999;
+			}
+		}
+
 		.container a { text-decoration: none; }
 
 		@include breakpoint(small, 'max') { min-height: $mobile-header-height; }

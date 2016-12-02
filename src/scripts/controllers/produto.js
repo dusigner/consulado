@@ -185,6 +185,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     //inicia automaticamente prateleiras sliders no desktop
     if ($(window).width() > 768) {
         self.setupSlider($slider);
+        $('html, body').animate({scrollTop:190}, 1500);
     }
 
 
@@ -217,8 +218,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     var qnt110v, qnt220v;
     var pathname = window.location.pathname;
     var users = 0;
-    var data = new Date();
-    var dataBF = new Date('November 24, 2016 20:00:00');
 
     var Index = {
 
@@ -235,8 +234,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             content += '<div class="usuarios-ativos">';
             content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>';
             content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
-            content += '<small class="txt_small_110">*O produto na voltagem 110 já se encontra indisponível</small>';
-            content += '<small class="txt_small_220">*O produto na voltagem 220 já se encontra indisponível</small>';
             content += '</div>';
 
             return content;
@@ -249,7 +246,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
                 Index.getQntStoq();
 
-            }, 15000);
+            }, 900000);
 
         },
 
@@ -279,8 +276,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                     var nome = data[0].items[0].name;
 
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
 
                     Index.calcQntStoqOnly(qnt110v);
 
@@ -295,6 +290,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     }else if(nome === '220V' && qnt110v === 0){
 
                         $('.usuarios-ativos').hide();
+                
                     }
                     
                 }
@@ -303,155 +299,55 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
+
         calcQntStoqOnly: function (qnt110v){
-            data = new Date();
-            dataBF = new Date('November 24, 2016 20:00:00');
 
-            if(data >= dataBF){
+            if( qnt110v > 3){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
 
-                if( qnt110v > 30 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').hide();
-                    $('#qnt_stoke').hide();
-
-                } else if ( qnt110v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').hide();
-                    $('#qnt_stoke').hide();
-                }else if( qnt110v <= 30 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                    $('#qnt_stoke').show();
-                } else{
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                }
-
-
-            } else {
-
-
-                if( qnt110v > 3){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').hide();
-                    $('#qnt_stoke').hide();
-
-                } else if ( qnt110v === 0 ){
-                    $('.usuarios-ativos').hide();
-                }else if( qnt110v <= 3 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                    $('#qnt_stoke').show();
-                } else{
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                }
-
+            } else if ( qnt110v === 0 ){
+                $('.usuarios-ativos').hide();
+            }else if( qnt110v <= 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            } else{
+                $('#qnt_stoke').show();
+                $('.usuarios-ativos').show();
             }
-
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
-            data = new Date();
-            dataBF = new Date('November 24, 2016 20:00:00');
 
-            if(data >= dataBF){
-
-                if( (qnt110v > 30) && (qnt220v > 30) ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').hide();
-                    $('#qnt_stoke').hide();
-                } else if ( (qnt110v === 0) && (qnt220v === 0) ){
-                    $('.usuarios-ativos').hide();
-                } else if ( qnt110v === 0 && qnt220v > 30 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
-                    $('#qnt_stoke').hide();
-                } else if( qnt110v > 30 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
-                    $('#qnt_stoke').hide();
-                } else if ( qnt110v === 0 && qnt220v <= 30 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
-                    $('#qnt_stoke').show();
-                } else if( qnt110v <= 30 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
-                    $('#qnt_stoke').show();
-                }else if(qnt110v <= 3 && qnt220v <= 3){
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                } else{
-                    $('.usuarios-ativos').hide();
-                }
-
-            } else {
-
-                if( (qnt110v > 3) && (qnt220v > 3) ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').hide();
-                    $('#qnt_stoke').hide();
-                } else if ((qnt110v === 0) && (qnt220v === 0)){
-                    $('.usuarios-ativos').hide();
-                } else if ( qnt110v === 0 && qnt220v > 3 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
-                    $('#qnt_stoke').hide();
-                } else if( qnt110v > 3 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
-                    $('#qnt_stoke').hide();
-                } else if ( qnt110v === 0 && qnt220v <= 3 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_220').hide();
-                    $('.txt_small_110').show();
-                    $('#qnt_stoke').show();
-                } else if( qnt110v <= 3 && qnt220v === 0 ){
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').show();
-                    $('#qnt_stoke').show();
-                }else if(qnt110v <= 3 && qnt220v <= 3){
-                    $('#qnt_stoke').show();
-                    $('.usuarios-ativos').show();
-                    $('.txt_small_110').hide();
-                    $('.txt_small_220').hide();
-                }else{
-                    $('.usuarios-ativos').hide();
-                }
-
+            if( (qnt110v > 3) && (qnt220v > 3) ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if ((qnt110v === 0) && (qnt220v === 0)){
+                $('.usuarios-ativos').hide();
+            } else if ( qnt110v === 0 && qnt220v > 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if( qnt110v > 3 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').hide();
+            } else if ( qnt110v === 0 && qnt220v <= 3 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            } else if( qnt110v <= 3 && qnt220v === 0 ){
+                $('.usuarios-ativos').show();
+                $('#qnt_stoke').show();
+            }else if(qnt110v <= 3 && qnt220v <= 3){
+                $('#qnt_stoke').show();
+                $('.usuarios-ativos').show();
+            }else{
+                $('.usuarios-ativos').hide();
             }
 
         },
 
         callbackAPI: function (data){
-            if(data && data.status && data.status.error) {
-               console.log('erro');
-            } else {
-                console.log('foi');
-               $('#pessoas_on').html(data.data.count);
-            }
             
+            $('#pessoas_on').html(data.data.count);
 
         },
 
@@ -464,15 +360,15 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
             setInterval(function (){
 
-                Index.getSession(path, 'brastemp', Index.callbackAPI);
+            Index.getSession(path, 'brastemp', Index.callbackAPI);
 
-            },  180000);
+            },  300000);
 
         },
 
         configs: {
             // url: 'http://awesome.dev/mangocorp/jussi/brastemp/brastemp-usu-rios-ativos/users/current',
-            url: 'https://mangocrop-jussi-activeusers.herokuapp.com/users/current',
+            url: 'http://jussi-pagesessions.herokuapp.com/users/current',
             cookieName: 'vygfubhjh78'
         },
 
@@ -486,6 +382,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             $.post(me.configs.url, content, function (result) {
                 me.setCookie(me.configs.cookieName, result.data.c);
                 callback(result);
+            }).fail(function (result){
+                console.log('erro');
+                $('.usuarios-ativos').hide();
+                $('.qtn_pessoas_on').hide();
             });
         },
 
