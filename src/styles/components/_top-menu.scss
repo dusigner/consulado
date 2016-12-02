@@ -96,15 +96,10 @@
 		@include breakpoint(small, 'max') {
 			background: #ffffff;
 		}
-
-		&:before {
-			content: url('/arquivos/icon-natal.png');
-			cursor: pointer;
-			margin-right: 10px;
-			position: relative;
-    		top: 7px;
-
-			@include breakpoint(extra-small, 'max') {
+		img {
+			vertical-align: middle;
+			
+			@include breakpoint(small, 'max') {
 				display: none;
 			}
 		}
