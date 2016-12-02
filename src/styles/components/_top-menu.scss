@@ -90,6 +90,7 @@
 	// ===============================================================
 	.btn_natal {
 		background-color: $green;
+		border-radius: 18px;
 		padding: 0 20px 0 15px;
 
 		@include breakpoint(small, 'max') {
