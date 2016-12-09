@@ -56,7 +56,7 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
             }
 
             $(result && result.Documents).each(function(i, e) {
-                if (!e.finished) {
+                if (e.finished) {
                     data.currentState  = states.get( 'pedidoEntregue' );
                 }
 
