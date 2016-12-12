@@ -117,8 +117,12 @@ Nitro.controller('meuspedidos', ['order.states', 'order.warranty'], function(sta
 
     this.calculateSla = function(orderDate, currentSla) {
         var isBusinessDay = (currentSla.shippingEstimate && currentSla.shippingEstimate.indexOf('bd')) ? true : false;
+        var isScheduled = (currentSla.name && currentSla.name.indexOf('Agendada')) ? true : false;
         var estimateDate;
-        if (isBusinessDay) {
+
+        if (isScheduled && currentSla.shippingEstimateDate) {
+            estimateDate = $.formatDatetimeBRL(currentSla.shippingEstimateDate);
+        } else if (isBusinessDay) {
             // Calculo para dias comerciais
             estimateDate = $.calculateBusinessDays(orderDate, currentSla.shippingEstimate.replace('bd', ''));
             estimateDate = $.formatDatetimeBRL(estimateDate);
