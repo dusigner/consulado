@@ -1,7 +1,7 @@
 {
   "name": "consul",
   "accountName": "consul",
-  "version": "1.33.2",
+  "version": "1.33.3",
   "private": true,
   "description": "VTEX Store development tools - reverse proxy, compilation, minification, optimization and more!",
   "devDependencies": {
