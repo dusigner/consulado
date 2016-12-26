@@ -112,6 +112,46 @@
 			}
 		}
 	}
+
+	.btn-verao {
+		background-color: $green;
+		border-radius: 18px;
+		float: right;
+		font-size: 14px;
+		font-weight: bold;
+		margin-left: 0;
+		padding: 0 20px;
+		position: relative;
+		text-transform: uppercase;
+
+		&:before {
+			content: url('/arquivos/ico-sol.png');
+			margin-right: 5px;
+			position: relative;
+			top: 5px;
+			
+		}
+	
+		@include breakpoint(small, 'max') {
+			background: #ffffff;
+		}
+		img {
+			vertical-align: middle;
+			
+			@include breakpoint(small, 'max') {
+				display: none;
+			}
+		}
+		a {
+			color: #ffffff;
+			display: inline-block;
+
+			@include breakpoint(small, 'max') {
+				color: $green;
+			}
+		}
+
+	}
 }
 
 // [ Desktop ] - Menu - ATIVO
@@ -422,7 +462,24 @@ $menu-colors: (
 			}
 		}
 
-		.item-department { background-color: #fff;}
+		.item-department { 
+			background-color: #fff;
+
+			&.item-verao {
+
+				&:before {
+					content: url('arquivos/ico-sol-verde.png');
+					float: left;
+					margin: 10px 10px 0 0;
+				}
+
+				a {
+					font-size: 14px;
+					text-transform: uppercase;
+				}
+
+			}
+		}
 
 		a {
 			@include responsiveFont(16, 16, true);

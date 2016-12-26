@@ -88,7 +88,6 @@ Nitro.module('search', function() {
 
     $searchForm.submit(function(e) {
         e.preventDefault();
-
         window.location.href = '/' + encodeURIComponent($searchField.val());
     });
 
