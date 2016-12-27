@@ -214,10 +214,10 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
     self.valoresParcelas();
 
 
-    var ID_GA, urlAPI, end, rand, dataRandom, coe;
+    // var ID_GA, urlAPI, end, rand, dataRandom, coe;
     var qnt110v, qnt220v;
-    var pathname = window.location.pathname;
-    var users = 0;
+    // var pathname = window.location.pathname;
+    // var users = 0;
 
     var Index = {
 
@@ -242,7 +242,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         changeQntStoq: function (){
             $('.produto .prod-preco').prepend(Index.template);
             Index.getQntStoq();
-            var qntEstoque = setInterval(function (){
+            setInterval(function(){
 
                 Index.getQntStoq();
 
@@ -280,7 +280,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     Index.calcQntStoqOnly(qnt110v);
 
                     if(nome === 'BIVOLT' && qnt110v === 0){
-                        console.log('ola');
                         $('.usuarios-ativos').hide();
 
                     }else if(nome === '110V' && qnt110v === 0){
@@ -354,13 +353,12 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         getPathName: function (){
 
             var path = window.top.location.pathname;
-            console.log(path);
 
             this.getSession(path, 'brastemp', Index.callbackAPI);
 
             setInterval(function (){
 
-            Index.getSession(path, 'brastemp', Index.callbackAPI);
+                Index.getSession(path, 'brastemp', Index.callbackAPI);
 
             },  300000);
 
@@ -382,8 +380,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             $.post(me.configs.url, content, function (result) {
                 me.setCookie(me.configs.cookieName, result.data.c);
                 callback(result);
-            }).fail(function (result){
-                console.log('erro');
+            }).fail(function(){
                 $('.usuarios-ativos').hide();
                 $('.qtn_pessoas_on').hide();
             });
