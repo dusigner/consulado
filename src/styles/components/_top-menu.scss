@@ -36,9 +36,12 @@
 		margin-left: calculate-em(22);
 		text-align: center;
 		vertical-align: middle;
-		// position:inherit!important;
 
-		@include breakpoint(large, 'min') { margin-left: calculate-em(26); }
+		@include breakpoint(large, 'min') {
+			margin-left: calculate-em(26);
+
+			&:first-child { margin-left: 0; }
+		}
 
 		& > a {
 			@include responsiveFont(17);
@@ -98,7 +101,7 @@
 		}
 		img {
 			vertical-align: middle;
-			
+
 			@include breakpoint(small, 'max') {
 				display: none;
 			}
@@ -129,15 +132,15 @@
 			margin-right: 5px;
 			position: relative;
 			top: 5px;
-			
+
 		}
-	
+
 		@include breakpoint(small, 'max') {
 			background: #ffffff;
 		}
 		img {
 			vertical-align: middle;
-			
+
 			@include breakpoint(small, 'max') {
 				display: none;
 			}
@@ -462,7 +465,7 @@ $menu-colors: (
 			}
 		}
 
-		.item-department { 
+		.item-department {
 			background-color: #fff;
 
 			&.item-verao {

@@ -33,8 +33,7 @@
 
 					article {
 						@include responsiveFont(16, 16, true);
-						margin-bottom: 25px;
-						padding: 20px;
+						padding: 30px 20px;
 						position: relative;
 					}
 
@@ -369,7 +368,6 @@
 		//nova prateleira mobile
 		@include breakpoint(small, 'max') {
 			height: auto;
-			min-height: 66px;
 
 			.prateleira-slider {
 				.prateleira.default {
@@ -377,7 +375,7 @@
 
 					ul {
 						display: none;
-						padding: 35px;
+						padding: 20px 10px;
 
 						li {
 							article {
@@ -531,7 +529,7 @@
 				font-size: 16px !important;
 				font-weight: bold !important;
 				margin: 0;
-				padding: 15px;
+				padding: 15px 10px;
 				position: relative;
 				text-align: left;
 				text-transform: initial;

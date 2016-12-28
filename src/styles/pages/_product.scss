@@ -2,8 +2,15 @@
 
 body.produto {
 	.main {
+		@include breakpoint(small, 'max') {
+			.container { padding: 0 10px; }
+
+			&.row { margin-bottom: 0; }
+		}
+
 		section.slider {
 			@include breakpoint(small, 'max') {
+				.container { padding: 0; }
 				.slick-dots { bottom: 65px !important; }
 			}
 		}

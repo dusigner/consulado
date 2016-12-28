@@ -19,7 +19,8 @@
 		}
 
 		@include breakpoint(medium, 'max') {
-			margin: 15px 0;
+			margin: 0;
+			margin-top: 20px;
 			width: 100%;
 		}
 	}
@@ -43,11 +44,11 @@
 		}
 
 		@include breakpoint(small, 'max') {
-			display: block!important;
+			// display: block!important;
 			position: inherit;
 			right: inherit;
 			top: inherit;
-			visibility: visible!important;
+			// visibility: visible!important;
 			width: 100%;
 			.flag {
 				position: static;
@@ -246,6 +247,9 @@
 	margin-top: 15px;
 
 	@include breakpoint(small, 'max') {
+		margin-bottom: 0;
+		margin-top: 0;
+
 		.select-voltage { display: none; }
 	}
 }
@@ -395,6 +399,8 @@
 .valores-parcelas {
 	margin-top: 25px;
 
+	@include breakpoint(small, 'max') { margin: 20px 0; }
+
 	&>p {
 		@include responsiveFont(14, 16, true);
 		display: none;
@@ -481,6 +487,8 @@
 .prod-more-info {
 	margin-top: 15px;
 
+	@include breakpoint(small, 'max') { margin: 20px 0; }
+
 	a {
 		@include font-size(12px);
 		color: $txt-gray-l;
@@ -500,9 +508,12 @@
 	height: 100px;
 	margin-top: 20px;
 	width: 100%;
+
 	@include breakpoint(extra-small, 'max') {
-		height: 130px;
+		height: auto;
+		margin: 20px 0;
 	}
+
 	p {
 		@include breakpoint(extra-small, 'max') {
 			font-size: 18px!important;

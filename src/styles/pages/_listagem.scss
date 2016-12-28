@@ -61,8 +61,11 @@ body.listagem {
 }
 
 .list-container {
-	margin-bottom: 65px;
-	margin-top: 55px;
+	padding: 30px 90px !important;
+
+	@include breakpoint(small, 'max') { padding: 30px 10px !important; }
+
+	.list-content { margin-left: 0 !important; }
 }
 
 
@@ -614,11 +617,6 @@ body.listagem {
 			ul { display: block; }
 		}
 	}
-}
-
-.top-wrapper {
-	margin: 1em 0;
-	padding: 1em 0;
 }
 
 .open-filter {

@@ -1,14 +1,12 @@
 #detalhes {
 	display: none;
-	margin-top: 45px;
 	overflow: hidden;
 
 	.col-v2 {
 		padding-left: 10px;
 		padding-right: 10px;
-		@include breakpoint(small, 'max') {
-			width: 100%;
-		}
+
+		@include breakpoint(small, 'max') { width: 100%; }
 	}
 
 	.item {
@@ -17,6 +15,7 @@
 		position: relative;
 
 		@include breakpoint(small, 'max') {
+			margin-top: 0;
 			margin-bottom: 30px;
 		}
 
