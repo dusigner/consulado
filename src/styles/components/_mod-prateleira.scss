@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+@charset 'UTF-8';	
 
 @if $use-com-prateleira == true {
 	.prateleira-slider {
@@ -35,7 +35,7 @@
 						@include responsiveFont(16, 16, true);
 						padding: 30px 20px;
 						position: relative;
-						width: 312px;
+						width: 370px;
 					}
 
 					.detalhes {
@@ -170,6 +170,7 @@
 			.department-nav {
 				@include responsiveFont(16, 16, true);
 				color: $txt-gray-l;
+				display: inline-block;
 
 				span { @include transition(color, 400); }
 
