@@ -3,9 +3,10 @@
 
 require('modules/cart');
 require('modules/search');
+require('modules/menu-hover');
 require('vendors/jquery.cookie');
 
-Nitro.module('header', function() {
+Nitro.module('header', ['menu-hover'], function() {
     var $body = $('body'),
         $document = $(document);
 

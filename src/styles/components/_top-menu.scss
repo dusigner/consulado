@@ -116,7 +116,7 @@
 		}
 	}
 
-	.btn-verao {
+	.customItemMenu {
 		background-color: $green;
 		border-radius: 18px;
 		font-size: 14px;
@@ -126,18 +126,19 @@
 		position: relative;
 		text-transform: uppercase;
 
-		&:before {
-			content: url('/arquivos/ico-sol.png');
-			margin-right: 5px;
-			position: relative;
-			top: 5px;
+		// &:before {
+		// 	content: url('/arquivos/ico-sol.png');
+		// 	margin-right: 5px;
+		// 	position: relative;
+		// 	top: 5px;
 
-		}
+		// }
 
 		@include breakpoint(small, 'max') {
 			background: #ffffff;
 		}
 		img {
+			display: inline;
 			vertical-align: middle;
 
 			@include breakpoint(small, 'max') {
@@ -151,6 +152,12 @@
 			@include breakpoint(small, 'max') {
 				color: $green;
 			}
+		}
+
+		p {
+			display: inline;
+			margin: 0;
+			vertical-align: bottom;
 		}
 
 	}
