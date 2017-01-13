@@ -48,9 +48,17 @@ Nitro.module('header', ['menu-hover'], function() {
             $('body').find('.menu-active').parent().parent().parent().addClass('menu-scroll');
             $('body').find('.menu-active').parent().parent().parent().height(altura);
         }
-
-
     });
+
+    //controle menu horizontal
+    var controleOver = $('.customItemMenu').text();
+
+    if (controleOver === '') {
+        $('.customItemMenu').addClass('control-hide');
+    } else {
+        $('nav .item.control').addClass('control-hide');
+        $('nav .item').removeClass('control');
+    }
 
 
     //TODO: move mask to module;
@@ -144,6 +152,8 @@ Nitro.module('header', ['menu-hover'], function() {
 
     //     menuMobile.addClass(classItem).addClass('sub-first-itens-active');
     // });
+
+
 
 
 });

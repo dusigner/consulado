@@ -116,6 +116,14 @@
 		}
 	}
 
+	.control-hide {
+		display: none;
+	}
+
+	.control {
+		display: inline-block;
+	}
+
 	.customItemMenu {
 		background-color: $green;
 		border-radius: 18px;
@@ -127,7 +135,6 @@
 		text-transform: uppercase;
 		
 		@include breakpoint(small, 'max') {
-			background: #ffffff;
 			border-radius: 0;
 			font-weight: normal;
 		}
