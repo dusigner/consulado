@@ -125,15 +125,7 @@
 		padding: 0 20px;
 		position: relative;
 		text-transform: uppercase;
-
-		// &:before {
-		// 	content: url('/arquivos/ico-sol.png');
-		// 	margin-right: 5px;
-		// 	position: relative;
-		// 	top: 5px;
-
-		// }
-
+		
 		@include breakpoint(small, 'max') {
 			background: #ffffff;
 			border-radius: 0;
@@ -159,6 +151,7 @@
 		p {
 			display: inline;
 			margin: 0;
+			margin-left: 7px;
 			vertical-align: bottom;
 		}
 
