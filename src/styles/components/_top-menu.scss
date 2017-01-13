@@ -136,6 +136,8 @@
 
 		@include breakpoint(small, 'max') {
 			background: #ffffff;
+			border-radius: 0;
+			font-weight: normal;
 		}
 		img {
 			display: inline;
