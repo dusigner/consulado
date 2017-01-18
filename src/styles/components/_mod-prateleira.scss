@@ -29,13 +29,14 @@
 					outline: none!important;
 					width: 100/3*1%;
 
-					@include breakpoint(small, 'max') { width: 100%; }
+					@include breakpoint(small, 'max') { 
+						width: 100%; 
+					}
 
 					article {
 						@include responsiveFont(16, 16, true);
 						padding: 30px 20px;
 						position: relative;
-						width: 370px;
 					}
 
 					.detalhes {
