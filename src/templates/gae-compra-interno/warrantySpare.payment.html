@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <a href="#profile" class="back" title="Voltar">Voltar</a>
+
+    <div class="payment-info">
+      <div class="info col-6">
+        <div class="product-info">
+          {> productInfo /}
+        </div>
+
+        <div class="price-info col-12">
+          {> priceInfo /}
+        </div>
+      </div>
+
+      <div class="form col-6">
+        <p>Pagamento</p>
+
+        <iframe id="iframe-pagamento" width="100%" src="{linkPayment}"></iframe>
+      </div>
+    </div>
+
+    <a href="#confirm"  class="primary-button confirm" data-section="payment"><span>Continuar</span></a>
+  </div>
+</div>

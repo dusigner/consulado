@@ -1,0 +1,58 @@
+<div class="container box-my-orders"
+	data-order-id="{orderId}"
+	data-order-group="{orderGroup}"
+	data-order-status="{status}"
+	data-order-date="{formattedDate}"
+	data-order-name="{name}"
+	data-order-street="{street}"
+	data-order-city="{city}"
+	data-order-zipcode="{postalCode}"
+	data-order-neighborhood="{neighborhood}"
+	data-order-state="{state}"
+	data-order-complement="{complement}"
+	data-order-addresstype="{addressType}"
+	data-order-number="{number}"
+	data-order-reference="{reference}">
+
+	<div class="row">
+		<div class="order-content">
+			<div class="box-order-header">
+				<div class="header-order-id">
+					<strong>Pedido nº <span class="orderId">{orderIdFormatted}</span></strong>
+				</div>
+			</div>
+
+			<div class="box-full-order">
+				<div class="order-show-more box-{orderId}">
+					{#products}
+					<div class="row order-products cart-items items-{orderGroup} item-{.id}"
+						data-product-id="{.id}"
+						data-product-refId="{.refId}"
+						data-product-name="{.name}">
+
+						<div class="product-info col-12">
+							<div class="product-image">
+								<img src="{.imageUrl}" alt="{.name}" width="110px" height="auto" />
+							</div>
+
+							<div class="product-details">
+								<div class="product-name">
+									<span>{.name}</span>
+								</div>
+
+								<div class="product-data">
+									<span>Compra realizada em <strong class="orderDate">{formattedDate}</strong></span>
+								</div>
+
+								<p class="seller">Loja Virtual Consul</p>
+							</div>
+						</div>
+
+						{> warrantyInfo /}
+					</div>
+					{/products}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

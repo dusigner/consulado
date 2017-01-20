@@ -1,0 +1,38 @@
+<div class="gae-content col-12">
+	<form>
+		{#plans.coverages}
+		<div class="box-plan col-6">
+			<div class="wrapper">
+				<span class="recommended">Recomendado</span>
+
+				<div class="title">
+					<input type="radio" name="warranty-value" id="warranty-{id}" value="{id}" class="fakeInput">
+					<label for="warranty-{id}"></label>
+
+					<div class="txt">
+						<span>
+							{name}
+						</span>
+						<span class="date">Válida de <strong>{formattedDate}</strong> a <strong>{limitBuyDate}</strong></span>
+					</div>
+				</div>
+
+				<div class="description">
+					<ul>
+						<li>Peças originais</li>
+						<li>Pessoal especializado</li>
+						<li>Assistência técnica em todo o Brasil</li>
+					</ul>
+				</div>
+
+				<div class="price">
+					<p class="total">Apenas <strong>{price|intAsCurrency}</strong></p>
+					<!-- <p class="installments">ou <span>4x</span> <strong>R$ 65,49</strong> sem juros</p> -->
+				</div>
+			</div>
+		</div>
+		{/plans.coverages}
+	</form>
+
+	<a href="#profile" class="primary-button confirm" data-id="{orderGroup}" data-section="profile">Comprar</a>
+</div>

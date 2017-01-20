@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <a href="#orders" class="back" title="Voltar">Voltar</a>
+
+    <div class="product-info">
+      {> productInfo /}
+    </div>
+
+    <div class="profile-info">
+      <div class="advice">
+        <p class="title">Atenção!</p>
+
+        <ul>
+          <li>É necessário estar com a nota fiscal do produto para contratar a garantia estendida.</li>
+          <li>A garantia estendida só pode ser contratada se o seu produto ainda estiver dentro da vigência da garantia original de fábrica até o 10º mês.</li>
+          <li>Todos os dados precisam ser idênticos ao da nota fiscal para a garantia ser efetivada.
+        </ul>
+      </div>
+
+      <p>Dados Pessoais</p>
+
+      <div class="form">
+        <div class="group col-6">
+          <label>Nome Completo</label>
+          <input type="text" disabled value="{firstName} {lastName}" />
+        </div>
+        <div class="group col-6">
+          <label>CPF</label>
+          <input type="text" disabled value="{document}" />
+        </div>
+        <div class="group col-6">
+          <label>Telefone</label>
+          <input type="text" disabled value="{phone}" />
+        </div>
+        <div class="group col-6">
+          <label>Endereço</label>
+          <input type="text" disabled value="{street}, {number} - {city}/{state}" />
+        </div>
+
+        <a href="#payment"  class="primary-button confirm" data-section="payment"><span>Continuar</span></a>
+      </div>
+    </div>
+  </div>
+</div>
