@@ -16,7 +16,6 @@ Nitro.controller('landing-gae-2016', [], function () {
         accordion: function (){
             $('.accordion-title').on('click', function (e){
                 e.preventDefault();
-                console.log('tessssss');
 
                 $(this).next().toggleClass('open');
                 $(this).toggleClass('open');
@@ -58,12 +57,12 @@ Nitro.controller('landing-gae-2016', [], function () {
                 var horario = $('#horario-gae').val(); 
                 $('.error_p').remove();
                 $(inputs).addClass('erro');
-                $('.form-gae-content-2016').append('<p class="error_p">Preencha os campos corretamente</p>');
+                $('.form-gae-content-2016').append('<p class="error_p">nao os campos corretamente</p>');
                 if( Index.emailValidation(email) && nome !== '' ){
                     $(inputs).removeClass('erro');
-                    console.log('tessssss222');
                     $('.error_p').remove();
                     $('.form-gae-content-2016 .error_p').hide();
+                    console.log('foi');
 
                     var data = $('#form-gae-2016').serialize();
 

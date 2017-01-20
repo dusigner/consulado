@@ -26,6 +26,10 @@ $green-color: #9aca3c;
 
 .garantia-estendida-2016 {
 
+    .container {
+        padding: 0 30px;
+    }
+
     .header-landing-gae-2016 {
         margin-top: 0;
 
@@ -212,6 +216,7 @@ $green-color: #9aca3c;
                 }
 
             }
+
             h3 {
                 color: #000000;
                 font-size: 16px;
@@ -222,125 +227,51 @@ $green-color: #9aca3c;
                     left: 20%;
                     margin-top: 0;
                     position: relative;
-                    top: 45%;
+                    top: -22px;
                 }
             }
+
             p {
                 margin: 0;
             }
-            .item-vantagens-1 {
+
+            .bloco-vantagens {
                 .content-vantagens {
-                    background: url('/arquivos/economia.png') no-repeat 0 15px;
                     height: 85px;
                     @include breakpoint(extra-small, 'max') {
                         background-size: 15%;
-                        height: 65px;
+                        height: 50px;
                     }
+                }
+            }
+
+            .item-vantagens-1 {
+                .content-vantagens {
+                    background: url('/arquivos/economia.png') no-repeat 0 15px;
                 }
             }
             .item-vantagens-2 {
                 .content-vantagens {
                     background: url('/arquivos/conveniencia.png') no-repeat 0 15px;
-                    height: 85px;
-                    @include breakpoint(extra-small, 'max') {
-                        background-size: 15%;
-                        height: 65px;
-                    }
                 }
             }
             .item-vantagens-3 {
                 .content-vantagens {
                     background: url('/arquivos/seguranca.png') no-repeat 0 15px;
-                    height: 85px;
-                    @include breakpoint(extra-small, 'max') {
-                        background-size: 15%;
-                        height: 65px;
-                    }
                 }
             }
             .item-vantagens-4 {
                 .content-vantagens {
                     background: url('/arquivos/protecao.png') no-repeat 0 15px;
-                    height: 85px;
-                    @include breakpoint(extra-small, 'max') {
-                        background-size: 15%;
-                        height: 65px;
-                    }
                 }
             }       
         }
     }
-
-        // .item-vantagens {
-        //     background-color: $green-color;
-        //     max-height: 180px;
-        //     padding: 30px 30px 30px 25px;
-
-        //     @include breakpoint(small, 'max') {
-        //         max-height: 100%;
-        //     }
-
-        //     &:first-child {
-        //         margin-bottom: 30px;
-        //     }
-
-        //     @include breakpoint(small, 'max') {
-        //         margin-bottom: 30px;
-        //     }
-
-        //     .content-vantagens {
-        //         overflow: hidden;
-        //         padding: 0 0 0 140px;
-        //         position: relative;
-
-        //         @include breakpoint(small, 'max') {
-        //             background: none !important;
-        //             padding: 0;
-        //         }
-
-        //     }
-
-        //     h3 {
-        //         @include font-size(16px);
-        //         color: #fff;
-        //         margin: 0;
-        //         text-transform: uppercase;
-
-        //         @include breakpoint(small, 'max') {
-        //             @include font-size(14px);
-        //         }
-        //     }
-
-        //     p {
-        //         @include font-size(16px);
-        //         color: #fff;
-        //         font-weight: 200;
-        //         line-height: 24px;
-        //         margin: 0;
-
-        //         @include breakpoint(small, 'max') {
-        //             @include font-size(14px);
-        //         }
-        //     }
-        // }
-
-        // small {
-        //     color: #666666;
-        //     display: block;
-        //     font-size: 14px;
-        //     font-style: italic;
-        //     margin-top: 15px;
-        //     position: relative;
-        // }
-    }
+}
 
 .header-landing-gae-2016 {
 
     .tit-gae {
-
-        @media (min-width: 321px) and (max-width: 375px) {
-            width: 83%;
-        }
 
         &:after {
             content: url('/arquivos/ico-aig.png');
@@ -622,25 +553,6 @@ $green-color: #9aca3c;
 
         }
     }
-
-    // .links_condicoes_gae {
-    //     border-top: 1px solid #bebebe;
-    //     margin-top: 50px;
-    //     padding-top: 60px;
-    //     text-align: center;
-        
-    //     p {
-    //         @include font-size(14px);
-    //         margin: 0 0 15px 0;
-            
-    //         a {
-    //             @include font-size(16px);
-    //             color: #f35216;
-    //             font-weight: bold;
-    //         }
-    //     }
-
-    // }
 
     .small-txt {
         @include font-size(14px);
