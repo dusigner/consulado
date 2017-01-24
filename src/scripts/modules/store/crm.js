@@ -8,6 +8,8 @@ var CRM = {
 
     ordersURI: '/api/ds/pub/documents/SP',
 
+    geURI: '/api/ds/pub/documents/GE',
+
     getOrderById: function(orderId) {
         return $.ajax({
             url: CRM.ordersURI,
