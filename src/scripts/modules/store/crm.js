@@ -29,6 +29,15 @@ var CRM = {
         });
     },
 
+    insertClientGE: function(data) {
+        return $.ajax({
+            url: CRM.geURI,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8'
+        });
+    },
+
     clientSearchByEmail: function(field) {
 
         return $.getJSON(CRM.clientURI, {

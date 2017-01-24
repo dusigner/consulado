@@ -57,7 +57,7 @@ Nitro.controller('landing-gae-2016', [], function () {
                 var horario = $('#horario-gae').val(); 
                 $('.error_p').remove();
                 $(inputs).addClass('erro');
-                $('.form-gae-content-2016').append('<p class="error_p">nao os campos corretamente</p>');
+                $('.form-gae-content-2016').append('<p class="error_p">Preencha os campos corretamente</p>');
                 if( Index.emailValidation(email) && nome !== '' ){
                     $(inputs).removeClass('erro');
                     $('.error_p').remove();
