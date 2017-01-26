@@ -79,6 +79,12 @@
 		}
 
 		&.valor-por {
+			font-weight: 700;
+
+			.skuBestPrice {
+				font-weight: 700;
+			}
+
 			@include breakpoint(small, 'max') {
 				@include responsiveFont(14, 16, true);
 				color: $orange;
@@ -221,7 +227,6 @@
 	.discount-boleto {
 		@include font-size(17px, true, false);
 		color: $txt-gray-l;
-		font-weight: 700;
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(14, 16, true);
