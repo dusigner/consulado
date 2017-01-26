@@ -30,27 +30,27 @@ Nitro.module('order.warranty.gae', function() {
 
         // Chamadas de ambiente de Produção
 
-        // getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
+        getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
 
-        // addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
+        addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
 
-        // cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
+        cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
 
-        // printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
+        printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
 
-        // statusPaymentURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/status/',
+        statusPaymentURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/status/',
 
         // Chamadas de ambiente de QA
 
-        getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
+        // getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
 
-        addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
+        // addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
 
-        cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
+        // cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
 
-        printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
+        // printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
 
-        statusPaymentURI: 'http://compracerta.nxd.com.br/api/v2/purchase/status/',
+        // statusPaymentURI: 'http://compracerta.nxd.com.br/api/v2/purchase/status/',
 
         addPlan: function(data) {
             if (data.transaction.sale) {

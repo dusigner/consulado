@@ -31,23 +31,23 @@ Nitro.module('order.warranty', function() {
 
         // Chamadas de ambiente de Produção
 
-        // getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
+        getPlansURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/product/',
 
-        // addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
+        addPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/',
 
-        // cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
+        cancelPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/purchase/cancel/',
 
-        // printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
+        printPlanURI: 'https://pdvbox.nxd.com.br/compracerta/api/v2/print/',
 
         // Chamadas de ambiente de QA
 
-        getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
+        // getPlansURI: 'http://compracerta.nxd.com.br/api/v2/product/',
 
-        addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
+        // addPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/',
 
-        cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
+        // cancelPlanURI: 'http://compracerta.nxd.com.br/api/v2/purchase/cancel/',
 
-        printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
+        // printPlanURI: 'http://compracerta.nxd.com.br/api/v2/print/',
 
         getPlans: function(orderId, itemName) {
             return vtexjs.checkout.getOrders(orderId).then(function(orders) {
