@@ -140,7 +140,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
         var currentOrders = [];
 
         if (ordersPromises.length === 0) {
-            // self.renderEmptyOrders();
+            self.renderEmptyOrders();
         } else {
             $(ordersPromises).each(function(index, promise) {
                 promise.always(function(e) {

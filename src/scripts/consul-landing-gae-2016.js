@@ -5,7 +5,7 @@ var CRM = require('modules/store/crm');
 
 
 Nitro.controller('landing-gae-2016', [], function () {
-    
+
     var Index = {
 
         init: function (){
@@ -39,7 +39,6 @@ Nitro.controller('landing-gae-2016', [], function () {
                 var splited = fsplit[i].replace('%40', '@').replace( new RegExp('\\+','gm'), ' ').split('=');
                 ssplit[splited[0]] = splited[1];
             }
-            console.log(ssplit);
             return ssplit;
         },
 
@@ -52,9 +51,8 @@ Nitro.controller('landing-gae-2016', [], function () {
             $('#form-gae-2016').on('submit', function (e){
                 e.preventDefault();
 
-                var email = $('#email-gae').val(); 
-                var nome = $('#nome-gae').val(); 
-                var horario = $('#horario-gae').val(); 
+                var email = $('#email-gae').val();
+                var nome = $('#nome-gae').val();
                 $('.error_p').remove();
                 $(inputs).addClass('erro');
                 $('.form-gae-content-2016').append('<p class="error_p">Preencha os campos corretamente</p>');
@@ -62,16 +60,12 @@ Nitro.controller('landing-gae-2016', [], function () {
                     $(inputs).removeClass('erro');
                     $('.error_p').remove();
                     $('.form-gae-content-2016 .error_p').hide();
-                    console.log('foi');
 
                     var data = $('#form-gae-2016').serialize();
 
-                    console.log(data);
-
                     var obj = Index.transformForminObj(data);
 
-                    CRM.insertClientGE(obj).done(function (response){
-                        console.log(response);
+                    CRM.insertClientGE(obj).done(function (){
                         $('.form-gae-content-2016').append('<p class="sucesso">Seus dados foram encaminhados com sucesso. Em breve entraremos em contato com você.</p>');
                         setTimeout(function(){
                             $('.form-gae-content-2016 .sucesso').hide();
@@ -81,8 +75,6 @@ Nitro.controller('landing-gae-2016', [], function () {
                         $('#horario-gae').val('');
                         $('#telefone-gae').val('');
 
-                    }).fail(function (error){
-                        console.log(error);
                     });
 
 
