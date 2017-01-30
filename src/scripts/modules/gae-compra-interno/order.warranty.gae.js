@@ -423,15 +423,6 @@ Nitro.module('order.warranty.gae', function() {
             var height = $('#payment').outerHeight();
             $slider.find('.slick-list').height(height);
 
-            // -----------------------------------------------
-            //clique de envio --- trocar pelo da PDVBox depois
-            $('#payment .confirm').click(function(e){
-                e.preventDefault();
-
-                $slider.slick('slickNext');
-            });
-            // -----------------------------------------------
-
             var url = '';
 
             $(document).ajaxComplete(function(event, xhr, settings) {
