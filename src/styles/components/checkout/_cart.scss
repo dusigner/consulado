@@ -32,6 +32,8 @@ body {
 						overflow: initial;
 						padding: 30px 0;
 
+						@include breakpoint(small, 'max') { padding-bottom: 80px; }
+
 						&:first-child {
 							border-bottom: none;
 
@@ -73,7 +75,7 @@ body {
 
 							.product-service {
 								@include breakpoint(small, 'max') {
-									bottom: -16px;
+									bottom: 30px;
 									left: 52%;
 									position: absolute;
 									transform: translateX(-50%);
