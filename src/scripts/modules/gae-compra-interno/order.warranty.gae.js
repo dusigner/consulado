@@ -221,9 +221,6 @@ Nitro.module('order.warranty.gae', function() {
             $.each(allOrders, function(index,order){
                 self.getOrderInfo(order);
             });
-
-            var height = $('#orders').height();
-            $slider.find('.slick-list').height(height);
         }
     };
 
@@ -268,6 +265,7 @@ Nitro.module('order.warranty.gae', function() {
             product.sellingPrice = boxOrder[idCurrentOrder].products[i].sellingPrice;
             product.imageUrl = boxOrder[idCurrentOrder].products[i].imageUrl;
             product.plans = boxOrder[idCurrentOrder].products[i].plans;
+            product.plans.orderId = boxOrder[idCurrentOrder].orderId;
 
             boxOrder[idCurrentOrder].products[i] = product;
         });
@@ -293,6 +291,9 @@ Nitro.module('order.warranty.gae', function() {
             });
 
             $('#orders').html(divList); // remonta o DOM reordenado
+
+            var height = $('#orders').height();
+            $slider.find('.slick-list').height(height);
 
             var $product = $('.box-my-orders .order-products');
 

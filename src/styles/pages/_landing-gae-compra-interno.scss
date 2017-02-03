@@ -3,7 +3,7 @@
 .garantia-estendida-compra {
   .breadcrumb {
     display: block;
-    padding-top: 20px;
+    padding: 30px 0;
 
     @include breakpoint(small, 'max') { display: none; }
 
@@ -70,6 +70,8 @@
   }
 
   .content-gae {
+    padding-bottom: 30px;
+
     div {
       .container {
         padding: 30px 90px;
@@ -187,7 +189,7 @@
 
           &.box-my-orders {
             border-bottom: 1px solid $gray;
-            padding-top: 30px;
+            margin-bottom: 30px;
 
             &:last-child { border-bottom: none; }
 
