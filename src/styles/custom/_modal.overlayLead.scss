@@ -156,12 +156,47 @@
 						margin-top: 10px;
 						outline: none;
 						text-transform: uppercase;
-						width: 85%;
+						width: 100%;
 					}
 
 					@include inputPlaceholderColor($txt-gray);
 				}
 			}
+
+			.or_news {
+				@include responsiveFont(14, 16, true);
+				margin-bottom: 14px;
+				overflow: hidden;
+				position: relative;
+
+				&:after {
+					background-color: #d3d3d3;
+					content: '';
+					height: 1px;
+					position: absolute;
+					right: 0;
+					top: 10px;
+					width: 45%;
+				}
+
+				&:before {
+					background-color: #d3d3d3;
+					content: '';
+					height: 1px;
+					left: 0;
+					position: absolute;
+					top: 10px;
+					width: 45%;
+				}
+			}
+
+			.btn_cadastro_news {
+				background: #3664a2 url('/arquivos/btn_cadastro_fb.jpg') no-repeat;
+				border: none;
+				height: 47px;
+				width: 100%;
+			}
+
 		}
 
 		p.message-success {
