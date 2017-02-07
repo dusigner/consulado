@@ -558,9 +558,37 @@ body.pedidos {
 					&.cancel-warranty {
 						background: #acacac;
 						border: 2px solid #acacac;
+						color: #9aca3c;
+						width: 120px;
+
+						&:hover {
+							background-color: #9aca3c !important;
+							color: #fff;
+						}
 
 						@include breakpoint(large, 'max') {
 							margin-left: 10px;
+						}
+					}
+				}
+
+				a {
+					@include responsiveFont(14, 16, true);
+					line-height: 0;
+
+					&.download-warranty{
+						@include responsiveFont(11);
+						margin: 0 10px;
+						padding: 10px 0;
+						width: 120px;
+
+						@include breakpoint(large, 'max') {
+							margin-left: 0;
+						}
+
+						@include breakpoint(extra-small, 'max') {
+							margin: 0;
+							width: 80px;
 						}
 					}
 				}

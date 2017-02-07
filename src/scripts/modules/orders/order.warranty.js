@@ -450,20 +450,16 @@ Nitro.module('order.warranty', function() {
     };
 
     self.downloadWarranty = function() {
-        $('.download-warranty').unbind('click').click(function() {
+        $('.download-warranty').unbind('click').click(function (e) {
+            e.preventDefault();
             var idPlan = $(this).data('id');
 
             PDVBox.printPlan(idPlan).done(function(template) {
-
                 var $template = $(template).filter('div');
-                $template.find('tr:eq(0)').remove();
-                $template.find('a').attr('target', '_blank').removeClass('btn').addClass('secondary-button purple-button').wrapInner('<span></span>');
+                var linkDownload = $template.find('a').attr('target', '_blank');
 
-                $template.filter('div').vtexModal({
-                    id: 'imprimir-garantia',
-                    title: 'Seguro de Garantia Estendida Original',
-                    destroy: true
-                });
+                window.open(linkDownload[0].href, '_blank');
+
 
             }).fail(function() {
                 self.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
