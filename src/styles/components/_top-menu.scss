@@ -139,6 +139,7 @@
 		}
 
 		@include breakpoint(small, 'max') {
+			background-color: #fff;
 			border-radius: 0;
 			font-weight: normal;
 		}
@@ -156,6 +157,7 @@
 
 			@include breakpoint(small, 'max') {
 				color: $green;
+				width: 100%;
 			}
 		}
 
