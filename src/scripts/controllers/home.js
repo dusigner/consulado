@@ -65,4 +65,6 @@ Nitro.controller('home', ['slider-banner', 'modal.overlayLead', 'lead-newsletter
 
         $('section.slider').eq(0).find('.pre-title').trigger('click');
     }
+
+    $('.customItemMenu').show();
 });
