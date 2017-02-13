@@ -108,10 +108,26 @@ Nitro.module('order.warranty.gae', function() {
                     $('.breadcrumb a[href=#profile]').addClass('active');
 
                     self.renderProfileData();
+
+                    if(idPlanSelected === '9683'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step1', tipo: '+ 1 ano de Garantia Estendida' });
+                    }
+                    if(idPlanSelected === '9684'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step1', tipo: '+ 2 ano de Garantia Estendida' });
+                    }
+
+
                 } else if (nextSlide === 2) {
                     $('.breadcrumb a[href=#payment]').addClass('active');
 
                     self.renderPayment();
+
+                    if(idPlanSelected === '9683'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step2', tipo: '+ 1 ano de Garantia Estendida' });
+                    }
+                    if(idPlanSelected === '9684'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step2', tipo: '+ 2 ano de Garantia Estendida' });
+                    }
 
                     $('#iframe-pagamento').load(function() {
                         $.get(boxOrder[idCurrentOrder].linkPayment).error(function() {
@@ -122,6 +138,14 @@ Nitro.module('order.warranty.gae', function() {
                     $('.breadcrumb a[href=#confirm]').addClass('active');
 
                     $('.breadcrumb a[href="#profile"], .breadcrumb a[href="#payment"]').addClass('inactive');
+
+                    if(idPlanSelected === '9683'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step3', tipo: '+ 1 ano de Garantia Estendida' });
+                    }
+                    if(idPlanSelected === '9684'){
+                        dataLayer.push({ event: 'GAE Purchase', step: 'step3', tipo: '+ 2 ano de Garantia Estendida' });
+                    }
+
 
                     self.renderConfirmation();
                 }
