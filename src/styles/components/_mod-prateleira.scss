@@ -296,6 +296,7 @@
 
 					&.de {
 						@include responsiveFont(14, 16, true);
+						height: 21px;
 
 						.txtDe {
 							@include breakpoint (medium, 'min') { display: none; }
