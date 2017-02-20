@@ -6,23 +6,36 @@
 	position: absolute;
 }
 
+.produto {
+	.FlagsHightLight,
+	.prod-selos {
+		.flag {
+			margin-right: 60px;
+			top: 0;
+		}
+	}
+}
+
 $qtdColecaoSelos: 10;
 
 body {
-
-	.FlagsHightLight {
+	.FlagsHightLight,
+	.prod-selos,
+	.flag {
+		background-size: contain !important;
 		bottom: 0;
 		height: 30%;
-		position: absolute;
 		right: 0;
 		width: 30%;
 		z-index: 3;
-	}
-	.flag {
-		background-size: contain !important;
-		height: 100%;
-		left: 0;
-		width: 100%;
+
+		@include breakpoint(extra-small, 'max') {
+			bottom: 80px;
+			display: inline;
+			height: 40px;
+			right: 0;
+			width: 40px;
+		}
 
 		@for $i from 1 through $qtdColecaoSelos {
 			&[class*='cns-colecao-#{$i}'] {

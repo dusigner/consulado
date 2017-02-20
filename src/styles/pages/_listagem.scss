@@ -996,55 +996,6 @@ body.listagem {
 				}
 			}
 		}
-
-		@include breakpoint(extra-small, 'max') {
-
-			ul {
-				li {
-					article {
-						.detalhes {
-							.image {
-								.FlagsHightLight {
-									.flag {
-										bottom: 54px;
-										height: 52px;
-										right: -19px;
-										width: 45px;
-									}
-
-									.flag[class*='outlet'] {
-										bottom: 0;
-										height: 67px;
-										right: 0;
-										width: 58px;
-									}
-								}
-
-								.off {
-									@include responsiveFont(18, 16, true);
-									background-size: 58px 67px;
-									height: 67px;
-									padding-top: 26px;
-									width: 58px;
-
-									small { vertical-align: initial; }
-
-									p {
-										@include responsiveFont(10, 16, true);
-										line-height: 10px;
-
-										em {
-											@include responsiveFont(10, 16, true);
-											vertical-align: initial;
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
 	}
 
 	.prateleira-slider {

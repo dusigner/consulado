@@ -111,6 +111,10 @@
 								right: 0;
 								width: 30%;
 								z-index: 3;
+
+								@include breakpoint(small, 'max') {	
+									display: none;
+								}
 							}
 
 							&:hover {
@@ -332,6 +336,18 @@
 							    right: 0;
 							    width: 40px;
 							    z-index: 3;
+
+								small { vertical-align: initial; }
+
+								p {
+									@include responsiveFont(10, 16, true);
+									line-height: 10px;
+
+									em {
+										@include responsiveFont(10, 16, true);
+										vertical-align: initial;
+									}
+								}
 							}
 						}
 					}
