@@ -6,9 +6,10 @@ var noUiSlider = require('vendors/nouislider');
 require('../../../templates/listagem/range-price.html');
 require('../../../templates/listagem/range.html');
 require('../../../templates/listagem/filter-submenu.html');
+require('modules/listagem/order-by');
 
 
-Nitro.module('filters', function () {
+Nitro.module('filters', ['order-by'], function (orderBy) {
     var self = this,
         $filterWrapper = $('.filter-wrapper'),
         $holder = $('.search-multiple-navigator'),
@@ -111,13 +112,16 @@ Nitro.module('filters', function () {
 
                 window.history.pushState(null, null, '#/filter' + helper.rel);
 
-                $('.order-title em').text('selecione');
-
                 $(window).trigger('filter', helper.rel);
 
                 $('.vitrine > .prateleira').remove();
 
                 helper.vitrine.addClass('loaded').append( $(data).filter('.prateleira.default') );
+
+                //aplica novamente a ordenacao apos selecionar um filtro
+                if ($('ul.order-by .selected').length > 0) {
+                    orderBy.order($('ul.order-by .selected'));
+                }
 
                 self.renderSubmenu();
 
