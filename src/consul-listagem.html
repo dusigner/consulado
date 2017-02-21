@@ -18,83 +18,94 @@
 	<div class="banner-principal banner-mobile slides show-extra-small"><vtex:contentPlaceHolder id="BannerTopo BannerMobile" /></div>
 	<!-- /Slide mobile-->
 
-	<div class="filter-wrapper">
-		<div class="container departament-nav clearfix">
-			<div class="clearfix">
-				<p class="title-filter"></p>
-				<vtex.cmc:searchNavigator keepCurrentPath="true" />
+	<div class="result-filter">
+		<div class="pageName"><vtex.cmc:searchTitle /></div>
+
+		<!-- Filtros -->
+		<div class="filter-wrapper">
+			<div class="container departament-nav clearfix">
+				<div class="clearfix">
+					<p class="title-filter"></p>
+					<vtex.cmc:searchNavigator keepCurrentPath="true" />
+				</div>
 			</div>
 		</div>
-	</div>
+		<!-- /Filtros -->
 
-	<div class="container list-container clearfix">
-		<div class="row gutters">
+		<!-- Breadcrumb -->
+		<section class="breadcrumb hide-medium hide-large hide-extra-large">
+			<vtex.cmc:breadCrumb />
+		</section>
+		<!-- /Breadcrumb -->
 
-			<!-- Chaordic TOP -->
-			<div class="container">
-				<div chaordic="top"></div>
-			</div>
-
-			<div class="col-12 list-content">
+		<div class="container list-container clearfix">
+			<div class="row gutters">
+				<!-- Chaordic TOP -->
+				<div class="container">
+					<div chaordic="top"></div>
+				</div>
+				<!-- /Chaordic TOP -->
 
 				<!-- Prateleira -->
-				<section id="prateleira">
-					<div class="top-wrapper clearfix">
-						<vtex.cmc:searchTitle />
+				<div class="col-12 list-content">
+					<section id="prateleira">
+						<div class="top-wrapper clearfix">
+							<vtex.cmc:searchTitle />
 
-						<div class="col-md-6 open-filter">
-            				<span>Filtrar</span>
-            			</div>
+							<div class="col-md-6 open-filter">
+								<span>Filtrar</span>
+							</div>
 
-						<div class="order-wrapper">
-							<p class="order-title">Ordenar por</p>
-							<ul class="order-by"></ul>
+							<div class="order-wrapper">
+								<p class="order-title">Ordenar por</p>
+								<ul class="order-by"></ul>
+							</div>
 						</div>
-					</div>
 
-					<!-- PRODUCAO -->
-					<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="9" />
-					<!-- QA -->
-					<!-- <vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="9" columnCount="9" /> -->
-				</section>
+						<!-- PROD -->
+						<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="12" columnCount="12" />
+						<!-- /PROD -->
+						<!-- QA -->
+						<!-- <vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="12" columnCount="12" /> -->
+						<!-- /QA -->
+					</section>
+				</div>
 				<!-- /Prateleira -->
 
+				<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
+					Ver mais
+				</button>
+
+				<!-- Chaordic MIDDLE -->
+				<div class="container">
+					<div chaordic="middle"></div>
+				</div>
+				<!-- /Chaordic MIDDLE -->
 			</div>
-
-			<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
-				Ver mais
-			</button>
-
-			<!-- Chaordic MIDDLE -->
-		<div class="container">
-			<div chaordic="middle"></div>
 		</div>
-
-		</div>
-
 	</div>
 
 	<section id="quem-viu-clicou" class="slider" style="display: none;">
-    <p class="pre-title"><vtex:contentPlaceHolder id="QuemViuClicou - Titulo" /></p>
-    <div class="container">
-        <div class="row">
-            <div class="prateleira-slider clearfix">
-            <vtex:contentPlaceHolder id="QuemViuClicou" />
-          </div>
-      </div>
-    </div>
-  </section>
+		<p class="pre-title"><vtex:contentPlaceHolder id="QuemViuClicou - Titulo" /></p>
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-slider clearfix">
+					<vtex:contentPlaceHolder id="QuemViuClicou" />
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <section id="relacionados" class="slider">
-    <p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
-    <div class="container">
-        <div class="row">
-            <div class="prateleira-slider clearfix">
-            <vtex:contentPlaceHolder id="Relacionados" />
-          </div>
-            </div>
-    </div>
-  </section>
+	<section id="relacionados" class="slider">
+		<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-slider clearfix">
+					<vtex:contentPlaceHolder id="Relacionados" />
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<div class="box-compare">
 		<div class="container clearfix">
@@ -108,52 +119,52 @@
 
 	<div id="modal-napoleao" data-title="Novas Frost Free Consul" style="display:none;">
 
-			<div class="row napoleao-close">
-				<button type="button" class="close">X</button>
-			</div>
+		<div class="row napoleao-close">
+			<button type="button" class="close">X</button>
+		</div>
 
-			<div class="row napoleao-img">
-				<div class="col-md-12">
-					<img src="/arquivos/napoleao-novas-frost-free-consul.png" alt="Novas Frost Free Consul" />
-				</div>
+		<div class="row napoleao-img">
+			<div class="col-md-12">
+				<img src="/arquivos/napoleao-novas-frost-free-consul.png" alt="Novas Frost Free Consul" />
 			</div>
+		</div>
 
-			<div class="row napoleao-title">
-				<div class="col-md-12">
-					<h2>Novas Frost Free Consul</h2>
-				</div>
+		<div class="row napoleao-title">
+			<div class="col-md-12">
+				<h2>Novas Frost Free Consul</h2>
 			</div>
+		</div>
 
-			<div class="row napoleao-text">
-				<div class="col-md-12">
-					<p>Tenha mais espaço <br />em sua geladeira</p>
-				</div>
+		<div class="row napoleao-text">
+			<div class="col-md-12">
+				<p>Tenha mais espaço <br />em sua geladeira</p>
 			</div>
+		</div>
 
-			<div class="row napoleao-button">
-				<div class="col-md-12">
-					<a href="/busca/?fq=H:184">
-						<button type="button" class="primary-button" value="Ver mais">Conheça</button>
-					</a>
-				</div>
+		<div class="row napoleao-button">
+			<div class="col-md-12">
+				<a href="/busca/?fq=H:184">
+					<button type="button" class="primary-button" value="Ver mais">Conheça</button>
+				</a>
 			</div>
+		</div>
 	</div>
 
 	<div id="modal-overlay-abandono" data-title="Não vá embora ainda!" style="display: none;">
-	    <div class="subtitle">
-	        Veja o que separamos para você:
-	    </div>
+		<div class="subtitle">
+			Veja o que separamos para você:
+		</div>
 		<div class="row">
 			<div class="col-md-12">
-			    <vtex:contentPlaceHolder id="OverlayAbandono" />
+				<vtex:contentPlaceHolder id="OverlayAbandono" />
 			</div>
 		</div>
 	</div>
 
 	<!-- Chaordic BOTTOM -->
-<div class="container">
-	<div chaordic="bottom"></div>
-</div>
+	<div class="container">
+		<div chaordic="bottom"></div>
+	</div>
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
