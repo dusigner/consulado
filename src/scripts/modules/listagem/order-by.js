@@ -34,18 +34,25 @@ Nitro.module('order-by', function () {
             $listOrders.find('li a').click(function(e){
                 e.preventDefault();
 
-                var orderValue = $(this).data('order');
-
-                $orderTitle.addClass('loading');
-
-                $orderTitle.find('em').text($(this).text());
-
-                $orderTitle.add('.order-by').removeClass('active');
-
-                _self.request(orderValue);
+                _self.order($(this));
             });
 
         }
+    };
+
+    this.order = function($orderElement) {
+        var orderValue = $orderElement.data('order');
+
+        $('.selected').removeClass('selected');
+        $orderElement.addClass('selected');
+
+        $orderTitle.addClass('loading');
+
+        $orderTitle.find('em').text($orderElement.text());
+
+        $orderTitle.add('.order-by').removeClass('active');
+
+        _self.request(orderValue);
     };
 
     // RENDER HTML & ACTION FUNCTIONS
