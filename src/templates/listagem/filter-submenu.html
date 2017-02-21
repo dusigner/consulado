@@ -1,0 +1,10 @@
+<div class="col-xs-12 sidebar-filter-submenu">
+  <ul>
+    {#filters}
+      <li data-rel="{rel}" data-name="{name}" data-value="{value}">{value} <i class="icon icon-close-icon"></i></li>
+    {/filters}
+    {?filters}
+      <li class="erase-filter">Limpar filtros <i class="icon icon-close-icon"></i></li>
+    {/filters}
+  </ul>
+</div>

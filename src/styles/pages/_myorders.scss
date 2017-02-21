@@ -576,7 +576,7 @@ body.pedidos {
 					@include responsiveFont(14, 16, true);
 					line-height: 0;
 
-					&.download-warranty{
+					&.download-warranty {
 						@include responsiveFont(11);
 						margin: 0 10px;
 						padding: 10px 0;

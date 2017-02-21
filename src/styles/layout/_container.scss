@@ -10,7 +10,7 @@
 			)
 		);
 
-		@include responsive('width', 95%,
+		@include responsive('max-width', 95%,
 			(
 				'small'       : 768px,
 				'medium'      : 960px,

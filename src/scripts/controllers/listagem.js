@@ -5,6 +5,8 @@ var enquire = require('vendors/enquire');
 require('vendors/slick');
 
 require('modules/list-more');
+require('modules/listagem/filters');
+require('modules/listagem/order-by');
 require('modules/compare');
 require('modules/slider-banner');
 require('modules/resultado-busca');
@@ -13,9 +15,8 @@ require('custom/modal.overlayAbandono');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
     var self = this,
-        $filter = $('.filter-wrapper'),
         $searchSingle = $('.search-single-navigator'),
         $listOrders = $('ul.order-by');
 
@@ -111,33 +112,34 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'resultad
 
     }
 
-    $searchSingle.find('h5:not(.HideMarca)').each(function() {
-        var self = $(this),
-            $list = self.next('ul'),
-            $childens = $list.children(),
-            $active = $childens.filter('.filtro-ativo');
+    //ANTIGO FILTRO
+    // $searchSingle.find('h5:not(.HideMarca)').each(function() {
+    //     var self = $(this),
+    //         $list = self.next('ul'),
+    //         $childens = $list.children(),
+    //         $active = $childens.filter('.filtro-ativo');
 
-        if ($childens.length > 0) {
-            $list.andSelf().wrapAll('<div class="single-filter-wrapper"/>');
+    //     if ($childens.length > 0) {
+    //         $list.andSelf().wrapAll('<div class="single-filter-wrapper"/>');
 
-            if ($active.length > 0) {
-                self.text($active.text());
-                self.parent().addClass('active-filter');
-                $list.remove();
-            }
-        } else {
-            self.remove();
-        }
-    });
+    //         if ($active.length > 0) {
+    //             self.text($active.text());
+    //             self.parent().addClass('active-filter');
+    //             $list.remove();
+    //         }
+    //     } else {
+    //         self.remove();
+    //     }
+    // });
 
-    $searchSingle.find('h4 + ul').each(function() {
-        $(this).appendTo($(this).prev('h4'));
-    });
+    // $searchSingle.find('h4 + ul').each(function() {
+    //     $(this).appendTo($(this).prev('h4'));
+    // });
 
-    //remove count from filters;
-    $searchSingle.find('a').each(function() {
-        $(this).text($(this).attr('title'));
-    });
+    // //remove count from filters;
+    // $searchSingle.find('a').each(function() {
+    //     $(this).text($(this).attr('title'));
+    // });
 
     /*if( $searchSingle.find('.single-filter-wrapper').length <= 0 && $searchSingle.find('h4:visible').length <= 0 ) {
     	$('.filter-wrapper').remove();
@@ -235,25 +237,26 @@ Nitro.controller('listagem', ['list-more', 'compare', 'slider-banner', 'resultad
     $('#quem-viu-clicou h2').text('Produtos em destaque');
 
 
+    //ANTIGO FILTRO
     //click abrir filtros no mobile
-    $('.open-filter').click(function(e) {
-        e.preventDefault();
+    // $('.open-filter').click(function(e) {
+    //     e.preventDefault();
 
-        $filter.slideToggle();
-    });
+    //     $filter.slideToggle();
+    // });
 
-    var $singleFilterWrapper = $searchSingle.find('.single-filter-wrapper h5');
-    $singleFilterWrapper.click(function(e) {
-        e.preventDefault();
+    // var $singleFilterWrapper = $searchSingle.find('.single-filter-wrapper h5');
+    // $singleFilterWrapper.click(function(e) {
+    //     e.preventDefault();
 
-        var $singleFilterOptions = $(this).next('ul');
+    //     var $singleFilterOptions = $(this).next('ul');
 
-        if (!$singleFilterOptions.hasClass('open')) {
-            $searchSingle.find('.open').slideUp().removeClass('open');
-        }
+    //     if (!$singleFilterOptions.hasClass('open')) {
+    //         $searchSingle.find('.open').slideUp().removeClass('open');
+    //     }
 
-        $singleFilterOptions.slideToggle().toggleClass('open');
-    });
+    //     $singleFilterOptions.slideToggle().toggleClass('open');
+    // });
 
 
     //inicia automaticamente prateleiras sliders no desktop
