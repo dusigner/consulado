@@ -43,7 +43,7 @@ Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'sl
 
     //TODO: pluralize
     var orderText = !$('body').is('.busca') ? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens' : '';
-    $('.order-title').html('<span>' + orderText + ' ordenados por </span>' + $filterSelected.text());
+    $('.order-title').html('<span>' + orderText + ' ordenados por </span><em>selecione</em>');
     $('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
 

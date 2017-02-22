@@ -32,4 +32,6 @@ Nitro.setup(['geo', 'percentoff', 'vendas.pj', 'descadastrar.emailCRM', 'login.u
 
     $('.helperComplement').remove();
 
+    console.log('fiddler!');
+
 });
