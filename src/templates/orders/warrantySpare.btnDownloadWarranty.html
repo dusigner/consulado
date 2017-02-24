@@ -6,9 +6,9 @@
 		<span>Seguro Garantia Estendida - {period} meses</span>
 	</div>
 	<div class="col-md-3 ctas">
-			<a class="download-warranty" href="" data-id="{idWarranty}">Download</a>
+			<button class="download-warranty {?isVtex} vtex {/isVtex}" href="javascript:void(0)" data-id="{idWarranty}">Download</button>
 		{?btnCancel}
-			<button class="cancel-warranty" href="javascript:void(0)" data-id="{idWarranty}">Cancelar</button>
+			<button class="cancel-warranty {?isVtex} vtex {/isVtex}" href="javascript:void(0)" data-id="{idWarranty}" data-period="{period}" data-refid="{refid}" data-product-index={productIndex}>Cancelar</button>
 		{/btnCancel}
 	</div>
 	<div class="col-md-2 value">

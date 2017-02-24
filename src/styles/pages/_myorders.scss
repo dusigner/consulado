@@ -543,7 +543,7 @@ body.pedidos {
 					&.cancel-warranty {
 						@include responsiveFont(11);
 						margin: 0 10px;
-						width: 90px;
+						//width: 90px;
 
 						@include breakpoint(large, 'max') {
 							margin-left: 0;
@@ -576,7 +576,7 @@ body.pedidos {
 					@include responsiveFont(14, 16, true);
 					line-height: 0;
 
-					&.download-warranty{
+					&.download-warranty {
 						@include responsiveFont(11);
 						margin: 0 10px;
 						padding: 10px 0;
@@ -596,6 +596,10 @@ body.pedidos {
 				p.limit-buy-date {
 					@include responsiveFont(14);
 					font-weight: bold;
+				}
+
+				p.cancel-success {
+					@include responsiveFont(12, 16, true);					
 				}
 			}
 
