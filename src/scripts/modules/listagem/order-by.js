@@ -88,7 +88,7 @@ Nitro.module('order-by', function () {
             url: helper.url() + page + helper.rel + orderValue,
             localCache: true,
             cacheTTL: 1,
-            cacheKey: 'order' + page + helper.rel + orderValue,
+            cacheKey: 'order' + page + helper.rel + orderValue + vtxctx.categoryId,
             dataType: 'html',
             beforeSend: function(){
                 helper.vitrineHolder.addClass('loading');
