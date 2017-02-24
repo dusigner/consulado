@@ -5,10 +5,9 @@
 var CRM = {
 
     clientURI: '/api/ds/pub/documents/CL',
-
-    ordersURI: '/api/ds/pub/documents/SP',
-
     geURI: '/api/ds/pub/documents/GE',
+    ordersURI: '/api/ds/pub/documents/SP',
+    cancelGaeURI: '/api/ds/pub/documents/CG',
 
     getOrderById: function(orderId) {
         return $.ajax({
@@ -41,7 +40,6 @@ var CRM = {
     },
 
     clientSearchByEmail: function(field) {
-
         return $.getJSON(CRM.clientURI, {
             f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
             fq: 'email:' + field
@@ -51,12 +49,20 @@ var CRM = {
     },
 
     clientSearchByID: function(field) {
-
         return $.getJSON(CRM.clientURI, {
             f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
             fq: 'userId:' + field
         }).then(function(res) {
             return res && res.Documents[0];
+        });
+    }, 
+    
+    insertCancelGae: function(data) {
+        return $.ajax({
+            url: CRM.cancelGaeURI,
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8'
         });
     }
 };
