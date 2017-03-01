@@ -224,25 +224,11 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         init: function (){
             Index.changeQntStoq();
-            Index.getPathName();
-        },
-
-        template: function (){
-
-            var content = '';
-
-            content += '<div class="usuarios-ativos">';
-            content += '<h4 id="qnt_stoke">Últimas unidades no estoque</h4>';
-            content += '<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>';
-            content += '</div>';
-
-            return content;
         },
 
         changeQntStoq: function (){
-            $('.produto .prod-preco').prepend(Index.template);
             Index.getQntStoq();
-            setInterval(function(){
+            setInterval(function (){
 
                 Index.getQntStoq();
 
@@ -250,36 +236,34 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
         },
 
-
         getQntStoq: function (){
 
             Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId).then(function (data){
 
                 if(data[0].items.length >= 2){
 
+
                     if(data[0].items[0].name === '110V'){
                         qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                         qnt220v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
 
                         Index.calcQntStoq(qnt110v, qnt220v);
-
                     }else{
                         qnt220v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                         qnt110v = data[0].items[1].sellers[0].commertialOffer.AvailableQuantity;
 
                         Index.calcQntStoq(qnt110v, qnt220v);
-
                     }
-            
-                } else{
 
+
+                } else{
                     qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
                     var nome = data[0].items[0].name;
-
 
                     Index.calcQntStoqOnly(qnt110v);
 
                     if(nome === 'BIVOLT' && qnt110v === 0){
+
                         $('.usuarios-ativos').hide();
 
                     }else if(nome === '110V' && qnt110v === 0){
@@ -289,131 +273,64 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
                     }else if(nome === '220V' && qnt110v === 0){
 
                         $('.usuarios-ativos').hide();
-                
                     }
-                    
+
                 }
 
             });
 
         },
 
-
         calcQntStoqOnly: function (qnt110v){
 
             if( qnt110v > 3){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').hide();
 
             } else if ( qnt110v === 0 ){
                 $('.usuarios-ativos').hide();
             }else if( qnt110v <= 3 ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').show();
             } else{
                 $('#qnt_stoke').show();
-                $('.usuarios-ativos').show();
             }
+
         },
 
         calcQntStoq: function (qnt110v, qnt220v){
 
             if( (qnt110v > 3) && (qnt220v > 3) ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').hide();
             } else if ((qnt110v === 0) && (qnt220v === 0)){
                 $('.usuarios-ativos').hide();
             } else if ( qnt110v === 0 && qnt220v > 3 ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').hide();
             } else if( qnt110v > 3 && qnt220v === 0 ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').hide();
             } else if ( qnt110v === 0 && qnt220v <= 3 ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').show();
             } else if( qnt110v <= 3 && qnt220v === 0 ){
-                $('.usuarios-ativos').show();
                 $('#qnt_stoke').show();
             }else if(qnt110v <= 3 && qnt220v <= 3){
                 $('#qnt_stoke').show();
-                $('.usuarios-ativos').show();
-            }else{
-                $('.usuarios-ativos').hide();
             }
 
         },
-
-        callbackAPI: function (data){
-            
-            $('#pessoas_on').html(data.data.count);
-
-        },
-
-        getPathName: function (){
-
-            var path = window.top.location.pathname;
-
-            this.getSession(path, 'brastemp', Index.callbackAPI);
-
-            setInterval(function (){
-
-                Index.getSession(path, 'brastemp', Index.callbackAPI);
-
-            },  300000);
-
-        },
-
-        configs: {
-            // url: 'http://awesome.dev/mangocorp/jussi/brastemp/brastemp-usu-rios-ativos/users/current',
-            url: 'http://jussi-pagesessions.herokuapp.com/users/current',
-            cookieName: 'vygfubhjh78'
-        },
-
-        getSession: function (path, store, callback) {
-            var content = {path: path, store: store};
-            if(this.getCookie(this.configs.cookieName)) {
-                content['c'] = this.getCookie(this.configs.cookieName);
-            }
-
-            var me = this;
-            $.post(me.configs.url, content, function (result) {
-                me.setCookie(me.configs.cookieName, result.data.c);
-                callback(result);
-            }).fail(function(){
-                $('.usuarios-ativos').hide();
-                $('.qtn_pessoas_on').hide();
-            });
-        },
-
-        setCookie: function (cname, cvalue) {
-            var d = new Date();
-            d.setTime(d.getTime() + (5 * 60 * 60));
-            var expires = 'expires=' + d.toUTCString();
-            document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-        },
-
-        getCookie: function (cname) {
-            var name = cname + '=';
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) === 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return '';
-        },
-
+        
         getAPI: function (url){
             return $.get(url);
-        }
+        },
+
+
     };
 
-    $(function(){
-        Index.init();
-    });
+    (function(window, document, $){
+
+        $(function (){
+
+            Index.init();
+
+        });
+
+    })(window, document, jQuery);
+
 });
