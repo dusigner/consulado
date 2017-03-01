@@ -1,6 +1,42 @@
-//------------------------------------
-//	BANNERS
-//------------------------------------
+.banners,
+.banners-mobile {
+	position: relative;
+
+	.container {
+		height: 30px;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+
+		@include breakpoint(small, 'max') {
+			bottom: 40px;
+			top: initial;
+			transform: none;
+		}
+	}
+
+	a.open-regulamento {
+		@include responsiveFont(11, 16, true);
+		background: $orange;
+		color: #ffffff;
+		display: none;
+		font-weight: bold;
+		left: 90px;
+		padding: 5px 10px;
+		position: absolute;
+		text-decoration: underline;
+		text-transform: uppercase;
+		top: 50%;
+		transform: translateY(-50%);
+
+		@include breakpoint(small, 'max') {
+			left: 0;
+			transform: translateX(-50%);
+		}
+	}
+}
+
 // Banner principal DESKTOP
 .banner-principal {
 	overflow: hidden;
@@ -51,41 +87,18 @@
 		}
 	}
 
-	// Paginação
-	// .slick-dots {
-	// 	height: 0;
-	// 	bottom: 40px;
-
-	// 	li { margin: 1px; }
-
-	// 	li, button {
-	// 		height: 20px;
-	// 		width: 20px;
-	// 		z-index: 0;
-	// 	}
-
-	// 	button:before {
-	// 		font-size: 30px;
-	// 		height: 10px;
-	// 		line-height: 10px;
-	// 		left: 0;
-	// 		top: 5px;
-	// 		z-index: -1;
-	// 	}
-	// }
-
-	// [ Mobile ] - Banner principal
-	// &.banner-mobile {
-	// 	min-height: 360px;
-
-	// 	@include breakpoint(extra-small, "max") {
-	// 		min-height: 333px;
-	// 	}
-	// }
-
 	// Esconder o banner na página de busca
 	// quando a busca não trouxer resultado.
 	.busca-vazia & {
 		@include hide-conditional();
+	}
+}
+
+#vtex-modal-regulamento-banner {
+	.modal-holder { max-width: 712px; }
+
+	#modal-regulamento-banner {
+		padding: 20px;
+		text-align: left;
 	}
 }

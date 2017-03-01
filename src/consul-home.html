@@ -23,13 +23,49 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small"><vtex:contentPlaceHolder id="SliderHome" /></div>
-	<!-- /Slide -->
+	<!-- Slider -->
+  <div class="banners hide-extra-small">
+    <!-- Banner -->
+    <div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
+    <!-- /Banner -->
 
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
-	<!-- /Slide mobile-->
+    <!-- Abrir regulamento banner -->
+    <div class="container">
+      <div class="row">
+        <a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+        <!-- Modal regulamento -->
+        <div id="modal-regulamento-banner" style="display: none;">
+            <vtex.cmc:regulamentoBannerHomeCNS />
+        </div>
+        <!-- /Modal regulamento -->
+      </div>
+    </div>
+    <!-- Abrir regulamento banner -->
+  </div>
+  <!-- /Slider -->
+
+  <!-- Slider mobile -->
+  <div class="banners-mobile show-extra-small">
+    <!-- Banner -->
+    <div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
+    <!-- /Banner -->
+
+    <!-- Abrir regulamento banner -->
+    <div class="container">
+      <div class="row">
+        <a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+        <!-- Modal regulamento -->
+        <div id="modal-regulamento-banner" style="display: none;">
+            <vtex.cmc:regulamentoBannerHomeCNS />
+        </div>
+        <!-- /Modal regulamento -->
+      </div>
+    </div>
+    <!-- Abrir regulamento banner -->
+  </div>
+  <!-- /Slider mobile -->
 
 	<div class="lead-newsletter">
     	<div class="row">
@@ -144,7 +180,7 @@
 	<!-- Serviços -->
 	<vtex:template id="0-consul-servicos" />
 	<!-- /Serviços -->
-	
+
 	<!-- Lead newsletter -->
 	<div class="row gutters newsletter">
 		<div class="container">
