@@ -32,9 +32,9 @@ body {
 		@include breakpoint(extra-small, 'max') {
 			bottom: 80px;
 			display: inline;
-			height: 40px;
+			height: 52px;
 			right: 0;
-			width: 40px;
+			width: 52px;
 		}
 
 		@for $i from 1 through $qtdColecaoSelos {
