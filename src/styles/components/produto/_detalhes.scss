@@ -204,16 +204,16 @@
 
 
 .usuarios-ativos {
-    border: 1px solid #9aca3c;
+    border: 1px solid #451b56;
     display: none;
     margin-bottom: 10px;
     overflow: hidden;
-    padding: 10px 15px;
+    padding: 15px;
     position: relative;
-    width: 100%;
 
     h4 {
-        color: #9aca3c;
+        color: #451b56;
+        display: none;
         font-size: 14px;
         font-weight: bold;
         margin: 0;
@@ -230,7 +230,9 @@
         margin-top: 10px;
         text-transform: uppercase;
 
-        &.p_orange { color: #9aca3c; }
+        &.p_orange {
+            color: #451b56;
+        }
     }
 
     small {
@@ -241,8 +243,7 @@
         margin-top: 20px;
     }
 
-	@media (max-width: 768px) {
-		display: none !important;
-	}
-
+    @media (max-width: 768px) {
+        display: none !important;
+    }
 }
