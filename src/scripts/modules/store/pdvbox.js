@@ -7,8 +7,9 @@ Nitro.module('pdvbox', function() {
         profileData,
         dateNow = new Date();
     
-    profileData = sessionStorage.getItem('profileVtex');
-    profileData = JSON.parse(profileData);
+    vtexjs.checkout.getOrderForm().done(function(res){
+        profileData = res.clientProfileData;
+    });
 
     // var pdvBoxAPI = store.isQA ? 'http://compracerta.nxd.com.br/api/v2' : 'https://pdvbox.nxd.com.br/compracerta/api/v2';
 
@@ -48,7 +49,7 @@ Nitro.module('pdvbox', function() {
                         price: item[0].sellingPrice / 100
                     },
                     client: {
-                        id: profileData.Email
+                        id: profileData.email
                     },
                     sale: {
                         id: orderId,
@@ -85,7 +86,7 @@ Nitro.module('pdvbox', function() {
                     price: skuInfo.skuPrice
                 },
                 client: {
-                    id: profileData.Email,
+                    id: profileData.email,
                     cpf: user.document,
                     name: user.firstName + ' ' + user.lastName,
                     address1: address.street,
@@ -95,7 +96,7 @@ Nitro.module('pdvbox', function() {
                     state: address.state,
                     zip: address.postalCode,
                     phone: user.phone,
-                    email: profileData.Email
+                    email: profileData.email
                 },
                 sale: {
                     id: skuInfo.orderId,

@@ -14,18 +14,14 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
     var self = this,
         boxOrder = {},
         boxPlans = {},
-        profileData,
         userData = [],
         dateNow = new Date();
 
     self.setup = function() {
 
-        profileData = sessionStorage.getItem('profileVtex');
-        profileData = JSON.parse(profileData);
+         vtexjs.checkout.getOrderForm().done(function(res){
+            userData = res.clientProfileData;
 
-        CRM.clientSearchByEmail(profileData.Email).done(function(user) {
-            //console.log('user', user);
-            userData = user;
             $('.box-my-orders').each(function(i, e) {
                 self.init(e);
             });
