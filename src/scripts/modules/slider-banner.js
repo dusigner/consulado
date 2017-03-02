@@ -27,8 +27,8 @@ Nitro.module('slider-banner', function() {
                     arrows: true,
                 }
             }]
-        }).on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            if ($('#modal-regulamento-banner').text() !== '' && (qtdBanners > 1) && (nextSlide === qtdBanners - 1)) {
+        }).on('afterChange', function(event, slick, currentSlide, nextSlide){
+            if ($('#modal-regulamento-banner').text() !== '' && (qtdBanners > 1) && (currentSlide === qtdBanners - 1)) {
                 $buttonOpenRegulamento.show();
             } else {
                 $buttonOpenRegulamento.hide();
