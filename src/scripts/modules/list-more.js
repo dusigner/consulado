@@ -35,10 +35,7 @@ Nitro.module('list-more', function() {
         })
             .done(function(data) {
                 if (data) {
-
-                    $prateleira.append(data).find('.helperComplement').remove();
-
-                    // console.log('active', self.isActive());
+                    $('.vitrine > .prateleira').append(data);
 
                     if (self.isActive()) {
 
