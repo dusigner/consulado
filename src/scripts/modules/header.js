@@ -38,7 +38,7 @@ Nitro.module('header', ['menu-hover'], function() {
                 .removeClass()
                 .addClass(defaultClass);
 
-            $('header').removeClass('menu-scroll'); 
+            $('header').removeClass('menu-scroll');
             $('header.blackfriday').height(100);
         } else {
             menuMobile.addClass('menu-active');
@@ -58,6 +58,7 @@ Nitro.module('header', ['menu-hover'], function() {
     } else {
         $('nav .item.control').addClass('control-hide');
         $('nav .item').removeClass('control');
+        $('.customItemMenu').css('display', 'inline-block');
     }
 
 
@@ -102,58 +103,10 @@ Nitro.module('header', ['menu-hover'], function() {
         }
     });
 
-
-
-    //Fechar advertisement
-    // var advertisement = $('.advertisement');
-    // advertisement.find('span').click(function() {
-    // 	advertisement.slideUp();
-
-    // 	$.cookie('advertisement', true, { path: '/' , expires: 1 });
-    // });
-
-    // if (! $.cookie('advertisement') ) {
-    // 	advertisement.slideDown();
-    // }
-
-
-
     menuMobile.find('.sub-itens > a').on('click',function(e) {
         e.preventDefault();
 
         $(this).parent().toggleClass('open');
         $(this).siblings('.submenu').slideToggle('slow');
     });
-
-    // menuMobile.find('.menu-title').click(function(e) {
-    //     e.preventDefault();
-
-    //     menuMobile.removeClass();
-
-    //     if ($(this).parent().hasClass('second-level')) {
-    //         $(this).parent().parent().removeClass('item-active');
-
-    //         menuMobile.addClass(defaultClass + ' menu-active sub-itens-active');
-
-    //     } else {
-    //         menuMobile.addClass(defaultClass + ' menu-active');
-    //     }
-    // });
-
-    // menuMobile.find('.first-level > .item > a').click(function(e) {
-    //     e.preventDefault();
-
-    //     var classItem = $(this).attr('title')
-    //         .replace(' ', '-')
-    //         .replace(' & ', '-e-')
-    //         .toLowerCase();
-
-    //     $(this).parent().addClass('item-active');
-
-    //     menuMobile.addClass(classItem).addClass('sub-first-itens-active');
-    // });
-
-
-
-
 });
