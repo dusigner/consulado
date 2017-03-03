@@ -717,6 +717,14 @@ body.listagem {
 
 				&:hover { color: $orange; }
 			}
+
+			&:nth-child(6),
+			&:nth-child(7),
+			&:nth-child(8),
+			&:nth-child(9),
+			&:nth-child(10){
+				display: none;
+			}
 		}
 	}
 	@include breakpoint(small, 'max') {
