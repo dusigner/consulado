@@ -19,7 +19,7 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
 
     self.setup = function() {
 
-         vtexjs.checkout.getOrderForm().done(function(res){
+        vtexjs.checkout.getOrderForm().done(function(res){
             userData = res.clientProfileData;
 
             $('.box-my-orders').each(function(i, e) {

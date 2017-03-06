@@ -22,7 +22,7 @@ Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'sl
 
 
     var $filterOptions = $('#O:first option'),
-        $filterSelected = $filterOptions.filter(':selected'),
+        // $filterSelected = $filterOptions.filter(':selected'),
         ignoreFilters = ['OrderByNameASC', 'OrderByNameDESC', 'OrderByReviewRateDESC'],
         urlParams = _.urlParams(); //parse params from url
 
