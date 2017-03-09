@@ -63,7 +63,6 @@
 		text-align: center;
 
 		&:hover {
-			// background-color: #dd0;
 			& + ul { height: auto; }
 		}
 
@@ -265,7 +264,6 @@
 
 
 .filter-list-inner {
-	// @include singleTransition();
 	background-color: #fff;
 
 	@include breakpoint(small, 'min') {
@@ -334,7 +332,6 @@
 		position: absolute;
 		right: 0;
 		top: 0;
-		//top: 15px;
 	}
 
 	@include breakpoint(small, 'max') {
@@ -348,7 +345,6 @@
 	// Botão mais categorias
 	& > button {
 		@include responsiveFont(16);
-		//padding: 13px 20px 15px 20px;
 		background: none;
 		border: none;
 		display: block;
@@ -423,7 +419,6 @@
 		@include responsiveFont(13);
 		display: none;
 		font-weight: 700;
-		//white-space: nowrap;
 
 		a {
 			display: block;

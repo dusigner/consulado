@@ -1,5 +1,18 @@
 @charset 'UTF-8';
 
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/helpers';
+@import 'helpers/icons';
+
+// Component styles
+@import 'components/buttons';
+
 .garantia-estendida-compra {
   .breadcrumb {
     display: block;

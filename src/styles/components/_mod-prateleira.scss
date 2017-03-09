@@ -52,7 +52,6 @@
 							position: relative;
 						}
 
-						// border: 1px solid #ccc;
 						.img.main {
 							@include breakpoint(small, 'max') { width: 100%; }
 						}
@@ -133,7 +132,6 @@
 								&.main { z-index: 1; }
 
 								&.backup {
-									//background: transparent url("#{$img-path}noimage.png") 50% no-repeat;
 									position: relative;
 									z-index: 0;
 								}
@@ -202,56 +200,7 @@
 			}
 
 			.compare {
-				color: #d3d3d3;
 				display: none;
-
-				@include breakpoint(small, 'max') {
-					border: 2px solid $gray;
-					margin: 0 auto;
-					padding: 5px 0;
-					width: 160px;
-				}
-
-				fieldset {
-					border: none;
-					display: inline-block;
-					margin: 0;
-					padding: 0;
-
-					input[type=checkbox] { display: none; }
-
-					label {
-						color: $txt-gray-l;
-						font-weight: bold;
-						position: relative;
-
-						&:before {
-							@include contentBefore();
-							background-color: transparent;
-							border: 1px solid #ccc;
-							border-radius: 3px;
-							height: 12px;
-							left: -20px;
-							position: absolute;
-							top: 6px;
-							width: 12px;
-						}
-
-						&:after {
-							@include icon-get('check-mark');
-							color: $orange;
-							display: none;
-							font-size: 10px;
-							height: 16px;
-							left: -20px;
-							position: absolute;
-							top: 5px;
-							width: 16px;
-						}
-					}
-
-					input[type=checkbox]:checked + label:after { display: inline-block; }
-				}
 			}
 
 			.slick-prev { left: -12px; }
@@ -683,19 +632,6 @@
 			}
 		}
 
-		// Selo Black friday - Retirar da prateleira destaque
-		.black-friday-2015-cns {
-			display: none !important;
-			// background-size: contain;
-			// background-repeat: no-repeat;
-			// font-size: 0;
-			// height: 103px;
-			// max-width: 105px;
-			// position: relative;
-			// top: 0;
-			// z-index: 150;
-		}
-
 		h2 {
 			@include responsiveFont(32);
 			float: left;
@@ -714,7 +650,6 @@
 
 		.content h3.nome {
 			@include responsiveFont(24, 16, true);
-			// font-size: 30px!important;
 			color: $gray-d;
 			margin: 10px 0 0;
 		}
@@ -751,7 +686,6 @@
 		&.categoria {
 			.prateleira.default {
 				ul:not(.slick-slider) {
-					// .compare{display:block}
 					.department-nav { display: none; }
 				}
 			}

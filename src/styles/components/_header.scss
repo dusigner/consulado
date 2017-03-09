@@ -41,8 +41,6 @@
 			}
 		}
 
-		.container a { text-decoration: none; }
-
 		@include breakpoint(small, 'max') { min-height: $mobile-header-height; }
 	}
 
@@ -66,9 +64,7 @@
 		text-transform: uppercase;
 
 		a {
-			@extend %single-transition;
 			@include responsiveFont(12);
-			// margin-bottom: -2px;
 			border-bottom: 2px solid transparent;
 			display: inline-block;
 			font-weight: 700;
@@ -132,8 +128,8 @@
 				}
 
 			}
-			.account     { left: 54%; }
-			.minicart    {
+			.account { left: 54%; }
+			.minicart {
 				background-color: transparent;
 				right: 30px;
 				@include breakpoint(small, 'max') {
@@ -202,9 +198,6 @@
 		padding-left: fluidWidth(25px);
 		position: relative;
 		text-transform: uppercase;
-
-
-		// @include breakpoint(extra-large, 'max') { width: 22.66667%; }
 
 		@include breakpoint(small, 'max') {
 			display: none;
@@ -283,63 +276,6 @@
 			width: 100%;
 
 			@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
-		}
-	}
-}
-
-.home {
-	.advertisement {
-		background: #c7b199;
-		color: #010000;
-		display: none;
-		font-size: 14px;
-		padding: 10px 0;
-		text-align: center;
-
-		.centralize {
-			margin: 0 auto;
-			max-width: 1110px;
-			position: relative;
-			width: 95%;
-
-			>span {
-				background: $orange;
-				border-radius: 30px;
-				bottom: -5px;
-				color: #ffffff;
-				cursor: pointer;
-				display: block;
-				height: 30px;
-				padding-top: 5px;
-				position: absolute;
-				right: 0;
-				width: 30px;
-
-				@include breakpoint(medium, 'max') {
-					@include vendor(transform, translateY(-50%));
-					top: 50%;
-				}
-			}
-
-			>p {
-				font-weight: 100;
-				margin: 0;
-				padding: 0;
-
-				@include breakpoint(medium, 'max') {
-					text-align: left;
-					width: 80%;
-				}
-
-				a {
-					color: #ffffff;
-					font-weight: bold;
-
-					@include breakpoint(medium, 'max') {
-						display: block;
-					}
-				}
-			}
 		}
 	}
 }

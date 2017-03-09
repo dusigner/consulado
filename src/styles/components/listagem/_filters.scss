@@ -309,7 +309,6 @@
 body.categoria,
 body.departamento {
 	.result-filter {
-		@extend .container;
 		@include breakpoint(medium, 'max') {
 			max-width: 100%;
 			padding: 0 10px;
@@ -326,9 +325,6 @@ body.departamento {
 	}
 	.order-wrapper {
 		padding-right: 0;
-		/* @include breakpoint(large, 'min') {
-			margin-top: -80px;
-		} */
 	}
 	.filter-wrapper {
 		background-color: #fff;

@@ -1,0 +1,103 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul.
+	* Author: Douglas "Amarelo" Lopes
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+/*!*/
+
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/helpers';
+
+// Sidebar
+.inst-sidebar {
+	margin: 30px 0;
+
+	.lat-menu-title {
+		@include responsiveFont(24);
+		display: block;
+		margin-bottom: 10px;
+	}
+
+	.navigation {
+		li {
+			a {
+				@extend %single-transition;
+				display: block;
+				padding: 5px 0;
+				text-decoration: none;
+
+				&:hover {
+					color: $orange;
+					text-indent: 5px;
+				}
+			}
+		}
+	}
+}
+
+
+
+// PG - Acessibilidade
+.itens {
+	li {
+		@include responsiveFont(12, 16, true);
+		background-position: left center;
+		background-repeat: no-repeat;
+		display: block;
+		margin: 30px 0;
+		padding: 13px 0 12px 60px;
+		position: relative;
+
+		&:before {
+			border-top: 1px solid $gray;
+			content: ' ';
+			display: block;
+			position: absolute;
+			right: 0;
+			top: -15px;
+			width: 100%;
+		}
+	}
+
+	.item-01 { background-image: url('/arquivos/icozero.png'); }
+
+	.item-02 { background-image: url('/arquivos/icoum.png'); }
+
+	.item-03 { background-image: url('/arquivos/icodois.png'); }
+
+	.item-04,
+	.item-05 {
+		background-size: contain!important;
+		min-height: 136px;
+		padding-top: 43px;
+	}
+
+	.item-04 { background-image: url('/arquivos/icoatalho4.png'); }
+
+	.item-05 { background-image: url('/arquivos/icoatalho9.png'); }
+
+	.item-06 {
+		background: transparent url('/arquivos/icoenter.png') 37.5% bottom no-repeat;
+		margin-bottom: 0;
+		min-height: 170px;
+		padding-left: 0;
+
+		h3 { margin-top: 0; }
+	}
+}
+
+

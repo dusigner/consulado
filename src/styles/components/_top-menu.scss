@@ -39,8 +39,6 @@
 
 		@include breakpoint(large, 'min') {
 			margin-left: calculate-em(26);
-
-			// &:first-child { margin-left: 0; }
 		}
 
 		& > a {
@@ -257,7 +255,6 @@
 	&:hover > .item { opacity: .6; }
 
 	& > .item {
-		// @extend %single-transition;
 		display: inline-block;
 		margin-bottom: 20px;
 		margin-right: 2%;
