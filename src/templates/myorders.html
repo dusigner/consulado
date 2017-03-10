@@ -1,268 +1,280 @@
-<section class="container box-my-orders" 
-	
-	data-order-id="{orderId}" 
-	data-order-group="{orderGroup}" 
-	data-order-status="{currentState.orderLabel}"
-    data-order-date="{orderDate}" 
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <link rel="stylesheet" href="/arquivos/consul2-myorders.css" />
+    </head>
+        <body>
 
-	data-order-name="{name}" 
-	data-order-street="{address.street}" 
-	data-order-city="{address.city}"
-    data-order-zipcode="{address.postalCode}" 
-	data-order-neighborhood="{address.neighborhood}" 
-	data-order-state="{address.state}"
-    data-order-complement="{address.complement}" 
-	data-order-addresstype="{address.addressType}" 
-	data-order-number="{address.number}"
-    data-order-reference="{address.reference}">
-    <!-- HEADER -->
-    <div class="row box-order-header">
+        <section class="container box-my-orders" 
+    	
+        	data-order-id="{orderId}" 
+        	data-order-group="{orderGroup}" 
+        	data-order-status="{currentState.orderLabel}"
+            data-order-date="{orderDate}" 
 
-        <div class="col-6 header-order-id">
-            <strong>Pedido: <span class="orderId">{orderIdFormatted}</span></strong>
-        </div>
+        	data-order-name="{name}" 
+        	data-order-street="{address.street}" 
+        	data-order-city="{address.city}"
+            data-order-zipcode="{address.postalCode}" 
+        	data-order-neighborhood="{address.neighborhood}" 
+        	data-order-state="{address.state}"
+            data-order-complement="{address.complement}" 
+        	data-order-addresstype="{address.addressType}" 
+        	data-order-number="{address.number}"
+            data-order-reference="{address.reference}">
+            <!-- HEADER -->
+            <div class="row box-order-header">
 
-        <div class="col-6 header-order-status">
-            <strong class="orderStatus">{currentState.orderLabel}</strong>
-        </div>
-
-        <i class="icon icon-arrow-down"></i>
-
-    </div>
-    <!-- /HEADER -->
-    <div class="box-full-order">
-        <!-- BODY 1 -->
-        <div class="row box-data hide">
-            <div class="col-12">
-                <strong>Compra realizada em <span class="orderDate">{orderDate}</span></strong>
-            </div>
-        </div>
-
-
-        <div class="row box-order-body hide">
-
-            <div class="col-6 box-order-address">
-
-                <div class="order-address">
-
-                    <ul>
-                        <li>Endereço de entrega:</li>
-                        <li>{name}</li>
-                        <li>{address.street}</li>
-                        <li>{address.neighborhood}</li>
-                        <li>{address.state}</li>
-                        <li>{address.postalCode}</li>
-                    </ul>
-
+                <div class="col-6 header-order-id">
+                    <strong>Pedido: <span class="orderId">{orderIdFormatted}</span></strong>
                 </div>
 
-            </div>
-
-            <div class="col-6 box-order-shipping">
-
-                <div class="order-shipping">
-
-                    <ul>
-                        <li>Forma de entrega:</li>
-                        <li>{shippingMethod}</li>
-
-                        <br />
-
-                        <li>Dados de pagamento:</li>
-                        {#payments}
-                        <li>{.paymentSystemName}</li>
-                        {/payments}
-                        <li>R$ {totalPrice}</li>
-                    </ul>
-
+                <div class="col-6 header-order-status">
+                    <strong class="orderStatus">{currentState.orderLabel}</strong>
                 </div>
 
+                <i class="icon icon-arrow-down"></i>
+
             </div>
+            <!-- /HEADER -->
+            <div class="box-full-order">
+                <!-- BODY 1 -->
+                <div class="row box-data hide">
+                    <div class="col-12">
+                        <strong>Compra realizada em <span class="orderDate">{orderDate}</span></strong>
+                    </div>
+                </div>
 
-        </div>
 
-        <!-- /BODY 1-->
+                <div class="row box-order-body hide">
 
-        <!-- BODY 2 -->
-        <div class="row box-order-body-left">
+                    <div class="col-6 box-order-address">
 
-            <div class="col-4">
+                        <div class="order-address">
 
-                <div class="box-order-data">
+                            <ul>
+                                <li>Endereço de entrega:</li>
+                                <li>{name}</li>
+                                <li>{address.street}</li>
+                                <li>{address.neighborhood}</li>
+                                <li>{address.state}</li>
+                                <li>{address.postalCode}</li>
+                            </ul>
 
-                    <div class="list-data">
-                        <strong>Compra realizada em {orderDate}</strong>
-                        <strong>Entrega prevista até o dia {orderEstimateDate}</strong>
+                        </div>
 
-                        <a href="javascript:void(0);" class="show-more-txt">Ver mais</a>
-
-                        <span>Forma de entrega:</span>
-                        <span>{shippingMethod}</span>
                     </div>
 
-                    <ul class="list-address">
-                        <li>Endereço de entrega:</li>
-                        <li>{name}</li>
-                        <li>{address.street}</li>
-                        <li>{address.neighborhood}</li>
-                        <li>{address.state}</li>
-                        <li>{address.postalCode}</li>
-                    </ul>
+                    <div class="col-6 box-order-shipping">
+
+                        <div class="order-shipping">
+
+                            <ul>
+                                <li>Forma de entrega:</li>
+                                <li>{shippingMethod}</li>
+
+                                <br />
+
+                                <li>Dados de pagamento:</li>
+                                {#payments}
+                                <li>{.paymentSystemName}</li>
+                                {/payments}
+                                <li>R$ {totalPrice}</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
-                <div class="box-order-data">
+                <!-- /BODY 1-->
 
-                    <ul class="list-payment">
-                        <li>Dados de pagamento:</li>
-                        {#payments}
-                        <li>{.paymentSystemName}</li>
-                        {/payments}
-                        <li>R$ {totalPrice}</li>
-                    </ul>
+                <!-- BODY 2 -->
+                <div class="row box-order-body-left">
+
+                    <div class="col-4">
+
+                        <div class="box-order-data">
+
+                            <div class="list-data">
+                                <strong>Compra realizada em {orderDate}</strong>
+                                <strong>Entrega prevista até o dia {orderEstimateDate}</strong>
+
+                                <a href="javascript:void(0);" class="show-more-txt">Ver mais</a>
+
+                                <span>Forma de entrega:</span>
+                                <span>{shippingMethod}</span>
+                            </div>
+
+                            <ul class="list-address">
+                                <li>Endereço de entrega:</li>
+                                <li>{name}</li>
+                                <li>{address.street}</li>
+                                <li>{address.neighborhood}</li>
+                                <li>{address.state}</li>
+                                <li>{address.postalCode}</li>
+                            </ul>
+
+                        </div>
+
+                        <div class="box-order-data">
+
+                            <ul class="list-payment">
+                                <li>Dados de pagamento:</li>
+                                {#payments}
+                                <li>{.paymentSystemName}</li>
+                                {/payments}
+                                <li>R$ {totalPrice}</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-8">
+                        <ul class="box-order-states group-{orderId}">
+
+                            <li class="{currentState.class[0]}">
+                                <p>{currentState.trackingLabels[0]}</p>
+                                <div class="circle">&nbsp;</div>
+                            </li>
+
+                            <li class="{currentState.class[1]}">
+                                <p>{currentState.trackingLabels[1]}</p>
+                                <div class="circle">&nbsp;</div>
+                            </li>
+
+                            <li class="{currentState.class[2]}">
+                                <p>{currentState.trackingLabels[2]}</p>
+                                <div class="circle">&nbsp;</div>
+                            </li>
+
+                            <li class="{currentState.class[3]}">
+                                <p>{currentState.trackingLabels[3]}</p>
+                                <div class="circle">&nbsp;</div>
+                            </li>
+
+                        </ul>
+
+                        <div class="box-order-states-messages">
+                            <p>
+        					{?isMessage}
+        						<span class="message">{currentState.message}</span><br /> 
+        					{/isMessage} 
+        					
+        					{#tracking}
+        						<span class="message">{.lastChange} : {.description}</span><br /> 
+        					{/tracking} 
+        					
+        					{?isBoleto}Você precisa pagar o boleto para confirmar sua compra.{/isBoleto}</p>
+
+                            {?isBoleto}<a class="btn invoice" target="_blank" href="{boletoURL}">Imprimir boleto</a> {/isBoleto}
+
+                        </div>
+
+                    </div>
 
                 </div>
+                <!-- /BODY 2-->
 
+                <!-- PRODUCTS -->
+                <div class="order-show-more box-{orderId}">
+
+                    <div class="row order-products-header">
+                        <div class="col-2 label-product">
+                            <strong>Produto</strong>
+                        </div>
+
+                        <div class="col-3">
+                            &nbsp;
+                        </div>
+
+                        <div class="col-3">
+                            <strong>Quantidade</strong>
+                        </div>
+
+                        <div class="col-2">
+                            <strong>Valor</strong>
+                        </div>
+
+                        <div class="col-2">
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    {#products}
+                    <div class="row order-products cart-items items-{orderGroup} item-{.id}" 
+        				data-product-id="{.id}" 
+        				data-product-refId="{.refId}"
+                        data-product-name="{.name}" 
+        				data-product-price="{.price}" 
+        				data-product-index="{.indexItem}"
+        				data-product-bundle="
+        					{#.bundleItems}
+        						{.name},			
+        					{/.bundleItems}
+        				"
+        				data-product-quantity="{.quantity}">
+
+                        <div class="col-2">
+                            <img src="{.imageUrl}" alt="{.name}" width="110px" height="auto" />
+                        </div>
+
+                        <div class="col-3 product-name">
+                            <span>{.name}</span>
+                        </div>
+
+                        <div class="col-3">
+                            <span>{.quantity}</span>
+                        </div>
+
+                        <div class="col-2">
+                            <span>R$ {.price}</span>
+                        </div>
+
+                        <!-- 	<div class="col-2">
+        						<a class="order-nf" href="#">Nota Fiscal</a>
+        					</div> -->
+                    </div>
+                    <div class="row order-product-total">
+                        <div class="col-12">
+                            <strong>Total produto: <span>R$ {.price}</span></strong>
+                        </div>
+                    </div>
+                    {/products}
+
+                    <div class="row order-products-totals">
+                        <div class="col-12">
+                            <ul>
+                                {#totals}
+                                <li>{.name}: <span>R$ {.value}</span></li>
+                                {/totals}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row order-total-price">
+                        <div class="col-12">
+                            <strong>TOTAL: R$ {totalPrice}</strong>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /PRODUCTS -->
             </div>
 
-            <div class="col-8">
-                <ul class="box-order-states group-{orderId}">
-
-                    <li class="{currentState.class[0]}">
-                        <p>{currentState.trackingLabels[0]}</p>
-                        <div class="circle">&nbsp;</div>
-                    </li>
-
-                    <li class="{currentState.class[1]}">
-                        <p>{currentState.trackingLabels[1]}</p>
-                        <div class="circle">&nbsp;</div>
-                    </li>
-
-                    <li class="{currentState.class[2]}">
-                        <p>{currentState.trackingLabels[2]}</p>
-                        <div class="circle">&nbsp;</div>
-                    </li>
-
-                    <li class="{currentState.class[3]}">
-                        <p>{currentState.trackingLabels[3]}</p>
-                        <div class="circle">&nbsp;</div>
-                    </li>
-
-                </ul>
-
-                <div class="box-order-states-messages">
-                    <p>
-					{?isMessage}
-						<span class="message">{currentState.message}</span><br /> 
-					{/isMessage} 
-					
-					{#tracking}
-						<span class="message">{.lastChange} : {.description}</span><br /> 
-					{/tracking} 
-					
-					{?isBoleto}Você precisa pagar o boleto para confirmar sua compra.{/isBoleto}</p>
-
-                    {?isBoleto}<a class="btn invoice" target="_blank" href="{boletoURL}">Imprimir boleto</a> {/isBoleto}
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- /BODY 2-->
-
-        <!-- PRODUCTS -->
-        <div class="order-show-more box-{orderId}">
-
-            <div class="row order-products-header">
-                <div class="col-2 label-product">
-                    <strong>Produto</strong>
-                </div>
-
-                <div class="col-3">
-                    &nbsp;
-                </div>
-
-                <div class="col-3">
-                    <strong>Quantidade</strong>
-                </div>
-
-                <div class="col-2">
-                    <strong>Valor</strong>
-                </div>
-
-                <div class="col-2">
-                    &nbsp;
-                </div>
-            </div>
-
-            {#products}
-            <div class="row order-products cart-items items-{orderGroup} item-{.id}" 
-				data-product-id="{.id}" 
-				data-product-refId="{.refId}"
-                data-product-name="{.name}" 
-				data-product-price="{.price}" 
-				data-product-index="{.indexItem}"
-				data-product-bundle="
-					{#.bundleItems}
-						{.name},			
-					{/.bundleItems}
-				"
-				data-product-quantity="{.quantity}">
-
-                <div class="col-2">
-                    <img src="{.imageUrl}" alt="{.name}" width="110px" height="auto" />
-                </div>
-
-                <div class="col-3 product-name">
-                    <span>{.name}</span>
-                </div>
-
-                <div class="col-3">
-                    <span>{.quantity}</span>
-                </div>
-
-                <div class="col-2">
-                    <span>R$ {.price}</span>
-                </div>
-
-                <!-- 	<div class="col-2">
-						<a class="order-nf" href="#">Nota Fiscal</a>
-					</div> -->
-            </div>
-            <div class="row order-product-total">
+            <!-- HEADER -->
+            <div class="row show-detail" data-order-id="{orderId}">
                 <div class="col-12">
-                    <strong>Total produto: <span>R$ {.price}</span></strong>
+                    <button type="button" class="text-center secondary-button i-purple-button" value="Ver mais">
+        					<span><i class="icon icon-bt-plus"></i>  <span class="text-show-detail">Ver mais informações</span></span>
+        				</button>
                 </div>
             </div>
-            {/products}
-
-            <div class="row order-products-totals">
-                <div class="col-12">
-                    <ul>
-                        {#totals}
-                        <li>{.name}: <span>R$ {.value}</span></li>
-                        {/totals}
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row order-total-price">
-                <div class="col-12">
-                    <strong>TOTAL: R$ {totalPrice}</strong>
-                </div>
-            </div>
-
-        </div>
-        <!-- /PRODUCTS -->
-    </div>
-
-    <!-- HEADER -->
-    <div class="row show-detail" data-order-id="{orderId}">
-        <div class="col-12">
-            <button type="button" class="text-center secondary-button i-purple-button" value="Ver mais">
-					<span><i class="icon icon-bt-plus"></i>  <span class="text-show-detail">Ver mais informações</span></span>
-				</button>
-        </div>
-    </div>
-    </section>
+        </section>
+        
+        </body>
+    </html>
+</body>
