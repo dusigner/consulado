@@ -153,6 +153,7 @@ $green-color: #9aca3c;
 
         .descricao-gae {
             background-color: #f4f4f4;
+            margin-top: 30px;
             padding: 93px 160px 93px 160px;
             text-align: center;
             @include breakpoint(extra-small, 'max') {
