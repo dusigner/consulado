@@ -129,7 +129,10 @@
 								@include breakpoint(small, 'max')       { min-height: 284px; }
 								@include breakpoint(extra-small, 'max') { min-height: 235px; }
 
-								&.main { z-index: 1; }
+								&.main { 
+									width: 100%;
+									z-index: 1; 
+								}
 
 								&.backup {
 									position: relative;

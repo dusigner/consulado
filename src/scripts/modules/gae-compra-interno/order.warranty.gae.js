@@ -170,10 +170,11 @@ Nitro.module('order.warranty.gae', function() {
     };
 
     this.setup = function(orders) {
-        profileData = sessionStorage.getItem('profileVtex');
-        profileData = JSON.parse(profileData);
+        vtexjs.checkout.getOrderForm().done(function(res){
+            profileData = res.clientProfileData;
+            self.getPlans(orders);
 
-        self.getPlans(orders);
+        });
     };
 
     this.getPlans = function(orders) {
@@ -193,7 +194,7 @@ Nitro.module('order.warranty.gae', function() {
                             price: product.sellingPrice / 100
                         },
                         client: {
-                            id: profileData.Email
+                            id: profileData.email
                         },
                         sale: {
                             id: order.orderGroup,
@@ -345,7 +346,7 @@ Nitro.module('order.warranty.gae', function() {
     this.renderProfileData = function() {
         $('#profile').append(loading);
 
-        return CRM.clientSearchByEmail(profileData.Email).done(function(user) {
+        return CRM.clientSearchByEmail(profileData.email).done(function(user) {
             boxOrder[idCurrentOrder].currentProduct = boxOrder[idCurrentOrder].products[indexProductSelected];
 
             dust.render('warrantySpare.profile', $.extend({}, user, boxOrder[idCurrentOrder]), function(err, out) {
@@ -383,7 +384,7 @@ Nitro.module('order.warranty.gae', function() {
                     price: boxOrder[idCurrentOrder].currentProduct.sellingPrice
                 },
                 client: {
-                    id: profileData.Email,
+                    id: profileData.email,
                     cpf: user.document,
                     name: user.firstName + ' ' + user.lastName,
                     address1: boxOrder[idCurrentOrder].street,
@@ -393,7 +394,7 @@ Nitro.module('order.warranty.gae', function() {
                     state: boxOrder[idCurrentOrder].state,
                     zip: boxOrder[idCurrentOrder].postalCode,
                     phone: user.phone,
-                    email: profileData.Email
+                    email: profileData.email
                 },
                 sale: {
                     id: boxOrder[idCurrentOrder].id,
