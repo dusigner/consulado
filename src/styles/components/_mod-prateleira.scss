@@ -90,7 +90,7 @@
 						text-decoration: none;
 
 						&.image {
-							display: block;
+							display: inline;
 							line-height: 0;
 							position: relative;
 							text-align: center;
@@ -644,7 +644,7 @@
 
 			@include breakpoint(small, 'min') {
 				margin: 110px 0 0 55%;
-				width: 45%;
+				width: 100%;
 			}
 		}
 
