@@ -1,117 +1,116 @@
 'use strict';
-var CRM = require('modules/store/crm');
+var CRM = require('modules/store/crm'),
+    PDVBox = require('modules/store/pdvbox');
 
-require('modules/store/pdvbox');
 require('../../../templates/orders/warrantySpare.btnWarranty.html');
 require('../../../templates/orders/warrantySpare.btnDownloadWarranty.html');
+require('../../../templates/orders/warrantySpare.btnDownloadPdvBox.html');
 
 require('../../../templates/orders/warrantySpare.modal-add.html');
 require('../../../templates/orders/warrantySpare.modal-confirm.html');
 require('../../../templates/orders/warrantySpare.modal-payment.html');
 
-Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
+var Warranty = {
+    self: this,
+    boxOrder: {},
+    boxPlans: {},
+    dateNow: new Date(),
 
-    var self = this,
-        boxOrder = {},
-        boxPlans = {},
-        dateNow = new Date();
-
-    self.setup = function() {
-        $('.box-my-orders').each(function(i, e) {
-            self.init(e);
-        });
-    };
-
-    self.init = function(order) {
+    init: function(order) {
         var orderId = $(order).data('order-group');
 
-        boxOrder[orderId] = {};
-        boxOrder[orderId].id = orderId;
-        boxOrder[orderId].status = $(order).data('order-status');
-        boxOrder[orderId].formattedDate = $(order).data('order-date');
-        boxOrder[orderId].name = $(order).data('order-name');
-        boxOrder[orderId].street = $(order).data('order-street');
-        boxOrder[orderId].neighborhood = $(order).data('order-neighborhood');
-        boxOrder[orderId].city = $(order).data('order-city');
-        boxOrder[orderId].state = $(order).data('order-state');
-        boxOrder[orderId].postalCode = $(order).data('order-zipcode');
-        boxOrder[orderId].complement = $(order).data('order-complement');
-        boxOrder[orderId].addresstype = $(order).data('order-addressType');
-        boxOrder[orderId].number = $(order).data('order-number');
-        boxOrder[orderId].reference = $(order).data('order-reference');
+        Warranty.boxOrder[orderId] = {};
+        Warranty.boxOrder[orderId].id = orderId;
+        Warranty.boxOrder[orderId].status = $(order).data('order-status');
+        Warranty.boxOrder[orderId].formattedDate = $(order).data('order-date');
+        Warranty.boxOrder[orderId].name = $(order).data('order-name');
+        Warranty.boxOrder[orderId].street = $(order).data('order-street');
+        Warranty.boxOrder[orderId].neighborhood = $(order).data('order-neighborhood');
+        Warranty.boxOrder[orderId].city = $(order).data('order-city');
+        Warranty.boxOrder[orderId].state = $(order).data('order-state');
+        Warranty.boxOrder[orderId].postalCode = $(order).data('order-zipcode');
+        Warranty.boxOrder[orderId].complement = $(order).data('order-complement');
+        Warranty.boxOrder[orderId].addresstype = $(order).data('order-addressType');
+        Warranty.boxOrder[orderId].number = $(order).data('order-number');
+        Warranty.boxOrder[orderId].reference = $(order).data('order-reference');
 
-        var orderDate = boxOrder[orderId].formattedDate.split('/');
+        var orderDate = Warranty.boxOrder[orderId].formattedDate.split('/');
         orderDate = orderDate[2] + '/' + orderDate[1] + '/' + orderDate[0];
 
-        boxOrder[orderId].date = orderDate;
+        Warranty.boxOrder[orderId].date = orderDate;
 
         var timestampDays = 334*86400*1000,
             timestampOrder = new Date(orderDate).getTime(),
             limitBuyDate = $.formatDatetimeBRL(timestampDays + timestampOrder);
 
-        boxOrder[orderId].limitBuyDate = limitBuyDate;
+        Warranty.boxOrder[orderId].limitBuyDate = limitBuyDate;
 
-        self.addButton(boxOrder[orderId]);
-    };
+        Warranty.addButton(Warranty.boxOrder[orderId], order);
+    },
 
-    self.addButton = function(order) {
-        boxOrder[order.id].products = [];
+    addButton: function(order, orderElem) {
+        Warranty.boxOrder[order.id].products = [];
 
-        $('.items-' + order.id).each(function(i, e) {
+        $(orderElem).find('.cart-items .product-item').each(function() {
 
-            var product = {};
+            var product = {},
+                $selfProduct = $(this);
 
-            product.id = $(e).data('product-id');
-            product.refId = $(e).data('product-refid');
-            product.name = $(e).data('product-name');
-            product.price = $(e).data('product-price');
-            product.quantity = $(e).data('product-quantity');
-            product.bundle = $(e).data('product-bundle');
-            product.index = $(e).data('product-index');
 
-            if ($.diffDate(dateNow, order.date) <= 334 &&
+            product.id = $selfProduct.data('product-id');
+            product.refId = $selfProduct.data('product-refid');
+            product.name = $selfProduct.data('product-name');
+            product.price = $selfProduct.find('.total-price').text();
+            product.price = $selfProduct.data('product-price');
+            product.quantity = $selfProduct.data('product-quantity');
+            product.bundle = $selfProduct.data('product-bundle');
+            product.index = $selfProduct.data('product-index');
+
+            if ($.diffDate(Warranty.dateNow, order.date) <= 334 &&
             order.status !== 'Cancelado' &&
             order.status !== 'Pedido cancelado' &&
             order.status !== 'Aguardando pagamento' &&
-            product.bundle.indexOf('Garantia') === -1 )
+            order.status !== 'Processando Pagamento' &&
+            $(this).siblings('.item-service').length <= 0 )
             {
 
-                boxOrder[order.id].products.push(product);
+                Warranty.boxOrder[order.id].products.push(product);
 
-                self.getPlan(order, product);
+                Warranty.getPlan(order, product);
             }
 
             //caso possua gae comprada pela Vtex
             if ( order.status !== 'Cancelado' &&
             order.status !== 'Pedido cancelado' &&
             order.status !== 'Aguardando pagamento' &&
-            product.bundle.indexOf('Garantia') !== -1 ) {
-                self.renderDownloadVtexWarranty(order, product);
-                self.cancelVtexWarranty();
-                self.downloadVtexWarranty();
+            order.status !== 'Processando Pagamento' &&
+            $(this).siblings('.item-service').length > 0 ) {
+                Warranty.renderDownloadVtexWarranty(order, product);
+                Warranty.cancelVtexWarranty();
+                Warranty.downloadVtexWarranty();
             }
-            
+
 
         });
-    };
+    },
 
-    self.getPlan = function(order, product) {
+    getPlan: function(order, product) {
         PDVBox.get(order.id, product.name).done(function(res) {
-            boxPlans[order.id] = res;
+            Warranty.boxPlans[order.id] = res;
             if (res.message === 'Sale found') {
-                self.renderDownload(order, res, product);
-                self.cancelWarranty();
-                self.downloadWarranty();
+                Warranty.renderDownload(order, res, product);
+                Warranty.cancelWarranty();
+                Warranty.downloadWarranty();
 
             } else if (res.message === 'Coverages found') {
-                self.render(order, product);
+                Warranty.render(order, product);
             }
         }).fail(function() {
-            self.alert('erro', 'Ocorreu algum erro, tente novamente');
+            Warranty.alert('erro', 'Ocorreu algum erro, tente novamente');
         });
-    };
+    },
 
-    self.render = function(order, product) {
+    render: function(order, product) {
         dust.render('warrantySpare.btnWarranty', {
             id: order.id,
             limitBuyDate: order.limitBuyDate
@@ -119,17 +118,19 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
             if (err) {
                 throw new Error('Modal Warranty Dust error: ' + err);
             }
-            $('.items-' + order.id + '.item-' + product.id).after(out);
+            if( $('.items-' + order.id + '.item-' + product.id + ' .action-buttons' ).length <= 0 ) {
+                $('.items-' + order.id + ' .quantity-price, .items-' + order.id + ' + .item-service .quantity-price').after('<td class="action-buttons"></td>');
+            }
+            $('.items-' + order.id + '.item-' + product.id + ' .action-buttons').append(out);
         });
 
         $('.add-warranty').unbind('click').click(function() {
             var orderId = $(this).data('id');
-            self.openSelectWarranty(boxOrder[orderId], boxPlans[orderId]);
+            Warranty.openSelectWarranty(Warranty.boxOrder[orderId], Warranty.boxPlans[orderId]);
         });
-    };
+    },
 
-    //Renderiza botão de download de gae comprada de forma avulsa (PDVBox) nos meus Pedidos
-    self.renderDownload = function(order, res, product) {
+    renderDownload: function(order, res, product) {
         var btnCancel = true,
             price = 'R$ ' + _.formatCurrency(res.price);
 
@@ -144,17 +145,21 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
         templateData.price = (price) ? price : '';
         templateData.period = (res.period) ? res.period + ' meses' : '';
         templateData.btnCancel = btnCancel;
+        templateData.refid = 'none';
+        templateData.productIndex = 'none';
 
-        dust.render('warrantySpare.btnDownloadWarranty', templateData, function(err, out) {
+        dust.render('warrantySpare.btnDownloadPdvBox', templateData, function(err, out) {
             if (err) {
                 throw new Error('Modal Warranty Dust error: ' + err);
             }
+            if( $('.items-' + order.id + '.item-' + product.id + ' .action-buttons' ).length <= 0 ) {
+                $('.items-' + order.id + ' .quantity-price').after('<td class="action-buttons"></td>');
+            }
             $('.items-' + order.id + '.item-' + product.id).after(out);
         });
-    };
+    },
 
-    //Renderiza botão de download de gae comprada pela Vtex
-    self.renderDownloadVtexWarranty = function(order, product) {
+    renderDownloadVtexWarranty: function(order, product) {
 
         var templateData = [];
         //console.log('order', order, product);
@@ -169,11 +174,14 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
             if (err) {
                 throw new Error('Modal Warranty Dust error: ' + err);
             }
-            $('.items-' + order.id + '.item-' + product.id).after(out);
+            if( $('.items-' + order.id + '.item-' + product.id + ' .action-buttons' ).length <= 0 ) {
+                $('.items-' + order.id + ' .quantity-price, .items-' + order.id + ' + .item-service .quantity-price').after('<td class="action-buttons"></td>');
+            }
+            $('.items-' + order.id + '.item-' + product.id + ' + .item-service .bundle-quantity-price + .action-buttons').append(out);
         });
-    };
+    },
 
-    self.openSelectWarranty = function(order, plan) {
+    openSelectWarranty: function(order, plan) {
         $.each(plan.coverages, function(i, coverage) {
             plan.coverages[i].price = ($.isNumeric(plan.coverages[i].price)) ? _.formatCurrency(coverage.price) : plan.coverages[i].price;
         });
@@ -191,12 +199,12 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
 
         $('#vtex-selecione-garantia .add').click(function() {
             var idPlan = $('#coverages').val();
-            self.confirmRegister(plan, idPlan);
+            Warranty.confirmRegister(plan, idPlan);
         });
-    };
+    },
 
-    self.confirmRegister = function(skuInfo, idPlan) {
-        var order = boxOrder[skuInfo.orderId];
+    confirmRegister: function(skuInfo, idPlan) {
+        var order = Warranty.boxOrder[skuInfo.orderId];
 
         return CRM.clientSearchByEmail(store.userData.email).done(function(user) {
 
@@ -204,14 +212,14 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
 
             var address = [];
 
-            address.street = 'Rua José de Oliveira Coelho';
-            address.number = '165';
+            address.street = order.street;
+            address.number = order.number;
             address.complement = order.complement;
             address.neighborhood = order.neighborhood;
-            address.city = 'São Paulo';
-            address.state = 'São Paulo';
+            address.city = order.city;
+            address.state = order.state;
             address.countryName = 'Brasil';
-            address.postalCode = '05727240';
+            address.postalCode = order.postalCode;
             address.reference = order.reference;
 
             dust.render('warrantySpare.modal-confirm', $.extend({}, address, user, skuInfo), function(err, out) {
@@ -227,22 +235,22 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
             });
 
             $('#vtex-confirmar-dados-garantia .confirm').click(function() {
-                self.addWarranty(user, address, skuInfo, idPlan);
+                Warranty.addWarranty(user, address, skuInfo, idPlan);
             });
 
             $('#vtex-confirmar-dados-garantia .back').click(function() {
-                self.confirmRegister(skuInfo, idPlan)
+                Warranty.confirmRegister(skuInfo, idPlan)
                     .done(function() {
                         $('#vtex-confirmar-dados-garantia .close').trigger('click');
                     });
             });
 
         }).fail(function() {
-            self.alert('erro-user', 'Ocorreu algum erro, tente novamente');
+            Warranty.alert('erro-user', 'Ocorreu algum erro, tente novamente');
         });
-    };
+    },
 
-    self.alert = function(id, text, time) {
+    alert: function(id, text, time) {
         var delay = time || 5000;
 
         $('<div class="alert-box" id="' + id + '">' + text + '</div>').hide().prependTo('body').fadeIn();
@@ -251,16 +259,16 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
                 $(this).remove();
             });
         }, delay);
-    };
+    },
 
-    self.cancelWarranty = function() {
+    cancelWarranty: function() {
         $('.cancel-warranty:not(.vtex)').unbind('click').click(function() {
             var idPlan = $(this).data('id');
             PDVBox.remove(idPlan);
         });
-    };
+    },
 
-    self.cancelVtexWarranty = function() {
+    cancelVtexWarranty: function() {
         $('.cancel-warranty').unbind('click').click(function() {
             var $button = $(this);
             var idPlan = $button.data('id');
@@ -273,25 +281,23 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
             data.order = idPlan;
             data.skuRefId = $(this).data('refid');
             data.indice = $(this).data('product-index');
-            
+
             CRM.insertCancelGae(data).done(function(){
                 $button.replaceWith('<p class="cancel-success">Cancelamento Solicitado!</p>');
             }).fail(function(){
-                self.alert('erro', 'Ocorreu algum erro, tente novamente');
+                Warranty.alert('erro', 'Ocorreu algum erro, tente novamente');
             });
         });
-    };
+    },
 
-    //dpwnload de bilhete de gae comprada de forma avulsa (PDVBox) nos meus Pedidos
-    self.downloadWarranty = function() {
+    downloadWarranty: function() {
         $('.download-warranty:not(.vtex)').unbind('click').click(function() {
             var idPlan = $(this).data('id');
             PDVBox.print(idPlan);
         });
-    };
+    },
 
-    //dpwnload de bilhete de gae comprada pela Vtex
-    self.downloadVtexWarranty = function() {
+    downloadVtexWarranty: function() {
         $('.download-warranty.vtex').unbind('click').click(function() {
             var idPlan = $(this).data('id');
             idPlan = idPlan.match( /\d+/g ).join([]);
@@ -301,9 +307,9 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
             }
             window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + store.userData.document + '&id=' + idPlan + '&loja=brastemp', '_blank');
         });
-    };
+    },
 
-    self.addWarranty = function(user, address, skuInfo, idPlan) {
+    addWarranty: function(user, address, skuInfo, idPlan) {
         PDVBox.add(user, address, skuInfo, idPlan).done(function(res) {
             res = JSON.parse(res);
 
@@ -326,7 +332,7 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
 
                 $('#iframe-pagamento').load(function() {
                     $.get(res.link).error(function() {
-                        self.alert('erro-pagamento', 'Ocorreu algum erro, tente novamente');
+                        Warranty.alert('erro-pagamento', 'Ocorreu algum erro, tente novamente');
                     });
                 });
 
@@ -335,7 +341,7 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
                 });
 
                 $('#vtex-pagamento-garantia .back').click(function() {
-                    self.confirmRegister(skuInfo, idPlan)
+                    Warranty.confirmRegister(skuInfo, idPlan)
                         .done(function() {
                             $('#vtex-pagamento-garantia').fadeOut('400', function() {
                                 $(this).remove();
@@ -344,8 +350,9 @@ Nitro.module('order.warranty', ['pdvbox'], function(PDVBox) {
                 });
             }
         }).fail(function() {
-            self.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
+            Warranty.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
         });
-    };
+    }
+};
 
-});
+module.exports = Warranty;

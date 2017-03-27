@@ -1,30 +1,19 @@
 'use strict';
 
-Nitro.module('pdvbox', function() {
+var PDVBOX = {
 
+    self: this,
+    dateNow: new Date(),
 
-    var self = this,
-        profileData,
-        dateNow = new Date();
-    
-    vtexjs.checkout.getOrderForm().done(function(res){
-        profileData = res.clientProfileData;
-    });
+    // var self.pdvBoxAPI = store.isQA ? 'http://compracerta.nxd.com.br/api/v2' : 'https://pdvbox.nxd.com.br/compracerta/api/v2';
 
-    // var pdvBoxAPI = store.isQA ? 'http://compracerta.nxd.com.br/api/v2' : 'https://pdvbox.nxd.com.br/compracerta/api/v2';
+    pdvBoxAPI: 'https://pdvbox.nxd.com.br/compracerta/api/v2',
 
-    var pdvBoxAPI = 'https://pdvbox.nxd.com.br/compracerta/api/v2';
+    username: 'compracerta',
 
-    var PDVBox = {
+    password: '8MUKHL5VSqeK8YaFCngUYcpuZZnn2WA4',
 
-        username: 'compracerta',
-
-        password: '8MUKHL5VSqeK8YaFCngUYcpuZZnn2WA4',
-
-        domain: pdvBoxAPI
-    };
-
-    self.get = function(orderId, productName) {
+    get: function(orderId, productName) {
         return vtexjs.checkout.getOrders(orderId).then(function(orders) {
             var item = [];
 
@@ -41,15 +30,16 @@ Nitro.module('pdvbox', function() {
             var data = {
                 transaction: {
                     login: {
-                        username: PDVBox.username,
-                        password: PDVBox.password
+                        username: PDVBOX.username,
+                        password: PDVBOX.password
                     },
                     product: {
+                        // sku: 'B4D02ABANA',
                         sku: item[0].refId,
                         price: item[0].sellingPrice / 100
                     },
                     client: {
-                        id: profileData.email
+                        id: store.userData.email
                     },
                     sale: {
                         id: orderId,
@@ -58,7 +48,7 @@ Nitro.module('pdvbox', function() {
                 }
             };
 
-            return $.post(PDVBox.domain + '/product/', JSON.stringify(data)).then(function(res) {
+            return $.post(PDVBOX.pdvBoxAPI + '/product/', JSON.stringify(data)).then(function(res) {
                 res = JSON.parse(res);
 
                 res.sku = item[0].refId;
@@ -71,22 +61,22 @@ Nitro.module('pdvbox', function() {
             });
 
         });
-    };
+    },
 
-    self.add = function(user, address, skuInfo, idPlan) {
+    add: function(user, address, skuInfo, idPlan) {
         var data = {
             transaction: {
                 login: {
-                    username: PDVBox.username,
-                    password: PDVBox.password
+                    username: PDVBOX.username,
+                    password: PDVBOX.password
                 },
                 product: {
-                    /*sku: 'BRM48NBANA',*/
+                    // sku: 'B4D02ABANA',
                     sku: skuInfo.sku,
                     price: skuInfo.skuPrice
                 },
                 client: {
-                    id: profileData.email,
+                    id: store.userData.email,
                     cpf: user.document,
                     name: user.firstName + ' ' + user.lastName,
                     address1: address.street,
@@ -96,12 +86,12 @@ Nitro.module('pdvbox', function() {
                     state: address.state,
                     zip: address.postalCode,
                     phone: user.phone,
-                    email: profileData.email
+                    email: store.userData.email
                 },
                 sale: {
                     id: skuInfo.orderId,
                     store: 31,
-                    sale_date: $.formatDatetime(dateNow, '-')
+                    sale_date: $.formatDatetime(PDVBOX.dateNow, '-')
                 },
                 plan: {
                     id: idPlan
@@ -109,15 +99,15 @@ Nitro.module('pdvbox', function() {
             }
         };
 
-        return $.post(PDVBox.domain + '/purchase/', JSON.stringify(data));
-    };
+        return $.post(PDVBOX.pdvBoxAPI + '/purchase/', JSON.stringify(data));
+    },
 
-    self.remove = function(idPlan) {
+    remove: function(idPlan) {
         var data = {
             transaction: {
                 login: {
-                    username: PDVBox.username,
-                    password: PDVBox.password
+                    username: PDVBOX.username,
+                    password: PDVBOX.password
                 },
                 sale_coverage: {
                     id: idPlan
@@ -125,7 +115,7 @@ Nitro.module('pdvbox', function() {
             }
         };
 
-        return $.post(PDVBox.domain + '/purchase/cancel/', JSON.stringify(data)).done(function(res) {
+        return $.post(PDVBOX.pdvBoxAPI + '/purchase/cancel/', JSON.stringify(data)).done(function(res) {
             res = JSON.parse(res);
             if (res.status) {
                 $('<p>Sua garantia foi cancelada com sucesso!</p>').vtexModal({
@@ -140,28 +130,28 @@ Nitro.module('pdvbox', function() {
 
             } else {
                 if (res.message === 'Sale already canceled') {
-                    self.alert('erro-cancel', 'A garantia desso produto já foi cancelada');
+                    PDVBOX.alert('erro-cancel', 'A garantia desso produto já foi cancelada');
                 } else {
-                    self.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+                    PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
                 }
             }
         })
         .fail(function() {
-            self.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+            PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
         });
-    };
+    },
 
-    self.print = function(idPlan) {
+    print: function(idPlan) {
         var data = {
             transaction: {
                 login: {
-                    username: PDVBox.username,
-                    password: PDVBox.password
+                    username: PDVBOX.username,
+                    password: PDVBOX.password
                 }
             }
         };
 
-        return $.post(PDVBox.domain + '/print/' + idPlan, JSON.stringify(data)).done(function(template) {
+        return $.post(PDVBOX.pdvBoxAPI + '/print/' + idPlan, JSON.stringify(data)).done(function(template) {
             var $template = $(template).filter('div');
 
             $template.find('tr:eq(0)').remove();
@@ -174,11 +164,11 @@ Nitro.module('pdvbox', function() {
             });
 
         }).fail(function() {
-            self.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+            PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
         });
-    };
+    },
 
-    self.alert = function(id, text, time) {
+    alert: function(id, text, time) {
         var delay = time || 5000;
 
         $('<div class="alert-box" id="' + id + '">' + text + '</div>').hide().prependTo('body').fadeIn();
@@ -187,6 +177,8 @@ Nitro.module('pdvbox', function() {
                 $(this).remove();
             });
         }, delay);
-    };
+    }
 
-});
+};
+
+module.exports = PDVBOX;

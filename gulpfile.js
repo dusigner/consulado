@@ -10,6 +10,8 @@ var gulp		= require('gulp'),
 	semver		= require('semver'),
 	sassLint 	= require('gulp-sass-lint'),
 	pkg			= require('./package.json'),
+	cssnano		= require('cssnano'),
+	cssMqpacker = require('css-mqpacker'),
 	shell		= require('shelljs');
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
@@ -22,29 +24,60 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 		images: 'src/images/**/*.{png,jpeg,jpg,gif,svg}',
 		templates: 'src/templates/*.html',
 		dest: 'build/arquivos',
-		destCheckout: 'build/files'
+		destCheckout: 'build/files',
+		pages: 'src/pages/**/*.html'
 	};
 
+var getPath = function ( source ) {
+
+	var newPath = [ paths[ source ] ],
+		replaceSource;
+
+	if( $.util.env.page ) {
+
+		if( source === 'webpack' ) {
+			source = 'scripts';
+		}
+
+		replaceSource = source === 'pages' ? '': '/' + source;
+
+		newPath.push( newPath[0].replace( source,  'pages/' + $.util.env.page + replaceSource ) );
+	}
+
+	if( source === 'pages' ) {
+		newPath.shift();
+	}
+
+	//console.log( newPath );
+
+	return newPath;
+};
+
 gulp.task('sassLint', function () {
-	return gulp.src([paths.styles, '!src/styles/helpers/*'])
-    .pipe(sassLint({
+
+	return gulp.src(getPath('styles')
+	.concat('!src/styles/helpers/*'))
+	.pipe(sassLint({
 			options: {
 				'config-file': '.sass-lint.yml'
 			}
 		}))
-    .pipe(sassLint.format());
-    // .pipe(sassLint.failOnError());
+	.pipe(sassLint.format());
+	// .pipe(sassLint.failOnError());
 });
 
 gulp.task('lint', function () {
-	return gulp.src([paths.scripts, '!src/scripts/vendors/*.js', '!src/scripts/modules/helpers.js'])
+
+	return gulp.src(getPath('scripts')
+	.concat('!src/scripts/vendors/*.js')
+	.concat('!src/scripts/modules/helpers.js'))
 	.pipe($.eslint())
 	.pipe($.eslint.format())
 	.pipe($.eslint.failAfterError());
 });
 
 gulp.task('fonts', function () {
-	return gulp.src(paths.fonts)
+	return gulp.src(getPath('fonts'))
 		.pipe($.rename(function(file){
 			file.extname += '.css'
 		}))
@@ -85,7 +118,7 @@ gulp.task('scripts', ['lint'], function () {
 		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
 	}
 
-	return gulp.src(paths.webpack)
+	return gulp.src(getPath('webpack'))
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
@@ -116,28 +149,58 @@ gulp.task('scripts', ['lint'], function () {
 			devtool: $.util.env.production ? '': '#source-map'
 		}))
 		.pipe(gulp.dest(paths.dest))
-		.pipe(gulp.dest(paths.destCheckout));
+		/*.pipe(gulp.dest(paths.destCheckout))*/;
 });
 
 gulp.task('styles', ['sassLint'], function () {
-	return $.rubySass('src/styles/', {
-			sourcemap: ! $.util.env.production,
-			style: $.util.env.production ? 'compressed' : 'nested'
-		})
-		.on('error', $.sass.logError)
+	return gulp.src(getPath('styles'))
 		.pipe($.plumber())
+		.pipe($.newer(paths.dest))
+		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
+		.pipe( $.sass({
+			errLogToConsole: true,
+			outputStyle: $.util.env.production ? 'compressed' : 'nested',
+			includePaths: [
+				'node_modules/bootstrap-sass/assets/stylesheets/',
+
+				// https://github.com/dlmanning/gulp-sass/commit/6b65a312f44f076c6f92ed3e35c20848bd9cdf6a
+				'src/styles/'
+			]
+		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
-		.pipe($.postcss([
-	      require('css-mqpacker')(),
-				require('cssnano')()
-	    ]))
+		.pipe( $.util.env.production ? $.postcss([
+			cssnano(),
+			cssMqpacker()
+		]) : $.postcss([
+			cssMqpacker()
+		]))
+		// REPLACEMENTS
+		.pipe($.replace('PKG_ACCOUNTNAME', pkg.accountName))
+		.pipe($.replace('PKG_NAME', pkg.name))
+		.pipe($.replace('PKG_AUTHOR', pkg.author))
+		.pipe($.replace('PKG_BUILD_VERSION', pkg.version))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dest))
-		.pipe(gulp.dest(paths.destCheckout));
+		/*.pipe(gulp.dest(paths.destCheckout))*/;
+
+	// return $.rubySass('src/styles/', {
+	// 		sourcemap: ! $.util.env.production,
+	// 		style: $.util.env.production ? 'compressed' : 'nested'
+	// 	})
+	// 	.on('error', $.sass.logError)
+	// 	.pipe($.plumber())
+	// 	.pipe($.autoprefixer())
+	// 	.pipe($.postcss([
+	// 	  require('css-mqpacker')(),
+	// 			require('cssnano')()
+	// 	]))
+	// 	.pipe($.sourcemaps.write('.'))
+	// 	.pipe(gulp.dest(paths.dest))
+	// 	.pipe(gulp.dest(paths.destCheckout));
 });
 
 gulp.task('images', function () {
-	return gulp.src(paths.images)
+	return gulp.src(getPath('images'))
 		.pipe($.plumber())
 		.pipe($.newer(paths.dest))
 		.pipe($.imagemin({
@@ -156,7 +219,7 @@ gulp.task('clean', function (cb) {
 gulp.task('server', ['watch'], function () {
 
 	bs({
-		files: [ 'build/**', '!build/**/*.map'],
+		files: $.util.env.page ? [] : [ 'build/**', '!build/**/*.map'],
 		startPath: '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue',
 		rewriteRules: [
 			{
@@ -178,16 +241,34 @@ gulp.task('server', ['watch'], function () {
 			]
 		},
 		serveStatic: ['./build'],
+		open: !$.util.env.page && !$.util.env.no
+	});
+
+	return $.util.env.page && bs.create().init({
+		files: [ 'build/**', '!build/**/*.map'],
+		server: {
+			baseDir: ['build']
+		},
+		ui: false,
+		port: 3002,
+		startPath: $.util.env.page,
 		open: !$.util.env.no
 	});
 
 });
 
-gulp.task('watch', ['scripts', 'styles', 'images'], function () {
-	gulp.watch(paths.scripts, ['scripts']);
-	gulp.watch(paths.styles, ['styles']);
-	gulp.watch(paths.images, ['images']);
-	gulp.watch(paths.templates, ['scripts']);
+gulp.task('pages', function () {
+	return $.util.env.page && gulp.src( getPath('pages'), {base: 'src/pages'} )
+		.pipe($.newer('build'))
+		.pipe(gulp.dest('build'));
+});
+
+gulp.task('watch', ['scripts', 'styles', 'images', 'pages'], function () {
+	gulp.watch(getPath('scripts'), ['scripts']);
+	gulp.watch(getPath('styles'), ['styles']);
+	gulp.watch(getPath('images'), ['images']);
+	gulp.watch(getPath('templates'), ['scripts']);
+	gulp.watch( getPath('pages'), ['pages']);
 });
 
 gulp.task('default', ['clean'], function() {

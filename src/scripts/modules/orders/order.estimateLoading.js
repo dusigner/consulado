@@ -1,5 +1,4 @@
 'use strict';
-
 Nitro.module('order.estimateLoading', function() {
 
 
@@ -10,7 +9,7 @@ Nitro.module('order.estimateLoading', function() {
      * @param {Object} order
      */
     this.setup = function(order) {
-        // console.log('ORDER', order);
+        //console.log('ORDER', order);
         var $boxOrder = $('#' + order.orderGroup),
             shipping = {};
 
@@ -110,8 +109,8 @@ Nitro.module('order.estimateLoading', function() {
      */
     this.percentShipping = function(shipping, orderPercent) {
         if (shipping.diff >= shipping.totalDays) {
-            shipping.diff = shipping.totalDays;  
-        } 
+            shipping.diff = shipping.totalDays;
+        }
         var percent = (100 / shipping.totalDays) * shipping.diff;
 
         if (orderPercent !== undefined) {
@@ -131,7 +130,7 @@ Nitro.module('order.estimateLoading', function() {
         var $boxOrder = $('#' + order.orderGroup);
 
         if ($boxOrder.find('.order-loading-estimate').length > 1) {
-            return false;  
+            return false;
         }
 
         var boxLoading =
@@ -159,7 +158,7 @@ Nitro.module('order.estimateLoading', function() {
                 .find('.order-loading-estimate .delivery').show();
         }
 
-        // console.log('shipping', shipping);
+        //console.log('shipping', shipping);
     };
 
 
@@ -174,14 +173,15 @@ Nitro.module('order.estimateLoading', function() {
         for (var x = 1; x <= totalDays; x++) {
             dat = new Date(dat.setDate(dat.getDate() + 1));
             if (dat.getDay() === 0 || dat.getDay() === 6) {
-                weekend++;  
+                weekend++;
             }
 
             if (x === totalDays) {
                 var end = 1;
                 if (dat.getDay() === 6) {
-                    end = 2; weekend = weekend + end;  
-                } 
+                    end = 2;
+                }
+                weekend = weekend + end;
             }
         }
         return weekend;
@@ -213,7 +213,7 @@ Nitro.module('order.estimateLoading', function() {
         // Set the shipping estimate date
         var customDate = new Date(shipping.lastChange);
         var weekendDays = self.countWeekend(customDate, shipping.totalDays);
-        // console.log('total days', shipping.totalDays, weekendDays);
+
         shipping.totalDays = shipping.totalDays + weekendDays;
         shipping.deliveryDate = customDate.setDate(customDate.getDate() + shipping.totalDays);
 

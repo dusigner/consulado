@@ -1,0 +1,491 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul2.
+	* Author: Douglas "Amarelo" Lopes / Gustavo Bento de Paula / Douglas Tenório
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+// Base styles
+@import 'base/fonts';
+@import 'base/main';
+
+// Layout styles
+@import 'layout/container';
+
+$dark-gray-color: #343434;
+$green-color: #97c73d;
+
+.gae-title {
+	@include breakpoint(extra-small, 'max') { @include font-size(40px); }
+	@include breakpoint(small, 'max') { @include font-size(40px); }
+	@include font-size(60px);
+	color: $green-color;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.gae-icon-beneficios-1 {
+	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -50px 0;
+	height: 92px;
+	width: 92px;
+}
+
+.gae-icon-beneficios-2 {
+	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -177px 0;
+	height: 92px;
+	width: 92px;
+}
+
+.gae-icon-beneficios-3 {
+	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -307px 0;
+	height: 92px;
+	width: 92px;
+}
+
+.gae-icon-beneficios-4 {
+	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -449px 0;
+	height: 92px;
+	width: 92px;
+}
+
+.gae-icon-beneficios-5 {
+	background: url('/arquivos/whp-landing-gae-icon-beneficios.png') no-repeat -586px 0;
+	height: 92px;
+	width: 92px;
+}
+
+
+.gae-icon-contratar-1 {
+	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -24px 0;
+	height: 91px;
+	width: 92px;
+}
+
+.gae-icon-contratar-2 {
+	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -150px 0;
+	height: 91px;
+	width: 92px;
+}
+
+.gae-icon-contratar-3 {
+	background: url('/arquivos/consul-landing-gae-icon-contratar.png') no-repeat -272px 0;
+	height: 91px;
+	width: 92px;
+}
+
+
+
+.box-gae-arrow {
+	@include breakpoint(extra-small, 'max') { display: none; }
+	@include breakpoint(small, 'max') { display: none; }
+	cursor: pointer;
+	left: 0;
+	margin-top: -30px;
+	position: absolute;
+	z-index: 5;
+
+	.circle-arrow {
+		background: #ffffff;
+		border-radius: 50%;
+		height: 60px;
+		margin: 0 auto;
+		position: relative;
+		text-align: center;
+		width: 85px;
+		&:after {
+			background: url('/arquivos/consul-landing-gae-arrows.png') no-repeat -31px 0;
+			bottom: 15px;
+			content: '';
+			float: left;
+			height: 14px;
+			left: 31px;
+			position: absolute;
+			width: 25px;
+		}
+		&.beneficios {
+			background: $green-color;
+			&:after {
+				background: url('/arquivos/consul-landing-gae-arrows.png') no-repeat -59px 0;
+			}
+		}
+		&.contratar {
+			&:after {
+				background: url('/arquivos/consul-landing-gae-arrows.png') no-repeat -2px 0;
+			}
+		}
+	}
+}
+
+section#header {
+	background: url('/arquivos/consul-landing-gae-background-01.png') no-repeat center top;
+	height: 560px;
+	padding-top: 65px;
+	position: relative;
+	text-align: center;
+
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+
+	.box-logo {
+		height: 20px;
+	}
+
+	.box-gae-img-main {
+		height: 65px;
+		margin: 0;
+		padding-top: 2%;
+	}
+
+	.box-gae-text-main {
+		color: $dark-gray-color;
+		height: 74px;
+		line-height: .8;
+		margin: 0;
+		padding-top: 5%;
+		text-transform: uppercase;
+
+		@include breakpoint(extra-small, 'max') { height: auto; }
+		@include breakpoint(small, 'max') { height: auto; }
+
+		h1 {
+			@include font-size(40px);
+
+			@include breakpoint(extra-small, 'max') { 
+				@include font-size(28px); 
+				line-height: 1; 
+			}
+
+			@include breakpoint(small, 'max') { 
+				@include font-size(28px); 
+				line-height: 1; 
+			}
+		}
+		strong {
+			@include font-size(34px);
+
+			@include breakpoint(extra-small, 'max') { 
+				@include font-size(24px); 
+				line-height: 1; 
+			}
+			@include breakpoint(small, 'max') { 
+				@include font-size(24px); 
+				line-height: 1; 
+			}
+		}
+	}
+
+	.box-gae-what-is {
+		margin: 0;
+		padding-top: 10%;
+
+		@include breakpoint(extra-small, 'max') { margin-top: 5%; }
+		@include breakpoint(small, 'max') { margin-top: 5%; }
+
+		h3 {
+			color: #00a4e3;
+		}
+
+		p {
+			@include font-size(18px);
+			margin: 0 auto;
+			text-align: left;
+			width: 80%;
+
+			@include breakpoint(extra-small, 'max') { text-align: center; }
+			@include breakpoint(small, 'max') { text-align: center; }
+		}
+	}
+
+}
+
+
+section#beneficios {
+	background: $green-color;
+	height: 620px;
+	position: relative;
+	text-align: center;
+
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+
+	.box-gae-beneficios {
+		margin: 0;
+		padding-top: 60px;
+		.gae-title { color: #fff; }
+	}
+
+	.box-gae-icons {
+		margin: 0 auto;
+		text-align: left;
+
+		.box-icon-beneficios {
+			padding: 0 40px 0 0;
+			width: 20%;
+
+			@include breakpoint(extra-small, 'max') {
+				margin: 0 auto;
+				padding: 0;
+				text-align: center;
+				width: 100%;
+			}
+
+			@include breakpoint(small, 'max') {
+				margin: 0 auto;
+				padding: 0;
+				text-align: center;
+				width: 100%;
+			}
+
+			div { margin: 40px auto; }
+			.title-beneficios {
+				@include font-size(20px);
+				color: #fff;
+				display: block;
+				font-weight: bold;
+				height: 60px;
+				text-align: center;
+				text-transform: uppercase;
+			}
+			.text-beneficios {
+				@include font-size(15px);
+				color: #ffffff;
+				font-weight: 300;
+				line-height: 1.1;
+			}
+		}
+	}
+}
+
+section#contratar {
+	height: 470px;
+	position: relative;
+	text-align: center;
+
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+
+	.box-gae-contratar {
+		margin: 0;
+		padding-top: 60px;
+	}
+
+	.box-gae-icons {
+		margin: 0 auto;
+		width: 70%;
+		.box-icon-contratar {
+			margin: 0 auto;
+			padding: 0;
+			div { margin: 40px auto 0; }
+			h2 {
+				@include font-size(45px);
+				color: $green-color;
+				height: 30px;
+				line-height: 1;
+			}
+			strong {
+				@include font-size(15px);
+				 color: $green-color;
+				 line-height: 1;
+			 }
+			p {
+				@include font-size(15px);
+				line-height: 1;
+				margin: 0 auto;
+				width: 80%;
+			 }
+		}
+	}
+}
+
+section#como-funciona {
+	background: #6f2c90;
+	color: #ffffff;
+	height: 565px;
+	position: relative;
+	text-align: center;
+
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+
+	.box-gae-title {
+		height: 100px;
+		margin: 0;
+		padding: 60px 0 60px 0;
+
+		@include breakpoint(extra-small, 'max') { height: auto; }
+		@include breakpoint(small, 'max') { height: auto; }
+		.gae-title {
+			color: #ffffff;
+		}
+	}
+
+	.box-gae-como-funciona-subtitle {
+		margin: 0;
+		padding: 0;
+		div {
+			height: 30px;
+			@include breakpoint(extra-small, 'max') { height: auto; }
+			@include breakpoint(small, 'max') { height: auto; }
+			h2 {
+				@include font-size(30px);
+				font-weight: 200;
+			}
+		}
+	}
+
+	.box-gae-como-funciona-text {
+		margin: 0 auto;
+		padding: 0;
+		text-align: left;
+
+		.gae-text-first {
+			height: 30px;
+			margin: 0 auto;
+			width: 86%;
+
+			@include breakpoint(extra-small, 'max') { 
+				height: auto; 
+				width: 100%; 
+			}
+			@include breakpoint(small, 'max') { 
+				height: auto; 
+				width: 100%; 
+			}
+		}
+
+		p {
+			@include font-size(20px);
+			font-weight: 200;
+			line-height: 1;
+		}
+
+		.gae-text {
+			height: 28px;
+			margin: 0 auto;
+			width: 60%;
+
+			@include breakpoint(extra-small, 'max') { height: auto; }
+			@include breakpoint(small, 'max') { height: auto; }
+
+			p {
+				@include font-size(20px);
+				font-weight: 200;
+				line-height: 1;
+			}
+		}
+	}
+
+	.box-gae-dots {
+		margin: 0 auto;
+		padding: 0;
+		div {
+			height: 10px;
+			padding: 25px 0 40px 0;
+
+			@include breakpoint(extra-small, 'max') { padding: 15px 0 35px 0; }
+			@include breakpoint(small, 'max') { padding: 15px 0 35px 0; }
+
+			.gae-icon-dots {
+				@include font-size(35px);
+				margin: 0 auto;
+				padding: 0;
+			}
+		}
+	}
+}
+
+
+section#footer {
+	@include breakpoint(extra-small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+	@include breakpoint(small, 'max') { 
+		height: auto; 
+		padding-bottom: 5%; 
+	}
+
+	color: #a3a3a3;
+	position: relative;
+
+	.box-gae-links {
+		border-bottom: 1px solid #a3a3a3;
+		margin: 0;
+		padding: 45px 0 20px 0;
+		text-align: center;
+
+		@include breakpoint(extra-small, 'max') { text-align: left; }
+		@include breakpoint(small, 'max') { text-align: left; }
+
+		.box-gae-links-list {
+			margin: 0;
+			padding: 0;
+			p {
+				display: inline-block;
+				line-height: 1;
+				margin: 0;
+				padding: 0;
+				padding-right: 2px;
+
+				@include breakpoint(extra-small, 'max') { 
+					display: block; 
+					padding: 5px 0; 
+				}
+				@include breakpoint(small, 'max') { 
+					display: block; 
+					padding: 5px 0; 
+				}
+			}
+			a {
+				color: $green-color;
+				font-weight: bold;
+			}
+		}
+	}
+
+	.box-gae-address {
+		@include font-size(13px);
+		padding: 20px 25px 0 0;
+	}
+
+	.box-gae-info {
+		@include font-size(13px);
+	}
+}
