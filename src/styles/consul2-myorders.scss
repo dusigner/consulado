@@ -792,6 +792,7 @@ body.orders-page {
 
 		&:after {
 			@include icon-get(arrow-down);
+			color: #888888;
 			display: inline-block;
 			font-size: 11px;
 			margin-left: 10px;
@@ -1032,6 +1033,8 @@ body.orders-page {
 			@include responsiveFont(14, 16, true);
 			margin: 1em 0;
 			text-align: center;
+			text-transform: uppercase;
+			width: 100%;
 		}
 	}
 

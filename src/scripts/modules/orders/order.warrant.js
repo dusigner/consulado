@@ -15,6 +15,7 @@ var Warranty = {
     boxOrder: {},
     boxPlans: {},
     dateNow: new Date(),
+    profileData: {},
 
     init: function(order) {
         var orderId = $(order).data('order-group');
@@ -45,7 +46,13 @@ var Warranty = {
 
         Warranty.boxOrder[orderId].limitBuyDate = limitBuyDate;
 
-        Warranty.addButton(Warranty.boxOrder[orderId], order);
+        vtexjs.checkout.getOrderForm().done(function(res){
+            Warranty.profileData = res.clientProfileData;
+            Warranty.addButton(Warranty.boxOrder[orderId], order);
+        }).fail(function() {
+            Warranty.alert('erro-user', 'Ocorreu algum erro, tente novamente');
+        });
+
     },
 
     addButton: function(order, orderElem) {
@@ -206,7 +213,7 @@ var Warranty = {
     confirmRegister: function(skuInfo, idPlan) {
         var order = Warranty.boxOrder[skuInfo.orderId];
 
-        return CRM.clientSearchByEmail(store.userData.email).done(function(user) {
+        return CRM.clientSearchByEmail(Warranty.profileData.email).done(function(user) {
 
             $('#vtex-selecione-garantia .close').trigger('click');
 
@@ -276,7 +283,7 @@ var Warranty = {
 
             var data = {};
             data.cancel = true;
-            data.document = store.userData.document;
+            data.document = Warranty.profileData.document;
             data.garantia = $(this).data('period');
             data.order = idPlan;
             data.skuRefId = $(this).data('refid');
@@ -305,7 +312,7 @@ var Warranty = {
             while (idPlan.length < 10) {
                 idPlan = '0' + idPlan;
             }
-            window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + store.userData.document + '&id=' + idPlan + '&loja=brastemp', '_blank');
+            window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=brastemp', '_blank');
         });
     },
 

@@ -13,6 +13,15 @@ var PDVBOX = {
 
     password: '8MUKHL5VSqeK8YaFCngUYcpuZZnn2WA4',
 
+    profileData: {},
+
+    getProfileData: function(){
+        return vtexjs.checkout.getOrderForm().done(function(res){
+            PDVBOX.profileData = res.clientProfileData;
+            return res.clientProfileData;
+        });
+    }(),
+
     get: function(orderId, productName) {
         return vtexjs.checkout.getOrders(orderId).then(function(orders) {
             var item = [];
@@ -39,7 +48,7 @@ var PDVBOX = {
                         price: item[0].sellingPrice / 100
                     },
                     client: {
-                        id: store.userData.email
+                        id: PDVBOX.profileData.email
                     },
                     sale: {
                         id: orderId,
@@ -76,7 +85,7 @@ var PDVBOX = {
                     price: skuInfo.skuPrice
                 },
                 client: {
-                    id: store.userData.email,
+                    id: PDVBOX.profileData.email,
                     cpf: user.document,
                     name: user.firstName + ' ' + user.lastName,
                     address1: address.street,
@@ -86,7 +95,7 @@ var PDVBOX = {
                     state: address.state,
                     zip: address.postalCode,
                     phone: user.phone,
-                    email: store.userData.email
+                    email: PDVBOX.profileData.email
                 },
                 sale: {
                     id: skuInfo.orderId,

@@ -128,7 +128,7 @@ Nitro.controller('meuspedidos', ['removeBootstrap'], function() {
                 Warranty.init($self);
 
                 //Render buttons orderinfo
-                $selector('.order-info .row-fluid').append('<div class="span4 order-info__buttons"><a href="https://compracerta.custhelp.com/app/atendimento?pedido=' + orderData['order-id'] + '" target="_blank" class="order-info__help primary-button">Ajuda</a></div>');
+                $selector('.order-info .row-fluid').append('<div class="span4 order-info__buttons"><a href="https:/consul.custhelp.com/app/atendimento?pedido=' + orderData['order-id'] + '" target="_blank" class="order-info__help primary-button">Ajuda</a></div>');
 
                 //Render Tracking Info
                 //v202503881ccbr-01
