@@ -49,6 +49,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
         data.products = e.items;
         data.Installment = (e.paymentData.payments[0]) ? e.paymentData.payments[0].installments : '';
         data.boletoURL = (e.paymentData.payments[0]) ? e.paymentData.payments[0].url : '';
+        data.hasGae = false;
 
         var orderDate = data.formattedDate.split('/');
         data.orderDate = orderDate[2] + '/' + orderDate[1] + '/' + orderDate[0];
@@ -57,9 +58,15 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
             if (e.imageUrl) {
                 e.imageUrl = e.imageUrl.replace('55-55', '500-500');
             }
+
             if (e.price) {
                 e.price = _.formatCurrency(e.sellingPrice / 100);
             }
+
+            if (e.bundleItems.length > 0) {
+                data.hasGae = true;
+            }
+
         });
 
         return data;
@@ -78,9 +85,15 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
             });
         });
 
-        if ($.diffDate(dateNow, order.orderDate) <= 334 && order.currentState.orderLabel.toLowerCase() !== 'cancelado' && order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' && order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento') {
-            ordersPromises.push(currentOrder);
-            allOrders.push(order);
+        console.log('here', order);
+
+        if ($.diffDate(dateNow, order.orderDate) <= 334
+            && order.currentState.orderLabel.toLowerCase() !== 'cancelado'
+            && order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado'
+            && order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento'
+            && !order.hasGae) {
+                ordersPromises.push(currentOrder);
+                allOrders.push(order);
         }
     };
 

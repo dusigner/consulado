@@ -25,31 +25,30 @@
 			<div class="box-full-order">
 				<div class="order-show-more box-{orderId}">
 					{#products}
-					<div class="row order-products cart-items items-{orderGroup} item-{.id}"
-						data-product-id="{.id}"
-						data-product-refId="{.refId}"
-						data-product-name="{.name}">
+						<div class="row order-products cart-items items-{orderGroup} item-{.id}"
+							data-product-id="{.id}"
+							data-product-refId="{.refId}"
+							data-product-name="{.name}">
 
-						<div class="product-info col-12">
-							<div class="product-image">
-								<img src="{.imageUrl}" alt="{.name}" width="110px" height="auto" />
-							</div>
-
-							<div class="product-details">
-								<div class="product-name">
-									<span>{.name}</span>
+							<div class="product-info col-12">
+								<div class="product-image">
+									<img src="{.imageUrl}" alt="{.name}" width="110px" height="auto" />
 								</div>
 
-								<div class="product-data">
-									<span>Compra realizada em <strong class="orderDate">{formattedDate}</strong></span>
-								</div>
+								<div class="product-details">
+									<div class="product-name">
+										<span>{.name}</span>
+									</div>
 
-								<p class="seller">Loja Virtual Consul</p>
+									<div class="product-data">
+										<span>Compra realizada em <strong class="orderDate">{formattedDate}</strong></span>
+									</div>
+
+									<p class="seller">Loja Virtual Consul</p>
+								</div>
 							</div>
+							{> warrantyInfo /}
 						</div>
-
-						{> warrantyInfo /}
-					</div>
 					{/products}
 				</div>
 			</div>
