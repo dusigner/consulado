@@ -312,7 +312,7 @@ var Warranty = {
             while (idPlan.length < 10) {
                 idPlan = '0' + idPlan;
             }
-            window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=brastemp', '_blank');
+            window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=consul', '_blank');
         });
     },
 
