@@ -818,7 +818,7 @@ body.orders-page {
 	.title__order-status {
 		@include breakpoint(small, 'max') {
 			margin: 0;
-			max-width: calc(100% - 25px);
+			max-width: calc(100% - 32px);
 			white-space: nowrap;
 		}
 		background-color: $orange;
