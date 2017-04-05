@@ -1,4 +1,3 @@
-/* global $: true, Nitro: true */
 'use strict';
 
 require('vendors/ajax.localstorage');
@@ -10,72 +9,94 @@ Nitro.module('list-more', function() {
         $button = $('#list-more'),
         $vitrine = $('.vitrine'),
         $prateleira = $vitrine.find('> .prateleira'),
-        query = /load\(\'(.*)\'/.exec($vitrine.find('> script').text()),
+        query = /load\(\'(.*)\'/.exec( $vitrine.find('> script').text() ),
         grid = +$('#PS').val(),
         page = 2,
-        url;
+        url,
+        rel = '',
+        path = window.location.pathname;
 
-    this.loadContent = function() {
-        $.ajax({
-            url: url + page,
-            localCache: true,
-            cacheTTL: 1,
-            dataType: 'html',
-            beforeSend: function() {
-                // console.log('page', page);
+    $(window).on('filter', function(e, currentFilter){
+        rel = currentFilter;
+        page = 2;
+        $button.removeClass('hide');
+    });
 
-                if ($button.is('loading')) {
-                    return false;
-                } else {
-                    $button.addClass('loading');
-                    return true;
-                }
+    this.setup = function() {
 
-            }
-        })
-            .done(function(data) {
-                if (data) {
-                    $('.vitrine > .prateleira').append(data);
+        if( query && query.length > 0 && this.isActive() ) {
+            url = query[1];
+        } else {
+            return;
+        }
 
-                    if (self.isActive()) {
+        $button.click(this.loadContent).removeClass('hide');
 
-                        page++;
-
-                        self.prefetch();
-
-                    } else {
-                        $button.hide();
-                    }
-
-                } else {
-                    $button.hide();
-                }
-            })
-            .always(function() {
-                $button.removeClass('loading');
-            });
-    };
-
-    this.prefetch = function() {
-        $.ajax({
-            url: url + page,
-            localCache: true,
-            cacheTTL: 1,
-            dataType: 'html'
-        });
+        this.prefetch();
     };
 
     this.isActive = function() {
         return $prateleira.find('li[layout]').length % grid === 0;
     };
 
-    if (query && query.length > 0 && this.isActive()) {
-        url = query[1];
-    } else {
-        return;
-    }
+    this.loadContent = function() {
+        // console.log('SALE', url + page);
+        $.ajax({
+            url: url + page + rel,
+            localCache: true,
+            cacheTTL: 1,
+            cacheKey: 'more' + path + page + rel,
+            dataType: 'html',
+            beforeSend: function(){
+                // console.log('page', page);
 
-    $button.click(self.loadContent).removeClass('hide');
+                if( $button.is('loading') ){
+                    return false;
+                }else{
+                    $button.addClass('loading');
+                    return true;
+                }
 
-    this.prefetch();
+            }
+        })
+        .done(function(data) {
+            if( data ) {
+
+                $('.vitrine > .prateleira').append( data );
+
+                Nitro.module('prateleira');
+
+                // console.log( 'active', self.isActive() );
+
+                if( self.isActive() ) {
+
+                    page++;
+
+                    self.prefetch();
+
+                } else {
+                    $button.addClass('hide');
+                }
+
+            } else {
+                $button.addClass('hide');
+            }
+        })
+        .always(function() {
+            $button.removeClass('loading');
+        });
+    };
+
+    this.prefetch = function() {
+        $.ajax({
+            url: url + page + rel,
+            localCache: true,
+            cacheTTL: 1,
+            cacheKey: 'more' + path + page + rel,
+            dataType: 'html'
+        });
+    };
+
+    this.setup();
+
 });

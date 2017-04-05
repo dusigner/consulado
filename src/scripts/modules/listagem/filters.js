@@ -87,6 +87,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
     };
 
     this.request = function() {
+        //console.log('url',helper.url(), page, helper.rel);
+
         $.ajax({
             url: helper.url() + page + helper.rel,
             dataType: 'html',
