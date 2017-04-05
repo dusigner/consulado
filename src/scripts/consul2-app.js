@@ -27,6 +27,7 @@ require('modules/percentoff');
 require('modules/vendas.pj');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/login.url');
+require('modules/banners-controller');
 
 Nitro.setup(['geo', 'percentoff', 'vendas.pj', 'descadastrar.emailCRM', 'login.url'], function() {
 
