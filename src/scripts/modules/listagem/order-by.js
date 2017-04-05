@@ -97,11 +97,14 @@ Nitro.module('order-by', function () {
         })
         .done(function(data) {
             if( data ) {
+                // console.log('ordervalue', orderValue);
                 $(window).trigger('filter', [helper.rel + orderValue, true]);
 
                 $('.vitrine > .prateleira').remove();
 
                 helper.vitrine.addClass('loaded').append( data );
+
+                $(window).trigger('changedFilter');
 
                 Nitro.module('prateleira');
             }
