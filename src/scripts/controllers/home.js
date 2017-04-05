@@ -10,7 +10,6 @@ require('custom/lead-newsletter');
 Nitro.controller('home', ['slider-banner', 'modal.overlayLead', 'lead-newsletter'], function() {
     var self = this,
         $slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
-
     this.setupSlider = function($currentSlider) {
         $currentSlider.not('.slick-initialized').slick({
             infinite: true,
