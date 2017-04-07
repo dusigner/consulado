@@ -1,0 +1,156 @@
+body {
+
+	.hide-mobile {
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+
+	}
+
+	.show-mobile {
+
+		@media (max-width: 768px) {
+			display: block;
+		}
+
+	}
+
+	.banners-secundarios {
+		height: 210px;
+		margin: 50px 0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		.prateleira-banners-secundarios {
+			overflow: hidden;
+			position: relative;
+
+			.banner-secundario {
+				display: inline-block;
+				height: 210px;
+				margin: 0;
+				padding: 0 10px;
+				width: 32%;
+
+				.controller {
+					background-color: #000;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	.banners-secundarios-mobile {
+		margin: 50px 0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+		display: none;
+
+		.prateleira-banners-secundarios-mobile {
+			overflow: hidden;
+			position: relative;
+
+			.banner-secundario-mobile {
+				display: inline-block;
+				height: 100px;
+				margin: 0 0 20px 0;
+				padding: 0 10px;
+				width: 100%;
+
+				&.banner-mobile1{
+					width: 50%;
+				}
+
+				&.banner-mobile2{
+					width: 50%;
+				}
+
+				.controller {
+					background-color: #000;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+
+	.banners-secundarios-mosaico {
+		margin: 50px 0;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		.prateleira-banners-secundarios-mosaico {
+			display: inline-block;
+			overflow: hidden;
+			position: relative;
+			vertical-align: top;
+
+			&.mosaico-secundarios-left{
+				width: 74.5%;
+
+				&.one-banner {
+					width: 100%;
+				}
+
+				&.two-banner {
+					width: 50%;
+
+					.banner-secundario-mosaico {
+						padding: 0 15px 0 0 !important;
+					}
+				}
+
+			}
+
+			&.mosaico-secundarios-right{
+				width: 23.5%;
+
+				&.two-banner {
+					width: 50%;
+
+					.banner-secundario-mosaico {
+						height: 270px !important;
+						padding: 0 0 0 15px !important;
+					}
+
+				}
+			}
+
+			.banner-secundario-mosaico {
+				margin: 0;
+				padding: 0;
+
+				&.banner-secundario-mosaico4,
+				&.banner-secundario-mosaico7 {
+					height: 270px;
+					padding: 0 30px 0 0;
+					width: 100%;
+				}
+				&.banner-secundario-mosaico5,
+				&.banner-secundario-mosaico8 {
+					height: 120px;
+					margin-bottom: 30px;
+					width: 100%;
+				}
+				&.banner-secundario-mosaico6,
+				&.banner-secundario-mosaico9 {
+					height: 120px;
+					width: 100%;
+				}
+
+				.controller {
+					background-color: #000;
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+}
