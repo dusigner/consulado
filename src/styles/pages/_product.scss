@@ -84,6 +84,51 @@ body.produto {
 			}
 		}
 	}
+
+	.content_botoes_televendas {
+
+		p {
+				color: #736c6b !important;
+				display: block;
+				font-size: 14px !important;
+				margin: 20px 0 10px 0 !important;
+				text-align: center !important;
+		}
+
+		.buy-button {
+			background-color: #97c73d;
+			border: 2px solid #97c73d;
+			color: #fff;
+			display: block;
+			font-size: 16px;
+			font-weight: 700;
+			height: 54px;
+			line-height: 30px;
+			margin: 0;
+			padding: .7em 2.5em;
+			text-align: center;
+			text-transform: uppercase;
+			z-index: 9999;
+		}
+
+		.btn_click_call {
+			background-color: #fff;
+			border: 2px solid #97c73d;
+			color: #97c73d;
+			display: block;
+			font-size: 16px;
+			font-weight: 700;
+			height: 54px;
+			line-height: 30px;
+			margin: 0;
+			padding: .7em 2.5em;
+			text-align: center;
+			text-transform: uppercase;
+			z-index: 9999;
+		}
+
+	}
+
 }
 
 
