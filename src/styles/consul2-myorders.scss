@@ -981,33 +981,20 @@ body.orders-page {
 
 		.bank-invoice-print a {
 			@include responsiveFont(12, 16, true);
-			background-color: $green;
-			border: 2px solid $green;
-			color: $orange;
-			display: block;
+			background-color: $orange;
+			border: 2px solid $orange;
+			border-radius: 50px;
+			color: #fff;
+			cursor: pointer;
+			display: inline-block;
 			font-weight: 700;
-			padding: .5em 1em;
+			padding: .7em 2.5em;
 			position: relative;
-			text-align: center;
-			text-transform: uppercase;
-			z-index: 1;
-
-			&:after {
-				@include contentBefore;
-				background-color: #ffffff;
-				height: 0;
-				left: 0;
-				top: 0;
-				transition: height .15s ease-out;
-				width: 100%;
-				z-index: -1;
-			}
 
 			@include breakpoint(large, 'min') {
 				&:hover {
-					// span { color: #000; }
-
-					&:after { height: 100%; }
+					background: transparent;
+					color: #f47921;
 				}
 			}
 		}
