@@ -78,6 +78,17 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
         }
     });
 
+    $(window).scroll(function(e){
+        e.preventDefault();
+        var _pos = $(window).scrollTop();
+        console.log(_pos);
+        if(_pos >= 100 && _pos <= 300) {
+            $('#BuyButton .buy-button').hide();
+        } else{
+            $('#BuyButton .buy-button').show();
+        }
+    });
+
 
     var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
@@ -315,7 +326,7 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
             }
 
         },
-        
+
         getAPI: function (url){
             return $.get(url);
         },
