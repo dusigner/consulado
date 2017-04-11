@@ -86,6 +86,11 @@ body.produto {
 	}
 
 	.content_botoes_televendas {
+		display: none;
+
+		@media (max-width: 768px) {
+			display: block;
+		}
 
 		p {
 				color: #736c6b !important;
