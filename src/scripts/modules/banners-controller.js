@@ -4,6 +4,7 @@ var Index = {
 
     init: function () {
         this.calcQntBanners();
+        this.validBanners();
     },
 
     calcQntBanners: function () {
@@ -21,6 +22,21 @@ var Index = {
         } else {
             $banners.parent().removeClass('one-banner');
             $banners.parent().removeClass('two-banner');
+        }
+    },
+
+    validBanners: function () {
+
+        if($('.banner-secundario').children().length > 0 ) {
+            $('.banners-secundarios').show();
+        } else {
+            $('.banners-secundarios').hide();
+        }
+
+        if($('.banner-secundario-mosaico').children().length > 0 ) {
+            $('.banners-secundarios-mosaico').show();
+        } else {
+            $('.banners-secundarios-mosaico').hide();
         }
     }
 
