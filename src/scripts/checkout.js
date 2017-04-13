@@ -17,11 +17,12 @@ if (VERSION) {
 require('vendors/nitro');
 
 require('modules/checkout.gae');
+require('modules/checkout.recurrence');
 require('modules/checkout.phones');
 require('modules/checkout.termoColeta');
 require('modules/checkout.modify');
 
-Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], function(gae, phones, termoColeta) {
+Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkout.recurrence'], function(gae, phones, termoColeta, recurrence) {
 
     var self = this,
         $body = $('body');
@@ -62,6 +63,8 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
 
         gae.orderForm = orderForm;
 
+        recurrence.orderForm = orderForm;
+
         if (self.isOrderForm()) {
             $('.modal-masked-info-template .masked-info-button').text('Voltar');
 
@@ -100,6 +103,8 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta'], functio
         $('.caret').removeClass('caret').addClass('icon icon-chevron-down');
 
         gae.setup();
+
+        recurrence.setup();
 
         this.fakeButton();
     };

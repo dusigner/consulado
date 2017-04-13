@@ -1,0 +1,14 @@
+@charset 'UTF-8';
+
+.add-item-attachment,
+.clone-item-container,
+.clone-item-sep,
+.clone-item { display: none!important }
+
+.link-recurrence {
+	@include font-size(11px);
+	background-color: $green;
+	border-color: $green;
+
+	&:hover { color: $green }
+}
