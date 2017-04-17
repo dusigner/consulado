@@ -5,10 +5,60 @@
 .clone-item-sep,
 .clone-item { display: none!important }
 
-.link-recurrence {
+.recurrence { margin-top: 10px }
+
+.recurrence__link {
 	@include font-size(11px);
 	background-color: $green;
 	border-color: $green;
 
 	&:hover { color: $green }
+}
+
+.recurrence__tip-container {
+	@include font-size(12px);
+	background-color: $gray-d;
+	border-radius: 50%;
+	color: #fff;
+	display: inline-block;
+	height: 20px;
+	position: relative;
+	text-align: center;
+	width: 20px;
+
+	&:before {
+		background-color: #fff;
+		border-left: 1px solid $gray;
+		border-top: 1px solid $gray;
+		content: '';
+		display: none;
+		height: 15px;
+		left: 3px;
+		position: absolute;
+		top: 22px;
+		transform: rotate(45deg);
+		width: 15px;
+		z-index: 15;
+	}
+
+	&:hover {
+		.recurrence__tip,
+		&:before { display: block }
+	}
+}
+
+.recurrence__tip {
+	background-color: #fff;
+	border-radius: 8px;
+	border: 1px solid $gray;
+	color: $txt-gray;
+	display: none;
+	font-weight: normal;
+	left: -20px;
+	padding: 1em;
+	position: absolute;
+	text-align: left;
+	top: 30px;
+	width: 300px;
+	z-index: 10
 }

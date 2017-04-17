@@ -10,34 +10,53 @@ Nitro.module('checkout.recurrence', function() {
         self.link();
     };
 
-    this.selectHasWarranty = function($select) {
-        var hasWarranty = false;
+    this.selectHasRecurrence = function($select) {
+        var hasRecurrence = false;
 
         $select.each(function() {
             if($(this).text().indexOf('Recorrência') !== -1) {
-                hasWarranty = true;
+                hasRecurrence = true;
             }
         });
 
-        return hasWarranty;
+        return hasRecurrence;
     };
 
     this.link = function() {
-        var $link = $('<a href="#" class="primary-button text-uppercase link-recurrence">Adicionar Compra Recorrente</a>');
+        var linkTemplate = '<div class="recurrence">' +
+                                '<div class="recurrence__step recurrence__step--one">' +
+                                    '   <a href="#" class="primary-button text-uppercase recurrence__link" data-index={index}>Adicionar Compra Recorrente</a>' +
+                                    '   <div class="recurrence__tip-container">' +
+                                    '       <div class="recurrence__doubt">?' +
+                                    '           <div class="recurrence__tip">' +
+                                                    '<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>' +
+                                                    '<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>' +
+                                                    '<p><strong>Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.</strong></p> ' +
+                                                '</div>' +
+                                    '       </div>' +
+                                    '   </div>' +
+                                '</div>' +
+                            '</div>';
 
         $('.product-item').each(function(i) {
             var $self = $(this),
                 $selfService = $(this).find('.add-item-attachment'),
-                $currentLink = $self.find('.link-recurrence'),
-                $currentServices = $self.nextUntil('.product-item');
+                $currentLink = $self.find('.recurrence__link');
 
-            if ($currentLink.length === 0 && self.selectHasWarranty($selfService)) {
-                $link.clone()
-                    .appendTo('.add-item-attachment-container')
-                    .attr('data-index', i)
-                    .on('click', function() { alert(0); });
+            if ($currentLink.length === 0 && self.selectHasRecurrence($selfService)) {
+                $('.add-item-attachment-container').append(linkTemplate.render({index: i}));
+
+                $('.recurrence__link').click(self.cta);
             }
         });
+    };
+
+    this.changeStep = function() {
+    };
+
+    this.cta = function() {
+        var $self = $(this);
+        alert($self.data('index'));
     };
 
 });
