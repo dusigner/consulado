@@ -20,8 +20,10 @@
 	background-color: $gray-d;
 	border-radius: 50%;
 	color: #fff;
+	cursor: help;
 	display: inline-block;
 	height: 20px;
+	margin-left: .5em;
 	position: relative;
 	text-align: center;
 	width: 20px;
@@ -49,8 +51,8 @@
 
 .recurrence__tip {
 	background-color: #fff;
-	border-radius: 8px;
 	border: 1px solid $gray;
+	border-radius: 8px;
 	color: $txt-gray;
 	display: none;
 	font-weight: normal;
@@ -61,4 +63,42 @@
 	top: 30px;
 	width: 300px;
 	z-index: 10
+}
+
+.recurrence__select--active { color: $green }
+.recurrence__select {
+	position: relative;
+
+	a {
+		&:hover,
+		&:active,
+		&:focus {
+			color: $green;
+			text-decoration: none;
+		}
+	}
+
+	.icon-arrow-down {
+		@include font-size(7px);
+		color: $green;
+		display: inline-block;
+		font-weight: bold;
+		transform: rotate(0);
+		transition: transform .25s ease;
+	}
+
+	&.recurrence__select--drop {
+		.icon-arrow-down { transform: rotate(180deg) }
+	}
+}
+.recurrence__select--items {
+	background-color: #fff;
+	border: 1px solid $gray;
+	display: none;
+	left: 0;
+	list-style-type: none;
+	margin: 0;
+	padding: 1em;
+	position: absolute;
+	width: 250%;
 }

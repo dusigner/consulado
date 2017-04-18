@@ -1,0 +1,38 @@
+<div class="recurrence">
+	<div class="recurrence__step recurrence__step--one">
+		<a href="javascript:void" class="primary-button text-uppercase recurrence__link js-recurrence-nav" data-index={index} data-go="two">Adicionar Compra Recorrente</a>
+		<div class="recurrence__tip-container">
+			<div class="recurrence__doubt">?
+				<div class="recurrence__tip">
+					<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>
+					<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>
+					<p><strong>Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="recurrence__step recurrence__step--two hide">
+		<div class="recurrence__select-container">
+			<span class="recurrence__select--text">Comprar a cada </span>
+
+			<span class="recurrence__select">
+				<a href="javascript:void" class="recurrence__select--active">{period[0]} <i class="icon icon-arrow-down"></i></a>
+				<ul class="recurrence__select--items">
+					{#period}
+						<li class="recurrence__select--item"><a href="javascript:void">{.}</a></li>
+					{/period}
+				</ul>
+			</span>
+
+			<span class="recurrence__select--actions">
+				<a href="javascript:void" class="recurrence__select--confirm js-recurrence-add"><i class="icon icon-check-mark"></i></a>
+				<a href="javascript:void" class="recurrence__select--confirm js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
+			</span>
+		</div>
+	</div>
+
+	<div class="recurrence__step recurrence__step--three hide">
+		<p>Terceira etapa</p>
+	</div>
+</div>

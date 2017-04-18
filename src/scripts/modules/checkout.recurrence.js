@@ -1,6 +1,8 @@
 /* global $: true, Nitro: true, dust: true, dust: true, _: true, vtexjs:true */
 'use strict';
 
+require('../../templates/checkout.recurrenceSteps.html');
+
 Nitro.module('checkout.recurrence', function() {
 
     var self = this;
@@ -10,11 +12,11 @@ Nitro.module('checkout.recurrence', function() {
         self.link();
     };
 
-    this.selectHasRecurrence = function($select) {
+    this.selectHasRecurrence = function(attachmentOfferings) {
         var hasRecurrence = false;
 
-        $select.each(function() {
-            if($(this).text().indexOf('Recorrência') !== -1) {
+        $.each(attachmentOfferings, function(i, v) {
+            if(v.name.indexOf('Recorrência') !== -1) {
                 hasRecurrence = true;
             }
         });
@@ -23,35 +25,45 @@ Nitro.module('checkout.recurrence', function() {
     };
 
     this.link = function() {
-        var linkTemplate = '<div class="recurrence">' +
-                                '<div class="recurrence__step recurrence__step--one">' +
-                                    '   <a href="#" class="primary-button text-uppercase recurrence__link" data-index={index}>Adicionar Compra Recorrente</a>' +
-                                    '   <div class="recurrence__tip-container">' +
-                                    '       <div class="recurrence__doubt">?' +
-                                    '           <div class="recurrence__tip">' +
-                                                    '<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>' +
-                                                    '<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>' +
-                                                    '<p><strong>Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.</strong></p> ' +
-                                                '</div>' +
-                                    '       </div>' +
-                                    '   </div>' +
-                                '</div>' +
-                            '</div>';
+        $.each(self.orderForm.items, function(i, v) {
+            var $self = $($('.product-item').get(i)),
+                $selfService = $self.find('.add-item-attachment'),
+                $currentLink = $self.find('.recurrence__link'),
+                templateData = {};
 
-        $('.product-item').each(function(i) {
-            var $self = $(this),
-                $selfService = $(this).find('.add-item-attachment'),
-                $currentLink = $self.find('.recurrence__link');
+            if ($currentLink.length === 0 && self.selectHasRecurrence(v.attachmentOfferings)) {
+                var attachmentRecurrence = $.grep(v.attachmentOfferings, function(v, i){
+                    return v.name === 'Recorrência';
+                });
 
-            if ($currentLink.length === 0 && self.selectHasRecurrence($selfService)) {
-                $('.add-item-attachment-container').append(linkTemplate.render({index: i}));
+                templateData.index = i;
+                templateData.period = attachmentRecurrence[0].schema.periodo.domain;
 
-                $('.recurrence__link').click(self.cta);
+
+                dust.render('checkout.recurrenceSteps', templateData, function(err, out) {
+                    if (err) {
+                        throw new Error('Recurrence Dust error: ' + err);
+                    }
+
+                    $self.find('.add-item-attachment-container').append(out);
+
+                    $('.recurrence__link').click(self.cta);
+                    $('.js-recurrence-nav').click(self.changeStep);
+                    $('.recurrence__select').click(function() {
+                        $(this).toggleClass('recurrence__select--drop');
+                        $(this).find('.recurrence__select--items').toggle();
+                    });
+                });
             }
         });
     };
 
     this.changeStep = function() {
+        var $self = $(this),
+            nextStep = $self.data('go');
+
+        $('.recurrence__step').addClass('hide');
+        $('.recurrence__step--' + nextStep).removeClass('hide');
     };
 
     this.cta = function() {
