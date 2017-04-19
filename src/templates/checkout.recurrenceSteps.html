@@ -17,7 +17,7 @@
 			<span class="recurrence__select--text">Comprar a cada </span>
 
 			<span class="recurrence__select">
-				<a href="javascript:void" class="recurrence__select--active">{period[0]} <i class="icon icon-arrow-down"></i></a>
+				<a href="javascript:void" class="recurrence__select--active"><span>{period[0]}</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
 				<ul class="recurrence__select--items">
 					{#period}
 						<li class="recurrence__select--item"><a href="javascript:void">{.}</a></li>
@@ -26,8 +26,8 @@
 			</span>
 
 			<span class="recurrence__select--actions">
-				<a href="javascript:void" class="recurrence__select--confirm js-recurrence-add"><i class="icon icon-check-mark"></i></a>
-				<a href="javascript:void" class="recurrence__select--confirm js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
+				<a href="javascript:void" class="recurrence__select--act recurrence__select--confirm js-recurrence-add"><i class="icon icon-check-mark"></i></a>
+				<a href="javascript:void" class="recurrence__select--act recurrence__select--cancel js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
 			</span>
 		</div>
 	</div>

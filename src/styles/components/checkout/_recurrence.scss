@@ -100,5 +100,50 @@
 	margin: 0;
 	padding: 1em;
 	position: absolute;
-	width: 250%;
+	width: 150px;
+}
+
+.recurrence__select--act {
+	background-color: red;
+	border-radius: 50%;
+	display: inline-block;
+	height: 20px;
+	margin-left: .5em;
+	text-align: center;
+	width: 20px;
+
+	&:hover,
+	&:active,
+	&:focus { text-decoration: none }
+
+	.icon {
+		@include font-size(10px);
+		vertical-align: middle;
+	}
+}
+
+.recurrence__select--confirm {
+	background-color: transparent;
+	border: 1px solid $green;
+	color: $green;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $green;
+		color: #fff;
+	}
+}
+
+.recurrence__select--cancel {
+	background-color: transparent;
+	border: 1px solid $gray-d;
+	color: $gray-d;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: $gray-d;
+		color: #fff;
+	}
 }

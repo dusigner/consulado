@@ -27,12 +27,12 @@ Nitro.module('checkout.recurrence', function() {
     this.link = function() {
         $.each(self.orderForm.items, function(i, v) {
             var $self = $($('.product-item').get(i)),
-                $selfService = $self.find('.add-item-attachment'),
+                /*$selfService = $self.find('.add-item-attachment'),*/
                 $currentLink = $self.find('.recurrence__link'),
                 templateData = {};
 
             if ($currentLink.length === 0 && self.selectHasRecurrence(v.attachmentOfferings)) {
-                var attachmentRecurrence = $.grep(v.attachmentOfferings, function(v, i){
+                var attachmentRecurrence = $.grep(v.attachmentOfferings, function(v){
                     return v.name === 'Recorrência';
                 });
 
@@ -53,14 +53,28 @@ Nitro.module('checkout.recurrence', function() {
                         $(this).toggleClass('recurrence__select--drop');
                         $(this).find('.recurrence__select--items').toggle();
                     });
+                    $('.recurrence__select--item a').click(function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        var $self = $(this),
+                            periodText = $self.text();
+
+                        $self.parents('.recurrence__select--items')
+                            .siblings('.recurrence__select--active')
+                            .find('span').text(periodText);
+
+                        $self.parents('.recurrence__select').click();
+
+                    });
                 });
             }
         });
     };
 
-    this.changeStep = function() {
+    this.changeStep = function(step) {
         var $self = $(this),
-            nextStep = $self.data('go');
+            nextStep = (typeof step === 'object' ) ? $self.data('go') : step;
 
         $('.recurrence__step').addClass('hide');
         $('.recurrence__step--' + nextStep).removeClass('hide');
@@ -68,7 +82,12 @@ Nitro.module('checkout.recurrence', function() {
 
     this.cta = function() {
         var $self = $(this);
-        alert($self.data('index'));
+        // alert($self.data('index'));
+    };
+
+    this.addAttachment = function(item, content) {
+        vtexjs.checkout.addItemAttachment(item, 'Recorrência', content)
+            .then(self.changeStep(3));
     };
 
 });
