@@ -2,18 +2,18 @@
 
 'use strict';
 
-require('../../templates/modal-warranty-desktop.html');
-require('../../templates/modal-warranty-mobile.html');
-require('../../templates/modal-warranty-desktop-teste-ab.html');
+// require('../../templates/modal-warranty-desktop.html');
+// require('../../templates/modal-warranty-mobile.html');
+// require('../../templates/modal-warranty-desktop-teste-ab.html');
 
-// require('../../templates/modal-warranty-desktop-teste-ab-18.html');
-// require('../../templates/modal-warranty-mobile-teste-ab-18.html');
-// require('../../templates/modal-warranty-desktop-teste-ab-novo.html');
-// require('../../templates/modal-warranty-mobile-teste-ab-novo.html');
+require('../../templates/modal-warranty-desktop-teste-ab-18.html');
+require('../../templates/modal-warranty-mobile-teste-ab-18.html');
+require('../../templates/modal-warranty-desktop-teste-ab-novo.html');
+require('../../templates/modal-warranty-mobile-teste-ab-novo.html');
 
 Nitro.module('checkout.gae', function() {
 
-    // $('body').addClass('teste-ab__modal-show--b');
+    $('body').addClass('teste-ab__modal-show--b');
 
     // Teste AB
     var urlTesteAb = window.location.search;
@@ -147,54 +147,61 @@ Nitro.module('checkout.gae', function() {
 
         var template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-desktop-teste-ab-novo' : 'modal-warranty-desktop-teste-ab-18';
 
-        //pegando valores do produto clicado
+        // Pegando valores do produto clicado
         var $self = $(this),
             index = $self.attr('data-index'),
             product = self.orderForm.items[index];
 
-        // filtra os serviços disponiveis somente para Garantia
+        // Filtra os serviços disponiveis somente para Garantia
         var offerings = $.grep(self.orderForm.items[index].offerings, function(value) {
             return value.name.indexOf('Garantia') !== -1;
+        }).sort( function( a, b ) {
+            // I have no idea how it works, but works!
+            return a.price < b.price ? -1 : a.price > b.price ? 1 : 0;
         });
 
-        var price1 = offerings[0],
-            price2 = offerings[1];
-
-        //swap valores
-        if (price1.price > price2.price) {
-            var temp = price2;
-            price2 = price1;
-            price1 = temp;
-        }
-
-        //adicionando valores nos campos do Modal
+        // Adicionando valores nos campos do Modal
         var data = {
             product: {
                 image: product.imageUrl.replace('http:', ''), //https image
                 name: product.name,
                 price: product.price
             },
-            warranty: {
-                oneYear: {
-                    id: price1.id,
-                    price: price1.price / 10,
-                    fullPrice: price1.price,
-                    priceDay: price1.price / 365
-                },
-                twoYear: {
-                    id: price2.id,
-                    price: price2.price / 10,
-                    fullPrice: price2.price,
-                    priceDay: price2.price / 730
-                }
-            },
+            warranty: [],
             productIndex: index
         };
 
-        // console.log(product, data);
+        $.each(offerings, function(index, val) {
+            var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
+
+            data.warranty[index]            = {};
+            data.warranty[index].id         = val.id;
+            data.warranty[index].price      = val.price / 10;
+            data.warranty[index].fullPrice  = val.price;
+            data.warranty[index].priceMonth = val.price / warrantyTime;
+            data.warranty[index].priceDay   = val.price / self.monthToDays(warrantyTime);
+            data.warranty[index].months     = warrantyTime;
+            data.warranty[index].isPrimary  = (warrantyTime === 12) ? true : false;
+            data.warranty[index].isLast     = (warrantyTime === 24) ? true : false;
+            data.warranty[index].isCheaper  = false;
+
+            if( offerings[index - 1] ) {
+                var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);
+                data.warranty[index].diffMonths = warrantyTime - prevWarrantyTime;
+                data.warranty[index].diffPrice = data.warranty[index].priceMonth - (offerings[index - 1].price / prevWarrantyTime);
+
+                if( data.warranty[index].diffPrice < 0 ) {
+                    data.warranty[index].isCheaper = true;
+                    data.warranty[index].diffPrice = data.warranty[index].diffPrice * -1;
+                }
+
+            } else {
+                data.warranty[index].diffMonths = warrantyTime - 0;
+                data.warranty[index].diffPrice = data.warranty[index].priceMonth - 0;
+            }
+        });
 
         if ($(window).width() < 840) {
-            // template = 'modal-warranty-mobile';
             template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-mobile-teste-ab-novo' : 'modal-warranty-mobile-teste-ab-18';
         }
 
@@ -213,20 +220,20 @@ Nitro.module('checkout.gae', function() {
 
             self.showMoreMobile();
 
-            //classe no box de garantia
+            // Classe no box de garantia
             var $anchorGae = $('.anchor-gae');
             $anchorGae.on('click', function() {
                 $anchorGae.not(this).removeClass('active')
                     .filter(this).addClass('active');
             });
 
-            //abrindo mais detalhes da garantia
+            // Abrindo mais detalhes da garantia
             $('.box-opcao-garantia .show-more').on('click', function() {
                 $(this).parents('.box-opcao-garantia').toggleClass('open');
                 $(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
             });
 
-            //adicionando garantia definida ao produto
+            // Adicionando garantia definida ao produto
             $modalWarranty.find('.btn-continue')
                 //.unbind('click')
                 .on('click', self.addkWarranty); //descomentar fora do teste
@@ -296,8 +303,6 @@ Nitro.module('checkout.gae', function() {
     // $(window).load(function() {
     //     self.autoOpen();
     // });
-
-    console.log('eureka!');
 });
 
 /*jshint strict: false */

@@ -152,7 +152,7 @@ gulp.task('scripts', ['lint'], function () {
 			devtool: $.util.env.production ? '': '#source-map'
 		}))
 		.pipe(gulp.dest(paths.dest))
-		/*.pipe(gulp.dest(paths.destCheckout))*/;
+		.pipe(gulp.dest(paths.destCheckout));
 });
 
 gulp.task('styles', ['sassLint'], function () {
@@ -186,7 +186,7 @@ gulp.task('styles', ['sassLint'], function () {
 		.pipe($.replace('PKG_BUILD_VERSION', pkg.version))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dest))
-		/*.pipe(gulp.dest(paths.destCheckout))*/;
+		.pipe(gulp.dest(paths.destCheckout));
 
 	// return $.rubySass('src/styles/', {
 	// 		sourcemap: ! $.util.env.production,

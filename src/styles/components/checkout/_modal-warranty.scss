@@ -81,10 +81,12 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 				margin: 25px 0 15px 0;
 				text-align: center;
 				text-transform: uppercase;
+
 				span {
 					@include font-size(16px);
 					display: block;
 					text-transform: none;
+
 					&.garantia-plusicon {
 						@include font-size(35px);
 						color: $green;
@@ -92,6 +94,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 					}
 				}
 			}
+
 			.footer-box-opcao-garantia {
 				@include responsiveFont(14);
 				@include vendor(border-radius, 0 0 8px 8px);
@@ -113,7 +116,6 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 					&:hover + label,
 					&:checked + label {
 					//color: $button-bg-color;
-
 						&:before { border: 4px solid $button-bg-color; }
 					}
 				}
@@ -146,7 +148,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 					strong { @include responsiveFont(16); }
 				}
 
-				>p {
+				& > p {
 					bottom: 15px;
 					display: inline-block;
 					font-size: 13px;
@@ -162,6 +164,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 					@include responsiveFont(35);
 					margin: 40px 0;
 					text-transform: uppercase;
+
 					span {
 						@include font-size(16px);
 						display: block;
@@ -207,9 +210,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 
 				&:hover,
 				&.active {
-					.footer-box-opcao-garantia {
-						background: darken(#ebf4d8, 10) !important;
-					}
+					.footer-box-opcao-garantia { background: darken(#ebf4d8, 10) !important; }
 				}
 			}
 		}
@@ -242,6 +243,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 				display: inline-block;
 				text-align: right;
 				width: 60%;
+
 				.garantia-box-text {
 					@include responsiveFont(14);
 					color: $txt-gray-l;
@@ -280,6 +282,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 				}
 			}
 		}
+
 		.garantia-disclaimer {
 			@include responsiveFont(11);
 			background: $gray-l;
@@ -351,9 +354,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 				width: 100%;
 
 				&.first-box-garantia {
-					.title-garantia {
-						color: $txt-gray !important;
-					}
+					.title-garantia { color: $txt-gray !important; }
 
 					.subtitle-garantia {
 						@include responsiveFont(12, 16, true);
@@ -424,9 +425,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 						text-align: left;
 						text-transform: uppercase;
 
-						.garantia-plusicon {
-							@include responsiveFont(18, 16, true);
-						}
+						.garantia-plusicon { @include responsiveFont(18, 16, true); }
 
 						.subtitle-garantia {
 							@include responsiveFont(12, 16, true);
@@ -436,9 +435,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 						}
 					}
 
-					.bonus-garantia {
-						padding: 0 30px;
-					}
+					.bonus-garantia { padding: 0 30px; }
 				}
 
 				.show-more {
@@ -469,9 +466,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 							position: relative;
 							width: 100%;
 
-							&:first-child {
-								border-top: 1px solid $gray;
-							}
+							&:first-child { border-top: 1px solid $gray; }
 
 							&:before {
 								@include contentBefore();
@@ -489,7 +484,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 								width: 20%;
 							}
 
-							&>div {
+							& > div {
 								display: table-cell;
 								height: 72px;
 								vertical-align: middle;
@@ -521,9 +516,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 								padding-top: 8px;
 							}
 
-							strong {
-								color: $green;
-							}
+							strong { color: $green; }
 						}
 					}
 				}
@@ -557,9 +550,7 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 							width: 100%;
 						}
 
-						a {
-							color: $txt-gray;
-						}
+						a { color: $txt-gray; }
 					}
 
 					.btn-continue {
@@ -601,14 +592,10 @@ $li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1A
 
 
 	body[class*='consul'] & {
-
 		.como-funciona-brastemp { display: none; }
-
 	}
 
 	body[class*='brastemp'] & {
-
 		.como-funciona-consul { display: none; }
-
 	}
 }
