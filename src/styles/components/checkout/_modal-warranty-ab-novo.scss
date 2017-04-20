@@ -1,0 +1,560 @@
+// Variables
+$li-image    : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMzgwMTE3NDA3MjA2ODExODIyQUMzMDc3RTFDQzlDQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MTlGN0I0QzNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MTlGN0I0QjNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REE5MThCOUM4RDIwNjgxMThDMTRERkJFQkNGRjdFRTMiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2MTQ4ZGE2Ny01MDM1LTExNzgtOTc4OS1kZTUwYjc4ZTYxYzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5m27QmAAAAj0lEQVR42mL8GKXEgAOoAPF2IC5mwqFAFKoApHA6SBEjEEsjKeAC4s1QBf+BuAykaBIQ3wNiJyBmBuLlQGwO1VAFxEtZgEQoELMB8Tog3gXEflAF04G4A8QAmeQPxD+BmB+qAQQ2AXEuzH6QopNAnAy1HwT2AXE4EP+FKWKB0kuBWBKII4A4CIh/IHsVIMAAaoEXErHLiuMAAAAASUVORK5CYII=';
+$icon--close : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3BAMAAADLF8K5AAAAElBMVEUAAAC0r620r620r620r620r60iHMrTAAAABXRSTlMAfHuDu/c7P6gAAAHASURBVFjDlM09SoNREIbRq3EBaewFSW/jQoyZ/W8ll4QwH7zFYZ5ufuCsR6evNer7OPxe16T3+unhVDWiL/V/gKuuI7g23fCIvlRtuuGgAW+64aABb7rhoAVvuuGgAW+64aAFb7rhoAFvuuGmCTf9WUELfnVeb9X9DeDn95E+z+AV9AAGDRg04KA7wKABgwYMGjBowKABgwYMGnDQhEEDBg0YNGDQgEEDBg0YNGDReTCNPWisQQMGDRg0YNCAQQMGDbgLCDBowKADntABD+hbwKazhE0DBg0YNGDQgEEDBg0YNGDQAZM2bDph91Hd7U6IHdtADMQwEAy+Jnfy/dfiAxxsQBwmJzQhJSm8tYg9HMseTgDAoAGDBgwaMGjAoAGTNhxtGDRg04b/QwtGYwBGVwFGSxJ2Pxu+04ZBAwYNGDTgC00YNGDQgEEDBg0YNGDQgEEDBg0YNOChAYMGDBowaMwFjbGgDSMEmCnDGxMMGjBowKABgwYM+gabBgwaMOhnYNL9t38Dm+6p/wwMOrinfjDo4Ohg0MHRwaY/ODrYdPChBxYdfOiBQQcfemDRB45+F0hiT9MAicdMYm9RGEIBAOshFd2x1hCFAAAAAElFTkSuQmCC';
+$icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAB0CAMAAAA1vskmAAAAkFBMVEUAAADzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhb2GT9/AAAAL3RSTlMAAvwGCuESMxgN58KXPPn28OyvHtrUJMq1pk9Fu4t+Z1vPoXIo8nhWkoUtbGIrS/inFD0AAAL9SURBVHja7ZvpjqJAFIVvuaAgm+K+4IbStst9/7ebyTg9rQ3XKFOUpzt+f00IlQj13ToHwmPuKkJmzTyqEi4x/6YDe4dqxn+Y1ggS5fJfWjYBolb8j6VFcFQ7fEGvSWDUhnxFNyIo7BZ/oZ4QENaAMzjvBEOzxzm0GwRC1OVcQo8g6NdZwCUEjg4LvEF4Q6PNAjtCwAtZYEsITAIW2BMCY5/zqRwIgUWF8/FTQmAu3V8wJgTWLLCZEAIxM/IGctZ73C1YuSzgQGiWWrFAvU8AXOo9okjXhiywhBhF7BYLDCCGuazeY43DzR4LDCEOFPL1HudIRtb7FYQ+y3qPcSwo6/0M4v5kvY8JAVnv14SArPdzQkDU+8qCEBD13gfX++Cl9z9b7yHOKF96r1Pv8ZKGl97r13ukvPD76j1GZv199R4jXfBC7HRhEuhPFxp9Kl/vubjeexsnQdb7U6DPzuYlpAupL/itVr0/UVEOFSEA0Kn3G0/DmoNTaXofNrSs2U/h9F7N9MV4aiTqfaJvzfsS9L4eFb5mzpq3QHqff82dFr3XUcWyp5JwaNV7i4rSkU+MNeq9TYVJtElv1C0nXejX5eti6L2ewevolJcuNJfyfxtD7+Wnb2lh6L09ld+vmvVe+w7QjYrovf7yUPU/9vhFxUR5SK1kSzKp9zLqrdgx8pqNlYd2RUw9Nlke2j4866iZ2XRhz4+FQco1nS4cHpq31ch8eSh9IJCsdp6RLozv3hRq0+ekC5MNC8SC3psuD3nhPbUCa/C8dEFWJ1cJEmk4XUgcWY7L03s9+t6p3vG7AaLurTHg6Dy/PHRjDLAbbYR04cYYEGKUh+T3HEp5SBoDcMpD+XstUnkobwzAKg9lfQ+tPPTFmBHLQzF/glkeWvMHqOWhj7kXtzx0PjlALg+NfWbs8tAkwC4PEXkhcnnoPAbglofOvDuo5aHPvAKzPHQ5BiCWh67zCrzy0DXWEq08lB0DsMpDWWpTpE+T88cAnE+TpbwC5dsACeWmZJBfNpyJpnkSnucAAAAASUVORK5CYII=';
+
+#modal-warranty {
+	// Modal teste AB 18 meses layout novo
+	&.modal-warranty--is-teste-ab-novo {
+		background-color: #f4f4f4;
+		border-radius: 0;
+		max-width: 1150px;
+
+		// Active state
+		input[type='radio'] {
+			display: none;
+			opacity: 0;
+			position: absolute;
+
+			&:checked {
+				& + .modal__cell {
+					.box-opcao-garantia {
+						border-color: #f35216;
+
+						p.title-garantia,
+						.bottom-garantia {
+							background-color: #f35216;
+							color: #fff;
+						}
+					}
+
+					.modal-warning-best-option.modal-warning-best-option--final {
+						display: block;
+						opacity: 1;
+						transform: translate(-55px, 85px) scale(1);
+					}
+
+					& + input + .modal__cell .modal-warning-best-option:not(.modal-warning-best-option--final) {
+						display: block;
+						opacity: 1;
+						transform: translate(-55px, 85px) scale(1);
+					}
+				}
+			}
+		}
+
+		// Close
+		.close {
+			background: transparent url($icon--close) center center no-repeat;
+			background-size: 70%;
+			border: none;
+			font-size: 22px;
+
+			.icon { display: none; }
+
+			&:focus { outline: none; }
+		}
+
+		// Title
+		.modal__title {
+			font-size: 26px;
+			padding: 20px 0;
+		}
+
+		// Descrição produto e vantagens
+		.warranty-benefits {
+			border-radius: 10px;
+			list-style-type: none;
+			margin: 0;
+			overflow: hidden;
+			padding: 0;
+			text-align: left;
+			width: 250px;
+		}
+		.warranty-benefits__item {
+			background-color: #fff;
+			border-top: 1px solid #f4f4f4;
+			display: block;
+			font-size: 13px;
+			min-height: 60px;
+			padding: 10px 20px;
+			white-space: normal;
+			width: 100%;
+
+			&:first-child {
+				border-top: 0;
+
+				& + li {
+					line-height: 60px;
+					padding-bottom: 0;
+					padding-top: 0;
+				}
+			}
+
+			img {
+				display: block;
+				float: left;
+				margin: 0 20px 20px -10px;
+			}
+
+			p {
+				display: inline;
+				line-height: 100%;
+				vertical-align: middle;
+			}
+		}
+
+		// Produto
+		.warranty-benefits__item--product {
+			max-height: 100px;
+			overflow: hidden;
+			padding: 20px;
+
+			p { font-size: 12px; }
+		}
+
+		// Valor
+		.warranty-benefits__item--valor { padding: 28px 20px; }
+
+		.modal__head { width: 100%; }
+
+		// Table definitions
+		.modal__table {
+			display: table;
+			padding: 0 40px;
+			table-layout: fixed;
+			width: 100%;
+		}
+		.modal__cell {
+			@include breakpoint(860px, 'min') { display: table-cell; }
+			padding: 0 5px;
+			position: relative;
+			vertical-align: top;
+
+			&:first-child { width: 265px; }
+
+			.box-opcao-garantia {
+				background-color: #fff;
+				border: 2px solid #f4f4f4;
+				font-size: 16px;
+				margin: 0;
+				max-height: 421px;
+				min-height: 421px;
+				overflow: hidden;
+				padding-bottom: 0;
+				width: 100%;
+
+				// Recomendação
+				&:hover {
+					p.title-garantia,
+					.bottom-garantia {
+						background-color: #736c6b;
+						color: #fff;
+					}
+				}
+
+				// Title
+				p.title-garantia {
+					@include responsiveFont(22);
+					background-color: #e4e4e4;
+					font-weight: normal;
+					margin: -18px -25px 0 -25px;
+					padding: 33px 20px 25px 20px;
+					position: relative;
+					text-transform: none;
+					white-space: normal;
+
+					strong { display: block; }
+
+					span { @include responsiveFont(9.5); }
+				}
+
+				// Bottom
+				.bottom-garantia {
+					background-color: #e4e4e4;
+					margin: 0 -30px;
+					padding: 16px 30px;
+					text-align: center;
+
+					span { font-size: 13px; }
+
+					strong {
+						display: block;
+						font-size: 22px;
+						margin-bottom: 5px;
+					}
+				}
+			}
+
+			.first-box-garantia {
+				p.title-garantia { font-weight: 200; }
+			}
+		}
+
+		.warranty-benefits-list {
+			margin: 0;
+			padding: 0;
+		}
+		.warranty-benefits-list__item {
+			display: block;
+			list-style: none;
+			margin-top: 1px;
+			min-height: 60px;
+			position: relative;
+			text-align: center!important;
+			vertical-align: middle;
+
+			.icon {
+				display: inline-block;
+				height: 20px;
+				position: absolute;
+				right: 50%;
+				top: 50%;
+				transform: translate(50%, -50%);
+				width: 20px;
+			}
+
+			.icon--check {
+				background: transparent url($icon--check) center center no-repeat;
+				background-size: 100%;
+			}
+
+			.icon--close {
+				background: transparent url($icon--close) center center no-repeat;
+				background-size: 86%;
+			}
+		}
+
+		div.garantia-disclaimer {
+			background-color: #e7e7e7;
+
+			p { padding: 10px 45px; }
+		}
+
+		.modal-message {
+			@include breakpoint(860px, 'min') { text-align: right; }
+			padding: 10px;
+
+			p {
+				@include breakpoint(860px, 'min') {
+					margin: 0 40px;
+					width: 70%;
+				}
+				background-color: #e6e6e6;
+				border-radius: 25px;
+				display: inline-block;
+				font-size: 13px;
+				margin: 0;
+				padding: 3px 5px;
+				text-align: center;
+			}
+		}
+
+		div.row-product-and-action {
+			@include breakpoint(860px, 'min') {
+				padding: 10px 46px 35px 46px;
+				text-align: right;
+			}
+		}
+
+		// Warning Best Option
+		.modal-warning-best-option {
+			background-color: #f4f4f4;
+			border: 2px solid #736c6b;
+			border-radius: 50% 0 50% 50%;
+			box-shadow: 0 1px 10px rgba(0, 0, 0, .25);
+			color: #736c6b;
+			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+			font-size: 14px;
+			height: 120px;
+			left: 0;
+			letter-spacing: -1px;
+			line-height: 120%;
+			opacity: 0;
+			overflow: hidden;
+			position: absolute;
+			top: 0;
+			transform: translate(35px, 25px) scale(.3);
+			transition:
+				opacity .2s ease,
+				transform .2s linear
+			;
+			width: 120px;
+			z-index: 10;
+
+			.modal-warning-best-option__container { padding: 17px 0; }
+
+			strong { display: block; }
+		}
+	}
+
+	// [ Desktop ] - Modal teste AB 18 meses layout novo
+	&.modal-warranty--is-teste-ab-novo:not(.modal-warranty--is-teste-ab-novo-mobile) {
+
+		// [ Responsivo ] - Descrição produto e vantagens
+		.warranty-benefits {
+			@include breakpoint(860px, 'max') {
+				background-color: #fff;
+				margin-left: -10px;
+				position: fixed;
+				width: 190px;
+				z-index: 100;
+			}
+		}
+		.warranty-benefits__item {
+			@include breakpoint(860px, 'max') {
+				line-height: normal!important;
+				min-height: auto;
+				padding: 14px 10px!important;
+				width: 190px;
+			}
+		}
+
+		// [ Responsivo ] - Table definitions
+		.modal__table {
+			@include breakpoint(860px, 'max') {
+				display: block;
+				margin: 0 auto;
+				max-width: 92%;
+				overflow-x: auto;
+				padding: 0;
+				position: relative;
+				white-space: nowrap;
+			}
+		}
+		.modal__cell {
+			@include breakpoint(860px, 'max') {
+				display: inline-block;
+				margin: 10px 0;
+				width: 125px;
+			}
+
+			&:first-child {
+				@include breakpoint(small, 'max') { width: 190px; }
+			}
+
+			.box-opcao-garantia {
+				@include breakpoint(790px, 'max') {
+					padding-bottom: 0;
+					padding-top: 0;
+				}
+
+				// Title
+				p.title-garantia {
+					@include breakpoint(860px, 'max') { @include responsiveFont(18); }
+
+					span { @include breakpoint(1090px, 'max') { line-height: 135%; } }
+				}
+
+				// Bottom
+				.bottom-garantia {
+					@include breakpoint(1090px, 'max') { padding: 10px 25px; }
+
+					span {
+						@include breakpoint(1090px, 'max') { @include responsiveFont(13); }
+						@include breakpoint(790px, 'max') { color: transparent; }
+					}
+
+					strong {
+						@include breakpoint(1090px, 'max') { @include responsiveFont(21); }
+					}
+				}
+			}
+
+			.first-box-garantia {
+				p.title-garantia {
+					@include breakpoint(1090px, 'max') { padding: 42px 20px 25px 20px; }
+					@include breakpoint(1014px, 'max') { @include responsiveFont(20); }
+				}
+			}
+		}
+
+		div.row-product-and-action {
+			div.garantia-box-proceed {
+				@include breakpoint(860px, 'max') { text-align: center; }
+			}
+		}
+	}
+
+	// [ Mobile ] - Modal teste AB 18 meses layout novo
+	&.modal-warranty--is-teste-ab-novo.modal-warranty--is-teste-ab-novo-mobile {
+		margin: 0;
+		top: 0;
+
+		.fakeInput {
+			opacity: 0;
+			position: absolute;
+			z-index: -15;
+
+			// Active state
+			&:checked {
+				& + .modal__cell {
+					.box-opcao-garantia {
+						border-bottom: 1px solid #e4e4e4;
+
+						p.title-garantia {
+							&:after {
+								opacity: 1;
+								transform: translateY(-50%) scale(1);
+							}
+						}
+
+						p.bottom-garantia {
+							background-color: #fff;
+							color: #736c6b;
+						}
+					}
+
+					/* & + input + .modal__cell .modal-warning-best-option:not(.modal-warning-best-option--final) {
+						display: block;
+						opacity: 1;
+						transform: translate(-10px, -95%) scale(1);
+					} */
+				}
+			}
+		}
+
+		.modal__table { padding: 0 10px; }
+
+		.modal__cell:first-child { width: 100%; }
+
+		.warranty-benefits {
+			border-radius: 0;
+			width: 100%;
+		}
+
+		// Opção de garantia
+		.box-opcao-garantia {
+			border: 1px solid #e4e4e4;
+			border-radius: 0;
+			border-width: 0 0 1px 0;
+			max-height: 80px;
+			min-height: inherit;
+			padding: 0;
+			transition: max-height .5s ease;
+
+			// Active state
+			&.open {
+				max-height: 800px;
+
+				.show-more.anchor-gae { transform: rotate(-180deg); }
+			}
+
+			// Recomendação
+			&:hover {
+				.bottom-garantia {
+					background-color: #fff;
+					color: #736c6b;
+				}
+			}
+
+
+			p.title-garantia {
+				background-color: #736c6b;
+				color: #fff;
+				margin: 0;
+				padding: 15px 15px 15px 70px;
+				position: relative;
+				text-align: left;
+
+				&:before,
+				&:after {
+					@include contentBefore;
+					@include verticalCenter;
+					border-radius: 50%;
+				}
+
+				&:before {
+					@include square(25px);
+					border: 2px solid #fff;
+					left: 20px;
+				}
+
+				&:after {
+					@include square(15px);
+					background-color: #fff;
+					left: 25px;
+					opacity: 0;
+					transform: translateY(-50%) scale(.001);
+					transition:
+						opacity .2s ease,
+						transform .3s ease
+					;
+				}
+			}
+
+			p.bottom-garantia {
+				background-color: #fff;
+				border-top: 1px solid #e4e4e4;
+				margin: 0;
+				padding: 15px 15px 15px 70px;
+				position: relative;
+				text-align: left;
+
+				&:before {
+					@include icon-get('features-money');
+					color: #b4afad;
+					font-size: 22px;
+					left: 29px;
+					position: absolute;
+					top: 24px;
+				}
+			}
+
+			// Arrow
+			.show-more.anchor-gae {
+				@include breakpoint(medium, 'min') { display: none; }
+				color: #fff;
+				font-size: 26px;
+				padding: 0 6px;
+				position: absolute;
+				right: 18px;
+				top: 25px;
+				transition: transform .3s ease;
+				z-index: 100;
+			}
+		}
+
+		.warranty-benefits-list { background-color: #f4f4f4; }
+
+		.warranty-benefits-list__item {
+			background-color: #fff;
+			line-height: normal;
+			min-height: inherit;
+			padding: 12px 10px 12px 70px;
+
+			.icon { left: 15px; }
+		}
+
+		.modal-message {
+			padding: 10px 45px;
+
+			p {
+				border-radius: 0;
+				padding: 5px;
+				width: 100%;
+			}
+		}
+
+		div.row-product-and-action {
+			@include breakpoint(small, 'max') { padding: 0 15px; }
+
+			div.garantia-box-proceed {
+				text-align: center;
+				width: 100%;
+
+				.garantia-box-text {
+					display: block;
+					margin: 0 auto 15px auto;
+					text-align: center;
+				}
+			}
+		}
+
+		// Warning Best Option
+		.modal-warning-best-option {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}

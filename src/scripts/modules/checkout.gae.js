@@ -1,11 +1,32 @@
 /* global $: true, Nitro: true, dust: true, dust: true, _: true, vtexjs:true */
+
 'use strict';
 
 require('../../templates/modal-warranty-desktop.html');
 require('../../templates/modal-warranty-mobile.html');
 require('../../templates/modal-warranty-desktop-teste-ab.html');
 
+// require('../../templates/modal-warranty-desktop-teste-ab-18.html');
+// require('../../templates/modal-warranty-mobile-teste-ab-18.html');
+// require('../../templates/modal-warranty-desktop-teste-ab-novo.html');
+// require('../../templates/modal-warranty-mobile-teste-ab-novo.html');
+
 Nitro.module('checkout.gae', function() {
+
+    // $('body').addClass('teste-ab__modal-show--b');
+
+    // Teste AB
+    var urlTesteAb = window.location.search;
+    var testeA = 'testeab=a';
+    var testeB = 'testeab=b';
+
+    if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+        $('body').addClass('teste-ab__modal-show--a');
+    }
+    else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+        $('body').addClass('teste-ab__modal-show--b');
+    }
+
 
     var self = this,
         $body = $('body'),
@@ -16,6 +37,17 @@ Nitro.module('checkout.gae', function() {
         this.link();
         this.terms();
         this.autoOpen();
+    };
+
+    this.monthToDays = function( months ) {
+        var CurrentDate = new Date();
+        var nextDate = new Date();
+        nextDate.setMonth(nextDate.getMonth() + months);
+
+        var timeDiff = Math.abs(nextDate.getTime() - CurrentDate.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+        return diffDays;
     };
 
     this.showMoreMobile = function() {
@@ -113,6 +145,8 @@ Nitro.module('checkout.gae', function() {
     this.modalWarranty = function(e) {
         e.preventDefault();
 
+        var template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-desktop-teste-ab-novo' : 'modal-warranty-desktop-teste-ab-18';
+
         //pegando valores do produto clicado
         var $self = $(this),
             index = $self.attr('data-index'),
@@ -160,7 +194,8 @@ Nitro.module('checkout.gae', function() {
         // console.log(product, data);
 
         if ($(window).width() < 840) {
-            template = 'modal-warranty-mobile';
+            // template = 'modal-warranty-mobile';
+            template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-mobile-teste-ab-novo' : 'modal-warranty-mobile-teste-ab-18';
         }
 
         dust.render(template, data, function(err, out) {
@@ -196,7 +231,6 @@ Nitro.module('checkout.gae', function() {
                 //.unbind('click')
                 .on('click', self.addkWarranty); //descomentar fora do teste
         });
-
     };
 
     this.selectHasWarranty = function($select) {
@@ -258,9 +292,16 @@ Nitro.module('checkout.gae', function() {
             //}
         }, 1500);
     };
+
+    // $(window).load(function() {
+    //     self.autoOpen();
+    // });
+
+    console.log('eureka!');
 });
 
 /*jshint strict: false */
 dust.filters.intAsCurrency = function(value) {
     return _.intAsCurrency(value);
 };
+

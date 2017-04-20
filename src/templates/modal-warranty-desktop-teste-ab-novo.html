@@ -1,0 +1,151 @@
+<div id="modal-warranty" role="dialog" class="modal fade garantia-modal garantia-modal-brastemp in modal-warranty--is-teste-ab-novo" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close">
+				<i class="icon icon-remove item-remove-ico"></i>
+			</button>
+
+			<div class="modal-body">
+				<div class="modal__head">
+					<h4 class="modal__title">
+						Contrate o seguro garantia estendida original <br />
+						AIG e fique tranquilo
+					</h4>
+				</div>
+
+				<div class="modal__table">
+					<!-- Descrição produto e vantagens -->
+					<div class="modal__cell">
+						<ul class="warranty-benefits">
+							<li class="warranty-benefits__item warranty-benefits__item--product">
+								<img src="{product.image}" alt="{product.name}" title="{product.name}" />
+								<p>{product.name}</p>
+							</li>
+							<li class="warranty-benefits__item">
+								<p>Consertos com <strong>peças originais</strong>.</p>
+							</li>
+							<li class="warranty-benefits__item">
+								<p><strong>Assistência técnica</strong> após a garantia do fabricante.</p>
+							</li>
+							<li class="warranty-benefits__item">
+								<p><strong>Equipe especializada</strong> em todo o Brasil por muito mais tempo.</p>
+							</li>
+							<li class="warranty-benefits__item">
+								<p><strong>Economia</strong>. O custo do seguro é menor do que um reparo.</p>
+							</li>
+							<li class="warranty-benefits__item warranty-benefits__item--valor">
+								<p>Valor</p>
+							</li>
+						</ul>
+					</div>
+					<!-- /Descrição produto e vantagens -->
+
+					<!-- Sem garantia -->
+					<input type="radio" name="warranty-value" id="warranty1" value="" checked="checked" class="fakeInput">
+					<div class="modal__cell">
+						<label for="warranty1" class="box-opcao-garantia box-garantia-secundaria anchor-gae first-box-garantia active">
+
+							<p class="title-garantia">Sem garantia estendida</p>
+
+							<ul class="warranty-benefits-list">
+								<li class="warranty-benefits-list__item">
+									<i class="icon icon--check"></i>
+								</li>
+								<li class="warranty-benefits-list__item">
+									<i class="icon icon--close"></i>
+								</li>
+								<li class="warranty-benefits-list__item">
+									<i class="icon icon--close"></i>
+								</li>
+								<li class="warranty-benefits-list__item">
+									<i class="icon icon--close"></i>
+								</li>
+							</ul>
+						</label>
+					</div>
+					<!-- /Sem garantia -->
+
+					{#warranty}
+						<input type="radio" name="warranty-value" id="warranty{id}" value="{id}" class="fakeInput">
+						<div class="modal__cell">
+							<label for="warranty{id}" class="box-opcao-garantia anchor-gae">
+
+								<p class="title-garantia">
+									<strong>+ {months} meses</strong>
+									<span>Após garantia de fábrica</span>
+								</p>
+
+								<ul class="warranty-benefits-list">
+									<li class="warranty-benefits-list__item">
+										<i class="icon icon--check"></i>
+									</li>
+									<li class="warranty-benefits-list__item">
+										<i class="icon icon--check"></i>
+									</li>
+									<li class="warranty-benefits-list__item">
+										<i class="icon icon--check"></i>
+									</li>
+									<li class="warranty-benefits-list__item">
+										<i class="icon icon--check"></i>
+									</li>
+								</ul>
+
+								<p class="bottom-garantia">
+									<strong>{fullPrice|intAsCurrency}</strong>
+									<span>Apenas {priceMonth|intAsCurrency}/mês.</span>
+								</p>
+							</label>
+
+							<!-- Next best option -->
+							<div class="modal-warning-best-option">
+								<p class="modal-warning-best-option__container">
+									Por{?isCheaper} menos{:else} mais{/isCheaper}<br />
+									<strong>{diffPrice|intAsCurrency} / mês</strong>
+									contrate
+									<strong>+{diffMonths} meses</strong>
+									de garantia
+								</p>
+							</div>
+							<!-- /Next best option -->
+
+							{?isLast}
+								<!-- Melhor custo benefício -->
+								<div class="modal-warning-best-option modal-warning-best-option--final">
+									<p class="modal-warning-best-option__container">
+										Você <br />
+										selecionou o <br />
+										melhor <strong>custo benefício!</strong>
+									</p>
+								</div>
+								<!-- /Melhor custo benefício -->
+							{/isLast}
+
+						</div>
+					{/warranty}
+				</div>
+
+				<div class="modal-message">
+					<p>Parcele a garantia junto  com o seu produto.</p>
+				</div>
+
+				<!-- Detalhes do produto -->
+				<div class="row-product-and-action">
+					<div class="garantia-box-proceed">
+						<div class="garantia-box-text">
+							<p>A contratação desse serviço é opcional.</p>
+							<a href="http://loja.consul.com.br/landing/garantia-estendida" target="_blank">Saiba como funciona</a>
+						</div>
+						<span class="btn-continue btn-success" data-index="{productIndex}">Continuar <span>›</span></span>
+					</div>
+				</div>
+
+				<div class="garantia-disclaimer">
+					<p>ATENÇÃO! Você autoriza que o pagamento do prêmio de seguro seja realizado em conjunto com o pagamento do(s) produto(s)/serviço(s) ora adquirido(s)? Informações gerais:<br/>
+					1- O segurado poderá desistir do seguro contratado no prazo de 7 (sete) dias corridos a contar da assinatura da proposta, no caso de contratação por apólice individual, ou da emissão do bilhete, no caso de contratação por bilhete, ou do efetivo pagamento do prêmio, o que ocorrer por último. No caso de pagamento de prêmio fracionado, considera-se o pagamento da primeira parcela como o efetivo pagamento.<br/>
+					2- A comercialização de seguro é opcional e fiscalizada pela SUSEP. O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização”. Acesse www.susep.gov.br ou ligue para 0800 021 8484.<br/>
+					3- A BUD COMERCIO DE ELETRODOMESTICOS LTDA é um Representante de seguros da AIG Seguros Brasil S.A. e está autorizada a comercializar o Seguro de Garantia Estendida</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

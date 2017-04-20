@@ -1,0 +1,90 @@
+<div id="modal-warranty" role="dialog" class="modal fade mobile garantia-modal garantia-modal-brastemp in modal-warranty--is-teste-ab-18-mobile" style="display: none;">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close">
+				<i class="icon icon-remove item-remove-ico"></i>
+			</button>
+			<div class="modal-body">
+				<h4>Proteja seu investimento</h4>
+				<p class="submain-title">Conte com o Seguro Garantia Estendida Original</p>
+
+				<div class="garantia-box-produto">
+					<img src="{product.image}" alt="{product.name}" title="{product.name}">
+					<div class="garantia-box-produto-info">
+						<p>{product.name}</p>
+					</div>
+				</div>
+
+				<!-- Sem garantia -->
+				<div class="box-opcao-garantia box-garantia-secundaria first-box-garantia active">
+					<div class="box">
+						<input type="radio" name="warranty-value" id="warranty1" value="" checked="checked">
+						<label for="warranty1">
+							<p class="title-garantia">Somente <span>garantia do fabricante</span></p>
+							{!<!-- <p class="subtitle-garantia">somente a garantia do fabricante</p> -->!}
+						</label>
+
+						<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
+
+						<div class="desc-garantia-sem-custo desc hide">Protege o tempo estipulado pelo fabricante, com conserto de peças originais.</div>
+					</div>
+				</div>
+				<!-- /Sem garantia -->
+
+				{#warranty}
+					<div class="box-opcao-garantia {?isPrimary} box-garantia-primaria{/isPrimary}">
+						<div class="box">
+							<input type="radio" name="warranty-value" id="warranty{id}" value="{id}">
+							<label for="warranty{id}">
+								{?isPrimary}
+									<p class="garantia-recommended-mobile">Recomendado</p>
+								{/isPrimary}
+
+								<p class="title-garantia">
+									<span>Garantia do fabricante</span>
+									<span class="garantia-plusicon">+ </span>{months} meses
+									<span>de Garantia Estendida</span>
+								</p>
+							</label>
+
+							<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
+
+							<div class="desc-sobre-garantia desc hide">
+								<ul class="direitos-garantia">
+									<li><div>Consertos em peças originais</div></li>
+									<li><div>Assistência técnica após o término da garantia do fabricante</div></li>
+									<li><div>Equipe especializada em todo o Brasil por muito mais tempo</div></li>
+									<li><div>Economia. O custo do seguro, muitas vezes, é menor do que um reparo</div></li>
+								</ul>
+
+								<p class="bonus-garantia">
+									<span class="title-value">Valor</span>
+									<span>por apenas <strong>{fullPrice|intAsCurrency}</strong>, parcele junto com o produto</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				{/warranty}
+
+				<div class="row-product-and-action">
+					<div class="garantia-box-proceed">
+						<span class="btn-continue btn-success" data-index="{productIndex}">Continuar <span>›</span></span>
+						<div class="garantia-box-text">
+							<span>A contratação desse serviço é opcional</span>
+							<a href="http://loja.consul.com.br/landing/garantia-estendida" target="_blank">Saiba como funciona</a>
+						</div>
+					</div>
+				</div>
+				<div class="garantia-disclaimer">
+					<p><strong>A contratação desse serviço é opcional.</strong></p>
+					<p>
+						ATENÇÃO! Você autoriza que o pagamento do prêmio de seguro seja realizado em conjunto com o pagamento do(s) produto(s)/serviço(s) ora adquirido(s)? Informações gerais:<br/>
+						1- O segurado poderá desistir do seguro contratado no prazo de 7 (sete) dias corridos a contar da assinatura da proposta, no caso de contratação por apólice individual, ou da emissão do bilhete, no caso de contratação por bilhete, ou do efetivo pagamento do prêmio, o que ocorrer por último. No caso de pagamento de prêmio fracionado, considera-se o pagamento da primeira parcela como o efetivo pagamento.<br/>
+						2- A comercialização de seguro é opcional e fiscalizada pela SUSEP. O registro deste plano na SUSEP não implica, por parte da Autarquia, incentivo ou recomendação a sua comercialização”. Acesse www.susep.gov.br ou ligue para 0800 021 8484.<br/>
+						3- A BUD COMERCIO DE ELETRODOMESTICOS LTDA é um Representante de seguros da AIG Seguros Brasil S.A. e está autorizada a comercializar o Seguro de Garantia Estendida
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
