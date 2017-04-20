@@ -163,6 +163,8 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
         console.info('payment');
 
         $('.payment-card-number input, .payment-card-cvv input').addClass('inspectletIgnore');
+
+        recurrence.hidePayments();
     };
 
     this.replaceOrderId = function() {

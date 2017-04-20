@@ -1,6 +1,6 @@
 <div class="recurrence">
 	<div class="recurrence__step recurrence__step--one">
-		<a href="javascript:void" class="primary-button text-uppercase recurrence__link js-recurrence-nav" data-index={index} data-go="two">Adicionar Compra Recorrente</a>
+		<a href="javascript:void(0)" class="primary-button text-uppercase recurrence__link js-recurrence-nav" data-go="two">Adicionar Compra Recorrente</a>
 		<div class="recurrence__tip-container">
 			<div class="recurrence__doubt">?
 				<div class="recurrence__tip">
@@ -17,22 +17,25 @@
 			<span class="recurrence__select--text">Comprar a cada </span>
 
 			<span class="recurrence__select">
-				<a href="javascript:void" class="recurrence__select--active"><span>{period[0]}</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
+				<a href="javascript:void(0)" class="recurrence__select--active"><span>{?selectedRecurrence}{selectedRecurrence}{:else}{period[0]}{/selectedRecurrence}</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
 				<ul class="recurrence__select--items">
 					{#period}
-						<li class="recurrence__select--item"><a href="javascript:void">{.}</a></li>
+						<li class="recurrence__select--item"><a href="javascript:void(0)">{.}</a></li>
 					{/period}
 				</ul>
 			</span>
 
 			<span class="recurrence__select--actions">
-				<a href="javascript:void" class="recurrence__select--act recurrence__select--confirm js-recurrence-add"><i class="icon icon-check-mark"></i></a>
-				<a href="javascript:void" class="recurrence__select--act recurrence__select--cancel js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
+				<a href="javascript:void(0)" class="recurrence__select--act recurrence__select--confirm js-recurrence-add" data-index="{index}"><i class="icon icon-check-mark"></i></a>
+				<a href="javascript:void(0)" class="recurrence__select--act recurrence__select--cancel js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
+				&nbsp; <i class="loading-text icon-spinner icon-spin hide"></i>
 			</span>
 		</div>
 	</div>
 
-	<div class="recurrence__step recurrence__step--three hide">
-		<p>Terceira etapa</p>
-	</div>
+	{?hasActiveRecurrence}
+		<div class="recurrence__step recurrence__step--three hide">
+			<p>Comprar a cada {selectedRecurrence} <a href="javascript:void(0)" class="recurrence__remove js-recurrence-remove" data-index="{index}">Cancelar</a>&nbsp;<i class="loading-text icon-spinner icon-spin hide"></i></p>
+		</div>
+	{/hasActiveRecurrence}
 </div>

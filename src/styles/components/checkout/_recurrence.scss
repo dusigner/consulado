@@ -44,6 +44,8 @@
 	}
 
 	&:hover {
+		background-color: $green;
+
 		.recurrence__tip,
 		&:before { display: block }
 	}
@@ -145,5 +147,24 @@
 	&:focus {
 		background-color: $gray-d;
 		color: #fff;
+	}
+}
+
+.recurrence__remove {
+	@include font-size(12px);
+	border: 2px solid darken($gray, 10%);
+	border-radius: 18px;
+	color: darken($gray, 20%);
+	display: inline-block;
+	margin-left: 1em;
+	padding: .5em .75em;
+	text-transform: uppercase;
+
+	&:hover,
+	&:active,
+	&:focus {
+		background-color: darken($gray, 10%);
+		color: #fff;
+		text-decoration: none
 	}
 }
