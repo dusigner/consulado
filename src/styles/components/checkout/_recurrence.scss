@@ -5,9 +5,38 @@
 .clone-item-sep,
 .clone-item { display: none!important }
 
-.recurrence { margin-top: 10px }
+.add-item-attachment-container {
+	@include breakpoint(small, 'max') {
+		bottom: -25px;
+		left: 52%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: 95%;
+	}
+}
+
+.recurrence {
+	@include breakpoint(small, 'max') {
+		a {
+			display: inline-block!important;
+			vertical-align: middle;
+			// padding-right: 0!important;
+		}
+
+		.recurrence__select--active,
+		.recurrence__select--act { padding-right: 0!important; }
+
+		.recurrence__remove { padding-right: 1em!important; }
+	}
+
+	margin-top: 10px;
+}
 
 .recurrence__link {
+	@include breakpoint(small, 'max') {
+		@include font-size(10px);
+		width: 90%;
+	}
 	@include font-size(11px);
 	background-color: $green;
 	border-color: $green;
@@ -67,7 +96,7 @@
 	z-index: 10
 }
 
-.recurrence__select--active { color: $green }
+.recurrence__select--active { color: $green; }
 .recurrence__select {
 	position: relative;
 
