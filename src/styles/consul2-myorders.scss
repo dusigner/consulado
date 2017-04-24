@@ -1670,5 +1670,6 @@ body.orders-page {
 	// .order-status-wrapper.processando-cancelamento .cancelado {display: block}
 }
 
+@import 'components/orders/order.recurrence';
 @import 'components/orders/order.warrantySpare';
 

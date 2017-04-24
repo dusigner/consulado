@@ -1,4 +1,4 @@
-﻿ /* global VERSION: true, Nitro: true, $: true */
+ /* global VERSION: true, Nitro: true, $: true */
 
 'use strict';
 
