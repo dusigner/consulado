@@ -44,7 +44,6 @@ var Index = {
 			$('.banners-secundarios-mobile').hide();
 		}
 	}
-
 };
 
 Index.init();

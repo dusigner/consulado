@@ -36,7 +36,7 @@ Nitro.module('checkout.gae', function() {
 	this.setup = function() {
 		this.link();
 		this.terms();
-		// this.autoOpen();
+		this.autoOpen();
 	};
 
 	this.monthToDays = function( months ) {
@@ -300,13 +300,12 @@ Nitro.module('checkout.gae', function() {
 		}, 1500);
 	};
 
-	$(window).load(function() {
+	/*$(window).load(function() {
 		self.autoOpen();
-	});
+	});*/
 });
 
 /*jshint strict: false */
 dust.filters.intAsCurrency = function(value) {
 	return _.intAsCurrency(value);
 };
-
