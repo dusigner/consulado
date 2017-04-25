@@ -8,8 +8,9 @@ var CRM = require('modules/store/crm'),
 
 require('../../templates/orders/orderStates.html');
 require('modules/removeBootstrap');
+require('modules/orders/orders.recurrence');
 
-Nitro.controller('meuspedidos', ['removeBootstrap'], function() {
+Nitro.controller('meuspedidos', ['removeBootstrap', 'orders.recurrence'], function() {
 
     $(document).ajaxComplete(function( event, xhr, settings ){
         if( (/api\/checkout\/pub\/orders/.test( settings.url )) && !(/api\/checkout\/pub\/orders\/order-group/.test( settings.url )) ) {
