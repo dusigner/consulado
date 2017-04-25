@@ -43,7 +43,6 @@ var Index = {
         if( $('.banner-secundario-mobile:empty').length === 2 ) {
             $('.banners-secundarios-mobile').hide();
         }
-
     }
 
 };
