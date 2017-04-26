@@ -39,6 +39,10 @@ var Index = {
             $('.banners-secundarios-mosaico').hide();
         }
 
+        //banners secundarios prevent empty
+        if( $('.banner-secundario-mobile:empty').length === 2 ) {
+            $('.banners-secundarios-mobile').hide();
+        }
     }
 
 };
