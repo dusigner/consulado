@@ -33,7 +33,7 @@
     "no-undef": ["error", { "typeof": true }],
     "no-mixed-spaces-and-tabs": 1,
     "no-var": 0,
-    "indent": ["warn", 4],
+    "indent": ["warn", "tab"],
     "semi": ["error", "always"],
     "no-trailing-spaces": 0,
     "eol-last": 0,

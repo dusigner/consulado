@@ -4,19 +4,19 @@
 Nitro.module('selos', function() {
 
 
-    var $holder = $('.prod-selos'),
-        $selos = $('#caracteristicas .value-field.Selos');
-        
-    if ($selos.length === 0) {
-        return;
-    }
+	var $holder = $('.prod-selos'),
+		$selos = $('#caracteristicas .value-field.Selos');
 
-    $selos = $selos.text().split(', ');
+	if ($selos.length === 0) {
+		return;
+	}
 
-    $selos = $.map($selos, function(v) {
-        return '<p class="product-field-selo ' + $.replaceSpecialChars(v) + '">' + v + '</p>';
-    }).join('');
+	$selos = $selos.text().split(', ');
 
-    $holder.append($selos);
+	$selos = $.map($selos, function(v) {
+		return '<p class="product-field-selo ' + $.replaceSpecialChars(v) + '">' + v + '</p>';
+	}).join('');
+
+	$holder.append($selos);
 
 });
