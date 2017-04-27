@@ -61,7 +61,11 @@ body.orders-page {
 
 	.payment-connector {display: none!important}
 
-	.vtex-bootstrap { min-height: 400px; }
+	.vtex-bootstrap {
+		min-height: 400px;
+
+		.container { width: 100%!important; }
+	}
 
 	// Header
 	/* .header {
@@ -742,6 +746,9 @@ body.orders-page {
 			&.active { font-weight: bold }
 
 			a {
+				@include breakpoint(small, 'max') {
+					padding: .5em;
+				}
 				color: $orange;
 				padding: 1em;
 			}

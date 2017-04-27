@@ -18,11 +18,11 @@ require('vendors/nitro');
 
 require('modules/checkout.gae');
 require('modules/checkout.recurrence');
-require('modules/checkout.phones');
+// require('modules/checkout.phones');
 require('modules/checkout.termoColeta');
 require('modules/checkout.modify');
 
-Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkout.recurrence'], function(gae, phones, termoColeta, recurrence) {
+Nitro.setup(['checkout.gae', /*'checkout.phones',*/ 'checkout.termoColeta', 'checkout.recurrence'], function(gae, /*phones,*/ termoColeta, recurrence) {
 
     var self = this,
         $body = $('body');
@@ -87,7 +87,7 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
             self.replaceOrderId();
             self.reorderDivs();
 
-            phones.setup();
+            // phones.setup();
             termoColeta.setup();
         }
     };
@@ -244,3 +244,4 @@ Nitro.setup(['checkout.gae', 'checkout.phones', 'checkout.termoColeta', 'checkou
 		console.log('router', newValue, b);
 	});
 }*/
+
