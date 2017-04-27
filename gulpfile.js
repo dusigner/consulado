@@ -174,7 +174,7 @@ gulp.task('styles', ['sassLint'], function () {
 		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
 		.pipe( $.util.env.production ? $.postcss([
-			cssnano(),
+			cssnano({zindex:false}),
 			cssMqpacker()
 		]) : $.postcss([
 			cssMqpacker()
