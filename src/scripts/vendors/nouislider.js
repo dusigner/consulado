@@ -2,21 +2,21 @@
 
 (function (factory) {
 
-    if ( typeof define === 'function' && define.amd ) {
+	if ( typeof define === 'function' && define.amd ) {
 
-        // AMD. Register as an anonymous module.
-        define([], factory);
+		// AMD. Register as an anonymous module.
+		define([], factory);
 
-    } else if ( typeof exports === 'object' ) {
+	} else if ( typeof exports === 'object' ) {
 
-        // Node/CommonJS
-        module.exports = factory();
+		// Node/CommonJS
+		module.exports = factory();
 
-    } else {
+	} else {
 
-        // Browser globals
-        window.noUiSlider = factory();
-    }
+		// Browser globals
+		window.noUiSlider = factory();
+	}
 
 }(function( ){
 

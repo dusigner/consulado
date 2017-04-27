@@ -342,9 +342,13 @@ body {
 @import 'components/checkout/order-placed';
 @import 'components/checkout/footer';
 @import 'components/checkout/modal-services';
-@import 'components/checkout/modal-warranty';
 @import 'components/checkout/modal-phones';
 @import 'components/checkout/recurrence';
+
+// GAE
+@import 'components/checkout/modal-warranty';
+@import 'components/checkout/modal-warranty-ab-18';
+@import 'components/checkout/modal-warranty-ab-novo';
 
 //Para Banner Porto Seguro
 .order-title { display: block; }
