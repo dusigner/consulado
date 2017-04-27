@@ -65,6 +65,15 @@
 		width: 15px;
 	}
 
+	.icon-play {
+		background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RThCNUJERTkyQjc5MTFFN0E3MjBDQkE3NUVDNTgyNjAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RThCNUJERTgyQjc5MTFFN0E3MjBDQkE3NUVDNTgyNjAiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTY3MDE1ODIyOUZBMTFFN0E3QzA4RTZCQjUzNDAxRTQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTY3MDE1ODMyOUZBMTFFN0E3QzA4RTZCQjUzNDAxRTQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4E7H/IAAAAzElEQVR42mL8UqkYysDA4AbEKUC8HIjzudvuvWYgAjABsQUQW0P5kUD84GuVUjKxmn8D8R8kMS4gngM04BgQqxHS/B+I/2GRswTim0ADmvBpJgRqgQbcAWIbcjSDgDIQHwYaMB+I+WGCLAykgQQgDgYaEAykz5OqGQR4gbgGiLeQo/kzELeQY/MCIC4AJqKPpPj5Lsi/QE1HkAWJ0dwM1FSHTQKkmRFHlB2H2nYLl6kgzaxoLvgGxHlATXMJOQmk6RgQ8wCxJqm5CiDAADydOpeTcUQSAAAAAElFTkSuQmCC') left top no-repeat;
+		background-size: contain;
+		content: '';
+		display: inline-block;
+		height: 15px;
+		width: 15px;
+	}
+
 	.customer-area,
 	.payment-card {
 		@include breakpoint(small, 'max') {
@@ -141,14 +150,17 @@
 
 .item-img-container {
 	@include breakpoint(small, 'max') {
-		width: 100%!important;
+		width: auto!important;
 	}
 }
 
 span[data-i18n='subscriptions.nextDelivery'] { margin-top: 1em }
 
 .subscription-title {
-	@include font-size(15px);
+	font-size: 15px!important;
+	@include breakpoint(small, 'max') {
+		font-size: 12px!important;
+	}
 	color: $txt-gray;
 	display: none;
 	font-weight: normal;
@@ -158,6 +170,7 @@ span[data-i18n='subscriptions.nextDelivery'] { margin-top: 1em }
 		color: $orange;
 		content: 'Endereço de entrega:';
 		display: block;
+		font-size: 15px;
 		font-weight: bold;
 	}
 
@@ -201,7 +214,7 @@ span[data-i18n='subscriptions.nextDelivery'] { margin-top: 1em }
 	.btn.subscription-lightbox-close,
 	.btn.btn-danger {
 		@include breakpoint(small, 'max') {
-			@include font-size(11px);
+			@include font-size(10px);
 		}
 		@include font-size(14px);
 		background-color: $orange;
@@ -316,8 +329,13 @@ span[data-i18n='subscriptions.nextDelivery'] { margin-top: 1em }
 // Resetando coisas da VTEX
 body.orders-page {
 	.vtex-bootstrap .subscriptions-page .item-card {
+		@include clearfix;
 		border: none!important;
 		height: auto!important;
+
+		&:not(:first-child) {
+			border-top: 1px solid $gray!important;
+		}
 	}
 
 	.vtex-bootstrap .subscriptions-page .subscription-lightbox {
