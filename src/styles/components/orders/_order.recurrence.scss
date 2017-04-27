@@ -157,12 +157,12 @@
 span[data-i18n='subscriptions.nextDelivery'] { margin-top: 1em }
 
 .subscription-title {
-	font-size: 15px!important;
 	@include breakpoint(small, 'max') {
 		font-size: 12px!important;
 	}
 	color: $txt-gray;
 	display: none;
+	font-size: 15px!important;
 	font-weight: normal;
 	margin: 1rem 0 0;
 
