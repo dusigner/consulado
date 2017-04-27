@@ -235,3 +235,12 @@
 		text-decoration: none
 	}
 }
+
+//bugfixes iphone5
+.recurrence__step {
+	&--three {
+		@include breakpoint(small, 'max') {
+			@include font-size(12px);
+		}
+	}
+}
