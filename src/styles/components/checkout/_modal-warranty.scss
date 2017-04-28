@@ -1,3 +1,6 @@
+// Variables
+$li-image : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMzgwMTE3NDA3MjA2ODExODIyQUMzMDc3RTFDQzlDQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MTlGN0I0QzNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MTlGN0I0QjNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REE5MThCOUM4RDIwNjgxMThDMTRERkJFQkNGRjdFRTMiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2MTQ4ZGE2Ny01MDM1LTExNzgtOTc4OS1kZTUwYjc4ZTYxYzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5m27QmAAAAj0lEQVR42mL8GKXEgAOoAPF2IC5mwqFAFKoApHA6SBEjEEsjKeAC4s1QBf+BuAykaBIQ3wNiJyBmBuLlQGwO1VAFxEtZgEQoELMB8Tog3gXEflAF04G4A8QAmeQPxD+BmB+qAQQ2AXEuzH6QopNAnAy1HwT2AXE4EP+FKWKB0kuBWBKII4A4CIh/IHsVIMAAaoEXErHLiuMAAAAASUVORK5CYII=';
+
 #modal-warranty {
 	@include vendor(transform, translateX(-50%));
 	left: 50%;
@@ -56,7 +59,8 @@
 			}
 
 			ul {
-				list-style-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMzgwMTE3NDA3MjA2ODExODIyQUMzMDc3RTFDQzlDQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MTlGN0I0QzNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MTlGN0I0QjNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REE5MThCOUM4RDIwNjgxMThDMTRERkJFQkNGRjdFRTMiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2MTQ4ZGE2Ny01MDM1LTExNzgtOTc4OS1kZTUwYjc4ZTYxYzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5m27QmAAAAj0lEQVR42mL8GKXEgAOoAPF2IC5mwqFAFKoApHA6SBEjEEsjKeAC4s1QBf+BuAykaBIQ3wNiJyBmBuLlQGwO1VAFxEtZgEQoELMB8Tog3gXEflAF04G4A8QAmeQPxD+BmB+qAQQ2AXEuzH6QopNAnAy1HwT2AXE4EP+FKWKB0kuBWBKII4A4CIh/IHsVIMAAaoEXErHLiuMAAAAASUVORK5CYII=');
+				list-style-image: url($li-image);
+
 				li {
 					@include responsiveFont(16);
 					line-height: 200%;
@@ -77,10 +81,12 @@
 				margin: 25px 0 15px 0;
 				text-align: center;
 				text-transform: uppercase;
+
 				span {
 					@include font-size(16px);
 					display: block;
 					text-transform: none;
+
 					&.garantia-plusicon {
 						@include font-size(35px);
 						color: $green;
@@ -88,6 +94,7 @@
 					}
 				}
 			}
+
 			.footer-box-opcao-garantia {
 				@include responsiveFont(14);
 				@include vendor(border-radius, 0 0 8px 8px);
@@ -109,7 +116,6 @@
 					&:hover + label,
 					&:checked + label {
 					//color: $button-bg-color;
-
 						&:before { border: 4px solid $button-bg-color; }
 					}
 				}
@@ -142,7 +148,7 @@
 					strong { @include responsiveFont(16); }
 				}
 
-				>p {
+				& > p {
 					bottom: 15px;
 					display: inline-block;
 					font-size: 13px;
@@ -158,6 +164,7 @@
 					@include responsiveFont(35);
 					margin: 40px 0;
 					text-transform: uppercase;
+
 					span {
 						@include font-size(16px);
 						display: block;
@@ -203,9 +210,7 @@
 
 				&:hover,
 				&.active {
-					.footer-box-opcao-garantia {
-						background: darken(#ebf4d8, 10) !important;
-					}
+					.footer-box-opcao-garantia { background: darken(#ebf4d8, 10) !important; }
 				}
 			}
 		}
@@ -238,6 +243,7 @@
 				display: inline-block;
 				text-align: right;
 				width: 60%;
+
 				.garantia-box-text {
 					@include responsiveFont(14);
 					color: $txt-gray-l;
@@ -276,6 +282,7 @@
 				}
 			}
 		}
+
 		.garantia-disclaimer {
 			@include responsiveFont(11);
 			background: $gray-l;
@@ -347,9 +354,7 @@
 				width: 100%;
 
 				&.first-box-garantia {
-					.title-garantia {
-						color: $txt-gray !important;
-					}
+					.title-garantia { color: $txt-gray !important; }
 
 					.subtitle-garantia {
 						@include responsiveFont(12, 16, true);
@@ -420,9 +425,7 @@
 						text-align: left;
 						text-transform: uppercase;
 
-						.garantia-plusicon {
-							@include responsiveFont(18, 16, true);
-						}
+						.garantia-plusicon { @include responsiveFont(18, 16, true); }
 
 						.subtitle-garantia {
 							@include responsiveFont(12, 16, true);
@@ -432,9 +435,7 @@
 						}
 					}
 
-					.bonus-garantia {
-						padding: 0 30px;
-					}
+					.bonus-garantia { padding: 0 30px; }
 				}
 
 				.show-more {
@@ -465,9 +466,7 @@
 							position: relative;
 							width: 100%;
 
-							&:first-child {
-								border-top: 1px solid $gray;
-							}
+							&:first-child { border-top: 1px solid $gray; }
 
 							&:before {
 								@include contentBefore();
@@ -485,7 +484,7 @@
 								width: 20%;
 							}
 
-							&>div {
+							& > div {
 								display: table-cell;
 								height: 72px;
 								vertical-align: middle;
@@ -517,9 +516,7 @@
 								padding-top: 8px;
 							}
 
-							strong {
-								color: $green;
-							}
+							strong { color: $green; }
 						}
 					}
 				}
@@ -553,9 +550,7 @@
 							width: 100%;
 						}
 
-						a {
-							color: $txt-gray;
-						}
+						a { color: $txt-gray; }
 					}
 
 					.btn-continue {
@@ -597,14 +592,10 @@
 
 
 	body[class*='consul'] & {
-
 		.como-funciona-brastemp { display: none; }
-
 	}
 
 	body[class*='brastemp'] & {
-
 		.como-funciona-consul { display: none; }
-
 	}
 }

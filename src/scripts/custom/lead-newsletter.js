@@ -1,107 +1,107 @@
 'use strict';
 
 Nitro.module('lead-newsletter', function() {
-    var self = this,
-        $formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
-        $inputName = $formNewsletter.find('input[type="text"]'),
-        $inputEmail = $formNewsletter.find('input[type="email"]'),
-        $inputTermos = $formNewsletter.find('input[type="checkbox"]'),
-        valid = false,
-        hasSession = sessionStorage.getItem('leadNewsletter'),
-        clientURI = '/api/ds/pub/documents/CL';
+	var self = this,
+		$formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
+		$inputName = $formNewsletter.find('input[type="text"]'),
+		$inputEmail = $formNewsletter.find('input[type="email"]'),
+		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
+		valid = false,
+		hasSession = sessionStorage.getItem('leadNewsletter'),
+		clientURI = '/api/ds/pub/documents/CL';
 
-    this.setup = function(orderForm) {
-        if (!hasSession && !orderForm.clientProfileData.email) {
-            $formNewsletter.submit(function(e) {
-                e.preventDefault();
+	this.setup = function(orderForm) {
+		if (!hasSession && !orderForm.clientProfileData.email) {
+			$formNewsletter.submit(function(e) {
+				e.preventDefault();
 
-                $formNewsletter.find('input').on('blur', function() {
-                    self.validateInputs();
-                });
+				$formNewsletter.find('input').on('blur', function() {
+					self.validateInputs();
+				});
 
-                self.validateForm();
+				self.validateForm();
 
-                return false;
-            });
-        }
-    };
+				return false;
+			});
+		}
+	};
 
-    this.validateInputs = function() {
-        if ($inputName.filter(':blank').length >= 1) {
-            $inputName.addClass('error');
-        } else {
-            $inputName.removeClass('error');
-        }
+	this.validateInputs = function() {
+		if ($inputName.filter(':blank').length >= 1) {
+			$inputName.addClass('error');
+		} else {
+			$inputName.removeClass('error');
+		}
 
-        if ($inputEmail.filter(':blank').length >= 1) {
-            $inputEmail.addClass('error');
-        } else {
-            $inputEmail.removeClass('error');
-        }
+		if ($inputEmail.filter(':blank').length >= 1) {
+			$inputEmail.addClass('error');
+		} else {
+			$inputEmail.removeClass('error');
+		}
 
-        if (!$inputTermos.is(':checked')) {
-            $inputTermos.addClass('error');
-        } else {
-            $inputTermos.removeClass('error');
-        }
-    };
+		if (!$inputTermos.is(':checked')) {
+			$inputTermos.addClass('error');
+		} else {
+			$inputTermos.removeClass('error');
+		}
+	};
 
-    this.validateForm = function() {
-        if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $inputTermos.is(':checked')) {
-            valid = true;
-        } else {
-            self.validateInputs();
-        }
+	this.validateForm = function() {
+		if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $inputTermos.is(':checked')) {
+			valid = true;
+		} else {
+			self.validateInputs();
+		}
 
-        if (valid) {
-            var name = $inputName.val(),
-                email = $inputEmail.val();
+		if (valid) {
+			var name = $inputName.val(),
+				email = $inputEmail.val();
 
-            self.registerNewsletter(name, email);
-        }
-    };
+			self.registerNewsletter(name, email);
+		}
+	};
 
-    this.registerNewsletter = function(name, email) {
-        var data = {};
+	this.registerNewsletter = function(name, email) {
+		var data = {};
 
-        data.firstName = name;
-        data.email = email;
-        data.isNewsletterOptIn = true;
-        data.xDataCadastroLead = new Date();
-        data.xOrigemLead = 8;
-        data.xUnidadeNegocio = 2;
-        data.xCategoriaLead = 1;
+		data.firstName = name;
+		data.email = email;
+		data.isNewsletterOptIn = true;
+		data.xDataCadastroLead = new Date();
+		data.xOrigemLead = 8;
+		data.xUnidadeNegocio = 2;
+		data.xCategoriaLead = 1;
 
-        return $.ajax({
-            url: clientURI,
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json; charset=utf-8'
-        }).done(function() {
-            $('.lead-newsletter').addClass('success');
+		return $.ajax({
+			url: clientURI,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8'
+		}).done(function() {
+			$('.lead-newsletter').addClass('success');
 
-            sessionStorage.setItem('leadNewsletter', true);
+			sessionStorage.setItem('leadNewsletter', true);
 
-            setTimeout(function() {
-                $('.newsletter').fadeOut();
-            }, 2000);
-        });
-    };
+			setTimeout(function() {
+				$('.newsletter').fadeOut();
+			}, 2000);
+		});
+	};
 
-    window.vtexjs.checkout.getOrderForm().done(function(result) {
-        self.setup(result);
-    });
+	window.vtexjs.checkout.getOrderForm().done(function(result) {
+		self.setup(result);
+	});
 
 
-    $('.lead-newsletter-show').click(function() {
-        $(this).hide();
-        $(this).next('.lead-newsletter').fadeIn();
-        $('#name').focus();
-    });
+	$('.lead-newsletter-show').click(function() {
+		$(this).hide();
+		$(this).next('.lead-newsletter').fadeIn();
+		$('#name').focus();
+	});
 
-    $('.btn_close').click(function() {
-        $('.lead-newsletter').hide();
-        $('.lead-newsletter-show').fadeIn();
-    });
+	$('.btn_close').click(function() {
+		$('.lead-newsletter').hide();
+		$('.lead-newsletter-show').fadeIn();
+	});
 
 });

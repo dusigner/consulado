@@ -1,5 +1,5 @@
 {
-  "name": "consul",
+  "name": "whirlpool",
   "accountName": "consul",
   "version": "3.16.1",
   "author": "Douglas 'Amarelo' Lopes | Gustavo Bento de Paula | Guilherme Paiva | Marcela Afonso | Pedro Henrick",
@@ -33,7 +33,7 @@
     "gulp-sass": "^2.0.4",
     "gulp-sass-lint": "^1.2.0",
     "gulp-sourcemaps": "^1.5.2",
-    "gulp-util": "^3.0.6",    
+    "gulp-util": "^3.0.6",
     "gulp-cached": "^1.1.1",
     "gulp-sass-partials-imported": "^1.0.5",
     "semver": "^5.0.1",

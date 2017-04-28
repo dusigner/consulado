@@ -438,6 +438,20 @@
 	width: 100%
 }
 
+@mixin verticalCenter( $position: absolute ) {
+	position: $position;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin allCenter( $position: absolute ) {
+	left: 50%;
+	position: $position;
+	top: 50%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+}
+
 // Sizing shortcuts
 @mixin size($width, $height) {
 	width: $width;

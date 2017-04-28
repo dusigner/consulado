@@ -61,7 +61,11 @@ body.orders-page {
 
 	.payment-connector {display: none!important}
 
-	.vtex-bootstrap { min-height: 400px; }
+	.vtex-bootstrap {
+		min-height: 400px;
+
+		.container { width: 100%!important; }
+	}
 
 	// Header
 	/* .header {
@@ -721,7 +725,7 @@ body.orders-page {
 			margin-bottom: 1em;
 			width: 100%;
 		}
-		display: none; //ENQUANTO NÃO TEM RECORRÊNCIA
+		// display: none; //ENQUANTO NÃO TEM RECORRÊNCIA
 		float: right;
 
 		li {
@@ -742,6 +746,9 @@ body.orders-page {
 			&.active { font-weight: bold }
 
 			a {
+				@include breakpoint(small, 'max') {
+					padding: .5em;
+				}
 				color: $orange;
 				padding: 1em;
 			}
@@ -1670,5 +1677,6 @@ body.orders-page {
 	// .order-status-wrapper.processando-cancelamento .cancelado {display: block}
 }
 
+@import 'components/orders/order.recurrence';
 @import 'components/orders/order.warrantySpare';
 
