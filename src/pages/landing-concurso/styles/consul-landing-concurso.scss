@@ -1,0 +1,433 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul2.
+	* Author: Pedor Henrick
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+$animation-mode: true!default;
+
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/helpers';
+@import 'helpers/animation';
+
+// Base styles
+@import 'base/fonts';
+
+// Layout styles
+@import 'layout/container';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+@import 'layout/forms';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+@import 'components/footer';
+
+h1,
+h2 { 
+	color: $green;
+	font-weight: 200;
+	margin: 0; 
+	padding: 0;
+	text-align: center;
+}
+
+h1 { 
+	@include responsiveFont(35); 
+	line-height: 35px;
+	margin-top: 50px;
+	@include breakpoint(extra-small, 'max') {
+		margin-top: 0;
+	}
+}
+
+h2 {
+	@include responsiveFont(18);	
+	color: #69615f;
+	margin-bottom: 20px;
+}
+
+#banner {
+	.ban-reset {
+		font-size: 0;
+	}
+}
+
+.banner { 
+	background: url('/arquivos/bg-image.png') 0 0 no-repeat; 
+	display: inline-block;
+	height: 690px;
+	width: 80%;
+	@include breakpoint(extra-small, 'min') {
+		img {
+			display: none;
+		}
+	}
+	@include breakpoint(extra-small, 'max') {
+		background: none;
+		height: 410px;
+		width: 100%;
+		img {
+    		display: block;
+    		height: auto;
+			width: 100%;
+		}
+	}
+}
+
+.inner {
+	height: 100%;
+	position: absolute;
+	visibility: hidden;
+	@include breakpoint(extra-small, 'max') { display: none; }
+}
+
+.inner-only {
+	float: right;
+    margin-right: 213px;
+    visibility: hidden;
+    @include breakpoint(extra-small, 'max') { display: none; }
+}
+
+.flippy {
+	animation-iteration-count: infinite;
+}
+
+.box {
+	float: right;
+	@include breakpoint(extra-small, 'max') {
+		display: none;
+	}
+}
+
+.ban-promo {
+	display: inline-block;
+    height: 100%;
+    // margin-left: 17px;
+    vertical-align: top;
+    width: 20%px;
+    @include breakpoint(extra-small, 'max') {
+    	display: none;
+    }
+}
+
+.btn-participe {
+	background-color: #eb008b;
+	border-radius: 30px;
+	color: #ffffff;
+	display: block;
+	font-size: 18px;	
+	font-weight: bold;
+	margin: 40px auto;
+	padding: 20px 0 20px 0;
+	text-align: center;
+	width: 160px;
+}
+
+.flip-1 {
+    animation-duration: 10s;
+	background: $green;
+	color: #ffffff;
+	display: block;
+	height: 104px;
+	line-height: 22px;
+    padding: 20px 8px 20px 0;
+	text-align: right;
+	width: 377px;
+    span { font-size: 22px!important; }
+
+}
+
+.flip-2 {
+    animation-delay: 1s;
+    animation-duration: 10s;
+    height: 131px;
+}
+
+.flip-3 {
+    animation-delay: 2s;
+	animation-duration: 10s;
+	height: 230px;
+}
+
+.flip-4 {
+    animation-delay: 3s;
+	animation-duration: 10s;
+	height: 244px;
+}
+
+.flip-5 {
+    animation-delay: 4s;
+	animation-duration: 10s;
+	display: inline-block;
+	height: 244px;
+	position: relative;
+    right: 377px;
+}
+
+.flip-6 {
+	animation-delay: 5s;
+	animation-duration: 10s;
+	margin-left: 377px;
+	margin-top: 464px;
+}
+
+.flip-7 {
+	animation-delay: 6s;
+	animation-duration: 10s;
+	height: 217px;
+	margin-bottom: 28px;
+}
+
+.flip-8 {
+	animation-delay: 7s;
+	animation-duration: 10s;
+	height: 464px;	
+}
+
+#txt,
+#txt-2 {
+	background-color: #898481;
+	bottom: 25px;
+	float: right;
+	height: 170px;
+	padding: 30px 0 50px 0;
+	position: relative;
+	text-align: center;
+	width: 65%;
+	z-index: 5;
+	
+	@include breakpoint(extra-small, 'max') {
+		@include responsiveFont(9);
+		border-bottom-left-radius: 0;
+		border-radius: none;
+		border-top-left-radius: 0;
+		height: auto;
+		padding: 20px 0 20px 0;
+		width: 100%;
+	}
+
+	h2,
+	span {
+		@include responsiveFont(35);
+		margin: 0;
+	}
+
+	h2 {
+		color: $green;
+		font-weight: bold;
+	}
+
+	span {
+		color: #ffffff;
+	}
+
+}
+
+#txt {
+	border-bottom-left-radius: 100px;
+	border-top-left-radius: 100px;
+}
+
+#txt-2 {
+	border-bottom-left-radius: none;
+	border-bottom-right-radius: 100px;
+	border-top-left-radius: none;
+	border-top-right-radius: 100px;
+	float: left;
+	padding: 30px 0 50px 160px;
+	
+	h2,
+	span {
+		@include responsiveFont(35);
+		margin: 0;
+	}
+
+	h2 {
+		color: $green;
+		font-weight: bold;
+	}
+
+	span {
+		color: #ffffff;
+	}
+}
+
+#form {
+	width: 100%;
+	height: 775px;
+	@include breakpoint(extra-small, 'max') {
+		height: 880px;
+	}
+	fieldset {
+		border: none;
+		margin: 0;
+	}
+
+	input {
+		background-color: #aed563;
+		border-radius: 20px;
+		margin: 0;
+	}
+
+	.see-you,
+	.form {
+		background-color: $green;
+		height: 855px;
+		margin-top: -185px;
+		@include breakpoint(extra-small, 'max') {
+			height: auto;
+			margin-top: 0;
+			padding: 0 0 25px 0;
+		}
+
+	}
+	.see-you {
+		padding: 200px 0 0 35px;
+		text-align: center;
+		img {
+			height: auto;
+			max-width: 524px;
+			width: 100%;
+		}
+		@include breakpoint(extra-small, 'max') {
+			border-bottom: 1px solid #ffffff;
+			height: auto;
+			text-align: center;
+			img {
+				height: auto;
+				width: 100%;
+			}
+		}
+		.txt-promo {
+			@include responsiveFont(12);
+			color: #ffffff;
+		}
+	}
+	.form {
+		padding: 200px 0 0 0;
+		form {
+			border-left: 1px solid #ffffff;
+			padding-left: 15px;
+			padding-right: 100px;
+			@include breakpoint(extra-small, 'max') { padding: 0; }
+		}
+
+		.tit {
+			color: #ffffff;
+		}
+
+		.pedido {
+			display: inline-block;
+			width: 55%;
+			.txt-not-obrigatory {
+				@include responsiveFont(12);
+				color: #ffffff;
+			}
+		}
+
+		.btn {
+			background-color: #898481;
+			border: none;
+			&:hover { 
+				background-color: $orange; 
+				color: #ffffff; 
+			}
+		}
+		.btn-enviar {
+			display: inline-block;
+			vertical-align: text-bottom;
+		}
+	}
+	.line {
+		width: 60%;
+		height: 80px;
+		border: 1px solid #ffffff;
+		border-right: none;
+		border-radius: none;
+		border-top-left-radius: 100px;
+		border-bottom-left-radius: 100px;
+		float: right;
+		@include breakpoint(extra-small, 'max') { display: none; }
+	}
+}
+
+#regulamento {
+	background: url('/arquivos/line.png') center center no-repeat; 
+	width: 100%;
+	height: 600px;
+	.regulamento {
+		background-color: #ebebeb;
+		height: 490px;
+		text-align: center;
+		width: 100%;
+	}
+	.regulamento-infos::-webkit-scrollbar {
+	    width: 6px;
+	    padding-right: 20px;
+		background-color: transparent;
+	}
+	 
+	.regulamento-infos::-webkit-scrollbar-thumb {
+	 	border-radius: 6px;
+	  	background-color: $green;
+	}
+	.txt-regulamento {
+		@include responsiveFont(18);
+		border-radius: 40px;
+		border: 1px solid $green;
+		color: $green;
+		display: block;
+		font-weight: bold;
+		padding: 10px 40px 10px 40px;
+    	margin: 50px auto;
+    	text-transform: uppercase;
+    	width: 220px;
+	}
+	.regulamento-infos {
+		@include responsiveFont(18);	
+		height: 292px;
+		padding-left: 70px;
+		text-align: left;
+		width: 95%;
+		overflow: scroll;
+		@include breakpoint(extra-small, 'max') {
+			padding-left: 30px;
+			padding-right: 30px;
+			width: 100%;
+		}
+		strong {
+			@include responsiveFont(18);
+			font-weight: bold;
+		}
+	}
+	.btn-download {
+		@include responsiveFont(18);	
+		background-color: #898481;
+		border-radius: 30px;
+		color: #ffffff;
+		float: right;
+		font-weight: bold;
+		margin-top: 50px;
+		padding: 15px 0 15px 0;
+		text-align: center;
+		width: 245px;
+	}
+}

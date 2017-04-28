@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Consul - Garantia Original Estendida</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   <meta name="format-detection" content="telephone=no" />
+
+   <script src="http://io.vtex.com.br/front-libs/jquery/1.8.3/jquery-1.8.3.min.js"></script>
+   <script src="http://io.vtex.com.br/front-libs/front-i18n/0.4.1/vtex-i18n.min.js"></script>
+   <script src="http://io.vtex.com.br/front-libs/front-utils/1.0.1/vtex-utils.min.js"></script>
+   <script src="http://io.vtex.com.br/front-libs/dustjs-linkedin/2.3.5/dust-core-2.3.5.min.js"></script>
+   <script src="http://io.vtex.com.br/vtex.js/1.0.0/vtex.min.js"></script>
+   <script src="http://io.vtex.com.br/vtex-id-ui/3.4.30/vtexid-jquery.min.js"></script>
+
+  <link rel="stylesheet" href="//whirlpool.vteximg.com.br/arquivos/consul2-style.css" />
+	<link rel="stylesheet" href="/arquivos/consul-landing-concurso.css" />
+
+</head>
+<body data-controller="landing-gae">
+<!--  Header -->
+<header data-module="header">
+  <div class="row pre-header hide-small hide-extra-small">
+    <section class="container clearfix">
+      <div class="col-6">
+        <a href="/" class="item active" title="Loja Virtual">Loja Virtual</a>
+        <a href="http://www.consul.com.br/inicio" target="_blank" class="item" title="Site da Consul">Site da Consul</a>
+        <a href="#modal-pj" class="modal-call" title="Vendas Corporativas" style="display: none;">Vendas Corporativas</a>
+      </div>
+
+      <div class="col-6 float-right">
+        <a href="tel:+551130037872" title="Televendas / SAC">Televendas 3003-7872</a>
+        <a href="http://consul.custhelp.com/" target="_blank" class="item" title="Central de Atendimento">Central de Atendimento</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="row header">
+
+      <div class="col-3 cont-logo">
+        <a href="/" class="logo" title="Consul">
+          <i class="icon icon-logo-consul"></i>
+        </a>
+      </div>
+
+      <div class="menu-mobile show-extra-small">
+        <div class="open-menu-mobile">
+          <i class="icon icon-hamburger"></i>
+          <span class="txt"></span>
+        </div>
+
+        <div class="col-3 cont-logo-mobile">
+          <a href="/" class="logo" title="Consul">
+            <i class="icon icon-logo-consul"></i>
+          </a>
+        </div>
+
+        <ul class="menu-department">
+          <li class="item customItemMenu"><vtex.cmc:customItemConsul /></li>
+          <li class="item item-department"><a href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras">Geladeiras</a></li>
+          <li class="item item-department"><a href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">Lavadoras</a></li>
+          <li class="item item-department"><a href="/eletrodomesticos/fogao" title="Fogões">Fogões</a></li>
+          <li class="item item-department"><a href="/eletrodomesticos/ar-condicionado" title="Ar-Condicionado">Ar-Condicionado</a></li>
+          <!--Produção-->
+          <li class="item item-department"><a href="/busca/?fq=H:153" title="Produtos de embutir">Produtos de embutir</a></li>
+          <!--QA-->
+          <!--<li class="item item-department"><a href="/busca/?fq=H:139" title="Produtos de embutir">Produtos de embutir</a></li>-->
+          <li class="item item-department"><a href="/eletrodomesticos/freezer" title="Freezers">Freezers</a></li>
+          <li class="item item-department sub-itens">
+            <a href="#" title="Ver todas as categorias">
+              <i class="icon icon-arrow-down"></i>
+              Ver todas as categorias
+            </a>
+
+            <ul class="submenu first-level slide-right">
+              <!--<li class="item"><a href="/eletrodomesticos/adega" title="Adegas">Adegas</a></li>-->
+              <li class="item"><a href="/eletrodomesticos/ar-condicionado" title="Ar-Condicionado">Ar-Condicionado</a></li>
+              <li class="item"><a href="/eletrodomesticos/cervejeira" title="Cervejeiras">Cervejeiras</a></li>
+              <li class="item"><a href="/eletrodomesticos/climatizador-de-ar" title="Climatizadores de ar">Climatizadores de ar</a></li>
+              <li class="item"><a href="/eletrodomesticos/coifa-e-depurador" title="Coifas / Depuradores">Coifas / Depuradores</a></li>
+              <li class="item"><a href="/utilidades-domesticas/controles" title="Controles remotos">Controles remotos</a></li>
+              <li class="item"><a href="/eletrodomesticos/cooktop" title="Cooktops">Cooktops</a></li>
+              <li class="item"><a href="/eletrodomesticos/fogao" title="Fogões">Fogões</a></li>
+              <li class="item"><a href="/eletrodomesticos/forno/forno-de-embutir" title="Fornos de Embutir">Fornos de Embutir</a></li>
+              <li class="item"><a href="/eletrodomesticos/freezer" title="Freezers">Freezers</a></li>
+              <li class="item"><a href="/eletrodomesticos/frigobar" title="Frigobares">Frigobares</a></li>
+              <li class="item"><a href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras / Refrigeradores">Geladeiras / Refrigeradores</a></li>
+              <li class="item"><a href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">Lavadoras</a></li>
+              <li class="item"><a href="/eletrodomesticos/lava-loucas" title="Lava Louças">Lava Louças</a></li>
+              <li class="item"><a href="/eletrodomesticos/micro-ondas" title="Micro-ondas">Micro-ondas</a></li>
+              <li class="item"><a href="/purificador/purificador" title="Purificadores de Água">Purificadores de Água</a></li>
+              <li class="item"><a href="/purificador/refil-para-purificador" title="Refil">Refil</a></li>
+            </ul>
+          </li>
+          <li class="item item-department sub-itens">
+            <a href="#" title="Acessórios">
+              <i class="icon icon-arrow-down"></i>
+              Acessórios
+            </a>
+
+            <ul class="submenu first-level slide-right">
+              <li class="item"><a href="/busca/?fq=H:222" title="Para gelar">Para gelar</a></li>
+              <li class="item"><a href="/busca/?fq=H:221" title="Para cozinhar">Para cozinhar</a></li>
+              <li class="item"><a href="/busca/?fq=H:223" title="Para lavar e limpar">Para lavar e limpar</a></li>
+            </ul>
+          </li>
+          <li class="item item-department sub-itens">
+            <a href="#" title="Peças de reposição">
+              <i class="icon icon-arrow-down"></i>
+              Peças de reposição
+            </a>
+
+            <ul class="submenu first-level slide-right">
+              <li class="item"><a href="/pecas-de-reposicao/para-gelar" title="Para gelar">Para gelar</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-cozinhar" title="Para cozinhar">Para cozinhar</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-beber" title="Para lavar e limpar">Para beber</a></li>
+            </ul>
+          </li>
+          <li class="item item-department"><a href="/busca/?fq=H:266" title="Peças de instalação">Peças de instalação</a></li>
+          <li class="item txt-gray"><a href="/minhaconta/pedidos" title="Meus pedidos">Meus pedidos</a></li>
+          <!-- <li class="item txt-gray"><a href="/giftlist/manage" title="Favoritos">Favoritos</a></li> -->
+          <li class="item txt-gray"><a href="/checkout/#/cart" title="Carrinho">Carrinho</a></li>
+          <li class="item txt-gray"><a href="http://consul.custhelp.com/" title="Central de Atendimento" target="_blank">Central de Atendimento</a></li>
+          <li class="item txt-gray"><a href="http://www.consul.com.br/" title="Site da Consul" target="_blank">Site da Consul</a></li>
+          <li class="item txt-gray"><a href="http://loja.consul.com.br/landing/consultor" title="Consultor Consul" target="_blank">Consultor Consul</a></li>
+          <li class="item txt-gray"><a href="tel:112739-4826" title="Televendas: 11 2739-4826">Televendas: 11 2739-4826</a></li>
+          <li class="item txt-gray"><a href="/no-cache/user/logout" title="Sair" class="logout hide">Sair</a></li>
+        </ul>
+      </div>
+
+      <vtex.cmc:searchConsul />
+
+      <div class="col-2 account">
+        <i class="icon icon-consul-account"></i>
+        <a href="/minhaconta/pedidos" title="Meus pedidos">Meus pedidos</a>
+        <div class="hide"><vtex.cmc:welcomeMessage/></div>
+      </div>
+
+      <div class="col-1 minicart" data-module="cart">
+        <i class="icon icon-consul-cart"></i>
+      </div>
+  </div>
+</header>
+<!-- Navigation -->
+<nav class="top-navigation hide-extra-small">
+  <div class="container clearfix">
+
+    <!-- Menu -->
+    <ul class="menu menu-department">
+      <li class="item dropdown">
+        <i class="icon icon-hamburger"></i>
+        <a href="#" title="Departamentos">Departamentos</a>
+
+        <!-- Categoria -->
+        <ul class="submenu first-level menu-category">
+          <li class="item item-gelar">
+            <i class="icon icon-icecream"></i>
+            <a href="#" title="Para gelar">Para Gelar</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <li class="item"><a href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras / Refrigeradores">Geladeiras / Refrigeradores</a></li>
+              <li class="item"><a href="/eletrodomesticos/cervejeira" title="Cervejeiras">Cervejeiras</a></li>
+              <li class="item"><a href="/eletrodomesticos/freezer" title="Freezers">Freezers</a></li>
+              <li class="item"><a href="/eletrodomesticos/frigobar" title="Frigobares">Frigobares</a></li>
+              <li class="item"><a href="/busca/?fq=H:222" title="Acessórios">Acessórios</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-gelar" title="Peças de Reposição">Peças de Reposição</a></li>
+            </ul>
+          </li>
+          <li class="item item-cozinhar">
+            <i class="icon icon-pan"></i>
+            <a href="#" title="Para cozinhar">Para Cozinhar</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <li class="item"><a href="/eletrodomesticos/fogao" title="Fogões">Fogões</a></li>
+              <li class="item"><a href="/eletrodomesticos/cooktop" title="Cooktops">Cooktops</a></li>
+              <li class="item"><a href="/eletrodomesticos/forno" title="Fornos">Fornos</a></li>
+              <li class="item"><a href="/eletrodomesticos/coifa-e-depurador" title="Coifas / Depuradores">Coifas / Depuradores</a></li>
+              <li class="item"><a href="/eletrodomesticos/micro-ondas" title="Micro-ondas">Micro-ondas</a></li>
+              <li class="item"><a href="/eletrodomesticos/forno/forno-de-embutir" title="Fornos de Embutir">Fornos de Embutir</a></li>
+              <li class="item"><a href="/busca/?fq=H:221" title="Acessórios">Acessórios</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-cozinhar" title="Peças de Reposição">Peças de Reposição</a></li>
+            </ul>
+          </li>
+          <li class="item item-beber">
+            <i class="icon icon-blob"></i>
+            <a href="#" title="Para Beber">Para Beber</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <li class="item"><a href="/eletrodomesticos/cervejeira" title="Cervejeiras">Cervejeiras</a></li>
+              <li class="item"><a href="/purificador/purificador" title="Purificadores de Água">Purificadores de Água</a></li>
+              <li class="item"><a href="/purificador/refil-para-purificador" title="Refil">Refil</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-beber" title="Peças de Reposição">Peças de Reposição</a></li>
+            </ul>
+          </li>
+          <li class="item item-refrescar">
+            <i class="icon icon-ice"></i>
+            <a href="#" title="Para Refrescar">Para Climatizar</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <li class="item"><a href="/eletrodomesticos/ar-condicionado" title="Ar-Condicionado">Ar-Condicionado</a></li>
+              <li class="item"><a href="/eletrodomesticos/climatizador-de-ar" title="Climatizadores de ar">Climatizadores de ar</a></li>
+              <li class="item"><a href="/utilidades-domesticas/controles" title="Controles remotos">Controles remotos</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-climatizar" title="Peças de Reposição">Peças de Reposição</a></li>
+            </ul>
+          </li>
+          <li class="item item-lavar">
+            <i class="icon icon-waves"></i>
+            <a href="#" title="Para Lavar &amp; Limpar">Para Lavar &amp; Limpar</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <li class="item"><a href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">Lavadoras</a></li>
+              <li class="item"><a href="/eletrodomesticos/lava-loucas" title="Lava Louças">Lava Louças</a></li>
+              <!--<li class="item"><a href="/eletrodomesticos/aspirador-de-po" title="Aspiradores de pó">Aspiradores de pó</a></li>-->
+              <li class="item"><a href="/busca/?fq=H:223" title="Acessórios">Acessórios</a></li>
+              <li class="item"><a href="/pecas-de-reposicao/para-lavar---limpar" title="Peças de Reposição">Peças de Reposição</a></li>
+            </ul>
+          </li>
+
+          <li class="item item-servicos">
+            <i class="icon icon-house"></i>
+            <a href="#" title="Outros">Outros</a>
+
+            <!-- Subcategoria -->
+            <ul class="submenu second-level menu-subcategory">
+              <!--<li class="item"><a href="/pecas-de-reposicao" title="Peças de reposição">Peças de reposição</a></li>-->
+              <li class="item"><a href="/busca/?fq=H:267" title="Peças de instalação">Peças de instalação</a></li>
+              <li class="item"><a href="/garantiaestendida" title="Seguro Garantia Estendida" target="_blank">Seguro Garantia Estendida</a></li>
+              <li class="item"><a href="/landing/consultor" title="Consultor Consul" target="_blank">Consultor Consul</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li class="item"><a href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras">Geladeiras</a></li>
+      <li class="item busca-bf"><a href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">Lavadoras</a></li>
+      <li class="item"><a href="/eletrodomesticos/fogao" title="Fogões">Fogões</a></li>
+      <li class="item"><a href="/eletrodomesticos/ar-condicionado" title="Ar-Condicionado">Ar-Condicionado</a></li>
+      <li class="item"><a href="/busca/?fq=H:153" title="Produtos de embutir">Produtos de embutir</a></li>
+      <li class="item control"><a href="/eletrodomesticos/freezer" title="Freezers">Freezers</a></li>
+      <li class="item customItemMenu"><vtex.cmc:customItemConsul /></li>
+    </ul>
+  </div>
+  <!-- /Menu -->
+
+  <div class="hide invisible">
+    <div class="boleto-value-cmc">
+      <vtex.cmc:BoletoDiscountConsul />
+    </div>
+    <vtex.cmc:departmentNavigator />
+    <vtex.cmc:departmentLinks />
+  </div>
+</nav>
+<!-- /Navigation -->
+<!-- header -->
+
+
+<section id="banner">
+   <h1>Já pensou em ganhar R$ 30 mil</h1>
+   <h2>para fazer o que quiser?</h2>
+      <div class="banner">
+      <img src="/arquivos/bg-image-mobile.png" alt="">
+        <div class="inner">
+            <div class="flip-1 tit-banner">
+               <span>Com o <strong>prêmio</strong><br />em dinheiro você pode:</span>
+            </div>
+            <div class="flip-2">
+               <img src="/arquivos/img-1.png" alt="">
+            </div>
+            <div class="flip-3">
+               <img src="/arquivos/img-2.png" alt="">
+            </div>
+            <div>
+               <img src="/arquivos/img-3.png" alt="" class="flip-4">
+               <img src="/arquivos/img-4.png" alt="" class="flip-5">
+            </div>
+        </div>
+        <div class="inner">
+            <img src="/arquivos/img-5.png" alt="" class="flip-6">
+            <img src="/arquivos/img-6.png" alt="" class="flip-7">
+        </div>
+        <div class="box">
+            <img src="/arquivos/img-7.png" alt="" class="flip-8">
+        </div>
+      </div>
+      <div class="ban-promo">
+         <img src="/arquivos/img-cns.png" alt="">
+         <a href="" class="btn-participe">Participe</a>
+      </div>
+</section>
+
+<section id="txt">
+   <div>
+      <h2>Inspirado em pessoas como você</h2>
+      <span>que sempre procuram uma solução bem pensada</span>
+   </div>   
+</section>
+
+<section id="form">
+   <div class="col-6 see-you">
+      <div>
+         <img src="/arquivos/infografico.png" alt="">
+      </div> 
+      <span class="txt-promo">*Promoção válida para compras feitas de XX/03 a XX/05 e produtos acima de R$1.000,00.</span>
+   </div>
+   <div class="col-6 form">
+      <form action="/" method="POST">
+          <fieldset>
+              <span class="tit">Nome Completo</span>
+              <input type="text" name="firstName"/>
+          </fieldset>
+
+          <fieldset>
+              <span class="tit">E-mail</span>
+              <input type="email" name="email"/>
+          </fieldset>
+
+          <fieldset>
+              <span class="tit">Data de nasimento</span>
+              <input type="email" name="email"/>
+          </fieldset>
+
+          <fieldset>
+              <span class="tit">Telefone</span>
+              <input type="email" name="email"/>
+          </fieldset>
+
+          <fieldset>
+              <span class="tit">CPF</span>
+              <input type="email" name="email"/>
+          </fieldset>
+
+          <fieldset class="pedido">
+              <span class="tit">Insira número do pedido</span>
+              <input type="email" name="email"/>
+              <span class="txt-not-obrigatory">*Preenchimento não obrigatório</span>
+          </fieldset>
+
+          <fieldset class="btn-enviar">
+              <button type="submit" class="btn primary-button"><span>Enviar</span></button>
+          </fieldset>
+
+      </form>
+      <div class="line"></div>
+   </div>
+</section>
+
+<section id="txt-2">
+   <div>
+      <h2>Participe da nova promoção Consul.</h2>
+      <span>Isso sim é bem pensado.</span>
+   </div>   
+</section>
+
+<section id="regulamento">
+   <div class="container">
+      <div class="col-12 regulamento">
+         <span class="txt-regulamento">Regulamento</span>
+         <div class="regulamento-infos">
+            <strong>Promoção Bem pensada Consul</strong><br />
+            1.<br />
+            DADOS DA PROMOTORA:<br />
+            1.1.Whirlpool. LTDA, situada na Avenida Doutor Chucri Zaidan nº 246, Vila Cordeiro, São Paulo/SP, CEP 04583-110, inscrita no CNPJ/MF sob o nº 60.409.075/0001-52, denominada, adiante, apenas, como “Promotora”.<br />
+            2.<br />
+            CARACTERÍSTICAS GERAIS DA PROMOÇÃO:<br />
+            2.1.Modalidade Adotada: Trata-se de uma distribuição gratuita de prêmios, realizada por meio de sorteios lastreados em Títulos da Capitalização, nos moldes do Decreto 6.388/2008 e seu regulamento e das Circulares 365/2008 e 376/2008.<br />
+            2.2.Área de Execução da Promoção: Em todo Território Nacional.<br />
+            2.3.Prazo de Execução:<br />
+            2.3.1Período da Promoção: 01/05/2016 a 23/07/2016.<br />
+            2.3.2Período de Participação: 01/05/2016 a 22/07/2016.<br />
+            3.<br />
+            DESCRIÇÃO E QUANTIFICAÇÃO DOS PRÊMIOS:<br />
+            3.1 Serão distribuídos os seguintes prêmios:<br />
+         </div>
+      </div>
+      <a href="#" class="col-12 btn-download">Download - ANEXO I</a>
+   </div>
+</section>
+
+<!-- <script type="text/javascript" src="/arquivos/consul-landing-concurso.min.js"></script> -->
+
+<!--URL QA-->
+<!--<script src="//consulqa.vteximg.com.br/arquivos/consul2-app.min.js?v=3.0.0"></script>-->
+<!--URL Produção-->
+<script src="//whirlpool.vteximg.com.br/arquivos/consul2-app.min.js"></script>
+
+<!-- Controle para campanhas que mudam o layout do site -->
+<vtex.cmc:customLayoutCNS />
+<!-- /Footer -->
+</body>
+</html>
