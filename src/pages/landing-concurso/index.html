@@ -265,35 +265,56 @@
 <section id="banner">
    <h1>Já pensou em ganhar R$ 30 mil</h1>
    <h2>para fazer o que quiser?</h2>
-      <div class="banner">
-      <img src="/arquivos/bg-image-mobile.png" alt="">
-        <div class="inner">
-            <div class="flip-1 tit-banner">
-               <span>Com o <strong>prêmio</strong><br />em dinheiro você pode:</span>
+        <div class="banner">
+            <img src="/arquivos/bg-image-mobile.png" alt="" class="ban-mobile">
+                <div class="tit-banner">
+                   <span>Com o <strong>prêmio</strong><br />em dinheiro você pode:</span>
+                </div>
+           <!--  <div class="inner">
+                <div class="box-1">
+                   <img src="/arquivos/img-1.png" alt="" class="flip-2">
+                   <img src="/arquivos/img-2.png" alt="" class="flip-3">
+                   <img src="/arquivos/img-3.png" alt="" class="flip-4">
+                   <img src="/arquivos/img-4.png" alt="" class="flip-5">
+                </div>
+               <div class="box">
+                   <img src="/arquivos/img-5.png" alt="" class="flip-6">
+                   <img src="/arquivos/img-6.png" alt="" class="flip-7">
+               </div>
+               <div class="inner-only">
+                   <img src="/arquivos/img-7.png" alt="" class="flip-8">
+               </div>
+            </div> -->
+            <div class="box-one flippy hide-extra-small">
+                <img src="/arquivos/img-1.png" alt="">
             </div>
-            <div class="flip-2">
-               <img src="/arquivos/img-1.png" alt="">
+            <div class="box-two flippy hide-extra-small">
+                <img src="/arquivos/img-2.png" alt="">
             </div>
-            <div class="flip-3">
-               <img src="/arquivos/img-2.png" alt="">
+            <div class="box-grid">
+                <div class="box-three flippy hide-extra-small">
+                    <img src="/arquivos/img-3.png" alt="">
+                </div>
+                <div class="box-four flippy hide-extra-small">
+                    <img src="/arquivos/img-4.png" alt="">
+                </div>
+                
+                <div class="box-five flippy hide-extra-small">
+                    <img src="/arquivos/img-5.png" alt="">
+                </div>
+                <div class="box-six flippy hide-extra-small">
+                    <img src="/arquivos/img-6.png" alt="">
+                </div>
             </div>
-            <div>
-               <img src="/arquivos/img-3.png" alt="" class="flip-4">
-               <img src="/arquivos/img-4.png" alt="" class="flip-5">
+            <div class="box-seven flippy hide-extra-small">
+                <img src="/arquivos/img-7.png" alt="">
             </div>
+
+        </div>  
+        <div class="ban-promo">
+            <img src="/arquivos/img-cns.png" alt="">
+            <a href="" class="btn-participe">Participe</a>
         </div>
-        <div class="inner">
-            <img src="/arquivos/img-5.png" alt="" class="flip-6">
-            <img src="/arquivos/img-6.png" alt="" class="flip-7">
-        </div>
-        <div class="box">
-            <img src="/arquivos/img-7.png" alt="" class="flip-8">
-        </div>
-      </div>
-      <div class="ban-promo">
-         <img src="/arquivos/img-cns.png" alt="">
-         <a href="" class="btn-participe">Participe</a>
-      </div>
 </section>
 
 <section id="txt">
@@ -311,15 +332,15 @@
       <span class="txt-promo">*Promoção válida para compras feitas de XX/03 a XX/05 e produtos acima de R$1.000,00.</span>
    </div>
    <div class="col-6 form">
-      <form action="/" method="POST">
+      <form action="/" method="POST" id="form-concurso">
           <fieldset>
-              <span class="tit">Nome Completo</span>
-              <input type="text" name="firstName"/>
+              <label for="cname" class="tit">Nome Completo</label>
+              <input id="cname" type="text" name="name" minlength="2" required />
           </fieldset>
 
           <fieldset>
-              <span class="tit">E-mail</span>
-              <input type="email" name="email"/>
+              <label for="cemail" class="tit">E-mail</label>
+              <input id="cemail" type="email" name="email" required="" />
           </fieldset>
 
           <fieldset>
@@ -384,7 +405,7 @@
    </div>
 </section>
 
-<!-- <script type="text/javascript" src="/arquivos/consul-landing-concurso.min.js"></script> -->
+<script type="text/javascript" src="/arquivos/consul-landing-concurso.min.js"></script>
 
 <!--URL QA-->
 <!--<script src="//consulqa.vteximg.com.br/arquivos/consul2-app.min.js?v=3.0.0"></script>-->

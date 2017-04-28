@@ -65,8 +65,9 @@ h2 {
 }
 
 #banner {
-	.ban-reset {
-		font-size: 0;
+	height: 780px;
+	@include breakpoint(extra-small, 'max') {
+		height: auto;
 	}
 }
 
@@ -74,9 +75,9 @@ h2 {
 	background: url('/arquivos/bg-image.png') 0 0 no-repeat; 
 	display: inline-block;
 	height: 690px;
-	width: 80%;
+	width: 70%;
 	@include breakpoint(extra-small, 'min') {
-		img {
+		.ban-mobile {
 			display: none;
 		}
 	}
@@ -92,37 +93,78 @@ h2 {
 	}
 }
 
-.inner {
-	height: 100%;
+.box-grid {
 	position: absolute;
-	visibility: hidden;
-	@include breakpoint(extra-small, 'max') { display: none; }
 }
 
-.inner-only {
-	float: right;
-    margin-right: 213px;
-    visibility: hidden;
-    @include breakpoint(extra-small, 'max') { display: none; }
+.box-one {
+	animation-delay: .3s;
+	animation-duration: 2s;
+	width: 377px;
+	height: 131px;
+}
+
+.box-two {
+	animation-delay: .6s;
+	animation-duration: 2s;
+	width: 377px;
+	height: 230px;
+}
+
+.box-three {
+	width: 377px;
+	height: 244px;
+	position: absolute;
+	animation-delay: .9s;
+	animation-duration: 2s;
+}
+
+.box-four {
+	width: 160px;
+	height: 244px;
+	position: absolute;
+	animation-delay: 1.2s;
+	animation-duration: 2s;
+}
+
+.box-five {
+	width: 253px;
+	height: 244px;
+	position: relative;
+	top: 0;
+	left: 377px;
+	animation-delay: 1.5s;
+	animation-duration: 2s;
+}
+
+.box-six {
+	width: 257px;
+	height: 217px;
+	position: absolute;
+	top: 0;
+	left: 627px;
+	animation-delay: 1.8s;
+	animation-duration: 2s;
+}
+
+.box-seven {
+	width: 257px;
+	height: 464px;
+	position: relative;
+   bottom: 464px;
+   left: 627px;
+   animation-delay: 2.1s;
+	animation-duration: 2s;
 }
 
 .flippy {
 	animation-iteration-count: infinite;
 }
 
-.box {
-	float: right;
-	@include breakpoint(extra-small, 'max') {
-		display: none;
-	}
-}
-
 .ban-promo {
 	display: inline-block;
-    height: 100%;
-    // margin-left: 17px;
-    vertical-align: top;
-    width: 20%px;
+   height: 100%;
+   vertical-align: top;
     @include breakpoint(extra-small, 'max') {
     	display: none;
     }
@@ -141,65 +183,21 @@ h2 {
 	width: 160px;
 }
 
-.flip-1 {
-    animation-duration: 10s;
+.tit-banner {
 	background: $green;
 	color: #ffffff;
 	display: block;
 	height: 104px;
 	line-height: 22px;
-    padding: 20px 8px 20px 0;
+   padding: 20px 8px 20px 0;
+   opacity: .75;
 	text-align: right;
 	width: 377px;
-    span { font-size: 22px!important; }
+   span { @include responsiveFont(22); }
 
-}
-
-.flip-2 {
-    animation-delay: 1s;
-    animation-duration: 10s;
-    height: 131px;
-}
-
-.flip-3 {
-    animation-delay: 2s;
-	animation-duration: 10s;
-	height: 230px;
-}
-
-.flip-4 {
-    animation-delay: 3s;
-	animation-duration: 10s;
-	height: 244px;
-}
-
-.flip-5 {
-    animation-delay: 4s;
-	animation-duration: 10s;
-	display: inline-block;
-	height: 244px;
-	position: relative;
-    right: 377px;
-}
-
-.flip-6 {
-	animation-delay: 5s;
-	animation-duration: 10s;
-	margin-left: 377px;
-	margin-top: 464px;
-}
-
-.flip-7 {
-	animation-delay: 6s;
-	animation-duration: 10s;
-	height: 217px;
-	margin-bottom: 28px;
-}
-
-.flip-8 {
-	animation-delay: 7s;
-	animation-duration: 10s;
-	height: 464px;	
+   @include breakpoint(extra-small, 'max') {
+   	display: none;
+   }
 }
 
 #txt,
@@ -212,7 +210,6 @@ h2 {
 	position: relative;
 	text-align: center;
 	width: 65%;
-	z-index: 5;
 	
 	@include breakpoint(extra-small, 'max') {
 		@include responsiveFont(9);
@@ -274,7 +271,7 @@ h2 {
 	width: 100%;
 	height: 775px;
 	@include breakpoint(extra-small, 'max') {
-		height: 880px;
+		height: auto;
 	}
 	fieldset {
 		border: none;
@@ -373,11 +370,23 @@ h2 {
 	background: url('/arquivos/line.png') center center no-repeat; 
 	width: 100%;
 	height: 600px;
+	@include breakpoint(extra-small, 'max') {
+		.container {
+			margin: 0;
+			max-width: 100%;
+			padding: 0;
+		}
+	}
+
 	.regulamento {
 		background-color: #ebebeb;
 		height: 490px;
 		text-align: center;
 		width: 100%;
+
+		@include breakpoint(extra-small, 'max') {
+			padding-top: 50px;
+		}
 	}
 	.regulamento-infos::-webkit-scrollbar {
 	    width: 6px;
