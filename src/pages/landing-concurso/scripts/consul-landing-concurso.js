@@ -14,13 +14,13 @@ Nitro.setup([], function () {
 	$(window).load(function() {
 		// $('.inner, .inner-only').css('visibility', 'visible');
 
-		var delay = 200;
+		// var delay = 200;
 
-		for (var i = 1; i < 8; i++) {
-			console.log($('.box-'+i));
-			$('.box-'+i).delay(delay).show(0);
-			delay += 200;
-		}
+		// for (var i = 1; i < 8; i++) {
+		// 	console.log($('.box-'+i));
+		// 	$('.box-'+i).delay(delay).show(0);
+		// 	delay += 200;
+		// }
 
 		// $('.box-one, .box-two, .box-three, .box-four, .box-five, .box-six, .box-seven').addClass('animated flipInY');
 
@@ -30,9 +30,9 @@ Nitro.setup([], function () {
 			var effect = divRandom2 === 1 ? 'flipInY':'flipInX';
 
 			$('.box-'+divRandom1).addClass('animated ' + effect);
-			setTimeout(function() {
-				$('.box-'+divRandom1).removeClass('animated ' + effect);
-			}, 2800);
+			// setTimeout(function() {
+			// 	$('.box-'+divRandom1).removeClass('animated ' + effect);
+			// }, 2800);
 		}, 3000);
 		
 	});
