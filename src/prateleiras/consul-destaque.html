@@ -8,17 +8,36 @@
 		<span class="img main">$product.GetImageTag(540, 446, "prateleiraPrincipal")</span>
 		<span class="img hover">$product.GetImageTag(540, 446, "prateleiraPerspectiva")</span>
 		<span class="img backup">$product.GetImageTag(540, 446)</span>
+		<!--Loja PF-->
 		$product.ProductField(700)
+		<!--/Loja PF-->
+		<!--Loja PJ-->
+		<!--$product.ProductField(5)-->
+		<!--/Loja PJ-->
+
+		<div class="FlagsHightLight" style="display:none;">
+			$product.DiscountHightLight
+			$product.HightLight
+		</div>
 	</a>
 
 	<!-- <div class="col-5 push-1 float-right content"> -->
 	<div class="float-right content">
 		<a href="$uri" title="$escapedName" class="prod-link">
-			<h3 class="nome">$product.Name <span class="sku">$product.ProductField(770)</span></h3>
-
+			<h3 class="nome">$product.Name 
+				<span class="sku">
+					<!--Loja PF-->
+					$product.ProductField(770)
+					<!--/Loja PF-->
+					<!--Loja PJ-->
+					<!--$product.ProductField(168)-->
+					<!--/Loja PJ-->
+				</span>
+			</h3>
+			
 			<!-- Yourviews - estrelas -->
-			<div class="yv-review-quickreview hide" value="$id"></div>
-			<!-- Yourviews - estrelas -->
+              <div class="yv-review-quickreview hide" value="$id"></div>
+            <!-- Yourviews - estrelas -->
 
 			#if ($product.IsInStock)
 				<div class="price">

@@ -7,49 +7,49 @@ require('../../../templates/video.html');
 Nitro.module('video', function() {
 
 
-    var self = this,
-        $holder = $('#video'),
-        $video = $('#caracteristicas h4.Video + table .value-field');
+	var self = this,
+		$holder = $('#video'),
+		$video = $('#caracteristicas h4.Video + table .value-field');
 
-    if ($video.length === 0) {
-        return;  
-    } 
+	if ($video.length === 0) {
+		return;
+	}
 
-    var thumbnail = $video.filter('[class*="Thumbnail"]').text();
+	var thumbnail = $video.filter('[class*="Thumbnail"]').text();
 
-    var data = {
-        id: $video.filter('[class*="ID"]').text(),
-        thumb: thumbnail ? $.getImagePath(thumbnail) : false
-    };
+	var data = {
+		id: $video.filter('[class*="ID"]').text(),
+		thumb: thumbnail ? $.getImagePath(thumbnail) : false
+	};
 
-    // console.log('video data', data);
+	// console.log('video data', data);
 
-    this.click = function(e) {
-        e.preventDefault();
+	this.click = function(e) {
+		e.preventDefault();
 
-        data.iframe = true;
+		data.iframe = true;
 
-        self.render();
+		self.render();
 
-        return false;
-    };
+		return false;
+	};
 
-    this.render = function() {
+	this.render = function() {
 
-        dust.render('video', data, function(err, out) {
-            if (err) {
-                throw new Error('Specifications Dust error: ' + err);
-            }
+		dust.render('video', data, function(err, out) {
+			if (err) {
+				throw new Error('Specifications Dust error: ' + err);
+			}
 
-            $holder.html(out).show();
+			$holder.html(out).show();
 
-            $holder.find('a').click(self.click);
+			$holder.find('a').click(self.click);
 
-            $(document).trigger('nav', 'video');
-        });
+			$(document).trigger('nav', 'video');
+		});
 
-    };
+	};
 
-    this.render();
+	this.render();
 
 });

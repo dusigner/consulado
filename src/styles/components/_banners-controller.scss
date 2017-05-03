@@ -1,19 +1,10 @@
 body {
-
 	.hide-mobile {
-
-		@media (max-width: 768px) {
-			display: none !important;
-		}
-
+		@media (max-width: 768px) { display: none !important; }
 	}
 
 	.show-mobile {
-
-		@media (max-width: 768px) {
-			display: block;
-		}
-
+		@media (max-width: 768px) { display: block; }
 	}
 
 	.banners-secundarios {
@@ -33,11 +24,7 @@ body {
 				margin-left: 10px;
 				width: 360px;
 
-
-				&:first-child {
-					margin-left: 0;
-				}
-
+				&:first-child { margin-left: 0; }
 
 				.controller {
 					height: 100%;
@@ -49,11 +36,13 @@ body {
 
 
 	.banners-secundarios-mobile {
+		display: none;
 		margin: 50px 0;
 		overflow: hidden;
 		position: relative;
 		width: 100%;
-		display: none;
+
+		@media (max-width: 768px) { margin: 10px 0; }
 
 		.prateleira-banners-secundarios-mobile {
 			overflow: hidden;
@@ -66,13 +55,11 @@ body {
 				padding: 0 5px;
 				width: 100%;
 
-				&.banner-mobile1 {
-					width: 50%;
-				}
+				@media (max-width: 768px) { margin: 0; }
 
-				&.banner-mobile2 {
-					width: 50%;
-				}
+				&.banner-mobile1 { width: 50%; }
+
+				&.banner-mobile2 { width: 50%; }
 
 				&.banner-mobile3,
 				&.banner-mobile4 {
@@ -88,7 +75,6 @@ body {
 		}
 	}
 
-
 	.banners-secundarios-mosaico {
 		margin: 50px 0;
 		overflow: hidden;
@@ -101,31 +87,22 @@ body {
 			position: relative;
 			vertical-align: top;
 
-			&.mosaico-secundarios-left{
-				width: 800px;
+			&.mosaico-secundarios-left {
 				margin-right: 15px;
+				width: 800px;
 
-				&.one-banner {
-					width: 100%;
-				}
+				&.one-banner { width: 100%; }
 
-				&.two-banner {
-					width: 50%;
-
-				}
-
+				&.two-banner { width: 50%; }
 			}
 
-			&.mosaico-secundarios-right{
+			&.mosaico-secundarios-right {
 				width: 280px;
 
 				&.two-banner {
 					width: 50%;
 
-					.banner-secundario-mosaico {
-						height: 270px !important;
-					}
-
+					.banner-secundario-mosaico { height: 270px !important; }
 				}
 			}
 
@@ -157,5 +134,4 @@ body {
 			}
 		}
 	}
-
 }

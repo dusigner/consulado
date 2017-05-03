@@ -1,0 +1,41 @@
+<div class="recurrence">
+	<div class="recurrence__step recurrence__step--one">
+		<a href="javascript:void(0)" class="primary-button text-uppercase recurrence__link js-recurrence-nav" data-go="two">Adicionar Compra Recorrente</a>
+		<div class="recurrence__tip-container">
+			<div class="recurrence__doubt js-tip-mobile">?
+				<div class="recurrence__tip">
+					<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>
+					<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>
+					<p><strong>Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.</strong></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="recurrence__step recurrence__step--two hide">
+		<div class="recurrence__select-container">
+			<span class="recurrence__select--text">Comprar a cada </span>
+
+			<span class="recurrence__select">
+				<a href="javascript:void(0)" class="recurrence__select--active"><span>{?selectedRecurrence}{selectedRecurrence}{:else}{period[0]}{/selectedRecurrence}</span>&nbsp;<i class="icon icon-arrow-down"></i></a>
+				<ul class="recurrence__select--items">
+					{#period}
+						<li class="recurrence__select--item"><a href="javascript:void(0)">{.}</a></li>
+					{/period}
+				</ul>
+			</span>
+
+			<span class="recurrence__select--actions">
+				<a href="javascript:void(0)" class="recurrence__select--act recurrence__select--confirm js-recurrence-add" data-index="{index}"><i class="icon icon-check-mark"></i></a>
+				<a href="javascript:void(0)" class="recurrence__select--act recurrence__select--cancel js-recurrence-nav" data-go="one"><i class="icon icon-close-icon"></i></a>
+				&nbsp; <i class="loading-text icon-spinner icon-spin hide"></i>
+			</span>
+		</div>
+	</div>
+
+	{?hasActiveRecurrence}
+		<div class="recurrence__step recurrence__step--three hide">
+			<p>Comprar a cada {selectedRecurrence} <a href="javascript:void(0)" class="recurrence__remove js-recurrence-remove" data-index="{index}">Cancelar</a>&nbsp;<i class="loading-text icon-spinner icon-spin hide"></i></p>
+		</div>
+	{/hasActiveRecurrence}
+</div>

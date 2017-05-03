@@ -1,13 +1,13 @@
 @charset 'UTF-8';
 
 /*! =================================================
-    * Theme Name: Layout - Brastemp
-    * Description: CSS desenvolvido para Brastemp2.
-    * Author: Douglas 'Amarelo' Lopes / Gustavo Bento de Paula / Douglas Tenório
-    * Empresa: Jüssi
-    * Author URI: http://www.jussi.com.br/
-    * Version: 1.0
-    =================================================
+	* Theme Name: Layout - Brastemp
+	* Description: CSS desenvolvido para Brastemp2.
+	* Author: Douglas 'Amarelo' Lopes / Gustavo Bento de Paula / Douglas Tenório
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
 */
 
 // Utility helpers
@@ -24,575 +24,487 @@
 
 $green-color: #9aca3c;
 
+body.garantia-estendida-2016 .header {
+	@include breakpoint(small, 'max') { background-color: $green-color; }
+}
 
 .garantia-estendida-2016 {
+	.container { padding: 0 30px; }
 
-    .container {
-        padding: 0 30px;
-    }
+	.header-landing-gae-2016 {
+		margin-top: 0;
 
-    .header-landing-gae-2016 {
-        margin-top: 0;
+		.row { margin-bottom: 0; }
+	}
 
-        .row {
-            margin-bottom: 0;
-        }
-    }
+	.sessao-vantagens,
+	.como-acionar,
+	.perguntas-frequentes,
+	.voce-tambem {
+		margin-top: 30px;
+		overflow: hidden;
+		position: relative;
+	}
 
-    .sessao-vantagens,
-    .como-acionar,
-    .perguntas-frequentes,
-    .voce-tambem {
-        margin-top: 30px;
-        overflow: hidden;
-        position: relative;
-    }
+	section {
 
-    section {
+		.col-left,
+		.col-right {
 
-        .col-left,
-        .col-right {
+			@include breakpoint(small, 'max') {
+				margin: 0;
+				width: 100%;
+			}
+		}
 
-            @include breakpoint(small, 'max') {
-                margin: 0;
-                width: 100%;
-            }
-        }
+		p {
+			color: #666;
+			font-size: 16px;
+			font-weight: 200;
+		}
+	}
 
-        p {
-            color: #666666;
-            font-size: 16px;
-            font-weight: 200;
-        }
-    }
+	.tit-gae {
+		@include font-size(22px);
+		color: $green-color;
+		margin-bottom: 45px;
+		position: relative;
+		text-transform: uppercase;
 
-    .tit-gae {
-        @include font-size(22px);
-        color: $green-color;
-        margin-bottom: 45px;
-        position: relative;
-        text-transform: uppercase;
+		@include breakpoint(small, 'max') {
+			@include font-size(18px);
+		}
 
-        @include breakpoint(small, 'max') {
-            @include font-size(18px);
-        }
+		&:before {
+			background-color: $green-color;
+			bottom: -20px;
+			content: '';
+			height: 4px;
+			left: 0;
+			position: absolute;
+			width: 70px;
+		}
+	}
 
-        &:before {
-            background-color: $green-color;
-            bottom: -20px;
-            content: '';
-            height: 4px;
-            left: 0;
-            position: absolute;
-            width: 70px;
-        }
-    }
+	.content-btns {
+		overflow: hidden;
+		position: relative;
 
-    .content-btns {
-        overflow: hidden;
-        position: relative;
+		@include breakpoint(small, 'max') { margin-top: 20px; }
 
-        @include breakpoint(small, 'max') {
-            margin-top: 20px;
-        }
+		strong {
+			display: block;
+			font-size: 16px;
+			margin-bottom: 20px;
 
-        strong {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 20px;
+			@include breakpoint(extra-small, 'max') { text-align: center; }
+		}
 
-            @include breakpoint(extra-small, 'max') {
-                text-align: center;
-            }
-        }
+		p {
+			display: inline-block;
+			margin: 30px 160px 30px 160px;
+		}
+	}
 
-        p {
-            display: inline-block;
-            margin: 30px 160px 30px 160px;
-        }
-    }
+	.btn-padrao {
+		background-color: $orange;
+		border: 1px solid $orange;
+		border-radius: 30px;
+		color: #ffffff;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: bold;
+		padding: 15px;
+		text-align: center;
+		text-transform: uppercase;
 
-    .btn-padrao {
-        background-color: $orange;
-        border: 1px solid $orange;
-        border-radius: 30px;
-        color: #ffffff;
-        display: inline-block;
-        font-size: 14px;
-        font-weight: bold;
-        padding: 15px;
-        text-align: center;
-        text-transform: uppercase;
+		@include breakpoint(small, 'max') {
+			display: block;
+			margin-bottom: 20px;
+			width: 100%;
+		}
 
-        @include breakpoint(small, 'max') {
-            display: block;
-            margin-bottom: 20px;
-            width: 100%;
-        }
+		&:hover {
+			background-color: #fff;
+			border: 1px solid $orange;
+			color: $orange;
+			text-decoration: none;
+		}
 
-        &:hover {
-            background-color: #fff;
-            border: 1px solid $orange;
-            color: $orange;
-            text-decoration: none;
-        }
+	}
 
-    }
+	.col-left,
+	.col-right { width: 47%; }
 
-    .col-left,
-    .col-right {
-        width: 47%;
-    }
+	.col-right { margin-left: 3%; }
 
-    .col-right {
-        margin-left: 3%;
-    }
+	.sessao-vantagens {
+		margin-top: 0;
 
-    .sessao-vantagens {
-        margin-top: 0;
+		.descricao-gae {
+			background-color: #f4f4f4;
+			margin-top: 30px;
+			padding: 93px 160px 93px 160px;
+			text-align: center;
+			@include breakpoint(extra-small, 'max') {
+				margin-top: 20px;
+				padding: 30px 0 0 0;
+				text-align: left;
+			}
 
-        .descricao-gae {
-            background-color: #f4f4f4;
-            margin-top: 30px;
-            padding: 93px 160px 93px 160px;
-            text-align: center;
-            @include breakpoint(extra-small, 'max') {
-                margin-top: 20px;
-                padding: 30px 0 0 0;
-                text-align: left;
-            }
+			.tit-gae {
+				@include breakpoint(extra-small, 'max') { left: 30px; }
+			}
 
-            .tit-gae {
-                @include breakpoint(extra-small, 'max') {
-                    left: 30px;
-                }
-            }
+			p {
+				margin: 30px;
+				@include breakpoint(extra-small, 'max') { padding-bottom: 30px; }
+			}
+		}
 
-            p {
-                margin: 30px;
-                @include breakpoint(extra-small, 'max') {
-                    padding-bottom: 30px;
-                }
-            }
-        }
+		.row { margin-bottom: 0; }
 
-        .row {
-            margin-bottom: 0;
-        }
+		.tit-gae {
+			left: 30px;
+			margin-top: 100px;
+			text-align: center;
+			@include breakpoint(extra-small, 'max') {
+				left: inherit;
+				margin-top: 25px;
+				text-align: left;
+			}
 
-        .tit-gae {
-            left: 30px;
-            margin-top: 100px;
-            text-align: center;
-            @include breakpoint(extra-small, 'max') {
-                left: inherit;
-                margin-top: 25px;
-                text-align: left;
-            }
+			&:before {
+				left: 50%;
+				transform: translateX(-50%);
+				@include breakpoint(extra-small, 'max') { left: 12%; }
+			}
+		}
 
-            &:before {
-                left: 50%;
-                transform: translateX(-50%);
-                @include breakpoint(extra-small, 'max') {
-                    left: 12%;
-                }
-            }
-        }
+		.bloco-infos {
+			font-size: 0;
+			height: auto;
+			width: 100%;
 
-        .bloco-infos {
-            font-size: 0;
-            height: auto;
-            width: 100%;
+			.item-vantagens-1,
+			.item-vantagens-2,
+			.item-vantagens-3,
+			.item-vantagens-4 {
+				display: inline-block;
+				height: auto;
+				margin-left: 3%;
+				vertical-align: top;
+				width: 22%;
+				@include breakpoint(extra-small, 'max') { display: inline; }
 
-            .item-vantagens-1,
-            .item-vantagens-2,
-            .item-vantagens-3,
-            .item-vantagens-4 {
-                display: inline-block;
-                height: auto;
-                margin-left: 3%;
-                vertical-align: top;
-                width: 22%;
-                @include breakpoint(extra-small, 'max') {
-                    display: inline;
-                }
+			}
 
-            }
+			h3 {
+				color: #000000;
+				font-size: 16px;
+				margin: 0;
+				margin-top: 30px;
+				text-transform: uppercase;
+				@include breakpoint(extra-small, 'max') {
+					left: 20%;
+					margin-top: 0;
+					position: relative;
+					top: -22px;
+				}
+			}
 
-            h3 {
-                color: #000000;
-                font-size: 16px;
-                margin: 0;
-                margin-top: 30px;
-                text-transform: uppercase;
-                @include breakpoint(extra-small, 'max') {
-                    left: 20%;
-                    margin-top: 0;
-                    position: relative;
-                    top: -22px;
-                }
-            }
+			p { margin: 0; }
 
-            p {
-                margin: 0;
-            }
+			.bloco-vantagens {
+				.content-vantagens {
+					height: 85px;
+					@include breakpoint(extra-small, 'max') {
+						background-size: 15%;
+						height: 50px;
+					}
+				}
+			}
 
-            .bloco-vantagens {
-                .content-vantagens {
-                    height: 85px;
-                    @include breakpoint(extra-small, 'max') {
-                        background-size: 15%;
-                        height: 50px;
-                    }
-                }
-            }
-
-            .item-vantagens-1 {
-                .content-vantagens {
-                    background: url('/arquivos/economia.png') no-repeat 0 15px;
-                }
-            }
-            .item-vantagens-2 {
-                .content-vantagens {
-                    background: url('/arquivos/conveniencia.png') no-repeat 0 15px;
-                }
-            }
-            .item-vantagens-3 {
-                .content-vantagens {
-                    background: url('/arquivos/seguranca.png') no-repeat 0 15px;
-                }
-            }
-            .item-vantagens-4 {
-                .content-vantagens {
-                    background: url('/arquivos/protecao.png') no-repeat 0 15px;
-                }
-            }       
-        }
-    }
+			.item-vantagens-1 .content-vantagens { background: url('/arquivos/economia.png') no-repeat 0 15px; }
+			.item-vantagens-2 .content-vantagens { background: url('/arquivos/conveniencia.png') no-repeat 0 15px; }
+			.item-vantagens-3 .content-vantagens { background: url('/arquivos/seguranca.png') no-repeat 0 15px; }
+			.item-vantagens-4 .content-vantagens { background: url('/arquivos/protecao.png') no-repeat 0 15px; }
+		}
+	}
 }
 
 .header-landing-gae-2016 {
 
-    .tit-gae {
+	.tit-gae {
+		&:after {
+			content: url('/arquivos/ico-aig.png');
+			height: 24px;
+			position: absolute;
+			right: 18%;
+			top: 4px;
+			width: 44px;
 
-        &:after {
-            content: url('/arquivos/ico-aig.png');
-            height: 24px;
-            position: absolute;
-            right: 18%;
-            top: 4px;
-            width: 44px;
+			@include breakpoint(small, 'max') {
+				right: 0 !important;
+				top: 0 !important;
+			}
 
-            @include breakpoint(small, 'max') {
-                right: 0 !important;
-                top: 0 !important;
-            }
+			@include breakpoint(extra-large, 'max') {
+				right: 7%;
+				top: 4px;
+			}
+		}
 
-            @include breakpoint(extra-large, 'max') {
-                right: 7%;
-                top: 4px;
-            }
-        }
+	}
 
-    }
-
-    .col-right {
-
-        @include breakpoint(small, 'max') {
-            display: none;
-        }
-
-    }
+	.col-right {
+		@include breakpoint(small, 'max') { display: none; }
+	}
 }
 
 .como-acionar {
-    background-color: $green-color;
-    height: 500px;
-    padding: 60px 0;
+	background-color: $green-color;
+	height: 500px;
+	padding: 60px 0;
+	@include breakpoint(small, 'max') { padding: 30px 0; }
+	@include breakpoint(large, 'max') {
+		background: $green-color;
+		height: auto;
+	}
 
-    @include breakpoint(small, 'max') {
-        padding: 30px 0;
-    }
+	.tit-gae {
+		color: #fff;
 
-    @include breakpoint(large, 'max') {
-        background: $green-color;
-        height: auto;
-    }
+		&:before { background-color: #fff; }
+	}
 
-    .tit-gae {
-        color: #fff;
+	p {
+		@include font-size(16px);
+		color: #fff !important;
 
-        &:before {
-            background-color: #fff;
-        }
-    }
+		@include breakpoint(small, 'max') {
+			font-size: 14px;
+			margin: 15px 0 !important;
+		}
+	}
 
-    p {
-        @include font-size(16px);
-        color: #fff !important;
+	ol {
+		margin: 0;
+		padding: 0 0 0 20px;
 
-        @include breakpoint(small, 'max') {
-            font-size: 14px;
-            margin: 15px 0 !important;
-        }
-    }
+		li {
+			color: #fff;
+			font-size: 14px;
+			font-weight: 200;
+			padding: 0;
+		}
+	}
 
-    ol {
-        margin: 0;
-        padding: 0 0 0 20px;
+	.txt-atencao {
+		border: 1px solid #fff;
+		border-radius: 48px;
+		font-size: 15px;
+		padding: 15px;
 
-        li {
-            color: #fff;
-            font-size: 14px;
-            font-weight: 200;
-            padding: 0;
-        }
-    }
+		@include breakpoint(extra-small, 'max') { border-radius: 0; }
 
-    .txt-atencao {
-        border: 1px solid #fff;
-        border-radius: 48px;
-        font-size: 15px;
-        padding: 15px;
+		strong { font-weight: bold; }
 
-        @include breakpoint(extra-small, 'max') {
-            border-radius: 0;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-
-    }
+	}
 }
 
 .perguntas-frequentes {
 
-    .tit-gae {
-        text-align: center;
+	.tit-gae {
+		text-align: center;
 
-        @include breakpoint(extra-small, 'max') {
-            text-align: left;
-        }
+		@include breakpoint(extra-small, 'max') { text-align: left; }
 
-        &:before {
-            left: 50%;
-            transform: translateX(-50%);
+		&:before {
+			left: 50%;
+			transform: translateX(-50%);
 
-            @include breakpoint(extra-small, 'max') {
-                left: 12%;
-            }
-        }
-    }
+			@include breakpoint(extra-small, 'max') { left: 12%; }
+		}
+	}
 
-    .accordion-title {
-        @include font-size(16px);
-        border-top: 1px solid #bebebe;
-        color: #666666;
-        display: block;
-        font-weight: bold;
-        padding: 15px 0;
-        position: relative;
+	.accordion-title {
+		@include font-size(16px);
+		border-top: 1px solid #bebebe;
+		color: #666666;
+		display: block;
+		font-weight: bold;
+		padding: 15px 0;
+		position: relative;
 
-        @include breakpoint(small, 'max') {
-            @include font-size(14px);
-            padding: 15px 15px 15px 0;
-        }
+		@include breakpoint(small, 'max') {
+			@include font-size(14px);
+			padding: 15px 15px 15px 0;
+		}
 
-        &:first-child {
-            border-top: none;
-        }
+		&:first-child { border-top: none; }
 
-        &:hover {
-            text-decoration: none;
-        }
+		&:hover { text-decoration: none; }
 
-        &:after {
-            @include font-size(32px);
-            color: #666666;
-            content: '+';
-            font-weight: bold;
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all ease .25s;
+		&:after {
+			@include font-size(32px);
+			color: #666666;
+			content: '+';
+			font-weight: bold;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: all ease .25s;
+			@include breakpoint(small, 'max') { @include font-size(28px); }
+		}
 
-            @include breakpoint(small, 'max') {
-                @include font-size(28px);
-            }
-        }
+		&.open {
+			&:after { content: '-'; }
+		}
+	}
 
-        &.open {
+	.accordion-answer {
+		height: 0;
+		overflow: hidden;
+		position: relative;
+		transition: all ease .25s;
 
-            &:after {
-                content: '-';
-            }
-        }
-    }
-
-    .accordion-answer {
-        height: 0;
-        overflow: hidden;
-        position: relative;
-        transition: all ease .25s;
-
-        &.open {
-            height: auto;
-            padding: 0 0 20px 0;
-        }
-    }
+		&.open {
+			height: auto;
+			padding: 0 0 20px 0;
+		}
+	}
 }
 
 .voce-tambem {
+	.form-gae-content-2016 {
+		.error_p {
+			color: #ff3939;
+			font-size: 13px;
+			font-weight: bold;
+		}
 
-    .form-gae-content-2016 {
+		.sucesso {
+			color: #1b9a00;
+			font-size: 13px;
+			font-weight: bold;
+		}
+	}
 
-        .error_p {
-            color: #ff3939;
-            font-size: 13px;
-            font-weight: bold;
-        }
+	#form-gae-2016 {
+		input {
+			border: 1px solid #dddddd;
+			color: #929292;
+			display: inline-block;
+			font-weight: 200;
+			width: 100%;
 
-        .sucesso {
-            color: #1b9a00;
-            font-size: 13px;
-            font-weight: bold;
-        }
+			&.erro { border: 1px solid #ff0000; }
 
-    }
+			&#telefone-gae {
+				margin-right: 3%;
+				vertical-align: top;
+				width: 47%;
 
-    #form-gae-2016 {
+				@include breakpoint(small, 'max') {
+					margin-right: 0;
+					width: 100%;
+				}
+			}
 
-        input {
-            border: 1px solid #dddddd;
-            color: #929292;
-            display: inline-block;
-            font-weight: 200;
-            width: 100%;
+		}
 
-            &.erro { border: 1px solid #ff0000; }
+		.radios-form {
+			display: inline-block;
+			position: relative;
+			top: -5px;
+			width: 47%;
 
-            &#telefone-gae {
-                margin-right: 3%;
-                vertical-align: top;
-                width: 47%;
+			p {
+				color: #929292;
+				font-size: 14px;
+				margin: 0;
+			}
 
-                @include breakpoint(small, 'max') {
-                    margin-right: 0;
-                    width: 100%;
-                }
-            }
+			label {
+				display: inline-block;
 
-        }
+				& + label { margin-left: 10px; }
 
-        .radios-form {
-            display: inline-block;
-            position: relative;
-            top: -5px;
-            width: 47%;
+				input[type='radio'] {
+					display: inline-block;
+					left: -2px;
+					position: relative;
+					top: 2px;
+					width: auto;
+				}
 
-            p {
-                color: #929292;
-                font-size: 14px;
-                margin: 0;
-            }
+				span {
+					color: #929292;
+					display: inline-block;
+					font-size: 12px;
+					font-weight: 200;
+				}
+			}
 
-            label {
-                display: inline-block;
+			@include breakpoint(small, 'max') {
+				margin-left: 0;
+				width: 100%;
+			}
+		}
 
-                & + label {
-                    margin-left: 10px;
+		#enviar-gae-2016 {
+			float: right;
+			padding: 10px 0;
+			width: 130px;
+			@include breakpoint(small, 'max') { width: 100%; }
+		}
+	}
 
-                }
+	.col-right {
+		h4 { margin-bottom: 40px; }
 
-                input[type='radio'] {
-                    display: inline-block;
-                    left: -2px;
-                    position: relative;
-                    top: 2px;
-                    width: auto;
-                }
+		.it-call {
+			background: url('/arquivos/fone.png') no-repeat;
+			padding-left: 65px;
 
-                span {
-                    color: #929292;
-                    display: inline-block;
-                    font-size: 12px;
-                    font-weight: 200;
-                }
-            }
-
-            @include breakpoint(small, 'max') {
-                margin-left: 0;
-                width: 100%;
-            }
-        }
-
-        #enviar-gae-2016 {
-            float: right;
-            padding: 10px 0;
-            width: 130px;
-
-            @include breakpoint(small, 'max') {
-                width: 100%;
-            }
-        }
-    }
-
-    .col-right {
-
-        h4 {
-            margin-bottom: 40px;
-        }
-
-        .it-call {
-            background: url('/arquivos/fone.png') no-repeat;
-            padding-left: 65px;
-
-            strong {
-                display: block;
-            }
-
-        }
-    }
+			strong { display: block; }
+		}
+	}
 
 
-    .links_condicoes_gae {
-        border-top: 1px solid #bebebe;
-        margin-top: 50px;
-        padding-top: 60px;
-        text-align: center;
-        
-        p {
-            @include font-size(14px);
-            margin: 0 0 15px 0;
-            
-            a {
-                @include font-size(16px);
-                color: #96c040;
-                font-weight: bold;
-            }
-        }
-    }
+	.links_condicoes_gae {
+		border-top: 1px solid #bebebe;
+		margin-top: 50px;
+		padding-top: 60px;
+		text-align: center;
 
+		p {
+			@include font-size(14px);
+			margin: 0 0 15px 0;
 
-    .small-txt {
-        @include font-size(14px);
-        border-top: 1px solid #bebebe;
-        color: #666666;
-        display: block;
-        line-height: 24px;
-        margin-top: 60px;
-        padding: 20px 0 0 0;
+			a {
+				@include font-size(16px);
+				color: #96c040;
+				font-weight: bold;
+			}
+		}
+	}
 
+	.small-txt {
+		@include font-size(14px);
+		border-top: 1px solid #bebebe;
+		color: #666666;
+		display: block;
+		line-height: 24px;
+		margin-top: 60px;
+		padding: 20px 0 0 0;
 
-        span {
-            color: $green-color;
-        }
+		span { color: $green-color; }
 
-        @include breakpoint(small, 'max') {
-            @include font-size(12px);
-        }
-    }
-
+		@include breakpoint(small, 'max') {
+			@include font-size(12px);
+		}
+	}
 }

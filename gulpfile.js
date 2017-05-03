@@ -12,7 +12,9 @@ var gulp		= require('gulp'),
 	pkg			= require('./package.json'),
 	cssnano		= require('cssnano'),
 	cssMqpacker = require('css-mqpacker'),
-	shell		= require('shelljs');
+	shell		= require('shelljs'),
+	cached		= require('gulp-cached'),
+	sassPartialsImported = require('gulp-sass-partials-imported');
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	ignoreReplace = [/\.js(\?.*)?$/, /\.css(\?.*)?$/, /\.svg(\?.*)?$/, /\.ico(\?.*)?$/, /\.woff(\?.*)?$/, /\.png(\?.*)?$/, /\.jpg(\?.*)?$/, /\.jpeg(\?.*)?$/, /\.gif(\?.*)?$/, /\.pdf(\?.*)?$/],
@@ -57,6 +59,7 @@ gulp.task('sassLint', function () {
 
 	return gulp.src(getPath('styles')
 	.concat('!src/styles/helpers/*'))
+	.pipe(cached('sassLinting'))
 	.pipe(sassLint({
 			options: {
 				'config-file': '.sass-lint.yml'
@@ -149,11 +152,13 @@ gulp.task('scripts', ['lint'], function () {
 			devtool: $.util.env.production ? '': '#source-map'
 		}))
 		.pipe(gulp.dest(paths.dest))
-		/*.pipe(gulp.dest(paths.destCheckout))*/;
+		.pipe(gulp.dest(paths.destCheckout));
 });
 
 gulp.task('styles', ['sassLint'], function () {
 	return gulp.src(getPath('styles'))
+		.pipe($.util.env.page ? $.util.noop() : cached('styling'))
+		.pipe($.util.env.page ? $.util.noop() : sassPartialsImported('src/styles/'))
 		.pipe($.plumber())
 		.pipe($.newer(paths.dest))
 		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
@@ -169,7 +174,7 @@ gulp.task('styles', ['sassLint'], function () {
 		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
 		.pipe( $.util.env.production ? $.postcss([
-			cssnano(),
+			cssnano({zindex:false}),
 			cssMqpacker()
 		]) : $.postcss([
 			cssMqpacker()
@@ -181,7 +186,7 @@ gulp.task('styles', ['sassLint'], function () {
 		.pipe($.replace('PKG_BUILD_VERSION', pkg.version))
 		.pipe($.sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.dest))
-		/*.pipe(gulp.dest(paths.destCheckout))*/;
+		.pipe(gulp.dest(paths.destCheckout));
 
 	// return $.rubySass('src/styles/', {
 	// 		sourcemap: ! $.util.env.production,
