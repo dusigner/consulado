@@ -67,6 +67,7 @@ h2 {
 #banner {
 	background: url('/arquivos/line-banner.png') right 0 no-repeat;
 	height: 773px;
+	@media (min-width: 1500px) { height: 792px; }
 	@include breakpoint(extra-small, 'max') {
 		height: auto;
 	}
@@ -77,6 +78,10 @@ h2 {
 	display: inline-block;
 	height: 690px;
 	width: 70%;
+	@media (min-width: 1500px) { 
+		background: url('/arquivos/bg-image.png') 360px 18px no-repeat; 
+		height: 709px;
+	}
 	@include breakpoint(extra-small, 'min') {
 		.ban-mobile {
 			display: none;
@@ -100,7 +105,10 @@ h2 {
 	}
 }
 
-.box-grid { position: absolute; }
+.box-grid { 
+	position: absolute; 
+	@media (min-width: 1500px) { left: 360px; }
+}
 
 .box-one {
 	animation-delay: .6s;
@@ -108,6 +116,7 @@ h2 {
 	display: none;
 	height: 131px;
 	width: 377px;
+	@media (min-width: 1500px) { margin-left: 360px; }
 }
 
 .box-two {
@@ -116,6 +125,7 @@ h2 {
 	display: none;
 	height: 230px;
 	width: 377px;
+	@media (min-width: 1500px) { margin-left: 360px; }
 }
 
 .box-three {
@@ -167,6 +177,7 @@ h2 {
    	left: 627px;
 	position: relative;
 	width: 257px;
+	@media (min-width: 1500px) { left: 987px; }
 }
 
 @keyframes flipInX {
@@ -298,6 +309,8 @@ h2 {
    	span { @include responsiveFont(22); }
 
    @include breakpoint(extra-small, 'max') { display: none; }
+
+   @media (min-width: 1500px) { margin-left: 360px; }
 }
 
 #txt,
