@@ -12,9 +12,29 @@ require('vendors/nitro');
 Nitro.setup([], function () {
 
 	$(window).load(function() {
-		$('.inner, .inner-only').css('visibility', 'visible');
+		// $('.inner, .inner-only').css('visibility', 'visible');
 
-		$('.box-one, .box-two, .box-three, .box-four, .box-five, .box-six, .box-seven').addClass('animated flipInY');
+		var delay = 200;
+
+		for (var i = 1; i < 8; i++) {
+			console.log($('.box-'+i));
+			$('.box-'+i).delay(delay).show(0);
+			delay += 200;
+		}
+
+		// $('.box-one, .box-two, .box-three, .box-four, .box-five, .box-six, .box-seven').addClass('animated flipInY');
+
+		setInterval(function () {
+			var divRandom1 = Math.floor(Math.random()*7)+1;
+			var divRandom2 = Math.floor(Math.random()*2)+1;
+			var effect = divRandom2 === 1 ? 'flipInY':'flipInX';
+
+			$('.box-'+divRandom1).addClass('animated ' + effect);
+			setTimeout(function() {
+				$('.box-'+divRandom1).removeClass('animated ' + effect);
+			}, 2800);
+		}, 3000);
+		
 	});
 
 	if ($(window).width() <= 480) { 
@@ -29,11 +49,17 @@ Nitro.setup([], function () {
 		});
 	}
 
+	$('.btn-participe').click(function(){
+	    $('html, body').animate({ scrollTop: 998 }, 600);
+	    return false;
+	});
+
 	$('#form-concurso').validate();
 
 	jQuery(function($){
-		$('#phone').mask('(99) 9999*-9999');
+		$('#phone').mask('(99) 9999-9999?9');
 		$('#cpf').mask('999.999.999-99');
+		$('#cbirthdate').mask('99/99/9999');
 	});
 
 	var $form = $('#form-concurso');

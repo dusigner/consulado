@@ -20,7 +20,7 @@ $animation-mode: true!default;
 @import 'helpers/mixins';
 @import 'helpers/icons';
 @import 'helpers/helpers';
-@import 'helpers/animation';
+// @import 'helpers/animation';
 
 // Base styles
 @import 'base/fonts';
@@ -94,38 +94,47 @@ h2 {
 	}
 }
 
-.box-grid {
-	position: absolute;
+@include breakpoint(extra-small, 'max') {
+	.ban-hide-mobile {
+		display: none!important;
+	}
 }
 
+.box-grid { position: absolute; }
+
 .box-one {
-	animation-delay: .3s;
-	animation-duration: 2s;
+	animation-delay: .6s;
+	animation-duration: 3s;
 	width: 377px;
 	height: 131px;
+	display: none;
+	display: none;
 }
 
 .box-two {
-	animation-delay: .6s;
-	animation-duration: 2s;
+	animation-delay: 1.8s;
+	animation-duration: 3s;
 	width: 377px;
 	height: 230px;
+	display: none;
 }
 
 .box-three {
 	width: 377px;
 	height: 244px;
 	position: absolute;
-	animation-delay: .9s;
-	animation-duration: 2s;
+	animation-delay: 3s;
+	animation-duration: 3s;
+	display: none;
 }
 
 .box-four {
 	width: 160px;
 	height: 244px;
 	position: absolute;
-	animation-delay: 1.2s;
-	animation-duration: 2s;
+	animation-delay: 4s;
+	animation-duration: 3s;
+	display: none;
 }
 
 .box-five {
@@ -134,8 +143,9 @@ h2 {
 	position: relative;
 	top: 0;
 	left: 377px;
-	animation-delay: 1.5s;
-	animation-duration: 2s;
+	animation-delay: 5s;
+	animation-duration: 3s;
+	display: none;
 }
 
 .box-six {
@@ -144,22 +154,118 @@ h2 {
 	position: absolute;
 	top: 0;
 	left: 627px;
-	animation-delay: 1.8s;
-	animation-duration: 2s;
+	animation-delay: 6s;
+	animation-duration: 3s;
+	display: none;
 }
 
 .box-seven {
 	width: 257px;
 	height: 464px;
 	position: relative;
-   bottom: 464px;
-   left: 627px;
-   animation-delay: 2.1s;
-	animation-duration: 2s;
+   	bottom: 464px;
+   	left: 627px;
+   	animation-delay: 7s;
+	animation-duration: 3s;
+	display: none;
 }
 
-.flippy {
-	animation-iteration-count: infinite;
+@keyframes flipInX {
+	0% {
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		-ms-transform: perspective(800px) rotateX(0deg);
+		transform: perspective(800px) rotateX(0deg);
+	}
+
+	28% {
+		opacity: 1;
+	}
+
+
+	 29% {
+		-webkit-transform: perspective(800px) rotateX(90deg);
+		-ms-transform: perspective(800px) rotateX(90deg);
+		transform: perspective(800px) rotateX(90deg);
+	}
+
+	30% {
+		-webkit-transform: perspective(800px) rotateX(-90deg);
+		-ms-transform: perspective(800px) rotateX(-90deg);
+		transform: perspective(800px) rotateX(-90deg);
+		opacity: 0;
+	} 
+	40%{
+		opacity: 1;
+	}
+
+	60% {
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		-ms-transform: perspective(800px) rotateX(0deg);
+		transform: perspective(800px) rotateX(0deg);
+	}
+
+	100% {
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		-ms-transform: perspective(800px) rotateX(0deg);
+		transform: perspective(800px) rotateX(0deg);
+	}
+}
+
+.flipInX {
+	-webkit-backface-visibility: visible !important;
+	-ms-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	-webkit-animation-name: flipInX;
+	animation-name: flipInX;
+}
+
+@keyframes flipInY {
+	0% {
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		-ms-transform: perspective(800px) rotateY(0deg);
+		transform: perspective(800px) rotateY(0deg);
+	}
+
+	28% {
+		opacity: 1;
+	}
+
+
+	 29% {
+		-webkit-transform: perspective(800px) rotateY(90deg);
+		-ms-transform: perspective(800px) rotateY(90deg);
+		transform: perspective(800px) rotateY(90deg);
+	}
+
+	30% {
+		-webkit-transform: perspective(800px) rotateY(-90deg);
+		-ms-transform: perspective(800px) rotateY(-90deg);
+		transform: perspective(800px) rotateY(-90deg);
+		opacity: 0;
+	} 
+	40%{
+		opacity: 1;
+	}
+
+	60% {
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		-ms-transform: perspective(800px) rotateY(0deg);
+		transform: perspective(800px) rotateY(0deg);
+	}
+
+	100% {
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		-ms-transform: perspective(800px) rotateY(0deg);
+		transform: perspective(800px) rotateY(0deg);
+	}
+}
+
+.flipInY {
+	-webkit-backface-visibility: visible !important;
+	-ms-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	-webkit-animation-name: flipInY;
+	animation-name: flipInY;
 }
 
 .ban-promo {
@@ -377,6 +483,9 @@ h2 {
 			display: block;
     		font-size: 14px;
     		position: absolute;
+    		@include breakpoint(extra-small, 'max') {
+    			font-size: 10px;
+    		}
 		}
 		.loading {
 			display: block;
@@ -413,6 +522,7 @@ h2 {
 	width: 100%;
 	height: 880px;
 	@include breakpoint(extra-small, 'max') {
+		height: auto;
 		.container {
 			margin: 0;
 			max-width: 100%;
