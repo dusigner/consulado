@@ -65,6 +65,7 @@ h2 {
 }
 
 #banner {
+	background: url(/arquivos/line-banner.png) right 0 no-repeat;
 	height: 780px;
 	@include breakpoint(extra-small, 'max') {
 		height: auto;
@@ -83,7 +84,7 @@ h2 {
 	}
 	@include breakpoint(extra-small, 'max') {
 		background: none;
-		height: 410px;
+		height: auto;
 		width: 100%;
 		img {
     		display: block;
@@ -205,7 +206,7 @@ h2 {
 	background-color: #898481;
 	bottom: 25px;
 	float: right;
-	height: 170px;
+	height: auto;
 	padding: 30px 0 50px 0;
 	position: relative;
 	text-align: center;
@@ -250,6 +251,9 @@ h2 {
 	border-top-right-radius: 100px;
 	float: left;
 	padding: 30px 0 50px 160px;
+	@include breakpoint(extra-small, 'max') {
+		@include responsiveFont(8);
+	}
 	
 	h2,
 	span {
@@ -270,19 +274,27 @@ h2 {
 #form {
 	width: 100%;
 	height: 775px;
-	@include breakpoint(extra-small, 'max') {
-		height: auto;
-	}
+	@include breakpoint(extra-small, 'max') { height: auto; }
 	fieldset {
 		border: none;
 		margin: 0;
 	}
 
 	input {
-		background-color: #aed563;
+		background-color: #aed563!important;
+		border: none;
 		border-radius: 20px;
+		display: block;
+		height: 38px;
 		margin: 0;
+		padding-left: 20px;
+		width: 100%;
 	}
+	input.error {
+		border: 1px solid red!important;
+	}
+
+	label.error { color: #ff0000; }
 
 	.see-you,
 	.form {
@@ -333,7 +345,10 @@ h2 {
 
 		.pedido {
 			display: inline-block;
-			width: 55%;
+			width: 74%;
+			@include breakpoint(extra-small, 'max') {
+				width: 65%;
+			}
 			.txt-not-obrigatory {
 				@include responsiveFont(12);
 				color: #ffffff;
@@ -351,6 +366,34 @@ h2 {
 		.btn-enviar {
 			display: inline-block;
 			vertical-align: text-bottom;
+			@include breakpoint(extra-small, 'max') {
+				button {	
+					padding: 11px 18px 11px 18px;
+				}
+			}
+		}
+		.msg-form {
+			color: #898481;
+			display: block;
+    		font-size: 14px;
+    		position: absolute;
+		}
+		.loading {
+			display: block;
+		    font-size: 16px;
+		    font-size: 1rem;
+		    background-color: #898481!important;
+		    border-radius: 50px;
+		    color: #fff;
+		    font-weight: 700;
+		    padding: .7em 2.5em;
+		    position: relative;
+		    text-align: center;
+
+			&:before {
+				@include spinner($green, 25px);
+				content: ' '!important;
+			}
 		}
 	}
 	.line {
@@ -369,7 +412,7 @@ h2 {
 #regulamento {
 	background: url('/arquivos/line.png') center center no-repeat; 
 	width: 100%;
-	height: 600px;
+	height: 880px;
 	@include breakpoint(extra-small, 'max') {
 		.container {
 			margin: 0;
@@ -409,6 +452,9 @@ h2 {
     	margin: 50px auto;
     	text-transform: uppercase;
     	width: 220px;
+    	@include breakpoint(extra-small, 'max') {
+    		margin: 63px auto;
+    	}
 	}
 	.regulamento-infos {
 		@include responsiveFont(18);	
@@ -427,16 +473,49 @@ h2 {
 			font-weight: bold;
 		}
 	}
-	.btn-download {
+	.infos-regulamento {
+		@include breakpoint(extra-small, 'max') {
+			background: -webkit-linear-gradient(#333333, #eeeeee);
+	  		-webkit-background-clip: text;
+	  		-webkit-text-fill-color: transparent;
+		}
+	}
+	.btn-download,
+	.btn-ver-mais {
 		@include responsiveFont(18);	
 		background-color: #898481;
 		border-radius: 30px;
-		color: #ffffff;
-		float: right;
+		display: inline-block;
 		font-weight: bold;
 		margin-top: 50px;
 		padding: 15px 0 15px 0;
 		text-align: center;
 		width: 245px;
+		@include breakpoint(extra-small, 'max') {
+			margin-top: 20px;
+			width: 45%;
+		}
+		a { color: #ffffff; }
+	}
+	.btn-ver-mais {
+		background: transparent;
+		@include breakpoint(extra-small, 'max') {
+			background: transparent;
+			border: 1px solid #898481;
+			color: #898481;
+			float: left;
+			margin-left: 10px;
+		}
+	}
+	.btn-download {
+		float: right;
+		margin-right: 10px;
+	}
+	.buttons-form {
+		@include breakpoint(extra-small, 'max') {
+	    	background-color: #ebebeb;
+		    height: 100px;
+		    width: 100%;
+		}
 	}
 }
