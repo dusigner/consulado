@@ -7,34 +7,52 @@ require('vendors/jquery.maskedinput');
 //load Nitro Lib
 require('vendors/nitro');
 
-// var CRM = require('modules/store/crm');
-
 Nitro.setup([], function () {
 
 	$(window).load(function() {
-		// $('.inner, .inner-only').css('visibility', 'visible');
 
-		// var delay = 200;
+		var flippyIn = function() {
+			var boxes = [0,1,2,3,4,5,6,7,8],
+				remaining = boxes;
 
-		// for (var i = 1; i < 8; i++) {
-		// 	console.log($('.box-'+i));
-		// 	$('.box-'+i).delay(delay).show(0);
-		// 	delay += 200;
-		// }
+			var showBoxes = setInterval(function () {
+				var divRandom1 = remaining[Math.floor(Math.random()*remaining.length)],
+					divRandom2 = Math.floor(Math.random()*2)+1,
+					effect = divRandom2 === 1 ? 'flipInY':'flipInX';
+				$('.tit-banner').css('opacity', '0.75').css('visibility', 'visible');
+				$('.box-'+ divRandom1).addClass('animated ' + effect).removeClass('flipOutX flipOutY');
+				remaining = $.grep(remaining, function(value) {
+					return value !== divRandom1;
+				});
 
-		// $('.box-one, .box-two, .box-three, .box-four, .box-five, .box-six, .box-seven').addClass('animated flipInY');
+				if (remaining.length === 0) {
+					clearInterval(showBoxes);
+					flippyOut();
+				}
+			}, 1000);
+		};
+		var flippyOut= function() {
+			var boxes = [0,1,2,3,4,5,6,7],
+				remaining = boxes;
 
-		setInterval(function () {
-			var divRandom1 = Math.floor(Math.random()*7)+1;
-			var divRandom2 = Math.floor(Math.random()*2)+1;
-			var effect = divRandom2 === 1 ? 'flipInY':'flipInX';
+			var hideBoxes = setInterval(function () {
+				var divRandom1 = remaining[Math.floor(Math.random()*remaining.length)],
+					divRandom2 = Math.floor(Math.random()*2)+1,
+					effect = divRandom2 === 1 ? 'flipOutY':'flipOutX';
 
-			$('.box-'+divRandom1).addClass('animated ' + effect);
-			// setTimeout(function() {
-			// 	$('.box-'+divRandom1).removeClass('animated ' + effect);
-			// }, 2800);
-		}, 3000);
-		
+				$('.box-'+ divRandom1).removeClass('flipInX flipInY').addClass('animated ' + effect);
+				$('.tit-banner').css('visibility', 'hidden');
+				remaining = $.grep(remaining, function(value) {
+					return value !== divRandom1;
+				});
+
+				if (remaining.length === 0) {
+					clearInterval(hideBoxes);
+					flippyIn();
+				}
+			}, 1000);
+		};  
+		flippyIn();
 	});
 
 	if ($(window).width() <= 480) { 
@@ -42,7 +60,7 @@ Nitro.setup([], function () {
 			$('.tgl').css('display', 'none');
 			$('.btn-ver-mais').click(function() {
 				$('#box-toggle .tgl').slideToggle('slow')
-			.siblings('.tgl:visible').slideToggle('fast');
+				.siblings('.tgl:visible').slideToggle('fast');
 				$('.btn-ver-mais').hide();
 				$('#box-toggle').removeClass('infos-regulamento');
 			});
@@ -50,8 +68,8 @@ Nitro.setup([], function () {
 	}
 
 	$('.btn-participe').click(function(){
-	    $('html, body').animate({ scrollTop: 998 }, 600);
-	    return false;
+		$('html, body').animate({ scrollTop: 998 }, 600);
+		return false;
 	});
 
 	$('#form-concurso').validate();
@@ -64,13 +82,17 @@ Nitro.setup([], function () {
 
 	var $form = $('#form-concurso');
 
+
 	$form.submit(function(e) {
 		e.preventDefault();
+		var dia = $('#cbirthdate').val().split('/')[0],
+			mes = $('#cbirthdate').val().split('/')[1],
+			ano = $('#cbirthdate').val().split('/')[2];
 
 		var formData = {
 			name: $('#cname').val(),
 			email: $('#cemail').val(),
-			birthdate: $('#cbirthdate').val(),
+			birthdate: new Date(mes + '/' + dia + '/' + ano).getTime(),
 			phone: $('#phone').val(),
 			document: $('#cpf').val(),
 			orderId: $('#orderId').val()
@@ -81,14 +103,14 @@ Nitro.setup([], function () {
 			url: 'https://consul-promo.herokuapp.com/lead',
 			data: formData,
 			beforeSend: function() {
-				//addclass
+			//addclass
 				$('.btn.primary-button').addClass('loading');
 				$('.btn-enviar span').css('display', 'none');
-				// alert('LOADING');
 			}
 		}).then(function() {
 			//deu certo
 			$('.btn.primary-button').after('<span class="msg-form">Formulário enviado!</span>');
+			$('#form input').val('');
 		}).fail(function () {
 			//deu errado
 			$('.btn.primary-button').after('<span class="msg-form">Ocorreu um erro!</span>');
@@ -97,7 +119,7 @@ Nitro.setup([], function () {
 			$('.btn.primary-button').removeClass('loading');
 			$('.btn-enviar span').css('display', 'block');
 		});
-	});	
+	}); 
 
 });
 
