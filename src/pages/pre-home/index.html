@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+  	<!-- @include ../../subtemplates/consul-head-content.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<vtex:template id="0-consul-head-content" />
+  	<!-- @endif -->
+
+	<link rel="stylesheet" href="/arquivos/consul2-pre-home.css" />
+</head>
+<body data-controller="pre-home" class="pre-home">
+
+
+
+
+	<header data-module="header">
+		<div class="row pre-header hide-small hide-extra-small">
+			<section class="container clearfix">
+				<div class="col-6">
+					<a href="/" class="item" title="Loja Virtual">Loja Virtual</a>
+					<a href="http://www.consul.com.br/inicio" target="_blank" class="item" title="Site da Consul">Site da Consul</a>
+					<a href="#" class="item active" title="Vendas Corporativas">Vendas Corporativas</a>
+				</div>
+
+				<div class="col-6 float-right">
+					<a href="tel:+551130037872" title="Televendas / SAC">Televendas 3003-7872</a>
+					<a href="http://consul.custhelp.com/" target="_blank" class="item" title="Central de Atendimento">Central de Atendimento</a>
+				</div>
+			</section>
+		</div>
+
+		<div class="row header">
+			<section class="container">
+
+				<div class="col-12 cont-logo">
+					<a href="/" class="logo" title="Consul">
+						<i class="icon icon-logo-consul"></i>
+						<p>Vendas Corporativas</p>
+					</a>
+				</div>
+
+			</section>
+		</div>
+	</header>
+
+	<section id="form">
+		<div class="container">
+			<div class="row">
+				<div class="col-5 text">
+					<div class="title">
+						<h2>Vendas Corporativas</h2>
+						<span class="border"></span>
+					</div>
+
+					<p class="info">
+						A Consul tem um atendimento dedicado para perfis corporativos, que são vendas para empresas, hospitais, escolas, hóteis, empreendimentos imobiliários e afins.
+					</p>
+				</div>
+				<div class="col-5 form">
+					<div class="title">
+						<h2>Acessar</h2>
+						<span class="border"></span>
+					</div>
+
+					<form action="/" method="POST" class="form-login pre-home-form inline-form" novalidate="novalidate" data-msg-error="Não foi possivel enviar as informações, &lt;span&gt;por favor tente novamente mais tarde.&lt;/span&gt;">
+						<fieldset>
+							<input type="email" name="email" class="email" placeholder="E-mail" data-validation="require email" data-msg-required="Digite um e-mail" data-msg-email="E-mail inválido, &lt;span&gt;por favor tente novamente.&lt;/span&gt;"/>
+						</fieldset>
+
+						<fieldset class="fild-submit">
+							<button type="submit" class="btn">Entrar</button>
+						</fieldset>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+	<section id="imagem">
+		<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />
+	</section>
+
+
+	<section id="info">
+		<div class="container">
+			<div class="row">
+				<div class="col-3 box box-1">
+					<div class="title">
+						<h4>Revendas</h4>
+						<span class="border"></span>
+					</div>
+					<p>Os produtos Consul são referência no mercado, preferidos pelos consumidores e indispensáveis na sua loja. </p>
+				</div>
+				<div class="col-3 box box-2">
+					<div class="title">
+						<h4>Empresa</h4>
+						<span class="border"></span>
+					</div>
+					<p>emos uma área especializada para venda direta para empresas, empreendimentos imobiliários, hospitais e escolas.</p>
+				</div>
+				<div class="col-3 box box-3">
+					<div class="title">
+						<h4>Cozinha Planejada</h4>
+						<span class="border"></span>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
+				</div>
+				<div class="col-3 box box-4">
+					<div class="title">
+						<h4>Hotel</h4>
+						<span class="border"></span>
+					</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-footer.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+  	<!-- @endif -->
+
+	<script type="text/javascript" src="/arquivos/consul2-pre-home.min.js"></script>
+
+</body>
+</html>
