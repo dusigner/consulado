@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+  	<!-- @include ../../subtemplates/consul-head-content.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<vtex:template id="0-consul-head-content" />
+  	<!-- @endif -->
+
+</head>
+<body>
+
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-header.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+  	<!-- @endif -->
+
+
+
+	<div class="container">
+		<h1> Content Landing </h1>
+	</div>
+
+
+
+
+  	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-servicos.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Footer -->
+	<vtex:template id="0-consul-servicos" />
+	<!-- /Footer -->
+  	<!-- @endif -->
+
+
+
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-footer.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+  	<!-- @endif -->
+
+</body>
+</html>

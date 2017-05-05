@@ -14,7 +14,9 @@ var gulp		= require('gulp'),
 	cssMqpacker = require('css-mqpacker'),
 	shell		= require('shelljs'),
 	cached		= require('gulp-cached'),
-	sassPartialsImported = require('gulp-sass-partials-imported');
+	sassPartialsImported = require('gulp-sass-partials-imported'),
+	preprocess 	= require('gulp-preprocess');
+
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	ignoreReplace = [/\.js(\?.*)?$/, /\.css(\?.*)?$/, /\.svg(\?.*)?$/, /\.ico(\?.*)?$/, /\.woff(\?.*)?$/, /\.png(\?.*)?$/, /\.jpg(\?.*)?$/, /\.jpeg(\?.*)?$/, /\.gif(\?.*)?$/, /\.pdf(\?.*)?$/],
@@ -104,6 +106,12 @@ gulp.task('bump', function() {
 	return gulp.src('package.json')
 		.pipe($.util.env.nobump ? $.util.noop() : $.bump({ version: pkg.version }))
 		.pipe(gulp.dest('.'));
+});
+
+gulp.task('html', function() {
+	return gulp.src(getPath('pages'))
+		.pipe(preprocess({context: { NODE_ENV: 'pages', DEBUG: ( $.util.env.production ? 'production' : 'development' )}})) //To set environment variables in-line
+    	.pipe(gulp.dest('build/' + $.util.env.page));
 });
 
 gulp.task('scripts', ['lint'], function () {
@@ -262,7 +270,7 @@ gulp.task('server', ['watch'], function () {
 
 });
 
-gulp.task('pages', function () {
+gulp.task('pages', ['html'], function () {
 	return $.util.env.page && gulp.src( getPath('pages'), {base: 'src/pages'} )
 		.pipe($.newer('build'))
 		.pipe(gulp.dest('build'));
