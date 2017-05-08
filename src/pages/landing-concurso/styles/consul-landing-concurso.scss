@@ -20,7 +20,7 @@ $animation-mode: true!default;
 @import 'helpers/mixins';
 @import 'helpers/icons';
 @import 'helpers/helpers';
-// @import 'helpers/animation';
+@import 'helpers/animation';
 
 // Base styles
 @import 'base/fonts';
@@ -597,7 +597,7 @@ h2 {
 	.regulamento-infos {
 		@include responsiveFont(18);	
 		height: 292px;
-		overflow: scroll;
+		overflow-y: scroll;
 		padding-left: 70px;
 		text-align: left;
 		width: 95%;
