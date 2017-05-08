@@ -613,9 +613,9 @@ h2 {
 	}
 	.infos-regulamento {
 		@include breakpoint(extra-small, 'max') {
+			background: -webkit-linear-gradient(#333333, #eeeeee);
 	  		-webkit-background-clip: text;
 	  		-webkit-text-fill-color: transparent;
-			background: -webkit-linear-gradient(#333333, #eeeeee);
 		}
 	}
 	.btn-download,
