@@ -11,6 +11,7 @@ Nitro.setup([], function () {
 
 	$(window).load(function() {
 
+		// animação banner
 		var flippyIn = function() {
 			var boxes = [0,1,2,3,4,5,6,7,8],
 				remaining = boxes;
@@ -55,6 +56,7 @@ Nitro.setup([], function () {
 		flippyIn();
 	});
 
+	// animação botão regulamento
 	if ($(window).width() <= 480) { 
 		$(document).ready(function(){
 			$('.tgl').css('display', 'none');
@@ -67,13 +69,21 @@ Nitro.setup([], function () {
 		});
 	}
 
+	// scroll banner
 	$('.btn-participe').click(function(){
+		$('html, body').animate({ scrollTop: 998 }, 600);
+		return false;
+	});
+
+	// scroll banner mobile
+	$('.ban-mobile').click(function(){
 		$('html, body').animate({ scrollTop: 998 }, 600);
 		return false;
 	});
 
 	$('#form-concurso').validate();
 
+	// mascara form
 	jQuery(function($){
 		$('#phone').mask('(99) 9999-9999?9');
 		$('#cpf').mask('999.999.999-99');
@@ -82,7 +92,7 @@ Nitro.setup([], function () {
 
 	var $form = $('#form-concurso');
 
-
+	// validação do form
 	$form.submit(function(e) {
 		e.preventDefault();
 		var dia = $('#cbirthdate').val().split('/')[0],
