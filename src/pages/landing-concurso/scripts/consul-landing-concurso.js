@@ -119,11 +119,13 @@ Nitro.setup([], function () {
 			}
 		}).then(function() {
 			//deu certo
-			$('.btn.primary-button').after('<span class="msg-form">Formulário enviado!</span>');
+			$('.btn.primary-button').after('<span class="msg-form msg-sucesso">Formulário enviado!</span>');
+			$('.msg-erro').addClass('hide');
 			$('#form input').val('');
 		}).fail(function () {
 			//deu errado
-			$('.btn.primary-button').after('<span class="msg-form">Ocorreu um erro!</span>');
+			$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');
+			$('.msg-sucesso').addClass('hide');
 		}).always(function() {
 			//removeclass
 			$('.btn.primary-button').removeClass('loading');
