@@ -16,10 +16,6 @@ var gulp		= require('gulp'),
 	cached		= require('gulp-cached'),
 	sassPartialsImported = require('gulp-sass-partials-imported'),
 	preprocess 	= require('gulp-preprocess');
-<<<<<<< HEAD
-
-=======
->>>>>>> d2cf1887964492b8cd518d42c59a677c041150c8
 
 var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 	ignoreReplace = [/\.js(\?.*)?$/, /\.css(\?.*)?$/, /\.svg(\?.*)?$/, /\.ico(\?.*)?$/, /\.woff(\?.*)?$/, /\.png(\?.*)?$/, /\.jpg(\?.*)?$/, /\.jpeg(\?.*)?$/, /\.gif(\?.*)?$/, /\.pdf(\?.*)?$/],
