@@ -81,8 +81,6 @@ Nitro.setup([], function () {
 		return false;
 	});
 
-	$('#form-concurso').validate();
-
 	// mascara form
 	jQuery(function($){
 		$('#phone').mask('(99) 9999-9999?9');
@@ -90,9 +88,49 @@ Nitro.setup([], function () {
 		$('#cbirthdate').mask('99/99/9999');
 	});
 
+	// validação do form
+	$('#form-concurso').validate({ 
+		rules:{
+			campoName:{
+				required: true, minlength: 2
+			},
+			campoEmail:{
+				required: true, email: true
+			},
+			birthdate:{
+				required: true
+			},
+			document:{
+				required: true
+			},
+			phone: {
+				required: true
+			}
+		},
+
+		messages:{
+			campoName:{
+				required: 'Campo `nome` obrigatório',
+				minlength: 'O seu nome deve conter, no mínimo, 2 caracteres'
+			},
+			campoEmail: {	
+				required: 'Digite o seu e-mail para contato',
+				email: 'Digite um e-mail válido'
+			},
+			birthdate: {
+				required: 'Data de aniversário inválida'
+			},
+			document: {
+				required: 'CPF inválido'
+			},
+			phone: {
+				required: 'Telefone inválido'	
+			}
+		}
+	});
+
 	var $form = $('#form-concurso');
 
-	// validação do form
 	$form.submit(function(e) {
 		e.preventDefault();
 		var dia = $('#cbirthdate').val().split('/')[0],
@@ -122,6 +160,7 @@ Nitro.setup([], function () {
 			$('.btn.primary-button').after('<span class="msg-form msg-sucesso">Formulário enviado!</span>');
 			$('.msg-erro').addClass('hide');
 			$('#form input').val('');
+			$('.msg-erro').addClass('hide');
 		}).fail(function () {
 			//deu errado
 			$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');

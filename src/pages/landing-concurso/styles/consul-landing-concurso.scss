@@ -510,11 +510,40 @@ h2 {
 		.msg-form {
 			color: #898481;
 			display: block;
-    		font-size: 14px;
+    		font-size: 15px;
     		position: absolute;
     		@include breakpoint(extra-small, 'max') {
-    			font-size: 10px;
-    		}
+    			font-size: 14px;
+    			line-height: 14px;
+    			margin-left: 10px;
+    			margin-top: 10px;	
+		  	}
+		}
+		.msg-sucesso {
+			font-weight: 500;
+			color: #ffffff;
+			&:after{
+			    content: '';
+			    display: inline-block;
+			    width: 9px;
+			    height: 17px;
+			    margin-left: 11px;
+			    border: solid $orange;
+			    border-width: 0 2px 2px 0;
+			    transform: rotate(45deg);
+		  	}
+		}
+
+		.msg-erro {
+			font-weight: 600;
+			color: $orange;
+			&:after {
+				color: #ff0000;
+				content: 'x';
+				font-size: 22px;
+				font-weight: 700;
+				margin-left: 5px;
+			}
 		}
 		.loading {
 		    background-color: #898481!important;
@@ -531,6 +560,26 @@ h2 {
 				@include spinner($green, 25px);
 				content: ' '!important;
 			}
+		}
+		.check-terms {
+			cursor: initial; 
+			display: inline-block; 
+			height: 13px;
+			width: 20px;
+		}
+		.terms { 
+			color: #ffffff; 
+			display: inline-block;
+			margin-top: 10px;
+			vertical-align: top;
+			@include breakpoint(extra-small, 'max') {
+				margin-bottom: 15px;
+				margin-top: 20px;
+			}
+		}
+
+		#checkTerms-error {
+			position: absolute;
 		}
 	}
 	.line {

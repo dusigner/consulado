@@ -321,28 +321,27 @@
          <form action="/" method="POST" id="form-concurso">
              <fieldset>
                  <label for="cname" class="tit">Nome Completo</label>
-                 <input id="cname" type="text" name="name" minlength="2" required="required" data-validation="required" data-msg-required="Digite um nome! "/>
+                 <input id="cname" type="text" name="campoName" minlength="2" required="required" data-validation="required" data-msg-required="Campo `nome` obrigatório"/>
              </fieldset>
 
              <fieldset>
                  <label for="cemail" class="tit">E-mail</label>
-                 <input id="cemail" type="email" name="email" required="required" data-validation="required" data-msg-required="Digite um e-mail!" />
+                 <input id="cemail" type="email" name="campoEmail" required="required" data-validation="required" data-msg-required="Digite um e-mail válido" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">Data de nascimento</span>
-                 <input id="cbirthdate" type="text" name="birthdate" required="required" data-validation="required" data-msg-required="Preencha a data de nascimento!" />
+                 <input id="cbirthdate" type="text" name="birthdate" required="required" data-validation="required" data-msg-required="Data de aniversário inválida" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">Telefone</span>
-                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Digite um telefone!" pattern="\(\d{2}\)\d{4}-\d{4}" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Telefone inválido" pattern="\(\d{2}\)\d{4}-\d{4}" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">CPF</span>
-                 <input id="cpf" type="text" name="document" required="required" data-validation="required" data-msg-required="Digite um cpf!" />
-
+                 <input id="cpf" type="text" name="document" required="required" data-validation="required" data-msg-required="CPF inválido" />
              </fieldset>
 
              <fieldset class="pedido">
@@ -355,6 +354,10 @@
                  <button type="submit" class="btn primary-button"><span>Enviar</span></button>
              </fieldset>
 
+             <fieldset class="terms">
+               <input id="checkTerms" class="check-terms" type="checkbox" name="checkTerms" required="required" data-validation="required" data-msg-required="Para enviar o formulário aceite os termos da promoção.">  
+               <span>Li e aceito os termos da promoção</span>
+             </fieldset>
          </form>
          <div class="line"></div>
       </div>
