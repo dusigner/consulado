@@ -1,0 +1,488 @@
+// Vars de tempo
+$full: 1s;
+
+
+// Etapa 1 -> 2
+
+.sub-section.forward .humaninhos{
+    // Humaninhos saindo de cena
+    @include animation( subir_e_cair $full 1);
+    bottom: -999px;
+}
+
+.moradia .slide {
+    @media( min-width: $desktop ){
+        &::after {
+            @include fonte(25px, $light);
+            color: $blue;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            bottom: -50px;
+            right: 0;
+            left: 0;
+            @include transition( opacity $full/2 );
+            @include transition( bottom $full/2 );
+            transition-delay: 2s;
+        }
+    }
+}
+
+.moradia.ativo {
+    .slide{
+        @media( min-width: $desktop ){
+            &::after {
+                opacity: 1;
+                bottom: 20px;
+            }
+        }
+    }
+    .slide.um {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 0;
+            background-position: center 85px;
+            @include transition( all $full ( $full+0.5 ) );
+            &::after {
+                content: "Prédio";
+                opacity: 1;
+            }
+        }
+    }
+    .slide.dois {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 33.5%;
+            background-position: center 85px;
+            @include transition( all $full ( $full+0.5 ) );
+            &::after {
+                content: "Casa com telhado";
+            }
+            .i-moradia{
+                bottom: 80px;
+                left: 0;
+                right: 0;
+                height: 300px;
+                width: 300px;
+                @include transition( all $full ( $full+0.5 ) );
+            }
+        }
+    }
+    .slide.tres {
+        @media( min-width: $desktop ){
+            width: 33%;
+            right: 0;
+            background-position: center 85px;
+            @include transition( all $full ( $full+0.5 ) );
+            &::after {
+                content: "Casa sem telhado";
+            }
+        }
+    }
+    .slide.um,
+    .slide.tres {
+        @media( min-width: $desktop ){
+            .i-moradia{
+                bottom: 80px;
+                left: 0;
+                right: 0;
+                height: 300px;
+                width: 300px;
+                @include transition( all $full ( $full+0.5 ) );
+            }
+        }
+    }
+    .slide.um {
+        @media( min-width: $desktop ){
+            .i-moradia{
+                background-size: auto 300px;
+                @include transition( all $full ( $full+0.5 ) );
+            }
+        }
+    }
+    .slide.hover {
+        filter: grayscale(1);
+        -webkit-filter: grayscale(1);
+        @include transition( filter $full/2 );
+    }
+    .slide.hover.select,
+    .slide.hover:hover {
+        filter: grayscale(0);
+        -webkit-filter: grayscale(0);
+        @include transition( filter $full/2 );
+    }
+
+    &.reverse {
+
+        .slide.um {
+            @media( min-width: $desktop ){
+                width: 33%;
+                left: 0;
+                background-position: center 85px;
+                @include transition( initial );
+            }
+        }
+        .slide.dois {
+            @media( min-width: $desktop ){
+                width: 33%;
+                left: 33.5%;
+                background-position: center 85px;
+                @include transition( initial );
+                .i-moradia{
+                    bottom: 80px;
+                    left: 0;
+                    right: 0;
+                    height: 300px;
+                    width: 300px;
+                    @include transition( initial );
+                }
+            }
+        }
+        .slide.tres {
+            @media( min-width: $desktop ){
+                width: 33%;
+                right: 0;
+                background-position: center 85px;
+                @include transition( initial );
+            }
+        }
+        .slide.um,
+        .slide.tres {
+            @media( min-width: $desktop ){
+                .i-moradia{
+                    bottom: 80px;
+                    left: 0;
+                    right: 0;
+                    height: 300px;
+                    width: 300px;
+                    @include transition( initial );
+                }
+            }
+        }
+        .slide.um {
+            @media( min-width: $desktop ){
+                .i-moradia{
+                    background-size: auto 300px;
+                    @include transition( initial );
+                }
+            }
+        }
+
+        .slide::before{
+            @media( min-width: $desktop ){
+                width: 0!important;
+                height: 0!important;
+                left: 50%!important;
+                top: 50%!important;
+                border-radius: 50%!important;
+                -webkit-border-radius: 50%!important;
+                @include transition( all $full $full );
+            }
+        }
+    }
+
+}
+
+.moradia.forward {
+    .slide.um {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 0;
+            background-position: center 85px;
+        }
+    }
+    .slide.dois {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 33.5%;
+            background-position: center 85px;
+            .i-moradia{
+                bottom: 80px;
+                left: 0;
+                right: 0;
+                height: 300px;
+                width: 300px;
+            }
+        }
+    }
+    .slide.tres {
+        @media( min-width: $desktop ){
+            width: 33%;
+            right: 0;
+            background-position: center 85px;
+        }
+    }
+    .slide.um,
+    .slide.tres {
+        @media( min-width: $desktop ){
+            .i-moradia{
+                bottom: 80px;
+                left: 0;
+                right: 0;
+                height: 300px;
+                width: 300px;
+            }
+        }
+    }
+    .slide.um {
+        @media( min-width: $desktop ){
+            .i-moradia{
+                background-size: auto 300px;
+            }
+        }
+    }
+
+    .slide::before{
+        @media( min-width: $desktop ){
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            @include transition( all $full );
+        }
+    }
+}
+
+
+
+// Etapa 2 -> 2.1
+
+
+// Moradia desktop
+
+.comodo.ativo {
+
+    .slide{
+        @media( min-width: $desktop ){
+            &::after {
+                opacity: 1;
+                bottom: 11px;
+            }
+        }
+    }
+
+    .slide.hover {
+        filter: grayscale(1);
+        -webkit-filter: grayscale(1);
+        @include transition( filter $full/2!important );
+    }
+    .slide.hover.select,
+    .slide.hover:hover {
+        filter: grayscale(0);
+        -webkit-filter: grayscale(0);
+        @include transition( filter $full/2!important );
+    }
+
+    .carousel .slide.um {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 0;
+            z-index: 0;
+            background-position: bottom;
+            @include transition( background-position $full/2 $full );
+            &::after {
+                content: "Quarto";
+                opacity: 1;
+            }
+
+        }
+    }
+    .carousel .slide.dois {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 33.5%;
+            background-position: bottom;
+            @include transition( background-position $full/2 ( .9s ) );
+            &::after {
+                content: "Escritório";
+                opacity: 1;
+            }
+        }
+    }
+    .carousel .slide.tres {
+        @media( min-width: $desktop ){
+            width: 33%;
+            right: 0;
+            background-position: bottom;
+            @include transition( background-position $full/2 $full );
+            &::after {
+                content: "Sala de jantar";
+                opacity: 1;
+            }
+        }
+    }
+
+}
+
+.comodo.backward {
+
+    .carousel .slide.um {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 0;
+            z-index: 10;
+            background-position: 0 600px;
+            @include transition( background-position $full/2 );
+
+        }
+    }
+    .carousel .slide.dois {
+        @media( min-width: $desktop ){
+            width: 33%;
+            left: 33.5%;
+            background-position: 0 600px;
+            @include transition( background-position $full/2 );
+        }
+    }
+    .carousel .slide.tres {
+        @media( min-width: $desktop ){
+            width: 33%;
+            right: 0;
+            background-position: 0 600px;
+            @include transition( background-position $full/2 );
+        }
+    }
+
+}
+
+/* Etapa 2 -> 3 */
+
+.ambientacao.forward {
+    opacity: 0;
+    transition-delay: initial;
+    -webkit-transition-delay: initial;
+    z-index: -1;
+}
+.comodo.ativo {
+    opacity: 1;
+}
+
+
+// Animações genéricas
+@media( min-width: $desktop ){
+    .introducao.sub-section.ativo .conteudo h3,
+    .introducao.sub-section.ativo .conteudo p{
+        @include transform( translate3d( 0, 0, 0) );
+        @include transition( all $full 0.1s );
+    }
+    .introducao.sub-section.ativo.reverse .conteudo h3,
+    .introducao.sub-section.ativo.reverse .conteudo p{
+        @include transform( translate3d( 0, 0, 0) );
+        @include transition( all $full $full);
+    }
+    .sub-section .conteudo h3,
+    .sub-section .conteudo p{
+        // posição antes
+        @include transform( translate3d( 0, -500%, 0) );
+        @include transition( all $full );
+    }
+    .sub-section.ativo .conteudo h3,
+    .sub-section.ativo .conteudo p{
+        @include transform( translate3d( 0, 0, 0) );
+        @include transition( all $full $full/2);
+    }
+    .sub-section.forward h3,
+    .sub-section.forward p{
+        @include transform( translate3d( 0, 500%, 0) );
+        @include transition( all $full/2 );
+    }
+}
+
+.forward,
+.backward,
+.ambiente .sub-section{
+    @include animation( inativo $full*2 1 );
+}
+// KeyFrames
+@include keyframes(acenar_mob){
+    // Delay entre uma animação e outra
+    50%{ background-position-x: 0; }
+    // Animação em si
+    100%{ background-position-x: -13680px; }
+}
+@include keyframes(acenar_desk){
+    // Delay entre uma animação e outra
+    50%{ background-position-x: 0; }
+    // Animação em si
+    100%{ background-position-x: -27360px; }
+}
+
+
+@include keyframes( delay_titulos ){
+    0%{  @include transform( translate3d(0,-300%,0) ); opacity: 0; }
+    30%{ @include transform( translate3d(0,-300%,0) ); opacity: 0; }
+    100%{ @include transform( translate3d( 0, 0, 0) ); opacity: 1; }
+}
+@include keyframes( maximizar-bg ){
+    0%{ background-size: auto 0%; }
+    50%{ background-size: auto 1%;  }
+    100%{  background-size: auto 77%;  }
+}
+@include keyframes( maximizar-bgFull ){
+    0%{  background-size: auto 1%;  }
+    100%{  background-size: auto 100%;  }
+}
+@include keyframes(bg_size_up){
+    // Delay entre uma animação e outra
+    0%{ background-size: auto 1%; }
+    // Animação em si
+    100%{ background-size: auto 100%; }
+}
+@include keyframes(comodo_slideup){
+    // Animação exclusiva do palco comodo
+    0%{background-position-y: 800px; }
+    50%{ background-position-y: 800px; }
+    100%{ background-position-y: -15px; }
+}
+@include keyframes(  slide_down ){
+    // Animação exclusiva do palco comodo
+    0%{ height: 0; }
+    100%{ height: 100%; }
+}
+@include keyframes(radiusUp){
+    // Delay entre uma animação e outra
+    0%{ border-radius: 0%; }
+    // Animação em si
+    100%{ border-radius: 100%; }
+}
+@include keyframes(queda){
+    // Delay entre uma animação e outra
+    0%{ bottom: -15px }
+    20%{ bottom: 100px }
+    // Animação em si
+    100%{ bottom: -999px }
+}
+@include keyframes(delay_mostrar){
+    0%{ opacity: 1 }
+    50%{ opacity: 1}
+    100%{ opacity: 0}
+}
+
+@include keyframes( branco_indo ){
+    0%{ width: 0%; height: 0%; border-radius: 100%; }
+    // Animação em si
+    100%{ width: 100%; height: 100%; border-radius: 0; }
+}
+@include keyframes( branco_vindo ){
+    0%{ width: 100%; height: 100%; border-radius: 100%;}
+    50%{ width: 100%; height: 100%;border-radius: 100%; }
+    // Animação em si
+    100%{ width: 0%; height: 0%; border-radius: 100%;}
+}
+
+// includes animações
+@include keyframes( inativo ){
+    0%{ opacity: 1; z-index: 999; }
+    50%{ opacity: 1; }
+    99%{ opacity: 0; z-index: 999;}
+    100%{ opacity: 0; }
+}
+@include keyframes( subir_e_cair ){
+    // Delay entre uma animação e outra
+    0%{ bottom: -15px; }
+    20%{ bottom: 50px; }
+    99%{ bottom: -400px; opacity: 1; }
+    100%{ opacity: 0; }
+}

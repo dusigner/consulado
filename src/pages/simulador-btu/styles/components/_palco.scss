@@ -1,0 +1,109 @@
+.palco {
+    position: relative;
+    width: 100%;
+    height: 80vw;
+    overflow: hidden;
+}
+.ambiente .palco {
+    @media( min-width: $desktop ){
+        max-height: inherit;
+    }
+}
+
+.introducao .palco{
+    background: url('../img/intro_house.png') bottom 8vh right -50px no-repeat,
+                url('../img/intro_background.jpg') center bottom no-repeat;
+    background-size: 50% auto, auto 100%;
+    @media( min-width: 520px ){
+        background: url(../img/intro_house.png) bottom 15vh right -148px no-repeat, url(../img/intro_background.jpg) center bottom no-repeat;
+        background-size: 50% auto, auto 100%;
+    }
+    @media( min-width: $tablet ){
+        background: url('../img/intro_house.png') bottom 15vh right -45px no-repeat, url(../img/intro_background.jpg) bottom right no-repeat;
+        background-size: 35% auto, auto 575px;
+        background-color: #cee5f1;
+    }
+    @media( min-width: 900px ){
+        height: 70vh;
+    }
+    @media( min-width: $desktop ){
+        background: url('../img/intro_house.png') bottom 165px left 70% no-repeat, url(../img/intro_background.jpg) bottom center no-repeat;
+        background-size: 300px auto, auto 100%;
+        height: 550px;
+    }
+}
+.ambiente .palco{
+    background-color: $green;
+    img{
+        display: none;
+    }
+}
+.ambiente.ativo .palco{
+    @media( max-width: 1024px ) and ( min-width: 768px ){
+        height: 60vh;
+    }
+    img{
+        display: visible;
+    }
+}
+
+.introducao .conteudo {
+    @media( min-width: $desktop ){
+        h3 {
+            margin-top: 5px!important;
+            font-size: 40px;
+        }
+        p {
+            margin-top: 10px!important;
+            font-size: 28px;
+        }
+    }
+}
+
+.ambiente .palco{
+    background: #f4f4f4 url(../img/background.jpg) top center no-repeat;
+    background-size: 100% auto;
+
+    img{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: auto;
+        z-index: 2;
+        &.camada1{
+            z-index: 1;
+        }
+
+        @media( max-width: 1024px ) and ( min-width: 768px ){
+            width: auto;
+            height: auto;
+            max-height: 100%;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+}
+
+.humaninhos{
+    position: absolute;
+    left: -25px;
+    right: 0;
+    bottom: -15px;
+    margin: auto;
+    width: 180px;
+    height: 160px;
+    background: url(../img/spritesheet_compressed-M.png) left bottom no-repeat;
+    background-position-x: 0;
+    @include animation( acenar_mob 5s steps(76) infinite );
+    @media( min-width: 520px ){
+        width: 360px;
+        height: 320px;
+        background: url(../img/spritesheet_compressed.png) left bottom no-repeat;
+        @include animation( acenar_desk 5s steps(76) infinite );
+    }
+    @media( min-width: $desktop ){
+        left: -310px;
+    }
+}

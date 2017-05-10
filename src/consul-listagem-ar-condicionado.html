@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="listagem">
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Conculadora BTU -->
+	<vtex.cmc:calculadorabtu />
+	<!-- Conculadora BTU -->
+
+	<!-- Slider -->
+	<div class="banners hide-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal slides"><vtex:contentPlaceHolder id="BannerTopo" /></div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerCategoriaCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- Abrir regulamento banner -->
+	</div>
+	<!-- /Slider -->
+
+	<!-- Slider mobile -->
+	<div class="banners-mobile show-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="BannerTopo BannerMobile" /></div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerCategoriaCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- Abrir regulamento banner -->
+	</div>
+	<!-- /Slider mobile -->
+
+	<!-- Home Banners Secundários Slick Três -->
+	<section class="banners-secundarios-mosaico clearfix hide-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
+					<div class="banner-secundario-mosaico banner-secundario-mosaico7">
+						<div class="controller"></div>
+					</div>
+				</div>
+				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right">
+					<div class="banner-secundario-mosaico banner-secundario-mosaico8">
+						<div class="controller"></div>
+					</div>
+					<div class="banner-secundario-mosaico banner-secundario-mosaico9">
+						<div class="controller"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Home Banners Secundários Slick Três -->
+
+	<div class="container result-filter">
+		<div class="pageName"><vtex.cmc:searchTitle /></div>
+
+		<!-- Filtros -->
+		<div class="filter-wrapper">
+			<div class="container departament-nav clearfix">
+				<div class="clearfix">
+					<p class="title-filter"></p>
+					<vtex.cmc:searchNavigator keepCurrentPath="true" />
+				</div>
+			</div>
+		</div>
+		<!-- /Filtros -->
+
+		<!-- Breadcrumb -->
+		<section class="breadcrumb hide-medium hide-large hide-extra-large">
+			<vtex.cmc:breadCrumb />
+		</section>
+		<!-- /Breadcrumb -->
+
+		<div class="container list-container clearfix">
+			<div class="row gutters">
+				<!-- Chaordic TOP -->
+				<div>
+					<div chaordic="top"></div>
+				</div>
+				<!-- /Chaordic TOP -->
+
+				<!-- Prateleira -->
+				<div class="col-12 list-content">
+					<section id="prateleira">
+						<div class="top-wrapper clearfix">
+							<vtex.cmc:searchTitle />
+
+							<div class="col-md-6 open-filter">
+								<span>Filtrar</span>
+							</div>
+
+							<div class="order-wrapper">
+								<p class="order-title">Ordenar por</p>
+								<ul class="order-by"></ul>
+							</div>
+						</div>
+
+						<!-- PROD -->
+						<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="12" columnCount="12" />
+						<!-- /PROD -->
+						<!-- QA -->
+						<!-- <vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="12" columnCount="12" /> -->
+						<!-- /QA -->
+						<!-- PJ -->
+						<!-- <vtex.cmc:searchResult layout="fdb0aae0-5533-467b-98b8-52039e22d374" itemCount="12" columnCount="12" /> -->
+						<!-- /PJ -->
+					</section>
+				</div>
+				<!-- /Prateleira -->
+
+				<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
+					Ver mais
+				</button>
+
+				<!-- Chaordic MIDDLE -->
+				<div class="container">
+					<div chaordic="middle"></div>
+				</div>
+				<!-- /Chaordic MIDDLE -->
+			</div>
+		</div>
+	</div>
+
+	<section id="quem-viu-clicou" class="slider" style="display: none;">
+		<p class="pre-title"><vtex:contentPlaceHolder id="QuemViuClicou - Titulo" /></p>
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-slider clearfix">
+					<vtex:contentPlaceHolder id="QuemViuClicou" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="relacionados" class="slider">
+		<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-slider clearfix">
+					<vtex:contentPlaceHolder id="Relacionados" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div id="modal-napoleao" data-title="Novas Frost Free Consul" style="display:none;">
+
+		<div class="row napoleao-close">
+			<button type="button" class="close">X</button>
+		</div>
+
+		<div class="row napoleao-img">
+			<div class="col-md-12">
+				<img src="/arquivos/napoleao-novas-frost-free-consul.png" alt="Novas Frost Free Consul" />
+			</div>
+		</div>
+
+		<div class="row napoleao-title">
+			<div class="col-md-12">
+				<h2>Novas Frost Free Consul</h2>
+			</div>
+		</div>
+
+		<div class="row napoleao-text">
+			<div class="col-md-12">
+				<p>Tenha mais espaço <br />em sua geladeira</p>
+			</div>
+		</div>
+
+		<div class="row napoleao-button">
+			<div class="col-md-12">
+				<a href="/busca/?fq=H:184">
+					<button type="button" class="primary-button" value="Ver mais">Conheça</button>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="modal-overlay-abandono" data-title="Não vá embora ainda!" style="display: none;">
+		<div class="subtitle">
+			Veja o que separamos para você:
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<vtex:contentPlaceHolder id="OverlayAbandono" />
+			</div>
+		</div>
+	</div>
+
+	<!-- Chaordic BOTTOM -->
+	<div class="container">
+		<div chaordic="bottom"></div>
+	</div>
+
+	<!-- Home Banners Secundários Slick Três -->
+	<section class="banners-secundarios-mobile clearfix show-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-banners-secundarios-mobile">
+					<div class="banner-secundario-mobile banner-mobile3">
+						<div class="controller"></div>
+					</div>
+					<div class="banner-secundario-mobile banner-mobile4">
+						<div class="controller"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Home Banners Secundários Slick Três -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>

@@ -1,0 +1,349 @@
+.resultado{
+    header .separador{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        min-height: 110px;
+        width: 100%;
+        background-color: $green;
+        padding: 18px;
+
+        h3{
+            flex: 2;
+            @include fonte( 15px );
+            @media(min-height: $tablet){
+                flex: 1;
+                font-size: 20px;
+            }
+        }
+
+        button{
+            width: 100%;
+            height: 56px;
+            line-height: 38px;
+            text-align: left;
+            padding-left: 15px;
+            border: 2px solid #fff;
+            background-color: transparent;
+            background: url(../img/seta.png) center right 12px no-repeat;
+            background-size: 10px;
+            @include fonte( 18px );
+            color: #fff;
+            cursor: pointer;
+            @include transition( all 0.4s );
+        }
+        .share{
+            text-align: right;
+            flex: 1;
+        }
+        .share a{
+            display: inline-block;
+            width: 19px;
+            height: 19px;
+            margin: 0 0 0 5px;
+            @media(min-width: $tablet) {
+                width: 40px;
+                height: 40px;
+                margin: 0 0 0 12px;
+            }
+
+            &.face{
+                background: url(../img/face.png) center center no-repeat;
+                background-size: 100%;
+            }
+            &.twitter{
+                background: url(../img/twitter.png) center center no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
+
+    header .separador.conclusao{
+        background-color: $gray;
+        color: $purple;
+        padding: 22px 18px;
+        text-align: center;
+
+        h3{
+            -webkit-flex: 100%;
+            flex: 100%;
+            font-size: 13px;
+            color: $purple;
+            margin-bottom: 10px;
+            @media(min-width: $tablet){
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .destaque{
+            line-height: 48px;
+            padding: 0;
+            color: $purple;
+            border: 2px solid $purple;
+            background: transparent;
+            text-align: center;
+            width: 220px;
+            height: 50px;
+            margin: auto;
+            font-family: $bold;
+            font-size: 20px;
+            @media(min-width: $tablet){
+                line-height: 86px;
+                width: 320px;
+                height: 86px;
+                font-size: 30px;
+            }
+        }
+    }
+
+    .comprar{
+        text-decoration: none;
+    }
+
+    .lightbox{
+        display: block;
+    }
+
+    .box-modelos{
+        padding: 40px 18px;
+        
+        .separador{
+            height: 67px;
+            position: relative;
+            @media(min-width: $tablet){
+                height: auto;
+            }
+        }
+
+        h3{
+            display: inline-block;
+            text-align: center;
+            @include fonte( 14px );
+            color: #766f6e;
+
+            @media(min-width: $tablet){
+                font-size: 28px;
+            }
+        }
+
+        .modelo h3{
+             font-size: 26px;
+             color: #6f2c90;
+             text-transform: uppercase;
+             font-weight: bold;
+        }
+        .produto{
+            min-height: 320px;;
+            border: 2px solid #e6e7e8;
+            padding: 25px;
+            margin: 15px 0 0;
+
+            @media(min-width: $tablet){
+                margin: 30px 0 0;
+            }
+
+            img{
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+        }
+        .produto h4{
+            @include fonte( 14px );
+            text-decoration: none;
+            color: #6f2c90;
+            margin-bottom: 15px;
+            @media( min-width: $tablet ) {
+                font-size: 20px;
+                margin-bottom: 0;
+            }
+        }
+        .produto p{
+            @include fonte( 13px );
+            color: #766f6e;
+            margin: 0 0 5px 0;
+            line-height: 16px;
+            @media(min-width: $tablet){
+                font-size: 16px;
+                line-height: 22px;
+                margin: 15px 0;
+            }
+        }
+
+    }
+
+    .box-modelos .descricao-modelo{
+
+        position: absolute;
+        padding: 30px 20px;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: #fff;
+        z-index: 102;
+
+        h3{
+            text-align: left;
+            color: #736c6b;
+        }
+        p{
+            @include fonte( 16px );
+            color: #736c6b;
+            margin: 10px 0 0;
+            line-height: 22px;
+        }
+        .tags h4{
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 0 2px 13px;
+            background-color: $green;
+            border-radius: 15px;
+            @include fonte( 18px );
+            color: #fff;
+        }
+
+        .fechar{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 38px;
+            width: 38px;
+            font-size: 18px;
+            text-indent: -9999px;
+            background: url( '../img/fechar.png' ) center center no-repeat;
+        }
+    }
+
+    .modelo.split .separador{
+        height: 50px;
+        margin-top: 40px;
+    }
+    .modelo h3.titulo{
+        position: relative;
+        font-size: 18px;
+        margin-top: 20px;
+        @media(min-height: $tablet){
+            font-size: 24px;
+        }
+        &:before{
+            display: inline-block;
+            content: '';
+            margin-right: 0;
+            height: 46px;
+            width: 60px;
+            vertical-align: middle;
+
+            @media(min-height: $tablet){
+                height: 70px;
+                width: 70px;
+                font-size: 24px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .modelo.split .titulo{
+        &:before{
+            background: url( '../img/split-roxo.png' ) center center no-repeat;
+            background-size: 60px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+        }
+    }
+    .modelo.split .descricao-modelo .titulo{
+        &:before{
+            background: url(../img/split-cinza.png) center center no-repeat;
+            background-size: 60px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+        }
+    }
+    .modelo.janela .titulo{
+        &:before{
+            background: url( '../img/janela-roxo.png' ) center center no-repeat;
+            background-size: 60px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+        }
+    }
+    .modelo.janela  .descricao-modelo .titulo{
+        &:before{
+            background: url(../img/janela-cinza.png) center center no-repeat;
+            background-size: 60px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+        }
+    }
+    .modelo.portatil .titulo{
+        &:before{
+            background: url( '../img/portatil-roxo.png' ) center center no-repeat;
+            background-size: 60px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+        }
+    }
+    .modelo.portatil  .descricao-modelo .titulo{
+        &:before{
+            background: url(../img/portatil-cinza.png) center center no-repeat;
+            left: -75px;
+            @media(min-width: $tablet){
+                background-size: 60px;
+            }
+           
+        }
+    }
+    .modelo .descricao-modelo.-hidden{
+        @media( max-width: 767px ){
+            height: 0;
+            width: 0;
+            visibility: hidden;
+        }
+    }
+
+    footer p{
+        font-size: 12px;
+        color: #333;
+        text-align: center;
+    }
+}
+.overlay{
+    position: fixed;
+    visibility: visible;
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.6;
+    z-index: 101;
+    @include transition( opacity 1s );
+
+    &.-hidden{
+        visibility: hidden;
+        opacity: 0;
+        z-index: -1;
+        @include transition( opacity 0.6s );
+    }
+}
+
+@media ( min-width: $desktop ){
+    .resultado header .separador button:hover{
+        background-color: #c1df87;
+        @include transition( all 0.4s );
+    }
+
+    .resultado .box-modelos .produto img{
+        width: 40%;
+        max-width: 40%;
+        height: auto;
+        display: block;
+        margin: 20px 15px 20px 0;
+    }
+}

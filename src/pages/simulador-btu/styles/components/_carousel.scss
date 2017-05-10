@@ -1,0 +1,222 @@
+// Carousel
+.carousel{
+    background-color: #c1e7f0;
+    @media( min-width: 900px ){
+        height: 500px;
+    }
+    @media( min-width: $desktop ){
+        height: 540px;
+        background-color: #fff;
+    }
+}
+.carousel .slide{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: -1px;
+    .i-moradia{
+        display: none;
+    }
+    &::before{
+        @media( min-width: $desktop ){
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 0%;
+            left: 50%;
+            top: 50%;
+            background-color: #f3f3f5;
+            z-index: 10;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            @include transition( all $full );
+        }
+    }
+    @media( min-width: $desktop ){
+        cursor: pointer;
+        position: absolute;
+        display: block;
+        width: 33.333333%;
+        margin: 0;
+
+        .i-moradia{
+            position: absolute;
+            display: block;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            height: 190px;
+            width: 89px;
+            content: '';
+            z-index: 2;
+            margin: auto;
+        }
+    }
+}
+.moradia.reverse .carousel .slide {
+    &::before{
+        @media( min-width: $desktop ){
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #f3f3f5;
+            z-index: 10;
+            border-radius: 0;
+            -webkit-border-radius: 0;
+            @include transition( all 0 );
+        }
+    }
+}
+// Moradia desktop
+.carousel .slide.um {
+    @media( min-width: $desktop ){
+        width: 33%;
+        left: -33%;
+        z-index: 10;
+        @include transition( all $full );
+    }
+}
+.carousel .slide.dois {
+    @media( min-width: $desktop ){
+        width: 100%;
+        left: 0;
+        @include transition( all $full );
+        .i-moradia{
+            bottom: 165px;
+            left: 31.5%;
+            height: 200px;
+            width: 300px;
+            @include transition( all $full );
+        }
+    }
+}
+.carousel .slide.tres {
+    @media( min-width: $desktop ){
+        width: 33%;
+        right: -33%;
+        @include transition( all $full );
+    }
+}
+
+.carousel .slick-dots{
+    position: absolute;
+    bottom: 0;
+}
+.moradia{
+    background-color: #bfe7f3;
+    @media( min-width: $desktop ){
+        background-color: #fff;
+    }
+}
+.moradia .slide {
+    @media( min-width: $desktop ){
+        &::after {
+            content: "";
+            @include fonte(25px, $light);
+            color: $blue;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            bottom: -50px;
+            right: 0;
+            left: 0;
+            @include transition( opacity $full/2 );
+            @include transition( bottom $full/2 );
+            transition-delay: 2s;
+        }
+    }
+}
+.moradia .um{
+    background: #bfe7f3 url("../img/intro_apartment_mobile.jpg") center bottom no-repeat;
+    background-size: auto 100%;
+
+    @media( min-width: $desktop ){
+        background: #cee5f1 url("../img/intro_background.jpg") center bottom no-repeat;
+        background-size: auto 100%;
+        .i-moradia{
+            background: url('../img/intro_apartment.png') bottom center no-repeat;
+            background-size: auto 190px;
+            @include transition( all $full );
+        }
+    }
+}
+.moradia .dois{
+    background: #bfe7f3 url("../img/intro_house_mobile.jpg") center bottom no-repeat;
+    background-size: auto 100%;
+
+    @media( min-width: $desktop ){
+        background: #cee5f1 url("../img/intro_background.jpg") center bottom no-repeat;
+        background-size: auto 100%;
+        .i-moradia{
+            background: url('../img/intro_house.png') bottom center no-repeat;
+            background-size: 300px auto;
+            @include transition( all $full );
+        }
+    }
+}
+.moradia .tres{
+    background: #bfe7f3 url("../img/intro_house_no_roof_mobile.jpg") center bottom no-repeat;
+    background-size: auto 100%;
+
+    @media( min-width: $desktop ){
+        background: #cee5f1 url("../img/intro_background.jpg") center bottom no-repeat;
+        background-size: auto 100%;
+        .i-moradia{
+            background: url('../img/intro_house_no_roof.png') bottom center no-repeat;
+            background-size: auto 190px;
+            @include transition( all $full );
+        }
+    }
+}
+
+.comodo .slide {
+    @media( min-width: $desktop ){
+        &::after {
+            content: "";
+            @include fonte(25px, $light);
+            color: $blue;
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            bottom: -50px;
+            right: 0;
+            left: 0;
+            @include transition( opacity $full/2 );
+            @include transition( bottom $full/2 );
+            transition-delay: 2s;
+        }
+    }
+}
+.comodo{
+    background-color: #dddddf;
+    @media(min-width: $desktop){
+        background-color: transparent;
+    }
+}
+.comodo .um{
+    background: #dddddf url("../img/mob-bedroom.png") center bottom 20px no-repeat;
+    background-size: auto 100%;
+    @media(min-width: $desktop){
+        background: #f3f3f5 url("../img/intro_bedroom.jpg")  bottom -600px center no-repeat;
+        background-size: cover;
+    }
+}
+.comodo .dois{
+    background: #dddddf url("../img/mob-office.png") center bottom 20px no-repeat;
+    background-size: auto 100%;
+    @media(min-width: $desktop){
+        background: #f3f3f5 url("../img/intro_office.jpg")  bottom -600px center no-repeat;
+        background-size: cover;
+    }
+}
+.comodo .tres{
+    background: #dddddf url("../img/mob-dinner.png") center bottom 20px no-repeat;
+    background-size: auto 100%;
+    @media(min-width: $desktop){
+        background: #f3f3f5 url("../img/intro_dinner_room.jpg") bottom -600px center no-repeat;
+        background-size: cover;
+    }
+}

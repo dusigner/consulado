@@ -1,0 +1,349 @@
+h3 {
+	@include fonte(17px, $light);
+	color: $white;
+
+  @media(min-width: $tablet){
+    font-size: 36px;
+  }
+}
+
+p{
+  @include fonte(12px, $light);
+  color: $white;
+
+   @media(min-width: $tablet){
+    font-size: 24px;
+  }
+}
+
+h3, p{
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+ul.slick-dots{
+	width: 100%;
+  height: 25px;
+  text-align: center;
+  background-color: #f6f7f8;
+  li{
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 42px;
+    margin-top: -17px;
+  }
+  li button{
+    height: 9px;
+    width: 9px;
+    border-radius: 100%;
+    text-indent: -9999px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 7px;
+    margin: auto;
+  }
+  li.slick-active button{
+    background-color: #999;
+  }
+}
+
+.interacao,
+.conteudo {
+	background: $green;
+}
+.conteudo{
+  display: flex;
+  flex-flow: wrap column;
+  padding: 25px;
+  @media( min-width: $desktop ){
+   padding: 17px 25px;
+   overflow: hidden;
+ }
+}
+.btn-init {
+	display: block;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  width: 100px;
+  padding: 8.5px;
+  @include fonte(12px, $regular);
+  text-align: left;
+  color: $white;
+  background: transparent;
+  border: 1px solid $white;
+  transition: all .5s;
+  cursor: pointer;
+  &::after {
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 9px;
+    bottom: 0;
+    margin: auto;
+    background-image: url(../../assets/img/sprite_retina.png);
+    background-position: 0px -13px;
+    background-repeat: no-repeat;
+    background-size: 46px;
+    overflow: hidden;
+    width: 12px;
+    height: 17px;
+    content: '';
+  }
+
+  @media( min-width: $tablet ){
+    width: 236px;
+    font-size: 24px;
+    padding: 8.5px 18.5px;
+    &:hover {
+      background-color: #c1df87;
+    }
+
+    &::after {
+      background-position: 0 -18px;
+      background-size: auto;
+      height: 20px;
+    }
+  }
+}
+
+fieldset {
+	label {
+		width: 100%;
+		display: flex;
+		@include fonte(14px, $light);
+		color: $white;
+		margin-bottom: 22px;
+		cursor: pointer;
+		@media(min-width: $desktop){
+      &:hover { opacity: .6; }
+    }
+    @media(min-width: $tablet) {
+      font-size: 26px;
+    }
+  }
+
+  .legenda {
+    font-size: 13px;
+    @media(min-width: $tablet){
+      font-size: 22px;
+    }
+
+    &:hover { opacity: 1; cursor: pointer; }
+  }
+
+  .input {
+    width: 60px;
+    height: 25px;
+    color: #a3a3a3;
+    background-color: $white;
+    opacity: 1;
+    @media( min-width: $tablet ){
+      width: 72px;
+    }
+  }
+}
+
+.interacao {
+	display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 25px;
+
+  @media(min-width: $tablet){
+    display: block;
+  }
+
+  fieldset {
+
+    width: 49%;
+
+    @media(min-width: $tablet) {
+      display: inline-block;
+    }
+
+    @media(min-width: $desktop){
+      width: calc( 100% / 3 );
+    }
+
+    .input {
+       width: 55px;
+       height: 25px;
+       @include fonte(14px, $light);
+       text-align: center;
+       margin-bottom: 9px;
+       background-color: $white;
+       opacity: 1;
+       @media(min-width: $tablet){
+        width: 90px;
+        height: 45px;
+        font-size: 24px;
+      }
+      
+      @media(min-width: $desktop){
+          width: 65px;
+          height: 29px;
+          font: 16px "consul_co_headline_lightRg", sans-serif;
+      }
+   }
+
+
+   button {
+     cursor: pointer;
+     background-color: transparent;
+     color: $white;
+
+     @media(min-width: $desktop){
+      &:hover { opacity: .6; }
+    }
+  }
+
+  .btn-conta {
+      width: 25px;
+      height: 25px;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      font-size: 21px;
+      vertical-align: top;
+      margin-right: 5px;
+
+      @media(min-width: $tablet){
+        width: 45px;
+        height: 45px;
+        font-size: 32px;
+      }
+
+      @media(min-width: $desktop){
+        width: 29px;
+        height: 29px;
+        font-size: 17px;
+      }
+    }
+  }
+
+  &.-periodo fieldset {
+    width: 100%;
+  }
+
+  // Variação
+  &.-periodo button {
+    width: 100%;
+    text-align: left;
+    @include fonte(14px, $light);
+    margin-bottom: 12px;
+
+    @media( min-width: $tablet ) {
+      font-size: 26px;
+    }
+  }
+}
+
+.radio {
+  cursor: pointer;
+  position: relative;
+  padding-left: 2px;
+  margin: 15px 0 25px 0;
+  line-height: 16px;
+  
+  @media(min-width: $tablet ){
+    padding-left: 35px;
+    margin: 30px 0 40px 0;
+    line-height: 30px;
+  }
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    background-color: #fff;
+    border-radius: 100%;
+
+    @media( min-width: $tablet ){
+      width: 32px;
+      height: 32px;
+    }
+ }
+
+ input[type=radio] {
+   visibility: hidden;
+
+   &:checked:before {
+    position: absolute;
+    display: block;
+    width: 9px;
+    height: 9px;
+    top: 4px;
+    left: 3px;
+
+    visibility: visible;
+    background-color: #00b7dd;
+    border-radius: 100%;
+    z-index: 1;
+    content: " ";
+    @media( min-width: $tablet ){
+      width: 18px;
+      height: 18px;
+      top: 5px;
+      left: 7px;
+    }
+  }
+}
+}
+
+.conteudo,
+.interacao {
+  .navegacao {
+    background: $green;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    button {
+      width: auto;
+      cursor: pointer;
+      color: $white;
+      @include fonte(14px, $light);
+      background-color: transparent;
+      &:last-child { margin-left: 35px; }
+
+      @media(min-width: $tablet){
+        font-size: 24px;
+        width: auto;
+      }
+    }
+    .disabled { opacity: .5; cursor: default; }
+
+
+  }
+}
+
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 30px;
+
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  &.manha{
+    background-position: 0 -132px;
+    background-image: url(../../assets/img/sprite_retina.png);
+  }
+
+  &.tarde{
+    background-position: 0 -193px;
+    background-image: url(../../assets/img/sprite_retina.png);
+  }
+
+  &.semSol{
+    background-position: 0 -162px;
+    background-image: url(../../assets/img/sprite_retina.png);
+  }
+}
