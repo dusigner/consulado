@@ -126,16 +126,18 @@
 					border: 7px solid $green;
 					top: 50px;
 				}
-
 			}
+
 			.account { left: 54%; }
+
 			.minicart {
-				background-color: transparent;
-				right: 30px;
 				@include breakpoint(small, 'max') {
 					right: 0;
+					text-align: right;
 					top: 0;
 				}
+				background-color: transparent;
+				right: 30px;
 			}
 		}
 	}

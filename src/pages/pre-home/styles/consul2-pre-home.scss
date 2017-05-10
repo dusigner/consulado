@@ -1,0 +1,123 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul2.
+	* Author: Douglas "Amarelo" Lopes / Gustavo Bento de Paula
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+
+
+.pre-home {
+	.cont-logo {
+		text-align: center;
+		a {
+			@include responsiveFont(40, 16, true);
+		}
+		p {
+			@include responsiveFont(14, 16, true);
+			color: $txt-gray-l;
+			font-weight: bold;
+			margin: -10px 0 0 0;
+		}
+	}
+	#form {
+		background-color: $gray-l;
+		padding: 50px 0;
+		.form {
+		   @include breakpoint(medium, 'min') {
+				padding-left: 80px;
+		   }
+		}
+		.row {
+			display: flex;
+			justify-content: center;
+		}
+		.title {
+			h2 {
+				@include responsiveFont(22, 16, true);
+				color: $green;
+				margin: 0;
+				text-transform: uppercase;
+
+			}
+			.border {
+				background-color: $green;
+				display: block;
+				height: 5px;
+				margin-bottom: 25px;
+				width: 70px;
+			}
+		}
+		fieldset {
+			border: none;
+			padding: 0;
+			margin-bottom: 0;
+			input[type=email] {
+				background-color: transparent;
+				border: 1px solid $txt-gray-l;
+				border-radius: 20px;
+				padding: 10px 25px;
+				font-weight: bold;
+			}
+			button {
+				border: 2px solid $green;
+				width: 100%;
+				background-color: $green;
+				color: #fff;
+				text-transform: uppercase;
+				padding: 13px 0;
+				border-radius: 28px;
+				transition: all .3s ease;
+				&:hover {
+					background-color: transparent;
+					color: $green;
+				}
+			}
+		}
+	}
+
+	#imagem {
+		max-width: 100%;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	#info {
+		padding: 70px 0;
+		.box {
+			padding: 0 20px;
+			.title {
+				h4 {
+					@include responsiveFont(16, 16, true);
+					color: $green;
+					margin: 0;
+					text-transform: uppercase;
+
+				}
+				.border {
+					background-color: $green;
+					display: block;
+					height: 5px;
+					margin-bottom: 25px;
+					width: 70px;
+				}
+			}
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				padding-right: 0;
+			}
+		}
+	}
+}
