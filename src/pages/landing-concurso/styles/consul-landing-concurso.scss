@@ -520,23 +520,23 @@ h2 {
 		  	}
 		}
 		.msg-sucesso {
-			font-weight: 500;
 			color: #ffffff;
-			&:after{
-			    content: '';
-			    display: inline-block;
-			    width: 9px;
-			    height: 17px;
-			    margin-left: 11px;
+			font-weight: 500;
+			&:after {
 			    border: solid $orange;
 			    border-width: 0 2px 2px 0;
+			    content: '';
+			    display: inline-block;
+			    height: 17px;
+			    margin-left: 11px;
 			    transform: rotate(45deg);
+			    width: 9px;
 		  	}
 		}
 
 		.msg-erro {
-			font-weight: 600;
 			color: $orange;
+			font-weight: 600;
 			&:after {
 				color: #ff0000;
 				content: 'x';
