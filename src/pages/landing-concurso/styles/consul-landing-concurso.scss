@@ -562,10 +562,12 @@ h2 {
 			}
 		}
 		.check-terms {
+			border: none;
 			cursor: initial; 
 			display: inline-block; 
 			height: 13px;
 			width: 20px;
+			visibility: visible;
 		}
 		.terms { 
 			color: #ffffff; 
@@ -575,6 +577,9 @@ h2 {
 			@include breakpoint(extra-small, 'max') {
 				margin-bottom: 15px;
 				margin-top: 20px;
+				input {
+					padding-left: 0;
+				}
 			}
 		}
 
