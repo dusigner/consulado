@@ -2,348 +2,334 @@ h3 {
 	@include fonte(17px, $light);
 	color: $white;
 
-  @media(min-width: $tablet){
-    font-size: 36px;
-  }
+	@media(min-width: $tablet) { font-size: 36px; }
 }
 
-p{
-  @include fonte(12px, $light);
-  color: $white;
+p {
+	@include fonte(12px, $light);
+	color: $white;
 
-   @media(min-width: $tablet){
-    font-size: 24px;
-  }
+	@media(min-width: $tablet) { font-size: 24px; }
 }
 
-h3, p{
+h3,
+p {
 	margin-bottom: 15px;
 	width: 100%;
 }
 
-ul.slick-dots{
+ul.slick-dots {
+	background-color: #f6f7f8;
+	height: 25px;
+	text-align: center;
 	width: 100%;
-  height: 25px;
-  text-align: center;
-  background-color: #f6f7f8;
-  li{
-    position: relative;
-    display: inline-block;
-    width: 28px;
-    height: 42px;
-    margin-top: -17px;
-  }
-  li button{
-    height: 9px;
-    width: 9px;
-    border-radius: 100%;
-    text-indent: -9999px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 7px;
-    margin: auto;
-  }
-  li.slick-active button{
-    background-color: #999;
-  }
+
+	li {
+		display: inline-block;
+		height: 42px;
+		margin-top: -17px;
+		position: relative;
+		width: 28px;
+	}
+
+	li button {
+		border-radius: 100%;
+		bottom: 7px;
+		height: 9px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		text-indent: -9999px;
+		width: 9px;
+	}
+
+	li.slick-active button { background-color: #999; }
 }
 
 .interacao,
+.conteudo { background: $green; }
+
 .conteudo {
-	background: $green;
+	display: flex;
+	flex-flow: wrap column;
+	padding: 25px;
+
+	@media( min-width: $desktop ){
+		overflow: hidden;
+		padding: 17px 25px;
+	}
 }
-.conteudo{
-  display: flex;
-  flex-flow: wrap column;
-  padding: 25px;
-  @media( min-width: $desktop ){
-   padding: 17px 25px;
-   overflow: hidden;
- }
-}
+
 .btn-init {
+	@include fonte(12px, $regular);
+	align-items: center;
+	background: transparent;
+	border: 1px solid $white;
+	color: $white;
+	cursor: pointer;
 	display: block;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
+	justify-content: space-between;
+	padding: 8.5px;
+	position: relative;
+	text-align: left;
+	transition: all .5s;
+	width: 100px;
 
-  width: 100px;
-  padding: 8.5px;
-  @include fonte(12px, $regular);
-  text-align: left;
-  color: $white;
-  background: transparent;
-  border: 1px solid $white;
-  transition: all .5s;
-  cursor: pointer;
-  &::after {
-    position: absolute;
-    display: block;
-    top: 0;
-    right: 9px;
-    bottom: 0;
-    margin: auto;
-    background-image: url(../../assets/img/sprite_retina.png);
-    background-position: 0px -13px;
-    background-repeat: no-repeat;
-    background-size: 46px;
-    overflow: hidden;
-    width: 12px;
-    height: 17px;
-    content: '';
-  }
+	@media( min-width: $tablet ) {
+		font-size: 24px;
+		padding: 8.5px 18.5px;
+		width: 236px;
 
-  @media( min-width: $tablet ){
-    width: 236px;
-    font-size: 24px;
-    padding: 8.5px 18.5px;
-    &:hover {
-      background-color: #c1df87;
-    }
+		&:hover { background-color: #c1df87; }
 
-    &::after {
-      background-position: 0 -18px;
-      background-size: auto;
-      height: 20px;
-    }
-  }
+		&::after {
+			background-position: 0 -18px;
+			background-size: auto;
+			height: 20px;
+		}
+	}
+
+	&::after {
+		background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
+		background-position: 0 -13px;
+		background-repeat: no-repeat;
+		background-size: 46px;
+		bottom: 0;
+		content: '';
+		display: block;
+		height: 17px;
+		margin: auto;
+		overflow: hidden;
+		position: absolute;
+		right: 9px;
+		top: 0;
+		width: 12px;
+	}
 }
 
 fieldset {
 	label {
-		width: 100%;
-		display: flex;
 		@include fonte(14px, $light);
 		color: $white;
-		margin-bottom: 22px;
 		cursor: pointer;
-		@media(min-width: $desktop){
-      &:hover { opacity: .6; }
-    }
-    @media(min-width: $tablet) {
-      font-size: 26px;
-    }
-  }
+		display: flex;
+		margin-bottom: 22px;
+		width: 100%;
 
-  .legenda {
-    font-size: 13px;
-    @media(min-width: $tablet){
-      font-size: 22px;
-    }
+		@media(min-width: $desktop) { &:hover { opacity: .6; } }
+		@media(min-width: $tablet) { font-size: 26px; }
+	}
 
-    &:hover { opacity: 1; cursor: pointer; }
-  }
+	.legenda {
+		font-size: 13px;
 
-  .input {
-    width: 60px;
-    height: 25px;
-    color: #a3a3a3;
-    background-color: $white;
-    opacity: 1;
-    @media( min-width: $tablet ){
-      width: 72px;
-    }
-  }
+		// @media(min-width: $tablet) { font-size: 22px; }
+
+		&:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+	}
+
+	.input {
+		background-color: $white;
+		color: #a3a3a3;
+		height: 25px;
+		opacity: 1;
+		width: 60px;
+
+		@media( min-width: $tablet ) { width: 72px; }
+	}
 }
 
 .interacao {
 	display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: 25px;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: 25px;
 
-  @media(min-width: $tablet){
-    display: block;
-  }
+	@media(min-width: $tablet) { display: block; }
 
-  fieldset {
+	fieldset {
+		width: 49%;
 
-    width: 49%;
+		@media(min-width: $tablet) { display: inline-block; }
+		@media(min-width: $desktop) { width: calc( 100% / 3 ); }
 
-    @media(min-width: $tablet) {
-      display: inline-block;
-    }
+		.input {
+			@include fonte(14px, $light);
+			background-color: $white;
+			height: 25px;
+			margin-bottom: 9px;
+			padding: 0;
+			opacity: 1;
+			text-align: center;
+			width: 55px;
 
-    @media(min-width: $desktop){
-      width: calc( 100% / 3 );
-    }
+			@media(min-width: $tablet) {
+				// font-size: 24px;
+				// height: 45px;
+				// width: 90px;
+			}
+			@media(min-width: $desktop) {
+				font: 16px 'consul', sans-serif;
+				height: 29px;
+				width: 65px;
+			}
+		}
 
-    .input {
-       width: 55px;
-       height: 25px;
-       @include fonte(14px, $light);
-       text-align: center;
-       margin-bottom: 9px;
-       background-color: $white;
-       opacity: 1;
-       @media(min-width: $tablet){
-        width: 90px;
-        height: 45px;
-        font-size: 24px;
-      }
-      
-      @media(min-width: $desktop){
-          width: 65px;
-          height: 29px;
-          font: 16px "consul_co_headline_lightRg", sans-serif;
-      }
-   }
+		button {
+			background-color: transparent;
+			color: $white;
+			cursor: pointer;
 
+			&:hover {
+				@media(min-width: $desktop) { opacity: .6; }
+			}
+		}
 
-   button {
-     cursor: pointer;
-     background-color: transparent;
-     color: $white;
+		.btn-conta {
+			border: 1px solid #fff;
+			box-sizing: border-box;
+			font-size: 21px;
+			height: 25px;
+			margin-right: 5px;
+			vertical-align: top;
+			width: 25px;
+			@media(min-width: $tablet) {
+				// font-size: 32px;
+				// height: 45px;
+				// width: 45px;
+			}
+			@media(min-width: $desktop) {
+				font-size: 17px;
+				height: 29px;
+				width: 29px;
+			}
+		}
+	}
 
-     @media(min-width: $desktop){
-      &:hover { opacity: .6; }
-    }
-  }
+	&.-periodo fieldset { width: 100%; }
 
-  .btn-conta {
-      width: 25px;
-      height: 25px;
-      border: 1px solid #fff;
-      box-sizing: border-box;
-      font-size: 21px;
-      vertical-align: top;
-      margin-right: 5px;
+	// Variação
+	&.-periodo button {
+		@include fonte(14px, $light);
+		margin-bottom: 12px;
+		text-align: left;
+		width: 100%;
 
-      @media(min-width: $tablet){
-        width: 45px;
-        height: 45px;
-        font-size: 32px;
-      }
-
-      @media(min-width: $desktop){
-        width: 29px;
-        height: 29px;
-        font-size: 17px;
-      }
-    }
-  }
-
-  &.-periodo fieldset {
-    width: 100%;
-  }
-
-  // Variação
-  &.-periodo button {
-    width: 100%;
-    text-align: left;
-    @include fonte(14px, $light);
-    margin-bottom: 12px;
-
-    @media( min-width: $tablet ) {
-      font-size: 26px;
-    }
-  }
+		@media( min-width: $tablet ) { font-size: 26px; }
+	}
 }
 
 .radio {
-  cursor: pointer;
-  position: relative;
-  padding-left: 2px;
-  margin: 15px 0 25px 0;
-  line-height: 16px;
-  
-  @media(min-width: $tablet ){
-    padding-left: 35px;
-    margin: 30px 0 40px 0;
-    line-height: 30px;
-  }
-  &:before {
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    background-color: #fff;
-    border-radius: 100%;
+	cursor: pointer;
+	line-height: 16px;
+	margin: 15px 0 25px 0;
+	padding-left: 2px;
+	position: relative;
 
-    @media( min-width: $tablet ){
-      width: 32px;
-      height: 32px;
-    }
- }
+	@media(min-width: $tablet ) {
+		line-height: 30px;
+		margin: 30px 0 40px 0;
+		padding-left: 35px;
+	}
 
- input[type=radio] {
-   visibility: hidden;
+	&:before {
+		background-color: #fff;
+		border-radius: 100%;
+		bottom: 0;
+		content: ' ';
+		display: inline-block;
+		height: 15px;
+		left: 0;
+		position: absolute;
+		width: 15px;
 
-   &:checked:before {
-    position: absolute;
-    display: block;
-    width: 9px;
-    height: 9px;
-    top: 4px;
-    left: 3px;
+		@media( min-width: $tablet ) {
+			height: 32px;
+			width: 32px;
+		}
+	}
 
-    visibility: visible;
-    background-color: #00b7dd;
-    border-radius: 100%;
-    z-index: 1;
-    content: " ";
-    @media( min-width: $tablet ){
-      width: 18px;
-      height: 18px;
-      top: 5px;
-      left: 7px;
-    }
-  }
-}
+	input[type=radio] {
+		visibility: hidden;
+
+		&:checked:before {
+			background-color: #00b7dd;
+			border-radius: 100%;
+			content: ' ';
+			display: block;
+			height: 9px;
+			left: 3px;
+			position: absolute;
+			top: 4px;
+			visibility: visible;
+			width: 9px;
+			z-index: 1;
+
+			@media( min-width: $tablet ) {
+				height: 18px;
+				left: 7px;
+				top: 5px;
+				width: 18px;
+			}
+		}
+	}
 }
 
 .conteudo,
 .interacao {
-  .navegacao {
-    background: $green;
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-    button {
-      width: auto;
-      cursor: pointer;
-      color: $white;
-      @include fonte(14px, $light);
-      background-color: transparent;
-      &:last-child { margin-left: 35px; }
+	.navegacao {
+		background: $green;
+		display: flex;
+		justify-content: flex-start;
+		width: 100%;
 
-      @media(min-width: $tablet){
-        font-size: 24px;
-        width: auto;
-      }
-    }
-    .disabled { opacity: .5; cursor: default; }
+		button {
+			@include fonte(14px, $light);
+			background-color: transparent;
+			color: $white;
+			cursor: pointer;
+			width: auto;
 
+			@media(min-width: $tablet) {
+				font-size: 24px;
+				width: auto;
+			}
 
-  }
+			&:last-child { margin-left: 35px; }
+		}
+
+		.disabled {
+			cursor: default;
+			opacity: .5;
+		}
+	}
 }
 
 .icon {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-  margin-right: 30px;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 30px;
+	margin-right: 30px;
+	overflow: hidden;
+	vertical-align: middle;
+	width: 30px;
 
-  background-repeat: no-repeat;
-  overflow: hidden;
+	&.manha {
+		background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
+		background-position: 0 -132px;
+	}
 
-  &.manha{
-    background-position: 0 -132px;
-    background-image: url(../../assets/img/sprite_retina.png);
-  }
+	&.tarde {
+		background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
+		background-position: 0 -193px;
+	}
 
-  &.tarde{
-    background-position: 0 -193px;
-    background-image: url(../../assets/img/sprite_retina.png);
-  }
-
-  &.semSol{
-    background-position: 0 -162px;
-    background-image: url(../../assets/img/sprite_retina.png);
-  }
+	&.semSol {
+		background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
+		background-position: 0 -162px;
+	}
 }

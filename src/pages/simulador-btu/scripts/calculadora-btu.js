@@ -1,3 +1,8 @@
+ /* eslint-disable */
+ /* global Nitro: true, $: true */
+
+'use strict';
+
 jQuery( function () {
 	var etapa = new Etapa(),
 		config = new Config();
@@ -120,7 +125,7 @@ jQuery( function () {
 		if( !jQuery( this ).hasClass( 'disabled' ) && (! jQuery( 'body' ).hasClass( 'animando' ) ) ){
 			if ( jQuery( this ).hasClass( 'btn-ult' ) ) {
 				// pegando o resultado - valor do btu indicado
-				resultado = config.calular_produto();
+				var resultado = config.calular_produto();
 				// setando o valor indicado na caixinha roxa
 				config.set_resultado_btu( resultado.btu );
 				// construindo link para os produtos indicados
@@ -191,8 +196,7 @@ jQuery( function () {
 			focusOnSelect: true,
 			centerPadding: 0
 		} );
-
-	};
+	}
 
 	// Fazendo os inputs radios acompanhar os slides no mobile
 	jQuery( '[type="radio"]' ).on( 'change', function () {
@@ -316,7 +320,7 @@ function Etapa(){
 	};
 	// Adiciona ativo na primeira etapa
 	this.iniciar = function(){
-		primeira = jQuery( 'section' ).first();
+		var primeira = jQuery( 'section' ).first();
 		primeira.addClass( 'ativo' );
 		if( primeira.find( '.sub-section' ).length > 0 ){
 			primeira.find( '.sub-section' ).first().addClass( 'ativo' );
@@ -486,7 +490,7 @@ function Config () {
 	// função que constrói os links dos produtos
 	this.constroi_link = function ( resultado ) {
 		var links = {
-			'7000': { 
+			'7000': {
 				'split': '/categoria/ar-condicionados-split/#07-000-btu-split',
 				'janela': '/categoria/ar-condicionados-janela/#07-500-btu',
 				//'portatil': '/categoria/ar-condicionados-portatil/',
