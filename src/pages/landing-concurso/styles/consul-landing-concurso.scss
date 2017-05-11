@@ -565,8 +565,8 @@ h2 {
 			border: none;
 			cursor: initial; 
 			display: inline-block; 
-			height: 13px;
-			width: 20px;
+			height: 15px;
+			width: 18px;
 			visibility: visible;
 		}
 		.terms { 
@@ -577,6 +577,14 @@ h2 {
 			@include breakpoint(extra-small, 'max') {
 				margin-bottom: 15px;
 				margin-top: 20px;
+				input[type=checkbox]:after {
+					height: 18px;
+					width: 18px;
+				}
+				input[type=checkbox]:before {
+					height: 12px;
+					width: 12px;
+				}
 				input {
 					padding-left: 0;
 				}
