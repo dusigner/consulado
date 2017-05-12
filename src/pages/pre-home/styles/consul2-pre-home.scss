@@ -15,9 +15,17 @@
 @import 'helpers/functions';
 @import 'helpers/mixins';
 
+// Utility components
+@import 'components/tooltip';
+@import 'bootstrap/tooltip';
 
 
 .pre-home {
+	.bt-gototop {display: none !important;}
+
+	header {
+		min-height: 0;
+	}
 	.cont-logo {
 		text-align: center;
 		a {
@@ -30,13 +38,31 @@
 			margin: -10px 0 0 0;
 		}
 	}
-	#form {
+	.cont-logo-mobile {
+		background-color: $green;
+		width: 100%;
+	}
+	#login {
 		background-color: $gray-l;
 		padding: 50px 0;
+		.bloco {
+			display: flex;
+			@include breakpoint(small, 'max') {
+				flex-direction: column;
+			}
+		}
+		.text,
 		.form {
-		   @include breakpoint(medium, 'min') {
-				padding-left: 80px;
-		   }
+			width: 100%;
+			 @include breakpoint(medium, 'min') {
+				max-width: 50%;
+				padding: 0 6%;
+			}
+		}
+		.form {
+			@include breakpoint(small, 'max') {
+				margin-top: 30px;
+			}
 		}
 		.row {
 			display: flex;
@@ -60,24 +86,26 @@
 		}
 		fieldset {
 			border: none;
-			padding: 0;
 			margin-bottom: 0;
+			padding: 0;
 			input[type=email] {
 				background-color: transparent;
 				border: 1px solid $txt-gray-l;
 				border-radius: 20px;
-				padding: 10px 25px;
 				font-weight: bold;
+				outline: none;
+				padding: 10px 25px;
 			}
 			button {
-				border: 2px solid $green;
-				width: 100%;
 				background-color: $green;
-				color: #fff;
-				text-transform: uppercase;
-				padding: 13px 0;
+				border: 2px solid $green;
 				border-radius: 28px;
+				color: #fff;
+				outline: none;
+				padding: 13px 0;
+				text-transform: uppercase;
 				transition: all .3s ease;
+				width: 100%;
 				&:hover {
 					background-color: transparent;
 					color: $green;
@@ -87,36 +115,139 @@
 	}
 
 	#imagem {
+		background-image: url('/arquivos/consul-pre-home-img.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		height: 380px;
 		max-width: 100%;
-		overflow: hidden;
-		text-align: center;
+		 @include breakpoint(extra-small, 'max') {
+			background-image: url('/arquivos/consul-pre-home-img-mobile.jpg');
+			height: 200px;
+		}
 	}
 
 	#info {
 		padding: 70px 0;
-		.box {
-			padding: 0 20px;
-			.title {
-				h4 {
-					@include responsiveFont(16, 16, true);
-					color: $green;
-					margin: 0;
-					text-transform: uppercase;
+		.carrossel {
+			display: flex;
+			.box {
+				padding: 0 20px;
+				.title {
+					h4 {
+						@include responsiveFont(16, 16, true);
+						color: $green;
+						margin: 0;
+						text-transform: uppercase;
 
-				}
-				.border {
-					background-color: $green;
-					display: block;
-					height: 5px;
-					margin-bottom: 25px;
-					width: 70px;
+					}
+					.border {
+						background-color: $green;
+						display: block;
+						height: 5px;
+						margin-bottom: 25px;
+						width: 70px;
+					}
 				}
 			}
-			&:first-child {
-				padding-left: 0;
+			.slick-dots {
+				bottom: -30px;
 			}
-			&:last-child {
-				padding-right: 0;
+		}
+	}
+
+	#vtex-modal-register {
+		fieldset {
+			border: none;
+			margin-bottom: 0;
+		}
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 10px;
+		}
+		.bloco {
+			padding: 0 2%;
+			.row {
+				margin-bottom: 0;
+			}
+			&.prev {
+				i {
+					@include responsiveFont(11, 16, true);
+					margin-right: 10px;
+				}
+				a { 
+					color: $green;
+					display: none;
+				}
+			}
+			&.next {
+				text-align: right;
+				button {
+					font-weight: normal;
+					text-transform: uppercase;
+				}
+			}
+		}
+		.padding-right-col {
+			padding-right: 2%;
+		}
+		.padding-left-col {
+			padding-left: 2%;
+		}
+		.modal-header {
+			@include responsiveFont(16, 16, true);
+			background-color: $gray-l;
+			border-radius: 12px 12px 0 0;
+			font-weight: bold;
+			padding: 20px 3%;
+			text-align: left;
+			text-transform: uppercase;
+		}
+		.modal-holder {
+			border-radius: 12px;
+			max-width: 730px;
+			margin-top: 20px;
+		}
+		.modal-content {
+			padding-bottom: 30px;
+			text-align: left;
+			select,
+			input[type=text],
+			input[type=email],
+			input[type=tel],
+			input[type=passworld],
+			input[type=number] {
+				border: 1px solid $txt-gray-l;
+				border-radius: 20px;
+				outline: none;
+				padding: 10px 25px;
+				width: 100%;
+			}
+			
+			.title {
+				@include responsiveFont(14, 16, true);
+				color: $green;
+				text-transform: uppercase;
+			}
+			label {
+				@include responsiveFont(13, 16, true);
+				padding: 0 0 10px 15px;
+			}
+			.checkbox {
+				display: flex;
+				label {cursor: pointer;}
+				input {
+					margin: 0 0 0 15px;
+					&:after {
+						border: 1px solid $txt-gray;
+					}
+				}
+			}
+			.step-2 {
+				.checkbox {
+					margin: 10px 0;
+				}
 			}
 		}
 	}

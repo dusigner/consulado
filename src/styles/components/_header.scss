@@ -45,7 +45,7 @@
 	}
 
 	@include breakpoint(small, 'max') {
-		body:not(.produto) {
+		body:not(.produto):not(.pre-home) {
 			padding-top: $mobile-header-height;
 			header {
 				position: fixed;
@@ -150,7 +150,7 @@
 		@include breakpoint(extra-large, 'min') {
 			&.col-3 { width: 20%; }
 		}
-
+		
 		@include breakpoint(small, 'max') {
 			display: none;
 			text-align: center;

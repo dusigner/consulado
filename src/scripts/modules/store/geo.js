@@ -75,7 +75,7 @@ Nitro.module('geo', function() {
 
 	this.showContent = function() {
 		var geo = $.cookie('geo');
-		geo = JSON.parse(geo);
+		//geo = JSON.parse(geo);
 
 		$('[class*=js-region]:not(.js-region-' + geo.region + ')').remove();
 		$('.js-region-' + geo.region).show();

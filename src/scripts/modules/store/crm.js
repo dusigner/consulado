@@ -56,6 +56,24 @@ var CRM = {
 			return res && res.Documents[0];
 		});
 	},
+	clientSearchByDocument: function(document) {
+
+        return $.getJSON(CRM.clientURI, {
+            f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
+            fq: 'document:' + document
+        }).then(function(res) {
+            return res && res.Documents[0];
+        });
+    },
+	clientSearchByCorporateDocument: function(document) {
+
+        return $.getJSON(CRM.clientURI, {
+            f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument',
+            fq: 'corporateDocument:' + document
+        }).then(function(res) {
+            return res && res.Documents[0];
+        });
+    },
 
 	insertCancelGae: function(data) {
 		return $.ajax({

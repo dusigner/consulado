@@ -141,7 +141,11 @@ gulp.task('scripts', ['lint'], function () {
 				'dustjs-linkedin': 'dust'
 			},
 			resolve: {
-				root: path.resolve('./src/scripts')
+				root: path.resolve('./src/scripts'),
+				alias: {
+					templates: path.resolve('./src/templates'),
+					bootstrap: path.resolve('./node_modules/bootstrap-sass/assets/javascripts/bootstrap')
+				}
 			},
 			module: {
 				loaders: [

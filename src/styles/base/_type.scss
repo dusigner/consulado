@@ -88,7 +88,8 @@
 		&:empty {display: none}
 	}
 
-	input.error {
+	input.error,
+	select.error {
 		background: #FFF0F0!important;
 		border-color: #F49A9A!important;
 	}

@@ -18,25 +18,16 @@
 </head>
 <body data-controller="pre-home" class="pre-home">
 
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-top-header.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-top-header" />
+  	<!-- @endif -->
 
 
-
-	<header data-module="header">
-		<div class="row pre-header hide-small hide-extra-small">
-			<section class="container clearfix">
-				<div class="col-6">
-					<a href="/" class="item" title="Loja Virtual">Loja Virtual</a>
-					<a href="http://www.consul.com.br/inicio" target="_blank" class="item" title="Site da Consul">Site da Consul</a>
-					<a href="#" class="item active" title="Vendas Corporativas">Vendas Corporativas</a>
-				</div>
-
-				<div class="col-6 float-right">
-					<a href="tel:+551130037872" title="Televendas / SAC">Televendas 3003-7872</a>
-					<a href="http://consul.custhelp.com/" target="_blank" class="item" title="Central de Atendimento">Central de Atendimento</a>
-				</div>
-			</section>
-		</div>
-
+	<header>
 		<div class="row header">
 			<section class="container">
 
@@ -47,14 +38,22 @@
 					</a>
 				</div>
 
+				<div class="col-3 cont-logo-mobile show-extra-small">
+					<a href="/" class="logo" title="Consul">
+						<i class="icon icon-logo-consul"></i>
+					</a>
+				</div>
+
+				
+
 			</section>
 		</div>
 	</header>
 
-	<section id="form">
+	<section id="login">
 		<div class="container">
-			<div class="row">
-				<div class="col-5 text">
+			<div class="bloco">
+				<div class="text">
 					<div class="title">
 						<h2>Vendas Corporativas</h2>
 						<span class="border"></span>
@@ -64,7 +63,7 @@
 						A Consul tem um atendimento dedicado para perfis corporativos, que são vendas para empresas, hospitais, escolas, hóteis, empreendimentos imobiliários e afins.
 					</p>
 				</div>
-				<div class="col-5 form">
+				<div class="form">
 					<div class="title">
 						<h2>Acessar</h2>
 						<span class="border"></span>
@@ -72,7 +71,7 @@
 
 					<form action="/" method="POST" class="form-login pre-home-form inline-form" novalidate="novalidate" data-msg-error="Não foi possivel enviar as informações, &lt;span&gt;por favor tente novamente mais tarde.&lt;/span&gt;">
 						<fieldset>
-							<input type="email" name="email" class="email" placeholder="E-mail" data-validation="require email" data-msg-required="Digite um e-mail" data-msg-email="E-mail inválido, &lt;span&gt;por favor tente novamente.&lt;/span&gt;"/>
+							<input type="email" name="email" class="email" placeholder="E-mail" data-validation="required email" data-msg-required="Digite um e-mail" data-msg-email="E-mail inválido, &lt;span&gt;por favor tente novamente.&lt;/span&gt;"/>
 						</fieldset>
 
 						<fieldset class="fild-submit">
@@ -87,44 +86,197 @@
 	</section>
 
 	<section id="imagem">
-		<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />
+		<!--<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />-->
 	</section>
 
 
 	<section id="info">
 		<div class="container">
-			<div class="row">
-				<div class="col-3 box box-1">
+			<div class="carrossel">
+				<div class="box box-1">
 					<div class="title">
 						<h4>Revendas</h4>
 						<span class="border"></span>
 					</div>
 					<p>Os produtos Consul são referência no mercado, preferidos pelos consumidores e indispensáveis na sua loja. </p>
 				</div>
-				<div class="col-3 box box-2">
+				<div class="box box-2">
 					<div class="title">
 						<h4>Empresa</h4>
 						<span class="border"></span>
 					</div>
 					<p>emos uma área especializada para venda direta para empresas, empreendimentos imobiliários, hospitais e escolas.</p>
 				</div>
-				<div class="col-3 box box-3">
+				<div class="box box-3">
 					<div class="title">
 						<h4>Cozinha Planejada</h4>
 						<span class="border"></span>
 					</div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
 				</div>
-				<div class="col-3 box box-4">
+				<div class="box box-4">
 					<div class="title">
 						<h4>Hotel</h4>
 						<span class="border"></span>
 					</div>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
 				</div>
-			</div>
+			</div>			
 		</div>
 	</section>
+
+
+
+	<!-- [ MODAL - Register ] -->
+	<div id="modal-register" data-title="Cadastre-se" style="display: none;">
+		<form action="/" method="POST" class="form-register" novalidate="novalidate" data-msg-error="Não foi possivel enviar as informações, &lt;span&gt;por favor tente novamente mais tarde.&lt;/span&gt;">
+			<div class="steps">
+				<!-- [ STEP - 01 ] -->
+				<div class="form-steps step-1">
+					<fieldset class="primary-info row">
+						<div class="col-6 bloco">
+							<h4 class="title">Dados da Empresa</h4>
+							<div class="group">
+								<label>CNPJ</label>
+								<input type="text" name="corporateDocument" class="form-control corporateDocument" tabindex="1" data-validation="required cnpj" data-msg-required="Digite um CNPJ" data-msg-cpf="CNPJ inválido" />
+							</div>
+							<div class="group">
+								<label>Razão social</label>
+								<input type="text" name="corporateName" class="form-control corporateName" tabindex="2" data-validation="required" data-msg-required="Preencha o nome da empresa"  />
+							</div>
+							<div class="group">
+								<label>Inscrição estadual</label>
+								<input type="text" name="stateRegistration" class="form-control stateRegistration" tabindex="3" data-validation="required stateRegistration" data-msg-required="Digite uma Inscrição estadual" data-msg-cpf="Descrição estadual inválida" />
+								<div class="checkbox">
+									<input type="checkbox" name="isento" id="isento" tabindex="4" /><label for="isento"> Isento</label>
+								</div>
+							</div>
+							<div class="group">
+								<label>Tipo de negócio</label>
+								<select name="businessType" class="form-control businessType" tabindex="5" data-validation="required" data-msg-required="Campo Obrigatório">
+									<option value="" selected="selected">Selecione...</option>
+									<option value="servico1">Serviço 1</option>
+									<option value="servico2">Serviço 2</option>
+									<option value="servico3">Serviço 3</option>
+									<option value="servico4">Serviço 4</option>
+									<option value="servico5">Serviço 5</option>
+								</select>
+							</div>
+						
+						</div>
+						<div class="col-6 bloco">
+							<h4 class="title">Endereço da Empresa</h4>
+							<div class="group">
+								<label>CEP</label>
+								<input type="text" name="postalCode" class="form-control postalCode" tabindex="6" data-validation="required cep" data-msg-required="Digite um CEP" data-msg-cpf="CEP inválido" />
+							</div>
+							<div class="group">
+								<label>Endereço</label>
+								<input type="text" name="addressName" class="form-control addressName" data-validation="required" data-msg-required="Preencha o endereço da empresa" disabled="disabled" />
+							</div>
+							<div class="row">
+								<div class="col-6 padding-right-col">
+									<div class="group">
+										<label>Número</label>
+										<input type="text" name="number" class="form-control number" tabindex="7" data-validation="required" data-msg-required="Preencha o número da empresa" />
+									</div>
+								</div>
+								<div class="col-6 padding-left-col">
+									<div class="group">
+										<label>Complemento</label>
+										<input type="text" name="complement" class="form-control complement" tabindex="8" />
+									</div>
+								</div>
+							</div>
+							<div class="group">
+								<label>Bairro</label>
+								<input type="text" name="neighborhood" class="form-control neighborhood" data-validation="required" data-msg-required="Preencha o bairro da empresa" disabled="disabled" />
+							</div>
+							<div class="row">
+								<div class="col-6 padding-right-col">
+									<div class="group">
+										<label>Estado</label>
+										<input type="text" name="state" class="form-control state" data-validation="required" data-msg-required="Preencha o estado da empresa" disabled="disabled"  />
+									</div>
+								</div>
+								<div class="col-6 padding-left-col">
+									<div class="group">
+										<label>Cidade</label>
+										<input type="text" name="city" class="form-control city" data-validation="required" data-msg-required="Preencha a cidade da empresa" disabled="disabled"  />
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+				<!-- [ STEP - 02 ] -->
+				<div class="form-steps step-2">
+					<fieldset class="additional-info row">
+						<div class="bloco">
+							<h4 class="title">Dados de contato</h4>
+						</div>
+						<div class="col-6 bloco">
+							<div class="group">
+								<label>E-mail</label>
+								<input type="email" name="email" id="userEmail" class="form-control email" tabindex="9" data-validation="required email" data-msg-required="Digite um E-mail" data-msg-cpf="E-mail inválido" />
+							</div>
+							<div class="group">
+								<label>Primeiro nome</label>
+								<input type="text" name="firstName" class="form-control firstName" tabindex="11" data-validation="required" data-msg-required="Preencha o seu nome"  />
+							</div>
+							<div class="group">
+								<label>Telefone fixo</label>
+								<input type="tel" name="phone" class="form-control phone" tabindex="13" data-validation="required" data-msg-required="Digite um telefone" />
+							</div>
+							<div class="group">
+								<label>Celular</label>
+								<input type="tel" name="xAdditionalPhone" class="form-control xAdditionalPhone" tabindex="14" data-validation="required" data-msg-required="Digite um celular" />
+							</div>
+						</div>
+						<div class="col-6 bloco">
+							<div class="group">
+								<label>Confirmar e-mail</label>
+								<input type="email" name="confirmEmail" class="form-control confirmEmail" tabindex="10" data-confirm="email" data-validation="required confirm" data-msg-required="Digite o e-mail novamente" data-msg-confirm="E-mails incompatíveis" />
+							</div>
+							<div class="group">
+								<label>Sobrenome</label>
+								<input type="text" name="lastName" class="form-control lastName" tabindex="12" data-validation="required" data-msg-required="Preencha o seu sobrenome" />
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="ofertasEmail" id="ofertasEmail" tabindex="15" /><label for="ofertasEmail"> Desejo receber ofertas por e-mail</label>
+								</div>
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="ofertasSMS" id="ofertasSMS" tabindex="16" /><label for="ofertasSMS"> Desejo receber ofertas por SMS</label>
+								</div>
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="termos" id="termos" tabindex="17" /><label for="termos"> Concordo com os termos e condições e que a empresa citada não é revenda</label>						
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+			<div class="buttons">
+				<div class="bloco prev">
+					<div class="group">
+						<a href="#"><i class="icon icon-arrow-left"></i> Voltar</a>
+					</div>
+				</div>
+				<div class="bloco next">
+					<div class="group">
+						<button type="submit" class="primary-button yellow-button align-center" tabindex="18">Continuar</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- [ /MODAL - Register ] -->
 
 	<!-- @if DEBUG='development' -->
   	<!-- @include ../../subtemplates/consul-footer.html -->
