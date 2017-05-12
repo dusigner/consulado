@@ -48,6 +48,16 @@ $gray   : #f4f2f1;
 $purple : #6f2c90;
 $white  : #fff;
 
+// Vars de tempo
+$full: 1s;
+
+
+// Breakpoint
+@mixin breakpoint($point, $min-max: 'min') {
+	@media (#{$min-max}-width: $point) {
+		@content;
+	}
+}
 
 // Mixins
 @mixin fonte($tamanho: 14px, $nome: $regular) {

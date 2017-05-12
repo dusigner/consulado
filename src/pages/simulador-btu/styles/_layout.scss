@@ -108,7 +108,6 @@ main {
 	}
 
 	// Alinhado a lateral do palco
-
 	.ambiente {
 		@include transition( height $full);
 		background-color: $green;

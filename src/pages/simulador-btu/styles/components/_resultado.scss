@@ -1,5 +1,5 @@
 .resultado {
-	header .separador {
+	.resultado__header .separador {
 		background-color: $green;
 		display: flex;
 		flex-wrap: wrap;
@@ -60,7 +60,7 @@
 		}
 	}
 
-	header .separador.conclusao {
+	.resultado__header .separador.conclusao {
 		background-color: $gray;
 		color: $purple;
 		padding: 22px 18px;
@@ -290,7 +290,7 @@
 		}
 	}
 
-	footer p {
+	.btu__footer p {
 		color: #333;
 		font-size: 12px;
 		text-align: center;
@@ -319,7 +319,7 @@
 }
 
 @media ( min-width: $desktop ) {
-	.resultado header .separador button:hover {
+	.resultado .resultado__header .separador button:hover {
 		@include transition( all .4s );
 		background-color: #c1df87;
 	}
