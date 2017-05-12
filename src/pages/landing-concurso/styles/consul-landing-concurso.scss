@@ -173,6 +173,16 @@ h2 {
 	@media (min-width: 1500px) { left: 987px; }
 }
 
+.box-eight {
+	animation: fade 3s forwards;
+	height: 230px;
+	left: 377px;
+	opacity: 0;
+	position: absolute;
+	bottom: 230px;
+	width: 254px;
+}
+
 @keyframes flipInX {
 	0% {
 		-ms-transform: perspective(800px) rotateX(90deg);
@@ -209,7 +219,7 @@ h2 {
 		-ms-transform: perspective(800px) rotateX(0deg);
 		-webkit-transform: perspective(800px) rotateX(0deg);
 		opacity: 1;
-		transform: perspective(800px) rotateX(00deg);
+		transform: perspective(800px) rotateX(0deg);
 	}
 
 	50% {

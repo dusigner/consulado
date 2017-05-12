@@ -13,7 +13,7 @@ Nitro.setup([], function () {
 
 		// animação banner
 		var flippyIn = function() {
-			var boxes = [0,1,2,3,4,5,6,7,8],
+			var boxes = [0,1,2,3,4,5,6,7,8,9],
 				remaining = boxes;
 
 			var showBoxes = setInterval(function () {
@@ -33,7 +33,7 @@ Nitro.setup([], function () {
 			}, 1000);
 		};
 		var flippyOut= function() {
-			var boxes = [0,1,2,3,4,5,6,7],
+			var boxes = [0,1,2,3,4,5,6,7,8],
 				remaining = boxes;
 
 			var hideBoxes = setInterval(function () {
