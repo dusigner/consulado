@@ -332,3 +332,13 @@
 		width: 40%;
 	}
 }
+
+
+
+#resultado {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	visibility: hidden;
+	z-index: -10;
+}

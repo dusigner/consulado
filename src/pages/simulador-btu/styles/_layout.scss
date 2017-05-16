@@ -1,14 +1,13 @@
+
 // Main
 main {
-	@media( min-width: $desktop ){
-		margin: auto;
-		margin-left: 10px;
-	}
-	margin: auto;
-	max-width: 1400px;
-	min-height: 100vh;
+	margin: 0 auto;
+	// min-height: 100vh;
+	// min-height: 730px;
+	// max-width: 1360px;
 	// overflow: hidden;
-	position: relative;
+	// position: relative;
+	width: 1400px;
 }
 
 // Introducao
