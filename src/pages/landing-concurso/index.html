@@ -318,10 +318,10 @@
          <div>
             <img src="/arquivos/infografico.png" alt="" />
          </div> 
-         <span class="txt-promo">*Promoção válida para compras feitas de 22/05 a 12/07 e produtos acima de R$1.000,00.</span>
+         <span class="txt-promo">*Promoção válida para compras feitas de 29/05 a 13/07 e produtos acima de R$1.000,00.</span>
       </div>
       <div class="col-6 form">
-         <form action="/" method="POST" id="form-concurso">
+         <form action="" method="POST" id="form-concurso">
              <fieldset>
                  <label for="cname" class="tit">Nome Completo</label>
                  <input id="cname" type="text" name="campoName" minlength="2" required="required" data-validation="required" data-msg-required="Campo `nome` obrigatório"/>
@@ -334,17 +334,17 @@
 
              <fieldset>
                  <span class="tit">Data de nascimento</span>
-                 <input id="cbirthdate" type="text" name="birthdate" required="required" data-validation="required" data-msg-required="Data de aniversário inválida" />
+                 <input id="cbirthdate" type="text" name="birthdate"  required="required" data-validation="required" data-msg-required="Data de aniversário inválida" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">Telefone</span>
-                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Telefone inválido" pattern="\(\d{2}\)\d{4}-\d{4}" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Telefone inválido" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">CPF</span>
-                 <input id="cpf" type="text" name="document" required="required" data-validation="required" data-msg-required="CPF inválido" />
+                 <input id="cpf" type="text" name="document" value="" />
              </fieldset>
 
              <!-- <fieldset class="pedido">
@@ -354,12 +354,14 @@
              </fieldset> -->
 
              <fieldset class="btn-enviar">
-                 <button type="submit" value="enviar" class="btn primary-button"><span>Enviar</span></button>
+                 <button type="submit" value="Enviar" class="btn primary-button"><span>Enviar</span></button>
              </fieldset>
 
              <fieldset class="terms">
-               <input id="checkTerms" class="check-terms" type="checkbox" name="checkTerms" required="required" data-validation="required" data-msg-required="Para enviar o formulário aceite os termos da promoção.">  
-               <span>Li e aceito os termos da promoção</span>
+               <label>
+                  <input id="checkTerms" class="check-terms" type="checkbox" name="checkTerms" required="required" data-validation="required" data-msg-required="Para enviar o formulário aceite os termos da promoção." /> 
+                  Li e aceito os termos da promoção
+               </label>
              </fieldset>
          </form>
          <div class="line"></div>
