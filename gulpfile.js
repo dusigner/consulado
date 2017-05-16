@@ -240,7 +240,7 @@ gulp.task('server', ['watch'], function () {
 		startPath: '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue',
 		rewriteRules: [
 			{
-				match: new RegExp('[\"\'](?:https?:\/\/|\/\/)' + pkg.name + '.*?(\/.*?)?[\"\']', 'gm'),
+				match: new RegExp('[\"\'](?:https?:\/\/|\/\/)' + ( $.util.env.proxyDomain || pkg.name ) + '.*?(\/.*?)?[\"\']', 'gm'),
 				replace: '"$1"'
 			}
 		],

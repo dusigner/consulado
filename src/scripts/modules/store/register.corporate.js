@@ -4,10 +4,9 @@
 var CRM = require('modules/store/crm');
 var validation = require('modules/store/validation');
 var getAddress = require('modules/getAddress');
+var redirect = require('modules/store/redirect');
 
 require('vendors/slick');
-
-//var redirect = require('modules/store/redirect');
 
 Nitro.module('register.corporate', function() {
 
@@ -29,11 +28,11 @@ Nitro.module('register.corporate', function() {
 		$form.submit(this.submit.bind($form));
 
 		$(store)
-			.on('store.user.not-found', this.fillUserEmail)
+			.on('store.user.not-found', this.fillUserEmail)/*
 			.on('store.cep.data', function() {
 				$('.address-info').fadeIn()
 					.find('input, select').removeClass('error').tooltip('destroy');
-			});
+			})*/;
 
 		$modalRegister.on('elementOpenVtexModal', function() {
 			$modalRegister.find('.steps').slick({
@@ -51,7 +50,6 @@ Nitro.module('register.corporate', function() {
 		});
 
 		$modalRegister.find('.checkbox #isento').change(function() {
-			console.log('clicou', this.checked);
 			if(this.checked) {
 				$form.find('.stateRegistration').removeAttr('data-validation').attr('disabled', 'disabled');
 			} else {
@@ -75,7 +73,6 @@ Nitro.module('register.corporate', function() {
 			oncomplete: function() {
 				var poscalCode = $(this).val().replace(/\D/g, '');
 				getAddress.byPostalCode(poscalCode).done(function(endereco) {
-					console.log(endereco);
 					$form.find('.neighborhood').val(endereco.bairro).trigger('change');
 					$form.find('.city').val(endereco.localidade).trigger('change');
 					$form.find('.addressName').val(endereco.logradouro).trigger('change');
@@ -126,13 +123,9 @@ Nitro.module('register.corporate', function() {
 	*/
 	this.validCompany = function() {
 
-		console.log('validando CLiente');
-
 		return CRM.clientSearchByCorporateDocument(self.getDocument())
-			.done(function(client) {
-
+			.done(function() {
 				self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
-
 			})
 			.fail(self.nextStep);
 
@@ -165,16 +158,16 @@ Nitro.module('register.corporate', function() {
 
 	};
 */
-	/*this.prepareLocationData = function(data, result) {
+	this.prepareLocationData = function(data, result) {
 
 		if (result && result.Id) {
 			data.userId = result.Id.replace('CL-', '');
 		}
 
 		return data;
-	};*/
+	};
 
-	/*this.register = function() {
+	this.register = function() {
 
 		var data = {};
 
@@ -182,28 +175,36 @@ Nitro.module('register.corporate', function() {
 			if (!x.value || x.value === '') {
 				return;
 			}
-			data[x.name] = x.value;
+			if (x.value === 'on') { //chenge checkbox on - off to true - false
+				data[x.name] = true;
+			} else if(x.value === 'off') {
+				data[x.name] = false;
+			} else {
+				data[x.name] = x.value;
+			}
 		});
 
 		$.extend(data, {
-			document: self.getDocument(data.document),
+			corporateDocument: self.getDocument(data.corporateDocument),
 		});
+
+		/*console.log('register', data);*/
 
 		CRM.insertClient(data)
 			.then(self.prepareLocationData.bind(self, data))
 			.then(CRM.insertLocation)
-			.done(redirect.register.bind(self, data), dataLayer.push({ event: 'logados-via-faca-parte', category: 'modal-taxa-de-login', action: 'logados-via-faca-parte', label: '-' }))
+			.done(redirect.register.bind(self, data))
 			.done(self.resetForm)
 			.fail(self.error.bind($form, false));
-	};*/
+	};
 
-	/*this.resetForm = function() {
+	this.resetForm = function() {
 
 		this.btnSubmit.removeClass('loading');
 
 		$modalRegister.vtexModal('close');
 
-	};*/
+	};
 
 	this.submit = function(e) {
 		e.preventDefault();
@@ -214,12 +215,9 @@ Nitro.module('register.corporate', function() {
 		if (!this.btnSubmit.is('.loading')) {
 
 			if (primaryInfoComplete) { //first step done
-				/*console.log('primayInfo');
-				console.log('fields', this.fields);*/
 				validation.validate(this.fields, this.btnSubmit)
 					.done(self.register);
 			} else {
-				/*console.log('secondary');*/
 				validation.validate(this.primaryFields, this.btnSubmit)
 					.done(self.validCompany);
 			}

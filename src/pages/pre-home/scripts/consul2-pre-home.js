@@ -26,8 +26,6 @@ require('vendors/jquery.inputmask');
 
 Nitro.setup(['login', 'register.corporate'], function() {
 
-	console.log('pre-home');
-
 	$('#info .carrossel').slick({
 		infinite: true,
 		slidesToShow: 4,

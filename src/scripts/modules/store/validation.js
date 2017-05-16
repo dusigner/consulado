@@ -12,8 +12,6 @@ function Validation() {
 
 Validation.prototype.setError = function(el, type, deferred) {
 	type = type || 'error';
-	
-	console.log('error', el, type, deferred);
 
 	el.addClass('error').data({
 		title: el.data('msg-' + type),
@@ -36,7 +34,6 @@ Validation.prototype.validate = function(inputs, submit) {
 	inputs
 		.removeClass('error')
 		.one('focus change', function() {
-			console.log('change', $(this));
 			$(this).removeClass('error').tooltip('destroy').next('span.error').remove();
 		})
 		.each(function() {

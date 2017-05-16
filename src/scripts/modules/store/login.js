@@ -2,21 +2,19 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
-/*var redirect = require('modules/store/redirect');*/
+var redirect = require('modules/store/redirect');
 
 var validation = require('modules/store/validation');
 
-Nitro.module('login', function() {
-
-	console.log('login');
+Nitro.module('login', function () {
 
 	var self = this,
 		$form;
 
-	this.setup = function() {
+	this.setup = function () {
 		$form = $('.form-login');
 
-		$form.each(function() {
+		$form.each(function () {
 			var _self = $(this);
 
 			_self.fields = _self.find('input[type="text"], input[type="email"]');
@@ -32,7 +30,7 @@ Nitro.module('login', function() {
 		//this.init();
 	};
 
-	this.init = function() {
+	this.init = function () {
 
 		var email = store.userData.email || store.uri.getQueryParamValue('email');
 
@@ -42,7 +40,7 @@ Nitro.module('login', function() {
 
 	};
 
-	this.error = function(message) {
+	this.error = function (message) {
 
 		this.btnSubmit.removeClass('loading');
 
@@ -55,7 +53,7 @@ Nitro.module('login', function() {
 
 	};
 
-	this.submit = function(e) {
+	this.submit = function (e) {
 		e.preventDefault();
 
 		//this = form;
@@ -64,23 +62,20 @@ Nitro.module('login', function() {
 
 			validation.validate(this.fields, this.btnSubmit)
 				.then(CRM.clientSearchByEmail.bind(null, this.fieldEmail.val()))
-				.done(function(data){
-					console.log('res', data);
-				}).fail(function(e, status, message) {
+				.done(redirect.login)
+				.fail(function (e, status, message) {
 
-				var msg;
+					var msg;
 
-				console.log('mensagem', message);
+					if (message === 'Not Found') {
+						msg = 'Usuário não encontrado';
 
-				if (message === 'Not Found') {
-					msg = 'Usuário não encontrado';
+						$(store).trigger('store.user.not-found', this.fieldEmail.val());
+					}
 
-					$(store).trigger('store.user.not-found', this.fieldEmail.val());
-				}
+					self.error.call(this, msg);
 
-				self.error.call(this, msg);
-
-			}.bind(this));
+				}.bind(this));
 		}
 
 		return false;

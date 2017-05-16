@@ -21,7 +21,16 @@
 
 
 .pre-home {
-	.bt-gototop {display: none !important;}
+	.bt-gototop,
+	ul.vtexIdUI-providers-list li:not([ng-show='auth.showClassicAuthentication']) {display: none !important;}
+
+	#vtex-nao-aprovado,
+	#vtex-cadastro-sucesso {
+		.modal-content {
+			padding: 0 10%;
+		}
+	}
+	
 
 	header {
 		min-height: 0;
@@ -42,7 +51,7 @@
 		background-color: $green;
 		width: 100%;
 	}
-	#login {
+	#main {
 		background-color: $gray-l;
 		padding: 50px 0;
 		.bloco {
@@ -114,7 +123,7 @@
 		}
 	}
 
-	#imagem {
+	#gallery {
 		background-image: url('/arquivos/consul-pre-home-img.jpg');
 		background-position: center;
 		background-repeat: no-repeat;
@@ -161,9 +170,9 @@
 			margin-bottom: 0;
 		}
 		.buttons {
+			align-items: center;
 			display: flex;
 			justify-content: space-between;
-			align-items: center;
 			padding: 0 10px;
 		}
 		.bloco {
@@ -206,8 +215,8 @@
 		}
 		.modal-holder {
 			border-radius: 12px;
-			max-width: 730px;
 			margin-top: 20px;
+			max-width: 730px;
 		}
 		.modal-content {
 			padding-bottom: 30px;

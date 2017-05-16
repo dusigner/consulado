@@ -1,7 +1,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
-var CRM = require('modules/store/crm');
+/*var CRM = require('modules/store/crm');*/
 
 require('vendors/jquery.cookie');
 
@@ -26,7 +26,7 @@ define('store', function() {
 		'/cadastrocorporativo'
 	];
 
-	var self = this;
+	/*var self = this;*/
 
 	this.init = function() {
 

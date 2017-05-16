@@ -50,7 +50,7 @@
 		</div>
 	</header>
 
-	<section id="login">
+	<section id="main">
 		<div class="container">
 			<div class="bloco">
 				<div class="text">
@@ -85,7 +85,7 @@
 
 	</section>
 
-	<section id="imagem">
+	<section id="gallery">
 		<!--<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />-->
 	</section>
 
@@ -153,7 +153,7 @@
 							</div>
 							<div class="group">
 								<label>Tipo de negócio</label>
-								<select name="businessType" class="form-control businessType" tabindex="5" data-validation="required" data-msg-required="Campo Obrigatório">
+								<select name="xBusinessType" class="form-control businessType" tabindex="5" data-validation="required" data-msg-required="Campo Obrigatório">
 									<option value="" selected="selected">Selecione...</option>
 									<option value="servico1">Serviço 1</option>
 									<option value="servico2">Serviço 2</option>
@@ -172,7 +172,7 @@
 							</div>
 							<div class="group">
 								<label>Endereço</label>
-								<input type="text" name="addressName" class="form-control addressName" data-validation="required" data-msg-required="Preencha o endereço da empresa" disabled="disabled" />
+								<input type="text" name="addressName" class="form-control addressName" data-validation="required" data-msg-required="Preencha o endereço da empresa" readonly="readonly" />
 							</div>
 							<div class="row">
 								<div class="col-6 padding-right-col">
@@ -190,19 +190,19 @@
 							</div>
 							<div class="group">
 								<label>Bairro</label>
-								<input type="text" name="neighborhood" class="form-control neighborhood" data-validation="required" data-msg-required="Preencha o bairro da empresa" disabled="disabled" />
+								<input type="text" name="neighborhood" class="form-control neighborhood" data-validation="required" data-msg-required="Preencha o bairro da empresa" readonly="readonly" />
 							</div>
 							<div class="row">
 								<div class="col-6 padding-right-col">
 									<div class="group">
 										<label>Estado</label>
-										<input type="text" name="state" class="form-control state" data-validation="required" data-msg-required="Preencha o estado da empresa" disabled="disabled"  />
+										<input type="text" name="state" class="form-control state" data-validation="required" data-msg-required="Preencha o estado da empresa" readonly="readonly"  />
 									</div>
 								</div>
 								<div class="col-6 padding-left-col">
 									<div class="group">
 										<label>Cidade</label>
-										<input type="text" name="city" class="form-control city" data-validation="required" data-msg-required="Preencha a cidade da empresa" disabled="disabled"  />
+										<input type="text" name="city" class="form-control city" data-validation="required" data-msg-required="Preencha a cidade da empresa" readonly="readonly"  />
 									</div>
 								</div>
 							</div>
@@ -245,12 +245,12 @@
 							</div>
 							<div class="group">
 								<div class="checkbox">
-									<input type="checkbox" name="ofertasEmail" id="ofertasEmail" tabindex="15" /><label for="ofertasEmail"> Desejo receber ofertas por e-mail</label>
+									<input type="checkbox" name="isNewsletterOptIn" id="isNewsletterOptIn" tabindex="15" /><label for="isNewsletterOptIn"> Desejo receber ofertas por e-mail</label>
 								</div>
 							</div>
 							<div class="group">
 								<div class="checkbox">
-									<input type="checkbox" name="ofertasSMS" id="ofertasSMS" tabindex="16" /><label for="ofertasSMS"> Desejo receber ofertas por SMS</label>
+									<input type="checkbox" name="xIsSMSOptIn" id="xIsSMSOptIn" tabindex="16" /><label for="xIsSMSOptIn"> Desejo receber ofertas por SMS</label>
 								</div>
 							</div>
 							<div class="group">
@@ -265,7 +265,8 @@
 			<div class="buttons">
 				<div class="bloco prev">
 					<div class="group">
-						<a href="#"><i class="icon icon-arrow-left"></i> Voltar</a>
+						<!--<a href="#"><i class="icon icon-arrow-left"></i> Voltar</a>-->
+						<a href="#"><i class="vtexid-icon-arrow-left"></i>Voltar</a>
 					</div>
 				</div>
 				<div class="bloco next">
@@ -282,12 +283,17 @@
   	<!-- @include ../../subtemplates/consul-footer.html -->
   	<!-- @endif -->
 
+	<div class="hide">
+		<vtex.cmc:welcomeMessage />
+	</div>
+
   	<!-- @if DEBUG='production' -->
   	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
   	<!-- @endif -->
 
+	<!--<script src="https://vtexid.vtex.com.br/api/vtexid/pub/authentication/script.js"></script>-->
 	<script type="text/javascript" src="/arquivos/consul2-pre-home.min.js"></script>
 
 </body>
