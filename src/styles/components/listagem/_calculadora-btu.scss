@@ -1,0 +1,46 @@
+@charset 'UTF-8';
+
+//------------------------------------
+//  Calculadora BTU
+//------------------------------------
+.page-calculadora-btu__banner {
+	border: 5px solid #333;
+	margin: 25px auto;
+	max-height: 350px;
+	max-width: 1100px;
+	overflow: hidden;
+	position: relative;
+	transition:
+		max-height .5s ease,
+		max-width .5s ease
+	;
+
+	#calculadora-btu {
+		display: block;
+		margin: 0 auto;
+		min-height: 800px;
+		// position: relative;
+		// right: 50%;
+		// top: 50%;
+		// transform: translate(50%, -40%);
+		// transform: translate(50%, 0);
+		// width: 100%;
+		width: 1400px;
+	}
+
+	&.is--active {
+		max-height: 2000px;
+		max-width: 1400px;
+		overflow: inherit;
+	}
+}
+
+.page-calculadora-btu__mask {
+	background-color: #0d0;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 10;
+}

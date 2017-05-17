@@ -1,6 +1,7 @@
 @import '_vars.scss';
 
-html, body {
+html,
+body {
 	overflow: hidden;
 }
 
@@ -11,9 +12,8 @@ body.listagem.btu.page-calculadora-btu {
 		@import '_base.scss';
 		@import '_animation.scss';
 
-		@import 'components/_generics.scss';
-
 		// Components
+		@import 'components/_generics.scss';
 		@import 'components/_palco.scss';
 		@import 'components/_carousel.scss';
 		@import 'components/_resultado.scss';
@@ -23,6 +23,6 @@ body.listagem.btu.page-calculadora-btu {
 
 .page-calculadora-btu__container {
 	margin: 0 auto;
-	position: relative;
 	max-width: 1400px;
+	position: relative;
 }

@@ -5,23 +5,16 @@
 	<!-- @include ../templates/head-vtex.html -->
 	<!-- @include ../../subtemplates/consul-head-content.html -->
 	<!-- @endif -->
-	<style>
-		#calculadora-btu {
-			border: 1px solid #333;
-			display: block;
-			margin: 0 auto;
-			min-height: 800px;
-			max-width: 1400px;
-			width: 100%;
-		}
-	</style>
 </head>
 <body data-controller="listagem" class="listagem categoria btu page-calculadora-btu">
 	<!-- @if DEBUG='development' -->
 	<!-- @include ../../subtemplates/consul-header.html -->
 	<!-- @endif -->
 
-	<iframe id="calculadora-btu" src="http://localhost:3002/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
+	<div class="page-calculadora-btu__banner">
+		<div class="page-calculadora-btu__mask"></div>
+		<iframe id="calculadora-btu" src="http://localhost:3002/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
+	</div>
 
 	<!-- @if DEBUG='development' -->
 	<!-- @include ../../subtemplates/consul-footer.html -->
