@@ -84,6 +84,7 @@ Nitro.module('checkout.recurrence', function() {
 
 				if($attachmentContainer.length === 0) {
 					$self.find('.product-name').append('<div class="add-item-attachment-container"></div>');
+					$attachmentContainer = $self.find('.add-item-attachment-container');
 				}
 
 				dust.render('checkout.recurrenceSteps', templateData, function(err, out) {
@@ -91,7 +92,7 @@ Nitro.module('checkout.recurrence', function() {
 						throw new Error('Recurrence Dust error: ' + err);
 					}
 
-					$attachmentContainer.append(out);
+					$attachmentContainer.html(out);
 
 					if(hasActiveRecurrence) {
 						self.changeStep('three');

@@ -24,10 +24,9 @@
 
 $green-color: #9aca3c;
 
-body.garantia-estendida-2016 .header {
-	@include breakpoint(small, 'max') { background-color: $green-color; }
+body.garantia-estendida-2016 {
+	.header .container { padding: 0; }
 }
-
 .garantia-estendida-2016 {
 	.container { padding: 0 30px; }
 
@@ -507,4 +506,9 @@ body.garantia-estendida-2016 .header {
 			@include font-size(12px);
 		}
 	}
+
+	.acessar-bilhete {
+        color: #666;
+        font-weight: 700;
+    }
 }
