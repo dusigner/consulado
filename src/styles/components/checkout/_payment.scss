@@ -1,16 +1,16 @@
 body {
 	/* Change label inputs - Checkout Payment*/
 	.custom-label-complemento:after {
-	    content: 'Complemento';
-	    display: block;
-	    text-indent: 0;
+		content: 'Complemento';
+		display: block;
+		text-indent: 0;
 	}
 
 	.custom-label-referencia:after {
-	    content: 'Refer\00EAncia';
-	    display: block;
-	    margin-top: -15px;
-	    text-indent: 0;
+		content: 'Refer\00EAncia';
+		display: block;
+		margin-top: -15px;
+		text-indent: 0;
 	}
 
 	&.body-order-form {
@@ -277,6 +277,92 @@ body {
 					font-weight: bold;
 				}
 			}
+		}
+	}
+}
+
+
+// Checkout novo
+#app-container {
+	background-color: #f4f4f4;
+	box-shadow: 0 45px 0 #f4f4f4;
+
+	.App {
+		// Lista de cartões salvos
+		.SavedCards {
+			a { font-size: 14px; }
+		}
+
+		// Error
+		span.error { font-size: 12px; }
+
+		// Inputs
+		.input-mini,
+		.input-small,
+		.input-medium,
+		.input-large,
+		.input-xlarge {
+			height: 40px;
+			max-width: 100%;
+			width: 100%;
+		}
+
+		// Validade cartão
+		.PaymentCardDueDate {
+			label {
+				display: block;
+				float: none;
+				width: 100%;
+			}
+
+			span.error { width: 100%; }
+
+			.payment-card-due-month,
+			.payment-card-due-year { width: 47%; }
+
+			.payment-card-due-year { float: right; }
+
+			.payment-card-lash {
+				display: none;
+				visibility: hidden;
+			}
+		}
+
+		// Código de segurança
+		.PaymentCardCVV {
+			width: 47%;
+
+			label {
+				display: block;
+				float: none;
+				width: 100%;
+			}
+
+			span.error { margin-left: 0; }
+		}
+
+		// Pagar com 2 cartões
+		.ChangeNumberOfPayments {
+			display: none;
+			visibility: hidden;
+		}
+
+		// Cep
+		.PostalCode { width: 25%; }
+		.DontKnowPostalCode {
+			display: none;
+			visibility: hidden;
+		}
+
+		// Endereço de cobrança
+		.AddressForm {
+			p.payment-billing-address-number,
+			p.payment-billing-address-complement {
+				margin-right: 0;
+				width: 47%;
+			}
+
+			.payment-billing-address-complement { float: right; }
 		}
 	}
 }
