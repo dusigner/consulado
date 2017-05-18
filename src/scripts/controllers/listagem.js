@@ -21,9 +21,6 @@ Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'sl
 		$searchSingle = $('.search-single-navigator'),
 		$listOrders = $('ul.order-by');
 
-
-	console.log('jksagdkjlasgdkjagjdklaglkjdgasjkldgalkgdlkjagsjdgaljkgdkjlagldkjgalksdhglka');
-
 	var $filterOptions = $('#O:first option'),
 		// $filterSelected = $filterOptions.filter(':selected'),
 		ignoreFilters = ['OrderByNameASC', 'OrderByNameDESC', 'OrderByReviewRateDESC'],

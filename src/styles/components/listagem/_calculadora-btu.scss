@@ -4,9 +4,8 @@
 //  Calculadora BTU
 //------------------------------------
 .page-calculadora-btu__banner {
-	border: 5px solid #333;
 	margin: 25px auto;
-	max-height: 350px;
+	max-height: 370px;
 	max-width: 1100px;
 	overflow: hidden;
 	position: relative;
@@ -16,15 +15,16 @@
 	;
 
 	#calculadora-btu {
+		// @include breakpoint(medium, 'min') { width: 1400px; }
+		@include breakpoint(1280px, 'max') {
+			max-width: 1000px;
+			width: 100%;
+		}
 		display: block;
-		margin: 0 auto;
+		margin: 25px auto;
 		min-height: 800px;
-		// position: relative;
-		// right: 50%;
-		// top: 50%;
-		// transform: translate(50%, -40%);
-		// transform: translate(50%, 0);
-		// width: 100%;
+		position: relative;
+		transform: translate(-2%, -25%);
 		width: 1400px;
 	}
 
@@ -32,15 +32,40 @@
 		max-height: 2000px;
 		max-width: 1400px;
 		overflow: inherit;
+
+		#calculadora-btu { transform: translate(0, 0); }
 	}
 }
 
 .page-calculadora-btu__mask {
-	background-color: #0d0;
+	background: transparent url('/arquivos/calc-btu-consul-banner-header.jpg?v=2') 0 0 no-repeat;
+	background-size: contain;
+	cursor: pointer;
 	height: 100%;
 	position: absolute;
 	right: 0;
 	top: 0;
 	width: 100%;
 	z-index: 10;
+
+	&.is--active {
+		background: none;
+		height: 35px;
+		text-align: center;
+
+		&:before {
+			background-color: #a7a9ac;
+			color: #fff;
+			content: 'Fechar';
+			display: block;
+			font-size: 14px;
+			font-weight: bold;
+			height: 35px;
+			line-height: 35px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 80px;
+		}
+	}
 }
