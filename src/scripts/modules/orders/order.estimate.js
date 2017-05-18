@@ -14,7 +14,9 @@ var Estimate = {
 		var isScheduled = (currentSla.name && currentSla.name.indexOf('Agendada')) ? true : false;
 		var estimateDate;
 
-		if (isScheduled && currentSla.shippingEstimateDate) {
+		if (!currentSla.shippingEstimateDate) {
+			return false;
+		} else if (isScheduled && currentSla.shippingEstimateDate) {
 			// sem cálculo quando for agendada
 			estimateDate = $.formatDatetimeBRL(currentSla.shippingEstimateDate);
 		} else if (isBusinessDay) {
