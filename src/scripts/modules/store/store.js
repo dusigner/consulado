@@ -5,7 +5,7 @@ var Uri = require('vendors/Uri');
 
 require('vendors/jquery.cookie');
 
-//var redirect = require('modules/store/redirect');
+var redirect = require('modules/store/redirect');
 
 define('store', function() {
 
@@ -19,11 +19,7 @@ define('store', function() {
 	var publicUrl = [
 		'^\/$',
 		'/institucional',
-		'/pap',
-		'/Sistema',
-		'/landing/blackfriday',
-		'/pre-home',
-		'/cadastrocorporativo'
+		'/pre-home'
 	];
 
 	/*var self = this;*/
@@ -34,9 +30,20 @@ define('store', function() {
 
 		this.isCorp = /whpnovosrentaveis/.test(window.jsnomeLoja || window.location.host);
 
+		this.isQA = /consulqa/.test(window.jsnomeLoja || window.location.host);
+
 		this.setup();
 
 		//return this.checkAccess();
+
+		console.log('acess', this.checkAccess());
+
+		if(this.isCorp) {
+			return !this.checkAccess() && redirect.home.call(this);
+		}
+
+		return;
+
 	};
 
 	this.setup = function() {
@@ -76,12 +83,6 @@ define('store', function() {
 	};
 
 	this.checkAccess = function() {
-		var valid = false;
-
-		//fake login
-		if (valid) {
-			return this.setUserData();
-		}
 
 		this.isPrivateUrl = !publicUrl.some(function(item) {
 
@@ -89,7 +90,11 @@ define('store', function() {
 
 		}.bind(this));
 
-		return !(this.isPrivateUrl);
+		/*if(this.userData) {
+			this.userData.partner = 1021540;
+		}*/
+
+		return !(!this.userData.approved && this.isPrivateUrl);
 	};
 
 

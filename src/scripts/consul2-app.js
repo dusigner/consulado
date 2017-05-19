@@ -18,6 +18,8 @@ require('vendors/nitro');
 
 require('modules/_autoloader');
 
+require('expose?store!modules/store/store');
+
 //load modules individually
 require('modules/vtex-events')();
 require('modules/store/geo');
@@ -30,6 +32,8 @@ require('modules/store/login.url');
 require('modules/banners-controller');
 
 Nitro.setup(['geo', 'percentoff', 'vendas.pj', 'descadastrar.emailCRM', 'login.url'], function() {
+
+	console.log('entrou no app');
 
 	$('.helperComplement').remove();
 

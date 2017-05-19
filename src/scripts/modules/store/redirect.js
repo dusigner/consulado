@@ -129,11 +129,13 @@ module.exports.register = function (data) {
 
 };*/
 
-/*module.exports.home = function () {
+module.exports.home = function () {
 
 	if (!window.store) {
 		window.store = this;
 	}
+
+	console.log('uri',store, store.uri);
 
 	window.location.href = store.uri
 		.replaceQueryParam('ReturnUrl', store.uri.path())
@@ -142,4 +144,3 @@ module.exports.register = function (data) {
 		.toString();
 
 };
-*/

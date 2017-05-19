@@ -18,6 +18,8 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
+	require('expose?store!modules/store/store');
+
 	require('modules/checkout.gae');
 	require('modules/checkout.recurrence');
 	require('modules/checkout.modify');
