@@ -351,6 +351,12 @@ function Etapa(){
 					seletor = seletor.parents( 'section' );
 				}
 				seletor.addClass( 'forward' ).removeClass( 'ativo' ).next().addClass( 'ativo' );
+
+				if ($('.resultado').hasClass('ativo')) {
+
+					$('.page-calculadora-btu__container').addClass('is--active');
+				}
+
 			}else if( direcao == 'anterior' ){
 				// 1- verificamos se existe um palco antes
 				// caso tenha, voltamos para a section anterior
@@ -362,6 +368,7 @@ function Etapa(){
 					seletor = seletor.parents( 'section' );
 				}
 				seletor.addClass( 'backward' ).removeClass( 'ativo' ).prev().addClass( 'ativo reverse' );
+
 			}
 		}
 	}

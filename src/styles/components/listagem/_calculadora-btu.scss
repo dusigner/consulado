@@ -4,9 +4,10 @@
 //  Calculadora BTU
 //------------------------------------
 .page-calculadora-btu__banner {
-		@include breakpoint(1280px, 'max') { max-width: 1000px; }
+	@include breakpoint(1280px, 'max') { max-width: 1000px; }
 	@include breakpoint(1012px, 'max') { max-width: 600px; }
-	@include breakpoint(640px, 'max') { max-height: 270px; }
+	@include breakpoint(540px, 'max') { max-height: 270px; }
+	@include breakpoint(400px, 'max') { max-height: 200px; }
 	margin: 20px auto;
 	max-height: 370px;
 	max-width: 1100px;
@@ -20,17 +21,20 @@
 	#calculadora-btu {
 		@include breakpoint(1280px, 'min') { height: 700px !important; }
 		@include breakpoint(1280px, 'max') {
-			height: 900px;
+			height: 930px;
 			max-width: 1000px;
 			transform: translate(0, -25%);
 			width: 100%;
 		}
-		@include breakpoint(1012px, 'max') { max-width: 600px; }
-		@include breakpoint(480px, 'max') { transform: translate(0, -22%); }
-		@include breakpoint(440px, 'max') { transform: translate(0, -19%); }
-		@include breakpoint(405px, 'max') { transform: translate(0, -15%); }
-		@include breakpoint(320px, 'max') { transform: translate(0, -12%); }
-		border: 1px solid #333;
+		@include breakpoint(1012px, 'max') {
+			height: 750px !important;
+			max-width: 600px;
+			transform: translate(0, -5%);
+		}
+		@include breakpoint(540px, 'max') { transform: translate(0, -15%); }
+		@include breakpoint(490px, 'max') { transform: translate(0, -11%); }
+		@include breakpoint(440px, 'max') { transform: translate(0, -8%); }
+		// @include breakpoint(400px, 'max') { transform: translate(0, -12%); }
 		display: block;
 		margin: 30px auto;
 		min-height: 700px;
@@ -40,6 +44,8 @@
 	}
 
 	&.is--active {
+		@include breakpoint(1280px, 'max') { max-width: 1000px; }
+		@include breakpoint(1012px, 'max') { max-width: 600px; }
 		max-height: 2000px;
 		max-width: 1400px;
 		overflow: inherit;
@@ -57,7 +63,7 @@
 	right: 0;
 	top: 0;
 	width: 100%;
-	z-index: 10;
+	z-index: 2;
 
 	&.is--active {
 		background: none;
@@ -80,3 +86,4 @@
 		}
 	}
 }
+

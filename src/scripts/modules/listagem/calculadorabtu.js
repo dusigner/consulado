@@ -11,7 +11,7 @@ Nitro.module('calculadorabtu', function () {
 		e.preventDefault();
 
 		if ($(this).hasClass('is--active')) {
-			calcBtuIframe.attr('src', 'http://consulqa.vtexcommercestable.com.br/landing/calculadora-btu');
+			// calcBtuIframe.attr('src', 'http://consulqa.vtexcommercestable.com.br/landing/calculadora-btu');
 		}
 
 		calcBtu.toggleClass('is--active');

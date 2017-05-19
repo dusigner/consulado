@@ -11,10 +11,12 @@
 	<!-- @include ../../subtemplates/consul-header.html -->
 	<!-- @endif -->
 
+	<!-- Calculadora BTU -->
 	<div class="page-calculadora-btu__banner">
 		<div class="page-calculadora-btu__mask"></div>
-		<iframe id="calculadora-btu" src="http://localhost:3002/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
+		<iframe id="calculadora-btu" src="/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
 	</div>
+	<!-- /Calculadora BTU -->
 
 	<!-- @if DEBUG='development' -->
 	<!-- @include ../../subtemplates/consul-footer.html -->
@@ -26,7 +28,9 @@
 			var innerDoc = calculadoraBtu.contentDocument || calculadoraBtu.contentWindow.document;
 
 			var resultado = $($(innerDoc).find('#resultado')).text();
+			console.log('************************************************************');
 			console.log('Resultado: ', resultado);
+			console.log('************************************************************');
 		}
 	</script>
 </body>
