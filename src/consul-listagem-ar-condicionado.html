@@ -5,11 +5,10 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
 </head>
-<body data-controller="listagem" class="listagem categoria btu page-calculadora-btu">
+<body data-controller="listagem">
 	<!--  Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
-
 
 
 	<!-- Calculadora BTU -->
@@ -18,10 +17,6 @@
 		<iframe id="calculadora-btu" src="http://localhost:3002/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
 	</div>
 	<!-- /Calculadora BTU -->
-
-
-
-
 
 
 
@@ -262,5 +257,6 @@
 			console.log('Resultado: ', resultado);
 		}
 	</script>
+
 </body>
 </html>
