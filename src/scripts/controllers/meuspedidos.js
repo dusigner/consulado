@@ -43,17 +43,22 @@ Nitro.controller('meuspedidos', ['removeBootstrap', 'orders.recurrence'], functi
 						'order-zipcode' : $selector('span[data-bind="text: postalCode"]').first().text(),
 						'order-number' : $selector('span[data-bind="text: number"]').first().text()
 					},
-					orderStatusClass = (orderData['order-status'] === 'Cancelado' || orderData['order-status'] === 'Pedido entregue') ? ' title__order-status--complete' : '',
+					// orderStatusClass = (orderData['order-status'] === 'Cancelado' || orderData['order-status'] === 'Pedido entregue') ? ' title__order-status--complete' : '',
 					//Estimate Data
 					shippingMethod = (selfOrderObj[0].shippingData.logisticsInfo[0]) ? selfOrderObj[0].shippingData.logisticsInfo[0].selectedSla : '',
 					slas = (selfOrderObj[0].shippingData.logisticsInfo[0]) ? selfOrderObj[0].shippingData.logisticsInfo[0].slas : '',
 					currentSla = Estimate.getSla(shippingMethod, slas),
 					orderEstimateDate = Estimate.calculateSla(selfOrderObj[0].creationDate, currentSla),
 					trackingTemplate = '<p class="order-tracking__item">{lastChange}: {description}</p>',
-					addInfoTemplate = '<div class="body__order-add-info">' +
+					estimateTemplate = '';
+					
+				if (orderEstimateDate) {
+					estimateTemplate = '<p>Entrega até: <strong class="add-info__estimated">' + orderEstimateDate + '</strong></p>';
+				}
+				var addInfoTemplate = '<div class="body__order-add-info">' +
 											'<p>Data da compra: <strong class="add-info__estimated">' + orderData['order-date'] + '</strong></p>' +
 											'<p>Status do pedido: <strong class="add-info__status">' + orderData['order-status'] + '</strong></p>' +
-											'<p>Entrega estimada para: <strong class="add-info__estimated">' + orderEstimateDate + '</strong></p>' +
+											estimateTemplate +
 										'</div>',
 					renderStatusBar = function() {
 						dust.render('orderStates', StatusGroup[orderData['order-status']], function(err, out) {
@@ -63,8 +68,8 @@ Nitro.controller('meuspedidos', ['removeBootstrap', 'orders.recurrence'], functi
 							$selector('.body__order-add-info').after(out);
 						});
 
-						$selector('.tite__order-date').append('<span class="title__order-status' + orderStatusClass +'">' + orderData['order-status'] + '</span>');
-						$selector('.add-info__status').text(orderData['order-status']);
+						$selector('.tite__order-date').append('<span class="title__order-status">' + StatusGroup[orderData['order-status']].orderLabel + '</span>');
+						$selector('.add-info__status').text(StatusGroup[orderData['order-status']].orderLabel);
 					};
 
 				//Prepare 'data' items to orders

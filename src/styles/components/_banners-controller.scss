@@ -78,6 +78,7 @@ body {
 		margin: 50px 0;
 		overflow: hidden;
 		position: relative;
+		text-align: center;
 		width: 100%;
 
 		.prateleira-banners-secundarios-mosaico {
@@ -86,9 +87,25 @@ body {
 			position: relative;
 			vertical-align: top;
 
+			img {
+				display: block;
+				height: auto;
+				margin: 0 auto;
+				max-width: 100%;
+			}
+			a { display: block; }
+
 			&.mosaico-secundarios-left {
-				margin-right: 15px;
-				width: 800px;
+				@include breakpoint(small, 'min') {
+					margin-right: 15px;
+					max-width: 72%;
+				}
+				margin-bottom: 2%;
+				width: 100%;
+
+				img {
+					@include breakpoint(small, 'max') { width: 280px; }
+				}
 
 				&.one-banner { width: 100%; }
 
@@ -96,7 +113,7 @@ body {
 			}
 
 			&.mosaico-secundarios-right {
-				width: 280px;
+				@include breakpoint(small, 'min') { max-width: 25%; }
 
 				&.two-banner {
 					width: 50%;
@@ -111,18 +128,18 @@ body {
 
 				&.banner-secundario-mosaico4,
 				&.banner-secundario-mosaico7 {
-					height: 270px;
+					// height: 270px;
 					width: 100%;
 				}
 				&.banner-secundario-mosaico5,
 				&.banner-secundario-mosaico8 {
-					height: 125px;
-					margin-bottom: 20px;
+					// height: 125px;
+					margin-bottom: 7%;
 					width: 100%;
 				}
 				&.banner-secundario-mosaico6,
 				&.banner-secundario-mosaico9 {
-					height: 125px;
+					// height: 125px;
 					width: 100%;
 				}
 
