@@ -1,22 +1,32 @@
 @charset 'UTF-8';
 
 .modal-recurrence {
+	@include breakpoint(small, 'max') {
+		left: 0;
+		top: 0!important;
+		transform: translate(0, 0);
+	}
 	background-color: $gray-l;
 	left: 50%;
 	margin: 0;
 	max-width: 1080px;
 	position: absolute;
-	transform: translate(-50%, -50%);
 	top: 50%!important;
+	transform: translate(-50%, -50%);
 	width: 100%;
 
 	&__body {
+		@include breakpoint(small, 'max') { padding: 15px }
 		color: $txt-gray;
 		max-height: none;
 		padding: 40px;
 	}
 
 	&__title {
+		@include breakpoint(small, 'max') {
+			@include font-size(19px);
+			margin-top: 1em;
+		}
 		@include font-size(26px);
 		color: $green;
 		font-weight: bold;
@@ -38,26 +48,58 @@
 	}
 
 	&__advantages {
+		@include breakpoint(small, 'max') { display: block }
 		display: flex;
 		justify-content: space-between;
 		margin: 30px 0;
 	}
 
 	&__advantage {
+		@include breakpoint(small, 'max') { margin: 0 auto 15px }
 		background-color: #fff;
 		border-radius: 50px;
 		max-width: 320px;
 		width: 100%;
 
-		&-body { padding: 30px; }
+		&-body {
+			@include breakpoint(small, 'max') { display: none }
+			padding: 30px;
+		}
 
 		&-title {
+			@include breakpoint(small, 'max') {
+				border-bottom-left-radius: 50px;
+				border-bottom-right-radius: 50px;
+				padding-right: 16px;
+				position: relative;
+				transition: border-bottom-left-radius .5s ease,
+							border-bottom-right-radius .5s ease;
+
+				&:after {
+					@include font-size(5px);
+					@include icon-get('arrow-down');
+					display: block;
+					position: absolute;
+					right: 12px;
+					top: 50%;
+					transform: translateY(-50%) rotate(0deg);
+					transition: transform .5s ease;
+				}
+
+				&--active {
+					border-bottom-left-radius: 0;
+					border-bottom-right-radius: 0;
+
+					&:after { transform: translateY(-50%) rotate(180deg); }
+				}
+			}
 			@include font-size(20px);
 			background-color: $gray-d;
 			border-top-left-radius: 50px;
 			border-top-right-radius: 50px;
 			color: #fff;
 			line-height: 1;
+			margin: 0;
 			padding: 30px 0;
 		}
 
@@ -92,16 +134,14 @@
 	}
 
 	&__cta {
+		@include breakpoint(small, 'max') { @include font-size(15px) }
 		@include font-size(22px);
 		background-color: $green;
 		border-color: $green;
 
-		&:hover {
-			color: $green;
-		}
-
+		&:hover,
 		&:focus {
-			color: #fff;
+			color: $green;
 			outline: none;
 		}
 

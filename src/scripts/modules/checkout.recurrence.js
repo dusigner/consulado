@@ -93,6 +93,14 @@ Nitro.module('checkout.recurrence', function() {
 									});
 				});
 			});
+
+			//ACCORDION MOBILE
+			if($(window).width() <= 768) {
+				$('.js-recurrence-accordion').click(function() {
+					$(this).toggleClass('modal-recurrence__advantage-title--active');
+					$(this).siblings('.modal-recurrence__advantage-body').slideToggle();
+				});
+			}
 		});
 	};
 
