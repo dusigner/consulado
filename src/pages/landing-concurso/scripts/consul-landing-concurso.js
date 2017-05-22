@@ -7,7 +7,7 @@ require('vendors/jquery.maskedinput');
 //load Nitro Lib
 require('vendors/nitro');
 
-Nitro.setup([], function () {
+Nitro.setup(['landing-gae'], function () {
 
 	$(window).load(function() {
 
