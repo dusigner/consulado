@@ -133,7 +133,7 @@ gulp.task('scripts', ['lint'], function () {
 		.pipe(named())
 		.pipe(webpack({
 			output: {
-				filename: '[name].min.js'
+				filename: '[name].js'
 			},
 			externals: {
 				'jquery': 'jQuery',
