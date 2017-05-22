@@ -19,7 +19,7 @@
 	;
 
 	#calculadora-btu {
-		@include breakpoint(1280px, 'min') { height: 700px !important; }
+		// @include breakpoint(1280px, 'min') { height: 700px !important; }
 		@include breakpoint(1280px, 'max') {
 			height: 930px;
 			max-width: 1000px;
@@ -37,7 +37,7 @@
 		// @include breakpoint(400px, 'max') { transform: translate(0, -12%); }
 		display: block;
 		margin: 30px auto;
-		min-height: 700px;
+		// min-height: 700px;
 		position: relative;
 		transform: translate(-2%, -25%);
 		width: 1400px;

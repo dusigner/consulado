@@ -473,9 +473,11 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 	};
 
-	this.autoFilter = function() {
-		if( /#\/filter/.test(window.location.hash) ) {
-			helper.rel = window.location.hash.substr(window.location.hash.indexOf('&'));
+	this.autoFilter = function(state) {
+		var loc = state ? state : window.location.hash;
+
+		if( /#\/filter/.test(loc) ) {
+			helper.rel = loc.substr(loc.indexOf('&'));
 
 			var currentFilters = helper.rel.split('&');
 
@@ -489,6 +491,10 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		}
 	};
 
+	/*window.onpopstate = function(e) {
+		window.history.pushState(null, null, e.currentTarget.location.hash);
+		self.autoFilter(e.currentTarget.location.hash);
+	};*/
 
 	this.setup();
 

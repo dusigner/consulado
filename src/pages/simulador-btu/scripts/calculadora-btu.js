@@ -4,6 +4,7 @@
 'use strict';
 
 jQuery( function () {
+	window.parent.$(window.parent.document).trigger('calculadora.load');
 	var etapa = new Etapa(),
 		config = new Config();
 	// TODO:
@@ -130,6 +131,8 @@ jQuery( function () {
 				config.set_resultado_btu( resultado.btu );
 				// construindo link para os produtos indicados
 				config.constroi_link( resultado );
+
+				window.parent.$(window.parent.document).trigger('calculadora.end', [resultado]);
 			}
 
 			if ( jQuery( this ).hasClass( 'btn-init' ) ) {
@@ -312,14 +315,17 @@ function Etapa(){
 	this.seguinte = function(){
 		var etapa = jQuery( 'section.ativo' );
 		ir_para( 'seguinte', etapa );
+		window.parent.$(window.parent.document).trigger('calculadora.step');
 	};
 	// Etapa anterior
 	this.anterior = function(){
 		var etapa = jQuery( 'section.ativo' );
 		ir_para( 'anterior', etapa );
+		window.parent.$(window.parent.document).trigger('calculadora.step');
 	};
 	// Adiciona ativo na primeira etapa
 	this.iniciar = function(){
+		window.parent.$(window.parent.document).trigger('calculadora.init');
 		var primeira = jQuery( 'section' ).first();
 		primeira.addClass( 'ativo' );
 		if( primeira.find( '.sub-section' ).length > 0 ){
