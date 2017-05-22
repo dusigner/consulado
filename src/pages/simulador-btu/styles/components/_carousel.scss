@@ -6,6 +6,32 @@
 		height: 540px;
 	}
 	background-color: #c1e7f0;
+
+	.slick-list,
+	.slick-track { height: 100%; }
+
+	.slick-dots {
+		bottom: 0;
+		font-size: 0;
+		position: absolute;
+
+
+		li {
+			line-height: 0;
+			margin: 3px;
+
+			button {
+				&,
+				&:after {
+					bottom: inherit;
+					left: 50%;
+					right: inherit;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
 }
 .carousel .slide {
 	@media( min-width: $desktop ) {
@@ -100,11 +126,6 @@
 		right: -33%;
 		width: 33%;
 	}
-}
-
-.carousel .slick-dots {
-	bottom: 0;
-	position: absolute;
 }
 
 .moradia {

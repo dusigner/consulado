@@ -17,4 +17,7 @@ Nitro.module('calculadorabtu', function () {
 		calcBtu.toggleClass('is--active');
 		$(this).toggleClass('is--active');
 	});
+
+
+	console.log('##########################');
 });

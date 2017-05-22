@@ -29,6 +29,7 @@ body.listagem.btu.page-calculadora-btu {
 	position: relative;
 
 	&.is--active {
-		height: 280px;
+		@include breakpoint(medium, 'min') { height: 460px; }
+		@include breakpoint(medium, 'max') { height: 280px; }
 	}
 }
