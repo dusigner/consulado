@@ -3,6 +3,8 @@
 
 'use strict';
 
+alert(999999999);
+
 jQuery( function () {
 	window.parent.$(window.parent.document).trigger('calculadora.load');
 	var etapa = new Etapa(),
@@ -463,17 +465,17 @@ function Config () {
 		}
 		// verificar qual produto recomendar
 		if ( btu <= 8000 ) {
-			btu = 7000;
+			btu = '7.500';
 		} else if ( btu <= 10000 ) {
-			btu = 10000;
+			btu = '10.000';
 		} else if ( btu <= 14000 ) {
-			btu = 12000;
+			btu = '12.000';
 		} else if ( btu <= 19500 ) {
-			btu = 18000;
+			btu = '18.000';
 		} else if ( btu <= 22000 ) {
-			btu = 21000;
+			btu = '21.000';
 		} else {
-			btu = 30000;
+			btu = '22.000';
 		}
 		retorno = {
 			'btu': btu,

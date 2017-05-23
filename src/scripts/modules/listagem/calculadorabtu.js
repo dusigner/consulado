@@ -20,7 +20,7 @@ Nitro.module('calculadorabtu', function () {
 	});
 
 
-	console.log('##########################');
+	console.log('$$$$$$$$$$$$$$$$$$$$$$$');
 
 	/*var globalAcess = function() {
 		alert(100000000000000000000);
@@ -50,6 +50,8 @@ Nitro.module('calculadorabtu', function () {
 	});
 
 	$(window).on('calculadora.end', function(e, res) {
-		console.log('RESPOSTA> ', res, res.btu);
+		var tpl = '#/filter&fq=specificationFilter_814:{btu} BTUs/h';
+
+		console.log('RESPOSTA> ', tpl.render(res));
 	});
 });
