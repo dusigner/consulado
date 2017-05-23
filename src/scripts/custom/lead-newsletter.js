@@ -85,6 +85,16 @@ Nitro.module('lead-newsletter', function() {
 			setTimeout(function() {
 				$('.newsletter').fadeOut();
 			}, 2000);
+			
+			dataLayer.push({ 
+				event: 'formulario_home', 
+				status: 'ok' 
+			});
+		}).fail(function() {
+			dataLayer.push({ 
+				event: 'formulario_home', 
+				status: 'error' 
+			});
 		});
 	};
 
