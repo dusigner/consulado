@@ -19,9 +19,6 @@ Nitro.module('calculadorabtu', function () {
 		$(this).toggleClass('is--active');
 	});
 
-
-	console.log('##########################');
-
 	/*var globalAcess = function() {
 		alert(100000000000000000000);
 		var $calculadoraBtu = $('#calculadora-btu');
@@ -39,8 +36,8 @@ Nitro.module('calculadorabtu', function () {
 	$(window).on('calculadora.step', function() {
 		var $calculadoraBtu = $('#calculadora-btu');
 		var innerDoc = $calculadoraBtu.get(0).contentDocument || $calculadoraBtu.get(0).contentWindow.document,
-		$document = $(innerDoc),
-		height = $($document.find('body')).height();
+			$document = $(innerDoc),
+			height = $($document.find('body')).height();
 
 		if(height > 0) {
 			calcBtuIframe.height(height);
