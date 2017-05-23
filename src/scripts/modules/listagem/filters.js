@@ -491,6 +491,11 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		}
 	};
 
+	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
+	$(window).on('calculadora.filter', function(e, res) {
+		self.autoFilter(res);
+	});
+
 	/*window.onpopstate = function(e) {
 		window.history.pushState(null, null, e.currentTarget.location.hash);
 		self.autoFilter(e.currentTarget.location.hash);
