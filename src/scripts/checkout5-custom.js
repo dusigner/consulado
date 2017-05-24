@@ -135,7 +135,9 @@ $(window).on('load', function() {
 				$('#client-document').attr('disabled', 'disabled');
 			}
 
-			$('.box-client-info-pj').remove();
+			if(window.vtex.accountName !== 'consulqa') {
+				$('.box-client-info-pj').remove();
+			}
 		};
 
 		//state
