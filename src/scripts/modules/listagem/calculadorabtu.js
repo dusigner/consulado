@@ -6,13 +6,11 @@ Nitro.module('calculadorabtu', function () {
 		calcBtuMask = calcBtu.find('.page-calculadora-btu__mask'),
 		calcBtuIframe = $('#calculadora-btu');
 
-	// calcBtuIframe.attr('src', 'http://consulqa.vtexcommercestable.com.br/landing/calculadora-btu');
-
 	calcBtuMask.click(function(e) {
 		e.preventDefault();
 
 		if ($(this).hasClass('is--active')) {
-			// calcBtuIframe.attr('src', 'http://consulqa.vtexcommercestable.com.br/landing/calculadora-btu');
+			calcBtuIframe.attr('src', '/landing/calculadora-btu');
 		}
 
 		calcBtu.toggleClass('is--active');
@@ -26,7 +24,9 @@ Nitro.module('calculadorabtu', function () {
 			$document = $(innerDoc),
 			height = $($document.find('body')).height();
 
-		if(height > 0) {
+			console.log(height);
+
+		if(height > 100) {
 			calcBtuIframe.height(height);
 		} else {
 			calcBtuIframe.height(668);

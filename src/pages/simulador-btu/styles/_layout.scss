@@ -183,7 +183,7 @@ section .sub-section.interacao {
 
 section.ativo,
 section.ativo .sub-section.ativo {
-	@media( max-width: 1025px ) { min-height: 100vh; }
+	@media( max-width: 1025px ) and (min-width: 600px ) { min-height: 100vh; }
 	background-color: $green;
 	opacity: 1;
 	position: relative;

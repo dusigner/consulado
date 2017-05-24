@@ -46,7 +46,10 @@
 			display: inline-block;
 			height: 19px;
 			margin: 0 0 0 5px;
+			opacity: 0;
+			position: relative;
 			width: 19px;
+			z-index: -10;
 
 			&.face {
 				background: url('/arquivos/lp-calc-btu--images--face.png') center center no-repeat;

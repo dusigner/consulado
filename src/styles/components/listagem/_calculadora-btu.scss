@@ -27,7 +27,7 @@
 			width: 100%;
 		}
 		@include breakpoint(1012px, 'max') {
-			height: 750px !important;
+			// height: 750px !important;
 			max-width: 600px;
 			transform: translate(0, -5%);
 		}

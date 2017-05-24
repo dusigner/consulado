@@ -20,6 +20,7 @@ body.listagem.btu.page-calculadora-btu {
 		@import 'components/_carousel.scss';
 		@import 'components/_resultado.scss';
 		@import '_layout.scss';
+
 	}
 }
 
@@ -31,5 +32,10 @@ body.listagem.btu.page-calculadora-btu {
 	&.is--active {
 		@include breakpoint(medium, 'min') { height: 460px; }
 		@include breakpoint(medium, 'max') { height: 280px; }
+
+		iframe iframe {
+			display: none !important;
+			visibility: hidden !important;
+		}
 	}
 }
