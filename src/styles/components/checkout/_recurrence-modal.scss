@@ -11,8 +11,8 @@
 	margin: 0;
 	max-width: 1080px;
 	position: absolute;
-	top: 50%!important;
-	transform: translate(-50%, -50%);
+	top: 2%!important;
+	transform: translateX(-50%);
 	width: 100%;
 
 	&__body {
@@ -27,7 +27,7 @@
 			@include font-size(19px);
 			margin-top: 1em;
 		}
-		@include font-size(26px);
+		@include font-size(24px);
 		color: $green;
 		font-weight: bold;
 	}
@@ -36,14 +36,14 @@
 		vertical-align: middle;
 
 		&-period {
-			@include font-size(22px);
-			background-color: $green;
+			@include font-size(18px);
+			// background-color: $green;
 			border-radius: 50px;
-			color: #fff;
+			color: $green;
 			display: inline-block;
 			font-weight: bold;
-			margin-left: .5em;
-			padding: 12px 42px;
+			// margin-left: .5em;
+			// padding: 12px 42px;
 		}
 	}
 

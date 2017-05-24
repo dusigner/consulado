@@ -292,7 +292,7 @@ Nitro.module('checkout.gae', function() {
 			var $cartTemplate = $('.cart-template');
 
 			//if($(window).width() > 1000){
-			if (!$cartTemplate.is('.been-called')) {
+			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {
 				$('.linkWarranty').last().trigger('click');
 				$cartTemplate.addClass('been-called');
 			}

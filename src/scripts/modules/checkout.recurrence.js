@@ -250,7 +250,7 @@ Nitro.module('checkout.recurrence', function() {
 			var $cartTemplate = $('.cart-template');
 
 			//if($(window).width() > 1000){
-			if (!$cartTemplate.is('.been-called')) {
+			if (!$cartTemplate.is('.been-called') && $('.js-modal-open').length > 0) {
 				$cartTemplate.find('.js-modal-open').last().trigger('click');
 				$cartTemplate.addClass('been-called');
 			}
