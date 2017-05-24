@@ -19,7 +19,7 @@
 		@include breakpoint(small, 'max') { padding: 15px }
 		color: $txt-gray;
 		max-height: none;
-		padding: 40px;
+		padding: 20px;
 	}
 
 	&__title {
@@ -27,7 +27,7 @@
 			@include font-size(19px);
 			margin-top: 1em;
 		}
-		@include font-size(24px);
+		@include font-size(22px);
 		color: $green;
 		font-weight: bold;
 	}
@@ -63,7 +63,7 @@
 
 		&-body {
 			@include breakpoint(small, 'max') { display: none }
-			padding: 30px;
+			padding: 15px;
 		}
 
 		&-title {
@@ -100,12 +100,12 @@
 			color: #fff;
 			line-height: 1;
 			margin: 0;
-			padding: 30px 0;
+			padding: 20px 0;
 		}
 
 		&-text {
 			@include font-size(14px)
-			margin: 0 0 20px;
+			margin: 0 0 15px;
 
 			&:last-child { margin: 0; }
 		}
