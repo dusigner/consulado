@@ -11,6 +11,7 @@ Nitro.module('checkout.recurrence', function() {
 	//WHY?!
 	this.setup = function() {
 		self.render();
+		self.autoOpen();
 	};
 
 	//Skus e respectivos periodos de recorrência
@@ -236,6 +237,25 @@ Nitro.module('checkout.recurrence', function() {
 		$self.siblings('.loading-text').removeClass('hide');
 
 		return callback(item, content);
+	};
+
+
+	/*
+	 * Trigga click no último CTA de recorrente para abrir automaticamente o modal ao acessar o checkout
+	 */
+	this.autoOpen = function() {
+		setTimeout(function() {
+			//Inicia o modal com o ultimo produto adicionado,
+			//caso já tenha sido chamado adiciona a classe been-called
+			var $cartTemplate = $('.cart-template');
+
+			//if($(window).width() > 1000){
+			if (!$cartTemplate.is('.been-called')) {
+				$cartTemplate.find('.js-modal-open').last().trigger('click');
+				$cartTemplate.addClass('been-called');
+			}
+			//}
+		}, 1500);
 	};
 
 	this.hidePayments = function() {
