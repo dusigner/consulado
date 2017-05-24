@@ -7,7 +7,7 @@ main {
 	// max-width: 1360px;
 	// overflow: hidden;
 	// position: relative;
-	max-width: 1400px;
+	max-width: 1300px;
 	width: 100%;
 }
 
@@ -120,7 +120,7 @@ main {
 
 		&.ativo {
 			@include transition( height $full/2 );
-			height: 668px;
+			height: 608px;
 			z-index: 99999;
 		}
 
@@ -129,7 +129,7 @@ main {
 		.interacao {
 			flex: 440px;
 			margin-left: 10px;
-			min-height: 668px;
+			min-height: 608px;
 			padding: 60px;
 			position: relative;
 			z-index: 99999;
@@ -185,9 +185,9 @@ section.ativo,
 section.ativo .sub-section.ativo {
 	@media( max-width: 1025px ) and (min-width: 600px ) { min-height: 100vh; }
 	background-color: $green;
+	height: 100%;
 	opacity: 1;
 	position: relative;
-	//visibility: visible;
 	z-index: 1;
 }
 

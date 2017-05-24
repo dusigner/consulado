@@ -5,9 +5,13 @@
 //------------------------------------
 .page-calculadora-btu__banner {
 	@include breakpoint(1280px, 'max') { max-width: 1000px; }
-	@include breakpoint(1012px, 'max') { max-width: 600px; }
-	@include breakpoint(540px, 'max') { max-height: 270px; }
-	@include breakpoint(400px, 'max') { max-height: 200px; }
+	@include breakpoint(1012px, 'max') {
+		display: none !important;
+		max-width: 600px;
+		visibility: hidden !important;
+	}
+	// @include breakpoint(540px, 'max') { max-height: 270px; }
+	// @include breakpoint(400px, 'max') { max-height: 200px; }
 	margin: 20px auto;
 	max-height: 370px;
 	max-width: 1100px;
@@ -34,20 +38,18 @@
 		@include breakpoint(540px, 'max') { transform: translate(0, -15%); }
 		@include breakpoint(490px, 'max') { transform: translate(0, -11%); }
 		@include breakpoint(440px, 'max') { transform: translate(0, -8%); }
-		// @include breakpoint(400px, 'max') { transform: translate(0, -12%); }
 		display: block;
 		margin: 30px auto;
-		// min-height: 700px;
 		position: relative;
-		transform: translate(-2%, -25%);
-		width: 1400px;
+		transform: translate(-4%, -25%);
+		width: 1300px;
 	}
 
 	&.is--active {
 		@include breakpoint(1280px, 'max') { max-width: 1000px; }
 		@include breakpoint(1012px, 'max') { max-width: 600px; }
 		max-height: 2000px;
-		max-width: 1400px;
+		max-width: 1300px;
 		overflow: inherit;
 
 		#calculadora-btu { transform: translate(0, 0); }

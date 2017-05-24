@@ -26,16 +26,11 @@ body.listagem.btu.page-calculadora-btu {
 
 .page-calculadora-btu__container {
 	margin: 0 auto;
-	max-width: 1400px;
+	max-width: 1300px;
 	position: relative;
 
 	&.is--active {
 		@include breakpoint(medium, 'min') { height: 460px; }
 		@include breakpoint(medium, 'max') { height: 280px; }
-
-		iframe iframe {
-			display: none !important;
-			visibility: hidden !important;
-		}
 	}
 }
