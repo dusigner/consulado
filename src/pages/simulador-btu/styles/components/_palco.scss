@@ -1,0 +1,97 @@
+.palco {
+	height: 80vw;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.introducao .palco {
+	@media( min-width: 520px ) {
+		background: url('/arquivos/lp-calc-btu--images--intro_house.png') bottom 15vh right -148px no-repeat,
+					url('/arquivos/lp-calc-btu--images--intro_background.jpg') center bottom no-repeat;
+		// background-size: 50% auto, auto 100%;
+	}
+	@media( min-width: $tablet ) {
+		background: url('/arquivos/lp-calc-btu--images--intro_house.png') bottom 15vh right -45px no-repeat,
+					url('/arquivos/lp-calc-btu--images--intro_background.jpg') bottom right no-repeat;
+		background-color: #cee5f1;
+		background-size: 35% auto, auto 575px;
+	}
+	@media( min-width: 900px ) { height: 70vh; }
+	@media( min-width: $desktop ) {
+		background: url('/arquivos/lp-calc-btu--images--intro_house.png') bottom 165px left 70% no-repeat,
+					url('/arquivos/lp-calc-btu--images--intro_background.jpg') bottom center no-repeat;
+		background-size: 300px auto, auto 100%;
+		height: 550px;
+	}
+	background: url('/arquivos/lp-calc-btu--images--intro_house.png') bottom 8vh right -50px no-repeat,
+				url('/arquivos/lp-calc-btu--images--intro_background.jpg') center bottom no-repeat;
+	background-size: 50% auto, auto 100%;
+}
+
+.ambiente.ativo .palco {
+	@media( max-width: 1024px ) and ( min-width: 768px ) { height: 60vh; }
+
+	img { display: visible; }
+}
+
+.introducao .conteudo {
+	@media( min-width: $desktop ) {
+		h3 {
+			font-size: 40px;
+			margin-top: 5px!important;
+		}
+
+		p {
+			font-size: 28px;
+			margin-top: 10px!important;
+		}
+	}
+}
+
+.ambiente .palco {
+	background: #f4f4f4 url('/arquivos/lp-calc-btu--images--background.jpg') top center no-repeat;
+	background-color: $green;
+	background-size: 100% auto;
+
+	img {
+		@media( min-width: $desktop ) { max-height: inherit; }
+		@media( max-width: 1024px ) and ( min-width: 768px ) {
+			height: auto;
+			left: 0;
+			margin: auto;
+			max-height: 100%;
+			right: 0;
+			width: auto;
+			z-index: 2;
+		}
+		display: none;
+		height: auto;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+
+		&.camada1 { z-index: 1; }
+	}
+}
+
+.humaninhos {
+	@media( min-width: 520px ) {
+		@include animation( acenar_desk 5s steps(76) infinite );
+		background: url('/arquivos/lp-calc-btu--images--spritesheet_compressed.png') left bottom no-repeat;
+		height: 320px;
+		width: 360px;
+	}
+	@media( min-width: $desktop ) { left: -310px; }
+	@include animation( acenar_mob 5s steps(76) infinite );
+	background: url('/arquivos/lp-calc-btu--images--spritesheet_compressed-M.png') left bottom no-repeat;
+	background-position-x: 0;
+	bottom: -15px;
+	height: 160px;
+	left: -25px;
+	margin: auto;
+	position: absolute;
+	right: 0;
+	width: 180px;
+}

@@ -1,0 +1,347 @@
+.resultado {
+	.resultado__header .separador {
+		background-color: $green;
+		display: flex;
+		flex-wrap: wrap;
+		min-height: 110px;
+		padding: 18px;
+		width: 100%;
+
+		h3 {
+			@media(min-height: $tablet) {
+				flex: 1;
+				font-size: 20px;
+			}
+			@include fonte( 15px );
+			flex: 2;
+		}
+
+		button {
+			@include fonte( 18px );
+			@include transition( all .4s );
+			background: url('/arquivos/lp-calc-btu--images--seta.png') center right 12px no-repeat;
+			background-color: transparent;
+			background-size: 10px;
+			border: 2px solid #fff;
+			color: #fff;
+			cursor: pointer;
+			height: 56px;
+			line-height: 38px;
+			padding-left: 15px;
+			text-align: left;
+			width: 100%;
+		}
+
+		.share {
+			flex: 1;
+			text-align: right;
+		}
+
+		.share a {
+			@media(min-width: $tablet) {
+				height: 40px;
+				margin: 0 0 0 12px;
+				width: 40px;
+			}
+			display: inline-block;
+			height: 19px;
+			margin: 0 0 0 5px;
+			opacity: 0;
+			position: relative;
+			width: 19px;
+			z-index: -10;
+
+			&.face {
+				background: url('/arquivos/lp-calc-btu--images--face.png') center center no-repeat;
+				background-size: 100%;
+			}
+
+			&.twitter {
+				background: url('/arquivos/lp-calc-btu--images--twitter.png') center center no-repeat;
+				background-size: 100%;
+			}
+		}
+	}
+
+	.resultado__header .separador.conclusao {
+		background-color: $gray;
+		color: $purple;
+		padding: 22px 18px;
+		text-align: center;
+
+		h3 {
+			@media(min-width: $tablet) {
+				font-size: 28px;
+				margin-bottom: 15px;
+			}
+			color: $purple;
+			flex: 100%;
+			font-size: 13px;
+			margin-bottom: 10px;
+		}
+
+		.destaque {
+			@media(min-width: $tablet) {
+				font-size: 30px;
+				height: 86px;
+				line-height: 86px;
+				width: 320px;
+			}
+			background: transparent;
+			border: 2px solid $purple;
+			color: $purple;
+			font-family: $bold;
+			font-size: 20px;
+			height: 50px;
+			line-height: 48px;
+			margin: auto;
+			padding: 0;
+			text-align: center;
+			width: 220px;
+		}
+	}
+
+	.comprar { text-decoration: none; }
+
+	.lightbox { display: block; }
+
+	.box-modelos {
+		padding: 40px 18px;
+
+		.separador {
+			@media(min-width: $tablet) { height: auto; }
+			height: 67px;
+			position: relative;
+		}
+
+		h3 {
+			@media(min-width: $tablet) { font-size: 28px; }
+			@include fonte( 14px );
+			color: #766f6e;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.modelo h3 {
+			color: #6f2c90;
+			font-size: 26px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		.produto {
+			@media(min-width: $tablet) { margin: 30px 0 0; }
+			border: 2px solid #e6e7e8;
+			margin: 15px 0 0;
+			min-height: 320px;;
+			padding: 25px;
+
+			img {
+				display: block;
+				height: auto;
+				width: 100%;
+			}
+		}
+
+		.produto h4 {
+			@media( min-width: $tablet ) {
+				font-size: 20px;
+				margin-bottom: 0;
+			}
+			@include fonte( 14px );
+			color: #6f2c90;
+			margin-bottom: 15px;
+			text-decoration: none;
+		}
+
+		.produto p {
+			@media(min-width: $tablet) {
+				font-size: 16px;
+				line-height: 22px;
+				margin: 15px 0;
+			}
+			@include fonte( 13px );
+			color: #766f6e;
+			line-height: 16px;
+			margin: 0 0 5px 0;
+		}
+	}
+
+	.box-modelos .descricao-modelo {
+		background-color: #fff;
+		left: 0;
+		padding: 30px 20px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 102;
+
+		h3 {
+			color: #736c6b;
+			text-align: left;
+		}
+
+		p {
+			@include fonte( 16px );
+			color: #736c6b;
+			line-height: 22px;
+			margin: 10px 0 0;
+		}
+
+		.tags h4 {
+			@include fonte( 18px );
+			background-color: $green;
+			border-radius: 15px;
+			color: #fff;
+			display: inline-block;
+			margin: 0 2px 13px;
+			padding: 5px 12px;
+		}
+
+		.fechar {
+			background: url('/arquivos/lp-calc-btu--images--fechar.png') center center no-repeat;
+			font-size: 18px;
+			height: 38px;
+			position: absolute;
+			right: 5px;
+			text-indent: -9999px;
+			top: 5px;
+			width: 38px;
+		}
+	}
+
+	.modelo.split .separador {
+		height: 50px;
+		margin-top: 40px;
+	}
+
+	.modelo h3.titulo {
+		@media(min-height: $tablet) { font-size: 24px; }
+		font-size: 18px;
+		margin-top: 20px;
+		position: relative;
+
+		&:before {
+			@media(min-height: $tablet) {
+				font-size: 24px;
+				height: 70px;
+				margin-right: 10px;
+				width: 70px;
+			}
+			content: '';
+			display: inline-block;
+			height: 46px;
+			margin-right: 0;
+			vertical-align: middle;
+			width: 60px;
+		}
+	}
+
+	.modelo.split .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--split-roxo.png') center center no-repeat;
+			background-size: 60px;
+		}
+	}
+
+	.modelo.split .descricao-modelo .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--split-cinza.png') center center no-repeat;
+			background-size: 60px;
+		}
+	}
+
+	.modelo.janela .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--janela-roxo.png') center center no-repeat;
+			background-size: 60px;
+		}
+	}
+
+	.modelo.janela .descricao-modelo .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--janela-cinza.png') center center no-repeat;
+			background-size: 60px;
+		}
+	}
+
+	.modelo.portatil .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--portatil-roxo.png') center center no-repeat;
+			background-size: 60px;
+		}
+	}
+
+	.modelo.portatil  .descricao-modelo .titulo {
+		&:before {
+			@media(min-width: $tablet) { background-size: 60px; }
+			background: url('/arquivos/lp-calc-btu--images--portatil-cinza.png') center center no-repeat;
+			left: -75px;
+		}
+	}
+
+	.modelo .descricao-modelo.-hidden {
+		@media( max-width: 767px ) {
+			height: 0;
+			visibility: hidden;
+			width: 0;
+		}
+	}
+
+	.btu__footer p {
+		color: #333;
+		font-size: 12px;
+		text-align: center;
+	}
+}
+
+.overlay {
+	@include transition( opacity 1s );
+	background-color: #000;
+	bottom: 0;
+	left: 0;
+	opacity: .6;
+	// opacity: 1;
+	position: fixed;
+	right: 0;
+	top: 0;
+	visibility: visible;
+	z-index: 101;
+
+	&.-hidden {
+		@include transition( opacity .6s );
+		opacity: 0;
+		visibility: hidden;
+		z-index: -1;
+	}
+}
+
+@media ( min-width: $desktop ) {
+	.resultado .resultado__header .separador button:hover {
+		@include transition( all .4s );
+		background-color: #c1df87;
+	}
+
+	.resultado .box-modelos .produto img {
+		display: block;
+		height: auto;
+		margin: 20px 15px 20px 0;
+		max-width: 40%;
+		width: 40%;
+	}
+}
+
+
+
+#resultado {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	visibility: hidden;
+	z-index: -10;
+}

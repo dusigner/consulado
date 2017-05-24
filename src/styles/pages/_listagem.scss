@@ -33,18 +33,14 @@ body.listagem {
 	.container > .clearfix {
 		position: relative;
 
-		@include breakpoint(small, 'max') {
-			margin: 0 -15px;
-		}
+		@include breakpoint(small, 'max') { margin: 0 -15px; }
 	}
 
 	#relacionados { border-top: 1px solid $gray; }
 
 	.list-content h2 { display: none; }
 
-	&.categoria {
-		.title-filter { display: none; }
-	}
+	&.categoria .title-filter { display: none; }
 
 	&.departamento,
 	&.busca {
@@ -111,9 +107,7 @@ body.listagem {
 		margin-left: .5em;
 	}
 
-	.more-cat + & {
-		right: 180px;
-	}
+	.more-cat + & { right: 180px; }
 }
 
 .open-filter {
@@ -135,9 +129,7 @@ body.listagem {
 		width: 65px;
 	}
 
-	@include breakpoint(small, 'max') {
-		display: inline-block;
-	}
+	@include breakpoint(small, 'max') { display: inline-block; }
 }
 
 .order-wrapper {
@@ -160,9 +152,7 @@ body.listagem {
 		span {
 			color: $txt-gray;
 
-			@include breakpoint(small, 'max') {
-				display: none;
-			}
+			@include breakpoint(small, 'max') { display: none; }
 		}
 
 		&:after {
@@ -206,9 +196,7 @@ body.listagem {
 			text-align: right;
 			text-transform: lowercase;
 
-			@include breakpoint(small, 'max') {
-				margin: 10px 0;
-			}
+			@include breakpoint(small, 'max') { margin: 10px 0; }
 
 			a {
 				@include responsiveFont(14, 16, true);
@@ -255,9 +243,9 @@ body.listagem {
 	outline: none;
 
 	@include breakpoint(small, 'max') {
-	    min-height: 35px;
-	    padding: 0;
-	    width: 100%;
+		min-height: 35px;
+		padding: 0;
+		width: 100%;
 	}
 
 	&.loading {
@@ -275,7 +263,6 @@ body.listagem {
 }
 
 .listagem.busca {
-
 	.navigation {
 
 		ul { display: inline-block; }
@@ -330,9 +317,7 @@ body.listagem {
 	.busca-resultados {
 		margin-bottom: 28px;
 
-		strong {
-			font-weight: 400;
-		}
+		strong { font-weight: 400; }
 	}
 
 	.busca-vazio {
@@ -382,9 +367,7 @@ body.listagem {
 								width: 30%;
 								z-index: 3;
 
-								@include breakpoint(small, 'max') {	
-									display: none;
-								}
+								@include breakpoint(small, 'max') { display: none; }
 							}
 
 							&:hover {
@@ -400,7 +383,7 @@ body.listagem {
 	.prod-selos,
 	.flag {
 		height: 30%;
-		width: 30%; 
+		width: 30%;
 	}
 }
 
@@ -486,13 +469,11 @@ body.listagem {
 	}
 
 	.prateleira-slider {
-		ul {
-			li {
-				margin: 0 !important;
-			}
-		}
+		ul li { margin: 0 !important; }
 	}
 }
 
 
+
 @import 'components/listagem/filters';
+@import 'components/listagem/calculadora-btu';

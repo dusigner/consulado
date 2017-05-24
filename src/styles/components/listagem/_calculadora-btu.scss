@@ -1,0 +1,91 @@
+@charset 'UTF-8';
+
+//------------------------------------
+//  Calculadora BTU
+//------------------------------------
+.page-calculadora-btu__banner {
+	@include breakpoint(1280px, 'max') { max-width: 1000px; }
+	@include breakpoint(1012px, 'max') {
+		display: none !important;
+		max-width: 600px;
+		visibility: hidden !important;
+	}
+	// @include breakpoint(540px, 'max') { max-height: 270px; }
+	// @include breakpoint(400px, 'max') { max-height: 200px; }
+	margin: 20px auto;
+	max-height: 370px;
+	max-width: 1100px;
+	overflow: hidden;
+	position: relative;
+	transition:
+		max-height .5s ease,
+		max-width .5s ease
+	;
+
+	#calculadora-btu {
+		// @include breakpoint(1280px, 'min') { height: 700px !important; }
+		@include breakpoint(1280px, 'max') {
+			height: 930px;
+			max-width: 1000px;
+			transform: translate(0, -25%);
+			width: 100%;
+		}
+		@include breakpoint(1012px, 'max') {
+			// height: 750px !important;
+			max-width: 600px;
+			transform: translate(0, -5%);
+		}
+		@include breakpoint(540px, 'max') { transform: translate(0, -15%); }
+		@include breakpoint(490px, 'max') { transform: translate(0, -11%); }
+		@include breakpoint(440px, 'max') { transform: translate(0, -8%); }
+		display: block;
+		margin: 30px auto;
+		position: relative;
+		transform: translate(-4%, -25%);
+		width: 1300px;
+	}
+
+	&.is--active {
+		@include breakpoint(1280px, 'max') { max-width: 1000px; }
+		@include breakpoint(1012px, 'max') { max-width: 600px; }
+		max-height: 2000px;
+		max-width: 1300px;
+		overflow: inherit;
+
+		#calculadora-btu { transform: translate(0, 0); }
+	}
+}
+
+.page-calculadora-btu__mask {
+	background: transparent url('/arquivos/calc-btu-consul-banner-header.jpg?v=2') 0 0 no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+
+	&.is--active {
+		background: none;
+		height: 30px;
+		text-align: center;
+
+		&:before {
+			background-color: #a7a9ac;
+			color: #fff;
+			content: 'Fechar';
+			display: block;
+			font-size: 14px;
+			font-weight: bold;
+			height: 30px;
+			line-height: 30px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 80px;
+		}
+	}
+}
+

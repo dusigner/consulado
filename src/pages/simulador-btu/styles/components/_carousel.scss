@@ -1,0 +1,249 @@
+// Carousel
+.carousel {
+	@media( min-width: 900px ){ height: 500px; }
+	@media( min-width: $desktop ) {
+		background-color: #fff;
+		height: 540px;
+	}
+	background-color: #c1e7f0;
+
+	.slick-list,
+	.slick-track { height: 100%; }
+
+	.slick-dots {
+		bottom: 0;
+		font-size: 0;
+		position: absolute;
+
+
+		li {
+			line-height: 0;
+			margin: 3px;
+
+			button {
+				&,
+				&:after {
+					bottom: inherit;
+					left: 50%;
+					right: inherit;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+}
+.carousel .slide {
+	@media( min-width: $desktop ) {
+		cursor: pointer;
+		display: block;
+		margin: 0;
+		position: absolute;
+		width: 33.333333%;
+
+		.i-moradia {
+			bottom: 25px;
+			content: '';
+			display: block;
+			height: 190px;
+			left: 0;
+			margin: auto;
+			position: absolute;
+			right: 0;
+			width: 89px;
+			z-index: 2;
+		}
+	}
+	height: 100%;
+	margin: -1px;
+	position: relative;
+	width: 100%;
+
+	.i-moradia { display: none; }
+
+	&::before {
+		@media( min-width: $desktop ) {
+			@include transition( all $full );
+			background-color: #f3f3f5;
+			border-radius: 50%;
+			content: '';
+			height: 0%;
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			width: 0%;
+			z-index: 10;
+		}
+	}
+}
+
+.moradia.reverse .carousel .slide {
+	&::before {
+		@media( min-width: $desktop ) {
+			@include transition( all 0 );
+			background-color: #f3f3f5;
+			border-radius: 0;
+			content: '';
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+			z-index: 10;
+		}
+	}
+}
+
+// Moradia desktop
+.carousel .slide.um {
+	@media( min-width: $desktop ) {
+		@include transition( all $full );
+		left: -33%;
+		width: 33%;
+		z-index: 10;
+	}
+}
+
+.carousel .slide.dois {
+	@media( min-width: $desktop ) {
+		@include transition( all $full );
+		left: 0;
+		width: 100%;
+
+		.i-moradia {
+			@include transition( all $full );
+			bottom: 165px;
+			height: 200px;
+			left: 31.5%;
+			width: 300px;
+		}
+	}
+}
+
+.carousel .slide.tres {
+	@media( min-width: $desktop ) {
+		@include transition( all $full );
+		right: -33%;
+		width: 33%;
+	}
+}
+
+.moradia {
+	@media( min-width: $desktop ) { background-color: #fff; }
+	background-color: #bfe7f3;
+}
+
+.moradia .slide {
+	@media( min-width: $desktop ) {
+		&::after {
+			@include fonte(25px, $light);
+			@include transition( bottom $full/2 );
+			@include transition( opacity $full/2 );
+			bottom: -50px;
+			color: $blue;
+			content: '';
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			transition-delay: 2s;
+		}
+	}
+}
+
+.moradia .um {
+	@media( min-width: $desktop ) {
+		background: #cee5f1 url('/arquivos/lp-calc-btu--images--intro_background.jpg') center bottom no-repeat;
+		background-size: auto 100%;
+
+		.i-moradia {
+			@include transition( all $full );
+			background: url('/arquivos/lp-calc-btu--images--intro_apartment.png') bottom center no-repeat;
+			background-size: auto 190px;
+		}
+	}
+	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_apartment_mobile.jpg') center bottom no-repeat;
+	background-size: auto 100%;
+}
+
+.moradia .dois {
+	@media( min-width: $desktop ) {
+		background: #cee5f1 url('/arquivos/lp-calc-btu--images--intro_background.jpg') center bottom no-repeat;
+		background-size: auto 100%;
+
+		.i-moradia {
+			@include transition( all $full );
+			background: url('/arquivos/lp-calc-btu--images--intro_house.png') bottom center no-repeat;
+			background-size: 300px auto;
+		}
+	}
+	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_house_mobile.jpg') center bottom no-repeat;
+	background-size: auto 100%;
+}
+
+.moradia .tres {
+	@media( min-width: $desktop ) {
+		background: #cee5f1 url('/arquivos/lp-calc-btu--images--intro_background.jpg') center bottom no-repeat;
+		background-size: auto 100%;
+
+		.i-moradia {
+			@include transition( all $full );
+			background: url('/arquivos/lp-calc-btu--images--intro_house_no_roof.png') bottom center no-repeat;
+			background-size: auto 190px;
+		}
+	}
+	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_house_no_roof_mobile.jpg') center bottom no-repeat;
+	background-size: auto 100%;
+}
+
+.comodo .slide {
+	@media( min-width: $desktop ) {
+		&::after {
+			@include fonte(25px, $light);
+			@include transition( bottom $full/2 );
+			@include transition( opacity $full/2 );
+			bottom: -50px;
+			color: $blue;
+			content: '';
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			transition-delay: 2s;
+		}
+	}
+}
+
+.comodo {
+	@media(min-width: $desktop) { background-color: transparent; }
+	background-color: #dddddf;
+}
+
+.comodo .um {
+	@media(min-width: $desktop) {
+		background: #f3f3f5 url('/arquivos/lp-calc-btu--images--intro_bedroom.jpg') bottom -600px center no-repeat;
+		background-size: cover;
+	}
+	background: #dddddf url('/arquivos/lp-calc-btu--images--mob-bedroom.png') center bottom 20px no-repeat;
+	background-size: auto 100%;
+}
+
+.comodo .dois {
+	@media(min-width: $desktop) {
+		background: #f3f3f5 url('/arquivos/lp-calc-btu--images--intro_office.jpg') bottom -600px center no-repeat;
+		background-size: cover;
+	}
+	background: #dddddf url('/arquivos/lp-calc-btu--images--mob-office.png') center bottom 20px no-repeat;
+	background-size: auto 100%;
+}
+
+.comodo .tres {
+	@media(min-width: $desktop) {
+		background: #f3f3f5 url('/arquivos/lp-calc-btu--images--intro_dinner_room.jpg') bottom -600px center no-repeat;
+		background-size: cover;
+	}
+	background: #dddddf url('/arquivos/lp-calc-btu--images--mob-dinner.png') center bottom 20px no-repeat;
+	background-size: auto 100%;
+}
