@@ -261,7 +261,7 @@ Nitro.module('checkout.recurrence', function() {
 	this.hidePayments = function() {
 		$.each(self.orderForm.items, function(i, v) {
 			if(self.hasActiveRecurrence(v.attachments)){
-				$('.payment-group-item:not(#payment-group-creditCardPaymentGroup)').addClass('hide').remove();
+				$('.payment-group-item:not(#payment-group-creditCardPaymentGroup)').addClass('hide');
 				$('#payment-group-creditCardPaymentGroup').click();
 				return false;
 			}
