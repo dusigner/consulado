@@ -59,7 +59,7 @@ main {
 	.moradia .conteudo,
 	.introducao .conteudo {
 		height: 118px;
-		margin-bottom: 10px;
+		// margin-bottom: 10px;
 		position: relative;
 	}
 
@@ -455,3 +455,6 @@ section.ativo.resultado {
 @media( max-width: 768px ) {
 	.modelo.janela { display: inline-block; }
 }
+
+
+

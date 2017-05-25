@@ -180,7 +180,10 @@ body {
 		}
 	}
 
-	.box-client-info-pj #is-corporate-client {display: none!important}
+	&:not([class*='consulqa']) {
+		.box-client-info-pj #is-corporate-client {display: none!important}
+	}
+
 
 	.container-main {
 		margin-top: 60px;

@@ -5,6 +5,24 @@
 //------------------------------------
 // tag { animation: [animation-name] [duration] [timing-function] [delay]; }
 
+	.animated {
+		-webkit-animation-duration: 1s;
+		animation-duration: 4s;
+	}
+
+	.animated.hinge {
+		-webkit-animation-duration: 2s;
+		animation-duration: 2s;
+	}
+
+	.animated.flip {
+		-webkit-backface-visibility: visible;
+		-ms-backface-visibility: visible;
+		backface-visibility: visible;
+		-webkit-animation-name: flip;
+		animation-name: flip;
+	}
+
 	@keyframes bounceInDown {
 		0% {
 			opacity: 0;
@@ -142,4 +160,28 @@
 
 	.shake,
 	%shake { animation-name: shake; }
+
+		@-webkit-keyframes flipInX {
+		0% {
+			-webkit-transform: perspective(400px) rotateX(90deg);
+			transform: perspective(400px) rotateX(90deg);
+			opacity: 0;
+		}
+
+		40% {
+			-webkit-transform: perspective(400px) rotateX(0deg);
+			transform: perspective(400px) rotateX(0deg);
+		}
+
+		70% {
+			-webkit-transform: perspective(400px) rotateX(0deg);
+			transform: perspective(400px) rotateX(0deg);
+		}
+
+		100% {
+			-webkit-transform: perspective(400px) rotateX(0deg);
+			transform: perspective(400px) rotateX(0deg);
+			opacity: 1;
+		}
+	}
 }

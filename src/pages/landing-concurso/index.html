@@ -269,7 +269,7 @@
       <h2>para fazer o que quiser?</h2>
       <div class="banner">
          <img src="/arquivos/bg-image-mobile.png" alt="" class="ban-mobile" />
-            <div class="tit-banner box-8">
+            <div class="tit-banner box-9">
                <span>Com o <strong>prêmio</strong><br />em dinheiro você pode:</span>
             </div>
             <div class="box-one box-1 ban-hide-mobile">
@@ -291,6 +291,9 @@
                 </div>
                 <div class="box-six box-6 ban-hide-mobile">
                     <img src="/arquivos/img-6.png" alt="" />
+                </div>
+                <div class="box-eight box-8 ban-hide-mobile">
+                    <img src="/arquivos/img-8.png" alt="" />
                 </div>
             </div>
             <div class="box-seven box-7 ban-hide-mobile">
@@ -315,10 +318,10 @@
          <div>
             <img src="/arquivos/infografico.png" alt="" />
          </div> 
-         <span class="txt-promo">*Promoção válida para compras feitas de 22/05 a 12/07 e produtos acima de R$1.000,00.</span>
+         <span class="txt-promo">*Promoção válida para compras feitas de 29/05 a 13/07 e produtos acima de R$1.000,00.</span>
       </div>
       <div class="col-6 form">
-         <form action="/" method="POST" id="form-concurso">
+         <form action="" method="POST" id="form-concurso">
              <fieldset>
                  <label for="cname" class="tit">Nome Completo</label>
                  <input id="cname" type="text" name="campoName" minlength="2" required="required" data-validation="required" data-msg-required="Campo `nome` obrigatório"/>
@@ -331,32 +334,34 @@
 
              <fieldset>
                  <span class="tit">Data de nascimento</span>
-                 <input id="cbirthdate" type="text" name="birthdate" required="required" data-validation="required" data-msg-required="Data de aniversário inválida" />
+                 <input id="cbirthdate" type="text" name="birthdate"  required="required" data-validation="required" data-msg-required="Data de aniversário inválida" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">Telefone</span>
-                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Telefone inválido" pattern="\(\d{2}\)\d{4}-\d{4}" data-mask="(00) 0000-0000" data-mask-selectonfocus="true" />
+                 <input id="phone" type="text" name="phone" required="data-validation" data-msg-required="Telefone inválido" />
              </fieldset>
 
              <fieldset>
                  <span class="tit">CPF</span>
-                 <input id="cpf" type="text" name="document" required="required" data-validation="required" data-msg-required="CPF inválido" />
+                 <input id="cpf" type="text" name="document" value="" />
              </fieldset>
 
-             <fieldset class="pedido">
+             <!-- <fieldset class="pedido">
                  <span class="tit">Insira número do pedido</span>
                  <input id="orderId" type="text" name="orderId"/>
                  <span class="txt-not-obrigatory">*Preenchimento não obrigatório</span>
-             </fieldset>
+             </fieldset> -->
 
              <fieldset class="btn-enviar">
-                 <button type="submit" class="btn primary-button"><span>Enviar</span></button>
+                 <button type="submit" value="Enviar" class="btn primary-button"><span>Enviar</span></button>
              </fieldset>
 
              <fieldset class="terms">
-               <input id="checkTerms" class="check-terms" type="checkbox" name="checkTerms" required="required" data-validation="required" data-msg-required="Para enviar o formulário aceite os termos da promoção.">  
-               <span>Li e aceito os termos da promoção</span>
+               <label>
+                  <input id="checkTerms" class="check-terms" type="checkbox" name="checkTerms" required="required" data-validation="required" data-msg-required="Para enviar o formulário aceite os termos da promoção." /> 
+                  Li e aceito os termos da promoção
+               </label>
              </fieldset>
          </form>
          <div class="line"></div>
@@ -382,29 +387,22 @@
                   3. Área de Execução do Plano de Operação. A presente promoção será válida, única e exclusivamente, para consumidores pessoas físicas - com idade igual ou superior aos dezoito (18) anos completos na data do cadastro - residentes e domiciliadas no território nacional.<br />  
                   4. Produtos (objetos da promoção comercial). Produtos da marca Consul comercializados no seu e-commerce, endereço eletrônico: http://loja.consul.com.br/.<br />
                   5. Prazo de Execução.<br />
-                  5.1. A promoção iniciar-se-á no dia 22/05/2017 e encerrar-se-á no dia 12/07/2017 (data de apuração dos resultados). <br />
-                  5.2. Período de participação: A partir das 00h00m do dia 22/05/2017 até as 23h59m (horário de Brasília) do dia 06/07/2017. <br />
+                  5.1. A promoção iniciar-se-á no dia 22/05/2017 e encerrar-se-á no dia 12/07/2017 (data de apuração dos resultados).<br />
+                  5.2. Período de participação: A partir das 00h00m do dia 22/05/2017 até as 23h59m (horário de Brasília) do dia 06/07/2017.<br />
                   6. Descrição da Mecânica.<br />
-                  6.1. Condição e Forma de participação.  A Promoção Bem Pensada Consul é válida para a participação de pessoas físicas - com idade igual ou superior aos dezoito (18) anos completos (“Consumidores Participantes”) no ato da inscrição e residentes no Brasil que se cadastrarem no site http://loja.consul.com.br/ durante o período de participação (item 5.2), e desde que cumpridas às condições estipuladas nesse Plano de Operação, conforme abaixo:<br />
-                  6.1.1. CADASTRO NO HOT SITE: O cadastro estará limitado a uma única participação por CPF. Para participar, o usuário interessado deverá acessar o site http://loja.consul.com.br/ e realizar o seu cadastro, conforme abaixo: <br />
+                  6.1. Condição de participação.  A Promoção Bem Pensada Consul é válida para a participação de pessoas físicas - com idade igual ou superior aos dezoito (18) anos completos (“Consumidores Participantes”) no ato da inscrição e residentes no Brasil que se cadastrarem no site http://loja.consul.com.br/ durante o período de participação (item 5.2), e desde que cumpridas às condições estipuladas nesse Plano de Operação, conforme abaixo:<br />
+                  6.1.1. O controle de participação estará vinculado ao número do CPF informado pelo Participante em seu cadastro.<br />
+                  6.1.1.1. Para participar dessa Promoção, não será exigida a compra de produto da marca Consul comercializados no seu e-commerce, ao efetuar o seu cadastro no hot site, o Participante receberá um Número da Sorte para concorrer ao sorteio.<br />
+                  6.1.1.2. Adicionalmente, se durante a Promoção, o Consumidor Participante efetuar compra de produto no e-commerce da marca Consul, o Consumidor Participante receberá mais um Número da Sorte [vinculado ao número do pedido de compra] para concorrer ao sorteio. O sistema da loja.consul identificará a compra e enviará a quantidade de números da sorte proporcional à compra dele.<br />                     
+                  6.1.2. Forma da participação [CADASTRO NO HOT SITE]: Para participar, o usuário interessado deverá acessar o site http://loja.consul.com.br/ e realizar o seu cadastro, conforme abaixo:<br />
                   Preencher seus dados pessoais: Nome completo, Data de Nascimento, E-mail, CPF e DDD/Telefone;<br />
-                  Assinalar a opção de aceite dos termos da Promoção;<br />
-                  Criar login e senha;<br />
+                  Assinalar a opção de aceite dos termos da Promoção, e;<br />
                   Clicar no botão de Envio de participação. <br />
-                  6.1.1.1. Para saber se a sua participação foi concluída com sucesso, após a sua confirmação de participação, o Consumidor Participante deverá receber um e-mail com o Número da Sorte. <br />
-                  6.1.1.2. Dessa forma, o cadastro realizado no hot site (item 6.1.1 e seu subitem) dará ao Consumidor Participante o direito de receber de um (1) Número da Sorte para concorrer ao sorteio. <br />                     
-                  6.1.2. COMPRA DE PRODUTO NO E-COMMERCE DA MARCA CONSUL REALIZADA NO PERÍODO DA PROMOÇÃO + CADASTRO NO HOT SITE: A participação será controlada por compra/número do pedido do Consumidor Participante (e-commerce), cada compra efetuada só poderá ser utilizada uma única vez para participação na promoção. <br />
-                  6.1.2.1. Após a realização de compra no e-commerce, o Consumidor Participante receberá um e-mail de confirmação com o número do pedido.<br />
-                  6.1.2.2.  Nesse e-mail, haverá um link e quando a página for aberta, a partir do link, o Consumidor será direcionado para o hot site da promoção. Para participar, o Consumidor deverá realizar o seu cadastro, conforme abaixo: <br />
-                  Preencher seus dados pessoais: Nome completo, Data de Nascimento, E-mail, CPF e DDD/Telefone;
-                  Número do Pedido;
-                  Assinalar a opção de aceite dos termos da Promoção; 
-                  Criar login e senha; e
-                  Clicar no botão de Envio de participação.<br />
-                  6.1.2.2.1. Para saber se a sua participação foi concluída com sucesso, após a sua confirmação de participação, o Consumidor Participante deverá receber outro e-mail com os seus dois (2) Números da Sorte. <br />
-                  6.1.1.2. Dessa forma, a compra de produto realizada [número de pedido] no período da promoção e o cadastro realizado no hot site (item 6.1.2 e seus subitens) dará ao Consumidor Participante o direito de receber dois (2) Números da Sorte para concorrer ao sorteio. <br />
-                  6.2.  Durante o período válido de participação, o sistema da promoção armazenará as informações inseridas no cadastro por CPF (para as participações de cadastros no hot site) e por CPF + número do pedido (para as participações vinculadas à compra produto no e-commerce da marca Consul e cadastradas no hot site), sendo certo que as eventuais tentativas de cadastros que não estejam de acordo com os itens anteriores serão bloqueadas.<br />
-                  6.2.1. Ainda, se durante o período de participação, o Participante que tenha se cadastrado na promoção, nos termos do item 6.1.1 desse Plano de Operação, realizar compra de produto no e-commerce da marca Consul, o mesmo deverá acessar o hot site da promoção para cadastrar o seu número de pedido para ter direito a receber os seus dois (2) Números da Sorte, conforme disposto no item 6.1.2 e seus subitens.<br />
+                  6.1.2.1. Para saber se a sua participação foi concluída com sucesso, após a sua confirmação de participação, o Consumidor Participante receberá um e-mail com um (1)  ou mais Número(s) da Sorte para concorrer ao sorteio, conforme exemplos:<br />
+                  Exemplo 1: O Consumidor Participante que realizar o cadastro sem vínculo de compra = 1 Número da Sorte.<br />
+                  Exemplo 2: No momento em que o Consumidor Participante está realizando o cadastro, o sistema identifica que o seu CPF está vinculado a um número de Pedido de compra efetuado no e-commerce da marca Consul = 2 Números da Sorte, sendo um (1) referente ao cadastro e o outro vinculado ao número do pedido de compra.<br />
+                  Exemplo 3: Caso o Consumidor Participante já cadastrado na Promoção e que já havia recebido um (1) Número da Sorte referente ao cadastro, em momento posterior ao seu cadastro e dentro do período válido de participação, efetuar uma compra no e-commerce, o sistema identificará o número do pedido de compra pelo seu CPF e lhe atribuirá outro Número da Sorte vinculado ao número do pedido de compra. O Consumidor receberá um e-mail com o Número da Sorte.<br />Exemplo 4: O Consumidor Participante que realizou o seu cadastro na Promoção vinculado a um número de Pedido de Compra efetuado no e-commerce da marca Consul que, num momento posterior ao seu cadastro e dentro do período válido de participação, efetuar uma nova compra no e-commerce, o sistema identificará o novo pedido de compra pelo seu CPF e lhe atribuirá outro Número da sorte vinculado ao referido número de compra. O Consumidor Participante receberá um e-mail com o Número da Sorte.<br />
+                  6.2.  Durante o período válido de participação, o sistema da promoção armazenará as informações inseridas no cadastro por CPF (para as participações de cadastros no hot site) e por CPF + número do pedido (para as participações vinculadas à compra produto no e-commerce da marca Consul), sendo certo que as eventuais tentativas de cadastros que não estejam de acordo com os itens anteriores serão bloqueadas.<br />
                   6.3. “DOS NÚMEROS DA SORTE”. Para facilitar o entendimento, cada elemento sorteável que será distribuído ao Consumidor Participante para concorrer ao sorteio do prêmio será denominado simplesmente “Número da Sorte”, conforme abaixo:<br />
                   Identificação da série (uma letra e um número de 0 a 9) + Número de ordem com cinco algarismos (numerados de 00.000 a 99.999), exemplo: S1 00.001.<br />
                   6.3.1. Para essa promoção, a PROMOTORA distribuirá dez (10) séries (numeradas de 0 a 9), com cem mil (100.000) Números de Ordem, cada, que serão atribuídos aos participantes, de forma aleatória entre todas as séries, de acordo com o recebimento das participações, vide Quadro abaixo:<br /><br />
@@ -418,10 +416,10 @@
                   6.4.  Todas as participações serão armazenadas num banco de dados único da promoção. <br />
                   6.5. Os números da sorte serão utilizados, para efeito da apuração do contemplado, de acordo com a forma de apuração estabelecida neste Plano de Operação.<br />
                   6.6. Será desclassificado o Consumidor Participante que: 
-                  A) Informar dados falsos, incorretos ou incompletos à PROMOTORA;
+                  A) Informar dados falsos, incorretos ou incompletos à PROMOTORA;<br />
                   B) Não observar corretamente as condições gerais de participação e premiação previstas neste Plano de Operação.<br />
                   6.7. Fraudes: Sem exclusão das penalidades cabíveis e como forma de garantir a integridade do banco de dados e a lisura da promoção, serão sumariamente excluídos os Consumidores Participantes que cometerem qualquer tipo de fraude comprovada ou, de qualquer forma, utilizarem meios mecânicos, robóticos ou fraudulentos que possam interferir no resultado da promoção ou cujas informações cadastrais armazenadas no banco de dados sejam identificadas e verificadas como inconsistentes pela auditoria independente contratada pela PROMOTORA ou cujas participações tenham sido objeto de denúncia por irregularidade e que tenham sido averiguadas e constatadas pela PROMOTORA.<br />
-                  6.8. Condição para entrega do prêmio. A PROMOTORA poderá exigir do contemplado o fornecimento de cópias do CPF, RG e comprovante de residência, sob pena de perda do direito ao prêmio.  <br />
+                  6.8. Condição para entrega do prêmio. A PROMOTORA poderá exigir do contemplado o fornecimento de cópias do CPF, RG e comprovante de residência, sob pena de perda do direito ao prêmio. <br />
                   7. APURAÇÃO DOS RESULTADOS.<br />
                   7.1. Forma de Apuração dos resultados para distribuição do prêmio prometido. Todos os Números da Ordem das Séries atribuídos concorrerão à apuração por correlação com os resultados da Extração da Loteria Federal do dia 12/07/2017.<br />
                   7.1.1. Caso a Extração da Loteria Federal não ocorra na data prevista, será utilizada para efeitos de apuração dos resultados, a extração da Loteria Federal imediatamente subsequente àquela que não foi realizada.<br />
@@ -446,7 +444,7 @@
                   8.1. Um (1)  cartão presente bandeira Mastercard com crédito no valor de R$ 30.000,00 (trinta mil reais), validade de 180 (cento e oitenta) dias, contados de sua emissão e com opção de saque bloqueada. O referido cartão deverá ser utilizado para compras e pagamentos em estabelecimentos credenciados. Após a entrega do prêmio, a tarifa de manutenção mensal do cartão não será de responsabilidade da PROMOTORA e será descontada do saldo do cartão recebido pelo contemplado.  Quantidade Total de prêmio: Um (1).<br />
                   8.2. QUANTIDADE TOTAL DE PRÊMIO: Um (1).<br />
                   8.3. VALOR TOTAL DOS PRÊMIOS: R$ 30.000,00 (Trinta mil reais).<br />
-                  8.4. Local de exibição dos prêmios: Em razão  da natureza do prêmio, o mesmo não poderá ser exibido. A PROMOTORA poderá utilizar fotos meramente ilustrativas de sugestão de utilização do prêmio, nos materiais promocionais e no hot site da promoção.<br />
+                  8.4. Local de exibição dos prêmios: Em razão da natureza do prêmio, o mesmo não poderá ser exibido. A PROMOTORA poderá utilizar fotos meramente ilustrativas de sugestão de utilização do prêmio, nos materiais promocionais e no hot site da promoção.<br />
                   8.5. A PROMOTORA comprovará a propriedade dos prêmios pela juntada de cópia de Nota Fiscal e/ou Fatura, em até 08 (oito) dias antes da data de apuração dos resultados. <br />
                   9. Entrega do prêmio. <br />
                   9.1. O resultado da apuração com o nome do contemplado será divulgado no site da promoção, em até 15 (quinze) dias, a contar da data do sorteio.<br />
@@ -469,14 +467,14 @@
                   14.  Cláusulas de Exclusão de Responsabilidade. O provimento de condições apropriadas de acesso à rede de Internet é de responsabilidade da prestadora de serviços contratada pelo participante para tal finalidade (provedor), sendo de responsabilidade da PROMOTORA apenas a manutenção e disponibilização do hot site da promoção.<br />
                   14.1. A PROMOTORA não será responsável por problemas técnicos que impeçam, retardem ou prejudiquem o envio ou recebimento das informações enviadas para o mencionado endereço eletrônico.<br />
                   14.2. Em caso de perda de conexão à rede de Internet, no momento da realização do cadastro ou no envio das informações, não será devida qualquer indenização por parte da PROMOTORA, tendo o participante que aceitar a implicação da eventual falha. <br />
-                  14.3. Hipótese excepcional - Suspensão da Promoção. Havendo interrupção da promoção ou na publicação do site promocional por problemas de acesso à rede de Internet, intervenção de hackers, vírus, manutenção, queda de energia, falha de software ou hardware, bem como por caso fortuito ou força maior, não será devida qualquer indenização, devendo a PROMOTORA, entretanto, dar prosseguimento aos serviços tão logo haja a regularização do sistema, nos moldes originalmente propostos, ou seja, sem prorrogação de datas.<br />
+                  14.3. Hipótese excepcional - Suspensão da Promoção. Havendo interrupção da promoção ou na publicação do site promocional por problemas de acesso à rede de Internet, intervenção de hackers, vírus, manutenção, queda de energia, falha de software ou hardware, bem como por caso fortuito ou força maior, não será devida qualquer indenização, devendo a PROMOTORA,<br />
                   14.4. A PROMOTORA não poderá ser responsabilizada por eventuais danos ocasionados pela aceitação ou utilização do prêmio.<br />
                   15. Cessão provisória dos direitos de personalidade do ganhador em relação à promoção. O ganhador desta promoção autorizará, sem quaisquer ônus, a PROMOTORA a utilizar suas imagens, nomes e/ou vozes, em fotos, cartazes, filmes, bem como em qualquer tipo de mídia e peças promocionais para a divulgação da conquista do prêmio, no prazo de até um (1) ano após o término da promoção.<br />
                   15.1. As autorizações descritas acima não implicam em qualquer obrigação de divulgação ou de pagamento de qualquer quantia por parte da PROMOTORA ao ganhador.<br />
                   15.2. À empresa regularmente autorizada nos termos da Lei 5.768/71, é deferida a formação de cadastro e/ou banco de dados com as informações coletadas em promoção comercial, sendo expressamente vedada a comercialização ou a cessão, ainda que a título gratuito, desses dados.<br />
                   16. Impedidos de participarem da promoção. Ficará vetada a participação de diretores, administradores e funcionários da PROMOTORA, da Whirlpool S.A, da agência Jussi, e escritório de advocacia Patrícia Nakano.<br />
                   17. Reconhecimento de cláusulas e aceitação das regras do Plano de Operação. A simples participação na presente promoção implicará no total e integral reconhecimento das condições e aceitação irrestrita deste Plano de Operação, bem como, presumir-se-á a condição de que o participante ganhador não possui impedimentos fiscal, legal ou outro que o impeça de receber e/ou usufruir o prêmio ganho.<br /><br />
-                  São Paulo, 25 de abril de 2.017.<br /><br />
+                  São Paulo, 11 de maio de 2.017.<br /><br />
 
                      
                          pp. Patrícia Mari Nakano J. Warde
@@ -502,7 +500,7 @@
    <vtex:template id="0-consul-footer" />
    <!-- /Footer -->
 
-   <script type="text/javascript" src="/arquivos/consul-landing-concurso.min.js"></script>
+   <script type="text/javascript" src="/arquivos/consul-landing-concurso.js"></script>
 
 </body>
 </html>

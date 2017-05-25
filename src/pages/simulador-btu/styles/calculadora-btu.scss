@@ -21,6 +21,15 @@ body.listagem.btu.page-calculadora-btu {
 		@import 'components/_resultado.scss';
 		@import '_layout.scss';
 
+
+		#sm-tracking,
+		#sm-bounce,
+		#sm-onsite,
+		#ajaxBusy,
+		iframe iframe {
+			display: none !important;
+			visibility: hidden !important;
+		}
 	}
 }
 

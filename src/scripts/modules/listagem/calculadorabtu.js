@@ -15,16 +15,18 @@ Nitro.module('calculadorabtu', function () {
 
 		calcBtu.toggleClass('is--active');
 		$(this).toggleClass('is--active');
+
+
+		$('html, body').animate({scrollTop: calcBtu.offset().top -10 }, 'slow');
 	});
 
-	//TROCOU STEP DENTRO DO IFRAME
+
+	// TROCOU STEP DENTRO DO IFRAME
 	$(window).on('calculadora.step', function() {
 		var $calculadoraBtu = $('#calculadora-btu');
 		var innerDoc = $calculadoraBtu.get(0).contentDocument || $calculadoraBtu.get(0).contentWindow.document,
 			$document = $(innerDoc),
 			height = $($document.find('body')).height();
-
-			console.log(height);
 
 		if(height > 100) {
 			calcBtuIframe.height(height);
@@ -33,7 +35,7 @@ Nitro.module('calculadorabtu', function () {
 		}
 	});
 
-	//ACABOU O PROCESSO E TEM RESULTADO
+	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
 		var tpl = (window.jsnomeLoja === 'consulqa') ? '#/filter&fq=specificationFilter_5:Bivolt' : '#/filter&fq=specificationFilter_814:{btu} BTUs/h' ;
