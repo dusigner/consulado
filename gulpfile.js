@@ -215,11 +215,11 @@ gulp.task('images', function () {
 	return gulp.src(getPath('images'))
 		.pipe($.plumber())
 		.pipe($.newer(paths.dest))
-		.pipe($.imagemin({
-			optimizationLevel: $.util.env.production ? 5 : 1,
-			progressive: true,
-			interlaced: true
-		}))
+		// .pipe($.imagemin({
+		// 	optimizationLevel: $.util.env.production ? 5 : 1,
+		// 	progressive: true,
+		// 	interlaced: true
+		// }))
 		//.pipe($.flatten())
 		.pipe(gulp.dest(paths.dest));
 });
