@@ -36,7 +36,7 @@ Nitro.module('calculadorabtu', function () {
 	});
 
 
-	console.log('Chatch me if you can');
+	console.log('P4V0N3 - Chatch me if you can!');
 
 
 	// ACABOU O PROCESSO E TEM RESULTADO
@@ -45,7 +45,6 @@ Nitro.module('calculadorabtu', function () {
 		var tpl = (window.jsnomeLoja === 'consulqa') ? '#/filter&fq=specificationFilter_5:Bivolt' : '#/filter&fq=specificationFilter_814:{btu} BTUs/h' ;
 
 		var bulletFilter = $('.noUi-origin.noUi-background, .noUi-origin.noUi-connect');
-		var txtValue = $('.slider__value--to');
 
 		// verificar qual produto recomendar
 		if ( res.btu <= 7.500 ) {
@@ -62,10 +61,10 @@ Nitro.module('calculadorabtu', function () {
 			bulletFilter.css('left', '100%');
 		}
 
-		txtValue = txtValue.text(res.btu.substring(0, 2) + ' BTU\/h');
+		$('.slider__value--to').text(res.btu.substring(0, 2) + ' BTU\/h');
 
-		console.log('res ', txtValue);
-		console.log('resbtu ', res.btu);
+		// console.log('res ', txtValue);
+		// console.log('resbtu ', res.btu);
 
 		//TIRGGA RESULTADO PARA MODULO FILTER.JS
 		$(window).trigger('calculadora.filter', [tpl.render(res)]);
