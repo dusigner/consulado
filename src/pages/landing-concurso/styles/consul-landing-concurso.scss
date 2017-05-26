@@ -1,0 +1,732 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul2.
+	* Author: Pedor Henrick
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+$animation-mode: true!default;
+
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/helpers';
+@import 'helpers/animation';
+
+// Base styles
+@import 'base/fonts';
+
+// Layout styles
+@import 'layout/container';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+@import 'layout/forms';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+@import 'components/footer';
+
+h1,
+h2 { 
+	color: $green;
+	font-weight: 200;
+	margin: 0; 
+	padding: 0;
+	text-align: center;
+}
+
+h1 { 
+	@include responsiveFont(35); 
+	line-height: 35px;
+	margin-top: 50px;
+	@include breakpoint(extra-small, 'max') {
+		margin-top: 0;
+	}
+}
+
+h2 {
+	@include responsiveFont(18);	
+	color: #69615f;
+	margin-bottom: 20px;
+}
+
+#banner {
+	background: url('/arquivos/line-banner.png') right 0 no-repeat;
+	height: 773px;
+	@media (min-width: 1500px) { height: 792px; }
+	@include breakpoint(extra-small, 'max') {
+		height: auto;
+	}
+}
+
+.banner { 
+	background: url('/arquivos/bg-image.png') 0 0 no-repeat; 
+	display: inline-block;
+	height: 690px;
+	width: 70%;
+	@media (min-width: 1500px) { 
+		background: url('/arquivos/bg-image.png') 360px 18px no-repeat; 
+		height: 709px;
+	}
+	@include breakpoint(extra-small, 'min') {
+		.ban-mobile {
+			display: none;
+		}
+	}
+	@include breakpoint(extra-small, 'max') {
+		background: none;
+		height: auto;
+		width: 100%;
+		img {
+    		display: block;
+    		height: auto;
+			width: 100%;
+		}
+	}
+}
+
+@include breakpoint(extra-small, 'max') {
+	.ban-hide-mobile {
+		display: none!important;
+	}
+}
+
+.box-grid { 
+	position: absolute; 
+	@media (min-width: 1500px) { left: 360px; }
+}
+
+.box-one {
+	animation: fade 3s forwards;
+	height: 131px;
+	opacity: 0;
+	width: 377px;
+	@media (min-width: 1500px) { margin-left: 360px; }
+}
+
+.box-two {
+	animation: fade 3s forwards;
+	height: 230px;
+	opacity: 0;
+	width: 377px;
+	@media (min-width: 1500px) { margin-left: 360px; }
+}
+
+.box-three {
+	animation: fade 3s forwards;
+	height: 244px;
+	opacity: 0;
+	position: absolute;
+	width: 377px;
+}
+
+.box-four {
+	animation: fade 3s forwards;
+	height: 244px;
+	opacity: 0;
+	position: absolute;
+	width: 160px;
+}
+
+.box-five {
+	animation: fade 3s forwards;
+	height: 244px;
+	left: 377px;
+	opacity: 0;
+	position: relative;
+	top: 0;
+	width: 253px;
+}
+
+.box-six {
+	animation: fade 3s forwards;
+	height: 217px;
+	left: 627px;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	width: 257px;
+}
+
+.box-seven {
+   	animation: fade 3s forwards;
+   	bottom: 464px;
+	height: 464px;
+   	left: 627px;
+	opacity: 0;
+	position: relative;
+	width: 257px;
+	@media (min-width: 1500px) { left: 987px; }
+}
+
+.box-eight {
+	animation: fade 3s forwards;
+	bottom: 709px;
+	height: 230px;
+	left: 377px;
+	opacity: 0;
+	position: relative;
+	width: 254px;
+}
+
+@keyframes flipInX {
+	0% {
+		-ms-transform: perspective(800px) rotateX(90deg);
+		-webkit-transform: perspective(800px) rotateX(90deg);
+		opacity: 1;
+		transform: perspective(800px) rotateX(90deg);
+	}
+
+	50% {
+		-ms-transform: perspective(800px) rotateX(0deg);
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateX(0deg);
+	}
+
+	100% {
+		-ms-transform: perspective(800px) rotateX(0deg);
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateX(0deg);
+	}
+}
+
+.flipInX {
+	-ms-backface-visibility: visible !important;
+	-webkit-animation-name: flipInX;
+	-webkit-backface-visibility: visible !important;
+	animation-name: flipInX;
+	backface-visibility: visible !important;
+}
+
+@keyframes flipOutX {
+	0% {
+		-ms-transform: perspective(800px) rotateX(0deg);
+		-webkit-transform: perspective(800px) rotateX(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateX(0deg);
+	}
+
+	50% {
+		-ms-transform: perspective(800px) rotateX(90deg);
+		-webkit-transform: perspective(800px) rotateX(90deg);
+		opacity: 0;
+		transform: perspective(800px) rotateX(90deg);
+	}
+
+	100% {
+		-ms-transform: perspective(800px) rotateX(90deg);
+		-webkit-transform: perspective(800px) rotateX(90deg);
+		opacity: 0;
+		transform: perspective(800px) rotateX(90deg);
+	}
+}
+
+.flipOutX {
+	-ms-backface-visibility: visible !important;
+	-webkit-animation-name: flipOutX;
+	-webkit-backface-visibility: visible !important;
+	animation-name: flipOutX;
+	backface-visibility: visible !important;
+}
+
+@keyframes flipInY {
+	0% {
+		-ms-transform: perspective(800px) rotatey(90deg);
+		-webkit-transform: perspective(800px) rotateY(90deg);
+		opacity: 1;
+		transform: perspective(800px) rotateY(90deg);
+	}
+
+	50% {
+		-ms-transform: perspective(800px) rotateY(0deg);
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateY(0deg);
+	}
+
+	100% {
+		-ms-transform: perspective(800px) rotateY(0deg);
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateY(0deg);
+	}
+}
+
+.flipInY {
+	-ms-backface-visibility: visible !important;
+	-webkit-animation-name: flipInY;
+	-webkit-backface-visibility: visible !important;
+	animation-name: flipInY;
+	backface-visibility: visible !important;
+}
+
+@keyframes flipOutY {
+	0% {
+		-ms-transform: perspective(800px) rotateY(0deg);
+		-webkit-transform: perspective(800px) rotateY(0deg);
+		opacity: 1;
+		transform: perspective(800px) rotateY(00deg);
+	}
+
+	50% {
+		-ms-transform: perspective(800px) rotateY(90deg);
+		-webkit-transform: perspective(800px) rotateY(90deg);
+		opacity: 0;
+		transform: perspective(800px) rotateY(90deg);
+	}
+
+	100% {
+		-ms-transform: perspective(800px) rotateY(90deg);
+		-webkit-transform: perspective(800px) rotateY(90deg);
+		opacity: 0;
+		transform: perspective(800px) rotateY(90deg);
+	}
+}
+
+.flipOutY {
+	-ms-backface-visibility: visible !important;
+	-webkit-animation-name: flipOutY;
+	-webkit-backface-visibility: visible !important;
+	animation-name: flipOutY;
+	backface-visibility: visible !important;
+}
+
+.ban-promo {
+	display: inline-block;
+   	height: 100%;
+   	vertical-align: top;
+    @include breakpoint(extra-small, 'max') {
+    	display: none;
+    }
+}
+
+.btn-participe {
+	background-color: #eb008b;
+	border-radius: 30px;
+	color: #ffffff;
+	display: block;
+	font-size: 18px;	
+	font-weight: bold;
+	margin: 40px auto;
+	padding: 20px 0 20px 0;
+	text-align: center;
+	width: 160px;
+}
+
+.tit-banner {
+	background: $green;
+	color: #ffffff;
+	display: block;
+	height: 104px;
+	line-height: 22px;
+   	opacity: .75;
+   	padding: 20px 8px 20px 0;
+	text-align: right;
+	width: 377px;
+   	span { @include responsiveFont(22); }
+
+   @include breakpoint(extra-small, 'max') { display: none; }
+
+   @media (min-width: 1500px) { margin-left: 360px; }
+}
+
+#txt,
+#txt-2 {
+	background-color: #898481;
+	bottom: 25px;
+	float: right;
+	height: auto;
+	padding: 30px 0 50px 0;
+	position: relative;
+	text-align: center;
+	width: 65%;
+	
+	@include breakpoint(extra-small, 'max') {
+		@include responsiveFont(9);
+		border-bottom-left-radius: 0;
+		border-radius: none;
+		border-top-left-radius: 0;
+		height: auto;
+		padding: 20px 0 20px 0;
+		width: 100%;
+	}
+
+	h2,
+	span {
+		@include responsiveFont(35);
+		margin: 0;
+	}
+
+	h2 {
+		color: $green;
+		font-weight: bold;
+	}
+
+	span {
+		color: #ffffff;
+	}
+
+}
+
+#txt {
+	border-bottom-left-radius: 100px;
+	border-top-left-radius: 100px;
+}
+
+#txt-2 {
+	border-bottom-left-radius: none;
+	border-bottom-right-radius: 100px;
+	border-top-left-radius: none;
+	border-top-right-radius: 100px;
+	float: left;
+	padding: 30px 0 50px 160px;
+	@include breakpoint(extra-small, 'max') {
+		@include responsiveFont(8);
+	}
+	
+	h2,
+	span {
+		@include responsiveFont(35);
+		margin: 0;
+	}
+
+	h2 {
+		color: $green;
+		font-weight: bold;
+	}
+
+	span {
+		color: #ffffff;
+	}
+}
+
+#form {
+	height: 775px;
+	width: 100%;
+	@include breakpoint(extra-small, 'max') { height: auto; }
+	fieldset {
+		border: none;
+		margin: 0;
+	}
+
+	input {
+		background-color: #aed563!important;
+		border: none;
+		border-radius: 20px;
+		display: block;
+		height: 38px;
+		margin: 0;
+		padding-left: 20px;
+		width: 100%;
+	}
+	input.error {
+		border: 1px solid #ff0000!important;
+	}
+
+	label.error { color: #ff0000; }
+
+	.see-you,
+	.form {
+		background-color: $green;
+		height: 855px;
+		margin-top: -185px;
+		@include breakpoint(extra-small, 'max') {
+			height: auto;
+			margin-top: 0;
+			padding: 0 0 25px 0;
+		}
+
+	}
+	.see-you {
+		padding: 200px 0 0 35px;
+		text-align: center;
+		img {
+			height: auto;
+			max-width: 524px;
+			width: 100%;
+		}
+		@include breakpoint(extra-small, 'max') {
+			border-bottom: 1px solid #ffffff;
+			height: auto;
+			text-align: center;
+			img {
+				height: auto;
+				width: 100%;
+			}
+		}
+		.txt-promo {
+			@include responsiveFont(12);
+			color: #ffffff;
+		}
+	}
+	.form {
+		padding: 200px 0 0 0;
+		form {
+			border-left: 1px solid #ffffff;
+			padding-left: 15px;
+			padding-right: 100px;
+			@include breakpoint(extra-small, 'max') { padding: 0; }
+		}
+
+		.tit {
+			color: #ffffff;
+		}
+
+		.pedido {
+			display: inline-block;
+			width: 74%;
+			@include breakpoint(extra-small, 'max') {
+				width: 65%;
+			}
+			.txt-not-obrigatory {
+				@include responsiveFont(12);
+				color: #ffffff;
+			}
+		}
+
+		.btn {
+			background-color: #898481;
+			border: none;
+			&:hover { 
+				background-color: $orange; 
+				color: #ffffff; 
+			}
+		}
+		.btn-enviar {
+			display: inline-block;
+			vertical-align: text-bottom;
+			@include breakpoint(extra-small, 'max') {
+				button {	
+					padding: 11px 18px 11px 18px;
+				}
+			}
+		}
+		.msg-form {
+			color: #898481;
+			display: block;
+    		font-size: 15px;
+    		position: absolute;
+    		@include breakpoint(extra-small, 'max') {
+    			font-size: 14px;
+    			line-height: 14px;
+    			margin-left: 10px;
+    			margin-top: 10px;	
+		  	}
+		}
+		.msg-sucesso {
+			color: #ffffff;
+			font-weight: 500;
+			&:after {
+			    border: solid $orange;
+			    border-width: 0 2px 2px 0;
+			    content: '';
+			    display: inline-block;
+			    height: 17px;
+			    margin-left: 11px;
+			    transform: rotate(45deg);
+			    width: 9px;
+		  	}
+		}
+
+		.msg-erro {
+			color: $orange;
+			font-weight: 600;
+			&:after {
+				color: #ff0000;
+				content: 'x';
+				font-size: 22px;
+				font-weight: 700;
+				margin-left: 5px;
+			}
+		}
+		.loading {
+		    background-color: #898481!important;
+		    border-radius: 50px;
+		    color: #fff;
+			display: block;
+		    font-size: 16px;
+		    font-weight: 700;
+		    padding: .7em 2.5em;
+		    position: relative;
+		    text-align: center;
+
+			&:before {
+				@include spinner($green, 25px);
+				content: ' '!important;
+			}
+		}
+		.check-terms {
+			border: none;
+			cursor: initial; 
+			display: inline-block; 
+			height: 15px;
+			visibility: visible;
+			width: 18px;
+		}
+		.terms { 
+			color: #ffffff; 
+			display: inline-block;
+			margin-top: 10px;
+			vertical-align: top;
+			@include breakpoint(extra-small, 'max') {
+				margin-bottom: 15px;
+				margin-top: 20px;
+				input[type=checkbox]:after {
+					height: 18px;
+					width: 18px;
+				}
+				input[type=checkbox]:before {
+					height: 12px;
+					width: 12px;
+				}
+				input {
+					padding-left: 0;
+				}
+			}
+		}
+
+		#checkTerms-error {
+			position: absolute;
+		}
+	}
+	.line {
+		border: 1px solid #ffffff;
+		border-bottom-left-radius: 100px;
+		border-radius: none;
+		border-right: none;
+		border-top-left-radius: 100px;
+		float: right;
+		height: 80px;
+		width: 60%;
+		@include breakpoint(extra-small, 'max') { display: none; }
+	}
+}
+
+#regulamento {
+	background: url('/arquivos/line.png') center center no-repeat; 
+	height: 880px;
+	width: 100%;
+	@include breakpoint(extra-small, 'max') {
+		height: auto;
+		.container {
+			margin: 0;
+			max-width: 100%;
+			padding: 0;
+		}
+	}
+
+	.regulamento {
+		background-color: #ebebeb;
+		height: 490px;
+		text-align: center;
+		width: 100%;
+
+		@include breakpoint(extra-small, 'max') {
+			padding-top: 50px;
+		}
+	}
+	.regulamento-infos::-webkit-scrollbar {
+		background-color: transparent;
+	    padding-right: 20px;
+	    width: 6px;
+	}
+	 
+	.regulamento-infos::-webkit-scrollbar-thumb {
+	  	background-color: $green;
+	 	border-radius: 6px;
+	}
+	.txt-regulamento {
+		@include responsiveFont(18);
+		border: 1px solid $green;
+		border-radius: 40px;
+		color: $green;
+		display: block;
+		font-weight: bold;
+    	margin: 50px auto;
+		padding: 10px 40px 10px 40px;
+    	text-transform: uppercase;
+    	width: 220px;
+    	@include breakpoint(extra-small, 'max') {
+    		margin: 63px auto;
+    	}
+	}
+	.regulamento-infos {
+		@include responsiveFont(18);	
+		height: 292px;
+		overflow-y: scroll;
+		padding-left: 70px;
+		text-align: left;
+		width: 95%;
+		@include breakpoint(extra-small, 'max') {
+			padding-left: 30px;
+			padding-right: 30px;
+			width: 100%;
+		}
+		strong {
+			@include responsiveFont(18);
+			font-weight: bold;
+		}
+	}
+	.infos-regulamento {
+		@include breakpoint(extra-small, 'max') {
+			background: -webkit-linear-gradient(#333333, #eeeeee);
+	  		-webkit-background-clip: text;
+	  		-webkit-text-fill-color: transparent;
+		}
+	}
+	.btn-download,
+	.btn-ver-mais {
+		@include responsiveFont(18);	
+		background-color: #898481;
+		border-radius: 30px;
+		color: #ffffff;
+		display: inline-block;
+		font-weight: bold;
+		margin-top: 50px;
+		padding: 15px 0 15px 0;
+		text-align: center;
+		width: 245px;
+		@include breakpoint(extra-small, 'max') {
+			margin-top: 20px;
+			width: 45%;
+		}
+		a { color: #ffffff; }
+	}
+	.btn-ver-mais {
+		background: transparent;
+		@include breakpoint(extra-small, 'max') {
+			background: transparent;
+			border: 1px solid #898481;
+			color: #898481;
+			float: left;
+			margin-left: 10px;
+		}
+	}
+	.btn-download {
+		float: right;
+		margin-right: 10px;
+	}
+	.buttons-form {
+		@include breakpoint(extra-small, 'max') {
+	    	background-color: #ebebeb;
+		    height: 100px;
+		    width: 100%;
+		}
+	}
+}

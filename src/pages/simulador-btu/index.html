@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
+</head>
+<body data-controller="listagem" class="listagem categoria btu page-calculadora-btu">
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Calculadora BTU -->
+	<div class="page-calculadora-btu__banner">
+		<div class="page-calculadora-btu__mask"></div>
+		<iframe id="calculadora-btu" src="/simulador-btu/iframe-teste.html" frameborder="0" scrolling="0" height="800" width="100%" onload="access()"></iframe>
+	</div>
+	<!-- /Calculadora BTU -->
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-footer.html -->
+	<!-- @endif -->
+
+	<script>
+		function access() {
+			var calculadoraBtu = document.getElementById('calculadora-btu');
+			var innerDoc = calculadoraBtu.contentDocument || calculadoraBtu.contentWindow.document;
+
+			var resultado = $($(innerDoc).find('#resultado')).text();
+			console.log('************************************************************');
+			console.log('Resultado: ', resultado);
+			console.log('************************************************************');
+		}
+	</script>
+</body>
+</html>

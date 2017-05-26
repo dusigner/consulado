@@ -1,0 +1,45 @@
+@import '_vars.scss';
+
+html,
+body {
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+body.listagem.btu.page-calculadora-btu {
+	padding: 0!important;
+
+	.page-calculadora-btu__container {
+		@import '_base.scss';
+		@import '_animation.scss';
+
+		// Components
+		@import 'components/_generics.scss';
+		@import 'components/_palco.scss';
+		@import 'components/_carousel.scss';
+		@import 'components/_resultado.scss';
+		@import '_layout.scss';
+
+
+		#sm-tracking,
+		#sm-bounce,
+		#sm-onsite,
+		#ajaxBusy,
+		iframe iframe {
+			display: none !important;
+			visibility: hidden !important;
+		}
+	}
+}
+
+.page-calculadora-btu__container {
+	margin: 0 auto;
+	max-width: 1300px;
+	position: relative;
+
+	&.is--active {
+		@include breakpoint(medium, 'min') { height: 460px; }
+		@include breakpoint(medium, 'max') { height: 280px; }
+	}
+}

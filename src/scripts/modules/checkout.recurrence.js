@@ -2,6 +2,7 @@
 'use strict';
 
 require('../../templates/checkout.recurrenceSteps.html');
+require('../../templates/checkout.recurrenceModal.html');
 
 Nitro.module('checkout.recurrence', function() {
 
@@ -10,6 +11,24 @@ Nitro.module('checkout.recurrence', function() {
 	//WHY?!
 	this.setup = function() {
 		self.render();
+		self.autoOpen();
+	};
+
+	//Skus e respectivos periodos de recorrência
+	this.periods = {
+		W10515645  : '6 meses',
+		326070989  : '6 meses',
+		326070749  : '2 meses',
+		326070783  : '2 meses',
+		326027570  : '2 meses',
+		W10738288  : '2 meses',
+		W10324578  : '6 meses',
+		W10322320  : '6 meses',
+		W10637798  : '6 meses',
+		CIX01AXONA : '9 meses',
+		CIX06AXONA : '6 meses',
+		C3L02AB    : '9 meses',
+		C3L02ABANA : '9 meses'
 	};
 
 	/*
@@ -49,7 +68,45 @@ Nitro.module('checkout.recurrence', function() {
 	};
 
 	/*
-	 * Renderiza na tela o componente completo (3 passos) de recorrência
+	 * Cria modal com CTA de adicionar recorrência
+	 * @param templateData {Object} dados para renderização
+	 */
+	this.recurrenceModal = function(templateData) {
+		dust.render('checkout.recurrenceModal', templateData, function(err, out) {
+			if (err) {
+				throw new Error('RecurrenceModal Dust error: ' + err);
+			}
+
+			$('body').append(out);
+
+			$('#modal-recurrence').modal().on('hidden.bs.modal', function() {
+				$('#modal-recurrence').remove();
+			});
+
+			//CTA de adicionar sku
+			$('.js-recurrence-add').click(function() {
+				var $self = $(this);
+
+				self.actionsAttachment($self, function(item, content) {
+					vtexjs.checkout.addItemAttachment(item, 'Recorrência', content)
+									.then(function() {
+										$('#modal-recurrence').modal('hide');
+									});
+				});
+			});
+
+			//ACCORDION MOBILE
+			if($(window).width() <= 768) {
+				$('.js-recurrence-accordion').click(function() {
+					$(this).toggleClass('modal-recurrence__advantage-title--active');
+					$(this).siblings('.modal-recurrence__advantage-body').slideToggle();
+				});
+			}
+		});
+	};
+
+	/*
+	 * Renderiza na tela o componente de botões (2 passos) de recorrência -> botões abrir modal e cancelar
 	 */
 	this.render = function() {
 		$.each(self.orderForm.items, function(i, v) {
@@ -79,8 +136,12 @@ Nitro.module('checkout.recurrence', function() {
 					templateData.selectedRecurrence = selectedRecurrence[0].content.periodo;
 				}
 
+				if( attachmentRecurrence[0].schema.periodo.domain.indexOf(self.periods[v.refId]) < 0 ) {
+					return false;
+				}
+
 				templateData.index = i;
-				templateData.period = attachmentRecurrence[0].schema.periodo.domain;
+				templateData.period = self.periods[v.refId];
 
 				if($attachmentContainer.length === 0) {
 					$self.find('.product-name').append('<div class="add-item-attachment-container"></div>');
@@ -89,7 +150,7 @@ Nitro.module('checkout.recurrence', function() {
 
 				dust.render('checkout.recurrenceSteps', templateData, function(err, out) {
 					if (err) {
-						throw new Error('Recurrence Dust error: ' + err);
+						throw new Error('RecurrenceSteps Dust error: ' + err);
 					}
 
 					$attachmentContainer.html(out);
@@ -98,7 +159,7 @@ Nitro.module('checkout.recurrence', function() {
 						self.changeStep('three');
 					}
 
-					self.events();
+					self.events($self, templateData);
 
 					//render mobile tip
 					if($(window).width() <= 768) {
@@ -123,8 +184,6 @@ Nitro.module('checkout.recurrence', function() {
 							$('.recurrence__tip--mobile').stop().stop().fadeOut();
 						});
 					}
-
-
 				});
 			}
 		});
@@ -132,45 +191,27 @@ Nitro.module('checkout.recurrence', function() {
 
 	/*
 	 * Eventos de cliques/acções dos botões do módulo recorrência
+	 * @param elem {Object} seletor jquery da linha do produto em questão
 	 */
-	this.events = function() {
-		$('.js-recurrence-nav').click(self.changeStep);
+	this.events = function(elem, templateData) {
+		var $self = elem;
 
-		//dropdown/select de periodo
-		$('.recurrence__select').click(function() {
-			$(this).toggleClass('recurrence__select--drop');
-			$(this).find('.recurrence__select--items').toggle();
-		});
+		$self.find('.js-recurrence-nav').click(self.changeStep);
 
-		//escolha do periodo
-		$('.recurrence__select--item a').click(function(e) {
-			e.preventDefault();
-			e.stopPropagation();
-
-			var $self = $(this),
-				periodText = $self.text();
-
-			$self.parents('.recurrence').find('.recurrence__select--active span').text(periodText);
-
-			$self.parents('.recurrence__select').click();
-		});
-
-		$('.js-recurrence-add').click(function() {
-			self.actionsAttachment($(this), function(item, content) {
-				vtexjs.checkout.addItemAttachment(item, 'Recorrência', content);
-			});
-		});
-
-		$('.js-recurrence-remove').click(function() {
+		$self.find('.js-recurrence-remove').click(function() {
 			self.actionsAttachment($(this), function(item, content) {
 				vtexjs.checkout.removeItemAttachment(item, 'Recorrência', content);
 			});
+		});
+
+		$self.find('.js-modal-open').click(function() {
+			self.recurrenceModal(templateData);
 		});
 	};
 
 	/*
 	 * Troca de passo na interface de recorrência, verifica se foi um clique em um botão com parâmetro (ex.: [data-go="one"]), ou se é para um passo fixo.
-	 * @param {String['one', 'two', 'three']} or {Object}
+	 * @param {String: 'one', 'two', 'three'} or {Object}
 	 */
 	this.changeStep = function(step) {
 		var $self = $(this),
@@ -190,7 +231,7 @@ Nitro.module('checkout.recurrence', function() {
 	this.actionsAttachment = function(elem, callback) {
 		var $self = elem,
 			item = $self.data('index'),
-			currentPeriod = $self.parents('.recurrence').find(' .recurrence__select--active span').text(),
+			currentPeriod = $self.data('period'),
 			content = { periodo: currentPeriod };
 
 		$self.siblings('.loading-text').removeClass('hide');
@@ -198,10 +239,30 @@ Nitro.module('checkout.recurrence', function() {
 		return callback(item, content);
 	};
 
+
+	/*
+	 * Trigga click no último CTA de recorrente para abrir automaticamente o modal ao acessar o checkout
+	 */
+	this.autoOpen = function() {
+		setTimeout(function() {
+			//Inicia o modal com o ultimo produto adicionado,
+			//caso já tenha sido chamado adiciona a classe been-called
+			var $cartTemplate = $('.cart-template');
+
+			//if($(window).width() > 1000){
+			if (!$cartTemplate.is('.been-called') && $('.js-modal-open').length > 0) {
+				$cartTemplate.find('.js-modal-open').last().trigger('click');
+				$cartTemplate.addClass('been-called');
+			}
+			//}
+		}, 1500);
+	};
+
 	this.hidePayments = function() {
 		$.each(self.orderForm.items, function(i, v) {
 			if(self.hasActiveRecurrence(v.attachments)){
 				$('.payment-group-item:not(#payment-group-creditCardPaymentGroup)').addClass('hide');
+				$('#payment-group-creditCardPaymentGroup').click();
 				return false;
 			}
 		});

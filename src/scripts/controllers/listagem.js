@@ -7,6 +7,7 @@ require('vendors/slick');
 require('modules/list-more');
 require('modules/listagem/filters');
 require('modules/listagem/order-by');
+require('modules/listagem/calculadorabtu');
 require('modules/compare');
 require('modules/slider-banner');
 require('modules/resultado-busca');
@@ -15,11 +16,10 @@ require('custom/modal.overlayAbandono');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
 	var self = this,
 		$searchSingle = $('.search-single-navigator'),
 		$listOrders = $('ul.order-by');
-
 
 	var $filterOptions = $('#O:first option'),
 		// $filterSelected = $filterOptions.filter(':selected'),
