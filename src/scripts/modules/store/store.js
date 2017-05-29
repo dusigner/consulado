@@ -36,8 +36,6 @@ define('store', function() {
 
 		//return this.checkAccess();
 
-		console.log('acess', this.checkAccess());
-
 		if(this.isCorp) {
 			return !this.checkAccess() && redirect.home.call(this);
 		}

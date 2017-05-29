@@ -148,7 +148,7 @@
 								<label>Inscrição estadual</label>
 								<input type="text" name="stateRegistration" class="form-control stateRegistration" tabindex="3" data-validation="required stateRegistration" data-msg-required="Digite uma Inscrição estadual" data-msg-cpf="Descrição estadual inválida" />
 								<div class="checkbox">
-									<input type="checkbox" name="isento" id="isento" tabindex="4" /><label for="isento"> Isento</label>
+									<input type="checkbox" name="isFreeStateRegistration" id="isFreeStateRegistration" tabindex="4" /><label for="isFreeStateRegistration"> Isento</label>
 								</div>
 							</div>
 							<div class="group">
@@ -259,6 +259,8 @@
 								</div>
 							</div>
 						</div>
+						<input type="hidden" name="country" value="BRA" />
+						<input type="hidden" name="addressType" value="residential" />
 					</fieldset>
 				</div>
 			</div>

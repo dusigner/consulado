@@ -3,7 +3,7 @@
 
 var CRM = require('modules/store/crm');
 var validation = require('modules/store/validation');
-var getAddress = require('modules/getAddress');
+var getAddress = require('modules/store/getAddress');
 var redirect = require('modules/store/redirect');
 
 require('vendors/slick');
@@ -49,7 +49,7 @@ Nitro.module('register.corporate', function() {
 			$modalRegister.find('.steps').slick('slickGoTo', '0');
 		});
 
-		$modalRegister.find('.checkbox #isento').change(function() {
+		$modalRegister.find('.checkbox #isFreeStateRegistration').change(function() {
 			if(this.checked) {
 				$form.find('.stateRegistration').removeAttr('data-validation').attr('disabled', 'disabled');
 			} else {
@@ -97,11 +97,11 @@ Nitro.module('register.corporate', function() {
 
 	this.error = function(message, $field) {
 
-		$field = message !== false ? $field : this.btnSubmit;
+		$field = message !== false ? $field : $form.btnSubmit;
 
 		//console.error( message );
 
-		this.btnSubmit.removeClass('loading');
+		$form.btnSubmit.removeClass('loading');
 
 		$field.data({
 			title: message || this.data('msg-error'),
@@ -164,6 +164,11 @@ Nitro.module('register.corporate', function() {
 			data.userId = result.Id.replace('CL-', '');
 		}
 
+		data.street = data.addressName;
+		data.receiverName = data.firstName + ' ' + data.lastName;
+		data.country = 'BRA';
+		data.addressType = 'residential';
+
 		return data;
 	};
 
@@ -186,6 +191,7 @@ Nitro.module('register.corporate', function() {
 
 		$.extend(data, {
 			corporateDocument: self.getDocument(data.corporateDocument),
+			isCorporate: true
 		});
 
 		/*console.log('register', data);*/
@@ -200,7 +206,7 @@ Nitro.module('register.corporate', function() {
 
 	this.resetForm = function() {
 
-		this.btnSubmit.removeClass('loading');
+		$form.btnSubmit.removeClass('loading');
 
 		$modalRegister.vtexModal('close');
 
@@ -212,13 +218,13 @@ Nitro.module('register.corporate', function() {
 		//this = form;
 
 
-		if (!this.btnSubmit.is('.loading')) {
+		if (!$form.btnSubmit.is('.loading')) {
 
 			if (primaryInfoComplete) { //first step done
-				validation.validate(this.fields, this.btnSubmit)
+				validation.validate(this.fields, $form.btnSubmit)
 					.done(self.register);
 			} else {
-				validation.validate(this.primaryFields, this.btnSubmit)
+				validation.validate(this.primaryFields, $form.btnSubmit)
 					.done(self.validCompany);
 			}
 

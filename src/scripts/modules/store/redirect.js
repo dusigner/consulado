@@ -45,24 +45,6 @@ var redirect = module.exports.redirect = function (data) {
 		$('.vtexIdUI-providers-list .vtexIdUI-others-send-email').click();
 	});
 
-
-	/*if (store.isCorp) { //window.vtexid.getAuthData().email
-		vtexid.start({
-			email: data.email,
-			returnUrl: uri.toString()
-		});
-
-		//trigger click de email e senha login
-		$(window).on('rendered.vtexid', function () {
-			$('.vtexIdUI-providers-list .vtexIdUI-others-send-email').click();
-		});
-
-	} else {
-
-		window.location.href = uri.toString();
-
-	}*/
-
 };
 
 module.exports.login = function (data) {
@@ -70,8 +52,6 @@ module.exports.login = function (data) {
 	if (!window.store) {
 		window.store = this;
 	}
-
-
 
 	$.extend(data, {
 		status: 'Login'
@@ -100,42 +80,11 @@ module.exports.register = function (data) {
 
 };
 
-/*module.exports.callcenter = function (partner) {
-
-	store.setUserData({
-		partner: partner.codigoParceria,
-		condition: partner.condicaoParceria
-	});
-
-	window.location.href = store.uri
-		.replaceQueryParam('utmi_pc', partner.codigoParceria)
-		.replaceQueryParam('utmi_cp', partner.condicaoParceria)
-		.toString();
-};
-*/
-
-/*module.exports.pap = function (vendor, region, representante) {
-
-	$.cookie('PAP', store.uri.uriParts.relative, {
-		path: '/'
-	});
-
-	window.location.href = new Uri('/parceiro')
-		.addQueryParam('utm_source', vendor)
-		.addQueryParam('utmi_pc', region)
-		.addQueryParam('utm_campaign', representante)
-		.addQueryParam('sc', 6)
-		.toString();
-
-};*/
-
 module.exports.home = function () {
 
 	if (!window.store) {
 		window.store = this;
 	}
-
-	console.log('uri',store, store.uri);
 
 	window.location.href = store.uri
 		.replaceQueryParam('ReturnUrl', store.uri.path())

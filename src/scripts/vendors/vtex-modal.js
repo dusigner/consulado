@@ -94,7 +94,9 @@
 	};
 
 	Modal.prototype.close = function(e) {
-		e.stopPropagation();
+		if(e) {
+			e.stopPropagation();
+		}
 
 		var triggerEventClose = function(element) {
 			setTimeout(function() {
@@ -115,7 +117,9 @@
 	};
 
 	Modal.prototype.destroy = function(e) {
-		e.stopPropagation();
+		if(e) {
+			e.stopPropagation();
+		}
 
 		if (this.settings.static && $(e.target).is('.close')) {
 			this.modal.fadeOut(500, function() {
