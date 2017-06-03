@@ -35,10 +35,36 @@ Nitro.module('calculadorabtu', function () {
 		}
 	});
 
+
+	console.log('P4V0N3 - Chatch me if you can!');
+
+
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
 		var tpl = (window.jsnomeLoja === 'consulqa') ? '#/filter&fq=specificationFilter_5:Bivolt' : '#/filter&fq=specificationFilter_814:{btu} BTUs/h' ;
+
+		var bulletFilter = $('.noUi-origin.noUi-background, .noUi-origin.noUi-connect');
+
+		// verificar qual produto recomendar
+		if ( res.btu <= 7.500 ) {
+			bulletFilter.css('left', '25%');
+		} else if ( res.btu <= 10.000 ) {
+			bulletFilter.css('left', '50%');
+		} else if ( res.btu <= 12.000 ) {
+			bulletFilter.css('left', '62%');
+		} else if ( res.btu <= 18.000 ) {
+			bulletFilter.css('left', '75%');
+		} else if ( res.btu <= 21.000 ) {
+			bulletFilter.css('left', '87%');
+		} else if ( res.btu <= 22.000 ) {
+			bulletFilter.css('left', '100%');
+		}
+
+		$('.slider__value--to').text(res.btu.substring(0, 2) + ' BTU\/h');
+
+		// console.log('res ', txtValue);
+		// console.log('resbtu ', res.btu);
 
 		//TIRGGA RESULTADO PARA MODULO FILTER.JS
 		$(window).trigger('calculadora.filter', [tpl.render(res)]);
