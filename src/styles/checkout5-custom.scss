@@ -355,3 +355,20 @@ body {
 
 //Para Banner Porto Seguro
 .order-title { display: block; }
+
+//DESTAQUE NA VOLTAGEM
+.highlight-voltage {
+	background-color: $green;
+	border-radius: 25px;
+	color: #fff;
+	display: inline-block;
+	padding: 0 5px;
+}
+
+//AJUSTE DISPLAY NOME
+.mini-cart .item .fn {
+	display: inline-block;
+	margin-bottom: 10px;
+	white-space: normal;
+	width: 74%;
+}

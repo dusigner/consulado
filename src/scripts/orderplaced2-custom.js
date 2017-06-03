@@ -21,6 +21,8 @@ $(window).on('load', function() {
 	// require('modules/checkout.phones');
 	require('modules/checkout.termoColeta');
 
+	var highlightVoltage = require('modules/checkout.highlight-voltage');
+
 	Nitro.setup(['checkout.termoColeta'], function(termoColeta) {
 
 		var self = this,
@@ -57,6 +59,7 @@ $(window).on('load', function() {
 
 				// phones.setup();
 				termoColeta.setup();
+				highlightVoltage($('.product-name > a'));
 			}
 		};
 

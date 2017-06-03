@@ -22,6 +22,7 @@ $(window).on('load', function() {
 	require('modules/checkout.recurrence');
 	require('modules/checkout.modify');
 
+	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
 	Nitro.setup(['checkout.gae', 'checkout.recurrence'], function(gae, recurrence) {
 		var self = this,
@@ -64,6 +65,7 @@ $(window).on('load', function() {
 				$('.modal-masked-info-template .masked-info-button').text('Voltar');
 				gae.info();
 				recurrence.hidePayments();
+				highlightVoltage($('.fn.product-name'));
 			}
 
 			if (self.isCart()) {
@@ -87,6 +89,7 @@ $(window).on('load', function() {
 			recurrence.setup();
 
 			this.fakeButton();
+			highlightVoltage($('.product-name > a'));
 		};
 
 		//state
