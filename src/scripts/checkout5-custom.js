@@ -8,7 +8,7 @@ $(window).on('load', function() {
 
 	if (VERSION) {
 
-		console.log('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
+		console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
 
 		window._trackJs = window._trackJs || {};
 
@@ -152,13 +152,41 @@ $(window).on('load', function() {
 			recurrence.hidePayments();
 		};
 
+		$('body').addClass('teste-ab__login-email'); //REMOVER QUANDO SUBIR PRA PROD
+
 		this.clickFakeButton = function(e) {
 			e.preventDefault();
 
 			if (gae.hasAnyActiveWarranty()) {
 				$('#modal-services').modal('show');
 			} else {
-				window.location.href = '#/orderform';
+				if ($('body').hasClass('teste-ab__login-email')) {
+					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'
+						window.location.href = '#/orderform';
+					} else { //se nao esta logado, abre modal pra colocar o email
+						console.log('ue');
+						var formLogin = $('.orderform-template .pre-email .client-email').html();
+						$('#modal-login .modal-body .login-email').html(formLogin);
+						$('#modal-login #client-pre-email').attr('placeholder','E-mail');
+						$('#modal-login #btn-client-pre-email').text('Entrar');
+						$('#modal-login').modal('show');
+
+						$('#modal-login #btn-client-pre-email').click(function(){
+							$('#modal-login .close').trigger('click');
+							$('.orderform-template #client-pre-email').val($('#modal-login #client-pre-email').val()).change();
+
+							setTimeout(function(){
+								$('.orderform-template #btn-client-pre-email').trigger('click');
+							},1000);
+						});
+
+						$('#modal-login .voltar').click(function(){
+							$('#modal-login .close').trigger('click');
+						});
+					}
+				} else {
+					window.location.href = '#/orderform';
+				}
 			}
 
 			return false;

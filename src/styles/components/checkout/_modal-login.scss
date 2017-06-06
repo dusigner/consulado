@@ -1,0 +1,130 @@
+#modal-login {
+	border-radius: 0;
+	left: 50%;
+	margin-left: -330px;
+	width: 600px;
+
+	@include breakpoint(small, 'max') {
+		left: 50%;
+		margin: 0;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 90%;
+	}
+
+	.close {
+		background: transparent;
+		border: none;
+
+		.icon {
+			@include responsiveFont(24, 16, true);
+			color: $txt-gray;
+		}
+	}
+
+	.modal-head {
+		background: $gray-l;
+		padding: 30px;
+
+		.destaque {
+			@include responsiveFont(16, 16, true);
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+	}
+
+	.modal-body {
+		max-height: 520px;
+		padding: 30px;
+		padding-bottom: 15px;
+
+		#client-pre-email {
+			@include responsiveFont(14, 16, true);
+			border-radius: 50px;
+			color: $txt-gray;
+			outline: none;
+			padding: 20px 15px;
+			vertical-align: top;
+			width: 380px;
+
+			@include breakpoint(small, 'max') { width: 100%; }
+		}
+
+		#btn-client-pre-email {
+			@extend %single-transition;
+			@include responsiveFont(14, 16, true);
+			background-color: $green;
+			background-image: none;
+			border: 3px solid $green;
+			border-radius: 50px;
+			color: #ffffff;
+			font-weight: bold;
+			margin-left: 20px;
+			outline: none;
+			padding: 10px 15px;
+			text-align: center;
+			text-shadow: none;
+			text-transform: uppercase;
+			width: 135px;
+
+			&:hover {
+				background: transparent;
+				color: $green;
+			}
+
+			@include breakpoint(small, 'max') {
+				margin-left: 0;
+				margin-top: 10px;
+				width: 100%;
+			}
+		}
+
+		.voltar {
+			@include responsiveFont(14, 16, true);
+			color: $green;
+			cursor: pointer;
+			display: block;
+			margin-top: 15px;
+			padding-left: 15px;
+			position: relative;
+
+			&:before {
+				@include contentBefore();
+				@include icon-get('arrow-left');
+				@include responsiveFont(14, 16, true);
+				left: 0;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	.modal-footer {
+		border-top: none;
+		padding: 30px;
+
+		.aviso {
+			@include responsiveFont(12, 16, true);
+			background: $gray-l;
+			color: $txt-gray-l;
+			text-align: left;
+
+			strong {
+				display: block;
+				margin-bottom: 5px;
+				padding-left: 20px;
+				position: relative;
+
+				&:before {
+					@include contentBefore();
+					@include icon-get('lock');
+					@include responsiveFont(14, 16, true);
+					left: 0;
+					position: absolute;
+					top: 0;
+				}
+			}
+		}
+	}
+}

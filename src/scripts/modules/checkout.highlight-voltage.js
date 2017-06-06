@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function ($selector) {
 	$selector.not('.highlight-voltage--active').each(function () {
 		var $self = $(this),
