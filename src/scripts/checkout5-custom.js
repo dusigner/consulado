@@ -20,12 +20,13 @@ $(window).on('load', function() {
 
 	require('expose?store!modules/store/store');
 
-	require('modules/checkout.gae');
-	require('modules/checkout.recurrence');
-	require('modules/checkout.modify');
+	require('modules/checkout/checkout.gae');
+	require('modules/checkout/checkout.recurrence');
+	require('modules/checkout/checkout.modify');
+	require('modules/checkout/checkout.pj');
 
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence'], function(gae, recurrence) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.pj'], function(gae, recurrence, pj) {
 		var self = this,
 			$body = $('body');
 
@@ -52,6 +53,10 @@ $(window).on('load', function() {
 			return $body.hasClass('body-order-form');
 		};
 
+		this.isShipping = function() {
+			return $('.shipping-data').hasClass('active');
+		};
+
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
@@ -70,6 +75,10 @@ $(window).on('load', function() {
 
 			if (self.isCart()) {
 				self.cart();
+			}
+
+			if (self.isShipping()) {
+				pj.hideChangeAddress();
 			}
 			// self.rioOlimpiadas();
 		};
@@ -99,8 +108,12 @@ $(window).on('load', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
+			pj.hideChangeAddress();
+
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
+				console.log('mudou');
+				
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
@@ -126,6 +139,7 @@ $(window).on('load', function() {
 						$('#ship-street').focus();
 					}
 				}
+
 			}));
 		};
 
@@ -197,6 +211,7 @@ $(window).on('load', function() {
 	});
 
 });
+
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {
 	console.log(a, b, c);

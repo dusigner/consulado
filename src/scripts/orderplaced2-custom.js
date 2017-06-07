@@ -19,7 +19,7 @@ $(window).on('load', function() {
 	require('vendors/nitro');
 
 	// require('modules/checkout.phones');
-	require('modules/checkout.termoColeta');
+	require('modules/checkout/checkout.termoColeta');
 
 	Nitro.setup(['checkout.termoColeta'], function(termoColeta) {
 
