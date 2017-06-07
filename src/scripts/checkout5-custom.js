@@ -152,8 +152,6 @@ $(window).on('load', function() {
 			recurrence.hidePayments();
 		};
 
-		$('body').addClass('teste-ab__login-email'); //REMOVER QUANDO SUBIR PRA PROD
-
 		this.clickFakeButton = function(e) {
 			e.preventDefault();
 
