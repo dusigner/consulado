@@ -2,35 +2,15 @@
 
 'use strict';
 
-// require('../../templates/modal-warranty-desktop.html');
-// require('../../templates/modal-warranty-mobile.html');
-// require('../../templates/modal-warranty-desktop-teste-ab.html');
-
-// require('../../templates/modal-warranty-desktop-teste-ab-18.html');
-// require('../../templates/modal-warranty-mobile-teste-ab-18.html');
 require('../../templates/modal-warranty-desktop-teste-ab-novo.html');
 require('../../templates/modal-warranty-mobile-teste-ab-novo.html');
 
 Nitro.module('checkout.gae', function() {
 
 	var self = this,
-		$body = $('body'),
+		// $body = $('body'),
 		// template = $body.hasClass('teste-ab-gae') ? 'modal-warranty-desktop-teste-ab' : 'modal-warranty-desktop',
 		$modalWarranty = $('#modal-warranty');
-
-	// Teste AB
-	var urlTesteAb = window.location.search;
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
-
-	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-		$body.addClass('teste-ab__modal-show--a');
-	}
-	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-		$body.addClass('teste-ab__modal-show--b');
-	}
-
-
 
 	this.setup = function() {
 		this.link();
