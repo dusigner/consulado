@@ -113,7 +113,48 @@ gulp.task('html', function() {
     	.pipe(gulp.dest('build/' + $.util.env.page));
 });
 
-gulp.task('scripts', ['lint'], function () {
+gulp.task('scriptsCheckout',  function () {
+
+	var plugins = [];
+
+	if( $.util.env.production ) {
+		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
+	}
+
+	return gulp.src(['src/scripts/checkout5-custom.js', 'src/scripts/orderplaced2-custom.js'])
+		.pipe($.plumber())
+		.pipe(named())
+		.pipe(webpack({
+			output: {
+				filename: '[name].js'
+			},
+			externals: {
+				'jquery': 'jQuery',
+				'dustjs-linkedin': 'dust'
+			},
+			resolve: {
+				root: path.resolve('./src/scripts')
+			},
+			module: {
+				loaders: [
+					{
+						test: /\.html$/,
+						loader: 'dust-loader'
+					}
+				]
+			},
+			plugins: plugins.concat([
+				new webpack.webpack.DefinePlugin({
+					VERSION: JSON.stringify( pkg.version )
+				}),
+				new webpack.webpack.BannerPlugin('Build Version: ' + pkg.version)
+			]),
+			devtool: $.util.env.production ? '': '#source-map'
+		}))
+		.pipe(gulp.dest(paths.destCheckout));
+});
+
+gulp.task('scripts', ['lint', 'scriptsCheckout'], function () {
 
 	var plugins = [];
 
@@ -128,7 +169,9 @@ gulp.task('scripts', ['lint'], function () {
 		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
 	}
 
-	return gulp.src(getPath('webpack'))
+	return gulp.src(getPath('webpack')
+		.concat('!src/scripts/checkout5-custom.js')
+		.concat('!src/scripts/orderplaced2-custom.js'))
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
@@ -162,9 +205,12 @@ gulp.task('scripts', ['lint'], function () {
 			]),
 			devtool: $.util.env.production ? '': '#source-map'
 		}))
-		.pipe(gulp.dest(paths.dest))
-		.pipe(gulp.dest(paths.destCheckout));
+		.pipe(gulp.dest(paths.dest));
 });
+
+
+
+
 
 gulp.task('styles', ['sassLint'], function () {
 	return gulp.src(getPath('styles'))

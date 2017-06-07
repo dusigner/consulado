@@ -36,9 +36,6 @@ Nitro.module('calculadorabtu', function () {
 	});
 
 
-	console.log('P4V0N3 - Chatch me if you can!');
-
-
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS

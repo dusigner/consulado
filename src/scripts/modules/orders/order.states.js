@@ -35,16 +35,16 @@ var statusGroup = {
 	},
 
 	'A caminho da entrega': {
-		'orderLabel': 'A caminho da entrega',
-		'trackingLabels': ['Pedido realizado', 'Pagamento aprovado', 'Pedido enviado', 'A caminho da entrega'], //Entrega do produto
+		'orderLabel': 'Processando seu pedido',
+		'trackingLabels': ['Pedido realizado', 'Pagamento aprovado', 'Pedido enviado', 'Processando seu pedido'], //Entrega do produto
 		'message': '', //Entrega realizada
 		'group': 'entregaDoPedido',
 		'class': ['active', 'active', 'active', 'current']
 	},
 
 	'Enviado': {
-		'orderLabel': 'A caminho da entrega',
-		'trackingLabels': ['Pedido realizado', 'Pagamento aprovado', 'Pedido enviado', 'A caminho da entrega'], //Entrega do produto
+		'orderLabel': 'Processando seu pedido',
+		'trackingLabels': ['Pedido realizado', 'Pagamento aprovado', 'Pedido enviado', 'Processando seu pedido'], //Entrega do produto
 		'message': '', //Entrega realizada
 		'group': 'entregaDoPedido',
 		'class': ['active', 'active', 'active', 'current']

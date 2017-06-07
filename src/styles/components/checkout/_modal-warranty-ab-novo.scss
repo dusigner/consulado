@@ -172,11 +172,16 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				// Bottom
 				.bottom-garantia {
 					background-color: #e4e4e4;
+					line-height: 100%;
 					margin: 0 -30px;
-					padding: 16px 30px;
+					padding: 12px 20px 50px 20px;
 					text-align: center;
 
-					span { font-size: 13px; }
+					span {
+						display: inline-block;
+						font-size: 13px;
+						padding: 5px 0 0 0;
+					}
 
 					strong {
 						display: block;
@@ -188,6 +193,14 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			.first-box-garantia {
 				p.title-garantia { font-weight: 200; }
+			}
+
+			// Warning Best Option Selected
+			&:last-child {
+				.modal-warning-best-option.modal-warning-best-option--final {
+					height: 115px;
+					width: 115px;
+				}
 			}
 		}
 
@@ -228,6 +241,13 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		div.garantia-disclaimer {
 			background-color: #e7e7e7;
 
+			a {
+				color: darken(#736c6b, 7%);
+				text-shadow: 0 0 1px #999;
+
+				&:hover { text-decoration: underline; }
+			}
+
 			p { padding: 10px 45px; }
 		}
 
@@ -265,8 +285,8 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			box-shadow: 0 1px 10px rgba(0, 0, 0, .25);
 			color: #736c6b;
 			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-			font-size: 14px;
-			height: 120px;
+			font-size: 13px;
+			height: 140px;
 			left: 0;
 			letter-spacing: -1px;
 			line-height: 120%;
@@ -279,7 +299,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				opacity .2s ease,
 				transform .2s linear
 			;
-			width: 120px;
+			width: 140px;
 			z-index: 10;
 
 			.modal-warning-best-option__container { padding: 17px 0; }
@@ -332,6 +352,10 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			&:first-child {
 				@include breakpoint(small, 'max') { width: 190px; }
 			}
+
+			// Esconder a palavra "mais" quando for
+			// na primeira opção de GAE
+			&:nth-child(5) .modal-warning-best-option__container span { display: none; }
 
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {

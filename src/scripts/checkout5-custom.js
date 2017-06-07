@@ -25,6 +25,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.modify');
 	require('modules/checkout/checkout.pj');
 
+	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
 	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.pj'], function(gae, recurrence, pj) {
 		var self = this,
@@ -71,6 +72,7 @@ $(window).on('load', function() {
 				$('.modal-masked-info-template .masked-info-button').text('Voltar');
 				gae.info();
 				recurrence.hidePayments();
+				highlightVoltage($('.fn.product-name'));
 			}
 
 			if (self.isCart()) {
@@ -98,6 +100,7 @@ $(window).on('load', function() {
 			recurrence.setup();
 
 			this.fakeButton();
+			highlightVoltage($('.product-name > a'));
 		};
 
 		//state
@@ -175,7 +178,33 @@ $(window).on('load', function() {
 			if (gae.hasAnyActiveWarranty()) {
 				$('#modal-services').modal('show');
 			} else {
-				window.location.href = '#/orderform';
+				if ($('body').hasClass('teste-ab__login-email')) {
+					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'
+						window.location.href = '#/orderform';
+					} else { //se nao esta logado, abre modal pra colocar o email
+						console.log('ue');
+						var formLogin = $('.orderform-template .pre-email .client-email').html();
+						$('#modal-login .modal-body .login-email').html(formLogin);
+						$('#modal-login #client-pre-email').attr('placeholder','E-mail');
+						$('#modal-login #btn-client-pre-email').text('Entrar');
+						$('#modal-login').modal('show');
+
+						$('#modal-login #btn-client-pre-email').click(function(){
+							$('#modal-login .close').trigger('click');
+							$('.orderform-template #client-pre-email').val($('#modal-login #client-pre-email').val()).change();
+
+							setTimeout(function(){
+								$('.orderform-template #btn-client-pre-email').trigger('click');
+							},1000);
+						});
+
+						$('#modal-login .voltar').click(function(){
+							$('#modal-login .close').trigger('click');
+						});
+					}
+				} else {
+					window.location.href = '#/orderform';
+				}
 			}
 
 			return false;
