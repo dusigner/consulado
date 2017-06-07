@@ -353,6 +353,10 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				@include breakpoint(small, 'max') { width: 190px; }
 			}
 
+			// Esconder a palavra "mais" quando for
+			// na primeira opção de GAE
+			&:nth-child(5) .modal-warning-best-option__container span { display: none; }
+
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {
 					padding-bottom: 0;
