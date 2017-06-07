@@ -8,7 +8,7 @@ $(window).on('load', function() {
 
 	if (VERSION) {
 
-		console.log('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
+		console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
 
 		window._trackJs = window._trackJs || {};
 
@@ -108,12 +108,16 @@ $(window).on('load', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
-			pj.hideChangeAddress();
+			if (store && store.isCorp) {
+				pj.hideChangeAddress();
+			}
+
 
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
-				console.log('mudou');
-				
+				if (store && store.isCorp) {
+					pj.disableInputs(e);
+				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
