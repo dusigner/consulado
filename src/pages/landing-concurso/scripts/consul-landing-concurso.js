@@ -259,7 +259,6 @@ Nitro.setup(['landing-gae'], function () {
 				$('.msg-erro').addClass('hide');
 				$('#form input').val('');
 			}).fail(function () {
-				//deu errado
 				$('.msg-sucesso').addClass('hide');
 				if ($('.msg-erro').length === 0) {
 					$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');
