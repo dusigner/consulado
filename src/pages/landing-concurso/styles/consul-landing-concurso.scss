@@ -484,6 +484,8 @@ h2 {
 			@include breakpoint(extra-small, 'max') { padding: 0; }
 		}
 
+		.frase-email { font-size: 12px; }
+
 		.tit {
 			color: #ffffff;
 		}
