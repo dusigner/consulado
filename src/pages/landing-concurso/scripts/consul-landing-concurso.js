@@ -2,6 +2,7 @@
 
 require('modules/helpers');
 require('vendors/jquery.validate');
+// require('bootstrap/tooltip');
 require('vendors/jquery.maskedinput');
 
 //load Nitro Lib
@@ -236,7 +237,7 @@ Nitro.setup(['landing-gae'], function () {
 			var formData = {
 				name: $('#cname').val(),
 				email: $('#cemail').val(),
-				birthdate: new Date(mes + '/' + dia + '/' + ano).getTime(),
+				birthdate: new Date(mes, dia, ano).getTime(),
 				phone: $('#phone').val(),
 				document: $('#cpf').val(),
 				orderId: $('#orderId').val()
@@ -253,12 +254,38 @@ Nitro.setup(['landing-gae'], function () {
 				}
 			}).then(function() {
 				//deu certo
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ 
+					event: 'envioComSucessoPromo'
+				});
 				$('#form input.error').removeClass('error');
 				$('.error').css('display', 'none');
 				$('.btn.primary-button').after('<span class="msg-form msg-sucesso">Formulário enviado!</span>');
 				$('.msg-erro').addClass('hide');
 				$('#form input').val('');
-			}).fail(function () {
+			}).fail(function (res) {
+				res = JSON.parse(res.responseText);
+				var validator = $('#form-concurso').validate(),
+					errors = {};
+				// tras msg de erro do servidor
+				if (res.message === 'Validation Error') {
+					$.each(res.errors, function(i, error) {
+						errors[error.param] = error.msg;
+					});
+					validator.showErrors(errors);
+				}
+				// email já cadastrado
+				if (res.message === 'E-mail já está cadastrado!') {
+					validator.showErrors({
+						'campoEmail': res.message
+					});	
+				}
+				// cpf já cadastrado
+				if (res.message === 'CPF já está cadastrado!') {
+					validator.showErrors({
+						'document': res.message
+					});
+				}
 				$('.msg-sucesso').addClass('hide');
 				if ($('.msg-erro').length === 0) {
 					$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');
