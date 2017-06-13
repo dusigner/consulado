@@ -27,6 +27,8 @@ var redirect = module.exports.redirect = function (data) {
 		uri.setPath('/empresas');
 	}
 
+	uri.addQueryParam('utmi_pc', '10100511');
+
 	if(data.status === 'Register') {
 		$('<p>Seu cadastro foi enviado para análise. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
 			id: 'cadastro-sucesso',
