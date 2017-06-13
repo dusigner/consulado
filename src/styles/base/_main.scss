@@ -14,14 +14,13 @@
 	}
 
 	html,
+	html[xmlns*='http://www.w3.org/1999/xhtml'].async-hide,
 	.async-hide,
 	html body { opacity: 1 !important; } //prevent vwo flash
-
 
 	html,
 	body {
 		background-color: $website-bg-color;
-		border: 2px solid #00d!important;
 		color: $base-font-color;
 		font: normal normal $font-size/$line-height-integer $base-font-family;
 		font-weight: normal;
