@@ -158,8 +158,12 @@ $(window).on('load', function() {
 				$('#client-document').attr('disabled', 'disabled');
 			}
 
-			if(window.vtex.accountName !== 'consulqa') {
+			if(window.vtex.accountName !== 'consulqa' && window.vtex.accountName !== 'consulempresa') {
 				$('.box-client-info-pj').remove();
+			}
+
+			if(store.isCorp) {
+				$('#is-corporate-client').click();
 			}
 		};
 

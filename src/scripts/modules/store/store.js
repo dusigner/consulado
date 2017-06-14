@@ -26,11 +26,11 @@ define('store', function() {
 
 	this.init = function() {
 
-		this.isPersonal = /consul/.test(window.jsnomeLoja || window.location.host);
+		this.isPersonal = /consul/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
-		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.location.host);
+		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
-		this.isQA = /consulqa/.test(window.jsnomeLoja || window.location.host);
+		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
 		this.setup();
 
