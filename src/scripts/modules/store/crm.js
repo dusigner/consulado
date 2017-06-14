@@ -41,10 +41,20 @@ var CRM = {
 
 	clientSearchByEmail: function(field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5',
 			fq: 'email:' + field
 		}).then(function(res) {
 			return res && res.Documents[0];
+		});
+	},
+
+	clientSearchByCPF: function(cpf) {
+
+		return $.getJSON(CRM.clientURI, {
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5',
+			fq: 'document:' + cpf
+		}).then(function (res) {
+			return res && res.Documents;
 		});
 	},
 
