@@ -13,6 +13,9 @@
 		&:after { box-sizing: border-box; }
 	}
 
+	html,
+	html[xmlns*='http://www.w3.org/1999/xhtml'].async-hide,
+	.async-hide,
 	html body { opacity: 1 !important; } //prevent vwo flash
 
 	html,
@@ -38,7 +41,7 @@
 		margin: 2em 0;
 	}
 
-	body > img, 
+	body > img,
 	.zx_mediaslot { //remove pixels
 		display: none;
 		height: 0;

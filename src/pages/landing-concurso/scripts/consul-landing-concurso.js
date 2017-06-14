@@ -2,6 +2,7 @@
 
 require('modules/helpers');
 require('vendors/jquery.validate');
+// require('bootstrap/tooltip');
 require('vendors/jquery.maskedinput');
 
 //load Nitro Lib
@@ -144,7 +145,21 @@ Nitro.setup(['landing-gae'], function () {
 			return (this.optional(element) || false);
 		}
 		return (this.optional(element) || true);
+
 	}, 'Informe um telefone válido'); 
+
+
+	// valida data de nascimento
+	$.validator.addMethod('validDate', function() {
+		var valid = true;
+		var day = $('#cbirthdate').val().split('/')[0];
+		var month = $('#cbirthdate').val().split('/')[1];
+
+		if(day < 0 || day > 31) { valid = false; }
+		if(month < 0 || month > 12) { valid = false; }
+
+		return valid;
+	}, 'Data inválida');
 
 	// valida data de nascimento
 	$.validator.addMethod('birthdate', function() {
@@ -154,7 +169,7 @@ Nitro.setup(['landing-gae'], function () {
 		var year = $('#cbirthdate').val().split('/')[2];
 
 		var mydate = new Date();
-		mydate.setFullYear(year, month-1, day);
+		mydate.setFullYear(year, month-1, day-1);
 
 		var currdate = new Date();
 		currdate.setFullYear(currdate.getFullYear() - age);
@@ -177,6 +192,7 @@ Nitro.setup(['landing-gae'], function () {
 			},
 			birthdate:{
 				birthdate: true,
+				validDate: true,
 				required: true
 			},
 			document:{
@@ -213,49 +229,72 @@ Nitro.setup(['landing-gae'], function () {
 		},
 
 		submitHandler: function() {
-			var $form = $('#form-concurso');
+			// var $form = $('#form-concurso');
+			var dia = $('#cbirthdate').val().split('/')[0],
+				mes = $('#cbirthdate').val().split('/')[1],
+				ano = $('#cbirthdate').val().split('/')[2];
 
-			$form.submit(function(e) {
-				e.preventDefault();
-				var dia = $('#cbirthdate').val().split('/')[0],
-					mes = $('#cbirthdate').val().split('/')[1],
-					ano = $('#cbirthdate').val().split('/')[2];
+			var formData = {
+				name: $('#cname').val(),
+				email: $('#cemail').val(),
+				birthdate: new Date(ano, mes-1, dia).getTime(),
+				phone: $('#phone').val(),
+				document: $('#cpf').val(),
+				orderId: $('#orderId').val()
+			};
 
-				var formData = {
-					name: $('#cname').val(),
-					email: $('#cemail').val(),
-					birthdate: new Date(mes + '/' + dia + '/' + ano).getTime(),
-					phone: $('#phone').val(),
-					document: $('#cpf').val(),
-					orderId: $('#orderId').val()
-				};
-
-				$.ajax({
-					type: 'POST',
-					url: 'https://consul-promo.herokuapp.com/lead',
-					data: formData,
-					beforeSend: function() {
-					//addclass
-						$('.btn.primary-button').addClass('loading');
-						$('.btn-enviar span').css('display', 'none');
-					}
-				}).then(function() {
-					//deu certo
-					$('#form input.error').removeClass('error');
-					$('.error').css('display', 'none');
-					$('.btn.primary-button').after('<span class="msg-form msg-sucesso">Formulário enviado!</span>');
-					$('.msg-erro').addClass('hide');
-					$('#form input').val('');
-				}).fail(function () {
-					//deu errado
-					$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');
-					$('.msg-sucesso').addClass('hide');
-				}).always(function() {
-					//removeclass
-					$('.btn.primary-button').removeClass('loading');
-					$('.btn-enviar span').css('display', 'block');
+			$.ajax({
+				type: 'POST',
+				url: 'https://consul-promo.herokuapp.com/lead',
+				data: formData,
+				beforeSend: function() {
+				//addclass
+					$('.btn.primary-button').addClass('loading');
+					$('.btn-enviar span').css('display', 'none');
+				}
+			}).then(function() {
+				//deu certo
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ 
+					event: 'envioComSucessoPromo'
 				});
-			}); 
+				$('#form input.error').removeClass('error');
+				$('.error').css('display', 'none');
+				$('.btn.primary-button').after('<span class="msg-form msg-sucesso">Formulário enviado!</span>');
+				$('.msg-erro').addClass('hide');
+				$('#form input').val('');
+			}).fail(function (res) {
+				res = JSON.parse(res.responseText);
+				var validator = $('#form-concurso').validate(),
+					errors = {};
+				// tras msg de erro do servidor
+				if (res.message === 'Validation Error') {
+					$.each(res.errors, function(i, error) {
+						errors[error.param] = error.msg;
+					});
+					validator.showErrors(errors);
+				}
+				// email já cadastrado
+				if (res.message === 'E-mail já está cadastrado!') {
+					validator.showErrors({
+						'campoEmail': res.message
+					});	
+				}
+				// cpf já cadastrado
+				if (res.message === 'CPF já está cadastrado!') {
+					validator.showErrors({
+						'document': res.message
+					});
+				}
+				$('.msg-sucesso').addClass('hide');
+				if ($('.msg-erro').length === 0) {
+					$('.btn.primary-button').after('<span class="msg-form msg-erro">Ocorreu um erro!</span>');
+				}
+			}).always(function() {
+				//removeclass
+				$('.btn.primary-button').removeClass('loading');
+				$('.btn-enviar span').css('display', 'block');
+			});
 		}
 	});
 });
