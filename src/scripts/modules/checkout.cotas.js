@@ -76,7 +76,7 @@ Nitro.module('checkout.cotas', function() {
 			self.$actionButton.removeClass('disabled').removeAttr('disabled');
 
 			try {
-				localStorage.setItem('cota_eletrodomestico', totalEletrodomesticos);
+				$.cookie('cota_eletrodomestico', totalEletrodomesticos);
 			} catch(ex) {
 				return false;
 			}
@@ -102,7 +102,7 @@ Nitro.module('checkout.cotas', function() {
 		var eletrodomesticos = 0;
 
 		try {
-			eletrodomesticos = parseInt(localStorage.getItem('cota_eletrodomestico'));
+			eletrodomesticos = parseInt($.cookie('cota_eletrodomestico'));
 		} catch(ex) {
 			return false;
 		}
@@ -112,7 +112,7 @@ Nitro.module('checkout.cotas', function() {
 				.then(function() {
 
 					try {
-						localStorage.removeItem('cota_eletrodomestico');
+						$.removeCookie('cota_eletrodomestico');
 					} catch(ex) {
 						return false;
 					}
