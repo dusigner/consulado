@@ -13,17 +13,19 @@ Nitro.module('register.corporate', function() {
 	var self = this,
 		primaryInfoComplete = false,
 		$modalRegister = $('#modal-register'),
+		$modalTermo = $('#modal-termo'),
 		$form = $('.form-register');
 
 	this.setup = function() {
 		
 		self.addFormMask();
 
-		$form.fields = $form.find('input[type="text"], input[type="email"], input[type="tel"], select');
+		$form.fields = $form.find('input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]');
 		$form.fieldEmail = $form.fields.filter('input[name="email"]');
 		$form.primaryFields = $form.find('.primary-info').find($form.fields);
 		$form.fieldDocument = $form.primaryFields.filter('input[name="corporateDocument"]');
 		$form.btnSubmit = $form.find('[type="submit"]');
+		$form.anchorTermo = $form.find('.anchor-termo');
 
 		$form.submit(this.submit.bind($form));
 
@@ -55,6 +57,12 @@ Nitro.module('register.corporate', function() {
 			} else {
 				$form.find('.stateRegistration').attr('data-validation', 'required stateRegistration'). removeAttr('disabled');
 			}
+		});
+
+		$form.anchorTermo.click(function(e) {
+			e.preventDefault();
+			console.log('clicou');
+			$modalTermo.vtexModal();
 		});
 	};
 

@@ -51,7 +51,9 @@ Validation.prototype.validate = function(inputs, submit) {
 			} else if (/cnpj/.test(validation) && !self.validCnpj()) {
 				_self.setError(self, 'cnpj', deferred);
 			} else if (/confirm/.test(validation) && self.val() !== inputs.filter('input[name="' + self.data('confirm') + '"]').val()) {
-				_self.setError(self, 'confirm', deferred);
+				_self.setError(self, 'confirm', deferred);				
+			} else if (/checkbox/.test(validation) && !self.is(':checked')) {
+				_self.setError(self, 'checkbox', deferred);
 			} else if (/partner/.test(validation) && deferred.state() !== 'rejected') {
 				pending = true;
 

@@ -257,6 +257,25 @@
 				.checkbox {
 					margin: 10px 0;
 				}
+				.anchor-termo {
+					text-decoration: underline;
+				}
+				input[type="checkbox"].error {
+					&:after {
+						border-color:#b0003c;
+					}
+				}
+			}
+		}
+	}
+
+	#vtex-modal-termo {
+		.modal-holder {
+			max-width: 900px;
+			margin-top: 20px;
+			#modal-termo {
+				padding: 0 5%;
+				text-align: left;
 			}
 		}
 	}
