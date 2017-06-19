@@ -25,7 +25,6 @@
 		max-height: 500px;
 	}
 
-
 	margin: 20px auto;
 	max-height: 370px;
 	max-width: 1100px;
@@ -81,10 +80,6 @@
 	&.is--active {
 		@include breakpoint(1280px, 'max') { max-width: 1000px; }
 		@include breakpoint(1012px, 'max') { max-width: 600px; }
-
-		@include breakpoint(small, 'max') { 
-			height: 500px; 
-		}
 
 		max-height: 2000px;
 		max-width: 1300px;
