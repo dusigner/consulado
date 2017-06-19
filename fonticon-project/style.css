@@ -1,17 +1,17 @@
 @font-face {
-  font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?z8d474');
-  src:  url('fonts/icomoon.eot?z8d474#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?z8d474') format('truetype'),
-    url('fonts/icomoon.woff?z8d474') format('woff'),
-    url('fonts/icomoon.svg?z8d474#icomoon') format('svg');
+  font-family: 'whirlpool2';
+  src:  url('fonts/whirlpool2.eot?n7edia');
+  src:  url('fonts/whirlpool2.eot?n7edia#iefix') format('embedded-opentype'),
+    url('fonts/whirlpool2.ttf?n7edia') format('truetype'),
+    url('fonts/whirlpool2.woff?n7edia') format('woff'),
+    url('fonts/whirlpool2.svg?n7edia#whirlpool2') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'whirlpool2' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -138,4 +138,24 @@
 .icon-twitter:before {
   content: "\e617";
 }
-
+.icon-icon-gae-truck:before {
+  content: "\e901";
+}
+.icon-icon-gae-solucao-inteligente:before {
+  content: "\e902";
+}
+.icon-icon-gae-seguranca:before {
+  content: "\e903";
+}
+.icon-icon-gae-protecao:before {
+  content: "\e904";
+}
+.icon-icon-gae-phone:before {
+  content: "\e905";
+}
+.icon-icon-gae-cubo:before {
+  content: "\e906";
+}
+.icon-icon-gae-balcao:before {
+  content: "\e907";
+}
