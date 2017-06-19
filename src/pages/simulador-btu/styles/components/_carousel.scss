@@ -14,7 +14,7 @@
 		bottom: 0;
 		font-size: 0;
 		position: absolute;
-
+		display: none !important;
 
 		li {
 			line-height: 0;
@@ -165,6 +165,7 @@
 	}
 	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_apartment_mobile.jpg') center bottom no-repeat;
 	background-size: auto 100%;
+	margin-top: 30px;
 }
 
 .moradia .dois {
@@ -180,6 +181,7 @@
 	}
 	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_house_mobile.jpg') center bottom no-repeat;
 	background-size: auto 100%;
+	margin-top: 30px;
 }
 
 .moradia .tres {
@@ -195,6 +197,7 @@
 	}
 	background: #bfe7f3 url('/arquivos/lp-calc-btu--images--intro_house_no_roof_mobile.jpg') center bottom no-repeat;
 	background-size: auto 100%;
+	margin-top: 30px;
 }
 
 .comodo .slide {
