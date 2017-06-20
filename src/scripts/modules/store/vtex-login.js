@@ -33,7 +33,7 @@ Nitro.module('vtex-login', function () {
 
 		var clientProfileData = $.extend({}, orderForm.clientProfileData, store.userData);
 
-		clientProfileData.documentType = 'cpf';
+		clientProfileData.documentType = 'cnpj';
 
 		//avisar o VTEX ID que o email do cliente mudou
 		window.vtexid.setEmail(clientProfileData.email);

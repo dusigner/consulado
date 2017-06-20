@@ -36,10 +36,20 @@ var redirect = module.exports.redirect = function (data) {
 			destroy: true
 		});
 	} else { // status = Login
-		vtexid.start({
-			email: data.email,
-			returnUrl: uri.toString()
+		vtexjs.checkout.getOrderForm().done(function(res) {
+			if (res.loggedIn) {
+				window.location.href = store.uri
+					.setPath(uriRedirect ? uriRedirect : '/empresas')
+					.deleteQueryParam('ReturnUrl')
+					.toString();
+				} else {
+				vtexid.start({
+					email: data.email,
+					returnUrl: uri.toString()
+				});
+			}
 		});
+		
 	}
 
 	//trigger click de email e senha login

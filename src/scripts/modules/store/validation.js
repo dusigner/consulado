@@ -75,6 +75,10 @@ Validation.prototype.validate = function(inputs, submit) {
 		submit.removeClass('loading');
 	});
 
+	deferred.done(function() {
+		submit.removeClass('loading');
+	});
+
 	return deferred.promise();
 };
 

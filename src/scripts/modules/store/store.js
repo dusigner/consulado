@@ -34,6 +34,8 @@ define('store', function() {
 
 		this.setup();
 
+		this.autoLogin();
+
 		//return this.checkAccess();
 
 		if(this.isCorp) {
@@ -73,7 +75,11 @@ define('store', function() {
 		});
 	};
 
-
+	this.autoLogin = function() {
+		if (this.userData.email && this.uri.path() === '/') { //pre-home
+			return redirect.login.call(this, this.userData);
+		}
+	};
 
 	this.logout = function() {
 		$.cookie('checkout.vtex.com', null, { expires: 0, path: '/', domain: '.' + window.location.hostname });

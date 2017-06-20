@@ -27,7 +27,7 @@ Nitro.module('login', function () {
 
 		$form.fieldEmail = $form.find('input[name="email"]');
 
-		//this.init();
+		this.init();
 	};
 
 	this.init = function () {
@@ -35,6 +35,7 @@ Nitro.module('login', function () {
 		var email = store.userData.email || store.uri.getQueryParamValue('email');
 
 		if (email) {
+			console.log('tem email');
 			$form.fieldEmail.val(email);
 		}
 
