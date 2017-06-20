@@ -95,7 +95,9 @@ $(window).on('load', function() {
 			$('.Shipping td:first').attr('colspan', '4');
 			$('.caret').removeClass('caret').addClass('icon icon-chevron-down');
 
-			gae.setup();
+			if(store && store.isPersonal) {
+				gae.setup();
+			}
 
 			recurrence.setup();
 
@@ -186,7 +188,6 @@ $(window).on('load', function() {
 					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'
 						window.location.href = '#/orderform';
 					} else { //se nao esta logado, abre modal pra colocar o email
-						console.log('ue');
 						var formLogin = $('.orderform-template .pre-email .client-email').html();
 						$('#modal-login .modal-body .login-email').html(formLogin);
 						$('#modal-login #client-pre-email').attr('placeholder','E-mail');

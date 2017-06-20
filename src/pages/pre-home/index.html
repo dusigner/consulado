@@ -146,25 +146,30 @@
 							<h4 class="title">Dados da Empresa</h4>
 							<div class="group">
 								<label>CNPJ</label>
-								<input type="text" name="corporateDocument" class="form-control corporateDocument" tabindex="1" data-validation="required cnpj"
+								<input type="text" name="corporateDocument" class="form-control corporateDocument" data-validation="required cnpj"
 								 data-msg-required="Digite um CNPJ" data-msg-cpf="CNPJ inválido" />
 							</div>
 							<div class="group">
 								<label>Razão social</label>
-								<input type="text" name="corporateName" class="form-control corporateName" tabindex="2" data-validation="required" data-msg-required="Preencha o nome da empresa"
+								<input type="text" name="corporateName" class="form-control corporateName" data-validation="required" data-msg-required="Preencha o nome da empresa"
+								/>
+							</div>
+							<div class="group">
+								<label>Nome Fantasia</label>
+								<input type="text" name="tradeName" class="form-control tradeName" data-validation="required" data-msg-required="Preencha o nome fantasia da empresa"
 								/>
 							</div>
 							<div class="group">
 								<label>Inscrição estadual</label>
-								<input type="text" name="stateRegistration" class="form-control stateRegistration" tabindex="3" data-validation="required stateRegistration"
+								<input type="text" name="stateRegistration" class="form-control stateRegistration" data-validation="required stateRegistration"
 								 data-msg-required="Digite uma Inscrição estadual" data-msg-cpf="Descrição estadual inválida" />
 								<div class="checkbox">
-									<input type="checkbox" name="isFreeStateRegistration" id="isFreeStateRegistration" tabindex="4" /><label for="isFreeStateRegistration"> Isento</label>
+									<input type="checkbox" name="isFreeStateRegistration" id="isFreeStateRegistration" /><label for="isFreeStateRegistration"> Isento</label>
 								</div>
 							</div>
 							<div class="group">
 								<label>Tipo de negócio</label>
-								<select name="xBusinessType" class="form-control businessType" tabindex="5" data-validation="required" data-msg-required="Campo Obrigatório">
+								<select name="xBusinessType" class="form-control businessType" data-validation="required" data-msg-required="Campo Obrigatório">
 									<option value="" selected="selected">Selecione...</option>
 									<option value="servico1">Serviço 1</option>
 									<option value="servico2">Serviço 2</option>
@@ -179,7 +184,7 @@
 							<h4 class="title">Endereço da Empresa</h4>
 							<div class="group">
 								<label>CEP</label>
-								<input type="text" name="postalCode" class="form-control postalCode" tabindex="6" data-validation="required cep" data-msg-required="Digite um CEP"
+								<input type="text" name="postalCode" class="form-control postalCode" data-validation="required cep" data-msg-required="Digite um CEP"
 								 data-msg-cpf="CEP inválido" />
 							</div>
 							<div class="group">
@@ -191,14 +196,14 @@
 								<div class="col-6 padding-right-col">
 									<div class="group">
 										<label>Número</label>
-										<input type="text" name="number" class="form-control number" tabindex="7" data-validation="required" data-msg-required="Preencha o número da empresa"
+										<input type="text" name="number" class="form-control number" data-validation="required" data-msg-required="Preencha o número da empresa"
 										/>
 									</div>
 								</div>
 								<div class="col-6 padding-left-col">
 									<div class="group">
 										<label>Complemento</label>
-										<input type="text" name="complement" class="form-control complement" tabindex="8" />
+										<input type="text" name="complement" class="form-control complement" />
 									</div>
 								</div>
 							</div>
@@ -236,49 +241,49 @@
 						<div class="col-6 bloco">
 							<div class="group">
 								<label>E-mail</label>
-								<input type="email" name="email" id="userEmail" class="form-control email" tabindex="9" data-validation="required email"
+								<input type="email" name="email" id="userEmail" class="form-control email" data-validation="required email"
 								 data-msg-required="Digite um E-mail" data-msg-cpf="E-mail inválido" />
 							</div>
 							<div class="group">
 								<label>Primeiro nome</label>
-								<input type="text" name="firstName" class="form-control firstName" tabindex="11" data-validation="required" data-msg-required="Preencha o seu nome"
+								<input type="text" name="firstName" class="form-control firstName" data-validation="required" data-msg-required="Preencha o seu nome"
 								/>
 							</div>
 							<div class="group">
 								<label>Telefone fixo</label>
-								<input type="tel" name="phone" class="form-control phone" tabindex="13" data-validation="required" data-msg-required="Digite um telefone"
+								<input type="tel" name="phone" class="form-control phone" data-validation="required" data-msg-required="Digite um telefone"
 								/>
 							</div>
 							<div class="group">
 								<label>Celular</label>
-								<input type="tel" name="xAdditionalPhone" class="form-control xAdditionalPhone" tabindex="14" data-validation="required"
+								<input type="tel" name="xAdditionalPhone" class="form-control xAdditionalPhone" data-validation="required"
 								 data-msg-required="Digite um celular" />
 							</div>
 						</div>
 						<div class="col-6 bloco">
 							<div class="group">
 								<label>Confirmar e-mail</label>
-								<input type="email" name="confirmEmail" class="form-control confirmEmail" tabindex="10" data-confirm="email" data-validation="required confirm"
+								<input type="email" name="confirmEmail" class="form-control confirmEmail" data-confirm="email" data-validation="required confirm"
 								 data-msg-required="Digite o e-mail novamente" data-msg-confirm="E-mails incompatíveis" />
 							</div>
 							<div class="group">
 								<label>Sobrenome</label>
-								<input type="text" name="lastName" class="form-control lastName" tabindex="12" data-validation="required" data-msg-required="Preencha o seu sobrenome"
+								<input type="text" name="lastName" class="form-control lastName" data-validation="required" data-msg-required="Preencha o seu sobrenome"
 								/>
 							</div>
 							<div class="group">
 								<div class="checkbox">
-									<input type="checkbox" name="isNewsletterOptIn" id="isNewsletterOptIn" tabindex="15" /><label for="isNewsletterOptIn"> Desejo receber ofertas por e-mail</label>
+									<input type="checkbox" name="isNewsletterOptIn" id="isNewsletterOptIn" /><label for="isNewsletterOptIn"> Desejo receber ofertas por e-mail</label>
 								</div>
 							</div>
 							<div class="group">
 								<div class="checkbox">
-									<input type="checkbox" name="xIsSMSOptIn" id="xIsSMSOptIn" tabindex="16" /><label for="xIsSMSOptIn"> Desejo receber ofertas por SMS</label>
+									<input type="checkbox" name="xIsSMSOptIn" id="xIsSMSOptIn" /><label for="xIsSMSOptIn"> Desejo receber ofertas por SMS</label>
 								</div>
 							</div>
 							<div class="group">
 								<div class="checkbox">
-									<input type="checkbox" name="termos" id="termos" tabindex="17" data-validation="required checkbox" data-msg-required="Aceite o termo" /><label for="termos"> Concordo com os <a href="#" class="anchor-termo">termos e condições</a> e que a empresa citada não é revenda</label>
+									<input type="checkbox" name="termos" id="termos" data-validation="required checkbox" data-msg-required="Aceite o termo" /><label for="termos"> Concordo com os <a href="#" class="anchor-termo">termos e condições</a> e que a empresa citada não é revenda</label>
 								</div>
 							</div>
 						</div>
@@ -296,7 +301,7 @@
 				</div>
 				<div class="bloco next">
 					<div class="group">
-						<button type="submit" class="primary-button yellow-button align-center" tabindex="18">Continuar</button>
+						<button type="submit" class="primary-button yellow-button align-center">Continuar</button>
 					</div>
 				</div>
 			</div>

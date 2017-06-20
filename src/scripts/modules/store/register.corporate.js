@@ -61,7 +61,6 @@ Nitro.module('register.corporate', function() {
 
 		$form.anchorTermo.click(function(e) {
 			e.preventDefault();
-			console.log('clicou');
 			$modalTermo.vtexModal();
 		});
 	};
@@ -196,10 +195,16 @@ Nitro.module('register.corporate', function() {
 				data[x.name] = x.value;
 			}
 		});
+		
+		if (data.phone) {
+			data.phone = '+55' + data.phone; 
+		}
 
 		$.extend(data, {
 			corporateDocument: self.getDocument(data.corporateDocument),
-			isCorporate: true
+			isCorporate: true,
+			homePhone: data.phone,
+			businessPhone: data.phone
 		});
 
 		/*console.log('register', data);*/
