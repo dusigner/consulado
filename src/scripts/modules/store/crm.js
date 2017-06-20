@@ -8,8 +8,9 @@ var CRM = {
 	geURI: '/api/ds/pub/documents/GE',
 	ordersURI: '/api/ds/pub/documents/SP',
 	cancelGaeURI: '/api/ds/pub/documents/CG',
+	addressURI: '/api/ds/pub/documents/AD',
 
-	getOrderById: function(orderId) {
+	getOrderById: function (orderId) {
 		return $.ajax({
 			url: CRM.ordersURI,
 			type: 'GET',
@@ -21,7 +22,7 @@ var CRM = {
 		});
 	},
 
-	insertClient: function(data) {
+	insertClient: function (data) {
 		return $.ajax({
 			url: CRM.clientURI,
 			type: 'POST',
@@ -30,7 +31,7 @@ var CRM = {
 		});
 	},
 
-	insertClientGE: function(data) {
+	insertClientGE: function (data) {
 		return $.ajax({
 			url: CRM.geURI,
 			type: 'POST',
@@ -39,11 +40,12 @@ var CRM = {
 		});
 	},
 
-	clientSearchByEmail: function(field) {
+	clientSearchByEmail: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5',
+
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,approved',
 			fq: 'email:' + field
-		}).then(function(res) {
+		}).then(function (res) {
 			return res && res.Documents[0];
 		});
 	},
@@ -58,18 +60,45 @@ var CRM = {
 		});
 	},
 
-	clientSearchByID: function(field) {
+	clientSearchByID: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,approved',
 			fq: 'userId:' + field
-		}).then(function(res) {
+		}).then(function (res) {
+			return res && res.Documents[0];
+		});
+	},
+	clientSearchByDocument: function (document) {
+
+		return $.getJSON(CRM.clientURI, {
+			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
+			fq: 'document:' + document
+		}).then(function (res) {
+			return res && res.Documents[0];
+		});
+	},
+	clientSearchByCorporateDocument: function (document) {
+
+		return $.getJSON(CRM.clientURI, {
+			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument',
+			fq: 'corporateDocument:' + document
+		}).then(function (res) {
 			return res && res.Documents[0];
 		});
 	},
 
-	insertCancelGae: function(data) {
+	insertCancelGae: function (data) {
 		return $.ajax({
 			url: CRM.cancelGaeURI,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8'
+		});
+	},
+
+	insertLocation: function(data) {
+		return $.ajax({
+			url: CRM.addressURI,
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8'

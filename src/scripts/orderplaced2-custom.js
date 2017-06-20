@@ -19,8 +19,9 @@ $(window).on('load', function() {
 	require('vendors/nitro');
 
 	// require('modules/checkout.phones');
-	require('modules/checkout.termoColeta');
+	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout.cotas');
+
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 

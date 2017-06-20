@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
 <head>
 	<title>Consul</title>
 	<vtex:metaTags />
@@ -7,64 +8,65 @@
 
 	<!-- @if DEBUG='development' -->
 	<!-- @include ../templates/head-vtex.html -->
-  	<!-- @include ../../subtemplates/consul-head-content.html -->
-  	<!-- @endif -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
 
-  	<!-- @if DEBUG='production' -->
-  	<vtex:template id="0-consul-head-content" />
-  	<!-- @endif -->
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
 
 	<link rel="stylesheet" href="/arquivos/consul2-pre-home.css" />
 </head>
+
 <body data-controller="pre-home" class="pre-home">
 
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-top-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- @endif -->
 
 
-
-	<header data-module="header">
-		<div class="row pre-header hide-small hide-extra-small">
-			<section class="container clearfix">
-				<div class="col-6">
-					<a href="/" class="item" title="Loja Virtual">Loja Virtual</a>
-					<a href="http://www.consul.com.br/inicio" target="_blank" class="item" title="Site da Consul">Site da Consul</a>
-					<a href="#" class="item active" title="Vendas Corporativas">Vendas Corporativas</a>
-				</div>
-
-				<div class="col-6 float-right">
-					<a href="tel:+551130037872" title="Televendas / SAC">Televendas 3003-7872</a>
-					<a href="http://consul.custhelp.com/" target="_blank" class="item" title="Central de Atendimento">Central de Atendimento</a>
-				</div>
-			</section>
-		</div>
-
+	<header>
 		<div class="row header">
 			<section class="container">
 
 				<div class="col-12 cont-logo">
 					<a href="/" class="logo" title="Consul">
 						<i class="icon icon-logo-consul"></i>
-						<p>Vendas Corporativas</p>
+						<!-- <p>Vendas Corporativas</p> -->
 					</a>
 				</div>
+
+				<div class="col-3 cont-logo-mobile show-extra-small">
+					<a href="/" class="logo" title="Consul">
+						<i class="icon icon-logo-consul"></i>
+					</a>
+				</div>
+
+
 
 			</section>
 		</div>
 	</header>
 
-	<section id="form">
+	<section id="main">
 		<div class="container">
-			<div class="row">
-				<div class="col-5 text">
+			<div class="bloco">
+				<div class="text">
 					<div class="title">
 						<h2>Vendas Corporativas</h2>
 						<span class="border"></span>
 					</div>
 
 					<p class="info">
-						A Consul tem um atendimento dedicado para perfis corporativos, que são vendas para empresas, hospitais, escolas, hóteis, empreendimentos imobiliários e afins.
+						A Consul tem um atendimento dedicado para perfis corporativos, que são vendas para empresas, hospitais, escolas, hóteis,
+						empreendimentos imobiliários e afins.
 					</p>
 				</div>
-				<div class="col-5 form">
+				<div class="form">
 					<div class="title">
 						<h2>Acessar</h2>
 						<span class="border"></span>
@@ -72,7 +74,8 @@
 
 					<form action="/" method="POST" class="form-login pre-home-form inline-form" novalidate="novalidate" data-msg-error="Não foi possivel enviar as informações, &lt;span&gt;por favor tente novamente mais tarde.&lt;/span&gt;">
 						<fieldset>
-							<input type="email" name="email" class="email" placeholder="E-mail" data-validation="require email" data-msg-required="Digite um e-mail" data-msg-email="E-mail inválido, &lt;span&gt;por favor tente novamente.&lt;/span&gt;"/>
+							<input type="email" name="email" class="email" placeholder="E-mail" data-validation="required email" data-msg-required="Digite um e-mail"
+							 data-msg-email="E-mail inválido, &lt;span&gt;por favor tente novamente.&lt;/span&gt;" />
 						</fieldset>
 
 						<fieldset class="fild-submit">
@@ -86,57 +89,693 @@
 
 	</section>
 
-	<section id="imagem">
-		<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />
+	<section id="gallery">
+		<!--<img src="/arquivos/consul-pre-home-img.jpg" alt="Imagem de Fogão" />-->
 	</section>
 
 
 	<section id="info">
 		<div class="container">
-			<div class="row">
-				<div class="col-3 box box-1">
-					<div class="title">
-						<h4>Revendas</h4>
-						<span class="border"></span>
-					</div>
-					<p>Os produtos Consul são referência no mercado, preferidos pelos consumidores e indispensáveis na sua loja. </p>
-				</div>
-				<div class="col-3 box box-2">
+			<div class="carrossel">
+				<div class="box box-1">
 					<div class="title">
 						<h4>Empresa</h4>
 						<span class="border"></span>
 					</div>
-					<p>emos uma área especializada para venda direta para empresas, empreendimentos imobiliários, hospitais e escolas.</p>
+					<p>Os melhores e mais procurados produtos para sua empresa em um só lugar. Só uma marca com mais de 60 anos pode te trazer
+						essa tranquilidade.</p>
 				</div>
-				<div class="col-3 box box-3">
+				<div class="box box-2">
 					<div class="title">
-						<h4>Cozinha Planejada</h4>
+						<h4>Comércio</h4>
 						<span class="border"></span>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
+					<p>Ofertas bem pensadas direto da fábrica para seu comércio. São produtos que juntam tecnologia fácil de usar e design
+						inteligente para seu negócio.</p>
 				</div>
-				<div class="col-3 box box-4">
+				<div class="box box-3">
 					<div class="title">
-						<h4>Hotel</h4>
+						<h4>Escritório</h4>
 						<span class="border"></span>
 					</div>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna liqua.</p>
+					<p>Credibilidade, facilidade de uso, parceria e criatividade são característicos de uma marca que está presente em mais
+						de 50% dos lares brasileiros. Só falta no seu escritório.</p>
+				</div>
+				<div class="box box-4">
+					<div class="title">
+						<h4>Consultório</h4>
+						<span class="border"></span>
+					</div>
+					<p>Só a marca líder no setor de eletrodomésticos poderia oferecer toda solução que você precisa da para o seu bem estar
+						e dos seus clientes.</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- @if DEBUG='development' -->
-  	<!-- @include ../../subtemplates/consul-footer.html -->
-  	<!-- @endif -->
 
-  	<!-- @if DEBUG='production' -->
-  	<!-- Footer -->
+
+	<!-- [ MODAL - Register ] -->
+	<div id="modal-register" data-title="Cadastre-se" style="display: none;">
+		<form action="/" method="POST" class="form-register" novalidate="novalidate" data-msg-error="Não foi possivel enviar as informações, &lt;span&gt;por favor tente novamente mais tarde.&lt;/span&gt;">
+			<div class="steps">
+				<!-- [ STEP - 01 ] -->
+				<div class="form-steps step-1">
+					<fieldset class="primary-info row">
+						<div class="col-6 bloco">
+							<h4 class="title">Dados da Empresa</h4>
+							<div class="group">
+								<label>CNPJ</label>
+								<input type="text" name="corporateDocument" class="form-control corporateDocument" data-validation="required cnpj"
+								 data-msg-required="Digite um CNPJ" data-msg-cpf="CNPJ inválido" />
+							</div>
+							<div class="group">
+								<label>Razão social</label>
+								<input type="text" name="corporateName" class="form-control corporateName" data-validation="required" data-msg-required="Preencha o nome da empresa"
+								/>
+							</div>
+							<div class="group">
+								<label>Nome Fantasia</label>
+								<input type="text" name="tradeName" class="form-control tradeName" data-validation="required" data-msg-required="Preencha o nome fantasia da empresa"
+								/>
+							</div>
+							<div class="group">
+								<label>Inscrição estadual</label>
+								<input type="text" name="stateRegistration" class="form-control stateRegistration" data-validation="required stateRegistration"
+								 data-msg-required="Digite uma Inscrição estadual" data-msg-cpf="Descrição estadual inválida" />
+								<div class="checkbox">
+									<input type="checkbox" name="isFreeStateRegistration" id="isFreeStateRegistration" /><label for="isFreeStateRegistration"> Isento</label>
+								</div>
+							</div>
+							<div class="group">
+								<label>Tipo de negócio</label>
+								<select name="xBusinessType" class="form-control businessType" data-validation="required" data-msg-required="Campo Obrigatório">
+									<option value="" selected="selected">Selecione...</option>
+									<option value="servico1">Serviço 1</option>
+									<option value="servico2">Serviço 2</option>
+									<option value="servico3">Serviço 3</option>
+									<option value="servico4">Serviço 4</option>
+									<option value="servico5">Serviço 5</option>
+								</select>
+							</div>
+
+						</div>
+						<div class="col-6 bloco">
+							<h4 class="title">Endereço da Empresa</h4>
+							<div class="group">
+								<label>CEP</label>
+								<input type="text" name="postalCode" class="form-control postalCode" data-validation="required cep" data-msg-required="Digite um CEP"
+								 data-msg-cpf="CEP inválido" />
+							</div>
+							<div class="group">
+								<label>Endereço</label>
+								<input type="text" name="addressName" class="form-control addressName" data-validation="required" data-msg-required="Preencha o endereço da empresa"
+								 readonly="readonly" />
+							</div>
+							<div class="row">
+								<div class="col-6 padding-right-col">
+									<div class="group">
+										<label>Número</label>
+										<input type="text" name="number" class="form-control number" data-validation="required" data-msg-required="Preencha o número da empresa"
+										/>
+									</div>
+								</div>
+								<div class="col-6 padding-left-col">
+									<div class="group">
+										<label>Complemento</label>
+										<input type="text" name="complement" class="form-control complement" />
+									</div>
+								</div>
+							</div>
+							<div class="group">
+								<label>Bairro</label>
+								<input type="text" name="neighborhood" class="form-control neighborhood" data-validation="required" data-msg-required="Preencha o bairro da empresa"
+								 readonly="readonly" />
+							</div>
+							<div class="row">
+								<div class="col-6 padding-right-col">
+									<div class="group">
+										<label>Estado</label>
+										<input type="text" name="state" class="form-control state" data-validation="required" data-msg-required="Preencha o estado da empresa"
+										 readonly="readonly" />
+									</div>
+								</div>
+								<div class="col-6 padding-left-col">
+									<div class="group">
+										<label>Cidade</label>
+										<input type="text" name="city" class="form-control city" data-validation="required" data-msg-required="Preencha a cidade da empresa"
+										 readonly="readonly" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+				<!-- [ STEP - 02 ] -->
+				<div class="form-steps step-2">
+					<fieldset class="additional-info row">
+						<div class="bloco">
+							<h4 class="title">Dados de contato</h4>
+						</div>
+						<div class="col-6 bloco">
+							<div class="group">
+								<label>E-mail</label>
+								<input type="email" name="email" id="userEmail" class="form-control email" data-validation="required email"
+								 data-msg-required="Digite um E-mail" data-msg-cpf="E-mail inválido" />
+							</div>
+							<div class="group">
+								<label>Primeiro nome</label>
+								<input type="text" name="firstName" class="form-control firstName" data-validation="required" data-msg-required="Preencha o seu nome"
+								/>
+							</div>
+							<div class="group">
+								<label>Telefone fixo</label>
+								<input type="tel" name="phone" class="form-control phone" data-validation="required" data-msg-required="Digite um telefone"
+								/>
+							</div>
+							<div class="group">
+								<label>Celular</label>
+								<input type="tel" name="xAdditionalPhone" class="form-control xAdditionalPhone" data-validation="required"
+								 data-msg-required="Digite um celular" />
+							</div>
+						</div>
+						<div class="col-6 bloco">
+							<div class="group">
+								<label>Confirmar e-mail</label>
+								<input type="email" name="confirmEmail" class="form-control confirmEmail" data-confirm="email" data-validation="required confirm"
+								 data-msg-required="Digite o e-mail novamente" data-msg-confirm="E-mails incompatíveis" />
+							</div>
+							<div class="group">
+								<label>Sobrenome</label>
+								<input type="text" name="lastName" class="form-control lastName" data-validation="required" data-msg-required="Preencha o seu sobrenome"
+								/>
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="isNewsletterOptIn" id="isNewsletterOptIn" /><label for="isNewsletterOptIn"> Desejo receber ofertas por e-mail</label>
+								</div>
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="xIsSMSOptIn" id="xIsSMSOptIn" /><label for="xIsSMSOptIn"> Desejo receber ofertas por SMS</label>
+								</div>
+							</div>
+							<div class="group">
+								<div class="checkbox">
+									<input type="checkbox" name="termos" id="termos" data-validation="required checkbox" data-msg-required="Aceite o termo" /><label for="termos"> Concordo com os <a href="#" class="anchor-termo">termos e condições</a> e que a empresa citada não é revenda</label>
+								</div>
+							</div>
+						</div>
+						<input type="hidden" name="country" value="BRA" />
+						<input type="hidden" name="addressType" value="residential" />
+					</fieldset>
+				</div>
+			</div>
+			<div class="buttons">
+				<div class="bloco prev">
+					<div class="group">
+						<!--<a href="#"><i class="icon icon-arrow-left"></i> Voltar</a>-->
+						<a href="#"><i class="vtexid-icon-arrow-left"></i>Voltar</a>
+					</div>
+				</div>
+				<div class="bloco next">
+					<div class="group">
+						<button type="submit" class="primary-button yellow-button align-center">Continuar</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- [ /MODAL - Register ] -->
+
+
+	<!-- [ MODAL - Termo] -->
+	<div id="modal-termo" data-title="Termos e Condições de Uso" style="display:none;">
+		<p>
+			<strong>CONSUL VENDAS CORPORATIVAS</strong>
+		</p>
+		<p>
+			Bem-vindo ao <strong>CONSUL VENDAS CORPORATIVAS</strong>. A seguir apresentamos a você (<strong>USUÁRIO</strong>) os Termos
+			e Condições de Uso, documento que relaciona as principais regras a serem observadas por todos que acessam o <strong>CONSUL VENDAS CORPORATIVAS</strong>			<strong> </strong>ou utilizam suas funcionalidades.
+		</p>
+		<p>
+			Como condição para acesso e uso do <strong>CONSUL VENDAS CORPORATIVAS</strong>, o <strong>USUÁRIO</strong> deve declarar
+			que fez a leitura completa e atenta das regras deste documento e de sua Política de Privacidade, estando plenamente ciente
+			e de acordo com elas.
+		</p>
+		<p>
+			<strong>1. </strong>
+			<strong>Informações Gerais sobre o CONSUL VENDAS CORPORATIVAS</strong>
+		</p>
+		<p>
+			1.1. O <strong>CONSUL VENDAS CORPORATIVAS</strong> é um site de compras destinado exclusivamente a Pessoa Jurídica, isto
+			é, empresas com CNPJ ativo <strong>(USUÁRIO)</strong>
+			<u>
+				cujo objeto não contemple a revenda de equipamentos aqui comercializados da marca Consul
+			</u>
+			<strong>. </strong>
+		</p>
+		<p>
+			1.2. Para acessar o <strong>CONSUL VENDAS CORPORATIVAS</strong> de forma segura e utilizar suas funcionalidades integralmente
+			é de inteira responsabilidade do <strong>USUÁRIO</strong> dispor de dispositivos e equipamentos compatíveis, serviço de
+			conexão à Internet com antivírus e firewall habilitados, softwares devidamente atualizados – tais como navegadores –,
+			além da adoção de medidas de segurança mínimas, o que inclui, mas não se limita a, utilização de senha segura.
+		</p>
+		<p>
+			1.3. O <strong>CONSUL VENDAS CORPORATIVAS</strong> e suas funcionalidades são apresentadas aos <strong>USUÁRIOS</strong>			na maneira como estão disponíveis, podendo passar por constantes aprimoramentos e atualizações, obrigando-se a <strong>BUD</strong>			a:
+		</p>
+		<p>
+			(i) preservar a funcionalidade do <strong>CONSUL VENDAS CORPORATIVAS</strong>, com <em>links</em> não quebrados e utilizando
+			<em>layout</em> que respeita a usabilidade e navegabilidade, sempre que possível;
+		</p>
+		<p>
+			(ii) exibir as funcionalidades de maneira clara, completa, precisa e suficiente de modo que exista a exata percepção das
+			operações realizadas; e
+		</p>
+		<p>
+			(iii) preservar, por meio do estado da técnica disponível, o sigilo dos dados inseridos nas funcionalidades oferecidas em
+			seu site<strong>CONSUL VENDAS CORPORATIVAS</strong>, somente sendo acessíveis pela <strong>BUD</strong> e por quem
+			o <strong>USUÁRIO</strong> consentir, além de si próprio.
+		</p>
+		<p>
+			1.4. A <strong>BUD</strong> envida seus esforços para a disponibilidade contínua e permanente do <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+			No entanto, pode ocorrer, eventualmente, alguma indisponibilidade temporária decorrente de manutenção necessária ou mesmo
+			gerada por motivo de força maior, como desastres naturais, falhas ou colapsos nos sistemas centrais de comunicação e acesso
+			à Internet ou fatos de terceiro que fogem de sua esfera de vigilância e responsabilidade.
+		</p>
+		<p>
+			1.4.1. Se isso ocorrer, a <strong>BUD</strong> fará o que estiver ao seu alcance para restabelecer o acesso ao <strong>CONSUL VENDAS CORPORATIVAS</strong>			o mais breve possível, dentro das limitações técnicas de seus serviços e serviços de terceiros, dos quais a <strong>BUD</strong>			depende para ficar online.
+		</p>
+		<p>
+			1.5. Eventuais procedimentos de manutenção serão informados por meio dos canais oficiais de comunicação da <strong>BUD</strong>			(a exemplo, mas não se limitando a, e-mails, perfis oficiais em mídias sociais ou telefone de atendimento), caso seja
+			necessário que este fique indisponível por longos períodos.
+		</p>
+		<p>
+			<strong>2. </strong>
+			<strong>Funcionalidades do CONSUL VENDAS CORPORATIVAS</strong>
+		</p>
+		<p>
+			2.1. Para acessar o <strong>CONSUL VENDAS CORPORATIVAS</strong> o <strong>USUÁRIO</strong> deverá criar a Conta de Acesso,
+			fornecendo, entre outros dados, nome fantasia, endereço de e-mail, Inscrição Estadual e CNPJ.
+		</p>
+		<p>
+			2.2. A <strong>BUD</strong> poderá alterar os critérios de elegibilidade de acesso e utilização do <strong>CONSUL VENDAS CORPORATIVAS</strong>			a qualquer momento, sem que para isso tenha de fazer qualquer tipo de comunicação ou aviso prévio aos <strong>USUÁRIOS</strong>.
+			A <strong>BUD</strong> também possui a faculdade de se recusar a conceder ou cancelar Conta de Acesso a qualquer pessoa
+			que a utilizar de forma fraudulenta, violar ou tentar violar os presentes Termos de Uso, a Política de Privacidade, outras
+			políticas ou qualquer documento legal da<strong>BUD</strong>, disponibilizado ou não no <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			2.3. Se a qualquer momento for constatado que o <strong>USUÁRIO</strong> forneceu informações falsas ou não condizentes
+			com a realidade, a <strong>BUD</strong> se reserva ao direito de cancelar sua Conta de Acesso, sem prejuízo de adotar
+			as medidas que entender cabíveis.
+		</p>
+		<p>
+			2.4. O <strong>USUÁRIO</strong> possui as seguintes opções de pagamento:
+		</p>
+		<p>
+			(i) à vista:
+		</p>
+		<p>
+			a) boleto bancário;
+		</p>
+		<p>
+			2.4.1. Os preços apresentados no <strong>CONSUL VENDAS CORPORATIVAS</strong> podem ser diferentes dos oferecidos em lojas
+			físicas e/ou online de outros varejistas, e somente são válidos para as compras finalizadas no ato de sua exibição. A
+			simples inclusão de produtos no "carrinho de compras" não implica em sua reserva pelo consumidor. Apenas aos pedidos efetivamente
+			formulados e aceitos não se aplicarão eventuais alterações posteriores de preço.
+		</p>
+		<p>
+			2.4.2. O <strong>USUÁRIO</strong> poderá combinar quantos vales-presente e vales-troca quiser para complementar o pagamento.
+		</p>
+		<p>
+			2.4.3. Compras realizadas com pagamento à vista, por meio de boleto ou débito automático por exemplo, poderão receber um
+			desconto automaticamente em seu carrinho de compras, a critério exclusivo da <strong>BUD</strong>.
+		</p>
+		<p>
+			2.4.4. O prazo de entrega é considerado a partir da confirmação do pagamento pelo banco. Esse processo pode levar até 2 (dois)
+			dias úteis a partir do pagamento, para a confirmação.
+		</p>
+		<p>
+			2.5. O vale-presente é um cartão físico ou virtual que possui um valor e um código que, quando informado durante a sua compra
+			é abatido do valor total da sua compra. Sua validade é de 90 (noventa) dias ou 3 (três) meses.
+		</p>
+		<p>
+			2.6. Ao efetuar a compra, o <strong>USUÁRIO</strong> deve ficar atento às informações do produto, tais como dimensões,
+			descrição, instruções de manuseio, garantia, além de todas as informações disponíveis na página de cada produto. Caso
+			o <strong>USUÁRIO</strong> tenha dúvidas, poderá acessar a <strong>Central de Atendimento</strong>.
+		</p>
+		<p>
+			2.7. Após escolher o(s) produto(s) que deseja adquirir, o <strong>USUÁRIO</strong> terá à disposição diversos tipos de
+			frete, os quais podem variar de acordo com sua localização e tipo de produto adquirido. O processo de entrega do(s) produto(s)
+			adquirido(s) se dará após a confirmação do pagamento pelo <strong>CONSUL VENDAS CORPORATIVAS </strong>. Maiores informações
+			a respeito dos tipos de frete, bem como o procedimento de entrega podem ser obtidas na <strong>Central de Atendimento.</strong>
+		</p>
+		<p>
+			2.7.1. Caso o <strong>USUÁRIO</strong> tenha adquirido mais de um produto, suas entregas poderão ser efetuadas separadamente,
+			visando garantir mais velocidade e eficácia.
+		</p>
+		<p>
+			2.8. A <strong>BUD</strong> realiza a entrega para grande parte do território nacional, portanto é necessário que o endereço
+			de entrega esteja localizado nesse país, não sendo permitidas encomendas feitas com endereçamento de Caixa Postal.
+		</p>
+		<p>
+			2.9. O <strong>USUÁRIO</strong> poderá exercer o seu direito de arrependimento, bem como solicitar a troca ou devolução
+			do(s) produto(s) adquirido(s) em até 07 (sete) dias úteis contados do seu recebimento. Pedimos ao <strong>USUÁRIO</strong> que acesse a <strong><u>Política de Troca e Devoluções</u></strong> para maiores informações sobre como proceder e os
+			procedimentos envolvidos.
+		</p>
+		<p>
+			<strong>3. </strong>
+			<strong>Das responsabilidades e obrigações dos USUÁRIOS</strong>
+		</p>
+		<p>
+			3.1. Utilizar com retidão e de forma ética o <strong>CONSUL VENDAS CORPORATIVAS</strong>, obedecendo aos propósitos aqui
+			estabelecidos, sempre respeitando as condições que regem a utilização do <strong>CONSUL VENDAS CORPORATIVAS</strong> e
+			sua finalidade.
+		</p>
+		<p>
+			3.2. Os <strong>USUÁRIOS</strong> se comprometem a fornecer dados cadastrais corretos, completos e atualizados para que
+			o <strong>CONSUL VENDAS CORPORATIVAS</strong> possa funcionar corretamente, além de informar canal de contato apto a ser
+			acionado pela <strong>BUD</strong> para o melhor cumprimento dos serviços.
+		</p>
+		<p>
+			3.3. Manter o sigilo dos dados de sua Conta de Acesso em relação a terceiros, não divulgando ou compartilhando sua senha
+			com quem quer que seja, inclusive disponibilizando-a em locais onde outras pessoas possam ter acesso, sob pena de exclusão
+			da Conta de Acesso, além de ter de ressarcir os danos que sobrevierem dessa divulgação indevida. O <strong>USUÁRIO</strong>			se obriga a preservar a confidencialidade e utilização individual de seu e-mail, senha de acesso e eventuais outras formas
+			de verificação de autenticidade da Conta de Acesso que o <strong>BUD</strong> venha a implementar.
+		</p>
+		<p>
+			3.3.1. A Conta de Acesso é individual, de uso exclusivo e intransferível, portanto o <strong>USUÁRIO </strong>deve protegê-la
+			e mantê-la de modo confidencial, não podendo repassá-la a terceiros, sob qualquer hipótese, tal qual os componentes de
+			segurança adicionais que possuir, conforme descrito acima.
+		</p>
+		<p>
+			3.4. Adotar senha forte com o intuito de dificultar a ação de <em>experts</em> em computação de adivinhá-la ou quebrá-la
+			por mecanismos de força bruta. Entende-se por senha forte aquela que:
+		</p>
+		<p>
+			(i) Possui, ao menos, 8 caracteres, sendo 1 letra maiúscula, 1 letra minúscula (ambas sem acento) e 1 número;
+		</p>
+		<p>
+			(ii) Não representa sequências numéricas relacionadas a informações pessoais ou de fácil dedução, tais como elementos do
+			próprio nome, datas comemorativas ou repetição de caracteres iguais, a exemplo, mas não se limitando a: 1234, 0000, 01012011;
+			e
+		</p>
+		<p>
+			(ii) Não é reutilizada em aplicativos, portais e plataformas de terceiros.
+		</p>
+		<p>
+			3.4.1. Caso o <strong>USUÁRIO</strong> suspeite que a confidencialidade de sua senha foi quebrada ou que houve o comprometimento
+			de algum dispositivo de autenticação, ele deverá proceder sua troca ou atualização o mais rápido possível. Se não conseguir
+			acessar a Internet para obter suporte, deverá buscar o atendimento dentre os canais disponíveis.
+		</p>
+		<p>
+			3.5. Adotar medidas em seus dispositivos tecnológicos para evitar o acesso físico e lógico por terceiros não autorizados,
+			tais como utilização de senha e/ou biometria.
+		</p>
+		<p>
+			3.6. O <strong>USUÁRIO </strong>reconhece e afirma que todos os acessos realizados após sua autenticação digital bem-sucedida
+			são interpretados como tendo sido feitos por ele próprio de forma incontestável. Por isso, será responsável por todos
+			os acessos e operações no <strong>CONSUL VENDAS CORPORATIVAS</strong> praticados com uso de sua Conta de Acesso, inclusive
+			aqueles derivados de uso indevido ou divulgação desta para terceiros.
+		</p>
+		<p>
+			3.7. É de responsabilidade dos <strong>USUÁRIOS</strong> deixarem seus sistemas de <em>anti-spam</em>, filtros similares
+			ou configurações de redirecionamento de mensagens ajustados de modo que não interfiram no recebimento dos comunicados
+			e materiais da <strong>BUD</strong>, não sendo aceitável nenhuma escusa caso não tenha tido acesso a algum e-mail ou mensagem
+			eletrônica em virtude dos recursos mencionados.
+		</p>
+		<p>
+			3.8. Ao acessar o <strong>CONSUL VENDAS CORPORATIVAS</strong>, os <strong>USUÁRIOS</strong> declaram que irão respeitar
+			todos os direitos de propriedade intelectual de titularidade da <strong>BUD</strong>, tal qual todos os direitos referentes
+			a terceiros que porventura estejam, ou estiveram, de alguma forma disponíveis no <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			3.9. Os <strong>USUÁRIOS </strong>somente poderão reproduzir os conteúdos disponíveis no <strong>CONSUL VENDAS CORPORATIVAS</strong>,
+			em especial suas marcas e <em>layout</em> do ambiente, desde que devidamente autorizados pela <strong>BUD</strong>.
+		</p>
+		<p>
+			3.10. As funcionalidades que compõem o <strong>CONSUL VENDAS CORPORATIVAS</strong> são oferecidas na forma de prestação
+			de serviço, não conferindo ao <strong>USUÁRIO</strong> nenhum direito sobre o software utilizado pela <strong>BUD</strong>			ou sobre suas estruturas de informática que sustentam o <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			3.11. O <strong>USUÁRIO</strong> é o único e exclusivo responsável pelos usos feitos com sua Conta de Acesso, responsabilizando-se
+			por quaisquer usos que possam violar as disposições da <strong>BUD </strong>ou direitos de terceiro.
+		</p>
+		<p>
+			3.12. O <strong>USUÁRIO </strong>está ciente de que poderá ter sua Conta de Acesso banida sem aviso prévio caso a utilize
+			para realizar qualquer atividade que viole direitos da <strong>BUD</strong> ou de terceiros.
+		</p>
+		<p>
+			3.13. Não é permitido o acesso às áreas de programação do <strong>CONSUL VENDAS CORPORATIVAS</strong>, seu banco de dados
+			ou qualquer outro conjunto de informações que faça parte da atividade de <em>Webmastering</em>.
+		</p>
+		<p>
+			3.14. Também não é autorizado ao <strong>USUÁRIO </strong>realizar ou permitir que se realize engenharia reversa, nem
+			traduzir, decompilar, copiar, modificar, reproduzir, alugar, sublicenciar, publicar, divulgar, transmitir, emprestar,
+			distribuir ou, de outra maneira, dispor das ferramentas do <strong>CONSUL VENDAS CORPORATIVAS</strong> e de suas funcionalidades.
+		</p>
+		<p>
+			3.15. No <strong>CONSUL VENDAS CORPORATIVAS</strong> é proibida a utilização de softwares <em>spider</em>, ou de mineração
+			de dados, de qualquer tipo ou espécie, além de outro aqui não tipificado, mas que atue de modo automatizado, tanto para
+			realizar operações massificadas ou para quaisquer outras finalidades.
+		</p>
+		<p>
+			3.16. O descumprimento de quaisquer das obrigações aqui estipuladas poderá acarretar na suspensão das funcionalidades ou
+			exclusão da Conta de Acesso do <strong>USUÁRIO</strong>, conforme previsto neste documento.
+		</p>
+		<p>
+			3.17. A eventual remoção, bloqueio ou suspensão de qualquer conteúdo ou funcionalidade do <strong>CONSUL VENDAS CORPORATIVAS</strong>			em decorrência de alguma reclamação, deverá ser sempre compreendida como demonstração de boa-fé e intenção de solução
+			amigável de conflitos, jamais como reconhecimento de culpa ou de qualquer infração pela <strong>BUD</strong> a direito
+			de terceiro.
+		</p>
+		<p>
+			3.18. Na incidência de danos ao <strong>CONSUL VENDAS CORPORATIVAS</strong> ou a terceiros, o responsável se compromete
+			a arcar com todas as obrigações de indenizar o sujeito lesado.
+		</p>
+		<p>
+			3.19. O <strong>USUÁRIO</strong> se obriga a ressarcir a <strong>BUD</strong> de todas as condenações e prejuízos que
+			sofrer cuja origem for de atos praticados por sua Conta de Acesso, assumindo o polo passivo de ação judicial ou procedimento
+			administrativo e requerendo a exclusão da <strong>BUD</strong>, inclusive, devendo arcar totalmente com as despesas e
+			custas processuais atinentes, deixando-a livre de prejuízos e ônus.
+		</p>
+		<p>
+			<strong>4. </strong>
+			<strong>Da Isenção e Limitações de Responsabilidade da BUD </strong>
+		</p>
+		<p>
+			4.1.
+			<strong>
+				<u>A BUD não se responsabiliza por quaisquer problemas, <em>bugs</em>,            <em>glitches</em> ou funcionamentos indevidos que ocorrerem nos
+					dispositivos e equipamentos dos USUÁRIOS e sejam resultantes do uso
+					regular do CONSUL VENDAS CORPORATIVAS.
+				</u>
+			</strong>
+		</p>
+		<p>
+			4.2.
+			<strong>
+				<u>
+					A BUD não garante e nem se responsabiliza pela disponibilidade
+					integral e ininterrupta do CONSUL VENDAS CORPORATIVAS, cujo correto
+					funcionamento depende do acesso e tráfego de dados entre terminais
+					de computador dos USUÁRIOS e os servidores da BUD, não possuindo a
+					BUD nenhuma ingerência e não sendo responsável por eventuais falhas
+					no tráfego destes dados e no acesso ao CONSUL VENDAS CORPORATIVAS
+				</u>
+			</strong>
+			<u>
+				<strong>
+					decorrentes de falhas na rede mundial de computadores ou da própria
+					rede e serviços de telecomunicação prestados por provedores de
+					acesso à Internet.
+				</strong>
+			</u>
+		</p>
+		<p>
+			4.3. A <strong>BUD </strong>não se responsabiliza por qualquer dano direto ou indireto ocasionado por eventos de terceiros,
+			como ataque de hackers, falhas no sistema, no servidor ou na conexão à internet, inclusive por ações de softwares maliciosos
+			como vírus, cavalos de Tróia, e outros que possam, de algum modo, danificar o equipamento ou a conexão dos <strong>USUÁRIOS</strong>			em decorrência do acesso, utilização ou navegação no <strong>CONSUL VENDAS CORPORATIVAS</strong>, bem como a transferência
+			de dados, arquivos, imagens, textos, áudios ou vídeos contidos neste.
+		</p>
+		<p>
+			4.4. Os <strong>USUÁRIOS</strong> não possuem qualquer direito para exigir a disponibilidade do <strong>CONSUL VENDAS CORPORATIVAS</strong>			conforme melhor lhes convêm, tampouco poderão pleitear indenização ou reparação de danos em caso do <strong>CONSUL VENDAS CORPORATIVAS</strong>			permanecer fora do ar, independente da motivação.
+		</p>
+		<p>
+			4.5. A <strong>BUD</strong> não detém qualquer responsabilidade pela navegação dos <strong>USUÁRIOS</strong> nos <em>links </em>externos
+			contidos no <strong>CONSUL VENDAS CORPORATIVAS</strong>, sendo seus deveres a leitura de eventuais Termos de Uso e Política
+			de Privacidade do portal acessado e agir conforme o determinado.
+		</p>
+		<p>
+			4.5.1. A <strong>BUD</strong> não verifica, controla, aprova ou garante a adequação ou exatidão das informações ou dados
+			disponibilizados em tais <em>links</em>, não sendo, portanto, responsável por prejuízos, perdas ou danos ocorridos pela
+			visita a tais sites, cabendo ao interessado verificar a confiabilidade das informações e dados ali exibidos antes de tomar
+			alguma decisão ou praticar algum ato.
+		</p>
+		<p>
+			4.6.
+			<strong>
+				<u>
+					Nos casos em que determinado(s) produto(s) for(em) oferecidos a
+					preços que claramente não condigam com a realidade praticada no
+					mercado – erro crasso – a BUD se exime da responsabilidade de
+					cumprir com a oferta.
+				</u>
+			</strong>
+		</p>
+		<p>
+			4.7. A <strong>BUD</strong> não se responsabiliza por erros de sistemas que alterem dados ou informações de produtos,
+			inclusive preços informados no <strong>CONSUL VENDAS CORPORATIVAS</strong> e por compras reprovadas pelas instituições
+			financeiras.
+		</p>
+		<p>
+			4.8. A <strong>BUD</strong> se reserva o direito de atender apenas vendas no varejo destinadas a consumidores finais.<strong><u>A BUD NÃO AUTORIZA A COMPRA DE PRODUTOS DO </u></strong><strong><u>CONSUL VENDAS CORPORATIVAS</u></strong>			<strong><u>PARA A FINALIDADE DE REVENDA</u></strong>. Quantidades superiores a 10 (dez) produtos e/ou sucessivos pedidos
+			do mesmo item ou de uma mesma relação de produtos, independente da quantidade, realizadas por pessoas físicas ou jurídicas,
+			deverão ser objeto de consulta ao departamento responsável do <strong>CONSUL VENDAS CORPORATIVAS</strong> através da
+			<strong>Central de Atendimento</strong>.
+		</p>
+		<p>
+			<strong>5. </strong>
+			<strong>Privacidade dos USUÁRIOS no CONSUL VENDAS CORPORATIVAS</strong>
+		</p>
+		<p>
+			5.1. A <strong>BUD</strong> possui documento próprio, denominado Política de Privacidade, que regula o tratamento dado
+			às informações coletadas no <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			5.2. A Política de Privacidade é parte integrante e inseparável dos Termos de Uso e Condições de Navegação do<strong>CONSUL VENDAS CORPORATIVAS</strong>,
+			e pode ser acessada <strong><u>aqui</u> </strong>ou no <em>link </em>encontrado em seu rodapé.
+		</p>
+		<p>
+			5.3. Caso alguma disposição da Política de Privacidade conflite com qualquer outra do presente documento, deverá prevalecer
+			o descrito na norma mais específica.
+		</p>
+		<p>
+			<strong>6. </strong>
+			<strong>Disposições Gerais</strong>
+		</p>
+		<p>
+			6.1. O atendimento aos <strong>USUÁRIOS </strong>poderá ser realizado por meio dos canais de atendimento da <strong>BUD</strong>			apontados a seguir, cujo horário de funcionamento é de segunda a sábado, das 08:30 às 20:30, exceto feriados nacionais:
+		</p>
+		<p>
+			(i) Central de Atendimento: 3003-0777 (capitais e regiões metropolitanas) ou 0800 970-0777 (demais localidades), de segundas
+			a sábados, das 7h30 às 22h;
+		</p>
+		<p>
+			(ii) Fale Conosco: via formulário no site;
+		</p>
+		<p>
+			(iii) Televendas: (11) 3004-2292.
+		</p>
+		<p>
+			6.2. Os presentes Termos de Uso e Condições de Navegação estão sujeitos a constante melhoria e aprimoramento. Assim, a <strong>BUD </strong>se
+			reserva ao direito de modificá-los a qualquer momento, conforme a finalidade do <strong>CONSUL VENDAS CORPORATIVAS</strong>			ou conveniência de sua controladora, tal qual para adequação e conformidade legal de disposição de lei ou norma que tenha
+			força jurídica equivalente, cabendo ao<strong>USUÁRIO</strong> verificá-lo sempre que efetuar o acesso ao <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			6.2.1. Ocorrendo atualizações neste documento ou na Política de Privacidade, a <strong>BUD</strong> notificará o <strong>USUÁRIO</strong>			mediante as ferramentas disponíveis no <strong>CONSUL VENDAS CORPORATIVAS</strong> e/ou os meios de contato fornecidos
+			pelo <strong>USUÁRIO</strong>.
+		</p>
+		<p>
+			6.3. Ao navegar pelo <strong>CONSUL VENDAS CORPORATIVAS</strong> e utilizar suas funcionalidades, o <strong>USUÁRIO</strong>			aceita guiar-se pelos Termos de Uso e Condições de Navegação e pela Política de Privacidade que se encontram vigentes
+			na data de acesso. Por isso, é recomendável que o <strong>USUÁRIO</strong> se mantenha atualizado.
+		</p>
+		<p>
+			6.4. A tolerância do eventual descumprimento de quaisquer das cláusulas e condições do presente instrumento não constituirá
+			novação das obrigações aqui estipuladas e tampouco impedirá ou inibirá a exigibilidade das mesmas a qualquer tempo.
+		</p>
+		<p>
+			6.5. Caso alguma disposição destes Termos de Uso ou da Política de Privacidade publicadas no <strong>CONSUL VENDAS CORPORATIVAS</strong>			for julgada inaplicável ou sem efeito, o restante de ambos os documentos continuam a viger, sem a necessidade de medida
+			judicial que declare tal assertiva.
+		</p>
+		<p>
+			6.6. O <strong>CONSUL VENDAS CORPORATIVAS</strong> tem como base a data e horários oficiais de Brasília.
+		</p>
+		<p>
+			<strong>7. </strong>
+			<strong>Lei aplicável e Jurisdição</strong>
+		</p>
+		<p>
+			7.1. Os Termos e Condições de Uso aqui descritos são interpretados segundo a legislação brasileira, no idioma português,
+			sendo eleito o Foro da Comarca de São Paulo no Estado de São Paulo para dirimir qualquer litígio ou controvérsia envolvendo
+			o presente documento, salvo ressalva específica de competência pessoal, territorial ou funcional pela legislação aplicável.
+		</p>
+		<p>
+			<strong>8. </strong>
+			<strong>Registro público:</strong>
+		</p>
+		<p>
+			8.1. Estes Termos e Condições de Uso estão registrados no __º Cartório Oficial de Registro de Títulos e Documentos de _____
+			sob o número _______ em ____.
+		</p>
+		<p>
+			<strong>9. </strong>
+			<strong>Glossário</strong>
+		</p>
+		<p>
+			<strong></strong>
+		</p>
+		<p>
+			9.1. Para os fins deste documento, devem se considerar as seguintes definições e descrições para seu melhor entendimento:
+		</p>
+		<p>
+			<strong>BUD </strong>
+			<strong>: </strong>
+			<strong>BUD COMÉRCIO DE ELETRODOMÉSTICOS LTDA</strong> ., pessoa jurídica de direito privado, com sede na cidade de São
+			Paulo, estado de São Paulo, na Rua Olimpia Semeraro, n.º 675, inscrita no CNPJ/MF sob n º 62.058.318/0007-76.
+		</p>
+		<p>
+			<strong><em>Anti-Spam</em></strong> : Sistema que evita correspondências não desejadas, como publicidade em massa, pelo
+			bloqueio de mensagens ou as movendo para pasta específica.
+		</p>
+		<p>
+			<strong>Conta de Acesso</strong>
+			<em>: </em> Credencial de um <strong>USUÁRIO</strong> que permite acesso à área restrita e às funcionalidades exclusivas
+			do <strong>CONSUL VENDAS CORPORATIVAS</strong>, definida pela combinação de e-mail e senha, e consistente nas informações
+			pessoais fornecidas pelo <strong>USUÁRIO</strong>.
+		</p>
+		<p>
+			<strong>Dia Útil</strong> : para os fins do presente Termos de Uso, dia útil é aquele que não seja sábado, domingo ou
+			feriado nacional.
+		</p>
+		<p>
+			<strong><em>Layout</em></strong> : Conjunto compreendido entre aparência, <em>design</em> e fluxos do <strong>CONSUL VENDAS CORPORATIVAS</strong>.<strong></strong>
+		</p>
+		<p>
+			<strong><em>Link</em></strong> : Terminologia para endereço de <em>Internet</em>.
+		</p>
+		<p>
+			<strong>CONSUL VENDAS CORPORATIVAS</strong> : Designa o endereço eletrônico:
+			<a href="http://loja.consulempresa.com.br/" target="_blank">loja.consulempresa.com.br</a> e seus subdomínios.
+		</p>
+		<p>
+			<strong>USUÁRIOS</strong> : Pessoas que acessam ou interagem com as atividades oferecidas pelo <strong>CONSUL VENDAS CORPORATIVAS</strong>.
+		</p>
+		<p>
+			<strong>Atualização: </strong> 30 de maio de 2017.
+		</p>
+
+	</div>
+	<!-- [ MODAL - Termo] -->
+
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-footer.html -->
+	<!-- @endif -->
+
+	<div class="hide">
+		<vtex.cmc:welcomeMessage />
+	</div>
+
+	<!-- @if DEBUG='production' -->
+	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
-  	<!-- @endif -->
+	<!-- @endif -->
 
-	<script type="text/javascript" src="/arquivos/consul2-pre-home.min.js"></script>
+
+
 
 </body>
+
 </html>

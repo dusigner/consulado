@@ -18,14 +18,19 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
-	require('modules/checkout.gae');
-	require('modules/checkout.recurrence');
-	require('modules/checkout.modify');
+
+	require('expose?store!modules/store/store');
+
+	require('modules/checkout/checkout.gae');
+	require('modules/checkout/checkout.recurrence');
+	require('modules/checkout/checkout.modify');
 	require('modules/checkout.cotas');
+	require('modules/checkout/checkout.pj');
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas'], function(gae, recurrence, cotas) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
+
 		var self = this,
 			$body = $('body');
 
@@ -54,6 +59,10 @@ $(window).on('load', function() {
 			return $body.hasClass('body-order-form');
 		};
 
+		this.isShipping = function() {
+			return $('.shipping-data').hasClass('active');
+		};
+
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
@@ -69,6 +78,10 @@ $(window).on('load', function() {
 
 			if (self.isCart()) {
 				self.cart();
+			}
+
+			if (self.isShipping()) {
+				pj.hideChangeAddress();
 			}
 			
 			self.cotasInit();
@@ -109,7 +122,9 @@ $(window).on('load', function() {
 			$('.Shipping td:first').attr('colspan', '4');
 			$('.caret').removeClass('caret').addClass('icon icon-chevron-down');
 
-			gae.setup();
+			if(store && store.isPersonal) {
+				gae.setup();
+			}
 
 			recurrence.setup();
 
@@ -125,8 +140,16 @@ $(window).on('load', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
+			if (store && store.isCorp) {
+				pj.hideChangeAddress();
+			}
+
+
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
+				if (store && store.isCorp) {
+					pj.disableInputs(e);
+				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
@@ -152,6 +175,7 @@ $(window).on('load', function() {
 						$('#ship-street').focus();
 					}
 				}
+
 			}));
 		};
 
@@ -163,8 +187,12 @@ $(window).on('load', function() {
 				$('#client-document').attr('disabled', 'disabled');
 			}
 
-			if(window.vtex.accountName !== 'consulqa') {
+			if(window.vtex.accountName !== 'consulqa' && window.vtex.accountName !== 'consulempresa') {
 				$('.box-client-info-pj').remove();
+			}
+
+			if(store.isCorp) {
+				$('#is-corporate-client').click();
 			}
 		};
 
@@ -187,7 +215,6 @@ $(window).on('load', function() {
 					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'
 						window.location.href = '#/orderform';
 					} else { //se nao esta logado, abre modal pra colocar o email
-						console.log('ue');
 						var formLogin = $('.orderform-template .pre-email .client-email').html();
 						$('#modal-login .modal-body .login-email').html(formLogin);
 						$('#modal-login #client-pre-email').attr('placeholder','E-mail');
@@ -249,6 +276,7 @@ $(window).on('load', function() {
 	});
 
 });
+
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {
 	console.log(a, b, c);

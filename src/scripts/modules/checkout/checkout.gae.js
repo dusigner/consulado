@@ -2,8 +2,15 @@
 
 'use strict';
 
-require('../../templates/modal-warranty-desktop-teste-ab-novo.html');
-require('../../templates/modal-warranty-mobile-teste-ab-novo.html');
+// require('../../templates/modal-warranty-desktop.html');
+// require('../../templates/modal-warranty-mobile.html');
+// require('../../templates/modal-warranty-desktop-teste-ab.html');
+
+require('../../../templates/modal-warranty-desktop-teste-ab-18.html');
+require('../../../templates/modal-warranty-mobile-teste-ab-18.html');
+require('../../../templates/modal-warranty-desktop-teste-ab-novo.html');
+require('../../../templates/modal-warranty-mobile-teste-ab-novo.html');
+
 
 Nitro.module('checkout.gae', function() {
 

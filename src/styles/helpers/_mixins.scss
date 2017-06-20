@@ -5,6 +5,20 @@
 // http://www.youtube.com/watch?v=umDr0mPuyQc
 
 
+
+//BOOTSRAP MIXINS
+@import 'bootstrap/mixins/grid';
+@import 'bootstrap/mixins/grid-framework';
+@import 'bootstrap/mixins/center-block';
+@import 'bootstrap/mixins/hide-text';
+@import 'bootstrap/mixins/reset-text';
+@import 'bootstrap/mixins/size';
+@import 'bootstrap/mixins/responsive-visibility';
+@import 'bootstrap/mixins/tab-focus';
+@import 'bootstrap/mixins/forms';
+@import 'bootstrap/mixins/opacity';
+
+
 // div { transition: |property| |duration| |timing-function| |delay|; }
 @mixin singleTransition($time: 250) {
 -webkit-transition: all #{$time}ms ease-out;

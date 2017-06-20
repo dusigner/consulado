@@ -89,7 +89,13 @@ Nitro.module('boleto', function() {
 		$('.discount-boleto, .skuPrice').remove();
 		if (sku.available) {
 			var boletoInfo;
-			if (cmcDiscountCartao >= cmcDiscountBoleto) {
+			/**
+			* Se o desconto de cartão for maior ou igual que o desconto no boleto 
+			* E se a loja for PF e não PJ
+			* Mostra o desconto de cartão
+			* Caso contrário, mostra o desconto do boleto
+			*/
+			if (cmcDiscountCartao >= cmcDiscountBoleto && (store && store.isPersonal)) {
 				boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
 			} else {
 				boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
@@ -103,7 +109,13 @@ Nitro.module('boleto', function() {
 	if (prodAvailable.length > 0) {
 		var isDiscountOff,
 			boletoInfo;
-		if (cmcDiscountCartao >= cmcDiscountBoleto) {
+		/**
+		* Se o desconto de cartão for maior ou igual que o desconto no boleto 
+		* E se a loja for PF e não PJ
+		* Mostra o desconto de cartão
+		* Caso contrário, mostra o desconto do boleto
+		*/
+		if (cmcDiscountCartao >= cmcDiscountBoleto && (store && store.isPersonal)) {
 			isDiscountOff = (cmcDiscountCartao > 0) ? ' (' + cmcDiscountCartao + '% OFF)' : '';
 			boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
 		} else {

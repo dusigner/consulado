@@ -49,8 +49,13 @@ Nitro.module('percentoff', function() {
 		// var total = parseFloat($(this).data('price').replace('R$ ', '').replace('.', '').replace(',', '.'));
 		// $(this).find('span').text( $.formatNumber( total * (1 - discount) ) ).end().addClass('on');
 
-
-		if (cmcDiscountCartao >= cmcDiscountBoleto) {
+		/**
+		 * Se o desconto de cartão for maior ou igual que o desconto no boleto 
+		 * E se a loja for PF e não PJ
+		 * Mostra o desconto de cartão
+		 * Caso contrário, mostra o desconto do boleto
+		 */
+		if (cmcDiscountCartao >= cmcDiscountBoleto && (store && store.isPersonal)) {
 			self.find('.discount-boleto')
 				.text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
 		}else {
