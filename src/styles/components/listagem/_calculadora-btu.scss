@@ -231,3 +231,12 @@
 		}
 	}
 }
+
+@media (max-width: 48em){
+	body:not(.produto) header.resultado__header {
+		position: initial;
+		top: initial;
+		width: initial;
+		z-index: initial;
+	}
+}

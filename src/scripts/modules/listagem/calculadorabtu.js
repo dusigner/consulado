@@ -5,8 +5,23 @@ Nitro.module('calculadorabtu', function () {
 	var calcBtu = $('.page-calculadora-btu__banner'),
 		calcBtuMask = calcBtu.find('.page-calculadora-btu__mask'),
 		calcBtuIframe = $('#calculadora-btu');
+	
+	var updateHeight = function() {
 
-	calcBtuMask.click(function(e) {
+		var $calculadoraBtu = $('#calculadora-btu');
+		var innerDoc = $calculadoraBtu.get(0).contentDocument || $calculadoraBtu.get(0).contentWindow.document,
+			$document = $(innerDoc),
+			height = $($document.find('body')).height();
+
+		if(height > 100) {
+			calcBtuIframe.height(height);
+		} else {
+			calcBtuIframe.height(668);
+		}
+		console.log('Update');
+	};
+
+	calcBtuMask.on('click', function(e) {
 		e.preventDefault();
 
 		if ($(this).hasClass('is--active')) {
@@ -18,22 +33,11 @@ Nitro.module('calculadorabtu', function () {
 
 
 		$('html, body').animate({scrollTop: calcBtu.offset().top -10 }, 'slow');
+		updateHeight();
 	});
 
 	// TROCOU STEP DENTRO DO IFRAME
-	$(window).on('calculadora.init calculadora.step', function() {
-		var $calculadoraBtu = $('#calculadora-btu');
-		var innerDoc = $calculadoraBtu.get(0).contentDocument || $calculadoraBtu.get(0).contentWindow.document,
-			$document = $(innerDoc),
-			height = $($document.find('body')).height();
-
-		if(height > 262) {
-			calcBtuIframe.height(height);
-		} else {
-			calcBtuIframe.height(668);
-		}
-	});
-
+	$(window).bind('calculadora.init calculadora.step calculadora.reinit', updateHeight);
 
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
