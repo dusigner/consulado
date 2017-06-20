@@ -1,283 +1,298 @@
 @charset 'UTF-8';
 
-@if $use-com-header == true {
+//------------------------------------
+//  HEADER
+//------------------------------------
 
-	//------------------------------------
-	//  HEADER
-	//------------------------------------
+#ajaxBusy { @extend %superhide; }
 
-	#ajaxBusy { @extend %superhide; }
+// Ajuste modal Vtex - BTN Close
+.vtexIdUI .modal-header {
+	.close {
+		display: block !important;
+		right: 5px!important;
+		top: 5px!important;
 
-	// Ajuste modal Vtex - BTN Close
-	.vtexIdUI .modal-header {
-		.close {
-			display: block !important;
-			right: 5px!important;
-			top: 5px!important;
+		&:focus { outline: none!important; }
+	}
 
-			&:focus { outline: none!important; }
-		}
+	.vtexIdUI-heading {
+		font-size: 14px!important;
+		text-align: center;
+	}
+}
 
-		.vtexIdUI-heading {
-			font-size: 14px!important;
-			text-align: center;
+$mobile-header-height: 100px;
+
+// Header
+header {
+	min-height: 120px;
+
+	&.menu-scroll {
+		overflow-y: scroll;
+
+		@media(max-width: 768px) {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 99999;
 		}
 	}
 
-	$mobile-header-height: 100px;
+	@include breakpoint(small, 'max') { min-height: $mobile-header-height; }
+}
 
-	// Header
-	header {
-		min-height: 120px;
+@include breakpoint(small, 'max') {
+	body:not(.produto):not(.pre-home) {
+		padding-top: $mobile-header-height;
 
-		&.menu-scroll {
-			overflow-y: scroll;
+		header {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 4;
+		}
+	}
+}
 
-			@media(max-width: 768px) {
-				position: fixed;
-				top: 0;
-				width: 100%;
-				z-index: 99999;
+// Pre header
+.pre-header {
+	background: $gray-l;
+	margin: 0;
+	min-height: 40px;
+	text-transform: uppercase;
+
+	a {
+		@include responsiveFont(12);
+		border-bottom: 2px solid transparent;
+		display: inline-block;
+		font-weight: 700;
+		line-height: 40px;
+		margin-left: 20px;
+
+		&:first-child { margin-left: 0; }
+
+		&.active {
+			border-bottom-color: $orange;
+			color: $orange;
+		}
+
+		&[href*='tel'] { border-bottom-color: transparent; }
+
+		&[title*='Televendas'] { color: $txt-gray-l; }
+	}
+
+	.float-right { text-align: right; }
+}
+
+.header {
+	margin: 0;
+	padding: 12px 0 14px 0;
+
+	@include breakpoint(small, 'max') {
+		padding: 0;
+		padding-bottom: 0;
+		text-align: right;
+
+		.container {
+			border-bottom: 1px solid $gray;
+			max-width: 100%;
+			padding: 0;
+			position: relative;
+			width: 100%;
+		}
+
+		.cont-search,
+		.account,
+		.minicart {
+			background-color: $gray-l;
+			height: 50px;
+			position: absolute;
+			text-align: left;
+			top: 44px;
+			vertical-align: top;
+			width: 100% / 4 * 1;
+			z-index: 10;
+		}
+
+		.cont-search {
+			background-color: #ffffff;
+			left: 0;
+			top: 93px;
+			width: 100%;
+
+			@include breakpoint(small, 'max') {
+				border: 7px solid $green;
+				top: 50px;
 			}
 		}
 
-		@include breakpoint(small, 'max') { min-height: $mobile-header-height; }
+		.account { left: 54%; }
+
+		.minicart {
+			@include breakpoint(small, 'max') {
+				right: 0;
+				text-align: right;
+				top: 0;
+			}
+			background-color: transparent;
+			right: 30px;
+		}
+	}
+}
+
+.cont-logo {
+	text-align: left;
+
+	@include breakpoint(extra-large, 'max') { width: 19%; }
+
+	@include breakpoint(extra-large, 'min') {
+		&.col-3 { width: 20%; }
 	}
 
 	@include breakpoint(small, 'max') {
-		body:not(.produto):not(.pre-home) {
-			padding-top: $mobile-header-height;
-			header {
-				position: fixed;
-				top: 0;
-				width: 100%;
-				z-index: 4;
-			}
-		}
+		display: none;
+		text-align: center;
+		width: 100% !important;
 	}
+}
 
-	// Pre header
-	.pre-header {
-		background: $gray-l;
-		margin: 0;
-		min-height: 40px;
-		text-transform: uppercase;
+.cont-logo-mobile {
+	@include breakpoint(small, 'max') {
+		float: none;
+		text-align: center;
+		width: 85%;
 
 		a {
-			@include responsiveFont(12);
-			border-bottom: 2px solid transparent;
 			display: inline-block;
-			font-weight: 700;
-			line-height: 40px;
-			margin-left: 20px;
-
-			&:first-child { margin-left: 0; }
-
-			&.active {
-				border-bottom-color: $orange;
-				color: $orange;
-			}
-
-			&[href*='tel'] { border-bottom-color: transparent; }
-
-			&[title*='Televendas'] { color: $txt-gray-l; }
+			padding: 6px 0;
+			top: 0;
 		}
+	}
+}
 
-		.float-right { text-align: right; }
+.logo {
+	@include responsiveFont(30);
+	color: $green;
+	display: inline-block;
+	margin-top: 10px;
+	padding-right: 20px;
+	position: relative;
+	vertical-align: top;
+
+	@include breakpoint(small, 'max') {
+		@include responsiveFont(25.5, 16, true);
+		color: #ffffff;
+		display: block;
+		margin-top: 0;
+		text-align: center;
+		top: -40px;
 	}
 
-	.header {
-		margin: 0;
-		padding: 12px 0 14px 0;
+	// .consulempresa & {
+	// 	background: #ccc url('/arquivos/logo-consul-vendas-corporativas.jpg') top center no-repeat;
+	// 	background: #ccc url('/arquivos/logo-consul-vendas-corporativas.png') top center no-repeat;
+	// 	background-size: contain;
+	// 	display: block;
+	// 	height: 59px;
+	// 	margin-right: 10px;
+	// 	padding-right: 0;
+	// 	width: 120px;
 
-		@include breakpoint(small, 'max') {
-			padding: 0;
-			padding-bottom: 0;
-			text-align: right;
+	// 	.icon-logo-consul {
+	// 		display: none;
+	// 		opacity: .5;
+	// 		visibility: hidden;
+	// 	}
+	// }
+}
 
-			.container {
-				border-bottom: 1px solid $gray;
-				max-width: 100%;
-				padding: 0;
+// Conta
+div.account {
+	@include responsiveFont(12);
+	font-weight: 700;
+	height: 50px;
+	padding: fluidWidth(5px) 0;
+	padding-left: fluidWidth(25px);
+	position: relative;
+	text-transform: uppercase;
+
+	@include breakpoint(small, 'max') {
+		display: none;
+
+		.header & {
+			.hide { @include hide-conditional(); }
+
+			a {
+				display: block;
+				font-size: 0;
+				height: 100%;
 				position: relative;
 				width: 100%;
 			}
-
-			.cont-search,
-			.account,
-			.minicart {
-				background-color: $gray-l;
-				height: 50px;
-				position: absolute;
-				text-align: left;
-				top: 44px;
-				vertical-align: top;
-				width: 100% / 4 * 1;
-				z-index: 10;
-			}
-
-			.cont-search {
-				background-color: #ffffff;
-				left: 0;
-				top: 93px;
-				width: 100%;
-
-				@include breakpoint(small, 'max') {
-					border: 7px solid $green;
-					top: 50px;
-				}
-			}
-
-			.account { left: 54%; }
-
-			.minicart {
-				@include breakpoint(small, 'max') {
-					right: 0;
-					text-align: right;
-					top: 0;
-				}
-				background-color: transparent;
-				right: 30px;
-			}
 		}
 	}
 
-	.cont-logo {
-		text-align: left;
-
-		@include breakpoint(extra-large, 'max') { width: 19%; }
-
-		@include breakpoint(extra-large, 'min') {
-			&.col-3 { width: 20%; }
-		}
-		
-		@include breakpoint(small, 'max') {
-			display: none;
-			text-align: center;
-			width: 100% !important;
-		}
+	@include breakpoint(extra-small, 'max') {
+		.header & { left: 62%; }
 	}
 
-	.cont-logo-mobile {
-		@include breakpoint(small, 'max') {
-			float: none;
-			text-align: center;
-			width: 85%;
-
-			a {
-				display: inline-block;
-				padding: 6px 0;
-				top: 0;
-			}
-		}
-	}
-
-	.logo {
-		@include responsiveFont(30);
-		color: $green;
-		display: inline-block;
-		margin-top: 10px;
-		padding-right: 20px;
-		position: relative;
-		vertical-align: top;
-
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(25.5, 16, true);
-			color: #ffffff;
-			display: block;
-			margin-top: 0;
-			text-align: center;
-			top: -40px;
-		}
-	}
-
-	// Conta
-	div.account {
-		@include responsiveFont(12);
-		font-weight: 700;
+	.icon-consul-account {
+		@include responsiveFont(40);
+		display: block;
+		float: left;
 		height: 50px;
-		padding: fluidWidth(5px) 0;
-		padding-left: fluidWidth(25px);
-		position: relative;
-		text-transform: uppercase;
+		line-height: 42px;
+		margin-right: 10px;
+		width: 30px;
+
+		@include breakpoint(small, 'min') { color: $txt-gray-l; }
 
 		@include breakpoint(small, 'max') {
-			display: none;
-
-			.header & {
-				.hide { @include hide-conditional(); }
-
-				a {
-					display: block;
-					font-size: 0;
-					height: 100%;
-					position: relative;
-					width: 100%;
-				}
-			}
+			@include responsiveFont(24, 16, true);
+			line-height: 50px;
 		}
+	}
 
-		@include breakpoint(extra-small, 'max') {
-			.header & { left: 62%; }
-		}
+	a {
+		color: $txt-gray;
+		display: block;
+		vertical-align: middle;
+	}
 
-		.icon-consul-account {
-			@include responsiveFont(40);
-			display: block;
-			float: left;
-			height: 50px;
-			line-height: 42px;
-			margin-right: 10px;
-			width: 30px;
+	.hide { @include show-conditional(); }
 
-			@include breakpoint(small, 'min') { color: $txt-gray-l; }
+	.welcome {
+		@include responsiveFont(12);
+		display: block;
+		left: 35%;
+		margin: 0;
+		position: absolute;
+		width: 75%;
 
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(24, 16, true);
-				line-height: 50px;
-			}
-		}
+		em { font-style: normal; }
 
 		a {
-			color: $txt-gray;
-			display: block;
-			vertical-align: middle;
-		}
+			color: $orange;
 
-		.hide { @include show-conditional(); }
-
-		.welcome {
-			@include responsiveFont(12);
-			display: block;
-			left: 35%;
-			margin: 0;
-			position: absolute;
-			width: 75%;
-
-			em { font-style: normal; }
-
-			a {
-				color: $orange;
-
-				&[href='/no-cache/user/logout'] {
-					display: block;
-					padding: 3px 0;
-				}
+			&[href='/no-cache/user/logout'] {
+				display: block;
+				padding: 3px 0;
 			}
 		}
+	}
 
-		#login {
-			@include responsiveFont(12, 16, true);
-			background-color: #fff;
-			color: $orange;
-			display: block;
-			height: 100%;
-			padding: 3px 0 0 0;
-			position: absolute;
-			top: 0;
-			width: 100%;
+	#login {
+		@include responsiveFont(12, 16, true);
+		background-color: #fff;
+		color: $orange;
+		display: block;
+		height: 100%;
+		padding: 3px 0 0 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
 
-			@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
-		}
+		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 	}
 }

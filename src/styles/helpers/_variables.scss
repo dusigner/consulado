@@ -185,7 +185,7 @@ $column-number: 12 !default;
 	$use-com-notify                : false !default;
 	$use-com-popup                 : false !default;
 	$use-com-slick                 : true !default;
-	$use-com-header                : true !default;
+	// $use-com-header                : true !default;
 	$use-com-tipbar                : true !default;
 	$use-com-footer                : true !default;
 	$use-com-foot-news             : true !default;
@@ -193,7 +193,7 @@ $column-number: 12 !default;
 
 // Helpers
 	$use-helper:      true !default;
-	$use-conditional: true !default;
+	// $use-conditional: true !default;
 	$use-print:       true !default;
 	$debug-mode:      false !default;
 		$use-responsive-debug: false !default;
