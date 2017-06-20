@@ -20,15 +20,14 @@ Nitro.module('calculadorabtu', function () {
 		$('html, body').animate({scrollTop: calcBtu.offset().top -10 }, 'slow');
 	});
 
-
 	// TROCOU STEP DENTRO DO IFRAME
-	$(window).on('calculadora.step', function() {
+	$(window).on('calculadora.init calculadora.step', function() {
 		var $calculadoraBtu = $('#calculadora-btu');
 		var innerDoc = $calculadoraBtu.get(0).contentDocument || $calculadoraBtu.get(0).contentWindow.document,
 			$document = $(innerDoc),
 			height = $($document.find('body')).height();
 
-		if(height > 100) {
+		if(height > 262) {
 			calcBtuIframe.height(height);
 		} else {
 			calcBtuIframe.height(668);

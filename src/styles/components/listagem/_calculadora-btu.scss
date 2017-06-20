@@ -1,5 +1,4 @@
 @charset 'UTF-8';
-
 //------------------------------------
 //  Calculadora BTU
 //------------------------------------
@@ -9,20 +8,20 @@
 		max-height: 420px;
 	}
 
+	@include breakpoint(1120px, 'max') {
+		max-height: 500px;
+	}
+
 	@include breakpoint(1012px, 'max') {
 		max-width: 600px;
 	}
 
-	@include breakpoint(large, 'max') {
-		max-height: 600px;
-	}
-
-	@include breakpoint(medium, 'max') {
-		max-height: 400px;
-	}
-
-	@include breakpoint(small, 'max') {
+	@include breakpoint(960px, 'max') {
 		max-height: 500px;
+	}
+
+	@include breakpoint(768px, 'max') {
+		max-height: 600px;
 	}
 
 	margin: 20px auto;
@@ -41,18 +40,18 @@
 		display: block;
 		margin: 30px auto;
 		position: relative;
-		transform: translate(-4%, -32%);
+		transform: translate(-4%, -25%);
 		width: 1300px;
 		
 		@include breakpoint(1280px, 'max') {
 			height: 930px;
 			max-width: 100%;
-			transform: translate(0, -25%);
+			transform: translate(0, -5%);
 			width: 100%;
 		}
 
 		@include breakpoint(1120px, 'max') {
-			transform: translate(0, -5%);
+			transform: translate(0, 20%);
 		}
 
 		@include breakpoint(1012px, 'max') {
@@ -61,19 +60,19 @@
 		}
 
 		@include breakpoint(960px, 'max') {
-			transform: translate(0, 10%); 
-		}
-		
-		@include breakpoint(480px, 'max') { 
-			transform: translate(0, 5%); 
-		}
-
-		@include breakpoint(420px, 'max') { 
-			transform: translate(0, 10%); 
-		}
-
-		@include breakpoint(350px, 'max') { 
 			transform: translate(0, 15%); 
+		}
+
+		@include breakpoint(768px, 'max') { 
+			transform: translate(0, 20%); 
+		}
+	
+		@include breakpoint(480px, 'max') { 
+			transform: translate(0, 25%); 
+		}
+
+		@include breakpoint(360px, 'max') { 
+			transform: translate(0, 30%); 
 		}
 	}
 
@@ -135,6 +134,7 @@
 
 		@include breakpoint(extra-small, 'max') {
 			max-width: 70%;
+			padding: 15px 10px;
 		}
 
 		.page-calculadora-btu__title {
@@ -155,12 +155,9 @@
 				padding-bottom: 10px;
 			}
 
-			@include breakpoint(extra-small, 'max') {
-				@include font-size(20px, true, false);
-			}
-
-			@include breakpoint(420px, 'max') {
-				@include font-size(19px, true, false);
+			@include breakpoint(480px, 'max') {
+				@include font-size(23px, true, false);
+				font-weight: 100;
 			}
 		}
 
