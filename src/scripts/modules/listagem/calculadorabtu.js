@@ -18,7 +18,6 @@ Nitro.module('calculadorabtu', function () {
 		} else {
 			calcBtuIframe.height(668);
 		}
-		console.log('Update');
 	};
 
 	calcBtuMask.on('click', function(e) {
