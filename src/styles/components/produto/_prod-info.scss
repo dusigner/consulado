@@ -538,3 +538,21 @@
 		margin-left: 0!important;
 	}
 }
+
+body.consulempresa {
+	.valor-por {
+		@include responsiveFont(28, 16, true);
+		color: $green;
+		font-weight: 700;
+		&:after {
+			@include responsiveFont(16, 16, true);
+			color: $txt-gray;
+			content: 'à vista no boleto';
+			display: block;
+			font-weight: normal;
+			
+		}
+	}
+	.valor-dividido,
+	.valores-parcelas {display: none !important;}
+}
