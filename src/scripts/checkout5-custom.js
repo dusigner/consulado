@@ -112,6 +112,10 @@ $(window).on('load', function() {
 				gae.setup();
 			}
 
+			if (store && store.isCorp) {
+				$('#cart-reset-postal-code').css('visibility', 'hidden');
+			}
+
 			recurrence.setup();
 
 			this.fakeButton();
@@ -175,6 +179,7 @@ $(window).on('load', function() {
 
 			if (store && store.isCorp) {
 				$('#client-company-name, #client-company-nickname, #client-company-ie, #client-company-document, #state-inscription').attr('disabled', 'disabled');
+				$('#not-corporate-client').remove();
 			}
 
 			if(window.vtex.accountName !== 'consulqa' && window.vtex.accountName !== 'consulempresa') {
