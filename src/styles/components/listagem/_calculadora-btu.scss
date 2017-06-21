@@ -232,11 +232,19 @@
 	}
 }
 
+/* Resolve conflito associados a tag header */
 @media (max-width: 48em){
 	body:not(.produto) header.resultado__header {
 		position: initial;
 		top: initial;
 		width: initial;
 		z-index: initial;
+	}
+}
+
+/* Resolve erro navegador Safari */
+@include breakpoint(480px, 'max') {
+	body.listagem.btu.page-calculadora-btu .page-calculadora-btu__container h3 {
+		min-width: 189px;
 	}
 }
