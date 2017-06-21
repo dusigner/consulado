@@ -42,7 +42,7 @@ var redirect = module.exports.redirect = function (data) {
 					.setPath(uriRedirect ? uriRedirect : '/empresas')
 					.deleteQueryParam('ReturnUrl')
 					.toString();
-				} else {
+			} else {
 				vtexid.start({
 					email: data.email,
 					returnUrl: uri.toString()

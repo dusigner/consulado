@@ -35,7 +35,6 @@ Nitro.module('login', function () {
 		var email = store.userData.email || store.uri.getQueryParamValue('email');
 
 		if (email) {
-			console.log('tem email');
 			$form.fieldEmail.val(email);
 		}
 
@@ -56,8 +55,6 @@ Nitro.module('login', function () {
 
 	this.submit = function (e) {
 		e.preventDefault();
-
-		console.log('submitou');
 
 		//this = form;
 
