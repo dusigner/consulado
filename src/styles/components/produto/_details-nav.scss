@@ -161,3 +161,20 @@
 		}
 	}
 }
+
+body.consulempresa {
+	.prod-details-nav {
+		.details-preco .valor-por {
+			color: #fff;
+			strong {
+				font-weight: bold;
+			}
+			&:after {
+				color: #fff;	
+			}
+		}
+		.valor-dividido {
+			display: none !important;
+		}
+	} 
+}
