@@ -36,12 +36,14 @@ $(window).on('load', function() {
 
 			if (window.hasher) {
 				window.hasher.changed.add(function(current) {
+					self.hashChanged();
 					return self[current] && self[current].call(self);
 				});
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
 				//console.log('crossroads', request, data);
+				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
 		};
@@ -73,6 +75,7 @@ $(window).on('load', function() {
 				gae.info();
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
+				
 			}
 
 			if (self.isCart()) {
@@ -83,6 +86,16 @@ $(window).on('load', function() {
 				pj.hideChangeAddress();
 			}
 			// self.rioOlimpiadas();
+		};
+
+		//hash changed
+		this.hashChanged = function () {
+			if (self.isOrderForm()) {
+				if (store && store.isCorp) {
+					pj.changeProfileData();
+				}
+			}
+
 		};
 
 		//state
@@ -158,6 +171,10 @@ $(window).on('load', function() {
 
 			if (self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.document) {
 				$('#client-document').attr('disabled', 'disabled');
+			}
+
+			if (store && store.isCorp) {
+				$('#client-company-name, #client-company-nickname, #client-company-ie, #client-company-document, #state-inscription').attr('disabled', 'disabled');
 			}
 
 			if(window.vtex.accountName !== 'consulqa' && window.vtex.accountName !== 'consulempresa') {
