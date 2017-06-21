@@ -1,37 +1,52 @@
 input[type=checkbox] {
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 8px;
-  visibility: hidden;
+	cursor: pointer;
+	display: inline-block;
+	margin-left: -13px;
+	visibility: hidden;
 
-  &:after {
-    background-color: #fff;
-    border: 1px solid $gray;
-    border-radius: 3px;
-    content: ' ';
-    display: inline-block;
-    height: 15px;
-    visibility: visible;
-    width: 15px;
-  }
-  &:checked:before {
-    background-color: $orange;
-    content: ' ';
-    display: inline-block;
-    height: 9px;
-    margin-left: 3px;
-    margin-top: 3px;
-    position: absolute;
-    visibility: visible;
-    width: 9px;
-  }
-  &.loading {
-    &:before { display: none; }
-    &:after {
-      @include spinner($orange);
-      @include responsiveFont(16, 16, true);
-      background-color: transparent;
-      position: static;
-    }
-  }
+	+ label {
+		position: relative;
+		padding:5px 0 5px 20px;
+		&:after {
+			background-color: #fff;
+			border-radius: 3px;
+			border: 1px solid $gray-d;
+			content: ' ';
+			display: inline-block;
+			height: 15px;
+			left: 0;
+			position: absolute;
+			visibility: visible;
+			width: 15px;
+			top: 50%;
+			transform: translate(0%, -50%);
+		}
+	}
+	&:checked {
+		+ label:before {
+			background-color: $orange;
+			content: ' ';
+			display: inline-block;
+			height: 9px;
+			left:0;
+			margin-left: 3px;
+			position: absolute;
+			visibility: visible;
+			width: 9px;
+			z-index: 1;
+			top: 50%;
+			transform: translate(0%, -50%);
+		}
+	}
+	&.loading {
+		+label {
+			&:before { display: none; }
+			&:after {
+				@include spinner($orange);
+				@include responsiveFont(16, 16, true);
+				background-color: transparent;
+				position: static;
+			}
+		}
+	}
 }

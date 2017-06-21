@@ -241,13 +241,12 @@
 			}
 			label {
 				@include responsiveFont(13, 16, true);
-				padding: 0 0 10px 15px;
+				//padding: 0 0 10px 15px;
 			}
 			.checkbox {
 				display: flex;
 				label {cursor: pointer;}
 				input {
-					margin: 0 0 0 15px;
 					&:after {
 						border: 1px solid $txt-gray;
 					}
@@ -260,9 +259,11 @@
 				.anchor-termo {
 					text-decoration: underline;
 				}
-				input[type="checkbox"].error {
-					&:after {
-						border-color:#b0003c;
+				input[type='checkbox'].error {
+					+ label {
+						&:after {
+							border-color: #b0003c;
+						}
 					}
 				}
 			}
@@ -271,8 +272,8 @@
 
 	#vtex-modal-termo {
 		.modal-holder {
-			max-width: 900px;
 			margin-top: 20px;
+			max-width: 900px;
 			#modal-termo {
 				padding: 0 5%;
 				text-align: left;
