@@ -23,13 +23,17 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.gae');
 	require('modules/checkout/checkout.recurrence');
 	require('modules/checkout/checkout.modify');
+	require('modules/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.pj'], function(gae, recurrence, pj) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence','checkout.cotas', 'checkout.pj'], function(gae, recurrence,cotas, pj) {
+
 		var self = this,
 			$body = $('body');
+
+		this.userData = null;
 
 		this.init = function() {
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
@@ -64,11 +68,7 @@ $(window).on('load', function() {
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
 
-			self.orderForm = orderForm;
-
-			gae.orderForm = orderForm;
-
-			recurrence.orderForm = orderForm;
+			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
 
 			if (self.isOrderForm()) {
 				$('.modal-masked-info-template .masked-info-button').text('Voltar');
@@ -86,6 +86,34 @@ $(window).on('load', function() {
 				pj.hideChangeAddress();
 			}
 			// self.rioOlimpiadas();
+
+			
+			self.cotasInit();
+		};
+
+		this.cotasInit = function() {
+
+			// Verifica se está "logado"
+			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
+
+				// Verifica se ainda não foram recuperados dados do CPF
+				if ( !self.userData ) {
+
+					// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
+					cotas.getData()
+						.then(function(data) {
+							self.userData = data;
+							cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+						});
+				} else {
+
+					// Verifica limitação de Eletrodomésticos
+					cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+				}
+			} else {
+
+				self.userData = null;
+			}
 		};
 
 		//hash changed
