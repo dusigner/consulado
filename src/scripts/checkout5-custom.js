@@ -18,7 +18,10 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> consul-pj
 	require('expose?store!modules/store/store');
 
 	require('modules/checkout/checkout.gae');
@@ -29,7 +32,11 @@ $(window).on('load', function() {
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
+<<<<<<< HEAD
 	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
+=======
+	Nitro.setup(['checkout.gae', 'checkout.recurrence','checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
+>>>>>>> consul-pj
 
 		var self = this,
 			$body = $('body');
@@ -86,8 +93,11 @@ $(window).on('load', function() {
 			if (self.isShipping()) {
 				pj.hideChangeAddress();
 			}
-			
-			self.cotasInit();
+			// self.rioOlimpiadas();
+
+			if (store && store.isPersonal) {
+				self.cotasInit();
+			}
 		};
 
 		this.cotasInit = function() {
