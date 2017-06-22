@@ -53,9 +53,9 @@ Nitro.module('register.corporate', function() {
 
 		$modalRegister.find('.checkbox #isFreeStateRegistration').change(function() {
 			if(this.checked) {
-				$form.find('.stateRegistration').removeAttr('data-validation').attr('disabled', 'disabled');
+				$form.find('.stateRegistration').removeAttr('data-validation').val('Isento').attr('readonly', 'readonly');
 			} else {
-				$form.find('.stateRegistration').attr('data-validation', 'required stateRegistration'). removeAttr('disabled');
+				$form.find('.stateRegistration').attr('data-validation', 'required stateRegistration').val('').removeAttr('readonly');
 			}
 		});
 

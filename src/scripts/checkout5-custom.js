@@ -28,7 +28,7 @@ $(window).on('load', function() {
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence','checkout.cotas', 'checkout.pj'], function(gae, recurrence,cotas, pj) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence','checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
 
 		var self = this,
 			$body = $('body');
@@ -87,8 +87,9 @@ $(window).on('load', function() {
 			}
 			// self.rioOlimpiadas();
 
-			
-			self.cotasInit();
+			if (store && store.isPersonal) {
+				self.cotasInit();
+			}
 		};
 
 		this.cotasInit = function() {
