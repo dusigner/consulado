@@ -237,7 +237,7 @@ Nitro.setup(['landing-gae'], function () {
 			var formData = {
 				name: $('#cname').val(),
 				email: $('#cemail').val(),
-				birthdate: new Date(mes, dia, ano).getTime(),
+				birthdate: new Date(ano, mes-1, dia).getTime(),
 				phone: $('#phone').val(),
 				document: $('#cpf').val(),
 				orderId: $('#orderId').val()
