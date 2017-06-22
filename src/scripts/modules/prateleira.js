@@ -13,6 +13,4 @@ Nitro.module('prateleira', ['percentoff'], function() {
 			}
 		});
 	}();
-
-	console.log('teste fiddler');
 });
