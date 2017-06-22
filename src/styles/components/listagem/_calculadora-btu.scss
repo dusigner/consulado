@@ -4,8 +4,8 @@
 //------------------------------------
 .page-calculadora-btu__banner {
 	@include breakpoint(1280px, 'max') {
-		max-width: 1000px;
 		max-height: 420px;
+		max-width: 1000px;
 	}
 
 	@include breakpoint(1120px, 'max') {
@@ -21,8 +21,8 @@
 	}
 
 	@include breakpoint(768px, 'max') {
-		max-height: 600px;
 		margin: 10px auto;
+		max-height: 600px;
 	}
 
 	margin: 20px auto;
@@ -65,8 +65,8 @@
 		}
 
 		@include breakpoint(768px, 'max') { 
+			margin: 30px 0 0 0;
 			transform: translate(0, 20%); 
-			margin: 15px 0 0 0;
 		}
 	
 		@include breakpoint(480px, 'max') { 
@@ -94,7 +94,7 @@
 .page-calculadora-btu__mask {
 	align-items: center;
 	background-color: #9aca3c;
-	color: white;
+	color: #fff;
 	cursor: pointer;
 	display: flex;
 	font-family: 'consul';
@@ -129,7 +129,7 @@
 		height: 280px;
 	}
 
-	.page-calculadora-btu__content{
+	.page-calculadora-btu__content {
 		display: flex;
 		flex-direction: column;
 		padding: 30px 20px;
@@ -183,17 +183,17 @@
 	}
 
 	.page-calculadora-btu__button {
-    	align-items: center;
-		border: 1px solid white;
-		display: flex;
 		@include font-size(22px, true, false);
+    	align-items: center;
+		border: 1px solid #fff;
+		display: flex;
 		height: 53px;
+		justify-content: space-between;
 		margin: 30px 20px 30px 0;
 		padding: 0 20px;
-		justify-content: space-between;
 		width: 237px;
-		&::after{
-			background-image: url(/arquivos/lp-calc-btu--images--sprite_retina.png);
+		&::after {
+			background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
 			background-position: 0 -13px;
 			background-repeat: no-repeat;
 			background-size: 46px;
@@ -234,11 +234,19 @@
 	}
 }
 
-@media (max-width: 48em){
+/* Resolve conflito associados a tag header */
+@media (max-width: 48em) {
 	body:not(.produto) header.resultado__header {
 		position: initial;
 		top: initial;
 		width: initial;
 		z-index: initial;
+	}
+}
+
+/* Resolve erro navegador Safari */
+@include breakpoint(480px, 'max') {
+	body.listagem.btu.page-calculadora-btu .page-calculadora-btu__container h3 {
+		min-width: 189px;
 	}
 }
