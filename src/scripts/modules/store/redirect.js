@@ -29,11 +29,26 @@ var redirect = module.exports.redirect = function (data) {
 
 	uri.addQueryParam('utmi_pc', '10100511');
 
-	if(data.status === 'Register') {
-		$('<p>Seu cadastro foi enviado para análise. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
-			id: 'cadastro-sucesso',
+	/**
+	 * Se o usuário acabou de se registrar data.status = Register
+	 * abre o modal de cadastro com sucesso
+	 * Caso não seja registro, abre o modal de Login
+	 */
+	if(data.status === 'Register') { 
+		var idModal = 'cadastro-sucesso';
+		$('<p id="' + idModal + '">Seu cadastro foi enviado para análise. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
+			id: idModal,
 			title: 'Quase lá!',
 			destroy: true
+		});
+		/**
+		 * Quando fechar o modal reseta os dados do userData para não tentar logar automáticamente
+		 * atualiza a página
+		 */
+		$('#' + idModal).on('elementCloseVtexModal', function() {
+			console.log('elemento');
+			store.logout();
+			location.reload();
 		});
 	} else { // status = Login
 		vtexjs.checkout.getOrderForm().done(function(res) {
