@@ -46,7 +46,6 @@ var redirect = module.exports.redirect = function (data) {
 		 * atualiza a página
 		 */
 		$('#' + idModal).on('elementCloseVtexModal', function() {
-			console.log('elemento');
 			store.logout();
 			location.reload();
 		});

@@ -5,21 +5,21 @@ input[type=checkbox] {
 	visibility: hidden;
 
 	+ label {
+		padding: 5px 0 5px 20px;
 		position: relative;
-		padding:5px 0 5px 20px;
 		&:after {
 			background-color: #fff;
-			border-radius: 3px;
 			border: 1px solid $gray-d;
+			border-radius: 3px;
 			content: ' ';
 			display: inline-block;
 			height: 15px;
 			left: 0;
 			position: absolute;
-			visibility: visible;
-			width: 15px;
 			top: 50%;
 			transform: translate(0%, -50%);
+			visibility: visible;
+			width: 15px;
 		}
 	}
 	&:checked {
@@ -28,14 +28,14 @@ input[type=checkbox] {
 			content: ' ';
 			display: inline-block;
 			height: 9px;
-			left:0;
+			left: 0;
 			margin-left: 3px;
 			position: absolute;
+			top: 50%;
+			transform: translate(0%, -50%);
 			visibility: visible;
 			width: 9px;
 			z-index: 1;
-			top: 50%;
-			transform: translate(0%, -50%);
 		}
 	}
 	&.loading {
