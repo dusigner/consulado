@@ -18,6 +18,8 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
+	require('expose?store!modules/store/store');
+
 	// require('modules/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout.cotas');
@@ -63,6 +65,10 @@ $(window).on('load', function() {
 				termoColeta.setup();
 				cotas.updateCotasEletrodomesticos();
 				highlightVoltage($('.product-name > a'));
+
+				if( store && store.isCorp ) {
+					$('#order-continue-shopping').attr('href', '/empresas');
+				}
 			}
 		};
 

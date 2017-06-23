@@ -143,6 +143,7 @@ $(window).on('load', function() {
 
 			if (store && store.isCorp) {
 				$('#cart-reset-postal-code').css('visibility', 'hidden');
+				$('#cart-choose-more-products').attr('href', '/empresas');
 			}
 
 			recurrence.setup();
