@@ -313,6 +313,24 @@
 				}
 			}
 		}
+
+		&.empresas {
+			.por,
+			.adicional {display: none;}
+			.por-boleto {
+				@include responsiveFont(18, 16, true);
+				color: $green;
+				display: block;
+				visibility: visible;
+				.cash {
+					@include responsiveFont(13, 16, true);
+					color: $txt-gray;
+					display: block;
+					font-weight: normal;
+				}
+				
+			}
+		}
 	}
 
 	section.slider {

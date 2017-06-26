@@ -1,39 +1,63 @@
-/* global $: true, Nitro: true */
+/* global $: true, Nitro: true, store: true */
 'use strict';
 
-Nitro.module('vtex-login', function() {
+var CRM = require('modules/store/crm');
 
+Nitro.module('vtex-login', function () {
 
 	var self = this;
 
-	this.setup = function(userData) {
+	this.setup = function () {
 
-		window.vtexjs.checkout.getOrderForm().done(function(orderForm) {
-			self.setClientProfileData(orderForm, userData);
-		});
+		if (store.isPrivateUrl && store.userData) {
+
+			window.vtexjs.checkout.getOrderForm().done(function (data) {
+				self.setClientProfileData(data);
+			});
+
+		}
+
+		//vtexjs.checkout.getOrderForm().then(setClientProfileData);
 
 	};
 
-	this.setClientProfileData = function(orderForm, userData) {
+	this.setClientProfileData = function (orderForm) {
 
-		if (orderForm.clientProfileData && orderForm.clientProfileData.email) {
+		//console.log('setClientProfileData', orderForm);
+
+		if (orderForm.clientProfileData && (orderForm.clientProfileData.email === store.userData.email)) {
+			//console.log('não foi deslogdo');
 			return $.Deferred;
 		}
 
-		var clientProfileData = $.extend({}, orderForm.clientProfileData, userData);
 
-		clientProfileData.documentType = 'cpf';
+		var clientProfileData = $.extend({}, orderForm.clientProfileData, store.userData);
+
+		clientProfileData.documentType = 'cnpj';
 
 		//avisar o VTEX ID que o email do cliente mudou
 		window.vtexid.setEmail(clientProfileData.email);
 
 		// levantar o evento para o script de navegação
-		window.vtex.NavigationCapture.SendEvent('SendUserInfo', {
+		window.vtex.NavigationCapture.sendEvent('SendUserInfo', {
 			visitorContactInfo: [clientProfileData.email, clientProfileData.firstName]
 		});
 
 		// Avisar ao Checkout qual o email do cliente
-		return window.vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData);
+		return window.vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData).then(function () {
+			//Caso o usuário era novo e não possuia um userId, atualiza o store com o novo userData
+			if (!store.userData.userId) {
+				CRM.clientSearchByEmail(store.userData.email)
+					.then(function (data) {
+						//console.log('novo user Data', data);
+						store.setUserData(data, true);
+					});
+			}
+		});
 	};
+
+	if (store && store.isCorp) {
+		this.setup();
+	}
 
 });

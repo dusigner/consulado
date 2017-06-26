@@ -6,6 +6,9 @@
 	<vtex:template id="0-consul-head-content" />
 </head>
 <body data-controller="listagem">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
 	<!--  Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
@@ -86,9 +89,14 @@
 						</div>
 					</div>
 					<!-- PRODUCAO -->
-					<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="9" />
+					<!--<vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="9" />-->
+					<!-- /PROD -->
 					<!-- QA -->
 					<!-- <vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="9" columnCount="9" /> -->
+					<!-- /QA -->
+					<!-- PJ -->
+					 <vtex.cmc:searchResult layout="fdb0aae0-5533-467b-98b8-52039e22d374" itemCount="9" columnCount="9" /> 
+					<!-- /PJ -->
 				</section>
 				<!-- /Prateleira -->
 
@@ -100,14 +108,16 @@
 		</div>
 	</div>
 
-	<section id="relacionados">
-		<p class="pre-title">Para você</p>
-		<div class="container">
+	<section id="relacionados" class="slider">
+	<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados Busca - Titulo" /></p>
+	<div class="container">
+		<div class="row">
 			<div class="prateleira-slider clearfix">
-				<vtex:contentPlaceHolder id="Relacionados Busca" />
+			<vtex:contentPlaceHolder id="Relacionados Busca" />
+		  </div>
 			</div>
-		</div>
-	</section>
+	</div>
+  </section>
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />

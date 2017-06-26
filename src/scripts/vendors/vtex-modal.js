@@ -88,26 +88,46 @@
 		if (typeof this.settings.open === 'function') {
 			this.settings.open.call(this, this.modal, this.content);
 		}
+
+		$(window).trigger('openVtexModal');
+		$(this.element).trigger('elementOpenVtexModal');
+	};
+
+	var triggerEventClose = function(element) {
+		setTimeout(function() {
+			$(window).trigger('closeVtexModal');
+			$(element).trigger('elementCloseVtexModal');
+		}, 400);
 	};
 
 	Modal.prototype.close = function(e) {
-		e.stopPropagation();
+		if(e) {
+			e.stopPropagation();
+		}
 
 		if (this.settings.static && $(e.target).is('.close')) {
 			this.modal.fadeOut(this.settings.close);
+			triggerEventClose(this.element);
+			
 		} else if ((!e || $(e.target).is(this.modal) || $(e.target).is('.close') || e.keyCode === 27) && !this.settings.static) {
 			this.modal.fadeOut(this.settings.close);
+			triggerEventClose(this.element);
 		}
+		
 	};
 
 	Modal.prototype.destroy = function(e) {
-		e.stopPropagation();
+		if(e) {
+			e.stopPropagation();
+		}
 
 		if (this.settings.static && $(e.target).is('.close')) {
+			triggerEventClose(this.element);
 			this.modal.fadeOut(500, function() {
 				$(this).remove();
 			});
 		} else if ((!e || $(e.target).is(this.modal) || $(e.target).is('.close') || e.keyCode === 27) && !this.settings.static) {
+			triggerEventClose(this.element);
 			this.modal.fadeOut(500, function() {
 				$(this).remove();
 			});

@@ -280,6 +280,99 @@ if (!Object.keys) {
 		},
 		validFullName: function() {
 			return /(.*){3,}\s(.*).{3,}/i.test($(this).val());
+		},
+		validCpf: function() {
+
+			var value = $(this).val().replace(/[^\d]+/g, '');
+
+			if (value === '') {
+				return false;
+			}
+
+			// Elimina values invalidos conhecidos
+			if (value.length !== 11 || value === '00000000000' || value === '11111111111' || value === '22222222222' || value === '33333333333' || value === '44444444444' || value === '55555555555' || value === '66666666666' || value === '77777777777' || value === '88888888888' || value === '99999999999') {
+				return false;
+			}
+
+			// Valida 1o digito
+			var add = 0;
+			for (var i = 0; i < 9; i++) {
+				add += parseInt(value.charAt(i), 10) * (10 - i);
+			}
+			var rev = 11 - (add % 11);
+			if (rev === 10 || rev === 11) {
+				rev = 0;
+			}
+			if (rev !== parseInt(value.charAt(9), 10)) {
+				return false;
+			}
+			// Valida 2o digito
+			add = 0;
+			for (i = 0; i < 10; i++) {
+				add += parseInt(value.charAt(i), 10) * (11 - i);
+			}
+			rev = 11 - (add % 11);
+			if (rev === 10 || rev === 11) {
+				rev = 0;
+			}
+			if (rev !== parseInt(value.charAt(10), 10)) {
+				return false;
+			}
+
+			return true;
+		},
+		validCnpj: function () {
+
+			var cnpj = $(this).val().replace(/[^\d]+/g,'');
+
+			if(cnpj == '') return false;
+
+			if (cnpj.length != 14)
+				return false;
+
+			// Elimina CNPJs invalidos conhecidos
+			if (cnpj == "00000000000000" ||
+				cnpj == "11111111111111" ||
+				cnpj == "22222222222222" ||
+				cnpj == "33333333333333" ||
+				cnpj == "44444444444444" ||
+				cnpj == "55555555555555" ||
+				cnpj == "66666666666666" ||
+				cnpj == "77777777777777" ||
+				cnpj == "88888888888888" ||
+				cnpj == "99999999999999")
+				return false;
+
+			var tamanho, numeros, digitos, soma, pos, i, resultado;
+			// Valida DVs
+			tamanho = cnpj.length - 2;
+			numeros = cnpj.substring(0,tamanho);
+			digitos = cnpj.substring(tamanho);
+			soma = 0;
+			pos  = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+				if (pos < 2)
+					pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+			if (resultado != digitos.charAt(0))
+				return false;
+
+			tamanho = tamanho + 1;
+			numeros = cnpj.substring(0,tamanho);
+			soma = 0;
+			pos = tamanho - 7;
+			for (i = tamanho; i >= 1; i--) {
+				soma += numeros.charAt(tamanho - i) * pos--;
+				if (pos < 2)
+					pos = 9;
+			}
+			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+			if (resultado != digitos.charAt(1))
+					return false;
+
+			return true;
 		}
 	});
 

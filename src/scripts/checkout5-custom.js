@@ -18,27 +18,36 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
-	require('modules/checkout.gae');
-	require('modules/checkout.recurrence');
-	require('modules/checkout.modify');
+	require('expose?store!modules/store/store');
+
+	require('modules/checkout/checkout.gae');
+	require('modules/checkout/checkout.recurrence');
+	require('modules/checkout/checkout.modify');
+	require('modules/checkout.cotas');
+	require('modules/checkout/checkout.pj');
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence'], function(gae, recurrence) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
+
 		var self = this,
 			$body = $('body');
+
+		this.userData = null;
 
 		this.init = function() {
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
 			if (window.hasher) {
 				window.hasher.changed.add(function(current) {
+					self.hashChanged();
 					return self[current] && self[current].call(self);
 				});
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
 				//console.log('crossroads', request, data);
+				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
 		};
@@ -51,27 +60,71 @@ $(window).on('load', function() {
 			return $body.hasClass('body-order-form');
 		};
 
+		this.isShipping = function() {
+			return $('.shipping-data').hasClass('active');
+		};
+
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
 
-			self.orderForm = orderForm;
-
-			gae.orderForm = orderForm;
-
-			recurrence.orderForm = orderForm;
+			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
 
 			if (self.isOrderForm()) {
 				$('.modal-masked-info-template .masked-info-button').text('Voltar');
 				gae.info();
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
+				
 			}
 
 			if (self.isCart()) {
 				self.cart();
 			}
+
+			if (self.isShipping()) {
+				pj.hideChangeAddress();
+			}
 			// self.rioOlimpiadas();
+
+			if (store && store.isPersonal) {
+				self.cotasInit();
+			}
+		};
+
+		this.cotasInit = function() {
+
+			// Verifica se está "logado"
+			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
+
+				// Verifica se ainda não foram recuperados dados do CPF
+				if ( !self.userData ) {
+
+					// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
+					cotas.getData()
+						.then(function(data) {
+							self.userData = data;
+							cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+						});
+				} else {
+
+					// Verifica limitação de Eletrodomésticos
+					cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+				}
+			} else {
+
+				self.userData = null;
+			}
+		};
+
+		//hash changed
+		this.hashChanged = function () {
+			if (self.isOrderForm()) {
+				if (store && store.isCorp) {
+					pj.changeProfileData();
+				}
+			}
+
 		};
 
 		//state
@@ -84,7 +137,13 @@ $(window).on('load', function() {
 			$('.Shipping td:first').attr('colspan', '4');
 			$('.caret').removeClass('caret').addClass('icon icon-chevron-down');
 
-			gae.setup();
+			if(store && store.isPersonal) {
+				gae.setup();
+			}
+
+			if (store && store.isCorp) {
+				$('#cart-reset-postal-code').css('visibility', 'hidden');
+			}
 
 			recurrence.setup();
 
@@ -100,8 +159,16 @@ $(window).on('load', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
+			if (store && store.isCorp) {
+				pj.hideChangeAddress();
+			}
+
+
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
+				if (store && store.isCorp) {
+					pj.disableInputs(e);
+				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
@@ -127,6 +194,7 @@ $(window).on('load', function() {
 						$('#ship-street').focus();
 					}
 				}
+
 			}));
 		};
 
@@ -138,8 +206,17 @@ $(window).on('load', function() {
 				$('#client-document').attr('disabled', 'disabled');
 			}
 
-			if(window.vtex.accountName !== 'consulqa') {
+			if (store && store.isCorp) {
+				$('#client-company-name, #client-company-nickname, #client-company-ie, #client-company-document, #state-inscription').attr('disabled', 'disabled');
+				$('#not-corporate-client').remove();
+			}
+
+			if(window.vtex.accountName !== 'consulqa' && window.vtex.accountName !== 'consulempresa') {
 				$('.box-client-info-pj').remove();
+			}
+
+			if(store.isCorp) {
+				$('#is-corporate-client').click();
 			}
 		};
 
@@ -162,7 +239,6 @@ $(window).on('load', function() {
 					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'
 						window.location.href = '#/orderform';
 					} else { //se nao esta logado, abre modal pra colocar o email
-						console.log('ue');
 						var formLogin = $('.orderform-template .pre-email .client-email').html();
 						$('#modal-login .modal-body .login-email').html(formLogin);
 						$('#modal-login #client-pre-email').attr('placeholder','E-mail');
@@ -224,6 +300,7 @@ $(window).on('load', function() {
 	});
 
 });
+
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {
 	console.log(a, b, c);
