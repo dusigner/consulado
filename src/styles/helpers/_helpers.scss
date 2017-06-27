@@ -18,6 +18,10 @@
 	* html .clearfix {zoom:1;}
 	*:first-child+html .clearfix {zoom: 1;}
 
+	// Clear
+	.clear-all   { clear: both; }
+	.clear-left  { clear: left; }
+	.clear-right { clear: left; }
 
 	// Add/remove floats
 	.float-left  { float: left;  }
@@ -33,11 +37,16 @@
 		margin-right: auto;
 	}
 
+	.relative { position: relative; }
+	.absolute { position: absolute; }
+
 	.no-margin { margin: 0; }
 
 
 	// Displaying content
-	.inline { display: inline; }
+	.inline   { display: inline; }
+	.inline-b { display: inline-block; }
+	.block    { display: block; }
 
 	// Hide elements
 	.hide { display: none; visibility: hidden; }
@@ -140,37 +149,25 @@
 
 	.wFull,
 	%wFull {
-	-webkit-box-sizing: border-box;
-	   -moz-box-sizing: border-box;
-		-ms-box-sizing: border-box;
-		 -o-box-sizing: border-box;
-			box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
 	.single-transition,
 	%single-transition {
-	-webkit-transition: all 250ms ease-out;
-	   -moz-transition: all 250ms ease-out;
-		-ms-transition: all 250ms ease-out;
-		 -o-transition: all 250ms ease-out;
-			transition: all 250ms ease-out;
+		transition: all 250ms ease-out;
 	}
 
 	.contentBefore,
 	%contentBefore {
-		content: " ";
+		content: ' ';
 		display: block;
 		position: absolute;
 	}
 
 	%contentTransition {
-	-webkit-transition: all 250ms ease-out;
-	   -moz-transition: all 250ms ease-out;
-		-ms-transition: all 250ms ease-out;
-		 -o-transition: all 250ms ease-out;
-			transition: all 250ms ease-out;
-			content: " ";
-			display: block;
-			position: absolute;
+		content: ' ';
+		display: block;
+		position: absolute;
+		transition: all 250ms ease-out;
 	}
 }

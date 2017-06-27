@@ -1,0 +1,265 @@
+@charset 'UTF-8';
+
+// Comprar pelo telefone
+.gae-comprar-pelo-telefone {
+	.row {
+		background-color: #fff;
+		overflow: hidden;
+	}
+}
+
+.gae-form {
+	@include breakpoint(small, 'min') { @include responsiveFont(15); }
+	@include breakpoint(small, 'max') { padding: 2em 2em; }
+	@include breakpoint(large, 'min') { height: 375px; }
+	background-color: #fff;
+	border-radius: 1.2em 0 0 1.2em;
+	overflow: hidden;
+	padding: 3.3em 4em;
+	position: relative;
+	transition: max-height .3s ease;
+
+	.w50 {
+		@include breakpoint(medium, 'min') { width: 47%; }
+		width: 100%;
+	}
+
+	.gae-form__title {
+		@include breakpoint(360px, 'max') { padding-bottom: 2px; }
+		@include responsiveFont(18);
+		padding: 2px 5px 7px 0;
+	}
+
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'] {
+		@include breakpoint(small, 'max') { padding: .5em; }
+		border: 1px solid #d3d3d3;
+		padding: .6em 1em;
+	}
+
+	input[type='radio'] { outline: none!important; }
+
+	input[type='text'],
+	input[type='email'],
+	input[type='tel'],
+	label {
+		&:focus { outline-color: lighten($green, 5%); }
+	}
+
+	label {
+		display: inline-block;
+
+		&:focus {
+			@include breakpoint(small, 'max') { outline: none; }
+		}
+	}
+
+	// Radio
+	.radio-container {
+		@include breakpoint(360px, 'max') {
+			margin: 2px 0;
+			padding: 2px 7px 2px 35px;
+		}
+		@include breakpoint(440px, 'max') { margin-left: -5px; }
+		margin: 2px 0 5px 0;
+		padding: 5px 7px 5px 35px;
+		position: relative;
+		vertical-align: middle;
+
+		.radio-text {
+			display: inline-block;
+
+			&:before,
+			&:after {
+				background-color: #fff;
+				border-radius: 50%;
+				content: ' ';
+				position: absolute;
+				top: 50%;
+			}
+
+			&:before {
+				border: 2px solid #d3d3d3;
+				height: 20px;
+				left: 7px;
+				transform: translateY(-50%);
+				width: 20px;
+			}
+
+			&:after {
+				background-color: $green;
+				height: 10px;
+				left: 12px;
+				transform: translateY(-50%) scale(0);
+				transition: transform .3s ease;
+				width: 10px;
+			}
+		}
+
+		input {
+			left: -15px;
+			opacity: 0;
+			outline: none;
+			position: absolute;
+			top: -25px;
+			visibility: hidden;
+			z-index: -10;
+		}
+
+		// Active state
+		input:checked {
+			& + .radio-text:after { transform: translateY(-50%) scale(1); }
+		}
+
+		// Focus state
+		&:focus {
+			input[type='radio'] { display: none; }
+		}
+	}
+
+	// Submit
+	.gae-form__submit {
+		@include breakpoint(360px, 'max') { margin-top: -10px; }
+		background-color: $green;
+		border: 2px solid $green;
+		border-radius: 2em;
+		color: #fff;
+		display: inline-block;
+		float: right;
+		height: 44px;
+		padding: .6em 2.5em;
+		position: relative;
+		transform: translate(0, 0);
+		transition:  background-color .3s ease;
+		white-space: nowrap;
+		width: 130px;
+
+		// Base para a animação do envio do form
+		&:before {
+			background-color: transparent;
+			content: '';
+			display: block;
+			height: 100%;
+			position: absolute;
+			right: 50%;
+			top: 50%;
+			transform: translate(50%, -50%);
+			transition:
+				background-color .2s ease,
+				height .5s ease,
+				visibility .3s ease,
+				width .1s ease,
+			;
+			visibility: hidden;
+			width: 100%;
+			z-index: -10;
+		}
+
+		&:hover,
+		&:focus {
+			background-color: #fff;
+			color: $green;
+			outline-color: $green;
+		}
+	}
+
+	// Validação
+	.help-block.form-error {
+		@include responsiveFont(13);
+		color: $object-validate-color;
+		display: block;
+		font-style: italic;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		white-space: nowrap;
+	}
+
+	.radio-container .help-block.form-error {
+		bottom: -15px;
+		right: 0;
+		top: inherit;
+	}
+
+	// Formulário enviado
+	&.gae-form-is-sended {
+		position: relative;
+
+		.gae-form__submit {
+			animation: sendMessage .5s ease forwards;
+			font-size: 0;
+			padding: 0;
+
+			&:hover,
+			&:focus {
+				background-color: $green;
+				outline: none;
+			}
+
+			&:focus { outline: none; }
+
+			&:before {
+				animation: splash .8s ease forwards .55s;
+				border-radius: 50%;
+				height: 30px;
+				visibility: visible;
+				width: 30px;
+				z-index: 1;
+			}
+		}
+
+		.sucesso,
+		.gae-form__success-message {
+			opacity: 1;
+			transition: opacity .8s ease .8s;
+			z-index: 1;
+		}
+	}
+}
+
+.sucesso,
+.gae-form__success-message {
+	@include breakpoint(small, 'max') { @include responsiveFont(20); }
+	@include breakpoint(430px, 'max') { padding: 8.5em 2.5em; }
+	@include responsiveFont(18);
+	background-color: #fff;
+	color: $green;
+	height: 100%;
+	opacity: 0;
+	padding: 9.5em 4em;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	width: 100%;
+	z-index: -10;
+}
+
+.gae-comprar-pelo-telefone__telefones {
+	@include breakpoint(medium, 'max') {
+		@include breakpoint(small, 'max') {
+			border-radius: 0 0 1.2em 1.2em;
+			padding: 2em 40px;
+			text-align: center;
+		}
+		padding: 9em 40px;
+	}
+	@include responsiveFont(17);
+	background-color: #736c6b;
+	border-radius: 0 1.2em 1.2em 0;
+	color: #fff;
+	padding: 5.95em 40px;
+
+	a {
+		@include breakpoint(small, 'max') {
+			border: 2px solid #fff;
+			margin: 15px 0;
+			padding: .3em 2em;
+		}
+		@include responsiveFont(20);
+		color: #fff;
+		display: inline-block;
+	}
+}
+

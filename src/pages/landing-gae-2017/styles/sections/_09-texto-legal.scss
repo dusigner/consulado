@@ -1,0 +1,15 @@
+@charset 'UTF-8';
+
+// Texto legal
+.gae-texto-legal p {
+	@include responsiveFont(12);
+	color: $txt-gray-l;
+	margin: 0;
+
+	a {
+		color: $txt-gray-l;
+		font-weight: bold;
+
+		&:hover { text-decoration: underline; }
+	}
+}
