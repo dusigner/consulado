@@ -1,0 +1,61 @@
+@charset 'UTF-8';
+
+// Como enviar
+.gae-enviar {
+	@include breakpoint(small, 'max') {
+		br { display: none; }
+	}
+}
+
+.gae-enviar-list {
+	font-size: 0;
+	text-align: center;
+
+	&.slick-slider {
+		@include breakpoint(small, 'max') { min-height: 220px; }
+	}
+}
+
+.gae-enviar-list__item {
+	@include breakpoint(small, 'min') {
+		@include breakpoint(1192px, 'max') { min-height: 190px; }
+		@include breakpoint(1120px, 'max') { min-height: 205px; }
+		@include breakpoint(960px, 'max')  { min-height: 225px; }
+		margin-left: 2%;
+		min-height: 175px;
+		width: calc(100% / 3 - 1.5%);
+	}
+	border: 1px solid #d3d3d3;
+	display: inline-block;
+	font-size: 16px;
+	margin-bottom: 10px;
+	padding: 2em .7em 2em 6em;
+	position: relative;
+	text-align: left;
+	vertical-align: top;
+	width: 100%;
+
+	&.slick-slide {
+		@include breakpoint(small, 'max') {
+			margin-bottom: 15px;
+			min-height: 176px;
+		}
+	}
+
+	&:first-child { margin-left: 0; }
+
+	.icon {
+		@include responsiveFont(50);
+		left: 25px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.gae-enviar-list__title { @include responsiveFont(17); }
+
+.gae-enviar-list__text {
+	@include responsiveFont(14);
+	margin: 5px 0;
+}

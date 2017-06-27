@@ -1,0 +1,42 @@
+@charset 'UTF-8';
+
+// Consultar condições
+.gae-consultar__cta {
+	@include responsiveFont(14);
+	border: 1px solid $gray-d;
+	border-radius: 3em;
+	display: block;
+	font-weight: bold;
+	line-height: normal;
+	margin: 10px;
+	padding: 1.5em .5em;
+	text-align: center;
+	transition: background-color .3s ease;
+
+	&:hover {
+		background-color: $green;
+		color: #fff;
+	}
+
+	span {
+		@include breakpoint(small, 'min') {
+			display: inline-block;
+			padding: 9.5px 0;
+		}
+	}
+}
+
+.gae-consultar__table {
+	@include breakpoint(small, 'min') {
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+	}
+}
+
+.gae-consultar__td {
+	@include breakpoint(small, 'min') {
+		display: table-cell;
+		vertical-align: middle;
+	}
+}

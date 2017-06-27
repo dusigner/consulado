@@ -1,0 +1,38 @@
+@charset 'UTF-8';
+
+// Perguntas frequentes
+.gae-perguntas__title {
+	@include responsiveFont(16);
+	border-bottom: 1px solid #d3d3d3;
+	cursor: pointer;
+	padding: 1em 1.2em 1em 0;
+	position: relative;
+
+
+	&.border-top { border-top: 1px solid #d3d3d3; }
+
+	&:after {
+		@include responsiveFont(32);
+		content: '+';
+		position: absolute;
+		right: 0;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	// Active state
+	&.is--open {
+		color: $green;
+
+		&:after { content: '-'; }
+
+		& + .gae-perguntas__text { max-height: 800px; }
+	}
+}
+
+.gae-perguntas__text {
+	max-height: 0;
+	overflow: hidden;
+	position: relative;
+	transition: max-height .2s linear;
+}

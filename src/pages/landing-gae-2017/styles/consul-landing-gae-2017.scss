@@ -1,0 +1,35 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Brastemp
+	* Description: CSS desenvolvido para Brastemp.
+	* Author: Douglas "Amarelo" Lopes
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+
+// @import 'helpers/helpers';
+// @import 'layout/gridresponsive';
+// @import 'helpers/slick';
+// @import 'components/footer';
+
+// Sections
+@import 'sections/00-base';
+@import 'sections/01-topo';
+@import 'sections/02-vantagens';
+@import 'sections/03-como-acionar';
+@import 'sections/04-como-enviar';
+@import 'sections/05-comprar-pelo-telefone';
+@import 'sections/06-perguntas-frequentes';
+@import 'sections/07-estenda-garantia';
+@import 'sections/08-consultar-condicoes';
+@import 'sections/09-texto-legal';
+
