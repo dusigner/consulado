@@ -34,11 +34,11 @@ define('store', function() {
 
 		this.setup();
 
-		this.autoLogin();
-
 		//return this.checkAccess();
 
 		if(this.isCorp) {
+			this.autoLogin();
+			
 			return !this.checkAccess() && redirect.home.call(this);
 		}
 
