@@ -5,9 +5,9 @@
 	@include responsiveFont(16);
 	border-bottom: 1px solid #d3d3d3;
 	cursor: pointer;
+	font-weight: normal;
 	padding: 1em 1.2em 1em 0;
 	position: relative;
-
 
 	&.border-top { border-top: 1px solid #d3d3d3; }
 
@@ -35,4 +35,10 @@
 	overflow: hidden;
 	position: relative;
 	transition: max-height .2s linear;
+
+	a {
+		color: $green;
+
+		&:hover { text-decoration: underline; }
+	}
 }

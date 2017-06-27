@@ -31,6 +31,10 @@
 		top: 50%;
 		transform: translateY(-50%);
 	}
+	@include breakpoint(450px, 'max') {
+		@include responsiveFont(14);
+		padding: 1em .8em;
+	}
 	background-color: transparent;
 	border: 2px solid #fff;
 	border-radius: 2em;

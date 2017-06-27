@@ -3,7 +3,6 @@
 // Comprar pelo telefone
 .gae-comprar-pelo-telefone {
 	.row {
-		// background-color: #736c6b;
 		background-color: #fff;
 		overflow: hidden;
 	}
@@ -12,11 +11,8 @@
 .gae-form {
 	@include breakpoint(small, 'min') { @include responsiveFont(15); }
 	@include breakpoint(small, 'max') { padding: 2em 2em; }
-	@include breakpoint(large, 'min') {
-		height: 375px;
-	}
+	@include breakpoint(large, 'min') { height: 375px; }
 	background-color: #fff;
-	// background-color: #ccc;
 	border-radius: 1.2em 0 0 1.2em;
 	overflow: hidden;
 	padding: 3.3em 4em;
@@ -29,6 +25,7 @@
 	}
 
 	.gae-form__title {
+		@include breakpoint(360px, 'max') { padding-bottom: 2px; }
 		@include responsiveFont(18);
 		padding: 2px 5px 7px 0;
 	}
@@ -36,7 +33,7 @@
 	input[type='text'],
 	input[type='email'],
 	input[type='tel'] {
-		@include breakpoint(small, 'max') { padding: .8em; }
+		@include breakpoint(small, 'max') { padding: .5em; }
 		border: 1px solid #d3d3d3;
 		padding: .6em 1em;
 	}
@@ -54,14 +51,16 @@
 		display: inline-block;
 
 		&:focus {
-			@include breakpoint(small, 'max') {
-				outline: none;
-			}
+			@include breakpoint(small, 'max') { outline: none; }
 		}
 	}
 
 	// Radio
 	.radio-container {
+		@include breakpoint(360px, 'max') {
+			margin: 2px 0;
+			padding: 2px 7px 2px 35px;
+		}
 		@include breakpoint(440px, 'max') { margin-left: -5px; }
 		margin: 2px 0 5px 0;
 		padding: 5px 7px 5px 35px;
@@ -121,6 +120,7 @@
 
 	// Submit
 	.gae-form__submit {
+		@include breakpoint(360px, 'max') { margin-top: -10px; }
 		background-color: $green;
 		border: 2px solid $green;
 		border-radius: 2em;
@@ -194,7 +194,6 @@
 			&:hover,
 			&:focus {
 				background-color: $green;
-
 				outline: none;
 			}
 
@@ -222,6 +221,7 @@
 .sucesso,
 .gae-form__success-message {
 	@include breakpoint(small, 'max') { @include responsiveFont(20); }
+	@include breakpoint(430px, 'max') { padding: 8.5em 2.5em; }
 	@include responsiveFont(18);
 	background-color: #fff;
 	color: $green;

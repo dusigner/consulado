@@ -31,22 +31,30 @@
 
 .gae-phone-list__cta {
 	@include breakpoint(small, 'max') {
+		background-color: $green;
 		border: 1px solid $green;
+		border-radius: 2em;
 		margin-bottom: 10px;
-		padding: .7em 1.2em .7em 2.8em;
+		padding: .8em 1.2em .65em 2.8em;
 		transition: background-color .3s ease;
+
+		&.color-green {
+			color: #fff;
+
+			&:hover { color: $green; }
+		}
 
 		&:before {
 			@include icon-get ('gae-phone');
-			left: .9em;
+			left: 1.2em;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
 		}
 
 		&:hover {
-			background-color: $green;
-			color: #fff;
+			background-color: #fff;
+			color: $green;
 		}
 	}
 	@include responsiveFont(20);

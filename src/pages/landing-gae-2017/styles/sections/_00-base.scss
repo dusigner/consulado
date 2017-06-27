@@ -22,11 +22,12 @@
 		@include breakpoint(small, 'max') { font-size: 14px; }
 	}
 
-	.gae-section__title {
-		margin: 0 0 1.3em 0;
-	}
+	.gae-section__title { margin: 0 0 1.3em 0; }
 
-	.gae-section__subtitle { margin: 1.2em 0 !important; }
+	.gae-section__subtitle {
+		@include responsiveFont(17);
+		margin: 1.2em 0 !important;
+	}
 
 	.color-green { color: $green; }
 
@@ -37,6 +38,8 @@
 	}
 
 	.icon { color: $txt-gray-l; }
+
+	.slick-dots li.slick-active button { background-color: $green; }
 
 }
 

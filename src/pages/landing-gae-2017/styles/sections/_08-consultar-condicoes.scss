@@ -2,6 +2,10 @@
 
 // Consultar condições
 .gae-consultar__cta {
+	@include breakpoint(480px, 'max') {
+		margin: 10px 0;
+		padding: 1em .5em;
+	}
 	@include responsiveFont(14);
 	border: 1px solid $gray-d;
 	border-radius: 3em;

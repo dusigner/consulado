@@ -74,6 +74,9 @@
 
 .gae-contratar__cta {
 	@include breakpoint(small, 'min') { @include responsiveFont(13); }
+	@include breakpoint(small, 'max') {
+		padding: .5em .8em;
+	}
 	background-color: $green;
 	border: 2px solid $green;
 	border-radius: 30px;

@@ -37,6 +37,7 @@
 }
 
 .gae-vantagens__box-title {
+	@include breakpoint(380px, 'max') { @include responsiveFont(15); }
 	@include breakpoint(small, 'max') {
 		@include responsiveFont(16);
 		margin-bottom: 15px;
