@@ -85,12 +85,11 @@ Nitro.module('geo', function() {
 
 	$(window).on('geoUpdated',function(event,result){
 		window.vtexjs.checkout.getOrderForm().done(function(orderForm) {
-			var email = orderForm.clientProfileData.email;
+			if ( orderForm && orderForm.clientProfileData && orderForm.clientProfileData.email ) {
 
-			if (email) {
 				var data = {};
 
-				data.email = email;
+				data.email = orderForm.clientProfileData.email;
 				data.xGeoCidade = result['edge-city'];
 				data.xGeoEstado = result['edge-region'];
 				data.xGeoIP = result.ip;
@@ -105,6 +104,7 @@ Nitro.module('geo', function() {
 					data: JSON.stringify(data),
 					contentType: 'application/json; charset=utf-8'
 				});
+
 			}
 		});
 	});

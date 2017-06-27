@@ -23,10 +23,11 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.gae');
 	require('modules/checkout/checkout.recurrence');
 	require('modules/checkout/checkout.modify');
-	require('modules/checkout.cotas');
+	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 
-	var highlightVoltage = require('modules/checkout.highlight-voltage');
+	var CRM = require('modules/store/crm');
+	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
 	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj'], function(gae, recurrence, cotas, pj) {
 
@@ -87,33 +88,41 @@ $(window).on('load', function() {
 			}
 			// self.rioOlimpiadas();
 
-			if (store && store.isPersonal) {
+			// Verifica se está "logado"
+			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
 				self.cotasInit();
+
+				/**
+				 * Se store userData não possui email do usuário, seta o cookie com o usuário do orderForm
+				 */
+				if( store && store.userData && !store.userData.email ) {
+					CRM.clientSearchByEmail(self.orderForm.clientProfileData.email).done(function(userData) {
+						store.setUserData(userData, true);
+					});
+				}
+
+			} else {
+				self.userData = null;
 			}
+
+			
 		};
 
 		this.cotasInit = function() {
 
-			// Verifica se está "logado"
-			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
+			// Verifica se ainda não foram recuperados dados do CPF
+			if ( !self.userData ) {
 
-				// Verifica se ainda não foram recuperados dados do CPF
-				if ( !self.userData ) {
-
-					// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
-					cotas.getData()
-						.then(function(data) {
-							self.userData = data;
-							cotas.limitQuantity(self.userData.xSkuSalesChannel5);
-						});
-				} else {
-
-					// Verifica limitação de Eletrodomésticos
-					cotas.limitQuantity(self.userData.xSkuSalesChannel5);
-				}
+				// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
+				cotas.getData()
+					.then(function(data) {
+						self.userData = data;
+						cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+					});
 			} else {
 
-				self.userData = null;
+				// Verifica limitação de Eletrodomésticos
+				cotas.limitQuantity(self.userData.xSkuSalesChannel5);
 			}
 		};
 
@@ -232,6 +241,13 @@ $(window).on('load', function() {
 
 		this.clickFakeButton = function(e) {
 			e.preventDefault();
+
+			/**
+			* Caso tenha a clase disable, retorna a função para não executar nada no clique
+			*/
+			if ($(this).prop('disabled') || $(this).is('.disabled')) {
+				return;
+			}
 
 			if (gae.hasAnyActiveWarranty()) {
 				$('#modal-services').modal('show');
