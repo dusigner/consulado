@@ -85,6 +85,12 @@ module.exports.login = function (data) {
 
 	if (data.approved) {
 		redirect(data);
+	} else if(data.xDisapproved) {
+		$('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').vtexModal({
+			id: 'nao-aprovado',
+			title: 'Algo deu errado =/',
+			destroy: true
+		});
 	} else {
 		$('<p>Ainda estamos validando o seu cadastro. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
 			id: 'nao-aprovado',

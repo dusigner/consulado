@@ -63,7 +63,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			$checkbox.parent('label').removeClass('active');
 			$checked.parent('label').addClass('active');
 
-			$(this).addClass('loading');
+			$(this).parent().addClass('loading');
 
 			self.request();
 
@@ -133,7 +133,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		})
 		.always(function() {
 			helper.vitrineHolder.removeClass('loading');
-			$checkbox.removeClass('loading');
+			$checkbox.parent().removeClass('loading');
 			$listMore.show();
 		});
 	};
