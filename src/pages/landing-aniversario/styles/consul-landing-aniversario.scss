@@ -40,20 +40,29 @@ $animation-mode: true!default;
 @import 'components/colors';
 @import 'components/footer';
 
+header {
+  position: relative;
+  z-index: 2;
+}
+
 .header {
     background: $green;
     margin-bottom: 0;
     padding: 30px 0;
 
     @include breakpoint(extra-small, 'max') {
-      .container { border: none; }
+      padding: 10px 0;
 
-      .cont-logo { display: block; }
+      .container { border: none; }
     }
 
     a { color: #ffffff; }
 
-    .logo { margin-top: 0; }
+    .logo {
+      margin-top: 0;
+
+      @include breakpoint(extra-small, 'max') { top: 0; }
+    }
 
     .cont-cadastrar,
     .cont-espiar,
@@ -61,12 +70,19 @@ $animation-mode: true!default;
       padding: 5px 0;
       text-align: center;
 
-      @include breakpoint(extra-small, 'max') { display: none; }
-
       .text {
         @include responsiveFont(22, 16, true);
         display: inline-block;
         padding-left: 10px;
+      }
+    }
+
+    .minicart {
+      @include breakpoint(extra-small, 'max') {
+        .icon {
+          line-height: normal;
+          top: -47px;
+        }
       }
     }
 }
@@ -75,82 +91,15 @@ $animation-mode: true!default;
   background: #0191ce;
   position: relative;
 
-  #contador {
-    color: #ffffff;
-    position: absolute;
-    right: 0;
-    top: 45px;
-    width: 100%;
-
-    .wrapper {
-      display: inline-block;
-      float: right;
-      text-align: center;
-      width: 285px;
-
-      .text {
-        &:first-child {
-          @include responsiveFont(18, 16, true);
-          letter-spacing: 10px;
-          text-transform: uppercase;
-        }
-
-        &:last-child {
-          @include responsiveFont(24, 16, true);
-          display: inline-block;
-          margin-top: 10px;
-        }
-      }
-
-      .countdown {
-        border: 2px solid #ffffff;
-        border-radius: 40px;
-        padding-bottom: 5px;
-
-        &>div {
-          display: inline-block;
-          text-align: center;
-
-          .counter {
-            @include responsiveFont(42, 16, true);
-            display: block;
-            position: relative;
-
-            &:after {
-              @include responsiveFont(10, 16, true);
-              bottom: 0;
-              content: 'Dias';
-              left: 50%;
-              position: absolute;
-              transform: translateX(-50%);
-            }
-          }
-
-          &.countdown-days { margin-right: 20px; }
-
-          &.countdown-hours {
-            .counter {
-              &:after { content: 'Horas'; }
-            }
-          }
-
-          &.countdown-minutes {
-            .counter {
-              &:after { content: 'Minutos'; }
-            }
-          }
-
-          &.countdown-seconds {
-            .counter {
-              &:after { content: 'Segundos'; }
-            }
-          }
-        }
-      }
-    }
-  }
-
   #cadastro {
+    position: relative;
+    z-index: 0;
+
+    @include breakpoint(medium, 'min') {
+      animation: showDown 1.5s linear 300ms 1 forwards;
+      top: -845px;
+    }
+
     .form {
       background: url('/arquivos/cns-landing-aniversario_bg-cadastro.png') center top no-repeat;
       height: 700px;
@@ -224,10 +173,122 @@ $animation-mode: true!default;
     }
   }
 
+  #contador {
+    color: #ffffff;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(medium, 'min') {
+      animation: show 1.5s linear 350ms 1 forwards;
+      opacity: 0;
+    }
+
+    @include breakpoint(extra-small, 'max') {
+      display: inline-block;
+      position: initial;
+    }
+
+    .wrapper {
+      display: inline-block;
+      float: right;
+      text-align: center;
+      width: 285px;
+
+      @include breakpoint(extra-small, 'max') { width: 100%; }
+
+      .text {
+        &:first-child {
+          @include responsiveFont(18, 16, true);
+          letter-spacing: 10px;
+          text-transform: uppercase;
+        }
+
+        &:last-child {
+          @include responsiveFont(24, 16, true);
+          display: inline-block;
+          margin-top: 10px;
+
+          @include breakpoint(extra-small, 'max') { display: none; }
+        }
+      }
+
+      .countdown {
+        border: 2px solid #ffffff;
+        border-radius: 40px;
+        padding-bottom: 5px;
+
+        &>div {
+          display: inline-block;
+          text-align: center;
+
+          .counter {
+            @include responsiveFont(42, 16, true);
+            display: block;
+            position: relative;
+
+            @include breakpoint(extra-small, 'max') { @include responsiveFont(36, 16, true); }
+
+            &:after {
+              @include responsiveFont(9, 16, true);
+              bottom: 0;
+              content: 'Dias';
+              left: 50%;
+              position: absolute;
+              transform: translateX(-50%);
+            }
+
+            &:before {
+              @include responsiveFont(42, 16, true);
+              bottom: 0;
+              position: absolute;
+              right: 0;
+            }
+          }
+
+          &.countdown-days { margin-right: 20px; }
+
+          &.countdown-hours {
+            .counter {
+              padding-right: 10px;
+
+              &:after { content: 'Horas'; }
+
+              &:before { content: ':'; }
+            }
+          }
+
+          &.countdown-minutes {
+            .counter {
+              padding-right: 10px;
+
+              &:after { content: 'Minutos'; }
+
+              &:before { content: ':'; }
+            }
+          }
+
+          &.countdown-seconds {
+            .counter {
+              &:after { content: 'Segundos'; }
+            }
+          }
+        }
+      }
+    }
+  }
+
   #acoes-desktop {
     height: 320px;
     margin-bottom: 60px;
     margin-top: -105px;
+
+    @include breakpoint(medium, 'min') {
+      animation: show 1.5s linear 1.85s 1 forwards;
+      opacity: 0;
+    }
 
     .wrapper {
       height: 320px;
@@ -284,13 +345,134 @@ $animation-mode: true!default;
     }
   }
 
-  #produtos {
-    .produto {
+  #acoes-mobile {
+    margin-bottom: 60px;
+    margin-top: 20px;
+    text-align: center;
+
+    .text {
+      @include responsiveFont(18, 16, true);
+      color: #ffffff;
       display: inline-block;
-      height: 400px;
-      text-align: center;
-      vertical-align: middle;
-      width: 24%;
+      line-height: normal;
+
+      &:first-child {
+        @include responsiveFont(42, 16, true);
+        margin-bottom: 30px;
+      }
+    }
+
+    .espiar {
+      @include responsiveFont(18, 16, true);
+      @include singleTransition();
+      background: $green;
+      border: 2px solid $green;
+      border-radius: 30px;
+      color: #ffffff;
+      display: block;
+      font-weight: bold;
+      margin: 0 auto;
+      margin-top: 30px;
+      padding: 10px 0;
+      padding-left: 60px;
+      width: 230px;
     }
   }
+
+  #produtos {
+    .wrapper {
+      display: none;
+      padding-bottom: 30px;
+    }
+
+    .slick-arrow { color: #ffffff; }
+
+    .slick-dots {
+      bottom: -40px;
+
+      li.slick-active button { background: #ffffff; }
+    }
+
+    .produto {
+      @include singleTransition();
+      display: inline-block;
+      margin: 0 1%;
+      min-height: 320px;
+      text-align: right;
+      vertical-align: middle;
+      width: 23%;
+
+      @include breakpoint(medium, 'min') { filter: blur(4px); }
+
+      @include breakpoint(extra-small, 'max') {
+        display: block;
+        margin: 0;
+        width: 100%;
+      }
+
+      img {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .nome {
+        color: #ffffff;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        text-align: center;
+        width: 170px;
+      }
+
+      .link-produto {
+        @include singleTransition();
+        background: $green;
+        border: 2px solid $green;
+        border-radius: 30px;
+        color: #ffffff;
+        display: block;
+        font-weight: bold;
+        margin: 0 auto;
+        padding: 10px 0;
+        text-align: center;
+        text-transform: uppercase;
+        width: 120px;
+
+        @include breakpoint(medium, 'min') { opacity: 0; }
+
+        &:hover {
+          background: #ffffff;
+          color: $green;
+        }
+      }
+
+      &:first-child {
+        filter: none;
+        margin-left: 0;
+
+        .link-produto { opacity: 1; }
+      }
+
+      &:last-child { margin-right: 0; }
+
+      &:hover {
+        filter: none;
+
+        .link-produto { opacity: 1; }
+      }
+    }
+  }
+}
+
+//mao descendo
+@keyframes showDown {
+  from { top: -845px; }
+  to { top: 0; }
+}
+
+//aparecer (contador e acoes)
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
