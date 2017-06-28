@@ -3,7 +3,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
-/*var CRM = require('modules/store/crm');*/
+var CRM = require('modules/store/crm');
 
 var redirect = module.exports.redirect = function (data) {
 
@@ -83,8 +83,31 @@ module.exports.login = function (data) {
 		status: 'Login'
 	});
 
+	//Atualiza cotas de eletrodomesticos por CPF antes de redirecionar
 	if (data.approved) {
-		redirect(data);
+		var documento = store.isCorp ? data.corporateDocument : data.document;
+		var tipoDocumento = store.isCorp ? 'corporateDocument' : 'document';
+
+		if(documento) {
+			CRM.clientSearchByDocument(documento, tipoDocumento).done(function (res){
+
+				var qntd = 0;
+
+				//soma a quantidade de Eletrodomésticos comprados por esses usuários
+				$.each(res, function(index, user) {
+					qntd += user.xSkuSalesChannel5;
+				});
+
+				data.xSkuSalesChannel5PerDocument = qntd;
+
+				redirect(data);
+
+			});
+		} else {
+			data.xSkuSalesChannel5PerDocument = data.xSkuSalesChannel5;
+			redirect(data);
+		}
+
 	} else if(data.xDisapproved) {
 		$('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').vtexModal({
 			id: 'nao-aprovado',

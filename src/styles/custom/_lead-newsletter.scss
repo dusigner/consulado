@@ -148,7 +148,7 @@
 				position: relative;
 				width: 148px;
 
-				&:before {
+				/*&:before {
 					border: 1px solid;
 					border-radius: 2px;
 					content: '';
@@ -159,7 +159,7 @@
 					position: absolute;
 					top: 0;
 					width: 15px;
-				}
+				}*/
 
 				@include breakpoint(extra-small, 'max') {
 					margin: 0;
@@ -203,17 +203,6 @@
 					position: relative;
 
 					a { color: #f49a9a; }
-
-					&:after {
-						@include contentBefore();
-						border: 3px solid #f49a9a;
-						border-radius: 2px;
-						height: 15px;
-						left: 0;
-						position: absolute;
-						top: 0;
-						width: 15px;
-					}
 				}
 			}
 
@@ -221,17 +210,6 @@
 				position: relative;
 
 				a { color: $txt-gray; }
-
-				&:after {
-					@include contentBefore();
-					border: 3px solid $green;
-					border-radius: 2px;
-					height: 15px;
-					left: 0;
-					position: absolute;
-					top: 0;
-					width: 15px;
-				}
 			}
 		}
 

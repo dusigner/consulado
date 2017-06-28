@@ -8,7 +8,7 @@ Nitro.module('prateleira', ['percentoff'], function() {
 	this.hiddenEmptyShelves = function() {
 
 		$shelf.each(function() {
-			if( !($(this).innerHTML > 0) ) {
+			if( $(this).is(':empty') ) {
 				$(this).closest('section.slider').hide();
 			}
 		});
