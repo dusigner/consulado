@@ -197,6 +197,11 @@
 					text-transform: uppercase;
 				}
 			}
+
+			button.loading {
+				background-color: transparent !important;
+				border: none;
+			}
 		}
 		.padding-right-col {
 			padding-right: 2%;
@@ -278,6 +283,21 @@
 				padding: 0 5%;
 				text-align: left;
 			}
+		}
+	}
+}
+
+fieldset {
+	button.loading {
+		color: transparent !important;
+		position: relative;
+
+		&:before {
+			@include spinner($green);
+			content: ' ';
+			left: 50%;
+			margin-left: -.5em;
+			position: absolute;
 		}
 	}
 }

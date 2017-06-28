@@ -370,11 +370,11 @@ body.departamento {
 							padding-left: 25px;
 							position: relative;
 							&:before {
-								 display: inline-block;
 								background-color: #fff;
-								border-radius: 3px;
 								border: 1px solid $gray-d;
+								border-radius: 3px;
 								content: ' ';
+								display: inline-block;
 								height: 15px;
 								left: 0;
 								position: absolute;
