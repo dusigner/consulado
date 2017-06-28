@@ -529,30 +529,33 @@
 
 	.bt-gototop,
 	.ph-bt-gototop {
+		background-color: $gray-d;
 		bottom: 10px;
 		display: block !important;
-		height: 35px;
+		height: 30px;
 		position: fixed;
 		right: 18px;
 		text-decoration: none;
-		width: 30px;
+		width: 35px;
 		z-index: 99;
 
-		polygon { transition: fill .3s ease; }
+		polygon {
+			display: none;
+			transition: fill .3s ease;
+		}
 
 		&:before {
 			@include icon-get('arrow-up');
 			@include responsiveFont(8, 16, true);
-			color: #ffffff;
-			left: 8px;
+			color: #fff;
+			left: 50%;
 			pointer-events: none;
 			position: absolute;
-			top: 13px;
+			top: 50%;
+			transform: translate(-50%, -50%);
 		}
 
-		&:hover {
-			polygon { fill: $green; }
-		}
+		&:hover { background-color: $green; }
 	}
 
 	// Body mask
