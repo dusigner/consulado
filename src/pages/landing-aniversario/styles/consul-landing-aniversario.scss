@@ -100,11 +100,24 @@ header {
       top: -845px;
     }
 
+    @include breakpoint(extra-small, 'max') {
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+
     .form {
       background: url('/arquivos/cns-landing-aniversario_bg-cadastro.png') center top no-repeat;
       height: 700px;
       overflow: hidden;
       padding: 0 80px;
+
+      @include breakpoint(extra-small, 'max') {
+        // background: url('/arquivos/cns-landing-aniversario_bg-cadastro-mobile.png') center top no-repeat;
+        padding: 0 10px;
+        width: 100%;
+      }
 
       .wrapper {
         display: block;
@@ -115,11 +128,20 @@ header {
         transform: translateY(-50%);
         width: 685px;
 
+        @include breakpoint(extra-small, 'max') {
+          margin-top: 0;
+          position: initial;
+          transform: none;
+          width: 100%;
+        }
+
         .destaque {
           @include responsiveFont(72, 16, true);
           color: #ffffff;
           margin: 0;
           margin-top: 10px;
+
+          @include breakpoint(extra-small, 'max') { @include responsiveFont(52, 16, true); }
         }
 
         .text {
