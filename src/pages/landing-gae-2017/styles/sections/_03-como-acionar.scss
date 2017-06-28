@@ -1,0 +1,69 @@
+@charset 'UTF-8';
+
+// Como acionar
+.gae-phone-list {
+	background-color: #fff;
+	padding: 2em;
+}
+
+.gae-phone-list__item {
+	@include breakpoint(small, 'min') { padding-left: 45px; }
+	@include breakpoint(small, 'max') {
+		margin-top: 20px;
+		text-align: center;
+		width: 100%;
+
+		&:first-child { margin-top: 10px; }
+	}
+	margin-bottom: 10px;
+	position: relative;
+	width: 49%;
+
+	.icon-gae-phone {
+		@include breakpoint(small, 'max') { display: none; }
+		@include responsiveFont(28);
+		display: block;
+		left: 0;
+		position: absolute;
+		top: 0;
+	}
+}
+
+.gae-phone-list__cta {
+	@include breakpoint(small, 'max') {
+		background-color: $green;
+		border: 1px solid $green;
+		border-radius: 2em;
+		margin-bottom: 10px;
+		padding: .8em 1.2em .65em 2.8em;
+		transition: background-color .3s ease;
+
+		&.color-green {
+			color: #fff;
+
+			&:hover { color: $green; }
+		}
+
+		&:before {
+			@include icon-get ('gae-phone');
+			left: 1.2em;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&:hover {
+			background-color: #fff;
+			color: $green;
+		}
+	}
+	@include responsiveFont(20);
+	display: inline-block;
+	position: relative;
+}
+
+.gae-phone-list__text {
+	@include responsiveFont(15);
+	line-height: normal;
+	margin: 5px 0;
+}
