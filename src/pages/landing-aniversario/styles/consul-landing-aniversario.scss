@@ -34,10 +34,6 @@ $animation-mode: true!default;
 // Component styles
 @import 'components/buttons';
 @import 'components/colors';
-
-// Component styles
-@import 'components/buttons';
-@import 'components/colors';
 @import 'components/footer';
 
 header {
@@ -157,6 +153,12 @@ header {
         #form-newsletter {
           text-align: center;
 
+          fieldset {
+            border: none;
+            padding: 0;
+            position: relative;
+          }
+
           input {
             @include responsiveFont(14, 16, true);
             display: inline-block;
@@ -165,6 +167,11 @@ header {
             width: 310px;
 
             &:first-child { margin-right: 10px; }
+
+            &.error {
+              background: #fff0f0;
+              border: 1px solid #f49a9a;
+            }
 
             @include breakpoint(extra-small, 'max') { width: 100%; }
 
@@ -183,18 +190,62 @@ header {
             }
           }
 
+          //msg de erro
+          .tooltip.bottom {
+            margin-top: 3px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+
+            .tooltip-arrow {
+              border-bottom-color: #000 !important;
+              border-width: 0 5px 5px;
+              margin-left: -5px;
+              top: 0;
+            }
+          }
+
+          .tooltip-inner {
+            @include responsiveFont(12, 16, true);
+            background-color: #000;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: normal;
+            max-width: 200px;
+            padding: 3px 8px;
+            text-align: center;
+          }
+
+          .tooltip-arrow {
+            border-color: transparent;
+            border-style: solid;
+            height: 0;
+            position: absolute;
+            width: 0;
+          }
+
           ::-webkit-input-placeholder { font-style: italic; }
           :-ms-input-placeholder { font-style: italic; }
           ::-moz-placeholder { font-style: italic; }
           :-moz-placeholder { font-style: italic; }
+        }
 
-          .text-small {
-            @include responsiveFont(20, 16, true);
-            color: #ffffff;
-            font-weight: bold;
+        .text-small {
+          @include responsiveFont(20, 16, true);
+          color: #ffffff;
+          display: block;
+          font-weight: bold;
+          text-align: center;
 
-            @include breakpoint(extra-small, 'max') { display: none; }
-          }
+          @include breakpoint(extra-small, 'max') { display: none; }
+        }
+
+        .success {
+          @include responsiveFont(24, 16, true);
+          color: #ffffff;
+          display: none;
+          font-weight: bold;
+          text-align: center;
         }
       }
     }
@@ -206,7 +257,6 @@ header {
     right: 0;
     top: 45px;
     width: 100%;
-    z-index: 1;
 
     @include breakpoint(medium, 'min') {
       animation: show 1.5s linear 350ms 1 forwards;
