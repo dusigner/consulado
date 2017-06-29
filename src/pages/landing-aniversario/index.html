@@ -29,38 +29,6 @@
 
 	<!-- Content -->
 	<div class="content">
-		<!-- Contador -->
-		<section id="contador">
-			<div class="container">
-				<div class="row">
-					<div class="wrapper">
-						<span class="text">Faltam</span>
-
-						<div class="countdown">
-							<div class="countdown-days">
-								<span class="counter">14</span>
-							</div>
-
-							<div class="countdown-hours">
-								<span class="counter">22:</span>
-							</div>
-
-							<div class="countdown-minutes">
-								<span class="counter">20:</span>
-							</div>
-
-							<div class="countdown-seconds">
-								<span class="counter">12</span>
-							</div>
-						</div>
-
-						<span class="text">#NiverConsul</span>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- /Contador -->
-
 		<!-- Cadastro -->
 		<section id="cadastro">
 			<div class="container">
@@ -71,7 +39,9 @@
 
 							<p class="destaque">Você foi convidado!</p>
 
-							<span class="text">Você foi convidado para participar do nosso aniversário. Enquanto preparamos uma festa bem pensada, faça seu cadastro para receber tudo em primeira mão.</span>
+							<span class="text hide-small hide-extra-small">Você foi convidado para participar do nosso aniversário. Enquanto preparamos uma festa bem pensada, faça seu cadastro para receber tudo em primeira mão.</span>
+
+							<span class="text show-extra-small">Enquanto a festa não fica pronta, faça seu cadastro para receber tudo em primeira mão.</span>
 
 							<form id="form-newsletter">
 								<input type="text" id="name" name="name" placeholder="Nome" />
@@ -86,6 +56,38 @@
 			</div>
 		</section>
 		<!-- /Cadastro -->
+
+		<!-- Contador -->
+		<section id="contador">
+			<div class="container">
+				<div class="row">
+					<div class="wrapper">
+						<span class="text">Faltam</span>
+
+						<div class="countdown">
+							<div class="countdown-days">
+								<span class="counter"></span>
+							</div>
+
+							<div class="countdown-hours">
+								<span class="counter"></span>
+							</div>
+
+							<div class="countdown-minutes">
+								<span class="counter"></span>
+							</div>
+
+							<div class="countdown-seconds">
+								<span class="counter"></span>
+							</div>
+						</div>
+
+						<span class="text">#NiverConsul</span>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Contador -->
 
 		<!-- Acoes -->
 		<section id="acoes-desktop" class="hide-small hide-extra-small">
@@ -110,7 +112,7 @@
 			</div>
 		</section>
 
-		<section id="acoes-mobile" class="show-small show-extra-small">
+		<section id="acoes-mobile" class="show-extra-small">
 			<div class="container">
 				<div class="row">
 					<div class="wrapper">
@@ -129,20 +131,38 @@
 		<section id="produtos">
 			<div class="container">
 				<div class="row">
-					<div class="produto">
-						<img src="/arquivos/" alt="Geladeira Consul Bem Estar Frost Free" />
-					</div>
+					<div class="wrapper">
+						<div class="produto">
+							<img src="/arquivos/cns-landing-aniversario_produto1.png" alt="Geladeira Consul Bem Estar Frost Free" />
 
-					<div class="produto">
-						<img src="/arquivos/" alt="" />
-					</div>
+							<span class="nome">Geladeira Consul Bem Estar Frost Free</span>
 
-					<div class="produto">
-						<img src="/arquivos/" alt="" />
-					</div>
+							<a href="http://loja.consul.com.br/geladeira-consul-bem-estar-437-litros-platinum-com-horta-em-casa-evox-crm55ak/p" target="_blank" title="Geladeira Consul Bem Estar Frost Free" class="link-produto">Opa!</a>
+						</div>
 
-					<div class="produto">
-						<img src="/arquivos/" alt="" />
+						<div class="produto">
+							<img src="/arquivos/cns-landing-aniversario_produto2.png" alt="Cervejeira Consul Mais Amarela" />
+
+							<span class="nome">Cervejeira Consul Mais Amarela</span>
+
+							<a href="http://loja.consul.com.br/cervejeira-consul-mais-amarela-czd12ay/p" target="_blank" title="Cervejeira Consul Mais Amarela" class="link-produto">Opa!</a>
+						</div>
+
+						<div class="produto">
+							<img src="/arquivos/cns-landing-aniversario_produto3.png" alt="Fogão 4 Bocas Consul Piso com Timer Touch" />
+
+							<span class="nome">Fogão 4 Bocas Consul Piso com Timer Touch</span>
+
+							<a href="http://loja.consul.com.br/fogao-de-piso-consul-4-bocas-com-mesa-de-vidro-temperado-cfo4var/p" target="_blank" title="Fogão 4 Bocas Consul Piso com Timer Touch" class="link-produto">Opa!</a>
+						</div>
+
+						<div class="produto">
+							<img src="/arquivos/cns-landing-aniversario_produto4.png" alt="Lavadora Consul Facilite 11 kg" />
+
+							<span class="nome">Lavadora Consul Facilite 11 kg</span>
+
+							<a href="http://loja.consul.com.br/lavadora-consul-16kg-cwl16ab/p" target="_blank" title="Lavadora Consul Facilite 11 kg" class="link-produto">Opa!</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -150,6 +170,10 @@
 		<!-- Produtos -->
 	</div>
 	<!-- /Content -->
+
+	<!-- Serviços -->
+	<vtex:template id="0-consul-servicos" />
+	<!-- /Serviços -->
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
