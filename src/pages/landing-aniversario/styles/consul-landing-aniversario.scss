@@ -44,7 +44,7 @@ header {
 .header {
     background: $green;
     margin-bottom: 0;
-    padding: 30px 0;
+    padding: 15px 0;
 
     @include breakpoint(extra-small, 'max') {
       padding: 10px 0;
@@ -55,25 +55,31 @@ header {
     a { color: #ffffff; }
 
     .logo {
+      @include responsiveFont(62, 16, true);
       margin-top: 0;
 
-      @include breakpoint(extra-small, 'max') { top: 0; }
+      @include breakpoint(extra-small, 'max') {
+        @include responsiveFont(24, 16, true);
+        top: 0;
+      }
     }
 
     .cont-cadastrar,
     .cont-espiar,
     .cont-compartilhar {
-      padding: 5px 0;
+      @include responsiveFont(22, 16, true);
+      padding: 30px 0;
       text-align: center;
 
       .text {
-        @include responsiveFont(22, 16, true);
         display: inline-block;
         padding-left: 10px;
       }
     }
 
     .minicart {
+      padding: 20px 0;
+
       @include breakpoint(extra-small, 'max') {
         .icon {
           line-height: normal;
@@ -248,9 +254,9 @@ header {
             border-radius: 4px;
             color: #fff;
             font-weight: normal;
-            width: 200px;
             padding: 3px 8px;
             text-align: center;
+            width: 200px;
           }
 
           #name {
@@ -446,6 +452,7 @@ header {
         }
 
         .icon {
+          @include responsiveFont(24, 16, true);
           background: $green;
           border-radius: 50px;
           color: #ffffff;
@@ -453,6 +460,7 @@ header {
           height: 50px;
           left: 50%;
           margin-bottom: 10px;
+          padding-top: 13px;
           position: relative;
           transform: translateX(-50%);
           width: 50px;
