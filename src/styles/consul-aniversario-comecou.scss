@@ -45,13 +45,21 @@
     margin-bottom: 0;
     padding: 30px 0;
 
-    @include breakpoint(extra-small, 'max') {
+   @include breakpoint(extra-small, 'max') {
+      padding: 0;
       .container { border: none; }
 
       .cont-logo { display: block; }
-    }
 
-    a { color: #ffffff; }
+      .icon-logo-consul-aniversario { color: #ffffff; }
+   }
+
+   a { 
+      color: #ffffff; 
+      @include breakpoint(extra-small, 'max') {
+         color: $green;
+      }
+   }
 
     .logo { margin-top: 0; }
 
@@ -69,9 +77,18 @@
 
    .minicart {
       float: right;
+      @include breakpoint(extra-small, 'max') {
+         position: fixed;
+      }
    }
 }
 
+
+#form-birthday {
+   @include breakpoint(extra-small, 'max') {
+      background-color: #a4d13d;
+   }
+}
 .content {
    background-color: $green;
    
@@ -81,17 +98,40 @@
       }
    } 
 
+   .formBirthday {
+      @include breakpoint(extra-small, 'max') {
+         img {
+            bottom: 320px;
+            position: relative;
+         }
+      }
+   }
+
    .imageBirthday,
    .formBirthday {
       margin: 20px 0 20px 0;
       text-align: center;
    }   
 
+   .birthdayMobile {
+      position: relative;
+      top: 100px;
+   }
+
    .txtOfertas,
    .txtBemPensado {
       @include responsiveFont(25, 16, true);
       color: #ffffff;
       margin: 30px 0 0 0;
+      @include breakpoint(extra-small, 'max') {
+         @include responsiveFont(17, 16, true);
+      }
+   }
+
+   .txtOfertas {
+      @include breakpoint(extra-small, 'max') {
+         margin: 50px 0 0 0;
+      }
    }
 
    .txtBemPensado {
@@ -134,11 +174,9 @@
       @include responsiveFont(29, 16, true);
       color: #ffffff;
       font-weight: bold;
-      margin-bottom: -30px;
       text-align: center;
       @include breakpoint(extra-small, 'max') {
          @include responsiveFont(17, 16, true);   
-         margin-bottom: 50px;
       }
    }
    .wrapper {
@@ -160,6 +198,7 @@
          &:last-child {
             @include responsiveFont(24, 16, true);
             display: inline-block;
+            font-weight: bold;
             margin-top: 10px;
 
             @include breakpoint(extra-small, 'max') { display: none; }
@@ -231,9 +270,26 @@
       }
    }
 
+   .balao {
+      position: absolute;
+      img {
+         margin-left: 17px;
+         margin-top: -53px;
+      }
+   }
+
    .produtos {
       display: inline-block;
       margin-left: 8px;
+      &:first-child { margin-left: 0; }
+
+      @include breakpoint(extra-small, 'max') {
+         position: relative;
+         top: 55px;
+         &:first-child {
+            top: 0;
+         }
+      }
    }
 
    .prateleira.default {
@@ -256,9 +312,7 @@
          color: #ffffff;
       }
       
-      li {
-         width: 30%;
-      }
+      li { width: 30%; }
 
       h2,
       .de,

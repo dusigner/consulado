@@ -55,57 +55,77 @@
 
     .logo { margin-top: 0; }
 
-    .cont-cadastrar,
-    .cont-espiar,
-    .cont-compartilhar {
-      padding: 5px 0;
-      text-align: center;
-
-      @include breakpoint(extra-small, 'max') { display: none; }
+   .cont-cadastrar,
+   .cont-espiar,
+   .cont-compartilhar {
+      display: none!important;
 
       .text {
         @include responsiveFont(22, 16, true);
         display: inline-block;
         padding-left: 10px;
       }
-    }
+   }
+
+   .minicart {
+      float: right;
+   }
 }
 
+
+#form-birthday {
+   @include breakpoint(extra-small, 'max') {
+      background-color: #a4d13d;
+   }
+}
 .content {
    background-color: $green;
    
+   .imageBirthday {
+      @include breakpoint(extra-small, 'max') {
+         transform: scale(1.2);
+      }
+   } 
+
+   .formBirthday {
+      @include breakpoint(extra-small, 'max') {
+         img {
+            bottom: 320px;
+            position: relative;
+         }
+      }
+   }
+
    .imageBirthday,
    .formBirthday {
       margin: 20px 0 20px 0;
       text-align: center;
    }   
 
+   .birthdayMobile {
+      position: relative;
+      top: 100px;
+   }
+
    .txtOfertas,
    .txtBemPensado {
       @include responsiveFont(25, 16, true);
       color: #ffffff;
       margin: 30px 0 0 0;
+      @include breakpoint(extra-small, 'max') {
+         @include responsiveFont(17, 16, true);
+      }
+   }
+
+   .txtOfertas {
+      @include breakpoint(extra-small, 'max') {
+         margin: 50px 0 0 0;
+      }
    }
 
    .txtBemPensado {
       font-weight: normal;
       margin: 0;
-   }
-
-   .balloon {
-      position: absolute;
-      right: 46%;
-      animation: balloon 2.5s ease-in-out infinite;
-   }
-
-   @keyframes balloon {
-      0%,
-      100% { 
-         transform:translateY(15px);
-      }
-      50% { 
-         transform:translateY(-15px); 
-      }
    }
 }
 
@@ -116,6 +136,9 @@
       outline: none;
       padding: 10px;
       width: 310px;
+      @include breakpoint(extra-small, 'max') {
+         width: 100%;
+      }
 
       &.submit {
          @include responsiveFont(24, 16, true);
@@ -140,8 +163,10 @@
       @include responsiveFont(29, 16, true);
       color: #ffffff;
       font-weight: bold;
-      margin-bottom: -30px;
       text-align: center;
+      @include breakpoint(extra-small, 'max') {
+         @include responsiveFont(17, 16, true);   
+      }
    }
    .wrapper {
       display: inline-block;
@@ -162,6 +187,7 @@
          &:last-child {
             @include responsiveFont(24, 16, true);
             display: inline-block;
+            font-weight: bold;
             margin-top: 10px;
 
             @include breakpoint(extra-small, 'max') { display: none; }
@@ -233,9 +259,26 @@
       }
    }
 
+   .balao {
+      position: absolute;
+      img {
+         margin-left: 17px;
+         margin-top: -53px;
+      }
+   }
+
    .produtos {
       display: inline-block;
       margin-left: 8px;
+      &:first-child { margin-left: 0; }
+
+      @include breakpoint(extra-small, 'max') {
+         position: relative;
+         top: 55px;
+         &:first-child {
+            top: 0;
+         }
+      }
    }
 
    .prateleira.default {
@@ -257,6 +300,8 @@
          @include responsiveFont(20, 16, true);
          color: #ffffff;
       }
+      
+      li { width: 30%; }
 
       h2,
       .de,

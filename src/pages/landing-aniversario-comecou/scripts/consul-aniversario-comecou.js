@@ -3,6 +3,7 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
+var validation = require('modules/store/validation');
 
 require('modules/helpers');
 require('vendors/slick');
@@ -91,19 +92,70 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 		self.scrollTo($(this));
 	});
 
+
+	//adicionar btn confira da prateleira
 	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
  
+	$('.detalhes .image').each(function(index, value) {
+		var linkProduto = $(this).attr('href');
+
+		$($('.imgProdutos a').get(index)).attr('href', linkProduto);
+		$($('.detalhes .btn-confira').get(index)).attr('href', linkProduto);
+		console.log('cocozinho', index, linkProduto);
+	});
+
+ 	//slider prateleira do contador
+	this.init = function() {
+        this.sliderPrateleira();
+    };
+
+    this.sliderPrateleira = function() {
+        if ($(window).width() <= 992) {
+            $('.infoProdutos .prateleira > ul').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true,
+                fade: false,
+                asNavFor: '.imgProdutos'
+            });
+            $('.imgProdutos').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                asNavFor: '.infoProdutos .prateleira > ul',
+                arrows: false,
+                dots: false,
+                centerMode: false,
+                focusOnSelect: true
+            });
+        }
+    };
+
+    this.init();
+ 
 	//cadastro newsletter
-	$formNewsletter.submit(function(e) {
+	//cadastro newsletter
+	$formNewsletter.submit(function(e){
 		e.preventDefault();
 
-		$formNewsletter.find('input').on('blur', function() {
-			self.validateInputs();
-		});
+		var $fields = $(this).find('input[type="text"], input[type="email"]'),
+			$inputName = $formNewsletter.find('input[type="text"]'),
+			$inputEmail = $formNewsletter.find('input[type="email"]'),
+			$btnSubmit = $(this).find('input[type="submit"]');
 
-		self.validateForm();
+		validation.validate($fields, $btnSubmit)
+							.done(function(){
+								var data = {
+									firstName: $inputName.val(),
+									email: $inputEmail.val()
+								};
 
-		return false;
+								CRM.insertClient(data);
+
+								//exibe msg de sucesso
+								$formNewsletter.fadeOut();
+								$('#cadastro .form .success').fadeIn();
+							});
 	});
 
 	this.validateInputs = function() {
