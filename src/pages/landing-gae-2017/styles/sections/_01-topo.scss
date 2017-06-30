@@ -1,0 +1,95 @@
+@charset 'UTF-8';
+
+// Page title
+.gae-page-title {
+	@include responsiveFont(28);
+	margin: 0;
+
+	&:after {
+		@include breakpoint(480px, 'max') {
+			background-position: 51% center;
+			margin-left: 0;
+			width: 100%;
+		}
+		background: transparent url('/arquivos/lp-gae-aig-logo.png') center center no-repeat;
+		content: '';
+		display: inline-block;
+		height: 50px;
+		margin-left: 15px;
+		transform: translateY(25%);
+		width: 99px;
+	}
+}
+.gae-page-title__content {
+	border: 1px solid #fff;
+	border-width: 1px 0;
+}
+
+
+// Banner principal
+.gae-top-banner {
+	@include breakpoint(small, 'max') { height: 200px; }
+	background: transparent url('/arquivos/lp-cns-gae-banner-principal-desktop.jpg') top center no-repeat;
+	background-size: cover;
+	height: 300px;
+	text-align: center;
+}
+
+
+// Contratar
+.gae-contratar {
+	@include breakpoint(small, 'min') { margin-top: -123px; }
+	@include breakpoint(small, 'max') {
+		margin-top: -95px;
+		max-width: 95%;
+	}
+	background-color: #fff;
+	border: 1px solid #d3d3d3;
+	max-width: 800px;
+	padding: 1.4em 1.8em;
+}
+
+.gae-contratar__img {
+	@include breakpoint(small, 'min') { float: left; }
+	text-align: center;
+
+	img {
+		@include breakpoint(small, 'min') { display: block; }
+		@include breakpoint(small, 'max') {
+			height: 120px;
+			width: 120px;
+		}
+	}
+}
+
+.gae-contratar__text {
+	@include breakpoint(788px, 'min') {
+		float: right;
+		max-width: 515px;
+	}
+	@include breakpoint(small, 'max') { text-align: center; }
+	@include responsiveFont(17);
+	padding: 15px 5px 0 0;
+}
+
+.gae-contratar__cta {
+	@include breakpoint(small, 'min') { @include responsiveFont(13); }
+	@include breakpoint(small, 'max') {
+		padding: .5em .8em;
+	}
+	background-color: $green;
+	border: 2px solid $green;
+	border-radius: 30px;
+	color: #fff;
+	display: inline-block;
+	font-weight: 700;
+	margin-top: 10px;
+	padding: 1.3em 2em;
+	transition: background-color .3s ease;
+
+	&:hover {
+		background-color: #fff;
+		color: $green;
+		text-decoration: none;
+	}
+}
