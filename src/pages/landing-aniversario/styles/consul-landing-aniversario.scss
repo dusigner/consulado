@@ -110,7 +110,8 @@ header {
       padding: 0 80px;
 
       @include breakpoint(extra-small, 'max') {
-        // background: url('/arquivos/cns-landing-aniversario_bg-cadastro-mobile.png') center top no-repeat;
+        background: url('/arquivos/cns-landing-aniversario_bg-cadastro-mobile.png') center top no-repeat;
+        height: 490px;
         padding: 0 10px;
         width: 100%;
       }
@@ -126,9 +127,13 @@ header {
 
         @include breakpoint(extra-small, 'max') {
           margin-top: 0;
-          position: initial;
+          top: 95px;
           transform: none;
           width: 90%;
+        }
+
+        img {
+          @include breakpoint(extra-small, 'max') { width: 135px; }
         }
 
         .destaque {
@@ -136,18 +141,24 @@ header {
           color: #ffffff;
           line-height: normal;
           margin: 0;
-          margin-top: 10px;
+          margin-top: 20px;
 
-          @include breakpoint(extra-small, 'max') { @include responsiveFont(52, 16, true); }
+          @include breakpoint(extra-small, 'max') {
+            @include responsiveFont(28, 16, true);
+            margin-top: 10px;
+          }
         }
 
         .text {
           color: $gray-d;
           display: inline-block;
-          margin: 20px 0 40px;
+          margin: 10px 0 40px;
           text-align: center;
 
-          @include breakpoint(extra-small, 'max') { @include responsiveFont(18, 16, true); }
+          @include breakpoint(extra-small, 'max') {
+            @include responsiveFont(16, 16, true);
+            margin: 10px 0;
+          }
         }
 
         #form-newsletter {
@@ -155,6 +166,7 @@ header {
 
           fieldset {
             border: none;
+            margin-bottom: 0;
             padding: 0;
             position: relative;
           }
@@ -173,7 +185,11 @@ header {
               border: 1px solid #f49a9a;
             }
 
-            @include breakpoint(extra-small, 'max') { width: 100%; }
+            @include breakpoint(extra-small, 'max') {
+              margin-bottom: 10px;
+              padding: 6px 10px;
+              width: 100%;
+            }
 
             &.submit {
               @include responsiveFont(24, 16, true);
@@ -187,8 +203,19 @@ header {
               width: 185px;
 
               &:hover { background: #ffffff; }
+
+              @include breakpoint(extra-small, 'max') {
+                @include responsiveFont(20, 16, true);
+                margin: 0 auto;
+                width: 115px;
+              }
             }
           }
+
+          ::-webkit-input-placeholder { font-style: italic; }
+          :-ms-input-placeholder { font-style: italic; }
+          ::-moz-placeholder { font-style: italic; }
+          :-moz-placeholder { font-style: italic; }
 
           //msg de erro
           .tooltip.bottom {
@@ -197,12 +224,22 @@ header {
             position: absolute;
             z-index: 1;
 
-            .tooltip-arrow {
-              border-bottom-color: #000 !important;
-              border-width: 0 5px 5px;
-              margin-left: -5px;
-              top: 0;
+            @include breakpoint(extra-small, 'max') {
+              left: 50% !important;
+              transform: translateX(-50%);
             }
+          }
+
+          .tooltip-arrow {
+            border-bottom-color: #000 !important;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 0 5px 5px;
+            height: 0;
+            margin-left: -5px;
+            position: absolute;
+            top: 0;
+            width: 0;
           }
 
           .tooltip-inner {
@@ -211,23 +248,25 @@ header {
             border-radius: 4px;
             color: #fff;
             font-weight: normal;
-            max-width: 200px;
+            width: 200px;
             padding: 3px 8px;
             text-align: center;
           }
 
-          .tooltip-arrow {
-            border-color: transparent;
-            border-style: solid;
-            height: 0;
-            position: absolute;
-            width: 0;
-          }
+          #name {
+            @include breakpoint(extra-small, 'max') {
+              & + .tooltip {
+                top: -60px !important;
 
-          ::-webkit-input-placeholder { font-style: italic; }
-          :-ms-input-placeholder { font-style: italic; }
-          ::-moz-placeholder { font-style: italic; }
-          :-moz-placeholder { font-style: italic; }
+                .tooltip-arrow {
+                  border-top-color: #000 !important;
+                  border-width: 5px 5px 0;
+                  bottom: 0;
+                  top: initial;
+                }
+              }
+            }
+          }
         }
 
         .text-small {
@@ -451,8 +490,8 @@ header {
       margin: 0 auto;
       margin-top: 30px;
       padding: 10px 0;
-      padding-left: 60px;
-      width: 230px;
+      padding-left: 40px;
+      width: 200px;
     }
   }
 
@@ -475,7 +514,7 @@ header {
       display: inline-block;
       margin: 0 1%;
       min-height: 320px;
-      text-align: right;
+      text-align: center;
       vertical-align: middle;
       width: 23%;
 
@@ -490,6 +529,7 @@ header {
       img {
         display: inline-block;
         margin: 0;
+        padding-left: 30px;
       }
 
       .nome {
@@ -498,7 +538,6 @@ header {
         margin: 0 auto;
         margin-bottom: 10px;
         margin-top: 20px;
-        text-align: center;
         width: 170px;
       }
 
@@ -512,7 +551,6 @@ header {
         font-weight: bold;
         margin: 0 auto;
         padding: 10px 0;
-        text-align: center;
         text-transform: uppercase;
         width: 120px;
 
