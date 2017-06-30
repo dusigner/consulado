@@ -42,56 +42,70 @@ header {
 }
 
 .header {
-    background: $green;
-    margin-bottom: 0;
-    padding: 15px 0;
+  background: $green;
+  margin-bottom: 0;
+  padding: 15px 0;
+
+  @include breakpoint(extra-small, 'max') {
+    padding: 3px 0;
+
+    .container { border: none; }
+
+    .cont-logo { display: block; }
+
+    .icon-logo-consul-aniversario { color: #ffffff; }
+  }
+
+  a {
+    color: #ffffff;
 
     @include breakpoint(extra-small, 'max') {
-      padding: 10px 0;
-
-      .container { border: none; }
+      color: $green;
     }
+  }
 
-    a { color: #ffffff; }
+  .open-menu-mobile {
+    @include breakpoint(extra-small, 'max') { margin-top: 10px; }
+  }
 
-    .logo {
-      @include responsiveFont(62, 16, true);
-      margin-top: 0;
+  .logo {
+    @include responsiveFont(62, 16, true);
+    line-height: normal;
+    margin-top: 10px;
+  }
 
-      @include breakpoint(extra-small, 'max') {
-        @include responsiveFont(24, 16, true);
-        top: 0;
-      }
+  .cont-cadastrar,
+  .cont-espiar,
+  .cont-compartilhar {
+    @include responsiveFont(22, 16, true);
+    padding: 30px 0;
+    text-align: center;
+
+    .text {
+      display: inline-block;
+      padding-left: 10px;
     }
+  }
 
-    .cont-cadastrar,
-    .cont-espiar,
-    .cont-compartilhar {
-      @include responsiveFont(22, 16, true);
-      padding: 30px 0;
-      text-align: center;
+  .minicart {
+    float: right;
+    margin-top: 15px;
 
-      .text {
-        display: inline-block;
-        padding-left: 10px;
-      }
+    @include breakpoint(extra-small, 'max') {
+      margin-top: 10px;
+      position: fixed;
     }
-
-    .minicart {
-      padding: 20px 0;
-
-      @include breakpoint(extra-small, 'max') {
-        .icon {
-          line-height: normal;
-          top: -47px;
-        }
-      }
-    }
+  }
 }
 
 .content {
   background: #0191ce;
   position: relative;
+
+  .row {
+    margin-bottom: 0;
+    padding: 0;
+  }
 
   #cadastro {
     position: relative;
