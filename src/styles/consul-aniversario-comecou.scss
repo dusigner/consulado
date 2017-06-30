@@ -255,6 +255,10 @@
          @include responsiveFont(20, 16, true);
          color: #ffffff;
       }
+      
+      li {
+         width: 30%;
+      }
 
       h2,
       .de,
