@@ -3,7 +3,6 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
-var validation = require('modules/store/validation');
 
 require('modules/helpers');
 require('vendors/slick');
@@ -92,29 +91,113 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 		self.scrollTo($(this));
 	});
 
+	//adicionar btn confira da prateleira
+	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
+ 
+	this.init = function() {
+        this.sliderPrateleira();
+    };
+
+	// slider prateleira
+    // this.sliderPrateleira = function() {
+    // 	if ($(window).width() <= 992) {
+	   //      $('.infoProdutos .prateleira > ul').slick({
+	   //          infinite: true,
+	   //          slidesToShow: 4,
+	   //          slidesToScroll: 4,
+	   //          dots: true,
+	   //          responsive: [{
+	   //              breakpoint: 992,
+	   //              settings: {
+	   //                  slidesToShow: 2,
+	   //                  slidesToScroll: 2
+	   //              }
+	   //          }, {
+	   //              breakpoint: 480,
+	   //              settings: {
+	   //                  slidesToShow: 1,
+	   //                  slidesToScroll: 1
+	   //              }
+	   //          }]
+	   //      });
+	   //  }    
+    // };
+
+    this.sliderPrateleira = function() {
+        if ($(window).width() <= 992) {
+            $('.infoProdutos .prateleira > ul').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: true,
+                dots: true,
+                fade: false,
+                asNavFor: '.imgProdutos'
+            });
+            $('.imgProdutos').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                asNavFor: '.infoProdutos .prateleira > ul',
+                arrows: false,
+                dots: false,
+                centerMode: false,
+                focusOnSelect: true
+            });
+        }
+    };
+
+    this.init();
+ 
 	//cadastro newsletter
-	$formNewsletter.submit(function(e){
+	$formNewsletter.submit(function(e) {
 		e.preventDefault();
 
-		var $fields = $(this).find('input[type="text"], input[type="email"]'),
-			$inputName = $formNewsletter.find('input[type="text"]'),
-			$inputEmail = $formNewsletter.find('input[type="email"]'),
-			$btnSubmit = $(this).find('input[type="submit"]');
+		$formNewsletter.find('input').on('blur', function() {
+			self.validateInputs();
+		});
 
-		validation.validate($fields, $btnSubmit)
-							.done(function(){
-								var data = {
-									firstName: $inputName.val(),
-									email: $inputEmail.val()
-								};
+		self.validateForm();
 
-								CRM.insertClient(data);
-
-								//exibe msg de sucesso
-								$formNewsletter.fadeOut();
-								$('#cadastro .form .success').fadeIn();
-							});
+		return false;
 	});
+
+	this.validateInputs = function() {
+		if ($inputName.filter(':blank').length >= 1) {
+			$inputName.addClass('error');
+		} else {
+			$inputName.removeClass('error');
+		}
+
+		if ($inputEmail.filter(':blank').length >= 1) {
+			$inputEmail.addClass('error');
+		} else {
+			$inputEmail.removeClass('error');
+		}
+	};
+
+	this.validateForm = function() {
+		if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
+			valid = true;
+		} else {
+			self.validateInputs();
+		}
+
+		if (valid) {
+			var name = $inputName.val(),
+				email = $inputEmail.val();
+
+			self.registerNewsletter(name, email);
+		}
+	};
+
+	this.registerNewsletter = function(name, email) {
+		var data = {};
+
+		data.firstName = name;
+		data.email = email;
+
+		CRM.insertClient(data);
+	};
+
 
 	//compartilhar facebook
 	$('.header .share-facebook').click(function(e) {

@@ -3,7 +3,6 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
-var validation = require('modules/store/validation');
 
 require('modules/helpers');
 require('vendors/slick');
@@ -92,29 +91,59 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 		self.scrollTo($(this));
 	});
 
+	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
+ 
 	//cadastro newsletter
-	$formNewsletter.submit(function(e){
+	$formNewsletter.submit(function(e) {
 		e.preventDefault();
 
-		var $fields = $(this).find('input[type="text"], input[type="email"]'),
-			$inputName = $formNewsletter.find('input[type="text"]'),
-			$inputEmail = $formNewsletter.find('input[type="email"]'),
-			$btnSubmit = $(this).find('input[type="submit"]');
+		$formNewsletter.find('input').on('blur', function() {
+			self.validateInputs();
+		});
 
-		validation.validate($fields, $btnSubmit)
-							.done(function(){
-								var data = {
-									firstName: $inputName.val(),
-									email: $inputEmail.val()
-								};
+		self.validateForm();
 
-								CRM.insertClient(data);
-
-								//exibe msg de sucesso
-								$formNewsletter.fadeOut();
-								$('#cadastro .form .success').fadeIn();
-							});
+		return false;
 	});
+
+	this.validateInputs = function() {
+		if ($inputName.filter(':blank').length >= 1) {
+			$inputName.addClass('error');
+		} else {
+			$inputName.removeClass('error');
+		}
+
+		if ($inputEmail.filter(':blank').length >= 1) {
+			$inputEmail.addClass('error');
+		} else {
+			$inputEmail.removeClass('error');
+		}
+	};
+
+	this.validateForm = function() {
+		if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
+			valid = true;
+		} else {
+			self.validateInputs();
+		}
+
+		if (valid) {
+			var name = $inputName.val(),
+				email = $inputEmail.val();
+
+			self.registerNewsletter(name, email);
+		}
+	};
+
+	this.registerNewsletter = function(name, email) {
+		var data = {};
+
+		data.firstName = name;
+		data.email = email;
+
+		CRM.insertClient(data);
+	};
+
 
 	//compartilhar facebook
 	$('.header .share-facebook').click(function(e) {
