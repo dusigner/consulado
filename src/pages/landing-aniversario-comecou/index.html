@@ -43,8 +43,10 @@
 							<h3 class="registerForm">Faça seu cadastro para receber<br />todas as nossas ofertas.</h3>
 
 							<form id="form-newsletter">
-								<input type="text" id="name" name="name" placeholder="Nome" />
-								<input type="email" id="email" name="email" placeholder="E-mail" />
+								<fieldset>
+									<input type="text" id="name" name="name" placeholder="Nome" data-validation="required" data-msg-required="Ops! Você esqueceu de preencher seu nome." />
+									<input type="email" id="email" name="email" placeholder="E-mail" data-validation="require email" data-msg-required="Ops! Você esqueceu de preencher seu e-mail. Por favor, complete o cadastro." data-msg-email="Ihh! Coloque um e-mail válido para entrar na festa." />
+								</fieldset>
 
 								<input type="submit" name="submit" class="submit" value="Enviar ;)" />
 							</form>
@@ -79,19 +81,17 @@
 						</div>
 						<div class="compartilhar">
 							<a href="#" class="share-facebook" title="Compartilhe">
-								<i class="icon icon-share-facebook"></i>
+								<i class="icon facebook-messenger"></i>
 								<span class="text">Compartilhe</span>
 							</a>
 						</div>
 					</div>
 					<p class="txt-cont">Entre e faça a festa em nossas ofertas bem pensadas ;)</p>
 					<div class="imgProdutos">
-						<div class="balao">
-							<img src="/arquivos/balao.png" alt="" />
-						</div>
 						<div class="produtos">
 							<a href="">
 								<img src="/arquivos/produto_1.png" alt="" />
+								<img src="/arquivos/balao.png" alt="" class="balao"/>
 							</a>
 						</div>
 						<div class="produtos">
@@ -110,6 +110,13 @@
 						<vtex:contentPlaceHolder id="Colecao Aniversario" />
 					</div>
 				</div>		
+			</div>
+		</section>
+
+		<section>
+			<div class="container">
+				<div class="chaordic"></div>
+				<div class="chaordic"></div>
 			</div>
 		</section>
 	</div>

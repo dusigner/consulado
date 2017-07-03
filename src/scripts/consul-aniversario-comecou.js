@@ -19,35 +19,7 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 
 
 	var self = this,
-		$formNewsletter = $('#form-newsletter'),
-		$inputName = $formNewsletter.find('input[type="text"]'),
-		$inputEmail = $formNewsletter.find('input[type="email"]'),
-		valid = false;
-
-	this.scrollTo = function(element) {
-		var section = $(element).attr('href'),
-			top = $(section).offset().top;
-
-		//abre section de produtos
-		if (section === '#produtos') {
-			$('#produtos .wrapper').slideDown(300);
-			$('html, body').animate({ scrollTop: top - 80 }, 600);
-
-			if ($(window).width() <= 768) {
-				self.initSliderProdutos();
-			}
-		} else {
-			$('html, body').animate({ scrollTop: top }, 600);
-		}
-	};
-
-	this.initSliderProdutos = function() {
-		$('#produtos .wrapper').slick({
-			dots: true,
-			swipe: true,
-			slidesToShow: 1
-		});
-	};
+		$formNewsletter = $('#form-newsletter');
 
 	this.calculateTimeRemaining = function(endDate) {
 		var total = Date.parse(endDate) - Date.parse(new Date()),
@@ -67,7 +39,7 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 	};
 
 	this.countdown = function() {
-		var endDate = '2017-7-7',
+		var endDate = '2017-7-16',
 			$countdown = $('.countdown'),
 			$days = $countdown.find('.countdown-days .counter'),
 			$hours = $countdown.find('.countdown-hours .counter'),
@@ -84,14 +56,6 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 		$minutes.text(minutes < 10 ? '0' + minutes : minutes);
 		$seconds.text(seconds < 10 ? '0' + seconds : seconds);
 	};
-
-	//clique nos links leva para section correspondente
-	$('.header .container>div a:not(.share-facebook), #acoes-desktop .wrapper>div a:not(.share-facebook), #acoes-mobile .espiar').click(function(e){
-		e.preventDefault();
-
-		self.scrollTo($(this));
-	});
-
 
 	//adicionar btn confira da prateleira
 	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
@@ -134,7 +98,6 @@ Nitro.setup(['consul-landing-aniversario'], function () {
     this.init();
  
 	//cadastro newsletter
-	//cadastro newsletter
 	$formNewsletter.submit(function(e){
 		e.preventDefault();
 
@@ -144,94 +107,86 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 			$btnSubmit = $(this).find('input[type="submit"]');
 
 		validation.validate($fields, $btnSubmit)
-							.done(function(){
-								var data = {
-									firstName: $inputName.val(),
-									email: $inputEmail.val()
-								};
+		.done(function(){
+			var data = {
+				firstName: $inputName.val(),
+				email: $inputEmail.val(),
+				isNewsletterOptIn: true
+			};
 
-								CRM.insertClient(data);
-
-								//exibe msg de sucesso
-								$formNewsletter.fadeOut();
-								$('#cadastro .form .success').fadeIn();
-							});
+			$.getJSON(CRM.clientURI, {
+				f: 'id,email',
+				fq: 'email:' + $inputEmail.val()
+			}).done(function(res){
+				if (res) {
+					//exibe msg de erro
+					$('#cadastro .form .error').fadeIn();
+				}
+			}).fail(function(res){
+				if (res.status === 404) {
+					CRM.insertClient(data).done(function(res){
+						if (res) {
+							//exibe msg de sucesso
+							$formNewsletter.fadeOut();
+							$('#cadastro .form .success').fadeIn();
+						} else {
+							//exibe msg de erro
+							$('#cadastro .form .error').text('Oops! Algo deu errado. Por favor, tente novamente.');
+							$('#cadastro .form .error').fadeIn();
+						}
+					});
+				} else {
+					$('#cadastro .form .error').fadeIn();
+				}
+			});
+		});
 	});
 
-	this.validateInputs = function() {
-		if ($inputName.filter(':blank').length >= 1) {
-			$inputName.addClass('error');
-		} else {
-			$inputName.removeClass('error');
-		}
+	// this.validateInputs = function() {
+	// 	if ($inputName.filter(':blank').length >= 1) {
+	// 		$inputName.addClass('error');
+	// 	} else {
+	// 		$inputName.removeClass('error');
+	// 	}
 
-		if ($inputEmail.filter(':blank').length >= 1) {
-			$inputEmail.addClass('error');
-		} else {
-			$inputEmail.removeClass('error');
-		}
-	};
+	// 	if ($inputEmail.filter(':blank').length >= 1) {
+	// 		$inputEmail.addClass('error');
+	// 	} else {
+	// 		$inputEmail.removeClass('error');
+	// 	}
+	// };
 
-	this.validateForm = function() {
-		if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
-			valid = true;
-		} else {
-			self.validateInputs();
-		}
+	// this.validateForm = function() {
+	// 	if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1) {
+	// 		valid = true;
+	// 	} else {
+	// 		self.validateInputs();
+	// 	}
 
-		if (valid) {
-			var name = $inputName.val(),
-				email = $inputEmail.val();
+	// 	if (valid) {
+	// 		var name = $inputName.val(),
+	// 			email = $inputEmail.val();
 
-			self.registerNewsletter(name, email);
-		}
-	};
+	// 		self.registerNewsletter(name, email);
+	// 	}
+	// };
 
-	this.registerNewsletter = function(name, email) {
-		var data = {};
+	// this.registerNewsletter = function(name, email) {
+	// 	var data = {};
 
-		data.firstName = name;
-		data.email = email;
+	// 	data.firstName = name;
+	// 	data.email = email;
 
-		CRM.insertClient(data);
-	};
+	// 	CRM.insertClient(data);
+	// };
 
 
 	//compartilhar facebook
 	$('.header .share-facebook').click(function(e) {
 		e.preventDefault();
 
-		// if(FB) {
-		// 	FB.login(function(response) {
-		// 			if (response.authResponse) {
-		// 					FB.api('/me', function() {
-		// 							FB.ui({
-		// 									method: 'send',
-		// 									link: 'http://loja.consul.com.br/landing/aniversario'
-		// 							});
-		// 					});
-		// 			}
-		// 	});
-		// }
+		window.open('https://www.facebook.com/sharer.php?u=http://consulqa.vtexcommercestable.com.br/landing/aniversario', 'sharer', 'width=626,height=436');
 	});
-
-	// //Iniciando SDK Facebook
-	// window.fbAsyncInit = function () {
-	// 		FB.init({
-	// 				appId: store.isQA ? '183555032145633' : '178708989296904',
-	// 				xfbml: true,
-	// 				version: 'v2.8'
-	// 		});
-	// 		//FB.AppEvents.logPageView();
-	// };
-
-	// (function (d, s, id) {
-	// 		var js, fjs = d.getElementsByTagName(s)[0];
-	// 		if (d.getElementById(id)) { return; }
-	// 		js = d.createElement(s); js.id = id;
-	// 		js.src = '//connect.facebook.net/en_US/sdk.js';
-	// 		fjs.parentNode.insertBefore(js, fjs);
-	// }(document, 'script', 'facebook-jssdk'));
 
 	setInterval(self.countdown, 1000);
 	// self.countdown();
