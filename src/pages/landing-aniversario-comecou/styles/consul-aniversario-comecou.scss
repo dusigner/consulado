@@ -40,7 +40,10 @@
 
 body { 
    margin: 0!important;
-   padding: 44px 0 0 0!important; 
+   padding: 0;
+   @include breakpoint(extra-small, 'max') {
+      padding: 44px 0 0 0!important; 
+   }
 }
 
 .header {
@@ -297,6 +300,10 @@ body {
       position: absolute;
       top: 146%;
       @include breakpoint(extra-small, 'max') { display: none; }
+      @media screen and (min-width: 1450px) {
+         left: 22%;
+         top: 117%;
+      }
       img {
          margin-left: 17px;
          margin-top: -53px;
