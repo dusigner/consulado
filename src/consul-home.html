@@ -5,6 +5,12 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
+	
+	<style>
+		@media (max-width: 768px) {
+			.banners-secundarios.hide-mobile{display:none!important;}
+		}
+	</style>
 </head>
 <body data-controller="home">
 	<!-- AVISO -->
@@ -79,7 +85,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<!-- Lead newsletter -->
 	<div class="row gutters newsletter">
 		<div class="container">
@@ -103,11 +109,31 @@
 		</div>
 	</div>
 	<!-- Lead newsletter -->
-
+	
 		<!-- Chaordic TOP -->
-<div class="container">
-	<div chaordic="top"></div>
-</div>
+	<div class="container">
+		<div chaordic="top"></div>
+	</div>
+	
+	<!-- Home Banners Secundários -->
+	<section class="banners-secundarios clearfix hide-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-banners-secundarios">
+					<div class="banner-secundario banner-secundario1">
+						<vtex:contentPlaceHolder id="BannerSecundario1" />                        
+					</div>
+					<div class="banner-secundario banner-secundario2">
+						<vtex:contentPlaceHolder id="BannerSecundario2" />
+					</div>
+					<div class="banner-secundario banner-secundario3">
+						<vtex:contentPlaceHolder id="BannerSecundario3" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Home Banners Secundários -->
 
 	<!-- Prateleira - 01 -->
 	<section class="home-prateleira-01 slider clearfix">
@@ -122,25 +148,6 @@
 	</section>
 	<!-- /Prateleira - 01 -->
 
-	<!-- Home Banners Secundários -->
-	<section class="banners-secundarios clearfix hide-mobile">
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-banners-secundarios">
-					<div class="banner-secundario banner-secundario1">
-						<div class="controller"></div>
-					</div>
-					<div class="banner-secundario banner-secundario2">
-						<div class="controller"></div>
-					</div>
-					<div class="banner-secundario banner-secundario3">
-						<div class="controller"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Home Banners Secundários -->
 
 	<!-- Prateleira - 02 -->
 	<section class="home-prateleira-02 slider clearfix">
@@ -156,9 +163,31 @@
 	<!-- /Prateleira - 02 -->
 
 	<!-- Chaordic MIDDLE -->
-<div class="container">
-	<div chaordic="middle"></div>
-</div>
+	<div class="container">
+		<div chaordic="middle"></div>
+	</div>
+
+	<!-- Home Banners Secundários Três -->
+	<section class="banners-secundarios-mosaico clearfix hide-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
+					<div class="banner-secundario-mosaico banner-secundario-mosaico4">
+						<vtex:contentPlaceHolder id="BannerMosaicoSecundario1" />
+					</div>
+				</div>
+				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right">
+					<div class="banner-secundario-mosaico banner-secundario-mosaico5">
+						<vtex:contentPlaceHolder id="BannerMosaicoSecundario2" />
+					</div>
+					<div class="banner-secundario-mosaico banner-secundario-mosaico6">
+						<vtex:contentPlaceHolder id="BannerMosaicoSecundario3" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Home Banners Secundários Três -->
 
 	<!-- Detaque - 01 -->
 	<section class="destaque-01 destaque clearfix">
@@ -225,28 +254,6 @@
 		<div chaordic="bottom"></div>
 	</div>
 
-	<!-- Home Banners Secundários Três -->
-	<section class="banners-secundarios-mosaico clearfix hide-mobile">
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico4">
-						<div class="controller"></div>
-					</div>
-				</div>
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico5">
-						<div class="controller"></div>
-					</div>
-					<div class="banner-secundario-mosaico banner-secundario-mosaico6">
-						<div class="controller"></div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Home Banners Secundários Três -->
-
 	<!-- Serviços -->
 	<vtex:template id="0-consul-servicos" />
 	<!-- /Serviços -->
@@ -257,10 +264,10 @@
 			<div class="row">
 				<div class="prateleira-banners-secundarios-mobile">
 					<div class="banner-secundario-mobile banner-mobile1">
-						<div class="controller"></div>
+						<vtex:contentPlaceHolder id="BannerMobileSecundario1" />
 					</div>
 					<div class="banner-secundario-mobile banner-mobile2">
-						<div class="controller"></div>
+						<vtex:contentPlaceHolder id="BannerMobileSecundario2" />
 					</div>
 				</div>
 			</div>
