@@ -475,17 +475,10 @@ header {
 
         .icon {
           @include responsiveFont(24, 16, true);
-          background: $green;
-          border-radius: 50px;
           color: #ffffff;
-          display: block;
-          height: 50px;
-          left: 50%;
-          margin-bottom: 10px;
-          padding-top: 13px;
+          display: inline-block;
+          left: 0;
           position: relative;
-          transform: translateX(-50%);
-          width: 50px;
         }
       }
     }
@@ -508,20 +501,38 @@ header {
       }
     }
 
-    .espiar {
-      @include responsiveFont(18, 16, true);
-      @include singleTransition();
-      background: $green;
-      border: 2px solid $green;
-      border-radius: 30px;
-      color: #ffffff;
-      display: block;
-      font-weight: bold;
-      margin: 0 auto;
-      margin-top: 30px;
-      padding: 10px 0;
-      padding-left: 40px;
-      width: 200px;
+    .ctas {
+      .espiar,
+      .share-facebook {
+        @include responsiveFont(18, 16, true);
+        @include singleTransition();
+        background: $green;
+        border: 2px solid $green;
+        border-radius: 30px;
+        color: #ffffff;
+        display: block;
+        font-weight: bold;
+        margin: 0 auto;
+        margin-top: 30px;
+        padding: 10px 0;
+        padding-left: 40px;
+        position: relative;
+        width: 200px;
+
+        &:before {
+          @include contentBefore();
+          @include icon-get('eye');
+          @include responsiveFont(24, 16, true);
+          display: inline-block;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+
+      .share-facebook {
+        &:before { @include icon-get('social-facebook'); }
+      }
     }
   }
 

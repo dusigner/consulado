@@ -38,11 +38,11 @@
 @import 'components/colors';
 @import 'components/footer';
 
-body { 
+body {
    margin: 0!important;
    padding: 0;
    @include breakpoint(extra-small, 'max') {
-      padding: 44px 0 0 0!important; 
+      padding: 44px 0 0 0!important;
    }
 }
 
@@ -50,7 +50,7 @@ body {
     background: #96c134;
     margin-bottom: 0;
     padding: 30px 0;
-   
+
    .icon-logo-consul-aniversario { font-size: 65px; }
    @include breakpoint(extra-small, 'max') {
       padding: 0;
@@ -58,14 +58,14 @@ body {
 
       .cont-logo { display: block; }
 
-      .icon-logo-consul-aniversario { 
-         color: #ffffff; 
+      .icon-logo-consul-aniversario {
+         color: #ffffff;
          font-size: 45px;
       }
    }
 
-   a { 
-      color: #ffffff; 
+   a {
+      color: #ffffff;
       @include breakpoint(extra-small, 'max') {
          color: $green;
       }
@@ -101,12 +101,12 @@ body {
 }
 .content {
    background-color: $green;
-   
+
    .imageBirthday {
       @include breakpoint(extra-small, 'max') {
          transform: scale(1.2);
       }
-   } 
+   }
 
    .formBirthday {
       @include breakpoint(extra-small, 'max') {
@@ -121,7 +121,7 @@ body {
    .formBirthday {
       margin: 20px 0 20px 0;
       text-align: center;
-   }   
+   }
 
    .birthdayMobile {
       position: relative;
@@ -187,10 +187,53 @@ body {
       font-weight: bold;
       text-align: center;
       @include breakpoint(extra-small, 'max') {
-         @include responsiveFont(17, 16, true);   
-         margin-bottom: 50px;
+         @include responsiveFont(17, 16, true);
       }
    }
+
+   .ctas {
+      display: none;
+
+      @include breakpoint(extra-small, 'max') {
+         display: block;
+         margin-bottom: 30px;
+      }
+
+      .espiar,
+      .share-facebook {
+         @include breakpoint(extra-small, 'max')
+
+         @include responsiveFont(18, 16, true);
+         @include singleTransition();
+         background: $green;
+         border: 2px solid $green;
+         border-radius: 30px;
+         color: #ffffff;
+         display: block;
+         font-weight: bold;
+         margin: 0 auto;
+         margin-top: 30px;
+         padding: 10px 0;
+         padding-left: 40px;
+         position: relative;
+         width: 200px;
+
+         &:before {
+            @include contentBefore();
+            @include icon-get('eye');
+            @include responsiveFont(24, 16, true);
+            display: inline-block;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+         }
+      }
+
+      .share-facebook {
+         &:before { @include icon-get('social-facebook'); }
+      }
+    }
+
    .wrapper {
       display: inline-block;
       margin-top: 30px;
@@ -201,19 +244,11 @@ body {
 
       .text {
          color: #ffffff;
+
          &:first-child {
             @include responsiveFont(18, 16, true);
             letter-spacing: 10px;
             text-transform: uppercase;
-         }
-
-         &:last-child {
-            @include responsiveFont(24, 16, true);
-            display: inline-block;
-            font-weight: bold;
-            margin-top: 10px;
-
-            @include breakpoint(extra-small, 'max') { display: none; }
          }
       }
 
@@ -248,11 +283,11 @@ body {
                      bottom: 0;
                      position: absolute;
                      right: -3px;
-               }  
+               }
             }
 
             &.countdown-days { margin-right: 15px; }
-   
+
             &.countdown-hours {
                .counter {
                   padding-right: 10px;
@@ -266,7 +301,7 @@ body {
             &.countdown-minutes {
                .counter {
                   padding-right: 10px;
-      
+
                   &:after { content: 'Minutos'; }
 
                   &:before { content: ':'; }
@@ -280,19 +315,24 @@ body {
             }
          }
       }
-   }
-   
-   @include breakpoint(extra-small, 'min') {
-      .facebook-messenger {
-         &:before {
-            color: #ffffff;  
-            content: '\e909';
+
+      .compartilhar {
+         @include responsiveFont(24, 16, true);
+         display: inline-block;
+         font-weight: bold;
+         margin-top: 10px;
+         padding-left: 10px;
+
+         @include breakpoint(extra-small, 'max') { display: none; }
+
+         .icon {
+            @include responsiveFont(24, 16, true);
+            color: #ffffff;
             display: inline-block;
-            font-size: 30px;
-            margin-right: 10px;
-            vertical-align: sub;
-         }
-      }   
+            left: -10px;
+            position: relative;
+        }
+      }
    }
 
    .balao {
@@ -318,9 +358,9 @@ body {
 
    .prateleira.default {
 
-      .nome { 
+      .nome {
          @include responsiveFont(23, 16, true);
-         color: #bfeb58; 
+         color: #bfeb58;
          font-weight: bold;
          margin-top: 0;
          min-height: 102px;
@@ -335,7 +375,7 @@ body {
          @include responsiveFont(20, 16, true);
          color: #ffffff;
       }
-      
+
       li { width: 30%; }
 
       h2,
@@ -345,7 +385,7 @@ body {
       .department-nav {
          display: none;
       }
-   }  
+   }
 
    .btn-confira {
       @include responsiveFont(23, 16, true);
@@ -356,5 +396,5 @@ body {
       font-weight: bold;
       padding: 10px 40px 10px 40px;
    }
-   
+
 }

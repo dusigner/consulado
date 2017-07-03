@@ -1,5 +1,3 @@
-/* global FB:true */
-
 'use strict';
 
 var CRM = require('modules/store/crm');
@@ -13,11 +11,6 @@ require('vendors/jquery.validate');
 require('vendors/nitro');
 
 Nitro.setup(['consul-landing-aniversario'], function () {
-	//////////////////////////
-	$('.cont-logo a i').addClass('icon-logo-consul');
-	//////////////////////////
-
-
 	var self = this,
 		$formNewsletter = $('#form-newsletter');
 
@@ -59,44 +52,43 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 
 	//adicionar btn confira da prateleira
 	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
- 
+
 	$('.detalhes .image').each(function(index, value) {
 		var linkProduto = $(this).attr('href');
 
 		$($('.imgProdutos a').get(index)).attr('href', linkProduto);
 		$($('.detalhes .btn-confira').get(index)).attr('href', linkProduto);
-		console.log('cocozinho', index, linkProduto);
 	});
 
- 	//slider prateleira do contador
+	//slider prateleira do contador
 	this.init = function() {
-        this.sliderPrateleira();
-    };
+		this.sliderPrateleira();
+	};
 
-    this.sliderPrateleira = function() {
-        if ($(window).width() <= 992) {
-            $('.infoProdutos .prateleira > ul').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                arrows: true,
-                dots: true,
-                fade: false,
-                asNavFor: '.imgProdutos'
-            });
-            $('.imgProdutos').slick({
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                asNavFor: '.infoProdutos .prateleira > ul',
-                arrows: false,
-                dots: false,
-                centerMode: false,
-                focusOnSelect: true
-            });
-        }
-    };
+		this.sliderPrateleira = function() {
+			if ($(window).width() <= 992) {
+				$('.infoProdutos .prateleira > ul').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: true,
+					dots: true,
+					fade: false,
+					asNavFor: '.imgProdutos'
+				});
+				$('.imgProdutos').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					asNavFor: '.infoProdutos .prateleira > ul',
+					arrows: false,
+					dots: false,
+					centerMode: false,
+					focusOnSelect: true
+				});
+			}
+		};
 
-    this.init();
- 
+		this.init();
+
 	//cadastro newsletter
 	$formNewsletter.submit(function(e){
 		e.preventDefault();
@@ -144,7 +136,7 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 
 
 	//compartilhar facebook
-	$('.header .share-facebook').click(function(e) {
+	$('.share-facebook').click(function(e) {
 		e.preventDefault();
 
 		window.open('https://www.facebook.com/sharer.php?u=http://consulqa.vtexcommercestable.com.br/landing/aniversario', 'sharer', 'width=626,height=436');
