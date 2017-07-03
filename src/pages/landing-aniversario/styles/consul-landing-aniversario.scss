@@ -306,6 +306,14 @@ header {
           font-weight: bold;
           text-align: center;
         }
+
+        .error {
+          color: #fb6969;
+          display: none;
+          font-weight: bold;
+          margin: 0;
+          text-align: center;
+        }
       }
     }
   }
