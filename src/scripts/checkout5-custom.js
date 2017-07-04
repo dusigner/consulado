@@ -76,7 +76,7 @@ $(window).on('load', function() {
 				gae.info();
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
-				
+
 			}
 
 			if (self.isCart()) {
@@ -110,19 +110,26 @@ $(window).on('load', function() {
 
 		this.cotasInit = function() {
 
-			// Verifica se ainda não foram recuperados dados do CPF
-			if ( !self.userData ) {
+			// Verifica se está "logado"
+			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email && self.orderForm.userProfileId ) {
 
-				// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
-				cotas.getData()
-					.then(function(data) {
-						self.userData = data;
-						cotas.limitQuantity(self.userData.xSkuSalesChannel5);
-					});
+				// Verifica se ainda não foram recuperados dados do CPF
+				if ( !self.userData ) {
+
+					// Pega dados atribui ao módulo e verifica limitação de Eletrodomésticos
+					cotas.getData()
+						.then(function(data) {
+							self.userData = data;
+							cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+						});
+				} else {
+
+					// Verifica limitação de Eletrodomésticos
+					cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+				}
 			} else {
 
-				// Verifica limitação de Eletrodomésticos
-				cotas.limitQuantity(self.userData.xSkuSalesChannel5);
+				self.userData = null;
 			}
 		};
 
