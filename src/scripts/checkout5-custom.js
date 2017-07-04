@@ -23,7 +23,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.gae');
 	require('modules/checkout/checkout.recurrence');
 	require('modules/checkout/checkout.modify');
-	require('modules/checkout.cotas');
+	// require('modules/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 
 	var highlightVoltage = require('modules/checkout.highlight-voltage');
@@ -68,14 +68,15 @@ $(window).on('load', function() {
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
 
-			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
+			// self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
+			self.orderForm = gae.orderForm = recurrence.orderForm = orderForm;
 
 			if (self.isOrderForm()) {
 				$('.modal-masked-info-template .masked-info-button').text('Voltar');
 				gae.info();
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
-				
+
 			}
 
 			if (self.isCart()) {
@@ -87,9 +88,9 @@ $(window).on('load', function() {
 			}
 			// self.rioOlimpiadas();
 
-			if (store && store.isPersonal) {
-				self.cotasInit();
-			}
+			// if (store && store.isPersonal) {
+			// 	self.cotasInit();
+			// }
 		};
 
 		this.cotasInit = function() {
