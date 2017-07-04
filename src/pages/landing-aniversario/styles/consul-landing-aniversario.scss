@@ -475,10 +475,17 @@ header {
 
         .icon {
           @include responsiveFont(24, 16, true);
+          background: $green;
+          border-radius: 50px;
           color: #ffffff;
-          display: inline-block;
-          left: 0;
+          display: block;
+          height: 50px;
+          left: 50%;
+          margin-bottom: 10px;
+          padding-top: 13px;
           position: relative;
+          transform: translateX(-50%);
+          width: 50px;
         }
       }
     }
