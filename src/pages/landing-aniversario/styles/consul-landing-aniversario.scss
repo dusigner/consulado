@@ -610,12 +610,7 @@ header {
         }
       }
 
-      &:first-child {
-        filter: none;
-        margin-left: 0;
-
-        .link-produto { opacity: 1; }
-      }
+      &:first-child { margin-left: 0; }
 
       &:last-child { margin-right: 0; }
 
