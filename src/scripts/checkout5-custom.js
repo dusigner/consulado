@@ -95,7 +95,7 @@ $(window).on('load', function() {
 		this.cotasInit = function() {
 
 			// Verifica se está "logado"
-			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
+			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email && self.orderForm.userProfileId ) {
 
 				// Verifica se ainda não foram recuperados dados do CPF
 				if ( !self.userData ) {
