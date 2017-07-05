@@ -237,6 +237,7 @@ body {
 
 #contador {
    background-color: #0192d1;
+   padding: 40px 0;
 
    .row {
       margin-bottom: 0;
@@ -253,7 +254,17 @@ body {
       }
    }
 
-   .imgProdutos { position: relative; }
+   .imgProdutos {
+      position: relative;
+
+      @include breakpoint(extra-small, 'max') { margin-top: 50px; }
+
+      .slick-dots {
+         bottom: -40px;
+
+         li.slick-active button { background: #ffffff; }
+       }
+   }
 
    .ctas {
       display: none;
@@ -300,7 +311,6 @@ body {
 
    .wrapper {
       display: inline-block;
-      margin-top: 30px;
       text-align: center;
       width: 285px;
 
@@ -400,63 +410,51 @@ body {
    }
 
    .balao {
-      left: 0;
+      left: -25px;
       position: absolute;
-      top: -50px;
+      top: -25px;
+      z-index: 1;
 
-      @include breakpoint(extra-small, 'max') { display: none; }
-
-      img {
-         margin-left: 17px;
-         margin-top: -53px;
-      }
+      @include breakpoint(extra-small, 'max') { top: -15px; }
    }
 
    .produtos {
       display: inline-block;
-      margin-left: 8px;
+      margin-left: 6px;
+
       &:first-child { margin-left: 0; }
+
+      img:not(.balao) { width: 358px; }
    }
 
-   .prateleira.default {
+   .cta {
+      bottom: 20px;
+      position: absolute;
+      right: 30px;
+      text-align: center;
 
-      .nome {
-         @include responsiveFont(23, 16, true);
-         color: #bfeb58;
+      @include breakpoint(extra-small, 'max') {
+         margin-top: 60px;
+         position: initial;
+      }
+
+      .text {
+         @include responsiveFont(18, 16, true);
+         color: #ffffff;
+         display: block;
          font-weight: bold;
-         margin-top: 0;
-         min-height: 102px;
       }
 
-      .adicional {
-         @include responsiveFont(33, 16, true);
+      .link {
+         @include responsiveFont(16, 16, true);
+         background: $green;
+         border-radius: 30px;
          color: #ffffff;
-      }
-
-      .discount-boleto {
-         @include responsiveFont(20, 16, true);
-         color: #ffffff;
-      }
-
-      li { width: 30%; }
-
-      h2,
-      .de,
-      .por,
-      .image,
-      .department-nav {
-         display: none;
+         display: inline-block;
+         font-weight: bold;
+         margin-top: 10px;
+         padding: 10px 0;
+         width: 130px;
       }
    }
-
-   .btn-confira {
-      @include responsiveFont(23, 16, true);
-      background-color: #62328b;
-      border-radius: 20px;
-      color: #ffffff;
-      display: inline-block;
-      font-weight: bold;
-      padding: 10px 40px 10px 40px;
-   }
-
 }
