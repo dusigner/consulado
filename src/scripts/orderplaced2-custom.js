@@ -18,12 +18,14 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
+	require('expose?store!modules/store/store');
+
 	// require('modules/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
-	require('modules/checkout.cotas');
+	require('modules/checkout/checkout.cotas');
 
 
-	var highlightVoltage = require('modules/checkout.highlight-voltage');
+	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
 	Nitro.setup(['checkout.termoColeta', 'checkout.cotas'], function(termoColeta, cotas) {
 
@@ -62,7 +64,12 @@ $(window).on('load', function() {
 				// phones.setup();
 				termoColeta.setup();
 				cotas.updateCotasEletrodomesticos();
+				cotas.updatePendingCotas();
 				highlightVoltage($('.product-name > a'));
+
+				if( store && store.isCorp ) {
+					$('#order-continue-shopping').attr('href', '/empresas');
+				}
 			}
 		};
 

@@ -5,8 +5,12 @@
 // Silent Classes
 // (mixins have to be used instead of proper silent classes
 //  because of the scope of `@include` inside of media queries.)
-@mixin show-conditional {
-	display: block!important;
+@mixin show-conditional($display: null) {
+	@if($display) {
+		display: #{$display}!important;
+	} @else {
+		display: block!important;
+	}
 	visibility: visible!important;
 }
 
@@ -121,14 +125,18 @@
 
 
 .show-personal,
-.show-corp { @include hide-conditional; }
+.show-corp,
+.show-personal-inline,
+.show-corp-inline { @include hide-conditional; }
 
 body[class*='consul']:not([class*='consulempresa']) {
 	.hide-personal { @include hide-conditional; } // PF
 	.show-personal { @include show-conditional; } // PF
+	.show-personal-inline { @include show-conditional('inline-block'); } // PF
 }
 
 body[class*='consulempresa'] {
 	.hide-corp { @include hide-conditional; } // PJ
 	.show-corp { @include show-conditional; } // PJ
+	.show-corp-inline { @include show-conditional('inline-block'); } // PJ
 }

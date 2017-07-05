@@ -296,3 +296,16 @@ div.account {
 		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 	}
 }
+
+body.consulempresa {
+	.welcome {
+		position: static;
+		em { display: none; }	
+	}
+	.account {
+		.logout a {
+			@include responsiveFont(12);
+			color: $orange;
+		}
+	}
+}

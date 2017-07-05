@@ -6,8 +6,8 @@ Nitro.module('checkout.cotas', function() {
 
 	var self = this;
 
-	// Limitação de produtos por CPF
-	this.limit = 25;
+	// Limitação de produtos por CNPJ ou CPF
+	this.limit = store.isCorp ? 10 : 25;
 	// Botões que devem sofrer alteração/bloqueio
 	this.$actionButton = $('.fake-buttom, #payment-data-submit');
 
@@ -22,12 +22,15 @@ Nitro.module('checkout.cotas', function() {
 		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email)
 				.then(function(user) {
 					userData = user;
-					return CRM.clientSearchByCPF(userData.document);
+					if (store && store.isCorp) {
+						return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
+					} else {
+						return CRM.clientSearchByDocument(userData.document, 'document');
+					}
 				})
-				.then(function(userByCPF) {
+				.then(function(userByDocument) {
 					var qntd = 0;
-
-					$.each(userByCPF, function(index, user) {
+					$.each(userByDocument, function(index, user) {
 						qntd += user.xSkuSalesChannel5;
 					});
 
@@ -43,9 +46,10 @@ Nitro.module('checkout.cotas', function() {
 	 */
 	this._filterEletrodomesticos = function() {
 		return $.reduce(self.orderForm.items, function(o, value) {
-			var qtd = o;
+			var qtd = o,
+				categoryRegexID = store.isCorp ? /^\/80\//g : /^\/1\//g;
 
-			if (value && value.productCategoryIds && /^\/1\//g.test(value.productCategoryIds)) {
+			if (value && value.productCategoryIds && categoryRegexID.test(value.productCategoryIds)) {
 				qtd = o + value.quantity;
 			}
 
@@ -63,16 +67,17 @@ Nitro.module('checkout.cotas', function() {
 		var quantity = self._filterEletrodomesticos(),
 			totalEletrodomesticos = quantity + actual;
 
+		self.$actionButton = $('.fake-buttom, #payment-data-submit');
+
 		if (totalEletrodomesticos > self.limit) {
 
 			window.vtex.checkout.MessageUtils.showMessage({
 				text: 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
 				status: 'info'
 			});
-
+			
 			self.$actionButton.addClass('disabled').attr('disabled', 'disabled');
 		} else {
-
 			self.$actionButton.removeClass('disabled').removeAttr('disabled');
 
 			try {
@@ -91,7 +96,25 @@ Nitro.module('checkout.cotas', function() {
 	 * @return {String}
 	 */
 	this._getEmailClient = function() {
+		if(store && store.userData && store.userData.email) {
+			return store.userData.email;
+		}
 		return $('.orderplaced-sending-email strong').text().replace(/\s+/g, '');
+	};
+
+	/*
+	 * Define uma propriedade no cookie de login do compracerta
+	 * O Módulo de cluster ficará responsavel por atualizar os dados das cotas do usuário.
+	 */
+	this.updatePendingCotas = function() {
+
+		CRM.clientSearchByEmail(store.userData.email).then(function(res){
+
+			res.pending = true;
+
+			store.setUserData(res, true);
+		});
+
 	};
 
 	/*

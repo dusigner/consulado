@@ -42,38 +42,30 @@ var CRM = {
 
 	clientSearchByEmail: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved',
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
 			fq: 'email:' + field
 		}).then(function (res) {
 			return res && res.Documents[0];
 		});
 	},
 
-	clientSearchByCPF: function(cpf) {
-
-		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5',
-			fq: 'document:' + cpf
-		}).then(function (res) {
-			return res && res.Documents;
-		});
-	},
-
 	clientSearchByID: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved',
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
 			fq: 'userId:' + field
 		}).then(function (res) {
 			return res && res.Documents[0];
 		});
 	},
-	clientSearchByDocument: function (document) {
+	clientSearchByDocument: function (document, type) {
+		
+		type = type ? type : 'document';
 
 		return $.getJSON(CRM.clientURI, {
-			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone',
-			fq: 'document:' + document
+			f: 'approvedid,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration',
+			fq: type + ':' + document
 		}).then(function (res) {
-			return res && res.Documents[0];
+			return res && res.Documents;
 		});
 	},
 	clientSearchByCorporateDocument: function (document) {

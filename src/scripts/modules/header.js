@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true */
+/* global $: true, Nitro: true, vtexid: true */
 'use strict';
 
 require('modules/cart');
@@ -109,4 +109,13 @@ Nitro.module('header', ['menu-hover'], function() {
 		$(this).parent().toggleClass('open');
 		$(this).siblings('.submenu').slideToggle('slow');
 	});
+
+	if( store && store.isCorp ) {		
+		$('.logout a').click(function(e) {
+			e.preventDefault();
+			store.logout();
+			vtexid.logout();
+			window.location = $(this).attr('href');
+		});
+	}
 });
