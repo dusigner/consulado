@@ -8,7 +8,7 @@
 	<meta name="format-detection" content="telephone=no">
 	<!-- disable auto telephone linking in iOS -->
 
-	<title>{{orders.0.sellers.0.name}}</title>
+	<title>{{sellers.0.name}}</title>
 
 	<style type="text/css">
 		/* Outlook link fix */
@@ -56,7 +56,7 @@
 				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 					<tr>
 						<td align="right">
-							<font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#b4afad;">Realizado em {{formatDate orders.0.timeZoneCreationDate}}</font>
+							<font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#b4afad;">Realizado em {{formatDate timeZoneCreationDate}}</font>
 						</td>
 						<td width="30"></td>
 					</tr>
@@ -65,7 +65,7 @@
 				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 					<tr>
 						<td width="650" align="center">
-							<img src="http://consul.vteximg.com.br/arquivos/message_center-confirmacao_status-cns.jpg" width="100%" border="0" style="display: block; border: 0;" alt="Confirmação de pedido" />
+							<img src="http://consul.vteximg.com.br/arquivos/message_center-pedido_em_transferencia_status-cns.jpg" width="100%" border="0" style="display: block; border: 0;" alt="Confirmação de pedido" />
 						</td>
 					</tr>
 				</table>
@@ -76,14 +76,22 @@
 					<tr>
 						<td width="30"></td>
 						<td align="center">
-							<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;"><strong style="font-size: 15px;">Olá</strong>, {{orders.0.clientProfileData.firstName}}</font>
+							<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;"><strong style="font-size: 15px;">Olá</strong>, {{clientProfileData.firstName}}</font>
+
+							{{#if package.courierStatus}}
+								<!-- space -->
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+
+								<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+									{{package.courierStatus.data.0.description}}
+								</font>
+							{{/if}}
 
 							<!-- space -->
 							<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
 
 							<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
-								<strong>Recebemos o seu pedido</strong> e ficamos felizes que você escolheu a Consul. <br />
-								Acompanhe os próximos passos até a entrega do seu pedido.
+								<strong>Importante: no dia da entrega do seu produto enviaremos uma mensagem de SMS para seu telefone cadastrado. Fique atento!</strong>
 							</font>
 						</td>
 						<td width="30"></td>
@@ -97,7 +105,7 @@
 				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f2f1" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 					<tr>
 						<td align="center">
-							<img src="http://consul.vteximg.com.br/arquivos/cns-statusbar-01-confirmacao-de-pedido.jpg?v=1" width="650" height="66" border="0" style="display: block; border: 0; max-width: 100%;" alt="Fluxo - Confirmação de pedido" />
+							<img src="http://consul.vteximg.com.br/arquivos/cns-statusbar-05-pedido-em-transferencia.jpg" width="650" height="66" border="0" style="display: block; border: 0; max-width: 100%;" alt="Fluxo - Confirmação de pedido" />
 						</td>
 					</tr>
 				</table>
@@ -109,81 +117,35 @@
 				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 					<tr>
 						<td align="center">
+							<!-- ENDEREÇO DE ENTREGA -->
 							<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 								<tr>
-									<td width="115"></td>
-									<td width="195" valign="top">
-
-										<!-- FORMA DE PAGAMENTO -->
-										<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:195px;font-family:Verdana, Geneva, sans-serif;">
-											<tr>
-												<td align="left">
-													<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">FORMA DE PAGAMENTO</font>
-												</td>
-											</tr>
-											<tr><td height="15"></td></tr>
-											<tr>
-												<td align="left">
-													<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
-														{{#each orders.0.paymentData.transactions.0.payments}}
-															{{paymentSystemName}} <br />
-															<span style="color: #9aca3c; font-weight: bold;">R$ {{formatCurrency value}}</span>
-															{{#if installments}}
-																<span>(em {{installments}}x)</span>
-															{{else}}
-																<span>(à vista)</span>
-															{{/if}}
-
-															{{#eq paymentSystemName 'Boleto Bancário'}}
-																<a href="{{replace url '{Installment}' installments}}" title="Imprimir boleto" target="_blank" style="display:inline-block;text-align:center;">
-																	<br />
-																	<img src="http://consul.vteximg.com.br/arquivos/mkt_consul-btn-print-invoice.jpg" width="188" height="39" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Imprimir boleto" />
-																</a>
-															{{/eq}}
-														{{/each}}
-													</font>
-												</td>
-											</tr>
-										</table>
-										<!-- /FORMA DE PAGAMENTO -->
+									<td align="center">
+										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">ENDEREÇO DE ENTREGA</font>
 									</td>
-									<td width="30"></td>
-									<td width="195" valign="top">
-										<!-- ENDEREÇO DE ENTREGA -->
-										<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:195px;font-family:Verdana, Geneva, sans-serif;">
-											<tr>
-												<td align="left">
-													<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">ENDEREÇO DE ENTREGA</font>
-												</td>
-											</tr>
-											<tr><td height="15"></td></tr>
-											<tr>
-												<td align="left">
-													<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
-														{{#if orders.0.giftRegistryData}}
-															{{orders.0.giftRegistryData.description}}
-														{{else}}
-															{{orders.0.shippingData.address.street}}, {{orders.0.shippingData.address.number}} {{orders.0.shippingData.address.complement}}<br />
-															{{orders.0.shippingData.address.neighborhood}} - {{orders.0.shippingData.address.state}}<br />
-															{{orders.0.shippingData.address.postalCode}}<br />
-														{{/if}}
-													</font>
-												</td>
-											</tr>
-										</table>
-										<!-- /ENDEREÇO DE ENTREGA -->
+								</tr>
+								<tr><td height="15"></td></tr>
+								<tr>
+									<td align="center">
+										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+											{{#if giftRegistryData}}
+												{{giftRegistryData.description}}
+											{{else}}
+												{{shippingData.address.street}}, {{shippingData.address.number}} {{shippingData.address.complement}} {{shippingData.address.neighborhood}} - {{shippingData.address.state}} - {{shippingData.address.postalCode}}
+											{{/if}}
+										</font>
 									</td>
-									<td width="115"></td>
 								</tr>
 							</table>
+							<!-- /ENDEREÇO DE ENTREGA -->
 						</td>
 					</tr>
 				</table>
 				<!-- /PAGAMENTO E ENTREGA -->
 
 				<!-- PRODUTO -->
-				{{#each orders}}
-					{{#each items}}
+				{{#each items}}
+
 					<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 						<tr><td width="30" height="40"></td></tr>
 						<tr>
@@ -311,7 +273,7 @@
 
 						<tr><td width="30" height="40"></td></tr>
 					</table>
-					{{/each}}
+
 				{{/each}}
 				<!-- /PRODUTO -->
 
@@ -328,7 +290,7 @@
 									<td width="10"></td>
 									<td>
 										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
-											<strong style="font-weight: bold;">Nº do pedido</strong> {{orders.0.sequence}}
+											<strong style="font-weight: bold;">Nº do pedido</strong> {{sequence}}
 										</font>
 									</td>
 								</tr>
@@ -368,8 +330,7 @@
 								<tr>
 									<td style="font-size: 13px;">
 										<dl>
-											<li>O prazo de entrega será considerado somente após a confirmação do pagamento.</li>
-											<li>Após a aprovação do pagamento, não é possível alterar o endereço de entrega do produto.</li>
+											<li>Após a aprovação do pagamento, não é possivel alterar o endereço de entrega do produto.</li>
 										</dl>
 									</td>
 								</tr>
@@ -430,7 +391,6 @@
 					</tr>
 				</table>
 				<!-- /MAIS OPÇÕES - CHAORDIC -->
-
 
 			</td>
 		</tr>
