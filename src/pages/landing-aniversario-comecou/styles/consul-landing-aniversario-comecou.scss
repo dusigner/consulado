@@ -80,16 +80,7 @@ body {
 
   .cont-cadastrar,
   .cont-espiar,
-  .cont-compartilhar {
-    @include responsiveFont(22, 16, true);
-    padding: 30px 0;
-    text-align: center;
-
-    .text {
-      display: inline-block;
-      padding-left: 10px;
-    }
-  }
+  .cont-compartilhar { display: none !important; }
 
   .minicart {
     float: right;
@@ -103,11 +94,9 @@ body {
 }
 
 #form-birthday {
-   @include breakpoint(extra-small, 'max') {
-      background-color: #a4d13d;
+   background: #a4d13d;
 
-      .row { margin-bottom: 0; }
-   }
+   .row { margin-bottom: 0; }
 }
 
 .content {
@@ -163,6 +152,7 @@ body {
 
 #form-newsletter {
    fieldset { border: none; }
+
    input {
       @include responsiveFont(14, 16, true);
       display: inline-block;
@@ -171,6 +161,13 @@ body {
       width: 310px;
       @include breakpoint(extra-small, 'max') {
          width: 100%;
+      }
+
+      &.error {
+        background: #fff0f0;
+        border: 1px solid #f49a9a;
+        font-weight: normal;
+        text-align: left;
       }
 
       &.submit {
@@ -187,15 +184,63 @@ body {
          &:hover { background: #ffffff; }
       }
    }
+
+   ::-webkit-input-placeholder { font-style: italic; }
+   :-ms-input-placeholder { font-style: italic; }
+   ::-moz-placeholder { font-style: italic; }
+   :-moz-placeholder { font-style: italic; }
+
+   //msg de erro
+   .tooltip.bottom {
+      margin-top: 3px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+
+      @include breakpoint(extra-small, 'max') {
+        left: 50% !important;
+        transform: translateX(-50%);
+      }
+   }
+
+   .tooltip-arrow {
+      border-bottom-color: #000 !important;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0 5px 5px;
+      height: 0;
+      margin-left: -5px;
+      position: absolute;
+      top: 0;
+      width: 0;
+   }
+
+   .tooltip-inner {
+      @include responsiveFont(12, 16, true);
+      background-color: #000;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: normal;
+      padding: 3px 8px;
+      text-align: center;
+      width: 200px;
+   }
+}
+
+.success {
+   @include responsiveFont(24, 16, true);
+   color: #ffffff;
+   display: none;
+   font-weight: bold;
+   text-align: center;
 }
 
 #contador {
    background-color: #0192d1;
 
    .row {
+      margin-bottom: 0;
       text-align: center;
-
-      @include breakpoint(extra-small, 'max') { margin-bottom: 0; }
    }
 
    .txt-cont {

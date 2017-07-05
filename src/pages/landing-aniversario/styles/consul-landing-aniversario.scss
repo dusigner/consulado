@@ -203,6 +203,8 @@ header {
             &.error {
               background: #fff0f0;
               border: 1px solid #f49a9a;
+              font-weight: normal;
+              text-align: left;
             }
 
             @include breakpoint(extra-small, 'max') {

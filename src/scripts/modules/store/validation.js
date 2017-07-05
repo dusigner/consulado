@@ -34,7 +34,6 @@ Validation.prototype.setError = function(el, type, deferred) {
 };
 
 Validation.prototype.validate = function(inputs, submit) {
-
 	var _self = this,
 		deferred = $.Deferred(),
 		pending = false;
