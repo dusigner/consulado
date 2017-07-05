@@ -53,7 +53,7 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 	//adicionar btn confira da prateleira
 	$('.detalhes').append('<a href="" class="btn-confira" title="Confira" target="_blank">Confira</a>');
 
-	$('.detalhes .image').each(function(index) {
+	$('.detalhes .image').each(function(index, value) {
 		var linkProduto = $(this).attr('href');
 
 		$($('.imgProdutos a').get(index)).attr('href', linkProduto);
@@ -65,31 +65,29 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 		this.sliderPrateleira();
 	};
 
-	this.sliderPrateleira = function() {
-		if ($(window).width() <= 992) {
-			$('.infoProdutos .prateleira > ul').slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: true,
-				dots: true,
-				fade: false,
-				asNavFor: '.imgProdutos'
-			});
-			$('.imgProdutos').slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				asNavFor: '.infoProdutos .prateleira > ul',
-				arrows: false,
-				dots: false,
-				centerMode: false,
-				focusOnSelect: true
-			});
-		}
-	};
+		this.sliderPrateleira = function() {
+			if ($(window).width() <= 992) {
+				$('.infoProdutos .prateleira > ul').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: true,
+					dots: true,
+					fade: false,
+					asNavFor: '.imgProdutos'
+				});
+				$('.imgProdutos').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					asNavFor: '.infoProdutos .prateleira > ul',
+					arrows: false,
+					dots: false,
+					centerMode: false,
+					focusOnSelect: true
+				});
+			}
+		};
 
-	this.init();
-
-	console.log('fiddler! aeeeeee');
+		this.init();
 
 	//cadastro newsletter
 	$formNewsletter.submit(function(e){
@@ -145,4 +143,5 @@ Nitro.setup(['consul-landing-aniversario'], function () {
 	});
 
 	setInterval(self.countdown, 1000);
+	// self.countdown();
 });
