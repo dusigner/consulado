@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'whirlpool2';
-  src:  url('fonts/whirlpool2.eot?n7edia');
-  src:  url('fonts/whirlpool2.eot?n7edia#iefix') format('embedded-opentype'),
-    url('fonts/whirlpool2.ttf?n7edia') format('truetype'),
-    url('fonts/whirlpool2.woff?n7edia') format('woff'),
-    url('fonts/whirlpool2.svg?n7edia#whirlpool2') format('svg');
+  src:  url('fonts/whirlpool2.eot?6lwl61');
+  src:  url('fonts/whirlpool2.eot?6lwl61#iefix') format('embedded-opentype'),
+    url('fonts/whirlpool2.ttf?6lwl61') format('truetype'),
+    url('fonts/whirlpool2.woff?6lwl61') format('woff'),
+    url('fonts/whirlpool2.svg?6lwl61#whirlpool2') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -158,4 +158,16 @@
 }
 .icon-icon-gae-balcao:before {
   content: "\e907";
+}
+.icon-cadastrar:before {
+  content: "\e908";
+}
+.icon-facebook-messenger:before {
+  content: "\e909";
+}
+.icon-eye:before {
+  content: "\e90a";
+}
+.icon-logo-consul-aniversario:before {
+  content: "\e90b";
 }

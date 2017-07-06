@@ -58,7 +58,7 @@ var CRM = {
 		});
 	},
 	clientSearchByDocument: function (document, type) {
-		
+
 		type = type ? type : 'document';
 
 		return $.getJSON(CRM.clientURI, {

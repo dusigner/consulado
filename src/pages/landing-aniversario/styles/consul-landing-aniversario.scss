@@ -1,0 +1,638 @@
+@charset 'UTF-8';
+
+/*! =================================================
+  * Theme Name: Layout - Consul
+  * Description: CSS desenvolvido para Consul2.
+  * Author: Pedor Henrick
+  * Empresa: Jüssi
+  * Author URI: http://www.jussi.com.br/
+  * Version: 1.0
+  =================================================
+*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+$animation-mode: true!default;
+
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/helpers';
+@import 'helpers/animation';
+
+// Base styles
+@import 'base/fonts';
+
+// Layout styles
+@import 'layout/container';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+@import 'layout/forms';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+@import 'components/footer';
+
+header {
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  background: $green;
+  margin-bottom: 0;
+  padding: 15px 0;
+
+  @include breakpoint(extra-small, 'max') {
+    padding: 3px 0;
+
+    .container { border: none; }
+
+    .cont-logo { display: block; }
+
+    .icon-logo-consul-aniversario { color: #ffffff; }
+  }
+
+  a {
+    color: #ffffff;
+
+    @include breakpoint(extra-small, 'max') {
+      color: $green;
+    }
+  }
+
+  .open-menu-mobile {
+    @include breakpoint(extra-small, 'max') { margin-top: 10px; }
+  }
+
+  .logo {
+    @include responsiveFont(62, 16, true);
+    line-height: normal;
+    margin-top: 10px;
+  }
+
+  .cont-cadastrar,
+  .cont-espiar,
+  .cont-compartilhar {
+    @include responsiveFont(22, 16, true);
+    padding: 30px 0;
+    text-align: center;
+
+    .text {
+      display: inline-block;
+      padding-left: 10px;
+    }
+  }
+
+  .minicart {
+    float: right;
+    margin-top: 15px;
+
+    @include breakpoint(extra-small, 'max') {
+      margin-top: 10px;
+      position: fixed;
+    }
+  }
+}
+
+.content {
+  background: #0191ce;
+  position: relative;
+
+  .row {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  #cadastro {
+    position: relative;
+    z-index: 0;
+
+    @include breakpoint(medium, 'min') {
+      animation: showDown 1.5s linear 300ms 1 forwards;
+      top: -845px;
+    }
+
+    @include breakpoint(extra-small, 'max') {
+      .container {
+        max-width: 100%;
+        padding: 0;
+      }
+    }
+
+    .form {
+      background: url('/arquivos/cns-landing-aniversario_bg-cadastro.png') center top no-repeat;
+      height: 700px;
+      overflow: hidden;
+      padding: 0 80px;
+
+      @include breakpoint(extra-small, 'max') {
+        background: url('/arquivos/cns-landing-aniversario_bg-cadastro-mobile.png') center top no-repeat;
+        height: 490px;
+        padding: 0 10px;
+        width: 100%;
+      }
+
+      .wrapper {
+        display: block;
+        margin: 0 auto;
+        margin-top: -10px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 685px;
+
+        @include breakpoint(extra-small, 'max') {
+          margin-top: 0;
+          top: 95px;
+          transform: none;
+          width: 90%;
+        }
+
+        img {
+          @include breakpoint(extra-small, 'max') { width: 135px; }
+        }
+
+        .destaque {
+          @include responsiveFont(72, 16, true);
+          color: #ffffff;
+          line-height: normal;
+          margin: 0;
+          margin-top: 20px;
+
+          @include breakpoint(extra-small, 'max') {
+            @include responsiveFont(28, 16, true);
+            margin-top: 10px;
+          }
+        }
+
+        .text {
+          color: $gray-d;
+          display: inline-block;
+          margin: 10px 0 40px;
+          text-align: center;
+
+          @include breakpoint(extra-small, 'max') {
+            @include responsiveFont(16, 16, true);
+            margin: 10px 0;
+          }
+        }
+
+        #form-newsletter {
+          text-align: center;
+
+          fieldset {
+            border: none;
+            margin-bottom: 0;
+            padding: 0;
+            position: relative;
+          }
+
+          input {
+            @include responsiveFont(14, 16, true);
+            display: inline-block;
+            outline: none;
+            padding: 10px;
+            width: 310px;
+
+            &:first-child { margin-right: 10px; }
+
+            &.error {
+              background: #fff0f0;
+              border: 1px solid #f49a9a;
+              font-weight: normal;
+              text-align: left;
+            }
+
+            @include breakpoint(extra-small, 'max') {
+              margin-bottom: 10px;
+              padding: 6px 10px;
+              width: 100%;
+            }
+
+            &.submit {
+              @include responsiveFont(24, 16, true);
+              @include singleTransition();
+              background: transparent;
+              border: 4px solid $gray-d;
+              color: $gray-d;
+              display: block;
+              margin: 20px auto;
+              padding: 8px 0;
+              width: 185px;
+
+              &:hover { background: #ffffff; }
+
+              @include breakpoint(extra-small, 'max') {
+                @include responsiveFont(20, 16, true);
+                margin: 0 auto;
+                width: 115px;
+              }
+            }
+          }
+
+          ::-webkit-input-placeholder { font-style: italic; }
+          :-ms-input-placeholder { font-style: italic; }
+          ::-moz-placeholder { font-style: italic; }
+          :-moz-placeholder { font-style: italic; }
+
+          //msg de erro
+          .tooltip.bottom {
+            margin-top: 3px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+
+            @include breakpoint(extra-small, 'max') {
+              left: 50% !important;
+              transform: translateX(-50%);
+            }
+          }
+
+          .tooltip-arrow {
+            border-bottom-color: #000 !important;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 0 5px 5px;
+            height: 0;
+            margin-left: -5px;
+            position: absolute;
+            top: 0;
+            width: 0;
+          }
+
+          .tooltip-inner {
+            @include responsiveFont(12, 16, true);
+            background-color: #000;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: normal;
+            padding: 3px 8px;
+            text-align: center;
+            width: 200px;
+          }
+
+          #name {
+            @include breakpoint(extra-small, 'max') {
+              & + .tooltip {
+                top: -60px !important;
+
+                .tooltip-arrow {
+                  border-top-color: #000 !important;
+                  border-width: 5px 5px 0;
+                  bottom: 0;
+                  top: initial;
+                }
+              }
+            }
+          }
+        }
+
+        .text-small {
+          @include responsiveFont(20, 16, true);
+          color: #ffffff;
+          display: block;
+          font-weight: bold;
+          text-align: center;
+
+          @include breakpoint(extra-small, 'max') { display: none; }
+        }
+
+        .success {
+          @include responsiveFont(24, 16, true);
+          color: #ffffff;
+          display: none;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .error {
+          color: #fb6969;
+          display: none;
+          font-weight: bold;
+          margin: 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  #contador {
+    color: #ffffff;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    width: 100%;
+
+    @include breakpoint(medium, 'min') {
+      animation: show 1.5s linear 350ms 1 forwards;
+      opacity: 0;
+    }
+
+    @include breakpoint(extra-small, 'max') {
+      display: inline-block;
+      position: initial;
+    }
+
+    .wrapper {
+      display: inline-block;
+      float: right;
+      text-align: center;
+      width: 285px;
+
+      @include breakpoint(extra-small, 'max') { width: 100%; }
+
+      .text {
+        &:first-child {
+          @include responsiveFont(18, 16, true);
+          letter-spacing: 10px;
+          text-transform: uppercase;
+        }
+
+        &:last-child {
+          @include responsiveFont(24, 16, true);
+          display: inline-block;
+          margin-top: 10px;
+
+          @include breakpoint(extra-small, 'max') { display: none; }
+        }
+      }
+
+      .countdown {
+        border: 2px solid #ffffff;
+        border-radius: 40px;
+        padding-bottom: 5px;
+
+        &>div {
+          display: inline-block;
+          text-align: center;
+
+          .counter {
+            @include responsiveFont(42, 16, true);
+            display: block;
+            position: relative;
+
+            @include breakpoint(extra-small, 'max') { @include responsiveFont(36, 16, true); }
+
+            &:after {
+              @include responsiveFont(9, 16, true);
+              bottom: 0;
+              content: 'Dias';
+              left: 50%;
+              position: absolute;
+              transform: translateX(-50%);
+            }
+
+            &:before {
+              @include responsiveFont(42, 16, true);
+              bottom: 0;
+              position: absolute;
+              right: 0;
+            }
+          }
+
+          &.countdown-days { margin-right: 15px; }
+
+          &.countdown-hours {
+            .counter {
+              padding-right: 10px;
+
+              &:after { content: 'Horas'; }
+
+              &:before { content: ':'; }
+            }
+          }
+
+          &.countdown-minutes {
+            .counter {
+              padding-right: 10px;
+
+              &:after { content: 'Minutos'; }
+
+              &:before { content: ':'; }
+            }
+          }
+
+          &.countdown-seconds {
+            .counter {
+              &:after { content: 'Segundos'; }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #acoes-desktop {
+    height: 320px;
+    margin-bottom: 60px;
+    margin-top: -105px;
+
+    @include breakpoint(medium, 'min') {
+      animation: show 1.5s linear 1.85s 1 forwards;
+      opacity: 0;
+    }
+
+    .wrapper {
+      height: 320px;
+      margin: 0 auto;
+      position: relative;
+      width: 470px;
+
+      &:after {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      &:before {
+        background: url('/arquivos/cns-landing-aniversario_bg-acoes.png') no-repeat;
+        content: '';
+        height: 200px;
+        left: 50%;
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        width: 260px;
+      }
+
+      &>div {
+        display: inline-block;
+        vertical-align: bottom;
+
+        &:first-child {
+          margin-left: -12px;
+          margin-right: 40px;
+        }
+
+        a {
+          color: #ffffff;
+          display: inline-block;
+          text-align: center;
+        }
+
+        .icon {
+          @include responsiveFont(24, 16, true);
+          background: $green;
+          border-radius: 50px;
+          color: #ffffff;
+          display: block;
+          height: 50px;
+          left: 50%;
+          margin-bottom: 10px;
+          padding-top: 13px;
+          position: relative;
+          transform: translateX(-50%);
+          width: 50px;
+        }
+      }
+    }
+  }
+
+  #acoes-mobile {
+    margin-bottom: 60px;
+    margin-top: 20px;
+    text-align: center;
+
+    .text {
+      @include responsiveFont(18, 16, true);
+      color: #ffffff;
+      display: inline-block;
+      line-height: normal;
+
+      &:first-child {
+        @include responsiveFont(42, 16, true);
+        margin-bottom: 30px;
+      }
+    }
+
+    .ctas {
+      .espiar,
+      .share-facebook {
+        @include responsiveFont(18, 16, true);
+        @include singleTransition();
+        background: $green;
+        border: 2px solid $green;
+        border-radius: 30px;
+        color: #ffffff;
+        display: block;
+        font-weight: bold;
+        margin: 0 auto;
+        margin-top: 30px;
+        padding: 10px 0;
+        padding-left: 40px;
+        position: relative;
+        width: 200px;
+
+        &:before {
+          @include contentBefore();
+          @include icon-get('eye');
+          @include responsiveFont(24, 16, true);
+          display: inline-block;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+
+      .share-facebook {
+        &:before { @include icon-get('social-facebook'); }
+      }
+    }
+  }
+
+  #produtos {
+    .wrapper {
+      display: none;
+      padding-bottom: 30px;
+    }
+
+    .slick-arrow { color: #ffffff; }
+
+    .slick-dots {
+      bottom: -40px;
+
+      li.slick-active button { background: #ffffff; }
+    }
+
+    .produto {
+      @include singleTransition();
+      display: inline-block;
+      margin: 0 1%;
+      min-height: 320px;
+      text-align: center;
+      vertical-align: middle;
+      width: 23%;
+
+      @include breakpoint(medium, 'min') { filter: blur(4px); }
+
+      @include breakpoint(extra-small, 'max') {
+        display: block;
+        margin: 0;
+        width: 100%;
+      }
+
+      img {
+        display: inline-block;
+        margin: 0;
+        padding-left: 30px;
+      }
+
+      .nome {
+        color: #ffffff;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        width: 170px;
+      }
+
+      .link-produto {
+        @include singleTransition();
+        background: $green;
+        border: 2px solid $green;
+        border-radius: 30px;
+        color: #ffffff;
+        display: block;
+        font-weight: bold;
+        margin: 0 auto;
+        padding: 10px 0;
+        text-transform: uppercase;
+        width: 120px;
+
+        @include breakpoint(medium, 'min') { opacity: 0; }
+
+        &:hover {
+          background: #ffffff;
+          color: $green;
+        }
+      }
+
+      &:first-child { margin-left: 0; }
+
+      &:last-child { margin-right: 0; }
+
+      &:hover {
+        filter: none;
+
+        .link-produto { opacity: 1; }
+      }
+    }
+  }
+}
+
+//mao descendo
+@keyframes showDown {
+  from { top: -845px; }
+  to { top: 0; }
+}
+
+//aparecer (contador e acoes)
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
