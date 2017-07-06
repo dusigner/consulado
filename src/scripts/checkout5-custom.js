@@ -93,9 +93,9 @@ $(window).on('load', function() {
 				self.cotasInit();
 
 				/**
-				 * Se store userData não possui email do usuário, seta o cookie com o usuário do orderForm
+				 * Se store userData não possui email do usuário e o usuário já for cadastrado na loja, seta o cookie com o usuário do orderForm
 				 */
-				if( store && store.userData && !store.userData.email ) {
+				if( store && store.userData && !store.userData.email && self.orderForm.userProfileId) {
 					CRM.clientSearchByEmail(self.orderForm.clientProfileData.email).done(function(userData) {
 						store.setUserData(userData, true);
 					});
