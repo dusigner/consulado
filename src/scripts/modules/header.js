@@ -39,7 +39,7 @@ Nitro.module('header', ['menu-hover'], function() {
 				.addClass(defaultClass);
 
 			$('header').removeClass('menu-scroll');
-			$('header.blackfriday').height(100);
+			$('header').height(100);
 		} else {
 			menuMobile.addClass('menu-active');
 
