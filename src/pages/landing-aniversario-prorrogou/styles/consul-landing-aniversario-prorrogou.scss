@@ -1,0 +1,477 @@
+@charset 'UTF-8';
+
+/*! =================================================
+  * Theme Name: Layout - Consul
+  * Description: CSS desenvolvido para Consul2.
+  * Author: Pedro Henrick
+  * Empresa: Jüssi
+  * Author URI: http://www.jussi.com.br/
+  * Version: 1.0
+  =================================================
+*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/helpers';
+@import 'helpers/animation';
+
+// Base styles
+@import 'base/fonts';
+
+// Layout styles
+@import 'layout/container';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+@import 'layout/forms';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/colors';
+@import 'components/footer';
+
+body {
+   margin: 0!important;
+   padding: 0;
+
+   @include breakpoint(extra-small, 'max') { padding: 60px 0 0 0 !important; }
+}
+
+.header {
+  background: $green;
+  margin-bottom: 0;
+  padding: 15px 0;
+
+  @include breakpoint(extra-small, 'max') {
+    padding: 3px 0;
+
+    .container { border: none; }
+
+    .cont-logo { display: block; }
+
+    .icon-logo-consul-aniversario { color: #ffffff; }
+  }
+
+  a {
+    color: #ffffff;
+
+    @include breakpoint(extra-small, 'max') {
+      color: $green;
+    }
+  }
+
+  .open-menu-mobile {
+    @include breakpoint(extra-small, 'max') { margin-top: 10px; }
+  }
+
+  .logo {
+    @include responsiveFont(62, 16, true);
+    line-height: normal;
+    margin-top: 10px;
+  }
+
+  .cont-cadastrar,
+  .cont-espiar,
+  .cont-compartilhar { display: none !important; }
+
+  .minicart {
+    float: right;
+    margin-top: 15px;
+
+    @include breakpoint(extra-small, 'max') {
+      margin-top: 10px;
+      position: fixed;
+    }
+  }
+}
+
+#form-birthday {
+   background: #a4d13d;
+
+   .row { margin-bottom: 0; }
+}
+
+.content {
+   background-color: $green;
+
+   .imageBirthday {
+      @include breakpoint(extra-small, 'max') {
+         transform: scale(1.2);
+      }
+   }
+
+   .formBirthday {
+      @include breakpoint(extra-small, 'max') {
+         img {
+            bottom: 320px;
+            position: relative;
+         }
+      }
+   }
+
+   .imageBirthday,
+   .formBirthday {
+      margin: 20px 0;
+      text-align: center;
+
+      @include breakpoint(extra-small, 'max') { margin: 40px 0; }
+   }
+
+   .birthdayMobile {
+      position: relative;
+      top: 120px;
+   }
+
+   .txtOfertas,
+   .txtBemPensado {
+      @include responsiveFont(25, 16, true);
+      color: #ffffff;
+      line-height: normal;
+      margin: 20px 0 0 0;
+
+      @include breakpoint(extra-small, 'max') { @include responsiveFont(17, 16, true); }
+   }
+
+   .txtOfertas {
+    @include breakpoint(extra-small, 'max') { margin-top: 60px; }
+   }
+
+   .txtBemPensado {
+      font-weight: normal;
+      margin: 0;
+   }
+
+   .registerForm {
+    @include responsiveFont(16, 16, true);
+    margin: 10px 0;
+  }
+}
+
+#form-newsletter {
+   fieldset {
+    border: none;
+    margin-bottom: 0;
+  }
+
+   input {
+      @include responsiveFont(14, 16, true);
+      display: inline-block;
+      outline: none;
+      padding: 10px;
+      width: 210px;
+
+      &:first-child { margin-right: 10px; }
+
+      @include breakpoint(extra-small, 'max') { width: 100%; }
+
+      &.error {
+        background: #fff0f0;
+        border: 1px solid #f49a9a;
+        font-weight: normal;
+        text-align: left;
+      }
+
+      &.submit {
+         @include responsiveFont(24, 16, true);
+         @include singleTransition();
+         background: transparent;
+         border: 4px solid $gray-d;
+         color: $gray-d;
+         display: block;
+         margin: 0 auto;
+         padding: 8px 0;
+         width: 185px;
+
+         &:hover { background: #ffffff; }
+      }
+   }
+
+   ::-webkit-input-placeholder { font-style: italic; }
+   :-ms-input-placeholder { font-style: italic; }
+   ::-moz-placeholder { font-style: italic; }
+   :-moz-placeholder { font-style: italic; }
+
+   //msg de erro
+   .tooltip.bottom {
+      margin-top: 3px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+
+      @include breakpoint(extra-small, 'max') {
+        left: 50% !important;
+        transform: translateX(-50%);
+      }
+   }
+
+   .tooltip-arrow {
+      border-bottom-color: #000 !important;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0 5px 5px;
+      height: 0;
+      margin-left: -5px;
+      position: absolute;
+      top: 0;
+      width: 0;
+   }
+
+   .tooltip-inner {
+      @include responsiveFont(12, 16, true);
+      background-color: #000;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: normal;
+      padding: 3px 8px;
+      text-align: center;
+      width: 200px;
+   }
+}
+
+.success {
+   @include responsiveFont(24, 16, true);
+   color: #ffffff;
+   display: none;
+   font-weight: bold;
+   text-align: center;
+}
+
+.error {
+  color: #fb6969;
+  display: none !important;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+#contador {
+   background-color: #0192d1;
+   padding: 40px 0;
+
+   .row {
+      margin-bottom: 0;
+      text-align: center;
+   }
+
+   .txt-cont {
+      @include responsiveFont(29, 16, true);
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+      @include breakpoint(extra-small, 'max') {
+         @include responsiveFont(17, 16, true);
+      }
+   }
+
+   .imgProdutos {
+      position: relative;
+
+      @include breakpoint(extra-small, 'max') { margin-top: 50px; }
+
+      .slick-dots {
+         bottom: -40px;
+
+         li.slick-active button { background: #ffffff; }
+       }
+   }
+
+   .ctas {
+      display: none;
+
+      @include breakpoint(extra-small, 'max') {
+         display: block;
+         margin-bottom: 30px;
+      }
+
+      .espiar,
+      .share-facebook {
+         @include breakpoint(extra-small, 'max')
+
+         @include responsiveFont(18, 16, true);
+         @include singleTransition();
+         background: $green;
+         border: 2px solid $green;
+         border-radius: 30px;
+         color: #ffffff;
+         display: block;
+         font-weight: bold;
+         margin: 0 auto;
+         margin-top: 30px;
+         padding: 10px 0;
+         padding-left: 40px;
+         position: relative;
+         width: 200px;
+
+         &:before {
+            @include contentBefore();
+            @include icon-get('eye');
+            @include responsiveFont(24, 16, true);
+            display: inline-block;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+         }
+      }
+
+      .share-facebook {
+         &:before { @include icon-get('social-facebook'); }
+      }
+    }
+
+   .wrapper {
+      display: inline-block;
+      text-align: center;
+      width: 285px;
+
+      @include breakpoint(extra-small, 'max') { width: 100%; }
+
+      .text {
+         color: #ffffff;
+
+         &:first-child {
+            @include responsiveFont(18, 16, true);
+            letter-spacing: 10px;
+            text-transform: uppercase;
+         }
+      }
+
+      .countdown {
+         border: 2px solid #ffffff;
+         border-radius: 40px;
+         padding-bottom: 5px;
+
+         &>div {
+            color: #fff;
+            display: inline-block;
+            text-align: center;
+
+            .counter {
+               @include responsiveFont(42, 16, true);
+               display: block;
+               position: relative;
+
+               @include breakpoint(extra-small, 'max') { @include responsiveFont(36, 16, true); }
+
+               &:after {
+                  @include responsiveFont(9, 16, true);
+                  bottom: 0;
+                  content: 'Dias';
+                  left: 50%;
+                  position: absolute;
+                  transform: translateX(-50%);
+               }
+
+               &:before {
+                     @include responsiveFont(42, 16, true);
+                     bottom: 0;
+                     position: absolute;
+                     right: -3px;
+               }
+            }
+
+            &.countdown-days { margin-right: 15px; }
+
+            &.countdown-hours {
+               .counter {
+                  padding-right: 10px;
+
+                  &:after { content: 'Horas'; }
+
+                  &:before { content: ':'; }
+               }
+            }
+
+            &.countdown-minutes {
+               .counter {
+                  padding-right: 10px;
+
+                  &:after { content: 'Minutos'; }
+
+                  &:before { content: ':'; }
+               }
+            }
+
+            &.countdown-seconds {
+               .counter {
+                  &:after { content: 'Segundos'; }
+               }
+            }
+         }
+      }
+
+      .compartilhar {
+         @include responsiveFont(24, 16, true);
+         display: inline-block;
+         font-weight: bold;
+         margin-top: 10px;
+         padding-left: 10px;
+
+         @include breakpoint(extra-small, 'max') { display: none; }
+
+         .icon {
+            @include responsiveFont(24, 16, true);
+            color: #ffffff;
+            display: inline-block;
+            left: -10px;
+            position: relative;
+        }
+      }
+   }
+
+   .balao {
+      left: -25px;
+      position: absolute;
+      top: -25px;
+      z-index: 1;
+
+      @include breakpoint(extra-small, 'max') { top: -15px; }
+   }
+
+   .produtos {
+      display: inline-block;
+      margin-left: 6px;
+
+      &:first-child { margin-left: 0; }
+
+      img:not(.balao) { width: 358px; }
+   }
+
+   .cta {
+      bottom: 20px;
+      position: absolute;
+      right: 30px;
+      text-align: center;
+
+      @include breakpoint(extra-small, 'max') {
+         margin-top: 60px;
+         position: initial;
+      }
+
+      .text {
+         @include responsiveFont(18, 16, true);
+         color: #ffffff;
+         display: block;
+         font-weight: bold;
+      }
+
+      .link {
+         @include responsiveFont(16, 16, true);
+         background: $green;
+         border-radius: 30px;
+         color: #ffffff;
+         display: inline-block;
+         font-weight: bold;
+         margin-top: 10px;
+         padding: 10px 0;
+         width: 130px;
+      }
+   }
+}
