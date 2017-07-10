@@ -42,7 +42,7 @@ body {
    margin: 0!important;
    padding: 0;
 
-   @include breakpoint(extra-small, 'max') { padding: 60px 0 0 !important; }
+   @include breakpoint(extra-small, 'max') { padding: 80px 0 0 !important; }
 }
 
 .header {
@@ -94,140 +94,23 @@ body {
 }
 
 #form-birthday {
-   background: #a4d13d;
-
    .row { margin-bottom: 0; }
 }
 
 .content {
-   background-color: $green;
+   color: $txt-gray;
 
    .imageBirthday {
-      @include breakpoint(extra-small, 'max') {
-         transform: scale(1.2);
-      }
+      text-align: right;
+
+      img { margin: 0 0 0 auto; }
+
+      @include breakpoint(extra-small, 'max') { transform: scale(1.2); }
    }
 
-   .formBirthday {
-    @include breakpoint(extra-small, 'max') {
-       img {
-          bottom: 320px;
-          position: relative;
-       }
-    }
-
-    #form-newsletter {
-      fieldset {
-        border: none;
-        margin-bottom: 0;
-      }
-
-      input {
-          @include responsiveFont(14, 16, true);
-          display: inline-block;
-          outline: none;
-          padding: 10px;
-          width: 210px;
-
-          &:first-child { margin-right: 10px; }
-
-          @include breakpoint(extra-small, 'max') { width: 100%; }
-
-          &.error {
-            background: #fff0f0;
-            border: 1px solid #f49a9a;
-            font-weight: normal;
-            text-align: left;
-          }
-
-          &.submit {
-             @include responsiveFont(24, 16, true);
-             @include singleTransition();
-             background: transparent;
-             border: 4px solid $gray-d;
-             color: $gray-d;
-             display: block;
-             margin: 0 auto;
-             padding: 8px 0;
-             width: 185px;
-
-             &:hover { background: #ffffff; }
-          }
-      }
-
-      ::-webkit-input-placeholder { font-style: italic; }
-      :-ms-input-placeholder { font-style: italic; }
-      ::-moz-placeholder { font-style: italic; }
-      :-moz-placeholder { font-style: italic; }
-
-      //msg de erro
-      .tooltip.bottom {
-          margin-top: 3px;
-          padding: 5px 0;
-          position: absolute;
-          z-index: 1;
-
-          @include breakpoint(extra-small, 'max') {
-            left: 50% !important;
-            transform: translateX(-50%);
-          }
-      }
-
-      .tooltip-arrow {
-          border-bottom-color: #000 !important;
-          border-color: transparent;
-          border-style: solid;
-          border-width: 0 5px 5px;
-          height: 0;
-          margin-left: -5px;
-          position: absolute;
-          top: 0;
-          width: 0;
-      }
-
-      .tooltip-inner {
-          @include responsiveFont(12, 16, true);
-          background-color: #000;
-          border-radius: 4px;
-          color: #fff;
-          font-weight: normal;
-          padding: 3px 8px;
-          text-align: center;
-          width: 200px;
-      }
-
-      #name {
-        @include breakpoint(extra-small, 'max') {
-          & + .tooltip {
-            top: -60px !important;
-
-            .tooltip-arrow {
-              border-top-color: #000 !important;
-              border-width: 5px 5px 0;
-              bottom: 0;
-              top: initial;
-            }
-          }
-        }
-      }
-    }
-
-    .success {
-      @include responsiveFont(24, 16, true);
-      color: #ffffff;
-      display: none;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .error {
-      color: #fb6969;
-      display: none;
-      font-weight: bold;
-      margin: 0;
-      text-align: center;
-    }
-  }
+   .birthday-img {
+      @include breakpoint(extra-small, 'max') { margin: 30px 0; }
+   }
 
    .imageBirthday,
    .formBirthday {
@@ -242,33 +125,148 @@ body {
       top: 120px;
    }
 
-   .txtOfertas,
-   .txtBemPensado {
+   .formBirthday {
+      #form-newsletter {
+         text-align: center;
+
+         fieldset {
+            border: none;
+            margin-bottom: 0;
+            padding: 0;
+            position: relative;
+         }
+
+         input {
+            @include responsiveFont(14, 16, true);
+            background: $gray;
+            display: inline-block;
+            outline: none;
+            padding: 10px;
+            width: 210px;
+
+            &:first-child { margin-right: 10px; }
+
+            &.error {
+              background: #fff0f0;
+              border: 1px solid #f49a9a;
+              font-weight: normal;
+              text-align: left;
+            }
+
+            @include breakpoint(extra-small, 'max') {
+              margin-bottom: 10px;
+              padding: 6px 10px;
+              width: 100%;
+            }
+
+            &.submit {
+               @include responsiveFont(24, 16, true);
+               @include singleTransition();
+               background: transparent;
+               border: 4px solid #732d78;
+               color: #732d78;
+               display: block;
+               margin: 20px auto;
+               padding: 8px 0;
+               width: 185px;
+
+               &:hover {
+                  background: #732d78;
+                  color: #ffffff;
+               }
+            }
+         }
+
+         ::-webkit-input-placeholder { font-style: italic; }
+         :-ms-input-placeholder { font-style: italic; }
+         ::-moz-placeholder { font-style: italic; }
+         :-moz-placeholder { font-style: italic; }
+
+         //msg de erro
+         .tooltip.bottom {
+            margin-top: 3px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+
+            @include breakpoint(extra-small, 'max') {
+              left: 50% !important;
+              transform: translateX(-50%);
+            }
+         }
+
+         .tooltip-arrow {
+            border-bottom-color: #000 !important;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 0 5px 5px;
+            height: 0;
+            margin-left: -5px;
+            position: absolute;
+            top: 0;
+            width: 0;
+         }
+
+         .tooltip-inner {
+            @include responsiveFont(12, 16, true);
+            background-color: #000;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: normal;
+            padding: 3px 8px;
+            text-align: center;
+            width: 200px;
+         }
+
+         #name {
+            @include breakpoint(extra-small, 'max') {
+              & + .tooltip {
+                top: -60px !important;
+
+                .tooltip-arrow {
+                  border-top-color: #000 !important;
+                  border-width: 5px 5px 0;
+                  bottom: 0;
+                  top: initial;
+                }
+              }
+            }
+         }
+      }
+
+      .success {
+         @include responsiveFont(24, 16, true);
+         color: $txt-gray;
+         display: none;
+         font-weight: bold;
+         text-align: center;
+      }
+
+      .error {
+        color: #fb6969;
+        display: none;
+        font-weight: bold;
+        margin: 0;
+        text-align: center;
+      }
+   }
+
+   .txtOfertas {
       @include responsiveFont(25, 16, true);
-      color: #ffffff;
-      line-height: normal;
-      margin: 20px 0 0 0;
+      font-weight: normal;
+      margin: 30px 0 0 0;
 
       @include breakpoint(extra-small, 'max') { @include responsiveFont(17, 16, true); }
    }
 
-   .txtOfertas {
-    @include breakpoint(extra-small, 'max') { margin-top: 60px; }
-   }
-
-   .txtBemPensado {
-      font-weight: normal;
-      margin: 0;
-   }
-
    .registerForm {
-    @include responsiveFont(16, 16, true);
-    margin: 10px 0;
-  }
+      @include responsiveFont(16, 16, true);
+      margin: 10px 0;
+   }
 }
 
 #contador {
-   background-color: #0192d1;
+   background-color: #732d78;
    padding: 40px 0;
 
    .row {
@@ -296,6 +294,21 @@ body {
 
          li.slick-active button { background: #ffffff; }
        }
+   }
+
+   .balao {
+      left: -15px;
+      position: absolute;
+      top: 40px;
+      z-index: 1;
+   }
+
+   .balao-right {
+      left: initial;
+      right: -50px;
+      top: -60px;
+
+      @include breakpoint(extra-small, 'max') { display: none; }
    }
 
    .ctas {
@@ -439,15 +452,6 @@ body {
             position: relative;
         }
       }
-   }
-
-   .balao {
-      left: -25px;
-      position: absolute;
-      top: -25px;
-      z-index: 1;
-
-      @include breakpoint(extra-small, 'max') { top: -15px; }
    }
 
    .produtos {
