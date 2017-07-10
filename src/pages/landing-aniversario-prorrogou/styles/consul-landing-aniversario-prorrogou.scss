@@ -236,7 +236,7 @@ body {
 
       .success {
          @include responsiveFont(24, 16, true);
-         color: #ffffff;
+         color: $txt-gray;
          display: none;
          font-weight: bold;
          text-align: center;
