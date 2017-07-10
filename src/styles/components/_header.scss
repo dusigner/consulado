@@ -280,6 +280,10 @@ div.account {
 		}
 	}
 
+	.logout {
+		a { font-size: 0; }
+	}
+
 	#login {
 		@include responsiveFont(12, 16, true);
 		background-color: #fff;

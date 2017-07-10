@@ -22,17 +22,24 @@ Nitro.module('checkout.cotas', function() {
 		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email)
 				.then(function(user) {
 					userData = user;
-					if (store && store.isCorp) {
-						return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
-					} else {
-						return CRM.clientSearchByDocument(userData.document, 'document');
+
+					if(userData.corporateDocument || userData.document) {
+						if (store && store.isCorp) {
+							return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
+						} else {
+							return CRM.clientSearchByDocument(userData.document, 'document');
+						}
+					}else {
+						return false;
 					}
 				})
 				.then(function(userByDocument) {
 					var qntd = 0;
-					$.each(userByDocument, function(index, user) {
-						qntd += user.xSkuSalesChannel5;
-					});
+					if( userByDocument ) {
+						$.each(userByDocument, function(index, user) {
+							qntd += user.xSkuSalesChannel5;
+						});
+					}
 
 					userData.xSkuSalesChannel5 = qntd;
 				})
@@ -75,7 +82,7 @@ Nitro.module('checkout.cotas', function() {
 				text: 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
 				status: 'info'
 			});
-			
+
 			self.$actionButton.addClass('disabled').attr('disabled', 'disabled');
 		} else {
 			self.$actionButton.removeClass('disabled').removeAttr('disabled');
