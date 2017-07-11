@@ -148,6 +148,9 @@ Nitro.controller('meuspedidos', ['removeBootstrap', 'orders.recurrence'], functi
 					$selector('.body__order-add-info').after('<div class="box-order-tracking"></div>');
 
 					$(result && result.Documents).each(function(i, e) {
+						//format date.. UTC +00:00 to -03:00
+						e.lastChange = e.lastChange.replace(/\+00:00$/,'-03:00');
+
 						if (e.finished) {
 							orderData['order-status'] = 'Pedido entregue';
 						}
