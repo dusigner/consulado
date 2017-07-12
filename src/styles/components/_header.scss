@@ -170,16 +170,16 @@ header {
 }
 
 .logo {
-	@include responsiveFont(30);
+	@include responsiveFont(52, 16, true);
 	color: $green;
 	display: inline-block;
-	margin-top: 10px;
+	line-height: normal;
 	padding-right: 20px;
 	position: relative;
 	vertical-align: top;
 
 	@include breakpoint(small, 'max') {
-		@include responsiveFont(25.5, 16, true);
+		@include responsiveFont(38, 16, true);
 		color: #ffffff;
 		display: block;
 		margin-top: 0;
