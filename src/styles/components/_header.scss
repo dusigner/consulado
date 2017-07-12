@@ -85,7 +85,7 @@ header {
 
 .header {
 	margin: 0;
-	padding: 12px 0 14px 0;
+	padding: 12px 0 0;
 
 	@include breakpoint(small, 'max') {
 		padding: 0;
@@ -170,7 +170,7 @@ header {
 }
 
 .logo {
-	@include responsiveFont(52, 16, true);
+	@include responsiveFont(62, 16, true);
 	color: $green;
 	display: inline-block;
 	line-height: normal;
