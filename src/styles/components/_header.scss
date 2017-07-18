@@ -77,7 +77,7 @@ header {
 
 		&[href*='tel'] { border-bottom-color: transparent; }
 
-		&[title*='Televendas'] { color: $txt-gray-l; }
+		&[title*='Televendas'] { color: $orange; }
 	}
 
 	.float-right { text-align: right; }
