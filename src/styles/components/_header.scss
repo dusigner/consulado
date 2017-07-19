@@ -310,4 +310,14 @@ body.consulempresa {
 			color: $orange;
 		}
 	}
+	&.pre-home {
+		.header {
+			padding-bottom: 14px; 
+			
+			.logo {
+				line-height: inherit;
+				margin-top: 10px;
+			}
+		}
+	}
 }
