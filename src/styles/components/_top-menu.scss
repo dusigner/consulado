@@ -419,7 +419,10 @@ $menu-colors: (
 
 				&:last-child { display: none; }
 
-				a { border-top: none; }
+				a { 
+					border-top: none; 
+					&[href*='tel:551130037872'] { color: $orange; }
+				}
 			}
 
 			&.sub-itens {
