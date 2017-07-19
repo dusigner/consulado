@@ -76,7 +76,14 @@
 					<tr>
 						<td width="30"></td>
 						<td align="center">
-							<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;"><strong style="font-size: 15px;">Olá</strong>, {{clientProfileData.firstName}}</font>
+							<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+								<strong style="font-size: 15px;">Olá</strong>,
+								{{#if clientProfileData.firstName}}
+										{{clientProfileData.firstName}}
+								{{else}}
+									{{clientProfileData.lastName}}
+								{{/if}}
+							</font>
 
 							<!-- space -->
 							<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
@@ -101,8 +108,41 @@
 					</tr>
 				</table>
 				<!-- space -->
-				<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="40"></td></tr></table>
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="20"></td></tr></table>
 				<!-- /FLUXO -->
+
+				<!-- PAGAMENTO E ENTREGA -->
+				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+					<tr>
+						<td align="center">
+							<!-- ENDEREÇO DE ENTREGA -->
+							<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+								<tr>
+									<td align="center">
+										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">ENDEREÇO DE ENTREGA</font>
+									</td>
+								</tr>
+								<tr><td height="15"></td></tr>
+								<tr>
+									<td align="center">
+										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+											{{#if giftRegistryData}}
+												{{giftRegistryData.description}}
+											{{else}}
+												{{shippingData.address.street}}, {{shippingData.address.number}} {{shippingData.address.complement}} - {{shippingData.address.neighborhood}} - {{shippingData.address.state}} - {{shippingData.address.postalCode}}
+											{{/if}}
+										</font>
+									</td>
+								</tr>
+							</table>
+							<!-- /ENDEREÇO DE ENTREGA -->
+						</td>
+					</tr>
+				</table>
+				<!-- /PAGAMENTO E ENTREGA -->
+
+				<!-- space -->
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="20"></td></tr></table>
 
 				<!-- PRODUTO -->
 				{{#each items}}
@@ -143,9 +183,7 @@
 											<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 												<tr>
 													<td bgcolor="#eaeaea" width="20"></td>
-													<td bgcolor="#eaeaea" height="25">
-														<strong>Voltagem escolhida:</strong> {{skuName}}
-													</td>
+													<td bgcolor="#eaeaea" height="10"></td>
 													<td bgcolor="#eaeaea" width="20"></td>
 												</tr>
 											</table>
@@ -160,8 +198,16 @@
 														<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
 															<tr>
 																<td width="230" valign="top">
-																	<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:736c6b;">
+																	<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
 																		<strong>Valor: </strong> R$ {{formatCurrency price}} <br />
+																	</font>
+																	<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+																		{{#each ../totals}}
+																			{{#if value}}
+																				{{#eq id "Discounts"}}<strong>Descontos:</strong> R$ {{formatCurrency value}} <br />{{/eq}}
+																				{{#eq id "Shipping"}}<strong>Frete:</strong> R$ {{formatCurrency value}} <br />{{/eq}}
+																			{{/if}}
+																		{{/each}}
 																	</font>
 																</td>
 															</tr>
@@ -169,23 +215,24 @@
 													</td>
 													<td width="20"></td>
 												</tr>
-												<tr>
-													<td width="20"></td>
-													<td height="20"></td>
-													<td width="20"></td>
-												</tr>
 											</table>
+
+											<!-- space -->
+											<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="20"></td></tr></table>
 										</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 
-						<tr><td width="30" height="40"></td></tr>
+						<tr><td width="30" height="20"></td></tr>
 					</table>
 
 				{{/each}}
 				<!-- /PRODUTO -->
+
+				<!-- space -->
+				<table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
 
 				<!-- ACOMPANHAMENTO PEDIDO -->
 				<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
@@ -200,7 +247,7 @@
 									<td width="10"></td>
 									<td>
 										<font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
-											<strong style="font-weight: bold;">Nº do pedido</strong> {{orderId}}
+											<strong style="font-weight: bold;">Nº do pedido</strong> {{sequence}}
 										</font>
 									</td>
 								</tr>
