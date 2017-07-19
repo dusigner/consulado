@@ -77,6 +77,8 @@ header {
 
 		&[href*='tel'] { border-bottom-color: transparent; }
 
+		&[href*='tel:+551130037872'] { margin-left: 0; }
+
 		&[title*='Televendas'] { color: $orange; }
 	}
 
