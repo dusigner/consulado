@@ -79,8 +79,8 @@ header {
 
 		&[href*='tel:+551130037872'] { margin-left: 0; }
 
-		&[title*='Televendas'] { 
-			color: $orange; 
+		&[title*='Televendas'] {
+			color: $orange;
 			margin-left: 4px;
 		}
 	}
@@ -175,16 +175,15 @@ header {
 }
 
 .logo {
-	@include responsiveFont(62, 16, true);
+	@include responsiveFont(30, 16, true);
 	color: $green;
 	display: inline-block;
-	line-height: normal;
-	padding-right: 20px;
+	padding-left: 30px;
 	position: relative;
 	vertical-align: top;
 
 	@include breakpoint(small, 'max') {
-		@include responsiveFont(38, 16, true);
+		@include responsiveFont(25.5, 16, true);
 		color: #ffffff;
 		display: block;
 		margin-top: 0;
@@ -313,6 +312,16 @@ body.consulempresa {
 		.logout a {
 			@include responsiveFont(12);
 			color: $orange;
+		}
+	}
+	&.pre-home {
+		.header {
+			padding-bottom: 14px;
+
+			.logo {
+				line-height: inherit;
+				margin-top: 10px;
+			}
 		}
 	}
 }

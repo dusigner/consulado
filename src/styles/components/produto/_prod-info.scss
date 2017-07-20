@@ -106,7 +106,7 @@
 
 		&.valor-dividido {
 			@include font-size(12px, true, false);
-			display: block!important;
+			display: block;
 			position: relative;
 
 			@include breakpoint(small, 'max') {
@@ -553,6 +553,4 @@ body.consulempresa {
 			
 		}
 	}
-	.valor-dividido,
-	.valores-parcelas {display: none !important;}
 }
