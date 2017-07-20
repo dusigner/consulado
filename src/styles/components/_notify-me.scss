@@ -32,7 +32,8 @@
 	}
 
 	.notifyme-client-name,
-	.notifyme-client-email {
+	.notifyme-client-email,
+	.notifyme-client-phone {
 		@include singleTransition();
 		@include responsiveFont(14);
 		background-color: $gray-l;
