@@ -1,6 +1,10 @@
 'use strict';
+
+alert(0);
+
 var CRM = require('modules/store/crm'),
-	PDVBox = require('modules/store/pdvbox');
+	PDVBox = require('modules/store/pdvbox'),
+	ModalGae = require('modules/orders/order.modal.gae');
 
 require('../../../templates/orders/warrantySpare.btnWarranty.html');
 require('../../../templates/orders/warrantySpare.btnDownloadWarranty.html');
@@ -312,7 +316,13 @@ var Warranty = {
 			while (idPlan.length < 10) {
 				idPlan = '0' + idPlan;
 			}
-			window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=consul', '_blank');
+
+			ModalGae.requestTerms(idPlan, function(changeStep) {
+				console.log('do something');
+				changeStep();
+			});
+
+			// window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=consul', '_blank');
 		});
 	},
 
