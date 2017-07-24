@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true, skuJson: true */
+/* global $: true, Nitro: true */
 'use strict';
 
 require('vendors/slick');

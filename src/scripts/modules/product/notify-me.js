@@ -1,11 +1,11 @@
 /* global $: true, Nitro: true, skuJson: true */
+'use strict';
 
 // require('../../../templates/notify-me.html');
 // require('vendors/portal-notify-me');
 
 require('vendors/jquery.inputmask');
 
-'use strict';
 
 Nitro.module('notify-me', function() {
 
