@@ -3,20 +3,18 @@
 require('modules/helpers');
 
 var ModalGae = {
-	self: this,
 	$body: $('body'),
-	$modal: $('.modal-gae__mask'),
 	template: '<div class="modal-gae__body">' +
 					'<span class="modal-gae__close"><a href="javascript:void()">X</a></span>' +
 					'<span class="modal-gae__title">{title}</span>' +
 					'<div class="modal-gae__body">{content}</div>' +
 				'</div>',
 	modal: function(templateData) {
-		console.log(self.template);
-		this.$body.append('<div class="modal-gae__mask"></div>');
-		this.$modal.data('modal', self)
+		console.log('ihuhuhuai', ModalGae.template.render(templateData));
+		ModalGae.$body.append('<div class="modal-gae__mask"></div>');
+		$('.modal-gae__mask').data('modal', ModalGae)
 					.addClass('.modal-gae__mask--enter')
-					.append(self.template.render(templateData))
+					.html(ModalGae.template.render(templateData))
 					.delay(500)
 					.removeClass('modal-gae__mask--enter')
 					.addClass('modal-gae__mask--loaded');
@@ -26,7 +24,7 @@ var ModalGae = {
 		$('.modal-gae__close').click(function(e) {
 			e.preventDefault();
 
-			this.$modal.remove();
+			ModalGae.$modal.remove();
 		});
 
 		cb();
@@ -47,11 +45,11 @@ var ModalGae = {
 							'<div class="modal-gae__request-terms step step-two">' + steps.stepTwo + '</div>'
 			};
 
-		this.modal(templateData);
+		ModalGae.modal(templateData);
 
-		this.$modal.addClass('modal-gae__mask--request-terms');
+		$('.modal-gae__mask').addClass('modal-gae__mask--request-terms');
 
-		cb(this.changeStep);
+		cb(ModalGae.changeStep);
 	},
 	changeStep: function() {
 		var $current = $('.step.current');
@@ -71,11 +69,11 @@ var ModalGae = {
 						'<div class="modal-gae__request-cancel step step-two">' + templateData.stepTwo + '</div>'
 		};
 
-		this.modal(templateData);
+		ModalGae.modal(templateData);
 
-		this.$modal.addClass('modal-gae__mask--request-cancel');
+		ModalGae.$modal.addClass('modal-gae__mask--request-cancel');
 
-		cb(this.changeStep);
+		cb(ModalGae.changeStep);
 	}
 };
 
