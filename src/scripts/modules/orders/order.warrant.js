@@ -1,7 +1,5 @@
 'use strict';
 
-alert(0);
-
 var CRM = require('modules/store/crm'),
 	PDVBox = require('modules/store/pdvbox'),
 	ModalGae = require('modules/orders/order.modal.gae');
@@ -275,7 +273,12 @@ var Warranty = {
 	cancelWarranty: function() {
 		$('.cancel-warranty:not(.vtex)').unbind('click').click(function() {
 			var idPlan = $(this).data('id');
-			PDVBox.remove(idPlan);
+
+			ModalGae.requestCancel(null, function() {
+				$('.js-modal-gae-confirm').click(function() {
+					PDVBox.remove(idPlan);
+				});
+			});
 		});
 	},
 
@@ -293,11 +296,26 @@ var Warranty = {
 			data.skuRefId = $(this).data('refid');
 			data.indice = $(this).data('product-index');
 
-			CRM.insertCancelGae(data).done(function(){
-				$button.replaceWith('<p class="cancel-success">Cancelamento Solicitado!</p>');
-			}).fail(function(){
-				Warranty.alert('erro', 'Ocorreu algum erro, tente novamente');
+			ModalGae.requestCancel(data, function(changeStep, close, data) {
+				$('.js-modal-gae-confirm').click(function() {
+					CRM.insertCancelGae(data)
+						.done(function(){
+							changeStep();
+
+							$button.replaceWith('<p class="cancel-warranty cancel-success">Cancelamento Solicitado!</p>');
+
+							setTimeout(function() {
+								if($('.modal-gae__mask').length > 0) {
+									close();
+								}
+							}, 1000 * 10);
+						}).fail(function(){
+							close();
+							Warranty.alert('erro', 'Ocorreu algum erro, tente novamente');
+						});
+				});
 			});
+
 		});
 	},
 
@@ -317,9 +335,32 @@ var Warranty = {
 				idPlan = '0' + idPlan;
 			}
 
-			ModalGae.requestTerms(idPlan, function(changeStep) {
-				console.log('do something');
-				changeStep();
+			var data = {};
+			data.request = true;
+			data.document = Warranty.profileData.document;
+			data.garantia = $(this).data('period');
+			data.order = idPlan;
+			data.skuRefId = $(this).data('refid');
+			data.indice = $(this).data('product-index');
+
+			ModalGae.requestTerms(data, function(changeStep, close, data) {
+				$('.js-modal-gae-confirm').click(function() {
+					CRM.insertTermsGae(data)
+						.done(function(){
+							changeStep();
+
+							$('.download-warranty.vtex').replaceWith('<span class="download-warranty request-success">Termo Solicitado!</span>');
+
+							setTimeout(function() {
+								if($('.modal-gae__mask').length > 0) {
+									close();
+								}
+							}, 1000 * 10);
+						}).fail(function(){
+							close();
+							Warranty.alert('erro', 'Ocorreu algum erro, tente novamente');
+						});
+				});
 			});
 
 			// window.open('http://www.sistemagarantia.com.br/listagem?cpf=' + Warranty.profileData.document + '&id=' + idPlan + '&loja=consul', '_blank');
