@@ -62,7 +62,10 @@
 		padding: .7em 2.5em;
 	}
 
-	&__confirm { margin-right: 2em }
+	&__confirm {
+		@include breakpoint(medium, 'min') { margin: 0 2em 0 0 };
+		margin: 0 0 2em 0;
+	}
 
 	&__content {
 		position: relative;
