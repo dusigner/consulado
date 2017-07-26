@@ -41,16 +41,16 @@ $animation-mode: true!default;
 @import 'components/footer';
 
 h1,
-h2 { 
+h2 {
 	color: $green;
 	font-weight: 200;
-	margin: 0; 
+	margin: 0;
 	padding: 0;
 	text-align: center;
 }
 
-h1 { 
-	@include responsiveFont(35); 
+h1 {
+	@include responsiveFont(35);
 	line-height: 35px;
 	margin-top: 50px;
 	@include breakpoint(extra-small, 'max') {
@@ -59,7 +59,7 @@ h1 {
 }
 
 h2 {
-	@include responsiveFont(18);	
+	@include responsiveFont(18);
 	color: #69615f;
 	margin-bottom: 20px;
 }
@@ -73,13 +73,13 @@ h2 {
 	}
 }
 
-.banner { 
-	background: url('/arquivos/bg-image.png') 0 0 no-repeat; 
+.banner {
+	background: url('/arquivos/bg-image.png') 0 0 no-repeat;
 	display: inline-block;
 	height: 690px;
 	width: 70%;
-	@media (min-width: 1500px) { 
-		background: url('/arquivos/bg-image.png') 360px 18px no-repeat; 
+	@media (min-width: 1500px) {
+		background: url('/arquivos/bg-image.png') 360px 18px no-repeat;
 		height: 709px;
 	}
 	@include breakpoint(extra-small, 'min') {
@@ -105,8 +105,8 @@ h2 {
 	}
 }
 
-.box-grid { 
-	position: absolute; 
+.box-grid {
+	position: absolute;
 	@media (min-width: 1500px) { left: 360px; }
 }
 
@@ -321,7 +321,7 @@ h2 {
 	border-radius: 30px;
 	color: #ffffff;
 	display: block;
-	font-size: 18px;	
+	font-size: 18px;
 	font-weight: bold;
 	margin: 40px auto;
 	padding: 20px 0 20px 0;
@@ -356,7 +356,7 @@ h2 {
 	position: relative;
 	text-align: center;
 	width: 65%;
-	
+
 	@include breakpoint(extra-small, 'max') {
 		@include responsiveFont(9);
 		border-bottom-left-radius: 0;
@@ -387,6 +387,7 @@ h2 {
 #txt {
 	border-bottom-left-radius: 100px;
 	border-top-left-radius: 100px;
+	z-index: 1;
 }
 
 #txt-2 {
@@ -399,7 +400,7 @@ h2 {
 	@include breakpoint(extra-small, 'max') {
 		@include responsiveFont(8);
 	}
-	
+
 	h2,
 	span {
 		@include responsiveFont(35);
@@ -416,7 +417,73 @@ h2 {
 	}
 }
 
+#promocao-encerrada {
+	background: $green;
+	height: 775px;
+	margin-top: -10px;
+	position: relative;
+
+	@include breakpoint(extra-small, 'max') { height: 540px; }
+
+	.wrapper {
+		display: inline-block;
+		left: 50%;
+		position: absolute;
+		text-align: center;
+		top: 55%;
+		transform: translate(-50%, -50%);
+		width: 650px;
+
+		@include breakpoint(extra-small, 'max') {
+			top: 62%;
+			width: 90%;
+		}
+
+		.title {
+			@include responsiveFont(48, 16, true);
+			color: #ffffff;
+			font-weight: bold;
+			text-transform: uppercase;
+
+			@include breakpoint(extra-small, 'max') { @include responsiveFont(32, 16, true); }
+		}
+
+		.aguarde {
+			@include responsiveFont(24, 16, true);
+			background: url('/arquivos/lp-concurso_bg-encerrada.png') no-repeat center 0;
+			height: 195px;
+			margin-top: 70px;
+			padding: 30px;
+
+			@include breakpoint(extra-small, 'max') {
+				@include responsiveFont(16, 16, true);
+				background: url('/arquivos/lp-concurso_bg-encerrada-mobile.png') no-repeat center 0;
+				background-size: 100%;
+				margin-top: 35px;
+				padding: 10px;
+			}
+
+			.destaque {
+				color: $txt-gray;
+				display: block;
+				font-weight: bold;
+				margin-bottom: 20px;
+
+				@include breakpoint(extra-small, 'max') { margin-bottom: 10px; }
+			}
+
+			.text {
+				color: #ffffff;
+				display: inline-block;
+				max-width: 445px;
+			}
+		}
+	}
+}
+
 #form {
+	background: $green;
+	display: none;
 	height: 775px;
 	width: 100%;
 	@include breakpoint(extra-small, 'max') { height: auto; }
@@ -505,16 +572,16 @@ h2 {
 		.btn {
 			background-color: #898481;
 			border: none;
-			&:hover { 
-				background-color: $orange; 
-				color: #ffffff; 
+			&:hover {
+				background-color: $orange;
+				color: #ffffff;
 			}
 		}
 		.btn-enviar {
 			display: inline-block;
 			vertical-align: text-bottom;
 			@include breakpoint(extra-small, 'max') {
-				button {	
+				button {
 					padding: 11px 18px 11px 18px;
 				}
 			}
@@ -528,7 +595,7 @@ h2 {
     			font-size: 14px;
     			line-height: 14px;
     			margin-left: 10px;
-    			margin-top: 10px;	
+    			margin-top: 10px;
 		  	}
 		}
 		.msg-sucesso {
@@ -575,14 +642,14 @@ h2 {
 		}
 		.check-terms {
 			border: none;
-			cursor: initial; 
-			display: inline-block; 
+			cursor: initial;
+			display: inline-block;
 			height: 15px;
 			visibility: visible;
 			width: 18px;
 		}
-		.terms { 
-			color: #ffffff; 
+		.terms {
+			color: #ffffff;
 			display: inline-block;
 			margin-top: 10px;
 			vertical-align: top;
@@ -621,7 +688,7 @@ h2 {
 }
 
 #regulamento {
-	background: url('/arquivos/line.png') center center no-repeat; 
+	background: url('/arquivos/line.png') center center no-repeat;
 	height: 880px;
 	width: 100%;
 	@include breakpoint(extra-small, 'max') {
@@ -648,7 +715,7 @@ h2 {
 	    padding-right: 20px;
 	    width: 6px;
 	}
-	 
+
 	.regulamento-infos::-webkit-scrollbar-thumb {
 	  	background-color: $green;
 	 	border-radius: 6px;
@@ -669,7 +736,7 @@ h2 {
     	}
 	}
 	.regulamento-infos {
-		@include responsiveFont(18);	
+		@include responsiveFont(18);
 		height: 292px;
 		overflow-y: scroll;
 		padding-left: 70px;
@@ -694,7 +761,7 @@ h2 {
 	}
 	.btn-download,
 	.btn-ver-mais {
-		@include responsiveFont(18);	
+		@include responsiveFont(18);
 		background-color: #898481;
 		border-radius: 30px;
 		color: #ffffff;
