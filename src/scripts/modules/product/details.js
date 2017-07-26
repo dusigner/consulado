@@ -2,13 +2,19 @@
 'use strict';
 
 require('../../../templates/details.html');
+require('../../../templates/detailsLancamento.html');
 
 Nitro.module('details', function() {
 
 
 	var $detalhes = $('#detalhes'),
+		data = {
+			items: [],
+			releaseImg: ''
+		},
+		$lancamento = $('#caracteristicas h4.Lancamento + table'),
+		isLancamento = $lancamento.find('.value-field.Lancamento').text() === 'Sim',
 		$modules = $('#caracteristicas h4[class*="Modulo"] + table'),
-		data = {},
 		styleMap = [{
 			item: 'item-half item-single',
 			text: 'text-left col-v2 l5',
@@ -48,6 +54,30 @@ Nitro.module('details', function() {
 	});
 
 	// console.log('details data', data);
+
+	if(isLancamento) {
+		data.releaseImg = $.getImagePath($lancamento.find('.value-field.Imagem-Lancamento').text());
+
+		dust.render('detailsLancamento', data, function(err, out) {
+			if (err) {
+				throw new Error('Details Dust error: ' + err);
+			}
+
+			$detalhes.html(out).show();
+
+			$(document).trigger('nav', 'detalhes');
+		});
+
+		var $bullet = $('.js-release-bullet');
+
+		$.each(data.items, function(i ,v) {
+			$bullet.filter(':eq(' + i + ')').data('modal', v);
+			console.log('ALOALO', $bullet.filter(':eq(' + i + ')').data('modal'));
+		});
+
+		console.log('data', data);
+		return;
+	}
 
 	dust.render('details', data, function(err, out) {
 		if (err) {
