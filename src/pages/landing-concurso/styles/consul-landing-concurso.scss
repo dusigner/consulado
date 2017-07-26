@@ -92,8 +92,8 @@ h2 {
 		height: auto;
 		width: 100%;
 		img {
-    		display: block;
-    		height: auto;
+				display: block;
+				height: auto;
 			width: 100%;
 		}
 	}
@@ -163,10 +163,10 @@ h2 {
 }
 
 .box-seven {
-   	animation: fade 3s forwards;
-   	bottom: 464px;
+		animation: fade 3s forwards;
+		bottom: 464px;
 	height: 464px;
-   	left: 627px;
+		left: 627px;
 	opacity: 0;
 	position: relative;
 	width: 257px;
@@ -309,11 +309,11 @@ h2 {
 
 .ban-promo {
 	display: inline-block;
-   	height: 100%;
-   	vertical-align: top;
-    @include breakpoint(extra-small, 'max') {
-    	display: none;
-    }
+		height: 100%;
+		vertical-align: top;
+		@include breakpoint(extra-small, 'max') {
+			display: none;
+		}
 }
 
 .btn-participe {
@@ -335,15 +335,15 @@ h2 {
 	display: block;
 	height: 104px;
 	line-height: 22px;
-   	opacity: .75;
-   	padding: 20px 8px 20px 0;
+		opacity: .75;
+		padding: 20px 8px 20px 0;
 	text-align: right;
 	width: 377px;
-   	span { @include responsiveFont(22); }
+		span { @include responsiveFont(22); }
 
-   @include breakpoint(extra-small, 'max') { display: none; }
+	 @include breakpoint(extra-small, 'max') { display: none; }
 
-   @media (min-width: 1500px) { margin-left: 360px; }
+	 @media (min-width: 1500px) { margin-left: 360px; }
 }
 
 #txt,
@@ -589,28 +589,28 @@ h2 {
 		.msg-form {
 			color: #898481;
 			display: block;
-    		font-size: 15px;
-    		position: absolute;
-    		@include breakpoint(extra-small, 'max') {
-    			font-size: 14px;
-    			line-height: 14px;
-    			margin-left: 10px;
-    			margin-top: 10px;
-		  	}
+				font-size: 15px;
+				position: absolute;
+				@include breakpoint(extra-small, 'max') {
+					font-size: 14px;
+					line-height: 14px;
+					margin-left: 10px;
+					margin-top: 10px;
+				}
 		}
 		.msg-sucesso {
 			color: #ffffff;
 			font-weight: 500;
 			&:after {
-			    border: solid $orange;
-			    border-width: 0 2px 2px 0;
-			    content: '';
-			    display: inline-block;
-			    height: 17px;
-			    margin-left: 11px;
-			    transform: rotate(45deg);
-			    width: 9px;
-		  	}
+					border: solid $orange;
+					border-width: 0 2px 2px 0;
+					content: '';
+					display: inline-block;
+					height: 17px;
+					margin-left: 11px;
+					transform: rotate(45deg);
+					width: 9px;
+				}
 		}
 
 		.msg-erro {
@@ -625,15 +625,15 @@ h2 {
 			}
 		}
 		.loading {
-		    background-color: #898481!important;
-		    border-radius: 50px;
-		    color: #fff;
+				background-color: #898481!important;
+				border-radius: 50px;
+				color: #fff;
 			display: block;
-		    font-size: 16px;
-		    font-weight: 700;
-		    padding: .7em 2.5em;
-		    position: relative;
-		    text-align: center;
+				font-size: 16px;
+				font-weight: 700;
+				padding: .7em 2.5em;
+				position: relative;
+				text-align: center;
 
 			&:before {
 				@include spinner($green, 25px);
@@ -712,13 +712,13 @@ h2 {
 	}
 	.regulamento-infos::-webkit-scrollbar {
 		background-color: transparent;
-	    padding-right: 20px;
-	    width: 6px;
+			padding-right: 20px;
+			width: 6px;
 	}
 
 	.regulamento-infos::-webkit-scrollbar-thumb {
-	  	background-color: $green;
-	 	border-radius: 6px;
+			background-color: $green;
+		border-radius: 6px;
 	}
 	.txt-regulamento {
 		@include responsiveFont(18);
@@ -727,13 +727,13 @@ h2 {
 		color: $green;
 		display: block;
 		font-weight: bold;
-    	margin: 50px auto;
+			margin: 50px auto;
 		padding: 10px 40px 10px 40px;
-    	text-transform: uppercase;
-    	width: 220px;
-    	@include breakpoint(extra-small, 'max') {
-    		margin: 63px auto;
-    	}
+			text-transform: uppercase;
+			width: 220px;
+			@include breakpoint(extra-small, 'max') {
+				margin: 63px auto;
+			}
 	}
 	.regulamento-infos {
 		@include responsiveFont(18);
@@ -754,9 +754,9 @@ h2 {
 	}
 	.infos-regulamento {
 		@include breakpoint(extra-small, 'max') {
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 			background: -webkit-linear-gradient(#333333, #eeeeee);
-	  		-webkit-background-clip: text;
-	  		-webkit-text-fill-color: transparent;
 		}
 	}
 	.btn-download,
@@ -793,9 +793,9 @@ h2 {
 	}
 	.buttons-form {
 		@include breakpoint(extra-small, 'max') {
-	    	background-color: #ebebeb;
-		    height: 100px;
-		    width: 100%;
+				background-color: #ebebeb;
+				height: 100px;
+				width: 100%;
 		}
 	}
 }
