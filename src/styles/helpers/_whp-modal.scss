@@ -31,7 +31,6 @@
 	&__body {
 		@include breakpoint(medium, 'min') { min-width: 550px; };
 		background: #fff;
-		border-radius: 10px;
 		display: inline-block;
 		left: 50%;
 		opacity: 0;

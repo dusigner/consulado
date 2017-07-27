@@ -14,11 +14,20 @@
 }
 
 .modal-release {
+	overflow: visible;
 	padding: 0;
 
+	//RESETS DEFAULT MODAL STYLES
 	.modal-whp__content {
 		align-items: center;
 		display: flex;
+	}
+
+	.modal-whp__close {
+		right: -20px;
+		top: -45px;
+
+		a { color: #fff }
 	}
 
 	&__content {
@@ -31,5 +40,14 @@
 		line-height: 0
 	}
 
+	&__title {
+		@include font-size(26px);
+		color: #802893;
+		margin: .5em 0;
+		font-weight: bold;
+	}
 
+	&__text {
+		@include font-size(15px);
+	}
 }

@@ -76,17 +76,18 @@ Nitro.module('details', function() {
 		});
 
 		$bullet.whpModal({
-			title: null,
+			title: '',
 			content: function(){
 				return '<div class="modal-release__content">' +
 							'<p class="modal-release__title">' + this.data('modal').title +'</p>' +
 							'<p class="modal-release__text">' + this.data('modal').text + '</p>' +
 						'</div>' +
 						'<div class="modal-release__image">' +
-							'<img src="' + this.data('modal').image +'" alt="' + this.data('modal').title +'" title="' + this.data('modal').title +'" />' +
+							'<img src="' + this.data('modal').image +'" alt="' + this.data('modal').title +'" title="' + this.data('modal').title +'" width="520" height="330" />' +
 						'</div>';
 			},
-			aditionalClass: 'modal-release'
+			aditionalClass: 'modal-release',
+			outerNav: true
 		});
 
 		return;
