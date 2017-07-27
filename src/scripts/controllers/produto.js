@@ -148,17 +148,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 	$('.comprar-junto a').text('compre junto');
 
 
-
-	//Rating TruxtVox
-	$(document).on('click', '.trustvox-fluid-jump', function(e) {
-		e.preventDefault();
-
-		$('html, body').animate({
-			scrollTop: $('#trustvox-rating').offset().top + 'px'
-		}, 'slow');
-	});
-
-
 	//Google PLA
 	if ($.getParameterByName('utmi_cp') === 'pla' || $.cookie('google_pla')) {
 		$.cookie('google_pla', true, {
