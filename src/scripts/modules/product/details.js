@@ -75,7 +75,19 @@ Nitro.module('details', function() {
 			$bullet.filter(':eq(' + i + ')').data('modal', v);
 		});
 
-		$bullet.whpModal();
+		$bullet.whpModal({
+			title: null,
+			content: function(){
+				return '<div class="modal-release__content">' +
+							'<p class="modal-release__title">' + this.data('modal').title +'</p>' +
+							'<p class="modal-release__text">' + this.data('modal').text + '</p>' +
+						'</div>' +
+						'<div class="modal-release__image">' +
+							'<img src="' + this.data('modal').image +'" alt="' + this.data('modal').title +'" title="' + this.data('modal').title +'" />' +
+						'</div>';
+			},
+			aditionalClass: 'modal-release'
+		});
 
 		return;
 	}
