@@ -3,6 +3,7 @@
 
 require('../../../templates/details.html');
 require('../../../templates/detailsLancamento.html');
+require('../../vendors/jquery.whp-modal');
 
 Nitro.module('details', function() {
 
@@ -72,10 +73,10 @@ Nitro.module('details', function() {
 
 		$.each(data.items, function(i ,v) {
 			$bullet.filter(':eq(' + i + ')').data('modal', v);
-			console.log('ALOALO', $bullet.filter(':eq(' + i + ')').data('modal'));
 		});
 
-		console.log('data', data);
+		$bullet.whpModal();
+
 		return;
 	}
 

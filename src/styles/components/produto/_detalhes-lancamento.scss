@@ -1,0 +1,13 @@
+.release-details {
+	&__title { @include font-size(28px); }
+
+	&__bullet {
+		@include font-size(12px);
+		background: $green;
+		border-radius: 50%;
+		color: #fff;
+		line-height: 0;
+		padding: .7em;
+		transform: rotate(45deg);
+	}
+}
