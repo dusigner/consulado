@@ -1,5 +1,53 @@
 @charset 'UTF-8';
 
+@keyframes prevOut {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(50%);
+		opacity: 0;
+	}
+}
+
+@keyframes nextOut {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+
+	to {
+		transform: translateX(-50%);
+		opacity: 0;
+	}
+}
+
+@keyframes prevIn {
+	from {
+		transform: translateX(-50%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes nextIn {
+	from {
+		transform: translateX(50%);
+		opacity: 0;
+	}
+
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
 .modal-whp {
 
 	&__mask {
@@ -30,7 +78,6 @@
 
 	&__body {
 		@include breakpoint(medium, 'min') { min-width: 550px; };
-		background: #fff;
 		display: inline-block;
 		left: 50%;
 		opacity: 0;
@@ -67,5 +114,71 @@
 		right: 15px;
 		top: 10px;
 	}
+
+	&__nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+		a {
+			display: inline-block;
+			border: 3px solid #fff;
+			transform: rotate(45deg) scale(1);
+			width: 20px;
+			height: 20px;
+			transition: transform .25s ease-in-out;
+
+			&:hover {
+				transform: rotate(45deg) scale(1.5);
+			}
+		}
+
+		&[data-direction="prev"] {
+			left: -35px;
+
+			a {
+				border-right: none;
+				border-top: none;
+			}
+		}
+
+		&[data-direction="next"] {
+			right: -35px;
+
+			a {
+				border-left: none;
+				border-bottom: none;
+			}
+		}
+	}
+
+	&__content {
+		background: #fff;
+
+		&--prevOut {
+			animation-name: prevOut;
+			animation-duration: .5s;
+			animation-timing-function: ease-in-out;
+		}
+
+		&--nextOut {
+			animation-name: nextOut;
+			animation-duration: .5s;
+			animation-timing-function: ease-in-out;
+		}
+
+		&--prevIn {
+			animation-name: prevIn;
+			animation-duration: .5s;
+			animation-timing-function: ease-in-out;
+		}
+
+		&--nextIn {
+			animation-name: nextIn;
+			animation-duration: .5s;
+			animation-timing-function: ease-in-out;
+		}
+	}
+
 
 }

@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true, dust: true */
+/* global $: true, Nitro: true, dust: true, _: true, vtxctx: true */
 'use strict';
 
 require('../../../templates/details.html');
@@ -11,7 +11,8 @@ Nitro.module('details', function() {
 	var $detalhes = $('#detalhes'),
 		data = {
 			items: [],
-			releaseImg: ''
+			releaseImg: '',
+			category: ''
 		},
 		$lancamento = $('#caracteristicas h4.Lancamento + table'),
 		isLancamento = $lancamento.find('.value-field.Lancamento').text() === 'Sim',
@@ -58,6 +59,7 @@ Nitro.module('details', function() {
 
 	if(isLancamento) {
 		data.releaseImg = $.getImagePath($lancamento.find('.value-field.Imagem-Lancamento').text());
+		data.category = _.sanitize(vtxctx.categoryName);
 
 		dust.render('detailsLancamento', data, function(err, out) {
 			if (err) {

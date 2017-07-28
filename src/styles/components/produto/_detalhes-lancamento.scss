@@ -1,15 +1,75 @@
+@keyframes bulletPulse {
+	from {
+		box-shadow: 0 0 15px 5px rgba(80, 80, 80, .7);
+	}
+
+	to {
+		box-shadow: 0 0 30px 10px rgba(80, 80, 80, 1);
+	}
+}
+
 .release-details {
+	&__content {
+		display: inline-block;
+		position: relative;
+	}
 	&__title { @include font-size(28px); }
 
+	&__bullets {
+		&--Micro-ondas {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: 40px;
+				top: 85px;
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: 305px;
+				top: 85px;
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: 290px;
+				top: 120px;
+			}
+			.release-details__bullet:nth-child(4) {
+				display: block;
+				left: 275px;
+				top: 195px;
+
+			}
+			.release-details__bullet:nth-child(5) {
+				display: block;
+				left: 315px;
+				top: 195px;
+			}
+		}
+	}
+
 	&__bullet {
-		@include font-size(12px);
+		@include font-size(9px);
 		background: $green;
+		border-color: rgba(0, 0, 0, .2);
 		border-radius: 50%;
-		box-shadow: 0 0 15px rgba(0, 0, 0, .7);
+		border-style: solid;
+		border-width: 2px;
+		box-shadow: 0 0 15px 5px rgba(80, 80, 80, .7);
 		color: #fff;
+		display: none;
+		left: 0;
 		line-height: 0;
 		padding: .7em;
+		position: absolute;
+		top: 0;
 		transform: rotate(45deg);
+
+		&:hover {
+			animation-direction: alternate;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-name: bulletPulse;
+			animation-timing-function: ease-in-out;
+		}
 	}
 }
 
@@ -43,8 +103,8 @@
 	&__title {
 		@include font-size(26px);
 		color: #802893;
-		margin: .5em 0;
 		font-weight: bold;
+		margin: .5em 0;
 	}
 
 	&__text {
