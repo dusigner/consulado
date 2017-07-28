@@ -56,7 +56,7 @@
 		position: fixed;
 		top: 0;
 		width: 100%;
-		z-index: 999;
+		z-index: 9999;
 
 		&:before {
 			@include contentBefore;
@@ -78,8 +78,15 @@
 
 	&__body {
 		@include breakpoint(medium, 'min') { min-width: 550px; };
+		@include breakpoint(medium, 'max') {
+			img {
+				height: auto;
+				width: 100%;
+			}
+		};
 		display: inline-block;
 		left: 50%;
+		max-width: 80%;
 		opacity: 0;
 		overflow: hidden;
 		padding: 30px;
@@ -134,6 +141,7 @@
 		}
 
 		&[data-direction="prev"] {
+			@include breakpoint(medium, 'max') { left: -20px }
 			left: -35px;
 
 			a {
@@ -143,6 +151,7 @@
 		}
 
 		&[data-direction="next"] {
+			@include breakpoint(medium, 'max') { right: -20px }
 			right: -35px;
 
 			a {

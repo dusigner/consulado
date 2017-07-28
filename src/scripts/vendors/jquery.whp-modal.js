@@ -85,7 +85,7 @@
 				objTitle;
 
 			if(settings.content === null) {
-				objContent = dataModal
+				objContent = (dataModal && dataModal.content)
 							? '<div>' + dataModal.content + '</div>'
 							: $($self.attr('href')).html();
 			} else {

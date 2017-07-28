@@ -10,8 +10,15 @@
 
 .release-details {
 	&__content {
+		@include breakpoint(medium, 'max') {
+			img {
+				height: auto;
+				width: 100%;
+			}
+		};
 		display: inline-block;
 		position: relative;
+
 	}
 	&__title { @include font-size(28px); }
 
@@ -19,29 +26,29 @@
 		&--Micro-ondas {
 			.release-details__bullet:nth-child(1) {
 				display: block;
-				left: 40px;
-				top: 85px;
+				left: calc((40 / 420) * 100%);
+				top: calc((85 / 280) * 100%);
 			}
 			.release-details__bullet:nth-child(2) {
 				display: block;
-				left: 305px;
-				top: 85px;
+				left: calc((305 / 420) * 100%);
+				top: calc((85 / 280) * 100%);
 			}
 			.release-details__bullet:nth-child(3) {
 				display: block;
-				left: 290px;
-				top: 120px;
+				left: calc((290 / 420) * 100%);
+				top: calc((120 / 280) * 100%);
 			}
 			.release-details__bullet:nth-child(4) {
 				display: block;
-				left: 275px;
-				top: 195px;
+				left: calc((275 / 420) * 100%);
+				top: calc((195 / 280) * 100%);
 
 			}
 			.release-details__bullet:nth-child(5) {
 				display: block;
-				left: 315px;
-				top: 195px;
+				left: calc((315 / 420) * 100%);
+				top: calc((195 / 280) * 100%);
 			}
 		}
 	}
@@ -79,6 +86,9 @@
 
 	//RESETS DEFAULT MODAL STYLES
 	.modal-whp__content {
+		@include breakpoint(medium, 'max') {
+			flex-direction: column-reverse;
+		}
 		align-items: center;
 		display: flex;
 	}
