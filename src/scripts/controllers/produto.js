@@ -3,7 +3,7 @@
 
 require('vendors/slick');
 require('vendors/vtex-modal');
-// require('modules/product/video');
+require('modules/product/video');
 require('modules/product/sku-fetch');
 require('modules/product/gallery');
 require('modules/product/product-nav');
@@ -16,7 +16,7 @@ require('modules/product/boleto');
 require('modules/product/notify-me');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
 
 	var self = this;
 
