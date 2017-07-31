@@ -26,7 +26,7 @@
 		&--Micro-ondas {
 			.release-details__bullet:nth-child(1) {
 				display: block;
-				left: calc((40 / 420) * 100%);
+				left: calc((40 / 300) * 100%);
 				top: calc((85 / 280) * 100%);
 			}
 			.release-details__bullet:nth-child(2) {
@@ -49,6 +49,24 @@
 				display: block;
 				left: calc((315 / 420) * 100%);
 				top: calc((195 / 280) * 100%);
+			}
+		}
+
+		&--Lavadoraderoupas {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: calc((40 / 300) * 100%);
+				top: calc((75 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: calc((180 / 300) * 100%);
+				top: calc((80 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: calc((180 / 300) * 100%);
+				top: calc((240 / 420) * 100%);
 			}
 		}
 	}

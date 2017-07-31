@@ -1,50 +1,44 @@
 @charset 'UTF-8';
 
-@keyframes prevOut {
-	from {
-		transform: translateX(0);
-		opacity: 1;
+$directions: (
+	'prev',
+	'next'
+);
+$value: 0;
+
+@each $direction in $directions {
+	@keyframes#{$direction}Out {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+		to {
+			@if $direction == 'prev' {
+				$value : 50%;
+			} @else {
+				$value : -50%;
+			}
+			transform: translateX($value);
+			opacity: 0;
+		}
 	}
 
-	to {
-		transform: translateX(50%);
-		opacity: 0;
-	}
-}
+	@keyframes #{$direction}In {
+		from {
+			@if $direction == 'prev' {
+				$value : -50%;
+			} @else {
+				$value : 50%;
+			}
+			transform: translateX($value);
+			opacity: 0;
+		}
 
-@keyframes nextOut {
-	from {
-		transform: translateX(0);
-		opacity: 1;
-	}
-
-	to {
-		transform: translateX(-50%);
-		opacity: 0;
-	}
-}
-
-@keyframes prevIn {
-	from {
-		transform: translateX(-50%);
-		opacity: 0;
-	}
-
-	to {
-		transform: translateX(0);
-		opacity: 1;
-	}
-}
-
-@keyframes nextIn {
-	from {
-		transform: translateX(50%);
-		opacity: 0;
-	}
-
-	to {
-		transform: translateX(0);
-		opacity: 1;
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
 	}
 }
 
@@ -164,30 +158,18 @@
 	&__content {
 		background: #fff;
 
-		&--prevOut {
-			animation-name: prevOut;
-			animation-duration: .5s;
-			animation-timing-function: ease-in-out;
-		}
+		@each $direction in $directions {
+			&--#{$direction}Out {
+				animation-name: #{$direction}Out;
+				animation-duration: .5s;
+				animation-timing-function: ease-in-out;
+			}
 
-		&--nextOut {
-			animation-name: nextOut;
-			animation-duration: .5s;
-			animation-timing-function: ease-in-out;
-		}
-
-		&--prevIn {
-			animation-name: prevIn;
-			animation-duration: .5s;
-			animation-timing-function: ease-in-out;
-		}
-
-		&--nextIn {
-			animation-name: nextIn;
-			animation-duration: .5s;
-			animation-timing-function: ease-in-out;
+			&--#{$direction}In {
+				animation-name: #{$direction}In;
+				animation-duration: .5s;
+				animation-timing-function: ease-in-out;
+			}
 		}
 	}
-
-
 }

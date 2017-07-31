@@ -20,6 +20,7 @@ Nitro.module('video', function() {
 
 	data = {
 		id: $video.filter('[class*="ID"]').text(),
+		title: $video.filter('[class*="Titulo"]').text(),
 		thumb: thumbnail ? $.getImagePath(thumbnail) : false
 	};
 
