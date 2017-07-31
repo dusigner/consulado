@@ -17,6 +17,12 @@ require('custom/modal.overlayAbandono');
 //require('modules/filters');
 
 Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+
+	// Limpar localstorage na página de busca
+	if( $('body').hasClass('busca') ) {
+		localStorage.clear();
+	}
+
 	var self = this,
 		$searchSingle = $('.search-single-navigator'),
 		$listOrders = $('ul.order-by');

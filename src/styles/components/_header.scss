@@ -90,7 +90,7 @@ header {
 
 .header {
 	margin: 0;
-	padding: 12px 0 0;
+	padding: 12px 0 12px;
 
 	@include breakpoint(small, 'max') {
 		padding: 0;
@@ -179,6 +179,7 @@ header {
 	color: $green;
 	display: inline-block;
 	padding-left: 30px;
+	padding-top: 7px;
 	position: relative;
 	vertical-align: top;
 
