@@ -97,8 +97,11 @@ Nitro.module('register.corporate', function() {
 
 
 	this.fillUserEmail = function(e, email) {
+		
+		dataLayer.push(
+			{ event : 'emailNãoCadastrado'}
+		);
 		$form.fieldEmail.val(email);
-
 		$modalRegister.vtexModal();
 	};
 
@@ -132,13 +135,21 @@ Nitro.module('register.corporate', function() {
 
 		return CRM.clientSearchByCorporateDocument(self.getDocument())
 			.done(function() {
+				dataLayer.push(
+					{ event : 'formularioInvalido'}
+				);
 				self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
 			})
-			.fail(self.nextStep);
+			.fail(
+				self.nextStep);
 
 	};
 
 	this.nextStep = function() {
+
+		dataLayer.push(
+			{ event : 'cadastroValidado' }
+		);
 		$form.btnSubmit.removeClass('loading');
 		primaryInfoComplete = true;
 		$modalRegister.find('.steps').slick('slickGoTo', '1');
