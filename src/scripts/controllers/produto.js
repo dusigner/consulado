@@ -1,9 +1,9 @@
-/* global $: true, Nitro: true, skuJson: true */
+/* global $: true, Nitro: true */
 'use strict';
 
 require('vendors/slick');
 require('vendors/vtex-modal');
-// require('modules/product/video');
+require('modules/product/video');
 require('modules/product/sku-fetch');
 require('modules/product/gallery');
 require('modules/product/product-nav');
@@ -13,9 +13,10 @@ require('modules/product/selos');
 require('modules/product/supermodel');
 require('modules/product/sku-select');
 require('modules/product/boleto');
+require('modules/product/notify-me');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
 
 	var self = this;
 
@@ -30,33 +31,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 		$('.secure').show();
 	} else {
 		$('body').addClass('produto-indisponivel');
-	}
-
-	// TROCA DE NOME BOTÃO AVISE-ME
-	// $('.portal-notify-me-ref').find('.notifyme-button-ok').val('Avise-me');
-
-	var televendas = $('a[title*="Televendas"]').clone().attr('title', 'Televendas').addClass('notifyme-televendas');
-	var notifyMeButton = $('.portal-notify-me-ref').find('.notifyme-button-ok');
-
-	notifyMeButton.parent()
-		.append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
-
-	notifyMeButton.val('Avise-me');
-	if (typeof televendas !== 'undefined') {
-		$('.notifyme-form')
-			.find('p')
-			.append('<br>Ou entre em contato com nosso ').append(televendas[0]);
-	}
-
-	var isAvailable = skuJson.skus.some(function(e) {
-		return e.available;
-	});
-
-	if (!isAvailable) {
-		var notifyMe = $('.portal-notify-me-ref').data('notifyMe');
-		if (typeof notifyMe !== 'undefined') {
-			notifyMe.showNM();
-		}
 	}
 
 	var $reference = $('.reference'),
@@ -172,17 +146,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 	//Compre Junto
 	$('.comprar-junto a').text('compre junto');
-
-
-
-	//Rating TruxtVox
-	$(document).on('click', '.trustvox-fluid-jump', function(e) {
-		e.preventDefault();
-
-		$('html, body').animate({
-			scrollTop: $('#trustvox-rating').offset().top + 'px'
-		}, 'slow');
-	});
 
 
 	//Google PLA

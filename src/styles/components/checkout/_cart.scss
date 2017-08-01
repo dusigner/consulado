@@ -650,6 +650,10 @@ body {
 				}
 			}
 
+			// Botão original Vtex - Fechar pedido
+			#cart-to-orderform { visibility: hidden; }
+
+			// Fake button
 			.fake-buttom {
 				@include responsiveFont(15, 16, true);
 				font-weight: bold;
@@ -673,7 +677,7 @@ body {
 					@include responsiveFont(20, 16, true);
 					display: block;
 					left: 0;
-					margin: 0 0 10px 0;
+					margin: 10px 0;
 					position: absolute;
 					top: 0;
 					width: 100%;

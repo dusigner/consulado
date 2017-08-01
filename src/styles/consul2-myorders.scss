@@ -958,7 +958,7 @@ body.orders-page {
 			.download-warranty,
 			.cancel-warranty,
 			.add-warranty {
-				@include responsiveFont(12, 16, true);
+				@include responsiveFont(9, 16, true);
 				padding: .5em;
 				text-transform: uppercase;
 			}
@@ -1679,4 +1679,5 @@ body.orders-page {
 
 @import 'components/orders/order.recurrence';
 @import 'components/orders/order.warrantySpare';
+@import 'components/orders/order.modal.gae';
 

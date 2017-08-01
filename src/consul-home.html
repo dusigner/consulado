@@ -5,12 +5,6 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
-	
-	<style>
-		@media (max-width: 768px) {
-			.banners-secundarios.hide-mobile{display:none!important;}
-		}
-	</style>
 </head>
 <body data-controller="home">
 	<!-- AVISO -->
@@ -33,50 +27,47 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
-	<!-- Slider -->
-  <div class="banners hide-extra-small">
-	<!-- Banner -->
-	<div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
-	<!-- /Banner -->
+	<!-- [ Desktop ] - Slider -->
+	<div class="banners hide-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
+		<!-- /Banner -->
 
-	<!-- Abrir regulamento banner -->
-	<div class="container">
-	  <div class="row">
-		<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
 
-		<!-- Modal regulamento -->
-		<div id="modal-regulamento-banner" style="display: none;">
-			<vtex.cmc:regulamentoBannerHomeCNS />
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;"><vtex.cmc:regulamentoBannerHomeCNS /></div>
+				<!-- /Modal regulamento -->
+			</div>
 		</div>
-		<!-- /Modal regulamento -->
-	  </div>
+		<!-- Abrir regulamento banner -->
 	</div>
-	<!-- Abrir regulamento banner -->
-  </div>
-  <!-- /Slider -->
+	<!-- /[ Desktop ] - Slider -->
 
-  <!-- Slider mobile -->
-  <div class="banners-mobile show-extra-small">
-	<!-- Banner -->
-	<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
-	<!-- /Banner -->
+	<!-- [ Mobile ] - Slider mobile -->
+	<div class="banners-mobile show-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
+		<!-- /Banner -->
 
-	<!-- Abrir regulamento banner -->
-	<div class="container">
-	  <div class="row">
-		<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
 
-		<!-- Modal regulamento -->
-		<div id="modal-regulamento-banner" style="display: none;">
-			<vtex.cmc:regulamentoBannerHomeCNS />
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;"><vtex.cmc:regulamentoBannerHomeCNS /></div>
+				<!-- /Modal regulamento -->
+			</div>
 		</div>
-		<!-- /Modal regulamento -->
-	  </div>
+		<!-- /Abrir regulamento banner -->
 	</div>
-	<!-- Abrir regulamento banner -->
-  </div>
-  <!-- /Slider mobile -->
+	<!-- /[ Mobile ] - Slider mobile -->
 
+	<!-- Lead newsletter -->
 	<div class="lead-newsletter">
 		<div class="row">
 			<div class="container">
@@ -85,8 +76,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<!-- Lead newsletter -->
+	<!-- /Lead newsletter -->
+
+	<!-- Lead newsletter footer -->
 	<div class="row gutters newsletter">
 		<div class="container">
 			<div class="lead-newsletter-show">
@@ -108,136 +100,45 @@
 			</div>
 		</div>
 	</div>
-	<!-- Lead newsletter -->
-	
-		<!-- Chaordic TOP -->
-	<div class="container">
-		<div chaordic="top"></div>
-	</div>
-	
-	<!-- Home Banners Secundários -->
+	<!-- Lead newsletter footer -->
+
+	<!-- [ CHAORDIC ] - TOP -->
+	<div class="container"><div chaordic="top"></div></div>
+	<!-- /[ CHAORDIC ] - TOP -->
+
+	<!-- [ Desktop ] - Home Banners Secundários -->
 	<section class="banners-secundarios clearfix hide-mobile">
 		<div class="container">
 			<div class="row">
 				<div class="prateleira-banners-secundarios">
-					<div class="banner-secundario banner-secundario1">
-						<vtex:contentPlaceHolder id="BannerSecundario1" />                        
-					</div>
-					<div class="banner-secundario banner-secundario2">
-						<vtex:contentPlaceHolder id="BannerSecundario2" />
-					</div>
-					<div class="banner-secundario banner-secundario3">
-						<vtex:contentPlaceHolder id="BannerSecundario3" />
-					</div>
+					<div class="banner-secundario banner-secundario1"><vtex:contentPlaceHolder id="BannerSecundario1" /></div>
+					<div class="banner-secundario banner-secundario2"><vtex:contentPlaceHolder id="BannerSecundario2" /></div>
+					<div class="banner-secundario banner-secundario3"><vtex:contentPlaceHolder id="BannerSecundario3" /></div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /Home Banners Secundários -->
+	<!-- /[ Desktop ] - Home Banners Secundários -->
 
-	<!-- Prateleira - 01 -->
-	<section class="home-prateleira-01 slider clearfix">
-		<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 01 - Titulo" /></p>
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-slider">
-					<vtex:contentPlaceHolder id="Prateleira 01 - Conteudo" />
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Prateleira - 01 -->
+	<!-- [ CHAORDIC ] MIDDLE -->
+	<div class="container"><div chaordic="middle"></div></div>
+	<!-- /[ CHAORDIC ] MIDDLE -->
 
-
-	<!-- Prateleira - 02 -->
-	<section class="home-prateleira-02 slider clearfix">
-		<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 02 - Titulo" /></p>
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-slider">
-					<vtex:contentPlaceHolder id="Prateleira 02 - Conteudo" />
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Prateleira - 02 -->
-
-	<!-- Chaordic MIDDLE -->
-	<div class="container">
-		<div chaordic="middle"></div>
-	</div>
-
-	<!-- Home Banners Secundários Três -->
+	<!-- [ Desktop ] - Home Banners Secundários Três -->
 	<section class="banners-secundarios-mosaico clearfix hide-mobile">
 		<div class="container">
 			<div class="row">
 				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico4">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario1" />
-					</div>
+					<div class="banner-secundario-mosaico banner-secundario-mosaico4"><vtex:contentPlaceHolder id="BannerMosaicoSecundario1" /></div>
 				</div>
 				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico5">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario2" />
-					</div>
-					<div class="banner-secundario-mosaico banner-secundario-mosaico6">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario3" />
-					</div>
+					<div class="banner-secundario-mosaico banner-secundario-mosaico5"><vtex:contentPlaceHolder id="BannerMosaicoSecundario2" /></div>
+					<div class="banner-secundario-mosaico banner-secundario-mosaico6"><vtex:contentPlaceHolder id="BannerMosaicoSecundario3" /></div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /Home Banners Secundários Três -->
-
-	<!-- Detaque - 01 -->
-	<section class="destaque-01 destaque clearfix">
-		<div class="container">
-			<vtex:contentPlaceHolder id="Detaque 01" />
-		</div>
-	</section>
-	<!-- /Detaque - 01 -->
-
-	<!-- Prateleira - 03 -->
-	<section class="home-prateleira-03 slider clearfix">
-		<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 03 - Titulo" /></p>
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-slider">
-					<vtex:contentPlaceHolder id="Prateleira 03 - Conteudo" />
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Prateleira - 03 -->
-
-	<!-- Detaque - 02 -->
-	<section class="destaque-02 destaque clearfix">
-		<div class="container">
-			<vtex:contentPlaceHolder id="Detaque 02" />
-		</div>
-	</section>
-	<!-- /Detaque - 02 -->
-
-	<!-- Prateleira - 04 -->
-	<section class="home-prateleira-04 slider clearfix">
-		<p class="pre-title"><vtex:contentPlaceHolder id="Prateleira 04 - Titulo" /></p>
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-slider">
-					<vtex:contentPlaceHolder id="Prateleira 04 - Conteudo" />
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Prateleira - 04 -->
-
-	<!-- Detaque - 03 -->
-	<section class="destaque-03 destaque clearfix">
-		<div class="container">
-			<vtex:contentPlaceHolder id="Detaque 03" />
-		</div>
-	</section>
-	<!-- /Detaque - 03 -->
+	<!-- /[ Desktop ] - Home Banners Secundários Três -->
 
 	<!-- Modal Leads -->
 	<!-- <div id="modal-overlay-leads" data-title="Não perca mais nossas ofertas e novidades!" style="display:none;">
@@ -249,31 +150,26 @@
 	</div> -->
 	<!-- Modal Leads -->
 
-		<!-- Chaordic BOTTOM -->
-	<div class="container">
-		<div chaordic="bottom"></div>
-	</div>
+	<!-- [ CHAORDIC ] -  BOTTOM -->
+	<div class="container"><div chaordic="bottom"></div></div>
+	<!-- /[ CHAORDIC ] -  BOTTOM -->
 
 	<!-- Serviços -->
 	<vtex:template id="0-consul-servicos" />
 	<!-- /Serviços -->
 
-	<!-- Home Banners Secundários Slick Três -->
+	<!-- [ Mobile ] - Home Banners Secundários Slick Três -->
 	<section class="banners-secundarios-mobile clearfix show-mobile">
 		<div class="container">
 			<div class="row">
 				<div class="prateleira-banners-secundarios-mobile">
-					<div class="banner-secundario-mobile banner-mobile1">
-						<vtex:contentPlaceHolder id="BannerMobileSecundario1" />
-					</div>
-					<div class="banner-secundario-mobile banner-mobile2">
-						<vtex:contentPlaceHolder id="BannerMobileSecundario2" />
-					</div>
+					<div class="banner-secundario-mobile banner-mobile1"><vtex:contentPlaceHolder id="BannerMobileSecundario1" /></div>
+					<div class="banner-secundario-mobile banner-mobile2"><vtex:contentPlaceHolder id="BannerMobileSecundario2" /></div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /Home Banners Secundários Slick Três -->
+	<!-- /[ Mobile ] - Home Banners Secundários Slick Três -->
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />

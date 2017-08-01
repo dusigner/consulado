@@ -20,14 +20,14 @@ $(window).on('load', function() {
 
 	require('expose?store!modules/store/store');
 
-	// require('modules/checkout.phones');
+	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
 
 
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.termoColeta', 'checkout.cotas'], function(termoColeta, cotas) {
+	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas'], function(phones, termoColeta, cotas) {
 
 		var self = this,
 			$body = $('body');
@@ -55,13 +55,12 @@ $(window).on('load', function() {
 		this.orderPlacedUpdated = function(e, orderPlaced) {
 
 			if (self.isOrderPlaced()) {
-				console.info('orderPlacedUpdated', orderPlaced);
 
 				self.infoBoleto();
 				self.replaceOrderId();
 				self.reorderDivs();
 
-				// phones.setup();
+				phones.setup();
 				termoColeta.setup();
 				cotas.updateCotasEletrodomesticos();
 				cotas.updatePendingCotas();
