@@ -74,7 +74,11 @@ var redirect = module.exports.redirect = function (data) {
 };
 
 module.exports.login = function (data) {
-
+	
+	dataLayer.push(
+		{ event : 'emailCadastrado' }
+	);
+	
 	if (!window.store) {
 		window.store = this;
 	}
