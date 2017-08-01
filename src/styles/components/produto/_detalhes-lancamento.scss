@@ -69,6 +69,26 @@
 				top: calc((240 / 420) * 100%);
 			}
 		}
+
+		&[data-skus='2004082;2004083'],
+		&[data-skus='557;843'],
+		&[data-skus='1141;1142'] {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: calc((40 / 300) * 100%);
+				top: calc((75 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: calc((100 / 300) * 100%);
+				top: calc((60 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: calc((155 / 300) * 100%);
+				top: calc((45 / 420) * 100%);
+			}
+		}
 	}
 
 	&__bullet {

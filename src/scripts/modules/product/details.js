@@ -12,7 +12,8 @@ Nitro.module('details', function() {
 		data = {
 			items: [],
 			releaseImg: '',
-			category: ''
+			category: '',
+			skus: ''
 		},
 		$lancamento = $('#caracteristicas h4.Lancamento + table'),
 		isLancamento = $lancamento.find('.value-field.Lancamento').text() === 'Sim',
@@ -60,6 +61,7 @@ Nitro.module('details', function() {
 	if(isLancamento) {
 		data.releaseImg = $.getImagePath($lancamento.find('.value-field.Imagem-Lancamento').text());
 		data.category = _.sanitize(vtxctx.categoryName);
+		data.skus = vtxctx.skus;
 
 		dust.render('detailsLancamento', data, function(err, out) {
 			if (err) {
