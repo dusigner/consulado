@@ -164,11 +164,7 @@ body.produto-indisponivel {
 .prod-image {
 	position: relative;
 
-	@include breakpoint(small, 'max') {
-		margin-top: 20px;
-
-		.flag { display: none !important; }
-	}
+	@include breakpoint(small, 'max') { margin-top: 20px; }
 }
 
 #trustvox-rating {
