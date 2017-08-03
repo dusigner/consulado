@@ -8,6 +8,7 @@ var CRM = {
 	geURI: '/api/ds/pub/documents/GE',
 	ordersURI: '/api/ds/pub/documents/SP',
 	cancelGaeURI: '/api/ds/pub/documents/CG',
+	TermsGaeURI: '/api/ds/pub/documents/TG',
 	addressURI: '/api/ds/pub/documents/AD',
 
 	getOrderById: function (orderId) {
@@ -81,6 +82,15 @@ var CRM = {
 	insertCancelGae: function (data) {
 		return $.ajax({
 			url: CRM.cancelGaeURI,
+			type: 'POST',
+			data: JSON.stringify(data),
+			contentType: 'application/json; charset=utf-8'
+		});
+	},
+
+	insertTermsGae: function (data) {
+		return $.ajax({
+			url: CRM.TermsGaeURI,
 			type: 'POST',
 			data: JSON.stringify(data),
 			contentType: 'application/json; charset=utf-8'
