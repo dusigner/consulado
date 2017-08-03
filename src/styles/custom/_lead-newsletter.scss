@@ -1,4 +1,20 @@
 @charset 'UTF-8';
+.newsletter {
+	@include breakpoint('medium', 'max') { padding: 15px 0; }
+
+	& > .container {
+		@include breakpoint('medium', 'max') {
+			margin: 0!important;
+			max-width: 100%;
+
+			.container {
+				margin-left: auto!important;
+				margin-right: auto!important;
+			}
+		}
+	}
+}
+
 
 .lead-newsletter-show {
 	display: none;
@@ -6,7 +22,7 @@
 	.row { margin-bottom: 0; }
 
 	@include breakpoint(extra-small, 'max') {
-		background-color: #ffffff;
+		background-color: #fff;
 		display: block;
 		margin: 0 auto;
 		text-align: center;
@@ -54,21 +70,17 @@
 .lead-newsletter {
 	margin-top: 15px;
 
-	@include breakpoint(extra-small, 'max') {
-		display: none;
-	}
+	@include breakpoint(extra-small, 'max') { display: none; }
 
 	.row {
+		border-bottom: 1px solid $gray-d;
+		border-top: 1px solid $gray-d;
 		margin-bottom: 0;
 
 		.container {
-			border-bottom: 1px solid $gray-d;
-			border-top: 1px solid $gray-d;
+			@include breakpoint('large', 'min') { max-width: 1100px; }
+			@include breakpoint(large, 'max') { text-align: center; }
 			padding: 10px 0;
-
-			@include breakpoint(extra-large, 'min') { width: 1100px; }
-
-			@include breakpoint(medium, 'max') { padding: 20px; }
 
 			@include breakpoint(extra-small, 'max') {
 				.btn_close {
@@ -94,77 +106,76 @@
 			}
 		}
 
-		p,
+		.or_news {
+			margin: 0;
+			padding: 0;
+		}
+
+		p:not(.message-success),
 		form,
 		input {
 			display: inline-block;
 			width: auto;
 		}
 
-		p {
-			@include responsiveFont(16, 16, true);
-			color: $green;
-			font-weight: bold;
-			margin: 0;
-			margin-right: 18px;
-			padding: 0;
-
+		p:not(.message-success) {
 			@include breakpoint(large, 'max') {
 				margin-bottom: 10px;
 				width: 100%;
 			}
-
-			@include breakpoint(extra-small, 'max') { text-align: center; }
+			@include responsiveFont(16, 16, true);
+			color: $green;
+			font-weight: bold;
+			margin: 0;
+			padding: 0;
 		}
 
+		p.title { margin-right: 18px; }
+
 		form {
+			@include breakpoint(small, 'max') {
+				text-align: center;
+				width: 75%;
+			}
 			@include breakpoint(extra-small, 'max') {
 				display: block;
 				margin: 10px auto;
 				width: 95%;
 			}
+			user-select: none;
 		}
 
 		fieldset {
+			@include breakpoint(extra-small, 'max') {
+				display: block;
+				width: 100%;
+			}
 			border: none;
 			display: inline-block;
 			margin: 0;
-			padding: 0;
+			padding: 8px 0;
 			vertical-align: middle;
 
-			@include breakpoint(extra-small, 'max') {
-				display: block;
-				margin: 10px 0;
-				width: 100%;
+			&.campo-checkbox {
+				@include breakpoint('small', 'max') { text-align: left; }
 			}
 
-			input { margin: 0 15px; }
+			// input { margin: 0 15px; }
 
 			label {
+				@include breakpoint('small', 'max') {
+					@include responsiveFont(11, 16, true);
+					line-height: 12px;
+					margin: 0;
+					width: 100%;
+				}
 				@include responsiveFont(12, 16, true);
 				display: inline-block;
 				margin: 0 10px;
 				padding-left: 25px;
 				position: relative;
-				width: 148px;
-
-				/*&:before {
-					border: 1px solid;
-					border-radius: 2px;
-					content: '';
-					display: inline-block;
-					height: 15px;
-					left: 0;
-					margin-right: 5px;
-					position: absolute;
-					top: 0;
-					width: 15px;
-				}*/
-
-				@include breakpoint(extra-small, 'max') {
-					margin: 0;
-					width: 100%;
-				}
+				text-align-last: left;
+				width: 150px;
 
 				a {
 					text-decoration: none;
@@ -172,6 +183,8 @@
 					span { text-decoration: underline; }
 				}
 			}
+
+			label[for='termos'] { line-height: 10px; }
 		}
 
 		input {
@@ -188,7 +201,6 @@
 
 			@include breakpoint(extra-small, 'max') {
 				display: block;
-				margin: 20px auto;
 				width: 100%;
 
 				&:first-child { margin-left: auto; }
@@ -196,19 +208,61 @@
 				&:last-child { margin-bottom: 0; }
 			}
 
-			&[type='checkbox'] {
+			&[type=checkbox] {
 				display: none;
+
+				& + label {
+					&:before,
+					&:after {
+						content: ' ';
+						display: inline-block;
+						left: 0;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						visibility: visible;
+					}
+
+					&:after {
+						background-color: #fff;
+						border: 1px solid #736c6b;
+						border-radius: 3px;
+						height: 15px;
+						width: 15px;
+					}
+				}
 
 				&.error + label {
 					position: relative;
 
+					&,
 					a { color: #f49a9a; }
+
+					&::after {
+						@include contentBefore();
+						border: 3px solid #f49a9a;
+						border-radius: 2px;
+						height: 15px;
+						left: 0;
+						position: absolute;
+						// top: 3px;
+						width: 15px;
+					}
 				}
 			}
 
-			&[type='checkbox']:checked + label {
+			&[type=checkbox]:checked + label {
 				position: relative;
 
+				&:before {
+					background-color: $green;
+					height: 9px;
+					margin-left: 3px;
+					width: 9px;
+					z-index: 1;
+				}
+
+				&,
 				a { color: $txt-gray; }
 			}
 		}
@@ -217,6 +271,7 @@
 
 		input[type='submit'] {
 			@extend .primary-button;
+			@include breakpoint('medium', 'min') { margin-left: 20px; }
 			@include responsiveFont(14, 16, true);
 			background: #7f2893;
 			border: 2px solid #7f2893;
@@ -237,13 +292,23 @@
 				max-width: 170px;
 			}
 		}
+
+		label[for=name],
+		label[for=email],
+		label[for=telefone] {
+			display: none;
+		}
+
+		.toggle-newsletter { display: none; }
 	}
 
 	p.message-success { display: none; }
 
 	&.success {
 		p,
-		form { display: none !important; }
+		form,
+		form#form-newsletter,
+		form#form-newsletter-footer { display: none!important; }
 
 		p.message-success {
 			@include responsiveFont(13, 16, true);
@@ -269,5 +334,68 @@
 				transform: translateX(-50%);
 			}
 		}
+
+		p.title { display: none; }
 	}
 }
+
+
+
+// Teste AB telefone
+body.teste-ab__news-phone-show--b {
+	.lead-newsletter {
+		.row {
+			p.title {
+				@include breakpoint('large', 'max') { text-align: center; }
+				@include breakpoint('large', 'min') {
+					float: left;
+					margin-right: 0;
+					max-width: 250px;
+				}
+			}
+
+			form:not(.form-newsletter-footer) {
+				fieldset {
+					@include breakpoint('medium', 'max') {
+						margin: 0 5px;
+						width: 42.5%;
+
+						input {
+							margin: 0;
+							width: 100%;
+						}
+					}
+					@include breakpoint('small', 'max') { width: 100%; }
+
+					&.campo-checkbox {
+						text-align: left;
+
+						label { margin-left: 0; }
+					}
+				}
+
+				@include breakpoint('large', 'min') {
+					display: block;
+					float: right;
+				}
+			}
+
+			form fieldset.campo-cadastro-telefone {
+				@include breakpoint('small', 'max') {
+					input {  margin: 0; }
+				}
+				display: inline-block;
+			}
+		}
+	}
+}
+
+.lead-newsletter form {
+	fieldset.campo-cadastro-telefone { display: none; }
+}
+
+
+
+
+
+

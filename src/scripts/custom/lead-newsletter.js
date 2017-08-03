@@ -1,29 +1,61 @@
 'use strict';
 
+require('vendors/jquery.inputmask');
+
 Nitro.module('lead-newsletter', function() {
+
+	// Teste AB Controller
+	var urlTesteAb = window.location.search;
+	var $body = $('body');
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if (urlTesteAb.indexOf(testeA) >= 0) {
+		$body.removeClass('teste-ab__news-phone-show--b');
+	}
+	else if (urlTesteAb.indexOf(testeB) >= 0) {
+		$body.addClass('teste-ab__news-phone-show--b');
+	}
+
+	// Input mask para campos do tipo telefone
+	$('input[type=tel]').inputmask('99 [9]9999-9999');
+
 	var self = this,
 		$formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
 		$inputName = $formNewsletter.find('input[type="text"]'),
 		$inputEmail = $formNewsletter.find('input[type="email"]'),
+		$inputTel = $formNewsletter.find('input[type="tel"]'),
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false,
-		hasSession = sessionStorage.getItem('leadNewsletter'),
+		// hasSession = sessionStorage.getItem('leadNewsletter'),
 		clientURI = '/api/ds/pub/documents/CL';
 
-	this.setup = function(orderForm) {
-		if (!hasSession && !orderForm.clientProfileData.email) {
-			$formNewsletter.submit(function(e) {
-				e.preventDefault();
+	this.setup = function(/*orderForm*/) {
+		$formNewsletter.submit(function(e) {
+			e.preventDefault();
 
-				$formNewsletter.find('input').on('blur', function() {
-					self.validateInputs();
-				});
-
-				self.validateForm();
-
-				return false;
+			$formNewsletter.find('input').on('blur', function() {
+				self.validateInputs();
 			});
-		}
+
+			self.validateForm();
+
+			return false;
+		});
+
+		// if (!hasSession && !orderForm.clientProfileData.email) {
+		// 	$formNewsletter.submit(function(e) {
+		// 		e.preventDefault();
+
+		// 		$formNewsletter.find('input').on('blur', function() {
+		// 			self.validateInputs();
+		// 		});
+
+		// 		self.validateForm();
+
+		// 		return false;
+		// 	});
+		// }
 	};
 
 	this.validateInputs = function() {
@@ -55,17 +87,19 @@ Nitro.module('lead-newsletter', function() {
 
 		if (valid) {
 			var name = $inputName.val(),
-				email = $inputEmail.val();
+				email = $inputEmail.val(),
+				telefone = $inputTel.val();
 
-			self.registerNewsletter(name, email);
+			self.registerNewsletter(name, email, telefone);
 		}
 	};
 
-	this.registerNewsletter = function(name, email) {
+	this.registerNewsletter = function(name, email, telefone) {
 		var data = {};
 
 		data.firstName = name;
 		data.email = email;
+		data.xNewsPhone = telefone;
 		data.isNewsletterOptIn = true;
 		data.xDataCadastroLead = new Date();
 		data.xOrigemLead = 8;
@@ -85,21 +119,21 @@ Nitro.module('lead-newsletter', function() {
 			setTimeout(function() {
 				$('.newsletter').fadeOut();
 			}, 2000);
-			
-			dataLayer.push({ 
-				event: 'formulario_home', 
-				status: 'ok' 
+
+			dataLayer.push({
+				event: 'formulario_home',
+				status: 'ok'
 			});
 		}).fail(function() {
-			dataLayer.push({ 
-				event: 'formulario_home', 
-				status: 'error' 
+			dataLayer.push({
+				event: 'formulario_home',
+				status: 'error'
 			});
 		});
 	};
 
-	window.vtexjs.checkout.getOrderForm().done(function(result) {
-		self.setup(result);
+	window.vtexjs.checkout.getOrderForm().done(function(/*result*/) {
+		self.setup(/*result*/);
 	});
 
 
