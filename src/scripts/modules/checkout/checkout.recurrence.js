@@ -25,6 +25,7 @@ Nitro.module('checkout.recurrence', function() {
 		W10324578  : '6 meses',
 		W10322320  : '6 meses',
 		W10637798  : '6 meses',
+		CRM51AK    : '6 meses',
 		CIX01AXONA : '9 meses',
 		CIX06AXONA : '6 meses',
 		C3L02AB    : '9 meses',
