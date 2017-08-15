@@ -1,5 +1,7 @@
 'use strict';
 
+var Uri = require('vendors/Uri');
+
 require('vendors/jquery.inputmask');
 
 Nitro.module('lead-newsletter', function() {
@@ -28,7 +30,8 @@ Nitro.module('lead-newsletter', function() {
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false,
 		// hasSession = sessionStorage.getItem('leadNewsletter'),
-		clientURI = '/api/ds/pub/documents/CL';
+		clientURI = '/api/ds/pub/documents/CL',
+		$newsletterFixed = $('.toggle-newsletter');
 
 	this.setup = function(/*orderForm*/) {
 		$formNewsletter.submit(function(e) {
@@ -56,6 +59,9 @@ Nitro.module('lead-newsletter', function() {
 		// 		return false;
 		// 	});
 		// }
+
+		self.toggleNewsletter();
+		self.newsletterFixedOpenAfter(4000);
 	};
 
 	this.validateInputs = function() {
@@ -148,4 +154,48 @@ Nitro.module('lead-newsletter', function() {
 		$('.lead-newsletter-show').fadeIn();
 	});
 
+	/**
+	 * Retorna verdadeiro se existir o valor 'visite_a_loja' no parâmetro da url
+	 *
+	 * @returns {boolean}
+	 */
+	this.isParameterVisiteALoja = function() {
+
+		var uri = new Uri(window.location.href),
+			parameters = uri.queryPairs;
+
+		console.log('parameters',parameters);
+
+		return parameters.find(function(parameter) {
+			return parameter[1] === 'visite_a_loja';
+		});
+	};
+
+	this.toggleNewsletter = function() {
+		console.log('chamou');
+
+		if( self.isParameterVisiteALoja() ) {
+			console.log('aaaaaaaaaaaaaa');
+			$newsletterFixed.closest('.lead-newsletter').addClass('lead-newsletter--fixed secrete');
+
+			$newsletterFixed.on('click', function() {
+				$(this).closest('.lead-newsletter--fixed').toggleClass('secrete');
+			});
+		}
+	};
+
+	/**
+	 * Abre newsletter fixa depois de determinado tempo
+	 *
+	 * @param {int} time
+	 */
+	this.newsletterFixedOpenAfter = function(time) {
+
+		$(window).ready(function() {
+			setTimeout(function() {
+				$newsletterFixed.closest('.lead-newsletter--fixed')
+								.toggleClass('secrete');
+			}, time);
+		});
+	};
 });

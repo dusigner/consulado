@@ -130,8 +130,6 @@
 			padding: 0;
 		}
 
-		p.title { margin-right: 18px; }
-
 		form {
 			@include breakpoint(small, 'max') {
 				text-align: center;
@@ -300,6 +298,8 @@
 		}
 
 		.toggle-newsletter { display: none; }
+
+		p.message-success-fixed { display: none; }
 	}
 
 	p.message-success { display: none; }
@@ -336,6 +336,206 @@
 		}
 
 		p.title { display: none; }
+	}
+
+	&.lead-newsletter--fixed {
+		margin-top: 0;
+		position: fixed;
+		right: 0;
+		top: 370px;
+		transition: all .3s linear;
+		z-index: 999999;
+
+		.container {
+			background-color: #ffffff;
+			border-color: #f35216;
+			padding: 0;
+			width: 936px !important;
+
+			p {
+				@include responsiveFont(28, 16, true);
+				font-weight: 300;
+				padding: 20px 0 30px 86px;
+
+				&:before {
+					background: url('/arquivos/icon-email-cns.png');
+					content: '';
+    			height: 21px;
+					left: 36px;
+					margin-top: 10px;
+					position: absolute;
+					width: 27px;
+				}
+			}
+
+			span.subtitle {
+				display: block;
+				padding: 15px 0 20px 36px;
+			}
+
+			form {
+				align-items: center;
+				background-color: #f4f2f1;
+				display: flex;
+				flex-direction: row;
+				height: 110px;
+				justify-content: flex-start;
+				padding-left: 36px;
+				width: 100%;
+
+				fieldset {
+					display: flex;
+					flex-direction: column;
+
+					input {
+						border-radius: 0;
+						margin: 0 15px 0 0;
+						width: 207px;
+					}
+
+					label[for=name],
+					label[for=email] {
+						@include responsiveFont(16, 18, true);
+						display: block;
+						font-weight: bold;
+						margin: 0;
+						padding: 0;
+
+						&::before { display: none; }
+					}
+
+					// label[for=termos] {
+					// 	padding-left: 30px;
+					// 	width: 150px;
+
+					// 	&::before {
+					// 		height: 20px;
+					// 		margin-top: 10px;
+					// 		width: 20px;
+					// 	}
+
+					// 	&::after {
+					// 		height: 20px;
+					// 		margin-top: 7px;
+					// 		width: 20px;
+					// 	}
+					// }
+
+					input[type='submit'] { height: 40px; }
+
+					::-webkit-input-placeholder { /* WebKit browsers */
+						color: transparent;
+					}
+					:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+						color: transparent;
+					}
+					::-moz-placeholder { /* Mozilla Firefox 19+ */
+						color: transparent;
+					}
+					:-ms-input-placeholder { /* Internet Explorer 10+ */
+						color: transparent;
+					}
+
+					&.campo-cadastro-telefone {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&:before {
+			background-color: $green;
+			content: '';
+			height: 100%;
+			left: -44px;
+			position: absolute;
+			width: 44px;
+		}
+
+		.toggle-newsletter {
+			align-items: center;
+			color: #ffffff;
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			flex-flow: column-reverse;
+			font-size: 1.5625rem;
+			height: 100%;
+			justify-content: center;
+			left: -44px;
+			position: absolute;
+			width: 44px;
+
+			.toggle-newsletter__title {
+				@include responsiveFont(21, 16, true);
+				background-color: $green;
+				color: #fff;
+				display: none;
+				font-family: 'soleto';
+				margin: 79px -86px 0 0;
+				padding: 10px;
+				text-transform: uppercase;
+				transform: rotate(270deg);
+				width: 184px;
+
+				&:after {
+					background: url('/arquivos/icon-email-white.png');
+					content: '';
+    				height: 21px;
+					// left: 36px;
+					// margin-top: 10px;
+					// position: absolute;
+					transform: rotate(90deg);
+					width: 27px;
+				}
+			}
+
+			&:before { transform: rotate(180deg); }
+		}
+
+		&.secrete {
+			right: -936px;
+
+			.toggle-newsletter {
+				align-items: flex-end;
+				justify-content: space-between;
+				left: -62px;
+				padding: 0 25px 20px 0;
+				width: 62px;
+
+				.toggle-newsletter__title {
+					display: flex;
+					justify-content: space-around;
+
+					&:before { display: none; }
+				}
+
+				&:before { transform: rotate(0deg); }
+			}
+
+			&:before {
+				left: -62px;
+				width: 62px;
+			}
+		}
+
+		&.success {
+			.title { display: block; }
+
+			.message-success,
+			form { display: none; }
+
+			.message-success-fixed {
+				@include responsiveFont(26, 16, true);
+				background-color: #f4f2f1;
+				display: block;
+				margin: 0;
+				padding: 30px 0;
+				text-align: center;
+
+				&:before { display: none; }
+			}
+		}
 	}
 }
 
