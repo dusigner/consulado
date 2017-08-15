@@ -308,7 +308,7 @@
 		p,
 		form,
 		form#form-newsletter,
-		form#form-newsletter-footer { display: none!important; }
+		form#form-newsletter-footer { display: none; }
 
 		p.message-success {
 			@include responsiveFont(13, 16, true);
@@ -366,6 +366,8 @@
 					position: absolute;
 					width: 27px;
 				}
+
+				&.message-success { display: none !important; }
 			}
 
 			span.subtitle {
@@ -467,11 +469,11 @@
 			width: 44px;
 
 			.toggle-newsletter__title {
-				@include responsiveFont(21, 16, true);
+				@include responsiveFont(18, 16, true);
 				background-color: $green;
 				color: #fff;
 				display: none;
-				font-family: 'soleto';
+				font-family: 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 				margin: 79px -86px 0 0;
 				padding: 10px;
 				text-transform: uppercase;
