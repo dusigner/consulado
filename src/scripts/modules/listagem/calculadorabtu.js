@@ -78,13 +78,13 @@ Nitro.module('calculadorabtu', function () {
 		default: 
 			range = [res];
 		}
-		return range.map(function(btu){	return ((window.jsnomeLoja === 'consulqa') ? '#/filter&fq=specificationFilter_77:' : '&fq=specificationFilter_814:') + btu + ' BTUs';}).toString().replaceAll(',', '');
+		return range.map(function(btu){	return ((window.jsnomeLoja === 'consulqa') ? '&fq=specificationFilter_77:' : '&fq=specificationFilter_814:') + btu + ' BTUs/h';}).toString().replaceAll(',', '');
 	};
 
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
-		var tpl = '#/filter'+ updateRange(res.btu) + '/h';
+		var tpl = '#/filter'+ updateRange(res.btu);
 		var bulletFilter = $('.noUi-origin.noUi-background, .noUi-origin.noUi-connect');
 
 		// verificar qual produto recomendar
