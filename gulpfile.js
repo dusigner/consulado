@@ -121,7 +121,7 @@ gulp.task('scriptsCheckout',  function () {
 		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
 	}
 
-	return gulp.src(['src/scripts/checkout5-custom.js', 'src/scripts/orderplaced2-custom.js'])
+	return gulp.src(['src/scripts/checkout5-custom.js', 'src/scripts/checkout-confirmation-custom.js'])
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
