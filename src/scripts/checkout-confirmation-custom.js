@@ -54,6 +54,8 @@ $(window).on('load', function() {
 			if (self.isOrderPlaced()) {
 				console.info('orderPlacedUpdated', orderPlaced);
 
+				$('.cconf-myorders-button').attr('href','/minhaconta/pedidos');
+
 				self.infoBoleto();
 				self.replaceOrderId();
 
