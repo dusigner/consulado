@@ -164,18 +164,13 @@ Nitro.module('lead-newsletter', function() {
 		var uri = new Uri(window.location.href),
 			parameters = uri.queryPairs;
 
-		console.log('parameters',parameters);
-
 		return parameters.find(function(parameter) {
 			return parameter[1] === 'visite_a_loja';
 		});
 	};
 
 	this.toggleNewsletter = function() {
-		console.log('chamou');
-
 		if( self.isParameterVisiteALoja() ) {
-			console.log('aaaaaaaaaaaaaa');
 			$newsletterFixed.closest('.lead-newsletter').addClass('lead-newsletter--fixed secrete');
 
 			$newsletterFixed.on('click', function() {

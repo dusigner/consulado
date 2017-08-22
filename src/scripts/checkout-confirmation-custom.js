@@ -28,8 +28,6 @@ $(window).on('load', function() {
 
 	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas'], function(phones, termoColeta, cotas) {
 
-		console.log('fiddler!');
-
 		var self = this,
 			$body = $('body');
 
@@ -53,8 +51,6 @@ $(window).on('load', function() {
 
 		//event
 		this.orderPlacedUpdated = function(e, orderPlaced) {
-			console.log('xxxxxxxxxxxxxx');
-
 			if (self.isOrderPlaced()) {
 				console.info('orderPlacedUpdated', orderPlaced);
 
@@ -76,7 +72,6 @@ $(window).on('load', function() {
 		};
 
 		this.infoBoleto = function() {
-			console.log('aaaaaaaaaaa');
 			var $bankInvoice = $('#print-bank-invoice');
 			if ($bankInvoice.length > 0) {
 				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
