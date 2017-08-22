@@ -23,8 +23,8 @@ body[class*='consul'] {
 						@extend %single-transition;
 						@include responsiveFont(13, 16, true);
 						background: $green;
-						border-radius: 20px;
 						border: 1px solid $green;
+						border-radius: 20px;
 						color: #ffffff;
 						font-weight: bold;
 						opacity: 1 !important;
