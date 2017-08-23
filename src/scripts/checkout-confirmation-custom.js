@@ -62,7 +62,7 @@ $(window).on('load', function() {
 				phones.setup();
 				termoColeta.setup();
 				cotas.updateCotasEletrodomesticos();
-				highlightVoltage($('.product-name > a'));
+				highlightVoltage($('.cconf-product-table .w-80-ns p'));
 			}
 		};
 
