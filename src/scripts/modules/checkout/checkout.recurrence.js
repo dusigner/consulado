@@ -16,20 +16,19 @@ Nitro.module('checkout.recurrence', function() {
 
 	//Skus e respectivos periodos de recorrência
 	this.periods = {
-		W10515645  : '6 meses',
-		326070989  : '6 meses',
-		326070749  : '2 meses',
-		326070783  : '2 meses',
-		326027570  : '2 meses',
-		W10738288  : '2 meses',
-		W10324578  : '6 meses',
-		W10322320  : '6 meses',
-		W10637798  : '6 meses',
-		CRM51AK    : '6 meses',
-		CIX01AXONA : '9 meses',
-		CIX06AXONA : '6 meses',
-		C3L02AB    : '9 meses',
-		C3L02ABANA : '9 meses'
+		'W10515645'  : '6 meses',
+		'326070989'  : '6 meses',
+		'326070749'  : '2 meses',
+		'326070783'  : '2 meses',
+		'326027570'  : '2 meses',
+		'W10738288'  : '2 meses',
+		'W10324578'  : '6 meses',
+		'W10322320'  : '6 meses',
+		'W10637798'  : '6 meses',
+		'CIX01AXONA' : '36 semanas',
+		'CIX06AXONA' : '6 meses',
+		'C3L02AB'    : '36 semanas',
+		'C3L02ABANA' : '36 semanas'
 	};
 
 	/*
@@ -130,7 +129,7 @@ Nitro.module('checkout.recurrence', function() {
 
 				if(hasActiveRecurrence) {
 					var selectedRecurrence = $.grep(v.attachments, function(v){
-						return v.name === 'Recorrência';
+						return v.name === 'Recorrência'; 
 					});
 
 					templateData.hasActiveRecurrence = hasActiveRecurrence;
@@ -256,7 +255,7 @@ Nitro.module('checkout.recurrence', function() {
 				$cartTemplate.addClass('been-called');
 			}
 			//}
-		}, 1500);
+		}, 1500); 
 	};
 
 	this.hidePayments = function() {
@@ -264,7 +263,7 @@ Nitro.module('checkout.recurrence', function() {
 			if(self.hasActiveRecurrence(v.attachments)){
 				$('.payment-group-item:not(#payment-group-creditCardPaymentGroup)').addClass('hide');
 				$('#payment-group-creditCardPaymentGroup').click();
-				return false;
+				return false; 
 			}
 		});
 	};
@@ -274,4 +273,8 @@ Nitro.module('checkout.recurrence', function() {
 /*jshint strict: false */
 dust.filters.intAsCurrency = function(value) {
 	return _.intAsCurrency(value);
+};
+
+dust.filters.recurrenceSemanas = function(value) {
+	return (value === '36 semanas') ? '9 meses' : value;
 };
