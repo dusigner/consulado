@@ -94,6 +94,19 @@ var orderStates = {
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'cancelado'
+			},
+
+			'cancelamento': {
+				'orderLabel': 'Em cancelamento',
+				'trackingLabels': [
+					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Em cancelamento', class: 'canceled'},
+					{label: 'Processamento de Pedido', class: false},
+					{label: 'Pedido faturado', class: false},
+					{label: 'Pedido em transferência', class: false},
+					{label: 'Entrega', class: false, estimate: true}
+				],
+				'group': 'cancelado'
 			}
 		},
 
@@ -182,7 +195,6 @@ var orderStates = {
 		'waiting-ffmt-authorization': 'pagamentoAprovado',
 		'authorize-fulfillment': 'pagamentoAprovado',
 		'window-to-cancel': 'pagamentoAprovado',
-		'waiting-for-seller-decision': 'pagamentoAprovado',
 		'handling': 'faturado',
 		'ready-for-handling': 'faturado',
 		'start-handling': 'faturado',
@@ -190,6 +202,7 @@ var orderStates = {
 		'invoice': 'entregaDoPedido',
 		'shipped': 'entregaDoPedido',
 		'invoiced': 'entregaDoPedido',
+		'waiting-for-seller-decision': 'cancelamento',
 		'cancellation-requested': 'cancelado',
 		'payment-denied': 'cancelado',
 		'request-cancel': 'cancelado',
