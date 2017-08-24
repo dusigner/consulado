@@ -77,8 +77,8 @@ var ModalGae = {
 		var steps = {
 				stepOne: '<p class="modal-gae__text">Deseja solicitar o cancelamento do <br /> seguro de garantia estendida?</p>' +
 							'<div class="modal-gae__ctas">' +
-								'<a href="javascript:void(0);" class="secondary-button modal-gae__confirm js-modal-gae-confirm">SIM</a>' +
-								'<a href="javascript:void(0);" class="primary-button modal-gae__cancel js-modal-gae-cancel">NÃO</a>' +
+								'<a href="javascript:void(0);" class="primary-button modal-gae__confirm js-modal-gae-confirm">SIM</a>' +
+								'<a href="javascript:void(0);" class="secondary-button modal-gae__cancel js-modal-gae-cancel">NÃO</a>' +
 							'</div>',
 				stepTwo: '<p class="modal-gae__text">A sua solicitação foi realizada com sucesso! <br /> O pedido de cancelamento será analisado e respondido no e-mail cadastrado na loja.</p>',
 			},

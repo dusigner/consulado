@@ -1,0 +1,187 @@
+@charset 'UTF-8';
+
+&__states {
+	@include breakpoint(small, 'max') {
+		@include responsiveFont(11, 16, true);
+		margin: 30px 0;
+		// display: block;
+	}
+	@include responsiveFont(14, 16, true);
+	display: table;
+	margin: 45px 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+&__state {
+	display: table-cell;
+	position: relative;
+	vertical-align: middle;
+	width: 16.6666%;
+
+	&--isgift { width: 33.3333% }
+
+	&:not(:first-child):before {
+		@include contentBefore;
+		background-color: #e6e6e6;
+		display: block;
+		height: 3px;
+		right: 50%;
+		top: 15px;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&-label {
+		@include breakpoint(small, 'max') {
+			display: none;
+		}
+		@include responsiveFont(14, 16, true);
+		margin: 0;
+		position: relative;
+		white-space: nowrap;
+
+		span {
+			bottom: -1.5em;
+			display: block;
+			position: absolute;
+			width: 100%;
+		}
+	}
+
+	&-circle {
+		@include breakpoint('small', 'max') {
+			height: 20px;
+			margin-bottom: 5px;
+			width: 20px;
+		}
+		background-color: #e6e6e6;
+		border-radius: 50%;
+		display: inline-block;
+		height: 30px;
+		margin-bottom: 30px;
+		position: relative;
+		width: 30px;
+		z-index: 2;
+	}
+
+	&--current,
+	&--active {
+		&:before { background-color: $green!important; }
+
+		.order__state-circle {
+			background: $green;
+			&:after {
+				@include contentBefore;
+				@include responsiveFont(12);
+				@include icon-get(check-mark);
+				color: #fff;
+				font-weight: bold;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+
+		.order__state-label {
+			color: $green;
+			font-weight: bold;
+		}
+	}
+
+	&--current,
+	&--canceled {
+		p {
+			@include breakpoint(small, 'max') {
+				display: block;
+				left: -20px;
+				position: absolute;
+				top: 35px;
+			}
+		}
+	}
+
+	&--pending {
+		&:before { background-color: $green!important; }
+
+		.order__state-circle { background: #dbd508	}
+	}
+
+	&--canceled {
+		&:before { background-color: #c0392b!important; }
+
+		.order__state-circle {
+			background: #c0392b;
+
+			&:after {
+				@include contentBefore;
+				@include responsiveFont(12);
+				@include icon-get(close-icon);
+				color: #fff;
+				font-weight: bold;
+				left: 0;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+
+		.order__state-label {
+			color: #c0392b;
+			font-weight: bold;
+		}
+	}
+
+	&:last-child {
+		.order__state-circle {
+			@include breakpoint('small', 'max') {
+				height: 40px;
+				transform: translateY(-5px) translateX(-5px);
+				width: 40px;
+			}
+			height: 60px;
+			margin-bottom: 0;
+			transform: translateY(-15px);
+			width: 60px;
+
+			&:after {
+				@include breakpoint('small', 'max') {
+					background-size: contain;
+					height: 30px;
+					left: 50%;
+					top: 50%;
+					transform: translateY(-50%) translateX(-50%);
+					width: 30px;
+				}
+				@include contentBefore;
+				background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAeCAYAAACmPacqAAACUUlEQVRYhe2XO2gUURhGzybGmKAkIioWJqAo2hhEMGAKFUGF+CgstLBQxMJGFEFFLGxEBUElgiBYWfkINiksIkYjvkCICLHwUSlBDGiMSTASjsXMwjh7N252N5IiHyws33/vN2fm/nceGZUStBI4BSwGngNngcHUmNNAS8rrAi7kpKnF/jarP/xbPeqi1Lgec9UVyqwo8orsBTqAOSm/CXgGrCgmtBiYE8BNoCpPvRF4AqybTJhKoA04n/LfAPuBoYQ3D+gEdkyIpsD+qFHbA2v/UK2Lx6xRv6TqY+rPQnumEJC5ancg8JY6U12vdqoL1CXqu8DYssA0qL2BsEtqRt2jjsbeR3W5Ol99UW6YJvVzIOhoXD8eqPWrLWqt2lEumE3qQCpgVN2tVqpXxznQsLorHnejVJjkpc9qQN1odMb3xgHJakw9HOedCdT71GX/gjkWmPhJXWXUC08LAEnqolFvHYgBk/qqNodgKtTLgbBeoyZeamG7JKTbarXaarSESQ2r25Iw1eqdQEi30bZeG59FKXocZzUHssbUg1mYB4HJ7eosdbu5Z1Os3qqNRr3yIVA/gvo+ZbYZ7YRD5q5zqepTV6sL1Vep2hXi4khsnDRquHNlhkhqUN2izlbvx95rtTb5brIz/l8/iSBZZe8zVUY7uFElY+6bXj3wbUJP24nrEbAhbRb7cjUpmlHC3CGgP+A3AJn/DXMX2BfwvwN1xQROqWWahsmnaZh8mvIwI8DvST5u+nscCN9nfgGtwFaiD7d8epnHvwbUjDNvBLgeKvwBdmQSNA847JEAAAAASUVORK5CYII=') center center no-repeat;
+				bottom: 0;
+				height: 60px;
+				left: 0;
+				width: 60px;
+			}
+		}
+
+		&--order-gift {
+			.order__state-circle {
+				&:after {
+					@include responsiveFont(25);
+					@include icon-get(check-mark);
+					background: transparent;
+					bottom: initial;
+					color: #fff;
+					height: initial;
+					left: 50%;
+					// right: 0;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: initial;
+				}
+			}
+		}
+	}
+}

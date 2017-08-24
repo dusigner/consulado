@@ -1,0 +1,22 @@
+<div id="accounts-modal">
+	<div>
+		<div class="account__change">
+			<form class="account__form js-change-account">
+				<label for="paymentAccountId">Cartão
+					<select name="paymentAccountId" id="paymentAccountId">
+						{#.}
+							<option value="{accountId}">{paymentSystemName} {cardNumber}</option>
+						{/.}
+					</select>
+				</label>
+				<div class="text-center">
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>Cancelar</span></a>
+					<button type="submit" class="secondary-button purple-button inverted-button"><span>Alterar</span></button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div>
+		<p class="text-center js-feedback-account">Forma de pagamento foi alterada</p>
+	</div>
+</div>

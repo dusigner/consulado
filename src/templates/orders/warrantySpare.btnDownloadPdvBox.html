@@ -1,15 +1,18 @@
-<tr class="item-service">
-	<td class="bundle-item-image"></td>
-	<td class="bundle-item-name"><span>Garantia Estendida</span></td>
+<tr class="order__service">
+	<td class="order__service-icon"></td>
+	<td class="order__item-name text-left">Garantia Estendida</td>
 	<td></td>
-	<td class="product-price"></td>
-	<td class="quantity hidden-phone hidden-tablet"></td>
-	<td class="quantity-price bundle-quantity-price hidden-phone hidden-tablet"></td>
-	<td class="action-buttons">
+	<td></td>
+	<td class="js-action-warranty">
 		<div class="ctas">
-			<button class="download-warranty secondary-button" href="javascript:void(0)" data-id="{idWarranty}">Baixar termos</button>
+			<button class="download-warranty order__download-warranty" href="javascript:void(0)" data-id="{idWarranty}">
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+					<path d="M19,9h-4V3H9v6H5l7,7L19,9z M5,18v2h14v-2H5z"/>
+				</svg>
+				Baixar termos
+			</button>
 			{?btnCancel}
-				<button class="cancel-warranty secondary-button" href="javascript:void(0)" data-id="{idWarranty}" data-period="{period}" data-refid="{refid}" data-product-index="{productIndex}">Cancelar</button>
+				<button class="cancel-warranty order__cancel-warranty" href="javascript:void(0)" data-id="{idWarranty}" data-period="{period}" data-refid="{refid}" data-product-index="{productIndex}">X</button>
 			{/btnCancel}
 		</div>
 	</td>

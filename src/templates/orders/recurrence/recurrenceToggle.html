@@ -1,0 +1,14 @@
+<span class="color-green weight-semibold order__hide--mobile">
+	Recorrência {>"recurrenceStatus"/} &nbsp;
+</span>
+<div class="order__toggle">
+	<a href="{@if key=status value="ACTIVE"}#pause-recurrence{?isItem}-item{/isItem}{/if}{@if key=status value="INACTIVE"}#unpause-recurrence{?isItem}-item{/isItem}{/if}" class="js-recurrence-toggle"
+	data-title="Recorrência {>"recurrenceStatus"/}"
+	{?isItem}
+		{>"recurrenceData"/}
+	{/isItem}
+	>
+		<span class="order__toggle-option{@if key=status value="ACTIVE"} order__toggle-option--active{/if}"><i class="icon icon-check-mark"></i></span>
+		<span class="order__toggle-option order__toggle-option--off{@if key=status value="INACTIVE"} order__toggle-option--active{/if}"><i class="icon icon-close-icon"></i></span>
+	</a>
+</div>

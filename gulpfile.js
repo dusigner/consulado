@@ -59,7 +59,8 @@ var getPath = function ( source ) {
 gulp.task('sassLint', function () {
 
 	return gulp.src(getPath('styles')
-	.concat('!src/styles/helpers/*'))
+	.concat('!src/styles/helpers/*')
+	.concat('!src/styles/libs/*'))
 	.pipe(cached('sassLinting'))
 	.pipe(sassLint({
 			options: {
@@ -231,7 +232,10 @@ gulp.task('styles', ['sassLint'], function () {
 		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
 		.pipe( $.util.env.production ? $.postcss([
-			cssnano({zindex:false}),
+			cssnano({
+				zindex: false,
+				reduceIdents: false
+			}),
 			cssMqpacker()
 		]) : $.postcss([
 			cssMqpacker()

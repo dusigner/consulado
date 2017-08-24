@@ -1,0 +1,31 @@
+<div id="edit-recurrence-item">
+	<div>
+		<p class="color-green text-center">Você está editando a recorrência para o item</p>
+		<div class="recurrence__modal-item clearfix">
+			<div class="recurrence__modal-image"></div>
+			<div class="recurrence__modal-name"></div>
+		</div>
+		<div class="recurrence__modal-info">
+			<form class="edit-item js-form-edit-item">
+				<label for="paymentAccountId">
+					Endereço
+					<select name="shippingAddressId" id="shippingAddressId">
+						{#.}
+							<option value="{id}">{street}, {number}{?complement} - {complement}{/complement} {neighborhood} {city}-{state}({postalCode})</option>
+						{/.}
+					</select>
+				</label>
+				<label for="quantity">
+					Quantidade
+					<input type="number" id="quantity" name="quantity" value="" placeholder="Qtd." />
+				</label>
+
+				<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>CANCELAR</span></a>
+				<button type="submit" class="secondary-button purple-button inverted-button js-edit-recurrence-item"><span>EDITAR ITEM</span></a>
+			</form>
+		</div>
+	</div>
+	<div>
+		<p class="js-feedback-account">Alteração do item foi realizada!</p>
+	</div>
+</div>
