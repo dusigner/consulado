@@ -128,7 +128,14 @@ body.pedidos {
 
 #vtex-pagamento-garantia {
 	iframe {
+		@include breakpoint(320px, 'max') {
+			max-height: 80vh;
+			min-width: 100%;
+			width: 100%;
+			*width: 100%;
+		}
 		border: none;
+		max-width: 100%;
 		min-height: 300px;
 	}
 
@@ -158,11 +165,17 @@ body.pedidos {
 
 		.back {
 			@include responsiveFont(14, 16, true);
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(13, 16, true);
+			}
 			float: left;
 		}
 
 		.confirm {
 			@include responsiveFont(14, 16, true);
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(13, 16, true);
+			}
 			float: right;
 		}
 	}

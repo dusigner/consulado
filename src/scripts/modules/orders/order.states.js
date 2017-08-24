@@ -172,6 +172,7 @@ var orderStates = {
 	},
 
 	_states: {
+		'order-created': 'pedidoRealizado',
 		'waiting-for-seller-confirmation': 'pedidoRealizado',
 		'waiting-for-authorization': 'pedidoRealizado',
 		'order-accepted': 'pedidoRealizado',
@@ -181,6 +182,7 @@ var orderStates = {
 		'waiting-ffmt-authorization': 'pagamentoAprovado',
 		'authorize-fulfillment': 'pagamentoAprovado',
 		'window-to-cancel': 'pagamentoAprovado',
+		'waiting-for-seller-decision': 'pagamentoAprovado',
 		'handling': 'faturado',
 		'ready-for-handling': 'faturado',
 		'start-handling': 'faturado',
@@ -188,7 +190,6 @@ var orderStates = {
 		'invoice': 'entregaDoPedido',
 		'shipped': 'entregaDoPedido',
 		'invoiced': 'entregaDoPedido',
-		'waiting-for-seller-decision': 'cancelado',
 		'cancellation-requested': 'cancelado',
 		'payment-denied': 'cancelado',
 		'request-cancel': 'cancelado',

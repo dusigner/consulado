@@ -83,7 +83,7 @@ $value: 0;
 		left: 50%;
 		max-width: 80%;
 		opacity: 0;
-		overflow: hidden;
+		overflow: auto;
 		padding: 30px;
 		position: relative;
 		top: 50%;
@@ -159,6 +159,8 @@ $value: 0;
 	&__content {
 		background: #fff;
 		position: relative;
+		overflow: auto;
+		max-height: 80vh;
 
 		@each $direction in $directions {
 			&--#{$direction}Out {
