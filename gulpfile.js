@@ -232,7 +232,10 @@ gulp.task('styles', ['sassLint'], function () {
 		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
 		.pipe( $.util.env.production ? $.postcss([
-			cssnano({zindex:false}),
+			cssnano({
+				zindex: false,
+				reduceIdents: false
+			}),
 			cssMqpacker()
 		]) : $.postcss([
 			cssMqpacker()
