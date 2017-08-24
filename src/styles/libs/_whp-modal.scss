@@ -1,0 +1,191 @@
+@charset 'UTF-8';
+
+$directions: (
+	'prev',
+	'next'
+);
+$value: 0;
+
+@each $direction in $directions {
+	@keyframes#{$direction}Out {
+		from {
+			transform: translateX(0);
+			opacity: 1;
+		}
+
+		to {
+			@if $direction == 'prev' {
+				$value : 50%;
+			} @else {
+				$value : -50%;
+			}
+			transform: translateX($value);
+			opacity: 0;
+		}
+	}
+
+	@keyframes #{$direction}In {
+		from {
+			@if $direction == 'prev' {
+				$value : -50%;
+			} @else {
+				$value : 50%;
+			}
+			transform: translateX($value);
+			opacity: 0;
+		}
+
+		to {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+}
+
+.modal-whp {
+
+	&__mask {
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 9999;
+
+		&:before {
+			@include contentBefore;
+			background: #000;
+			height: 100%;
+			left: 0;
+			opacity: 0;
+			top: 0;
+			transition: opacity .5s ease;
+			width: 100%;
+		}
+
+		&--enter:before { opacity: .75; }
+		&--loaded .modal-whp__body {
+			opacity: 1;
+			transform: translateX(-50%) translateY(-50%);
+		}
+	}
+
+	&__body {
+		@include breakpoint(medium, 'min') { min-width: 550px; };
+		@include breakpoint(medium, 'max') {
+			img {
+				height: auto;
+				width: 100%;
+			}
+		};
+		background-color: #fff;
+		display: inline-block;
+		left: 50%;
+		max-width: 80%;
+		opacity: 0;
+		overflow: hidden;
+		padding: 30px;
+		position: relative;
+		top: 50%;
+		transform: translateX(-50%) translateY(-100%);
+		transition: .75s transform cubic-bezier(.18, .89, .32, 1.28), .75s opacity ease;
+	}
+
+	&__title {
+		@include font-size(18px, true, false);
+		color: $green;
+		font-weight: bold;
+		margin-top: 0;
+	}
+
+	&__confirm,
+	&__cancel {
+		@include font-size(14px, true, false);
+		padding: .7em 2.5em;
+	}
+
+	&__confirm {
+		@include breakpoint(medium, 'min') { margin: 0 2em 0 0 };
+		margin: 0 0 2em 0;
+	}
+
+	&__close {
+		@include font-size(22px, true, false);
+		color: #000;
+		position: absolute;
+		right: 15px;
+		top: 10px;
+	}
+
+	&__nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+		a {
+			display: inline-block;
+			border: 3px solid #fff;
+			transform: rotate(45deg) scale(1);
+			width: 20px;
+			height: 20px;
+			transition: transform .25s ease-in-out;
+
+			&:hover {
+				transform: rotate(45deg) scale(1.5);
+			}
+		}
+
+		&[data-direction="prev"] {
+			@include breakpoint(medium, 'max') { left: -20px }
+			left: -35px;
+
+			a {
+				border-right: none;
+				border-top: none;
+			}
+		}
+
+		&[data-direction="next"] {
+			@include breakpoint(medium, 'max') { right: -20px }
+			right: -35px;
+
+			a {
+				border-left: none;
+				border-bottom: none;
+			}
+		}
+	}
+
+	&__content {
+		background: #fff;
+		position: relative;
+
+		@each $direction in $directions {
+			&--#{$direction}Out {
+				animation-name: #{$direction}Out;
+				animation-duration: .5s;
+				animation-timing-function: ease-in-out;
+			}
+
+			&--#{$direction}In {
+				animation-name: #{$direction}In;
+				animation-duration: .5s;
+				animation-timing-function: ease-in-out;
+			}
+		}
+
+		.step.current {
+			opacity: 1;
+			position: relative;
+			z-index: 1;
+		}
+
+		.step {
+			left: 0;
+			opacity: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+		}
+	}
+}
