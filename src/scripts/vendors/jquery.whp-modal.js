@@ -7,19 +7,21 @@
 				onOpen: function() {},
 				onClose: function() {},
 				outerNav: false,
+				innerNav: false,
 				autoClose: false,
 				autoCloseTime: 5,
 				content: null,
 				title: null,
-				aditionalClass: ''
+				aditionalClass: '',
+				autoOpen: false
 			}, options),
 			template = function(title, content, $context) {
-				return '<div class="text-center modal-whp__body '+ settings.aditionalClass +'">' +
+				return '<div class="modal-whp__body '+ settings.aditionalClass +'">' +
 							'<span class="modal-whp__close js-modal-whp-close"><a href="javascript:void(0);">X</a></span>' +
 							(settings.outerNav ? '<span class="modal-whp__nav js-modal-whp-nav" data-direction="prev"><a href="javascript:void(0);">&nbsp;</a></span>' : '') +
 							(settings.outerNav ? '<span class="modal-whp__nav js-modal-whp-nav" data-direction="next"><a href="javascript:void(0);">&nbsp;</a></span>' : '') +
-							(title ? '<h3 class="modal-whp__title">'+ title +'</h3>' : '') +
-							(content ? '<div class="modal-whp__content">' + ((typeof content === 'function') ? content.apply($context) : content) + '</div>' : '') +
+							(title ? '<h3 class="modal-whp__title text-uppercase">'+ title +'</h3>' : '') +
+							(content ? '<div class="modal-whp__content clearfix">' + ((typeof content === 'function') ? content.apply($context) : content) + '</div>' : '') +
 						'</div>';
 			},
 			_close = function() {
@@ -30,6 +32,8 @@
 				.removeClass('modal-whp__mask--enter')
 				.delay(500)
 				.queue(function(next) {
+					$(this).find('*').unbind();
+					$(this).unbind();
 					$(this).remove();
 					settings.onClose();
 					next();
@@ -74,10 +78,51 @@
 										});
 				$current.removeClass('js-release-bullet--active');
 				$toRender.addClass('js-release-bullet--active');
+			},
+			_changeStep = function(direction) {
+				if(!settings.innerNav) {
+					return;
+				}
+
+				var $current = $('.step.current');
+
+				if(direction === 'prev') {
+					$current.removeClass('current').prev().addClass('current');
+				} else {
+					$current.removeClass('current').next().addClass('current');
+				}
+			},
+			_innerNav = function() {
+				if(!settings.innerNav) {
+					return;
+				}
+
+				var prevClass = settings.innerNav.prev || '.modal-whp__inner--prev',
+					nextClass = settings.innerNav.prev || '.modal-whp__inner--next';
+
+				if( $('.modal-whp__content > .step').length <= 1 ) {
+					var $steps = $('.modal-whp__content > *');
+
+					$steps.addClass('step').first().addClass('current');
+				}
+
+
+				$(nextClass).click(function(e) {
+					e.preventDefault();
+
+					_changeStep('next');
+				});
+
+				$(prevClass).click(function(e) {
+					e.preventDefault();
+
+					_changeStep('prev');
+				});
 			};
 
 		this.click(function(e) {
 			e.preventDefault();
+			e.stopPropagation();
 
 			var $self = $(this),
 				dataModal = $self.data('modal'),
@@ -93,7 +138,9 @@
 			}
 
 			if(settings.title === null) {
-				objTitle = dataModal.title;
+				objTitle = (dataModal && dataModal.title)
+							? dataModal.title
+							: ($self.data('title')) ? $self.data('title') : null;
 			} else {
 				objTitle = settings.title;
 			}
@@ -118,44 +165,49 @@
 						.delay(500)
 						.queue(function(next) {
 							$(this).addClass('modal-whp__mask--loaded');
-							settings.onOpen();
+							settings.onOpen.call($self, _changeStep, _close);
 							next();
 						});
 
-			$('.js-modal-whp-close').click(function(e) {
-				e.preventDefault();
-				_close();
-			});
-
-			$('.js-modal-whp-nav').click(function(e) {
-				e.preventDefault();
-				_outerNav($(this).data('direction'));
-			});
-
-
-			if(settings.autoClose) {
-				setTimeout(function() {
-					if($('.modal-whp__mask').length > 0) {
-						_close();
-					}
-				}, 1000 * settings.autoCloseTime);
-			}
-
-			$(document).off().on('keyup', function(e) {
-				console.log('⌨️⌨️', e.keyCode);
-				if (e.keyCode === 27) {
+			if($('.modal-whp__body').length > 0) {
+				$('.js-modal-whp-close').click(function(e) {
+					e.preventDefault();
 					_close();
+				});
+
+				$('.js-modal-whp-nav').click(function(e) {
+					e.preventDefault();
+					_outerNav($(this).data('direction'));
+				});
+
+
+				if(settings.autoClose) {
+					setTimeout(function() {
+						if($('.modal-whp__mask').length > 0) {
+							_close();
+						}
+					}, 1000 * settings.autoCloseTime);
 				}
 
-				if (e.keyCode === 37) {
-					_outerNav('prev');
+				if($('.modal-whp__mask').length > 0) {
+					$(document).one('keyup', function(e) {
+
+						if (e.keyCode === 27) {
+							_close();
+						}
+
+						if (e.keyCode === 37) {
+							_outerNav('prev');
+						}
+
+						if (e.keyCode === 39) {
+							_outerNav('next');
+						}
+					});
 				}
 
-				if (e.keyCode === 39) {
-					_outerNav('next');
-				}
-			});
-
+				_innerNav();
+			}
 		});
 	};
 }(jQuery));

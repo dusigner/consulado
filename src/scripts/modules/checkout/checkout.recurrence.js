@@ -28,7 +28,7 @@ Nitro.module('checkout.recurrence', function() {
 		'CIX01AXONA' : '36 semanas',
 		'CIX06AXONA' : '6 meses',
 		'C3L02AB'    : '36 semanas',
-		'C3L02ABANA' : '36 semanas'
+		'C3L02ABANA' : 'diaria'
 	};
 
 	/*
@@ -129,7 +129,7 @@ Nitro.module('checkout.recurrence', function() {
 
 				if(hasActiveRecurrence) {
 					var selectedRecurrence = $.grep(v.attachments, function(v){
-						return v.name === 'Recorrência'; 
+						return v.name === 'Recorrência';
 					});
 
 					templateData.hasActiveRecurrence = hasActiveRecurrence;
@@ -255,7 +255,7 @@ Nitro.module('checkout.recurrence', function() {
 				$cartTemplate.addClass('been-called');
 			}
 			//}
-		}, 1500); 
+		}, 1500);
 	};
 
 	this.hidePayments = function() {
@@ -263,7 +263,7 @@ Nitro.module('checkout.recurrence', function() {
 			if(self.hasActiveRecurrence(v.attachments)){
 				$('.payment-group-item:not(#payment-group-creditCardPaymentGroup)').addClass('hide');
 				$('#payment-group-creditCardPaymentGroup').click();
-				return false; 
+				return false;
 			}
 		});
 	};
