@@ -59,7 +59,8 @@ var getPath = function ( source ) {
 gulp.task('sassLint', function () {
 
 	return gulp.src(getPath('styles')
-	.concat('!src/styles/helpers/*'))
+	.concat('!src/styles/helpers/*')
+	.concat('!src/styles/libs/*'))
 	.pipe(cached('sassLinting'))
 	.pipe(sassLint({
 			options: {

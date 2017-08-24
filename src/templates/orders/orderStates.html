@@ -1,21 +1,15 @@
-<ul class="box-order-states">
-	<li class="{class[0]} box-order-state">
-		<div class="circle">&nbsp;</div>
-		<p>{trackingLabels[0]}</p>
-	</li>
-
-	<li class="{class[1]}  box-order-state">
-		<div class="circle">&nbsp;</div>
-		<p>{trackingLabels[1]}</p>
-	</li>
-
-	<li class="{class[2]}  box-order-state">
-		<div class="circle">&nbsp;</div>
-		<p>{trackingLabels[2]}</p>
-	</li>
-
-	<li class="{class[3]} box-order-state box-order-state--delivery">
-		<div class="circle">&nbsp;</div>
-		<p>{trackingLabels[3]}</p>
-	</li>
+<ul class="order__states clearfix">
+	{#finalStatus.trackingLabels}
+		<li class="order__state{?class} order__state--{class}{/class}">
+			<div class="order__state-circle">&nbsp;</div>
+			<p class="order__state-label">
+				{label}
+				{?estimate}
+					{?finalStatus.estimate}
+						<span>estimada {finalStatus.estimate|formatDatetimeBRL}</span>
+					{/finalStatus.estimate}
+				{/estimate}
+			</p>
+		</li>
+	{/finalStatus.trackingLabels}
 </ul>

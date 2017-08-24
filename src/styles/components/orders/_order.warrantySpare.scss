@@ -13,6 +13,32 @@ body.pedidos {
 		z-index: 9999;
 	}
 
+	.download-warranty,
+	.cancel-warranty,
+	.add-warranty { @include responsiveFont(14, 16, true) }
+
+	.download-warranty,
+	.cancel-warranty {
+		background: none;
+		border: none;
+		vertical-align: middle;
+
+		svg {
+			path { fill: $green }
+		}
+	}
+
+	.download-warranty {
+		color: $green;
+		padding: 0;
+		white-space: nowrap;
+	}
+
+	.cancel-warranty {
+		float: right;
+		font-weight: bold;
+	}
+
 	.add-warranty { @include responsiveFont(14, 16, true); }
 
 	.vtex-modal {
