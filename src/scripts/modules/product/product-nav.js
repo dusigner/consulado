@@ -3,7 +3,6 @@
 
 Nitro.module('product-nav', function() {
 
-
 	var $window = $(window),
 		$afterProd = $('.after-prod'),
 		nav = $('.prod-details-nav'),

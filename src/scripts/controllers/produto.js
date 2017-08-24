@@ -1,9 +1,9 @@
-/* global $: true, Nitro: true, skuJson: true */
+/* global $: true, Nitro: true */
 'use strict';
 
 require('vendors/slick');
 require('vendors/vtex-modal');
-// require('modules/product/video');
+require('modules/product/video');
 require('modules/product/sku-fetch');
 require('modules/product/gallery');
 require('modules/product/product-nav');
@@ -16,7 +16,7 @@ require('modules/product/boleto');
 require('modules/product/notify-me');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
 
 	var self = this;
 
@@ -146,17 +146,6 @@ Nitro.controller('produto', [ /*'video', */ 'sku-fetch', 'gallery', 'product-nav
 
 	//Compre Junto
 	$('.comprar-junto a').text('compre junto');
-
-
-
-	//Rating TruxtVox
-	$(document).on('click', '.trustvox-fluid-jump', function(e) {
-		e.preventDefault();
-
-		$('html, body').animate({
-			scrollTop: $('#trustvox-rating').offset().top + 'px'
-		}, 'slow');
-	});
 
 
 	//Google PLA
