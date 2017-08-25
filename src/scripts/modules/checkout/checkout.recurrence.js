@@ -26,8 +26,8 @@ Nitro.module('checkout.recurrence', function() {
 		'W10322320'  : '6 meses',
 		'W10637798'  : '6 meses',
 		'CIX01AXONA' : '36 semanas',
-		'C3L02AB'    : '36 semanas',
 		'CIX06AXONA' : '6 meses',
+		'C3L02AB'    : '36 semanas',
 		'C3L02ABANA' : 'diaria'
 	};
 
