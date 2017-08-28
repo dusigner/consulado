@@ -24,6 +24,8 @@ $animation-mode: true!default;
 
 // Base styles
 @import 'base/fonts';
+@import 'base/main';
+@import 'base/type';
 
 // Layout styles
 @import 'layout/container';
@@ -35,7 +37,7 @@ $animation-mode: true!default;
 @import 'components/buttons';
 @import 'components/colors';
 
-// Component styles
+// Component styles 
 @import 'components/buttons';
 @import 'components/colors';
 @import 'components/footer';
@@ -419,11 +421,11 @@ h2 {
 
 #promocao-encerrada {
 	background: $green;
-	height: 775px;
+	height: 840px;
 	margin-top: -10px;
 	position: relative;
 
-	@include breakpoint(extra-small, 'max') { height: 540px; }
+	@include breakpoint(extra-small, 'max') { height: 660px; }
 
 	.wrapper {
 		display: inline-block;
@@ -435,12 +437,11 @@ h2 {
 		width: 650px;
 
 		@include breakpoint(extra-small, 'max') {
-			top: 62%;
 			width: 90%;
 		}
 
 		.title {
-			@include responsiveFont(48, 16, true);
+			@include responsiveFont(42, 16, true);
 			color: #ffffff;
 			font-weight: bold;
 			text-transform: uppercase;
@@ -450,32 +451,45 @@ h2 {
 
 		.aguarde {
 			@include responsiveFont(24, 16, true);
-			background: url('/arquivos/lp-concurso_bg-encerrada.png') no-repeat center 0;
-			height: 195px;
-			margin-top: 70px;
-			padding: 30px;
-
 			@include breakpoint(extra-small, 'max') {
 				@include responsiveFont(16, 16, true);
-				background: url('/arquivos/lp-concurso_bg-encerrada-mobile.png') no-repeat center 0;
 				background-size: 100%;
-				margin-top: 35px;
 				padding: 10px;
 			}
 
 			.destaque {
+				@include responsiveFont(36, 16, true);
 				color: $txt-gray;
 				display: block;
 				font-weight: bold;
-				margin-bottom: 20px;
 
-				@include breakpoint(extra-small, 'max') { margin-bottom: 10px; }
+				@include breakpoint(extra-small, 'max') { 
+					@include responsiveFont(22, 16, true);
+					margin-bottom: 10px; 
+				}
 			}
 
 			.text {
+				@include responsiveFont(27, 16, true);
 				color: #ffffff;
 				display: inline-block;
-				max-width: 445px;
+				max-width: 520px;
+				strong {
+					@include responsiveFont(33, 16, true);
+				}
+				@include breakpoint(extra-small, 'max') {
+					@include responsiveFont(20, 16, true);	
+					strong {
+						@include responsiveFont(22, 16, true);	
+					}
+				}
+			}
+			.textSlogan {
+				@include responsiveFont(20, 16, true);
+				margin-top: 20px;
+				@include breakpoint(extra-small, 'max') {
+					margin-top: 10px;
+				}
 			}
 		}
 	}

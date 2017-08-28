@@ -30,6 +30,8 @@
 @import 'helpers/slick';
 @import 'helpers/mfp-main';
 @import 'helpers/nouislider';
+@import 'helpers/nouislider';
+@import 'helpers/whp-modal';
 
 
 // Base styles
@@ -50,7 +52,7 @@
 
 // Component styles
 @import 'components/buttons';
-@import 'components/colors';
+// @import 'components/colors';
 
 @import 'components/header';
 @import 'components/top-menu';

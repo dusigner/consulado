@@ -34,17 +34,4 @@
 			&.hide { display: none!important; }
 		}
 	}
-
-	//Rating TrustVox
-	.trustvox-fluid-jump {
-		display: inline-block;
-		margin-bottom: 15px;
-
-		.trustvox-rate { display: inline-block; }
-
-		&>span {
-			position: relative;
-			top: -3px;
-		}
-	}
 }

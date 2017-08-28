@@ -1,29 +1,67 @@
 'use strict';
 
+var Uri = require('vendors/Uri');
+
+require('vendors/jquery.inputmask');
+
 Nitro.module('lead-newsletter', function() {
+
+	// Teste AB Controller
+	var urlTesteAb = window.location.search;
+	var $body = $('body');
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if (urlTesteAb.indexOf(testeA) >= 0) {
+		$body.removeClass('teste-ab__news-phone-show--b');
+	}
+	else if (urlTesteAb.indexOf(testeB) >= 0) {
+		$body.addClass('teste-ab__news-phone-show--b');
+	}
+
+	// Input mask para campos do tipo telefone
+	$('input[type=tel]').inputmask('99 [9]9999-9999');
+
 	var self = this,
 		$formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
 		$inputName = $formNewsletter.find('input[type="text"]'),
 		$inputEmail = $formNewsletter.find('input[type="email"]'),
+		$inputTel = $formNewsletter.find('input[type="tel"]'),
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false,
-		hasSession = sessionStorage.getItem('leadNewsletter'),
-		clientURI = '/api/ds/pub/documents/CL';
+		// hasSession = sessionStorage.getItem('leadNewsletter'),
+		clientURI = '/api/ds/pub/documents/CL',
+		$newsletterFixed = $('.toggle-newsletter');
 
-	this.setup = function(orderForm) {
-		if (!hasSession && !orderForm.clientProfileData.email) {
-			$formNewsletter.submit(function(e) {
-				e.preventDefault();
+	this.setup = function(/*orderForm*/) {
+		$formNewsletter.submit(function(e) {
+			e.preventDefault();
 
-				$formNewsletter.find('input').on('blur', function() {
-					self.validateInputs();
-				});
-
-				self.validateForm();
-
-				return false;
+			$formNewsletter.find('input').on('blur', function() {
+				self.validateInputs();
 			});
-		}
+
+			self.validateForm();
+
+			return false;
+		});
+
+		// if (!hasSession && !orderForm.clientProfileData.email) {
+		// 	$formNewsletter.submit(function(e) {
+		// 		e.preventDefault();
+
+		// 		$formNewsletter.find('input').on('blur', function() {
+		// 			self.validateInputs();
+		// 		});
+
+		// 		self.validateForm();
+
+		// 		return false;
+		// 	});
+		// }
+
+		self.toggleNewsletter();
+		self.newsletterFixedOpenAfter(4000);
 	};
 
 	this.validateInputs = function() {
@@ -55,17 +93,19 @@ Nitro.module('lead-newsletter', function() {
 
 		if (valid) {
 			var name = $inputName.val(),
-				email = $inputEmail.val();
+				email = $inputEmail.val(),
+				telefone = $inputTel.val();
 
-			self.registerNewsletter(name, email);
+			self.registerNewsletter(name, email, telefone);
 		}
 	};
 
-	this.registerNewsletter = function(name, email) {
+	this.registerNewsletter = function(name, email, telefone) {
 		var data = {};
 
 		data.firstName = name;
 		data.email = email;
+		data.xNewsPhone = telefone;
 		data.isNewsletterOptIn = true;
 		data.xDataCadastroLead = new Date();
 		data.xOrigemLead = 8;
@@ -85,21 +125,21 @@ Nitro.module('lead-newsletter', function() {
 			setTimeout(function() {
 				$('.newsletter').fadeOut();
 			}, 2000);
-			
-			dataLayer.push({ 
-				event: 'formulario_home', 
-				status: 'ok' 
+
+			dataLayer.push({
+				event: 'formulario_home',
+				status: 'ok'
 			});
 		}).fail(function() {
-			dataLayer.push({ 
-				event: 'formulario_home', 
-				status: 'error' 
+			dataLayer.push({
+				event: 'formulario_home',
+				status: 'error'
 			});
 		});
 	};
 
-	window.vtexjs.checkout.getOrderForm().done(function(result) {
-		self.setup(result);
+	window.vtexjs.checkout.getOrderForm().done(function(/*result*/) {
+		self.setup(/*result*/);
 	});
 
 
@@ -114,4 +154,43 @@ Nitro.module('lead-newsletter', function() {
 		$('.lead-newsletter-show').fadeIn();
 	});
 
+	/**
+	 * Retorna verdadeiro se existir o valor 'visite_a_loja' no parâmetro da url
+	 *
+	 * @returns {boolean}
+	 */
+	this.isParameterVisiteALoja = function() {
+
+		var uri = new Uri(window.location.href),
+			parameters = uri.queryPairs;
+
+		return parameters.find(function(parameter) {
+			return parameter[1] === 'visite_a_loja';
+		});
+	};
+
+	this.toggleNewsletter = function() {
+		if( self.isParameterVisiteALoja() ) {
+			$newsletterFixed.closest('.lead-newsletter').addClass('lead-newsletter--fixed secrete');
+
+			$newsletterFixed.on('click', function() {
+				$(this).closest('.lead-newsletter--fixed').toggleClass('secrete');
+			});
+		}
+	};
+
+	/**
+	 * Abre newsletter fixa depois de determinado tempo
+	 *
+	 * @param {int} time
+	 */
+	this.newsletterFixedOpenAfter = function(time) {
+
+		$(window).ready(function() {
+			setTimeout(function() {
+				$newsletterFixed.closest('.lead-newsletter--fixed')
+								.toggleClass('secrete');
+			}, time);
+		});
+	};
 });

@@ -1,0 +1,162 @@
+@keyframes bulletPulse {
+	from {
+		box-shadow: 0 0 15px 5px rgba(80, 80, 80, .7);
+	}
+
+	to {
+		box-shadow: 0 0 30px 10px rgba(80, 80, 80, 1);
+	}
+}
+
+.release-details {
+	&__content {
+		@include breakpoint(medium, 'max') {
+			img {
+				height: auto;
+				width: 100%;
+			}
+		};
+		display: inline-block;
+		position: relative;
+
+	}
+	&__title { @include font-size(28px); }
+
+	&__bullets {
+		&--Micro-ondas {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: calc((40 / 300) * 100%);
+				top: calc((85 / 280) * 100%);
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: calc((305 / 420) * 100%);
+				top: calc((85 / 280) * 100%);
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: calc((290 / 420) * 100%);
+				top: calc((120 / 280) * 100%);
+			}
+			.release-details__bullet:nth-child(4) {
+				display: block;
+				left: calc((275 / 420) * 100%);
+				top: calc((195 / 280) * 100%);
+
+			}
+			.release-details__bullet:nth-child(5) {
+				display: block;
+				left: calc((315 / 420) * 100%);
+				top: calc((195 / 280) * 100%);
+			}
+		}
+
+		&--Lavadoraderoupas {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: calc((40 / 300) * 100%);
+				top: calc((75 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: calc((180 / 300) * 100%);
+				top: calc((80 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: calc((180 / 300) * 100%);
+				top: calc((240 / 420) * 100%);
+			}
+		}
+
+		&[data-skus='2004086;2004087'],
+		&[data-skus='2004082;2004083'],
+		&[data-skus='557;843'],
+		&[data-skus='1141;1142'] {
+			.release-details__bullet:nth-child(1) {
+				display: block;
+				left: calc((40 / 300) * 100%);
+				top: calc((75 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(2) {
+				display: block;
+				left: calc((100 / 300) * 100%);
+				top: calc((60 / 420) * 100%);
+			}
+			.release-details__bullet:nth-child(3) {
+				display: block;
+				left: calc((155 / 300) * 100%);
+				top: calc((45 / 420) * 100%);
+			}
+		}
+	}
+
+	&__bullet {
+		@include font-size(9px);
+		background: $green;
+		border-color: rgba(0, 0, 0, .2);
+		border-radius: 50%;
+		border-style: solid;
+		border-width: 2px;
+		box-shadow: 0 0 15px 5px rgba(80, 80, 80, .7);
+		color: #fff;
+		display: none;
+		left: 0;
+		line-height: 0;
+		padding: .7em;
+		position: absolute;
+		top: 0;
+		transform: rotate(45deg);
+
+		&:hover {
+			animation-direction: alternate;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+			animation-name: bulletPulse;
+			animation-timing-function: ease-in-out;
+		}
+	}
+}
+
+.modal-release {
+	overflow: visible;
+	padding: 0;
+
+	//RESETS DEFAULT MODAL STYLES
+	.modal-whp__content {
+		@include breakpoint(medium, 'max') {
+			flex-direction: column-reverse;
+		}
+		align-items: center;
+		display: flex;
+	}
+
+	.modal-whp__close {
+		right: -20px;
+		top: -45px;
+
+		a { color: #fff }
+	}
+
+	&__content {
+		max-width: 335px;
+		padding: 20px;
+		text-align: left;
+	}
+
+	&__image {
+		line-height: 0
+	}
+
+	&__title {
+		@include font-size(26px);
+		color: #802893;
+		font-weight: bold;
+		margin: .5em 0;
+	}
+
+	&__text {
+		@include font-size(15px);
+	}
+}

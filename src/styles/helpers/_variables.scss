@@ -96,11 +96,12 @@ $button-hover-font-color: #ffffff !default;
 $bg-colors: (
 	'white':  #ffffff,
 	'black':  #222222,
-	'gray':   #999999,
-	'green':  #5cb85c,
+	'gray':   $gray,
+	'green':  $green,
 	'blue':   #4572ed,
 	'yellow': #ed9c28,
-	'red':    #d9534f
+	'red':    #d9534f,
+	'orange': $orange
 );
 
 
@@ -108,11 +109,12 @@ $bg-colors: (
 $type-colors: (
 	'white':  #ffffff,
 	'black':  #222222,
-	'gray':   #999999,
-	'green':  #468847,
+	'gray':   $txt-gray,
+	'green':  $green,
 	'blue':   #4572ed,
 	'yellow': #c09853,
-	'red':    #d2322d
+	'red':    #d2322d,
+	'orange': $orange
 );
 
 

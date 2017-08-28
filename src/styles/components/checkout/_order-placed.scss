@@ -1,172 +1,361 @@
-body {
-	&.body-order-placed {
-		header {
-			.come-back { display: block!important; }
+body[class*='consul'] {
+	&.body-checkout-confirmation {
+		.container { width: 100%; }
+
+		.checkout-confirmation-header {
+			header { .come-back { display: block; } }
 		}
 
-		.seller-info { display: none; }
+		#app-container {
+			background: #ffffff;
+			box-shadow: none;
+			padding-bottom: 20px;
 
-		.page-header {
-			h1.title { color: $green; }
-		}
+			.ph3-ns {
+				max-width: 1280px;
+				padding: 0 90px;
+				width: 100%;
 
-		.alert-success {
-			color: $txt-gray;
+				@include breakpoint(small, 'max') { padding: 0 20px; }
 
-			.orderplaced-successfully { color: $txt-gray; }
-		}
-
-		.btn-continue-shop, 
-		.bank-invoice-print-link {
-			color: #736c6b;
-		}
-
-		.consul-ebit {
-			float: right;
-			margin-top: 10px;
-		}
-
-		.quantity-price, 
-		.monetary { width: auto; }
-		.orderid { color: $green; }
-
-		#print-bank-invoice {
-			display: block;
-			margin-top: 15px;
-		}
-
-		.cart-items {
-			border: 3px solid $gray-l;
-
-			thead {
-				background-color: $gray-l;
-
-				th {
-					font-weight: normal;
-					padding: 15px;
-				}
-			}
-
-			.product-item {
-				border-bottom: 3px solid $gray-l;
-				padding: 15px 0;
-
-				&:last-child { border: none; }
-
-				td {
-					padding: 30px 10px;
-
-					&.product-name {
-						@include responsiveFont(14, 16, true);
+				#print-bank-invoice {
+					.link {
+						@extend %single-transition;
+						@include responsiveFont(13, 16, true);
+						background: $green;
+						border: 1px solid $green;
+						border-radius: 20px;
+						color: #ffffff;
 						font-weight: bold;
+						opacity: 1 !important;
+						padding: 8px 0;
+						text-align: center;
+						text-transform: uppercase;
+						width: 150px;
+
+						&:hover {
+							background: transparent;
+							color: $green;
+						}
+
+						@include breakpoint(small, 'max') { width: 100%; }
+					}
+				}
+
+				.black-70:not(.nowrap) {
+					@include responsiveFont(22, 16, true);
+					border-bottom: 1px solid $gray;
+					color: $green;
+					margin: 30px 0;
+					padding-bottom: 30px;
+
+					@include breakpoint(small, 'max') {
+						margin: 10px 0 20px;
+						padding-bottom: 10px;
+					}
+				}
+
+				.cconf-alert {
+					background: transparent;
+					border: 1px solid $gray;
+					border-radius: 0;
+					padding: 25px;
+
+					.fl {
+						width: 80%;
+
+						@include breakpoint(small, 'max') { width: 100%; }
 					}
 
-					&.shipping-date, 
-					&.product-price,
-					&.quantity, 
-					&.quantity-price {
-						@include responsiveFont(12, 16, true);
-						color: $txt-gray-l;
-						font-weight: normal;
+					.fr {
+						width: 20%;
+
+						@include breakpoint(small, 'max') {
+							margin-top: 10px;
+							width: 100%;
+						}
 					}
 
-					&.quantity-price {
+					.dark-green {
+						@include responsiveFont(13, 16, true);
+						color: $txt-gray;
+						margin-bottom: 0;
+					}
+
+					.f4 {
+						@include responsiveFont(16, 16, true);
+						color: $green;
+						margin-bottom: 20px;
+					}
+
+					.cconf-client-email { color: $green; }
+				}
+
+				.pt4 {
+					@include breakpoint(small, 'max') { padding-top: 20px; }
+
+					.lh-copy {
+						@include responsiveFont(18, 16, true);
 						color: $green;
 						font-weight: bold;
+
+						#order-id { font-weight: normal; }
 					}
 				}
-			}
-		}
 
-		.payment-info {
-			.payments-list {
-				@include responsiveFont(14, 16, true);
+				.cconf-address,
+				.cconf-payment,
+				.cconf-summary {
+					margin: 0 10px;
+					width: 350px;
 
-				.bank-invoice-print-link { margin-top: 10px; }
-
-				@include breakpoint(small, 'max') {
-					.order-print-bank-invoice-mini {
+					@include breakpoint(small, 'max') {
 						display: block;
+						margin: 10px 0;
+						padding: 0;
 						width: 100%;
 					}
-				}
-			}
-		}
 
-		.general-info { margin-left: 0; }
+					&>.fl {
+						border: 1px solid $gray;
+						box-shadow: none;
+						height: 170px;
+						min-height: 170px;
 
-		.shipping-info {
-			border: 3px solid $gray-l;
-			display: inline-block!important;
+						@include breakpoint(small, 'max') {
+							height: auto;
+							min-height: auto;
+						}
 
-			h3 { padding: 0 15px; }
+						.lh-copy {
+							@include responsiveFont(13, 16, true);
+							color: $txt-gray;
+							font-weight: normal;
 
-			address {
-				margin-bottom: 0;
+							strong { font-weight: normal; }
+						}
+					}
 
-				ul {
-					li {
-						border-top: 1px solid $gray-l;
-						padding: 5px 15px;
+					.tracked-mega {
+						@include responsiveFont(13, 16, true);
+						color: $green;
+						letter-spacing: initial;
 					}
 				}
-			}
 
-		}
+				.cconf-address {
+					margin-left: 0;
 
-		.total-info {
-			border: 3px solid $gray-l;
+					@include breakpoint(small, 'max') { margin-top: 0; }
 
-			.section-info-title {display: none;}
+					.lh-copy {
+						.mt1 {
+							&>div {
+								display: inline-block;
+								width: auto;
+							}
+						}
+					}
+				}
 
-			tr {
-				border-bottom: 1px solid $gray-l;
-				&.last-child { border-bottom: none; }
+				.cconf-payment {
+					.dib:not(.link) { display: none; }
 
-				td {
-					padding: 10px;
+					.db {
+						float: none;
+						margin-left: 5px;
+						padding-left: 10px;
+						position: relative;
 
-					&.info { text-align: right; }
+						@include breakpoint(small, 'max') { display: inline-block; }
+
+						&:before {
+							content: '-';
+							display: inline-block;
+							left: 0;
+							position: absolute;
+							top: -2px;
+						}
+					}
+
+					#print-bank-invoice {
+						.link { margin-top: 16px; }
+					}
+				}
+
+				.cconf-summary {
+					margin-right: 0;
+					position: relative;
+
+					@include breakpoint(small, 'max') {
+						margin-bottom: 0;
+						padding-bottom: 50px;
+					}
+
+					.lh-copy {
+						padding: 0;
+
+						.tracked-mega { padding: 15px 15px 0; }
+					}
+
+					.cf {
+						margin: 5px 0;
+						padding: 0 15px;
+
+						.tr { font-weight: bold; }
+
+						&:last-child {
+							background: $gray-l;
+							bottom: 0;
+							left: 0;
+							margin-bottom: 0;
+							padding: 15px;
+							position: absolute;
+							text-transform: uppercase;
+
+							&>div {
+								color: $green;
+								font-weight: bold;
+							}
+						}
+					}
+
+					.b--light-gray { display: none; }
+				}
+
+				.pv4 {
+					.mb0 { color: $txt-gray; }
+
+					.lh-copy { color: $green; }
+
+					.black-70 {
+						&.nowrap {
+							background: $green;
+							border-radius: 0;
+							color: #ffffff;
+							font-weight: bold;
+							padding: 0 8px;
+							text-transform: uppercase;
+
+							@include breakpoint(small, 'max') {
+								margin: 0;
+								margin-left: 10px;
+								margin-top: 10px;
+							}
+						}
+					}
+				}
+
+				.cconf-product-table {
+					@include breakpoint(small, 'max') { margin-bottom: 0; }
+
+					thead {
+						background: $gray-l;
+						border-color: transparent;
+						color: $txt-gray;
+						text-transform: uppercase;
+
+						@include breakpoint(small, 'max') {
+							tr { display: inline-block; }
+						}
+
+						th {
+							text-align: center;
+
+							@include breakpoint(small, 'max') { width: 60px; }
+
+							&:first-child {
+								padding-left: 25px;
+								text-align: left;
+
+								@include breakpoint(small, 'max') { width: 140px; }
+							}
+
+							&:nth-child(2) {
+								@include breakpoint(small, 'max') { display: none; }
+							}
+
+							&:last-child {
+								@include breakpoint(small, 'max') { width: 80px; }
+							}
+						}
+					}
+
+					tbody {
+						border: 1px solid $gray;
+						border-top: 0;
+
+						tr {
+							border-color: transparent;
+
+							@include breakpoint(small, 'max') { display: inline-block; }
+						}
+
+						td {
+							border-top: 0;
+							color: $txt-gray;
+							padding: 50px 0;
+							text-align: center;
+
+							@include breakpoint(small, 'max') {
+								@include responsiveFont(12, 16, true);
+								float: left;
+								width: 60px;
+							}
+
+							&:first-child {
+								display: inline-block;
+								padding: 25px 0;
+								padding-left: 15px;
+								text-align: left;
+								width: 400px;
+
+								@include breakpoint(small, 'max') {
+									width: 135px;
+
+									p { @include responsiveFont(12, 16, true); }
+								}
+
+								.db { display: none; }
+							}
+
+							&:nth-child(2) {
+								@include breakpoint(small, 'max') { display: none; }
+							}
+
+							&:last-child {
+								color: $green;
+								font-weight: bold;
+
+								@include breakpoint(small, 'max') { width: 80px; }
+							}
+
+							&>div { padding-top: 10px; }
+						}
+					}
+				}
+
+				.cconf-myorders-button,
+				.cconf-continue-button {
+					@extend %single-transition;
+					background: transparent;
+					border: 1px solid $green;
+					border-radius: 20px;
+					color: $green;
+					font-weight: bold;
+					padding: 10px 0;
+					text-transform: uppercase;
+
+					&:hover {
+						background: $green;
+						color: #ffffff;
+					}
+				}
+
+				.cconf-continue-button {
+					@include breakpoint(small, 'max') { margin: 10px 0 20px; }
 				}
 			}
-
-			tfoot {
-				td { @include responsiveFont(16, 16, true); }
-				.monetary { color: $green; }
-			}
-		}
-
-		.orderplaced-hr-continue { display: none; }
-	}
-	// =====================================
-	// TOOLS
-	// ===================================
-	.social {
-		height: 150px;
-	    position: relative;
-	    top: 40px;
-	    width: 40%;
-	    @include breakpoint(extra-small, 'max') {
-		    height: 130px;
-		    width: 100%;
-	    }
-		p {
-			@include breakpoint(extra-small, 'max') {
-				font-size: 18px!important;
-				margin-bottom: 20px!important;
-				width: 210px;
-			}
-		}
-	}
-
-	.at-share-btn {
-		background-color: #94bc42!important;
-	}
-
-	.at-style-responsive .at-share-btn {
-		margin-left: 30px!important;
-		&:first-child {
-			margin-left: 0!important;
 		}
 	}
 }
