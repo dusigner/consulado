@@ -1,0 +1,158 @@
+<hr />
+<div class="order__recurrence" data-id={id}>
+	<div class="order__recurrence-info">
+		<div class="order__recurrence-profile">
+			<p class="order__recurrence-title order__recurrence-name color-green weight-semibold text-uppercase">{clientProfileData.firstName} {clientProfileData.lastName}</p>
+			<p class="order__recurrence-email">{clientProfileData.email}</p>
+			<p class="order__recurrence-document text-uppercase">{clientProfileData.documentType} {clientProfileData.document}</p>
+			<div class="order__recurrence-toggle js-header-toggle">
+				{>"recurrenceToggle"/}
+			</div>
+		</div>
+
+		<div class="order__recurrence-payment">
+			<p class="order__recurrence-title color-green weight-semibold text-uppercase">Forma de pagamento</p>
+			<div class="order__recurrence-card">
+				<p class="order__recurrence-card-name">{paymentData.paymentSystemName}</p>
+				<span class="order__card-info">
+					<i class="order__card-icon order__card--{paymentData.paymentSystemName|sanitize}"></i>
+					<span>{paymentData.cardNumber}</span>
+				</span>
+				<p>
+					<a href="#accounts-modal" class="js-recurrence-payment" data-title="Alterar forma de pagamento">
+						<span>Alterar forma de pagamento</span>
+						<svg fill="#000000" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+							<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+						</svg>
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<hr />
+
+{! Each recurrences template !}
+{#items}
+	<div class="myorders__order clearfix js-single-recurrence"
+	data-order-id="{id}"
+	data-order-sku="{sku}">
+		<div class="order__header js-toggle-orders order__header--closed">
+			<ul class="order__header-list">
+				<li class="order__header-item text-center color-green">{name|s|shortName}</span></li>
+				<li class="order__header-item text-center color-green hide-small hide-extra-small">Período de Recorrência a cada <strong>{frequency.interval} {frequency.periodicity|frequencyText}</strong></span></li>
+				<li class="order__header-item text-center color-green hide-small hide-extra-small">{>"recurrenceToggle" isItem="true"/}</li>
+
+			</ul>
+			<i class="icon icon-arrow-up"></i>
+		</div>
+
+		<div class="order__wrapper js-toggle-container">
+			<div class="order__body clearfix">
+				<div class="order__items order__items--recurrence">
+					<table class="order__table text-center">
+						<thead class="text-uppercase">
+							<tr>
+								<th class="text-left" colspan="2">Produtos</th>
+								<th class="order__hide--mobile">Quantidade</th>
+								<th class="order__hide--mobile">Período de recorrência</th>
+								<th class="order__hide--mobile">Próxima entrega</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="order__item order__item--{sku} order__items--{id} js-order-item">
+								<td class="order__item-image"><img src="{imageUrl}" alt="{name}" title="{name}"></td>
+								<td class="order__item-name text-left">{name}</td>
+								<td class="order__hide--mobile">{quantity}</td>
+								<td class="order__hide--mobile">-</td>
+								<td class="order__hide--mobile">-</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td class="order__recurrence-icon"></td>
+								<td class="order__item-name text-left">
+										Recorrência {>"recurrenceStatus"/}<br />
+										<em class="order__hide--desk">(a cada {frequency.interval} {frequency.periodicity|frequencyText})</em><br />
+										<a href="#edit-recurrence-item" class="js-recurrence-item-edit order__hide--desk"
+										data-title="Editar recorrência"
+										{>"recurrenceData"/}>
+											<span>Editar</span>
+											<svg fill="#000000" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+												<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+											</svg>
+										</a>
+								</td>
+								<td class="order__hide--mobile">-</td>
+								<td class="order__hide--mobile">A cada {frequency.interval} {frequency.periodicity|frequencyText}</td>
+								<td class="order__hide--mobile">{nextDelivery|formatDatetimeBRL}</td>
+								<td>
+									<a href="#edit-recurrence-item" class="js-recurrence-item-edit order__hide--mobile"
+									data-title="Editar recorrência"
+									{>"recurrenceData"/}>
+										<span>Editar</span>
+										<svg fill="#000000" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+											<path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+										</svg>
+									</a>
+									<div class="order__hide--desk">
+										{>"recurrenceToggle" isItem="true"/}
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="order__infos">
+					<div class="order__info order__info--shipping-data">
+						<p class="order__info-title text-uppercase weight-semibold">Endereço de entrega</p>
+
+						<div class="order__info-content">
+							<p>{shippingAddress.receiverName}</p>
+							<p>
+								<span>{shippingAddress.street}, </span>
+								<span>{shippingAddress.number}</span>
+								{?shippingAddress.complement}<span> - {shippingAddress.complement}</span>{/shippingAddress.complement}
+							</p>
+							<p>{shippingAddress.city} - {shippingAddress.state}</p>
+						</div>
+					</div>
+
+					<div class="order__info order__info--payment">
+						<p class="order__info-title text-uppercase weight-semibold">Forma de Pagamento</p>
+
+						<div class="order__info-content">
+							<p>{paymentData.paymentSystemName}</p>
+							<p class="order__card-info">
+								<i class="order__card-icon order__card--{paymentData.paymentSystemName|sanitize}"></i>
+								<span>{paymentData.cardNumber}</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="order__footer clearfix">
+				<div class="float-right">
+						<a href="#cancel-recurrence-item" class="order__cancel js-recurrence-item-cancel"
+						data-title="Excluir Item"
+						{>"recurrenceData"/}>
+						<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+							<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+						</svg>
+						<span>Excluir Item</span>
+					</a>
+
+					<a href="https://compracerta.custhelp.com/app/atendimento" target="_blank">
+						<i class="order__icon order__icon--doubt"></i>
+						<span>Ajuda?</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+{:else}
+	<h2 class="text-center">Você ainda não possui pedidos!</h2>
+{/items}

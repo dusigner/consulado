@@ -1,0 +1,99 @@
+<!-- Modal -->
+<div class="modal fade" id="modal-termo-coleta" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
+				<h4 class="modal-title" id="myModalLabel">Sobre o serviço de coleta reversa</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row-fluid">
+					<h3>Selecione o produto à ser coletado</h3>
+					<select name="produto-coletado" id="produto-coletado">
+						<option value="">Selecione...</option>
+						<option value="Adega de Vinho">Adega de Vinho</option>
+						<option value="Ar Condicionado">Ar Condicionado</option>
+						<option value="Armário e Rack">Armário e Rack</option>
+						<option value="Aspirador de pó">Aspirador de pó</option>
+						<option value="Batedeira">Batedeira</option>
+						<option value="Cadeira e Banqueta">Cadeira e Banqueta</option>
+						<option value="Cafeteira">Cafeteira</option>
+						<option value="Câmera e Filmadora">Câmera e Filmadora</option>
+						<option value="Cervejeira">Cervejeira</option>
+						<option value="Chaleira">Chaleira</option>
+						<option value="Chopeira">Chopeira</option>
+						<option value="Climatizador">Climatizador</option>
+						<option value="Coifa e Depurador">Coifa e Depurador</option>
+						<option value="Cooktop">Cooktop</option>
+						<option value="Ferro de passar roupas">Ferro de passar roupas</option>
+						<option value="Fogão">Fogão</option>
+						<option value="Forno">Forno</option>
+						<option value="Forno Elétrico">Forno Elétrico</option>
+						<option value="Freezer">Freezer</option>
+						<option value="Frigobar">Frigobar</option>
+						<option value="Fritadeira">Fritadeira</option>
+						<option value="Geladeira / Refrigerador">Geladeira / Refrigerador</option>
+						<option value="Grill">Grill</option>
+						<option value="Home Theater e Blu Ray Player">Home Theater e Blu Ray Player</option>
+						<option value="Lava e Seca">Lava e Seca</option>
+						<option value="Lavadora de Roupas">Lavadora de Roupas</option>
+						<option value="Lava-Louças">Lava-Louças</option>
+						<option value="Liquidificador">Liquidificador</option>
+						<option value="Máquina de Waffles">Máquina de Waffles</option>
+						<option value="Máquina de Bebidas">Máquina de Bebidas</option>
+						<option value="Mesa">Mesa</option>
+						<option value="Micro-ondas">Micro-ondas</option>
+						<option value="Mixer e Processador">Mixer e Processador</option>
+						<option value="Panela">Panela</option>
+						<option value="Sanduicheira">Sanduicheira</option>
+						<option value="Secadora de Roupas">Secadora de Roupas</option>
+						<option value="Tablet e Notebook">Tablet e Notebook</option>
+						<option value="Telefonia">Telefonia</option>
+						<option value="Torradeira">Torradeira</option>
+						<option value="TV">TV</option>
+					</select>
+				</div>
+
+
+				<form id="responsavelColeta">
+					<div class="row-fluid">
+						<p class="span12">Por favor, preencha o endereço completo de coleta do produto:</p>
+					</div>
+					<div class="row-fluid">
+						<div class="span9">
+							<input type="text" name="enderecoColeta" class="enderecoColeta" placeholder="Endereço"/>
+						</div>
+						<div class="span3">
+							<input type="text" name="cepColeta" class="cepColeta" placeholder="CEP"/>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<p class="span12">Por favor, preencha o nome de outras pessoas que estão no local de coleta e que podem autorizar a coleta do produto:</p>
+					</div>
+					<div class="row-fluid">
+						<div class="span6"><input type="text" name="nameColeta1" class="nameColeta1" placeholder="Nome Completo 1"/></div>
+						<div class="span6"><input type="text" name="nameColeta2" class="nameColeta2" placeholder="Nome Completo 2"/></div>
+					</div>
+				</form>
+				<ol>
+					<li>Entrega do produto mencionado, conforme contratação do serviço de coleta;</li>
+					<li>O produto deve estar livre de qualquer tipo de alimento, resíduo e objetos. (Caso identificado pelo transportador o produto não será coletado – vide tabela específica);</li>
+					<li>Produto deve estar desligado e desinstalado;</li>
+					<li>Acesso ao produto deve estar livre e desimpedido de qualquer obstáculo que possa interferir na retirada do mesmo;</li>
+					<li>Fornecer data e horário para coleta no ato do contato telefônico e/ou outros meios;</li>
+					<li>O refrigerador obrigatoriamente precisa estar acompanhado do compressor;</li>
+					<li>O compressor não deverá conter nenhum vazamento. Isto implicará na recusa da coleta pelo transportador. A mesma será entendida como serviço prestado;</li>
+					<li>O endereço de coleta deverá ser o mesmo da compra do novo. Não poderá ser alterado após conclusão.</li>
+                  	<li>A entrega do produto novo e coleta do produto antigo serão realizadas simultaneamente (no mesmo momento).</li>
+				</ol>
+
+				<div class="row-fluid">
+					<p class="span12">Ao prosseguir você aceita as condições acima e o <a href="#">termo de doação</a> para a coleta de produto antigo.</p>
+				</div>
+
+				<button type="button" class="btn btm-primary" disabled data-dismiss="modal">Continuar</button>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -59,7 +59,8 @@ var getPath = function ( source ) {
 gulp.task('sassLint', function () {
 
 	return gulp.src(getPath('styles')
-	.concat('!src/styles/helpers/*'))
+	.concat('!src/styles/helpers/*')
+	.concat('!src/styles/libs/*'))
 	.pipe(cached('sassLinting'))
 	.pipe(sassLint({
 			options: {
@@ -121,7 +122,7 @@ gulp.task('scriptsCheckout',  function () {
 		plugins.push( new webpack.webpack.optimize.UglifyJsPlugin({minimize: true}) );
 	}
 
-	return gulp.src(['src/scripts/checkout5-custom.js', 'src/scripts/orderplaced2-custom.js'])
+	return gulp.src(['src/scripts/checkout5-custom.js', 'src/scripts/checkout-confirmation-custom.js'])
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
@@ -231,7 +232,10 @@ gulp.task('styles', ['sassLint'], function () {
 		}).on('error', $.sass.logError))
 		.pipe($.autoprefixer())
 		.pipe( $.util.env.production ? $.postcss([
-			cssnano({zindex:false}),
+			cssnano({
+				zindex: false,
+				reduceIdents: false
+			}),
 			cssMqpacker()
 		]) : $.postcss([
 			cssMqpacker()

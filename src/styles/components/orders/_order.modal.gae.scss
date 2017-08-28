@@ -31,7 +31,6 @@
 	&__body {
 		@include breakpoint(medium, 'min') { min-width: 550px; };
 		background: #fff;
-		border-radius: 10px;
 		display: inline-block;
 		left: 50%;
 		opacity: 0;
@@ -45,7 +44,7 @@
 
 	&__title {
 		@include font-size(18px, true, false);
-		color: $orange;
+		color: $green;
 		font-weight: bold;
 		margin-top: 0;
 	}
@@ -56,15 +55,37 @@
 		padding: 1em;
 	}
 
-	&__confirm,
-	&__cancel {
-		@include font-size(14px, true, false);
-		padding: .7em 2.5em;
+	&__ctas {
+		.modal-gae__confirm,
+		.modal-gae__cancel {
+			@include font-size(14px, true, false);
+			display: inline-block;
+			padding: .7em 2.5em;
+		}
+
+		// .modal-gae__confirm {
+		// 	background-color: $green;
+		// 	border-color: $green;
+		// 	color: #fff;
+
+		// 	&:hover {
+		// 		color: $green;
+		// 	}
+		// }
+
+		// .modal-gae__cancel {
+		// 	background-color: #fff;
+		// 	border-color: $green;
+
+		// 	&:after { background-color: $green; }
+
+		// 	&:hover { color: #fff; }
+		// }
 	}
 
 	&__confirm {
 		@include breakpoint(medium, 'min') { margin: 0 2em 0 0 };
-		margin: 1em 0;
+		margin: 0 0 2em 0;
 	}
 
 	&__content {
