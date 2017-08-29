@@ -34,6 +34,10 @@ String.prototype.render = function(obj) {
 	});
 };
 
+String.prototype.replaceAll = String.prototype.replaceAll || function(needle, replacement) {
+	return this.split(needle).join(replacement);
+};
+
 if (!String.prototype.trim) {
 	String.prototype.trim = function() {
 		return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '');
