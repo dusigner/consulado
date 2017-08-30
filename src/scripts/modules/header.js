@@ -61,7 +61,6 @@ Nitro.module('header', ['menu-hover'], function() {
 		$('.customItemMenu').css('display', 'inline-block');
 	}
 
-
 	//TODO: move mask to module;
 	$('.mask').on('click', function(e) {
 		e.preventDefault();
@@ -110,7 +109,7 @@ Nitro.module('header', ['menu-hover'], function() {
 		$(this).siblings('.submenu').slideToggle('slow');
 	});
 
-	if( store && store.isCorp ) {		
+	if( store && store.isCorp ) {
 		$('.logout a').click(function(e) {
 			e.preventDefault();
 			store.logout();
