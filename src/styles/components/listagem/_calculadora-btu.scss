@@ -10,73 +10,27 @@
 	position: relative;
 	transition: max-height .5s ease, max-width .5s ease;
 
-	@include breakpoint(1280px, 'max') {
-		// max-height: 420px;
-		max-width: 1000px;
-	}
+	@include breakpoint(1280px, 'max') { max-width: 1000px; }
 
-	@include breakpoint(1120px, 'max') {
-		// max-height: 500px;
-	}
+	@include breakpoint(1012px, 'max') { max-width: 600px; }
 
-	@include breakpoint(1012px, 'max') {
-		max-width: 600px;
-	}
-
-	@include breakpoint(960px, 'max') {
-		// max-height: 500px;
-	}
-
-	@include breakpoint(768px, 'max') {
-		// margin: 10px auto;
-		// max-height: 600px;
-		margin: 0 auto;
-	}
+	@include breakpoint(768px, 'max') { margin: 0 auto; }
 
 	#calculadora-btu {
-		// @include breakpoint(1280px, 'min') { height: 700px !important; }
-
 		display: block;
-		// margin: 15px auto;
-		max-height: 250px;
 		position: relative;
-		// transform: translate(0, 0);
 		width: 1300px;
 
 		&.initiated { max-height: initial; }
 
 		@include breakpoint(1280px, 'max') {
-			// height: 930px;
 			max-width: 100%;
-			// transform: translate(0, -5%);
 			width: 100%;
 		}
 
-		@include breakpoint(1120px, 'max') {
-			// transform: translate(0, 20%);
-		}
+		@include breakpoint(1012px, 'max') { max-width: 600px; }
 
-		@include breakpoint(1012px, 'max') {
-			max-width: 600px;
-			// transform: translate(0, 10%);
-		}
-
-		@include breakpoint(960px, 'max') {
-			// transform: translate(0, 15%);
-		}
-
-		@include breakpoint(768px, 'max') {
-			// margin: 30px 0 0 0;
-			// transform: translate(0, 20%);
-		}
-
-		@include breakpoint(480px, 'max') {
-			// transform: translate(0, 25%);
-		}
-
-		@include breakpoint(360px, 'max') {
-			// transform: translate(0, 30%);
-		}
+		@include breakpoint(480px, 'max') { max-height: 250px; }
 	}
 }
 
