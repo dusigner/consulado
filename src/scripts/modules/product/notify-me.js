@@ -35,8 +35,8 @@ Nitro.module('notify-me', function() {
 	}
 
 	//Adicionar campo telefone no notify-me
-	$('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
-	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
+	// $('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
+	// $('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
