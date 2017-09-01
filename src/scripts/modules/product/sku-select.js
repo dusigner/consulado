@@ -62,6 +62,10 @@ Nitro.module('sku-select', function() {
 							$('#modal-sku .options').append(templateVoltagem.template);
 						}
 
+						if ($('#modal-sku .buy-button.buy-button-ref').is(':visible') === true) {
+							$('.modal-voltagem').remove(); 
+						}
+
 						$('.btn-avise').click(function() {
 
 							if ($('.modal-holder').is(':visible')) {
