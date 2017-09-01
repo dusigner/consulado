@@ -210,15 +210,19 @@ header {
 	// }
 }
 
+div.minicart { float: right }
+
 // Conta
 div.account {
 	@include responsiveFont(12);
+	color: $txt-gray-l;
 	font-weight: 700;
 	height: 50px;
-	padding: fluidWidth(5px) 0;
-	padding-left: fluidWidth(25px);
+	padding: 0 0 0 fluidWidth(25px);
 	position: relative;
 	text-transform: uppercase;
+
+	@include breakpoint(extra-large, 'max') { width: 22.66667%; }
 
 	@include breakpoint(small, 'max') {
 		display: none;
@@ -240,67 +244,88 @@ div.account {
 		.header & { left: 62%; }
 	}
 
-	.icon-consul-account {
-		@include responsiveFont(40);
+	.icon-brastemp-account {
+		@include responsiveFont(33, 16, true);
+		color: $gray-d;
 		display: block;
 		float: left;
+		font-weight: bold;
 		height: 50px;
 		line-height: 42px;
 		margin-right: 10px;
+		margin-top: 5px;
 		width: 30px;
-
-		@include breakpoint(small, 'min') { color: $txt-gray-l; }
-
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(24, 16, true);
-			line-height: 50px;
-		}
 	}
 
-	a {
-		color: $txt-gray;
-		display: block;
-		vertical-align: middle;
-	}
+	// a {
+	// 	color: $txt-gray;
+	// 	display: block;
+	// }
 
 	.hide { @include show-conditional(); }
 
 	.welcome {
-		@include responsiveFont(12);
+		// @include responsiveFont(12);
+		color: $green;
 		display: block;
-		left: 35%;
-		margin: 0;
-		position: absolute;
-		width: 75%;
+		// left: 35%;
+		// font-size: 0;
+		margin: 0 0 .5em;
+		position: relative;
+		// width: 75%;
 
-		em { font-style: normal; }
+		em {
+			display: block;
+			font-size: 12px;
+			font-style: normal;
+		}
 
 		a {
-			color: $orange;
+			color: $green;
+			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				display: block;
-				padding: 3px 0;
+				bottom: -8px;
+				font-size: 10px;
+				left: 30px;
+				position: absolute;
 			}
 		}
 	}
 
-	.logout {
-		a { font-size: 0; }
-	}
-
 	#login {
 		@include responsiveFont(12, 16, true);
-		background-color: #fff;
-		color: $orange;
+		background-color: #ffffff;
+		color: $green;
 		display: block;
-		height: 100%;
+		// height: 100%;
 		padding: 3px 0 0 0;
-		position: absolute;
+		// position: absolute;
 		top: 0;
-		width: 100%;
+		// width: 100%;
 
 		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
+	}
+
+	.account__icon {
+		display: inline-block;
+		margin-right: .5em;
+		vertical-align: middle;
+		width: 20px;
+
+		&--enter,
+		&--profile {fill: $green}
+		&--truck {fill: $gray-d}
+	}
+
+	.view-cotas {
+		background: $green;
+		color: #fff;
+		padding: 1px 1.2em;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translateX(90%);
 	}
 }
 

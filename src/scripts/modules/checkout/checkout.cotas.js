@@ -106,7 +106,8 @@ Nitro.module('checkout.cotas', function() {
 		if(store && store.userData && store.userData.email) {
 			return store.userData.email;
 		}
-		return $('.orderplaced-sending-email strong').text().replace(/\s+/g, '');
+
+		return $('strong.cconf-client-email').text().replace(/\s+/g, '');
 	};
 
 	/*
@@ -128,6 +129,7 @@ Nitro.module('checkout.cotas', function() {
 	 * Ao finalizar compra (orderplaced) atualiza MD com novo valor consumido de cotas
 	 */
 	this.updateCotasEletrodomesticos = function() {
+		$.removeCookie('xSkuSalesChannel5');
 
 		var eletrodomesticos = 0;
 
