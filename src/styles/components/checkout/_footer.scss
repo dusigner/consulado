@@ -5,42 +5,70 @@ body {
 		position: relative;
 		z-index: 10;
 
+		.container {
+			@include breakpoint('extra-small', 'max') { max-width: 90%; }
+		}
+
 		.footer-politica-privacidade {
-			padding: 45px 0;
+			@include breakpoint('medium', 'min') { padding: 45px 0; }
+			@include breakpoint('small', 'min') { padding: 30px 0; }
 
 			a {
-				color: #ffffff;
-				font-size: 13px;
+				@include breakpoint('small', 'max') { padding: 20px 0; }
+				@include breakpoint('medium', 'max') {
+					display: block;
+					font-weight: bold;
+				}
+				color: #fff;
+				font-size: 14px;
 				text-decoration: none;
+			}
+
+			&.span2 {
+				@include breakpoint('small', 'min') {
+					@include breakpoint('large', 'max') { width: 190px; }
+				}
+				@include breakpoint('small', 'max') { width: 100%; }
 			}
 		}
 
 		.footer-selos {
-			padding: 30px 0;
+			@include breakpoint('large', 'max') { text-align: left; }
+			@include breakpoint('small', 'min') { padding: 30px 0; }
+			@include breakpoint('small', 'max') { margin-bottom: 20px; }
+
+			&.span6 {
+				@include breakpoint('large', 'max') { width: 300px; }
+			}
 
 			.txt {
-				@include responsiveFont(13);
-				line-height: 50px;
+				@include breakpoint('medium', 'min') { line-height: 50px; }
+				@include breakpoint('medium', 'max') { font-weight: bold; }
+				@include breakpoint('large', 'max') { display: block; }
+				@include breakpoint('small', 'max') { padding: 0 0 20px 0; }
+				font-size: 14px;
 			}
 
 			img {
+				@include breakpoint('large', 'max') { margin: 0; }
 				margin-left: 10px;
 				margin-right: 60px;
 			}
 
 			ul.selos {
+				@include breakpoint('large', 'max') { margin: 0; }
 				margin-bottom: 0;
 				min-width: 100px;
 
-				&, 
+				&,
 				li {
 					display: inline-block;
 					vertical-align: middle;
 				}
 
-				.digicert img {height: 35px;}
+				.digicert img { height: 35px; }
 
-				.ebit img {height: 50px;}
+				.ebit img { height: 50px; }
 			}
 		}
 
