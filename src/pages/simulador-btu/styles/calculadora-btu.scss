@@ -102,6 +102,10 @@ body.listagem.btu.page-calculadora-btu {
 			}
 		}
 
+		.btn-no-input {
+			&.selected { opacity: .6; }
+		}
+
 		.ambientacao {
 			.introducao {
 				text-align: center;

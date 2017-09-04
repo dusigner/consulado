@@ -142,18 +142,26 @@
                                                                         anos
                                                                     {{/eq}}
                                                                 {{else}}
-                                                                    {{#eq frequency.periodicity "weekly"}}
+                                                                    {{#eq frequency.periodicity "monthly"}}
                                                                         {{#eq frequency.interval 1}}
-                                                                            semana
+                                                                            mês
                                                                         {{else}}
-                                                                            semanas
+                                                                            meses
                                                                         {{/eq}}
                                                                     {{else}}
-                                                                        {{#eq frequency.periodicity "daily"}}
+                                                                        {{#eq frequency.periodicity "weekly"}}
                                                                             {{#eq frequency.interval 1}}
-                                                                                dia
+                                                                                semana
                                                                             {{else}}
-                                                                                dias
+                                                                                semanas
+                                                                            {{/eq}}
+                                                                        {{else}}
+                                                                            {{#eq frequency.periodicity "daily"}}
+                                                                                {{#eq frequency.interval 1}}
+                                                                                    dia
+                                                                                {{else}}
+                                                                                    dias
+                                                                                {{/eq}}
                                                                             {{/eq}}
                                                                         {{/eq}}
                                                                     {{/eq}}
