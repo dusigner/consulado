@@ -67,8 +67,13 @@
 	    .sku-notifyme,
 	    .notifyme-client-name,
 	    .notifyme-client-email,
-	    .notifyme-button-ok
+	    input
 	     { display: block!important; }
+	     @include breakpoint(extra-small, 'max') {
+			&[href*='#relacionados'] {
+				display: none!important;
+			}
+		}
 	}
 
 	.back-window {
