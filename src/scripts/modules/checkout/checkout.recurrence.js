@@ -262,6 +262,5 @@ dust.filters.intAsCurrency = function(value) {
 };
 
 dust.filters.recurrenceSemanas = function(value) {
-	console.log('teste');
 	return (value === '36 semanas') ? '9 meses' : value;
 };
