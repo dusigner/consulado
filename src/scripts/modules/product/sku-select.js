@@ -41,6 +41,7 @@ Nitro.module('sku-select', function() {
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
 
+
 	if (!$('#modal-sku .buy-button.buy-button-ref').is(':visible')) {
 			$('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
 			$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
@@ -62,9 +63,9 @@ Nitro.module('sku-select', function() {
 							$('#modal-sku .options').append(templateVoltagem.template);
 						}
 
-						if ($(skuJson.skus[0].available === true) && (skuJson.skus[1].available === true)) {
-							$('.modal-voltagem').addClass('show'); 
-							// $('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
+						if (skuJson.skus[0].available === true && skuJson.skus[1].available === true) {
+							$('.modal-voltagem').addClass('hide'); 
+							$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
 						} else {
 							$('.modal-voltagem').removeClass('hide');
 						}
