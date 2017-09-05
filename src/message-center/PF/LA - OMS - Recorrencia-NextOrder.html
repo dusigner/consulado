@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="initial-scale=1.0">
+      <!-- So that mobile webkit will display zoomed in -->
+      <meta name="format-detection" content="telephone=no">
+      <!-- disable auto telephone linking in iOS -->
+      <style type="text/css">
+         /* Resets: see reset.css for details */
+         .ReadMsgBody { width: 100%; background-color: #ebebeb;}
+         .ExternalClass {width: 100%; background-color: #ebebeb;}
+         .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}
+         body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}
+         body {padding:0;}
+         table td {border-collapse:collapse;}
+         .yshortcuts a {border-bottom: none !important;}
+         /* Constrain email width for small screens */
+         @media screen and (max-width: 600px) {
+         table[class="container"] {
+         width: 100% !important;
+         }
+         }
+         /* Give content more room on mobile */
+         @media screen and (max-width: 480px) {
+         .status{padding-bottom:0px;}
+         }
+         /* Styles for forcing columns to rows */
+         @media only screen and (max-width : 600px) {
+         /* force container columns to (horizontal) blocks */
+         .container{border-radius:0 !important;}
+         .no-padding-top-bottom-mobile{padding-top:0;padding-bottom:0;padding:0 !important;}
+         .img-product{width:70px;}
+         .side-border td{padding-left:0;}
+         .button{padding:11px 0 !important;font-size:13px;width:100%;}
+         .table-button{width:100% !important;}
+         td[class="force-col"] {
+         display: block;
+         padding-right: 0 !important;
+         }
+         table[class="col-3"] {
+         /* unset table align="left/right" */
+         float: none !important;
+         width: 100% !important;
+         /* change left/right padding and margins to top/bottom ones */
+         padding-bottom: 12px;
+         border-bottom: 1px solid #eee;
+         }
+         /* remove bottom border for last column/row */
+         table[id="last-col-3"] {
+         border-bottom: none !important;
+         }
+         /* align images right and shrink them a bit */
+         img[class="col-3-img"] {
+         float: right;
+         margin-left: 6px;
+         max-width: 130px;
+         }
+         }
+         @media only screen and (max-width : 800px) {
+         .status{width:100% !important;}
+         .status div{width:200px !important;}
+         }
+      </style>
+   </head>
+   <body marginwidth="0" marginheight="0" bgcolor="#fff" style="padding:0px 0px;color:#333;" leftmargin="0" topmargin="0">
+      <!-- 100% wrapper (grey background) -->
+      <table width="100%" cellspacing="0" border="0" bgcolor="#fff">
+         <tbody>
+            <tr>
+               <td valign="top" bgcolor="#fff" align="center" class="no-padding-top-bottom-mobile" style="background-color: #fff;color:#333;">
+                  <!-- 600px container (white background) -->
+                  <table cellspacing="0" cellpadding="0" border="0" bgcolor="#fff" class="container" style="max-width:600px;">
+                     <tbody>
+                        <tr>
+                           <td bgcolor="#ffffff" align="left" class="container-padding" style="background-color: #ffffff; padding-left: 10px; padding-right: 3px; font-size: 13px; line-height: 19px; font-family: Helvetica, sans-serif; color: #333;">
+                              <br />
+                              <table width="100%" cellspacing="0" cellpadding="0" border="0" class="columns-container">
+                                 <tbody>
+                                    <tr>
+                                       <td class="force-col" style="padding-right: 20px;">
+                                          <!-- HEADER -->
+                                          <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c" style="font-family:Verdana, Geneva, sans-serif;">
+                                              <tr>
+                                                  <td align="center">
+                                                      <a href="http://loja.consul.com.br/" title="Consul" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="142" height="81" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Consul" /></a>
+                                                  </td>
+                                                  <td style="font-size:1px;">&nbsp;</td>
+                                              </tr>
+                                          </table>
+                                          <!-- HEADER -->
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td class="force-col">
+                                          <!-- ### BEGIN CONTENT ### -->
+                                          <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="left" style="padding-bottom:0;margin-bottom:0;" class="col-3">
+                                             <tbody>
+                                                <tr>
+                                                   <td align="left">
+                                                      <div style="color: #7F7F7F; font-size: 23px; font-family: sans-serif;font-weight:bold;">A data do seu proximo pedido está chegando!</div>
+                                                      <span style="font-size:16px;color:#BBB;display:inline-block;">previsto para: {{formatDate recurrence.nextDelivery}}</span><br /><br />
+                                                      <span style="font-size:18px;">Olá, <strong>{{recurrence.clientProfileData.firstName}}</strong>.</span><br>
+                                                      <div style="padding-top:3px;padding-bottom:10px;">Obrigado por registrar uma recorrência em nossa loja.Seu próximo pedido contém os itens abaixo:</div>
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                       </td>
+                                    </tr>
+                                    {{#each simulatedPurchase.purchases}}
+                                    <tr>
+                                       <td class="force-col" style="padding-right: 20px;">
+                                          <table cellspacing="0" cellspacing="0" style="padding-top:5px;padding-bottom:5px;padding-right:10px;" border="0" align="left" class="side-border">
+                                             <tbody>
+                                                <tr>
+                                                   <td style="padding-bottom:0;">
+                                                      <div style="color:#BBB;font-size:14px;font-weight:bold;text-transform:uppercase;">Endereço de entrega
+                                                      </div>
+                                                      <strong>{{shippingAddress.receiverName}}</strong><br />
+                                                      {{shippingAddress.street}} - {{shippingAddress.number}} - {{shippingAddress.neighborhood}}<br />
+                                                      {{shippingAddress.city}} - {{shippingAddress.state}}<br />
+                                                      {{shippingAddress.postalCode}}<br />
+                                                   </td>
+                                                </tr>
+                                             </tbody>
+                                          </table>
+                                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left" style="padding-bottom: 10px;border:none;border-left:0px;border-right:0px;" class="col-3">
+                                             <tbody>
+                                                {{#each items}}
+                                                <tr>
+                                                   <td align="left">
+                                                      <table cellpadding="10" align="left" style="padding-top:5px;">
+                                                         <tbody>
+                                                            <tr>
+                                                               <td>
+                                                                  <img src="{{imageUrl}}">
+                                                               </td>
+                                                               <td style="padding-left:0;padding-bottom:0;padding-top:0;">
+                                                                  <span>{{name}}</span><br>
+
+                                                                  <table cellpadding="10" align="left" style="padding-top:5px;">
+                                                                      <tbody>
+                                                                          <tr>
+                                                                              <td style="padding-left:0;padding-bottom:0;padding-top:0;">
+                                                                                  Entrega
+                                                                                  <strong>
+                                                                                  <span style="display:inline-block;">
+
+
+
+
+                                                                                       {{#if logisticInfo.deliveryWindow}}
+                                                                                       Agendada
+                                                                                       {{else}}
+                                                                                           {{#unless logisticInfo.shippingEstimateDate}}
+                                                                                               </strong>em até <strong>
+                                                                                               {{#hasSubStr logisticInfo.shippingEstimate 'bd'}}
+                                                                                                   {{replace logisticInfo.shippingEstimate 'bd' ' dias úteis.'}}
+                                                                                               {{else}}
+                                                                                                   {{replace logisticInfo.shippingEstimate 'd' ' dias.'}}
+                                                                                               {{/hasSubStr}}
+                                                                                           {{else}}
+                                                                                               </strong>até <strong>
+                                                                                               {{formatDate logisticInfo.shippingEstimateDate}}
+                                                                                           {{/unless}}
+                                                                                       {{/if}}
+
+
+
+
+                                                                                  </span>
+                                                                                  </strong><br>
+                                                                              </td>
+                                                                          </tr>
+                                                                      </tbody>
+                                                                  </table>
+
+                                                                  <table cellpadding="5" align="right" style="padding-top:5px;">
+                                                                     <tbody>
+                                                                        <tr>
+                                                                           <td style="padding-left:0;padding-bottom:0;padding-top:0;">
+                                                                              <span>{{quantity}}x R$ {{formatCurrency price}}</span><br>
+                                                                           </td>
+                                                                        </tr>
+                                                                     </tbody>
+                                                                  </table>
+
+                                                               </td>
+                                                            </tr>
+                                                         </tbody>
+                                                      </table>
+
+                                                   </td>
+                                                </tr>
+                                                {{/each}}
+                                             </tbody>
+                                          </table>
+
+                                       </td>
+                                    </tr>
+                                    <!-- TABELA DE TOTALIZADORES DA ORDER -->
+                                    <tr>
+                                        <td>
+                                            <table cellspacing="0" cellpadding="4" border="0" align="right" style="margin-bottom:15px;border: 1px solid #BBB;padding-top:7px;padding-bottom:7px;padding-left:7px;padding-right:7px;" bgcolor="#f9f9f9">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" align="right" style="color:#7F7F7F;">
+                                                                        Itens
+                                                        </td>
+                                                        <td valign="top" align="right" style="text-align:left;">
+                                                                        R$ {{formatCurrency totals.items}}
+                                                        </td>
+                                                    <tr>
+                                                        <td valign="top" align="right" style="color:#7F7F7F;">
+                                                                        Entrega
+                                                        </td>
+                                                        <td valign="top" align="right" style="text-align:left;">
+                                                                        R$ {{formatCurrency totals.shipping}}
+                                                        </td>
+                                                    </tr>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                    <tr>
+                                       <td>
+                                          <strong>Atenciosamente,</strong><br>
+                                          <strong>Equipe {{_accountInfo.TradingName}}</strong>.<br><br>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <!-- FOOTER -->
+                                        <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+                                            <tr>
+                                                <td>
+                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#96cb1b">
+                                                        <tr>
+
+                                                            <td width="60" height="50" align="right" valign="middle">
+                                                                <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/mkt_consul-f-a01.jpg" width="38" height="38" border="0" style="display:block;border:none;border-left:0px;border-right:0px;" alt="Dúvidas? Clique aqui" /></a>
+                                                            </td>
+                                                            <td style="color:#ffffff;">
+                                                                &nbsp;&nbsp;Dúvidas? <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank" style="color:#ffffff;">Clique aqui</a>
+                                                            </td>
+                                                            <td width="158" align="left"><a href="http://loja.consul.com.br" title="Consul" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/mkt_consul-f-a02.jpg" width="155" height="79" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Consul" /></a></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size:10px;">
+                                                        <tr>
+                                                            <td height="20" style="font-size:1px;"></td>
+                                                            <td style="font-size:1px;">&nbsp;</td>
+                                                            <td style="font-size:1px;">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="40" style="font-size:1px;">&nbsp;</td>
+                                                            <td>
+                                                            Você poderá exercer o seu direito de arrependimento em até 7 dias úteis após o recebimento do produto, nos termos do Código de Defesa do Consumidor.  <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank">Clique aqui</a> caso queira cancelar este pedido.</br></br>
+                                                                Esta é uma mensagem automática, por favor não responda.<br />
+                                                                Em caso de dúvida entre em contato conosco através dos nossos canais de atendimento.
+                                                            </td>
+                                                            <td width="40" style="font-size:1px;">&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="20" style="font-size:1px;"></td>
+                                                            <td style="font-size:1px;">&nbsp;</td>
+                                                            <td style="font-size:1px;">&nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <!-- FOOTER -->
+                                      </td>
+                                    </tr>
+                                 </tbody>
+                              </table>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+      <!--/600px container -->
+      <!--/100% wrapper-->
+   </body>
+</html>
