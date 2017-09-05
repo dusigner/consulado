@@ -27,6 +27,15 @@ Nitro.module('cotas', function() {
 					.then(self.getConsumed)
 					.then(self.render);
 			}
+
+			$(document).on('click', 'a[href="/no-cache/user/logout"]', function(e) {
+				e.preventDefault();
+
+				$.removeCookie('xSkuSalesChannel5');
+				$.removeCookie('xSkuSalesChannel5', { path: '/' });
+
+				window.location.href = $(this).attr('href');
+			});
 		}
 	};
 
