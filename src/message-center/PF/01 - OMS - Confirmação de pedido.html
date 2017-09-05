@@ -134,12 +134,12 @@
 																<span>(à vista)</span>
 															{{/if}}
 
-															{{#eq paymentSystemName 'Boleto Bancário'}}
+															{{#if url}}
 																<a href="{{replace url '{Installment}' installments}}" title="Imprimir boleto" target="_blank" style="display:inline-block;text-align:center;">
 																	<br />
 																	<img src="http://consul.vteximg.com.br/arquivos/mkt_consul-btn-print-invoice.jpg" width="188" height="39" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Imprimir boleto" />
 																</a>
-															{{/eq}}
+															{{/if}}
 														{{/each}}
 													</font>
 												</td>
