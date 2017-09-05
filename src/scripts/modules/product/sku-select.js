@@ -41,6 +41,8 @@ Nitro.module('sku-select', function() {
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
 
+	$('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
+	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 	$(window).on('skuSelected.vtex', function(a, b, c) {
 
