@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true */
+/* global $: true, Nitro: true, skuJson: true */
 'use strict';
 
 require('vendors/vtex-modal');
@@ -62,8 +62,11 @@ Nitro.module('sku-select', function() {
 							$('#modal-sku .options').append(templateVoltagem.template);
 						}
 
-						if ($('#modal-sku .buy-button.buy-button-ref').is(':visible') === true) {
-							$('.modal-voltagem').remove(); 
+						if ($(skuJson.skus[0].available === true) && (skuJson.skus[1].available === true)) {
+							$('.modal-voltagem').addClass('show'); 
+							// $('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
+						} else {
+							$('.modal-voltagem').removeClass('hide');
 						}
 
 						$('.btn-avise').click(function() {
