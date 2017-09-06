@@ -8,7 +8,6 @@ require('vendors/jquery.cookie');
 var redirect = require('modules/store/redirect');
 
 define('store', function() {
-
 	this.uri = null;
 	this.userData = {};
 	this.isPersonal = false;
@@ -34,9 +33,9 @@ define('store', function() {
 
 		this.setup();
 
-		//return this.checkAccess();
+		// return this.checkAccess();
 
-		if(this.isCorp) {
+		if( this.isCorp ) {
 			this.autoLogin();
 
 			// Trocar URL logo para empresas
@@ -46,7 +45,6 @@ define('store', function() {
 		}
 
 		return;
-
 	};
 
 	this.setup = function() {
@@ -59,7 +57,6 @@ define('store', function() {
 		} catch(e) {
 			window.location.href = '/';
 		}
-
 
 		$(window).load(function(){
 			if (document.body.classList) {
@@ -109,8 +106,6 @@ define('store', function() {
 
 		return !(!approved && this.isPrivateUrl);
 	};
-
-
 
 	this.init();
 

@@ -140,8 +140,8 @@
 						<p class="order__info-title text-uppercase weight-semibold color-green">Forma de Pagamento</p>
 
 						<div class="order__info-content">
-							<p>{paymentData.payments[0].paymentSystemName}</p>
 							{?isBoleto}
+								<p>Boleto Bancário</p>
 								{@neq key=finalStatus.orderLabel value="Cancelado"}
 									<p>
 										<a href="{paymentData.payments[0].url}" target="_blank">
@@ -153,6 +153,7 @@
 									</p>
 								{/neq}
 							{:else}
+								<p>{paymentData.payments[0].paymentSystemName}</p>
 								<p class="order__card-info">
 									<i class="order__card-icon order__card--{paymentData.transactions[0].payments[0].paymentSystemName|sanitize}"></i>
 									<span>xxxx xxxx xxxx {paymentData.transactions[0].payments[0].lastDigits}</span>

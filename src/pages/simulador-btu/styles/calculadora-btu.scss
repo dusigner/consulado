@@ -21,7 +21,6 @@ body.listagem.btu.page-calculadora-btu {
 		@import 'components/_resultado.scss';
 		@import '_layout.scss';
 
-
 		#sm-tracking,
 		#sm-bounce,
 		#sm-onsite,
@@ -29,6 +28,92 @@ body.listagem.btu.page-calculadora-btu {
 		iframe iframe {
 			display: none !important;
 			visibility: hidden !important;
+		}
+
+		fieldset {
+			input { margin-right: 5px; }
+		}
+
+		.slick-prev {
+			left: 10px;
+
+			&:hover { color: #f47921; }
+		}
+
+		.slick-next {
+			right: 10px;
+
+			&:hover { color: #f47921; }
+		}
+
+		h3 {
+			font-size: 36px;
+			font-weight: 100;
+			margin: 0;
+
+			@include breakpoint(extra-large, 'max') { font-size: 32px; }
+
+			@include breakpoint(medium , 'max') { font-size: 30px; }
+
+			@include breakpoint(small, 'max') {
+				font-size: 28px;
+				padding-bottom: 10px;
+			}
+
+			@include breakpoint(480px, 'max') {
+				font-size: 23px;
+				font-weight: 100;
+			}
+		}
+
+		p {
+			font-size: 23px;
+			margin: 0;
+
+			@include breakpoint(small, 'max') {
+				font-size: 22px;
+				padding-bottom: 10px;
+			}
+
+			@include breakpoint(extra-small, 'max') { font-size: 18px; }
+
+			@include breakpoint(420px, 'max') { font-size: 16px; }
+		}
+
+		.btn-init {
+			font-size: 22px;
+			align-items: center;
+			border: 1px solid #fff;
+			display: flex;
+			height: 45px;
+			justify-content: space-between;
+			padding: 0 20px;
+			width: 100%;
+
+			&::after {
+				background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
+				background-position: 0 -13px;
+				background-repeat: no-repeat;
+				background-size: 46px;
+				content: '';
+				display: block;
+				height: 17px;
+				width: 12px;
+			}
+		}
+
+		.btn-no-input {
+			&.selected { opacity: .6; }
+		}
+
+		.ambientacao {
+			.introducao {
+				text-align: center;
+
+				.palco {
+					@include breakpoint(480px, 'max') { display: none; }
+				}
+			}
 		}
 	}
 }

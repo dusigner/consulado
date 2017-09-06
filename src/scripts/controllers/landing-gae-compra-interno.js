@@ -105,7 +105,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 				throw new Error('My Orders Dust error: ' + err);
 			}
 
-			$('#orders').append(out);
+			$('#orders').html(out);
 		});
 	};
 
