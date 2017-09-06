@@ -2,6 +2,12 @@
 
 'use strict';
 
+$.ajax({
+	async: false,
+	url: '//io.vtex.com.br/front-libs/bootstrap/2.3.2/js/bootstrap.min.js',
+	dataType: 'script'
+});
+
 $(window).on('load', function() {
 
 	require('modules/helpers');
