@@ -84,7 +84,7 @@ gulp.task('lint', function () {
 gulp.task('fonts', function () {
 	return gulp.src(getPath('fonts'))
 		.pipe($.rename(function(file){
-			file.extname += '.css'
+			file.extname += '.css';
 		}))
 		.pipe(gulp.dest(paths.dest));
 });
@@ -353,5 +353,5 @@ gulp.task('deploy', ['clean', 'gitTag'], function() {
 
 	pkg	= JSON.parse( require('fs').readFileSync('./package.json') ); //fix update pkg from bump
 
-	gulp.start( 'fonts', 'images', 'styles', 'scripts' );
+	gulp.start( /* 'fonts',  */'images', 'styles', 'scripts' );
 });
