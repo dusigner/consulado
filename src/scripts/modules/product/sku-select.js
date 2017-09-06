@@ -92,6 +92,7 @@ Nitro.module('sku-select', function() {
 		if ($('.modal-avise').length === 0) {
 			$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
 			$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
+			// $('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
 		}
 
 		if ($('.back-window').length === 0) {
@@ -108,6 +109,11 @@ Nitro.module('sku-select', function() {
 					$('.modal-holder').fadeIn('2000');
 					$('.modal-voltagem').fadeIn('2000');
 				}
+			});
+
+			$('#vtex-modal-sku .primary-button.notifyme-button-ok.scroll-to').click(function() {
+				$('.portal-notify-me-ref.modal-avise').fadeOut('2000');
+				$('#vtex-modal-sku').fadeOut('2000');
 			});
 		});
 	});

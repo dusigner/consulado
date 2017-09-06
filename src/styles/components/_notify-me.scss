@@ -53,11 +53,6 @@
 		display: inline-block;
 		margin-bottom: 10px;
 		width: 100%;
-		 @include breakpoint(extra-small, 'max') {
-			&[href*='#relacionados'] {
-				display: none!important;
-			}
-		}
 
 		&:before {
 			content: ' ';
