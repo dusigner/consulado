@@ -130,6 +130,7 @@ Nitro.module('checkout.cotas', function() {
 	 */
 	this.updateCotasEletrodomesticos = function() {
 		$.removeCookie('xSkuSalesChannel5');
+		$.removeCookie('xSkuSalesChannel5', { path: '/' });
 
 		var eletrodomesticos = 0;
 

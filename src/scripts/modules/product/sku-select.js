@@ -114,6 +114,9 @@ Nitro.module('sku-select', function() {
 			$('#vtex-modal-sku .primary-button.notifyme-button-ok.scroll-to').click(function() {
 				$('.portal-notify-me-ref.modal-avise').fadeOut('2000');
 				$('#vtex-modal-sku').fadeOut('2000');
+				$('.buy-button.buy-button-ref').click(function() {
+					$('.modal-holder').fadeIn('2000');
+				});
 			});
 		});
 	});

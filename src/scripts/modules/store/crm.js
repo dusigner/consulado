@@ -43,7 +43,7 @@ var CRM = {
 
 	clientSearchByEmail: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
+			f: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
 			fq: 'email:' + field
 		}).then(function (res) {
 			return res && res.Documents[0];
@@ -52,7 +52,7 @@ var CRM = {
 
 	clientSearchByID: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
+			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
 			fq: 'userId:' + field
 		}).then(function (res) {
 			return res && res.Documents[0];
@@ -64,7 +64,7 @@ var CRM = {
 		type = type ? type : 'document';
 
 		return $.getJSON(CRM.clientURI, {
-			f: 'approvedid,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration',
+			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
 			fq: type + ':' + document
 		}).then(function (res) {
 			return res && res.Documents;
@@ -83,7 +83,7 @@ var CRM = {
 	clientSearchByCorporateDocument: function (document) {
 
 		return $.getJSON(CRM.clientURI, {
-			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument',
+			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument,xStatusPJ',
 			fq: 'corporateDocument:' + document
 		}).then(function (res) {
 			return res && res.Documents[0];

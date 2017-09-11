@@ -66,7 +66,6 @@ Nitro.module('order.recurrences', function() {
 		} else {
 			self.recurrenceRender(self.recurrences.recurrences);
 		}
-
 	};
 
 	/**

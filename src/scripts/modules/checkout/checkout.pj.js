@@ -1,5 +1,7 @@
 'use strict';
 
+var CRM = require('modules/store/crm');
+
 Nitro.module('checkout.pj', function() {
 
 	var interval;
@@ -43,6 +45,45 @@ Nitro.module('checkout.pj', function() {
 		$boxProfile.find('.link-logout-container').remove();
 
 		$clientProfileSummary.html(templateSummary);
+	};
+
+	this.pendingCompany = function () {
+		var $paymentButton = $('.payment-submit-wrap');
+		if(store.userData && store.userData.xStatusPJ !== 'aprovado') {
+			$paymentButton.hide();
+			if( $('.pending-wrap').length === 0 ) {
+				$paymentButton.before('<div class="pending-wrap"></div>');
+			}
+
+			var $pendingWrap = $('.pending-wrap');
+
+			var validatePendingCompany = function () {
+
+				$pendingWrap.html('').addClass('loading');
+				CRM.clientSearchByEmail(store.userData.email).done(function(user) {
+
+					store.setUserData(user, true);
+
+					$pendingWrap.removeClass('loading');
+
+					if (user.xStatusPJ === 'aprovado') {
+						$paymentButton.show();
+						$pendingWrap.hide();
+					} else if (user.xStatusPJ === 'reprovado') {
+						$paymentButton.html('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').show();
+					} else {
+						$pendingWrap.html('<p>Ainda estamos validando o seu cadastro. Tente novamente mais tarde ou <a href="#" class="retry-buy">clique aqui.</a></p>');
+						$('.retry-buy').click(function(e) {
+							e.preventDefault();
+							validatePendingCompany();
+						});
+					}
+				});
+			};
+
+			validatePendingCompany();
+
+		}
 	};
 
 

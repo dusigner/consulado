@@ -25,9 +25,9 @@ define('store', function() {
 
 	this.init = function() {
 
-		this.isPersonal = (/consul/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host)) && !(/consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host));
+		this.isPersonal = (/consul/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host)) && !(/consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host)) && !(/consulqa2/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host));
 
-		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
+		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || /consulqa2/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
 		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
@@ -98,7 +98,13 @@ define('store', function() {
 			this.userData.partner = 1021540;
 		}*/
 
-		return !(!this.userData.approved && this.isPrivateUrl);
+		var approved = false;
+
+		if(this.userData.xStatusPJ && this.userData.xStatusPJ !== 'reprovado') {
+			approved = true;
+		}
+
+		return !(!approved && this.isPrivateUrl);
 	};
 
 	this.init();
