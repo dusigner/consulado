@@ -269,6 +269,22 @@ body {
 			position: static;
 		}
 
+		.pending-wrap {
+			@include responsiveFont(14, 16, true);
+			a {
+				color: $orange;
+				text-decoration: none;
+			}
+			&.loading {
+				position: relative;
+				text-align: center;
+				&:before {
+					@include spinner($orange);
+					content: ' ';
+				}
+			}
+		}
+
 		.box-payment-option {
 			&.bankInvoicePaymentGroup {
 				&:after {

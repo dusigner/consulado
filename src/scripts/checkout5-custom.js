@@ -78,6 +78,10 @@ $(window).on('load', function() {
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
 
+				if(store.isCorp) {
+					pj.pendingCompany();
+				}
+
 			}
 
 			if (self.isCart()) {
@@ -246,9 +250,6 @@ $(window).on('load', function() {
 
 			recurrence.hidePayments();
 
-			if(store.isCorp) {
-				pj.pendingCompany();
-			}
 		};
 
 		this.clickFakeButton = function(e) {
