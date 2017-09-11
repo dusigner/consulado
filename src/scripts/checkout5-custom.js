@@ -245,6 +245,10 @@ $(window).on('load', function() {
 			$('.payment-card-number input, .payment-card-cvv input').addClass('inspectletIgnore');
 
 			recurrence.hidePayments();
+
+			if(store.isCorp) {
+				pj.pendingCompany();
+			}
 		};
 
 		this.clickFakeButton = function(e) {

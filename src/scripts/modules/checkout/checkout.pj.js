@@ -45,5 +45,11 @@ Nitro.module('checkout.pj', function() {
 		$clientProfileSummary.html(templateSummary);
 	};
 
+	this.pendingCompany = function () {
+		if(store.userData && store.userData.xStatusPJ === 'pendente') {
+			$('.payment-submit-wrap').html('<p>Ainda estamos validando o seu cadastro. Assim que aprovado você será notificado por e-mail.</p>');
+		}
+	};
+
 
 });
