@@ -69,3 +69,8 @@
 	.prod-details-nav & { @include hide-conditional(); }
 }
 
+.content_botoes_televendas {
+	.portal-notify-me-ref {
+		display: none;
+	}
+}
