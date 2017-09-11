@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class="no-js" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- So that mobile webkit will display zoomed in -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- disable auto telephone linking in iOS -->
+
+    <title>{{recurrence.clientProfileData.firstName}}</title>
+
+    <style type="text/css">
+        /* Outlook link fix */
+        #outlook a{padding:0;}
+        /* Hotmail background & line height fixes */
+        .ExternalClass *{line-height:100%;}
+        .ExternalClass {width:100% !important;}
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}
+        /* Re-style iPhone automatic links (eg. phone numbers) */
+        .applelinks a {color:#222222; text-decoration: none; }
+        /* Hotmail symbol fix for mobile devices */
+        .ExternalClass img[class^=Emoji] {width: 10px !important;height: 10px !important;display: inline !important;}
+
+        body { -webkit-text-size-adjust:none;-ms-text-size-adjust:100%; mso-line-height-rule:exactly; -webkit-font-smoothing: antialiased; margin:0; padding:0; width: 100%; font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;background-color:#e2e0e0;}
+
+        img{display:block;border:none;border-infoleft:0px;border-right:0px;outline:none;text-decoration:none;-ms-interpolation-mode: bicubic;}
+        a img {border:none;}
+
+        table {font-size:13px;}
+        table td {border-collapse:collapse;}
+    </style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" bgcolor="#ffffff" style="font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+    <!-- HEADER -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+        <tr>
+            <td align="center">
+                <a href="http://loja.consul.com.br" src="http://whirlpool.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="150" height="70" target="_blank">
+                    <img src="http://whirlpool.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="110" height="70" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Brastemp" />
+                </a>
+            </td>
+            <td style="font-size:1px;">&nbsp;</td>
+        </tr>
+    </table>
+    <!-- HEADER -->
+
+    <!-- CONTENT -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+        <tr>
+            <td>
+                <!-- STATUS PEDIDO -->
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td align="right">
+                            <font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">Realizado em {{formatDate recurrence.createdAt}}</font>
+                        </td>
+                        <td width="30"></td>
+                    </tr>
+                </table>
+
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td width="650" align="center">
+                            <img src="http://whirlpool.vteximg.com.br/arquivos/message-center_recorrencia-error-cns.jpg" width="100%" border="0" style="display: block; border: 0;" alt="Sua compra recorrente registrada com sucesso" />
+                        </td>
+                    </tr>
+                </table>
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+                <!-- /STATUS PEDIDO -->
+
+                <!-- TEXTO -->
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td width="30"></td>
+                        <td align="center">
+                            <font style="font-size: 15px; font-weight:bold; font-family: Verdana,Arial,sans-serif; color:#736c6b;">Olá, {{recurrence.clientProfileData.firstName}}</font>
+
+                            <!-- space -->
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+
+                            <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                O sistema não conseguiu gerar o seu pedido agendado. <br /> É necessário acessar nosso <strong>atendimento on-line</strong>, caso deseje assinar <br /> a compra automática <strong>dos seguintes produtos</strong>:
+                            </font>
+                        </td>
+                        <td width="30"></td>
+                    </tr>
+                </table>
+                <!-- /TEXTO -->
+
+                <!-- PRODUTO -->
+                {{#each recurrence.items}}
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="30"></td></tr></table>
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td align="center">
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:590px; font-family:Verdana, Geneva, sans-serif; border-collapse: collapse;">
+                                <tr>
+                                    <td style="border: 1px solid #eaeaea; border-right: 1px dashed #eaeaea;" width="150" align="center" valign="center">
+                                        <img src="{{imageUrl}}" border="0" style="display: block; border: 0;" alt="{{name}}" />
+                                    </td>
+                                    <td style="border: 1px solid #eaeaea; border-left: 1px dashed #eaeaea;">
+                                        <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                                            <tr>
+                                                <td height="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20"></td>
+                                                <td valign="top">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                                                        <tr>
+                                                            <td>
+                                                                <font style="font-size: 15px; font-family: Verdana,Arial,sans-serif; color:#9aca3c; font-weight: bold;">
+                                                                    {{name}}
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td height="10"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    <strong>{{quantity}} un.</strong>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    Período de entrega a cada
+                                                                    <strong style="color:#9aca3c;">
+                                                                        {{frequency.interval}}
+                                                                        {{#eq frequency.periodicity "yearly"}}
+                                                                            {{#eq frequency.interval 1}}
+                                                                                ano
+                                                                            {{else}}
+                                                                                anos
+                                                                            {{/eq}}
+                                                                        {{else}}
+                                                                            {{#eq frequency.periodicity "monthly"}}
+                                                                                {{#eq frequency.interval 1}}
+                                                                                    mês
+                                                                                {{else}}
+                                                                                    meses
+                                                                                {{/eq}}
+                                                                            {{else}}
+                                                                                {{#eq frequency.periodicity "weekly"}}
+                                                                                    {{#eq frequency.interval 1}}
+                                                                                        semana
+                                                                                    {{else}}
+                                                                                        semanas
+                                                                                    {{/eq}}
+                                                                                {{else}}
+                                                                                    {{#eq frequency.periodicity "daily"}}
+                                                                                        {{#eq frequency.interval 1}}
+                                                                                            dia
+                                                                                        {{else}}
+                                                                                            dias
+                                                                                        {{/eq}}
+                                                                                    {{/eq}}
+                                                                                {{/eq}}
+                                                                            {{/eq}}
+                                                                        {{/eq}}
+                                                                    </strong>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td width="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20"></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="30"></td></tr></table>
+                {{/each}}
+                <!-- /PRODUTO -->
+            </td>
+        </tr>
+    </table>
+    <!-- /CONTENT -->
+
+    <!-- FOOTER -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+        <tr>
+          <td>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c">
+              <tr>
+                <td width="30"></td>
+                <td align="left">
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size:12px;color:#ffffff;">
+                    <tr>
+                      <td width="30" height="37" align="left" valign="middle" bgcolor="#9aca3c">
+                        <a href="https://consul.custhelp.com/" title="Clique aqui" target="_blank">
+                          <img src="http://whirlpool.vteximg.com.br/arquivos/cns-email-question-icon.jpg" width="24" height="24" border="0" style="display:block;border:none;border-left:0px;border-right:0px;" alt="Dúvidas? Clique aqui" />
+                        </a>
+                      </td>
+                      <td bgcolor="#9aca3c" style="color:#ffffff;">
+                        &nbsp;&nbsp;<strong>Dúvidas?</strong> Acesse o <a href="https://consul.custhelp.com/" title="Portal de Atendimento" target="_blank" style="color:#ffffff;">Portal de Atendimento</a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td width="136" align="right" bgcolor="#9aca3c">
+                  <a href="http://loja.consul.com.br" alt="Consul" target="_blank">
+                    <img src="http://whirlpool.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="110" height="70" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Brastemp" />
+                  </a>
+                </td>
+                <td width="30"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td height="20" style="font-size:1px;"></td>
+                <td style="font-size:1px;">&nbsp;</td>
+                <td style="font-size:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="20" style="font-size:1px;">&nbsp;</td>
+                <td>
+                <font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                    Caso haja alguma divergência em seu pedido como: voltagem, cor, modelo, dimensão e endereço incorreto, acione imediatamente a central de atendimento: <strong><span style="font-size: 11px;">(11)</span> 3004-2290 / 0800-7572290</strong>
+                  </font>
+                </td>
+                <td width="20" style="font-size:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="20" style="font-size:1px;"></td>
+                <td style="font-size:1px;">&nbsp;</td>
+                <td style="font-size:1px;">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <!-- FOOTER -->
+</body>
+</html>

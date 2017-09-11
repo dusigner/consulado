@@ -13,6 +13,32 @@ body.pedidos {
 		z-index: 9999;
 	}
 
+	.download-warranty,
+	.cancel-warranty,
+	.add-warranty { @include responsiveFont(14, 16, true) }
+
+	.download-warranty,
+	.cancel-warranty {
+		background: none;
+		border: none;
+		vertical-align: middle;
+
+		svg {
+			path { fill: $green }
+		}
+	}
+
+	.download-warranty {
+		color: $green;
+		padding: 0;
+		white-space: nowrap;
+	}
+
+	.cancel-warranty {
+		float: right;
+		font-weight: bold;
+	}
+
 	.add-warranty { @include responsiveFont(14, 16, true); }
 
 	.vtex-modal {
@@ -102,7 +128,14 @@ body.pedidos {
 
 #vtex-pagamento-garantia {
 	iframe {
+		@include breakpoint(320px, 'max') {
+			max-height: 80vh;
+			min-width: 100%;
+			width: 100%;
+			*width: 100%;
+		}
 		border: none;
+		max-width: 100%;
 		min-height: 300px;
 	}
 
@@ -132,11 +165,17 @@ body.pedidos {
 
 		.back {
 			@include responsiveFont(14, 16, true);
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(13, 16, true);
+			}
 			float: left;
 		}
 
 		.confirm {
 			@include responsiveFont(14, 16, true);
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(13, 16, true);
+			}
 			float: right;
 		}
 	}

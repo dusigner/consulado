@@ -3,234 +3,57 @@
 //  Calculadora BTU
 //------------------------------------
 .page-calculadora-btu__banner {
-	@include breakpoint(1280px, 'max') {
-		max-height: 420px;
-		max-width: 1000px;
-	}
-
-	@include breakpoint(1120px, 'max') {
-		max-height: 500px;
-	}
-
-	@include breakpoint(1012px, 'max') {
-		max-width: 600px;
-	}
-
-	@include breakpoint(960px, 'max') {
-		max-height: 500px;
-	}
-
-	@include breakpoint(768px, 'max') {
-		margin: 10px auto;
-		max-height: 600px;
-	}
-
 	margin: 20px auto;
-	max-height: 370px;
-	max-width: 1100px;
+	max-height: 2000px;
+	max-width: 1300px;
 	overflow: hidden;
 	position: relative;
-	transition:
-		max-height .5s ease,
-		max-width .5s ease
-	;
+	transition: max-height .5s ease, max-width .5s ease;
+
+	.close {
+		background-color: #a7a9ac;
+		color: #fff;
+		cursor: pointer;
+		display: none;
+		font-size: 14px;
+		font-weight: 700;
+		height: 30px;
+		line-height: 30px;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 80px;
+		z-index: 1;
+	}
+
+	&.active {
+		padding-top: 30px;
+
+		.close { display: block; }
+	}
+
+	@include breakpoint(1280px, 'max') { max-width: 1000px; }
+
+	@include breakpoint(1012px, 'max') { max-width: 600px; }
+
+	@include breakpoint(768px, 'max') { margin: 0 auto; }
 
 	#calculadora-btu {
-		// @include breakpoint(1280px, 'min') { height: 700px !important; }
-		
 		display: block;
-		margin: 30px auto;
 		position: relative;
-		transform: translate(-4%, -25%);
 		width: 1300px;
-		
+
+		&.initiated { max-height: initial; }
+
 		@include breakpoint(1280px, 'max') {
-			height: 930px;
 			max-width: 100%;
-			transform: translate(0, -5%);
 			width: 100%;
 		}
 
-		@include breakpoint(1120px, 'max') {
-			transform: translate(0, 20%);
-		}
-
-		@include breakpoint(1012px, 'max') {
-			max-width: 600px;
-			transform: translate(0, 10%);
-		}
-
-		@include breakpoint(960px, 'max') {
-			transform: translate(0, 15%); 
-		}
-
-		@include breakpoint(768px, 'max') { 
-			margin: 30px 0 0 0;
-			transform: translate(0, 20%); 
-		}
-	
-		@include breakpoint(480px, 'max') { 
-			transform: translate(0, 25%); 
-		}
-
-		@include breakpoint(360px, 'max') { 
-			transform: translate(0, 30%); 
-		}
-	}
-
-	&.is--active {
-		@include breakpoint(1280px, 'max') { max-width: 1000px; }
 		@include breakpoint(1012px, 'max') { max-width: 600px; }
 
-		max-height: 2000px;
-		max-width: 1300px;
-		overflow: hidden;
-
-		#calculadora-btu { transform: translate(0, 0); }
-	}
-}
-
-
-.page-calculadora-btu__mask {
-	align-items: center;
-	background-color: #9aca3c;
-	color: #fff;
-	cursor: pointer;
-	display: flex;
-	font-family: 'consul';
-	height: 140px;
-	justify-content: space-between;
-	position: absolute;
-	right: 0;
-	top: 0;
-	width: 100%;
-	z-index: 2;
-
-	@include breakpoint(1120px, 'max') {
-		flex-direction: column;
-		height: 280px;
-		justify-content: center;
-		text-align: center;
-	}
-
-	@include breakpoint(960px, 'max') {
-		height: 300px;
-	}
-
-	@include breakpoint(768px, 'max') {
-		height: 600px;
-	}
-
-	@include breakpoint(480px, 'max') {
-		height: 330px;
-	}
-
-	@include breakpoint(420px, 'max') {
-		height: 280px;
-	}
-
-	.page-calculadora-btu__content {
-		display: flex;
-		flex-direction: column;
-		padding: 30px 20px;
-
-		@include breakpoint(extra-small, 'max') {
-			max-width: 70%;
-			padding: 15px 10px;
-		}
-
-		.page-calculadora-btu__title {
-			@include font-size(36px, true, false);
-			font-weight: 100;
-			margin: 0;
-
-			@include breakpoint(extra-large, 'max') {
-				@include font-size(32px, true, false);
-			}
-
-			@include breakpoint(medium , 'max') {
-				@include font-size(30px, true, false);
-			}
-
-			@include breakpoint(small, 'max') {
-				@include font-size(28px, true, false);
-				padding-bottom: 10px;
-			}
-
-			@include breakpoint(480px, 'max') {
-				@include font-size(23px, true, false);
-				font-weight: 100;
-			}
-		}
-
-		.page-calculadora-btu__subtitle {
-			@include font-size(23px, true, false);
-			margin: 0;
-
-			@include breakpoint(small, 'max') {
-				@include font-size(22px, true, false);
-				padding-bottom: 10px;
-			}
-
-			@include breakpoint(extra-small, 'max') {
-				@include font-size(18px, true, false);
-			}
-
-			@include breakpoint(420px, 'max') {
-				@include font-size(16px, true, false);
-			}
-		}
-	}
-
-	.page-calculadora-btu__button {
-		@include font-size(22px, true, false);
-    	align-items: center;
-		border: 1px solid #fff;
-		display: flex;
-		height: 53px;
-		justify-content: space-between;
-		margin: 30px 20px 30px 0;
-		padding: 0 20px;
-		width: 237px;
-		&::after {
-			background-image: url('/arquivos/lp-calc-btu--images--sprite_retina.png');
-			background-position: 0 -13px;
-			background-repeat: no-repeat;
-			background-size: 46px;
-			content: '';
-			display: block;
-			height: 17px;
-			width: 12px;
-		}
-	}
-
-
-	&.is--active {
-		background: none;
-		height: 30px;
-		text-align: center;
-
-		&:before {
-			background-color: #a7a9ac;
-			color: #fff;
-			content: 'Fechar';
-			display: block;
-			font-size: 14px;
-			font-weight: bold;
-			height: 30px;
-			line-height: 30px;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 80px;
-		}
-
-		.page-calculadora-btu__content {
-			display: none;
-		}
-		.page-calculadora-btu__button {
-			display: none;
-		}
+		@include breakpoint(480px, 'max') { max-height: 250px; }
 	}
 }
 

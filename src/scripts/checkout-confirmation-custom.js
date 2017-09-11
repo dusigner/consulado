@@ -2,13 +2,19 @@
 
 'use strict';
 
+$.ajax({
+	async: false,
+	url: '//io.vtex.com.br/front-libs/bootstrap/2.3.2/js/bootstrap.min.js',
+	dataType: 'script'
+});
+
 $(window).on('load', function() {
 
 	require('modules/helpers');
 
 	if (VERSION) {
 
-		// console.log('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
+		console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
 
 		window._trackJs = window._trackJs || {};
 
@@ -23,7 +29,6 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
-
 
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
@@ -42,33 +47,28 @@ $(window).on('load', function() {
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
-				//console.log('crossroads', request, data);
 				return self[request] && self[request].call(self);
 			});
 		};
 
 		this.isOrderPlaced = function() {
-			return $body.hasClass('body-order-placed');
+			return $body.hasClass('body-checkout-confirmation');
 		};
 
 		//event
 		this.orderPlacedUpdated = function(e, orderPlaced) {
-
 			if (self.isOrderPlaced()) {
+				console.info('orderPlacedUpdated', orderPlaced);
+
+				$('.cconf-myorders-button').attr('href','/minhaconta/pedidos');
 
 				self.infoBoleto();
 				self.replaceOrderId();
-				self.reorderDivs();
 
 				phones.setup();
 				termoColeta.setup();
 				cotas.updateCotasEletrodomesticos();
-				cotas.updatePendingCotas();
-				highlightVoltage($('.product-name > a'));
-
-				if( store && store.isCorp ) {
-					$('#order-continue-shopping').attr('href', '/empresas');
-				}
+				highlightVoltage($('.cconf-product-table .w-80-ns p'));
 			}
 		};
 
@@ -79,17 +79,12 @@ $(window).on('load', function() {
 			});
 		};
 
-		this.reorderDivs = function() {
-			$('.payment-info').removeClass('span5').addClass('span4');
-			$('.shipping-info').removeClass('span2').addClass('span4');
-			$('.total-info').removeClass('span3').addClass('span4');
-		};
-
 		this.infoBoleto = function() {
+			var $bankInvoice = $('#print-bank-invoice');
+			if ($bankInvoice.length > 0) {
+				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
 
-			var bankInvoice = $('.bank-invoice-print');
-			if (bankInvoice.length > 0) {
-				$('.orderplaced-alert-content h4').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
+				$('.cconf-payment article.fl .lh-copy').append($bankInvoice.clone());
 			}
 		};
 
@@ -100,4 +95,3 @@ $(window).on('load', function() {
 	});
 
 });
-

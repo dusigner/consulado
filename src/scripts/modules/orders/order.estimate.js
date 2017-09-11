@@ -18,15 +18,13 @@ var Estimate = {
 			return false;
 		} else if (isScheduled && currentSla.shippingEstimateDate) {
 			// sem cálculo quando for agendada
-			estimateDate = $.formatDatetimeBRL(currentSla.shippingEstimateDate);
+			estimateDate = currentSla.shippingEstimateDate;
 		} else if (isBusinessDay) {
 			// Calculo para dias comerciais
 			estimateDate = $.calculateBusinessDays(orderDate, currentSla.shippingEstimate.replace('bd', ''));
-			estimateDate = $.formatDatetimeBRL(estimateDate);
 		} else {
 			// Calculo para dias corridos
 			estimateDate = $.calculateDays(orderDate, currentSla.shippingEstimate.replace('d', ''));
-			estimateDate = $.formatDatetimeBRL(estimateDate);
 		}
 
 		return estimateDate;

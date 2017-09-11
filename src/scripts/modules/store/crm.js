@@ -43,7 +43,7 @@ var CRM = {
 
 	clientSearchByEmail: function (field) {
 		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
+			f: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
 			fq: 'email:' + field
 		}).then(function (res) {
 			return res && res.Documents[0];
@@ -58,6 +58,7 @@ var CRM = {
 			return res && res.Documents[0];
 		});
 	},
+
 	clientSearchByDocument: function (document, type) {
 
 		type = type ? type : 'document';
@@ -69,6 +70,16 @@ var CRM = {
 			return res && res.Documents;
 		});
 	},
+
+	getCotasByCPF: function(field) {
+		return $.getJSON(CRM.clientURI, {
+			f: 'xSkuSalesChannel5',
+			fq: 'document:' + field
+		}).then(function(res) {
+			return res && res.Documents;
+		});
+	},
+
 	clientSearchByCorporateDocument: function (document) {
 
 		return $.getJSON(CRM.clientURI, {

@@ -8,8 +8,12 @@
 
 	a {
 		color: $txt-gray-l;
-		font-weight: bold;
-
+		text-decoration: underline;
 		&:hover { text-decoration: underline; }
+		
+		&.not-underline {
+			text-decoration: none;
+			&:hover { text-decoration: none; }
+		}
 	}
 }

@@ -3,9 +3,9 @@
 Nitro.module('calculadorabtu', function () {
 
 	var calcBtu = $('.page-calculadora-btu__banner'),
-		calcBtuMask = calcBtu.find('.page-calculadora-btu__mask'),
+		calcBtuClose = calcBtu.find('.close'),
 		calcBtuIframe = $('#calculadora-btu');
-	
+
 	var updateHeight = function() {
 
 		var $calculadoraBtu = $('#calculadora-btu');
@@ -20,29 +20,65 @@ Nitro.module('calculadorabtu', function () {
 		}
 	};
 
-	calcBtuMask.on('click', function(e) {
-		e.preventDefault();
-
-		if ($(this).hasClass('is--active')) {
+	calcBtuClose.on('click', function() {
+		if (calcBtu.hasClass('active')) {
 			calcBtuIframe.attr('src', '/landing/calculadora-btu');
+			calcBtuIframe.removeClass('initiated');
 		}
 
-		calcBtu.toggleClass('is--active');
-		$(this).toggleClass('is--active');
-
-
-		$('html, body').animate({scrollTop: calcBtu.offset().top -10 }, 'slow');
-		updateHeight();
+		calcBtu.toggleClass('active');
 	});
 
 	// TROCOU STEP DENTRO DO IFRAME
 	$(window).bind('calculadora.init calculadora.step calculadora.reinit', updateHeight);
 
+
+	var layoutRange = function(minimo, maximo) {
+		var de = $('.slider__value--from'),
+			ate = $('.slider__value--to'),
+			distanceRight = $('.noUi-origin.noUi-background'),
+			distanceLeft = $('.noUi-origin.noUi-connect'),
+			range = $('.noUi-base').width(),
+			totalRange = 22000,
+			distanceLeftValue = parseInt((minimo / totalRange) * range),
+			distanceRightValue = parseInt((maximo / totalRange) * range);
+
+		de.text((minimo/1000) + ' BTU\/h');
+		ate.text((maximo/1000) + ' BTU\/h');
+		distanceLeft.css('left', distanceLeftValue);
+		distanceRight.css('left', distanceRightValue);
+	};
+
+	var updateRange = function(res) {
+
+		var range = [];
+		switch ( res ) {
+		case '7.000' :
+			range = ['7.000', '7.500', '9.000'];
+			layoutRange(7000, 9000);
+			break;
+		case '9.000' :
+			range = ['9.000', '7.000', '7.500'];
+			layoutRange(7000, 9000);
+			break;
+		case '10.000' :
+			range = ['10.000', '12.000'];
+			layoutRange(10000, 12000);
+			break;
+		case '22.000' :
+			range = ['22.000', '18.000'];
+			layoutRange(18000, 22000);
+			break;
+		default:
+			range = [res];
+		}
+		return range.map(function(btu){	return ((window.jsnomeLoja === 'consulqa') ? '&fq=specificationFilter_77:' : '&fq=specificationFilter_814:') + btu + ' BTUs/h';}).toString().replaceAll(',', '');
+	};
+
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
-		var tpl = (window.jsnomeLoja === 'consulqa') ? '#/filter&fq=specificationFilter_5:Bivolt' : '#/filter&fq=specificationFilter_814:{btu} BTUs/h' ;
-
+		var tpl = '#/filter'+ updateRange(res.btu);
 		var bulletFilter = $('.noUi-origin.noUi-background, .noUi-origin.noUi-connect');
 
 		// verificar qual produto recomendar
@@ -62,10 +98,7 @@ Nitro.module('calculadorabtu', function () {
 
 		$('.slider__value--to').text(res.btu.substring(0, 2) + ' BTU\/h');
 
-		// console.log('res ', txtValue);
-		// console.log('resbtu ', res.btu);
-
 		//TIRGGA RESULTADO PARA MODULO FILTER.JS
-		$(window).trigger('calculadora.filter', [tpl.render(res)]);
+		$(window).trigger('calculadora.filter', [tpl]) ;
 	});
 });

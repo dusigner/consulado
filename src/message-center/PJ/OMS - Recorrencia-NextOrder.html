@@ -1,296 +1,381 @@
 <!DOCTYPE html>
-<html lang="en">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="initial-scale=1.0">
-      <!-- So that mobile webkit will display zoomed in -->
-      <meta name="format-detection" content="telephone=no">
-      <!-- disable auto telephone linking in iOS -->
-      <style type="text/css">
-         /* Resets: see reset.css for details */
-         .ReadMsgBody { width: 100%; background-color: #ebebeb;}
-         .ExternalClass {width: 100%; background-color: #ebebeb;}
-         .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}
-         body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}
-         body {padding:0;}
-         table td {border-collapse:collapse;}
-         .yshortcuts a {border-bottom: none !important;}
-         /* Constrain email width for small screens */
-         @media screen and (max-width: 600px) {
-         table[class="container"] {
-         width: 100% !important;
-         }
-         }
-         /* Give content more room on mobile */
-         @media screen and (max-width: 480px) {
-         .status{padding-bottom:0px;}
-         }
-         /* Styles for forcing columns to rows */
-         @media only screen and (max-width : 600px) {
-         /* force container columns to (horizontal) blocks */
-         .container{border-radius:0 !important;}
-         .no-padding-top-bottom-mobile{padding-top:0;padding-bottom:0;padding:0 !important;}
-         .img-product{width:70px;}
-         .side-border td{padding-left:0;}
-         .button{padding:11px 0 !important;font-size:13px;width:100%;}
-         .table-button{width:100% !important;}
-         td[class="force-col"] {
-         display: block;
-         padding-right: 0 !important;
-         }
-         table[class="col-3"] {
-         /* unset table align="left/right" */
-         float: none !important;
-         width: 100% !important;
-         /* change left/right padding and margins to top/bottom ones */
-         padding-bottom: 12px;
-         border-bottom: 1px solid #eee;
-         }
-         /* remove bottom border for last column/row */
-         table[id="last-col-3"] {
-         border-bottom: none !important;
-         }
-         /* align images right and shrink them a bit */
-         img[class="col-3-img"] {
-         float: right;
-         margin-left: 6px;
-         max-width: 130px;
-         }
-         }
-         @media only screen and (max-width : 800px) {
-         .status{width:100% !important;}
-         .status div{width:200px !important;}
-         }
-      </style>
-   </head>
-   <body marginwidth="0" marginheight="0" bgcolor="#fff" style="padding:0px 0px;color:#333;" leftmargin="0" topmargin="0">
-      <!-- 100% wrapper (grey background) -->
-      <table width="100%" cellspacing="0" border="0" bgcolor="#fff">
-         <tbody>
-            <tr>
-               <td valign="top" bgcolor="#fff" align="center" class="no-padding-top-bottom-mobile" style="background-color: #fff;color:#333;">
-                  <!-- 600px container (white background) -->
-                  <table cellspacing="0" cellpadding="0" border="0" bgcolor="#fff" class="container" style="max-width:600px;">
-                     <tbody>
-                        <tr>
-                           <td bgcolor="#ffffff" align="left" class="container-padding" style="background-color: #ffffff; padding-left: 10px; padding-right: 3px; font-size: 13px; line-height: 19px; font-family: Helvetica, sans-serif; color: #333;">
-                              <br />
-                              <table width="100%" cellspacing="0" cellpadding="0" border="0" class="columns-container">
-                                 <tbody>
-                                    <tr>
-                                       <td class="force-col" style="padding-right: 20px;">
-                                          <!-- HEADER -->
-                                          <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c" style="font-family:Verdana, Geneva, sans-serif;">
-                                              <tr>
-                                                  <td align="center">
-                                                      <a href="http://loja.consulempresa.com.br/" title="Consul" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="142" height="81" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Consul" /></a>
-                                                  </td>
-                                                  <td style="font-size:1px;">&nbsp;</td>
-                                              </tr>
-                                          </table>
-                                          <!-- HEADER -->
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td class="force-col">
-                                          <!-- ### BEGIN CONTENT ### -->
-                                          <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" align="left" style="padding-bottom:0;margin-bottom:0;" class="col-3">
-                                             <tbody>
-                                                <tr>
-                                                   <td align="left">
-                                                      <div style="color: #7F7F7F; font-size: 23px; font-family: sans-serif;font-weight:bold;">A data do seu proximo pedido está chegando!</div>
-                                                      <span style="font-size:16px;color:#BBB;display:inline-block;">previsto para: {{formatDate recurrence.nextDelivery}}</span><br /><br />
-                                                      <span style="font-size:18px;">Olá, <strong>{{recurrence.clientProfileData.firstName}}</strong>.</span><br>
-                                                      <div style="padding-top:3px;padding-bottom:10px;">Obrigado por registrar uma recorrência em nossa loja.Seu próximo pedido contém os itens abaixo:</div>
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                       </td>
-                                    </tr>
-                                    {{#each simulatedPurchase.purchases}}
-                                    <tr>
-                                       <td class="force-col" style="padding-right: 20px;">
-                                          <table cellspacing="0" cellspacing="0" style="padding-top:5px;padding-bottom:5px;padding-right:10px;" border="0" align="left" class="side-border">
-                                             <tbody>
-                                                <tr>
-                                                   <td style="padding-bottom:0;">
-                                                      <div style="color:#BBB;font-size:14px;font-weight:bold;text-transform:uppercase;">Endereço de entrega
-                                                      </div>
-                                                      <strong>{{shippingAddress.receiverName}}</strong><br />
-                                                      {{shippingAddress.street}} - {{shippingAddress.number}} - {{shippingAddress.neighborhood}}<br />
-                                                      {{shippingAddress.city}} - {{shippingAddress.state}}<br />
-                                                      {{shippingAddress.postalCode}}<br />
-                                                   </td>
-                                                </tr>
-                                             </tbody>
-                                          </table>
-                                          <table width="100%" cellspacing="0" cellpadding="0" border="0" align="left" style="padding-bottom: 10px;border:none;border-left:0px;border-right:0px;" class="col-3">
-                                             <tbody>
-                                                {{#each items}}
-                                                <tr>
-                                                   <td align="left">
-                                                      <table cellpadding="10" align="left" style="padding-top:5px;">
-                                                         <tbody>
-                                                            <tr>
-                                                               <td>
-                                                                  <img src="{{imageUrl}}">
-                                                               </td>
-                                                               <td style="padding-left:0;padding-bottom:0;padding-top:0;">
-                                                                  <span>{{name}}</span><br>
+<html class="no-js" lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                                                                  <table cellpadding="10" align="left" style="padding-top:5px;">
-                                                                      <tbody>
-                                                                          <tr>
-                                                                              <td style="padding-left:0;padding-bottom:0;padding-top:0;">
-                                                                                  Entrega
-                                                                                  <strong>
-                                                                                  <span style="display:inline-block;">
+    <!-- So that mobile webkit will display zoomed in -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- disable auto telephone linking in iOS -->
 
+    <title>{{recurrence.clientProfileData.firstName}}</title>
 
+    <style type="text/css">
+        /* Outlook link fix */
+        #outlook a{padding:0;}
+        /* Hotmail background & line height fixes */
+        .ExternalClass *{line-height:100%;}
+        .ExternalClass {width:100% !important;}
+        .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}
+        /* Re-style iPhone automatic links (eg. phone numbers) */
+        .applelinks a {color:#222222; text-decoration: none; }
+        /* Hotmail symbol fix for mobile devices */
+        .ExternalClass img[class^=Emoji] {width: 10px !important;height: 10px !important;display: inline !important;}
 
+        body { -webkit-text-size-adjust:none;-ms-text-size-adjust:100%; mso-line-height-rule:exactly; -webkit-font-smoothing: antialiased; margin:0; padding:0; width: 100%; font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;background-color:#e2e0e0;}
 
-                                                                                       {{#if logisticInfo.deliveryWindow}}
-                                                                                       Agendada
-                                                                                       {{else}}
-                                                                                           {{#unless logisticInfo.shippingEstimateDate}}
-                                                                                               </strong>em até <strong>
-                                                                                               {{#hasSubStr logisticInfo.shippingEstimate 'bd'}}
-                                                                                                   {{replace logisticInfo.shippingEstimate 'bd' ' dias úteis.'}}
-                                                                                               {{else}}
-                                                                                                   {{replace logisticInfo.shippingEstimate 'd' ' dias.'}}
-                                                                                               {{/hasSubStr}}
-                                                                                           {{else}}
-                                                                                               </strong>até <strong>
-                                                                                               {{formatDate logisticInfo.shippingEstimateDate}}
-                                                                                           {{/unless}}
-                                                                                       {{/if}}
+        img{display:block;border:none;border-infoleft:0px;border-right:0px;outline:none;text-decoration:none;-ms-interpolation-mode: bicubic;}
+        a img {border:none;}
 
+        table {font-size:13px;}
+        table td {border-collapse:collapse;}
+    </style>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" bgcolor="#ffffff" style="font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+    <!-- HEADER -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+        <tr>
+            <td align="center">
+                <a href="http://loja.consulempresa.com.br" alt="Consul" target="_blank">
+                    <img src="http://whirlpool.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="110" height="70" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Brastemp" />
+                </a>
+            </td>
+            <td style="font-size:1px;">&nbsp;</td>
+        </tr>
+    </table>
+    <!-- HEADER -->
 
+    <!-- CONTENT -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+        <tr>
+            <td>
+                <!-- STATUS PEDIDO -->
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td align="right">
+                            <font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">Realizado em {{formatDate recurrence.createdAt}}</font>
+                        </td>
+                        <td width="30"></td>
+                    </tr>
+                </table>
 
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td width="650" align="center">
+                            <img src="http://whirlpool.vteximg.com.br/arquivos/message-center_recorrencia-next-order-cns.jpg" width="100%" border="0" style="display: block; border: 0;" alt="Sua compra recorrente registrada com sucesso" />
+                        </td>
+                    </tr>
+                </table>
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
+                <!-- /STATUS PEDIDO -->
 
-                                                                                  </span>
-                                                                                  </strong><br>
-                                                                              </td>
-                                                                          </tr>
-                                                                      </tbody>
-                                                                  </table>
+                <!-- TEXTO -->
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td width="30"></td>
+                        <td align="center">
+                            <font style="font-size: 15px; font-weight:bold; font-family: Verdana,Arial,sans-serif; color:#736c6b;">Olá, {{recurrence.clientProfileData.firstName}}</font>
 
-                                                                  <table cellpadding="5" align="right" style="padding-top:5px;">
-                                                                     <tbody>
-                                                                        <tr>
-                                                                           <td style="padding-left:0;padding-bottom:0;padding-top:0;">
-                                                                              <span>{{quantity}}x R$ {{formatCurrency price}}</span><br>
-                                                                           </td>
-                                                                        </tr>
-                                                                     </tbody>
-                                                                  </table>
+                            <!-- space -->
+                            <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="10"></td></tr></table>
 
-                                                               </td>
-                                                            </tr>
-                                                         </tbody>
-                                                      </table>
+                            <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                Obrigado por registrar uma compra automática em nossa loja. <br /> Seu próximo pedido contém os itens abaixo:
+                            </font>
+                        </td>
+                        <td width="30"></td>
+                    </tr>
+                </table>
+                <!-- /TEXTO -->
 
-                                                   </td>
-                                                </tr>
-                                                {{/each}}
-                                             </tbody>
-                                          </table>
-
-                                       </td>
-                                    </tr>
-                                    <!-- TABELA DE TOTALIZADORES DA ORDER -->
-                                    <tr>
-                                        <td>
-                                            <table cellspacing="0" cellpadding="4" border="0" align="right" style="margin-bottom:15px;border: 1px solid #BBB;padding-top:7px;padding-bottom:7px;padding-left:7px;padding-right:7px;" bgcolor="#f9f9f9">
-                                                <tbody>
-                                                    <tr>
-                                                        <td valign="top" align="right" style="color:#7F7F7F;">
-                                                                        Itens
-                                                        </td>
-                                                        <td valign="top" align="right" style="text-align:left;">
-                                                                        R$ {{formatCurrency totals.items}}
-                                                        </td>
-                                                    <tr>
-                                                        <td valign="top" align="right" style="color:#7F7F7F;">
-                                                                        Entrega
-                                                        </td>
-                                                        <td valign="top" align="right" style="text-align:left;">
-                                                                        R$ {{formatCurrency totals.shipping}}
-                                                        </td>
-                                                    </tr>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                                    {{/each}}
-                                    <tr>
-                                       <td>
-                                          <strong>Atenciosamente,</strong><br>
-                                          <strong>Equipe {{_accountInfo.TradingName}}</strong>.<br><br>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                      <td>
-                                        <!-- FOOTER -->
-                                        <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+                <!-- PRODUTO -->
+                {{#each recurrence.items}}
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="30"></td></tr></table>
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td align="center">
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:590px; font-family:Verdana, Geneva, sans-serif; border-collapse: collapse;">
+                                <tr>
+                                    <td style="border: 1px solid #eaeaea; border-right: 1px dashed #eaeaea;" width="150" align="center" valign="center">
+                                        <img src="{{imageUrl}}" border="0" style="display: block; border: 0;" alt="{{name}}" />
+                                    </td>
+                                    <td style="border: 1px solid #eaeaea; border-left: 1px dashed #eaeaea;">
+                                        <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
                                             <tr>
-                                                <td>
-                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#96cb1b">
-                                                        <tr>
-
-                                                            <td width="60" height="50" align="right" valign="middle">
-                                                                <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/mkt_consul-f-a01.jpg" width="38" height="38" border="0" style="display:block;border:none;border-left:0px;border-right:0px;" alt="Dúvidas? Clique aqui" /></a>
-                                                            </td>
-                                                            <td style="color:#ffffff;">
-                                                                &nbsp;&nbsp;Dúvidas? <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank" style="color:#ffffff;">Clique aqui</a>
-                                                            </td>
-                                                            <td width="158" align="left"><a href="http://loja.consulempresa.com.br" title="Consul" target="_blank"><img src="http://consul.vteximg.com.br/arquivos/mkt_consul-f-a02.jpg" width="155" height="79" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Consul" /></a></td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
+                                                <td height="20"></td>
                                             </tr>
                                             <tr>
-                                                <td>
-                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size:10px;">
+                                                <td width="20"></td>
+                                                <td valign="top">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
                                                         <tr>
-                                                            <td height="20" style="font-size:1px;"></td>
-                                                            <td style="font-size:1px;">&nbsp;</td>
-                                                            <td style="font-size:1px;">&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="40" style="font-size:1px;">&nbsp;</td>
                                                             <td>
-                                                            Você poderá exercer o seu direito de arrependimento em até 7 dias úteis após o recebimento do produto, nos termos do Código de Defesa do Consumidor.  <a href="https://consul.custhelp.com/app/faq" title="Clique aqui" target="_blank">Clique aqui</a> caso queira cancelar este pedido.</br></br>
-                                                                Esta é uma mensagem automática, por favor não responda.<br />
-                                                                Em caso de dúvida entre em contato conosco através dos nossos canais de atendimento.
+                                                                <font style="font-size: 15px; font-family: Verdana,Arial,sans-serif; color:#9aca3c; font-weight: bold;">
+                                                                    {{name}}
+                                                                </font>
                                                             </td>
-                                                            <td width="40" style="font-size:1px;">&nbsp;</td>
                                                         </tr>
                                                         <tr>
-                                                            <td height="20" style="font-size:1px;"></td>
-                                                            <td style="font-size:1px;">&nbsp;</td>
-                                                            <td style="font-size:1px;">&nbsp;</td>
+                                                            <td height="10"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    <strong>{{quantity}} un.</strong>&nbsp;
+                                                                </font>
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    &nbsp;<strong>R$ {{formatCurrency ../simulatedPurchase.purchases.0.items.0.price}}</strong>
+                                                                </font>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </td>
+                                                <td width="20"></td>
+                                            </tr>
+                                            <tr>
+                                                <td height="20"></td>
                                             </tr>
                                         </table>
-                                        <!-- FOOTER -->
-                                      </td>
-                                    </tr>
-                                 </tbody>
-                              </table>
-                           </td>
-                        </tr>
-                     </tbody>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                {{/each}}
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="30"></td></tr></table>
+                <!-- /PRODUTO -->
+
+                <!-- PAGAMENTO E ENTREGA -->
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td align="center">
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                                <tr>
+                                    <td width="405" valign="top">
+                                        <!-- ENDEREÇO DE ENTREGA -->
+                                        <table width="100%" height="155" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                            <tr><td height="20"></td></tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                                        <tr>
+                                                            <td width="20"></td>
+                                                            <td align="left">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">ENDEREÇO DE ENTREGA</font>
+                                                            </td>
+                                                            <td width="20"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr><td height="20"></td></tr>
+                                            <tr>
+                                                <td align="left" height="80" valign="top">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                                        <tr>
+                                                            <td width="20"></td>
+                                                            <td align="left">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    <strong>{{recurrence.items.0.shippingAddress.receiverName}}</strong> <br />
+                                                                    {{recurrence.items.0.shippingAddress.street}}, {{recurrence.items.0.shippingAddress.number}} <br />
+                                                                    {{recurrence.items.0.shippingAddress.neighborhood}} - {{recurrence.items.0.shippingAddress.city}} - {{recurrence.items.0.shippingAddress.state}} <br />
+                                                                    CEP: {{recurrence.items.0.shippingAddress.postalCode}}
+                                                                </font>
+                                                            </td>
+                                                            <td width="20"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr><td height="20"></td></tr>
+                                        </table>
+                                        <!-- /ENDEREÇO DE ENTREGA -->
+                                    </td>
+                                    <td width="5"></td>
+                                    <td width="405" valign="top">
+                                        <!-- FORMA DE PAGAMENTO -->
+                                        <table width="100%" height="155" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                            <tr><td height="20"></td></tr>
+                                            <tr>
+                                                <td align="left">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                                        <tr>
+                                                            <td width="20"></td>
+                                                            <td align="left">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b; font-weight: bold;">FORMA DE PAGAMENTO</font>
+                                                            </td>
+                                                            <td width="20"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr><td height="20"></td></tr>
+                                            <tr>
+                                                <td align="left" height="80" valign="top">
+                                                    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#f4f4f4" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                                        <tr>
+                                                            <td width="15"></td>
+                                                            <td align="left">
+                                                                <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                    <strong>Cartão de Crédito</strong>
+                                                                </font>
+                                                            </td>
+                                                            <td width="15"></td>
+                                                        </tr>
+                                                        <tr><td height="10"></td></tr>
+                                                        <tr>
+                                                            <td width="15"></td>
+                                                            <td align="left" width="180" bgcolor="#ffffff" style="border: 1px solid #e7e7e7;">
+                                                                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:405px;font-family:Verdana, Geneva, sans-serif;">
+                                                                    <tr><td height="10"></td></tr>
+                                                                    <tr>
+                                                                        <td width="10"></td>
+                                                                        <td align="left">
+                                                                            <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                                                                                {{recurrence.paymentData.cardNumber}}
+                                                                            </font>
+                                                                        </td>
+                                                                        <td width="10"></td>
+                                                                    </tr>
+                                                                    <tr><td height="10"></td></tr>
+                                                                </table>
+                                                            </td>
+                                                            <td width="15"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr><td height="20"></td></tr>
+                                        </table>
+                                        <!-- FORMA DE PAGAMENTO -->
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!-- /PAGAMENTO E ENTREGA -->
+
+                <!-- ACOMPANHAMENTO PEDIDO -->
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="20"></td></tr></table>
+                <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;">
+                    <tr>
+                        <td width="30"></td>
+                        <td width="295" align="left">
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:295px;font-family:Verdana, Geneva, sans-serif;">
+                                <tr>
+                                    <td>
+                                        <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; font-weight: bold; color: #736c6b;">
+                                            Data da próxima compra: <strong style="color: #9aca3c;">{{formatDate recurrence.items.0.nextDelivery}}</strong>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr><td height="20"></td></tr>
+                                <tr>
+                                    <td>
+                                        <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; font-weight: bold; color: #736c6b;">
+                                            Valor total a ser debitado: <strong style="color: #9aca3c;">R$ {{formatCurrency simulatedPurchase.purchases.0.totals.items}}</strong>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="295" align="center">
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:260px;font-family:Verdana, Geneva, sans-serif;">
+                                <tr>
+                                    <td width="260" height="40" align="left">
+                                        <font style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color: #736c6b;">
+                                            Para alterar os dados desta <br /> recorrência acesse a página <br /> de acompanhamento no site
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr><td height="5"></td></tr>
+                            </table>
+                            <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:280px;font-family:Verdana, Geneva, sans-serif;">
+                                <tr><td height="5"></td></tr>
+                                <tr>
+                                    <td width="280" height="40" align="center" bgcolor="#9aca3c" style="border-radius: 20px;">
+                                        <a href="/minhaconta/pedidos" title="Acompanhar compra automática" style="font-size: 13px; font-family: Verdana,Arial,sans-serif; color: #ffffff; text-decoration: none;">ACOMPANHAR COMPRA AUTOMÁTICA</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td width="30"></td>
+                    </tr>
+                </table>
+                <!-- space -->
+                <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;"><tr><td height="20"></td></tr></table>
+                <!-- /ACOMPANHAMENTO PEDIDO -->
+
+            </td>
+        </tr>
+    </table>
+    <!-- /CONTENT -->
+
+    <!-- FOOTER -->
+    <table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffffff" style="max-width:650px;font-family:Verdana, Geneva, sans-serif;font-size:13px;color:#605d5d;">
+        <tr>
+          <td>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#9aca3c">
+              <tr>
+                <td width="30"></td>
+                <td align="left">
+                  <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size:12px;color:#ffffff;">
+                    <tr>
+                      <td width="30" height="37" align="left" valign="middle" bgcolor="#9aca3c">
+                        <a href="https://consul.custhelp.com/" title="Clique aqui" target="_blank">
+                          <img src="http://whirlpool.vteximg.com.br/arquivos/cns-email-question-icon.jpg" width="24" height="24" border="0" style="display:block;border:none;border-left:0px;border-right:0px;" alt="Dúvidas? Clique aqui" />
+                        </a>
+                      </td>
+                      <td bgcolor="#9aca3c" style="color:#ffffff;">
+                        &nbsp;&nbsp;<strong>Dúvidas?</strong> Acesse o <a href="https://consul.custhelp.com/" title="Portal de Atendimento" target="_blank" style="color:#ffffff;">Portal de Atendimento</a>
+                      </td>
+                    </tr>
                   </table>
-               </td>
-            </tr>
-         </tbody>
+                </td>
+                <td width="136" align="right" bgcolor="#9aca3c">
+                  <a href="http://loja.consulempresa.com.br" alt="Consul" target="_blank">
+                    <img src="http://whirlpool.vteximg.com.br/arquivos/message_center-logo-cns.jpg" width="110" height="70" border="0" style="display:block;outline:none;border:none;border-left:0px;border-right:0px;" alt="Brastemp" />
+                  </a>
+                </td>
+                <td width="30"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <tr>
+                <td height="20" style="font-size:1px;"></td>
+                <td style="font-size:1px;">&nbsp;</td>
+                <td style="font-size:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td width="20" style="font-size:1px;">&nbsp;</td>
+                <td>
+                <font style="font-size: 12px; font-family: Verdana,Arial,sans-serif; color:#736c6b;">
+                    Caso haja alguma divergência em seu pedido como: voltagem, cor, modelo, dimensão e endereço incorreto, acione imediatamente a central de atendimento: <strong><span style="font-size: 11px;">(11)</span> 3004-2290 / 0800-7572290</strong>
+                  </font>
+                </td>
+                <td width="20" style="font-size:1px;">&nbsp;</td>
+              </tr>
+              <tr>
+                <td height="20" style="font-size:1px;"></td>
+                <td style="font-size:1px;">&nbsp;</td>
+                <td style="font-size:1px;">&nbsp;</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
       </table>
-      <!--/600px container -->
-      <!--/100% wrapper-->
-   </body>
+      <!-- FOOTER -->
+</body>
 </html>
