@@ -103,16 +103,16 @@ body {
 	.link-change-payment {
 		@extend .primary-button;
 		background: transparent;
-	    border: 2px solid $orange;
+		border: 2px solid $orange;
 		color: $orange;
-	    &:hover {
-	    	background: $orange;
-	    	border: 2px solid $orange;
-	    	color: #ffffff;
-	    }
-	    &:after {
-	    	background: $orange;
-	    }
+		&:hover {
+			background: $orange;
+			border: 2px solid $orange;
+			color: #ffffff;
+		}
+		&:after {
+			background: $orange;
+		}
 	}
 
 	button,
