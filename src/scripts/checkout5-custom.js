@@ -242,6 +242,11 @@ $(window).on('load', function() {
 		this.payment = function() {
 			console.info('payment');
 
+			// Subir a página com a intenção de exibir as formas de pagamento ainda no primeiro scroll
+			$('html, body').animate({
+				scrollTop: $('#client-profile-data').offset().top - 10 + 'px'
+			}, 800);
+
 			$('.payment-card-number input, .payment-card-cvv input').addClass('inspectletIgnore');
 
 			recurrence.hidePayments();
