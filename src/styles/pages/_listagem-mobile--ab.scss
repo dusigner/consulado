@@ -1,0 +1,140 @@
+@charset 'UTF-8';
+
+@include breakpoint('small', 'max') {
+	body.ab-test__mobile--show-b {
+
+		// breadcrumb
+		.breadcrumb {
+			padding: 1em 0;
+
+			.bread-crumb { margin: 0; }
+		}
+
+		.top-wrapper { margin-top: 15px; }
+
+		.container.list-container.clearfix {
+			margin: 0;
+			padding: 0!important;
+		}
+
+		// Prateleira
+		section .prateleira {
+			margin-top: 15px!important;
+
+			& > ul:not(.slick-slider) { margin-left: -2.5%; }
+
+			// Item da lista
+			ul:not(.slick-slider) {
+				li[layout] {
+					border: 1px solid #ccc;
+					margin: 0 0 2.5% 2.5%!important;
+					padding: 10px;
+					text-align: left;
+					width: 47.5%;
+				}
+
+				article.box-produto { margin: 5px 0; }
+
+				// Imagem
+				.image {
+					overflow: hidden;
+					width: 100%!important;
+				}
+
+				.image,
+				img {
+					display: block!important;
+					margin: 0 auto!important;
+					max-height: 130px;
+				}
+
+				img { width: auto; }
+			}
+
+			.prod-info {
+				display: block!important;
+				width: 100%!important;
+			}
+
+			// Nome
+			.detalhes h3.nome {
+				color: #736c6b;
+				font-size: 12px!important;
+				font-weight: normal!important;
+				line-height: 14px!important;
+				min-height: 65px!important;
+
+				span .product-field {
+					display: block;
+					font-size: 0;
+					line-height: 22px!important;
+
+					ul {
+						padding: 0!important;
+
+						li {
+							font-size: 12px!important;
+							font-weight: bold;
+						}
+					}
+				}
+			}
+
+			// Preço
+			.detalhes .price {
+				line-height: 14px;
+				margin: 0!important;
+				min-height: inherit!important;
+
+				p.de,
+				p.por,
+				p.adicional {
+					height: inherit;
+					margin: 0!important;
+					min-height: inherit!important;
+					padding: 0!important;
+				}
+
+				p.de { height: 14px; }
+			}
+
+			.price,
+			.de,
+			.por {
+				height: auto;
+
+				.val { font-size: 12px!important; }
+			}
+
+			.txtDe,
+			.por,
+			.juros,
+			.creditosMgmTotal,
+			.inserir-lista { display: none; }
+
+			.adicional {
+				.vezes { font-size: 12px; }
+
+				.d { display: none; }
+
+				.val { font-size: 14px!important; }
+			}
+
+			.discount-boleto {
+				font-size: 10px!important;
+				padding-right: 35px!important;
+			}
+
+			// Produto indisponível
+			.indisponivel {
+				color: #9aca3c;
+				font-size: 11px;
+				font-weight: bold;
+				line-height: normal!important;
+				min-height: inherit!important;
+				padding: 30px 15px 0 0;
+				text-transform: uppercase;
+			}
+		}
+	}
+}
