@@ -30,7 +30,7 @@
 			padding: 0 10%;
 		}
 	}
-	
+
 
 	header {
 		min-height: 0;
@@ -185,7 +185,7 @@
 					@include responsiveFont(11, 16, true);
 					margin-right: 10px;
 				}
-				a { 
+				a {
 					color: $green;
 					display: none;
 				}
@@ -238,7 +238,7 @@
 				padding: 10px 25px;
 				width: 100%;
 			}
-			
+
 			.title {
 				@include responsiveFont(14, 16, true);
 				color: $green;
@@ -250,6 +250,7 @@
 			}
 			.checkbox {
 				display: flex;
+				margin-bottom: 10px;
 				label {cursor: pointer;}
 				input {
 					&:after {
