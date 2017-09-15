@@ -100,7 +100,7 @@ define('store', function() {
 
 		var approved = false;
 
-		if(this.userData.xStatusPJ && this.userData.xStatusPJ !== 'reprovado') {
+		if(this.userData.xValidationPJ && this.userData.xValidationPJ !== 'reprovado') {
 			approved = true;
 		}
 

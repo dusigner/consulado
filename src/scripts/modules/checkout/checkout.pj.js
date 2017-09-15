@@ -49,7 +49,7 @@ Nitro.module('checkout.pj', function() {
 
 	this.pendingCompany = function () {
 		var $paymentButton = $('.payment-submit-wrap');
-		if(store.userData && store.userData.xStatusPJ !== 'aprovado') {
+		if(store.userData && store.userData.xValidationPJ !== 'aprovado') {
 			$paymentButton.hide();
 			if( $('.pending-wrap').length === 0 ) {
 				$paymentButton.before('<div class="pending-wrap"></div>');
@@ -66,10 +66,10 @@ Nitro.module('checkout.pj', function() {
 
 					$pendingWrap.removeClass('loading');
 
-					if (user.xStatusPJ === 'aprovado') {
+					if (user.xValidationPJ === 'aprovado') {
 						$paymentButton.show();
 						$pendingWrap.hide();
-					} else if (user.xStatusPJ === 'reprovado') {
+					} else if (user.xValidationPJ === 'reprovado') {
 						$paymentButton.html('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').show();
 					} else {
 						$pendingWrap.html('<p>Ainda estamos validando o seu cadastro. Tente novamente mais tarde ou <a href="#" class="retry-buy">clique aqui.</a></p>');

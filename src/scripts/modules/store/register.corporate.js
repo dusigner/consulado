@@ -17,7 +17,7 @@ Nitro.module('register.corporate', function() {
 		$form = $('.form-register');
 
 	this.setup = function() {
-		
+
 		self.addFormMask();
 
 		$form.fields = $form.find('input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]');
@@ -97,7 +97,7 @@ Nitro.module('register.corporate', function() {
 
 
 	this.fillUserEmail = function(e, email) {
-		
+
 		dataLayer.push(
 			{ event : 'emailNãoCadastrado'}
 		);
@@ -206,16 +206,17 @@ Nitro.module('register.corporate', function() {
 				data[x.name] = x.value;
 			}
 		});
-		
+
 		if (data.phone) {
-			data.phone = '+55' + data.phone; 
+			data.phone = '+55' + data.phone;
 		}
 
 		$.extend(data, {
 			corporateDocument: self.getDocument(data.corporateDocument),
 			isCorporate: true,
 			homePhone: data.phone,
-			businessPhone: data.phone
+			businessPhone: data.phone,
+			xValidationPJ: 'pendente'
 		});
 
 		/*console.log('register', data);*/
