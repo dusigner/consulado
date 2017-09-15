@@ -2,14 +2,8 @@
 
 'use strict';
 
-// require('../../templates/modal-warranty-desktop.html');
-// require('../../templates/modal-warranty-mobile.html');
-// require('../../templates/modal-warranty-desktop-teste-ab.html');
-
-require('../../../templates/modal-warranty-desktop-teste-ab-18.html');
-require('../../../templates/modal-warranty-mobile-teste-ab-18.html');
-require('../../../templates/modal-warranty-desktop-teste-ab-novo.html');
-require('../../../templates/modal-warranty-mobile-teste-ab-novo.html');
+require('../../../templates/modal-warranty-desktop.html');
+require('../../../templates/modal-warranty-mobile.html');
 
 
 Nitro.module('checkout.gae', function() {
@@ -131,8 +125,7 @@ Nitro.module('checkout.gae', function() {
 	this.modalWarranty = function(e) {
 		e.preventDefault();
 
-		// var template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-desktop-teste-ab-novo' : 'modal-warranty-desktop-teste-ab-18';
-		var template = 'modal-warranty-desktop-teste-ab-novo';
+		var template = 'modal-warranty-desktop';
 
 		// Pegando valores do produto clicado
 		var $self = $(this),
@@ -189,8 +182,7 @@ Nitro.module('checkout.gae', function() {
 		});
 
 		if ($(window).width() < 840) {
-			// template = $body.hasClass('teste-ab__modal-show--b') ? 'modal-warranty-mobile-teste-ab-novo' : 'modal-warranty-mobile-teste-ab-18';
-			template = 'modal-warranty-mobile-teste-ab-novo';
+			template = 'modal-warranty-mobile';
 		}
 
 		dust.render(template, data, function(err, out) {
