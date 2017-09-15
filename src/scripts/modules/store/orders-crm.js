@@ -6,7 +6,7 @@ require('vendors/jquery.cookie');
 
 var CRM = {
 
-	ordersURI: '/api/checkout/pub/orders/',
+	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + $.cookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',
 	statusPedidoURI: '/api/ds/pub/documents/SP',
 	recurrenceURI: '/api/' + window.jsnomeLoja + '/subscriptions/',
 
