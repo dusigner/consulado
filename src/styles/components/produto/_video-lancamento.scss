@@ -38,6 +38,10 @@
 			content: 'Vídeo do Produto';
 			top: 65%;
 		}
+
+		&:empty {
+			display: none;
+		}
 	}
 
 	iframe {
