@@ -23,6 +23,8 @@
 @import 'layout/grid';
 @import 'layout/gridresponsive';
 
+$loja-color: #9aca3d;
+
 // Base
 .landing-blackfriday-2017 {
 	@include breakpoint('medium', 'max') { padding-top: 70px!important; }
@@ -54,7 +56,7 @@
 		width: 100%;
 		z-index: 10;
 	}
-	background-color: #f04f25;
+	background-color: $loja-color;
 	line-height: 95px;
 	min-height: 95px !important;
 	overflow: hidden;
@@ -70,9 +72,9 @@
 		&:hover { text-decoration: none; }
 
 		&:before {
-			@include icon-get(logo-brastemp);
+			@include icon-get(logo-consul);
 			color: #fff;
-			font-size: 18px;
+			font-size: 26px;
 		}
 	}
 }
@@ -118,12 +120,11 @@
 }
 
 // Contador
-.lpbf-banner .col-10.centered { border: 1px solid #ccc; }
 .lpbf-contador {
 	@include breakpoint('small', 'max') { margin-bottom: 80px; }
 	color: #fff;
 	margin: 0 auto;
-	max-width: 390px;
+	max-width: 550px;
 
 	.lpbf-contador__title {
 		@include rfs(20);
@@ -133,33 +134,29 @@
 	}
 
 	.countdown {
-		border-bottom: 2px solid #fff;
 		display: flex;
 		justify-content: space-between;
 		padding: 1em 0;
 	}
 
 	.counter {
+		@include breakpoint('extra-small', 'max') { width: 56px; }
 		@include rfs(63);
+		color: $loja-color;
 		display: block;
-		font-weight: 100;
+		font-weight: bold;
 		line-height: 100%;
+		position: relative;
+		width: 84px;
+
+		&.colon { width: auto; }
 	}
 
 	.countdown-text {
-		@include rfs(14);
-		color: #e74010;
+		@include rfs(13);
+		color: #fff;
 		padding-top: .7em;
 		text-transform: uppercase;
-	}
-
-	.lpbf-contador__text {
-		@include rfs(28);
-		color: #d0d0d0;
-		font-weight: 100;
-		margin: 1.3em 0;
-
-		strong { font-weight: 400; }
 	}
 }
 
@@ -205,11 +202,7 @@
 	transform: translateY(-65px);
 	z-index: 1;
 
-	strong {
-		color: #e74011;
-		display: block;
-		margin: 0 auto;
-	}
+	strong { color: $loja-color; }
 }
 
 // Categorias
@@ -370,7 +363,7 @@
 		&:focus { outline: none; }
 
 		&.erro {
-			border: 1px solid #f04f25;
+			border: 1px solid $loja-color;
 
 			&:focus { border: 1px solid #fff; }
 		}
@@ -379,7 +372,7 @@
 	// Validação e menssagens de erro
 	.message {
 		@include rfs(19);
-		color: #f04f25;
+		color: $loja-color;
 		font-weight: 300;
 		line-height: 100%;
 		margin: 0;
@@ -417,7 +410,7 @@
 			width: 100%;
 		}
 		@include rfs(22);
-		background-color: #f04f25;
+		background-color: $loja-color;
 		border: none;
 		color: #fff;
 		font-weight: bold;
@@ -446,7 +439,7 @@
 
 	.mais-desejados__title {
 		@include rfs(32);
-		color: #f04f25;
+		color: $loja-color;
 		font-weight: 200;
 		margin: 0 0 1em 0;
 
@@ -471,7 +464,7 @@
 
 	figcaption {
 		@include rfs(23);
-		color: #f04f25;
+		color: $loja-color;
 		font-weight: 200;
 		line-height: 115%;
 		padding: 1em;
@@ -492,7 +485,3 @@
 	}
 }
 
-
-
-// Footer
-.footer { filter: grayscale(100%); }
