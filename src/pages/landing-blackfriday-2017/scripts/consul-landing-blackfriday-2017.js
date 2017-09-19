@@ -38,8 +38,7 @@ Nitro.setup([], function () {
 		},
 
 		countdown: function() {
-			// var endDate       = '2017/11/24',
-			var endDate       = '2017/09/18',
+			var endDate       = '2017/11/24',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
