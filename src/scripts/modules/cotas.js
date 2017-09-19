@@ -15,13 +15,18 @@ Nitro.module('cotas', function() {
 		},
 		userData = null,
 		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0,
-		cotasCookie = $.cookie('xSkuSalesChannel5');
+		cotasCookie = $.cookie('xSkuSalesChannel5'),
+		windowWidth = $(window).width(),
+		headerAccount = $('.header .account'),
+		menuMobile = $('.menu-department');
 
 	this.init = function() {
 		if( isLogged ) {
 			if( cotasCookie ) {
 				cota.consumed = cotasCookie;
 				self.render();
+
+				headerAccount.addClass('logged-user');
 			} else {
 				self.getUserEmail()
 					.then(self.getConsumed)
@@ -77,4 +82,10 @@ Nitro.module('cotas', function() {
 	};
 
 	this.init();
+
+	$(window).load(function() {
+		if ( windowWidth <= 768) {
+			menuMobile.prepend(headerAccount);
+		}
+	});
 });
