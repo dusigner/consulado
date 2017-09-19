@@ -1,0 +1,578 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Brastemp
+	* Description: CSS desenvolvido para Brastemp.
+	* Author: Douglas 'Amarelo' Lopes
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/rfs';
+
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+
+$loja-color: #9aca3d;
+
+// Base
+.landing-blackfriday-2017 {
+	@include breakpoint('medium', 'max') { padding-top: 70px!important; }
+	@include breakpoint('small', 'max') { padding-top: 50px!important; }
+	transition:
+		font-size .3s ease,
+		padding-top .3s ease
+	;
+
+	.centered {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Header
+.lpbf-header {
+	@include breakpoint('small', 'max') {
+		line-height: 50px;
+		min-height: 50px!important;
+	}
+	@include breakpoint('medium', 'max') {
+		line-height: 70px;
+		min-height: 70px!important;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+	}
+	background-color: $loja-color;
+	line-height: 95px;
+	min-height: 95px !important;
+	overflow: hidden;
+	text-align: center;
+	transition:
+		line-height .3s ease,
+		min-height .3s ease
+	;
+
+	a {
+		display: block;
+
+		&:hover { text-decoration: none; }
+
+		&:before {
+			@include icon-get(logo-consul);
+			color: #fff;
+			font-size: 26px;
+		}
+	}
+}
+
+// Banner
+.lpbf-banner {
+	@include breakpoint(660px, 'max') {
+		background: #000 url('/arquivos/lpbf-banner-background-mobile.jpg') center -30px no-repeat;
+		background-size: contain;
+	}
+	background: transparent url('/arquivos/lpbf-banner-background.jpg') 34% 0 no-repeat;
+	background-color: #000;
+	transition: padding .3s ease;
+
+	.col-6 {
+		position: relative;
+	}
+
+	.container {
+		@include breakpoint('large', 'max') { padding: 0 10px; }
+		transition: padding .3s ease;
+	}
+}
+.lpbf__title {
+	@include breakpoint('small', 'max') {
+		background-position: center -75px;
+		margin: 0 auto 80em auto;
+		width: 240px;
+	}
+	background: transparent url('/arquivos/lpbf-consul-logo.png') center -100px no-repeat;
+	background-size: contain;
+	color: transparent;
+	font-size: 1px;
+	height: 330px;
+	margin: 0 0 80px 0;
+	overflow: hidden;
+	text-indent: -99cm;
+	transition:
+		margin-bottom .3s ease,
+		width .3s ease
+	;
+	width: 282px;
+}
+
+.lpbf__subtitle {
+	@include breakpoint('medium', 'min') { @include rfs(20); }
+	@include breakpoint('medium', 'max') { display: none; }
+	@include breakpoint('small', 'max') {
+		@include rfs(24);
+		display: block;
+		max-width: 100%;
+		padding: 10px 40px;
+		text-align: center;
+		top: 240px;
+		width: 90%;
+	}
+	color: #fff;
+	max-width: 210px;
+	position: absolute;
+	right: 5%;
+	top: 40%;
+
+	strong {
+		font-weight: 100;
+		text-shadow: 0 0 3px #fff;
+	 }
+}
+
+// Contador
+.lpbf-contador {
+	@include breakpoint('small', 'max') { margin-bottom: 140px; }
+	@include breakpoint('small', 'min') { transform: translateY(65%); }
+	color: #fff;
+	margin: 0 auto;
+	max-width: 550px;
+
+	.lpbf-contador__title {
+		@include breakpoint('small', 'max') {
+			padding: 0 2em;
+			text-align: center;
+			transform: translateY(-20px);
+		}
+		@include rfs(20);
+		display: block;
+		line-height: 100%;
+		text-align: left;
+	}
+
+	.countdown {
+		display: flex;
+		justify-content: space-between;
+		padding: 1em 0;
+	}
+
+	.counter {
+		@include breakpoint('extra-small', 'max') { width: 56px; }
+		@include rfs(63);
+		color: $loja-color;
+		display: block;
+		font-weight: bold;
+		line-height: 100%;
+		position: relative;
+		width: 84px;
+
+		&.colon { width: auto; }
+	}
+
+	.countdown-text {
+		@include rfs(13);
+		color: #fff;
+		padding-top: .7em;
+		text-transform: uppercase;
+	}
+
+
+	// Finalização do contador
+	&.is--end {
+		.countdown,
+		.lpbf-contador__title {
+			display: none;
+			visibility: hidden;
+		}
+
+		// Chegou
+		.lpbf-chegou {
+			@include breakpoint('small', 'min') {
+				background-color: #292929;
+				float: right;
+				transform: translateY(17%);
+			}
+			display: block;
+			padding: 2.5em 4em;
+			visibility: visible;
+		}
+
+		.lpbf__text {
+			@include breakpoint('small', 'max') { @include rfs(60); }
+			@include rfs(44);
+			color: #d0d0d0;
+			display: block;
+			font-weight: 400;
+		}
+
+		.lpbf-chegou__cta {
+			@include rfs(21);
+			background-color: $loja-color;
+			color: #fff;
+			display: inline-block;
+			font-weight: bold;
+			margin-top: 1.2em;
+			padding: .5em 2em;
+			text-decoration: none;
+		}
+	}
+}
+
+
+// Form
+.lpbf-form__container {
+	background-color: #000;
+	margin-top: -25px;
+	padding-bottom: 20px;
+	position: relative;
+
+	&:before,
+	&:after {
+		bottom: 100%;
+		content: '';
+		display: block;
+		height: 115px;
+		position: absolute;
+		right: 0;
+		width: 100%;
+	}
+
+	&:before {
+		background-color: #000;
+		opacity: .6;
+	}
+
+	&:after { border-top: 2px solid $loja-color; }
+
+	.container {
+		@include breakpoint('small', 'max') { width: 90%; }
+		@include breakpoint('extra-small', 'max') { width: 100%; }
+		@include breakpoint('small', 'min') { padding: 0; }
+		max-width: 980px;
+	}
+}
+
+.lpbf-form__title {
+	@include breakpoint(390px, 'min') {
+		@include breakpoint(575px, 'max') {
+			margin: 0 auto;
+			width: 80%;
+		}
+	}
+	@include rfs(34);
+	color: #fff;
+	margin: 0;
+	position: relative;
+	transform: translateY(-65px);
+	z-index: 1;
+
+	strong {
+		@include rfs(36);
+		color: $loja-color;
+	}
+}
+
+// Categorias
+.lpbf-categorys {
+	@include breakpoint('small', 'min') {
+		display: flex;
+		justify-content: space-between;
+	}
+	margin-top: -30px;
+}
+
+.lpbf-categorys__item {
+	@include breakpoint('small', 'max') {
+		display: inline-block;
+		width: calc(50% - 2px);
+	}
+	cursor: pointer;
+	display: block;
+	overflow: hidden;
+	padding: 5px 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+
+	input[type='checkbox'] {
+		position: absolute;
+		top: -30px;
+		visibility: visible;
+	}
+
+	// Active state
+	&:hover {
+		.lpbf-categorys__text { color: #fff; }
+		.lpbf-categorys__image { border-color: #fff; }
+		img { transform: scale(1.07); }
+	}
+
+	input[type='checkbox']:checked {
+		& + .lpbf-categorys__image {
+			background-color: #a3a3a3;
+			border: 3px solid $loja-color;
+
+			&:before {
+				background-color: #4A4A4A;
+				opacity: .3;
+			}
+
+			img { transform: scale(1.14); }
+
+			& + .lpbf-categorys__text { color: $loja-color; }
+		}
+	}
+}
+
+.lpbf-categorys__text {
+	@include breakpoint(370px, 'max') { @include rfs(11); }
+	@include rfs(16);
+	color: #c3c3c3;
+	display: block;
+	padding: 12px 0 0 0;
+	text-transform: uppercase;
+	transition:
+		color .3s ease,
+		font-size .3s ease
+	;
+}
+
+.lpbf-categorys__image {
+	@include breakpoint('large', 'max') {
+		@include breakpoint('small', 'min') {
+			height: 180px;
+			line-height: 180px;
+			width: 180px;
+		}
+	}
+	@include breakpoint('extra-small', 'max') {
+		height: 140px;
+		line-height: 140px;
+		width: 140px;
+	}
+	background-color: #fff;
+	border: 1px solid #c3c3c3;
+	border-radius: 25px;
+	display: inline-block;
+	height: 205px;
+	line-height: 205px;
+	max-width: 100%;
+	overflow: hidden;
+	position: relative;
+	transition:
+		background-color .5s ease,
+		border-color .3s ease,
+		height .3s ease,
+		outline .2s ease,
+		width .3s ease
+	;
+	width: 205px;
+
+	// Máscara pra corrigir o clik no IE
+	&:before {
+		border-radius: 20px;
+		content: '';
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	img {
+		@include breakpoint('small', 'max') {
+			max-height: 75%;
+			max-width: 75%;
+		}
+		display: inline-block;
+		height: auto;
+		max-height: 100%;
+		max-width: 100%;
+		transition:
+			max-height .3s ease,
+			max-width .3s ease,
+			transform .3s ease
+		;
+		vertical-align: middle;
+		width: auto;
+	}
+}
+
+
+// Form
+.form-blackfriday-2017 {
+	@include breakpoint('small', 'max') {
+		padding-bottom: 4em;
+		text-align: center;
+	}
+	@include inputPlaceholderColor(#767676);
+	padding: 60px 20px 0 20px;
+	position: relative;
+
+	.form-blackfriday__input {
+		@include breakpoint('small', 'max') {
+			margin: 0 0 15px 0;
+			width: 100%;
+		}
+		@include rfs(18);
+		background-color: #fff;
+		border: 1px solid #fff;
+		border-radius: 8px;
+		color: #767676;
+		font-weight: 300;
+		margin-right: 10px;
+		padding: 18px 15px;
+		width: 35%;
+
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus
+		&:-webkit-autofill {
+			-webkit-box-shadow: 0 0 0 1000px #fff inset;
+			-webkit-text-fill-color: #767676;
+			border: 1px solid #fff;
+			transition: background-color 5000s ease-in-out 0s;
+		}
+
+		&:focus { outline: none; }
+
+		&.erro {
+			border: 1px solid $loja-color;
+
+			&:focus { border: 1px solid #fff; }
+		}
+	}
+
+	// Validação e menssagens de erro
+	.message {
+		@include rfs(19);
+		color: $loja-color;
+		font-weight: 300;
+		line-height: 100%;
+		margin: 0;
+		position: absolute;
+		top: 87%;
+		width: 50%;
+	}
+
+	.success_p {
+		right: 20px;
+		text-align: right;
+
+		&:after {
+			@include icon-get ('check-mark');
+			@include rfs(12);
+			margin-left: 10px;
+		}
+	}
+
+	.error_p {
+		left: 20px;
+		text-align: left;
+
+		&:before {
+			@include icon-get ('close');
+			@include rfs(13);
+			margin-right: 10px;
+		}
+	}
+
+	.form-blackfriday__submit {
+		@include breakpoint('small', 'max') {
+			display: block;
+			margin: 0 auto;
+			width: 100%;
+		}
+		@include rfs(16);
+		background-color: $loja-color;
+		border: none;
+		border-radius: 35px;
+		color: #fff;
+		font-weight: bold;
+		padding: 18px 5px;
+		text-transform: uppercase;
+		transition: width .2s ease;
+		width: calc(29% - 30px);
+
+		&:focus { outline: none; }
+	}
+}
+
+
+// Produtos mais desejados
+.mais-desejados {
+	background-color: #000;
+	overflow: hidden;
+	padding: 3em 0;
+	position: relative;
+
+	.mais-desejados__container {
+		margin: 0 auto;
+		max-width: 700px;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.mais-desejados__title {
+		@include rfs(32);
+		color: $loja-color;
+		font-weight: 200;
+		margin: 0 0 1em 0;
+
+		strong { font-weight: bold; }
+	}
+
+	.hidden_slider { position: relative; }
+
+	figure {
+		margin: 0;
+
+		a {
+			display: block;
+			padding: 1.2em;
+		}
+
+		img {
+			height: auto;
+			max-width: 100%;
+		}
+	}
+
+	figcaption {
+		@include rfs(23);
+		color: $loja-color;
+		font-weight: 200;
+		line-height: 115%;
+		padding: 1em;
+
+		strong {
+			@include rfs(18);
+			color: #fff;
+			display: block;
+			padding: 8px 0;
+			text-transform: uppercase;
+		}
+	}
+
+	.slider_produtos {
+		padding-bottom: 1.5em;
+
+		.slick-arrow:before { @include rfs(50); }
+	}
+}
+
