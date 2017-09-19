@@ -236,7 +236,7 @@ $loja-color: #9aca3d;
 .lpbf-form__container {
 	background-color: #000;
 	margin-top: -25px;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 	position: relative;
 
 	&:before,
@@ -421,7 +421,7 @@ $loja-color: #9aca3d;
 		text-align: center;
 	}
 	@include inputPlaceholderColor(#767676);
-	padding: 60px 20px 0 20px;
+	padding: 60px 20px 30px 20px;
 	position: relative;
 
 	.form-blackfriday__input {
