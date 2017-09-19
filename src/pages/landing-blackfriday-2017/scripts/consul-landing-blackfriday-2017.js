@@ -9,66 +9,15 @@ var CRM = require('modules/store/crm');
 
 Nitro.setup([], function () {
 
-	var dados = {
-		'produtos' : [
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/01.png',
-				'nome'   : 'Geladeira Brastemp Inverse 422 litros Evox',
-				'codigo' : 'BRE50NK',
-				'url'    : '//loja.brastemp.com.br/geladeira-brastemp-inverse-422-litros-bre50nk/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/02.png',
-				'nome'   : 'Cooktop à Gás Brastemp Ative! 5 Bocas em Vidro',
-				'codigo' : 'BDD75AE',
-				'url'    : '//loja.brastemp.com.br/cooktop-a-gas-brastemp-ative-5-bocas-em-vidro-preto-bdd75ae/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/03.png',
-				'nome'   : 'Forno à Gás de Embutir Brastemp Clean',
-				'codigo' : 'BOA61AR',
-				'url'    : '//loja.brastemp.com.br/forno-a-gas-de-embutir-brastemp-clean-inox-boa61ar/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/04.png',
-				'nome'   : 'Fogão 6 Bocas Brastemp de Piso Mesa Compartimentada',
-				'codigo' : 'BFS6NBR',
-				'url'    : '//loja.brastemp.com.br/fogao-de-piso-brastemp-6-bocas-mesa-compartimentada-bfs6nbr/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/05.png',
-				'nome'   : 'Adega Dual Zone Brastemp Gourmand 31 Garrafas',
-				'codigo' : 'BZB31AE',
-				'url'    : '//loja.brastemp.com.br/adega-dual-zone-brastemp-gourmand-31-garrafas-preta-bzb31ae/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/06.png',
-				'nome'   : 'Lava-Louças Brastemp Ative! 8 Serviços',
-				'codigo' : 'BLF08AS',
-				'url'    : '//loja.brastemp.com.br/lava-loucas-brastemp-ative-8-servicos-prata-blf08as/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/07.png',
-				'nome'   : 'Lavadora Brastemp 11Kg',
-				'codigo' : 'BWK11AB',
-				'url'    : '//loja.brastemp.com.br/lavadora-brastemp-11kg-top-load-bwk11ab/p'
-			},
-			{
-				'image'  : '//whirlpoolqa.vteximg.com.br/arquivos/08.png',
-				'nome'   : 'Geladeira Brastemp Ative 429 Litros Evox',
-				'codigo' : 'BRM50NK',
-				'url'    : '//loja.brastemp.com.br/geladeira-brastemp-ative-platinum-429-litros-brm50nk/p'
-			}
-		]
-	};
+	var contador;
 
 	var Index = {
 
 		init: function(){
 			this.leadsBf();
-			this.slider();
+			// this.slider();
 
-			setInterval(this.countdown, 1000);
+			contador = setInterval(this.countdown, 1000);
 		},
 
 		calculateTimeRemaining: function( endDate ) {
@@ -89,7 +38,8 @@ Nitro.setup([], function () {
 		},
 
 		countdown: function() {
-			var endDate       = '2017/11/25',
+			// var endDate       = '2017/11/24',
+			var endDate       = '2017/09/18',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
@@ -105,6 +55,12 @@ Nitro.setup([], function () {
 			$hours.text(hours < 10 ? '0' + hours : hours);
 			$minutes.text(minutes < 10 ? '0' + minutes : minutes);
 			$seconds.text(seconds < 10 ? '0' + seconds : seconds);
+
+			if ( days + hours + minutes + seconds <= 0 ) {
+				clearInterval(contador);
+
+				$('.lpbf-contador').addClass('is--end');
+			}
 		},
 
 		emailValidation: function ( email ){
@@ -174,27 +130,6 @@ Nitro.setup([], function () {
 				}
 			});
 		},
-
-		slider: function(){
-			var $sliderProdutos = $('.slider_produtos');
-
-			$sliderProdutos.slick({
-				adaptiveHeight: true,
-				dots: true
-			});
-
-			var slider = $sliderProdutos.slick('getSlick');
-			var itens = slider.$slides;
-
-			for( var i = 0; i < itens.length; i++ ){
-
-				$(itens[i]).find('img').prop('src', dados.produtos[i].image);
-				$(itens[i]).find('img').prop('alt', dados.produtos[i].nome + ' - ' + dados.produtos[i].codigo);
-				$(itens[i]).find('a').prop('href', dados.produtos[i].url);
-				$(itens[i]).find('a').prop('title', dados.produtos[i].nome + ' - ' + dados.produtos[i].codigo);
-				$(itens[i]).find('figcaption').html(dados.produtos[i].nome + '<br><strong>' + dados.produtos[i].codigo + '</strong>');
-			}
-		}
 	};
 
 	Index.init();
