@@ -38,8 +38,8 @@ Nitro.setup([], function () {
 		},
 
 		countdown: function() {
-			// var endDate       = '2017/11/24',
-			var endDate       = '2017/09/18',
+			// var endDate       = '2017/09/18',
+			var endDate       = '2017/11/24',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
@@ -71,13 +71,8 @@ Nitro.setup([], function () {
 
 		leadsBf: function (){
 			var inputs = $('input[type="text"]');
-			var catItem = $('.lpbf-categorys__image, .lpbf-categorys__text');
 
 			inputs.on('input', function() { $(this).removeClass('error'); });
-
-			// catItem.click(function(){
-			// 	$(this).parent().toggleClass('is--active');
-			// });
 
 			$('#form-bf-2017').on('submit', function(e) {
 				e.preventDefault();
