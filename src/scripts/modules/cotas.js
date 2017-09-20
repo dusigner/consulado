@@ -20,6 +20,7 @@ Nitro.module('cotas', function() {
 		headerAccount = $('.header .account'),
 		menuMobile = $('.menu-department');
 
+
 	this.init = function() {
 		if( isLogged ) {
 			if( cotasCookie ) {
