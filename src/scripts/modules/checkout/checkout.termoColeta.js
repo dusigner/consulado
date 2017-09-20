@@ -68,13 +68,11 @@ Nitro.module('checkout.termoColeta', function() {
 				CRM.insertClient(data)
 					.then(function() {
 						//console.log('deu certo');
-						$.get('/api/ds/pub/documents/CL?f=id&fq=email:' + email).done(function(data) {
-							idUser = data.Documents[0].id;
-
+						CRM.clientSearchByEmail(email).done(function(user) {
 							$.ajax({
 								contentType: 'application/json',
 								type: 'PUT',
-								url: '/api/ds/pub/documents/CL/' + idUser + '/xAceiteColeta/score',
+								url: '/api/ds/pub/documents/CL/' + user.id + '/xAceiteColeta/score',
 								data: jsonColeta,
 								success: function() {
 									//console.log('Termo de aceite para coleta de produto antigo: aceito');

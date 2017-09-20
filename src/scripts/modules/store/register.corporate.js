@@ -17,7 +17,7 @@ Nitro.module('register.corporate', function() {
 		$form = $('.form-register');
 
 	this.setup = function() {
-		
+
 		self.addFormMask();
 
 		$form.fields = $form.find('input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]');
@@ -97,7 +97,7 @@ Nitro.module('register.corporate', function() {
 
 
 	this.fillUserEmail = function(e, email) {
-		
+
 		dataLayer.push(
 			{ event : 'emailNãoCadastrado'}
 		);
@@ -134,14 +134,19 @@ Nitro.module('register.corporate', function() {
 	this.validCompany = function() {
 
 		return CRM.clientSearchByCorporateDocument(self.getDocument())
-			.done(function() {
-				dataLayer.push(
-					{ event : 'formularioInvalido'}
-				);
-				self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
-			})
-			.fail(
-				self.nextStep);
+			.done(function(data) {
+				console.log('achou', data);
+				if(data) {
+					dataLayer.push(
+						{ event : 'formularioInvalido'}
+					);
+					self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
+				} else {
+					self.nextStep();
+				}
+			});
+			/* .fail(
+				self.nextStep); */
 
 	};
 
@@ -206,9 +211,9 @@ Nitro.module('register.corporate', function() {
 				data[x.name] = x.value;
 			}
 		});
-		
+
 		if (data.phone) {
-			data.phone = '+55' + data.phone; 
+			data.phone = '+55' + data.phone;
 		}
 
 		$.extend(data, {
