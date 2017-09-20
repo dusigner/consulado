@@ -29,7 +29,6 @@ Nitro.module('cotas', function() {
 
 				headerAccount.addClass('logged-user');
 
-				console.log('is logged');
 			} else {
 				self.getUserEmail()
 				.then(self.getConsumed)
