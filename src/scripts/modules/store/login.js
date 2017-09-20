@@ -60,9 +60,22 @@ Nitro.module('login', function () {
 
 		if (!this.btnSubmit.is('.loading')) {
 
+			var form = this;
+
 			validation.validate(this.fields, this.btnSubmit)
-				.then(CRM.clientSearchByEmail.bind(null, this.fieldEmail.val()))
-				.done(redirect.login)
+				.then(CRM.clientSearchByEmail.bind(null, form.fieldEmail.val()))
+				.done(function(data) {
+					if(data) {
+						redirect.login(data);
+					} else {
+						var msg = 'Usuário não encontrado';
+
+						$(store).trigger('store.user.not-found', form.fieldEmail.val());
+
+						self.error.call(form, msg);
+					}
+				}.bind(form));
+				/* .done(redirect.login)
 				.fail(function (e, status, message) {
 
 					var msg;
@@ -75,7 +88,7 @@ Nitro.module('login', function () {
 
 					self.error.call(this, msg);
 
-				}.bind(this));
+				}.bind(this)); */
 		}
 
 		return false;

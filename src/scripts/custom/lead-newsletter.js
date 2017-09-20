@@ -1,6 +1,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
+var CRM = require('modules/store/crm');
 
 require('vendors/jquery.inputmask');
 
@@ -30,7 +31,6 @@ Nitro.module('lead-newsletter', function() {
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false,
 		// hasSession = sessionStorage.getItem('leadNewsletter'),
-		clientURI = '/api/ds/pub/documents/CL',
 		$newsletterFixed = $('.toggle-newsletter');
 
 	this.setup = function(/*orderForm*/) {
@@ -112,12 +112,11 @@ Nitro.module('lead-newsletter', function() {
 		data.xUnidadeNegocio = 2;
 		data.xCategoriaLead = 1;
 
-		return $.ajax({
-			url: clientURI,
+		return CRM.ajax({
+			url: CRM.formatUrl('CL', 'documents'),
 			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
-		}).done(function() {
+			data: JSON.stringify(data)
+		}).done(function(data) {
 			$('.lead-newsletter').addClass('success');
 
 			sessionStorage.setItem('leadNewsletter', true);
