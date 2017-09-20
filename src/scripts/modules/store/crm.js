@@ -20,7 +20,7 @@ var CRM = {
 
 	formatUrl: function(table, action) {
 		return CRM.baseURL.render({
-			accountName: window.jsnomeLoja || window.vtex.accountName,
+			accountName: window.jsnomeLoja || window.vtex.accountName || store.accountName,
 			table: table,
 			action: action
 		});
@@ -36,7 +36,7 @@ var CRM = {
 	insertClient: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('CL', 'documents'),
-			type: 'POST',
+			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
 	},
@@ -44,7 +44,7 @@ var CRM = {
 	insertClientGE: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('GE', 'documents'),
-			type: 'POST',
+			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
 	},
@@ -54,8 +54,6 @@ var CRM = {
 			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
 			email: field
 		}).then(function (res) {
-			console.log('res', res);
-			console.log('res0', res[0]);
 			return res && res[0];
 		});
 	},
@@ -103,7 +101,7 @@ var CRM = {
 	insertCancelGae: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('CG', 'documents'),
-			type: 'POST',
+			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
 	},
@@ -111,7 +109,7 @@ var CRM = {
 	insertTermsGae: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('TG', 'documents'),
-			type: 'POST',
+			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
 	},
@@ -119,7 +117,7 @@ var CRM = {
 	insertLocation: function(data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('AD', 'documents'),
-			type: 'POST',
+			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
 	}
