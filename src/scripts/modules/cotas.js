@@ -27,7 +27,9 @@ Nitro.module('cotas', function() {
 				cota.consumed = cotasCookie;
 				self.render();
 
-				console.log('AddClass');
+				headerAccount.addClass('logged-user');
+
+				console.log('is logged');
 			} else {
 				self.getUserEmail()
 				.then(self.getConsumed)
@@ -80,6 +82,7 @@ Nitro.module('cotas', function() {
 
 
 		$('header .account .welcome-message').append(template.render(cota));
+
 		headerAccount.addClass('logged-user');
 	};
 
@@ -87,7 +90,9 @@ Nitro.module('cotas', function() {
 
 	$(window).load(function() {
 		if ( windowWidth <= 768) {
-			menuMobile.prepend(headerAccount);
+			setTimeout(function() {
+				menuMobile.prepend(headerAccount);
+			}, 700);
 		}
 	});
 });
