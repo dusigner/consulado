@@ -54,8 +54,6 @@ var CRM = {
 			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
 			email: field
 		}).then(function (res) {
-			console.log('res', res);
-			console.log('res0', res[0]);
 			return res && res[0];
 		});
 	},
