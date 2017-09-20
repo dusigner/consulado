@@ -27,11 +27,11 @@ Nitro.module('cotas', function() {
 				cota.consumed = cotasCookie;
 				self.render();
 
-				headerAccount.addClass('logged-user');
+				console.log('AddClass');
 			} else {
 				self.getUserEmail()
-					.then(self.getConsumed)
-					.then(self.render);
+				.then(self.getConsumed)
+				.then(self.render);
 			}
 
 			$(document).on('click', 'a[href="/no-cache/user/logout"]', function(e) {
@@ -80,6 +80,7 @@ Nitro.module('cotas', function() {
 
 
 		$('header .account .welcome-message').append(template.render(cota));
+		headerAccount.addClass('logged-user');
 	};
 
 	this.init();
