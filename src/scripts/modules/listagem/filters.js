@@ -40,14 +40,16 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.setup = function() {
 
-		//REMOVE NÚMEROS DOS ITENS DE FILTRO *(NN)*
-		$('.refino label').each(function() {
-			var menuText = $(this).text(),
-				menuInput = $(this).find('input');
+		// if (!$('body').hasClass('ab-test__mobile--show-b')) { // teste ab
+		// 	// REMOVE NÚMEROS DOS ITENS DE FILTRO *(NN)*
+		// 	$('.refino label, .refino-marca label').each(function() {
+		// 		var menuText = $(this).text(),
+		// 			menuInput = $(this).find('input');
 
-			$(this).text(menuText.replace(/ \(\d+\)/, ''));
-			$(this).prepend(menuInput);
-		}).css('display', 'block');
+		// 		$(this).text(menuText.replace(/ \(\d+\)/, ''));
+		// 		$(this).prepend(menuInput);
+		// 	}).css('display', 'block');
+		// } // teste ab
 
 		$checkbox.change(function(e) {
 			e.preventDefault();

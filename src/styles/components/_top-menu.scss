@@ -143,6 +143,7 @@
 		}
 		img {
 			display: inline;
+			margin-right: 7px;
 			vertical-align: middle;
 
 			@include breakpoint(small, 'max') {
@@ -162,7 +163,6 @@
 		p {
 			display: inline;
 			margin: 0;
-			margin-left: 7px;
 			vertical-align: bottom;
 		}
 
@@ -419,8 +419,8 @@ $menu-colors: (
 
 				&:last-child { display: none; }
 
-				a { 
-					border-top: none; 
+				a {
+					border-top: none;
 					&[href*='tel:551130037872'] { color: $orange; }
 				}
 			}
