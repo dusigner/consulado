@@ -17,11 +17,25 @@ require('custom/modal.overlayAbandono');
 //require('modules/filters');
 
 Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+	var $body = $('body');
 
 	// Limpar localstorage na página de busca
-	if( $('body').hasClass('busca') ) {
+	if( $body.hasClass('busca') ) {
 		localStorage.clear();
 	}
+
+	// Teste AB
+	var urlTesteAb = window.location.search;
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		$body.addClass('ab-test__mobile--show-b');
+	}
+	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		$body.addClass('ab-test__mobile--show-b');
+	}
+
 
 	var self = this,
 		$searchSingle = $('.search-single-navigator'),

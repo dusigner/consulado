@@ -79,7 +79,7 @@ Nitro.module('checkout.cotas', function() {
 		if (totalEletrodomesticos > self.limit) {
 
 			window.vtex.checkout.MessageUtils.showMessage({
-				text: 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
+				text: store.isCorp ? 'Atenção - Para compras acima de 10 produtos, favor ligue para nosso Televendas ou mande e-mail para vendas_corporativaspj@whirlpool.com. Temos uma condição especial para você ' : 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
 				status: 'info'
 			});
 
@@ -106,7 +106,8 @@ Nitro.module('checkout.cotas', function() {
 		if(store && store.userData && store.userData.email) {
 			return store.userData.email;
 		}
-		return $('.orderplaced-sending-email strong').text().replace(/\s+/g, '');
+
+		return $('strong.cconf-client-email').text().replace(/\s+/g, '');
 	};
 
 	/*
@@ -128,6 +129,8 @@ Nitro.module('checkout.cotas', function() {
 	 * Ao finalizar compra (orderplaced) atualiza MD com novo valor consumido de cotas
 	 */
 	this.updateCotasEletrodomesticos = function() {
+		$.removeCookie('xSkuSalesChannel5');
+		$.removeCookie('xSkuSalesChannel5', { path: '/' });
 
 		var eletrodomesticos = 0;
 

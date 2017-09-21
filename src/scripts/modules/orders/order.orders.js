@@ -145,7 +145,7 @@ Nitro.module('order.orders', function() {
 			statusData.estimate = orderEstimateDate;
 			value.finalStatus = statusData;
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
-			value.isBoleto = value.paymentData.payments[0] ? (value.paymentData.payments[0].paymentSystemName.toString().indexOf('Boleto') >= 0  ? true : false) : false;
+			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
 			value.isGift = isGift;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {

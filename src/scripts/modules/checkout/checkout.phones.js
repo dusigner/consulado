@@ -32,8 +32,10 @@ Nitro.module('checkout.phones', function() {
 
 	this.getEmailClient = function() {
 
-		if (!self.clientEmail) {
-			self.clientEmail = $('.orderplaced-sending-email strong').text().replace(/\s+/g, '');
+		if ( store && store.userData && store.userData.email ) {
+			self.clientEmail = store.userData.email;
+		} else if (!self.clientEmail) {
+			self.clientEmail =  $('strong.cconf-client-email').text().replace(/\s+/g, '');
 		}
 
 		return self.clientEmail;

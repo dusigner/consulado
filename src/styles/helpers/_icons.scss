@@ -115,7 +115,6 @@ $icons: (
 	@include icon-hamburger ();
 }
 
-
 @mixin icon-get( $icon ) {
 	font-family: "whirlpool" !important;
 	font-style: normal !important;

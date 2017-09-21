@@ -140,8 +140,8 @@
 						<p class="order__info-title text-uppercase weight-semibold color-green">Forma de Pagamento</p>
 
 						<div class="order__info-content">
-							<p>{paymentData.payments[0].paymentSystemName}</p>
 							{?isBoleto}
+								<p>Boleto Bancário</p>
 								{@neq key=finalStatus.orderLabel value="Cancelado"}
 									<p>
 										<a href="{paymentData.payments[0].url}" target="_blank">
@@ -153,6 +153,7 @@
 									</p>
 								{/neq}
 							{:else}
+								<p>{paymentData.payments[0].paymentSystemName}</p>
 								<p class="order__card-info">
 									<i class="order__card-icon order__card--{paymentData.transactions[0].payments[0].paymentSystemName|sanitize}"></i>
 									<span>xxxx xxxx xxxx {paymentData.transactions[0].payments[0].lastDigits}</span>
@@ -194,15 +195,6 @@
 
 			<div class="order__footer clearfix">
 				<div class="float-right">
-					{?allowCancellation}
-					<a data-order="{orderId}" data-title="Cancelar pedido - #{orderId|orderNumber}" href="#cancel-item" class="order__cancel js-order-cancel">
-						<svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-							<path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
-						</svg>
-						<span>Cancelar Pedido</span>
-					</a>
-					{/allowCancellation}
-
 					<a href="https://consul.custhelp.com/app/atendimento?pedido={orderId}" target="_blank">
 						<i class="order__icon order__icon--doubt"></i>
 						<span>Ajuda?</span>
