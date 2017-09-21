@@ -214,6 +214,7 @@ div.minicart { float: right }
 
 // Conta
 div.account {
+	@include breakpoint(extra-large, 'max') { width: 22.66667%; }
 	@include responsiveFont(12);
 	color: $txt-gray-l;
 	font-weight: 700;
@@ -222,27 +223,162 @@ div.account {
 	position: relative;
 	text-transform: uppercase;
 
-	@include breakpoint(extra-large, 'max') { width: 22.66667%; }
 
+	// ******************************************************* //
+	// Eu, Douglas, não me orgulho do que fiz daqui para baixo //
+	// ******************************************************* //
+	// Responsive fix
+	// Esconder opção no desktop, caso
+	// os itens estejam dentro do menu
+	.menu.menu-department & {
+		@include breakpoint('small', 'min') {
+			display: none;
+			visibility: hidden;
+		}
+	}
 	@include breakpoint(small, 'max') {
-		display: none;
+		border-bottom: 1px solid #e4e4e4;
+		margin-bottom: -1px;
+		opacity: 0;
+		visibility: hidden;
 
-		.header & {
-			.hide { @include hide-conditional(); }
+		.menu-mobile.menu-active & {
+			opacity: 1;
+			visibility: visible;
+		}
 
-			a {
+		.header .menu-mobile & {
+			height: 60px;
+			left: 0;
+			overflow: hidden;
+			position: relative;
+			top: 0;
+			width: 100%;
+			z-index: 100;
+
+			.welcome-message,
+			a[href='/minhaconta/pedidos'] {
 				display: block;
-				font-size: 0;
-				height: 100%;
-				position: relative;
-				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				text-align: center;
+				width: 50%;
+			}
+
+			.welcome-message {
+				left: 0;
+
+				.welcome a#login {
+					background-color: #e4e4e4;
+					display: block;
+					font-size: 0;
+					height: 60px;
+					padding: 0;
+
+					&:after {
+						bottom: 8px;
+						content: 'Entrar';
+						display: block;
+						font-size: 12px;
+						line-height: normal;
+						position: absolute;
+						width: 100%;
+					}
+
+					span { margin-top: -4px; }
+				}
+			}
+
+			a[href='/minhaconta/pedidos'] {
+				background-color: #f4f3f1;
+				right: 0;
+
+				span:not(.account__icon) {
+					bottom: 9px;
+					display: block;
+					font-size: 12px;
+					line-height: normal;
+					position: absolute;
+					width: 100%;
+				}
+
+				.account__icon.account__icon--truck {
+					display: inline-block;
+					margin-top: -12px;
+
+					svg { fill: #9aca3c; }
+				}
+			}
+		}
+
+		// Usuário loggado
+		&.logged-user {
+			.header .menu-mobile & {
+
+				.welcome-message {
+					background-color: #e4e4e4;
+					line-height: normal;
+					z-index: 100;
+
+					.welcome {
+						@include breakpoint(360px, 'max') { font-size: 11px; }
+						font-size: 12px;
+						height: 60px;
+						padding: 12px 0 0 45px;
+						text-align: left;
+						white-space: nowrap;
+					}
+				}
+
+				.account__icon.account__icon--profile {
+					left: 15px;
+					position: absolute;
+					top: 18px;
+				}
+
+				// Sair
+				a[href='/no-cache/user/logout'] {
+					border: none;
+					bottom: 12px;
+					display: block;
+					font-weight: normal;
+					height: 20px;
+					left: inherit;
+					position: absolute;
+					right: 0;
+					text-decoration: underline;
+					top: inherit;
+					width: 35px;
+				}
+
+				.view-cotas  {
+					@include breakpoint(360px, 'max') { font-size: 11px; }
+					background: none;
+					bottom: 10px;
+					color: #9aca3c;
+					font-size: 12px;
+					font-weight: normal;
+					left: 32px;
+					position: absolute;
+					right: inherit;
+					text-align: left;
+					top: inherit;
+					transform: translate(0, 0);
+					white-space: nowrap;
+					width: 70%;
+				}
 			}
 		}
 	}
+	// ****************************************************** //
+	// Eu, Douglas, não me orgulho do que fiz daqui para cima //
+	// ****************************************************** //
 
-	@include breakpoint(extra-small, 'max') {
-		.header & { left: 62%; }
-	}
+
+
 
 	.icon-brastemp-account {
 		@include responsiveFont(33, 16, true);
