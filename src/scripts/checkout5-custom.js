@@ -2,6 +2,24 @@
 
 'use strict';
 
+// Teste AB
+setTimeout(function() {
+	var $body2 = $('body');
+	var urlTesteAb = window.location.search;
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		$body2.addClass('hideOptionsA');
+		console.log('Teste AB = A');
+	}
+	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		$body2.addClass('hideOptionsB');
+		console.log('Teste AB = B');
+	}
+}, 400);
+
+
 $(window).on('load', function() {
 	require('modules/helpers');
 
