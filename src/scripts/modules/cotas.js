@@ -15,10 +15,7 @@ Nitro.module('cotas', function() {
 		},
 		userData = null,
 		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0,
-		cotasCookie = $.cookie('xSkuSalesChannel5'),
-		windowWidth = $(window).width(),
-		headerAccount = $('.header .account'),
-		menuMobile = $('.menu-department');
+		cotasCookie = $.cookie('xSkuSalesChannel5');
 
 
 	this.init = function() {
@@ -27,12 +24,14 @@ Nitro.module('cotas', function() {
 				cota.consumed = cotasCookie;
 				self.render();
 
-				headerAccount.addClass('logged-user');
+				$('.header .account').addClass('logged-user');
 
 			} else {
 				self.getUserEmail()
 				.then(self.getConsumed)
 				.then(self.render);
+
+				$('.header .account').removeClass('logged-user');
 			}
 
 			$(document).on('click', 'a[href="/no-cache/user/logout"]', function(e) {
@@ -81,17 +80,18 @@ Nitro.module('cotas', function() {
 
 
 		$('header .account .welcome-message').append(template.render(cota));
-
-		headerAccount.addClass('logged-user');
 	};
 
 	this.init();
 
-	$(window).load(function() {
-		if ( windowWidth <= 768) {
-			setTimeout(function() {
-				menuMobile.prepend(headerAccount);
-			}, 700);
+	$('.open-menu-mobile').click(function(){
+		$('.menu-department').prepend( $('.header .account') );
+
+		if( isLogged ) {
+			$('.header .account').addClass('logged-user');
+		}
+		else {
+			$('.header .account').removeClass('logged-user');
 		}
 	});
 });
