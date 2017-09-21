@@ -1,0 +1,61 @@
+body {
+	&.hideOptionsA {
+
+		.shipping-sla-options:not(.not-hide) {
+			li {
+				&:not([class*=Agendada]) {
+					&[class*=Convencional],
+					&[class*=Economica] {
+						display: none;
+					}
+				}
+			}
+		}
+		.shipping-options {
+			label {
+				&:not([for*=Agendada]) {
+					&[for*=Convencional],
+					&[for*=Economica] {
+						display: none;
+					}
+				}
+			}
+		}
+
+		#change-sla-items-list:not(.not-hide) {
+			option {
+				&:not([value*=Agendada]) {
+					&[value*=Convencional],
+					&[value*=Econômica] {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	&.hideOptionsB {
+
+		.shipping-sla-options {
+			li {
+				&[class*=Agendada][class*=Economica] {
+					display: none;
+				}
+			}
+		}
+		.shipping-options {
+			label {
+				&[for*=Agendada][for*=Economica] {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&.not-hide-shipping-options {
+		.shipping-options label {
+			display: block !important;
+		}
+	}
+}
+
