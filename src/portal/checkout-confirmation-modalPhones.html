@@ -3,7 +3,6 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>-->
 				<h4 class="modal-title">Atendimento</h4>
 			</div>
 			<div class="modal-body">
@@ -13,7 +12,7 @@
 						<div class="phone-error-message alert alert-danger" style="display:none">
 							<strong>Atenção!</strong>
 							<ul>
-								<li>Preencha ao menos 1 telefone</li>
+								<li>Por favor, preencha seu telefone celular</li>
 							</ul>
 						</div>
                       	<div class="turnoLigacao-error-message alert alert-danger" style="display:none">
@@ -23,7 +22,7 @@
 							</ul>
 						</div>
 						<div class="default-message">
-							<p>Olá! Você pode verificar se o seu celular está correto e nos informar um telefone adicional? Caso seja necessário, entraremos em contato para informar sobre a entrega do seu produto!</p>
+							<p>Olá! Entraremos em contato se houver necessidade, informe seus telefones de contato</p>
                         </div>
 						<div class="success-message alert alert-success">
 							Seus telefones foram atualizados com sucesso!
@@ -33,21 +32,25 @@
 						</div>
 					</fieldset>
 					<fieldset class="data clearfix">
-						<div class="phone-numbers">
-							<label for="CL_phone">Celular</label>
-							<input type="tel" id="CL_phone" name="phone" class="phone" data-validation="even_phone" data-validation-length="min14" />
-                          	<label for="CL_homePhone">Telefone Adicional</label>
-							<input type="tel" id="CL_additionalPhone" name="xAdditionalPhone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+						<div class="contact-modal">	
+							<div>
+								<label for="CL_phone">Telefone celular <span>(obrigatório)</span></label>
+								<input type="tel" id="CL_phone" name="phone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+							</div>
+							<div>
+								<label for="CL_homePhone">Telefone Adicional <span>(opcional)</span></label>
+								<input type="tel" id="CL_additionalPhone" name="xAdditionalPhone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+							</div>
 						</div>
-                      	<div class="turno-ligacao">
-							<span>Melhor forma de contato</span>
+                      	<!-- <div class="turno-ligacao">
+							<span>Melhor horário para contato</span>
 							<input type="radio" id="horarioManha" name="horarios" value="Manhã" data-validation="horario_checked">
                           <label for="horarioManha">Manhã (9:00 às 11:00)</label> <br />
                           	<input type="radio" id="horarioTarde" name="horarios" value="Tarde" data-validation="horario_checked">
                           	<label for="horarioTarde">Tarde (12:00 às 20:00)</label>
-						</div>
+						</div> -->
 						<div class="submit">
-							<button type="submit" class="enviar" value="concluir" >Concluir</button>
+							<button type="submit" class="enviar" value="Enviar">Enviar</button>
 						</div>
 					</fieldset>
 
