@@ -108,13 +108,46 @@
 				.val { font-size: 12px!important; }
 			}
 
-			.txtDe,
+			// .txtDe,
 			.por,
 			.juros,
 			.creditosMgmTotal,
-			.inserir-lista { display: none; }
+			.inserir-lista,
+			.discount-boleto { display: none; }
+
+			.txtDe {
+				font-size: 11px;
+			}
+
 
 			.adicional {
+				display: block;
+				height: 47px!important;
+
+				// De
+				&:before {
+					content: 'Por: ';
+					font-size: 11px;
+					font-weight: bold;
+				}
+
+				// Total parcelado
+				.total-parcelado {
+					margin-top: 4px;
+
+					&,
+					.total-parcelado__txt,
+					.val {
+						display: block;
+					}
+
+					.total-parcelado__txt {
+						font-size: 10px;
+						font-weight: normal;
+					}
+
+				}
+
 				.vezes { font-size: 12px; }
 
 				.d { display: none; }
