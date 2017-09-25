@@ -73,6 +73,8 @@
 		position: relative;
 
 		.txt {
+			float: none;
+
 			@include responsiveFont(14, 16, true);
 			font-weight: 200;
 
@@ -92,10 +94,10 @@
 	}
 
 	.network {
-		display: inline-block;
+		display: block;
 		float: none;
 		padding: 8px 0;
-		text-align: center;
+		// text-align: center;
 
 		@include breakpoint(extra-large, 'max') {
 			float: left;
@@ -112,14 +114,18 @@
 
 		.item {
 			display: inline-block;
-			margin: 0 0 0 20px;
+			margin: 10px 0 0 10px;
 			vertical-align: top;
 
 			@include breakpoint(760px, 'min') {
 				@include breakpoint(768px, 'max') { margin-left: 15px; }
 			}
 
-			@include breakpoint(small, 'max') { &:first-child {margin: 0;} }
+			// @include breakpoint(small, 'max') { &:first-child {margin: 0;} }
+
+			&:first-child {
+				margin: 10px 0 0 0;
+			}
 
 			a {
 				display: block;
@@ -366,7 +372,7 @@
 			}
 
 			@include breakpoint(small, 'max') {
-				& > div { display: none; }
+				& > div:not(.footer-redes) { display: none; }
 				margin: 0;
 			}
 
