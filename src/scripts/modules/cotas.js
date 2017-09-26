@@ -17,15 +17,21 @@ Nitro.module('cotas', function() {
 		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0,
 		cotasCookie = $.cookie('xSkuSalesChannel5');
 
+
 	this.init = function() {
 		if( isLogged ) {
 			if( cotasCookie ) {
 				cota.consumed = cotasCookie;
 				self.render();
+
+				$('.header .account').addClass('logged-user');
+
 			} else {
 				self.getUserEmail()
-					.then(self.getConsumed)
-					.then(self.render);
+				.then(self.getConsumed)
+				.then(self.render);
+
+				$('.header .account').removeClass('logged-user');
 			}
 
 			$(document).on('click', 'a[href="/no-cache/user/logout"]', function(e) {
@@ -77,4 +83,15 @@ Nitro.module('cotas', function() {
 	};
 
 	this.init();
+
+	$('.open-menu-mobile').click(function(){
+		$('.menu-department').prepend( $('.header .account') );
+
+		if( isLogged ) {
+			$('.header .account').addClass('logged-user');
+		}
+		else {
+			$('.header .account').removeClass('logged-user');
+		}
+	});
 });

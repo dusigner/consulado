@@ -12,8 +12,8 @@ Nitro.module('checkout.phones', function() {
 	var self = this,
 		$formPhones = $('#formPhones'),
 		$submit = $formPhones.find('[type="submit"]'),
-		$inputsPhones = $formPhones.find('input[type="tel"]'),
-		$inputHorario = $formPhones.find('input[name="horarios"]');
+		$inputsPhones = $formPhones.find('input[type="tel"]');
+		// $inputHorario = $formPhones.find('input[name="horarios"]');
 
 	this.setup = function() {
 
@@ -62,7 +62,7 @@ Nitro.module('checkout.phones', function() {
 		var valid = false;
 		$('.alert-danger').removeClass('active');
 
-		if ($inputsPhones.filter(':blank').length <= 1 && $inputHorario.is(':checked')) {
+		if ($inputsPhones.filter(':blank').length <= 1) {
 			valid = true;
 		} else {
 			if ($inputsPhones.filter(':blank').length > 1) {
@@ -71,15 +71,16 @@ Nitro.module('checkout.phones', function() {
 				$('.phone-error-message').removeClass('active');
 			}
 
-			if (!$inputHorario.is(':checked')) {
-				$('.turnoLigacao-error-message').addClass('active');
-			} else {
-				$('.turnoLigacao-error-message').removeClass('active');
-			}
+			// if (!$inputHorario.is(':checked')) {
+			// 	$('.turnoLigacao-error-message').addClass('active');
+			// } else {
+			// 	$('.turnoLigacao-error-message').removeClass('active');
+			// }
 		}
 
 		if (valid) {
 			$submit.addClass('icon-loading');
+			$('.submit button').text('');
 		}
 
 		return valid;
@@ -99,7 +100,7 @@ Nitro.module('checkout.phones', function() {
 				data[x.name] = x.value;
 			});
 
-			data.turnoLigacao = $inputHorario.filter(':checked').val();
+			// data.turnoLigacao = $inputHorario.filter(':checked').val();
 
 			data.email = self.getEmailClient();
 

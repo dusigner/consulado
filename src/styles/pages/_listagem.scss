@@ -91,7 +91,6 @@ body.listagem {
 	color: $orange;
 	display: block;
 	margin-top: 26px;
-	position: absolute;
 	right: 0;
 	text-transform: uppercase;
 	top: 7px;
@@ -185,7 +184,7 @@ body.listagem {
 		right: 0;
 		top: 35px;
 		visibility: hidden;
-		z-index: 10;
+		z-index: 3;
 
 		&.active {
 			opacity: 1;
@@ -227,7 +226,7 @@ body.listagem {
 	.titulo-sessao {
 		@include responsiveFont(30);
 		color: $txt-gray;
-		display: inline-block;
+		// display: inline-block;
 		float: left;
 		font-weight: 300;
 		margin: 0;
