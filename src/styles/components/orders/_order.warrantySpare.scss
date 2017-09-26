@@ -102,8 +102,7 @@ body.pedidos {
 
 	a { color: $green; }
 
-	.concordo,
-	.nao-concordo {
+	.add {
 		@include responsiveFont(14, 16, true);
 		display: inline-block;
 		margin: 5px 0 5px 10px;
