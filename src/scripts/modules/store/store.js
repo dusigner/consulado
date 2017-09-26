@@ -13,6 +13,7 @@ define('store', function() {
 	this.isPersonal = false;
 	this.isCorp = false;
 	this.isQA = false;
+	this.accountName = 'consul';
 
 
 	var publicUrl = [
@@ -25,11 +26,24 @@ define('store', function() {
 
 	this.init = function() {
 
+		var bodyClass = $('body').attr('class'),
+			account = 'consul';
+		if( bodyClass.indexOf('consulqa') !== -1) {
+			account = 'consulqa2';
+			if(bodyClass.indexOf('consulqa2') === -1) {
+				account = 'consulqa';
+			}
+		} else if( bodyClass.indexOf('consulempresa') !== -1) {
+			account = 'consulempresa';
+		}
+
 		this.isPersonal = (/consul/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host)) && !(/consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host));
 
 		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
-		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
+		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || account;
+
+		this.accountName = window.jsnomeLoja || window.vtex.accountName || account;
 
 		this.setup();
 

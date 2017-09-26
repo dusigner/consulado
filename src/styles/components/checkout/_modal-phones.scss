@@ -2,46 +2,24 @@
 // Modal More Phones
 /*********************************************************/
 #modal-more-phones {
-	border-radius: 0;
 	left: 50%;
-	margin-left: -330px;
-	width: 640px;
+	margin-left: -285px;
+	width: 505px;
 
 	@include breakpoint(small, 'max') {
-		left: 0;
-		margin: 0 auto;
+		left: 50%;
+		margin: 0;
 		top: 50%;
-		transform: translateY(-50%);
+		transform: translate(-50%, -50%);
 		width: 90%;
 	}
+
+	form { margin: 0; }
 
 	.close {
 		border-color: #fff;
 		color: #ffffff;
 		padding-bottom: 3px;
-	}
-
-	.success-message,
-	.error-message {
-		display: none;
-		text-align: center;
-	}
-
-	.modal-header {
-		background: $green;
-		padding: 15px;
-
-		h4 {
-			@include responsiveFont(26);
-			color: #ffffff;
-			line-height: normal;
-			margin: 0;
-			text-align: left;
-		}
-	}
-
-	.modal-body {
-		max-height: 520px;
 	}
 
 	#formPhones {
@@ -54,97 +32,157 @@
 				display: block!important;
 			}
 		}
+	}
 
-		.data {
-			div {
-				display: inline-block;
-				margin-top: 10px;
-				vertical-align: top;
+	.success-message,
+	.error-message {
+		display: none;
+		text-align: center;
 
-				label {
-					@include responsiveFont(15);
-					font-weight: bold;
+		@media (max-width: 768px) {
+			width: 100%;
+		}
+
+	}
+
+	.modal-header {
+		background: transparent;
+		padding: 22px;
+		padding-bottom: 0;
+
+		h4 {
+			@include responsiveFont(20, 16, true);
+			color: $green;
+			font-weight: bold;
+			line-height: normal;
+			margin: 0;
+			text-align: left;
+			text-transform: uppercase;
+		}
+	}
+
+	.modal-body {
+		max-height: 100%;
+		padding: 22px;
+	}
+
+	.default-message { 
+		@include responsiveFont(16, 16, true);
+		color: #767676; 
+	}
+
+	.contact-modal { 
+		width: 100%; 
+		&>div {
+			margin-right: 20px;
+		}
+		label[for=CL_phone],
+		label[for=CL_homePhone] {
+			@include responsiveFont(13, 16, true);
+			color: #767676;
+			font-weight: bold;
+		}
+		span { font-weight: normal; }
+	}
+
+	.btn-confirmation {
+		float: right; 
+		margin-right: 5%;
+		@include breakpoint(small, 'max') { float: left; }
+	}
+
+	.data {
+		div {
+			display: inline-block;
+			margin-top: 10px;
+			vertical-align: top;
+
+			label { @include responsiveFont(15, 16, true); }
+
+			input[type='tel'],
+			input[type='text'] {
+				height: 35px;
+				margin-bottom: 10px;
+			}
+
+			input[type='submit'],
+			button {
+				@extend .primary-button;
+				@include responsiveFont(18, 16, true);
+				background-color: $green !important;
+				background-image: none;
+				border: none;
+			    color: fff !important;
+				font-size: 17px !important;
+				height: 46px;
+				outline: none;
+			    width: auto;
+			    &:hover { color: #fff; }
+
+				@include breakpoint(small, 'max') {
+					margin-top: 10px;
+					width: 100%;
 				}
 
-				&.phone-numbers {
-					width: 310px;
+				&.icon-loading {
+					font-size: 0;
 
-					@include breakpoint(small, 'max') {
-						width: 100%;
-					}
-
-					input[type='tel'] {
-						border-radius: 3px;
-						height: 35px;
-						margin: 10px 0;
-					}
-				}
-
-				&.turno-ligacao {
-					margin-left: 40px;
-
-					@include breakpoint(small, 'max') {
-						margin-left: 0;
-					}
-
-					span {
-						@include responsiveFont(15);
+					&:before {
+						animation: spin .7s infinite linear;
+						content: '\f110';
 						display: block;
-						font-weight: bold;
-						margin-bottom: 5px;
-					}
-
-					label {
-						@include responsiveFont(13);
-						display: inline;
-						font-weight: normal;
-						position: relative;
-
-						&:before {
-							border: 1px solid;
-							border-radius: 50%;
-							content: '';
-							display: inline-block;
-							height: 12px;
-							margin-right: 5px;
-							width: 12px;
-						}
-					}
-
-					input[type=radio] { display: none; }
-
-					input[type=radio]:checked + label:after {
-						@include contentBefore();
-						background-color: $green;
-						border-radius: 50%;
-						height: 8px;
-						left: 2px;
-						top: 2px;
-						width: 8px;
+						font-family: FontAwesome;
+						font-size: 20px;
+						width: 50px;
 					}
 				}
+			}
 
-				&.submit {
-					display: block;
+			&.turno-ligacao { display: none; }
 
-					.enviar {
-						@include responsiveFont(13);
-						border: 1px solid $green;
-						border-radius: 3px;
-						color: #ffffff;
-						font-weight: bold;
-						margin: 10px 0;
+			// &.turno-ligacao {
+			// 	margin-left: 60px;
 
-						&:hover {
-							background: $green;
-							color: #ffffff;
-						}
+			// 	@include breakpoint(small, 'max') {
+			// 		margin: 15px 0;
+			// 	}
 
-						@include breakpoint(small, 'max') {
-							width: 100%;
-						}
-					}
-				}
+			// 	span {
+			// 		display: block;
+			// 		font-weight: bold;
+			// 	}
+
+			// 	label {
+			// 		display: inline;
+			// 		font-weight: normal;
+			// 		position: relative;
+
+			// 		&:before {
+			// 			border: 1px solid;
+			// 			border-radius: 50%;
+			// 			content: '';
+			// 			display: inline-block;
+			// 			height: 12px;
+			// 			margin-right: 5px;
+			// 			width: 12px;
+			// 		}
+			// 	}
+
+			// 	input[type=radio] { display: none; }
+
+			// 	input[type=radio]:checked + label:after {
+			// 		@include contentBefore();
+			// 		background-color: $green;
+			// 		border-radius: 50%;
+			// 		height: 8px;
+			// 		left: 2px;
+			// 		top: 4px;
+			// 		width: 8px;
+			// 	}
+			// }
+
+			@include breakpoint(small, 'max') {
+				display: block !important;
 			}
 		}
 	}
