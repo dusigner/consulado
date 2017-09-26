@@ -226,7 +226,7 @@ body.listagem {
 	.titulo-sessao {
 		@include responsiveFont(30);
 		color: $txt-gray;
-		display: inline-block;
+		// display: inline-block;
 		float: left;
 		font-weight: 300;
 		margin: 0;

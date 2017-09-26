@@ -172,7 +172,7 @@ gulp.task('scripts', ['lint', 'scriptsCheckout'], function () {
 
 	return gulp.src(getPath('webpack')
 		.concat('!src/scripts/checkout5-custom.js')
-		.concat('!src/scripts/orderplaced2-custom.js'))
+		.concat('!src/scripts/checkout-confirmation-custom.js'))
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
@@ -353,5 +353,6 @@ gulp.task('deploy', ['clean', 'gitTag'], function() {
 
 	pkg	= JSON.parse( require('fs').readFileSync('./package.json') ); //fix update pkg from bump
 
-	gulp.start( 'fonts', 'images', 'styles', 'scripts' );
+	//gulp.start( 'fonts', 'images', 'styles', 'scripts' );
+	gulp.start( 'images', 'styles', 'scripts' );
 });
