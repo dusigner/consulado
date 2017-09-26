@@ -17,7 +17,6 @@ require('modules/product/notify-me');
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
-
 	var self = this;
 
 	window.alert = function(e) {
@@ -57,8 +56,7 @@ Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'd
 		$(window).scroll(function(e){
 			e.preventDefault();
 			var _pos = $(window).scrollTop();
-			// console.log(_pos);
-			if(_pos >= 100 && _pos <= 300) {
+			if($('body').hasClass('produto-indisponivel') || (_pos >= 100 && _pos <= 300)) {
 				$('#BuyButton .buy-button').hide();
 			} else{
 				$('#BuyButton .buy-button').show();
