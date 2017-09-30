@@ -46,20 +46,6 @@ Nitro.module('lead-newsletter', function() {
 			return false;
 		});
 
-		// if (!hasSession && !orderForm.clientProfileData.email) {
-		// 	$formNewsletter.submit(function(e) {
-		// 		e.preventDefault();
-
-		// 		$formNewsletter.find('input').on('blur', function() {
-		// 			self.validateInputs();
-		// 		});
-
-		// 		self.validateForm();
-
-		// 		return false;
-		// 	});
-		// }
-
 		self.toggleNewsletter();
 		self.newsletterFixedOpenAfter(4000);
 	};
@@ -116,7 +102,7 @@ Nitro.module('lead-newsletter', function() {
 			url: CRM.formatUrl('CL', 'documents'),
 			type: 'POST',
 			data: JSON.stringify(data)
-		}).done(function(data) {
+		}).done(function() {
 			$('.lead-newsletter').addClass('success');
 
 			sessionStorage.setItem('leadNewsletter', true);
