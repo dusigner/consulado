@@ -80,10 +80,10 @@ Nitro.module('register.corporate', function() {
 			oncomplete: function() {
 				var poscalCode = $(this).val().replace(/\D/g, '');
 				getAddress.byPostalCode(poscalCode).done(function(endereco) {
-					$form.find('.neighborhood').val(endereco.bairro).trigger('change');
-					$form.find('.city').val(endereco.localidade).trigger('change');
-					$form.find('.addressName').val(endereco.logradouro).trigger('change');
-					$form.find('.state').val(endereco.uf).trigger('change');
+					$form.find('.neighborhood').val(endereco.neighborhood).trigger('change');
+					$form.find('.city').val(endereco.city).trigger('change');
+					$form.find('.addressName').val(endereco.street).trigger('change');
+					$form.find('.state').val(endereco.state).trigger('change');
 				});
 			}
 		});
