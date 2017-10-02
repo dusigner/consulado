@@ -103,15 +103,11 @@ Nitro.setup([], function () {
 
 					CRM.insertClient(data).done(function (){
 
-						// dataLayer.push({
-						// 	'event' : 'BTP-BF-FormSuccess',
-						// 	'email' : email
-						// });
+						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
 
 						$('.form-blackfriday-2017').append('<p class="message success_p">Você foi cadastrado</p>');
 
 						setTimeout(function(){
-							$('.form-blackfriday-2017').addClass('fjksahbfjkashbjkfbsahfsafsjhfslbdlfjbs');
 							$('.form-blackfriday-2017 .sucesso').hide();
 						}, 5000);
 

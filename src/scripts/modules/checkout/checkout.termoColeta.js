@@ -28,7 +28,6 @@ Nitro.module('checkout.termoColeta', function() {
 
 			var email = $('.orderplaced-sending-email strong').text().trim(),
 				idPedido = $('.myorders-list>.ordergroup').attr('id'),
-				idUser,
 				typeProduct,
 				btnContinue = $('#modal-termo-coleta .btn');
 

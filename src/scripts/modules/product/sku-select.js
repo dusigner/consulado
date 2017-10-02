@@ -10,15 +10,6 @@ Nitro.module('sku-select', function() {
 
 	this.modalComplete = function(modal, content) {
 
-		/*content.on('change', 'input', function() {
-
-			var input = $(this);
-
-			$('input[id="' + $(this).attr('for') + '"]').prop('checked', true);
-
-			input.prop('checked', true);
-		});*/
-
 		// because we can't have two radios with the same name in a page;
 		content.wrap($('<form />'));
 
@@ -50,7 +41,7 @@ Nitro.module('sku-select', function() {
 			template: '<div id="modal-voltagem" class="modal-voltagem">' +
 			'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
 			'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
-			'</div>' 
+			'</div>'
 		};
 
 		$('#vtex-modal-sku .sku-indisponivel .btn-avise').css('top', '0px');
@@ -60,9 +51,9 @@ Nitro.module('sku-select', function() {
 		if ($('.modal-voltagem').length === 0) {
 			$('#modal-sku .options').append(templateVoltagem.template);
 		}
-		
+
 		if (skuJson.skus[0].available === true && skuJson.skus[1].available === true) {
-			$('.modal-voltagem').addClass('hide'); 
+			$('.modal-voltagem').addClass('hide');
 			$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
 		} else {
 			$('.content_botoes_televendas .buy-button').attr('href', 'javascript:alert(' + '\'Por favor, selecione o modelo desejado.\'' + ');');
@@ -76,28 +67,28 @@ Nitro.module('sku-select', function() {
 		}
 
 		if (!c.available) {
-			$('.modal-voltagem').show(); 
+			$('.modal-voltagem').show();
 		} else {
 			$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
-			$('.modal-voltagem').hide(); 
+			$('.modal-voltagem').hide();
 		}
 
 		$('.btn-avise').click(function() {
 
-		if ($('.modal-holder').is(':visible')) {
-			$('.modal-holder').fadeOut('2000');
-			$('.modal-avise').fadeIn('2000');
-		}
+			if ($('.modal-holder').is(':visible')) {
+				$('.modal-holder').fadeOut('2000');
+				$('.modal-avise').fadeIn('2000');
+			}
 
-		if ($('.modal-avise').length === 0) {
-			$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
-			$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
-			// $('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
-		}
+			if ($('.modal-avise').length === 0) {
+				$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
+				$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
+				// $('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
+			}
 
-		if ($('.back-window').length === 0) {
-			$('.notifyme-form').prepend('<span class="back-window"></span>');
-		}
+			if ($('.back-window').length === 0) {
+				$('.notifyme-form').prepend('<span class="back-window"></span>');
+			}
 
 			$('.sku-notifyme-form.notifyme-form p').html('Insira seus dados abaixo para ser avisado quando o produto estiver <strong>disponível em outra voltagem.</strong>');
 
