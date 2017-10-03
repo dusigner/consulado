@@ -10,6 +10,7 @@ require('vendors/slick');
 var CRM = require('modules/store/crm');
 
 Nitro.setup([], function () {
+	console.log('kkkkkkkkk');
 
 	var contador;
 
@@ -18,6 +19,7 @@ Nitro.setup([], function () {
 		init: function(){
 			this.leadsBf();
 			this.sliderDepoimentos();
+			this.sliderPrateleira();
 			// this.slider();
 
 			contador = setInterval(this.countdown, 1000);
@@ -150,6 +152,35 @@ Nitro.setup([], function () {
 					}]
 				});
 			}
+		},
+
+		sliderPrateleira: function() {
+			console.log('slick');
+			$(window).on('load', function() {
+				$('.prateleira .prateleira-slider > ul').slick({
+					arrows: false,
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					responsive: [{
+						breakpoint: 990,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll:1
+						}
+					}, {
+						breakpoint: 480,
+						settings: {
+							arrow: false,
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}]
+				});
+			});
 		}
 	};
 
