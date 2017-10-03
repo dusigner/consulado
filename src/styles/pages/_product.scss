@@ -131,11 +131,8 @@ body.produto {
 			text-transform: uppercase;
 			z-index: 9999;
 		}
-
 	}
-
 }
-
 
 /*==========  Produto indisponível  ==========*/
 body.produto-indisponivel {
@@ -148,6 +145,10 @@ body.produto-indisponivel {
 			@include hide-conditional();
 		}
 	}
+
+	.sku-notifyme { display: block !important; }
+
+	#BuyButton .buy-button { display: none; }
 }
 
 
