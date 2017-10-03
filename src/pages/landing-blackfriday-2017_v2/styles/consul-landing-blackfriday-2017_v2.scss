@@ -80,8 +80,9 @@ $loja-color: #9aca3d;
 
 	.lpbf__title {
 		@include breakpoint('small', 'max') {
-			background-position: center -75px;
-			margin: 0 auto 80em auto;
+			background-position: center -50px;
+			height: 195px;
+			margin: 0 auto 0 auto;
 			width: 240px;
 		}
 		background: transparent url('/arquivos/lpbf-consul-logo.png') center -100px no-repeat;
@@ -105,19 +106,25 @@ $loja-color: #9aca3d;
 		@include breakpoint('small', 'max') {
 			@include rfs(24);
 			display: block;
+			margin-top: 0;
 			max-width: 100%;
 			padding: 10px 40px;
 			text-align: center;
-			top: 240px;
-			width: 90%;
+			width: 100%;
 		}
+		@include breakpoint('small', 'max') { padding: 10px 0; }
 		color: #fff;
 		margin-top: 50px;
 	}
 
 	// Contador
 	.lpbf-contador {
-		@include breakpoint('small', 'max') { margin-bottom: 140px; }
+		@include breakpoint('small', 'max') { 
+			transform: translateY(610%); 
+			@include breakpoint('extra-small', 'max') {
+				transform: translateY(530%);
+			}
+		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
 		color: $green;
 		margin: 0 auto;
@@ -150,15 +157,17 @@ $loja-color: #9aca3d;
 			line-height: 100%;
 			position: relative;
 			width: 84px;
+			@include breakpoint('small', 'max') { color: #fff; }
 
 			&.colon { width: auto; }
 		}
 
 		.countdown-text {
 			@include rfs(13);
-			color: #fff;
+			color: $loja-color;
 			padding-top: .7em;
 			text-transform: uppercase;
+			@include breakpoint('small', 'max') { color: #fff; }
 		}
 
 
@@ -209,35 +218,149 @@ $loja-color: #9aca3d;
 	background-color: #000;
 
 	.container {
-		@include breakpoint('small', 'max') { width: 90%; }
+		@include breakpoint('small', 'max') { 
+			padding: 0;
+			width: 100%; 
+		}
 		@include breakpoint('extra-small', 'max') { width: 100%; }
 		@include breakpoint('small', 'min') { padding: 0; }
 		max-width: 980px;
 	}
+
+	.row { margin: 0; }
 }
 .form-blackfriday-2017 {
+	margin-top: 20px;
 	padding: 0 20px;
+	@include breakpoint('small', 'max') { margin-bottom: 20px; }
 	input {
 		border: 1px solid #d4d4d4;
 		border-radius: 30px;
 		display: inline-block;
-		width: auto;
+		@include breakpoint('small', 'max') { display: none; }
+		+ label {
+			&:after {
+				border-radius: 50%;
+			}
+		}
+		&:checked {
+			+ label:before {
+				border-radius: 50%;
+				background-color: $loja-color
+			}
+		}
 	}
+	input[type='text'] { 
+		width: 300px; 
+		@include breakpoint('medium', 'min') { width: 250px; }
+		@include breakpoint('small', 'max') { 
+			padding: 10px 20px;
+			width: 100%; 
+		}
+	}
+
+	fieldset {
+		border: none;
+		display: inline-block;
+		margin: 0;
+		padding: 8px 0;
+		vertical-align: middle;
+
+		&.campo-checkbox {
+			@include breakpoint('small', 'max') { text-align: left; }
+		}
+
+		// input { margin: 0 15px; }
+
+		label {
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(11, 16, true);
+				line-height: 12px;
+				margin: 0;
+				width: 100%;
+			}
+			@include responsiveFont(12, 16, true);
+			display: inline-block;
+			margin: 0 10px;
+			padding-left: 25px;
+			position: relative;
+			text-align-last: left;
+			width: 150px;
+
+			a {
+				text-decoration: none;
+
+				span { 
+					text-decoration: underline; 
+					@include breakpoint('small', 'max') {
+						display: block;
+					}
+				}
+			}
+		}
+
+		label[for='termos'] { 
+			line-height: 10px; 
+			@include breakpoint('small', 'max') {
+				@include rfs(12);
+			}
+		}
+	}
+}
+
+.form-blackfriday__submit {
+	@include breakpoint('small', 'max') {
+		display: inline-block;
+		float: right;
+		margin: 0 auto;
+		width: 40%;
+	}
+	@include rfs(16);
+	background-color: $loja-color;
+	border: none;
+	border-radius: 35px;
+	color: #fff;
+	font-weight: bold;
+	padding: 8px 5px;
+	text-transform: uppercase;
+	transition: width .2s ease;
+	width: calc(18% - 29px);
+
+	&:focus { outline: none; }
 }
 
 .lpbf-ofertas {
 	background-color: #fff;
 	border-radius: 12px;
-	margin-top: -339px;
+	bottom: 285px;
+	position: absolute;
+	width: 1000px;
+	@include breakpoint('medium', 'max') { 
+		width: auto; 
+		@include breakpoint('small', 'max') { 
+			bottom: 30px; 
+			margin: 20px;
+			width: 95%;
+		}
+		@include breakpoint('extra-small', 'max') {
+			bottom: -250px;
+			margin: 10px;
+			width: 95%;
+		}
+		@include breakpoint(375px, 'min') {
+			bottom: -170px;
+		}
+	}
 }
 
 .lpbf-form__title {
 	@include breakpoint(390px, 'min') {
 		@include breakpoint(575px, 'max') {
-			margin: 0 auto;
+			margin: 20px auto; 
 			width: 80%;
 		}
 	}
+	@include breakpoint('small', 'max') { margin: 20px;	}
 	@include rfs(22);
 	color: $loja-color;
 }
@@ -248,13 +371,12 @@ $loja-color: #9aca3d;
 		display: flex;
 		justify-content: space-between;
 	}
-	margin-top: -30px;
+	margin-top: 20px;
 }
 
 .lpbf-categorys__item {
 	@include breakpoint('small', 'max') {
 		display: inline-block;
-		width: calc(50% - 2px);
 	}
 	cursor: pointer;
 	display: block;
@@ -277,8 +399,6 @@ $loja-color: #9aca3d;
 		}
 		span { 
 			&:after {
-				background-color: $loja-color;
-				color: #fff;
 				transition:
 					color .3s ease,
 					font-size .3s ease
@@ -307,7 +427,6 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-categorys__text {
-	@include breakpoint(370px, 'max') { @include rfs(11); }
 	@include rfs(14);
 	color: #c3c3c3;
 	display: block;
@@ -329,18 +448,16 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-categorys__image {
-	@include breakpoint('large', 'max') {
-		@include breakpoint('small', 'min') {
-			height: 180px;
-			line-height: 180px;
-			width: 180px;
-		}
-	}
 	@include breakpoint('extra-small', 'max') {
-		height: 140px;
-		line-height: 140px;
-		width: 140px;
+		height: 40px;
+		line-height: 40px;
+		width: 100%;
 	}
+	@include breakpoint('large', 'min') {
+		height: auto;
+		line-height: auto;
+	}
+	@include breakpoint('extra-small', 'min') { width: 100%; }
 	background-color: #fff;
 	border: 1px solid #f1f1f1;
 	border-radius: 30px;
@@ -384,5 +501,128 @@ $loja-color: #9aca3d;
 		max-height: 100%;
 		max-width: 100%;
 		width: auto;
+	}
+}
+
+// depoimentos
+.depoimentos {
+	background-color: #000;
+	@include breakpoint('small', 'max') { 
+		@include breakpoint('extra-small', 'max') { padding-top: 285px; }
+		padding-top: 340px; 
+	}
+
+	.container {
+		font-size: 0;
+		max-width: 960px;
+		padding: 0;
+	}
+
+	.row { margin: 0!important; }
+
+	.slick-dots {
+		bottom: -35px;
+	}
+
+	.slick-dots li button { background: #414141; }
+
+	.slick-dots li.slick-active button {
+		background: $loja-color;
+		height: 10px;
+		width: 10px;
+	}
+
+	.slick-dots li button:after { border: none; }
+}
+
+.txt-depoimentos {
+	background: url('/arquivos/apostrofo.png') center center no-repeat;
+	height: 93px;
+	h2 {
+		@include rfs(40);
+		color: $loja-color;
+		margin: 0;
+	}
+	h3 {
+		@include rfs(14);
+		color: #fff;
+		font-weight: normal;
+		margin: 0;
+	}
+}
+
+.bg-depoimentos {
+	background-color: $loja-color;
+	border-radius: 25px;
+	margin-top: 25px;
+	padding: 20px 0;
+	@include breakpoint('extra-small', 'max') {
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+		margin-left: 35px;
+	}
+	& > div {
+		background-color: #fff;
+		border-radius: 25px;
+		display: inline-block;
+		padding: 30px 40px 40px 40px;
+		width: 320px;
+		@include breakpoint('medium', 'max') {
+			width: 100%;
+			padding: 30px 0 40px 0;
+		}
+		@include breakpoint('extra-small', 'max') {
+			margin-left: -35px;
+		}
+		h2 { 
+			@include rfs(18); 
+			color: $loja-color;
+			margin: 0;
+		}
+		h3 { 
+			@include rfs(12);
+			color: $loja-color;
+			font-weight: normal;
+			margin: 0;
+		} 
+		p { 
+			@include rfs(14); 
+			margin: 30px 0 0 0;
+			@include breakpoint('extra-small', 'max') {
+				padding: 0 15px 0 15px;
+			}
+		}
+	}
+}
+
+.depoimento-1 {
+    position: relative;
+	left: -60px;
+	@include breakpoint('medium', 'max') {
+		position: inherit;
+		left: auto;
+	}
+}
+
+.depoimento-3 {
+    position: relative;
+	left: 60px;
+	@include breakpoint('medium', 'max') {
+		position: inherit;
+		left: auto;
+	}
+}
+
+// prateleira
+.prateleira {
+	background: #000 url('/arquivos/lpbf-banner-background-2.png') center center no-repeat;
+	margin-top: -200px;
+	.row { margin: 0; }
+	p {
+		@include rfs(40);
+		color: #fff;
+		line-height: 40px;
+		margin: 0;
+		padding: 300px 0 0 0;
 	}
 }

@@ -5,6 +5,8 @@ require('modules/helpers');
 //load Nitro Lib
 require('vendors/nitro');
 
+require('vendors/slick');
+
 var CRM = require('modules/store/crm');
 
 Nitro.setup([], function () {
@@ -15,6 +17,7 @@ Nitro.setup([], function () {
 
 		init: function(){
 			this.leadsBf();
+			this.sliderDepoimentos();
 			// this.slider();
 
 			contador = setInterval(this.countdown, 1000);
@@ -120,6 +123,34 @@ Nitro.setup([], function () {
 				}
 			});
 		},
+
+		sliderDepoimentos: function() {
+			if ($(window).width() <= 768) {
+				$('.depoimentos .text-center .bg-depoimentos').slick({
+					arrows: false,
+					infinite: true,
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					responsive: [{
+						breakpoint: 990,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll:1
+						}
+					}, {
+						breakpoint: 480,
+						settings: {
+							arrow: false,
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}]
+				});
+			}
+		}
 	};
 
 	Index.init();

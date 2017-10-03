@@ -13,9 +13,7 @@
 	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
 	<!-- @endif -->
-
-	<!-- <link rel="stylesheet" href="/arquivos/consul-landing-blackfriday-2017.css" /> -->
-	<link rel="stylesheet" href="/arquivos/consul-landing-blackfriday-2017.css" />
+	<link rel="stylesheet" href="/arquivos/consul-landing-blackfriday-2017_v2.css" />
 </head>
 
 <body data-controller="landing-blackfriday-2017" class="landing-blackfriday-2017">
@@ -79,48 +77,48 @@
 		<div class="container">
 			<div class="row">
 				<!-- Categorias -->
-				<div class="col-12 lpbf-ofertas">
+				<div class="lpbf-ofertas">
 					<h2 class="lpbf-form__title text-center">
 						Escolha os produtos que deseja receber ofertas da <strong>Black Friday</strong>.
 					</h2>
 					<form method="POST" action="#" id="form-bf-2017">
 						<div class="lpbf-categorys">
-							<!-- Geladeira -->
-							<label class="lpbf-categorys__item" for="geladeira">
-								<input type="checkbox" name="receberOfertasBlackFriday" value="Geladeira" id="geladeira" />
+							<!-- Cervejeiras -->
+							<label class="lpbf-categorys__item" for="cervejeiras">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Cervejeiras" id="cervejeiras" />
 								<div class="lpbf-categorys__image">
-									<img src="/arquivos/icon-bf-1.png" alt="Geladeira" />
-									<span class="lpbf-categorys__text">Geladeira</span>
+									<img src="/arquivos/icon-bf-1.png" alt="Cervejeiras" />
+									<span class="lpbf-categorys__text">Cervejeiras</span>
 								</div>
 							</label>
-							<!-- /Geladeira -->
+							<!-- /Cervejeiras -->
 
-							<!-- Fogão -->
-							<label class="lpbf-categorys__item" for="fogao">
-								<input type="checkbox" name="receberOfertasBlackFriday" value="Fogao" id="fogao" />
+							<!-- Geladeiras -->
+							<label class="lpbf-categorys__item" for="geladeiras">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Geladeiras" id="geladeiras" />
 								<div class="lpbf-categorys__image">
-									<img src="/arquivos/icon-bf-1.png" alt="Fogão" />
-									<span class="lpbf-categorys__text">Fogão</span>
+									<img src="/arquivos/icon-bf-2.png" alt="Geladeiras" />
+									<span class="lpbf-categorys__text">Geladeiras</span>
 								</div>
 							</label>
-							<!-- /Fogão -->
+							<!-- /Geladeiras -->
 
 							<!-- Lavadora -->
 							<label class="lpbf-categorys__item" for="lavadora">
 								<input type="checkbox" name="receberOfertasBlackFriday" value="Lavadora" id="lavadora" />
 								<div class="lpbf-categorys__image">
-									<img src="/arquivos/icon-bf-1.png" alt="Lavadora" />
-									<span class="lpbf-categorys__text">Geladeira</span>
+									<img src="/arquivos/icon-bf-3.png" alt="Lavadora" />
+									<span class="lpbf-categorys__text">Lavadoras</span>
 								</div>
 							</label>
 							<!-- /Lavadora -->
 
 							<!-- Produtos de Embutir -->
-							<label class="lpbf-categorys__item" for="condicionador">
-								<input type="checkbox" name="receberOfertasBlackFriday" value="Condicionador de ar" id="condicionador" />
+							<label class="lpbf-categorys__item" for="fogoes">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Fogoes" id="fogoes" />
 								<div class="lpbf-categorys__image">
-									<img src="/arquivos/icon-bf-1.png" alt="Condicionador de ar" />
-									<span class="lpbf-categorys__text">Condicionador de ar</span>
+									<img src="/arquivos/icon-bf-4.png" alt="Fogoes" />
+									<span class="lpbf-categorys__text">Fogões</span>
 								</div>
 							</label>
 							<!-- Produtos de Embutir -->
@@ -129,7 +127,7 @@
 							<label class="lpbf-categorys__item" for="outros">
 								<input type="checkbox" name="receberOfertasBlackFriday" value="Outros" id="outros" />
 								<div class="lpbf-categorys__image">
-									<img src="/arquivos/icon-bf-1.png" alt="Condicionador de ar" />
+									<img src="/arquivos/icon-bf-5.png" alt="Condicionador de ar" />
 									<span class="lpbf-categorys__text">Outros</span>
 								</div>
 							</label>
@@ -140,10 +138,13 @@
 						<div class="form-blackfriday-2017">
 							<input class="form-blackfriday__input" type="text" id="nome-bf-2017" name="firstName" placeholder="Nome" />
 							<input class="form-blackfriday__input" type="text" id="email-bf-2017" name="email" placeholder="E-mail" />
-							<span>
-								<input type="checkbox" id="check">
-								Li e concordo com os termos de serviço
-							</span>
+							<fieldset class="campo-checkbox">
+						      	<input type="checkbox" id="termos" name="termos" />
+						      	<label for="termos">
+									Li e concordo com os
+									<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank"><span> termos de serviço</span></a>
+								</label>
+						    </fieldset>
 							<button class="form-blackfriday__submit" type="submit" id="submit-bf2017" name="Cadastrar">Cadastrar</button>
 						</div>
 						<!-- /Form -->
@@ -155,8 +156,50 @@
 	</div>
 	<!-- /Formulário -->
 
+	<!-- Depoimentos -->
+	<div class="depoimentos">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="txt-depoimentos">
+						<h2>De cliente para cliente</h2>
+						<h3>Veja os depoimentos de quem já comprou</h3>
+					</div>
+					<div class="bg-depoimentos col-12">
+						<div class="depoimento-1">
+							<h2>Vanessa</h2>
+							<h3>Duque de Caxias - RJ</h3>
+							<p>Comprei de forma rápida, prática, fiquei muito satisfeita com a atenção e informação do pedido e entrega. No dia anterior e no dia dá entrega fui informada que meu produto já estava a caminho através de mensagem de texto e email.</p>
+						</div>
+						<div class="depoimento-2">
+							<h2>Vanessa</h2>
+							<h3>Duque de Caxias - RJ</h3>
+							<p>Comprei de forma rápida, prática, fiquei muito satisfeita com a atenção e informação do pedido e entrega. No dia anterior e no dia dá entrega fui informada que meu produto já estava a caminho através de mensagem de texto e email.</p>
+						</div>
+						<div class="depoimento-3">
+							<h2>Vanessa</h2>
+							<h3>Duque de Caxias - RJ</h3>
+							<p>Comprei de forma rápida, prática, fiquei muito satisfeita com a atenção e informação do pedido e entrega. No dia anterior e no dia dá entrega fui informada que meu produto já estava a caminho através de mensagem de texto e email.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Depoimentos -->
 
-
+	<!-- Prateleira -->
+	<div class="prateleira">
+		<div class="container">
+			<div class="row">
+				<p class="text-center">Confira as promoções<br />mais bem pensada</p>
+				<div class="prateleira-slider">
+					<div><vtex:contentPlaceHolder id="Prateleira Ofertas Landing" /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Prateleira -->
 
 	<!-- @if DEBUG='development' -->
 	<!-- @include ../../subtemplates/consul-footer.html -->
@@ -168,6 +211,6 @@
 	<!-- /Footer -->
 	<!-- @endif -->
 
-	<script type="text/javascript" src="/arquivos/consul-landing-blackfriday-2017.js"></script>
+	<script type="text/javascript" src="/arquivos/consul-landing-blackfriday-2017_v2.min.js"></script>
 </body>
 </html>
