@@ -22,6 +22,7 @@
 
 @import 'layout/grid';
 @import 'layout/gridresponsive';
+@import 'components/produto/facebook-share';
 
 $loja-color: #9aca3d;
 
@@ -458,12 +459,12 @@ $loja-color: #9aca3d;
 		font-size .3s ease
 	;
 	&:after {
-		@include icon-get(check-mark);
 		@include rfs(7);
-		border: 1px solid #f1f1f1;
-		border-radius: 50%;
 		color: #f1f1f1;
 		content: '';
+		@include icon-get(check-mark);
+		border: 1px solid #f1f1f1;
+		border-radius: 50%;
 		margin-left: 10px;
 		padding: 3px;
 	}

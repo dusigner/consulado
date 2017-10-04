@@ -1,0 +1,87 @@
+.facebook-share {
+	background-color: #f4f2f1;
+	padding: 12px 30px;
+	text-align: center;
+	.title {
+		@include responsiveFont(20, 16, true);
+		margin: 0;
+	}
+	.text {
+		@include responsiveFont(13, 16, true);
+		margin: 0;
+	}
+	.action {
+		background-color: #3b5998;
+		border: none;
+		color: #fff;
+		margin-top: 10px;
+		padding: 3px 15px 3px 12px;
+
+		svg {
+			@include responsiveFont(14, 16, true);
+			display: inline-block;
+			fill: currentColor;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+}
+
+#vtex-cupom-facebook-error,
+#vtex-cupom-facebook-sucesso {
+	.modal-header {
+		display: none;
+	}
+	.modal-holder {
+		top: 20%;
+	}
+	#cupom-facebook-error,
+	#cupom-facebook-sucesso {
+		text-align: center;
+		h3 {
+			@include responsiveFont(30, 16, true);
+			color: #000;
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+		p {
+			@include responsiveFont(18, 16, true);
+			margin-bottom: 10px;
+			margin-top: 0;
+		}
+		button {
+			@include responsiveFont(18, 16, true);
+			background-color: $green;
+			border: none;
+			color: #fff;
+			font-weight: bold;
+			padding: 15px 45px;
+			text-transform: uppercase;
+		}
+	}
+}
+
+#vtex-facebook-share {
+	.modal-header {
+		display: none;
+	}
+	.modal-holder {
+		max-width: 537px;
+	}
+	.facebook-share {
+		background-color: #fff;
+		padding: 0;
+		h3 { @include responsiveFont(36, 16, true); }
+		p { @include responsiveFont(18, 16, true); }
+		button {
+			margin-bottom: 15px;
+			margin-top: 40px;
+			padding: 15px 40px;
+		}
+		a {
+			@include responsiveFont(14, 16, true);
+			text-decoration: underline;
+		}
+
+	}
+}

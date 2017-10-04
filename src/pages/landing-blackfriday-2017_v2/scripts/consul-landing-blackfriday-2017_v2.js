@@ -6,6 +6,7 @@ require('modules/helpers');
 require('vendors/nitro');
 
 require('vendors/slick');
+require('modules/product/facebook-share');
 
 var CRM = require('modules/store/crm');
 
@@ -90,7 +91,6 @@ Nitro.setup([], function () {
 				$('.form-blackfriday-2017').append('<p class="message error_p">Preencha os campos corretamente</p>');
 
 				if( Index.emailValidation( email ) && nome !== '' && $('.campo-checkbox input[type="checkbox"]').is(':checked')){
-					console.log('enviou form');
 					$(inputs).removeClass('erro');
 					$('.error_p').remove();
 
@@ -110,8 +110,6 @@ Nitro.setup([], function () {
 						
 						$('.lpbf-ofertas-bf').fadeOut('slow');
 						$('.lpbf-success').fadeIn('slow');
-
-						console.log('enviou done');
 
 						setTimeout(function(){
 							$('.form-blackfriday-2017 .sucesso').hide();
