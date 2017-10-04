@@ -1,3 +1,5 @@
+/* global store:true, FB:true */
+
 'use strict';
 
 require('modules/helpers');
@@ -5,13 +7,14 @@ require('modules/helpers');
 //load Nitro Lib
 require('vendors/nitro');
 
+require('expose?store!modules/store/store');
 require('vendors/slick');
-require('modules/product/facebook-share');
+require('modules/store/facebook-init');
+// require('modules/product/facebook-share');
 
 var CRM = require('modules/store/crm');
 
-Nitro.setup([], function () {
-
+Nitro.setup(['facebook-init'], function () {
 	var contador;
 
 	var Index = {
@@ -20,6 +23,7 @@ Nitro.setup([], function () {
 			this.leadsBf();
 			this.sliderDepoimentos();
 			this.sliderPrateleira();
+			this.clickAction();
 
 			contador = setInterval(this.countdown, 1000);
 		},
@@ -42,7 +46,7 @@ Nitro.setup([], function () {
 		},
 
 		countdown: function() {
-			var endDate       = '2017/11/25',
+			var endDate       = '2017/11/24',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
@@ -109,7 +113,7 @@ Nitro.setup([], function () {
 						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
 						
 						$('.lpbf-ofertas-bf').fadeOut('slow');
-						$('.lpbf-success').fadeIn('slow');
+						$('.facebook-share').fadeIn('slow');
 
 						setTimeout(function(){
 							$('.form-blackfriday-2017 .sucesso').hide();
@@ -153,6 +157,7 @@ Nitro.setup([], function () {
 			}
 		},
 
+		// monta slick da prateleira
 		sliderPrateleira: function() {
 			$(window).on('load', function() {
 				$('.prateleira-bf .prateleira-slider ul').slick({
@@ -179,6 +184,28 @@ Nitro.setup([], function () {
 						}
 					}]
 				});
+			});
+		},
+
+		// acao de compartilhar no facebook
+		clickAction: function() {
+			$('.facebook-share button').unbind().click(function(e) {
+				e.preventDefault();
+
+				if(FB) {
+					FB.ui({
+						method: 'feed',
+						caption: 'Consul',
+						link: 'http://loja.consul.com.br'
+					}, function(response){
+						if (response && !response.error_code) {
+							$('.facebook-share').fadeOut('slow');
+							$('.lpbf-success').fadeIn('slow');
+						} else {
+							$('.facebook-share').fadeIn('slow');
+						}
+					});
+				}
 			});
 		}
 	};

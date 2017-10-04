@@ -22,7 +22,7 @@
 
 @import 'layout/grid';
 @import 'layout/gridresponsive';
-@import 'components/produto/facebook-share';
+// @import 'components/produto/facebook-share';
 
 $loja-color: #9aca3d;
 
@@ -98,7 +98,7 @@ $loja-color: #9aca3d;
 			margin-bottom .3s ease,
 			width .3s ease
 		;
-		width: 369px;
+		width: auto;
 	}
 
 	.lpbf__subtitle {
@@ -259,6 +259,11 @@ $loja-color: #9aca3d;
 			padding: 10px 20px;
 			width: 100%; 
 		}
+		&:focus {
+			@include rfs(14);
+			transition: 0.4s;
+			height: 37px;
+		}
 	}
 
 	fieldset {
@@ -341,6 +346,51 @@ $loja-color: #9aca3d;
 		margin-top: -415px;
 		position: inherit;
 		width: 100%;
+	}
+}
+
+// compartilhe facebook
+.facebook-share {
+	display: none;
+	padding: 0 90px;
+	.txt-compartilhe {
+		@include rfs(18);
+		color: #736c6b;
+		font-weight: normal;
+	}
+	.at-icon-facebook {
+		background-color: #3c5b9a;
+		fill: rgb(255, 255, 255);
+		width: 28px; 
+		height: 28px; 
+	}
+	.action {
+		background-color: #fff;
+		border: 1px solid #3c5b9a;
+		border-radius: 30px;
+		color: #fff;
+		padding: 5px 25px 5px 25px;
+
+		svg {
+			@include responsiveFont(14, 16, true);
+			display: inline-block;
+			fill: currentColor;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+	button {
+		@include responsiveFont(18, 16, true);
+		background-color: #fff;
+		color: #fff;
+		font-weight: bold;
+		padding: 15px 45px;
+		text-transform: uppercase;
+		span {
+			color: #3c5b9a;
+			font-weight: normal;
+			text-transform: none;
+		}
 	}
 }
 
@@ -649,7 +699,6 @@ $loja-color: #9aca3d;
 	.txt-prateleira {
 		@include rfs(40);
 		color: #fff;
-		line-height: 40px;
 		margin: 0;
 		padding: 300px 0 0 0;
 	}
