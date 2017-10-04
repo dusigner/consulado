@@ -110,7 +110,9 @@ Nitro.setup([], function () {
 
 						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
 
-						$('.form-blackfriday-2017').append('<p class="message success_p">Você foi cadastrado</p>');
+						$('.lpbf-ofertas-bf').css('display', 'none');
+
+						$('.lpbf-success').css('display', 'block');
 
 						setTimeout(function(){
 							$('.form-blackfriday-2017 .sucesso').hide();

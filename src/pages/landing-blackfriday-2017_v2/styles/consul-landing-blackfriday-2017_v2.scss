@@ -337,24 +337,40 @@ $loja-color: #9aca3d;
 	width: 1000px;
 	@include breakpoint('medium', 'max') { 
 		margin-top: -415px;
-		// margin: 20px;
 		position: inherit;
 		width: 100%;
-		// @include breakpoint('small', 'max') { 
-		// 	bottom: 30px; 
-		// 	margin: 20px;
-		// 	width: 95%;
-		// }
-		// @include breakpoint('extra-small', 'max') {
-		// 	bottom: 100px;
-		// 	margin: 10px;
-		// 	width: 95%;
-		// }
-
-		// @include breakpoint(375px, 'max') {
-		// 	bottom: -160px;
-		// }
 	}
+}
+
+// cupom após envio do form
+.lpbf-success {
+	// display: none;
+	bottom: 220px;
+	p,
+	span {
+		@include rfs(22);
+		color: $loja-color;
+		font-weight: bold;
+	}
+
+	.txt-cupom {
+		@include rfs(12);
+		color: #736c6b;
+    	display: block;
+		font-weight: normal;
+		margin-bottom: 6px;
+	}
+}
+
+.cupom-bf {
+	@include rfs(32);
+	border: 1px solid $loja-color;
+	border-radius: 6px;
+	color: #736c6b;
+	margin: 10px auto 40px auto;
+	padding: 10px;
+	text-transform: uppercase;
+	width: 285px;
 }
 
 .lpbf-form__title {
