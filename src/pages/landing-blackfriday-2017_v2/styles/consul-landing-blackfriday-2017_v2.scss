@@ -245,8 +245,8 @@ $loja-color: #9aca3d;
 		}
 		&:checked {
 			+ label:before {
+				background-color: $loja-color;
 				border-radius: 50%;
-				background-color: $loja-color
 			}
 		}
 	}
@@ -345,8 +345,8 @@ $loja-color: #9aca3d;
 
 // cupom após envio do form
 .lpbf-success {
-	display: none;
 	bottom: 220px;
+	display: none;
 	p,
 	span {
 		@include rfs(22);
@@ -432,7 +432,7 @@ $loja-color: #9aca3d;
 	input[type='checkbox']:checked {
 		& + .lpbf-categorys__image {
 			border: 1px solid $loja-color;
-			box-shadow: 0px 0px 25px 3px rgba(153, 204, 45, .39);
+			box-shadow: 0 0 25px 3px rgba(153, 204, 45, .39);
 			span { 
 				color: $loja-color; 
 				&:after {
@@ -458,12 +458,12 @@ $loja-color: #9aca3d;
 		font-size .3s ease
 	;
 	&:after {
-		@include rfs(7);
-		color: #f1f1f1;
-		content: '';
 		@include icon-get(check-mark);
+		@include rfs(7);
 		border: 1px solid #f1f1f1;
 		border-radius: 50%;
+		color: #f1f1f1;
+		content: '';
 		margin-left: 10px;
 		padding: 3px;
 	}
@@ -590,8 +590,8 @@ $loja-color: #9aca3d;
 		padding: 30px 40px 40px 40px;
 		width: 320px;
 		@include breakpoint('medium', 'max') {
-			width: 100%;
 			padding: 30px 0 40px 0;
+			width: 100%;
 		}
 		@include breakpoint('extra-small', 'max') {
 			margin-left: -35px;
@@ -618,20 +618,20 @@ $loja-color: #9aca3d;
 }
 
 .depoimento-1 {
-    position: relative;
 	left: -60px;
+    position: relative;
 	@include breakpoint('medium', 'max') {
-		position: inherit;
 		left: auto;
+		position: inherit;
 	}
 }
 
 .depoimento-3 {
-    position: relative;
 	left: 60px;
+    position: relative;
 	@include breakpoint('medium', 'max') {
-		position: inherit;
 		left: auto;
+		position: inherit;
 	}
 }
 
