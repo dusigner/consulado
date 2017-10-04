@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true, skuJson: true */
+/* global $: true, Nitro: true */
 'use strict';
 
 require('vendors/vtex-modal');
@@ -36,7 +36,6 @@ Nitro.module('sku-select', function() {
 	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 	$(window).on('skuSelected.vtex', function(a, b, c) {
-
 		var templateVoltagem = {
 			template: '<div id="modal-voltagem" class="modal-voltagem">' +
 			'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
@@ -48,29 +47,28 @@ Nitro.module('sku-select', function() {
 
 		$('#modal-sku').addClass('sku-indisponivel');
 
-		if ($('.modal-voltagem').length === 0) {
-			$('#modal-sku .options').append(templateVoltagem.template);
-		}
+		if ($(window).width() <= 768) {
+			if ($('.modal-voltagem').length === 0) {
+				$('#modal-sku .options').append(templateVoltagem.template);
+			}
 
-		if (skuJson.skus[0].available === true && skuJson.skus[1].available === true) {
-			$('.modal-voltagem').addClass('hide');
-			$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
-		} else {
-			$('.content_botoes_televendas .buy-button').attr('href', 'javascript:alert(' + '\'Por favor, selecione o modelo desejado.\'' + ');');
-			$('.content_botoes_televendas .buy-button').show();
-			$('.modal-voltagem').removeClass('hide');
-			$('#BuyButton .buy-button').remove();
+			if (!c.available) {
+				$('.modal-voltagem').show();
+				$('.content_botoes_televendas .buy-button').attr('href', 'javascript:alert(' + '\'Por favor, selecione o modelo desejado.\'' + ');');
+				$('.content_botoes_televendas .buy-button').show();
+				$('.modal-voltagem').removeClass('hide');
+				$('#BuyButton .buy-button').hide();
 
-			$('.content_botoes_televendas .buy-button').click(function() {
-				$('.vtex-modal').fadeIn('2000');
-			});
-		}
+				$('.content_botoes_televendas .buy-button, #BuyButton .buy-button').click(function(e) {
+					e.preventDefault();
 
-		if (!c.available) {
-			$('.modal-voltagem').show();
-		} else {
-			$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
-			$('.modal-voltagem').hide();
+					$('.vtex-modal').fadeIn('2000');
+				});
+			} else {
+				$('#vtex-modal-sku .sku-indisponivel').removeClass('sku-indisponivel');
+				$('.modal-voltagem').hide();
+				$('#BuyButton .buy-button').show();
+			}
 		}
 
 		$('.btn-avise').click(function() {
@@ -83,7 +81,7 @@ Nitro.module('sku-select', function() {
 			if ($('.modal-avise').length === 0) {
 				$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
 				$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
-				// $('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
+				$('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
 			}
 
 			if ($('.back-window').length === 0) {
