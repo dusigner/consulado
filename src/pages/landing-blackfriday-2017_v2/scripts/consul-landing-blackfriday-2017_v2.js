@@ -10,7 +10,6 @@ require('vendors/slick');
 var CRM = require('modules/store/crm');
 
 Nitro.setup([], function () {
-	console.log('kkkkkkkkk');
 
 	var contador;
 
@@ -20,7 +19,6 @@ Nitro.setup([], function () {
 			this.leadsBf();
 			this.sliderDepoimentos();
 			this.sliderPrateleira();
-			// this.slider();
 
 			contador = setInterval(this.countdown, 1000);
 		},
@@ -91,8 +89,8 @@ Nitro.setup([], function () {
 
 				$('.form-blackfriday-2017').append('<p class="message error_p">Preencha os campos corretamente</p>');
 
-				if( Index.emailValidation( email ) && nome !== '' ){
-
+				if( Index.emailValidation( email ) && nome !== '' && $('.campo-checkbox input[type="checkbox"]').is(':checked')){
+					console.log('enviou form');
 					$(inputs).removeClass('erro');
 					$('.error_p').remove();
 
@@ -109,10 +107,11 @@ Nitro.setup([], function () {
 					CRM.insertClient(data).done(function (){
 
 						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
+						
+						$('.lpbf-ofertas-bf').fadeOut('slow');
+						$('.lpbf-success').fadeIn('slow');
 
-						$('.lpbf-ofertas-bf').css('display', 'none');
-
-						$('.lpbf-success').css('display', 'block');
+						console.log('enviou done');
 
 						setTimeout(function(){
 							$('.form-blackfriday-2017 .sucesso').hide();
@@ -129,8 +128,8 @@ Nitro.setup([], function () {
 		},
 
 		sliderDepoimentos: function() {
-			if ($(window).width() <= 768) {
-				$('.depoimentos .text-center .bg-depoimentos').slick({
+			if ($(window).width() <= 980) {
+				$('.depoimentos .bg-depoimentos').slick({
 					arrows: false,
 					infinite: true,
 					slidesToShow: 3,
@@ -157,10 +156,10 @@ Nitro.setup([], function () {
 		},
 
 		sliderPrateleira: function() {
-			console.log('slick');
 			$(window).on('load', function() {
-				$('.prateleira .prateleira-slider > ul').slick({
-					arrows: false,
+				$('.prateleira-bf .prateleira-slider ul').slick({
+					arrows: true,
+					dots: false,
 					infinite: true,
 					slidesToShow: 3,
 					slidesToScroll: 3,
@@ -168,7 +167,7 @@ Nitro.setup([], function () {
 						breakpoint: 990,
 						settings: {
 							arrows: false,
-							dots: true,
+							dots: false,
 							slidesToShow: 1,
 							slidesToScroll:1
 						}
@@ -176,7 +175,7 @@ Nitro.setup([], function () {
 						breakpoint: 480,
 						settings: {
 							arrow: false,
-							dots: true,
+							dots: false,
 							slidesToShow: 1,
 							slidesToScroll: 1
 						}
