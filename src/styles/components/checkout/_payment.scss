@@ -276,6 +276,16 @@ body {
 					content: 'O prazo de entrega do produto come\00e7 a a contar a partir da confirma\00e7 \00e3 o do pagamento, que pode variar em at\00e9  2 dias \00fa teis.';
 					font-weight: bold;
 				}
+
+				&:before {
+					bottom: 80px;
+					color: $green;
+					content: 'O boleto do pedido será emitido pelo Mercado Pago.';
+					font-weight: bold;
+					position: absolute;
+				}
+
+				.sight { margin-bottom: 30px; }
 			}
 		}
 	}
