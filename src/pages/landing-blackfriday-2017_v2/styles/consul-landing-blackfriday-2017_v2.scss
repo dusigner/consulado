@@ -1,0 +1,717 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul.
+	* Author: Pedro Henrick
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/rfs';
+
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+// @import 'components/produto/facebook-share';
+
+$loja-color: #9aca3d;
+
+// Base
+.landing-blackfriday-2017 {
+	@include breakpoint('medium', 'max') { padding-top: 70px!important; }
+	@include breakpoint('small', 'max') { padding-top: 50px!important; }
+	transition:
+		font-size .3s ease,
+		padding-top .3s ease
+	;
+}
+
+// Header
+.lpbf-header {
+	@include breakpoint('small', 'max') {
+		line-height: 50px;
+		min-height: 50px!important;
+	}
+	@include breakpoint('medium', 'max') {
+		line-height: 70px;
+		min-height: 70px!important;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+	}
+	background-color: $loja-color;
+	line-height: 95px;
+	min-height: 95px !important;
+	overflow: hidden;
+	text-align: center;
+	transition:
+		line-height .3s ease,
+		min-height .3s ease
+	;
+
+	a {
+		display: block;
+
+		&:hover { text-decoration: none; }
+
+		&:before {
+			@include icon-get(logo-consul);
+			color: #fff;
+			font-size: 26px;
+		}
+	}
+}
+
+#lpbf {
+	background: #000 url('/arquivos/lpbf-banner-background.png') center center no-repeat;
+	display: block;
+	height: 696px;
+
+	.lpbf__title {
+		@include breakpoint('small', 'max') {
+			background-position: center -50px;
+			height: 195px;
+			margin: 0 auto 0 auto;
+			width: 240px;
+		}
+		background: transparent url('/arquivos/lpbf-consul-logo.png') center -100px no-repeat;
+		background-size: contain;
+		color: transparent;
+		font-size: 1px;
+		height: 373px;
+		margin: 0 0 80px 0;
+		overflow: hidden;
+		text-indent: -99cm;
+		transition:
+			margin-bottom .3s ease,
+			width .3s ease
+		;
+		width: auto;
+	}
+
+	.lpbf__subtitle {
+		@include breakpoint('medium', 'min') { @include rfs(30); }
+		@include breakpoint('medium', 'max') { display: none; }
+		@include breakpoint('small', 'max') {
+			@include rfs(24);
+			display: block;
+			margin-top: 0;
+			max-width: 100%;
+			padding: 10px 40px;
+			text-align: center;
+			width: 100%;
+		}
+		@include breakpoint('small', 'max') { padding: 10px 0; }
+		color: #fff;
+		margin-top: 50px;
+	}
+
+	// Contador
+	.lpbf-contador {
+		@include breakpoint('small', 'max') { 
+			transform: translateY(750%); 
+			@include breakpoint('extra-small', 'max') {
+				transform: translateY(600%);
+			}
+		}
+		@include breakpoint('small', 'min') { transform: translateY(30%); }
+		color: $green;
+		margin: 0 auto;
+		max-width: 550px;
+
+		.lpbf-contador__title {
+			@include breakpoint('small', 'max') {
+				padding: 0 2em;
+				text-align: center;
+				transform: translateY(-20px);
+			}
+			@include rfs(20);
+			display: block;
+			line-height: 100%;
+			text-align: left;
+		}
+
+		.countdown {
+			display: flex;
+			justify-content: space-between;
+			padding: 1em 0;
+		}
+
+		.counter {
+			@include breakpoint('extra-small', 'max') { width: 56px; }
+			@include rfs(63);
+			color: $loja-color;
+			display: block;
+			font-weight: bold;
+			line-height: 100%;
+			position: relative;
+			width: 84px;
+			@include breakpoint('small', 'max') { color: #fff; }
+
+			&.colon { width: auto; }
+		}
+
+		.countdown-text {
+			@include rfs(13);
+			color: $loja-color;
+			padding-top: .7em;
+			text-transform: uppercase;
+			@include breakpoint('small', 'max') { color: #fff; }
+		}
+
+
+		// Finalização do contador
+		&.is--end {
+			.countdown,
+			.lpbf-contador__title {
+				display: none;
+				visibility: hidden;
+			}
+
+			// Chegou
+			.lpbf-chegou {
+				@include breakpoint('small', 'min') {
+					background-color: #292929;
+					float: right;
+					transform: translateY(17%);
+				}
+				display: block;
+				padding: 2.5em 4em;
+				visibility: visible;
+			}
+
+			.lpbf__text {
+				@include breakpoint('small', 'max') { @include rfs(60); }
+				@include rfs(44);
+				color: #d0d0d0;
+				display: block;
+				font-weight: 400;
+			}
+
+			.lpbf-chegou__cta {
+				@include rfs(21);
+				background-color: $loja-color;
+				color: #fff;
+				display: inline-block;
+				font-weight: bold;
+				margin-top: 1.2em;
+				padding: .5em 2em;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// Form
+.lpbf-form__container {
+	background-color: #000;
+
+	.container {
+		@include breakpoint('small', 'max') { 
+			padding: 0;
+			width: 100%; 
+		}
+		@include breakpoint('extra-small', 'max') { width: 95%; }
+		@include breakpoint('small', 'min') { padding: 0; }
+		max-width: 980px;
+	}
+
+	.row { margin: 0; }
+}
+.form-blackfriday-2017 {
+	margin-top: 20px;
+	padding: 0 20px;
+	@include breakpoint('small', 'max') { margin-bottom: 20px; }
+	input {
+		border: 1px solid #d4d4d4;
+		border-radius: 30px;
+		display: inline-block;
+		+ label {
+			&:after { border-radius: 50%; }
+		}
+		&:checked {
+			+ label:before {
+				background-color: $loja-color;
+				border-radius: 50%;
+			}
+		}
+	}
+	input[type='text'] { 
+		margin-right: 10px;
+		@include breakpoint('large', 'min') { width: 300px; }
+		@include breakpoint('medium', 'min') { width: 250px; }
+		@include breakpoint('small', 'max') { 
+			padding: 10px 20px;
+			width: 100%; 
+		}
+		&:focus {
+			@include rfs(14);
+			transition: 0.4s;
+			height: 37px;
+		}
+	}
+
+	fieldset {
+		border: none;
+		display: inline-block;
+		margin: 0;
+		padding: 8px 0;
+		vertical-align: middle;
+
+		&.campo-checkbox {
+			@include breakpoint('small', 'max') { text-align: left; }
+		}
+
+		// input { margin: 0 15px; }
+
+		label {
+			@include breakpoint('small', 'max') {
+				@include responsiveFont(11, 16, true);
+				line-height: 12px;
+				margin: 0;
+				width: 100%;
+			}
+			@include responsiveFont(12, 16, true);
+			display: inline-block;
+			margin: 0 10px;
+			padding-left: 25px;
+			position: relative;
+			text-align-last: left;
+			width: 150px;
+
+			a {
+				text-decoration: none;
+
+				span { 
+					text-decoration: underline; 
+					@include breakpoint('small', 'max') {
+						display: block;
+					}
+				}
+			}
+		}
+
+		label[for='termos'] { 
+			line-height: 10px; 
+			@include breakpoint('small', 'max') {
+				@include rfs(12);
+			}
+		}
+	}
+}
+
+.error_p {
+	color: $loja-color;
+	position: absolute;
+	font-weight: bold;
+	left: 33%;
+	&:before {
+		content: '';
+		@include icon-get(close);
+		margin-right: 8px;
+		vertical-align: initial;
+	}
+}
+
+.erro { border: 2px solid $loja-color!important; }
+
+.form-blackfriday__submit {
+	@include breakpoint('small', 'max') {
+		display: inline-block;
+		float: right;
+		margin: 0 auto;
+		width: 40%;
+	}
+	@include rfs(16);
+	background-color: $loja-color;
+	border: none;
+	border-radius: 35px;
+	color: #fff;
+	font-weight: bold;
+	padding: 8px 5px;
+	text-transform: uppercase;
+	transition: width .2s ease;
+	width: calc(18% - 29px);
+
+	&:focus { outline: none; }
+}
+
+.lpbf-ofertas {
+	background-color: #fff;
+	border-radius: 12px;
+	bottom: 220px;
+	position: absolute;
+	width: 1000px;
+	@include breakpoint('medium', 'max') { 
+		margin-top: -415px;
+		position: inherit;
+		width: 100%;
+	}
+}
+
+// compartilhe facebook
+.facebook-share {
+	display: none;
+	padding: 0 90px;
+	.txt-compartilhe {
+		@include rfs(18);
+		color: #736c6b;
+		font-weight: normal;
+	}
+	.at-icon-facebook {
+		background-color: #3c5b9a;
+		fill: rgb(255, 255, 255);
+		width: 28px; 
+		height: 28px; 
+	}
+	.action {
+		background-color: #fff;
+		border: 1px solid #3c5b9a;
+		border-radius: 30px;
+		color: #fff;
+		padding: 5px 25px 5px 25px;
+
+		svg {
+			@include responsiveFont(14, 16, true);
+			display: inline-block;
+			fill: currentColor;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+	}
+	button {
+		@include responsiveFont(18, 16, true);
+		background-color: #fff;
+		color: #fff;
+		font-weight: bold;
+		padding: 15px 45px;
+		text-transform: uppercase;
+		span {
+			color: #3c5b9a;
+			font-weight: normal;
+			text-transform: none;
+		}
+	}
+}
+
+// cupom após envio do form
+.lpbf-success {
+	bottom: 220px;
+	display: none;
+	p,
+	span {
+		@include rfs(22);
+		color: $loja-color;
+		font-weight: bold;
+	}
+
+	.txt-cupom {
+		@include rfs(12);
+		color: #736c6b;
+    	display: block;
+		font-weight: normal;
+		margin-bottom: 6px;
+	}
+}
+
+.cupom-bf {
+	@include rfs(32);
+	border: 1px solid $loja-color;
+	border-radius: 6px;
+	color: #736c6b;
+	margin: 10px auto 40px auto;
+	padding: 10px;
+	text-transform: uppercase;
+	width: 285px;
+}
+
+.lpbf-form__title {
+	@include breakpoint('small', 'max') { 
+		margin: 0;
+		padding: 20px 20px 0 20px;
+	}
+	@include rfs(22);
+	color: $loja-color;
+}
+
+// Categorias
+.lpbf-categorys {
+	@include breakpoint('small', 'min') {
+		display: flex;
+		justify-content: space-between;
+	}
+	margin-top: 20px;
+}
+
+.lpbf-categorys__item {
+	@include breakpoint('small', 'max') { display: inline-block; }
+	@include breakpoint('extra-small', 'max') { margin-left: 0; }
+	cursor: pointer;
+	display: block;
+	margin-left: 20px;
+	// overflow: hidden;
+	padding: 5px 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+	&:last-child { 
+		margin-right: 20px; 
+		@include breakpoint('extra-small', 'max') { margin-right: 0; }
+	}
+
+	input[type='checkbox'] {
+		position: absolute;
+		top: -30px;
+		// visibility: visible;
+	}
+
+	// Active state
+	&:hover {
+		.lpbf-categorys__image { 
+			border-color: $loja-color; 
+		}
+		span { 
+			&:after {
+				transition:
+					color .3s ease,
+					font-size .3s ease
+				;
+			}
+		}
+	}
+
+	input[type='checkbox']:checked {
+		& + .lpbf-categorys__image {
+			border: 1px solid $loja-color;
+			box-shadow: 0 0 25px 3px rgba(153, 204, 45, .39);
+			transition: all .3s ease-out;
+			span { 
+				color: $loja-color; 
+				&:after {
+					background-color: $loja-color;
+					color: #fff;
+					transition: all .3s ease-out;
+				}
+			}
+		}
+	}
+}
+
+.lpbf-categorys__text {
+	@include rfs(14);
+	color: #c3c3c3;
+	display: block;
+	font-weight: bold;
+	transition:
+		color .3s ease,
+		font-size .3s ease
+	;
+	&:after {
+		@include rfs(7);
+		color: #f1f1f1;
+		content: '';
+		@include icon-get(check-mark);
+		border: 1px solid #f1f1f1;
+		border-radius: 50%;
+		margin-left: 10px;
+		padding: 3px;
+	}
+}
+
+.lpbf-categorys__image {
+	@include breakpoint('extra-small', 'max') {
+		height: 40px;
+		line-height: 40px;
+		width: 100%;
+	}
+	@include breakpoint('large', 'min') {
+		height: auto;
+		line-height: auto;
+	}
+	@include breakpoint('extra-small', 'min') { width: 100%; }
+	background-color: #fff;
+	border: 1px solid #f1f1f1;
+	border-radius: 30px;
+	display: inline-block;
+	height: 60px;
+	line-height: 60px;
+	max-width: 100%;
+	overflow: hidden;
+	position: relative;
+	transition:
+		background-color .5s ease,
+		border-color .3s ease,
+		height .3s ease,
+		outline .2s ease,
+		width .3s ease
+	;
+	width: 170px;
+
+	// Máscara pra corrigir o clik no IE
+	&:before {
+		border-radius: 20px;
+		content: '';
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+
+	img {
+		@include breakpoint('small', 'max') {
+			max-height: 75%;
+			max-width: 75%;
+		}
+		display: inline-block;
+		float: left;
+		height: auto;
+		margin: 6px;
+		max-height: 100%;
+		max-width: 100%;
+		width: auto;
+	}
+}
+
+// depoimentos
+.depoimentos {
+	background-color: #000;
+	@include breakpoint('small', 'max') { 
+		// @include breakpoint('extra-small', 'max') { padding-top: 285px; }
+		padding-top: 190px; 
+	}
+
+	.container {
+		font-size: 0;
+		max-width: 960px;
+		padding: 0;
+	}
+
+	.row { margin: 0!important; }
+
+	.slick-dots {
+		bottom: -35px;
+	}
+
+	.slick-dots li button { background: #414141; }
+
+	.slick-dots li.slick-active button {
+		background: $loja-color;
+		height: 10px;
+		width: 10px;
+	}
+
+	.slick-dots li button:after { border: none; }
+}
+
+.txt-depoimentos {
+	background: url('/arquivos/apostrofo.png') center center no-repeat;
+	height: 93px;
+	h2 {
+		@include rfs(40);
+		color: $loja-color;
+		margin: 0;
+	}
+	h3 {
+		@include rfs(14);
+		color: #fff;
+		font-weight: normal;
+		margin: 0;
+	}
+}
+
+.bg-depoimentos {
+	background-color: $loja-color;
+	border-radius: 25px;
+	margin-top: 25px;
+	padding: 20px 0;
+	@include breakpoint('extra-small', 'max') {
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+		margin-left: 35px;
+	}
+	& > div {
+		background-color: #fff;
+		border-radius: 25px;
+		display: inline-block;
+		padding: 30px 40px 40px 40px;
+		width: 320px;
+		@include breakpoint('medium', 'max') {
+			padding: 30px 0 40px 0;
+			width: 100%;
+		}
+		@include breakpoint('extra-small', 'max') {
+			margin-left: -35px;
+		}
+		h2 { 
+			@include rfs(18); 
+			color: $loja-color;
+			margin: 0;
+		}
+		h3 { 
+			@include rfs(12);
+			color: $loja-color;
+			font-weight: normal;
+			margin: 0;
+		} 
+		p { 
+			@include rfs(14); 
+			margin: 30px 0 0 0;
+			@include breakpoint('extra-small', 'max') {
+				padding: 0 15px 0 15px;
+			}
+		}
+	}
+}
+
+.depoimento-1 {
+	left: -60px;
+    position: relative;
+	@include breakpoint('medium', 'max') {
+		left: auto;
+		position: inherit;
+	}
+}
+
+.depoimento-3 {
+	left: 60px;
+    position: relative;
+	@include breakpoint('medium', 'max') {
+		left: auto;
+		position: inherit;
+	}
+}
+
+// prateleira
+.prateleira-bf {
+	background: #000 url('/arquivos/lpbf-banner-background-2.png') 50% 0 no-repeat;
+	margin-top: -200px;
+	.prateleira { 
+		background-color: #fff; 
+		border-radius: 30px;
+		margin-top: 40px;
+	}
+	.row { margin: 0; }
+	.txt-prateleira {
+		@include rfs(40);
+		color: #fff;
+		margin: 0;
+		padding: 300px 0 0 0;
+	}
+	.prateleira.default .slick-next { right: 12px; }
+	.prateleira.default .slick-prev { left: 12px; }
+}
