@@ -356,7 +356,9 @@ $loja-color: #9aca3d;
 	position: absolute;
 	width: 1000px;
 	@include breakpoint('medium', 'max') {
+		height: 550px;
 		margin-top: -415px;
+		padding-top: 10px;
 		position: inherit;
 		width: 100%;
 	}
@@ -378,6 +380,7 @@ $loja-color: #9aca3d;
 		@include rfs(48);
 		display: inline-block;
 		transform: translateY(10px);
+		vertical-align: super;
 	}
 }
 
@@ -385,6 +388,9 @@ $loja-color: #9aca3d;
 .facebook-share {
 	display: none;
 	padding: 0 90px;
+	@include breakpoint('extra-small', 'max') {
+		padding: 0 15px;
+	}
 	.txt-compartilhe {
 		@include rfs(18);
 		color: #736c6b;
@@ -403,6 +409,10 @@ $loja-color: #9aca3d;
 		color: #fff;
 		padding: 5px 25px 5px 25px;
 		width: 350px;
+		@include breakpoint('extra-small', 'max') {
+			margin-bottom: 25px;
+			width: 100%; 
+		}
 
 		&:focus { outline: none; }
 
