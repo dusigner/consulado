@@ -120,8 +120,8 @@ $loja-color: #9aca3d;
 
 	// Contador
 	.lpbf-contador {
-		@include breakpoint('small', 'max') { 
-			transform: translateY(750%); 
+		@include breakpoint('small', 'max') {
+			transform: translateY(750%);
 			@include breakpoint('extra-small', 'max') {
 				transform: translateY(600%);
 			}
@@ -219,9 +219,9 @@ $loja-color: #9aca3d;
 	background-color: #000;
 
 	.container {
-		@include breakpoint('small', 'max') { 
+		@include breakpoint('small', 'max') {
 			padding: 0;
-			width: 100%; 
+			width: 100%;
 		}
 		@include breakpoint('extra-small', 'max') { width: 95%; }
 		@include breakpoint('small', 'min') { padding: 0; }
@@ -248,18 +248,18 @@ $loja-color: #9aca3d;
 			}
 		}
 	}
-	input[type='text'] { 
+	input[type='text'] {
 		margin-right: 10px;
 		@include breakpoint('large', 'min') { width: 300px; }
 		@include breakpoint('medium', 'min') { width: 250px; }
-		@include breakpoint('small', 'max') { 
+		@include breakpoint('small', 'max') {
 			padding: 10px 20px;
-			width: 100%; 
+			width: 100%;
 		}
 		&:focus {
 			@include rfs(14);
-			transition: 0.4s;
 			height: 37px;
+			transition: .4s;
 		}
 	}
 
@@ -294,8 +294,8 @@ $loja-color: #9aca3d;
 			a {
 				text-decoration: none;
 
-				span { 
-					text-decoration: underline; 
+				span {
+					text-decoration: underline;
 					@include breakpoint('small', 'max') {
 						display: block;
 					}
@@ -303,8 +303,8 @@ $loja-color: #9aca3d;
 			}
 		}
 
-		label[for='termos'] { 
-			line-height: 10px; 
+		label[for='termos'] {
+			line-height: 10px;
 			@include breakpoint('small', 'max') {
 				@include rfs(12);
 			}
@@ -314,12 +314,13 @@ $loja-color: #9aca3d;
 
 .error_p {
 	color: $loja-color;
-	position: absolute;
 	font-weight: bold;
 	left: 33%;
+	position: absolute;
+
 	&:before {
-		content: '';
 		@include icon-get(close);
+		// content: '';
 		margin-right: 8px;
 		vertical-align: initial;
 	}
@@ -354,10 +355,29 @@ $loja-color: #9aca3d;
 	bottom: 220px;
 	position: absolute;
 	width: 1000px;
-	@include breakpoint('medium', 'max') { 
+	@include breakpoint('medium', 'max') {
 		margin-top: -415px;
 		position: inherit;
 		width: 100%;
+	}
+}
+
+// Restam cupons
+.lpbf-ofertas__cupom {
+	@include rfs(18);
+	background-color: $loja-color;
+	border-radius: 7px;
+	color: #fff;
+	font-weight: bold;
+	line-height: 100%;
+	margin: 10px auto 20px auto;
+	max-width: 350px;
+	padding: 12px 5px 20px 5px;
+
+	strong {
+		@include rfs(48);
+		display: inline-block;
+		transform: translateY(10px);
 	}
 }
 
@@ -373,8 +393,8 @@ $loja-color: #9aca3d;
 	.at-icon-facebook {
 		background-color: #3c5b9a;
 		fill: rgb(255, 255, 255);
-		width: 28px; 
-		height: 28px; 
+		height: 28px;
+		width: 28px;
 	}
 	.action {
 		background-color: #fff;
@@ -382,6 +402,9 @@ $loja-color: #9aca3d;
 		border-radius: 30px;
 		color: #fff;
 		padding: 5px 25px 5px 25px;
+		width: 350px;
+
+		&:focus { outline: none; }
 
 		svg {
 			@include responsiveFont(14, 16, true);
@@ -438,7 +461,7 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-form__title {
-	@include breakpoint('small', 'max') { 
+	@include breakpoint('small', 'max') {
 		margin: 0;
 		padding: 20px 20px 0 20px;
 	}
@@ -466,8 +489,8 @@ $loja-color: #9aca3d;
 	position: relative;
 	text-align: center;
 	width: 100%;
-	&:last-child { 
-		margin-right: 20px; 
+	&:last-child {
+		margin-right: 20px;
 		@include breakpoint('extra-small', 'max') { margin-right: 0; }
 	}
 
@@ -479,10 +502,10 @@ $loja-color: #9aca3d;
 
 	// Active state
 	&:hover {
-		.lpbf-categorys__image { 
-			border-color: $loja-color; 
+		.lpbf-categorys__image {
+			border-color: $loja-color;
 		}
-		span { 
+		span {
 			&:after {
 				transition:
 					color .3s ease,
@@ -497,8 +520,8 @@ $loja-color: #9aca3d;
 			border: 1px solid $loja-color;
 			box-shadow: 0 0 25px 3px rgba(153, 204, 45, .39);
 			transition: all .3s ease-out;
-			span { 
-				color: $loja-color; 
+			span {
+				color: $loja-color;
 				&:after {
 					background-color: $loja-color;
 					color: #fff;
@@ -520,11 +543,10 @@ $loja-color: #9aca3d;
 	;
 	&:after {
 		@include rfs(7);
-		color: #f1f1f1;
-		content: '';
 		@include icon-get(check-mark);
 		border: 1px solid #f1f1f1;
 		border-radius: 50%;
+		color: #f1f1f1;
 		margin-left: 10px;
 		padding: 3px;
 	}
@@ -590,9 +612,9 @@ $loja-color: #9aca3d;
 // depoimentos
 .depoimentos {
 	background-color: #000;
-	@include breakpoint('small', 'max') { 
+	@include breakpoint('small', 'max') {
 		// @include breakpoint('extra-small', 'max') { padding-top: 285px; }
-		padding-top: 190px; 
+		padding-top: 190px;
 	}
 
 	.container {
@@ -657,19 +679,19 @@ $loja-color: #9aca3d;
 		@include breakpoint('extra-small', 'max') {
 			margin-left: -35px;
 		}
-		h2 { 
-			@include rfs(18); 
+		h2 {
+			@include rfs(18);
 			color: $loja-color;
 			margin: 0;
 		}
-		h3 { 
+		h3 {
 			@include rfs(12);
 			color: $loja-color;
 			font-weight: normal;
 			margin: 0;
-		} 
-		p { 
-			@include rfs(14); 
+		}
+		p {
+			@include rfs(14);
 			margin: 30px 0 0 0;
 			@include breakpoint('extra-small', 'max') {
 				padding: 0 15px 0 15px;
@@ -700,8 +722,8 @@ $loja-color: #9aca3d;
 .prateleira-bf {
 	background: #000 url('/arquivos/lpbf-banner-background-2.png') 50% 0 no-repeat;
 	margin-top: -200px;
-	.prateleira { 
-		background-color: #fff; 
+	.prateleira {
+		background-color: #fff;
 		border-radius: 30px;
 		margin-top: 40px;
 	}

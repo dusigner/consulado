@@ -15,6 +15,9 @@ require('modules/store/facebook-init');
 var CRM = require('modules/store/crm');
 
 Nitro.setup(['facebook-init'], function () {
+
+	var cupons = null;
+
 	var contador;
 
 	var Index = {
@@ -24,8 +27,41 @@ Nitro.setup(['facebook-init'], function () {
 			this.sliderDepoimentos();
 			this.sliderPrateleira();
 			this.clickAction();
+			this.consultaCupom();
 
 			contador = setInterval(this.countdown, 1000);
+		},
+
+		consultaCupom: function() {
+			var qtdCupom = $('#quantidade-cupom');
+
+			$.getJSON(CRM.formatUrl('CB', 'search'), {
+				_fields: 'qtdCupons',
+				nomeCupom: 'BLACKFRIDAY50'
+			}).done(function(data) {
+
+				if ( data ) {
+					qtdCupom.text( data[0].qtdCupons );
+					cupons = data[0].qtdCupons;
+				}
+				else {
+					qtdCupom.text( 4999 );
+				}
+			});
+		},
+
+		atualizaCupom: function() {
+			if ( cupons ) {
+				var  data = {};
+				data.nomeCupom = 'BLACKFRIDAY50';
+				data.qtdCupons = cupons - 1;
+
+				return CRM.ajax({
+					url: CRM.formatUrl('CB', 'documents'),
+					type: 'PATCH',
+					data: JSON.stringify(data)
+				});
+			}
 		},
 
 		calculateTimeRemaining: function( endDate ) {
@@ -138,8 +174,6 @@ Nitro.setup(['facebook-init'], function () {
 						$('#nome-bf-2017').val('');
 						$('#email-bf-2017').val('');
 
-					}).fail(function (){
-						console.log('Erros ocorreram!');
 					});
 				}
 			});
@@ -217,6 +251,10 @@ Nitro.setup(['facebook-init'], function () {
 						if (response && !response.error_code) {
 							$('.facebook-share').fadeOut('slow');
 							$('.lpbf-success').fadeIn('slow');
+
+							// Se o compartilhamento foi feito
+							Index.atualizaCupom();
+
 						} else {
 							$('.facebook-share').fadeIn('slow');
 						}
