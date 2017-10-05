@@ -73,9 +73,8 @@
 		position: relative;
 
 		.txt {
-			float: none;
-
 			@include responsiveFont(14, 16, true);
+			float: none;
 			font-weight: 200;
 
 			@include breakpoint(small, 'max') {
