@@ -80,10 +80,10 @@ Nitro.module('register.corporate', function() {
 			oncomplete: function() {
 				var poscalCode = $(this).val().replace(/\D/g, '');
 				getAddress.byPostalCode(poscalCode).done(function(endereco) {
-					$form.find('.neighborhood').val(endereco.bairro).trigger('change');
-					$form.find('.city').val(endereco.localidade).trigger('change');
-					$form.find('.addressName').val(endereco.logradouro).trigger('change');
-					$form.find('.state').val(endereco.uf).trigger('change');
+					$form.find('.neighborhood').val(endereco.neighborhood).trigger('change');
+					$form.find('.city').val(endereco.city).trigger('change');
+					$form.find('.addressName').val(endereco.street).trigger('change');
+					$form.find('.state').val(endereco.state).trigger('change');
 				});
 			}
 		});
@@ -134,14 +134,18 @@ Nitro.module('register.corporate', function() {
 	this.validCompany = function() {
 
 		return CRM.clientSearchByCorporateDocument(self.getDocument())
-			.done(function() {
-				dataLayer.push(
-					{ event : 'formularioInvalido'}
-				);
-				self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
-			})
-			.fail(
-				self.nextStep);
+			.done(function(data) {
+				if(data) {
+					dataLayer.push(
+						{ event : 'formularioInvalido'}
+					);
+					self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
+				} else {
+					self.nextStep();
+				}
+			});
+			/* .fail(
+				self.nextStep); */
 
 	};
 
@@ -176,23 +180,25 @@ Nitro.module('register.corporate', function() {
 
 	};
 */
-	this.prepareLocationData = function(data, result) {
+	this.prepareLocationData = function(dataAddress, data, result) {
 
 		if (result && result.Id) {
-			data.userId = result.Id.replace('CL-', '');
+			dataAddress.userId = result.Id.replace('CL-', '');
 		}
 
-		data.street = data.addressName;
-		data.receiverName = data.firstName + ' ' + data.lastName;
-		data.country = 'BRA';
-		data.addressType = 'residential';
+		dataAddress.street = data.addressName;
+		dataAddress.receiverName = data.firstName + ' ' + data.lastName;
+		dataAddress.country = 'BRA';
+		dataAddress.addressType = 'residential';
 
-		return data;
+		return dataAddress;
 	};
 
 	this.register = function() {
 
-		var data = {};
+		var data = {},
+			dataUser = {},
+			dataAddress = {};
 
 		$.map($form.serializeArray(), function(x) {
 			if (!x.value || x.value === '') {
@@ -219,10 +225,60 @@ Nitro.module('register.corporate', function() {
 			xValidationPJ: 'pendente'
 		});
 
-		/*console.log('register', data);*/
+		dataUser = data;
 
-		CRM.insertClient(data)
-			.then(self.prepareLocationData.bind(self, data))
+		/**
+		 * A nova API não permite enviar campos que não existem, retornando erro
+		 * Para resolver rápido foi necessário criar 2 objetos adicionando e removendo o necessário para cada POST
+		 * Ajeitar depois
+		 * SHAME -> https://giphy.com/gifs/shame-Ob7p7lDT99cd2
+		 */
+
+		if(data.postalCode) {
+			dataAddress.postalCode = data.postalCode;
+			delete dataUser.postalCode;
+		}
+		if(data.addressName) {
+			dataAddress.addressName = data.addressName;
+			delete dataUser.addressName;
+		}
+		if(data.number) {
+			dataAddress.number = data.number;
+			delete dataUser.number;
+		}
+		if(data.complement) {
+			dataAddress.complement = data.complement;
+			delete dataUser.complement;
+		}
+		if(data.neighborhood) {
+			dataAddress.neighborhood = data.neighborhood;
+			delete dataUser.neighborhood;
+		}
+		if(data.country) {
+			dataAddress.state = data.country;
+			delete dataUser.country;
+		}
+		if(data.state) {
+			dataAddress.state = data.state;
+			delete dataUser.state;
+		}
+		if(data.city) {
+			dataAddress.city = data.city;
+			delete dataUser.city;
+		}
+		if(data.confirmEmail) {
+			delete dataUser.confirmEmail;
+		}
+		if(data.termos) {
+			delete dataUser.termos;
+		}
+		if(data.addressType) {
+			dataAddress.addressType = data.addressType;
+			delete dataUser.addressType;
+		}
+
+		CRM.insertClient(dataUser)
+			.then(self.prepareLocationData.bind(self, dataAddress, data))
 			.then(CRM.insertLocation)
 			.done(redirect.register.bind(self, data))
 			.done(self.resetForm)

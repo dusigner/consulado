@@ -4,58 +4,66 @@
 
 var CRM = {
 
-	clientURI: '/api/ds/pub/documents/CL',
-	geURI: '/api/ds/pub/documents/GE',
-	ordersURI: '/api/ds/pub/documents/SP',
-	cancelGaeURI: '/api/ds/pub/documents/CG',
-	TermsGaeURI: '/api/ds/pub/documents/TG',
-	addressURI: '/api/ds/pub/documents/AD',
+	baseURL: '/{accountName}/dataentities/{table}/{action}',
+
+	ajax: function(options) {
+
+		return $.ajax($.extend({}, {
+			accept: 'application/vnd.vtex.ds.v10+json',
+			contentType: 'application/json; charset=utf-8',
+			headers: {
+				'REST-Range': 'resources=0-100'
+			}
+		}, options));
+
+	},
+
+	formatUrl: function(table, action) {
+		return CRM.baseURL.render({
+			accountName: window.jsnomeLoja || window.vtex.accountName || store.accountName,
+			table: table,
+			action: action
+		});
+	},
 
 	getOrderById: function (orderId) {
-		return $.ajax({
-			url: CRM.ordersURI,
-			type: 'GET',
-			contentType: 'application/json; charset=utf-8',
-			data: {
-				f: 'orderId,state,city,status,description,lastChange,finished',
-				fq: 'orderId:' + orderId
-			}
+		return $.getJSON(CRM.formatUrl('GE', 'search'), {
+			_fields: 'orderId,state,city,status,description,lastChange,finished',
+			orderId: orderId
 		});
 	},
 
 	insertClient: function (data) {
-		return $.ajax({
-			url: CRM.clientURI,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+		return CRM.ajax({
+			url: CRM.formatUrl('CL', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
 		});
 	},
 
 	insertClientGE: function (data) {
-		return $.ajax({
-			url: CRM.geURI,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+		return CRM.ajax({
+			url: CRM.formatUrl('GE', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
 		});
 	},
 
 	clientSearchByEmail: function (field) {
-		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
-			fq: 'email:' + field
+		return $.getJSON(CRM.formatUrl('CL', 'search'), {
+			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
+			email: field
 		}).then(function (res) {
-			return res && res.Documents[0];
+			return res && res[0];
 		});
 	},
 
 	clientSearchByID: function (field) {
-		return $.getJSON(CRM.clientURI, {
-			f: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
-			fq: 'userId:' + field
+		return $.getJSON(CRM.formatUrl('CL', 'search'), {
+			_fields: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,approved,xDisapproved',
+			userId: field
 		}).then(function (res) {
-			return res && res.Documents[0];
+			return res && res[0];
 		});
 	},
 
@@ -63,57 +71,54 @@ var CRM = {
 
 		type = type ? type : 'document';
 
-		return $.getJSON(CRM.clientURI, {
-			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
-			fq: type + ':' + document
+		return $.getJSON(CRM.formatUrl('CL', 'search'), {
+			_fields: 'approvedid,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration',
+			_where: type + '=' + document
 		}).then(function (res) {
-			return res && res.Documents;
+			return res;
 		});
 	},
 
 	getCotasByCPF: function(field) {
-		return $.getJSON(CRM.clientURI, {
-			f: 'xSkuSalesChannel5',
-			fq: 'document:' + field
+		return $.getJSON(CRM.formatUrl('CL', 'search'), {
+			_fields: 'xSkuSalesChannel5',
+			document: field
 		}).then(function(res) {
-			return res && res.Documents;
+			return res;
 		});
 	},
 
 	clientSearchByCorporateDocument: function (document) {
 
-		return $.getJSON(CRM.clientURI, {
-			f: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument,xValidationPJ',
-			fq: 'corporateDocument:' + document
+		return $.getJSON(CRM.formatUrl('CL', 'search'), {
+			_fields: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument',
+			corporateDocument: document
 		}).then(function (res) {
-			return res && res.Documents[0];
+			return res && res[0];
 		});
 	},
 
 	insertCancelGae: function (data) {
-		return $.ajax({
-			url: CRM.cancelGaeURI,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+		return CRM.ajax({
+			url: CRM.formatUrl('CG', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
 		});
 	},
 
 	insertTermsGae: function (data) {
-		return $.ajax({
-			url: CRM.TermsGaeURI,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+		return CRM.ajax({
+			url: CRM.formatUrl('TG', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
 		});
 	},
 
 	insertLocation: function(data) {
-		return $.ajax({
-			url: CRM.addressURI,
-			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+		return CRM.ajax({
+			url: CRM.formatUrl('AD', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
 		});
 	}
 };

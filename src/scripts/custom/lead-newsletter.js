@@ -1,6 +1,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
+var CRM = require('modules/store/crm');
 
 require('vendors/jquery.inputmask');
 
@@ -30,7 +31,6 @@ Nitro.module('lead-newsletter', function() {
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false,
 		// hasSession = sessionStorage.getItem('leadNewsletter'),
-		clientURI = '/api/ds/pub/documents/CL',
 		$newsletterFixed = $('.toggle-newsletter');
 
 	this.setup = function(/*orderForm*/) {
@@ -45,20 +45,6 @@ Nitro.module('lead-newsletter', function() {
 
 			return false;
 		});
-
-		// if (!hasSession && !orderForm.clientProfileData.email) {
-		// 	$formNewsletter.submit(function(e) {
-		// 		e.preventDefault();
-
-		// 		$formNewsletter.find('input').on('blur', function() {
-		// 			self.validateInputs();
-		// 		});
-
-		// 		self.validateForm();
-
-		// 		return false;
-		// 	});
-		// }
 
 		self.toggleNewsletter();
 		self.newsletterFixedOpenAfter(4000);
@@ -112,11 +98,10 @@ Nitro.module('lead-newsletter', function() {
 		data.xUnidadeNegocio = 2;
 		data.xCategoriaLead = 1;
 
-		return $.ajax({
-			url: clientURI,
+		return CRM.ajax({
+			url: CRM.formatUrl('CL', 'documents'),
 			type: 'POST',
-			data: JSON.stringify(data),
-			contentType: 'application/json; charset=utf-8'
+			data: JSON.stringify(data)
 		}).done(function() {
 			$('.lead-newsletter').addClass('success');
 

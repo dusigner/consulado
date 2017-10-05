@@ -134,7 +134,11 @@ gulp.task('scriptsCheckout',  function () {
 				'dustjs-linkedin': 'dust'
 			},
 			resolve: {
-				root: path.resolve('./src/scripts')
+				root: path.resolve('./src/scripts'),
+				alias: {
+					templates: path.resolve('./src/templates'),
+					bootstrap: path.resolve('./node_modules/bootstrap-sass/assets/javascripts/bootstrap')
+				}
 			},
 			module: {
 				loaders: [
@@ -172,12 +176,12 @@ gulp.task('scripts', ['lint', 'scriptsCheckout'], function () {
 
 	return gulp.src(getPath('webpack')
 		.concat('!src/scripts/checkout5-custom.js')
-		.concat('!src/scripts/orderplaced2-custom.js'))
+		.concat('!src/scripts/checkout-confirmation-custom.js'))
 		.pipe($.plumber())
 		.pipe(named())
 		.pipe(webpack({
 			output: {
-				filename: '[name].js'
+				filename: '[name].min.js'
 			},
 			externals: {
 				'jquery': 'jQuery',
@@ -289,7 +293,7 @@ gulp.task('server', ['watch'], function () {
 		startPath: '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue',
 		rewriteRules: [
 			{
-				match: new RegExp('[\"\'](?:https?:\/\/|\/\/)' + ( $.util.env.proxyDomain || pkg.name ) + '.*?(\/.*?)?[\"\']', 'gm'),
+				match: new RegExp('[\"\'](?:https?:\/\/|\/\/)' + ($.util.env.account ? pkg.customAccount[$.util.env.account].name : pkg.name) + '.*?(\/.*?)?[\"\']', 'gm'),
 				replace: '"$1"'
 			}
 		],
@@ -353,5 +357,6 @@ gulp.task('deploy', ['clean', 'gitTag'], function() {
 
 	pkg	= JSON.parse( require('fs').readFileSync('./package.json') ); //fix update pkg from bump
 
-	gulp.start( /* 'fonts',  */'images', 'styles', 'scripts' );
+	//gulp.start( 'fonts', 'images', 'styles', 'scripts' );
+	gulp.start( 'images', 'styles', 'scripts' );
 });

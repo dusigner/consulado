@@ -3,7 +3,6 @@
 'use strict';
 
 $(window).on('load', function() {
-
 	require('modules/helpers');
 
 	if (VERSION) {
@@ -26,11 +25,12 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
+	require('custom/testeab-entregaAgendada');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message'], function(gae, recurrence, cotas, pj) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message'], function(gae, recurrence, cotas, pj, testeabEntregaAgendada) {
 
 		var self = this,
 			$body = $('body');
@@ -110,6 +110,7 @@ $(window).on('load', function() {
 				self.userData = null;
 			}
 
+			testeabEntregaAgendada.setup(orderForm);
 
 		};
 
