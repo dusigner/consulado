@@ -108,10 +108,26 @@ Nitro.setup(['facebook-init'], function () {
 						'cadastroBlackFriday': true
 					};
 
+					var dados = {
+						'nome': nome,
+						'email': email,
+						'categoria': categorias
+					};
+
+					$.ajax({
+						url: 'https://api.jussi.com.br/whp/leads/consul/submit',
+						dataType: 'json',
+						type: 'post',
+						contentType: 'application/json',
+						data: JSON.stringify(dados),
+						processData: false
+					});
+
+
 					CRM.insertClient(data).done(function (){
 
 						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
-						
+
 						$('.lpbf-ofertas-bf').fadeOut('slow');
 						$('.facebook-share').fadeIn('slow');
 
