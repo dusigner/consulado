@@ -16,6 +16,8 @@ var CRM = require('modules/store/crm');
 
 Nitro.setup(['facebook-init'], function () {
 
+	console.log('teste');
+
 	var cupons = null;
 
 	var contador;
@@ -209,6 +211,8 @@ Nitro.setup(['facebook-init'], function () {
 
 		// monta slick da prateleira
 		sliderPrateleira: function() {
+			console.log('slick');
+			$('.helperComplement').remove();
 			$(window).on('load', function() {
 				$('.prateleira-bf .prateleira-slider ul').slick({
 					arrows: true,
