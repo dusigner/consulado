@@ -121,9 +121,9 @@ $loja-color: #9aca3d;
 	// Contador
 	.lpbf-contador {
 		@include breakpoint('small', 'max') {
-			transform: translateY(750%);
+			transform: translateY(915%);
 			@include breakpoint('extra-small', 'max') {
-				transform: translateY(600%);
+				transform: translateY(730%);
 			}
 		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
@@ -216,7 +216,9 @@ $loja-color: #9aca3d;
 
 // Form
 .lpbf-form__container {
-	background-color: #000;
+	@include breakpoint('small', 'max') {
+		background-color: #000;
+	}
 
 	.container {
 		@include breakpoint('small', 'max') {
@@ -225,7 +227,7 @@ $loja-color: #9aca3d;
 		}
 		@include breakpoint('extra-small', 'max') { width: 95%; }
 		@include breakpoint('small', 'min') { padding: 0; }
-		max-width: 980px;
+		max-width: auto;
 	}
 
 	.row { margin: 0; }
@@ -352,15 +354,19 @@ $loja-color: #9aca3d;
 .lpbf-ofertas {
 	background-color: #fff;
 	border-radius: 12px;
-	bottom: 220px;
-	position: absolute;
-	width: 1000px;
+	// bottom: 220px;
+	// position: absolute;
+	margin: -303px auto 0 auto;
+	width: 90%;
 	@include breakpoint('medium', 'max') {
-		height: 550px;
+		height: auto;
 		margin-top: -415px;
 		padding-top: 10px;
 		position: inherit;
 		width: 100%;
+		// @include breakpoint('medium', 'max') {
+		// 	height: 500px;
+		// }
 	}
 }
 
@@ -471,6 +477,7 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-form__title {
+	margin-top: 0;
 	@include breakpoint('small', 'max') {
 		margin: 0;
 		padding: 20px 20px 0 20px;
@@ -489,25 +496,29 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-categorys__item {
-	@include breakpoint('small', 'max') { display: inline-block; }
+		@include breakpoint('medium', 'max') {
+		margin-left: 8px;
+		@include breakpoint('small', 'max') { 
+			display: inline-block; 
+			margin-left: 0;
+		}
+	}
 	@include breakpoint('extra-small', 'max') { margin-left: 0; }
 	cursor: pointer;
 	display: block;
 	margin-left: 20px;
-	// overflow: hidden;
 	padding: 5px 0;
 	position: relative;
 	text-align: center;
 	width: 100%;
 	&:last-child {
 		margin-right: 20px;
-		@include breakpoint('extra-small', 'max') { margin-right: 0; }
+		@include breakpoint('medium', 'max') { margin-right: 0; }
 	}
 
 	input[type='checkbox'] {
 		position: absolute;
 		top: -30px;
-		// visibility: visible;
 	}
 
 	// Active state
@@ -605,9 +616,12 @@ $loja-color: #9aca3d;
 	}
 
 	img {
-		@include breakpoint('small', 'max') {
-			max-height: 75%;
-			max-width: 75%;
+			@include breakpoint('medium', 'max') {
+			margin: 0;
+			@include breakpoint('small', 'max') {
+				max-height: 75%;
+				max-width: 75%;
+			}
 		}
 		display: inline-block;
 		float: left;
@@ -651,8 +665,10 @@ $loja-color: #9aca3d;
 }
 
 .txt-depoimentos {
-	background: url('/arquivos/apostrofo.png') center center no-repeat;
+	background: #000 url('/arquivos/apostrofo.png') center center no-repeat;
+	margin-top: 93px;
 	height: 93px;
+	text-align: center;
 	h2 {
 		@include rfs(40);
 		color: $loja-color;
