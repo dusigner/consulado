@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Black Friday | Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+	<link rel="stylesheet" href="/arquivos/consul-landing-blackfriday-2017_v2.css" />
+</head>
+
+<body data-controller="landing-blackfriday-2017" class="landing-blackfriday-2017">
+	<!--  Header -->
+	<header class="lpbf-header">
+		<a href="#consul" alt="Consul"></a>
+	</header>
+	<!-- /Header -->
+
+	<div id="lpbf">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h1 class="lpbf__title">Black Friday Consul</h1>
+				</div>
+				<div class="col-6">
+					<div class="lpbf__subtitle">
+						<strong>Ofertas e descontos bem pensados</strong> para você aproveitar.
+					</div>
+
+					<!-- Contador -->
+					<section id="contador" class="lpbf-contador text-center">
+						<strong class="lpbf-contador__title text-uppercase">A Black Friday Consul está chegando! Faltam:</strong>
+
+						<div class="countdown">
+							<div class="countdown-days">
+								<span class="counter">00</span>
+								<div class="countdown-text">Dias</div>
+							</div>
+							<div class="counter colon">:</div>
+							<div class="countdown-hours">
+								<span class="counter">00</span>
+								<div class="countdown-text">Horas</div>
+							</div>
+							<div class="counter colon">:</div>
+							<div class="countdown-minutes">
+								<span class="counter">00</span>
+								<div class="countdown-text">Minutos</div>
+							</div>
+							<div class="counter colon">:</div>
+							<div class="countdown-seconds">
+								<span class="counter">00</span>
+								<div class="countdown-text">Segundo</div>
+							</div>
+						</div>
+
+						<div class="lpbf-chegou hide">
+							<strong class="lpbf__text">Começou!</strong>
+
+							<a href="//loja.consul.com.br/" class="lpbf-chegou__cta text-uppercase" title="Confira">Confira</a>
+						</div>
+					</section>
+					<!-- /Contador -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Formulário -->
+	<div class="lpbf-form__container">
+		<div class="container">
+			<div class="row">
+				<!-- Categorias -->
+				<div class="lpbf-ofertas lpbf-ofertas-bf">
+					<h2 class="lpbf-form__title text-center">
+						Escolha os produtos que deseja receber ofertas da <strong>Black Friday</strong>.
+					</h2>
+					<form method="POST" action="#" id="form-bf-2017">
+						<div class="lpbf-categorys">
+							<!-- Cervejeiras -->
+							<label class="lpbf-categorys__item" for="cervejeiras">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Cervejeiras" id="cervejeiras" />
+								<div class="lpbf-categorys__image">
+									<img src="/arquivos/icon-bf-1.png" alt="Cervejeiras" />
+									<span class="lpbf-categorys__text">Cervejeiras</span>
+								</div>
+							</label>
+							<!-- /Cervejeiras -->
+
+							<!-- Geladeiras -->
+							<label class="lpbf-categorys__item" for="geladeiras">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Geladeiras" id="geladeiras" />
+								<div class="lpbf-categorys__image">
+									<img src="/arquivos/icon-bf-2.png" alt="Geladeiras" />
+									<span class="lpbf-categorys__text">Geladeiras</span>
+								</div>
+							</label>
+							<!-- /Geladeiras -->
+
+							<!-- Lavadora -->
+							<label class="lpbf-categorys__item" for="lavadora">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Lavadora" id="lavadora" />
+								<div class="lpbf-categorys__image">
+									<img src="/arquivos/icon-bf-3.png" alt="Lavadora" />
+									<span class="lpbf-categorys__text">Lavadoras</span>
+								</div>
+							</label>
+							<!-- /Lavadora -->
+
+							<!-- Produtos de Embutir -->
+							<label class="lpbf-categorys__item" for="fogoes">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Fogoes" id="fogoes" />
+								<div class="lpbf-categorys__image">
+									<img src="/arquivos/icon-bf-4.png" alt="Fogoes" />
+									<span class="lpbf-categorys__text">Fogões</span>
+								</div>
+							</label>
+							<!-- Produtos de Embutir -->
+
+							<!-- Outros -->
+							<label class="lpbf-categorys__item" for="outros">
+								<input type="checkbox" name="receberOfertasBlackFriday" value="Outros" id="outros" />
+								<div class="lpbf-categorys__image">
+									<img src="/arquivos/icon-bf-5.png" alt="Condicionador de ar" />
+									<span class="lpbf-categorys__text">Outros</span>
+								</div>
+							</label>
+							<!-- Outros -->
+						</div>
+
+						<!-- Form -->
+						<div class="form-blackfriday-2017">
+							<input class="form-blackfriday__input" type="text" id="nome-bf-2017" name="firstName" placeholder="Nome" />
+							<input class="form-blackfriday__input" type="text" id="email-bf-2017" name="email" placeholder="E-mail" />
+							<fieldset class="campo-checkbox">
+						      	<input type="checkbox" id="termos" name="termos" />
+						      	<label for="termos">
+									Li e concordo com os
+									<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank"><span> termos de serviço</span></a>
+								</label>
+						    </fieldset>
+							<button class="form-blackfriday__submit" type="submit" id="submit-bf2017" name="Cadastrar">Cadastrar</button>
+						</div>
+						<!-- /Form -->
+					</form>
+				</div>
+				<!-- /Categorias -->
+
+				<div class="lpbf-ofertas facebook-share">
+					<div class="container">
+						<div class="row">
+							<p class="lpbf-form__title text-left"><strong>Pronto!</strong> Você receberá as ofertas da Black Friday para os produtos escolhidos.</p>
+							<div class="col-6 text-left">
+								<p class="txt-compartilhe">Compartilhe a Black Friday Consul com os seus  amigos e receba um <strong>cupom de R$ 50 de desconto  para usar na Black Friday.</strong><br /><br />
+								Isso sim é bem pensado ;)</p>
+							</div>
+							<div class="col-6 text-center">
+								<div class="lpbf-ofertas__cupom">
+									Restam somente <strong id="quantidade-cupom">000</strong> cupons
+								</div>
+
+								<button type="button" class="action">
+									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-facebook-1" class="at-icon at-icon-facebook"><title id="at-svg-facebook-1">Facebook</title><g><path d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z" fill-rule="evenodd"></path></g></svg>
+									<span>Compartilhar no Facebook</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Compartilhar no Facebook -->
+
+				<!-- cupom -->
+				<div class="lpbf-ofertas lpbf-success text-center">
+					<div class="container">
+						<div class="row">
+							<p>Aproveite seu cupom* na Black Friday e ganhe R$ 50,00 em desconto:</p>
+							<span>Código</span>
+							<div class="cupom-bf">
+								Blackfriday50
+							</div>
+							<span class="txt-cupom">*Utilize no carrinho de compras. Válido para uso na Black Friday de 01/11 à 30/11 em produtos acima de R$ 1.999,00</span>
+						</div>
+					</div>
+				</div>
+				<!-- cupom -->
+			</div>
+		</div>
+		<div class="txt-depoimentos">
+			<h2>De cliente para cliente</h2>
+			<h3>Veja os depoimentos de quem já comprou</h3>
+		</div>
+	</div>
+	<!-- /Formulário -->
+
+	<!-- Depoimentos -->
+	<div class="depoimentos">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="bg-depoimentos col-12">
+						<div class="depoimento-1">
+							<h2>Vanessa</h2>
+							<h3>Duque de Caxias - RJ</h3>
+							<p>Comprei de forma rápida, prática, fiquei muito satisfeita com a atenção e informação do pedido e entrega. No dia anterior e no dia dá entrega fui informada que meu produto já estava a caminho através de mensagem de texto e email.</p>
+						</div>
+						<div class="depoimento-2">
+							<h2>Luiz</h2>
+							<h3>São Paulo - SP</h3>
+							<p>Inteiramente satisfeito com a compra realizada, tanto quanto a facilidade na compra, o prazo para pagamento, a entrega antes do prazo e produto adquirido. Com certeza indicaria para amigos e parentes a compra nesse site.</p>
+						</div>
+						<div class="depoimento-3">
+							<h2>Thiago</h2>
+							<h3>Osasco - SP</h3>
+							<p>O site passa de forma bem clara todas as informações necessárias, o processo de compra é simples, a entrega foi pontual e estava sendo informado o tempo todo sobre a entrega via SMS. Gostei muito de comprar com vocês.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Depoimentos -->
+
+	<!-- Prateleira -->
+	<div class="prateleira-bf">
+		<div class="container">
+			<div class="row">
+				<p class="txt-prateleira text-center">Confira as promoções<br />mais bem pensada</p>
+				<div class="prateleira-slider">
+					<vtex:contentPlaceHolder id="Prateleira Ofertas Landing" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Prateleira -->
+
+	<!-- @if DEBUG='production' -->
+	<!-- Footer -->
+	<!-- <vtex:template id="0-consul-footer" /> -->
+	<!-- /Footer -->
+	<!-- @endif -->
+
+	<script type="text/javascript" src="/arquivos/consul-landing-blackfriday-2017_v2.min.js"></script>
+</body>
+</html>
