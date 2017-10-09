@@ -5,7 +5,10 @@
 var getAddress = {
 
 	byPostalCode: function(postalCode) {
-		return $.getJSON('http://viacep.com.br/ws/' + postalCode + '/json/').then(function(res) {
+		return vtexjs.checkout.getAddressInformation({
+			postalCode: postalCode,
+			country: 'BRA'
+		}).then(function(res){
 			return res;
 		});
 	}

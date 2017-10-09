@@ -343,7 +343,7 @@ body {
 /*******************************************/
 @import 'components/checkout/cart';
 @import 'components/checkout/payment';
-@import 'components/checkout/order-placed';
+@import 'components/checkout/checkout-confirmation';
 @import 'components/checkout/footer';
 @import 'components/checkout/modal-services';
 @import 'components/checkout/modal-phones';
@@ -352,8 +352,7 @@ body {
 
 // GAE
 @import 'components/checkout/modal-warranty';
-@import 'components/checkout/modal-warranty-ab-18';
-@import 'components/checkout/modal-warranty-ab-novo';
+@import 'components/checkout/modal-warranty-mobile';
 
 @import 'custom/testeab-entregaAgendada';
 
