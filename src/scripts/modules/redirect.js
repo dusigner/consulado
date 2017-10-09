@@ -4,9 +4,9 @@
 
 Nitro.module('redirect', function() {
 
-    var path = window.location.pathname;
+	var path = window.location.pathname;
 
-    if( path === '/atendimento' ) {
-        $(location).attr('href', '//consul.custhelp.com/');
-    }
+	if( path === '/atendimento' ) {
+		$(location).attr('href', '//consul.custhelp.com/');
+	}
 });
