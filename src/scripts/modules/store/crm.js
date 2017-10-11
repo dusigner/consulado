@@ -51,7 +51,7 @@ var CRM = {
 
 	clientSearchByEmail: function (field) {
 		return $.getJSON(CRM.formatUrl('CL', 'search'), {
-			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
+			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
 			email: field
 		}).then(function (res) {
 			return res && res[0];
@@ -60,7 +60,7 @@ var CRM = {
 
 	clientSearchByID: function (field) {
 		return $.getJSON(CRM.formatUrl('CL', 'search'), {
-			_fields: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
+			_fields: 'id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
 			userId: field
 		}).then(function (res) {
 			return res && res[0];

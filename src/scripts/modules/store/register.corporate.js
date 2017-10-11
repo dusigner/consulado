@@ -249,7 +249,8 @@ Nitro.module('register.corporate', function() {
 			corporateDocument: self.getDocument(data.corporateDocument),
 			isCorporate: true,
 			homePhone: data.phone,
-			businessPhone: data.phone
+			businessPhone: data.phone,
+			xValidationPJ: 'pendente'
 		});
 
 

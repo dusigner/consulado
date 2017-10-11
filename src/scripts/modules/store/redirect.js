@@ -86,7 +86,7 @@ module.exports.login = function (data) {
 	});
 
 	//Atualiza cotas de eletrodomesticos por CPF antes de redirecionar
-	if (data.xStatusPJ !== 'reprovado') {
+	if (data.xValidationPJ !== 'reprovado') {
 		var documento = store.isCorp ? data.corporateDocument : data.document;
 		var tipoDocumento = store.isCorp ? 'corporateDocument' : 'document';
 
