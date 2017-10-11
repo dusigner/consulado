@@ -3,7 +3,6 @@
 'use strict';
 
 $(window).on('load', function() {
-
 	require('modules/helpers');
 
 	if (VERSION) {

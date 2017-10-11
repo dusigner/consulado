@@ -6,6 +6,16 @@ body[class*='consul'] {
 			header { .come-back { display: block; } }
 		}
 
+		#checkout-confirmation-top,
+		#checkout-confirmation-bottom {
+			margin: 0 auto;
+			max-width: 1110px;
+			padding: 0 15px;
+			padding-bottom: 30px;
+			width: 95%;
+		}
+
+		#app-top,
 		#app-container {
 			background: #ffffff;
 			box-shadow: none;
