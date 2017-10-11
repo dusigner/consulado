@@ -34,21 +34,19 @@ var redirect = module.exports.redirect = function (data) {
 	 * abre o modal de cadastro com sucesso
 	 * Caso não seja registro, abre o modal de Login
 	 */
-	if(data.status === 'Register') { 
-		var idModal = 'cadastro-sucesso';
-		$('<p id="' + idModal + '">Seu cadastro foi enviado para análise. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
-			id: idModal,
-			title: 'Quase lá!',
-			destroy: true
-		});
-		/**
-		 * Quando fechar o modal reseta os dados do userData para não tentar logar automáticamente
-		 * atualiza a página
-		 */
-		$('#' + idModal).on('elementCloseVtexModal', function() {
+	if(data.status === 'Register') {
+
+		CRM.clientSearchByEmail(data.email).done(function(user) {
+
 			store.logout();
-			location.reload();
+			store.setUserData(user, true);
+
+			vtexid.start({
+				email: user.email,
+				returnUrl: uri.toString()
+			});
 		});
+
 	} else { // status = Login
 		vtexjs.checkout.getOrderForm().done(function(res) {
 			if (res.loggedIn) {
@@ -63,7 +61,7 @@ var redirect = module.exports.redirect = function (data) {
 				});
 			}
 		});
-		
+
 	}
 
 	//trigger click de email e senha login
@@ -74,11 +72,11 @@ var redirect = module.exports.redirect = function (data) {
 };
 
 module.exports.login = function (data) {
-	
+
 	dataLayer.push(
 		{ event : 'emailCadastrado' }
 	);
-	
+
 	if (!window.store) {
 		window.store = this;
 	}
@@ -88,7 +86,7 @@ module.exports.login = function (data) {
 	});
 
 	//Atualiza cotas de eletrodomesticos por CPF antes de redirecionar
-	if (data.approved) {
+	if (data.xValidationPJ !== 'reprovado') {
 		var documento = store.isCorp ? data.corporateDocument : data.document;
 		var tipoDocumento = store.isCorp ? 'corporateDocument' : 'document';
 
@@ -112,21 +110,19 @@ module.exports.login = function (data) {
 			redirect(data);
 		}
 
-	} else if(data.xDisapproved) {
+	} else {
 		$('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').vtexModal({
 			id: 'nao-aprovado',
 			title: 'Algo deu errado =/',
 			destroy: true
 		});
-	} else {
+	} /* else {
 		$('<p>Ainda estamos validando o seu cadastro. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
 			id: 'nao-aprovado',
 			title: 'Quase lá!',
 			destroy: true
 		});
-	}
-
-
+	} */
 
 };
 
