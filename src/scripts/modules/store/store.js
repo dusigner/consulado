@@ -114,11 +114,12 @@ define('store', function() {
 
 		var approved = false;
 
-		if(this.userData.xValidationPJ && this.userData.xValidationPJ !== 'reprovado') {
+		if(this.userData && this.userData.xValidationPJ !== 'reprovado') {
 			approved = true;
 		}
 
 		return !(!approved && this.isPrivateUrl);
+		//return true;
 	};
 
 	this.init();
