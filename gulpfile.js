@@ -84,7 +84,7 @@ gulp.task('lint', function () {
 gulp.task('fonts', function () {
 	return gulp.src(getPath('fonts'))
 		.pipe($.rename(function(file){
-			file.extname += '.css'
+			file.extname += '.css';
 		}))
 		.pipe(gulp.dest(paths.dest));
 });

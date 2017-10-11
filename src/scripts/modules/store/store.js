@@ -39,7 +39,7 @@ define('store', function() {
 
 		this.isPersonal = (/consul/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host)) && !(/consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host));
 
-		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
+		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || /consulqa2/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
 		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || account;
 
@@ -112,7 +112,13 @@ define('store', function() {
 			this.userData.partner = 1021540;
 		}*/
 
-		return !(!this.userData.approved && this.isPrivateUrl);
+		var approved = false;
+
+		if(this.userData.xValidationPJ && this.userData.xValidationPJ !== 'reprovado') {
+			approved = true;
+		}
+
+		return !(!approved && this.isPrivateUrl);
 	};
 
 	this.init();

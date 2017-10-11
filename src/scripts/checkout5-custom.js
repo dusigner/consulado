@@ -78,6 +78,10 @@ $(window).on('load', function() {
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
 
+				if(store.isCorp) {
+					pj.pendingCompany();
+				}
+
 			}
 
 			if (self.isCart()) {
@@ -251,6 +255,7 @@ $(window).on('load', function() {
 			$('.payment-card-number input, .payment-card-cvv input').addClass('inspectletIgnore');
 
 			recurrence.hidePayments();
+
 		};
 
 		this.clickFakeButton = function(e) {
