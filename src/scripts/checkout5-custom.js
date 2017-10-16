@@ -319,13 +319,13 @@ $(window).on('load', function() {
 				$fieldBuyButton = $('.cart-template.full-cart');
 
 			// adiciona fake button no Desktop
-			if ($fakeButton.length === 0 && $(window).width() >= 480) {
+			if ($fakeButton.length === 0 && $(window).width() >= 768) {
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-			} else if ($fakeButton.length === 0 && $(window).width() <= 480 && ($body).hasClass('ab-test__mobile--show-b')) {
+			} else if ($fakeButton.length === 0 && $(window).width() <= 768 && ($body).hasClass('ab-test__mobile--show-b')) {
 				// monta a barra fixa no mobile dentro do carrinho (teste AB)
 				$fieldBuyButton.append('<div class="field-button"></div>');
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.field-button');
