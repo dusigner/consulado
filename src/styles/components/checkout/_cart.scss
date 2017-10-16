@@ -688,7 +688,7 @@ body {
 }
 
 // barra fixa no mobile dentro do carrinho (teste AB)
-@include breakpoint(extra-small, 'max') {
+@include breakpoint(small, 'max') {
 	body[class*='ab-test__mobile--show-b'] {
 		.cart-template {
 			.cart-links-bottom {
