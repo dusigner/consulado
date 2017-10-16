@@ -11,11 +11,9 @@ setTimeout(function() {
 
 	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
 		$body2.addClass('hideOptionsA');
-		console.log('Teste AB = A');
 	}
 	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
 		$body2.addClass('hideOptionsB');
-		console.log('Teste AB = B');
 	}
 }, 400);
 

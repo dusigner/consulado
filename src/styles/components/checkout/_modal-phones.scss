@@ -17,8 +17,8 @@
 	form { margin: 0; }
 
 	.close {
-		color: #ffffff;
 		border-color: #fff;
+		color: #ffffff;
 		padding-bottom: 3px;
 	}
 
@@ -66,13 +66,13 @@
 		padding: 22px;
 	}
 
-	.default-message { 
+	.default-message {
 		@include responsiveFont(16, 16, true);
-		color: #767676; 
+		color: #767676;
 	}
 
-	.contact-modal { 
-		width: 100%; 
+	.contact-modal {
+		width: 100%;
 		&>div {
 			margin-right: 20px;
 		}
@@ -86,7 +86,7 @@
 	}
 
 	.btn-confirmation {
-		float: right; 
+		float: right;
 		margin-right: 5%;
 		@include breakpoint(small, 'max') { float: left; }
 	}
