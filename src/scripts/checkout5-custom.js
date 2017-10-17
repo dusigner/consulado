@@ -106,10 +106,10 @@ $(window).on('load', function() {
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
 
-				if(store.isCorp) {
-					pj.pendingCompany();
-				}
+			}
 
+			if(store.isCorp) {
+				pj.pendingCompany();
 			}
 
 			if (self.isCart()) {

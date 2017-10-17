@@ -184,13 +184,13 @@ Nitro.module('register.corporate', function() {
 
 		var dataUser = {};
 
-		dataUser.businessPhone           = data.businessPhone;
-		dataUser.corporateDocument       = data.corporateDocument;
+		dataUser.businessPhone           = data.phone;
+		dataUser.corporateDocument       = self.getDocument(data.corporateDocument);
 		dataUser.corporateName           = data.corporateName;
 		dataUser.email                   = data.email;
 		dataUser.firstName               = data.firstName;
-		dataUser.homePhone               = data.homePhone;
-		dataUser.isCorporate             = data.isCorporate;
+		dataUser.homePhone               = data.phone;
+		dataUser.isCorporate             = true;
 		dataUser.isFreeStateRegistration = data.isFreeStateRegistration;
 		dataUser.lastName                = data.lastName;
 		dataUser.phone                   = data.phone;
@@ -198,6 +198,9 @@ Nitro.module('register.corporate', function() {
 		dataUser.tradeName               = data.tradeName;
 		dataUser.xAdditionalPhone        = data.xAdditionalPhone;
 		dataUser.xBusinessType           = data.xBusinessType;
+		dataUser.xContribuinteICMS       = data.xContribuinteICMS;
+		dataUser.xRegimeApuracaoPIS      = data.xRegimeApuracaoPIS;
+		dataUser.xValidationPJ           = 'pendente';
 
 		return dataUser;
 	};
@@ -244,15 +247,6 @@ Nitro.module('register.corporate', function() {
 		if (data.phone) {
 			data.phone = '+55' + data.phone;
 		}
-
-		$.extend(data, {
-			corporateDocument: self.getDocument(data.corporateDocument),
-			isCorporate: true,
-			homePhone: data.phone,
-			businessPhone: data.phone,
-			xValidationPJ: 'pendente'
-		});
-
 
 		CRM.insertClient(self.prepareUserData(data))
 			.then(self.prepareLocationData.bind(self, data))
