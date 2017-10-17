@@ -61,6 +61,16 @@ Nitro.module('chaordic', function() {
 	this.init = function(name) {
 		API.APIPARAMS.name = name;
 
+		if(!API.APIPARAMS.deviceId) {
+			var checkDeviceId = setInterval(function() {
+				if(window.getCookie('chaordic_browserId')) {
+					API.APIPARAMS.deviceId = window.getCookie('chaordic_browserId');
+					$window.scroll();
+					clearInterval(checkDeviceId);
+				}
+			}, 50);
+		}
+
 		if( $('[data-chaordic]').not('.chaordic--runned').length > 0 ) {
 			$window.scroll(self.scrollHandler).scroll();
 
