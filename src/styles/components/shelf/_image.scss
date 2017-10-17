@@ -1,0 +1,44 @@
+@charset 'UTF-8';
+
+&__image {
+	position: relative;
+
+	img {
+		height: auto;
+		width: 100%;
+	}
+
+	&:empty {
+		@include breakpoint(small, 'max') {	height: 20vh }
+		@include breakpoint(medium, 'min') { margin-top: 20px }
+		height: 320px;
+		width: 100%;
+	}
+
+	&--hover {
+		left: 0;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		transition: opacity 400ms, visibility 400ms;
+		visibility: hidden;
+		z-index: 1;
+	}
+
+	&:not(.shelf-item--empty):before {
+		@include singleTransition(150);
+		background: transparent url('/arquivos/selo-badge-brastemp.png') left bottom no-repeat;
+		background-size: contain;
+		bottom: 0;
+		content: ' ';
+		display: block;
+		height: 30%;
+		opacity: 0;
+		position: absolute;
+		right: 0;
+		width: 30%;
+		z-index: 3;
+
+		@include breakpoint(extra-small, 'max') { display: none }
+	}
+}

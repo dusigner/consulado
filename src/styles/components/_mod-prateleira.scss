@@ -1,4 +1,4 @@
-@charset 'UTF-8';	
+@charset 'UTF-8';
 
 @if $use-com-prateleira == true {
 	.prateleira-slider {
@@ -29,8 +29,8 @@
 					outline: none!important;
 					width: 100/3*1%;
 
-					@include breakpoint(small, 'max') { 
-						width: 100%; 
+					@include breakpoint(small, 'max') {
+						width: 100%;
 					}
 
 					article {
@@ -111,7 +111,7 @@
 								width: 40%;
 								z-index: 3;
 
-								@include breakpoint(small, 'max') {	
+								@include breakpoint(small, 'max') {
 									display: none;
 								}
 							}
@@ -129,9 +129,9 @@
 								@include breakpoint(small, 'max')       { min-height: 284px; }
 								@include breakpoint(extra-small, 'max') { min-height: 235px; }
 
-								&.main { 
+								&.main {
 									width: 100%;
-									z-index: 1; 
+									z-index: 1;
 								}
 
 								&.backup {
@@ -328,7 +328,7 @@
 					display: block;
 					font-weight: normal;
 				}
-				
+
 			}
 		}
 	}
@@ -728,3 +728,5 @@
 		}
 	}
 }
+
+@import 'components/chaordic-shelf';

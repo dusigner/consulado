@@ -5,11 +5,16 @@ require('vendors/slick');
 require('modules/slider-banner');
 require('custom/modal.overlayLead');
 require('custom/lead-newsletter');
+require('modules/chaordic');
 //require('custom/modal.blackfriday');
 
-Nitro.controller('home', ['slider-banner', 'modal.overlayLead', 'lead-newsletter'], function() {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'modal.overlayLead', 'lead-newsletter'], function(chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
+
+	//INICIA CHAMADA DAS VITRINES CHAORDIC
+	chaordic.init('home');
+
 	this.setupSlider = function($currentSlider) {
 		$currentSlider.not('.slick-initialized').slick({
 			infinite: true,

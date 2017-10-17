@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+&__info {
+	background: transparent!important
+}
+
+&__name {
+	@include breakpoint(small, 'max') {
+		@include responsiveFont(12, 16, true);
+		font-weight: bold;
+		line-height: 14px;
+	}
+	display: inline-block;
+	margin-top: 1em;
+	min-height: 45px;
+
+	&:empty {
+		display: block;
+		height: 32px;
+		width: 100%;
+	}
+}
+
+&__sku {
+	display: inline-block;
+
+	&:empty {
+		@include breakpoint(small, 'max') {	display: none }
+		display: block;
+		height: 16px;
+		margin: 0 auto;
+		width: 25%;
+	}
+}
