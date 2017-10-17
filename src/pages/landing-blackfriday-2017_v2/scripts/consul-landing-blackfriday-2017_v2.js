@@ -164,7 +164,11 @@ Nitro.setup(['facebook-init'], function () {
 
 					CRM.insertClient(data).done(function (){
 
-						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
+						// Disparo dos dados para o GTM
+						dataLayer.push({
+							'event' : 'CNS-BF-FormSuccess',
+							'email' : email
+						});
 
 						$('.lpbf-ofertas-bf').fadeOut('slow');
 						$('.facebook-share').fadeIn('slow');
@@ -250,7 +254,7 @@ Nitro.setup(['facebook-init'], function () {
 					FB.ui({
 						method: 'feed',
 						caption: 'Consul',
-						link: 'http://loja.consul.com.br'
+						link: 'http://loja.consul.com.br/landing/blackfriday'
 					}, function(response){
 						if (response && !response.error_code) {
 							$('.facebook-share').fadeOut('slow');
