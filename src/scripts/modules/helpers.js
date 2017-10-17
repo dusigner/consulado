@@ -174,6 +174,16 @@ if (!Array.prototype.find) {
   };
 }
 
+if (!window.getCookie) {
+	window.getCookie = function(name) {
+		var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
+
+		if (match) {
+			return match[1];
+		}
+	};
+}
+
 //jQuery extensions
 (function($) {
 
