@@ -36,16 +36,16 @@ $(window).on('load', function() {
 			$body = $('body');
 
 			// Teste AB
-			var urlTesteAb = window.location.search;
-			var testeA = 'testeab=a';
-			var testeB = 'testeab=b';
+			// var urlTesteAb = window.location.search;
+			// var testeA = 'testeab=a';
+			// var testeB = 'testeab=b';
 
-			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-				$body.addClass('ab-test__mobile--show-a');
-			}
-			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-				$body.addClass('ab-test__mobile--show-b');
-			}
+			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+			// 	$body.addClass('ab-test__mobile--show-a');
+			// }
+			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+			// 	$body.addClass('ab-test__mobile--show-b');
+			// }
 
 		this.userData = null;
 
@@ -314,6 +314,8 @@ $(window).on('load', function() {
 		};
 
 		this.fakeButton = function() {
+
+			$body.addClass('ab-test__mobile--show-b');
 
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
