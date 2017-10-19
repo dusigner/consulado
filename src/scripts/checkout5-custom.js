@@ -35,6 +35,18 @@ $(window).on('load', function() {
 		var self = this,
 			$body = $('body');
 
+			// Teste AB
+			var urlTesteAb = window.location.search;
+			var testeA = 'testeab=a';
+			var testeB = 'testeab=b';
+
+			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+				$body.addClass('ab-test__mobile--show-a');
+			}
+			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+				$body.addClass('ab-test__mobile--show-b');
+			}
+
 		this.userData = null;
 
 		this.init = function() {
@@ -91,7 +103,6 @@ $(window).on('load', function() {
 			if (self.isShipping()) {
 				pj.hideChangeAddress();
 			}
-			// self.rioOlimpiadas();
 
 			// Verifica se está "logado"
 			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
@@ -304,31 +315,33 @@ $(window).on('load', function() {
 
 		this.fakeButton = function() {
 
-			var $fakeButton = $('.fake-buttom');
+			var $fakeButton = $('.fake-buttom'),
+				$fieldBuyButton = $('.cart-template.full-cart');
 
-			if ($fakeButton.length === 0) {
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Fechar pedido</a>').appendTo('.cart-links');
+			// adiciona fake button no Desktop
+			if ($fakeButton.length === 0 && $(window).width() >= 768) {
+				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
+			} else if ($fakeButton.length === 0 && $(window).width() <= 768 && ($body).hasClass('ab-test__mobile--show-b')) {
+				// monta a barra fixa no mobile dentro do carrinho (teste AB)
+				$fieldBuyButton.append('<div class="field-button"></div>');
+				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.field-button');
+				$('.accordion-group .table tfoot').clone().appendTo('.field-button');
+
+				$fakeButton.on('click', self.clickFakeButton);
+
+				$('.btn-place-order').addClass('hide');
+			} else {
+				// se nao tiver class de teste e for Mobile
+				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
+
+				$fakeButton.on('click', self.clickFakeButton);	
 			}
 		};
-
-		// this.rioOlimpiadas = function() {
-		//     // console.log(self.orderForm);
-		//     if (self.orderForm && self.orderForm.shippingData.address) {
-		//         var $cep = self.orderForm.shippingData.address.postalCode;
-		//         $cep = $.currencyToInt($cep);
-		//         if ($cep >= 20000001 && $cep <= 23799999) {
-		//             window.vtex.checkout.MessageUtils.showMessage({
-		//                 text: 'Importante: Os prazos de entrega para a cidade do Rio de Janeiro podem sofrer atrasos durante as Olimpíadas, uma vez que muitas vias estão interditadas.',
-		//                 status: 'info'
-		//             });
-		//         }
-		//     }
-		// };
-
+		
 		this.init();
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
