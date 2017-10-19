@@ -89,7 +89,7 @@ Nitro.module('sku-select', function() {
 			if ($('.modal-avise').length === 0) {
 				$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
 				$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
-				// $('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
+				$('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
 			}
 
 			if ($('.back-window').length === 0) {

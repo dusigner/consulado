@@ -3,11 +3,16 @@
 'use strict';
 
 Nitro.module('facebook-init', function() {
+	var fbAppId = '1720337217990103'; // [ PROD ]
+
+	if ( window.location.host.indexOf('vtexcommercestable') >= 0 ) {
+		fbAppId = '176573039585667'; // [ QA ]
+	}
 
 	//Iniciando SDK Facebook
 	window.fbAsyncInit = function () {
 		FB.init({
-			appId: store.isQA ? '176573039585667' : '1720337217990103',
+			appId: fbAppId,
 			xfbml: true,
 			version: 'v2.10'
 		});

@@ -80,6 +80,10 @@ $(window).on('load', function() {
 
 			}
 
+			if(store.isCorp) {
+				pj.pendingCompany();
+			}
+
 			if (self.isCart()) {
 				self.cart();
 			}
@@ -251,6 +255,7 @@ $(window).on('load', function() {
 			$('.payment-card-number input, .payment-card-cvv input').addClass('inspectletIgnore');
 
 			recurrence.hidePayments();
+
 		};
 
 		this.clickFakeButton = function(e) {
