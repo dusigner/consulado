@@ -688,6 +688,7 @@ body {
 }
 
 // barra fixa no mobile dentro do carrinho (teste AB)
+.field-button { display: none; }
 @include breakpoint(small, 'max') {
 	body[class*='ab-test__mobile--show-b'] {
 		.cart-template {
@@ -706,6 +707,7 @@ body {
 		.field-button {
 			background-color: #592b6d;
 		    bottom: 0;
+		    display: block;
 		    padding: 10px;
 			position: fixed;
 		    right: 0;

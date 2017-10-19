@@ -315,33 +315,32 @@ $(window).on('load', function() {
 
 		this.fakeButton = function() {
 
-			$body.addClass('ab-test__mobile--show-b');
+			// $body.addClass('ab-test__mobile--show-b');
 
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
 
-			// adiciona fake button no Desktop
-			if ($fakeButton.length === 0 && $(window).width() >= 768) {
+			// adiciona fake button no Desktop			
+			if ($fakeButton.length === 0) {
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-			} else if ($fakeButton.length === 0 && $(window).width() <= 768 && ($body).hasClass('ab-test__mobile--show-b')) {
+			} 
+
+			if ($fakeButton.length !== 0 && $(window).width() <= 768) {
+				var $fakeButtonClone = $fakeButton.clone(true);
 				// monta a barra fixa no mobile dentro do carrinho (teste AB)
 				$fieldBuyButton.append('<div class="field-button"></div>');
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.field-button');
+				$fakeButtonClone.appendTo('.field-button');
 				$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$fakeButton.on('click', self.clickFakeButton);
+				$fakeButtonClone.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-			} else {
-				// se nao tiver class de teste e for Mobile
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
-
-				$fakeButton.on('click', self.clickFakeButton);	
 			}
+
 		};
 		
 		this.init();
