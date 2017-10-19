@@ -71,19 +71,14 @@ Nitro.module('chaordic', function() {
 			}, 50);
 		}
 
-		if( $('[data-chaordic]').not('.chaordic--runned').length > 0 ) {
+		if( $('[data-chaordic]').length > 0 ) {
 			$window.scroll(self.scrollHandler).scroll();
 
 			//ACORDION TITLE
-			if ($window.width() <= 768) {
+			if ($window.width() <= 1024) {
 				$(document).on('click', '.js-pre-title', function(e) {
 					e.preventDefault();
-
-					$(this)
-						.toggleClass('shelf-pre-title--active')
-						.next()
-						.stop().stop().slideToggle();
-
+					$(this).toggleClass('shelf-pre-title--active');
 					$window.scroll();
 				});
 			}
@@ -123,28 +118,30 @@ Nitro.module('chaordic', function() {
 						return self.render(renderData, $self);
 					})
 					.then(function($chaordicShelf) {
-						//Produtos já foram renderisados
-						//Slick
-						$chaordicShelf.not('.slick-initialized').slick({
-							infinite: false,
-							slidesToShow: 3,
-							slidesToScroll: 3,
-							responsive: [{
-								breakpoint: 990,
-								settings: {
-									dots: true,
-									slidesToShow: 2,
-									slidesToScroll: 2
-								}
-							}, {
-								breakpoint: 480,
-								settings: {
-									dots: true,
-									slidesToShow: 2,
-									slidesToScroll: 2
-								}
-							}]
-						});
+						//Produtos já foram renderizados
+						//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
+						setTimeout(function() {
+							$chaordicShelf.slick({
+								infinite: false,
+								slidesToShow: 3,
+								slidesToScroll: 3,
+								responsive: [{
+									breakpoint: 990,
+									settings: {
+										dots: true,
+										slidesToShow: 2,
+										slidesToScroll: 2
+									}
+								}, {
+									breakpoint: 480,
+									settings: {
+										dots: true,
+										slidesToShow: 2,
+										slidesToScroll: 2
+									}
+								}]
+							});
+						}, 1);
 
 						//Rodar modulo de prateleira para montar %OFF e etc
 						Nitro.module('prateleira');
