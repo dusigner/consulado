@@ -36,16 +36,16 @@ $(window).on('load', function() {
 			$body = $('body');
 
 			// Teste AB
-			var urlTesteAb = window.location.search;
-			var testeA = 'testeab=a';
-			var testeB = 'testeab=b';
+			// var urlTesteAb = window.location.search;
+			// var testeA = 'testeab=a';
+			// var testeB = 'testeab=b';
 
-			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-				$body.addClass('ab-test__mobile--show-a');
-			}
-			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-				$body.addClass('ab-test__mobile--show-b');
-			}
+			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+			// 	$body.addClass('ab-test__mobile--show-a');
+			// }
+			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+			// 	$body.addClass('ab-test__mobile--show-b');
+			// }
 
 		this.userData = null;
 
@@ -315,31 +315,32 @@ $(window).on('load', function() {
 
 		this.fakeButton = function() {
 
+		// $body.addClass('ab-test__mobile--show-b');
+
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
 
-			// adiciona fake button no Desktop
-			if ($fakeButton.length === 0 && $(window).width() >= 768) {
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
+		// adiciona fake button no Desktop      
+		if ($fakeButton.length === 0 && !$('body').hasClass('ab-test__mobile--show-b') && $(window).width() >= 768) {
+			$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
-				$fakeButton.on('click', self.clickFakeButton);
+			$fakeButton.on('click', self.clickFakeButton);
 
-				$('.btn-place-order').addClass('hide');
-			} else if ($fakeButton.length === 0 && $(window).width() <= 768 && ($body).hasClass('ab-test__mobile--show-b')) {
-				// monta a barra fixa no mobile dentro do carrinho (teste AB)
-				$fieldBuyButton.append('<div class="field-button"></div>');
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.field-button');
-				$('.accordion-group .table tfoot').clone().appendTo('.field-button');
+			$('.btn-place-order').addClass('hide');
+		// monta a barra fixa no mobile dentro do carrinho (teste AB)
+		} else if ($fakeButton.length === 0 && $(window).width() <= 768 && $('body').hasClass('ab-test__mobile--show-b')) {
+			$fieldBuyButton.append('<div class="field-button"></div>');
+			$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.field-button');
+			$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$fakeButton.on('click', self.clickFakeButton);
+			$fakeButton.on('click', self.clickFakeButton);
 
-				$('.btn-place-order').addClass('hide');
-			} else {
-				// se nao tiver class de teste e for Mobile
-				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
+			return true;
+		} else if ($fakeButton.length === 0) {
+			$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
+			$fakeButton.on('click', self.clickFakeButton);
+		}
 
-				$fakeButton.on('click', self.clickFakeButton);	
-			}
 		};
 		
 		this.init();
