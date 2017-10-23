@@ -19,6 +19,7 @@ Nitro.module('specifications', function() {
 		$arquivos = $caracteristicas.find('h4.Arquivos + table tr'),
 		accordionBtnProduct = $('.content-toggle .title'),
 		accordionBoxProduct = accordionBtnProduct.parent(),
+		$body = $('body'),
 
 		specs = {
 			'Mais Informações': 'info',
@@ -116,7 +117,16 @@ Nitro.module('specifications', function() {
 	});
 
 	// ACCORDION SPECIFICATION PRODUCTS
+	var btnSpecs = false;
+	var buttonTemplate = '<button id="mais-especs" class="secondary-button show-extra-small text-uppercase">Ver mais especificações</button>';
+
 	accordionBtnProduct.on('click', function(e) {
+		if ( $body.hasClass('ab-test__mobile--show-b') && btnSpecs === false ) {
+			$($holder).append( buttonTemplate );
+
+			btnSpecs = true;
+		}
+
 		if ($(window).width() > 767) {
 			return true;
 		}
@@ -131,6 +141,22 @@ Nitro.module('specifications', function() {
 		} else {
 			self.parent().addClass('open');
 			self.next().stop(true, true).slideDown();
+		}
+	});
+
+	$holder.on('click', '#mais-especs', function(e){
+		e.preventDefault();
+		var $self = $(this);
+
+		$holder.toggleClass('open--full');
+
+		$self.toggleClass('is--active');
+
+		if ( $self.hasClass('is--active') ) {
+			$self.text('Fechar especificações');
+		}
+		else {
+			$self.text('Ver mais especificações');
 		}
 	});
 
