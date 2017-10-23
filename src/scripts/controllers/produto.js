@@ -17,7 +17,21 @@ require('modules/product/notify-me');
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
-	var self = this;
+	var self = this,
+		$body = $('body');
+
+	// Teste AB
+	var urlTesteAb = window.location.search;
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		$body.addClass('ab-test__mobile--show-b');
+	}
+	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		$body.addClass('ab-test__mobile--show-b');
+	}
+
 
 	window.alert = function(e) {
 		console.error(e);
