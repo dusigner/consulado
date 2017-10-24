@@ -357,6 +357,8 @@ $(window).on('load', function() {
 
 					$fakeButtonClone.on('click', self.clickFakeButton);
 				}
+			} else {
+				$('.field-button .monetary').text($('.accordion-group .table tfoot .monetary').first().text());
 			}
 
 			// oculta a barra fixa quando o carrinho estiver vazio
