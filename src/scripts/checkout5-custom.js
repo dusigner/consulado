@@ -330,9 +330,9 @@ $(window).on('load', function() {
 
 			}
 
+			// monta a barra fixa no mobile dentro do carrinho (teste AB)
 			if ($fakeButton.length !== 0 && $(window).width() <= 768 && $('.field-button').length === 0) {
 				var $fakeButtonClone = $fakeButton.clone(true);
-				// monta a barra fixa no mobile dentro do carrinho (teste AB)
 				$fieldBuyButton.append('<div class="field-button"></div>');
 
 				if ($('.field-button .fake-buttom').length === 0) {
@@ -341,6 +341,11 @@ $(window).on('load', function() {
 
 					$fakeButtonClone.on('click', self.clickFakeButton);
 				}
+			}
+
+			// oculta a barra fixa quando o carrinho estiver vazio
+			if ($('.new-product-price').length === 0) {
+				$('.field-button').hide();
 			}
 		};
 		
