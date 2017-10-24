@@ -327,20 +327,21 @@ $(window).on('load', function() {
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
+
 			}
 
-			if ($fakeButton.length !== 0 && $(window).width() <= 768) {
+			if ($fakeButton.length !== 0 && $(window).width() <= 768 && $('.field-button').length === 0) {
 				var $fakeButtonClone = $fakeButton.clone(true);
 				// monta a barra fixa no mobile dentro do carrinho (teste AB)
 				$fieldBuyButton.append('<div class="field-button"></div>');
-				$fakeButtonClone.appendTo('.field-button');
-				$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$fakeButtonClone.on('click', self.clickFakeButton);
+				if ($('.field-button .fake-buttom').length === 0) {
+					$fakeButtonClone.appendTo('.field-button');
+					$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$('.btn-place-order').addClass('hide');
+					$fakeButtonClone.on('click', self.clickFakeButton);
+				}
 			}
-
 		};
 		
 		this.init();
