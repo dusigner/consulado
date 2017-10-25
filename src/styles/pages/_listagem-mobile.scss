@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 @include breakpoint('small', 'max') {
-	body.listagem.ab-test__mobile--show-b {
+	body.listagem {
 
 		// breadcrumb
 		.breadcrumb {
@@ -13,14 +13,14 @@
 		// // Resultados filtro
 		.sidebar-filter-submenu {
 			border: none;
-			display: block;	
+			display: block;
 			padding: 10px 0 0 0;
 			ul { margin: 0 0 20px 0; }
 			li:not(.erase-filter) { background-color: #e6e6e6; }
 			li {
 				@include responsiveFont(12, 16, true);
 				border: none;
-				text-transform: uppercase; 
+				text-transform: uppercase;
 				padding: 7px 5px 7px 5px;
 			}
 		}
@@ -113,7 +113,15 @@
 				}
 
 				p.de { height: 14px; }
+
+				// Flags
+				.por .off {
+					bottom: 107px;
+					text-align: center;
+				}
 			}
+
+			.detalhes .image .flag { bottom: 76px; }
 
 			.price,
 			.de,
@@ -124,7 +132,9 @@
 			}
 
 			// .txtDe,
-			.por,
+			// .por,
+			.txtPor,
+			.por .val,
 			.juros,
 			.creditosMgmTotal,
 			.inserir-lista,
