@@ -21,12 +21,34 @@ $border: #828282;
 }
 
 div.account {
-    overflow: hidden;
     min-height: 55px;
+
+    @include breakpoint(small, 'min') {
+        width: 15%;
+
+        .view-cotas {
+            right: -11px;
+        }
+
+        .welcome a[href="/no-cache/user/logout"] {
+            bottom: -2px;
+        }
+
+        .ajax-content-loader {
+            overflow: hidden;
+
+            .welcome {
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                margin: 0;
+                height: 33px;
+            }
+        }
+    }
 }
 
 div.account .welcome {
-    white-space: nowrap;
 }
 
 .logo {
@@ -174,9 +196,17 @@ div.account #login {
     color: #2d2d2d;
 }
 
+// ######################################################################################################################################################
+
 @include breakpoint (small, 'max') {
     .menu-mobile {
         background-color: #121212;
+    }
+    
+    .header .menu-mobile div.account.logged-user .welcome-message .welcome {        
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 5px;
     }
 
     header {
