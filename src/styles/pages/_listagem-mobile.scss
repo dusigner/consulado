@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 @include breakpoint('small', 'max') {
-	body.listagem.ab-test__mobile--show-b {
+	body.listagem {
 
 		// breadcrumb
 		.breadcrumb {
@@ -113,7 +113,15 @@
 				}
 
 				p.de { height: 14px; }
+
+				// Flags
+				.por .off {
+					bottom: 107px;
+					text-align: center;
+				}
 			}
+
+			.detalhes .image .flag { bottom: 76px; }
 
 			.price,
 			.de,
@@ -124,7 +132,9 @@
 			}
 
 			// .txtDe,
-			.por,
+			// .por,
+			.txtPor,
+			.por .val,
 			.juros,
 			.creditosMgmTotal,
 			.inserir-lista,
