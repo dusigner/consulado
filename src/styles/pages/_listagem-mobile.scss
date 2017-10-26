@@ -3,6 +3,12 @@
 @include breakpoint('small', 'max') {
 	body.listagem {
 
+		&.busca .result-filter {
+			max-width: 97%;
+			padding: 0;
+			width: 97%;
+		}
+
 		// breadcrumb
 		.breadcrumb {
 			padding: 1em 0;
