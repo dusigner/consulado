@@ -2,7 +2,7 @@
 @import 'helpers/mixins';
 
 $bg-bf: #2d2d2d;
-$bg-black: black;
+$bg-black: #000000;
 $bg-input: #1f1f1f;
 $color-text: #b0b0b0;
 $white-text: #ffffff;
@@ -10,14 +10,16 @@ $green-text: #9aca3c;
 $border: #828282;
 
 @mixin bg-gradient () {
-    background: rgba(21,21,21,1);
-    background: -moz-linear-gradient(left, rgba(21,21,21,1) 0%, rgba(45,45,45,1) 30%, rgba(45,45,45,1) 70%, rgba(21,21,21,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(21,21,21,1)), color-stop(30%, rgba(45,45,45,1)), color-stop(70%, rgba(45,45,45,1)), color-stop(100%, rgba(21,21,21,1)));
-    background: -webkit-linear-gradient(left, rgba(21,21,21,1) 0%, rgba(45,45,45,1) 30%, rgba(45,45,45,1) 70%, rgba(21,21,21,1) 100%);
-    background: -o-linear-gradient(left, rgba(21,21,21,1) 0%, rgba(45,45,45,1) 30%, rgba(45,45,45,1) 70%, rgba(21,21,21,1) 100%);
-    background: -ms-linear-gradient(left, rgba(21,21,21,1) 0%, rgba(45,45,45,1) 30%, rgba(45,45,45,1) 70%, rgba(21,21,21,1) 100%);
-    background: linear-gradient(to right, rgba(21,21,21,1) 0%, rgba(45,45,45,1) 30%, rgba(45,45,45,1) 70%, rgba(21,21,21,1) 100%);
+    // sass-lint:disable-all
+    background: rgba(21, 21, 21, 1);
+    background: -moz-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(21, 21, 21, 1)), color-stop(30%, rgba(45, 45, 45, 1)), color-stop(70%, rgba(45, 45, 45, 1)), color-stop(100%, rgba(21, 21, 21, 1)));
+    background: -webkit-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -o-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: linear-gradient(to right, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#151515', endColorstr='#151515', GradientType=1 );
+    // sass-lint:enable-all
 }
 
 div.account {
@@ -30,7 +32,7 @@ div.account {
             right: -11px;
         }
 
-        .welcome a[href="/no-cache/user/logout"] {
+        .welcome a[href='/no-cache/user/logout'] {
             bottom: -2px;
         }
 
@@ -38,17 +40,14 @@ div.account {
             overflow: hidden;
 
             .welcome {
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                margin: 0;
                 height: 33px;
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
     }
-}
-
-div.account .welcome {
 }
 
 .logo {
@@ -57,15 +56,15 @@ div.account .welcome {
     .icon-logo-consul {
 
         &::after {
+            background-image: url('/arquivos/logo-consul-bf.png');
             content: '';
-            position: absolute;
-            top: -27px;
-            left: 9px;
+            display: block;
             font-family: soleto;
             height: 72px;
+            left: 9px;
+            position: absolute;
+            top: -27px;
             width: 97px;
-            display: block;
-            background-image: url('/arquivos/logo-consul-bf.png');
         }
 
             font-size: 24px;
@@ -73,11 +72,11 @@ div.account .welcome {
 }
 
 .pre-header {
-    background-color: black;
+    background-color: #000000;
 
-    a.active{
-        color: $green-text;
+    a.active {
         border-bottom-color: $green-text;
+        color: $green-text;
     }
 
     a[title*='Televendas'] {
@@ -105,9 +104,9 @@ nav {
             border: 1px solid $border;
 
             .menu-category {
-                top: 55px;
-                border-color: $border;
                 background-color: $bg-bf;
+                border-color: $border;
+                top: 55px;
 
                 &::before {
                     background-color: $bg-bf;
@@ -130,13 +129,28 @@ nav {
 }
 
 .lead-newsletter {
-    margin-top: 0;
+    @include bg-gradient();
+    margin-top: 0;    
+    
+        .form-newsletter {
+            input {
+                background-color: $bg-input;
+                border-color: $border;
+            }
+    
+            .campo-checkbox {
+                color: #ffffff;
+                a {
+                    color: #ffffff;
+                }
+            }
+        }
 }
 
 .form-search {
     .text-search {
-        border-color: $border;
         background-color: $bg-input;
+        border-color: $border;
     }
 }
 
@@ -152,30 +166,12 @@ div.account #login {
     background-color: transparent;
 }
 
-.lead-newsletter {
-    @include bg-gradient();
-
-    .form-newsletter {
-        input {
-            background-color: $bg-input;
-            border-color: $border;
-        }
-
-        .campo-checkbox {
-            color: white;
-            a {
-                color: white;
-            }
-        }
-    }
-}
-
 .footer-duvidas {
     @include bg-gradient();
 }
 
 .footer-gray {
-    background-color: black;
+    background-color: #000000;
 }
 
 // MOBILE
@@ -205,8 +201,8 @@ div.account #login {
     
     .header .menu-mobile div.account.logged-user .welcome-message .welcome {        
     overflow: hidden;
-    text-overflow: ellipsis;
     padding-right: 5px;
+    text-overflow: ellipsis;
     }
 
     header {
@@ -226,24 +222,24 @@ div.account #login {
     }
 
     .header .cont-search {
-        border-color: #121212;
         border: solid 13px #121212;
+        border-color: #121212;
         border-top: solid 6px #121212;
         height: 45px;
         top: 45px;
     }
 
     .logo .icon-logo-consul::after {
-        background-image: url("/arquivos/logo-consul-mobile-bf.png");
-        width: 70px;
-        height: 42px;
-        top: 0px;
-        left: -15px;
+        background-image: url('/arquivos/logo-consul-mobile-bf.png');
         background-size: 100% 100%;
+        height: 42px;
+        left: -15px;
+        top: 0;
+        width: 70px;
     }
 
     .logo {
-        padding: 20px 5px 0px 90px;
+        padding: 20px 5px 0 90px;
     }
 
     .logo .icon-logo-consul {
@@ -252,8 +248,8 @@ div.account #login {
     }
 
     .form-search .text-search {
-        height: 40px;
         background-color: #202020;
+        height: 40px;
     }
 
     .form-search .icon-brastemp-loupe {
@@ -269,25 +265,26 @@ div.account #login {
     }
 
     .menu-department {
-        .item.item-department, .item.customItemMenu {
-            background: black !important;
+        .item.item-department,
+        .item.customItemMenu {
+            background: #000000 !important;
 
             a {
-                color: white;
+                color: #ffffff;
             }
         }
     }
 
     .menu-mobile .open-menu-mobile {
-        height: 45px;
         background-color: #121212;
+        height: 45px;
     }
 
     .minicart .cart-quantity {
-        top: 0;
-        line-height: 17px;
         font-size: 12px;
         font-weight: 600;
+        line-height: 17px;
+        top: 0;
     }
 
     .menu-mobile.menu-active .open-menu-mobile {
@@ -295,15 +292,15 @@ div.account #login {
     }
 
     .menu-mobile.menu-active .open-menu-mobile .icon-hamburger:before {
-        color: white;
+        color: #ffffff;
     }
 
     .header .menu-mobile div.account .welcome-message .welcome a#login {
-        background: black;
+        background: #000000;
     }
 
-    .header .menu-mobile div.account a[href="/minhaconta/pedidos"] {
-        background: black;
+    .header .menu-mobile div.account a[href='/minhaconta/pedidos'] {
+        background: #000000;
     }
 
     .menu-department {
@@ -311,6 +308,6 @@ div.account #login {
     }
 
     .menu-mobile .txt-gray a {
-        color: white;
+        color: #ffffff;
     }
 }
