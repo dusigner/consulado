@@ -320,29 +320,38 @@ $(window).on('load', function() {
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
 
-			// adiciona fake button no Desktop			
+			// adiciona fake button no Desktop
 			if ($fakeButton.length === 0) {
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-			} 
 
-			if ($fakeButton.length !== 0 && $(window).width() <= 768) {
+			}
+
+			// monta a barra fixa no mobile dentro do carrinho (teste AB)
+			if ($fakeButton.length !== 0 && $(window).width() <= 768 && $('.field-button').length === 0) {
 				var $fakeButtonClone = $fakeButton.clone(true);
-				// monta a barra fixa no mobile dentro do carrinho (teste AB)
 				$fieldBuyButton.append('<div class="field-button"></div>');
-				$fakeButtonClone.appendTo('.field-button');
-				$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$fakeButtonClone.on('click', self.clickFakeButton);
+				if ($('.field-button .fake-buttom').length === 0) {
+					$fakeButtonClone.appendTo('.field-button');
+					$('.accordion-group .table tfoot').clone().appendTo('.field-button');
 
-				$('.btn-place-order').addClass('hide');
+					$fakeButtonClone.on('click', self.clickFakeButton);
+				}
+			} else {
+				$('.field-button .monetary').text($('.accordion-group .table tfoot .monetary').first().text());
+			}
+
+			// oculta a barra fixa quando o carrinho estiver vazio
+			if ($('.new-product-price').length === 0) {
+				$('.field-button').hide();
 			}
 
 		};
-		
+
 		this.init();
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
