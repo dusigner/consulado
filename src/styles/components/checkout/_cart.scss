@@ -735,9 +735,9 @@ body {
 					text-align: left;
 					text-transform: uppercase;
 				}
-				.monetary { 
+				.monetary {
 					@include responsiveFont(16, 16, true);
-					color: #fff; 
+					color: #fff;
 					font-weight: normal;
 					padding: 0;
 				}
@@ -762,4 +762,4 @@ body {
 			}
 		}
 	}
-}	
+}
