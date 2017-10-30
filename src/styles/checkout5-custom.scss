@@ -225,6 +225,7 @@ body {
 	@include breakpoint(small, 'max') {
 		&.body-order-form {
 			.client-pre-email {
+				height: 52% !important;
 				padding: 0 20px;
 
 				#client-pre-email {
