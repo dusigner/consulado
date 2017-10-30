@@ -224,8 +224,14 @@ body {
 
 	@include breakpoint(small, 'max') {
 		&.body-order-form {
+			.email-confirm {
+				.client-profile-data {
+					background: #fff;
+					height: 130%;
+					position: absolute;
+				}
+			}
 			.client-pre-email {
-				height: 52% !important;
 				padding: 0 20px;
 
 				#client-pre-email {
