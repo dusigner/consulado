@@ -1,0 +1,78 @@
+@charset 'UTF-8';
+
+&__price {
+	@include breakpoint(small, 'max') {
+		line-height: 14px;
+		margin-bottom: 0;
+	}
+	@include responsiveFont(12, 16, true);
+	margin: 20px 0;
+
+	.off {
+		@include responsiveFont(17, 16, true);
+		background-color: $self-primary;
+		color: #fff;
+		display: none;
+		font-weight: bold;
+		padding: 3px 5px;
+	}
+
+	&--list {
+		@include breakpoint(small, 'max') {
+			span:not(.val) { display: none }
+		}
+		&:empty {
+			@include breakpoint(small, 'max') {
+				margin: 0;
+				width: 50%;
+			}
+			height: 16px;
+			margin: 0 auto;
+			width: 30%;
+		}
+
+		span {
+			@include breakpoint(medium, 'min') { display: none }
+		}
+
+		.val {
+			display: inline-block;
+			text-decoration: line-through
+		}
+	}
+
+	&--best {
+		&:empty {
+			height: 16px;
+			margin: .5em auto;
+			width: 45%;
+		}
+	}
+
+	&--installment {
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(12, 16, true);
+			.val { @include responsiveFont(14, 16, true) }
+		}
+		@include responsiveFont(17, 16, true);
+		font-weight: bold;
+
+		a { color: $self-primary }
+
+		&:empty {
+			@include breakpoint(small, 'max') {
+				margin: 0;
+				width: 65%;
+			}
+			height: 16px;
+			margin: 0 auto;
+			width: 23%;
+		}
+	}
+
+	&--cash {
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(12, 16, true);
+		}
+	}
+}

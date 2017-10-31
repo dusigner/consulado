@@ -686,3 +686,81 @@ body {
 		}
 	}
 }
+
+.field-button { display: none; }
+// barra fixa no mobile dentro do carrinho (teste AB)
+.btn-place-order-wrapper { display: none; }
+
+@include breakpoint(small, 'max') {
+	body[class*='ab-test__mobile--show-b'] {
+		.btn-place-order-wrapper { display: block; }
+		.cart-template {
+			.cart-links-bottom {
+				min-height: auto;
+				position: initial;
+				.link-choose-more-products {
+					@include responsiveFont(14, 16, true);
+					@include vendor(border-radius, 20px);
+					background-color: $green;
+					border: none;
+					color: #fff;
+				}
+			}
+		}
+		.field-button {
+			background-color: #592b6d;
+		    bottom: 0;
+		    display: block;
+		    padding: 10px;
+			position: fixed;
+		    right: 0;
+		    width: 100%;
+		    z-index: 12;
+			tfoot {
+				background-color: transparent;
+				color: #fff;
+				position: fixed;
+			    bottom: 10px;
+			    left: 0;
+			    padding: 0 0 0 10px;
+			    z-index: 15;
+				tr {
+					border-bottom: none;
+					display: inline-block;
+				}
+				.info {
+					@include responsiveFont(13, 16, true);
+					display: block;
+					font-weight: normal;
+					padding: 0;
+					text-align: left;
+					text-transform: uppercase;
+				}
+				.monetary {
+					@include responsiveFont(16, 16, true);
+					color: #fff;
+					font-weight: normal;
+					padding: 0;
+				}
+			}
+		}
+		.container-main {
+			.btn-success {
+				@include responsiveFont(14, 16, true);
+				@include vendor(border-radius, 20px);
+				background-color: $green;
+				border: none;
+				color: #fff;
+				font-weight: bold;
+				float: right;
+				padding: 10px 40px;
+				text-transform: uppercase;
+			}
+		}
+		.cart-links-bottom {
+			.fake-buttom {
+				display: none!important;
+			}
+		}
+	}
+}

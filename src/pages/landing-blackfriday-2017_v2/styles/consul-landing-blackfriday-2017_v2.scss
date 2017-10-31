@@ -216,9 +216,9 @@ $loja-color: #9aca3d;
 
 // Form
 .lpbf-form__container {
-	@include breakpoint('small', 'max') {
-		background-color: #000;
-	}
+	@include breakpoint('small', 'max') { background-color: #000; }
+	float: left;
+	width: 100%;
 
 	.container {
 		@include breakpoint('small', 'max') {
@@ -449,9 +449,15 @@ $loja-color: #9aca3d;
 .lpbf-success {
 	bottom: 220px;
 	display: none;
+
+	p {
+		margin: 0;
+		padding: 10px 5px;
+	}
+
 	p,
 	span {
-		@include rfs(22);
+		@include rfs(21);
 		color: $loja-color;
 		font-weight: bold;
 	}
@@ -459,9 +465,10 @@ $loja-color: #9aca3d;
 	.txt-cupom {
 		@include rfs(12);
 		color: #736c6b;
-    	display: block;
+		display: block;
 		font-weight: normal;
-		margin-bottom: 6px;
+		line-height: 120%;
+		padding: 10px 0;
 	}
 }
 
@@ -470,7 +477,7 @@ $loja-color: #9aca3d;
 	border: 1px solid $loja-color;
 	border-radius: 6px;
 	color: #736c6b;
-	margin: 10px auto 40px auto;
+	margin: 10px auto 15px auto;
 	padding: 10px;
 	text-transform: uppercase;
 	width: 285px;
@@ -483,7 +490,10 @@ $loja-color: #9aca3d;
 	}
 	@include rfs(22);
 	color: $loja-color;
+	display: inline-block;
 	margin-top: 0;
+	width: 100%;
+	z-index: 10;
 }
 
 // Categorias
@@ -666,8 +676,9 @@ $loja-color: #9aca3d;
 
 .txt-depoimentos {
 	background: #000 url('/arquivos/apostrofo.png') center center no-repeat;
-	height: 93px;
-	margin-top: 93px;
+	height: 100px;
+	margin-top: 46px;
+	padding-top: 30px;
 	text-align: center;
 
 	h2 {

@@ -7,17 +7,13 @@
 	100%  {right: 280px; }
 }
 
-body.ab-test__mobile--show-b {
-	@include breakpoint(extra-small, 'max') {
-		.filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco {
-			display: block !important;
-		}
-	}
-	.filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco label {
-		@include breakpoint(extra-small, 'min') { 
-			display: none !important;
-		}
-		@include breakpoint(extra-small, 'max') { display: block !important;}
+// Exibição de filtro de preço
+.filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco {
+	@include breakpoint('extra-small', 'max') { display: block !important; }
+
+	label {
+		@include breakpoint('extra-small', 'min') { display: none !important; }
+		@include breakpoint('extra-small', 'max') { display: block !important;}
 	}
 }
 
@@ -291,7 +287,9 @@ body.ab-test__mobile--show-b {
 	border-bottom: 1px solid $gray;
 	padding-bottom: 10px;
 	width: 100%;
-	@include breakpoint(medium, 'max') { display: none; }
+
+	// @include breakpoint(medium, 'max') { display: none; }
+
 	ul {
 		margin-top: 10px;
 
@@ -374,8 +372,8 @@ body.departamento {
 				.bt-refinar,
 				.search-single-navigator { display: none !important; }
 
-				.search-multiple-navigator { 
-					display: block !important; 
+				.search-multiple-navigator {
+					display: block !important;
 
 					fieldset {
 						label {
@@ -411,7 +409,7 @@ body.departamento {
 								width: 9px;
 							}
 							&.loading {
-								&:after { display: none; }	
+								&:after { display: none; }
 								&:before {
 									@include responsiveFont(12, 16, true);
 									@include spinner($orange);

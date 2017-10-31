@@ -79,7 +79,7 @@ Nitro.module('checkout.cotas', function() {
 		if (totalEletrodomesticos > self.limit) {
 
 			window.vtex.checkout.MessageUtils.showMessage({
-				text: store.isCorp ? 'Atenção - Para compras acima de 10 produtos, favor ligue para nosso Televendas ou mande e-mail para vendas_corporativaspj@whirlpool.com. Temos uma condição especial para você ' : 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
+				text: store.isCorp ? 'Atenção - Para compras acima de 10 produtos, favor ligue para nosso Televendas ou mande e-mail para vendas_corporativaspj@whirlpool.com. Temos uma condição especial para você ;)' : 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
 				status: 'info'
 			});
 

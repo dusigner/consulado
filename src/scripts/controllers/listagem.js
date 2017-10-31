@@ -12,12 +12,16 @@ require('modules/compare');
 require('modules/slider-banner');
 require('modules/resultado-busca');
 require('custom/modal.overlayAbandono');
+require('modules/chaordic');
 //require('custom/promo.lightbox');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function() {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
 	var $body = $('body');
+
+	//INICIA CHAMADA DAS VITRINES CHAORDIC
+	chaordic.init('category');
 
 	// Limpar localstorage na página de busca
 	if( $body.hasClass('busca') ) {

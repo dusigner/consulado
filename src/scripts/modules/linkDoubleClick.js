@@ -2,7 +2,7 @@
 var Uri = require('vendors/Uri');
 
 Nitro.module('linkDoubleClick', function () {
-
+ 
 	var self = this,
 		linkDoubleClick;
 
