@@ -281,7 +281,7 @@ $(window).on('load', function() {
 			console.info('profile');
 
 			if (self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.document) {
-				$('#client-document').attr('disabled', 'disabled');
+				//$('#client-document').attr('disabled', 'disabled');
 			}
 
 			if (store && store.isCorp) {
