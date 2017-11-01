@@ -42,6 +42,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
 	require('custom/testeab-entregaAgendada');
+	require('vendors/jquery.inputmask');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
@@ -97,11 +98,30 @@ $(window).on('load', function() {
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
+				// Teste AB
+				var urlTesteAb = window.location.search;
+				var testeA = 'testeab=a';
+				var testeB = 'testeab=b';
+
+				if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+					$body.addClass('abMask');
+				}
+				else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+					$body.addClass('abMask');
+				}
+			
 			if($(window).width() < 767) {
 				$('.client-profile-data').parent(0).addClass('email-confirm');
 				$('#btn-client-pre-email').on('click', function() {
 					$('.client-profile-data').parent(0).removeClass('email-confirm');
 				});
+				if($('body').hasClass('abMask')) { //inserir essa classe para *(teste AB)* 
+					//insere a mascara de inpu somente em mobile no metodo de pagamento campos de cpf e phone 
+					$('input#client-document').inputmask('999.999.999-99');
+					$('input#client-phone').inputmask('(99) 9999[9]-9999');
+					$('input#summary-postal-code').inputmask('99999-999');
+					$('input#creditCardpayment-card-0Number').inputmask('9999-9999-9999-9999');
+				}
 			}
 			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
 
