@@ -123,6 +123,11 @@ $(window).on('load', function() {
 					$('input#creditCardpayment-card-0Number').inputmask('9999-9999-9999-9999');
 				}
 			}
+			//desabilita o click no btn editar no box de pagamento - pemitindo email não seja apagado no box profile
+			$('#payment-data .link-box-edit').click(function(e){
+				e.preventDefault();
+				return false;
+			});
 			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
 
 			if (self.isOrderForm()) {
