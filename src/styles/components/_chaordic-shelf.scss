@@ -1,6 +1,6 @@
 @charset 'UTF-8';
 
-$self-primary: $green!default;
+$self-primary: $orange!default;
 $self-secondary: $txt-gray-l!default;
 $self-third: $gray-l!default;
 
@@ -165,6 +165,8 @@ div[data-chaordic] {
 		@include breakpoint(medium, 'min') {
 			.slick-arrow.slick-prev { left: 0 }
 			.slick-arrow.slick-next { right: 0 }
+
+			&>h2 { display: none }
 		}
 
 		&__holder {
@@ -183,6 +185,7 @@ div[data-chaordic] {
 				}
 
 				&.shelf-sub-title {
+					display: block;
 					position: relative;
 					text-align: center;
 
@@ -210,6 +213,8 @@ div[data-chaordic] {
 				width: 100%;
 
 				ul li:not([id^='slick-']) {	border: none!important }
+
+				&>h2 { display: none; }
 			}
 			width: 100/3*1%;
 
