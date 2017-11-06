@@ -8,7 +8,14 @@ require('vendors/jquery.debounce');
 require('modules/helpers');
 require('modules/prateleira');
 
-require('../../templates/chaordic.html');
+//Templates dust usados
+require('../../templates/chaordic/chaordic.html');
+require('../../templates/chaordic/chaordic-default.html');
+require('../../templates/chaordic/chaordic-personalized.html');
+require('../../templates/chaordic/chaordic-product.html');
+require('../../templates/chaordic/shelf-content-placeholder-default.html');
+require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder.html');
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
@@ -72,7 +79,10 @@ Nitro.module('chaordic', function() {
 		}
 
 		if( $('[data-chaordic]').length > 0 ) {
-			$window.scroll(self.scrollHandler).scroll();
+			$window.scroll($.throttle(function() {
+				self.scrollHandler();
+				self.loadProducts();
+			}, 2000)).scroll();
 
 			//ACORDION TITLE
 			if ($window.width() <= 1024) {
@@ -90,8 +100,8 @@ Nitro.module('chaordic', function() {
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
 	 */
-	this.scrollHandler = $.throttle(function() {
-		var $shelfs = $('[data-chaordic]').not('.chaordic--runned');
+	this.scrollHandler = function() {
+		var $shelfs = $('[data-chaordic]').not('.chaordic--run');
 
 		if($shelfs.length <= 0) {
 			return false;
@@ -109,22 +119,62 @@ Nitro.module('chaordic', function() {
 				self.getShelf(name)
 					.then(function(res) {
 						shelf = res[position];
-						var recomendations = self.prepareRecomendations(res[position]);
 
-						return self.getProducts(recomendations);
-					})
+						$.each(shelf, function(i, v) {
+							v.isPersonalized = v.feature === 'ViewPersonalized';
+						});
+						self.placeHolderRender(shelf, $self);
+						$window.scroll();
+					});
+
+				return;
+			}
+		});
+	};
+
+	/**
+	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
+	 */
+	this.loadProducts = function() {
+		var $shelfs = $('[data-chaordic] .js-content-lazy');
+
+		if($shelfs.length <= 0) {
+			return false;
+		}
+
+		var windowTop = $window.scrollTop(),
+			windowBottom = $window.scrollTop() + $window.height();
+
+		$shelfs.each(function() {
+			var $self = $(this),
+				itemTop = $self.offset().top,
+				itemBottom = $self.offset().top + $self.outerHeight(),
+				position = $self.parents('[data-chaordic]').data('chaordic');
+
+			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
+				var shelf = chaordicData[position][$self.data('index')],
+					recomendations = self.prepareRecomendations(shelf);
+
+				self.getProducts(recomendations)
 					.then(function(products) {
+						if(shelf.isPersonalized) {
+							self.prepareData(shelf, products, 'references');
+						}
+
 						var renderData = self.prepareData(shelf, products);
-						return self.render(renderData, $self);
+						return self.finalRender(renderData, $self);
 					})
 					.then(function($chaordicShelf) {
 						//Produtos já foram renderizados
 						//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
 						setTimeout(function() {
-							$chaordicShelf.slick({
+							var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized'),
+								slidesToShow = $slider.data('slidestoshow') || 3;
+
+							$slider.slick({
 								infinite: false,
-								slidesToShow: 3,
-								slidesToScroll: 3,
+								slidesToShow: slidesToShow,
+								slidesToScroll: slidesToShow,
 								responsive: [{
 									breakpoint: 990,
 									settings: {
@@ -145,8 +195,9 @@ Nitro.module('chaordic', function() {
 
 						//Rodar modulo de prateleira para montar %OFF e etc
 						Nitro.module('prateleira');
-						//Previne rodar novamente
-						$self.addClass('chaordic--runned');
+
+						$chaordicShelf.parents('[data-chaordic]').addClass('chaordic--runned');
+
 						//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
 						$chaordicShelf.find('a').click(function(e) {
 							e.preventDefault();
@@ -159,11 +210,9 @@ Nitro.module('chaordic', function() {
 								});
 						});
 					});
-
-				return false;
 			}
 		});
-	}, 800);
+	};
 
 	/**
 	 * Verifica e retorna se existe alguma chave false em um objeto
@@ -203,16 +252,12 @@ Nitro.module('chaordic', function() {
 
 	/**
 	 * Prepara query strings com os ids de produto para fazer chamada no search da VTEX
-	 * @param  {Object} res retorno da API recomendations
+	 * @param  {Object} res retorno da API recomendations (current shelf)
 	 * @returns {String} query string para endpoint da VTEX
 	 */
 	this.prepareRecomendations = function(res) {
-		return res.reduce(function(prev, curr) {
-			var res = curr.displays[0].recommendations.reduce(function(prev, curr) {
-				return prev + 'fq=productId:' + curr.id + '&';
-			}, '');
-
-			return prev + res;
+		return res.displays[0].recommendations.reduce(function(prev, curr) {
+			return prev + 'fq=productId:' + curr.id + '&';
 		}, '');
 	};
 
@@ -234,35 +279,35 @@ Nitro.module('chaordic', function() {
 	 * @param  {Object} products produtos retornados pelo search da VTEX
 	 * @returns {Object} dados mesclados prontos para o render
 	 */
-	this.prepareData = function(shelfs, products) {
-		$.each(shelfs, function(i, shelf) {
-			$.each(shelf.displays[0].recommendations, function(i, recommendation) {
-				$.each(products, function(i, product) {
-					if(product.productId === recommendation.id) {
-						var item = product.items.filter(function(value) {
-							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
-						});
+	this.prepareData = function(shelf, products, type) {
+		type = type || 'recommendations';
 
-						recommendation.product = product;
-						recommendation.product.available = item.length > 0;
+		$.each(shelf.displays[0][type], function(i, recommendation) {
+			$.each(products, function(i, product) {
+				// if(product.productId === recommendation.id) {
+					var item = product.items.filter(function(value) {
+						return value.sellers[0].commertialOffer.AvailableQuantity > 0;
+					});
 
-						if(item.length === 0) {
-							item = [product.items[0]];
-						}
+					recommendation.product = product;
+					recommendation.product.available = item.length > 0;
 
-						recommendation.product.priceInfo = item[0].sellers[0].commertialOffer;
-						recommendation.product.finalImages = self.prepareImages(item[0].images, '345');
-						recommendation.product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
-						recommendation.product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
-						recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
-						recommendation.product.clusterHighlights = self.prepareclusterHighlights(recommendation.product.clusterHighlights);
-						return false;
+					if(item.length === 0) {
+						item = [product.items[0]];
 					}
-				});
+
+					recommendation.product.priceInfo = item[0].sellers[0].commertialOffer;
+					recommendation.product.finalImages = self.prepareImages(item[0].images, '345');
+					recommendation.product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
+					recommendation.product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
+					recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
+					recommendation.product.clusterHighlights = self.prepareclusterHighlights(recommendation.product.clusterHighlights);
+					return false;
+				// }
 			});
 		});
 
-		return shelfs;
+		return shelf;
 	};
 
 	/**
@@ -362,7 +407,7 @@ Nitro.module('chaordic', function() {
 	 * @param  {Object} $elem seletor jQuery de onde deve ser "cuspido" o resultado renderizado
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
-	this.render = function(renderData, $elem) {
+	this.finalRender = function(renderData, $elem) {
 		var dfd = jQuery.Deferred();
 
 		dust.render('chaordic', renderData, function(err, out) {
@@ -372,9 +417,28 @@ Nitro.module('chaordic', function() {
 			}
 
 			$elem.html(out);
+			$elem.removeClass('js-content-lazy');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
 		});
 
 		return dfd.promise();
+	};
+
+	/**
+	 * Método render do HTML da prateleira e produtos via dust
+	 * @param  {Object} renderData objeto com os dados que devem ser usados para o render (objeto final mesclado pelo método prepareData)
+	 * @param  {Object} $elem seletor jQuery de onde deve ser "cuspido" o resultado renderizado
+	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
+	 */
+	this.placeHolderRender = function(renderData, $elem) {
+
+		dust.render('shelf-content-placeholder', renderData, function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Shelf Dust error: ' + err);
+			}
+
+			$elem.html(out);
+			$elem.addClass('chaordic--run');
+		});
 	};
 });
