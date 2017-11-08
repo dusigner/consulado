@@ -1,0 +1,313 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+$bg-bf: #2d2d2d;
+$bg-black: #000000;
+$bg-input: #1f1f1f;
+$color-text: #b0b0b0;
+$white-text: #ffffff;
+$green-text: #9aca3c;
+$border: #828282;
+
+@mixin bg-gradient () {
+    // sass-lint:disable-all
+    background: rgba(21, 21, 21, 1);
+    background: -moz-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(21, 21, 21, 1)), color-stop(30%, rgba(45, 45, 45, 1)), color-stop(70%, rgba(45, 45, 45, 1)), color-stop(100%, rgba(21, 21, 21, 1)));
+    background: -webkit-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -o-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: linear-gradient(to right, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#151515', endColorstr='#151515', GradientType=1 );
+    // sass-lint:enable-all
+}
+
+div.account {
+    min-height: 55px;
+
+    @include breakpoint(small, 'min') {
+        width: 15%;
+
+        .view-cotas {
+            right: -11px;
+        }
+
+        .welcome a[href='/no-cache/user/logout'] {
+            bottom: -2px;
+        }
+
+        .ajax-content-loader {
+            overflow: hidden;
+
+            .welcome {
+                height: 33px;
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.logo {
+    padding: 2px 0 0 90px;
+
+    .icon-logo-consul {
+
+        &::after {
+            background-image: url('/arquivos/logo-consul-bf.png');
+            content: '';
+            display: block;
+            font-family: soleto;
+            height: 72px;
+            left: 9px;
+            position: absolute;
+            top: -27px;
+            width: 97px;
+        }
+
+            font-size: 24px;
+    }
+}
+
+.pre-header {
+    background-color: #000000;
+
+    a.active {
+        border-bottom-color: $green-text;
+        color: $green-text;
+    }
+
+    a[title*='Televendas'] {
+        color: $green-text;
+    }
+}
+
+header {
+    @include bg-gradient();
+    padding-top: 15px;
+}
+
+nav {
+    &.top-navigation {
+        @include bg-gradient();
+    }
+
+    .menu-department {
+        >.item {
+            >a {
+                color: $white-text;
+            }
+        }
+        .dropdown {
+            border: 1px solid $border;
+
+            .menu-category {
+                background-color: $bg-bf;
+                border-color: $border;
+                top: 55px;
+
+                &::before {
+                    background-color: $bg-bf;
+                    border: 1px solid $border;
+                    height: 57px;
+                    top: -57px;
+                }
+            }
+        }
+        .icon-hamburger {
+            border-bottom: 2px solid $border  !important;
+            border-top: 2px solid $border !important;
+            color: $border !important;
+
+            &::before {
+                background-color: $border !important;
+            }
+        }
+    }
+}
+
+.lead-newsletter {
+    @include bg-gradient();
+    margin-top: 0;    
+    
+        .form-newsletter {
+            input {
+                background-color: $bg-input;
+                border-color: $border;
+            }
+    
+            .campo-checkbox {
+                color: #ffffff;
+                a {
+                    color: #ffffff;
+                }
+            }
+        }
+}
+
+.form-search {
+    .text-search {
+        background-color: $bg-input;
+        border-color: $border;
+    }
+}
+
+.dropdown.topmenu-active a[title='Departamentos'] {
+    color: $color-text;
+}
+
+.dropdown.topmenu-active .icon-hamburger {
+    color: $color-text;
+}
+
+div.account #login {
+    background-color: transparent;
+}
+
+.footer-duvidas {
+    @include bg-gradient();
+}
+
+.footer-gray {
+    background-color: #000000;
+}
+
+// MOBILE
+.menu-mobile {
+    background-color: $bg-black;
+
+    .open-menu-mobile {
+        background-color: $bg-black;
+    }
+}
+
+.minicart .link-cart {
+    background-color: #262626;
+}
+
+.minicart .cart-quantity {
+    background-color: $green-text;
+    color: #2d2d2d;
+}
+
+// ######################################################################################################################################################
+
+@include breakpoint (small, 'max') {
+    .menu-mobile {
+        background-color: #121212;
+    }
+    
+    .header .menu-mobile div.account.logged-user .welcome-message .welcome {        
+    overflow: hidden;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    }
+
+    header {
+        padding-top: 0;
+    }
+
+    .welcome-message {
+        overflow: hidden;
+    }
+
+    header {
+        background-color: #121212;
+    }
+
+    .form-search .text-search {
+        border: solid 1px;
+    }
+
+    .header .cont-search {
+        border: solid 13px #121212;
+        border-color: #121212;
+        border-top: solid 6px #121212;
+        height: 45px;
+        top: 45px;
+    }
+
+    .logo .icon-logo-consul::after {
+        background-image: url('/arquivos/logo-consul-mobile-bf.png');
+        background-size: 100% 100%;
+        height: 42px;
+        left: -15px;
+        top: 0;
+        width: 70px;
+    }
+
+    .logo {
+        padding: 20px 5px 0 90px;
+    }
+
+    .logo .icon-logo-consul {
+        color: $green-text;
+        font-size: 16px;
+    }
+
+    .form-search .text-search {
+        background-color: #202020;
+        height: 40px;
+    }
+
+    .form-search .icon-brastemp-loupe {
+        line-height: 41px;
+    }
+
+    .cont-logo-mobile {
+        height: 45px;
+
+        a {
+            padding: 6px 0 0 44px;
+        }
+    }
+
+    .menu-department {
+        .item.item-department,
+        .item.customItemMenu {
+            background: #000000 !important;
+
+            a {
+                color: #ffffff;
+            }
+        }
+    }
+
+    .menu-mobile .open-menu-mobile {
+        background-color: #121212;
+        height: 45px;
+    }
+
+    .minicart .cart-quantity {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 17px;
+        top: 0;
+    }
+
+    .menu-mobile.menu-active .open-menu-mobile {
+        background-color: #121212;
+    }
+
+    .menu-mobile.menu-active .open-menu-mobile .icon-hamburger:before {
+        color: #ffffff;
+    }
+
+    .header .menu-mobile div.account .welcome-message .welcome a#login {
+        background: #000000;
+    }
+
+    .header .menu-mobile div.account a[href='/minhaconta/pedidos'] {
+        background: #000000;
+    }
+
+    .menu-department {
+        background-color: #2d2d2d !important;
+    }
+
+    .menu-mobile .txt-gray a {
+        color: #ffffff;
+    }
+}
