@@ -25,7 +25,7 @@ var environment = process.env.VTEX_HOST || 'vtexcommercestable',
 		styles: 'src/styles/**/*.scss',
 		fonts: 'src/fonts/**/*.{eot,svg,ttf,woff,woff2}',
 		images: 'src/images/**/*.{png,jpeg,jpg,gif,svg}',
-		templates: 'src/templates/*.html',
+		templates: 'src/templates/**/*.html',
 		dest: 'build/arquivos',
 		destCheckout: 'build/files',
 		pages: 'src/pages/**/*.html'
