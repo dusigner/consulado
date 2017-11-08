@@ -480,6 +480,9 @@ body.test__vitrine--show-b {
 		display: block; 
     	margin-right: 10px;
 		width: 70%;
+		@include breakpoint(small, 'max') {
+			width: 100%;
+		}
 	}
 	.vitrineTesteA { display: none; }
 }
