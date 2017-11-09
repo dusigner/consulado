@@ -72,7 +72,7 @@ var CRM = {
 		type = type ? type : 'document';
 
 		return $.getJSON(CRM.formatUrl('CL', 'search'), {
-			_fields: 'approvedid,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration',
+			_fields: 'approvedid,userId,email,firstName,lastName,document,phone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xStatusPJ',
 			_where: type + '=' + document
 		}).then(function (res) {
 			return res;
@@ -91,7 +91,7 @@ var CRM = {
 	clientSearchByCorporateDocument: function (document) {
 
 		return $.getJSON(CRM.formatUrl('CL', 'search'), {
-			_fields: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument',
+			_fields: 'approved,id,userId,email,firstName,lastName,document,phone,xAdditionalPhone,corporateDocument,xStatusPJ',
 			corporateDocument: document
 		}).then(function (res) {
 			return res && res[0];

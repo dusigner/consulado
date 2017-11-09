@@ -26,8 +26,8 @@
 			li {
 				@include responsiveFont(12, 16, true);
 				border: none;
-				text-transform: uppercase;
 				padding: 7px 5px 7px 5px;
+				text-transform: uppercase;
 			}
 		}
 
