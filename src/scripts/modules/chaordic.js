@@ -286,7 +286,7 @@ Nitro.module('chaordic', function() {
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
-				// if(product.productId === recommendation.id) {
+				if(product.productId === recommendation.id) {
 					var item = product.items.filter(function(value) {
 						return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 					});
@@ -305,7 +305,7 @@ Nitro.module('chaordic', function() {
 					recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 					recommendation.product.clusterHighlights = self.prepareclusterHighlights(recommendation.product.clusterHighlights);
 					return false;
-				// }
+				}
 			});
 		});
 
