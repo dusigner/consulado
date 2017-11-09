@@ -1,0 +1,52 @@
+{?product}
+<li class="inline-b">
+	<article class="box-produto shelf-item text-center" data-idproduto="{product.productId}" data-percent="{product.priceInfo.percentOff}">
+		<div class="shelf-item__image">
+			<a href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">
+				<span class="shelf-item__image--main">{product.finalImages.principal|s}</span>
+				{?product.finalImages.perspectiva}
+					<span class="shelf-item__image--hover">{product.finalImages.perspectiva|s}</span>
+				{/product.finalImages.perspectiva}
+
+				<div class="FlagsHightLight">
+					{#product.clusterHighlights}
+						<p class="flag {.}">{.}</p>
+					{/product.clusterHighlights}
+				</div>
+			</a>
+		</div>
+		<div class="shelf-item__info">
+			<a class="shelf-item__name" href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">{product.productName|chaordicName}</a><br />
+			<a class="shelf-item__sku hide-extra-small" href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">{product.productReference}</a>
+		</div>
+		<div class="shelf-item__price">
+			{?product.available}
+				{@neq key=product.priceInfo.ListPrice value=product.priceInfo.Price}
+					<div class="shelf-item__price--list de">
+						<a href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">
+							{! <span>De: </span> !}<span class="val">{product.priceInfo.ListPrice|chaordicCurrency}</span>
+						</a>
+					</div>
+				{/neq}
+				<div class="shelf-item__price--best por hide-extra-small">
+					<a href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">
+						{! <span>Por: </span> !}<span class="val">{product.priceInfo.Price|chaordicCurrency} </span><span class="off"></span>
+					</a>
+				</div>
+				<div class="shelf-item__price--installment">
+					<a href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">
+						<strong>{product.maxInstallment.NumberOfInstallments}x <span class="val">{product.maxInstallment.Value|chaordicCurrency}</span></strong>
+					</a>
+				</div>
+				<div class="shelf-item__price--cash">
+					<a href="{product.link}" alt="{product.productName}" title="{product.productName}" data-tracking="{trackingUrl}">
+						<span class="discount-boleto"></span>
+					</a>
+				</div>
+			{:else}
+				<p>Produto indisponível</p>
+			{/product.available}
+		</div>
+	</article>
+</li>
+{/product}
