@@ -38,6 +38,8 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'c
 	}
 	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
 		$body.addClass('ab-test__mobile--show-b');
+		// teste vitrine chaordic
+		$body.addClass('test__vitrine--show-b');
 	}
 
 
