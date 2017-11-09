@@ -1,7 +1,7 @@
-<div class="col-6 cont-search search" data-module="search">
+<div class="col-6 cont-search search">
 	<form method="GET" action="https://busca.consul.com.br/busca" class="form-search" >
 		<i class="icon icon-consul-loupe"></i>
-		<input type="text" class="text-search" name="ft" required="required" placeholder="O que você está procurando hoje?" autocomplete="off" maxlength="100" />
+		<input type="text" class="text-search" name="ft" required="required" pattern=".{3,}" title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off" maxlength="100" />
 	</form>
 
 	<div id="autocomplete-search" class="autocomplete-search" data-layout="b2045f81-dd75-4184-b6a2-b8e44940dda7">
