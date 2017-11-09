@@ -6,47 +6,16 @@
 
 <div class="container js-content-lazy" data-position="{position}" data-index="{$idx}">
 	<ul class="shelf shelf--btp js-chaordic-shelf content-placeholder">
-		<li class="inline-b">
-			<article class="shelf-item">
-				<div class="shelf-item__image shelf-item--empty"></div>
-				<div class="shelf-item__info">
-					<div class="shelf-item__name shelf-item--empty"></div>
-					<div class="shelf-item__sku shelf-item--empty"></div>
-				</div>
-				<div class="shelf-item__price">
-					<div class="shelf-item__price--list shelf-item--empty"></div>
-					<div class="helf-item__price--best shelf-item--empty"></div>
-					<div class="shelf-item__price--installment shelf-item--empty"></div>
-				</div>
-			</article>
-		</li>
-		<li class="inline-b">
-			<article class="shelf-item">
-				<div class="shelf-item__image shelf-item--empty"></div>
-				<div class="shelf-item__info">
-					<div class="shelf-item__name shelf-item--empty"></div>
-					<div class="shelf-item__sku shelf-item--empty"></div>
-				</div>
-				<div class="shelf-item__price">
-					<div class="shelf-item__price--list shelf-item--empty"></div>
-					<div class="helf-item__price--best shelf-item--empty"></div>
-					<div class="shelf-item__price--installment shelf-item--empty"></div>
-				</div>
-			</article>
-		</li>
-		<li class="inline-b">
-			<article class="shelf-item">
-				<div class="shelf-item__image shelf-item--empty"></div>
-				<div class="shelf-item__info">
-					<div class="shelf-item__name shelf-item--empty"></div>
-					<div class="shelf-item__sku shelf-item--empty"></div>
-				</div>
-				<div class="shelf-item__price">
-					<div class="shelf-item__price--list shelf-item--empty"></div>
-					<div class="helf-item__price--best shelf-item--empty"></div>
-					<div class="shelf-item__price--installment shelf-item--empty"></div>
-				</div>
-			</article>
-		</li>
+		{#displays[0].recommendations[0]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[0]}
+
+		{#displays[0].recommendations[1]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[1]}
+
+		{#displays[0].recommendations[2]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[2]}
 	</ul>
 </div>

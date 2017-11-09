@@ -13,6 +13,7 @@ require('../../templates/chaordic/chaordic.html');
 require('../../templates/chaordic/chaordic-default.html');
 require('../../templates/chaordic/chaordic-personalized.html');
 require('../../templates/chaordic/chaordic-product.html');
+require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
@@ -55,7 +56,7 @@ Nitro.module('chaordic', function() {
 				name: null,
 				source: (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ? 'mobile' : 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
-				productFormat: 'onlyIds'
+				productFormat: 'compact'
 			}
 		},
 		$window = $(window),
@@ -83,6 +84,18 @@ Nitro.module('chaordic', function() {
 				self.scrollHandler();
 				self.loadProducts();
 			}, 2000)).scroll();
+
+			//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
+			$(document).on('click', '[data-chaordic] a', function(e) {
+				e.preventDefault();
+
+				var $link = $(this);
+
+				$.get($link.data('tracking'))
+					.always(function() {
+						window.location = $link.attr('href');
+					});
+			});
 
 			//ACORDION TITLE
 			if ($window.width() <= 1024) {
@@ -122,6 +135,7 @@ Nitro.module('chaordic', function() {
 
 						$.each(shelf, function(i, v) {
 							v.isPersonalized = v.feature === 'ViewPersonalized';
+
 						});
 						self.placeHolderRender(shelf, $self);
 						$window.scroll();
@@ -197,18 +211,6 @@ Nitro.module('chaordic', function() {
 						Nitro.module('prateleira');
 
 						$chaordicShelf.parents('[data-chaordic]').addClass('chaordic--runned');
-
-						//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
-						$chaordicShelf.find('a').click(function(e) {
-							e.preventDefault();
-
-							var $link = $(this);
-
-							$.get($link.data('tracking'))
-								.always(function() {
-									window.location = $link.attr('href');
-								});
-						});
 					});
 			}
 		});
@@ -297,7 +299,7 @@ Nitro.module('chaordic', function() {
 					}
 
 					recommendation.product.priceInfo = item[0].sellers[0].commertialOffer;
-					recommendation.product.finalImages = self.prepareImages(item[0].images, '345');
+					recommendation.product.finalImages = self.prepareImages(item[0].images, '300');
 					recommendation.product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 					recommendation.product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
 					recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
