@@ -123,12 +123,22 @@ body {
 						}
 
 						.quantity {
+							@include breakpoint(768px, 'min') {
+							   align-content: center;
+							   align-items: center;
+							   display: flex;
+							}
 							input {
 								height: 35px;
 								width: 40px;
 							}
 
-							.item-quantity-change { color: $gray; }
+							.item-quantity-change { 
+								@include breakpoint(768px, 'min') {
+									position: initial;		
+								}
+								color: $gray;
+							 }
 						}
 
 						.quantity-price {
@@ -618,6 +628,9 @@ body {
 		}
 
 		.cart-links-bottom {
+			@include breakpoint(768px, 'min') {
+			   display: flow-root;
+			}
 			@include breakpoint(small, 'max') {
 				margin-bottom: 0;
 				min-height: 160px;
@@ -625,6 +638,9 @@ body {
 			}
 
 			.link-choose-more-products-wrapper {
+				@include breakpoint(768px, 'min') {
+					position: relative;
+				 }
 				@include breakpoint(small, 'max') {
 					bottom: 0;
 					display: block;
@@ -655,6 +671,9 @@ body {
 
 			// Fake button
 			.fake-buttom {
+				@include breakpoint(768px, 'min') {
+					position: relative;
+				 }
 				@include responsiveFont(15, 16, true);
 				font-weight: bold;
 				padding: 14px 50px;

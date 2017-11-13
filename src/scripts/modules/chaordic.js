@@ -167,7 +167,7 @@ Nitro.module('chaordic', function() {
 
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				var shelf = chaordicData[position][$self.data('index')],
-					recomendations = self.prepareRecomendations(shelf);
+					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
 
 				self.getProducts(recomendations)
 					.then(function(products) {
@@ -257,10 +257,18 @@ Nitro.module('chaordic', function() {
 	 * @param  {Object} res retorno da API recomendations (current shelf)
 	 * @returns {String} query string para endpoint da VTEX
 	 */
-	this.prepareRecomendations = function(res) {
-		return res.displays[0].recommendations.reduce(function(prev, curr) {
+	this.prepareRecomendations = function(res, isPersonalized) {
+		var response = res.displays[0].recommendations.reduce(function(prev, curr) {
 			return prev + 'fq=productId:' + curr.id + '&';
 		}, '');
+
+		if(isPersonalized) {
+			response = res.displays[0].references.reduce(function(prev, curr) {
+				return prev + 'fq=productId:' + curr.id + '&';
+			}, response);
+		}
+
+		return response;
 	};
 
 	/**
@@ -286,7 +294,7 @@ Nitro.module('chaordic', function() {
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
-				// if(product.productId === recommendation.id) {
+				if(product.productId === recommendation.id) {
 					var item = product.items.filter(function(value) {
 						return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 					});
@@ -305,7 +313,7 @@ Nitro.module('chaordic', function() {
 					recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 					recommendation.product.clusterHighlights = self.prepareclusterHighlights(recommendation.product.clusterHighlights);
 					return false;
-				// }
+				}
 			});
 		});
 
