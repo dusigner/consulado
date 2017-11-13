@@ -1,0 +1,21 @@
+{?subtitle}
+	<h2 class="pre-title shelf-pre-title js-pre-title">{subtitle|s}</h2>
+{:else}
+	<h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2>
+{/subtitle}
+
+<div class="container js-content-lazy" data-position="{position}" data-index="{$idx}">
+	<ul class="shelf shelf--btp js-chaordic-shelf content-placeholder">
+		{#displays[0].recommendations[0]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[0]}
+
+		{#displays[0].recommendations[1]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[1]}
+
+		{#displays[0].recommendations[2]}
+			{>"shelf-content-placeholder-product"/}
+		{/displays[0].recommendations[2]}
+	</ul>
+</div>

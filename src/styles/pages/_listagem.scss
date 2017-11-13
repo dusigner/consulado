@@ -477,9 +477,12 @@ body.listagem {
 body.test__vitrine--show-b {
 	.mosaico-secundarios-left { display: none; }
 	.vitrineTesteB { 
-		display: block; 
+		display: inline-block; 
     	margin-right: 10px;
 		width: 70%;
+		@include breakpoint(small, 'max') {
+			width: 100%;
+		}
 	}
 	.vitrineTesteA { display: none; }
 }
