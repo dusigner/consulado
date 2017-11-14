@@ -19,7 +19,9 @@ body {
 
 					td {
 						padding: 20px 10px;
-
+						@include breakpoint(768px, 'max') {
+							vertical-align: top;
+						}
 						@include breakpoint(small, 'max') {
 							padding: 10px 0 !important;
 						}
@@ -74,6 +76,12 @@ body {
 							}
 
 							.product-service {
+								@include breakpoint(768px, 'min') {
+									transform: translateX(0);
+									position: relative;
+									left: 0;
+									bottom:0;		
+								}
 								@include breakpoint(small, 'max') {
 									bottom: 30px;
 									left: 52%;
@@ -123,7 +131,7 @@ body {
 						}
 
 						.quantity {
-							@include breakpoint(768px, 'min') {
+							@include breakpoint(768px, 'max') {
 							   align-content: center;
 							   align-items: center;
 							   display: flex;
