@@ -775,3 +775,18 @@ $loja-color: #9aca3d;
 	.prateleira.default .slick-next { right: 12px; }
 	.prateleira.default .slick-prev { left: 12px; }
 }
+
+// Texto Blackfriday
+.txt-bf-infos {
+	@include rfs(16);
+	background-color: #1c1c1c;
+	color: #fff;
+	p { 
+		margin: 0; 
+		padding: 50px 0;
+		@include breakpoint('small', 'max') {
+			text-align: center;
+		}
+	}
+	strong { color: $loja-color }
+}
