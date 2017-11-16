@@ -77,10 +77,10 @@ body {
 
 							.product-service {
 								@include breakpoint(768px, 'min') {
-									transform: translateX(0);
-									position: relative;
+									bottom: 0;
 									left: 0;
-									bottom:0;		
+									position: relative;
+									transform: translateX(0);
 								}
 								@include breakpoint(small, 'max') {
 									bottom: 30px;
@@ -141,9 +141,9 @@ body {
 								width: 40px;
 							}
 
-							.item-quantity-change { 
+							.item-quantity-change {
 								@include breakpoint(768px, 'min') {
-									position: initial;		
+									position: initial;
 								}
 								color: $gray;
 							 }
