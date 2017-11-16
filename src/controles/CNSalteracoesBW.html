@@ -1,0 +1,44 @@
+<style>
+	header .logo {
+		padding: 2px 0 0 90px;
+	}
+
+	header .logo .icon-logo-consul {
+		font-size: 24px;
+	}
+
+	header .logo .icon-logo-consul:before {
+		position: relative;
+		z-index: 1;
+	}
+
+	header .logo .icon-logo-consul::after {
+		background: transparent url("/arquivos/logo-consul-bw.png") 0 0 no-repeat;
+		content: '';
+		display: block;
+		font-family: soleto;
+		height: 72px;
+		left: 15px;
+		position: absolute;
+		top: -27px;
+		width: 97px;
+	}
+
+	@media (max-width: 48em) {
+		header .logo {
+			padding: 6px 0 0 44px;
+		}
+
+		header .logo .icon-logo-consul {
+			font-size: 20px;
+		}
+
+		header .logo .icon-logo-consul::after {
+			background-size: contain;
+			height: 42px;
+			left: 1px;
+			top: -5px;
+			width: 70px;
+		}
+	}
+</style>
