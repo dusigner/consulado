@@ -126,7 +126,7 @@ nav {
             &.topmenu-active {
                 .icon-hamburger {
                     border: none;   
-
+    
                     &::before {
                         background-color: transparent !important;
                     }
@@ -135,13 +135,14 @@ nav {
 
             .icon-hamburger {
                 border-color: #828282;
-                color: $border !important;
     
                 &::before {
                     background-color: $border !important;
                 }
             }
-        }
+        }       
+
+        
     }
 }
 
@@ -295,6 +296,12 @@ div.account #login {
             a[href*='tel:551130037872'] {
                 color: #9aca3c !important;
             }
+        }
+    }
+
+    .item.txt-gray {
+        a[href*='tel:551130037872'] {
+            color: #9aca3c !important;
         }
     }
 
