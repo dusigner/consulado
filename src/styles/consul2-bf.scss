@@ -89,6 +89,7 @@ header {
     padding-top: 15px;
 }
 
+
 nav {
     &.top-navigation {
         @include bg-gradient();
@@ -100,6 +101,11 @@ nav {
                 color: $white-text;
             }
         }
+
+        &.no-border {
+            border-color: transparent;
+        }
+
         .dropdown {
             border: 1px solid $border;
 
@@ -111,18 +117,29 @@ nav {
                 &::before {
                     background-color: $bg-bf;
                     border: 1px solid $border;
+                    border-bottom: none;
                     height: 57px;
                     top: -57px;
                 }
             }
-        }
-        .icon-hamburger {
-            border-bottom: 2px solid $border  !important;
-            border-top: 2px solid $border !important;
-            color: $border !important;
 
-            &::before {
-                background-color: $border !important;
+            &.topmenu-active {
+                .icon-hamburger {
+                    border: none;   
+
+                    &::before {
+                        background-color: transparent !important;
+                    }
+                }
+            }
+
+            .icon-hamburger {
+                color: $border !important;
+                border-color: #828282;
+    
+                &::before {
+                    background-color: $border !important;
+                }
             }
         }
     }
@@ -271,6 +288,12 @@ div.account #login {
 
             a {
                 color: #ffffff;
+            }
+        }
+
+        .item.txt-gray {
+            a[href*='tel:551130037872'] {
+                color: #9aca3c !important;
             }
         }
     }
