@@ -119,7 +119,6 @@ nav {
                     border: 1px solid $border;
                     border-bottom: none;
                     height: 57px;
-                    border-bottom: none;
                     top: -57px;
                 }
             }
@@ -127,31 +126,14 @@ nav {
             &.topmenu-active {
                 .icon-hamburger {
                     border: none;   
-<<<<<<< .merge_file_a08052
-
-=======
     
->>>>>>> .merge_file_a12608
                     &::before {
                         background-color: transparent !important;
                     }
                 }
-<<<<<<< .merge_file_a08052
             }
 
             .icon-hamburger {
-                border-color: #828282;
-                color: $border !important;
-    
-                &::before {
-                    background-color: $border !important;
-                }
-=======
->>>>>>> .merge_file_a12608
-            }
-
-            .icon-hamburger {
-                color: $border !important;
                 border-color: #828282;
     
                 &::before {
