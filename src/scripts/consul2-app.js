@@ -35,9 +35,13 @@ require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/linkDoubleClick');
-require('modules/redirect');
 
 Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect'], function() {
 	$('.helperComplement').remove();
 
+	var path = window.location.pathname;
+
+	if (path === '/atendimento') {
+		$(location).attr('href', '//consul.custhelp.com/');
+	}
 });
