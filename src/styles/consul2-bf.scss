@@ -115,9 +115,9 @@ nav {
 
                 &::before {
                     background-color: $bg-bf;
+                    border-bottom: none;
                     border: 1px solid $border;
                     height: 57px;
-                    border-bottom: none;
                     top: -57px;
                 }
             }
@@ -133,8 +133,8 @@ nav {
             }
 
             .icon-hamburger {
-                color: $border !important;
                 border-color: #828282;
+                color: $border !important;
     
                 &::before {
                     background-color: $border !important;
