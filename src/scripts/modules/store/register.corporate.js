@@ -30,11 +30,8 @@ Nitro.module('register.corporate', function() {
 		$form.submit(this.submit.bind($form));
 
 		$(store)
-			.on('store.user.not-found', this.fillUserEmail)/*
-			.on('store.cep.data', function() {
-				$('.address-info').fadeIn()
-					.find('input, select').removeClass('error').tooltip('destroy');
-			})*/;
+		.on('store.user.not-found', this.fillUserEmail)
+		.on('store.user.revalidation', this.fillUserEmail);
 
 		$modalRegister.on('elementOpenVtexModal', function() {
 			$modalRegister.find('.steps').slick({
@@ -97,19 +94,18 @@ Nitro.module('register.corporate', function() {
 
 
 	this.fillUserEmail = function(e, email) {
-
 		dataLayer.push(
 			{ event : 'emailNãoCadastrado'}
 		);
+
 		$form.fieldEmail.val(email);
+
 		$modalRegister.vtexModal();
 	};
 
 	this.error = function(message, $field) {
 
 		$field = message !== false ? $field : $form.btnSubmit;
-
-		//console.error( message );
 
 		$form.btnSubmit.removeClass('loading');
 
@@ -128,24 +124,22 @@ Nitro.module('register.corporate', function() {
 
 
 	/*
-		busca na tabela de clientes pelo cnpj, caso cnpj não for encontrado
-		avança para o passo seguinte do form
+	busca na tabela de clientes pelo cnpj, caso cnpj não for encontrado
+	avança para o passo seguinte do form
 	*/
-	this.validCompany = function() {
+	this.validCompany = function () {
 
 		return CRM.clientSearchByCorporateDocument(self.getDocument())
-			.done(function(data) {
-				if(data) {
+			.done(function (data) {
+				if (data && !$('#modal-register').hasClass('revalidation')) {
 					dataLayer.push(
-						{ event : 'formularioInvalido'}
+						{ event: 'formularioInvalido' }
 					);
 					self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
 				} else {
 					self.nextStep();
 				}
 			});
-			/* .fail(
-				self.nextStep); */
 
 	};
 
@@ -159,27 +153,7 @@ Nitro.module('register.corporate', function() {
 		$modalRegister.find('.steps').slick('slickGoTo', '1');
 		$modalRegister.find('.buttons a').fadeIn();
 	};
-
-	/*this.validRegister = function() {
-		console.log('validando registro');
-		return CRM.registerSearch($form.fieldRe.val(), self.getDocument())
-			.done(function() { //done
-
-				$form.fieldDocument.add($form.fieldRe).prop('readonly', true);
-
-				$('.step-1').fadeOut('slow', function() {
-					$('.step-2').fadeIn();
-
-					$form.btnSubmit.removeClass('loading');
-				});
-
-				primaryInfoComplete = true;
-
-			})
-			.fail(self.error.bind($form, 'RE não encontrado', $form.fieldRe));
-
-	};
-*/
+	
 	this.prepareUserData = function(data) {
 
 		var dataUser = {};
@@ -251,7 +225,7 @@ Nitro.module('register.corporate', function() {
 		CRM.insertClient(self.prepareUserData(data))
 			.then(self.prepareLocationData.bind(self, data))
 			.then(CRM.insertLocation)
-			.done(redirect.register.bind(self, data))
+			.done($('#modal-register').hasClass('revalidation') ? redirect.revalidation.bind(self, data) : redirect.register.bind(self, data))
 			.done(self.resetForm)
 			.fail(self.error.bind($form, false));
 	};

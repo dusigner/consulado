@@ -135,6 +135,7 @@ nav {
 
             .icon-hamburger {
                 border-color: #828282;
+                color: $border !important;
     
                 &::before {
                     background-color: $border !important;
