@@ -55,5 +55,4 @@ Nitro.module('notify-me', function() {
 		});
 	});
 
-	$('.notifyme.sku-notifyme').hide();
 });

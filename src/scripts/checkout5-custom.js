@@ -2,6 +2,22 @@
 
 'use strict';
 
+// Teste AB
+setTimeout(function() {
+	var $body2 = $('body');
+	var urlTesteAb = window.location.search;
+	var testeA = 'testeab=a';
+	var testeB = 'testeab=b';
+
+	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		$body2.addClass('hideOptionsA');
+	}
+	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		$body2.addClass('hideOptionsB');
+	}
+}, 400);
+
+
 $(window).on('load', function() {
 	require('modules/helpers');
 
@@ -81,7 +97,12 @@ $(window).on('load', function() {
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
-
+			if($(window).width() < 767) {
+				$('.client-profile-data').parent(0).addClass('email-confirm');
+				$('#btn-client-pre-email').on('click', function() {
+					$('.client-profile-data').parent(0).removeClass('email-confirm');
+				});
+			}
 			self.orderForm = gae.orderForm = recurrence.orderForm = cotas.orderForm = orderForm;
 
 			if (self.isOrderForm()) {
@@ -106,6 +127,9 @@ $(window).on('load', function() {
 
 			// Verifica se está "logado"
 			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
+				if($(window).width() < 767) {
+					$('.client-profile-data').parent(0).removeClass('email-confirm');
+				}
 				self.cotasInit();
 
 				/**
@@ -320,7 +344,7 @@ $(window).on('load', function() {
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
 
-			// adiciona fake button no Desktop
+			// adiciona fake button no Desktop			
 			if ($fakeButton.length === 0) {
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 

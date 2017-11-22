@@ -3,7 +3,7 @@
 
 require('modules/cart');
 require('modules/cotas');
-require('modules/search');
+// require('modules/search');
 require('modules/menu-hover');
 require('vendors/jquery.cookie');
 

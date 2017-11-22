@@ -146,7 +146,14 @@
 	}
 
 	&__image {
-		line-height: 0
+		line-height: 0;
+
+		img {
+			height: auto;
+			max-height: 450px;
+			max-width: 450px;
+			width: auto;
+		}
 	}
 
 	&__title {

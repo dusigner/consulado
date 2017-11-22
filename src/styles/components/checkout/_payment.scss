@@ -285,23 +285,24 @@ body {
 			}
 		}
 
+		// [ Boleto ] - Texto informativo
+		.payment-description { line-height: 130%; }
+
 		.box-payment-option {
+			.sight { padding: 5px 0; }
+
 			&.bankInvoicePaymentGroup {
+				line-height: 120%;
+
 				&:after {
 					color: $green;
-					content: 'O prazo de entrega do produto come\00e7 a a contar a partir da confirma\00e7 \00e3 o do pagamento, que pode variar em at\00e9  2 dias \00fa teis.';
+					// content: 'O boleto do pedido será emitido pelo Itaú Shopline. \A O prazo de entrega do produto come\00e7 a a contar a partir da confirma\00e7 \00e3 o do pagamento, que pode variar em at\00e9  2 dias \00fa teis.';
+					content: 'Para emitir o boleto clique em "FINALIZAR COMPRA" \A\A O boleto será emitido pelo Itaú Shopline com o prazo para pagamento de 1 dia útil e pode ser pago em qualquer agência bancária e Internet Banking.\A\A Caso não seja pago durante esse período será automaticamente cancelado.\A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis.';
+					font-size: 13px;
 					font-weight: bold;
+					white-space: pre-wrap;
+					word-wrap: break-word;
 				}
-
-				&:before {
-					bottom: 80px;
-					color: $green;
-					content: 'O boleto do pedido será emitido pelo Mercado Pago.';
-					font-weight: bold;
-					position: absolute;
-				}
-
-				.sight { margin-bottom: 30px; }
 			}
 		}
 	}
