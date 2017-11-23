@@ -66,6 +66,14 @@
 			text-indent: 26px;
 			text-transform: uppercase;
 			z-index: 4;
+			// &:before{
+			// 	content: "";
+			// 	background: #fff;
+			// 	height: 25PX;
+			// 	margin-left: -11px;
+			// 	position: absolute;
+			// 	width: 11px;
+			// }
 
 			@include breakpoint(extra-large, 'max') { font-size: 14px; }
 		}
