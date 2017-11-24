@@ -9,6 +9,7 @@
 
 	.buy-button {
 		@extend .primary-button;
+		@include breakpoint('medium', 'max') { max-width: 200px; }
 		font-size: 1em;
 		margin: 0 auto;
 		max-width: 160px;
@@ -28,45 +29,47 @@
 		.btn-avise {
 			@include responsiveFont(16, 16, true);
 			background-color: #fff;
-		    border: 1px solid $orange;
-		    border-radius: 50px;
-		    color: $orange;
-		    display: block;
-		    margin: 16px 0 0 0;
-		    padding: 15px 18px;
-		    position: relative;
-		    text-align: center;
-		    text-decoration: none;
+			border: 1px solid $orange;
+			border-radius: 50px;
+			color: $orange;
+			display: block;
+			margin: 16px 0 0 0;
+			padding: 15px 18px;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
 		}
 		.buy-button {
-			margin: 0 auto 12px auto;
-			max-width: 258px;
-			padding: 15px 18px;
+			@include breakpoint('medium', 'max') {
+				margin: 0 auto 12px auto;
+				max-width: 258px;
+				padding: 15px 18px;
+			}
 			position: relative;
 		}
 	}
 
 	.modal-avise {
 		background-color: #ffffff;
-	    border-radius: 6px;
-	    display: inline-block;
-	    margin: 0 auto;
-	    max-width: 400px;
-	    padding: 16px;
-	    text-align: left;
-	    vertical-align: middle;
-	    width: 90%;
+		border-radius: 6px;
+		display: inline-block;
+		margin: 0 auto;
+		max-width: 400px;
+		padding: 16px;
+		text-align: left;
+		vertical-align: middle;
+		width: 90%;
 
-	    .notifyme-title { display: none; }
+		.notifyme-title { display: none; }
 
-	    form,
-	    .notifyme-title-div,
-	    .sku-notifyme,
-	    .notifyme-client-name,
-	    .notifyme-client-email,
-	    input
-	     { display: block!important; }
-	     @include breakpoint(extra-small, 'max') {
+		form,
+		.notifyme-title-div,
+		.sku-notifyme,
+		.notifyme-client-name,
+		.notifyme-client-email,
+		input
+		 { display: block!important; }
+		 @include breakpoint(extra-small, 'max') {
 			&[href*='#relacionados'] {
 				display: none!important;
 			}
