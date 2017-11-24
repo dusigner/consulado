@@ -99,6 +99,48 @@ Nitro.module('order.orders', function() {
 			Warranty.init(v);
 		});
 
+		// Abre o modal de Histórico detalhado
+		$('#historico-detalhes').click(function(e) {
+			e.preventDefault();
+
+			var id = '#modal-detalhes';
+	
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+		
+			$('#mask').css({'width':maskWidth,'height':maskHeight});
+			
+			$('#mask').fadeTo('slow', 0.5);	
+			$('#mask').css('display', 'block');
+		
+			var winH = $(window).height();
+			var winW = $(window).width();
+	              
+			$(id).css('top',  winH/2-$(id).height()/2);
+			$(id).css('left', winW/2-$(id).width()/2);
+			$(id).fadeIn();
+
+			$('#modal-detalhes .close').click(function(e) {
+				e.preventDefault();
+				
+				$('#mask').hide();
+				$(id).hide();
+			});	
+
+			$('#mask').click(function(e) {
+				e.preventDefault();
+				
+				$(this).hide();
+				$(id).hide();
+			});		
+		});
+
+		$('#box-all-states .more-itens').click(function(e) {
+			e.preventDefault();
+			$('.content-states__others').show();
+			$(this).hide();
+		});
+
 		self._modals();
 	};
 
