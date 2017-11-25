@@ -1,0 +1,76 @@
+<a href="#" class="historico-detalhes secondary-button orange-button">
+	<span>Histórico detalhado</span>
+</a>
+
+<div class="modal-detalhes">
+	<span class="close"></span>
+	<div class="content-historico">
+		<p>Rastrear pedido <span class="num-pedido">#{orderId|orderNumber}</span></p>
+		{?trackingInfo.trackingNumber}
+			<div>
+				<strong>Número de rastreio: <span class="cod-rastreio">{trackingInfo.trackingNumber}</span></strong>
+			</div>
+		{/trackingInfo.trackingNumber}
+		<div class="box-states">
+			<strong>Status atual do pedido: <span class="state-order">{finalStatus.orderLabel}</span></strong>
+			{?finalStatus.estimate}
+				{^trackingInfo.courierStatus.finished}
+					<strong class="txt-state">Entrega estimada: <span class="state-estimate">{finalStatus.estimate|formatDatetimeBRL}</span></strong>
+				{/trackingInfo.courierStatus.finished}
+			{/finalStatus.estimate}
+		</div>
+		<div class="box-all-states">
+			<div class="status-order">
+				<span>Atualização</span>
+				<span>Status do pedido</span>
+			</div>
+			<div class="content-all-states">
+				<div class="dots-states">
+					<ul>
+						{#trackingInfo.courierStatus.data}
+							<li>
+								<div class="box-date-update">
+									<span class="date-update">{lastChange|formatDateAndHour}</span>
+									<span class="arrow-left"></span>
+									<div class="status-request">
+										{! <strong class="status-request__title">&nbsp;</strong> !}
+										<span class="date-update show-extra-small">{lastChange|formatDateAndHour}</span>
+										<span class="status-request__description">{description}</span>
+									</div>
+								</div>
+						{/trackingInfo.courierStatus.data}
+					</ul>
+					{! <button class="secondary-button purple-button more-itens">
+						<span>Mostrar mais</span>
+					</button> !}
+					{!<div class="content-states__others">
+						<ul>
+							<li>
+								<div class="box-date-update">
+									<span class="date-update">24/10 - 10h50</span>
+									<span class="arrow-left"></span>
+									<div class="status-request">
+										<strong class="status-request__title">Lorem ipsum dolor sit amet</strong>
+										<span class="date-update show-extra-small">24/10 - 10h50</span>
+										<span class="status-request__description">Debitis unde maiores, alias placeat esse modi eligendi</span>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="box-date-update">
+									<span class="date-update">24/10 - 10h50</span>
+									<span class="arrow-left"></span>
+									<div class="status-request">
+										<strong class="status-request__title">Lorem ipsum dolor sit amet</strong>
+										<span class="date-update show-extra-small">24/10 - 10h50</span>
+										<span class="status-request__description">Debitis unde maiores, alias placeat esse modi eligendi</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>!}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

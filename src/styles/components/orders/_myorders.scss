@@ -539,7 +539,7 @@
 	}
 }
 
-#modal-detalhes {	
+#modal-detalhes {
 	@include font-size(22px, true, false);
 	background-color: #fff;
     display: none;
@@ -752,5 +752,6 @@
 	}
 }
 
+@import 'components/orders/order.historico';
 @import 'components/orders/order.warrantySpare';
 @import 'components/orders/order.modal.gae';

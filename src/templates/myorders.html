@@ -33,9 +33,10 @@
 
 		<div class="order__wrapper js-toggle-container">
 			<div class="order__body clearfix">
-				<a href="#modal-detalhes" id="historico-detalhes" class="primary-button btn-rastreio">
-					<span>Rastrear pedido</span>
-				</a> 
+
+				{?hasTrackingInfo}
+					{>"modalHistorico"/}
+				{/hasTrackingInfo}
 
 				<div class="order__bar">
 					{>"orderStates"/}

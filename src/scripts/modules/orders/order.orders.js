@@ -5,6 +5,7 @@ require('modules/orders/order.helpers');
 
 require('templates/myorders.html');
 require('templates/orders/orderStates.html');
+require('../../../templates/orders/modalHistorico.html');
 
 
 var CRM = require('modules/store/orders-crm'),
@@ -38,12 +39,12 @@ Nitro.module('order.orders', function() {
 					return self._prepareData(res);
 				})
 				.then(function(resultados) {
+					self.orders.orders = resultados;
 					var promises = self._trackingData(resultados);
 
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
-							self.orders.orders = resultados;
 							self.orderRender(resultados);
 						});
 				});
@@ -104,35 +105,35 @@ Nitro.module('order.orders', function() {
 			e.preventDefault();
 
 			var id = '#modal-detalhes';
-	
+
 			var maskHeight = $(document).height();
 			var maskWidth = $(window).width();
-		
+
 			$('#mask').css({'width':maskWidth,'height':maskHeight});
-			
-			$('#mask').fadeTo('slow', 0.5);	
+
+			$('#mask').fadeTo('slow', 0.5);
 			$('#mask').css('display', 'block');
-		
+
 			var winH = $(window).height();
 			var winW = $(window).width();
-	              
+
 			$(id).css('top',  winH/2-$(id).height()/2);
 			$(id).css('left', winW/2-$(id).width()/2);
 			$(id).fadeIn();
 
 			$('#modal-detalhes .close').click(function(e) {
 				e.preventDefault();
-				
+
 				$('#mask').hide();
 				$(id).hide();
-			});	
+			});
 
 			$('#mask').click(function(e) {
 				e.preventDefault();
-				
+
 				$(this).hide();
 				$(id).hide();
-			});		
+			});
 		});
 
 		$('#box-all-states .more-itens').click(function(e) {
@@ -168,6 +169,44 @@ Nitro.module('order.orders', function() {
 			},
 			innerNav: true
 		});
+
+		// Abre o modal de Histórico detalhado
+		$('.historico-detalhes').click(function(e) {
+			e.preventDefault();
+
+			var $modal = $(this).siblings('.modal-detalhes');
+
+			var maskHeight = $(document).height();
+			var maskWidth = $(window).width();
+
+			$('#mask').css({'width':maskWidth,'height':maskHeight});
+
+			$('#mask').fadeTo('slow', 0.5);
+			$('#mask').css('display', 'block');
+
+			$modal.fadeIn();
+
+			$modal.find('.close').click(function(e) {
+				e.preventDefault();
+
+				$('#mask').hide();
+				$modal.hide();
+			});
+
+			$('#mask').click(function(e) {
+				e.preventDefault();
+
+				$(this).hide();
+				$modal.hide();
+			});
+		});
+
+		//"Ver mais" modal histórico detalhado
+		$('.box-all-states .more-itens').click(function(e) {
+			e.preventDefault();
+			$(this).siblings('.content-states__others').show();
+			$(this).hide();
+		});
 	};
 
 	/**
@@ -189,6 +228,7 @@ Nitro.module('order.orders', function() {
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
 			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
 			value.isGift = isGift;
+			value.hasTrackingInfo = false;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
 				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
@@ -207,22 +247,22 @@ Nitro.module('order.orders', function() {
 	 */
 	this._trackingData = function(data) {
 		return $.map(data, function(resultado) {
-			return CRM.getOrderById(resultado.orderId)
-						.then(function(sp) {
-							if (!sp && !sp.Documents) {
-								return false;
+			return CRM.getOmsById(resultado.orderId)
+						.then(function(dataOrder) {
+							if(!dataOrder) {
+								return;
 							}
 
-							sp.lastChange = sp.lastChange.replace(/\+00:00$/,'-03:00');
+							$.each(self.orders.orders, function() {
+								if( this.orderId === dataOrder.orderId ) {
+									this.hasTrackingInfo = true;
+									this.trackingInfo = dataOrder.packageAttachment.packages[0];
 
-							if (sp.finished) {
-								resultado.finalStatus = orderStates.getState(resultado.isGift, 'pedidoEntregue');
-							}
+									// console.log('⌛', dataOrder.packageAttachment.packages[0]);
 
-							resultado.trackingData = {
-								description: sp.description,
-								lastChange: $.formatDatetimeBRL(sp.lastChange)
-							};
+									return false;
+								}
+							});
 						});
 		});
 	};
