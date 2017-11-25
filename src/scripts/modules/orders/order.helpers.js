@@ -10,6 +10,17 @@ _.extend(dust.filters, {
 	formatDatetimeBRL: function(value) {
 		return $.formatDatetimeBRL(value);
 	},
+	formatDateAndHour: function(value) {
+		var d = (value) ? new Date(value) : new Date(),
+			month = d.getUTCMonth() + 1,
+			day = d.getUTCDate(),
+			hours = d.getUTCHours(),
+			minutes = d.getUTCMinutes();
+
+		return (day < 10 ? '0' : '') + day + '/' +
+			(month < 10 ? '0' : '') + month + ' - ' +
+			(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+	},
 	intAsCurrency: function(value) {
 		return _.intAsCurrency(value);
 	},

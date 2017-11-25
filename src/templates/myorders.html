@@ -33,6 +33,11 @@
 
 		<div class="order__wrapper js-toggle-container">
 			<div class="order__body clearfix">
+
+				{?hasTrackingInfo}
+					{>"modalHistorico"/}
+				{/hasTrackingInfo}
+
 				<div class="order__bar">
 					{>"orderStates"/}
 					{?trackingData}

@@ -1,0 +1,237 @@
+@charset 'UTF-8';
+
+.historico-detalhes {
+	float: right;
+	margin: 20px 20px 35px 20px;
+}
+
+.modal-detalhes {
+	@include font-size(22px, true, false);
+	background-color: #fff;
+    display: none;
+    height: auto;
+	left: 50%;
+	max-height: 700px;
+	overflow: auto;
+    padding: 35px 35px 60px 35px;
+    position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 900px;
+	z-index: 22;
+
+    @include breakpoint(small, 'max') {
+		height: 100vh;
+		left: 0;
+		padding: 20px;
+		top: 0;
+		transform: none;
+		width: 100%;
+    }
+
+    p {
+    	color: $green;
+    	font-weight: bold;
+    	margin: 0;
+    	text-transform: uppercase;
+    	@include breakpoint(small, 'max') {
+    		@include font-size(18px, true, false);
+    	}
+    }
+
+    strong {
+    	@include font-size(16px, true, false);
+    	font-weight: bold;
+    	@include breakpoint(small, 'max') {
+    		@include font-size(13px, true, false);
+    	}
+    }
+
+    span {
+    	font-weight: normal;
+    }
+
+    .close {
+    	cursor: pointer;
+    	position: absolute;
+    	right: 27px;
+    	top: 16px;
+    	&:before {
+			@include icon-get('close-icon');
+			@include responsiveFont(14, 16, true);
+			color: #747474;
+    	}
+    }
+
+    .box-states {
+    	color: $green;
+    	margin: 30px 0 30px 0;
+		@include breakpoint(small, 'max') {
+    		margin: 0;
+		}
+    }
+
+    .txt-state {
+    	margin-left: 60px;
+    	@include breakpoint(small, 'max') {
+    		display: block;
+    		margin-left: 0;
+    	}
+    }
+}
+
+.box-all-states {
+	.status-order {
+		border-bottom: 1px solid #e4e4e4;
+		margin-bottom: 20px;
+		span {
+			@include font-size(14px, true, false);
+			font-weight: bold;
+			text-transform: uppercase;
+			&:last-child {
+				margin-left: 50px;
+				@include breakpoint(small, 'max') {
+					margin-left: 0;
+				}
+			}
+			@include breakpoint(small, 'max') {
+				&:first-child {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.dots-states {
+		li {
+			&:before {
+				background-color: #e4e4e4;
+				border-radius: 50%;
+				content: '';
+				display: inline-block;
+				height: 16px;
+				margin-top: 40px;
+				width: 16px;
+				@include breakpoint(small, 'max') {
+					bottom: 12px;
+					position: relative;
+				}
+			}
+			&:after {
+			    background-color: #e4e4e4;
+				content: '';
+			    left: 42px;
+			    margin-top: 50px;
+			    min-height: 70px;
+			    position: absolute;
+			    width: 2px;
+			    @include breakpoint(small, 'max') {
+					height: 20%;
+					left: 27px;
+					margin-top: 30px;
+			    }
+			}
+			&:first-child {
+				&:before {
+					background-color: $green;
+					position: relative;
+					z-index: 1;
+				}
+				.arrow-left {
+					&:before {
+						@include fullArrow(right, 15px, $green);
+						@include breakpoint(small, 'max') {
+							@include fullArrow(right, 10px, $green);
+						}
+					}
+				}
+				.date-update {
+					color: $green;
+				}
+				.status-request {
+					background-color: $green;
+					color: #fff;
+					span {
+						@include breakpoint(small, 'max') {
+							color: #fff;
+						}
+					}
+				}
+				.status-request__description {
+					color: #fff;
+				}
+			}
+			&:last-child:after { display: none }
+		}
+	}
+
+	.box-date-update {
+		display: inline-block;
+		margin-left: 10px;
+		@include breakpoint(small, 'max') {
+			margin-left: 0;
+		}
+		span {
+			@include font-size(16px, true, false);
+			color: #7f7f7f;
+			font-weight: bold;
+			@include breakpoint(small, 'max') {
+	    		@include font-size(13px, true, false);
+				line-height: normal;
+				vertical-align: middle;
+	    	}
+		}
+		.date-update {
+			@include breakpoint(small, 'max') {
+				display: none;
+			}
+		}
+	}
+
+	.arrow-left {
+		display: inline-block;
+		font-size: 0;
+		height: 30px;
+		vertical-align: middle;
+
+		&:before {
+			@include fullArrow(right, 15px, #f4f4f4);
+			content: '';
+			display: inline-block;
+			@include breakpoint(small, 'max') {
+				@include fullArrow(right, 10px, #f4f4f4);
+			    transform: translate(0, -50%);
+			}
+		}
+	}
+
+	.status-request {
+		@include font-size(14px, true, false);
+		background-color: #f4f4f4;
+		display: inline-block;
+		line-height: normal;
+		padding: 17px 20px;
+		width: 637px;
+		@include breakpoint(small, 'max') {
+			margin-bottom: 10px;
+			padding: 20px;
+			width: 42vh;
+		}
+		strong {
+			display: block;
+		}
+		span {
+			font-weight: normal;
+		}
+	}
+	.more-itens {
+		float: right;
+		margin-top: 20px;
+		span {
+			font-weight: bold;
+		}
+	}
+	.content-states__others {
+		display: none;
+	}
+}
