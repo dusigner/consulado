@@ -427,9 +427,12 @@ div.account {
 				position: absolute;
 			}
 		}
+
+		svg { max-height: 20px; }
 	}
 
 	#login {
+		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 		@include responsiveFont(12, 16, true);
 		background-color: #ffffff;
 		color: $green;
@@ -439,8 +442,6 @@ div.account {
 		// position: absolute;
 		top: 0;
 		// width: 100%;
-
-		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 	}
 
 	.account__icon {
@@ -452,6 +453,8 @@ div.account {
 		&--enter,
 		&--profile {fill: $green}
 		&--truck {fill: $gray-d}
+
+		svg { max-height: 20px; }
 	}
 
 	.view-cotas {

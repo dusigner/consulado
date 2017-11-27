@@ -475,3 +475,8 @@
 @mixin square($size) {
 	@include size($size, $size);
 }
+
+@mixin fullArrow($property, $value, $color) {
+  border: $value solid transparent;
+  border-#{$property}: $value solid $color;
+}
