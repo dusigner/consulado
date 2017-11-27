@@ -32,7 +32,6 @@
 				li {
 					display: inline-block;
 					outline: none!important;
-					vertical-align: text-top;
 					width: 100/3*1%;
 
 					@include breakpoint(small, 'max') {
@@ -261,7 +260,7 @@
 						height: 21px;
 
 						.txtDe {
-							@include breakpoint (medium, 'min') { display: none; }
+							//@include breakpoint (medium, 'min') { display: none; }
 						}
 
 						.val { text-decoration: line-through; }
@@ -271,7 +270,7 @@
 						@include responsiveFont(14, 16, true);
 
 						.txtPor {
-							@include breakpoint (medium, 'min') { display: none; }
+							//@include breakpoint (medium, 'min') { display: none; }
 						}
 
 						.val:empty { display: none; }
