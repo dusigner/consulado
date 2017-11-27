@@ -92,6 +92,16 @@
     }
 }
 
+.btn-rastreio {
+ 	background-color: #fff;
+ 	border: 2px solid $green;
+ 	color: $green;
+ 	&:hover {
+ 		background-color: $green;
+ 		color: #fff;
+ 	}
+}
+
 .box-all-states {
 	.status-order {
 		border-bottom: 1px solid #e4e4e4;
