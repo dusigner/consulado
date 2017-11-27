@@ -256,6 +256,7 @@ Nitro.module('order.orders', function() {
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
 									this.hasTrackingInfo = true;
+									dataOrder.packageAttachment.packages[0].courierStatus.data = dataOrder.packageAttachment.packages[0].courierStatus.data.reverse();
 									this.trackingInfo = dataOrder.packageAttachment.packages[0];
 
 									// console.log('⌛', dataOrder.packageAttachment.packages[0]);
