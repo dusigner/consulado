@@ -638,6 +638,7 @@ body {
 		.cart-links-bottom {
 			@include breakpoint(768px, 'min') {
 			   display: flow-root;
+			   width: 100%;
 			}
 			@include breakpoint(small, 'max') {
 				margin-bottom: 0;
@@ -647,7 +648,7 @@ body {
 
 			.link-choose-more-products-wrapper {
 				@include breakpoint(768px, 'min') {
-					position: relative;
+					position: absolute;
 				 }
 				@include breakpoint(small, 'max') {
 					bottom: 0;
