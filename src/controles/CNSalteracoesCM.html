@@ -1,2 +1,46 @@
 <style>
+	.logo {
+		padding: 2px 0 0 90px;
+		margin-top: 17px !important;
+	}
+
+	.logo .icon-logo-consul::before {
+		position: absolute !important;
+		top: -19px !important;
+		transform: translateX(66px);
+		-moz-transform: translateX(-25px);
+	}
+
+	@media (max-width: 48em) {
+		.logo .icon-logo-consul::before {
+			position: absolute !important;
+			top: -14px !important;
+			font-size: 14px !important;
+			transform: translateX(0px);
+		}
+	}
+
+	.logo .icon-logo-consul::after {
+		background-image: url("/arquivos/cm-consul.png") !important;
+		background-repeat: no-repeat;
+		content: '';
+		display: block;
+		font-family: soleto;
+		height: 72px;
+		left: 9px;
+		position: absolute;
+		top: 2px !important;
+		width: 201px !important;
+	}
+
+	@media (max-width: 48em) {
+		.logo .icon-logo-consul::after {
+			height: 29px !important;
+			left: -46px !important;
+			top: -1px !important;
+			width: 156px !important;
+		}
+	}
+
+	.footer .btn-bf { display: none!important; }
 </style>
