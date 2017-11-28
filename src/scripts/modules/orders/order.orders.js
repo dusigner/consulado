@@ -255,6 +255,9 @@ Nitro.module('order.orders', function() {
 
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
+									if (dataOrder.packageAttachment.packages[0].courierStatus.finished) {
+										this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
+									}
 									this.hasTrackingInfo = true;
 									dataOrder.packageAttachment.packages[0].courierStatus.data = dataOrder.packageAttachment.packages[0].courierStatus.data.reverse();
 									this.trackingInfo = dataOrder.packageAttachment.packages[0];
