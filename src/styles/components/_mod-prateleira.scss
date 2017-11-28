@@ -19,7 +19,13 @@
 				margin: 0 0 10px;
 			}
 
-			span { font-weight: bold; }
+			span { 
+				font-weight: bold;
+				&.total-parcelado__txt, .val {
+					display: none;
+					
+				}
+			}
 
 			ul {
 				@include clearfix();
@@ -255,7 +261,7 @@
 						height: 21px;
 
 						.txtDe {
-							@include breakpoint (medium, 'min') { display: none; }
+							//@include breakpoint (medium, 'min') { display: none; }
 						}
 
 						.val { text-decoration: line-through; }
@@ -265,7 +271,7 @@
 						@include responsiveFont(14, 16, true);
 
 						.txtPor {
-							@include breakpoint (medium, 'min') { display: none; }
+							//@include breakpoint (medium, 'min') { display: none; }
 						}
 
 						.val:empty { display: none; }
