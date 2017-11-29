@@ -477,6 +477,12 @@ body.listagem {
 	}
 }
 
+.banners-secundarios-mosaico {
+	@include breakpoint(small, 'max') {
+		display: none!important;
+	}
+}
+
 // TesteAB vitrine chaordic
 .vitrineTesteB { display: none; }
 body.test__vitrine--show-b {
@@ -489,6 +495,11 @@ body.test__vitrine--show-b {
 	}
 	.banners-mobile { display: none; }
 	.vitrineTesteA { display: none; }
+	.banners-secundarios-mosaico {
+		@include breakpoint(small, 'max') {
+			display: block!important;
+		}
+	}
 }
 
 @import 'components/listagem/filters';
