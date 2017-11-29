@@ -45,6 +45,11 @@ body.listagem {
 	&.departamento,
 	&.busca {
 		.title-filter:before { content: 'Filtrar por categoria'; }
+
+		.order-wrapper { 
+			float: right; 
+			margin: 15px 0;
+		}
 	}
 
 	&.busca {
