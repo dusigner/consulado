@@ -33,16 +33,23 @@ var Index = {
 			$('.banners-secundarios').hide();
 		}
 
-		if($('.banner-secundario-mosaico').children().length > 0 ) {
-			$('.banners-secundarios-mosaico').show();
-		} else {
+		// if($('.banner-secundario-mosaico').children().length > 0 ) {
+		// 	$('.banners-secundarios-mosaico').show();
+		// } else {
+		// 	$('.banners-secundarios-mosaico').hide();
+		// }
+		
+		if ($('.banner-secundario-mosaico img').length === 0 ) {
 			$('.banners-secundarios-mosaico').hide();
+		} else {
+			$('.banners-secundarios-mosaico').show();
 		}
 
 		//banners secundarios prevent empty
 		if( $('.banner-secundario-mobile:empty').length === 2 ) {
 			$('.banners-secundarios-mobile').hide();
 		}
+
 	}
 };
 
