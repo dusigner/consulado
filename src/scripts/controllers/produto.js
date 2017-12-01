@@ -210,19 +210,38 @@ Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'd
 
 	var Index = {
 
-
 		init: function (){
+			console.log('init');
 			Index.changeQntStoq();
+			Index.getPecasRelacionadas();
 		},
-
+		getPecasRelacionadas: function() {		
+				var $btnPecas = $('.btn-pecas-produto'),
+				$pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
+				url = 'http://loja.consul.com.br/busca?',
+				testNumber = new RegExp(/^\d/);
+				console.log('sim');
+			if ($pecasModels) {
+				$pecasModels = $pecasModels.replace(/\s+/g, '').split(';');
+				$pecasModels = $pecasModels.filter(function(item, pos) {
+					return $pecasModels.indexOf(item) === pos && testNumber.test(item) === false;
+				});
+				$pecasModels.forEach(function (val) {
+					url += 'fq=alternateIds_RefId:' + val + '&';
+				});
+				$btnPecas.find('a').attr('href', url).parent().css({
+					display: 'block'
+				});
+			}
+			else{
+				console.log('não');
+			}
+		},
 		changeQntStoq: function (){
 			Index.getQntStoq();
 			setInterval(function (){
-
 				Index.getQntStoq();
-
 			}, 900000);
-
 		},
 
 		getQntStoq: function (){

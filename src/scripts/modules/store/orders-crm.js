@@ -55,7 +55,10 @@ var CRM = {
 			if( res
 				&& res.packageAttachment
 				&& res.packageAttachment.packages
-				&& res.packageAttachment.packages.length > 0 ) {
+				&& res.packageAttachment.packages.length > 0
+				&& res.packageAttachment.packages[0].courierStatus
+				&& res.packageAttachment.packages[0].courierStatus.data
+				&& res.packageAttachment.packages[0].courierStatus.data.length > 0 ) {
 				dfd.resolve(res);
 			} else {
 				dfd.resolve(false);
