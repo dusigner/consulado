@@ -87,6 +87,10 @@
 		}
 
 		.order__state-label {
+			@include breakpoint(580px, 'max') {
+				line-height: 130%;
+				white-space: pre-wrap;
+			}
 			color: $green;
 			font-weight: bold;
 		}

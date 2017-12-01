@@ -8,6 +8,7 @@ var CRM = {
 
 	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + $.cookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',
 	statusPedidoURI: '/api/ds/pub/documents/SP',
+	omsURI: '/api/oms/user/orders/',
 	recurrenceURI: '/api/' + window.jsnomeLoja + '/subscriptions/',
 
 	getOrders: function() {
@@ -33,6 +34,32 @@ var CRM = {
 		.always(function(res) {
 			if( res && res.Documents && res.Documents.length > 0 ) {
 				dfd.resolve(res.Documents[0]);
+			} else {
+				dfd.resolve(false);
+			}
+		});
+
+		return dfd.promise();
+	},
+
+	getOmsById: function(orderId) {
+		//promessa que retorna uma promessa que se não for cumprida, mesmo assim eu falo que cumpri
+		var dfd = jQuery.Deferred(); //retorna nova promise que sempre resolve (feels bad, mas é p/ usar o "promiseall" do jquery)
+
+		$.ajax({
+			url: CRM.omsURI + orderId,
+			type: 'GET',
+			contentType: 'application/json; charset=utf-8'
+		})
+		.always(function(res) {
+			if( res
+				&& res.packageAttachment
+				&& res.packageAttachment.packages
+				&& res.packageAttachment.packages.length > 0
+				&& res.packageAttachment.packages[0].courierStatus
+				&& res.packageAttachment.packages[0].courierStatus.data
+				&& res.packageAttachment.packages[0].courierStatus.data.length > 0 ) {
+				dfd.resolve(res);
 			} else {
 				dfd.resolve(false);
 			}
