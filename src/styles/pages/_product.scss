@@ -183,6 +183,34 @@ body.produto-indisponivel {
 	display: none;
 }
 
+.btn-pecas-produto {
+	display: none;
+
+	@include breakpoint(medium, 'max') { margin-bottom: 20px; }
+
+	a {
+		background-color: #9aca3c;
+		border: 2px solid #9aca3c;
+		border-radius: 2px;
+		color: #ffffff;
+		cursor: pointer;
+		display: inline-block;
+		margin-top: 15px;
+		padding: 15px 20px 15px 20px;
+		transition: all .25s ease;
+
+		&:hover {
+			background: transparent;
+			color: #9aca3c;
+			text-decoration: none;
+		}
+
+		i {
+			margin-right: 5px;
+		}
+	}
+}
+
 @import 'components/produto/gallery';
 @import 'components/produto/prod-title';
 @import 'components/produto/prod-info';
