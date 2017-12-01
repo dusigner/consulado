@@ -27,7 +27,10 @@ Nitro.module('specifications', function() {
 			'Cor': 'cor',
 			'Garantia do Fornecedor (mês)': 'garantia',
 			'Consumo Aproximado de Energia (kWh)': 'consumo',
-			'Eficiência Energética': 'eficiência'
+			'Eficiência Energética': 'eficiência',
+			'Garantia do Compressor (meses)': 'garantia compressor',
+			'Garantia do Microcanal (meses)': 'garantia microcanal'
+
 		},
 		ignore = ['Manual do Produto', 'Informações para Instalação'],
 		data = {
@@ -50,7 +53,7 @@ Nitro.module('specifications', function() {
 
 			data.specs.push({
 				key: specs[key],
-				value: value + (specs[key] === 'garantia' ? ' meses' : '')
+				value: value + (specs[key].indexOf('garantia') >= 0 ? ' meses' : '')
 			});
 
 			//order specs and send info to last
