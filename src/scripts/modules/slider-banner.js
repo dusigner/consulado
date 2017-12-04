@@ -1,6 +1,9 @@
 'use strict';
 
-Nitro.module('slider-banner', function() {
+require('modules/smartFocus');
+
+Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
+	smartFocus.renderBanner();
 	var $buttonOpenRegulamento = $('.open-regulamento');
 
 	this.setupMainSlider = function() {
