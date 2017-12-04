@@ -8,12 +8,12 @@
 
 	@media (min-width: 768px) {
 		.scroll {
-			&, 
-			.viewport, 
+			&,
+			.viewport,
 			.track { position: relative; }
 
-			.overview, 
-			.scrollbar, 
+			.overview,
+			.scrollbar,
 			.thumb { position: absolute; }
 
 			.viewport { overflow: hidden; }
@@ -55,7 +55,7 @@
 
 			.disable { display: none; }
 		}
-
+		// sass-lint:disable-all
 		.noSelect {
 		 -khtml-user-select: none;
 		   -moz-user-select: none;
@@ -63,5 +63,6 @@
 		-webkit-user-select: none;
 				user-select: none;
 		}
+		// sass-lint:enable-all
 	}
 }
