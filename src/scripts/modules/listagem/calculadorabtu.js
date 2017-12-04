@@ -1,5 +1,6 @@
 'use strict';
 
+
 Nitro.module('calculadorabtu', function () {
 
 	var calcBtu = $('.page-calculadora-btu__banner'),
@@ -50,10 +51,14 @@ Nitro.module('calculadorabtu', function () {
 	};
 
 	var updateRange = function(res) {
-
+	
 		var range = [];
 		switch ( res ) {
 		case '7.000' :
+			range = ['7.000', '7.500', '9.000'];
+			layoutRange(7000, 9000);
+			break;		
+		case '7.500' :
 			range = ['7.000', '7.500', '9.000'];
 			layoutRange(7000, 9000);
 			break;
@@ -64,6 +69,14 @@ Nitro.module('calculadorabtu', function () {
 		case '10.000' :
 			range = ['10.000', '12.000'];
 			layoutRange(10000, 12000);
+			break;
+		case '12.000' :
+			range = ['10.000', '12.000'];
+			layoutRange(10000, 12000);
+			break;
+		case '18.000' :
+			range = ['18.000', '22.000'];
+			layoutRange(18000, 22000);
 			break;
 		case '22.000' :
 			range = ['22.000', '18.000'];
@@ -79,25 +92,26 @@ Nitro.module('calculadorabtu', function () {
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
 		var tpl = '#/filter'+ updateRange(res.btu);
-		var bulletFilter = $('.noUi-origin.noUi-background, .noUi-origin.noUi-connect');
+		var bulletFilter = $('.noUi-origin.noUi-connect'),
+		bulletFilterD = $('.noUi-origin.noUi-background');
 
 		// verificar qual produto recomendar
 		if ( res.btu <= 7.500 ) {
-			bulletFilter.css('left', '25%');
+			bulletFilter.css('left', '0%') & bulletFilterD.css('left', '37%');
 		} else if ( res.btu <= 10.000 ) {
-			bulletFilter.css('left', '50%');
+			bulletFilter.css('left', '50%') & bulletFilterD.css('left', '62%');
 		} else if ( res.btu <= 12.000 ) {
-			bulletFilter.css('left', '62%');
+			bulletFilter.css('left', '50%') & bulletFilterD.css('left', '62%');
 		} else if ( res.btu <= 18.000 ) {
-			bulletFilter.css('left', '75%');
+			bulletFilter.css('left', '75%') & bulletFilterD.css('left', '100%');
 		} else if ( res.btu <= 21.000 ) {
-			bulletFilter.css('left', '87%');
+			bulletFilter.css('left', '75%') & bulletFilterD.css('left', '100%');
 		} else if ( res.btu <= 22.000 ) {
-			bulletFilter.css('left', '100%');
+			bulletFilter.css('left', '75%') & bulletFilterD.css('left', '100%');
 		}
 
-		$('.slider__value--to').text(res.btu.substring(0, 2) + ' BTU\/h');
-
+		// $('.slider__value--to').text(res.btu.substring(0, 2) + ' BTU\/h');
+		// console.log(res.btu);
 		//TIRGGA RESULTADO PARA MODULO FILTER.JS
 		$(window).trigger('calculadora.filter', [tpl]) ;
 	});
