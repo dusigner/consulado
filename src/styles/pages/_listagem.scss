@@ -240,7 +240,9 @@ body.listagem {
 	@include responsiveFont(18);
 	min-height: 50px;
 	outline: none;
-
+	@media screen and(min-width:768px) {
+		left: -17px;
+	}
 	@include breakpoint(small, 'max') {
 		min-height: 35px;
 		padding: 0;
