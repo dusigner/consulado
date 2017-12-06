@@ -8,13 +8,14 @@ require('vendors/jquery.cookie');
 var redirect = require('modules/store/redirect');
 
 define('store', function() {
-	this.uri = null;
-	this.userData = {};
-	this.isPersonal = false;
-	this.isCorp = false;
-	this.isQA = false;
-	this.accountName = 'consul';
 
+	this.uri          = null;
+	this.userData     = {};
+	this.isPersonal   = false;
+	this.isCorp       = false;
+	this.isQA         = false;
+	this.isTelevendas = false;
+	this.accountName  = 'consul';
 
 	var publicUrl = [
 		'^\/$',
@@ -44,6 +45,8 @@ define('store', function() {
 		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || account;
 
 		this.accountName = window.jsnomeLoja || window.vtex.accountName || account;
+
+		this.isTelevendas = window.getCookie('vtex-current-user') ? true : false;
 
 		this.setup();
 
