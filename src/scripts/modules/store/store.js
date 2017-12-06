@@ -46,7 +46,7 @@ define('store', function() {
 
 		this.accountName = window.jsnomeLoja || window.vtex.accountName || account;
 
-		this.isTelevendas = $('.vtex-call-center-operator').length !== 0 ? true : false;
+		this.isTelevendas = window.getCookie('vtex-current-user') ? true : false;
 
 		this.setup();
 
