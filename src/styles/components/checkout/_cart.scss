@@ -636,7 +636,7 @@ body {
 		}
 
 		.cart-links-bottom {
-			@include breakpoint(768px, 'min') {
+			@include breakpoint(768px, 'max') {
 			   display: flow-root;
 			   width: 100%;
 			}
