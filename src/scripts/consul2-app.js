@@ -36,8 +36,9 @@ require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/linkDoubleClick');
 require('modules/redirect');
+require('modules/customLogin');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect', 'customLogin'], function() {
 	$('.helperComplement').remove();
 
 });

@@ -1,0 +1,255 @@
+// custom Modal Login
+$consul-primary: #9aca3c;
+#vtex-modal-custom-login {
+
+    .modal-holder {
+		max-width: 800px;
+		
+        .modal-header {
+            display: none;
+		}
+		
+        .mode-custom-login--header {
+
+            .modal-custom-login--title {
+                color: $consul-primary;
+                margin-bottom: 0;
+			}
+			
+            .modal-custom-login--subtitle1 {
+                margin: 0;
+                font-weight: 700;
+                font-size: 15px;
+			}
+			
+            .modal-custom-login--subtitle2 {
+                margin-top: 10px;
+                font-weight: 400;
+            }
+		}
+		
+		.modal-custom-login--body {
+			padding: 0 30px 30px 30px;
+
+			// LAYOUT DEFAULT
+			.modal-custom-login--init-layout {
+				display: flex;
+				flex-direction: row;
+
+				input[type="submit"] {
+					float: right;
+					width: auto;
+				}
+				
+			> div {
+				flex-grow: 1;
+				flex-basis: 0;
+	
+				&:first-child {
+					padding-right: 15px;
+					border-right: solid 1px $consul-primary;
+					}
+	
+					&:last-child {
+						padding-left: 15px;
+					}
+				}
+			}
+
+			// LAYOUT SOLICITAR CHAVE POR EMAIL
+			.modal-custom-login--email-access-layout {
+				padding: 0 150px;
+
+				.modal-custom-email--inputbox {
+					margin-bottom: 25px;
+				}
+
+				.btn--voltar {
+					margin-right: 15px;
+				}
+			}
+
+			// LAYOUT KEYS
+			.modal-custom-login--key-access-layout {
+				padding: 0 150px;
+
+				.modal-custom-login-key__fields {
+					display: flex;
+					margin-bottom: 30px;
+					justify-content: space-between;
+
+					input {
+						margin: 0 10px;
+						border: solid 1px #ccc;
+						padding: 0;
+						text-align: center;
+						border-radius: 8px;
+						width: 44px;
+						height: 60px;
+						font-size: 20px;
+
+						&:focus {
+							background: $consul-primary;
+							color: white;
+						}
+					}
+				}
+
+				.custom-login-btn {
+					margin-right: 15px;
+				}
+			}
+
+			.modal-custom-login--sectitles {
+				color: $consul-primary;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			.modal-custom-login--formOptions {
+				text-align: right;
+				margin-bottom: 15px;
+
+				span {
+					font-size: 13px;
+					text-decoration: underline;
+					margin: 0 10px;
+					border-right: solid 1px #ccc;
+					padding-right: 10px;
+					cursor: pointer;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&:last-child {
+						margin-right: 0;
+						margin-left: 0;
+						padding: 0;
+						border: none;
+					}
+				}
+			}
+
+			.modal-custom-login--buttons {
+				.modal-custom-login-btn {
+					width: 100%;
+					margin-bottom: 15px;
+					border: none;
+					color: white;
+					text-align: left;
+					padding: 12px 17px 12px 70px;
+					transition: all 0.2s ease;
+
+					&.mailkey {
+						background-color: #5fbd5f;
+					}
+
+					&.facebook_access {
+						background-color: #3b5999;
+					}
+
+					&.google_access {
+						background-color: #ea4235;
+					}
+
+					&:last-child {
+						margin: 0;
+					}
+
+					&:hover {
+						opacity: 0.7;
+					}
+				}
+			}
+
+			input {
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+    }
+}
+
+/* MISCELLANOUS */
+
+// CUSTOM LABELS
+.modal-custom-email--inputbox {
+	&::before {
+		content: 'E-mail';
+	}
+}
+
+.modal-custom-password--inputbox {
+	&::before {
+		content: 'Senha';
+	}
+}
+
+.modal-custom-email--inputbox, .modal-custom-password--inputbox {
+	position: relative;
+	border-bottom: solid 1px #ccc;
+	margin-bottom: 10px;
+	margin-top: 25px;
+
+	&.label-on {
+		&::before {
+			top: -20px;
+			left: -7px;
+			transform: scale(0.7);
+		}
+	}
+
+	&::before {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transition: all 0.2s ease;
+	}
+	
+	span {
+		position: absolute;
+		left: 10px;
+		top: 8px;
+	}
+	
+	input {
+		margin-bottom: 0;
+		padding: 0 0 2px 0;
+	}
+}
+
+// ESTILO BOTÕES
+.custom-login-btn, input[type="submit"].custom-login-btn {
+	width: auto;
+	padding: 7px 25px;
+	border: solid 2px;
+	transition: all 0.2s ease;
+	border-radius: 50px;
+	font-weight: 500;
+
+	&.btn-custom-primary {
+		background-color: #ffffff;
+		border-color: $consul-primary;
+		color: $consul-primary;
+
+		&:hover {
+			background-color: $consul-primary;
+			border-color: $consul-primary;
+			color: #ffffff;
+		}
+	}
+
+	&.btn-custom-secondary {
+		background-color: $consul-primary;
+		border-color: $consul-primary;
+		color: #ffffff;
+
+		&:hover {
+			border-color: $consul-primary;
+			color: $consul-primary;
+			background: #ffffff;
+		}
+	}
+}
