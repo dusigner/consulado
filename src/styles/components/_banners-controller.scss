@@ -81,6 +81,8 @@ body {
 		text-align: center;
 		width: 100%;
 
+		@include breakpoint(small, 'max') { display: none; }
+
 		.prateleira-banners-secundarios-mosaico {
 			display: inline-block;
 			overflow: hidden;
@@ -136,6 +138,9 @@ body {
 					// height: 125px;
 					margin-bottom: 7%;
 					width: 100%;
+					&:first-child {
+						margin-bottom: 0;
+					}
 				}
 				&.banner-secundario-mosaico6,
 				&.banner-secundario-mosaico9 {
