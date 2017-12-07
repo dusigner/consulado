@@ -25,13 +25,14 @@
 		font: normal normal $font-size/$line-height-integer $base-font-family;
 		font-weight: normal;
 		margin: 0;
-
+		// sass-lint:disable-all
 		@if $enable-font-smoothing == true {
 
 			-moz-font-smoothing: antialiased;
 			-webkit-font-smoothing: antialiased;
 			font-smooth: always;
 		}
+		// sass-lint:enable-all
 	}
 
 	html[dir='rtl'] { direction: rtl; }

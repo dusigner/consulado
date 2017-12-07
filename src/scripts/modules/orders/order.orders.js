@@ -40,7 +40,7 @@ Nitro.module('order.orders', function() {
 				})
 				.then(function(resultados) {
 					self.orders.orders = resultados;
-					var promises = self._trackingData(resultados);
+					var promises = !store.isTelevendas ? self._trackingData(resultados) : null;
 
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
