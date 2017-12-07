@@ -32,14 +32,12 @@
 	&.no-border { border-color: #ffffff; }
 
 	& > .item {
+		@include breakpoint(large, 'min') { margin-left: calculate-em(26); }
+		@include breakpoint(large, 'max') { margin-left: calculate-em(10); }
 		display: inline-block;
 		margin-left: calculate-em(22);
 		text-align: center;
 		vertical-align: middle;
-
-		@include breakpoint(large, 'min') {
-			margin-left: calculate-em(26);
-		}
 
 		& > a {
 			@include responsiveFont(17);
@@ -123,6 +121,15 @@
 	}
 
 	.customItemMenu {
+		@include breakpoint('large', 'max') {
+			font-size: 11px;
+			padding: 0 6px 0 5px;
+		}
+		@include breakpoint(small, 'max') {
+			background-color: #fff;
+			border-radius: 0;
+			font-weight: normal;
+		}
 		background-color: $green;
 		border-radius: 18px;
 		font-size: 14px;
@@ -132,24 +139,20 @@
 		position: relative;
 		text-transform: uppercase;
 
-		&.hide {
-			display: none;
-		}
+		&.hide { display: none; }
 
-		@include breakpoint(small, 'max') {
-			background-color: #fff;
-			border-radius: 0;
-			font-weight: normal;
-		}
 		img {
+			@include breakpoint('large', 'max') {
+				margin-left: 4px;
+				max-width: 15px;
+			}
+			@include breakpoint(small, 'max') { display: none; }
 			display: inline;
 			margin-right: 7px;
 			vertical-align: middle;
 
-			@include breakpoint(small, 'max') {
-				display: none;
-			}
 		}
+
 		a {
 			color: #ffffff;
 			display: inline-block;

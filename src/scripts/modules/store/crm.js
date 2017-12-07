@@ -108,6 +108,14 @@ var CRM = {
 		});
 	},
 
+	insertLocation: function (data) {
+		return CRM.ajax({
+			url: CRM.formatUrl('AD', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data)
+		});
+	},
+
 	insertTermsGae: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('TG', 'documents'),
@@ -116,9 +124,9 @@ var CRM = {
 		});
 	},
 
-	insertLocation: function(data) {
+	insertCadastroSerialize: function (data) {
 		return CRM.ajax({
-			url: CRM.formatUrl('AD', 'documents'),
+			url: CRM.formatUrl('CD', 'documents'),
 			type: 'PATCH',
 			data: JSON.stringify(data)
 		});
