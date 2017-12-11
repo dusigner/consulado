@@ -470,15 +470,21 @@ div.account {
 
 body.consulempresa {
 	.welcome {
-		position: static;
-		em { display: none; }
+		margin-bottom: 10px;
+
+		a[href='/no-cache/user/logout'] { 
+			bottom: -11px;
+			left: 0; 
+		}
 	}
+
 	.account {
 		.logout a {
 			@include responsiveFont(12);
 			color: $orange;
 		}
 	}
+
 	&.pre-home {
 		.header {
 			padding-bottom: 14px;
