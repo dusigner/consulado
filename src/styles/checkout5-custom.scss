@@ -215,11 +215,11 @@ body {
 				   margin-bottom: 20px;
 				   position: relative;
 				   width: 100%;
-					}
-					@include breakpoint(767px, 'max') {
-					   width: 100%;
-					}
 				}
+				@include breakpoint(767px, 'max') {
+					width: 100%;
+				}
+			}
 		}
 	}
 
