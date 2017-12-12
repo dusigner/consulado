@@ -1,6 +1,7 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
+var ORDERCRM = require('modules/store/orders-crm');
 require('../../../templates/gae-compra-interno.html');
 require('../../../templates/gae-compra-interno/priceInfo.html');
 require('../../../templates/gae-compra-interno/productInfo.html');
@@ -53,11 +54,6 @@ Nitro.module('order.warranty.gae', function() {
 		// statusPaymentURI: 'http://compracerta.nxd.com.br/api/v2/purchase/status/',
 
 		addPlan: function(data) {
-			if (data.transaction.sale) {
-				data.transaction.sale.store = 32;
-				data.transaction.sale.sale_date = $.formatDatetime(dateNow, '-');
-			}
-
 			return $.post(PDVBox.addPlanURI, JSON.stringify(data)).then(function(res) {
 				res = JSON.parse(res);
 
@@ -407,26 +403,33 @@ Nitro.module('order.warranty.gae', function() {
 			}
 		};
 
-		PDVBox.addPlan(data).done(function(res) {
-			if (res.message === 'Sale inserted' || res.message === 'Sale already inserted') {
-				$.each(boxOrder[idCurrentOrder].currentProduct.plans.coverages, function(i) {
-					if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].id === parseInt(idPlanSelected)) {
-						boxOrder[idCurrentOrder].warrantyPrice = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].price;
-
-						if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
-							boxOrder[idCurrentOrder].warrantyPeriod = '1 ano';
-						} else {
-							boxOrder[idCurrentOrder].warrantyPeriod = '2 anos';
-						}
-					}
-				});
-
-				boxOrder[idCurrentOrder].linkPayment = res.link;
-
-				$slider.slick('slickNext');
+		$.getJSON(ORDERCRM.omsURI + boxOrder[idCurrentOrder].orderId).then(function (result) {
+			//pega data de faturamento do pedido
+			if (result && result.packageAttachment && result.packageAttachment.packages && result.packageAttachment.packages.length > 0) {
+				data.transaction.sale.sale_date = $.formatDatetime(result.packageAttachment.packages[0].issuanceDate, '-');
 			}
-		}).fail(function() {
-			self.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
+
+			PDVBox.addPlan(data).done(function (res) {
+				if (res.message === 'Sale inserted' || res.message === 'Sale already inserted') {
+					$.each(boxOrder[idCurrentOrder].currentProduct.plans.coverages, function (i) {
+						if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].id === parseInt(idPlanSelected)) {
+							boxOrder[idCurrentOrder].warrantyPrice = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].price;
+
+							if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
+								boxOrder[idCurrentOrder].warrantyPeriod = '1 ano';
+							} else {
+								boxOrder[idCurrentOrder].warrantyPeriod = '2 anos';
+							}
+						}
+					});
+
+					boxOrder[idCurrentOrder].linkPayment = res.link;
+
+					$slider.slick('slickNext');
+				}
+			}).fail(function () {
+				self.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
+			});
 		});
 	};
 

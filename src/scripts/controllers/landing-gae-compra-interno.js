@@ -87,11 +87,12 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 
 		// console.log('here', order);
 
-		if ($.diffDate(dateNow, order.orderDate) <= 334
-		&& order.currentState.orderLabel.toLowerCase() !== 'cancelado'
-		&& order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado'
-		&& order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento'
-		&& !order.hasGae) {
+		if ($.diffDate(dateNow, order.orderDate) <= 334	&&
+		order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
+		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
+		order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
+		//order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
+		!order.hasGae) {
 			ordersPromises.push(currentOrder);
 			allOrders.push(order);
 		}
