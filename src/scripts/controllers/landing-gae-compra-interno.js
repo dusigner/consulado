@@ -91,7 +91,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
-		//order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
+		order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
 		!order.hasGae) {
 			ordersPromises.push(currentOrder);
 			allOrders.push(order);
