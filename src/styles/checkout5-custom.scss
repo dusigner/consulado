@@ -209,7 +209,17 @@ body {
 				color: $orange;
 			}
 
-			&#btn-client-pre-email { padding: 4px 12px; }
+			&#btn-client-pre-email {
+				padding: 4px 12px;
+				@include breakpoint(768px, 'max') {
+				   margin-bottom: 20px;
+				   position: relative;
+				   width: 100%;
+				}
+				@include breakpoint(767px, 'max') {
+					width: 100%;
+				}
+			}
 		}
 	}
 
