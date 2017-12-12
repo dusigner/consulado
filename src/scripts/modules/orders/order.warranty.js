@@ -22,6 +22,7 @@ var Warranty = {
 
 		Warranty.boxOrder[orderId] = {};
 		Warranty.boxOrder[orderId].id = orderId;
+		Warranty.boxOrder[orderId].fullId = $(order).data('order-id');
 		Warranty.boxOrder[orderId].status = $(order).data('order-status');
 		Warranty.boxOrder[orderId].formattedDate = $(order).data('order-date');
 		Warranty.boxOrder[orderId].name = $(order).data('order-name');
@@ -84,6 +85,7 @@ var Warranty = {
 			order.status !== 'Pedido cancelado' &&
 			order.status !== 'Aguardando pagamento' &&
 			order.status !== 'Processando Pagamento' &&
+			order.status !== 'Processamento' &&
 			!product.bundle ) {
 				Warranty.boxOrder[order.id].products.push(product);
 				Warranty.getPlan(order, product);
@@ -94,6 +96,7 @@ var Warranty = {
 			order.status !== 'Pedido cancelado' &&
 			order.status !== 'Aguardando pagamento' &&
 			order.status !== 'Processando Pagamento' &&
+			order.status !== 'Processamento' &&
 			product.bundle ) {
 				Warranty.renderDownloadVtexWarranty(order, product);
 				Warranty.cancelVtexWarranty();
@@ -106,6 +109,7 @@ var Warranty = {
 
 	getPlan: function(order, product) {
 		PDVBox.get(order.id, product.name).done(function(res) {
+			res.orderFullId = order.fullId;
 			Warranty.boxPlans[order.id] = res;
 			if (res.message === 'Sale found') {
 				Warranty.renderDownload(order, res, product);

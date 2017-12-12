@@ -1,5 +1,7 @@
 'use strict';
 
+var CRM = require('modules/store/orders-crm');
+
 var PDVBOX = {
 
 	self: this,
@@ -108,7 +110,12 @@ var PDVBOX = {
 			}
 		};
 
-		return $.post(PDVBOX.pdvBoxAPI + '/purchase/', JSON.stringify(data));
+		return $.getJSON(CRM.omsURI + skuInfo.orderFullId).then(function (result) {
+			if (result && result.packageAttachment && result.packageAttachment.packages && result.packageAttachment.packages.length > 0) {
+				data.transaction.sale.sale_date = $.formatDatetime(result.packageAttachment.packages[0].issuanceDate, '-');
+			}
+			return $.post(PDVBOX.pdvBoxAPI + '/purchase/', JSON.stringify(data));
+		});
 	},
 
 	remove: function(idPlan) {
