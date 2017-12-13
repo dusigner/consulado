@@ -191,23 +191,6 @@ header {
 		text-align: center;
 		top: -40px;
 	}
-
-	// .consulempresa & {
-	// 	background: #ccc url('/arquivos/logo-consul-vendas-corporativas.jpg') top center no-repeat;
-	// 	background: #ccc url('/arquivos/logo-consul-vendas-corporativas.png') top center no-repeat;
-	// 	background-size: contain;
-	// 	display: block;
-	// 	height: 59px;
-	// 	margin-right: 10px;
-	// 	padding-right: 0;
-	// 	width: 120px;
-
-	// 	.icon-logo-consul {
-	// 		display: none;
-	// 		opacity: .5;
-	// 		visibility: hidden;
-	// 	}
-	// }
 }
 
 div.minicart { float: right }
@@ -393,11 +376,6 @@ div.account {
 		width: 30px;
 	}
 
-	// a {
-	// 	color: $txt-gray;
-	// 	display: block;
-	// }
-
 	.hide { @include show-conditional(); }
 
 	.welcome {
@@ -437,11 +415,8 @@ div.account {
 		background-color: #ffffff;
 		color: $green;
 		display: block;
-		// height: 100%;
 		padding: 3px 0 0 0;
-		// position: absolute;
 		top: 0;
-		// width: 100%;
 	}
 
 	.account__icon {
@@ -469,12 +444,29 @@ div.account {
 }
 
 body.consulempresa {
-	.welcome {
-		margin-bottom: 10px;
+	.welcome-message {
+		position: relative;
 
-		a[href='/no-cache/user/logout'] { 
-			bottom: -11px;
-			left: 0; 
+		.welcome { 
+			margin-bottom: 10px; 
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 145px;
+
+			.email { @include responsiveFont(10, 16, true); }
+		}
+
+		a {
+			color: $green;
+			position: relative;
+
+			&[href='/no-cache/user/logout'] {
+				bottom: -11px;
+				font-size: 10px;
+				left: 0;
+				position: absolute;
+			}
 		}
 	}
 
