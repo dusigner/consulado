@@ -647,7 +647,7 @@ body {
 			}
 
 			.link-choose-more-products-wrapper {
-				@media screen and(max-width:768px){
+				@media screen and(max-width: 768px) {
 					position: absolute;
 				}
 				@include breakpoint(768px, 'min') {

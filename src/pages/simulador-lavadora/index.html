@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Simulador economia de água</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+
+	<link rel="stylesheet" href="/arquivos/simulador-lavadora.css" />
+<!--<link rel="stylesheet" href="/arquivos/simulador-lavadora-rangeslider.css" />-->
+</head>
+
+<body class="produto consulqa">
+
+
+	<!-- @if DEBUG='development' -->
+	  <!-- @include ../../subtemplates/consul-header.html -->
+	  <!-- @endif -->
+
+	  <!-- @if DEBUG='production' -->
+	  <!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+	  <!-- @endif -->
+
+
+<section class="corpoCalculadora">
+  <div class="iniciar">
+	<div class="container">
+	  <div class="play">
+			<h1>Simulador de economia de água e sabão em pó</h1>
+			<h2>Essa lavadora economiza até 600* reais por ano, descubra quanto você economizaria!</h2>
+			<a class="action-inicio">Iniciar <img src="../arquivos/right-simulador-lavadora.png" alt=""></a>
+	  </div>
+
+	  <form class="perguntas">
+		
+
+			<fieldset id="qtdlotes">
+				<h2 class="tituloperguntas">Calcule aqui sua economia com a Lavadora Consul 13Kg</h2>
+				<div class="corpocehckbox">
+					<div class="content">
+						<legend>01. Quais dias da semana você lava roupa ? <i></i></legend>
+						<label for="dia-1"> <input type="checkbox" name="dia-1" id="dia-1" class="checkdia" value="Segunda - Feira"> Segunda <span class="only-mob">- Feira</span> </label>
+						<label for="dia-5"> <input type="checkbox" name="dia-5" id="dia-5" class="checkdia" value="Sexta - Feira">   Sexta <span class="only-mob">- Feira</span> </label>
+						<label for="dia-2"> <input type="checkbox" name="dia-2" id="dia-2" class="checkdia" value="Terça - Feira">  Terça <span class="only-mob">- Feira</span> </label>
+						<label for="dia-6"> <input type="checkbox" name="dia-6" id="dia-6" class="checkdia" value="Sábado"> Sábado </label>
+						<label for="dia-3"> <input type="checkbox" name="dia-3" id="dia-3" value="Quarta - Feira">  Quarta <span class="only-mob">- Feira</span> </label>
+						<label for="dia-7"> <input type="checkbox" name="dia-7" id="dia-7" value="Domingo"> Domingo </label>
+						<label for="dia-4"> <input type="checkbox" name="dia-4" id="dia-4" value="Quinta - Feira">  Quinta <span class="only-mob">- Feira</span> </label>
+						<p class="msg-erro hidden">Por favor selecionar alguma opção</p>
+						<a class="action--next-ativo">Avançar</a>
+					</div>
+				</div>
+			</fieldset>
+
+
+			<fieldset id="comoseparar">
+				<legend>02. Desses dias que utiliza a máquina<span class="hidden-mob">, em quantos lotes você lava suas roupas</span> ? <small>Ex: Toda vez que utilizo minha máquina, lavo 3 lotes de roupas: um lote de roupas brancas, um lote de roupas coloridas e um lote de roupas de cama e banho</small></legend>
+				<div class="content corporange" style="">
+					<input id="range" class="form-control ng-valid ng-scope ng-dirty" ngmodel="color.r" label="R" type="range" min="1" max="7" step="1" star="1" ng-model="color.r">
+					<div id="diasrange">4<span>x</span></div>
+					<a class="action--next calcular" >Calcular</a>
+				</div>
+			</fieldset>
+
+		</form>
+
+
+		<div class="corporesultado">
+			<h2>Com a tecnologia Maxi Economia, <br/><strong>ê economiza*</strong> até:</h2>
+
+			<ul>
+
+				<li>
+					<img src="../arquivos/notas-simulador-lavadora.png" alt="economia em valor real"/>
+					<h3><strong>R$ <span class="--economia-valor"></span></strong> de água e sabão em pó</h3>
+				</li>
+
+				<li>
+						<img src="../arquivos/gota-simulador-lavadora.png" alt="economia em valor real"/>
+						<h3><strong><span class="--economia-agua"></span> litros</strong> Água/Ano</h3>
+				</li>
+
+				<li>
+						<img src="../arquivos/sabao-simulador-lavadora.png" alt="economia em valor real"/>
+						<h3><strong><span class="--economia-sabao"></span>Kg</strong> Sabão/Ano</h3>
+				</li>
+
+			</ul>
+
+			<h4>Para ilustrar quanta água é economizada com o uso da tecnologia Maxi Economia comparamos com caixas d’água de 500 litros.</h4>
+
+			<div class="caixadgua">
+				<h2>Sabe o que isso representa?</h2>
+				<span>Em <strong>1 ano</strong> você economiza</span>
+				<div class="litrosagua">
+						<span class="--economia-galoes"></span>
+						caixas d’água de 500 litros
+				</div>
+				<div class="imgcaixas">
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+					<i></i>
+				</div>
+			</div>
+		</div>
+
+		
+
+		<div class="refazer">
+				<a class="reniciar">Reiniciar</a>
+				<a class="comprar">Quero comprar</a>
+		</div>
+
+	</div>
+  </div>  
+</section>
+
+
+	<!-- @if DEBUG='development' -->
+	  <!-- @include ../../subtemplates/consul-servicos.html -->
+	  <!-- @endif -->
+
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-servicos" />
+	  <!-- /Footer -->
+		<!-- @endif -->
+  
+  
+  
+	  <!-- @if DEBUG='development' -->
+		<!-- @include ../../subtemplates/consul-footer.html -->
+		<!-- @endif -->
+  
+		<!-- @if DEBUG='production' -->
+		<!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+		<!-- @endif -->
+
+	<!-- <script type="text/javascript" src="/arquivos/simulador-lavadora-rangeslider.min.js"></script>
+	<script type="text/javascript" src="/arquivos/simulador-lavadora-rangeslider.js"></script> -->
+	<script type="text/javascript" src="/arquivos/simulador-lavadora.min.js"></script>
+</body>
+</html>

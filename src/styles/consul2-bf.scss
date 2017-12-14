@@ -136,8 +136,8 @@ nav {
 
             &.topmenu-active {
                 .icon-hamburger {
-                    border: none;   
-    
+                    border: none;
+
                     &::before {
                         background-color: transparent !important;
                     }
@@ -152,22 +152,22 @@ nav {
                     background-color: $border !important;
                 }
             }
-        }       
+        }
 
-        
+
     }
 }
 
 .lead-newsletter {
     @include bg-gradient();
-    margin-top: 0;    
-    
+    margin-top: 0;
+
         .form-newsletter {
             input {
                 background-color: $bg-input;
                 border-color: $border;
             }
-    
+
             .campo-checkbox {
                 color: #ffffff;
                 a {
@@ -237,8 +237,8 @@ div.account #login {
     .menu-mobile {
         background-color: #121212;
     }
-    
-    .header .menu-mobile div.account.logged-user .welcome-message .welcome {        
+
+    .header .menu-mobile div.account.logged-user .welcome-message .welcome {
     overflow: hidden;
     padding-right: 5px;
     text-overflow: ellipsis;

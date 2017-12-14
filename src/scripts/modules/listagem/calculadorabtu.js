@@ -51,13 +51,13 @@ Nitro.module('calculadorabtu', function () {
 	};
 
 	var updateRange = function(res) {
-	
+
 		var range = [];
 		switch ( res ) {
 		case '7.000' :
 			range = ['7.000', '7.500', '9.000'];
 			layoutRange(7000, 9000);
-			break;		
+			break;
 		case '7.500' :
 			range = ['7.000', '7.500', '9.000'];
 			layoutRange(7000, 9000);
@@ -93,7 +93,7 @@ Nitro.module('calculadorabtu', function () {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
 		var tpl = '#/filter'+ updateRange(res.btu);
 		var bulletFilter = $('.noUi-origin.noUi-connect'),
-		bulletFilterD = $('.noUi-origin.noUi-background');
+			bulletFilterD = $('.noUi-origin.noUi-background');
 
 		// verificar qual produto recomendar
 		if ( res.btu <= 7.500 ) {
