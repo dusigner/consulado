@@ -116,16 +116,16 @@ nav {
                 &::before {
                     background-color: $bg-bf;
                     border: 1px solid $border;
-                    height: 57px;
                     border-bottom: none;
+                    height: 57px;
                     top: -57px;
                 }
             }
 
             &.topmenu-active {
                 .icon-hamburger {
-                    border: none;   
-    
+                    border: none;
+
                     &::before {
                         background-color: transparent !important;
                     }
@@ -133,29 +133,29 @@ nav {
             }
 
             .icon-hamburger {
-                color: $border !important;
                 border-color: #828282;
-    
+                color: $border !important;
+
                 &::before {
                     background-color: $border !important;
                 }
             }
-        }       
+        }
 
-        
+
     }
 }
 
 .lead-newsletter {
     @include bg-gradient();
-    margin-top: 0;    
-    
+    margin-top: 0;
+
         .form-newsletter {
             input {
                 background-color: $bg-input;
                 border-color: $border;
             }
-    
+
             .campo-checkbox {
                 color: #ffffff;
                 a {
@@ -216,8 +216,8 @@ div.account #login {
     .menu-mobile {
         background-color: #121212;
     }
-    
-    .header .menu-mobile div.account.logged-user .welcome-message .welcome {        
+
+    .header .menu-mobile div.account.logged-user .welcome-message .welcome {
     overflow: hidden;
     padding-right: 5px;
     text-overflow: ellipsis;

@@ -472,19 +472,30 @@ body.listagem {
 	}
 }
 
+.banners-secundarios-mosaico {
+	@include breakpoint(small, 'max') {
+		display: none!important;
+	}
+}
+
 // TesteAB vitrine chaordic
 .vitrineTesteB { display: none; }
 body.test__vitrine--show-b {
-	.mosaico-secundarios-left { display: none; }
+	.mosaico-secundarios-left,
+	.mosaico-secundarios-right { display: none; }
 	.vitrineTesteB { 
 		display: inline-block; 
     	margin-right: 10px;
-		width: 70%;
+		width: 100%;
+	}
+	.banner-principal { display: none!important; }
+	.banners-mobile { display: none; }
+	.vitrineTesteA { display: none; }
+	.banners-secundarios-mosaico {
 		@include breakpoint(small, 'max') {
-			width: 100%;
+			display: block!important;
 		}
 	}
-	.vitrineTesteA { display: none; }
 }
 
 @import 'components/listagem/filters';
