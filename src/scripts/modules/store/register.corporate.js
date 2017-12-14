@@ -222,6 +222,10 @@ Nitro.module('register.corporate', function() {
 			data.phone = '+55' + data.phone;
 		}
 
+		var dataRegister = JSON.stringify(self.prepareUserData(data));
+
+		CRM.insertCadastroSerialize({ dados: dataRegister });
+
 		CRM.insertClient(self.prepareUserData(data))
 			.then(self.prepareLocationData.bind(self, data))
 			.then(CRM.insertLocation)

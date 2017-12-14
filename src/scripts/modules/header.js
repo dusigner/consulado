@@ -3,11 +3,11 @@
 
 require('modules/cart');
 require('modules/cotas');
-// require('modules/search');
+require('modules/search');
 require('modules/menu-hover');
 require('vendors/jquery.cookie');
 
-Nitro.module('header', ['menu-hover', 'cotas'], function() {
+Nitro.module('header', ['menu-hover', 'cotas', 'search'], function() {
 	var $body = $('body'),
 		$document = $(document);
 
