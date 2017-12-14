@@ -1,5 +1,13 @@
 // custom Modal Login
 $consul-primary: #9aca3c;
+
+// TESTES
+#login {
+	&.logged {
+		background: red !important;
+	}
+}
+
 #vtex-modal-custom-login {
 
     .modal-holder {
@@ -31,6 +39,15 @@ $consul-primary: #9aca3c;
 		.modal-custom-login--body {
 			padding: 0 30px 30px 30px;
 
+			.modal-custom-login--errorBox {
+				color: red;
+				font-weight: 300;
+			}
+
+			input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+				-webkit-box-shadow: 0 0 0 30px white inset;
+			}
+
 			// LAYOUT DEFAULT
 			.modal-custom-login--init-layout {
 				display: flex;
@@ -56,12 +73,16 @@ $consul-primary: #9aca3c;
 				}
 			}
 
+			#modal-custom-login-email-access--form {
+				margin-top: 60px;
+			}
+
 			// LAYOUT SOLICITAR CHAVE POR EMAIL
-			.modal-custom-login--email-access-layout {
+			.modal-custom-login--email-access-layout, .modal-custom-login-email-to-pw {
 				padding: 0 150px;
 
 				.modal-custom-email--inputbox {
-					margin-bottom: 25px;
+					margin-bottom: 70px;
 				}
 
 				.btn--voltar {
@@ -78,6 +99,12 @@ $consul-primary: #9aca3c;
 					margin-bottom: 30px;
 					justify-content: space-between;
 
+					&.invalid__key {
+						input {
+							border-color: red;
+						}
+					}
+
 					input {
 						margin: 0 10px;
 						border: solid 1px #ccc;
@@ -87,10 +114,12 @@ $consul-primary: #9aca3c;
 						width: 44px;
 						height: 60px;
 						font-size: 20px;
+						color: transparent;
+						text-shadow: 0 0 0 #736c6b;
 
 						&:focus {
 							background: $consul-primary;
-							color: white;
+							text-shadow: 0 0 0 #ffffff;
 						}
 					}
 				}
@@ -104,6 +133,7 @@ $consul-primary: #9aca3c;
 				color: $consul-primary;
 				margin-bottom: 10px;
 				text-align: left;
+				font-weight: 600;
 			}
 
 			.modal-custom-login--formOptions {
@@ -140,17 +170,22 @@ $consul-primary: #9aca3c;
 					text-align: left;
 					padding: 12px 17px 12px 70px;
 					transition: all 0.2s ease;
+					background-repeat: no-repeat;
+					background-position: 30px;
 
 					&.mailkey {
 						background-color: #5fbd5f;
+						background-image: url('/arquivos/icon_email.png');
 					}
 
 					&.facebook_access {
 						background-color: #3b5999;
+						background-image: url('/arquivos/icon_face.png');
 					}
 
 					&.google_access {
 						background-color: #ea4235;
+						background-image: url('/arquivos/icon_google.png');
 					}
 
 					&:last-child {
@@ -187,7 +222,19 @@ $consul-primary: #9aca3c;
 	}
 }
 
-.modal-custom-email--inputbox, .modal-custom-password--inputbox {
+.modal-custom-set-password--inputbox {
+	&::before {
+		content: 'Nova senha';
+	}
+}
+
+.modal-custom-set-confirm-password--inputbox {
+	&::before {
+		content: 'Confirme a senha';
+	}
+}
+
+.modal-custom-email--inputbox, .modal-custom-password--inputbox, .modal-custom--inputbox {
 	position: relative;
 	border-bottom: solid 1px #ccc;
 	margin-bottom: 10px;
