@@ -77,11 +77,9 @@ Nitro.module('login', function () {
 							$modalRegister.vtexModal({
 								open: function () {
 									$('#modal-register').addClass('revalidation');
+									
 									//busca informações de endereço
-									// var address = self.getAddressInfo(form.fieldEmail.val());
-
-									//preenche formulário com informações cadastradas
-									self.fullRevalidationForm(data);
+									self.getAddressInfo(data);
 								}
 							});
 						} else {
@@ -100,12 +98,15 @@ Nitro.module('login', function () {
 		return false;
 	};
 
-	this.getAddressInfo = function (email) {
-		return $.getJSON(CRM.formatUrl('AD', 'search'), {
-			_fields: 'postalCode,street,number,complement,neighborhood,state,city',
-			userId: email
-		}).then(function (res) {
-			return res && res[0];
+	this.getAddressInfo = function (data) {
+		$.getJSON(CRM.formatUrl('AD', 'search'), {
+			_fields: 'postalCode,street,number,complement,neighborhood,state,city,userId',
+			userId: data.id
+		}).done(function (res) {
+			data.address = res[0];
+
+			//preenche formulário com informações cadastradas
+			self.fullRevalidationForm(data);
 		});
 	};
 
@@ -125,6 +126,14 @@ Nitro.module('login', function () {
 		if (data.xContribuinteICMS) {
 			$modalRegister.find('#xContribuinteICMS').siblings('label').trigger('click');
 		}
+
+		$modalRegister.find('.postalCode').val(data.address.postalCode);
+		$modalRegister.find('.addressName').val(data.address.street);
+		$modalRegister.find('.number').val(data.address.number);
+		$modalRegister.find('.complement').val(data.address.complement);
+		$modalRegister.find('.neighborhood').val(data.address.neighborhood);
+		$modalRegister.find('.state').val(data.address.state);
+		$modalRegister.find('.city').val(data.address.city);
 
 		$modalRegister.find('.email').val(data.email);
 		$modalRegister.find('.confirmEmail').val(data.email);
