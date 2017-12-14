@@ -1,0 +1,969 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul.
+	* Author: Pedro Henrick
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/rfs';
+
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+
+
+body .hidden{
+    display: none !important;
+}
+
+
+.corpoCalculadora {
+    position: relative;
+}
+
+.iniciar {
+    background: url(../arquivos/background-simulador-lavadora.png) top 25% center no-repeat;
+    background-size: auto 150%;
+    max-height: 580px;
+    min-height: 490px;
+    position: relative;
+    transition: 0.5s linear all;
+    padding-top: 85px;
+    width: 100%;
+
+        &.ativo.final{
+            height: auto;
+            background: #f1f1f1 !important;
+            max-height: initial !important;
+        }
+}
+
+.iniciar.ativo {
+    background: url(../arquivos/background-simulador-lavadora.png) top 75% center no-repeat !important;
+    background-size: 100% !important;
+    transition: 0.5s linear all;
+}
+
+.iniciar.ativo:before {
+    display: none !important;
+}
+
+.iniciar:after{
+    clear: both;
+    content: "";
+    display: block;
+    width: 100%;
+}
+
+.iniciar:before{
+    content: "";
+    background: rgba(000,000,000,.3);
+    bottom: 0;
+    display:block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+}
+
+
+.play {
+    display: block;
+    float: left;
+    height: 405px;
+    position: relative;
+    width: 60%;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s linear all;
+
+    &.desativado{
+        height: 0;
+        padding-top: 0;
+        transition: 0.5s linear all;
+    }
+    
+        h1 {
+            color: #fff;
+            font-size: 42px;
+            font-weight: 600;
+            line-height: 38px;
+            margin-top: 0;
+            text-align: right;
+        }
+
+        h2{
+            color: #fff;
+            display: block;
+            float: right;
+            font-size: 24px;
+            font-weight: 100;
+            line-height: 34px;
+            max-width: 498px;
+            text-align: right;
+        }
+
+        a {
+            background: #99CA3B;
+            border-radius: 50px;
+            clear: both;
+            color: #fff;
+            display: block;
+            float: right;
+            font-size: 24px;
+            font-weight: 600;
+            height: 60px;
+            margin-top: 30px;
+            padding: 14px 0 9px 32px;
+            width: 240px;
+
+                 img {
+                    display: block;
+                    float: right;
+                    margin: 2px 18px 0;
+                 }
+        }
+
+}
+
+.perguntas {
+    background: transparent;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    width: 60%;
+    overflow: hidden;
+    transition: 0.5s linear all;
+
+         &.desativado{
+             height: 0px;             
+           }
+        
+        h2{
+            background-color: #fff;
+            border-radius: 10px;
+            color: #99CA3B;
+            display: block;
+            font-size: 21px;
+            line-height: 28px;
+            margin-bottom: 20px;
+            margin-top: 0;
+            padding: 15px 12px;
+            text-align: left;
+        }
+}
+
+.corpocehckbox{
+    background-color: #fff;
+    border-radius: 8px;
+    border: none;
+    max-height: 1300px;
+    padding: 20px 30px;
+    transition: 0.5s linear all;
+    height: 246px;
+    overflow: hidden;
+
+
+        &.ativo{
+            height: 56px;
+            background-color: #9aca3c;
+            transition: 0.5s linear all;
+            padding: 10px 30px;
+
+            legend{
+                color: #fff;
+                transition: 0.5s linear all;
+
+                i {
+                    
+                    opacity: 1;
+                    
+                }
+                
+                
+            }
+        }
+
+        .msg-erro {
+            position: absolute;
+            bottom: -35px;
+            right: 170px;
+            color: #f00;
+        }
+        
+        legend {
+            -moz-transition: color 0s;
+            -o-transition: color 0s;
+            -webkit-transition: color 0s;
+            color: #6F2C8F;
+            display: flex;
+            font-size: 21px;
+            font-weight: 600;
+            position: relative;
+            top: -12px;
+            transition: color 0s;
+            width: 100%;
+
+                i {
+                    display: block;
+                    float: right;
+                    background: url(../arquivos/check-simulador-lavadora.png) center center no-repeat;
+                    background-size: 100%;
+                    width: 35px;
+                    height: 27px;
+                    opacity: 0;
+                    transition: 0.5s linear all;
+                    transition-delay: 0.5s;
+                }
+            
+            
+
+        }
+}
+
+#qtdlotes {
+
+    border: none;
+    overflow: hidden;
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    margin-bottom: 0;
+    transition: 0.5s linear all;
+
+        &.ativo {
+            overflow: hidden;
+            padding: 0;
+            opacity: 1;
+            height: 342px;
+            transition: 0.5s linear all;
+            transition-delay: 0.6s;
+        }
+    
+        .content {
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            padding-right: 68px;
+            padding-top: 15px;
+            position: relative;
+        
+            label {
+                color: #736C6B;
+                cursor: pointer;
+                display: block;
+                font-size: 16px;
+                margin: 8px 0;
+                width: 50%;
+            }
+        
+            input[type="checkbox"] {
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: transparent;
+                border-radius: 4px;
+                border: 2px solid #00B5DC;
+                height: 16px;
+                margin-left: 0;
+                margin-right: 12px;
+                outline: none;
+                position: relative;
+                top: -3px;
+                vertical-align: middle;
+                visibility: visible;
+                width: 16px;
+            }
+
+            input[type="checkbox"]:after {
+                background-color: transparent;
+                border-radius: 2px;
+                bottom: 1px;
+                content: '';
+                display: block;
+                height: 8px;
+                left: 0px;
+                margin: auto;
+                position: absolute;
+                right: 0;
+                top: 0px;
+                transition: background-color 0.4s;
+                width: 8px;
+            }
+
+             input[type="checkbox"]:checked:after {
+                background-color: #00B5DC;
+                transition: background-color 0.4s;
+            }
+        }
+    }
+
+.action--next-desativado {
+    // border: 2px solid #9aca3c;
+    // color: #9aca3c;
+    background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-gray.png) center right 8px no-repeat #fff;
+    background-size: 18px;
+    border-radius: 50px;
+    border: 2px solid #CACACA;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #CACACA;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 41px;
+    padding: 0 22px;
+    position: absolute;;
+    right: 0;
+    width: 150px;
+}
+
+.action--next-ativo{
+    background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-green.png) center right 8px no-repeat #fff;
+    background-size: 18px;
+    border-radius: 50px;
+    border: 2px solid #9aca3c;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #9aca3c;
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 41px;
+    padding: 0 22px;
+    position: absolute;;
+    right: 0;
+    width: 150px;
+}
+
+fieldset#comoseparar{
+    -moz-transition: background-color 0s, max-height 0.6s;
+    -o-transition: background-color 0s, max-height 0.6s;
+    -webkit-transition: background-color 0s, max-height 0.6s;
+    background-color: #fff;
+    border-radius: 8px;
+    border: none;
+    overflow: hidden;
+    height: 0px;
+    // height: 325px;
+    max-height: 1300px;
+    padding: 0px 30px 0px;
+    position: relative;
+    transition: 0.5s linear all;
+    transition-delay: 0.7s;
+    margin: 0;
+    top: -242px;
+
+        &.ativo{
+            height: 325px;
+
+            .action--next{
+                opacity: 1;
+                transition: 0.5s linear all;
+                transition-delay: 1.5s !important;
+            }
+        }
+
+        .action--next{
+            background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-green.png) center right 8px no-repeat #fff;
+            background-size: 18px;
+            border-radius: 50px;
+            border: 2px solid #9aca3c;
+            bottom: 18px;
+            box-sizing: border-box;
+            color: #9aca3c;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 41px;
+            padding: 0 22px;
+            position: absolute;
+            right: 30px;
+            width: 150px;
+            transition: 0.5s linear all;
+            transition-delay: 1.5s;
+            opacity: 0;
+        }
+
+        legend {
+            -moz-transition: color 0s;
+            -o-transition: color 0s;
+            -webkit-transition: color 0s;
+            color: #6F2C8F;
+            display: flex;
+            font-size: 21px;
+            font-weight: 600;
+            position: relative;
+            top: 73px;
+            transition: color 0s;
+
+                small {
+                    color: #736C6B;
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 100;
+                    line-height: 1.4;
+                    margin-top: 10px;
+                }
+            }
+
+        .content {
+            display: block;
+            padding-top: 96px;
+
+                .rangeslider:nth-child(4) {
+                    display: none !important;
+                }
+
+                label {
+                    color: #00b5dc;
+                    display: block;
+                    float: right;
+                    font-size: 44px;
+                    font-weight: bold;
+                    line-height: 0;
+                    position: relative;
+                    right: 15px;
+                    top: 38px;
+                    
+                        small {
+                            font-size: 34px;
+                            left: -5px;
+                            position: relative;
+                        }
+                }
+
+        }
+
+
+}
+
+
+.corporange{
+
+    input[type=range] {
+        -webkit-appearance: none;
+        float: left;
+        margin: 14px 0;
+        width: calc( 80% - 20px );
+    }
+    input[type=range]:focus {
+        outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+        -moz-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.3);
+        background: #fff;
+        border-radius: 6px;
+        border: 2px solid #D8D8D8;
+        box-shadow: inset 0px 1px 3px rgba(0,0,0,0.3);
+        cursor: pointer;
+        height: 8px;
+        width: calc( 80% - 20px ) ;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        background: #fff;
+        border-radius: 15px;
+        border: 1.8px solid #00B5DC;
+        box-shadow: 0.9px 0.9px 1px #00B5DC, 0px 0px 0.9px #00B5DC;
+        cursor: pointer;
+        height: 26px;
+        margin-top: -11px;
+        width: 26px;
+
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+        background: #00B5DC;
+    }
+    input[type=range]::-moz-range-track {
+        background: #fff;
+        border-radius: 1.3px;
+        border: 0.2px solid #00B5DC;
+        box-shadow: 1px 1px 1px #00B5DC, 0px 0px 1px #00B5DC;
+        cursor: pointer;
+        height: 11.4px;
+        width: 100%;
+    }
+    input[type=range]::-moz-range-thumb {
+        background: #fff;
+        border-radius: 15px;
+        border: 1.8px solid #00B5DC;
+        box-shadow: 0.9px 0.9px 1px #00B5DC, 0px 0px 0.9px #00B5DC;
+        cursor: pointer;
+        height: 26px;
+        width: 26px;
+    }
+    input[type=range]::-ms-track {
+        background: #fff;
+        border-color: transparent;
+        color: transparent;
+        cursor: pointer;
+        height: 11.4px;
+        width: 100%;
+    }
+    input[type=range]::-ms-fill-lower {
+        background: #fff;
+        border-radius: 2.6px;
+        border: 0.2px solid #010101;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type=range]::-ms-fill-upper {
+        background: #fff;
+        border-radius: 2.6px;
+        border: 0.2px solid #010101;
+        box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+    input[type=range]::-ms-thumb {
+        background: #e9ffff;
+        border-radius: 15px;
+        border: 1.8px solid #00001e;
+        box-shadow: 0.9px 0.9px 1px #000031, 0px 0px 0.9px #00004b;
+        cursor: pointer;
+        height: 26px;
+        width: 26px;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+        background: #fff;
+    }
+    input[type=range]:focus::-ms-fill-upper {
+        background: #fff;
+    }
+
+    #diasrange {
+        color: #00B5DC;
+        display: block;
+        float: left;
+        font-size: 42px;
+        font-weight: bold;
+        line-height: 0;
+        padding: 14px 30px;
+
+        span{
+            font-size: 34px;
+        }
+    }
+}
+
+.corporesultado{
+    display: block;
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    transition: 0.5s linear all;
+
+        &.ativo{
+            height: auto;
+        }
+
+        h2{
+            color: #736c6b;
+            font-size: 48px;
+            font-weight: normal;
+            margin-top: 0;
+            text-align: center;
+
+                strong{
+                    color: #00B5DC;
+                }
+
+        }
+
+        ul{
+            &:after{
+                clear: both;
+                content: "";
+                display: block;
+            }
+        
+
+            li {
+                background: #fff;
+                border-radius: 8px;
+                display: block;
+                margin: 6px 5px;
+                padding: 43px;
+                text-align: center;
+
+                    img {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    h3 {
+                        display: inline-block;
+                        font-size: 30px;
+                        font-weight: normal;
+                        line-height: 1;
+                        padding-left: 18px;
+                        text-align: left;
+                        vertical-align: middle;
+
+                            strong {
+                                color:#99ca3b;
+                                display: block;
+                                font-size: 70px;
+                                letter-spacing: -5px;
+                            }
+                    }
+
+            }
+
+
+            li:nth-child(2) {
+                float: left;
+                width: 49%;
+
+                    strong {
+                        font-size: 41px;
+                        letter-spacing: 0;
+                    }
+            }
+
+            li:nth-child(3) {
+                float: right;
+                width: 49%;
+
+                strong {
+                    font-size: 41px;
+                    letter-spacing: 0;
+                }
+            }
+
+        }
+
+        h4 {
+            color: #736c6b;
+            display: block;
+            font-size: 23px;
+            font-weight: normal;
+            margin: 0;
+            padding: 35px 0;
+            text-align: center;
+        }
+
+        .caixadgua {
+            background: #fff;
+            border-radius: 8px;
+            display: block;
+            padding: 15px;
+
+                h2{
+                    color: #9aca3c;
+                    font-size: 42px;
+                    font-weight: bold;
+                    margin: 0 0 10px;
+                    text-align: center;
+                }
+
+            > span{
+                color: #736c6b;
+                font-size: 32px;
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+
+                    strong{
+                        color: #9aca3c;
+                    }
+            }
+
+
+            .litrosagua{
+                border-radius: 8px;
+                border: 1px solid #cdcbcb;
+                color: #736c6b;
+                font-size: 32px;
+                margin: 0 auto 40px;
+                max-width: 475px;
+                padding: 20px;
+                text-align: center;
+
+                    span{
+                        color: #9aca3c;
+                        display: block;
+                        font-size: 64px;
+                        font-weight: bold;
+                        line-height: 1;
+                    }
+            }
+
+
+            .imgcaixas{
+                display: block;
+                max-height: 273px;
+                padding-top: 52px;
+                overflow: hidden;
+                position: relative;
+                left: -21px;
+                width: 107%;
+
+                    &:after{
+                        content: "";
+                        display:block;
+                        clear: both;
+                    }
+
+                    i{
+                        background: url(../arquivos/caixa-secundaria-simulador-lavadora.png) center center no-repeat;
+                        background-size:100%;
+                        display: block;
+                        float: left;
+                        height: 191px;
+                        position: relative;
+                        width: 275px;
+                    }
+
+                    i:nth-child(3) {
+                        left: -213px;
+                    }
+                    
+                    
+                    i:nth-child(2) {
+                        left: -98px;
+                        width: 232px !important;
+                    }
+                    
+                    i:nth-child(1) {
+                        width: 190px !important;
+                    }
+
+                    i:nth-child(4) {
+                        background: url(../arquivos/caixa-centro-simulador-lavadora.png) center center no-repeat !important;
+                        height: 250px !important;
+                        left: -313px;
+                        top: -24px;
+                        width: 356px !important;
+                        z-index: 1;
+                    }
+
+                    i:nth-child(5) {
+                        float: right !important;
+                        right: 22px;
+                        top: -247px;
+                        width: 190px !important;
+                    }
+
+                    i:nth-child(6) {
+                        float: right !important;
+                        right: -74px;
+                        top: -246px;
+                        width: 232px !important;
+                    }
+
+                    i:nth-child(7) {
+                        float: right !important;
+                        right: -187px;
+                        top: -244px;                     
+                    }
+            }
+
+        }
+ 
+
+}
+
+.refazer {
+    display: block;
+    text-align: center;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+
+        &.ativo{
+                height: 64px;
+                margin-top: 60px;
+        }
+
+        a{
+            background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-gray.png) center right 8px no-repeat #fff;
+            background-size: 18px;
+            border-radius: 50px;
+            border: 2px solid #CACACA;
+            box-sizing: border-box;
+            color: #CACACA;
+            display: inline-block;
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 41px;
+            margin: 0 25px;
+            padding: 9px 22px;
+            text-align: left;
+            width: 229px;
+        }
+
+        a:nth-child(1) {
+            background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-green.png) center right 8px no-repeat #fff;
+            background-size: 18px;
+            border: 2px solid #9aca3c;
+            bottom: 15px;
+            color: #9aca3c;
+            font-size: 19px;
+            right: 40px;
+        }
+
+        a:nth-child(2) {
+            background: url(../arquivos/right-simulador-lavadora.png) center right 8px no-repeat #9aca3c;
+            background-size: 18px;
+            border: 2px solid #9aca3c;
+            bottom: 15px;
+            color: #fff;
+            font-size: 19px;
+            right: 40px;
+        }
+}
+
+
+
+@media screen and (max-width: 768px) and (min-width: 0px) {
+    .play{
+        width: 100%;
+
+            h1{
+                text-align: center;
+                font-size: 30px;
+            }
+    }
+
+    .iniciar{
+        padding-top: 20px;
+
+        &.ativo{
+            background: url(../arquivos/background-simulador-lavadora.png) center center no-repeat !important;
+            background-size:initial !important;
+        }
+    }
+
+    .perguntas{
+        width: 100%;
+    }
+
+    #qtdlotes{
+
+            .content{
+                padding: 0;
+
+                legend{
+                    font-size: 16px;
+                }
+
+                .only-mob{
+                    display: none;
+                }
+
+                label{
+                    margin: 3px 0;
+                }
+
+                .action--next-ativo {
+                    bottom: -34px;
+                    padding: 0 16px;
+                    width: 121px;
+                }                
+                
+            }
+
+            .corpocehckbox.ativo {
+                padding: 19px 30px;
+
+                    i{
+                        display: none;
+                    }
+            }
+
+    }
+
+    #comoseparar{
+
+        legend{
+            font-size: 18px !important;
+            top: 85px !important;
+        }
+
+        .hidden-mob{
+            display: none;
+        }
+
+        .action--next {
+            bottom: 6px !important;
+            padding: 0px 27px !important;
+            left: 5px !important;
+            right: 5px !important;
+            width: 96% !important;
+            margin: auto !important;
+            max-width: 100% !important;
+        }
+        
+        #diasrange{
+            padding: 17px 10px !important;
+        }
+        
+    }
+
+
+    .corporesultado{
+
+            h2{
+                font-size: 30px !important;
+            }
+
+            li {
+                margin: 6px 0px !important;
+                padding: 8px !important;
+
+                    h3{
+                        font-size: 18px !important;
+                        text-align:center !important;
+
+                        strong {
+                            font-size: 40px !important;
+                            letter-spacing: 0px !important;
+                        }
+                    }
+
+                    img {
+                        display: block !important;
+                        margin: auto;
+                    }
+            }
+
+            li:nth-child(2) {
+                float: left;
+                width: 100% !important;
+            }
+
+            li:nth-child(3) {
+                float: right;
+                width: 100% !important;
+            }
+
+
+            .imgcaixas{
+                display: none !important;
+            }
+    }
+
+    .refazer.ativo {
+        height: 160px !important;
+        margin-top: 13px !important;
+
+            a{
+                margin: 10px 0 !important;
+            }
+    }
+
+}
