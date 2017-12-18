@@ -9,9 +9,9 @@ Nitro.module('welcome-message', function () {
 		if (store.isCorp) {
 			//trata se não tiver nome da empresa pra colocar o e-mail
 			if (store.userData.corporateName === null) {
-				welcomeMessage.html('Olá <span class="email">' + store.userData.email + '</span>!').show();
+				welcomeMessage.html('Olá <span class="email">' + store.userData.email + '</span>!');
 			} else {
-				welcomeMessage.text('Olá ' + store.userData.corporateName + '!').show();
+				welcomeMessage.text('Olá ' + store.userData.corporateName + '!');
 			}
 		}
 	});
