@@ -90,6 +90,7 @@
 				&:before {
 					@include contentBefore();
 					background: transparent url('/arquivos/bg-loupe-zoom.png') left top no-repeat;
+					display: none;
 					height: 67px;
 					left: 50%;
 					top: 50%;
@@ -102,6 +103,7 @@
 					@include icon-get('consul-loupe');
 					@include responsiveFont(27, 16, true);
 					color: $green;
+					display: none;
 					left: 50%;
 					top: 50%;
 					transform: translateX(-50%) translateY(-50%);
