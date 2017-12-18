@@ -38,12 +38,6 @@ var Index = {
 		} else {
 			$('.banners-secundarios-mosaico').hide();
 		}
-		
-		// if ($('.banner-secundario-mosaico img').length === 0 ) {
-		// 	$('.banners-secundarios-mosaico').hide();
-		// } else {
-		// 	$('.banners-secundarios-mosaico').show();
-		// }
 
 		//banners secundarios prevent empty
 		if( $('.banner-secundario-mobile:empty').length === 2 ) {

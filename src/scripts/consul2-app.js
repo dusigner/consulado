@@ -24,19 +24,17 @@ require('expose?publishDataLayer!modules/bi/publish-data-layer');
 
 //load modules individually
 require('modules/vtex-events')();
-// require('modules/store/geo');
 require('modules/header');
 require('modules/footer');
 require('modules/store/cluster');
 require('modules/percentoff');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
-/*require('modules/store/login.url');*/
 require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/linkDoubleClick');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect'], function() {
+Nitro.setup(['cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira', 'linkDoubleClick', 'redirect'], function() {
 	$('.helperComplement').remove();
 
 	var path = window.location.pathname;
