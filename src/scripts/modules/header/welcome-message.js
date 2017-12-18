@@ -1,7 +1,6 @@
 'use strict';
 
 Nitro.module('welcome-message', function () {
-	console.log('uhuuuuu');
 	//Modificar mensagem de welcome
 	$(window).load(function () {
 		var welcomeMessage = $('.account p.welcome, .header-account p.welcome');
