@@ -9,10 +9,7 @@ require('modules/helpers');
 
 Nitro.module('cotas', function() {
 	var self = this,
-		cota = {
-			consumed: 0,
-			limit: 25
-		},
+		cota = store.isPersonal ? { consumed: 0, limit: 25 } : { consumed: 0, limit: 10 },
 		userData = null,
 		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0,
 		cotasCookie = $.cookie('xSkuSalesChannel5');

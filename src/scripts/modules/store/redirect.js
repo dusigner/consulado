@@ -34,21 +34,20 @@ var redirect = module.exports.redirect = function (data) {
 	 * abre o modal de cadastro com sucesso
 	 * Caso não seja registro, abre o modal de Login
 	 */
-	if(data.status === 'Register') {
-
-		CRM.clientSearchByEmail(data.email).done(function(user) {
+	if (data.status === 'Register') {
+		CRM.clientSearchByEmail(data.email).done(function (user) {
 
 			store.logout();
 			store.setUserData(user, true);
 
 			vtexid.start({
-				email: user.email,
+				email: data.email,
 				returnUrl: uri.toString()
 			});
 		});
 
-	} else { // status = Login
-		vtexjs.checkout.getOrderForm().done(function(res) {
+	} else if (data.status === 'Login') {
+		vtexjs.checkout.getOrderForm().done(function (res) {
 			if (res.loggedIn) {
 				window.location.href = store.uri
 					.setPath(uriRedirect ? uriRedirect : '/empresas')
@@ -62,6 +61,11 @@ var redirect = module.exports.redirect = function (data) {
 			}
 		});
 
+	} else if (data.status === 'Revalidation') {
+		vtexid.start({
+			email: data.email,
+			returnUrl: uri.toString()
+		});
 	}
 
 	//trigger click de email e senha login
@@ -116,13 +120,7 @@ module.exports.login = function (data) {
 			title: 'Algo deu errado =/',
 			destroy: true
 		});
-	} /* else {
-		$('<p>Ainda estamos validando o seu cadastro. Assim que aprovado você será notificado por e-mail.</p>').vtexModal({
-			id: 'nao-aprovado',
-			title: 'Quase lá!',
-			destroy: true
-		});
-	} */
+	}
 
 };
 
@@ -130,6 +128,14 @@ module.exports.register = function (data) {
 
 	$.extend(data, {
 		status: 'Register'
+	});
+	redirect(data);
+
+};
+
+module.exports.revalidation = function (data) {
+	$.extend(data, {
+		status: 'Revalidation'
 	});
 	redirect(data);
 
