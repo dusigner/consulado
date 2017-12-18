@@ -118,7 +118,7 @@ Nitro.module('gallery', function() {
 		}
 	});
 	if ($(window).width() > 1024) {
-		$('.popup-zoom', '.slick-slide ').not('.mfp-iframe').on('hover', function(e) {
+		$('.popup-zoom', '.slick-slide ').not('.mfp-iframe').on('hover', function() {
 			var url = $(this).attr('href'); //pega o link da imagem maior do lightbox
 			$(this).children('img').not('.mfp-iframe').attr('src', url); // troca a imagem para imagem maior e não perder qualidade no zoom
 			$(this).children('img').not('.mfp-iframe').css({'transform': 'scale(2)'});
@@ -127,12 +127,12 @@ Nitro.module('gallery', function() {
 		$('.popup-zoom').on('mouseout', function(){
 			$(this).children('img').css({'transform': 'scale(1)', 'z-index': '0', 'transition':'transform 0.2s'});
 			$('.prod-selos').css({'z-index':'3', 'opacity':'1'});
-		  });
+		});
 		$('.popup-zoom').not('.mfp-iframe').on('mousemove', function(e){
 			//$(this).css('width', '1000px !important');
 			$(this).children('img').css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
 		});
-	 }
+	}
 	
 	/*$('.slick-slide.video:not(.slick-cloned) .popup-zoom').magnificPopup({
 		items: [
