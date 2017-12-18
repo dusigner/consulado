@@ -4,7 +4,7 @@ $consul-primary: #9aca3c;
 // TESTES
 #login {
 	&.logged {
-		background: red !important;
+		background: #ff0000 !important;
 	}
 }
 
@@ -12,6 +12,8 @@ $consul-primary: #9aca3c;
 
     .modal-holder {
 		max-width: 800px;
+		margin-top: 20px;
+		margin-bottom: 20px;
 		
         .modal-header {
             display: none;
@@ -25,14 +27,14 @@ $consul-primary: #9aca3c;
 			}
 			
             .modal-custom-login--subtitle1 {
-                margin: 0;
-                font-weight: 700;
                 font-size: 15px;
+                font-weight: 700;
+                margin: 0;
 			}
 			
             .modal-custom-login--subtitle2 {
-                margin-top: 10px;
                 font-weight: 400;
+                margin-top: 10px;
             }
 		}
 		
@@ -40,12 +42,14 @@ $consul-primary: #9aca3c;
 			padding: 0 30px 30px 30px;
 
 			.modal-custom-login--errorBox {
-				color: red;
+				color: #ff0000;
 				font-weight: 300;
 			}
 
-			input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-				-webkit-box-shadow: 0 0 0 30px white inset;
+			input:-webkit-autofill,
+			textarea:-webkit-autofill,
+			select:-webkit-autofill {
+				-webkit-box-shadow: 0 0 0 30px #ffffff inset;
 			}
 
 			// LAYOUT DEFAULT
@@ -53,18 +57,18 @@ $consul-primary: #9aca3c;
 				display: flex;
 				flex-direction: row;
 
-				input[type="submit"] {
+				input[type='submit'] {
 					float: right;
 					width: auto;
 				}
 				
 			> div {
-				flex-grow: 1;
 				flex-basis: 0;
+				flex-grow: 1;
 	
 				&:first-child {
-					padding-right: 15px;
 					border-right: solid 1px $consul-primary;
+					padding-right: 15px;
 					}
 	
 					&:last-child {
@@ -78,7 +82,8 @@ $consul-primary: #9aca3c;
 			}
 
 			// LAYOUT SOLICITAR CHAVE POR EMAIL
-			.modal-custom-login--email-access-layout, .modal-custom-login-email-to-pw {
+			.modal-custom-login--email-access-layout,
+			.modal-custom-login-email-to-pw {
 				padding: 0 150px;
 
 				.modal-custom-email--inputbox {
@@ -96,26 +101,26 @@ $consul-primary: #9aca3c;
 
 				.modal-custom-login-key__fields {
 					display: flex;
-					margin-bottom: 30px;
 					justify-content: space-between;
+					margin-bottom: 30px;
 
 					&.invalid__key {
 						input {
-							border-color: red;
+							border-color: #ff0000;
 						}
 					}
 
 					input {
-						margin: 0 10px;
 						border: solid 1px #ccc;
+						border-radius: 8px;
+						color: transparent;
+						font-size: 20px;
+						height: 60px;
+						margin: 0 10px;
 						padding: 0;
 						text-align: center;
-						border-radius: 8px;
-						width: 44px;
-						height: 60px;
-						font-size: 20px;
-						color: transparent;
 						text-shadow: 0 0 0 #736c6b;
+						width: 44px;
 
 						&:focus {
 							background: $consul-primary;
@@ -131,47 +136,47 @@ $consul-primary: #9aca3c;
 
 			.modal-custom-login--sectitles {
 				color: $consul-primary;
+				font-weight: 600;
 				margin-bottom: 10px;
 				text-align: left;
-				font-weight: 600;
 			}
 
 			.modal-custom-login--formOptions {
-				text-align: right;
 				margin-bottom: 15px;
+				text-align: right;
 
 				span {
-					font-size: 13px;
-					text-decoration: underline;
-					margin: 0 10px;
 					border-right: solid 1px #ccc;
-					padding-right: 10px;
 					cursor: pointer;
+					font-size: 13px;
+					margin: 0 10px;
+					padding-right: 10px;
+					text-decoration: underline;
 
 					&:first-child {
 						margin-left: 0;
 					}
 
 					&:last-child {
-						margin-right: 0;
-						margin-left: 0;
-						padding: 0;
 						border: none;
+						margin-left: 0;
+						margin-right: 0;
+						padding: 0;
 					}
 				}
 			}
 
 			.modal-custom-login--buttons {
 				.modal-custom-login-btn {
-					width: 100%;
-					margin-bottom: 15px;
-					border: none;
-					color: white;
-					text-align: left;
-					padding: 12px 17px 12px 70px;
-					transition: all 0.2s ease;
-					background-repeat: no-repeat;
 					background-position: 30px;
+					background-repeat: no-repeat;
+					border: none;
+					color: #ffffff;
+					margin-bottom: 15px;
+					padding: 12px 17px 12px 70px;
+					text-align: left;
+					transition: all .2s ease;
+					width: 100%;
 
 					&.mailkey {
 						background-color: #5fbd5f;
@@ -193,7 +198,28 @@ $consul-primary: #9aca3c;
 					}
 
 					&:hover {
-						opacity: 0.7;
+						opacity: .7;
+					}
+				}
+			}
+
+			.password-validate-indicators {
+				text-align: left;
+				margin-bottom: 30px;
+				margin-top: 20px;
+
+				.password-validate--title {
+					font-weight: 400;
+				}
+
+				ul {
+					li {
+						font-size: 13px;
+						color: #ff0000;
+
+						&.validated {
+							color: #5fbd5f;
+						}
 					}
 				}
 			}
@@ -234,30 +260,32 @@ $consul-primary: #9aca3c;
 	}
 }
 
-.modal-custom-email--inputbox, .modal-custom-password--inputbox, .modal-custom--inputbox {
-	position: relative;
+.modal-custom-email--inputbox,
+.modal-custom-password--inputbox,
+.modal-custom--inputbox {
 	border-bottom: solid 1px #ccc;
 	margin-bottom: 10px;
 	margin-top: 25px;
+	position: relative;
 
 	&.label-on {
 		&::before {
-			top: -20px;
 			left: -7px;
-			transform: scale(0.7);
+			top: -20px;
+			transform: scale(.7);
 		}
 	}
 
 	&::before {
-		position: absolute;
 		left: 0;
+		position: absolute;
 		top: 0;
-		transition: all 0.2s ease;
+		transition: all .2s ease;
 	}
 	
 	span {
-		position: absolute;
 		left: 10px;
+		position: absolute;
 		top: 8px;
 	}
 	
@@ -268,13 +296,14 @@ $consul-primary: #9aca3c;
 }
 
 // ESTILO BOTÕES
-.custom-login-btn, input[type="submit"].custom-login-btn {
-	width: auto;
-	padding: 7px 25px;
+.custom-login-btn,
+input[type='submit'].custom-login-btn {
 	border: solid 2px;
-	transition: all 0.2s ease;
 	border-radius: 50px;
 	font-weight: 500;
+	padding: 7px 25px;
+	transition: all .2s ease;
+	width: auto;
 
 	&.btn-custom-primary {
 		background-color: #ffffff;
@@ -294,9 +323,96 @@ $consul-primary: #9aca3c;
 		color: #ffffff;
 
 		&:hover {
+			background: #ffffff;
 			border-color: $consul-primary;
 			color: $consul-primary;
-			background: #ffffff;
 		}
 	}
 }
+
+.btn--voltar--toDefault,
+.btn--voltar--toEmail {
+	cursor: pointer;
+}
+
+@include breakpoint (small, 'max') {
+	#vtex-modal-custom-login {
+		.modal-holder {
+			margin-top: 20px;
+			margin-bottom: 20px;
+
+			.mode-custom-login--header {
+				.modal-custom-login--subtitle2 {
+					font-size: 14px;
+					padding: 0 10px;
+				}
+			}
+
+			.modal-custom-login--body {
+				padding: 0 10px 10px 10px;
+		
+				.modal-custom-login--init-layout {
+					flex-direction: column;
+		
+					> div {
+						&:first-child {							
+							padding: 0;
+							border: none;
+						}
+
+						&:last-child {							
+							padding: 0;
+						}
+					}
+				}
+
+				.modal-custom-login--email-access-layout,
+				.modal-custom-login-email-to-pw {
+					padding: 0;
+				}
+
+				.modal-custom-login--email-access-layout {
+					padding: 0;
+
+					.modal-custom-email--inputbox {
+						margin-bottom: 30px;
+					}
+				}
+
+				.modal-custom-login-email-to-pw {
+					.modal-custom-email--inputbox {
+						margin-bottom: 30px;
+					}
+				}
+
+				.modal-custom-login--key-access-layout {
+					padding: 0;
+
+					.modal-custom-login-key__fields {
+						flex-wrap: wrap;
+
+						input {
+							width: 25%;
+							margin: 0 4%;
+							margin-bottom: 15px;
+						}
+					}
+				}
+
+				.modal-custom-login--formOptions {
+					span {
+						font-size: 11px;
+					}
+				}
+			}
+		}
+	}
+
+	.custom-login-btn,
+	input[type='submit'].custom-login-btn {
+		border: solid 1px;
+		border-radius: 5px;
+		padding: 5px 15px;
+		display: inline-block;
+	}
+};
