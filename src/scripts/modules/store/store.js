@@ -23,7 +23,7 @@ define('store', function() {
 		'/pre-home'
 	];
 
-	/*var self = this;*/
+	var self = this;
 
 	this.init = function() {
 
@@ -46,9 +46,9 @@ define('store', function() {
 
 		this.accountName = window.jsnomeLoja || window.vtex.accountName || account;
 
-		this.isTelevendas = window.getCookie('vtex-current-user') ? true : false;
-
 		this.setup();
+
+		this.checkTelevendas();
 
 		// return this.checkAccess();
 
@@ -123,6 +123,14 @@ define('store', function() {
 
 		return !(!approved && this.isPrivateUrl);
 		//return true;
+	};
+
+	this.checkTelevendas = function(){
+		$(window).on('orderFormUpdated.vtex', function(e, orderform) {
+			if ( orderform.userType  === 'callCenterOperator' ) {
+				self.isTelevendas = true;
+			}
+		});
 	};
 
 	this.init();
