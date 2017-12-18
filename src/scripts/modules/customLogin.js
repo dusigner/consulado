@@ -10,7 +10,6 @@ require('vendors/vtex-modal');
 Nitro.module('customLogin', function() {
 	var self = this,
 		$modalBody = $('.modal-custom-login--body'),
-		$modalHeader  = $('.mode-custom-login--header'),
 		$subtitle = $('.modal-custom-login--subtitle2'),
 		routes = {
 			authenticateByEmailKey: '/pub/authentication/accesskey/validate',
@@ -19,6 +18,16 @@ Nitro.module('customLogin', function() {
 			getToken: '/pub/authentication/start',
 			setPassword: '/pub/authentication/classic/setpassword',
 			getOAuthUrl: 'https://vtexid.vtex.com.br/api/vtexid/pub/authentication/oauth/redirect'
+		},		
+		userInfos = {
+			initialCallback: {
+				callbackUrl: window.location.protocol + '//' + window.location.host + '/api/vtexid/pub/authentication/finish',
+				scope: window.jsnomeLoja,
+				user: null, 
+				locale: 'pt-BR'
+			},
+			faceLogin : false,
+			googleLogin : false
 		},
 		helpers = {
 			formtoobj : function(form) {
@@ -31,7 +40,7 @@ Nitro.module('customLogin', function() {
 				
 				return indexed_array;
 			},
-			authenticateUser : function(cookies, expire) {				
+			authenticateUser : function(cookies, expire) {	
 				for (var i = 0, len = cookies.length; i < len; i++) {			
 					var cookie = cookies[i];
 			
@@ -79,39 +88,10 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-email--inputbox">' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
 						'</div>' +			
-						'<button class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</button>' +
-						'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Solicitar chave">' +
+						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
+						'<button type="submit" class="custom-login-btn btn-custom-secondary">Solicitar chave</button>' +
 					'</div>' +
 				'</form>' +
-			'</div>',
-			defaultLayout: 
-			'<div class="modal-custom-login--init-layout">' +
-				'<div class="modal-custom-login--forms">' +
-					'<div id="mail_pass_login">' +
-						'<p class="modal-custom-login--sectitles">Entre com um email e senha</p>' +
-						'<form id="modal-custom-login--form">' +
-							'<div class="modal-custom-login-mail_pass_login">' +
-								'<div class="modal-custom-email--inputbox">' +
-									'<input type="text" id="login" class="custom-label" name="login">' +
-								'</div>' +									
-								'<div class="modal-custom-password--inputbox">' +
-									'<input type="password" id="password" class="custom-label" name="password">' +
-								'</div>' +				
-								'<div class="modal-custom-login--formOptions">' +
-									'<span class="forget_pass">Esqueci minha senha</span>' +
-									'<span class="no_pass">Não tenho uma senha</span>' +
-								'</div>' +				
-								'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
-							'</div>' +
-						'</form>' +
-					'</div>' +
-				'</div>' +
-				'<div class="modal-custom-login--buttons">' +
-					'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
-					'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>Receber chave de acesso por email</button>' +
-					'<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' +
-					'<button class="modal-custom-login-btn google_access">Entrar com Google</button>' +
-				'</div>' +
 			'</div>',
 			keysLayout: function (resetPw) {
 				return '' +
@@ -126,7 +106,7 @@ Nitro.module('customLogin', function() {
 								'<input type="text" maxlength="1" class="acess_key_value">' +
 								'<input type="text" maxlength="1" class="acess_key_value">' +
 							'</div>' +
-							'<button class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--' + ((resetPw) ? 'toDefault' : 'toEmail') + '">Voltar</button>' +
+							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--' + ((resetPw) ? 'toDefault' : 'toEmail') + '">Voltar</span>' +
 							'<input type="submit" class="custom-login-btn btn-custom-secondary" value="' + ((resetPw) ? 'Confirmar' : 'Entrar') + '">' +
 						'</div>' +
 					'</form>' +
@@ -139,7 +119,7 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-email--inputbox">' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
 						'</div>' +			
-						'<button class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</button>' +
+						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
 						'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
 					'</div>' +
 				'</form>' +
@@ -154,20 +134,25 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom--inputbox modal-custom-set-confirm-password--inputbox">' +
 							'<input type="password" id="custom-login-confirm-sett-pw" class="custom-label" name="confirm_password">' +
 						'</div>' +	
-						'<button class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</button>' +
+						'<div class="password-validate-indicators">' +
+						'<span class="password-validate--title">Sua senha deve ter</span>' +
+						'<ul>' +
+							'<li class="hasMinimum">- Mínimo de 8 caractéres</li>' +
+							'<li class="hasDigitIndicator">- 1 número</li>' +
+							'<li class="hasLowercaseIndicator">- 1 letra minúscula</li>' +
+							'<li class="hasUppercaseIndicator">- 1 letra maiúscula</li>' +
+						'</ul>' +
+						'</div>' +
+						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
 						'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
 					'</div>' +
 				'</form>' +
 			'</div>'
 		},
-		userInfos = {
-			initialCallback: {
-				callbackUrl: window.location.protocol + '//' + window.location.host + '/api/vtexid/pub/authentication/finish',
-				scope: window.jsnomeLoja,
-				user: null, 
-				locale: 'pt-BR'
-			}
-		};
+		hasUppercase = '(?=.*?[A-Z])',
+		hasLowercase = '(?=.*?[a-z])',
+		hasDigit = '(?=.*?[0-9])',
+		hasMinium = '.{8,}';
 
 	this.init = function() {
 		self.setListeners();
@@ -177,6 +162,49 @@ Nitro.module('customLogin', function() {
 			self.request(routes.getToken, userInfos.initialCallback)
 			.done(function(response) {
 				userInfos.authenticationToken = response.authenticationToken;
+
+				if (response.oauthProviders.filter(function (el) {
+					return el.providerName === 'Facebook';
+				}).length > 0) {
+					userInfos.faceLogin = true;
+				}
+
+				if (response.oauthProviders.filter(function (el) {
+					return el.providerName === 'Google';
+				}).length > 0) {
+					userInfos.googleLogin = true;
+				}
+
+				templates.defaultLayout = 
+				'<div class="modal-custom-login--init-layout">' +
+					'<div class="modal-custom-login--forms">' +
+						'<div id="mail_pass_login">' +
+							'<p class="modal-custom-login--sectitles">Entre com um email e senha</p>' +
+							'<form id="modal-custom-login--form">' +
+								'<div class="modal-custom-login-mail_pass_login">' +
+									'<div class="modal-custom-email--inputbox">' +
+										'<input type="text" id="login" class="custom-label" name="login">' +
+									'</div>' +									
+									'<div class="modal-custom-password--inputbox">' +
+										'<input type="password" id="password" class="custom-label" name="password">' +
+									'</div>' +				
+									'<div class="modal-custom-login--formOptions">' +
+										'<span class="forget_pass">Esqueci minha senha</span>' +
+										'<span class="no_pass">Não tenho uma senha</span>' +
+									'</div>' +				
+									'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
+								'</div>' +
+							'</form>' +
+						'</div>' +
+					'</div>' +
+					'<div class="modal-custom-login--buttons">' +
+						'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
+						'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>Receber chave de acesso por email</button>' +
+						((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
+						((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
+					'</div>' +
+				'</div>';
+
 			}), 1000 * 60 * 5);		
 		
 		// self.verifyLogin();
@@ -207,11 +235,12 @@ Nitro.module('customLogin', function() {
 						)
 					.then(function(){
 						self.setKeysLayout(true);
+						focusFirstInput();
 					}, function() {
 						helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
 					});
 				} else {
-						helpers.printError('E-mail inválido.');
+					helpers.printError('E-mail inválido.');
 				}
 			})
 			// SUBMIT CHAVE ENVIADA PRO EMAIL
@@ -244,7 +273,6 @@ Nitro.module('customLogin', function() {
 							helpers.printError(data.authStatus);
 						}
 					}, function(err) {
-						console.log(err);
 						helpers.printError(err);
 					});
 				}
@@ -261,23 +289,40 @@ Nitro.module('customLogin', function() {
 			})
 			// Forget password: Set new pass
 			.on('click', '.forget_pass', function(e) {		
-				e.preventDefault();		
-				self.setEmailToPwLAyout(true);	
+				e.preventDefault();
+				self.setEmailToPwLAyout(true);
 			})
+			// VALIDAR CADASTRO DE SENHA
+			.on('keyup', '#custom-login-sett-pw', function() {
+				var pass = $(this).val();
+
+				(pass.match(hasUppercase)) ? $('.hasUppercaseIndicator').addClass('validated') : $('.hasUppercaseIndicator').removeClass('validated');
+				(pass.match(hasLowercase)) ? $('.hasLowercaseIndicator').addClass('validated') : $('.hasLowercaseIndicator').removeClass('validated');
+				(pass.match(hasDigit)) ? $('.hasDigitIndicator').addClass('validated') : $('.hasDigitIndicator').removeClass('validated');
+				(pass.match(hasMinium)) ? $('.hasMinimum').addClass('validated') : $('.hasMinimum').removeClass('validated');
+
+			})
+			// SUBMIT CADASTRO DE SENHA	
 			.on('submit', '#modal-custom-login-setting-pw', function(e) {
 				e.preventDefault();
 				var newPass = $(this).find('#custom-login-sett-pw').val();
 
-				self.request(routes.setPassword, {
-					authenticationToken: userInfos.authenticationToken,
-					newPassword: newPass,
-					login: userInfos.email,
-					accesskey: userInfos.accesskey
-				}).then(function(data) {
-					helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
-					window.location = '/';
-					// window.location.href = '/';
-				});
+				if ($(this).find('#custom-login-sett-pw').val() !== $(this).find('#custom-login-confirm-sett-pw').val()) {
+					helpers.printError('A senhas devem ser iguais');
+				} else if (!newPass.match(hasUppercase) || !newPass.match(hasLowercase) || !newPass.match(hasDigit) || !newPass.match(hasMinium)) {
+					helpers.printError('Sua senha não possui as regras exigidas.');
+				} else {
+					self.request(routes.setPassword, {
+						authenticationToken: userInfos.authenticationToken,
+						newPassword: newPass,
+						login: userInfos.email,
+						accesskey: userInfos.accesskey
+					}).then(function(data) {
+						helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
+						location.reload();
+						// window.location.href = '/';
+					});
+				}				
 			})
 			// Submit solicitar chave para e-mail
 			.on('submit', '#modal-custom-login-email-access--form', function(e) {
@@ -294,6 +339,7 @@ Nitro.module('customLogin', function() {
 						)
 						.then(function(){
 							self.setKeysLayout();
+							focusFirstInput();
 						}, function() {
 							helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
 						});
@@ -310,10 +356,12 @@ Nitro.module('customLogin', function() {
 				});
 
 				if (key.length < 6 || key.length > 6) {
-					// console.log('Chave inválida.');
+					helpers.printError('Chave de acesso inválida. Verifique a digitação.');
+					$('.modal-custom-login-key__fields').addClass('invalid__key');
 				} else {
 					userInfos.accesskey = key;
 					self.setPwLayout();
+					focusFirstInput();
 				}
 			})
 			// Submit form login e senha
@@ -335,7 +383,6 @@ Nitro.module('customLogin', function() {
 							helpers.printError(data.authStatus);
 						}
 					}, function(err) {
-						console.log(err);
 						helpers.printError(err);
 					});
 			})		
@@ -343,10 +390,13 @@ Nitro.module('customLogin', function() {
 			.on('click', '.btn--voltar--toDefault', function(e) {		
 				e.preventDefault();	
 				self.setDefaultLayout();
+
+				focusFirstInput();
 			})
 			// Botão "Acesso por e-mail" set Layout: Solicitar chave pelo e-mail
 			.on('click', '.modal-custom-login-btn.mailkey', function() {			
 				self.setEmailAccessLayout();
+				focusFirstInput();
 			})
 			// Botão Access Facebook
 			.on('click', '.modal-custom-login-btn.facebook_access', function() {			
@@ -363,6 +413,11 @@ Nitro.module('customLogin', function() {
 				if (this.value.length === 0) {
 					$(this).parent().removeClass('label-on');
 				}
+			})
+			.on('keyup', '.acess_key_value', function() {
+				if($(this).next().hasClass('acess_key_value')) {
+					$(this).next().focus();
+				}
 			});
 
 		// Substituindo todos os triggers do botão #login para somente abrir o modal novo
@@ -370,6 +425,7 @@ Nitro.module('customLogin', function() {
 		$('body').on('click', '#login', function() {
 			self.setDefaultLayout();
 			$('#modal-custom-login').vtexModal();
+			focusFirstInput();
 		});	
 	};
 
@@ -419,15 +475,15 @@ Nitro.module('customLogin', function() {
 			
 		} else if (data.authStatus === 'Pending') {
 			
-			console.warn('SessÃ£o pendente');
+			// console.warn('SessÃ£o pendente');
 			
 		} else if (data.authStatus === 'WrongCredentials'){
 					
-			console.warn('Credenciais erradas');
+			// console.warn('Credenciais erradas');
 			
 		} else if (data.authStatus === 'MultipleAccount') {
 			
-			console.warn('Logado em mais de uma conta');
+			// console.warn('Logado em mais de uma conta');
 		}
 	},
 
@@ -435,12 +491,14 @@ Nitro.module('customLogin', function() {
 	this.setDefaultLayout = function() {		
 		$modalBody.html(templates.defaultLayout);
 		$subtitle.html('Acesse sua conta');
+		focusFirstInput();
 	};
 	
 	// Layout: Solicitar chave pelo e-mail
 	this.setEmailAccessLayout = function() {		
 		$modalBody.html(templates.emailAcessLayout);
 		$subtitle.html('Informe seu e-mail');
+		focusFirstInput();
 	};	
 
 	// Layout: Inserir chave
@@ -457,13 +515,19 @@ Nitro.module('customLogin', function() {
 	this.setEmailToPwLAyout = function() {		
 		$modalBody.html(templates.emailToPassLayout);
 		$subtitle.html('Informe seu e-mail');
+		focusFirstInput();
 	};
 
 	// Layout: Layout para redefinir a Senha
 	this.setPwLayout = function() {
 		$subtitle.html('Cadastre uma senha');
 		$modalBody.html(templates.setPwLayout);
+		focusFirstInput();
 	};
+
+	function focusFirstInput() {
+		$('.modal-custom-login--body input').first().focus();
+	}
 
 	this.init();
 });
