@@ -3,7 +3,10 @@
 require('modules/smartFocus');
 
 Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
-	smartFocus.renderBanner();
+	if($('body').hasClass('home')) {
+		smartFocus.renderBanner();
+	}
+
 	var $buttonOpenRegulamento = $('.open-regulamento');
 
 	this.setupMainSlider = function() {
