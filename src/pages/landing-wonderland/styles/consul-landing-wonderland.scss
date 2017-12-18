@@ -184,8 +184,8 @@
 		.slick-slide {
 			border: none;
 			outline: none;
-			&:hover, 
-			&:focus, 
+			&:hover,
+			&:focus,
 			&:active {
 				border: none;
 				outline: none;
@@ -238,10 +238,16 @@
 	}
 }
 
-#atendimento {
+#atendimento,
+#chequeemail {
 	background: $gray;
-	padding-top: 15px;
 	text-align: center;
+	padding-top: 15px;
+
+	.row { margin-bottom: 0; }
+}
+
+#atendimento {
 
 	.atendimento-row {
 		span {
