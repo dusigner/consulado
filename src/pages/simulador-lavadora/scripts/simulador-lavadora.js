@@ -15,8 +15,6 @@ require('expose?store!modules/store/store');
 
 Nitro.setup([], function () {
 
-    var url_atual = window.location.href;
-    $('a.comprar').attr('href', url_atual);
 
 // Função scrollar para o topo da calculadora
 function scroll_to_calc(){
@@ -124,4 +122,19 @@ $('.reniciar').click(function() {
 }); 
 
     
-    } );
+// Função scrollar para o topo da calculadora
+function scroll_comprar(){
+    var target = jQuery('.prod-info'),
+        position = ( target.offset().top ) - ( jQuery( '.product-menu' ).outerHeight() );
+    jQuery('html, body').animate({
+        scrollTop: position
+    }, 800);
+}
+
+$('.comprar').click(function() {
+        
+          scroll_comprar();
+    
+    });
+
+} );
