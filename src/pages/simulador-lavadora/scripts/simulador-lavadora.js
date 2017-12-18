@@ -131,10 +131,11 @@ function scroll_comprar(){
     }, 800);
 }
 
-$('.comprar').click(function() {
-        
-          scroll_comprar();
-    
-    });
-
 } );
+
+
+$('.comprar').click(function() {
+
+    $('.buy-button.buy-button-ref').trigger('click');
+    
+});
