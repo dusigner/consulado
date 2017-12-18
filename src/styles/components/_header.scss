@@ -448,7 +448,8 @@ body.consulempresa {
 		position: relative;
 
 		.welcome { 
-			margin-bottom: 10px; 
+			display: none;
+			margin-bottom: 0; 
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
@@ -470,11 +471,14 @@ body.consulempresa {
 		}
 	}
 
-	.account {
-		.logout a {
-			@include responsiveFont(12);
-			color: $orange;
-		}
+	.link-meus-pedidos {
+		display: inline-block;
+		margin-top: 10px;
+	}
+
+	.logout a {
+		@include responsiveFont(12);
+		color: $orange;
 	}
 
 	&.pre-home {
