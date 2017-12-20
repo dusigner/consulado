@@ -24,7 +24,7 @@
 @import 'layout/gridresponsive';
 
 
-body .hidden{
+body .hidden {
     display: none !important;
 }
 
@@ -38,14 +38,14 @@ body .hidden{
     background-size: auto 150%;
     max-height: 580px;
     min-height: 490px;
+    padding-top: 85px;
     position: relative;
     transition: 0.5s linear all;
-    padding-top: 85px;
     width: 100%;
 
-        &.ativo.final{
-            height: auto;
+        &.ativo.final {
             background: #f1f1f1 !important;
+            height: auto;
             max-height: initial !important;
         }
 }
@@ -59,17 +59,17 @@ body .hidden{
     display: none !important;
 }
 
-.iniciar:after{
+.iniciar:after {
     clear: both;
     content: "";
     display: block;
     width: 100%;
 }
 
-.iniciar:before{
-    content: "";
+.iniciar:before {
     background: rgba(000,000,000,.3);
     bottom: 0;
+    content: "";
     display:block;
     left: 0;
     position: absolute;
@@ -83,13 +83,13 @@ body .hidden{
     display: block;
     float: left;
     height: 405px;
+    overflow: hidden;
     position: relative;
+    transition: 0.5s linear all;
     width: 60%;
     z-index: 1;
-    overflow: hidden;
-    transition: 0.5s linear all;
 
-    &.desativado{
+    &.desativado {
         height: 0;
         padding-top: 0;
         transition: 0.5s linear all;
@@ -104,7 +104,7 @@ body .hidden{
             text-align: right;
         }
 
-        h2{
+        h2 {
             color: #fff;
             display: block;
             float: right;
@@ -144,16 +144,16 @@ body .hidden{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
-    width: 60%;
     overflow: hidden;
+    text-align: left;
     transition: 0.5s linear all;
+    width: 60%;
 
-         &.desativado{
+         &.desativado {
              height: 0px;             
            }
         
-        h2{
+        h2 {
             background-color: #fff;
             border-radius: 10px;
             color: #99CA3B;
@@ -167,24 +167,24 @@ body .hidden{
         }
 }
 
-.corpocehckbox{
+.corpocehckbox {
     background-color: #fff;
     border-radius: 8px;
     border: none;
+    height: 246px;
     max-height: 1300px;
+    overflow: hidden;
     padding: 20px 30px;
     transition: 0.5s linear all;
-    height: 246px;
-    overflow: hidden;
 
 
-        &.ativo{
-            height: 56px;
+        &.ativo {
             background-color: #9aca3c;
-            transition: 0.5s linear all;
+            height: 56px;
             padding: 10px 30px;
+            transition: 0.5s linear all;
 
-            legend{
+            legend {
                 color: #fff;
                 transition: 0.5s linear all;
 
@@ -199,10 +199,10 @@ body .hidden{
         }
 
         .msg-erro {
-            position: absolute;
             bottom: -35px;
-            right: 170px;
             color: #f00;
+            position: absolute;
+            right: 170px;
         }
         
         legend {
@@ -210,7 +210,7 @@ body .hidden{
             -o-transition: color 0s;
             -webkit-transition: color 0s;
             color: #6F2C8F;
-            display: flex;
+            display: block;
             font-size: 21px;
             font-weight: 600;
             position: relative;
@@ -219,15 +219,15 @@ body .hidden{
             width: 100%;
 
                 i {
-                    display: block;
-                    float: right;
                     background: url(../arquivos/check-simulador-lavadora.png) center center no-repeat;
                     background-size: 100%;
-                    width: 35px;
+                    display: block;
+                    float: right;
                     height: 27px;
                     opacity: 0;
-                    transition: 0.5s linear all;
                     transition-delay: 0.5s;
+                    transition: 0.5s linear all;
+                    width: 35px;
                 }
             
             
@@ -238,20 +238,20 @@ body .hidden{
 #qtdlotes {
 
     border: none;
-    overflow: hidden;
-    padding: 0;
-    opacity: 0;
     height: 0;
     margin-bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
     transition: 0.5s linear all;
 
         &.ativo {
+            height: 342px;
+            opacity: 1;
             overflow: hidden;
             padding: 0;
-            opacity: 1;
-            height: 342px;
-            transition: 0.5s linear all;
             transition-delay: 0.6s;
+            transition: 0.5s linear all;
         }
     
         .content {
@@ -313,8 +313,6 @@ body .hidden{
     }
 
 .action--next-desativado {
-    // border: 2px solid #9aca3c;
-    // color: #9aca3c;
     background: url(../arquivos/green-simulador-lavadora.png) center right 8px no-repeat #fff;
     background-size: 18px;
     border-radius: 50px;
@@ -331,7 +329,7 @@ body .hidden{
     width: 150px;
 }
 
-.action--next-ativo{
+.action--next-ativo {
     background: url(../arquivos/green-simulador-lavadora.png) center right 8px no-repeat #fff;
     background-size: 18px;
     border-radius: 50px;
@@ -348,44 +346,43 @@ body .hidden{
     width: 150px;
 }
 
-fieldset#comoseparar{
+fieldset#comoseparar {
     -moz-transition: background-color 0s, max-height 0.6s;
     -o-transition: background-color 0s, max-height 0.6s;
     -webkit-transition: background-color 0s, max-height 0.6s;
     border-radius: 8px;
     border: none;
-    overflow: hidden;
     height: 0px;
-    // height: 325px;
+    margin: 0;
     max-height: 1300px;
+    overflow: hidden;
     padding: 0px 30px 0px;
     position: relative;
-    transition: 0.5s linear all;
-    transition-delay: 0.7s;
-    margin: 0;
     top: -242px;
+    transition-delay: 0.7s;
+    transition: 0.5s linear all;
 
-        &.ativo{
-            height: 325px;
+        &.ativo {
             background-color: #fff;
+            height: 325px;
 
-                legend{
+                legend {
                     height: auto;
                     opacity: 1;
-                    transition: 0.5s linear all;
                     transition-delay: 1s !important;
+                    transition: 0.5s linear all;
                 }
 
-            .action--next{
+            .action--next {
                 opacity: 1;
-                transition: 0.5s linear all;
                 transition-delay: 1.5s !important;
+                transition: 0.5s linear all;
             }
         }
 
-        .action--next{
-            background: url(../arquivos/green-simulador-lavadora.png) center right 8px no-repeat #fff;
+        .action--next {
             background-size: 18px;
+            background: url(../arquivos/green-simulador-lavadora.png) center right 8px no-repeat #fff;
             border-radius: 50px;
             border: 2px solid #9aca3c;
             bottom: 18px;
@@ -394,13 +391,13 @@ fieldset#comoseparar{
             font-size: 19px;
             font-weight: 600;
             line-height: 41px;
+            opacity: 0;
             padding: 0 22px;
             position: absolute;
             right: 30px;
-            width: 150px;
-            transition: 0.5s linear all;
             transition-delay: 1.5s;
-            opacity: 0;
+            transition: 0.5s linear all;
+            width: 150px;
         }
 
         legend {
@@ -411,13 +408,13 @@ fieldset#comoseparar{
             display: inline-block;
             font-size: 21px;
             font-weight: 600;
-            position: relative;
-            top: 73px;
-            overflow: hidden;
             height: 0px;
             opacity: 0;
-            transition: 0.5s linear all;
+            overflow: hidden;
+            position: relative;
+            top: 73px;
             transition-delay: 1s !important;
+            transition: 0.5s linear all;
 
                 small {
                     color: #736C6B;
@@ -461,7 +458,7 @@ fieldset#comoseparar{
 }
 
 
-.corporange{
+.corporange {
 
     input[type=range] {
         -webkit-appearance: none;
@@ -562,38 +559,38 @@ fieldset#comoseparar{
         line-height: 0;
         padding: 14px 30px;
 
-        span{
+        span {
             font-size: 34px;
         }
     }
 }
 
-.corporesultado{
+.corporesultado {
     display: block;
-    position: relative;
-    overflow: hidden;
     height: 0;
+    overflow: hidden;
+    position: relative;
     transition: 0.5s linear all;
 
-        &.ativo{
+        &.ativo {
             height: auto;
         }
 
-        h2{
+        h2 {
             color: #736c6b;
             font-size: 48px;
             font-weight: normal;
             margin-top: 0;
             text-align: center;
 
-                strong{
+                strong {
                     color: #00B5DC;
                 }
 
         }
 
-        ul{
-            &:after{
+        ul {
+            &:after {
                 clear: both;
                 content: "";
                 display: block;
@@ -671,7 +668,7 @@ fieldset#comoseparar{
             display: block;
             padding: 15px;
 
-                h2{
+                h2 {
                     color: #9aca3c;
                     font-size: 42px;
                     font-weight: bold;
@@ -679,12 +676,12 @@ fieldset#comoseparar{
                     text-align: center;
                 }
 
-            > span{
+            > span {
                 color: #736c6b;
-                font-size: 32px;
                 display: block;
-                text-align: center;
+                font-size: 32px;
                 margin-bottom: 20px;
+                text-align: center;
 
                     strong{
                         color: #9aca3c;
@@ -692,7 +689,7 @@ fieldset#comoseparar{
             }
 
 
-            .litrosagua{
+            .litrosagua {
                 border-radius: 8px;
                 border: 1px solid #cdcbcb;
                 color: #736c6b;
@@ -702,7 +699,7 @@ fieldset#comoseparar{
                 padding: 20px;
                 text-align: center;
 
-                    span{
+                    span {
                         color: #9aca3c;
                         display: block;
                         font-size: 64px;
@@ -712,22 +709,22 @@ fieldset#comoseparar{
             }
 
 
-            .imgcaixas{
+            .imgcaixas {
                 display: block;
-                max-height: 273px;
-                padding-top: 52px;
-                overflow: hidden;
-                position: relative;
                 left: -21px;
+                max-height: 273px;
+                overflow: hidden;
+                padding-top: 52px;
+                position: relative;
                 width: 107%;
 
-                    &:after{
+                    &:after {
+                        clear: both;
                         content: "";
                         display:block;
-                        clear: both;
                     }
 
-                    i{
+                    i {
                         background: url(../arquivos/caixa-secundaria-simulador-lavadora.png) center center no-repeat;
                         background-size:100%;
                         display: block;
@@ -788,19 +785,19 @@ fieldset#comoseparar{
 
 .refazer {
     display: block;
-    text-align: center;
-    position: relative;
     height: 0;
     overflow: hidden;
+    position: relative;
+    text-align: center;
     width: 100%;
 
-        &.ativo{
+        &.ativo {
                 height: 64px;
                 margin-top: 60px;
                 padding-bottom: 120px;
         }
 
-        a{
+        a {
             background: url(https://www.consul.com.br/wp-content/themes/consul-enterprise/assets/img-calc-lavadora/arrow-gray.png) center right 8px no-repeat #fff;
             background-size: 18px;
             border-radius: 50px;
@@ -838,10 +835,10 @@ fieldset#comoseparar{
         }
 }
 
-.infosimulador{
+.infosimulador {
     div {
-        font-size: 11px;
         color: #736c6b;
+        font-size: 11px;
         padding: 12px 0;
         text-align: justify;
         word-break: break-all;
@@ -849,42 +846,42 @@ fieldset#comoseparar{
 } 
 
 @media screen and (max-width: 768px) and (min-width: 0px) {
-    .play{
+    .play {
         width: 100%;
 
-            h1{
-                text-align: center;
+            h1 {
                 font-size: 30px;
+                text-align: center;
             }
     }
 
-    .iniciar{
+    .iniciar {
         padding-top: 20px;
 
-        &.ativo{
+        &.ativo {
             background: url(../arquivos/background-simulador-lavadora.png) center center no-repeat !important;
             background-size:initial !important;
         }
     }
 
-    .perguntas{
+    .perguntas {
         width: 100%;
     }
 
-    #qtdlotes{
+    #qtdlotes {
 
-            .content{
+            .content {
                 padding: 0;
 
-                legend{
+                legend {
                     font-size: 16px;
                 }
 
-                .only-mob{
+                .only-mob {
                     display: none;
                 }
 
-                label{
+                label {
                     margin: 3px 0;
                 }
 
@@ -899,44 +896,44 @@ fieldset#comoseparar{
             .corpocehckbox.ativo {
                 padding: 19px 30px;
 
-                    i{
+                    i {
                         display: none;
                     }
             }
 
     }
 
-    #comoseparar{
+    #comoseparar {
 
-        legend{
+        legend {
             font-size: 18px !important;
             top: 85px !important;
         }
 
-        .hidden-mob{
+        .hidden-mob {
             display: none;
         }
 
         .action--next {
             bottom: 6px !important;
-            padding: 0px 27px !important;
             left: 5px !important;
-            right: 5px !important;
-            width: 96% !important;
             margin: auto !important;
             max-width: 100% !important;
+            padding: 0px 27px !important;
+            right: 5px !important;
+            width: 96% !important;
         }
         
-        #diasrange{
+        #diasrange {
             padding: 17px 10px !important;
         }
         
     }
 
 
-    .corporesultado{
+    .corporesultado {
 
-            h2{
+            h2 {
                 font-size: 30px !important;
             }
 
@@ -944,7 +941,7 @@ fieldset#comoseparar{
                 margin: 6px 0px !important;
                 padding: 8px !important;
 
-                    h3{
+                    h3 {
                         font-size: 18px !important;
                         text-align:center !important;
 
@@ -971,7 +968,7 @@ fieldset#comoseparar{
             }
 
 
-            .imgcaixas{
+            .imgcaixas {
                 display: none !important;
             }
     }
@@ -980,7 +977,7 @@ fieldset#comoseparar{
         height: 160px !important;
         margin-top: 13px !important;
 
-            a{
+            a {
                 margin: 10px 0 !important;
             }
     }
@@ -990,60 +987,92 @@ fieldset#comoseparar{
 
 
 @media screen and (max-width: 320px) and (min-width: 0px) {
-    .play h1{
+    .play h1 {
         font-size: 20px !important;
     }
 
-    .play h2{
-        margin: 0;
+    .play h2 {
         font-size: 16px ;
+        margin: 0;
     }
 
-    #qtdlotes .content label{
+    #qtdlotes .content label {
         width: 100% ;
     }
 
-    .perguntas h2{
+    .perguntas h2 {
         font-size: 16px ;
     }
 
-    .corpocehckbox{
+    .corpocehckbox {
         height: 350px ;
     }
 
-    #qtdlotes.ativo{
+    #qtdlotes.ativo {
         height: 434px ;
     }
 
 
     #qtdlotes .content .action--next-ativo {
+        background: #fff;
         bottom: -38px;
+        font-size: 14px;
         padding: 0 16px;
         width: 102px;
-        font-size: 14px;
-        background: #fff;
     }
 
     .corpocehckbox .msg-erro {
         bottom: initial !important;
-        top: 24px !important;
         right: 0 !important;
+        top: 24px !important;
     }
 
     fieldset#comoseparar {
-        top: -304px;
         padding: 0 15px;
+        top: -304px;
     }
 
-    fieldset#comoseparar legend small{
+    fieldset#comoseparar legend small {
         display: none;
     }
 
-    #comoseparar .hidden-mob{
+    #comoseparar .hidden-mob {
         display: initial !important;
     }
 
     .corporange input[type=range] {
         width: calc( 75% - 20px);
+    }
+
+
+    label[for="dia-7"] {
+        position: relative;
+        top: 29px;
+    }
+    
+    
+    label[for="dia-6"] {
+        position: relative;
+        top: 60px;
+    }
+    
+    label[for="dia-5"] {
+        position: relative;
+        top: 89px;
+    }
+    
+    label[for="dia-4"] {
+        position: relative;
+        top: -90px;
+    }
+    
+    label[for="dia-3"] {
+        position: relative;
+        top: -60px;
+    }
+    
+    label[for="dia-2"] {
+        position: relative;
+        top: -30px;
     }
 }
