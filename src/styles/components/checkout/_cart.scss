@@ -636,29 +636,14 @@ body {
 		}
 
 		.cart-links-bottom {
-			@include breakpoint(768px, 'max') {
-			   display: flow-root;
-			   width: 100%;
-			}
-			@include breakpoint(small, 'max') {
-				margin-bottom: 0;
-				min-height: 160px;
-				position: relative;
-			}
-
 			.link-choose-more-products-wrapper {
-				@media screen and(max-width: 768px) {
+				@media screen and (min-width: 320px) and (max-width: 490px) {
 					position: absolute;
 				}
-				@include breakpoint(768px, 'min') {
-					position: relative;
-				 }
 				@include breakpoint(small, 'max') {
-					bottom: 0;
 					display: block;
 					left: 0;
 					margin: 20px 0;
-					position: absolute;
 					width: 100%;
 				}
 
@@ -680,117 +665,79 @@ body {
 
 			// Botão original Vtex - Fechar pedido
 			#cart-to-orderform { visibility: hidden; }
-
-			// Fake button
-			.fake-buttom {
-				@include breakpoint(768px, 'min') {
-					position: relative;
-				 }
-				@include responsiveFont(15, 16, true);
-				font-weight: bold;
-				padding: 14px 50px;
-				padding-right: 65px;
-				position: relative;
-				text-transform: uppercase;
-
-				&:before {
-					@include contentBefore();
-					@include font-size(16px, true, false);
-					@include icon-get('arrow-right');
-					display: inline-block;
-					right: 40px;
-					top: 50%;
-					transform: translateY(-50%) scaleY(1);
-					transition: transform .2s ease-in;
-				}
-
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(20, 16, true);
-					display: block;
-					left: 0;
-					margin: 10px 0;
-					position: absolute;
-					top: 0;
-					width: 100%;
-				}
-			}
 		}
 	}
 }
 
-.field-button { display: none; }
-// barra fixa no mobile dentro do carrinho (teste AB)
-.btn-place-order-wrapper { display: none; }
+// barra fixa no mobile dentro do carrinho
 @include breakpoint(small, 'max') {
-	body[class*='ab-test__mobile--show-b'] {
-		.btn-place-order-wrapper { display: block; }
-		.cart-template {
-			.cart-links-bottom {
-				min-height: auto;
-				position: initial;
-				.link-choose-more-products {
-					@include responsiveFont(14, 16, true);
-					@include vendor(border-radius, 20px);
-					background-color: $green;
-					border: none;
-					color: #fff;
-				}
-			}
-		}
-		.field-button {
-			background-color: #592b6d;
-		    bottom: 0;
-		    display: block;
-		    padding: 10px;
-			position: fixed;
-		    right: 0;
-		    width: 100%;
-		    z-index: 12;
-			tfoot {
-				background-color: transparent;
-				bottom: 10px;
-				color: #fff;
-				left: 0;
-				padding: 0 0 0 10px;
-				position: fixed;
-			    z-index: 15;
-				tr {
-					border-bottom: none;
-					display: inline-block;
-				}
-				.info {
-					@include responsiveFont(13, 16, true);
-					display: block;
-					font-weight: normal;
-					padding: 0;
-					text-align: left;
-					text-transform: uppercase;
-				}
-				.monetary {
-					@include responsiveFont(16, 16, true);
-					color: #fff;
-					font-weight: normal;
-					padding: 0;
-				}
-			}
-		}
-		.container-main {
-			.btn-success {
+	.btn-place-order-wrapper { display: block; }
+	.cart-template {
+		.cart-links-bottom {
+			margin-bottom: 0;
+			min-height: auto;
+			.link-choose-more-products {
 				@include responsiveFont(14, 16, true);
 				@include vendor(border-radius, 20px);
 				background-color: $green;
 				border: none;
 				color: #fff;
-				float: right;
-				font-weight: bold;
-				padding: 10px 40px;
-				text-transform: uppercase;
 			}
 		}
-		.cart-links-bottom {
-			.fake-buttom {
-				display: none!important;
+	}
+	.field-button {
+		background-color: #592b6d;
+	    bottom: 0;
+	    display: block;
+	    padding: 10px;
+		position: fixed;
+	    right: 0;
+	    width: 100%;
+	    z-index: 12;
+		tfoot {
+			background-color: transparent;
+			bottom: 10px;
+			color: #fff;
+			left: 0;
+			padding: 0 0 0 10px;
+			position: fixed;
+		    z-index: 15;
+			tr {
+				border-bottom: none;
+				display: inline-block;
 			}
+			.info {
+				@include responsiveFont(13, 16, true);
+				display: block;
+				font-weight: normal;
+				padding: 0;
+				text-align: left;
+				text-transform: uppercase;
+			}
+			.monetary {
+				@include responsiveFont(16, 16, true);
+				color: #fff;
+				font-weight: normal;
+				padding: 0;
+			}
+		}
+	}
+	.container-main {
+		.btn-success {
+			@include responsiveFont(14, 16, true);
+			@include vendor(border-radius, 20px);
+			background-color: $green;
+			border: none;
+			color: #fff;
+			float: right;
+			font-weight: bold;
+			padding: 10px 40px;
+			text-transform: uppercase;
+		}
+	}
+	.cart-links-bottom {
+		.fake-buttom {
+			display: none!important;
 		}
 	}
 }
