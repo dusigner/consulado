@@ -364,6 +364,38 @@ input[type='submit'].custom-login-btn {
 							padding: 0;
 						}
 					}
+
+					.modal-custom-login--forms {
+						input[type='submit'] {							
+    						width: 100%;
+    						padding: 10px 15px;
+    						border-radius: 50px;
+						}
+					}
+
+					.modal-custom-login--buttons {
+						.modal-custom-login--sectitles {
+							display: none;
+						}
+					}
+
+					.modal-custom-login--buttons--box {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						margin-top: 35px;
+
+						.modal-custom-login-btn {
+							font-size: 11px;
+							width: 70px;
+							padding: 35px 5px 5px 5px;
+							height: 70px;
+							margin: 0;
+							text-align: center;
+							background-position: center 10px;
+						}
+					}
+
 				}
 
 				.modal-custom-login--email-access-layout,
@@ -390,6 +422,7 @@ input[type='submit'].custom-login-btn {
 
 					.modal-custom-login-key__fields {
 						flex-wrap: wrap;
+						margin: 0;
 
 						input {
 							width: 25%;
@@ -397,11 +430,32 @@ input[type='submit'].custom-login-btn {
 							margin-bottom: 15px;
 						}
 					}
+
+					.custom-login-btn {
+						margin-right: 0;
+					}
 				}
 
 				.modal-custom-login--formOptions {
 					span {
 						font-size: 11px;
+					}
+				}
+
+				.custom-login-buttons--action--box {
+					display: flex;
+					justify-content: space-between;					
+
+					.custom-login-btn {
+						width: 100%;
+
+						&:first-child {
+							margin-right: 5px;
+						}
+	
+						&:last-child {
+							margin-left: 5px;							
+						}
 					}
 				}
 			}
@@ -411,7 +465,7 @@ input[type='submit'].custom-login-btn {
 	.custom-login-btn,
 	input[type='submit'].custom-login-btn {
 		border: solid 1px;
-		border-radius: 5px;
+		border-radius: 20px;
 		padding: 5px 15px;
 		display: inline-block;
 	}
