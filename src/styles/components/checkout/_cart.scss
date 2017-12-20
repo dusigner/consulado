@@ -76,20 +76,6 @@ body {
 							}
 
 							.product-service {
-								@include breakpoint(768px, 'min') {
-									bottom: 0;
-									left: 0;
-									position: relative;
-									transform: translateX(0);
-								}
-								@include breakpoint(small, 'max') {
-									bottom: 30px;
-									left: 52%;
-									position: absolute;
-									transform: translateX(-50%);
-									width: 95%;
-								}
-
 								.linkWarranty {
 									@include responsiveFont(11, 16, true);
 									text-transform: uppercase;
