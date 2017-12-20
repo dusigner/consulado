@@ -351,10 +351,9 @@ $(window).on('load', function() {
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-
 			}
 
-			// monta a barra fixa no mobile dentro do carrinho (teste AB)
+			// monta a barra fixa no mobile dentro do carrinho
 			if ($fakeButton.length !== 0 && $(window).width() <= 768 && $('.field-button').length === 0) {
 				var $fakeButtonClone = $fakeButton.clone(true);
 				$fieldBuyButton.append('<div class="field-button"></div>');

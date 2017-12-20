@@ -211,6 +211,23 @@ body {
 
 			&#btn-client-pre-email { padding: 4px 12px; }
 		}
+		// fake buttom mobile
+		@include breakpoint(small, 'max') {
+			.field-button {
+				.btn-success {
+					@include responsiveFont(14, 16, true);
+					@include vendor(border-radius, 20px);
+					background-color: $green;
+					border: none;
+					color: #fff;
+					float: right;
+					font-weight: bold;
+					padding: 10px 40px;
+					text-transform: uppercase;
+				}
+			}
+			.full-cart { margin-bottom: 0; }
+		}
 	}
 
 	.item-attachments-name-aceite-do-termo,
