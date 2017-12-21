@@ -447,6 +447,7 @@ Nitro.module('customLogin', function() {
 			.on('keyup', '.acess_key_value', function(event) {
 				var keypressed = event.key;
 				if (keypressed.match(hasDigit)) {
+					$(this).val(keypressed);
 					if($(this).next().hasClass('acess_key_value')) {
 							$(this).next().focus();
 					}
