@@ -18,6 +18,7 @@ Nitro.setup(['facebook-init'], function () {
 
 	var Index = {
 
+		
 		init: function(){
 			this.sliderPrateleira();
 
