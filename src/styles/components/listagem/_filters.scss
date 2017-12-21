@@ -1,4 +1,4 @@
-@charset 'UTF-8';
+	@charset 'UTF-8';
 
 @keyframes arrowLeft {
 	0%   {right: 0;}
@@ -287,8 +287,6 @@
 	border-bottom: 1px solid $gray;
 	padding-bottom: 10px;
 	width: 100%;
-
-	// @include breakpoint(medium, 'max') { display: none; }
 
 	ul {
 		margin-top: 10px;

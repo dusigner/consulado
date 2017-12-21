@@ -49,10 +49,12 @@ var CRM = {
 		});
 	},
 
-	clientSearchByEmail: function (field) {
+	clientSearchByEmail: function (email, fields) {
+		fields = fields ? fields : 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ,clientSearchByEmail';
+
 		return $.getJSON(CRM.formatUrl('CL', 'search'), {
-			_fields: 'id,userId,email,firstName,lastName,document,phone,homePhone,xAdditionalPhone,xSkuSalesChannel5,corporateDocument,corporateName,tradeName,stateRegistration,xValidationPJ',
-			email: field
+			_fields: fields,
+			email: email
 		}).then(function (res) {
 			return res && res[0];
 		});
