@@ -87,9 +87,11 @@ Nitro.module('customLogin', function() {
 					'<div class="modal-custom-login-mail_pass_login">' +
 						'<div class="modal-custom-email--inputbox">' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
-						'</div>' +			
-						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
-						'<button type="submit" class="custom-login-btn btn-custom-secondary">Solicitar chave</button>' +
+						'</div>' +
+						'<div class="custom-login-buttons--action--box">' +
+							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
+							'<button type="submit" class="custom-login-btn btn-custom-secondary">Confirmar</button>' +
+						'</div>' +
 					'</div>' +
 				'</form>' +
 			'</div>',
@@ -99,15 +101,17 @@ Nitro.module('customLogin', function() {
 					'<form id="modal-custom-login-key-access--form' + ((resetPw) ? '-setting-pw' : '') + '">' +
 						'<div class="modal-custom-login-key">' +
 						'    <div class="modal-custom-login-key__fields">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
 							'</div>' +
-							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--' + ((resetPw) ? 'toDefault' : 'toEmail') + '">Voltar</span>' +
-							'<input type="submit" class="custom-login-btn btn-custom-secondary" value="' + ((resetPw) ? 'Confirmar' : 'Entrar') + '">' +
+							'<div class="custom-login-buttons--action--box">' +
+								'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--' + ((resetPw) ? 'toDefault' : 'toEmail') + '">Voltar</span>' +
+								'<input type="submit" class="custom-login-btn btn-custom-secondary" value="' + ((resetPw) ? 'Confirmar' : 'Entrar') + '">' +
+							'</div>' +
 						'</div>' +
 					'</form>' +
 				'</div>';
@@ -119,8 +123,10 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-email--inputbox">' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
 						'</div>' +			
-						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
-						'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
+						'<div class="custom-login-buttons--action--box">' +
+							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
+							'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
+						'</div>' +
 					'</div>' +
 				'</form>' +
 			'</div>',
@@ -143,8 +149,10 @@ Nitro.module('customLogin', function() {
 							'<li class="hasUppercaseIndicator">- 1 letra maiúscula</li>' +
 						'</ul>' +
 						'</div>' +
-						'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
-						'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
+						'<div class="custom-login-buttons--action--box">' +
+							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
+							'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
+						'</div>' +
 					'</div>' +
 				'</form>' +
 			'</div>'
@@ -183,7 +191,7 @@ Nitro.module('customLogin', function() {
 							'<form id="modal-custom-login--form">' +
 								'<div class="modal-custom-login-mail_pass_login">' +
 									'<div class="modal-custom-email--inputbox">' +
-										'<input type="text" id="login" class="custom-label" name="login">' +
+										'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
 									'</div>' +									
 									'<div class="modal-custom-password--inputbox">' +
 										'<input type="password" id="password" class="custom-label" name="password">' +
@@ -191,17 +199,22 @@ Nitro.module('customLogin', function() {
 									'<div class="modal-custom-login--formOptions">' +
 										'<span class="forget_pass">Esqueci minha senha</span>' +
 										'<span class="no_pass">Não tenho uma senha</span>' +
-									'</div>' +				
+									'</div>' +			
+									'<div class="custom-login-buttons--action--box">' +	
 									'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
+									'</div>' +
 								'</div>' +
 							'</form>' +
 						'</div>' +
 					'</div>' +
 					'<div class="modal-custom-login--buttons">' +
 						'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
-						'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>Receber chave de acesso por email</button>' +
-						((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
-						((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
+						'<div class="modal-custom-login--buttons--box">' + 
+							'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>' + 
+							($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
+							((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
+							((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +						
+						'</div>' +
 					'</div>' +
 				'</div>';
 
@@ -220,6 +233,10 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.setListeners = function() {
+		if ($(window).width() < 768 ) {
+			$('.modal-custom-login--buttons .modal-custom-login-btn.mailkey').text('Chave por e-mail');
+		}
+
 		$('#modal-custom-login')
 			.on('submit', '#modal-custom-login-email-access--form--setting-pw', function(e) {
 				e.preventDefault();
@@ -409,15 +426,35 @@ Nitro.module('customLogin', function() {
 			.on('focusin', '.custom-label', function() {			
 				$(this).parent().addClass('label-on');
 			})
-			.on('focusout', '.custom-label', function() {	
-				if (this.value.length === 0) {
-					$(this).parent().removeClass('label-on');
-				}
+			.on('change', '.custom-label', function() {
+				$('.custom-label').each(function() {
+					if (this.value.length === 0) {
+						$(this).parent().removeClass('label-on');
+					} else {
+						$(this).parent().addClass('label-on');
+					}
+				});
 			})
-			.on('keyup', '.acess_key_value', function() {
-				if($(this).next().hasClass('acess_key_value')) {
-					$(this).next().focus();
+			.on('focusout', '.custom-label', function() {
+				$('.custom-label').each(function() {
+					if (this.value.length === 0) {
+						$(this).parent().removeClass('label-on');
+					} else {
+						$(this).parent().addClass('label-on');
+					}
+				});
+			})
+			.on('keyup', '.acess_key_value', function(event) {
+				var keypressed = event.key;
+				if (keypressed.match(hasDigit)) {
+					$(this).val(keypressed);
+					if($(this).next().hasClass('acess_key_value')) {
+							$(this).next().focus();
+					}
 				}
+				// if($(this).next().hasClass('acess_key_value') && $(this).val().match(hasDigit)) {
+				// 	$(this).next().focus();
+				// }
 			});
 
 		// Substituindo todos os triggers do botão #login para somente abrir o modal novo
@@ -490,7 +527,7 @@ Nitro.module('customLogin', function() {
 	// Layout: Inicial
 	this.setDefaultLayout = function() {		
 		$modalBody.html(templates.defaultLayout);
-		$subtitle.html('Acesse sua conta');
+		$subtitle.html('ACESSE SUA CONTA');
 		focusFirstInput();
 	};
 	
