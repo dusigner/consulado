@@ -101,12 +101,12 @@ Nitro.module('customLogin', function() {
 					'<form id="modal-custom-login-key-access--form' + ((resetPw) ? '-setting-pw' : '') + '">' +
 						'<div class="modal-custom-login-key">' +
 						'    <div class="modal-custom-login-key__fields">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
-								'<input type="text" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'<input type="tel" maxlength="1" class="acess_key_value">' +
 							'</div>' +
 							'<div class="custom-login-buttons--action--box">' +
 								'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--' + ((resetPw) ? 'toDefault' : 'toEmail') + '">Voltar</span>' +
@@ -426,10 +426,14 @@ Nitro.module('customLogin', function() {
 			.on('focusin', '.custom-label', function() {			
 				$(this).parent().addClass('label-on');
 			})
-			.on('focusout', '.custom-label', function() {	
-				if (this.value.length === 0) {
-					$(this).parent().removeClass('label-on');
-				}
+			.on('focusout', '.custom-label', function() {
+				$('.custom-label').each(function() {
+					if (this.value.length === 0) {
+						$(this).parent().removeClass('label-on');
+					} else {
+						$(this).parent().addClass('label-on');
+					}
+				});
 			})
 			.on('keyup', '.acess_key_value', function(event) {
 				var keypressed = event.key;
@@ -437,8 +441,6 @@ Nitro.module('customLogin', function() {
 					if($(this).next().hasClass('acess_key_value')) {
 							$(this).next().focus();
 					}
-				} else {
-					$(this).val('');
 				}
 				// if($(this).next().hasClass('acess_key_value') && $(this).val().match(hasDigit)) {
 				// 	$(this).next().focus();
