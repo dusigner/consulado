@@ -426,6 +426,15 @@ Nitro.module('customLogin', function() {
 			.on('focusin', '.custom-label', function() {			
 				$(this).parent().addClass('label-on');
 			})
+			.on('change', '.custom-label', function() {
+				$('.custom-label').each(function() {
+					if (this.value.length === 0) {
+						$(this).parent().removeClass('label-on');
+					} else {
+						$(this).parent().addClass('label-on');
+					}
+				});
+			})
 			.on('focusout', '.custom-label', function() {
 				$('.custom-label').each(function() {
 					if (this.value.length === 0) {
