@@ -428,6 +428,10 @@ input[type='submit'].custom-login-btn {
 							width: 25%;
 							margin: 0 4%;
 							margin-bottom: 15px;
+
+							&:focus {
+								color: white;
+							}
 						}
 					}
 
