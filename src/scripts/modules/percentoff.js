@@ -15,6 +15,16 @@ Nitro.module('percentoff', function() {
 			promoDiscountBoleto.value = [0];
 			promoDiscountCartao.value = [0];
 
+			// Nova solução de troca de selos por promoções
+			// A ideia é que o nome da promoção seja o mesmo
+			// nome da imagem, Assim não teremos problemas com cache
+			self.find('.FlagsHightLight .flag[class*="-selo-"]').each(function(i, e) {
+				var elFlag = $(e);
+				var flagName = elFlag.attr('class').replace('flag', '').trim();
+
+				elFlag.css('background-image', 'url(/arquivos/' + flagName + '.png)');
+			});
+
 			self.find('.FlagsHightLight [class*="boleto"]').each(function(i, e) {
 				var promoName = $(e).text();
 				var promoValue = parseInt(promoName.match(/\d+/ig));
@@ -50,7 +60,7 @@ Nitro.module('percentoff', function() {
 			// $(this).find('span').text( $.formatNumber( total * (1 - discount) ) ).end().addClass('on');
 
 			/**
-			 * Se o desconto de cartão for maior ou igual que o desconto no boleto 
+			 * Se o desconto de cartão for maior ou igual que o desconto no boleto
 			 * E se a loja for PF e não PJ
 			 * Mostra o desconto de cartão
 			 * Caso contrário, mostra o desconto do boleto
