@@ -200,6 +200,9 @@
 
 			<div class="order__footer clearfix">
 				<div class="float-right">
+					{?invoiceData}
+						{>"modalInvoice"/}
+					{/invoiceData}
 					<a href="https://consul.custhelp.com/app/atendimento?pedido={orderId}" target="_blank">
 						<i class="order__icon order__icon--doubt"></i>
 						<span>Ajuda?</span>
