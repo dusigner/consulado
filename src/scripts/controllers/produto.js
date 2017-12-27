@@ -14,9 +14,10 @@ require('modules/product/supermodel');
 require('modules/product/sku-select');
 require('modules/product/boleto');
 require('modules/product/notify-me');
+require('modules/product/share');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', [ 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share' /*, 'special-content'*/ ], function() {
 	var self = this,
 		$body = $('body');
 
