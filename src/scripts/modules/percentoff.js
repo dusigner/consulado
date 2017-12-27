@@ -22,7 +22,11 @@ Nitro.module('percentoff', function() {
 				var elFlag = $(e);
 				var flagName = elFlag.attr('class').replace('flag', '').trim();
 
-				elFlag.css('background-image', 'url(/arquivos/' + flagName + '.png)');
+				elFlag.css({
+					'background-image'    : 'url(/arquivos/' + flagName + '.png)',
+					'background-position' : 'center center',
+					'background-repeat'   : 'no-repeat'
+				});
 			});
 
 			self.find('.FlagsHightLight [class*="boleto"]').each(function(i, e) {
