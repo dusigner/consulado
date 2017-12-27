@@ -311,11 +311,17 @@
 
 	a {
 		&.order__invoicekey {
-			margin-right: 1em;
-
-			&:after {
-				content: ' - '
+			@include breakpoint(medium, 'min') {
+				&:after {
+					content: ' - '
+				}
 			}
+
+			@include breakpoint(small, 'max') {
+				margin: 0 auto 1em;
+			}
+
+			margin-right: 1em;
 		}
 	}
 }
@@ -539,6 +545,13 @@
 			max-width: 50%;
 			width: 100%;
 		}
+	}
+}
+
+#vtex-invoice {
+	.modal-content {
+		border: none;
+		box-shadow: none;
 	}
 }
 
