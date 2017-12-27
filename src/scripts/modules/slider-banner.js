@@ -3,8 +3,7 @@
 require('modules/smartFocus');
 
 Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
-
-	if( ! store.isCorp && $('body').hasClass('home')) {
+	if($('body').hasClass('home')) {
 		smartFocus.renderBanner();
 	}
 
