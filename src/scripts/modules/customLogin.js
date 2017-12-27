@@ -166,60 +166,63 @@ Nitro.module('customLogin', function() {
 		self.setListeners();
 		
 		userInfos.initialCallback.scope = (location.host.indexOf('vtexcommercestable') > -1) ? location.host.split('.')[0] : location.host;
-		window.setInterval(
+
+		setEnviroment();
+		window.setInterval(setEnviroment, 1000 * 60 * 5);
+
+		function setEnviroment() {
 			self.request(routes.getToken, userInfos.initialCallback)
-			.done(function(response) {
-				userInfos.authenticationToken = response.authenticationToken;
+				.done(function(response) {
+					userInfos.authenticationToken = response.authenticationToken;
 
-				if (response.oauthProviders.filter(function (el) {
-					return el.providerName === 'Facebook';
-				}).length > 0) {
-					userInfos.faceLogin = true;
-				}
+					if (response.oauthProviders.filter(function (el) {
+						return el.providerName === 'Facebook';
+					}).length > 0) {
+						userInfos.faceLogin = true;
+					}
 
-				if (response.oauthProviders.filter(function (el) {
-					return el.providerName === 'Google';
-				}).length > 0) {
-					userInfos.googleLogin = true;
-				}
+					if (response.oauthProviders.filter(function (el) {
+						return el.providerName === 'Google';
+					}).length > 0) {
+						userInfos.googleLogin = true;
+					}
 
-				templates.defaultLayout = 
-				'<div class="modal-custom-login--init-layout">' +
-					'<div class="modal-custom-login--forms">' +
-						'<div id="mail_pass_login">' +
-							'<p class="modal-custom-login--sectitles">Entre com um email e senha</p>' +
-							'<form id="modal-custom-login--form">' +
-								'<div class="modal-custom-login-mail_pass_login">' +
-									'<div class="modal-custom-email--inputbox">' +
+					templates.defaultLayout = 
+					'<div class="modal-custom-login--init-layout">' +
+						'<div class="modal-custom-login--forms">' +
+							'<div id="mail_pass_login">' +
+								'<p class="modal-custom-login--sectitles">Entre com um email e senha</p>' +
+								'<form id="modal-custom-login--form">' +
+									'<div class="modal-custom-login-mail_pass_login">' +
+										'<div class="modal-custom-email--inputbox">' +
 										'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
-									'</div>' +									
-									'<div class="modal-custom-password--inputbox">' +
+										'</div>' +								
+										'<div class="modal-custom-password--inputbox">' +
 										'<input type="password" id="password" class="custom-label" name="password">' +
-									'</div>' +				
-									'<div class="modal-custom-login--formOptions">' +
+										'</div>' +				
+										'<div class="modal-custom-login--formOptions">' +
 										'<span class="forget_pass">Esqueci minha senha</span>' +
 										'<span class="no_pass">Não tenho uma senha</span>' +
-									'</div>' +			
-									'<div class="custom-login-buttons--action--box">' +	
-									'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
+										'</div>' +			
+										'<div class="custom-login-buttons--action--box">' +	
+										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
+										'</div>' +
 									'</div>' +
-								'</div>' +
-							'</form>' +
+								'</form>' +
+							'</div>' +
 						'</div>' +
-					'</div>' +
-					'<div class="modal-custom-login--buttons">' +
-						'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
-						'<div class="modal-custom-login--buttons--box">' + 
-							'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>' + 
-							($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
-							((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
-							((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +						
+						'<div class="modal-custom-login--buttons">' +
+							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
+							'<div class="modal-custom-login--buttons--box">' + 
+								'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>' + 
+								($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
+								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
+								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +					
+							'</div>' +
 						'</div>' +
-					'</div>' +
-				'</div>';
-
-			}), 1000 * 60 * 5);		
-		
+					'</div>';
+				});
+		}		
 		// self.verifyLogin();
 		self.setDefaultLayout();
 	};
@@ -449,12 +452,21 @@ Nitro.module('customLogin', function() {
 				if (keypressed.match(hasDigit)) {
 					$(this).val(keypressed);
 					if($(this).next().hasClass('acess_key_value')) {
-							$(this).next().focus();
+						$(this).next().focus();
 					}
 				}
 				// if($(this).next().hasClass('acess_key_value') && $(this).val().match(hasDigit)) {
 				// 	$(this).next().focus();
 				// }
+			})			
+			.on('click', '.modal-custom-email--inputbox', function() {
+				$(this).find('input').focus();
+			})
+			.on('click', '.modal-custom-password--inputbox', function() {
+				$(this).find('input').focus();
+			})
+			.on('click', '.modal-custom--inputbox', function() {
+				$(this).find('input').focus();
 			});
 
 		// Substituindo todos os triggers do botão #login para somente abrir o modal novo
