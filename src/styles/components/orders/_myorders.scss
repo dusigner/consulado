@@ -548,6 +548,13 @@
 	}
 }
 
+#vtex-invoice {
+	.modal-content {
+		border: none;
+		box-shadow: none;
+	}
+}
+
 @import 'components/orders/order.historico';
 @import 'components/orders/order.warrantySpare';
 @import 'components/orders/order.modal.gae';
