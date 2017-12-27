@@ -311,11 +311,17 @@
 
 	a {
 		&.order__invoicekey {
-			margin-right: 1em;
-
-			&:after {
-				content: ' - '
+			@include breakpoint(medium, 'min') {
+				&:after {
+					content: ' - '
+				}
 			}
+
+			@include breakpoint(small, 'max') {
+				margin: 0 auto 1em;
+			}
+
+			margin-right: 1em;
 		}
 	}
 }
