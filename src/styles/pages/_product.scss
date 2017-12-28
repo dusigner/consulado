@@ -193,6 +193,12 @@ body.produto-indisponivel {
 
 }
 
+.social:after{
+	display: block;
+	contain: "";
+	clear: both;
+}
+
 div#modal-custom-share {
 	textarea {
 		width: 93%;
