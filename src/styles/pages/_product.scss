@@ -193,6 +193,51 @@ body.produto-indisponivel {
 
 }
 
+div#modal-custom-share {
+	textarea {
+		width: 93%;
+		border: 1px solid #92b845;
+	}
+
+	input {
+		width: 93%;
+		border: 1px solid #92b845;
+	}
+
+	label {
+    display: block;
+    text-align: left;
+    padding-left: 15px;
+	}
+
+	.btn{
+		width: 93%;
+		margin-bottom: 10px;
+		background: #9aca3c;
+		border: none;
+		color: #fff;
+		font-weight: bold;
+		padding: 8px;
+	}
+
+	#formshare.sucesso{
+
+		.enviadocomsucesso {
+			display: block;
+		}
+	}
+	
+	.enviadocomsucesso {
+		padding-bottom: 10px;
+		font-weight: bold;
+		font-size: 22px;
+		color: #9aca3c;
+		display: none;
+	}
+
+}
+
+
 .pinned {
 	margin: 0;
 	position: fixed!important;
