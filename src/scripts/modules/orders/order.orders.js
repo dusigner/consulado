@@ -6,7 +6,9 @@ require('modules/orders/order.helpers');
 require('templates/myorders.html');
 require('templates/orders/orderStates.html');
 require('../../../templates/orders/modalHistorico.html');
+require('../../../templates/orders/modalInvoice.html');
 
+var Clipboard = require('clipboard');
 
 var CRM = require('modules/store/orders-crm'),
 	orderStates = require('modules/orders/order.states'),
@@ -136,6 +138,46 @@ Nitro.module('order.orders', function() {
 			});
 		});
 
+		$('.js-invoicekey').click(function(e) {
+			e.preventDefault();
+
+			var $modal = $(this).siblings('.modal-invoice');
+
+			$modal.clone().vtexModal({
+				id: 'invoice',
+				title: '2ª via de nota fiscal',
+				destroy: true,
+				open: function($modal) {
+					var $clipboard = $modal.find('.js-invoice-clipboard');
+
+					$clipboard.one('click', function(e) {
+						e.preventDefault();
+
+						var invoiceKey = $(this).parents().find('.js-invoice-value').val(),
+							clipboard = new Clipboard(e.target, {
+								text: function() {
+									return invoiceKey;
+								}
+							}),
+							textTimeout = 0;
+
+						clipboard.on('success', function(e) {
+							if(textTimeout) {
+								clearTimeout(textTimeout);
+							} //debounce
+
+							e.trigger.textContent = 'Chave copiada!';
+							e.clearSelection();
+
+							textTimeout = setTimeout(function() {
+								e.trigger.textContent = 'Copiar chave de acesso';
+							}, 1500);
+						});
+					}).click(); //TODO - rerererer mim ajuda clipboard (Hack pq o clipboard só estava funcionando depois do primeiro click, tem que ver issoai hein)
+				}
+			});
+		});
+
 		$('#box-all-states .more-itens').click(function(e) {
 			e.preventDefault();
 			$('.content-states__others').show();
@@ -229,6 +271,7 @@ Nitro.module('order.orders', function() {
 			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
 			value.isGift = isGift;
 			value.hasTrackingInfo = false;
+			value.invoiceData = null;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
 				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
@@ -241,9 +284,9 @@ Nitro.module('order.orders', function() {
 	};
 
 	/**
-	 * Modifica/adiciona no objeto original ou preparado realizando chamadas ao MD verificando se há dados de tracking
+	 * Modifica/adiciona no objeto original (ou preparado) realizando chamadas a API do OMS verificando se há dados de tracking e nota fiscal
 	 * @param  {Array} data retorno da API /orders ou objeto preparado
-	 * @returns {Array} Array com dados de tracking necessários para render
+	 * @returns {Array} Array com dados de package necessários para render
 	 */
 	this._trackingData = function(data) {
 		return $.map(data, function(resultado) {
@@ -253,16 +296,30 @@ Nitro.module('order.orders', function() {
 								return;
 							}
 
+							var singlePackage = dataOrder.packageAttachment.packages[0];
+
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
-									if (dataOrder.packageAttachment.packages[0].courierStatus.finished) {
-										this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
-									}
-									this.hasTrackingInfo = true;
-									dataOrder.packageAttachment.packages[0].courierStatus.data = dataOrder.packageAttachment.packages[0].courierStatus.data.reverse();
-									this.trackingInfo = dataOrder.packageAttachment.packages[0];
+									if( singlePackage.courierStatus
+										&& singlePackage.courierStatus.data
+										&& singlePackage.courierStatus.data.length > 0) {
+										if (singlePackage.courierStatus.finished) {
+											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
+										}
 
-									// console.log('⌛', dataOrder.packageAttachment.packages[0]);
+										singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
+
+										this.hasTrackingInfo = true;
+										this.trackingInfo = singlePackage;
+									}
+
+									if(singlePackage.invoiceKey) {
+										this.invoiceData = {
+											invoiceKey: singlePackage.invoiceKey,
+											invoiceNumber: singlePackage.invoiceNumber,
+											invoiceUrl: singlePackage.invoiceUrl
+										};
+									}
 
 									return false;
 								}

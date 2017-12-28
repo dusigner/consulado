@@ -11,12 +11,23 @@ $consul-primary: #9aca3c;
 #vtex-modal-custom-login {
 
     .modal-holder {
-		max-width: 800px;
-		margin-top: 20px;
 		margin-bottom: 20px;
+		margin-top: 20px;
+		max-width: 800px;
 		
         .modal-header {
-            display: none;
+			padding: 0;
+
+			.close {
+				font-size: 1rem;
+				right: 0;
+				top: 0;
+
+				&::before {
+					color: #736c6b;
+					content: '\e60d';
+				}
+			}
 		}
 		
         .mode-custom-login--header {
@@ -204,9 +215,9 @@ $consul-primary: #9aca3c;
 			}
 
 			.password-validate-indicators {
-				text-align: left;
 				margin-bottom: 30px;
 				margin-top: 20px;
+				text-align: left;
 
 				.password-validate--title {
 					font-weight: 400;
@@ -214,8 +225,8 @@ $consul-primary: #9aca3c;
 
 				ul {
 					li {
-						font-size: 13px;
 						color: #ff0000;
+						font-size: 13px;
 
 						&.validated {
 							color: #5fbd5f;
@@ -338,8 +349,8 @@ input[type='submit'].custom-login-btn {
 @include breakpoint (small, 'max') {
 	#vtex-modal-custom-login {
 		.modal-holder {
-			margin-top: 20px;
 			margin-bottom: 20px;
+			margin-top: 20px;
 
 			.mode-custom-login--header {
 				.modal-custom-login--subtitle2 {
@@ -356,8 +367,8 @@ input[type='submit'].custom-login-btn {
 		
 					> div {
 						&:first-child {							
-							padding: 0;
 							border: none;
+							padding: 0;
 						}
 
 						&:last-child {							
@@ -367,9 +378,9 @@ input[type='submit'].custom-login-btn {
 
 					.modal-custom-login--forms {
 						input[type='submit'] {							
-    						width: 100%;
-    						padding: 10px 15px;
     						border-radius: 50px;
+    						padding: 10px 15px;
+    						width: 100%;
 						}
 					}
 
@@ -386,13 +397,13 @@ input[type='submit'].custom-login-btn {
 						margin-top: 35px;
 
 						.modal-custom-login-btn {
+							background-position: center 10px;
 							font-size: 11px;
-							width: 70px;
-							padding: 35px 5px 5px 5px;
 							height: 70px;
 							margin: 0;
+							padding: 35px 5px 5px 5px;
 							text-align: center;
-							background-position: center 10px;
+							width: 70px;
 						}
 					}
 
@@ -425,9 +436,9 @@ input[type='submit'].custom-login-btn {
 						margin: 0;
 
 						input {
-							width: 25%;
 							margin: 0 4%;
 							margin-bottom: 15px;
+							width: 25%;
 						}
 					}
 
@@ -466,7 +477,12 @@ input[type='submit'].custom-login-btn {
 	input[type='submit'].custom-login-btn {
 		border: solid 1px;
 		border-radius: 20px;
-		padding: 5px 15px;
 		display: inline-block;
+		padding: 5px 15px;
 	}
 };
+
+#vtexIdUI-global-loader,
+#vtexIdContainer {
+	display: none !important;
+}
