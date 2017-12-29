@@ -1,13 +1,14 @@
 /* global $: true, Nitro: true, vtexid: true */
 'use strict';
 
-require('modules/cart');
-require('modules/cotas');
-require('modules/search');
-require('modules/menu-hover');
+require('modules/header/cotas');
+require('modules/header/search');
+require('modules/header/welcome-message');
+require('modules/header/menu-hover');
+require('modules/header/cart');
 require('vendors/jquery.cookie');
 
-Nitro.module('header', ['menu-hover', 'cotas', 'search'], function() {
+Nitro.module('header', ['cotas', 'search', 'welcome-message', 'menu-hover'], function() {
 	var $body = $('body'),
 		$document = $(document);
 
@@ -50,17 +51,6 @@ Nitro.module('header', ['menu-hover', 'cotas', 'search'], function() {
 			$('body').find('.menu-active').parent().parent().parent().height(altura);
 		}
 	});
-
-	//controle menu horizontal
-	var controleOver = $('.customItemMenu').text();
-
-	if (controleOver === '') {
-		$('.customItemMenu').addClass('control-hide');
-	} else {
-		$('nav .item.control').addClass('control-hide');
-		$('nav .item').removeClass('control');
-		$('.customItemMenu').css('display', 'inline-block');
-	}
 
 	//TODO: move mask to module;
 	$('.mask').on('click', function(e) {

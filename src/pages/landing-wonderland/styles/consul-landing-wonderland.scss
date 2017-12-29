@@ -184,8 +184,8 @@
 		.slick-slide {
 			border: none;
 			outline: none;
-			&:hover, 
-			&:focus, 
+			&:hover,
+			&:focus,
 			&:active {
 				border: none;
 				outline: none;
@@ -238,10 +238,16 @@
 	}
 }
 
-#atendimento {
+#atendimento,
+#chequeemail {
 	background: $gray;
 	padding-top: 15px;
 	text-align: center;
+
+	.row { margin-bottom: 0; }
+}
+
+#atendimento {
 
 	.atendimento-row {
 		span {
@@ -337,4 +343,23 @@
 	background: url('/arquivos/consul-landing-wonderland-icon-sprite.png') no-repeat -704px -4px;
 	height: 41px;
 	width: 42px;
+}
+
+#chequeemail {
+    padding-top: 26px;
+}
+
+#chequeemail h3 {
+    display: block;
+    font-size: 1.625em;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+#chequeemail h4 {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-top: 0;
+    text-align: center;
 }
