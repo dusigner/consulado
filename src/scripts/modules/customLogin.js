@@ -9,6 +9,7 @@ require('vendors/vtex-modal');
 
 Nitro.module('customLogin', function() {
 	var self = this,
+		returnUrl = false,
 		$modalBody = $('.modal-custom-login--body'),
 		$subtitle = $('.modal-custom-login--subtitle2'),
 		routes = {
@@ -222,7 +223,26 @@ Nitro.module('customLogin', function() {
 						'</div>' +
 					'</div>';
 				});
-		}		
+		}
+
+		if (window.location.href.indexOf('/login') > -1) {
+			var url_string = window.location.href; //window.location.href
+			var url = new URL(url_string);
+			var c = url.searchParams.get('ReturnUrl');
+			returnUrl = c;			
+			setTimeout(initModal, 2000);
+		}
+
+		function initModal() {
+			self.setDefaultLayout();
+			$('#modal-custom-login').vtexModal();
+			focusFirstInput();
+		}
+
+		window.vtexid.start = function() {
+			initModal();
+		};
+
 		// self.verifyLogin();
 		self.setDefaultLayout();
 	};
@@ -285,7 +305,7 @@ Nitro.module('customLogin', function() {
 					).then(function(data) {
 						if (data.authStatus === 'Success') {
 							helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
-							location.reload();
+							reload();
 						} else if (data.authStatus === 'WrongCredentials') {
 							helpers.printError('Chave de acesso inválida. Verifique a digitação.');
 							$('.modal-custom-login-key__fields').addClass('invalid__key');
@@ -339,7 +359,7 @@ Nitro.module('customLogin', function() {
 						accesskey: userInfos.accesskey
 					}).then(function(data) {
 						helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
-						location.reload();
+						reload();
 						// window.location.href = '/';
 					});
 				}				
@@ -396,7 +416,7 @@ Nitro.module('customLogin', function() {
 					.then(function(data) {
 						if (data.authStatus === 'Success') {
 							helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
-							location.reload();
+							reload();
 						} else if (data.authStatus === 'WrongCredentials') {
 							helpers.printError('E-mail ou senha inválidos.');
 						} else {
@@ -468,14 +488,6 @@ Nitro.module('customLogin', function() {
 			.on('click', '.modal-custom--inputbox', function() {
 				$(this).find('input').focus();
 			});
-
-		// Substituindo todos os triggers do botão #login para somente abrir o modal novo
-		$('body').off('click','#login');
-		$('body').on('click', '#login', function() {
-			self.setDefaultLayout();
-			$('#modal-custom-login').vtexModal();
-			focusFirstInput();
-		});	
 	};
 
 	this.socialLogin = function(origem) {
@@ -520,7 +532,7 @@ Nitro.module('customLogin', function() {
 			$(window).trigger('loggedBySocialOAuth.vtexid');
 			$(window).trigger('logged.vtexid');
 
-			location.reload();
+			reload();
 			
 		} else if (data.authStatus === 'Pending') {
 			
@@ -576,6 +588,14 @@ Nitro.module('customLogin', function() {
 
 	function focusFirstInput() {
 		$('.modal-custom-login--body input').first().focus();
+	}
+
+	function reload() {
+		if (returnUrl) {
+			window.location = window.location.origin + returnUrl;
+		} else {
+			location.reload();
+		}
 	}
 
 	this.init();

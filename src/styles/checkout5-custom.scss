@@ -23,12 +23,12 @@
 @import 'base/fonts';
 @import 'base/main';
 
-
-
 // Layout styles
 @import 'layout/container';
 @import 'helpers/helpers';
 @import 'components/buttons';
+@import 'components/modal';
+@import 'components/modalLogin';
 
 .loading-bg { margin-top: 0; }
 object { display: none; }
