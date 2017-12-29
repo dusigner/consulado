@@ -42,12 +42,16 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
 	require('custom/testeab-entregaAgendada');
+<<<<<<< HEAD
 	require('vendors/jquery.inputmask');
+=======
+	require('modules/customLogin');
+>>>>>>> tela_login
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message'], function(gae, recurrence, cotas, pj, testeabEntregaAgendada) {
+	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message', 'customLogin'], function(gae, recurrence, cotas, pj, testeabEntregaAgendada) {
 
 		var self = this,
 			$body = $('body');
