@@ -42,11 +42,8 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
 	require('custom/testeab-entregaAgendada');
-<<<<<<< HEAD
 	require('vendors/jquery.inputmask');
-=======
 	require('modules/customLogin');
->>>>>>> tela_login
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
