@@ -2,17 +2,6 @@
 
 'use strict';
 
-require('modules/helpers');
-
-//load Nitro Lib
-require('vendors/nitro');
-
-require('expose?store!modules/store/store');
-
-// require('modules/product/facebook-share');
-
-
-
 Nitro.setup([], function () {
 
 
@@ -130,12 +119,12 @@ function scroll_comprar(){
         scrollTop: position
     }, 800);
 }
-
-} );
-
-
 $('.comprar').click(function() {
 
     $('.buy-button.buy-button-ref').trigger('click');
     
 });
+
+});
+
+
