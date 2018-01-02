@@ -1,0 +1,57 @@
+@charset 'UTF-8';
+
+&__footer {
+	@include breakpoint('small', 'max') {
+		& > div {
+			float: none;
+			text-align: center;
+		}
+
+		a {
+			@include font-size(12px, true, false);
+			background-color: transparent;
+			border: 2px solid $green;
+			border-radius: 50px;
+			color: $green;
+			display: inline-block;
+			font-weight: 700;
+			padding: 9px 20px;
+			position: relative;
+			text-indent: 1;
+			text-transform: uppercase;
+
+			svg,
+			i { display: none }
+		}
+	}
+	@include breakpoint(320px, 'max') {
+		a {
+			display: block;
+			margin: 0 auto;
+			width: 80%;
+
+			& + a { margin-top: 1em; }
+		}
+	}
+	@include font-size(14px, true, false);
+	border-top: 1px solid $gray-l;
+	font-weight: bold;
+	margin: 0 20px;
+	padding: 20px 0;
+
+	a {
+		&.order__invoicekey {
+			@include breakpoint(medium, 'min') {
+				&:after {
+					content: ' - '
+				}
+			}
+
+			@include breakpoint(small, 'max') {
+				margin: 0 auto 1em;
+			}
+
+			margin-right: 1em;
+		}
+	}
+}

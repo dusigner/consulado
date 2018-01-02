@@ -1,0 +1,45 @@
+@charset 'UTF-8';
+
+&__items {
+	@include breakpoint('small', 'max') { padding: 0 20px; }
+	padding: 0 40px;
+
+	&--recurrence { margin-top: 40px; }
+}
+
+&__item {
+	&-image { width: 120px }
+	&-name { width: 170px }
+}
+
+&__table {
+	@include font-size(14px, true, false);
+	width: 100%;
+
+	th {
+		border-bottom: 1px solid $gray-l;
+		padding-bottom: 5px;
+	}
+
+	td {
+		border-bottom: 1px solid $gray-l;
+		padding: 15px 0;
+	}
+}
+
+//tem GAE
+&__service {
+	&-icon {
+		padding-right: 1em!important;
+		text-align-last: right;
+
+		&:before {
+			background: transparent url('/arquivos/cns-orders-gae-connector.png') top center no-repeat;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 60px;
+			width: 45px;
+		}
+	}
+}

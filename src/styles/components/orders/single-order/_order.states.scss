@@ -189,3 +189,38 @@
 		}
 	}
 }
+
+&__bar {
+	&--tiny {
+		@include breakpoint('small', 'max') { display: none!important; }
+		display: none;
+		min-width: 250px;
+
+		.order__states { margin: 0; }
+
+		.order__state { width: auto }
+
+		.order__state-label { display: none }
+
+		.order__state-circle,
+		.order__state:last-child .order__state-circle {
+			height: 15px;
+			margin: 0;
+			transform: translateY(0);
+			width: 15px;
+		}
+
+		.order__state:last-child .order__state-circle:after {
+			background: transparent;
+			height: auto;
+			width: auto;
+		}
+
+		.order__state:not(:first-child):before { top: 7px; }
+
+		.order__state .order__state-circle:after {font-size: .4em!important}
+
+		.order__state--current .order__state-circle:after,
+		.order__state--active .order__state-circle:after {content: '\e60b'!important}
+	}
+}

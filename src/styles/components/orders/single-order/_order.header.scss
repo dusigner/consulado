@@ -1,0 +1,43 @@
+@charset 'UTF-8';
+
+&__header {
+	@include breakpoint('small', 'max') { padding: 20px 40px 20px 10px; }
+	border-bottom: 1px solid $gray;
+	cursor: pointer;
+	padding: 20px 50px 20px 40px;
+	position: relative;
+
+	&-list {
+		@include breakpoint('small', 'max') {
+			@include font-size(12px, true, false);
+		}
+		@include font-size(14px, true, false);
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&>.icon {
+		@include font-size(7px, true, false);
+		color: $green;
+		position: absolute;
+		right: 20px;
+		top: 50%;
+		transform: translateY(-50%) rotate(0);
+		transition: transform .5s ease;
+	}
+
+	&--closed {
+		.order__bar { display: block }
+
+		.icon { transform: translateY(-50%) rotate(180deg); }
+	}
+
+	&-item {
+		@include breakpoint('small', 'max') { text-align: right!important }
+	}
+
+	&-order {
+		@include breakpoint('small', 'max') { display: none }
+	}
+}
