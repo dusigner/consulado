@@ -650,7 +650,41 @@ body {
 			}
 
 			// Botão original Vtex - Fechar pedido
-			#cart-to-orderform { visibility: hidden; }
+			//#cart-to-orderform { visibility: hidden; }
+
+			// Fake button
+			.fake-buttom {
+				@include breakpoint(768px, 'min') {
+					position: relative;
+				 }
+				@include responsiveFont(15, 16, true);
+				font-weight: bold;
+				padding: 14px 50px;
+				padding-right: 65px;
+				position: relative;
+				text-transform: uppercase;
+
+				&:before {
+					@include contentBefore();
+					@include font-size(16px, true, false);
+					@include icon-get('arrow-right');
+					display: inline-block;
+					right: 40px;
+					top: 50%;
+					transform: translateY(-50%) scaleY(1);
+					transition: transform .2s ease-in;
+				}
+
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(20, 16, true);
+					display: block;
+					left: 0;
+					margin: 10px 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
 		}
 	}
 }
