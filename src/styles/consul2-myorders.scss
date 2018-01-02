@@ -56,15 +56,13 @@
 
 
 body.orders-page {
-
 	/* bootstrap reset */
 	// @import 'base/type';
 	// @import 'layout/container';
 
-
 	a { text-decoration: none!important; }
 
-	.payment-connector {display: none!important}
+	.payment-connector { display: none!important; }
 
 	.vtex-bootstrap { min-height: 400px; }
 }
