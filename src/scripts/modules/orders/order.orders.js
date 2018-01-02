@@ -86,6 +86,20 @@ Nitro.module('order.orders', function() {
 		});
 	};
 
+	this._getUserData = function() {
+		var dfd = jQuery.Deferred();
+
+		if(store && store.userData && store.userData.email) {
+			dfd.resolve(store.userData);
+		} else {
+			vtexjs.checkout.getOrderForm().done(function(res){
+				dfd.resolve(res.clientProfileData);
+			});
+		}
+
+		return dfd.promise();
+	};
+
 	/**
 	 * Bind eventos do módulo renderizado, requests iniciando botões de GAE
 	 */
@@ -98,9 +112,17 @@ Nitro.module('order.orders', function() {
 			$(this).next('.js-toggle-container').stop().stop().slideToggle();
 		});
 
-		$('.js-single-order').each(function(i, v) {
-			Warranty.init(v);
-		});
+		self._getUserData()
+			.then(function(userData) {
+				$('.js-single-order').each(function(i, v) {
+					var $self = $(this),
+						selfOrder = self.orders.orders.filter(function(order) {
+							return order.orderId === $self.data('order-id');
+						})[0];
+
+					Warranty.init(v, userData, selfOrder);
+				});
+			});
 
 		// Abre o modal de Histórico detalhado
 		$('#historico-detalhes').click(function(e) {

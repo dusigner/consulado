@@ -1,6 +1,6 @@
 'use strict';
 var CRM = require('modules/store/crm'),
-	PDVBox = require('modules/store/pdvbox'),
+	PDVBox = require('modules/store/crm-pdvbox'),
 	ModalGae = require('modules/orders/order.modal.gae');
 
 require('../../../templates/orders/warrantySpare.btnWarranty.html');
@@ -12,101 +12,107 @@ require('../../../templates/orders/warrantySpare.modal-confirm.html');
 require('../../../templates/orders/warrantySpare.modal-payment.html');
 
 var Warranty = {
-	self: this,
 	boxOrder: {},
 	boxPlans: {},
 	dateNow: new Date(),
+	orderObj: {},
 
-	init: function(order) {
-		var orderId = $(order).data('order-group');
+	init: function(order, userData, orderObj) {
+		var $order = $(order),
+			orderId = $order.data('order-group');
 
-		Warranty.boxOrder[orderId] = {};
-		Warranty.boxOrder[orderId].id = orderId;
-		Warranty.boxOrder[orderId].status = $(order).data('order-status');
-		Warranty.boxOrder[orderId].formattedDate = $(order).data('order-date');
-		Warranty.boxOrder[orderId].name = $(order).data('order-name');
-		Warranty.boxOrder[orderId].street = $(order).data('order-street');
-		Warranty.boxOrder[orderId].neighborhood = $(order).data('order-neighborhood');
-		Warranty.boxOrder[orderId].city = $(order).data('order-city');
-		Warranty.boxOrder[orderId].state = $(order).data('order-state');
-		Warranty.boxOrder[orderId].postalCode = $(order).data('order-zipcode');
-		Warranty.boxOrder[orderId].complement = $(order).data('order-complement');
-		Warranty.boxOrder[orderId].addresstype = $(order).data('order-addressType');
-		Warranty.boxOrder[orderId].number = $(order).data('order-number');
-		Warranty.boxOrder[orderId].reference = $(order).data('order-reference');
+		this.orderObj = orderObj;
 
-		var orderDate = Warranty.boxOrder[orderId].formattedDate.split('/');
+		this.boxOrder[orderId] = {
+			id: orderId,
+			fullId: $(order).data('order-id'),
+			status: $order.data('order-status'),
+			formattedDate: $order.data('order-date'),
+			name: $order.data('order-name'),
+			street: $order.data('order-street'),
+			neighborhood: $order.data('order-neighborhood'),
+			city: $order.data('order-city'),
+			state: $order.data('order-state'),
+			postalCode: $order.data('order-zipcode'),
+			complement: $order.data('order-complement'),
+			addresstype: $order.data('order-addressType'),
+			number: $order.data('order-number'),
+			reference: $order.data('order-reference')
+		};
+
+		var orderDate = this.boxOrder[orderId].formattedDate.split('/');
 		orderDate = orderDate[2] + '/' + orderDate[1] + '/' + orderDate[0];
 
-		Warranty.boxOrder[orderId].date = orderDate;
+		this.boxOrder[orderId].date = orderDate;
 
 		var timestampDays = 334*86400*1000,
 			timestampOrder = new Date(orderDate).getTime(),
 			limitBuyDate = $.formatDatetimeBRL(timestampDays + timestampOrder);
 
-		Warranty.boxOrder[orderId].limitBuyDate = limitBuyDate;
+		this.boxOrder[orderId].limitBuyDate = limitBuyDate;
 
-		vtexjs.checkout.getOrderForm().done(function(res){
-			Warranty.profileData = res.clientProfileData;
-			Warranty.addButton(Warranty.boxOrder[orderId], order);
-		}).fail(function() {
-			Warranty.alert('erro-user', 'Ocorreu algum erro, tente novamente');
-		});
+		if(userData) {
+			this.profileData = userData;
+			this.addButton(this.boxOrder[orderId], order);
+		} else {
+			this.alert('erro-user', 'Ocorreu algum erro, tente novamente');
+		}
 	},
 
 	addButton: function(order, orderElem) {
 		Warranty.boxOrder[order.id].products = [];
 
-		$(orderElem).find('.js-order-item').each(function() {
+		if ( order.status !== 'Cancelado' &&
+		order.status !== 'Pedido cancelado' &&
+		order.status !== 'Aguardando pagamento' &&
+		order.status !== 'Processamento' &&
+		order.status !== 'Processando Pagamento') {
+			$(orderElem).find('.js-order-item').not('.order__hide--desk').each(function() {
 
-			var product = {},
-				$selfProduct = $(this);
+				var product = {},
+					$selfProduct = $(this);
 
+				product.id = $selfProduct.data('product-id');
+				product.refId = $selfProduct.data('product-refid');
+				product.name = $selfProduct.data('product-name');
+				product.price = $selfProduct.find('.total-price').text();
+				product.price = $selfProduct.data('product-price');
+				product.quantity = $selfProduct.data('product-quantity');
+				product.bundle = $selfProduct.data('product-bundle')
+								? {
+									name: $selfProduct.data('product-bundle'),
+									quantity: $selfProduct.data('product-bundle-quantity'),
+									price: $selfProduct.data('product-bundle-price')
 
-			product.id = $selfProduct.data('product-id');
-			product.refId = $selfProduct.data('product-refid');
-			product.name = $selfProduct.data('product-name');
-			product.price = $selfProduct.find('.total-price').text();
-			product.price = $selfProduct.data('product-price');
-			product.quantity = $selfProduct.data('product-quantity');
-			product.bundle = $selfProduct.data('product-bundle')
-							? {
-								name: $selfProduct.data('product-bundle'),
-								quantity: $selfProduct.data('product-bundle-quantity'),
-								price: $selfProduct.data('product-bundle-price')
+								}
+								: false;
+				product.index = $selfProduct.data('product-index');
 
-							}
-							: false;
-			product.index = $selfProduct.data('product-index');
+				if ($.diffDate(Warranty.dateNow, order.date) <= 334 && !product.bundle ) {
+					Warranty.boxOrder[order.id].products.push(product);
+					Warranty.getPlan(order, product);
+				}
 
-			if ($.diffDate(Warranty.dateNow, order.date) <= 334 &&
-			order.status !== 'Cancelado' &&
-			order.status !== 'Pedido cancelado' &&
-			order.status !== 'Aguardando pagamento' &&
-			order.status !== 'Processando Pagamento' &&
-			!product.bundle ) {
-				Warranty.boxOrder[order.id].products.push(product);
-				Warranty.getPlan(order, product);
-			}
+				//caso possua gae comprada pela Vtex
+				if ( product.bundle ) {
+					Warranty.renderDownloadVtexWarranty(order, product);
+					Warranty.cancelVtexWarranty();
+					Warranty.downloadVtexWarranty();
+				}
 
-			//caso possua gae comprada pela Vtex
-			if ( order.status !== 'Cancelado' &&
-			order.status !== 'Pedido cancelado' &&
-			order.status !== 'Aguardando pagamento' &&
-			order.status !== 'Processando Pagamento' &&
-			product.bundle ) {
-				Warranty.renderDownloadVtexWarranty(order, product);
-				Warranty.cancelVtexWarranty();
-				Warranty.downloadVtexWarranty();
-			}
-
-
-		});
+			});
+		}
 	},
 
 	getPlan: function(order, product) {
-		PDVBox.get(order.id, product.name).done(function(res) {
-			Warranty.boxPlans[order.id] = res;
+		if(!Warranty.boxPlans[order.id]) {
+			Warranty.boxPlans[order.id] = {};
+		}
+
+		PDVBox.get(order.id, product, this.orderObj).done(function(res) {
+			res.orderFullId = order.fullId;
+			Warranty.boxPlans[order.id][product.id] = res;
+
 			if (res.message === 'Sale found') {
 				Warranty.renderDownload(order, res, product);
 				Warranty.cancelWarranty();
@@ -123,7 +129,8 @@ var Warranty = {
 	render: function(order, product) {
 		dust.render('warrantySpare.btnWarranty', {
 			id: order.id,
-			limitBuyDate: order.limitBuyDate
+			limitBuyDate: order.limitBuyDate,
+			product: product.id
 		}, function(err, out) {
 			if (err) {
 				throw new Error('Modal Warranty Dust error: ' + err);
@@ -137,8 +144,9 @@ var Warranty = {
 		});
 
 		$('.add-warranty').unbind('click').click(function() {
-			var orderId = $(this).data('id');
-			Warranty.openSelectWarranty(Warranty.boxOrder[orderId], Warranty.boxPlans[orderId]);
+			var orderId = $(this).data('id'),
+				productId = $(this).data('product');
+			Warranty.openSelectWarranty(Warranty.boxOrder[orderId], Warranty.boxPlans[orderId][productId]);
 		});
 	},
 
