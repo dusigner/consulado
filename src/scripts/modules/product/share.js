@@ -32,8 +32,10 @@ Nitro.module('share', ['facebook-init'], function() {
 	// Abre o popup e insere os dados de compartilhamento do Twitter
 	$('#compartilharTw').on('click', function(e) {
 		e.preventDefault();
+		var	x = screen.width/2 - 500/2;
+    	var	y = screen.height/2 - 280/2;
 		var share_link = $(this).prop('href');
-		window.open(share_link, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=500,height=280');
+		window.open(share_link, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top='+y+',left='+x+',width=500,height=280');
 	});
 
 	// abre o modal de compartilhamento por e-mail
@@ -71,16 +73,16 @@ Nitro.module('share', ['facebook-init'], function() {
 		
 		// faz a inserção no CRM
 		CRM.ajax({
-				url: CRM.formatUrl('CE', 'documents'),
-				type: 'PATCH',
-				data: JSON.stringify(data),
-				success: function (data) {
-					$('#formshare')[0].reset();
-					$('#formshare').addClass('sucesso');
-					},		
-				error: function (error) {
-					alert('error; ' + error);
-				}
+			url: CRM.formatUrl('CE', 'documents'),
+			type: 'PATCH',
+			data: JSON.stringify(data),
+			success: function (data) {
+				$('#formshare')[0].reset();
+				$('#formshare').addClass('sucesso');
+			},		
+			error: function (error) {
+				alert('error; ' + error);
+			}
 		});
 
 		
