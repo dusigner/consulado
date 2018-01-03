@@ -1,5 +1,9 @@
 @charset 'UTF-8';
 
+$self-pri: $green!default;
+$self-sec: $orange!default;
+$self-bg: $txt-gray-l!default;
+
 @keyframes rotation {
 	to { transform: rotate(360deg); }
 }
