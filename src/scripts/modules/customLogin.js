@@ -234,14 +234,30 @@ Nitro.module('customLogin', function() {
 		}
 
 		function initModal() {
-			self.setDefaultLayout();
+			self.setDefaultLayout();		
 			$('#modal-custom-login').vtexModal();
-			focusFirstInput();
+
+			setTimeout(function() {
+				// get the password field
+				var el = document.getElementById('password');
+				el.focus();
+				el.select();
+				var noChars = el.selectionEnd;
+
+				document.querySelector('input#login.custom-label').focus();
+
+				if (noChars !== 0) {
+					$('#password').parent().addClass('label-on');
+				}
+
+			}, 1000);
 		}
 
-		window.vtexid.start = function() {
-			initModal();
-		};
+		if (window.vtexid) {
+			window.vtexid.start = function() {
+				initModal();
+			};
+		}
 
 		// self.verifyLogin();
 		self.setDefaultLayout();
