@@ -99,25 +99,25 @@ $(window).on('load', function() {
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
-				// Teste AB
-				var urlTesteAb = window.location.search;
-				var testeA = 'testeab=a';
-				var testeB = 'testeab=b';
+			// Teste AB
+			var urlTesteAb = window.location.search;
+			var testeA = 'testeab=a';
+			var testeB = 'testeab=b';
 
-				if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-					$body.addClass('abMask');
-				}
-				else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-					$body.addClass('abMask');
-				}
-			
+			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+				$body.addClass('abMask');
+			}
+			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+				$body.addClass('abMask');
+			}
+
 			if($(window).width() < 767) {
 				$('.client-profile-data').parent(0).addClass('email-confirm');
 				$('#btn-client-pre-email').on('click', function() {
 					$('.client-profile-data').parent(0).removeClass('email-confirm');
 				});
-				if($('body').hasClass('abMask')) { //inserir essa classe para *(teste AB)* 
-					//insere a mascara de inpu somente em mobile no metodo de pagamento campos de cpf e phone 
+				if($('body').hasClass('abMask')) { //inserir essa classe para *(teste AB)*
+					//insere a mascara de inpu somente em mobile no metodo de pagamento campos de cpf e phone
 					$('input#client-document').inputmask('999.999.999-99');
 					$('input#client-phone').inputmask('(99) 9999[9]-9999');
 					$('input#summary-postal-code').inputmask('99999-999');
@@ -370,17 +370,16 @@ $(window).on('load', function() {
 			var $fakeButton = $('.fake-buttom'),
 				$fieldBuyButton = $('.cart-template.full-cart');
 
-			// adiciona fake button no Desktop			
+			// adiciona fake button no Desktop
 			if ($fakeButton.length === 0) {
 				$fakeButton = $('<a href="#" class="fake-buttom btn-success btn btn-large">Continuar</a>').appendTo('.cart-links');
 
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
-
 			}
 
-			// monta a barra fixa no mobile dentro do carrinho (teste AB)
+			// monta a barra fixa no mobile dentro do carrinho
 			if ($fakeButton.length !== 0 && $(window).width() <= 768 && $('.field-button').length === 0) {
 				var $fakeButtonClone = $fakeButton.clone(true);
 				$fieldBuyButton.append('<div class="field-button"></div>');
