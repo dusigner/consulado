@@ -30,9 +30,14 @@
 
 			ul {
 				@include clearfix();
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				width: 100%;
 
 				li {
-					display: inline-block;
+					display: flex;
+					flex-direction: column;
 					outline: none!important;
 					width: 100/3*1%;
 
@@ -42,15 +47,37 @@
 
 					article {
 						@include responsiveFont(16, 16, true);
+						display: flex;
+						flex-direction: column;
+						height: 100%;
 						padding: 30px 20px;
 						position: relative;
 					}
 
 					.detalhes {
+						display: flex;
+						flex-direction: column;
+						height: 100%;
+
 						h3 {
 							min-height: 85px;
 
-							@include breakpoint(extra-small, 'max') { min-height: 110px; }
+							@include breakpoint(extra-small, 'max') { min-height: 50px; }
+						}
+
+						.prod-info {
+							display: flex;
+							flex: 1;
+							flex-direction: column;
+
+							.nome {
+								margin-bottom: 20px;
+								@include breakpoint(small, 'max') {margin-bottom: 0};
+							}
+
+							.price {
+								margin-top: auto !important;
+							}
 						}
 
 						p.indisponivel {
@@ -396,7 +423,8 @@
 										padding: 0;
 										text-align: left;
 										vertical-align: top;
-										width: 54%;
+										width: 100%;
+										// width: 54%;
 
 										.nome {
 											@include responsiveFont(14, 16, true);
