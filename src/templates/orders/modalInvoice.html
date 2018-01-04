@@ -1,0 +1,13 @@
+<a href="#" class="order__invoicekey js-invoicekey">
+	<i class="order__icon order__icon--invoice"></i>
+	<span>Nota Fiscal &nbsp;</span>
+</a>
+
+<div class="modal-invoice" style="display:none;">
+	<p class="modal-invoice__text">Você pode consultar a 2ª via da nota fiscal no <a href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=" target="_blank">site da Receita Federal</a>. Basta copiar a chave de acesso abaixo e colá-la ao acessar o <a href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=" target="_blank">site da Receita Federal</a></p>
+	<input class="text-center modal-invoice__key js-invoice-value" type="text" value="{invoiceData.invoiceKey}" disabled="disabled">
+	<div class="modal-invoice__actions">
+		<button class="primary-button js-invoice-clipboard">Copiar chave de acesso</button>
+		<a class="primary-button" href="http://www.nfe.fazenda.gov.br/portal/consultaRecaptcha.aspx?tipoConsulta=completa&tipoConteudo=XbSeqxE8pl8=" target="_blank">Abrir site da Receita Federal</a>
+	</div>
+</div>
