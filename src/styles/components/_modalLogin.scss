@@ -1,0 +1,418 @@
+// custom Modal Login
+$consul-primary: #9aca3c;
+
+// TESTES
+#login {
+	&.logged {
+		background: #ff0000 !important;
+	}
+}
+
+#vtex-modal-custom-login {
+
+    .modal-holder {
+		max-width: 800px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		
+        .modal-header {
+            display: none;
+		}
+		
+        .mode-custom-login--header {
+
+            .modal-custom-login--title {
+                color: $consul-primary;
+                margin-bottom: 0;
+			}
+			
+            .modal-custom-login--subtitle1 {
+                font-size: 15px;
+                font-weight: 700;
+                margin: 0;
+			}
+			
+            .modal-custom-login--subtitle2 {
+                font-weight: 400;
+                margin-top: 10px;
+            }
+		}
+		
+		.modal-custom-login--body {
+			padding: 0 30px 30px 30px;
+
+			.modal-custom-login--errorBox {
+				color: #ff0000;
+				font-weight: 300;
+			}
+
+			input:-webkit-autofill,
+			textarea:-webkit-autofill,
+			select:-webkit-autofill {
+				-webkit-box-shadow: 0 0 0 30px #ffffff inset;
+			}
+
+			// LAYOUT DEFAULT
+			.modal-custom-login--init-layout {
+				display: flex;
+				flex-direction: row;
+
+				input[type='submit'] {
+					float: right;
+					width: auto;
+				}
+				
+			> div {
+				flex-basis: 0;
+				flex-grow: 1;
+	
+				&:first-child {
+					border-right: solid 1px $consul-primary;
+					padding-right: 15px;
+					}
+	
+					&:last-child {
+						padding-left: 15px;
+					}
+				}
+			}
+
+			#modal-custom-login-email-access--form {
+				margin-top: 60px;
+			}
+
+			// LAYOUT SOLICITAR CHAVE POR EMAIL
+			.modal-custom-login--email-access-layout,
+			.modal-custom-login-email-to-pw {
+				padding: 0 150px;
+
+				.modal-custom-email--inputbox {
+					margin-bottom: 70px;
+				}
+
+				.btn--voltar {
+					margin-right: 15px;
+				}
+			}
+
+			// LAYOUT KEYS
+			.modal-custom-login--key-access-layout {
+				padding: 0 150px;
+
+				.modal-custom-login-key__fields {
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 30px;
+
+					&.invalid__key {
+						input {
+							border-color: #ff0000;
+						}
+					}
+
+					input {
+						border: solid 1px #ccc;
+						border-radius: 8px;
+						color: transparent;
+						font-size: 20px;
+						height: 60px;
+						margin: 0 10px;
+						padding: 0;
+						text-align: center;
+						text-shadow: 0 0 0 #736c6b;
+						width: 44px;
+
+						&:focus {
+							background: $consul-primary;
+							text-shadow: 0 0 0 #ffffff;
+						}
+					}
+				}
+
+				.custom-login-btn {
+					margin-right: 15px;
+				}
+			}
+
+			.modal-custom-login--sectitles {
+				color: $consul-primary;
+				font-weight: 600;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+
+			.modal-custom-login--formOptions {
+				margin-bottom: 15px;
+				text-align: right;
+
+				span {
+					border-right: solid 1px #ccc;
+					cursor: pointer;
+					font-size: 13px;
+					margin: 0 10px;
+					padding-right: 10px;
+					text-decoration: underline;
+
+					&:first-child {
+						margin-left: 0;
+					}
+
+					&:last-child {
+						border: none;
+						margin-left: 0;
+						margin-right: 0;
+						padding: 0;
+					}
+				}
+			}
+
+			.modal-custom-login--buttons {
+				.modal-custom-login-btn {
+					background-position: 30px;
+					background-repeat: no-repeat;
+					border: none;
+					color: #ffffff;
+					margin-bottom: 15px;
+					padding: 12px 17px 12px 70px;
+					text-align: left;
+					transition: all .2s ease;
+					width: 100%;
+
+					&.mailkey {
+						background-color: #5fbd5f;
+						background-image: url('/arquivos/icon_email.png');
+					}
+
+					&.facebook_access {
+						background-color: #3b5999;
+						background-image: url('/arquivos/icon_face.png');
+					}
+
+					&.google_access {
+						background-color: #ea4235;
+						background-image: url('/arquivos/icon_google.png');
+					}
+
+					&:last-child {
+						margin: 0;
+					}
+
+					&:hover {
+						opacity: .7;
+					}
+				}
+			}
+
+			.password-validate-indicators {
+				text-align: left;
+				margin-bottom: 30px;
+				margin-top: 20px;
+
+				.password-validate--title {
+					font-weight: 400;
+				}
+
+				ul {
+					li {
+						font-size: 13px;
+						color: #ff0000;
+
+						&.validated {
+							color: #5fbd5f;
+						}
+					}
+				}
+			}
+
+			input {
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+    }
+}
+
+/* MISCELLANOUS */
+
+// CUSTOM LABELS
+.modal-custom-email--inputbox {
+	&::before {
+		content: 'E-mail';
+	}
+}
+
+.modal-custom-password--inputbox {
+	&::before {
+		content: 'Senha';
+	}
+}
+
+.modal-custom-set-password--inputbox {
+	&::before {
+		content: 'Nova senha';
+	}
+}
+
+.modal-custom-set-confirm-password--inputbox {
+	&::before {
+		content: 'Confirme a senha';
+	}
+}
+
+.modal-custom-email--inputbox,
+.modal-custom-password--inputbox,
+.modal-custom--inputbox {
+	border-bottom: solid 1px #ccc;
+	margin-bottom: 10px;
+	margin-top: 25px;
+	position: relative;
+
+	&.label-on {
+		&::before {
+			left: -7px;
+			top: -20px;
+			transform: scale(.7);
+		}
+	}
+
+	&::before {
+		left: 0;
+		position: absolute;
+		top: 0;
+		transition: all .2s ease;
+	}
+	
+	span {
+		left: 10px;
+		position: absolute;
+		top: 8px;
+	}
+	
+	input {
+		margin-bottom: 0;
+		padding: 0 0 2px 0;
+	}
+}
+
+// ESTILO BOTÕES
+.custom-login-btn,
+input[type='submit'].custom-login-btn {
+	border: solid 2px;
+	border-radius: 50px;
+	font-weight: 500;
+	padding: 7px 25px;
+	transition: all .2s ease;
+	width: auto;
+
+	&.btn-custom-primary {
+		background-color: #ffffff;
+		border-color: $consul-primary;
+		color: $consul-primary;
+
+		&:hover {
+			background-color: $consul-primary;
+			border-color: $consul-primary;
+			color: #ffffff;
+		}
+	}
+
+	&.btn-custom-secondary {
+		background-color: $consul-primary;
+		border-color: $consul-primary;
+		color: #ffffff;
+
+		&:hover {
+			background: #ffffff;
+			border-color: $consul-primary;
+			color: $consul-primary;
+		}
+	}
+}
+
+.btn--voltar--toDefault,
+.btn--voltar--toEmail {
+	cursor: pointer;
+}
+
+@include breakpoint (small, 'max') {
+	#vtex-modal-custom-login {
+		.modal-holder {
+			margin-top: 20px;
+			margin-bottom: 20px;
+
+			.mode-custom-login--header {
+				.modal-custom-login--subtitle2 {
+					font-size: 14px;
+					padding: 0 10px;
+				}
+			}
+
+			.modal-custom-login--body {
+				padding: 0 10px 10px 10px;
+		
+				.modal-custom-login--init-layout {
+					flex-direction: column;
+		
+					> div {
+						&:first-child {							
+							padding: 0;
+							border: none;
+						}
+
+						&:last-child {							
+							padding: 0;
+						}
+					}
+				}
+
+				.modal-custom-login--email-access-layout,
+				.modal-custom-login-email-to-pw {
+					padding: 0;
+				}
+
+				.modal-custom-login--email-access-layout {
+					padding: 0;
+
+					.modal-custom-email--inputbox {
+						margin-bottom: 30px;
+					}
+				}
+
+				.modal-custom-login-email-to-pw {
+					.modal-custom-email--inputbox {
+						margin-bottom: 30px;
+					}
+				}
+
+				.modal-custom-login--key-access-layout {
+					padding: 0;
+
+					.modal-custom-login-key__fields {
+						flex-wrap: wrap;
+
+						input {
+							width: 25%;
+							margin: 0 4%;
+							margin-bottom: 15px;
+						}
+					}
+				}
+
+				.modal-custom-login--formOptions {
+					span {
+						font-size: 11px;
+					}
+				}
+			}
+		}
+	}
+
+	.custom-login-btn,
+	input[type='submit'].custom-login-btn {
+		border: solid 1px;
+		border-radius: 5px;
+		padding: 5px 15px;
+		display: inline-block;
+	}
+};
