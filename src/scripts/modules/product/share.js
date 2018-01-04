@@ -1,4 +1,4 @@
-/* global $: true, Nitro: true, skuJson: true, FB: true */
+/* global $: true, Nitro: true, FB: true */
 'use strict';
 
 require('modules/store/facebook-init');
@@ -7,7 +7,7 @@ require('vendors/vtex-modal');
 var CRM = require('modules/store/crm.js');
 
 Nitro.module('share', ['facebook-init'], function() {
-	
+
 	// função que abre o modal do facebook
 	document.getElementById('shareBtn').onclick = function() {
 		FB.ui({
@@ -16,9 +16,9 @@ Nitro.module('share', ['facebook-init'], function() {
 			action_properties:  JSON.stringify({
 				object: url_atual,
 			})
-		}, function(response){});
+		}, function(){});
 	};
-	
+
 	// pega o link da pagina atual
 	var url_atual = window.location.href;
 
@@ -28,22 +28,22 @@ Nitro.module('share', ['facebook-init'], function() {
 	// monta a url de compartilhamento do Twitter
 	var link = document.getElementById('compartilharTw');
 	link.setAttribute('href','http://twitter.com/share?text='+titulopPro+'&url='+url_atual+'');
-	
+
 	// Abre o popup e insere os dados de compartilhamento do Twitter
 	$('#compartilharTw').on('click', function(e) {
 		e.preventDefault();
 		var	x = screen.width/2 - 500/2;
-    	var	y = screen.height/2 - 280/2;
+		var	y = screen.height/2 - 280/2;
 		var share_link = $(this).prop('href');
 		window.open(share_link, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top='+y+',left='+x+',width=500,height=280');
 	});
 
 	// abre o modal de compartilhamento por e-mail
 	$('#compartilharEmail').click(function() {
-		$('#modal-custom-share').vtexModal();		
+		$('#modal-custom-share').vtexModal();
 	});
 
-	
+
 
 	// pega o formulário de envio
 	var formshare = document.getElementById('formshare');
@@ -53,10 +53,10 @@ Nitro.module('share', ['facebook-init'], function() {
 
 		// impede o envio do form
 		e.preventDefault();
-		
+
 		// pega os valores dos inputs
 		var remetente = $('#remetente').val();
-		var destinatario = $('#destinatario').val(); 
+		var destinatario = $('#destinatario').val();
 		var nomeremetente = $('#nomeremetente').val();
 		var assuntoemail = $('#assuntoemail').val();
 		var mensagememail = $('#mensagememail').val();
@@ -70,27 +70,27 @@ Nitro.module('share', ['facebook-init'], function() {
 			'nome' : nomeremetente,
 			'remetente' : remetente
 		};
-		
+
 		// faz a inserção no CRM
 		CRM.ajax({
 			url: CRM.formatUrl('CE', 'documents'),
 			type: 'PATCH',
 			data: JSON.stringify(data),
-			success: function (data) {
+			success: function () {
 				$('#formshare')[0].reset();
 				$('#formshare').addClass('sucesso');
-			},		
+			},
 			error: function (error) {
-				alert('error; ' + error);
+				console.info('error; ' + error);
 			}
 		});
 
-		
-		
+
+
 	});
 
-	
 
-	
-	
+
+
+
 });
