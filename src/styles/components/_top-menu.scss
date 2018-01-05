@@ -55,7 +55,6 @@
 		border: 1px solid $green;
 		border-radius: 20px;
 		margin: 0 calculate-em(5) 0 0;
-
 		a[title='Departamentos'] {
 			@include responsiveFont(14);
 			height: 34px;
@@ -64,10 +63,16 @@
 			text-indent: 26px;
 			text-transform: uppercase;
 			z-index: 4;
-
+			// &:before{
+			// 	content: "";
+			// 	background: #fff;
+			// 	height: 25PX;
+			// 	margin-left: -11px;
+			// 	position: absolute;
+			// 	width: 11px;
+			// }
 			@include breakpoint(extra-large, 'max') { font-size: 14px; }
 		}
-
 		.icon-hamburger {
 			border-bottom: 2px solid $green;
 			border-top: 2px solid $green;
@@ -393,6 +398,7 @@ $menu-colors: (
 		padding: 0;
 		text-align: left;
 		z-index: 11;
+		
 
 		.menu-title {
 			cursor: pointer;
@@ -414,7 +420,7 @@ $menu-colors: (
 			width: 100%;
 
 			a { @include responsiveFont(14, 16, true); }
-
+			
 			&:first-child a { border: none; }
 
 			&.txt-gray {

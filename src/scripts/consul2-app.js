@@ -33,8 +33,9 @@ require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/linkDoubleClick');
+require('modules/customLogin');
 
-Nitro.setup(['cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira', 'linkDoubleClick', 'redirect'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'customLogin'], function() {
 	$('.helperComplement').remove();
 
 	var path = window.location.pathname;

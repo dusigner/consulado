@@ -27,7 +27,7 @@ var CRM = {
 	},
 
 	getOrderById: function (orderId) {
-		return $.getJSON(CRM.formatUrl('GE', 'search'), {
+		return $.getJSON(CRM.formatUrl('SP', 'search'), {
 			_fields: 'orderId,state,city,status,description,lastChange,finished',
 			orderId: orderId
 		});

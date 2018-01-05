@@ -124,16 +124,18 @@ Nitro.module('gallery', function() {
 			$(this).children('img').not('.mfp-iframe').css({'transform': 'scale(2)'});
 			$('.prod-selos').css({'z-index':'00000000', 'opacity':'0'});
 		});
+
 		$('.popup-zoom').on('mouseout', function(){
 			$(this).children('img').css({'transform': 'scale(1)', 'z-index': '0', 'transition':'transform 0.2s'});
 			$('.prod-selos').css({'z-index':'3', 'opacity':'1'});
 		});
+
 		$('.popup-zoom').not('.mfp-iframe').on('mousemove', function(e){
 			//$(this).css('width', '1000px !important');
 			$(this).children('img').css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
 		});
 	}
-	
+
 	/*$('.slick-slide.video:not(.slick-cloned) .popup-zoom').magnificPopup({
 		items: [
 			{

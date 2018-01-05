@@ -45,6 +45,11 @@ body.listagem {
 	&.departamento,
 	&.busca {
 		.title-filter:before { content: 'Filtrar por categoria'; }
+
+		.order-wrapper {
+			float: right;
+			margin: 15px 0;
+		}
 	}
 
 	&.busca {
@@ -238,14 +243,21 @@ body.listagem {
 
 #list-more {
 	@include responsiveFont(18);
-	min-height: 50px;
-	outline: none;
-
+	//FIX TABLET
+	@media screen and(min-width: 768px) {
+		@media screen and(max-width: 768px) {
+			float: none;
+			left: 0;
+			margin: 0;
+		}
+	}
 	@include breakpoint(small, 'max') {
 		min-height: 35px;
 		padding: 0;
 		width: 100%;
 	}
+	min-height: 50px;
+	outline: none;
 
 	&.loading {
 		font-size: 0;
@@ -483,8 +495,8 @@ body.listagem {
 body.test__vitrine--show-b {
 	.mosaico-secundarios-left,
 	.mosaico-secundarios-right { display: none; }
-	.vitrineTesteB { 
-		display: inline-block; 
+	.vitrineTesteB {
+		display: inline-block;
     	margin-right: 10px;
 		width: 100%;
 	}

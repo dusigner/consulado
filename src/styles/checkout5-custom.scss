@@ -23,12 +23,12 @@
 @import 'base/fonts';
 @import 'base/main';
 
-
-
 // Layout styles
 @import 'layout/container';
 @import 'helpers/helpers';
 @import 'components/buttons';
+@import 'components/modal';
+@import 'components/modalLogin';
 
 .loading-bg { margin-top: 0; }
 object { display: none; }
@@ -105,14 +105,14 @@ body {
 		background: transparent;
 		border: 2px solid $orange;
 		color: $orange;
+
 		&:hover {
 			background: $orange;
 			border: 2px solid $orange;
 			color: #ffffff;
 		}
-		&:after {
-			background: $orange;
-		}
+
+		&:after { background: $orange; }
 	}
 
 	button,
@@ -209,7 +209,34 @@ body {
 				color: $orange;
 			}
 
-			&#btn-client-pre-email { padding: 4px 12px; }
+			&#btn-client-pre-email {
+				padding: 4px 12px;
+				@include breakpoint(768px, 'max') {
+				   margin-bottom: 20px;
+				   position: relative;
+				   width: 100%;
+				}
+				@include breakpoint(767px, 'max') {
+					width: 100%;
+				}
+			}
+		}
+		// fake buttom mobile
+		@include breakpoint(small, 'max') {
+			.field-button {
+				.btn-success {
+					@include responsiveFont(14, 16, true);
+					@include vendor(border-radius, 20px);
+					background-color: $green;
+					border: none;
+					color: #fff;
+					float: right;
+					font-weight: bold;
+					padding: 10px 40px;
+					text-transform: uppercase;
+				}
+			}
+			.full-cart { margin-bottom: 0; }
 		}
 	}
 
