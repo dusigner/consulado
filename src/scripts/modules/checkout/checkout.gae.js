@@ -213,10 +213,32 @@ Nitro.module('checkout.gae', function() {
 				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
 			});
 
+			
 			// Adicionando garantia definida ao produto
-			$modalWarranty.find('.btn-continue')
-				//.unbind('click')
-				.on('click', self.addkWarranty); //descomentar fora do teste
+			$('.btn-continue').click(function() {
+
+				if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
+					
+					$('.form-termos').removeClass('erro');
+
+					//Retornar true ou false 
+					$modalWarranty.find('.btn-continue')
+					.on('click', self.addkWarranty); //descomentar fora do teste
+				}
+				else {
+					$('.form-termos').addClass('erro');
+				}
+			});
+
+			$('.abreefecha').click(function() {
+				$('.seguro-de-garantia').toggleClass('ativo');		
+			});
+
+			$('.abreefecha-pgto').click(function() {
+				$('.autorizacao-de-pgto').toggleClass('ativo');		
+			});
+
+
 		});
 	};
 
@@ -283,6 +305,7 @@ Nitro.module('checkout.gae', function() {
 	/*$(window).load(function() {
 		self.autoOpen();
 	});*/
+
 });
 
 /*jshint strict: false */
