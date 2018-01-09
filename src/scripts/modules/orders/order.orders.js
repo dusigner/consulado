@@ -15,14 +15,12 @@ var CRM = require('modules/store/orders-crm'),
 	Estimate =  require('modules/orders/order.estimate'),
 	Warranty = require('modules/orders/order.warranty');
 
-
-
 Nitro.module('order.orders', function() {
 
 	var self = this;
 
 	this.$container = $('#myorders'); //Container geral
-	this.$ordersContainer = $('#myorders-render'); //Container de recorrências
+	this.$ordersContainer = $('#orders-render'); //Container de pedidos
 	this.orders = {
 		orders: null,
 		isLoaded: false
@@ -32,7 +30,7 @@ Nitro.module('order.orders', function() {
 	/**
 	 * Função bootstrap order | Carrega e atribui orders da API p/ o módulo e/ou renderiza o módulo Pedidos Feitos
 	 */
-	this.order = function() {
+	this.init = function() {
 		self.$container.addClass('myorders--loading');
 
 		if(!self.orders.orders) {
@@ -64,7 +62,7 @@ Nitro.module('order.orders', function() {
 		self.orders.isLoaded = false;
 		self.$ordersContainer.find('*').unbind();
 		self.$ordersContainer.html('');
-		self.order();
+		self.init();
 	};
 
 	/**
@@ -124,11 +122,19 @@ Nitro.module('order.orders', function() {
 				});
 			});
 
+		self._modals();
+	};
+
+	/**
+	 * Chamadas das ações feitas por modal whpModal
+	 */
+	this._modals = function() {
+
 		// Abre o modal de Histórico detalhado
-		$('#historico-detalhes').click(function(e) {
+		$('.historico-detalhes').click(function(e) {
 			e.preventDefault();
 
-			var id = '#modal-detalhes';
+			var $modal = $(this).siblings('.modal-detalhes');
 
 			var maskHeight = $(document).height();
 			var maskWidth = $(window).width();
@@ -138,25 +144,20 @@ Nitro.module('order.orders', function() {
 			$('#mask').fadeTo('slow', 0.5);
 			$('#mask').css('display', 'block');
 
-			var winH = $(window).height();
-			var winW = $(window).width();
+			$modal.fadeIn();
 
-			$(id).css('top',  winH/2-$(id).height()/2);
-			$(id).css('left', winW/2-$(id).width()/2);
-			$(id).fadeIn();
-
-			$('#modal-detalhes .close').click(function(e) {
+			$modal.find('.close').click(function(e) {
 				e.preventDefault();
 
 				$('#mask').hide();
-				$(id).hide();
+				$modal.hide();
 			});
 
 			$('#mask').click(function(e) {
 				e.preventDefault();
 
 				$(this).hide();
-				$(id).hide();
+				$modal.hide();
 			});
 		});
 
@@ -198,78 +199,6 @@ Nitro.module('order.orders', function() {
 					}).click(); //TODO - rerererer mim ajuda clipboard (Hack pq o clipboard só estava funcionando depois do primeiro click, tem que ver issoai hein)
 				}
 			});
-		});
-
-		$('#box-all-states .more-itens').click(function(e) {
-			e.preventDefault();
-			$('.content-states__others').show();
-			$(this).hide();
-		});
-
-		self._modals();
-	};
-
-	/**
-	 * Chamadas das ações feitas por modal whpModal
-	 */
-	this._modals = function() {
-		$('.js-order-cancel').whpModal({
-			onOpen: function(step) {
-				var orderId = $(this).data('order');
-
-				$('.js-form-cancel').submit(function(e) {
-					e.preventDefault();
-
-					var $self = $(this); //clicked button
-
-					$.crmHandler(step, function() {
-						return CRM.cancelOrder(orderId, $.serializeForm($self))
-								.then(function() {
-									step('next');
-									self.resetOrder();
-								});
-					});
-				});
-			},
-			innerNav: true
-		});
-
-		// Abre o modal de Histórico detalhado
-		$('.historico-detalhes').click(function(e) {
-			e.preventDefault();
-
-			var $modal = $(this).siblings('.modal-detalhes');
-
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-
-			$('#mask').css({'width':maskWidth,'height':maskHeight});
-
-			$('#mask').fadeTo('slow', 0.5);
-			$('#mask').css('display', 'block');
-
-			$modal.fadeIn();
-
-			$modal.find('.close').click(function(e) {
-				e.preventDefault();
-
-				$('#mask').hide();
-				$modal.hide();
-			});
-
-			$('#mask').click(function(e) {
-				e.preventDefault();
-
-				$(this).hide();
-				$modal.hide();
-			});
-		});
-
-		//"Ver mais" modal histórico detalhado
-		$('.box-all-states .more-itens').click(function(e) {
-			e.preventDefault();
-			$(this).siblings('.content-states__others').show();
-			$(this).hide();
 		});
 	};
 
