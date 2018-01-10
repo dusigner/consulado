@@ -27,7 +27,7 @@ Nitro.module('order.recurrences', function() {
 	/**
 	 * Função bootstrap recurrence | Carrega e atribui subscriptions da API p/ o módulo e/ou renderiza o módulo Recorrências
 	 */
-	this.recurrence = function() {
+	this.init = function() {
 		self.$container.addClass('myorders--loading');
 
 		if(!self.recurrences.recurrences) {
@@ -76,7 +76,7 @@ Nitro.module('order.recurrences', function() {
 		self.recurrences.isLoaded = false;
 		self.$recurrencesContainer.find('*').unbind();
 		self.$recurrencesContainer.html('');
-		self.recurrence();
+		self.init();
 	};
 
 	/**
