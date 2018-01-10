@@ -166,7 +166,7 @@ Nitro.module('customLogin', function() {
 	this.init = function() {
 		self.setListeners();
 		
-		userInfos.initialCallback.scope = (location.host.indexOf('vtexcommercestable') > -1) ? location.host.split('.')[0] : location.host;
+		userInfos.initialCallback.scope = window.jsnomeLoja;
 
 		setEnviroment();
 		window.setInterval(setEnviroment, 1000 * 60 * 5);
@@ -264,6 +264,7 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
+		console.log(params);
 		return $.ajax({
 			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
 			data: params,

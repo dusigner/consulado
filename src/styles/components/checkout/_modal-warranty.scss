@@ -29,6 +29,9 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		&:focus { outline: none; }
 	}
 
+	.bottom-garantia-mobile{
+		padding: 30px 15px 15px 70px !important;
+	}
 	// Active state
 	input[type='radio'] {
 		display: none;
@@ -53,7 +56,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				.box-opcao-garantia {
 					border-color: $green;
 
-					.title-garantia,
+					.title-garantia {
+						background-color: $green;
+						color: #fff;
+					}
+
 					.bottom-garantia {
 						background-color: $green;
 						color: #fff;
@@ -73,6 +80,41 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				}
 			}
 		}
+	}
+
+	form.form-termos {
+		position: relative;
+
+			&.erro {
+
+				&:after {
+				background: #f78383;
+				color: #fff;
+				content: 'Aceite os termos';
+				display: block;
+				left: -22px;
+				line-height: 1;
+				padding: 6px 0;
+				position: absolute;
+				text-align: center;
+				top: -45px;
+				width: 69px;
+			}
+
+			&:before {
+				background: #f78383;
+				content: '';
+				display: block;
+				height: 10px;
+				left: 6px;
+				position: absolute;
+				top: -14px;
+				transform: rotate(45deg);
+				transition: .5s linear all;
+				width: 10px;
+			}
+		}
+		
 	}
 
 	label {
@@ -242,7 +284,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			border: 2px solid #f4f4f4;
 			display: inline-block;
 			margin: 0;
-			margin-left: 3%;
+			margin-left: 2.5%;
 			max-height: 421px;
 			min-height: 421px;
 			overflow: hidden;
@@ -278,7 +320,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				background-color: #e4e4e4;
 				line-height: 100%;
 				margin: 0 -30px;
-				padding: 12px 20px 50px 20px;
+				padding: 33px 20px 25px;
 				text-align: center;
 
 				span {
@@ -398,6 +440,59 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				text-align: right;
 			}
 
+			.termos-de-autorizacao {
+				float: left;
+				font-size: 13px;
+				line-height: 0;
+				padding: 30px 0 30px;
+				position: relative;
+				text-align: left;
+				width: 100%;
+
+				input {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 6px;
+					margin-right: 10px;
+					margin-top: 0;
+					position: relative;
+				}
+
+				span {
+					bottom: -3px;
+					position: relative;
+
+						a {
+							color: #9aca3c;
+							cursor: pointer;
+							font-weight: 600;
+						}
+				}
+
+				&:after {
+					background: #fff;
+					border-radius: 8px;
+					content: 'Caso não aceite as condições do Termo de Autorização de Cobrança de Prêmio de Seguro, selecione a opção "Sem Garantia Estendida" e clique no botão "Continuar"';
+					display: block;
+					font-size: 11px;
+					padding: 12px;
+					position: absolute;
+					top: 55px;
+				}
+
+				&:before {
+					background: #fff;
+					content: '';
+					display: block;
+					height: 15px;
+					left: 5px;
+					position: absolute;
+					top: 51px;
+					transform: rotate(45deg);
+					width: 15px;
+				}
+			}
+
 			.garantia-box-produto {
 				display: inline-block;
 				text-align: left;
@@ -423,6 +518,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				text-align: right;
 				width: 60%;
 
+				
 				.garantia-box-text {
 					@include responsiveFont(14, 16, true);
 					color: $txt-gray-l;
@@ -470,7 +566,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			padding: 20px 0;
 			text-align: left;
 
-			p { padding: 10px 73px; }
+			p { padding: 10px 46px; }
 
 			a {
 				&:hover { text-decoration: underline; }
@@ -591,5 +687,121 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				@include breakpoint(860px, 'max') { text-align: center; }
 			}
 		}
+	}
+
+	.seguro-de-garantia {
+		display: none;
+
+			&.ativo {
+				display: block;
+			}
+	}
+
+	.pgto-corpo {
+		height: 100vh;
+	}
+
+	.autorizacao-de-pgto {
+		display: none;
+
+			&.ativo {
+				display: block;
+			}
+	}
+
+	.corpo-seguro-garantia {
+		background: #fff;
+		padding: 30px;
+		position: absolute;
+		right: 0;
+		text-align: justify;
+		top: 0;
+		z-index: 99;
+
+
+			h1 {
+				margin-top: 0;
+			}
+			ul {
+				margin: 15px 0 15px 0;
+
+				li {
+					display: block;
+					list-style: none;
+					margin-bottom: 15px;
+
+						ul {
+							padding-left: 15px;
+						}
+
+						strong {
+							display: block;
+							text-transform: uppercase;
+						}
+				}
+			}
+
+		h2 {
+			display: block;
+			font-size: 16px;
+		}
+
+		.close-seguro-garantia {
+			background: #e4e4e4;
+			color: #989898;
+			cursor: pointer;
+			font-size: 22px;
+			font-weight: bold;
+			height: 33px;
+			line-height: 1.7;
+			position: fixed;
+			right: 0;
+			text-align: center;
+			top: 0;
+			width: 33px;
+		}
+
+	}
+
+	.termos-de-autorizacao.termos-mobile {
+		line-height: 1 !important;
+		padding: 30px 0 0 !important;
+	}
+
+	.termos-de-autorizacao.termos-mobile:before {
+		display: none !important;
+	}
+
+	.termos-de-autorizacao.termos-mobile:after {
+		line-height: 1.5;
+		position: relative !important;
+		top: 14px !important;
+	}
+
+	.corpo-seguro-garantia-mobile {
+		padding: 15px !important;
+		text-align: left !important;
+		width: 100%;
+
+			h1 {
+				font-size: 26px;
+				font-weight: bold;
+				line-height: 1;
+				margin-top: 0;
+			}
+	}
+
+	.corpo-seguro-garantia-mobile-d {
+
+		bottom: 0 !important;
+		height: initial !important;
+		text-align: left;
+		
+			h1 {
+				font-size: 26px;
+				font-weight: bold;
+				line-height: 1;
+				margin-top: 0;
+			}
 	}
 }

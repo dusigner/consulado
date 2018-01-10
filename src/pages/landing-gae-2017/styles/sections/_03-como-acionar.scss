@@ -66,4 +66,10 @@
 	@include responsiveFont(15);
 	line-height: normal;
 	margin: 5px 0;
+
+		span {
+			display: block;
+			margin-top: 10px;
+			line-height: 1;
+		}
 }
