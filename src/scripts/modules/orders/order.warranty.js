@@ -66,7 +66,7 @@ var Warranty = {
 		order.status !== 'Pedido cancelado' &&
 		order.status !== 'Aguardando pagamento' &&
 		order.status !== 'Processamento' &&
-		order.status !== 'Processando Pagamento') {
+		order.status !== 'Processando Pagamento' ) {
 			$(orderElem).find('.js-order-item').not('.order__hide--desk').each(function() {
 
 				var product = {},

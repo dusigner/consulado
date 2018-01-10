@@ -45,6 +45,7 @@ Nitro.module('order.orders', function() {
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
+							console.log('🚨🚨🚨', self.orders.orders);
 							self.orderRender(resultados);
 						});
 				});
@@ -213,15 +214,22 @@ Nitro.module('order.orders', function() {
 				slas = (value.shippingData.logisticsInfo[0]) ? value.shippingData.logisticsInfo[0].slas : '',
 				currentSla = Estimate.getSla(shippingMethod, slas),
 				orderEstimateDate = Estimate.calculateSla(value.creationDate, currentSla),
+
 				isGift = (value.giftRegistryData && value.giftRegistryData.giftRegistryTypeName === 'Lista de Casamento'),
 				statusData = orderStates.getState(isGift, value.state);
 
 			statusData.estimate = orderEstimateDate;
-			value.finalStatus = statusData;
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
+
+			value.finalStatus = statusData;
+
 			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
+
 			value.isGift = isGift;
+
 			value.hasTrackingInfo = false;
+			value.hasPackages = false;
+
 			value.invoiceData = null;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
@@ -241,6 +249,16 @@ Nitro.module('order.orders', function() {
 	 */
 	this._trackingData = function(data) {
 		return $.map(data, function(resultado) {
+			if ( resultado.finalStatus.orderLabel === 'Confirmação de Pedido' &&
+					resultado.finalStatus.orderLabel !== 'Pedido cancelado' &&
+					resultado.finalStatus.orderLabel !== 'Aguardando pagamento' &&
+					resultado.finalStatus.orderLabel !== 'Processamento' &&
+					resultado.finalStatus.orderLabel !== 'Processando Pagamento' ) {
+
+				console.log('rere');
+
+			}
+			console.log('📌📌📌', resultado.finalStatus.orderLabel);
 			return CRM.getOmsById(resultado.orderId)
 						.then(function(dataOrder) {
 							if(!dataOrder) {
@@ -251,9 +269,12 @@ Nitro.module('order.orders', function() {
 
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
+									this.packages = dataOrder.packageAttachment;
+
 									if( singlePackage.courierStatus
 										&& singlePackage.courierStatus.data
 										&& singlePackage.courierStatus.data.length > 0) {
+
 										if (singlePackage.courierStatus.finished) {
 											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
 										}
