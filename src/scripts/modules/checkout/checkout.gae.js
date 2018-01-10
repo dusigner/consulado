@@ -105,9 +105,10 @@ Nitro.module('checkout.gae', function() {
 
 		var $self = $(this),
 			index = $self.data('index'),
-			idOffering = $('input[name="warranty-value"]:checked').val();
+			idOffering = $('input[name="warranty-value"]:checked').val(),
+			liAceito = $('#check-termos').is(':checked');
 
-		if (idOffering !== '') {
+		if ( idOffering !== '' && liAceito ) {
 			$self.addClass('icon-loading');
 
 			vtexjs.checkout.addOffering(idOffering, index).always(function() {
@@ -117,11 +118,20 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
-		} else {
+		}
+		else if ( idOffering === '' && ! liAceito ) {
 			$modalWarranty.modal('hide');
+		}
+		else {
+			$('.form-termos').addClass('erro');
+			
+			setTimeout(function(){
+				$('.form-termos').removeClass('erro');
+			}, 3000);
 		}
 	};
 
+	
 	this.modalWarranty = function(e) {
 		e.preventDefault();
 
@@ -214,21 +224,20 @@ Nitro.module('checkout.gae', function() {
 			});
 
 			
-			// Adicionando garantia definida ao produto
-			$('.btn-continue').click(function() {
+			//Retornar true ou false 
+			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
+			// // Adicionando garantia definida ao produto
+			// $('.btn-continue').click(function() {
 
-				if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
+			// 	if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
 					
-					$('.form-termos').removeClass('erro');
+			// 		$('.form-termos').removeClass('erro');
 
-					//Retornar true ou false 
-					$modalWarranty.find('.btn-continue')
-					.on('click', self.addkWarranty); //descomentar fora do teste
-				}
-				else {
-					$('.form-termos').addClass('erro');
-				}
-			});
+			// 	}
+			// 	else {
+			// 		$('.form-termos').addClass('erro');
+			// 	}
+			// });
 
 			$('.abreefecha').click(function() {
 				$('.seguro-de-garantia').toggleClass('ativo');		

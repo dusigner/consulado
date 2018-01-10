@@ -29,6 +29,9 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		&:focus { outline: none; }
 	}
 
+	.bottom-garantia-mobile{
+		padding: 30px 15px 15px 70px !important;
+	}
 	// Active state
 	input[type='radio'] {
 		display: none;
@@ -61,7 +64,6 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					.bottom-garantia {
 						background-color: $green;
 						color: #fff;
-						padding: 30px 15px 15px 70px !important;
 					}
 				}
 
