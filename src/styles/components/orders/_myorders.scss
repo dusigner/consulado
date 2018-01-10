@@ -3,6 +3,10 @@
 $self-pri: $green!default;
 $self-sec: $orange!default;
 $self-bg: $txt-gray-l!default;
+$purple: #7f2893;
+$gray-lightest: #f4f4f4;
+$gray-ligther: #e5e5e5;
+$gray-darkest: #736c6b;
 
 @keyframes rotation {
 	to { transform: rotate(360deg); }
@@ -84,14 +88,18 @@ $self-bg: $txt-gray-l!default;
 		padding: 0 20px;
 	}
 
+	&__body {
+		padding: 0 40px;
+	}
+
 	@import 'components/orders/single-order/order.icons';
 
 	//Single onrders components
 	@import 'components/orders/single-order/order.header';
-	@import 'components/orders/single-order/order.items-table';
-	@import 'components/orders/single-order/order.summary';
-	@import 'components/orders/single-order/order.footer';
 	@import 'components/orders/single-order/order.states';
+	@import 'components/orders/single-order/order.summary';
+	@import 'components/orders/single-order/order.helpers';
+	@import 'components/orders/single-order/order.packages';
 
 	&__toggle {
 		border: 1px solid $gray-l;

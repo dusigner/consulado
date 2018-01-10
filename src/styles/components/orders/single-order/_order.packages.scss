@@ -1,20 +1,62 @@
 @charset 'UTF-8';
 
+&__package {
+	margin-bottom: 30px;
+
+	&-title {
+		background: $gray-darkest;
+		color: white;
+		padding: 20px 15px;
+	}
+}
+
 &__items {
+	border: solid 1px $gray-lighter;
 	@include breakpoint('small', 'max') { padding: 0 20px; }
-	padding: 0 40px;
+	padding: 30px;
 
 	&--recurrence { margin-top: 40px; }
 }
 
 &__item {
 	&-image { width: 120px }
-	&-name { width: 170px }
+	&-name { width: 280px }
+
+	.order-product-warranty {
+		button {
+			color: $self-pri;
+			text-transform: uppercase;
+			border: solid 1px $self-pri;
+
+			&:hover {
+				background-color: $self-pri;
+				color: white;
+			}
+		}
+	}
 }
 
 &__table {
 	@include font-size(14px, true, false);
 	width: 100%;
+
+	thead {
+		background: $gray-lighter;
+
+		th {
+			padding: 10px 15px;
+		}
+	}
+
+	tbody {
+		tr {
+			&:nth-last-of-type(2) {
+				td {
+					border-bottom: 0;
+				}
+			}
+		}
+	}
 
 	th {
 		border-bottom: 1px solid $gray-l;

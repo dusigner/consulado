@@ -7,7 +7,10 @@
 		// display: block;
 	}
 	@include responsiveFont(14, 16, true);
-	display: table;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
 	margin: 45px 0;
 	position: relative;
 	text-align: center;
@@ -15,23 +18,19 @@
 }
 
 &__state {
-	display: table-cell;
-	position: relative;
-	vertical-align: middle;
-	width: 16.6666%;
 
 	&--isgift { width: 33.3333% }
 
-	&:not(:first-child):before {
-		@include contentBefore;
-		background-color: #e6e6e6;
-		display: block;
-		height: 3px;
-		right: 50%;
-		top: 15px;
-		width: 100%;
-		z-index: 1;
-	}
+	// &:not(:first-child):before {
+	// 	@include contentBefore;
+	// 	background-color: #e6e6e6;
+	// 	display: block;
+	// 	height: 3px;
+	// 	right: 50%;
+	// 	top: 15px;
+	// 	width: 100%;
+	// 	z-index: 1;
+	// }
 
 	&-label {
 		@include breakpoint(small, 'max') {

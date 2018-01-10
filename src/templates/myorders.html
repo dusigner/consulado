@@ -16,109 +16,43 @@
 	data-order-addresstype="{shippingData.address.addressType}"
 	data-order-number="{shippingData.address.number}"
 	data-order-reference="{shippingData.address.reference}">
-		<div class="order__header js-toggle-orders order__header--closed">
+		<div class="order__header order__status-{finalStatus.group} js-toggle-orders order__header--closed">
 			<ul class="order__header-list">
-				<li class="order__header-item weight-semibold text-center color-green"><span class="order__header-order">PEDIDO</span> <span class="order-header__number">#{orderId|orderNumber}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green hide-small hide-extra-small">Data da compra: <span class="order-header__date">{creationDate|formatDatetimeBRL}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green hide-small hide-extra-small">Total: <span class="order-header__total">{value|intAsCurrency}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green">
-					<div class="order__bar order__bar--tiny">
+				<li class="order__header-item"><strong>PEDIDO #{orderId|orderNumber}</strong></li>
+				<li class="order__header-item order__header-item-dtCompra hide-small hide-extra-small">Data da compra: <strong class="order-header__date">{creationDate|formatDatetimeBRL}</strong></li>
+				<li class="order__header-item hide-small hide-extra-small">Total: <strong class="order-header__total">{value|intAsCurrency}</strong></li>
+				<li class="order__header-item">
+						{! <div class="order__bar order__bar--tiny">
 						{>"orderStates"/}
-					</div>
-					Status: <span class="order-header__status">{finalStatus.orderLabel}</span>
+					</div> !}
+					Status: <strong class="order-header__status">{finalStatus.orderLabel}</strong>
 				</li>
 			</ul>
+			<i class="icon order__header-stateIcon hide-small hide-extra-small"></i>
 			<i class="icon icon-arrow-up"></i>
 		</div>
 
 		<div class="order__wrapper js-toggle-container">
 			<div class="order__body clearfix">
 
-				{?hasTrackingInfo}
+				<!-- MODAL RASTREAR ENTREGA -->
+				<!-- {?hasTrackingInfo}
 					{>"modalHistorico"/}
-				{/hasTrackingInfo}
+				{/hasTrackingInfo} -->
 
 				<div class="order__bar">
-					{>"orderStates"/}
+					{>"orderPedidoStates"/}
 					{?trackingData}
-						<p class="order__tracking-item text-center color-green">{trackingData.lastChange}: {trackingData.description}</p>
+						<p class="order__tracking-item text-center">{trackingData.lastChange}: {trackingData.description}</p>
 					{/trackingData}
-				</div>
+				</div>				
 
-				<div class="order__items">
-					<table class="order__table text-center">
-						<thead class="text-uppercase">
-							<tr>
-								<th class="text-left" colspan="2">Produtos</th>
-								<th class="order__hide--mobile">Quantidade</th>
-								<th class="order__hide--mobile">Valor</th>
-								<th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
-							</tr>
-						</thead>
-						<tbody>
-							{#items}
-								<tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item"
-								data-product-id="{productId}"
-								data-product-refId="{refId}"
-								data-product-name="{name}"
-								data-product-price="{price}"
-								data-product-index="{$idx}"
-								{?bundleItems[0]}
-									{#bundleItems}
-										data-product-bundle="{name}"
-										data-product-bundle-quantity="{quantity}"
-										data-product-bundle-price="{price|intAsCurrency}"
-									{/bundleItems}
-								{/bundleItems[0]}
-								data-product-quantity="{quantity}">
-									<td class="order__item-image"><a href="{detailUrl}" target="_blank"><img src="{imageUrl}" alt="{name}" title="{name}"></a></td>
-									<td class="order__item-name text-left">
-										<a href="{detailUrl}" title="{name}" target="_blank">{name}</a>
-										<div class="order__hide--desk">
-											<p class="no-margin">Quantidade <strong>{quantity}</strong></p>
-											<p class="no-margin">Valor <strong>{price|intAsCurrency}</strong></p>
-										</div>
-									</td>
-									<td class="order__hide--mobile">{quantity}</td>
-									<td class="order__hide--mobile">{price|intAsCurrency}</td>
-									<td class="js-action-warranty order__hide--mobile">
-										{?giftRegistryData}
-											{giftRegistryData.giftRegistryTypeName} <br />
-											{giftRegistryData.description}
-										{/giftRegistryData}
-									</td>
-								</tr>
-								<tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item order__hide--desk"
-								data-product-id="{productId}"
-								data-product-refId="{refId}"
-								data-product-name="{name}"
-								data-product-price="{price}"
-								data-product-index="{$idx}"
-								{?bundleItems[0]}
-									{#bundleItems}
-										data-product-bundle="{name}"
-										data-product-bundle-quantity="{quantity}"
-										data-product-bundle-price="{price|intAsCurrency}"
-									{/bundleItems}
-								{/bundleItems[0]}
-								data-product-quantity="{quantity}">
-									<td class="order__hide--empty js-action-warranty" colspan="2">
-										{?giftRegistryData}
-											Referente {giftRegistryData.giftRegistryTypeName} {giftRegistryData.description}
-										{/giftRegistryData}
-									</td>
-								</tr>
-							{/items}
-						</tbody>
-					</table>
-				</div>
-
-				<div class="order__infos">
-					{^giftRegistryData}
+				<div class="order__infos-box">
+					<div class="order__infos">
+						{^giftRegistryData}
 						<div class="order__info order__info--shipping-data">
-							<p class="order__info-title text-uppercase weight-semibold color-green">Endereço de entrega</p>
-
-							<div class="order__info-content">
+							<p class="order__info-title">Endereço de entrega</p>
+								<div class="order__info-content">
 								<p>{shippingData.address.receiverName}</p>
 								<p>
 									<span>{shippingData.address.street}, </span>
@@ -128,90 +62,157 @@
 								<p>{shippingData.address.city} - {shippingData.address.state}</p>
 							</div>
 						</div>
+						{/giftRegistryData}
 
-						<div class="order__info order__info--shipping">
-							<p class="order__info-title text-uppercase weight-semibold color-green">Forma de Entrega</p>
-
-							<div class="order__info-content">
-								<p>{shippingData.logisticsInfo[0].selectedSla.name}</p>
-								<p>{shippingData.logisticsInfo[0].selectedSla.price|intAsCurrency}</p>
+						<div class="order__info">
+							{^giftRegistryData}
+							<div class="order__info--shipping">
+								<p class="order__info-title">Forma de Entrega</p>
+									<div class="order__info-content">
+									<p>{shippingData.logisticsInfo[0].selectedSla.name}</p>
+									<p>{shippingData.logisticsInfo[0].selectedSla.price|intAsCurrency}</p>
+								</div>
 							</div>
-
-							<div class="order__info-footer"></div>
+								{/giftRegistryData}
+								<div class="order__info--payment">
+									<p class="order__info-title">Forma de Pagamento</p>
+		
+									<div class="order__info-content">
+									{?isBoleto}
+										<p>Boleto Bancário</p>
+										{@neq key=finalStatus.orderLabel value="Cancelado"}
+											<p>
+												<a href="{paymentData.payments[0].url}" target="_blank">
+													<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+														<path d="M19,9h-4V3H9v6H5l7,7L19,9z M5,18v2h14v-2H5z"/>
+													</svg>
+													<span>Visualizar Boleto</span>
+												</a>
+											</p>
+										{/neq}
+									{:else}
+										<p>{paymentData.payments[0].paymentSystemName}</p>
+										<div class="order__info-card">
+											<i class="order__card-icon order__card--{paymentData.transactions[0].payments[0].paymentSystemName|sanitize}"></i>
+											<span>xxxx xxxx xxxx {paymentData.transactions[0].payments[0].lastDigits}</span>
+										</div>
+									{/isBoleto}
+								</div>
+							</div>
 						</div>
-					{/giftRegistryData}
 
-					<div class="order__info order__info--payment">
-						<p class="order__info-title text-uppercase weight-semibold color-green">Forma de Pagamento</p>
-
-						<div class="order__info-content">
-							{?isBoleto}
-								<p>Boleto Bancário</p>
-								{@neq key=finalStatus.orderLabel value="Cancelado"}
-									<p>
-										<a href="{paymentData.payments[0].url}" target="_blank">
-											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
-												<path d="M19,9h-4V3H9v6H5l7,7L19,9z M5,18v2h14v-2H5z"/>
-											</svg>
-											<span>Visualizar Boleto</span>
-										</a>
-									</p>
-								{/neq}
-							{:else}
-								<p>{paymentData.payments[0].paymentSystemName}</p>
-								<p class="order__card-info">
-									<i class="order__card-icon order__card--{paymentData.transactions[0].payments[0].paymentSystemName|sanitize}"></i>
-									<span>xxxx xxxx xxxx {paymentData.transactions[0].payments[0].lastDigits}</span>
-								</p>
-							{/isBoleto}
+						<div class="order__info order__info--totals">
+							<div class="order__info-content">
+								<table>
+									<tbody>
+										<tr>
+											<td>Subtotal</td>
+											<td>{totals[0].value|intAsCurrency}</td>
+										</tr>
+										<tr>
+											<td>Descontos</td>
+											<td>{totals[1].value|intAsCurrency}</td>
+										</tr>
+										<tr>
+											<td>Frete</td>
+											<td>{totals[2].value|intAsCurrency}</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td>Total</td>
+											<td>{value|intAsCurrency}</td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
 						</div>
 					</div>
-
-					<div class="order__info order__info--totals">
-						<p class="order__info-title color-green text-uppercase weight-semibold">Resumo</p>
-
-						<div class="order__info-content">
-							<table>
-								<tr>
-									<td>Subtotal</td>
-									<td>{totals[0].value|intAsCurrency}</td>
-								</tr>
-								<tr>
-									<td>Descontos</td>
-									<td>{totals[1].value|intAsCurrency}</td>
-								</tr>
-								<tr>
-									<td>Frete</td>
-									<td>{totals[2].value|intAsCurrency}</td>
-								</tr>
-							</table>
-						</div>
-
-						<div class="order__info-footer">
-							<table>
-								<tr>
-									<td>Total</td>
-									<td>{value|intAsCurrency}</td>
-							</table>
-						</div>
+					<div class="order__helpers text-right">
+						{?invoiceData}
+							{>"modalInvoice"/}
+						{/invoiceData}
+						<a href="https://consul.custhelp.com/app/atendimento?pedido={orderId}" target="_blank">
+							<i class="order__icon order__icon--doubt"></i>
+							<span>Ajuda?</span>
+						</a>
 					</div>
 				</div>
-			</div>
 
-			<div class="order__footer clearfix">
-				<div class="float-right">
-					{?invoiceData}
-						{>"modalInvoice"/}
-					{/invoiceData}
-					<a href="https://consul.custhelp.com/app/atendimento?pedido={orderId}" target="_blank">
-						<i class="order__icon order__icon--doubt"></i>
-						<span>Ajuda?</span>
-					</a>
+				<!-- AQUI INICIA O CÓDIGO REFERENTE A CADA PACOTE -->
+				<div class="order__package">
+					<div class="order__items">
+						<table class="order__table text-center">
+							<thead class="text-uppercase">
+								<tr>
+									<th class="text-left" colspan="2">Produtos</th>
+									<th class="order__hide--mobile">Quant.</th>
+									<th class="order__hide--mobile">Valor</th>
+									<th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{#items}
+								<tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item"
+									data-product-id="{productId}"
+									data-product-refId="{refId}"
+									data-product-name="{name}"
+									data-product-price="{price}"
+									data-product-index="{$idx}"
+									{?bundleItems[0]}
+										{#bundleItems}
+											data-product-bundle="{name}"
+											data-product-bundle-quantity="{quantity}"
+											data-product-bundle-price="{price|intAsCurrency}"
+										{/bundleItems}
+									{/bundleItems[0]}
+									data-product-quantity="{quantity}">
+										<td class="order__item-image"><a href="{detailUrl}" target="_blank"><img src="{imageUrl}" alt="{name}" title="{name}"></a></td>
+										<td class="order__item-name text-left">
+											<a href="{detailUrl}" title="{name}" target="_blank">{name}</a>
+											<div class="order__hide--desk">
+												<p class="no-margin">Quantidade <strong>{quantity}</strong></p>
+												<p class="no-margin">Valor <strong>{price|intAsCurrency}</strong></p>
+											</div>
+											</td>
+										<td class="order__hide--mobile">{quantity}</td>
+										<td class="order__hide--mobile">{price|intAsCurrency}</td>
+										<td class="js-action-warranty order__hide--mobile">
+											{?giftRegistryData}
+												{giftRegistryData.giftRegistryTypeName} <br />
+												{giftRegistryData.description}
+											{/giftRegistryData}
+										</td>
+									</tr>
+									<tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item order__hide--desk"
+									data-product-id="{productId}"
+									data-product-refId="{refId}"
+									data-product-name="{name}"
+									data-product-price="{price}"
+									data-product-index="{$idx}"
+									{?bundleItems[0]}
+										{#bundleItems}
+											data-product-bundle="{name}"
+											data-product-bundle-quantity="{quantity}"
+											data-product-bundle-price="{price|intAsCurrency}"
+										{/bundleItems}
+									{/bundleItems[0]}
+									data-product-quantity="{quantity}">
+									<td class="order__hide--empty js-action-warranty" colspan="2">
+										{?giftRegistryData}
+											Referente {giftRegistryData.giftRegistryTypeName} {giftRegistryData.description}
+										{/giftRegistryData}
+									</td>
+								</tr>
+								{/items}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<!-- AQUI TERMINA O CÓDIGO REFERENTE A CADA PACOTE -->
 				</div>
 			</div>
 		</div>
-
-	</div>
 	{/isCompleted}
 {:else}
 	<h2 class="text-center">Você ainda não possui pedidos!</h2>
