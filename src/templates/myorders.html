@@ -16,16 +16,17 @@
 	data-order-addresstype="{shippingData.address.addressType}"
 	data-order-number="{shippingData.address.number}"
 	data-order-reference="{shippingData.address.reference}">
-		<div class="order__header js-toggle-orders order__header--closed">
+		<div class="order__header order__status-{finalStatus.group|sanitize} js-toggle-orders order__header--closed">
 			<ul class="order__header-list">
-				<li class="order__header-item weight-semibold text-center color-green"><span class="order__header-order">PEDIDO</span> <span class="order-header__number">#{orderId|orderNumber}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green hide-small hide-extra-small">Data da compra: <span class="order-header__date">{creationDate|formatDatetimeBRL}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green hide-small hide-extra-small">Total: <span class="order-header__total">{value|intAsCurrency}</span></li>
-				<li class="order__header-item weight-semibold text-center color-green">
-					<div class="order__bar order__bar--tiny">
+				<li class="order__header-item order__header-id"><strong>PEDIDO #{orderId|orderNumber}</strong></li>
+				<li class="order__header-item hide-small hide-extra-small">Data da compra: <strong class="order-header__date">{creationDate|formatDatetimeBRL}</strong></li>
+				<li class="order__header-item hide-small hide-extra-small">Total: <strong class="order-header__total">{value|intAsCurrency}</strong></li>
+				<li class="order__header-item">
+					<!-- <div class="order__bar order__bar--tiny">
 						{>"orderStates"/}
-					</div>
-					Status: <span class="order-header__status">{finalStatus.orderLabel}</span>
+					</div> -->
+					Status: <strong class="order-header__status">{finalStatus.orderLabel}</strong>
+					<span class="icon icon-{finalStatus.group|sanitize}"></span>
 				</li>
 			</ul>
 			<i class="icon icon-arrow-up"></i>
