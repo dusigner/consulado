@@ -1,63 +1,65 @@
 @charset 'UTF-8';
 
+&__infos-box {
+	background-color: $gray-lightest;
+	padding: 30px;
+	border: solid 1px $gray-lighter;
+	margin-bottom: 30px;
+}
+
 &__infos {
 	@include font-size(14px, true, false);
 	@include breakpoint('small', 'min') {
 		display: flex;
-		justify-content: space-between;
-		padding: 0 40px;
 	}
-	margin: 20px 0;
-	padding: 0 15px;
-
+	margin-bottom: 30px;
 	p { margin: 0; }
 }
 
 &__info {
-	@include breakpoint('small', 'min') { max-width: 25%; }
-	padding: 20px;
 	position: relative;
 	width: 100%;
 
-	a {
-		display: inline-block;
-		font-weight: bold;
-		margin-top: 1em;
-		width: 100%;
-	}
-
 	&-title {
-		@include breakpoint('small', 'min') { margin-bottom: 1.5em!important }
+		@include breakpoint('small', 'min') { margin-bottom: 0.2em!important }
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 
-	&:last-child {
-		.order__info-content {
-			margin-bottom: 20px;
-			min-height: 90px;
-		}
-	}
-
-	&-footer {
-		bottom: 0;
-		left: 0;
-		position: absolute;
-		width: 100%;
+	&--shipping {
+		margin-bottom: 15px;
 	}
 
 	&--totals {
-		border: 1px solid $gray-l;
-
 		table {
+			border: solid 1px $gray-ligther;
 			width: 100%;
 
-			td {
-				font-weight: bold;
-				text-transform: uppercase;
+			tbody {				
+				background: white;
+			}
 
-				&+td {
-					font-weight: normal;
-					text-align: right
+			tr {
+				border-bottom: solid 1px $gray-ligther;
+
+				&:last-child {
+					border-bottom: 0;
 				}
+
+				td {
+					padding: 10px 15px;
+					font-weight: bold;
+					text-transform: uppercase;
+
+					&:nth-child(2) {
+						text-align: right;
+					}
+				}
+			}
+
+			tfoot {
+				background: $gray-lighter;
+				color: $purple;
 			}
 		}
 
@@ -71,5 +73,9 @@
 				td+td { font-weight: bold }
 			}
 		}
+	}
+
+	&-card {
+		margin-top: 10px;
 	}
 }

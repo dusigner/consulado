@@ -12,7 +12,7 @@ var orderStates = {
 					{label: 'Pagamento', class: false},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'pedidoRealizado'
@@ -25,7 +25,7 @@ var orderStates = {
 					{label: 'Aguardando pagamento', class: 'pending'},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'pagamento'
@@ -38,7 +38,7 @@ var orderStates = {
 					{label: 'Pagamento Aprovado', class: 'active'},
 					{label: 'Processamento de Pedido', class: 'current'},
 					{label: 'Pedido faturado', class: false},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'pagamentoAprovado'
@@ -51,20 +51,20 @@ var orderStates = {
 					{label: 'Pagamento Aprovado', class: 'active'},
 					{label: 'Processamento de Pedido', class: 'active'},
 					{label: 'Pedido faturado', class: 'current'},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'faturado'
 			},
 
 			'entregaDoPedido': {
-				'orderLabel': 'Em Transferência',
+				// 'orderLabel': 'Em Transferência',
 				'trackingLabels': [
 					{label: 'Confirmação de Pedido', class: 'active'},
 					{label: 'Pagamento Aprovado', class: 'active'},
 					{label: 'Processamento de Pedido', class: 'active'},
 					{label: 'Pedido faturado', class: 'active'},
-					{label: 'Pedido em transferência', class: 'current'},
+					// {label: 'Pedido em transferência', class: 'current'},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'entregaDoPedido'
@@ -77,7 +77,7 @@ var orderStates = {
 					{label: 'Pagamento Aprovado', class: 'active'},
 					{label: 'Processamento de Pedido', class: 'active'},
 					{label: 'Pedido faturado', class: 'active'},
-					{label: 'Pedido em transferência', class: 'active'},
+					// {label: 'Pedido em transferência', class: 'active'},
 					{label: 'Pedido Entregue', class: 'active finished'}
 				],
 				'group': 'pedidoEntregue'
@@ -90,7 +90,7 @@ var orderStates = {
 					{label: 'Pedido Cancelado', class: 'canceled'},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'cancelado'
@@ -103,7 +103,7 @@ var orderStates = {
 					{label: 'Em cancelamento', class: 'canceled'},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
-					{label: 'Pedido em transferência', class: false},
+					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
 				],
 				'group': 'cancelado'
@@ -198,10 +198,15 @@ var orderStates = {
 		'handling': 'faturado',
 		'ready-for-handling': 'faturado',
 		'start-handling': 'faturado',
-		'ship': 'entregaDoPedido',
-		'invoice': 'entregaDoPedido',
-		'shipped': 'entregaDoPedido',
-		'invoiced': 'entregaDoPedido',
+		// PASSEI TODOS OS "entregaDoPedido" para "faturado" pois no Layout não tem mais o estado entregaDoPedido(Em transfêrencia)
+		// 'ship': 'entregaDoPedido',
+		// 'invoice': 'entregaDoPedido',
+		// 'shipped': 'entregaDoPedido',
+		// 'invoiced': 'entregaDoPedido',
+		'ship': 'faturado',
+		'invoice': 'faturado',
+		'shipped': 'faturado',
+		'invoiced': 'faturado',
 		'waiting-for-seller-decision': 'cancelamento',
 		'cancellation-requested': 'cancelado',
 		'payment-denied': 'cancelado',

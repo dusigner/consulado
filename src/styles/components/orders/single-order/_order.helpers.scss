@@ -1,6 +1,10 @@
 @charset 'UTF-8';
 
-&__footer {
+&__helpers {
+	border-top: solid 1px $gray-ligther;
+	font-weight: bold;
+	padding-top: 20px;
+
 	@include breakpoint('small', 'max') {
 		& > div {
 			float: none;
@@ -34,10 +38,6 @@
 		}
 	}
 	@include font-size(14px, true, false);
-	border-top: 1px solid $gray-l;
-	font-weight: bold;
-	margin: 0 20px;
-	padding: 20px 0;
 
 	a {
 		&.order__invoicekey {

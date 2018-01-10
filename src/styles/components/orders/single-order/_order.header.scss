@@ -1,10 +1,10 @@
 @charset 'UTF-8';
 
 &__header {
-	@include breakpoint('small', 'max') { padding: 20px 40px 20px 10px; }
+	@include breakpoint('small', 'max') { padding: 20px 50px 20px 10px; }
 	border-bottom: 1px solid $gray;
 	cursor: pointer;
-	padding: 20px 50px 20px 40px;
+	padding: 20px 120px 20px 40px;
 	position: relative;
 
 	&-list {
@@ -17,11 +17,11 @@
 		justify-content: space-between;
 	}
 
-	&>.icon {
+	&>.icon-arrow-up {
 		@include font-size(7px, true, false);
 		color: $green;
 		position: absolute;
-		right: 20px;
+		right: 15px;
 		top: 50%;
 		transform: translateY(-50%) rotate(0);
 		transition: transform .5s ease;
@@ -30,14 +30,56 @@
 	&--closed {
 		.order__bar { display: block }
 
-		.icon { transform: translateY(-50%) rotate(180deg); }
+		.icon-arrow-up { transform: translateY(-50%) rotate(180deg); }
 	}
 
 	&-item {
 		@include breakpoint('small', 'max') { text-align: right!important }
+		margin: 0 10px;
+
+		&:last-child {
+			// margin-left: auto;
+			@include breakpoint('small', 'min') { min-width: 220px; }
+			margin: 0;
+		}
+
+		&-dtCompra {
+			// margin: 0 100px;
+		}
 	}
 
 	&-order {
 		@include breakpoint('small', 'max') { display: none }
 	}
+
+	&-stateIcon {
+		width: 40px;
+		height: 40px;
+		display: block;
+		background-color: $self-pri;
+		border-radius: 100%;
+		position: absolute;
+		color: white;
+		font-size: 22px;
+		top: 50%;
+		right: 50px;
+		transform: translateY(-50%);
+
+		&::before {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+&__status {
+
+	&-pedidoRealizado { .order__header-stateIcon {  &::before { content : '\e90e'}}}
+	&-pagamento { .order__header-stateIcon {  &::before { content : '\e90f'}}}
+	&-pagamentoAprovado { .order__header-stateIcon {  &::before { content : '\e910'}}}
+	&-faturado { .order__header-stateIcon {  &::before { content : '\e911'}}}
+	&-pedidoEntregue { .order__header-stateIcon { background-color: $self-bg;  &::before { content : '\e912'}}}
+	&-cancelado { .order__header-stateIcon { background-color: $self-bg;  &::before { content : '\e913'}}}
 }

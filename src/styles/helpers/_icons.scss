@@ -69,12 +69,12 @@ $icons: (
 	"eye"                     : '\e90a',
 	"logo-consul-aniversario" : '\e90b',
 
-	'pedido-confirmado'       : '\e90e',
-	'pedido-aprovado'         : '\e90f',
-	'pedido-processado'       : '\e910',
-	'pedido-faturado'         : '\e911',
-	'pedido-entregue'         : '\e912',
-	'pedido-cancelado'        : '\e913',
+	'orderState-pedidoRealizado'       : '\e90e',
+	'orderState-pagamento'         	   : '\e90f',
+	'orderState-pagamentoAprovado'     : '\e910',
+	'orderState-faturado'              : '\e911',
+	'orderState-entregaDoPedido'       : '\e912',
+	'orderState-cancelado'             : '\e913',
 
 	'download'                : '\e914',
 	'check-thin'              : '\e915',
