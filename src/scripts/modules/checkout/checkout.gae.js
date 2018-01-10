@@ -105,9 +105,10 @@ Nitro.module('checkout.gae', function() {
 
 		var $self = $(this),
 			index = $self.data('index'),
-			idOffering = $('input[name="warranty-value"]:checked').val();
+			idOffering = $('input[name="warranty-value"]:checked').val(),
+			liAceito = $('#check-termos').is(':checked');
 
-		if (idOffering !== '') {
+		if ( idOffering !== '' && liAceito ) {
 			$self.addClass('icon-loading');
 
 			vtexjs.checkout.addOffering(idOffering, index).always(function() {
@@ -117,11 +118,20 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
-		} else {
+		}
+		else if ( idOffering === '' && ! liAceito ) {
 			$modalWarranty.modal('hide');
+		}
+		else {
+			$('.form-termos').addClass('erro');
+			
+			setTimeout(function(){
+				$('.form-termos').removeClass('erro');
+			}, 3000);
 		}
 	};
 
+	
 	this.modalWarranty = function(e) {
 		e.preventDefault();
 
@@ -213,10 +223,31 @@ Nitro.module('checkout.gae', function() {
 				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
 			});
 
-			// Adicionando garantia definida ao produto
-			$modalWarranty.find('.btn-continue')
-				//.unbind('click')
-				.on('click', self.addkWarranty); //descomentar fora do teste
+			
+			//Retornar true ou false 
+			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
+			// // Adicionando garantia definida ao produto
+			// $('.btn-continue').click(function() {
+
+			// 	if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
+					
+			// 		$('.form-termos').removeClass('erro');
+
+			// 	}
+			// 	else {
+			// 		$('.form-termos').addClass('erro');
+			// 	}
+			// });
+
+			$('.abreefecha').click(function() {
+				$('.seguro-de-garantia').toggleClass('ativo');		
+			});
+
+			$('.abreefecha-pgto').click(function() {
+				$('.autorizacao-de-pgto').toggleClass('ativo');		
+			});
+
+
 		});
 	};
 
@@ -283,6 +314,7 @@ Nitro.module('checkout.gae', function() {
 	/*$(window).load(function() {
 		self.autoOpen();
 	});*/
+
 });
 
 /*jshint strict: false */
