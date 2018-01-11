@@ -19,7 +19,7 @@ Nitro.module('smartFocus', function() {
 	}
 
 	this.renderBanner = function($container) {
-		$container = $container || $('.banners .banner-principal.slides');
+		$container = $container || $('.banners .banner-principal.slides, .banners-mobile .banner-principal.slides');
 
 		$container.append(bannerTemplate.render(UID));
 
