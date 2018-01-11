@@ -250,16 +250,14 @@ Nitro.module('order.orders', function() {
 	 */
 	this._trackingData = function(data) {
 		return $.map(data, function(resultado) {
-			if ( resultado.finalStatus.orderLabel === 'Confirmação de Pedido' &&
-					resultado.finalStatus.orderLabel !== 'Pedido cancelado' &&
-					resultado.finalStatus.orderLabel !== 'Aguardando pagamento' &&
-					resultado.finalStatus.orderLabel !== 'Processamento' &&
-					resultado.finalStatus.orderLabel !== 'Processando Pagamento' ) {
+			if ( resultado.finalStatus.orderLabel !== 'Processamento' &&
+					resultado.finalStatus.orderLabel !== 'Faturado' &&
+					resultado.finalStatus.orderLabel !== 'Entregue' ) {
 
-				console.log('rere');
+				return false;
 
 			}
-			console.log('📌📌📌', resultado.finalStatus.orderLabel);
+
 			return CRM.getOmsById(resultado.orderId)
 						.then(function(dataOrder) {
 							if(!dataOrder) {
@@ -270,7 +268,7 @@ Nitro.module('order.orders', function() {
 
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
-									this.packages = dataOrder.packageAttachment;
+									this.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
 
 									if( singlePackage.courierStatus
 										&& singlePackage.courierStatus.data
