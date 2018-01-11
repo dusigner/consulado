@@ -153,44 +153,30 @@ body.produto-indisponivel {
 
 
 .social {
-
 	a {
+		display: block;
+		float: left;
+		height: 30px;
+		margin-left: 30px;
 		position: relative;
 		top: 0;
 		transition: .3s linear all;
+		width: 30px;
+
+		&:hover {
+			top: -5px;
+			transition: .3s linear all;
+		}
 	}
 
-	a:hover {
-		top: -5px;
-		transition: .3s linear all;
-	}
-
-	a#shareBtn {
+	#shareBtn {
 		background: url('/arquivos/face-consul-compartilha.jpg') center center #9aca3c;
-		display: block;
-		float: left;
-		height: 30px;
-		width: 30px;
+		margin-left: 0;
 	}
 
-	a#compartilharTw {
-		background: url('/arquivos/tw-consul-compartilha.jpg') center center #9aca3c;
-		display: block;
-		float: left;
-		height: 30px;
-		margin-left: 30px;
-		width: 30px;
-	}
+	#compartilharTw { background: url('/arquivos/tw-consul-compartilha.jpg') center center #9aca3c; }
 
-	a#compartilharEmail {
-		background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c;
-		display: block;
-		float: left;
-		height: 30px;
-		margin-left: 30px;
-		width: 30px;
-	}
-
+	#compartilharEmail { background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c; }
 }
 
 .social:after {

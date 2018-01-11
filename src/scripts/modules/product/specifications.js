@@ -124,7 +124,7 @@ Nitro.module('specifications', function() {
 	var buttonTemplate = '<button id="mais-especs" class="secondary-button show-extra-small text-uppercase">Ver mais especificações</button>';
 
 	accordionBtnProduct.on('click', function(e) {
-		if ( $body.hasClass('ab-test__mobile--show-b') && btnSpecs === false ) {
+		if ( btnSpecs === false ) {
 			$($holder).append( buttonTemplate );
 
 			btnSpecs = true;
