@@ -86,7 +86,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		});
 
 		// console.log('here', order);
-		order.currentState.orderLabel = 'faturado'; // remover não esquecer
+		//order.currentState.orderLabel = 'faturado'; // remover não esquecer
 		if ($.diffDate(dateNow, order.orderDate) <= 334	&&
 		order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
