@@ -57,19 +57,6 @@ var orderStates = {
 				'group': 'faturado'
 			},
 
-			'entregaDoPedido': {
-				// 'orderLabel': 'Em Transferência',
-				'trackingLabels': [
-					{label: 'Pedido confirmado', class: 'active'},
-					{label: 'Pagamento Aprovado', class: 'active'},
-					{label: 'Pedido processado', class: 'active'},
-					{label: 'Pedido faturado', class: 'active'},
-					// {label: 'Pedido em transferência', class: 'current'},
-					{label: 'Entrega', class: false, estimate: true}
-				],
-				'group': 'entregaDoPedido'
-			},
-
 			'pedidoEntregue': {
 				'orderLabel': 'Entregue',
 				'trackingLabels': [
@@ -149,16 +136,6 @@ var orderStates = {
 					{label: 'Valor Creditado', class: 'order-gift order__state--isgift'}
 				],
 				'group': 'faturado'
-			},
-
-			'entregaDoPedido': {
-				'orderLabel': 'Valor Creditado',
-				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active order__state--isgift'},
-					{label: 'Pagamento aprovado', class: 'active order__state--isgift'},
-					{label: 'Valor Creditado', class: 'order-gift order__state--active order__state--isgift'}
-				],
-				'group': 'entregaDoPedido'
 			},
 
 			'pedidoEntregue': {
