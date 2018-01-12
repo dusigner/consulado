@@ -86,41 +86,17 @@
 	}
 
 	&-infoMobile {
-		display: block;
-		padding: 8px 0;
+		display: none;
+		@include breakpoint('small', 'max') {
+			display: block;
+		}
+
+		padding: 12px 0;
 		border-bottom: solid 1px $gray-ligther;
 		font-size: 13px;
 
 		span:nth-child(2) {
 			float: right;
-		}
-	}
-}
-
-&__status {
-	&-pagamento {
-		.order__header-stateIcon {
-			background-color: $pending-color;
-			
-			&::before { content : '\e90f'}
-		}
-
-	}
-
-	&-pedidoRealizado { .order__header-stateIcon {  &::before { content : '\e90e'}}}
-	&-pagamentoAprovado { .order__header-stateIcon {  &::before { content : '\e910'}}}
-	&-faturado { .order__header-stateIcon {  &::before { content : '\e911'}}}
-	&-pedidoEntregue { 
-		.order__header-stateIcon { 
-			background-color: $self-bg;  
-			&::before { content : '\e912'}
-		}
-	}
-	&-cancelado { 
-		.order__header-stateIcon 
-		{ background-color: $self-bg;  
-			&::before { 
-				content : '\e913'}
 		}
 	}
 }

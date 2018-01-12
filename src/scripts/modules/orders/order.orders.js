@@ -112,6 +112,12 @@ Nitro.module('order.orders', function() {
 			$(this).next('.js-toggle-container').stop().stop().slideToggle();
 		});
 
+		self.$ordersContainer.find('.custom-accordion-mp-header').click(function(e) {
+			e.preventDefault();
+			$(this).toggleClass('active');
+			$(this).next('.custom-accordion-mp-content').stop().stop().slideToggle();
+		});
+
 		self._getUserData()
 			.then(function(userData) {
 				$('.js-single-order').each(function(i, v) {

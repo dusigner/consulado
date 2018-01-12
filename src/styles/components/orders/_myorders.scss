@@ -162,7 +162,144 @@ $canceled-color: #c0392b;
 		}
 	}
 
-	@import 'components/orders/order.recurrence';
+	@import 'components/orders/order.recurrence';	
+
+	&__estimateMobile {
+		display: none;
+		text-align: right;
+		padding-top: 15px;
+		font-weight: bold;
+		font-size: 13px;
+
+		@include breakpoint('small', 'max') {
+			display: block;
+		}
+	}
+
+	&__stateInfo {
+		&-mobile {
+			display: none;
+			@include breakpoint('small', 'max') {
+				display: block;
+			}
+
+			&-title {
+				text-align: center;
+				font-size: 15px;
+				font-weight: bold;
+				margin-bottom: 5px;
+				color: $self-pri;
+			}
+			
+			&-alert {
+				padding: 8px 4px;
+				background: $self-pri;
+				text-align: center;
+				color: white;
+				font-size: 12px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	&__status {
+		&-pagamento {
+			.order__header-stateIcon {
+				background-color: $pending-color;
+				&::before {
+					content : '\e90f'
+				}
+			}
+			.order__stateInfo-mobile-title {color: $pending-color}
+			.order__stateInfo-mobile-alert {background-color: $pending-color}
+		}
+		&-pedidoRealizado { 
+			.order__header-stateIcon {  
+				&::before { 
+					content : '\e90e'
+				}
+			}
+		}
+		&-pagamentoAprovado { 
+			.order__header-stateIcon { 
+				&::before { 
+					content : '\e910'
+				}
+			}
+		}
+		&-faturado { 
+			.order__header-stateIcon { 
+				&::before { 
+					content : '\e911'
+				}
+			}
+		}
+		&-pedidoEntregue { 		
+			.order__header-stateIcon { 
+				background-color: $self-bg;  
+				&::before {
+					content : '\e912'
+				}
+			}
+	
+			.order__stateInfo-mobile-title {color: $purple}
+			.order__stateInfo-mobile-alert {background-color: $purple}
+		}
+		&-cancelado { 
+			.order__header-stateIcon 
+			{ 
+				background-color: $self-bg;  
+				&::before { 
+					content : '\e913'
+				}
+			}
+			.order__stateInfo-mobile-title {color: $canceled-color}
+			.order__stateInfo-mobile-alert {background-color: $canceled-color}
+		}
+	}
+}
+
+.custom-accordion-mp-wrapper {
+	@include breakpoint('small', 'max') {
+		margin-bottom: 20px;	   
+	}
+}
+
+.custom-accordion-mp-header {
+	background: $gray-darkest;
+	display: none;
+	padding: 10px 15px;
+	position: relative;
+
+	@include breakpoint('small', 'max') {
+	   display: block;
+	   color: white;
+	   font-size: 15px;
+	}
+
+	.icon {
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 7px;
+		transition: all 0.4s ease;
+	}
+
+	&.active {
+		.icon {			
+			transform: rotate(180deg);
+			top: calc(50% - 3px);
+		}
+	}
+}
+
+.custom-accordion-mp-content {
+	display: block;
+
+	@include breakpoint('small', 'max') {
+		display: none;	   
+	}
 }
 
 
