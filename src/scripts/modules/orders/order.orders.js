@@ -273,6 +273,8 @@ Nitro.module('order.orders', function() {
 									this.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
 
 									if(this.packages && this.packages.length > 0) {
+										var finished = [];
+
 										this.hasPackages = true;
 
 										$.each(this.packages, function(index, singlePackage) {
@@ -283,14 +285,14 @@ Nitro.module('order.orders', function() {
 												singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
 
 												this.hasTrackingInfo = true;
+
+												finished.push(singlePackage.courierStatus.finished);
 											}
 										});
 
-										console.log('⏰⏰⏰', $.inArray());
-
-										/* if (singlePackage.courierStatus.finished) {
+										if(finished.length > 0 && $.inArray(false, finished) < 0) {
 											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
-										} */
+										}
 									}
 
 									return false;
