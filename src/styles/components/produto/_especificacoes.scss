@@ -245,6 +245,7 @@ body.produto #especificacoes {
 				position: absolute;
 				right: 0;
 				width: 100%;
+				z-index: 1;
 			}
 
 			// Active state
@@ -344,6 +345,7 @@ body.produto #especificacoes {
 			padding: .7em .5em;
 			position: absolute;
 			width: calc(100% - 40px);
+			z-index: 2;
 
 			&:focus { outline: none; }
 		}
