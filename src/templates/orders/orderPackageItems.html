@@ -1,0 +1,116 @@
+{?hasPackages}
+    {#packages}
+        <div class="order__package">
+            <div class="custom-accordion-mp-header">
+                Pacote {$idx} - {items.length} Produto{@gt key=items.length value=1}s{/gt}
+                <i class="icon icon-arrow-down"></i>
+            </div>
+            <div class="order__items custom-accordion-mp-content">
+                {>"orderPackageStates"/}
+                <table class="order__table text-center">
+                    <thead class="text-uppercase">
+                        <tr>
+                            <th class="text-left" colspan="2">Produtos</th>
+                            <th class="order__hide--mobile">Quant.</th>
+                            <th class="order__hide--mobile">Valor</th>
+                            <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#items}
+                        <tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item" data-product-id="{productId}" data-product-refId="{refId}"
+                            data-product-name="{name}" data-product-price="{price}" data-product-index="{$idx}" {?bundleItems[0]} {#bundleItems}
+                            data-product-bundle="{name}" data-product-bundle-quantity="{quantity}" data-product-bundle-price="{price|intAsCurrency}"
+                            {/bundleItems} {/bundleItems[0]} data-product-quantity="{quantity}">
+                            <td class="order__item-image">
+                                <a href="{detailUrl}" target="_blank">
+                                    <img src="{imageUrl}" alt="{name}" title="{name}">
+                                </a>
+                            </td>
+                            <td class="order__item-name text-left">
+                                <a href="{detailUrl}" title="{name}" target="_blank">{name}</a>
+                                <div class="order__hide--desk">
+                                    <p class="no-margin">Quantidade
+                                        <strong>{quantity}</strong>
+                                    </p>
+                                    <p class="no-margin">Valor
+                                        <strong>{price|intAsCurrency}</strong>
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="order__hide--mobile">{quantity}</td>
+                            <td class="order__hide--mobile">{price|intAsCurrency}</td>
+                            <td class="js-action-warranty order__hide--mobile">
+                                {?giftRegistryData} {giftRegistryData.giftRegistryTypeName}
+                                <br /> {giftRegistryData.description} {/giftRegistryData}
+                            </td>
+                        </tr>
+                        <tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item order__hide--desk" data-product-id="{productId}"
+                            data-product-refId="{refId}" data-product-name="{name}" data-product-price="{price}" data-product-index="{$idx}"
+                            {?bundleItems[0]} {#bundleItems} data-product-bundle="{name}" data-product-bundle-quantity="{quantity}" data-product-bundle-price="{price|intAsCurrency}"
+                            {/bundleItems} {/bundleItems[0]} data-product-quantity="{quantity}">
+                            <td class="order__hide--empty js-action-warranty" colspan="2">
+                                {?giftRegistryData} Referente {giftRegistryData.giftRegistryTypeName} {giftRegistryData.description} {/giftRegistryData}
+                            </td>
+                        </tr>
+                        {/items}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {/packages}
+{:else}
+    <div class="order__package">
+        <div class="order__items">
+            <table class="order__table text-center">
+                <thead class="text-uppercase">
+                    <tr>
+                        <th class="text-left" colspan="2">Produtos</th>
+                        <th class="order__hide--mobile">Quant.</th>
+                        <th class="order__hide--mobile">Valor</th>
+                        <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#items}
+                    <tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item" data-product-id="{productId}" data-product-refId="{refId}"
+                        data-product-name="{name}" data-product-price="{price}" data-product-index="{$idx}" {?bundleItems[0]} {#bundleItems}
+                        data-product-bundle="{name}" data-product-bundle-quantity="{quantity}" data-product-bundle-price="{price|intAsCurrency}"
+                        {/bundleItems} {/bundleItems[0]} data-product-quantity="{quantity}">
+                        <td class="order__item-image">
+                            <a href="{detailUrl}" target="_blank">
+                                <img src="{imageUrl}" alt="{name}" title="{name}">
+                            </a>
+                        </td>
+                        <td class="order__item-name text-left">
+                            <a href="{detailUrl}" title="{name}" target="_blank">{name}</a>
+                            <div class="order__hide--desk">
+                                <p class="no-margin">Quantidade
+                                    <strong>{quantity}</strong>
+                                </p>
+                                <p class="no-margin">Valor
+                                    <strong>{price|intAsCurrency}</strong>
+                                </p>
+                            </div>
+                        </td>
+                        <td class="order__hide--mobile">{quantity}</td>
+                        <td class="order__hide--mobile">{price|intAsCurrency}</td>
+                        <td class="js-action-warranty order__hide--mobile">
+                            {?giftRegistryData} {giftRegistryData.giftRegistryTypeName}
+                            <br /> {giftRegistryData.description} {/giftRegistryData}
+                        </td>
+                    </tr>
+                    <tr class="order__item order__item--{productId} order__items--{orderGroup} js-order-item order__hide--desk" data-product-id="{productId}"
+                        data-product-refId="{refId}" data-product-name="{name}" data-product-price="{price}" data-product-index="{$idx}"
+                        {?bundleItems[0]} {#bundleItems} data-product-bundle="{name}" data-product-bundle-quantity="{quantity}" data-product-bundle-price="{price|intAsCurrency}"
+                        {/bundleItems} {/bundleItems[0]} data-product-quantity="{quantity}">
+                        <td class="order__hide--empty js-action-warranty" colspan="2">
+                            {?giftRegistryData} Referente {giftRegistryData.giftRegistryTypeName} {giftRegistryData.description} {/giftRegistryData}
+                        </td>
+                    </tr>
+                    {/items}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{/hasPackages}

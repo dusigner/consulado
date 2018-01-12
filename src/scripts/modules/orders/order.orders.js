@@ -6,6 +6,7 @@ require('modules/orders/order.helpers');
 require('templates/myorders.html');
 require('templates/orders/orderPedidoStates.html');
 require('templates/orders/orderPackageStates.html');
+require('templates/orders/orderPackageItems.html');
 require('../../../templates/orders/modalHistorico.html');
 require('../../../templates/orders/modalInvoice.html');
 
