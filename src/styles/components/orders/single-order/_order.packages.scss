@@ -2,17 +2,25 @@
 
 &__package {
 	margin-bottom: 30px;
+	@include breakpoint('small', 'max') {
+	   margin-bottom: 15px;
+	}
 
 	&-title {
 		background: $gray-darkest;
 		color: white;
 		padding: 20px 15px;
 	}
+
+	.custom-accordion-mp-header {
+		display: block;
+		color: white;
+	}
 }
 
 &__items {
 	border: solid 1px $gray-lighter;
-	@include breakpoint('small', 'max') { padding: 0 20px; }
+	@include breakpoint('small', 'max') { padding: 0 }
 	padding: 30px;
 
 	&--recurrence { margin-top: 40px; }
@@ -45,6 +53,9 @@
 
 		th {
 			padding: 10px 15px;
+			@include breakpoint('small', 'max') {
+			   display: none;
+			}
 		}
 	}
 
