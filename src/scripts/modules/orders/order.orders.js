@@ -46,7 +46,7 @@ Nitro.module('order.orders', function() {
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
-							// console.log('🚨🚨🚨', self.orders.orders);
+							console.log('🚨🚨🚨', resultados);
 							self.orderRender(resultados);
 						});
 				});
@@ -253,9 +253,7 @@ Nitro.module('order.orders', function() {
 			if ( resultado.finalStatus.orderLabel !== 'Processamento' &&
 					resultado.finalStatus.orderLabel !== 'Faturado' &&
 					resultado.finalStatus.orderLabel !== 'Entregue' ) {
-
 				return false;
-
 			}
 
 			return CRM.getOmsById(resultado.orderId)
@@ -264,32 +262,29 @@ Nitro.module('order.orders', function() {
 								return;
 							}
 
-							var singlePackage = dataOrder.packageAttachment.packages[0];
-
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
 									this.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
 
-									if( singlePackage.courierStatus
-										&& singlePackage.courierStatus.data
-										&& singlePackage.courierStatus.data.length > 0) {
+									if(this.packages && this.packages.length > 0) {
+										this.hasPackages = true;
 
-										if (singlePackage.courierStatus.finished) {
+										$.each(this.packages, function(index, singlePackage) {
+											if( singlePackage.courierStatus
+												&& singlePackage.courierStatus.data
+												&& singlePackage.courierStatus.data.length > 0) {
+
+												singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
+
+												this.hasTrackingInfo = true;
+											}
+										});
+
+										console.log('⏰⏰⏰', $.inArray());
+
+										/* if (singlePackage.courierStatus.finished) {
 											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
-										}
-
-										singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
-
-										this.hasTrackingInfo = true;
-										this.trackingInfo = singlePackage;
-									}
-
-									if(singlePackage.invoiceKey) {
-										this.invoiceData = {
-											invoiceKey: singlePackage.invoiceKey,
-											invoiceNumber: singlePackage.invoiceNumber,
-											invoiceUrl: singlePackage.invoiceUrl
-										};
+										} */
 									}
 
 									return false;
