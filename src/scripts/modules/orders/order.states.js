@@ -8,7 +8,7 @@ var orderStates = {
 			'pedidoRealizado': {
 				'orderLabel': 'Confirmação de Pedido',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'current'},
+					{label: 'Pedido confirmado', class: 'current'},
 					{label: 'Pagamento', class: false},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
@@ -21,7 +21,7 @@ var orderStates = {
 			'pagamento': {
 				'orderLabel': 'Aguardando pagamento',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Aguardando pagamento', class: 'pending'},
 					{label: 'Processamento de Pedido', class: false},
 					{label: 'Pedido faturado', class: false},
@@ -34,9 +34,9 @@ var orderStates = {
 			'pagamentoAprovado': {
 				'orderLabel': 'Processamento',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Pagamento Aprovado', class: 'active'},
-					{label: 'Processamento de Pedido', class: 'current'},
+					{label: 'Processando Pedido', class: 'current'},
 					{label: 'Pedido faturado', class: false},
 					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
@@ -47,9 +47,9 @@ var orderStates = {
 			'faturado': {
 				'orderLabel': 'Faturado',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Pagamento Aprovado', class: 'active'},
-					{label: 'Processamento de Pedido', class: 'active'},
+					{label: 'Pedido processado', class: 'active'},
 					{label: 'Pedido faturado', class: 'current'},
 					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
@@ -60,9 +60,9 @@ var orderStates = {
 			'entregaDoPedido': {
 				// 'orderLabel': 'Em Transferência',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Pagamento Aprovado', class: 'active'},
-					{label: 'Processamento de Pedido', class: 'active'},
+					{label: 'Pedido processado', class: 'active'},
 					{label: 'Pedido faturado', class: 'active'},
 					// {label: 'Pedido em transferência', class: 'current'},
 					{label: 'Entrega', class: false, estimate: true}
@@ -73,9 +73,9 @@ var orderStates = {
 			'pedidoEntregue': {
 				'orderLabel': 'Entregue',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Pagamento Aprovado', class: 'active'},
-					{label: 'Processamento de Pedido', class: 'active'},
+					{label: 'Pedido processado', class: 'active'},
 					{label: 'Pedido faturado', class: 'active'},
 					// {label: 'Pedido em transferência', class: 'active'},
 					{label: 'Pedido Entregue', class: 'active finished'}
@@ -86,9 +86,9 @@ var orderStates = {
 			'cancelado': {
 				'orderLabel': 'Cancelado',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Pedido Cancelado', class: 'canceled'},
-					{label: 'Processamento de Pedido', class: false},
+					{label: 'Pedido processado', class: false},
 					{label: 'Pedido faturado', class: false},
 					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}
@@ -99,9 +99,9 @@ var orderStates = {
 			'cancelamento': {
 				'orderLabel': 'Em cancelamento',
 				'trackingLabels': [
-					{label: 'Confirmação de Pedido', class: 'active'},
+					{label: 'Pedido confirmado', class: 'active'},
 					{label: 'Em cancelamento', class: 'canceled'},
-					{label: 'Processamento de Pedido', class: false},
+					{label: 'Pedido processado', class: false},
 					{label: 'Pedido faturado', class: false},
 					// {label: 'Pedido em transferência', class: false},
 					{label: 'Entrega', class: false, estimate: true}

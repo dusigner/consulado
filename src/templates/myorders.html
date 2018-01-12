@@ -18,14 +18,14 @@
 	data-order-reference="{shippingData.address.reference}">
 		<div class="order__header order__status-{finalStatus.group} js-toggle-orders order__header--closed">
 			<ul class="order__header-list">
-				<li class="order__header-item"><strong>PEDIDO #{orderId|orderNumber}</strong></li>
+				<li class="order__header-item"><strong><span class="hide-extra-small">PEDIDO</span> #{orderId|orderNumber}</strong></li>
 				<li class="order__header-item order__header-item-dtCompra hide-small hide-extra-small">Data da compra: <strong class="order-header__date">{creationDate|formatDatetimeBRL}</strong></li>
 				<li class="order__header-item hide-small hide-extra-small">Total: <strong class="order-header__total">{value|intAsCurrency}</strong></li>
 				<li class="order__header-item">
 						{! <div class="order__bar order__bar--tiny">
 						{>"orderStates"/}
 					</div> !}
-					Status: <strong class="order-header__status">{finalStatus.orderLabel}</strong>
+					<span class="hide-extra-small">Status:</span> <strong class="order-header__status">{finalStatus.orderLabel}</strong>
 				</li>
 			</ul>
 			<i class="icon order__header-stateIcon hide-small hide-extra-small"></i>
@@ -34,6 +34,11 @@
 
 		<div class="order__wrapper js-toggle-container">
 			<div class="order__body clearfix">
+
+				<div class="order__header-infoMobile">
+					<span>Data: <strong class="order-header__date">{creationDate|formatDatetimeBRL}</strong></span>
+					<span>Total: <strong class="order-header__total">{value|intAsCurrency}</strong></span>
+				</div>
 
 				<!-- MODAL RASTREAR ENTREGA -->
 				<!-- {?hasTrackingInfo}

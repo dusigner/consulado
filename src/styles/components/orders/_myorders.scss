@@ -7,12 +7,38 @@ $purple: #7f2893;
 $gray-lightest: #f4f4f4;
 $gray-ligther: #e5e5e5;
 $gray-darkest: #736c6b;
+$pending-color: #dbd508;
+$canceled-color: #c0392b;
 
 @keyframes rotation {
 	to { transform: rotate(360deg); }
 }
 
-.section-orders { margin-bottom: 0; }
+.section-orders { 
+	margin-bottom: 0;
+	@include breakpoint('extra-small', 'max') {
+		background: white;	   
+		padding: 20px 0;
+
+		.myorders__page {			
+			> div:nth-child(2) {
+				display: block;
+				width: 100%;
+				
+				.myorders__page-control {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		}
+
+		.container {
+			margin: 0;
+			padding: 0 10px;
+			max-width: 100%;
+		}
+	}
+ }
 
 .myorders {
 	&--loading:before {
@@ -27,6 +53,10 @@ $gray-darkest: #736c6b;
 		background-color: #fff;
 		border: 1px solid $gray;
 		margin: 20px 0;
+		
+		@include breakpoint('small', 'max') {
+			margin: 10px 0;		   
+		}
 	}
 
 	svg {
@@ -90,6 +120,10 @@ $gray-darkest: #736c6b;
 
 	&__body {
 		padding: 0 40px;
+
+		@include breakpoint('small', 'max') {
+			padding: 0 15px;		   
+		}
 	}
 
 	@import 'components/orders/single-order/order.icons';

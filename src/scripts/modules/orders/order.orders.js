@@ -46,7 +46,7 @@ Nitro.module('order.orders', function() {
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
-							console.log('🚨🚨🚨', self.orders.orders);
+							// console.log('🚨🚨🚨', self.orders.orders);
 							self.orderRender(resultados);
 						});
 				});
@@ -256,10 +256,10 @@ Nitro.module('order.orders', function() {
 					resultado.finalStatus.orderLabel !== 'Processamento' &&
 					resultado.finalStatus.orderLabel !== 'Processando Pagamento' ) {
 
-				console.log('rere');
+				// console.log('rere');
 
 			}
-			console.log('📌📌📌', resultado.finalStatus.orderLabel);
+			// console.log('📌📌📌', resultado.finalStatus.orderLabel);
 			return CRM.getOmsById(resultado.orderId)
 						.then(function(dataOrder) {
 							if(!dataOrder) {
