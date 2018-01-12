@@ -3,7 +3,7 @@
 &__states {
 	@include breakpoint(small, 'max') {
 		@include responsiveFont(11, 16, true);
-		margin: 30px 0;
+		margin: 15px 0 15px 0;
 		// display: block;
 	}
 	@include responsiveFont(14, 16, true);
@@ -23,15 +23,15 @@
 	z-index: 0;
 
 	&:after {
-		width: 100%;
-		height: 4px;
-		position: absolute;
-		top: 30px;
-		left: 0;
+		background: $gray-ligther;
 		content: '';
 		display: block;
+		height: 4px;
+		left: 0;
+		position: absolute;
+		top: 30px;
+		width: 100%;
 		z-index: -50;
-		background: $gray-ligther;
 
 		@include breakpoint('small', 'max') {
 			top: 18px;
@@ -49,6 +49,23 @@
 		&:after {
 			right: 50%;
 			width: 50%;
+		}
+		&--order-gift {
+			.order__state-circle {
+				&:after {
+					@include icon-get(check-mark);
+					@include responsiveFont(25);
+					// right: 0;
+					background: transparent;
+					bottom: initial;
+					color: #fff;
+					height: initial;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: initial;
+				}
+			}
 		}
 	}
 
@@ -98,20 +115,46 @@
 
 	&-circle {
 		@include breakpoint('small', 'max') {
-			height: 35px;
-			margin-bottom: 0px;
 			font-size: 20px;
+			height: 35px;
+			margin-bottom: 0;
 			width: 35px;
 		}
-		margin-bottom: 20px;
-		width: 60px;
-		height: 60px;
 		background-color: $gray-lighter;
-		position: relative;
 		border-radius: 100%;
-		font-size: 35px;
-		text-align: center;
 		display: inline-block;	
+		font-size: 35px;
+		height: 60px;
+		margin-bottom: 20px;
+		position: relative;
+		text-align: center;
+		width: 60px;
+	}
+
+	&--current,
+	&--canceled,
+	&--pending,
+	&--finished {
+		&:before {	
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;			
+			border-top: 8px solid;
+			content: '';			
+			display: block;
+			height: 0; 
+			left: 50%;
+			position: absolute;
+			top: 65px;
+			transform: translateX(-50%);
+			width: 0; 
+			
+			@include breakpoint('small', 'max') {
+				border-left-width: 4px;
+				border-right-width: 4px;
+				border-top-width: 4px;
+				top: 40px;
+			 }
+		}	
 	}
 
 	&--current {
@@ -130,21 +173,24 @@
 
 		&:after {
 			background: $self-pri;
-		}
+		}	
 
 		&:before {
-			content: '';			
-  			width: 0; 
-			height: 0; 
 			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;			
-			border-top: 8px solid $self-pri;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			top: 65px;
+			border-right: 8px solid transparent;	
+			border-top: 8px solid $self-pri;		
+			border-top-color: $self-pri;
+			content: '';			
 			display: block;
+			height: 0; 
+			left: 50%;
+			position: absolute;
+			top: 65px;
+			transform: translateX(-50%);
+  			width: 0; 
 		}
+
+		.order__stateInfo-mobile-title {color: $purple;}
 	}
 
 	&--active {
@@ -163,7 +209,12 @@
 
 		&:after {
 			background: $purple;
+		}	
+
+		&:before {
+			border-top-color: $purple;
 		}
+		.order__stateInfo-mobile-title {color: $purple;}
 	}
 
 	&--pending {
@@ -180,21 +231,12 @@
 
 		&:after {
 			background: $pending-color;
-		}
+		}		
 
 		&:before {
-			content: '';			
-  			width: 0; 
-			height: 0; 
-			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;			
-			border-top: 8px solid $pending-color;
-			position: absolute;
-			left: 50%;
-			transform: translateX(-50%);
-			top: 65px;
-			display: block;
+			border-top-color: $pending-color;
 		}
+		.order__stateInfo-mobile-title {color: $pending-color;}
 	}
 
 	&--canceled {
@@ -209,27 +251,16 @@
 		.order__state-label {
 			color: $canceled-color;
 			font-weight: bold;
+		}	
+
+		&:before {
+			border-top-color: $canceled-color;
 		}
+		.order__stateInfo-mobile-title {color: $canceled-color;}
 	}
 
-	&:last-child {
-		&--order-gift {
-			.order__state-circle {
-				&:after {
-					@include responsiveFont(25);
-					@include icon-get(check-mark);
-					background: transparent;
-					bottom: initial;
-					color: #fff;
-					height: initial;
-					left: 50%;
-					// right: 0;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					width: initial;
-				}
-			}
-		}
+	&--finished {
+		.order__stateInfo-mobile-title {color: $purple;}
 	}
 }
 
