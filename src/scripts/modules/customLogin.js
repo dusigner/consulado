@@ -614,7 +614,7 @@ Nitro.module('customLogin', function() {
 		}
 	}
 
-	if (store.isPersonal) {
+	if (store && store.isPersonal) {
 		this.init();
 	}
 });
