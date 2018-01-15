@@ -417,7 +417,7 @@ Nitro.module('order.warranty.gae', function() {
 							boxOrder[idCurrentOrder].warrantyPrice = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].price;
 
 							if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
-								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Mês de garantia estendida';
+								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida';
 							} else {
 								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida'; 
 							}
