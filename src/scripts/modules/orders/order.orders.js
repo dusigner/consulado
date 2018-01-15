@@ -238,7 +238,7 @@ Nitro.module('order.orders', function() {
 			value.hasTrackingInfo = false;
 			value.hasPackages = false;
 
-			value.invoiceData = null;
+			value.hasInvoiceData = false;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
 				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
@@ -271,28 +271,36 @@ Nitro.module('order.orders', function() {
 
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
-									this.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
+									var self = this;
 
-									if(this.packages && this.packages.length > 0) {
-										var finished = [];
+									self.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
+									self.hasPackages = self.packages.length > 1;
 
-										this.hasPackages = true;
+									if(self.packages && self.packages.length > 0) {
+										var finished = [],
+											invoices = [];
 
-										$.each(this.packages, function(index, singlePackage) {
+										$.each(self.packages, function(index, singlePackage) {
 											if( singlePackage.courierStatus
 												&& singlePackage.courierStatus.data
 												&& singlePackage.courierStatus.data.length > 0) {
 
 												singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
 
-												this.hasTrackingInfo = true;
+												self.hasTrackingInfo = true;
 
 												finished.push(singlePackage.courierStatus.finished);
 											}
+
+											invoices.push((singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0));
 										});
 
 										if(finished.length > 0 && $.inArray(false, finished) < 0) {
-											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
+											self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
+										}
+
+										if(invoices.length > 0 && $.inArray(true, finished) >= 0) {
+											self.hasInvoiceData = true;
 										}
 									}
 

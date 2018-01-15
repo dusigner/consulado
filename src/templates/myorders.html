@@ -50,14 +50,17 @@
 					{?trackingData}
 						<p class="order__tracking-item text-center">{trackingData.lastChange}: {trackingData.description}</p>
 					{/trackingData}
-				</div>				
+				</div>
 
 				<div class="order__stateInfo-mobile">
 					<p class="order__stateInfo-mobile-title">{finalStatus.orderLabel}</p>
-					<div class="order__stateInfo-mobile-alert">
-						Seu pedido foi separado em dois pacotes. Acompanhe o andamento de cada um.
-					</div>
 				</div>
+
+				{?hasPackages}
+				<div class="order__stateInfo-mobile-alert">
+					Seu pedido foi separado em duas entregas. Acompanhe o andamento de cada um.
+				</div>
+				{/hasPackages}
 
 				<div class="custom-accordion-mp-wrapper">
 					<div class="custom-accordion-mp-header">
@@ -80,7 +83,7 @@
 								</div>
 							</div>
 							{/giftRegistryData}
-	
+
 							<div class="order__info order__info--pay-ship">
 								{^giftRegistryData}
 								<div class="order__info--shipping">
@@ -93,7 +96,7 @@
 									{/giftRegistryData}
 									<div class="order__info--payment">
 										<p class="order__info-title">Forma de Pagamento</p>
-			
+
 										<div class="order__info-content">
 										{?isBoleto}
 											<p>Boleto Bancário</p>
@@ -117,7 +120,7 @@
 									</div>
 								</div>
 							</div>
-	
+
 							<div class="order__info order__info--totals">
 								<div class="order__info-content">
 									<table>
@@ -156,9 +159,9 @@
 						</div>
 					</div>
 				</div>
-				
+
 					{>"orderPackageItems"/}
-				
+
 				</div>
 			</div>
 		</div>
