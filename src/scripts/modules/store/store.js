@@ -125,7 +125,7 @@ define('store', function() {
 		//return true;
 	};
 
-	this.checkTelevendas = function(){
+	this.checkTelevendas = function() {
 		$(window).on('orderFormUpdated.vtex', function(e, orderform) {
 			if ( orderform.userType  === 'callCenterOperator' ) {
 				self.isTelevendas = true;
