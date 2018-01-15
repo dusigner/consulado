@@ -130,7 +130,9 @@ header {
 			}
 		}
 
-		.account { left: 54%; }
+		.account { 
+			left: 54%;
+		}
 
 		.minicart {
 			@include breakpoint(small, 'max') {
@@ -201,10 +203,14 @@ div.account {
 	@include responsiveFont(12);
 	color: $txt-gray-l;
 	font-weight: 700;
-	height: 50px;
+	min-height: 60px;
 	padding: 0 0 0 fluidWidth(25px);
 	position: relative;
 	text-transform: uppercase;
+	.link-meus-pedidos {
+		bottom: 0;
+		position: absolute;
+	}
 
 
 	// ******************************************************* //
@@ -273,6 +279,7 @@ div.account {
 
 					span { margin-top: -4px; }
 				}
+				
 			}
 
 			a[href='/minhaconta/pedidos'] {
@@ -359,10 +366,6 @@ div.account {
 	// ****************************************************** //
 	// Eu, Douglas, não me orgulho do que fiz daqui para cima //
 	// ****************************************************** //
-
-
-
-
 	.icon-brastemp-account {
 		@include responsiveFont(33, 16, true);
 		color: $gray-d;
