@@ -1,10 +1,6 @@
 @charset 'UTF-8';
 
 &__helpers {
-	border-top: solid 1px $gray-ligther;
-	font-weight: bold;
-	padding-top: 20px;
-
 	@include breakpoint('small', 'max') {
 		& > div {
 			float: none;
@@ -38,20 +34,7 @@
 		}
 	}
 	@include font-size(14px, true, false);
-
-	a {
-		&.order__invoicekey {
-			@include breakpoint(medium, 'min') {
-				&:after {
-					content: ' - '
-				}
-			}
-
-			@include breakpoint(small, 'max') {
-				margin: 0 auto 1em;
-			}
-
-			margin-right: 1em;
-		}
-	}
+	border-top: solid 1px $gray-ligther;
+	font-weight: bold;
+	padding-top: 20px;
 }

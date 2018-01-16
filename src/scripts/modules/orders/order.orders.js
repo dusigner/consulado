@@ -7,6 +7,7 @@ require('templates/myorders.html');
 require('templates/orders/orderPedidoStates.html');
 require('templates/orders/orderPackageStates.html');
 require('templates/orders/orderPackageItems.html');
+require('templates/orders/orderProductInfos.html');
 require('../../../templates/orders/modalHistorico.html');
 require('../../../templates/orders/modalInvoice.html');
 
@@ -277,8 +278,7 @@ Nitro.module('order.orders', function() {
 									self.hasPackages = self.packages.length > 1;
 
 									if(self.packages && self.packages.length > 0) {
-										var finished = [],
-											invoices = [];
+										var finished = [];
 
 										$.each(self.packages, function(index, singlePackage) {
 											if( singlePackage.courierStatus
@@ -292,15 +292,13 @@ Nitro.module('order.orders', function() {
 												finished.push(singlePackage.courierStatus.finished);
 											}
 
-											invoices.push((singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0));
+											if(singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0) {
+												self.hasInvoiceData = true;
+											}
 										});
 
 										if(finished.length > 0 && $.inArray(false, finished) < 0) {
 											self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
-										}
-
-										if(invoices.length > 0 && $.inArray(true, finished) >= 0) {
-											self.hasInvoiceData = true;
 										}
 									}
 

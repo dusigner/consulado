@@ -14,7 +14,32 @@
 	margin: 45px 0;
 	position: relative;
 	text-align: center;
-	width: 100%;	
+	width: 100%;
+
+	&--tiny {
+		backgrond-color: red;
+
+		.order__state {
+			&-circle {
+				background-color: $purple;
+				height: 30px;
+				width: 30px;
+
+				&:after { @include responsiveFont(16, 16, true) }
+			}
+
+			&:last-child {
+				.order__state-circle { background-color: $self-pri }
+				&:after { background: $self-pri }
+			}
+
+			&:after {
+				background: $purple;
+				top: 15px;
+			}
+		}
+
+	}
 }
 
 &__state {
@@ -97,7 +122,7 @@
 			width: 100%;
 		}
 	}
-	
+
 	.order__state-circle:after {
 		color: #fff;
 		font-weight: bold;
@@ -122,7 +147,7 @@
 		}
 		background-color: $gray-lighter;
 		border-radius: 100%;
-		display: inline-block;	
+		display: inline-block;
 		font-size: 35px;
 		height: 60px;
 		margin-bottom: 20px;
@@ -135,26 +160,26 @@
 	&--canceled,
 	&--pending,
 	&--finished {
-		&:before {	
+		&:before {
 			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;			
+			border-right: 8px solid transparent;
 			border-top: 8px solid;
-			content: '';			
+			content: '';
 			display: block;
-			height: 0; 
+			height: 0;
 			left: 50%;
 			position: absolute;
 			top: 65px;
 			transform: translateX(-50%);
-			width: 0; 
-			
+			width: 0;
+
 			@include breakpoint('small', 'max') {
 				border-left-width: 4px;
 				border-right-width: 4px;
 				border-top-width: 4px;
 				top: 40px;
 			 }
-		}	
+		}
 	}
 
 	&--current {
@@ -173,21 +198,21 @@
 
 		&:after {
 			background: $self-pri;
-		}	
+		}
 
 		&:before {
 			border-left: 8px solid transparent;
-			border-right: 8px solid transparent;	
-			border-top: 8px solid $self-pri;		
+			border-right: 8px solid transparent;
+			border-top: 8px solid $self-pri;
 			border-top-color: $self-pri;
-			content: '';			
+			content: '';
 			display: block;
-			height: 0; 
+			height: 0;
 			left: 50%;
 			position: absolute;
 			top: 65px;
 			transform: translateX(-50%);
-  			width: 0; 
+  			width: 0;
 		}
 
 		.order__stateInfo-mobile-title {color: $purple;}
@@ -209,7 +234,7 @@
 
 		&:after {
 			background: $purple;
-		}	
+		}
 
 		&:before {
 			border-top-color: $purple;
@@ -231,7 +256,7 @@
 
 		&:after {
 			background: $pending-color;
-		}		
+		}
 
 		&:before {
 			border-top-color: $pending-color;
@@ -251,7 +276,7 @@
 		.order__state-label {
 			color: $canceled-color;
 			font-weight: bold;
-		}	
+		}
 
 		&:before {
 			border-top-color: $canceled-color;
@@ -264,7 +289,7 @@
 	}
 }
 
-&__bar {
+/* &__bar {
 	&--tiny {
 		@include breakpoint('small', 'max') { display: none!important; }
 		display: none;
@@ -297,4 +322,4 @@
 		.order__state--current .order__state-circle:after,
 		.order__state--active .order__state-circle:after {content: '\e60b'!important}
 	}
-}
+} */
