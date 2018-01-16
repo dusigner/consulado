@@ -485,7 +485,9 @@ input[type='submit'].custom-login-btn {
 	}
 };
 
-#vtexIdUI-global-loader,
-#vtexIdContainer {
-	display: none !important;
+body:not(.consulempresa) {
+	#vtexIdUI-global-loader,
+	#vtexIdContainer {
+		display: none !important;
+	}
 }
