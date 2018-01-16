@@ -8,19 +8,30 @@
 
 	&-title {
 		background: $gray-darkest;
-		color: white;
+		color: #ffffff;
 		padding: 20px 15px;
 	}
 
 	.custom-accordion-mp-header {
+		color: #ffffff;
+		cursor: pointer;
 		display: block;
-		color: white;
+	}
+
+	.order__states {
+		margin-top: 0;
+	}
+
+	.order__state-circle {
+		&:after {
+			content: '\e915' !important;
+		}
 	}
 }
 
 &__items {
-	border: solid 1px $gray-lighter;
 	@include breakpoint('small', 'max') { padding: 0 }
+	border: solid 1px $gray-lighter;
 	padding: 30px;
 
 	&--recurrence { margin-top: 40px; }
@@ -32,13 +43,13 @@
 
 	.order-product-warranty {
 		button {
+			border: solid 1px $self-pri;
 			color: $self-pri;
 			text-transform: uppercase;
-			border: solid 1px $self-pri;
 
 			&:hover {
 				background-color: $self-pri;
-				color: white;
+				color: #ffffff;
 			}
 		}
 	}

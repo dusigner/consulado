@@ -1,15 +1,13 @@
 <ul class="order__states clearfix">
-	{#finalStatus.trackingLabels}
-		<li class="order__state{?class} order__state--{class}{/class}">
-			<div class="order__state-circle">&nbsp;</div>
-			<p class="order__state-label">
-				{label}
-				{?estimate}
-					{?finalStatus.estimate}
-						<span>estimada {finalStatus.estimate|formatDatetimeBRL}</span>
-					{/finalStatus.estimate}
-				{/estimate}
-			</p>
-		</li>
-	{/finalStatus.trackingLabels}
+	<li class="order__state {?class}order__state--{class}{/class}">
+		<div class="order__state-circle">&nbsp;</div>
+		<p class="order__state-label">
+			{label}
+			{?estimate}
+				{?finalStatus.estimate}
+					<span>estimada {finalStatus.estimate|formatDatetimeBRL}</span>
+				{/finalStatus.estimate}
+			{/estimate}
+		</p>
+	</li>
 </ul>
