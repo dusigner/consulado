@@ -138,17 +138,17 @@ Nitro.module('chaordic', function() {
 								.then(function($chaordicShelf) {
 									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
 									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
-									$slider.each(function() {
-										var slidesToShow = $(this).data('slidestoshow') || 3;
-										self.slider($(this), slidesToShow);
-									});
-									$window.scroll();		
+										$slider.each(function() {
+											var slidesToShow = $(this).data('slidestoshow') || 3;
+											self.slider($(this), slidesToShow);
+										});
+										$window.scroll();		
 								});
-						});
-					// }
+							});
+						// }
+					});
 				});
-			});
-	};
+			};
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
