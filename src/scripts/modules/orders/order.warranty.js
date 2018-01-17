@@ -404,7 +404,7 @@ var Warranty = {
 		PDVBox.add(user, address, skuInfo, idPlan).done(function(res) {
 			res = JSON.parse(res);
 
-			if (res.message === 'Sale inserted' || res.message === 'Sale already inserted') {
+			if (res.message === 'Sale inserted' || res.message === 'Sale already inserted' || res.message === 'Esta venda já esta cadastrada, mas não foi paga. segue o link para o pagamento') {
 				$('#vtex-confirmar-dados-garantia .close').trigger('click');
 
 				dust.render('warrantySpare.modal-payment', res, function(err, out) {
