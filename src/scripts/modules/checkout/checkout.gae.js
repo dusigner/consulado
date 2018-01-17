@@ -124,14 +124,14 @@ Nitro.module('checkout.gae', function() {
 		}
 		else {
 			$('.form-termos').addClass('erro');
-			
+
 			setTimeout(function(){
 				$('.form-termos').removeClass('erro');
 			}, 3000);
 		}
 	};
 
-	
+
 	this.modalWarranty = function(e) {
 		e.preventDefault();
 
@@ -223,14 +223,14 @@ Nitro.module('checkout.gae', function() {
 				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
 			});
 
-			
-			//Retornar true ou false 
+
+			//Retornar true ou false
 			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
 			// // Adicionando garantia definida ao produto
 			// $('.btn-continue').click(function() {
 
 			// 	if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
-					
+
 			// 		$('.form-termos').removeClass('erro');
 
 			// 	}
@@ -240,11 +240,11 @@ Nitro.module('checkout.gae', function() {
 			// });
 
 			$('.abreefecha').click(function() {
-				$('.seguro-de-garantia').toggleClass('ativo');		
+				$('.seguro-de-garantia').toggleClass('ativo');
 			});
 
 			$('.abreefecha-pgto').click(function() {
-				$('.autorizacao-de-pgto').toggleClass('ativo');		
+				$('.autorizacao-de-pgto').toggleClass('ativo');
 			});
 
 
@@ -286,12 +286,22 @@ Nitro.module('checkout.gae', function() {
 			// verifica se o select de serviços escondido possui a opção de garantia estendida
 			// verifica se já não existe uma garantia adicionada
 			// adiciona o link de adquirir garantia
-			if ($currentLink.length === 0 && self.selectHasWarranty($selfService) && !self.hasCurrentWarranty($currentServices)) {
+			if ( $currentLink.length === 0 && self.selectHasWarranty( $selfService ) && !self.hasCurrentWarranty( $currentServices ) ) {
 				$link.clone()
 					.appendTo($selfService)
 					.attr('data-index', i)
 					.on('click', self.modalWarranty);
 			}
+
+			/*
+				Remove a opção do select de serviços
+				quando a opção for de instalação
+			*/
+			$selfService.find('option').each(function() {
+				if( $(this).text().indexOf('instala') !== -1 || $(this).text().indexOf('Instala') !== -1 ) {
+					$(this).remove();
+				}
+			});
 		});
 	};
 
