@@ -17,8 +17,6 @@
 	width: 100%;
 
 	&--tiny {
-		backgrond-color: red;
-
 		.order__state {
 			&-circle {
 				background-color: $purple;
@@ -38,7 +36,6 @@
 				top: 15px;
 			}
 		}
-
 	}
 }
 
