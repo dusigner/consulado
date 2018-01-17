@@ -140,10 +140,13 @@ Nitro.module('chaordic', function() {
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
 									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized'),
-										slidesToShow = $slider.data('slidestoshow') || 3;
+									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
 
-									self.slider($slider, slidesToShow);
+									$slider.each(function() {
+										var slidesToShow = $(this).data('slidestoshow') || 3;
+										self.slider($(this), slidesToShow);
+									});
+
 									$window.scroll();
 								});
 						});
@@ -478,6 +481,7 @@ Nitro.module('chaordic', function() {
 	 * @param  {Integer} slidesToShow número com o total de slides que vão aparecer e rodar na versão Desk do slider
 	 */
 	this.slider = function($slider, slidesToShow) {
+		console.log('💣💣💣', slidesToShow);
 		$slider.slick({
 			infinite: false,
 			slidesToShow: slidesToShow,
