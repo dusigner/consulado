@@ -137,11 +137,12 @@ Nitro.module('chaordic', function() {
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
 									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized'),
-										slidesToShow = $slider.attr('data-slidestoshow') || 3 ;
-									self.slider($slider, slidesToShow);
-									$window.scroll();
-									
+									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
+									$slider.each(function() {
+										var slidesToShow = $(this).data('slidestoshow') || 3;
+										self.slider($(this), slidesToShow);
+									});
+									$window.scroll();		
 								});
 						});
 					// }
