@@ -141,6 +141,7 @@ Nitro.module('chaordic', function() {
 										slidesToShow = $slider.attr('data-slidestoshow') || 3 ;
 									self.slider($slider, slidesToShow);
 									$window.scroll();
+									
 								});
 						});
 					// }
@@ -474,7 +475,6 @@ Nitro.module('chaordic', function() {
 	 * @param  {Integer} slidesToShow número com o total de slides que vão aparecer e rodar na versão Desk do slider
 	 */
 	this.slider = function($slider, slidesToShow) {
-		console.log('slick', slidesToShow);
 		$slider.slick({
 			infinite: false,
 			slidesToShow: slidesToShow,
