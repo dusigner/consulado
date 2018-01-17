@@ -4,7 +4,10 @@ require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
 require('templates/myorders.html');
-require('templates/orders/orderStates.html');
+require('templates/orders/orderPedidoStates.html');
+require('templates/orders/orderPackageStates.html');
+require('templates/orders/orderPackageItems.html');
+require('templates/orders/orderProductInfos.html');
 require('../../../templates/orders/modalHistorico.html');
 require('../../../templates/orders/modalInvoice.html');
 
@@ -15,14 +18,12 @@ var CRM = require('modules/store/orders-crm'),
 	Estimate =  require('modules/orders/order.estimate'),
 	Warranty = require('modules/orders/order.warranty');
 
-
-
 Nitro.module('order.orders', function() {
 
 	var self = this;
 
 	this.$container = $('#myorders'); //Container geral
-	this.$ordersContainer = $('#myorders-render'); //Container de recorrências
+	this.$ordersContainer = $('#orders-render'); //Container de pedidos
 	this.orders = {
 		orders: null,
 		isLoaded: false
@@ -32,7 +33,7 @@ Nitro.module('order.orders', function() {
 	/**
 	 * Função bootstrap order | Carrega e atribui orders da API p/ o módulo e/ou renderiza o módulo Pedidos Feitos
 	 */
-	this.order = function() {
+	this.init = function() {
 		self.$container.addClass('myorders--loading');
 
 		if(!self.orders.orders) {
@@ -47,6 +48,7 @@ Nitro.module('order.orders', function() {
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
+							console.log('🚨🚨🚨', resultados);
 							self.orderRender(resultados);
 						});
 				});
@@ -64,7 +66,7 @@ Nitro.module('order.orders', function() {
 		self.orders.isLoaded = false;
 		self.$ordersContainer.find('*').unbind();
 		self.$ordersContainer.html('');
-		self.order();
+		self.init();
 	};
 
 	/**
@@ -86,6 +88,20 @@ Nitro.module('order.orders', function() {
 		});
 	};
 
+	this._getUserData = function() {
+		var dfd = jQuery.Deferred();
+
+		if(store && store.userData && store.userData.email) {
+			dfd.resolve(store.userData);
+		} else {
+			vtexjs.checkout.getOrderForm().done(function(res){
+				dfd.resolve(res.clientProfileData);
+			});
+		}
+
+		return dfd.promise();
+	};
+
 	/**
 	 * Bind eventos do módulo renderizado, requests iniciando botões de GAE
 	 */
@@ -98,15 +114,37 @@ Nitro.module('order.orders', function() {
 			$(this).next('.js-toggle-container').stop().stop().slideToggle();
 		});
 
-		$('.js-single-order').each(function(i, v) {
-			Warranty.init(v);
+		self.$ordersContainer.find('.custom-accordion-mp-header').click(function(e) {
+			e.preventDefault();
+			$(this).toggleClass('active');
+			$(this).next('.custom-accordion-mp-content').stop().stop().slideToggle();
 		});
 
+		self._getUserData()
+			.then(function(userData) {
+				$('.js-single-order').each(function(i, v) {
+					var $self = $(this),
+						selfOrder = self.orders.orders.filter(function(order) {
+							return order.orderId === $self.data('order-id');
+						})[0];
+
+					Warranty.init(v, userData, selfOrder);
+				});
+			});
+
+		self._modals();
+	};
+
+	/**
+	 * Chamadas das ações feitas por modal whpModal
+	 */
+	this._modals = function() {
+
 		// Abre o modal de Histórico detalhado
-		$('#historico-detalhes').click(function(e) {
+		$('.historico-detalhes').click(function(e) {
 			e.preventDefault();
 
-			var id = '#modal-detalhes';
+			var $modal = $(this).siblings('.modal-detalhes');
 
 			var maskHeight = $(document).height();
 			var maskWidth = $(window).width();
@@ -116,25 +154,20 @@ Nitro.module('order.orders', function() {
 			$('#mask').fadeTo('slow', 0.5);
 			$('#mask').css('display', 'block');
 
-			var winH = $(window).height();
-			var winW = $(window).width();
+			$modal.fadeIn();
 
-			$(id).css('top',  winH/2-$(id).height()/2);
-			$(id).css('left', winW/2-$(id).width()/2);
-			$(id).fadeIn();
-
-			$('#modal-detalhes .close').click(function(e) {
+			$modal.find('.close').click(function(e) {
 				e.preventDefault();
 
 				$('#mask').hide();
-				$(id).hide();
+				$modal.hide();
 			});
 
 			$('#mask').click(function(e) {
 				e.preventDefault();
 
 				$(this).hide();
-				$(id).hide();
+				$modal.hide();
 			});
 		});
 
@@ -177,78 +210,6 @@ Nitro.module('order.orders', function() {
 				}
 			});
 		});
-
-		$('#box-all-states .more-itens').click(function(e) {
-			e.preventDefault();
-			$('.content-states__others').show();
-			$(this).hide();
-		});
-
-		self._modals();
-	};
-
-	/**
-	 * Chamadas das ações feitas por modal whpModal
-	 */
-	this._modals = function() {
-		$('.js-order-cancel').whpModal({
-			onOpen: function(step) {
-				var orderId = $(this).data('order');
-
-				$('.js-form-cancel').submit(function(e) {
-					e.preventDefault();
-
-					var $self = $(this); //clicked button
-
-					$.crmHandler(step, function() {
-						return CRM.cancelOrder(orderId, $.serializeForm($self))
-								.then(function() {
-									step('next');
-									self.resetOrder();
-								});
-					});
-				});
-			},
-			innerNav: true
-		});
-
-		// Abre o modal de Histórico detalhado
-		$('.historico-detalhes').click(function(e) {
-			e.preventDefault();
-
-			var $modal = $(this).siblings('.modal-detalhes');
-
-			var maskHeight = $(document).height();
-			var maskWidth = $(window).width();
-
-			$('#mask').css({'width':maskWidth,'height':maskHeight});
-
-			$('#mask').fadeTo('slow', 0.5);
-			$('#mask').css('display', 'block');
-
-			$modal.fadeIn();
-
-			$modal.find('.close').click(function(e) {
-				e.preventDefault();
-
-				$('#mask').hide();
-				$modal.hide();
-			});
-
-			$('#mask').click(function(e) {
-				e.preventDefault();
-
-				$(this).hide();
-				$modal.hide();
-			});
-		});
-
-		//"Ver mais" modal histórico detalhado
-		$('.box-all-states .more-itens').click(function(e) {
-			e.preventDefault();
-			$(this).siblings('.content-states__others').show();
-			$(this).hide();
-		});
 	};
 
 	/**
@@ -262,16 +223,23 @@ Nitro.module('order.orders', function() {
 				slas = (value.shippingData.logisticsInfo[0]) ? value.shippingData.logisticsInfo[0].slas : '',
 				currentSla = Estimate.getSla(shippingMethod, slas),
 				orderEstimateDate = Estimate.calculateSla(value.creationDate, currentSla),
+
 				isGift = (value.giftRegistryData && value.giftRegistryData.giftRegistryTypeName === 'Lista de Casamento'),
 				statusData = orderStates.getState(isGift, value.state);
 
 			statusData.estimate = orderEstimateDate;
-			value.finalStatus = statusData;
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
+
+			value.finalStatus = statusData;
+
 			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
+
 			value.isGift = isGift;
+
 			value.hasTrackingInfo = false;
-			value.invoiceData = null;
+			value.hasPackages = false;
+
+			value.hasInvoiceData = false;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
 				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
@@ -290,35 +258,48 @@ Nitro.module('order.orders', function() {
 	 */
 	this._trackingData = function(data) {
 		return $.map(data, function(resultado) {
+			if ( resultado.finalStatus.orderLabel !== 'Processamento' &&
+					resultado.finalStatus.orderLabel !== 'Faturado' &&
+					resultado.finalStatus.orderLabel !== 'Entregue' ) {
+				return false;
+			}
+
 			return CRM.getOmsById(resultado.orderId)
 						.then(function(dataOrder) {
 							if(!dataOrder) {
 								return;
 							}
 
-							var singlePackage = dataOrder.packageAttachment.packages[0];
-
 							$.each(self.orders.orders, function() {
 								if( this.orderId === dataOrder.orderId ) {
-									if( singlePackage.courierStatus
-										&& singlePackage.courierStatus.data
-										&& singlePackage.courierStatus.data.length > 0) {
-										if (singlePackage.courierStatus.finished) {
-											this.finalStatus = orderStates.getState(this.isGift, 'pedidoEntregue');
+									var self = this;
+
+									self.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
+									self.hasPackages = self.packages.length > 1;
+
+									if(self.packages && self.packages.length > 0) {
+										var finished = [];
+
+										$.each(self.packages, function(index, singlePackage) {
+											if( singlePackage.courierStatus
+												&& singlePackage.courierStatus.data
+												&& singlePackage.courierStatus.data.length > 0) {
+
+												singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
+
+												self.hasTrackingInfo = true;
+
+												finished.push(singlePackage.courierStatus.finished);
+											}
+
+											if(singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0) {
+												self.hasInvoiceData = true;
+											}
+										});
+
+										if(finished.length > 0 && $.inArray(false, finished) < 0) {
+											self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
 										}
-
-										singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
-
-										this.hasTrackingInfo = true;
-										this.trackingInfo = singlePackage;
-									}
-
-									if(singlePackage.invoiceKey) {
-										this.invoiceData = {
-											invoiceKey: singlePackage.invoiceKey,
-											invoiceNumber: singlePackage.invoiceNumber,
-											invoiceUrl: singlePackage.invoiceUrl
-										};
 									}
 
 									return false;

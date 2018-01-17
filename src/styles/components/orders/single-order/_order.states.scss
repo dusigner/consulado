@@ -1,0 +1,322 @@
+@charset 'UTF-8';
+
+&__states {
+	@include breakpoint(small, 'max') {
+		@include responsiveFont(11, 16, true);
+		margin: 15px 0 15px 0;
+		// display: block;
+	}
+	@include responsiveFont(14, 16, true);
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	margin: 45px 0;
+	position: relative;
+	text-align: center;
+	width: 100%;
+
+	&--tiny {
+		.order__state {
+			&-circle {
+				background-color: $purple;
+				height: 30px;
+				width: 30px;
+
+				&:after { @include responsiveFont(16, 16, true) }
+			}
+
+			&:last-child {
+				.order__state-circle { background-color: $self-pri }
+				&:after { background: $self-pri }
+			}
+
+			&:after {
+				background: $purple;
+				top: 15px;
+			}
+		}
+	}
+}
+
+&__state {
+	flex: 1;
+	position: relative;
+	z-index: 0;
+
+	&:after {
+		background: $gray-ligther;
+		content: '';
+		display: block;
+		height: 4px;
+		left: 0;
+		position: absolute;
+		top: 30px;
+		width: 100%;
+		z-index: -50;
+
+		@include breakpoint('small', 'max') {
+			top: 18px;
+		}
+	}
+
+	&:first-child {
+		&:after {
+			left: 50%;
+			width: 50%;
+		}
+	}
+
+	&:last-child {
+		&:after {
+			right: 50%;
+			width: 50%;
+		}
+		&--order-gift {
+			.order__state-circle {
+				&:after {
+					@include icon-get(check-mark);
+					@include responsiveFont(25);
+					// right: 0;
+					background: transparent;
+					bottom: initial;
+					color: #fff;
+					height: initial;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: initial;
+				}
+			}
+		}
+	}
+
+	&--isgift { width: 33.3333% }
+
+	// &:not(:first-child):before {
+	// 	@include contentBefore;
+	// 	background-color: #e6e6e6;
+	// 	display: block;
+	// 	height: 3px;
+	// 	right: 50%;
+	// 	top: 15px;
+	// 	width: 100%;
+	// 	z-index: 1;
+	// }
+
+	&-label {
+		@include breakpoint(small, 'max') {
+			display: none;
+		}
+		@include responsiveFont(14, 16, true);
+		margin: 0;
+		position: relative;
+
+		span {
+			bottom: -1.5em;
+			display: block;
+			position: absolute;
+			width: 100%;
+		}
+	}
+
+	.order__state-circle:after {
+		color: #fff;
+		font-weight: bold;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&:nth-child(1) { .order__state-circle:after {@include icon-get(orderState-pedidoRealizado)}}
+	&:nth-child(2) { .order__state-circle:after {@include icon-get(orderState-pagamento)}}
+	&:nth-child(3) { .order__state-circle:after {@include icon-get(orderState-pagamentoAprovado);}}
+	&:nth-child(4) { .order__state-circle:after {@include icon-get(orderState-faturado);}}
+	&:nth-child(5) { .order__state-circle:after {@include icon-get(orderState-entregaDoPedido);}}
+
+	&-circle {
+		@include breakpoint('small', 'max') {
+			font-size: 20px;
+			height: 35px;
+			margin-bottom: 0;
+			width: 35px;
+		}
+		background-color: $gray-lighter;
+		border-radius: 100%;
+		display: inline-block;
+		font-size: 35px;
+		height: 60px;
+		margin-bottom: 20px;
+		position: relative;
+		text-align: center;
+		width: 60px;
+	}
+
+	&--current,
+	&--canceled,
+	&--pending,
+	&--finished {
+		&:before {
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid;
+			content: '';
+			display: block;
+			height: 0;
+			left: 50%;
+			position: absolute;
+			top: 65px;
+			transform: translateX(-50%);
+			width: 0;
+
+			@include breakpoint('small', 'max') {
+				border-left-width: 4px;
+				border-right-width: 4px;
+				border-top-width: 4px;
+				top: 40px;
+			 }
+		}
+	}
+
+	&--current {
+		.order__state-circle {
+			background: $self-pri;
+		}
+
+		.order__state-label {
+			@include breakpoint(580px, 'max') {
+				line-height: 130%;
+				white-space: pre-wrap;
+			}
+			color: $self-pri;
+			font-weight: bold;
+		}
+
+		&:after {
+			background: $self-pri;
+		}
+
+		&:before {
+			border-left: 8px solid transparent;
+			border-right: 8px solid transparent;
+			border-top: 8px solid $self-pri;
+			border-top-color: $self-pri;
+			content: '';
+			display: block;
+			height: 0;
+			left: 50%;
+			position: absolute;
+			top: 65px;
+			transform: translateX(-50%);
+  			width: 0;
+		}
+
+		.order__stateInfo-mobile-title {color: $purple;}
+	}
+
+	&--active {
+		.order__state-circle {
+			background: $purple;
+		}
+
+		.order__state-label {
+			@include breakpoint(580px, 'max') {
+				line-height: 130%;
+				white-space: pre-wrap;
+			}
+			color: $purple;
+			font-weight: bold;
+		}
+
+		&:after {
+			background: $purple;
+		}
+
+		&:before {
+			border-top-color: $purple;
+		}
+		.order__stateInfo-mobile-title {color: $purple;}
+	}
+
+	&--pending {
+		.order__state-label {
+			@include breakpoint(580px, 'max') {
+				line-height: 130%;
+				white-space: pre-wrap;
+			}
+			color: $pending-color;
+			font-weight: bold;
+		}
+
+		.order__state-circle { background: $pending-color	}
+
+		&:after {
+			background: $pending-color;
+		}
+
+		&:before {
+			border-top-color: $pending-color;
+		}
+		.order__stateInfo-mobile-title {color: $pending-color;}
+	}
+
+	&--canceled {
+		.order__state-circle {
+			background: $canceled-color;
+		}
+
+		&:after {
+			background: $canceled-color;
+		}
+
+		.order__state-label {
+			color: $canceled-color;
+			font-weight: bold;
+		}
+
+		&:before {
+			border-top-color: $canceled-color;
+		}
+		.order__stateInfo-mobile-title {color: $canceled-color;}
+	}
+
+	&--finished {
+		.order__stateInfo-mobile-title {color: $purple;}
+	}
+}
+
+/* &__bar {
+	&--tiny {
+		@include breakpoint('small', 'max') { display: none!important; }
+		display: none;
+		min-width: 250px;
+
+		.order__states { margin: 0; }
+
+		.order__state { width: auto }
+
+		.order__state-label { display: none }
+
+		.order__state-circle,
+		.order__state:last-child .order__state-circle {
+			height: 15px;
+			margin: 0;
+			transform: translateY(0);
+			width: 15px;
+		}
+
+		.order__state:last-child .order__state-circle:after {
+			background: transparent;
+			height: auto;
+			width: auto;
+		}
+
+		.order__state:not(:first-child):before { top: 7px; }
+
+		.order__state .order__state-circle:after {font-size: .4em!important}
+
+		.order__state--current .order__state-circle:after,
+		.order__state--active .order__state-circle:after {content: '\e60b'!important}
+	}
+} */

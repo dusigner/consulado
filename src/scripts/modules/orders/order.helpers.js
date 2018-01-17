@@ -7,6 +7,9 @@ _.extend(dust.filters, {
 	orderNumber: function(value) {
 		return value.split('-').shift().replace(/[^0-9]/g, '');
 	},
+	humanizeIndex: function(value) {
+		return value + 1;
+	},
 	formatDatetimeBRL: function(value) {
 		return $.formatDatetimeBRL(value);
 	},
@@ -72,6 +75,16 @@ dust.helpers.neq = function(chunk, context, bodies, params) {
 		value = params.value,
 		body = bodies.block;
 	if (location !== value) {
+		chunk.render(body, context);
+	}
+
+	return chunk;
+};
+dust.helpers.gt = function(chunk, context, bodies, params) {
+	var location = params.key,
+		value = params.value,
+		body = bodies.block;
+	if (location > value) {
 		chunk.render(body, context);
 	}
 

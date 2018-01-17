@@ -1,0 +1,102 @@
+@charset 'UTF-8';
+
+&__header {
+	@include breakpoint('small', 'max') { padding: 10px 30px 10px 5px; }
+	border-bottom: 1px solid $gray;
+	cursor: pointer;
+	padding: 20px 120px 20px 40px;
+	position: relative;
+
+	&-list {
+		@include breakpoint('small', 'max') {
+			@include font-size(12px, true, false);
+		}
+		@include font-size(14px, true, false);
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&>.icon-arrow-up {
+		@include font-size(6px, true, false);
+		color: $green;
+		position: absolute;
+		right: 15px;
+		top: 50%;
+		transform: translateY(-50%) rotate(0);
+		transition: transform .5s ease;
+
+		@include breakpoint('small', 'max') {
+			right: 8px;		   
+			top: calc(50% - 3px);
+			transform: rotate(180deg);
+		}
+	}
+
+	&--closed {
+		.order__bar { display: block }
+
+		.icon-arrow-up { 
+			transform: translateY(-50%) rotate(180deg);
+
+			@include breakpoint('small', 'max') {
+				transform: rotate(90deg);
+			}
+		 }
+	}
+
+	&-item {
+		@include breakpoint('small', 'min') {
+			flex: 1;		   
+		}
+		margin: 0 10px;
+
+		&:last-child {
+			margin: 0;
+
+			@include breakpoint('small', 'max') {
+			   text-align: right;
+			}
+		}
+	}
+
+	&-order {
+		@include breakpoint('small', 'max') { display: none }
+	}
+
+	&-stateIcon {
+		background-color: $self-pri;
+		border-radius: 100%;
+		color: #ffffff;
+		display: block;
+		font-size: 22px;
+		height: 40px;
+		position: absolute;
+		right: 50px;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 40px;
+
+		&::before {
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	&-infoMobile {
+		display: none;
+		@include breakpoint('small', 'max') {
+			display: block;
+		}
+
+		padding: 12px 0;
+		border-bottom: solid 1px $gray-ligther;
+		font-size: 13px;
+
+		span:nth-child(2) {
+			float: right;
+		}
+	}
+}
