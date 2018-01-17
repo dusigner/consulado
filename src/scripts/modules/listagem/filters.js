@@ -131,6 +131,13 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 				Nitro.module('prateleira');
 
+				//se tiver menos de 12 produtos, remove botão 'Ver mais'
+				if ($(data).filter('.prateleira.default').find('>ul>li:not(.helperComplement)').length < 12) {
+					$('#list-more').addClass('hidden');
+				} else {
+					$('#list-more').removeClass('hidden');
+				}
+
 			}
 		})
 		.always(function() {
