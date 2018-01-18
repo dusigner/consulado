@@ -236,6 +236,14 @@ body[class*='consul'] {
 				.pv4 {
 					.mb0 { color: $txt-gray; }
 
+					span:nth-child(2) i:after {
+						content: ':00';
+					}
+
+					span:nth-child(2) i {
+						font-style: normal;
+					}
+
 					.lh-copy { color: $green; }
 
 					.black-70 {
