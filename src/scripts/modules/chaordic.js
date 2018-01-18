@@ -16,8 +16,6 @@ require('../../templates/chaordic/shelf-content-placeholder.html');
 require('../../templates/chaordic/chaordic-price.html');
 require('../../templates/chaordic/chaordic-hightlight.html');
 
-//teste2
-
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
 	chaordicCurrency: function(value) {
@@ -55,7 +53,6 @@ Nitro.module('chaordic', function() {
 		$window = $(window),
 		chaordicData,
 		vtexRenderedProducts = [];
-
 
 	/**
 	 * Função bootstrap app | Inicia definindo a página e eventos de scroll para carregar prateleiras e clicks mobile
@@ -105,7 +102,7 @@ Nitro.module('chaordic', function() {
 
 		}
 	};
-	console.log('NEW VERSION READY OK');
+
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
@@ -140,17 +137,18 @@ Nitro.module('chaordic', function() {
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
 									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized'),
-										slidesToShow = $slider.data('slidestoshow') || 3;
-
-									self.slider($slider, slidesToShow);
-									$window.scroll();
+									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
+										$slider.each(function() {
+											var slidesToShow = $(this).data('slidestoshow') || 3;
+											self.slider($(this), slidesToShow);
+										});
+										$window.scroll();		
 								});
-						});
-					// }
+							});
+						// }
+					});
 				});
-			});
-	};
+			};
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
