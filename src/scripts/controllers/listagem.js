@@ -309,6 +309,10 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'c
 			}
 		});
 
-		$('section.slider').eq(0).find('.pre-title').trigger('click');
+		$('section.slider').each(function() {
+			$(this).find('.pre-title').trigger('click');
+		});
+
+		// $('section.slider').eq(0).find('.pre-title').trigger('click');
 	}
 });
