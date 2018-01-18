@@ -485,7 +485,7 @@ input[type='submit'].custom-login-btn {
 	}
 };
 
-body:not(.consulempresa) {
+body:not(.consulempresa):not(.consulqa2) {
 	#vtexIdUI-global-loader,
 	#vtexIdContainer {
 		display: none !important;
