@@ -17,7 +17,7 @@ $canceled-color: #c0392b;
 .section-orders {
 	margin-bottom: 0;
 	@include breakpoint('extra-small', 'max') {
-		background: white;
+		background: #fff;
 		padding: 20px 0;
 
 		.myorders__page {
@@ -26,16 +26,16 @@ $canceled-color: #c0392b;
 				width: 100%;
 
 				.myorders__page-control {
-					width: 100%;
 					text-align: center;
+					width: 100%;
 				}
 			}
 		}
 
 		.container {
 			margin: 0;
-			padding: 0 10px;
 			max-width: 100%;
+			padding: 0 10px;
 		}
 	}
  }
@@ -172,10 +172,10 @@ $canceled-color: #c0392b;
 
 	&__estimateMobile {
 		display: none;
-		text-align: right;
-		padding-top: 15px;
-		font-weight: bold;
 		font-size: 13px;
+		font-weight: bold;
+		padding-top: 15px;
+		text-align: right;
 
 		@include breakpoint('small', 'max') {
 			display: block;
@@ -190,20 +190,20 @@ $canceled-color: #c0392b;
 			}
 
 			&-title {
-				text-align: center;
+				color: $self-pri;
 				font-size: 15px;
 				font-weight: bold;
 				margin-bottom: 5px;
-				color: $self-pri;
+				text-align: center;
 			}
 
 			&-alert {
-				padding: 8px 4px;
 				background: $self-pri;
-				text-align: center;
-				color: white;
+				color: #fff;
 				font-size: 12px;
 				margin-bottom: 15px;
+				padding: 8px 4px;
+				text-align: center;
 			}
 		}
 	}
@@ -279,24 +279,24 @@ $canceled-color: #c0392b;
 	position: relative;
 
 	@include breakpoint('small', 'max') {
+	   color: #fff;
 	   display: block;
-	   color: white;
 	   font-size: 15px;
 	}
 
 	.icon {
+		font-size: 7px;
 		position: absolute;
 		right: 15px;
 		top: 50%;
 		transform: translateY(-50%);
-		font-size: 7px;
-		transition: all 0.4s ease;
+		transition: all .4s ease;
 	}
 
 	&.active {
 		.icon {
-			transform: rotate(180deg);
 			top: calc(50% - 3px);
+			transform: rotate(180deg);
 		}
 	}
 }

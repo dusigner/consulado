@@ -7,8 +7,11 @@
             </div>
             <div class="order__items custom-accordion-mp-content">
                 {?hasTrackingInfo}
-                    {>"orderPackageStates" tracking=courierStatus tiny="true"/}
+                    {>"modalHistorico" trackingInfo=courierStatus /}
                 {/hasTrackingInfo}
+
+                {>"orderPedidoStates" finalStatus=productInfos[items[0].itemIndex].finalStatus /}
+
                 <table class="order__table text-center">
                     <thead class="text-uppercase">
                         <tr>
@@ -30,14 +33,43 @@
                     {>"modalInvoice" invoice=invoiceKey /}
                 {/hasInvoiceData}
             </div>
+
+            {?partialInvoice}
+                <div class="order__package" style="margin-top: 20px">
+                        <div class="custom-accordion-mp-header">
+                                Aguardando faturamento
+                                <i class="icon icon-arrow-up"></i>
+                            </div>
+                    <div class="order__items custom-accordion-mp-content">
+                        <table class="order__table text-center">
+                            <thead class="text-uppercase">
+                                <tr>
+                                    <th class="text-left" colspan="2">Produtos</th>
+                                    <th class="order__hide--mobile">Quant.</th>
+                                    <th class="order__hide--mobile">Valor</th>
+                                    <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {#productInfos}
+                                    {^hidden}
+                                        {>"orderProductInfos"/}
+                                    {/hidden}
+                                {/productInfos}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {/partialInvoice}
         </div>
     {/packages}
 {:else}
     <div class="order__package">
         <div class="order__items">
             {?hasTrackingInfo}
-                {>"orderPackageStates" tracking=packages[0].courierStatus tiny="true" /}
+                {>"modalHistorico" trackingInfo=packages[0].courierStatus /}
             {/hasTrackingInfo}
+
             <table class="order__table text-center">
                 <thead class="text-uppercase">
                     <tr>

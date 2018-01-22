@@ -9,9 +9,9 @@
 		<div class="box-states">
 			<strong>Status atual do pedido: <span class="state-order">{finalStatus.orderLabel}</span></strong>
 			{?finalStatus.estimate}
-				{^trackingInfo.courierStatus.finished}
+				{^trackingInfo.finished}
 					<strong class="txt-state">Entrega estimada: <span class="state-estimate">{finalStatus.estimate|formatDatetimeBRL}</span></strong>
-				{/trackingInfo.courierStatus.finished}
+				{/trackingInfo.finished}
 			{/finalStatus.estimate}
 		</div>
 		<div class="box-all-states">
@@ -22,7 +22,7 @@
 			<div class="content-all-states">
 				<div class="dots-states">
 					<ul>
-						{#trackingInfo.courierStatus.data}
+						{#trackingInfo.data}
 							<li>
 								<div class="box-date-update">
 									<span class="date-update">{lastChange|formatDateAndHour}</span>
@@ -34,7 +34,7 @@
 									</div>
 								</div>
 							</li>
-						{/trackingInfo.courierStatus.data}
+						{/trackingInfo.data}
 					</ul>
 				</div>
 			</div>

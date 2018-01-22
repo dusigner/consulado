@@ -27,7 +27,7 @@
 		transition: transform .5s ease;
 
 		@include breakpoint('small', 'max') {
-			right: 8px;		   
+			right: 8px;
 			top: calc(50% - 3px);
 			transform: rotate(180deg);
 		}
@@ -36,7 +36,7 @@
 	&--closed {
 		.order__bar { display: block }
 
-		.icon-arrow-up { 
+		.icon-arrow-up {
 			transform: translateY(-50%) rotate(180deg);
 
 			@include breakpoint('small', 'max') {
@@ -47,7 +47,7 @@
 
 	&-item {
 		@include breakpoint('small', 'min') {
-			flex: 1;		   
+			flex: 1;
 		}
 		margin: 0 10px;
 
@@ -86,14 +86,13 @@
 	}
 
 	&-infoMobile {
-		display: none;
 		@include breakpoint('small', 'max') {
 			display: block;
 		}
-
-		padding: 12px 0;
 		border-bottom: solid 1px $gray-ligther;
+		display: none;
 		font-size: 13px;
+		padding: 12px 0;
 
 		span:nth-child(2) {
 			float: right;
