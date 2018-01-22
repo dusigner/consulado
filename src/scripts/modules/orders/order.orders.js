@@ -223,27 +223,27 @@ Nitro.module('order.orders', function() {
 				slas = (value.shippingData.logisticsInfo[0]) ? value.shippingData.logisticsInfo[0].slas : '',
 				currentSla = Estimate.getSla(shippingMethod, slas),
 				orderEstimateDate = Estimate.calculateSla(value.creationDate, currentSla),
-
 				isGift = (value.giftRegistryData && value.giftRegistryData.giftRegistryTypeName === 'Lista de Casamento'),
 				statusData = orderStates.getState(isGift, value.state);
 
 			statusData.estimate = orderEstimateDate;
+
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
-
 			value.finalStatus = statusData;
-
 			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
-
 			value.isGift = isGift;
-
 			value.hasTrackingInfo = false;
 			value.hasPackages = false;
-
 			value.hasInvoiceData = false;
+			value.partialInvoice = false;
 
 			if(value.isBoleto && value.paymentData.payments[0].url) {
 				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
 			}
+
+			$.each(value.items, function() {
+				this.finalStatus = orderStates.getState(null, this.orderRewardStatus);
+			});
 
 			return value;
 		}).sort(function(a, b) {
@@ -252,7 +252,7 @@ Nitro.module('order.orders', function() {
 	};
 
 	/**
-	 * Modifica/adiciona no objeto original (ou preparado) realizando chamadas a API do OMS verificando se há dados de tracking e nota fiscal
+	 * Modifica/adiciona no objeto original (ou preparado) realizando chamadas a API do OMS verificando se há dados de tracking e nota fiscal e separação de "pacotes"
 	 * @param  {Array} data retorno da API /orders ou objeto preparado
 	 * @returns {Array} Array com dados de package necessários para render
 	 */
@@ -275,12 +275,27 @@ Nitro.module('order.orders', function() {
 									var self = this;
 
 									self.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
-									self.hasPackages = self.packages.length > 1;
+									self.hasPackages = self.packages.length > 1; // Mais de 1 pacote para separação no layout
 
+									// Tem pacotes
 									if(self.packages && self.packages.length > 0) {
-										var finished = [];
+										var finished = [],
+											packagesSum = 0;
 
 										$.each(self.packages, function(index, singlePackage) {
+											// itera entre itens do pacote, marcando status
+											$.each(singlePackage.items, function() {
+												var itemObject = self.items[this.itemIndex];
+
+												itemObject.hidden = true;
+
+												// Flag Pedido Entregue
+												itemObject.finalStatus = orderStates.getState(null, singlePackage.courierStatus.finished ? 'pedidoEntregue' : itemObject.orderRewardStatus);
+											});
+
+											packagesSum = packagesSum + singlePackage.invoiceValue;
+
+											// Verifica se existe dados de tracking para botão "rastrear entrega"
 											if( singlePackage.courierStatus
 												&& singlePackage.courierStatus.data
 												&& singlePackage.courierStatus.data.length > 0) {
@@ -292,13 +307,21 @@ Nitro.module('order.orders', function() {
 												finished.push(singlePackage.courierStatus.finished);
 											}
 
+											// Existe chave de nota fiscal para exibir botão no front
 											if(singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0) {
 												self.hasInvoiceData = true;
 											}
 										});
 
+										// Verifica se TODOS os pacotes estão finalizados/entregues para trocar o status geral do pedido para Entregue
 										if(finished.length > 0 && $.inArray(false, finished) < 0) {
 											self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
+										}
+
+										// Verifica se a soma de todos pacotes é diferente do total do pedido, identificando se ainda falta algum produto para ser faturado
+										if(packagesSum !== self.value) {
+											self.hasPackages = true;
+											self.partialInvoice = true;
 										}
 									}
 
