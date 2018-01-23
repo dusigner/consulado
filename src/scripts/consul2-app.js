@@ -35,7 +35,7 @@ require('modules/prateleira');
 require('modules/linkDoubleClick');
 require('modules/customLogin');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'customLogin'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect', 'customLogin'], function() {
 	$('.helperComplement').remove();
 
 	var path = window.location.pathname;
