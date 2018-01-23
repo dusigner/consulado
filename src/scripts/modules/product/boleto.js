@@ -6,12 +6,27 @@ require('../../../templates/price.html');
 Nitro.module('boleto', function() {
 
 	this.init = function() {
+		var prodSelos = $('.prod-selos:first');
 		var promoDiscountBoleto = {};
 		var promoDiscountCartao = {};
 		promoDiscountBoleto.value = [0];
 		promoDiscountCartao.value = [0];
 
-		$('.prod-selos:first').find('[class*="boleto"]').each(function(i, e) {
+		// Nova solução de troca de selos por promoções
+		// A ideia é que o nome da promoção seja o mesmo
+		// nome da imagem, Assim não teremos problemas com cache
+		prodSelos.find('.flag[class*="-selo-"]').each(function(i, e) {
+			var elFlag = $(e);
+			var flagName = elFlag.attr('class').replace('flag', '').trim();
+
+			elFlag.css({
+				'background-image'    : 'url(/arquivos/' + flagName + '.png)',
+				'background-position' : 'center center',
+				'background-repeat'   : 'no-repeat'
+			});
+		});
+
+		prodSelos.find('[class*="boleto"]').each(function(i, e) {
 			var promoName = $(e).text();
 			var promoValue = parseInt(promoName.match(/\d+/ig));
 			if (!isNaN(promoValue) && promoValue > 0) {
@@ -19,7 +34,7 @@ Nitro.module('boleto', function() {
 			}
 		});
 
-		$('.prod-selos:first').find('[class*="cartao"]').each(function(i, e) {
+		prodSelos.find('[class*="cartao"]').each(function(i, e) {
 			var promoName2 = $(e).text();
 			var promoValue2 = parseInt(promoName2.match(/\d+/ig));
 			if (!isNaN(promoValue2) && promoValue2 > 0) {
@@ -90,7 +105,7 @@ Nitro.module('boleto', function() {
 			if (sku.available) {
 				var boletoInfo;
 				/**
-				* Se o desconto de cartão for maior ou igual que o desconto no boleto 
+				* Se o desconto de cartão for maior ou igual que o desconto no boleto
 				* E se a loja for PF e não PJ
 				* Mostra o desconto de cartão
 				* Caso contrário, mostra o desconto do boleto
@@ -110,7 +125,7 @@ Nitro.module('boleto', function() {
 			var isDiscountOff,
 				boletoInfo;
 			/**
-			* Se o desconto de cartão for maior ou igual que o desconto no boleto 
+			* Se o desconto de cartão for maior ou igual que o desconto no boleto
 			* E se a loja for PF e não PJ
 			* Mostra o desconto de cartão
 			* Caso contrário, mostra o desconto do boleto

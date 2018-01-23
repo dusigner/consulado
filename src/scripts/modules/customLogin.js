@@ -264,6 +264,7 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
+		console.log(params);
 		return $.ajax({
 			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
 			data: params,
