@@ -80,6 +80,11 @@
 		&:first-child { z-index: 1; }
 	}
 
+	.box-smart-desk {
+		max-height: 340px;
+		overflow: hidden;
+	}
+
 	// [ Mobile ] - Banner principal
 	&.banner-mobile {
 		.box-banner {
