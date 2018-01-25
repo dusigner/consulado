@@ -1,0 +1,117 @@
+@charset 'UTF-8';
+
+.modal-whp__body {
+	@include breakpoint('small', 'max') {
+		height: 100%;
+		max-width: 100%;
+		overflow: auto;
+		width: 100%;
+
+		.primary-button,
+		.secondary-button {
+			// border-color: #592b6d;
+			display: block;
+			margin: 1em 0 0 0!important;
+			padding: .5em;
+			text-align: center;
+			width: 100%;
+		}
+	}
+
+	label {
+		margin: 0 0 2em 0;
+		width: 100%;
+	}
+
+	select,
+	input[type='text'],
+	input[type='number'] {
+		border: 1px solid $gray-l;
+		display: block;
+		margin-top: 5px;
+		padding: 10px;
+		width: 100%;
+	}
+
+	textarea {
+		@include font-size(14px, true, false);
+		background-color: #fff;
+		border: none;
+		display: block;
+		font-weight: normal;
+		height: 90px;
+		margin-top: 1em;
+		resize: none;
+		width: 100%;
+	}
+
+	.cancel-order { @include clearfix }
+
+	.cancel__options {
+		background-color: $gray-l;
+		max-width: 700px;
+		padding: 1.5em;
+	}
+
+	.primary-button + .secondary-button { margin-left: 1em }
+
+	form.edit-item { max-width: 550px }
+}
+
+.modal-whp__content {
+	.loading {
+		background: rgba(255, 255, 255, .8);
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+
+		&:before {
+			@include spinner($green, 50px);
+			content: '';
+			display: block;
+			left: 0;
+			margin: 0 auto;
+			right: 0;
+		}
+	}
+}
+
+.recurrence__modal {
+	&-item {
+		border: 1px solid $gray-l;
+		margin: 0 auto;
+		max-width: 550px;
+		padding: 1em 2em;
+
+		& > div { float: left }
+	}
+
+	&-image { margin-right: 1em }
+	&-name  { width: calc(100% - 100px) }
+	&-info  { margin: 1em 0 1.5em }
+}
+
+.modal-invoice {
+	&__actions {
+		button,
+		a {
+			@include breakpoint('small', 'max') {
+				max-width: 100%;
+			}
+			display: block;
+			margin: 0 auto 1em;
+			max-width: 50%;
+			width: 100%;
+		}
+	}
+}
+
+#vtex-invoice {
+	.modal-content {
+		border: none;
+		box-shadow: none;
+	}
+}

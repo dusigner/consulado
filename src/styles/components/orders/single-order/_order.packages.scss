@@ -1,0 +1,109 @@
+@charset 'UTF-8';
+
+&__package {
+	margin-bottom: 30px;
+	@include breakpoint('small', 'max') {
+	   margin-bottom: 15px;
+	}
+
+	&-title {
+		background: $gray-darkest;
+		color: #ffffff;
+		padding: 20px 15px;
+	}
+
+	.custom-accordion-mp-header {
+		color: #ffffff;
+		cursor: pointer;
+		display: block;
+	}
+
+	.order__states {
+		margin-top: 0;
+	}
+
+	.order__state-circle {
+		&:after {
+			content: '\e915' !important;
+		}
+	}
+}
+
+&__items {
+	@include breakpoint('small', 'max') { padding: 0 }
+	border: solid 1px $gray-lighter;
+	padding: 30px;
+
+	&--recurrence { margin-top: 40px; }
+}
+
+&__item {
+	&-image { width: 120px }
+	&-name { width: 280px }
+
+	.order-product-warranty {
+		button {
+			border: solid 1px $self-pri;
+			color: $self-pri;
+			text-transform: uppercase;
+
+			&:hover {
+				background-color: $self-pri;
+				color: #ffffff;
+			}
+		}
+	}
+}
+
+&__table {
+	@include font-size(14px, true, false);
+	width: 100%;
+
+	thead {
+		background: $gray-lighter;
+
+		th {
+			padding: 10px 15px;
+			@include breakpoint('small', 'max') {
+			   display: none;
+			}
+		}
+	}
+
+	tbody {
+		tr {
+			&:nth-last-of-type(2) {
+				td {
+					border-bottom: 0;
+				}
+			}
+		}
+	}
+
+	th {
+		border-bottom: 1px solid $gray-l;
+		padding-bottom: 5px;
+	}
+
+	td {
+		border-bottom: 1px solid $gray-l;
+		padding: 15px 0;
+	}
+}
+
+//tem GAE
+&__service {
+	&-icon {
+		padding-right: 1em!important;
+		text-align-last: right;
+
+		&:before {
+			background: transparent url('/arquivos/cns-orders-gae-connector.png') top center no-repeat;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 60px;
+			width: 45px;
+		}
+	}
+}

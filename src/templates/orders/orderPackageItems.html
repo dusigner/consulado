@@ -1,0 +1,93 @@
+{?hasPackages}
+    {#packages productInfos=items}
+        <div class="order__package">
+            <div class="custom-accordion-mp-header">
+                Entrega {$idx|humanizeIndex} - {items.length} Produto{@gt key=items.length value=1}s{/gt}
+                <i class="icon icon-arrow-up"></i>
+            </div>
+            <div class="order__items custom-accordion-mp-content">
+                {?hasTrackingInfo}
+                    {>"modalHistorico" trackingInfo=courierStatus /}
+                {/hasTrackingInfo}
+
+                {>"orderPedidoStates" finalStatus=productInfos[items[0].itemIndex].finalStatus /}
+
+                <table class="order__table text-center">
+                    <thead class="text-uppercase">
+                        <tr>
+                            <th class="text-left" colspan="2">Produtos</th>
+                            <th class="order__hide--mobile">Quant.</th>
+                            <th class="order__hide--mobile">Valor</th>
+                            <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {#items}
+                            {#productInfos[itemIndex]}
+                                {>"orderProductInfos"/}
+                            {/productInfos[itemIndex]}
+                        {/items}
+                    </tbody>
+                </table>
+                {?hasInvoiceData}
+                    {>"modalInvoice" invoice=invoiceKey /}
+                {/hasInvoiceData}
+            </div>
+
+            {?partialInvoice}
+                <div class="order__package" style="margin-top: 20px">
+                        <div class="custom-accordion-mp-header">
+                                Aguardando faturamento
+                                <i class="icon icon-arrow-up"></i>
+                            </div>
+                    <div class="order__items custom-accordion-mp-content">
+                        <table class="order__table text-center">
+                            <thead class="text-uppercase">
+                                <tr>
+                                    <th class="text-left" colspan="2">Produtos</th>
+                                    <th class="order__hide--mobile">Quant.</th>
+                                    <th class="order__hide--mobile">Valor</th>
+                                    <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {#productInfos}
+                                    {^hidden}
+                                        {>"orderProductInfos"/}
+                                    {/hidden}
+                                {/productInfos}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {/partialInvoice}
+        </div>
+    {/packages}
+{:else}
+    <div class="order__package">
+        <div class="order__items">
+            {?hasTrackingInfo}
+                {>"modalHistorico" trackingInfo=packages[0].courierStatus /}
+            {/hasTrackingInfo}
+
+            <table class="order__table text-center">
+                <thead class="text-uppercase">
+                    <tr>
+                        <th class="text-left" colspan="2">Produtos</th>
+                        <th class="order__hide--mobile">Quant.</th>
+                        <th class="order__hide--mobile">Valor</th>
+                        <th class="order__hide--mobile">{?giftRegistryData}Referente{/giftRegistryData}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {#items}
+                        {>"orderProductInfos"/}
+                    {/items}
+                </tbody>
+            </table>
+            {?hasInvoiceData}
+                {>"modalInvoice" invoice=packages[0].invoiceKey /}
+            {/hasInvoiceData}
+        </div>
+    </div>
+{/hasPackages}

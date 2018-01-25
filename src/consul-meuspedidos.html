@@ -4,7 +4,7 @@
 	<vtex:metaTags/>
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" href="//whirlpool.vteximg.com.br/arquivos/consul2-myorders.css" />
+	<link rel="stylesheet" href="/arquivos/consul2-myorders.css" />
 </head>
 <body class="meuspedidos">
 
@@ -28,14 +28,14 @@
 					<div>
 						<ul class="myorders__page-control">
 							<li class="myorders__page-item"><a class="myorders__page-link js-link-orders" data-link="orders" href="javascript:void(0);">Pedidos Feitos</a></li>
-							<li class="myorders__page-item"><a class="myorders__page-link js-link-orders" data-link="recurrence" href="javascript:void(0);">Recorrências</a></li>
+							<li class="myorders__page-item"><a class="myorders__page-link js-link-orders" data-link="recurrences" href="javascript:void(0);">Recorrências</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="myorders container" id="myorders">
-			    <div id="myorders-render"></div>
-			    <div id="recurrences-render" class="hide"></div>
+				<div class="js-myorders-generic-render" id="orders-render"></div>
+				<div class="js-myorders-generic-render hide" id="recurrences-render"></div>
 			</div>
 		</div>
 	</section>
@@ -46,42 +46,6 @@
 	<!-- Modal historico detalhado -->
 
 	<div id="order-modals" class="hide">
-		<div id="cancel-item">
-			<div>
-				<h3 class="color-green">Por que deseja cancelar seu pedido?</h3>
-				<form class="cancel-order js-form-cancel">
-					<div class="cancel__options">
-						<label>
-							<input type="radio" name="reason" value="Não quero mais este produto." /> Não quero mais este produto.
-						</label>
-						<label>
-							<input type="radio" name="reason" value="Comprei sem querer." /> Comprei sem querer.
-						</label>
-						<label>
-							<input type="radio" name="reason" value="A entrega vai demorar demais." /> A entrega vai demorar demais.
-						</label>
-						<label>
-							<input type="radio" name="reason" value="Encontrei um preço melhor em outro lugar." /> Encontrei um preço melhor em outro lugar.
-						</label>
-						<label>
-							<input type="radio" name="reason" value="Prefiro não informar." /> Prefiro não informar.
-						</label>
-						<label>
-							<input type="radio" name="reason" value="" /> Outro
-							<textarea name="reason" id="" placeholder="Descreva brevemente qual o motivo para o cancelamento."></textarea>
-						</label>
-					</div>
-					<div class="float-right">
-						<p class="weight-semibold color-green text-right">Após confirmar, o cancelamento não pode ser desfeito.</p>
-						<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO CANCELAR</span></a>
-						<button type="submit" class="secondary-button purple-button inverted-button"><span>DESEJO CANCELAR PEDIDO</span></button>
-					</div>
-				</form>
-			</div>
-			<div>
-				<p class="js-feedback-account">Solicitação de cancelamento realizada!</p>
-			</div>
-		</div>
 
 		<div id="pause-recurrence">
 			<div>
@@ -179,6 +143,6 @@
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
 
-	<script src="//whirlpool.vteximg.com.br/arquivos/consul2-myorders.min.js"></script>
+	<script src="/arquivos/consul2-myorders.min.js"></script>
 </body>
 </html>

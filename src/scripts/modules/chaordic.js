@@ -9,23 +9,15 @@ require('modules/helpers');
 require('modules/prateleira');
 
 //Templates dust usados
-require('../../templates/chaordic/chaordic.html');
-require('../../templates/chaordic/chaordic-default.html');
-require('../../templates/chaordic/chaordic-personalized.html');
-require('../../templates/chaordic/chaordic-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
+require('../../templates/chaordic/chaordic-price.html');
+require('../../templates/chaordic/chaordic-hightlight.html');
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
-	chaordicName: function(value) {
-		value = value.replace(/- .+$/, '');
-		value = (value.length > 60 ? value.substr(0, 60) + '...' : value);
-
-		return value;
-	},
 	chaordicCurrency: function(value) {
 		return window.defaultStoreCurrency + ' ' + _.formatCurrency(value);
 	}
@@ -46,8 +38,7 @@ dust.helpers.neq = function(chunk, context, bodies, params) {
 Nitro.module('chaordic', function() {
 
 	var self = this,
-		//OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
-		API = {
+		API = { //OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
 			APIHOST: '//recs.chaordicsystems.com/v0',
 			SHELFENDPOINT: '/pages/recommendations',
 			//QUERY PARAMETROS OBRIGATÓRIOS P/ CHAMADA
@@ -60,7 +51,8 @@ Nitro.module('chaordic', function() {
 			}
 		},
 		$window = $(window),
-		chaordicData;
+		chaordicData,
+		vtexRenderedProducts = [];
 
 	/**
 	 * Função bootstrap app | Inicia definindo a página e eventos de scroll para carregar prateleiras e clicks mobile
@@ -69,21 +61,23 @@ Nitro.module('chaordic', function() {
 	this.init = function(name) {
 		API.APIPARAMS.name = name;
 
-		if(!API.APIPARAMS.deviceId) {
-			var checkDeviceId = setInterval(function() {
-				if(window.getCookie('chaordic_browserId')) {
-					API.APIPARAMS.deviceId = window.getCookie('chaordic_browserId');
-					$window.scroll();
-					clearInterval(checkDeviceId);
-				}
-			}, 50);
-		}
-
 		if( $('[data-chaordic]').length > 0 ) {
-			$window.scroll($.throttle(function() {
-				self.scrollHandler();
-				self.loadProducts();
-			}, 2000)).scroll();
+
+			if(!API.APIPARAMS.deviceId) {
+				var checkDeviceId = setInterval(function() {
+					if(window.getCookie('chaordic_browserId')) {
+						API.APIPARAMS.deviceId = window.getCookie('chaordic_browserId');
+						self.getRecommendations();
+						$window.scroll();
+						clearInterval(checkDeviceId);
+					}
+				}, 50);
+			} else {
+				self.getRecommendations();
+				$window.scroll();
+			}
+
+			$window.scroll(self.loadProducts).scroll();
 
 			//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
 			$(document).on('click', '[data-chaordic] a', function(e) {
@@ -105,52 +99,62 @@ Nitro.module('chaordic', function() {
 					$window.scroll();
 				});
 			}
-		}
 
+		}
 	};
 
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
 	 */
-	this.scrollHandler = function() {
+	this.getRecommendations = function() {
 		var $shelfs = $('[data-chaordic]').not('.chaordic--run');
 
 		if($shelfs.length <= 0) {
 			return false;
 		}
 
-		var reference = $(window).scrollTop() + $(window).height();
+		// var reference = $(window).scrollTop() + $(window).height();
 
-		$shelfs.each(function() {
-			var $self = $(this),
-				position = $self.data('chaordic');
+		//Prevent multiple ajax calls, toDo rewrite
+		self.getShelf()
+			.then(function() {
+				$shelfs.each(function() {
+					var $self = $(this),
+						position = $self.data('chaordic');
 
-			if ($self.is(':visible') && reference >= $self.offset().top ) {
-				var shelf;
+					// if ($self.is(':visible') && reference >= $self.offset().top ) {
+					var shelf;
 
-				self.getShelf(name)
-					.then(function(res) {
-						shelf = res[position];
+					self.getShelf()
+						.then(function(res) {
+							shelf = res[position];
 
-						$.each(shelf, function(i, v) {
-							v.isPersonalized = v.feature === 'ViewPersonalized';
+							$.each(shelf, function(i, v) {
+								v.isPersonalized = v.feature === 'ViewPersonalized';
+							});
 
-						});
-						self.placeHolderRender(shelf, $self);
-						$window.scroll();
+							self.placeHolderRender(shelf, $self)
+								.then(function($chaordicShelf) {
+									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
+									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
+										$slider.each(function() {
+											var slidesToShow = $(this).data('slidestoshow') || 3;
+											self.slider($(this), slidesToShow);
+										});
+										$window.scroll();		
+								});
+							});
+						// }
 					});
-
-				return;
-			}
-		});
-	};
+				});
+			};
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
 	 */
 	this.loadProducts = function() {
-		var $shelfs = $('[data-chaordic] .js-content-lazy');
+		var $shelfs = $('[data-chaordic] .js-content-lazy:not(".vtex-load")');
 
 		if($shelfs.length <= 0) {
 			return false;
@@ -166,52 +170,32 @@ Nitro.module('chaordic', function() {
 				position = $self.parents('[data-chaordic]').data('chaordic');
 
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
+				$self.addClass('vtex-load');
+
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
 
-				self.getProducts(recomendations)
-					.then(function(products) {
-						if(shelf.isPersonalized) {
-							self.prepareData(shelf, products, 'references');
-						}
+				if(recomendations) {
 
-						var renderData = self.prepareData(shelf, products);
-						return self.finalRender(renderData, $self);
-					})
-					.then(function($chaordicShelf) {
-						//Produtos já foram renderizados
-						//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-						setTimeout(function() {
-							var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized'),
-								slidesToShow = $slider.data('slidestoshow') || 3;
+					self.getProducts(recomendations)
+						.then(function(products) {
+							if(shelf.isPersonalized) {
+								self.prepareData(shelf, products, 'references');
+							}
 
-							$slider.slick({
-								infinite: false,
-								slidesToShow: slidesToShow,
-								slidesToScroll: slidesToShow,
-								responsive: [{
-									breakpoint: 990,
-									settings: {
-										dots: true,
-										slidesToShow: 2,
-										slidesToScroll: 2
-									}
-								}, {
-									breakpoint: 480,
-									settings: {
-										dots: true,
-										slidesToShow: 2,
-										slidesToScroll: 2
-									}
-								}]
-							});
-						}, 1);
+							return self.prepareData(shelf, products);
+						})
+						.then(function() {
+							//Produtos já foram renderizados
+							//Rodar modulo de prateleira para montar %OFF e etc
+							Nitro.module('prateleira');
 
-						//Rodar modulo de prateleira para montar %OFF e etc
-						Nitro.module('prateleira');
+							$self.parents('[data-chaordic]').addClass('chaordic--runned');
+							$self.removeClass('js-content-lazy');
 
-						$chaordicShelf.parents('[data-chaordic]').addClass('chaordic--runned');
-					});
+						});
+				}
+
 			}
 		});
 	};
@@ -258,17 +242,22 @@ Nitro.module('chaordic', function() {
 	 * @returns {String} query string para endpoint da VTEX
 	 */
 	this.prepareRecomendations = function(res, isPersonalized) {
-		var response = res.displays[0].recommendations.reduce(function(prev, curr) {
-			return prev + 'fq=productId:' + curr.id + '&';
-		}, '');
+		var response = res.displays[0].recommendations.reduce(self.recomendationsReducer, '');
 
 		if(isPersonalized) {
-			response = res.displays[0].references.reduce(function(prev, curr) {
-				return prev + 'fq=productId:' + curr.id + '&';
-			}, response);
+			response = res.displays[0].references.reduce(self.recomendationsReducer, response);
 		}
 
 		return response;
+	};
+
+	this.recomendationsReducer = function(prev, curr) {
+		if($.inArray(curr.id, vtexRenderedProducts) < 0) {
+			vtexRenderedProducts.push(curr.id);
+			return prev + 'fq=productId:' + curr.id + '&';
+		} else {
+			return prev;
+		}
 	};
 
 	/**
@@ -285,39 +274,49 @@ Nitro.module('chaordic', function() {
 
 	/**
 	 * D: Prepara objeto final para renderização, mesclando dados chaordic com dados VTEX
-	 * @param  {Object} shelfs prateleiras recomendadas pela chaordic
+	 * @param  {Object} shelf prateleiras recomendadas pela chaordic
 	 * @param  {Object} products produtos retornados pelo search da VTEX
 	 * @returns {Object} dados mesclados prontos para o render
 	 */
 	this.prepareData = function(shelf, products, type) {
+		var dfd = jQuery.Deferred();
+
 		type = type || 'recommendations';
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
 				if(product.productId === recommendation.id) {
-					var item = product.items.filter(function(value) {
-						return value.sellers[0].commertialOffer.AvailableQuantity > 0;
-					});
+					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
 
-					recommendation.product = product;
-					recommendation.product.available = item.length > 0;
+					if(!$box.hasClass('box-produto')) {
+						var item = product.items.filter(function(value) {
+							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
+						});
 
-					if(item.length === 0) {
-						item = [product.items[0]];
+						if(item.length === 0) {
+							item = [product.items[0]];
+						}
+
+						product.available = item.length > 0;
+
+						product.priceInfo = item[0].sellers[0].commertialOffer;
+						product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
+						product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
+
+						product.finalImages = self.prepareImages(item[0].images, '300');
+
+						product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
+						product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
+
+
+						self.finalRender(product, $box);
 					}
-
-					recommendation.product.priceInfo = item[0].sellers[0].commertialOffer;
-					recommendation.product.finalImages = self.prepareImages(item[0].images, '300');
-					recommendation.product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
-					recommendation.product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
-					recommendation.product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
-					recommendation.product.clusterHighlights = self.prepareclusterHighlights(recommendation.product.clusterHighlights);
-					return false;
 				}
 			});
 		});
 
-		return shelf;
+		dfd.resolve();
+		return dfd.promise();
 	};
 
 	/**
@@ -418,20 +417,15 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.finalRender = function(renderData, $elem) {
-		var dfd = jQuery.Deferred();
-
-		dust.render('chaordic', renderData, function(err, out) {
-			if (err) {
-				dfd.reject(err);
-				throw new Error('Chaordic Shelf Dust error: ' + err);
-			}
-
-			$elem.html(out);
-			$elem.removeClass('js-content-lazy');
-			dfd.resolve($elem.find('.js-chaordic-shelf'));
-		});
-
-		return dfd.promise();
+		self.priceRender(renderData, $elem);
+		self.hightlightRender(renderData, $elem);
+		if(renderData && renderData.finalImages && renderData.finalImages.perspectiva) {
+			$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+		}
+		$elem.find('.js-item-sku').text(renderData.productReference);
+		$elem.attr('data-percent', renderData.priceInfo.percentOff);
+		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
+		$elem.addClass('box-produto');
 	};
 
 	/**
@@ -441,14 +435,66 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.placeHolderRender = function(renderData, $elem) {
+		var dfd = jQuery.Deferred();
 
 		dust.render('shelf-content-placeholder', renderData, function(err, out) {
 			if (err) {
-				throw new Error('Chaordic Shelf Dust error: ' + err);
+				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
 
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
+			dfd.resolve($elem.find('.js-chaordic-shelf'));
+		});
+
+		return dfd.promise();
+	};
+
+	this.priceRender = function(renderData, $elem) {
+		dust.render('chaordic-price', renderData, function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Price Dust error: ' + err);
+			}
+
+			$elem.find('.js-item-price').html(out);
+		});
+	};
+
+	this.hightlightRender = function(renderData, $elem) {
+		dust.render('chaordic-hightlight', renderData, function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Hightlight Dust error: ' + err);
+			}
+
+			$elem.find('.js-item-flagshightlight').html(out);
+		});
+	};
+
+	/**
+	 * Método para montar slick carrosel nas prateleiras
+	 * @param  {Object} $slider seletor jQuery do elemento pai com os slides
+	 * @param  {Integer} slidesToShow número com o total de slides que vão aparecer e rodar na versão Desk do slider
+	 */
+	this.slider = function($slider, slidesToShow) {
+		$slider.slick({
+			infinite: false,
+			slidesToShow: slidesToShow,
+			slidesToScroll: slidesToShow,
+			responsive: [{
+				breakpoint: 990,
+				settings: {
+					dots: true,
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			}, {
+				breakpoint: 480,
+				settings: {
+					dots: true,
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			}]
 		});
 	};
 });

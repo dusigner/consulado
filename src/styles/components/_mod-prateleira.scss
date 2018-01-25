@@ -56,10 +56,10 @@
 					}
 
 					.detalhes {
-						min-height: 300px;
 						display: flex;
 						flex-direction: column;
 						height: 100%;
+						min-height: 300px;
 
 						h3 {
 							min-height: 85px;
@@ -762,6 +762,44 @@
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(16, 16, true);
 			border-bottom: none;
+		}
+	}
+}
+
+#relacionados,
+#quem-viu-clicou {
+	@include breakpoint(small, 'max') {
+		.prateleira.default {
+			ul {
+				li {
+					article	{
+						min-height: 0;
+						padding: 0 25px;
+					}
+
+					.detalhes {
+						flex-direction: row;
+						min-height: 0;
+
+						.image {
+							width: 50%;
+						}
+
+						.prod-info {
+							width: 50%;
+						}
+					}
+
+					.prod-info {
+						margin-top: 0;
+					}
+				}
+
+				.slick-dots {
+					bottom: -2px !important;
+					justify-content: center;
+				}
+			}
 		}
 	}
 }

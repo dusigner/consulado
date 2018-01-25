@@ -3,7 +3,7 @@
 	<div>
 		<div class="js-content-personalized--ref shelf--personalized__holder shelf--personalized-ref">
 			<h2 class="pre-title shelf-pre-title">{title|s}</h2>
-			<ul class="shelf shelf--btp js-chaordic-shelf content-placeholder">
+			<ul class="shelf shelf--btp">
 				{#displays[0].references[0]}
 					{>"shelf-content-placeholder-product"/}
 				{/displays[0].references[0]}
@@ -12,14 +12,10 @@
 
 		<div class="js-content-personalized--rec shelf--personalized__holder shelf--personalized-rec">
 			<h2 class="pre-title shelf-pre-title shelf-sub-title">{subtitle|s}</h2>
-			<ul class="shelf shelf--btp js-chaordic-shelf content-placeholder">
-				{#displays[0].recommendations[0]}
+			<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider " data-slidestoshow="2">
+				{#displays[0].recommendations}
 					{>"shelf-content-placeholder-product"/}
-				{/displays[0].recommendations[0]}
-
-				{#displays[0].recommendations[1]}
-					{>"shelf-content-placeholder-product"/}
-				{/displays[0].recommendations[1]}
+				{/displays[0].recommendations}
 			</ul>
 		</div>
 	</div>

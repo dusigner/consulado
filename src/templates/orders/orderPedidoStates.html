@@ -1,7 +1,12 @@
+{?finalStatus.estimate}
+	<div class="order__estimateMobile">
+		Previsão de entrega: {finalStatus.estimate|formatDatetimeBRL}
+	</div>
+{/finalStatus.estimate}
 <ul class="order__states clearfix">
 	{#finalStatus.trackingLabels}
 		<li class="order__state{?class} order__state--{class}{/class}">
-			<div class="order__state-circle">&nbsp;</div>
+			<div class="order__state-circle"></div>
 			<p class="order__state-label">
 				{label}
 				{?estimate}
