@@ -215,7 +215,7 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-login--buttons">' +
 							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
 							'<div class="modal-custom-login--buttons--box">' +
-								'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>' +
+								'<button class="modal-custom-login-btn mailkey">' +
 								($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
 								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
 								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
