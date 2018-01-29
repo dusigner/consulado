@@ -6,7 +6,6 @@ require('modules/orders/order.estimateLoading');
 
 Nitro.controller('pedidos', ['order.estimateLoading', 'order.warrantySpare'], function(loading, warrantySpare) {
 
-
 	var self = this;
 
 	this.init = function() {

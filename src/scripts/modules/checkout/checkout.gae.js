@@ -60,6 +60,8 @@ Nitro.module('checkout.gae', function() {
 	};
 
 	this.terms = function() {
+
+		/* validação via modal desativada
 		$('#btn-concordo').off().on('click', function() {
 
 			var attachmentName = 'Aceite do Termo',
@@ -83,6 +85,9 @@ Nitro.module('checkout.gae', function() {
 			//$('.btn-place-order').trigger('click');
 			window.location.href = '#/orderform';
 		});
+
+		*/
+
 
 		$('#modal-services .btn-default').off().on('click', function() {
 

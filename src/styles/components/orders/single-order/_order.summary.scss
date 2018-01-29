@@ -1,0 +1,114 @@
+@charset 'UTF-8';
+
+&__infos-box {
+	background-color: $gray-lightest;
+	border: solid 1px $gray-lighter;
+	margin-bottom: 30px;
+	padding: 30px;
+
+	@include breakpoint('small', 'max') {
+		background-color: #ffffff;
+		padding: 15px;
+	}
+}
+
+&__infos {
+	@include font-size(14px, true, false);
+	display: flex;
+	@include breakpoint('small', 'max') {
+		flex-direction: column;	   
+	}
+	margin-bottom: 30px;
+	p { margin: 0; }
+}
+
+&__info {
+	position: relative;
+	width: 100%;
+
+	@include breakpoint('small', 'max') {
+	   margin-bottom: 20px;
+	}
+
+	&-title {
+		@include breakpoint('small', 'min') { 
+			margin-bottom: .2em!important
+		}
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	&--shipping {
+		margin-bottom: 15px;
+	}
+
+	&--shipping-data {
+		@include breakpoint('small', 'max') {
+			order: 2;
+		}
+	}
+
+	&--pay-ship {
+		@include breakpoint('small', 'max') {
+			margin: 0;
+			order: 3;
+		}
+	}
+
+	&--totals {
+		@include breakpoint('small', 'max') {
+			order: 1;
+		}
+
+		table {
+			border: solid 1px $gray-ligther;
+			width: 100%;
+
+			tbody {				
+				background: #ffffff;
+			}
+
+			tr {
+				border-bottom: solid 1px $gray-ligther;
+
+				&:last-child {
+					border-bottom: 0;
+				}
+
+				td {
+					@include breakpoint('small', 'max') {
+					   font-size: 13px;
+					   padding: 5px 8px;
+					}
+					font-weight: bold;
+					padding: 10px 15px;
+					text-transform: uppercase;
+
+					&:nth-child(2) {
+						text-align: right;
+					}
+				}
+			}
+
+			tfoot {
+				background: $gray-lighter;
+				color: $purple;
+			}
+		}
+
+		.order__info-footer {
+			background: $gray;
+			padding: 15px 20px;
+
+			table {
+				color: $green;
+
+				td+td { font-weight: bold }
+			}
+		}
+	}
+
+	&-card {
+		margin-top: 10px;
+	}
+}

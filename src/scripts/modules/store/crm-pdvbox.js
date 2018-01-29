@@ -24,53 +24,41 @@ var PDVBOX = {
 		});
 	}(),
 
-	get: function(orderId, productName) {
-		return vtexjs.checkout.getOrders(orderId).then(function(orders) {
-			var item = [];
+	get: function(orderId, productObj, orderObj) {
 
-			$.each(orders, function(i, order) {
-				item = $.each(order.items, function(index, product) {
-					if (product.name === productName) {
-						return product;
-					}
-				});
-			});
+		var orderDate = $.formatDatetime(orderObj.creationDate, '-');
 
-			var orderDate = $.formatDatetime(orders.creationDate, '-');
-
-			var data = {
-				transaction: {
-					login: {
-						username: PDVBOX.username,
-						password: PDVBOX.password
-					},
-					product: {
-						// sku: 'B4D02ABANA',
-						sku: item[0].refId,
-						price: item[0].sellingPrice / 100
-					},
-					client: {
-						id: PDVBOX.profileData.email
-					},
-					sale: {
-						id: orderId,
-						sale_date: orderDate
-					}
+		var data = {
+			transaction: {
+				login: {
+					username: PDVBOX.username,
+					password: PDVBOX.password
+				},
+				product: {
+					// sku: 'B4D02ABANA',
+					sku: productObj.refId,
+					price: productObj.price / 100
+				},
+				client: {
+					id: PDVBOX.profileData.email
+				},
+				sale: {
+					id: orderId,
+					sale_date: orderDate
 				}
-			};
+			}
+		};
 
-			return $.post(PDVBOX.pdvBoxAPI + '/product/', JSON.stringify(data)).then(function(res) {
-				res = JSON.parse(res);
+		return $.post(PDVBOX.pdvBoxAPI + '/product/', JSON.stringify(data)).then(function(res) {
+			res = JSON.parse(res);
 
-				res.sku = item[0].refId;
-				res.skuName = item[0].name;
-				res.skuPrice = item[0].sellingPrice / 100;
-				res.orderDate = orderDate;
-				res.orderId = orderId;
+			res.sku = productObj.refId;
+			res.skuName = productObj.name;
+			res.skuPrice = productObj.price / 100;
+			res.orderDate = orderDate;
+			res.orderId = orderId;
 
-				return res;
-			});
-
+			return res;
 		});
 	},
 

@@ -10,52 +10,36 @@ require('modules/orders/order.recurrences');
 
 Nitro.setup(['order.orders', 'order.recurrences'], function(orders, recurrences) {
 
-	var self = this;
-
-	this.$container = $('#myorders'); //Container geral
-	this.$ordersContainer = $('#myorders-render'); //Container de pedidos
-	this.$recurrencesContainer = $('#recurrences-render'); //Container de recorrências
+	var $container = $('#myorders'), //Container geral
+		modules = {
+			orders: orders,
+			recurrences: recurrences
+		};
 
 	/**
 	 * Função bootstrap app | Inicia carregando e renderizando pedidos (módulo order.orders.js) e eventos das tabs de alterar tela Pedidos Feitos - Recorrências
-	 *  @returns {undefined} Retorno vazio
 	 */
 	this.init = function() {
-		orders.order();
+		orders.init();
 
 		$('.js-link-orders').click(function(e) {
 			e.preventDefault();
 
-			if(self.$container.hasClass('myorders--loading')) {
+			if($container.hasClass('myorders--loading')) {
 				return false;
 			}
 
 			var $title = $('.js-page-title'),
-				$self = $(this);
+				$self = $(this),
+				link = $self.data('link');
 
-			self.$ordersContainer.add(self.$recurrencesContainer).addClass('hide');
+			$('.js-myorders-generic-render').addClass('hide');
+			modules[link]['$' + link + 'Container'].removeClass('hide');
+			$title.text( $self.text() );
 
-			if( $self.data('link') === 'orders' ) {
-				self.$ordersContainer.removeClass('hide');
-
-				if(!orders.orders.isLoaded) {
-					orders.order();
-				}
-
-				$title.text('Pedidos feitos');
+			if(!modules[link][link].isLoaded) {
+				modules[link].init();
 			}
-
-			if( $self.data('link') === 'recurrence' ) {
-				self.$recurrencesContainer.removeClass('hide');
-
-				if(!recurrences.recurrences.isLoaded) {
-					recurrences.recurrence();
-				}
-
-				$title.text('Recorrências');
-			}
-
-			return;
 		});
 	};
 

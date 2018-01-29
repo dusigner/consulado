@@ -8,689 +8,386 @@
 // Utility helpers
 @import 'helpers/variables';
 @import 'helpers/mixins';
-@import 'helpers/helpers';
-@import 'helpers/conditional';
+// @import 'helpers/helpers';
+// @import 'helpers/conditional';
 
 // Component styles
-@import 'components/buttons';
+// @import 'components/buttons';
+
+
+// @import 'components/orders/order.warrantySpare';
 
 // ===============================================================
-/* ACCOUNT/ORDERS */
+/* ACCOUNT */
 // ===============================================================
 
-body.account,
-body.orders {
 
-	/* bootstrap reset */
-	@import 'base/type';
-	@import 'layout/container';
+body.account-page {
+	height: 100%;
+	min-height: 100%;
+}
 
-	a { text-decoration: none!important; }
+.section-conta {
+	background-color: #f4f4f4;
+	padding: 2em 0 1em 0;
+}
 
-	// Header
-	.header {
-		.text-search {
-			@include responsiveFont(16);
-			box-shadow: none;
-
-			&:focus { outline: none; }
-		}
-
-		.logo { color: $green;}
-	}
-
-	.footer {
-
-		.logo,
-		form {margin: 0;}
-
-	}
-
-	.menu-department {
-
-		.icon-hamburger { top: 10px;}
-
-		a { color: $green;}
-	}
-
-	.vtex-bootstrap { min-height: 400px; }
-
-	.row { margin-left: 0; }
-
-	.form-search {
-		.search-query {
-			border: 1px solid $orange;
-		}
-	}
-
-	.footer-autocomplete { display: none; }
-
-
-	// ===============================================================
-	/* ACCOUNT */
-	// ===============================================================
-	.icon { background: none; }
-
-	.page-header {
-		border-bottom: none;
+.main {
+	p {
+		color: #777;
 		margin: 0;
-		padding: 0;
+	}
 
-		h1 {
-			@include font-size(36px);
-			color: #666666;
-			font-weight: normal;
-			margin: 20px 0;
-			text-transform: none;
+	// Page and Section titile
+	.title,
+	h4 {
+		@include font-size(22px, true, false);
+		color: $green;
+		margin: 0 0 1em 0;
+		text-transform: uppercase;
+	}
+
+	h4 { @include font-size(16px, true, false); }
+
+	.row { margin: 0; }
+
+	// [class*='span'] {
+	.profile-detail-display,
+	.address-display-block {
+		@include breakpoint('medium', 'max') { width: 100%; }
+		background-color: #fff;
+		border: 1px solid $gray;
+		float: right;
+		margin-bottom: 2em;
+		padding: 2.5em;
+		width: 49%;
+
+		&:first-child { float: left; }
+	}
+
+	// Meu perfil
+	h5,
+	.profile-detail-display-email,
+	.profile-detail-display-info span {
+		@include font-size(16px, true, false);
+		color: #777;
+		font-weight: normal;
+		margin: 0;
+	}
+
+	.edit-profile-link,
+	.new-address-link { display: none; }
+
+	h5:before,
+	.profile-detail-display-email:before,
+	.profile-detail-display-info .title {
+		display: inline-block;
+		font-size: 13px;
+		font-weight: bold;
+		padding-right: 10px;
+		text-transform: uppercase;
+	}
+
+	// Nome
+	h5:before { content: 'Nome: '; }
+
+	// Email
+	.profile-detail-display-email:before { content: 'E-mail: '; }
+
+	// Links de ação
+	.trigger-modal {
+		color: $green;
+		float: right;
+		font-size: 12px;
+		margin-top: 30px;
+		text-transform: uppercase;
+
+		&:hover { text-decoration: underline; }
+
+		&:after {
+			content: '\00BB';
+			display: inline-block;
+			font-size: 18px;
+			padding-left: 5px;
 		}
 	}
 
-	.main {
-		& > .row {
-			margin-left: 0;
-
-			&>[class*='span'] {
-				background-color: #fff;
-				border: 1px solid $gray;
-				margin: 0 0 0 3%;
-				padding: 1em;
-				width: 30.33333333333333%;
-
-				&:first-child { margin-left: 0; }
-
-				@include breakpoint(small, 'max') {
-					margin-bottom: 30px;
-					margin-left: 0;
-					width: 100%;
-				}
-
-				h4 {
-					border-bottom: 1px solid $gray;
-					padding-bottom: 10px;
-				}
-
-				h5 { margin: 0; }
-
-				p { margin: 5px 0; }
-
-				a {
-					@extend .primary-button;
-
-					&#edit-data-link,
-					&.address-update {
-						display: block;
-						padding: 5px 12px;
-					}
-
-					&#edit-data-link {
-						margin: 10px 0;
-					}
-				}
-
-				.orders-link {
-					a {
-						display: block;
-						padding: 5px 12px;
-					}
-				}
-
-				.title { @include font-size(14px, true, false); }
-
-				.data {
-					@include font-size(12px, true, false);
-					color: $button-bg-color;
-				}
-			}
-		}
+	// Endereços
+	.address-display-unit {
+		border: none;
+		padding: 0 0 1.2em 0;
 	}
 
 	.address-display-block {
-		@include font-size(14px, true, false);
+		@include font-size(16px, true, false);
 
 		.row {
-			margin: 0;
-
-			&>[class*='span'] {
+			& > [class*='span'] {
 				margin: 0;
 				width: 100%;
 			}
-
-			.address-display-unit {
-				h5,
-				.edit-address-link { display: none; }
-			}
-		}
-	}
-
-	.foot-news {
-		form { margin: 0; }
-
-		input[type=text] {
-			height: auto;
-			margin-bottom: 0;
-		}
-	}
-
-	.footer a,
-	.call-newsletter { color: #fff; }
-
-
-	// ===============================================================
-	/* ORDERS */
-	// ===============================================================
-	.ordergroup {
-		@include vendor(border-radius, 0);
-
-		.btn {
-			@extend .primary-button;
-			background-image: none;
-			border-radius: 0;
-			box-shadow: none!important;
-			font-size: 14px;
-			text-shadow: none!important;
 		}
 
-		.order-status-wrapper .order-status { border-radius: 0; }
-
-		.order-status-info {
-			border: none!important;
-			float: right;
-			margin: 0 0 5px 0;
-			min-height: auto;
-			width: auto;
-
-			p { margin: 0; }
-
-			@include breakpoint(small, 'min') {
-				border-bottom: 1px solid $gray;
-				border-top: 1px solid $gray;
-				padding: 10px 0;
-			}
-		}
-
-		.request-cancel {
-			@include hide-conditional(); // Botão cancelar escondido
-			display: block;
-			margin: 0;
-			padding: 0;
-			width: 100%;
-		}
-
-		.request-cancel-link {
-			@include breakpoint(small, 'max') {
-				margin: 0 !important;
-				text-align: center;
-			}
-
-			a {
-				@extend .secondary-button;
-				display: inline-block;
-				font-size: 11px;
-				font-weight: 400;
-				margin: 10px 0;
-				padding: 5px 10px;
-
-				@include breakpoint(small, 'max') { width: 100%; }
-			}
-		}
+		h5,
+		.edit-address-link { display: none; }
 	}
 }
 
 
 
-body.account {
-	[class*='icon'] { background-image: none; }
+// Modal
+.modal {
+	background-color: #fff;
+	border: 1px solid $gray;
+	height: 85%;
+	left: 50%;
+	max-height: 85%;
+	max-width: 700px;
+	// overflow: auto;
+	position: fixed;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 95%;
+	z-index: 100;
 
-	// ===============================================================
-	/* MODAL BOOTSTRAP */
-	// ===============================================================
-	.modal {
-		@include vendor(border-radius, 0);
+	&:focus { outline: none; }
 
-		&.hide { z-index: -1; }
-		&.hide.fade.in {
-			visibility: visible;
-			z-index: 1050;
-		}
+	&[aria-hidden='false'] { visibility: visible }
 
+	#editar-perfil-conteudo {
+		max-height: 100%;
+		overflow: auto;
+	}
 
-		form {
+	.modal-header {
+		background-color: #f4f4f4;
+		padding: 15px 40px;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: 100%;
+
+		h3 {
+			@include font-size(22px, true, false);
 			margin: 0;
-
-			input[type='text'],
-			input[type='email'],
-			input[type='tel'],
-			select {
-				@include vendor(border-radius, 0);
-				border: 1px solid #ccc;
-				height: 40px;
-			}
+			text-transform: uppercase;
 		}
 
-		.modal-header {
-			h3 {
-				@include font-size(36px);
-				color: #666666;
-				font-weight: normal;
-				text-transform: none;
-			}
-		}
-
-		.modal-footer {
-			.btn {
-				@extend .primary-button;
-				@include vendor(border-radius, 0);
-				background-image: none;
-
-				&.btn-primary {
-					float: left;
-					max-width: 200px;
-				}
-			}
-
-			.btn-link {
-				color: #666666;
-
-				&:hover { color: #f00; }
-			}
-		}
-	}
-
-	.vtex-bootstrap .container {
-		max-width: 1280px;
-		width: inherit;
-	}
-}
-
-body.orders {
-
-	.vtex-bootstrap .container {
-		@include breakpoint(extra-small, 'max') { padding: 10px; }
-	}
-
-	.container h1.title {
-		@include breakpoint(extra-small, 'max') { margin-bottom: 0; }
-
-		& + br {
-			display: none;
-			visibility: hidden;
-		}
-	}
-
-	.visible-phone { margin: .5em 0; }
-
-	.header .container {
-		@include breakpoint(small, 'max') {
-			padding: 0;
-			width: 100%;
-		}
-	}
-
-	.form-search {
-		margin-bottom: 0;
-
-		.search-query {
-			border: 1px solid $gray;
-			box-shadow: none;
-			height: 50px;
+		.close {
+			@include font-size(40px, true, false);
+			background-color: transparent;
+			border: none;
+			font-weight: bold;
+			height: 100%;
+			position: absolute;
+			right: 0;
+			top: 3px;
+			width: 65px;
 
 			&:focus { outline: none; }
 		}
 	}
 
-	.autocomplete-search {
-		h3 {line-height: inherit;}
+	.modal-body {
+		margin-top: 63px;
+		padding: 2em;
 	}
 
-	.vtex-bootstrap .ordergroup,
-	.vtex-bootstrap .order-info .top-row { border: none; }
+	.row {
+		margin: 0;
 
-	.vtex-bootstrap .order-details .items {
-		border-top: 1px solid;
-		padding: 1em 0;
+		.span,
+		.span2,
+		.span5:not(h5) {
+			float: left;
+			width: 50%;
+		}
 	}
 
-	.myorders-list {
-		float: left;
-		width: 100%;
+	#business-data,
+	#accountAjaxBusy { display: none }
 
-		.ordergroup {
+	h5 {
+		@include font-size(18px, true, false);
+		margin: 0 0 1em;
+		text-transform: uppercase;
+	}
+
+	.control-label {
+		@include font-size(15px, true, false);
+		padding: 5px 0;
+	}
+
+	.control-group {
+		input[type='text'],
+		select {
+			@include font-size(15px, true, false);
 			border: 1px solid $gray;
-			border-width: 1px 1px 3px 1px;
-			margin-bottom: 40px;
-			padding-bottom: 10px;
-			position: relative;
-
-			.order-info,
-			.order-details { padding: 0 20px; }
-
-			// Compra realizada em 00 / 00 / 0000
-			.order-header {
-				background-color: $gray-l;
-				float: left;
-				padding-left: 20px;
-				width: 100%;
-
-				@include breakpoint(extra-small, 'max') { padding-left: 10px; }
-
-				.order-title {
-					@include responsiveFont(22);
-					height: 60px;
-					line-height: 60px;
-					margin: 0;
-					padding: 0;
-
-					@include breakpoint(small, 'max') {
-						line-height: normal;
-						padding: 7px 10px 0;
-						position: relative;
-						width: 50%;
-					}
-
-					@include breakpoint(extra-small, 'max') {
-						height: 100%;
-						min-height: 80px;
-					}
-
-					&,
-					.title-ordergroup-order {
-						color: $txt-gray!important;
-						font-weight: 700;
-					}
-
-					.order-date {
-						color: $orange;
-						display: inline-block;
-						font-weight: 400;
-
-						@include breakpoint(extra-small, 'min') { padding: 0 10px; }
-					}
-
-					.repeat-order {
-						@include breakpoint(small, 'max') {
-							float: none;
-							margin: 10px auto;
-
-							a {
-								left: 100%;
-								position: absolute;
-								top: 0;
-								width: 100%;
-							}
-						}
-					}
-				}
-			}
-
-			// Pedir novamente
-			.repeat-order {
-				a.btn {
-					@include responsiveFont(16);
-					margin-top: 7px;
-
-					@include breakpoint(extra-small, 'max') {
-						margin-top: 18px;
-						padding: .7em 1em;
-						position: relative;
-						width: 100%;
-					}
-				}
-			}
-
-			// Forma de pagamento | Endereço de entrega | Total
-			.order-info {
-				bottom: 0;
-				font-size: 14px;
-				width: 100%;
-
-				@include breakpoint(medium, 'min') { position: absolute; }
-
-				.general-info {
-					@include breakpoint(small, 'max') { width: 100%; }
-
-					.bank-invoice-print a {
-						margin-top: 10px;
-
-						@include breakpoint(small, 'max') { width: 100%; }
-					}
-				}
-
-				.totals {
-					table {
-						float: right;
-						width: auto;
-						@include breakpoint(small, 'max') { width: 100%; }
-
-						tr {
-							td,
-							th { padding: 7px 0 7px 10px; }
-							td { padding-left: 50px; }
-						}
-					}
-				}
-			}
-
-			// Pedido | Forma de entrega
-			.order-details {
-				font-size: 14px;
-
-				@include breakpoint(medium, 'min') { padding-bottom: 175px; }
-
-				.seller-info,
-				.showTrackingInfo {display: none}
-
-				.span3 {
-					@include breakpoint(small, 'max') { width: 100%; }
-				}
-
-				table,
-				thead,
-				tbody,
-				th,
-				td,
-				tr {
-					@include breakpoint(small, 'max') {
-						display: block;
-					}
-				}
-
-				thead tr {
-					@include breakpoint(small, 'max') {
-						left: -9999px;
-						position: absolute;
-						top: -9999px;
-					}
-				}
-
-				/* tr {
-					@include breakpoint(small, 'max') {
-						// border-bottom: 35px solid #fff;
-					}
-				} */
-
-				td {
-					@include breakpoint(small, 'max') {
-						border: none;
-						border-bottom: 1px solid #eee;
-						padding-left: 30%;
-						position: relative;
-						text-align: left;
-
-						&:before {
-							font-weight: bold;
-							left: 6px;
-							padding-right: 10px;
-							position: absolute;
-							text-align: left;
-							top: 6px;
-							white-space: nowrap;
-							width: 30%;
-						}
-					}
-				}
-
-				td:nth-of-type(1):before { @include breakpoint(small, 'max') { content: 'Produto';  } }
-				td:nth-of-type(3):before { @include breakpoint(small, 'max') { content: 'Entrega';  } }
-				td:nth-of-type(4):before { @include breakpoint(small, 'max') { content: 'Preço';    } }
-				td:nth-of-type(5):before { @include breakpoint(small, 'max') { content: 'Qtd.';     } }
-				td:nth-of-type(6):before { @include breakpoint(small, 'max') { content: 'Total';    } }
-
-				.showTrackingInfo a {
-					@include breakpoint(small, 'max') { width: 100%; }
-				}
-
-				@include breakpoint(small, 'max') {
-					td.product-image { border-bottom: none; }
-
-					td.quantity-price {
-						border-bottom: 0;
-						width: 100%;
-
-						.total-selling-price {
-							display: block!important;
-							white-space: nowrap;
-							width: 100%;
-						}
-					}
-				}
-			}
+			float: none;
+			margin: .5em 0;
+			padding: .5em;
+			width: 90%;
 		}
+
+		&.form-business-data-name { padding: 1.5em 0; }
 	}
 
-
-
-
-	/*=============================
-	=            Alert            =
-	=============================*/
-	.alert-info {
-		left: 0;
-		max-width: 90%;
-		position: absolute;
-		right: 0;
-		top: 8px;
+	#business-toggle {
+		@include font-size(14px, true, false);
+		color: $green;
+		font-weight: bold;
 	}
 
-	/*
-	*
-	*  STATUS MOBILE
-	*  Fazer versão mobile do status de produto
-	*
-	*/
-	.order-status-wrapper {
-		background-image: url('/arquivos/brastemp2-map-tracking.png');
-		height: 56px;
-		position: relative;
-		text-indent: -999em;
-		width: 408px;
+	.modal-footer {
+		padding: 0 2em 2em 0;
+		text-align: right;
 
-		@include breakpoint(small, 'max') {
-		 	display: none;
-		 }
-	}
-
-	.order-loading-estimate {
-	    clear: both;
-		display: block;
-	    float: right;
-		height: 25px;
-	    padding: 20px 0 50px 0;
-	    position: relative;
-	    width: 408px;
-	     .realizado {
-	    	@include responsiveFont(13, 16, true);
-	    }
-	    .delivery {
-	    	@include responsiveFont(13, 16, true);
-	    	display: none;
-	    	float: right;
-	    }
-	    .box-loading {
-			background: #9aca3c;
-			display: block;
-			height: 10px;
-			margin-top: 5px;
-			position: relative;
-		 	width: 0;
-		 }
-		 .box-loading-gray {
-		 	background: #dedede;
-		 	display: block;
-		 	height: 10px;
-		 	margin-top: 5px;
-		 	position: absolute;
-		 	width: 100%;
-		 }
-		 ul {
-			li {
-				@include responsiveFont(10px);
-			    color: #9aca3c;
-				display: inline-block;
-			    font-weight: bold;
-			    text-align: right;
-			}
-		}
-		.deliveryTitle {
-			@include responsiveFont(13, 16, true);
-			color: #736c6b;
-		}
-		.deliveryDate {
-			@include responsiveFont(13, 16, true);
-			color: #9aca3c;
+		.btn-primary,
+		.btn-link {
+			@include font-size(14px, true, false);
+			border: 1px solid $green;
+			display: inline-block;
 			font-weight: bold;
+			line-height: 1em;
+			max-width: 200px;
+			padding: .8em 1.2em;
+			text-transform: uppercase;
 		}
-		@include breakpoint(small, 'max') {
-			display: none;
+
+		.btn-primary {
+			float: right;
+			margin-left: 20px;
+		}
+
+		.btn-link {
+			background-color: transparent;
+			color: $green;
 		}
 	}
 
-	.order-status-wrapper > div {
-		display: none;
-		height: 65px;
-		position: absolute;
-		top: 0;
-	}
-	.order-status-wrapper > div.pedido-recebido {
-		left: 0;
-		width: 60px;
-	}
-	.order-status-wrapper > div.aguardando-pagamento {
-		left: 100px;
-		width: 84px;
-	}
-	.order-status-wrapper > div.preparando-entrega {
-		left: 216px;
-		width: 84px;
-	}
-	.order-status-wrapper > div.enviado {
-		left: 324px;
-		width: 84px;
-	}
-	.order-status-wrapper > div.cancelado,
-	.order-status-wrapper > div.processando-cancelamento {
-		right: 29px;
-		width: 100px;
-	}
+	.address-form {
+		& > .control-group {
+			float: left;
+			width: 50%;
+		}
 
-	.order-status-wrapper.processando-pagamento {background-position: 0 -6px;}
-	.order-status-wrapper.preparando-entrega {background-position: 0 -122px;}
-	.order-status-wrapper.cancelado,
-	.order-status-wrapper.processando-cancelamento {background-position: 276px -240px;}
-	.order-status-wrapper.enviado {background-position: 0 -181px;}
+		.row {
+			clear: both;
 
-	.order-status-wrapper.processando-pagamento .pedido-recebido,
-	.order-status-wrapper.processando-pagamento .aguardando-pagamento,
-	.order-status-wrapper.preparando-entrega .pedido-recebido,
-	.order-status-wrapper.preparando-entrega .aguardando-pagamento,
-	.order-status-wrapper.preparando-entrega .preparando-entrega,
-	.order-status-wrapper.enviado .pedido-recebido,
-	.order-status-wrapper.enviado .aguardando-pagamento,
-	.order-status-wrapper.enviado .preparando-entrega,
-	.order-status-wrapper.enviado .enviado,
-	.order-status-wrapper.cancelado .cancelado,
-	.order-status-wrapper.processando-cancelamento .cancelado {display: block}
+			& > [class*='span'] {
+				float: left;
+				width: 50%;
+			}
+
+			div.span4 {
+				width: 85%;
+
+				input { width: 95% }
+			}
+
+			div.span1 { width: 10% }
+		}
+
+		.control-label { display: block; }
+	}
 }
 
+// #profile-submit,
+// #form-submit {
+// 	background-color: $green;
+// 	color: #ffffff;
+// }
 
+// #address-edit,
+// #editar-perfil {
+// 	@include breakpoint(small, 'max') {
+// 		left: 10px;
+// 		margin-left: 0;
+// 		width: 95%;
+// 	}
+// }
 
-@import 'components/orders/order.warrantySpare';
+// .address-form,
+// .profile-detail-form-personal-data,
+// .profile-detail-form-business-data,
+// .form-business-data {
+// 	> div {
+// 		@include breakpoint(small, 'max') {
+// 			display: block;
+// 			width: 100%;
+// 		}
+// 	}
+
+// 	label {
+// 		cursor: inherit;
+// 		margin-right: 10px;
+
+// 		@include breakpoint(small, 'max') {
+// 			display: block;
+// 			width: 100%;
+// 		}
+// 	}
+
+// 	input {
+// 		@include breakpoint(extra-small, 'max') {
+// 			width: 100%;
+// 		}
+// 	}
+// }
+
+// .span5 {
+// 	width: 100%;
+// }
+
+// .form-business-data-name {
+// 	padding-left: 0 !important;
+// }
+
+// .control-group {
+// 	@include breakpoint(small, 'max') {
+// 		display: block;
+// 		margin-left: 0;
+// 		padding-left: 20px;
+// 		width: 100%;
+// 	}
+
+// 	margin-bottom: 10px !important;
+
+// 	label {
+// 		cursor: inherit;
+// 		margin-right: 10px;
+
+// 		@include breakpoint(small, 'max') {
+// 			display: block;
+// 			width: 100%;
+// 		}
+// 	}
+
+// 	.radio {
+// 		margin-top: 0;
+// 	}
+
+// 	input[type='radio'] {
+// 		@include breakpoint(extra-small, 'max') {
+// 			display: inline-block;
+// 			left: 0;
+// 			margin-left: -40px;
+// 		}
+// 	}
+
+// 	&.address-form-state {
+// 		margin-bottom: 20px !important;
+// 	}
+
+// 	.controls {
+// 		@include breakpoint(small, 'max') {
+// 			display: inline-block;
+// 			margin: 0 10px;
+// 			margin-left: 0;
+// 		}
+// 	}
+
+// 	#business-toggle {
+// 		margin-left: 0;
+// 	}
+// }
