@@ -8,8 +8,8 @@ Nitro.module('smartFocus', function() {
 		UID = cookieIPI.match(/UsuarioGUID=[a-zA-Z0-9\-]+/ig);
 	if ($(window).width() <= 768) {
 		var bannerTemplate = '<div class="box-banner box-smart-mobile">' +
-							'<a href="http://renderer-p3-eu1.advisor.smartfocus.com/api-public/3.0/personaliseemail?a=3d025fc8-2cab-4670-87d7-6ff64cb4e869&uc=COOKIE_ID&e=11032&f=gif&l=pt&h=340&w=1500&cacheTimeout=900&channel=web&pos=default">' +
-								'<img class="smartfocus-banner" src="http://renderer-p3-eu1.advisor.smartfocus.com/api-public/3.0/personaliseemail?a=3d025fc8-2cab-4670-87d7-6ff64cb4e869&uc=COOKIE_ID&e=11032&f=gif&l=pt&h=340&w=1500&cacheTimeout=900&channel=web&pos=default"  alt="SmartFocus Personalisation" />' +
+							'<a href="http://renderer-p3-eu1.advisor.smartfocus.com/api-public/3.0/personaliseemail?a=3d025fc8-2cab-4670-87d7-6ff64cb4e869&uc={0}&e=11032&f=gif&l=pt&h=340&w=1500&cacheTimeout=900&channel=web&pos=default">' +
+								'<img class="smartfocus-banner" src="http://renderer-p3-eu1.advisor.smartfocus.com/api-public/3.0/personaliseemail?a=3d025fc8-2cab-4670-87d7-6ff64cb4e869&uc={0}&e=11032&f=gif&l=pt&h=340&w=1500&cacheTimeout=900&channel=web&pos=default"  alt="SmartFocus Personalisation" />' +
 							'</a>' +
 						'</div>';
 	}else {
