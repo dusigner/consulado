@@ -332,9 +332,7 @@ $(window).on('load', function() {
 			if (gae.hasAnyActiveWarranty()) {
 
 				var attachmentName = 'Aceite do Termo',
-					content = {
-						'Aceito': 'Aceito'
-				};
+					content = { 'Aceito': 'Aceito' };
 
 				self.orderForm.items.forEach(function(elem, elemIndex) {
 

@@ -48,7 +48,7 @@ Nitro.module('order.orders', function() {
 					//"promiseAll" resolve roda após ajax de todos pedidos
 					$.when.apply($, promises)
 						.always(function() {
-							console.log('🚨🚨🚨', resultados);
+							// console.log('🚨🚨🚨', resultados);
 							self.orderRender(resultados);
 						});
 				});

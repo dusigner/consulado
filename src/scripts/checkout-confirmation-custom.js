@@ -51,7 +51,7 @@ $(window).on('load', function() {
 			});
 		};
 
-		this.orderData = []; 
+		this.orderData = [];
 
 		this.isOrderPlaced = function() {
 			return $body.hasClass('body-checkout-confirmation');
@@ -81,38 +81,35 @@ $(window).on('load', function() {
 			});
 		};
 
-		console.clear();
-
 		var urlconfir  = window.location.href,
 			absolutoconfirm = urlconfir.split('/')[urlconfir.split('/').length -1],
 			pedidoconfir = absolutoconfirm.replace('?og=', '');
 			// console.log(pedidoconfir);
 
-			$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function(res) {
+		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
 
-				var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
-				var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
+			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
+			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
 
-				for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
-					var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
+			for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
+				var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
 
-					if ( entregas.id === entregaEscolhida ) {
-						
-						var startag = new Date(entregas.deliveryWindow.startDateUtc),
-							endag   = new Date(entregas.deliveryWindow.endDateUtc);
-					}
+				if ( entregas.id === entregaEscolhida ) {
+					var startag = new Date(entregas.deliveryWindow.startDateUtc),
+						endag   = new Date(entregas.deliveryWindow.endDateUtc);
 				}
-			
-				var starHor = startag.getUTCHours(),
-					andHor = endag.getUTCHours(),
-					$wrapper = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
-					HTMLTemporario = $wrapper.innerHTML,
-					HTMLNovo = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
+			}
 
-				HTMLTemporario = HTMLTemporario + HTMLNovo;
-				$wrapper.innerHTML = HTMLTemporario;
-				
-			  });
+			var starHor        = startag.getUTCHours(),
+				andHor         = endag.getUTCHours(),
+				$wrapper       = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
+				HTMLTemporario = $wrapper.innerHTML,
+				HTMLNovo       = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
+
+			HTMLTemporario = HTMLTemporario + HTMLNovo;
+			$wrapper.innerHTML = HTMLTemporario;
+
+		});
 
 
 		this.infoBoleto = function() {

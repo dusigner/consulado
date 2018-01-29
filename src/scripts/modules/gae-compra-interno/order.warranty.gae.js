@@ -267,13 +267,13 @@ Nitro.module('order.warranty.gae', function() {
 
 		var timestampDays = 334*86400*1000,
 			timestampOrder = new Date(order.orderDate).getTime(),
-			limitBuyDate = $.formatDatetimeBRL(timestampDays +  timestampOrder ); //retorna 11 meses depois da data da compra 
+			limitBuyDate = $.formatDatetimeBRL(timestampDays +  timestampOrder ); //retorna 11 meses depois da data da compra
 
 		boxOrder[idCurrentOrder].limitBuyDate = limitBuyDate;
 		boxOrder[idCurrentOrder].products = order.products;
-	
+
 		self.getProductInfo();
-		console.log('aqui limite' + limitBuyDate);
+		// console.log('aqui limite' + limitBuyDate);
 
 	};
 
@@ -419,7 +419,7 @@ Nitro.module('order.warranty.gae', function() {
 							if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
 								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida';
 							} else {
-								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida'; 
+								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida';
 							}
 						}
 					});
