@@ -618,4 +618,10 @@ Nitro.module('customLogin', function() {
 	if (store && store.isPersonal) {
 		this.init();
 	}
+	// Substituindo todos os triggers do botão #login e envia para /login
+	var url_atual = window.location.pathname;
+	$('body').off('click','#login');
+	$('body').on('click', '#login', function() {
+		window.location='/login?ReturnUrl=' + url_atual + '';
+	});
 });
