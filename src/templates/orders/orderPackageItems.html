@@ -6,11 +6,7 @@
                 <i class="icon icon-arrow-up"></i>
             </div>
             <div class="order__items custom-accordion-mp-content">
-                {?hasTrackingInfo}
-                    {>"modalHistorico" trackingInfo=courierStatus /}
-                {/hasTrackingInfo}
-
-                {>"orderPedidoStates" finalStatus=productInfos[items[0].itemIndex].finalStatus /}
+                {! {>"orderPedidoStates" finalStatus=productInfos[items[0].itemIndex].finalStatus /} !}
 
                 <table class="order__table text-center">
                     <thead class="text-uppercase">
@@ -29,9 +25,15 @@
                         {/items}
                     </tbody>
                 </table>
-                {?hasInvoiceData}
-                    {>"modalInvoice" invoice=invoiceKey /}
-                {/hasInvoiceData}
+                <div class="clearfix order__invoice-container">
+                    {?hasInvoiceData}
+                        {>"modalInvoice" invoice=invoiceKey /}
+                    {/hasInvoiceData}
+
+                    {?hasTrackingInfo}
+                        {>"modalHistorico" trackingInfo=courierStatus /}
+                    {/hasTrackingInfo}
+                </div>
             </div>
 
             {?partialInvoice}
@@ -66,10 +68,6 @@
 {:else}
     <div class="order__package">
         <div class="order__items">
-            {?hasTrackingInfo}
-                {>"modalHistorico" trackingInfo=packages[0].courierStatus /}
-            {/hasTrackingInfo}
-
             <table class="order__table text-center">
                 <thead class="text-uppercase">
                     <tr>
@@ -85,9 +83,15 @@
                     {/items}
                 </tbody>
             </table>
-            {?hasInvoiceData}
-                {>"modalInvoice" invoice=packages[0].invoiceKey /}
-            {/hasInvoiceData}
+            <div class="clearfix order__invoice-container">
+                {?hasInvoiceData}
+                    {>"modalInvoice" invoice=packages[0].invoiceKey /}
+                {/hasInvoiceData}
+
+                {?hasTrackingInfo}
+                    {>"modalHistorico" trackingInfo=packages[0].courierStatus /}
+                {/hasTrackingInfo}
+            </div>
         </div>
     </div>
 {/hasPackages}
