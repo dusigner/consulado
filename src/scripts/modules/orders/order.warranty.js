@@ -361,7 +361,9 @@ var Warranty = {
 
 	downloadVtexWarranty: function() {
 		$('.download-warranty.vtex').unbind('click').click(function() {
-			var idPlan = $(this).data('id');
+			var $self = $(this),
+				idPlan = $self.data('id');
+
 			idPlan = idPlan.match( /\d+/g ).join([]);
 
 			while (idPlan.length < 10) {
@@ -371,10 +373,10 @@ var Warranty = {
 			var data = {};
 			data.request = true;
 			data.document = Warranty.profileData.document;
-			data.garantia = $(this).data('period');
+			data.garantia = $self.data('period');
 			data.order = idPlan;
-			data.skuRefId = $(this).data('refid');
-			data.indice = $(this).data('product-index');
+			data.skuRefId = $self.data('refid');
+			data.indice = $self.data('product-index');
 
 			ModalGae.requestTerms(data, function(changeStep, close, data) {
 				$('.js-modal-gae-confirm').click(function() {
@@ -382,7 +384,7 @@ var Warranty = {
 						.done(function(){
 							changeStep();
 
-							$('.download-warranty.vtex').replaceWith('<span class="download-warranty request-success">Termo Solicitado!</span>');
+							$self.replaceWith('<span class="download-warranty request-success">Termo Solicitado!</span>');
 
 							setTimeout(function() {
 								if($('.modal-gae__mask').length > 0) {
