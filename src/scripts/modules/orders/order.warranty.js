@@ -175,7 +175,7 @@ var Warranty = {
 
 			var $section = $('.order__items--' + order.id + '.order__item--' + product.id).first();
 
-			if( $section.siblings('.order__service').length <= 0 ) {
+			if( $section.next('.order__service').length <= 0 ) {
 				$section.after(out);
 			}
 		});
