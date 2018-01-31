@@ -1,44 +1,46 @@
-<a href="#" class="historico-detalhes btn-rastreio">
-	<i class="order__icon order__icon--truck"></i>
-	<span>Rastrear entrega &nbsp;</span>
-</a>
+{@gt key=trackingInfo.data.length value=0}
+	<a href="#" class="historico-detalhes btn-rastreio">
+		<i class="order__icon order__icon--truck"></i>
+		<span>Rastrear entrega &nbsp;</span>
+	</a>
 
-<div class="modal-detalhes">
-	<span class="close"></span>
-	<div class="content-historico">
-		<p>Rastrear entrega <span class="num-pedido"> - Pedido #{orderId|orderNumber}</span></p>
-		<div class="box-states">
-			<strong>Status atual do pedido: <span class="state-order">{finalStatus.orderLabel}</span></strong>
-			{?finalStatus.estimate}
-				{^trackingInfo.finished}
-					<strong class="txt-state">Entrega estimada: <span class="state-estimate">{finalStatus.estimate|formatDatetimeBRL}</span></strong>
-				{/trackingInfo.finished}
-			{/finalStatus.estimate}
-		</div>
-		<div class="box-all-states">
-			<div class="status-order">
-				<span>Atualização</span>
-				<span>Status da entrega</span>
+	<div class="modal-detalhes">
+		<span class="close"></span>
+		<div class="content-historico">
+			<p>Rastrear entrega <span class="num-pedido"> - Pedido #{orderId|orderNumber}</span></p>
+			<div class="box-states">
+				<strong>Status atual do pedido: <span class="state-order">{finalStatus.orderLabel}</span></strong>
+				{?finalStatus.estimate}
+					{^trackingInfo.finished}
+						<strong class="txt-state">Entrega estimada: <span class="state-estimate">{finalStatus.estimate|formatDatetimeBRL}</span></strong>
+					{/trackingInfo.finished}
+				{/finalStatus.estimate}
 			</div>
-			<div class="content-all-states">
-				<div class="dots-states">
-					<ul>
-						{#trackingInfo.data}
-							<li>
-								<div class="box-date-update">
-									<span class="date-update">{lastChange|formatDateAndHour}</span>
-									<span class="arrow-left"></span>
-									<div class="status-request">
-										{! <strong class="status-request__title">&nbsp;</strong> !}
-										<span class="date-update show-extra-small">{lastChange|formatDateAndHour}</span>
-										<span class="status-request__description">{description}</span>
+			<div class="box-all-states">
+				<div class="status-order">
+					<span>Atualização</span>
+					<span>Status da entrega</span>
+				</div>
+				<div class="content-all-states">
+					<div class="dots-states">
+						<ul>
+							{#trackingInfo.data}
+								<li>
+									<div class="box-date-update">
+										<span class="date-update">{lastChange|formatDateAndHour}</span>
+										<span class="arrow-left"></span>
+										<div class="status-request">
+											{! <strong class="status-request__title">&nbsp;</strong> !}
+											<span class="date-update show-extra-small">{lastChange|formatDateAndHour}</span>
+											<span class="status-request__description">{description}</span>
+										</div>
 									</div>
-								</div>
-							</li>
-						{/trackingInfo.data}
-					</ul>
+								</li>
+							{/trackingInfo.data}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/gt}
