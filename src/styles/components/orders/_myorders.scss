@@ -137,6 +137,9 @@ $canceled-color: #c0392b;
 
 	&__invoicekey { float: right }
 	&__invoice-container {
+		@include breakpoint('small', 'max') {
+			padding: 1em;
+		}
 		border-top: solid 1px $gray-lighter;
 		padding: 1em 1em 0 0;
 	}

@@ -29,6 +29,11 @@ body.pedidos {
 	}
 
 	.download-warranty {
+		@include breakpoint('small', 'max') {
+			text-align: left;
+			width: 100%;
+		}
+
 		color: $green;
 		padding: 0;
 		white-space: nowrap;
