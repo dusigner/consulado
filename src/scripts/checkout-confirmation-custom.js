@@ -51,14 +51,16 @@ $(window).on('load', function() {
 			});
 		};
 
+		this.orderData = [];
+
 		this.isOrderPlaced = function() {
 			return $body.hasClass('body-checkout-confirmation');
 		};
 
 		//event
-		this.orderPlacedUpdated = function(e, orderPlaced) {
+		this.orderPlacedUpdated = function(/*e, orderPlaced*/) {
 			if (self.isOrderPlaced()) {
-				console.info('orderPlacedUpdated', orderPlaced);
+				// console.info('orderPlacedUpdated', orderPlaced);
 
 				$('.cconf-myorders-button').attr('href','/minhaconta/pedidos');
 
@@ -78,6 +80,37 @@ $(window).on('load', function() {
 				span.text(span.text().split('-').shift().replace(/[^0-9]/g, ''));
 			});
 		};
+
+		var urlconfir  = window.location.href,
+			absolutoconfirm = urlconfir.split('/')[urlconfir.split('/').length -1],
+			pedidoconfir = absolutoconfirm.replace('?og=', '');
+			// console.log(pedidoconfir);
+
+		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
+
+			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
+			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
+
+			for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
+				var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
+
+				if ( entregas.id === entregaEscolhida ) {
+					var startag = new Date(entregas.deliveryWindow.startDateUtc),
+						endag   = new Date(entregas.deliveryWindow.endDateUtc);
+				}
+			}
+
+			var starHor        = startag.getUTCHours(),
+				andHor         = endag.getUTCHours(),
+				$wrapper       = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
+				HTMLTemporario = $wrapper.innerHTML,
+				HTMLNovo       = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
+
+			HTMLTemporario = HTMLTemporario + HTMLNovo;
+			$wrapper.innerHTML = HTMLTemporario;
+
+		});
+
 
 		this.infoBoleto = function() {
 			var $bankInvoice = $('#print-bank-invoice');

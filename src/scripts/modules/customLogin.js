@@ -19,12 +19,12 @@ Nitro.module('customLogin', function() {
 			getToken: '/pub/authentication/start',
 			setPassword: '/pub/authentication/classic/setpassword',
 			getOAuthUrl: 'https://vtexid.vtex.com.br/api/vtexid/pub/authentication/oauth/redirect'
-		},		
+		},
 		userInfos = {
 			initialCallback: {
 				callbackUrl: window.location.protocol + '//' + window.location.host + '/api/vtexid/pub/authentication/finish',
 				scope: window.jsnomeLoja,
-				user: null, 
+				user: null,
 				locale: 'pt-BR'
 			},
 			faceLogin : false,
@@ -34,30 +34,30 @@ Nitro.module('customLogin', function() {
 			formtoobj : function(form) {
 				var unindexed_array = form.serializeArray();
 				var indexed_array = {};
-			
+
 				$.map(unindexed_array, function(n){
 					indexed_array[n['name']] = n['value'];
 				});
-				
+
 				return indexed_array;
 			},
-			authenticateUser : function(cookies, expire) {	
-				for (var i = 0, len = cookies.length; i < len; i++) {			
+			authenticateUser : function(cookies, expire) {
+				for (var i = 0, len = cookies.length; i < len; i++) {
 					var cookie = cookies[i];
-			
+
 					if (cookie) {
 						helpers.setCookie(cookie.Name, cookie.Value, '.' + location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0], expire);
-					}				
+					}
 				}
 			},
-			setCookie: function(name, value, domain, expire) {		
+			setCookie: function(name, value, domain, expire) {
 				if (!name || !value) {return false;}
-			
+
 				document.cookie = name + '=' + value + ';expire=' + expire + ';path=/;';
 			},
-			urlToObject: function(url){				
-				var obj = JSON.parse('{"' + decodeURI(url).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');				
-				return obj;		
+			urlToObject: function(url){
+				var obj = JSON.parse('{"' + decodeURI(url).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+				return obj;
 			},
 			printError: function(errorText) {
 				if ($('.modal-custom-login--errorBox').length > 0) {
@@ -71,14 +71,14 @@ Nitro.module('customLogin', function() {
 				$('.modal-custom-login--errorBox').remove();
 			},
 			isEmail: function(email) {
-				if (!email) {return;}			
+				if (!email) {return;}
 				var filtro = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-				
+
 				if (filtro.test(email)) {
 					return true;
 				} else {
 					return false;
-				}				
+				}
 			},
 		},
 		templates = {
@@ -98,7 +98,7 @@ Nitro.module('customLogin', function() {
 			'</div>',
 			keysLayout: function (resetPw) {
 				return '' +
-				'<div id="access_key_fiels" class="modal-custom-login--key-access-layout">' + 
+				'<div id="access_key_fiels" class="modal-custom-login--key-access-layout">' +
 					'<form id="modal-custom-login-key-access--form' + ((resetPw) ? '-setting-pw' : '') + '">' +
 						'<div class="modal-custom-login-key">' +
 						'    <div class="modal-custom-login-key__fields">' +
@@ -123,7 +123,7 @@ Nitro.module('customLogin', function() {
 					'<div class="modal-custom-login-mail_pass_login">' +
 						'<div class="modal-custom-email--inputbox">' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
-						'</div>' +			
+						'</div>' +
 						'<div class="custom-login-buttons--action--box">' +
 							'<span class="custom-login-btn btn-custom-primary btn--voltar btn--voltar--toDefault">Voltar</span>' +
 							'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Continuar">' +
@@ -137,10 +137,10 @@ Nitro.module('customLogin', function() {
 					'<div class="modal-custom-login-set-pw">' +
 						'<div class="modal-custom--inputbox modal-custom-set-password--inputbox">' +
 							'<input type="password" id="custom-login-sett-pw" class="custom-label" name="password">' +
-						'</div>' +		
+						'</div>' +
 						'<div class="modal-custom--inputbox modal-custom-set-confirm-password--inputbox">' +
 							'<input type="password" id="custom-login-confirm-sett-pw" class="custom-label" name="confirm_password">' +
-						'</div>' +	
+						'</div>' +
 						'<div class="password-validate-indicators">' +
 						'<span class="password-validate--title">Sua senha deve ter</span>' +
 						'<ul>' +
@@ -165,7 +165,7 @@ Nitro.module('customLogin', function() {
 
 	this.init = function() {
 		self.setListeners();
-		
+
 		userInfos.initialCallback.scope = window.jsnomeLoja;
 
 		setEnviroment();
@@ -188,7 +188,7 @@ Nitro.module('customLogin', function() {
 						userInfos.googleLogin = true;
 					}
 
-					templates.defaultLayout = 
+					templates.defaultLayout =
 					'<div class="modal-custom-login--init-layout">' +
 						'<div class="modal-custom-login--forms">' +
 							'<div id="mail_pass_login">' +
@@ -197,15 +197,15 @@ Nitro.module('customLogin', function() {
 									'<div class="modal-custom-login-mail_pass_login">' +
 										'<div class="modal-custom-email--inputbox">' +
 										'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
-										'</div>' +								
+										'</div>' +
 										'<div class="modal-custom-password--inputbox">' +
 										'<input type="password" id="password" class="custom-label" name="password">' +
-										'</div>' +				
+										'</div>' +
 										'<div class="modal-custom-login--formOptions">' +
 										'<span class="forget_pass">Esqueci minha senha</span>' +
 										'<span class="no_pass">Não tenho uma senha</span>' +
-										'</div>' +			
-										'<div class="custom-login-buttons--action--box">' +	
+										'</div>' +
+										'<div class="custom-login-buttons--action--box">' +
 										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
 										'</div>' +
 									'</div>' +
@@ -214,11 +214,11 @@ Nitro.module('customLogin', function() {
 						'</div>' +
 						'<div class="modal-custom-login--buttons">' +
 							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
-							'<div class="modal-custom-login--buttons--box">' + 
-								'<button class="modal-custom-login-btn mailkey"><i class="icon icon-email"></i>' + 
+							'<div class="modal-custom-login--buttons--box">' +
+								'<button class="modal-custom-login-btn mailkey">' +
 								($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
 								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
-								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +					
+								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
 							'</div>' +
 						'</div>' +
 					'</div>';
@@ -229,12 +229,12 @@ Nitro.module('customLogin', function() {
 			var url_string = window.location.href; //window.location.href
 			var url = new URL(url_string);
 			var c = url.searchParams.get('ReturnUrl');
-			returnUrl = c;			
+			returnUrl = c;
 			setTimeout(initModal, 2000);
 		}
 
 		function initModal() {
-			self.setDefaultLayout();		
+			self.setDefaultLayout();
 			$('#modal-custom-login').vtexModal();
 
 			setTimeout(function() {
@@ -264,6 +264,7 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
+		// console.log(params);
 		return $.ajax({
 			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
 			data: params,
@@ -280,7 +281,7 @@ Nitro.module('customLogin', function() {
 			.on('submit', '#modal-custom-login-email-access--form--setting-pw', function(e) {
 				e.preventDefault();
 				userInfos.email = $(this).find('#custom_login_email').val();
-				
+
 				if(helpers.isEmail(userInfos.email)) {
 					self
 					.request(routes.getEmailAcessKey,
@@ -312,8 +313,8 @@ Nitro.module('customLogin', function() {
 					helpers.printError('Chave de acesso inválida. Verifique a digitação.');
 					$('.modal-custom-login-key__fields').addClass('invalid__key');
 				} else {
-					self.request(routes.authenticateByEmailKey, 
-						{							
+					self.request(routes.authenticateByEmailKey,
+						{
 							login: userInfos.email,
 							accesskey: key,
 							authenticationToken: userInfos.authenticationToken
@@ -334,17 +335,17 @@ Nitro.module('customLogin', function() {
 				}
 			})
 			// Voltar set Layout: Set email
-			.on('click', '.btn--voltar--toEmail', function(e) {		
-				e.preventDefault();	
+			.on('click', '.btn--voltar--toEmail', function(e) {
+				e.preventDefault();
 				self.setEmailAccessLayout();
 			})
 			// No password: Set email to pass
-			.on('click', '.no_pass', function(e) {		
-				e.preventDefault();	
+			.on('click', '.no_pass', function(e) {
+				e.preventDefault();
 				self.setEmailToPwLAyout(true);
 			})
 			// Forget password: Set new pass
-			.on('click', '.forget_pass', function(e) {		
+			.on('click', '.forget_pass', function(e) {
 				e.preventDefault();
 				self.setEmailToPwLAyout(true);
 			})
@@ -358,7 +359,7 @@ Nitro.module('customLogin', function() {
 				(pass.match(hasMinium)) ? $('.hasMinimum').addClass('validated') : $('.hasMinimum').removeClass('validated');
 
 			})
-			// SUBMIT CADASTRO DE SENHA	
+			// SUBMIT CADASTRO DE SENHA
 			.on('submit', '#modal-custom-login-setting-pw', function(e) {
 				e.preventDefault();
 				var newPass = $(this).find('#custom-login-sett-pw').val();
@@ -378,7 +379,7 @@ Nitro.module('customLogin', function() {
 						reload();
 						// window.location.href = '/';
 					});
-				}				
+				}
 			})
 			// Submit solicitar chave para e-mail
 			.on('submit', '#modal-custom-login-email-access--form', function(e) {
@@ -401,9 +402,9 @@ Nitro.module('customLogin', function() {
 						});
 				} else {
 					helpers.printError('E-mail inválido.');
-				}					
-			})	
-			.on('submit', '#modal-custom-login-key-access--form-setting-pw', function(e) {				
+				}
+			})
+			.on('submit', '#modal-custom-login-key-access--form-setting-pw', function(e) {
 				e.preventDefault();
 				var key = '';
 
@@ -421,8 +422,8 @@ Nitro.module('customLogin', function() {
 				}
 			})
 			// Submit form login e senha
-			.on('submit', '#modal-custom-login--form', function(e) {		
-				e.preventDefault();	
+			.on('submit', '#modal-custom-login--form', function(e) {
+				e.preventDefault();
 				var params = $.extend(helpers.formtoobj($(this)), {
 					recaptcha: '',
 					authenticationToken: userInfos.authenticationToken
@@ -441,28 +442,28 @@ Nitro.module('customLogin', function() {
 					}, function(err) {
 						helpers.printError(err);
 					});
-			})		
+			})
 			// Botão voltar set Layout: Default
-			.on('click', '.btn--voltar--toDefault', function(e) {		
-				e.preventDefault();	
+			.on('click', '.btn--voltar--toDefault', function(e) {
+				e.preventDefault();
 				self.setDefaultLayout();
 
 				focusFirstInput();
 			})
 			// Botão "Acesso por e-mail" set Layout: Solicitar chave pelo e-mail
-			.on('click', '.modal-custom-login-btn.mailkey', function() {			
+			.on('click', '.modal-custom-login-btn.mailkey', function() {
 				self.setEmailAccessLayout();
 				focusFirstInput();
 			})
 			// Botão Access Facebook
-			.on('click', '.modal-custom-login-btn.facebook_access', function() {			
+			.on('click', '.modal-custom-login-btn.facebook_access', function() {
 				self.socialLogin('Facebook');
 			})
 			// Botão Access Google
-			.on('click', '.modal-custom-login-btn.google_access', function() {			
+			.on('click', '.modal-custom-login-btn.google_access', function() {
 				self.socialLogin('Google');
 			})
-			.on('focusin', '.custom-label', function() {			
+			.on('focusin', '.custom-label', function() {
 				$(this).parent().addClass('label-on');
 			})
 			.on('change', '.custom-label', function() {
@@ -494,7 +495,7 @@ Nitro.module('customLogin', function() {
 				// if($(this).next().hasClass('acess_key_value') && $(this).val().match(hasDigit)) {
 				// 	$(this).next().focus();
 				// }
-			})			
+			})
 			.on('click', '.modal-custom-email--inputbox', function() {
 				$(this).find('input').focus();
 			})
@@ -508,15 +509,15 @@ Nitro.module('customLogin', function() {
 
 	this.socialLogin = function(origem) {
 		var urlAuthentication = routes.getOAuthUrl;
-		
+
 		urlAuthentication += '?authenticationToken=' + encodeURIComponent(userInfos.authenticationToken).replace(/ /g,'+');
 		urlAuthentication += '&providerName=' + encodeURIComponent(origem);
 
 		var oauthPopUp = window.open(urlAuthentication,'Authenticate', 'width=800,height=600,scrollbars=yes');
 
 		var pollTimer = window.setInterval(function() {
-			
-			try {					
+
+			try {
 
 				if (oauthPopUp.location.href.indexOf(window.location.host) !== -1) {
 
@@ -524,9 +525,9 @@ Nitro.module('customLogin', function() {
 
 					var obj = helpers.urlToObject(oauthPopUp.location.search.substring(1));
 
-					obj.authStatus && (self.validateSocialOAuth(obj), oauthPopUp.close());				
+					obj.authStatus && (self.validateSocialOAuth(obj), oauthPopUp.close());
 
-				} 
+				}
 			} catch(e) {
 				//console.error(e);
 			}
@@ -536,50 +537,50 @@ Nitro.module('customLogin', function() {
 	this.validateSocialOAuth = function(data) {
 
 		window.authenticationToken = data.authenticationToken ? data.authenticationToken.split('#')[0] : window.authenticationToken;
-		
+
 		if (data.authStatus === 'Success') {
-			
+
 			helpers.setCookie(decodeURIComponent(data.authCookieName), decodeURIComponent(data.authCookieValue), '.' + location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0], data.expiresIn);
-			
+
 			helpers.setCookie(decodeURIComponent(data.accountAuthCookieName), decodeURIComponent(data.accountAuthCookieValue), '.' + location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0], data.expiresIn);
-			
+
 			$.magnificPopup.close();
 
 			$(window).trigger('loggedBySocialOAuth.vtexid');
 			$(window).trigger('logged.vtexid');
 
 			reload();
-			
+
 		} else if (data.authStatus === 'Pending') {
-			
+
 			// console.warn('SessÃ£o pendente');
-			
+
 		} else if (data.authStatus === 'WrongCredentials'){
-					
+
 			// console.warn('Credenciais erradas');
-			
+
 		} else if (data.authStatus === 'MultipleAccount') {
-			
+
 			// console.warn('Logado em mais de uma conta');
 		}
 	},
 
 	// Layout: Inicial
-	this.setDefaultLayout = function() {		
+	this.setDefaultLayout = function() {
 		$modalBody.html(templates.defaultLayout);
 		$subtitle.html('ACESSE SUA CONTA');
 		focusFirstInput();
 	};
-	
+
 	// Layout: Solicitar chave pelo e-mail
-	this.setEmailAccessLayout = function() {		
+	this.setEmailAccessLayout = function() {
 		$modalBody.html(templates.emailAcessLayout);
 		$subtitle.html('Informe seu e-mail');
 		focusFirstInput();
-	};	
+	};
 
 	// Layout: Inserir chave
-	this.setKeysLayout = function(resetinPw) {		
+	this.setKeysLayout = function(resetinPw) {
 		if(resetinPw) {
 			$modalBody.html(templates.keysLayout(true));
 		} else {
@@ -589,7 +590,7 @@ Nitro.module('customLogin', function() {
 	};
 
 	// Layout: E-mail para password
-	this.setEmailToPwLAyout = function() {		
+	this.setEmailToPwLAyout = function() {
 		$modalBody.html(templates.emailToPassLayout);
 		$subtitle.html('Informe seu e-mail');
 		focusFirstInput();
@@ -614,5 +615,13 @@ Nitro.module('customLogin', function() {
 		}
 	}
 
-	this.init();
+	if (store && store.isPersonal) {
+		this.init();
+	}
+	// Substituindo todos os triggers do botão #login e envia para /login
+	var url_atual = window.location.pathname;
+	$('body').off('click','#login');
+	$('body').on('click', '#login', function() {
+		window.location='/login?ReturnUrl=' + url_atual + '';
+	});
 });

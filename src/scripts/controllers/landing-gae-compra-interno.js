@@ -75,7 +75,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 	this.getStatus = function(order) {
 		var currentOrder = CRM.getOrderById(order.orderId).then(function(result) {
 			if (!result){
-				return false;
+				return true;
 			}
 
 			$(result && result.Documents).each(function(i, e) {
@@ -85,13 +85,14 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 			});
 		});
 
-		// console.log('here', order);
-
+		//console.log('here', order);
+		//order.currentState.orderLabel = 'faturado';
 		if ($.diffDate(dateNow, order.orderDate) <= 334	&&
 		order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
 		order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
+		
 		!order.hasGae) {
 			ordersPromises.push(currentOrder);
 			allOrders.push(order);

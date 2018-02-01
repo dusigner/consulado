@@ -5,17 +5,9 @@
 {/subtitle}
 
 <div class="container js-content-lazy" data-position="{position}" data-index="{$idx}">
-	<ul class="shelf shelf--btp js-chaordic-shelf content-placeholder">
-		{#displays[0].recommendations[0]}
+	<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider">
+		{#displays[0].recommendations}
 			{>"shelf-content-placeholder-product"/}
-		{/displays[0].recommendations[0]}
-
-		{#displays[0].recommendations[1]}
-			{>"shelf-content-placeholder-product"/}
-		{/displays[0].recommendations[1]}
-
-		{#displays[0].recommendations[2]}
-			{>"shelf-content-placeholder-product"/}
-		{/displays[0].recommendations[2]}
+		{/displays[0].recommendations}
 	</ul>
 </div>

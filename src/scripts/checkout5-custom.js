@@ -330,7 +330,25 @@ $(window).on('load', function() {
 			}
 
 			if (gae.hasAnyActiveWarranty()) {
-				$('#modal-services').modal('show');
+
+				var attachmentName = 'Aceite do Termo',
+					content = { 'Aceito': 'Aceito' };
+
+				self.orderForm.items.forEach(function(elem, elemIndex) {
+
+					elem.bundleItems.filter(function(bundle) {
+						return bundle.attachmentOfferings.length > 0;
+					}).forEach(function(bundle) {
+
+						// console.log('bundle', bundle);
+
+						return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
+					});
+				});
+
+				window.location.href = '#/orderform';
+
+				// $('#modal-services').modal('show');
 			} else {
 				if ($('body').hasClass('teste-ab__login-email')) {
 					if ((self.orderForm.clientProfileData && self.orderForm.clientProfileData.email)) { //se ja esta logado, vai para o 'finalizar compra'

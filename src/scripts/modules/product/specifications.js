@@ -19,7 +19,7 @@ Nitro.module('specifications', function() {
 		$arquivos = $caracteristicas.find('h4.Arquivos + table tr'),
 		accordionBtnProduct = $('.content-toggle .title'),
 		accordionBoxProduct = accordionBtnProduct.parent(),
-		$body = $('body'),
+		// $body = $('body'),
 
 		specs = {
 			'Mais Informações': 'info',
