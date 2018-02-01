@@ -123,11 +123,9 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
-		}
-		else if ( idOffering === '' && ! liAceito ) {
+		} else if ( idOffering === '' && liAceito ) {
 			$modalWarranty.modal('hide');
-		}
-		else {
+		} else {
 			$('.form-termos').addClass('erro');
 
 			setTimeout(function(){
