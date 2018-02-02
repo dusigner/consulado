@@ -6,12 +6,12 @@ Nitro.module('entrega-agendada', function() {
 
 	this.setup = function(orderForm) {
 		this.orderForm = orderForm;
-		if( $body.is('.hideOptionsA') ) {
-			this.entregasVariacaoB();
-		} else if( $body.is('.hideOptionsB') ) {
+		if ( $body.is('.testeab-entregas--a') ) {
 			this.entregasVariacaoA();
 		}
-
+		else if ( $body.is('.testeab-entregas--b') ) {
+			this.entregasVariacaoB();
+		}
 	};
 
 	this.entregasVariacaoA = function() {
@@ -92,10 +92,7 @@ Nitro.module('entrega-agendada', function() {
 						$body.addClass('not-hide-shipping-options');
 					}
 				}
-
 			});
-
 		}
 	};
-
 });
