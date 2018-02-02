@@ -123,7 +123,12 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
+<<<<<<< HEAD
 		} else if ( idOffering === '' && liAceito ) {
+=======
+		}
+		else if ( idOffering === '' && !liAceito || idOffering === '' && liAceito) {
+>>>>>>> modal-gae-ajuste-aceite
 			$modalWarranty.modal('hide');
 		} else {
 			$('.form-termos').addClass('erro');

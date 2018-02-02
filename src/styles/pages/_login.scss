@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+
+body.login {
+	section.login-container {
+		background-color: #f4f4f4;
+		min-height: 600px;
+		padding: 5em 0;
+	}
+
+	.icon-spinner {
+		left: 50%;
+		padding: 0;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -100%);
+	}
+
+	.icon-spinner:before {
+		@include spinner($green, 100px);
+		content: '';
+		display: block;
+		margin: 0 auto;
+		position: relative;
+	}
+}
