@@ -56,10 +56,10 @@ body {
 			option { display: none; }
 
 			// Mostra as opções do teste A
-			option[value='seller-1-sla-Economica'],
-			option[value='seller-1-sla-Convencional'],
-			option[value='seller-1-sla-EntregaAgendada-Convencional'],
-			option[value='seller-1-sla-Rapida'] { display: block; }
+			option[value='Econômica'],
+			option[value='Convencional'],
+			option[value='Entrega Agendada I Convencional'],
+			option[value='Rápida'] { display: block; }
 		}
 	}
 
@@ -73,6 +73,7 @@ body {
 			li.seller-1-sla-EntregaAgendada-Economica,
 			li.seller-1-sla-EntregaAgendada-Convencional,
 			li.seller-1-sla-EntregaAgendada-Sabado,
+			li.seller-1-sla-EntregaAgendadaISabado,
 			li.seller-1-sla-EntregaAgendada-Rapida { display: block; }
 		}
 
@@ -84,6 +85,7 @@ body {
 			label[for='seller-1-sla-EntregaAgendada-Economica'],
 			label[for='seller-1-sla-EntregaAgendada-Convencional'],
 			label[for='seller-1-sla-EntregaAgendada-Sabado'],
+			label[for='seller-1-sla-EntregaAgendadaISabado'],
 			label[for='seller-1-sla-EntregaAgendada-Rapida'] { display: block; }
 		}
 
@@ -92,10 +94,11 @@ body {
 			option { display: none; }
 
 			// Mostra as opções do teste B
-			option[value='seller-1-sla-EntregaAgendada-Economica'],
-			option[value='seller-1-sla-EntregaAgendada-Convencional'],
-			option[value='seller-1-sla-EntregaAgendada-Sabado'],
-			option[value='seller-1-sla-EntregaAgendada-Rapida'] { display: block; }
+			option[value='Entrega Agendada Econômica'],
+			option[value='Entrega Agendada I Convencional'],
+			option[value='Entrega Agendada Sábado'],
+			option[value='Entrega Agendada I Sábado'],
+			option[value='Entrega Rápida - Agendada'] { display: block; }
 		}
 	}
 
