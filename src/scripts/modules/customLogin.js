@@ -165,8 +165,7 @@ Nitro.module('customLogin', function() {
 
 	this.init = function() {
 		self.setListeners();
-
-		userInfos.initialCallback.scope = window.jsnomeLoja;
+		userInfos.initialCallback.scope = (location.host.indexOf('vtexcommercestable') > -1) ? location.host.split('.')[0] : location.host;
 
 		setEnviroment();
 		window.setInterval(setEnviroment, 1000 * 60 * 5);
@@ -196,14 +195,14 @@ Nitro.module('customLogin', function() {
 								'<form id="modal-custom-login--form">' +
 									'<div class="modal-custom-login-mail_pass_login">' +
 										'<div class="modal-custom-email--inputbox">' +
-										'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
+											'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
 										'</div>' +
 										'<div class="modal-custom-password--inputbox">' +
-										'<input type="password" id="password" class="custom-label" name="password">' +
+											'<input type="password" id="password" class="custom-label" name="password">' +
 										'</div>' +
 										'<div class="modal-custom-login--formOptions">' +
-										'<span class="forget_pass">Esqueci minha senha</span>' +
-										'<span class="no_pass">Não tenho uma senha</span>' +
+											'<span class="forget_pass">Esqueci minha senha</span>' +
+											'<span class="no_pass">Não tenho uma senha</span>' +
 										'</div>' +
 										'<div class="custom-login-buttons--action--box">' +
 										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
@@ -215,8 +214,7 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-login--buttons">' +
 							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
 							'<div class="modal-custom-login--buttons--box">' +
-								'<button class="modal-custom-login-btn mailkey">' +
-								($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
+								'<button class="modal-custom-login-btn mailkey">' + ($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
 								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
 								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
 							'</div>' +
@@ -264,7 +262,6 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
-		// console.log(params);
 		return $.ajax({
 			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
 			data: params,
@@ -466,16 +463,7 @@ Nitro.module('customLogin', function() {
 			.on('focusin', '.custom-label', function() {
 				$(this).parent().addClass('label-on');
 			})
-			.on('change', '.custom-label', function() {
-				$('.custom-label').each(function() {
-					if (this.value.length === 0) {
-						$(this).parent().removeClass('label-on');
-					} else {
-						$(this).parent().addClass('label-on');
-					}
-				});
-			})
-			.on('focusout', '.custom-label', function() {
+			.on('change focusout', '.custom-label', function() {
 				$('.custom-label').each(function() {
 					if (this.value.length === 0) {
 						$(this).parent().removeClass('label-on');
@@ -505,6 +493,7 @@ Nitro.module('customLogin', function() {
 			.on('click', '.modal-custom--inputbox', function() {
 				$(this).find('input').focus();
 			});
+
 	};
 
 	this.socialLogin = function(origem) {
@@ -569,7 +558,6 @@ Nitro.module('customLogin', function() {
 	this.setDefaultLayout = function() {
 		$modalBody.html(templates.defaultLayout);
 		$subtitle.html('ACESSE SUA CONTA');
-		focusFirstInput();
 	};
 
 	// Layout: Solicitar chave pelo e-mail
@@ -603,10 +591,6 @@ Nitro.module('customLogin', function() {
 		focusFirstInput();
 	};
 
-	function focusFirstInput() {
-		$('.modal-custom-login--body input').first().focus();
-	}
-
 	function reload() {
 		if (returnUrl) {
 			window.location = window.location.origin + returnUrl;
@@ -615,13 +599,19 @@ Nitro.module('customLogin', function() {
 		}
 	}
 
+	function focusFirstInput() {
+		$('.modal-custom-login--body input').first().focus();
+	}
+
 	if (store && store.isPersonal) {
 		this.init();
 	}
+
 	// Substituindo todos os triggers do botão #login e envia para /login
 	var url_atual = window.location.pathname;
 	$('body').off('click','#login');
 	$('body').on('click', '#login', function() {
 		window.location='/login?ReturnUrl=' + url_atual + '';
 	});
+
 });
