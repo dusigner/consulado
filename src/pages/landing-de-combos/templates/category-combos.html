@@ -1,0 +1,11 @@
+<ul class="combos-category__items">
+	<div class="combos-category__title-items"></div>
+    {#categories}
+        <li class="combos-category__item" data-category="{name}" data-group="{group}">
+			<input type="checkbox" class="combos-category__checkbox" name="{$idx}-{text|sanitize}" id="{$idx}-{text|sanitize}" />
+			<label for="{$idx}-{text|sanitize}">
+				{text}
+			</label>
+		</li>
+    {/categories}
+</ul>
