@@ -1,0 +1,99 @@
+.combo-product {
+	height: 100%;
+	padding: 20px;
+	width: 180px;
+
+	@include breakpoint(medium, 'max') {
+		padding: 0 0 20px 0;
+		width: 100%;
+	}
+
+	.combo-product__link {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: space-around;
+		&:hover { text-decoration: none; }
+
+		@include breakpoint(medium, 'max') {
+			flex-direction: row;
+		}
+	}
+
+	 .combo-product__title {
+		@include breakpoint(medium, 'max') { text-align: left; }
+		@include responsiveFont(16, 16, true);
+		font-weight: lighter;
+		margin: 10px 0;
+		text-align: center;
+	 }
+
+	 .combo-product__price {
+		@include responsiveFont(16, 16, true);
+		font-weight: bold;
+		margin: 10px 0;
+	 }
+
+	@mixin icon-add-and-remove-of-product() {
+		@include responsiveFont(10, 16, true);
+		font-weight: bold !important;
+		left: -12px;
+		position: absolute;
+		top: 29%;
+	}
+
+	.combo-product__button {
+		@include responsiveFont(13, 16, true);
+		background: none;
+		border: none;
+		color: $template-primary;
+		// height: 30px;
+		padding: 0;
+		position: relative;
+		width: 100%;
+
+		&.combo-product__button--remove-item {
+			display: none;
+
+			&:before {
+				@include icon-get('close-icon');
+				@include icon-add-and-remove-of-product();
+				@include breakpoint(medium, 'max') {
+					left: 0;
+				}
+			}
+		 }
+
+		&.combo-product__button--add-item {
+			display: none;
+
+			&:before {
+				@include icon-get('close-icon');
+				@include icon-add-and-remove-of-product();
+				transform: rotate(45deg);
+			}
+		 }
+
+		 &.combo-product__button--active {
+			 display: block;
+			 @include breakpoint(medium, 'max') {
+			 	padding-left: 15px;
+			 }
+		 }
+	}
+
+	&.combo-product--inactive .combo-product__title,
+	&.combo-product--inactive .combo-product__price,
+	&.combo-product--inactive img { opacity: .3; }
+}
+
+.product-description-prateleira {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+
+	@include breakpoint(small, 'max') {
+		align-items: flex-start;
+	}
+}

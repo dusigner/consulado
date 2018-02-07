@@ -325,10 +325,10 @@ var Warranty = {
 			var data = {};
 			data.cancel = true;
 			data.document = Warranty.profileData.document;
-			data.garantia = $(this).data('period');
+			data.garantia = $button.data('period');
 			data.order = idPlan;
-			data.skuRefId = $(this).data('refid');
-			data.indice = $(this).data('product-index');
+			data.skuRefId = $button.data('refid');
+			data.indice = $button.data('product-index');
 
 			ModalGae.requestCancel(data, function(changeStep, close, data) {
 				$('.js-modal-gae-confirm').click(function() {
