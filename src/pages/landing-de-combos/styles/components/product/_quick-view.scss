@@ -719,5 +719,8 @@
 
 			&.select-voltage__button--continue { width: 100%; }
 		}
+
+		&.loading span { display: none }
 	}
+
 }

@@ -126,8 +126,6 @@ Nitro.module('shelves', function () {
 			}
 		});
 
-		console.log('✨✨✨✨', data);
-
 		self.addTemplatePrateleiras(data);
 	};
 
@@ -154,8 +152,6 @@ Nitro.module('shelves', function () {
 			$button.find('.combos-prateleira__product-item .combo-product__price').map(function () {
 				prices.push(Helpers.formatFloat($(this).text()));
 			});
-
-			console.log('💣💣💣💣', prices);
 
 			textTotalPrice = Helpers.sumPrice(prices);
 		} else {

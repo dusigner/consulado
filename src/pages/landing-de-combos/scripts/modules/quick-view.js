@@ -56,12 +56,15 @@ Nitro.module('quick-view', function () {
 							// app.getProducts(this);
 							app.actionTabProduct();
 							app.toggleModalCombos();
-							app.addSlickProductImage(0);
+							// app.addSlickProductImage(0);
 							app.loadCombosFinalization(indice);
 							app.loadGeneralInformation(this);
 							app.loadAccordionMobile();
 							selectVoltage.init();
 							app.modalScrollTop();
+
+							// fake click para "contar" o primeiro como removido TODO: forma de ja vir considerado
+							$('.combos-product-list__item:first').click();
 						}.bind(this));
 				}
 
@@ -629,7 +632,12 @@ Nitro.module('quick-view', function () {
 
 				if(quantityItems === quantitySelected) {
 					$.cookie('hideGae', true);
+					$('.js-sku-selection-error').addClass('hide');
+					$('.select-voltage__button--continue').addClass('loading');
 					app.finalizationForSale(itemIds);
+				} else {
+					//TODO: ver com UX melhor forma de apresentar isso
+					$('.js-sku-selection-error').removeClass('hide');
 				}
 			});
 		};
