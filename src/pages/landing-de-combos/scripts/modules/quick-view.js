@@ -64,7 +64,7 @@ Nitro.module('quick-view', function () {
 							app.modalScrollTop();
 
 							// fake click para "contar" o primeiro como removido TODO: forma de ja vir considerado
-							// $('.combos-product-list__item:first').click();
+							$('.combos-product-list__item:first').click();
 						}.bind(this));
 				}
 
