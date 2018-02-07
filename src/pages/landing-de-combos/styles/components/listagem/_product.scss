@@ -22,6 +22,7 @@
 	}
 
 	 .combo-product__title {
+		@include breakpoint(medium, 'min') { min-height: 95px }
 		@include breakpoint(medium, 'max') { text-align: left; }
 		@include responsiveFont(16, 16, true);
 		font-weight: lighter;
