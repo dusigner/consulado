@@ -46,6 +46,19 @@ Nitro.module('lead-newsletter', function() {
 			return false;
 		});
 
+		//deleta tooltip de validação de email
+		$inputEmail.on('keyup', function() {
+			$inputEmail.removeClass('error');
+			$('.form-newsletter_error-email').remove();
+		});
+
+		//apaga o tooltip quando clica no document
+		$(document).click(function (e) {
+			if (!$('.form-newsletter_error-email').is(e.target)) {
+				$('.form-newsletter_error-email').remove();
+			}
+		});
+
 		self.toggleNewsletter();
 		self.newsletterFixedOpenAfter(4000);
 	};
@@ -101,7 +114,11 @@ Nitro.module('lead-newsletter', function() {
 		return CRM.ajax({
 			url: CRM.formatUrl('CL', 'documents'),
 			type: 'POST',
-			data: JSON.stringify(data)
+			data: JSON.stringify(data),
+			beforeSend: function() {
+				$inputEmail.removeClass('error');
+				$('.form-newsletter_error-email').remove();
+			}
 		}).done(function() {
 			$('.lead-newsletter').addClass('success');
 
@@ -116,6 +133,8 @@ Nitro.module('lead-newsletter', function() {
 				status: 'ok'
 			});
 		}).fail(function() {
+			$inputEmail.addClass('error');
+			$inputEmail.parent('fieldset').append('<span class="form-newsletter_error-email">E-mail já cadastrado!</span>');
 			dataLayer.push({
 				event: 'formulario_home',
 				status: 'error'

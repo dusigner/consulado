@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/_icons';
+
+$template-primary: $green!default;
+
+// Component styles
+@import 'components/_body';
+@import 'components/_banner';
+@import 'components/_listagem';
+@import 'components/_product';

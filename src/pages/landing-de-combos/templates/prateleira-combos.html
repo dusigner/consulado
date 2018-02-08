@@ -1,0 +1,38 @@
+{#prateleiras}
+<div class="row">
+	<div class="col-12 col-md-12">
+		<div class="combos-prateleira">
+			<div class="combos-prateleira__header combos-product-kit">
+				<h2 class="combos-product-kit__title">
+					{title}
+					<span class="combos-product-kit__subtitle">{subtitle}</span>
+				</h2>
+				<span class="combos-product-kit__quantity">{quantity} produtos</span>
+			</div>
+			<div class="combos-prateleira__body combos-prateleira__product-items">
+				<div class="prateleira-combos n6colunas">
+					<ul>
+						{body|s}
+					</ul>
+				</div>
+			</div>
+
+			<div class="combos-prateleira__footer combos-finalization">
+				<div class="combos-finalization__title">
+					Compre o combo e ganhe
+					<span><strong class="combos-finalization__title combos-finalization__title--strong">10%</strong>de desconto</span>
+				</div>
+				<div class="combos-finalization__content">
+					<div class="combos-price">
+						<div class="combos-price__list-price"><strong></strong></div>
+						<div class="combos-price__real-price"><strong></strong></div>
+						<div class="combos-price__installment-price"><strong>10x</strong> de <strong class="combos-price__installment-price-value"></strong> sem juros</div>
+					</div>
+					<button class="combos-finalization__button primary-button">comprar combo</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+{/prateleiras}

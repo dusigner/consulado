@@ -124,7 +124,7 @@ Nitro.module('checkout.gae', function() {
 				});
 			});
 		}
-		else if ( idOffering === '' && ! liAceito ) {
+		else if ( idOffering === '' && !liAceito || idOffering === '' && liAceito) {
 			$modalWarranty.modal('hide');
 		}
 		else {
