@@ -56,6 +56,7 @@
 	}
 
 	&__ctas {
+		@include breakpoint('small', 'max') { margin-top: 1em }
 		.modal-gae__confirm,
 		.modal-gae__cancel {
 			@include font-size(14px, true, false);
@@ -84,7 +85,9 @@
 	}
 
 	&__confirm {
+		@include breakpoint(small, 'max') { margin: 0 1em 0 0 };
 		@include breakpoint(medium, 'min') { margin: 0 2em 0 0 };
+		@include breakpoint(320px, 'max') { margin: 0 0 1em 0 }
 		margin: 0 0 2em 0;
 	}
 

@@ -175,14 +175,13 @@ var Warranty = {
 
 			var $section = $('.order__items--' + order.id + '.order__item--' + product.id).first();
 
-			if( $section.siblings('.order__service').length <= 0 ) {
+			if( $section.next('.order__service').length <= 0 ) {
 				$section.after(out);
 			}
 		});
 	},
 
 	renderDownloadVtexWarranty: function(order, product) {
-
 		var templateData = [];
 		//console.log('order', order, product);
 		templateData.idWarranty = order.id;
@@ -202,9 +201,10 @@ var Warranty = {
 				throw new Error('Modal Warranty Dust error: ' + err);
 			}
 
+
 			var $section = $('.order__items--' + order.id + '.order__item--' + product.id).first();
 
-			if( $section.siblings('.order__service').length <= 0 ) {
+			if( $section.next('.order__service').length <= 0 ) {
 				$section.after(out);
 			}
 
@@ -325,10 +325,10 @@ var Warranty = {
 			var data = {};
 			data.cancel = true;
 			data.document = Warranty.profileData.document;
-			data.garantia = $(this).data('period');
+			data.garantia = $button.data('period');
 			data.order = idPlan;
-			data.skuRefId = $(this).data('refid');
-			data.indice = $(this).data('product-index');
+			data.skuRefId = $button.data('refid');
+			data.indice = $button.data('product-index');
 
 			ModalGae.requestCancel(data, function(changeStep, close, data) {
 				$('.js-modal-gae-confirm').click(function() {
@@ -361,7 +361,9 @@ var Warranty = {
 
 	downloadVtexWarranty: function() {
 		$('.download-warranty.vtex').unbind('click').click(function() {
-			var idPlan = $(this).data('id');
+			var $self = $(this),
+				idPlan = $self.data('id');
+
 			idPlan = idPlan.match( /\d+/g ).join([]);
 
 			while (idPlan.length < 10) {
@@ -371,10 +373,10 @@ var Warranty = {
 			var data = {};
 			data.request = true;
 			data.document = Warranty.profileData.document;
-			data.garantia = $(this).data('period');
+			data.garantia = $self.data('period');
 			data.order = idPlan;
-			data.skuRefId = $(this).data('refid');
-			data.indice = $(this).data('product-index');
+			data.skuRefId = $self.data('refid');
+			data.indice = $self.data('product-index');
 
 			ModalGae.requestTerms(data, function(changeStep, close, data) {
 				$('.js-modal-gae-confirm').click(function() {
@@ -382,7 +384,7 @@ var Warranty = {
 						.done(function(){
 							changeStep();
 
-							$('.download-warranty.vtex').replaceWith('<span class="download-warranty request-success">Termo Solicitado!</span>');
+							$self.replaceWith('<span class="download-warranty request-success">Termo Solicitado!</span>');
 
 							setTimeout(function() {
 								if($('.modal-gae__mask').length > 0) {
