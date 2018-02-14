@@ -257,6 +257,11 @@
 						border: 1px solid $txt-gray;
 					}
 				}
+				input[disabled] {
+					+ label {
+						cursor: not-allowed;
+					}
+				}
 			}
 			.step-2 {
 				.checkbox {
