@@ -413,3 +413,60 @@ body {
 
 //Custom MSG BAR
 .vtex-front-messages-placeholder { z-index: 9999; }
+
+// Brinde checkout
+.cart-select-gift-placeholder {
+	
+	max-width: 50%;
+
+		&.show {
+
+				.available-gift {
+					display: block;
+					margin-top: 71px;
+				}
+
+				h2.available-gift-quantity {
+					line-height: 20px;
+					margin-bottom: 0;
+				}
+		}
+	
+	.available-gift-items.btn-group.btn-group-vertical {
+		border: 1px solid #e6e6e6;
+
+			.btn {
+				border-bottom: none;
+				border-color: #e6e6e6;
+				border-left: none;
+				border-radius: 0;
+				border-right: none;
+
+					&:first-child {
+						border-top: none;
+					}
+				
+					.checkbox-selector {
+						top: 25px !important;
+					}
+			}
+	}
+}
+
+.brinde-ativo {
+    float: right;
+	padding-top: 8px;
+	width: 50%;
+	
+		.totalizers {
+			margin-bottom: 0;
+			margin-top: 84px;
+			padding: 0;
+			width: 95% !important;
+		}
+
+		.forms.coupon-column {
+			left: 0;
+			position: absolute;
+		}
+}
