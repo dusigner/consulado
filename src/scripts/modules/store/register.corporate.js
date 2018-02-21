@@ -94,10 +94,10 @@ Nitro.module('register.corporate', function() {
 			oncomplete: function() {
 				var poscalCode = $(this).val().replace(/\D/g, '');
 				getAddress.byPostalCode(poscalCode).done(function(endereco) {
-					endereco.neighborhood ? $form.find('.neighborhood').val(endereco.neighborhood).trigger('change') : $form.find('.neighborhood').val('').removeAttr('readonly');
-					endereco.city ? $form.find('.city').val(endereco.city).trigger('change') : $form.find('.city').val('').removeAttr('readonly');
-					endereco.street ? $form.find('.addressName').val(endereco.street).trigger('change') : $form.find('.addressName').val('').removeAttr('readonly');
-					endereco.state ? $form.find('.state').val(endereco.state).trigger('change') : $form.find('.state').val('').removeAttr('readonly');
+					endereco.neighborhood ? $form.find('.neighborhood').val(endereco.neighborhood).trigger('change').attr('readonly', 'readonly') : $form.find('.neighborhood').val('').removeAttr('readonly');
+					endereco.city ? $form.find('.city').val(endereco.city).trigger('change').attr('readonly', 'readonly') : $form.find('.city').val('').removeAttr('readonly');
+					endereco.street ? $form.find('.addressName').val(endereco.street).trigger('change').attr('readonly', 'readonly') : $form.find('.addressName').val('').removeAttr('readonly');
+					endereco.state ? $form.find('.state').val(endereco.state).trigger('change').attr('readonly', 'readonly') : $form.find('.state').val('').removeAttr('readonly');
 				});
 			}
 		});
