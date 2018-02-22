@@ -29,6 +29,7 @@
 @import 'components/buttons';
 @import 'components/modal';
 @import 'components/modalLogin';
+@import 'components/checkout/modal-info-pj';
 
 .loading-bg { margin-top: 0; }
 object { display: none; }
@@ -215,7 +216,7 @@ body {
 				   margin-bottom: 20px;
 				   position: relative;
 				   width: 100%;
-				   
+
 				}
 				@include breakpoint(767px, 'max') {
 					width: 100%;

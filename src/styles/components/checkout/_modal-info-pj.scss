@@ -1,0 +1,138 @@
+$primary-color: $green!default;
+$secondary-color: $gray-d!default;
+
+#modal-info-pj {
+	@include breakpoint('small', 'max') {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+	// border-radius: 0;
+	font-size: 18px;
+	margin: 0;
+	max-width: 795px;
+	transform: translateX(-50%);
+	width: 90%;
+
+	.close { border: none }
+}
+
+.modal-info-pj {
+	&__wrapper {
+		@include breakpoint('small', 'max') {
+			padding: 50px 20px 20px;
+		}
+		max-height: 100vh;
+		overflow: auto;
+		padding: 50px;
+
+		strong { color: $primary-color }
+
+		 a { font-weight: bold }
+	}
+
+	&__title {
+		background-color: $primary-color;
+		border-radius: 1em;
+		color: #fff;
+		font-size: 13px;
+		margin-bottom: 30px;
+		padding: 15px;
+		text-align: center;
+		text-transform: uppercase;
+
+		a { color: #fff!important }
+	}
+
+	&__infos { position: relative }
+
+	&__pj,
+	&__televendas {
+		@include breakpoint('medium', 'min') {
+			float: left;
+			margin-top: 20px;
+			padding: 0 20px;
+			width: 50%;
+		}
+		text-align: center;
+	}
+
+	&__pj {
+		a:not(.modal-info-pj__cta) { color: $primary-color!important }
+	}
+
+	&__cta {
+		background-color: $primary-color;
+		border-color: $primary-color;
+		color: #fff!important;
+		font-size: 14px;
+		margin-top: 1em;
+
+		&:hover {
+			color: $primary-color!important;
+		}
+	}
+
+	&__tiny {
+		font-size: 13px;
+
+		strong { font-size: 16px }
+	}
+
+	&__extra-tiny { font-size: 12px }
+
+	&__divider {
+		@include breakpoint('small', 'max') { display: none }
+		display: block;
+
+		&:before,
+		&:after {
+			background-color: $secondary-color;
+			content: '';
+			display: inline-block;
+			height: 30%;
+			left: 50%;
+			position: absolute;
+			transform: translateX(-50%);
+			width: 1px;
+		}
+
+		&:before { top: 5% }
+		&:after { bottom: 5% }
+
+	}
+
+	&__divider-text {
+		@include breakpoint('medium', 'min') {
+			left: 50%;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+		@include breakpoint('small', 'max') {
+			margin: 1.5em 0;
+			position: relative;
+			text-align: center;
+
+			&:before,
+			&:after {
+				background-color: #736c6b;
+				content: '';
+				display: inline-block;
+				height: 1px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 40%;
+			}
+
+			&:before { left: 0	}
+			&:after { right: 0	}
+		}
+		display: block;
+		font-size: 14px;
+		font-weight: bold;
+
+	}
+
+}
