@@ -232,6 +232,7 @@ $(window).on('load', function() {
 			recurrence.setup();
 
 			this.fakeButton();
+			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
 		};
 
@@ -419,6 +420,14 @@ $(window).on('load', function() {
 
 		};
 
+		this.modalInfoPj = function (orderForm) {
+			orderForm && orderForm.messages.map(function(message) {
+				if(/máximo \d+ itens/gmi.test(message.text)) {
+					$('#modal-info-pj').modal();
+				}
+			});
+		};
+
 		this.init();
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
@@ -437,9 +446,4 @@ $(window).on('load', function() {
 		console.log('router', newValue, b);
 	});
 }*/
-
-
-console.clear();
-console.log('*******************************************************');
-
 
