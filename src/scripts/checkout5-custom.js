@@ -78,7 +78,6 @@ $(window).on('load', function() {
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
-				//console.log('crossroads', request, data);
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
@@ -339,9 +338,6 @@ $(window).on('load', function() {
 					elem.bundleItems.filter(function(bundle) {
 						return bundle.attachmentOfferings.length > 0;
 					}).forEach(function(bundle) {
-
-						// console.log('bundle', bundle);
-
 						return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
 					});
 				});
@@ -438,8 +434,5 @@ $(window).on('load', function() {
 	});
 }*/
 
-
-console.clear();
-console.log('*******************************************************');
 
 
