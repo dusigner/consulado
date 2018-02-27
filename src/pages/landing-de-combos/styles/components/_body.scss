@@ -1,0 +1,35 @@
+.combos {
+	background-color: #f2f2f2;
+	padding-top: 20px;
+}
+
+.mask {
+	background-color: rgba(0, 0, 0, .4);
+	display: none;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 9997;
+
+	&.mask--active {
+		display: block;
+
+		@include breakpoint(small, 'max') {
+			display: none;
+		}
+	}
+}
+
+.combos-page__title {
+	h2 {
+		line-height: 1;
+		margin: 0 0 1em;
+
+		@include breakpoint(medium, 'max') {
+			@include responsiveFont(18, 16, true);
+			margin: 1em 0 0;
+		}
+	}
+}

@@ -1,0 +1,260 @@
+@import '_product';
+
+.combos-prateleira {
+	padding-bottom: 225px;
+	position: relative;
+
+	.combos-prateleira__header {
+		background-color: $gray;
+	}
+
+	.combos-prateleira__body {
+		background-color: #ffffff;
+		border: 2px solid $gray;
+	}
+
+	 .combos-prateleira__footer {
+		border-top: none;
+		position: absolute;
+		right: 0;
+	 }
+}
+
+.combos-product-kit {
+	color: $txt-gray;
+	display: flex;
+	font-weight: bold;
+	justify-content: space-between;
+	padding: 20px;
+
+	 .combos-product-kit__title {
+		@include responsiveFont(16, 16, true);
+		margin: 0;
+		text-transform: uppercase;
+	 }
+
+	 .combos-product-kit__subtitle {
+		@include responsiveFont(14, 16, true);
+		display: block;
+		font-weight: normal;
+		text-transform: none;
+	}
+
+	 .combos-product-kit__quantity {
+		@include responsiveFont(16, 16, true);
+		text-transform: capitalize;
+	 }
+}
+
+.combos-finalization {
+	border: 2px solid $gray;
+	color: $template-primary;
+
+	 .combos-finalization__title {
+		@include responsiveFont(15, 16, true);
+		align-items: center;
+		background-color: #f2f2f2;
+		display: flex;
+		font-weight: bold;
+		padding: 10px 30px 10px 20px;
+		text-align: center;
+		text-transform: uppercase;
+
+		span {
+			align-items: center;
+			display: flex;
+		}
+
+		@include breakpoint(small, 'max') {
+			span {
+				text-transform: uppercase;
+			}
+		}
+
+		 &.combos-finalization__title--strong {
+			@include responsiveFont(35, 16, true);
+			padding: 0 15px;
+
+			@include breakpoint(small, 'max') {
+				display: inline-block;
+			}
+		 }
+	 }
+
+	 .combos-finalization__content {
+		background-color: #ffffff;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		padding: 17px;
+	 }
+
+	 .combos-finalization__button {
+		@include responsiveFont(13, 16, true);
+		height: 48px;
+		padding: .7em 1em;
+		text-transform: uppercase;
+		width: 170px;
+
+		&.loading {
+			align-items: center;
+			color: transparent;
+			// display: flex;
+
+			&:before {
+				@include spinner($orange);
+				content: '';
+				left: 50%;
+				margin-left: -10px;
+				position: absolute;
+			}
+		}
+	 }
+
+	 &.combos-finalization--quick-view {
+		 margin-bottom: 10px;
+		 width: 50%;
+
+		 @include breakpoint(small, 'max') {
+			margin: 10px 0;
+			width: 100%;
+
+			.combos-finalization__title {
+				flex-wrap: wrap;
+				justify-content: center;
+				text-transform: initial;
+
+				strong {
+					@include responsiveFont(17, 16, true);
+					padding: 0 5px 0 5px;
+				}
+			}
+			.combos-finalization__content {
+				flex-direction: column;
+				text-align: center;
+			}
+			.combos-finalization__button {
+				width: 100%;
+			}
+			.combos-price {
+				@include responsiveFont(14, 16, true);
+				.combos-price__real-price {
+					strong {
+						@include responsiveFont(16, 16, true);
+						padding: 0 0 0 5px;
+					}
+				}
+			}
+			.combos-price__installment-price {
+				strong {
+					&:first-child {
+						padding: 0 0 0 5px;
+					}
+				}
+			}
+
+		 }
+
+		 .combos-finalization__title {
+			padding: 0 30px 0 20px;
+		 }
+
+		}
+
+		.combos-price__list-price {
+			@include responsiveFont(14, 16, true);
+			text-decoration: line-through;
+		}
+}
+
+.prateleira-combos > h2 {
+	display: none;
+}
+
+.combos-prateleira__product-items,
+.prateleira-combos ul {
+	display: flex;
+	justify-content: center;
+}
+
+
+// Mobile Prateleira Home Landing
+@include breakpoint(medium, 'max') {
+	#combos {
+		.combos-prateleira {
+			padding-bottom: 10px;
+			padding-top: 25px;
+			ul {
+				img {
+					border: none!important;
+					margin: 0;
+					padding: 0;
+				}
+			}
+			.prateleira-combos {
+				width: 100%;
+				li {
+					display: none;
+					&:first-child { display: block; }
+				}
+			}
+		}
+		.combos-prateleira__footer {
+			position: inherit;
+		}
+		.prateleira-combos {
+			img {
+				border: 1px solid #d3d3d3;
+				height: 40px;
+				margin: 6px;
+				padding: 4px;
+				width: 40px;
+			}
+
+			.combos-prateleira__product-item {
+				img {
+					height: auto;
+					width: auto;
+				}
+			}
+		}
+
+		.combos-finalization__title {
+			flex-wrap: wrap;
+			justify-content: center;
+			text-transform: initial;
+			strong {
+				@include responsiveFont(17, 16, true);
+				padding: 0 5px 0 5px;
+			}
+		}
+		.combos-finalization__content {
+			flex-direction: column;
+			text-align: center;
+		}
+		.combos-finalization__button {
+			width: 100%;
+		}
+		.combos-price {
+			@include responsiveFont(14, 16, true);
+			.combos-price__real-price {
+				strong {
+					@include responsiveFont(16, 16, true);
+					padding: 0 0 0 5px;
+				}
+			}
+		}
+		.combos-price__installment-price {
+			strong {
+				&:first-child {
+					padding: 0 0 0 5px;
+				}
+			}
+		}
+		.combos-product-kit__title,
+		 .combos-product-kit__quantity {
+			@include responsiveFont(13, 16, true);
+		}
+	}
+}
+

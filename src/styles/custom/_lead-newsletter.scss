@@ -152,6 +152,7 @@
 			display: inline-block;
 			margin: 0;
 			padding: 8px 0;
+			position: relative;
 			vertical-align: middle;
 
 			&.campo-checkbox {
@@ -537,6 +538,46 @@
 
 				&:before { display: none; }
 			}
+		}
+	}
+
+	.form-newsletter_error-email {
+		background: #FFF;
+		border: 1px solid #f49a9a;
+		border-radius: 5px;
+		bottom: -35px;
+		font-size: 14px;
+		left: 0;
+		padding: 5px;
+		position: absolute;
+		text-align: center;
+		width: 100%;
+		z-index: 5;
+		&:after,
+		&:before {
+			border: solid transparent;
+			bottom: 100%;
+			content: ' ';
+			height: 0;
+			left: 50%;
+			pointer-events: none;
+			position: absolute;
+			width: 0;
+		}
+		
+		&:after {
+			// nao colocar em ordem alfabetica, vai remover a seta do tooltip
+			border-color: rgba(255, 255, 255, 0);
+			border-bottom-color: #FFF;
+			border-width: 10px;
+			margin-left: -10px;
+		}
+		&:before {
+			// nao colocar em ordem alfabetica, vai remover a seta do tooltip
+			border-color: rgba(0, 0, 0, 0);
+			border-bottom-color: #f49a9a;
+			border-width: 11px;
+			margin-left: -11px;
 		}
 	}
 }

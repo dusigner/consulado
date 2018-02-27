@@ -15,6 +15,7 @@ define('store', function() {
 	this.isCorp       = false;
 	this.isQA         = false;
 	this.isTelevendas = false;
+	this.salesChannel = null;
 	this.accountName  = 'consul';
 
 	var publicUrl = [
@@ -67,13 +68,14 @@ define('store', function() {
 	this.setup = function() {
 		$.cookie.json = true;
 
-		this.userData = $.cookie('userData') || {};
-
 		try {
 			this.uri = new Uri(window.location.href);
 		} catch(e) {
 			window.location.href = '/';
 		}
+
+		this.userData = $.cookie('userData') || {};
+		this.salesChannel = this.uri.getQueryParamValue('sc') || window.jssalesChannel || (this.isCorp ? '2' : '1');
 
 		$(window).load(function(){
 			if (document.body.classList) {

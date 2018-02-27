@@ -55,7 +55,6 @@ Nitro.module('order.orders', function() {
 		} else {
 			self.orderRender(self.orders.orders);
 		}
-
 	};
 
 	/**
@@ -290,7 +289,7 @@ Nitro.module('order.orders', function() {
 												itemObject.hidden = true;
 
 												// Flag Pedido Entregue
-												itemObject.finalStatus = orderStates.getState(null, singlePackage.courierStatus.finished ? 'pedidoEntregue' : itemObject.orderRewardStatus);
+												// itemObject.finalStatus = orderStates.getState(null, singlePackage.courierStatus.finished ? 'pedidoEntregue' : itemObject.orderRewardStatus);
 											});
 
 											packagesSum = packagesSum + singlePackage.invoiceValue;

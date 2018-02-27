@@ -1,6 +1,8 @@
 'use strict';
 
 var CRM = require('modules/store/crm');
+
+require('vendors/jquery.cookie');
 require('modules/gae-compra-interno/order.states');
 require('modules/gae-compra-interno/order.warranty.gae');
 require('../../templates/gae-compra-interno/warrantySpare.emptyOrders.html');
@@ -11,12 +13,21 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		dateNow = new Date(),
 		ordersPromises = [],
 		allOrders = [],
-		loading = '<div class="load"><div class="loading"></div></div>';
+		loading = '<div class="load"><div class="loading"></div></div>',
+		getOrdersUrl,
+		getUserEmail;
+
+	if($.cookie('vtex-current-user')) {
+		getUserEmail = window.getCookie('vtex-impersonated-customer-email').replace('vtex-impersonated-customer-email=', '');
+		getOrdersUrl = '/api/checkout/pub/orders/?customerEmail='+ getUserEmail;
+	} else {
+		getOrdersUrl = '/api/checkout/pub/orders/';
+	}
 
 	var Order = {
 		list: function() {
 			return $.ajax({
-				url: '/api/checkout/pub/orders/',
+				url: getOrdersUrl,
 				accept: 'application/vnd.vtex.ds.v10+json',
 				crossDomain: true,
 				type: 'GET',
