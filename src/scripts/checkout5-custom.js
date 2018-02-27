@@ -78,7 +78,6 @@ $(window).on('load', function() {
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
-				//console.log('crossroads', request, data);
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
@@ -177,12 +176,10 @@ $(window).on('load', function() {
 				if ( $('.available-gift').length <= 0 ) {
 					$('.summary-template-holder').removeClass('brinde-ativo');
 					$('.cart-select-gift-placeholder').removeClass('show');
-					console.log('Remove Class Ativo');	
 				}else {	
 					$('.summary-template-holder').addClass('brinde-ativo');
 					$('.cart-select-gift-placeholder').addClass('show');
 					$('.cart-links-bottom').css('clear','both');
-					console.log('Adicina Class Ativo');			
 				}
 			}, 1);
 
@@ -355,9 +352,6 @@ $(window).on('load', function() {
 					elem.bundleItems.filter(function(bundle) {
 						return bundle.attachmentOfferings.length > 0;
 					}).forEach(function(bundle) {
-
-						// console.log('bundle', bundle);
-
 						return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
 					});
 				});
