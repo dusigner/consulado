@@ -34,7 +34,7 @@ body {
 						overflow: initial;
 						padding: 30px 0;
 
-						@include breakpoint(small, 'max') { padding-bottom: 80px; }
+						@include breakpoint(small, 'max') { padding-bottom: 0; }
 
 						&:first-child {
 							border-bottom: none;
