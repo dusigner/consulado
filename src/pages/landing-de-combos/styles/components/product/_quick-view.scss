@@ -29,6 +29,7 @@
 		z-index: 99999;
 
 		@include breakpoint(small, 'max') {
+			height: 100%;
 			overflow-x: hidden;
 			top: 0;
 		}
@@ -159,19 +160,21 @@
 	}
 
 	.combos-quick-view__header {
+		display: flex;
+		justify-content: space-between;
+		
 		@include breakpoint(small, 'max') {
 			flex-direction: column;
 			position: relative;
 		}
-		display: flex;
-		justify-content: space-between;
 
 		.combos-quick-view__block {
-			@include breakpoint(small, 'max') { display: none; }
 			border-bottom: solid 1px $gray;
 			transform: translateY(1px);
 			width: 10px;
 			z-index: 1;
+			
+			@include breakpoint(small, 'max') { display: none; }
 		}
 	}
 
@@ -191,11 +194,12 @@
 	}
 
 	.combos-product-list__title {
-		@include breakpoint(small, 'max') { display: none; }
 		@include responsiveFont(18, 16, true);
 		color: $template-primary;
 		font-weight: bold;
 		padding: 20px 0;
+
+		@include breakpoint(small, 'max') { display: none; }
 	}
 
 	.combos-product-list__items {
@@ -238,8 +242,9 @@
 }
 
 .border-top {
-	@include breakpoint(small, 'max') { border: none; }
 	border-top: solid 1px  $gray;
+	
+	@include breakpoint(small, 'max') { border: none; }
 }
 
 .product-quick-view {
@@ -266,12 +271,12 @@
 	}
 
 	.product-quick-view__container-description {
+		width: 50%;
+		
 		@include breakpoint(small, 'max') {
 			text-align: center;
 			width: 100%;
 		}
-
-		width: 50%;
 	}
 
 	.product-quick-view__content {
@@ -663,13 +668,10 @@
 }
 
 .tooltip {
+	margin-top: 10px;
 	position: absolute !important;
-	top: 239px !important;
-
-	@include breakpoint(small, 'max') {
-		top: 135px !important;
-	}
-
+	z-index: 9999;
+	
 	.tooltip-arrow {
 		border-bottom-color: $template-primary !important;
 		border-color: transparent;
@@ -687,6 +689,10 @@
 		border-radius: 5px;
 		color: #fff;
 		padding: 13px 18px !important;
+		text-align: center;
+		white-space: nowrap;
+
+		@include breakpoint(small, 'max') { padding: 8px 10px !important; }
 	}
 }
 
