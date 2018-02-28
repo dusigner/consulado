@@ -14,12 +14,11 @@ _.extend(dust.filters, {
 });
 
 Nitro.module('search-category', function() {
-
 	var app = this;
 
 	/**
 	 * Varre prateleiras da página de combos pegando categorias pelo "data-category" e retornando em um array
-	 * @param  {Object} $prateleira seletor jQuery das prateleiras
+	 * @param {Object} $prateleira seletor jQuery das prateleiras
 	 * @returns {Array} Array de strings das categorias VTEX
 	 */
 	app.searchCategory = function($prateleira) {
@@ -49,9 +48,10 @@ Nitro.module('search-category', function() {
 	app.searchCategoryPrateleiras = function(category) {
 		var prateleira = $('.prateleira-combos');
 
-		prateleira.map(function(){
+		prateleira.map(function() {
 			var categories = app.searchCategory($(this));
-			if( !(app.isCategory(categories, category)) ) {
+
+			if (!(app.isCategory(categories, category))) {
 				$(this).closest('.combos-prateleira').fadeOut();
 			}
 		});
@@ -69,8 +69,8 @@ Nitro.module('search-category', function() {
 
 	/**
 	 * Varre array de nomes de categorias do JSON selecionando a atual
-	 * @param  {Array} categories array 'name' do JSON com todas as categorias possíveis do grupo
-	 * @param  {String} value texto da categoria atual que esta sendo procurada
+	 * @param {Array} categories array 'name' do JSON com todas as categorias possíveis do grupo
+	 * @param {String} value texto da categoria atual que esta sendo procurada
 	 * @returns {String} texto da categoria encontrada
 	 */
 	app.isNameCategory = function(categories, value) {
@@ -99,6 +99,7 @@ Nitro.module('search-category', function() {
 			if (a.group > b.group) {
 				return 1;
 			}
+
 			return 0;
 		});
 	};
@@ -115,7 +116,7 @@ Nitro.module('search-category', function() {
 				value.group = 'Outros';
 				others.push(value);
 			} else {
-				if(groupName === value.group) {
+				if (groupName === value.group) {
 					group.push(value);
 				} else {
 					groupName = value.group;
@@ -125,7 +126,7 @@ Nitro.module('search-category', function() {
 				}
 			}
 
-			if( (indice+1) === newArrayCategories.length) {
+			if ((indice+1) === newArrayCategories.length) {
 				groups.push(group);
 				others ? groups.push(others) : false;
 			}
@@ -140,10 +141,7 @@ Nitro.module('search-category', function() {
 			groups = [],
 			objectCategories;
 
-
-
-		if( $(window).width() <= 768 ) {
-
+		if ($(window).width() <= 768) {
 			arrayCategories.map(function(category) {
 				var itemCategory = app.isTextCategory(category);
 

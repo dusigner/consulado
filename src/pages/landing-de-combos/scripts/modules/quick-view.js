@@ -9,18 +9,15 @@ require('./../../templates/quick-view/product-description.html');
 require('./../../templates/quick-view/product-image.html');
 require('./../../templates/quick-view/product-modules.html');
 require('./../../templates/quick-view/product-skus.html');
-require('./../../templates/quick-view/product-table-dimention.html');
 
 Nitro.module('quick-view', function () {
-
 	var self = this,
 		logicView,
 		appLogicView,
 		// integrationView,
 		appIntegrationView,
 		appSelectVoltage,
-		selectVoltage,
-		indiceCombo;
+		selectVoltage;
 
 	self.init = function () {
 		logicView = new appLogicView();
@@ -30,16 +27,21 @@ Nitro.module('quick-view', function () {
 
 	appLogicView = function () {
 		var app = this,
-			buttonStepOne = $('.combos-prateleira .combos-finalization__button');
+			buttonStepOne = $('.combos-prateleira .combos-finalization__button'),
+			shelfContainer = $('.prateleira-combos');
+			// idProducts = [],
+			// productsObjects = [],
+			// actionSku;
 
 		app.init = function () {
+			app.addShelfCounter();
 			app.actionCombos();
 			app.actionCloseQuikView();
+			app.actionProductCombos();
 		};
 
 		app.actionCombos = function () {
-			buttonStepOne.on('click', function () {
-
+			buttonStepOne.on('click', function() {
 				var integrationView = new appIntegrationView(),
 					quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
 					combosFinalization = $(this).closest('.combos-finalization'),
@@ -47,7 +49,7 @@ Nitro.module('quick-view', function () {
 
 				$(this).addClass('loading');
 
-				if(quantityInactive <= 4) {
+				if (quantityInactive <= 4) {
 					app.initProduct();
 
 					integrationView.init(this)
@@ -56,36 +58,71 @@ Nitro.module('quick-view', function () {
 							// app.getProducts(this);
 							app.actionTabProduct();
 							app.toggleModalCombos();
-							// app.addSlickProductImage(0);
+							app.addSlickProductImage(0);
 							app.loadCombosFinalization(indice);
 							app.loadGeneralInformation(this);
 							app.loadAccordionMobile();
 							selectVoltage.init();
-							app.modalScrollTop();
 
 							// fake click para "contar" o primeiro como removido TODO: forma de ja vir considerado
 							$('.combos-product-list__item:first').click();
 						}.bind(this));
 				}
-
 			});
 		};
 
-		app.actionCloseQuikView = function () {
-			$('.modal-quick-view__button-close').on('click', function () {
-				app.toggleModalCombos();
-				$('.product-quick-view__image').removeClass('slick-initialized slick-slider');
+		app.actionProductCombos = function() {
+			$('.combo-product__link').on('click', function(e) {
+				e.preventDefault();
 			});
 
-			if($(window).width() <= 768) {
+			$('.combo-product__title').on('click', function() {
+				var self = $(this),
+					integrationView = new appIntegrationView(),
+					quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
+					combosFinalization = $(this).closest('.combos-finalization'),
+					indice = app.getIndiceCombo(combosFinalization);
+
+				self.closest('li').addClass('loading');
+
+				if (quantityInactive <= 4) {
+					app.initProduct();
+
+					integrationView.init(this)
+						.then(function() {
+							app.actionTabProduct();
+							app.toggleModalCombos();
+							app.addSlickProductImage(0);
+							app.loadCombosFinalization(indice);
+							app.loadGeneralInformation(this);
+							app.loadAccordionMobile();
+							selectVoltage.init();
+
+							$('.combos-product-list__item:nth-child('+ self.closest('li').attr('data-counter') +')').click();
+						}.bind(this));
+				}
+			});
+		};
+
+		app.actionCloseQuikView = function() {
+			$('.modal-quick-view__button-close').on('click', function () {
+				app.toggleModalCombos();
+				app.removeLoadingState();
+				$('.product-quick-view__image').removeClass('slick-initialized slick-slider');
+				$('body, html').removeClass('modal-quick-view__visible');
+			});
+
+			if ($(window).width() <= 768) {
 				$('.combos-quick-view__title').on('click', function () {
 					app.toggleModalCombos();
+					app.removeLoadingState();
 					$('.product-quick-view__image').removeClass('slick-initialized slick-slider');
+					$('body, html').removeClass('modal-quick-view__visible');
 				});
 			}
 		};
 
-		app.actionSku = function () {
+		app.actionSku = function() {
 			$('.sku-quick-view-options > label').on('click', function () {
 				var itemId = $(this).attr('data-itemid');
 
@@ -93,9 +130,22 @@ Nitro.module('quick-view', function () {
 				$('.sku-quick-view-options').find('[data-itemid=' + itemId + ']:not(.sku-quick-view__unavailable)').addClass('sku-quick-view-options__checked');
 				$('.sku-quick-view-options').find('[data-itemid=' + itemId + ']:not(.sku-quick-view__unavailable)').closest('.table-line').addClass('table-line--ok');
 			});
+
+			$('.sku-quick-view-options').each(function() {
+				var skuList = $(this);
+				var skuLabel = skuList.find('label');
+
+				if (skuLabel.hasClass('sku-quick-view__unavailable') && skuLabel.length > 1) {
+					skuLabel.not('.sku-quick-view__unavailable').click();
+				}
+
+				if (skuLabel.length === 1 && skuLabel.text() === 'Bivolt') {
+					skuLabel.click();
+				}
+			});
 		};
 
-		app.actionTabProduct = function () {
+		app.actionTabProduct = function() {
 			var tabs = $('.combos-product-list__item');
 
 			tabs.on('click', function () {
@@ -104,7 +154,7 @@ Nitro.module('quick-view', function () {
 			});
 		};
 
-		app.activeProduct = function (product) {
+		app.activeProduct = function(product) {
 			var tabs = $('.combos-product-list__item'),
 				indice = app.getIndiceProduct(product);
 
@@ -115,11 +165,18 @@ Nitro.module('quick-view', function () {
 			app.addSlickProductImage(indice);
 		};
 
-		app.initProduct = function () {
-			$('.product-quick-view__item').removeClass('product-quick-view--active');
+		app.addShelfCounter = function() {
+			shelfContainer.each(function() {
+				$(this).find('li').each(function(index) {
+					$(this).attr('data-counter', index + 1);
+				});
+			});
+		};
 
-			var indexFirstProductActive = $($('.combos-prateleira').get(indiceCombo)).find($('.combos-prateleira__product-item:not(.combo-product--inactive)')).first().parent().index();
-			$($('.product-quick-view__item').get(indexFirstProductActive)).addClass('product-quick-view--active');
+		app.initProduct = function() {
+			$('body, html').addClass('modal-quick-view__visible');
+			$('.product-quick-view__item').removeClass('product-quick-view--active');
+			$($('.product-quick-view__item').get(0)).addClass('product-quick-view--active');
 
 			if ($('.modal-quick-view').hasClass('modal-quick-view--select-voltage')) {
 				selectVoltage.toggleSelectVoltagem();
@@ -132,7 +189,7 @@ Nitro.module('quick-view', function () {
 			$('.sku-quick-view-options--select-voltage label').remove();
 		};
 
-		app.addTooltipProductInactive = function (product) {
+		app.addTooltipProductInactive = function(product) {
 			$('.combos-product-list__item').tooltip('destroy');
 			if ($(product).hasClass('combos-product-list__item--inactive')) {
 				$(product).data({
@@ -143,24 +200,44 @@ Nitro.module('quick-view', function () {
 			}
 		};
 
-		app.addSlickProductImage = function (indice) {
+		app.addSlickProductImage = function(indice) {
+			app.updateSlickCounter();
+
 			$($('.product-quick-view__image').get(indice)).not('.slick-initialized').slick({
 				infinite: true,
 				slidesToShow: 1,
-				slidesToScroll: 1
+				slidesToScroll: 1,
+				dots: true,
+				responsive: [
+					{
+						breakpoint: 768,
+						settings: {
+							arrows: false
+						}
+					}
+				]
 			});
 		};
 
-		app.toggleModalCombos = function () {
-			$('.modal-quick-view').toggleClass('modal-quick-view--active');
-			$('.mask-modal-combos').toggleClass('mask-modal-combos--active');
+		app.updateSlickCounter = function() {
+			$('.product-quick-view__image').on('init reInit afterChange', function(event, slick, currentSlide) {
+				var i = (currentSlide ? currentSlide : 0) + 1;
 
-			var indexFirstProductActive = $($('.combos-prateleira').get(indiceCombo)).find($('.combos-prateleira__product-item:not(.combo-product--inactive)')).first().parent().index();
-			app.addSlickProductImage(indexFirstProductActive);
-
+				slick.slideCount > 1 ? $('.product-quick-view__image-counter').show().text(i + '/' + slick.slideCount) : $('.product-quick-view__image-counter').hide();
+			});
 		};
 
-		app.getIndiceProduct = function (product) {
+		app.toggleModalCombos = function() {
+			$('.modal-quick-view').toggleClass('modal-quick-view--active');
+			$('.mask-modal-combos').toggleClass('mask-modal-combos--active');
+		};
+
+		app.removeLoadingState = function() {
+			buttonStepOne.removeClass('loading');
+			shelfContainer.find('li.loading').removeClass('loading');
+		};
+
+		app.getIndiceProduct = function(product) {
 			var result;
 			$('.combos-product-list__item').map(function (indice, value) {
 				if (value === $(product).get(0)) {
@@ -170,7 +247,7 @@ Nitro.module('quick-view', function () {
 			return result;
 		};
 
-		app.getIndiceCombo = function (combo) {
+		app.getIndiceCombo = function(combo) {
 			var result;
 			$('.combos-finalization').map(function (indice, value) {
 				if (value === $(combo).get(0)) {
@@ -180,7 +257,7 @@ Nitro.module('quick-view', function () {
 			return result;
 		};
 
-		app.getIndice = function (items, item) {
+		app.getIndice = function(items, item) {
 			var result;
 			items.map(function (indice, value) {
 				if (value === $(item).get(0)) {
@@ -190,24 +267,24 @@ Nitro.module('quick-view', function () {
 			return result;
 		};
 
-		app.loadCombosFinalization = function (indice) {
+		app.loadCombosFinalization = function(indice) {
 			var finalization = $($('.combos-prateleira').get(indice)).find('.combos-finalization').html();
+
 			$('.combos-finalization--quick-view > div').remove();
 
-			if($(window).width() <= 768) {
-				if($('.modal-quick-view__content > .combos-finalization--quick-view').length === 0) {
+			if ($(window).width() <= 768) {
+				if ($('.modal-quick-view__content > .combos-finalization--quick-view').length === 0) {
 					var comboFinalizationMobile = $('.combos-finalization--quick-view').append(finalization);
 					$($('.modal-quick-view__content').get(0)).append(comboFinalizationMobile);
 				} else {
 					$('.combos-finalization--quick-view').append(finalization);
 				}
-
 			} else {
 				$('.combos-finalization--quick-view').append(finalization);
 			}
 		};
 
-		app.loadGeneralInformation = function (button) {
+		app.loadGeneralInformation = function(button) {
 			var tituloCombo = $(button).closest('.combos-prateleira').find('.combos-product-kit__title').html(),
 				productName = $(button).closest('.combos-prateleira').find('.combo-product__title'),
 				productPrice = $(button).closest('.combos-prateleira').find('.combo-product__price'),
@@ -225,22 +302,34 @@ Nitro.module('quick-view', function () {
 		};
 
 		app.loadAccordionMobile = function() {
-			var title = $('.quick-view-modules__title'),
-				text = $('.quick-view-modules__content');
+			var title 		= $('.quick-view-modules__title'),
+				text 		= $('.quick-view-modules__content'),
+				titleSpec 	= $('.quick-view-description__title');
 
-			if($(window).width() <= 768) {
+			if ($(window).width() <= 768) {
 				title.on('click', function() {
 					$(this).toggleClass('active');
 					$(text.get(app.getIndice(title , this))).slideToggle();
 				});
+
+				titleSpec.unbind('click').on('click', function() {
+					var self = $(this);
+
+					self.toggleClass('active');
+					self.next('[class*="quick-view-table-"]').slideToggle();
+				});
 			}
 		};
 
-		app.modalScrollTop = function() {
-			if($(window).width() <= 768) {
-				$('html, body').animate({ scrollTop: 0 }, 1000, 'swing');
-			} else {
-				$('html, body').animate({ scrollTop: 350 }, 1000, 'swing');
+		app.loadSpecsMobile = function() {
+			var title = $('.quick-view-description__title'),
+				text = $('.quick-view-table-specification');
+
+			if ($(window).width() <= 768) {
+				title.unbind('click').on('click', function() {
+					$(this).toggleClass('active');
+					$(this).siblings(text).slideToggle();
+				});
 			}
 		};
 
@@ -260,7 +349,6 @@ Nitro.module('quick-view', function () {
 					app.loadProductSku();
 					app.loadProductDescription();
 					app.loadProductModules();
-					app.loadProductTableDimention();
 
 					return;
 				})
@@ -284,6 +372,7 @@ Nitro.module('quick-view', function () {
 						return result;
 					});
 			});
+
 
 			//"promiseAll"
 			$.when.apply($, promises)
@@ -309,6 +398,12 @@ Nitro.module('quick-view', function () {
 			});
 		};
 
+		// app.getSkuById = function (skuId) {
+		// 	var response;
+
+		// 	return response;
+		// };
+
 		app.addProductsList = function (data) {
 			dust.render('products-list', data, function (err, out) {
 				if (err) {
@@ -331,9 +426,7 @@ Nitro.module('quick-view', function () {
 			app.addProductsList(objectListProductsImage);
 
 			tabs.removeClass('combos-product-list__item--active');
-
-			var indexFirstProductActive = $($('.combos-prateleira').get(indiceCombo)).find($('.combos-prateleira__product-item:not(.combo-product--inactive)')).first().parent().index();
-			$($('.combos-product-list__item').get(indexFirstProductActive)).addClass('combos-product-list__item--active');
+			$($('.combos-product-list__item').get(0)).addClass('combos-product-list__item--active');
 		};
 
 		app.getProductsList = function (button) {
@@ -508,6 +601,7 @@ Nitro.module('quick-view', function () {
 		};
 
 		app.addProductTableDimention = function(data, indice) {
+
 			dust.render('product-table-dimention', data, function(err, out) {
 				if (err) {
 					throw new Error('Table dimention Quick View Dust error: ' + err);
@@ -519,27 +613,23 @@ Nitro.module('quick-view', function () {
 
 		app.loadProductTableDimention = function () {
 			var objectProductTableDimention = {},
-				dimentation = {},
-				urlOrigin = window.origin || window.location.origin,
-				ajaxUrl = '/produto/sku/';
+				dimentation = {};
 
 			objectProduct.map(function (product, indice) {
-				var idSku = product.items[0].itemId;
+				try {
+					vtexjs.catalog.getProductWithVariations(product.productId).done(function(product){
+						dimentation = product.skus[0].measures;
 
-				//pegar dimensões reais do produto
-				$.ajax({
-					'url': urlOrigin + ajaxUrl + idSku,
-					'async': false,
-					'crossDomain': true,
-					'type': 'GET'
-				}).success(function(data){
-					objectProductTableDimention.width = data[0].RealWidth;
-					objectProductTableDimention.height = data[0].RealHeight;
-					objectProductTableDimention.length = data[0].RealLength;
-					objectProductTableDimention.weight = data[0].RealWeightKg;
+						objectProductTableDimention.width = dimentation.width;
+						objectProductTableDimention.height = dimentation.height;
+						objectProductTableDimention.length = dimentation.length;
+						objectProductTableDimention.weight = dimentation.weight;
 
-					app.addProductTableDimention(objectProductTableDimention, indice);
-				});
+						app.addProductTableDimention(objectProductTableDimention, indice);
+					});
+				} catch (Error) {
+					// console.log(Error);
+				}
 			});
 		};
 

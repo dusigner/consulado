@@ -1,8 +1,9 @@
 .combos-bread-crumb {
 	margin-top: 10px;
 	min-height: 60px;
+
 	@include breakpoint(medium, 'max') {
-		display: none;
+		min-height: auto;
 	}
 
 	.combos-bread-crumb__items {
@@ -22,6 +23,10 @@
 		padding: 5px 0 5px 10px;
 		position: relative;
 		text-transform: uppercase;
+
+		@include breakpoint(medium, 'max') {
+			@include responsiveFont(12, 16, true);
+		}
 
 		&.combos-bread-crumb__item--active {
 			display: flex;
