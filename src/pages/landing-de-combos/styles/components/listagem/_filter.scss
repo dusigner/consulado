@@ -5,6 +5,8 @@
 	position: relative;
 
 	@include breakpoint(small, 'max') {
+		border-bottom-color: transparent;
+		margin-top: 15px;
 		position: initial;
 	}
 
@@ -35,7 +37,7 @@
 
 		@include breakpoint(small, 'max') {
 			background-color: #fff;
-			border-top: solid 1px  $gray;
+			border-top: solid 1px $gray;
 			bottom: 0;
 			margin: 0;
 			position: fixed;
@@ -45,17 +47,25 @@
 	}
 
 	.combos-filter__buttom {
+		line-height: 1.4;
 		margin-left: 10px;
-		padding: 5px 25px;
+		min-height: 40px;
+		padding: 8px 25px;
 		text-transform: uppercase;
+		transition: all .5s ease;
 
 		&.combos-filter__buttom--filter {
 			@include responsiveFont(14, 16, true);
 			background-color: #ffffff;
-			border: solid 1px  $gray;
+			border: solid 1px $gray;
 			color: $txt-gray;
 			font-weight: bold;
+			outline: none;
 			padding-right: 64px;
+
+			@include breakpoint(small, 'min') {
+				border-bottom: transparent;
+			}
 
 			@include breakpoint(small, 'max') {
 				padding-right: 25px;
@@ -66,7 +76,8 @@
 				@include responsiveFont(8, 16, true);
 				position: absolute;
 				right: 27px;
-				top: 35%;
+				top: 50%;
+				transform: translateY(-50%);
 
 				@include breakpoint(small, 'max') {
 					display: none;
@@ -79,6 +90,9 @@
 			border-color: $template-primary;
 			color: #fff;
 
+			&:hover span {
+				color: #fff;
+			}
 
 			@include breakpoint(small, 'max') {
 				margin: 10px;
@@ -87,10 +101,6 @@
 		}
 
 		&.combos-filter__buttom--clear {
-			background-color: transparent;
-			border-color: $template-primary;
-			color: $template-primary;
-
 			@include breakpoint(small, 'max') {
 				display: none;
 			}
@@ -122,10 +132,11 @@
 		}
 
 		&.combos-filter__buttom--active {
+			border-color: transparent;
 			z-index: 9999;
 
 			&:after {
-				transform: rotate(180deg);
+				transform: rotate(180deg) translateY(50%);
 			}
 		}
 	}
@@ -173,7 +184,7 @@
 		height: 210px;
 		justify-content: flex-start;
 		margin: 20px 0;
-		padding-left: 55px;
+		padding-left: 40px;
 
 		@include breakpoint(small, 'max') {
 			border-right: none;
@@ -215,7 +226,7 @@
 		@include breakpoint(small, 'max') {
 			background-color: #e6e6e6;
 			margin: 0 10px 10px 0;
-			padding: 0!important;
+			padding: 0 !important;
 			text-transform: initial;
 			width: initial;
 		}
@@ -223,50 +234,25 @@
 		&:last-child {
 			padding-bottom: 0;
 
-			@include breakpoint(small, 'max') {
-				padding-bottom: 10px;
-			}
+			@include breakpoint(small, 'max') { padding-bottom: 10px; }
 		}
 
-		/* &.combos-category__item--active {
-			&:last-child::after {
-				top: 30%;
-
-				@include breakpoint(small, 'max') {
-					display: none;
-				}
-			}
-		} */
-
+		
 		label {
+			cursor: pointer;
+			padding-left: 25px;
+			position: relative;
+			
 			@include breakpoint(small, 'max') {
 				line-height: 1;
 				margin: 0;
-				padding: 10px;
+				padding: 13px 10px;
 				width: 100%;
-
-				&:after{
-					display: none;
-				}
 			}
-			position: relative;
-
-			// &:before {
-			// 	background-color: #fff;
-			// 	border: 2px solid $txt-gray;
-			// 	border-radius: 3px;
-			// 	content: ' ';
-			// 	display: inline-block;
-			// 	height: 18px;
-			// 	margin-right: 8px;
-			// 	position: relative;
-			// 	visibility: visible;
-			// 	width: 18px;
-
-			// 	@include breakpoint(small, 'max') {
-			// 		display: none;
-			// 	}
-			// }
+			
+			&:after {
+				@include breakpoint(small, 'max') { content: none; }
+			}
 		}
 	}
 
@@ -276,14 +262,34 @@
 		top: -10px;
 
 		&:checked {
-			&+label {
+			& + label {
+				color: $orange;
+
 				@include breakpoint(small, 'max') {
 					background-color: $template-primary;
 					color: #ffffff;
 				}
-				color: $template-primary;
 
-				&:before { display: none; }
+				&:before {
+					background-color: $template-primary;
+					border-color: $template-primary;
+
+					@include breakpoint(small, 'max') {
+						display: none;
+					}
+				}
+
+				&:after {
+					@include icon-get('check');
+					@include responsiveFont(10, 16, true);
+					color: #ffffff;
+					content: ' ';
+					font-weight: bold !important;
+
+					@include breakpoint(small, 'max') {
+						display: none;
+					}
+				}
 			}
 		}
 	}
