@@ -68,6 +68,8 @@ $(window).on('load', function() {
 		this.userData = null;
 
 		this.init = function() {
+			self.hashChanged();
+			
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
 			if (window.hasher) {
@@ -215,7 +217,7 @@ $(window).on('load', function() {
 		//hash changed
 		this.hashChanged = function () {
 			if (self.isOrderForm()) {
-				if (store && store.isCorp) {
+				if (store && store.isCorp === true || store.isQA) {
 					pj.changeProfileData();
 				}
 			}
