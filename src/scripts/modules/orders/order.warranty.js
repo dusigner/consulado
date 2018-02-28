@@ -373,6 +373,8 @@ var Warranty = {
 			}
 
 			var data = {};
+			data.name     = store.userData.firstName + ' ' + store.userData.lastName;
+			data.email    = store.userData.email;
 			data.request = true;
 			data.document = Warranty.profileData.document;
 			data.garantia = $self.data('period');
