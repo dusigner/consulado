@@ -323,6 +323,8 @@ var Warranty = {
 			idPlan = idPlan.match( /\d+/g ).join([]);
 
 			var data = {};
+			data.name     = store.userData.firstName + ' ' + store.userData.lastName;
+			data.email    = store.userData.email;
 			data.cancel = true;
 			data.document = Warranty.profileData.document;
 			data.garantia = $button.data('period');
