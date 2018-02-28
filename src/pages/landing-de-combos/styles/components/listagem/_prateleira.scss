@@ -137,6 +137,7 @@
 			margin: 10px 0;
 			position: fixed;
 			width: calc(100% - 20px);
+			z-index: 9999;
 
 			.combos-finalization__title {
 				flex-wrap: wrap;
