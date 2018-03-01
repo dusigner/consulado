@@ -171,6 +171,21 @@ $(window).on('load', function() {
 				self.userData = null;
 			}
 
+
+			// Verificar se o box de Brinde existe e aplica as class
+			setTimeout(function(){ 							
+				if ( $('.available-gift').length <= 0 ) {
+					$('.summary-template-holder').removeClass('brinde-ativo');
+					$('.cart-select-gift-placeholder').removeClass('show');
+					console.log('Remove Class Ativo');	
+				}else {	
+					$('.summary-template-holder').addClass('brinde-ativo');
+					$('.cart-select-gift-placeholder').addClass('show');
+					$('.cart-links-bottom').css('clear','both');
+					console.log('Adicina Class Ativo');			
+				}
+			}, 1);
+
 			testeabEntregaAgendada.setup(orderForm);
 
 		};
