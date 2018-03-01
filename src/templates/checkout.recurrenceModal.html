@@ -7,7 +7,20 @@
 			<div class="modal-body text-center modal-recurrence__body">
 				<div class="modal-recurrence__header">
 					<p class="modal-recurrence__title text-uppercase">Este produto precisa ser trocado periodicamente</p>
-					<p class="modal-recurrence__deadline">Prazo para substituição: <span class="modal-recurrence__deadline-period text-uppercase">{period|recurrenceSemanas}</span></p>
+					<div class="modal-recurrence__deadline text-uppercase"><strong>Prazo para substituição</strong>:
+						{?isOpen}
+							<div class="modal-recurrence__select">
+								<span class="modal-recurrence__select-current js-select-toggle"><span class="js-select-current">Selecione</span> <i class="icon icon-arrow-down"></i></span>
+								<ul class="modal-recurrence__select-period">
+									{#period}
+										<li class="modal-recurrence__select-item js-select-option" data-originalPeriod="{.}">{.|recurrenceSemanas}</li>
+									{/period}
+								</ul>
+							</div>
+						{:else}
+							<span class="modal-recurrence__deadline-period text-uppercase">{period|recurrenceSemanas}</span>
+						{/isOpen}
+					</div>
 				</div>
 				<div class="modal-recurrence__advantages clearfix">
 					<div class="modal-recurrence__advantage modal-recurrence__advantage--lg">
@@ -102,8 +115,8 @@
 					</div>
 				</div>
 				<div class="modal-recurrence__footer">
-					<p>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</p>
-					<a href="#" class="modal-recurrence__cta primary-button text-uppercase js-recurrence-add" data-index="{index}" data-period="{period}">Adicionar Recorrência</a>
+					<p><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
+					<a href="#" class="modal-recurrence__cta primary-button text-uppercase js-recurrence-add" data-index="{index}" {^isOpen}data-period="{period}"{/isOpen}>Adicionar Recorrência</a>
 					<i class="loading-text icon-spinner icon-spin hide"></i>
 				</div>
 			</div>

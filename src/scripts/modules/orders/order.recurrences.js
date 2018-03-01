@@ -40,6 +40,12 @@ Nitro.module('order.recurrences', function() {
 					}
 
 					self.recurrences.recurrences = res;
+
+					// Criar string com periodo de recorrência final
+					$.each(self.recurrences.recurrences.items, function(i, item) {
+						item.frequency.frequency = item.frequency.interval + ' ' + dust.filters.frequencyText(item.frequency.periodicity);
+					});
+
 					self.recurrenceRender(self.recurrences.recurrences);
 
 					return res;
