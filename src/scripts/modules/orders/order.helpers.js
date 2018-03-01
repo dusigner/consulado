@@ -41,10 +41,20 @@ _.extend(dust.filters, {
 	frequencyText: function(value) {
 		var text = {
 			monthly: 'meses',
-			weekly: 'semanas'
+			weekly: 'semanas',
+			daily: 'dia(s)'
 		};
 
 		return text[value];
+	},
+	recurrenceSemanas: function(value) {
+		var intPeriod = value.match(/^\d{1,}/gmi);
+
+		if(intPeriod && intPeriod[0] > 12) {
+			value = (intPeriod / 4) + ' meses';
+		}
+
+		return value;
 	},
 	statusText: function(value) {
 		var finalText = '';
