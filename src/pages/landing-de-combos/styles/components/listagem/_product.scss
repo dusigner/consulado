@@ -17,8 +17,10 @@
 		justify-content: space-around;
 		text-decoration: none;
 
-		@include breakpoint(medium, 'max') {
-			flex-direction: row;
+		@include breakpoint(medium, 'max') { flex-direction: row; }
+
+		img {
+			cursor: pointer;
 		}
 	}
 
