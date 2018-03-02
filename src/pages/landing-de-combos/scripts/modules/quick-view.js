@@ -76,7 +76,7 @@ Nitro.module('quick-view', function () {
 				e.preventDefault();
 			});
 
-			$('.combo-product__title').on('click', function() {
+			$('.combo-product__title, .combo-product__link > img').on('click', function() {
 				var self = $(this),
 					integrationView = new appIntegrationView(),
 					quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
