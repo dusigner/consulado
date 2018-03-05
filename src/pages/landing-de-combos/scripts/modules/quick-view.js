@@ -220,10 +220,15 @@ Nitro.module('quick-view', function () {
 		};
 
 		app.updateSlickCounter = function() {
-			$('.product-quick-view__image').on('init reInit afterChange', function(event, slick, currentSlide) {
-				var i = (currentSlide ? currentSlide : 0) + 1;
+			var slider = $('.product-quick-view__image');
 
-				slick.slideCount > 1 ? $('.product-quick-view__image-counter').show().text(i + '/' + slick.slideCount) : $('.product-quick-view__image-counter').hide();
+			slider.each(function() {
+				$(this).on('init afterChange', function(event, slick, currentSlide) {
+					var i = (currentSlide ? currentSlide : 0) + 1;
+					var sliderCount = $(this).siblings('.product-quick-view__image-counter');
+
+					slick.slideCount > 1 ? sliderCount.show().text(i + '/' + slick.slideCount) : sliderCount.hide();
+				});
 			});
 		};
 
