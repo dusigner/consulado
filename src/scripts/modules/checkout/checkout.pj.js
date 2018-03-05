@@ -39,7 +39,7 @@ Nitro.module('checkout.pj', function() {
 		templateSummary += '<br/><span>Nome da Fantasia:</span> <span>' + store.userData.tradeName + '</span>';
 		templateSummary += '<br/><span>CNPJ:</span> <span>' + corporateDocument + '</span>';
 		templateSummary += '<br/><span>Inscrição Estadual:</span> <span>' + store.userData.stateRegistration + '</span>';
-		templateSummary += '<br/><span>Telefone:</span> <span>' + store.userData.phone + '</span>';
+		templateSummary += '<br/><span>Telefone:</span> <span>' + store.userData.homePhone + '</span>';
 
 		$boxProfile.find('.accordion-toggle span').text('Dados da Empresa');
 		$boxProfile.find('.link-logout-container').remove();
