@@ -262,5 +262,11 @@ dust.filters.intAsCurrency = function(value) {
 };
 
 dust.filters.recurrenceSemanas = function(value) {
-	return (value === '36 semanas') ? '9 meses' : value;
+	var intPeriod = value.match(/^\d{1,}/gmi);
+
+	if(intPeriod && intPeriod[0] > 12) {
+		value = (intPeriod / 4) + ' meses';
+	}
+
+	return value;
 };

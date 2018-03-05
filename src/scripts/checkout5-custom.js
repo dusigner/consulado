@@ -171,6 +171,21 @@ $(window).on('load', function() {
 				self.userData = null;
 			}
 
+
+			// Verificar se o box de Brinde existe e aplica as class
+			setTimeout(function(){ 							
+				if ( $('.available-gift').length <= 0 ) {
+					$('.summary-template-holder').removeClass('brinde-ativo');
+					$('.cart-select-gift-placeholder').removeClass('show');
+					console.log('Remove Class Ativo');	
+				}else {	
+					$('.summary-template-holder').addClass('brinde-ativo');
+					$('.cart-select-gift-placeholder').addClass('show');
+					$('.cart-links-bottom').css('clear','both');
+					console.log('Adicina Class Ativo');			
+				}
+			}, 1);
+
 			testeabEntregaAgendada.setup(orderForm);
 
 		};
@@ -232,6 +247,7 @@ $(window).on('load', function() {
 			recurrence.setup();
 
 			this.fakeButton();
+			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
 		};
 
@@ -419,6 +435,14 @@ $(window).on('load', function() {
 
 		};
 
+		this.modalInfoPj = function (orderForm) {
+			orderForm && orderForm.messages.map(function(message) {
+				if(/máximo \d+ itens/gmi.test(message.text)) {
+					$('#modal-info-pj').modal();
+				}
+			});
+		};
+
 		this.init();
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
@@ -437,9 +461,4 @@ $(window).on('load', function() {
 		console.log('router', newValue, b);
 	});
 }*/
-
-
-console.clear();
-console.log('*******************************************************');
-
 
