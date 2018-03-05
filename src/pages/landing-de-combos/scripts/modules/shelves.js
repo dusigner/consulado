@@ -199,7 +199,7 @@ Nitro.module('shelves', function () {
 
 		produto.toggleClass('combo-product--inactive');
 		produto.find('.combo-product__button').toggleClass('combo-product__button--active');
-		$('.combos-prateleira').find('img[src="'+ produtoImg +'"]').toggleClass('inactive');
+		produto.closest('.combos-prateleira').find('img[src="'+ produtoImg +'"]').toggleClass('inactive');
 	};
 
 	self.toggleProduto = function(textQuantity, operation) {
