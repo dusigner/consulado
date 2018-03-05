@@ -69,7 +69,7 @@ $(window).on('load', function() {
 
 		this.init = function() {
 			self.hashChanged();
-			
+
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
 			if (window.hasher) {
@@ -174,14 +174,16 @@ $(window).on('load', function() {
 
 
 			// Verificar se o box de Brinde existe e aplica as class
-			setTimeout(function(){ 							
+			setTimeout(function(){
 				if ( $('.available-gift').length <= 0 ) {
 					$('.summary-template-holder').removeClass('brinde-ativo');
 					$('.cart-select-gift-placeholder').removeClass('show');
-				}else {	
+					// console.log('Remove Class Ativo');
+				}else {
 					$('.summary-template-holder').addClass('brinde-ativo');
 					$('.cart-select-gift-placeholder').addClass('show');
 					$('.cart-links-bottom').css('clear','both');
+					// console.log('Adicina Class Ativo');
 				}
 			}, 1);
 
@@ -457,4 +459,3 @@ $(window).on('load', function() {
 		console.log('router', newValue, b);
 	});
 }*/
-
