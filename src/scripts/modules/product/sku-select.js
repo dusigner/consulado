@@ -48,9 +48,10 @@ Nitro.module('sku-select', function() {
 			skuLabel.not('.item_unavaliable').click();			
 		}
 		
-		if (skuLabel.length === 1 && skuLabel.text().toUpperCase() === 'BIVOLT') {
-			skuLabel.click();			
+		if (skuLabel.length === 1) {
+			skuLabel.click();
 		}
+
 	});
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
