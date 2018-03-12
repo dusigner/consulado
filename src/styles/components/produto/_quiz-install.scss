@@ -1,212 +1,212 @@
 @charset 'UTF-8';
 
-body.quiz{
+body.quiz {
 
-	#quiz-install{
+	#quiz-install {
 		padding: 20px 0;
-		h2{
-			color: #000;
-			font-size: 45px;
-			font-weight: 300;
+		h2 {
+			color        : #000;
+			font-size    : 45px;
+			font-weight  : 300;
 			margin-bottom: 30px;
 		}
-		a.primary-button{
-			display: table;
-			float: none;
+		a.primary-button {
+			display    : table;
+			float      : none;
 			font-weight: 400;
-			margin: auto;
+			margin     : auto;
 		}
 	}
-	.quiz-intro{
-		display: none;
+	.quiz-intro {
+		display   : none;
 		transition: all 250ms ease-out;
-		&.current{
-			display: block;
+		&.current {
+			display   : block;
 			transition: all 250ms ease-out;
 		}	
 	}
 	
-	.quiz-intro-start{
-		border: 1px solid $green;
+	.quiz-intro-start {
+		border : 1px solid $green;
 		display: table;
-		float: none;
-		margin: 0 auto;
+		float  : none;
+		margin : 0 auto;
 		padding: 4em 3em;
 		
-		h3{
-			color: #505050;
-			font-size: 30px;
-			font-weight: 300;
-			line-height: 40px;
+		h3 {
+			color        : #505050;
+			font-size    : 30px;
+			font-weight  : 300;
+			line-height  : 40px;
+			margin       : 0 0 30px;
 			margin-bottom: 50px;
-			margin: 0 0 30px;
-			text-align: center;
-			strong{
-				color: $green;
+			text-align   : center;
+			strong {
+				color      : $green;
 				font-weight: 400;
 			}
 		}
-		.steep{
+		.steep {
 			padding: 0 0 30px;
 		}
 
 	}
-	.quiz-steeps{
-		.steep{
-			display: none;
-			border: 1px solid $green;
+	.quiz-steeps {
+		.steep {
+			border    : 1px solid $green;
 			border-top: 2px solid $green;
-			padding:0 5%;
+			display   : none;
+			padding   : 0 5%;
 			text-align: center;
 			transition: all 250ms ease-out;
-			&.current{
-				display: block;
+			&.current {
+				display   : block;
 				transition: all 250ms ease-out;
 			}
-			h3{
-				color: $green;
-				text-align: center;
-				font-weight: 500;
+			h3 {
 				@include font-size(28px, true, false);
-				strong{
-					font-weight: 900;
+				color      : $green;
+				font-weight: 500;
+				text-align : center;
+				strong {
 					@include font-size(28px, true, false);
+					font-weight: 900;
 				}
 			}
-			p{
-				color:#A3A3A3;
+			p {
+				color: #A3A3A3;
 			}
-			.col-6{
-					padding:0 20px;					
+			.col-6 {
+					padding: 0 20px;
 				}
-			.box-quiz{
-				margin: 20px 0;
-				padding: 20px 20px 30px;
-				border: 1px solid #ADADAD;	
+			.box-quiz {
+				border    : 1px solid #ADADAD;
+				margin    : 20px 0;
 				min-height: 280px;
-				p{
-					color: #5f5f5f;
+				padding   : 20px 20px 30px;
+				p {
+					color      : #5f5f5f;
 					line-height: 24px;
-					padding:0 5%;
+					padding    : 0 5%;
 				}
 			}
-			ul.bullet{
-				width:100px;
-				margin:40px auto 0;
-				display:table;
+			ul.bullet {
+				display: table;
+				margin : 40px auto 0;
+				width  : 100px;
 
-				li{
-					width:12px;
-					height:12px;
-					background: #CCC;
-					border-radius:10px;
-					float: left;
-					margin:0 10px;
-					&.active{
+				li {
+					background   : #CCC;
+					border-radius: 10px;
+					float        : left;
+					height       : 12px;
+					margin       : 0 10px;
+					width        : 12px;
+					&.active {
 						background: $orange;
 					}
 				}
 			}
 
-			&.steep-1{
+			&.steep-1 {
 				
-				h4{
-					margin:0;
-					font-weight: 300;
-					color: $green;
-					text-align: center;
+				h4 {
 					@include font-size(35px, true, false);
+					color      : $green;
+					font-weight: 300;
+					margin     : 0;
+					text-align : center;
 				}
-				h5{
-					margin:0;
-					font-weight: 100;
-					color: $green;
-					text-align: center;
+				h5 {
 					@include font-size(25px, true, false);
+					color      : $green;
+					font-weight: 100;
+					margin     : 0;
+					text-align : center;
 				}
 				
-				.text-center.col-10.push-1{
-					padding:0 6%;
-					strong{
-						color:#000;
+				.text-center.col-10.push-1 {
+					padding: 0 6%;
+					strong {
+						color: #000;
 					}
 				}
-				.col-6.push-6{
-					p{
-						margin: 0;
-						font-size: 14px;
+				.col-6.push-6 {
+					p {
+						font-size  : 14px;
 						font-weight: 300;
-						padding: 0 9%;
+						margin     : 0;
+						padding    : 0 9%;
 					}
-					strong{
-						color:#000;
+					strong {
+						color: #000;
 					}
 				}
 			}
-			&.steep-2{
-				.box-quiz{
+			&.steep-2 {
+				.box-quiz {
+					cursor    : pointer;
 					transition: all 250ms ease-out;
-					cursor:pointer;
-					.icon{
+					.icon {
+						display   : inline-block;
+						height    : 116px;
 						margin-top: 20px;
-						display: inline-block;
-						height:116px;
-						svg{
+						svg {
 							color: $green;
 						}
 					}
-					&:hover{
+					&:hover {
 						background: $green;
-						border:1px solid $green;
+						border    : 1px solid $green;
 						transition: all 250ms ease-out;
-						.icon svg{
-							color:#FFF;
+						.icon svg {
+							color: #FFF;
 						}						
-						p{
-							color:#FFF;
+						p {
+							color: #FFF;
 						}
 
 					}
 				}
-				#option-GLP{
-					.icon{
-						svg{
-							width: 70px;
+				#option-GLP {
+					.icon {
+						svg {
 							height: 122px;
+							width : 70px;
 						}
 					}
 				}
-				#option-GN{
-					.icon{
-						svg{
-							width: 120px;
+				#option-GN {
+					.icon {
+						svg {
     						height: 122px;
+    						width : 120px;
 						}
 					}
 				}
 			}
 			&.steep-3-1,
-			&.steep-3-2{
-				.box-quiz{
-					min-height:430px;
-					h4{
-						margin: 5px 0 20px;
-    					padding: 0 11%;
+			&.steep-3-2 {
+				.box-quiz {
+					min-height: 430px;
+					h4 {
+						margin    : 5px 0 20px;
 						min-height: 50px;
-						overflow: hidden;
+						overflow  : hidden;
+						padding   : 0 11%;
                     }
-                    img{
+                    img {
                         height: 100px;
                     }
-					p.text-center{
+					p.text-center {
 						min-height: 50px;
 					}
-					p.text-right{
-						font-size: 11px;
-						margin: 20px 5px 0;
-						padding: 0;
-						color:#A3A3A3;
+					p.text-right {
+						color      : #A3A3A3;
+						font-size  : 11px;
 						line-height: 12px;
+						margin     : 20px 5px 0;
+						padding    : 0;
 					}
 				}
 			}
