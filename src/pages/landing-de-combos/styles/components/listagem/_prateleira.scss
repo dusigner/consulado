@@ -189,29 +189,17 @@
 	}
 
 	.combos-price__list-price,
-	.combos-price__real-price {
-		display: inline-block;
-		line-height: 1;
-	}
+	.combos-price__real-price { line-height: 1.3; }
 
 	.combos-price__list-price {
 		@include responsiveFont(14, 16, true);
 		margin-right: 5px;
 		text-decoration: line-through;
-
-		strong {
-			font-weight: normal;
-		}
 	}
 
-	.combos-price__real-price {
-		@include responsiveFont(15, 16, true);
-	}
+	.combos-price__real-price { @include responsiveFont(16, 16, true); }
 
-	.combos-price__installment-price {
-		@include responsiveFont(15, 16, true);
-		line-height: 1;
-	}
+	.combos-price__installment-price { @include responsiveFont(15, 16, true); }
 }
 
 .prateleira-combos {
