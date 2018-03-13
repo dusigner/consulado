@@ -16,16 +16,17 @@ require('modules/product/boleto');
 require('modules/product/notify-me');
 require('modules/product/share');
 require('modules/product/quiz-install');
+require('modules/product/upsell');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install' /*, 'special-content'*/ ], function() {
-	var self = this,
-		$body = $('body');
+Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'upsell', 'quiz-install' /*, 'special-content'*/ ], function() {
+	var self  = this,
+	    $body = $('body');
 
 	// Teste AB
 	var urlTesteAb = window.location.search;
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
+	var testeA     = 'testeab=a';
+	var testeB     = 'testeab=b';
 
 	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
 		$body.addClass('ab-test__mobile--show-b');
@@ -48,8 +49,8 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 		$('body').addClass('produto-indisponivel');
 	}
 
-	var $reference = $('.reference'),
-		$productSku = $('.productSku');
+	var $reference  = $('.reference'),
+	    $productSku = $('.productSku');
 
 	//TROCA DE NOMES PRODUCT / SKUREF
 	$(document).on('skuSelected.vtex', function() {
@@ -85,21 +86,21 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 
 	this.setupSlider = function($currentSlider) {
 		$currentSlider.not('.slick-initialized').slick({
-			infinite: true,
-			slidesToShow: 3,
+			infinite      : true,
+			slidesToShow  : 3,
 			slidesToScroll: 3,
-			responsive: [{
+			responsive    : [{
 				breakpoint: 990,
-				settings: {
-					dots: true,
-					slidesToShow: 2,
+				settings  : {
+					dots          : true,
+					slidesToShow  : 2,
 					slidesToScroll: 2
 				}
 			}, {
 				breakpoint: 480,
-				settings: {
-					dots: true,
-					slidesToShow: 1,
+				settings  : {
+					dots          : true,
+					slidesToShow  : 1,
 					slidesToScroll: 1
 				}
 			}]
@@ -120,19 +121,19 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 
 	//Opções de parcelamento
 	self.valoresParcelas = function() {
-		var $valoresParcelas = $('.valores-parcelas'),
-			$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
-			$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+		var $valoresParcelas    = $('.valores-parcelas'),
+		    $showParcelas       = $valoresParcelas.find('.titulo-parcelamento'),
+		    $opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
 
 		$showParcelas.text('Ver parcelas');
 
 		$opcoesParcelamento.find('li').each(function() {
 			var $numeroParcelas = $(this).find('span:first-child'),
-				numeroParcelas = $numeroParcelas.text().split('X')[0],
-				$valorParcela = $(this).find('strong'),
-				valorParcela = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
-				text = $numeroParcelas.text().replace('de', ''),
-				precoTotal = parseFloat(numeroParcelas * valorParcela).toFixed(2);
+			    numeroParcelas  = $numeroParcelas.text().split('X')[0],
+			    $valorParcela   = $(this).find('strong'),
+			    valorParcela    = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
+			    text            = $numeroParcelas.text().replace('de', ''),
+			    precoTotal      = parseFloat(numeroParcelas * valorParcela).toFixed(2);
 
 			$(this).append('<span class="valor-total">Total: R$ ' + precoTotal.toString().replace('.',',') + '</span>');
 			$numeroParcelas.text(text);
@@ -165,7 +166,7 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 	//Google PLA
 	if ($.getParameterByName('utmi_cp') === 'pla' || $.cookie('google_pla')) {
 		$.cookie('google_pla', true, {
-			path: '/',
+			path   : '/',
 			expires: 1
 		});
 
@@ -218,9 +219,9 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 			Index.getPecasRelacionadas();
 		},
 		getPecasRelacionadas: function() {
-			var $btnPecas = $('.btn-pecas-produto'),
-				$pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
-				url = 'http://loja.consul.com.br/busca?',
+			var $btnPecas    = $('.btn-pecas-produto'),
+			    $pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
+				url        = 'http://loja.consul.com.br/busca?',
 				testNumber = new RegExp(/^\d/);
 				// console.log('sim');
 			if ($pecasModels) {
@@ -267,8 +268,8 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 
 
 				} else{
-					qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
-					var nome = data[0].items[0].name;
+					        qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+					    var nome    = data[0].items[0].name;
 
 					Index.calcQntStoqOnly(qnt110v);
 
