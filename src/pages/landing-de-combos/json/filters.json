@@ -1,229 +1,274 @@
 [
 	{
 		"group" : "Para gelar",
-		"name" : ["Geladeira - Refrigerador", "Geladeira / Refrigerador"],
+		"name" : ["Geladeiras", "Geladeira - Refrigerador", "Geladeira / Refrigerador"],
 		"text" : "Geladeiras"
 	},
+
 	{
 		"group" : "Para gelar",
-		"name" : ["Horizontal", "Vertical", "Freezer"],
+		"name" : ["Freezers", "Horizontal", "Vertical"],
 		"text" : "Freezers"
 	},
+
 	{
 		"group" : "Para gelar",
 		"name" : ["Cervejeira"],
 		"text" : "Cervejeiras"
 	},
+
 	{
 		"group" : "Para gelar",
 		"name" : ["Adega de Vinho"],
 		"text" : "Adegas"
 	},
+
 	{
 		"group" : "Para gelar",
 		"name" : ["Frigobar"],
 		"text" : "Frigobar"
 	},
+
 	{
 		"group" : "Para lavar & secar",
 		"name" : ["Lavadora de Roupas", "Lava e Seca", "Tanquinho"],
 		"text" : "Lavadoras"
 	},
+
 	{
 		"group" : "Para lavar & secar",
 		"name" : ["Secadora de Roupas", "Centrifuga"],
 		"text" : "Secadoras"
 	},
+
 	{
 		"group" : "Para lavar & secar",
 		"name" : ["Lava-Louças"],
 		"text" : "Lava Louças"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Fogão", "Embutir", "Piso"],
 		"text" : "Fogões"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Cooktop"],
 		"text" : "Cooktops"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Coifa"],
 		"text" : "Coifas"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Liquidificador"],
 		"text" : "Liquidificador"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Forno", "Forno de Embutir", "Mesa"],
 		"text" : "Fornos"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Micro-ondas", "Micro-ondas de Embutir"],
 		"text" : "Micro-ondas"
 	},
+
 	{
 		"group" : "Para cozinhar",
 		"name" : ["Batedeira"],
 		"text" : "Batedeira"
 	},
+
 	{
 		"group" : "Para climatizar",
 		"name" : ["Ar Condicionado", "Janela", "Portátil", "Split"],
 		"text" : "Ar-condicionado"
 	},
+
 	{
 		"group" : "Para climatizar",
 		"name" : ["Climatizador de Ar"],
 		"text" : "Climatizadora"
 	},
+
 	{
 		"group" : "Para beber",
 		"name" : ["Bblend"],
 		"text" : "Bblend"
 	},
+
 	{
 		"group" : "Para beber",
 		"name" : ["Purificador"],
 		"text" : "Purificador"
 	},
+
 	{
 		"group" : "Para beber",
 		"name" : ["Chaleira"],
 		"text" : "Chaleirar"
 	},
+
 	{
 		"group" : "Para beber",
 		"name" : ["Refil para Purificador"],
 		"text" : "Refil"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Purificador"],
 		"text" : "Peças Purificador"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Fogão"],
 		"text" : "Peças Fogão"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Aspirador de Pó"],
 		"text" : "Peças Aspirador de Pó"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Ar Condicionado"],
 		"text" : "Peças Ar Condicionado"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Fogão e Cooktop"],
 		"text" : "Peças Fogão e Cooktop"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Lavadora de Roupas"],
 		"text" : "Peças Lavadora de Roupas"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Climatizador"],
 		"text" : "Peças Climatizador"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Micro-ondas"],
 		"text" : "Peças Micro-ondas"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Lavadora e Lava-louças"],
 		"text" : "Peças Lavadora e Lava-louças"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Coifa"],
 		"text" : "Peças Coifa"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Freezer"],
 		"text" : "Peças Freezer"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Lava-Louças"],
 		"text" : "Peças Lava-Louças"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Cooktop"],
 		"text" : "Peças Cooktop"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Frigobar"],
 		"text" : "Peças Frigobar"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Secadora de Roupas"],
 		"text" : "Peças Secadora de Roupas"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Depurador"],
 		"text" : "Peças Depurador"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Geladeira"],
 		"text" : "Peças Geladeira"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Depurador e Coifa"],
 		"text" : "Peças Depurador e Coifa"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Geladeira e Freezer"],
 		"text" : "Peças Geladeira e Freezer"
 	},
+
 	{
 		"group" : "Peças",
 		"name" : ["Peças Geladeira e Freezer"],
 		"text" : "Peças Geladeira e Freezer"
 	},
+
 	{
 		"group" : "Kitchenaid",
 		"name" : ["Processador"],
 		"text" : "Processador"
 	},
+
 	{
 		"group" : "Kitchenaid",
 		"name" : ["Mixer"],
 		"text" : "Mixer"
 	},
+
 	{
 		"group" : "Kitchenaid",
 		"name" : ["Torradeira"],
 		"text" : "Torradeira"
 	},
+
 	{
 		"group" : "Kitchenaid",
 		"name" : ["Cafeteira"],
 		"text" : "Cafeteira"
 	},
+
 	{
 		"group" : "Kitchenaid",
 		"name" : ["Extrator de Suco"],

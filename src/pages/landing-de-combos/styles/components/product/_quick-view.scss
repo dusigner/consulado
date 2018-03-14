@@ -2,13 +2,18 @@
 	display: none;
 	height: 100%;
 	left: 0;
-	position: absolute;
+	padding: 30px 0;
+	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 99999;
 
 	@include breakpoint(small, 'max') {
-		.container {
+		padding: 0;
+	}
+
+	.container {
+		@include breakpoint(small, 'max') {
 			max-width: 100% !important;
 			padding: 0;
 			width: 100% !important;
@@ -17,21 +22,40 @@
 
 	.modal-quick-view__container {
 		background-color: #f2f2f2;
+		max-width: 1110px;
+		padding-left: 15px;
+		padding-right: 15px;
 		position: relative;
-		top: 368px;
 		z-index: 99999;
 
 		@include breakpoint(small, 'max') {
+			height: 100%;
+			overflow-x: hidden;
 			top: 0;
 		}
 
-		@include breakpoint(extra-small, 'max') { padding: 0; }
+		@media (min-width: 418px) and (max-width: 768px) { padding-bottom: 130px; }
+
+		@media (min-width: 395px) and (max-width: 417px) { padding-bottom: 150px; }
+
+		@media (max-width: 394px) { padding: 0 0 170px; }
 
 		&.modal-quick-view__container--select-voltage {
 			display: none;
 
 			@include breakpoint(small, 'max') {
 				.combos-quick-view__title { display: none; }
+			}
+		}
+
+		> .row {
+			margin-left: 0;
+			margin-right: 0;
+
+			> .col-12,
+			> .col-md-12 {
+				padding-left: 0;
+				padding-right: 0;
 			}
 		}
 	}
@@ -54,7 +78,13 @@
 	.modal-quick-view__button-close {
 		background: transparent;
 		border: 0;
+		outline: none;
 		padding-top: 10px;
+
+		&:hover {
+			color: $template-primary;
+			transition: all .5s ease;
+		}
 
 		&:before {
 			@include icon-get('close-icon');
@@ -67,6 +97,8 @@
 
 	&.modal-quick-view--active {
 		display: block;
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 
 	&.modal-quick-view--select-voltage {
@@ -120,6 +152,7 @@
 				display: inline-block;
 				height: 16px;
 				margin-right: 10px;
+				transform: translateY(-4px);
 				vertical-align: bottom;
 				width: 16px;
 			}
@@ -127,16 +160,21 @@
 	}
 
 	.combos-quick-view__header {
-		@include breakpoint(small, 'max') { flex-direction: column; }
 		display: flex;
 		justify-content: space-between;
+		
+		@include breakpoint(small, 'max') {
+			flex-direction: column;
+			position: relative;
+		}
 
 		.combos-quick-view__block {
-			@include breakpoint(small, 'max') { display: none; }
-			border-bottom: solid 1px  $gray;
+			border-bottom: solid 1px $gray;
 			transform: translateY(1px);
 			width: 10px;
 			z-index: 1;
+			
+			@include breakpoint(small, 'max') { display: none; }
 		}
 	}
 
@@ -144,23 +182,24 @@
 }
 
 .combos-product-list {
-	@include breakpoint(small, 'max') {
-		border-bottom: solid 1px  $gray;
-		margin-bottom: 10px;
-		width: 100%;
-	}
 	background-color: #fff;
-	border: solid 1px  $gray;
+	border: solid 1px $gray;
 	border-bottom: none;
 	padding: 0 30px;
 	width: 50%;
 
+	@include breakpoint(small, 'max') {
+		padding: 0 10px;
+		width: 100%;
+	}
+
 	.combos-product-list__title {
-		@include breakpoint(small, 'max') { display: none; }
 		@include responsiveFont(18, 16, true);
 		color: $template-primary;
 		font-weight: bold;
 		padding: 20px 0;
+
+		@include breakpoint(small, 'max') { display: none; }
 	}
 
 	.combos-product-list__items {
@@ -168,22 +207,30 @@
 
 		@include breakpoint(small, 'max') {
 			justify-content: center;
-			padding: 20px 0;
+			padding: 10px 0;
 		}
 	}
 
 	.combos-product-list__item {
-		border: solid 1px  $gray;
+		border: solid 1px $gray;
+		cursor: pointer;
 		height: 59px;
 		margin-right: 14px;
 		width: 59px;
 
 		@include breakpoint(small, 'max') {
-			height: 45px;
-			margin-right: 7px;
-			width: 45px;
+			height: 40px;
+			margin-right: 5px;
+			padding: 2px;
+			width: 40px;
+		}
 
-			img { width: 40px; }
+		img {
+			@include breakpoint(small, 'max') {
+				display: block;
+				height: 100%;
+				max-width: 100%;
+			}
 		}
 
 		&.combos-product-list__item--active { border: solid 2px  $template-primary; }
@@ -195,8 +242,9 @@
 }
 
 .border-top {
-	@include breakpoint(small, 'max') { border: none; }
 	border-top: solid 1px  $gray;
+	
+	@include breakpoint(small, 'max') { border: none; }
 }
 
 .product-quick-view {
@@ -210,20 +258,25 @@
 
 	.product-quick-view__container-image {
 		padding: 30px;
+		position: relative;
 		width: 50%;
 
 		@include breakpoint(small, 'max') {
-			border-top: solid 1px  $gray;
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 300px;
+			padding: 10px;
 			width: 100%;
 		}
 	}
 
 	.product-quick-view__container-description {
+		width: 50%;
+		
 		@include breakpoint(small, 'max') {
 			text-align: center;
 			width: 100%;
 		}
-		width: 50%;
 	}
 
 	.product-quick-view__content {
@@ -237,24 +290,46 @@
 		width: 100%;
 
 		@include breakpoint(small, 'max') {
+			padding: 0;
+
 			img { width: 178px; }
+		}
+
+		.slick-dots {
+			margin-top: 10px;
+			position: static;
 		}
 	}
 
+	.product-quick-view__image-counter {
+		@include responsiveFont(12, 16, true);
+		bottom: 77px;
+		color: $template-primary;
+		display: inline-block;
+		left: 50%;
+		letter-spacing: 1px;
+		position: absolute;
+		text-align: center;
+		transform: translateX(-50%);
+		z-index: 999;
+
+		@include breakpoint(small, 'max') { bottom: 27px; }
+	}
+
 	.product-quick-view__thumbs {
-		@include breakpoint(small, 'max') { display: block; }
 		display: none;
 	}
 
 	.product-quick-view__title {
 		@include responsiveFont(24, 16, true);
 		font-weight: bold;
+		line-height: 1.3;
 		margin: 60px 45px 0 0;
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(16, 16, true);
 			margin: 0;
-			padding: 15px 0;
+			padding: 10px;
 		}
 	}
 
@@ -271,6 +346,7 @@
 		@include breakpoint(small, 'max') {
 			flex-direction: column;
 			margin: 0;
+			padding: 0 0 10px;
 		}
 	}
 
@@ -286,7 +362,6 @@
 			padding-bottom: 10px;
 		}
 	}
-
 }
 
 .sku-quick-view-options {
@@ -298,6 +373,7 @@
 
 	@include breakpoint(small, 'max') {
 		justify-content: center;
+		padding: 10px 0;
 
 		label { padding-right: 15px; }
 	}
@@ -347,16 +423,18 @@
 }
 
 @mixin accordion-title() {
+	@include responsiveFont(13, 16, true);
 	background-color: #e6e6e6;
 	border-bottom: 1px solid #ffffff;
 	color: $txt-gray;
 	padding: 10px;
 	position: relative;
+	transition: background-color .5s ease;
 	width: 100%;
 
 	&:after {
 		@include icon-get('arrow-down');
-		@include responsiveFont(10, 16, true);
+		@include responsiveFont(8, 16, true);
 		position: absolute;
 		right: 15px;
 		top: calc(50% - 4px);
@@ -364,6 +442,8 @@
 	}
 
 	&.active {
+		background-color: #ccc;
+
 		&:after {
 			transform: rotate(180deg);
 		}
@@ -385,6 +465,7 @@
 	width: 58%;
 
 	@include breakpoint(small, 'max') {
+		margin-bottom: 0;
 		padding: 0;
 		width: 100%;
 	}
@@ -422,6 +503,7 @@
 	width: 42%;
 
 	@include breakpoint(small, 'max') {
+		margin-bottom: 0;
 		padding: 0;
 		width: 100%;
 	}
@@ -434,7 +516,8 @@
 		text-transform: uppercase;
 
 		@include breakpoint(small, 'max') {
-			margin-left: 10px;
+			// margin-left: 10px;
+			@include accordion-title();
 		}
 	}
 }
@@ -446,6 +529,7 @@
 	margin-bottom: 40px;
 
 	@include breakpoint(small, 'max') {
+		@include accordion-text;
 		flex-wrap: wrap;
 		justify-content: flex-start;
 		margin-left: 10px;
@@ -493,12 +577,22 @@
 
 .quick-view-table-specification {
 	background-color: #f2f2f2;
-	display: flex;
-	flex-direction: column;
-	padding: 15px 15px 0 15px;
+	max-height: 420px;
+	overflow-y: auto;
+	padding: 15px;
+
+	@include breakpoint(medium, 'min') {
+		@include breakpoint(medium, 'max') {
+			padding-top: 5px;
+		}
+	}
 
 	@include breakpoint(small, 'max') {
-		margin: 0 10px;
+		@include accordion-text;
+		background-color: #fff;
+		margin: 0;
+		max-height: none;
+		padding: 10px;
 	}
 
 	.quick-view-table-specification__item {
@@ -507,31 +601,65 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		padding: 10px;
+		min-height: 38px;
 
-		&:nth-child(2n) {
+		@include breakpoint(medium, 'max') {
+			display: block;
+		}
+
+		&:nth-child(even) {
 			background-color: #ffffff;
+
+			@include breakpoint(small, 'max') {
+				background-color: transparent;
+			}
+		}
+
+		&:nth-child(odd) {
+			@include breakpoint(small, 'max') {
+				background-color: #f2f2f2;
+			}
 		}
 	}
 
+	.quick-view-table-specification__name,
 	.quick-view-table-specification__text {
-		font-weight: 100;
+		padding: 10px;
 	}
 
 	.quick-view-table-specification__name {
 		font-weight: bold;
 		text-transform: uppercase;
+
+		@include breakpoint(medium, 'max') {
+			padding-bottom: 0;
+		}
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(12, 16,  true);
+			line-height: 1.3;
+			padding: 5px 10px 0;
+		}
+	}
+
+	.quick-view-table-specification__text {
+		font-weight: 100;
+
+		@include breakpoint(small, 'max') {
+			padding: 0 10px 5px;
+		}
 	}
 }
 
 .mask-modal-combos {
 	background-color: rgba(0, 0, 0, .4);
+	bottom: 0;
 	display: none;
-	height: 100%;
 	left: 0;
+	overflow: hidden;
 	position: fixed;
+	right: 0;
 	top: 0;
-	width: 100%;
 	z-index: 9999;
 
 	&.mask-modal-combos--active {
@@ -540,13 +668,10 @@
 }
 
 .tooltip {
-	position: absolute;
-	top: 239px !important;
-
-	@include breakpoint(small, 'max') {
-		top: 135px !important;
-	}
-
+	margin-top: 10px;
+	position: absolute !important;
+	z-index: 9999;
+	
 	.tooltip-arrow {
 		border-bottom-color: $template-primary !important;
 		border-color: transparent;
@@ -564,6 +689,10 @@
 		border-radius: 5px;
 		color: #fff;
 		padding: 13px 18px !important;
+		text-align: center;
+		white-space: nowrap;
+
+		@include breakpoint(small, 'max') { padding: 8px 10px !important; }
 	}
 }
 
@@ -680,7 +809,7 @@
 
 					label { @include responsiveFont(13, 16, true); }
 				}
-
+				// sass-lint:disable-all
 				.table-line__title-product {
 					@include responsiveFont(13, 16, true);
 					-webkit-box-orient: vertical;
@@ -700,6 +829,8 @@
 						white-space: nowrap;
 					}
 				}
+				// sass-lint:enable-all
+
 			}
 		}
 	}
@@ -711,7 +842,7 @@
 
 	.quick-view-select-voltage__button {
 		@include responsiveFont(14, 16, true);
-		text-transform: uppercase;
+		height: 40px;
 		width: 170px;
 
 		@include breakpoint(extra-small, 'max') {
@@ -720,7 +851,16 @@
 			&.select-voltage__button--continue { width: 100%; }
 		}
 
-		&.loading span { display: none }
-	}
+		&.loading {
+			align-items: center;
+			color: transparent;
+			display: flex;
 
+			&:before {
+				@include spinner($template-primary);
+				content: ' ';
+				left: 0;
+			}
+		}
+	}
 }
