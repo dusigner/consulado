@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-body.quiz { 
+body.quiz {
 	#quiz-install {
 		padding: 20px 0 40px;
 		.container {
@@ -8,7 +8,7 @@ body.quiz {
 				padding  : 0;
 			}
 		}
-		h2 { 
+		h2 {
 			@include breakpoint(1124px, 'max') { font-size: 30px; }
 			@include breakpoint(767, 'max') { font-size: 28px; }
 			@include breakpoint(380, 'max') { font-size: 22px; }
@@ -17,7 +17,7 @@ body.quiz {
 			font-weight  : 300;
 			margin-bottom: 30px;
 		}
-		a.primary-button { 
+		a.primary-button {
 			display    : table;
 			float      : none;
 			font-weight: 400;
@@ -32,16 +32,16 @@ body.quiz {
 		&.current {
 			display   : block;
 			transition: all 250ms ease-out;
-		}	
+		}
 	}
-	
+
 	.quiz-intro-start {
 		border : 1px solid $green;
 		display: table;
 		float  : none;
 		margin : 0 auto;
 		padding: 4em 3em;
-		
+
 		h3 {
 			color        : #505050;
 			font-size    : 30px;
@@ -61,7 +61,7 @@ body.quiz {
 
 	}
 	.quiz-steeps {
-		@include breakpoint(1124px, 'max') { 
+		@include breakpoint(1124px, 'max') {
 			background-color: #f2f2f2;
 		}
 		.steep {
@@ -71,7 +71,7 @@ body.quiz {
 			padding   : 0 5%;
 			text-align: center;
 			transition: all 250ms ease-out;
-			@include breakpoint(1124px, 'max') { 
+			@include breakpoint(1124px, 'max') {
 				border       : 1px solid transparent;
 				border-bottom: 1px solid $green;
 				border-top   : 1px solid $green;
@@ -102,7 +102,7 @@ body.quiz {
 			}
 			.rede-de-servicos {
 				color: #000;
-				@include breakpoint(767px, 'max') { 
+				@include breakpoint(767px, 'max') {
 					border     : 1px solid #000;
 					display    : table;
 					font-size  : 20px;
@@ -117,9 +117,9 @@ body.quiz {
 			.box-quiz {
 				@include breakpoint(1080px, 'max') { min-height: 280px; }
 				@include breakpoint(870px, 'max') { min-height: 340px; }
-				@include breakpoint(767px, 'max') { 
+				@include breakpoint(767px, 'max') {
 					min-height: inherit!important;
-					padding: 10px 10px  15px; 
+					padding: 10px 10px  15px;
 				}
 				background-color: #FFF;
 				border          : 1px solid #ADADAD;
@@ -128,9 +128,9 @@ body.quiz {
 				padding         : 20px 20px 30px;
 				p {
 					color      : #5f5f5f;
+					font-size: 15px;
 					line-height: 24px;
 					padding    : 0 5%;
-					font-size: 15px;
 				}
 			}
 			.btn-voltar {
@@ -164,7 +164,7 @@ body.quiz {
 			}
 
 			&.steep-1 {
-				
+
 				h4 {
 					@include breakpoint(767px, 'max') { font-size: 28px; }
 					color      : $green;
@@ -181,7 +181,7 @@ body.quiz {
 					margin     : 0;
 					text-align : center;
 				}
-				
+
 				.text-center.col-10.push-1 {
 					padding: 0 6%;
 					strong {
@@ -220,7 +220,7 @@ body.quiz {
 						transition: all 250ms ease-out;
 						.icon svg {
 							color: #FFF;
-						}						
+						}
 						p {
 							color: #FFF;
 						}
@@ -250,7 +250,7 @@ body.quiz {
 					min-height: 430px;
 					@include breakpoint(810px, 'max') { min-height: 460px; }
 					@include breakpoint(767px, 'max') { min-height: inherit !important; }
-					h4 { 
+					h4 {
 						margin    : 5px 0 20px;
 						min-height: 50px;
 						overflow  : hidden;
