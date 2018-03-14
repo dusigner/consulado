@@ -1,3 +1,7 @@
+.modal-quick-view__visible {
+	overflow: hidden;
+}
+
 .combos {
 	background-color: #f2f2f2;
 	padding-top: 20px;
@@ -5,10 +9,12 @@
 
 .mask {
 	background-color: rgba(0, 0, 0, .4);
+	bottom: 0;
 	display: none;
 	height: 100%;
 	left: 0;
 	position: fixed;
+	right: 0;
 	top: 0;
 	width: 100%;
 	z-index: 9997;
@@ -22,6 +28,31 @@
 	}
 }
 
+.primary-button,
+.secondary-button {
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.combos__preteleira {
+	.row {
+		margin-bottom: 0;
+	}
+}
+
+.combos-header {
+	@include breakpoint(small, 'max') {
+		display: flex;
+		flex-direction: column;
+
+		.combos-page__title { order: 0; }
+
+		.combos__filter { order: 1; }
+
+		.combos-page__warning { order: 2; }
+	}
+}
+
 .combos-page__title {
 	h2 {
 		line-height: 1;
@@ -29,7 +60,27 @@
 
 		@include breakpoint(medium, 'max') {
 			@include responsiveFont(18, 16, true);
-			margin: 1em 0 0;
+			margin: 1em 0 1em;
+		}
+
+		@include breakpoint(small, 'max') { margin: 0 !important; }
+	}
+}
+
+.combos-page__warning {
+	margin-bottom: 20px;
+
+	.combos-page__warning-text {
+		@include responsiveFont(13, 16, true);
+		background-color: $green;
+		color: #fff;
+		margin: 0;
+		padding: 20px;
+		text-transform: uppercase;
+
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(12, 16, true);
+			padding: 10px;
 		}
 	}
 }
