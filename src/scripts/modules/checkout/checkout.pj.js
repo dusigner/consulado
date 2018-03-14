@@ -46,11 +46,9 @@ Nitro.module('checkout.pj', function() {
 
 		$clientProfileSummary.html(templateSummary);
 
-		// desabilita o box de editar Dados da Empresa
-		$('#edit-profile-data').click(function (e) {
-			e.preventDefault();
-			return false;
-		});
+		//removendo opção de editar dados no checkout
+		$('#edit-profile-data').remove();
+
 	};
 
 	this.pendingCompany = function () {

@@ -417,11 +417,11 @@ body {
 
 // Brinde checkout
 .cart-select-gift-placeholder {
-	
+
 	max-width: 50%;
 
 		@include breakpoint('extra-small', 'max') {
-			max-width: 100%; 
+			max-width: 100%;
 			width: 100%;
 		}
 
@@ -441,7 +441,7 @@ body {
 					margin-bottom: 0;
 				}
 		}
-	
+
 	.available-gift-items.btn-group.btn-group-vertical {
 		border: 1px solid #e6e6e6;
 
@@ -455,7 +455,7 @@ body {
 					&:first-child {
 						border-top: none;
 					}
-				
+
 					.checkbox-selector {
 						top: 25px !important;
 					}
@@ -464,7 +464,7 @@ body {
 }
 
 .body-cart {
-	
+
 	.brinde-ativo {
 		float: right;
 		padding-top: 8px;
@@ -473,7 +473,7 @@ body {
 			@include breakpoint('extra-small', 'max') {
 				width: 100%;
 			}
-			
+
 			.totalizers {
 				margin-bottom: 0;
 				margin-top: 84px;
@@ -495,5 +495,13 @@ body {
 						position: relative;
 					}
 			}
+	}
+}
+
+// removendo opção de editar dados no checkout
+body[class*='consulempresa'] {
+	#edit-profile-data {
+		display: none;
+		visibility: hidden;
 	}
 }
