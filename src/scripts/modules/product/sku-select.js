@@ -39,6 +39,21 @@ Nitro.module('sku-select', function() {
 		}
 	};
 
+	// Seleciona a voltagem automaticamente
+	$('.item-dimension-Voltagem .group_0').each(function() {
+		var skuList = $(this);
+		var skuLabel = skuList.find('label');
+		
+		if (skuLabel.hasClass('item_unavaliable') && skuLabel.length > 1) {
+			skuLabel.not('.item_unavaliable').click();			
+		}
+		
+		if (skuLabel.length === 1) {
+			skuLabel.click();
+		}
+
+	});
+
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
 
 	$('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');

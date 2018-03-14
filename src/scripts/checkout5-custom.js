@@ -68,6 +68,8 @@ $(window).on('load', function() {
 		this.userData = null;
 
 		this.init = function() {
+			self.hashChanged();
+			
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
 			if (window.hasher) {
@@ -78,7 +80,6 @@ $(window).on('load', function() {
 			}
 
 			return window.crossroads && window.crossroads.routed.add(function(request) {
-				//console.log('crossroads', request, data);
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
@@ -218,7 +219,7 @@ $(window).on('load', function() {
 		//hash changed
 		this.hashChanged = function () {
 			if (self.isOrderForm()) {
-				if (store && store.isCorp) {
+				if (store && store.isCorp === true || store.isQA) {
 					pj.changeProfileData();
 				}
 			}
@@ -355,9 +356,6 @@ $(window).on('load', function() {
 					elem.bundleItems.filter(function(bundle) {
 						return bundle.attachmentOfferings.length > 0;
 					}).forEach(function(bundle) {
-
-						// console.log('bundle', bundle);
-
 						return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
 					});
 				});
