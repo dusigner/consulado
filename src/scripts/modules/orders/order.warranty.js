@@ -323,6 +323,8 @@ var Warranty = {
 			idPlan = idPlan.match( /\d+/g ).join([]);
 
 			var data = {};
+			data.name     = store.userData.firstName + ' ' + store.userData.lastName;
+			data.email    = store.userData.email;
 			data.cancel = true;
 			data.document = Warranty.profileData.document;
 			data.garantia = $button.data('period');
@@ -370,9 +372,13 @@ var Warranty = {
 				idPlan = '0' + idPlan;
 			}
 
-			var data = {};
+			var dataClient = Warranty.profileData;
+
+			var data      = {};
+			data.name     = dataClient.firstName + ' ' +  dataClient.lastName;
+			data.email    = dataClient.email;
 			data.request = true;
-			data.document = Warranty.profileData.document;
+			data.document = dataClient.document;
 			data.garantia = $self.data('period');
 			data.order = idPlan;
 			data.skuRefId = $self.data('refid');
