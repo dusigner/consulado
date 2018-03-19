@@ -14,8 +14,10 @@
   	<vtex:template id="0-consul-head-content" />
   	<!-- @endif -->
 
+	<link rel="stylesheet" href="/arquivos/smart-beer.css" />
+
 </head>
-<body>
+<body data-controller="smart-beer">
 
 	<!-- @if DEBUG='development' -->
   	<!-- @include ../../subtemplates/consul-header.html -->
@@ -23,15 +25,152 @@
 
   	<!-- @if DEBUG='production' -->
   	<!-- Header -->
-	<vtex:template id="0-consul-header" />
+	<vtex:template id="0-consul-header" />	
 	<!-- /Header -->
 	<!-- @endif -->
 	  
+	<!-- SmartBeeer Start -->
+	<main class="smart-beer" id="smart-beer">
+		<!-- Intro Start -->
+		<section class="sb-intro">
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						<div class="sb-intro_info">
+							<h2 class="campanha-ofds">O FIM DA SAIDEIRA</h2>
+							<h3>Uma Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>
+							<p>*Conectada a um aplicativo com controle de estoque <br/> **Verificar a disponibilidade das lojas na sua região.</p>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="sb-intro_ilustra all">SmartBeer nos modelos Carbono, Budwiser e Cubo</div>
+					</div>
+					<div class="col-4">
+						
+						<div class="sb-intro_products">
 
-	<div class="container">
-		<h1> Content Landing </h1>
-	</div>
+							<div class="sb-intro_title">
+								<h1>A primeira Cervejeira conectada* do mercado</h1>
+							</div>
+							<div class="sb-intro_app">	
+								<span class="sb-intro_app-icon"></span>
+								<span class="sb-intro_app-download">
+									<p>baixe o app</p>
+									<ul>
+										<li><a href="#"><span class="icon-iphone"></span></a></li>
+										<li><a href="#"><span class="icon-android"></span></a></li>
+									</ul>
+								</span>
+							</div>
+							<div class="sb-intro-product-price">
+								<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+								<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+							</div>
+							<div class="sb-intro_select-sku">
+								<span>Selecione <br>o modelo:</span>
+								<ul>
+									<li><a href="#"><span class="carbono"></span></a></li>
+									<li><a href="#"><span class="cubo"></span></a></li>
+									<li><a href="#"><span class="budweiser"></span></a></li>
+								</ul>
+							</div>
+						</div>
 
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Intro end -->
+		
+		<!-- video start -->
+		<section class="sb-video">
+			<div class="container">
+				<div class="row">
+					<div class="col-5">
+						<div class="sb-video_info">
+							<h2>Bem pensado, é ser conectado</h2>
+							<p>A Cervejeira é conectada ao aplicativo Smartbeer_, que controla o estoque  e temperatura de qualquer lugar pelo seu smartphone, além de permitir a compra de cerveja pelo próprio app.</p>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="sb-video_player">
+							<button type="button" class="sb-video_btn">ASSISTA AO VÍDEO</button>
+							<span class="sb-video_thumb"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- video end -->
+
+		<!-- App start -->
+		<section class="sb-app">
+			<div class="container">
+				<div class="row">
+		
+				</div>
+			</div>
+		</section>
+		<!-- App end -->
+
+		<!-- Features start -->
+		<section class="sb-features">
+			<div class="container">
+				<div class="row">
+		
+				</div>
+			</div>
+		</section>
+		<!-- Features end -->
+
+		<!-- Vitrine start -->
+		<section class="sb-vitrine">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-3">
+						<div class="sb-vitrine-image">
+							<img src="https://dummyimage.com/250x460/ccc/fff" alt="Carbono">
+						</div>
+						<h3>Carbono</h3>
+						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+						<a href="#" class="link-sm">Saiba mais</a>
+					</div>
+					<div class="col-3">
+						<div class="sb-vitrine-image">
+							<img src="https://dummyimage.com/250x460/ccc/fff" alt="budweiser">
+						</div>
+						<h3>Budweiser</h3>
+						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+						<a href="#" class="link-sm">Saiba mais</a>
+					</div>
+					<div class="col-3">
+						<div class="sb-vitrine-image">
+							<img src="https://dummyimage.com/250x460/ccc/fff" alt="Cubo">
+						</div>
+						<h3>Carbono</h3>
+						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+						<a href="#" class="link-sm">Saiba mais</a>
+					</div>
+					<div class="sb-clear"></div>
+					<div class="sb-vitrine_message">
+						<p><span>ATENÇÃO:</span>Este produto é exclusivo e sua compra deverá ser realizada separadamente de outros produtos.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Vitrine end -->
+
+
+	</main>
+	<!-- SmartBeeer End -->
+	
 
 	<!-- @if DEBUG='development' -->
   	<!-- @include ../../subtemplates/consul-footer.html -->
