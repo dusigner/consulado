@@ -88,7 +88,7 @@ Nitro.module('header', ['cotas', 'search', 'welcome-message', 'menu-hover'], fun
 	window.vtexjs.checkout.getOrderForm().done(function(result) {
 		var orderForm = result;
 
-		if (orderForm.clientProfileData.email) {
+		if (orderForm && orderForm.clientProfileData && orderForm.clientProfileData.email) {
 			$('.logout').removeClass('hide');
 		}
 	});
