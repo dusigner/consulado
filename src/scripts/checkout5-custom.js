@@ -68,7 +68,7 @@ $(window).on('load', function() {
 		this.userData = null;
 
 		this.init = function() {
-			self.hashChanged();
+			self.hashChanged();			
 
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -83,6 +83,8 @@ $(window).on('load', function() {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
+
+
 		};
 
 		this.isCart = function() {
@@ -95,6 +97,52 @@ $(window).on('load', function() {
 
 		this.isShipping = function() {
 			return $('.shipping-data').hasClass('active');
+		};
+
+		this.smartbeer = function (e, orderForm){		
+			console.clear();
+			console.info('updatecarrinho');
+			var checkoutItems = vtexjs.checkout.orderForm.items,
+				checkoutItemsLength = checkoutItems.length,
+				btn_smartbeer = $('.btn_smartbeer');			
+
+				for (var i = 0; i < checkoutItemsLength; i++) {
+
+					console.log(checkoutItems[i].productId);
+
+					if (checkoutItems[i].productId === '564' ) {
+
+						$.each($('.product-item'), function( index, value ) {
+							var data_sku = $(this).attr('data-sku');
+							if (data_sku === '564'){
+								$(this).addClass('smartbeer');							
+							}
+						});
+
+
+						 if(checkoutItemsLength > 1){
+							 console.log('caiu o if');
+	 
+							 $('.fake-buttom').addClass('hide');
+	 
+							 if (btn_smartbeer.length === 0) {
+								 $('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.cart-links');
+							 }
+							 
+							 $('.btn_smartbeer').on('click', function(){
+								 console.log('clicou');
+								 $('#modal-smartbeer').vtexModal();
+							 });							 
+						 } else {
+							 console.log('caiu no else');
+							 $('.fake-buttom').removeClass('hide');
+							 $('.btn_smartbeer').addClass('hide');
+						 }
+						
+					}
+
+				}
+
 		};
 
 		//event
@@ -186,6 +234,8 @@ $(window).on('load', function() {
 					// console.log('Adicina Class Ativo');
 				}
 			}, 1);
+
+			self.smartbeer();
 
 			testeabEntregaAgendada.setup(orderForm);
 
@@ -440,6 +490,7 @@ $(window).on('load', function() {
 				}
 			});
 		};
+
 
 		this.init();
 

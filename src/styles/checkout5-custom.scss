@@ -505,3 +505,16 @@ body[class*='consulempresa'] {
 		visibility: hidden;
 	}
 }
+
+.smartbeer {
+	position: relative;
+
+		.aviso-smartbeer {			
+			display: block;
+			position: relative;
+			
+				span {
+					position: absolute;
+				}
+		}
+}
