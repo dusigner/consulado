@@ -505,3 +505,103 @@ body[class*='consulempresa'] {
 		visibility: hidden;
 	}
 }
+
+tr.product-item.smartbeer {
+	td {
+		padding:30px 10px 57px 10px !important;
+	}
+}
+
+.btn_smartbeer {
+    font-size: .9375rem !important;
+    padding: 16px 65px 10px 50px !important;
+	position: relative;
+	text-transform: uppercase;
+	
+
+	&:before {
+		@include contentBefore();
+		@include font-size(16px, true, false);
+		@include icon-get('arrow-right');
+		display: inline-block;
+		right: 40px;
+		top: 50%;
+		transform: translateY(-50%) scaleY(1);
+		transition: transform .2s ease-in;
+	}
+}
+
+.aviso-smartbeer {
+	color: #736c6b;
+	font-size: 16px;
+	left: 0;
+    border-bottom: 1px solid #f4f2f1;
+    border-top: 1px solid #f4f2f1;
+    margin-top: -42px;
+    padding-bottom: 9px;
+    padding-top: 8px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+}
+
+#vtex-modal-smartbeer {
+
+	.modal-header {
+		border: none;
+		color: #fff;
+		font-size: 0;
+		margin-bottom: 25px;
+
+		.close {			
+			color     : #747474;
+			font-size : 13px;
+			opacity: 1 !important;
+			right: 3px !important;
+			top: 3px !important;
+			z-index   : 33;
+
+				&:before {
+					@include icon-get('close-icon');                            
+				}
+		}
+	}
+	.modal-holder {
+		max-width: 665px;
+
+		.text-modal-smartbeer {
+
+			color: #736c6b;
+			font-size: 18px;			
+			padding: 15px;
+
+			& > h2 {
+
+				border: 1px solid #94bc42;
+				border-radius: 61px;
+				display: block;
+				font-size: 18px;
+				font-weight: normal;
+				line-height: 26px;
+				padding: 10px 30px;
+
+					strong {
+						color: #94bc42;
+					}
+
+			}
+
+			button.close {
+				background: #94bc42;
+				color: #fff;
+				display: block;
+				float: none;
+				font-size: 12px;
+				font-weight: normal;
+				margin: 21px auto 7px;
+				opacity: 1;
+				padding: 6px 23px;
+			}
+		}
+	}
+}

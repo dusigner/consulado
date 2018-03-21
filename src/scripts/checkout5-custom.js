@@ -68,7 +68,7 @@ $(window).on('load', function() {
 		this.userData = null;
 
 		this.init = function() {
-			self.hashChanged();
+			self.hashChanged();			
 
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -83,6 +83,8 @@ $(window).on('load', function() {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
+
+
 		};
 
 		this.isCart = function() {
@@ -95,6 +97,46 @@ $(window).on('load', function() {
 
 		this.isShipping = function() {
 			return $('.shipping-data').hasClass('active');
+		};
+
+		this.smartbeer = function (){			
+			console.info('update-smartbeer');
+			var productItems = [],
+				checkoutItems = vtexjs.checkout.orderForm.items,
+				checkoutItemsLength = checkoutItems.length,
+				btn_smartbeer = $('.btn_smartbeer');
+
+			for (var i = 0; i < checkoutItemsLength; i++) {
+				productItems.push(checkoutItems[i].productId);
+			}
+
+			if (checkoutItemsLength > 1 && productItems.indexOf('563') !== -1 || productItems.indexOf('564') !== -1 || productItems.indexOf('565') !== -1 || productItems.indexOf('766') !== -1 || productItems.indexOf('767') !== -1 || productItems.indexOf('768') !== -1) {
+
+				$('.fake-buttom').addClass('hide');
+				$('.cart-items').css('position', 'relative');
+
+				if (btn_smartbeer.length <= 0) {
+					$('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.cart-links');
+				}
+
+				$('.btn_smartbeer').on('click', function(){
+					$('#modal-smartbeer').vtexModal();
+				});
+
+				$.each($('.product-item'), function( ) {
+					var data_sku = $(this).attr('data-sku'),
+						aviso_smart = '<div class="aviso-smartbeer">A pré venda desse produto é <strong>exclusiva</strong> e sua compra deverá ser realizada <strong>separadamente</strong> de outros produtos.</div>';
+					if (data_sku === '563' || data_sku === '564' || data_sku === '565' || data_sku === '766' || data_sku === '767' || data_sku === '768'){
+						$(this).addClass('smartbeer');
+						$(aviso_smart).insertAfter(this);
+					}						
+				});
+
+			} else {
+				$('.fake-buttom').removeClass('hide');
+				$('.btn_smartbeer').addClass('hide');
+			}
+
 		};
 
 		//event
@@ -186,6 +228,8 @@ $(window).on('load', function() {
 					// console.log('Adicina Class Ativo');
 				}
 			}, 1);
+
+			self.smartbeer();
 
 			testeabEntregaAgendada.setup(orderForm);
 
@@ -440,6 +484,7 @@ $(window).on('load', function() {
 				}
 			});
 		};
+
 
 		this.init();
 
