@@ -99,7 +99,7 @@ $(window).on('load', function() {
 			return $('.shipping-data').hasClass('active');
 		};
 
-		this.smartbeer = function (){			
+		this.smartbeer = function (){
 			console.info('update-smartbeer');
 			var productItems = [],
 				checkoutItems = vtexjs.checkout.orderForm.items,
@@ -107,10 +107,11 @@ $(window).on('load', function() {
 				btn_smartbeer = $('.btn_smartbeer');
 
 			for (var i = 0; i < checkoutItemsLength; i++) {
-				productItems.push(checkoutItems[i].productId);
+				productItems.push(checkoutItems[i].id);				
 			}
-
-			if (checkoutItemsLength > 1 && productItems.indexOf('563') !== -1 || productItems.indexOf('564') !== -1 || productItems.indexOf('565') !== -1 || productItems.indexOf('766') !== -1 || productItems.indexOf('767') !== -1 || productItems.indexOf('768') !== -1) {
+						
+			if ( (productItems.indexOf('563') !== -1 || productItems.indexOf('564') !== -1 || productItems.indexOf('565') !== -1 || productItems.indexOf('766') !== -1 || productItems.indexOf('767') !== -1 || productItems.indexOf('768') !== -1)  && checkoutItemsLength > 1) {
+				
 
 				$('.fake-buttom').addClass('hide');
 				$('.cart-items').css('position', 'relative');
@@ -132,7 +133,7 @@ $(window).on('load', function() {
 					}						
 				});
 
-			} else {
+			} else {				
 				$('.fake-buttom').removeClass('hide');
 				$('.btn_smartbeer').addClass('hide');
 			}
