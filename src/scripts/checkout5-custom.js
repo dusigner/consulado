@@ -68,7 +68,7 @@ $(window).on('load', function() {
 		this.userData = null;
 
 		this.init = function() {
-			self.hashChanged();			
+			self.hashChanged();
 
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -83,6 +83,8 @@ $(window).on('load', function() {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
+
+
 
 
 		};
@@ -114,9 +116,10 @@ $(window).on('load', function() {
 				
 
 				$('.fake-buttom').addClass('hide');
-				// $('.product-item').removeClass('unavailable lookatme');
-				// $('.item-unavailable').css('display', 'none');
+				$('.product-item').removeClass('unavailable lookatme');
+				$('.item-unavailable').css('display', 'none');
 				$('.cart-items').css('position', 'relative');
+				$('span[data-i18n="global.unavailable"]').addClass('shipping-estimate-date').html('a calcular');
 
 				if (btn_smartbeer.length <= 0) {
 					$('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.cart-links');
