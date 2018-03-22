@@ -110,10 +110,12 @@ $(window).on('load', function() {
 				productItems.push(checkoutItems[i].id);				
 			}
 						
-			if ( (productItems.indexOf('563') !== -1 || productItems.indexOf('564') !== -1 || productItems.indexOf('565') !== -1 || productItems.indexOf('766') !== -1 || productItems.indexOf('767') !== -1 || productItems.indexOf('768') !== -1)  && checkoutItemsLength > 1) {
+			if ( (productItems.indexOf('997') !== -1 || productItems.indexOf('998') !== -1 || productItems.indexOf('999') !== -1 || productItems.indexOf('1000') !== -1 || productItems.indexOf('1001') !== -1 || productItems.indexOf('1002') !== -1)  && checkoutItemsLength > 1) {
 				
 
 				$('.fake-buttom').addClass('hide');
+				// $('.product-item').removeClass('unavailable lookatme');
+				// $('.item-unavailable').css('display', 'none');
 				$('.cart-items').css('position', 'relative');
 
 				if (btn_smartbeer.length <= 0) {
@@ -130,8 +132,8 @@ $(window).on('load', function() {
 
 				$.each($('.product-item'), function( ) {
 					var data_sku = $(this).attr('data-sku'),
-						aviso_smart = '<div class="aviso-smartbeer">A pré venda desse produto é <strong>exclusiva</strong> e sua compra deverá ser realizada <strong>separadamente</strong> de outros produtos.</div>';
-					if (data_sku === '563' || data_sku === '564' || data_sku === '565' || data_sku === '766' || data_sku === '767' || data_sku === '768'){
+						aviso_smart = '<tr><td class="aviso-smartbeer" colspan="7">A pré venda desse produto é <strong>exclusiva</strong> e sua compra deverá ser realizada <strong>separadamente</strong> de outros produtos.</td></tr>';
+					if (data_sku === '997' || data_sku === '998' || data_sku === '999' || data_sku === '1000' || data_sku === '1001' || data_sku === '1002'){
 						$(this).addClass('smartbeer');
 						$(aviso_smart).insertAfter(this);
 					}						
