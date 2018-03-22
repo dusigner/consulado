@@ -506,17 +506,6 @@ body[class*='consulempresa'] {
 	}
 }
 
-tr.product-item.smartbeer {
-	td {
-		padding: 30px 10px 57px 10px !important;		
-	}
-}
-@include breakpoint('small', 'max') {
-	body.body-cart .cart .cart-items tbody tr.product-item.smartbeer td.quantity {
-		padding: 30px 10px 182px 10px !important;
-	}	
-}
-
 .btn_smartbeer {
     font-size: .9375rem !important;
     padding: 16px 65px 10px 50px !important;
@@ -536,38 +525,11 @@ tr.product-item.smartbeer {
 }
 
 
-@include breakpoint('small', 'max') {
-	body.body-cart .cart .cart-items tbody tr.product-item .product-image {
-		background: url('../img/loader-inline.gif') center 33px no-repeat !important;
-	}
-
-	.cart-links .btn_smartbeer {
-		display: none !important;
-	}
-}
-
-@include breakpoint('extra-small', 'max') {
-	body.body-cart .cart .cart-items tbody tr.product-item.smartbeer td.quantity {
-		padding: 30px 10px 110px 10px !important;
-	}	
-}
-
 .aviso-smartbeer {
-    border-bottom: 1px solid #f4f2f1;
-    border-top: 1px solid #f4f2f1;
+    border-top: 1px solid #f4f2f1 !important;
 	color: #736c6b;
 	font-size: 16px;
-	left: 0;
-    margin-top: -42px;
-    padding-bottom: 9px;
-    padding-top: 8px;
-    position: absolute;
-    right: 0;
-	text-align: center;
-		
-		@include breakpoint('small', 'max') {		
-			margin-top: -88px;
-		}
+	text-align: center !important;
 }
 
 #vtex-modal-smartbeer {
@@ -614,6 +576,12 @@ tr.product-item.smartbeer {
 						color: #94bc42;
 					}
 
+					@include breakpoint('small', 'max') {
+						font-size: 14px;
+						line-height: 18px;
+						padding: 10px 24px;
+					}
+
 			}
 
 			button.close {
@@ -628,5 +596,11 @@ tr.product-item.smartbeer {
 				padding: 6px 23px;
 			}
 		}
+	}
+}
+
+@include breakpoint('small', 'max') {
+	.cart-links .btn_smartbeer {
+		display: none !important;
 	}
 }
