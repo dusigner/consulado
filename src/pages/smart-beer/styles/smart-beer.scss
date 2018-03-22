@@ -36,6 +36,15 @@ $fontSB : 'nowayregular', sans-serif;
 #smart-beer {
 	background: #252525  url('/arquivos/bg-texture-black.jpg');
 	padding: 20px 0;
+	section{
+		opacity: 0;
+		transform: translateY(50px);
+		transition: all 1s ease-out;
+		&.fade-in{
+			opacity:1;
+			transform: translateY(0);
+		}
+	}
 	.sb-clear{
 		clear: both;
 		.icon-arrow-down{
@@ -95,47 +104,61 @@ $fontSB : 'nowayregular', sans-serif;
 
 // SB Intro
 .sb-intro {
+	.col-4:nth-of-type(2){
+		position: relative;
+	}
 	.sb-intro_info{
 
 		h2.campanha-ofds {
 			background: url('/arquivos/slogan-o-fim-da-saideira.png') no-repeat;
+			color: #b5b5b5;
+			font-family: $fontSB;
 			font-size: 0;
 			height: 250px;
-			width: 350px;
 			margin-top:50px;
-			font-family: $fontSB;
-			color: #b5b5b5;
+			opacity: 0;
+			position: relative;
+			width: 350px;
 		}
 		h3 {
+			color: #b5b5b5;
+			font-family: $fontSB;
 			font-size: 22px;
 			font-weight: 100;
-			font-family: $fontSB;
-			color: #b5b5b5;
+			opacity: 0;
+			position: relative;
 			span{
 				color: $green;
 			}
 		}
 		p {
-			font-size:12px;
-			font-family: $fontSB;
 			color: #b5b5b5;
+			font-family: $fontSB;
+			font-size:12px;
+			opacity: 0;
+			position: relative;
 		}
 	}
 	.sb-intro_ilustra {
 		font-size: 0;
 		height: 560px;
 		width:365px;
-		
+		position: relative;
+		// opacity: 0;
 		&.all {
-			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center bottom no-repeat;
+			transition: ease 0.3s all; 
+			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
 		}
 		&.carbono {
-			background: url('/arquivos/imageSteel-smartBeer-03-Carbono.png') center bottom no-repeat;
+			transition: ease 0.3s all; 
+			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center bottom no-repeat;
 		}
 		&.cubo {
+			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
 		}
 		&.budweiser {
+			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center bottom no-repeat;
 		}
 	}
@@ -146,6 +169,8 @@ $fontSB : 'nowayregular', sans-serif;
 				font-size: 30px;
 				text-transform: uppercase;
 				font-family: $fontSB;
+				opacity: 0;
+				position: relative;
 			}
 		}
 		.sb-intro_app {
@@ -153,6 +178,8 @@ $fontSB : 'nowayregular', sans-serif;
 			float: left;
 			width: 100%;
 			margin-bottom: 10px;
+			opacity: 0;
+			position: relative;
 			.sb-intro_app-icon {
 				background: url('/arquivos/icon-consul-app-m.png') no-repeat;
 				width: 67px;
@@ -204,6 +231,8 @@ $fontSB : 'nowayregular', sans-serif;
 			float: left;
 			margin: 10px 0;
 			width: 100%;
+			opacity: 0;
+			position: relative;
 			p.value-buy {
 				color: #FFF;
 				font-family: $fontSB;
@@ -228,6 +257,8 @@ $fontSB : 'nowayregular', sans-serif;
 			float: left;
 			margin: 20px 0;
 			width: 100%;
+			opacity: 0;
+			position: relative;
 			span{
 				color: #fff;
 				float:left;
@@ -274,8 +305,10 @@ $fontSB : 'nowayregular', sans-serif;
 			float: left;
 			margin: 15px 0 0;
 			width: 100%;
-			transition: ease 0.3s all; 
+			opacity: 0;
+			position: relative;
 			a{
+				transition: ease 0.3s all; 
 				width: 230px;
 				border-radius: 35px;
 				border: 2px solid $green;
@@ -358,13 +391,13 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-app {
 	font-family: $fontSB;
 	padding:50px 0;
+	
 	.sb-app-title{
 		padding-right: 20px;
 		float: left;
 		margin: 40% 0 0;
 		.icon-consul-app-g{
 			background: url('/arquivos/icon-consul-app-g.png')center center no-repeat;
-			display: inline-block;
 			float: left;
 			height: 105px;
 			width: 105px;
@@ -391,7 +424,6 @@ $fontSB : 'nowayregular', sans-serif;
 		float: left;
 		.btn-download-app-store{
 			background: url('/arquivos/btn-download-app-store.png')center center no-repeat;
-			display: inline-block;
 			float: left;
 			height: 61px;
 			width: 175px;
@@ -400,7 +432,6 @@ $fontSB : 'nowayregular', sans-serif;
 		.btn-download-google-play{
 			background: url('/arquivos/btn-download-google-play.png')center center no-repeat;
 			display: inline-block;
-			float: left;
 			height: 60px;
 			width: 204px;
 		}
@@ -570,7 +601,6 @@ $fontSB : 'nowayregular', sans-serif;
 			width:571px;
 		}
 	}
-
 	.sb-features-steep1{
 		// display: block;
 		display:none;
@@ -763,13 +793,25 @@ $fontSB : 'nowayregular', sans-serif;
 			}
 		}
 	}
+	.sb-f-massage{
+		text-align: center;
+		color: #dbd9d9;
+		font-size: 14px;
+		text-align: center;
+		color: #dbd9d9;
+		font-size: 14px;
+		bottom: 0;
+		position: absolute;
+		width: 100%;
+		left: 0;
+	}
 
 }
 
 //SB Dimensoes
 .sb-dimensoes{
 	font-family: $fontSB;
-	padding:50px 0;
+	padding:50px 0 0;
 	.row{
 		padding: 50px 0;
 	}
@@ -812,7 +854,7 @@ $fontSB : 'nowayregular', sans-serif;
 	font-family: $fontSB;
 	padding:50px 0;
 	background: url('/arquivos/bg-sb-vitrine.png') left -20px repeat-x;
-	background-style:cover;
+	// background-size:cover;
 	h2{
 		text-align: center;
 		color: #fff;
@@ -874,6 +916,8 @@ $fontSB : 'nowayregular', sans-serif;
     	color: #FFF;
 	}
 	.sb-vitrine_message{
+		// bottom:0;
+		// position: absolute;
 		text-align: center;
 		color: #FFF;
 		span{
