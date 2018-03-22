@@ -118,6 +118,10 @@ $(window).on('load', function() {
 
 				if (btn_smartbeer.length <= 0) {
 					$('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.cart-links');
+
+					if ($(window).width() <= 768){
+						$('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.field-button');
+					}
 				}
 
 				$('.btn_smartbeer').on('click', function(){
