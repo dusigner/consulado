@@ -802,16 +802,13 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-f-massage {
-		text-align: center;
-		color: #dbd9d9;
-		font-size: 14px;
-		text-align: center;
-		color: #dbd9d9;
-		font-size: 14px;
 		bottom: 0;
-		position: absolute;
-		width: 100%;
+		color: #dbd9d9;
+		font-size: 14px;
 		left: 0;
+		position: absolute;
+		text-align: center;
+		width: 100%;
 	}
 
 }
@@ -932,4 +929,101 @@ $fontSB : 'nowayregular', sans-serif;
 			color: $green;
 		}
 	}
-}	
+}
+
+body.page-smartbeer {
+
+	.pre-header {
+		background: #000;
+
+		a.active {
+			border-bottom-color: $green;
+			color: $green;
+		}
+
+		a[title*=Televendas] {
+			color: $green;
+		}
+	}
+
+	nav.top-navigation,
+	header[data-module="header"] {
+		background: #252525;		
+		
+				.account {
+					color: #fff;
+			
+					#login {
+					background: none;
+					color: #fff;
+					}
+					.account__icon--enter, 
+					.account__icon--profile {
+						fill: #fff;
+					}
+
+					.account__icon--truck,
+					a {
+						color: #fff;
+						fill: #fff;
+					}
+
+				}				
+			
+
+			.minicart .cart-quantity {
+				background-color: #252525;
+				border: 2px solid #9aca3e;
+				color: #9aca3e;
+				line-height: 29px;
+			}
+
+			.form-search .text-search {
+				background: #454545;
+				border: 1px solid #010101;
+			}
+
+		}
+
+	.menu-department {
+		border-top: 1px solid #454545;
+
+			.dropdown {
+
+				border: 2px solid $green;
+
+				& > a {
+					color: $green !important;
+				}
+
+				.first-level.menu-category {
+					background: #252525;
+					border: 1px solid #000;				
+				}
+
+				.menu-category:before {
+					background-color: #252525;
+					border: 1px solid #000000;
+				}
+				
+				.menu-category:after {
+					border-top: 1px solid #505050;
+				}
+
+				.menu-subcategory .item a {
+					background: #4f4f4f;
+					border: 1px solid #c2c2c2;
+					color: #fff;
+				}
+
+
+			}
+			
+			& > .item {
+				& > a {
+					color: #fff;}
+			}
+				
+	}
+
+}
