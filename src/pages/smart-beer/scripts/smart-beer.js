@@ -10,6 +10,8 @@
 //     this.init();
 // });
 
+var slick = require('vendors/slick');
+var modal = require('vendors/vtex-modal');
 var TweenMax = require('vendors/TweenMax');
 // var TimelineMax = require('vendors/TimelineMax');
 // var TweenLite = require('vendors/TweenLite');
@@ -18,62 +20,65 @@ var ScrollMagic = require('vendors/ScrollMagic');
 // var addIndicators = require('vendors/debug.addIndicators');
 // $('.sb-intro .sb-intro_info .campanha-ofds')
 
-// Init ScrollMagic
-var controller = new ScrollMagic.Controller();
 
-var introScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-intro',
-    duration: '100%',
-    triggerHook: 0.9,
-})
-.setClassToggle('.sb-intro', 'fade-in')
-.addTo(controller);
-
-var videoScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-video',
-    duration: '100%',
-    triggerHook: 0.9,
-})
-.setClassToggle('.sb-video', 'fade-in')
-.addTo(controller);
-
-var appScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-app',
-    duration: '100%',
-    triggerHook: 0.9
-    // reverse: false
-})
-.setClassToggle('.sb-app', 'fade-in')
-.addTo(controller);
-
-var featuresScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-features',
-    duration: '100%',
-    triggerHook: 0.9
-    // reverse: false
-})
-.setClassToggle('.sb-features', 'fade-in')
-.addTo(controller);
-
-var dimensoesScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-dimensoes',
-    duration: '100%',
-    triggerHook: 0.9
-    // reverse: false
-})
-.setClassToggle('.sb-dimensoes', 'fade-in')
-.addTo(controller);
-
-var vitrineScene = new ScrollMagic.Scene({
-    triggerElement: '.sb-vitrine',
-    triggerHook: 0.9,
-    reverse: false
-})
-.setClassToggle('.sb-vitrine', 'fade-in')
-.addTo(controller);
-
-$('document').ready(function(){
+var animation_Sections = function(){
+    // Init ScrollMagic
+    var controller = new ScrollMagic.Controller();
     
+    var introScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-intro',
+        duration: '100%',
+        triggerHook: 0.9,
+    })
+    .setClassToggle('.sb-intro', 'fade-in')
+    .addTo(controller);
+    
+    var videoScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-video',
+        duration: '100%',
+        triggerHook: 0.9,
+    })
+    .setClassToggle('.sb-video', 'fade-in')
+    .addTo(controller);
+    
+    var appScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-app',
+        duration: '100%',
+        triggerHook: 0.9
+        // reverse: false
+    })
+    .setClassToggle('.sb-app', 'fade-in')
+    .addTo(controller);
+    
+    var featuresScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-features',
+        duration: '100%',
+        triggerHook: 0.9
+        // reverse: false
+    })
+    .setClassToggle('.sb-features', 'fade-in')
+    .addTo(controller);
+    
+    var dimensoesScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-dimensoes',
+        duration: '100%',
+        triggerHook: 0.9
+        // reverse: false
+    })
+    .setClassToggle('.sb-dimensoes', 'fade-in')
+    .addTo(controller);
+    
+    var vitrineScene = new ScrollMagic.Scene({
+        triggerElement: '.sb-vitrine',
+        triggerHook: 0.9,
+        reverse: false
+    })
+    .setClassToggle('.sb-vitrine', 'fade-in')
+    .addTo(controller);
+
+};
+
+var animation_Intro = function(){
     // Intro Animations Start
     
     TweenMax.from('.sb-intro .col-4:nth-of-type(2)', 1, {
@@ -169,6 +174,27 @@ $('document').ready(function(){
     });
 
     // Intro Animations End
+};
 
+$('document').ready(function(){
+    
+    animation_Sections();
+    animation_Intro();
+
+    $('.sb-video .sb-video_btn').on('click', function(){
+        $('#modal-video').vtexModal();
+    });
+
+    var screenWidth = $(window).width();
+    if (screenWidth <= '800'){
+        $('.sb-vitrine .prateleira').slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            mobileFirst: true,
+            dots: true,
+            arrows: true,
+            
+        });
+    }
     
 });

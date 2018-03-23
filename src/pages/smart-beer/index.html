@@ -18,7 +18,11 @@
 
 </head>
 <body data-controller="smart-beer">
-
+	
+	<div id="modal-video" style="display:none">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/dlDP5JzdHpQ?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"
+		 allowfullscreen></iframe>
+	</div>
 	<!-- @if DEBUG='development' -->
   	<!-- @include ../../subtemplates/consul-header.html -->
   	<!-- @endif -->
@@ -110,6 +114,7 @@
 							<button type="button" class="sb-video_btn">ASSISTA AO VÍDEO</button>
 							<span class="sb-video_thumb"></span>
 						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -344,35 +349,37 @@
 			<div class="container">
 				<div class="row">
 					<h2>CERVEJEIRA smartbeeR</h2>
-					<div class="col-4">
-						<div class="sb-vitrine-image">
-							<img src="/arquivos/vitrine-smartBeer-01-Carbono.png" alt="Carbono">
+					<div class="prateleira">
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-01-Carbono.png" alt="Carbono">
+							</div>
+							<h3>Carbono</h3>
+							<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+							<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+							<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+							<a href="#" class="link-sm">Saiba mais</a>
 						</div>
-						<h3>Carbono</h3>
-						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
-						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
-						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
-						<a href="#" class="link-sm">Saiba mais</a>
-					</div>
-					<div class="col-4">
-						<div class="sb-vitrine-image">
-							<img src="/arquivos/vitrine-smartBeer-03-Budweiser.png" alt="budweiser">
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-03-Budweiser.png" alt="budweiser">
+							</div>
+							<h3>Budweiser</h3>
+							<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+							<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+							<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+							<a href="#" class="link-sm">Saiba mais</a>
 						</div>
-						<h3>Budweiser</h3>
-						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
-						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
-						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
-						<a href="#" class="link-sm">Saiba mais</a>
-					</div>
-					<div class="col-4">
-						<div class="sb-vitrine-image">
-							<img src="/arquivos/vitrine-smartBeer-02-Cubo.png" alt="Cubo">
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-02-Cubo.png" alt="Cubo">
+							</div>
+							<h3>Carbono</h3>
+							<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+							<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
+							<button type="button" class="sb-vitrine_btn">COMPRAR</button>
+							<a href="#" class="link-sm">Saiba mais</a>
 						</div>
-						<h3>Carbono</h3>
-						<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
-						<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
-						<button type="button" class="sb-vitrine_btn">COMPRAR</button>
-						<a href="#" class="link-sm">Saiba mais</a>
 					</div>
 					<div class="sb-clear"></div>
 					<div class="sb-vitrine_message">
