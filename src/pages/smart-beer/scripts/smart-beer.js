@@ -193,7 +193,6 @@ $('document').ready(function(){
             mobileFirst: true,
             dots: true,
             arrows: true,
-            
         });
     }
     

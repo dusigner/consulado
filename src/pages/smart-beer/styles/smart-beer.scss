@@ -32,8 +32,8 @@ $fontSB : 'nowayregular', sans-serif;
 
 .vtex-modal {
 	.modal-holder {
-	max-width: 570px;
 	border-radius: 0;
+	max-width: 570px;
 	}
 	.modal-header {
 		padding: 3px;
@@ -55,7 +55,7 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-clear {
 		clear: both;
-		.icon-arrow-down{
+		.icon-arrow-down {
 			background: url('/arquivos/icon-arrow-down.png') center center no-repeat;
 			display: table;
 			height: 12px;
@@ -89,9 +89,9 @@ $fontSB : 'nowayregular', sans-serif;
 			&:before {
 				background: #617239;
 				border-radius: 26px;
-				content:'';
+				content: '';
 				height: 25px;
-				opacity: 0.5;
+				opacity: .5;
 				position: absolute;
 				right: -8px;
 				top: -8px;
@@ -103,8 +103,8 @@ $fontSB : 'nowayregular', sans-serif;
 				text-align: right;
 			}
 			.elipse {
-				right: initial;
 				left: -5px;
+				right: initial;
 			}
 		}
 	}
@@ -154,25 +154,25 @@ $fontSB : 'nowayregular', sans-serif;
 		width: 365px;
 		// opacity: 0;
 		&.all {
-			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
+			transition: ease .3s all; 
 		}
 		&.carbono {
-			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center bottom no-repeat;
+			transition: ease .3s all; 
 		}
 		&.cubo {
-			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
+			transition: ease .3s all; 
 		}
 		&.budweiser {
-			transition: ease 0.3s all; 
 			background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center bottom no-repeat;
+			transition: ease .3s all; 
 		}
 	}
 	.sb-intro_products {
 		.sb-intro_title {
-			h1{
+			h1 {
 				color: #FFF;
 				font-family: $fontSB;
 				font-size: 30px;
@@ -206,9 +206,9 @@ $fontSB : 'nowayregular', sans-serif;
 					font-size: 16px;
 					font-weight: 500;
 					line-height: 15px;
+				    margin: 0;
 					padding: 0 8px;
 					text-align: center;
-				    margin: 0;
 				}
 				ul {
 					padding: 10px 0 0 10px;
@@ -291,8 +291,8 @@ $fontSB : 'nowayregular', sans-serif;
 					}
 				}
 				span {
-					border-radius: 35px;
 					border: 2px solid #3d3d3e;
+					border-radius: 35px;
 					display: block;
 					height: 60px;
 					width: 60px;
@@ -316,14 +316,14 @@ $fontSB : 'nowayregular', sans-serif;
 			position: relative;
 			width: 100%;
 			a {
-				border-radius: 35px;
 				border: 2px solid $green;
+				border-radius: 35px;
 				color: $green;
 				display: none;
 				font-family: $fontSB;
 				padding: 16px 0;
 				text-align: center;
-				transition: ease 0.3s all; 
+				transition: ease .3s all; 
 				width: 230px;
 				&.active {
 					display: inline-block;
@@ -331,7 +331,7 @@ $fontSB : 'nowayregular', sans-serif;
 				&:hover {
 					background: $green;
 					color: #FFF;
-					transition: ease 0.3s all; 
+					transition: ease .3s all; 
 				}
 			}
 		}
@@ -342,9 +342,9 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-video {
 
 	.sb-video_info {
-		color:#FFF;
+		color: #FFF;
 		font-family: $fontSB;
-		padding:40px 0 20px;
+		padding: 40px 0 20px;
 		h2 {
 			font-size: 38px;
 			font-weight: 300;
@@ -358,15 +358,15 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	
 	.sb-video_player {
-		background-size: contain;
 		background: url('/arquivos/player-moldura.png') center center no-repeat;
-		position: relative;
+		background-size: contain;
     	float: right;
+		position: relative;
     	width: 100%;
 		.sb-video_btn {
 			background: transparent;
-			border-radius: 35px;
 			border: 2px solid $green;
+			border-radius: 35px;
 			color: $green;
 			display: inline-block;
 			font-family: $fontSB;
@@ -381,14 +381,14 @@ $fontSB : 'nowayregular', sans-serif;
 			&:hover {
 				background: $green;
 				color: #FFF;
-				transition: ease 0.3s all; 
+				transition: ease .3s all;
 			}
 		}
 		.sb-video_thumb {
 			background: url('/arquivos/player-thumb-video.png') center center no-repeat;
 			display: table;
-			height:300px;
-			margin:70px auto;
+			height: 300px;
+			margin: 70px auto;
 			width: 535px;
 		}
 	}
@@ -398,7 +398,7 @@ $fontSB : 'nowayregular', sans-serif;
 //SB App
 .sb-app {
 	font-family: $fontSB;
-	padding:50px 0;
+	padding: 50px 0;
 	
 	.sb-app-title {
 		float: left;
@@ -421,7 +421,7 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		h4 {
 			display: none;
-			float:left;
+			float: left;
 			width: 100%;
 		}
 	}
@@ -447,10 +447,10 @@ $fontSB : 'nowayregular', sans-serif;
 	.mockup-mobile {
 		background: url('/arquivos/mockup-iphone.png') top left no-repeat;
 		display: block;
-		float:left;
-		height:600px;
+		float: left;
+		height: 600px;
 		position: relative;
-		width:100%;
+		width: 100%;
 	}
 	.sb-app-steep1 {
 		// display: block;
@@ -466,38 +466,37 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-app-steep2 {
 		// display:block;
-		display:none;
+		display: none;
 		.app-screen-02 {
-			position: absolute;
 			background: url('/arquivos/app-screen-02.png')center center no-repeat;
-			width: 229px;
 			height: 402px;
-			top: 88px;
 			left: 62px;
+			position: absolute;
+			top: 88px;
+			width: 229px;
 		}
 		.as-02-01 {
 			position: absolute;
-			top: 132px;
 			right: 0;
+			top: 132px;
 			width: 58%;
-
 		}
 		.as-02-02 {
 			position: absolute;
-			top: 297px;
 			right: 0;
+			top: 297px;
 			width: 58%;
 		}
 		.as-02-03 {
 			position: absolute;
-			top: 347px;
 			right: 0;
+			top: 347px;
 			width: 58%;
 		}
 		.as-02-04 {
 			position: absolute;
-			top: 392px;
 			right: 0;
+			top: 392px;
 			width: 58%;
 		}
 
@@ -506,29 +505,29 @@ $fontSB : 'nowayregular', sans-serif;
 		// display: block;
 		display: none;
 		.app-screen-03 {
-			position: absolute;
 			background: url('/arquivos/app-screen-03.png')center center no-repeat;
-			width: 229px;
 			height: 402px;
-			top: 88px;
 			left: 62px;
+			position: absolute;
+			top: 88px;
+			width: 229px;
 		}
 		.as-03-01 {
 			position: absolute;
-			top: 133px;
 			right: 0;
+			top: 133px;
 			width: 75%;
 		}
 		.as-03-02 {
 			position: absolute;
-			top: 232px;
 			right: 0;
+			top: 232px;
 			width: 75%;
 		}
 		.as-03-03 {
 			position: absolute;
-			top: 370px;
 			right: 0;
+			top: 370px;
 			width: 60%;
 		}
 	}
@@ -536,39 +535,39 @@ $fontSB : 'nowayregular', sans-serif;
 		display: block;
 		// display: none;
 		.app-screen-04 {
-			position: absolute;
 			background: url('/arquivos/app-screen-04.png')center center no-repeat;
-			width: 229px;
 			height: 402px;
-			top: 88px;
 			left: 62px;
+			position: absolute;
+			top: 88px;
+			width: 229px;
 		}
 		.as-04-01 {
 			position: absolute;
-			top: 140px;
 			right: 0;
+			top: 140px;
 			width: 60%;
 			p {
-				float:right;
-				width:202px;
 				color: #FFF;
+				float: right;
+				width: 202px;
 			}
 			.logo-parceiros {
-				float:right;
-				width:202px;
 				color: #FFF;
+				float: right;
+				width: 202px;
 				.logo-parceiro-ze-delivery {
-					display: inline-block;
 					background: url('/arquivos/logo-parceiro-ze-delivery.png')center center no-repeat;
-					width: 61px;
+					display: inline-block;
 					height: 52px;
 					margin-right: 5px;
+					width: 61px;
 				}
 				.logo-parceiro-emporio {
-					display: inline-block;
 					background: url('/arquivos/logo-parceiro-emporio.png')center center no-repeat;
-					width:118px;
+					display: inline-block;
 					height: 40px;
+					width: 118px;
 				}
 			}
 			
@@ -579,102 +578,102 @@ $fontSB : 'nowayregular', sans-serif;
 //SB Features
 .sb-features {
 	font-family: $fontSB;
-	padding:50px 0;
 	min-height: 700px;
+	padding: 50px 0;
 	.cervejeira {
 		display: block;
-		position: absolute;
-		top:0;
+		height: 573px;
+		left: 50%;
 		margin-left: -150px;
-		left:50%;
-		height:573px;
+		position: absolute;
+		top: 0;
 		&.fechada {
 			background: url('/arquivos/features-image-product.png') top left no-repeat;
-			width:307px;
+			width: 307px;
 		}
 		&.aberta {
 			background: url('/arquivos/features-image-product-open-door.png') top left no-repeat;
-			width:571px;
+			width: 571px;
 		}
 		&.latas {
 			background: url('/arquivos/features-image-product-latas.png') top left no-repeat;
-			width:571px;
+			width: 571px;
 		}
 		&.garrafas {
 			background: url('/arquivos/features-image-product-garrafas.png') top left no-repeat;
-			width:571px;
+			width: 571px;
 		}
 		&.longnecks {
 			background: url('/arquivos/features-image-product-long-necks.png') top left no-repeat;
-			width:571px;
+			width: 571px;
 		}
 	}
 	.sb-features-steep1 {
 		// display: block;
-		display:none;
+		display: none;
 		position: relative;
 		.box {
 			background: #202020;
-			width: 403px;
+			border-bottom: 1px solid #000;
+			border-top: 1px solid #454545;
 			box-sizing: border-box;
 			padding: 8px 16px 8px 70px;
-			border-top:1px solid #454545;
-			border-bottom:1px solid #000;
 			position: relative;
+			width: 403px;
 			.icon {
-				width: 50px;
-				height: 130px;
 				float: left;
-				position: absolute;
+				height: 130px;
 				left: 20px;
-				top:20px;
+				position: absolute;
+				top: 20px;
+				width: 50px;
 			}
-			p{
-				color:#d5d5d5;
+			p {
+				color: #d5d5d5;
 				margin-top: 5px;
 			}
 		}
 		.f-01-01 {
+			left: 0;
 			position: absolute;
 			top: 45px;
-			left: 0;
 			width: 42%;
 			.icon-conectividade {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
 			}
 		}
 		.f-01-02 {
+			left: 0;
 			position: absolute;
 			top: 173px;
-			left: 0;
 			width: 36%;
 			.icon-estoque-temp {
 				background: url('/arquivos/icon-features-estoque.png') top left no-repeat;
 			}
 		}
 		.f-01-03 {
+			border-bottom: 1px solid #454545;
+			left: 0;
 			position: absolute;
 			top: 347px;
-			left: 0;
 			width: 403px;
-			border-bottom:1px solid #454545;
 			.icon-notificacao {
 				background: url('/arquivos/icon-features-notificacao.png') top left no-repeat;
 			}
 		}
 		.f-01-04 {   
 			position: absolute;
-			top: 82px;
 			right: 0;
+			top: 82px;
 			width: 51%;
 			&.right {
 				.legend {
 					text-align: left!important;
 				}
 				.box {
-					float:right;
+					border-bottom: 1px solid #454545;
+					float: right;
 					width: 396px;
-					border-bottom:1px solid #454545;
 				}
 			}
 			.icon-cerveja-one-click {
@@ -685,32 +684,32 @@ $fontSB : 'nowayregular', sans-serif;
 
 	.sb-features-steep2 {
 		// display:block;
-		display:none;
+		display: none;
 		position: relative;
 		.box {
 			background: #202020;
-			width: 403px;
+			border-bottom: 1px solid #454545;
 			box-sizing: border-box;
 			padding: 8px 16px 8px 70px;
-			border-bottom:1px solid #454545;
 			position: relative;
+			width: 403px;
 			.icon {
-				width: 50px;
-				height: 130px;
 				float: left;
-				position: absolute;
+				height: 130px;
 				left: 20px;
-				top:20px;
+				position: absolute;
+				top: 20px;
+				width: 50px;
 			}
 			p {
-				color:#d5d5d5;
+				color: #d5d5d5;
 				margin-top: 5px;
 			}
 		}
 		.f-02-01 {
+			left: 0;
 			position: absolute;
 			top: 45px;
-			left: 0;
 			width: 42%;
 			.icon-porta-aberta {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
@@ -718,17 +717,17 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		.f-02-02 {   
 			position: absolute;
-    		top: 45px;
     		right: 0;
+    		top: 45px;
 			width: 49%;
 			&.right {
 				.legend {
 					text-align: left!important;
 				}
 				.box {
-					float:right;
+					border-bottom: 1px solid #454545;
+					float: right;
 					width: 396px;
-					border-bottom:1px solid #454545;
 				}
 			}
 			.icon-happy-hour {
@@ -738,32 +737,32 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-features-steep3 {
 		// display: block;
-		display:none;
+		display: none;
 		position: relative;
 		.f-03-01 {
+			left: 0;
 			position: absolute;
 			top: 45px;
-			left: 0;
 			width: 47%;
 		}
 		.f-03-02 {
+			left: 0;
 			position: absolute;
 			top: 215px;
-			left: 0;
 			width: 50%;
 		}
 		.f-03-03 {
+			left: 0;
 			position: absolute;
 			top: 352px;
-			left: 0;
 			width: 42%;
 		}
 		.f-03-04 {
+			border-right: 2px solid $green;
+			left: 0;
 			position: absolute;
 			top: 490px;
-			left: 0;
 			width: 39%;
-			border-right: 2px solid $green;
 			.elipse {
 				top: 30px!important;
 			}
@@ -771,28 +770,27 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-features-steep4 {
 		display: block;
-		// display:none;
 		position: relative;
 		.f-04-01 {
+			left: 0;
 			position: absolute;
 			top: 70px;
-			left: 0;
 			width: 42%;
 		}
 		.box-capacidade {
+			left: 0;
 			position: absolute;
 			top: 120px;
-			left: 0;
 			width: 35%;
 			p {
-				margin:15px 0 0;
-				color:#fff;
+				color: #fff;
 				font-size: 22px;
 				line-height: 40px;
+				margin: 15px 0 0;
 				strong {
 					font-size: 56px;
-					margin-right: 10px;
 					font-weight: 300;
+					margin-right: 10px;
 				}
 			}
 			span {
@@ -802,16 +800,13 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-f-massage {
-		text-align: center;
-		color: #dbd9d9;
-		font-size: 14px;
-		text-align: center;
-		color: #dbd9d9;
-		font-size: 14px;
 		bottom: 0;
-		position: absolute;
-		width: 100%;
+		color: #dbd9d9;
+		font-size: 14px;
 		left: 0;
+		position: absolute;
+		text-align: center;
+		width: 100%;
 	}
 
 }
@@ -819,7 +814,7 @@ $fontSB : 'nowayregular', sans-serif;
 //SB Dimensoes
 .sb-dimensoes {
 	font-family: $fontSB;
-	padding:50px 0 0;
+	padding: 50px 0 0;
 	.row {
 		padding: 50px 0;
 	}
@@ -835,41 +830,41 @@ $fontSB : 'nowayregular', sans-serif;
 		color: #fff;
 		font-size: 36px;
 	}
-	p{
-		margin:55px 0 0;
-		color:#fff;
+	p {
+		color: #fff;
 		font-size: 32px;
 		line-height: 40px;
+		margin: 55px 0 0;
 		text-align: center;
 		strong {
 			font-size: 70px;
-			margin-right: 10px;
 			font-weight: 300;
+			margin-right: 10px;
 		}
 	}
 	span {
-		display: block;
-		text-align: center;
 		color: $green;
-		margin-top: 10px;
+		display: block;
 		font-size: 18px;
+		margin-top: 10px;
+		text-align: center;
 	}
 
 }
 
 //SB Vitrine
 .sb-vitrine {
-	font-family: $fontSB;
-	padding:50px 0;
 	background: url('/arquivos/bg-sb-vitrine.png') left -20px repeat-x;
+	font-family: $fontSB;
+	padding: 50px 0;
 	// background-size:cover;
 	h2 {
-		text-align: center;
 		color: #fff;
-		text-transform: uppercase;
-		padding-bottom:28px;
-		font-size:36px;
+		font-size: 36px;
 		font-weight: 300;
+		padding-bottom: 28px;
+		text-align: center;
+		text-transform: uppercase;
 	}
 	.col-4 {
 		text-align: center;
@@ -888,8 +883,8 @@ $fontSB : 'nowayregular', sans-serif;
 		font-family: $fontSB;
 		font-size: 16px;
 		font-weight: 300;
-		margin:0;
-		padding:0;
+		margin: 0;
+		padding: 0;
 		.line-t {
 			text-decoration: line-through;
 		}
@@ -898,37 +893,35 @@ $fontSB : 'nowayregular', sans-serif;
 		color: $green;
 		font-family: $fontSB;
 		font-size: 20px;
-		margin:0 0 30px;
-		padding:0;
+		margin: 0 0 30px;
+		padding: 0;
 	}
 	.sb-vitrine_btn {
 		background: transparent;
-		border-radius: 35px;
 		border: 2px solid $green;
+		border-radius: 35px;
 		color: $green;
 		display: block;
 		font-family: $fontSB;
+		margin: 0 auto;
 		padding: 16px 0;
 		text-align: center;
 		width: 230px;
-		margin:0 auto;
 		&:hover {
-			transition: ease 0.3s all; 
 			background: $green;
 			color: #FFF;
+			transition: ease .3s all;
 		}
 	}
 	.link-sm {
-		margin: 20px auto;
+		color: #FFF;
     	display: block;
-    	color: #FFF;
+		margin: 20px auto;
 	}
 	.sb-vitrine_message {
-		// bottom:0;
-		// position: absolute;
-		text-align: center;
 		color: #FFF;
-		span{
+		text-align: center;
+		span {
 			color: $green;
 		}
 	}
