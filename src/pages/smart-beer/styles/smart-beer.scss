@@ -52,6 +52,9 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 1;
 			transform: translateY(0);
 		}
+		@include breakpoint(large, 'max'){
+			opacity: 1;
+		}
 	}
 	.sb-clear {
 		clear: both;
@@ -113,6 +116,12 @@ $fontSB : 'nowayregular', sans-serif;
 // SB Intro
 .sb-intro {
 	padding-top: 85px;
+	@include breakpoint(extra-large, 'max') {
+		padding-top: 40px; 
+	}
+	@include breakpoint(large, 'max'){
+		padding-top: 0px!important; 
+	}
 	.col-4:nth-of-type(2) {
 		position: relative;
 	}
@@ -128,6 +137,14 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 350px;
+			@include breakpoint(extra-large, 'max') {
+				background-size: contain;
+				width: 100%;
+			}
+			@include breakpoint(large, 'max'){
+				height: 170px;
+				opacity: 1;
+			}
 		}
 		h3 {
 			color: #b5b5b5;
@@ -136,6 +153,10 @@ $fontSB : 'nowayregular', sans-serif;
 			font-weight: 100;
 			opacity: 0;
 			position: relative;
+			@include breakpoint(large, 'max'){
+				font-size: 16px;
+				opacity: 1;
+			}
 			span {
 				color: $green;
 			}
@@ -146,6 +167,10 @@ $fontSB : 'nowayregular', sans-serif;
 			font-size: 12px;
 			opacity: 0;
 			position: relative;
+			@include breakpoint(large, 'max'){
+				font-size: 11px;
+				opacity: 1;
+			}
 		}
 	}
 	.sb-intro_ilustra {
@@ -153,21 +178,30 @@ $fontSB : 'nowayregular', sans-serif;
 		height: 560px;
 		position: relative;
 		width: 365px;
+
+		@include breakpoint(extra-large, 'max') {
+			background-size: contain !important;
+			width: 100%;
+		
+		}
+		@include breakpoint ( large , 'max'){
+			height: 500px;
+		}
 		// opacity: 0;
 		&.all {
-			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
+			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center top no-repeat;
 			transition: ease .3s all; 
 		}
 		&.carbono {
-			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center bottom no-repeat;
+			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
 			transition: ease .3s all; 
 		}
 		&.cubo {
-			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center bottom no-repeat;
+			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center top no-repeat;
 			transition: ease .3s all; 
 		}
 		&.budweiser {
-			background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center bottom no-repeat;
+			background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center top no-repeat;
 			transition: ease .3s all; 
 		}
 	}
@@ -180,6 +214,15 @@ $fontSB : 'nowayregular', sans-serif;
 				opacity: 0;
 				position: relative;
 				text-transform: uppercase;
+				@include breakpoint(extra-large, 'max'){
+					font-size: 24px;
+					padding-top: 30px;
+				}
+				@include breakpoint(large, 'max'){
+					font-size: 18px !important;
+					margin-bottom: 10px;
+					opacity: 1;
+				}
 			}
 		}
 		.sb-intro_app {
@@ -189,6 +232,9 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
+			@include breakpoint(large, 'max'){
+				opacity: 1;
+			}
 			.sb-intro_app-icon {
 				background: url('/arquivos/icon-consul-app-m.png') no-repeat;
 				display: block;
@@ -202,6 +248,9 @@ $fontSB : 'nowayregular', sans-serif;
 				height: 67px;
 				margin-left: 10px;
 				width: 67px;
+				@include breakpoint(large, 'max'){
+					opacity: 1;
+				}
 				p {
 					color: #FFF;
 					font-size: 16px;
@@ -242,6 +291,9 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
+			@include breakpoint(large, 'max'){
+				opacity: 1;
+			}
 			p.value-buy {
 				color: #FFF;
 				font-family: $fontSB;
@@ -252,6 +304,9 @@ $fontSB : 'nowayregular', sans-serif;
 				.line-t {
 					text-decoration: line-through;
 				}
+				@include breakpoint(large, 'max'){
+					font-size: 14px;	
+				}
 			}
 			p.price-mode {
 				color: $green;
@@ -259,6 +314,10 @@ $fontSB : 'nowayregular', sans-serif;
 				font-size: 20px;
 				margin: 0;
 				padding: 0;
+				@include breakpoint(large, 'max'){
+					font-size: 16px;
+
+				}	
 			}
 		}
 		.sb-intro_select-sku {
@@ -268,15 +327,30 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
+			@include breakpoint(1200px , 'max'){
+				margin:0px;
+			}
+			@include breakpoint(large, 'max'){
+				opacity: 1;
+			}
 			span {
 				color: #fff;
 				float: left;
 				font-family: $fontSB;
 				font-size: 18px;
+				@include breakpoint(1200px , 'max'){
+					padding-bottom: 20px;
+					br{
+						display: none;
+					}
+				}
 			}
 			ul {
 				float: left;
 				margin-left: 20px;
+				@include breakpoint(1200px , 'max'){
+					margin-left: 0;
+				}
 				li {
 					float: left;
 					margin-right: 20px;
@@ -316,6 +390,9 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
+			@include breakpoint(large, 'max'){
+				opacity: 1;
+			}
 			a {
 				border: 2px solid $green;
 				border-radius: 35px;
@@ -352,9 +429,17 @@ $fontSB : 'nowayregular', sans-serif;
 			line-height: 40px;
 			margin-top: 20px;
 			text-transform: uppercase;
+			@include breakpoint(large, 'max'){
+				font-size: 28px;
+				padding-right: 20px;
+			}
 		}
 		p {
 			font-size: 22px;
+			@include breakpoint(large, 'max'){
+				font-size: 16px;
+				padding-right: 20px;
+			}
 		}
 	}
 	
@@ -363,7 +448,10 @@ $fontSB : 'nowayregular', sans-serif;
 		background-size: contain;
     	float: right;
 		position: relative;
-    	width: 100%;
+		width: 100%;
+		@include breakpoint(large, 'max'){
+			background-image: none;
+		}
 		.sb-video_btn {
 			background: transparent;
 			border: 2px solid $green;
@@ -405,6 +493,9 @@ $fontSB : 'nowayregular', sans-serif;
 		float: left;
 		margin: 40% 0 0;
 		padding-right: 20px;
+		@include breakpoint(large, 'max'){
+			margin:20px 0 0;
+		}
 		.icon-consul-app-g {
 			background: url('/arquivos/icon-consul-app-g.png')center center no-repeat;
 			float: left;
@@ -414,11 +505,16 @@ $fontSB : 'nowayregular', sans-serif;
 		h3 {
 			color: #FFF;
 			float: left;
-			font-size: 54px;
+			font-size: 50px;
 			font-weight: 400;
 			height: 105px;
 			line-height: 54px;
 			margin: 0 0 0 20px;
+			@include breakpoint(large, 'max'){
+				font-size: 30px;
+				line-height: 30px;
+				padding-top: 20px;
+			}
 		}
 		h4 {
 			display: none;
@@ -431,18 +527,52 @@ $fontSB : 'nowayregular', sans-serif;
 		float: left;
 		padding: 20px 0;
 		width: 100%;
+		@include breakpoint(large, 'max'){
+			
+			margin:0 auto 0 20%;
+		}
 		.btn-download-app-store {
-			background: url('/arquivos/btn-download-app-store.png')center center no-repeat;
+			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
 			float: left;
 			height: 61px;
 			margin-right: 30px;
 			width: 175px;
+			@include breakpoint(large, 'max'){
+				width: 204px;
+				margin-right: 0;
+				background-color: #000;
+				border-radius: 8px;
+				margin-bottom: 10px;
+			}
 		}
 		.btn-download-google-play {
-			background: url('/arquivos/btn-download-google-play.png')center center no-repeat;
+			background: url('/arquivos/btn-download-google-play.png')left center no-repeat;
 			display: inline-block;
 			height: 60px;
 			width: 204px;
+			@include breakpoint(large, 'max'){
+				width:204px;
+
+			}
+		}
+	}
+	.sb-app-diferenciais-mobile{
+		display:none;
+		text-align: center;
+		h3{
+			color: #FFF;
+			font-size: 25px;
+		}
+		h4{
+			color: $green;
+			font-size: 16px;
+		}
+		p{
+			font-size: 16px;
+			color:#b4b4b4;
+		}
+		@include breakpoint(large, 'max'){
+			display: block;
 		}
 	}
 	.mockup-mobile {
@@ -452,6 +582,67 @@ $fontSB : 'nowayregular', sans-serif;
 		height: 600px;
 		position: relative;
 		width: 100%;
+		@include breakpoint(large, 'max'){
+			display: none;
+		}
+	}
+	.mockup-mobile-view {
+		background: url('/arquivos/mockup-iphone.png') top center no-repeat;
+		display: none;
+		margin: 0 auto;
+		float: none;
+		height: 600px;
+		position: relative;
+		width: 280px;
+		.slider{
+			width: 230px;
+			
+			&.slick-slider{
+				margin:0 auto;
+				padding: 0!important;
+			}
+			.slick-dots{
+				bottom: -100px;
+				li{
+					button{
+						width: 10px;
+						height: 10px;
+						background: #636363;
+					}
+					&.slick-active{
+						button{
+							width: 10px;
+							height: 10px;
+							background: $green;							
+							&::after{
+								display: none;
+							}
+						}
+					}
+				}
+			}
+		}
+		@include breakpoint(large, 'max'){
+			display: block;
+			.sb-app-steep1 ,
+			.sb-app-steep2 ,
+			.sb-app-steep3 ,
+			.sb-app-steep4 {
+				display: block;
+				text-align: center;
+				
+			}
+			.app-screen-01 ,
+			.app-screen-02 ,
+			.app-screen-03 ,
+			.app-screen-04 {
+				position: initial;
+				float: none;
+				display: table;
+				margin: 90px auto 0;	
+			}
+
+		}
 	}
 	.sb-app-steep1 {
 		// display: block;
@@ -577,6 +768,73 @@ $fontSB : 'nowayregular', sans-serif;
 }
 
 //SB Features
+.sb-features-mobile-view {
+	display:none;
+	font-family: $fontSB; 
+	@include breakpoint(large, 'max'){
+		display: block;
+	}
+	h3{
+		color: #FFF;
+		font-size: 25px;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	h4{
+		color: $green;
+		font-size: 16px;
+	}
+	p{
+		font-size: 16px;
+		color:#b4b4b4;
+	}
+	.box {
+		background: #202020;
+		border-bottom: 1px solid #000;
+		border-top: 1px solid #454545;
+		box-sizing: border-box;
+		padding: 8px 16px 8px 70px;
+		position: relative;
+		width: 100%;
+		.legend{
+			color: $green;
+			display: block;
+			font-size: 19px;
+			padding-top: 3px;
+		}
+		.icon {
+			float: left;
+			height: 130px;
+			left: 20px;
+			position: absolute;
+			top: 20px;
+			width: 50px;
+			&.icon-conectividade {
+				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
+			}
+			&.icon-estoque-temp {
+				background: url('/arquivos/icon-features-estoque.png') top left no-repeat;
+			}
+			&.icon-notificacao {
+				background: url('/arquivos/icon-features-notificacao.png') top left no-repeat;
+			}
+			&.icon-cerveja-one-click {
+				background: url('/arquivos/icon-features-1click.png') top left no-repeat;
+			}
+			&.icon-porta-aberta {
+				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
+			}
+			&.icon-happy-hour {
+				background: url('/arquivos/icon-features-1click.png') top left no-repeat;
+			}
+			
+		}
+		p {
+			color: #d5d5d5;
+			margin-top: 5px;
+		}
+	}
+}
 .sb-features {
 	font-family: $fontSB;
 	min-height: 700px;
@@ -830,6 +1088,9 @@ $fontSB : 'nowayregular', sans-serif;
 	h3 {
 		color: #fff;
 		font-size: 36px;
+		@include breakpoint(medium, 'max'){
+			font-size: 28px;
+		}
 	}
 	p {
 		color: #fff;
@@ -841,6 +1102,9 @@ $fontSB : 'nowayregular', sans-serif;
 			font-size: 70px;
 			font-weight: 300;
 			margin-right: 10px;
+			@include breakpoint(medium, 'max'){
+				font-size: 40px;
+			}
 		}
 	}
 	span {
@@ -922,8 +1186,30 @@ $fontSB : 'nowayregular', sans-serif;
 	.sb-vitrine_message {
 		color: #FFF;
 		text-align: center;
+		margin: 50px 0 20px; 
 		span {
 			color: $green;
+		}
+	}
+	.slick-dots{
+		bottom: -20px;
+
+		li{
+			button{
+				width: 10px;
+				height: 10px;
+				background: #636363;
+			}
+			&.slick-active{
+				button{
+					width: 10px;
+					height: 10px;
+					background: $green;							
+					&::after{
+						display: none;
+					}
+				}
+			}
 		}
 	}
 }
@@ -1024,3 +1310,4 @@ body.page-smartbeer {
 	}
 
 }
+

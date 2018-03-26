@@ -16,6 +16,192 @@
 
 	<link rel="stylesheet" href="/arquivos/smart-beer.css" />
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+
+	<script>
+		
+			var animation_Sections = function () {
+				// Init ScrollMagic
+				var controller = new ScrollMagic.Controller();
+
+				var introScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-intro',
+					duration: '100%',
+					triggerHook: 0.9,
+				})
+					.setClassToggle('.sb-intro', 'fade-in')
+					.addTo(controller);
+
+				var videoScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-video',
+					duration: '100%',
+					triggerHook: 0.9,
+				})
+					.setClassToggle('.sb-video', 'fade-in')
+					.addTo(controller);
+
+				var appScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-app',
+					duration: '100%',
+					triggerHook: 0.9
+					// reverse: false
+				})
+					.setClassToggle('.sb-app', 'fade-in')
+					.addTo(controller);
+
+				var featuresScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-features',
+					duration: '100%',
+					triggerHook: 0.9
+					// reverse: false
+				})
+					.setClassToggle('.sb-features', 'fade-in')
+					.addTo(controller);
+
+				var dimensoesScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-dimensoes',
+					duration: '100%',
+					triggerHook: 0.9
+					// reverse: false
+				})
+					.setClassToggle('.sb-dimensoes', 'fade-in')
+					.addTo(controller);
+
+				var vitrineScene = new ScrollMagic.Scene({
+					triggerElement: '.sb-vitrine',
+					triggerHook: 0.9,
+					reverse: false
+				})
+					.setClassToggle('.sb-vitrine', 'fade-in')
+					.addTo(controller);
+
+			};
+
+			var animation_Intro = function () {
+				// Intro Animations Start
+
+				TweenMax.from('.sb-intro .col-4:nth-of-type(2)', 1, {
+					top: 20,
+					delay: 0.25
+				});
+				TweenMax.to('.sb-intro .col-4:nth-of-type(2)', 1, {
+					opacity: 1,
+					delay: 0.25
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_info .campanha-ofds', 1, {
+					top: 20,
+					delay: 0.5
+				});
+				TweenMax.to('.sb-intro .sb-intro_info .campanha-ofds', 1, {
+					opacity: 1,
+					delay: 0.5
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_info h3', 1, {
+					top: 20,
+					delay: 0.75
+				});
+				TweenMax.to('.sb-intro .sb-intro_info h3', 1, {
+					opacity: 1,
+					delay: 0.75
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_info p', 1, {
+					top: 20,
+					delay: 1
+				});
+				TweenMax.to('.sb-intro .sb-intro_info p', 1, {
+					opacity: 1,
+					delay: 1
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_products .sb-intro_title h1', 1, {
+					top: 20,
+					delay: 1.25
+				});
+				TweenMax.to('.sb-intro .sb-intro_products .sb-intro_title h1', 1, {
+					opacity: 1,
+					delay: 1.25
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_products .sb-intro_app', 1, {
+					top: 20,
+					delay: 1.5
+				});
+				TweenMax.to('.sb-intro .sb-intro_products .sb-intro_app', 1, {
+					opacity: 1,
+					delay: 1.5
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_products .sb-intro-product-price', 1, {
+					top: 20,
+					delay: 1.75
+				});
+				TweenMax.to('.sb-intro .sb-intro_products .sb-intro-product-price', 1, {
+					opacity: 1,
+					delay: 1.75
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_products .sb-intro_select-sku', 1, {
+					top: 20,
+					delay: 2
+				});
+				TweenMax.to('.sb-intro .sb-intro_products .sb-intro_select-sku', 1, {
+					opacity: 1,
+					delay: 2
+				});
+
+				TweenMax.from('.sb-intro .sb-intro_products .sb-intro-buttom-buy', 1, {
+					top: 20,
+					delay: 2.25
+				});
+				TweenMax.to('.sb-intro .sb-intro_products .sb-intro-buttom-buy', 1, {
+					opacity: 1,
+					delay: 2.25
+				});
+
+				TweenMax.to('.sb-intro .sb-intro_ilustra', 1, {
+					backgroundImage: 'url(/arquivos/imageSteel-smartBeer-03-budweiser.png)',
+					delay: 0.25,
+					// ease:Power2.easeInOut 
+				});
+				TweenMax.to('.sb-intro .sb-intro_ilustra', 1, {
+					backgroundImage: 'url(/arquivos/imageSteel-smartBeer-01-Carbono.png)',
+					delay: 1.25,
+					// ease:Power2.easeInOut 
+				});
+
+				// Intro Animations End
+			};
+
+			$('document').ready(function () {
+				
+				var screenWidth = $(window).width();
+				if (screenWidth >= '1120') {
+					animation_Sections();
+					animation_Intro();
+				};
+				// $('.sb-video .sb-video_btn').on('click', function(){
+				//     $('#modal-video').vtexModal();
+				// });
+
+				// var screenWidth = $(window).width();
+				// if (screenWidth <= '800'){
+				//     $('.sb-vitrine .prateleira').slick({
+				//         autoplay: true,
+				//         autoplaySpeed: 6000,
+				//         mobileFirst: true,
+				//         dots: true,
+				//         arrows: true,
+				//     });
+				// }
+
+			});
+	</script>
+
 </head>
 <body data-controller="smart-beer" class="page-smartbeer">
 	
@@ -39,46 +225,58 @@
 		<section class="sb-intro">
 			<div class="container">
 				<div class="row">
-					<div class="col-4">
-						<div class="sb-intro_info">
-							<h2 class="campanha-ofds">O FIM DA SAIDEIRA</h2>
-							<h3>Uma Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>
-							<p>*Conectada a um aplicativo com controle de estoque <br/> **Verificar a disponibilidade das lojas na sua região.</p>
-						</div>
-					</div>
-					<div class="col-4">
-						<div class="sb-intro_ilustra all">SmartBeer nos modelos Carbono, Budwiser e Cubo</div>
-					</div>
-					<div class="col-4">
-						
+					<div class="col-4 right">
+					
 						<div class="sb-intro_products">
-
+					
 							<div class="sb-intro_title">
 								<h1>A primeira Cervejeira conectada* do mercado</h1>
 							</div>
-							<div class="sb-intro_app">	
+							<div class="sb-intro_app">
 								<span class="sb-intro_app-icon"></span>
 								<span class="sb-intro_app-download">
 									<p>baixe o app</p>
 									<ul>
-										<li><a href="#"><span class="icon-iphone"></span></a></li>
-										<li><a href="#"><span class="icon-android"></span></a></li>
+										<li>
+											<a href="#">
+												<span class="icon-iphone"></span>
+											</a>
+										</li>
+										<li>
+											<a href="#">
+												<span class="icon-android"></span>
+											</a>
+										</li>
 									</ul>
 								</span>
 							</div>
 							<div class="sb-intro-product-price">
-								<p class="value-buy">De R$ <span class="line-t">2.369,00</span> por R$ 1.999,00</p>
+								<p class="value-buy">De R$
+									<span class="line-t">2.369,00</span> por R$ 1.999,00</p>
 								<p class="price-mode">Ou até 10x R$ 199,90 sem juros</p>
 							</div>
 							<div class="sb-intro_select-sku">
-								<span>Selecione <br>o modelo:</span>
+								<span>Selecione
+									<br>o modelo:</span>
 								<ul>
-									<li><a href="#" rel="carbono" class="active"><span class="carbono"></span></a></li>
-									<li><a href="#" rel="cubo"><span class="cubo"></span></a></li>
-									<li><a href="#" rel="budweiser"><span class="budweiser" ></span></a></li>
+									<li>
+										<a href="#" rel="carbono" class="active">
+											<span class="carbono"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#" rel="cubo">
+											<span class="cubo"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#" rel="budweiser">
+											<span class="budweiser"></span>
+										</a>
+									</li>
 								</ul>
 							</div>
-							<div class="sb-intro-buttom-buy">	
+							<div class="sb-intro-buttom-buy">
 								<a href="#" class="carbono active">
 									COMPRAR
 								</a>
@@ -87,11 +285,24 @@
 								</a>
 								<a href="#" class="budweiser">
 									COMPRAR
-								</a>							
+								</a>
 							</div>
 						</div>
-
+					
 					</div>
+					
+					<div class="col-4">
+						<div class="sb-intro_info">
+							<h2 class="campanha-ofds">O FIM DA SAIDEIRA</h2>
+							<h3>Uma Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>
+							<p>*Conectada a um aplicativo com controle de estoque <br/> **Verificar a disponibilidade das lojas na sua região.</p>
+						</div>
+					</div>
+					
+					<div class="col-4">
+						<div class="sb-intro_ilustra all">SmartBeer nos modelos Carbono, Budwiser e Cubo</div>
+					</div>
+					
 				</div>
 			</div>
 			<div class="sb-clear">
@@ -126,6 +337,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-5">
+						<div class="sb-app-diferenciais-mobile">
+							<h3>APLICATIVO SMARTBEER</h3>
+							<h4>CONTROLE DE FUNÇÕES</h4>
+							<p>Ajusta a temperatura<br/>Aciona a função happy hour<br/>Alarme porta aberta</p>
+						</div>
 						<div class="sb-app-title">
 							<span class="icon-consul-app-g"></span>
 							<h3>APP <br> SMARTBEER</h3>
@@ -138,9 +354,11 @@
 					</div>
 					<div class="col-7">
 						<div class="mockup-mobile">
+							
 							<div class="sb-app-steep1">
 								<div class="app-screen-01"></div>
 							</div>
+
 							<div class="sb-app-steep2">
 								<div class="app-screen-02"></div>
 								<div class="instruction right as-02-01"><span class="elipse"></span><span class="line"></span> <span class="legend">Controle de funções</span></div>
@@ -148,12 +366,14 @@
 								<div class="instruction right as-02-03"><span class="elipse"></span><span class="line"></span> <span class="legend">Adiciona função happy hour</span></div>
 								<div class="instruction right as-02-04"><span class="elipse"></span><span class="line"></span> <span class="legend">Alarme porta aberta</span></div>
 							</div>
+							
 							<div class="sb-app-steep3">
 								<div class="app-screen-03"></div>
 								<div class="instruction right as-03-01"><span class="elipse"></span><span class="line"></span> <span class="legend">Controle de estoque</span></div>
 								<div class="instruction right as-03-02"><span class="elipse"></span><span class="line"></span> <span class="legend">Veja o estoque <br> disponível em litros</span></div>
 								<div class="instruction right as-03-03"><span class="elipse"></span><span class="line"></span> <span class="legend">Acione o aviso de estoque minimo</span></div>
 							</div>
+							
 							<div class="sb-app-steep4">
 								<div class="app-screen-04"></div>
 								<div class="instruction right as-04-01">
@@ -165,18 +385,97 @@
 									</div>
 								</div>
 							</div>
+								
 						</div>
+
+						<div class="mockup-mobile-view">
+							<div class="slider">
+								<div class="sb-app-steep1">
+									<div class="app-screen-01"></div>
+								</div>
+								
+								<div class="sb-app-steep2">
+									<div class="app-screen-02"></div>
+								</div>
+								
+								<div class="sb-app-steep3">
+									<div class="app-screen-03"></div>
+								</div>
+								
+								<div class="sb-app-steep4">
+									<div class="app-screen-04"></div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
+					
 				</div>
 			</div>
 		</section>
 		<!-- App end -->
 
 		<!-- Features start -->
+		<section class="sb-features-mobile-view">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 sb-app-diferenciais-mobile">
+						<h3>DIFERENCIAIS NOVA SMARTBEER</h3>
+						<ul>
+							<li>
+								<div class="box">
+									<span class="icon icon-conectividade"></span>
+									<span class="legend">Conectividade</span>
+									<p>A Cervejeira Consul smartbeer_ é a primeira Cervejeira Conectada do mercado.*</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-estoque-temp"></span>
+									<span class="legend">Controle de estoque e temperatura</span>
+									<p>Com o aplicativo exclusivo da sua smartbeer, controle o estoque e temperatura da sua cervejeira de qualquer lugar pelo seu
+										smartphone.
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-notificacao"></span>
+									<span class="legend">Notificação em push</span>
+									<p>Receba notificações pelo seu smartphone quando suas cervejas estiverem acabando. Basta definir o estoque mínimo e pronto,
+										você será avisado!</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-cerveja-one-click"></span>
+									<span class="legend">Cerveja com apenas 1 click</span>
+									<p>Compre cerveja pelo aplicativo e receba na sua casa, sem preocupações.**</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-porta-aberta"></span>
+									<span class="legend">Função porta aberta</span>
+									<p>A cervejeira avisa quando você esquecer de fechar a porta, mantendo sua cervejas sempre na temperatura ideal.</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-happy-hour"></span>
+									<span class="legend">Função Happy hour</span>
+									<p>Mantém a cerveja gelada mesmo com o abre e fecha da porta.</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
 		<section class="sb-features">
 			<div class="container">
 				<div class="row">
-
+					<div class="sb-clear"></div>
 					<div class="sb-features-steep1">
 						<div class="cervejeira fechada"></div>
 						<div class="instruction f-01-01">
