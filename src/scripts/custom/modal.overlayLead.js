@@ -43,7 +43,7 @@ Nitro.module('modal.overlayLead', function() {
 					$('.btn_cadastro_news').on('click', function (e){
 						e.preventDefault();
 
-						window.location = 'https://www.facebook.com/dialog/oauth?client_id=337289496670249&redirect_uri=http://loja.consul.com.br/';
+						window.location = 'https://www.facebook.com/dialog/oauth?client_id=337289496670249&redirect_uri=//loja.consul.com.br/';
 
 					});
 				}
