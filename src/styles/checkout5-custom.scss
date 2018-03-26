@@ -511,6 +511,7 @@ body[class*='consulempresa'] {
     padding: 16px 65px 10px 50px !important;
 	position: relative;
 	text-transform: uppercase;
+
 	
 	&:before {
 		@include contentBefore();
@@ -521,6 +522,14 @@ body[class*='consulempresa'] {
 		top: 50%;
 		transform: translateY(-50%) scaleY(1);
 		transition: transform .2s ease-in;
+	}
+
+	&.mobile {
+		padding: 10px 40px !important;		
+
+			&:before {
+				right: 20px;
+			}
 	}
 }
 
@@ -595,6 +604,11 @@ body[class*='consulempresa'] {
 				margin: 21px auto 7px;
 				opacity: 1;
 				padding: 6px 23px;
+
+					@include breakpoint('small', 'max') {
+						font-size: 14px;
+						padding: 12px 37px;
+					}
 			}
 		}
 	}
