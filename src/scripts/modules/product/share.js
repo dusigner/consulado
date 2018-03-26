@@ -27,7 +27,7 @@ Nitro.module('share', ['facebook-init'], function() {
 	});
 
 	// monta a url de compartilhamento do Twitter
-	link.attr('href', 'http://twitter.com/share?text=' + titulopPro + '&url=' + url_atual);
+	link.attr('href', '//twitter.com/share?text=' + titulopPro + '&url=' + url_atual);
 
 	// Abre o popup e insere os dados de compartilhamento do Twitter
 	link.click(function(e) {

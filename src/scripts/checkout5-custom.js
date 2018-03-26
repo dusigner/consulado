@@ -273,7 +273,7 @@ $(window).on('load', function() {
 		//hash changed
 		this.hashChanged = function () {
 			if (self.isOrderForm()) {
-				if (store && store.isCorp === true || store.isQA) {
+				if (store && (store.isCorp === true || store.isQA === true)) {
 					pj.changeProfileData();
 				}
 			}
