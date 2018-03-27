@@ -187,6 +187,22 @@ $('document').ready(function(){
     });
 
     var screenWidth = $(window).width();
+    if (screenWidth <= '960') {
+        $('.sb-intro .sb-intro_prateleira-mobile ul').slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            arrows: false,
+            dots: true
+        });
+    }
+    if (screenWidth <= '960') {
+        $('.sb-dimensoes-mobile-view ul').slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            arrows: false,
+            dots: true
+        });
+    }
     if (screenWidth <= '960'){
         $('.sb-vitrine .prateleira').slick({
             autoplay: true,

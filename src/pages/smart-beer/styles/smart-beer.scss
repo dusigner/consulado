@@ -39,7 +39,17 @@ $fontSB : 'nowayregular', sans-serif;
 		padding: 3px;
 	}
 }
-
+@include breakpoint(small, 'max'){
+	body.page-smartbeer{
+		padding-top: 20px !important;
+	}
+	.col-5,
+	.col-4,
+	.col-7,
+	.col-8{
+		width: 100%;
+	}
+}
 //SB Geral
 #smart-beer {
 	background: #252525  url('/arquivos/bg-texture-black.jpg');
@@ -64,6 +74,12 @@ $fontSB : 'nowayregular', sans-serif;
 			height: 12px;
 			margin: 40px auto 60px;
 			width: 30px;
+			@include breakpoint(large, 'max'){
+				margin: 0px auto 20px;
+			}
+			@include breakpoint(medium, 'max'){
+				display: none;
+			}
 		}
 	}
 	.instruction {
@@ -122,13 +138,23 @@ $fontSB : 'nowayregular', sans-serif;
 	@include breakpoint(large, 'max'){
 		padding-top: 0px!important; 
 	}
+	@include breakpoint(small, 'max'){
+		.container{
+			padding:0;
+			margin:0;
+			max-width: 100%;
+		}
+		.right{
+			float: none;
+		}
+	}
 	.col-4:nth-of-type(2) {
 		position: relative;
 	}
 	.sb-intro_info {
 
 		h2.campanha-ofds {
-			background: url('/arquivos/slogan-o-fim-da-saideira.png') no-repeat;
+			background: url('/arquivos/slogan-o-fim-da-saideira.png') center center no-repeat;
 			color: #b5b5b5;
 			font-family: $fontSB;
 			font-size: 0;
@@ -145,6 +171,20 @@ $fontSB : 'nowayregular', sans-serif;
 				height: 170px;
 				opacity: 1;
 			}
+			@include breakpoint(small, 'max'){
+				max-width: 350px;
+				width: 100%;
+				display: table;
+				margin: 0 auto;
+				height: 244px;
+			}
+			@include breakpoint(extra-small, 'max'){
+				max-width: 300px;
+				width: 100%;
+				display: table;
+				margin: 0 auto;
+				height: 244px;
+			}
 		}
 		h3 {
 			color: #b5b5b5;
@@ -156,6 +196,18 @@ $fontSB : 'nowayregular', sans-serif;
 			@include breakpoint(large, 'max'){
 				font-size: 16px;
 				opacity: 1;
+			}
+			@include breakpoint(small, 'max'){
+				font-size:22px;
+				margin:20px auto;
+				max-width: 350px;
+				width: 100%;
+			}
+			@include breakpoint(extra-small, 'max'){
+				font-size:19px;
+				margin:20px auto;
+				max-width: 300px;
+				width: 100%;
 			}
 			span {
 				color: $green;
@@ -171,7 +223,133 @@ $fontSB : 'nowayregular', sans-serif;
 				font-size: 11px;
 				opacity: 1;
 			}
+			@include breakpoint(small, 'max'){
+				font-size: 13px;
+				max-width: 350px;
+				width: 100%;
+				display: table;
+				margin: 0 auto;
+			}
+			@include breakpoint(extra-small, 'max'){
+				text-align: center;
+			}
 		}
+	}
+	.sb-intro_prateleira-mobile{
+		padding-bottom: 40px;
+		font-family: $fontSB;
+		display: none;
+		@include breakpoint ( small , 'max'){
+			display:block;
+		}
+		.value-buy {
+			color: #FFF;
+			font-family: $fontSB;
+			font-size: 16px;
+			font-weight: 300;
+			margin: 0;
+			padding: 0;
+			.line-t {
+				text-decoration: line-through;
+			}
+		}
+		.model-button{
+			float: left;
+			width: 100%;
+			padding: 20px;
+			margin-bottom: 20px;
+			background: #252525;
+			border-top: 1px solid $green;
+			text-align: center;
+			p.price-mode {
+				color: $green;
+				font-family: $fontSB;
+				font-size: 20px;
+				margin: 0 0 30px;
+				padding: 0;
+				text-align: center;
+			}
+			h3{
+				float: left;
+				color: #d5d5d5;
+				font-size: 20px;
+				margin:0;
+				padding:10px 0;
+			}
+		}
+		.sb-vitrine_btn {
+			background: transparent;
+			border: 2px solid $green;
+			border-radius: 35px;
+			color: $green;
+			display: block;
+			float: right;
+			font-family: $fontSB;
+			margin: 0 auto;
+			padding: 16px 0;
+			text-align: center;
+			width: 150px;
+			&:hover {
+				background: $green;
+				color: #FFF;
+				transition: ease .3s all;
+			}
+		}
+		.sb-intro_ilustra {
+			display: table;
+			font-size: 0;
+			margin: 0 auto;
+			height: 360px;
+			position: relative;
+			width: 365px;
+			&.carbono {
+				background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
+				background-size: initial!important;
+				transition: ease .3s all; 
+				@include breakpoint(extra-small, 'max') {
+				    background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
+					background-size: 92% !important;
+				}
+			}
+			&.cubo {
+				background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center top no-repeat;
+				background-size: initial!important;
+				transition: ease .3s all; 
+				@include breakpoint(extra-small, 'max') {
+				    background: url('/arquivos/imageSteel-smartBeer-02-cubo.png')center top no-repeat;
+					background-size: 92% !important;
+				}
+			}
+			&.budweiser {
+				background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center top no-repeat;
+				background-size: initial!important;
+				transition: ease .3s all; 
+				@include breakpoint(extra-small, 'max') {
+				    background: url('/arquivos/imageSteel-smartBeer-03-budweiser.png') center top no-repeat;
+					background-size: 92% !important;
+				}
+			}
+		}
+		.slick-dots{
+				bottom: 0px;
+				li{
+					button{
+						width: 10px;
+						height: 10px;
+						background: #636363;
+					}
+					&.slick-active{
+						button{
+							width: 10px;
+							height: 10px;
+							background: $green;							
+							&::after{
+								display: none;
+							}
+						}
+					}
+				}
+			}
 	}
 	.sb-intro_ilustra {
 		font-size: 0;
@@ -186,6 +364,9 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		@include breakpoint ( large , 'max'){
 			height: 500px;
+		}
+		@include breakpoint ( small , 'max'){
+			display:none;
 		}
 		// opacity: 0;
 		&.all {
@@ -219,9 +400,16 @@ $fontSB : 'nowayregular', sans-serif;
 					padding-top: 30px;
 				}
 				@include breakpoint(large, 'max'){
-					font-size: 18px !important;
+					font-size: 18px;
 					margin-bottom: 10px;
 					opacity: 1;
+				}
+				@include breakpoint(small, 'max'){
+					padding-top: 0;
+					// padding-bottom: 20px;
+					margin-bottom: 0px;
+					font-size: 26px;
+					text-align: center;
 				}
 			}
 		}
@@ -235,6 +423,10 @@ $fontSB : 'nowayregular', sans-serif;
 			@include breakpoint(large, 'max'){
 				opacity: 1;
 			}
+			@include breakpoint(small, 'max'){
+				display: none;
+			}
+			
 			.sb-intro_app-icon {
 				background: url('/arquivos/icon-consul-app-m.png') no-repeat;
 				display: block;
@@ -294,6 +486,9 @@ $fontSB : 'nowayregular', sans-serif;
 			@include breakpoint(large, 'max'){
 				opacity: 1;
 			}
+			@include breakpoint(small, 'max'){
+				display: none;
+			}
 			p.value-buy {
 				color: #FFF;
 				font-family: $fontSB;
@@ -332,6 +527,9 @@ $fontSB : 'nowayregular', sans-serif;
 			}
 			@include breakpoint(large, 'max'){
 				opacity: 1;
+			}
+			@include breakpoint(small, 'max'){
+				display: none;
 			}
 			span {
 				color: #fff;
@@ -393,6 +591,9 @@ $fontSB : 'nowayregular', sans-serif;
 			@include breakpoint(large, 'max'){
 				opacity: 1;
 			}
+			@include breakpoint(small, 'max'){
+				display: none;
+			}
 			a {
 				border: 2px solid $green;
 				border-radius: 35px;
@@ -418,11 +619,21 @@ $fontSB : 'nowayregular', sans-serif;
 
 //SB Vídeo
 .sb-video {
-
+	@include breakpoint ( medium , 'max'){
+		.container{
+			margin:0;
+			padding:0;
+			max-width: 100%;
+		}
+	}
 	.sb-video_info {
 		color: #FFF;
 		font-family: $fontSB;
 		padding: 40px 0 20px;
+		@include breakpoint ( small , 'max'){
+			padding: 0;
+			margin: 0 0 20px 0; 		
+		}
 		h2 {
 			font-size: 38px;
 			font-weight: 300;
@@ -433,12 +644,25 @@ $fontSB : 'nowayregular', sans-serif;
 				font-size: 28px;
 				padding-right: 20px;
 			}
+			@include breakpoint ( medium , 'max'){
+				font-size: 30px;
+				text-align: center;
+				padding:0;
+			}
 		}
 		p {
 			font-size: 22px;
 			@include breakpoint(large, 'max'){
 				font-size: 16px;
 				padding-right: 20px;
+			}
+			@include breakpoint(medium, 'max'){
+				max-width: 350px;
+				width: 100%;
+				margin:0 auto;
+				display: table;
+				padding:0 20px;
+				text-align: center;
 			}
 		}
 	}
@@ -467,6 +691,9 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 50%;
 			width: 230px;
+			@include breakpoint(extra-small, 'max'){
+				top: 80%;				
+			}
 			&:hover {
 				background: $green;
 				color: #FFF;
@@ -479,6 +706,10 @@ $fontSB : 'nowayregular', sans-serif;
 			height: 300px;
 			margin: 70px auto;
 			width: 535px;
+			@include breakpoint(medium, 'max'){
+				margin: 0 auto;
+				padding: 0;
+			}
 		}
 	}
 
@@ -488,13 +719,18 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-app {
 	font-family: $fontSB;
 	padding: 50px 0;
-	
+	@include breakpoint(small, 'max'){
+		padding: 20px 0;
+	}
 	.sb-app-title {
 		float: left;
 		margin: 40% 0 0;
 		padding-right: 20px;
 		@include breakpoint(large, 'max'){
 			margin:20px 0 0;
+		}
+		@include breakpoint(small, 'max'){
+			display: none;
 		}
 		.icon-consul-app-g {
 			background: url('/arquivos/icon-consul-app-g.png')center center no-repeat;
@@ -530,6 +766,9 @@ $fontSB : 'nowayregular', sans-serif;
 		@include breakpoint(large, 'max'){
 			
 			margin:0 auto 0 20%;
+		}
+		@include breakpoint(small, 'max'){
+			display: none;
 		}
 		.btn-download-app-store {
 			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
@@ -774,6 +1013,13 @@ $fontSB : 'nowayregular', sans-serif;
 	@include breakpoint(large, 'max'){
 		display: block;
 	}
+	@include breakpoint(extra-small, 'max'){
+		.container{
+			margin:0;
+			padding:0;
+			max-width: 100%;
+		} 
+	}
 	h3{
 		color: #FFF;
 		font-size: 25px;
@@ -834,11 +1080,19 @@ $fontSB : 'nowayregular', sans-serif;
 			margin-top: 5px;
 		}
 	}
+	.sb-features-mobile-message p{
+		margin-top: 30px;
+		text-align: center;
+		font-size: 11px;
+	}
 }
 .sb-features {
 	font-family: $fontSB;
 	min-height: 700px;
 	padding: 50px 0;
+	@include breakpoint(small, 'max'){
+		display: none;
+	}
 	.cervejeira {
 		display: block;
 		height: 573px;
@@ -1069,28 +1323,246 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 
 }
+.sb-features-interna{
+	display:none;
+	height: 430px;
+	
+	@include breakpoint(small, 'max'){
+		display:block;
+	}
+	h2{
+		color: #FFF;
+		font-size: 25px;
+		text-align: center;
+		margin-bottom: 40px;
+		font-family: $fontSB;
+	}
+	.cervejeira{
+		height: 320px;
+		width: 320px;
+		margin:0 auto;
+		position: relative;
+		.aberta{
+			background: url('/arquivos/features-image-product-open-door.png') top left no-repeat;
+			background-size:cover;
+			height: 320px;
+			width: 320px;
+		}
+		.instruction{
+			&.fi-01{
+				left: 60px;
+				position: absolute;
+				top: 25px;
+				width: 0;
+				cursor:pointer;
+			}
+			&.fi-02{
+				left: 230px;
+				position: absolute;
+				top: 230px;
+				width: 0;
+				cursor:pointer;
+			}
+			&.fi-03{
+				left: 80px;
+				position: absolute;
+				top: 145px;
+				width: 0;
+				cursor:pointer;
+			}
+			&.fi-04{
+				left: 10px;
+				position: absolute;
+				bottom:0;
+				width: 0;
+				cursor:pointer;
+			}
+		}
+		.zoom{
+			display: none;
+			width:350px;
+			height: 330px;
+			position: absolute;
+			top: 0px;
+			left:0;
+			img{
+				width: 100%;
+			}
+			.legend{
+				color: $green;
+				font-size: 14px;
+				margin:10px 0;
+				font-size: 18px;
+				text-align: center;
+			}
+			.close{
+				width: 35px;
+				height: 35px;
+				background: url('/arquivos/btn-fechar.png') top left no-repeat;
+				position: absolute;
+				top: -15px;
+				left:49%;
+			}
+		}
+	}
+
+}
 
 //SB Dimensoes
+.sb-dimensoes-mobile-view{
+	display:none;
+	@include breakpoint(small, 'max'){
+		display:block;
+	}
+	h2{
+		color: #FFF;
+		font-size: 25px;
+		text-align: center;
+		margin-bottom: 40px;
+		font-family: $fontSB;
+	}
+	.cervejeira{
+		display: block;
+		margin:0 auto;
+		width: 330px;
+		height: 330px;
+		margin-bottom: 50px;
+		
+		&.fechada {
+			background: url('/arquivos/features-image-product.png') top left no-repeat;
+			background-size:contain;
+		}
+		&.aberta {
+			background: url('/arquivos/features-image-product-open-door.png') top left no-repeat;
+			background-size:contain;
+		}
+		&.latas {
+			background: url('/arquivos/features-image-product-latas.png') top left no-repeat;
+			background-size:contain;
+		}
+		&.garrafas {
+			background: url('/arquivos/features-image-product-garrafas.png') top left no-repeat;
+			background-size:contain;
+		}
+		&.longnecks {
+			background: url('/arquivos/features-image-product-long-necks.png') top left no-repeat;
+			background-size:contain;
+		}
+	}
+	.slick-dots{
+		bottom: 0px;
+		li{
+			button{
+				width: 10px;
+				height: 10px;
+				background: #636363;
+			}
+			&.slick-active{
+				button{
+					width: 10px;
+					height: 10px;
+					background: $green;							
+					&::after{
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	.box-capacidade{
+		position: relative;
+		padding-top:30px;
+		width: 260px;
+		height: 220px;
+		margin:0 auto;
+		.line{
+			width:50%;
+			float:left;
+			text-align: center;
+			height:110px;
+			padding-top: 10px;
+			p{
+				color: #d5d5d5;
+				font-family: $fontSB;
+				display: block;
+				margin:0;
+				padding:0;
+				strong{
+					display: block;
+					font-size:50px;
+					height: 50px;
+				}
+			}
+			&.line03,
+			&.line04{
+				border-top:1px solid #d5d5d5;
+			}
+			&.line02,
+			&.line04{
+				border-left:1px solid #d5d5d5;
+			}
+		}
+		span.ou{
+			background: url('/arquivos/bg-texture-black.jpg');
+			color: #d5d5d5;
+			font-family: $fontSB;
+			font-size: 14px;
+			height: 30px;
+			left: 50%;
+			margin-left: -15px;
+			margin-top: 15px;
+			position: absolute;
+			text-align: center;
+			top: 50%;
+			padding-top:5px;
+			width: 30px;
+		}
+	}
+}
 .sb-dimensoes {
 	font-family: $fontSB;
 	padding: 50px 0 0;
+	@include breakpoint(small, 'max'){
+		padding: 0px 0 0;
+		.row{
+			padding: 20px 0;
+		}
+		.col-2{
+			width:50%;
+			float: left;
+		}
+	}
 	.row {
 		padding: 50px 0;
 	}
 	.bg1 {
 		background: url('/arquivos/bg-dimensoes-01.png') left center no-repeat;
 		height: 300px;
+		@include breakpoint(medium, 'max'){
+			background: none;
+			height: auto;
+		}
 	}
 	.bg2 {
 		background: url('/arquivos/bg-dimensoes-02.png') right center no-repeat;
 		height: 300px;
+		@include breakpoint(medium, 'max'){
+			background: none;
+			height: auto;
+		}
 	}
 	h3 {
 		color: #fff;
 		font-size: 36px;
 		@include breakpoint(medium, 'max'){
 			font-size: 28px;
+			text-align: center;
 		}
+		@include breakpoint(extra-small, 'max'){
+			margin:0;
+			padding:0;
+		}
+
 	}
 	p {
 		color: #fff;
@@ -1122,6 +1594,10 @@ $fontSB : 'nowayregular', sans-serif;
 	background: url('/arquivos/bg-sb-vitrine.png') left -20px repeat-x;
 	font-family: $fontSB;
 	padding: 50px 0;
+	@include breakpoint(medium, 'max'){
+		padding:20px 0;
+		background: none;
+	}
 	// background-size:cover;
 	h2 {
 		color: #fff;
@@ -1130,6 +1606,10 @@ $fontSB : 'nowayregular', sans-serif;
 		padding-bottom: 28px;
 		text-align: center;
 		text-transform: uppercase;
+		@include breakpoint(extra-small, 'max'){
+			margin-top: 0;
+			padding:0;
+		}
 	}
 	.col-4 {
 		text-align: center;
@@ -1213,6 +1693,65 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 }
+.sb-download-mobile-view{
+	display:none;
+	@include breakpoint(small, 'max'){
+		display:block;
+	}
+	.sb-app-title {
+		display: table;
+		margin: 0 auto;
+		padding:0 20px;
+
+		.icon-consul-app-g {
+			background: url('/arquivos/icon-consul-app-g.png')center center no-repeat;
+			background-size:contain;
+			float: left;
+			height: 62px;
+			width: 60px;
+		}
+		h3 {
+			font-family: $fontSB;
+			color: #FFF;
+			float: left;
+			font-size: 30px;
+			font-weight: 400;
+			height: 105px;
+			line-height: 34px;
+			margin: 0 0 0 20px;
+		}
+		h4 {
+			display: none;
+			float: left;
+			width: 100%;
+		}
+	}
+	.sb-app-download {
+		display: block;
+		margin:0 auto;
+		padding: 20px 0 50px;
+		width: 204px;
+		.btn-download-app-store {
+			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
+			float: left;
+			height: 61px;
+			margin-right: 30px;
+			width: 204px;
+			margin-right: 0;
+			background-color: #000;
+			border-radius: 8px;
+			margin-bottom: 10px;
+		}
+		.btn-download-google-play {
+			background: url('/arquivos/btn-download-google-play.png')left center no-repeat;
+			display: inline-block;
+			height: 60px;
+			width: 204px;
+		}
+	}
+
+}
+
 
 body.page-smartbeer {
 
