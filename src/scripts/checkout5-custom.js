@@ -505,17 +505,11 @@ $(window).on('load', function() {
 			
 			if (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003601') !== -1 && productItems.indexOf('2003602') !== -1  && checkoutItemsLength <= 3 ) {
 				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003601') !== -1 && checkoutItemsLength <= 2) {
+			}else if  (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003601') !== -1 && checkoutItemsLength <= 2 ) {
 				this.unlockSmarbeer();
 			}else if  (productItems.indexOf('2003601') !== -1 && productItems.indexOf('2003602') !== -1 && checkoutItemsLength <= 2 ) {
 				this.unlockSmarbeer();
 			}else if  (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003602') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003600') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003601') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003602') !== -1 && checkoutItemsLength <= 2 ) {
 				this.unlockSmarbeer();
 			}
 
