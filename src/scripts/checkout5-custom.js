@@ -451,18 +451,26 @@ $(window).on('load', function() {
 
 		// lock smartbeer cart
 		this.smartbeer = function (){
-
 			console.info('update-smartbeer');
 			var productItems = [],
 				checkoutItems = vtexjs.checkout.orderForm.items,
 				checkoutItemsLength = checkoutItems.length,
-				btn_smartbeer = $('.btn_smartbeer');
+				btn_smartbeer = $('.btn_smartbeer'),
+				arrDeCervejeiras = ['2003602', '2003601', '2003600'];	
 
 			for (var i = 0; i < checkoutItemsLength; i++) {
 				productItems.push(checkoutItems[i].productId);				
-			}
+			}			
 
-			this.locksmartbeer = function(){
+			var hasCervejeira = productItems.some(function (item) {
+				return arrDeCervejeiras.indexOf(item) >= 0;
+			});
+
+			var hasOnlyCervejeira = productItems.every(function (item) {
+				return arrDeCervejeiras.indexOf(item) >= 0;
+			});
+
+			this.locksmartbeer = function () {
 				$('.fake-buttom').addClass('hide');
 				$('.product-item').removeClass('unavailable lookatme');
 				$('.item-unavailable').css('display', 'none');
@@ -472,46 +480,38 @@ $(window).on('load', function() {
 				if (btn_smartbeer.length <= 0) {
 					$('<a class="btn-success btn_smartbeer btn btn-large">Continuar</a>').appendTo('.cart-links');
 
-					if ($(window).width() <= 768){
+					if ($(window).width() <= 768) {
 						$('<a class="btn-success btn_smartbeer btn btn-large mobile">Continuar</a>').appendTo('.field-button');
 					}
 				}
 
-				$('.btn_smartbeer').on('click', function(){
+				$('.btn_smartbeer').on('click', function () {
 					$('#modal-smartbeer').vtexModal();
 				});
 
-				$.each($('.product-item'), function( ) {
+				$.each($('.product-item'), function () {
 					var data_sku = $(this).attr('data-sku'),
 						aviso_smart = '<tr><td class="aviso-smartbeer" colspan="7">A pré venda desse produto é <strong>exclusiva</strong> e sua compra deverá ser realizada <strong>separadamente</strong> de outros produtos.</td></tr>';
-					if (data_sku === '997' || data_sku === '998' || data_sku === '999' || data_sku === '1000' || data_sku === '1001' || data_sku === '1002'){
+					if (data_sku === '997' || data_sku === '998' || data_sku === '999' || data_sku === '1000' || data_sku === '1001' || data_sku === '1002') {
 						$(this).addClass('smartbeer');
 						$(aviso_smart).insertAfter(this);
 					}
 				});
 			};
-			
-			this.unlockSmarbeer = function() {
+
+			this.unlockSmarbeer = function () {
 				$('.fake-buttom').removeClass('hide');
 				$('.btn_smartbeer').addClass('hide');
 				$('.aviso-smartbeer').addClass('hide');
-			};
+			};	
 
-			if ( (productItems.indexOf('2003600') !== -1 || productItems.indexOf('2003601') !== -1 || productItems.indexOf('2003602') !== -1 )  && checkoutItemsLength > 1) {				
+			if (hasCervejeira && !hasOnlyCervejeira) {
 				this.locksmartbeer();
-			} else {
-				this.unlockSmarbeer();
 			}
-			
-			if (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003601') !== -1 && productItems.indexOf('2003602') !== -1  && checkoutItemsLength <= 3 ) {
+			else {				
 				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003601') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003601') !== -1 && productItems.indexOf('2003602') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}else if  (productItems.indexOf('2003600') !== -1 && productItems.indexOf('2003602') !== -1 && checkoutItemsLength <= 2 ) {
-				this.unlockSmarbeer();
-			}
+			}	
+		
 
 		};
 
