@@ -32,11 +32,42 @@ $fontSB : 'nowayregular', sans-serif;
 
 .vtex-modal {
 	.modal-holder {
-	border-radius: 0;
-	max-width: 570px;
+		background: #252525;
+		border-radius: 0;
+		// max-width: 570px;
 	}
 	.modal-header {
 		padding: 3px;
+		.close{
+			background: url('/arquivos/btn-fechar.png');
+			&:before{
+				display: none;
+			}
+		}
+	}
+}
+#vtex-modal-video{
+	.modal-holder {
+		max-width: 570px;
+	}
+	iframe{
+		@include breakpoint(small, 'max'){
+			width: 98%;
+		}
+	}
+}
+#modal-quickview{
+	overflow: hidden;
+}
+#vtex-modal-quickview{
+	.modal-holder {
+		max-width: 770px;
+	}
+	iframe{
+		border:0;
+		@include breakpoint(small, 'max'){
+			width: 98%;
+		}
 	}
 }
 @include breakpoint(small, 'max'){
@@ -351,7 +382,8 @@ $fontSB : 'nowayregular', sans-serif;
 				}
 			}
 	}
-	.sb-intro_ilustra {
+	.sb-intro_ilustra,
+	#sb-intro_ilustra {
 		font-size: 0;
 		height: 560px;
 		position: relative;
@@ -370,7 +402,7 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		// opacity: 0;
 		&.all {
-			background: url('/arquivos/imageSteel-smartBeer-02-cubo.png') center top no-repeat;
+			background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
 			transition: ease .3s all; 
 		}
 		&.carbono {
@@ -477,17 +509,20 @@ $fontSB : 'nowayregular', sans-serif;
 			}
 		}
 		.sb-intro-product-price {
-			display: block;
+			display: none;
 			float: left;
 			margin: 10px 0;
 			opacity: 0;
 			position: relative;
 			width: 100%;
+			&.current{
+				display:block;
+			}
 			@include breakpoint(large, 'max'){
 				opacity: 1;
 			}
 			@include breakpoint(small, 'max'){
-				display: none;
+				display: none!important;
 			}
 			p.value-buy {
 				color: #FFF;
@@ -604,7 +639,7 @@ $fontSB : 'nowayregular', sans-serif;
 				text-align: center;
 				transition: ease .3s all; 
 				width: 230px;
-				&.active {
+				&.current {
 					display: inline-block;
 				}
 				&:hover {
@@ -1390,7 +1425,7 @@ $fontSB : 'nowayregular', sans-serif;
 			}
 			.legend{
 				color: $green;
-				font-size: 14px;
+				// font-size: 14px;
 				margin:10px 0;
 				font-size: 18px;
 				text-align: center;
@@ -1735,7 +1770,7 @@ $fontSB : 'nowayregular', sans-serif;
 			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
 			float: left;
 			height: 61px;
-			margin-right: 30px;
+			// margin-right: 30px;
 			width: 204px;
 			margin-right: 0;
 			background-color: #000;

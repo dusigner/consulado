@@ -30,31 +30,98 @@
 $fontSB : 'nowayregular', sans-serif;
 
 body.ted-quick-view {
-	background: #252525 url('/arquivos/bg-texture-black.jpg');
+	background: #252525;
 	height: 100vh;
 	
 		* {
 			font-family: $fontSB;
 		}
-
+	.prod-galeria{
+		widht:100%;
+		
+		.galleryThumbs {
+			display: none;
+		}
+		.gallery{
+			float:none;
+		}
+		
+	}
+	.slick-arrow{
+		display: none!important;
+	}
+	.container{
+		margin: 0;
+		padding: 0;
+		float: left;
+	}
+	.prod-title{
+		width:100%!important;
+		margin: 20px 0;
+		@include breakpoint(extra-small, 'max'){
+			text-align: center;
+		}
+	}
+	iframe{
+		display: none;
+	}
+	.prod-image{
+		max-width: 400px;
+		height: 400px;
+		padding: 0 20px;
+		overflow: hidden;
+		float: left;
+		margin-top:0;
+		@include breakpoint(small, 'max'){
+			max-width: 250px;
+    		height: 200px;
+		}
+		@include breakpoint(extra-small, 'max'){
+			float: none;
+			margin: 0 auto;
+			height: 170px!important;
+		}
+	}
+	.prod-info{
+		max-width: 310px;
+    	height: 400px;
+		float: left;
+		box-sizing: border-box;
+		@include breakpoint(extra-small, 'max'){
+			float: none;
+			margin: 0 auto;
+			height: auto;
+		}
+	}
 	.row.no-margin {
 		margin: 0 auto;
-		max-width: 79%;
+		
 	}
 
 	.prod-title {
 
 		.lead {
 			color: #fff;
-			font-size: 23px !important;
+			font-size: 22px !important;
+			@include breakpoint(small, 'max'){
+				.productName{
+					color: #fff;
+					font-size: 22px !important;
+					line-height: 30px;
+				}
+			}
 			
 			.reference {
+
 				color: #fff;
 			}
 		}
 	}
 
 	.prod-preco {
+		@include breakpoint(extra-small, 'max'){
+			margin-left: 10px;
+		}
 		.valor-de,
 		.valor-por {
 			color: #fff;
@@ -75,6 +142,9 @@ body.ted-quick-view {
 
 		.specification {
 			color: #99ca3b;
+			&::before{
+				position: relative!important;
+			}
 		}
 
 		.skuList input[type='radio']:hover + label,
@@ -95,6 +165,7 @@ body.ted-quick-view {
 			border: 2px solid #99ca3b;
 			color: #99ca3b;
 			text-transform: uppercase;
+			min-width: 220px;
 			
 			&:before {
 				display: none;
@@ -102,7 +173,12 @@ body.ted-quick-view {
 			
 			&:hover {
 				background-color: #99ca3b;				
-				color: #fff;
+				color: #fff!important;
+			}
+			@include breakpoint(extra-small, 'max'){
+				float: none;
+				margin: 0 auto;
+				width: 100%;
 			}
 		}
 	}
@@ -224,4 +300,25 @@ body.ted-quick-view {
 	#detalhes {
 		display: none !important;
 	}
+	@include breakpoint(medium, 'max'){
+		#BuyButton .buy-button,
+		.prod-details-nav #BuyButtonDetails .buy-button{
+		background-color: transparent;
+		border: 2px solid #99ca3b;
+		color: #99ca3b !important;
+		text-transform: uppercase;
+		border-radius: 50px; 
+		/* bottom: 0; */
+		/* display: inline-block; */
+		font-size: 14px!important;
+		/* height: 54px; */
+		/* left: 0; */
+		margin: 20px 0;
+		position: relative!important; 
+		/* text-transform: uppercase; */
+		width: auto;
+		/* z-index: 9999; */
+		}
+	}
+
 }
