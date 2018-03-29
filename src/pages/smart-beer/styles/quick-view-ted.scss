@@ -37,7 +37,7 @@ body.ted-quick-view {
 			font-family: $fontSB;
 		}
 	.prod-galeria{
-		widht:100%;
+		width:100%;
 		
 		.galleryThumbs {
 			display: none;
@@ -54,13 +54,6 @@ body.ted-quick-view {
 		margin: 0;
 		padding: 0;
 		float: left;
-	}
-	.prod-title{
-		width:100%!important;
-		margin: 20px 0;
-		@include breakpoint(extra-small, 'max'){
-			text-align: center;
-		}
 	}
 	iframe{
 		display: none;
@@ -99,7 +92,11 @@ body.ted-quick-view {
 	}
 
 	.prod-title {
-
+		width:100%!important;
+		margin: 20px 0;
+		@include breakpoint(extra-small, 'max'){
+			text-align: center;
+		}
 		.lead {
 			color: #fff;
 			font-size: 22px !important;

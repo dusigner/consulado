@@ -85,8 +85,13 @@ $fontSB : 'nowayregular', sans-serif;
 #smart-beer {
 	background: #252525  url('/arquivos/bg-texture-black.jpg');
 	padding: 20px 0;
-	section {
-		opacity: 0;
+	section.sb-intro,
+	section.sb-video,
+	// section.sb-app,
+	// section.sb-features,
+	section.sb-dimensoes,
+	section.sb-vitrine{
+		// opacity: 0;
 		transform: translateY(50px);
 		transition: all 1s ease-out;
 		&.fade-in {
@@ -919,8 +924,8 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-app-steep1 {
-		// display: block;
-		display: none;
+		display: block;
+		// display: none;
 		.app-screen-01 {
 			background: url('/arquivos/app-screen-01.png')center center no-repeat;
 			height: 402px;
@@ -932,7 +937,8 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-app-steep2 {
 		// display:block;
-		display: none;
+		// display: none;
+		opacity:0;
 		.app-screen-02 {
 			background: url('/arquivos/app-screen-02.png')center center no-repeat;
 			height: 402px;
@@ -946,30 +952,35 @@ $fontSB : 'nowayregular', sans-serif;
 			right: 0;
 			top: 132px;
 			width: 58%;
+			opacity: 0;
 		}
 		.as-02-02 {
 			position: absolute;
 			right: 0;
 			top: 297px;
 			width: 58%;
+			opacity: 0;
 		}
 		.as-02-03 {
 			position: absolute;
 			right: 0;
 			top: 347px;
 			width: 58%;
+			opacity: 0;
 		}
 		.as-02-04 {
 			position: absolute;
 			right: 0;
 			top: 392px;
 			width: 58%;
+			opacity: 0;
 		}
 
 	}
 	.sb-app-steep3 {
 		// display: block;
-		display: none;
+		// display: none;
+		opacity:0;
 		.app-screen-03 {
 			background: url('/arquivos/app-screen-03.png')center center no-repeat;
 			height: 402px;
@@ -983,23 +994,27 @@ $fontSB : 'nowayregular', sans-serif;
 			right: 0;
 			top: 133px;
 			width: 75%;
+			opacity: 0;
 		}
 		.as-03-02 {
 			position: absolute;
 			right: 0;
 			top: 232px;
 			width: 75%;
+			opacity: 0;
 		}
 		.as-03-03 {
 			position: absolute;
 			right: 0;
 			top: 370px;
 			width: 60%;
+			opacity: 0;
 		}
 	}
 	.sb-app-steep4 {
-		display: block;
+		// display: block;
 		// display: none;
+		opacity: 0;
 		.app-screen-04 {
 			background: url('/arquivos/app-screen-04.png')center center no-repeat;
 			height: 402px;
@@ -1013,6 +1028,7 @@ $fontSB : 'nowayregular', sans-serif;
 			right: 0;
 			top: 140px;
 			width: 60%;
+			opacity: 0;
 			p {
 				color: #FFF;
 				float: right;
@@ -1157,8 +1173,8 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-features-steep1 {
-		// display: block;
-		display: none;
+		display: block;
+		// display: none;
 		position: relative;
 		.box {
 			background: #202020;
@@ -1186,6 +1202,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 45px;
 			width: 42%;
+			opacity: 0;
 			.icon-conectividade {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
 			}
@@ -1195,6 +1212,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 173px;
 			width: 36%;
+			opacity: 0;
 			.icon-estoque-temp {
 				background: url('/arquivos/icon-features-estoque.png') top left no-repeat;
 			}
@@ -1205,6 +1223,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 347px;
 			width: 403px;
+			opacity: 0;
 			.icon-notificacao {
 				background: url('/arquivos/icon-features-notificacao.png') top left no-repeat;
 			}
@@ -1214,6 +1233,7 @@ $fontSB : 'nowayregular', sans-serif;
 			right: 0;
 			top: 82px;
 			width: 51%;
+			opacity: 0;
 			&.right {
 				.legend {
 					text-align: left!important;
@@ -1231,8 +1251,9 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 
 	.sb-features-steep2 {
-		// display:block;
-		display: none;
+		display:block;
+		// display: none;
+		opacity: 0;
 		position: relative;
 		.box {
 			background: #202020;
@@ -1259,6 +1280,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 45px;
 			width: 42%;
+			opacity: 0;
 			.icon-porta-aberta {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
 			}
@@ -1268,6 +1290,7 @@ $fontSB : 'nowayregular', sans-serif;
     		right: 0;
     		top: 45px;
 			width: 49%;
+			opacity: 0;
 			&.right {
 				.legend {
 					text-align: left!important;
@@ -1284,26 +1307,30 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-features-steep3 {
-		// display: block;
-		display: none;
+		display: block;
+		// display: none;
+		opacity: 0;
 		position: relative;
 		.f-03-01 {
 			left: 0;
 			position: absolute;
 			top: 45px;
 			width: 47%;
+			opacity: 0;
 		}
 		.f-03-02 {
 			left: 0;
 			position: absolute;
 			top: 215px;
 			width: 50%;
+			opacity: 0;
 		}
 		.f-03-03 {
 			left: 0;
 			position: absolute;
 			top: 352px;
 			width: 42%;
+			opacity: 0;
 		}
 		.f-03-04 {
 			border-right: 2px solid $green;
@@ -1311,6 +1338,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 490px;
 			width: 39%;
+			opacity: 0;
 			.elipse {
 				top: 30px!important;
 			}
@@ -1319,11 +1347,13 @@ $fontSB : 'nowayregular', sans-serif;
 	.sb-features-steep4 {
 		display: block;
 		position: relative;
+		opacity: 0;
 		.f-04-01 {
 			left: 0;
 			position: absolute;
 			top: 70px;
 			width: 42%;
+			opacity: 0;
 		}
 		.box-capacidade {
 			left: 0;
@@ -1355,6 +1385,7 @@ $fontSB : 'nowayregular', sans-serif;
 		position: absolute;
 		text-align: center;
 		width: 100%;
+		opacity: 0;
 	}
 
 }
@@ -1884,4 +1915,54 @@ body.page-smartbeer {
 	}
 
 }
+
+// Teste start
+.section-1,
+.sb-app,
+.sb-features {
+    width: 100%;
+    // min-height: 100%;
+    min-height: 100vh;
+    height: auto;
+    /* vertical centering child elements */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+	/* Content */
+	.wrapper,
+	.container {
+		width: 100%;
+		height: 75vh;
+	/*     height: 500px;
+		background: coral; */
+		// border: 1px solid red;
+		overflow-x: hidden;
+	/*     overflow-y: visible; */
+		overflow-y: hidden;
+		position: relative;
+		color: white;
+	}
+	.text {
+		position: absolute;
+		z-index: 1;
+		top: 40%;
+		left: 0;
+		width: 100%;
+		// border: 1px red solid;
+		color: #c5986a;
+		font-family: 'Signika', sans-serif;
+		font-size: 8vw;
+		font-weight: 700;
+		text-align: center;
+		visibility: hidden;
+	}
+}
+
+
+
+// Teste end
 
