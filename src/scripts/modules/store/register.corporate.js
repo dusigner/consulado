@@ -67,9 +67,10 @@ Nitro.module('register.corporate', function() {
 		});
 
 		//verifica se o campo de inscrição tem os caracteres necessários
-		$form.find('.stateRegistration').keyup(function(e) {
+		$form.find('.stateRegistration').keyup(function() {
 			var val = $(this).val();
 			val = val.replace(/[a-zA-Z]/g, '');
+			val = val.replace(/[^\w\s]/gi, '');
 			$(this).val(val);
 		});
 
@@ -170,7 +171,7 @@ Nitro.module('register.corporate', function() {
 		$modalRegister.find('.steps').slick('slickGoTo', '1');
 		$modalRegister.find('.buttons a').fadeIn();
 	};
-	
+
 	this.prepareUserData = function(data) {
 
 		var dataUser = {};

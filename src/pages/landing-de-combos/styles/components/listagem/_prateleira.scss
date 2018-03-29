@@ -11,6 +11,10 @@
 	.combos-prateleira__body {
 		background-color: #ffffff;
 		border: 2px solid $gray;
+
+		@include breakpoint(medium, 'max') {
+			padding: 5px;
+		}
 	}
 
 	 .combos-prateleira__footer {
@@ -27,6 +31,12 @@
 	justify-content: space-between;
 	padding: 20px;
 
+	@include breakpoint(small, 'max') {
+		flex-wrap: wrap;
+		min-height: 40px;
+		padding: 12px 10px 8px;
+	}
+
 	 .combos-product-kit__title {
 		@include responsiveFont(16, 16, true);
 		margin: 0;
@@ -38,7 +48,7 @@
 		display: block;
 		font-weight: normal;
 		text-transform: none;
-	}
+	 }
 
 	 .combos-product-kit__quantity {
 		@include responsiveFont(16, 16, true);
@@ -60,13 +70,16 @@
 		text-align: center;
 		text-transform: uppercase;
 
+		@include breakpoint(small, 'max') {
+			line-height: 1.3;
+			padding: 10px 10px 8px;
+		}
+
 		span {
 			align-items: center;
 			display: flex;
-		}
 
-		@include breakpoint(small, 'max') {
-			span {
+			@include breakpoint(small, 'max') {
 				text-transform: uppercase;
 			}
 		}
@@ -81,25 +94,30 @@
 		 }
 	 }
 
-	 .combos-finalization__content {
+	.combos-finalization__content {
 		background-color: #ffffff;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		padding: 17px;
-	 }
 
-	 .combos-finalization__button {
-		@include responsiveFont(13, 16, true);
-		height: 48px;
-		padding: .7em 1em;
+		@include breakpoint(small, 'max') {
+			padding: 10px;
+		}
+	}
+
+	.combos-finalization__button {
+		@include responsiveFont(14, 16, true);
+		height: 40px;
+		line-height: 1.2;
+		padding: .7em 1.5em;
 		text-transform: uppercase;
-		width: 170px;
+		width: 180px;
 
 		&.loading {
 			align-items: center;
 			color: transparent;
-			// display: flex;
+			display: flex;
 
 			&:before {
 				@include spinner($orange);
@@ -109,35 +127,47 @@
 				position: absolute;
 			}
 		}
-	 }
+	}
 
-	 &.combos-finalization--quick-view {
-		 margin-bottom: 10px;
-		 width: 50%;
+	&.combos-finalization--quick-view {
+		margin-bottom: 10px;
+		width: 50%;
 
-		 @include breakpoint(small, 'max') {
+		@include breakpoint(small, 'max') {
+			bottom: -10px;
 			margin: 10px 0;
-			width: 100%;
+			position: fixed;
+			width: calc(100% - 20px);
+			z-index: 9999;
 
 			.combos-finalization__title {
 				flex-wrap: wrap;
 				justify-content: center;
 				text-transform: initial;
 
+				@include breakpoint(small, 'max') {
+					padding: 5px 30px 5px 20px;
+				}
+
 				strong {
 					@include responsiveFont(17, 16, true);
 					padding: 0 5px 0 5px;
 				}
 			}
+
 			.combos-finalization__content {
 				flex-direction: column;
 				text-align: center;
 			}
+
 			.combos-finalization__button {
+				margin-top: 10px;
 				width: 100%;
 			}
+
 			.combos-price {
 				@include responsiveFont(14, 16, true);
+
 				.combos-price__real-price {
 					strong {
 						@include responsiveFont(16, 16, true);
@@ -145,30 +175,69 @@
 					}
 				}
 			}
+
 			.combos-price__installment-price {
-				strong {
-					&:first-child {
-						padding: 0 0 0 5px;
-					}
+				strong:first-child {
+					padding: 0 0 0 5px;
 				}
 			}
-
-		 }
-
-		 .combos-finalization__title {
-			padding: 0 30px 0 20px;
-		 }
-
 		}
 
-		.combos-price__list-price {
-			@include responsiveFont(14, 16, true);
-			text-decoration: line-through;
+		.combos-finalization__title {
+			padding: 0 20px 0 20px;
 		}
+	}
+
+	.combos-price__list-price,
+	.combos-price__real-price { line-height: 1.3; }
+
+	.combos-price__list-price {
+		@include responsiveFont(14, 16, true);
+		margin-right: 5px;
+		text-decoration: line-through;
+	}
+
+	.combos-price__real-price { @include responsiveFont(16, 16, true); }
+
+	.combos-price__installment-price { @include responsiveFont(15, 16, true); }
 }
 
-.prateleira-combos > h2 {
-	display: none;
+.prateleira-combos {
+	> h2 {
+		display: none;
+	}
+
+	ul > li {
+		position: relative;
+
+		&.loading {
+			&:before {
+				@include spinner($template-primary);
+				content: ' ';
+				left: 50%;
+				margin-left: -.5em;
+				margin-top: -.5em;
+				position: absolute;
+				top: 50%;
+				z-index: 99;
+			}
+
+			&:after {
+				background-color: rgba(#fff, .85);
+				bottom: 0;
+				content: ' ';
+				left: 2px;
+				position: absolute;
+				right: 2px;
+				top: 0;
+
+				@include breakpoint(small, 'max') {
+					left: 0;
+					right: 0;
+				}
+			}
+		}
+	}
 }
 
 .combos-prateleira__product-items,
@@ -183,7 +252,7 @@
 	#combos {
 		.combos-prateleira {
 			padding-bottom: 10px;
-			padding-top: 25px;
+
 			ul {
 				img {
 					border: none!important;
@@ -191,17 +260,22 @@
 					padding: 0;
 				}
 			}
+
 			.prateleira-combos {
 				width: 100%;
+
 				li {
 					display: none;
+
 					&:first-child { display: block; }
 				}
 			}
 		}
+
 		.combos-prateleira__footer {
 			position: inherit;
 		}
+
 		.prateleira-combos {
 			img {
 				border: 1px solid #d3d3d3;
@@ -209,6 +283,16 @@
 				margin: 6px;
 				padding: 4px;
 				width: 40px;
+
+				@include breakpoint(small, 'max') {
+					height: 35px;
+					margin: 5px 3px;
+					width: 35px;
+				}
+
+				&.inactive {
+					@include breakpoint(medium, 'max') { opacity: .3; }
+				}
 			}
 
 			.combos-prateleira__product-item {
@@ -223,38 +307,54 @@
 			flex-wrap: wrap;
 			justify-content: center;
 			text-transform: initial;
+
 			strong {
 				@include responsiveFont(17, 16, true);
 				padding: 0 5px 0 5px;
 			}
 		}
+
 		.combos-finalization__content {
 			flex-direction: column;
 			text-align: center;
 		}
+
 		.combos-finalization__button {
+			margin-top: 10px;
 			width: 100%;
 		}
+
 		.combos-price {
 			@include responsiveFont(14, 16, true);
+			line-height: 1.3;
+
+			.combos-price__list-price {
+				@include responsiveFont(13, 16, true);
+				line-height: inherit;
+			}
+
 			.combos-price__real-price {
+				@include responsiveFont(13, 16, true);
+				line-height: inherit;
+
 				strong {
-					@include responsiveFont(16, 16, true);
-					padding: 0 0 0 5px;
+					padding: 0 0 0 1px;
 				}
 			}
 		}
+
 		.combos-price__installment-price {
-			strong {
-				&:first-child {
-					padding: 0 0 0 5px;
-				}
+			@include responsiveFont(14, 16, true);
+			line-height: inherit;
+
+			strong:first-child {
+				padding: 0 0 0 5px;
 			}
 		}
+
 		.combos-product-kit__title,
 		 .combos-product-kit__quantity {
 			@include responsiveFont(13, 16, true);
 		}
 	}
 }
-

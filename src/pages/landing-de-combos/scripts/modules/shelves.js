@@ -5,7 +5,6 @@ require('./../../templates/prateleira-combos.html');
 var Helpers = require('./helpers');
 
 Nitro.module('shelves', function () {
-
 	var self = this,
 		discounts = [
 			{
@@ -31,10 +30,6 @@ Nitro.module('shelves', function () {
 			{
 				quantity: 1,
 				discount: 0
-			},
-			{
-				quantity: 0,
-				discount: 0
 			}
 		];
 
@@ -54,9 +49,7 @@ Nitro.module('shelves', function () {
 				var $prateleiraMobile = $(this),
 					imgs = $prateleiraMobile.find('a.combo-product__link img').clone();
 
-				// console.log('images', imgs);
 				$(imgs).each(function (index) {
-					// console.log('attr', $(this));
 					$(this).attr('data-index', index);
 
 					$(this).on('click', function() {
@@ -72,13 +65,14 @@ Nitro.module('shelves', function () {
 		}
 	};
 
-	self.actionCombo = function () {
-		$('.combo-product__button').on('click', function (event) {
+	self.actionCombo = function() {
+		$('.combo-product__button').on('click', function(event) {
 			event.preventDefault();
+
 			var quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
 				quantityTotal = $(this).closest('.combos-prateleira').find('.combo-product').length;
 
-			if( (quantityTotal-quantityInactive) >=3 || $(this).hasClass('combo-product__button--add-item') ) {
+			if ((quantityTotal-quantityInactive) >= 3 || $(this).hasClass('combo-product__button--add-item')) {
 				self.toggleCombo(this);
 				self.loadQuantity(this);
 				self.loadPrice(this);
@@ -86,8 +80,8 @@ Nitro.module('shelves', function () {
 		});
 	};
 
-	self.addTemplatePrateleiras = function (data) {
-		dust.render('prateleira-combos', data, function (err, out) {
+	self.addTemplatePrateleiras = function(data) {
+		dust.render('prateleira-combos', data, function(err, out) {
 			if (err) {
 				throw new Error('Prateleira Combos Dust error: ' + err);
 			}
@@ -99,14 +93,13 @@ Nitro.module('shelves', function () {
 		});
 	};
 
-	self.loadPrateleiras = function () {
-
+	self.loadPrateleiras = function() {
 		var prateleira = $('.prateleira-combos'),
 			data = {
 				prateleiras: []
 			};
 
-		prateleira.map(function () {
+		prateleira.map(function() {
 			var $self = $(this),
 				titles = $self.find('h2').text().split('|'),
 				title = titles[0],
@@ -114,22 +107,20 @@ Nitro.module('shelves', function () {
 				quantity = $self.find('ul>li').length;
 
 			// Combos de maximo 6 itens
-			if( quantity > 0 && quantity <= 6 ) {
-				data.prateleiras.push(
-					{
-						'title': title,
-						'subtitle': subtitle,
-						'quantity': quantity,
-						'body': $self.find('ul').html()
-					}
-				);
+			if (quantity <= 6) {
+				data.prateleiras.push({
+					'title': title,
+					'subtitle': subtitle,
+					'quantity': quantity,
+					'body': $self.find('ul').html()
+				});
 			}
 		});
 
 		self.addTemplatePrateleiras(data);
 	};
 
-	self.loadQuantity = function (button) {
+	self.loadQuantity = function(button) {
 		var quantity = $(button).closest('.combos-prateleira').find('.combos-product-kit__quantity'),
 			textQuantity = $(button).closest('.combos-prateleira').find('.combos-product-kit__quantity').text();
 
@@ -148,8 +139,8 @@ Nitro.module('shelves', function () {
 			discount = self.getDiscounts(button, quantity),
 			discountPrice;
 
-		if( Array.isArray(prices) ) {
-			$button.find('.combos-prateleira__product-item .combo-product__price').map(function () {
+		if (Array.isArray(prices) ) {
+			$button.find('.combos-prateleira__product-item .combo-product__price').map(function() {
 				prices.push(Helpers.formatFloat($(this).text()));
 			});
 
@@ -175,10 +166,10 @@ Nitro.module('shelves', function () {
 		totalPrice.text('R$ ' + textTotalPrice);
 	};
 
-	self.loadPrice = function (button) {
+	self.loadPrice = function(button) {
 
 		if (!button) {
-			$('.combos-prateleira__product-items').map(function () {
+			$('.combos-prateleira__product-items').map(function() {
 				var prices = [],
 					quantity = $(this).find('.combos-prateleira__product-item .combo-product__price').length;
 
@@ -202,13 +193,16 @@ Nitro.module('shelves', function () {
 		return result.discount;
 	};
 
-	self.toggleCombo = function (combo) {
-		var produto = $(combo).closest('.combo-product');
+	self.toggleCombo = function(combo) {
+		var produto = $(combo).closest('.combo-product'),
+			produtoImg = produto.find('.combo-product__link > img').attr('src');
+
 		produto.toggleClass('combo-product--inactive');
 		produto.find('.combo-product__button').toggleClass('combo-product__button--active');
+		produto.closest('.combos-prateleira').find('img[src="'+ produtoImg +'"]').toggleClass('inactive');
 	};
 
-	self.toggleProduto = function (textQuantity, operation) {
+	self.toggleProduto = function(textQuantity, operation) {
 		var quantity = textQuantity.replace(/[^0-9]/g, ''),
 			result = parseInt(quantity);
 
@@ -217,11 +211,13 @@ Nitro.module('shelves', function () {
 		return result;
 	};
 
-	self.togglePrice = function (price, totalPrice, operation) {
+	self.togglePrice = function(price, totalPrice, operation) {
 		var result;
+
 		price = Helpers.formatFloat(price);
 		result = Helpers.formatFloat(totalPrice);
 		operation ? result += price : result -= price;
+
 		return result;
 	};
 
