@@ -496,6 +496,7 @@ $fontSB : 'nowayregular', sans-serif;
 						margin-right: 4px;
 					}
 					a {
+						cursor:auto;
 						display: block;
 					}
 					.icon-iphone {
@@ -745,7 +746,8 @@ $fontSB : 'nowayregular', sans-serif;
 			display: table;
 			height: 300px;
 			margin: 70px auto;
-			width: 535px;
+			max-width: 535px;
+			width: 100%;
 			@include breakpoint(medium, 'max'){
 				margin: 0 auto;
 				padding: 0;
@@ -812,6 +814,7 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		.btn-download-app-store {
 			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
+			cursor: auto;
 			float: left;
 			height: 61px;
 			margin-right: 30px;
@@ -826,6 +829,7 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		.btn-download-google-play {
 			background: url('/arquivos/btn-download-google-play.png')left center no-repeat;
+			cursor: auto;
 			display: inline-block;
 			height: 60px;
 			width: 204px;
