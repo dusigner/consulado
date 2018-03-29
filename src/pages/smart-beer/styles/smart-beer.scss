@@ -29,7 +29,7 @@
 $fontSB : 'nowayregular', sans-serif;
 
 // ===============================================================
-
+@keyframes jump { 0% { top: 0; } 20% { top: 20px; } 100% { top: 0; } }
 .vtex-modal {
 	.modal-holder {
 		background: #252525;
@@ -83,7 +83,7 @@ $fontSB : 'nowayregular', sans-serif;
 }
 //SB Geral
 #smart-beer {
-	background: #252525  url('/arquivos/bg-texture-black.jpg');
+	background: #252525  url('/arquivos/bg-texture-black.jpg') fixed;
 	padding: 20px 0;
 	section.sb-intro,
 	section.sb-video,
@@ -94,6 +94,7 @@ $fontSB : 'nowayregular', sans-serif;
 		// opacity: 0;
 		transform: translateY(50px);
 		transition: all 1s ease-out;
+		margin:40px 0;
 		&.fade-in {
 			opacity: 1;
 			transform: translateY(0);
@@ -108,8 +109,10 @@ $fontSB : 'nowayregular', sans-serif;
 			background: url('/arquivos/icon-arrow-down.png') center center no-repeat;
 			display: table;
 			height: 12px;
-			margin: 40px auto 60px;
+			margin: 80px auto;
 			width: 30px;
+			position: relative;
+			animation: jump 5s infinite;
 			@include breakpoint(large, 'max'){
 				margin: 0px auto 20px;
 			}
@@ -167,7 +170,7 @@ $fontSB : 'nowayregular', sans-serif;
 
 // SB Intro
 .sb-intro {
-	padding-top: 85px;
+	padding-top: 40px 0;
 	@include breakpoint(extra-large, 'max') {
 		padding-top: 40px; 
 	}
@@ -273,6 +276,7 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-intro_prateleira-mobile{
 		padding-bottom: 40px;
+		font-size: 16px;
 		font-family: $fontSB;
 		display: none;
 		@include breakpoint ( small , 'max'){
@@ -317,6 +321,7 @@ $fontSB : 'nowayregular', sans-serif;
 			background: transparent;
 			border: 2px solid $green;
 			border-radius: 35px;
+			font-size:16px;
 			color: $green;
 			display: block;
 			float: right;
@@ -432,6 +437,9 @@ $fontSB : 'nowayregular', sans-serif;
 				opacity: 0;
 				position: relative;
 				text-transform: uppercase;
+				span{
+					font-family: Arial, Helvetica, sans-serif;
+				}
 				@include breakpoint(extra-large, 'max'){
 					font-size: 24px;
 					padding-top: 30px;
@@ -598,7 +606,7 @@ $fontSB : 'nowayregular', sans-serif;
 					display: block;
 					height: 60px;
 					width: 60px;
-					&.active {
+					&.current {
 						span {
 							border: 3px solid #fff;
 						}
@@ -660,6 +668,7 @@ $fontSB : 'nowayregular', sans-serif;
 
 //SB Vídeo
 .sb-video {
+	padding: 80px auto;
 	@include breakpoint ( medium , 'max'){
 		.container{
 			margin:0;
@@ -722,6 +731,7 @@ $fontSB : 'nowayregular', sans-serif;
 			border: 2px solid $green;
 			border-radius: 35px;
 			color: $green;
+			font-size: 17px;
 			display: inline-block;
 			font-family: $fontSB;
 			left: 50%;
@@ -877,6 +887,12 @@ $fontSB : 'nowayregular', sans-serif;
 		height: 600px;
 		position: relative;
 		width: 280px;
+		.sb-app-steep1,
+		.sb-app-steep2,
+		.sb-app-steep3,
+		.sb-app-steep4{
+			opacity: 1;
+		}
 		.slider{
 			width: 230px;
 			
@@ -1454,7 +1470,7 @@ $fontSB : 'nowayregular', sans-serif;
 			height: 330px;
 			position: absolute;
 			top: 0px;
-			left:0;
+			left:-15px;
 			img{
 				width: 100%;
 			}
@@ -1471,7 +1487,7 @@ $fontSB : 'nowayregular', sans-serif;
 				background: url('/arquivos/btn-fechar.png') top left no-repeat;
 				position: absolute;
 				top: -15px;
-				left:49%;
+				left:45%;
 			}
 		}
 	}
@@ -1716,6 +1732,7 @@ $fontSB : 'nowayregular', sans-serif;
 		border: 2px solid $green;
 		border-radius: 35px;
 		color: $green;
+		font-size: 16px;
 		display: block;
 		font-family: $fontSB;
 		margin: 0 auto;
@@ -1732,6 +1749,7 @@ $fontSB : 'nowayregular', sans-serif;
 		color: #FFF;
     	display: block;
 		margin: 20px auto;
+		font-size: 16px;
 	}
 	.sb-vitrine_message {
 		color: #FFF;
@@ -1871,7 +1889,8 @@ body.page-smartbeer {
 			}
 
 			.form-search .text-search {
-				background: #454545;
+				background: #454545 !important;
+				color: #7a7a7a;
 				border: 1px solid #010101;
 			}
 
@@ -1920,53 +1939,54 @@ body.page-smartbeer {
 
 }
 
+@include breakpoint(large, 'min'){
 // Teste start
-.section-1,
-.sb-app,
-.sb-features {
-    width: 100%;
-    // min-height: 100%;
-    min-height: 100vh;
-    height: auto;
-    /* vertical centering child elements */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    position: relative;
-	/* Content */
-	.wrapper,
-	.container {
+	.section-1,
+	.sb-app,
+	.sb-features {
 		width: 100%;
-		height: 75vh;
-	/*     height: 500px;
-		background: coral; */
-		// border: 1px solid red;
-		overflow-x: hidden;
-	/*     overflow-y: visible; */
-		overflow-y: hidden;
+		// min-height: 100%;
+		min-height: 100vh;
+		height: auto;
+		/* vertical centering child elements */
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		align-items: center;
 		position: relative;
-		color: white;
+		/* Content */
+		.wrapper,
+		.container {
+			width: 100%;
+			height: 75vh;
+		/*     height: 500px;
+			background: coral; */
+			// border: 1px solid red;
+			overflow-x: hidden;
+		/*     overflow-y: visible; */
+			overflow-y: hidden;
+			position: relative;
+			color: white;
+		}
+		.text {
+			position: absolute;
+			z-index: 1;
+			top: 40%;
+			left: 0;
+			width: 100%;
+			// border: 1px red solid;
+			color: #c5986a;
+			font-family: 'Signika', sans-serif;
+			font-size: 8vw;
+			font-weight: 700;
+			text-align: center;
+			visibility: hidden;
+		}
 	}
-	.text {
-		position: absolute;
-		z-index: 1;
-		top: 40%;
-		left: 0;
-		width: 100%;
-		// border: 1px red solid;
-		color: #c5986a;
-		font-family: 'Signika', sans-serif;
-		font-size: 8vw;
-		font-weight: 700;
-		text-align: center;
-		visibility: hidden;
-	}
+
 }
-
-
 
 // Teste end
 

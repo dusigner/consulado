@@ -163,7 +163,7 @@
 					<div class="col-4">
 						<div class="sb-intro_info">
 							<h2 class="campanha-ofds">O FIM DA SAIDEIRA</h2>
-							<h3>Uma Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais?
+							<h3>Uma Cervejeira conectada* que avisa quando a bebida está acabando e ajuda a pedir* mais?
 								<span>Agora existe.</span>
 							</h3>
 							<p>*Conectada a um aplicativo com controle de estoque
@@ -530,7 +530,7 @@
 						<!-- <div class="cervejeira aberta"></div> -->
 						<div class="sb-clear"></div>
 						<div class="col-12">
-							<p class="sb-f-massage">*Conectada a um aplicativo com controle de estoque **Verificar a disponibilidade das lojas na sua região.</p>
+							<p class="sb-f-massage">*Conectada a um aplicativo com controle de estoque &nbsp;&nbsp; **Verificar a disponibilidade das lojas na sua região.</p>
 						</div>
 
 					</div>
@@ -604,23 +604,25 @@
 					<div class="box-capacidade">
 						<div class="line line01">
 							<p>
-								<strong>75</strong>
-								<br/>Latas</p>
+							<strong>60</strong>
+							<br/>Long Necks</p>
 						</div>
 						<div class="line line02">
 							<p>
-								<strong>37</strong>
-								<br/>Garrafas</p>
+							<strong>05</strong>
+							<br/>Barris</p>
+
 						</div>
 						<div class="line line03">
 							<p>
-								<strong>60</strong>
-								<br/>Long Necks</p>
+							<strong>37</strong>
+							<br/>Garrafas</p>
 						</div>
 						<div class="line line04">
 							<p>
-								<strong>05</strong>
-								<br/>Barris</p>
+							<strong>75</strong>
+							<br/>Latas</p>
+						
 						</div>
 						<span class="ou">ou</span>
 					</div>
@@ -782,7 +784,7 @@
 
 		var introScene = new ScrollMagic.Scene({
 			triggerElement: '.sb-intro',
-			duration: '100%',
+			duration: '80%',
 			triggerHook: 0.9,
 		})
 			.setClassToggle('.sb-intro', 'fade-in')
@@ -1066,6 +1068,7 @@
 
 
 			sb_features_steep1 = $('.sb-features-steep1'),
+			sb_f_massage = $('.sb-f-massage');
 			f_01_01 = $('.f-01-01'),
 			f_01_02 = $('.f-01-02'),
 			f_01_03 = $('.f-01-03'),
@@ -1094,11 +1097,14 @@
 		var t3_animation = new TimelineMax();
 		t3_animation
 			// APP STEEP #01
-			.to(sb_features_steep1, 0.5, { autoAlpha: 1 })
+			// .to(sb_features_steep1, 0.5, { autoAlpha: 1 })
+			
+			.to(sb_f_massage, 0.5, { autoAlpha: 1 })
 			.to(f_01_01, 0.5, { autoAlpha: 1 })
 			.to(f_01_02, 0.5, { autoAlpha: 1 })
 			.to(f_01_03, 0.5, { autoAlpha: 1 })
 			.to(f_01_04, 0.5, { autoAlpha: 1 })
+			.to(sb_f_massage, 0.5, { autoAlpha: 0 })
 			.to(sb_features_steep1, 0.5, { autoAlpha: 0 })
 
 			// APP STEEP #02

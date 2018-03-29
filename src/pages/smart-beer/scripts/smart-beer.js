@@ -134,7 +134,7 @@ var sbModal = function(){
         e.preventDefault();
         $('.zoom').fadeOut(300);
     });
-}
+};
 
 var sbSlick = function(){
     var screenWidth = $(window).width();
@@ -177,13 +177,15 @@ var sbSlick = function(){
             dots: true
         });
     }
-}
+};
 
 var sbSelectSku = function(){
     //Select SKU INTRO
     $('.sb-intro .sb-intro_select-sku ul li a').on('click', function (e) {
         e.preventDefault();
         var selectBeer = $(this).attr('rel');
+        $('.sb-intro .sb-intro_select-sku ul li a').removeClass('current');
+        $(this).addClass('current');
         $('#sb-intro_ilustra').removeAttr('style');
         $('#sb-intro_ilustra').removeClass('carbono');
         $('#sb-intro_ilustra').removeClass('cubo');
@@ -193,7 +195,7 @@ var sbSelectSku = function(){
         $('.sb-intro-buttom-buy a.' + selectBeer).css('display', 'block');
 
     });
-}
+};
 
 $('document').ready(function(){
 
