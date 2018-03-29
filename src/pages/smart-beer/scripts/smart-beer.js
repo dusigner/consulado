@@ -164,7 +164,115 @@ var animation_Intro = function(){
     // Intro Animations End
 };
 
+var tagueamento = function() {
+    
+    $('.sb-intro-buttom-buy a').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Comprar – ' + $(this).attr('data-item')
+        });           
+    });
+
+    $('.sb-intro_select-sku ul li a').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Selecionar Cor – ' + $(this).attr('rel')
+        });           
+    });
+
+    $('.sb-intro_prateleira-mobile .sb-vitrine_btn').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Comprar – ' + $(this).prev('h3').text() 
+        });           
+    });
+
+    $('.sb-vitrine .sb-vitrine_btn').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Comprar – ' + $(this).prev('h3').text() + ' - Cervejeira Smartbeer'
+        });           
+    });
+
+    $('.sb-intro .sb-intro_prateleira-mobile ul').on('afterChange', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Banner Inicial'
+        });
+    });
+
+    $('.sb-video_btn').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Assista Ao Vídeo'
+        });
+    });
+
+    $('.mockup-mobile-view .slider').on('afterChange', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Aplicativo SmartBeer'
+        });
+    });
+
+    $('.sb-dimensoes-mobile-view ul').on('afterChange', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Armazenamento de Alta Capacidade'
+        });
+    });
+
+    $('.sb-vitrine .prateleira').on('afterChange', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Cervejeira Smartbeer'
+        });
+    });
+
+
+    $('.link-sm').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Saiba Mais – ' + $(this).parent().find('h3').text() + ' - Cervejeira Smartbeer'
+        });           
+    });
+
+    
+    $('.sb-app-download a').on('click', function () {
+        dataLayer.push({
+            event:'generic-event-trigger',
+            category : 'TED',
+            action: 'Click',
+            label: 'Download – ' + $(this).attr('data-store')
+        });           
+    });
+    
+};
+
 $('document').ready(function(){
+
+    tagueamento();
+
     var screenWidth = $(window).width();
 
     // Desktop

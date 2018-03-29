@@ -740,7 +740,8 @@ $fontSB : 'nowayregular', sans-serif;
 			display: table;
 			height: 300px;
 			margin: 70px auto;
-			width: 535px;
+			max-width: 535px;
+			width: 100%;
 			@include breakpoint(medium, 'max'){
 				margin: 0 auto;
 				padding: 0;
