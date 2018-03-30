@@ -120,6 +120,12 @@ var sbModal = function(){
     // Modal Video
     $('.sb-video_btn').on('click', function () {
         $('#modal-video').vtexModal();
+
+        $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/dlDP5JzdHpQ?rel=0&amp;showinfo=0');
+    });
+
+    $(window).on('closeVtexModal', function() {
+        $('#vtex-modal-video iframe').removeAttr('src');
     });
 
     //Modal Detalhes internos;
@@ -134,6 +140,8 @@ var sbModal = function(){
         e.preventDefault();
         $('.zoom').fadeOut(300);
     });
+    //modal close video
+    
 };
 
 var sbSlick = function(){
@@ -197,16 +205,33 @@ var sbSelectSku = function(){
     });
 };
 
-$('document').ready(function(){
+$(document).ready(function(){
 
     tagueamento();
     sbModal();
     sbSlick();
     sbSelectSku();
-    
 });
 
-// // If resize
-// $(window).resize(function () {
-//     $('body').scrollTop(0);
+$(document).on('ajaxStop', function() {
+    console.log('close', $('#vtex-modal-video .close'));
+
+    $('#vtex-modal-video .close').unbind('click').bind('click', function() {
+        console.log('Clicoooou');
+    });
+});
+
+// $('.close').on('click', function () {
+//     $('#vtex-modal-video iframe').removeAttr('src');
+//     // var src = $('#vtex-modal-video iframe').attr('src');
+//     // // console.log('src', src);
+//     // $('#vtex-modal-video iframe').attr('src', src);
+
+//     console.log('Clicoooou');
 // });
+
+
+// // // If resize
+// // $(window).resize(function () {
+// //     $('body').scrollTop(0);
+// // });
