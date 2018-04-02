@@ -1959,6 +1959,49 @@ body.page-smartbeer {
 				
 	}
 
+
+	.menu-mobile,
+	.menu-mobile .open-menu-mobile {
+		background-color: #252525;
+	}
+
+	.menu-mobile .menu-department .item-department {
+		background-color: #252525;
+	}
+
+	@include breakpoint('small', 'max') {
+	   .menu-department .customItemMenu,
+	   .menu-department,
+	   div.account .welcome-message .welcome a#login,
+	   div.account a[href="/minhaconta/pedidos"] {
+		   background-color: #252525 !important;
+	   }
+
+	   div.account .welcome-message .welcome a#login {
+		   border: none;
+	   }
+
+	   .minicart .link-cart {
+		   background: none !important;
+	   }
+
+	   .minicart .cart-quantity {
+		   line-height: 15px !important;
+	   }
+
+	   .menu-mobile div.account a[href="/minhaconta/pedidos"] .account__icon.account__icon--truck svg {
+		       fill: #fff;
+	   }
+	}
+
+	.header .cont-search {
+		@include breakpoint('small', 'max') {
+			   border: 7px solid #252525;
+			   background: #252525;
+			   border-bottom: 1px solid #9ccb3d;
+		}
+	}
+
 }
 
 @include breakpoint(large, 'min'){
