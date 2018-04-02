@@ -94,7 +94,7 @@ $fontSB : 'nowayregular', sans-serif;
 		// opacity: 0;
 		transform: translateY(50px);
 		transition: all 1s ease-out;
-		margin:40px 0;
+		margin:80px 0;
 		&.fade-in {
 			opacity: 1;
 			transform: translateY(0);
@@ -770,7 +770,7 @@ $fontSB : 'nowayregular', sans-serif;
 //SB App
 .sb-app {
 	font-family: $fontSB;
-	padding: 50px 0;
+	padding: 0px 0;
 	@include breakpoint(small, 'max'){
 		padding: 20px 0;
 	}
@@ -1160,7 +1160,7 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-features {
 	font-family: $fontSB;
 	min-height: 700px;
-	padding: 50px 0;
+	padding: 0px 0;
 	@include breakpoint(small, 'max'){
 		display: none;
 	}
@@ -1398,11 +1398,9 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-f-massage {
-		bottom: 0;
+		margin-top: 60px;
 		color: #dbd9d9;
-		font-size: 14px;
-		left: 0;
-		position: absolute;
+		font-size: 14px;	
 		text-align: center;
 		width: 100%;
 		opacity: 0;
@@ -1945,8 +1943,8 @@ body.page-smartbeer {
 	.sb-app,
 	.sb-features {
 		width: 100%;
-		// min-height: 100%;
-		min-height: 100vh;
+		min-height: 100%;
+		// min-height: 100vh;
 		height: auto;
 		/* vertical centering child elements */
 		display: flex;
@@ -1964,9 +1962,9 @@ body.page-smartbeer {
 		/*     height: 500px;
 			background: coral; */
 			// border: 1px solid red;
-			overflow-x: hidden;
+			// overflow-x: hidden;
 		/*     overflow-y: visible; */
-			overflow-y: hidden;
+			// overflow-y: hidden;
 			position: relative;
 			color: white;
 		}
