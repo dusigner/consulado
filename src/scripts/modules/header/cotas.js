@@ -11,7 +11,7 @@ Nitro.module('cotas', function() {
 	var self = this,
 		cota = store.isPersonal ? { consumed: 0, limit: 25 } : { consumed: 0, limit: 10 },
 		userData = null,
-		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0,
+		isLogged = document.cookie.indexOf('VtexIdclientAutCookie_' + window.jsnomeLoja) >= 0 && store.userData.document,
 		cotasCookie = $.cookie('xSkuSalesChannel5');
 
 
