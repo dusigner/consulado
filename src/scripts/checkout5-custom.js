@@ -492,7 +492,7 @@ $(window).on('load', function() {
 				$.each($('.product-item'), function () {
 					var data_sku = $(this).attr('data-sku'),
 						aviso_smart = '<tr><td class="aviso-smartbeer" colspan="7">A pré venda desse produto é <strong>exclusiva</strong> e sua compra deverá ser realizada <strong>separadamente</strong> de outros produtos.</td></tr>';
-					if (data_sku === '997' || data_sku === '998' || data_sku === '999' || data_sku === '1000' || data_sku === '1001' || data_sku === '1002') {
+					if (data_sku === '2004517' || data_sku === '2004518' || data_sku === '2004519' || data_sku === '2004520' || data_sku === '2004521' || data_sku === '2004522') {
 						$(this).addClass('smartbeer');
 						$(aviso_smart).insertAfter(this);
 					}
