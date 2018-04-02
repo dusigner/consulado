@@ -124,6 +124,11 @@ var sbModal = function(){
         $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/dlDP5JzdHpQ?rel=0&amp;showinfo=0');
     });
 
+    $('.link-termo').on('click', function () {
+        $('#modal-termo').vtexModal();
+    });
+    
+
     $(window).on('closeVtexModal', function() {
         $('#vtex-modal-video iframe').removeAttr('src');
     });

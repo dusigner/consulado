@@ -56,6 +56,19 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 }
+#vtex-modal-termo{
+	.modal-holder {
+		background: #FFF;
+		width: 100%;
+		max-width: 800px;
+	}
+	#modal-termo{
+		text-align: left;
+		padding: 20px;
+		overflow: auto;
+		height: 493px;
+	}
+}
 #modal-quickview{
 	overflow: hidden;
 }
@@ -848,6 +861,14 @@ $fontSB : 'nowayregular', sans-serif;
 
 			}
 		}
+	}
+	.app-message{
+		color: #b5b5b5;
+		font-family: $fontSB;
+		font-size: 12px;
+		position: relative;
+		float:left;
+		width:100%;
 	}
 	.sb-app-diferenciais-mobile{
 		display:none;
@@ -1753,10 +1774,12 @@ $fontSB : 'nowayregular', sans-serif;
 		color: #FFF;
 		text-align: center;
 		margin: 50px 0 20px; 
-		span {
+		span,
+		a {
 			color: $green;
 		}
 	}
+
 	.slick-dots{
 		bottom: -20px;
 
