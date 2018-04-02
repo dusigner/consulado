@@ -870,6 +870,9 @@ $fontSB : 'nowayregular', sans-serif;
 		position: relative;
 		float:left;
 		width:100%;
+		@include breakpoint(medium, 'max'){
+			display: none;
+		}
 	}
 	.sb-app-diferenciais-mobile{
 		display:none;
