@@ -784,6 +784,7 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-app {
 	font-family: $fontSB;
 	padding: 0px 0;
+	margin-bottom: 80px;
 	@include breakpoint(small, 'max'){
 		padding: 20px 0;
 	}
@@ -1419,7 +1420,7 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-f-massage {
-		margin-top: 60px;
+		margin-top: 80px;
 		color: #dbd9d9;
 		font-size: 14px;	
 		text-align: center;
