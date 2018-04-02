@@ -456,7 +456,7 @@ $(window).on('load', function() {
 				checkoutItems = vtexjs.checkout.orderForm.items,
 				checkoutItemsLength = checkoutItems.length,
 				btn_smartbeer = $('.btn_smartbeer'),
-				arrDeCervejeiras = ['2003602', '2003601', '2003600'];	
+				arrDeCervejeiras = ['2003600', '2003599', '2003598'];	
 
 			for (var i = 0; i < checkoutItemsLength; i++) {
 				productItems.push(checkoutItems[i].productId);				
