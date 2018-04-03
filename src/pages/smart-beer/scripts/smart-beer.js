@@ -187,7 +187,15 @@ var sbSlick = function(){
             autoplay: true,
             autoplaySpeed: 6000,
             arrows: false,
-            dots: true
+            dots: true,
+            asNavFor: '.sb-app .sb-app-diferenciais-mobile .app-slider'
+        });
+        $('.sb-app .sb-app-diferenciais-mobile .app-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            arrows: false,
+            dots: false,
+            asNavFor: '.sb-app .mockup-mobile-view .slider'
         });
     }
 };

@@ -32,6 +32,7 @@ $fontSB : 'nowayregular', sans-serif;
 body.ted-quick-view {
 	background: #252525;
 	height: 100vh;
+	padding-top: 0 !important;
 	
 		* {
 			font-family: $fontSB;
@@ -46,6 +47,10 @@ body.ted-quick-view {
 			float:none;
 		}
 		
+	}
+	.row.prod-sku-selector{
+		margin:0;
+		padding:0;
 	}
 	.slick-arrow{
 		display: none!important;
@@ -253,12 +258,16 @@ body.ted-quick-view {
 
 	h3.notifymetitle.notifyme-title {
 		color: #99ca3b;
-		font-size: 24px;
+		font-size: 17px;
+		padding: 0;
+    	margin: 0;
 	}
 	
 	.sku-notifyme-form {
 		& > p {
 			color: #fff;
+			font-size: 13px;
+			margin-bottom: 10px;
 		}
 
 		a {
