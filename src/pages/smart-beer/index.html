@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+
+	<link rel="stylesheet" href="/arquivos/smart-beer.css" />
+
+</head>
+
+<body data-controller="smart-beer" class="page-smartbeer">
+
+	<div id="modal-video" style="display:none">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+	</div>
+
+	<div id="modal-termo" style="display:none">
+		<vtex:contentPlaceHolder id="modal-termo" />
+	</div>
+
+	<div id="modal-quickview" style="display:none">
+		<iframe width="810" height="470" src="#"></iframe>
+	</div>
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+	<!-- @endif -->
+
+	<!-- SmartBeeer Start -->
+	<main class="smart-beer" id="smart-beer">
+		<!-- Intro Start -->
+		<section class="sb-intro">
+			<div class="container">
+				<div class="row">
+					<div class="col-4 right">
+
+						<div class="sb-intro_products">
+
+							<div class="sb-intro_title">
+								<h1>A primeira Cervejeira conectada* do mercado</h1>
+							</div>
+							<div class="sb-intro_app">
+								<span class="sb-intro_app-icon"></span>
+								<span class="sb-intro_app-download">
+									<p>baixe o app</p>
+									<ul>
+										<li>
+											<a href="javascript:void(0);">
+												<span class="icon-iphone"></span>
+											</a>
+										</li>
+										<li>
+											<a href="javascript:void(0);">
+												<span class="icon-android"></span>
+											</a>
+										</li>
+									</ul>
+								</span>
+							</div>
+							<div class="sb-intro-product-price current" rel="carbono">
+								<p class="value-buy">De R$
+									<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+								<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							</div>
+							<div class="sb-intro-product-price" rel="cubo">
+								<p class="value-buy">De R$
+									<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+								<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							</div>
+							<div class="sb-intro-product-price" rel="budweiser">
+								<p class="value-buy">De R$
+									<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+								<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							</div>
+							<div class="sb-intro_select-sku">
+								<span>Selecione
+									<br/>o modelo:</span>
+								<ul>
+									<li>
+										<a href="#" rel="carbono" class="current">
+											<span class="carbono"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#" rel="cubo">
+											<span class="cubo"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#" rel="budweiser">
+											<span class="budweiser"></span>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="sb-intro-buttom-buy">
+								<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003601&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+								 class="carbono current modal-quickview" data-item="Carbono">
+									COMPRAR
+								</a>
+								<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003602&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+								 class="cubo modal-quickview" data-item="Cubo">
+									COMPRAR
+								</a>
+								<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003600&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+								 class="budweiser modal-quickview" data-item="Budweiser">
+									COMPRAR
+								</a>
+							</div>
+						</div>
+
+					</div>
+					<div class="sb-intro_prateleira-mobile">
+						<ul>
+							<li>
+								<div class="sb-intro_ilustra carbono">Carbono</div>
+								<div class="model-button">
+									<p class="value-buy">De R$
+										<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+									<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+									<h3>Carbono</h3>
+									<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003601&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+									 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+								</div>
+							</li>
+							<li>
+								<div class="sb-intro_ilustra budweiser">Budwiser</div>
+								<div class="model-button">
+									<p class="value-buy">De R$
+										<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+									<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+									<h3>Budweiser</h3>
+									<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003600&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+									 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+								</div>
+							</li>
+							<li>
+								<div class="sb-intro_ilustra cubo">Cubo</div>
+								<div class="model-button">
+									<p class="value-buy">De R$
+										<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+									<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+									<h3>Cubo</h3>
+									<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003602&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+									 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+								</div>
+							</li>
+
+						</ul>
+					</div>
+					<div class="col-4">
+						<div class="sb-intro_info">
+							<h2 class="campanha-ofds">O FIM DA SAIDEIRA</h2>
+							<h3>Uma Cervejeira conectada* que avisa quando a bebida está acabando e ajuda a pedir* mais?
+								<span>Agora existe.</span>
+							</h3>
+							<p>*Conectada a um aplicativo com controle de estoque
+								<br/> **Verificar a disponibilidade das lojas na sua região.</p>
+						</div>
+					</div>
+
+					<div class="col-4">
+						<div id="sb-intro_ilustra" class="sb-intro_ilustra cubo">SmartBeer nos modelos Carbono, Budwiser e Cubo</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="sb-clear">
+				<span class="icon-arrow-down"></span>
+			</div>
+		</section>
+		<!-- Intro end -->
+		<!-- video start -->
+		<section class="sb-video">
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						<div class="sb-video_info">
+							<h2>Bem pensado,
+								<br/> é ser conectado</h2>
+							<p>A Cervejeira é conectada ao aplicativo Smartbeer_, que controla o estoque e temperatura de qualquer lugar pelo seu
+								smartphone, além de permitir a compra de cerveja pelo próprio app.</p>
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="sb-video_player">
+							<button type="button" class="sb-video_btn">ASSISTA AO VÍDEO</button>
+							<span class="sb-video_thumb"></span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- video end -->
+
+		<!-- teste section start -->
+
+		<!-- <section class="section section-1">
+			<div class="wrapper wrapper-1"> -->
+		<!-- headlines -->
+		<!-- <div class="text text-5">Échange</div>
+		<div class="text text-4">Influences</div>
+		<div class="text text-3">Rigueur</div>
+		<div class="text text-2">Conception</div>
+		<div class="text text-1">Superposition</div> -->
+
+		<!-- </div>
+		</section> -->
+		<!-- teste section end -->
+
+		<!-- App start -->
+		<section class="sb-app">
+			<div class="wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="col-5">
+							<div class="sb-app-diferenciais-mobile">
+								<h3>APLICATIVO SMARTBEER</h3>
+								<h4>CONTROLE DE FUNÇÕES</h4>
+								<p>Ajusta a temperatura
+									<br/>Aciona a função happy hour
+									<br/>Alarme porta aberta</p>
+							</div>
+							<div class="sb-app-title">
+								<span class="icon-consul-app-g"></span>
+								<h3>APP
+									<br/> SMARTBEER</h3>
+								<h4>A Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais?
+									<span>Agora existe.</span>
+								</h4>
+							</div>
+							<div class="sb-app-download">
+								<a href="javascript:void(0);" class="btn-download-app-store"></a>
+								<a href="javascript:void(0);" class="btn-download-google-play"></a>
+							</div>
+							<p class="app-message">O aplicativo funciona somente em sistemas operacionais iOS e Android</p>
+						</div>
+						<div class="col-7">
+							<div class="mockup-mobile">
+
+								<div class="sb-app-steep1">
+									<div class="app-screen-01"></div>
+								</div>
+
+								<div class="sb-app-steep2">
+									<div class="app-screen-02"></div>
+									<div class="instruction right as-02-01">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Controle de funções</span>
+									</div>
+									<div class="instruction right as-02-02">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Ajusta a temperatura</span>
+									</div>
+									<div class="instruction right as-02-03">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Adiciona função happy hour</span>
+									</div>
+									<div class="instruction right as-02-04">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Alarme porta aberta</span>
+									</div>
+								</div>
+
+								<div class="sb-app-steep3">
+									<div class="app-screen-03"></div>
+									<div class="instruction right as-03-01">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Controle de estoque</span>
+									</div>
+									<div class="instruction right as-03-02">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Veja o estoque
+											<br/> disponível em litros</span>
+									</div>
+									<div class="instruction right as-03-03">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Acione o aviso de estoque minimo</span>
+									</div>
+								</div>
+
+								<div class="sb-app-steep4">
+									<div class="app-screen-04"></div>
+									<div class="instruction right as-04-01">
+										<span class="elipse"></span>
+										<span class="line"></span>
+										<span class="legend">Parceria com praticidade</span>
+										<p>Nossos parceiros oferecem benefícios exclusivos para sos clientes Smartbeer_.</p>
+										<div class="logo-parceiros">
+											<a href="#" class="logo-parceiro-ze-delivery"></a>
+											<a href="#" class="logo-parceiro-emporio"></a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="mockup-mobile-view">
+								<div class="slider">
+									<div class="sb-app-steep1">
+										<div class="app-screen-01"></div>
+									</div>
+
+									<div class="sb-app-steep2">
+										<div class="app-screen-02"></div>
+									</div>
+
+									<div class="sb-app-steep3">
+										<div class="app-screen-03"></div>
+									</div>
+
+									<div class="sb-app-steep4">
+										<div class="app-screen-04"></div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- App end -->
+
+		<!-- Features start -->
+		<section class="sb-features-mobile-view">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 sb-app-diferenciais-mobile">
+						<h3>DIFERENCIAIS NOVA SMARTBEER</h3>
+						<ul>
+							<li>
+								<div class="box">
+									<span class="icon icon-conectividade"></span>
+									<span class="legend">Conectividade</span>
+									<p>A Cervejeira Consul smartbeer_ é a primeira Cervejeira Conectada do mercado.*</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-estoque-temp"></span>
+									<span class="legend">Controle de estoque e temperatura</span>
+									<p>Com o aplicativo exclusivo da sua smartbeer, controle o estoque e temperatura da sua cervejeira de qualquer lugar
+										pelo seu smartphone.
+									</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-notificacao"></span>
+									<span class="legend">Notificação em push</span>
+									<p>Receba notificações pelo seu smartphone quando suas cervejas estiverem acabando. Basta definir o estoque mínimo
+										e pronto, você será avisado!</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-cerveja-one-click"></span>
+									<span class="legend">Cerveja com apenas 1 click</span>
+									<p>Compre cerveja pelo aplicativo e receba na sua casa, sem preocupações.**</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-porta-aberta"></span>
+									<span class="legend">Função porta aberta</span>
+									<p>A cervejeira avisa quando você esquecer de fechar a porta, mantendo sua cervejas sempre na temperatura ideal.</p>
+								</div>
+							</li>
+							<li>
+								<div class="box">
+									<span class="icon icon-happy-hour"></span>
+									<span class="legend">Função Happy hour</span>
+									<p>Mantém a cerveja gelada mesmo com o abre e fecha da porta.</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="col-12 sb-features-mobile-message">
+						<p>*Conectada a um aplicativo com controle de estoque
+							<br/> **Verificar a disponibilidade das lojas na sua região.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sb-features">
+			<div class="wrapper">
+				<div class="container">
+					<div class="row">
+						<div class="sb-clear"></div>
+						<div class="sb-features-steep1">
+							<div class="cervejeira fechada"></div>
+							<div class="instruction f-01-01">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<div class="box">
+									<span class="icon icon-conectividade"></span>
+									<span class="legend">Conectividade</span>
+									<p>A Cervejeira Consul smartbeer_ é a primeira Cervejeira Conectada do mercado.*</p>
+								</div>
+							</div>
+							<div class="instruction f-01-02">
+								<div class="box">
+									<span class="icon icon-estoque-temp"></span>
+									<span class="legend">Controle de estoque e temperatura</span>
+									<p>Com o aplicativo exclusivo da sua smartbeer, controle o estoque e temperatura da sua cervejeira de qualquer lugar
+										pelo seu smartphone.
+									</p>
+								</div>
+							</div>
+							<div class="instruction f-01-03">
+								<div class="box">
+									<span class="icon icon-notificacao"></span>
+									<span class="legend">Notificação em push</span>
+									<p>Receba notificações pelo seu smartphone quando suas cervejas estiverem acabando. Basta definir o estoque mínimo e
+										pronto, você será avisado!</p>
+								</div>
+							</div>
+							<div class="instruction right f-01-04">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<div class="box">
+									<span class="icon icon-cerveja-one-click"></span>
+									<span class="legend">Cerveja com apenas 1 click</span>
+									<p>Compre cerveja pelo aplicativo e receba na sua casa, sem preocupações.**</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="sb-features-steep2">
+							<div class="cervejeira fechada"></div>
+							<div class="instruction f-02-01">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<div class="box">
+									<span class="icon icon-porta-aberta"></span>
+									<span class="legend">Função porta aberta</span>
+									<p>A cervejeira avisa quando você esquecer de fechar a porta, mantendo sua cervejas sempre na temperatura ideal.</p>
+								</div>
+							</div>
+							<div class="instruction right f-02-02">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<div class="box">
+									<span class="icon icon-happy-hour"></span>
+									<span class="legend">Função Happy hour</span>
+									<p>Mantém a cerveja gelada mesmo com o abre e fecha da porta.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="sb-features-steep3">
+							<div class="cervejeira aberta"></div>
+							<div class="instruction f-03-01">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<span class="legend">Nova iluminação de LED</span>
+							</div>
+							<div class="instruction f-03-02">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<span class="legend">Cor interna repaginada</span>
+							</div>
+							<div class="instruction f-03-03">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<span class="legend">Frame metálico</span>
+							</div>
+							<div class="instruction f-03-04">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<span class="legend">Sensor de peso</span>
+							</div>
+						</div>
+
+						<div class="sb-features-steep4">
+							<div class="cervejeira aberta"></div>
+							<div class="cervejeira latas"></div>
+							<div class="cervejeira garrafas"></div>
+							<div class="cervejeira longnecks"></div>
+							<div class="instruction f-04-01">
+								<span class="elipse"></span>
+								<span class="line"></span>
+								<span class="legend">Alta capacidade</span>
+							</div>
+							<div class="box-capacidade">
+								<div class="line line01">
+									<p>
+										<strong>75</strong>Latas</p>
+									<span class="ou">ou</span>
+								</div>
+								<div class="line line02">
+									<p>
+										<strong>37</strong>Garrafas</p>
+									<span class="ou">ou</span>
+								</div>
+								<div class="line line03">
+									<p>
+										<strong>60</strong>Long Necks</p>
+									<span class="ou">ou</span>
+								</div>
+								<div class="line line04">
+									<p>
+										<strong>05</strong>Barris</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="cervejeira aberta"></div> -->
+					</div>
+				</div>
+				<div class="sb-clear"></div>
+				<div class="col-12">
+					<p class="sb-f-massage">*Conectada a um aplicativo com controle de estoque    **Verificar a disponibilidade das lojas na sua região.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="sb-features-interna">
+			<div class="container">
+				<div class="row">
+					<h2>ESTRUTURA INTERNA</h2>
+					<div class="cervejeira">
+						<div class="aberta"></div>
+						<div class="instruction fi-01" rel="fi-01">
+							<span class="elipse"></span>
+
+						</div>
+						<div class="instruction fi-02" rel="fi-02">
+							<span class="elipse"></span>
+						</div>
+						<div class="instruction fi-03" rel="fi-03">
+							<span class="elipse"></span>
+						</div>
+						<div class="instruction fi-04" rel="fi-04">
+							<span class="elipse"></span>
+						</div>
+						<div class="zoom fi-01">
+							<img src="/arquivos/ilustra-led.png" alt="Nova iluminação em LED" />
+							<div class="legend">Nova iluminação em LED</div>
+							<div class="close"></div>
+						</div>
+						<div class="zoom fi-02">
+							<img src="/arquivos/ilustra-cor.png" alt="Cor interna repaginada" />
+							<div class="legend">Cor interna repaginada</div>
+							<div class="close"></div>
+						</div>
+						<div class="zoom fi-03">
+							<img src="/arquivos/ilustra-frame.png" alt="Frame metálico" />
+							<div class="legend">Frame metálico</div>
+							<div class="close"></div>
+						</div>
+						<div class="zoom fi-04">
+							<img src="/arquivos/ilustra-peso.png" alt="Sensor de peso" />
+							<div class="legend">Sensor de peso</div>
+							<div class="close"></div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<!-- Features end -->
+
+		<!-- Dimensoes Start -->
+		<section class="sb-dimensoes-mobile-view">
+			<div class="container">
+				<div class="row">
+					<h2>ARMAZENAMENTO DE ALTA CAPACIDADE</h2>
+					<ul>
+						<li>
+							<div class="cervejeira latas"></div>
+						</li>
+						<li>
+							<div class="cervejeira garrafas"></div>
+						</li>
+						<li>
+							<div class="cervejeira longnecks"></div>
+						</li>
+					</ul>
+					<div class="box-capacidade">
+						<div class="line line01">
+							<p>
+							<strong>60</strong>
+							<br/>Long Necks</p>
+						</div>
+						<div class="line line02">
+							<p>
+							<strong>05</strong>
+							<br/>Barris</p>
+
+						</div>
+						<div class="line line03">
+							<p>
+							<strong>37</strong>
+							<br/>Garrafas</p>
+						</div>
+						<div class="line line04">
+							<p>
+							<strong>75</strong>
+							<br/>Latas</p>
+
+						</div>
+						<span class="ou">ou</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sb-dimensoes">
+			<div class="bg1">
+				<div class="bg2">
+					<div class="container">
+						<div class="row">
+							<div class="col-4">
+								<h3>DIMENSÕES
+									<br/>DESTE PRODUTO</h3>
+							</div>
+							<div class="col-2">
+								<div class="line">
+									<p>
+										<strong>48</strong>cm</p>
+									<span>LARGURA</span>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="line">
+									<p>
+										<strong>91</strong>cm</p>
+									<span>ALTURA</span>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="line">
+									<p>
+										<strong>58</strong>cm</p>
+									<span>PROFUNDIDADE</span>
+								</div>
+							</div>
+							<div class="col-2">
+								<div class="line">
+									<p>
+										<strong>30</strong>kg</p>
+									<span>PESO</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- Dimensoes End -->
+
+		<!-- Vitrine start -->
+		<section class="sb-vitrine">
+			<div class="container">
+				<div class="row">
+					<h2>CERVEJEIRA smartbeeR</h2>
+					<div class="prateleira">
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-01-Carbono.png" alt="Carbono" />
+							</div>
+							<h3>Carbono</h3>
+							<p class="value-buy">De R$
+								<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+							<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003601&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+							 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+							<a href="//consulqa.vtexcommercestable.com.br/cervejeira-consul-smartbeer-carbono/p" target="_blank" class="link-sm">Saiba mais ></a>
+						</div>
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-03-Budweiser.png" alt="budweiser" />
+							</div>
+							<h3>Budweiser</h3>
+							<p class="value-buy">De R$
+								<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+							<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003600&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+							 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+							<a href="//consulqa.vtexcommercestable.com.br/cervejeira-consul-smartbeer-budweiser-edicao-limitada/p" target="_blank" class="link-sm">Saiba mais ></a>
+						</div>
+						<div class="col-4">
+							<div class="sb-vitrine-image">
+								<img src="/arquivos/vitrine-smartBeer-02-Cubo.png" alt="Cubo" />
+							</div>
+							<h3>Cubo</h3>
+							<p class="value-buy">De R$
+								<span class="line-t">2.999,00</span> por R$ 2.799,00</p>
+							<p class="price-mode">Ou até 10x R$ 279,90 sem juros</p>
+							<a href="//consulqa.vtexcommercestable.com.br/quick-view/?idproduto=2003602&amp;KeepThis=true&amp;lid=3b6136e4-73bf-40b7-bdd7-f272187e37a6"
+							 class="sb-vitrine_btn modal-quickview">COMPRAR</a>
+							<a href="//consulqa.vtexcommercestable.com.br/cervejeira-consul-smartbeer-cubos-edicao-limitada/p" target="_blank" class="link-sm">Saiba mais ></a>
+						</div>
+					</div>
+					<div class="sb-clear"></div>
+					<div class="sb-vitrine_message">
+						<p>
+							<span>ATENÇÃO:</span> Este produto é exclusivo e sua compra deverá ser realizada separadamente de outros produtos.<br/>
+							Ao comprar esse produto, você está ciente dos <a class="link-termo" href="javascript:void(0);">Termos</a>
+						</p>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="sb-download-mobile-view">
+			<div class="sb-app-title">
+				<span class="icon-consul-app-g"></span>
+				<h3>APP
+					<br/> SMARTBEER</h3>
+				<h4>A Cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais?
+					<span>Agora existe.</span>
+				</h4>
+			</div>
+			<div class="sb-app-download">
+				<a href="#" class="btn-download-app-store" data-store="App Store"></a>
+				<a href="#" class="btn-download-google-play" data-store="Google Play"></a>
+			</div>
+		</section>
+		<div class="sb-clear"></div>
+		<!-- Vitrine end -->
+
+
+	</main>
+	<!-- SmartBeeer End -->
+
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	<!-- @endif -->
+
+	<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/TextPlugin.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"></script> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/ScrollToPlugin.min.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script> -->
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+	<script src="https://tmp.pixelmort.top/js/janpaepke-ScrollMagic-ae215ee/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
+
+	<script src="/arquivos/smart-beer-custom.js"></script>
+	<script src="/arquivos/smart-beer.min.js"></script>
+
+</body>
+
+</html>

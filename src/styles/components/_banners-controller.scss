@@ -1,158 +1,157 @@
 body {
-	.hide-mobile {
-		@media (max-width: 768px) { display: none !important; }
-	}
-
-	.show-mobile {
-		@media (max-width: 768px) { display: block; }
-	}
-
-	.banners-secundarios {
-		height: 215px;
-		margin: 50px 0;
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-
-		.prateleira-banners-secundarios {
-			overflow: hidden;
-			position: relative;
-
-			.banner-secundario {
-				display: inline-block;
-				height: 215px;
-				margin-left: 10px;
-				width: 360px;
-
-				&:first-child { margin-left: 0; }
-
-				.controller {
-					height: 100%;
-					width: 100%;
-				}
-			}
-		}
-	}
-
-	.banners-secundarios-mobile {
-		display: none;
-		margin: 50px 0;
-		overflow: hidden;
-		position: relative;
-		width: 100%;
-
-		@media (max-width: 768px) { margin: 10px 0; }
-
-		.prateleira-banners-secundarios-mobile {
-			overflow: hidden;
-			position: relative;
-
-			.banner-secundario-mobile {
-				display: inline-block;
-				height: 100px;
-				margin: 0 0 20px 0;
-				padding: 0 5px;
-				width: 100%;
-
-				@media (max-width: 768px) { margin: 0; }
-
-				&.banner-mobile1 { width: 50%; }
-
-				&.banner-mobile2 { width: 50%; }
-
-				&.banner-mobile3,
-				&.banner-mobile4 {
-					height: 125px;
-					text-align: center;
-				}
-
-				.controller {
-					height: 100%;
-					width: 100%;
-				}
-			}
-		}
-	}
-
-	.banners-secundarios-mosaico {
-		margin: 50px 0;
-		overflow: hidden;
-		position: relative;
-		text-align: center;
-		width: 100%;
-
-		@include breakpoint(small, 'max') { display: none; }
-
-		.prateleira-banners-secundarios-mosaico {
-			display: inline-block;
-			overflow: hidden;
-			position: relative;
-			vertical-align: top;
-
-			img {
-				display: block;
-				height: auto;
-				margin: 0 auto;
-				max-width: 100%;
-			}
-			a { display: block; }
-
-			&.mosaico-secundarios-left {
-				@include breakpoint(small, 'min') {
-					margin-right: 15px;
-					max-width: 72%;
-				}
-				margin-bottom: 2%;
-				width: 100%;
-
-				img {
-					@include breakpoint(small, 'max') { width: 280px; }
-				}
-
-				&.one-banner { width: 100%; }
-
-				&.two-banner { width: 50%; }
-			}
-
-			&.mosaico-secundarios-right {
-				@include breakpoint(small, 'min') { max-width: 25%; }
-
-				&.two-banner {
-					width: 50%;
-
-					.banner-secundario-mosaico { height: 270px !important; }
-				}
-			}
-
-			.banner-secundario-mosaico {
-				margin: 0;
-				padding: 0;
-
-				&.banner-secundario-mosaico4,
-				&.banner-secundario-mosaico7 {
-					// height: 270px;
-					width: 100%;
-				}
-				&.banner-secundario-mosaico5,
-				&.banner-secundario-mosaico8 {
-					// height: 125px;
-					margin-bottom: 7%;
-					width: 100%;
-					&:first-child {
-						margin-bottom: 0;
-					}
-				}
-				&.banner-secundario-mosaico6,
-				&.banner-secundario-mosaico9 {
-					// height: 125px;
-					width: 100%;
-				}
-
-				.controller {
-					height: 100%;
-					width: 100%;
-				}
-			}
-		}
-	}
+    .hide-mobile {
+        @media (max-width: 768px) {
+            display: none !important;
+        }
+    }
+    .show-mobile {
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
+    .banners-secundarios {
+        height: 215px;
+        margin: 50px 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        .prateleira-banners-secundarios {
+            overflow: hidden;
+            position: relative;
+            .banner-secundario {
+                display: inline-block;
+                height: 215px;
+                margin-left: 10px;
+                width: 360px;
+                &:first-child {
+                    margin-left: 0;
+                }
+                .controller {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .banners-secundarios-mobile {
+        display: none;
+        margin: 50px 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        @media (max-width: 768px) {
+            margin: 10px 0;
+        }
+        .prateleira-banners-secundarios-mobile {
+            overflow: hidden;
+            position: relative;
+            .banner-secundario-mobile {
+                display: inline-block;
+                height: 100px;
+                margin: 0 0 20px 0;
+                padding: 0 5px;
+                width: 100%;
+                @media (max-width: 768px) {
+                    margin: 0;
+                }
+                &.banner-mobile1 {
+                    width: 50%;
+                }
+                &.banner-mobile2 {
+                    width: 50%;
+                }
+                &.banner-mobile3,
+                &.banner-mobile4 {
+                    height: 125px;
+                    text-align: center;
+                }
+                .controller {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .banners-secundarios-mosaico {
+        margin: 50px 0;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        @include breakpoint(small, 'max') {
+            display: none;
+        }
+        .prateleira-banners-secundarios-mosaico {
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+            vertical-align: top;
+            img {
+                display: block;
+                height: auto;
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            a {
+                display: block;
+            }
+            &.mosaico-secundarios-left {
+                @include breakpoint(small, 'min') {
+                    margin-right: 15px;
+                    max-width: 72%;
+                }
+                margin-bottom: 2%;
+                width: 100%;
+                img {
+                    @include breakpoint(small, 'max') {
+                        width: 280px;
+                    }
+                }
+                &.one-banner {
+                    width: 100%;
+                }
+                &.two-banner {
+                    width: 50%;
+                }
+            }
+            &.mosaico-secundarios-right {
+                @include breakpoint(small, 'min') {
+                    max-width: 25%;
+                }
+                &.two-banner {
+                    width: 50%;
+                    .banner-secundario-mosaico {
+                        height: 270px !important;
+                    }
+                }
+            }
+            .banner-secundario-mosaico {
+                margin: 0;
+                padding: 0;
+                &.banner-secundario-mosaico4,
+                &.banner-secundario-mosaico7 {
+                    // height: 270px;
+                    width: 100%;
+                }
+                &.banner-secundario-mosaico5,
+                &.banner-secundario-mosaico8 {
+                    // height: 125px;
+                    margin-bottom: 7.7%;
+                    width: 100%;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                &.banner-secundario-mosaico6,
+                &.banner-secundario-mosaico9 {
+                    // height: 125px;
+                    width: 100%;
+                }
+                .controller {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
