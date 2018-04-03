@@ -51,39 +51,39 @@ body.ted-quick-view {
 		display: none!important;
 	}
 	.container{
+		float: left;
 		margin: 0;
 		padding: 0;
-		float: left;
 	}
 	iframe{
 		display: none;
 	}
 	.prod-image{
-		max-width: 400px;
-		height: 400px;
-		padding: 0 20px;
-		overflow: hidden;
 		float: left;
+		height: 360px;
 		margin-top:0;
+		max-width: 400px;
+		overflow: hidden;
+		padding: 0 20px;
 		@include breakpoint(small, 'max'){
 			max-width: 250px;
     		height: 200px;
 		}
 		@include breakpoint(extra-small, 'max'){
 			float: none;
-			margin: 0 auto;
 			height: 170px!important;
+			margin: 0 auto;
 		}
 	}
 	.prod-info{
-		max-width: 310px;
-    	height: 400px;
-		float: left;
 		box-sizing: border-box;
+		float: left;
+		max-width: 310px;
+    	height: 360px;
 		@include breakpoint(extra-small, 'max'){
 			float: none;
-			margin: 0 auto;
 			height: auto;
+			margin: 0 auto;
 		}
 	}
 	.row.no-margin {
@@ -92,8 +92,8 @@ body.ted-quick-view {
 	}
 
 	.prod-title {
-		width:100%!important;
 		margin: 20px 0;
+		width:100%!important;
 		@include breakpoint(extra-small, 'max'){
 			text-align: center;
 		}
@@ -161,8 +161,8 @@ body.ted-quick-view {
 			background-color: transparent;
 			border: 2px solid #99ca3b;
 			color: #99ca3b;
-			text-transform: uppercase;
 			min-width: 220px;
+			text-transform: uppercase;
 			
 			&:before {
 				display: none;
@@ -270,8 +270,8 @@ body.ted-quick-view {
 		input[type="text"],
 		input[type="tel"] {
 			background: transparent;
-			border: 2px solid #fff;
 			border-radius: 30px;
+			border: 2px solid #fff;
 			color: #fff;
 		}
 
@@ -300,21 +300,21 @@ body.ted-quick-view {
 	@include breakpoint(medium, 'max'){
 		#BuyButton .buy-button,
 		.prod-details-nav #BuyButtonDetails .buy-button{
-		background-color: transparent;
-		border: 2px solid #99ca3b;
-		color: #99ca3b !important;
-		text-transform: uppercase;
-		border-radius: 50px; 
 		/* bottom: 0; */
 		/* display: inline-block; */
-		font-size: 14px!important;
 		/* height: 54px; */
 		/* left: 0; */
+		/* text-transform: uppercase; */
+		/* z-index: 9999; */
+		background-color: transparent;
+		border-radius: 50px; 
+		border: 2px solid #99ca3b;
+		color: #99ca3b !important;
+		font-size: 14px!important;
 		margin: 20px 0;
 		position: relative!important; 
-		/* text-transform: uppercase; */
+		text-transform: uppercase;
 		width: auto;
-		/* z-index: 9999; */
 		}
 	}
 

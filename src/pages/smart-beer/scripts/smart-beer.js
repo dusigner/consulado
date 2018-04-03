@@ -121,7 +121,7 @@ var sbModal = function(){
     $('.sb-video_btn').on('click', function () {
         $('#modal-video').vtexModal();
 
-        $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/dlDP5JzdHpQ?rel=0&amp;showinfo=0');
+        $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0');
     });
 
     $('.link-termo').on('click', function () {
