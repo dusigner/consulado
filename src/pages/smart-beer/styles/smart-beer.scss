@@ -100,7 +100,10 @@ $fontSB : 'nowayregular', sans-serif;
 //SB Geral
 #smart-beer {
 	background: #252525  url('/arquivos/bg-texture-black.jpg') fixed;
-	padding: 20px 0;
+	padding: 0;
+	@include breakpoint(small, 'max') {
+		padding-top: 30px;
+	}
 	section.sb-intro,
 	section.sb-video,
 	// section.sb-app,
@@ -108,7 +111,7 @@ $fontSB : 'nowayregular', sans-serif;
 	section.sb-dimensoes,
 	section.sb-vitrine {
 		// opacity: 0;
-		margin: 40px 0;
+		margin: 20px 0;
 		transform: translateY(50px);
 		transition: all 1s ease-out;
 		&.fade-in {
@@ -184,11 +187,35 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 }
 
+// SB Topbar
+
+.sb-topbar {
+	background: $green;
+	text-align: center;
+	.row {
+		margin: 0;
+		padding: 0;
+	}
+	img {
+		padding: 6px 0 0;
+	}
+	p {
+		color: #232220;
+		font-size: 18px;
+		margin: 0;
+		padding: 12px 0 0;
+		text-align: center;
+		@include breakpoint(large, 'max') {
+			padding: 8px 0 0;
+		}
+	}
+}
+
 // SB Intro
 .sb-intro {
 	padding-top: 40px 0;
 	@include breakpoint(extra-large, 'max') {
-		padding-top: 40px; 
+		// padding-top: 40px; 
 	}
 	@include breakpoint(large, 'max') {
 		padding-top: 0!important; 
@@ -454,6 +481,7 @@ $fontSB : 'nowayregular', sans-serif;
 				font-family: $fontSB;
 				font-size: 30px;
 				opacity: 0;
+				padding-top: 30px;
 				position: relative;
 				text-transform: uppercase;
 				span {
@@ -467,6 +495,7 @@ $fontSB : 'nowayregular', sans-serif;
 					font-size: 18px;
 					margin-bottom: 10px;
 					opacity: 1;
+					padding-top: 0;
 				}
 				@include breakpoint(small, 'max') {
 					// padding-bottom: 20px;
@@ -1898,7 +1927,19 @@ body.page-smartbeer {
 			color: $green;
 		}
 	}
-
+	.top-navigation {
+		border-bottom: 1px solid $green;
+	}
+	header[data-module='header'] {
+		@include breakpoint(small, 'max') {
+			min-height: 40px;
+		}
+		.container {
+			@include breakpoint(small, 'max') {
+				border-bottom: 1px solid $green;
+			}
+		}
+	}
 	nav.top-navigation,
 	header[data-module='header'] {
 		background: #252525;		
