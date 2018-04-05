@@ -195,6 +195,8 @@ $(window).on('load', function() {
 				self.smartbeer();
 			}
 
+			self.reinput();
+
 			testeabEntregaAgendada.setup(orderForm);
 
 		};
@@ -513,6 +515,37 @@ $(window).on('load', function() {
 			}	
 		
 
+		};
+
+		// Reinput
+		this.reinput= function (){
+
+			self.lockpurchase = function (){
+				$('input#isReinput:checked').each(function () {
+					$('.previouOrderId').show();
+					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+				});
+			};
+
+			if ( store.isTelevendas && $('body').hasClass('body-order-form') ){
+				var fields_input = '<div class="fieldsReinput"><h2 class="isReinput">Pedido Reinput ? <input type="checkbox" name="isReinput" id="isReinput"></h2><li class="previouOrderId"><label>Pedido anterior</label><input type="text" name="previouOrderId" id="previouOrderId"></li><li class="company"><label>Empresa</label><select name="company" id="company"><option value="consul">Consul</option>    <option value="brastemp">brastemp</option><option value="compracerta">compracerta</option></select></li><li class="reason"><label>Motivo</label><select name="reason" id="reason"><option value="avaraia">Avaria no transporte</option><option value="erro">Produto errado</option></select></li></div>';
+
+				if ($('.fieldsReinput').length < 1 ){
+					$(fields_input).insertAfter('.summary-template-holder');
+				}
+
+				self.lockpurchase();
+				
+				$('input#isReinput').click(function () {	
+					$('.previouOrderId, .company, .reason').hide();
+					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
+					
+					self.lockpurchase();					
+
+				});
+
+				console.log('é televendas e esta na etapa correta');
+			}
 		};
 
 
