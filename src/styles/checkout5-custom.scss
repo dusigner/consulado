@@ -606,83 +606,86 @@ body[class*='consulempresa'] {
     }
 }
 
-body.body-order-form {
-
+body.body-cart {
     .fieldsReinput {
-		border: 3px solid #f4f2f1;
-		display: block;
+        display: none;
+    }
+}
+
+body.body-order-form {
+    .fieldsReinput {
+        border: 3px solid #f4f2f1;
+        display: block;
         margin-top: 15px;
-        
         .isReinput {
             input {
                 height: 20px;
                 margin-left: 10px;
                 margin-top: 0;
                 width: 20px;
-
-                    &:before {
-                        background: #fff;
-                        border: 1px solid #ccc;
-                        content: '';
-                        display: block;
-                        height: 20px;
-                        width: 20px;
-                    }
-                    
-                    &:checked {
-
-                        &:before {
-                            background: #94bc42;
-                            border: 1px solid #94bc42;
-                        }
-
-                        &:after {
-                            color: #fff;
-                            font-size: 12px;
-                            left: 3px;
-                            position: relative;
-                            top: -18px;
-                            @include icon-get('check-mark');
-                        }
-                    }
-                
-            }
-        }
-
-            li {
-
-                display: block;
-                list-style: none;
-                padding: 10px;
-
-                    input,
-                    select {                        
-                        border: 1px solid #ccc;
-                        display: inline;
-                        float: right;
-                        height: 25px;
-                        width: 55%;
-                    } 
-            
-                    label {				
-                        display: block;
-                        float: left;
-                        text-align: left;
-                        width: 45%;
-                    }		
-                                
-                    &.previouOrderId,
-                    &.company,
-                    &.reason {
-                        display: none;
-                    }
-
-                &:after {
-                    clear: both;
+                &:before {
+                    background: #fff;
+                    border: 1px solid #ccc;
                     content: '';
                     display: block;
+                    height: 20px;
+                    width: 20px;
+                }
+                &:checked {
+                    &:before {
+                        background: #94bc42;
+                        border: 1px solid #94bc42;
+                    }
+                    &:after {
+                        color: #fff;
+                        font-size: 12px;
+                        left: 3px;
+                        position: relative;
+                        top: -18px;
+                        @include icon-get('check-mark');
+                    }
                 }
             }
+        }
+        li {
+            display: block;
+            list-style: none;
+            padding: 10px;
+            input,
+            select {
+                border: 1px solid #ccc;
+                display: inline;
+                float: right;
+                height: 25px;
+                width: 55%;
+            }
+            label {
+                display: block;
+                float: left;
+                text-align: left;
+                width: 45%;
+            }
+            &.load {
+                &:before {
+                    color: $green;
+                    font-size: 7px;
+                    position: absolute;
+                    right: 13px;
+                    top: 18px;
+                    @include icon-get('check-mark');
+                }
+            }
+            &.previouOrderId,
+            &.company,
+            &.reason {
+                display: none;
+                position: relative;
+            }
+            &:after {
+                clear: both;
+                content: '';
+                display: block;
+            }
+        }
     }
-
 }
