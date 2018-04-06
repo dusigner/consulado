@@ -102,7 +102,7 @@ $fontSB : 'nowayregular', sans-serif;
 	background: #252525  url('/arquivos/bg-texture-black.jpg') fixed;
 	padding: 0;
 	@include breakpoint(small, 'max') {
-		padding-top: 30px;
+		padding-top: 80px;
 	}
 	section.sb-intro,
 	section.sb-video,
@@ -207,6 +207,9 @@ $fontSB : 'nowayregular', sans-serif;
 		text-align: center;
 		@include breakpoint(large, 'max') {
 			padding: 8px 0 0;
+		}
+		@include breakpoint(small, 'max') {
+			font-size: 14px;
 		}
 	}
 }
