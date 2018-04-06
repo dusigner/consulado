@@ -13,6 +13,7 @@ require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
+require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
 require('../../templates/chaordic/chaordic-hightlight.html');
 
@@ -295,23 +296,24 @@ Nitro.module('chaordic', function() {
 							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 						});
 
-						if(item.length === 0) {
-							item = [product.items[0]];
+						if(item.length > 0) {
+							//item = [product.items[0]];
+							product.available = item.length > 0;
+	
+							product.priceInfo = item[0].sellers[0].commertialOffer;
+							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
+							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
+	
+							product.finalImages = self.prepareImages(item[0].images, '300');
+	
+							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
+							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
+	
+	
+							self.finalRender(product, $box);
+						 } else {
+							self.renderUnavailable(product, $box);
 						}
-
-						product.available = item.length > 0;
-
-						product.priceInfo = item[0].sellers[0].commertialOffer;
-						product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
-						product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
-
-						product.finalImages = self.prepareImages(item[0].images, '300');
-
-						product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
-						product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-
-
-						self.finalRender(product, $box);
 					}
 				}
 			});
@@ -410,6 +412,24 @@ Nitro.module('chaordic', function() {
 		});
 
 		return arr;
+	};
+
+	/**
+	 * Método render do HTML da prateleira para produtos indisponiveis
+	 */
+	this.renderUnavailable = function(renderData, $elem) {
+		$elem.find('.js-item-sku').text(renderData.productReference);
+		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
+		$elem.addClass('box-produto');
+
+		// dust render html
+		dust.render('chaordic-unavailable', '',function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Price Dust error: ' + err);
+			}
+
+			$elem.find('.js-item-price').html(out);
+		});
 	};
 
 	/**
