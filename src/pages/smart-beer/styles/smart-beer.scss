@@ -1741,6 +1741,7 @@ $fontSB : 'nowayregular', sans-serif;
 	background: url('/arquivos/bg-sb-vitrine.png') left -20px repeat-x;
 	font-family: $fontSB;
 	padding: 50px 0;
+	margin: 20px 0 0 !important;
 	@include breakpoint(medium, 'max') {
 		background: none;
 		padding: 20px 0;
