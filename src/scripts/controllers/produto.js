@@ -220,7 +220,7 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 		getPecasRelacionadas: function() {
 			var $btnPecas = $('.btn-pecas-produto'),
 				$pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
-				url = 'http://loja.consul.com.br/busca?',
+				url = 'https://loja.consul.com.br/busca?',
 				testNumber = new RegExp(/^\d/);
 				// console.log('sim');
 			if ($pecasModels) {
