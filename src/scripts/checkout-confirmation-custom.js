@@ -29,6 +29,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
+	var CRM = require('modules/store/crm.js');
 
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
@@ -39,6 +40,7 @@ $(window).on('load', function() {
 
 		this.init = function() {
 			this.orderPlacedUpdated();
+			this.orderReinput();
 
 			if (window.hasher) {
 				window.hasher.changed.add(function(current) {
@@ -118,6 +120,52 @@ $(window).on('load', function() {
 				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
 
 				$('.cconf-payment article.fl .lh-copy').append($bankInvoice.clone());
+			}
+		};
+
+		this.orderReinput = function () {
+			var istelevendas = localStorage.getItem('istelevendas'),
+				orderformId = localStorage.getItem('orderformId'),
+				isuser = localStorage.getItem('isuser'),
+				orderR = localStorage.getItem('orderR'),
+				newOrder = $('#order-id').text(),
+				company = localStorage.getItem('company'),
+				reason = localStorage.getItem('reason');
+
+
+			if (istelevendas !== null) {
+
+
+				// concatena as variaveis no date
+				var data = {
+					'company': company,
+					'LastUser': isuser,
+					'newOrder': newOrder,
+					'orderReinput': orderR,
+					'userTelesales': istelevendas,
+					'reason': reason
+				};
+
+				// Faz a inserção no MasterData
+				CRM.ajax({
+					url: CRM.formatUrl('RP', 'documents'),
+					type: 'PATCH',
+					data: JSON.stringify(data),
+					success: function (success) {						
+						localStorage.removeItem('orderformId');
+						localStorage.removeItem('istelevendas');
+						localStorage.removeItem('isuser');
+						localStorage.removeItem('orderR');
+						localStorage.removeItem('company');
+						localStorage.removeItem('reason');
+					},
+					error: function (error) {
+						console.info('error; ' + error);
+					}
+				});
+
+			} else {
+				console.info('nao tem o localStorage');
 			}
 		};
 

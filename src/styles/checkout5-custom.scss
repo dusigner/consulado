@@ -613,6 +613,7 @@ body.body-cart {
 }
 
 body.body-order-form {
+
     .fieldsReinput {
         border: 3px solid #f4f2f1;
         display: block;
@@ -633,8 +634,8 @@ body.body-order-form {
                 }
                 &:checked {
                     &:before {
-                        background: #94bc42;
-                        border: 1px solid #94bc42;
+                        background: #f35216;
+                        border: 1px solid #f35216;
                     }
                     &:after {
                         color: #fff;
@@ -653,7 +654,9 @@ body.body-order-form {
             padding: 10px;
             input,
             select {
-                border: 1px solid #ccc;
+				border: 1px solid #ccc;
+				box-shadow: none;
+				outline: none;
                 display: inline;
                 float: right;
                 height: 25px;
@@ -666,14 +669,37 @@ body.body-order-form {
                 width: 45%;
             }
             &.load {
+
+				& input,
+				select {
+					border-color: #94bc42;
+				}
+
                 &:before {
-                    color: $green;
+                    color: #94bc42;
                     font-size: 7px;
                     position: absolute;
                     right: 13px;
                     top: 18px;
                     @include icon-get('check-mark');
-                }
+				}				
+				
+			}
+			&.error {
+
+				& input,
+				select {
+					border-color: #f00;
+				}
+
+                &:before {
+                    color: #f00;
+                    font-size: 7px;
+                    position: absolute;
+                    right: 13px;
+                    top: 18px;
+                    @include icon-get('close-icon');
+				}				
             }
             &.previouOrderId,
             &.company,
@@ -685,6 +711,15 @@ body.body-order-form {
                 clear: both;
                 content: '';
                 display: block;
+			}
+			&.company,
+            &.reason {
+                
+                &.load {
+					&:before {
+						display: none;
+					}
+				}
             }
         }
     }
