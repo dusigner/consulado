@@ -14,7 +14,7 @@ Nitro.module('upsell', function() {
 		valorProatualFormt = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
 		capacidadeatual    = $('td.value-field.Capacidade').text().replace('L', ' litros'),
 		painelautal        = $('td.value-field.Display').text(),
-		temperaturaatual   = $('td.value-field.Mostrador-frontal-de-temperatura').text(),
+		formatoatual  	   = $('td.value-field.Formato').text(),
 	
 		// variaveis para mostrar o valor do upgrade
 		valorProdatualcalc,
@@ -53,12 +53,12 @@ Nitro.module('upsell', function() {
 				$('.upgrade-mobile').removeClass('hide');			
 				$('#upsell').addClass('mobile');			
 			});			
-
+			
 		} else {
-
+			
 			$(document).ready(function(){
-				$('#upsell').addClass('ativo');			
-				$('.product-upgrade').removeClass('hide');			
+				$('.icon-open-upgrade').addClass('ativo');				
+				$('.product-upgrade').removeClass('hide');		
 			});			
 		}
 		
@@ -81,7 +81,7 @@ Nitro.module('upsell', function() {
 
 	this.montandomodal = function() {
 
-		$.each($('#upsell li[layout]'), function( index, value ) {	
+		$.each($('#upsell li[layout]'), function( index, value ) {
 			
 			// pegando valores do produto upgrade
 			urlupgrade              = $(this).find('.ir-para-produto').attr('href'),
@@ -96,7 +96,7 @@ Nitro.module('upsell', function() {
 			$('.voce-esta-vendo span').html(valorProatual);
 			$('.espe-voce-esta-vendo .licapacidadea').html(capacidadeatual);
 			$('.espe-voce-esta-vendo .lipainela').html(painelautal);
-			$('.espe-voce-esta-vendo .litemperaturaa').html(temperaturaatual);
+			$('.espe-voce-esta-vendo .litemperaturaa').html(formatoatual);
 			$('.voce-esta-vendo img').attr('src', imagematual);
 
 			// montando dados do produto upgrade
@@ -137,6 +137,7 @@ Nitro.module('upsell', function() {
 			$('#upsell li[layout]').addClass('hide');
 			$('.product-upgrade.'+idurl[1]).parent('li[layout]').removeClass('hide').addClass('downgrade');
 			$('.downgrade .textupgrade h2, .downgrade .upgrade-mobile h2').html('<strong> você estava visualizando...</strong>');	
+			$('.downgrade .product-upgrade .textupgrade p').html('Ficou na dúvida? Você pode visitar o produto que estava navegando clicando aqui.');	
 			$('.downgrade .btn-interessado-upgrade, .downgrade .btn-interessado-upgrade-mobile').addClass('hide');
 			$('.icon-open-upgrade').addClass('voltar');
 			$('.downgrade .btn-interessado-downgrade, .downgrade .btn-interessado-downgrade-mobile').removeClass('hide');

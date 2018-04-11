@@ -394,6 +394,10 @@ $primary-color: #9aca3c;
 
         .modal-holder {
             max-width: 880px;
+
+            @media screen and (max-width:   1366px) {
+                max-width: 750px;
+            }
         }
 
         .modal-header {
@@ -434,12 +438,18 @@ $primary-color: #9aca3c;
                 text-transform: uppercase;
                 width: 100%;
 
+                @media screen and (max-width:  1366px) {
+                    font-size: 24px;
+                    padding: 5px 0;
+                }
+                
                 strong {
                     color: $primary-color;
                 }
-
+                
                 &:before {
                     background: url('/arquivos/selo-modal-upgrade-produto-cns.png') center center no-repeat;
+                    background-size: 100%;
                     content: '';
                     display: block;
                     height: 114px;
@@ -447,6 +457,9 @@ $primary-color: #9aca3c;
                     position: absolute;
                     top: -31px;
                     width: 114px;
+                        @media screen and (max-width:  1366px) {
+                            width: 96px;
+                        }
                 }
             }
             
@@ -455,9 +468,10 @@ $primary-color: #9aca3c;
                 display: block;
                 float: right;
                 font-size: 14px;
-                max-width: 80%;
+                max-width: 72%;
                 padding: 10px 26px 10px 0;
                 text-align: justify;
+                width: 100%;
             }
 
             .corpo-produtos-modal {
@@ -488,6 +502,10 @@ $primary-color: #9aca3c;
                         text-align: center;
                         text-transform: uppercase;
                         width: 100%;
+                       
+                            @media screen and (max-width: 1366px) {
+                               margin: 0;
+                            }
                     }
 
                     img {
@@ -617,6 +635,10 @@ $primary-color: #9aca3c;
                     text-align: left;
                     text-transform: uppercase;
                     width: 40%;
+
+                        @media screen and (max-width: 1366px) {
+                            padding-top: 1px;
+                        }
                 }
 
                 ul {
