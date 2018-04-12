@@ -513,6 +513,10 @@ $primary-color: #9aca3c;
                         height: auto;
                         margin: auto;
                         max-width: 70%;
+
+                        @media screen and (max-width: 1366px) {
+                            max-width: 50%;
+                        }
                     }
 
                     h2:nth-child(3) {
