@@ -518,13 +518,12 @@ $(window).on('load', function() {
 		};
 
 		// Reinput
-		this.reinput = function () {
-			console.clear();
+		this.reinput = function () {			
 			console.info('Reinput');
 			var userType = vtexjs.checkout.orderForm.userType;
 
 			self.html = function () {
-				var fields_input = '<div class="fieldsReinput"><h2 class="isReinput">Pedido Reinput ? <input type="checkbox" name="isReinput" id="isReinput"></h2><form><li class="previouOrderId"><label>Pedido anterior</label><input type="text" name="previouOrderId" id="previouOrderId" value=""></li><li class="company"><label>Empresa</label><select name="company" id="company"><option value="Selecione">Selecione</option><option value="consul">Consul</option><option value="brastemp">brastemp</option><option value="compracerta">compracerta</option></select></li><li class="reason"><label>Motivo</label><select name="reason" id="reason"><option value="Selecione">Selecione</option><option value="avaraia">Avaria no transporte</option><option value="erro">Produto errado</option></select></li></form></div>';
+				var fields_input = '<div class="fieldsReinput"><h2 class="isReinput">Pedido Reinput ? <input type="checkbox" name="isReinput" id="isReinput"></h2><form><li class="previouOrderId"><label>Pedido anterior</label><input type="text" name="previouOrderId" id="previouOrderId" value=""></li><li class="company"><label>Empresa</label><select name="company" id="company"><option value="Selecione">Selecione</option><option value="Algar">Algar</option><option value="Atendimento">Atendimento</option></select></li><li class="reason"><label>Motivo</label><select name="reason" id="reason"><option value="Selecione">Selecione</option><option value="Avaria de transporte">Avaria de transporte</option><option value="Defeito Funcional/estético">Defeito Funcional/estético</option><option value="Log de erros">Log de erros</option><option value="Pedido cancelado">Pedido cancelado</option><option value="Falha do consumidor">Falha do consumidor</option><option value="Falha Logística">Falha Logística</option><option value="Falha Televendas">Falha Televendas</option><option value="Sinistro Problemas">Sinistro Problemas</option><option value="integração - Mkt Place">integração - Mkt Place</option></select></li></form></div>';
 				if ($('.fieldsReinput').length < 1) {
 					$(fields_input).insertAfter('.orderform-template .summary-template-holder');
 				}
@@ -682,7 +681,6 @@ $(window).on('load', function() {
 
 			}
 		};
-
 
 		this.init();
 

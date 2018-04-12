@@ -634,16 +634,16 @@ body.body-order-form {
                 }
                 &:checked {
                     &:before {
-                        background: #f35216;
-                        border: 1px solid #f35216;
+                        background: #94bc42;
+                        border: 1px solid #94bc42;
                     }
                     &:after {
+                        @include icon-get('check-mark');
                         color: #fff;
                         font-size: 12px;
                         left: 3px;
                         position: relative;
                         top: -18px;
-                        @include icon-get('check-mark');
                     }
                 }
             }
@@ -656,10 +656,10 @@ body.body-order-form {
             select {
 				border: 1px solid #ccc;
 				box-shadow: none;
-				outline: none;
                 display: inline;
                 float: right;
                 height: 25px;
+				outline: none;
                 width: 55%;
             }
             label {
@@ -676,12 +676,12 @@ body.body-order-form {
 				}
 
                 &:before {
+                    @include icon-get('check-mark');
                     color: #94bc42;
                     font-size: 7px;
                     position: absolute;
                     right: 13px;
                     top: 18px;
-                    @include icon-get('check-mark');
 				}				
 				
 			}
@@ -693,12 +693,12 @@ body.body-order-form {
 				}
 
                 &:before {
+                    @include icon-get('close-icon');
                     color: #f00;
                     font-size: 7px;
                     position: absolute;
                     right: 13px;
                     top: 18px;
-                    @include icon-get('close-icon');
 				}				
             }
             &.previouOrderId,

@@ -151,7 +151,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function (success) {						
+					success: function (success) {										
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
@@ -164,8 +164,6 @@ $(window).on('load', function() {
 					}
 				});
 
-			} else {
-				console.info('nao tem o localStorage');
 			}
 		};
 
