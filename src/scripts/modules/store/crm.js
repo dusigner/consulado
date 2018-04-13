@@ -4,7 +4,7 @@
 
 var CRM = {
 
-	baseURL: '/{accountName}/dataentities/{table}/{action}',
+	baseURL: '/api/{accountName}/dataentities/{table}/{action}',
 
 	ajax: function(options) {
 
