@@ -1,5 +1,4 @@
 @charset 'UTF-8';
-
 /*! =================================================
 	* Theme Name: Layout - PKG_ACCOUNTNAME
 	* Description: CSS desenvolvido para PKG_NAME.
@@ -9,6 +8,7 @@
 	* Version: PKG_BUILD_VERSION
 	=================================================
 */
+
 /*!*/
 
 // Utility helpers
@@ -18,11 +18,9 @@
 @import 'helpers/icons';
 @import 'helpers/family';
 @import 'helpers/conditional';
-
 // Base styles
 @import 'base/fonts';
 @import 'base/main';
-
 // Layout styles
 @import 'layout/container';
 @import 'helpers/helpers';
@@ -30,353 +28,363 @@
 @import 'components/modal';
 @import 'components/modalLogin';
 @import 'components/checkout/modal-info-pj';
+.loading-bg {
+    margin-top: 0;
+}
 
-.loading-bg { margin-top: 0; }
-object { display: none; }
-.icon { font-family: 'whirlpool', FontAwesome; }
+object {
+    display: none;
+}
+
+.icon {
+    font-family: 'whirlpool', FontAwesome;
+}
 
 body {
-	padding: 0 !important;
-
-	a {
-		color: $txt-gray;
-		text-decoration: none;
-	}
-
-	.hide {	visibility: visible; }
-
-	.step,
-	.cart,
-	.totalizers { border: 3px solid $gray-l; }
-
-	header {
-		border-bottom: 3px solid $gray-l;
-
-		.cont-logo,
-		.come-back {
-			line-height: 70px;
-		}
-
-		.logo {
-			background: transparent url('/arquivos/consul-logo.png') left center no-repeat;
-			background-size: contain;
-			display: inline-block;
-			font-size: 0;
-			height: 32px;
-			max-width: 100%;
-			position: relative;
-			vertical-align: middle;
-			width: 100%;
-		}
-	}
-
-	#cart-title,
-	#orderform-title,
-	.come-back {display: none !important}
-
-	.link-coupon-add,
-	.link-choose-more-products,
-	button,
-	input[type=submit],
-	.link-change-shipping,
-	.bank-invoice-print-link,
-	.btn-continue-shop,
-	.linkWarranty,
-	.orderplaced-alert .bank-invoice-print-url {
-		@include responsiveFont(14);
-		@include vendor(transition, all .3s ease);
-		@include vendor(border-radius, 20px);
-		@include vendor(box-shadow, none);
-		// background-color: $gray;
-		border: 3px solid $gray;
-		color: $txt-gray-l;
-		padding: 10px 25px;
-		text-decoration: none;
-
-		&:hover {
-			border-color: $gray-d;
-			color: $txt-gray;
-		}
-	}
-
-	.link-change-shipping,
-	.link-change-profile,
-	.link-change-payment {
-		@extend .primary-button;
-		background: transparent;
-		border: 2px solid $orange;
-		color: $orange;
-
-		&:hover {
-			background: $orange;
-			border: 2px solid $orange;
-			color: #ffffff;
-		}
-
-		&:after { background: $orange; }
-	}
-
-	button,
-	input[type=submit],
-	.bank-invoice-print-link,
-	.btn-continue-shop,
-	.linkWarranty,
-	.orderplaced-alert .bank-invoice-print-url {
-		background: #ffffff;
-		background-color: $green;
-		background-image: none;
-		color: #ffffff;
-		padding: 5px 15px;
-		text-shadow: none;
-
-		&:hover {
-			background: transparent;
-			color: $orange;
-		}
-	}
-
-	#payment-group-bankInvoicePaymentGroup .payment-group-item-text:after {
-		background: url('/arquivos/brastemp_flag-boleto.png') no-repeat;
-		content: '';
-		display: block;
-		height: 30px;
-		margin-bottom: 5px;
-		margin-top: 10px;
-		text-indent: -9999px;
-		width: 150px;
-	}
-
-	.orderplaced-alert .bank-invoice-print-url {
-		background: $orange;
-		border-color: $orange;
-		color: #ffffff;
-
-		&:hover {
-			background: #ffffff;
-			color: $orange;
-		}
-	}
-
-	.identified-user-button {
-		@include vendor(transition, all .3s ease);
-		background: $orange;
-		border-color: #ffffff;
-		color: #ffffff;
-		outline: none;
-
-		&:hover {
-			background: #ffffff;
-			color: $orange;
-		}
-	}
-
-	.linkWarranty {
-		background: $green;
-		border: 3px solid $green;
-		margin-top: 10px;
-
-		&:hover {
-			background: transparent;
-			border: 3px solid $green;
-			color: $green;
-		}
-	}
-
-	&:not([class*='consulqa']) {
-		.box-client-info-pj #is-corporate-client {display: none!important}
-	}
-
-
-	.container-main {
-		margin-top: 60px;
-		.btn-success,
-		.btn-continue-shop {
-			@include responsiveFont(18);
-			@include vendor(border-radius, 0);
-			@include vendor(border-radius, 50px);
-			@include vendor(box-shadow, none);
-			@include vendor(transition, all .3s ease);
-			background-color: $orange;
-			background-image: none;
-			border: 3px solid $orange;
-			color: #ffffff;
-			font-family: 'consul';
-			font-weight: 700;
-			padding: 16px 26px;
-			text-shadow: none;
-
-			&:hover {
-				background: transparent;
-				color: $orange;
-			}
-
-			&#btn-client-pre-email {
-				padding: 4px 12px;
-				@include breakpoint(768px, 'max') {
-				   margin-bottom: 20px;
-				   position: relative;
-				   width: 100%;
-
-				}
-				@include breakpoint(767px, 'max') {
-					width: 100%;
-				}
-			}
-		}
-		// fake buttom mobile
-		@include breakpoint(small, 'max') {
-			.field-button {
-				.btn-success {
-					@include responsiveFont(14, 16, true);
-					@include vendor(border-radius, 20px);
-					background-color: $green;
-					border: none;
-					color: #fff;
-					float: right;
-					font-weight: bold;
-					padding: 10px 40px;
-					text-transform: uppercase;
-				}
-			}
-			.full-cart { margin-bottom: 0; }
-		}
-	}
-
-	.item-attachments-name-aceite-do-termo,
-	.attachments-head,
-	.item-attachments-content,
-	.item-attachments-head { display: none !important; }
-
-	.garantiaInfo {display: none;}
-
-	@media screen and (max-width: 767px) { padding: 0; }
-
-	@include breakpoint(small, 'max') {
-		&.body-order-form {
-			.email-confirm {
-				.client-profile-data {
-					background: #fff;
-					height: 130%;
-					position: absolute;
-				}
-			}
-			.client-pre-email {
-				padding: 0 20px;
-
-				#client-pre-email {
-					margin: 15px 0;
-				}
-
-				#btn-client-pre-email {
-					display: block;
-					width: 100%;
-				}
-			}
-		}
-	}
+    padding: 0 !important;
+    a {
+        color: $txt-gray;
+        text-decoration: none;
+    }
+    .hide {
+        visibility: visible;
+    }
+    .step,
+    .cart,
+    .totalizers {
+        border: 3px solid $gray-l;
+    }
+    header {
+        border-bottom: 3px solid $gray-l;
+        .cont-logo,
+        .come-back {
+            line-height: 70px;
+        }
+        .logo {
+            background: transparent url('/arquivos/consul-logo.png') left center no-repeat;
+            background-size: contain;
+            display: inline-block;
+            font-size: 0;
+            height: 32px;
+            max-width: 100%;
+            position: relative;
+            vertical-align: middle;
+            width: 100%;
+        }
+    }
+    #cart-title,
+    #orderform-title,
+    .come-back {
+        display: none !important
+    }
+    .link-coupon-add,
+    .link-choose-more-products,
+    button,
+    input[type=submit],
+    .link-change-shipping,
+    .bank-invoice-print-link,
+    .btn-continue-shop,
+    .linkWarranty,
+    .orderplaced-alert .bank-invoice-print-url {
+        @include responsiveFont(14);
+        @include vendor(transition,
+        all .3s ease);
+        @include vendor(border-radius,
+        20px);
+        @include vendor(box-shadow,
+        none); // background-color: $gray;
+        border: 3px solid $gray;
+        color: $txt-gray-l;
+        padding: 10px 25px;
+        text-decoration: none;
+        &:hover {
+            border-color: $gray-d;
+            color: $txt-gray;
+        }
+    }
+    .link-change-shipping,
+    .link-change-profile,
+    .link-change-payment {
+        @extend .primary-button;
+        background: transparent;
+        border: 2px solid $orange;
+        color: $orange;
+        &:hover {
+            background: $orange;
+            border: 2px solid $orange;
+            color: #ffffff;
+        }
+        &:after {
+            background: $orange;
+        }
+    }
+    button,
+    input[type=submit],
+    .bank-invoice-print-link,
+    .btn-continue-shop,
+    .linkWarranty,
+    .orderplaced-alert .bank-invoice-print-url {
+        background: #ffffff;
+        background-color: $green;
+        background-image: none;
+        color: #ffffff;
+        padding: 5px 15px;
+        text-shadow: none;
+        &:hover {
+            background: transparent;
+            color: $orange;
+        }
+    }
+    #payment-group-bankInvoicePaymentGroup .payment-group-item-text:after {
+        background: url('/arquivos/brastemp_flag-boleto.png') no-repeat;
+        content: '';
+        display: block;
+        height: 30px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+        text-indent: -9999px;
+        width: 150px;
+    }
+    .orderplaced-alert .bank-invoice-print-url {
+        background: $orange;
+        border-color: $orange;
+        color: #ffffff;
+        &:hover {
+            background: #ffffff;
+            color: $orange;
+        }
+    }
+    .identified-user-button {
+        @include vendor(transition,
+        all .3s ease);
+        background: $orange;
+        border-color: #ffffff;
+        color: #ffffff;
+        outline: none;
+        &:hover {
+            background: #ffffff;
+            color: $orange;
+        }
+    }
+    .linkWarranty {
+        background: $green;
+        border: 3px solid $green;
+        margin-top: 10px;
+        &:hover {
+            background: transparent;
+            border: 3px solid $green;
+            color: $green;
+        }
+    }
+    &:not([class*='consulqa']) {
+        .box-client-info-pj #is-corporate-client {
+            display: none !important
+        }
+    }
+    .container-main {
+        margin-top: 60px;
+        .btn-success,
+        .btn-continue-shop {
+            @include responsiveFont(18);
+            @include vendor(border-radius,
+            0);
+            @include vendor(border-radius,
+            50px);
+            @include vendor(box-shadow,
+            none);
+            @include vendor(transition,
+            all .3s ease);
+            background-color: $orange;
+            background-image: none;
+            border: 3px solid $orange;
+            color: #ffffff;
+            font-family: 'consul';
+            font-weight: 700;
+            padding: 16px 26px;
+            text-shadow: none;
+            &:hover {
+                background: transparent;
+                color: $orange;
+            }
+            &#btn-client-pre-email {
+                padding: 4px 12px;
+                @include breakpoint(768px,
+                'max') {
+                    margin-bottom: 20px;
+                    position: relative;
+                    width: 100%;
+                }
+                @include breakpoint(767px,
+                'max') {
+                    width: 100%;
+                }
+            }
+        } // fake buttom mobile
+        @include breakpoint(small,
+        'max') {
+            .field-button {
+                .btn-success {
+                    @include responsiveFont(14,
+                    16,
+                    true);
+                    @include vendor(border-radius,
+                    20px);
+                    background-color: $green;
+                    border: none;
+                    color: #fff;
+                    float: right;
+                    font-weight: bold;
+                    padding: 10px 40px;
+                    text-transform: uppercase;
+                }
+            }
+            .full-cart {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .item-attachments-name-aceite-do-termo,
+    .attachments-head,
+    .item-attachments-content,
+    .item-attachments-head {
+        display: none !important;
+    }
+    .garantiaInfo {
+        display: none;
+    }
+    @media screen and (max-width: 767px) {
+        padding: 0;
+    }
+    @include breakpoint(small,
+    'max') {
+        &.body-order-form {
+            .email-confirm {
+                .client-profile-data {
+                    background: #fff;
+                    height: 130%;
+                    position: absolute;
+                }
+            }
+            .client-pre-email {
+                padding: 0 20px;
+                #client-pre-email {
+                    margin: 15px 0;
+                }
+                #btn-client-pre-email {
+                    display: block;
+                    width: 100%;
+                }
+            }
+        }
+    }
 }
 
 /*## BUGFIX FIREFOX #####################################*/
+
 #summary-postal-code {
-	@include vendor(box-sizing, border-box);
-	height: 34px;
-	line-height: 34px;
-	padding: 5px;
+    @include vendor(box-sizing,
+    border-box);
+    height: 34px;
+    line-height: 34px;
+    padding: 5px;
 }
-/*## BUGFIX FIREFOX #####################################*/
 
+/*## BUGFIX FIREFOX #####################################*/
 
 .default-modal {
-	background: $orange;
-
-	#btn-identified-user-button {
-		background: transparent;
-		border: 2px solid #ffffff;
-		box-shadow: none;
-		color: #ffffff;
-		text-shadow: none;
-
-		&:hover {
-			background: #ffffff;
-			color: $orange;
-		}
-	}
-
-	@include breakpoint(small, 'max') {
-		.identified-user-message {
-			@include responsiveFont(14, 16, true);
-		}
-
-		.payment-confirmation-message {
-			width: 100%;
-		}
-
-		.masked-info-modal-body {
-			max-height: 100%;
-
-			.masked-info-hello {
-				@include responsiveFont(16, 16, true);
-			}
-
-			.masked-info-message p {
-				@include responsiveFont(15, 16, true);
-			}
-
-			.masked-info-button {
-				background: $orange;
-				border: 2px solid #ffffff;
-				color: #ffffff;
-			}
-		}
-	}
+    background: $orange;
+    #btn-identified-user-button {
+        background: transparent;
+        border: 2px solid #ffffff;
+        box-shadow: none;
+        color: #ffffff;
+        text-shadow: none;
+        &:hover {
+            background: #ffffff;
+            color: $orange;
+        }
+    }
+    @include breakpoint(small,
+    'max') {
+        .identified-user-message {
+            @include responsiveFont(14,
+            16,
+            true);
+        }
+        .payment-confirmation-message {
+            width: 100%;
+        }
+        .masked-info-modal-body {
+            max-height: 100%;
+            .masked-info-hello {
+                @include responsiveFont(16,
+                16,
+                true);
+            }
+            .masked-info-message p {
+                @include responsiveFont(15,
+                16,
+                true);
+            }
+            .masked-info-button {
+                background: $orange;
+                border: 2px solid #ffffff;
+                color: #ffffff;
+            }
+        }
+    }
 }
 
-.modal-backdrop { background: $gray-d; }
+.modal-backdrop {
+    background: $gray-d;
+}
+
 .modal {
-	border: none;
-	border-radius: 15px;
-	box-shadow: none;
-	overflow: hidden;
-
-	.close {
-		border: 3px solid $txt-gray-l;
-		border-radius: 50%;
-		color: $txt-gray-l;
-		cursor: pointer;
-		height: 30px;
-		opacity: 1;
-		padding: 0;
-		position: absolute;
-		right: 10px;
-		top: 10px;
-		width: 30px;
-		z-index: 10;
-	}
-
-	.modal-header {
-		border: none;
-
-		.modal-title {
-			@include responsiveFont(30);
-			color: $orange;
-			font-weight: bold;
-			line-height: 1;
-			margin-bottom: 20px;
-			margin-top: 50px;
-			text-align: center;
-		}
-	}
+    border: none;
+    border-radius: 15px;
+    box-shadow: none;
+    overflow: hidden;
+    .close {
+        border: 3px solid $txt-gray-l;
+        border-radius: 50%;
+        color: $txt-gray-l;
+        cursor: pointer;
+        height: 30px;
+        opacity: 1;
+        padding: 0;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 30px;
+        z-index: 10;
+    }
+    .modal-header {
+        border: none;
+        .modal-title {
+            @include responsiveFont(30);
+            color: $orange;
+            font-weight: bold;
+            line-height: 1;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            text-align: center;
+        }
+    }
 }
 
-
 /********************************************/
+
 /* Custom CSS */
-/*******************************************/
-@import 'custom/termo-coleta';
 
-/********************************************/
-/* Components CSS */
 /*******************************************/
+
+@import 'custom/termo-coleta';
+/********************************************/
+
+/* Components CSS */
+
+/*******************************************/
+
 @import 'components/checkout/cart';
 @import 'components/checkout/payment';
 @import 'components/checkout/checkout-confirmation';
@@ -385,237 +393,334 @@ body {
 @import 'components/checkout/modal-phones';
 @import 'components/checkout/modal-login';
 @import 'components/checkout/recurrence';
-
 // GAE
 @import 'components/checkout/modal-warranty';
 @import 'components/checkout/modal-warranty-mobile';
-
 @import 'custom/testeab-entregaAgendada';
-
 //Para Banner Porto Seguro
-.order-title { display: block; }
+.order-title {
+    display: block;
+}
 
 //DESTAQUE NA VOLTAGEM
 .highlight-voltage {
-	background-color: $green;
-	border-radius: 25px;
-	color: #fff;
-	display: inline-block;
-	padding: 0 5px;
+    background-color: $green;
+    border-radius: 25px;
+    color: #fff;
+    display: inline-block;
+    padding: 0 5px;
 }
 
 //AJUSTE DISPLAY NOME
 .mini-cart .item .fn {
-	display: inline-block;
-	margin-bottom: 10px;
-	white-space: normal;
-	width: 74%;
+    display: inline-block;
+    margin-bottom: 10px;
+    white-space: normal;
+    width: 74%;
 }
 
 //Custom MSG BAR
-.vtex-front-messages-placeholder { z-index: 9999; }
+.vtex-front-messages-placeholder {
+    z-index: 9999;
+}
 
 // Brinde checkout
 .cart-select-gift-placeholder {
-
-	max-width: 50%;
-
-		@include breakpoint('extra-small', 'max') {
-			max-width: 100%;
-			width: 100%;
-		}
-
-		&.show {
-
-				.available-gift {
-					display: block;
-					margin-top: 71px;
-
-						@include breakpoint('extra-small', 'max') {
-							margin-top: 0;
-						}
-				}
-
-				h2.available-gift-quantity {
-					line-height: 20px;
-					margin-bottom: 0;
-				}
-		}
-
-	.available-gift-items.btn-group.btn-group-vertical {
-		border: 1px solid #e6e6e6;
-
-			.btn {
-				border-bottom: none;
-				border-color: #e6e6e6;
-				border-left: none;
-				border-radius: 0;
-				border-right: none;
-
-					&:first-child {
-						border-top: none;
-					}
-
-					.checkbox-selector {
-						top: 25px !important;
-					}
-			}
-	}
+    max-width: 50%;
+    @include breakpoint('extra-small',
+    'max') {
+        max-width: 100%;
+        width: 100%;
+    }
+    &.show {
+        .available-gift {
+            display: block;
+            margin-top: 71px;
+            @include breakpoint('extra-small',
+            'max') {
+                margin-top: 0;
+            }
+        }
+        h2.available-gift-quantity {
+            line-height: 20px;
+            margin-bottom: 0;
+        }
+    }
+    .available-gift-items.btn-group.btn-group-vertical {
+        border: 1px solid #e6e6e6;
+        .btn {
+            border-bottom: none;
+            border-color: #e6e6e6;
+            border-left: none;
+            border-radius: 0;
+            border-right: none;
+            &:first-child {
+                border-top: none;
+            }
+            .checkbox-selector {
+                top: 25px !important;
+            }
+        }
+    }
 }
 
 .body-cart {
-
-	.brinde-ativo {
-		float: right;
-		padding-top: 8px;
-		width: 50%;
-
-			@include breakpoint('extra-small', 'max') {
-				width: 100%;
-			}
-
-			.totalizers {
-				margin-bottom: 0;
-				margin-top: 84px;
-				padding: 0;
-				width: 95% !important;
-
-					@include breakpoint('extra-small', 'max') {
-						margin-top: 0;
-						padding: 0;
-						width: 100% !important;
-					}
-			}
-
-			.forms.coupon-column {
-				left: 0;
-				position: absolute;
-
-					@include breakpoint('extra-small', 'max') {
-						position: relative;
-					}
-			}
-	}
+    .brinde-ativo {
+        float: right;
+        padding-top: 8px;
+        width: 50%;
+        @include breakpoint('extra-small',
+        'max') {
+            width: 100%;
+        }
+        .totalizers {
+            margin-bottom: 0;
+            margin-top: 84px;
+            padding: 0;
+            width: 95% !important;
+            @include breakpoint('extra-small',
+            'max') {
+                margin-top: 0;
+                padding: 0;
+                width: 100% !important;
+            }
+        }
+        .forms.coupon-column {
+            left: 0;
+            position: absolute;
+            @include breakpoint('extra-small',
+            'max') {
+                position: relative;
+            }
+        }
+    }
 }
 
 // removendo opção de editar dados no checkout
 body[class*='consulempresa'] {
-	#edit-profile-data {
-		display: none;
-		visibility: hidden;
-	}
+    #edit-profile-data {
+        display: none;
+        visibility: hidden;
+    }
 }
 
 .btn_smartbeer {
     font-size: .9375rem !important;
     padding: 16px 65px 10px 50px !important;
-	position: relative;
-	text-transform: uppercase;
-
-	
-	&:before {
-		@include contentBefore();
-		@include font-size(16px, true, false);
-		@include icon-get('arrow-right');
-		display: inline-block;
-		right: 40px;
-		top: 50%;
-		transform: translateY(-50%) scaleY(1);
-		transition: transform .2s ease-in;
-	}
-
-	&.mobile {
-		padding: 10px 40px !important;		
-
-			&:before {
-				right: 20px;
-			}
-	}
+    position: relative;
+    text-transform: uppercase;
+    &:before {
+        @include contentBefore();
+        @include font-size(16px,
+        true,
+        false);
+        @include icon-get('arrow-right');
+        display: inline-block;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%) scaleY(1);
+        transition: transform .2s ease-in;
+    }
+    &.mobile {
+        padding: 10px 40px !important;
+        &:before {
+            right: 20px;
+        }
+    }
 }
-
 
 .aviso-smartbeer {
     border-bottom: 1px solid #f4f2f1 !important;
     border-top: 1px solid #f4f2f1 !important;
-	color: #736c6b;
-	font-size: 16px;
-	text-align: center !important;
+    color: #736c6b;
+    font-size: 16px;
+    text-align: center !important;
 }
 
 #vtex-modal-smartbeer {
-
-	.modal-header {
-		border: none;
-		color: #fff;
-		font-size: 0;
-		margin-bottom: 25px;
-
-		.close {			
-			color     : #747474;
-			font-size : 13px;
-			opacity: 1 !important;
-			right: 3px !important;
-			top: 3px !important;
-			z-index   : 33;
-
-				&:before {
-					@include icon-get('close-icon');                            
-				}
-		}
-	}
-	.modal-holder {
-		max-width: 665px;
-
-		.text-modal-smartbeer {
-
-			color: #736c6b;
-			font-size: 18px;			
-			padding: 15px;
-
-			& > h2 {
-
-				border: 1px solid #94bc42;
-				border-radius: 61px;
-				display: block;
-				font-size: 18px;
-				font-weight: normal;
-				line-height: 26px;
-				padding: 10px 30px;
-
-					strong {
-						color: #94bc42;
-					}
-
-					@include breakpoint('small', 'max') {
-						font-size: 14px;
-						line-height: 18px;
-						padding: 10px 24px;
-					}
-
-			}
-
-			button.close {
-				background: #94bc42;
-				color: #fff;
-				display: block;
-				float: none;
-				font-size: 12px;
-				font-weight: normal;
-				margin: 21px auto 7px;
-				opacity: 1;
-				padding: 6px 23px;
-
-					@include breakpoint('small', 'max') {
-						font-size: 14px;
-						padding: 12px 37px;
-					}
-			}
-		}
-	}
+    .modal-header {
+        border: none;
+        color: #fff;
+        font-size: 0;
+        margin-bottom: 25px;
+        .close {
+            color: #747474;
+            font-size: 13px;
+            opacity: 1 !important;
+            right: 3px !important;
+            top: 3px !important;
+            z-index: 33;
+            &:before {
+                @include icon-get('close-icon');
+            }
+        }
+    }
+    .modal-holder {
+        max-width: 665px;
+        .text-modal-smartbeer {
+            color: #736c6b;
+            font-size: 18px;
+            padding: 15px;
+            &>h2 {
+                border: 1px solid #94bc42;
+                border-radius: 61px;
+                display: block;
+                font-size: 18px;
+                font-weight: normal;
+                line-height: 26px;
+                padding: 10px 30px;
+                strong {
+                    color: #94bc42;
+                }
+                @include breakpoint('small',
+                'max') {
+                    font-size: 14px;
+                    line-height: 18px;
+                    padding: 10px 24px;
+                }
+            }
+            button.close {
+                background: #94bc42;
+                color: #fff;
+                display: block;
+                float: none;
+                font-size: 12px;
+                font-weight: normal;
+                margin: 21px auto 7px;
+                opacity: 1;
+                padding: 6px 23px;
+                @include breakpoint('small',
+                'max') {
+                    font-size: 14px;
+                    padding: 12px 37px;
+                }
+            }
+        }
+    }
 }
 
-@include breakpoint('small', 'max') {
-	.cart-links .btn_smartbeer {
-		display: none !important;
-	}
+@include breakpoint('small',
+'max') {
+    .cart-links .btn_smartbeer {
+        display: none !important;
+    }
+}
+
+body.body-cart {
+    .fieldsReinput {
+        display: none;
+    }
+}
+
+body.body-order-form {
+
+    .fieldsReinput {
+        border: 3px solid #f4f2f1;
+        display: block;
+        margin-top: 15px;
+        .isReinput {
+            input {
+                height: 20px;
+                margin-left: 10px;
+                margin-top: 0;
+                width: 20px;
+                &:before {
+                    background: #fff;
+                    border: 1px solid #ccc;
+                    content: '';
+                    display: block;
+                    height: 20px;
+                    width: 20px;
+                }
+                &:checked {
+                    &:before {
+                        background: #94bc42;
+                        border: 1px solid #94bc42;
+                    }
+                    &:after {
+                        @include icon-get('check-mark');
+                        color: #fff;
+                        font-size: 12px;
+                        left: 3px;
+                        position: relative;
+                        top: -18px;
+                    }
+                }
+            }
+        }
+        li {
+            display: block;
+            list-style: none;
+            padding: 10px;
+            input,
+            select {
+				border: 1px solid #ccc;
+				box-shadow: none;
+                display: inline;
+                float: right;
+                height: 25px;
+				outline: none;
+                width: 55%;
+            }
+            label {
+                display: block;
+                float: left;
+                text-align: left;
+                width: 45%;
+            }
+            &.load {
+
+				& input,
+				select {
+					border-color: #94bc42;
+				}
+
+                &:before {
+                    @include icon-get('check-mark');
+                    color: #94bc42;
+                    font-size: 7px;
+                    position: absolute;
+                    right: 13px;
+                    top: 18px;
+				}				
+				
+			}
+			&.error {
+
+				& input,
+				select {
+					border-color: #f00;
+				}
+
+                &:before {
+                    @include icon-get('close-icon');
+                    color: #f00;
+                    font-size: 7px;
+                    position: absolute;
+                    right: 13px;
+                    top: 18px;
+				}				
+            }
+            &.previouOrderId,
+            &.company,
+            &.reason {
+                display: none;
+                position: relative;
+            }
+            &:after {
+                clear: both;
+                content: '';
+                display: block;
+			}
+			&.company,
+            &.reason {
+                
+                &.load {
+					&:before {
+						display: none;
+					}
+				}
+            }
+        }
+    }
 }

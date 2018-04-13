@@ -121,7 +121,7 @@ var sbModal = function(){
     $('.sb-video_btn').on('click', function () {
         $('#modal-video').vtexModal();
 
-        $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/dlDP5JzdHpQ?rel=0&amp;showinfo=0');
+        $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0');
     });
 
     $('.link-termo').on('click', function () {
@@ -187,7 +187,15 @@ var sbSlick = function(){
             autoplay: true,
             autoplaySpeed: 6000,
             arrows: false,
-            dots: true
+            dots: true,
+            asNavFor: '.sb-app .sb-app-diferenciais-mobile .app-slider'
+        });
+        $('.sb-app .sb-app-diferenciais-mobile .app-slider').slick({
+            autoplay: true,
+            autoplaySpeed: 6000,
+            arrows: false,
+            dots: false,
+            asNavFor: '.sb-app .mockup-mobile-view .slider'
         });
     }
 };

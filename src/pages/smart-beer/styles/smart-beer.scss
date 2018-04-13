@@ -29,7 +29,11 @@
 $fontSB : 'nowayregular', sans-serif;
 
 // ===============================================================
-@keyframes jump { 0% { top: 0; } 20% { top: 20px; } 100% { top: 0; } }
+@keyframes jump { 
+	0% { top: 0; }
+	20% { top: 20px; }
+	100% { top: 0; }
+}
 .vtex-modal {
 	.modal-holder {
 		background: #252525;
@@ -38,59 +42,58 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.modal-header {
 		padding: 3px;
-		.close{
+		.close {
 			background: url('/arquivos/btn-fechar.png');
-			&:before{
+			&:before {
 				display: none;
 			}
 		}
 	}
 }
-#vtex-modal-video{
+#vtex-modal-video {
 	.modal-holder {
 		max-width: 570px;
 	}
-	iframe{
-		@include breakpoint(small, 'max'){
+	iframe {
+		@include breakpoint(small, 'max') {
 			width: 98%;
 		}
 	}
 }
-#vtex-modal-termo{
+#vtex-modal-termo {
 	.modal-holder {
 		background: #FFF;
-		width: 100%;
 		max-width: 800px;
 	}
-	#modal-termo{
-		text-align: left;
-		padding: 20px;
-		overflow: auto;
+	#modal-termo {
 		height: 493px;
+		overflow: auto;
+		padding: 20px;
+		text-align: left;
 	}
 }
-#modal-quickview{
+#modal-quickview {
 	overflow: hidden;
 }
-#vtex-modal-quickview{
+#vtex-modal-quickview {
 	.modal-holder {
 		max-width: 770px;
 	}
-	iframe{
-		border:0;
-		@include breakpoint(small, 'max'){
+	iframe {
+		border: 0;
+		@include breakpoint(small, 'max') {
 			width: 98%;
 		}
 	}
 }
-@include breakpoint(small, 'max'){
-	body.page-smartbeer{
+@include breakpoint(small, 'max') {
+	body.page-smartbeer {
 		padding-top: 20px !important;
 	}
 	.col-5,
 	.col-4,
 	.col-7,
-	.col-8{
+	.col-8 {
 		width: 100%;
 	}
 }
@@ -103,33 +106,33 @@ $fontSB : 'nowayregular', sans-serif;
 	// section.sb-app,
 	// section.sb-features,
 	section.sb-dimensoes,
-	section.sb-vitrine{
+	section.sb-vitrine {
 		// opacity: 0;
+		margin: 40px 0;
 		transform: translateY(50px);
 		transition: all 1s ease-out;
-		margin:80px 0;
 		&.fade-in {
 			opacity: 1;
 			transform: translateY(0);
 		}
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			opacity: 1;
 		}
 	}
 	.sb-clear {
 		clear: both;
 		.icon-arrow-down {
+			animation: jump 5s infinite;
 			background: url('/arquivos/icon-arrow-down.png') center center no-repeat;
 			display: table;
 			height: 12px;
 			margin: 80px auto;
-			width: 30px;
 			position: relative;
-			animation: jump 5s infinite;
-			@include breakpoint(large, 'max'){
-				margin: 0px auto 20px;
+			width: 30px;
+			@include breakpoint(large, 'max') {
+				margin: 0 auto 20px;
 			}
-			@include breakpoint(medium, 'max'){
+			@include breakpoint(medium, 'max') {
 				display: none;
 			}
 		}
@@ -187,16 +190,16 @@ $fontSB : 'nowayregular', sans-serif;
 	@include breakpoint(extra-large, 'max') {
 		padding-top: 40px; 
 	}
-	@include breakpoint(large, 'max'){
-		padding-top: 0px!important; 
+	@include breakpoint(large, 'max') {
+		padding-top: 0!important; 
 	}
-	@include breakpoint(small, 'max'){
-		.container{
-			padding:0;
-			margin:0;
+	@include breakpoint(small, 'max') {
+		.container {
+			margin: 0;
 			max-width: 100%;
+			padding: 0;
 		}
-		.right{
+		.right {
 			float: none;
 		}
 	}
@@ -219,23 +222,23 @@ $fontSB : 'nowayregular', sans-serif;
 				background-size: contain;
 				width: 100%;
 			}
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				height: 170px;
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
+				display: table;
+				height: 244px;
+				margin: 0 auto;
 				max-width: 350px;
 				width: 100%;
-				display: table;
-				margin: 0 auto;
-				height: 244px;
 			}
-			@include breakpoint(extra-small, 'max'){
+			@include breakpoint(extra-small, 'max') {
+				display: table;
+				height: 244px;
+				margin: 0 auto;
 				max-width: 300px;
 				width: 100%;
-				display: table;
-				margin: 0 auto;
-				height: 244px;
 			}
 		}
 		h3 {
@@ -245,19 +248,19 @@ $fontSB : 'nowayregular', sans-serif;
 			font-weight: 100;
 			opacity: 0;
 			position: relative;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				font-size: 16px;
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
-				font-size:22px;
-				margin:20px auto;
+			@include breakpoint(small, 'max') {
+				font-size: 22px;
+				margin: 20px auto;
 				max-width: 350px;
 				width: 100%;
 			}
-			@include breakpoint(extra-small, 'max'){
-				font-size:19px;
-				margin:20px auto;
+			@include breakpoint(extra-small, 'max') {
+				font-size: 19px;
+				margin: 20px auto;
 				max-width: 300px;
 				width: 100%;
 			}
@@ -271,29 +274,29 @@ $fontSB : 'nowayregular', sans-serif;
 			font-size: 12px;
 			opacity: 0;
 			position: relative;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				font-size: 11px;
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
+				display: table;
 				font-size: 13px;
+				margin: 0 auto;
 				max-width: 350px;
 				width: 100%;
-				display: table;
-				margin: 0 auto;
 			}
-			@include breakpoint(extra-small, 'max'){
+			@include breakpoint(extra-small, 'max') {
 				text-align: center;
 			}
 		}
 	}
-	.sb-intro_prateleira-mobile{
-		padding-bottom: 40px;
-		font-size: 16px;
-		font-family: $fontSB;
+	.sb-intro_prateleira-mobile {
 		display: none;
-		@include breakpoint ( small , 'max'){
-			display:block;
+		font-family: $fontSB;
+		font-size: 16px;
+		padding-bottom: 40px;
+		@include breakpoint ( small , 'max') {
+			display: block;
 		}
 		.value-buy {
 			color: #FFF;
@@ -306,14 +309,14 @@ $fontSB : 'nowayregular', sans-serif;
 				text-decoration: line-through;
 			}
 		}
-		.model-button{
-			float: left;
-			width: 100%;
-			padding: 20px;
-			margin-bottom: 20px;
+		.model-button {
 			background: #252525;
 			border-top: 1px solid $green;
+			float: left;
+			margin-bottom: 20px;
+			padding: 20px;
 			text-align: center;
+			width: 100%;
 			p.price-mode {
 				color: $green;
 				font-family: $fontSB;
@@ -322,23 +325,23 @@ $fontSB : 'nowayregular', sans-serif;
 				padding: 0;
 				text-align: center;
 			}
-			h3{
-				float: left;
+			h3 {
 				color: #d5d5d5;
+				float: left;
 				font-size: 20px;
-				margin:0;
-				padding:10px 0;
+				margin: 0;
+				padding: 10px 0;
 			}
 		}
 		.sb-vitrine_btn {
 			background: transparent;
 			border: 2px solid $green;
 			border-radius: 35px;
-			font-size:16px;
 			color: $green;
 			display: block;
 			float: right;
 			font-family: $fontSB;
+			font-size: 16px;
 			margin: 0 auto;
 			padding: 16px 0;
 			text-align: center;
@@ -348,12 +351,15 @@ $fontSB : 'nowayregular', sans-serif;
 				color: #FFF;
 				transition: ease .3s all;
 			}
+
+			
 		}
+		
 		.sb-intro_ilustra {
 			display: table;
 			font-size: 0;
-			margin: 0 auto;
 			height: 360px;
+			margin: 0 auto;
 			position: relative;
 			width: 365px;
 			&.carbono {
@@ -361,7 +367,7 @@ $fontSB : 'nowayregular', sans-serif;
 				background-size: initial!important;
 				transition: ease .3s all; 
 				@include breakpoint(extra-small, 'max') {
-				    background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
+					background: url('/arquivos/imageSteel-smartBeer-01-Carbono.png') center top no-repeat;
 					background-size: 92% !important;
 				}
 			}
@@ -384,20 +390,20 @@ $fontSB : 'nowayregular', sans-serif;
 				}
 			}
 		}
-		.slick-dots{
-				bottom: 0px;
-				li{
-					button{
-						width: 10px;
-						height: 10px;
+		.slick-dots {
+				bottom: 0;
+				li {
+					button {
 						background: #636363;
+						height: 10px;
+						width: 10px;
 					}
-					&.slick-active{
-						button{
-							width: 10px;
-							height: 10px;
+					&.slick-active {
+						button {
 							background: $green;							
-							&::after{
+							height: 10px;
+							width: 10px;
+							&::after {
 								display: none;
 							}
 						}
@@ -417,11 +423,11 @@ $fontSB : 'nowayregular', sans-serif;
 			width: 100%;
 		
 		}
-		@include breakpoint ( large , 'max'){
+		@include breakpoint ( large , 'max') {
 			height: 500px;
 		}
-		@include breakpoint ( small , 'max'){
-			display:none;
+		@include breakpoint ( small , 'max') {
+			display: none;
 		}
 		// opacity: 0;
 		&.all {
@@ -450,23 +456,23 @@ $fontSB : 'nowayregular', sans-serif;
 				opacity: 0;
 				position: relative;
 				text-transform: uppercase;
-				span{
+				span {
 					font-family: Arial, Helvetica, sans-serif;
 				}
-				@include breakpoint(extra-large, 'max'){
+				@include breakpoint(extra-large, 'max') {
 					font-size: 24px;
 					padding-top: 30px;
 				}
-				@include breakpoint(large, 'max'){
+				@include breakpoint(large, 'max') {
 					font-size: 18px;
 					margin-bottom: 10px;
 					opacity: 1;
 				}
-				@include breakpoint(small, 'max'){
-					padding-top: 0;
+				@include breakpoint(small, 'max') {
 					// padding-bottom: 20px;
-					margin-bottom: 0px;
 					font-size: 26px;
+					margin-bottom: 0;
+					padding-top: 0;
 					text-align: center;
 				}
 			}
@@ -478,10 +484,10 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
 				display: none;
 			}
 			
@@ -498,7 +504,7 @@ $fontSB : 'nowayregular', sans-serif;
 				height: 67px;
 				margin-left: 10px;
 				width: 67px;
-				@include breakpoint(large, 'max'){
+				@include breakpoint(large, 'max') {
 					opacity: 1;
 				}
 				p {
@@ -517,7 +523,7 @@ $fontSB : 'nowayregular', sans-serif;
 						margin-right: 4px;
 					}
 					a {
-						cursor:auto;
+						cursor: auto;
 						display: block;
 					}
 					.icon-iphone {
@@ -542,13 +548,13 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
-			&.current{
-				display:block;
+			&.current {
+				display: block;
 			}
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
 				display: none!important;
 			}
 			p.value-buy {
@@ -561,7 +567,7 @@ $fontSB : 'nowayregular', sans-serif;
 				.line-t {
 					text-decoration: line-through;
 				}
-				@include breakpoint(large, 'max'){
+				@include breakpoint(large, 'max') {
 					font-size: 14px;	
 				}
 			}
@@ -571,7 +577,7 @@ $fontSB : 'nowayregular', sans-serif;
 				font-size: 20px;
 				margin: 0;
 				padding: 0;
-				@include breakpoint(large, 'max'){
+				@include breakpoint(large, 'max') {
 					font-size: 16px;
 
 				}	
@@ -584,13 +590,13 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
-			@include breakpoint(1200px , 'max'){
-				margin:0px;
+			@include breakpoint(1200px , 'max') {
+				margin: 0;
 			}
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
 				display: none;
 			}
 			span {
@@ -598,9 +604,9 @@ $fontSB : 'nowayregular', sans-serif;
 				float: left;
 				font-family: $fontSB;
 				font-size: 18px;
-				@include breakpoint(1200px , 'max'){
+				@include breakpoint(1200px , 'max') {
 					padding-bottom: 20px;
-					br{
+					br {
 						display: none;
 					}
 				}
@@ -608,7 +614,7 @@ $fontSB : 'nowayregular', sans-serif;
 			ul {
 				float: left;
 				margin-left: 20px;
-				@include breakpoint(1200px , 'max'){
+				@include breakpoint(1200px , 'max') {
 					margin-left: 0;
 				}
 				li {
@@ -650,10 +656,10 @@ $fontSB : 'nowayregular', sans-serif;
 			opacity: 0;
 			position: relative;
 			width: 100%;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				opacity: 1;
 			}
-			@include breakpoint(small, 'max'){
+			@include breakpoint(small, 'max') {
 				display: none;
 			}
 			a {
@@ -682,20 +688,20 @@ $fontSB : 'nowayregular', sans-serif;
 //SB Vídeo
 .sb-video {
 	padding: 80px auto;
-	@include breakpoint ( medium , 'max'){
-		.container{
-			margin:0;
-			padding:0;
+	@include breakpoint ( medium , 'max') {
+		.container {
+			margin: 0;
 			max-width: 100%;
+			padding: 0;
 		}
 	}
 	.sb-video_info {
 		color: #FFF;
 		font-family: $fontSB;
 		padding: 40px 0 20px;
-		@include breakpoint ( small , 'max'){
-			padding: 0;
+		@include breakpoint ( small , 'max') {
 			margin: 0 0 20px 0; 		
+			padding: 0;
 		}
 		h2 {
 			font-size: 38px;
@@ -703,29 +709,29 @@ $fontSB : 'nowayregular', sans-serif;
 			line-height: 40px;
 			margin-top: 20px;
 			text-transform: uppercase;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				font-size: 28px;
 				padding-right: 20px;
 			}
-			@include breakpoint ( medium , 'max'){
+			@include breakpoint ( medium , 'max') {
 				font-size: 30px;
+				padding: 0;
 				text-align: center;
-				padding:0;
 			}
 		}
 		p {
 			font-size: 22px;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				font-size: 16px;
 				padding-right: 20px;
 			}
-			@include breakpoint(medium, 'max'){
-				max-width: 350px;
-				width: 100%;
-				margin:0 auto;
+			@include breakpoint(medium, 'max') {
 				display: table;
-				padding:0 20px;
+				margin: 0 auto;
+				max-width: 350px;
+				padding: 0 20px;
 				text-align: center;
+				width: 100%;
 			}
 		}
 	}
@@ -736,7 +742,7 @@ $fontSB : 'nowayregular', sans-serif;
     	float: right;
 		position: relative;
 		width: 100%;
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			background-image: none;
 		}
 		.sb-video_btn {
@@ -744,9 +750,9 @@ $fontSB : 'nowayregular', sans-serif;
 			border: 2px solid $green;
 			border-radius: 35px;
 			color: $green;
-			font-size: 17px;
 			display: inline-block;
 			font-family: $fontSB;
+			font-size: 17px;
 			left: 50%;
 			margin-left: -115px;
 			margin-top: -30px;
@@ -755,7 +761,7 @@ $fontSB : 'nowayregular', sans-serif;
 			position: absolute;
 			top: 50%;
 			width: 230px;
-			@include breakpoint(extra-small, 'max'){
+			@include breakpoint(extra-small, 'max') {
 				top: 80%;				
 			}
 			&:hover {
@@ -771,7 +777,7 @@ $fontSB : 'nowayregular', sans-serif;
 			margin: 70px auto;
 			max-width: 535px;
 			width: 100%;
-			@include breakpoint(medium, 'max'){
+			@include breakpoint(medium, 'max') {
 				margin: 0 auto;
 				padding: 0;
 			}
@@ -783,19 +789,19 @@ $fontSB : 'nowayregular', sans-serif;
 //SB App
 .sb-app {
 	font-family: $fontSB;
-	padding: 0px 0;
 	margin-bottom: 80px;
-	@include breakpoint(small, 'max'){
+	padding: 0;
+	@include breakpoint(small, 'max') {
 		padding: 20px 0;
 	}
 	.sb-app-title {
 		float: left;
 		margin: 40% 0 0;
 		padding-right: 20px;
-		@include breakpoint(large, 'max'){
-			margin:20px 0 0;
+		@include breakpoint(large, 'max') {
+			margin: 20px 0 0;
 		}
-		@include breakpoint(small, 'max'){
+		@include breakpoint(small, 'max') {
 			display: none;
 		}
 		.icon-consul-app-g {
@@ -812,7 +818,7 @@ $fontSB : 'nowayregular', sans-serif;
 			height: 105px;
 			line-height: 54px;
 			margin: 0 0 0 20px;
-			@include breakpoint(large, 'max'){
+			@include breakpoint(large, 'max') {
 				font-size: 30px;
 				line-height: 30px;
 				padding-top: 20px;
@@ -829,11 +835,11 @@ $fontSB : 'nowayregular', sans-serif;
 		float: left;
 		padding: 20px 0;
 		width: 100%;
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			
-			margin:0 auto 0 20%;
+			margin: 0 auto 0 20%;
 		}
-		@include breakpoint(small, 'max'){
+		@include breakpoint(small, 'max') {
 			display: none;
 		}
 		.btn-download-app-store {
@@ -843,12 +849,12 @@ $fontSB : 'nowayregular', sans-serif;
 			height: 61px;
 			margin-right: 30px;
 			width: 175px;
-			@include breakpoint(large, 'max'){
-				width: 204px;
-				margin-right: 0;
+			@include breakpoint(large, 'max') {
 				background-color: #000;
 				border-radius: 8px;
 				margin-bottom: 10px;
+				margin-right: 0;
+				width: 204px;
 			}
 		}
 		.btn-download-google-play {
@@ -857,39 +863,39 @@ $fontSB : 'nowayregular', sans-serif;
 			display: inline-block;
 			height: 60px;
 			width: 204px;
-			@include breakpoint(large, 'max'){
-				width:204px;
+			@include breakpoint(large, 'max') {
+				width: 204px;
 
 			}
 		}
 	}
-	.app-message{
+	.app-message {
 		color: #b5b5b5;
+		float: left;
 		font-family: $fontSB;
 		font-size: 12px;
 		position: relative;
-		float:left;
-		width:100%;
-		@include breakpoint(medium, 'max'){
+		width: 100%;
+		@include breakpoint(medium, 'max') {
 			display: none;
 		}
 	}
-	.sb-app-diferenciais-mobile{
-		display:none;
+	.sb-app-diferenciais-mobile {
+		display: none;
 		text-align: center;
-		h3{
+		h3 {
 			color: #FFF;
 			font-size: 25px;
 		}
-		h4{
+		h4 {
 			color: $green;
 			font-size: 16px;
 		}
-		p{
+		p {
+			color: #b4b4b4;
 			font-size: 16px;
-			color:#b4b4b4;
 		}
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			display: block;
 		}
 	}
@@ -900,45 +906,45 @@ $fontSB : 'nowayregular', sans-serif;
 		height: 600px;
 		position: relative;
 		width: 100%;
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			display: none;
 		}
 	}
 	.mockup-mobile-view {
 		background: url('/arquivos/mockup-iphone.png') top center no-repeat;
 		display: none;
-		margin: 0 auto;
 		float: none;
 		height: 600px;
+		margin: 0 auto;
 		position: relative;
 		width: 280px;
 		.sb-app-steep1,
 		.sb-app-steep2,
 		.sb-app-steep3,
-		.sb-app-steep4{
+		.sb-app-steep4 {
 			opacity: 1;
 		}
-		.slider{
+		.slider {
 			width: 230px;
 			
-			&.slick-slider{
-				margin:0 auto;
+			&.slick-slider {
+				margin: 0 auto;
 				padding: 0!important;
 			}
-			.slick-dots{
+			.slick-dots {
 				bottom: -100px;
-				li{
-					button{
-						width: 10px;
-						height: 10px;
+				li {
+					button {
 						background: #636363;
+						height: 10px;
+						width: 10px;
 					}
-					&.slick-active{
-						button{
-							width: 10px;
-							height: 10px;
+					&.slick-active {
+						button {
 							background: $green;							
-							&::after{
+							height: 10px;
+							width: 10px;
+							&::after {
 								display: none;
 							}
 						}
@@ -946,7 +952,7 @@ $fontSB : 'nowayregular', sans-serif;
 				}
 			}
 		}
-		@include breakpoint(large, 'max'){
+		@include breakpoint(large, 'max') {
 			display: block;
 			.sb-app-steep1 ,
 			.sb-app-steep2 ,
@@ -960,10 +966,10 @@ $fontSB : 'nowayregular', sans-serif;
 			.app-screen-02 ,
 			.app-screen-03 ,
 			.app-screen-04 {
-				position: initial;
-				float: none;
 				display: table;
+				float: none;
 				margin: 90px auto 0;	
+				position: initial;
 			}
 
 		}
@@ -983,7 +989,7 @@ $fontSB : 'nowayregular', sans-serif;
 	.sb-app-steep2 {
 		// display:block;
 		// display: none;
-		opacity:0;
+		opacity: 0;
 		.app-screen-02 {
 			background: url('/arquivos/app-screen-02.png')center center no-repeat;
 			height: 402px;
@@ -993,39 +999,39 @@ $fontSB : 'nowayregular', sans-serif;
 			width: 229px;
 		}
 		.as-02-01 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 132px;
 			width: 58%;
-			opacity: 0;
 		}
 		.as-02-02 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 297px;
 			width: 58%;
-			opacity: 0;
 		}
 		.as-02-03 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 347px;
 			width: 58%;
-			opacity: 0;
 		}
 		.as-02-04 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 392px;
 			width: 58%;
-			opacity: 0;
 		}
 
 	}
 	.sb-app-steep3 {
 		// display: block;
 		// display: none;
-		opacity:0;
+		opacity: 0;
 		.app-screen-03 {
 			background: url('/arquivos/app-screen-03.png')center center no-repeat;
 			height: 402px;
@@ -1035,25 +1041,25 @@ $fontSB : 'nowayregular', sans-serif;
 			width: 229px;
 		}
 		.as-03-01 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 133px;
 			width: 75%;
-			opacity: 0;
 		}
 		.as-03-02 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 232px;
 			width: 75%;
-			opacity: 0;
 		}
 		.as-03-03 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 370px;
 			width: 60%;
-			opacity: 0;
 		}
 	}
 	.sb-app-steep4 {
@@ -1069,11 +1075,11 @@ $fontSB : 'nowayregular', sans-serif;
 			width: 229px;
 		}
 		.as-04-01 {
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 140px;
 			width: 60%;
-			opacity: 0;
 			p {
 				color: #FFF;
 				float: right;
@@ -1104,31 +1110,31 @@ $fontSB : 'nowayregular', sans-serif;
 
 //SB Features
 .sb-features-mobile-view {
-	display:none;
+	display: none;
 	font-family: $fontSB; 
-	@include breakpoint(large, 'max'){
+	@include breakpoint(large, 'max') {
 		display: block;
 	}
-	@include breakpoint(extra-small, 'max'){
-		.container{
-			margin:0;
-			padding:0;
+	@include breakpoint(extra-small, 'max') {
+		.container {
+			margin: 0;
 			max-width: 100%;
+			padding: 0;
 		} 
 	}
-	h3{
+	h3 {
 		color: #FFF;
 		font-size: 25px;
-		text-align: center;
 		margin-bottom: 40px;
+		text-align: center;
 	}
-	h4{
+	h4 {
 		color: $green;
 		font-size: 16px;
 	}
-	p{
+	p {
+		color: #b4b4b4;
 		font-size: 16px;
-		color:#b4b4b4;
 	}
 	.box {
 		background: #202020;
@@ -1138,7 +1144,7 @@ $fontSB : 'nowayregular', sans-serif;
 		padding: 8px 16px 8px 70px;
 		position: relative;
 		width: 100%;
-		.legend{
+		.legend {
 			color: $green;
 			display: block;
 			font-size: 19px;
@@ -1176,17 +1182,17 @@ $fontSB : 'nowayregular', sans-serif;
 			margin-top: 5px;
 		}
 	}
-	.sb-features-mobile-message p{
+	.sb-features-mobile-message p {
+		font-size: 11px;
 		margin-top: 30px;
 		text-align: center;
-		font-size: 11px;
 	}
 }
 .sb-features {
 	font-family: $fontSB;
 	min-height: 700px;
-	padding: 0px 0;
-	@include breakpoint(small, 'max'){
+	padding: 0;
+	@include breakpoint(small, 'max') {
 		display: none;
 	}
 	.cervejeira {
@@ -1244,20 +1250,20 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		.f-01-01 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 45px;
 			width: 42%;
-			opacity: 0;
 			.icon-conectividade {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
 			}
 		}
 		.f-01-02 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 173px;
 			width: 36%;
-			opacity: 0;
 			.icon-estoque-temp {
 				background: url('/arquivos/icon-features-estoque.png') top left no-repeat;
 			}
@@ -1265,20 +1271,20 @@ $fontSB : 'nowayregular', sans-serif;
 		.f-01-03 {
 			border-bottom: 1px solid #454545;
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 347px;
 			width: 403px;
-			opacity: 0;
 			.icon-notificacao {
 				background: url('/arquivos/icon-features-notificacao.png') top left no-repeat;
 			}
 		}
 		.f-01-04 {   
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 82px;
 			width: 51%;
-			opacity: 0;
 			&.right {
 				.legend {
 					text-align: left!important;
@@ -1296,8 +1302,8 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 
 	.sb-features-steep2 {
-		display:block;
 		// display: none;
+		display: block;
 		opacity: 0;
 		position: relative;
 		.box {
@@ -1322,20 +1328,20 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 		.f-02-01 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 45px;
 			width: 42%;
-			opacity: 0;
 			.icon-porta-aberta {
 				background: url('/arquivos/icon-features-wifi.png') top left no-repeat;
 			}
 		}
 		.f-02-02 {   
+			opacity: 0;
 			position: absolute;
     		right: 0;
     		top: 45px;
 			width: 49%;
-			opacity: 0;
 			&.right {
 				.legend {
 					text-align: left!important;
@@ -1352,38 +1358,38 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-features-steep3 {
-		display: block;
 		// display: none;
+		display: block;
 		opacity: 0;
 		position: relative;
 		.f-03-01 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 45px;
 			width: 47%;
-			opacity: 0;
 		}
 		.f-03-02 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 215px;
 			width: 50%;
-			opacity: 0;
 		}
 		.f-03-03 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 352px;
 			width: 42%;
-			opacity: 0;
 		}
 		.f-03-04 {
 			border-right: 2px solid $green;
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 490px;
 			width: 39%;
-			opacity: 0;
 			.elipse {
 				top: 30px!important;
 			}
@@ -1391,14 +1397,14 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-features-steep4 {
 		display: block;
-		position: relative;
 		opacity: 0;
+		position: relative;
 		.f-04-01 {
 			left: 0;
+			opacity: 0;
 			position: absolute;
 			top: 70px;
 			width: 42%;
-			opacity: 0;
 		}
 		.box-capacidade {
 			left: 0;
@@ -1423,94 +1429,94 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 	.sb-f-massage {
-		margin-top: 80px;
 		color: #dbd9d9;
 		font-size: 14px;	
+		margin-top: 80px;
+		opacity: 0;
 		text-align: center;
 		width: 100%;
-		opacity: 0;
 	}
 
 }
-.sb-features-interna{
-	display:none;
+.sb-features-interna {
+	display: none;
 	height: 430px;
 	
-	@include breakpoint(small, 'max'){
-		display:block;
+	@include breakpoint(small, 'max') {
+		display: block;
 	}
-	h2{
+	h2 {
 		color: #FFF;
-		font-size: 25px;
-		text-align: center;
-		margin-bottom: 40px;
 		font-family: $fontSB;
+		font-size: 25px;
+		margin-bottom: 40px;
+		text-align: center;
 	}
-	.cervejeira{
+	.cervejeira {
 		height: 320px;
-		width: 320px;
-		margin:0 auto;
+		margin: 0 auto;
 		position: relative;
-		.aberta{
+		width: 320px;
+		.aberta {
 			background: url('/arquivos/features-image-product-open-door.png') top left no-repeat;
-			background-size:cover;
+			background-size: cover;
 			height: 320px;
 			width: 320px;
 		}
-		.instruction{
-			&.fi-01{
+		.instruction {
+			&.fi-01 {
+				cursor: pointer;
 				left: 60px;
 				position: absolute;
 				top: 25px;
 				width: 0;
-				cursor:pointer;
 			}
-			&.fi-02{
+			&.fi-02 {
+				cursor: pointer;
 				left: 230px;
 				position: absolute;
 				top: 230px;
 				width: 0;
-				cursor:pointer;
 			}
-			&.fi-03{
+			&.fi-03 {
+				cursor: pointer;
 				left: 80px;
 				position: absolute;
 				top: 145px;
 				width: 0;
-				cursor:pointer;
 			}
-			&.fi-04{
+			&.fi-04 {
+				bottom: 0;
+				cursor: pointer;
 				left: 10px;
 				position: absolute;
-				bottom:0;
 				width: 0;
-				cursor:pointer;
 			}
 		}
-		.zoom{
+		.zoom {
 			display: none;
-			width:350px;
 			height: 330px;
+			left: -15px;
 			position: absolute;
-			top: 0px;
-			left:-15px;
-			img{
+			top: 0;
+			width: 350px;
+			img {
 				width: 100%;
 			}
-			.legend{
-				color: $green;
+			.legend {
 				// font-size: 14px;
-				margin:10px 0;
+				color: $green;
 				font-size: 18px;
+				margin: 10px 0;
 				text-align: center;
 			}
-			.close{
-				width: 35px;
-				height: 35px;
+			.close {
 				background: url('/arquivos/btn-fechar.png') top left no-repeat;
+				height: 35px;
+				left: 45%;
 				position: absolute;
 				top: -15px;
-				left:45%;
+				width: 35px;
 			}
 		}
 	}
@@ -1518,100 +1524,100 @@ $fontSB : 'nowayregular', sans-serif;
 }
 
 //SB Dimensoes
-.sb-dimensoes-mobile-view{
-	display:none;
-	@include breakpoint(small, 'max'){
-		display:block;
-	}
-	h2{
-		color: #FFF;
-		font-size: 25px;
-		text-align: center;
-		margin-bottom: 40px;
-		font-family: $fontSB;
-	}
-	.cervejeira{
+.sb-dimensoes-mobile-view {
+	display: none;
+	@include breakpoint(small, 'max') {
 		display: block;
-		margin:0 auto;
-		width: 330px;
+	}
+	h2 {
+		color: #FFF;
+		font-family: $fontSB;
+		font-size: 25px;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	.cervejeira {
+		display: block;
 		height: 330px;
+		margin: 0 auto;
 		margin-bottom: 50px;
+		width: 330px;
 		
 		&.fechada {
 			background: url('/arquivos/features-image-product.png') top left no-repeat;
-			background-size:contain;
+			background-size: contain;
 		}
 		&.aberta {
 			background: url('/arquivos/features-image-product-open-door.png') top left no-repeat;
-			background-size:contain;
+			background-size: contain;
 		}
 		&.latas {
 			background: url('/arquivos/features-image-product-latas.png') top left no-repeat;
-			background-size:contain;
+			background-size: contain;
 		}
 		&.garrafas {
 			background: url('/arquivos/features-image-product-garrafas.png') top left no-repeat;
-			background-size:contain;
+			background-size: contain;
 		}
 		&.longnecks {
 			background: url('/arquivos/features-image-product-long-necks.png') top left no-repeat;
-			background-size:contain;
+			background-size: contain;
 		}
 	}
-	.slick-dots{
-		bottom: 0px;
-		li{
-			button{
-				width: 10px;
-				height: 10px;
+	.slick-dots {
+		bottom: 0;
+		li {
+			button {
 				background: #636363;
+				height: 10px;
+				width: 10px;
 			}
-			&.slick-active{
-				button{
-					width: 10px;
-					height: 10px;
+			&.slick-active {
+				button {
 					background: $green;							
-					&::after{
+					height: 10px;
+					width: 10px;
+					&::after {
 						display: none;
 					}
 				}
 			}
 		}
 	}
-	.box-capacidade{
-		position: relative;
-		padding-top:30px;
-		width: 260px;
+	.box-capacidade {
 		height: 220px;
-		margin:0 auto;
-		.line{
-			width:50%;
-			float:left;
-			text-align: center;
-			height:110px;
+		margin: 0 auto;
+		padding-top: 30px;
+		position: relative;
+		width: 260px;
+		.line {
+			float: left;
+			height: 110px;
 			padding-top: 10px;
-			p{
+			text-align: center;
+			width: 50%;
+			p {
 				color: #d5d5d5;
-				font-family: $fontSB;
 				display: block;
-				margin:0;
-				padding:0;
-				strong{
+				font-family: $fontSB;
+				margin: 0;
+				padding: 0;
+				strong {
 					display: block;
-					font-size:50px;
+					font-size: 50px;
 					height: 50px;
 				}
 			}
 			&.line03,
-			&.line04{
-				border-top:1px solid #d5d5d5;
+			&.line04 {
+				border-top: 1px solid #d5d5d5;
 			}
 			&.line02,
-			&.line04{
-				border-left:1px solid #d5d5d5;
+			&.line04 {
+				border-left: 1px solid #d5d5d5;
 			}
 		}
-		span.ou{
+		span.ou {
 			background: url('/arquivos/bg-texture-black.jpg');
 			color: #d5d5d5;
 			font-family: $fontSB;
@@ -1620,10 +1626,10 @@ $fontSB : 'nowayregular', sans-serif;
 			left: 50%;
 			margin-left: -15px;
 			margin-top: 15px;
+			padding-top: 5px;
 			position: absolute;
 			text-align: center;
 			top: 50%;
-			padding-top:5px;
 			width: 30px;
 		}
 	}
@@ -1631,14 +1637,14 @@ $fontSB : 'nowayregular', sans-serif;
 .sb-dimensoes {
 	font-family: $fontSB;
 	padding: 50px 0 0;
-	@include breakpoint(small, 'max'){
-		padding: 0px 0 0;
-		.row{
+	@include breakpoint(small, 'max') {
+		padding: 0;
+		.row {
 			padding: 20px 0;
 		}
-		.col-2{
-			width:50%;
+		.col-2 {
 			float: left;
+			width: 50%;
 		}
 	}
 	.row {
@@ -1647,7 +1653,7 @@ $fontSB : 'nowayregular', sans-serif;
 	.bg1 {
 		background: url('/arquivos/bg-dimensoes-01.png') left center no-repeat;
 		height: 300px;
-		@include breakpoint(medium, 'max'){
+		@include breakpoint(medium, 'max') {
 			background: none;
 			height: auto;
 		}
@@ -1655,7 +1661,7 @@ $fontSB : 'nowayregular', sans-serif;
 	.bg2 {
 		background: url('/arquivos/bg-dimensoes-02.png') right center no-repeat;
 		height: 300px;
-		@include breakpoint(medium, 'max'){
+		@include breakpoint(medium, 'max') {
 			background: none;
 			height: auto;
 		}
@@ -1663,13 +1669,13 @@ $fontSB : 'nowayregular', sans-serif;
 	h3 {
 		color: #fff;
 		font-size: 36px;
-		@include breakpoint(medium, 'max'){
+		@include breakpoint(medium, 'max') {
 			font-size: 28px;
 			text-align: center;
 		}
-		@include breakpoint(extra-small, 'max'){
-			margin:0;
-			padding:0;
+		@include breakpoint(extra-small, 'max') {
+			margin: 0;
+			padding: 0;
 		}
 
 	}
@@ -1683,7 +1689,7 @@ $fontSB : 'nowayregular', sans-serif;
 			font-size: 70px;
 			font-weight: 300;
 			margin-right: 10px;
-			@include breakpoint(medium, 'max'){
+			@include breakpoint(medium, 'max') {
 				font-size: 40px;
 			}
 		}
@@ -1703,9 +1709,9 @@ $fontSB : 'nowayregular', sans-serif;
 	background: url('/arquivos/bg-sb-vitrine.png') left -20px repeat-x;
 	font-family: $fontSB;
 	padding: 50px 0;
-	@include breakpoint(medium, 'max'){
-		padding:20px 0;
+	@include breakpoint(medium, 'max') {
 		background: none;
+		padding: 20px 0;
 	}
 	// background-size:cover;
 	h2 {
@@ -1715,9 +1721,9 @@ $fontSB : 'nowayregular', sans-serif;
 		padding-bottom: 28px;
 		text-align: center;
 		text-transform: uppercase;
-		@include breakpoint(extra-small, 'max'){
+		@include breakpoint(extra-small, 'max') {
 			margin-top: 0;
-			padding:0;
+			padding: 0;
 		}
 	}
 	.col-4 {
@@ -1755,9 +1761,10 @@ $fontSB : 'nowayregular', sans-serif;
 		border: 2px solid $green;
 		border-radius: 35px;
 		color: $green;
-		font-size: 16px;
 		display: block;
 		font-family: $fontSB;
+		font-size: 16px;
+		height: 60px;
 		margin: 0 auto;
 		padding: 16px 0;
 		text-align: center;
@@ -1767,38 +1774,49 @@ $fontSB : 'nowayregular', sans-serif;
 			color: #FFF;
 			transition: ease .3s all;
 		}
+		&.sb-indisponivel {
+			border: 2px solid #b5b5b5;
+			color: #b5b5b5;
+			font-size: 12px;
+			padding: 10px 0;
+			&:hover {
+				background: #b5b5b5;
+				color: #333 !important;
+				transition: ease .3s all;
+			}
+		}
 	}
 	.link-sm {
 		color: #FFF;
     	display: block;
-		margin: 20px auto;
 		font-size: 16px;
+		margin: 20px auto;
 	}
 	.sb-vitrine_message {
 		color: #FFF;
-		text-align: center;
 		margin: 50px 0 20px; 
+		text-align: center;
 		span,
 		a {
 			color: $green;
 		}
 	}
 
-	.slick-dots{
+	.slick-dots {
 		bottom: -20px;
 
-		li{
-			button{
-				width: 10px;
-				height: 10px;
+		li {
+			button {
 				background: #636363;
+				height: 10px;
+				width: 10px;
 			}
-			&.slick-active{
-				button{
-					width: 10px;
-					height: 10px;
+			&.slick-active {
+				button {
 					background: $green;							
-					&::after{
+					height: 10px;
+					width: 10px;
+					&::after {
 						display: none;
 					}
 				}
@@ -1806,27 +1824,27 @@ $fontSB : 'nowayregular', sans-serif;
 		}
 	}
 }
-.sb-download-mobile-view{
-	display:none;
-	@include breakpoint(small, 'max'){
-		display:block;
+.sb-download-mobile-view {
+	display: none;
+	@include breakpoint(small, 'max') {
+		display: block;
 	}
 	.sb-app-title {
 		display: table;
 		margin: 0 auto;
-		padding:0 20px;
+		padding: 0 20px;
 
 		.icon-consul-app-g {
 			background: url('/arquivos/icon-consul-app-g.png')center center no-repeat;
-			background-size:contain;
+			background-size: contain;
 			float: left;
 			height: 62px;
 			width: 60px;
 		}
 		h3 {
-			font-family: $fontSB;
 			color: #FFF;
 			float: left;
+			font-family: $fontSB;
 			font-size: 30px;
 			font-weight: 400;
 			height: 105px;
@@ -1841,19 +1859,19 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	.sb-app-download {
 		display: block;
-		margin:0 auto;
+		margin: 0 auto;
 		padding: 20px 0 50px;
 		width: 204px;
 		.btn-download-app-store {
-			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
-			float: left;
-			height: 61px;
 			// margin-right: 30px;
-			width: 204px;
-			margin-right: 0;
+			background: url('/arquivos/btn-download-app-store.png')left center no-repeat;
 			background-color: #000;
 			border-radius: 8px;
+			float: left;
+			height: 61px;
 			margin-bottom: 10px;
+			margin-right: 0;
+			width: 204px;
 		}
 		.btn-download-google-play {
 			background: url('/arquivos/btn-download-google-play.png')left center no-repeat;
@@ -1882,7 +1900,7 @@ body.page-smartbeer {
 	}
 
 	nav.top-navigation,
-	header[data-module="header"] {
+	header[data-module='header'] {
 		background: #252525;		
 		
 				.account {
@@ -1915,8 +1933,8 @@ body.page-smartbeer {
 
 			.form-search .text-search {
 				background: #454545 !important;
-				color: #7a7a7a;
 				border: 1px solid #010101;
+				color: #7a7a7a;
 			}
 
 		}
@@ -1976,7 +1994,7 @@ body.page-smartbeer {
 	   .menu-department .customItemMenu,
 	   .menu-department,
 	   div.account .welcome-message .welcome a#login,
-	   div.account a[href="/minhaconta/pedidos"] {
+	   div.account a[href='/minhaconta/pedidos'] {
 		   background-color: #252525 !important;
 	   }
 
@@ -1992,65 +2010,56 @@ body.page-smartbeer {
 		   line-height: 15px !important;
 	   }
 
-	   .menu-mobile div.account a[href="/minhaconta/pedidos"] .account__icon.account__icon--truck svg {
-		       fill: #fff;
+	   .menu-mobile div.account a[href='/minhaconta/pedidos'] .account__icon.account__icon--truck svg {
+			fill: #fff;
 	   }
 	}
 
 	.header .cont-search {
 		@include breakpoint('small', 'max') {
-			   border: 7px solid #252525;
-			   background: #252525;
-			   border-bottom: 1px solid #9ccb3d;
+			   	background: #252525;
+				border: 7px solid #252525;
+			   	border-bottom: 1px solid #9ccb3d;
 		}
 	}
 
 }
 
-@include breakpoint(large, 'min'){
+@include breakpoint(large, 'min') {
 // Teste start
 	.section-1,
 	.sb-app,
 	.sb-features {
-		width: 100%;
-		min-height: 100%;
-		// min-height: 100vh;
-		height: auto;
-		/* vertical centering child elements */
+		align-content: center;
+		align-items: center;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		height: auto;
 		justify-content: center;
-		align-content: center;
-		align-items: center;
+		min-height: 100%;
 		position: relative;
+		width: 100%;
 		/* Content */
 		.wrapper,
 		.container {
-			width: 100%;
+			color: #FFF;
 			height: 75vh;
-		/*     height: 500px;
-			background: coral; */
-			// border: 1px solid red;
-			// overflow-x: hidden;
-		/*     overflow-y: visible; */
-			// overflow-y: hidden;
 			position: relative;
-			color: white;
+			width: 100%;
 		}
 		.text {
-			position: absolute;
-			z-index: 1;
-			top: 40%;
-			left: 0;
-			width: 100%;
-			// border: 1px red solid;
 			color: #c5986a;
 			font-family: 'Signika', sans-serif;
 			font-size: 8vw;
 			font-weight: 700;
+			left: 0;
+			position: absolute;
 			text-align: center;
+			top: 40%;
 			visibility: hidden;
+			width: 100%;
+			z-index: 1;
 		}
 	}
 
