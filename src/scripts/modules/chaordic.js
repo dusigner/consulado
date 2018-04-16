@@ -311,7 +311,7 @@ Nitro.module('chaordic', function() {
 	
 	
 							self.finalRender(product, $box);
-						 } else {
+						} else {
 							self.renderUnavailable(product, $box);
 						}
 					}
