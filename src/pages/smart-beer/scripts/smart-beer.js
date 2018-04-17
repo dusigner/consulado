@@ -41,12 +41,21 @@ var tagueamento = function() {
         });           
     });
 
-    $('.sb-intro .sb-intro_prateleira-mobile ul').on('afterChange', function () {
+    $('.sb-intro .sb-intro_prateleira-mobile ul').on('swipe', function () {
         dataLayer.push({
             event:'generic-event-trigger',
             category : 'TED',
             action: 'Click',
-            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Banner Inicial'
+            label: 'Touch Slider - ' + $(this).slick('slickCurrentSlide') + ' – Banner Inicial'
+        });
+    });
+    
+    $('body').on('click','.sb-intro .sb-intro_prateleira-mobile .slick-dots li button' , function () {
+        dataLayer.push({
+            event: 'generic-event-trigger',
+            category: 'TED',
+            action: 'Click',
+            label: 'bullet Click - ' + $(this).text() + ' – Banner Inicial'
         });
     });
 
@@ -59,33 +68,58 @@ var tagueamento = function() {
         });
     });
 
-    $('.mockup-mobile-view .slider').on('afterChange', function () {
+    $('.mockup-mobile-view .slider').on('swipe', function () {
         dataLayer.push({
             event:'generic-event-trigger',
             category : 'TED',
             action: 'Click',
-            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Aplicativo SmartBeer'
+            label: 'Touch Slider - ' + $(this).slick('slickCurrentSlide') + ' – Aplicativo SmartBeer'
+        });
+    });
+    $('body').on('click','.mockup-mobile-view .slider .slick-dots li button', function () {
+
+        dataLayer.push({
+            event: 'generic-event-trigger',
+            category: 'TED',
+            action: 'Click',
+            label: 'Bullet Click - ' + $(this).text() + ' – Aplicativo SmartBeer'
         });
     });
 
-    $('.sb-dimensoes-mobile-view ul').on('afterChange', function () {
+    $('.sb-dimensoes-mobile-view ul').on('swipe', function () {
         dataLayer.push({
             event:'generic-event-trigger',
             category : 'TED',
             action: 'Click',
-            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Armazenamento de Alta Capacidade'
+            label: 'Touch Slider - ' + $(this).slick('slickCurrentSlide') + ' – Armazenamento de Alta Capacidade'
         });
     });
 
-    $('.sb-vitrine .prateleira').on('afterChange', function () {
+    $('body').on('click', '.sb-dimensoes-mobile-view ul.slick-dots li button', function () {
+        dataLayer.push({
+            event: 'generic-event-trigger',
+            category: 'TED',
+            action: 'Click',
+            label: 'Bullet Click - ' + $(this).text() + ' – Armazenamento de Alta Capacidade'
+        });
+    });
+
+    $('.sb-vitrine .prateleira').on('swipe', function () {
         dataLayer.push({
             event:'generic-event-trigger',
             category : 'TED',
             action: 'Click',
-            label: 'Bullet Button - ' + $(this).slick('slickCurrentSlide') + ' – Cervejeira Smartbeer'
+            label: 'Touch Slider - ' + $(this).slick('slickCurrentSlide') + ' – Cervejeira Smartbeer'
         });
     });
-
+    $('body').on('click', '.sb-vitrine .prateleira .slick-dots li button', function () {
+        dataLayer.push({
+            event: 'generic-event-trigger',
+            category: 'TED',
+            action: 'Click',
+            label: 'Bullet Click - ' + $(this).text() + ' – Cervejeira Smartbeer'
+        });
+    });
 
     $('.link-sm').on('click', function () {
         dataLayer.push({
