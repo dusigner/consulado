@@ -37,7 +37,7 @@ var tagueamento = function() {
             event:'generic-event-trigger',
             category : 'TED',
             action: 'Click',
-            label: 'Comprar – ' + $(this).prev('h3').text() + ' - Cervejeira Smartbeer'
+            label: 'Comprar – ' + $(this).parent().find('h3').text() + ' - Cervejeira Smartbeer'
         });           
     });
 
