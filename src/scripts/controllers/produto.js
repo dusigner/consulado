@@ -220,15 +220,9 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 			Index.getPecasRelacionadas();
 		},
 		getPecasRelacionadas: function() {
-<<<<<<< HEAD
 			var $btnPecas = $('.btn-pecas-produto'),
 				$pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
 				url = '//loja.consul.com.br/busca?',
-=======
-			var $btnPecas    = $('.btn-pecas-produto'),
-			    $pecasModels = $('.value-field.Pecas-compativeis').length > 0 ? $('.value-field.Pecas-compativeis').html() : false,
-				url        = 'http://loja.consul.com.br/busca?',
->>>>>>> PLAT-5947_upsell
 				testNumber = new RegExp(/^\d/);
 				// console.log('sim');
 			if ($pecasModels) {
