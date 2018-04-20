@@ -252,21 +252,35 @@ var sbSelectSku = function(){
     });
 };
 
-$(document).ready(function(){
+var maiorModal = function () {
+    $('#modal-maior').vtexModal();
+    $('.esc-yes').on('click', function(){
+        $('#vtex-modal-maior .close').trigger('click');
+    });
+    $('.esc-no').on('click', function(){
+        window.location.replace('//loja.consul.com.br');
+    });
+};
 
-    tagueamento();
+
+$(document).ready(function(){
+    maiorModal();
+
+    if (window.dataLayer !== undefined) tagueamento();
+    
+    // window.dataLayer !== undefined ? tagueamento() : '';
     sbModal();
     sbSlick();
     sbSelectSku();
 });
 
-$(document).on('ajaxStop', function() {
-    console.log('close', $('#vtex-modal-video .close'));
+// $(document).on('ajaxStop', function() {
+//     console.log('close', $('#vtex-modal-video .close'));
 
-    $('#vtex-modal-video .close').unbind('click').bind('click', function() {
-        console.log('Clicoooou');
-    });
-});
+//     $('#vtex-modal-video .close').unbind('click').bind('click', function() {
+//         console.log('Clicoooou');
+//     });
+// });
 
 // $('.close').on('click', function () {
 //     $('#vtex-modal-video iframe').removeAttr('src');
