@@ -19,9 +19,16 @@ require('modules/product/quiz-install');
 require('modules/product/upsell');
 // require('modules/product/special-content');
 
+<<<<<<< HEAD
 Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'upsell', 'quiz-install' /*, 'special-content'*/ ], function() {
 	var self  = this,
 	    $body = $('body');
+=======
+
+Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
+	var self = this,
+		$body = $('body');		
+>>>>>>> PLAT-6302_banner
 
 	// Teste AB
 	var urlTesteAb = window.location.search;

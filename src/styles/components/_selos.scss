@@ -26,9 +26,10 @@ body {
 	.flag {
 		background-size: contain !important;
 		bottom: 0;
-		height: 40%;
+		height: 30%;
 		right: 0;
-		width: 40%;
+		transition: opacity .3s ease;
+		width: 30%;
 		z-index: 3;
 
 		@include breakpoint(extra-small, 'max') {

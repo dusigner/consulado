@@ -75,7 +75,10 @@
 			@include breakpoint(small, 'max') { max-width: 100%; }
 		}
 
-		&.slick-slide { position: relative; }
+		&.slick-slide { 
+			overflow: hidden;
+			position: relative; 
+		 }
 
 		&:first-child { z-index: 1; }
 	}
@@ -101,6 +104,25 @@
 	// quando a busca não trouxer resultado.
 	.busca-vazia & {
 		@include hide-conditional();
+	}
+
+	.double-click {
+		a:first-child {			
+			bottom: 0;			
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 50%;
+			z-index: 1;
+		}
+		a:last-child {			
+			bottom: 0;			
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 50%;
+			z-index: 1;
+		}
 	}
 }
 

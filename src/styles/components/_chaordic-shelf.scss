@@ -121,6 +121,10 @@ div[data-chaordic] {
 					}
 
 					&:before { opacity: 1; }
+
+					.flag {
+						opacity: 0;
+					}
 				}
 
 				.shelf-item__name { font-weight: bold }
