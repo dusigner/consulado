@@ -60,6 +60,7 @@ $fontSB : 'nowayregular', sans-serif;
 	}
 	p {
 		color:#FFF;
+		margin:20px 0;
 	}
 	buttom.esc-yes {
 		background: $green;
@@ -67,7 +68,7 @@ $fontSB : 'nowayregular', sans-serif;
 		color:#FFF;
 		cursor: pointer;
 		font-size: 28px;
-		margin:0 10px 20px 10px;
+		margin:10px 10px 20px 10px;
 		padding: 8px 14px;
 	}
 	buttom.esc-no {
@@ -75,7 +76,7 @@ $fontSB : 'nowayregular', sans-serif;
 		color:#FFF;
 		cursor: pointer;
 		font-size: 28px;
-		margin:0 10px 20px 10px;
+		margin:10px 10px 20px 10px;
 		padding: 8px 14px;
 	}
 	.close{
