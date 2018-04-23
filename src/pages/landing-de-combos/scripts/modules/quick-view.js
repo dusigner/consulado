@@ -695,7 +695,6 @@ Nitro.module('quick-view', function () {
 				app.hideSelectVoltagenInactive();
 				app.actionBackSelectVoltagem();
 				app.actionContinueSelectVoltagem();
-				logicView.modalScrollTop();
 			});
 		};
 
@@ -710,10 +709,10 @@ Nitro.module('quick-view', function () {
 		app.actionContinueSelectVoltagem = function () {
 			$('.select-voltage__button--continue').on('click', function () {
 				var itemIds = [],
-					quantityItems = $('.table-line__image-product img').length,
-					quantitySelected = $('.table-line .sku-quick-view-options__checked').length;
+					quantityItems = $('.table-line:not(.is-removed) .table-line__image-product img').length,
+					quantitySelected = $('.table-line:not(.is-removed) .sku-quick-view-options__checked').length;
 
-				$('.table-line').map(function () {
+				$('.table-line:not(.is-removed)').map(function () {
 					var itemid = $(this).find('.sku-quick-view-options__checked').attr('data-itemid'),
 						seller = $(this).find('.sku-quick-view-options__checked').attr('data-seller');
 
@@ -725,7 +724,7 @@ Nitro.module('quick-view', function () {
 					}
 				});
 
-				if(quantityItems === quantitySelected) {
+				if (quantityItems === quantitySelected) {
 					$.cookie('hideGae', true);
 					$('.js-sku-selection-error').addClass('hide');
 					$('.select-voltage__button--continue').addClass('loading');
@@ -781,8 +780,8 @@ Nitro.module('quick-view', function () {
 		app.hideSelectVoltagenInactive = function () {
 			$('.table-line__title-product').closest('.table-line').show();
 			$('.table-line__title-product').map(function () {
-				if ($(this).is(':empty')) {
-					$(this).closest('.table-line').hide();
+				if ($(this).text() === '') {
+					$(this).closest('.table-line').hide().addClass('is-removed');
 				}
 			});
 		};
