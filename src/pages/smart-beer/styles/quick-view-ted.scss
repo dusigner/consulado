@@ -37,55 +37,55 @@ body.ted-quick-view {
 		* {
 			font-family: $fontSB;
 		}
-	.prod-galeria{
-		width:100%;
+	.prod-galeria {
+		width: 100%;
 		
 		.galleryThumbs {
 			display: none;
 		}
-		.gallery{
-			float:none;
+		.gallery {
+			float: none;
 		}
 		
 	}
-	.row.prod-sku-selector{
-		margin:0;
-		padding:0;
+	.row.prod-sku-selector {
+		margin: 0;
+		padding: 0;
 	}
-	.slick-arrow{
+	.slick-arrow {
 		display: none!important;
 	}
-	.container{
+	.container {
 		float: left;
 		margin: 0;
 		padding: 0;
 	}
-	iframe{
+	iframe {
 		display: none;
 	}
-	.prod-image{
+	.prod-image {
 		float: left;
 		height: 360px;
-		margin-top:0;
+		margin-top: 0;
 		max-width: 400px;
 		overflow: hidden;
 		padding: 0 20px;
-		@include breakpoint(small, 'max'){
-			max-width: 250px;
+		@include breakpoint(small, 'max') {
     		height: 200px;
+			max-width: 250px;
 		}
-		@include breakpoint(extra-small, 'max'){
+		@include breakpoint(extra-small, 'max') {
 			float: none;
 			height: 170px!important;
 			margin: 0 auto;
 		}
 	}
-	.prod-info{
+	.prod-info {
 		box-sizing: border-box;
 		float: left;
-		max-width: 310px;
     	height: 360px;
-		@include breakpoint(extra-small, 'max'){
+		max-width: 310px;
+		@include breakpoint(extra-small, 'max') {
 			float: none;
 			height: auto;
 			margin: 0 auto;
@@ -98,15 +98,15 @@ body.ted-quick-view {
 
 	.prod-title {
 		margin: 20px 0;
-		width:100%!important;
-		@include breakpoint(extra-small, 'max'){
+		width: 100%!important;
+		@include breakpoint(extra-small, 'max') {
 			text-align: center;
 		}
 		.lead {
 			color: #fff;
 			font-size: 22px !important;
-			@include breakpoint(small, 'max'){
-				.productName{
+			@include breakpoint(small, 'max') {
+				.productName {
 					color: #fff;
 					font-size: 22px !important;
 					line-height: 30px;
@@ -121,7 +121,7 @@ body.ted-quick-view {
 	}
 
 	.prod-preco {
-		@include breakpoint(extra-small, 'max'){
+		@include breakpoint(extra-small, 'max') {
 			margin-left: 10px;
 		}
 		.valor-de,
@@ -144,7 +144,7 @@ body.ted-quick-view {
 
 		.specification {
 			color: #99ca3b;
-			&::before{
+			&::before {
 				position: relative!important;
 			}
 		}
@@ -177,7 +177,7 @@ body.ted-quick-view {
 				background-color: #99ca3b;				
 				color: #fff!important;
 			}
-			@include breakpoint(extra-small, 'max'){
+			@include breakpoint(extra-small, 'max') {
 				float: none;
 				margin: 0 auto;
 				width: 100%;
@@ -259,8 +259,8 @@ body.ted-quick-view {
 	h3.notifymetitle.notifyme-title {
 		color: #99ca3b;
 		font-size: 17px;
-		padding: 0;
     	margin: 0;
+		padding: 0;
 	}
 	
 	.sku-notifyme-form {
@@ -276,11 +276,11 @@ body.ted-quick-view {
 
 		}
 
-		input[type="text"],
-		input[type="tel"] {
+		input[type='text'],
+		input[type='tel'] {
 			background: transparent;
-			border-radius: 30px;
 			border: 2px solid #fff;
+			border-radius: 30px;
 			color: #fff;
 		}
 
@@ -306,18 +306,12 @@ body.ted-quick-view {
 	#detalhes {
 		display: none !important;
 	}
-	@include breakpoint(medium, 'max'){
+	@include breakpoint(medium, 'max') {
 		#BuyButton .buy-button,
-		.prod-details-nav #BuyButtonDetails .buy-button{
-		/* bottom: 0; */
-		/* display: inline-block; */
-		/* height: 54px; */
-		/* left: 0; */
-		/* text-transform: uppercase; */
-		/* z-index: 9999; */
+		.prod-details-nav #BuyButtonDetails .buy-button {
 		background-color: transparent;
-		border-radius: 50px; 
 		border: 2px solid #99ca3b;
+		border-radius: 50px; 
 		color: #99ca3b !important;
 		font-size: 14px!important;
 		margin: 20px 0;
