@@ -4,6 +4,7 @@
 
 require('vendors/jquery.cookie');
 require('vendors/jquery.debounce');
+require('vendors/dust-helpers');
 
 require('modules/helpers');
 require('modules/prateleira');
@@ -12,6 +13,7 @@ require('modules/prateleira');
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
 require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
@@ -45,7 +47,7 @@ Nitro.module('chaordic', function() {
 			//QUERY PARAMETROS OBRIGATÓRIOS P/ CHAMADA
 			APIPARAMS: {
 				apiKey: window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
-				name: null,
+				//name: null,
 				source: (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ? 'mobile' : 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
 				productFormat: 'compact'
@@ -59,8 +61,9 @@ Nitro.module('chaordic', function() {
 	 * Função bootstrap app | Inicia definindo a página e eventos de scroll para carregar prateleiras e clicks mobile
 	 * @param  {String} name Nome da página para request chaordic (home, product, category, subcategory, cart, etc).
 	 */
-	this.init = function(name) {
-		API.APIPARAMS.name = name;
+	this.init = function(name, productId) {
+		name ? API.APIPARAMS.name = name : '';
+		productId ? API.APIPARAMS.productId = productId : '';
 
 		if( $('[data-chaordic]').length > 0 ) {
 
@@ -132,6 +135,7 @@ Nitro.module('chaordic', function() {
 							shelf = res[position];
 
 							$.each(shelf, function(i, v) {
+								console.log(v.feature);
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
 
@@ -228,6 +232,7 @@ Nitro.module('chaordic', function() {
 					data: API.APIPARAMS
 				})
 				.then(function(res) {
+					console.log(res);
 					chaordicData = res;
 					dfd.resolve(res);
 				});
