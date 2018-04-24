@@ -9,18 +9,24 @@
     // CACHE NAMES
 	workbox.core.setCacheNameDetails({
         prefix: 'consul',
-        suffix: 'v1',
-        precache: 'install-time',
+        suffix: 'PWACNS',
+        precache: 'precache',
         runtime: 'run-time',
         googleAnalytics: 'ga',
       });
     
     // PRECACHE
-    workbox.precaching.precacheAndRoute(
-        [
-            { url: 'arquivos/consul2-style.css', revision: 'abc' }
-        ]
+    workbox.precaching.precacheAndRoute([
+            { url: '../arquivos/consul2-style.css', revision: '12345'},
+            { url: '../arquivos/consul2-app.min.js', revision: '12345'}
+        ],
+        {
+            ignoreUrlParametersMatching: [/.*/]
+        }
     );
+
+    workbox.skipWaiting();
+    workbox.clientsClaim();
 
 	if (workbox) {
 		console.log(`Yay! Workbox is loadeeed 🎉`);
