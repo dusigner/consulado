@@ -2,7 +2,6 @@
 'use strict';
 
 var enquire = require('vendors/enquire');
-require('vendors/slick');
 
 require('modules/list-more');
 require('modules/listagem/filters');

@@ -1,7 +1,6 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-require('vendors/slick');
 require('vendors/vtex-modal');
 require('modules/product/video');
 require('modules/product/sku-fetch');
@@ -22,7 +21,7 @@ require('modules/product/upsell');
 
 Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
 	var self = this,
-		$body = $('body');		
+		$body = $('body');
 
 	// Teste AB
 	var urlTesteAb = window.location.search;

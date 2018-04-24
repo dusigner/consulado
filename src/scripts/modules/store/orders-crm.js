@@ -2,8 +2,6 @@
 
 'use strict';
 
-require('vendors/jquery.cookie');
-
 var CRM = {
 
 	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + $.cookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',

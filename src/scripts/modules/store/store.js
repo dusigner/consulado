@@ -3,8 +3,6 @@
 var Uri = require('vendors/Uri');
 /*var CRM = require('modules/store/crm');*/
 
-require('vendors/jquery.cookie');
-
 var redirect = require('modules/store/redirect');
 
 define('store', function() {

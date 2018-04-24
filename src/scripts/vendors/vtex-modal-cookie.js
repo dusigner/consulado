@@ -5,7 +5,6 @@
  */
 
 require('vendors/vtex-modal');
-require('vendors/jquery.cookie');
 
 (function(factory) {
 	'use strict';

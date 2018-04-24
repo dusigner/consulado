@@ -5,6 +5,11 @@
 
 require('modules/helpers');
 
+// Vendors
+require('vendors/slick');
+require('vendors/jquery.cookie');
+require('vendors/jquery.inputmask');
+
 if (VERSION) {
 
 	console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
@@ -32,12 +37,9 @@ require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
-require('modules/linkDoubleClick');
 require('modules/customLogin');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect', 'customLogin'], function() {
-	$('.helperComplement').remove();
-
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin'], function() {
 	var path = window.location.pathname;
 
 	if (path === '/atendimento') {

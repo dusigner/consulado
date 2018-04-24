@@ -1,7 +1,5 @@
 'use strict';
 
-require('modules/helpers');
-
 Nitro.module('smartFocus', function() {
 
 	var cookieIPI = window.getCookie('IPI') || '',

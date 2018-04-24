@@ -5,7 +5,6 @@ require('vendors/vtex-modal-cookie');
 
 Nitro.module('modal.overlayLead', function() {
 
-
 	var self = this,
 		$inputName = $('#modal-overlay-leads input[type="text"]'),
 		$inputEmail = $('#modal-overlay-leads input[type="email"]'),

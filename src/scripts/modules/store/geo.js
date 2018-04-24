@@ -1,7 +1,5 @@
 'use strict';
 
-require('vendors/jquery.cookie');
-
 Nitro.module('geo', function() {
 
 	var self = this,
