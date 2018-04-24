@@ -44,9 +44,7 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 		$(location).attr('href', '//consul.custhelp.com/');
 	}
 
-	console.log('##########################');
-
-	if ('serviceWorker' in navigator) {
+	if ('serviceWorker' in navigator && window.location.origin.indexOf('3000') < 0) {
 		window.addEventListener('load', function() {
 			navigator.serviceWorker.register('/files/service-worker.js', { scope: '../' }).then(function(registration) {
 				// Registration was successful
