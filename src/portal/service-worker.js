@@ -26,7 +26,6 @@
     );
 
     workbox.skipWaiting();
-    workbox.clientsClaim();
 
 	if (workbox) {
 		console.log(`Yay! Workbox is loadeeed 🎉`);
