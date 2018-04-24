@@ -1,11 +1,11 @@
-<div class="container clearfix js-content-lazy shelf--personalized" data-position="{position}" data-index="{$idx}">
-	<h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2>
+<div class="container clearfix js-content-lazy shelf--personalized shelf--history-personalized" data-position="{position}" data-index="{$idx}">
+	<!-- <h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2> -->
 	<div>
-		<div class="js-content-personalized--ref shelf--personalized__holder shelf--personalized-ref">
+		<div class="js-content-personalized--ref shelf--personalized__holder shelf--history-personalized-ref">
 			<h2 class="pre-title shelf-pre-title">{title|s}</h2>
-			<ul class="shelf shelf--btp">
+			<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider" data-slidestoshow="3" data-slick='{"vertical": true}'>
 				{#displays[0].references}
-					{>"shelf-content-placeholder-product"/}
+                    {>"shelf-content-placeholder-product-history-personalized"/}
 				{/displays[0].references}
 			</ul>
 		</div>

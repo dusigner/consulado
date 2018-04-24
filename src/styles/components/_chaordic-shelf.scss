@@ -244,4 +244,80 @@ div[data-chaordic] {
 			h2 { color: $self-primary }
 		}
 	}
+
+	&--history-personalized {
+		margin-bottom: 35px;
+	}
+
+	&--history-personalized-ref {
+		height: 595px;
+		width: 33.3%;
+		z-index: 50;
+		ul {
+			&.slick-slider {
+				height: 100%;
+			}
+			.slick-track {
+				display: block;
+			}
+			li {
+				display: block!important; 
+				margin: 10px 0;
+				width: 100%!important;
+				.shelf-item__image {
+					float: left;
+					max-width: 150px;
+					width: 100%;
+					img {
+						min-height: unset;
+					}
+				}
+				.shelf-item__info {
+					height: 68px;
+					overflow: hidden;
+				}
+				.shelf-item__infos {
+					float: right;
+					max-width: 162px;
+					width: 100%;
+				}
+				.shelf-item__name {
+					font-size: 17px;
+					text-align: left;
+				}
+				.shelf-item__price {
+					font-size: .875rem;
+					margin: 0;
+					span.off {
+						display: none!important;
+					}
+				}
+				.shelf-item__price--installment,
+				.shelf-item__price--cash {
+					display: none;
+				}
+			}
+		}
+	}
+
+	&-item__button {
+		background: #f47921;
+		border: 2px solid #f47921;
+		border-radius: 50px;
+		color: #fff;
+		cursor: pointer;
+		display: block;
+		font-size: 14px;
+		height: 30px;
+		line-height: 24px;
+		margin-top: 5px;
+		position: relative;
+		text-align: center;
+		transition: all 250ms ease-out;
+		width: 130px;
+		&:hover {
+			background: transparent;
+			color: #f47921;
+		}
+	}
 }

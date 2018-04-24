@@ -14,6 +14,7 @@ require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-history-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
 require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
