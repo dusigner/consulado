@@ -343,6 +343,10 @@ gulp.task('watch', ['scripts', 'styles', 'images', 'pages'], function () {
 
 gulp.task('default', ['clean'], function() {
 	gulp.start( 'server' );
+
+	gulp.src('src/portal/service-worker.js')
+		.pipe($.util.env.production ? $.preprocess({context: { swVersion: new Date().getTime() }}) : $.util.noop())
+		.pipe(gulp.dest(paths.destCheckout));
 });
 
 /*gulp.task('default', ['clean'], function() {
@@ -359,4 +363,8 @@ gulp.task('deploy', ['clean', 'gitTag'], function() {
 
 	//gulp.start( 'fonts', 'images', 'styles', 'scripts' );
 	gulp.start( 'images', 'styles', 'scripts' );
+		
+	gulp.src('src/portal/service-worker.js')
+		.pipe($.util.env.production ? $.preprocess({context: { swVersion: new Date().getTime() }}) : $.util.noop())
+		.pipe(gulp.dest(paths.destCheckout));
 });

@@ -17,8 +17,8 @@
     
     // PRECACHE
     workbox.precaching.precacheAndRoute([
-            { url: '../arquivos/consul2-style.css', revision: '12345'},
-            { url: '../arquivos/consul2-app.min.js', revision: '12345'}
+            { url: '../arquivos/consul2-style.css', revision: '/* @echo swVersion */'},
+            { url: '../arquivos/consul2-app.min.js', revision: '/* @echo swVersion */'}
         ],
         {
             ignoreUrlParametersMatching: [/.*/]
