@@ -12,9 +12,13 @@ require('modules/prateleira');
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
+require('../../templates/chaordic/shelf-content-placeholder-ultimateBuy.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
 require('../../templates/chaordic/shelf-content-placeholder-product-history-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
 require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
@@ -136,7 +140,12 @@ Nitro.module('chaordic', function() {
 							shelf = res[position];
 
 							$.each(shelf, function(i, v) {
-								console.log(v.feature);
+								if(v.feature === 'FrequentlyBoughtTogether') {
+									v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
+									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
+									v.numberInstallments = 10;
+									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
+								}
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
 
@@ -305,7 +314,7 @@ Nitro.module('chaordic', function() {
 						if(item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
-	
+							product.itemId = item[0].itemId;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
 							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
@@ -452,6 +461,9 @@ Nitro.module('chaordic', function() {
 		}
 		$elem.find('.js-item-sku').text(renderData.productReference);
 		$elem.attr('data-percent', renderData.priceInfo.percentOff);
+
+		$elem.attr('data-sku', renderData.itemId);
+
 		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
 		$elem.addClass('box-produto');
 	};
@@ -473,6 +485,8 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
+
+			self.buyQuizInstall();
 		});
 
 		return dfd.promise();
@@ -523,6 +537,30 @@ Nitro.module('chaordic', function() {
 					slidesToScroll: 2
 				}
 			}]
+		});
+	};
+
+	/**
+	 * Método para montar link de carrinho com produtos
+	 */
+	this.buyQuizInstall = function() {
+		$('.js-shelf-item__button').on('click', function(e) {
+			e.preventDefault();
+
+			var buyButton      = $('#BuyButton a.buy-button'),
+				buyButtonLink  = buyButton.attr('href'),
+				modalBuyButton = $('#modal-sku .buy-button'),
+				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku');
+
+			if ($('.skuselector-specification-label').hasClass('checked')) {
+				$(location).attr('href', buyButtonLink + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+			} else {
+				buyButton.trigger('click');
+
+				$(window).on('skuSelected.vtex', function() {
+					modalBuyButton.attr('href', modalBuyButton.attr('href') + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+				});
+			}
 		});
 	};
 });
