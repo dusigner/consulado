@@ -6,10 +6,12 @@
 require('modules/helpers');
 
 // Vendors
-require('vendors/slick');
 require('vendors/jquery.cookie');
 require('vendors/jquery.inputmask');
+require('vendors/jquery.debounce');
+require('vendors/slick');
 require('vendors/ajax.localstorage');
+require('vendors/vtex-modal');
 
 if (VERSION) {
 

@@ -3,8 +3,6 @@
 'use strict';
 
 
-require('vendors/jquery.debounce');
-
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
