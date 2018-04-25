@@ -145,6 +145,8 @@ Nitro.module('chaordic', function() {
 									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
 									v.numberInstallments = 10;
 									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
+								} else if (v.feature === 'HistoryPersonalized') {
+									self.cropName(v, 25);
 								}
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
@@ -165,6 +167,17 @@ Nitro.module('chaordic', function() {
 						// }
 				});
 			});
+	};
+
+	/**
+	 * Função para cortar o nome dos produtos no carrossel lateral vertical
+	 */
+	this.cropName = function(item, size) {
+		$.each(item.displays, function(i, v) {
+			$.each(v.references, function(i, val) {
+				val.cropName = val.name.substring(0, size) + '...';
+			});
+		});
 	};
 
 	/**
