@@ -1,7 +1,5 @@
 'use strict';
 
-require('vendors/ajax.localstorage');
-
 var helper = require('modules/filters-helper');
 
 Nitro.module('order-by', function () {

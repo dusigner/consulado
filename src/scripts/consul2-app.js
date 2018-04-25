@@ -9,6 +9,7 @@ require('modules/helpers');
 require('vendors/slick');
 require('vendors/jquery.cookie');
 require('vendors/jquery.inputmask');
+require('vendors/ajax.localstorage');
 
 if (VERSION) {
 
@@ -22,7 +23,7 @@ if (VERSION) {
 //load Nitro Lib
 require('vendors/nitro');
 
-require('modules/_autoloader');
+// require('modules/_autoloader');
 
 require('expose?store!modules/store/store');
 require('expose?publishDataLayer!modules/bi/publish-data-layer');

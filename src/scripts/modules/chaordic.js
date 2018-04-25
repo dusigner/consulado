@@ -4,7 +4,6 @@
 
 
 require('vendors/jquery.debounce');
-require('modules/prateleira');
 
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
