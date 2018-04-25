@@ -25,6 +25,14 @@
         }
     );
 
+    // ROUTERS
+
+    // HOME
+    workbox.routing.registerRoute(
+        '/',
+        workbox.strategies.staleWhileRevalidate()
+    );
+
     workbox.skipWaiting();
 
 	if (workbox) {
