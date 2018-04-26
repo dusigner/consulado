@@ -21,7 +21,10 @@
     "Nitro": true,
     "store": true,
     "vtxctx": true,
-    "vtexjs": true
+    "vtexjs": true,
+    "ScrollMagic": true,
+    "TweenMax": true,
+    "TimelineMax": true
   },
   "rules": {
     "quotes": [2, "single"],

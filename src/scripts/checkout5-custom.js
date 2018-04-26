@@ -199,6 +199,8 @@ $(window).on('load', function() {
 				self.smartbeer();
 			}
 
+			self.reinput();
+
 			testeabEntregaAgendada.setup(orderForm);
 
 		};
@@ -517,6 +519,172 @@ $(window).on('load', function() {
 			}	
 		
 
+		};
+
+		// Reinput
+		this.reinput = function () {
+			console.clear();
+			console.info('Reinput');
+			var userType = vtexjs.checkout.orderForm.userType;
+
+			self.html = function () {
+				var fields_input = '<div class="fieldsReinput"><h2 class="isReinput">Pedido Reinput ? <input type="checkbox" name="isReinput" id="isReinput"></h2><form><li class="previouOrderId"><label>Pedido anterior</label><input type="text" name="previouOrderId" id="previouOrderId" value=""></li><li class="company"><label>Empresa</label><select name="company" id="company"><option value="Selecione">Selecione</option><option value="consul">Consul</option><option value="brastemp">brastemp</option><option value="compracerta">compracerta</option></select></li><li class="reason"><label>Motivo</label><select name="reason" id="reason"><option value="Selecione">Selecione</option><option value="avaraia">Avaria no transporte</option><option value="erro">Produto errado</option></select></li></form></div>';
+				if ($('.fieldsReinput').length < 1) {
+					$(fields_input).insertAfter('.orderform-template .summary-template-holder');
+				}
+			};
+
+			self.lockpurchase = function () {
+				$('input#isReinput:checked').each(function () {
+					$('.previouOrderId').show();
+					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+					console.log('a4');
+
+					if ($('select#company').val() === 'Selecione') {
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+					} else if ($('select#reason').val() === 'Selecione') {
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+					} else {
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
+						console.log('a5');
+					}
+				});
+			};
+
+			self.searchOrderId = function () {
+				$('body').on('keyup', 'input#previouOrderId', function () {
+					var pedidodigitado = $('input#previouOrderId').val().length;
+					if (pedidodigitado === 16) {
+						var pedidodigitadobusca = $('input#previouOrderId').val();
+						$.ajax({
+							url: '/api/dataentities/PD/search?_where=orderId=' + pedidodigitadobusca + '&_fields=orderId',
+							type: 'GET',
+						}).then(function (res) {
+							if (res.length === 1) {
+								$('li.previouOrderId').addClass('load').removeClass('error');
+								$('.company').show();
+							} else {
+								$('li.previouOrderId').removeClass('load').addClass('error');
+							}
+							return res;
+						});
+
+					} else {
+						$('.company, .reason').hide();
+						$('li.previouOrderId').removeClass('load');
+					}
+				});
+			};
+
+			self.checkboxReinput = function () {
+				$('input#isReinput').click(function () {
+					$('.fieldsReinput form').submit(function (e) {
+						e.preventDefault();
+					});
+					$('.previouOrderId, .company, .reason').hide().removeClass('load');
+					$('#previouOrderId').val('');
+					$('li.previouOrderId').removeClass('load');
+					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
+					$('.fieldsReinput form').each(function () {
+						this.reset();
+					});
+					self.lockpurchase();
+
+				});
+			};
+
+			self.company = function () {
+				$('select#company').click(function () {
+					if ($('select#company').val() !== 'Selecione') {
+						$('.reason').show();
+						$('.company').addClass('load');
+					} else {
+						$('.company').removeClass('load');
+						$('.reason').hide();
+						console.log('a3');
+
+					}
+				});
+
+			};
+
+			self.reason = function () {
+				$('select#reason').click(function () {
+					if ($('select#reason').val() === 'Selecione') {
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+						$('.reason').removeClass('load');
+					} else {
+						$('.reason').addClass('load');
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
+						console.log('a1');
+					}
+				});
+			};
+
+			self.storegeValues = function () {
+				$('#payment-data-submit, #payment-data-submit:last-child').on('click', function () {
+					$('input#isReinput:checked').each(function () {
+
+						var emailtelevendas = $('#vtex-callcenter__user-email').text(),
+							orderformId = vtexjs.checkout.orderForm.orderFormId,
+							emailuser = store.userData.email,
+							companySelected = $('select#company').val(),
+							pedidoreinputado = $('input#previouOrderId').val(),
+							reasonSelected = $('select#reason').val();
+
+						localStorage.setItem('orderformId', orderformId);
+						localStorage.setItem('istelevendas', emailtelevendas);
+						localStorage.setItem('isuser', emailuser);
+						localStorage.setItem('company', companySelected);
+						localStorage.setItem('orderR', pedidoreinputado);
+						localStorage.setItem('reason', reasonSelected);
+
+
+						self.sendOrderCustomData = function (customField, customValue) {
+							$.ajax({
+								type: 'PUT',
+								url: '/api/checkout/pub/orderForm/' + orderformId + '/customData/reinputorder/' + customField,
+								data: JSON.stringify({ 'expectedOrderFormSections': ['customData'], 'value': customValue }),
+								dataType: 'JSON',
+								'headers': { 'content-type': 'application/json', 'accept': 'application/json' },
+								success: function (response) {
+									console.info('response', response);
+								},
+								error: function (error) {
+									console.info('error', error);
+								},
+								done: function (response) {
+									console.info('response', response);
+								}
+							});
+						};
+
+						self.sendOrderCustomData('isReinput', 'sim');
+						self.sendOrderCustomData('company', companySelected);
+						self.sendOrderCustomData('previousOrderId', pedidoreinputado);
+						self.sendOrderCustomData('reason', reasonSelected);
+
+					});
+				});
+			};
+
+			if (userType === 'callCenterOperator' && $('body').hasClass('body-order-form')) {
+
+				self.html();
+
+				self.lockpurchase();
+
+				self.searchOrderId();
+
+				self.checkboxReinput();
+
+				self.storegeValues();
+
+				self.company();
+
+				self.reason();
+
+			}
 		};
 
 
