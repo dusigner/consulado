@@ -20,14 +20,17 @@ require('../../templates/chaordic/shelf-content-placeholder-frequentlyBoughtToge
 require('../../templates/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
 require('../../templates/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
+require('../../templates/chaordic/shelf-content-placeholder-cart.html');
+require('../../templates/chaordic/shelf-content-placeholder-cart-mostPopular.html');
 require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
+require('../../templates/chaordic/chaordic-voltage.html');
 require('../../templates/chaordic/chaordic-hightlight.html');
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
 	chaordicCurrency: function(value) {
-		return window.defaultStoreCurrency + ' ' + _.formatCurrency(value);
+		return (window.defaultStoreCurrency || 'R$') + ' ' + _.formatCurrency(value);
 	}
 });
 
@@ -51,7 +54,7 @@ Nitro.module('chaordic', function() {
 			SHELFENDPOINT: '/pages/recommendations',
 			//QUERY PARAMETROS OBRIGATÓRIOS P/ CHAMADA
 			APIPARAMS: {
-				apiKey: window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
+				apiKey: window.vtex.accountName || window.vtex.vtexid.accountName || window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
 				//name: null,
 				source: (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ? 'mobile' : 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
@@ -145,9 +148,8 @@ Nitro.module('chaordic', function() {
 									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
 									v.numberInstallments = 10;
 									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
-								} else if (v.feature === 'HistoryPersonalized') {
-									self.cropName(v, 25);
 								}
+								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
 
@@ -175,6 +177,9 @@ Nitro.module('chaordic', function() {
 	this.cropName = function(item, size) {
 		$.each(item.displays, function(i, v) {
 			$.each(v.references, function(i, val) {
+				val.cropName = val.name.substring(0, size) + '...';
+			});
+			$.each(v.recommendations, function(i, val) {
 				val.cropName = val.name.substring(0, size) + '...';
 			});
 		});
@@ -336,7 +341,7 @@ Nitro.module('chaordic', function() {
 	
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-	
+							
 	
 							self.finalRender(product, $box);
 						} else {
@@ -468,6 +473,7 @@ Nitro.module('chaordic', function() {
 	 */
 	this.finalRender = function(renderData, $elem) {
 		self.priceRender(renderData, $elem);
+		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
 		if(renderData && renderData.finalImages && renderData.finalImages.perspectiva) {
 			$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
@@ -489,8 +495,9 @@ Nitro.module('chaordic', function() {
 	 */
 	this.placeHolderRender = function(renderData, $elem) {
 		var dfd = jQuery.Deferred();
-
-		dust.render('shelf-content-placeholder', renderData, function(err, out) {
+		var placeholderDust;
+		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
+		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
@@ -499,7 +506,7 @@ Nitro.module('chaordic', function() {
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
 
-			self.buyQuizInstall();
+			self.buyChaordicInstall();
 		});
 
 		return dfd.promise();
@@ -522,6 +529,17 @@ Nitro.module('chaordic', function() {
 			}
 
 			$elem.find('.js-item-flagshightlight').html(out);
+		});
+	};
+
+	this.voltageRender = function(renderData, $elem) {
+		console.log(renderData);
+		dust.render('chaordic-voltage', renderData, function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Price Dust error: ' + err);
+			}
+
+			$elem.find('.js-item-voltage').html(out);
 		});
 	};
 
@@ -556,7 +574,7 @@ Nitro.module('chaordic', function() {
 	/**
 	 * Método para montar link de carrinho com produtos
 	 */
-	this.buyQuizInstall = function() {
+	this.buyChaordicInstall = function() {
 		$('.js-shelf-item__button').on('click', function(e) {
 			e.preventDefault();
 

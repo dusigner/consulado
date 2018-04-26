@@ -1,0 +1,9 @@
+<span class="shelf-item__voltage-title">Selecione a voltagem</span>
+<div >
+    {#items}
+        <div class="shelf-item__voltage-option">
+            <input type="radio" id="{itemId}" name="{complementName}" value="{name}" data-sku="{itemId}"/>
+            <label for="{itemId}">{name}</label>
+        </div>
+    {/items}
+</div>

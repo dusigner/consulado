@@ -43,6 +43,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.default-message');
 	require('custom/testeab-entregaAgendada');
 	require('vendors/jquery.inputmask');
+	require('vendors/slick');
 	require('modules/customLogin');
 	require('modules/chaordic');
 
@@ -55,7 +56,11 @@ $(window).on('load', function() {
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		chaordic.init('cart');
+		var productsId = [];
+		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+			productsId.push(val.id);
+		});
+		chaordic.init('cart', productsId);
 
 			// Teste AB
 			// var urlTesteAb = window.location.search;
@@ -523,7 +528,6 @@ $(window).on('load', function() {
 
 		// Reinput
 		this.reinput = function () {
-			console.clear();
 			console.info('Reinput');
 			var userType = vtexjs.checkout.orderForm.userType;
 

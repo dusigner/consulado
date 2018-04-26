@@ -326,6 +326,85 @@ div[data-chaordic] {
 		}
 	}
 
+	&--history-personalized-cart {
+		ul {
+			li {
+				// display: block!important; 
+				// margin: 10px 0;
+				// max-width: 340px;
+				// width: 100%!important;
+				.shelf-item__image {
+					float: left;
+					max-width: 160px;
+					width: 100%;
+					img {
+						min-height: unset;
+					}
+				}
+				.shelf-item__infos {
+					float: right;
+					max-width: 162px;
+					width: 100%;
+				}
+				.shelf-item__name {
+					font-size: 17px;
+					margin-top: 0;
+					text-align: left;
+				}
+				.shelf-item__price--list {
+					display: none;
+				}
+				.shelf-item__price {
+					font-size: .875rem;
+					margin: 0;
+					text-align: left;
+					span.off {
+						display: none!important;
+					}
+				}
+				.shelf-item__price--installment,
+				.shelf-item__price--cash {
+					display: none;
+				}
+				.shelf-item__button {
+					font-size: 13px;
+					width: 100%;	
+				}
+			}
+		}
+	}
+
+	&-item__voltage {
+		text-align: left;
+		span {
+			font-size: 0.8em;
+			line-height: 1.5;
+		}
+		&>div {
+			height: 25px;
+		}
+	}
+
+	&-item__voltage-option {
+		color: #b4afad;
+		cursor: pointer;
+		display: inline-block;
+		margin: 0 10px 0 0;
+		position: relative;
+		transition: 0.4s ease all;
+		vertical-align: middle;
+		input[type=radio] {
+			float: left;
+			margin-right: 5px;
+			&:checked + label {
+				color: #f47921;
+			}
+		}
+		label {
+			float: left;
+		}
+	}
+
 	&-item__button {
 		background: #f47921;
 		border: 2px solid #f47921;
