@@ -260,7 +260,6 @@ Nitro.module('chaordic', function() {
 					data: API.APIPARAMS
 				})
 				.then(function(res) {
-					console.log(res);
 					chaordicData = res;
 					dfd.resolve(res);
 				});
@@ -533,13 +532,18 @@ Nitro.module('chaordic', function() {
 	};
 
 	this.voltageRender = function(renderData, $elem) {
-		console.log(renderData);
 		dust.render('chaordic-voltage', renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Price Dust error: ' + err);
 			}
 
 			$elem.find('.js-item-voltage').html(out);
+			self.buyChaordicInstallCart();
+			$.each(renderData.items, function(i, val) {
+				if(val.name === 'BIVOLT') {
+					$elem.find('.js-shelf-item__button-cart').attr('data-href', val.itemId);
+				}
+			});
 		});
 	};
 
@@ -564,8 +568,8 @@ Nitro.module('chaordic', function() {
 				breakpoint: 480,
 				settings: {
 					dots: true,
-					slidesToShow: 2,
-					slidesToScroll: 2
+					slidesToShow: 1,
+					slidesToScroll: 1
 				}
 			}]
 		});
@@ -592,6 +596,35 @@ Nitro.module('chaordic', function() {
 					modalBuyButton.attr('href', modalBuyButton.attr('href') + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
 				});
 			}
+		});
+	};
+
+	/**
+	 * Método para add produto no carrinho
+	 */
+	this.buyChaordicInstallCart = function() {
+		$('.js-item-voltage input').on('change', function(e) {
+			e.preventDefault();
+
+			var sku = $(this).attr('data-sku');
+
+			$('.shelf-item__voltage-option').removeClass('checked');
+			$(this).parent('.shelf-item__voltage-option').addClass('checked');
+			$(this).closest('.js-item-voltage').find('.js-shelf-item__button-cart').attr('data-href', sku);
+		});
+
+		$('.js-shelf-item__button-cart').on('click', function(e) {
+			e.preventDefault();
+
+			var item = {
+				id: $(this).attr('data-href'),
+				quantity: 1,
+				seller: '1'
+			};
+			vtexjs.checkout.addToCart([item], null, 3)
+				.done(function(orderForm) {
+					$('html, body').animate({ scrollTop: 0 }, 'slow');
+			});
 		});
 	};
 });

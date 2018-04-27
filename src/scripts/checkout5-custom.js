@@ -60,7 +60,7 @@ $(window).on('load', function() {
 		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
 			productsId.push(val.id);
 		});
-		chaordic.init('cart', productsId);
+		chaordic.init('cart');
 
 			// Teste AB
 			// var urlTesteAb = window.location.search;

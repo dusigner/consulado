@@ -1,9 +1,14 @@
-<span class="shelf-item__voltage-title">Selecione a voltagem</span>
-<div >
-    {#items}
-        <div class="shelf-item__voltage-option">
-            <input type="radio" id="{itemId}" name="{complementName}" value="{name}" data-sku="{itemId}"/>
-            <label for="{itemId}">{name}</label>
-        </div>
-    {/items}
-</div>
+{?items[0].Voltagem}
+    <span class="shelf-item__voltage-title">Selecione a voltagem</span>
+    <div >
+        {#items}
+            <div class="shelf-item__voltage-option">
+                <input type="radio" id="{itemId}" name="{complementName}" value="{name}" data-sku="{itemId}" {@eq key=name value="BIVOLT"}checked="checked"{/eq}/>
+                <label for="{itemId}">{Voltagem[0]}</label>
+            </div>
+        {/items}
+    </div>
+    <a href="javascript:void(0)" class="shelf-item__button js-shelf-item__button-cart" target="_parent" title="Adicionar ao carrinho">Adicionar ao carrinho</a>
+{:else}
+    <a href="javascript:void(0)" data-href="{itemId}" class="shelf-item__button js-shelf-item__button-cart" target="_parent" title="Adicionar ao carrinho">Adicionar ao carrinho</a>
+{/items[0].Voltagem}
