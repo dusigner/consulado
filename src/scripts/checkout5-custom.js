@@ -518,8 +518,7 @@ $(window).on('load', function() {
 		};
 
 		// Reinput
-		this.reinput = function () {
-			console.clear();
+		this.reinput = function () {			
 			console.info('Reinput');
 			var userType = vtexjs.checkout.orderForm.userType;
 
@@ -533,16 +532,13 @@ $(window).on('load', function() {
 			self.lockpurchase = function () {
 				$('input#isReinput:checked').each(function () {
 					$('.previouOrderId').show();
-					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
-					console.log('a4');
-
+					$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);			
 					if ($('select#company').val() === 'Selecione') {
 						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
 					} else if ($('select#reason').val() === 'Selecione') {
 						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
 					} else {
 						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
-						console.log('a5');
 					}
 				});
 			};
@@ -597,8 +593,6 @@ $(window).on('load', function() {
 					} else {
 						$('.company').removeClass('load');
 						$('.reason').hide();
-						console.log('a3');
-
 					}
 				});
 
@@ -612,7 +606,6 @@ $(window).on('load', function() {
 					} else {
 						$('.reason').addClass('load');
 						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', false);
-						console.log('a1');
 					}
 				});
 			};
