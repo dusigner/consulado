@@ -18,6 +18,7 @@
 @import 'helpers/icons';
 @import 'helpers/family';
 @import 'helpers/conditional';
+@import 'helpers/slick';
 // Base styles
 @import 'base/fonts';
 @import 'base/main';
@@ -28,6 +29,11 @@
 @import 'components/modal';
 @import 'components/modalLogin';
 @import 'components/checkout/modal-info-pj';
+@import 'components/chaordic-shelf';
+@import 'components/produto/selos';
+@import 'components/mod-prateleira';
+@import 'pages/product';
+
 .loading-bg {
     margin-top: 0;
 }
@@ -38,6 +44,25 @@ object {
 
 .icon {
     font-family: 'whirlpool', FontAwesome;
+}
+
+.FlagsHightLight {
+    display: none;
+}
+
+// chaordic reset
+[data-chaordic] {
+    .shelf-pre-title {
+        color: #333;
+        font-size: 30px;
+        font-weight: 100;
+        text-align: center;
+        span {
+            color: #333;
+            font-size: 30px;
+            display: inline-block;
+        }
+    }
 }
 
 body {
