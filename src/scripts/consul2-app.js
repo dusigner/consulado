@@ -43,4 +43,16 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 	if (path === '/atendimento') {
 		$(location).attr('href', '//consul.custhelp.com/');
 	}
+
+	if ('serviceWorker' in navigator && window.location.origin.indexOf(':30') < 0) {
+		window.addEventListener('load', function() {
+			navigator.serviceWorker.register('/files/service-worker.js', { scope: '../' }).then(function(registration) {
+				// Registration was successful
+				console.log('ServiceWorker reegistration successful.', registration);
+			}).catch(function(err) {
+				// registration failed :(
+				console.log('ServiceWorker registration failed: ', err);
+			});
+		});
+	}
 });

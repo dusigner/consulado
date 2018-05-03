@@ -1,0 +1,52 @@
+{
+  "name": "Loja Consul",
+  "short_name": "Loja Consul",
+  "theme_color": "#9aca3d",
+  "background_color": "#9aca3d",
+  "display": "standalone",
+  "orientation": "portrait",
+  "Scope": "../",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "../arquivos/icon-72x72.jpg",
+      "sizes": "72x72",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-96x96.jpg",
+      "sizes": "96x96",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-128x128.jpg",
+      "sizes": "128x128",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-144x144.jpg",
+      "sizes": "144x144",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-152x152.jpg",
+      "sizes": "152x152",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-192x192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-384x384.jpg",
+      "sizes": "384x384",
+      "type": "image/jpg"
+    },
+    {
+      "src": "../arquivos/icon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}
