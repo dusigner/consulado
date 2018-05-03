@@ -16,20 +16,30 @@
       });
     
     // PRECACHE
-    workbox.precaching.precacheAndRoute([
-            { url: '../arquivos/consul2-style.css', revision: '/* @echo swVersion */'},
-            { url: '../arquivos/consul2-app.min.js', revision: '/* @echo swVersion */'}
-        ],
-        {
-            ignoreUrlParametersMatching: [/.*/]
-        }
-    );
+    // workbox.precaching.precacheAndRoute([
+    //         { url: '../arquivos/consul2-style.css', revision: '/* @echo swVersion */'},
+    //         { url: '../arquivos/consul2-app.min.js', revision: '/* @echo swVersion */'}
+    //     ],
+    //     {
+    //         ignoreUrlParametersMatching: [/.*/]
+    //     }
+    // );
 
     // ROUTERS
 
     // HOME
     workbox.routing.registerRoute(
         '/',
+        workbox.strategies.staleWhileRevalidate()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('https://whirlpool.vteximg.com.br/arquivos/consul2-style.css'),
+        workbox.strategies.staleWhileRevalidate()
+    );
+
+    workbox.routing.registerRoute(
+        new RegExp('/arquivos/consul2-app.min.js'),
         workbox.strategies.staleWhileRevalidate()
     );
 
