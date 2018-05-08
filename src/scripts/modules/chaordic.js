@@ -141,17 +141,19 @@ Nitro.module('chaordic', function() {
 					self.getShelf()
 						.then(function(res) {
 							shelf = res[position];
-
 							$.each(shelf, function(i, v) {
 								if(v.feature === 'FrequentlyBoughtTogether') {
 									v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
 									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
 									v.numberInstallments = 10;
 									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
-								}
+									
+								}							
+								
 								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
+							//console.log(shelf);
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
@@ -172,15 +174,19 @@ Nitro.module('chaordic', function() {
 	};
 
 	/**
-	 * Função para cortar o nome dos produtos no carrossel lateral vertical
+	 * Função para cortar o nome dos produtos no carrossel lateral vertical e tirar o dominio de prod das url's
 	 */
 	this.cropName = function(item, size) {
 		$.each(item.displays, function(i, v) {
 			$.each(v.references, function(i, val) {
 				val.cropName = val.name.substring(0, size) + '...';
+				// remover dominio para funcionar em todos ambientes
+				val.url = val.url.replace('loja.consul.com.br', '');
 			});
 			$.each(v.recommendations, function(i, val) {
 				val.cropName = val.name.substring(0, size) + '...';
+				// remover dominio para funcionar em todos ambientes
+				val.url = val.url.replace('loja.consul.com.br', '');
 			});
 		});
 	};
@@ -209,7 +215,7 @@ Nitro.module('chaordic', function() {
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
-
+				//console.log(shelf);
 				if(recomendations) {
 
 					self.getProducts(recomendations)
@@ -348,6 +354,7 @@ Nitro.module('chaordic', function() {
 						}
 					}
 				}
+				console.log(product);
 			});
 		});
 
@@ -474,8 +481,13 @@ Nitro.module('chaordic', function() {
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
-		if(renderData && renderData.finalImages && renderData.finalImages.perspectiva) {
-			$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+		if(renderData && renderData.finalImages) {
+			if (renderData.finalImages.principal) {
+				$elem.find('.js-item-image-principal').html(renderData.finalImages.principal);
+			}
+			if (renderData.finalImages.perspectiva) {
+				$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+			}
 		}
 		$elem.find('.js-item-sku').text(renderData.productReference);
 		$elem.attr('data-percent', renderData.priceInfo.percentOff);
