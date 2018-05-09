@@ -153,7 +153,7 @@ Nitro.module('chaordic', function() {
 								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
-							//console.log(shelf);
+							console.log(shelf);
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
@@ -354,7 +354,7 @@ Nitro.module('chaordic', function() {
 						}
 					}
 				}
-				console.log(product);
+				//console.log(product);
 			});
 		});
 
