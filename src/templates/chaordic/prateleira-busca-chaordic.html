@@ -1,0 +1,57 @@
+
+{?products}
+	
+{#products}
+<li>
+
+	<article class="box-produto  withDe   withAdicional   comEstoque  list-percent" data-idproduto="{id}"
+		data-department="" data-category="" data-percent="">
+		<div class="detalhes">
+			<a href="{url}"
+				title="{name}" class="image">
+				<img src="{images.default}"
+					width="345" height="345" alt="{name}" id="">
+
+				<div class="FlagsHightLight">
+					<!-- <p class="flag todos">Todos</p>
+					<p class="flag -compra-certa---canais--top50cc">[COMPRA CERTA] [CANAIS] TOP50CC</p>
+					<p class="flag -midia--click50">[MIDIA] CLICK50</p>
+					<p class="flag -colab--home----prateleira---lavadora">[Colab][HOME] - Prateleira - Lavadora</p>
+					<p class="flag frete-norte">Frete Norte</p> -->
+				</div>
+				<!-- <span class="off">32<small>%</small><p><em>Off</em></p></span> -->
+
+			</a>
+
+			<a href="{url}" title="{name}"
+				class="prod-info">
+				<h3 class="nome">{name}</h3>
+				<div class="descricao-prod">
+					
+					<div class="price">
+						<p class="de">
+							<span class="txtDe">De: </span>
+							<span class="val">{oldPrice|chaordicCurrency}</span>
+							<span class="txtPor"> Por</span>
+						</p>
+						<p class="por">
+							{installment.count}
+							<span>x</span> de {installment.price|chaordicCurrency} 
+							<span class="juros">sem juros</span>
+							<span class="total-parcelado">Total parcelado:
+								<span class="val"> {price|chaordicCurrency}</span>
+							</span>
+						</p>
+						<p class="discount-boleto" data-seller="whp">1x no cartão de crédito: 
+							<strong>{price|chaordicCurrency}</strong>
+						</p>
+					</div>
+
+				</div>
+			</a>
+		</div>
+		
+	</article>
+</li>
+{/products}
+{/products}

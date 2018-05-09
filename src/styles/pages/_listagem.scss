@@ -511,5 +511,210 @@ body.test__vitrine--show-b {
 	}
 }
 
+body.busca-chaordic {
+	.col-xs-12{
+		width:100%;
+	}
+	.filter-container .container{
+		background-color: #fff;
+	}
+	.list-container.loading .list-content:before,
+	.list-container.loading .list-content:before{
+		left: 50% !important;
+		position: absolute !important;
+		margin-left:-50px;
+	}
+	.nm-not-found-tips-container{
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	.resultado-busca {
+		background: $green;
+		border-bottom: 1px solid $gray;
+		color: #FFF;
+		margin-bottom: 25px;
+
+		.container {
+			// background: transparent url('#{$cdn-path}images/bg_busca_hexagons.svg') right -95px no-repeat;
+			padding: 2em 90px;
+		}
+
+		.busca-resultados {
+			@include responsiveFont(20, 16, true);
+			margin: 0;
+			text-transform: uppercase;
+		}
+
+		i {
+			@include responsiveFont(30, 16, true);
+			color: #FFF;
+			margin-right: .5em;
+		}
+
+		.busca-termos {
+			margin: 0;
+
+			strong {
+				@include responsiveFont(40, 16, true);
+				font-weight: 300;
+
+				@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
+			}
+		}
+
+		 .col-md-12 {
+			display: flex;
+			flex-direction: column;
+		}
+
+		 .col-md-12 p.busca-resultados {
+			order: 3;
+		}
+
+
+		 .col-md-12 p.busca-termos {
+			order: 2;
+		}
+
+
+
+	}
+
+	&.busca-vazio {
+		.resultado-busca {
+			display: none;
+		}
+		.result-filter.container h2 {
+			@include responsiveFont(18, 14, true);
+			margin: .25em 0;
+			padding: 40px 0 80px;
+			text-align: center;
+			text-transform: none;
+			strong {
+				color: $orange;
+			}
+		}
+	}
+	.order-wrapper {
+		margin-top: 0!important;
+		text-align: right;
+		strong {
+			&.active {
+				&::after {
+					top: 22px;
+					transform: rotate(180deg);
+				}
+			}
+		}
+		ul.order-by {
+			position: absolute;
+			right: 0;
+			top: 40px;
+			width: 177px;
+			visibility: inherit;
+			opacity: 1;
+			z-index: 10;
+			li {
+				a {
+					padding: .5em .5em;
+				}
+			}
+		}
+	}
+	.suggestions-container {
+		margin-bottom: 20px;
+		h4 {
+			color: $orange;
+			display: inline-block;
+			font-weight: bold;
+			margin: 10px;
+			padding: 0 15px;
+		}
+		ul {
+			display: inline-block;
+			padding: 0 15px 20px;
+		}
+		li {
+			color: #747474;
+			display: inline-block;
+			font-size: 16px;
+			font-weight: 700;
+			margin: 0 7px;
+			width: auto !important;
+			&:last-child {
+				&.separator {
+					display: none;
+				}
+			}
+		}
+		a {
+			border-bottom: 1px #555 dotted;
+			color: #555;
+			display: block;
+			font-size: 14px;
+			padding: 15px 2px 0;
+			text-decoration: none;
+			&:hover {
+				border-bottom-color: $orange;
+				color: $orange;
+				opacity: .6;
+			}
+		}
+	}
+	.result-filter {
+		.filter-container {
+			display: block;
+			float: left;
+			margin-top: 0;
+			min-height: 1px;
+			min-width: 100px;
+			.filter-container .container{
+				background: #fff;
+			}
+			.clear-filter{
+				display: block;
+			}
+			.list-values{
+				margin-bottom: 15px;
+			}
+			.departament-nav .menu-departamento .search-multiple-navigator {
+				fieldset {
+					label {
+						display: block;
+						padding: 0 0 0 25px;
+						margin-left: 20px;
+						span {
+							color: #b1b1b1;
+							font-size: 10px;
+							margin-left: 5px;
+						}
+						&.active::after{
+							left: 0;
+							top: 12px;
+						}
+					}
+					&.preco,
+					&.largura,
+					&.altura,
+					&.profundidade,
+					&.desconto,
+					&[class*=refino-capacidade],
+					&.indique-o-modelo-do-produto {
+						display: none;
+					}
+				}
+				
+			} 
+		}
+	}
+	#list-more-products {
+		margin-top: 20px;
+		padding:20px 10px;
+		width:100%;
+	}
+
+}
+
+
 @import 'components/listagem/filters';
 @import 'components/listagem/calculadora-btu';

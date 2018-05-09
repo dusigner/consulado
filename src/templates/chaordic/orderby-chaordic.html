@@ -1,0 +1,26 @@
+<p class="order-title">
+	<span>Temos {size} itens ordenados por </span>
+	<strong tabindex="0" class="">
+		<em>selecione</em>
+		<ul class="order-by" style="overflow: hidden; display: none;">
+			{#pagination}
+				<li>
+					<a href="javascript:void(0);" title="Menor Preço" rel="{?first}{first}{/first}" data-order="&amp;sortBy=ascPrice">Menor Preço</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" title="Maior Preço" rel="{?first}{first}{/first}" data-order="&amp;sortBy=descPrice">Maior Preço</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" title="Mais vendidos" rel="{?first}{first}{/first}" data-order="&amp;sortBy=descSold">Mais vendidos</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" title="Data de lançamento" rel="{?first}{first}{/first}" data-order="&amp;sortBy=descDate">Data de lançamento</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" title="Melhor Desconto" rel="{?first}{first}{/first}" data-order="&amp;sortBy=descDiscount">Melhor Desconto</a>
+				</li>
+			{/pagination}
+		</ul>
+	</strong>
+</p>
+	
