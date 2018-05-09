@@ -1,0 +1,13 @@
+{?suggestions}
+<div class="row">
+	<h4>Sugestões de consulta:</h4>
+	<ul>
+		{#suggestions}
+		<li>
+			<a href="/busca/?q={query|sanitize}">{query}</a>
+		</li>
+		<li class="separator">|</li>
+		{/suggestions}
+	</ul>
+</div>
+{/suggestions}

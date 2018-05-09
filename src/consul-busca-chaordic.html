@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="busca-chaordic">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<div class="resultado-busca" data-module="resultado-busca">
+		<div class="container clearfix">
+			<div class="resultado-wrapper">
+				<!-- Resultado Dust -->
+			</div>
+		</div>
+	</div>
+	
+	<div class="suggestions-container container">
+		<!-- Suggestions Dust -->
+	</div>
+	
+	<!-- Listagem de produtos e filtros -->
+	<div class="result-filter container clearfix">
+		
+		<div class="filter-container">
+			<!-- Filter Dust -->
+		</div>
+		
+		
+		<!-- Produtos -->
+		<section id="prateleira" class="container prateleira list-container clearfix">
+			<div class="row">
+				<div class="col-12 col-md-5"></div>
+				
+				<div class="col-12 col-md-5 open-filter">
+					<span>Filtrar</span>
+				</div>
+				
+				<div class="col-12 col-md-7 order-wrapper">
+					<!-- orderBy dust -->
+				</div>
+			</div>
+			
+			<div class="row list-content list-content-filter">
+				<div class="col-xs-12">	
+					<!-- Prateleira vitrine -->
+					<div class="main">
+						
+						<div class="vitrine resultItemsWrapper">
+							
+							<div class="pager top"></div>
+							<div class="prateleira default">
+								<div class="prateleira default n12colunas">
+									<ul>
+										<!-- Prateleira Dust -->
+									</ul>
+								</div>
+							</div>
+							<div class="pager bottom" id="PagerBottom"></div>
+						</div>
+						
+					</div>
+					<!-- Prateleira vitrine -->
+					
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="paginationSearch">
+						<!-- pagination Dust -->
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<!-- /Produtos -->
+		
+	</div>
+	<!-- Listagem de produtos e filtros -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>
