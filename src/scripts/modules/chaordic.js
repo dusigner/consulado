@@ -346,8 +346,8 @@ Nitro.module('chaordic', function() {
 	
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-							
-	
+							product.link = product.link.replace('https://loja.consul.com.br', '');
+							console.log(product);
 							self.finalRender(product, $box);
 						} else {
 							self.renderUnavailable(product, $box);
