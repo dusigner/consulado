@@ -1,4 +1,3 @@
-/* eslint-disable */
 'use strict';
 
 // Dust Templates
@@ -17,7 +16,7 @@ dust.helpers.eq = function(chunk, context, bodies, params) {
 		value 		= params.value,
 		body 		= bodies.block;
 
-	if (location == value) {
+	if (location === value) {
 		chunk.render(body, context);
 	}
 	
@@ -87,9 +86,9 @@ Nitro.module('busca-chaordic', function () {
 			dataType: 'JSON'
 		}).done(function() {
 			// $('#prateleira').removeClass('loading');
-			$('html, body').animate({
-				scrollTop: $('footer.footer').offset().top
-			}, 700);
+			// $('html, body').animate({
+			// 	scrollTop: $('.duvidas-frequentes').offset().top
+			// }, 700);
 		});
 	};
 		
@@ -111,7 +110,7 @@ Nitro.module('busca-chaordic', function () {
 			}
 		}
 
-		if (sortby != '') {
+		if (sortby !== '') {
 			sortby = '&sortby=' + sortby;
 		}
 
@@ -123,8 +122,9 @@ Nitro.module('busca-chaordic', function () {
 	this.pagination = function() {
 		$('#list-more-products').on('click', function(e) {
 			e.preventDefault();
-
+			console.log('clicou no VER MAIS');
 			var $termPagination = $('#list-more-products').attr('rel');
+			console.log('$termPagination', $termPagination);
 			
 			self.getChaordicDataPagination($termPagination).always(function(data) {
 				dust.render('prateleira-busca-chaordic', data, function(err, out) {
@@ -133,7 +133,8 @@ Nitro.module('busca-chaordic', function () {
 				
 				self.render('pagination-chaordic', data, $pagination);
 				self.priceFlags();
-				// self.pagination();
+			}).done(function() {
+				self.pagination();
 			});
 		});
 	};
@@ -152,23 +153,23 @@ Nitro.module('busca-chaordic', function () {
 
 		switch (sortbyName[0]) {
 			case 'ascPrice':
-				$('.order-title em').html("Menor Preço");
+				$('.order-title em').html('Menor Preço');
 				break;
 			case 'descPrice':
-				$('.order-title em').html("Maior Preço");
+				$('.order-title em').html('Maior Preço');
 				break;
 			case 'descSold':
-				$('.order-title em').html("Mais Vendidos");
+				$('.order-title em').html('Mais Vendidos');
 				break;
 			case 'descDate':
-				$('.order-title em').html("Data de lançamento");
+				$('.order-title em').html('Data de lançamento');
 				break;
 			case 'descDiscount':
-				$('.order-title em').html("Melhor Desconto");
+				$('.order-title em').html('Melhor Desconto');
 				break;
 
 			default:
-				$('.order-title em').html("selecione");
+				$('.order-title em').html('selecione');
 				break;
 		}
 
@@ -281,30 +282,30 @@ Nitro.module('busca-chaordic', function () {
 				self.clearFilter();
 				self.orderBy();
 				self.priceFlags();
-			})
+			});
 			
-			console.log('VARIAVEL SORTBY2>'+sortbyName[0])
+			console.log('VARIAVEL SORTBY2>'+sortbyName[0]);
 				
 			switch (sortbyName[0]) {
 				case 'ascPrice':
-					$('.order-title em').html("Menor Preço");
+					$('.order-title em').html('Menor Preço');
 					break;
 				case 'descPrice':
-					$('.order-title em').html("Maior Preço");
+					$('.order-title em').html('Maior Preço');
 					break;
 				case 'descSold':
-					$('.order-title em').html("Mais Vendidos");
+					$('.order-title em').html('Mais Vendidos');
 					break;
 				case 'descDate':
-					$('.order-title em').html("Data de lançamento");
+					$('.order-title em').html('Data de lançamento');
 					break;
 				case 'descDiscount':
 					console.log('entrou dec desconto');
-					$('.order-title em').html("Melhor Desconto");
+					$('.order-title em').html('Melhor Desconto');
 					break;
 	
 				default:
-					$('.order-title em').html("selecione");
+					$('.order-title em').html('selecione');
 					break;
 			}
 			if($(document).width() <= 992){
@@ -313,12 +314,14 @@ Nitro.module('busca-chaordic', function () {
 			
 		});
 	};
+
 	//Função que limpa os filtros
 	this.clearFilter = function () {
 		$('.clear-filter').on('click', function(){
 			var removeAllFiltersLink = $(this).attr('rel');
 			var $termSearch = removeAllFiltersLink;
-			if ($termSearch != ''){
+			
+			if ($termSearch !== ''){
 				self.getChaordicData($termSearch).always(function (data) {
 					// Google Promises
 					self.render('filters-chaordic', data, $filters);
@@ -335,12 +338,14 @@ Nitro.module('busca-chaordic', function () {
 					self.clearFilter();
 					self.orderBy();
 					self.priceFlags();
-				})
+				});
+
 				window.history.pushState('','', '/busca/?q='+term);
-			}else{
+			} else {
 				window.location.href = '/busca/?q='+term;
 			}
-			if($(document).width() <= 992){
+
+			if ($(document).width() <= 992) {
 				$('.overlay-filter').delay(500).addClass('hide');
 			}
 		});
@@ -409,81 +414,93 @@ Nitro.module('busca-chaordic', function () {
 
 	this.getVtexData = function ($idProduto, el) {
 		console.log('entrou na GetVtexData id do produto é >>>>>'+ $idProduto);
+
 		var settings = {
-			'url': '//consul.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?fq=productId:'+$idProduto,
+			'url': '//consul.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?fq=productId:' + $idProduto,
 			'method': 'GET'
-		}
-		return $.ajax(settings).done(function(response){
-			console.log('############################################################')
+		};
+
+		return $.ajax(settings).done(function(response) {
 			console.log($idProduto);
-			console.log('response:',response);
-			if (response !== [] ){
+			console.log('response:', response, response.length, typeof response);
+
+			function buildShelf() {
 				var precoDe = response[0].items[0].sellers[0].commertialOffer.ListPrice;
 				var precoPor = response[0].items[0].sellers[0].commertialOffer.Price;
 
-				if (precoDe == 0 && response[0].items.length > 1) {
-				
-					var precoDe = response[0].items[1].sellers[0].commertialOffer.ListPrice;
-					var precoPor = response[0].items[1].sellers[0].commertialOffer.Price;
+				if (precoDe === 0 && response[0].items.length > 1) {
+					precoDe = response[0].items[1].sellers[0].commertialOffer.ListPrice;
+					precoPor = response[0].items[1].sellers[0].commertialOffer.Price;
 					var objParcelas = self.prepareInstallments(response[0].items[1].sellers[0].commertialOffer.Installments);
-					console.log('objParcelas IF', objParcelas)
-					if (objParcelas != undefined){
-						var numParcelas = objParcelas.NumberOfInstallments;
+
+					console.log('objParcelas IF', objParcelas);
+
+					if (objParcelas !== undefined){
+						numParcelas = objParcelas.NumberOfInstallments;
 						console.log('numParcelas IF', numParcelas);
-						var valueParcela = objParcelas.Value;
+						
+						valueParcela = objParcelas.Value;
 						console.log('valueParcela IF', valueParcela);
-					}else{
-						var numParcelas = 0;
-						var valueParcela = 0;
+					} else {
+						numParcelas = 0;
+						valueParcela = 0;
 					}
 					
-				}else{
-					var objParcelas = self.prepareInstallments(response[0].items[0].sellers[0].commertialOffer.Installments);
-					console.log('objParcelas ELSE', objParcelas)
-					if (objParcelas != undefined){
+				} else {
+					objParcelas = self.prepareInstallments(response[0].items[0].sellers[0].commertialOffer.Installments);
+					console.log('objParcelas ELSE', objParcelas);
+
+					if (objParcelas !== undefined) {
 						var numParcelas = objParcelas.NumberOfInstallments;
 						console.log('numParcelas ELSE', numParcelas);
 						var valueParcela = objParcelas.Value;	
 						console.log('valueParcela ELSE', valueParcela);
-					}else{
-						var numParcelas = 0;
-						var valueParcela = 0;
+					} else {
+						numParcelas = 0;
+						valueParcela = 0;
 					}
 				}
+
+				console.log('precoDe >>>' + precoDe);
+				console.log('precoPor >>>' + precoPor);
+				// console.log('objParcelas >>>',objParcelas);
+				console.log('numParcelas >', numParcelas);
+				console.log('valueParcela >>>', valueParcela);
+				
+				el.find('.descricao-prod .price .de .val').html('R$ '+_.formatCurrency(precoDe));
+				el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
+				
+				if (precoDe === 0){
+					console.log('produto indisponivel');
+					el.find('.price').html('<p class="indisponivel">Produto indisponível</p>');
+				}
+	
+				var promoPercentOff = self.preparePercentoff(precoDe, precoPor);
+
+				if (promoPercentOff !== undefined){
+					promoPercentOff = promoPercentOff.toFixed(0);
+					// el.find('a.image').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
+				}
+
+				console.log('promoPercentOff>', promoPercentOff);
+				
+				var clusterHighlights = self.prepareclusterHighlights(response[0].clusterHighlights);
+				console.log('clusterHighlights>', clusterHighlights);
+	
+				$.each(clusterHighlights, function (index) {
+					console.log(clusterHighlights[index]);
+					el.find('.FlagsHightLight').append('<p class="flag '+clusterHighlights[index]+'">'+clusterHighlights[index]+'</p>');
+				});
 			}
 
-			console.log('precoDe >>>'+precoDe);
-			console.log('precoPor >>>'+precoPor);
-			// console.log('objParcelas >>>',objParcelas);
-			console.log('numParcelas >', numParcelas);
-			console.log('valueParcela >>>', valueParcela);
-			
-			el.find('.descricao-prod .price .de .val').html('R$ '+_.formatCurrency(precoDe));
-			el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
-			
-			if (precoDe == 0){
-				console.log('produto indisponivel');
-				el.find('.price').html('<p class="indisponivel">Produto indisponível</p>');
+			if (response.length === 0) {
+				console.log('sem info na vtex');
+			} else {
+				buildShelf();
 			}
-
-			var promoPercentOff = self.preparePercentoff(precoDe, precoPor);
-			if (promoPercentOff != undefined){
-				promoPercentOff = promoPercentOff.toFixed(0);
-				el.find('a.image').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
-			}
-			console.log('promoPercentOff>', promoPercentOff);
-			
-			var clusterHighlights = self.prepareclusterHighlights(response[0].clusterHighlights);
-			console.log('clusterHighlights>', clusterHighlights);
-
-			$.each(clusterHighlights, function (index) {
-				console.log(clusterHighlights[index]);
-				el.find('.FlagsHightLight').append('<p class="flag '+clusterHighlights[index]+'">'+clusterHighlights[index]+'</p>');
-			});
-
-
 		});
-	}
+	};
+
 	this.priceFlags = function(){
 		console.log('entrou na PriceFlags');
 		$('article.box-produto').each(function(){
@@ -491,7 +508,7 @@ Nitro.module('busca-chaordic', function () {
 			self.getVtexData($idProduto, $(this));
 			// $(this).css('border', '1px solid red');
 		});
-	}
+	};
 
 	this.openFilter = function() {
 		console.log('openfilter');
@@ -540,7 +557,7 @@ Nitro.module('busca-chaordic', function () {
 		});
 
 		$(document).ajaxStop(function(){
-			self.pagination();
+			// self.pagination();
 			// self.priceFlags();
 		});
 	};
