@@ -195,7 +195,10 @@ $(window).on('load', function() {
 				self.smartbeer();
 			}
 
-			self.reinput();
+			if ( window.location.host.indexOf('vtexcommercestable') >= 0 ) {
+				self.reinput();
+			}
+
 
 			testeabEntregaAgendada.setup(orderForm);
 
