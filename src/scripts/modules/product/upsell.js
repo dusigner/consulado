@@ -12,10 +12,11 @@ Nitro.module('upsell', function() {
 		imagematual        = $('.prod-galeria .slick-active a img').attr('src'),
 		valorProatual      = $('.prod-preco .skuBestPrice').text(),
 		valorProatualFormt = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
-		capacidadeatual    = $('td.value-field.Capacidade').text().replace('L', ' litros'),
+		capacidadeatual    = $('td.value-field.Capacidade').text() || $('td.value-field.Capacidade-Total-L-').text(),
 		painelautal        = $('td.value-field.Display').text(),
 		formatoatual  	   = $('td.value-field.Formato').text(),
-	
+		
+
 		// variaveis para mostrar o valor do upgrade
 		valorProdatualcalc,
 		valorProupgrade,
@@ -66,7 +67,7 @@ Nitro.module('upsell', function() {
 
 	this.valordiferenca = function() {	
 
-		$.each($('#upsell li[layout]'), function( index, value ) {
+		$.each($('#upsell li[layout]'), function() {
 
 			valorProdatualcalc = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
 			valorProupgrade    = $(this).find('.title-price-upgrade span').text().replace(/\D/gmi, ''),
@@ -81,12 +82,12 @@ Nitro.module('upsell', function() {
 
 	this.montandomodal = function() {
 
-		$.each($('#upsell li[layout]'), function( index, value ) {
+		$.each($('#upsell li[layout]'), function() {
 			
 			// pegando valores do produto upgrade
 			urlupgrade              = $(this).find('.ir-para-produto').attr('href'),
 			skureferencup           = $(this).find('.skureferenc ul li').text(),
-			capacidadeOportunidade  = $(this).find('.espe-oportunidade .licapacidade ul li').text().replace('L', ' litros'),
+			capacidadeOportunidade  = $(this).find('.espe-oportunidade .licapacidade ul li').text().replace('L', ''),
 			painelOportunidade      = $(this).find('.espe-oportunidade .lipainel ul li').text(),
 			temperaturaOportunidade = $(this).find('.espe-oportunidade .litemperatura ul li').text();
 
@@ -94,7 +95,7 @@ Nitro.module('upsell', function() {
 			// montando vitrine do produto atual dentro do modal
 			$('.voce-esta-vendo h2:nth-child(3)').html(titleproductatual + ' - <strong>' + skureferenc + '</strong>');
 			$('.voce-esta-vendo span').html(valorProatual);
-			$('.espe-voce-esta-vendo .licapacidadea').html(capacidadeatual);
+			$('.espe-voce-esta-vendo .licapacidadea').html(capacidadeatual.replace('L', '') + ' litros');
 			$('.espe-voce-esta-vendo .lipainela').html(painelautal);
 			$('.espe-voce-esta-vendo .litemperaturaa').html(formatoatual);
 			$('.voce-esta-vendo img').attr('src', imagematual);
@@ -102,7 +103,7 @@ Nitro.module('upsell', function() {
 			// montando dados do produto upgrade
 			$(this).find('.title-price-upgrade p strong, .info-product-mobile h3 strong').html(skureferencup);
 			$(this).find('.oportunidadePro h2:nth-child(3) strong').html(skureferencup);
-			$(this).find('.espe-oportunidade .licapacidade, .especifi-product-mobile .licapacidadem span').html(capacidadeOportunidade);
+			$(this).find('.espe-oportunidade .licapacidade, .especifi-product-mobile .licapacidadem span').html(capacidadeOportunidade + ' litros');
 			$(this).find('.espe-oportunidade .lipainel, .especifi-product-mobile .lipainelm span').html(painelOportunidade);
 			$(this).find('.espe-oportunidade .litemperatura, .especifi-product-mobile .litemperaturam span').html(temperaturaOportunidade);
 			$(this).find('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?upgrade=' + window.skuJson_0.productId);
@@ -144,7 +145,7 @@ Nitro.module('upsell', function() {
 					
 		} else {
 
-			$.each($('#upsell li[layout]'), function( index, value ) {
+			$.each($('#upsell li[layout]'), function() {
 				$(this).addClass('hide');
 				$('.icon-open-upgrade').css('display', 'none');
 				valorProupgrade = $(this).find('.title-price-upgrade span').text().replace(/\D/gmi, '');
