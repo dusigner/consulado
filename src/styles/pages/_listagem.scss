@@ -707,6 +707,12 @@ body.busca-chaordic {
 			} 
 		}
 	}
+	
+	.prateleira.default ul li .detalhes .prod-info .nome{
+		height: 145px;
+		overflow: hidden;
+	}
+
 	#list-more-products {
 		margin-top: 20px;
 		padding: 20px 10px;

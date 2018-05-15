@@ -70,10 +70,12 @@ Nitro.module('busca-chaordic', function () {
 			$prateleiraContainer.removeClass('loading');
 		}).error(function() {
 			// Show the no result statement
-			$prateleiraContainer.removeClass('loading');
-			$('body').addClass('busca-vazio');
-			$('.filter-container, .order-wrapper').css('display', 'none');
-			$('.result-filter.container').append('<h2>Não encontramos nenhum resultado para sua busca: <strong>'+ term +'</strong></h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Dicas: </h3><ul><li class="nm-not-found-tip">Tente palavras menos específicas.</li><li class="nm-not-found-tip">Tente palavras-chave diferentes.</li></ul></div>');
+			if ($('.result-filter.container h2').length <=0 ){
+				$prateleiraContainer.removeClass('loading');
+				$('body').addClass('busca-vazio');
+				$('.filter-container, .order-wrapper').css('display', 'none');
+				$('.result-filter.container').append('<h2>Não encontramos nenhum resultado para sua busca: <strong>'+ term +'</strong></h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Dicas: </h3><ul><li class="nm-not-found-tip">Tente palavras menos específicas.</li><li class="nm-not-found-tip">Tente palavras-chave diferentes.</li></ul></div>');
+			}
 		});
 	};
 	
@@ -466,8 +468,10 @@ Nitro.module('busca-chaordic', function () {
 				// console.log('valueParcela >>>', valueParcela);
 				
 				el.find('.descricao-prod .price .de .val').html('R$ '+_.formatCurrency(precoDe));
-				el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
-				
+				// el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
+				el.find('.descricao-prod .price .por').html('<span class="txtPor">Por: </span> <span class="val">R$ '+_.formatCurrency(precoPor));
+				el.find('.descricao-prod .price .adicional').html('<span class="vezes">'+numParcelas+'<span class="x">x</span></span> <span class="d">de</span> <span class="val">R$ '+_.formatCurrency(valueParcela)+' </span><span class="total-parcelado"><span class="total-parcelado__txt hide">Total parcelado: </span><span class="val">'+_.formatCurrency(precoPor)+'</span></span>');
+
 				if (precoDe === 0){
 					// console.log('produto indisponivel');
 					el.find('.price').html('<p class="indisponivel">Produto indisponível</p>');
@@ -477,7 +481,8 @@ Nitro.module('busca-chaordic', function () {
 
 				if (promoPercentOff !== undefined){
 					promoPercentOff = promoPercentOff.toFixed(0);
-					// el.find('a.image').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
+					// el.find('.descricao-prod .price .por').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
+					el.find('.descricao-prod .price .por').append(' <span class="off" style="display: inline;">'+promoPercentOff+'% OFF</span>');
 				}
 
 				// console.log('promoPercentOff>', promoPercentOff);
