@@ -25,26 +25,35 @@
 
 			<a href="{url}" title="{name}"
 				class="prod-info">
-				<h3 class="nome">{name}</h3>
+				<h3 class="nome">{name}
+					<span>
+						<div class="product-field">
+							Nome modelo prateleira
+							<ul>
+								<li>{details.productRef}</li>
+							</ul>
+						</div>
+					</span>
+				</h3>
 				<div class="descricao-prod">
 					
 					<div class="price">
 						<p class="de">
-							<span class="txtDe">De: </span>
-							<span class="val">{oldPrice|chaordicCurrency}</span>
-							<span class="txtPor"> Por</span>
+							<span class="txtDe">De: </span> <span class="val">{oldPrice|chaordicCurrency}</span>
 						</p>
 						<p class="por">
-							{installment.count}
-							<span>x</span> de {installment.price|chaordicCurrency} 
-							<span class="juros">sem juros</span>
-							<span class="total-parcelado">Total parcelado:
+							<span class="txtPor">Por: </span> <span class="val">{price|chaordicCurrency}</span>
+							<span class="off" style="display: inline;">20% OFF</span>
+						</p>
+						<p class="adicional">
+							<span class="vezes">{installment.count}<span class="x">x</span></span> <span class="d">de</span> <span class="val">{installment.price|chaordicCurrency} </span>
+								<span class="total-parcelado">
+								<span class="total-parcelado__txt hide">Total parcelado: </span>
 								<span class="val"> {price|chaordicCurrency}</span>
 							</span>
 						</p>
-						<p class="discount-boleto" data-seller="whp">1x no cartão de crédito: 
-							<strong>{price|chaordicCurrency}</strong>
-						</p>
+						
+						<p class="discount-boleto">1x no cartão de crédito: {price|chaordicCurrency}</p>
 					</div>
 
 				</div>

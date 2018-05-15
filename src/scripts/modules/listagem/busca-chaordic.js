@@ -9,7 +9,7 @@ require('templates/chaordic/prateleira-busca-chaordic.html');
 require('templates/chaordic/pagination-chaordic.html');
 
 var Uri = require('vendors/Uri');
-var filters = require('modules/listagem/filters');
+// var filters = require('modules/listagem/filters');
 
 dust.helpers.eq = function(chunk, context, bodies, params) {
 	var location 	= params.key,
@@ -37,7 +37,7 @@ Nitro.module('busca-chaordic', function () {
 	var self = this;
 
 	var uriBusca = new Uri(window.location.href),
-		parametros 	= uriBusca.query(),
+		// parametros 	= uriBusca.query(),
 		term 		= uriBusca.getQueryParamValues('q'),
 		filters 	= uriBusca.getQueryParamValues('filter'), 
 		sortby 		= uriBusca.getQueryParamValues('sortBy'),
@@ -49,8 +49,8 @@ Nitro.module('busca-chaordic', function () {
 		$filters 				= $('.result-filter .filter-container'),
 		$prateleira 			= $('.list-content .vitrine .prateleira.default.n12colunas ul'),
 		$prateleiraContainer 	= $('#prateleira'),
-		$pagination 			= $prateleiraContainer.find('.paginationSearch'),
-		$filterWrapper 			= $('.filter-container div.filter-wrapper');
+		$pagination 			= $prateleiraContainer.find('.paginationSearch');
+		// $filterWrapper 			= $('.filter-container div.filter-wrapper');
 
 	/**
 	 * 
@@ -68,12 +68,14 @@ Nitro.module('busca-chaordic', function () {
 			dataType: 'JSON'
 		}).done(function() {
 			$prateleiraContainer.removeClass('loading');
-		}).error(function(error) {
+		}).error(function() {
 			// Show the no result statement
-			$prateleiraContainer.removeClass('loading');
-			$('body').addClass('busca-vazio');
-			$('.filter-container, .order-wrapper').css('display', 'none');
-			$('.result-filter.container').append('<h2>Não encontramos nenhum resultado para sua busca: <strong>'+ term +'</strong></h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Dicas: </h3><ul><li class="nm-not-found-tip">Tente palavras menos específicas.</li><li class="nm-not-found-tip">Tente palavras-chave diferentes.</li></ul></div>');
+			if ($('.result-filter.container h2').length <=0 ){
+				$prateleiraContainer.removeClass('loading');
+				$('body').addClass('busca-vazio');
+				$('.filter-container, .order-wrapper').css('display', 'none');
+				$('.result-filter.container').append('<h2>Não encontramos nenhum resultado para sua busca: <strong>'+ term +'</strong></h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Dicas: </h3><ul><li class="nm-not-found-tip">Tente palavras menos específicas.</li><li class="nm-not-found-tip">Tente palavras-chave diferentes.</li></ul></div>');
+			}
 		});
 	};
 	
@@ -122,9 +124,9 @@ Nitro.module('busca-chaordic', function () {
 	this.pagination = function() {
 		$('#list-more-products').on('click', function(e) {
 			e.preventDefault();
-			console.log('clicou no VER MAIS');
+			// console.log('clicou no VER MAIS');
 			var $termPagination = $('#list-more-products').attr('rel');
-			console.log('$termPagination', $termPagination);
+			// console.log('$termPagination', $termPagination);
 			
 			self.getChaordicDataPagination($termPagination).always(function(data) {
 				dust.render('prateleira-busca-chaordic', data, function(err, out) {
@@ -148,29 +150,27 @@ Nitro.module('busca-chaordic', function () {
 	};
 
 	this.orderBy = function() {
-
-		console.log(sortbyName[0]);
-
+		// console.log(sortbyName[0]);
 		switch (sortbyName[0]) {
-			case 'ascPrice':
-				$('.order-title em').html('Menor Preço');
-				break;
-			case 'descPrice':
-				$('.order-title em').html('Maior Preço');
-				break;
-			case 'descSold':
-				$('.order-title em').html('Mais Vendidos');
-				break;
-			case 'descDate':
-				$('.order-title em').html('Data de lançamento');
-				break;
-			case 'descDiscount':
-				$('.order-title em').html('Melhor Desconto');
-				break;
+		case 'ascPrice':
+			$('.order-title em').html('Menor Preço');
+			break;
+		case 'descPrice':
+			$('.order-title em').html('Maior Preço');
+			break;
+		case 'descSold':
+			$('.order-title em').html('Mais Vendidos');
+			break;
+		case 'descDate':
+			$('.order-title em').html('Data de lançamento');
+			break;
+		case 'descDiscount':
+			$('.order-title em').html('Melhor Desconto');
+			break;
 
-			default:
-				$('.order-title em').html('selecione');
-				break;
+		default:
+			$('.order-title em').html('selecione');
+			break;
 		}
 
 		$('.order-wrapper .order-title').on('click', function () {
@@ -182,7 +182,7 @@ Nitro.module('busca-chaordic', function () {
 			//variavel armazena qual tipo de ordenação foi selecionado
 			var $dataOrder = $(this).attr('data-order');
 			// Variavel armazena chave da API atual
-			var $relOrder = $(this).attr('rel');
+			// var $relOrder = $(this).attr('rel');
 			//pegando link rel da api no input
 			var $termFilter = $(this).attr('rel');
 			//pegando o nome da Ordenação
@@ -191,10 +191,10 @@ Nitro.module('busca-chaordic', function () {
 			$termFilter =  '//busca.consul.com.br' + $termFilter;
 			
 			var apiBusca = new Uri($termFilter),
-				apiParametros 	= apiBusca.query(),
+				// apiParametros 	= apiBusca.query(),
 				apiTerm 		= apiBusca.getQueryParamValues('terms'), //term
-				apiFilters 		= apiBusca.getQueryParamValues('filter'), // array filters
-				apiSortby 		= apiBusca.getQueryParamValues('sortBy'); // sortBy
+				apiFilters 		= apiBusca.getQueryParamValues('filter'); // array filters
+				// apiSortby 		= apiBusca.getQueryParamValues('sortBy'); // sortBy
 
 			//separando parametros de Filter e concatenando para montar URL
 			var $paramFilter = apiFilters;
@@ -241,10 +241,10 @@ Nitro.module('busca-chaordic', function () {
 				// $termFilter =  '//busca.consul.com.br' + $termFilter;
 			
 			var apiBusca = new Uri($termFilter),
-			apiParametros 	= apiBusca.query(),
-			apiTerm 		= apiBusca.getQueryParamValues('terms'), //term
-			apiFilters 		= apiBusca.getQueryParamValues('filter'), // array filters
-			apiSortby 		= apiBusca.getQueryParamValues('sortby'); // sortBy
+				// apiParametros 	= apiBusca.query(),
+				apiTerm 		= apiBusca.getQueryParamValues('terms'), //term
+				apiFilters 		= apiBusca.getQueryParamValues('filter'), // array filters
+				apiSortby 		= apiBusca.getQueryParamValues('sortby'); // sortBy
 			
 			//separando parametros de Filter e concatenando para montar URL
 			// var $paramFilter = $termFilter.split('&filter=');
@@ -284,29 +284,29 @@ Nitro.module('busca-chaordic', function () {
 				self.priceFlags();
 			});
 			
-			console.log('VARIAVEL SORTBY2>'+sortbyName[0]);
+			// console.log('VARIAVEL SORTBY2>'+sortbyName[0]);
 				
 			switch (sortbyName[0]) {
-				case 'ascPrice':
-					$('.order-title em').html('Menor Preço');
-					break;
-				case 'descPrice':
-					$('.order-title em').html('Maior Preço');
-					break;
-				case 'descSold':
-					$('.order-title em').html('Mais Vendidos');
-					break;
-				case 'descDate':
-					$('.order-title em').html('Data de lançamento');
-					break;
-				case 'descDiscount':
-					console.log('entrou dec desconto');
-					$('.order-title em').html('Melhor Desconto');
-					break;
-	
-				default:
-					$('.order-title em').html('selecione');
-					break;
+			case 'ascPrice':
+				$('.order-title em').html('Menor Preço');
+				break;
+			case 'descPrice':
+				$('.order-title em').html('Maior Preço');
+				break;
+			case 'descSold':
+				$('.order-title em').html('Mais Vendidos');
+				break;
+			case 'descDate':
+				$('.order-title em').html('Data de lançamento');
+				break;
+			case 'descDiscount':
+				// console.log('entrou dec desconto');
+				$('.order-title em').html('Melhor Desconto');
+				break;
+
+			default:
+				$('.order-title em').html('selecione');
+				break;
 			}
 			if($(document).width() <= 992){
 				$('.overlay-filter').delay(500).addClass('hide');
@@ -331,7 +331,7 @@ Nitro.module('busca-chaordic', function () {
 					self.render('prateleira-busca-chaordic', data, $prateleira);
 					self.render('pagination-chaordic', data, $pagination);
 					
-					console.log(data);
+					// console.log(data);
 					self.pagination();
 					self.dropDown();
 					self.checkFilter();
@@ -413,7 +413,7 @@ Nitro.module('busca-chaordic', function () {
 	};
 
 	this.getVtexData = function ($idProduto, el) {
-		console.log('entrou na GetVtexData id do produto é >>>>>'+ $idProduto);
+		// console.log('entrou na GetVtexData id do produto é >>>>>'+ $idProduto);
 
 		var settings = {
 			'url': '//consul.vtexcommercestable.com.br/api/catalog_system/pub/products/search/?fq=productId:' + $idProduto,
@@ -421,8 +421,8 @@ Nitro.module('busca-chaordic', function () {
 		};
 
 		return $.ajax(settings).done(function(response) {
-			console.log($idProduto);
-			console.log('response:', response, response.length, typeof response);
+			// console.log($idProduto);
+			// console.log('response:', response, response.length, typeof response);
 
 			function buildShelf() {
 				var precoDe = response[0].items[0].sellers[0].commertialOffer.ListPrice;
@@ -433,14 +433,14 @@ Nitro.module('busca-chaordic', function () {
 					precoPor = response[0].items[1].sellers[0].commertialOffer.Price;
 					var objParcelas = self.prepareInstallments(response[0].items[1].sellers[0].commertialOffer.Installments);
 
-					console.log('objParcelas IF', objParcelas);
+					// console.log('objParcelas IF', objParcelas);
 
 					if (objParcelas !== undefined){
 						numParcelas = objParcelas.NumberOfInstallments;
-						console.log('numParcelas IF', numParcelas);
+						// console.log('numParcelas IF', numParcelas);
 						
 						valueParcela = objParcelas.Value;
-						console.log('valueParcela IF', valueParcela);
+						// console.log('valueParcela IF', valueParcela);
 					} else {
 						numParcelas = 0;
 						valueParcela = 0;
@@ -448,30 +448,32 @@ Nitro.module('busca-chaordic', function () {
 					
 				} else {
 					objParcelas = self.prepareInstallments(response[0].items[0].sellers[0].commertialOffer.Installments);
-					console.log('objParcelas ELSE', objParcelas);
+					// console.log('objParcelas ELSE', objParcelas);
 
 					if (objParcelas !== undefined) {
 						var numParcelas = objParcelas.NumberOfInstallments;
-						console.log('numParcelas ELSE', numParcelas);
+						// console.log('numParcelas ELSE', numParcelas);
 						var valueParcela = objParcelas.Value;	
-						console.log('valueParcela ELSE', valueParcela);
+						// console.log('valueParcela ELSE', valueParcela);
 					} else {
 						numParcelas = 0;
 						valueParcela = 0;
 					}
 				}
 
-				console.log('precoDe >>>' + precoDe);
-				console.log('precoPor >>>' + precoPor);
+				// console.log('precoDe >>>' + precoDe);
+				// console.log('precoPor >>>' + precoPor);
 				// console.log('objParcelas >>>',objParcelas);
-				console.log('numParcelas >', numParcelas);
-				console.log('valueParcela >>>', valueParcela);
+				// console.log('numParcelas >', numParcelas);
+				// console.log('valueParcela >>>', valueParcela);
 				
 				el.find('.descricao-prod .price .de .val').html('R$ '+_.formatCurrency(precoDe));
-				el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
-				
+				// el.find('.descricao-prod .price .por').html(numParcelas+'<span>x</span> de R$ '+_.formatCurrency(valueParcela)+' <span class="juros">sem juros</span><span class="total-parcelado">Total parcelado:<span class="val"> R$ '+_.formatCurrency(precoPor)+'</span></span>');
+				el.find('.descricao-prod .price .por').html('<span class="txtPor">Por: </span> <span class="val">R$ '+_.formatCurrency(precoPor));
+				el.find('.descricao-prod .price .adicional').html('<span class="vezes">'+numParcelas+'<span class="x">x</span></span> <span class="d">de</span> <span class="val">R$ '+_.formatCurrency(valueParcela)+' </span><span class="total-parcelado"><span class="total-parcelado__txt hide">Total parcelado: </span><span class="val">'+_.formatCurrency(precoPor)+'</span></span>');
+
 				if (precoDe === 0){
-					console.log('produto indisponivel');
+					// console.log('produto indisponivel');
 					el.find('.price').html('<p class="indisponivel">Produto indisponível</p>');
 				}
 	
@@ -479,22 +481,23 @@ Nitro.module('busca-chaordic', function () {
 
 				if (promoPercentOff !== undefined){
 					promoPercentOff = promoPercentOff.toFixed(0);
-					// el.find('a.image').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
+					// el.find('.descricao-prod .price .por').append('<span class="off">'+promoPercentOff+'<small>%</small><p><em>Off</em></p></span>');
+					el.find('.descricao-prod .price .por').append(' <span class="off" style="display: inline;">'+promoPercentOff+'% OFF</span>');
 				}
 
-				console.log('promoPercentOff>', promoPercentOff);
+				// console.log('promoPercentOff>', promoPercentOff);
 				
 				var clusterHighlights = self.prepareclusterHighlights(response[0].clusterHighlights);
-				console.log('clusterHighlights>', clusterHighlights);
+				// console.log('clusterHighlights>', clusterHighlights);
 	
 				$.each(clusterHighlights, function (index) {
-					console.log(clusterHighlights[index]);
+					// console.log(clusterHighlights[index]);
 					el.find('.FlagsHightLight').append('<p class="flag '+clusterHighlights[index]+'">'+clusterHighlights[index]+'</p>');
 				});
 			}
 
 			if (response.length === 0) {
-				console.log('sem info na vtex');
+				// console.log('sem info na vtex');
 			} else {
 				buildShelf();
 			}
@@ -502,7 +505,7 @@ Nitro.module('busca-chaordic', function () {
 	};
 
 	this.priceFlags = function(){
-		console.log('entrou na PriceFlags');
+		// console.log('entrou na PriceFlags');
 		$('article.box-produto').each(function(){
 			var $idProduto = $(this).attr('data-idproduto');
 			self.getVtexData($idProduto, $(this));
@@ -511,9 +514,9 @@ Nitro.module('busca-chaordic', function () {
 	};
 
 	this.openFilter = function() {
-		console.log('openfilter');
+		// console.log('openfilter');
 		$('.open-filter').click(function() {
-			console.log('entrou no OpenFilter');
+			// console.log('entrou no OpenFilter');
 			if($('.overlay-filter').length === 0) {
 				$('body').prepend('<div class="overlay-filter"></div>');
 			}else {
@@ -536,7 +539,7 @@ Nitro.module('busca-chaordic', function () {
 		var $termSearch = self.getTermSearch();
 
 		self.getChaordicData($termSearch).always(function (data) {
-			console.log(data);
+			// console.log(data);
 
 			// Google Promises
 			self.render('filters-chaordic', data, $filters);
