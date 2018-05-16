@@ -40,9 +40,10 @@ Nitro.module('upsell', function() {
 		this.openclose();
 		this.verificadowngrade();		
 		this.responsivo();
+		if ( window.location.host.indexOf('consulqa') === -1 ) {
+			this.tagueamento();
+		}
 	};
-
-
 
 	this.responsivo = function() {
 
@@ -79,7 +80,6 @@ Nitro.module('upsell', function() {
 
 	};
 
-
 	this.montandomodal = function() {
 
 		$.each($('#upsell li[layout]'), function() {
@@ -110,9 +110,7 @@ Nitro.module('upsell', function() {
 		
 		});
 
-	};
-
-	
+	};	
 
 	this.openclose = function () {
 
@@ -129,7 +127,6 @@ Nitro.module('upsell', function() {
 
 
 	};
-
 
 	this.verificadowngrade = function () {
 		
@@ -162,7 +159,90 @@ Nitro.module('upsell', function() {
 		}
 	};
 
+	this.tagueamento = function() {
+		
+		//Tagueamento datalayer
+		$('.btn-interessado-upgrade').click(function() {			
+			//Tagueamento datalayer
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'de um Upgrade',
+				action: 'barra',
+				label: 'Estou interessado'
+			});
+		});
 
+		//Tagueamento dataLayer
+		$('.icon-open-upgrade').click(function(){
+			if( $(this).hasClass('voltar') ){
+				dataLayer.push({
+					event: 'visualTracking',
+					category: 'ver produto anterior',
+					action: 'icon',
+					label: 'click'
+				});
+			}else{
+				dataLayer.push({
+					event: 'visualTracking',
+					category: 'de um Upgrade',
+					action: 'icon',
+					label: 'click'
+				});
+			}			
+		});
+
+		//Tagueamento dataLayer
+		$('.close-fixed').click(function(){
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'de um Upgrade',
+				action: 'barra',
+				label: 'Sair'
+			});
+		});
+
+		//Tagueamento dataLayer
+		$('.aceitarounao a').click(function(){
+			var action = $(this).text();
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'de um Upgrade',
+				action: 'Modal',
+				label: action
+			});
+		});
+
+		//Tagueamento dataLayer
+		$('.aceitarounao a').click(function(){
+			var action = $(this).text();
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'de um Upgrade',
+				action: 'Modal',
+				label: action
+			});
+		});
+
+		//Tagueamento datalayer
+		$('.vtex-modal[id*=vtex-modal-produto-] .modal-header .close').click(function(){	
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'de um Upgrade',
+				action: 'Modal',
+				label: 'Sair'
+			});
+		});		
+
+		//Tagueamento datalayer
+		$('.btn-interessado-downgrade').click(function(){	
+			dataLayer.push({
+				event: 'visualTracking',
+				category: 'ver produto anterior',
+				action: 'barra',
+				label: 'Ver produto novamente'
+			});
+		});	
+	};
 
 	this.setup();
 });
