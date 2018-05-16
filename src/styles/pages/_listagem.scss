@@ -528,6 +528,14 @@ body.busca-chaordic {
 		margin-bottom: 40px;
 		text-align: center;
 	}
+	.clear-filter:after{
+		display: none;
+	}
+	.noresult{
+		font-size: 2.5em;
+		display: block;
+		font-weight: 400;
+	}
 	.resultado-busca {
 		background: $green;
 		border-bottom: 1px solid $gray;
@@ -582,17 +590,29 @@ body.busca-chaordic {
 
 	&.busca-vazio {
 		.resultado-busca {
-			display: none;
+			// display: none;
 		}
 		.result-filter.container h2 {
 			@include responsiveFont(18, 14, true);
 			margin: .25em 0;
-			padding: 40px 0 80px;
+			padding: 40px 0 20px;
 			text-align: center;
 			text-transform: none;
+			font-size: 2em;
+			font-weight: 100;
 			strong {
-				color: $orange;
+				font-size: 1.2em;
+				font-weight: 700;
+				color: #736c6b;
 			}
+		}
+		.nm-not-found-tip-title{
+			font-size: 1.25em;
+			font-weight: 200;
+			color: #f47921;
+		}
+		.nm-not-found-tip{
+			color:#b4afad;
 		}
 	}
 	.order-wrapper {
