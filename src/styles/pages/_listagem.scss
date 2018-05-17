@@ -528,12 +528,12 @@ body.busca-chaordic {
 		margin-bottom: 40px;
 		text-align: center;
 	}
-	.clear-filter:after{
+	.clear-filter:after {
 		display: none;
 	}
-	.noresult{
-		font-size: 2.5em;
+	.noresult {
 		display: block;
+		font-size: 2.5em;
 		font-weight: 400;
 	}
 	.resultado-busca {
@@ -594,25 +594,25 @@ body.busca-chaordic {
 		}
 		.result-filter.container h2 {
 			@include responsiveFont(18, 14, true);
+			font-size: 2em;
+			font-weight: 100;
 			margin: .25em 0;
 			padding: 40px 0 20px;
 			text-align: center;
 			text-transform: none;
-			font-size: 2em;
-			font-weight: 100;
 			strong {
+				color: #736c6b;
 				font-size: 1.2em;
 				font-weight: 700;
-				color: #736c6b;
 			}
 		}
-		.nm-not-found-tip-title{
+		.nm-not-found-tip-title {
+			color: #f47921;
 			font-size: 1.25em;
 			font-weight: 200;
-			color: #f47921;
 		}
-		.nm-not-found-tip{
-			color:#b4afad;
+		.nm-not-found-tip {
+			color: #b4afad;
 		}
 	}
 	.order-wrapper {
@@ -728,7 +728,7 @@ body.busca-chaordic {
 		}
 	}
 	
-	.prateleira.default ul li .detalhes .prod-info .nome{
+	.prateleira.default ul li .detalhes .prod-info .nome {
 		height: 145px;
 		overflow: hidden;
 	}
