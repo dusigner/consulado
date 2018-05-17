@@ -1,7 +1,26 @@
 {#.}
-	{?isPersonalized}
+
+	{@eq key=feature value="HistoryPersonalized"}
+		{>"shelf-content-placeholder-history-personalized"/}
+	{/eq}
+
+	{@eq key=feature value="ViewPersonalized"}
 		{>"shelf-content-placeholder-personalized"/}
-	{:else}
+	{/eq}
+
+	{@eq key=feature value="MostPopular"}
 		{>"shelf-content-placeholder-default"/}
-	{/isPersonalized}
+	{/eq}
+
+	{@eq key=feature value="Push"}
+		{>"shelf-content-placeholder-default"/}
+	{/eq}
+
+	{@eq key=feature value="UltimateBuy"}
+		{>"shelf-content-placeholder-ultimateBuy"/}
+	{/eq}
+
+	{@eq key=feature value="FrequentlyBoughtTogether"}
+		{>"shelf-content-placeholder-frequentlyBoughtTogether"/}
+	{/eq}
 {/.}

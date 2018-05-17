@@ -43,15 +43,24 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.default-message');
 	require('custom/testeab-entregaAgendada');
 	require('vendors/jquery.inputmask');
+	require('vendors/slick');
 	require('modules/customLogin');
+	require('modules/chaordic');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message', 'customLogin'], function(gae, recurrence, cotas, pj, testeabEntregaAgendada) {
+	Nitro.setup(['chaordic', 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message', 'customLogin'], function(chaordic, gae, recurrence, cotas, pj, testeabEntregaAgendada) {
 
 		var self = this,
 			$body = $('body');
+
+		//INICIA CHAMADA DAS VITRINES CHAORDIC
+		var productsId = [];
+		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+			productsId.push(val.id);
+		});
+		chaordic.init('cart');
 
 			// Teste AB
 			// var urlTesteAb = window.location.search;
@@ -521,7 +530,7 @@ $(window).on('load', function() {
 		};
 
 		// Reinput
-		this.reinput = function () {			
+		this.reinput = function () {
 			console.info('Reinput');
 			var userType = vtexjs.checkout.orderForm.userType;
 

@@ -4,6 +4,7 @@
 
 require('vendors/jquery.cookie');
 require('vendors/jquery.debounce');
+require('vendors/dust-helpers');
 
 require('modules/helpers');
 require('modules/prateleira');
@@ -11,16 +12,25 @@ require('modules/prateleira');
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
+require('../../templates/chaordic/shelf-content-placeholder-ultimateBuy.html');
 require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-history-personalized.html');
+require('../../templates/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
+require('../../templates/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
 require('../../templates/chaordic/shelf-content-placeholder.html');
+require('../../templates/chaordic/shelf-content-placeholder-cart.html');
+require('../../templates/chaordic/shelf-content-placeholder-cart-mostPopular.html');
 require('../../templates/chaordic/chaordic-unavailable.html');
 require('../../templates/chaordic/chaordic-price.html');
+require('../../templates/chaordic/chaordic-voltage.html');
 require('../../templates/chaordic/chaordic-hightlight.html');
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
 	chaordicCurrency: function(value) {
-		return window.defaultStoreCurrency + ' ' + _.formatCurrency(value);
+		return (window.defaultStoreCurrency || 'R$') + ' ' + _.formatCurrency(value);
 	}
 });
 
@@ -44,8 +54,8 @@ Nitro.module('chaordic', function() {
 			SHELFENDPOINT: '/pages/recommendations',
 			//QUERY PARAMETROS OBRIGATÓRIOS P/ CHAMADA
 			APIPARAMS: {
-				apiKey: window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
-				name: null,
+				apiKey: window.vtex.accountName || window.vtex.vtexid.accountName || window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
+				//name: null,
 				source: (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ? 'mobile' : 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
 				productFormat: 'compact'
@@ -59,8 +69,9 @@ Nitro.module('chaordic', function() {
 	 * Função bootstrap app | Inicia definindo a página e eventos de scroll para carregar prateleiras e clicks mobile
 	 * @param  {String} name Nome da página para request chaordic (home, product, category, subcategory, cart, etc).
 	 */
-	this.init = function(name) {
-		API.APIPARAMS.name = name;
+	this.init = function(name, productId) {
+		name ? API.APIPARAMS.name = name : '';
+		productId ? API.APIPARAMS.productId = productId : '';
 
 		if( $('[data-chaordic]').length > 0 ) {
 
@@ -130,10 +141,19 @@ Nitro.module('chaordic', function() {
 					self.getShelf()
 						.then(function(res) {
 							shelf = res[position];
-
 							$.each(shelf, function(i, v) {
+								if(v.feature === 'FrequentlyBoughtTogether') {
+									v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
+									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
+									v.numberInstallments = 10;
+									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
+									
+								}							
+								
+								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized';
 							});
+							console.log(shelf);
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
@@ -151,6 +171,24 @@ Nitro.module('chaordic', function() {
 						// }
 				});
 			});
+	};
+
+	/**
+	 * Função para cortar o nome dos produtos no carrossel lateral vertical e tirar o dominio de prod das url's
+	 */
+	this.cropName = function(item, size) {
+		$.each(item.displays, function(i, v) {
+			$.each(v.references, function(i, val) {
+				val.cropName = val.name.substring(0, size) + '...';
+				// remover dominio para funcionar em todos ambientes
+				val.url = val.url.replace('loja.consul.com.br', '');
+			});
+			$.each(v.recommendations, function(i, val) {
+				val.cropName = val.name.substring(0, size) + '...';
+				// remover dominio para funcionar em todos ambientes
+				val.url = val.url.replace('loja.consul.com.br', '');
+			});
+		});
 	};
 
 	/**
@@ -177,7 +215,7 @@ Nitro.module('chaordic', function() {
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
-
+				//console.log(shelf);
 				if(recomendations) {
 
 					self.getProducts(recomendations)
@@ -299,7 +337,7 @@ Nitro.module('chaordic', function() {
 						if(item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
-	
+							product.itemId = item[0].itemId;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
 							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
@@ -308,14 +346,15 @@ Nitro.module('chaordic', function() {
 	
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-	
-	
+							product.link = product.link.replace('https://loja.consul.com.br', '');
+							console.log(product);
 							self.finalRender(product, $box);
 						} else {
 							self.renderUnavailable(product, $box);
 						}
 					}
 				}
+				//console.log(product);
 			});
 		});
 
@@ -440,12 +479,21 @@ Nitro.module('chaordic', function() {
 	 */
 	this.finalRender = function(renderData, $elem) {
 		self.priceRender(renderData, $elem);
+		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
-		if(renderData && renderData.finalImages && renderData.finalImages.perspectiva) {
-			$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+		if(renderData && renderData.finalImages) {
+			if (renderData.finalImages.principal) {
+				$elem.find('.js-item-image-principal').html(renderData.finalImages.principal);
+			}
+			if (renderData.finalImages.perspectiva) {
+				$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+			}
 		}
 		$elem.find('.js-item-sku').text(renderData.productReference);
 		$elem.attr('data-percent', renderData.priceInfo.percentOff);
+
+		$elem.attr('data-sku', renderData.itemId);
+
 		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
 		$elem.addClass('box-produto');
 	};
@@ -458,8 +506,9 @@ Nitro.module('chaordic', function() {
 	 */
 	this.placeHolderRender = function(renderData, $elem) {
 		var dfd = jQuery.Deferred();
-
-		dust.render('shelf-content-placeholder', renderData, function(err, out) {
+		var placeholderDust;
+		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
+		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
@@ -467,6 +516,8 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
+
+			self.buyChaordicInstall();
 		});
 
 		return dfd.promise();
@@ -492,6 +543,22 @@ Nitro.module('chaordic', function() {
 		});
 	};
 
+	this.voltageRender = function(renderData, $elem) {
+		dust.render('chaordic-voltage', renderData, function(err, out) {
+			if (err) {
+				throw new Error('Chaordic Price Dust error: ' + err);
+			}
+
+			$elem.find('.js-item-voltage').html(out);
+			self.buyChaordicInstallCart();
+			$.each(renderData.items, function(i, val) {
+				if(val.name === 'BIVOLT') {
+					$elem.find('.js-shelf-item__button-cart').attr('data-href', val.itemId);
+				}
+			});
+		});
+	};
+
 	/**
 	 * Método para montar slick carrosel nas prateleiras
 	 * @param  {Object} $slider seletor jQuery do elemento pai com os slides
@@ -513,10 +580,63 @@ Nitro.module('chaordic', function() {
 				breakpoint: 480,
 				settings: {
 					dots: true,
-					slidesToShow: 2,
-					slidesToScroll: 2
+					slidesToShow: 1,
+					slidesToScroll: 1
 				}
 			}]
+		});
+	};
+
+	/**
+	 * Método para montar link de carrinho com produtos
+	 */
+	this.buyChaordicInstall = function() {
+		$('.js-shelf-item__button').on('click', function(e) {
+			e.preventDefault();
+
+			var buyButton      = $('#BuyButton a.buy-button'),
+				buyButtonLink  = buyButton.attr('href'),
+				modalBuyButton = $('#modal-sku .buy-button'),
+				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku');
+
+			if ($('.skuselector-specification-label').hasClass('checked')) {
+				$(location).attr('href', buyButtonLink + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+			} else {
+				buyButton.trigger('click');
+
+				$(window).on('skuSelected.vtex', function() {
+					modalBuyButton.attr('href', modalBuyButton.attr('href') + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+				});
+			}
+		});
+	};
+
+	/**
+	 * Método para add produto no carrinho
+	 */
+	this.buyChaordicInstallCart = function() {
+		$('.js-item-voltage input').on('change', function(e) {
+			e.preventDefault();
+
+			var sku = $(this).attr('data-sku');
+
+			$('.shelf-item__voltage-option').removeClass('checked');
+			$(this).parent('.shelf-item__voltage-option').addClass('checked');
+			$(this).closest('.js-item-voltage').find('.js-shelf-item__button-cart').attr('data-href', sku);
+		});
+
+		$('.js-shelf-item__button-cart').on('click', function(e) {
+			e.preventDefault();
+
+			var item = {
+				id: $(this).attr('data-href'),
+				quantity: 1,
+				seller: '1'
+			};
+			vtexjs.checkout.addToCart([item], null, 3)
+				.done(function(orderForm) {
+					$('html, body').animate({ scrollTop: 0 }, 'slow');
+			});
 		});
 	};
 });
