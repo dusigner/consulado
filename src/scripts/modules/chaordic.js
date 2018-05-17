@@ -151,7 +151,7 @@ Nitro.module('chaordic', function() {
 								}							
 								
 								self.cropName(v, 25);
-								v.isPersonalized = v.feature === 'ViewPersonalized';
+								v.isPersonalized = v.feature === 'ViewPersonalized' || 'HistoryPersonalized';
 							});
 							console.log(shelf);
 
@@ -232,7 +232,7 @@ Nitro.module('chaordic', function() {
 							Nitro.module('prateleira');
 
 							$self.parents('[data-chaordic]').addClass('chaordic--runned');
-							$self.removeClass('js-content-lazy');
+							//$self.removeClass('js-content-lazy');
 
 						});
 				}
