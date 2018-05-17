@@ -1,0 +1,66 @@
+
+{?products}
+	
+{#products}
+<li>
+
+	<article class="box-produto  withDe   withAdicional   comEstoque  list-percent" data-idproduto="{id}"
+		data-department="" data-category="" data-percent="">
+		<div class="detalhes">
+			<a href="{url}"
+				title="{name}" class="image">
+				<img src="{images.default}"
+					width="345" height="345" alt="{name}" id="">
+
+				<div class="FlagsHightLight">
+					<!-- <p class="flag todos">Todos</p>
+					<p class="flag -compra-certa---canais--top50cc">[COMPRA CERTA] [CANAIS] TOP50CC</p>
+					<p class="flag -midia--click50">[MIDIA] CLICK50</p>
+					<p class="flag -colab--home----prateleira---lavadora">[Colab][HOME] - Prateleira - Lavadora</p>
+					<p class="flag frete-norte">Frete Norte</p> -->
+				</div>
+				<!-- <span class="off">32<small>%</small><p><em>Off</em></p></span> -->
+
+			</a>
+
+			<a href="{url}" title="{name}"
+				class="prod-info">
+				<h3 class="nome">{name}
+					<span>
+						<div class="product-field">
+							Nome modelo prateleira
+							<ul>
+								<li>{details.productRef}</li>
+							</ul>
+						</div>
+					</span>
+				</h3>
+				<div class="descricao-prod">
+					
+					<div class="price">
+						<p class="de">
+							<span class="txtDe">De: </span> <span class="val">{oldPrice|chaordicCurrency}</span>
+						</p>
+						<p class="por">
+							<span class="txtPor">Por: </span> <span class="val">{price|chaordicCurrency}</span>
+							<span class="off" style="display: inline;">20% OFF</span>
+						</p>
+						<p class="adicional">
+							<span class="vezes">{installment.count}<span class="x">x</span></span> <span class="d">de</span> <span class="val">{installment.price|chaordicCurrency} </span>
+								<span class="total-parcelado">
+								<span class="total-parcelado__txt hide">Total parcelado: </span>
+								<span class="val"> {price|chaordicCurrency}</span>
+							</span>
+						</p>
+						
+						<p class="discount-boleto">1x no cartão de crédito: {price|chaordicCurrency}</p>
+					</div>
+
+				</div>
+			</a>
+		</div>
+		
+	</article>
+</li>
+{/products}
+{/products}
