@@ -530,12 +530,8 @@ $(window).on('load', function() {
 		};
 
 		// Reinput
-<<<<<<< HEAD
-		this.reinput = function () {			
-=======
 		this.reinput = function () {
 			console.info('Reinput');
->>>>>>> PLAT-6588_remove_select
 			var userType = vtexjs.checkout.orderForm.userType;
 
 			self.html = function () {
