@@ -217,8 +217,8 @@ Nitro.module('checkout.gae', function() {
 			// Classe no box de garantia
 			var $anchorGae = $('.anchor-gae');
 			$anchorGae.on('click', function() {
-				$anchorGae.not(this).removeClass('active')
-					.filter(this).addClass('active');
+				$anchorGae.not(this).removeClass('active').filter(this).addClass('active');
+				$('.row-product-and-action .btn-continue').html('Continuar <span>›</span>');
 			});
 
 			// Abrindo mais detalhes da garantia

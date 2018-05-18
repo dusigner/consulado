@@ -204,7 +204,10 @@ $(window).on('load', function() {
 				self.smartbeer();
 			}
 
-			self.reinput();
+			if ( window.location.host.indexOf('vtexcommercestable') >= 0 ) {
+				self.reinput();
+			}
+
 
 			testeabEntregaAgendada.setup(orderForm);
 
@@ -527,7 +530,12 @@ $(window).on('load', function() {
 		};
 
 		// Reinput
+<<<<<<< HEAD
 		this.reinput = function () {			
+=======
+		this.reinput = function () {
+			console.info('Reinput');
+>>>>>>> PLAT-6588_remove_select
 			var userType = vtexjs.checkout.orderForm.userType;
 
 			self.html = function () {
