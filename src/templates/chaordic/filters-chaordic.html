@@ -1,0 +1,43 @@
+<!-- filter content -->
+<div class="filter-wrapper">
+	{?filters}
+	<div class="container departament-nav clearfix">
+		<div class="clearfix row">
+			<div class="col-xs-12">
+				<p class="title-filter"></p>
+				<div class="navigation-tabs">
+					<div class="menu-departamento">
+						
+						<div>
+							
+							<div class="search-multiple-navigator">
+								{#filters}
+									{#attribute}
+									<fieldset class="refino-{attribute|sanitize} even {attribute|sanitize}">
+										<h5 class="even">{attribute}</h5>
+										<div class="list-values">
+											{#values}
+											<label {?.selected}class="active"{/.selected}>
+												<input rel="{applyLink}{removeLink}" class="multi-search-checkbox" type="checkbox" name="" value="">{label}
+												<span>({size})</span>
+											</label>
+											{/values}
+										</div>
+									</fieldset>
+									{/attribute}
+									<!-- {@eq key=attribute value="Preço"}
+										<h1>Preço</h1>
+									{/eq} -->
+								{/filters}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	{/filters}
+	<button class="clear-filter" rel="{removeAllFiltersLink}">Limpar filtros</button>
+</div>
+<!-- filter content -->
