@@ -185,6 +185,14 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			vertical-align: top;
 
 			&:first-child { width: 265px; }
+
+			// Esconde o primeiro select 
+			&:nth-child(3) { 
+				display: none !important;
+				height: 0;
+				overflow: hidden;
+				width: 0;
+			 }
 		}
 
 		// Warning Best Option
