@@ -202,10 +202,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			&.active {
 				.close-warranty {
-					left: 22px;
 					opacity: 1;
-					right: initial;
-					top: 25px;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
@@ -213,10 +210,10 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			.close-warranty {
 				height: 30px;
+				left: 25px;
 				opacity: 0;
 				position: absolute;
-				right: 5px;
-				top: 5px;
+				top: 22px;
 				transform: scale(0);
 				transition: .3s linear all;
 				width: 30px;
@@ -749,6 +746,15 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				overflow: hidden;
 				width: 0;
 			 }
+
+			 
+			.close-warranty {
+				left: initial;
+				right: 5px;
+				top: 5px;
+				
+			}
+			
 
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {
