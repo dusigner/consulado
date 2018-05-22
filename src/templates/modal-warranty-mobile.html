@@ -47,6 +47,7 @@
 					{#warranty}
 						<input type="radio" name="warranty-value" id="warranty{id}" value="{id}" class="fakeInput">
 						<div class="modal__cell">
+							<span class="close-warranty"><i class="icon icon-remove item-remove-ico"></i></span>
 							<label for="warranty{id}" class="box-opcao-garantia anchor-gae">
 
 								<div class="show-more anchor-gae"><i class="fa icon-angle-down"></i></div>
@@ -102,7 +103,7 @@
 							<p>A contratação desse seguro é <strong>opcional</strong>.</p>
 							<a href="/garantiaestendida" target="_blank">Saiba como funciona</a>
 						</div>
-						<span class="btn-continue btn-success" data-index="{productIndex}">Não tenho interesse <span>›</span></span>
+						<span class="btn-continue btn-success locked" data-index="{productIndex}">Não tenho interesse <span>›</span></span>
 					</div>
 
 					<div class="termos-de-autorizacao termos-mobile">

@@ -56,6 +56,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					.title-garantia {
 						background-color: $green;
 						color: #fff;
+
+							&:before,
+							&:after {
+								display: none;
+							}
 					}
 
 					.bottom-garantia {
@@ -197,7 +202,10 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			&.active {
 				.close-warranty {
+					left: 22px;
 					opacity: 1;
+					right: initial;
+					top: 25px;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
@@ -640,6 +648,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 							font-family: FontAwesome;
 							font-size: 30px;
 						}
+					}
+
+					&.locked {
+						background-color: #ffffff;
+    					color: #f47921;
 					}
 				}
 			}
