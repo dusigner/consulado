@@ -13,11 +13,12 @@ require('modules/slider-banner');
 require('modules/resultado-busca');
 require('custom/modal.overlayAbandono');
 require('modules/chaordic');
+require('modules/listagem/busca-chaordic');
 //require('custom/promo.lightbox');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'compare', 'slider-banner', 'resultado-busca', 'modal.overlayAbandono', 'calculadorabtu', 'busca-chaordic' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
