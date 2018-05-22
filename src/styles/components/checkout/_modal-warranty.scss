@@ -192,7 +192,90 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				height: 0;
 				overflow: hidden;
 				width: 0;
-			 }
+			}
+
+
+			&.active {
+				.close-warranty {
+					transition: .3s linear all;
+					transform: scale(1);
+					opacity: 1;
+				}
+			}
+
+			.close-warranty {
+				position: absolute;
+				right: 0;
+				width: 30px;
+				height: 30px;
+				top: 0;
+				opacity: 0;
+				transform: scale(0);
+				transition: .3s linear all;
+				z-index: 22;
+				
+				&:before {
+					transition: .2s linear all;
+					content: 'Remover';
+					font-size: 10px;
+					color: #fff;
+					background: #e24444;
+					padding: 0px 3px;
+					text-align: center;
+					border-radius: 4px;
+					position: absolute;
+					top: -18px;
+					opacity: 0;
+					right: -10px;
+					border: 1px solid #b72b2b;
+				}
+
+				
+				&:after {
+					transition: .2s linear all;
+					position: absolute;
+					width: 6px;
+					height: 6px;
+					display: block;
+					top: -4px;
+					opacity: 0;
+					right: 12px;
+					background: #e24444;
+					content: '';
+					transform: rotate(135deg);
+					border-top: 1px solid #b72b2b;
+					border-right: 1px solid #b72b2b;
+				}
+
+				.icon-remove {
+					color: #fff;
+					top: 0;
+					right: 0;
+					cursor: pointer;
+					font-size: 22px;
+					transition: .2s linear all;
+				}
+				
+				&:hover {
+
+					&:before {
+						top: -22px;
+						opacity: 1;
+						transition: .2s linear all;
+					}
+
+					&:after {
+						top: -8px;
+						opacity: 1;
+						transition: .2s linear all;
+					}
+
+					.icon-remove{
+						color: #f47921;
+						transition: .3s linear all;				
+					}
+				}
+			}
 		}
 
 		// Warning Best Option

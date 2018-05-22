@@ -220,6 +220,8 @@ Nitro.module('checkout.gae', function() {
 			$anchorGae.on('click', function() {
 				$anchorGae.not(this).removeClass('active').filter(this).addClass('active');
 				$('.row-product-and-action .btn-continue').html('Continuar <span>›</span>');
+				$('.modal__cell').removeClass('active');
+				$(this).parent('.modal__cell').addClass('active');
 			});
 
 			// Abrindo mais detalhes da garantia
