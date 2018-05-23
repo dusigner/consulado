@@ -41,17 +41,18 @@ Nitro.module('busca-chaordic', function () {
 		term 		= uriBusca.getQueryParamValues('q'),
 		filters 	= uriBusca.getQueryParamValues('filter'), 
 		sortby 		= uriBusca.getQueryParamValues('sortBy'),
+		collection 	= uriBusca.getQueryParamValues('fq'),
 		sortbyName  = sortby,
 
-		$header 				= $('.resultado-wrapper'),
-		$suggestions 			= $('.suggestions-container'),
-		$orderby 				= $('#prateleira.list-container .order-wrapper'),
-		$filters 				= $('.result-filter .filter-container'),
-		$prateleira 			= $('.list-content .vitrine .prateleira.default.n12colunas ul'),
-		$prateleiraContainer 	= $('#prateleira'),
+		$header 				= $('.busca-chaordic.resultado-busca .resultado-wrapper'),
+		$suggestions 			= $('.busca-chaordic.suggestions-container'),
+		$orderby 				= $('.busca-chaordic.result-filter #prateleira.list-container .order-wrapper'),
+		$filters 				= $('.busca-chaordic.result-filter .filter-container'),
+		$prateleira 			= $('.busca-chaordic .list-content .vitrine .prateleira.default.n12colunas ul'),
+		$prateleiraContainer 	= $('.busca-chaordic #prateleira'),
 		$pagination 			= $prateleiraContainer.find('.paginationSearch');
 		// $filterWrapper 			= $('.filter-container div.filter-wrapper');
-
+		console.log('##############################################FUNFANDO##################################################');
 	/**
 	 * 
 	 * @function getChaordicData
@@ -70,14 +71,14 @@ Nitro.module('busca-chaordic', function () {
 			$prateleiraContainer.removeClass('loading');
 		}).error(function() {
 			// Show the no result statement
-			if ($('.result-filter.container h2').length <=0 ){
+			if ($('.busca-chaordic.resultado-busca .result-filter.container h2').length <=0 ){
 				$prateleiraContainer.removeClass('loading');
 				$('body').addClass('busca-vazio');
-				$('#prateleira').remove();
-				$('.filter-container, .order-wrapper').css('display', 'none');
-				$('.result-filter.container').append('<h2><strong>Ops...Não encontramos nenhum</strong><br/>produto relacionado à sua busca.</h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Mas não precisa desanimar! Quer uma dica? </h3><ul><li class="nm-not-found-tip">Verifique se a palavra foi digitada corretamente</li><li class="nm-not-found-tip">Tente buscar por palavras-chave diferentes</li><li class="nm-not-found-tip">Faça buscas relacionadas</li></ul></div>');
+				$('div.busca-chaordic #prateleira').remove();
+				$('.busca-chaordic.result-filter .filter-container, .busca-chaordic.result-filter .order-wrapper').css('display', 'none');
+				$('.busca-chaordic.result-filter.container').append('<h2><strong>Ops...Não encontramos nenhum</strong><br/>produto relacionado à sua busca.</h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Mas não precisa desanimar! Quer uma dica? </h3><ul><li class="nm-not-found-tip">Verifique se a palavra foi digitada corretamente</li><li class="nm-not-found-tip">Tente buscar por palavras-chave diferentes</li><li class="nm-not-found-tip">Faça buscas relacionadas</li></ul></div>');
 				setTimeout(function(){
-					$('.resultado-busca .resultado-wrapper').html('<span>Você buscou por:<br/> <strong class="noresult">"'+ term +'"</strong></span>');
+					$('.busca-chaordic.resultado-busca .resultado-wrapper').html('<span>Você buscou por:<br/> <strong class="noresult">"'+ term +'"</strong></span>');
 				},10);
 			}
 		});
@@ -540,6 +541,17 @@ Nitro.module('busca-chaordic', function () {
 	};
 
 	this.setup = function() {
+		
+		if(collection.length >= 1){
+			$('div.busca-chaordic').remove();
+			$('div.busca-vtex').removeClass('hide');
+			$('body.busca-chaordic').removeClass('categoria');
+		}else{
+			$('div.busca-vtex').remove();
+			$('div.busca-chaordic').removeClass('hide');
+			$('body.busca-chaordic').removeClass('busca');
+		}
+		
 		var $termSearch = self.getTermSearch();
 
 		self.getChaordicData($termSearch).always(function (data) {
