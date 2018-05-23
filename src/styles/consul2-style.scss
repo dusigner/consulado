@@ -27,6 +27,8 @@
 @import 'helpers/debug';
 @import 'helpers/responsive-debug';
 @import 'helpers/family';
+
+// Utility helpers / Vendors
 @import 'helpers/slick';
 @import 'helpers/mfp-main';
 @import 'helpers/nouislider';
@@ -59,9 +61,9 @@
 @import 'components/search';
 @import 'components/cart';
 @import 'components/callcenter';
-@import 'components/banners';
-@import 'components/mod-prateleira';
-@import 'components/list-filtro';
+// @import 'components/banners';
+//@import 'components/mod-prateleira';
+//@import 'components/list-filtro';
 
 @import 'components/modal';
 @import 'components/supermodel';
@@ -69,10 +71,10 @@
 @import 'components/notify-me';
 @import 'components/footer';
 @import 'components/servicos';
-@import 'components/selos';
+//@import 'components/selos';
 @import 'components/modal-emailCRM';
-@import 'components/banners-controller';
-@import 'components/modalLogin';
+// @import 'components/banners-controller';
+//@import 'components/modalLogin';
 
 // @import "components/scroll";
 // @import "components/mod-zoom";
@@ -83,18 +85,18 @@
 
 
 // Pages styles
-@import 'pages/home';
-@import 'pages/product';
-@import 'pages/listagem';
-@import 'pages/listagem-mobile';
+//@import 'pages/home';
+//@import 'pages/product';
+// @import 'pages/listagem';
+// @import 'pages/listagem-mobile';
 @import 'pages/landings';
-@import 'pages/login';
+//@import 'pages/login';
 
 // Custom styles
 @import 'custom/promo.lightbox';
 @import 'custom/modal.overlay';
 // @import 'custom/modal.overlayLead';
-@import 'custom/lead-newsletter';
+//@import 'custom/lead-newsletter';
 // @import "custom/modal.cupom10off";
 //@import "custom/modal.blackfriday";
 

@@ -3,8 +3,6 @@
 var Uri = require('vendors/Uri');
 var CRM = require('modules/store/crm');
 
-require('vendors/jquery.inputmask');
-
 Nitro.module('lead-newsletter', function() {
 
 	// Teste AB Controller

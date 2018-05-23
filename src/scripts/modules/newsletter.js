@@ -5,14 +5,13 @@ require('vendors/jquery.placeholder');
 
 Nitro.module('newsletter', function() {
 
-
 	var self = this,
 		$newsletter = $('.form-newsletter'),
 		$submit = $newsletter.find('[type="submit"]'),
 		$inputs = $newsletter.find('input[type="text"], input[type="email"]'),
 		$errorBox = $('<label class="error" />');
 
-	$inputs.placeholder();
+	// $inputs.placeholder();
 
 	this.validateForm = function() {
 

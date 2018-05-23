@@ -1,7 +1,5 @@
 'use strict';
 
-require('modules/helpers');
-
 // Dust filters
 _.extend(dust.filters, {
 	orderNumber: function(value) {

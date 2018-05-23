@@ -15,16 +15,12 @@ require('modules/product/notify-me');
 require('modules/product/share');
 require('modules/product/quiz-install');
 require('modules/product/upsell');
-require('modules/chaordic');
 // require('modules/product/special-content');
 
 
-Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function(chaordic) {
+Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
 	var self = this,
 		$body = $('body');
-		
-	//INICIA CHAMADA DAS VITRINES CHAORDIC
-	chaordic.init('product', window.skuJson.productId);
 
 	// Teste AB
 	var urlTesteAb = window.location.search;
@@ -271,8 +267,8 @@ Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', '
 
 
 				} else{
-					        qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
-					    var nome    = data[0].items[0].name;
+					    qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+					var nome    = data[0].items[0].name;
 
 					Index.calcQntStoqOnly(qnt110v);
 

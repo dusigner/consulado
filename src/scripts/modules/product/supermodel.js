@@ -1,8 +1,6 @@
 /* global $: true, Nitro: true, dust */
 'use strict';
 
-require('vendors/ajax.localstorage');
-
 require('../../../templates/supermodel.html');
 
 Nitro.module('supermodel', function() {
