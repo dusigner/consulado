@@ -2,16 +2,6 @@
 
 'use strict';
 
-<<<<<<< HEAD
-require('vendors/jquery.cookie');
-require('vendors/jquery.debounce');
-require('vendors/dust-helpers');
-
-require('modules/helpers');
-require('modules/prateleira');
-=======
->>>>>>> PLAT-6377_quebra-arquivos
-
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
 require('../../templates/chaordic/shelf-content-placeholder-default.html');
@@ -340,11 +330,8 @@ Nitro.module('chaordic', function() {
 						if(item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
-<<<<<<< HEAD
 							product.itemId = item[0].itemId;
-=======
 
->>>>>>> PLAT-6377_quebra-arquivos
 							product.priceInfo = item[0].sellers[0].commertialOffer;
 							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
@@ -353,13 +340,10 @@ Nitro.module('chaordic', function() {
 
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-<<<<<<< HEAD
 							product.link = product.link.replace('https://loja.consul.com.br', '');
 							
-=======
 
 
->>>>>>> PLAT-6377_quebra-arquivos
 							self.finalRender(product, $box);
 						} else {
 							self.renderUnavailable(product, $box);
