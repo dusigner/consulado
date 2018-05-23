@@ -151,7 +151,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function (success) {										
+					success: function () {						
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
