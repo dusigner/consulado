@@ -492,24 +492,24 @@ body.listagem {
 }
 
 // TesteAB vitrine chaordic
-.vitrineTesteB { display: none; }
-body.test__vitrine--show-b {
-	.mosaico-secundarios-left,
-	.mosaico-secundarios-right { display: none; }
-	.vitrineTesteB {
-		display: inline-block;
-    	margin-right: 10px;
-		width: 100%;
-	}
-	.banner-principal { display: none!important; }
-	.banners-mobile { display: none; }
-	.vitrineTesteA { display: none; }
-	.banners-secundarios-mosaico {
-		@include breakpoint(small, 'max') {
-			display: block!important;
-		}
-	}
-}
+// .vitrineTesteB { display: none; }
+// body.test__vitrine--show-b {
+// 	.mosaico-secundarios-left,
+// 	.mosaico-secundarios-right { display: none; }
+// 	.vitrineTesteB {
+// 		display: inline-block;
+//     	margin-right: 10px;
+// 		width: 100%;
+// 	}
+// 	.banner-principal { display: none!important; }
+// 	.banners-mobile { display: none; }
+// 	.vitrineTesteA { display: none; }
+// 	.banners-secundarios-mosaico {
+// 		@include breakpoint(small, 'max') {
+// 			display: block!important;
+// 		}
+// 	}
+// }
 
 body.busca-chaordic {
 	.col-xs-12 {

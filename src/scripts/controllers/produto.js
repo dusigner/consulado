@@ -29,16 +29,16 @@ Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', '
 	chaordic.init('product', window.skuJson.productId);
 
 	// Teste AB
-	var urlTesteAb = window.location.search;
-	var testeA     = 'testeab=a';
-	var testeB     = 'testeab=b';
+	// var urlTesteAb = window.location.search;
+	// var testeA     = 'testeab=a';
+	// var testeB     = 'testeab=b';
 
-	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-		$body.addClass('ab-test__mobile--show-b');
-	}
-	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-		$body.addClass('ab-test__mobile--show-b');
-	}
+	// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+	// 	$body.addClass('ab-test__mobile--show-b');
+	// }
+	// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+	// 	$body.addClass('ab-test__mobile--show-b');
+	// }
 
 
 	window.alert = function(e) {
