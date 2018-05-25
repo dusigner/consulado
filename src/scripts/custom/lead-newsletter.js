@@ -8,17 +8,17 @@ require('vendors/jquery.inputmask');
 Nitro.module('lead-newsletter', function() {
 
 	// Teste AB Controller
-	var urlTesteAb = window.location.search;
-	var $body = $('body');
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
+	// var urlTesteAb = window.location.search;
+	// var $body = $('body');
+	// var testeA = 'testeab=a';
+	// var testeB = 'testeab=b';
 
-	if (urlTesteAb.indexOf(testeA) >= 0) {
-		$body.removeClass('teste-ab__news-phone-show--b');
-	}
-	else if (urlTesteAb.indexOf(testeB) >= 0) {
-		$body.addClass('teste-ab__news-phone-show--b');
-	}
+	// if (urlTesteAb.indexOf(testeA) >= 0) {
+	// 	$body.removeClass('teste-ab__news-phone-show--b');
+	// }
+	// else if (urlTesteAb.indexOf(testeB) >= 0) {
+	// 	$body.addClass('teste-ab__news-phone-show--b');
+	// }
 
 	// Input mask para campos do tipo telefone
 	$('input[type=tel]').inputmask('99 [9]9999-9999');
