@@ -34,12 +34,6 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 		$body.addClass('ab-test__mobile--show-b');
 	}
 
-
-	window.alert = function(e) {
-		console.error(e);
-		return;
-	};
-
 	// Exibe Informação de "Compra segura" quando o
 	// botão comprar estiver exibindo na página
 	if ($('#BuyButton .buy-button').is(':visible')) {
@@ -342,5 +336,38 @@ Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'de
 		});
 
 	})(window, document, jQuery);
+
+	// ativa calculo de frete na pagina de produto
+	$('#popupCalculoFreteWrapper a').trigger('click');
+	$(window).load(function(){
+
+		var $loadingFret = $('span.frete-calcular'),
+			$containerFrete = $('.freight-values');
+
+		$('#btnFreteSimulacao').ajaxStart(function(){
+			$loadingFret.addClass('loading');
+			$containerFrete.removeClass('active erro');
+		});
+
+		$('#btnFreteSimulacao').ajaxStop(function(){
+			$loadingFret.removeClass('loading');
+			$containerFrete.addClass('active');
+			$containerFrete.prepend('<i class="closed"></i>');			
+		});
+
+		$('body').on('click', '.freight-values .closed', function() {
+			$containerFrete.html('').removeClass('active erro');
+		});
+
+		window.alert = function(e) {
+			console.info(e);
+			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.'){
+				$containerFrete.html(e).addClass('active erro').css('display', 'block');
+				$containerFrete.prepend('<i class="closed"></i>');
+			}
+			return;
+		};
+	});
+
 
 });
