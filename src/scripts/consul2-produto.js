@@ -15,11 +15,10 @@ require('modules/product/notify-me');
 require('modules/product/share');
 require('modules/product/quiz-install');
 require('modules/product/upsell');
-require('modules/chaordic');
 // require('modules/product/special-content');
 
 
-Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
 	var self = this,
 		$body = $('body');
 
@@ -50,7 +49,7 @@ Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', '
 	}
 
 	var $reference  = $('.reference'),
-		$productSku = $('.productSku');
+	    $productSku = $('.productSku');
 
 	//TROCA DE NOMES PRODUCT / SKUREF
 	$(document).on('skuSelected.vtex', function() {
@@ -122,18 +121,18 @@ Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', '
 	//Opções de parcelamento
 	self.valoresParcelas = function() {
 		var $valoresParcelas    = $('.valores-parcelas'),
-			$showParcelas       = $valoresParcelas.find('.titulo-parcelamento'),
-			$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+		    $showParcelas       = $valoresParcelas.find('.titulo-parcelamento'),
+		    $opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
 
 		$showParcelas.text('Ver parcelas');
 
 		$opcoesParcelamento.find('li').each(function() {
 			var $numeroParcelas = $(this).find('span:first-child'),
-				numeroParcelas  = $numeroParcelas.text().split('X')[0],
-				$valorParcela   = $(this).find('strong'),
-				valorParcela    = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
-				text            = $numeroParcelas.text().replace('de', ''),
-				precoTotal      = parseFloat(numeroParcelas * valorParcela).toFixed(2);
+			    numeroParcelas  = $numeroParcelas.text().split('X')[0],
+			    $valorParcela   = $(this).find('strong'),
+			    valorParcela    = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
+			    text            = $numeroParcelas.text().replace('de', ''),
+			    precoTotal      = parseFloat(numeroParcelas * valorParcela).toFixed(2);
 
 			$(this).append('<span class="valor-total">Total: R$ ' + precoTotal.toString().replace('.',',') + '</span>');
 			$numeroParcelas.text(text);
@@ -268,7 +267,7 @@ Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', '
 
 
 				} else{
-					qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+					    qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
 					var nome    = data[0].items[0].name;
 
 					Index.calcQntStoqOnly(qnt110v);

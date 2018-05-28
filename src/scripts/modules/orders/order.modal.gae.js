@@ -1,7 +1,5 @@
 'use strict';
 
-require('modules/helpers');
-
 var ModalGae = {
 	$body: $('body'),
 	template: '<div class="text-center modal-gae__body">' +

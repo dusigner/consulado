@@ -5,8 +5,6 @@
 
 'use strict';
 
-require('vendors/vtex-modal');
-
 Nitro.module('customLogin', function() {
 	var self = this,
 		returnUrl = false,

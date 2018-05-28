@@ -2,7 +2,6 @@
 
 'use strict';
 
-require('vendors/jquery.debounce');
 //require('vendors/portal-buy-button');
 
 Nitro.module('search', function() {

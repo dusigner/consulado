@@ -4,9 +4,6 @@
 // require('../../../templates/notify-me.html');
 // require('vendors/portal-notify-me');
 
-require('vendors/jquery.inputmask');
-
-
 Nitro.module('notify-me', function() {
 
 	var televendas = $('a[title*="Televendas"]').clone().attr('title', 'Televendas').addClass('notifyme-televendas');

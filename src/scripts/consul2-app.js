@@ -5,6 +5,14 @@
 
 require('modules/helpers');
 
+// Vendors
+require('vendors/jquery.cookie');
+require('vendors/jquery.inputmask');
+require('vendors/jquery.debounce');
+require('vendors/slick');
+require('vendors/ajax.localstorage');
+require('vendors/vtex-modal');
+
 if (VERSION) {
 
 	console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
@@ -17,7 +25,7 @@ if (VERSION) {
 //load Nitro Lib
 require('vendors/nitro');
 
-require('modules/_autoloader');
+// require('modules/_autoloader');
 
 require('expose?store!modules/store/store');
 require('expose?publishDataLayer!modules/bi/publish-data-layer');
@@ -32,12 +40,9 @@ require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
-require('modules/linkDoubleClick');
 require('modules/customLogin');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'linkDoubleClick', 'redirect', 'customLogin'], function() {
-	$('.helperComplement').remove();
-
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin'], function() {
 	var path = window.location.pathname;
 
 	if (path === '/atendimento') {

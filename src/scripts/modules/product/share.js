@@ -2,7 +2,6 @@
 'use strict';
 
 require('modules/store/facebook-init');
-require('vendors/vtex-modal');
 
 var CRM = require('modules/store/crm.js');
 

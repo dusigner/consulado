@@ -8,6 +8,7 @@ require('modules/chaordic');
 require('modules/linkDoubleClick');
 
 Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'linkDoubleClick'], function(chaordic) {
+
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
