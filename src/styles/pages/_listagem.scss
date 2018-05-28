@@ -589,9 +589,9 @@ body.busca-chaordic {
 	}
 
 	&.busca-vazio {
-		.resultado-busca {
-			// display: none;
-		}
+		// .resultado-busca {
+		// 	// display: none;
+		// }
 		.result-filter.container h2 {
 			@include responsiveFont(18, 14, true);
 			font-size: 2em;

@@ -146,7 +146,6 @@ Nitro.module('chaordic', function() {
 								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized' || 'HistoryPersonalized';
 							});
-							console.log(shelf);
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
@@ -630,9 +629,9 @@ Nitro.module('chaordic', function() {
 				seller: '1'
 			};
 			vtexjs.checkout.addToCart([item], null, 3)
-				.done(function(orderForm) {
+				.done(function() {
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
-			});
+				});
 		});
 	};
 });
