@@ -146,10 +146,7 @@ Nitro.module('chaordic', function() {
 								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized' || 'HistoryPersonalized';
 							});
-<<<<<<< HEAD
-=======
 							// console.log(shelf);
->>>>>>> PLAT-6608_Busca-API-Chaordic-QA
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
