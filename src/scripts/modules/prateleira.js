@@ -3,6 +3,8 @@
 require('modules/percentoff');
 
 Nitro.module('prateleira', ['percentoff'], function() {
+	$('.helperComplement').remove();
+
 	var $shelf = $('.prateleira-slider');
 
 	this.hiddenEmptyShelves = function() {

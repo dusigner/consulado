@@ -6,8 +6,8 @@ var noUiSlider = require('vendors/nouislider');
 require('../../../templates/listagem/range-price.html');
 require('../../../templates/listagem/range.html');
 require('../../../templates/listagem/filter-submenu.html');
-require('modules/listagem/order-by');
 
+require('modules/listagem/order-by');
 
 Nitro.module('filters', ['order-by'], function (orderBy) {
 	var self = this,

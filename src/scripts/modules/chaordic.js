@@ -2,12 +2,6 @@
 
 'use strict';
 
-require('vendors/jquery.cookie');
-require('vendors/jquery.debounce');
-require('vendors/dust-helpers');
-
-require('modules/helpers');
-require('modules/prateleira');
 
 //Templates dust usados
 require('../../templates/chaordic/shelf-content-placeholder-product.html');
@@ -337,17 +331,16 @@ Nitro.module('chaordic', function() {
 						if(item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
-							product.itemId = item[0].itemId;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
 							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
-	
+
 							product.finalImages = self.prepareImages(item[0].images, '300');
-	
+
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-							product.link = product.link.replace('https://loja.consul.com.br', '');
-							console.log(product);
+
+
 							self.finalRender(product, $box);
 						} else {
 							self.renderUnavailable(product, $box);

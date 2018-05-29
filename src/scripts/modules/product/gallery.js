@@ -1,5 +1,7 @@
 'use strict';
+
 require('vendors/mfp');
+
 Nitro.module('gallery', function() {
 
 
