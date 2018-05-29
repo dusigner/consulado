@@ -22,9 +22,6 @@ require('modules/chaordic');
 Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function(chaordic) {
 	var self = this,
 		$body = $('body');
-		
-	//INICIA CHAMADA DAS VITRINES CHAORDIC
-	chaordic.init('product', window.skuJson.productId);
 
 	// Teste AB
 	var urlTesteAb = window.location.search;

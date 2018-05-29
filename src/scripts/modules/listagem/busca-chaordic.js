@@ -52,7 +52,6 @@ Nitro.module('busca-chaordic', function () {
 		$prateleiraContainer 	= $('.busca-chaordic #prateleira'),
 		$pagination 			= $prateleiraContainer.find('.paginationSearch');
 		// $filterWrapper 			= $('.filter-container div.filter-wrapper');
-		console.log('##############################################FUNFANDO##################################################');
 	/**
 	 * 
 	 * @function getChaordicData

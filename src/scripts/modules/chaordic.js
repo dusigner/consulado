@@ -146,6 +146,10 @@ Nitro.module('chaordic', function() {
 								self.cropName(v, 25);
 								v.isPersonalized = v.feature === 'ViewPersonalized' || 'HistoryPersonalized';
 							});
+<<<<<<< HEAD
+=======
+							// console.log(shelf);
+>>>>>>> PLAT-6608_Busca-API-Chaordic-QA
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
@@ -329,8 +333,6 @@ Nitro.module('chaordic', function() {
 						if(item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
-							product.itemId = item[0].itemId;
-
 							product.priceInfo = item[0].sellers[0].commertialOffer;
 							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
 							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
@@ -339,8 +341,6 @@ Nitro.module('chaordic', function() {
 
 							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
-							product.link = product.link.replace('https://loja.consul.com.br', '');
-							
 
 
 							self.finalRender(product, $box);
