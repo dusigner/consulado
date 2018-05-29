@@ -41,7 +41,6 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		$('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
 	};
 
-
 	//inicia automaticamente prateleiras sliders no desktop
 	if ($(window).width() > 768) {
 		self.setupSlider($slider);
