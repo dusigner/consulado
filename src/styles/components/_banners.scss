@@ -2,6 +2,10 @@
 .banners-mobile {
 	position: relative;
 
+	@include breakpoint(small, 'max') {
+		min-height: 360px;
+	}
+
 	.container {
 		height: 0;
 		left: 50%;
@@ -44,10 +48,13 @@
 
 // Banner principal DESKTOP
 .banner-principal {
+	opacity: 0;
 	overflow: hidden;
 	padding: 0 !important;
 	position: relative;
-
+	&.banner-loaded {
+		opacity: 1;
+	}
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
 	@include breakpoint(extra-large, 'min') { min-height: 340px; }
 
@@ -110,5 +117,29 @@
 	#modal-regulamento-banner {
 		padding: 20px;
 		text-align: left;
+	}
+}
+
+.fake-banner {
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	img {
+		display: block;
+		height: auto;
+		left: 50%;
+		position: relative;
+		transform: translateX(-50%);
+		width: 1900px;
+		@include breakpoint(small, 'max') {
+			left: 0;
+			margin: 0 auto;
+			max-width: 100%;
+			transform: translateX(0);
+			width: auto;
+		}
 	}
 }
