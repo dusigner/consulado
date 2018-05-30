@@ -13,7 +13,7 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 
 	this.lazyLoad = function() {
 		var imagesCount = $bannerPrincipal.find('img').length,
-			count = 1;
+			count = ($(window).width() >= 768) ? 1 : 2;
 
 		$bannerPrincipal.find('img').load(function(e) {
 			count += 1;
