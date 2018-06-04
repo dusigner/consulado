@@ -60,7 +60,6 @@ Nitro.module('busca-chaordic', function () {
 	 * @returns an object using Chaordic API with product information
 	 */
 	this.getChaordicData = function($termSearch) {
-		console.log('####################################################WTF##################################################################################');
 		$prateleiraContainer.addClass('loading');
 			
 		return $.ajax({
