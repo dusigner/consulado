@@ -70,7 +70,7 @@ Nitro.module('busca-chaordic', function () {
 			$prateleiraContainer.removeClass('loading');
 		}).error(function() {
 			// Show the no result statement
-			if ($('.busca-chaordic.resultado-busca .result-filter.container h2').length <=0 ){
+			if ($('.busca-chaordic.result-filter.container h2').length <=0 ){
 				$prateleiraContainer.removeClass('loading');
 				$('body').addClass('busca-vazio');
 				$('div.busca-chaordic #prateleira').remove();
