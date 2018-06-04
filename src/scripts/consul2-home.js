@@ -8,6 +8,7 @@ require('modules/chaordic');
 require('modules/linkDoubleClick');
 
 Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'linkDoubleClick'], function(chaordic) {
+
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
@@ -39,7 +40,6 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		//ajusta para mobile - prateleira slider
 		$('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
 	};
-
 
 	//inicia automaticamente prateleiras sliders no desktop
 	if ($(window).width() > 768) {

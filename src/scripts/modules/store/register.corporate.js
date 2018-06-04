@@ -6,8 +6,6 @@ var validation = require('modules/store/validation');
 var getAddress = require('modules/store/getAddress');
 var redirect = require('modules/store/redirect');
 
-require('vendors/slick');
-
 Nitro.module('register.corporate', function() {
 
 	var self = this,

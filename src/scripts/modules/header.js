@@ -2,13 +2,12 @@
 'use strict';
 
 require('modules/header/cotas');
-require('modules/header/search');
+// require('modules/header/search');
 require('modules/header/welcome-message');
 require('modules/header/menu-hover');
 require('modules/header/cart');
-require('vendors/jquery.cookie');
 
-Nitro.module('header', ['cotas', 'search', 'welcome-message', 'menu-hover'], function() {
+Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'], function() {
 	var $body = $('body'),
 		$document = $(document);
 

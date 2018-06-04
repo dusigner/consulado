@@ -4,9 +4,6 @@
 
 var CRM = require('modules/store/crm');
 
-require('vendors/jquery.cookie');
-require('modules/helpers');
-
 Nitro.module('cotas', function() {
 	var self = this,
 		cota = store.isPersonal ? { consumed: 0, limit: 25 } : { consumed: 0, limit: 10 },

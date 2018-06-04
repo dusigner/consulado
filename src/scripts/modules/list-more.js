@@ -1,7 +1,5 @@
 'use strict';
 
-require('vendors/ajax.localstorage');
-
 Nitro.module('list-more', function() {
 
 
