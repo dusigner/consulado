@@ -728,7 +728,7 @@ $(window).on('load', function() {
 			
 		};
 
-		this.init();
+		this.init(); 
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
 
