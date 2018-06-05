@@ -4,9 +4,10 @@
     border-top-right-radius: 18px;
     bottom: 0;
     box-shadow: #000 0 22px 20px;    
+	max-width: 333px;
     position: fixed;
 	right: 20px;
-	width: 333px;
+	width: 87%;
 	z-index: 9990;
 		
 	> span.bar {
@@ -87,10 +88,11 @@
 		font-weight: normal;
 		line-height: normal;
 		margin-top: 20px;
+		max-width: 260px;
 		padding: 14px 10px;
 		text-align: center;
 		text-decoration: none;
-		width: 260px;
+		width: 100%;
 	}
 
 	.dimmer {
