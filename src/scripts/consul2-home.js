@@ -6,9 +6,9 @@ require('modules/slider-banner');
 require('custom/lead-newsletter');
 require('modules/chaordic');
 require('modules/linkDoubleClick');
+require('modules/chatHome');
 
-Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'linkDoubleClick'], function(chaordic) {
-
+Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'linkDoubleClick', 'chatHome'], function(chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
