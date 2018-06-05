@@ -7,11 +7,26 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 		smartFocus.renderBanner();
 	}
 
-	var $buttonOpenRegulamento = $('.open-regulamento');
+	var self = this,
+		$buttonOpenRegulamento = $('.open-regulamento'),
+		$bannerPrincipal = ($(window).width() >= 768) ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+
+	this.lazyLoad = function() {
+		var imagesCount = $bannerPrincipal.find('img').length,
+			count = ($(window).width() >= 768) ? 1 : 2;
+
+		$bannerPrincipal.find('img').load(function(e) {
+			count += 1;
+			if (imagesCount === count) {
+				$bannerPrincipal.addClass('banner-loaded');
+				self.setupMainSlider();		
+				$('.fake-banner').hide();
+			}
+		});
+	};
 
 	this.setupMainSlider = function() {
-		var $bannerPrincipal = ($(window).width() >= 768) ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal'),
-			qtdBanners;
+		var qtdBanners;
 
 		$bannerPrincipal.on('init', function(){
 			qtdBanners = $('.banners .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
@@ -54,6 +69,6 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 		});
 	};
 
-	this.setupMainSlider();
+	this.lazyLoad();
 
 });

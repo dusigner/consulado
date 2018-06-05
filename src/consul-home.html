@@ -5,6 +5,8 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="/arquivos/consul2-home.css" />
 </head>
 <body data-controller="home">
 
@@ -30,6 +32,12 @@
 
 	<!-- [ Desktop ] - Slider -->
 	<div class="banners hide-extra-small">
+		<!-- Fake banner-->
+		<div class="fake-banner">
+			<vtex:contentPlaceHolder id="FakeBanner" />
+		</div>
+		<!-- Fake banner-->
+
 		<!-- Banner -->
 		<div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
 		<!-- /Banner -->
@@ -50,6 +58,12 @@
 
 	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
+		<!-- Fake banner-->
+		<div class="fake-banner">
+			<vtex:contentPlaceHolder id="FakeBannerMobile" />
+		</div>
+		<!-- Fake banner-->
+
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
 		<!-- /Banner -->
@@ -193,5 +207,7 @@
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
+
+	<script src="/arquivos/consul2-home.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-require('modules/newsletter');
+// require('modules/newsletter');
 
 Nitro.module('footer', function() {
 

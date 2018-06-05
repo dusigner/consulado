@@ -1,8 +1,6 @@
 /* global store: true */
 'use strict';
 
-require('vendors/jquery.cookie');
-
 var CRM = require('modules/store/crm');
 
 Nitro.module('cluster', function() {
@@ -16,7 +14,7 @@ Nitro.module('cluster', function() {
 
 
 	};
-	
+
 	this.updateCotas = function(done) {
 		return CRM.clientSearchByEmail(store.userData.email)
 			.then(function(data) {

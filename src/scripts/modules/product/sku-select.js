@@ -1,8 +1,6 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-require('vendors/vtex-modal');
-
 Nitro.module('sku-select', function() {
 
 
@@ -43,11 +41,11 @@ Nitro.module('sku-select', function() {
 	$('.item-dimension-Voltagem .group_0').each(function() {
 		var skuList = $(this);
 		var skuLabel = skuList.find('label');
-		
+
 		if (skuLabel.hasClass('item_unavaliable') && skuLabel.length > 1) {
-			skuLabel.not('.item_unavaliable').click();			
+			skuLabel.not('.item_unavaliable').click();
 		}
-		
+
 		if (skuLabel.length === 1) {
 			skuLabel.click();
 		}

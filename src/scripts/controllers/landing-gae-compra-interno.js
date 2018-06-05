@@ -2,7 +2,6 @@
 
 var CRM = require('modules/store/crm');
 
-require('vendors/jquery.cookie');
 require('modules/gae-compra-interno/order.states');
 require('modules/gae-compra-interno/order.warranty.gae');
 require('../../templates/gae-compra-interno/warrantySpare.emptyOrders.html');
@@ -103,7 +102,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
 		order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
 		order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
-		
+
 		!order.hasGae) {
 			ordersPromises.push(currentOrder);
 			allOrders.push(order);

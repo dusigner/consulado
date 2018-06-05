@@ -1,11 +1,8 @@
 /* global $:true, Nitro: true */
 'use strict';
 
-require('vendors/slick');
-require('vendors/vtex-modal');
 require('modules/store/login');
 require('modules/store/register.corporate');
-require('vendors/jquery.inputmask');
 
 Nitro.controller('pre-home', ['login', 'register.corporate'], function() {
 

@@ -1,0 +1,63 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - PKG_ACCOUNTNAME
+	* Description: CSS desenvolvido para PKG_NAME.
+	* Author: PKG_AUTHOR
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: PKG_BUILD_VERSION
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+//@import 'helpers/functions';
+@import 'helpers/mixins';
+//@import 'helpers/normalize';
+//@import 'helpers/animation';
+@import 'helpers/helpers';
+@import 'helpers/icons';
+@import 'helpers/conditional';
+//@import 'helpers/debug';
+//@import 'helpers/responsive-debug';
+//@import 'helpers/family';
+
+// Base styles
+@import 'base/fonts';
+//@import 'base/print';
+//@import 'base/main';
+//@import 'base/vertical-rhythm';
+//@import 'base/selection';
+//@import 'base/type';
+
+// Component styles
+@import 'components/buttons';
+@import 'components/selos';
+@import 'components/chaordic-shelf';
+@import 'components/mod-prateleira';
+
+
+@import 'pages/product';
+
+
+@import 'components/produto/_upsell-prod';
+@import 'components/produto/gallery';
+@import 'components/produto/prod-title';
+@import 'components/produto/prod-info';
+@import 'components/produto/selos';
+@import 'components/produto/details-nav';
+@import 'components/produto/compre-junto';
+@import 'components/produto/video-lancamento';
+@import 'components/produto/detalhes';
+@import 'components/produto/detalhes-lancamento';
+@import 'components/produto/especificacoes';
+@import 'components/produto/modal.sku';
+@import 'components/produto/modal.entrega';
+@import 'components/produto/special-content';
+@import 'components/produto/quiz-install';
