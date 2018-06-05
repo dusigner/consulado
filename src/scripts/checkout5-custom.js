@@ -79,6 +79,7 @@ $(window).on('load', function() {
 
 		this.init = function() {
 			self.hashChanged();
+			self.delivery();
 
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -209,6 +210,7 @@ $(window).on('load', function() {
 				reinput.init();
 			}
 
+			self.delivery();
 
 			testeabEntregaAgendada.setup(orderForm);
 
@@ -528,6 +530,44 @@ $(window).on('load', function() {
 			}	
 		
 
+		};
+
+		this.delivery = function () {
+			var messageDelivery = '<div class="vtex-front-messages-template vtex-front-messages-template-opened corpo-messages-detail-delivery"> '+
+									'<span class="vtex-front-messages-detail messages-detail-delivery">Preencha a data da entrega agendada</span>'+
+								'</div>',
+				self = this;
+				
+			self.veryfication = function(){
+				setTimeout(function(){
+					if($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {				
+						$('.vtex-front-messages-placeholder').addClass('vtex-front-messages-placeholder-opened delivery');
+						$('.scheduled-sla.shipping-option-0').addClass('active');
+						if($('.messages-detail-delivery').length < 1){
+							$(messageDelivery).insertAfter('button.vtex-front-messages-close-all.close');
+						}
+						
+						$('.picker__day').on('click', function(){							
+							$('.vtex-front-messages-placeholder').removeClass('vtex-front-messages-placeholder-opened delivery');
+							$('.scheduled-sla.shipping-option-0').removeClass('active');							
+						});
+					}
+				},100);
+			
+			};
+
+			$('body').on('click', '.shipping-option-item[for*=EntregaAgendada]', function(){
+				$('.btn-go-to-payment').trigger('click');
+			});
+
+			if($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {
+				$('.btn-go-to-payment').trigger('click');
+			}	
+
+			$('.btn-go-to-payment').click( function(){				
+					self.veryfication();							
+			});
+			
 		};
 
 		this.init();
