@@ -145,9 +145,9 @@ Nitro.module('chaordic', function() {
 								}							
 								
 								self.cropName(v, 25);
-								v.isPersonalized = v.feature === 'ViewPersonalized' || 'HistoryPersonalized';
+								v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
 							});
-							// console.log(shelf);
+							
 
 							self.placeHolderRender(shelf, $self)
 								.then(function($chaordicShelf) {
