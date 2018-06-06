@@ -1,417 +1,498 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 <head>
-  <vtex.cmc:productPageTitle />
-  <vtex:metaTags />
-  <vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-  <vtex.cmc:productRichSnippets showFacebook="1" />
-  <vtex:template id="0-consul-head-content" />
-  <link rel="stylesheet" href="/arquivos/simulador-lavadora.css" />
+	<vtex.cmc:productPageTitle />
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex.cmc:productRichSnippets showFacebook="1" />
+	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="/arquivos/consul2-produto.css" />
+	<link rel="stylesheet" href="/arquivos/simulador-lavadora.css" />
 </head>
 <body data-controller="produto">
-  <!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
+	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 
-  <!-- Top Header -->
+	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
 
-  <vtex:template id="0-consul-header" />
+	<vtex:template id="0-consul-header" />
 
-  <!-- Main -->
-  <div class="main clearfix">
+	<!-- Main -->
+	<div class="main clearfix">
 
-    <div class="container clearfix">
-      <div class="row no-margin">
+		<div class="container clearfix">
+			<div class="row no-margin">
 
-        <!-- Breadcrumb -->
-        <section class="breadcrumb">
-          <vtex.cmc:breadCrumb />
-        </section>
-        <!-- /Breadcrumb -->
+				<!-- Breadcrumb -->
+				<section class="breadcrumb">
+					<vtex.cmc:breadCrumb />
+				</section>
+				<!-- /Breadcrumb -->
 
-        <!-- Box-right -->
-    <div class="col-v2 l5 m12 gutters-on prod-title">
-          <h1 class="lead">
-            <vtex.cmc:productName />
-            <span class="reference"><vtex.cmc:productReference/></span>
-            <span class="productSku hide"><vtex.cmc:skuReference /></span>
-          </h1>
-    </div>
-    <!-- Box-right -->
+				<!-- Box-right -->
+				<div class="col-v2 l5 m12 gutters-on prod-title">
+					<h1 class="lead">
+						<vtex.cmc:productName />
+						<span class="reference">
+							<vtex.cmc:productReference/>
+						</span>
+						<span class="productSku hide">
+							<vtex.cmc:skuReference />
+						</span>
+					</h1>
+				</div>
+				<!-- Box-right -->
 
-        <!-- Box-left -->
-        <div class="col-v2 l7 m12 gutters-on prod-image">
+				<!-- Box-left -->
+				<div class="col-v2 l7 m12 gutters-on prod-image">
 
-          <div class="prod-selos hide-small">
-            <vtex.cmc:discountHightLight />
-            <vtex.cmc:hightLight />
-          </div>
+					<div class="prod-selos hide-small">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:hightLight />
+					</div>
 
-          <!--  Controle: imagem do produto -->
-          <div class="prod-galeria text-center">
-            <vtex.cmc:ProductImage zoom="off" />
-          </div>
-          <!-- /Controle: imagem do produto -->
-        </div>
-        <!-- /Box-left -->
-        teste
-        <!-- Box-right -->
-        <div class="col-v2 l5 m12 gutters-on prod-info">
-          <div class="prod-preco">
-            <div class="usuarios-ativos">
-                <h4 id="qnt_stoke">Últimas unidades no estoque</h4>
-                <p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>
-            </div>
+					<!--  Controle: imagem do produto -->
+					<div class="prod-galeria text-center">
+						<vtex.cmc:ProductImage zoom="off" />
+					</div>
+					<!-- /Controle: imagem do produto -->
+				</div>
+				<!-- /Box-left -->
+				teste
+				<!-- Box-right -->
+				<div class="col-v2 l5 m12 gutters-on prod-info">
+					<div class="prod-preco">
+						<div class="usuarios-ativos">
+							<h4 id="qnt_stoke">Últimas unidades no estoque</h4>
+							<p class="qtn_pessoas_on">
+								<span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>
+						</div>
 
-            <vtex.cmc:skuPrice />
-          </div>
+						<vtex.cmc:skuPrice />
+					</div>
 
-          <div class="prod-selos show-medium">
-            <vtex.cmc:discountHightLight />
-            <vtex.cmc:hightLight />
-          </div>
+					<div class="prod-selos show-medium">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:hightLight />
+					</div>
 
-          <div class="row prod-sku-selector">
-            <!--vtex.cmc:stockKeepingUnitSelection /-->
+					<div class="row prod-sku-selector">
+						<!--vtex.cmc:stockKeepingUnitSelection /-->
 
-            <div class="col-v2 l6 m12 select-voltage">
-              <vtex.cmc:skuSelection />
-            </div>
+						<div class="col-v2 l6 m12 select-voltage">
+							<vtex.cmc:skuSelection />
+						</div>
 
-            <div class="col-v2 l6 m12 select-color" data-product-field="13">
+						<div class="col-v2 l6 m12 select-color" data-product-field="13">
 
-            </div>
+						</div>
 
-          </div>
+					</div>
 
-          <div id="BuyButton" class="clearfix">
-            <vtex.cmc:BuyButton/>
+					<div id="BuyButton" class="clearfix">
+						<vtex.cmc:BuyButton/>
 
-            <div class="secure col-v2 l2 offset-l1">
-              <i class="icon icon-lock"></i> Compra Segura
-            </div>
-          </div>
+						<div class="secure col-v2 l2 offset-l1">
+							<i class="icon icon-lock"></i> Compra Segura
+						</div>
+					</div>
 
-        <div class="valores-parcelas">
-          <vtex.cmc:OtherPaymentMethod/>
+					<div class="valores-parcelas">
+						<vtex.cmc:OtherPaymentMethod/>
 
-          <p>Para financiamento com juros de 0,99% a.m. - Custo Efetivo Total (CET) máximo de 12,55% a.a.</p>
-        </div>
-        
-        <div class="btn-pecas-produto">
-    		<a href="#">
-    			<i class="icon icon-icon-engrenagem"></i>Peças para este produto
-    		</a>
+						<p>Para financiamento com juros de 0,99% a.m. - Custo Efetivo Total (CET) máximo de 12,55% a.a.</p>
+					</div>
+
+					<div class="btn-pecas-produto">
+						<a href="#">
+							<i class="icon icon-icon-engrenagem"></i>Peças para este produto
+						</a>
+					</div>
+
+					<div class="content_botoes_televendas">
+						<vtex.cmc:BuyButton/>
+						<p>Ou compre pelo telefone</p>
+						<a href="tel:112739-4826" class="btn_click_call">Televendas</a>
+					</div>
+
+					<!-- Go to www.addthis.com/dashboard to customize your tools -->
+					<div class="social">
+						<p>Gostou? Compartilhe esse produto!</p>
+						<a id="shareBtn" class="compartilharFc"></a>
+						<a id="compartilharTw" rel="nofollow" href=""></a>
+						<a id="compartilharEmail"></a>
+					</div>
+
+					<div class="row prod-more-info">
+						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" class="col-v2 l4 m12" title="Informações de contratação"
+						    target="_blank">Informações de contratação</a>
+
+						<a href="#" class="col-v2 l4 m12 tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de entrega</a>
+
+						<!-- <a href="#" class="col-v2 l4 m12 entrega-premium" title="Entrega Premium" data-modal="entrega-premium">Entrega Premium</a> -->
+
+						<a href="//loja.consulempresa.com.br" class="col-v2 l4 m12 show-personal" title="Vendas Corporativas">Vendas Corporativas</a>
+					</div>
+
+					<!--  Controle: Forma de pagamento -->
+					<!-- <div id="productPayment"><vtex.cmc:OtherPaymentMethod/></div> -->
+					<!--  /Controle: Forma de pagamento -->
+
+					<!--  Controle: disponibilidade -->
+					<!-- <vtex.cmc:Delivery /> -->
+					<!-- /Controle: disponibilidade -->
+				</div>
+				<!-- /Box-right -->
+			</div>
+		</div>
+	</div>
+
+	<!-- Chaordic TOP -->
+	<div class="container">
+		<div chaordic="top"></div>
+	</div>
+
+	<section class="corpoCalculadora">
+		<div class="iniciar">
+			<div class="container">
+				<div class="play">
+					<h1>Simulador de economia de água e sabão em pó</h1>
+					<h2>Essa lavadora economiza até 600* reais por ano, descubra quanto você economizaria!</h2>
+					<a class="action-inicio">Iniciar
+						<img src="../arquivos/right-simulador-lavadora.png" alt="" />
+					</a>
+				</div>
+
+				<form class="perguntas">
+
+
+					<fieldset id="qtdlotes">
+						<h2 class="tituloperguntas">Calcule aqui sua economia com a Lavadora Consul 13Kg</h2>
+						<div class="corpocehckbox">
+							<div class="content">
+								<legend>01. Quais dias da semana você lava roupa ?
+									<i></i>
+								</legend>
+								<label for="dia-1">
+									<input type="checkbox" name="dia-1" id="dia-1" class="checkdia" value="Segunda - Feira" /> Segunda
+									<span class="only-mob">- Feira</span>
+								</label>
+								<label for="dia-5">
+									<input type="checkbox" name="dia-5" id="dia-5" class="checkdia" value="Sexta - Feira" /> Sexta
+									<span class="only-mob">- Feira</span>
+								</label>
+								<label for="dia-2">
+									<input type="checkbox" name="dia-2" id="dia-2" class="checkdia" value="Terça - Feira" /> Terça
+									<span class="only-mob">- Feira</span>
+								</label>
+								<label for="dia-6">
+									<input type="checkbox" name="dia-6" id="dia-6" class="checkdia" value="Sábado" /> Sábado </label>
+								<label for="dia-3">
+									<input type="checkbox" name="dia-3" id="dia-3" value="Quarta - Feira" /> Quarta
+									<span class="only-mob">- Feira</span>
+								</label>
+								<label for="dia-7">
+									<input type="checkbox" name="dia-7" id="dia-7" value="Domingo" /> Domingo </label>
+								<label for="dia-4">
+									<input type="checkbox" name="dia-4" id="dia-4" value="Quinta - Feira" /> Quinta
+									<span class="only-mob">- Feira</span>
+								</label>
+								<p class="msg-erro hidden">Por favor selecionar alguma opção</p>
+								<a class="action--next-ativo">Avançar</a>
+							</div>
+						</div>
+					</fieldset>
+
+
+					<fieldset id="comoseparar">
+						<legend>02. Desses dias que utiliza a máquina
+							<span class="hidden-mob">, em quantos lotes você lava suas roupas</span> ?
+							<small>Ex: Toda vez que utilizo minha máquina, lavo 3 lotes de roupas: um lote de roupas brancas, um lote de roupas coloridas
+								e um lote de roupas de cama e banho</small>
+						</legend>
+						<div class="content corporange" style="">
+							<input id="range" class="form-control ng-valid ng-scope ng-dirty" ngmodel="color.r" label="R" type="range" min="1" max="7"
+							    step="1" star="1" ng-model="color.r" />
+							<div id="diasrange">4
+								<span>x</span>
+							</div>
+							<a class="action--next calcular">Calcular</a>
+						</div>
+					</fieldset>
+
+				</form>
+
+
+				<div class="corporesultado">
+					<h2>Com a tecnologia Maxi Economia,
+						<br/>
+						<strong>você economiza*</strong> até:</h2>
+
+					<ul>
+
+						<li>
+							<img src="../arquivos/notas-simulador-lavadora.png" alt="economia em valor real" />
+							<h3>
+								<strong>R$
+									<span class="--economia-valor"></span>
+								</strong> de água e sabão em pó</h3>
+						</li>
+
+						<li>
+							<img src="../arquivos/gota-simulador-lavadora.png" alt="economia em valor real" />
+							<h3>
+								<strong>
+									<span class="--economia-agua"></span> litros</strong> Água/Ano</h3>
+						</li>
+
+						<li>
+							<img src="../arquivos/sabao-simulador-lavadora.png" alt="economia em valor real" />
+							<h3>
+								<strong>
+									<span class="--economia-sabao"></span>Kg</strong> Sabão/Ano</h3>
+						</li>
+
+					</ul>
+
+					<h4>Para ilustrar quanta água é economizada com o uso da tecnologia Maxi Economia comparamos com caixas d’água de 500 litros.</h4>
+
+					<div class="caixadgua">
+						<h2>Sabe o que isso representa?</h2>
+						<span>Em
+							<strong>1 ano</strong> você economiza</span>
+						<div class="litrosagua">
+							<span class="--economia-galoes"></span>
+							caixas d’água de 500 litros
+						</div>
+						<div class="imgcaixas">
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+							<i></i>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="refazer">
+					<a class="reniciar">Reiniciar</a>
+					<a class="comprar">Quero comprar</a>
+				</div>
+
+			</div>
 		</div>
 
-        <div class="content_botoes_televendas">
-            <vtex.cmc:BuyButton/>
-            <p>Ou compre pelo telefone</p>
-            <a href="tel:112739-4826" class="btn_click_call">Televendas</a>
-        </div>
-
-          <!-- Go to www.addthis.com/dashboard to customize your tools -->
-          <div class="social">
-              <p>Gostou? Compartilhe esse produto!</p>
-                <a id="shareBtn" class="compartilharFc"></a>
-			    <a id="compartilharTw"  rel="nofollow" href=""></a>
-				<a id="compartilharEmail"></a>
-          </div>
-
-          <div class="row prod-more-info">
-            <a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" class="col-v2 l4 m12" title="Informações de contratação" target="_blank">Informações de contratação</a>
-
-            <a href="#" class="col-v2 l4 m12 tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de entrega</a>
-
-            <!-- <a href="#" class="col-v2 l4 m12 entrega-premium" title="Entrega Premium" data-modal="entrega-premium">Entrega Premium</a> -->
-
-            <a href="//loja.consulempresa.com.br" class="col-v2 l4 m12 show-personal" title="Vendas Corporativas">Vendas Corporativas</a>
-          </div>
-
-          <!--  Controle: Forma de pagamento -->
-          <!-- <div id="productPayment"><vtex.cmc:OtherPaymentMethod/></div> -->
-          <!--  /Controle: Forma de pagamento -->
-
-          <!--  Controle: disponibilidade -->
-          <!-- <vtex.cmc:Delivery /> -->
-          <!-- /Controle: disponibilidade -->
-        </div>
-        <!-- /Box-right -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Chaordic TOP -->
-  <div class="container">
-    <div chaordic="top"></div>
-  </div>
-
-<section class="corpoCalculadora">
-        <div class="iniciar">
-          <div class="container">
-            <div class="play">
-                  <h1>Simulador de economia de água e sabão em pó</h1>
-                  <h2>Essa lavadora economiza até 600* reais por ano, descubra quanto você economizaria!</h2>
-                  <a class="action-inicio">Iniciar <img src="../arquivos/right-simulador-lavadora.png" alt=""/></a>
-            </div>
-      
-            <form class="perguntas">
-              
-      
-                  <fieldset id="qtdlotes">
-                      <h2 class="tituloperguntas">Calcule aqui sua economia com a Lavadora Consul 13Kg</h2>
-                      <div class="corpocehckbox">
-                          <div class="content">
-                              <legend>01. Quais dias da semana você lava roupa ? <i></i></legend>
-                              <label for="dia-1"> <input type="checkbox" name="dia-1" id="dia-1" class="checkdia" value="Segunda - Feira"/> Segunda <span class="only-mob">- Feira</span> </label>
-                              <label for="dia-5"> <input type="checkbox" name="dia-5" id="dia-5" class="checkdia" value="Sexta - Feira"/>   Sexta <span class="only-mob">- Feira</span> </label>
-                              <label for="dia-2"> <input type="checkbox" name="dia-2" id="dia-2" class="checkdia" value="Terça - Feira"/>  Terça <span class="only-mob">- Feira</span> </label>
-                              <label for="dia-6"> <input type="checkbox" name="dia-6" id="dia-6" class="checkdia" value="Sábado"/> Sábado </label>
-                              <label for="dia-3"> <input type="checkbox" name="dia-3" id="dia-3" value="Quarta - Feira"/>  Quarta <span class="only-mob">- Feira</span> </label>
-                              <label for="dia-7"> <input type="checkbox" name="dia-7" id="dia-7" value="Domingo"/> Domingo </label>
-                              <label for="dia-4"> <input type="checkbox" name="dia-4" id="dia-4" value="Quinta - Feira"/>  Quinta <span class="only-mob">- Feira</span> </label>
-                              <p class="msg-erro hidden">Por favor selecionar alguma opção</p>
-                              <a class="action--next-ativo">Avançar</a>
-                          </div>
-                      </div>
-                  </fieldset>
-      
-      
-                  <fieldset id="comoseparar">
-                      <legend>02. Desses dias que utiliza a máquina<span class="hidden-mob">, em quantos lotes você lava suas roupas</span> ? <small>Ex: Toda vez que utilizo minha máquina, lavo 3 lotes de roupas: um lote de roupas brancas, um lote de roupas coloridas e um lote de roupas de cama e banho</small></legend>
-                      <div class="content corporange" style="">
-                          <input id="range" class="form-control ng-valid ng-scope ng-dirty" ngmodel="color.r" label="R" type="range" min="1" max="7" step="1" star="1" ng-model="color.r"/>
-                          <div id="diasrange">4<span>x</span></div>
-                          <a class="action--next calcular" >Calcular</a>
-                      </div>
-                  </fieldset>
-      
-              </form>
-      
-      
-              <div class="corporesultado">
-                  <h2>Com a tecnologia Maxi Economia, <br/><strong>você economiza*</strong> até:</h2>
-      
-                  <ul>
-      
-                      <li>
-                          <img src="../arquivos/notas-simulador-lavadora.png" alt="economia em valor real"/>
-                          <h3><strong>R$ <span class="--economia-valor"></span></strong> de água e sabão em pó</h3>
-                      </li>
-      
-                      <li>
-                              <img src="../arquivos/gota-simulador-lavadora.png" alt="economia em valor real"/>
-                              <h3><strong><span class="--economia-agua"></span> litros</strong> Água/Ano</h3>
-                      </li>
-      
-                      <li>
-                              <img src="../arquivos/sabao-simulador-lavadora.png" alt="economia em valor real"/>
-                              <h3><strong><span class="--economia-sabao"></span>Kg</strong> Sabão/Ano</h3>
-                      </li>
-      
-                  </ul>
-      
-                  <h4>Para ilustrar quanta água é economizada com o uso da tecnologia Maxi Economia comparamos com caixas d’água de 500 litros.</h4>
-      
-                  <div class="caixadgua">
-                      <h2>Sabe o que isso representa?</h2>
-                      <span>Em <strong>1 ano</strong> você economiza</span>
-                      <div class="litrosagua">
-                              <span class="--economia-galoes"></span>
-                              caixas d’água de 500 litros
-                      </div>
-                      <div class="imgcaixas">
-                          <i></i>
-                          <i></i>
-                          <i></i>
-                          <i></i>
-                          <i></i>
-                          <i></i>
-                          <i></i>
-                      </div>
-                  </div>
-              </div>
-      
-              
-      
-              <div class="refazer">
-                      <a class="reniciar">Reiniciar</a>
-                      <a class="comprar">Quero comprar</a>
-              </div>
-      
-          </div>
-        </div> 
-
-        <div class="infosimulador">
-          <div class="container">
-            *Somando-se economia no consumo de água e de sabão em pó. Considera o consumo de água do mesmo produto sem a tecnologia Maxi Economia e consumidor que usa a lavadora 9,88 vezes por semana durante um ano, utilizando a função Eco Enxague Duplo no nível 4 de água e realizando a limpeza interna da lavadora conforme recomendação do fabricante no Guia Rápido. Preço Médio do Sabão em Pó 2016 - Fonte: Euromonitor International Limited; Edição 2017 de Home Care, preço unitário BRL por kg , vendas em valor preço final ao consumidor, preços correntes; categoria detergente em pó; Tarifa de Consumo de Água acima de 50m^3 - Fonte: Sabesp 12/05/2016 (Comunicado 03/2016, vigente para Região Metropolitana de São Paulo, Interior e Litoral - <a href="http://site.sabesp.com.br/site/uploads/file/clientes_servicos/comunicado_03_2016.pdf">http://site.sabesp.com.br/site/uploads/file/clientes_servicos/comunicado_03_2016.pdf</a> ). Condição de consumo alcançada com a máquina em perfeitas condições de uso.
-          </div>
-      </div>
-</section>
+		<div class="infosimulador">
+			<div class="container">
+				*Somando-se economia no consumo de água e de sabão em pó. Considera o consumo de água do mesmo produto sem a tecnologia Maxi
+				Economia e consumidor que usa a lavadora 9,88 vezes por semana durante um ano, utilizando a função Eco Enxague Duplo
+				no nível 4 de água e realizando a limpeza interna da lavadora conforme recomendação do fabricante no Guia Rápido. Preço
+				Médio do Sabão em Pó 2016 - Fonte: Euromonitor International Limited; Edição 2017 de Home Care, preço unitário BRL por
+				kg , vendas em valor preço final ao consumidor, preços correntes; categoria detergente em pó; Tarifa de Consumo de Água
+				acima de 50m^3 - Fonte: Sabesp 12/05/2016 (Comunicado 03/2016, vigente para Região Metropolitana de São Paulo, Interior
+				e Litoral -
+				<a href="http://site.sabesp.com.br/site/uploads/file/clientes_servicos/comunicado_03_2016.pdf">http://site.sabesp.com.br/site/uploads/file/clientes_servicos/comunicado_03_2016.pdf</a> ). Condição de consumo alcançada
+				com a máquina em perfeitas condições de uso.
+			</div>
+		</div>
+	</section>
 
 
-  <div class="cont-prod-details-nav">
-    <section class="prod-details-nav">
-      <div class="container clearfix">
-        <div class="row">
-          <ul>
-            <li class="item hide"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
-            <li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
-            <li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
-            <li class="item hide"><a href="#depoimentos" class="scroll-to">Depoimentos</a></li>
-            <li class="item"><a href="#relacionados" class="scroll-to">Relacionados</a></li>
-          </ul>
-          <div class="right clearfix nav-price">
-            <div id="BuyButtonDetails"><vtex.cmc:BuyButton /></div>
-            <div class="details-preco"><vtex.cmc:skuPrice /></div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+	<div class="cont-prod-details-nav">
+		<section class="prod-details-nav">
+			<div class="container clearfix">
+				<div class="row">
+					<ul>
+						<li class="item hide">
+							<a href="#detalhes" class="scroll-to">Detalhes</a>
+						</li>
+						<li class="item hide">
+							<a href="#video" class="scroll-to">Vídeo</a>
+						</li>
+						<li class="item">
+							<a href="#especificacoes" class="scroll-to">Especificações técnicas</a>
+						</li>
+						<li class="item hide">
+							<a href="#depoimentos" class="scroll-to">Depoimentos</a>
+						</li>
+						<li class="item">
+							<a href="#relacionados" class="scroll-to">Relacionados</a>
+						</li>
+					</ul>
+					<div class="right clearfix nav-price">
+						<div id="BuyButtonDetails">
+							<vtex.cmc:BuyButton />
+						</div>
+						<div class="details-preco">
+							<vtex.cmc:skuPrice />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 
-  <!-- Chaordic MIDDLE -->
-  <div class="container">
-    <div chaordic="middle"></div>
-  </div>
+	<!-- Chaordic MIDDLE -->
+	<div class="container">
+		<div chaordic="middle"></div>
+	</div>
 
-  <div class="main clearfix after-prod">
-    <section id="detalhes" class="detalhes"></section>
+	<div class="main clearfix after-prod">
+		<section id="detalhes" class="detalhes"></section>
 
-    <section id="video" class="video"></section>
+		<section id="video" class="video"></section>
 
-    <section id="especificacoes" class="content-toggle">
-      <h2 class="title text-center">
-        Especificações <span>técnicas</span>
-        <i class="icon icon-consul-clipboard"></i>
-        <i class="icon icon-arrow-left"></i>
-      </h2>
-      <div class="slide-none">
-        <div class="container"></div>
-      </div>
-    </section>
+		<section id="especificacoes" class="content-toggle">
+			<h2 class="title text-center">
+				Especificações
+				<span>técnicas</span>
+				<i class="icon icon-consul-clipboard"></i>
+				<i class="icon icon-arrow-left"></i>
+			</h2>
+			<div class="slide-none">
+				<div class="container"></div>
+			</div>
+		</section>
 
-    <section id="depoimentos">
-      <h2 class="title text-center">Depoimentos</h2>
-      <div class="container"><!--vtex.cmc:UserReview /--></div>
-    </section>
+		<section id="depoimentos">
+			<h2 class="title text-center">Depoimentos</h2>
+			<div class="container">
+				<!--vtex.cmc:UserReview /-->
+			</div>
+		</section>
 
-    <section id="compre-junto" style="display: none;">
-        <div class="compre-junto">
-            <vtex.cmc:BuyTogether />
-        </div>
-    </section>
+		<section id="compre-junto" style="display: none;">
+			<div class="compre-junto">
+				<vtex.cmc:BuyTogether />
+			</div>
+		</section>
 
-    <section id="relacionados" class="slider">
-      <p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
-      <div class="container">
-            <div class="row">
-            <div class="prateleira-slider clearfix">
-              <vtex:contentPlaceHolder id="Relacionados" />
-            </div>
-            </div>
-      </div>
-    </section>
+		<section id="relacionados" class="slider">
+			<p class="pre-title">
+				<vtex:contentPlaceHolder id="Relacionados - Titulo" />
+			</p>
+			<div class="container">
+				<div class="row">
+					<div class="prateleira-slider clearfix">
+						<vtex:contentPlaceHolder id="Relacionados" />
+					</div>
+				</div>
+			</div>
+		</section>
 
-    <div class="hide">
-      <vtex.cmc:ProductDescription />
-      <vtex.cmc:productSpecification />
+		<div class="hide">
+			<vtex.cmc:ProductDescription />
+			<vtex.cmc:productSpecification />
 
-      <div id="modal-sku" data-title="Selecione a voltagem">
-        <div class="row options">
-          <vtex.cmc:skuSelection />
-        </div>
-        <div class="row button">
-          <vtex.cmc:BuyButton />
-        </div>
-      </div>
+			<div id="modal-sku" data-title="Selecione a voltagem">
+				<div class="row options">
+					<vtex.cmc:skuSelection />
+				</div>
+				<div class="row button">
+					<vtex.cmc:BuyButton />
+				</div>
+			</div>
 
-      <div id="modal-tipo-entrega" data-title="Tipos de entrega">
-        <!-- Texto blackfriday -->
-        <strong>Entrega Convencional</strong>
-        <ul class="list">
-          <li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu produto.</li>
-        </ul>
-        <br />
+			<div id="modal-tipo-entrega" data-title="Tipos de entrega">
+				<!-- Texto blackfriday -->
+				<strong>Entrega Convencional</strong>
+				<ul class="list">
+					<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada região. Não tem uma data
+						certa agendada, informamos o prazo máximo para a entrega do seu produto.</li>
+				</ul>
+				<br />
 
-        <strong>Entrega Convencional Agendada</strong>
-        <ul class="list">
-          <li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.</li>
-        </ul>
-        <br />
+				<strong>Entrega Convencional Agendada</strong>
+				<ul class="list">
+					<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.</li>
+				</ul>
+				<br />
 
-        <strong>Entrega Econômica</strong>
-        <ul class="list">
-          <li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor menor pelo serviço.</li>
-        </ul>
-        <br />
+				<strong>Entrega Econômica</strong>
+				<ul class="list">
+					<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa agendada, seu prazo máximo
+						é maior do que o da nossa entrega padrão, porém você paga um valor menor pelo serviço.</li>
+				</ul>
+				<br />
 
-        <strong>Entrega Rápida</strong>
-        <ul class="list">
-          <li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem ocorrer até as 20hs em dias úteis.</li>
-        </ul>
-        <br />
-        <p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
-      </div>
+				<strong>Entrega Rápida</strong>
+				<ul class="list">
+					<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data certa agendada, porém
+						seu produto chega rapidinho!
+						<br />As entregas nesta modalidade podem ocorrer até as 20hs em dias úteis.</li>
+				</ul>
+				<br />
+				<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
+			</div>
 
-      <div id="modal-entrega-premium" data-title="Entrega Premium">
-        <ul class="list">
-          <li>Tenha o melhor produto e o nosso melhor tipo de entrega.</li>
-          <li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e instalado*.</li>
-          <li>Tudo isso feito por um profissional que realmente conhece o produto!</li>
-          <li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo seu processo de entrega e tirará qualquer dúvida por email ou telefone.</li>
-          <li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa transportadora parceira entrará em contato por telefone para agendar sua entrega.</li>
-          <li>
-            <small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e Micro-Ondas.</small>
-          </li>
-        </ul>
-      </div>
-    </div>
+			<div id="modal-entrega-premium" data-title="Entrega Premium">
+				<ul class="list">
+					<li>Tenha o melhor produto e o nosso melhor tipo de entrega.</li>
+					<li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e instalado*.</li>
+					<li>Tudo isso feito por um profissional que realmente conhece o produto!</li>
+					<li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo seu processo de entrega
+						e tirará qualquer dúvida por email ou telefone.</li>
+					<li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa transportadora parceira entrará
+						em contato por telefone para agendar sua entrega.</li>
+					<li>
+						<small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e Micro-Ondas.</small>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-  </div>
-  <!-- /Main -->
+	</div>
+	<!-- /Main -->
 
-  <!-- Chaordic BOTTOM -->
-  <div class="container">
-    <div chaordic="bottom"></div>
-  </div>
+	<!-- Chaordic BOTTOM -->
+	<div class="container">
+		<div chaordic="bottom"></div>
+	</div>
 
-<!-- Modal custom Share -->
-  <div id="modal-custom-share" data-title="Compartilhar por e-mail" style="display: none;">
-    <form id="formshare" action="">
-      <div class="form-group">
-        <label for="remetente">De:</label>
-        <input type="email" class="form-control" id="remetente" placeholder="E-mail remetente" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-      </div>
-      <div class="form-group">
-        <label for="destinatario">Para:</label>
-        <input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-      </div>
-      <div class="form-group">
-        <label for="nomeremetente">Nome:</label>
-        <input type="text" class="form-control" id="nomeremetente" placeholder="Nome" required="required" />
-      </div>
-      <div class="form-group">
-        <label for="assuntoemail">Assunto:</label>
-        <input type="text" class="form-control" id="assuntoemail" placeholder="Assunto"/>
-      </div>
-      <div class="form-group">
-        <label for="mensagememail">Mensagem:</label>
-        <textarea class="form-control" id="mensagememail"></textarea>
-      </div>
-      <button type="submit" class="btn btn-default">Enviar</button>
-      
-      <div class="enviadocomsucesso">
-        e-mail enviado com sucesso
-      </div>
-      
-    </form>
-  </div>
-<!-- Modal custom share  -->
+	<!-- Modal custom Share -->
+	<div id="modal-custom-share" data-title="Compartilhar por e-mail" style="display: none;">
+		<form id="formshare" action="">
+			<div class="form-group">
+				<label for="remetente">De:</label>
+				<input type="email" class="form-control" id="remetente" placeholder="E-mail remetente" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="destinatario">Para:</label>
+				<input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+				/>
+			</div>
+			<div class="form-group">
+				<label for="nomeremetente">Nome:</label>
+				<input type="text" class="form-control" id="nomeremetente" placeholder="Nome" required="required" />
+			</div>
+			<div class="form-group">
+				<label for="assuntoemail">Assunto:</label>
+				<input type="text" class="form-control" id="assuntoemail" placeholder="Assunto" />
+			</div>
+			<div class="form-group">
+				<label for="mensagememail">Mensagem:</label>
+				<textarea class="form-control" id="mensagememail"></textarea>
+			</div>
+			<button type="submit" class="btn btn-default">Enviar</button>
 
-  <!-- Footer -->
-  <vtex:template id="0-consul-footer" />
-  <!-- /Footer -->
-  <script type="text/javascript" src="/arquivos/simulador-lavadora.min.js?v=2"></script>
+			<div class="enviadocomsucesso">
+				e-mail enviado com sucesso
+			</div>
+
+		</form>
+	</div>
+	<!-- Modal custom share  -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	<script type="text/javascript" src="/arquivos/simulador-lavadora.min.js?v=2"></script>
 </body>
 </html>
