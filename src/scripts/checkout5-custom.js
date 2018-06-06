@@ -2,20 +2,20 @@
 
 'use strict';
 
-// Teste AB
-setTimeout(function() {
-	var $body2 = $('body');
-	var urlTesteAb = window.location.search;
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
+// // Teste AB
+// setTimeout(function() {
+// 	var $body2 = $('body');
+// 	var urlTesteAb = window.location.search;
+// 	var testeA = 'testeab=a';
+// 	var testeB = 'testeab=b';
 
-	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-		$body2.addClass('hideOptionsA');
-	}
-	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-		$body2.addClass('hideOptionsB');
-	}
-}, 400);
+// 	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+// 		$body2.addClass('hideOptionsA');
+// 	}
+// 	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+// 		$body2.addClass('hideOptionsB');
+// 	}
+// }, 400);
 
 
 $(window).on('load', function() {
@@ -41,7 +41,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
-	require('custom/testeab-entregaAgendada');
+	//require('custom/testeab-entregaAgendada');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
@@ -50,7 +50,7 @@ $(window).on('load', function() {
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['chaordic', 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'entrega-agendada', 'checkout.default-message', 'customLogin'], function(chaordic, gae, recurrence, cotas, pj, testeabEntregaAgendada) {
+	Nitro.setup(['chaordic', 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message', 'customLogin'], function(chaordic, gae, recurrence, cotas, pj) {
 
 		var self = this,
 			$body = $('body');
@@ -114,16 +114,16 @@ $(window).on('load', function() {
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
 			// Teste AB
-			var urlTesteAb = window.location.search;
-			var testeA = 'testeab=a';
-			var testeB = 'testeab=b';
+			// var urlTesteAb = window.location.search;
+			// var testeA = 'testeab=a';
+			// var testeB = 'testeab=b';
 
-			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-				$body.addClass('abMask');
-			}
-			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-				$body.addClass('abMask');
-			}
+			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+			// 	$body.addClass('abMask');
+			// }
+			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+			// 	$body.addClass('abMask');
+			// }
 
 			if($(window).width() < 767) {
 				$('.client-profile-data').parent(0).addClass('email-confirm');
@@ -209,7 +209,7 @@ $(window).on('load', function() {
 			}
 
 
-			testeabEntregaAgendada.setup(orderForm);
+			//testeabEntregaAgendada.setup(orderForm);
 
 		};
 
