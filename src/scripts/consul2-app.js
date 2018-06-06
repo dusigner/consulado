@@ -5,6 +5,7 @@
 
 require('modules/helpers');
 
+
 // Vendors
 require('vendors/jquery.cookie');
 require('vendors/jquery.inputmask');
@@ -12,6 +13,7 @@ require('vendors/jquery.debounce');
 require('vendors/slick');
 require('vendors/ajax.localstorage');
 require('vendors/vtex-modal');
+require('vendors/dust-helpers');
 
 if (VERSION) {
 

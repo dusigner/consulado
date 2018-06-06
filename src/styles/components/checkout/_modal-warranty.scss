@@ -202,10 +202,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			&.active {
 				.close-warranty {
-					left: 22px;
 					opacity: 1;
-					right: initial;
-					top: 25px;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
@@ -787,6 +784,12 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					@include breakpoint(1090px, 'max') { padding: 42px 20px 25px 20px; }
 					@include breakpoint(1014px, 'max') { @include responsiveFont(20); }
 				}
+			}
+
+			.close-warranty {
+				left: auto;
+				right: 5px;
+				top: 5px;
 			}
 		}
 

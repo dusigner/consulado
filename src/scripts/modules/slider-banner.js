@@ -9,23 +9,30 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 
 	var self = this,
 		$buttonOpenRegulamento = $('.open-regulamento'),
-		$bannerPrincipal = ($(window).width() >= 768) ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+		$bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
 	this.lazyLoad = function() {
 		var imagesCount = $bannerPrincipal.find('img').length,
-			count = ($(window).width() >= 768) ? 1 : 2;
+			//count = $(window).width() >= 768 ? 1 : 2;
+			count = 0;
 
-		$bannerPrincipal.find('img').load(function(e) {
-			count += 1;
+		$bannerPrincipal.find('img').each(function(e, val) {
+			$(val).on('load', function(e) {
+				count += 1;
+				console.log(imagesCount, count);
+			});
+
 			if (imagesCount === count) {
 				$bannerPrincipal.addClass('banner-loaded');
 				self.setupMainSlider();		
 				$('.fake-banner').hide();
 			}
 		});
+
 	};
 
 	this.setupMainSlider = function() {
+		$bannerPrincipal.addClass('banner-loaded');
 		var qtdBanners;
 
 		$bannerPrincipal.on('init', function(){
@@ -69,6 +76,6 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 		});
 	};
 
-	this.lazyLoad();
+	this.setupMainSlider();
 
 });
