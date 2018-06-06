@@ -218,8 +218,10 @@ Nitro.module('checkout.gae', function() {
 			// Classe no box de garantia
 			var $anchorGae = $('.anchor-gae');
 			$anchorGae.on('click', function() {
-				$anchorGae.not(this).removeClass('active')
-					.filter(this).addClass('active');
+				$anchorGae.not(this).removeClass('active').filter(this).addClass('active');
+				$('.row-product-and-action .btn-continue').html('Continuar <span>›</span>').removeClass('locked');
+				$('.modal__cell').removeClass('active');
+				$(this).parent('.modal__cell').addClass('active');
 			});
 
 			// Abrindo mais detalhes da garantia
@@ -228,6 +230,12 @@ Nitro.module('checkout.gae', function() {
 				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
 			});
 
+			// Desmarcar opção selecionada
+			$('body').on('click', '.close-warranty', function(){
+				$('#warranty1').trigger('click');
+				$('.modal__cell').removeClass('active');
+				$('.row-product-and-action .btn-continue').html('Não tenho interesse <span>›</span>').addClass('locked');	
+			});
 
 			//Retornar true ou false
 			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
