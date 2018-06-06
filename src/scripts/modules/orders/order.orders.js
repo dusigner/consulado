@@ -229,15 +229,15 @@ Nitro.module('order.orders', function() {
 
 			value.shippingData.logisticsInfo[0].selectedSla = currentSla;
 			value.finalStatus = statusData;
-			value.isBoleto = value.paymentData.payments[0] && value.paymentData.payments[0].group ? (value.paymentData.payments[0].group.toString().indexOf('bankInvoice') >= 0  ? true : false) : false;
+			value.isBoleto = value.paymentData.transactions[0].payments[0] && value.paymentData.transactions[0].payments[0].group ? (value.paymentData.transactions[0].payments[0].group.toString().indexOf('bankInvoice') >= 0 ? true : false) : false;
 			value.isGift = isGift;
 			value.hasTrackingInfo = false;
 			value.hasPackages = false;
 			value.hasInvoiceData = false;
 			value.partialInvoice = false;
 
-			if(value.isBoleto && value.paymentData.payments[0].url) {
-				value.paymentData.payments[0].url = value.paymentData.payments[0].url.replace('{Installment}', 	value.paymentData.payments[0].installments);
+			if (value.isBoleto && value.paymentData.transactions[0].payments[0].url) {
+				value.paymentData.transactions[0].payments[0].url = value.paymentData.transactions[0].payments[0].url.replace('{Installment}', value.paymentData.transactions[0].payments[0].installments);
 			}
 
 			$.each(value.items, function() {
