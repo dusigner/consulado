@@ -12,27 +12,15 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 		$bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
 	this.lazyLoad = function() {
-		var imagesCount = $bannerPrincipal.find('img').length,
-			//count = $(window).width() >= 768 ? 1 : 2;
-			count = 0;
-
-		$bannerPrincipal.find('img').each(function(e, val) {
-			$(val).on('load', function(e) {
-				count += 1;
-				console.log(imagesCount, count);
-			});
-
-			if (imagesCount === count) {
-				$bannerPrincipal.addClass('banner-loaded');
-				self.setupMainSlider();		
-				$('.fake-banner').hide();
-			}
+		$(window).on('load', function() {
+			$bannerPrincipal.addClass('banner-loaded');
+			self.setupMainSlider();		
+			$('.fake-banner').hide();
 		});
 
 	};
 
 	this.setupMainSlider = function() {
-		$bannerPrincipal.addClass('banner-loaded');
 		var qtdBanners;
 
 		$bannerPrincipal.on('init', function(){
@@ -76,6 +64,6 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 		});
 	};
 
-	this.setupMainSlider();
+	this.lazyLoad();
 
 });

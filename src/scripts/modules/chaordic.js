@@ -192,7 +192,7 @@ Nitro.module('chaordic', function() {
 		var $shelfs = $('[data-chaordic] .js-content-lazy:not(".vtex-load")');
 
 		if($shelfs.length <= 0) {
-			console.log('teste');
+			
 			return false;
 		}
 
@@ -210,8 +210,8 @@ Nitro.module('chaordic', function() {
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
-				//console.log(shelf);
-				console.log('teste');
+				//
+				
 				if(recomendations) {
 					self.getProducts(recomendations)
 						.then(function(products) {
@@ -315,7 +315,7 @@ Nitro.module('chaordic', function() {
 	 * @returns {Object} dados mesclados prontos para o render
 	 */
 	this.prepareData = function(shelf, products, type) {
-		console.log('prepareData');
+		
 		var dfd = jQuery.Deferred();
 
 		type = type || 'recommendations';
@@ -323,17 +323,17 @@ Nitro.module('chaordic', function() {
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
 				if(product.productId === recommendation.id) {
-					console.log('if 1');
+					
 					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
 
 					if(!$box.hasClass('box-produto')) {
-						console.log('if 2');
+						
 						var item = product.items.filter(function(value) {
 							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 						});
 
 						if(item.length > 0) {
-							console.log('if 3');
+							
 							//item = [product.items[0]];
 							product.available = item.length > 0;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
@@ -352,7 +352,7 @@ Nitro.module('chaordic', function() {
 						}
 					}
 				}
-				//console.log(product);
+				//
 			});
 		});
 
@@ -476,7 +476,7 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.finalRender = function(renderData, $elem) {
-		console.log('finalRender');
+		
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
@@ -511,7 +511,7 @@ Nitro.module('chaordic', function() {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
-			console.log('placeHolderRender', out, placeholderDust);
+			
 			
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
