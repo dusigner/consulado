@@ -31,7 +31,7 @@ function insertAutocomplete() {
 		var c = document.getElementsByClassName('form-search')[0],
 			b = c && c.getElementsByClassName('text-search')[0];
 		a--;
-		b ? (/vtexcommercestable/.test(window.location.href) || insertAutocomplete(), c.action = '/busca/', b.name = 'q', window.location.hostname.match('vtexcommercestable') && (b = document.createElement('input'), b.type = 'hidden', b.name = 'vtexcommercestable', b.value = 1, c.insertBefore(b, c.firstChild)), /vtexcommercestable/.test(window.location.href) && (b = c.cloneNode(!0),
+		b ? (/vtexcommercestable/.test(window.location.href) || insertAutocomplete(), c.action = 'https://busca.consul.com.br/busca', b.name = 'q', window.location.hostname.match('vtexcommercestable') && (b = document.createElement('input'), b.type = 'hidden', b.name = 'vtexcommercestable', b.value = 1, c.insertBefore(b, c.firstChild)), /vtexcommercestable/.test(window.location.href) && (b = c.cloneNode(!0),
 		c.parentNode.replaceChild(b, c))) : 0 < a && setTimeout(d, 100);
 	})();
 })();
