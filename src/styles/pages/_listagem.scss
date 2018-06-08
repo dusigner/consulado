@@ -44,7 +44,9 @@ body.listagem {
 
 	&.departamento,
 	&.busca {
-		.title-filter:before { content: 'Filtrar por categoria'; }
+		.title-filter {
+			&:before { content: 'Filtrar por categoria'; }
+		}
 
 		.order-wrapper {
 			float: right;
@@ -283,6 +285,7 @@ body.listagem {
 
 		li {
 			display: none!important;
+			font-size: 15px;
 			margin: 0 1.5em 0 0;
 
 			a { color: $orange; }
