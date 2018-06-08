@@ -612,7 +612,7 @@ Nitro.module('customLogin', function() {
 	$('body').off('click','#login');
 	$('body').on('click', '#login', function() {
 		if (url[2] === 'busca.consul.com.br') {
-			window.location='https://loja.consul.com.br/login';
+			window.location='https://loja.consul.com.br/login?ReturnUrl=/account';
 		}else{
 			window.location='/login?ReturnUrl=' + url_atual + '';
 
