@@ -177,7 +177,7 @@ Nitro.module('busca-chaordic', function () {
 			break;
 		}
 
-		$('.order-wrapper .order-title').on('click', function () {
+		$('body.busca-chaordic .order-wrapper .order-title').on('click', function () {
 			$(this).find('strong').toggleClass('active');
 			$(this).next('ul').slideToggle();
 		});
