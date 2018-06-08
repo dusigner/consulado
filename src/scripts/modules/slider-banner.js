@@ -9,20 +9,15 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 
 	var self = this,
 		$buttonOpenRegulamento = $('.open-regulamento'),
-		$bannerPrincipal = ($(window).width() >= 768) ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+		$bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
 	this.lazyLoad = function() {
-		var imagesCount = $bannerPrincipal.find('img').length,
-			count = ($(window).width() >= 768) ? 1 : 2;
-
-		$bannerPrincipal.find('img').load(function(e) {
-			count += 1;
-			if (imagesCount === count) {
-				$bannerPrincipal.addClass('banner-loaded');
-				self.setupMainSlider();		
-				$('.fake-banner').hide();
-			}
+		$(window).on('load', function() {
+			$bannerPrincipal.addClass('banner-loaded');
+			self.setupMainSlider();		
+			$('.fake-banner').hide();
 		});
+
 	};
 
 	this.setupMainSlider = function() {

@@ -2,20 +2,20 @@
 
 'use strict';
 
-// Teste AB
-setTimeout(function() {
-	var $body2 = $('body');
-	var urlTesteAb = window.location.search;
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
+// // Teste AB
+// setTimeout(function() {
+// 	var $body2 = $('body');
+// 	var urlTesteAb = window.location.search;
+// 	var testeA = 'testeab=a';
+// 	var testeB = 'testeab=b';
 
-	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-		$body2.addClass('hideOptionsA');
-	}
-	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-		$body2.addClass('hideOptionsB');
-	}
-}, 400);
+// 	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+// 		$body2.addClass('hideOptionsA');
+// 	}
+// 	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+// 		$body2.addClass('hideOptionsB');
+// 	}
+// }, 400);
 
 
 $(window).on('load', function() {
@@ -41,7 +41,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
-	require('custom/testeab-entregaAgendada');
+	//require('custom/testeab-entregaAgendada');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
@@ -116,16 +116,16 @@ $(window).on('load', function() {
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
 			// Teste AB
-			var urlTesteAb = window.location.search;
-			var testeA = 'testeab=a';
-			var testeB = 'testeab=b';
+			// var urlTesteAb = window.location.search;
+			// var testeA = 'testeab=a';
+			// var testeB = 'testeab=b';
 
-			if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-				$body.addClass('abMask');
-			}
-			else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-				$body.addClass('abMask');
-			}
+			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+			// 	$body.addClass('abMask');
+			// }
+			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+			// 	$body.addClass('abMask');
+			// }
 
 			if($(window).width() < 767) {
 				$('.client-profile-data').parent(0).addClass('email-confirm');
@@ -212,7 +212,7 @@ $(window).on('load', function() {
 
 			self.delivery();
 
-			testeabEntregaAgendada.setup(orderForm);
+			//testeabEntregaAgendada.setup(orderForm);
 
 		};
 

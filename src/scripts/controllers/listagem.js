@@ -27,18 +27,18 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 	}
 
 	// Teste AB
-	var urlTesteAb = window.location.search;
-	var testeA = 'testeab=a';
-	var testeB = 'testeab=b';
+	// var urlTesteAb = window.location.search;
+	// var testeA = 'testeab=a';
+	// var testeB = 'testeab=b';
 
-	if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-		$body.addClass('ab-test__mobile--show-b');
-	}
-	else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-		$body.addClass('ab-test__mobile--show-b');
-		// teste vitrine chaordic
-		$body.addClass('test__vitrine--show-b');
-	}
+	// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+	// 	$body.addClass('ab-test__mobile--show-b');
+	// }
+	// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+	// 	$body.addClass('ab-test__mobile--show-b');
+	// 	// teste vitrine chaordic
+	// 	$body.addClass('test__vitrine--show-b');
+	// }
 
 
 	var self = this,

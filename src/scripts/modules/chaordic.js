@@ -114,25 +114,25 @@ Nitro.module('chaordic', function() {
 	 */
 	this.getRecommendations = function() {
 		var $shelfs = $('[data-chaordic]').not('.chaordic--run');
-
+		
 		if($shelfs.length <= 0) {
 			return false;
 		}
-
+		
 		// var reference = $(window).scrollTop() + $(window).height();
-
+		
 		//Prevent multiple ajax calls, toDo rewrite
 		self.getShelf()
-			.then(function() {
-				$shelfs.each(function() {
-					var $self = $(this),
-						position = $self.data('chaordic');
-
-					// if ($self.is(':visible') && reference >= $self.offset().top ) {
+		.then(function() {
+			$shelfs.each(function() {
+				var $self = $(this),
+				position = $self.data('chaordic');
+				
+				// if ($self.is(':visible') && reference >= $self.offset().top ) {
 					var shelf;
-
+					
 					self.getShelf()
-						.then(function(res) {
+					.then(function(res) {
 							shelf = res[position];
 							$.each(shelf, function(i, v) {
 								if(v.feature === 'FrequentlyBoughtTogether') {
@@ -191,6 +191,7 @@ Nitro.module('chaordic', function() {
 		var $shelfs = $('[data-chaordic] .js-content-lazy:not(".vtex-load")');
 
 		if($shelfs.length <= 0) {
+			
 			return false;
 		}
 
@@ -208,9 +209,9 @@ Nitro.module('chaordic', function() {
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
-				//console.log(shelf);
+				//
+				
 				if(recomendations) {
-
 					self.getProducts(recomendations)
 						.then(function(products) {
 							if(shelf.isPersonalized) {
@@ -313,6 +314,7 @@ Nitro.module('chaordic', function() {
 	 * @returns {Object} dados mesclados prontos para o render
 	 */
 	this.prepareData = function(shelf, products, type) {
+		
 		var dfd = jQuery.Deferred();
 
 		type = type || 'recommendations';
@@ -320,14 +322,17 @@ Nitro.module('chaordic', function() {
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
 				if(product.productId === recommendation.id) {
+					
 					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
 
 					if(!$box.hasClass('box-produto')) {
+						
 						var item = product.items.filter(function(value) {
 							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 						});
 
 						if(item.length > 0) {
+							
 							//item = [product.items[0]];
 							product.available = item.length > 0;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
@@ -346,7 +351,7 @@ Nitro.module('chaordic', function() {
 						}
 					}
 				}
-				//console.log(product);
+				//
 			});
 		});
 
@@ -470,6 +475,7 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.finalRender = function(renderData, $elem) {
+		
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
@@ -504,7 +510,8 @@ Nitro.module('chaordic', function() {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
-
+			
+			
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));

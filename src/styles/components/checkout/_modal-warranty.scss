@@ -794,6 +794,12 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					@include breakpoint(1014px, 'max') { @include responsiveFont(20); }
 				}
 			}
+
+			.close-warranty {
+				left: auto;
+				right: 5px;
+				top: 5px;
+			}
 		}
 
 		.row-product-and-action {

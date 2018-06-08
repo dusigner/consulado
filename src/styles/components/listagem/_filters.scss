@@ -75,11 +75,12 @@
 		}
 
 		.title-filter {
-			@include responsiveFont(22, 16, true);
+			@include responsiveFont(18, 16, true);
 			display: inline-block;
 			float: left;
 			font-weight: 400;
-			margin-right: 1.5em;
+			line-height: 76px;
+			margin: 0 1.5em 0 0;
 
 			@include breakpoint(small, 'max') {
 				display: block;
