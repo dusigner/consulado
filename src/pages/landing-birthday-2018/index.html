@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+  	<!-- @include ../../subtemplates/consul-head-content.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<vtex:template id="0-consul-head-content" />
+  	<!-- @endif -->
+	<link rel="stylesheet" href="/arquivos/landing-birthday-2018.css">
+</head>
+<body class="landing-birthday-2018">
+
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-header.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+  	<!-- @endif -->
+
+	<section class="hero">
+		<img src="/arquivos/hero-cns-birthday-2018.jpg" alt="Celebrando ideias bem pensadas" />
+
+		<section class="bar-register">
+			<div class="container">
+				<h2> No aniversário Consul, você ganha antes mesmo da festa começar!</h2>
+				<h3>Cadastre-se e fique por dentro de todas as novidades e ofertas em primeira mão.</h3>
+				<form  class="form-register">
+					<input type="text" class="name" name="name" placeholder="Nome"/>
+					<input type="email" class="email" name="email" placeholder="E-mail"/>
+					<input type="text" class="category" name="category">
+					<div class="select-category">
+						<ul>
+							<li>bla</li>
+							<li>bla</li>
+							<li>bla</li>
+							<li>bla</li>
+							<li>bla</li>
+							<li>bla</li>
+						</ul>
+					</div>
+					<button class="submit">cadastre-se</button>
+				</form>
+			</div>
+		</section>
+	</section>
+
+	<section class="tbs-videos">
+			<div class="mask-movie">
+				<a class="play-movie">
+					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
+				</a>
+			</div>
+
+	</section>
+
+
+	<section class="share">
+		
+			<div>
+				<a><img src="/arquivos/share-face-birthday-2018.png" alt="Compartilhar no facebook" /></a>
+			</div>
+		
+	</section>
+
+  	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-servicos.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Footer -->
+	<vtex:template id="0-consul-servicos" />
+	<!-- /Footer -->
+  	<!-- @endif -->
+
+
+
+	<!-- @if DEBUG='development' -->
+  	<!-- @include ../../subtemplates/consul-footer.html -->
+  	<!-- @endif -->
+
+  	<!-- @if DEBUG='production' -->
+  	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	<!-- @endif -->	  
+	
+	<script type="text/javascript" src="/arquivos/landing-birthday-2018.min.js"></script>
+
+</body>
+</html>
