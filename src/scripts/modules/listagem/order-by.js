@@ -95,7 +95,7 @@ Nitro.module('order-by', function () {
 		})
 		.done(function(data) {
 			if( data ) {
-				// console.log('ordervalue', orderValue);
+				console.log('ordervalue', orderValue);
 				$(window).trigger('filter', [helper.rel + orderValue, true]);
 
 				$('.vitrine > .prateleira').remove();

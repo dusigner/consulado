@@ -180,7 +180,7 @@ body.listagem {
 		}
 	}
 
-	.order-by {
+	.order-by{
 		background-color: #ffffff;
 		border-radius: 10px;
 		box-shadow: 0 0 10px $gray;
@@ -539,62 +539,54 @@ body.busca-chaordic {
 		font-size: 2.5em;
 		font-weight: 400;
 	}
-	.resultado-busca {
-		background: $green;
-		border-bottom: 1px solid $gray;
-		color: #FFF;
-		margin-bottom: 25px;
+	.busca-chaordic{
 
-		.container {
-			// background: transparent url('#{$cdn-path}images/bg_busca_hexagons.svg') right -95px no-repeat;
-			padding: 2em 90px;
-		}
-
-		.busca-resultados {
-			@include responsiveFont(20, 16, true);
-			margin: 0;
-			text-transform: uppercase;
-		}
-
-		i {
-			@include responsiveFont(30, 16, true);
+		&.resultado-busca {
+			background: $green;
+			border-bottom: 1px solid $gray;
 			color: #FFF;
-			margin-right: .5em;
-		}
-
-		.busca-termos {
-			margin: 0;
-
-			strong {
-				@include responsiveFont(40, 16, true);
-				font-weight: 300;
-
-				@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
+			margin-bottom: 25px;
+			
+			.container {
+				// background: transparent url('#{$cdn-path}images/bg_busca_hexagons.svg') right -95px no-repeat;
+				padding: 2em 90px;
+			}
+			
+			.busca-resultados {
+				@include responsiveFont(20, 16, true);
+				margin: 0;
+				text-transform: uppercase;
+			}
+			
+			i {
+				@include responsiveFont(30, 16, true);
+				color: #FFF;
+				margin-right: .5em;
+			}
+			
+			.busca-termos {
+				margin: 0;
+				strong {
+					@include responsiveFont(40, 16, true);
+					font-weight: 300;
+					
+					@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
+				}
+			}
+			.col-md-12 {
+				display: flex;
+				flex-direction: column;
+			}
+			.col-md-12 p.busca-resultados {
+				order: 3;
+			}
+			.col-md-12 p.busca-termos {
+				order: 2;
 			}
 		}
-
-		 .col-md-12 {
-			display: flex;
-			flex-direction: column;
-		}
-
-		 .col-md-12 p.busca-resultados {
-			order: 3;
-		}
-
-
-		 .col-md-12 p.busca-termos {
-			order: 2;
-		}
-
-
-
 	}
-
+		
 	&.busca-vazio {
-		.resultado-busca {
-			// display: none;
-		}
 		.result-filter.container h2 {
 			@include responsiveFont(18, 14, true);
 			font-size: 2em;
@@ -619,7 +611,7 @@ body.busca-chaordic {
 		}
 	}
 	.order-wrapper {
-		margin-top: 0!important;
+		// margin-top: 0!important;
 		text-align: right;
 		strong {
 			&.active {
@@ -630,13 +622,16 @@ body.busca-chaordic {
 			}
 		}
 		ul.order-by {
-			opacity: 1;
+			opacity: 0;
 			position: absolute;
 			right: 0;
 			top: 40px;
 			visibility: inherit;
 			width: 177px;
 			z-index: 10;
+			&.active{
+				opacity: 1;
+			}
 			li {
 				a {
 					padding: .5em .5em;
