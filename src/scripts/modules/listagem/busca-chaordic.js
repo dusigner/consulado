@@ -102,6 +102,7 @@ Nitro.module('busca-chaordic', function () {
 		dust.render(template, data, function (err, out) {
 			el.html(out);
 		});
+		// console.log(data);
 	};
 	
 	this.getTermSearch = function(){	
@@ -555,7 +556,7 @@ Nitro.module('busca-chaordic', function () {
 		var $termSearch = self.getTermSearch();
 
 		self.getChaordicData($termSearch).always(function (data) {
-			// console.log(data);
+			console.log(data);
 
 			// Google Promises
 			self.render('filters-chaordic', data, $filters);

@@ -8,14 +8,14 @@ require('modules/listagem/calculadorabtu');
 require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
-// require('modules/listagem/busca-chaordic');
+require('modules/listagem/busca-chaordic');
 // require('custom/modal.overlayAbandono');
 // require('modules/compare');
 //require('custom/promo.lightbox');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu'/* , 'busca-chaordic' */], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
