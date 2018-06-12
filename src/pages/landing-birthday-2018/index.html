@@ -13,7 +13,7 @@
   	<!-- @if DEBUG='production' -->
   	<vtex:template id="0-consul-head-content" />
   	<!-- @endif -->
-	<link rel="stylesheet" href="/arquivos/landing-birthday-2018.css">
+	<link rel="stylesheet" href="/arquivos/landing-birthday-2018.css" />
 </head>
 <body class="landing-birthday-2018">
 
@@ -28,7 +28,8 @@
   	<!-- @endif -->
 
 	<section class="hero">
-		<img src="/arquivos/hero-cns-birthday-2018.jpg" alt="Celebrando ideias bem pensadas" />
+		<img src="/arquivos/hero-cns-birthday-2018.jpg" class="hide-mobile" alt="Celebrando ideias bem pensadas" />
+		<img src="/arquivos/hero-cns-birthday-2018-m.jpg" class="show-mobile" alt="Celebrando ideias bem pensadas" />
 
 		<section class="bar-register">
 			<div class="container">
@@ -37,16 +38,24 @@
 				<form  class="form-register">
 					<input type="text" class="name" name="name" placeholder="Nome"/>
 					<input type="email" class="email" name="email" placeholder="E-mail"/>
-					<input type="text" class="category" name="category">
+					<input type="text" class="category" name="category"/>
 					<div class="select-category">
-						<ul>
-							<li>bla</li>
-							<li>bla</li>
-							<li>bla</li>
-							<li>bla</li>
-							<li>bla</li>
-							<li>bla</li>
-						</ul>
+						<span>selecione sua categoria</span>
+						<div class="sub">
+							<ul>
+								<li>Geladeira</li>
+								<li>Fogões</li>
+								<li>Lavadora</li>
+								<li>Freezer</li>
+								<li>Cervejeira</li>
+								<li>Cooktop</li>
+								<li>Forno</li>
+								<li>Coifa</li>
+								<li>Frigobar </li>
+								<li>Micro-ondas</li>
+								<li>Ar Condicionado</li>
+							</ul>
+						</div>
 					</div>
 					<button class="submit">cadastre-se</button>
 				</form>
@@ -57,25 +66,41 @@
 	<section class="tbs-videos">
 			<div class="mask-movie">
 				<a class="play-movie">
+					<span class="icon-play"></span>
 					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
-				</a>
-			</div>
-			<div class="mask-movie">
-				<a class="play-movie">
-					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
-				</a>
-			</div>
-			<div class="mask-movie">
-				<a class="play-movie">
-					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
-				</a>
-			</div>
-			<div class="mask-movie">
-				<a class="play-movie">
-					<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
-				</a>
-			</div>
 
+					<div class="embed-responsive">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LakzlROlC5M?rel%3D0&amp;controls%3D0&amp;showinfo%3D0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+					</div>
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<span class="icon-play"></span>
+					<img src="/arquivos/movie-radio-cns-birthday-2018.jpg" alt="Veja a história do Rádio" />
+					<div class="embed-responsive">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sMP8GGPPqhs?rel%3D0&amp;controls%3D0&amp;showinfo%3D0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+					</div>
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<span class="icon-play"></span>
+					<img src="/arquivos/movie-brigadeiro-cns-birthday-2018.jpg" alt="Veja a história do Brigadeiro" />
+					<div class="embed-responsive">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/O5Uz6iMnq2s?rel%3D0&amp;controls%3D0&amp;showinfo%3D0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+					</div>
+				</a>
+			</div>
+			<div class="mask-movie">
+				<a class="play-movie">
+					<span class="icon-play"></span>
+					<img src="/arquivos/movie-futeboll-cns-birthday-2018.jpg" alt="Veja a história do Futebol" />
+					<div class="embed-responsive">
+						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LfRZhMmDEY4?rel%3D0&amp;controls%3D0&amp;showinfo%3D0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+					</div>
+				</a>
+			</div>
 	</section>
 
 

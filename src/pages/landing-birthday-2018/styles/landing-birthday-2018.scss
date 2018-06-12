@@ -13,8 +13,12 @@
 
 // ===============================================================
 /* @IMPORTS */
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/_icons';
 // ===============================================================
-
 
 .landing-birthday-2018 {
 
@@ -24,6 +28,19 @@
 
 		img {
 			max-width: 100%;
+			width: 100%;
+
+			&.show-mobile {
+				display: none;
+			}
+			@include breakpoint(740px, 'max') { 
+				&.show-mobile {
+					display: block;
+				}
+				&.hide-mobile {
+					display: none;
+				}
+			}
 		}
 	}
 	// SECTION BAR REGISTER
@@ -34,12 +51,20 @@
 		position: absolute;
 		right: 0;
 
+		@include breakpoint(960px, 'max') { bottom: 10px; }
+		@include breakpoint(768px, 'max') { 
+			background: #fff;
+			position: relative;
+		}
+
 		h2 {
 			color: #fff;
 			display: block;
 			font-size: 28px;
 			margin-bottom: 0;
 			text-align: center;
+			@include breakpoint(1121px, 'max') { font-size: 20px; }
+			@include breakpoint(768px, 'max') { color: #a8ca41; }
 		}
 
 		h3 {
@@ -49,6 +74,7 @@
 			margin-bottom: 15px;
 			margin-top: 0;
 			text-align: center;
+			@include breakpoint(1121px, 'max') { font-size: 16px; }
 		}
 
 		.form-register {
@@ -66,7 +92,7 @@
 				border-radius: 30px;
 				color: #727272;
 				float: left;
-				font-size: 20px;
+				font-size: 18px;
 				font-style: italic;
 				height: 45px;
 				margin-right: 15px;
@@ -77,55 +103,98 @@
 
 				&.category {
 					display: none;
-				}			
+				}
+				
+				@include breakpoint(1182px, 'max') { width: 24%; }
+				@include breakpoint(768px, 'max') { 
+					max-width: 100%;
+					width: 100% !important;
+				}
 			}
 
-			.select-category {				
+			.select-category {
 
-				&:before {
-					content: 'selecione sua categoria';
+				cursor: pointer;
+				position: relative;
+				
+				span {
 					display: block;
 					padding-top: 6px;
 				}
 
-				ul {
+				&:after {
+					@include icon-get(arrow-down);
+					display: block;
+					font-size: 7px;
+					font-weight: bold !important;
+					position: absolute;
+					right: 10px;
+					top: 17px;
+					transform: rotate(0deg);
+					transition: .3s linear all;
+				}
+				.sub {
 					background: #fff;
 					border: 1px solid #99cc2d;
 					border-radius: 0 0 15px 15px;
 					display: none;
-					max-height: 115px;
-					overflow: auto;
-					padding: 0 10px;
+					padding: 10px 5px 10px 10px;
 					position: relative;
-					top: 7px;
+					top: 10px;
+					z-index: 11;				
 
-					&::-webkit-scrollbar {						
-						position: relative;
-						right: 5px;
-						width: 8px;
-					}
-					 
-					&::-webkit-scrollbar-track {
-						background: #dcdcdc;
-						border-radius: 50px;						
-					}
-					
-					&::-webkit-scrollbar-thumb {
-						background: #99c34e;
-						border-radius: 10px;
-						width: 5px;
-					}
+					ul {				
+						max-height: 200px;
+						overflow: auto;
+						padding-right: 5px;
+						
 
-					li {
-						border-bottom: 1px solid #99c34e;
-						color: #333333;
-						cursor: pointer;
-						font-size: 25px;
-						text-align: center;
-
-						&:last-child {
-							border: none;
+						&::-webkit-scrollbar {						
+							position: relative;
+							right: 5px;
+							width: 8px;
 						}
+						
+						&::-webkit-scrollbar-track {
+							background: #dcdcdc;
+							border-radius: 50px;						
+						}
+						
+						&::-webkit-scrollbar-thumb {
+							background: #99c34e;
+							border-radius: 10px;
+							width: 5px;
+						}
+
+						li {
+							border-bottom: 1px solid #99c34e;
+							color: #333333;
+							cursor: pointer;
+							font-size: 20px;
+							text-align: center;
+
+							&:last-child {
+								border: none;
+							}
+
+							&:hover {
+								background: #99c34e;
+								color: #fff;
+							}
+						}
+					}				
+				}
+
+				&.active {
+
+					.sub {
+						display: block;						
+					}
+
+					&:after {
+						@include icon-get(arrow-down);
+						transform: rotate(-180deg);
+						transition: .3s linear all;
 					}
 				}
 			}
@@ -139,8 +208,20 @@
 				height: 45px;
 				outline: none;
 				padding: 0 20px;
+				position: relative;
 				text-align: center;
 				transition: .3s linear all;
+				@include breakpoint(1182px, 'max') { 
+					padding: 0;
+					width: 18%;
+				}
+				@include breakpoint(1122px, 'max') { font-size: 16px; }
+				@include breakpoint(768px, 'max') { 
+					bottom: -24px;
+					display: block;
+					margin: 0 auto 40px;
+					width: 120px !important;
+				}
 
 				&:hover {
 					background: #fff;
@@ -152,16 +233,60 @@
 
 	// SECTION MOVIE
 	.tbs-videos {
+
+		@include breakpoint(768px, 'max') {
+		   padding: 0;
+		}
+
+		.icon-play {
+			border: 2px solid #fff;
+			border-radius: 100px;
+			color: #fff;
+			font-size: 180px;
+			height: 50px;
+			left: 50%;
+			line-height: 0;
+			margin-left: -25px;
+			margin-top: -25px;
+			position: absolute;
+			top: 50%;
+			transform: rotate(270deg);
+			width: 50px;
+			z-index: 11;
+
+			&:after {					
+				border-left: 15px solid transparent;
+				border-radius: 5px;
+				border-right: 15px solid transparent;
+				border-top: 23px solid #fff;
+				content: '';
+				height: 0;
+				margin: 14px 0 0 8px;
+				position: absolute;
+				width: 0;
+			}
+		}
 		.mask-movie {
 			position: relative;
 			
 			img {
 				max-width: 100%;
+				position: relative;
+				width: 100%;
+				z-index: 1;
 			}
+
+			// iframe {
+			// 	display: none;
+			// }
 		}
 
-		.slick-dots {
+		> .slick-dots {
 			bottom: -100px;
+
+			@include breakpoint(925px, 'max') {
+				bottom: -150px;
+			}
 
 			li {
 				background: #fff;
@@ -173,6 +298,17 @@
 				margin: 16px;
 				padding: 4px 54px;
 				width: auto !important;
+				
+				@include breakpoint(925px, 'max') {
+					float: left !important;   
+					width: 40% !important;
+				}
+				
+				@include breakpoint(520px, 'max') {
+					font-size: 19px;
+					margin: 5px 15px;
+					padding: 8px 0;
+				}
 
 				&.slick-active {
 					background: #99cc2d;
@@ -214,6 +350,10 @@
 		position: relative;
 		text-align: center;
 
+		@include breakpoint(925px, 'max') {
+			margin-top: 200px;
+		}
+
 		div {
 			background: #acacac;
 			height: 1px;
@@ -227,5 +367,33 @@
 				top: -28px;
 			}			
 		}
+	}
+}
+
+.embed-responsive {
+    display: none;
+    overflow: hidden;
+    padding: 0;
+	position: relative;
+	width: 100%;
+
+	&.visible {
+		display: block;
+
+		&::before {
+			content: '';
+			display: block;
+			padding-top: 56.25%;
+		}
+	}
+
+	.embed-responsive-item {
+		border: 0;
+		bottom: 0;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
 	}
 }
