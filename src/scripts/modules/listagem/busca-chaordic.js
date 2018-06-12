@@ -178,8 +178,8 @@ Nitro.module('busca-chaordic', function () {
 		}
 
 		$('body.busca-chaordic .order-wrapper .order-title-chaordic').on('click', function () {
-			$(this).find('strong').toggleClass('active');
-			$(this).next('ul').slideToggle();
+			$(this).toggleClass('active');
+			$(this).next('.order-by-chaordic').toggleClass('active');
 		});
 
 		$('ul.order-by-chaordic li a').on('click', function() {

@@ -143,6 +143,7 @@ body.listagem {
 	padding-right: 1em;
 	position: relative;
 
+	.order-title-chaordic,
 	.order-title {
 		@include responsiveFont(18);
 		color: $orange;
@@ -180,6 +181,7 @@ body.listagem {
 		}
 	}
 
+	.order-by-chaordic,
 	.order-by{
 		background-color: #ffffff;
 		border-radius: 10px;
@@ -190,7 +192,7 @@ body.listagem {
 		position: absolute;
 		right: 0;
 		top: 35px;
-		visibility: hidden;
+		// visibility: hidden;
 		z-index: 3;
 
 		&.active {

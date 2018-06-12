@@ -16,6 +16,68 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
+	<div class="busca-vtex hide">
+		<div class="resultado-busca" data-module="resultado-busca">
+			<div class="container clearfix">
+				<div class="resultado-wrapper">
+					<div>
+						<p class="busca-termos"></p>
+					</div>
+
+					<div>
+						<p class="busca-resultados"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="filter-wrapper hide-extra-small">
+			<div class="container departament-nav clearfix">
+				<div class="clearfix">
+					<p class="title-filter"></p>
+					<vtex.cmc:searchNavigator keepCurrentPath="true" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="busca-vtex container list-container clearfix hide">
+		<div class="row gutters">
+			<div class="col-12 list-content">
+
+				<!-- Prateleira -->
+				<section id="prateleira">
+					<div class="top-wrapper clearfix">
+						<vtex.cmc:searchTitle />
+						
+						<div class="order-wrapper">
+							<p class="order-title">Ordenar por</p>
+							<ul class="order-by"></ul>
+						</div>
+					</div>
+					<!-- PRODUCAO -->
+					<!-- <vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="9" /> -->
+					<!-- /PROD -->
+					<!-- QA -->
+					<vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="9" columnCount="9" />
+					<!-- /QA -->
+					<!-- PJ -->
+					<!-- <vtex.cmc:searchResult layout="fdb0aae0-5533-467b-98b8-52039e22d374" itemCount="9" columnCount="9" />  -->
+					<!-- /PJ -->
+					<!-- PJ QA -->
+					<!-- <vtex.cmc:searchResult layout="833e1cf3-7b6b-459d-b69a-221ae6202ef6" itemCount="9" columnCount="9" />  -->
+					<!-- /PJ QA -->
+				</section>
+				<!-- /Prateleira -->
+
+			</div>
+
+			<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
+				Ver mais <i class="icon icon-arrow-down"></i>
+			</button>
+		</div>
+	</div>
+
 	<div class="busca-chaordic resultado-busca hide" data-module="resultado-busca">
 		<div class="container clearfix">
 			<div class="resultado-wrapper">
@@ -87,65 +149,6 @@
 
 	</div>
 	<!-- Listagem de produtos e filtros -->
-
-	<div class="busca-vtex hide">
-		<div class="resultado-busca" data-module="resultado-busca">
-			<div class="container clearfix">
-				<div class="resultado-wrapper">
-					<div>
-						<p class="busca-termos"></p>
-					</div>
-					<div>
-						<p class="busca-resultados"></p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="filter-wrapper hide-extra-small">
-			<div class="container departament-nav clearfix">
-				<div class="clearfix">
-					<p class="title-filter"></p>
-					<vtex.cmc:searchNavigator keepCurrentPath="true" />
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="busca-vtex container list-container clearfix hide">
-		<div class="row gutters">
-			<div class="col-12 list-content">
-
-				<!-- Prateleira -->
-				<section id="prateleira">
-					<div class="top-wrapper clearfix">
-						<vtex.cmc:searchTitle />
-						<div class="order-wrapper">
-							<p class="order-title">Ordenar por</p>
-							<ul class="order-by"></ul>
-						</div>
-					</div>
-					<!-- PRODUCAO -->
-					<!-- <vtex.cmc:searchResult layout="33be8da0-7037-4956-980e-9cbf82b5d31b" itemCount="9" columnCount="9" /> -->
-					<!-- /PROD -->
-					<!-- QA -->
-					<vtex.cmc:searchResult layout="bc64bc35-02e8-4159-9a77-a4973d666b64" itemCount="9" columnCount="9" />
-					<!-- /QA -->
-					<!-- PJ -->
-					<!-- <vtex.cmc:searchResult layout="fdb0aae0-5533-467b-98b8-52039e22d374" itemCount="9" columnCount="9" />  -->
-					<!-- /PJ -->
-					<!-- PJ QA -->
-					<!-- <vtex.cmc:searchResult layout="833e1cf3-7b6b-459d-b69a-221ae6202ef6" itemCount="9" columnCount="9" />  -->
-					<!-- /PJ QA -->
-				</section>
-				<!-- /Prateleira -->
-
-			</div>
-
-			<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
-				Ver mais <i class="icon icon-arrow-down"></i>
-			</button>
-		</div>
-	</div>
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
