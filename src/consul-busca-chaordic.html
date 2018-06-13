@@ -16,79 +16,21 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
-	<div class="busca-chaordic resultado-busca hide" data-module="resultado-busca">
-		<div class="container clearfix">
-			<div class="resultado-wrapper">
-				<!-- Resultado Dust -->
-			</div>
-		</div>
-	</div>
-	
-	<div class="busca-chaordic suggestions-container container hide">
-		<!-- Suggestions Dust -->
-	</div>
-	
-	<!-- Listagem de produtos e filtros -->
-	<div class="busca-chaordic result-filter container clearfix hide">
-		
-		<div class="filter-container">
-			<!-- Filter Dust -->
-		</div>
-		
-		
-		<!-- Produtos -->
-		<section id="prateleira" class="container prateleira list-container clearfix">
-			<div class="row">
-				<div class="col-12 col-md-5"></div>
-				
-				<div class="col-12 col-md-5 open-filter">
-					<span>Filtrar</span>
-				</div>
-				
-				<div class="col-12 col-md-7 order-wrapper">
-					<!-- orderBy dust -->
-				</div>
-			</div>
-			
-			<div class="row list-content list-content-filter">
-				<div class="col-xs-12">	
-					<!-- Prateleira vitrine -->
-					<div class="main">
-						
-						<div class="vitrine resultItemsWrapper">
-							
-							<div class="pager top"></div>
-							<div class="prateleira default">
-								<div class="prateleira default n12colunas">
-									<ul>
-										<!-- Prateleira Dust -->
-									</ul>
-								</div>
-							</div>
-							<div class="pager bottom" id="PagerBottom"></div>
-						</div>
-						
-					</div>
-					<!-- Prateleira vitrine -->
-					
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="paginationSearch">
-						<!-- pagination Dust -->
-					</div>
-				</div>
-			</div>
-			
-		</section>
-		<!-- /Produtos -->
-		
-	</div>
-	<!-- Listagem de produtos e filtros -->
-
 	<div class="busca-vtex hide">
+		<div class="resultado-busca" data-module="resultado-busca">
+			<div class="container clearfix">
+				<div class="resultado-wrapper">
+					<div>
+						<p class="busca-termos"></p>
+					</div>
+
+					<div>
+						<p class="busca-resultados"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<div class="filter-wrapper hide-extra-small">
 			<div class="container departament-nav clearfix">
 				<div class="clearfix">
@@ -98,15 +40,16 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="busca-vtex container list-container clearfix hide">
 		<div class="row gutters">
 			<div class="col-12 list-content">
 
 				<!-- Prateleira -->
 				<section id="prateleira">
-					<div class="top-wrapper clearfix hide">
+					<div class="top-wrapper clearfix">
 						<vtex.cmc:searchTitle />
+						
 						<div class="order-wrapper">
 							<p class="order-title">Ordenar por</p>
 							<ul class="order-by"></ul>
@@ -134,6 +77,78 @@
 			</button>
 		</div>
 	</div>
+
+	<div class="busca-chaordic resultado-busca hide" data-module="resultado-busca">
+		<div class="container clearfix">
+			<div class="resultado-wrapper">
+				<!-- Resultado Dust -->
+			</div>
+		</div>
+	</div>
+
+	<div class="busca-chaordic suggestions-container container hide">
+		<!-- Suggestions Dust -->
+	</div>
+
+	<!-- Listagem de produtos e filtros -->
+	<div class="busca-chaordic result-filter container clearfix hide">
+
+		<div class="filter-container">
+			<!-- Filter Dust -->
+		</div>
+
+
+		<!-- Produtos -->
+		<section id="prateleira" class="container prateleira list-container clearfix">
+			<div class="row">
+				<div class="col-12 col-md-5"></div>
+
+				<div class="col-12 col-md-5 open-filter">
+					<span>Filtrar</span>
+				</div>
+
+				<div class="col-12 col-md-7 order-wrapper">
+					<!-- orderBy dust -->
+				</div>
+			</div>
+
+			<div class="row list-content list-content-filter">
+				<div class="col-xs-12">
+					<!-- Prateleira vitrine -->
+					<div class="main">
+
+						<div class="vitrine resultItemsWrapper">
+
+							<div class="pager top"></div>
+							<div class="prateleira default">
+								<div class="prateleira default n12colunas">
+									<ul>
+										<!-- Prateleira Dust -->
+									</ul>
+								</div>
+							</div>
+							<div class="pager bottom" id="PagerBottom"></div>
+						</div>
+
+					</div>
+					<!-- Prateleira vitrine -->
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="paginationSearch">
+						<!-- pagination Dust -->
+					</div>
+				</div>
+			</div>
+
+		</section>
+		<!-- /Produtos -->
+
+	</div>
+	<!-- Listagem de produtos e filtros -->
 
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />

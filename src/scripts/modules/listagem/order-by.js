@@ -31,7 +31,7 @@ Nitro.module('order-by', function () {
 
 			$listOrders.find('li a').click(function(e){
 				e.preventDefault();
-
+				console.log('clicou no order-by ul li a');
 				_self.order($(this));
 			});
 
@@ -40,7 +40,7 @@ Nitro.module('order-by', function () {
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-
+		console.log('orderValue>'+orderValue);
 		$('.selected').removeClass('selected');
 		$orderElement.addClass('selected');
 
@@ -95,7 +95,7 @@ Nitro.module('order-by', function () {
 		})
 		.done(function(data) {
 			if( data ) {
-				// console.log('ordervalue', orderValue);
+				console.log('ordervalue', orderValue);
 				$(window).trigger('filter', [helper.rel + orderValue, true]);
 
 				$('.vitrine > .prateleira').remove();

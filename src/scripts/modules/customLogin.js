@@ -607,9 +607,16 @@ Nitro.module('customLogin', function() {
 
 	// Substituindo todos os triggers do botão #login e envia para /login
 	var url_atual = window.location.pathname;
+	var url = location.href; 
+	url = url.split('/');
 	$('body').off('click','#login');
 	$('body').on('click', '#login', function() {
-		window.location='/login?ReturnUrl=' + url_atual + '';
+		if (url[2] === 'busca.consul.com.br') {
+			window.location='https://loja.consul.com.br/login?ReturnUrl=/';
+		}else{
+			window.location='/login?ReturnUrl=' + url_atual + '';
+
+		}
 	});
 
 });

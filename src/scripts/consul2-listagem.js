@@ -3,7 +3,7 @@
 
 require('modules/list-more');
 require('modules/listagem/filters');
-require('modules/listagem/order-by');	
+require('modules/listagem/order-by');
 require('modules/listagem/calculadorabtu');
 require('modules/slider-banner');
 require('modules/resultado-busca');
@@ -15,7 +15,7 @@ require('modules/listagem/busca-chaordic');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'compare', */ 'slider-banner', 'resultado-busca', /* 'modal.overlayAbandono', */ 'calculadorabtu', 'busca-chaordic' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC

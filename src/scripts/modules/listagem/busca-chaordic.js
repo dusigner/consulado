@@ -102,6 +102,7 @@ Nitro.module('busca-chaordic', function () {
 		dust.render(template, data, function (err, out) {
 			el.html(out);
 		});
+		// console.log(data);
 	};
 	
 	this.getTermSearch = function(){	
@@ -157,32 +158,32 @@ Nitro.module('busca-chaordic', function () {
 		// console.log(sortbyName[0]);
 		switch (sortbyName[0]) {
 		case 'ascPrice':
-			$('.order-title em').html('Menor Preço');
+			$('.order-title-chaordic em').html('Menor Preço');
 			break;
 		case 'descPrice':
-			$('.order-title em').html('Maior Preço');
+			$('.order-title-chaordic em').html('Maior Preço');
 			break;
 		case 'descSold':
-			$('.order-title em').html('Mais Vendidos');
+			$('.order-title-chaordic em').html('Mais Vendidos');
 			break;
 		case 'descDate':
-			$('.order-title em').html('Data de lançamento');
+			$('.order-title-chaordic em').html('Data de lançamento');
 			break;
 		case 'descDiscount':
-			$('.order-title em').html('Melhor Desconto');
+			$('.order-title-chaordic em').html('Melhor Desconto');
 			break;
 
 		default:
-			$('.order-title em').html('selecione');
+			$('.order-title-chaordic em').html('selecione');
 			break;
 		}
 
-		$('.order-wrapper .order-title').on('click', function () {
-			$(this).find('strong').toggleClass('active');
-			$(this).next('ul').slideToggle();
+		$('body.busca-chaordic .order-wrapper .order-title-chaordic').on('click', function () {
+			$(this).toggleClass('active');
+			$(this).next('.order-by-chaordic').toggleClass('active');
 		});
 
-		$('ul.order-by li a').on('click', function() {
+		$('ul.order-by-chaordic li a').on('click', function() {
 			//variavel armazena qual tipo de ordenação foi selecionado
 			var $dataOrder = $(this).attr('data-order');
 			// Variavel armazena chave da API atual
@@ -227,7 +228,7 @@ Nitro.module('busca-chaordic', function () {
 				self.orderBy();
 				self.priceFlags();
 			}).done(function(){
-				$('.order-title em').html($orderName);
+				$('.order-title-chaordic em').html($orderName);
 			});
 
 
@@ -292,24 +293,24 @@ Nitro.module('busca-chaordic', function () {
 				
 			switch (sortbyName[0]) {
 			case 'ascPrice':
-				$('.order-title em').html('Menor Preço');
+				$('.order-title-chaordic em').html('Menor Preço');
 				break;
 			case 'descPrice':
-				$('.order-title em').html('Maior Preço');
+				$('.order-title-chaordic em').html('Maior Preço');
 				break;
 			case 'descSold':
-				$('.order-title em').html('Mais Vendidos');
+				$('.order-title-chaordic em').html('Mais Vendidos');
 				break;
 			case 'descDate':
-				$('.order-title em').html('Data de lançamento');
+				$('.order-title-chaordic em').html('Data de lançamento');
 				break;
 			case 'descDiscount':
 				// console.log('entrou dec desconto');
-				$('.order-title em').html('Melhor Desconto');
+				$('.order-title-chaordic em').html('Melhor Desconto');
 				break;
 
 			default:
-				$('.order-title em').html('selecione');
+				$('.order-title-chaordic em').html('selecione');
 				break;
 			}
 			if($(document).width() <= 992){
@@ -541,20 +542,21 @@ Nitro.module('busca-chaordic', function () {
 
 	this.setup = function() {
 		
-		if(collection.length >= 1){
-			$('div.busca-chaordic').remove();
-			$('div.busca-vtex').removeClass('hide');
-			$('body.busca-chaordic').removeClass('categoria');
-		}else{
+		// if(collection.length >= 1){
+		if(term.length >= 1){
 			$('div.busca-vtex').remove();
 			$('div.busca-chaordic').removeClass('hide');
 			$('body.busca-chaordic').removeClass('busca');
+		}else{
+			$('div.busca-chaordic').remove();
+			$('div.busca-vtex').removeClass('hide');
+			$('body.busca-chaordic').removeClass('categoria');
 		}
 		
 		var $termSearch = self.getTermSearch();
 
 		self.getChaordicData($termSearch).always(function (data) {
-			// console.log(data);
+			console.log(data);
 
 			// Google Promises
 			self.render('filters-chaordic', data, $filters);
