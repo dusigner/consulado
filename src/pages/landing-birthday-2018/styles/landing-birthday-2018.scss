@@ -1,12 +1,12 @@
 @charset 'UTF-8';
 
 /*! =================================================
-	* Theme Name: Layout - PKG_ACCOUNTNAME
-	* Description: CSS desenvolvido para PKG_NAME.
-	* Author: PKG_AUTHOR
+	* Theme Name: Layout - Aniversário CNS 2018
+	* Description: CSS desenvolvido para Consul.
+	* Author: Sampsom
 	* Empresa: Jüssi
 	* Author URI: http://www.jussi.com.br/
-	* Version: PKG_BUILD_VERSION
+	* Version: 4.71.0
 	=================================================
 */
 /*!*/
@@ -33,7 +33,7 @@
 			&.show-mobile {
 				display: none;
 			}
-			@include breakpoint(740px, 'max') { 
+			@include breakpoint(740px, 'max') {
 				&.show-mobile {
 					display: block;
 				}
@@ -43,6 +43,7 @@
 			}
 		}
 	}
+
 	// SECTION BAR REGISTER
 	.bar-register {
 		background: #a8ca41;
@@ -52,7 +53,7 @@
 		right: 0;
 
 		@include breakpoint(960px, 'max') { bottom: 10px; }
-		@include breakpoint(768px, 'max') { 
+		@include breakpoint(768px, 'max') {
 			background: #fff;
 			position: relative;
 		}
@@ -104,9 +105,9 @@
 				&.category {
 					display: none;
 				}
-				
+
 				@include breakpoint(1182px, 'max') { width: 24%; }
-				@include breakpoint(768px, 'max') { 
+				@include breakpoint(768px, 'max') {
 					max-width: 100%;
 					width: 100% !important;
 				}
@@ -116,7 +117,7 @@
 
 				cursor: pointer;
 				position: relative;
-				
+
 				span {
 					display: block;
 					padding-top: 6px;
@@ -141,25 +142,25 @@
 					padding: 10px 5px 10px 10px;
 					position: relative;
 					top: 10px;
-					z-index: 11;				
+					z-index: 11;
 
-					ul {				
+					ul {
 						max-height: 200px;
 						overflow: auto;
 						padding-right: 5px;
-						
 
-						&::-webkit-scrollbar {						
+
+						&::-webkit-scrollbar {
 							position: relative;
 							right: 5px;
 							width: 8px;
 						}
-						
+
 						&::-webkit-scrollbar-track {
 							background: #dcdcdc;
-							border-radius: 50px;						
+							border-radius: 50px;
 						}
-						
+
 						&::-webkit-scrollbar-thumb {
 							background: #99c34e;
 							border-radius: 10px;
@@ -182,13 +183,13 @@
 								color: #fff;
 							}
 						}
-					}				
+					}
 				}
 
 				&.active {
 
 					.sub {
-						display: block;						
+						display: block;
 					}
 
 					&:after {
@@ -197,6 +198,11 @@
 						transition: .3s linear all;
 					}
 				}
+
+				&.error {
+					background: #fff0f0!important;
+					border-color: #f49a9a!important;
+				}
 			}
 
 			.submit {
@@ -204,19 +210,19 @@
 				border: 1px solid #fa0090;
 				border-radius: 30px;
 				color: #fff;
-				font-size: 22px;				
+				font-size: 22px;
 				height: 45px;
 				outline: none;
 				padding: 0 20px;
 				position: relative;
 				text-align: center;
 				transition: .3s linear all;
-				@include breakpoint(1182px, 'max') { 
+				@include breakpoint(1182px, 'max') {
 					padding: 0;
 					width: 18%;
 				}
 				@include breakpoint(1122px, 'max') { font-size: 16px; }
-				@include breakpoint(768px, 'max') { 
+				@include breakpoint(768px, 'max') {
 					bottom: -24px;
 					display: block;
 					margin: 0 auto 40px;
@@ -228,7 +234,7 @@
 					color: #fa0090;
 				}
 			}
-		}		
+		}
 	}
 
 	// SECTION MOVIE
@@ -246,7 +252,7 @@
 			height: 50px;
 			left: 50%;
 			line-height: 0;
-			margin-left: -25px;
+			margin-left: -175px;
 			margin-top: -25px;
 			position: absolute;
 			top: 50%;
@@ -254,7 +260,15 @@
 			width: 50px;
 			z-index: 11;
 
-			&:after {					
+			@include breakpoint(500px, 'max') {
+				margin-left: -25px;
+
+				&:before {
+					display: none;
+				}
+			}
+
+			&:after {
 				border-left: 15px solid transparent;
 				border-radius: 5px;
 				border-right: 15px solid transparent;
@@ -265,10 +279,26 @@
 				position: absolute;
 				width: 0;
 			}
+
+			&:before {
+				border: 2px solid #fff;
+				border-radius: 36px;
+				content: 'Assistir ao vídeo';
+				display: block;
+				font-size: 27px;
+				left: -103px;
+				line-height: 1;
+				padding: 10px;
+				position: absolute;
+				text-align: center;
+				top: 164px;
+				transform: rotate(90deg);
+				width: 251px;
+			}
 		}
 		.mask-movie {
 			position: relative;
-			
+
 			img {
 				max-width: 100%;
 				position: relative;
@@ -276,9 +306,33 @@
 				z-index: 1;
 			}
 
-			// iframe {
-			// 	display: none;
-			// }
+			.embed-responsive {
+				display: none;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+				width: 100%;
+
+				&.visible {
+					display: block;
+
+					&::before {
+						content: '';
+						display: block;
+						padding-top: 56.25%;
+					}
+				}
+
+				.embed-responsive-item {
+					border: 0;
+					bottom: 0;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
 		}
 
 		> .slick-dots {
@@ -298,12 +352,12 @@
 				margin: 16px;
 				padding: 4px 54px;
 				width: auto !important;
-				
+
 				@include breakpoint(925px, 'max') {
-					float: left !important;   
+					float: left !important;
 					width: 40% !important;
 				}
-				
+
 				@include breakpoint(520px, 'max') {
 					font-size: 19px;
 					margin: 5px 15px;
@@ -365,35 +419,118 @@
 				padding: 0 30px;
 				position: relative;
 				top: -28px;
-			}			
-		}
-	}
-}
 
-.embed-responsive {
-    display: none;
-    overflow: hidden;
-    padding: 0;
-	position: relative;
-	width: 100%;
-
-	&.visible {
-		display: block;
-
-		&::before {
-			content: '';
-			display: block;
-			padding-top: 56.25%;
+				@include breakpoint(500px, 'max') {
+				   max-width: 80%;
+				   padding: 0 15px;
+				}
+			}
 		}
 	}
 
-	.embed-responsive-item {
-		border: 0;
-		bottom: 0;
-		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
+	// MODAL
+	#vtex-modal-sucess {
+		background: rgba(255, 255, 255, .8);
+
+		.modal-holder {
+			background: #99cc2d;
+			max-width: 600px;
+		}
+
+		.modal-header {
+			height: 0;
+			padding: 0;
+
+			.close {
+				border: 2px solid #99cc2d;
+				&:before {
+					@include icon-get(close-icon);
+					color: #6f6f6f;
+					font-size: 16px;
+					margin-left: 2px;
+				}
+			}
+		}
+
+		#modal-sucess {
+			h2 {
+				color: #f1f1f1;
+				font-size: 30px;
+				font-weight: normal;
+				margin: 0;
+				padding: 20px 48px;
+
+				@include breakpoint(500px, 'max') {
+				   font-size: 20px;
+				   padding: 13px;
+				}
+			}
+
+			.cupom {
+				border: 1px dashed #f1f1f1;
+				color: #f1f1f1;
+				margin: auto;
+				max-width: 70%;
+				padding: 10px 10px 4px;
+				text-align: center;
+
+				@include breakpoint(500px, 'max') {
+				   max-width: 90%;
+				}
+
+				strong {
+					display: block;
+					font-size: 52px;
+					line-height: .7;
+					padding-top: 6px;
+					@include breakpoint(500px, 'max') {
+					   font-size: 30px;
+					}
+
+					&:after {
+						content: '*';
+						font-size: 11px;
+						position: relative;
+						right: -5px;
+						top: -20px;
+					}
+				}
+
+				span {
+					display: block;
+					font-size: 30px;
+					padding-top: 3px;
+
+					@include breakpoint(500px, 'max') {
+					   font-size: 15px;
+					}
+				}
+			}
+
+			a {
+				background: #fff;
+				border: 1px solid #fff;
+				border-radius: 40px;
+				color: #99cc2d;
+				display: block;
+				font-size: 20px;
+				font-weight: bold;
+				margin: 15px auto;
+				padding: 5px;
+				width: 180px;
+
+				&:hover {
+					background: #99cc2d;
+					color: #fff;
+				}
+			}
+
+			small {
+				color: #fff;
+				display: block;
+				font-size: 16px;
+				padding: 5px;
+			}
+		}
 	}
 }
