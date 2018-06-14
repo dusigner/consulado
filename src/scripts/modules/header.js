@@ -14,7 +14,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	// Menu mobile
 	var topMenu = $('.menu-department'),
 		menuMobile = $('.menu-mobile'),
-		defaultClass = 'menu-mobile show-extra-small';
+		defaultClass = 'menu-mobile';
 
 	topMenu.find('.dropdown > a, .icon-hamburger').click(function(e) {
 		e.preventDefault();
