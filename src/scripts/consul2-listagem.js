@@ -9,6 +9,7 @@ require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
+require('modules/listagem/comparebar');
 // require('custom/modal.overlayAbandono');
 // require('modules/compare');
 //require('custom/promo.lightbox');

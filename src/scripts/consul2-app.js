@@ -29,6 +29,13 @@ require('vendors/nitro');
 
 // require('modules/_autoloader');
 
+// Global
+var URI = require('urijs');
+var localStore = require('store');
+
+window.URI = URI;
+window.localStore = localStore;
+
 require('expose?store!modules/store/store');
 require('expose?publishDataLayer!modules/bi/publish-data-layer');
 

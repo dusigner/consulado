@@ -2,7 +2,7 @@
 
 Nitro.controller('compare', function() {
 
-	const self = this,
+	var self = this,
 		$titlePage = $('.compare-produtos-wrapper > h2'),
 		$body = $('body'),
 		$corpoComparacao = $('.corpo-comparacao');
@@ -29,10 +29,10 @@ Nitro.controller('compare', function() {
 
 		$corpoComparacao.find('tbody .remover td').each(function(idx){
 			if($(this).find('.remover-produto').length > 0) {
-				let prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('.link').attr('href'),
+				var prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('.link').attr('href'),
 					prodName = $corpoComparacao.find('thead tr th').eq(idx).find('.link').text();
 
-				let buyButton = `<a class="btn btn-primary js-track-items__default" data-category="Comparador" data-text="Comprar - ${prodName}" href="${prodLink}">Comprar</a>`;
+				var buyButton = '<a class="btn btn-primary js-track-items__default" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
 
 				$(this).remove('.remover-produto');
 				$(this).html(buyButton);
@@ -41,7 +41,7 @@ Nitro.controller('compare', function() {
 	};
 
 	this.buildRemoveButtons = function() {
-		var removeButton 	= `<span class="remove-button"></span>`,
+		var removeButton 	= '<span class="remove-button"></span>',
 			$produtoLi		= $('.produto .produto-listagem');
 
 		$produtoLi.each(function() {
@@ -51,20 +51,18 @@ Nitro.controller('compare', function() {
 
 	this.buildTitleTR = function() {
 		var $tbody	= $corpoComparacao.find('table > tbody'),
-			$title	= `
-			<tr class="specs-title">
-				<td colspan="4">Especificações Técnicas</td>
-			</tr>
-			`;
+			$title	= '<tr class="specs-title">'+
+                          '<td colspan="4">Especificações Técnicas</td>'+
+                      '</tr>';
 
 		$tbody.find('tr').eq(0).after($title);
 	};
 
 	// função para pegar os ids dos produtos na página
 	this.updateStore = function(id) {
-		let newsIds = localStore.get('comparador');
+		var newsIds = localStore.get('comparador');
 
-		newsIds.forEach( (val, idx) => {
+		newsIds.forEach(function(val, idx) {
 			val.rel === id ? newsIds.splice(idx, 1): '';
 		});
 
@@ -76,25 +74,23 @@ Nitro.controller('compare', function() {
 	this.listeners = function() {
 		loadMobile();
 
-		let categoryName = $('.corpo-comparacao tbody tr:first-child td:first-of-type').text();
+		var categoryName = $('.corpo-comparacao tbody tr:first-child td:first-of-type').text();
 
 		// CHANGE TITLE TEXT
-		$titlePage.html(`
-			<div>Comparador de produtos</div>
-			<div><a href="${window.location.search.match(/&ReturnUrl=(.+)/)[1]}" class="btn btn-secondary js-track-items__link" data-category="Comparador">Voltar para ${categoryName}</a></div>
-		`);
+		$titlePage.html('<div>Comparador de produtos</div>'+
+			'<div><a href="'+window.location.search.match(/&ReturnUrl=(.+)/)[1]+'" class="btn btn-secondary js-track-items__link" data-category="Comparador">Voltar para '+categoryName+'</a></div>');
 		$titlePage.css('display', 'flex');
 
 		// REMOVE BUTTON
 		$body.on('click', '.remove-button', function() {
 			var id = $(this).parent().parent().parent().parent().parent().parent().attr('class');
-			$("td.{0}, th.{0}".format(id)).remove();
+			$('td.{0}, th.{0}'.format(id)).remove();
 
 			self.updateStore(id);
 
 			if (document.querySelectorAll('.corpo-comparacao > table th .produto').length === 1){
 				var url 		= new URL(window.location.href),
-					urlToReturn = url.searchParams.get("ReturnUrl");
+					urlToReturn = url.searchParams.get('ReturnUrl');
 
 				if(urlToReturn) {
 					window.location.href = urlToReturn;
@@ -123,12 +119,12 @@ Nitro.controller('compare', function() {
 
 				if (document.querySelectorAll('.corpo-comparacao > table th .produto').length === 3) {
 					// REMOVE THE THIRD PRODUCT
-					let idThirdProd = $corpoComparacao.find('table thead tr:nth-child(2) th').next().attr('class');
-					$(`td.${idThirdProd}, th.${idThirdProd}`.format(idThirdProd)).remove();
+					var idThirdProd = $corpoComparacao.find('table thead tr:nth-child(2) th').next().attr('class');
+                    $('td.'+idThirdProd+', th.'+idThirdProd.format(idThirdProd)).remove();
 				}
 			} else {
 				$(window).on('scroll', function() {
-					let insertContent = $('.-is-desktop--active .diff-highlight-container'),
+					var insertContent = $('.-is-desktop--active .diff-highlight-container'),
 						txtStr = $('.title .link').text(),
 						firstWord = txtStr.split(' ')[0],
 						compareBar = $('.corpo-comparacao thead tr:nth-child(2)'),
@@ -147,7 +143,7 @@ Nitro.controller('compare', function() {
 					}
 
 					if ($('.corpo-comparacao th .produto').length === 2 && $('.compare-bar__product-image').length === 0) {
-						compareBar.append(`<th><a href="${window.location.search.match(/&ReturnUrl=(.+)/)[1]}"><div class="compare-bar__product-image"></div></a></th>`);
+						compareBar.append('<th><a href="'+window.location.search.match(/&ReturnUrl=(.+)/)[1]+'"><div class="compare-bar__product-image"></div></a></th>');
 					}
 
 					$(this).scrollTop() < 160 ? $('.compare-bar__product-image').hide() : $('.compare-bar__product-image').show();
@@ -158,26 +154,23 @@ Nitro.controller('compare', function() {
 
 	this.buildHighlightDiff = function() {
 
-		$corpoComparacao.find('thead tr:nth-child(2) th:nth-child(1)').html(`
-			<div class="diff-highlight">
-				<span>Destacar</span><br />
-				<div>
-					<div class="form-check form-check-inline form-check-diff">
-						<input class="form-check-input js-diff-check" type="radio" value="diff" id="isDiff" name="compare-highlight">
-						<label class="form-check-label" for="isDiff">
-							<h6>Diferenças</h6>
-						</label>
-					</div>
-
-					<div class="form-check form-check-inline form-check-eq">
-						<input class="form-check-input js-diff-check" type="radio" value="eq" id="isEq" name="compare-highlight">
-						<label class="form-check-label" for="isEq">
-							<h6>Semelhanças</h6>
-						</label>
-					</div>
-				</div>
-			</div>
-		`).addClass('diff-highlight-container');
+		$corpoComparacao.find('thead tr:nth-child(2) th:nth-child(1)').html('<div class="diff-highlight">'+
+				'<span>Destacar</span><br />'+
+				'<div>'+
+					'<div class="form-check form-check-inline form-check-diff">'+
+						'<input class="form-check-input js-diff-check" type="radio" value="diff" id="isDiff" name="compare-highlight">'+
+						'<label class="form-check-label" for="isDiff">'+
+							'<h6>Diferenças</h6>'+
+						'</label>'+
+					'</div>'+
+					'<div class="form-check form-check-inline form-check-eq">'+
+						'<input class="form-check-input js-diff-check" type="radio" value="eq" id="isEq" name="compare-highlight">'+
+						'<label class="form-check-label" for="isEq">'+
+							'<h6>Semelhanças</h6>'+
+						'</label>'+
+					'</div>'+
+				'</div>'+
+			'</div>').addClass('diff-highlight-container');
 
 		$body.on('change', '.js-diff-check', function() {
 
@@ -185,7 +178,7 @@ Nitro.controller('compare', function() {
 				.removeClass (function (index, className) {
 					return (className.match(/(^|\s)highlight-\S+/g) || []).join(' ');
 				})
-				.addClass(`highlight-${$('.js-diff-check:checked').val()}`);
+				.addClass('highlight-'+$('.js-diff-check:checked').val());
 		});
 	};
 
@@ -193,8 +186,8 @@ Nitro.controller('compare', function() {
 
 		$('tbody .atributos').each(function() {
 
-			const firstValue = $(this).find('td:first').text();
-			let diff = false;
+			var firstValue = $(this).find('td:first').text();
+			var diff = false;
 
 			$(this).find('td').each(function() {
 

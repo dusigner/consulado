@@ -1,10 +1,22 @@
-@import 'bootstrap/scss/functions';
-@import 'bootstrap/scss/variables';
-@import 'variables/variables';
-@import 'helpers/mixins/breakpoint';
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul2.
+	* Author: Douglas "Amarelo" Lopes / Gustavo Bento de Paula
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
 
 @mixin diffHighlight() {
-	background-color: $secondary-ul-color;
+	background-color: #E6E6E6;
 
 	&:before,
 	&:after {
@@ -14,11 +26,11 @@
 	}
 }
 
-body.compare {
-	header.header {
-		@include breakpoint('tablet', 'max') { background-color: $black!important; }
-	}
-}
+// body.compare {
+// 	header.header {
+// 		@include breakpoint('small', 'max') { background-color: #000000!important; }
+// 	}
+// }
 
 .corpo-comparacao {
 	&.highlight {
@@ -32,7 +44,7 @@ body.compare {
 	}
 
 	table {
-		@include breakpoint('tablet', 'max') {
+		@include breakpoint('small', 'max') {
 			// padding-top: 500px;
 			position: relative;
 		}
@@ -40,7 +52,7 @@ body.compare {
 		width: 100%;
 
 		thead {
-			@include breakpoint('tablet', 'max') {
+			@include breakpoint('small', 'max') {
 				background-color: #fff;
 				margin-bottom: 1rem;
 				padding: 1em .5em 60px .5em;
@@ -54,7 +66,7 @@ body.compare {
 
 			tr {
 				&:not(.remover) {
-					@include breakpoint('tablet', 'max') { align-items: flex-start; }
+					@include breakpoint('small', 'max') { align-items: flex-start; }
 					align-items: flex-end;
 					display: flex;
 					flex-direction: row;
@@ -64,14 +76,14 @@ body.compare {
 					display: none;
 				}
 
-				@include breakpoint('desktop', 'min') {
+				@include breakpoint('medium', 'min') {
 					th:first-child { width: 25%; }
 				}
 
 				th {
 					max-width: 300px;
 					width: calc(100% / 4);
-					@include breakpoint('tablet', 'max') {
+					@include breakpoint('small', 'max') {
 						max-width: 100%;
 						width: calc(100% / 2);					   
 					}
@@ -89,14 +101,14 @@ body.compare {
 						.default.prateleira {
 							& > ul {
 								& > li {
-									border: solid 1px $secondary-ul-color;
+									border: solid 1px #E6E6E6;
 									margin: 0;
 									max-width: 100%;
 									position: relative;
 									width: 100%;
 
 									.title {
-										@include breakpoint('phone', 'max') { min-height: 90px; }
+										@include breakpoint('extra-small', 'max') { min-height: 90px; }
 										min-height: 60px;
 									}
 
@@ -125,12 +137,12 @@ body.compare {
 			width: 100%;
 
 			tr {
-				border-bottom: solid 2px  $secondary-ul-color;
+				border-bottom: solid 2px  #E6E6E6;
 				display: none;
 				position: relative;
 				width: 100%;
 
-				@include breakpoint('tablet', 'max') {
+				@include breakpoint('small', 'max') {
 					border-bottom: none;
 
 					&:not(.specs-title):not(.remover) {
@@ -144,7 +156,7 @@ body.compare {
 				&.remover {
 					display: flex;				
 
-					@include breakpoint('tablet', 'max') {
+					@include breakpoint('small', 'max') {
 						display: block;
 
 						th {
@@ -158,7 +170,7 @@ body.compare {
 					}
 
 					td:first-child {
-						@include breakpoint('phone', 'max') {
+						@include breakpoint('extra-small', 'max') {
 							display: none;
 						}
 					}
@@ -166,7 +178,7 @@ body.compare {
 
 				&:before,
 				&:after {
-					background: $secondary-ul-color;
+					background: #E6E6E6;
 					bottom: -2px;
 					content: '';
 					height: 2px;
@@ -175,14 +187,14 @@ body.compare {
 				}
 
 				&.specs-title {
-					background-color: $secondary-color;
+					background-color: #3B3B3A;
 					font-size: 16px;
 					height: 43px;
 					z-index: 3;
 
 					&:before {
-						@include breakpoint('phone', 'max') { height: 45px; }
-						background: $secondary-color;
+						@include breakpoint('extra-small', 'max') { height: 45px; }
+						background: #3B3B3A;
 						content: '';
 						height: 43px;
 						left: 50%;
@@ -196,8 +208,8 @@ body.compare {
 					&:after { content: none; }
 
 					td {
-						@include breakpoint('phone', 'max') { padding-top: 12px; }
-						color: $white;
+						@include breakpoint('extra-small', 'max') { padding-top: 12px; }
+						color: #FFFFFF;
 						font-weight: 700;
 						padding-left: 0;
 						text-align: left;
@@ -206,11 +218,11 @@ body.compare {
 				}
 
 				&.remover {
-					background-color: $secondary-color;
+					background-color: #3B3B3A;
 					z-index: 3;
 
 					&:after {
-						background: $secondary-color;
+						background: #3B3B3A;
 						content: '';
 						height: calc(100% + 5px);
 						left: 50%;
@@ -236,20 +248,20 @@ body.compare {
 					td {
 						&:first-child {							
 							width: 25%;
-							@include breakpoint('tablet', 'max') { display: none; }
+							@include breakpoint('small', 'max') { display: none; }
 						}
 					}
 				}
 
 				// &:nth-child(odd) {
-				// 	background: $secondary-ul-color;
+				// 	background: #E6E6E6;
 				// }
 
 				&:first-child { display: none; }
 
 				th,
 				td {
-					color: $secondary-color;
+					color: #3B3B3A;
 					padding: .7rem 15px;
 					text-align: center;
 				}
@@ -265,7 +277,7 @@ body.compare {
 					max-width: 300px;					
 					vertical-align: top;
 					width: calc(100% / 4);
-					@include breakpoint('tablet', 'max') {
+					@include breakpoint('small', 'max') {
 						width: calc(100% / 100);
 					}
 				}
@@ -274,7 +286,7 @@ body.compare {
 
 		// Mobile
 		.-is-mobile--active & {
-			@include breakpoint('tablet', 'max') {
+			@include breakpoint('small', 'max') {
 				padding-top: 325px;
 
 				thead {
@@ -313,7 +325,7 @@ body.compare {
 
 			thead {
 				background: #fff;
-				border: 1px solid $secondary-l-color;
+				border: 1px solid #BBBBBB;
 				left: 0;;
 				position: fixed;
 				top: 0;
@@ -351,21 +363,21 @@ body.compare {
 			.remove-button { right: 5px; }
 
 			.produto-listagem { 
-				border-right: 1px solid $secondary-ul-color;
+				border-right: 1px solid #E6E6E6;
 				padding: 0 1rem; 
 			}
 
 			.selection-product {
-				color: $secondary-color;
+				color: #3B3B3A;
 				display: inline-block;
-				font-weight: $font-weight-normal;
+				font-weight: 500;
 				padding: 15px 0;
 				.mb-3 { font-size: 22px; }
 			}
 
 			.diff-highlight {
 				span {
-					color: $secondary-color;
+					color: #3B3B3A;
 					display: inline-block;
 					font-size: 18px;
 					padding: 18px 0;
@@ -393,7 +405,7 @@ body { overflow-x: hidden; }
 
 .compare-produtos-wrapper {
 	> h2 {
-		@include breakpoint('phone', 'max') {
+		@include breakpoint('extra-small', 'max') {
 			div + div { display: none }
 		}
 		display: none;
@@ -404,7 +416,7 @@ body { overflow-x: hidden; }
 }
 
 .remove-button {
-	background: $secondary-l-color;
+	background: #BBBBBB;
 	border-radius: 100%;
 	cursor: pointer;
 	display: block;
@@ -427,14 +439,14 @@ body { overflow-x: hidden; }
 	}
 
 	&:hover {
-		background: $black;
+		background: #000000;
 		transform: scale(1.2);
 	}
 }
 
 // Destacar diferenças
 .diff-highlight-container {
-	@include breakpoint('tablet', 'max') {
+	@include breakpoint('small', 'max') {
 		bottom: 10px;
 		left: 0;
 		max-width: 100% !important;
@@ -444,21 +456,21 @@ body { overflow-x: hidden; }
 }
 
 .diff-highlight {
-	// @include breakpoint('phone', 'max') { margin: 0 .7em!important; }
-	@include breakpoint('tablet', 'max') {
-		border: 1px solid $secondary-color;
+	// @include breakpoint('extra-small', 'max') { margin: 0 .7em!important; }
+	@include breakpoint('small', 'max') {
+		border: 1px solid #3B3B3A;
 		margin: 0 1.2em;
 		padding: .5em;
 
 		span {
-			color: $secondary-color;
+			color: #3B3B3A;
 			display: inline-block;
 			width: 25%;
 		}
 
 		span,
 		h6 {
-			@include breakpoint('phone', 'max') { font-size: 12px; }
+			@include breakpoint('extra-small', 'max') { font-size: 12px; }
 		}
 
 		& > div {
@@ -470,7 +482,7 @@ body { overflow-x: hidden; }
 
 	.form-check-diff,
 	.form-check-eq {
-		@include breakpoint('tablet', 'max') {
+		@include breakpoint('small', 'max') {
 			margin: 0;
 			width: 45%;
 		}
