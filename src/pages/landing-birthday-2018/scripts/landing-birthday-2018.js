@@ -42,6 +42,12 @@ Nitro.setup(['facebook-init'], function () {
 	$('.select-category ul li').click(function(){
 		$(this).not('.inactive').toggleClass('selected');
 		var $opcoesSelcted = $('.sub ul li.selected:not(.inactive)');
+
+		if ($opcoesSelcted.length >= 3){
+			$('.sub ul li:not(.selected)').addClass('inactive');
+		}
+
+
 		if ($opcoesSelcted.length < 1){
 			$valueSelected.text('Selecione sua categoria');
 			$('.sub ul li').removeClass('inactive');
