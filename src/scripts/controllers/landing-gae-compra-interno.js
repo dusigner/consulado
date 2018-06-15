@@ -15,6 +15,9 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		loading = '<div class="load"><div class="loading"></div></div>',
 		getOrdersUrl,
 		getUserEmail;
+		console.clear();
+		console.log('teste');
+		
 
 	if($.cookie('vtex-current-user')) {
 		getUserEmail = window.getCookie('vtex-impersonated-customer-email').replace('vtex-impersonated-customer-email=', '');
@@ -47,7 +50,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		var data = {};
 
 		data.currentState = states.get(e.state);
-
+		console.log('e', e);
 		data.orderId = e.orderId;
 		data.orderIdFormatted = data.orderId.split('-').shift().replace(/[^0-9]/g, '');
 		data.orderGroup = e.orderGroup;
@@ -57,8 +60,8 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		data.shippingMethod = (e.shippingData.logisticsInfo[0]) ? e.shippingData.logisticsInfo[0].selectedSla : '';
 		data.payments = e.paymentData.payments;
 		data.products = e.items;
-		data.Installment = (e.paymentData.payments[0]) ? e.paymentData.payments[0].installments : '';
-		data.boletoURL = (e.paymentData.payments[0]) ? e.paymentData.payments[0].url : '';
+		data.Installment = (e.paymentData.transactions[0].payments[0]) ? e.paymentData.transactions[0].payments[0].installments : '';
+		data.boletoURL = (e.paymentData.transactions[0].payments[0]) ? e.paymentData.transactions[0].payments[0].url : '';
 		data.hasGae = false;
 
 		var orderDate = data.formattedDate.split('/');
