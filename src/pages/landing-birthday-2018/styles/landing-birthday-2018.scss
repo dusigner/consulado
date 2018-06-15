@@ -93,7 +93,7 @@
 				border-radius: 30px;
 				color: #727272;
 				float: left;
-				font-size: 18px;
+				font-size: 16px;
 				font-style: italic;
 				height: 45px;
 				margin-right: 15px;
@@ -120,7 +120,7 @@
 
 				span {
 					display: block;
-					padding-top: 6px;
+					padding-top: 9px;
 				}
 
 				&:after {
@@ -172,15 +172,38 @@
 							color: #333333;
 							cursor: pointer;
 							font-size: 20px;
+							position: relative;
 							text-align: center;
+
+							&:before {
+								border: 1px solid #a8ca41;
+								content: '';
+								display: block;
+								height: 12px;
+								left: 0;
+								position: absolute;
+								top: 10px;
+								width: 12px;
+							}
+
+							&:after {
+								font-size: 7px;
+								left: 2px;
+								position: absolute;
+								top: 12px;
+							}
 
 							&:last-child {
 								border: none;
 							}
 
-							&:hover {
-								background: #99c34e;
-								color: #fff;
+							&.selected {
+								font-weight: bold;
+
+								&:after {
+									@include icon-get(check-mark);
+								}
+
 							}
 						}
 					}
@@ -207,7 +230,7 @@
 
 			.submit {
 				background: #fa0090;
-				border: 1px solid #fa0090;
+				border: 2px solid #fa0090;
 				border-radius: 30px;
 				color: #fff;
 				font-size: 22px;

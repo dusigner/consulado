@@ -13,7 +13,6 @@ console.clear();
 Nitro.setup(['facebook-init'], function () {
 	// VARS
 	var $containerSelect = $('.select-category'),
-		$selectLi = $('.select-category ul li'),
 		$valueSelected = $('.select-category > span'),
 		$inputCategory = $('input.category'),
 		$iconPlay = $('.icon-play'),
@@ -36,13 +35,22 @@ Nitro.setup(['facebook-init'], function () {
 	});
 	// Open Select
 	$containerSelect.click(function(){
-		$(this).toggleClass('active');
+		$(this).addClass('active');
 	});
 
 	// SELECT CATEGORY
-	$selectLi.click(function(){
-		$valueSelected.text($(this).text());
-		$inputCategory.val($(this).text());
+	$('.select-category ul li').click(function(){
+		$(this).not('.inactive').toggleClass('selected');
+		var $opcoesSelcted = $('.sub ul li.selected:not(.inactive)');
+		if ($opcoesSelcted.length < 1){
+			$valueSelected.text('Selecione sua categoria');
+			$('.sub ul li').removeClass('inactive');
+		}else if ($opcoesSelcted.length >= 3){
+			$('.sub ul li:not(.selected)').addClass('inactive');
+		}else {
+			$valueSelected.text($opcoesSelcted.text());
+			$inputCategory.val($opcoesSelcted);
+		}
 	});
 
 	// monta slick dos vídeos
