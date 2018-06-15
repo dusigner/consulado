@@ -1,0 +1,483 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'variables/variables';
+@import 'helpers/mixins/breakpoint';
+
+@mixin diffHighlight() {
+	background-color: $secondary-ul-color;
+
+	&:before,
+	&:after {
+		bottom: 0;
+		height: calc(100% + 2px);
+		top: 0;
+	}
+}
+
+body.compare {
+	header.header {
+		@include breakpoint('tablet', 'max') { background-color: $black!important; }
+	}
+}
+
+.corpo-comparacao {
+	&.highlight {
+		&-eq {
+			.atributos.eq { @include diffHighlight() }
+		}
+
+		&-diff {
+			.atributos.diff { @include diffHighlight() }
+		}
+	}
+
+	table {
+		@include breakpoint('tablet', 'max') {
+			// padding-top: 500px;
+			position: relative;
+		}
+		display: block;
+		width: 100%;
+
+		thead {
+			@include breakpoint('tablet', 'max') {
+				background-color: #fff;
+				margin-bottom: 1rem;
+				padding: 1em .5em 60px .5em;
+				position: relative;
+				width: calc(100%);
+				z-index: 4;
+			}
+			display: block;
+			margin-bottom: 3rem;
+			transition: top .5s ease;
+
+			tr {
+				&:not(.remover) {
+					@include breakpoint('tablet', 'max') { align-items: flex-start; }
+					align-items: flex-end;
+					display: flex;
+					flex-direction: row;
+				}
+
+				&.remover { 
+					display: none;
+				}
+
+				@include breakpoint('desktop', 'min') {
+					th:first-child { width: 25%; }
+				}
+
+				th {
+					max-width: 300px;
+					width: calc(100% / 4);
+					@include breakpoint('tablet', 'max') {
+						max-width: 100%;
+						width: calc(100% / 2);					   
+					}
+
+					&:first-child {
+						& > .produto { margin-left: 0; }
+					}
+
+					&:last-child { text-align: center; }
+
+					& > .produto {
+						margin: 0 auto;
+						width: 90%;
+
+						.default.prateleira {
+							& > ul {
+								& > li {
+									border: solid 1px $secondary-ul-color;
+									margin: 0;
+									max-width: 100%;
+									position: relative;
+									width: 100%;
+
+									.title {
+										@include breakpoint('phone', 'max') { min-height: 90px; }
+										min-height: 60px;
+									}
+
+									.features { display: none }
+
+									.prices-info {
+										display: flex;
+										flex-direction: column;
+										min-height: 65px;
+
+										.parcelado,
+										.from {
+											margin-top: auto;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		tbody {
+			display: block;
+			width: 100%;
+
+			tr {
+				border-bottom: solid 2px  $secondary-ul-color;
+				display: none;
+				position: relative;
+				width: 100%;
+
+				@include breakpoint('tablet', 'max') {
+					border-bottom: none;
+
+					&:not(.specs-title):not(.remover) {
+						&:before,
+						&:after { opacity: 0; }
+					}
+				}
+
+				&[class*='Caracter'],
+				&.specs-title,
+				&.remover {
+					display: flex;				
+
+					@include breakpoint('tablet', 'max') {
+						display: block;
+
+						th {
+							&:nth-child(1) {
+								border-bottom: solid 1px;
+								display: block;
+								text-transform: uppercase;
+								width: 100%;
+							}
+						}
+					}
+
+					td:first-child {
+						@include breakpoint('phone', 'max') {
+							display: none;
+						}
+					}
+				}
+
+				&:before,
+				&:after {
+					background: $secondary-ul-color;
+					bottom: -2px;
+					content: '';
+					height: 2px;
+					position: absolute;
+					width: 50%;
+				}
+
+				&.specs-title {
+					background-color: $secondary-color;
+					font-size: 16px;
+					height: 43px;
+					z-index: 3;
+
+					&:before {
+						@include breakpoint('phone', 'max') { height: 45px; }
+						background: $secondary-color;
+						content: '';
+						height: 43px;
+						left: 50%;
+						position: absolute;
+						top: 0;
+						transform: translateX(-50%);
+						width: 100vw;
+						z-index: -5;
+					}
+
+					&:after { content: none; }
+
+					td {
+						@include breakpoint('phone', 'max') { padding-top: 12px; }
+						color: $white;
+						font-weight: 700;
+						padding-left: 0;
+						text-align: left;
+						text-transform: uppercase;
+					}
+				}
+
+				&.remover {
+					background-color: $secondary-color;
+					z-index: 3;
+
+					&:after {
+						background: $secondary-color;
+						content: '';
+						height: calc(100% + 5px);
+						left: 50%;
+						position: absolute;
+						transform: translateX(-50%);
+						width: 100vw;
+						z-index: -5;
+					}
+				}
+
+				&:before { right: 100%; }
+
+				&:after { left: 100%; }
+
+				&:last-child {
+					border-bottom: 0;
+
+					&:before,
+					:after {
+						content: none;
+					}
+
+					td {
+						&:first-child {							
+							width: 25%;
+							@include breakpoint('tablet', 'max') { display: none; }
+						}
+					}
+				}
+
+				// &:nth-child(odd) {
+				// 	background: $secondary-ul-color;
+				// }
+
+				&:first-child { display: none; }
+
+				th,
+				td {
+					color: $secondary-color;
+					padding: .7rem 15px;
+					text-align: center;
+				}
+
+				th {
+					font-weight: 700;
+					padding-left: 0;
+					text-align: left;
+					width: 25%;						
+				}
+
+				td { 
+					max-width: 300px;					
+					vertical-align: top;
+					width: calc(100% / 4);
+					@include breakpoint('tablet', 'max') {
+						width: calc(100% / 100);
+					}
+				}
+			}
+		}
+
+		// Mobile
+		.-is-mobile--active & {
+			@include breakpoint('tablet', 'max') {
+				padding-top: 325px;
+
+				thead {
+					left: 0;
+					position: fixed;
+					top: 0;
+
+					tr {
+						th {
+							width: calc(100% / 2);
+						}
+					}
+				}
+
+				.produto {
+					transition: all .5s ease;
+
+					.title {
+						margin: 0 !important;
+						min-height: 60px!important;
+
+						.link { font-size: 12px!important; }
+					}
+
+					.features,
+					.prices-info,
+					.btn-comparar { display: none!important; }
+				}
+			}
+		}
+		.selection-product {
+			display: none;
+		}
+		// Desktop
+		.-is-desktop--active & {
+
+			thead {
+				background: #fff;
+				border: 1px solid $secondary-l-color;
+				left: 0;;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 10;
+				tr {
+					align-items: center;					
+					margin: auto;
+					max-width: 1140px;				
+					padding-bottom: 5px;
+
+					@media screen and (min-width: 992px) and (max-width: 1200px) {
+						max-width: 960px;
+					}
+					@media screen and (min-width: 768px) and (max-width: 992px) {
+						max-width: 720px;
+					}
+
+					th {
+						&:first-child {													
+							width: 25%;
+						}
+
+						& > .produto {
+							width: 100%;
+						}
+					}
+				}
+				li { 
+					border: none!important; 
+					padding: 1rem 0; 
+				}
+			}
+
+			.remove-button { right: 5px; }
+
+			.produto-listagem { 
+				border-right: 1px solid $secondary-ul-color;
+				padding: 0 1rem; 
+			}
+
+			.selection-product {
+				color: $secondary-color;
+				display: inline-block;
+				font-weight: $font-weight-normal;
+				padding: 15px 0;
+				.mb-3 { font-size: 22px; }
+			}
+
+			.diff-highlight {
+				span {
+					color: $secondary-color;
+					display: inline-block;
+					font-size: 18px;
+					padding: 18px 0;
+				}
+			}
+
+			.prices-info { display: none!important; }
+
+			.prateleira.default .produto-listagem figure img {
+				height: 109px;
+				max-width: 109px;
+			}
+
+
+		}
+	}
+}
+
+body { overflow-x: hidden; }
+
+.comparar-outros,
+.topWrapper {
+	display: none;
+}
+
+.compare-produtos-wrapper {
+	> h2 {
+		@include breakpoint('phone', 'max') {
+			div + div { display: none }
+		}
+		display: none;
+		justify-content: space-between;
+		margin-bottom: 2rem;
+		margin-top: 3rem;
+	}
+}
+
+.remove-button {
+	background: $secondary-l-color;
+	border-radius: 100%;
+	cursor: pointer;
+	display: block;
+	height: 20px;
+	position: absolute;
+	right: -5px;
+	top: -5px;
+	transition: all .2s ease;
+	width: 20px;	
+
+	&:after {
+		background: #fff;
+		content: '';
+		height: 2.5px;
+		left: 4px;
+		margin-top: -1.25px;
+		position: absolute;
+		top: 50%;
+		width: 11px;
+	}
+
+	&:hover {
+		background: $black;
+		transform: scale(1.2);
+	}
+}
+
+// Destacar diferenças
+.diff-highlight-container {
+	@include breakpoint('tablet', 'max') {
+		bottom: 10px;
+		left: 0;
+		max-width: 100% !important;
+		position: absolute;
+		width: 100% !important;
+	}
+}
+
+.diff-highlight {
+	// @include breakpoint('phone', 'max') { margin: 0 .7em!important; }
+	@include breakpoint('tablet', 'max') {
+		border: 1px solid $secondary-color;
+		margin: 0 1.2em;
+		padding: .5em;
+
+		span {
+			color: $secondary-color;
+			display: inline-block;
+			width: 25%;
+		}
+
+		span,
+		h6 {
+			@include breakpoint('phone', 'max') { font-size: 12px; }
+		}
+
+		& > div {
+			display: inline-block;
+			width: 70%;
+		}
+		br { display: none; }
+	}
+
+	.form-check-diff,
+	.form-check-eq {
+		@include breakpoint('tablet', 'max') {
+			margin: 0;
+			width: 45%;
+		}
+
+		h6 {
+			line-height: 20px;
+			margin: 0;
+		}
+	}
+}
