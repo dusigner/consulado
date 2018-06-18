@@ -55,7 +55,7 @@ Nitro.setup(['facebook-init'], function () {
 			$inputCategory.val($opcoesSelcted.text());
 		}else {
 			$valueSelected.text($opcoesSelcted.text());
-			$inputCategory.val($opcoesSelcted);
+			$inputCategory.val($opcoesSelcted.text());
 		}
 
 		if ($opcoesSelcted.length < 1){
