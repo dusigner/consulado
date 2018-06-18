@@ -1,0 +1,47 @@
+<div class="compare-bar py-4">
+	<!-- Close -->
+	<button class="compare-bar--close js-compare-bar"><i class="icon icon-arrow-down"></i></button>
+	<!-- /Close -->
+
+	<div class="container">
+		<div class="grid-middle-noGutter">
+			<!-- Compare actions -->
+			<div class="compare-bar__action col-3_sm-12">
+				<strong class="compare-bar__title d-block">Comparador de produtos</strong>
+
+				<!-- Description -->
+				<p class="compare-bar__description">
+					<span class="text-open">Você pode comparar até <strong class="js-compare-max-quantity">3</strong> produtos.</span>
+					<span class="text-close d-none">
+						<strong class="js-compare-selected-quantity">0</strong> produtos selecionados em <strong class="compare-bar__category"></strong>.
+					</span>
+				</p>
+				<!-- Description -->
+
+				<!-- Action buttons -->
+				<div class="compare-bar__buttons">
+					<button class="secondary-button js-compare-btn-limpar">Limpar</button>
+					<button class="primary-button disabled js-compare-btn-compare">Comparar</button>
+				</div>
+				<!-- /Action buttons -->
+			</div>
+			<!-- /Compare actions -->
+
+			<!-- Products -->
+			<div class="compare-bar-products col-9_sm-12">
+				<div class="grid-middle-3_sm-1"></div>
+			</div>
+			<!-- /Products -->
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="d-none js-modal-compare">
+	<div class="compare-modal text-center">
+		<h2 class="compare-modal__title">Você já atingiu o limite de <span class="js-compare-max-quantity">3</span> produtos</h2>
+		<p class="compare-modal__text">Remova um produto para adicionar este ao comparador de produtos.</p>
+		<button class="primary-button js-close-compare-modal">Ok, entendi</button>
+	</div>
+</div>
+<!-- /Modal -->

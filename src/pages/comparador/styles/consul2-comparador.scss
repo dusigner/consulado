@@ -15,6 +15,8 @@
 @import 'helpers/functions';
 @import 'helpers/mixins';
 
+@import 'consul2-listagem';
+
 @mixin diffHighlight() {
 	background-color: #E6E6E6;
 
@@ -394,6 +396,27 @@
 
 		}
 	}
+
+	// fallbacks
+	.prateleira.default .department-nav,
+	.btn-comparar,
+	.compare {
+		display: none;
+	}
+
+	.prateleira.default ul li article {
+		padding: 0 20px;
+	}
+
+	.diff-highlight {
+		.form-check-inline {
+			display: inline-flex;
+			margin-right: .75rem;
+			label {
+				margin-left: 6px;
+			}
+		}
+	}
 }
 
 body { overflow-x: hidden; }
@@ -422,11 +445,11 @@ body { overflow-x: hidden; }
 	display: block;
 	height: 20px;
 	position: absolute;
-	right: -5px;
-	top: -5px;
+	right: 5px;
+	top: 5px;
 	transition: all .2s ease;
 	width: 20px;	
-
+	z-index: 1;
 	&:after {
 		background: #fff;
 		content: '';

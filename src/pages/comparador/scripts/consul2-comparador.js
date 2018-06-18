@@ -42,7 +42,7 @@ Nitro.controller('compare', function() {
 
 	this.buildRemoveButtons = function() {
 		var removeButton 	= '<span class="remove-button"></span>',
-			$produtoLi		= $('.produto .produto-listagem');
+			$produtoLi		= $('.produto .box-produto');
 
 		$produtoLi.each(function() {
 			$(this).append(removeButton);

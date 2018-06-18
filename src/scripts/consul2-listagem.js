@@ -1,10 +1,13 @@
 /* global $:true, Nitro: true, _:true */
 'use strict';
 
+require('vendors/vtex-modal');
+
 require('modules/list-more');
 require('modules/listagem/filters');
 require('modules/listagem/order-by');	
 require('modules/listagem/calculadorabtu');
+require('modules/listagem/comparebar');
 require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
@@ -16,7 +19,7 @@ require('modules/listagem/comparebar');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'compare', */ 'slider-banner', 'resultado-busca', /* 'modal.overlayAbandono', */ 'calculadorabtu', 'busca-chaordic' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'compare', */ 'slider-banner', 'resultado-busca', /* 'modal.overlayAbandono', */ 'calculadorabtu', 'busca-chaordic', 'comparebar' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
