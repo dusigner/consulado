@@ -34,28 +34,32 @@ Nitro.setup(['facebook-init'], function () {
 
 	});
 	// Open Select
-	$containerSelect.click(function(){
-		$(this).addClass('active');
+	$valueSelected.click(function(){
+		$containerSelect.toggleClass('active');
 	});
 
 	// SELECT CATEGORY
-	$('.select-category ul li').click(function(){
+	$('.select-category ul li:not(.inactive)').click(function(){
 		$(this).not('.inactive').toggleClass('selected');
 		var $opcoesSelcted = $('.sub ul li.selected:not(.inactive)');
 
+		if ($opcoesSelcted.length < 3){
+			$('.sub ul li').removeClass('inactive');
+			$('.select-category .sub').removeClass('max-suport');
+		}
+		
 		if ($opcoesSelcted.length >= 3){
 			$('.sub ul li:not(.selected)').addClass('inactive');
-		}
-
-
-		if ($opcoesSelcted.length < 1){
-			$valueSelected.text('Selecione sua categoria');
-			$('.sub ul li').removeClass('inactive');
-		}else if ($opcoesSelcted.length >= 3){
-			$('.sub ul li:not(.selected)').addClass('inactive');
+			$('.select-category .sub').addClass('max-suport');
+			$valueSelected.text($opcoesSelcted.text());
+			$inputCategory.val($opcoesSelcted.text());			
 		}else {
 			$valueSelected.text($opcoesSelcted.text());
 			$inputCategory.val($opcoesSelcted);
+		}
+
+		if ($opcoesSelcted.length < 1){
+			$valueSelected.text('Selecione sua categoria');
 		}
 	});
 

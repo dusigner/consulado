@@ -121,7 +121,15 @@
 				span {
 					display: block;
 					padding-top: 9px;
-				}
+					padding-left: 15px;
+					position: absolute;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					cursor: pointer;
+					z-index: 2;
+				}				
 
 				&:after {
 					@include icon-get(arrow-down);
@@ -141,11 +149,62 @@
 					display: none;
 					padding: 10px 5px 10px 10px;
 					position: relative;
-					top: 10px;
-					z-index: 11;
+					top: 43px;
+					z-index: 1;
+
+					&:before {
+						display: block;
+						position: absolute;
+						width: 100%;
+						padding: 5px 16px;
+						border: 1px solid #c12b39;
+						border-radius: 7px;
+						top: 104%;
+						left: 0;
+						text-align: center;
+						color: #fff;
+						opacity: 0;
+						transition: .3s linear all;
+						transition-delay: 1s;
+						font-size: 13px;
+						background: #fb5160;
+						content: 'A quantidade máxima de categorias foi selecionada.';
+					}
+					
+					&:after {
+						width: 10px;
+						height: 10px;
+						background: #fb5160;
+						content: '';
+						display: block;
+						position: absolute;
+						top: 102%;
+						border-left: 1px solid #c12b39;
+						border-bottom: 1px solid #c12b39;
+						transform: rotate(133deg);
+						opacity: 0;
+					
+					}
+					
+					&.max-suport {
+						transition: .3s linear all;
+						
+						&:before {
+							transition: .3s linear all;
+							transition-delay: 1s;
+							opacity: 1;
+						}
+
+						&:after {
+							transition: .3s linear all;
+							transition-delay: 1s;
+							opacity: 1;
+						}
+					}
 
 					ul {
-						max-height: 200px;
+						background: #fff;
+						max-height: 184px;
 						overflow: auto;
 						padding-right: 5px;
 
@@ -166,7 +225,7 @@
 							border-radius: 10px;
 							width: 5px;
 						}
-
+						
 						li {
 							border-bottom: 1px solid #99c34e;
 							color: #333333;
@@ -174,6 +233,7 @@
 							font-size: 20px;
 							position: relative;
 							text-align: center;
+							transition: .3s linear all;
 
 							&:before {
 								border: 1px solid #a8ca41;
@@ -199,14 +259,28 @@
 
 							&.selected {
 								font-weight: bold;
+								transition: .3s linear all;
 
 								&:after {
 									@include icon-get(check-mark);
 								}
 
 							}
+							&.inactive {
+								background: #f9f9f9;
+								border-bottom: 1px solid #e4dede;
+								transition: .3s linear all;
+								filter: blur(0.8px);
+								-webkit-filter: blur(0.8px);
+								transform: scale(1);
+								color: #d0cfcf;
+
+								&:before {
+									border: 1px solid #f9f9f9;
+								}
+							}
 						}
-					}
+					}					
 				}
 
 				&.active {
