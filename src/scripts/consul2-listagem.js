@@ -1,21 +1,25 @@
 /* global $:true, Nitro: true, _:true */
 'use strict';
 
+require('vendors/vtex-modal');
+
 require('modules/list-more');
 require('modules/listagem/filters');
 require('modules/listagem/order-by');
 require('modules/listagem/calculadorabtu');
+require('modules/listagem/comparebar');
 require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
+require('modules/listagem/comparebar');
 // require('custom/modal.overlayAbandono');
 // require('modules/compare');
 //require('custom/promo.lightbox');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic' ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC

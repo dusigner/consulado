@@ -239,8 +239,20 @@
 				}
 			}
 
-			.compare {
-				display: none;
+			.btn-comparar {
+				position: relative;
+				fieldset {
+					border: 0;
+					margin-bottom: 0;
+					padding: 0 15px 0;
+					text-align: left;
+				}
+				input {
+					position: absolute;
+				}
+				label {
+					padding: 0 0 0 20px;
+				}
 			}
 
 			.slick-prev { left: -12px; }

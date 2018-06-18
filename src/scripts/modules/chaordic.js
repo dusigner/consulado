@@ -85,7 +85,7 @@ Nitro.module('chaordic', function() {
 			$window.scroll(self.loadProducts).scroll();
 
 			//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
-			$(document).on('click', '[data-chaordic] a', function(e) {
+			$(document).on('click', '[data-chaordic] article a', function(e) {
 				e.preventDefault();
 
 				var $link = $(this);
