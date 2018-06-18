@@ -24,15 +24,15 @@ Nitro.setup(['facebook-init'], function () {
 
 	// função que abre o modal do facebook
 	$shareFace.click(function() {
-			FB.ui({
-				method: 'share_open_graph',
-				action_type:  'og.likes',
-				action_properties:  JSON.stringify({
-					object: $url_atual,
-				})
-			});
-
+		FB.ui({
+			method: 'share_open_graph',
+			action_type:  'og.likes',
+			action_properties:  JSON.stringify({
+				object: $url_atual,
+			})
+		});
 	});
+
 	// Open Select
 	$valueSelected.click(function(){
 		$containerSelect.toggleClass('active');
@@ -47,12 +47,12 @@ Nitro.setup(['facebook-init'], function () {
 			$('.sub ul li').removeClass('inactive');
 			$('.select-category .sub').removeClass('max-suport');
 		}
-		
+
 		if ($opcoesSelcted.length >= 3){
 			$('.sub ul li:not(.selected)').addClass('inactive');
 			$('.select-category .sub').addClass('max-suport');
 			$valueSelected.text($opcoesSelcted.text());
-			$inputCategory.val($opcoesSelcted.text());			
+			$inputCategory.val($opcoesSelcted.text());
 		}else {
 			$valueSelected.text($opcoesSelcted.text());
 			$inputCategory.val($opcoesSelcted);
@@ -97,36 +97,37 @@ Nitro.setup(['facebook-init'], function () {
 		});
 	});
 
-
+	// Registra o usuário no MD
 	$formRegister.submit(function(e){
 		e.preventDefault();
 		var $inputName = $('.name').val(),
 			$inputEmail = $('.email').val(),
 			$inputcategoryD = $('.category').val();
-		if($inputName === ''){
-			$('input.name').addClass('error');
-		}else if($inputEmail === ''){
-			$('input.email').addClass('error');
-		}else if($inputcategoryD === ''){
-			$('.select-category').addClass('error');
-		}else {
+		if($inputName === ''){	$('input.name').addClass('error');}
+		else if($inputEmail === ''){$('input.email').addClass('error');}
+		else if($inputcategoryD === ''){$('.select-category').addClass('error');}
+		else {
 			$('.select-category, input.email, input.name').removeClass('error');
 			$(this)[0].reset();
 			$valueSelected.html('selecione sua categoria');
+			$('.select-category').removeClass('active');
+			$('.select-category .sub').removeClass('max-suport');
+			$('.select-category .sub li').removeClass('selected inactive');
+
 			// concatena as variaveis no date
 			var data = {
 				'category': $inputcategoryD,
 				'email': $inputEmail,
 				'name': $inputName
 			};
+
 			// Faz a inserção no MasterData
 			CRM.ajax({
 				url: CRM.formatUrl('BT', 'documents'),
-				type: 'PATCH',
+				type: 'PUT',
 				data: JSON.stringify(data),
-				success: function (success) {
+				success: function () {
 					$('#modal-sucess').vtexModal();
-					console.info('Sucesso', success);
 				},
 				error: function (error) {
 					console.info('error; ' + error);
