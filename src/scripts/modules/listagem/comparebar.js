@@ -44,7 +44,7 @@ Nitro.module('comparebar', function() {
 		
 		setTimeout(function(){
 			self.setInputs();
-		}, 1000);
+		}, 3000);
 
 		$productsDefaultTemplate = $productsDefaultTemplate + $productsDefaultTemplate + $productsDefaultTemplate;
 		$compareBarProducts.html( $productsDefaultTemplate );

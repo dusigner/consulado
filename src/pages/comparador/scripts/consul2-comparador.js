@@ -8,7 +8,7 @@ Nitro.controller('compare', function() {
 		$corpoComparacao = $('.corpo-comparacao');
 
 	this.init = function() {
-		self.removeRows();
+		//self.removeRows();
 		self.buildRemoveButtons();
 		self.buildTitleTR();
 		self.buildBuyButtons();
@@ -32,7 +32,7 @@ Nitro.controller('compare', function() {
 				var prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('.link').attr('href'),
 					prodName = $corpoComparacao.find('thead tr th').eq(idx).find('.link').text();
 
-				var buyButton = '<a class="btn btn-primary js-track-items__default" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
+				var buyButton = '<a class="primary-button js-track-items__default" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
 
 				$(this).remove('.remover-produto');
 				$(this).html(buyButton);
@@ -74,7 +74,7 @@ Nitro.controller('compare', function() {
 	this.listeners = function() {
 		loadMobile();
 
-		var categoryName = $('.corpo-comparacao tbody tr:first-child td:first-of-type').text();
+		var categoryName = localStore.get('comparador')[0].category;
 
 		// CHANGE TITLE TEXT
 		$titlePage.html('<div>Comparador de produtos</div>'+

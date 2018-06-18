@@ -28,11 +28,13 @@
 	}
 }
 
-// body.compare {
-// 	header.header {
-// 		@include breakpoint('small', 'max') { background-color: #000000!important; }
-// 	}
-// }
+body.compare {
+	@media (max-width: 60em) {
+		.container {
+			padding: 0 5px;
+		}
+	}
+}
 
 .corpo-comparacao {
 	&.highlight {
@@ -68,7 +70,10 @@
 
 			tr {
 				&:not(.remover) {
-					@include breakpoint('small', 'max') { align-items: flex-start; }
+					@include breakpoint('small', 'max') { 
+						align-items: flex-start; 
+						margin-bottom: 15px;
+					}
 					align-items: flex-end;
 					display: flex;
 					flex-direction: row;
@@ -109,8 +114,18 @@
 									position: relative;
 									width: 100%;
 
-									.title {
+									& > article {
+										height: auto;
+										min-height: inherit;
+										.detalhes {
+											height: auto;
+											min-height: inherit;
+										}
+									}
+
+									.nome {
 										@include breakpoint('extra-small', 'max') { min-height: 90px; }
+										font-size: 14px;
 										min-height: 60px;
 									}
 
@@ -295,7 +310,7 @@
 					left: 0;
 					position: fixed;
 					top: 0;
-
+					z-index: 100;
 					tr {
 						th {
 							width: calc(100% / 2);
@@ -306,16 +321,19 @@
 				.produto {
 					transition: all .5s ease;
 
-					.title {
+					.FlagsHightLight { display: none; }
+
+					.nome {
 						margin: 0 !important;
 						min-height: 60px!important;
-
-						.link { font-size: 12px!important; }
+						span { display: none; }
 					}
 
 					.features,
-					.prices-info,
-					.btn-comparar { display: none!important; }
+					.price,
+					.btn-comparar,
+					.comparar { display: none!important; }
+
 				}
 			}
 		}
@@ -364,9 +382,10 @@
 
 			.remove-button { right: 5px; }
 
-			.produto-listagem { 
+			.box-produto { 
 				border-right: 1px solid #E6E6E6;
 				padding: 0 1rem; 
+				.FlagsHightLight { display: none; }
 			}
 
 			.selection-product {
@@ -386,13 +405,14 @@
 				}
 			}
 
-			.prices-info { display: none!important; }
+			.price { display: none!important; }
 
-			.prateleira.default .produto-listagem figure img {
-				height: 109px;
-				max-width: 109px;
+			.prateleira.default {
+				.box-produto .image img {
+					height: 109px;
+					max-width: 109px;
+				}
 			}
-
 
 		}
 	}
@@ -408,6 +428,10 @@
 		padding: 0 20px;
 	}
 
+	.prateleira.default ul li .detalhes .img.hover {
+		width: 100%;
+	}
+
 	.diff-highlight {
 		.form-check-inline {
 			display: inline-flex;
@@ -415,6 +439,12 @@
 			label {
 				margin-left: 6px;
 			}
+		}
+	}
+
+	@media (max-width: 70em) {
+		.prateleira.default ul li a.image span {
+			min-height: inherit;
 		}
 	}
 }
