@@ -118,7 +118,7 @@ Nitro.module('busca-chaordic', function () {
 			}
 		}
 
-		if (sortby !== '') {
+		if (sortby === '') {
 			// sortby = '&sortby=' + sortby;
 			sortby = '&sortby=relevance';
 		}
