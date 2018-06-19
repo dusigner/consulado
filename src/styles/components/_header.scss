@@ -177,6 +177,7 @@ header {
 }
 
 .logo {
+	@include breakpoint(1119px, 'max') { padding-left:0; }
 	@include responsiveFont(30, 16, true);
 	color: $green;
 	display: inline-block;

@@ -370,12 +370,12 @@
 				display: block;
 			}
 
-			@include breakpoint(small, 'max') {
+			@include breakpoint(767px, 'max') {
 				& > div:not(.footer-redes) { display: none; }
 				margin: 0;
 			}
 
-			@include breakpoint(760px, 'min') {
+			@include breakpoint(767px, 'min') {
 				@include breakpoint(768px, 'max') {
 					& > div {display: block;}
 					h4 {
