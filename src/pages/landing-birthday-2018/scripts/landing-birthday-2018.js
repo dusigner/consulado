@@ -8,7 +8,6 @@ require('vendors/nitro');
 require('vendors/slick');
 require('modules/store/facebook-init');
 var CRM = require('modules/store/crm');
-console.clear();
 
 Nitro.setup(['facebook-init'], function () {
 	// VARS
@@ -103,6 +102,7 @@ Nitro.setup(['facebook-init'], function () {
 		var $inputName = $('.name').val(),
 			$inputEmail = $('.email').val(),
 			$inputcategoryD = $('.category').val();
+
 		if($inputName === ''){	$('input.name').addClass('error');}
 		else if($inputEmail === ''){$('input.email').addClass('error');}
 		else if($inputcategoryD === ''){$('.select-category').addClass('error');}
