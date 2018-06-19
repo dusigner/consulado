@@ -580,5 +580,7 @@ Nitro.module('busca-chaordic', function () {
 		});
 	};
 
-	self.setup();
+	if($('body').hasClass('busca-chaordic')) {
+		self.setup();
+	}
 });
