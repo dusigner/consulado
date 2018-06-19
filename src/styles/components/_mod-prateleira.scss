@@ -764,6 +764,16 @@
 	}
 }
 
+// CTA Comparador
+body.brastemp,
+body.brastempqa {
+	.btn-comparar {
+		display: none;
+		visibility: hidden;
+	}
+}
+
+
 
 #quem-viu-clicou {
 	// display: block !important;

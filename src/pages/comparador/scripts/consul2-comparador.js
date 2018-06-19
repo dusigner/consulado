@@ -29,8 +29,8 @@ Nitro.controller('compare', function() {
 
 		$corpoComparacao.find('tbody .remover td').each(function(idx){
 			if($(this).find('.remover-produto').length > 0) {
-				var prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('.link').attr('href'),
-					prodName = $corpoComparacao.find('thead tr th').eq(idx).find('.link').text();
+				var prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('a.image').attr('href'),
+					prodName = $corpoComparacao.find('thead tr th').eq(idx).find('a.image').text();
 
 				var buyButton = '<a class="primary-button js-track-items__default" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
 
