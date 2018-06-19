@@ -60,6 +60,7 @@ Nitro.module('busca-chaordic', function () {
 	 * @returns an object using Chaordic API with product information
 	 */
 	this.getChaordicData = function($termSearch) {
+		// console.log($termSearch);
 		$prateleiraContainer.addClass('loading');
 			
 		return $.ajax({
@@ -118,7 +119,8 @@ Nitro.module('busca-chaordic', function () {
 		}
 
 		if (sortby !== '') {
-			sortby = '&sortby=' + sortby;
+			// sortby = '&sortby=' + sortby;
+			sortby = '&sortby=relevance';
 		}
 
 		$termSearch = '/searchapi/v3/search?apikey=consul&terms=' + $termSearch + $resultFilter + sortby;
@@ -556,7 +558,7 @@ Nitro.module('busca-chaordic', function () {
 		var $termSearch = self.getTermSearch();
 
 		self.getChaordicData($termSearch).always(function (data) {
-			console.log(data);
+			// console.log(data);
 
 			// Google Promises
 			self.render('filters-chaordic', data, $filters);
