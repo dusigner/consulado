@@ -1,0 +1,638 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Aniversário CNS 2018
+	* Description: CSS desenvolvido para Consul.
+	* Author: Sampsom
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 4.71.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/_icons';
+// ===============================================================
+
+.landing-birthday-2018 {
+
+	// SECTION HERO
+	.hero {
+		position: relative;
+
+		img {
+			max-width: 100%;
+			width: 100%;
+
+			&.show-mobile {
+				display: none;
+			}
+			@include breakpoint(740px, 'max') {
+				&.show-mobile {
+					display: block;
+				}
+				&.hide-mobile {
+					display: none;
+				}
+			}
+		}
+	}
+
+	// SECTION BAR REGISTER
+	.bar-register {
+		background: #a8ca41;
+		bottom: 65px;
+		left: 0;
+		position: absolute;
+		right: 0;
+
+		@include breakpoint(960px, 'max') { bottom: 10px; }
+		@include breakpoint(768px, 'max') {
+			background: #fff;
+			position: relative;
+		}
+
+		h2 {
+			color: #fff;
+			display: block;
+			font-size: 28px;
+			margin-bottom: 0;
+			text-align: center;
+			@include breakpoint(1121px, 'max') { font-size: 20px; }
+			@include breakpoint(768px, 'max') { color: #a8ca41; }
+		}
+
+		h3 {
+			color: #333333;
+			display: block;
+			font-size: 20px;
+			margin-bottom: 15px;
+			margin-top: 0;
+			text-align: center;
+			@include breakpoint(1121px, 'max') { font-size: 16px; }
+		}
+
+		.form-register {
+			text-align: center;
+
+			&:after {
+				clear: both;
+				content: '';
+				display: block;
+			}
+
+			input,
+			.select-category {
+				background: #fff;
+				border: 1px solid #99cc2d;
+				border-radius: 30px;
+				color: #727272;
+				display: inline-block;
+				font-size: 16px;
+				font-style: italic;
+				height: 45px;
+				margin-right: 15px;
+				max-width: 235px;
+				outline: none;
+				padding: 0 20px;
+				vertical-align: top;
+				width: 32%;
+
+				&.category {
+					display: none;
+				}
+
+				@include breakpoint(1182px, 'max') { width: 24%; }
+				@include breakpoint(768px, 'max') {
+					max-width: 100%;
+					width: 100% !important;
+				}
+			}
+
+			.select-category {
+
+				cursor: pointer;
+				max-width: 348px;
+				position: relative;
+
+				span {
+					bottom: 0;
+					cursor: pointer;
+					display: block;
+					left: 0;
+					padding-left: 15px;
+					padding-top: 9px;
+					position: absolute;
+					right: 0;
+					text-align: left;
+					top: 0;
+					z-index: 2;
+				}
+
+				&:after {
+					@include icon-get(arrow-down);
+					display: block;
+					font-size: 7px;
+					font-weight: bold !important;
+					position: absolute;
+					right: 10px;
+					top: 17px;
+					transform: rotate(0deg);
+					transition: .3s linear all;
+				}
+				.sub {
+					background: #fff;
+					border: 1px solid #99cc2d;
+					border-radius: 0 0 15px 15px;
+					display: none;
+					padding: 10px 5px 10px 10px;
+					position: relative;
+					top: 43px;
+					z-index: 1;
+
+					&:before {
+						background: #fb5160;
+						border: 1px solid #c12b39;
+						border-radius: 7px;
+						color: #fff;
+						content: 'A quantidade máxima de categorias foi selecionada.';
+						display: block;
+						font-size: 13px;
+						left: 0;
+						opacity: 0;
+						padding: 5px 16px;
+						position: absolute;
+						text-align: center;
+						top: 104%;
+						transition: .3s linear all;
+						transition-delay: 1s;
+						width: 100%;
+					}
+
+					&:after {
+						background: #fb5160;
+						border-bottom: 1px solid #c12b39;
+						border-left: 1px solid #c12b39;
+						content: '';
+						display: block;
+						height: 10px;
+						opacity: 0;
+						position: absolute;
+						top: 102%;
+						transform: rotate(133deg);
+						transition-delay: 1s;
+						width: 10px;
+
+					}
+
+					&.max-suport {
+						transition: .3s linear all;
+
+						&:before {
+							opacity: 1;
+							transition: .3s linear all;
+							transition-delay: 1s;
+						}
+
+						&:after {
+							opacity: 1;
+							transition: .3s linear all;
+							transition-delay: 1s;
+						}
+					}
+
+					ul {
+						background: #fff;
+						max-height: 184px;
+						overflow: auto;
+						padding-right: 5px;
+
+
+						&::-webkit-scrollbar {
+							position: relative;
+							right: 5px;
+							width: 8px;
+						}
+
+						&::-webkit-scrollbar-track {
+							background: #dcdcdc;
+							border-radius: 50px;
+						}
+
+						&::-webkit-scrollbar-thumb {
+							background: #99c34e;
+							border-radius: 10px;
+							width: 5px;
+						}
+
+						li {
+							border-bottom: 1px solid #99c34e;
+							color: #333333;
+							cursor: pointer;
+							font-size: 20px;
+							position: relative;
+							text-align: center;
+							transition: .3s linear all;
+
+							&:before {
+								border: 1px solid #a8ca41;
+								content: '';
+								display: block;
+								height: 12px;
+								left: 0;
+								position: absolute;
+								top: 10px;
+								width: 12px;
+							}
+
+							&:after {
+								font-size: 7px;
+								left: 2px;
+								position: absolute;
+								top: 12px;
+							}
+
+							&:last-child {
+								border: none;
+							}
+
+							&.selected {
+								font-weight: bold;
+								transition: .3s linear all;
+
+								&:after {
+									@include icon-get(check-mark);
+								}
+							}
+
+							&.inactive {
+								-webkit-filter: blur(.8px);
+								background: #f9f9f9;
+								border-bottom: 1px solid #e4dede;
+								color: #d0cfcf;
+								filter: blur(.8px);
+								transform: scale(1);
+								transition: .3s linear all;
+
+								&:before {
+									border: 1px solid #f9f9f9;
+								}
+							}
+						}
+					}
+				}
+
+				&.active {
+
+					.sub {
+						display: block;
+					}
+
+					&:after {
+						@include icon-get(arrow-down);
+						transform: rotate(-180deg);
+						transition: .3s linear all;
+					}
+				}
+
+				&.error {
+					background: #fff0f0!important;
+					border-color: #f49a9a!important;
+				}
+			}
+
+			.submit {
+				background: #fa0090;
+				border: 2px solid #fa0090;
+				border-radius: 30px;
+				color: #fff;
+				font-size: 22px;
+				height: 45px;
+				outline: none;
+				padding: 0 20px;
+				position: relative;
+				text-align: center;
+				transition: .3s linear all;
+				@include breakpoint(1182px, 'max') {
+					padding: 0;
+					width: 18%;
+				}
+				@include breakpoint(1122px, 'max') { font-size: 16px; }
+				@include breakpoint(768px, 'max') {
+					bottom: -24px;
+					display: block;
+					margin: 0 auto 40px;
+					width: 120px !important;
+				}
+
+				&:hover {
+					background: #fff;
+					color: #fa0090;
+				}
+			}
+		}
+	}
+
+	// SECTION MOVIE
+	.tbs-videos {
+
+		@include breakpoint(768px, 'max') {
+		   padding: 0;
+		}
+
+		.icon-play {
+			border: 2px solid #fff;
+			border-radius: 100px;
+			color: #fff;
+			font-size: 180px;
+			height: 50px;
+			left: 50%;
+			line-height: 0;
+			margin-left: -175px;
+			margin-top: -25px;
+			position: absolute;
+			top: 50%;
+			transform: rotate(270deg);
+			width: 50px;
+			z-index: 11;
+
+			@include breakpoint(500px, 'max') {
+				margin-left: -25px;
+
+				&:before {
+					display: none;
+				}
+			}
+
+			&:after {
+				border-left: 15px solid transparent;
+				border-radius: 5px;
+				border-right: 15px solid transparent;
+				border-top: 23px solid #fff;
+				content: '';
+				height: 0;
+				margin: 14px 0 0 8px;
+				position: absolute;
+				width: 0;
+			}
+
+			&:before {
+				border: 2px solid #fff;
+				border-radius: 36px;
+				content: 'Assistir ao vídeo';
+				display: block;
+				font-size: 27px;
+				left: -103px;
+				line-height: 1;
+				padding: 10px;
+				position: absolute;
+				text-align: center;
+				top: 164px;
+				transform: rotate(90deg);
+				width: 251px;
+			}
+		}
+		.mask-movie {
+			position: relative;
+
+			img {
+				max-width: 100%;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+			}
+
+			.embed-responsive {
+				display: none;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+				width: 100%;
+
+				&.visible {
+					display: block;
+
+					&::before {
+						content: '';
+						display: block;
+						padding-top: 56.25%;
+					}
+				}
+
+				.embed-responsive-item {
+					border: 0;
+					bottom: 0;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
+		}
+
+		> .slick-dots {
+			bottom: -100px;
+
+			@include breakpoint(925px, 'max') {
+				bottom: -150px;
+			}
+
+			li {
+				background: #fff;
+				border: 1px solid #99cc2d;
+				border-radius: 30px;
+				color: #99cc2d;
+				font-size: 25px;
+				height: 45px !important;
+				margin: 16px;
+				padding: 4px 54px;
+				width: auto !important;
+
+				@include breakpoint(925px, 'max') {
+					float: left !important;
+					width: 40% !important;
+				}
+
+				@include breakpoint(520px, 'max') {
+					font-size: 19px;
+					margin: 5px 15px;
+					padding: 8px 0;
+				}
+
+				&.slick-active {
+					background: #99cc2d;
+					color: #fff;
+				}
+
+				&:nth-child(2) {
+					&:after {
+						content: 'Rádio';
+					}
+				}
+
+				&:nth-child(3) {
+					&:after {
+						content: 'Brigadeiro';
+					}
+				}
+				&:nth-child(4) {
+					&:after {
+						content: 'Futebol';
+					}
+				}
+
+				&:after {
+					content: 'Avião';
+				}
+
+				button {
+					display: none;
+				}
+			}
+		}
+	}
+
+	//SECTION SHARE
+	.share {
+		margin-bottom: 63px;
+		margin-top: 149px;
+		position: relative;
+		text-align: center;
+
+		@include breakpoint(925px, 'max') {
+			margin-top: 200px;
+		}
+
+		div {
+			background: #acacac;
+			height: 1px;
+			margin: auto;
+			max-width: 90%;
+
+			img {
+				background: #fff;
+				padding: 0 30px;
+				position: relative;
+				top: -28px;
+
+				@include breakpoint(500px, 'max') {
+				   max-width: 80%;
+				   padding: 0 15px;
+				}
+			}
+		}
+	}
+
+	// MODAL
+	#vtex-modal-sucess {
+		background: rgba(255, 255, 255, .8);
+
+		.modal-holder {
+			background: #99cc2d;
+			max-width: 600px;
+		}
+
+		.modal-header {
+			height: 0;
+			padding: 0;
+
+			.close {
+				border: 2px solid #99cc2d;
+				&:before {
+					@include icon-get(close-icon);
+					color: #6f6f6f;
+					font-size: 16px;
+					margin-left: 2px;
+				}
+			}
+		}
+
+		#modal-sucess {
+			h2 {
+				color: #f1f1f1;
+				font-size: 30px;
+				font-weight: normal;
+				margin: 0;
+				padding: 20px 48px;
+
+				@include breakpoint(500px, 'max') {
+				   font-size: 20px;
+				   padding: 13px;
+				}
+			}
+
+			.cupom {
+				border: 1px dashed #f1f1f1;
+				color: #f1f1f1;
+				margin: auto;
+				max-width: 70%;
+				padding: 10px 10px 4px;
+				text-align: center;
+
+				@include breakpoint(500px, 'max') {
+				   max-width: 90%;
+				}
+
+				strong {
+					display: block;
+					font-size: 52px;
+					line-height: .7;
+					padding-top: 6px;
+					@include breakpoint(500px, 'max') {
+					   font-size: 30px;
+					}
+
+					&:after {
+						content: '*';
+						font-size: 11px;
+						position: relative;
+						right: -5px;
+						top: -20px;
+					}
+				}
+
+				span {
+					display: block;
+					font-size: 30px;
+					padding-top: 3px;
+
+					@include breakpoint(500px, 'max') {
+					   font-size: 15px;
+					}
+				}
+			}
+
+			a {
+				background: #fff;
+				border: 1px solid #fff;
+				border-radius: 40px;
+				color: #99cc2d;
+				display: block;
+				font-size: 20px;
+				font-weight: bold;
+				margin: 15px auto;
+				padding: 5px;
+				width: 180px;
+
+				&:hover {
+					background: #99cc2d;
+					color: #fff;
+				}
+			}
+
+			small {
+				color: #fff;
+				display: block;
+				font-size: 16px;
+				padding: 5px;
+			}
+		}
+	}
+}
