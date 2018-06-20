@@ -26,7 +26,6 @@ Nitro.module('comparebar', function() {
 	var productsData   = [];
 	var maxProductsToCompare;
 	var $removeProduct;
-	var $compareModal;
 	var template;
 	var url;
 
@@ -37,14 +36,13 @@ Nitro.module('comparebar', function() {
 
 	this.init = function(){
 		this.setMaxQuantity();
-		this.selectProductsToCompare();
-		//this.initCompareModal();
+		this.triggerClick();
 		this.updateCategory();
 		this.toggleBar();
 		
 		setTimeout(function(){
 			self.setInputs();
-		}, 1500);
+		}, 100);
 
 		$productsDefaultTemplate = $productsDefaultTemplate + $productsDefaultTemplate + $productsDefaultTemplate;
 		$compareBarProducts.html( $productsDefaultTemplate );
@@ -68,10 +66,11 @@ Nitro.module('comparebar', function() {
 		if(newsIds) {
 			newsIds.forEach(function(val){
 				var product = $('#prateleira .compare-product-checkbox[rel='+val.rel+']');
-
 				if (val.category === window.vtxctx.categoryName) {
 					if( product.length > 0 ) {
-						product.trigger('click');
+						//product.trigger('click');
+						product.addClass('selected');
+						self.verifyClass(product);
 					} else {
 						self.addProductsInfo(val.rel, val.image, val.title, val.category);
 		
@@ -92,46 +91,56 @@ Nitro.module('comparebar', function() {
 		$maxQuantity.text( maxProductsToCompare );
 	};
 
-	// Seleciona os produtos para comparação
-	this.selectProductsToCompare = function(){
-		$('#prateleira').on('change', '.compare-product-checkbox', function() {
-			console.log('change');
-			var actualItem = $(this).attr('rel');
-			var actualItemInArray = itensToCompare.indexOf( actualItem );
+	this.verifyClass = function(element) {
+		var product = element;
+		self.selectProductsToCompare(product);
+	};
 
-			var thisProduct = $(this).parents('.box-produto');
-			var imgWay = thisProduct.find('.image .main img').length > 0 ? '.image .main img' : '.image .backup img';
-			var thisImage = thisProduct.find(imgWay).attr('src');
-			var thisTitle = thisProduct.find('.nome').text();
-			var category = window.vtxctx.categoryName;
-
-
-			$(this).is(':checked') ? $(this).parent().find('label').text('Selecionado') : '';
-
-			// Remove o item caso ele já exista no array
-			if ( actualItemInArray !== -1 ) {
-				$(this).parent().find('label').text('Comparar produto');
-				self.removeIfExist(actualItemInArray, itensToCompare);
-				self.removeIfExist(actualItemInArray, productsData);
-				return;
-			}
-
-			// Não marcar o check se já tivermos 3 produtos selecionados
-			if ( itensToCompare.length === maxProductsToCompare ) {
-				$(this).parent().find('label').text('Comparar produto');
-				$(this).attr('checked', false);
-				//$compareModal.open();
-				self.initCompareModal();
-				return;
-			}
-
-
-			// Insere as informações do item atual no objeto de template
-			self.addProductsInfo(actualItem, thisImage, thisTitle, category);
-
-			// Insere item atual no array de produtos para comparar
-			self.addProductsToCompare(itensToCompare, actualItem);
+	this.triggerClick = function() {
+		$('.btn-comparar label').on('click', function(){
+			var element = $(this).parent().find('.compare-product-checkbox');
+			element.toggleClass('selected');
+			self.verifyClass(element);
 		});
+	};
+
+	// Seleciona os produtos para comparação
+	this.selectProductsToCompare = function(element){
+		var item = element;
+		var actualItem = item.attr('rel');
+		var actualItemInArray = itensToCompare.indexOf( actualItem );
+
+		var thisProduct = item.parents('.box-produto');
+		var imgWay = thisProduct.find('.image .main img').length > 0 ? '.image .main img' : '.image .backup img';
+		var thisImage = thisProduct.find(imgWay).attr('src');
+		var thisTitle = thisProduct.find('.nome').text();
+		var category = window.vtxctx.categoryName;
+
+
+		item.hasClass('selected') ? item.parent().find('label').text('Selecionado') : item.parent().find('label').text('Comparar produto');
+
+		// Remove o item caso ele já exista no array
+		if ( actualItemInArray !== -1 ) {
+			item.removeClass('selected').parent().find('label').text('Comparar produto');
+			self.removeIfExist(actualItemInArray, itensToCompare);
+			self.removeIfExist(actualItemInArray, productsData);
+			return;
+		}
+
+		// Não marcar o check se já tivermos 3 produtos selecionados
+		if ( itensToCompare.length === maxProductsToCompare ) {
+			item.removeClass('selected').parent().find('label').text('Comparar produto');
+			item.removeClass('selected');
+			self.initCompareModal();
+			return;
+		}
+
+
+		// Insere as informações do item atual no objeto de template
+		self.addProductsInfo(actualItem, thisImage, thisTitle, category);
+
+		// Insere item atual no array de produtos para comparar
+		self.addProductsToCompare(itensToCompare, actualItem);
 	};
 
 	this.updateProduct = function(){
@@ -181,7 +190,7 @@ Nitro.module('comparebar', function() {
 			self.removeIfExist(itemToRemove, productsData);
 		}
 
-		$('input[rel="'+product+'"]').attr('checked', false);
+		$('input[rel="'+product+'"]').removeClass('selected');
 	};
 
 	// Remove itens de um array
@@ -200,7 +209,7 @@ Nitro.module('comparebar', function() {
 		url = '';
 		localStore.remove('comparador');
 
-		$('.compare-product-checkbox').attr('checked', false);
+		$('input.compare-product-checkbox').removeClass('selected').parent().find('label').text('Comparar produto');
 		self.openBar();
 	};
 
@@ -278,7 +287,7 @@ Nitro.module('comparebar', function() {
 		$removeProduct = $('.js-remove-item');
 		$removeProduct.click(function() {
 			var productId = $(this).data('rel');
-			$('#prateleira').find('input[rel='+productId+']').parent().find('label').text('Comparar produto');
+			$('#prateleira').find('input[rel='+productId+']').parent().find('label').text('Comparar produto').removeClass('selected');
 			self.removeProductsToCompare( productId );
 		});
 	};
