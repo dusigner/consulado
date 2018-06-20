@@ -1,7 +1,7 @@
 {?suggestions}
 <div class="row">
 	<h4>Sugestões de consulta:</h4>
-	<ul>
+	<ul class="suggestions">
 		{#suggestions}
 		<li>
 			<a href="/busca/?q={query|sanitize}">{query}</a>
@@ -11,3 +11,23 @@
 	</ul>
 </div>
 {/suggestions}
+
+{?quickFilters}
+
+<div class="row">
+	<ul class="quickFilters">
+		{#quickFilters}
+		<li>
+			<a class="{quickLink}" href="{applyLink}">
+				<span class="quickImage">
+					<img src="{image}" alt="{name}" />
+				</span>
+				<span class="quickName">{name}</span>
+			</a>
+		</li>
+		{/quickFilters}
+	</ul>
+
+</div>
+
+{/quickFilters}
