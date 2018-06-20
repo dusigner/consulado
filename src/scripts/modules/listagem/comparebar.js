@@ -44,7 +44,7 @@ Nitro.module('comparebar', function() {
 		
 		setTimeout(function(){
 			self.setInputs();
-		}, 3000);
+		}, 1500);
 
 		$productsDefaultTemplate = $productsDefaultTemplate + $productsDefaultTemplate + $productsDefaultTemplate;
 		$compareBarProducts.html( $productsDefaultTemplate );
@@ -72,6 +72,7 @@ Nitro.module('comparebar', function() {
 				if (val.category === window.vtxctx.categoryName) {
 					if( product.length > 0 ) {
 						product.trigger('click');
+						product.prop('checked', true);
 					} else {
 						self.addProductsInfo(val.rel, val.image, val.title, val.category);
 		
