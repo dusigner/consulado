@@ -44,8 +44,10 @@ require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
 require('controllers/landing-gae-compra-interno');
+require('modules/chatHome');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome'], function() {
+
 	var path = window.location.pathname;
 
 	if (path === '/atendimento') {
