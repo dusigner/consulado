@@ -332,7 +332,8 @@ body.compare {
 					.features,
 					.price,
 					.btn-comparar,
-					.comparar { display: none!important; }
+					.comparar,
+					.indisponivel { display: none!important; }
 
 				}
 			}
@@ -405,7 +406,8 @@ body.compare {
 				}
 			}
 
-			.price { display: none!important; }
+			.price,
+			.indisponivel { display: none!important; }
 
 			.prateleira.default {
 				.box-produto .image img {
