@@ -587,9 +587,25 @@ body.busca-chaordic {
 			}
 		}
 	}
-		
+	.busca-vtex	{
+
+		.busca-termos {
+			margin: 0;
+			strong {
+				@include responsiveFont(40, 16, true);
+				font-weight: 300;
+				
+				@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
+				padding-bottom: 15px;
+			}
+		}
+		#prateleira .busca-vazio {
+			margin-top: 25px;
+		}
+	}
 	&.busca-vazio {
-		.result-filter.container h2 {
+		.result-filter.container h2,
+		.tit-busca-vazia {
 			@include responsiveFont(18, 14, true);
 			font-size: 2em;
 			font-weight: 100;
@@ -603,13 +619,18 @@ body.busca-chaordic {
 				font-weight: 700;
 			}
 		}
-		.nm-not-found-tip-title {
+		.nm-not-found-tip-title,
+		.hl-busca-vazia {
 			color: #f47921;
 			font-size: 1.25em;
 			font-weight: 200;
 		}
 		.nm-not-found-tip {
 			color: #b4afad;
+		}
+		.txt-busca-vazia {
+			color: #b4afad;
+			margin: 0 0 4px;
 		}
 	}
 	.order-wrapper {
