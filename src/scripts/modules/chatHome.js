@@ -6,7 +6,7 @@ Nitro.module('chatHome', function () {
 
 	this.init = function() {
 		self.chatHome();
-	};
+	};	
 
 	this.chatHome = function(){
 
@@ -48,7 +48,6 @@ Nitro.module('chatHome', function () {
 			button2.innerHTML = 'Ajuda com um pedido realizado';
 			button3.innerHTML = 'Instalação/Reparo de produto';
 			button4.innerHTML = 'Comprar peças';
-			button4.href = 'http://consul.custhelp.com/app/chat/chat_launch?c=4741,4742,4745,4790&s=others-2';
 
 
 			button1.onclick = chat;
@@ -69,7 +68,7 @@ Nitro.module('chatHome', function () {
 			return div;
 		}
 
-		var btn = document.querySelectorAll('.box-chat, .box-chat .primary-button, #footer-duvidas .col-6 div .row:nth-child(1) a.sub-title');
+		var btn = $('.box-chat, .box-chat .primary-button, #footer-duvidas .col-6 div .row:nth-child(1) a.sub-title');
 
 		for (var i = 0; i < btn.length; i++) {
 			btn[i].onclick = btnClick;
