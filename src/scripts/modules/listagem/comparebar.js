@@ -72,7 +72,6 @@ Nitro.module('comparebar', function() {
 				if (val.category === window.vtxctx.categoryName) {
 					if( product.length > 0 ) {
 						product.trigger('click');
-						product.prop('checked', true);
 					} else {
 						self.addProductsInfo(val.rel, val.image, val.title, val.category);
 		
@@ -96,6 +95,7 @@ Nitro.module('comparebar', function() {
 	// Seleciona os produtos para comparação
 	this.selectProductsToCompare = function(){
 		$('#prateleira').on('change', '.compare-product-checkbox', function() {
+			console.log('change');
 			var actualItem = $(this).attr('rel');
 			var actualItemInArray = itensToCompare.indexOf( actualItem );
 
