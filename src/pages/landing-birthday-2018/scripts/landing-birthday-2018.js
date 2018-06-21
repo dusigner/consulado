@@ -128,6 +128,10 @@ Nitro.setup(['facebook-init'], function () {
 				data: JSON.stringify(data),
 				success: function () {
 					$('#modal-sucess').vtexModal();
+					dataLayer.push({
+						event: 'cadastroAniversario',
+						mail: $inputEmail
+					});
 				},
 				error: function (error) {
 					console.info('error; ' + error);
