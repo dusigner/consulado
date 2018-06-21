@@ -211,11 +211,8 @@ Nitro.module('comparebar', function() {
 		url = '';
 		localStore.remove('comparador');
 
-<<<<<<< HEAD
-=======
 		dataLayer.push({event: 'generic', category: 'Categoria', action: 'Comparador de Produtos', label: 'Botão Limpar'});
 
->>>>>>> PLAT-6702_comparador
 		$('input.compare-product-checkbox').removeClass('selected').parent().find('label').text('Comparar produto');
 		self.openBar();
 	};
@@ -295,10 +292,7 @@ Nitro.module('comparebar', function() {
 		$removeProduct = $('.js-remove-item');
 		$removeProduct.click(function() {
 			var productId = $(this).data('rel');
-<<<<<<< HEAD
-=======
 			dataLayer.push({event: 'generic', category: 'Categoria', action: 'Comparador de Produtos', label: 'Remover produto'});
->>>>>>> PLAT-6702_comparador
 			$('#prateleira').find('input[rel='+productId+']').parent().find('label').text('Comparar produto').removeClass('selected');
 			self.removeProductsToCompare( productId );
 		});
