@@ -9,7 +9,7 @@ require('vendors/slick');
 require('modules/store/facebook-init');
 var CRM = require('modules/store/crm');
 
-Nitro.setup(['facebook-init'], function () {
+Nitro.setup(['facebook-init'], function () {	
 	// VARS
 	var $containerSelect = $('.select-category'),
 		$valueSelected = $('.select-category > span'),
@@ -131,7 +131,7 @@ Nitro.setup(['facebook-init'], function () {
 					dataLayer.push({
 						event: 'cadastroAniversario',
 						mail: $inputEmail
-					});
+					});					
 				},
 				error: function (error) {
 					console.info('error; ' + error);
