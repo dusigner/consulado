@@ -251,7 +251,31 @@
 					position: absolute;
 				}
 				label {
+					cursor: pointer;
 					padding: 0 0 0 20px;
+				}
+				input[type=checkbox] {
+					&:checked {
+						+ label:before {
+							background-color: transparent;
+						}
+					}
+					&.selected {
+						+ label:before {
+							background-color: $orange;
+							content: ' ';
+							display: inline-block;
+							height: 9px;
+							left: 0;
+							margin-left: 3px;
+							position: absolute;
+							top: 50%;
+							transform: translate(0%, -50%);
+							visibility: visible;
+							width: 9px;
+							z-index: 1;
+						}
+					}
 				}
 			}
 
