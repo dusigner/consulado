@@ -32,7 +32,7 @@ Nitro.controller('compare', function() {
 				var prodLink = $corpoComparacao.find('thead tr th').eq(idx).find('a.image').attr('href'),
 					prodName = $corpoComparacao.find('thead tr th').eq(idx).find('a.image').text();
 
-				var buyButton = '<a class="primary-button js-track-items__default" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
+				var buyButton = '<a class="primary-button js-track-buy_button" data-category="Comparador" data-text="Comprar -'+prodName+'" href="'+prodLink+'">Comprar</a>';
 
 				$(this).remove('.remover-produto');
 				$(this).html(buyButton);
@@ -86,6 +86,8 @@ Nitro.controller('compare', function() {
 			var id = $(this).parent().parent().parent().parent().parent().parent().attr('class');
 			$('td.{0}, th.{0}'.format(id)).remove();
 
+			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Remover Produto', label: '-'});
+
 			self.updateStore(id);
 
 			if (document.querySelectorAll('.corpo-comparacao > table th .produto').length === 1){
@@ -103,6 +105,19 @@ Nitro.controller('compare', function() {
 			}
 
 
+		});
+
+		// eventos tagueamento
+		$body.on('click', '.compare-bar_add-product', function() {
+			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Adicionar Outro Produto', label: '-'});
+		}).on('click', '.js-track-buy_button', function(e) {
+			e.preventDefault();
+
+			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Comprar Produto', label: '-'});
+		}).on('click', '.box-produto .detalhes a', function(e) {
+			e.preventDefault();
+			var skuProduto = $(this).parent('.box-produto').find('.nome .product-field ul li').text();
+			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Abrir Produto', label: skuProduto});
 		});
 
 		// MOBILE
@@ -143,7 +158,7 @@ Nitro.controller('compare', function() {
 					}
 
 					if ($('.corpo-comparacao th .produto').length === 2 && $('.compare-bar__product-image').length === 0) {
-						compareBar.append('<th><a href="'+window.location.search.match(/&ReturnUrl=(.+)/)[1]+'"><div class="compare-bar__product-image"></div></a></th>');
+						compareBar.append('<th><a href="'+window.location.search.match(/&ReturnUrl=(.+)/)[1]+'" class="compare-bar_add-product"><div class="compare-bar__product-image"></div></a></th>');
 					}
 
 					$(this).scrollTop() < 160 ? $('.compare-bar__product-image').hide() : $('.compare-bar__product-image').show();
@@ -173,7 +188,8 @@ Nitro.controller('compare', function() {
 			'</div>').addClass('diff-highlight-container');
 
 		$body.on('change', '.js-diff-check', function() {
-
+			var elemento = $(this).parent('.form-check').find('label').text();
+			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Botão '+elemento, label: '-'});
 			$corpoComparacao
 				.removeClass (function (index, className) {
 					return (className.match(/(^|\s)highlight-\S+/g) || []).join(' ');
