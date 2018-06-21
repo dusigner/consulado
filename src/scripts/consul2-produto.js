@@ -15,12 +15,15 @@ require('modules/product/notify-me');
 require('modules/product/share');
 require('modules/product/quiz-install');
 require('modules/product/upsell');
+require('modules/chaordic');
 // require('modules/product/special-content');
 
-
-Nitro.controller('produto', ['sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
+Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function(chaordic) {
 	var self = this,
 		$body = $('body');
+
+	//INICIA CHAMADA DAS VITRINES CHAORDIC
+	chaordic.init('product', window.skuJson.productId);
 
 	// Teste AB
 	var urlTesteAb = window.location.search;
