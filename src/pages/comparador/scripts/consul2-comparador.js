@@ -110,11 +110,15 @@ Nitro.controller('compare', function() {
 		// eventos tagueamento
 		$body.on('click', '.compare-bar_add-product', function() {
 			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Adicionar Outro Produto', label: '-'});
-		}).on('click', '.js-track-buy_button', function(e) {
+		})
+		.on('click', '.js-track-buy_button', function(e) {
 			e.preventDefault();
 
 			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Comprar Produto', label: '-'});
-		}).on('click', '.box-produto .detalhes a', function(e) {
+
+			window.location.href = $(this).attr('href');
+		})
+		.on('click', '.box-produto .detalhes a', function(e) {
 			e.preventDefault();
 			var skuProduto = $(this).parent('.box-produto').find('.nome .product-field ul li').text();
 			dataLayer.push({event: 'generic', category: 'Comparador de Produtos', action: 'Abrir Produto', label: skuProduto});
