@@ -101,13 +101,15 @@ Nitro.setup(['facebook-init'], function () {
 		e.preventDefault();
 		var $inputName = $('.name').val(),
 			$inputEmail = $('.email').val(),
-			$inputcategoryD = $('.category').val();
+			$inputcategoryD = $('.category').val(),
+			$inputTermos  = $('#termos');
 
 		if($inputName === ''){	$('input.name').addClass('error');}
 		else if($inputEmail === ''){$('input.email').addClass('error');}
 		else if($inputcategoryD === ''){$('.select-category').addClass('error');}
+		else if (!$inputTermos.is(':checked')) {$inputTermos.addClass('error');}
 		else {
-			$('.select-category, input.email, input.name').removeClass('error');
+			$('.select-category, input.email, input.name, input#termos').removeClass('error');
 			$(this)[0].reset();
 			$valueSelected.html('selecione sua categoria');
 			$('.select-category').removeClass('active');
