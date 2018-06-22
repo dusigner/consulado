@@ -129,8 +129,7 @@ Nitro.setup(['facebook-init'], function () {
 				success: function () {
 					$('#modal-sucess').vtexModal();
 					dataLayer.push({
-						event: 'cadastroAniversario',
-						mail: $inputEmail
+						event: 'cadastroAniversario'
 					});					
 				},
 				error: function (error) {
