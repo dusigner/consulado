@@ -239,8 +239,44 @@
 				}
 			}
 
-			.compare {
-				display: none;
+			.btn-comparar {
+				position: relative;
+				fieldset {
+					border: 0;
+					margin-bottom: 0;
+					padding: 0 15px 0;
+					text-align: left;
+				}
+				input {
+					position: absolute;
+				}
+				label {
+					cursor: pointer;
+					padding: 0 0 0 20px;
+				}
+				input[type=checkbox] {
+					&:checked {
+						+ label:before {
+							background-color: transparent;
+						}
+					}
+					&.selected {
+						+ label:before {
+							background-color: $orange;
+							content: ' ';
+							display: inline-block;
+							height: 9px;
+							left: 0;
+							margin-left: 3px;
+							position: absolute;
+							top: 50%;
+							transform: translate(0%, -50%);
+							visibility: visible;
+							width: 9px;
+							z-index: 1;
+						}
+					}
+				}
 			}
 
 			.slick-prev { left: -12px; }
@@ -751,6 +787,16 @@
 		}
 	}
 }
+
+// CTA Comparador
+body.brastemp,
+body.brastempqa {
+	.btn-comparar {
+		display: none;
+		visibility: hidden;
+	}
+}
+
 
 
 #quem-viu-clicou {
