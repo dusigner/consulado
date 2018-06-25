@@ -1,0 +1,438 @@
+@charset 'UTF-8';
+
+@mixin size($width, $height: $width) {
+    height: $height;
+    width: $width;
+}
+
+.compare-bar {
+	@include breakpoint('small', 'max') {
+		max-height: initial;
+		padding: 0 0 55px 0!important;
+	}
+	background-color: #FFFFFF;
+	border: 1px solid #BBBBBB;
+	border-width: 1px 0;
+	bottom: 0;
+	max-height: 250px;
+	opacity: 0;
+	overflow: hidden;
+	position: fixed;
+	transition:
+		max-height .3s ease,
+		opacity .5s ease
+	;
+	width: 100%;
+	z-index: 100;
+
+	&:before {
+		@include breakpoint('small', 'max') {
+			background-color: #3B3B3A;
+			content: '';
+			display: block;
+			height: 60px;
+			max-height: 350px;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+		}
+	}
+
+	&.py-4 {
+		padding-bottom: 1.5rem;
+		padding-top: 1.5rem;
+	}
+
+	// [class*='col'] { border: 1px solid #ccc!important; }
+
+	.container { position: relative; }
+
+	&__action {
+		@include breakpoint('small', 'max') { margin-bottom: 15px; }
+		color: #3B3B3A;
+		z-index: 2;
+	}
+
+	// Title
+	&__title {
+		@include breakpoint('small', 'max') {
+			color: #FFFFFF;
+			display: block;
+			padding-top: .8rem;
+		}
+		@include breakpoint('medium', 'min') { font-size: 1.4rem; }
+		white-space: nowrap;
+	}
+
+	// Description
+	.compare-bar__description {
+		@include breakpoint('medium', 'max') { font-size: .85rem; }
+		@include breakpoint('small', 'max') {
+			color: #FFFFFF;
+			margin: 0;
+		}
+		margin-top: .5rem;
+		transition:
+			right .4s ease,
+			top .4s ease,
+			transform .4s ease
+		;
+	}
+
+	// Product
+	&__product {
+		@include breakpoint('small', 'max') {
+			border-bottom: 1px solid #E6E6E6;
+			display: none;
+			min-height: 75px;
+			padding: .5rem 0!important;
+			text-align: left;
+		}
+		max-height: 170px;
+		position: relative;
+		text-align: center;
+		transition:
+			opacity .4s ease,
+			max-height .3s ease,
+			transform .3s ease
+		;
+
+		// 2ª coluna
+		&:nth-child(2) {
+			border: 1px solid #E6E6E6;
+			border-width: 0 1px;
+			@include breakpoint('small', 'max') {
+				border-width: 0 0 1px;
+			}
+		}
+
+		// Image
+		&-image {
+			@include breakpoint('small', 'max') { display: inline-block; }
+			margin: 0 auto;
+			max-width: 200px;
+			position: relative;
+
+			img {
+				@include breakpoint('small', 'max') { max-width: 60px; }
+				max-height: 110px;
+				width: auto;
+			}
+
+			// Icon "Adicionar produto"
+			&:before,
+			&:after {
+				display: inline-block;
+				margin: .7rem 0;
+			}
+
+			&:before {
+				@include breakpoint('medium', 'max') {
+					@include size(50px);
+					font-size: 45px;
+					line-height: 50px;
+				}
+				@include size(75px);
+				background-color: #BBBBBB;
+				border-radius: 50%;
+				color: #fff;
+				content: '+';
+				font-size: 70px;
+				line-height: 75px;
+			}
+
+			&:after {
+				@include breakpoint('medium', 'max') {
+					font-size: .7rem;
+					line-height: .9rem;
+					padding: 0 1rem;
+				}
+				color: #BBBBBB;
+				content: 'ADICIONAR OUTRO \A PRODUTO';
+				font-size: 1.1rem;
+				font-weight: bold;
+				line-height: 1.2rem;
+				white-space: pre;
+			}
+		}
+
+		// Product name
+		&-name {
+			@include breakpoint('small', 'max') {
+				display: inline-block;
+				font-size: 1rem;
+				padding: .5rem;
+				vertical-align: middle;
+				width: calc(100% - 85px);
+			}
+			color: #3B3B3A;
+			font-size: 14px;
+			padding: .5rem 1.2rem;
+		}
+
+		// Icon Close
+		&-close {
+			@include breakpoint('small', 'max') {
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%) scale(.8);
+			}
+			@include size(25px);
+			background-color: #BBBBBB;
+			border-radius: 50%;
+			color: #FFFFFF;
+			cursor: pointer;
+			display: none;
+			position: absolute;
+			right: 1.2rem;
+			top: 0;
+			z-index: 2;
+
+			&:before {
+				background-color: #fff;
+				content: '';
+				display: block;
+				height: 3px;
+				position: absolute;
+				right: 50%;
+				top: 49%;
+				transform: translate(50%, -50%);
+				width: 12px;
+			}
+		}
+
+		// Active state
+		&.-has-product {
+			@include breakpoint('small', 'max') {
+				display: inherit;
+			}
+			.compare-bar__product-close { display: block; }
+
+			.compare-bar__product-image {
+				&:before,
+				&:after { display: none; }
+			}
+		}
+	}
+
+	// Action buttons
+	&__buttons {
+		@include breakpoint('medium', 'min') { margin-top: 3rem; }
+		@include breakpoint('small', 'max') {
+			left: 0;
+			margin: 0;
+			position: absolute;
+			text-align: center;
+			top: calc(100% + 5px);
+			width: 100%;
+		}
+		margin-top: 1.5rem;
+
+		.btn {
+			@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'max') {
+					font-size: 11px;
+					padding: .42rem .6rem;
+				}
+			}
+			@include breakpoint('small', 'max') { margin: 0 .5rem; }
+		}
+
+		.disabled {
+			background-color: #FFFFFF;
+			border-color: #BBBBBB;
+			color: #BBBBBB;
+		}
+	}
+
+	// Close button
+	&--close {
+		@include breakpoint('medium', 'max') {
+			@include breakpoint('small', 'min') {
+				@include size(30px);
+				font-size: 10px;
+				line-height: 30px;
+			}
+		}
+		@include breakpoint('small', 'max') {
+			background: transparent;
+			color: #FFFFFF;
+			height: 60px;
+			padding-right: 2rem;
+			right: 0;
+			text-align: right;
+			top: 0;
+			width: 100%;
+		}
+		@include size(39px);
+		background-color: #E6E6E6;
+		border: none;
+		border-radius: 4px;
+		display: inline-block;
+		line-height: 42px;
+		position: absolute;
+		right: 1rem;
+		top: 24px;
+		z-index: 5;
+
+		&:focus { outline: none; }
+
+		// Icon
+		.icon {
+			display: inline-block;
+			font-size: .7em;
+			//transform: rotateZ(-90deg);
+		}
+	}
+
+	// Active state
+	&.-is--closed {
+		@include breakpoint('small', 'max') { max-height: 60px; }
+		max-height: 90px;
+
+		// Close button
+		.compare-bar--close {
+			@include breakpoint('medium', 'min') { top: 27px; }
+			@include breakpoint('small', 'max') { top: 23px; }
+			@include breakpoint('extra-small', 'max')  { top: 0; }
+
+			.icon { transform: rotateZ(180deg); }
+		}
+
+		// Title
+		.compare-bar__title {
+			@include breakpoint('small', 'min') { padding: .5em 0; }
+		}
+
+		// Descripttion
+		.compare-bar__description {
+			@include breakpoint('medium', 'min') {
+				margin: 0;
+				position: absolute;
+				right: 50%;
+				top: 50%;
+				transform: translate(50%, -50%);
+
+				.text-open { display: none; }
+				.text-close { display: block!important; }
+			}
+			.text-close { font-size: 14px; }
+		}
+
+		// Buttons
+		.compare-bar__buttons {
+			@include breakpoint('small', 'max') { display: none; }
+			@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'max') { transform: translateY(10%); }
+				margin: 0;
+				position: absolute;
+				right: .5rem;
+				top: -10px;
+				//transform: translateY(20%);
+			}
+		}
+
+		// Products
+		.compare-bar__product {
+			max-height: 10px;
+			opacity: 0;
+			transform: translateY(200px);
+		}
+	}
+
+	&.-is--active {
+		opacity: 1;
+		z-index: 101;
+	}
+
+	.d-none {
+		display: none!important;
+	}
+
+	input[type=checkbox]:checked + label:before {
+		content: ' '!important;
+	}
+
+	//falback flex
+	[class*=grid-][class*=-middle] {
+		align-items: center;
+	}
+
+	[class*=grid-][class*=-noGutter] {
+		margin: 0;
+	}
+
+	[class*=grid-], 
+	[class*=grid_],
+	[class~=grid] {
+		box-sizing: border-box;
+		display: flex;
+		flex-flow: row wrap;
+		margin: 0 -.5rem;
+	}
+
+	[class*=grid-][class*=-noGutter]>[class*=col-],
+	[class*=grid-][class*=-noGutter]>[class~=col] {
+		padding: 0;
+	}
+
+	[class*=grid-]>[class*=col-3],
+	[class*=grid_]>[class*=col-3],
+	[class~=grid]>[class*=col-3] {
+		flex-basis: 25%;
+		max-width: 25%;
+	}
+
+	[class*=grid-]>[class*=col-9],
+	[class*=grid_]>[class*=col-9],
+	[class~=grid]>[class*=col-9] {
+		flex-basis: 75%;
+		max-width: 75%;
+	}
+
+	.compare-bar__action {
+		color: #3b3b3a;
+		z-index: 2;
+	}
+
+	[class*=col-] {
+		flex: none;
+	}
+
+	[class*=col_],
+	[class~=col] {
+		flex: 1 1 0%;
+	}
+
+	[class*=col-], 
+	[class*=col_], 
+	[class~=col] {
+		box-sizing: border-box;
+		max-width: 100%;
+		padding: 0 .5rem 1rem;
+	}
+
+	@media (max-width: 768px) {
+		[class*=grid-]>[class*=_sm-12],
+		[class*=grid_]>[class*=_sm-12],
+		[class~=grid]>[class*=_sm-12] {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+
+		[class*=_sm-1]>[class*=col-],
+		[class*=_sm-1]>[class*=col_],
+		[class*=_sm-1]>[class~=col] {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+	}
+
+}
+
+// Modal
+.js-modal-compare {
+	padding-bottom: 1.5rem;
+	.compare-modal__text { padding: 1rem; }
+}

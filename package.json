@@ -22,7 +22,9 @@
     "dust-loader": "lucasmonteverde/dust-loader",
     "gulp-sass": "^3.1.0",
     "json-loader": "^0.5.4",
-    "node-sass": "^4.7.2"
+    "node-sass": "^4.7.2",
+    "store": "^2.0.12",
+    "urijs": "^1.19.1"
   },
   "devDependencies": {
     "browser-sync": "^2.11.2",

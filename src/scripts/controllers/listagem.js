@@ -14,7 +14,7 @@ require('modules/chaordic');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'compare', */ 'slider-banner', 'resultado-busca', /* 'modal.overlayAbandono', */ 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', /* 'modal.overlayAbandono', */ 'calculadorabtu' /*, 'promo.lightbox'*/ /*, 'modal.cupom10off'*/ /*, 'filters'*/ ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
