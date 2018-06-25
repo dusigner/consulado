@@ -37,6 +37,19 @@ Nitro.module('list-more', function() {
 		return $prateleira.find('li[layout]').length % grid === 0;
 	};
 
+	this.updateCompare = function() {
+		var newsIds = localStore.get('comparador');
+
+		if(newsIds) {
+			newsIds.forEach(function(val) {
+				var product = $('#prateleira .compare-product-checkbox[rel='+val.rel+']');
+				if( product.length > 0 && !product.hasClass('selected') ) {
+					product.addClass('selected').parent().find('label').text('Selecionado');
+				}
+			});
+		}
+	};
+
 	this.loadContent = function() {
 		// console.log('SALE', url + page);
 		$.ajax({
@@ -82,6 +95,7 @@ Nitro.module('list-more', function() {
 		})
 		.always(function() {
 			$button.removeClass('loading');
+			self.updateCompare();
 		});
 	};
 
