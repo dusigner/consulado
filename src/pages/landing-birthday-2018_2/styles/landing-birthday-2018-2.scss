@@ -1,0 +1,403 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Aniversário CNS 2018
+	* Description: CSS desenvolvido para Consul.
+	* Author: Sampsom
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 4.71.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/_icons';
+// ===============================================================
+
+.landing-birthday-2018 {
+
+	// SECTION HERO
+	.hero {
+		position: relative;
+
+		img {
+			display: block;
+			max-width: 100%;
+			width: 100%;
+
+			&.show-mobile {
+				display: none;
+			}
+			@include breakpoint(740px, 'max') {
+				&.show-mobile {
+					display: block;
+				}
+				&.hide-mobile {
+					display: none;
+				}
+			}
+		}
+	}
+
+	// SECTION PRODUTOS SLICK
+	.new-showcase {
+
+		p.searchResultsTime,
+		.sub {
+			display: none;
+		}
+
+		.main {
+			margin: auto;
+			max-width: 900px;
+		}
+
+		.prateleira.default {
+		 	li {
+				@include breakpoint(768px, 'max') { margin: 0;}
+			}
+			
+			.prateleira.default {
+				&:first-child {
+					display: block;				
+				}
+				display: none;
+			}			
+		}
+
+		.detalhes {
+			display: block !important;
+
+			a.image {
+				float: left;
+				padding: 0 40px;
+				width: 50%;
+				@include breakpoint(768px, 'max') {	
+					padding: 0;
+					width: 100%;
+				}
+			}
+			
+			a.prod-info {
+				float: right;
+				width: 50%;
+				@include breakpoint(768px, 'max') {	width: 100%; }
+
+				.nome {
+					font-weight: 700;
+					margin-bottom: 0 !important;
+					min-height: auto;
+					text-align: left;
+					@include breakpoint(768px, 'max') {	font-size: 22px !important; }
+				}
+
+				.price {
+					min-height: auto !important;
+					text-align: left;
+
+					.por {
+						span {
+							font-weight: bold;
+						}
+					}
+
+					.adicional {
+
+						span.vezes {
+							color: #f47921;
+							position: relative;
+
+							&:after {
+								bottom: -8px;
+								content: 's/ juros';
+								font-size: 8px;
+								position: absolute;
+								right: -12px;
+								width: 40px;
+							}
+						}
+					}
+
+					.discount-boleto {
+						padding-top: 10px;
+					}
+				}
+			}
+		}
+	
+
+		button.slick-prev {
+			left: 20px;
+			text-align: left;
+			width: 50px;
+			z-index: 30;
+
+			&:before {
+				font-size: 50px;
+			}
+
+			@include breakpoint(768px, 'max') {
+				left: 0;
+				top: 30%;
+			}
+		}
+
+		button.slick-next {
+			left: 41%;
+			text-align: right;
+			width: 50px;
+			z-index: 30;
+
+			&:before {
+				font-size: 50px;
+			}
+			@include breakpoint(768px, 'max') {
+				left: initial;
+				right: 0;
+				top: 30%;
+			}
+		}
+
+		article.box-produto {
+			padding-bottom: 0 !important;
+
+			a.department-nav {
+				display: none;
+			}
+		}
+	}
+
+	// SECTION BAR REGISTER
+	.bar-register {
+		background: #a8ca41;
+
+		h2 {
+			color: #fff;
+			display: block;
+			font-size: 28px;
+			font-weight: normal;
+			margin: 0;
+			padding: 20px 0;
+			text-align: center;
+			text-transform: uppercase;
+
+			@include breakpoint(1121px, 'max') { font-size: 20px; }			
+		}
+	}
+
+	// SECTION MOVIE
+	.tbs-videos {
+
+		@include breakpoint(768px, 'max') {
+		   padding: 0;
+		}
+
+		.icon-play {
+			border: 2px solid #fff;
+			border-radius: 100px;
+			color: #fff;
+			font-size: 180px;
+			height: 50px;
+			left: 50%;
+			line-height: 0;
+			margin-left: -175px;
+			margin-top: -25px;
+			position: absolute;
+			top: 50%;
+			transform: rotate(270deg);
+			width: 50px;
+			z-index: 11;
+
+			@include breakpoint(500px, 'max') {
+				margin-left: -25px;
+
+				&:before {
+					display: none;
+				}
+			}
+
+			&:after {
+				border-left: 15px solid transparent;
+				border-radius: 5px;
+				border-right: 15px solid transparent;
+				border-top: 23px solid #fff;
+				content: '';
+				height: 0;
+				margin: 14px 0 0 8px;
+				position: absolute;
+				width: 0;
+			}
+
+			&:before {
+				border: 2px solid #fff;
+				border-radius: 36px;
+				content: 'Assistir ao vídeo';
+				display: block;
+				font-size: 27px;
+				left: -103px;
+				line-height: 1;
+				padding: 10px;
+				position: absolute;
+				text-align: center;
+				top: 164px;
+				transform: rotate(90deg);
+				width: 251px;
+			}
+		}
+		.mask-movie {
+			position: relative;
+
+			img {
+				max-width: 100%;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+			}
+
+			.embed-responsive {
+				display: none;
+				overflow: hidden;
+				padding: 0;
+				position: relative;
+				width: 100%;
+
+				&.visible {
+					display: block;
+
+					&::before {
+						content: '';
+						display: block;
+						padding-top: 43.25%;
+					}
+				}
+
+				.embed-responsive-item {
+					border: 0;
+					bottom: 0;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 100%;
+				}
+			}
+		}
+
+		> .slick-dots {
+			bottom: -100px;
+
+			@include breakpoint(925px, 'max') {
+				bottom: -150px;
+			}
+
+			li {
+				background: #fff;
+				border: 1px solid #99cc2d;
+				border-radius: 30px;
+				color: #99cc2d;
+				font-size: 25px;
+				height: 45px !important;
+				margin: 16px;
+				padding: 4px 54px;
+				width: auto !important;
+
+				@include breakpoint(925px, 'max') {
+					float: left !important;
+					width: 40% !important;
+				}
+
+				@include breakpoint(520px, 'max') {
+					font-size: 19px;
+					margin: 5px 15px;
+					padding: 8px 0;
+				}
+
+				&.slick-active {
+					background: #99cc2d;
+					color: #fff;
+				}
+
+				&:nth-child(2) {
+					&:after {
+						content: 'Rádio';
+					}
+				}
+
+				&:nth-child(3) {
+					&:after {
+						content: 'Brigadeiro';
+					}
+				}
+				&:nth-child(4) {
+					&:after {
+						content: 'Futebol';
+					}
+				}
+
+				&:after {
+					content: 'Avião';
+				}
+
+				button {
+					display: none;
+				}
+			}
+		}
+	}
+
+	//SECTION SHARE
+	.share {
+		margin-bottom: 63px;
+		margin-top: 149px;
+		position: relative;
+		text-align: center;
+
+		@include breakpoint(925px, 'max') {
+			margin-top: 200px;
+		}
+
+		div {
+			background: #acacac;
+			height: 1px;
+			margin: auto;
+			max-width: 90%;
+
+			img {
+				background: #fff;
+				padding: 0 30px;
+				position: relative;
+				top: -28px;
+
+				@include breakpoint(500px, 'max') {
+				   max-width: 80%;
+				   padding: 0 15px;
+				}
+			}
+		}
+	}
+
+	.pageName {
+		display: none;
+	}
+
+	.btn-comparar,
+	.col-md-6.open-filter,
+	.clear-filter {
+		display: none !important;
+	}
+
+	// SECTION  LIST-CONTENT
+	.list-container {
+		.prateleira>ul:not(.slick-slider) {
+			@include breakpoint(768px, 'max') {
+				margin-left: 0 !important;
+			}
+		}
+	}
+}
