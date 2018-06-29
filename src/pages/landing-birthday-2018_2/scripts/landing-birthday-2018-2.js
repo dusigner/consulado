@@ -7,7 +7,6 @@ require('modules/helpers');
 require('vendors/nitro');
 require('vendors/slick');
 require('modules/store/facebook-init');
-var CRM = require('modules/store/crm');
 
 Nitro.setup(['facebook-init'], function () {	
 	// VARS
