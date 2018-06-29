@@ -26,49 +26,38 @@
 	.hero {
 		position: relative;
 
+		.show-mobile {
+			display: none;
+		}
+
+		@include breakpoint(740px, 'max') {
+			.show-mobile {
+				display: block;
+			}
+			.hide-mobile {
+				display: none;
+			}
+		}
+
 		img {
 			display: block;
+			height: auto;
 			max-width: 100%;
 			width: 100%;
 
-			&.show-mobile {
-				display: none;
-			}
-			@include breakpoint(740px, 'max') {
-				&.show-mobile {
-					display: block;
-				}
-				&.hide-mobile {
-					display: none;
-				}
-			}
 		}
 	}
 
 	// SECTION PRODUTOS SLICK
 	.new-showcase {
 
-		p.searchResultsTime,
-		.sub {
-			display: none;
-		}
-
-		.main {
-			margin: auto;
-			max-width: 900px;
-		}
-
 		.prateleira.default {
-		 	li {
-				@include breakpoint(768px, 'max') { margin: 0;}
-			}
-			
-			.prateleira.default {
-				&:first-child {
-					display: block;				
-				}
+			> h2 {
 				display: none;
-			}			
+			}
+			li {
+			   @include breakpoint(768px, 'max') { margin: 0;}
+		   	}			
 		}
 
 		.detalhes {
@@ -90,11 +79,11 @@
 				@include breakpoint(768px, 'max') {	width: 100%; }
 
 				.nome {
+					font-size: 22px !important;
 					font-weight: 700;
 					margin-bottom: 0 !important;
 					min-height: auto;
 					text-align: left;
-					@include breakpoint(768px, 'max') {	font-size: 22px !important; }
 				}
 
 				.price {
