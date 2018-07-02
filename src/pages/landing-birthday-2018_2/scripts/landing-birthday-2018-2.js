@@ -53,11 +53,26 @@ Nitro.setup(['facebook-init'], function () {
 		$(this).siblings('.embed-responsive').addClass('visible');
 		$(this).siblings('.embed-responsive').find('iframe')[0].src += '&autoplay=1';
 		$(this).css('display', 'none');
+
+		dataLayer.push({
+			event: 'generic',
+			category: 'Landing Aniversário',
+			action: 'Assistir ao vídeo',
+			label: 'Play video '+ $('.slick-dots li.slick-active button').text()
+		});
 	});
 
 	// Resetar os Vídeos
 	$(window).load(function(){
 		$('.slick-dots li').click(function(){
+
+			dataLayer.push({
+				event: 'generic',
+				category: 'Landing Aniversário',
+				action: 'Categoria de Vídeo',
+				label: 'Video '+ $(this).find('button').text()
+			});	
+			
 			$iframePlay.each(function(){
 				var $srcIframe = $(this)[0].src;
 				if($srcIframe.indexOf('&autoplay=1') !== -1){

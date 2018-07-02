@@ -26,19 +26,6 @@
 	.hero {
 		position: relative;
 
-		.show-mobile {
-			display: none;
-		}
-
-		@include breakpoint(740px, 'max') {
-			.show-mobile {
-				display: block;
-			}
-			.hide-mobile {
-				display: none;
-			}
-		}
-
 		img {
 			display: block;
 			height: auto;
