@@ -707,8 +707,8 @@ body.body-order-form {
                     position: absolute;
                     right: 13px;
                     top: 18px;
-				}				
-				
+				}
+
 			}
 			&.error {
 
@@ -724,7 +724,7 @@ body.body-order-form {
                     position: absolute;
                     right: 13px;
                     top: 18px;
-				}				
+				}
             }
             &.previouOrderId,
             &.company,
@@ -739,7 +739,7 @@ body.body-order-form {
 			}
 			&.company,
             &.reason {
-                
+
                 &.load {
 					&:before {
 						display: none;
@@ -749,14 +749,14 @@ body.body-order-form {
         }
     }
 
-    .vtex-front-messages-placeholder-opened.delivery {		
+    .vtex-front-messages-placeholder-opened.delivery {
 		button.close {
 			height: 27px;
 			opacity: 1;
 			padding: 0;
 			text-align: center;
 			width: 27px;
-		}		
+		}
 	}
 
 	.scheduled-sla {
@@ -785,10 +785,18 @@ body.body-order-form {
 			.picker {
 				width: 94%;
             }
-            
+
             .scheduled-sla-edit {
                 margin-left: 10px;
             }
 		}
 	}
+}
+
+
+// Remove print button
+#cart-print,
+.link-print-cart {
+	display: none;
+	visibility: hidden;
 }
