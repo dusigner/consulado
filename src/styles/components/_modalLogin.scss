@@ -485,9 +485,15 @@ input[type='submit'].custom-login-btn {
 	}
 };
 
-body:not(.consulempresa):not(.consulqa2) {
+body:not(.consulempresa):not(.consulqa2):not(.body-checkout-confirmation) {
 	#vtexIdUI-global-loader,
 	#vtexIdContainer {
 		display: none !important;
+	}
+}
+
+body.body-checkout-confirmation {
+	#vtexIdContainer {
+		position: fixed!important;
 	}
 }

@@ -89,6 +89,7 @@ $(window).on('load', function() {
 			// console.log(pedidoconfir);
 
 		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
+			console.log(res);
 
 			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
 			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
@@ -115,12 +116,16 @@ $(window).on('load', function() {
 
 
 		this.infoBoleto = function() {
-			var $bankInvoice = $('#print-bank-invoice');
+			var $bankInvoice = $('#app-top #print-bank-invoice');
 			if ($bankInvoice.length > 0) {
 				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
 
 				$('.cconf-payment article.fl .lh-copy').append($bankInvoice.clone());
 			}
+
+			$(document).on('click', '.cconf-payment article.fl .lh-copy #print-bank-invoice', function(){
+				$('#app-top #print-bank-invoice .link').trigger('click');
+			});
 		};
 
 		this.orderReinput = function () {

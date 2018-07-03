@@ -51,6 +51,7 @@ require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
 require('controllers/landing-gae-compra-interno');
+require('controllers/pre-home');
 require('modules/chatHome');
 
 Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome'], function() {
