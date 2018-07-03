@@ -56,7 +56,7 @@ Nitro.module('login', function () {
 
 	this.submit = function (e) {
 		e.preventDefault();
-
+		
 		if (!this.btnSubmit.is('.loading')) {
 
 			var form = this,

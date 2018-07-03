@@ -6,27 +6,55 @@
 				<input type="text" name="previouOrderId" id="previouOrderId" value="">
 			</li>
 			<li class="company">
-				<label>Empresa</label>
+				<label class="Lcompany">Motivo Reinput</label>
 				<select name="company" id="company">
 					<option value="Selecione">Selecione</option>
-					<option value="Algar">Algar</option>
-					<option value="Atendimento">Atendimento</option>
+					<option value="Avaria">Avaria</option>
+					<option value="Defeito Funcional">Defeito Funcional</option>
+					<option value="Integração SAP">Integração SAP</option>
+					<option value="Integração VTEX">Integração VTEX</option>
+					<option value="Canc. - Boleto">Canc. - Boleto</option>
+					<option value="Canc. - Cartão">Canc. - Cartão</option>
+					<option value="Canc. - Produto Indisponivel">Canc. - Produto Indisponivel</option>
+					<option value="Canc. - Indevido">Canc. - Indevido</option>
+					<option value="Alteração produto e/ou endereço">Alteração produto e/ou endereço</option>
+					<option value="Falha Transportadora">Falha Transportadora</option>
+					<option value="Sinistro">Sinistro</option>
 				</select>
 			</li>
 			<li class="reason">
-				<label>Motivo</label>
+				<label class="Lreason">Motivo Boleto</label>
 				<select name="reason" id="reason">
 					<option value="Selecione">Selecione</option>
-					<option value="Avaria de transporte">Avaria de transporte</option>
-					<option value="Defeito Funcional/estético">Defeito Funcional/estético</option>
-					<option value="Log de erros">Log de erros</option>
-					<option value="Pedido cancelado">Pedido cancelado</option>
-					<option value="Falha do consumidor">Falha do consumidor</option>
-					<option value="Falha Logística">Falha Logística</option>
-					<option value="Falha Televendas">Falha Televendas</option>
-					<option value="Sinistro Problemas">Sinistro Problemas</option>
-					<option value="integração - Mkt Place">integração - Mkt Place</option>
+					<option value="Não há (foi no VT)">Não há (foi no VT)</option>
+					<option value="Erro VT - mktplace">Erro VT - mktplace</option>
+					<option value="Erro VT - GAE">Erro VT - GAE</option>
+					<option value="Erro VT - MGM">Erro VT - MGM</option>
+					<option value="Erro VT - 2º Reinput">Erro VT - 2º Reinput</option>
+					<option value="Erro VT - Assinatura Clube">Erro VT - Assinatura Clube</option>
+					<option value="Erro VT - demora job">Erro VT - demora job</option>
+					<option value="Pedido anterior cancelado">Pedido anterior cancelado</option>
+					<option value="Pedido anterior não integrado">Pedido anterior não integrado</option>
+					<option value="Cortesia brinde">Cortesia brinde</option>
+					<option value="Outros">Outros</option>
 				</select>
+			</li>
+			<li class="alcada">
+				<label class="Lalcada">Motivo Alçada</label>
+				<select name="alcada" id="alcada">
+					<option value="Selecione">Selecione</option>
+					<option value="Não há (não alterei preço)">Não há (não alterei preço)</option>
+					<option value="Variação preço/frete">Variação preço/frete</option>
+					<option value="Cumprimento de oferta">Cumprimento de oferta</option>
+					<option value="Cortesia similar">Cortesia similar</option>
+					<option value="Cortesia superior">Cortesia superior</option>
+					<option value="Outros">Outros</option>
+				</select>
+			</li>
+			
+			<li class="comment">
+				<label class="Lcomment"></label>
+				<textarea name="obsreinpunt" id="obsreinpunt" cols="30" rows="3" placeholder="Comentários"></textarea>
 			</li>
 		</form>
 	</div>

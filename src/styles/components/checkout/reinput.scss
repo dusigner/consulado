@@ -1,0 +1,279 @@
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+
+.fieldsReinput {
+	display: none;
+}
+
+body.body-order-form {
+	
+	.fieldsReinput {
+		border: 3px solid #f4f2f1;
+		display: block;
+		margin-top: 15px;
+
+		.isReinput {
+			input {
+				height: 20px;
+				margin-left: 10px;
+				margin-top: 0;
+				width: 20px;
+				&:before {
+					background: #fff;
+					border: 1px solid #ccc;
+					content: '';
+					display: block;
+					height: 20px;
+					width: 20px;
+				}
+
+				&:checked {
+					&:before {
+						background: #94bc42;
+						border: 1px solid #72942b;
+					}
+
+					&:after {
+						@include icon-get('check-mark');
+						color: #fff;
+						font-size: 12px;
+						left: 3px;
+						position: relative;
+						top: -18px;
+					}
+				}
+			}
+		}
+
+		li {
+			border-bottom: 1px solid transparent;
+			display: block;
+			list-style: none;
+			padding: 10px;
+			position: relative;
+
+			input,
+			select {
+				border: 1px solid #ccc;
+				box-shadow: none;
+				float: right;
+				height: 25px;
+				outline: none;
+				width: 55%;
+			}
+
+			textarea {
+				border: 1px solid #ccc;
+				box-shadow: none;				
+				height: 40px;
+				outline: none;
+				width: 100%;
+			}
+
+			label {
+				display: block;
+				float: left;
+				text-align: left;
+				width: 45%;
+
+				&:before {
+					background: #f35216;
+					border: 1px solid #c13708;
+					border-radius: 5px;
+					color: #fff;					
+					font-size: 11px;
+					left: -104px;
+					line-height: 1;
+					max-width: 97px;
+					padding: 4px 5px;
+					position: absolute;
+					text-align: center;
+					top: 6px;
+					z-index: 5;
+				}
+
+				&:after {
+					background: #f35216;
+					border: 1px solid #c13708;
+					border-bottom: 0;
+					border-right: 0;					
+					display: block;
+					height: 10px;
+					left: -12px;
+					position: absolute;
+					top: 16px;
+					transform: rotate(135deg);
+					width: 10px;
+					z-index: 6;
+				}
+
+				&.Lcompany {
+					&:before {
+						content: 'Porque estamos reinputando ?';
+					}
+					&:after {
+						content: '';
+					}				
+				}
+
+				&.Lreason {
+					&:before {
+						content: 'Porque o pagamento não é no VT ?';
+						top: 0;
+					}
+					&:after {
+						content: '';
+					}
+				}				
+				&.Lalcada {
+					&:before {
+						content: 'Porque teve que alterar o preço ?';
+					}
+					&:after {
+						content: '';
+					}
+				}
+				
+				&.Lcomment {
+					&:before {
+						content: 'Campo livre para comentários';
+						top: 15px;
+					}
+					&:after {
+						content: '';
+						top: 25px;
+					}
+				}				
+			}
+
+			&.load {
+				background: #f1fdf2;
+				border-bottom: 1px solid #cceccf;
+
+				& input,
+				select,
+				textarea {
+					border-color: #94bc42;
+				}
+
+				&:before {
+					@include icon-get('check-mark');
+					color: #94bc42;
+					font-size: 7px;
+					position: absolute;
+					right: 13px;
+					top: 18px;
+				}
+
+				label {	
+
+					&.Lcompany {
+						&:before {
+							background: #17d427;
+							border: 1px solid #0a8014;
+							content: 'Ok';
+							left: -32px;
+							top: 10.5px;
+						}
+						&:after {
+							background: #17d427;
+							border-color: #0a8014;
+							content: '';
+						}	
+					}
+
+					&.Lreason {
+						&:before {
+							background: #17d427;
+							border: 1px solid #0a8014;
+							content: 'Ok';
+							left: -32px;
+							top: 10.5px;
+						}
+						&:after {
+							background: #17d427;
+							border-color: #0a8014;
+							content: '';
+						}
+					}
+					
+					&.Lalcada {
+						&:before {
+							background: #17d427;
+							border: 1px solid #0a8014;
+							content: 'Ok';
+							left: -32px;
+							top: 10.5px;
+						}
+						&:after {
+							background: #17d427;
+							border-color: #0a8014;
+							content: '';
+						}
+					}
+					
+					&.Lcomment {
+						&:before {
+							background: #17d427;
+							border: 1px solid #0a8014;
+							content: 'Ok';
+							left: -32px;
+							top: 19.5px;
+						}
+
+						&:after {
+							background: #17d427;
+							border-color: #0a8014;
+							content: '';
+						}
+					}
+				}
+			}
+
+			&.error {
+				& input,
+				select {
+					border-color: #f00;
+				}
+
+				&:before {
+					@include icon-get('close-icon');
+					color: #f00;
+					font-size: 7px;
+					position: absolute;
+					right: 13px;
+					top: 18px;
+				}
+			}
+
+			&.previouOrderId,
+			&.company,
+			&.reason,
+			&.alcada,
+			&.comment {
+				display: none;
+				position: relative;
+			}
+
+			&:after {
+				clear: both;
+				content: '';
+				display: block;
+			}
+
+			&.company,
+			&.reason,
+			&.alcada,
+			&.comment {
+				&.load {
+					&:before {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

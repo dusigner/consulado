@@ -89,6 +89,7 @@ $(window).on('load', function() {
 			// console.log(pedidoconfir);
 
 		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
+			console.log(res);
 
 			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
 			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
@@ -115,25 +116,31 @@ $(window).on('load', function() {
 
 
 		this.infoBoleto = function() {
-			var $bankInvoice = $('#print-bank-invoice');
+			var $bankInvoice = $('#app-top #print-bank-invoice');
 			if ($bankInvoice.length > 0) {
 				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
 
 				$('.cconf-payment article.fl .lh-copy').append($bankInvoice.clone());
 			}
+
+			$(document).on('click', '.cconf-payment article.fl .lh-copy #print-bank-invoice', function(){
+				$('#app-top #print-bank-invoice .link').trigger('click');
+			});
 		};
 
 		this.orderReinput = function () {
 			var istelevendas = localStorage.getItem('istelevendas'),
-				orderformId = localStorage.getItem('orderformId'),
+				// orderformId = localStorage.getItem('orderformId'),
 				isuser = localStorage.getItem('isuser'),
 				orderR = localStorage.getItem('orderR'),
 				newOrder = $('#order-id').text(),
 				company = localStorage.getItem('company'),
-				reason = localStorage.getItem('reason');
+				reason = localStorage.getItem('reason'),		
+				alcada = localStorage.getItem('alcada'),
+				obsUser = localStorage.getItem('obsUser');
+			
 
-
-			if (istelevendas !== null) {
+			if(istelevendas !== null){		
 
 
 				// concatena as variaveis no date
@@ -143,6 +150,8 @@ $(window).on('load', function() {
 					'newOrder': newOrder,
 					'orderReinput': orderR,
 					'userTelesales': istelevendas,
+					'alcada': alcada,
+					'obsUser': obsUser,
 					'reason': reason
 				};
 
@@ -151,19 +160,24 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function () {						
+					success: function (success) {
+						console.info('success', success);
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
 						localStorage.removeItem('orderR');
 						localStorage.removeItem('company');
 						localStorage.removeItem('reason');
+						localStorage.removeItem('obsUser');
+						localStorage.removeItem('alcada');
 					},
 					error: function (error) {
 						console.info('error; ' + error);
 					}
 				});
-
+				
+			}else {
+				console.info('nao tem o localStorage');
 			}
 		};
 
