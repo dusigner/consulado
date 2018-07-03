@@ -33,6 +33,7 @@
 @import 'components/produto/selos';
 @import 'components/mod-prateleira';
 @import 'pages/product';
+@import 'components/checkout/reinput';
 
 .loading-bg {
     margin-top: 0;
@@ -631,123 +632,9 @@ body[class*='consulempresa'] {
     }
 }
 
-body.body-cart {
-    .fieldsReinput {
-        display: none;
-    }
-}
+
 
 body.body-order-form {
-
-    .fieldsReinput {
-        border: 3px solid #f4f2f1;
-        display: block;
-        margin-top: 15px;
-        .isReinput {
-            input {
-                height: 20px;
-                margin-left: 10px;
-                margin-top: 0;
-                width: 20px;
-                &:before {
-                    background: #fff;
-                    border: 1px solid #ccc;
-                    content: '';
-                    display: block;
-                    height: 20px;
-                    width: 20px;
-                }
-                &:checked {
-                    &:before {
-                        background: #f35216;
-                        border: 1px solid #f35216;
-                    }
-                    &:after {
-                        @include icon-get('check-mark');
-                        color: #fff;
-                        font-size: 12px;
-                        left: 3px;
-                        position: relative;
-                        top: -18px;
-                    }
-                }
-            }
-        }
-        li {
-            display: block;
-            list-style: none;
-            padding: 10px;
-            input,
-            select {
-				border: 1px solid #ccc;
-				box-shadow: none;
-                display: inline;
-                float: right;
-                height: 25px;
-				outline: none;
-                width: 55%;
-            }
-            label {
-                display: block;
-                float: left;
-                text-align: left;
-                width: 45%;
-            }
-            &.load {
-
-				& input,
-				select {
-					border-color: #94bc42;
-				}
-
-                &:before {
-                    @include icon-get('check-mark');
-                    color: #94bc42;
-                    font-size: 7px;
-                    position: absolute;
-                    right: 13px;
-                    top: 18px;
-				}
-
-			}
-			&.error {
-
-				& input,
-				select {
-					border-color: #f00;
-				}
-
-                &:before {
-                    @include icon-get('close-icon');
-                    color: #f00;
-                    font-size: 7px;
-                    position: absolute;
-                    right: 13px;
-                    top: 18px;
-				}
-            }
-            &.previouOrderId,
-            &.company,
-            &.reason {
-                display: none;
-                position: relative;
-            }
-            &:after {
-                clear: both;
-                content: '';
-                display: block;
-			}
-			&.company,
-            &.reason {
-
-                &.load {
-					&:before {
-						display: none;
-					}
-				}
-            }
-        }
-    }
 
     .vtex-front-messages-placeholder-opened.delivery {
 		button.close {
