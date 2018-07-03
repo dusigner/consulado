@@ -99,11 +99,11 @@
 				font-style: italic;
 				height: 45px;
 				margin-right: 15px;
-				max-width: 235px;
+				max-width: 150px;
 				outline: none;
 				padding: 0 20px;
 				vertical-align: top;
-				width: 32%;
+				width: 100%;
 
 				&.category {
 					display: none;
@@ -111,6 +111,7 @@
 
 				@include breakpoint(1182px, 'max') { width: 24%; }
 				@include breakpoint(768px, 'max') {
+					margin-bottom: 1rem;
 					max-width: 100%;
 					width: 100% !important;
 				}
@@ -119,7 +120,7 @@
 			.select-category {
 
 				cursor: pointer;
-				max-width: 348px;
+				max-width: 340px;
 				position: relative;
 
 				span {
@@ -305,6 +306,75 @@
 				&.error {
 					background: #fff0f0!important;
 					border-color: #f49a9a!important;
+				}
+			}
+
+			.campo-checkbox {
+				border: none;
+				display: inline-block;
+				margin: 0;
+				padding: 8px 0;
+				position: relative;
+				vertical-align: middle;
+				input[type=checkbox] {
+					display: none;
+					&:checked + label {
+						&:before {
+							background-color: #f47921;
+							height: 9px;
+							margin-left: 3px;
+							width: 9px;
+							z-index: 1;
+						}
+					}
+					&.error + label {
+						color: #f49a9a;
+						&:after {
+							border: 3px solid #f49a9a;
+						}
+						a {
+							color: #f49a9a;
+						}
+					}
+				}
+				label {
+					@include breakpoint(768px, 'max') {
+						color: #333333;
+						width: 100%;
+						a {
+							color: #333333;
+						}
+					}
+					color: #FFFFFF;
+					font-size: 12px;
+					display: inline-block;
+					line-height: 10px;
+					margin: 0 10px;
+					padding-left: 25px;
+					position: relative;
+					text-align: left;
+					width: 150px;
+					a {
+						color: #FFFFFF;
+						text-decoration: underline;
+					}
+					&:after,
+					&:before {
+						content: " ";
+						display: inline-block;
+						left: 0;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						visibility: visible;
+					}
+					&:after {
+						background-color: #fff;
+						border: 1px solid #736c6b;
+						border-radius: 3px;
+						height: 15px;
+						width: 15px;
+					}
 				}
 			}
 
