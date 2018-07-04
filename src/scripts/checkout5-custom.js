@@ -32,6 +32,7 @@ $(window).on('load', function() {
 
 	//load Nitro Lib
 	require('vendors/nitro');
+	require('vendors/vtex-modal');
 
 	require('expose?store!modules/store/store');
 
