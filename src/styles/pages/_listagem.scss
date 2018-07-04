@@ -27,6 +27,13 @@ body.listagem {
 	}
 }
 
+
+body.busca {
+	.btn-comparar {
+		display: none;
+	}
+}
+
 .listagem {
 	.banner-principal { min-height: auto; }
 
