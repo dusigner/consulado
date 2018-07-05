@@ -56,7 +56,7 @@ Nitro.setup(['facebook-init'], function () {
 
 		dataLayer.push({
 			event: 'generic',
-			category: 'Landing Aniversário',
+			category: 'Página Aniversário',
 			action: 'Assistir ao vídeo',
 			label: 'Play video '+ $('.slick-dots li.slick-active button').text()
 		});
@@ -68,7 +68,7 @@ Nitro.setup(['facebook-init'], function () {
 
 			dataLayer.push({
 				event: 'generic',
-				category: 'Landing Aniversário',
+				category: 'Página Aniversário',
 				action: 'Categoria de Vídeo',
 				label: 'Video '+ $(this).find('button').text()
 			});	
@@ -85,4 +85,32 @@ Nitro.setup(['facebook-init'], function () {
 			});
 		});
 	});
+
+	$('body').on('click', '.new-showcase .detalhes > a', function(){
+		dataLayer.push({
+			event: 'generic',
+			category: 'Página Aniversário',
+			action: 'Vitrine Superior',
+			label: $(this).attr('title')
+		});
+	});
+
+	$('body').on('click', '.eletrodomesticos > li > a', function(){
+		dataLayer.push({
+			event: 'generic',
+			category: 'Página Aniversário',
+			action: 'Seletor de Categorias',
+			label: $(this).attr('title')
+		});
+	});
+
+	$('body').on('click', '.result-filter .detalhes a', function(){
+		dataLayer.push({
+			event: 'generic',
+			category: 'Página Aniversário',
+			action: 'Vitrine Inferior',
+			label: $(this).attr('title')
+		});
+	});
+
 });
