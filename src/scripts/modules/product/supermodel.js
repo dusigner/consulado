@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, dust */
 'use strict';
 
-require('../../../templates/supermodel.html');
+require('Dust/supermodel.html');
 
 Nitro.module('supermodel', function() {
 

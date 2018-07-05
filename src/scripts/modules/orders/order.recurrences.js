@@ -3,12 +3,12 @@
 require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
-require('templates/orders/recurrence/recurrences.html');
-require('templates/orders/recurrence/recurrenceStatus.html');
-require('templates/orders/recurrence/recurrenceData.html');
-require('templates/orders/recurrence/recurrenceToggle.html');
-require('templates/orders/recurrence/recurrencePayments.html');
-require('templates/orders/recurrence/recurrenceAddresses.html');
+require('Dust/orders/recurrence/recurrences.html');
+require('Dust/orders/recurrence/recurrenceStatus.html');
+require('Dust/orders/recurrence/recurrenceData.html');
+require('Dust/orders/recurrence/recurrenceToggle.html');
+require('Dust/orders/recurrence/recurrencePayments.html');
+require('Dust/orders/recurrence/recurrenceAddresses.html');
 
 var CRM = require('modules/store/orders-crm');
 

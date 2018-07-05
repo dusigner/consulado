@@ -7,7 +7,7 @@
 
 'use strict';
 
-require('../../../templates/specifications.html');
+require('Dust/specifications.html');
 
 Nitro.module('specifications', function() {
 

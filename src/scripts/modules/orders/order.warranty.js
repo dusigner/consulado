@@ -3,13 +3,13 @@ var CRM = require('modules/store/crm'),
 	PDVBox = require('modules/store/crm-pdvbox'),
 	ModalGae = require('modules/orders/order.modal.gae');
 
-require('../../../templates/orders/warrantySpare.btnWarranty.html');
-require('../../../templates/orders/warrantySpare.btnDownloadWarranty.html');
-require('../../../templates/orders/warrantySpare.btnDownloadPdvBox.html');
+require('Dust/orders/warrantySpare.btnWarranty.html');
+require('Dust/orders/warrantySpare.btnDownloadWarranty.html');
+require('Dust/orders/warrantySpare.btnDownloadPdvBox.html');
 
-require('../../../templates/orders/warrantySpare.modal-add.html');
-require('../../../templates/orders/warrantySpare.modal-confirm.html');
-require('../../../templates/orders/warrantySpare.modal-payment.html');
+require('Dust/orders/warrantySpare.modal-add.html');
+require('Dust/orders/warrantySpare.modal-confirm.html');
+require('Dust/orders/warrantySpare.modal-payment.html');
 
 var Warranty = {
 	boxOrder: {},

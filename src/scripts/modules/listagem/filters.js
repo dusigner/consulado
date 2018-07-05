@@ -3,9 +3,9 @@
 var helper = require('modules/filters-helper');
 var noUiSlider = require('vendors/nouislider');
 
-require('../../../templates/listagem/range-price.html');
-require('../../../templates/listagem/range.html');
-require('../../../templates/listagem/filter-submenu.html');
+require('Dust/listagem/range-price.html');
+require('Dust/listagem/range.html');
+require('Dust/listagem/filter-submenu.html');
 
 require('modules/listagem/order-by');
 

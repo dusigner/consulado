@@ -2,14 +2,14 @@
 
 var CRM = require('modules/store/crm');
 var ORDERCRM = require('modules/store/orders-crm');
-require('../../../templates/gae-compra-interno.html');
-require('../../../templates/gae-compra-interno/priceInfo.html');
-require('../../../templates/gae-compra-interno/productInfo.html');
-require('../../../templates/gae-compra-interno/warrantyInfo.html');
-require('../../../templates/gae-compra-interno/warrantySpare.confirm.html');
-require('../../../templates/gae-compra-interno/warrantySpare.emptyWarranty.html');
-require('../../../templates/gae-compra-interno/warrantySpare.payment.html');
-require('../../../templates/gae-compra-interno/warrantySpare.profile.html');
+require('Dust/gae-compra-interno.html');
+require('Dust/gae-compra-interno/priceInfo.html');
+require('Dust/gae-compra-interno/productInfo.html');
+require('Dust/gae-compra-interno/warrantyInfo.html');
+require('Dust/gae-compra-interno/warrantySpare.confirm.html');
+require('Dust/gae-compra-interno/warrantySpare.emptyWarranty.html');
+require('Dust/gae-compra-interno/warrantySpare.payment.html');
+require('Dust/gae-compra-interno/warrantySpare.profile.html');
 
 Nitro.module('order.warranty.gae', function() {
 	var self = this,

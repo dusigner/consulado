@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, dust: true, dust: true, _: true, vtexjs:true */
 'use strict';
 
-require('../../../templates/checkout.recurrenceSteps.html');
-require('../../../templates/checkout.recurrenceModal.html');
+require('Dust/checkout.recurrenceSteps.html');
+require('Dust/checkout.recurrenceModal.html');
 
 Nitro.module('checkout.recurrence', function() {
 

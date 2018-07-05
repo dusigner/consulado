@@ -1,12 +1,12 @@
 'use strict';
 
 // Dust Templates
-require('templates/chaordic/resultado-chaordic.html');
-require('templates/chaordic/suggestions-chaordic.html');
-require('templates/chaordic/orderby-chaordic.html');
-require('templates/chaordic/filters-chaordic.html');
-require('templates/chaordic/prateleira-busca-chaordic.html');
-require('templates/chaordic/pagination-chaordic.html');
+require('Dust/chaordic/resultado-chaordic.html');
+require('Dust/chaordic/suggestions-chaordic.html');
+require('Dust/chaordic/orderby-chaordic.html');
+require('Dust/chaordic/filters-chaordic.html');
+require('Dust/chaordic/prateleira-busca-chaordic.html');
+require('Dust/chaordic/pagination-chaordic.html');
 
 var Uri = require('vendors/Uri');
 // var filters = require('modules/listagem/filters');

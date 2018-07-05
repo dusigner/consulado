@@ -4,22 +4,22 @@
 
 
 //Templates dust usados
-require('../../templates/chaordic/shelf-content-placeholder-product.html');
-require('../../templates/chaordic/shelf-content-placeholder-default.html');
-require('../../templates/chaordic/shelf-content-placeholder-ultimateBuy.html');
-require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-history-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
-require('../../templates/chaordic/shelf-content-placeholder.html');
-require('../../templates/chaordic/shelf-content-placeholder-cart.html');
-require('../../templates/chaordic/shelf-content-placeholder-cart-mostPopular.html');
-require('../../templates/chaordic/chaordic-unavailable.html');
-require('../../templates/chaordic/chaordic-price.html');
-require('../../templates/chaordic/chaordic-voltage.html');
-require('../../templates/chaordic/chaordic-hightlight.html');
+require('Dust/chaordic/shelf-content-placeholder-product.html');
+require('Dust/chaordic/shelf-content-placeholder-default.html');
+require('Dust/chaordic/shelf-content-placeholder-ultimateBuy.html');
+require('Dust/chaordic/shelf-content-placeholder-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-history-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-product-history-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
+require('Dust/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
+require('Dust/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
+require('Dust/chaordic/shelf-content-placeholder.html');
+require('Dust/chaordic/shelf-content-placeholder-cart.html');
+require('Dust/chaordic/shelf-content-placeholder-cart-mostPopular.html');
+require('Dust/chaordic/chaordic-unavailable.html');
+require('Dust/chaordic/chaordic-price.html');
+require('Dust/chaordic/chaordic-voltage.html');
+require('Dust/chaordic/chaordic-hightlight.html');
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {

@@ -3,13 +3,13 @@
 require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
-require('templates/myorders.html');
-require('templates/orders/orderPedidoStates.html');
-require('templates/orders/orderPackageStates.html');
-require('templates/orders/orderPackageItems.html');
-require('templates/orders/orderProductInfos.html');
-require('../../../templates/orders/modalHistorico.html');
-require('../../../templates/orders/modalInvoice.html');
+require('Dust/myorders.html');
+require('Dust/orders/orderPedidoStates.html');
+require('Dust/orders/orderPackageStates.html');
+require('Dust/orders/orderPackageItems.html');
+require('Dust/orders/orderProductInfos.html');
+require('Dust/orders/modalHistorico.html');
+require('Dust/orders/modalInvoice.html');
 
 var Clipboard = require('clipboard');
 
