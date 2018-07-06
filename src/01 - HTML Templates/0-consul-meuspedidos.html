@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags/>
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="//whirlpool.vteximg.com.br/arquivos/consul2-myorders.css" />
+</head>
+<body class="meuspedidos">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!--Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+<!-- Main -->
+	<section class="section-orders">
+		<div class="main clearfix">
+			<!-- <vtex.cmc:orderList/> -->
+			<div class="container">
+				<div class="myorders__page">
+					<div class="hide-small hide-extra-small">
+						<h2 class="myorders__page-title js-page-title">Pedidos Feitos</h2>
+					</div>
+					
+					<!-- BANNER GREVE CAMINHONEIROS -->
+					<!-- <img src="/arquivos/CNS_CNSX-2643_GREVE_BANNER_2.jpg" alt="Greve" class="hide-extra-small" style="margin: 0 auto; width: 60%" /> -->
+					<!-- BANNER GREVE CAMINHONEIROS -->
+					
+					<div>
+						<ul class="myorders__page-control">
+						
+						    <!-- BANNER GREVE CAMINHONEIROS MOBILE -->
+							<!--<img src="/arquivos/CNS_CNSX-2643_MOBILE_GREVE_BANNER_2.jpg" alt="Greve" class="show-extra-small" style="margin: 0 auto; width: 100%" /><br />-->
+							<!-- BANNER GREVE CAMINHONEIROS MOBILE -->
+						
+							<li class="myorders__page-item"><a class="myorders__page-link js-link-orders" data-link="orders" href="javascript:void(0);">Pedidos Feitos</a></li>
+							<li class="myorders__page-item"><a class="myorders__page-link js-link-orders" data-link="recurrences" href="javascript:void(0);">Recorrências</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="myorders container" id="myorders">
+				<div class="js-myorders-generic-render" id="orders-render"></div>
+				<div class="js-myorders-generic-render hide" id="recurrences-render"></div>
+			</div>
+		</div>
+	</section>
+	<!-- /Main -->
+
+	<!-- Modal historico detalhado -->
+	<div id="mask"></div>
+	<!-- Modal historico detalhado -->
+
+	<div id="order-modals" class="hide">
+		<div id="cancel-item">
+			<div>
+				<h3 class="color-green">Por que deseja cancelar seu pedido?</h3>
+				<form class="cancel-order js-form-cancel">
+					<div class="cancel__options">
+						<label>
+							<input type="radio" name="reason" value="Não quero mais este produto." /> Não quero mais este produto.
+						</label>
+						<label>
+							<input type="radio" name="reason" value="Comprei sem querer." /> Comprei sem querer.
+						</label>
+						<label>
+							<input type="radio" name="reason" value="A entrega vai demorar demais." /> A entrega vai demorar demais.
+						</label>
+						<label>
+							<input type="radio" name="reason" value="Encontrei um preço melhor em outro lugar." /> Encontrei um preço melhor em outro lugar.
+						</label>
+						<label>
+							<input type="radio" name="reason" value="Prefiro não informar." /> Prefiro não informar.
+						</label>
+						<label>
+							<input type="radio" name="reason" value="" /> Outro
+							<textarea name="reason" id="" placeholder="Descreva brevemente qual o motivo para o cancelamento."></textarea>
+						</label>
+					</div>
+					<div class="float-right">
+						<p class="weight-semibold color-green text-right">Após confirmar, o cancelamento não pode ser desfeito.</p>
+						<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO CANCELAR</span></a>
+						<button type="submit" class="secondary-button purple-button inverted-button"><span>DESEJO CANCELAR PEDIDO</span></button>
+					</div>
+				</form>
+			</div>
+			<div>
+				<p class="js-feedback-account">Solicitação de cancelamento realizada!</p>
+			</div>
+		</div>
+
+		<div id="pause-recurrence">
+			<div>
+				<p>Deseja desativar todos itens de recorrência?</p>
+				<div>
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO DESATIVAR</span></a>
+					<a href="javascript:void(0)" class="secondary-button purple-button inverted-button js-pause-recurrence" data-status="INACTIVE"><span>DESATIVAR RECORRÊNCIAS</span></a>
+				</div>
+			</div>
+			<div>
+				<p class="js-feedback-account">Recorrências desativadas</p>
+			</div>
+		</div>
+
+		<div id="unpause-recurrence">
+			<div>
+				<p>Deseja ativar com todos itens de recorrência?</p>
+				<div>
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO ATIVAR</span></a>
+					<a href="javascript:void(0)" class="secondary-button purple-button inverted-button js-unpause-recurrence" data-status="ACTIVE"><span>ATIVAR RECORRÊNCIAS</span></a>
+				</div>
+			</div>
+			<div>
+				<p class="js-feedback-account">Recorrências ativadas</p>
+			</div>
+		</div>
+
+		<div id="cancel-recurrence-item">
+			<div>
+				<p class="color-green text-center">Tem certeza que deseja excluir a recorrência para</p>
+				<div class="recurrence__modal-item clearfix">
+					<div class="recurrence__modal-image"></div>
+					<div class="recurrence__modal-name"></div>
+				</div>
+				<div class="recurrence__modal-info color-green text-center">
+					<p class="no-margin">Com o período de entrega a cada <span class="recurrence__modal-period weight-semibold"></span></p>
+					<p class="no-margin">Data da próxima entrega: <span class="recurrence__modal-next weight-semibold"></span></p>
+					<em class="text-center">Esta ação não pode ser desfeita.</em>
+				</div>
+				<div class="ctas text-center">
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO EXCLUIR</span></a>
+					<a href="javascript:void(0)" class="secondary-button purple-button inverted-button js-cancel-recurrence-item"><span>EXCLUIR ITEM</span></a>
+				</div>
+			</div>
+			<div>
+				<p class="js-feedback-account">Exclusão da recorrência foi realizada!</p>
+			</div>
+		</div>
+
+		<div id="pause-recurrence-item">
+			<div>
+				<p class="color-green text-center">Tem certeza que deseja desativar a recorrência para</p>
+				<div class="recurrence__modal-item clearfix">
+					<div class="recurrence__modal-image"></div>
+					<div class="recurrence__modal-name"></div>
+				</div>
+				<div class="recurrence__modal-info color-green text-center">
+					<p class="no-margin">Com o período de entrega a cada <span class="recurrence__modal-period weight-semibold"></span></p>
+					<p class="no-margin">Data da próxima entrega: <span class="recurrence__modal-next weight-semibold"></span></p>
+					<em class="text-center">Você pode ativar essa recorrência novamente a qualquer momento.</em>
+				</div>
+				<div class="ctas text-center">
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO DESATIVAR</span></a>
+					<a href="javascript:void(0)" class="secondary-button purple-button inverted-button js-pause-recurrence" data-status="INACTIVE"><span>DESATIVAR ITEM</span></a>
+				</div>
+			</div>
+			<div>
+				<p class="js-feedback-account">Desativação da recorrência foi realizada!</p>
+			</div>
+		</div>
+
+		<div id="unpause-recurrence-item">
+			<div>
+				<p class="color-green text-center">Você está ativando a recorrência</p>
+				<div class="recurrence__modal-item clearfix">
+					<div class="recurrence__modal-image"></div>
+					<div class="recurrence__modal-name"></div>
+				</div>
+				<div class="recurrence__modal-info color-green text-center">
+					<p class="no-margin">Com o período de entrega a cada <span class="recurrence__modal-period weight-semibold"></span></p>
+					<p class="no-margin">Data da próxima entrega: <span class="recurrence__modal-next weight-semibold"></span></p>
+				</div>
+				<div class="ctas text-center">
+					<a href="javascript:void(0)" class="primary-button purple-button js-modal-whp-close"><span>NÃO ATIVAR</span></a>
+					<a href="javascript:void(0)" class="secondary-button purple-button inverted-button js-unpause-recurrence" data-status="ACTIVE"><span>ATIVAR</span></a>
+				</div>
+			</div>
+			<div>
+				<p class="js-feedback-account">Recorrência Ativada!</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script src="//whirlpool.vteximg.com.br/arquivos/consul2-myorders.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="//whirlpool.vteximg.com.br/arquivos/consul2-institucional.css" />
+</head>
+<body data-controller="institucional">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<div class="container list-container clearfix">
+		<div class="row gutters">
+
+			<!-- Sidebar -->
+			<div class="col-3 inst-sidebar">
+				<strong class="lat-menu-title">Institucional</strong>
+				<ul class="navigation">
+					<li><a href="http://www.consul.com.br/sobreaconsul/" title="Sobre a Consul" target="_blank">Sobre a Consul</a></li>
+					<li><a href="https://consul.zendesk.com/hc/pt-br/articles/206634753" title="Política de privacidade" target="_blank">Política de privacidade</a></li>
+					<li><a href="http://www.consul.com.br/termos/" title="Termos de Uso" target="_blank">Termos de Uso</a></li>
+					<li><a href="/institucional/acessibilidade" title="Acessibilidade">Acessibilidade</a></li>
+				</ul>
+			</div>
+			<!-- /Sidebar -->
+
+			<!-- Content -->
+			<div class="col-9 inst-content">
+				<h1 class="title-page"><vtex:contentPlaceHolder id="Titulo" /></h1>
+				<section><vtex:contentPlaceHolder id="Conteudo" /></section>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+</html>

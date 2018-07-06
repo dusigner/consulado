@@ -1,0 +1,95 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<article class="box-produto $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
+  <div class="detalhes">
+    <a href="$uri" title="$escapedName" class="image">
+      <span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span>
+      <span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span>
+      <span class="img backup">$product.GetImageTag(345, 345)</span>
+      <!--Loja PF-->
+      $product.ProductField(700)
+      <!--/Loja PF-->
+      <!--Loja PJ-->
+      <!--$product.ProductField(5)-->
+      <!--/Loja PJ-->
+      
+      <div class="FlagsHightLight">
+        $product.DiscountHightLight
+        $product.HightLight
+      </div>
+    </a>
+
+    <a href="$uri" title="$escapedName" class="prod-info">
+
+      <h3 class="nome">$product.Name 
+        <span>
+          <!--Loja PF-->
+          $product.ProductField(770)
+          <!--/Loja PF-->
+          <!--Loja PJ-->
+          <!--$product.ProductField(168)-->
+          <!--/Loja PJ-->
+        </span>
+      </h3>
+
+      <div class="features">
+        <!-- QA -->
+        <!--$product.ProductField(112)-->
+        <!-- /QA -->
+        <!-- PROD -->
+        $product.ProductField(833)
+        <!-- /PROD -->
+      </div>
+      
+      <!-- Rating TrustVox -->
+      <div data-trustvox-product-code="$product.Id" style="display: none;"></div>
+      <!-- Rating TrustVox -->
+      
+      <!-- Yourviews - estrelas -->
+      <div class="yv-review-quickreview hide" value="$id"></div>
+      <!-- Yourviews - estrelas -->
+
+      #if ($product.IsInStock)
+        <div class="price">
+          <p class="de">
+            #if ($product.HasBestPrice)
+               <span class="txtDe">De: </span> <span class="val">$product.ListPrice</span>
+            #end
+          </p>
+          
+          <p class="por">
+            <span class="txtPor">Por: </span> <span class="val">$product.BestPrice</span>
+            <span class="off"></span>
+          </p>
+          
+            <p class="adicional">
+            	#if ($product.NumbersOfInstallment == 1)
+            		<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
+            	#else
+            		<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
+            	#end
+            
+            	#if ($product.NumbersOfInstallment > 1)
+            		<span class="total-parcelado">
+            			<span class="total-parcelado__txt">Total parcelado: </span>
+            			<span class="val"> $product.BestPrice</span>
+            		</span>
+            	#end
+            </p>
+
+          <p class="por-boleto hide">
+            <span class="txtPor">Por: </span> <span class="val">$product.BestPrice<span class="cash"> à vista no boleto</span></span>
+            <span class="off"></span>
+          </p>
+          <p class="discount-boleto"></p>
+        </div>
+      #else
+        <p class="indisponivel">Produto indisponível</p>
+      #end
+    </a>
+  </div>
+  <div class="btn-comparar form-check-inline">$product.Compare</div>
+  <a href="$product.CategoryLink" class="department-nav">Ver mais em <span>$product.CategoryName</span></a>
+</article>

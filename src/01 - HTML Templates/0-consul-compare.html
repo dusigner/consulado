@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="/arquivos/consul2-comparador.css" />
+</head>
+<body data-controller="compare">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<div class="container clearfix">
+
+		<div class="compare-produtos-wrapper">
+			<vtex.cmc:ProductComparison ShelfLayoutId="33be8da0-7037-4956-980e-9cbf82b5d31b" />
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	
+	<script src="/arquivos/consul2-comparador.min.js"></script>
+</body>
+</html>

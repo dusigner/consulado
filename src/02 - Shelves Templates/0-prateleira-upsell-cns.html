@@ -1,0 +1,122 @@
+<div class="icon-open-upgrade"></div>
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+
+<script>
+	window.upsellProduct = {
+		id        : '$id',
+		name      : '$product.Name',
+		price     : '$product.BestPrice',
+		// isInStock : #if ($product.IsInStock) true #else false #end,
+		uri: '$uri'
+	};
+</script>
+
+<div class="hide skureferenc">$product.ProductField(770)</div>
+
+<!-- Modal upgrade -->
+	  <div id="modal-produto-upgrade$id" class="modal-upgrade" data-title="DÊ UM UPGRADE NO SEU PRODUTO" style="display:none">
+		  <h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
+		  <span>Confira os diferenciais de cada um dos modelos:</span>
+		  <div class="corpo-produtos-modal">
+			  <div class="oportunidadePro">
+				  <h2>OPORTUNIDADE</h2>
+				  $product.GetImageTag(345, 345)
+				  <h2>$product.Name - <strong> </strong></h2>
+				  <span>$product.BestPrice</span>
+			  </div>
+			  <div class="voce-esta-vendo">
+				  <h2>VOCÊ ESTÁ VENDO ESTE PRODUTO</h2>
+				  <img src="https://dummyimage.com/420x420/e3e3e3/3333.jpg&text=Sem+imagem" alt="geladeira">
+				  <h2>----</h2>
+				  <span>R$ 0,00</span>
+			  </div>
+			  <div class="especificao-produtos">
+				  <div class="espe-oportunidade">
+					  <ul>
+						  <li class="licapacidade">$product.ProductField(235)</li>
+						  <li class="lipainel">$product.ProductField(258)</li>
+						  <li class="litemperatura">$product.ProductField(803)</li>
+					  </ul>
+				  </div>
+				  <div class="espe-voce-esta-vendo">
+						  <ul>
+							  <li class="licapacidadea"></li>
+							  <li class="lipainela"></li>
+							  <li class="litemperaturaa"></li>
+						  </ul>
+				  </div>
+				  <div class="descricao-espe">
+						  <ul>
+							  <li>CAPACIDADE</li>
+							  <li>PAINEL</li>
+							  <li>FORMATO</li>
+						  </ul>
+				  </div>
+			  </div>
+		  </div>
+	  
+		  <div class="aceitarounao">
+			  <span>Deseja fazer o upgrade de produto?</span>
+			  <ul>
+				  <li><a class="close">NÃO, obrigado</a></li>
+				  <li><a href="$uri" class="ir-para-produto">SIM, IR PARA PRODUTO</a></li>
+			  </ul>
+		  </div>
+	  </div>
+	  <!-- Modal upgrade  -->
+	  
+	  
+	  
+	  <section class="product-upgrade $id hide">
+	  
+	            <div class="upgrade-mobile hide">
+					<i class="close-fixed"></i>
+					<h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
+					<div class="product-mobile">
+							$product.GetImageTag(90, 90)
+						<div class="info-product-mobile">
+							<span>POR + R$0,00</span>
+							<h3>$product.Name - <strong>CÓDIGO</strong></h3>
+							<strong class="price-mobile-upgrade">$product.BestPrice</strong>
+						</div>
+
+						<div class="especifi-product-mobile">
+							<ul>
+								<li class="licapacidadem"><strong>CAPACIDADE</strong><span>$product.ProductField(235)</span></li>
+								<li class="lipainelm"><strong>PAINEL</strong><span>$product.ProductField(258)</span></li>
+								<li class="litemperaturam"><strong>FORMATO</strong><span>$product.ProductField(803)</span></li>
+							</ul>
+						</div>
+
+					</div>
+					<div class="aceito-mobile">
+						<a class="btn-interessado-upgrade-mobile" href="$uri">ESTOU INTERESSADO</a>
+						<a class="btn-interessado-downgrade-mobile hide" href="$uri">VER PRODUTO NOVAMENTE</a>
+					</div>
+				</div>
+	  
+	  
+			  <div class="container">
+			      <i class="close-fixed"></i>
+				  <div class="textupgrade">
+					  <h2>
+						  <span>POR + R$0,00</span>
+						  dê um <strong>upgrade</strong> no seu produto
+					  </h2>
+					  <p>
+                         Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
+					  </p>
+				  </div>
+		  
+				  <div class="novo-product">
+					  <div class="img-product">$product.GetImageTag(90, 90)</div>
+					  <div class="title-price-upgrade">
+						  <p>$product.Name - <strong></strong></p>
+						  <span>$product.BestPrice</span>
+					  </div>
+					  <a class="btn-interessado-upgrade" data-id="$id">estou interessado</a>
+					  <a class="btn-interessado-downgrade hide" href="$uri">VER PRODUTO NOVAMENTE</a>
+				  </div>
+			  </div>
+	  </section>

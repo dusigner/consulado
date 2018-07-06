@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul</title>
+
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+
+	<link rel="stylesheet" href="/arquivos/consul-landing-combos.css" />
+</head>
+
+<body data-controller="landing-combos" class="landing-combos">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	<!-- Header -->
+	<section id="header">
+		<vtex:template id="0-consul-header" />
+	</section>
+	<!-- /Header -->
+
+
+	<section id="banner-combos" class="banner-combos">
+		<figure>
+			<img class="banner-combos__image" src="/arquivos/cns-landing-combos-banner-bg.jpg" />
+			<img class="banner-combos__image-mobile" src="/arquivos/cns-landing-combos-banner-bg.jpg" />
+		</figure>
+	</section>
+
+	<!-- [ Combos ] -->
+	<section id="combos" class="combos">
+		<div class="combos-header">
+			<!-- Filters -->
+			<div class="container combos__filter">
+				<div class="combos-filter">
+					<button class="combos-filter__buttom combos-filter__buttom--filter">buscar combos com</button>
+					<div class="combos-filter__category combos-category">
+						<button class="combos-filter__buttom combos-filter__buttom--filter combos-filter__buttom--back">filtrar combos</button>
+						<div class="combos-category__title">Selecione os produtos que você deseja ver nos combos:</div>
+						<div class="combos-category__conteiner">
+						</div>
+						<div class="combos-filter__buttom-container">
+							<button class="combos-filter__buttom combos-filter__buttom--clear secondary-button purple-l-button">
+								<span>limpar filtro</span>
+							</button>
+							<button class="combos-filter__buttom combos-filter__buttom--search secondary-button">
+								<span>buscar combos</span>
+							</button>
+						</div>
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="col-12 col-md-12">
+						<div class="combos-bread-crumb">
+							<ul class="combos-bread-crumb__items"></ul>
+						</div>
+					</div>
+				</div>
+	
+			</div>
+			<!-- Filters -->
+	
+			<!-- Title -->
+			<div class="container combos-page__title">
+				<h2 class="color-purple weight-light">Combinamos os melhores produtos para você levar junto e comprar com ainda mais desconto!</h2>
+			</div>
+			<!-- Title -->
+		</div>
+
+		<!-- Prateleira -->
+		<div class="container combos__preteleira"></div>
+		<!-- Prateleira -->
+	</section>
+
+	<div class="hide">
+
+
+		<vtex:contentPlaceHolder id="Prateleira Combo" />
+	</div>
+
+	<div class="combos-quick-view modal-quick-view">
+		<div class="modal-quick-view__container container modal-quick-view__container--product-list">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<div class="modal-quick-view__header">
+						<button class="modal-quick-view__button-close">
+							<i class="icon icon-close-thin"></i>
+						</button>
+					</div>
+					<div class="modal-quick-view__content">
+						<h2 class="combos-quick-view__title"></h2>
+						<div class="combos-quick-view__header">
+							<div class="combos-product-list">
+								<div class="combos-product-list__title">Confira os produtos do seu combo</div>
+								<ul class="combos-product-list__items">
+								</ul>
+							</div>
+							<span class="combos-quick-view__block"></span>
+							<div class="combos-finalization combos-finalization--quick-view">
+
+							</div>
+						</div>
+						<div class="combos-quick-view__body product-quick-view__items">
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image"></div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options ">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">Especificações técnicas</div>
+
+										<div class="quick-view-table-specification">
+
+										</div>
+									</div>
+								</article>
+							</div>
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image">
+									</div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options ">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">
+											Especificações técnicas
+										</div>
+
+										<div class="quick-view-table-specification">
+										</div>
+									</div>
+								</article>
+							</div>
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image">
+									</div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options sku-quick-view-options--product-quick-view">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">
+											Especificações técnicas
+										</div>
+
+										<div class="quick-view-table-specification">
+
+										</div>
+									</div>
+								</article>
+							</div>
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image">
+									</div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options ">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">
+											Especificações técnicas
+										</div>
+
+										<div class="quick-view-table-specification">
+
+										</div>
+									</div>
+								</article>
+							</div>
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image">
+									</div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options ">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">
+											Especificações técnicas
+										</div>
+
+										<div class="quick-view-table-specification">
+
+										</div>
+									</div>
+								</article>
+							</div>
+
+							<div class="product-quick-view__item product-quick-view">
+								<div class="product-quick-view__container-image">
+									<div class="product-quick-view__thumbs"></div>
+									<span class="product-quick-view__image-counter"></span>
+									<div class="product-quick-view__image">
+									</div>
+								</div>
+
+								<div class="product-quick-view__container-description border-top">
+									<h2 class="product-quick-view__title">
+										<span class="product-quick-view__product-reference"></span>
+									</h2>
+									<div class="product-quick-view__review">
+										<!-- Rating TrustVox -->
+										<!-- <div data-trustvox-product-code="2000183"></div> -->
+										<!-- Rating TrustVox -->
+									</div>
+									<div class="product-quick-view__content-sku">
+										<div class="product-quick-view__price">
+										</div>
+										<div class="sku-quick-view">
+											<div class="sku-quick-view__title">Selecione a voltagem:</div>
+											<div class="sku-quick-view-options ">
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<article class="product-quick-view__content">
+									<div class="quick-view-modules">
+
+									</div>
+									<div class="quick-view-description">
+										<div class="quick-view-description__title">
+											Especificações técnicas
+										</div>
+
+										<div class="quick-view-table-specification">
+
+										</div>
+									</div>
+								</article>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-quick-view__container container modal-quick-view__container--select-voltage">
+			<div class="row">
+				<div class="col-12 col-md-12">
+					<div class="modal-quick-view__header">
+						<button class="modal-quick-view__button-close">
+							<i class="icon icon-close-thin"></i>
+						</button>
+					</div>
+					<div class="modal-quick-view__content">
+						<h2 class="combos-quick-view__title">selecionar a voltagem</h2>
+						<div class="combos-quick-view__body quick-view-select-voltage">
+							<div class="combos-quick-view__container">
+								<p style="margin: 0; color: red" class="hide js-sku-selection-error">Por favor, selecione a voltagem de todos os produtos que deseja comprar</p>
+								<div class="quick-view-select-voltage__title">Para continuar, selecione a voltagem dos seus produtos:</div>
+								<div class="select-voltage-table">
+									<div class="select-voltage-table__header">
+										<div class="select-voltage-table__item-header">produto</div>
+										<div class="select-voltage-table__item-header">voltagem</div>
+									</div>
+									<div class="select-voltage-table__body">
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+
+										<div class="table-line">
+											<div class="table-line__column-product">
+												<div class="table-line__image-product">
+
+												</div>
+												<div class="table-line__title-product"></div>
+											</div>
+											<div class="table-line__column-sku sku-quick-view">
+												<div class="sku-quick-view-options sku-quick-view-options--select-voltage">
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="quick-view-select-voltage__footer">
+									<button class="quick-view-select-voltage__button select-voltage__button--back secondary-button purple-l-button">
+										<span>voltar</span>
+									</button>
+									<button class="quick-view-select-voltage__button select-voltage__button--continue primary-button">
+										<span>continuar</span>
+									</button>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="mask-modal-combos"></div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script type="text/javascript" src="/arquivos/consul-landing-combos.min.js"></script>
+</body>
+
+</html>
