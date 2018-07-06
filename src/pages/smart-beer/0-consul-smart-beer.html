@@ -5,18 +5,8 @@
 	<title>Consul</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-
-	<!-- @if DEBUG='development' -->
-	<!-- @include ../templates/head-vtex.html -->
-	<!-- @include ../../subtemplates/consul-head-content.html -->
-	<!-- @endif -->
-
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
-	<!-- @endif -->
-
-	<link rel="stylesheet" href="/arquivos/smart-beer.css" />
-
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/smart-beer.css?v=<!-- @echo package.version -->" />
 </head>
 
 <body data-controller="smart-beer" class="page-smartbeer">
@@ -40,15 +30,10 @@
 		<iframe width="810" height="470" src="#"></iframe>
 	</div>
 
-	<!-- @if DEBUG='development' -->
-	<!-- @include ../../subtemplates/consul-header.html -->
-	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<!-- Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
-	<!-- @endif -->
 
 	<!-- SmartBeeer Start -->
 	<main class="smart-beer" id="smart-beer">
@@ -776,8 +761,8 @@
 						<br/>
 						<p>Requisitos mínimos para instalação e correto funcionamento da sua <span class="logo-smartbeer_">smart<strong>beer_</strong></span>:</p>
 						<p>Você precisa ter um celular ou tablet com um sistema operacional Android (versão mínima 5.0) ou IOS (todas as versões);<br/>
-							Ter conexão com a internet via rede WiFi da sua casa (para fazer a instalação não é possível utilizar redes com protocolos de segurança ou que exijam check in);<br/>
-							Você precisa ter um roteador da internet com uma frequência de 2.4 GHz (seu produto não funciona se conectado a uma rede de 5 GHz). Para descobrir qual é a frequência, verifique o manual do seu roteador.</p>
+						Ter conexão com a internet via rede WiFi da sua casa (para fazer a instalação não é possível utilizar redes com protocolos de segurança ou que exijam check in);<br/>
+						Você precisa ter um roteador da internet com uma frequência de 2.4 GHz (seu produto não funciona se conectado a uma rede de 5 GHz). Para descobrir qual é a frequência, verifique o manual do seu roteador.</p>
 						<br/>
 						<p>Beba com Moderação</p>
 					</div>
@@ -808,15 +793,10 @@
 
 
 
-	<!-- @if DEBUG='development' -->
-	<!-- @include ../../subtemplates/consul-footer.html -->
-	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
-	<!-- @endif -->
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
 
@@ -825,9 +805,8 @@
 	<script src="https://tmp.pixelmort.top/js/janpaepke-ScrollMagic-ae215ee/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
 
 	<!-- <script src="https://whirlpool.vteximg.com.br/arquivos/smart-beer-custom.js"></script> -->
-	<script src="/arquivos/smart-beer-custom.min.js"></script>
-
-	<script src="/arquivos/smart-beer.min.js"></script>
+	<script src="<!-- @echo assetsPath -->/smart-beer-custom.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="<!-- @echo assetsPath -->/smart-beer.min.js?v=<!-- @echo package.version -->"></script>
 
 </body>
 
