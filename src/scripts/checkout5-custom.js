@@ -34,7 +34,7 @@ $(window).on('load', function() {
 	require('vendors/nitro');
 	require('vendors/vtex-modal');
 
-	require('expose?store!modules/store/store');
+	require('expose-loader?store!modules/store/store');
 
 	require('modules/checkout/checkout.gae');
 	require('modules/checkout/checkout.recurrence');

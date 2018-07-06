@@ -6,7 +6,7 @@ module.exports = {
     "plugin:import/warnings"
   ],
   "env": {
-    "es6": true,
+    "es6": false,
     "browser": true,
     "node": true,
     "jquery": true,
@@ -61,6 +61,7 @@ module.exports = {
     "no-underscore-dangle": 0,
     "no-alert": 1,
     "no-lone-blocks": 0,
+    "no-useless-escape": 0,
     "jsx-quotes": ["warn", "prefer-single"],
     "import/no-unresolved": 0
   }

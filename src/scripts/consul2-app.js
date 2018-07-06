@@ -36,8 +36,8 @@ var localStore = require('store');
 window.URI = URI;
 window.localStore = localStore;
 
-require('expose?store!modules/store/store');
-require('expose?publishDataLayer!modules/bi/publish-data-layer');
+require('expose-loader?store!modules/store/store');
+require('expose-loader?publishDataLayer!modules/bi/publish-data-layer');
 
 //load modules individually
 require('modules/vtex-events')();

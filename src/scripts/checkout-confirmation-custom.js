@@ -24,7 +24,7 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
-	require('expose?store!modules/store/store');
+	require('expose-loader?store!modules/store/store');
 
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
