@@ -58,9 +58,7 @@ $(window).on('load', function() {
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		var productsId = [];
-		if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){
-			console.log('😁');
-			
+		if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
 			$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
 				productsId.push(val.id);
 			});
