@@ -8,12 +8,7 @@
       <span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span>
       <span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span>
       <span class="img backup">$product.GetImageTag(345, 345)</span>
-      <!--Loja PF-->
-      $product.ProductField(700)
-      <!--/Loja PF-->
-      <!--Loja PJ-->
-      <!--$product.ProductField(5)-->
-      <!--/Loja PJ-->
+      $product.ProductField(<!-- @echo shelfProductFieldSelos -->)
       
       <div class="FlagsHightLight">
         $product.DiscountHightLight
@@ -25,22 +20,12 @@
 
       <h3 class="nome">$product.Name 
         <span>
-          <!--Loja PF-->
-          $product.ProductField(770)
-          <!--/Loja PF-->
-          <!--Loja PJ-->
-          <!--$product.ProductField(168)-->
-          <!--/Loja PJ-->
+          $product.ProductField(<!-- @echo shelfProductFieldModelo -->)
         </span>
       </h3>
 
       <div class="features">
-        <!-- QA -->
-        <!--$product.ProductField(112)-->
-        <!-- /QA -->
-        <!-- PROD -->
-        $product.ProductField(833)
-        <!-- /PROD -->
+        $product.ProductField(<!-- @echo shelfProductFieldEstado -->)
       </div>
       
       <!-- Rating TrustVox -->
