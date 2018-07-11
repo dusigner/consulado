@@ -139,8 +139,7 @@ var PDVBOX = {
 					PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
 				}
 			}
-		})
-		.fail(function() {
+		}).fail(function() {
 			PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
 		});
 	},

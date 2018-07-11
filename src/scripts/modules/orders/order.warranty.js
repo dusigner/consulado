@@ -79,13 +79,13 @@ var Warranty = {
 				product.price = $selfProduct.data('product-price');
 				product.quantity = $selfProduct.data('product-quantity');
 				product.bundle = $selfProduct.data('product-bundle')
-								? {
-									name: $selfProduct.data('product-bundle'),
-									quantity: $selfProduct.data('product-bundle-quantity'),
-									price: $selfProduct.data('product-bundle-price')
+					? {
+						name: $selfProduct.data('product-bundle'),
+						quantity: $selfProduct.data('product-bundle-quantity'),
+						price: $selfProduct.data('product-bundle-price')
 
-								}
-								: false;
+					}
+					: false;
 				product.index = $selfProduct.data('product-index');
 
 				if ($.diffDate(Warranty.dateNow, order.date) <= 334 && !product.bundle ) {

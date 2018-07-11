@@ -14,8 +14,7 @@ Nitro.module('order.estimateLoading', function() {
 			shipping = {};
 
 		order.statusOrder =
-			$boxOrder
-			.find('.order-status-wrapper');
+			$boxOrder.find('.order-status-wrapper');
 
 		if (order.statusOrder.is('.processando-pagamento')) {
 

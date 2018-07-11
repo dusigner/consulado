@@ -52,11 +52,7 @@ Nitro.module('supermodel', function() {
 		},
 		dataType: 'json',
 		localCache: true
-	})
-	.then(function(data) {
+	}).then(function(data) {
 		return data && data.length > 1 ? data : [];
-	})
-	.then(this.processItens)
-	.done(this.render);
-
+	}).then(this.processItens).done(this.render);
 });

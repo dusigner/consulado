@@ -52,6 +52,8 @@ Nitro.module('busca-chaordic', function () {
 		$prateleiraContainer 	= $('.busca-chaordic #prateleira'),
 		$pagination 			= $prateleiraContainer.find('.paginationSearch');
 		// $filterWrapper 			= $('.filter-container div.filter-wrapper');
+	console.info(collection);
+		
 	/**
 	 * 
 	 * @function getChaordicData
@@ -243,9 +245,10 @@ Nitro.module('busca-chaordic', function () {
 		$('.list-values').find('label').on('click', function(){
 			
 			$(this).addClass('loading');
-			//pegando link rel da api no input
+
+			//pegando link rel da api no input			
 			var $termFilter = $(this).find('input').attr('rel');
-				// $termFilter =  '//busca.consul.com.br' + $termFilter;
+			// $termFilter =  '//busca.consul.com.br' + $termFilter;
 			
 			var apiBusca = new Uri($termFilter),
 				// apiParametros 	= apiBusca.query(),

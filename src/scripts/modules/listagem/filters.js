@@ -98,8 +98,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 				helper.vitrineHolder.addClass('loading');
 				helper.vitrine.removeClass('loaded');
 			}
-		})
-		.done(function(data) {
+		}).done(function(data) {
 			if( data ) {
 
 				try {
@@ -139,8 +138,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 				}
 
 			}
-		})
-		.always(function() {
+		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
 			$checkbox.parent().removeClass('loading');
 			$listMore.show();

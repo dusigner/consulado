@@ -278,19 +278,15 @@ Nitro.module('customLogin', function() {
 				userInfos.email = $(this).find('#custom_login_email').val();
 
 				if(helpers.isEmail(userInfos.email)) {
-					self
-						.request(routes.getEmailAcessKey,
-						{
-							email: userInfos.email,
-							authenticationToken: userInfos.authenticationToken
-						}
-						)
-						.then(function(){
-							self.setKeysLayout(true);
-							focusFirstInput();
-						}, function() {
-							helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
-						});
+					self.request(routes.getEmailAcessKey,{
+						email: userInfos.email,
+						authenticationToken: userInfos.authenticationToken
+					}).then(function(){
+						self.setKeysLayout(true);
+						focusFirstInput();
+					}, function() {
+						helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
+					});
 				} else {
 					helpers.printError('E-mail inválido.');
 				}
@@ -382,19 +378,17 @@ Nitro.module('customLogin', function() {
 				userInfos.email = helpers.formtoobj($(this)).custom_login_email;
 
 				if(helpers.isEmail(userInfos.email)) {
-					self
-						.request(routes.getEmailAcessKey,
-						{
-							email: userInfos.email,
-							authenticationToken: userInfos.authenticationToken
-						}
-						)
-						.then(function(){
-							self.setKeysLayout();
-							focusFirstInput();
-						}, function() {
-							helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
-						});
+					
+					self.request(routes.getEmailAcessKey,{
+						email: userInfos.email,
+						authenticationToken: userInfos.authenticationToken
+					}).then(function(){
+						self.setKeysLayout();
+						focusFirstInput();
+					}, function() {
+						helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
+					});
+
 				} else {
 					helpers.printError('E-mail inválido.');
 				}

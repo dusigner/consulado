@@ -136,7 +136,8 @@ $(window).on('load', function() {
 				newOrder = $('#order-id').text(),
 				company = localStorage.getItem('company'),
 				reason = localStorage.getItem('reason');
-
+			console.info(orderformId);
+				
 
 			if (istelevendas !== null) {
 
