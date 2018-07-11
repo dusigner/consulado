@@ -4,7 +4,14 @@
 	<title>Consul - Garantia Original Estendida</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+		<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -14,7 +21,13 @@
 
 <body data-controller="landing-gae">
 
-<vtex:template id="0-consul-header" />
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-header" />
+	<!-- @endif -->
 
 	 <section id="banner">
 			<h1>Já pensou em ganhar R$ 30 mil</h1>
@@ -265,9 +278,17 @@
 			</div>
 	 </section>
 
-	 <!-- Footer -->
-	 <vtex:template id="0-consul-footer" />
-	 <!-- /Footer -->
+	 
+		<!-- @if DEBUG='development' -->
+	  <!-- @include ../../01 - HTML Templates/Sub Templates/consul-footer.html -->
+	  <!-- @endif -->
+
+  
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+	  <!-- @endif -->
 
 	 <script type="text/javascript" src="<!-- @echo assetsPath -->/consul-landing-concurso.js?v=<!-- @echo package.version -->"></script>
 

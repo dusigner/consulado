@@ -5,7 +5,14 @@
   <vtex:metaTags />
   <vtex:contentPlaceHolder id="Meta Tags Adicionais" />
   <vtex.cmc:productRichSnippets showFacebook="1" />
-  <vtex:template id="0-consul-head-content" />
+  	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
   <link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto.css?v=<!-- @echo package.version -->" />
   <link rel="stylesheet" href="<!-- @echo assetsPath -->/simulador-lavadora.css?v=<!-- @echo package.version -->" />
 </head>
@@ -13,10 +20,22 @@
   <!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 
   <!-- Top Header -->
+		<!-- @if DEBUG='development' -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-top-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-top-header" />
+	<!-- @endif -->
 	<!-- /Top Header -->
 
-  <vtex:template id="0-consul-header" />
+  		<!-- @if DEBUG='development' -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/consul-header.html -->
+		<!-- @endif -->
+
+		<!-- @if DEBUG='production' -->
+		<vtex:template id="0-consul-header" />
+		<!-- @endif -->
 
   <!-- Main -->
   <div class="main clearfix">
@@ -415,9 +434,17 @@
   </div>
 <!-- Modal custom share  -->
 
-  <!-- Footer -->
-  <vtex:template id="0-consul-footer" />
-  <!-- /Footer -->
+  
+		<!-- @if DEBUG='development' -->
+	  <!-- @include ../../01 - HTML Templates/Sub Templates/consul-footer.html -->
+	  <!-- @endif -->
+
+  
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+	  <!-- @endif -->
   
   <script src="<!-- @echo assetsPath -->/consul2-produto.min.js?v=<!-- @echo package.version -->"></script>
   <script type="text/javascript" src="<!-- @echo assetsPath -->/simulador-lavadora.min.js?v=<!-- @echo package.version -->"></script>

@@ -6,7 +6,16 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 
 
-  	<vtex:template id="0-consul-head-content" />
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+	  
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/landing-birthday-2018.css?v=<!-- @echo package.version -->" />
 	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />	
 	<meta property="og:title"              content="Celebrando ideias bem pensadas" />
@@ -16,9 +25,13 @@
 <body class="landing-birthday-2018">
 
 
-  	<!-- Header -->
-	<vtex:template id="0-consul-header" />
-	<!-- /Header -->
+  		<!-- @if DEBUG='development' -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-top-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- @endif -->
 
 	<section class="hero">
 		<img src="/arquivos/hero-cns-birthday-2018.jpg" class="hide-mobile" alt="Celebrando ideias bem pensadas" />
@@ -132,9 +145,16 @@
 
 
 
-  	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
+		<!-- @if DEBUG='development' -->
+	  <!-- @include ../../01 - HTML Templates/Sub Templates/consul-footer.html -->
+	  <!-- @endif -->
+
+  
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+	  <!-- @endif -->
 
 	<script type="text/javascript" src="<!-- @echo assetsPath -->/landing-birthday-2018.min.js?v=<!-- @echo package.version -->"></script>
 

@@ -7,7 +7,14 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 
 
+		<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
 
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/smart-beer.css?v=<!-- @echo package.version -->" />
 
@@ -34,10 +41,13 @@
 		<iframe width="810" height="470" src="#"></iframe>
 	</div>
 
+  		<!-- @if DEBUG='development' -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/consul-header.html -->
+		<!-- @endif -->
 
-	<!-- Header -->
-	<vtex:template id="0-consul-header" />
-	<!-- /Header -->
+		<!-- @if DEBUG='production' -->
+		<vtex:template id="0-consul-header" />
+		<!-- @endif -->
 
 	<!-- SmartBeeer Start -->
 	<main class="smart-beer" id="smart-beer">
@@ -798,9 +808,17 @@
 
 
 
-	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
+	
+		<!-- @if DEBUG='development' -->
+	  <!-- @include ../../01 - HTML Templates/Sub Templates/consul-footer.html -->
+	  <!-- @endif -->
+
+  
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+	  <!-- @endif -->
 	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
 

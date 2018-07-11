@@ -3,7 +3,14 @@
 <head>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+		<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
     <link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
     <link rel="stylesheet" href="<!-- @echo assetsPath -->/landing-birthday-2018-2.css?v=<!-- @echo package.version -->" />
 	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />	
@@ -13,13 +20,22 @@
 </head>
 <body data-controller="listagem">
 
-	<!-- Top Header -->
-	<vtex:template id="0-consul-top-header" />
-	<!-- /Top Header -->
+	
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-top-header.html -->
+	<!-- @endif -->
 
-	<!--  Header -->
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- @endif -->
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/consul-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-header" />
-	<!-- /Header -->
+	<!-- @endif -->
 
     <!-- HERO -->
     <section class="hero">
@@ -146,9 +162,17 @@
     </section>
     <!-- /SECTION SAHRE -->
 
-	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
+	
+		<!-- @if DEBUG='development' -->
+	  <!-- @include ../../01 - HTML Templates/Sub Templates/consul-footer.html -->
+	  <!-- @endif -->
+
+  
+	  <!-- @if DEBUG='production' -->
+	  <!-- Footer -->
+	  <vtex:template id="0-consul-footer" />
+	  <!-- /Footer -->
+	  <!-- @endif -->
 	
     <script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
     <script type="text/javascript" src="<!-- @echo assetsPath -->/landing-birthday-2018-2.min.js?v=<!-- @echo package.version -->"></script>
