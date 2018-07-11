@@ -59,7 +59,7 @@
 	.dropdown {
 		border: 1px solid $green;
 		border-radius: 20px;
-		margin: 0 calculate-em(5) 0 0;
+		// margin: 0 calculate-em(5) 0 0;
 		a[title='Departamentos'] {
 			@include responsiveFont(14);
 			height: 34px;
@@ -144,7 +144,7 @@
 		border-radius: 18px;
 		font-size: 14px;
 		font-weight: bold;
-		margin-left: 0;
+		// margin-left: 0;
 		padding: 0 20px;
 		position: relative;
 		text-transform: uppercase;
