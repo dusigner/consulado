@@ -112,8 +112,8 @@ const processHTML = (sourcePath, destPath) => {
 gulp.task('sassLint', function () {
 
 	return gulp.src( getPath('styles')
-	    .concat('!src/styles/helpers/*')
-        .concat('!src/styles/libs/*'))
+	    .concat('!src/Styles/helpers/*')
+        .concat('!src/Styles/libs/*'))
 		.pipe($.cached('sassLinting'))
 		.pipe($.sassLint({
 			options: {
