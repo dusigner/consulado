@@ -21,28 +21,28 @@
 
 // div { transition: |property| |duration| |timing-function| |delay|; }
 @mixin singleTransition($time: 250) {
--webkit-transition: all #{$time}ms ease-out;
-   -moz-transition: all #{$time}ms ease-out;
-	-ms-transition: all #{$time}ms ease-out;
-	 -o-transition: all #{$time}ms ease-out;
 		transition: all #{$time}ms ease-out;
+	 -o-transition: all #{$time}ms ease-out;
+	-ms-transition: all #{$time}ms ease-out;
+   -moz-transition: all #{$time}ms ease-out;
+-webkit-transition: all #{$time}ms ease-out;
 }
 
 @mixin transition($property, $duration: 250, $timing-function: ease-out) {
--webkit-transition: $property #{$duration}ms #{$timing-function};
-   -moz-transition: $property #{$duration}ms #{$timing-function};
-	-ms-transition: $property #{$duration}ms #{$timing-function};
-	 -o-transition: $property #{$duration}ms #{$timing-function};
 		transition: $property #{$duration}ms #{$timing-function};
+	 -o-transition: $property #{$duration}ms #{$timing-function};
+	-ms-transition: $property #{$duration}ms #{$timing-function};
+   -moz-transition: $property #{$duration}ms #{$timing-function};
+-webkit-transition: $property #{$duration}ms #{$timing-function};
 }
 
 @mixin opacity($value){
-	$IEValue: $value*100;
-	 -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $value + ')';
 		 filter: alpha(opacity=$value);
+		opacity: $value;
+	 -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $value + ')';
+	$IEValue: $value*100;
    -moz-opacity: $value;
  -khtml-opacity: $value;
-		opacity: $value;
 }
 
 @mixin replaceText ($bg-img, $x, $y) {
@@ -52,22 +52,22 @@
 }
 
 @mixin simpleGradient($from-color, $to-color) {
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 	background-color: mix($from-color, $to-color); /* Fallback */
+	background:         linear-gradient(to bottom, $from-color 0%, $to-color 100%);
+	background:      -o-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
+	background:     -ms-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
+	background:    -moz-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
 	background: -webkit-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
-	background:    -moz-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
-	background:     -ms-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
-	background:      -o-linear-gradient(to bottom, $from-color 0%, $to-color 100%);
-	background:         linear-gradient(to bottom, $from-color 0%, $to-color 100%);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from-color}', EndColorStr='#{$to-color}')";
 }
 
 @mixin wFull() {
--webkit-box-sizing: border-box;
-   -moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	 -o-box-sizing: border-box;
 		box-sizing: border-box;
+	 -o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+-webkit-box-sizing: border-box;
 }
 
 @mixin contentBefore($content: "", $absolute: true) {

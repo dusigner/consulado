@@ -191,7 +191,7 @@ Nitro.module('lead-newsletter', function() {
 		$(window).ready(function() {
 			setTimeout(function() {
 				$newsletterFixed.closest('.lead-newsletter--fixed')
-								.toggleClass('secrete');
+					.toggleClass('secrete');
 			}, time);
 		});
 	};

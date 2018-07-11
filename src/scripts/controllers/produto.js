@@ -20,8 +20,8 @@ require('modules/chaordic');
 
 
 Nitro.controller('produto', ['chaordic','sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function() {
-	var self = this,
-		$body = $('body');
+	var self = this;
+	// $body = $('body');
 
 	// Teste AB
 	// var urlTesteAb = window.location.search;

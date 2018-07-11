@@ -70,7 +70,7 @@ Nitro.module('list-more', function() {
 
 			}
 		})
-		.done(function(data) {
+		.done(function(data) {	
 			if( data ) {
 
 				$('.vitrine > .prateleira').append( data );

@@ -279,18 +279,18 @@ Nitro.module('customLogin', function() {
 
 				if(helpers.isEmail(userInfos.email)) {
 					self
-					.request(routes.getEmailAcessKey,
+						.request(routes.getEmailAcessKey,
 						{
 							email: userInfos.email,
 							authenticationToken: userInfos.authenticationToken
 						}
 						)
-					.then(function(){
-						self.setKeysLayout(true);
-						focusFirstInput();
-					}, function() {
-						helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
-					});
+						.then(function(){
+							self.setKeysLayout(true);
+							focusFirstInput();
+						}, function() {
+							helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
+						});
 				} else {
 					helpers.printError('E-mail inválido.');
 				}
