@@ -66,10 +66,10 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 		window.addEventListener('load', function() {
 			navigator.serviceWorker.register('/files/service-worker.js', { scope: '../' }).then(function(registration) {
 				// Registration was successful
-				console.log('ServiceWorker reegistration successful.', registration);
+				console.info('ServiceWorker reegistration successful.', registration);
 			}).catch(function(err) {
 				// registration failed :(
-				console.log('ServiceWorker registration failed: ', err);
+				console.info('ServiceWorker registration failed: ', err);
 			});
 		});
 	}

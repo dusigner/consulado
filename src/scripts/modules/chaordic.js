@@ -124,44 +124,42 @@ Nitro.module('chaordic', function() {
 		
 		//Prevent multiple ajax calls, toDo rewrite
 		self.getShelf()
-		.then(function() {
-			$shelfs.each(function() {
-				var $self = $(this),
-				position = $self.data('chaordic');
-				
-				// if ($self.is(':visible') && reference >= $self.offset().top ) {
+			.then(function() {
+				$shelfs.each(function() {
+					var $self = $(this),
+					position = $self.data('chaordic');				
+					// if ($self.is(':visible') && reference >= $self.offset().top ) {
 					var shelf;
 					
 					self.getShelf()
 					.then(function(res) {
-							shelf = res[position];
-							$.each(shelf, function(i, v) {
-								if(v.feature === 'FrequentlyBoughtTogether') {
-									v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
-									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
-									v.numberInstallments = 10;
-									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
-									
-								}							
+						shelf = res[position];
+						$.each(shelf, function(i, v) {
+							if(v.feature === 'FrequentlyBoughtTogether') {
+								v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
+								v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
+								v.numberInstallments = 10;
+								v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
 								
-								self.cropName(v, 25);
-								v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
-							});
+							}							
 							
+							self.cropName(v, 25);
+							v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
+						});							
 
-							self.placeHolderRender(shelf, $self)
-								.then(function($chaordicShelf) {
-									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
+						self.placeHolderRender(shelf, $self)
+						.then(function($chaordicShelf) {
+							//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
+							var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
 
-									$slider.each(function() {
-										var slidesToShow = $(this).data('slidestoshow') || 3;
-										self.slider($(this), slidesToShow);
-									});
+							$slider.each(function() {
+								var slidesToShow = $(this).data('slidestoshow') || 3;
+								self.slider($(this), slidesToShow);
+							});
 
-									$window.scroll();
-								});
+							$window.scroll();
 						});
+					});
 						// }
 				});
 			});

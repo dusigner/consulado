@@ -63,17 +63,17 @@ $(window).on('load', function() {
 		});
 		chaordic.init('cart');
 
-			// Teste AB
-			// var urlTesteAb = window.location.search;
-			// var testeA = 'testeab=a';
-			// var testeB = 'testeab=b';
+		// Teste AB
+		// var urlTesteAb = window.location.search;
+		// var testeA = 'testeab=a';
+		// var testeB = 'testeab=b';
 
-			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-			// 	$body.addClass('ab-test__mobile--show-a');
-			// }
-			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-			// 	$body.addClass('ab-test__mobile--show-b');
-			// }
+		// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		// 	$body.addClass('ab-test__mobile--show-a');
+		// }
+		// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		// 	$body.addClass('ab-test__mobile--show-b');
+		// }
 
 		this.userData = null;
 
@@ -724,7 +724,7 @@ $(window).on('load', function() {
 			}	
 
 			$('.btn-go-to-payment').click( function(){				
-					self.veryfication();							
+				self.veryfication();							
 			});
 			
 		};
