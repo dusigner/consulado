@@ -790,7 +790,8 @@
 
 // CTA Comparador
 body.brastemp,
-body.brastempqa {
+body.brastempqa,
+body:not(.listagem) {
 	.btn-comparar {
 		display: none;
 		visibility: hidden;

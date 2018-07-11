@@ -7,7 +7,14 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 
 
+		<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../subtemplates/consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
     
     <link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-pre-home.css?v=<!-- @echo package.version -->" />
 </head>
@@ -15,7 +22,13 @@
 <body data-controller="pre-home" class="pre-home">
 
 
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-top-header.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-top-header" />
+	<!-- @endif -->
 
 
 	<header>
@@ -1014,13 +1027,19 @@
 
 
 
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../../subtemplates/consul-footer.html -->
+	<!-- @endif -->
+
 	<div class="hide">
 		<vtex.cmc:welcomeMessage />
 	</div>
 
+	<!-- @if DEBUG='production' -->
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
+	<!-- @endif -->
 
 
 
