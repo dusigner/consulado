@@ -200,11 +200,11 @@ fieldset {
 			margin-right: 5px;
 			vertical-align: top;
 			width: 25px;
-			@media(min-width: $tablet) {
+			//@media(min-width: $tablet) {
 				// font-size: 32px;
 				// height: 45px;
 				// width: 45px;
-			}
+			//}
 			@media(min-width: $desktop) {
 				font-size: 17px;
 				height: 29px;

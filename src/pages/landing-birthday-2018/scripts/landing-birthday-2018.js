@@ -142,7 +142,6 @@ Nitro.setup(['facebook-init'], function () {
 				type: 'PUT',
 				data: JSON.stringify(data),
 				success: function () {
-					console.log('success');
 					$('#modal-sucess').vtexModal();
 					dataLayer.push({
 						event: 'generic',
