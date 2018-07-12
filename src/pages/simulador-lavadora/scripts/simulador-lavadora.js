@@ -27,7 +27,7 @@ Nitro.setup([], function () {
 			lotes = jQuery( '#range' ).val(),
 			resultado;
 		if ( dias && lotes ) { 
-			resultado = calcular_economia( dias, lotes )
+			resultado = calcular_economia( dias, lotes );
 		}
 		if ( resultado ) {
 			$('.corpocehckbox').addClass('ativo');
@@ -51,7 +51,7 @@ Nitro.setup([], function () {
 		var dias = jQuery( 'input[name^="dia-"]:checked' ).length,
 			lotes = jQuery( '#range' ).val(),
 			resultado;
-		if ( dias && lotes ) { resultado = calcular_economia( dias, lotes ) }
+		if ( dias && lotes ) { resultado = calcular_economia( dias, lotes ); }
 		if ( resultado ) {
 			jQuery( '.corporesultado .--economia-valor' ).text( resultado.valor.toLocaleString('pt-BR') );
 			jQuery( '.corporesultado .--economia-agua' ).text( resultado.agua.toLocaleString( 'pt-BR' ) );
