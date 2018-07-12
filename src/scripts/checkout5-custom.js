@@ -32,7 +32,8 @@ $(window).on('load', function() {
 
 	//load Nitro Lib
 	require('vendors/nitro');
-
+	require('vendors/vtex-modal');
+	require('vendors/jquery.cookie');
 	require('expose?store!modules/store/store');
 
 	require('modules/checkout/checkout.gae');
@@ -58,10 +59,12 @@ $(window).on('load', function() {
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		var productsId = [];
-		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
-			productsId.push(val.id);
-		});
-		chaordic.init('cart');
+		if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
+			$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+				productsId.push(val.id);
+			});
+			chaordic.init('cart');
+		}
 
 			// Teste AB
 			// var urlTesteAb = window.location.search;

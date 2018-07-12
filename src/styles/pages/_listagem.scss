@@ -27,6 +27,13 @@ body.listagem {
 	}
 }
 
+
+body.busca {
+	.btn-comparar {
+		display: none;
+	}
+}
+
 .listagem {
 	.banner-principal { min-height: auto; }
 
@@ -800,3 +807,15 @@ body.busca-chaordic {
 }
 
 
+body.neemu {
+	p.tit-busca-vazia {
+		font-size: 2em;
+		strong {
+			font-size: 1.2em;
+		}
+	}
+
+	p.hl-busca-vazia {
+		font-size: 1.25em;	
+	}
+}

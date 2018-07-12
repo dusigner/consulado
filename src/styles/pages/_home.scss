@@ -4,6 +4,10 @@ body.home {
 	section.destaque {
 		@include breakpoint(small, 'max') { display: none; }
 	}
+
+	.btn-comparar {
+		display: none;
+	}
 }
 
 body > .destaque {

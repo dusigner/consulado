@@ -30,7 +30,7 @@
 			display: none;
 		}
 
-		@include breakpoint(740px, 'max') {
+		@include breakpoint(768px, 'max') {
 			.show-mobile {
 				display: block;
 			}
