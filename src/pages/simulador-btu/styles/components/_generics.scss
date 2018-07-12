@@ -169,11 +169,11 @@ fieldset {
 			text-align: center;
 			width: 55px;
 
-			@media(min-width: $tablet) {
+			//@media(min-width: $tablet) {
 				// font-size: 24px;
 				// height: 45px;
 				// width: 90px;
-			}
+			//}
 			@media(min-width: $desktop) {
 				font: 16px 'consul', sans-serif;
 				height: 29px;
