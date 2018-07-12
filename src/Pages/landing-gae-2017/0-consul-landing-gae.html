@@ -13,13 +13,17 @@
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul-landing-gae.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="landing-gae">
-<!--  Header -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-top-header" />
+
 	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 	<!-- @endif -->
 
 	<vtex:template id="0-consul-header" />
-<!-- /Header -->
 
 <section id="header">
 	<div class="container">

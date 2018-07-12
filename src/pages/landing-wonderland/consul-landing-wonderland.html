@@ -14,14 +14,17 @@
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul-landing-wonderland.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="landing-wonderland">
-<!--  Header -->
-		<!-- @if DEBUG=true -->
-		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
-		<!-- @endif -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
 
-		<vtex:template id="0-consul-header" />
+	<vtex:template id="0-consul-top-header" />
 
-<!-- /Header -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
 
 <section id="banner">
 	<div class="container banner">

@@ -14,13 +14,17 @@
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-landing-gae-compra-interno.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="landing-gae-compra-interno">
-	<!--  Header -->
-			<!-- @if DEBUG=true -->
-		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
-		<!-- @endif -->
+		<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
 
-		<vtex:template id="0-consul-header" />
-	<!-- /Header -->
+	<vtex:template id="0-consul-top-header" />
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
 
 	<div class="breadcrumb">
 		<div class="container">
