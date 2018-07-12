@@ -3,7 +3,7 @@
 require('./../../../Dust/category-combos.html');
 require('modules/helpers');
 
-var itemsFilter = require('../../../json/filters.json');
+var itemsFilter = require('./../../../json/filters.json');
 
 
 // Dust filters
