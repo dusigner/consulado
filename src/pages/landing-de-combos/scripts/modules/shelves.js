@@ -1,6 +1,6 @@
 'use strict';
 
-require('./../../templates/prateleira-combos.html');
+require('./../../Dust/prateleira-combos.html');
 
 var Helpers = require('./helpers');
 
