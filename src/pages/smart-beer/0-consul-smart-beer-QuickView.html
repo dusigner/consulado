@@ -5,14 +5,13 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	<!-- @include ../templates/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
-	<!-- @endif -->
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/quick-view-ted.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="produto">
@@ -20,22 +19,20 @@
 
 	<div class="hide">
 		  <!-- Top Header -->
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
 	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-top-header" />
-	<!-- @endif -->
+
 	<!-- /Top Header -->
 
-  		<!-- @if DEBUG='development' -->
+  		<!-- @if DEBUG=true -->
 		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 		<!-- @endif -->
 
-		<!-- @if DEBUG='production' -->
 		<vtex:template id="0-consul-header" />
-		<!-- @endif -->
+
 	</div>
 
 	<!-- Main -->
@@ -296,16 +293,14 @@
 	<!-- Modal custom login  -->
 	<div class="hide">
 		
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
 	  <!-- @endif -->
 
   
-	  <!-- @if DEBUG='production' -->
 	  <!-- Footer -->
 	  <vtex:template id="0-consul-footer" />
 	  <!-- /Footer -->
-	  <!-- @endif -->
 	</div>
 </body>
 </html>

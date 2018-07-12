@@ -355,7 +355,11 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		$('#btnFreteSimulacao').ajaxStop(function(){
 			$loadingFret.removeClass('loading');
 			$containerFrete.addClass('active');
-			$containerFrete.prepend('<i class="closed"></i>');			
+			$containerFrete.prepend('<i class="closed"></i>');
+			dataLayer.push({
+				event: 'simuladorCEP',
+				status: 'ok'
+			});			
 		});
 
 		$('body').on('click', '.freight-values .closed', function() {

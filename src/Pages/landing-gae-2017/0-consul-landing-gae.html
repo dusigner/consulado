@@ -4,25 +4,21 @@
 	<title>Consul - Garantia Original Estendida</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	<!-- @include ../templates/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
-	<!-- @endif -->
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul-landing-gae.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="landing-gae">
 <!--  Header -->
-	<!-- @if DEBUG='development' -->
+	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-header" />
-	<!-- @endif -->
 <!-- /Header -->
 
 <section id="header">
@@ -258,16 +254,14 @@
 </section>
 
 
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
 	  <!-- @endif -->
 
   
-	  <!-- @if DEBUG='production' -->
 	  <!-- Footer -->
 	  <vtex:template id="0-consul-footer" />
 	  <!-- /Footer -->
-	  <!-- @endif -->
 <script type="text/javascript" src="<!-- @echo assetsPath -->/consul-landing-gae.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 </html>

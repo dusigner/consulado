@@ -4,25 +4,22 @@
 	<title>Consul - Garantia Original Estendida</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	<!-- @include ../templates/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
 
-	<!-- @if DEBUG='production' -->
 	<vtex:template id="0-consul-head-content" />
-	<!-- @endif -->
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-landing-gae-compra-interno.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="landing-gae-compra-interno">
 	<!--  Header -->
-			<!-- @if DEBUG='development' -->
+			<!-- @if DEBUG=true -->
 		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 		<!-- @endif -->
 
-		<!-- @if DEBUG='production' -->
 		<vtex:template id="0-consul-header" />
-		<!-- @endif -->
 	<!-- /Header -->
 
 	<div class="breadcrumb">
@@ -50,15 +47,13 @@
 	</div>
 
 	
-		<!-- @if DEBUG='development' -->
+		<!-- @if DEBUG=true -->
 	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
 	  <!-- @endif -->
 
   
-	  <!-- @if DEBUG='production' -->
 	  <!-- Footer -->
 	  <vtex:template id="0-consul-footer" />
 	  <!-- /Footer -->
-	  <!-- @endif -->
 </body>
 </html>
