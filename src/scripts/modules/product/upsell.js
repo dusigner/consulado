@@ -1,11 +1,16 @@
+/* global $: true, Nitro: true, dust */
 
 'use strict';
 
+require('Dust/product/upsell-cns.html');
+
+
 Nitro.module('upsell', function() {
+	console.clear();
+
+	const self = this;
 	
-
-
-	var 
+	let 
 		// pegando valores do produto atual		
 		titleproductatual  = $('.productName').text(),
 		skureferenc        = $('.productSku .skuReference').text(),
@@ -15,6 +20,8 @@ Nitro.module('upsell', function() {
 		capacidadeatual    = $('td.value-field.Capacidade').text() || $('td.value-field.Capacidade-Total-L-').text(),
 		painelautal        = $('td.value-field.Display').text(),
 		formatoatual  	   = $('td.value-field.Formato').text(),
+		urlUpgradetd       = $('td.value-field.Link-do-Upgrade'),
+		urlUpgrade         = $('td.value-field.Link-do-Upgrade').text(),
 		
 
 		// variaveis para mostrar o valor do upgrade
@@ -31,21 +38,44 @@ Nitro.module('upsell', function() {
 		urlupgrade,
 		
 		uri   = window.location.href,
-		idurl = uri.split('upgrade=');
+		idurl = uri.split('upgrade=');	
+
+		
 		
 
-	this.setup = function() {
-		this.valordiferenca();
-		this.montandomodal();
-		this.openclose();
-		this.verificadowngrade();		
-		this.responsivo();
-		if ( window.location.host.indexOf('consulqa') === -1 ) {
-			this.tagueamento();
+	this.setup = () => {
+		self.openclose();
+		self.valordiferenca();
+		self.verificadowngrade();
+		self.montandomodal();
+		self.responsivo();
+
+		if (window.location.host.indexOf('consulqa') === -1) {
+			self.tagueamento();
 		}
 	};
 
-	this.responsivo = function() {
+	this.renderHtml = () => {
+		var settings = {
+			'url': '/api/catalog_system/pub/products/search/' + urlUpgrade + ' ',
+			'method': 'GET'
+		};
+
+		$.ajax(settings).then(function (response) {
+			console.log('✔', response);
+
+			return response;
+		}).then(function(data) {
+			dust.render('upsell-cns', data, function(err, out) {
+				if (err) { throw new Error('Product Dust error: ' + err); }
+				if(urlUpgradetd.length >= 1){$('#upsell').append(out);}
+			});
+		}).done(function() {
+			self.setup();
+		});
+	};
+
+	this.responsivo = () => {
 
 		if ($(window).width() <= 667) {
 
@@ -66,57 +96,45 @@ Nitro.module('upsell', function() {
 		
 	};
 
-	this.valordiferenca = function() {	
-
-		$.each($('#upsell li[layout]'), function() {
-
-			valorProdatualcalc = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
-			valorProupgrade    = $(this).find('.title-price-upgrade span').text().replace(/\D/gmi, ''),
-			valordiferenca     = Number(valorProupgrade) - Number(valorProdatualcalc),
-			price              = 'POR + R$' + _.formatCurrency( valordiferenca / 100),
-			$(this).find('.textupgrade span, .info-product-mobile > span').html( price );			
-
-		});
-
+	this.valordiferenca = () => {		
+		valorProdatualcalc = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
+		valorProupgrade    = $('.title-price-upgrade span').text().replace(/\D/gmi, ''),
+		valordiferenca     = Number(valorProupgrade) - Number(valorProdatualcalc),
+		price              = 'POR + R$' + _.formatCurrency( valordiferenca / 100);
+		$('.textupgrade span, .info-product-mobile > span').html( price );
 	};
 
-	this.montandomodal = function() {
+	this.montandomodal = () => {
+		// pegando valores do produto upgrade
+		urlupgrade              = $('.ir-para-produto').attr('href'),
+		skureferencup           = $('.skureferenc ul li').text(),
+		capacidadeOportunidade  = $('.espe-oportunidade .licapacidade ul li').text().replace('L', ''),
+		painelOportunidade      = $('.espe-oportunidade .lipainel ul li').text(),
+		temperaturaOportunidade = $('.espe-oportunidade .litemperatura ul li').text();
 
-		$.each($('#upsell li[layout]'), function() {
-			
-			// pegando valores do produto upgrade
-			urlupgrade              = $(this).find('.ir-para-produto').attr('href'),
-			skureferencup           = $(this).find('.skureferenc ul li').text(),
-			capacidadeOportunidade  = $(this).find('.espe-oportunidade .licapacidade ul li').text().replace('L', ''),
-			painelOportunidade      = $(this).find('.espe-oportunidade .lipainel ul li').text(),
-			temperaturaOportunidade = $(this).find('.espe-oportunidade .litemperatura ul li').text();
+					
+		// montando vitrine do produto atual dentro do modal
+		$('.voce-esta-vendo h2:nth-child(3)').html(titleproductatual + ' - <strong>' + skureferenc + '</strong>');
+		$('.voce-esta-vendo span').html(valorProatual);
+		$('.espe-voce-esta-vendo .licapacidadea').html(capacidadeatual.replace('L', '') + ' litros');
+		$('.espe-voce-esta-vendo .lipainela').html(painelautal);
+		$('.espe-voce-esta-vendo .litemperaturaa').html(formatoatual);
+		$('.voce-esta-vendo img').attr('src', imagematual);
 
-						
-			// montando vitrine do produto atual dentro do modal
-			$('.voce-esta-vendo h2:nth-child(3)').html(titleproductatual + ' - <strong>' + skureferenc + '</strong>');
-			$('.voce-esta-vendo span').html(valorProatual);
-			$('.espe-voce-esta-vendo .licapacidadea').html(capacidadeatual.replace('L', '') + ' litros');
-			$('.espe-voce-esta-vendo .lipainela').html(painelautal);
-			$('.espe-voce-esta-vendo .litemperaturaa').html(formatoatual);
-			$('.voce-esta-vendo img').attr('src', imagematual);
+		// montando dados do produto upgrade
+		$('.title-price-upgrade p strong, .info-product-mobile h3 strong').html(skureferencup);
+		$('.oportunidadePro h2:nth-child(3) strong').html(skureferencup);
+		$('.espe-oportunidade .licapacidade, .especifi-product-mobile .licapacidadem span').html(capacidadeOportunidade + ' litros');
+		$('.espe-oportunidade .lipainel, .especifi-product-mobile .lipainelm span').html(painelOportunidade);
+		$('.espe-oportunidade .litemperatura, .especifi-product-mobile .litemperaturam span').html(temperaturaOportunidade);
+		$('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?upgrade=' + window.skuJson_0.productId);
+	};
 
-			// montando dados do produto upgrade
-			$(this).find('.title-price-upgrade p strong, .info-product-mobile h3 strong').html(skureferencup);
-			$(this).find('.oportunidadePro h2:nth-child(3) strong').html(skureferencup);
-			$(this).find('.espe-oportunidade .licapacidade, .especifi-product-mobile .licapacidadem span').html(capacidadeOportunidade + ' litros');
-			$(this).find('.espe-oportunidade .lipainel, .especifi-product-mobile .lipainelm span').html(painelOportunidade);
-			$(this).find('.espe-oportunidade .litemperatura, .especifi-product-mobile .litemperaturam span').html(temperaturaOportunidade);
-			$(this).find('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?upgrade=' + window.skuJson_0.productId);
-		
-		});
-
-	};	
-
-	this.openclose = function () {
+	this.openclose = () => {
 
 		// Abre o modal de upgrade
 		$('.btn-interessado-upgrade').click(function() {			
-			$('#modal-produto-upgrade' + $(this).attr('data-id')).vtexModal();			
+			$('#modal-produto-upgrade').vtexModal();			
 		});
 
 		// fecha barra fixa
@@ -128,7 +146,7 @@ Nitro.module('upsell', function() {
 
 	};
 
-	this.verificadowngrade = function () {
+	this.verificadowngrade = () => {
 		
 		if (uri.indexOf('upgrade') > 0 ){
 
@@ -159,7 +177,7 @@ Nitro.module('upsell', function() {
 		}
 	};
 
-	this.tagueamento = function() {
+	this.tagueamento = () => {
 		
 		//Tagueamento datalayer
 		$('.btn-interessado-upgrade').click(function() {			
@@ -244,5 +262,5 @@ Nitro.module('upsell', function() {
 		});	
 	};
 
-	this.setup();
+	this.renderHtml();
 });
