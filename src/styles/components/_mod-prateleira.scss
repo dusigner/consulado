@@ -792,9 +792,11 @@
 body.brastemp,
 body.brastempqa,
 body:not(.listagem) {
-	.btn-comparar {
-		display: none;
-		visibility: hidden;
+	section:not(#prateleira) {
+		.btn-comparar {
+			display: none;
+			visibility: hidden;
+		}
 	}
 }
 
