@@ -799,14 +799,12 @@ body.brastempqa {
 
 body.consul,
 body.consulqa {
-	&:not(.listagem) {
-		section:not(#prateleira) {
-			.btn-comparar {
-				display: none;
-				visibility: hidden;
-			}
+	&:not(.listagem),
+	section:not(#prateleira) {
+		.btn-comparar {
+			display: none;
+			visibility: hidden;
 		}
-		
 	}
 }
 
