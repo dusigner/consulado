@@ -241,8 +241,8 @@
 #atendimento,
 #chequeemail {
 	background: $gray;
-	text-align: center;
 	padding-top: 15px;
+	text-align: center;
 
 	.row { margin-bottom: 0; }
 }
@@ -350,16 +350,16 @@
 }
 
 #chequeemail h3 {
+    display: block;
     font-size: 1.625em;
     margin-bottom: 0;
-    display: block;
     text-align: center;
 }
 
 #chequeemail h4 {
+    display: block;
     font-size: 1.5em;
     font-weight: 400;
     margin-top: 0;
-    display: block;
     text-align: center;
 }

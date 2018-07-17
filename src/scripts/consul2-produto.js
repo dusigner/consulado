@@ -46,7 +46,7 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 	}
 
 	var $reference  = $('.reference'),
-	    $productSku = $('.productSku');
+		$productSku = $('.productSku');
 
 	//TROCA DE NOMES PRODUCT / SKUREF
 	$(document).on('skuSelected.vtex', function() {
@@ -118,18 +118,18 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 	//Opções de parcelamento
 	self.valoresParcelas = function() {
 		var $valoresParcelas    = $('.valores-parcelas'),
-		    $showParcelas       = $valoresParcelas.find('.titulo-parcelamento'),
-		    $opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+			$showParcelas       = $valoresParcelas.find('.titulo-parcelamento'),
+			$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
 
 		$showParcelas.text('Ver parcelas');
 
 		$opcoesParcelamento.find('li').each(function() {
 			var $numeroParcelas = $(this).find('span:first-child'),
-			    numeroParcelas  = $numeroParcelas.text().split('X')[0],
-			    $valorParcela   = $(this).find('strong'),
-			    valorParcela    = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
-			    text            = $numeroParcelas.text().replace('de', ''),
-			    precoTotal      = parseFloat(numeroParcelas * valorParcela).toFixed(2);
+				numeroParcelas  = $numeroParcelas.text().split('X')[0],
+				$valorParcela   = $(this).find('strong'),
+				valorParcela    = parseFloat($valorParcela.text().replace('.','').replace(',', '.').split('R$')[1]),
+				text            = $numeroParcelas.text().replace('de', ''),
+				precoTotal      = parseFloat(numeroParcelas * valorParcela).toFixed(2);
 
 			$(this).append('<span class="valor-total">Total: R$ ' + precoTotal.toString().replace('.',',') + '</span>');
 			$numeroParcelas.text(text);
@@ -264,7 +264,7 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 
 
 				} else{
-					    qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+					qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
 					var nome    = data[0].items[0].name;
 
 					Index.calcQntStoqOnly(qnt110v);
@@ -363,15 +363,11 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		$('#btnFreteSimulacao').ajaxStop(function(){
 			$loadingFret.removeClass('loading');
 			$containerFrete.addClass('active');
-			$containerFrete.prepend('<i class="closed"></i>');	
-			if(flag === 1){
-				dataLayer.push({
-					event: 'simuladorCEP',
-					status: 'ok'
-				});
-				flag = 0;
-			}
-		
+			$containerFrete.prepend('<i class="closed"></i>');
+			dataLayer.push({
+				event: 'simuladorCEP',
+				status: 'ok'
+			});			
 		});
 
 		$('body').on('click', '.freight-values .closed', function() {

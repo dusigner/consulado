@@ -19,31 +19,26 @@ Nitro.module('checkout.cotas', function() {
 
 		var userData;
 
-		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email)
-				.then(function(user) {
-					userData = user;
-
-					if(userData.corporateDocument || userData.document) {
-						if (store && store.isCorp) {
-							return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
-						} else {
-							return CRM.clientSearchByDocument(userData.document, 'document');
-						}
-					}else {
-						return false;
-					}
-				})
-				.then(function(userByDocument) {
-					var qntd = 0;
-					if( userByDocument ) {
-						$.each(userByDocument, function(index, user) {
-							qntd += user.xSkuSalesChannel5;
-						});
-					}
-
-					userData.xSkuSalesChannel5 = qntd;
-				})
-				.then(function() { return userData; });
+		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email).then(function(user) {
+			userData = user;
+			if(userData.corporateDocument || userData.document) {
+				if (store && store.isCorp) {
+					return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
+				} else {
+					return CRM.clientSearchByDocument(userData.document, 'document');
+				}
+			}else {
+				return false;
+			}
+		}).then(function(userByDocument) {
+			var qntd = 0;
+			if( userByDocument ) {
+				$.each(userByDocument, function(index, user) {
+					qntd += user.xSkuSalesChannel5;
+				});
+			}
+			userData.xSkuSalesChannel5 = qntd;
+		}).then(function() { return userData; });
 	};
 
 	/*

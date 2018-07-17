@@ -9,18 +9,13 @@ var ModalGae = {
 				'</div>',
 	modal: function(templateData) {
 		ModalGae.$body.append('<div class="modal-gae__mask"></div>');
-		$('.modal-gae__mask').data('modal', ModalGae)
-					.html(ModalGae.template.render(templateData))
-					.delay(10)
-					.queue(function(next) {
-						$(this).addClass('modal-gae__mask--enter');
-						next();
-					})
-					.delay(500)
-					.queue(function(next) {
-						$(this).addClass('modal-gae__mask--loaded');
-						next();
-					});
+		$('.modal-gae__mask').data('modal', ModalGae).html(ModalGae.template.render(templateData)).delay(10).queue(function(next) {
+			$(this).addClass('modal-gae__mask--enter');
+			next();
+		}).delay(500).queue(function(next) {
+			$(this).addClass('modal-gae__mask--loaded');
+			next();
+		});
 
 		$('.modal-gae__close, .js-modal-gae-cancel').click(function(e) {
 			e.preventDefault();
@@ -29,14 +24,10 @@ var ModalGae = {
 		});
 	},
 	close: function(cb) {
-		$('.modal-gae__mask')
-				.removeClass('modal-gae__mask--loaded')
-				.removeClass('modal-gae__mask--enter')
-				.delay(500)
-				.queue(function(next) {
-					$(this).remove();
-					next();
-				});
+		$('.modal-gae__mask').removeClass('modal-gae__mask--loaded').removeClass('modal-gae__mask--enter').delay(500).queue(function(next) {
+			$(this).remove();
+			next();
+		});
 
 		if(cb && typeof cb === 'function') {
 			cb();

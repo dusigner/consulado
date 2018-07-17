@@ -797,6 +797,16 @@ body.brastempqa {
 	}
 }
 
+body.consul,
+body.consulqa {
+	&:not(.listagem),
+	section:not(#prateleira) {
+		.btn-comparar {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
 
 
 #quem-viu-clicou {

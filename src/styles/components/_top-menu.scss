@@ -1,9 +1,13 @@
 @charset 'UTF-8';
 
 .top-navigation {
-	@include breakpoint(769px, 'max') { position: relative;z-index: 3; }
-	border-bottom: 1px solid $gray;
+	@include breakpoint(769px, 'max') { 
+		position: relative;
+		z-index: 3; 
+	}
 
+	border-bottom: 1px solid $gray;
+	
 	.menu-department {
 		.first-level { @extend %slideInDown; }
 	}
@@ -55,7 +59,7 @@
 	.dropdown {
 		border: 1px solid $green;
 		border-radius: 20px;
-		margin: 0 calculate-em(5) 0 0;
+		// margin: 0 calculate-em(5) 0 0;
 		a[title='Departamentos'] {
 			@include responsiveFont(14);
 			height: 34px;
@@ -140,7 +144,7 @@
 		border-radius: 18px;
 		font-size: 14px;
 		font-weight: bold;
-		margin-left: 0;
+		// margin-left: 0;
 		padding: 0 20px;
 		position: relative;
 		text-transform: uppercase;
@@ -349,7 +353,7 @@ $menu-colors: (
 
 //Menu mobile
 .menu-mobile {
-	@include breakpoint(768px, 'min') { display:none; }
+	@include breakpoint(768px, 'min') { display: none; }
 	background-color: $green;
 	height: 50px;
 	overflow: hidden;

@@ -10,10 +10,9 @@ var CRM = {
 	recurrenceURI: '/api/' + window.jsnomeLoja + '/subscriptions/',
 
 	getOrders: function() {
-		return $.getJSON(CRM.ordersURI)
-				.then(function(res) {
-					return res;
-				});
+		return $.getJSON(CRM.ordersURI).then(function(res) {
+			return res;
+		});
 	},
 
 	getOrderById: function(orderId) {
@@ -28,8 +27,7 @@ var CRM = {
 				f: 'orderId,state,city,status,description,lastChange,finished',
 				fq: 'orderId:' + orderId
 			}
-		})
-		.always(function(res) {
+		}).always(function(res) {
 			if( res && res.Documents && res.Documents.length > 0 ) {
 				dfd.resolve(res.Documents[0]);
 			} else {
@@ -48,8 +46,7 @@ var CRM = {
 			url: CRM.omsURI + orderId,
 			type: 'GET',
 			contentType: 'application/json; charset=utf-8'
-		})
-		.always(function(res) {
+		}).always(function(res) {
 			if( res
 				&& res.packageAttachment
 				&& res.packageAttachment.packages
@@ -69,8 +66,7 @@ var CRM = {
 			type: 'POST',
 			dataType: 'json',
 			data: JSON.stringify(data)
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	},
@@ -84,8 +80,7 @@ var CRM = {
 			},
 			type: 'GET',
 			dataType: 'json'
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	},
@@ -95,19 +90,16 @@ var CRM = {
 			url: CRM.recurrenceURI + id,
 			type: 'PATCH',
 			data: data
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	},
 
 	getAccounts: function(id) {
-		return $.getJSON(CRM.recurrenceURI + id + '/accounts')
-				.then(function(res) {
-					res.subscription = id;
-
-					return res;
-				});
+		return $.getJSON(CRM.recurrenceURI + id + '/accounts').then(function(res) {
+			res.subscription = id;
+			return res;
+		});
 	},
 
 	changeAccount: function(id, data) {
@@ -120,17 +112,14 @@ var CRM = {
 			type: 'PUT',
 			dataType: 'json',
 			data: JSON.stringify(data)
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	},
 
 	getAddresses: function(id) {
-		return $.getJSON(CRM.recurrenceURI + id + '/addresses')
-		.then(function(res) {
+		return $.getJSON(CRM.recurrenceURI + id + '/addresses').then(function(res) {
 			res.subscription = id;
-
 			return res;
 		});
 	},
@@ -140,8 +129,7 @@ var CRM = {
 			url: CRM.recurrenceURI + id + '/items/' + item,
 			type: 'PATCH',
 			data: data
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	},
@@ -154,8 +142,7 @@ var CRM = {
 				'vtexidclientautcookie': $.cookie('VtexIdclientAutCookie')
 			},
 			type: 'DELETE'
-		})
-		.then(function(res) {
+		}).then(function(res) {
 			return res;
 		});
 	}

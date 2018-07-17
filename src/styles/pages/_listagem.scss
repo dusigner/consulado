@@ -189,7 +189,7 @@ body.busca {
 	}
 
 	.order-by-chaordic,
-	.order-by{
+	.order-by {
 		background-color: #ffffff;
 		border-radius: 10px;
 		box-shadow: 0 0 10px $gray;
@@ -548,7 +548,7 @@ body.busca-chaordic {
 		font-size: 2.5em;
 		font-weight: 400;
 	}
-	.busca-chaordic{
+	.busca-chaordic {
 
 		&.resultado-busca {
 			background: $green;
@@ -659,7 +659,7 @@ body.busca-chaordic {
 			visibility: inherit;
 			width: 177px;
 			z-index: 10;
-			&.active{
+			&.active {
 				opacity: 1;
 			}
 			li {
@@ -708,37 +708,37 @@ body.busca-chaordic {
 				}
 			}
 		}
-		ul.quickFilters{
+		ul.quickFilters {
 			display: block;
 			padding: 0 15px 20px;
-			li{
-				width: 25%;
-				min-width: 230px;
+			li {
 				float: left;
+				min-width: 230px;
+				width: 25%;
 			}
 			a {
 				border: 1px solid #FFF;
 				display: block;
 				
 				img {
-					width: 80%;
 					display: table;
 					margin: 0 auto;
+					width: 80%;
 				}
 				.quickImage {
 					min-height: 250px;	
 				}
 				.quickName {
 					display: block;
+					font-weight: 600;
 					padding: 10px;
 					text-align: center;
-					font-weight: 600;
 				}
-				&:hover{
+				&:hover {
 					border: 1px solid $green;
-					.quickName{
-						color: #FFF;
+					.quickName {
 						background: $green;
+						color: #FFF;
 					}
 				}
 			}

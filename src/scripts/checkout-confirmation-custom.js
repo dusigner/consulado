@@ -1,4 +1,4 @@
- /* global VERSION: true, Nitro: true, $: true */
+/* global VERSION: true, Nitro: true, $: true */
 
 'use strict';
 
@@ -24,7 +24,7 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
-	require('expose?store!modules/store/store');
+	require('expose-loader?store!modules/store/store');
 
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
@@ -89,7 +89,7 @@ $(window).on('load', function() {
 			// console.log(pedidoconfir);
 
 		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
-			console.log(res);
+			console.info(res);
 
 			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
 			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
@@ -136,7 +136,8 @@ $(window).on('load', function() {
 				newOrder = $('#order-id').text(),
 				company = localStorage.getItem('company'),
 				reason = localStorage.getItem('reason');
-
+			console.info(orderformId);
+				
 
 			if (istelevendas !== null) {
 
@@ -156,7 +157,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function (success) {						
+					success: function () {						
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');

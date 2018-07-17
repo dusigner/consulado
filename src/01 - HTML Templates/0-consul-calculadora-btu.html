@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-style.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/calculadora-btu.css?v=<!-- @echo package.version -->" />
+	<title>Simulador btu</title>
+</head>
+<body class="btu page-calculadora-btu">
+	<div class="page-calculadora-btu__container">
+		<main>
+			<section class="ambientacao">
+				<div class="introducao sub-section">
+					<div class="palco">
+						<div class="humaninhos"></div>
+					</div>
+
+					<div class="conteudo">
+						<h3>Descubra o ar condicionado ideal para a sua casa</h3>
+						<p>Utilize a nossa calculadora e encontre a melhor opção para você</p>
+						<button class="btn-init">Iniciar</button>
+					</div>
+				</div>
+
+				<div class="moradia has-animation sub-section">
+					<div class="palco carousel">
+						<div class="slide um" data-input="predio">
+							<div class="i-moradia"></div>
+						</div>
+						<div class="slide dois" data-input="casa">
+							<div class="i-moradia"></div>
+						</div>
+						<div class="slide tres " data-input="sobrado">
+							<div class="i-moradia"></div>
+						</div>
+					</div>
+
+					<div class="conteudo">
+						<h3>1. Comece escolhendo seu tipo de habitação.</h3>
+
+						<fieldset data-required="required" data-type="radio">
+							<label class="radio" for="predio">
+								<input type="radio" name="moradia" value="predio" id="predio" data-index="0" /> Prédio
+							</label>
+
+							<label class="radio" for="casa">
+								<input type="radio" name="moradia" value="casa" id="casa" data-index="1" /> Casa com telhado
+							</label>
+
+							<label class="radio" for="sobrado">
+								<input type="radio" name="moradia" value="sobrado" id="sobrado" data-index="2" /> Casa sem telhado
+							</label>
+						</fieldset>
+
+						<div class="navegacao">
+							<button class="btn-ant has-animation"> &lt;&lt; Anterior </button>
+							<button class="btn-seg btn-required disabled"> Próximo &gt;&gt; </button>
+						</div>
+					</div>
+				</div>
+
+				<div class="comodo has-animation sub-section">
+					<div class="palco carousel">
+						<div class="slide um has-palco" data-input="quarto"></div>
+						<div class="slide dois has-palco" data-input="escritorio"></div>
+						<div class="slide tres has-palco" data-input="jantar"></div>
+					</div>
+					<div class="conteudo" data-type="radio">
+						<h3>2. Selecione o ambiente onde deseja instalar o ar-condicionado</h3>
+
+						<fieldset data-required="required" data-type="radio">
+							<label class="radio" for="quarto">
+								<input type="radio" name="comodo" value="quarto" id="quarto" data-index="0" /> Quarto
+							</label>
+
+							<label class="radio" for="escritorio">
+								<input type="radio" name="comodo" value="escritorio" id="escritorio" data-index="1" /> Escritório
+							</label>
+
+							<label class="radio" for="jantar">
+								<input type="radio" name="comodo" value="sala-de-jantar" id="jantar" data-index="2" /> Sala de jantar
+							</label>
+						</fieldset>
+
+						<div class="navegacao">
+							<button class="btn-ant"> &lt;&lt; Anterior </button>
+							<button class="btn-seg btn-required disabled"> Próximo &gt;&gt; </button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="ambiente">
+				<!-- Carrega as interações -->
+				<div class="palco">
+					<div class="bedroom" id="palco-quarto">
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--carpet.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--clock.png" class="padrao" alt="" />
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--janela_a.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--cortina_a.png" class="cortinas" alt="" />
+						</div>
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--janela_b.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--cortina_b.png" class="cortinas" alt="" />
+						</div>
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--frames.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--rack.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--home_theater.png" class="home-theater" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--playstation.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--dvd.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--shelf.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--tv.png" class="televisor" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--person_b.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--person_c.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--bed.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--laptop.png" class="computador" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--person.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--fluorescente.png" class="lampada-fluorescente" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--bedroom--incandescente.png" class="lampada-normal" alt="" />
+					</div>
+					<div class="dinner-room" id="palco-jantar">
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--background.jpg" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--carpet.png" class="padrao" alt="" />
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--janela_a.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--cortina_a.png" class="cortinas" alt="" />
+						</div>
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--janela_b.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--cortina_b.png" class="cortinas" alt="" />
+						</div>
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--frames.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--rack.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--sofa.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--tv.png" class="televisor" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--home_theater.png" class="home-theater" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--dvd.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--playstation.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--person_b.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--person_c.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--table.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--laptop.png" class="computador" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--person.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--fluorescente.png" class="lampada-fluorescente" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--dinner_room--incandescente.png" class="lampada-normal" alt="" />
+					</div>
+					<div class="office" id="palco-escritorio">
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--background.jpg" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--carpet.png" class="padrao" alt="" />
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--janela_a.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--cortina_a.png" class="cortinas" alt="" />
+						</div>
+						<div class="janelas">
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--janela_b.png" class="janela padrao" alt="" />
+							<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--cortina_b.png" class="cortinas" alt="" />
+						</div>
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--rack.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--shelf.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--tv.png" class="televisor" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--home_theater.png" class="home-theater" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--person_b.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--person_c.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--table.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--mac.png" class="computador" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--chair.png" class="padrao" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--printer.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--xbox.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--dvd.png" class="outros" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--person.png" class="pessoas" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--fluorescente.png" class="lampada-fluorescente" alt="" />
+						<img src="//whirlpool.vteximg.com.br/arquivos/lp-calc-btu--office--incandescente.png" class="lampada-normal" alt="" />
+					</div>
+				</div>
+
+				<div class="sub-section interacao -tamanho ativo" data-required="required" data-type="numerico">
+					<h3>3. Qual o tamanho deste ambiente?</h3>
+
+					<fieldset>
+						<input class="input" type="text" name="comprimento" id="comprimento" disabled="disabled" value="0m" data-step=".5" data-suffix="m" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="comprimento"> Comprimento </label>
+					</fieldset>
+
+					<fieldset>
+						<input class="input" type="text" name="largura" id="largura" disabled="disabled" value="0m" data-step=".5" data-suffix="m" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="largura"> Largura </label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg btn-required  disabled"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+
+				<div class="sub-section interacao -periodo">
+					<h3>4. Selecione o período do dia que o ambiente fica exposto ao Sol</h3>
+
+					<fieldset>
+						<button id="manha" class="btn-no-input"><i class="icon manha "></i> Manhã </button>
+						<button id="tarde" class="btn-no-input"><i class="icon tarde "></i> Tarde </button>
+						<button id="sem-sol" class="btn-no-input"><i class="icon semSol"></i> Sem incidência do sol </button>
+						<input type="hidden" name="periodo" id="periodo" value="" />
+					</fieldset>
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg btn-required disabled"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+
+				<div class="sub-section interacao -janelas">
+					<h3>5. Quantas janelas há no local?</h3>
+
+					<fieldset>
+						<input class="input" type="text" name="janelas" data-controle="1" id="janelas" value="0" disabled="disabled" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="janelas"> Janelas </label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+				<div class="sub-section interacao" data-required="required" data-type="radio">
+					<h3>6. Nesse ambiente há cortinas?</h3>
+
+					<fieldset data-required="required" data-type="radio">
+						<label class="radio" for="sim">
+							<input type="radio" name="cortinas" value="1" data-controle="1" id="sim" /> Sim
+						</label>
+
+						<label class="radio" for="nao">
+							<input type="radio" name="cortinas" data-controle="1"  value="0" id="nao" /> Não
+						</label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg btn-required disabled"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+				<div class="sub-section interacao" data-required="required" data-type="numerico">
+					<h3>7. Quantas pessoas habitam o local?</h3>
+
+					<fieldset>
+						<input class="input" type="text" data-controle="1" name="pessoas" id="pessoas" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="pessoas"> Pessoas </label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg btn-required disabled"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+				<div class="sub-section interacao">
+					<h3>8. Quais aparelhos elétricos existem no ambiente?</h3>
+
+					<fieldset>
+						<input class="input" type="text" data-controle="1" name="televisor" id="televisor" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="televisor"> Televisor </label>
+					</fieldset>
+
+					<fieldset>
+						<input  class="input" type="text" data-controle="1" name="computador" id="computador" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="computador"> Computador </label>
+					</fieldset>
+
+					<fieldset>
+						<input class="input" type="text" data-controle="1" name="home-theater" id="home-theater" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="home-theater"> Home Theater </label>
+					</fieldset>
+
+					<fieldset>
+						<input class="input" type="text" data-controle="1" name="outros" id="outros" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="outros"> Outros </label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+				<div class="sub-section interacao">
+					<h3>9. Quantas lâmpadas há nesse ambiente?</h3>
+
+					<fieldset>
+						<input class="input" data-controle="1" type="text" name="lampada-normal" id="lampada-normal" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="lampada-normal"> Lâmpada normal </label>
+					</fieldset>
+
+					<fieldset>
+						<input class="input" data-controle="1" type="text" name="lampada-fluorescente" id="lampada-fluorescente" disabled="disabled" value="0" />
+						<button class="btn-conta -menos">-</button>
+						<button class="btn-conta -mais">+</button>
+						<label class="legenda" for="lampada-fluorescente"> Lâmpada fluorescente </label>
+					</fieldset>
+
+					<div class="navegacao">
+						<button class="btn-ant"> &lt;&lt; Anterior </button>
+						<button class="btn-seg btn-ult"> Próximo &gt;&gt; </button>
+					</div>
+				</div>
+			</section>
+
+
+
+			<!-- Resultado -->
+			<section class="resultado">
+				<header class="resultado__header">
+					<div class="separador recomecar">
+						<h3>Pronto!<br /> Já temos o resultado</h3>
+						<div class="share">
+							<a href="https://www.facebook.com/sharer/sharer.php?u=url" target="_blank" class="face"></a>
+							<a href="http://twitter.com/share?text=Texto de exemplo de compartilhamento :) precisamos de um texto para vir aqui." target="_blank" class="twitter"></a>
+						</div>
+						<button class="recomecar">Iniciar novamente</button>
+					</div>
+
+					<div class="separador conclusao">
+						<h3> A potência necessária para seu ambiente é: </h3>
+						<div class="destaque"> <span id="btu">18000</span> BTU/H* </div>
+					</div>
+				</header>
+
+				<footer class="btu__footer">
+					<p>       </p>
+					<p>*Resultados com cálculo aproximado, podendo oferecer variações. Em caso de dúvida entre em contato com um técnico da rede autorizada.</p>
+				</footer>
+
+
+				<div class="box-modelos">
+					<h3>Confira abaixo as opções ideais para você:</h3>
+
+				
+					<div class="overlay -hidden"></div>
+				</div>
+			</section>
+		</main>
+
+		<div id="resultado">P. Sherman, 42 - Wallaby Way, Sydney</div>
+	</div>
+	<script src="<!-- @echo assetsPath -->/consul2-app.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="<!-- @echo assetsPath -->/calculadora-btu.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>

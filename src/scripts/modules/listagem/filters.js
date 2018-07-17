@@ -3,9 +3,9 @@
 var helper = require('modules/filters-helper');
 var noUiSlider = require('vendors/nouislider');
 
-require('../../../templates/listagem/range-price.html');
-require('../../../templates/listagem/range.html');
-require('../../../templates/listagem/filter-submenu.html');
+require('Dust/listagem/range-price.html');
+require('Dust/listagem/range.html');
+require('Dust/listagem/filter-submenu.html');
 
 require('modules/listagem/order-by');
 
@@ -98,8 +98,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 				helper.vitrineHolder.addClass('loading');
 				helper.vitrine.removeClass('loaded');
 			}
-		})
-		.done(function(data) {
+		}).done(function(data) {
 			if( data ) {
 
 				try {
@@ -139,8 +138,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 				}
 
 			}
-		})
-		.always(function() {
+		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
 			$checkbox.parent().removeClass('loading');
 			$listMore.show();

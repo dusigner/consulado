@@ -1,0 +1,21 @@
+<button class="sony-button reverse-button shipping-value show-shipping-calculator">
+	<i class="icon icon-truck"></i>
+	<span>{strings.calculateShipping}</span>
+</button>
+
+<form id="calculoFrete" class="shipping-form" style="display: none;">
+		
+	<label class="infoCep">
+		{strings.enterPostalCode}
+		<input type="tel" name="shippingCep" id="txtCep" class="freight-zip-box" placeholder="Insira seu CEP" required />
+	</label>
+	
+	<input type="submit" value="OK" id="btnFreteSimulacao" class="freight-btn" title="OK" />
+	
+	{#showCorreiosSearch}
+		<a title="Não sei meu CEP" class="bt lnkExterno" target="_blank" href="http://www.buscacep.correios.com.br/servicos/dnec/menuAction.do?Metodo=menuLogradouro">Não sei meu CEP</a>
+	{/showCorreiosSearch}
+	
+	<div class="freight-values"></div>
+</form>
+

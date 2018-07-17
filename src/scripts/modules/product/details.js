@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, dust: true, _: true, vtxctx: true */
 'use strict';
 
-require('../../../templates/details.html');
-require('../../../templates/detailsLancamento.html');
+require('Dust/details.html');
+require('Dust/detailsLancamento.html');
 require('../../vendors/jquery.whp-modal');
 
 Nitro.module('details', function() {

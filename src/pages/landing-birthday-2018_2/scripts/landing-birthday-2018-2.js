@@ -85,7 +85,7 @@ Nitro.setup(['facebook-init'], function () {
 			});
 		});
 	});
-
+	
 	$('body').on('click', '.new-showcase .detalhes > a', function(){
 		dataLayer.push({
 			event: 'generic',
@@ -94,7 +94,7 @@ Nitro.setup(['facebook-init'], function () {
 			label: $(this).attr('title')
 		});
 	});
-
+	
 	$('body').on('click', '.eletrodomesticos > li > a', function(){
 		dataLayer.push({
 			event: 'generic',
@@ -103,7 +103,7 @@ Nitro.setup(['facebook-init'], function () {
 			label: $(this).attr('title')
 		});
 	});
-
+	
 	$('body').on('click', '.result-filter .detalhes a', function(){
 		dataLayer.push({
 			event: 'generic',
@@ -112,5 +112,5 @@ Nitro.setup(['facebook-init'], function () {
 			label: $(this).attr('title')
 		});
 	});
-
 });
+
