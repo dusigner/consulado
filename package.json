@@ -65,6 +65,10 @@
     "yarn": "^1.6.0"
   },
   "scripts": {
+    "deploy": "gulp deploy && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
+    "deploy-pages": "gulp deploy --page=ALL && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
+    "deploy-pj": "gulp deploy --account=consulempresa && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
+    "deploy-pj-pages": "gulp deploy --account=consulempresa --page=ALL && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
     "deploy-qa": "gulp deploy --qa && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
     "deploy-qa-pages": "gulp deploy --qa --page=ALL && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
     "deploy-qa-pj": "gulp deploy --account=consulqa2 && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
