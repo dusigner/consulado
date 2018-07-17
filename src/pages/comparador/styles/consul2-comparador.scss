@@ -67,6 +67,7 @@ body.compare {
 			display: block;
 			margin-bottom: 3rem;
 			transition: top .5s ease;
+			z-index: 3;
 
 			tr {
 				&:not(.remover) {
