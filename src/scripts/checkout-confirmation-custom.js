@@ -160,12 +160,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-<<<<<<< HEAD
-					success: function (success) {
-						console.info('success', success);
-=======
 					success: function () {						
->>>>>>> PLAT-6684_deploy
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
