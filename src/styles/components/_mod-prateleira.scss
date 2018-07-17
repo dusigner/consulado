@@ -790,14 +790,23 @@
 
 // CTA Comparador
 body.brastemp,
-body.brastempqa,
-body:not(.listagem) {
+body.brastempqa {
 	.btn-comparar {
 		display: none;
 		visibility: hidden;
 	}
 }
 
+body.consul,
+body.consulqa {
+	&:not(.listagem),
+	section:not(#prateleira) {
+		.btn-comparar {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
 
 
 #quem-viu-clicou {
