@@ -1,0 +1,80 @@
+{#product}
+	<div class="productPrice">
+		<p class="descricao-preco">
+			{#available}
+				{#validListPrice}
+				<em class="valor-de price-list-price" style="display: block">
+					{strings.listPrice}
+					<strong class="skuListPrice">{listPrice|intAsCurrency}</strong>
+				</em>
+				{/validListPrice}
+				{#validBestPrice}
+					<em class="valor-por price-best-price" style="display: block">
+						{strings.bestPrice}
+						<strong class="skuBestPrice">{bestPrice|intAsCurrency}</strong>
+					</em>
+				{/validBestPrice}
+				<em class="valor-dividido price-installments" style="display: block">
+					<span>
+						<span>ou <label class="skuBestInstallmentNumber">{installments}<span class="x">x</span></label> de </span>
+						<strong>
+							<label class="skuBestInstallmentValue">{installmentsValue|intAsCurrency}</label>
+							{#valPercentage}<span>{valPercentage}% OFF</span>{/valPercentage}
+						</strong>
+					</span>
+				</em>
+			{/available}
+		</p>
+
+		{#available}
+			<p class="preco-a-vista price-cash">
+				Preço a vista:
+				<strong class="skuPrice">{bestPrice|priceCash} </strong>
+				{#cashPercentage}<span>{cashPercentage}% OFF</span>{/cashPercentage}
+			</p>
+		{/available}
+
+		{#hasDiscount}
+			<em class="economia-de">
+				{strings.discountOf}
+				<span class="economia">{discount|intAsCurrency}</span>
+			</em>
+		{/hasDiscount}
+	</div>
+{/product}
+
+{#accessories}
+	<div class="accessoriesPrice">
+		<em class="accessoriesPriceText">
+			Acessórios:
+		</em>
+		<p class="descricao-preco">
+			<em class="valor-de price-list-price" style="display: block">
+				{string.listPrice}
+				<strong class="skuListPrice">{listPrice|intAsCurrency}</strong>
+			</em>
+			<em class="valor-por price-best-price" style="display: block">
+				{string.bestPrice}
+				<span class="skuBestPrice">{bestPrice|intAsCurrency}</span>
+			</em>
+		</p>
+	</div>
+{/accessories}
+
+{#total}
+	<div class="totalPrice">
+		<em class="totalPriceText">
+			Total:
+		</em>
+		<p class="descricao-preco">
+			<em class="valor-de price-list-price" style="display: block">
+				{string.listPrice}
+				<strong class="skuListPrice">{listPrice|intAsCurrency}</strong>
+			</em>
+			<em class="valor-por price-best-price" style="display: block">
+				{string.bestPrice}
+				<span class="skuBestPrice">{bestPrice|intAsCurrency}</span>
+			</em>
+		</p>
+	</div>
+{/total}

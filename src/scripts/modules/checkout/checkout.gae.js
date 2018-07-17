@@ -2,8 +2,8 @@
 
 'use strict';
 
-require('../../../templates/modal-warranty-desktop.html');
-require('../../../templates/modal-warranty-mobile.html');
+require('Dust/modal-warranty-desktop.html');
+require('Dust/modal-warranty-mobile.html');
 
 
 Nitro.module('checkout.gae', function() {

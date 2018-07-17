@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags/>
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+</head>
+<body data-controller="pedidos">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	
+	<!--	Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Main -->
+	<div class="main clearfix">
+
+		<vtex.cmc:orderList/>
+
+	</div>
+	<!-- /Main -->
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-style.css?v=<!-- @echo package.version -->" />
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<div class="modal fade" id="modal-services" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display:none">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<h4 class="modal-title" id="myModalLabel">Seguro Garantia Estendida Original</h4>
+				</div>
+				<div class="modal-body">
+					<h2>Atenção!</h2>
+
+					<p>Tem certeza que deseja cancelar o Seguro Garantia Estendida Original?</p>
+
+					<div style="display:none">
+						<form method="post" name="FormWebToVtex" action="//consul.ds.vtexcrm.com.br/WebToVtex/Execute?idWebToVtex=101&amp;accountId=67a50acd-8ac4-4640-b0db-ed39e22fecd4&amp;accountName=consul" ><br/>
+							Criado por(Json): <input type='text' name='CG_createdBy_USER' id='CG_createdBy_USER'/><br/>
+							CPF: <input type='text' name='CG_document' id='CG_document'/><br/>
+							Usuário da última interação(Json): <input type='text' name='CG_lastInteractionBy_USER' id='CG_lastInteractionBy_USER'/><br/>
+							Pedido: <input type='text' name='CG_order' id='CG_order'/><br/>
+							Sku: <input type='text' name='CG_skuRefId' id='CG_skuRefId'/><br/>
+							Atualizado por(Json): <input type='text' name='CG_updatedBy_USER' id='CG_updatedBy_USER'/><br/>
+							Tipo Garantia: <input type="text" name="CG_garantia" id="CG_garantia" /><br/>
+							Indice: <input type="text" name="CG_indice" id="CG_indice" /><br/>
+							<input type="submit" value="Enviar"/><br/>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+					<button type="button" id="btn-concordo" class="btn btn-primary">Sim</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-generate-pdf" tabindex="-1" role="dialog" aria-labelledby="modal-generate-pdf-label" aria-hidden="true" style="display:none">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+					<h4 class="modal-title" id="modal-generate-pdf-label">Seguro Garantia Estendida Original</h4>
+				</div>
+				<div class="modal-body">
+					<iframe src="" class="frame-pdf" ></iframe>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+					<button type="button" id="btn-concordo" class="btn btn-primary">Sim</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

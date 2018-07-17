@@ -31,7 +31,7 @@
 body.compare {
 	@media (max-width: 60em) {
 		.container {
-			padding: 0 5px;
+			padding: 0;
 		}
 	}
 }
@@ -62,11 +62,12 @@ body.compare {
 				padding: 1em .5em 60px .5em;
 				position: relative;
 				width: calc(100%);
-				z-index: 4;
+				z-index: 3;
 			}
 			display: block;
 			margin-bottom: 3rem;
 			transition: top .5s ease;
+			z-index: 4;
 
 			tr {
 				&:not(.remover) {
@@ -237,6 +238,10 @@ body.compare {
 				&.remover {
 					background-color: #3B3B3A;
 					z-index: 3;
+
+					a {
+						@include breakpoint('small', 'max') { padding: .7em 1.5em; }
+					}
 
 					&:after {
 						background: #3B3B3A;

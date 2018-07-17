@@ -3,12 +3,12 @@
 require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
-require('templates/orders/recurrence/recurrences.html');
-require('templates/orders/recurrence/recurrenceStatus.html');
-require('templates/orders/recurrence/recurrenceData.html');
-require('templates/orders/recurrence/recurrenceToggle.html');
-require('templates/orders/recurrence/recurrencePayments.html');
-require('templates/orders/recurrence/recurrenceAddresses.html');
+require('Dust/orders/recurrence/recurrences.html');
+require('Dust/orders/recurrence/recurrenceStatus.html');
+require('Dust/orders/recurrence/recurrenceData.html');
+require('Dust/orders/recurrence/recurrenceToggle.html');
+require('Dust/orders/recurrence/recurrencePayments.html');
+require('Dust/orders/recurrence/recurrenceAddresses.html');
 
 var CRM = require('modules/store/orders-crm');
 
@@ -31,14 +31,18 @@ Nitro.module('order.recurrences', function() {
 		self.$container.addClass('myorders--loading');
 
 		if(!self.recurrences.recurrences) {
-			CRM.getRecurrences()
-				.then(function(res) {
-					if(res.status === 'INACTIVE') {
-						$.each(res.items, function(i, v) {
-							v.status = 'INACTIVE';
-						});
-					}
+			CRM.getRecurrences().then(function(res) {
 
+				if(res.status === 'INACTIVE') {
+					$.each(res.items, function(i, v) {
+						v.status = 'INACTIVE';
+					});
+				}
+
+				self.recurrences.recurrences = res;
+				self.recurrenceRender(self.recurrences.recurrences);
+
+<<<<<<< HEAD
 					self.recurrences.recurrences = res;
 
 					// Criar string com periodo de recorrência final
@@ -47,28 +51,25 @@ Nitro.module('order.recurrences', function() {
 					});
 
 					self.recurrenceRender(self.recurrences.recurrences);
+=======
+				return res;
+				
+			}).then(function(res) {
+				return CRM.getAccounts(res.id).then(function(res) {
+					self.accountRender(res);
+>>>>>>> PLAT-6684_deploy
 
 					return res;
-				})
-				.then(function(res) {
-					return CRM.getAccounts(res.id)
-								.then(function(res) {
-									self.accountRender(res);
-
-									return res;
-								});
-				})
-				.then(function(res) {
-					CRM.getAddresses(res.subscription)
-						.then(function(res) {
-							self.addressRender(res);
-						});
-				})
-				.fail(function() {
-					self.$container.removeClass('myorders--loading');
-					self.recurrences.isLoaded = true;
-					self.$recurrencesContainer.html('<h2 class="text-center">Não há recorrências ativas</h2>');
 				});
+			}).then(function(res) {
+				CRM.getAddresses(res.subscription).then(function(res) {
+					self.addressRender(res);
+				});
+			}).fail(function() {
+				self.$container.removeClass('myorders--loading');
+				self.recurrences.isLoaded = true;
+				self.$recurrencesContainer.html('<h2 class="text-center">Não há recorrências ativas</h2>');
+			});
 		} else {
 			self.recurrenceRender(self.recurrences.recurrences);
 		}
@@ -134,10 +135,9 @@ Nitro.module('order.recurrences', function() {
 					var $self = $(this); //current form
 
 					$.crmHandler(step, function() {
-						return CRM.changeAccount(self.recurrences.recurrences.id, $.serializeForm($self))
-								.then(function() {
-									step('next');
-								});
+						return CRM.changeAccount(self.recurrences.recurrences.id, $.serializeForm($self)).then(function() {
+							step('next');
+						});
 					});
 				});
 			}
@@ -153,12 +153,11 @@ Nitro.module('order.recurrences', function() {
 					var $self = $(this); //clicked button
 
 					$.crmHandler(step, function() {
-						return 	CRM.pauseRecurrence(self.recurrences.recurrences.id, 'status='+$self.data('status'))
-									.then(function() {
-										$('.modal-whp__title').text($.titleStatus($self.data('status')));
-										step('next');
-										self.resetRecurrence();
-									});
+						return 	CRM.pauseRecurrence(self.recurrences.recurrences.id, 'status='+$self.data('status')).then(function() {
+							$('.modal-whp__title').text($.titleStatus($self.data('status')));
+							step('next');
+							self.resetRecurrence();
+						});
 					});
 				});
 			}
@@ -179,11 +178,10 @@ Nitro.module('order.recurrences', function() {
 					e.preventDefault();
 
 					$.crmHandler(step, function() {
-						return CRM.deleteItem(self.recurrences.recurrences.id, $self.data('id'))
-								.then(function() {
-									step('next');
-									self.resetRecurrence();
-								});
+						return CRM.deleteItem(self.recurrences.recurrences.id, $self.data('id')).then(function() {
+							step('next');
+							self.resetRecurrence();
+						});
 					});
 				});
 			}
@@ -205,11 +203,10 @@ Nitro.module('order.recurrences', function() {
 					var $form = $(this); //current form
 
 					$.crmHandler(step, function() {
-						return CRM.updateItem(self.recurrences.recurrences.id, $self.data('id'), $form.serialize() + '&frequency[periodicity]=' + $self.data('period-periodicity') + '&frequency[interval]=' + $self.data('period-frequency'))
-								.then(function() {
-									step('next');
-									self.resetRecurrence();
-								});
+						return CRM.updateItem(self.recurrences.recurrences.id, $self.data('id'), $form.serialize() + '&frequency[periodicity]=' + $self.data('period-periodicity') + '&frequency[interval]=' + $self.data('period-frequency')).then(function() {
+							step('next');
+							self.resetRecurrence();
+						});
 					});
 				});
 			}
@@ -233,12 +230,11 @@ Nitro.module('order.recurrences', function() {
 						var $button = $(this); //clicked button
 
 						$.crmHandler(step, function() {
-							return CRM.updateItem(self.recurrences.recurrences.id, $self.data('id'), 'frequency[periodicity]=' + $self.data('period-periodicity') + '&frequency[interval]=' + $self.data('period-frequency') + '&status=' + $button.data('status'))
-									.then(function() {
-										$('.modal-whp__title').text($.titleStatus($self.data('status')));
-										step('next');
-										self.resetRecurrence();
-									});
+							return CRM.updateItem(self.recurrences.recurrences.id, $self.data('id'), 'frequency[periodicity]=' + $self.data('period-periodicity') + '&frequency[interval]=' + $self.data('period-frequency') + '&status=' + $button.data('status')).then(function() {
+								$('.modal-whp__title').text($.titleStatus($self.data('status')));
+								step('next');
+								self.resetRecurrence();
+							});
 						});
 					});
 				}

@@ -62,8 +62,7 @@ Nitro.setup(['landing-gae'], function () {
 		$(document).ready(function(){
 			$('.tgl').css('display', 'none');
 			$('.btn-ver-mais').click(function() {
-				$('#box-toggle .tgl').slideToggle('slow')
-				.siblings('.tgl:visible').slideToggle('fast');
+				$('#box-toggle .tgl').slideToggle('slow').siblings('.tgl:visible').slideToggle('fast');
 				$('.btn-ver-mais').hide();
 				$('#box-toggle').removeClass('infos-regulamento');
 			});
@@ -96,11 +95,11 @@ Nitro.setup(['landing-gae'], function () {
 		if (value === '') {
 			return false;
 		}
-        // Elimina values invalidos conhecidos
+		// Elimina values invalidos conhecidos
 		if (value.length !== 11 || value === '00000000000' || value === '11111111111' || value === '22222222222' || value === '33333333333' || value === '44444444444' || value === '55555555555' || value === '66666666666' || value === '77777777777' || value === '88888888888' || value === '99999999999') {
 			return false;
 		}
-        // Valida 1o digito
+		// Valida 1o digito
 		var add = 0;
 		for (var i = 0; i < 9; i++) {
 			add += parseInt(value.charAt(i), 10) * (10 - i);
@@ -112,7 +111,7 @@ Nitro.setup(['landing-gae'], function () {
 		if (rev !== parseInt(value.charAt(9), 10)) {
 			return false;
 		}
-        // Valida 2o digito
+		// Valida 2o digito
 		add = 0;
 		for (i = 0; i < 10; i++) {
 			add += parseInt(value.charAt(i), 10) * (11 - i);

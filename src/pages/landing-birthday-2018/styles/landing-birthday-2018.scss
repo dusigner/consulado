@@ -346,8 +346,8 @@
 						}
 					}
 					color: #FFFFFF;
-					font-size: 12px;
 					display: inline-block;
+					font-size: 12px;
 					line-height: 10px;
 					margin: 0 10px;
 					padding-left: 25px;
@@ -360,7 +360,7 @@
 					}
 					&:after,
 					&:before {
-						content: " ";
+						content: ' ';
 						display: inline-block;
 						left: 0;
 						position: absolute;

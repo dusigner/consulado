@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 //------------------------------------
 //  ICONS
@@ -64,10 +64,10 @@ $icons: (
 
 	'icon-engrenagem'         : '\e90d',
 
-	"cadastrar"               : '\e908',
-	"facebook-messenger"      : '\e909',
-	"eye"                     : '\e90a',
-	"logo-consul-aniversario" : '\e90b',
+	'cadastrar'               : '\e908',
+	'facebook-messenger'      : '\e909',
+	'eye'                     : '\e90a',
+	'logo-consul-aniversario' : '\e90b',
 
 	'orderState-pedidoRealizado'       : '\e90e',
 	'orderState-pagamento'         	   : '\e90f',
@@ -83,26 +83,26 @@ $icons: (
 
 @font-face {
 	font-family: 'whirlpool';
-	src: url("#{$icon-path}whirlpool2.eot");
-	src: url("#{$icon-path}whirlpool2.eot?#iefix") format("embedded-opentype"),
-		 url("#{$icon-path}whirlpool2.woff2") format('woff2'),
-		 url("#{$icon-path}whirlpool2.woff") format("woff"),
-		 url("#{$icon-path}whirlpool2.ttf") format("truetype"),
-		 url("#{$icon-path}whirlpool2.svg#whirlpool") format("svg");
+	src: url('#{$icon-path}whirlpool2.eot');
+	src: url('#{$icon-path}whirlpool2.eot?#iefix') format('embedded-opentype'),
+		 url('#{$icon-path}whirlpool2.woff2') format('woff2'),
+		 url('#{$icon-path}whirlpool2.woff') format('woff'),
+		 url('#{$icon-path}whirlpool2.ttf') format('truetype'),
+		 url('#{$icon-path}whirlpool2.svg#whirlpool') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
 
 .icon {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	font-family: 'whirlpool';
 	font-style: normal;
-	font-weight: normal;
 	font-variant: normal;
+	font-weight: normal;
 	line-height: 1;
 	speak: none;
 	text-transform: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 
 	@each $key, $value in $icons {
 		&.icon-#{$key}:before { content: $value }
@@ -121,8 +121,8 @@ $icons: (
 		height: 2px;
 		margin-top: -1px;
 		position: absolute;
-		top: 50%;
 		right: 0;
+		top: 50%;
 		width: 100%;
 	}
 }
@@ -141,15 +141,15 @@ $icons: (
 }
 
 @mixin icon-get( $icon ) {
-	font-family: "whirlpool" !important;
-	font-style: normal !important;
-	font-weight: normal !important;
-	font-variant: normal !important;
-	text-transform: none !important;
-	speak: none;
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'whirlpool' !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	line-height: 1;
+	speak: none;
+	text-transform: none !important;
 
 	content: map-get($icons, $icon);
 };

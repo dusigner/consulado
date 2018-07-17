@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, dust:true */
 'use strict';
 
-require('../../../templates/special-content.html');
+require('Dust/special-content.html');
 
 Nitro.module('special-content', function() {
 

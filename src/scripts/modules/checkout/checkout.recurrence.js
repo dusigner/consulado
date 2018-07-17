@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, dust: true, dust: true, _: true, vtexjs:true */
 'use strict';
 
-require('../../../templates/checkout.recurrenceSteps.html');
-require('../../../templates/checkout.recurrenceModal.html');
+require('Dust/checkout.recurrenceSteps.html');
+require('Dust/checkout.recurrenceModal.html');
 
 Nitro.module('checkout.recurrence', function() {
 
@@ -80,10 +80,9 @@ Nitro.module('checkout.recurrence', function() {
 				var $self = $(this);
 
 				self.actionsAttachment($self, function(item, content) {
-					vtexjs.checkout.addItemAttachment(item, 'Recorrência', content)
-									.then(function() {
-										$('#modal-recurrence').modal('hide');
-									});
+					vtexjs.checkout.addItemAttachment(item, 'Recorrência', content).then(function() {
+						$('#modal-recurrence').modal('hide');
+					});
 				});
 			});
 

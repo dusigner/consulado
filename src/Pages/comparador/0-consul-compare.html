@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-comparador.css?v=<!-- @echo package.version -->" />
+</head>
+<body data-controller="compare">
+	<!-- Top Header -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
+
+	<div class="container clearfix">
+
+		<div class="compare-produtos-wrapper">
+			<vtex.cmc:ProductComparison ShelfLayoutId="<!-- @echo listagemPrateleira -->" />
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	
+	<script src="<!-- @echo assetsPath -->/consul2-comparador.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>

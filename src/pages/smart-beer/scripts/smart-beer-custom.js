@@ -264,7 +264,7 @@ var animation_Features = function () {
 	// var wrapperWidth = $('.sb-features .wrapper').width(),
 	// 	wrapperHeight = $('.sb-features .wrapper').height(),
 
-		// section = $('.sb-features'),
+	// section = $('.sb-features'),
 	var section1Height = $('.sb-features .wrapper').height(),
 
 
