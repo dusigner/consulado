@@ -238,6 +238,10 @@ body.compare {
 					background-color: #3B3B3A;
 					z-index: 3;
 
+					a {
+						@include breakpoint('small', 'max') { padding: .7em 1.5em; }
+					}
+
 					&:after {
 						background: #3B3B3A;
 						content: '';
