@@ -65,7 +65,7 @@ Nitro.module('chaordic', function() {
 	this.init = function(name, productId) {
 		name ? API.APIPARAMS.name = name : '';
 		productId ? API.APIPARAMS.productId = productId : '';
-
+		console.log('home');
 		if( $('[data-chaordic]').length > 0 ) {
 
 			if(!API.APIPARAMS.deviceId) {
@@ -242,7 +242,7 @@ Nitro.module('chaordic', function() {
 	 */
 	this.getShelf = function() {
 		var dfd = jQuery.Deferred();
-
+		console.log('shelf');
 		if(!chaordicData) {
 			if(!self._hasFalseKeys(API.APIPARAMS)) {
 				$.ajax({
