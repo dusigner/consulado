@@ -227,12 +227,14 @@ gulp.task('styles', ['sassLint'], function () {
 		.pipe( $.util.env.production ? $.postcss([
 			autoprefixer(),
 			flexibility(),
-			cssMqpacker({sort: true}),
+			cssMqpacker(),
 			cssnano({
 				zindex: false,
 				reduceIdents: false
 			}),
-		]) :  $.util.noop())
+		]) : $.postcss([
+			cssMqpacker()
+		]))
 		.pipe($.util.env.production ? $.preprocess(preprocessContext) : $.util.noop())
 		.pipe(!$.util.env.production ? $.sourcemaps.write('.') : $.util.noop())
 		.pipe((accountName === 'consul' || accountName === 'consulempresa') ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files));
