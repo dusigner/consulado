@@ -62,12 +62,12 @@ body.compare {
 				padding: 1em .5em 60px .5em;
 				position: relative;
 				width: calc(100%);
-				z-index: 4;
+				z-index: 3;
 			}
 			display: block;
 			margin-bottom: 3rem;
 			transition: top .5s ease;
-			z-index: 3;
+			z-index: 4;
 
 			tr {
 				&:not(.remover) {
