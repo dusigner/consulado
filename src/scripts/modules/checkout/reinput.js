@@ -2,11 +2,11 @@
 
 'use strict';
 
-require('../../../templates/reinput.html');
+require('Dust/reinput.html');
 
 // var CRM = require('modules/store/crm');
 
-require('expose?store!modules/store/store');
+require('expose-loader?store!modules/store/store');
 
 
 Nitro.module('reinput', function() {	
