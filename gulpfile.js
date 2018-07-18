@@ -360,9 +360,8 @@ gulp.task('gitTag', function() {
 		shell.echo('Error: Git fetch tags failed');
 		shell.exit(1);
 	}else {
-		shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function() {
-			// pkg.version = stdout.replace('refs/tags/v','').trim();
-			pkg.version = new Date().getTime();
+		shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function(code, stdout) {
+			pkg.version = stdout.replace('refs/tags/v','').trim();
 
 			preprocessContext = {
 				context: {
@@ -382,9 +381,9 @@ gulp.task('gitTag', function() {
 
 gulp.task('bump', function() {
 
-	return /* gulp.src('package.json')
+	return gulp.src('package.json')
 		.pipe($.util.env.nobump ? $.util.noop() : $.bump({ version: pkg.version }))
-		.pipe(gulp.dest('.')) */;
+		.pipe(gulp.dest('.'));
 });
 
 gulp.task('templates', function() {
