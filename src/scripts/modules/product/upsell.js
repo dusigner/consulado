@@ -2,11 +2,12 @@
 
 'use strict';
 
-require('Dust/product/upsell-cns.html');
+require('Dust/product/upsell.html');
+require('Dust/product/downgrade.html');
 
 
 Nitro.module('upsell', function() {
-	// console.clear();
+	console.clear();
 
 	const self = this;
 	
@@ -40,38 +41,66 @@ Nitro.module('upsell', function() {
 		
 		uri   = window.location.href,
 		utlAtual = window.location.pathname,
-		idurl = uri.split('upgrade='),
+		idurl = uri.split('downgrade=')[1],
 		apiResponse;
 
-	this.setup = () => {
+	this.upgrade = () => {
 		self.openclose();
 		self.valordiferenca();
-		self.verificadowngrade();
 		self.montandomodal();		
 		self.responsivo();
+		if (window.location.host.indexOf('consulqa') === -1) {
+			self.tagueamento();
+		}		
+	};
 
+	this.downgrade = () => {
+		self.openclose();
+		self.valordiferenca();			
+		self.responsivo();
 		if (window.location.host.indexOf('consulqa') === -1) {
 			self.tagueamento();
 		}		
 	};
 
 	this.renderHtml = () => {
-		var settings = {
-			'url': `/api/catalog_system/pub/products/search/${urlUpgrade}`,
-			'method': 'GET'
-		};
-		$.ajax(settings).then(function (response) {
-			console.log('✔', response);
-			apiResponse = response[0];
-			return response;
-		}).then(function(data) {
-			dust.render('upsell-cns', data, function(err, out) {
-				if (err) { throw new Error('Product Dust error: ' + err); }
-				if(urlUpgradetd.length >= 1){$('#upsell').append(out);}
+		if (uri.indexOf('downgrade') > 0 ){
+
+			var settingsDowngrade = {
+				'url': `/api/catalog_system/pub/products/search/${idurl}`,
+				'method': 'GET'
+			};
+			$.ajax(settingsDowngrade).then(function (response) {
+				console.log('✔ Downdragre', response);				
+				return response;
+			}).then(function(data) {
+				dust.render('downgrade', data, function(err, out) {
+					if (err) { throw new Error('Product Dust error: ' + err); }
+					$('#upsell').append(out);
+				});
+			}).done(function() {
+				self.downgrade();			
 			});
-		}).done(function() {
-			self.setup();
-		});
+			
+		}else {
+			
+			var settings = {
+				'url': `/api/catalog_system/pub/products/search/${urlUpgrade}`,
+				'method': 'GET'
+			};
+			$.ajax(settings).then(function (response) {
+				console.log('✔ Upgrade', response);
+				apiResponse = response[0];
+				return response;
+			}).then(function(data) {
+				dust.render('upsell', data, function(err, out) {
+					if (err) { throw new Error('Product Dust error: ' + err); }
+					if(urlUpgradetd.length >= 1){$('#upsell').append(out);}
+				});
+			}).done(function() {
+				self.upgrade();
+			});
+		}
 	};
 
 	this.responsivo = () => {
@@ -115,8 +144,7 @@ Nitro.module('upsell', function() {
 			'url': `/api/catalog_system/pub/products/search/${utlAtual}`,
 			'method': 'GET'
 		};
-		$.ajax(settings).then(function (response) {
-			console.log('👀', response);
+		$.ajax(settings).then(function (response) {			
 			return response;
 		}).done(function(response) {
 			// montando vitrine do produto atual dentro do modal
@@ -149,9 +177,8 @@ Nitro.module('upsell', function() {
 		// montando dados do produto upgrade
 		$('.title-price-upgrade p strong, .info-product-mobile h3 strong').html(skureferencup);
 		$('.oportunidadePro h2:nth-child(3) strong').html(skureferencup);		
-		$('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?upgrade=' + window.location.pathname);
+		$('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?downgrade=' + window.location.pathname);
 	};
-
 
 	this.openclose = () => {
 
@@ -167,32 +194,6 @@ Nitro.module('upsell', function() {
 		});
 
 
-	};
-
-	this.verificadowngrade = () => {
-		
-		if (uri.indexOf('upgrade') > 0 ){
-
-			console.log('asasasas');			
-			
-			$('.downgrade .textupgrade h2, .downgrade .upgrade-mobile h2').html('<strong> você estava visualizando...</strong>');
-			$('.downgrade .product-upgrade .textupgrade p').html('Ficou na dúvida? Você pode visitar o produto que estava navegando clicando aqui.');
-			$('.downgrade .btn-interessado-upgrade, .downgrade .btn-interessado-upgrade-mobile').addClass('hide');
-			$('.icon-open-upgrade').addClass('voltar');
-			$('.downgrade .btn-interessado-downgrade, .downgrade .btn-interessado-downgrade-mobile').removeClass('hide');
-					
-		} else {			
-			$(this).addClass('hide');
-			$('.icon-open-upgrade').css('display', 'none');
-			valorProupgrade = $(this).find('.title-price-upgrade span').text().replace(/\D/gmi, '');
-			$(this).attr('data-price', valorProupgrade);
-
-			if ( valorProupgrade > valorProatualFormt ){
-				$(this).removeClass('hide');
-				$('.icon-open-upgrade').css('display', 'block');
-			}		
-
-		}
 	};
 
 	this.tagueamento = () => {
