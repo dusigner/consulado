@@ -1,5 +1,5 @@
 {#.}
-<div class="icon-open-upgrade voltar"></div>
+<div class="icon-open-upgrade ativo voltar"></div>
 <section class="product-upgrade">
 
 	<div class="upgrade-mobile hide">
@@ -14,20 +14,34 @@
 			<div class="info-product-mobile">
 				<span>POR + R$0,00</span>
 				<h3>{productName} - <strong>{productReference}</strong></h3>
-				<strong class="price-mobile-upgrade">$product.BestPrice</strong>
+				<strong class="price-mobile-upgrade">
+				{#items[0]}
+					{#sellers}
+						{#commertialOffer}
+							{Price}
+						{/commertialOffer}
+					{/sellers}
+				{/items[0]}
+				</strong>
 			</div>
 
-			<div class="especifi-product-mobile">
+			<div class="especificao-produtos">				 
 				<ul>
-					<li class="licapacidadem"><strong>CAPACIDADE</strong><span>$product.ProductField(235)</span></li>
-					<li class="lipainelm"><strong>PAINEL</strong><span>$product.ProductField(258)</span></li>
-					<li class="litemperaturam"><strong>FORMATO</strong><span>$product.ProductField(803)</span></li>
-				</ul>
-			</div>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>				  
+			  </div>
 
 		</div>
 		<div class="aceito-mobile">						
-			<a class="btn-interessado-downgrade-mobile" href="$uri">VER PRODUTO NOVAMENTE</a>
+			<a class="btn-interessado-downgrade-mobile" href="/{linkText}/p">VER PRODUTO NOVAMENTE</a>
 		</div>
 	</div>
 	

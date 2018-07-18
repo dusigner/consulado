@@ -1,7 +1,5 @@
 {#.}
-<div class="icon-open-upgrade"></div>
-
-<div class="hide skureferenc">$product.ProductField(<!-- @echo shelfProductFieldModelo -->)</div>
+<div class="icon-open-upgrade ativo"></div>
 
 <!-- Modal upgrade -->
 	  <div id="modal-produto-upgrade" class="modal-upgrade" data-title="DÊ UM UPGRADE NO SEU PRODUTO" style="display:none">
@@ -73,21 +71,34 @@
 						<div class="info-product-mobile">
 							<span>POR + R$0,00</span>
 							<h3>{productName} - <strong>{productReference}</strong></h3>
-							<strong class="price-mobile-upgrade">$product.BestPrice</strong>
+							<strong class="price-mobile-upgrade">
+								{#items[0]}
+									{#sellers}
+										{#commertialOffer}
+											{Price}
+										{/commertialOffer}
+									{/sellers}
+								{/items[0]}
+							</strong>
 						</div>
 
-						<div class="especifi-product-mobile">
+						<div class="especificao-produtos">				 
 							<ul>
-								<li class="licapacidadem"><strong>CAPACIDADE</strong><span>$product.ProductField(235)</span></li>
-								<li class="lipainelm"><strong>PAINEL</strong><span>$product.ProductField(258)</span></li>
-								<li class="litemperaturam"><strong>FORMATO</strong><span>$product.ProductField(803)</span></li>
-							</ul>
-						</div>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+								<li></li>
+							</ul>				  
+						  </div>
 
 					</div>
 					<div class="aceito-mobile">
-						<a class="btn-interessado-upgrade-mobile" href="$uri">ESTOU INTERESSADO</a>
-						<a class="btn-interessado-downgrade-mobile hide" href="$uri">VER PRODUTO NOVAMENTE</a>
+						<a class="btn-interessado-upgrade-mobile" href="$uri">ESTOU INTERESSADO</a>						
 					</div>
 				</div>
 				

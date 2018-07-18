@@ -13,8 +13,7 @@ Nitro.module('upsell', function() {
 	
 	let 
 		// pegando valores do produto atual
-		valorProatual      = $('.prod-preco .skuBestPrice').text(),
-		valorProatualFormt = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
+		valorProatual      = $('.prod-preco .skuBestPrice').text(),		
 		urlUpgradetd       = $('td.value-field.Link-do-Upgrade'),
 		urlUpgrade         = $('td.value-field.Link-do-Upgrade').text(),
 
@@ -49,6 +48,7 @@ Nitro.module('upsell', function() {
 		self.valordiferenca();
 		self.montandomodal();		
 		self.responsivo();
+		self.montandoModalMobile();
 		if (window.location.host.indexOf('consulqa') === -1) {
 			self.tagueamento();
 		}		
@@ -58,6 +58,7 @@ Nitro.module('upsell', function() {
 		self.openclose();
 		self.valordiferenca();			
 		self.responsivo();
+		self.montandoModalMobile();
 		if (window.location.host.indexOf('consulqa') === -1) {
 			self.tagueamento();
 		}		
@@ -108,7 +109,6 @@ Nitro.module('upsell', function() {
 		if ($(window).width() <= 768) {
 
 			$(document).ready(function(){
-				$('.icon-open-upgrade').addClass('ativo');
 				$('.product-upgrade').removeClass('hide').addClass('mobile');			
 				$('.upgrade-mobile').removeClass('hide');			
 				$('#upsell').addClass('mobile');			
@@ -116,8 +116,7 @@ Nitro.module('upsell', function() {
 			
 		} else {
 			
-			$(document).ready(function(){
-				$('.icon-open-upgrade').addClass('ativo');				
+			$(document).ready(function(){				
 				$('.product-upgrade').removeClass('hide');		
 			});			
 		}
@@ -147,6 +146,7 @@ Nitro.module('upsell', function() {
 		$.ajax(settings).then(function (response) {			
 			return response;
 		}).done(function(response) {
+
 			// montando vitrine do produto atual dentro do modal
 			$('.voce-esta-vendo h2:nth-child(3)').html(`${response[0].productName} - <strong> ${response[0].productReference}</strong>`);
 			$('.voce-esta-vendo span').html(`${valorProatual}`);
@@ -178,6 +178,10 @@ Nitro.module('upsell', function() {
 		$('.title-price-upgrade p strong, .info-product-mobile h3 strong').html(skureferencup);
 		$('.oportunidadePro h2:nth-child(3) strong').html(skureferencup);		
 		$('.ir-para-produto, .aceito-mobile .btn-interessado-upgrade-mobile').attr('href', urlupgrade + '?downgrade=' + window.location.pathname);
+	};
+
+	this.montandoModalMobile = () => {
+		console.log('📱');
 	};
 
 	this.openclose = () => {
