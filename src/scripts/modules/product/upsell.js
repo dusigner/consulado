@@ -127,7 +127,7 @@ Nitro.module('upsell', function() {
 		// pega e formata o preço do produto upgrade
 		priceBarra         = Number($('.title-price-upgrade span').text()),
 		priceBarraFormt    = _.formatCurrency( priceBarra ),
-		$('.title-price-upgrade span, .corpo-produtos-modal .oportunidadePro span').html(`R$ ${priceBarraFormt}`),
+		$('.title-price-upgrade span, .corpo-produtos-modal .oportunidadePro span, .price-mobile-upgrade').html(`R$ ${priceBarraFormt}`),
 		
 		// Pega, formata e subtrai os valores dos produtos
 		valorProdatualcalc = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
