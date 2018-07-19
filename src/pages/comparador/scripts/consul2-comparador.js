@@ -1,7 +1,7 @@
 'use strict';
 
-Nitro.controller('compare', function() {
-
+Nitro.controller('compare', function() {	
+	
 	var self = this,
 		$titlePage = $('.compare-produtos-wrapper > h2'),
 		$body = $('body'),
@@ -15,11 +15,22 @@ Nitro.controller('compare', function() {
 		self.settDiffAndEqRows();
 		self.buildHighlightDiff();
 		self.listeners();
+		self.revemoveVoltage();
 	};
 
 	this.removeRows = function() {
 		$('table tbody tr').each(function() {
 			if(!$(this).hasClass('Características') && !$(this).hasClass('remover')) {
+				$(this).remove();
+			}
+			
+		});
+	};
+	
+	this.revemoveVoltage = () => {
+		$('.corpo-comparacao table tbody tr').each(function() {
+			let voltagem = $(this).find('th').text();
+			if (voltagem === 'Voltagem') {
 				$(this).remove();
 			}
 		});
