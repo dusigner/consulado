@@ -1,7 +1,7 @@
 {
   "name": "consul",
   "accountName": "consul",
-  "version": "4.74.3",
+  "version": "5.0.0",
   "author": "Jussi Platform Team",
   "private": true,
   "dependencies": {
@@ -52,7 +52,7 @@
     "gulp-sourcemaps": "^2.4.1",
     "gulp-util": "^3.0.8",
     "hard-source-webpack-plugin": "^0.10.1",
-    "jussitb": "^1.0.5",
+    "jussitb": "^1.2.2",
     "postcss-flexibility": "^2.0.0",
     "proxy-middleware": "^0.15.0",
     "serve-static": "^1.13.2",
@@ -65,9 +65,16 @@
     "yarn": "^1.6.0"
   },
   "scripts": {
-    "deploy-qa": "gulp deploy --qa && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
-    "deploy-qa-pages": "gulp deploy --qa --page=ALL && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
-    "deploy-qa-pj": "gulp deploy --account=consulqa2 && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
-    "deploy-qa-pj-pages": "gulp deploy --account=consulqa2 --page=ALL && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos"
+    "deploy": "git checkout master && git pull && gulp deploy && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
+    "deploy-pages": "git checkout master && git pull && gulp deploy --page=ALL && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
+    "deploy-pj": "git checkout master && git pull && gulp deploy --account=consulempresa && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
+    "deploy-pj-pages": "git checkout master && git pull && gulp deploy --account=consulempresa --page=ALL && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
+    "deploy-qa": "gulp deploy --qa --nobumb && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
+    "deploy-qa-pages": "gulp deploy --qa --page=ALL --nobumb && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
+    "deploy-qa-pj": "gulp deploy --account=consulqa2 --nobumb && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
+    "deploy-qa-pj-pages": "gulp deploy --account=consulqa2 --page=ALL --nobumb && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
+    "create-controller": "node node_modules/jussitb createController",
+    "create-module": "node node_modules/jussitb createModule",
+    "create-page": "node node_modules/jussitb createPage --account consul"
   }
 }

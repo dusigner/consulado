@@ -368,10 +368,9 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 				dataLayer.push({
 					event: 'simuladorCEP',
 					status: 'ok'
-				});
+				});			
 				flag = 0;
 			}
-		
 		});
 
 		$('body').on('click', '.freight-values .closed', function() {

@@ -109,5 +109,5 @@ Nitro.setup(['facebook-init'], function () {
 			label: $(this).attr('title')
 		});
 	});
-
 });
+

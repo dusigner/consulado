@@ -20,6 +20,20 @@ require('Dust/chaordic/chaordic-price.html');
 require('Dust/chaordic/chaordic-voltage.html');
 require('Dust/chaordic/chaordic-hightlight.html');
 
+//require('vendors/dust-helpers');
+
+dust.helpers.eq = function(chunk, context, bodies, params) {
+	var location 	= params.key,
+		value 		= params.value,
+		body 		= bodies.block;
+
+	if (location === value) {
+		chunk.render(body, context);
+	}
+	
+	return chunk; 
+};
+
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
 	chaordicCurrency: function(value) {
@@ -129,6 +143,7 @@ Nitro.module('chaordic', function() {
 					shelf;
 				self.getShelf().then(function(res) {
 					shelf = res[position];
+					
 					$.each(shelf, function(i, v) {
 						if(v.feature === 'FrequentlyBoughtTogether') {
 							v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
@@ -466,7 +481,6 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.finalRender = function(renderData, $elem) {
-		
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
@@ -506,7 +520,8 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
-
+			
+			
 			self.buyChaordicInstall();
 		});
 
