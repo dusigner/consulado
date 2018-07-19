@@ -8,13 +8,16 @@
 		  <div class="corpo-produtos-modal">
 			  <div class="oportunidadePro">
 				<h2>OPORTUNIDADE</h2>
-				{#items[0]}
-					{#images[0]}
-						<img src="{imageUrl}" alt="produto">												
-					{/images[0]}
-				{/items[0]}
-				<h2>{productName} - <strong>{productReference}</strong></h2>
+				{#apiResponseUpgrade}
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				{/apiResponseUpgrade}
+				<h2>{#apiResponseUpgrade}{productName} - <strong>{productReference}</strong>{/apiResponseUpgrade}</h2>
 				<span>
+				{#apiResponseUpgrade}
 					{#items[0]}
 						{#sellers}
 							{#commertialOffer}
@@ -22,25 +25,42 @@
 							{/commertialOffer}
 						{/sellers}
 					{/items[0]}
+				{/apiResponseUpgrade}
 				</span>
 			  </div>
 			  <div class="voce-esta-vendo">
-				  <h2>VOCÊ ESTÁ VENDO ESTE PRODUTO</h2>
-				  <img src="https://dummyimage.com/420x420/e3e3e3/3333.jpg&text=Sem+imagem" alt="geladeira">
-				  <h2>----</h2>
-				  <span>R$ 0,00</span>
+				<h2>VOCÊ ESTÁ VENDO ESTE PRODUTO</h2>
+				{#apiResponseDowngrade}
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				{/apiResponseDowngrade}
+				<h2>{#apiResponseDowngrade}{productName} - <strong>{productReference}</strong>{/apiResponseDowngrade}</h2>
+				<span>
+				{#apiResponseDowngrade}
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				{/apiResponseDowngrade}
+				</span>
 			  </div>
 			  <div class="especificao-produtos">				 
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>{diferential01}</li>
+					<li>{#apiResponseDowngrade}{[diferential01]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential01]}{/apiResponseUpgrade}</li>
+					<li>{diferential02}</li>
+					<li>{#apiResponseDowngrade}{[diferential02]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential02]}{/apiResponseUpgrade}</li>
+					<li>{diferential03}</li>
+					<li>{#apiResponseDowngrade}{[diferential03]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential03]}{/apiResponseUpgrade}</li>
 				</ul>				  
 			  </div>
 		  </div>
@@ -49,7 +69,7 @@
 			  <span>Deseja fazer o upgrade de produto?</span>
 			  <ul>
 				  <li><a class="close">NÃO, obrigado</a></li>
-				  <li><a href="{link}" class="ir-para-produto">SIM, IR PARA PRODUTO</a></li>
+				  <li><a href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?douwgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}" class="ir-para-produto">SIM, IR PARA PRODUTO</a></li>
 			  </ul>
 		  </div>
 	  </div>
@@ -57,86 +77,91 @@
 	  
 	  
 	  
-	  <section class="product-upgrade">
-		
-	            <div class="upgrade-mobile hide">
-					<i class="close-fixed"></i>
-					<h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
-					<div class="product-mobile">
-							{#items[0]}
-								{#images[0]}
-									<img src="{imageUrl}" alt="produto">												
-								{/images[0]}
-							{/items[0]}
-						<div class="info-product-mobile">
-							<span>POR + R$0,00</span>
-							<h3>{productName} - <strong>{productReference}</strong></h3>
-							<strong class="price-mobile-upgrade">
-								{#items[0]}
-									{#sellers}
-										{#commertialOffer}
-											{Price}
-										{/commertialOffer}
-									{/sellers}
-								{/items[0]}
-							</strong>
-						</div>
+<section class="product-upgrade">
 
-						<div class="especificao-produtos">				 
-							<ul>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-								<li></li>
-							</ul>				  
-						  </div>
-
-					</div>
-					<div class="aceito-mobile">
-						<a class="btn-interessado-upgrade-mobile" href="$uri">ESTOU INTERESSADO</a>						
-					</div>
-				</div>
-				
-	  
-			  <div class="container">
-			      <i class="close-fixed"></i>
-				  <div class="textupgrade">
-					  <h2>
-						  <span>POR + R$0,00</span> dê um <strong>upgrade</strong> no seu produto
-					  </h2>
-					  <p>
-                         Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
-					  </p>
-				  </div>
-		  
-				  <div class="novo-product">
-					<div class="img-product">
+	<div class="upgrade-mobile hide">
+		<i class="close-fixed"></i>
+		<h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
+		<div class="product-mobile">
+				{#apiResponseUpgrade}
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				{/apiResponseUpgrade}
+			<div class="info-product-mobile">
+				<span>POR + R$0,00</span>
+				<h2>{#apiResponseUpgrade}{productName} - <strong>{productReference}</strong>{/apiResponseUpgrade}</h2>
+				<strong class="price-mobile-upgrade">
+					{#apiResponseUpgrade}
 						{#items[0]}
-							{#images[0]}
-								<img src="{imageUrl}" alt="produto" width="90">												
-							{/images[0]}
+							{#sellers}
+								{#commertialOffer}
+									{Price}
+								{/commertialOffer}
+							{/sellers}
 						{/items[0]}
-					</div>
-					<div class="title-price-upgrade">
-						<p>{productName} - <strong> {productReference} </strong></p>
-						<span>
-							{#items[0]}
-								{#sellers}
-									{#commertialOffer}
-										{Price}
-									{/commertialOffer}
-								{/sellers}
-							{/items[0]}
-						</span>
-					</div>
-					<a class="btn-interessado-upgrade">estou interessado</a>
-					<a class="btn-interessado-downgrade hide" href="#">VER PRODUTO NOVAMENTE</a>
-				  </div>
-			  </div>
-	  </section>
+					{/apiResponseUpgrade}
+				</strong>
+			</div>
+
+			<div class="especificao-produtos">				 
+				<ul>
+					<li>{diferential01}</li>					
+					<li>{#apiResponseUpgrade}{[diferential01]}{/apiResponseUpgrade}</li>
+					<li>{diferential02}</li>					
+					<li>{#apiResponseUpgrade}{[diferential02]}{/apiResponseUpgrade}</li>
+					<li>{diferential03}</li>					
+					<li>{#apiResponseUpgrade}{[diferential03]}{/apiResponseUpgrade}</li>
+				</ul>				  
+				</div>
+
+		</div>
+		<div class="aceito-mobile">
+			<a class="btn-interessado-upgrade-mobile" href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?douwgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}">ESTOU INTERESSADO</a>						
+		</div>
+	</div>
+
+	<div class="container">
+		<i class="close-fixed"></i>
+		<div class="textupgrade">
+			<h2>
+				<span>POR + R$0,00</span> dê um <strong>upgrade</strong> no seu produto
+			</h2>
+			<p>
+				Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
+			</p>
+		</div>
+
+		<div class="novo-product">
+		<div class="img-product">
+			{#apiResponseUpgrade}
+				{#items[0]}
+					{#images[0]}
+						<img src="{imageUrl}" alt="produto" width="90">												
+					{/images[0]}
+				{/items[0]}
+			{/apiResponseUpgrade}
+		</div>
+		<div class="title-price-upgrade">
+			<p>{#apiResponseUpgrade}{productName}{/apiResponseUpgrade} - <strong> {#apiResponseUpgrade}{productReference}{/apiResponseUpgrade} </strong></p>
+			<span>
+				{#apiResponseUpgrade}
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				{/apiResponseUpgrade}
+			</span>
+		</div>
+		<a class="btn-interessado-upgrade">estou interessado</a>
+		<a class="btn-interessado-downgrade hide" href="#">VER PRODUTO NOVAMENTE</a>
+		</div>
+	</div>
+
+</section>
 {/.}
