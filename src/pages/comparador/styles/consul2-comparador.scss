@@ -306,122 +306,11 @@ body.compare {
 			}
 		}
 
-		// Mobile
-		.-is-mobile--active & {
-			@include breakpoint('small', 'max') {
-				padding-top: 325px;
-
-				thead {
-					left: 0;
-					position: fixed;
-					top: 0;
-					z-index: 100;
-					tr {
-						th {
-							width: calc(100% / 2);
-						}
-					}
-				}
-
-				.produto {
-					transition: all .5s ease;
-
-					.FlagsHightLight { display: none; }
-
-					.nome {
-						margin: 0 !important;
-						min-height: 60px!important;
-						span { display: none; }
-					}
-
-					.features,
-					.price,
-					.btn-comparar,
-					.comparar,
-					.indisponivel { display: none!important; }
-
-				}
-			}
-		}
+		
 		.selection-product {
 			display: none;
 		}
-		// Desktop
-		.-is-desktop--active & {
-
-			thead {
-				background: #fff;
-				border: 1px solid #BBBBBB;
-				left: 0;;
-				position: fixed;
-				top: 0;
-				width: 100%;
-				z-index: 10;
-				tr {
-					align-items: center;					
-					margin: auto;
-					max-width: 1140px;				
-					padding-bottom: 5px;
-
-					@media screen and (min-width: 992px) and (max-width: 1200px) {
-						max-width: 960px;
-					}
-					@media screen and (min-width: 768px) and (max-width: 992px) {
-						max-width: 720px;
-					}
-
-					th {
-						&:first-child {													
-							width: 25%;
-						}
-
-						& > .produto {
-							width: 100%;
-						}
-					}
-				}
-				li { 
-					border: none!important; 
-					padding: 1rem 0; 
-				}
-			}
-
-			.remove-button { right: 5px; }
-
-			.box-produto { 
-				border-right: 1px solid #E6E6E6;
-				padding: 0 1rem; 
-				.FlagsHightLight { display: none; }
-			}
-
-			.selection-product {
-				color: #3B3B3A;
-				display: inline-block;
-				font-weight: 500;
-				padding: 15px 0;
-				.mb-3 { font-size: 22px; }
-			}
-
-			.diff-highlight {
-				span {
-					color: #3B3B3A;
-					display: inline-block;
-					font-size: 18px;
-					padding: 18px 0;
-				}
-			}
-
-			.price,
-			.indisponivel { display: none!important; }
-
-			.prateleira.default {
-				.box-produto .image img {
-					height: 109px;
-					max-width: 109px;
-				}
-			}
-
-		}
+		
 	}
 
 	// fallbacks
@@ -456,7 +345,170 @@ body.compare {
 	}
 }
 
-body { overflow-x: hidden; }
+body { 
+	overflow-x: hidden;
+
+	thead.barraFixa {
+
+
+		@media (min-width: 60em) {	padding: 0 90px; }
+		@media (min-width: 60em) {	padding: 0 90px; }		
+		
+
+		background: #fff;
+		border-bottom: 1px solid #BBBBBB;
+		left: 0;		
+		position: fixed;
+		right: 0;
+		top: -400px;
+		transition: .8s ease-out all;		
+		z-index: 22;
+
+		tr.remover {
+			display: none;
+		}
+
+		tr:nth-child(2) {
+			align-items: center;
+			display: flex;
+			margin: auto;
+			max-width: 1100px;
+			padding-bottom: 5px;
+
+			@media (max-width: 959px) {	max-width: 768px; }
+			@media (max-width: 48em) {	padding-bottom: 60px; }
+
+			> th {
+				max-width: 300px;
+				width: 25%;
+
+				.selection-product {
+					color: #3b3b3a;
+					display: inline-block;
+					font-weight: 500;
+					padding: 15px 0;
+					text-align: left;
+
+					> h2 {
+						font-size: 22px;
+						margin-bottom: 5px;
+						margin-top: 0;
+					}
+				}
+
+				.diff-highlight {
+
+					text-align: left;
+
+					> span {
+						color: #3b3b3a;
+						display: inline-block;
+						font-size: 18px;
+						padding: 18px 0;
+					}
+
+					.form-check {
+						align-items: center;
+						display: inline-flex;
+						font-size: 20px;
+						margin-right: 1rem;
+
+						input {
+							background: #fff;
+							border: 1px solid #000;
+							height: 20px;
+							margin-right: 5px;
+							width: 20px;
+
+							@include breakpoint('small', 'max') { 
+								height: auto;
+								width: auto;
+							}
+						}
+						
+					}
+
+				}
+			}
+		}
+
+		.prateleira.default ul li {
+			width: 100%;
+
+			.detalhes {
+				height: initial;
+				min-height: initial;
+			}
+
+			a.image {
+				img {
+					max-width: 50%;
+				}
+
+				span {
+					min-height: auto;
+				}
+			}
+
+			.box-produto {
+
+				border-right: 1px solid #e6e6e6;
+				min-height: auto;
+				padding: 0;
+
+				h3.nome {
+					font-size: 1.142rem;
+					margin-bottom: 0;
+					> span {
+						display: none;
+					}
+
+					@include breakpoint('small', 'max') {
+						font-size: 1rem;
+					}
+				}
+	
+				.price,
+				a.department-nav {
+					display: none;
+				}
+
+				span.img.hover {
+					display: none !important;
+				}
+
+				&:hover {
+					h3.nome {
+						font-weight: normal !important; 
+					}
+				}
+			}
+
+		}
+	}
+	
+	&.-is-desktop--active { 
+		thead.barraFixa {			
+			top: 0;
+			transition: .8s ease-out all;
+		}
+	}
+
+	&.-is-mobile--active { 
+		thead.barraFixa {			
+			top: 0;
+			transition: .8s ease-out all;
+			
+			tr:nth-child(2) {
+				> th {
+					border: 1px solid #e6e6e6;
+					margin: 2.5%;					
+					width: 45%;
+				}
+			}			
+		}
+	}
+}
 
 .comparar-outros,
 .topWrapper {
@@ -509,17 +561,27 @@ body { overflow-x: hidden; }
 	@include breakpoint('small', 'max') {
 		bottom: 10px;
 		left: 0;
+		margin: 0 !important;
 		max-width: 100% !important;
 		position: absolute;
 		width: 100% !important;
+
+		.diff-highlight {
+			> span {
+				margin-right: 10px;
+				padding: 0 !important;
+			}
+			.form-check {
+				margin: 0 !important;
+			}			
+		}		
 	}
 }
 
 .diff-highlight {
 	// @include breakpoint('extra-small', 'max') { margin: 0 .7em!important; }
 	@include breakpoint('small', 'max') {
-		border: 1px solid #3B3B3A;
-		margin: 0 1.2em;
+		border: 1px solid #3B3B3A;		
 		padding: .5em;
 
 		span {
