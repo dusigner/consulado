@@ -18,15 +18,26 @@ Nitro.module('upsell', 'upselldataLayer', function() {
 		urlUpgrade         = $('td.value-field.Link-do-Upgrade').text(),
 		
 		uri   = window.location.href,
-		utlAtual = window.location.pathname,
+		urlAtual = window.location.pathname,
 		verifyDowngrade = uri.split('downgrade=')[1],
+		// template = 'upsell',
 		apiResponse,
 		apiResponseUpgrade,
 		apiResponseDowngrade;
 
+		// if (uri.indexOf('downgrade') !== -1) {
+		// 	console.log('🤞');
+		// 	template = 'downgrade';
+		// 	urlAtual = verifyDowngrade;
+		// }
+
+		// uri.indexOf('downgrade') !== -1 ? urlAtual = verifyDowngrade template = 'downgrade' : '';
+
+		console.log('urlAtual', urlAtual, 'template');
+
 	this.init = () => {
 		var settingsDowngrade = {
-			'url': `/api/catalog_system/pub/products/search/${utlAtual}`,
+			'url': `/api/catalog_system/pub/products/search/${urlAtual}`,
 			'method': 'GET'
 		};
 		$.ajax(settingsDowngrade).then(function (responseDowngrade) {
@@ -50,10 +61,7 @@ Nitro.module('upsell', 'upselldataLayer', function() {
 	this.renderUpsell = () => {
 		apiResponse = {
 			apiResponseDowngrade,
-			apiResponseUpgrade,
-			diferential01: apiResponseDowngrade['Diferencial 01'][0],				
-			diferential02: apiResponseDowngrade['Diferencial 02'][0],
-			diferential03: apiResponseDowngrade['Diferencial 03'][0]				
+			apiResponseUpgrade				
 		};	
 		dust.render('upsell', apiResponse, function(err, out) {
 			if (err) { 	throw new Error('upsell Dust error: ' + err); }

@@ -6,11 +6,13 @@
 		<i class="close-fixed"></i>
 		<h2><strong> você estava visualizando...</strong></h2>
 		<div class="product-mobile">
+			{#apiResponseDowngrade}
 				{#items[0]}
 					{#images[0]}
 						<img src="{imageUrl}" alt="produto">												
 					{/images[0]}
 				{/items[0]}
+			{/apiResponseDowngrade}
 			<div class="info-product-mobile">
 				<span class="hide">POR + R$0,00</span>
 				<h3>{productName} - <strong>{productReference}</strong></h3>
