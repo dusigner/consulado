@@ -75,7 +75,7 @@ Nitro.module('upsell', function() {
 	this.opencloseAndMobile = () => {
 		// Abre o modal de upgrade
 		$('.btn-interessado-upgrade').click(function() {			
-			$('#modal-produto-upgrade' + $(this).attr('data-id')).vtexModal();			
+			$('#modal-produto-upgrade').vtexModal();			
 		});
 		// fecha barra fixa
 		$('.close-fixed, .icon-open-upgrade').click(function() {
