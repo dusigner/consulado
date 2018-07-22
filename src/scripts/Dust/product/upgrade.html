@@ -1,5 +1,5 @@
 {#.}
-<div class="icon-open-upgrade ativo"></div>
+<div class="icon-open-upgrade active" data-category="de um Upgrade" data-action="icon" data-label="click"></div>
 
 <!-- Modal upgrade -->
 	  <div id="modal-produto-upgrade" class="modal-upgrade" data-title="DÊ UM UPGRADE NO SEU PRODUTO" style="display:none">
@@ -69,7 +69,7 @@
 			  <span>Deseja fazer o upgrade de produto?</span>
 			  <ul>
 				  <li><a class="close">NÃO, obrigado</a></li>
-				  <li><a href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?douwgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}" class="ir-para-produto">SIM, IR PARA PRODUTO</a></li>
+				  <li><a href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?downgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}" class="ir-para-produto">SIM, IR PARA PRODUTO</a></li>
 			  </ul>
 		  </div>
 	  </div>
@@ -115,11 +115,11 @@
 					<li>{diferential03}</li>					
 					<li>{#apiResponseUpgrade}{[diferential03]}{/apiResponseUpgrade}</li>
 				</ul>				  
-				</div>
+			</div>
 
 		</div>
 		<div class="aceito-mobile">
-			<a class="btn-interessado-upgrade-mobile" href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?douwgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}">ESTOU INTERESSADO</a>						
+			<a class="btn-interessado-upgrade-mobile" href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?downgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}">ESTOU INTERESSADO</a>						
 		</div>
 	</div>
 
@@ -139,7 +139,7 @@
 			{#apiResponseUpgrade}
 				{#items[0]}
 					{#images[0]}
-						<img src="{imageUrl}" alt="produto" width="90">												
+						<img src="{imageUrl}" alt="produto">												
 					{/images[0]}
 				{/items[0]}
 			{/apiResponseUpgrade}
@@ -158,7 +158,7 @@
 				{/apiResponseUpgrade}
 			</span>
 		</div>
-		<a class="btn-interessado-upgrade">estou interessado</a>
+		<a class="btn-interessado-upgrade" data-category="de um Upgrade" data-action="barra" data-label="Estou interessado">estou interessado</a>
 		<a class="btn-interessado-downgrade hide" href="#">VER PRODUTO NOVAMENTE</a>
 		</div>
 	</div>

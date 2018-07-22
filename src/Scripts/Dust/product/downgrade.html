@@ -1,5 +1,5 @@
 {#.}
-<div class="icon-open-upgrade ativo voltar"></div>
+<div class="icon-open-upgrade active prev"></div>
 <section class="product-upgrade">
 
 	<div class="upgrade-mobile hide">
@@ -9,45 +9,44 @@
 			{#apiResponseDowngrade}
 				{#items[0]}
 					{#images[0]}
-						<img src="{imageUrl}" alt="produto">												
+						<img src="{imageUrl}" alt="produto" width="90">												
 					{/images[0]}
 				{/items[0]}
 			{/apiResponseDowngrade}
 			<div class="info-product-mobile">
 				<span class="hide">POR + R$0,00</span>
-				<h3>{productName} - <strong>{productReference}</strong></h3>
+				<h2>{#apiResponseDowngrade}{productName} - <strong>{productReference}</strong>{/apiResponseDowngrade}</h2>
 				<strong class="price-mobile-upgrade">
-				{#items[0]}
-					{#sellers}
-						{#commertialOffer}
-							{Price}
-						{/commertialOffer}
-					{/sellers}
-				{/items[0]}
+				{#apiResponseDowngrade}
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				{/apiResponseDowngrade}
 				</strong>
 			</div>
 
 			<div class="especificao-produtos">				 
 				<ul>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
+					<li>{diferential01}</li>					
+					<li>{#apiResponseDowngrade}{[diferential01]}{/apiResponseDowngrade}</li>
+					<li>{diferential02}</li>					
+					<li>{#apiResponseDowngrade}{[diferential02]}{/apiResponseDowngrade}</li>
+					<li>{diferential03}</li>					
+					<li>{#apiResponseDowngrade}{[diferential03]}{/apiResponseDowngrade}</li>
 				</ul>				  
-			  </div>
+			</div>
 
 		</div>
 		<div class="aceito-mobile">						
-			<a class="btn-interessado-downgrade-mobile" href="/{linkText}/p">VER PRODUTO NOVAMENTE</a>
+			<a class="btn-interessado-downgrade-mobile" href="{#apiResponseDowngrade}/{linkText}/p{/apiResponseDowngrade}">VER PRODUTO NOVAMENTE</a>
 		</div>
 	</div>
 	
-	<div class="container">
+	<div class="container downgrade">
 		<i class="close-fixed"></i>
 		<div class="textupgrade">
 			<h2>
@@ -60,25 +59,29 @@
 
 		<div class="novo-product">
 		<div class="img-product">
-			{#items[0]}
-				{#images[0]}
-					<img src="{imageUrl}" alt="produto" width="90">												
-				{/images[0]}
-			{/items[0]}
+			{#apiResponseDowngrade}
+				{#items[0]}
+					{#images[0]}
+						<img src="{imageUrl}" alt="produto">												
+					{/images[0]}
+				{/items[0]}
+			{/apiResponseDowngrade}
 		</div>
 		<div class="title-price-upgrade">
-			<p>{productName} - <strong> {productReference} </strong></p>
+			<p>{#apiResponseDowngrade}{productName} - <strong>{productReference}</strong>{/apiResponseDowngrade}</p>
 			<span>
-				{#items[0]}
-					{#sellers}
-						{#commertialOffer}
-							{Price}
-						{/commertialOffer}
-					{/sellers}
-				{/items[0]}
+				{#apiResponseDowngrade}
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				{/apiResponseDowngrade}
 			</span>
 		</div>					
-		<a class="btn-interessado-downgrade" href="/{linkText}/p">VER PRODUTO NOVAMENTE</a>
+		<a class="btn-interessado-downgrade" href="/{#apiResponseDowngrade}{linkText}{/apiResponseDowngrade}/p">VER PRODUTO NOVAMENTE</a>
 		</div>
 	</div>
 		
