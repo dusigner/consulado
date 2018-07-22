@@ -4,12 +4,12 @@
 
 var CRM = {
 
-	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + $.cookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',
+	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + window.getCookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',
 	statusPedidoURI: '/api/ds/pub/documents/SP',
 	omsURI: '/api/oms/user/orders/',
 	recurrenceURI: '/api/' + window.jsnomeLoja + '/subscriptions/',
 
-	getOrders: function() {
+	getOrders: function() {			
 		return $.getJSON(CRM.ordersURI).then(function(res) {
 			return res;
 		});

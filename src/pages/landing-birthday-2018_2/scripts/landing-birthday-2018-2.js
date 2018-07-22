@@ -56,7 +56,7 @@ Nitro.setup(['facebook-init'], function () {
 
 		dataLayer.push({
 			event: 'generic',
-			category: 'Landing Aniversário',
+			category: 'Página Aniversário',
 			action: 'Assistir ao vídeo',
 			label: 'Play video '+ $('.slick-dots li.slick-active button').text()
 		});
@@ -68,7 +68,7 @@ Nitro.setup(['facebook-init'], function () {
 
 			dataLayer.push({
 				event: 'generic',
-				category: 'Landing Aniversário',
+				category: 'Página Aniversário',
 				action: 'Categoria de Vídeo',
 				label: 'Video '+ $(this).find('button').text()
 			});	

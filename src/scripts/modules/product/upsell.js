@@ -1,4 +1,3 @@
-/* global $: true, Nitro: true, dust */
 
 'use strict';
 
@@ -76,7 +75,7 @@ Nitro.module('upsell', function() {
 	this.opencloseAndMobile = () => {
 		// Abre o modal de upgrade
 		$('.btn-interessado-upgrade').click(function() {			
-			$('#modal-produto-upgrade').vtexModal();			
+			$('#modal-produto-upgrade' + $(this).attr('data-id')).vtexModal();			
 		});
 		// fecha barra fixa
 		$('.close-fixed, .icon-open-upgrade').click(function() {

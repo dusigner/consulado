@@ -58,10 +58,12 @@ $(window).on('load', function() {
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		var productsId = [];
-		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
-			productsId.push(val.id);
-		});
-		chaordic.init('cart');
+		if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
+			$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+				productsId.push(val.id);
+			});
+			chaordic.init('cart');
+		}
 
 		// Teste AB
 		// var urlTesteAb = window.location.search;
@@ -535,7 +537,7 @@ $(window).on('load', function() {
 		// Reinput
 		this.reinput = function () {
 			console.info('Reinput');
-			var userType = vtexjs.checkout.orderForm.userType;
+			var userType = $('#vtex-callcenter').length;
 
 			self.html = function () {
 				var fields_input = '<div class="fieldsReinput"><h2 class="isReinput">Pedido Reinput ? <input type="checkbox" name="isReinput" id="isReinput"></h2><form><li class="previouOrderId"><label>Pedido anterior</label><input type="text" name="previouOrderId" id="previouOrderId" value=""></li><li class="company"><label>Empresa</label><select name="company" id="company"><option value="Selecione">Selecione</option><option value="consul">Consul</option><option value="brastemp">brastemp</option><option value="compracerta">compracerta</option></select></li><li class="reason"><label>Motivo</label><select name="reason" id="reason"><option value="Selecione">Selecione</option><option value="avaraia">Avaria no transporte</option><option value="erro">Produto errado</option></select></li></form></div>';
