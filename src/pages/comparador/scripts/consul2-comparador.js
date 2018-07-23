@@ -129,7 +129,7 @@ Nitro.controller('compare', function() {
 				// const $thDiff = $corpoComparacao.find('table thead tr:nth-child(2) th:nth-child(1)');
 
 				$(window).on('scroll', function() {
-					$(this).scrollTop() > 160 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
+					$(this).scrollTop() > 360 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
 					$(this).scrollTop() >= 100 && $('thead.dadosCompar').length === 1 ? $('thead.dadosCompar').clone().prependTo('body').addClass('barraFixa') : '';
 				});
 
