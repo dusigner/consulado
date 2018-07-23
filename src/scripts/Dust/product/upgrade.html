@@ -1,0 +1,160 @@
+{#.}
+<div class="icon-open-upgrade tag active" data-category="de um Upgrade" data-action="icon" data-label="click"></div>
+
+<!-- Modal upgrade -->
+	  <div id="modal-produto-upgrade" class="modal-upgrade" data-title="DÊ UM UPGRADE NO SEU PRODUTO" style="display:none">
+		  <h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
+		  <span>Confira os diferenciais de cada um dos modelos:</span>
+		  <div class="corpo-produtos-modal">
+			  <div class="oportunidadePro">
+				{#apiResponseUpgrade}
+				<h2>OPORTUNIDADE</h2>
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				<h2>{productName} - <strong>{productReference}</strong></h2>
+				<span>
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				</span>
+				{/apiResponseUpgrade}
+			  </div>
+			  <div class="voce-esta-vendo">
+				{#apiResponseDowngrade}
+				<h2>VOCÊ ESTÁ VENDO ESTE PRODUTO</h2>
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				<h2>{productName} - <strong>{productReference}</strong></h2>
+				<span>
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				</span>
+				{/apiResponseDowngrade}
+			  </div>
+			  <div class="especificao-produtos">				 
+				<ul>
+					<li>{diferential01}</li>
+					<li>{#apiResponseDowngrade}{[diferential01]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential01]}{/apiResponseUpgrade}</li>
+					<li>{diferential02}</li>
+					<li>{#apiResponseDowngrade}{[diferential02]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential02]}{/apiResponseUpgrade}</li>
+					<li>{diferential03}</li>
+					<li>{#apiResponseDowngrade}{[diferential03]}{/apiResponseDowngrade}</li>
+					<li>{#apiResponseUpgrade}{[diferential03]}{/apiResponseUpgrade}</li>
+				</ul>				  
+			  </div>
+		  </div>
+	  
+		  <div class="aceitarounao">
+			  <span>Deseja fazer o upgrade de produto?</span>
+			  <ul>
+				  <li><a class="close tag" data-category="de um Upgrade" data-action="Modal" data-label="NÃO, obrigado">NÃO, obrigado</a></li>
+				  <li><a href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?downgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}" class="ir-para-produto tag" data-category="de um Upgrade" data-action="Modal" data-label="SIM, IR PARA PRODUTO">SIM, IR PARA PRODUTO</a></li>
+			  </ul>
+		  </div>
+	  </div>
+	  <!-- Modal upgrade  -->
+	  
+	  
+	  
+<section class="product-upgrade">
+
+	<div class="upgrade-mobile hide">
+		<i class="close-fixed tag" data-category="de um Upgrade" data-action="barra" data-label="Sair"></i>
+		<h2>DÊ UM <strong>UPGRADE</strong> NO SEU PRODUTO</h2>
+		<div class="product-mobile">
+				{#apiResponseUpgrade}
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				{/apiResponseUpgrade}
+			<div class="info-product-mobile">
+				<span>POR + R$0,00</span>
+				<h2>{#apiResponseUpgrade}{productName} - <strong>{productReference}</strong>{/apiResponseUpgrade}</h2>
+				<strong class="price-mobile-upgrade">
+					{#apiResponseUpgrade}
+						{#items[0]}
+							{#sellers}
+								{#commertialOffer}
+									{Price}
+								{/commertialOffer}
+							{/sellers}
+						{/items[0]}
+					{/apiResponseUpgrade}
+				</strong>
+			</div>
+
+			<div class="especificao-produtos">				 
+				<ul>
+					<li>{diferential01}</li>					
+					<li>{#apiResponseUpgrade}{[diferential01]}{/apiResponseUpgrade}</li>
+					<li>{diferential02}</li>					
+					<li>{#apiResponseUpgrade}{[diferential02]}{/apiResponseUpgrade}</li>
+					<li>{diferential03}</li>					
+					<li>{#apiResponseUpgrade}{[diferential03]}{/apiResponseUpgrade}</li>
+				</ul>				  
+			</div>
+
+		</div>
+		<div class="aceito-mobile">
+			<a class="btn-interessado-upgrade-mobile" href="/{#apiResponseUpgrade}{linkText}{/apiResponseUpgrade}/p?downgrade={#apiResponseDowngrade}{linkText}/p{/apiResponseDowngrade}">ESTOU INTERESSADO</a>						
+		</div>
+	</div>
+
+	<div class="container">
+		<i class="close-fixed tag" data-category="de um Upgrade" data-action="barra" data-label="Sair"></i>
+		<div class="textupgrade">
+			<h2>
+				<span>POR + R$0,00</span> dê um <strong>upgrade</strong> no seu produto
+			</h2>
+			<p>
+				Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
+			</p>
+		</div>
+
+		<div class="novo-product">
+		{#apiResponseUpgrade}
+		<div class="img-product">
+			{#items[0]}
+				{#images[0]}
+					<img src="{imageUrl}" alt="produto">												
+				{/images[0]}
+			{/items[0]}
+		</div>
+		<div class="title-price-upgrade">
+			<p>{productName} - <strong>{productReference}</strong></p>
+			<span>
+				{#items[0]}
+					{#sellers}
+						{#commertialOffer}
+							{Price}
+						{/commertialOffer}
+					{/sellers}
+				{/items[0]}
+			</span>
+			{/apiResponseUpgrade}
+		</div>
+		<a class="btn-interessado-upgrade tag" data-category="de um Upgrade" data-action="barra" data-label="Estou interessado">estou interessado</a>
+		</div>
+	</div>
+
+</section>
+{/.}
