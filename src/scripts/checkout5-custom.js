@@ -17,6 +17,7 @@
 // 	}
 // }, 400);
 
+alert('👌😢🎂');
 
 $(window).on('load', function() {
 	require('modules/helpers');
@@ -46,24 +47,24 @@ $(window).on('load', function() {
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
-	require('modules/chaordic');
+	// require('modules/chaordic');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['chaordic', 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message', 'customLogin'], function(chaordic, gae, recurrence, cotas, pj) {
+	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message', 'customLogin'], function(/*chaordic*/ gae, recurrence, cotas, pj) {
 
 		var self = this,
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		var productsId = [];
-		if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
-			$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
-				productsId.push(val.id);
-			});
-			chaordic.init('cart');
-		}
+		// var productsId = [];
+		// if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
+		// 	$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+		// 		productsId.push(val.id);
+		// 	});
+		// 	chaordic.init('cart');
+		// }
 
 		// Teste AB
 		// var urlTesteAb = window.location.search;
