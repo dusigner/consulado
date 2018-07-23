@@ -492,6 +492,11 @@ body {
 			top: 0;
 			transition: .8s ease-out all;
 		}
+		
+		.corpo-comparacao table thead {
+			opacity: 0;
+			transition: .8s ease-out all;
+		}		
 	}
 
 	&.-is-mobile--active { 
@@ -506,6 +511,11 @@ body {
 					width: 45%;
 				}
 			}			
+		}
+
+		.corpo-comparacao table thead {
+			opacity: 0;
+			transition: .8s ease-out all;
 		}
 	}
 }
