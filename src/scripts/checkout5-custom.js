@@ -17,8 +17,6 @@
 // 	}
 // }, 400);
 
-alert('👌😢🎂');
-
 $(window).on('load', function() {
 	require('modules/helpers');
 
