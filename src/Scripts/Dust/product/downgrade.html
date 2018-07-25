@@ -27,11 +27,15 @@
 			{/apiResponseDowngrade}
 
 			<div class="especificao-produtos">				 
-				<ul>
+				<ul class="{@eq key=diferential01 value="."}hide{/eq}">
 					<li>{diferential01}</li>					
 					<li>{#apiResponseDowngrade}{[diferential01]}{/apiResponseDowngrade}</li>
+				</ul>
+				<ul  class="{@eq key=diferential02 value="."}hide{/eq}">
 					<li>{diferential02}</li>					
 					<li>{#apiResponseDowngrade}{[diferential02]}{/apiResponseDowngrade}</li>
+				</ul>				
+				<ul class="{@eq key=diferential03 value="."}hide{/eq}">
 					<li>{diferential03}</li>					
 					<li>{#apiResponseDowngrade}{[diferential03]}{/apiResponseDowngrade}</li>
 				</ul>				  
