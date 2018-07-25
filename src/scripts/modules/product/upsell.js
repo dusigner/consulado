@@ -8,11 +8,12 @@ Nitro.module('upsell', function() {
 	const self = this;
 	
 	let 
-		urlUpgradetd       = $('td.value-field.Link-do-Upgrade'),
-		urlUpgrade         = $('td.value-field.Link-do-Upgrade').text(),
-		uri   = window.location.href,
+		urlUpgradetd = $('td.value-field.Link-do-Upgrade'),
+		urlUpgrade = $('td.value-field.Link-do-Upgrade').text(),
+		uri = window.location.href,
 		currentUrl = window.location.pathname,
 		verifyDowngrade = uri.indexOf('downgrade'),
+		verifyAutoModal = uri.indexOf('campaign-upsell'),
 		template = 'upgrade',
 		apiResponse,
 		apiResponseUpgrade,
@@ -25,7 +26,7 @@ Nitro.module('upsell', function() {
 			'method': 'GET'
 		};
 		$.ajax(setAPI).then(function (responseDowngrade) {
-			apiResponseDowngrade = responseDowngrade[0];
+			apiResponseDowngrade = responseDowngrade[0];			
 			return responseDowngrade;
 		}).done(function(){
 			let setAPI = {
@@ -47,7 +48,7 @@ Nitro.module('upsell', function() {
 			apiResponseUpgrade,
 			diferential01: apiResponseDowngrade['Diferencial 01'][0],
 			diferential02: apiResponseDowngrade['Diferencial 02'][0],
-			diferential03: apiResponseDowngrade['Diferencial 03'][0]		
+			diferential03: apiResponseDowngrade['Diferencial 03'][0]
 		},dust.render(template, apiResponse, function(err, out) {
 			if (err) { 	throw new Error('upsell Dust error: ' + err); }
 			$('#upsell').html(out);
@@ -60,8 +61,10 @@ Nitro.module('upsell', function() {
 	this.openCloseAndMobile = () => {
 		// Abre o modal de upgrade
 		$('.btn-interessado-upgrade').click(function() {			
-			$('#modal-produto-upgrade').vtexModal();			
+			$('#modal-produto-upgrade').vtexModal();
 		});
+		// Abre modal se for campanha automatica
+		(verifyAutoModal > 0) && $('#modal-produto-upgrade').vtexModal();
 		// fecha barra fixa
 		$('.close-fixed, .icon-open-upgrade').click(function() {
 			$('#upsell').toggleClass('active');
@@ -78,11 +81,9 @@ Nitro.module('upsell', function() {
 	};
 
 	this.formatPrice = () => {
-
-		let // pega e formata o preço do produto upgrade
-			priceBar = Number(apiResponseUpgrade.items[0].sellers[0].commertialOffer.Price);
+		let priceBar; // pega e formata o preço do produto upgrade
+		(verifyDowngrade > 0) ? priceBar = Number(apiResponseDowngrade.items[0].sellers[0].commertialOffer.Price) : priceBar = Number(apiResponseUpgrade.items[0].sellers[0].commertialOffer.Price);
 		(priceBar < 1 && apiResponseUpgrade.items[1]) ? priceBar = Number(apiResponseUpgrade.items[1].sellers[0].commertialOffer.Price) : '';
-		(verifyDowngrade > 0) ? priceBar = Number(apiResponseDowngrade.items[0].sellers[0].commertialOffer.Price) : '';
 		(verifyDowngrade > 0 && priceBar < 1) ? priceBar = Number(apiResponseDowngrade.items[1].sellers[0].commertialOffer.Price) : '';
 		$('.title-price-upgrade span, .corpo-produtos-modal .oportunidadePro span, .price-mobile-upgrade').html(`R$ ${_.formatCurrency( priceBar )}`);
 		
@@ -106,7 +107,7 @@ Nitro.module('upsell', function() {
 				category: $(this).attr('data-category'),
 				action: $(this).attr('data-action'),
 				label: $(this).attr('data-label')
-			});	
+			});
 		});
 	};
 
