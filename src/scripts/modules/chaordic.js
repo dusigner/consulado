@@ -214,6 +214,10 @@ Nitro.module('chaordic', function() {
 
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				$self.addClass('vtex-load');
+				
+				$.get($self.attr('data-impressionUrl')).always(function() {
+					console.info('impressionUrl', $self.attr('data-impressionUrl'));
+				});
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
