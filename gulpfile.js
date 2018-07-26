@@ -25,7 +25,8 @@ const
 	httpPlease 		= require('connect-http-please'),
 	serveStatic 	= require('serve-static'),
 	proxy 			= require('proxy-middleware'),
-	HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+	HardSourceWebpackPlugin = require('hard-source-webpack-plugin'),
+	isProdEnv = () => accountName === 'consul' || accountName === 'consulempresa';
 
 const paths = {
 	scripts      : 'src/Scripts/**/*.js',
@@ -201,7 +202,7 @@ gulp.task('scripts', ['lint'], function () {
 			devtool: $.util.env.production ? '' : 'eval-source-map'
 		}))
 		.pipe($.preprocess(preprocessContext))
-		.pipe((accountName === 'consul' || accountName === 'consulempresa') ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files))
+		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files))
 		.pipe($.filter(f => /checkout/.test(f.path)))
 		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
 		.pipe(gulp.dest(paths.dest.files));
@@ -237,7 +238,7 @@ gulp.task('styles', ['sassLint'], function () {
 		]))
 		.pipe($.util.env.production ? $.preprocess(preprocessContext) : $.util.noop())
 		.pipe(!$.util.env.production ? $.sourcemaps.write('.') : $.util.noop())
-		.pipe((accountName === 'consul' || accountName === 'consulempresa') ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files));
+		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files));
 });
 
 gulp.task('images', function () {
@@ -361,7 +362,11 @@ gulp.task('gitTag', function() {
 		shell.exit(1);
 	}else {
 		shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function(code, stdout) {
-			pkg.version = stdout.replace('refs/tags/v','').trim();
+			if (isProdEnv()) {
+				pkg.version = stdout.replace('refs/tags/v','').trim();
+			}else{
+				pkg.version = new Date().getTime();
+			}			
 
 			preprocessContext = {
 				context: {
