@@ -11,8 +11,7 @@ require('expose-loader?store!modules/store/store');
 
 Nitro.module('reinput', function() {	
 	
-	var userType = $('#vtex-callcenter').length,
-		url = window.location.href.indexOf('vtexcommercestable');			
+	var userType = $('#vtex-callcenter').length;		
 
 	self.renderHtml = function(){
 		dust.render('reinput', {}, function(err, out) {
@@ -40,18 +39,23 @@ Nitro.module('reinput', function() {
 
 	self.searchOrderId = function (){
 		$('body').on('keyup', 'input#previouOrderId', function () {
-			var pedidodigitado = $('input#previouOrderId').val().length;
-			if (pedidodigitado > 0) {					
-				$('li.previouOrderId').addClass('load').removeClass('error');
-				$('.company').show();					
-			} else {
-				$('.company, .reason, .alcada, .comment').hide();
-				$('li.previouOrderId').removeClass('load');
-				$('.company, .reason, .alcada, .comment').removeClass('load');
-				$('.fieldsReinput form').each(function () {
-					this.reset();
+			var pedidodigitado = $('input#previouOrderId').val();
+			if (pedidodigitado.length >= 8) {			
+				var getApi = {
+					'url': 'https://whirlpoolqa.hubinbeta.com/api/oms/pvt/findorder/' + pedidodigitado,
+					'method': 'GET'
+				};
+				$.ajax(getApi).then(function (verify) {					
+					if(verify) {								
+						$('.company').show();
+						$('li.previouOrderId').addClass('load').removeClass('error');
+					}else {
+						$('.company, .reason, .alcada, .comment').hide();
+						$('li.previouOrderId').removeClass('load').addClass('error');
+						$('.company, .reason, .alcada, .comment').removeClass('load');				
+						$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
+					}					
 				});
-				$('#payment-data-submit, #payment-data-submit:last-child').attr('disabled', true);
 			}
 		});
 	};
@@ -135,31 +139,6 @@ Nitro.module('reinput', function() {
 				localStorage.setItem('reason', motivoBoleto);
 				localStorage.setItem('alcada', motivoalcada);
 				localStorage.setItem('obsUser', obsreinpunt);
-
-
-				// self.sendOrderCustomData = function (customField, customValue) {
-				// 	$.ajax({
-				// 		type: 'PUT',
-				// 		url: '/api/checkout/pub/orderForm/' + orderformId + '/customData/reinputorder/' + customField,
-				// 		data: JSON.stringify({ 'expectedOrderFormSections': ['customData'], 'value': customValue }),
-				// 		dataType: 'JSON',
-				// 		'headers': { 'content-type': 'application/json', 'accept': 'application/json' },
-				// 		success: function (response) {
-				// 			console.info('response', response);
-				// 		},
-				// 		error: function (error) {
-				// 			console.info('error', error);
-				// 		},
-				// 		done: function (response) {
-				// 			console.info('response', response);
-				// 		}
-				// 	});
-				// };
-
-				// self.sendOrderCustomData('isReinput', 'sim');
-				// self.sendOrderCustomData('company', motivoReinput);
-				// self.sendOrderCustomData('previousOrderId', pedidoreinputado);
-				// self.sendOrderCustomData('reason', motivoBoleto);
 				
 			});
 		});
@@ -177,28 +156,16 @@ Nitro.module('reinput', function() {
 	};
 
 	this.setup = function() {
-	
-		if ( userType > 0 && url !== -1 ) {
-	
-			self.renderHtml();			
-			
+		if ( userType > 0 ) {
+			self.renderHtml();
 			self.searchOrderId();
-			
 			self.checkboxReinput();
-			
 			self.storegeValues();
-	
 			self.company();
-	
 			self.reason();
-
 			self.alcada();
-
 			self.comment();
-
 			self.lockpurchase();
-		
 		}
-
 	};
 });
