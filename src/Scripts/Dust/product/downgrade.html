@@ -1,0 +1,88 @@
+{#.}
+<div class="icon-open-upgrade tag active prev" data-category="ver produto anterior" data-action="icon" data-label="click"></div>
+<section class="product-upgrade">
+
+	<div class="upgrade-mobile hide">
+		<i class="close-fixed tag" data-category="ver produto anterior" data-action="barra" data-label="Sair"></i>
+		<h2><strong> você estava visualizando...</strong></h2>
+		{#apiResponseDowngrade}
+		<div class="product-mobile">
+			{#items[0]}
+				{#images[0]}
+					<img src="{imageUrl}" alt="produto" width="90">												
+				{/images[0]}
+			{/items[0]}
+			<div class="info-product-mobile">
+				<h2>{productName} - <strong>{productReference}</strong></h2>
+				<strong class="price-mobile-upgrade">
+					{#items[0]}
+						{#sellers}
+							{#commertialOffer}
+								{Price}
+							{/commertialOffer}
+						{/sellers}
+					{/items[0]}
+				</strong>
+			</div>
+			{/apiResponseDowngrade}
+
+			<div class="especificao-produtos">				 
+				<ul class="{@eq key=diferential01 value="."}hide{/eq}">
+					<li>{diferential01}</li>					
+					<li>{#apiResponseDowngrade}{[diferential01]}{/apiResponseDowngrade}</li>
+				</ul>
+				<ul  class="{@eq key=diferential02 value="."}hide{/eq}">
+					<li>{diferential02}</li>					
+					<li>{#apiResponseDowngrade}{[diferential02]}{/apiResponseDowngrade}</li>
+				</ul>				
+				<ul class="{@eq key=diferential03 value="."}hide{/eq}">
+					<li>{diferential03}</li>					
+					<li>{#apiResponseDowngrade}{[diferential03]}{/apiResponseDowngrade}</li>
+				</ul>				  
+			</div>
+
+		</div>
+		<div class="aceito-mobile">						
+			<a class="btn-interessado-downgrade-mobile tag" href="{#apiResponseDowngrade}/{linkText}/p{/apiResponseDowngrade}" data-category="ver produto anterior" data-action="barra" data-label="Ver produto novamente">VER PRODUTO NOVAMENTE</a>
+		</div>
+	</div>
+	
+	<div class="container downgrade">
+		<i class="close-fixed tag" data-category="ver produto anterior" data-action="barra" data-label="Sair"></i>
+		<div class="textupgrade">
+			<h2>
+			<strong> você estava visualizando...</strong>
+			</h2>
+			<p>
+			Ficou na dúvida? Você pode visitar o produto que estava navegando clicando aqui.
+			</p>
+		</div>
+
+		<div class="novo-product">
+			{#apiResponseDowngrade}
+				<div class="img-product">
+					{#items[0]}
+						{#images[0]}
+							<img src="{imageUrl}" alt="produto">												
+						{/images[0]}
+					{/items[0]}
+				</div>
+				<div class="title-price-upgrade">
+					<p>{productName} - <strong>{productReference}</strong></p>
+					<span>
+						{#items[0]}
+							{#sellers}
+								{#commertialOffer}
+									{Price}
+								{/commertialOffer}
+							{/sellers}
+						{/items[0]}
+					</span>
+				</div>					
+				<a class="btn-interessado-downgrade tag" href="/{linkText}/p" data-category="ver produto anterior" data-action="barra" data-label="Ver produto novamente">VER PRODUTO NOVAMENTE</a>
+			{/apiResponseDowngrade}
+		</div>
+	</div>
+		
+</section>
+{/.}
