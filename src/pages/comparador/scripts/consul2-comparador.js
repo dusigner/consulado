@@ -6,6 +6,7 @@ Nitro.controller('compare', function() {
 		$titlePage = $('.compare-produtos-wrapper > h2'),
 		$body = $('body'),
 		$corpoComparacao = $('.corpo-comparacao');
+	$('.corpo-comparacao table thead').addClass('dadosCompar');
 
 	this.init = function() {
 		//self.removeRows();
@@ -128,7 +129,8 @@ Nitro.controller('compare', function() {
 				// const $thDiff = $corpoComparacao.find('table thead tr:nth-child(2) th:nth-child(1)');
 
 				$(window).on('scroll', function() {
-					$(this).scrollTop() > 160 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
+					$(this).scrollTop() > 360 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
+					$(this).scrollTop() >= 100 && $('thead.dadosCompar').length === 1 ? $('thead.dadosCompar').clone().prependTo('body').addClass('barraFixa') : '';
 				});
 
 				// $thDiff.addClass('d-none');
@@ -145,9 +147,10 @@ Nitro.controller('compare', function() {
 						txtStr = $('.title .link').text(),
 						firstWord = txtStr.split(' ')[0],
 						compareBar = $('.corpo-comparacao thead tr:nth-child(2)'),
-						qntCompare = $('.corpo-comparacao th .produto').length;
+						qntCompare = $('.corpo-comparacao th .produto').length;					
 
-					$(this).scrollTop() > 160 ? $body.addClass('-is-desktop--active') : $body.removeClass('-is-desktop--active');
+					$(this).scrollTop() >= 460 ? $body.addClass('-is-desktop--active') : $body.removeClass('-is-desktop--active');
+					$(this).scrollTop() >= 160 && $('thead.dadosCompar').length === 1 ? $('thead.dadosCompar').clone().prependTo('body').addClass('barraFixa') : '';
 
 					if ($('.selection-product').length === 0) {
 						insertContent.prepend('<div class="selection-product">' +
