@@ -27,9 +27,7 @@ Nitro.module('register.corporate', function() {
 
 		$form.submit(this.submit.bind($form));
 
-		$(store)
-		.on('store.user.not-found', this.fillUserEmail)
-		.on('store.user.revalidation', this.fillUserEmail);
+		$(store).on('store.user.not-found', this.fillUserEmail).on('store.user.revalidation', this.fillUserEmail);
 
 		$modalRegister.on('elementOpenVtexModal', function() {
 			$modalRegister.find('.steps').slick({

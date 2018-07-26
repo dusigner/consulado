@@ -1,0 +1,30 @@
+<div class="notifyme sku-notifyme" style="display: none;">
+  <div class="notifyme-title-div" style="display: none;">
+    <h3 class="notifymetitle notifyme-title">{strings.title}</h3>
+  </div>
+
+  <form action="/no-cache/AviseMe.aspx" style="display: none;">
+    <fieldset class="sku-notifyme-form notifyme-form">
+      <p>{strings.explanation}</p>
+      <input class="sku-notifyme-client-name notifyme-client-name" placeholder="{strings.namePlaceholder}" size="20"
+             type="text" name="notifymeClientName" id="notifymeClientName">
+      <input class="sku-notifyme-client-email notifyme-client-email" placeholder="{strings.emailPlaceholder}" size="20"
+             type="text" name="notifymeClientEmail" id="notifymeClientEmail">
+      <input class="btn-ok sku-notifyme-button-ok notifyme-button-ok" value="ok"
+             type="button" name="notifymeButtonOK" id="notifymeButtonOK">
+      <input type="hidden" class="sku-notifyme-skuid notifyme-skuid" name="notifymeIdSku" value="{sku}">
+    </fieldset>
+  </form>
+
+  <p class="notifyme-loading-message" style="display: none">
+    <span class="sku-notifyme-loading notifyme-loading">{strings.loading}</span>
+  </p>
+
+  <fieldset class="success" style="display:none;"><label><em>
+    <span class="sku-notifyme-success notifyme-success">{strings.success}</span>
+  </em></label></fieldset>
+
+  <fieldset class="error" style="display: none"><label>
+    <span class="sku-notifyme-error   notifyme-error"></span>
+  </label></fieldset>
+</div>

@@ -1,0 +1,114 @@
+<div class="row gutters dimensions">
+	<div class="col-3">
+		<h3>Largura</h3>
+		<p>{dimensions.width}
+			<span>cm</span>
+		</p>
+	</div>
+	<div class="col-3">
+		<h3>Altura</h3>
+		<p>{dimensions.height}
+			<span>cm</span>
+		</p>
+	</div>
+	<div class="col-3">
+		<h3>Profundidade</h3>
+		<p>{dimensions.length}
+			<span>cm</span>
+		</p>
+	</div>
+	<div class="col-3">
+		<h3>Peso</h3>
+		<p>{dimensions.weigh}
+			<span>kg</span>
+		</p>
+	</div>
+</div>
+<div class="row specs gutters">
+	<div class="col-4">
+		{#specs}
+		<ul class="topic">
+			<li class="row {key}">
+				<h3>{key}</h4>
+				<p>{value}</p>
+			</li>
+		</ul>
+		{/specs}
+		{! <!--ul class="topic">
+			<li>
+				<h3>Cores</h3>
+			</li>
+			<li>
+				<p>Platinum</p>
+			</li>
+			<li>
+				<p>Preto</p>
+			</li>
+			<li>
+				<p>Branco</p>
+			</li>
+		</ul>
+		<ul class="topic">
+			<li>
+				<h3>Capacidade</h3>
+			</li>
+			<li>
+				<h4>Geladeira:</h4>
+				<p>374 litros</p>
+			</li>
+			<li>
+				<h4>Freezer:</h4>
+				<p>166 litros</p>
+			</li>
+			<li>
+				<h4>Total:</h4>
+				<p>540 litros</p>
+			</li>
+		</ul>
+		<ul class="topic">
+			<li>
+				<h3>Energia</h3>
+			</li>
+			<li class="double">
+				<h4>Voltagem:</h4>
+				<p>220 V (CRM33EBBNA)</p>
+				<p>110 V (CRM33EBANA)</p>
+			</li>
+			<li>
+				<h4>Classificação energética:</h4>
+				<p>A</p>
+			</li>
+		</ul>
+		<ul class="topic">
+			<li>
+				<h3>Tipo de Gelo</h3>
+				<p>Frost Free</p>
+			</li>
+		</ul--> !}
+	</div>
+	<div class="col-4">
+		<ul class="topic">
+			<li>
+				<h3>Itens</h3>
+			</li>
+			{#items}
+			<li class="row">
+				<h4 class="col-6">{key}</h4>
+				<p class="col-6">{value}</p>
+			</li>
+			{/items}
+		</ul>
+	</div>
+	<div class="col-4">
+		<ul class="topic">
+			<li>
+				<h3>Downloads</h3>
+			</li>
+			{#downloads}
+				<li>
+					<a href="{file}" class="primary-button full-width download" target="_blank">{name}</a>
+				</li>
+			{/downloads}
+		</ul>
+	</div>
+</div>

@@ -270,3 +270,29 @@
 	}
 
 })(typeof exports !== 'undefined' ? require('dustjs-linkedin') : dust);
+
+dust.helpers.neq = function(chunk, context, bodies, params) {
+    var location = params.key,
+        value = params.value,
+        body = bodies.block;
+
+    if (location !== value) {
+        chunk.render(body, context);
+	}
+
+    return chunk;
+};
+
+dust.helpers.equalzero = function(chunk, context, bodies, params) {
+	let location = params.key,
+        value = params.value,
+		body = bodies.block;
+		
+	if (location == 0) {
+		chunk.render('Igual a zero');
+	} else {
+		chunk.render(body, context);
+	}
+
+	return chunk;
+}

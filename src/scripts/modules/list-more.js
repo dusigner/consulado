@@ -69,31 +69,21 @@ Nitro.module('list-more', function() {
 				}
 
 			}
-		})
-		.done(function(data) {
+		}).done(function(data) {
 			if( data ) {
-
 				$('.vitrine > .prateleira').append( data );
-
 				Nitro.module('prateleira');
-
 				// console.log( 'active', self.isActive() );
-
 				if( self.isActive() ) {
-
 					page++;
-
 					self.prefetch();
-
 				} else {
 					$button.addClass('hide');
 				}
-
 			} else {
 				$button.addClass('hide');
 			}
-		})
-		.always(function() {
+		}).always(function() {
 			$button.removeClass('loading');
 			self.updateCompare();
 		});

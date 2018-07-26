@@ -380,7 +380,7 @@ div[data-chaordic] {
 	&-item__voltage {
 		text-align: left;
 		span {
-			font-size: 0.8em;
+			font-size: .8em;
 			line-height: 1.5;
 		}
 		&>div {
@@ -394,7 +394,7 @@ div[data-chaordic] {
 		display: inline-block;
 		margin: 0 10px 0 0;
 		position: relative;
-		transition: 0.4s ease all;
+		transition: .4s ease all;
 		vertical-align: middle;
 		input[type=radio] {
 			-webkit-appearance: none;

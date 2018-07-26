@@ -1,0 +1,11 @@
+<div class="release-details container text-center">
+	<p class="release-details__title">Confira cada detalhe</p>
+	<div class="release-details__content clearfix">
+		<img src="{releaseImg}" />
+		<div class="release-details__bullets{?category} release-details__bullets--{category}{/category}"{?skus} data-skus="{skus}"{/skus}>
+			{#items}
+				<a href="javascript:void(0);" class="release-details__bullet js-release-bullet inline-b" data-index="{$idx}"><i class="icon icon-close-icon"></i></a>
+			{/items}
+		</div>
+	</div>
+</div>

@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, dust:true, _:true */
 'use strict';
 
-require('../../../templates/price.html');
+require('Dust/price.html');
 
 Nitro.module('boleto', function() {
 

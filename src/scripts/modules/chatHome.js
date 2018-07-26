@@ -100,6 +100,8 @@ Nitro.module('chatHome', function () {
 			var url = 'https://' + __site + '.custhelp.com/app/chat/chat_launch?content=1&loja=1&msg=1';
 			var chat = window.open(url, 'Ajuda_online','height=600,width=350');
 			this.parentElement.parentElement.querySelector('.close').click();
+			console.info(chat);
+			
 		}
 
 		function redirect(e) {

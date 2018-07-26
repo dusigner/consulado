@@ -1,0 +1,39 @@
+{?subtitle}
+	<h2 class="pre-title shelf-pre-title js-pre-title">{subtitle|s}</h2>
+{:else}
+	<h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2>
+{/subtitle}
+
+<div class="container js-content-lazy shelf--history-personalized-cart" data-position="{position}" data-index="{$idx}" data-impressionUrl="{impressionUrl}">
+	<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider" data-slidestoshow="3">
+		{#displays[0].recommendations}
+            <li class="inline-b">
+                <article class="shelf-item text-center" data-idproduto="{id}" data-percent="">
+                    <div class="shelf-item__image">
+                        <a href="{url}" alt="{name}" title="{name}" data-tracking="{trackingUrl}">
+                            <span class="shelf-item__image--main js-item-image-principal">
+                                <!-- <img src='//{images.default}' width="345" height="345" /> -->
+                            </span>
+                            <span class="shelf-item__image--hover js-item-image"></span>
+            
+                            <div class="FlagsHightLight js-item-flagshightlight"></div>
+                        </a>
+                    </div>
+                    <div class="shelf-item__infos">
+                        <div class="shelf-item__info">
+                            <span class="shelf-item__name">{cropName|chaordicName}</span>
+                        </div>
+                        <div class="shelf-item__price js-item-price">
+                            <div class="shelf-item__price--list shelf-item--empty"></div>
+                            <div class="helf-item__price--best shelf-item--empty"></div>
+                            <div class="shelf-item__price--installment shelf-item--empty"></div>
+                        </div>
+                        <div class="shelf-item__voltage js-item-voltage">
+                            
+                        </div>
+                    </div>
+                </article>
+            </li>
+		{/displays[0].recommendations}
+	</ul>
+</div>

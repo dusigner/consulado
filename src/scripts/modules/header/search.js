@@ -53,8 +53,7 @@ Nitro.module('search', function() {
 
 					$searchForm.addClass('loading').append($loader);
 				}
-			})
-			.done(function(data) {
+			}).done(function(data) {
 				if (data) {
 					$content.html(data).find('.helperComplement').remove();
 
@@ -62,8 +61,7 @@ Nitro.module('search', function() {
 
 					$(document).trigger('search', true);
 				}
-			})
-			.always(function() {
+			}).always(function() {
 				$searchForm.removeClass('loading');
 				$loader.remove();
 			});

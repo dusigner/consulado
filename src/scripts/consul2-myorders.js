@@ -5,6 +5,7 @@
 //load Nitro Lib
 require('vendors/nitro');
 
+require('vendors/jquery.cookie');
 require('modules/orders/order.orders');
 require('modules/orders/order.recurrences');
 

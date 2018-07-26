@@ -31,7 +31,7 @@ Nitro.module('order-by', function () {
 
 			$listOrders.find('li a').click(function(e){
 				e.preventDefault();
-				console.log('clicou no order-by ul li a');
+				console.info('clicou no order-by ul li a');
 				_self.order($(this));
 			});
 
@@ -40,7 +40,7 @@ Nitro.module('order-by', function () {
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-		console.log('orderValue>'+orderValue);
+		console.info('orderValue>'+orderValue);
 		$('.selected').removeClass('selected');
 		$orderElement.addClass('selected');
 
@@ -92,10 +92,9 @@ Nitro.module('order-by', function () {
 				helper.vitrineHolder.addClass('loading');
 				helper.vitrine.removeClass('loaded');
 			}
-		})
-		.done(function(data) {
+		}).done(function(data) {
 			if( data ) {
-				console.log('ordervalue', orderValue);
+				console.info('ordervalue', orderValue);
 				$(window).trigger('filter', [helper.rel + orderValue, true]);
 
 				$('.vitrine > .prateleira').remove();
@@ -106,8 +105,7 @@ Nitro.module('order-by', function () {
 
 				Nitro.module('prateleira');
 			}
-		})
-		.always(function() {
+		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
 			$orderTitle.removeClass('loading');
 			$listMore.show();

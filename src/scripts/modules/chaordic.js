@@ -4,22 +4,36 @@
 
 
 //Templates dust usados
-require('../../templates/chaordic/shelf-content-placeholder-product.html');
-require('../../templates/chaordic/shelf-content-placeholder-default.html');
-require('../../templates/chaordic/shelf-content-placeholder-ultimateBuy.html');
-require('../../templates/chaordic/shelf-content-placeholder-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-history-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-history-personalized.html');
-require('../../templates/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
-require('../../templates/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
-require('../../templates/chaordic/shelf-content-placeholder.html');
-require('../../templates/chaordic/shelf-content-placeholder-cart.html');
-require('../../templates/chaordic/shelf-content-placeholder-cart-mostPopular.html');
-require('../../templates/chaordic/chaordic-unavailable.html');
-require('../../templates/chaordic/chaordic-price.html');
-require('../../templates/chaordic/chaordic-voltage.html');
-require('../../templates/chaordic/chaordic-hightlight.html');
+require('Dust/chaordic/shelf-content-placeholder-product.html');
+require('Dust/chaordic/shelf-content-placeholder-default.html');
+require('Dust/chaordic/shelf-content-placeholder-ultimateBuy.html');
+require('Dust/chaordic/shelf-content-placeholder-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-history-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-product-history-personalized.html');
+require('Dust/chaordic/shelf-content-placeholder-frequentlyBoughtTogether.html');
+require('Dust/chaordic/shelf-content-placeholder-product-frequentlyBoughtTogether.html');
+require('Dust/chaordic/shelf-content-placeholder-product-ultimateBuy.html');
+require('Dust/chaordic/shelf-content-placeholder.html');
+require('Dust/chaordic/shelf-content-placeholder-cart.html');
+require('Dust/chaordic/shelf-content-placeholder-cart-mostPopular.html');
+require('Dust/chaordic/chaordic-unavailable.html');
+require('Dust/chaordic/chaordic-price.html');
+require('Dust/chaordic/chaordic-voltage.html');
+require('Dust/chaordic/chaordic-hightlight.html');
+
+//require('vendors/dust-helpers');
+
+dust.helpers.eq = function(chunk, context, bodies, params) {
+	var location 	= params.key,
+		value 		= params.value,
+		body 		= bodies.block;
+
+	if (location === value) {
+		chunk.render(body, context);
+	}
+	
+	return chunk; 
+};
 
 //DUST FILTER AND HELPERS
 _.extend(dust.filters, {
@@ -123,48 +137,41 @@ Nitro.module('chaordic', function() {
 		// var reference = $(window).scrollTop() + $(window).height();
 		
 		//Prevent multiple ajax calls, toDo rewrite
-		self.getShelf()
-		.then(function() {
+		self.getShelf().then(function() {
 			$shelfs.each(function() {
 				var $self = $(this),
-				position = $self.data('chaordic');
-				
-				// if ($self.is(':visible') && reference >= $self.offset().top ) {
-					var shelf;
+					position = $self.data('chaordic'),
+					shelf;
+				self.getShelf().then(function(res) {
+					shelf = res[position];
 					
-					self.getShelf()
-					.then(function(res) {
-							shelf = res[position];
-							$.each(shelf, function(i, v) {
-								if(v.feature === 'FrequentlyBoughtTogether') {
-									v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
-									v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
-									v.numberInstallments = 10;
-									v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
-									
-								}							
-								
-								self.cropName(v, 25);
-								v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
-							});
+					$.each(shelf, function(i, v) {
+						if(v.feature === 'FrequentlyBoughtTogether') {
+							v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
+							v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
+							v.numberInstallments = 10;
+							v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);								
+						}							
 							
+						self.cropName(v, 25);
+						v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
+					});							
 
-							self.placeHolderRender(shelf, $self)
-								.then(function($chaordicShelf) {
-									//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
-									var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
+					self.placeHolderRender(shelf, $self).then(function($chaordicShelf) {
+						//Slick, porram tive que colocar timeout pq tava bugando no mobile :/
+						var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
 
-									$slider.each(function() {
-										var slidesToShow = $(this).data('slidestoshow') || 3;
-										self.slider($(this), slidesToShow);
-									});
-
-									$window.scroll();
-								});
+						$slider.each(function() {
+							var slidesToShow = $(this).data('slidestoshow') || 3;
+							self.slider($(this), slidesToShow);
 						});
-						// }
-				});
+
+						$window.scroll();
+
+					});
+				});	
 			});
+		});
 	};
 
 	/**
@@ -207,6 +214,10 @@ Nitro.module('chaordic', function() {
 
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				$self.addClass('vtex-load');
+				
+				$.get($self.attr('data-impressionUrl')).always(function() {
+					console.info('impressionUrl', $self.attr('data-impressionUrl'));
+				});
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
@@ -259,8 +270,7 @@ Nitro.module('chaordic', function() {
 					dataType: 'json',
 					url: API.APIHOST + API.SHELFENDPOINT,
 					data: API.APIPARAMS
-				})
-				.then(function(res) {
+				}).then(function(res) {
 					chaordicData = res;
 					dfd.resolve(res);
 				});
@@ -476,7 +486,6 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} resolvida retorna o seletor jQuery da lista de produtos renderizados
 	 */
 	this.finalRender = function(renderData, $elem) {
-		
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
@@ -516,7 +525,8 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
-
+			
+			
 			self.buyChaordicInstall();
 		});
 

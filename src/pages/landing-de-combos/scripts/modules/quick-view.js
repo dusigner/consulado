@@ -4,11 +4,11 @@ require('vendors/jquery.cookie');
 require('vendors/slick');
 require('bootstrap/tooltip');
 
-require('./../../templates/quick-view/products-list.html');
-require('./../../templates/quick-view/product-description.html');
-require('./../../templates/quick-view/product-image.html');
-require('./../../templates/quick-view/product-modules.html');
-require('./../../templates/quick-view/product-skus.html');
+require('./../../Dust/quick-view/products-list.html');
+require('./../../Dust/quick-view/product-description.html');
+require('./../../Dust/quick-view/product-image.html');
+require('./../../Dust/quick-view/product-modules.html');
+require('./../../Dust/quick-view/product-skus.html');
 
 Nitro.module('quick-view', function () {
 	var self = this,

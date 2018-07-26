@@ -9,8 +9,8 @@ $value: 0;
 @each $direction in $directions {
 	@keyframes#{$direction}Out {
 		from {
-			transform: translateX(0);
 			opacity: 1;
+			transform: translateX(0);
 		}
 
 		to {
@@ -19,8 +19,8 @@ $value: 0;
 			} @else {
 				$value : -50%;
 			}
-			transform: translateX($value);
 			opacity: 0;
+			transform: translateX($value);
 		}
 	}
 
@@ -31,13 +31,13 @@ $value: 0;
 			} @else {
 				$value : 50%;
 			}
-			transform: translateX($value);
 			opacity: 0;
+			transform: translateX($value);
 		}
 
 		to {
-			transform: translateX(0);
 			opacity: 1;
+			transform: translateX(0);
 		}
 	}
 }
@@ -123,19 +123,19 @@ $value: 0;
 		transform: translateY(-50%);
 
 		a {
-			display: inline-block;
 			border: 3px solid #fff;
-			transform: rotate(45deg) scale(1);
-			width: 20px;
+			display: inline-block;
 			height: 20px;
+			transform: rotate(45deg) scale(1);
 			transition: transform .25s ease-in-out;
+			width: 20px;
 
 			&:hover {
 				transform: rotate(45deg) scale(1.5);
 			}
 		}
 
-		&[data-direction="prev"] {
+		&[data-direction='prev'] {
 			@include breakpoint(medium, 'max') { left: -20px }
 			left: -35px;
 
@@ -145,33 +145,33 @@ $value: 0;
 			}
 		}
 
-		&[data-direction="next"] {
+		&[data-direction='next'] {
 			@include breakpoint(medium, 'max') { right: -20px }
 			right: -35px;
 
 			a {
-				border-left: none;
 				border-bottom: none;
+				border-left: none;
 			}
 		}
 	}
 
 	&__content {
 		background: #fff;
-		position: relative;
-		overflow: auto;
 		max-height: 80vh;
+		overflow: auto;
+		position: relative;
 
 		@each $direction in $directions {
 			&--#{$direction}Out {
-				animation-name: #{$direction}Out;
 				animation-duration: .5s;
+				animation-name: #{$direction}Out;
 				animation-timing-function: ease-in-out;
 			}
 
 			&--#{$direction}In {
-				animation-name: #{$direction}In;
 				animation-duration: .5s;
+				animation-name: #{$direction}In;
 				animation-timing-function: ease-in-out;
 			}
 		}

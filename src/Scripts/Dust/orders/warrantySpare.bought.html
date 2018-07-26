@@ -1,0 +1,18 @@
+<tr class="item-service">
+	<td class="bundle-item-image"></td>
+	<td class="bundle-item-name">
+		<span data-bind="text: name">Seguro Garantia Estendida Original - {period} meses</span>
+		<blockquote class="item-service-message" style="display: none;">false</blockquote>
+		<button class="download-avulso secondary-button purple-button" data-id="{idWarranty}"><span>Clique para download</span></button>
+	</td>
+	<td>
+		{?btnCancel}
+			<a class="cancel-warranty" href="javascript:void(0)" data-id="{idWarranty}">cancelar garantia</a>
+		{/btnCancel}
+
+	</td>
+	<td></td><td></td>
+	<td class="quantity-price bundle-quantity-price hidden-phone hidden-tablet">
+		<span class="new-product-price" data-bind="text: priceLabel">{price}</span>
+	</td>
+</tr>

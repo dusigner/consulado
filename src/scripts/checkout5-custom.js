@@ -17,7 +17,6 @@
 // 	}
 // }, 400);
 
-
 $(window).on('load', function() {
 	require('modules/helpers');
 
@@ -32,8 +31,9 @@ $(window).on('load', function() {
 
 	//load Nitro Lib
 	require('vendors/nitro');
+	require('vendors/vtex-modal');
 
-	require('expose?store!modules/store/store');
+	require('expose-loader?store!modules/store/store');
 
 	require('modules/checkout/checkout.gae');
 	require('modules/checkout/checkout.recurrence');
@@ -45,35 +45,36 @@ $(window).on('load', function() {
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
-	require('modules/chaordic');
+	// require('modules/chaordic');
 	require('modules/checkout/reinput');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
-
-	Nitro.setup(['chaordic', 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin'], function(chaordic, gae, recurrence, cotas, pj, reinput) {
+	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput) {
 
 		var self = this,
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		var productsId = [];
-		$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
-			productsId.push(val.id);
-		});
-		chaordic.init('cart');
+		// var productsId = [];
+		// if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
+		// 	$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
+		// 		productsId.push(val.id);
+		// 	});
+		// 	chaordic.init('cart');
+		// }
 
-			// Teste AB
-			// var urlTesteAb = window.location.search;
-			// var testeA = 'testeab=a';
-			// var testeB = 'testeab=b';
+		// Teste AB
+		// var urlTesteAb = window.location.search;
+		// var testeA = 'testeab=a';
+		// var testeB = 'testeab=b';
 
-			// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
-			// 	$body.addClass('ab-test__mobile--show-a');
-			// }
-			// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
-			// 	$body.addClass('ab-test__mobile--show-b');
-			// }
+		// if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		// 	$body.addClass('ab-test__mobile--show-a');
+		// }
+		// else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		// 	$body.addClass('ab-test__mobile--show-b');
+		// }
 
 		this.userData = null;
 
@@ -562,7 +563,7 @@ $(window).on('load', function() {
 			}	
 
 			$('.btn-go-to-payment').click( function(){				
-					self.veryfication();							
+				self.veryfication();							
 			});
 			
 		};
