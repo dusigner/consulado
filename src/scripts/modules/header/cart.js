@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-require('../../../templates/minicart.html');
+require('Dust/minicart.html');
 
 require('vendors/portal-minicart');
 

@@ -2,7 +2,7 @@
 //require('vendors/dust-helpers');
 'use strict';
 
-require('../../templates/filters.html');
+require('Dust/filters.html');
 
 Nitro.module('filters', function() {
 

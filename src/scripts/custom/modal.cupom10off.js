@@ -1,6 +1,6 @@
 'use strict';
 
-require('../../templates/custom/modal.cupom10off.html');
+require('Dust/custom/modal.cupom10off.html');
 
 
 Nitro.module('modal.cupom10off', function() {

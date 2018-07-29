@@ -2,7 +2,7 @@
 
 'use strict';
 
-require('../../../templates/video.html');
+require('Dust/video.html');
 
 Nitro.module('video', function() {
 

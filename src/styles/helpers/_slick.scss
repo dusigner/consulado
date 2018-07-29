@@ -1,22 +1,22 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 @if $use-com-slick == true {
 
-	//$slick-font-path: "./fonts/" !default;
-	//$slick-font-family: "slick" !default;
-	$slick-loader-path: "./" !default;
+	//$slick-font-path: './fonts/' !default;
+	//$slick-font-family: 'slick' !default;
 	$slick-arrow-color: white !default;
-	$slick-dot-color: white !default;
+	$slick-dot-character: '•' !default;
 	$slick-dot-color-active: white !default;
-	$slick-prev-character: "\e602" !default;
-	$slick-next-character: "\e603" !default;
-	$slick-prev-up-character: "\e604" !default;
-	$slick-next-down-character: "\e601" !default;
-	$slick-dot-character: "•" !default;
+	$slick-dot-color: white !default;
 	$slick-dot-size: 45px !default;
+	$slick-loader-path: './' !default;
+	$slick-next-character: '\e603' !default;
+	$slick-next-down-character: '\e601' !default;
 	$slick-opacity-default: 0.75 !default;
-	$slick-opacity-on-hover: 1 !default;
 	$slick-opacity-not-active: 0.25 !default;
+	$slick-opacity-on-hover: 1 !default;
+	$slick-prev-character: '\e602' !default;
+	$slick-prev-up-character: '\e604' !default;
 
 	/*@function slick-image-url($url) {
 		@if function-exists(image-url) {
@@ -37,62 +37,61 @@
 	}*/
 
 	.slick-slider {
-		position: relative;
-		display: block;
-		box-sizing: border-box;
+		-khtml-user-select: none;
 		-moz-box-sizing: border-box;
+		-moz-user-select: none;
+		-ms-touch-action: pan-y;
+		-ms-user-select: none;
+		-webkit-tap-highlight-color: transparent;
 		-webkit-touch-callout: none;
 		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-		-ms-touch-action: pan-y;
+		box-sizing: border-box;
+		display: block;
+		position: relative;
 		touch-action: pan-y;
-		-webkit-tap-highlight-color: transparent;
-
+		user-select: none;
 		z-index: 0;
 
-		@include breakpoint(small, "max") { padding: 0 50px; }
+		@include breakpoint(small, 'max') { padding: 0 50px; }
 
-		@include breakpoint(extra-small, "max") {
+		@include breakpoint(extra-small, 'max') {
 			padding: 0;
 		}
 
 		*{outline: none!important}
 	}
 	.slick-list {
-		position: relative;
-		overflow: hidden;
 		display: block;
 		margin: 0;
+		overflow: hidden;
 		padding: 0;
+		position: relative;
 
 		&:focus { outline: none; }
 
 		&.dragging {
-			cursor: pointer;
 			cursor: hand;
+			cursor: pointer;
 		}
 	}
 	.slick-slider .slick-track,
 	.slick-slider .slick-list {
-		-webkit-transform: translate3d(0, 0, 0);
 		-moz-transform: translate3d(0, 0, 0);
 		-ms-transform: translate3d(0, 0, 0);
 		-o-transform: translate3d(0, 0, 0);
+		-webkit-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
 	}
 
 	.slick-track {
-		position: relative;
-		left: 0;
-		top: 0;
 		display: block;
+		left: 0;
+		position: relative;
+		top: 0;
 
 		&:before,
 		&:after {
-			content: "";
+			content: '';
 			display: table;
 		}
 
@@ -120,9 +119,9 @@
 		.slick-loading & { visibility: hidden; }
 
 		.slick-vertical & {
+			border: 1px solid transparent;
 			display: block;
 			height: auto;
-			border: 1px solid transparent;
 		}
 	}
 
@@ -130,19 +129,19 @@
 
 	/*.slick-list {
 		.slick-loading & {
-			background: #fff slick-image-url("ajax-loader.gif") center center no-repeat;
+			background: #fff slick-image-url('ajax-loader.gif') center center no-repeat;
 		}
 	}*/
 
 	/* Icons */
-	/*@if $slick-font-family == "slick" {
+	/*@if $slick-font-family == 'slick' {
 		@font-face {
-			font-family: "slick";
-			src: slick-font-url("slick.eot");
-			src: slick-font-url("slick.eot?#iefix") format("embedded-opentype"),
-				slick-font-url("slick.woff") format("woff"),
-				slick-font-url("slick.ttf") format("truetype"),
-				slick-font-url("slick.svg#slick") format("svg");
+			font-family: 'slick';
+			src: slick-font-url('slick.eot');
+			src: slick-font-url('slick.eot?#iefix') format('embedded-opentype'),
+				slick-font-url('slick.woff') format('woff'),
+				slick-font-url('slick.ttf') format('truetype'),
+				slick-font-url('slick.svg#slick') format('svg');
 			font-weight: normal;
 			font-style: normal;
 		}
@@ -161,9 +160,9 @@
 		display: block;
 		font-size: 0px;
 		height: 50px;
-		position: absolute;
 		outline: none;
 		padding: 0;
+		position: absolute;
 		top:50%;
 		transform: translateY(-50%);
 		z-index: 1;
@@ -174,16 +173,16 @@
 
 	.slick-prev:before, .slick-next:before {
 		@include responsiveFont(25,16,true);
-		font-family: "whirlpool" !important;
-		font-style: normal !important;
-		font-weight: normal !important;
-		font-variant: normal !important;
-		text-transform: none !important;
-		speak: none;
-		line-height: 1;
-		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		font-family: 'whirlpool' !important;
+		font-style: normal !important;
+		font-variant: normal !important;
+		font-weight: normal !important;
+		line-height: 1;
 		position: relative;
+		speak: none;
+		text-transform: none !important;
 	}
 
 	.slick-prev {
@@ -200,15 +199,15 @@
 	// .slick-slider { margin-bottom: 30px; }
 
 	.slick-dots {
-		position: absolute;
 		// height: 0;
 		bottom: 8px;
+		display: block;
 		left:0;
 		list-style: none;
-		display: block;
-		text-align: center;
 		margin-left:0;
 		padding: 0;
+		position: absolute;
+		text-align: center;
 		width: 100%;
 
 		li, button {
@@ -230,15 +229,15 @@
 			button {
 				@include square(7px);
 				background: $gray;
-				border:none;
 				border-radius: 50%;
+				border:none;
 				color: transparent;
 				cursor: pointer;
 				display: block;
 				font-size: 0px;
 				line-height: 0;
-				padding: 0;
 				margin:7px 0 0 7px;
+				padding: 0;
 				// margin: 6px auto;
 
 				// &:before {
@@ -260,14 +259,14 @@
 
 				&:after{
 					@include contentBefore();
+					// box-shadow: 0 0 5px #000;
 					border: 2px solid $gray;
 					border-radius: 50%;
-					// box-shadow: 0 0 5px #000;
-					left:4px;
 					height: 13px;
-					transition: transform 0.2s ease;
-					transform: scale(0);
+					left:4px;
 					top:4px;
+					transform: scale(0);
+					transition: transform 0.2s ease;
 					width: 13px;
 				}
 
@@ -284,12 +283,12 @@
 
 	.slick-vertical{
 		.slick-prev, .slick-next{
-			left: 0;
-			right: 0;
-			position: static;
-			width:100%;
 			height:auto;
+			left: 0;
+			position: static;
+			right: 0;
 			transform: initial;
+			width:100%;
 		}
 		.slick-prev:before, .slick-next:before {
 			@include responsiveFont(16,16,true);

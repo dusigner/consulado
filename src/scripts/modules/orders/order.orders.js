@@ -3,13 +3,13 @@
 require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
-require('templates/myorders.html');
-require('templates/orders/orderPedidoStates.html');
-require('templates/orders/orderPackageStates.html');
-require('templates/orders/orderPackageItems.html');
-require('templates/orders/orderProductInfos.html');
-require('../../../templates/orders/modalHistorico.html');
-require('../../../templates/orders/modalInvoice.html');
+require('Dust/myorders.html');
+require('Dust/orders/orderPedidoStates.html');
+require('Dust/orders/orderPackageStates.html');
+require('Dust/orders/orderPackageItems.html');
+require('Dust/orders/orderProductInfos.html');
+require('Dust/orders/modalHistorico.html');
+require('Dust/orders/modalInvoice.html');
 
 var Clipboard = require('clipboard');
 
@@ -263,71 +263,70 @@ Nitro.module('order.orders', function() {
 				return false;
 			}
 
-			return CRM.getOmsById(resultado.orderId)
-						.then(function(dataOrder) {
-							if(!dataOrder) {
-								return;
-							}
+			return CRM.getOmsById(resultado.orderId).then(function(dataOrder) {
+				if(!dataOrder) {
+					return;
+				}
 
-							$.each(self.orders.orders, function() {
-								if( this.orderId === dataOrder.orderId ) {
-									var self = this;
+				$.each(self.orders.orders, function() {
+					if( this.orderId === dataOrder.orderId ) {
+						var self = this;
 
-									self.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
-									self.hasPackages = self.packages.length > 1; // Mais de 1 pacote para separação no layout
+						self.packages = dataOrder.packageAttachment && dataOrder.packageAttachment.packages;
+						self.hasPackages = self.packages.length > 1; // Mais de 1 pacote para separação no layout
 
-									// Tem pacotes
-									if(self.packages && self.packages.length > 0) {
-										var finished = [],
-											packagesSum = 0;
+						// Tem pacotes
+						if(self.packages && self.packages.length > 0) {
+							var finished = [],
+								packagesSum = 0;
 
-										$.each(self.packages, function(index, singlePackage) {
-											// itera entre itens do pacote, marcando status
-											$.each(singlePackage.items, function() {
-												var itemObject = self.items[this.itemIndex];
+							$.each(self.packages, function(index, singlePackage) {
+								// itera entre itens do pacote, marcando status
+								$.each(singlePackage.items, function() {
+									var itemObject = self.items[this.itemIndex];
 
-												itemObject.hidden = true;
+									itemObject.hidden = true;
 
-												// Flag Pedido Entregue
-												// itemObject.finalStatus = orderStates.getState(null, singlePackage.courierStatus.finished ? 'pedidoEntregue' : itemObject.orderRewardStatus);
-											});
+									// Flag Pedido Entregue
+									// itemObject.finalStatus = orderStates.getState(null, singlePackage.courierStatus.finished ? 'pedidoEntregue' : itemObject.orderRewardStatus);
+								});
 
-											packagesSum = packagesSum + singlePackage.invoiceValue;
+								packagesSum = packagesSum + singlePackage.invoiceValue;
 
-											// Verifica se existe dados de tracking para botão "rastrear entrega"
-											if( singlePackage.courierStatus
-												&& singlePackage.courierStatus.data
-												&& singlePackage.courierStatus.data.length > 0) {
+								// Verifica se existe dados de tracking para botão "rastrear entrega"
+								if( singlePackage.courierStatus
+									&& singlePackage.courierStatus.data
+									&& singlePackage.courierStatus.data.length > 0) {
 
-												singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
+									singlePackage.courierStatus.data = singlePackage.courierStatus.data.reverse();
 
-												self.hasTrackingInfo = true;
+									self.hasTrackingInfo = true;
 
-												finished.push(singlePackage.courierStatus.finished);
-											}
+									finished.push(singlePackage.courierStatus.finished);
+								}
 
-											// Existe chave de nota fiscal para exibir botão no front
-											if(singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0) {
-												self.hasInvoiceData = true;
-											}
-										});
-
-										// Verifica se TODOS os pacotes estão finalizados/entregues para trocar o status geral do pedido para Entregue
-										if(finished.length > 0 && $.inArray(false, finished) < 0) {
-											self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
-										}
-
-										// Verifica se a soma de todos pacotes é diferente do total do pedido, identificando se ainda falta algum produto para ser faturado
-										if(packagesSum !== self.value) {
-											self.hasPackages = true;
-											self.partialInvoice = true;
-										}
-									}
-
-									return false;
+								// Existe chave de nota fiscal para exibir botão no front
+								if(singlePackage.invoiceKey && singlePackage.invoiceKey.length > 0) {
+									self.hasInvoiceData = true;
 								}
 							});
-						});
+
+							// Verifica se TODOS os pacotes estão finalizados/entregues para trocar o status geral do pedido para Entregue
+							if(finished.length > 0 && $.inArray(false, finished) < 0) {
+								self.finalStatus = orderStates.getState(self.isGift, 'pedidoEntregue');
+							}
+
+							// Verifica se a soma de todos pacotes é diferente do total do pedido, identificando se ainda falta algum produto para ser faturado
+							if(packagesSum !== self.value) {
+								self.hasPackages = true;
+								self.partialInvoice = true;
+							}
+						}
+
+						return false;
+					}
+				});
+			});
 		});
 	};
 });

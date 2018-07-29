@@ -12,9 +12,9 @@
 
 	.slick-dots {
 		bottom: 0;
+		display: none !important;
 		font-size: 0;
 		position: absolute;
-		display: none !important;
 
 		li {
 			line-height: 0;

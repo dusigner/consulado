@@ -21,10 +21,7 @@ Nitro.module('cotas', function() {
 				$('.header .account').addClass('logged-user');
 
 			} else {
-				self.getUserEmail()
-				.then(self.getConsumed)
-				.then(self.render);
-
+				self.getUserEmail().then(self.getConsumed).then(self.render);
 				$('.header .account').removeClass('logged-user');
 			}
 

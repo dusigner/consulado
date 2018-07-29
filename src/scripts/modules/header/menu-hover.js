@@ -1,7 +1,7 @@
 'use strict';
 
-require('../../../templates/customItemMenuDesktop.html');
-require('../../../templates/customItemMenuMobile.html');
+require('Dust/customItemMenuDesktop.html');
+require('Dust/customItemMenuMobile.html');
 
 Nitro.module('menu-hover', function () {
 	var controleOver = $('.customItemMenu').text(),

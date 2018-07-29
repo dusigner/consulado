@@ -11,24 +11,24 @@
 
 .noUi-target,
 .noUi-target * {
--webkit-touch-callout: none;
--webkit-user-select: none;
--ms-touch-action: none;
+	box-sizing: border-box;
 	touch-action: none;
--ms-user-select: none;
--moz-user-select: none;
 	user-select: none;
 -moz-box-sizing: border-box;
-	box-sizing: border-box;
+-moz-user-select: none;
+-ms-touch-action: none;
+-ms-user-select: none;
+-webkit-touch-callout: none;
+-webkit-user-select: none;
 }
 .noUi-target {
 	position: relative;
 	direction: ltr;
 }
 .noUi-base {
-	width: 100%;
 	height: 100%;
 	position: relative;
+	width: 100%;
 	z-index: 1; /* Fix 401 */
 	&:before {
 		content: 'Min.';
@@ -48,11 +48,11 @@
 	}
 }
 .noUi-origin {
+	bottom: 0;
+	left: 0;
 	position: absolute;
 	right: 0;
 	top: 0;
-	left: 0;
-	bottom: 0;
 }
 .noUi-handle {
 	position: relative;
@@ -64,8 +64,8 @@
 	z-index: 10;
 }
 .noUi-state-tap .noUi-origin {
--webkit-transition: left 0.3s, top 0.3s;
 	transition: left 0.3s, top 0.3s;
+-webkit-transition: left 0.3s, top 0.3s;
 }
 .noUi-state-drag * {
 	cursor: inherit !important;
@@ -88,10 +88,10 @@
 .noUi-horizontal .noUi-handle {
 	background: #fff;
 	border-radius: 50%;
-	width: 15px;
 	height: 15px;
 	left: -15px;
 	top: -6px;
+	width: 15px;
 
 	&.noUi-handle-upper{
 		height: 20px;
@@ -104,10 +104,10 @@
 	width: 18px;
 }
 .noUi-vertical .noUi-handle {
-	width: 28px;
 	height: 34px;
 	left: -6px;
 	top: -17px;
+	width: 28px;
 }
 
 /* Styling;
@@ -118,8 +118,8 @@
 .noUi-connect {
 	background: $orange;
 	box-shadow: inset 0 0 3px rgba(51,51,51,0.45);
--webkit-transition: background 450ms;
 	transition: background 450ms;
+-webkit-transition: background 450ms;
 }
 /* .noUi-origin {
 	border-radius: 2px;
@@ -153,10 +153,10 @@
 }
 .noUi-vertical .noUi-handle:before,
 .noUi-vertical .noUi-handle:after {
-	width: 14px;
 	height: 1px;
 	left: 6px;
 	top: 14px;
+	width: 14px;
 }
 .noUi-vertical .noUi-handle:after {
 	top: 17px;
@@ -179,12 +179,12 @@
  */
 .noUi-pips,
 .noUi-pips * {
--moz-box-sizing: border-box;
 	box-sizing: border-box;
+-moz-box-sizing: border-box;
 }
 .noUi-pips {
-	position: absolute;
 	color: #999;
+	position: absolute;
 }
 
 /* Values;
@@ -203,8 +203,8 @@
  *
  */
 .noUi-marker {
-	position: absolute;
 	background: #CCC;
+	position: absolute;
 }
 .noUi-marker-sub {
 	background: #AAA;
@@ -217,10 +217,10 @@
  *
  */
 .noUi-pips-horizontal {
-	padding: 10px 0;
 	height: 80px;
-	top: 100%;
 	left: 0;
+	padding: 10px 0;
+	top: 100%;
 	width: 100%;
 }
 .noUi-value-horizontal {
@@ -229,9 +229,9 @@
 }
 
 .noUi-marker-horizontal.noUi-marker {
+	height: 5px;
 	margin-left: -1px;
 	width: 2px;
-	height: 5px;
 }
 .noUi-marker-horizontal.noUi-marker-sub {
 	height: 10px;
@@ -244,21 +244,21 @@
  *
  */
 .noUi-pips-vertical {
-	padding: 0 10px;
 	height: 100%;
-	top: 0;
 	left: 100%;
+	padding: 0 10px;
+	top: 0;
 }
 .noUi-value-vertical {
 	-webkit-transform: translate3d(0,-50%,0);
-	transform: translate3d(0,-50%,0);
 	padding-left: 25px;
+	transform: translate3d(0,-50%,0);
 }
 
 .noUi-marker-vertical.noUi-marker {
-	width: 5px;
 	height: 2px;
 	margin-top: -1px;
+	width: 5px;
 }
 .noUi-marker-vertical.noUi-marker-sub {
 	width: 10px;
@@ -268,12 +268,12 @@
 }
 
 .noUi-tooltip {
-	display: block;
-	position: absolute;
-	border: 1px solid #D9D9D9;
-	border-radius: 3px;
 	background: #fff;
+	border-radius: 3px;
+	border: 1px solid #D9D9D9;
+	display: block;
 	padding: 5px;
+	position: absolute;
 	text-align: center;
 }
 
@@ -313,19 +313,17 @@
 	top: -40px;
 
 	&:before {
-		content: '';
-		display: inline-block;
-		width: 0;
-		height: 0;
-		position: absolute;
-		bottom: -5px;
-		left: 50%;
-		transform: translate(-50%,0);
-
-
 		border-left: 5px solid transparent;
 		border-right: 5px solid transparent;
 		border-top: 5px solid $gray;
+		bottom: -5px;
+		content: '';
+		display: inline-block;
+		height: 0;
+		left: 50%;
+		position: absolute;
+		transform: translate(-50%,0);
+		width: 0;
 	}
 }
 .slider__value--from {

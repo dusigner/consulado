@@ -1,0 +1,52 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<div class="row box-produto $product.CategoryName" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
+	<i class="icon"></i>
+	<a href="$uri" title="$escapedName" class="col-6 image">
+		<span class="img main">$product.GetImageTag(540, 446, "prateleiraPrincipal")</span>
+		<span class="img hover">$product.GetImageTag(540, 446, "prateleiraPerspectiva")</span>
+		<span class="img backup">$product.GetImageTag(540, 446)</span>
+		$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
+
+		<div class="FlagsHightLight" style="display:none;">
+			$product.DiscountHightLight
+			$product.HightLight
+		</div>
+	</a>
+
+	<!-- <div class="col-5 push-1 float-right content"> -->
+	<div class="float-right content">
+		<a href="$uri" title="$escapedName" class="prod-link">
+			<h3 class="nome">$product.Name
+				<span class="sku">
+					$product.ProductField(<!-- @echo shelfProductFieldModelo -->)
+				</span>
+			</h3>
+
+			#if ($product.IsInStock)
+				<div class="price">
+					<p class="de">
+						#if ($product.HasBestPrice)
+							<span class="txtDe">De: </span> <span class="val">$product.ListPrice</span>
+						#end
+					</p>
+					<p class="por">
+						<span class="txtPor">Por: </span><span class="val">$product.BestPrice</span>
+						<span class="off"></span>
+					</p>
+					<p class="adicional">
+						#if ($product.NumbersOfInstallment == 1)
+							<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
+						#else
+							<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
+						#end
+					</p>
+					<p class="discount-boleto"></p>
+				</div>
+			#end
+		</a>
+		<a href="$uri" class="button primary-button">Conheça</a>
+	</div>
+</div>
