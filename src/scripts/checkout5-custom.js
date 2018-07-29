@@ -45,12 +45,11 @@ $(window).on('load', function() {
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
-	require('modules/checkout/reinput');
 	// require('modules/chaordic');
+	require('modules/checkout/reinput');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
-
 	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput) {
 
 		var self = this,
