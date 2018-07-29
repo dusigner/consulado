@@ -32,8 +32,8 @@ body.body-order-form {
 
 				&:checked {
 					&:before {
-						background: #94bc42;
-						border: 1px solid #72942b;
+						background: #f35216;
+						border: 1px solid #f35216;
 					}
 
 					&:after {
@@ -150,13 +150,11 @@ body.body-order-form {
 			}
 
 			&.load {
-				background: #f1fdf2;
-				border-bottom: 1px solid #cceccf;
+				border: 1px solid #94bc42;
+				border-top: 0;
 
-				& input,
-				select,
-				textarea {
-					border-color: #94bc42;
+				&:first-child {
+					border-top: 1px solid #94bc42;
 				}
 
 				&:before {
@@ -168,59 +166,36 @@ body.body-order-form {
 					top: 18px;
 				}
 
-				label {	
+				label {
 
-					&.Lcompany {
-						&:before {
-							background: #17d427;
-							border: 1px solid #0a8014;
-							content: 'Ok';
-							left: -32px;
-							top: 10.5px;
-						}
-						&:after {
-							background: #17d427;
-							border-color: #0a8014;
-							content: '';
-						}	
-					}
+					color: #17d427;
 
-					&.Lreason {
-						&:before {
-							background: #17d427;
-							border: 1px solid #0a8014;
-							content: 'Ok';
-							left: -32px;
-							top: 10.5px;
-						}
-						&:after {
-							background: #17d427;
-							border-color: #0a8014;
-							content: '';
-						}
+					&:before {
+						background: #17d427;
+						font-size: 7px;
+						border: 1px solid #0a8014;
+						@include icon-get('check-mark');
+						left: -27px;
+						top: 11.5px;
 					}
-					
-					&.Lalcada {
-						&:before {
-							background: #17d427;
-							border: 1px solid #0a8014;
-							content: 'Ok';
-							left: -32px;
-							top: 10.5px;
-						}
-						&:after {
-							background: #17d427;
-							border-color: #0a8014;
-							content: '';
-						}
+					&:after {
+						background: #17d427;
+						border-color: #0a8014;
+						content: '';
+						width: 5px;
+						height: 5px;
+						left: -9px;
+						top: 18px;
 					}
-					
-					&.Lcomment {
+				}
+
+				&:last-child {
+					label {
 						&:before {
 							background: #17d427;
 							border: 1px solid #0a8014;
-							content: 'Ok';
-							left: -32px;
+							@include icon-get('check-mark');
+							left: -27px;
 							top: 19.5px;
 						}
 
@@ -228,6 +203,10 @@ body.body-order-form {
 							background: #17d427;
 							border-color: #0a8014;
 							content: '';
+							width: 5px;
+							height: 5px;
+							left: -9px;
+							top: 26px;
 						}
 					}
 				}
