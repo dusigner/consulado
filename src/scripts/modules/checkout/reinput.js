@@ -6,6 +6,8 @@ require('expose-loader?store!modules/store/store');
 require('Dust/checkout/reinput.html');
 
 Nitro.module('reinput', function() {
+	console.clear();
+	console.log('❤');
 	
 	var self = this,
 		userType = $('#vtex-callcenter').length;
@@ -35,14 +37,15 @@ Nitro.module('reinput', function() {
 	};
 
 	this.searchOrderId = function (){
-		$('body').on('keyup', 'input#previouOrderId', function () {
-			var pedidodigitado = $('input#previouOrderId').val();
+		$('body').on('keyup', 'input#previouOrderId', function (i,v) {
+			var pedidodigitado = $('input#previouOrderId').val();	
+
 			if (pedidodigitado.length > 7 && pedidodigitado.length < 11 ) {		
 				var getApi = {
 					'url': 'https://whirlpoolqa.hubinbeta.com/api/oms/pvt/findorder/' + pedidodigitado,
 					'method': 'GET',
 					success: function (verify){
-						if(verify) {					
+						if(verify) {						
 							$('.company').show();
 							$('li.previouOrderId').addClass('load').removeClass('error');
 						}
