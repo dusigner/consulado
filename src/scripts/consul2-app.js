@@ -74,3 +74,11 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 		});
 	}
 });
+
+$(window).load(function() {
+	if( $('body').is('.neemu.listagem.busca.consul') && window.location.search.indexOf('vtexcommercestable=1') > 0 ) {
+		$('a[href*="//loja.consul.com.br/"').attr('href', function() {
+			return $(this).attr('href').replace('loja.consul.com.br', 'consul.vtexcommercestable.com.br');
+		});
+	}
+});
