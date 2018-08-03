@@ -55,7 +55,16 @@ require('controllers/pre-home');
 require('modules/chatHome');
 require('modules/isTelevendasCorp');
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome','isTelevendasCorp'], function() {
+const changeCallcenterLinks = () => {
+	if( $('body').is('.neemu.listagem.busca.consul')
+	&& (window.location.search.indexOf('vtexcommercestable=1') > 0 || ( window.getCookie && window.getCookie('MTC').indexOf('.vtexcommercestable.com.br') > 0 )) ) {
+		$('a[href*="//loja.consul.com.br/"').attr('href', function() {
+			return $(this).attr('href').replace('loja.consul.com.br', 'consul.vtexcommercestable.com.br');
+		});
+	}
+};
+
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome', 'isTelevendasCorp'], function() {
 
 	var path = window.location.pathname;
 
@@ -74,12 +83,8 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 			});
 		});
 	}
+
+	changeCallcenterLinks();
 });
 
-$(window).load(function() {
-	if( $('body').is('.neemu.listagem.busca.consul') && window.location.search.indexOf('vtexcommercestable=1') > 0 ) {
-		$('a[href*="//loja.consul.com.br/"').attr('href', function() {
-			return $(this).attr('href').replace('loja.consul.com.br', 'consul.vtexcommercestable.com.br');
-		});
-	}
-});
+$(window).load(changeCallcenterLinks);
