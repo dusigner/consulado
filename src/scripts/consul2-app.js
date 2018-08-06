@@ -53,6 +53,7 @@ require('modules/customLogin');
 require('controllers/landing-gae-compra-interno');
 require('controllers/pre-home');
 require('modules/chatHome');
+require('modules/isTelevendasCorp');
 
 const changeCallcenterLinks = () => {
 	if( $('body').is('.neemu.listagem.busca.consul')
@@ -63,7 +64,7 @@ const changeCallcenterLinks = () => {
 	}
 };
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome', 'isTelevendasCorp'], function() {
 
 	var path = window.location.pathname;
 
