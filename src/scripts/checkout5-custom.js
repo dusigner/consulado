@@ -30,6 +30,7 @@ $(window).on('load', function() {
 	}
 
 	//load Nitro Lib
+	require('vendors/jquery.cookie');
 	require('vendors/nitro');
 	require('vendors/vtex-modal');
 
@@ -45,13 +46,14 @@ $(window).on('load', function() {
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
+	require('modules/store/callcenter');
 	// require('modules/chaordic');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message', 'customLogin'], function(/*chaordic*/ gae, recurrence, cotas, pj) {
-
+	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'checkout.default-message', 'customLogin','callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj) {
+				
 		var self = this,
 			$body = $('body');
 

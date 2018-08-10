@@ -3,8 +3,9 @@
 
 require('modules/store/login');
 require('modules/store/register.corporate');
+require('modules/store/callcenter');
 
-Nitro.controller('pre-home', ['login', 'register.corporate'], function() {
+Nitro.controller('pre-home', ['login', 'register.corporate', 'callcenter'], function() {
 
 	$('#info .carrossel').slick({
 		infinite: true,
@@ -26,8 +27,6 @@ Nitro.controller('pre-home', ['login', 'register.corporate'], function() {
 			}
 		}]
 	});
-
-
 });
 
 
