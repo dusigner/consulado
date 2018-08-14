@@ -306,6 +306,12 @@ div[data-chaordic] {
 					img {
 						min-height: unset;
 					}
+					@include breakpoint('small','max'){
+						max-width: none;
+						float: none;
+						width: auto;
+						position: relative;
+					}
 				}
 				.shelf-item__info {
 					height: 68px;
@@ -315,13 +321,27 @@ div[data-chaordic] {
 					float: right;
 					max-width: 162px;
 					width: 100%;
-					@include breakpoint('extra-small', 'max') {
+					@include breakpoint('medium', 'max') {
 						max-width: 100%;
 					}
+					@include breakpoint('small','max'){
+						float: none;
+					}
 				}
-				.shelf-item__name {
+				.shelf-item__name.show-mobile {
+					display: none;
+					font-size: 12px;
+					text-align: center;
+					@include breakpoint('small', 'max') {
+						display:block;
+					}
+				}
+				.shelf-item__name.show-desk {
 					font-size: 17px;
 					text-align: left;
+					@include breakpoint('small', 'max') {
+						display:none;
+					}
 				}
 				.shelf-item__price {
 					font-size: .875rem;
@@ -329,11 +349,14 @@ div[data-chaordic] {
 					span.off {
 						display: none!important;
 					}
+					@include breakpoint('small','max') {
+						font-size: 12px;
+					}
 				}
-				.shelf-item__price--installment,
-				.shelf-item__price--cash {
-					display: none;
-				}
+				//.shelf-item__price--installment,
+				//.shelf-item__price--cash {
+				//	display: none;
+				//}
 			}
 		}
 	}
@@ -446,6 +469,9 @@ div[data-chaordic] {
 			background: transparent;
 			color: #f47921;
 		}
+		@include breakpoint('small', 'max') {
+			display:none;
+		}
 	}
 
 	&-res-text {
@@ -490,17 +516,6 @@ div[data-chaordic] {
 		width: 100%;
 		span {
 			color: #7f2893;
-		}
-	}
-}
-
-.home { 
-	.shelf--history-personalized-ref {
-		.slick-list.draggable {
-			@include breakpoint('extra-small', 'max') {
-				height: auto!important;
-				max-height: 289px;
-			}
 		}
 	}
 }

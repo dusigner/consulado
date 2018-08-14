@@ -589,14 +589,16 @@ Nitro.module('chaordic', function() {
 				settings: {
 					dots: true,
 					slidesToShow: 2,
-					slidesToScroll: 2
+					slidesToScroll: 2,
+					vertical: false
 				}
 			}, {
 				breakpoint: 480,
 				settings: {
 					dots: true,
 					slidesToShow: 1,
-					slidesToScroll: 1
+					slidesToScroll: 1,
+					vertical: false
 				}
 			}]
 		});
