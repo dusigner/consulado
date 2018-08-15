@@ -14,10 +14,10 @@ Nitro.module('checkout.recurrence', function() {
 		self.autoOpen();
 	};
 
-	//Skus e respectivos periodos de recorrência
+	//Skus e respectivos periodos de recorrência (do html, tentando facilitar a troca disso e não tive mais ideias)
 	this.periods = eval($('.global-recurrence-periods').text());
 
-	/*
+	/**
 	 * Verifica se existe alguma oferta de recorrência no produto
 	 * @param {Object} orderform.items[array].attachmentOfferings
 	 * @return {Boolean}
@@ -35,7 +35,7 @@ Nitro.module('checkout.recurrence', function() {
 		return hasRecurrence;
 	};
 
-	/*
+	/**
 	 * Verifica se existe alguma recorrência selecionada/ativa no produto
 	 * @param {Object} orderform.items[array].attachments
 	 * @return {Boolean}
@@ -53,7 +53,7 @@ Nitro.module('checkout.recurrence', function() {
 		return hasActiveRecurrence;
 	};
 
-	/*
+	/**
 	 * Cria modal com CTA de adicionar recorrência
 	 * @param templateData {Object} dados para renderização
 	 */
@@ -69,8 +69,14 @@ Nitro.module('checkout.recurrence', function() {
 				$('#modal-recurrence').remove();
 			});
 
+			var $openRecurrenceToggle = $('.js-select-toggle'),
+				$addRecurrence = $('.js-recurrence-add'),
+				$selectRecurrence = $('.js-select-option');
+
 			//CTA de adicionar sku
-			$('.js-recurrence-add').click(function() {
+			$addRecurrence.click(function(e) {
+				e.preventDefault();
+
 				var $self = $(this);
 
 				self.actionsAttachment($self, function(item, content) {
@@ -78,6 +84,25 @@ Nitro.module('checkout.recurrence', function() {
 						$('#modal-recurrence').modal('hide');
 					});
 				});
+			});
+
+			$openRecurrenceToggle.click(function(e) {
+				e.preventDefault();
+
+				$(this).toggleClass('modal-recurrence__select-current--active');
+				$('.modal-recurrence__select-period').stop().stop().slideToggle('fast');
+			});
+
+			$selectRecurrence.click(function(e) {
+				e.preventDefault();
+
+				var $self = $(this);
+
+				$addRecurrence.data('period', $self.attr('data-originalPeriod'));
+				$openRecurrenceToggle.trigger('click');
+				$selectRecurrence.show();
+				$openRecurrenceToggle.find('.js-select-current').text($self.text());
+				$self.hide();
 			});
 
 			//ACCORDION MOBILE
@@ -90,7 +115,7 @@ Nitro.module('checkout.recurrence', function() {
 		});
 	};
 
-	/*
+	/**
 	 * Renderiza na tela o componente de botões (2 passos) de recorrência -> botões abrir modal e cancelar
 	 */
 	this.render = function() {
@@ -109,8 +134,9 @@ Nitro.module('checkout.recurrence', function() {
 
 				//seleciona objeto de recorrência
 				var attachmentRecurrence = $.grep(v.attachmentOfferings, function(v){
-					return v.name === 'Recorrência';
-				});
+						return v.name === 'Recorrência';
+					}),
+					selfPeriod = self.periods[v.refId];
 
 				if(hasActiveRecurrence) {
 					var selectedRecurrence = $.grep(v.attachments, function(v){
@@ -121,12 +147,28 @@ Nitro.module('checkout.recurrence', function() {
 					templateData.selectedRecurrence = selectedRecurrence[0].content.periodo;
 				}
 
-				if( attachmentRecurrence[0].schema.periodo.domain.indexOf(self.periods[v.refId]) < 0 ) {
-					return false;
+				//verifica se recorrência é aberta, ou fixa com um único periodo
+				if(Array.isArray(selfPeriod)) {
+					templateData.isOpen = true;
+
+					selfPeriod = $.map(selfPeriod, function(v){
+						if(attachmentRecurrence[0].schema.periodo.domain.indexOf(v) >= 0) {
+							return v;
+						}
+					});
+				} else {
+					//se não existe a recorrência dos períodos do módulo no objeto da vtex
+					if( attachmentRecurrence[0].schema.periodo.domain.indexOf(selfPeriod) < 0 ) {
+						return false;
+					}
 				}
 
 				templateData.index = i;
-				templateData.period = self.periods[v.refId];
+				templateData.period = selfPeriod;
+
+				if(!templateData.period) {
+					return false;
+				}
 
 				if($attachmentContainer.length === 0) {
 					$self.find('.product-name').append('<div class="add-item-attachment-container"></div>');
@@ -174,7 +216,7 @@ Nitro.module('checkout.recurrence', function() {
 		});
 	};
 
-	/*
+	/**
 	 * Eventos de cliques/acções dos botões do módulo recorrência
 	 * @param elem {Object} seletor jquery da linha do produto em questão
 	 */
@@ -194,7 +236,7 @@ Nitro.module('checkout.recurrence', function() {
 		});
 	};
 
-	/*
+	/**
 	 * Troca de passo na interface de recorrência, verifica se foi um clique em um botão com parâmetro (ex.: [data-go="one"]), ou se é para um passo fixo.
 	 * @param {String: 'one', 'two', 'three'} or {Object}
 	 */
@@ -206,7 +248,7 @@ Nitro.module('checkout.recurrence', function() {
 		$('.recurrence__step--' + nextStep).removeClass('hide');
 	};
 
-	/*
+	/**
 	 * Ações de recorrência no orderForm com base nos dados passados do componente
 	 * @param elem {Object} seletor jquery do botão clicado
 	 * @param callback {Function} função callback que executará a ação final
@@ -219,13 +261,22 @@ Nitro.module('checkout.recurrence', function() {
 			currentPeriod = $self.data('period'),
 			content = { periodo: currentPeriod };
 
+		if(!currentPeriod) {
+			window.vtex.checkout.MessageUtils.showMessage({
+				text: 'Você deve selecionar pelo menos um período de recorrência',
+				status: 'error'
+			});
+
+			return false;
+		}
+
 		$self.siblings('.loading-text').removeClass('hide');
 
 		return callback(item, content);
 	};
 
 
-	/*
+	/**
 	 * Trigga click no último CTA de recorrente para abrir automaticamente o modal ao acessar o checkout
 	 */
 	this.autoOpen = function() {

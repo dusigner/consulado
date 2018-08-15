@@ -23,7 +23,7 @@
 		opacity .5s ease
 	;
 	width: 100%;
-	z-index: 100;
+	z-index: -5;
 
 	&:before {
 		@include breakpoint('small', 'max') {
@@ -229,7 +229,10 @@
 		}
 		margin-top: 1.5rem;
 
-		.btn {
+		button {
+			&:focus {
+				outline: none;
+			}
 			@include breakpoint('small', 'min') {
 				@include breakpoint('medium', 'max') {
 					font-size: 11px;

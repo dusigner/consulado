@@ -22,7 +22,7 @@ div[data-chaordic] {
 			margin: 20px 0;
 
 			li:not([id^='slick-']) {
-					margin: 0 5px 0 0;
+					margin: 0 0 0 0;
 
 					&:nth-child(1) {display: none!important}
 			}
@@ -36,7 +36,7 @@ div[data-chaordic] {
 
 			@include breakpoint(small, 'max') {
 				border: 1px solid #ccc;
-				margin: 0 5px;
+				margin: 0;
 				padding: 10px;
 				text-align: left;
 				width: 47.5%;
@@ -196,8 +196,12 @@ div[data-chaordic] {
 		h2 {
 			@include breakpoint(small, 'max') {
 				&:not(.shelf-sub-title) {
-					margin-left: calc(-5% - 20px);
-					margin-right: calc(-5% - 20px);
+					margin-left: calc(-0% - 20px);
+					margin-right: calc(-0% - 20px);
+					@include breakpoint('extra-small', 'max') {
+						margin-left: calc(-3% - 20px);
+						margin-right: calc(-3% - 20px);
+					}
 				}
 
 				&.shelf-sub-title {
@@ -211,7 +215,7 @@ div[data-chaordic] {
 						border-width: 10px 10px 0 10px;
 						bottom: -10px;
 						content: '';
-						display: block;
+						/*display: block;*/
 						height: 0;
 						left: 50%;
 						position: absolute;
@@ -282,6 +286,10 @@ div[data-chaordic] {
 		height: 595px;
 		width: 33.3%;
 		z-index: 50;
+		@include breakpoint('small', 'max') {
+			height: auto;
+			width: 100%;
+		}
 		ul {
 			&.slick-slider {
 				height: 100%;
@@ -290,15 +298,19 @@ div[data-chaordic] {
 				display: block;
 			}
 			li {
-				display: block!important; 
-				margin: 10px 0;
-				width: 100%!important;
+				
 				.shelf-item__image {
 					float: left;
 					max-width: 150px;
 					width: 100%;
 					img {
 						min-height: unset;
+					}
+					@include breakpoint('small','max'){
+						max-width: none;
+						float: none;
+						width: auto;
+						position: relative;
 					}
 				}
 				.shelf-item__info {
@@ -309,10 +321,27 @@ div[data-chaordic] {
 					float: right;
 					max-width: 162px;
 					width: 100%;
+					@include breakpoint('medium', 'max') {
+						max-width: 100%;
+					}
+					@include breakpoint('small','max'){
+						float: none;
+					}
 				}
-				.shelf-item__name {
+				.shelf-item__name.show-mobile {
+					display: none;
+					font-size: 12px;
+					text-align: center;
+					@include breakpoint('small', 'max') {
+						display:block;
+					}
+				}
+				.shelf-item__name.show-desk {
 					font-size: 17px;
 					text-align: left;
+					@include breakpoint('small', 'max') {
+						display:none;
+					}
 				}
 				.shelf-item__price {
 					font-size: .875rem;
@@ -320,10 +349,16 @@ div[data-chaordic] {
 					span.off {
 						display: none!important;
 					}
+					@include breakpoint('small','max') {
+						font-size: 12px;
+					}
 				}
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
 					display: none;
+					@include breakpoint('small','max') {
+						display: block;
+					}
 				}
 			}
 		}
@@ -436,6 +471,9 @@ div[data-chaordic] {
 		&:hover {
 			background: transparent;
 			color: #f47921;
+		}
+		@include breakpoint('small', 'max') {
+			display:none;
 		}
 	}
 

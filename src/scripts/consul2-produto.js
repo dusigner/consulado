@@ -363,7 +363,7 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		$('#btnFreteSimulacao').ajaxStop(function(){
 			$loadingFret.removeClass('loading');
 			$containerFrete.addClass('active');
-			$containerFrete.prepend('<i class="closed"></i>');
+			$containerFrete.prepend('<i class="closed"></i>');	
 			if(flag === 1){
 				dataLayer.push({
 					event: 'simuladorCEP',

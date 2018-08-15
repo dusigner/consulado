@@ -126,8 +126,7 @@ Nitro.module('checkout.gae', function() {
 		}
 		else if ( idOffering === '' && !liAceito || idOffering === '' && liAceito) {
 			$modalWarranty.modal('hide');
-		}
-		else {
+		} else {
 			$('.form-termos').addClass('erro');
 
 			setTimeout(function(){
@@ -260,7 +259,15 @@ Nitro.module('checkout.gae', function() {
 				$('.autorizacao-de-pgto').toggleClass('ativo');
 			});
 
-
+			// Tagueamento do click de envio
+			$('.garantia-box-proceed .btn-continue.btn-success').on('click', function(){
+				dataLayer.push({
+					event: 'generic',
+					category: 'cart',
+					action: 'Modal Garantia Estendida',
+					label: $(this).parents('.modal-body').find('.active .title-garantia').text()
+				});
+			});
 		});
 	};
 
