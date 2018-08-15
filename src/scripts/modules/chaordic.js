@@ -2,7 +2,6 @@
 
 'use strict';
 
-
 //Templates dust usados
 require('Dust/chaordic/shelf-content-placeholder-product.html');
 require('Dust/chaordic/shelf-content-placeholder-default.html');
@@ -55,7 +54,6 @@ dust.helpers.neq = function(chunk, context, bodies, params) {
 
 //MODULE
 Nitro.module('chaordic', function() {
-
 	var self = this,
 		API = { //OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
 			APIHOST: '//recs.chaordicsystems.com/v0',
@@ -80,7 +78,6 @@ Nitro.module('chaordic', function() {
 	this.init = function(name, productId) {
 		name ? API.APIPARAMS.name = name : '';
 		productId ? API.APIPARAMS.productId = productId : '';
-
 		if( $('[data-chaordic]').length > 0 ) {
 
 			if(!API.APIPARAMS.deviceId) {
@@ -215,9 +212,7 @@ Nitro.module('chaordic', function() {
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				$self.addClass('vtex-load');
 				
-				$.get($self.attr('data-impressionUrl')).always(function() {
-					console.info('impressionUrl', $self.attr('data-impressionUrl'));
-				});
+				$.get($self.attr('data-impressionUrl')).always(function() {});
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
@@ -262,7 +257,6 @@ Nitro.module('chaordic', function() {
 	 */
 	this.getShelf = function() {
 		var dfd = jQuery.Deferred();
-
 		if(!chaordicData) {
 			if(!self._hasFalseKeys(API.APIPARAMS)) {
 				$.ajax({
@@ -332,6 +326,7 @@ Nitro.module('chaordic', function() {
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
+
 				if(product.productId === recommendation.id) {
 					
 					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
@@ -343,7 +338,6 @@ Nitro.module('chaordic', function() {
 						});
 
 						if(item.length > 0) {
-							
 							//item = [product.items[0]];
 							product.available = item.length > 0;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
@@ -357,7 +351,7 @@ Nitro.module('chaordic', function() {
 
 
 							self.finalRender(product, $box);
-						} else {
+						} else {							
 							self.renderUnavailable(product, $box);
 						}
 					}
@@ -584,14 +578,16 @@ Nitro.module('chaordic', function() {
 				settings: {
 					dots: true,
 					slidesToShow: 2,
-					slidesToScroll: 2
+					slidesToScroll: 2,
+					vertical: false
 				}
 			}, {
 				breakpoint: 480,
 				settings: {
 					dots: true,
 					slidesToShow: 1,
-					slidesToScroll: 1
+					slidesToScroll: 1,
+					vertical: false
 				}
 			}]
 		});

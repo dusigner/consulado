@@ -126,8 +126,7 @@ Nitro.module('checkout.gae', function() {
 		}
 		else if ( idOffering === '' && !liAceito || idOffering === '' && liAceito) {
 			$modalWarranty.modal('hide');
-		}
-		else {
+		} else {
 			$('.form-termos').addClass('erro');
 
 			setTimeout(function(){
@@ -219,7 +218,7 @@ Nitro.module('checkout.gae', function() {
 			var $anchorGae = $('.anchor-gae');
 			$anchorGae.on('click', function() {
 				$anchorGae.not(this).removeClass('active').filter(this).addClass('active');
-				$('.row-product-and-action .btn-continue').html('Continuar <span>›</span>').removeClass('locked');
+				// $('.row-product-and-action .btn-continue').html('Continuar <span>›</span>').removeClass('locked');
 				$('.modal__cell').removeClass('active');
 				$(this).parent('.modal__cell').addClass('active');
 			});
@@ -231,11 +230,11 @@ Nitro.module('checkout.gae', function() {
 			});
 
 			// Desmarcar opção selecionada
-			$('body').on('click', '.close-warranty', function(){
-				$('#warranty1').trigger('click');
-				$('.modal__cell').removeClass('active');
-				$('.row-product-and-action .btn-continue').html('Não tenho interesse <span>›</span>').addClass('locked');	
-			});
+			// $('body').on('click', '.close-warranty', function(){
+			// 	$('#warranty1').trigger('click');
+			// 	$('.modal__cell').removeClass('active');
+			// 	$('.row-product-and-action .btn-continue').html('Não tenho interesse <span>›</span>').addClass('locked');	
+			// });
 
 			//Retornar true ou false
 			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
@@ -260,7 +259,15 @@ Nitro.module('checkout.gae', function() {
 				$('.autorizacao-de-pgto').toggleClass('ativo');
 			});
 
-
+			// Tagueamento do click de envio
+			$('.garantia-box-proceed .btn-continue.btn-success').on('click', function(){
+				dataLayer.push({
+					event: 'generic',
+					category: 'cart',
+					action: 'Modal Garantia Estendida',
+					label: $(this).parents('.modal-body').find('.active .title-garantia').text()
+				});
+			});
 		});
 	};
 

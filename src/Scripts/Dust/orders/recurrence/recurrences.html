@@ -40,7 +40,7 @@
 		<div class="order__header js-toggle-orders order__header--closed">
 			<ul class="order__header-list">
 				<li class="order__header-item text-center color-green">{name|s|shortName}</span></li>
-				<li class="order__header-item text-center color-green hide-small hide-extra-small">Período de Recorrência a cada <strong>{frequency.interval} {frequency.periodicity|frequencyText}</strong></span></li>
+				<li class="order__header-item text-center color-green hide-small hide-extra-small">Período de Recorrência a cada <strong>{frequency.frequency|recurrenceSemanas}</strong></span></li>
 				<li class="order__header-item text-center color-green hide-small hide-extra-small">{>"recurrenceToggle" isItem="true"/}</li>
 
 			</ul>
@@ -73,7 +73,7 @@
 								<td class="order__recurrence-icon"></td>
 								<td class="order__item-name text-left">
 										Recorrência {>"recurrenceStatus"/}<br />
-										<em class="order__hide--desk">(a cada {frequency.interval} {frequency.periodicity|frequencyText})</em><br />
+										<em class="order__hide--desk">(a cada {frequency.frequency|recurrenceSemanas})</em><br />
 										<a href="#edit-recurrence-item" class="js-recurrence-item-edit order__hide--desk"
 										data-title="Editar recorrência"
 										{>"recurrenceData"/}>
@@ -84,7 +84,7 @@
 										</a>
 								</td>
 								<td class="order__hide--mobile">-</td>
-								<td class="order__hide--mobile">A cada {frequency.interval} {frequency.periodicity|frequencyText}</td>
+								<td class="order__hide--mobile">A cada {frequency.frequency|recurrenceSemanas}</td>
 								<td class="order__hide--mobile">{nextDelivery|formatDatetimeBRL}</td>
 								<td>
 									<a href="#edit-recurrence-item" class="js-recurrence-item-edit order__hide--mobile"

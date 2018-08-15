@@ -176,18 +176,21 @@ $value: 0;
 			}
 		}
 
-		.step.current {
-			opacity: 1;
-			position: relative;
-			z-index: 1;
-		}
-
 		.step {
+			height: 0;
 			left: 0;
 			opacity: 0;
-			opacity: 0;
+			overflow: hidden;
 			position: absolute;
 			top: 0;
+
+			&.current {
+				height: auto;
+				opacity: 1;
+				overflow: auto;
+				position: relative;
+				z-index: 1;
+			}
 		}
 	}
 }
