@@ -64,14 +64,14 @@
     "workbox-webpack-plugin": "^3.2.0"
   },
   "scripts": {
-    "deploy": "git checkout master && git pull && gulp deploy && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
-    "deploy-pages": "git checkout master && git pull && gulp deploy --page=ALL && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos",
-    "deploy-pj": "git checkout master && git pull && gulp deploy --account=consulempresa && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
-    "deploy-pj-pages": "git checkout master && git pull && gulp deploy --account=consulempresa --page=ALL && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos",
-    "deploy-qa": "gulp deploy --qa --nobump && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
-    "deploy-qa-pages": "gulp deploy --qa --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos",
-    "deploy-qa-pj": "gulp deploy --account=consulqa2 --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
-    "deploy-qa-pj-pages": "gulp deploy --account=consulqa2 --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos",
+    "deploy": "git checkout master && git pull && gulp deploy && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos && git add . && git commit -m 'deploy' && git push",
+    "deploy-pages": "git checkout master && git pull && gulp deploy --page=ALL && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos && git add . && git commit -m 'deploy' && git push",
+    "deploy-pj": "git checkout master && git pull && gulp deploy --account=consulempresa && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos && git add . && git commit -m 'deploy pj' && git push",
+    "deploy-pj-pages": "git checkout master && git pull && gulp deploy --account=consulempresa --page=ALL && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos && git add . && git commit -m 'deploy pj' && git push",
+    "deploy-qa": "gulp deploy --qa --nobump && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos && git add . && git commit -m 'deploy qa' && git push",
+    "deploy-qa-pages": "gulp deploy --qa --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa --site consulqa --pathFiles arquivos && git add . && git commit -m 'deploy qa' && git push",
+    "deploy-qa-pj": "gulp deploy --account=consulqa2 --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos && git add . && git commit -m 'deploy qa pj' && git push",
+    "deploy-qa-pj-pages": "gulp deploy --account=consulqa2 --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos && git add . && git commit -m 'deploy qa pj' && git push",
     "create-controller": "node node_modules/jussitb createController",
     "create-module": "node node_modules/jussitb createModule",
     "create-page": "node node_modules/jussitb createPage --account consul"
