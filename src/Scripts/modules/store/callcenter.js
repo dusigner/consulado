@@ -10,9 +10,10 @@ Nitro.module('callcenter', function () {
 		});
 		$(document).ajaxStop(function() {
 			var emailCallcenter = $('#vtex-callcenter__customer-email');
-			( emailCallcenter.length > 0 && $('body').hasClass('pre-home')) &&
-			$('.form-login.pre-home-form  .email').val(emailCallcenter.text());
-			$('.form-login.pre-home-form').trigger('submit');			
+			if( emailCallcenter.length > 0 && $('body').hasClass('pre-home')) {
+				$('.form-login.pre-home-form  .email').val(emailCallcenter.text());
+				$('.form-login.pre-home-form').trigger('submit');
+			}
 		});
 	};
 	self.loginAutomaticCallcenter();
