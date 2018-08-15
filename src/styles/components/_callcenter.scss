@@ -3,3 +3,9 @@
 #vtex-callcenter {
 	#vtex-callcenter__toolbar { z-index: 999999 }
 }
+
+body.consulempresa:not(.pre-home) {
+	.cc-absolute.cc-w-80.cc-w-30-ns.cc-z-9999 {
+		display: none !important;
+	}
+}

@@ -7,7 +7,7 @@ var getAddress = require('modules/store/getAddress');
 var redirect = require('modules/store/redirect');
 
 Nitro.module('register.corporate', function() {
-
+	
 	var self = this,
 		primaryInfoComplete = false,
 		$modalRegister = $('#modal-register'),
@@ -19,7 +19,7 @@ Nitro.module('register.corporate', function() {
 		self.addFormMask();
 
 		$form.fields = $form.find('input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]');
-		$form.fieldEmail = $form.fields.filter('input[name="email"]');
+		$form.fieldEmail = $form.fields.filter('input[name="email"], input[name="confirmEmail"]');
 		$form.primaryFields = $form.find('.primary-info').find($form.fields);
 		$form.fieldDocument = $form.primaryFields.filter('input[name="corporateDocument"]');
 		$form.btnSubmit = $form.find('[type="submit"]');
@@ -112,7 +112,7 @@ Nitro.module('register.corporate', function() {
 			{ event : 'emailNãoCadastrado'}
 		);
 
-		$form.fieldEmail.val(email);
+		$form.fieldEmail.val(email).attr('readonly','readonly');
 
 		$modalRegister.vtexModal();
 	};
