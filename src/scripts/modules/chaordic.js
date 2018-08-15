@@ -54,9 +54,6 @@ dust.helpers.neq = function(chunk, context, bodies, params) {
 
 //MODULE
 Nitro.module('chaordic', function() {
-	console.clear();
-	console.log('🙌');
-	
 	var self = this,
 		API = { //OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
 			APIHOST: '//recs.chaordicsystems.com/v0',
@@ -81,7 +78,6 @@ Nitro.module('chaordic', function() {
 	this.init = function(name, productId) {
 		name ? API.APIPARAMS.name = name : '';
 		productId ? API.APIPARAMS.productId = productId : '';
-		console.log('home');
 		if( $('[data-chaordic]').length > 0 ) {
 
 			if(!API.APIPARAMS.deviceId) {
@@ -216,9 +212,7 @@ Nitro.module('chaordic', function() {
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				$self.addClass('vtex-load');
 				
-				$.get($self.attr('data-impressionUrl')).always(function() {
-					console.info('impressionUrl', $self.attr('data-impressionUrl'));
-				});
+				$.get($self.attr('data-impressionUrl')).always(function() {});
 
 				var shelf = chaordicData[position][$self.data('index')],
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
@@ -263,7 +257,6 @@ Nitro.module('chaordic', function() {
 	 */
 	this.getShelf = function() {
 		var dfd = jQuery.Deferred();
-		console.log('shelf');
 		if(!chaordicData) {
 			if(!self._hasFalseKeys(API.APIPARAMS)) {
 				$.ajax({
@@ -334,7 +327,6 @@ Nitro.module('chaordic', function() {
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
 
-				// console.log('🤞', product, 'Qtd', product.priceInfo);
 				if(product.productId === recommendation.id) {
 					
 					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
@@ -346,7 +338,6 @@ Nitro.module('chaordic', function() {
 						});
 
 						if(item.length > 0) {
-							console.log('🎂', item);
 							//item = [product.items[0]];
 							product.available = item.length > 0;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
@@ -360,8 +351,7 @@ Nitro.module('chaordic', function() {
 
 
 							self.finalRender(product, $box);
-						} else {
-							console.log('😢', item);
+						} else {							
 							self.renderUnavailable(product, $box);
 						}
 					}
@@ -520,7 +510,6 @@ Nitro.module('chaordic', function() {
 		var dfd = jQuery.Deferred();
 		var placeholderDust;
 		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
-		console.log('placeholderDust', placeholderDust, 'renderData',renderData);
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
