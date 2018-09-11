@@ -52,6 +52,7 @@ define('store', function() {
 		// return this.checkAccess();
 
 		if( this.isCorp ) {
+			
 			this.autoLogin();
 
 			// Trocar URL logo para empresas
@@ -103,26 +104,25 @@ define('store', function() {
 		$.removeCookie('userData', {path: '/'});
 	};
 
-	this.checkAccess = function() {
-
+	this.checkAccess = function() {		
+		
 		this.isPrivateUrl = !publicUrl.some(function(item) {
-
+			
 			return new RegExp(item, 'i').test(this.uri.path());
 
 		}.bind(this));
 
-		/*if(this.userData) {
-			this.userData.partner = 1021540;
-		}*/
-
 		var approved = false;
 
-		if(this.userData && this.userData.xValidationPJ !== 'reprovado') {
+		if(Object.keys(this.userData).length && this.userData.xValidationPJ !== 'reprovado') {			
+			approved = true;
+		}
+
+		if ( this.isTelevendas ) {
 			approved = true;
 		}
 
 		return !(!approved && this.isPrivateUrl);
-		//return true;
 	};
 
 	this.checkTelevendas = function() {

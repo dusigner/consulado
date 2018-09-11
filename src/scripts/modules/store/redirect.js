@@ -6,7 +6,7 @@ var Uri = require('vendors/Uri');
 var CRM = require('modules/store/crm');
 
 var redirect = module.exports.redirect = function (data) {
-
+	
 	$(document).trigger('redirect', data);
 
 	store.setUserData(data, true);
