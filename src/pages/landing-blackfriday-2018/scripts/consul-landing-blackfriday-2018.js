@@ -183,10 +183,11 @@ Nitro.setup(['facebook-init'], function () {
 		},
 
 		sliderDepoimentos: function() {
-			if ($(window).width() <= 980) {
+			// if ($(window).width() <= 980) {
 				$('.depoimentos .bg-depoimentos').slick({
 					arrows: false,
 					infinite: true,
+					dots: true,
 					slidesToShow: 3,
 					slidesToScroll: 3,
 					responsive: [{
@@ -207,7 +208,7 @@ Nitro.setup(['facebook-init'], function () {
 						}
 					}]
 				});
-			}
+			// }
 		},
 
 		// monta slick da prateleira

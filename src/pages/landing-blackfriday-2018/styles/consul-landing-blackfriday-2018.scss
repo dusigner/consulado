@@ -87,6 +87,7 @@ $loja-color: #9aca3d;
 			width: 240px;
 		}
 		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -20px no-repeat;
+		text-align: center;
 		background-size: contain;
 		color: transparent;
 		font-size: 1px;
@@ -94,10 +95,7 @@ $loja-color: #9aca3d;
 		margin: 0 0 80px 0;
 		overflow: hidden;
 		text-indent: -99cm;
-		transition:
-			margin-bottom .3s ease,
-			width .3s ease
-		;
+		transition: .3s ease;
 		width: auto;
 	}
 
@@ -129,7 +127,7 @@ $loja-color: #9aca3d;
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
 		color: $green;
 		margin: 0 auto;
-		max-width: 550px;
+		max-width: 490px;
 
 		.lpbf-contador__title {
 			@include breakpoint('small', 'max') {
@@ -140,18 +138,19 @@ $loja-color: #9aca3d;
 			@include rfs(20);
 			display: block;
 			line-height: 100%;
-			text-align: left;
+			text-align: center;
 		}
 
 		.countdown {
 			display: flex;
 			justify-content: space-between;
 			padding: 1em 0;
+			text-align: center;
 		}
 
 		.counter {
 			@include breakpoint('extra-small', 'max') { width: 56px; }
-			@include rfs(63);
+			@include rfs(53);
 			color: $loja-color;
 			display: block;
 			font-weight: bold;
@@ -160,12 +159,15 @@ $loja-color: #9aca3d;
 			width: 84px;
 			@include breakpoint('small', 'max') { color: #fff; }
 
-			&.colon { width: auto; }
+			&.colon { 
+				color: #fff;
+				width: auto;
+			}
 		}
 
 		.countdown-text {
 			@include rfs(13);
-			color: $loja-color;
+			color: #fff;
 			padding-top: .7em;
 			text-transform: uppercase;
 			@include breakpoint('small', 'max') { color: #fff; }
@@ -232,7 +234,7 @@ $loja-color: #9aca3d;
 
 	.row { margin: 0; }
 }
-.form-blackfriday-2017 {
+.form-blackfriday-2018 {
 	margin-top: 20px;
 	padding: 0 20px;
 	@include breakpoint('small', 'max') { margin-bottom: 20px; }
@@ -517,8 +519,7 @@ $loja-color: #9aca3d;
 	}
 
 	input[type='checkbox'] {
-		position: absolute;
-		top: -30px;
+		display: none;
 	}
 
 	// Active state
@@ -692,19 +693,25 @@ $loja-color: #9aca3d;
 		border-top-right-radius: 0;
 		margin-left: 35px;
 	}
-	& > div {
-		background-color: #fff;
-		border-radius: 25px;
+	// & > div,
+	.slick-slide {
 		display: inline-block;
-		padding: 30px 40px 40px 40px;
+		padding: 0 10px 0 10px;
 		width: 320px;
-		@include breakpoint('medium', 'max') {
-			padding: 30px 0 40px 0;
-			width: 100%;
+		box-sizing: border-box;
+		.box {
+			background-color: #fff;
+			border-radius: 25px;
+			padding: 30px 20px 30px 20px;
+			min-height: 300px;
 		}
-		@include breakpoint('extra-small', 'max') {
-			margin-left: -35px;
-		}
+		// @include breakpoint('medium', 'max') {
+		// 	padding: 30px 0 40px 0;
+		// 	width: 100%;
+		// }
+		// @include breakpoint('extra-small', 'max') {
+		// 	margin-left: -35px;
+		// }
 		h2 {
 			@include rfs(18);
 			color: $loja-color;
@@ -726,31 +733,31 @@ $loja-color: #9aca3d;
 	}
 }
 
-.depoimento-1 {
-	left: -60px;
-    position: relative;
-	@include breakpoint('medium', 'max') {
-		left: auto;
-		position: inherit;
-	}
-}
+// .depoimento-1 {
+// 	left: -60px;
+//     position: relative;
+// 	@include breakpoint('medium', 'max') {
+// 		left: auto;
+// 		position: inherit;
+// 	}
+// }
 
-.depoimento-3 {
-	left: 60px;
-    position: relative;
-	@include breakpoint('medium', 'max') {
-		left: auto;
-		position: inherit;
-	}
-}
+// .depoimento-6 {
+// 	left: 60px;
+//     position: relative;
+// 	@include breakpoint('medium', 'max') {
+// 		left: auto;
+// 		position: inherit;
+// 	}
+// }
 
 // prateleira
 .prateleira-bf {
-	background: #000 url('/arquivos/lpbf-banner-background-2.png') 50% 0 no-repeat;
+	background: #000 url('/arquivos/bg-section-002.jpg') 50% 0 no-repeat;
 	margin-top: -200px;
 	.prateleira {
 		background-color: #fff;
-		border-radius: 30px;
+		border-radius: 30px 30px 0 0;
 		margin-top: 40px;
 	}
 	.row { margin: 0; }
