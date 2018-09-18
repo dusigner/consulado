@@ -135,7 +135,7 @@ $loja-color: #9aca3d;
 				text-align: center;
 				transform: translateY(-20px);
 			}
-			@include rfs(20);
+			@include rfs(18);
 			display: block;
 			line-height: 100%;
 			text-align: center;
@@ -216,423 +216,485 @@ $loja-color: #9aca3d;
 	}
 }
 
-// Form
+//Form
+// ===============================================================
 .lpbf-form__container {
-	@include breakpoint('small', 'max') {
-		background-color: #000;
+	@include breakpoint(1100px, 'max') { margin: 60px auto 10px auto; }
+	@include breakpoint(1100px, 'min') {
+		@include breakpoint(1200px, 'max') { max-width: 400px; }
+		// position: absolute;
+		// right: 20px;
+		// top: 100px;
 	}
-
-	.container {
-		@include breakpoint('small', 'max') {
-			padding: 0;
-			width: 100%;
-		}
-		@include breakpoint('extra-small', 'max') { width: 95%; }
-		@include breakpoint('small', 'min') { padding: 0; }
-		max-width: auto;
-	}
-
-	.row { margin: 0; }
-}
-.form-blackfriday-2018 {
-	margin-top: 20px;
-	padding: 0 20px;
-	@include breakpoint('small', 'max') { margin-bottom: 20px; }
-	input {
-		border: 1px solid #d4d4d4;
-		border-radius: 30px;
-		display: inline-block;
-		+ label {
-			&:after { border-radius: 50%; }
-		}
-		&:checked {
-			+ label:before {
-				background-color: $loja-color;
-				border-radius: 50%;
-			}
-		}
-	}
-	input[type='text'] {
-		margin-right: 10px;
-		@include breakpoint('large', 'min') { width: 300px; }
-		@include breakpoint('medium', 'min') { width: 250px; }
-		@include breakpoint('small', 'max') {
-			padding: 10px 20px;
-			width: 100%;
-		}
-		&:focus {
-			@include rfs(14);
-			height: 37px;
-			transition: .4s;
-		}
-	}
-
-	fieldset {
-		border: none;
-		display: inline-block;
-		margin: 0;
-		padding: 8px 0;
-		vertical-align: middle;
-
-		&.campo-checkbox {
-			@include breakpoint('small', 'max') { text-align: left; }
-		}
-
-		// input { margin: 0 15px; }
-
-		label {
-			@include breakpoint('small', 'max') {
-				@include responsiveFont(11, 16, true);
-				line-height: 12px;
-				margin: 0;
-				width: 100%;
-			}
-			@include responsiveFont(12, 16, true);
-			display: inline-block;
-			margin: 0 10px;
-			padding-left: 25px;
-			position: relative;
-			text-align-last: left;
-			width: 150px;
-
-			a {
-				text-decoration: none;
-
-				span {
-					text-decoration: underline;
-					@include breakpoint('small', 'max') {
-						display: block;
-					}
-				}
-			}
-		}
-
-		label[for='termos'] {
-			line-height: 10px;
-			@include breakpoint('small', 'max') {
-				@include rfs(12);
-			}
-		}
-	}
-}
-
-.error_p {
-	color: $loja-color;
-	font-weight: bold;
-	left: 33%;
-	position: absolute;
+	max-width: 450px;
+	position: relative;
+	width: 100%;
+	margin: 40px auto 0;
 
 	&:before {
-		@include icon-get(close);
-		// content: '';
-		margin-right: 8px;
-		vertical-align: initial;
-	}
-}
-
-.erro { border: 2px solid $loja-color!important; }
-
-.form-blackfriday__submit {
-	@include breakpoint('small', 'max') {
-		display: inline-block;
-		float: right;
-		margin: 0 auto;
-		width: 40%;
-	}
-	@include rfs(16);
-	background-color: $loja-color;
-	border: none;
-	border-radius: 35px;
-	color: #fff;
-	font-weight: bold;
-	padding: 8px 5px;
-	text-transform: uppercase;
-	transition: width .2s ease;
-	width: calc(18% - 29px);
-
-	&:focus { outline: none; }
-}
-
-.lpbf-ofertas {
-	background-color: #fff;
-	border-radius: 12px;
-	// bottom: 220px;
-	// position: absolute;
-	margin: 30px auto 0 auto;
-	width: 90%;
-	@include breakpoint('medium', 'max') {
-		height: auto;
-		margin-top: -415px;
-		padding-top: 10px;
-		position: inherit;
+		background-color: #1B1B1B;
+		border-radius: 25px;
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
 		width: 100%;
-		// @include breakpoint('medium', 'max') {
-		// 	height: 500px;
-		// }
 	}
-}
-
-// Restam cupons
-.lpbf-ofertas__cupom {
-	@include rfs(18);
-	background-color: $loja-color;
-	border-radius: 7px;
-	color: #fff;
-	font-weight: bold;
-	line-height: 100%;
-	margin: 10px auto 20px auto;
-	max-width: 350px;
-	padding: 12px 5px 20px 5px;
-
-	strong {
-		@include rfs(48);
-		display: inline-block;
-		transform: translateY(10px);
-		vertical-align: super;
-	}
-}
-
-// compartilhe facebook
-.facebook-share {
-	display: none;
-	padding: 0 90px;
-	@include breakpoint('extra-small', 'max') {
-		padding: 0 15px;
-	}
-	.txt-compartilhe {
-		@include rfs(18);
-		color: #736c6b;
-		font-weight: normal;
-	}
-	.at-icon-facebook {
-		background-color: #3c5b9a;
-		fill: rgb(255, 255, 255);
-		height: 28px;
-		width: 28px;
-	}
-	.action {
-		background-color: #fff;
-		border: 1px solid #3c5b9a;
-		border-radius: 30px;
-		color: #fff;
-		padding: 5px 25px 5px 25px;
-		width: 350px;
-		@include breakpoint('extra-small', 'max') {
-			margin-bottom: 25px;
-			width: 100%; 
-		}
-
-		&:focus { outline: none; }
-
-		svg {
-			@include responsiveFont(14, 16, true);
-			display: inline-block;
-			fill: currentColor;
-			margin-right: 10px;
-			vertical-align: middle;
-		}
-	}
-	button {
-		@include responsiveFont(18, 16, true);
-		background-color: #fff;
-		color: #fff;
-		font-weight: bold;
-		padding: 15px 45px;
-		text-transform: uppercase;
-		span {
-			color: #3c5b9a;
-			font-weight: normal;
-			text-transform: none;
-		}
-	}
-}
-
-// cupom após envio do form
-.lpbf-success {
-	bottom: 220px;
-	display: none;
-	p,
-	span {
-		@include rfs(22);
-		color: $loja-color;
-		font-weight: bold;
-	}
-
-	.txt-cupom {
-		@include rfs(12);
-		color: #736c6b;
-    	display: block;
-		font-weight: normal;
-		margin-bottom: 6px;
-	}
-}
-
-.cupom-bf {
-	@include rfs(32);
-	border: 1px solid $loja-color;
-	border-radius: 6px;
-	color: #736c6b;
-	margin: 10px auto 40px auto;
-	padding: 10px;
-	text-transform: uppercase;
-	width: 285px;
 }
 
 .lpbf-form__title {
-	margin-top: 0;
-	@include breakpoint('small', 'max') {
-		margin: 0;
-		padding: 20px 20px 0 20px;
-	}
 	@include rfs(22);
-	color: $loja-color;
+	color: #fff;
+	font-weight: 700;
+	line-height: normal;
+	margin: 1em -1em .4em -1em;
+	strong {
+		color: $loja-color;
+	}
 }
 
 // Categorias
 .lpbf-categorys {
-	@include breakpoint('small', 'min') {
-		display: flex;
-		justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#slice-hide {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height .4s;
+}
+
+#click-more-products {
+	position: relative;
+	text-align: center;
+	margin-top: 12px;
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 1px;
+		background: #666666;
+		top: 50%;
+		left: 0;
+		z-index: -1;
 	}
-	margin-top: 20px;
+	a {
+		@include rfs(14);
+		background-color: #1B1B1B;
+		border: 1px solid #666666;
+		border-radius: 30px;
+		color: #fff;
+		padding: 8px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.active {
+		height: auto;
+	}
 }
 
 .lpbf-categorys__item {
-		@include breakpoint('medium', 'max') {
-		margin-left: 8px;
-		@include breakpoint('small', 'max') { 
-			display: inline-block; 
-			margin-left: 0;
-		}
-	}
-	@include breakpoint('extra-small', 'max') { margin-left: 0; }
+	background-color: #2b2b2b;
+	border: 1px solid #666666;
+	border-radius: 30px;
 	cursor: pointer;
 	display: block;
-	margin-left: 20px;
-	padding: 5px 0;
+	margin: .5em 0 .5em 0;
+	overflow: hidden;
 	position: relative;
 	text-align: center;
-	width: 100%;
-	&:last-child {
-		margin-right: 20px;
-		@include breakpoint('medium', 'max') { margin-right: 0; }
+	width: 46.5%;
+
+	.check-box {
+		position: absolute;
+		top: 33%;
+		left: 10%;
+		width: 15px;
+		height: 15px;
+		border: 1px solid #666666;
+		border-radius: 4px;
 	}
 
 	input[type='checkbox'] {
-		display: none;
+		position: absolute;
+		top: -20px;
+		visibility: visible;
 	}
+
+	// &[for='geladeira'] .lpbf-categorys__text:before { background: url($icon-geladeira) 0 0 no-repeat; }
+	// &[for='lavadora'] .lpbf-categorys__text:before { background: url($icon-lavadora) 0 0 no-repeat; }
+	// &[for='fogao'] .lpbf-categorys__text:before { background: url($icon-fogao) 0 0 no-repeat; }
+	// &[for='outros'] .lpbf-categorys__text:before { background: url($icon-outros) 0 0 no-repeat; }
 
 	// Active state
-	&:hover {
-		.lpbf-categorys__image {
+	&:hover,
+	&:focus {
+		input[type='checkbox'] + .lpbf-categorys__text {
+			background-color: #666666;
+			color: #ececec;
+			transition: all .4s;
+		}
+		.check-box {
 			border-color: $loja-color;
 		}
-		span {
-			&:after {
-				transition:
-					color .3s ease,
-					font-size .3s ease
-				;
-			}
-		}
 	}
-
+	
+	&:active { outline: none; }
+	
 	input[type='checkbox']:checked {
-		& + .lpbf-categorys__image {
-			border: 1px solid $loja-color;
-			box-shadow: 0 0 25px 3px rgba(153, 204, 45, .39);
-			transition: all .3s ease-out;
-			span {
-				color: $loja-color;
-				&:after {
-					background-color: $loja-color;
-					color: #fff;
-					transition: all .3s ease-out;
-				}
+		& + .lpbf-categorys__text {
+			background-color: #666666;
+			color: #ececec;
+
+			&:before { 
+				background-color: $loja-color;
+				border: 1px solid $loja-color;
+				
+			}
+			&:after { 
+				background-color: $loja-color;
+				color: #fff; 
+				left: 11%;
+				position: absolute;
+				top: 40%;
 			}
 		}
 	}
 }
 
 .lpbf-categorys__text {
-	@include rfs(14);
+	@include breakpoint('extra-small', 'max') { @include rfs(10.5); }
+	@include rfs(16);
+    align-items: center;
 	color: #c3c3c3;
-	display: block;
-	font-weight: bold;
-	transition:
-		color .3s ease,
-		font-size .3s ease
-	;
+    display: flex;
+	height: 48px;
+    justify-content: center;
+    padding: 0.8em 0;
+	position: relative;
+	z-index: 0;
+
+	&:hover {
+		&:before { border: 1px solid #454545; }
+	}
+
+	&:before {
+		border-radius: 4px;
+		border: 1px solid #666666;
+		content: '';
+		height: 15px;
+		left: 10%;
+		position: absolute;
+		top: 33%;
+		width: 15px;
+	}
+
 	&:after {
-		@include rfs(7);
-		@include icon-get(check-mark);
-		border: 1px solid #f1f1f1;
-		border-radius: 50%;
-		color: #f1f1f1;
-		margin-left: 10px;
-		padding: 3px;
+		@include icon-get ('check-mark');
+		@include rfs(9);
+		color: transparent;
+		display: inline-block;
+		position: absolute;
 	}
 }
 
-.lpbf-categorys__image {
-	@include breakpoint('extra-small', 'max') {
-		height: 40px;
-		line-height: 40px;
-		width: 100%;
-	}
-	@include breakpoint('large', 'min') {
-		height: auto;
-		line-height: auto;
-	}
-	@include breakpoint('extra-small', 'min') { width: 100%; }
-	background-color: #fff;
-	border: 1px solid #f1f1f1;
-	border-radius: 30px;
-	display: inline-block;
-	height: 60px;
-	line-height: 60px;
-	max-width: 100%;
-	overflow: hidden;
+// Form
+#form-bf-2018 {
+	padding: 1em 2em;
 	position: relative;
-	transition:
-		background-color .5s ease,
-		border-color .3s ease,
-		height .3s ease,
-		outline .2s ease,
-		width .3s ease
-	;
-	width: 170px;
-
-	// Máscara pra corrigir o clik no IE
-	&:before {
-		border-radius: 20px;
-		content: '';
-		height: 100%;
-		opacity: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 100%;
-		z-index: 1;
+	z-index: 10;
+	&:hover {
+		a.btn-close { text-decoration: none; }
 	}
+	.icon {
+		@include rfs(20);
+		color:#c3c3c3;
+		display: flex;
+		justify-content: flex-end;
+		opacity: 0;
+	}
+	.lpbf-categories-chosen {
+		display: none;
+	}
+}
 
-	img {
-			@include breakpoint('medium', 'max') {
-			margin: 0;
-			@include breakpoint('small', 'max') {
-				max-height: 75%;
-				max-width: 75%;
+// Exibe categorias escolhidas no form
+#form-bf-2018.active-chosen {
+	.lpbf-categories-chosen {
+		display: block;
+		ul {
+			display: inline-block;
+			margin-top: 25px;
+			width: 100%;
+		}
+		.txt-categories {
+			@include rfs(14);
+			color: #fff;
+			display: inline-block;
+			width: 32%;
+			&:before {
+				background-color: $loja-color;
+				border-radius: 50%;
+				content: '';
+				display: inline-block;
+				margin-right: 7px;
+				height: 12px;
+				width: 12px;
 			}
 		}
-		display: inline-block;
-		float: left;
-		height: auto;
-		margin: 6px;
-		max-height: 100%;
-		max-width: 100%;
-		width: auto;
+	}
+	.lpbf-categorys {
+		display: none;
 	}
 }
+
+#form-bf-2018.active {
+	.icon {
+		opacity: 1;
+	}
+
+	#slice-hide { max-height: 334px; }
+
+	.form-blackfriday__submit.continued {
+		display: block;
+	}
+
+	.form-blackfriday__submit {
+		display: none;
+	}
+}
+
+.form-blackfriday-2018 {
+	@include inputPlaceholderColor(#fff);
+	color: #aaa;
+	position: relative;
+
+	fieldset {
+		border: 0;
+		margin: 1em 0;
+		padding: 0;
+		position: relative;
+	}
+
+	label[for='li-concordo'] {
+		@include rfs(12);
+		overflow: hidden;
+		padding-left: 30px;
+		position: relative;
+
+		&:focus { outline: none; }
+
+		input {
+			opacity: 0;
+			position: absolute;
+			top: -25px;
+
+			&:checked + span:before {
+				height: 100%;
+				width: 100%;
+			}
+		}
+
+		span {
+			border: 2px solid #454545;
+			display: inline-block;
+			height: 18px;
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 18px;
+
+			&:before {
+				background-color: #f65100;
+				content: '';
+				display: block;
+				height: 0;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				transition:
+					height .2s ease,
+					width .2s ease
+				;
+				width: 0;
+			}
+		}
+	}
+
+	.link-termos { color: #fff; }
+
+	.form-blackfriday__label {
+		@include rfs(14);
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.form-blackfriday__input {
+		@include rfs(16);
+		background-color: #484848;
+		border: none;
+		border-radius: 25px;
+		color: #aaa;
+		display: block;
+		font-weight: 300;
+		margin: .5em 0;
+		padding: .7em 1em;
+		transition: all .5s;
+
+		&:focus {
+			border-bottom: 2px solid $loja-color !important;
+			color: #9c9c9c;
+			outline: none;
+		}
+
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus
+		&:-webkit-autofill {
+			-webkit-text-fill-color: #aaa;
+			background: transparent;
+			box-shadow: 0 0 0 1000px #383838 inset;
+			// border: none;
+		}
+
+		&::-webkit-input-placeholder { color: #aaa; }
+		&::-moz-placeholder { color: #aaa; }
+		&:-ms-input-placeholder { color: #aaa; }
+		&:-moz-placeholder { color: #aaa; }
+
+		&.erro {
+			background-color: #FFFDD8;
+			color: $loja-color;
+		}
+	}
+
+	// Validação e menssagens de erro
+	.message {
+		@include rfs(14);
+		color: $loja-color;
+		font-weight: 300;
+		left: 0;
+		line-height: 100%;
+		margin: 0;
+		position: absolute;
+		text-align: center;
+		top: 0px;
+		// top: -20px;
+		width: 100%;
+	}
+
+	.success_p {
+		&:after {
+			@include icon-get ('check-mark');
+			@include rfs(10);
+			display: inline-block;
+			margin-left: 10px;
+			transform: translateY(-2px);
+		}
+	}
+
+	.error_p {
+		&:before {
+			@include icon-get ('close');
+			@include rfs(13);
+			margin-right: 10px;
+		}
+	}
+
+	
+}
+
+.form-blackfriday__submit {
+	@include rfs(18);
+	// background-color: #953319;
+	background-color: $loja-color;
+	border-radius: 30px;
+	border: none;
+	color: #fff;
+	display: block;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	margin: 1em auto;
+	padding: 16px 2em 8px 2.2em;
+	position: relative;
+	transition: width .2s ease;
+	z-index: 0;
+
+	// &:before {
+	// 	content: '';
+	// 	display: block;
+	// 	height: 100%;
+	// 	left: -3px;
+	// 	position: absolute;
+	// 	top: -3px;
+	// 	width: 100%;
+	// 	z-index: 0;
+	// }
+
+	&:focus { outline: none; }
+
+	span,
+	.icon {
+		display: inline-block;
+		position: relative;
+		transform: translate(-3px, -3px);
+	}
+
+	.icon {
+		background: url(x) center center no-repeat;
+		height: 12px;
+		margin-left: 15px;
+		width: 12px;
+		z-index: 1;
+	}
+}
+
+.form-blackfriday__submit.continued {
+	display: none;
+}
+
+// Formulário sucesso
+.lpbf-form-success {
+	padding: 1em 3.5em;
+	position: relative;
+	.icon-check-thin {
+		@include rfs(72);
+		background-color: $loja-color;
+		border-radius: 50%;
+		color: #fff;
+	}
+}
+
+.lpbf-form-success__title {
+	@include rfs(18);
+	color: #fff;
+	font-weight: 100;
+	margin: 16px 0 0 0;
+
+	span {
+		@include rfs(26);
+		display: block;
+		font-weight: bold;
+		margin: 0 auto;
+	}
+}
+
+.lpbf-form-success__text {
+	@include rfs(18);
+	color: #fff;
+	margin: 0;
+	padding: 1.5em 2em;
+	
+}
+//Form
+// ===============================================================
 
 // depoimentos
 .depoimentos {
@@ -667,7 +729,7 @@ $loja-color: #9aca3d;
 
 .txt-depoimentos {
 	background: #000 url('/arquivos/apostrofo.png') center center no-repeat;
-	margin-top: 93px;
+	margin-top: 200px;
 	height: 93px;
 	text-align: center;
 	h2 {
@@ -732,24 +794,6 @@ $loja-color: #9aca3d;
 		}
 	}
 }
-
-// .depoimento-1 {
-// 	left: -60px;
-//     position: relative;
-// 	@include breakpoint('medium', 'max') {
-// 		left: auto;
-// 		position: inherit;
-// 	}
-// }
-
-// .depoimento-6 {
-// 	left: 60px;
-//     position: relative;
-// 	@include breakpoint('medium', 'max') {
-// 		left: auto;
-// 		position: inherit;
-// 	}
-// }
 
 // prateleira
 .prateleira-bf {

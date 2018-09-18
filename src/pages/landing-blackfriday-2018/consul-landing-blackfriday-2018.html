@@ -24,7 +24,7 @@
 	</header>
 	<!-- /Header -->
 
-	<div id="lpbf">
+	<div id="lpbf" class="lpbf-banner">
 		<div class="container">
 			<div class="row">
 				<div class="col-6">
@@ -33,124 +33,156 @@
 				<div class="col-6">
 					<!-- Formulário -->
 					<div class="lpbf-form__container">
-						<div class="container">
-							<div class="row">
-								<!-- Categorias -->
-								<div class="lpbf-ofertas lpbf-ofertas-bf">
-									<h2 class="lpbf-form__title text-center">
-										Escolha os produtos que deseja receber ofertas da <strong>Black Friday</strong>.
-									</h2>
-									<form method="POST" action="#" id="form-bf-2017">
-										<div class="lpbf-categorys">
-											<!-- Cervejeiras -->
-											<label class="lpbf-categorys__item" for="cervejeiras">
-												<input type="checkbox" name="receberOfertasBlackFriday" value="Cervejeiras" id="cervejeiras" />
-												<div class="lpbf-categorys__image">
-													<!-- <img src="/arquivos/icon-bf-1.png" alt="Cervejeiras" /> -->
-													<span class="lpbf-categorys__text">Cervejeiras</span>
-												</div>
-											</label>
-											<!-- /Cervejeiras -->
+						<!-- Formulário -->
+						<form method="POST" action="#" id="form-bf-2018">
+							<a href="javascript:void(0)" class="btn-close">
+								<i class="icon icon-close"></i>
+							</a>
+							<h2 class="lpbf-form__title text-center">
+								Escolha es produtos que você<br />deseja na <strong>Black Friday</strong>
+							</h2>
 
-											<!-- Geladeiras -->
-											<label class="lpbf-categorys__item" for="geladeiras">
-												<input type="checkbox" name="receberOfertasBlackFriday" value="Geladeiras" id="geladeiras" />
-												<div class="lpbf-categorys__image">
-													<!-- <img src="/arquivos/icon-bf-2.png" alt="Geladeiras" /> -->
-													<span class="lpbf-categorys__text">Geladeiras</span>
-												</div>
-											</label>
-											<!-- /Geladeiras -->
-
-											<!-- Lavadora -->
-											<label class="lpbf-categorys__item" for="lavadora">
-												<input type="checkbox" name="receberOfertasBlackFriday" value="Lavadora" id="lavadora" />
-												<div class="lpbf-categorys__image">
-													<!-- <img src="/arquivos/icon-bf-3.png" alt="Lavadora" /> -->
-													<span class="lpbf-categorys__text">Lavadoras</span>
-												</div>
-											</label>
-											<!-- /Lavadora -->
-
-											<!-- Produtos de Embutir -->
-											<label class="lpbf-categorys__item" for="fogoes">
-												<input type="checkbox" name="receberOfertasBlackFriday" value="Fogoes" id="fogoes" />
-												<div class="lpbf-categorys__image">
-													<!-- <img src="/arquivos/icon-bf-4.png" alt="Fogoes" /> -->
-													<span class="lpbf-categorys__text">Fogões</span>
-												</div>
-											</label>
-											<!-- Produtos de Embutir -->
-
-											<!-- Outros -->
-											<label class="lpbf-categorys__item" for="outros">
-												<input type="checkbox" name="receberOfertasBlackFriday" value="Outros" id="outros" />
-												<div class="lpbf-categorys__image">
-													<!-- <img src="/arquivos/icon-bf-5.png" alt="Condicionador de ar" /> -->
-													<span class="lpbf-categorys__text">Outros</span>
-												</div>
-											</label>
-											<!-- Outros -->
-										</div>
-
-										<!-- Form -->
-										<div class="form-blackfriday-2017">
-											<input class="form-blackfriday__input" type="text" id="nome-bf-2017" name="firstName" placeholder="Nome" />
-											<input class="form-blackfriday__input" type="text" id="email-bf-2017" name="email" placeholder="E-mail" />
-											<fieldset class="campo-checkbox">
-												<input type="checkbox" id="termos" name="termos" />
-												<label for="termos">
-													Li e concordo com os
-													<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank"><span> termos de serviço</span></a>
-												</label>
-											</fieldset>
-											<button class="form-blackfriday__submit" type="submit" id="submit-bf2017" name="Cadastrar">Cadastrar</button>
-										</div>
-										<!-- /Form -->
-									</form>
-								</div>
-								<!-- /Categorias -->
-
-								<div class="lpbf-ofertas facebook-share">
-									<div class="container">
-										<div class="row">
-											<p class="lpbf-form__title text-left"><strong>Pronto!</strong> Você receberá as ofertas da Black Friday para os produtos escolhidos.</p>
-											<div class="col-6 text-left">
-												<p class="txt-compartilhe">Compartilhe a Black Friday Consul com os seus  amigos e receba um <strong>cupom de R$ 50 de desconto  para usar na Black Friday.</strong><br /><br />
-												Isso sim é bem pensado ;)</p>
-											</div>
-											<div class="col-6 text-center">
-												<div class="lpbf-ofertas__cupom">
-													Restam somente <strong id="quantidade-cupom">000</strong> cupons
-												</div>
-
-												<button type="button" class="action">
-													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" role="img" aria-labelledby="at-svg-facebook-1" class="at-icon at-icon-facebook"><title id="at-svg-facebook-1">Facebook</title><g><path d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z" fill-rule="evenodd"></path></g></svg>
-													<span>Compartilhar no Facebook</span>
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- /Compartilhar no Facebook -->
-
-								<!-- cupom -->
-								<div class="lpbf-ofertas lpbf-success text-center">
-									<div class="container">
-										<div class="row">
-											<p>Aproveite seu cupom* na Black Friday e ganhe R$ 50,00 em desconto:</p>
-											<span>Código</span>
-											<div class="cupom-bf">
-												Blackfriday50
-											</div>
-											<span class="txt-cupom">*Utilize no carrinho de compras. Válido para uso na Black Friday de 01/11 à 30/11 em produtos acima de R$ 1.999,00</span>
-										</div>
-									</div>
-								</div>
-								<!-- cupom -->
+							<div class="lpbf-categories-chosen js-categories">
+								<ul></ul>
 							</div>
+
+							<div class="lpbf-categorys">
+								<!-- Geladeira -->
+								<label class="lpbf-categorys__item" for="geladeira" tabindex="1">
+									<input type="checkbox" name="receberOfertasBlackFriday" value="Geladeira" id="geladeira" />
+									<span class="lpbf-categorys__text">Geladeira</span>
+								</label>
+								<!-- /Geladeira -->
+
+								<!-- Fogão -->
+								<label class="lpbf-categorys__item" for="fogao" tabindex="3">
+									<input type="checkbox" name="receberOfertasBlackFriday" value="Fogao" id="fogao" />
+									<span class="lpbf-categorys__text">Fogão</span>
+								</label>
+								<!-- /Fogão -->
+
+								<!-- Lavadora -->
+								<label class="lpbf-categorys__item" for="lavadora" tabindex="2">
+									<input type="checkbox" name="receberOfertasBlackFriday" value="Lavadora" id="lavadora" />
+									<span class="lpbf-categorys__text">Lavadoras</span>
+								</label>
+								<!-- /Lavadora -->
+
+								<!-- Lava-Louças -->
+								<label class="lpbf-categorys__item" for="lava-loucas" tabindex="2">
+									<input type="checkbox" name="receberOfertasBlackFriday" value="lava-loucas" id="lava-loucas" />
+									<span class="lpbf-categorys__text">Lava Louças</span>
+								</label>
+								<!-- /Lava-Louças -->
+							</div>
+
+							<div id="slice-hide" class="lpbf-categorys">
+								<!-- Adega -->
+								<label class="lpbf-categorys__item" for="Adega" tabindex="2">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Adega" id="Adega" />
+										<span class="lpbf-categorys__text">Adega</span>
+									</label>
+									<!-- /Adega -->
+	
+									<!-- Coifa -->
+									<label class="lpbf-categorys__item" for="Coifa" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Coifa" id="Coifa" />
+										<span class="lpbf-categorys__text">Coifa</span>
+									</label>
+									<!-- Coifa -->
+	
+									<!-- Cooktop -->
+									<label class="lpbf-categorys__item" for="Cooktop" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Cooktop" id="Cooktop" />
+										<span class="lpbf-categorys__text">Cooktop</span>
+									</label>
+									<!-- Cooktop -->
+	
+									<!-- Forno -->
+									<label class="lpbf-categorys__item" for="Forno" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Forno" id="Forno" />
+										<span class="lpbf-categorys__text">Forno</span>
+									</label>
+									<!-- Forno -->
+
+									<!-- Frigobar -->
+									<label class="lpbf-categorys__item" for="Frigobar" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Frigobar" id="Frigobar" />
+										<span class="lpbf-categorys__text">Frigobar</span>
+									</label>
+									<!-- Frigobar -->
+
+									<!-- Freezer -->
+									<label class="lpbf-categorys__item" for="Freezer" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Freezer" id="Freezer" />
+										<span class="lpbf-categorys__text">Freezer</span>
+									</label>
+									<!-- Freezer -->
+
+									<!-- Secadora -->
+									<label class="lpbf-categorys__item" for="Secadora" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Secadora" id="Secadora" />
+										<span class="lpbf-categorys__text">Secadora</span>
+									</label>
+									<!-- Secadora -->
+
+									<!-- Micro-ondas -->
+									<label class="lpbf-categorys__item" for="Micro-ondas" tabindex="4">
+										<input type="checkbox" name="receberOfertasBlackFriday" value="Micro-ondas" id="Micro-ondas" />
+										<span class="lpbf-categorys__text">Micro-ondas</span>
+									</label>
+									<!-- Micro-ondas -->
+							</div>
+
+							<div id="click-more-products">
+								<a href="javascript:void(0)">+ Mais produtos</a>
+							</div>
+
+							<div class="form-blackfriday-2018">
+								<fieldset>
+									<label class="form-blackfriday__label" for="nome-bf-2018">Nome</label>
+									<input class="form-blackfriday__input" type="text" id="nome-bf-2018" name="firstName" tabindex="5" />
+								</fieldset>
+
+								<fieldset>
+									<label class="form-blackfriday__label" for="email-bf-2018">Email</label>
+									<input class="form-blackfriday__input" type="email" id="email-bf-2018" name="email" tabindex="6"  />
+								</fieldset>
+
+								<fieldset>
+									<label for="li-concordo" tabindex="7">
+										<input type="checkbox" name="li-concordo" id="li-concordo"  tabindex="7" />
+										<span></span>
+										Aceito receber por email ofertas exclusivas da Brastemp 
+									</label>
+								</fieldset>
+
+								<button class="form-blackfriday__submit text-uppercase" type="submit" id="submit-bf2018" name="Cadastrar"  tabindex="8">
+									<span>Cadastre-se</span>
+								</button>
+
+							</div>
+							
+							<button class="form-blackfriday__submit continued text-uppercase" type="submit" id="submit-continued" name="Continuar"  tabindex="8">
+								<span>Continuar</span>
+							</button>
+						</form>
+						<!-- Formulário -->
+
+						<!-- Feedback Success -->
+						<div class="lpbf-form-success text-center hide">
+							<i class="icon icon-check-thin"></i>
+							<h2 class="lpbf-form-success__title">
+								<span>Cadastro realizado<br />com sucesso</span>
+							</h2>
+
+							<p class="lpbf-form-success__text">
+								<span>
+									Você receberá por email novidades e<br />descontos da Black Friday 2018
+								</span>
+							</p>
 						</div>
-						
+						<!-- /Feedback Success -->
 					</div>
 					<!-- /Formulário -->
 				</div>

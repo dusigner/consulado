@@ -29,42 +29,9 @@ Nitro.setup(['facebook-init'], function () {
 			this.leadsBf();
 			this.sliderDepoimentos();
 			this.sliderPrateleira();
-			this.clickAction();
-			this.consultaCupom();
+			this.showProducts();
 
 			contador = setInterval(this.countdown, 1000);
-		},
-
-		consultaCupom: function() {
-			var qtdCupom = $('#quantidade-cupom');
-
-			$.getJSON(CRM.formatUrl('CB', 'search'), {
-				_fields: 'qtdCupons',
-				nomeCupom: 'BLACKFRIDAY50'
-			}).done(function(data) {
-
-				if ( data ) {
-					qtdCupom.text( data[0].qtdCupons );
-					cupons = data[0].qtdCupons;
-				}
-				else {
-					qtdCupom.text( 4999 );
-				}
-			});
-		},
-
-		atualizaCupom: function() {
-			if ( cupons ) {
-				var  data = {};
-				data.nomeCupom = 'BLACKFRIDAY50';
-				data.qtdCupons = cupons - 1;
-
-				return CRM.ajax({
-					url: CRM.formatUrl('CB', 'documents'),
-					type: 'PATCH',
-					data: JSON.stringify(data)
-				});
-			}
 		},
 
 		calculateTimeRemaining: function( endDate ) {
@@ -116,31 +83,36 @@ Nitro.setup(['facebook-init'], function () {
 		},
 
 		leadsBf: function (){
-			var inputs = $('input[type="text"]');
+			var inputs = $('input[type="text"], input[type="email"]');
 
-			inputs.on('input', function() { $(this).removeClass('error'); });
-
-			$('#form-bf-2017').on('submit', function(e) {
+			inputs.on('input', function() {
+				$(this).removeClass('error');
+			});
+			$('#form-bf-2018 #submit-bf2018[type="submit"]').on('click', function(e) {
 				e.preventDefault();
 
-				var categorias = $('input[type=checkbox]:checked').map(function() { return this.value;} ).get().join(', ');
-				var email = $('#email-bf-2017').val();
-				var nome = $('#nome-bf-2017').val();
+				var formBlackFriday2018 = $('.form-blackfriday-2018');
+				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { return this.value; } ).get().join(', ');
+				var email = $('#email-bf-2018').val();
+				var nome = $('#nome-bf-2018').val();
+				var concordo = $('#li-concordo');
 
 				$('.success_p').remove();
 				$('.error_p').remove();
 				$(inputs).addClass('erro');
 
-				$('.form-blackfriday-2017').append('<p class="message error_p">Preencha os campos corretamente</p>');
+				formBlackFriday2018.append('<p class="message error_p">Preencha os campos corretamente</p>');
 
-				if( Index.emailValidation( email ) && nome !== '' && $('.campo-checkbox input[type="checkbox"]').is(':checked')){
+				// Verifica se todos os campos foram preenchidos
+				if( Index.emailValidation( email ) && nome !== '' && concordo.is(':checked') ) {
+
 					$(inputs).removeClass('erro');
 					$('.error_p').remove();
+					$('#form-bf-2018').addClass('success');
 
-					$('#form-bf-2017').addClass('success');
-
+					// Dados do formulário
 					var data = {
-						'receberOfertasBlackFriday' : categorias,
+						'receberOfertasBlackFriday' : category,
 						'firstName' : nome,
 						'email': email,
 						'isNewsletterOptIn' : true,
@@ -150,9 +122,10 @@ Nitro.setup(['facebook-init'], function () {
 					var dados = {
 						'nome': nome,
 						'email': email,
-						'categoria': categorias
+						'categoria': category
 					};
 
+					// Disparo dos dados para a API que cadastra na Sales Force
 					$.ajax({
 						url: 'https://api.jussi.com.br/whp/leads/consul/submit',
 						dataType: 'json',
@@ -162,21 +135,21 @@ Nitro.setup(['facebook-init'], function () {
 						processData: false
 					});
 
+					// Disparo dos dados para o MasterData
+					CRM.insertClient(data).done(function() {
+						console.log('data', data);
 
-					CRM.insertClient(data).done(function (){
+						formBlackFriday2018.append('<p class="message success_p">Você foi cadastrado</p>');
 
-						dataLayer.push({ 'event' : 'blackfriday_cadastro' });
+						setTimeout(function() {
+							formBlackFriday2018.find('.sucesso').hide();
+							$('#form-bf-2018').addClass('hide');
+							$('.lpbf-form-success').removeClass('hide');
 
-						$('.lpbf-ofertas-bf').fadeOut('slow');
-						$('.facebook-share').fadeIn('slow');
+						}, 1000);
 
-						setTimeout(function(){
-							$('.form-blackfriday-2017 .sucesso').hide();
-						}, 5000);
-
-						$('#nome-bf-2017').val('');
-						$('#email-bf-2017').val('');
-
+						$('#nome-bf-2018').val('');
+						$('#email-bf-2018').val('');
 					});
 				}
 			});
@@ -242,32 +215,46 @@ Nitro.setup(['facebook-init'], function () {
 				});
 			});
 		},
+		
+		// mostra mais produtos para selecionar
+		showProducts: function () {
 
-		// acao de compartilhar no facebook
-		clickAction: function() {
-			$('.facebook-share button').unbind().click(function(e) {
+			var $elementForm = $('#form-bf-2018');
+			
+			// Exibe mais produtos para escolher
+			$('#click-more-products a').on('click', function () {				
+				$elementForm.addClass('active');
+				$elementForm.find('#click-more-products, .form-blackfriday-2018').hide();
+			});
+			
+			// Esconde a opção de mais produtos
+			$('a.btn-close').on('click', function () {
+				$elementForm.removeClass('active');
+				$elementForm.find('#click-more-products, .form-blackfriday-2018').fadeIn();
+			});
+
+			// Continua para preenchimento do form
+			$('#form-bf-2018 #submit-continued[type="submit"]').on('click', function (e) {
 				e.preventDefault();
 
-				if(FB) {
-					FB.ui({
-						method: 'feed',
-						caption: 'Consul',
-						link: 'http://loja.consul.com.br'
-					}, function(response){
-						if (response && !response.error_code) {
-							$('.facebook-share').fadeOut('slow');
-							$('.lpbf-success').fadeIn('slow');
-
-							// Se o compartilhamento foi feito
-							Index.atualizaCupom();
-
-						} else {
-							$('.facebook-share').fadeIn('slow');
-						}
-					});
-				}
+				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { 
+					return this.value; 
+				});
+				
+				$elementForm.addClass('active-chosen');
+				$elementForm.removeClass('active');
+				$elementForm.find('.form-blackfriday-2018').fadeIn();
+				
+				// Renderiza opções de categorias escolhidas
+				$.each(category, function (i) {					
+					var $renderOptions = ' <li class="txt-categories">' + category[i] + '</li>';
+					$('.js-categories ul').append($renderOptions);
+				});					
+				
 			});
 		}
+
+		
 	};
 
 	Index.init();
