@@ -95,7 +95,7 @@ Nitro.setup(['facebook-init'], function () {
 				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { return this.value; } ).get().join(', ');
 				var email = $('#email-bf-2018').val();
 				var nome = $('#nome-bf-2018').val();
-				var concordo = $('#li-concordo');
+				var concordo = $('#li-concordo').is(':checked') ? true : false;
 
 				$('.success_p').remove();
 				$('.error_p').remove();
@@ -104,7 +104,7 @@ Nitro.setup(['facebook-init'], function () {
 				formBlackFriday2018.append('<p class="message error_p">Preencha os campos corretamente</p>');
 
 				// Verifica se todos os campos foram preenchidos
-				if( Index.emailValidation( email ) && nome !== '' && concordo.is(':checked') ) {
+				if( Index.emailValidation( email ) && nome !== '' ) {
 
 					$(inputs).removeClass('erro');
 					$('.error_p').remove();
@@ -115,7 +115,7 @@ Nitro.setup(['facebook-init'], function () {
 						'receberOfertasBlackFriday' : category,
 						'firstName' : nome,
 						'email': email,
-						'isNewsletterOptIn' : true,
+						'isNewsletterOptIn' : concordo,
 						'cadastroBlackFriday': true
 					};
 
@@ -220,9 +220,19 @@ Nitro.setup(['facebook-init'], function () {
 		showProducts: function () {
 
 			var $elementForm = $('#form-bf-2018');
+
+			$('.chose-more-products').on('click', function (e) {
+				e.preventDefault();
+				$elementForm.find('.js-categories').hide();
+				$elementForm.addClass('active');
+				$elementForm.find('#click-more-products, .form-blackfriday-2018').hide();
+				$elementForm.find('.lpbf-categorys').css('display', 'flex');
+				$elementForm.find('.js-categories li').remove();
+			});
 			
 			// Exibe mais produtos para escolher
-			$('#click-more-products a').on('click', function () {				
+			$('#click-more-products a').on('click', function (e) {
+				e.preventDefault();
 				$elementForm.addClass('active');
 				$elementForm.find('#click-more-products, .form-blackfriday-2018').hide();
 			});
@@ -240,18 +250,19 @@ Nitro.setup(['facebook-init'], function () {
 				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { 
 					return this.value; 
 				});
-				
-				$elementForm.addClass('active-chosen');
-				$elementForm.removeClass('active');
-				$elementForm.find('.form-blackfriday-2018').fadeIn();
-				
 				// Renderiza opções de categorias escolhidas
-				$.each(category, function (i) {					
+				$.each(category, function (i) {			
 					var $renderOptions = ' <li class="txt-categories">' + category[i] + '</li>';
 					$('.js-categories ul').append($renderOptions);
-				});					
+				});									
+			
+				$('.js-categories').show();
+				$('.lpbf-categorys').hide();
+				$elementForm.addClass('active-chosen');
+				$elementForm.removeClass('active');
+				$elementForm.find('.form-blackfriday-2018').fadeIn();				
 				
-			});
+			});		
 		}
 
 		

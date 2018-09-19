@@ -28,6 +28,7 @@ $loja-color: #9aca3d;
 
 // Base
 .landing-blackfriday-2018 {
+	background: #000 url('/arquivos/bg-section-001.jpg') center 50px no-repeat;
 	@include breakpoint('medium', 'max') { padding-top: 70px!important; }
 	@include breakpoint('small', 'max') { padding-top: 50px!important; }
 	transition:
@@ -49,7 +50,7 @@ $loja-color: #9aca3d;
 		right: 0;
 		top: 0;
 		width: 100%;
-		z-index: 10;
+		z-index: 99999!important;
 	}
 	background-color: $loja-color;
 	line-height: 95px;
@@ -60,7 +61,6 @@ $loja-color: #9aca3d;
 		line-height .3s ease,
 		min-height .3s ease
 	;
-
 	a {
 		display: block;
 
@@ -74,54 +74,64 @@ $loja-color: #9aca3d;
 	}
 }
 
-#lpbf {
-	background: #000 url('/arquivos/bg-section-001.jpg') center center no-repeat;
+#lpbf {	
 	display: block;
 	height: 696px;
 
 	.lpbf__title {
-		@include breakpoint('small', 'max') {
-			background-position: center -50px;
-			height: 195px;
-			margin: 0 auto 0 auto;
-			width: 240px;
+		@include breakpoint('small', 'min') {
+			@include breakpoint('large', 'max') {
+				height: 320px;
+				margin-bottom: 30px;
+			}
 		}
-		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -20px no-repeat;
+		@include breakpoint('small', 'max') {
+			height: 235px;
+			margin: 0 auto 20px auto;
+			width: 290px;
+		}
+		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -10px no-repeat;
 		text-align: center;
 		background-size: contain;
 		color: transparent;
 		font-size: 1px;
-		height: 373px;
-		margin: 0 0 80px 0;
+		height: 400px;
+		margin: 0;
 		overflow: hidden;
 		text-indent: -99cm;
 		transition: .3s ease;
 		width: auto;
 	}
 
-	.lpbf__subtitle {
-		@include breakpoint('medium', 'min') { @include rfs(30); }
-		@include breakpoint('medium', 'max') { display: none; }
-		@include breakpoint('small', 'max') {
-			@include rfs(24);
-			display: block;
-			margin-top: 0;
-			max-width: 100%;
-			padding: 10px 40px;
-			text-align: center;
-			width: 100%;
-		}
-		@include breakpoint('small', 'max') { padding: 10px 0; }
+	.lpbf__subtitle1 {
+		@include rfs(28);
 		color: #fff;
-		margin-top: 50px;
+		font-weight: 400;
+		line-height: 30px;
+		margin: -20px 0 10px;
+		text-align: center;
+		@include breakpoint('extra-small', 'max') {
+			@include rfs(20);
+
+		}
+	}
+	.lpbf__subtitle2 {
+		@include rfs(28);
+		color: $loja-color;
+		font-weight: 600;
+		margin-top: 0;
+		text-align: center;
+		@include breakpoint('small', 'max') {
+			margin-bottom: 0;
+		}
 	}
 
 	// Contador
 	.lpbf-contador {
 		@include breakpoint('small', 'max') {
-			transform: translateY(915%);
+			transform: translateY(40%);
 			@include breakpoint('extra-small', 'max') {
-				transform: translateY(730%);
+				transform: translateY(40%);
 			}
 		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
@@ -432,6 +442,25 @@ $loja-color: #9aca3d;
 			margin-top: 25px;
 			width: 100%;
 		}
+		.chose-more-products {
+			@include rfs(14);
+			background: transparent;
+			border: 2px solid $loja-color;
+			border-radius: 25px;
+			color: $loja-color;
+			font-weight: bold;
+			margin-top: 26px;
+			padding: 8px 0;
+			transition: 
+				color .4s ease,
+				font-size .4s ease
+			;
+			width: 100%;
+			&:hover {
+				background: $loja-color;
+				color: #fff;
+			}
+		}
 		.txt-categories {
 			@include rfs(14);
 			color: #fff;
@@ -494,14 +523,19 @@ $loja-color: #9aca3d;
 			position: absolute;
 			top: -25px;
 
-			&:checked + span:before {
+			&:checked + span:before{
 				height: 100%;
 				width: 100%;
+			}
+			&:checked + span:after {
+				display: inline-block;
 			}
 		}
 
 		span {
+			border-radius: 5px;
 			border: 2px solid #454545;
+			cursor: pointer;
 			display: inline-block;
 			height: 18px;
 			left: 0;
@@ -511,7 +545,8 @@ $loja-color: #9aca3d;
 			width: 18px;
 
 			&:before {
-				background-color: #f65100;
+				background-color: $loja-color;
+				border-radius: 3px;
 				content: '';
 				display: block;
 				height: 0;
@@ -524,6 +559,15 @@ $loja-color: #9aca3d;
 					width .2s ease
 				;
 				width: 0;
+			}
+			&:after {
+				@include icon-get ('check-mark');
+				@include rfs(9);
+				display: none;
+				position: absolute;
+				color: #FFF;
+				top: 2px;
+				left: 1px;
 			}
 		}
 	}
@@ -698,11 +742,14 @@ $loja-color: #9aca3d;
 
 // depoimentos
 .depoimentos {
-	background-color: #000;
-	@include breakpoint('small', 'max') {
-		// @include breakpoint('extra-small', 'max') { padding-top: 285px; }
-		padding-top: 190px;
+	margin-bottom: 20px;
+	@include breakpoint('medium', 'max') {
+		padding: 200px 30px 0 30px;
 	}
+	@include breakpoint('small', 'max') {
+		padding: 450px 30px 0 30px;
+	}
+	@include breakpoint('extra-small', 'max') { padding: 405px 0 0; }
 
 	.container {
 		font-size: 0;
@@ -728,8 +775,15 @@ $loja-color: #9aca3d;
 }
 
 .txt-depoimentos {
-	background: #000 url('/arquivos/apostrofo.png') center center no-repeat;
-	margin-top: 200px;
+	@include breakpoint('medium', 'min') {
+		margin-top: 200px;
+	}
+	@include breakpoint('extra-small', 'max') {
+		margin-top: 50px;
+	}
+	
+	background: transparent url('/arquivos/apostrofo.png') center center no-repeat;
+	background-size: contain;
 	height: 93px;
 	text-align: center;
 	h2 {
