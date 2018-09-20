@@ -810,16 +810,23 @@ $loja-color: #9aca3d;
 		margin-left: 35px;
 	}
 	// & > div,
+	.slick-track {
+		display: flex;
+	}
 	.slick-slide {
-		display: inline-block;
+		display: flex;
 		padding: 0 10px 0 10px;
 		width: 320px;
 		box-sizing: border-box;
+		height: initial;
+		min-height: initial;
 		.box {
 			background-color: #fff;
 			border-radius: 25px;
 			padding: 30px 20px 30px 20px;
-			min-height: 300px;
+			// @include breakpoint('extra-small', 'max') {
+			// 	min-height: 340px;
+			// }
 		}
 		// @include breakpoint('medium', 'max') {
 		// 	padding: 30px 0 40px 0;
