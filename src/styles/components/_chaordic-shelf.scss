@@ -353,10 +353,13 @@ div[data-chaordic] {
 						font-size: 12px;
 					}
 				}
-				//.shelf-item__price--installment,
-				//.shelf-item__price--cash {
-				//	display: none;
-				//}
+				.shelf-item__price--installment,
+				.shelf-item__price--cash {
+					display: none;
+					@include breakpoint('small','max') {
+						display: block;
+					}
+				}
 			}
 		}
 	}

@@ -238,7 +238,10 @@ gulp.task('styles', ['sassLint'], function () {
 		]))
 		.pipe($.util.env.production ? $.preprocess(preprocessContext) : $.util.noop())
 		.pipe(!$.util.env.production ? $.sourcemaps.write('.') : $.util.noop())
-		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files));
+		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files))
+		.pipe($.filter(f => /checkout/.test(f.path)))
+		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
+		.pipe(gulp.dest(paths.dest.files));
 });
 
 gulp.task('images', function () {
