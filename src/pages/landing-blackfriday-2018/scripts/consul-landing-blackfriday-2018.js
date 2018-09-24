@@ -1,5 +1,3 @@
-/* global store:true, FB:true */
-
 'use strict';
 
 require('modules/helpers');
@@ -15,9 +13,7 @@ require('modules/store/facebook-init');
 
 var CRM = require('modules/store/crm');
 
-Nitro.setup(['facebook-init'], function () {
-
-	console.log('teste');
+Nitro.setup(function () {
 
 	var cupons = null;
 
@@ -92,7 +88,8 @@ Nitro.setup(['facebook-init'], function () {
 				e.preventDefault();
 
 				var formBlackFriday2018 = $('.form-blackfriday-2018');
-				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { return this.value; } ).get().join(', ');
+				var categoryArray =	$('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { return this.value; } ).get();
+				var category = categoryArray.join(', ');
 				var email = $('#email-bf-2018').val();
 				var nome = $('#nome-bf-2018').val();
 				var concordo = $('#li-concordo').is(':checked') ? true : false;
@@ -137,7 +134,7 @@ Nitro.setup(['facebook-init'], function () {
 
 					// Disparo dos dados para o MasterData
 					CRM.insertClient(data).done(function() {
-						console.log('data', data);
+						// console.log('data', data);
 
 						formBlackFriday2018.append('<p class="message success_p">Você foi cadastrado</p>');
 
@@ -145,6 +142,17 @@ Nitro.setup(['facebook-init'], function () {
 							formBlackFriday2018.find('.sucesso').hide();
 							$('#form-bf-2018').addClass('hide');
 							$('.lpbf-form-success').removeClass('hide');
+
+							dataLayer.push(
+								{ event: 'generic-event-trigger', label: 'sucesso cadastro', action: 'Cadastro de Interesses', category: 'LP - Black Friday' }
+							);
+							
+							$(categoryArray).each((index, category) => {
+							
+								dataLayer.push(
+								 	{ event: 'generic-event-trigger', label: category, action: 'Sucesso Cadastro', category: 'LP - Black Friday' }
+								);
+							});
 
 						}, 1000);
 
@@ -250,6 +258,7 @@ Nitro.setup(['facebook-init'], function () {
 				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { 
 					return this.value; 
 				});
+
 				// Renderiza opções de categorias escolhidas
 				$.each(category, function (i) {			
 					var $renderOptions = ' <li class="txt-categories">' + category[i] + '</li>';
