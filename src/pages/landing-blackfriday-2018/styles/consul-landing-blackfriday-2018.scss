@@ -77,9 +77,13 @@ $loja-color: #9aca3d;
 #lpbf {	
 	display: block;
 	height: 696px;
-
+	.container{
+		@include breakpoint('small', 'max'){
+			padding: 0 10px;
+		}
+	}
 	.lpbf__title {
-		@include breakpoint('small', 'min') {
+		@include breakpoint('extra-small', 'min') {
 			@include breakpoint('large', 'max') {
 				height: 320px;
 				margin-bottom: 30px;
@@ -378,7 +382,13 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-categorys__text {
-	@include breakpoint('extra-small', 'max') { @include rfs(10.5); }
+	@include breakpoint('extra-small', 'max') { 
+		@include rfs(10.5);
+		padding: .8em 0 .8em 3.5em;
+	}
+	@include breakpoint('small', 'max') { 
+		padding: .8em 0 .8em 3em;
+	}
 	@include rfs(15);
     align-items: center;
 	color: #c3c3c3;
@@ -414,6 +424,9 @@ $loja-color: #9aca3d;
 
 // Form
 #form-bf-2018 {
+	@include breakpoint('small', 'max'){
+		padding: 1em;
+	}
 	padding: 1em 2em;
 	position: relative;
 	z-index: 10;
@@ -745,6 +758,7 @@ $loja-color: #9aca3d;
 	.row { margin: 0!important; }
 
 	.slick-dots {
+		@include breakpoint('extra-small', 'max') { margin-left: -20px; }
 		bottom: -35px;
 	}
 
@@ -792,13 +806,21 @@ $loja-color: #9aca3d;
 	@include breakpoint('extra-small', 'max') {
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
-		margin-left: 35px;
+		margin-left: 45px;
+	}
+	.slick-list{
+		@include breakpoint('extra-small', 'max') {
+			overflow: visible;
+		}
 	}
 	// & > div,
 	.slick-track {
 		display: flex;
 	}
 	.slick-slide {
+		@include breakpoint('extra-small', 'max') {
+			margin: 0 35px 0 -35px;
+		}
 		box-sizing: border-box;
 		display: flex;
 		height: initial;
