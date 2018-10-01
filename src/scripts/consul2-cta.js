@@ -14,24 +14,25 @@ Nitro.setup('cta', function() {
 	
 	var self = this,
 	urlParams = _.urlParams(), //parse params from url
-	skuid = 538,
-	emailUser = 'fabio.haddad@jussi.com.br';
-
+	skuid = urlParams.skuid,
+	// emailUser = urlParams.email;
+	emailUser = window.atob(urlParams.email);
 	
 	this.init = function() {
-		setTimeout(() => {
+		vtexjs.checkout.getOrderForm().done(function(){
+			
 			//avisar o VTEX ID que o email do cliente mudou
 			if (window.vtexid) {
-				window.vtexid.setEmail('guilherme.paiva+TESTETESTE@jussi.com.br');
+				window.vtexid.setEmail(emailUser);
 			}
 	
 			// levantar o evento para o script de navegação
 			window.vtex.NavigationCapture && window.vtex.NavigationCapture.sendEvent('SendUserInfo', {
-				visitorContactInfo: ['guilherme.paiva+TESTETESTE@jussi.com.br', '']
+				visitorContactInfo: [emailUser, '']
 			});
 	
 			// Avisar ao Checkout qual o email do cliente
-			window.vtexjs.checkout.sendAttachment('clientProfileData', {email: 'guilherme.paiva+TESTETESTE@jussi.com.br'});
+			window.vtexjs.checkout.sendAttachment('clientProfileData', {email: emailUser});
 			
 			vtexjs.checkout.addToCart([{
 				id: skuid,
@@ -43,8 +44,7 @@ Nitro.setup('cta', function() {
 	
 			});
 
-		}, 5000);
-		
+		});
 	};
 
 	this.init();
