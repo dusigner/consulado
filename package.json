@@ -64,6 +64,7 @@
     "workbox-webpack-plugin": "^3.2.0"
   },
   "scripts": {
+	"start": "gulp --qa",
     "deploy": "git checkout master && git pull && gulp deploy && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos && git add . && git commit -m 'deploy' && git push",
     "deploy-pages": "git checkout master && git pull && gulp deploy --page=ALL && node node_modules/jussitb deploy --account consul --site consul --pathFiles arquivos && git add . && git commit -m 'deploy' && git push",
     "deploy-pj": "git checkout master && git pull && gulp deploy --account=consulempresa && node node_modules/jussitb deploy --account consulempresa --site consulempresa --pathFiles arquivos && git add . && git commit -m 'deploy pj' && git push",
