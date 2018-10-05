@@ -14,9 +14,8 @@ Nitro.setup('cta', function() {
 	
 	var self = this,
 	urlParams = _.urlParams(), //parse params from url
-	skuid = urlParams.skuid,
-	// emailUser = urlParams.email;
-	emailUser = window.atob(urlParams.email);
+	skuid = ( urlParams.skuid ? urlParams.skuid : null ),
+	emailUser = ( window.atob(urlParams.email) ? window.atob(urlParams.email) : null );
 	
 	this.init = function() {
 		vtexjs.checkout.getOrderForm().done(function(){
@@ -40,8 +39,11 @@ Nitro.setup('cta', function() {
 				seller: 1
 			}]).done(function(orderForm) {
 	
+				// Redirecionando para o Checkout Payment
 				window.location.replace('/checkout/#/payment');
 	
+			}).fail(function(){
+				window.location.replace('/');
 			});
 
 		});
