@@ -1,6 +1,3 @@
-
-/* global VERSION: true, Nitro: true */
-
 'use strict';
 
 require('modules/helpers');
@@ -10,12 +7,9 @@ require('vendors/nitro');
 
 Nitro.setup('cta', function() {
 
-	var $body = $('body');
-	
-	var self = this,
-	urlParams = _.urlParams(), //parse params from url
-	skuid = ( urlParams.skuid ? urlParams.skuid : null ),
-	emailUser = ( window.atob(urlParams.email) ? window.atob(urlParams.email) : null );
+	var	urlParams = _.urlParams(), //parse params from url
+		skuid = ( urlParams.skuid ? urlParams.skuid : null ),
+		emailUser = ( window.atob(urlParams.email) ? window.atob(urlParams.email) : null );
 	
 	this.init = function() {
 		vtexjs.checkout.getOrderForm().done(function(){
