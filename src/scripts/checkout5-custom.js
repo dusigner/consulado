@@ -124,7 +124,7 @@ $(window).on('load', function() {
 				setTimeout(() => {
 										
 					if ($couponUpdate.length === 0) {						
-						$msgCoupon.show();
+						$('.msg-coupon').show();
 						$('.coupon-fields .info, .coupon-fields .loading-inline.loading-coupon').hide();
 						$('.coupon-fields span:first-child').show();
 					}
