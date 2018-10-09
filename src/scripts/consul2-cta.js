@@ -7,7 +7,10 @@ require('vendors/nitro');
 
 Nitro.setup('cta', function() {
 
-	var	urlParams = _.urlParams(), //parse params from url
+	var $body = $('body');
+	
+	var self = this,
+		urlParams = _.urlParams(), //parse params from url
 		skuid = ( urlParams.skuid ? urlParams.skuid : null ),
 		emailUser = ( window.atob(urlParams.email) ? window.atob(urlParams.email) : null );
 	
@@ -36,10 +39,10 @@ Nitro.setup('cta', function() {
 				// Redirecionando para o Checkout Payment
 				window.location.replace('/checkout/#/payment');
 	
-			}).fail(function(){
-				window.location.replace('/');
 			});
 
+		}).fail(function(){
+			window.location.replace('/');
 		});
 	};
 
