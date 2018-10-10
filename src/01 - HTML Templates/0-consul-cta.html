@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/consul2-login.css?v=<!-- @echo package.version -->" />
+</head>
+<body data-controller="cta">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+	
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<section class="login-container"><i class="icon-spinner"></i></section>
+	<!-- <div class="container clearfix">
+		<div class="row gutters">
+			<div class="col-12">
+				<div class="cta-content">
+				</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+	<script src="<!-- @echo assetsPath -->/consul2-cta.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>
