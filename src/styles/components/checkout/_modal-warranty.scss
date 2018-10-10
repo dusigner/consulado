@@ -732,24 +732,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			// Esconder a palavra "mais" quando for
 			// na primeira opção de GAE
-			&:nth-child(5) .modal-warning-best-option__container span { display: none; }
-
-			// Esconde o primeiro select 
-			// &:nth-child(3) { 
-			// 	display: none !important;
-			// 	height: 0;
-			// 	overflow: hidden;
-			// 	width: 0;
-			//  }
-
-			 
-			.close-warranty {
-				left: initial;
-				right: 5px;
-				top: 5px;
-				
-			}
-			
+			&:nth-child(5) .modal-warning-best-option__container span { display: none; }		
 
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {
