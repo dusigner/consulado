@@ -97,10 +97,6 @@ $(window).on('load', function() {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
-
-
-
-
 		};
 
 		this.isCart = function() {
@@ -114,10 +110,38 @@ $(window).on('load', function() {
 		this.isShipping = function() {
 			return $('.shipping-data').hasClass('active');
 		};
+
+		// Valida cupom no carrinho caso desconto não seja aplicado
+		this.atualizaCoupon = function () {
+			let $msgCoupon = $('.msg-coupon'),
+				$contentMsg = $('.summary-template-holder .row-fluid.summary'),
+				$renderMessage = '<span class="msg-coupon" style="display: none;">Cupom inválido, expirado ou já aplicado.</span>',
+				$couponUpdate = window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers;
+			
+			$msgCoupon.length === 0 ? $contentMsg.append($renderMessage) : '';
+
+			$(document).on('click', '#cart-coupon-add', function () {
+				setTimeout(() => {
+										
+					if ($couponUpdate.length === 0) {						
+						$('.msg-coupon').show();
+						$('.coupon-fields .info, .coupon-fields .loading-inline.loading-coupon').hide();
+						$('.coupon-fields span:first-child').show();
+					}
+					
+				}, 3000);
+			});
+
+			setTimeout(() => {
+				$msgCoupon.fadeOut();
+			}, 4000);
+			
+		};
 		
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
+
 			// Teste AB
 			// var urlTesteAb = window.location.search;
 			// var testeA = 'testeab=a';
@@ -213,6 +237,8 @@ $(window).on('load', function() {
 			self.delivery();
 
 			//testeabEntregaAgendada.setup(orderForm);
+
+			self.atualizaCoupon();
 
 		};
 

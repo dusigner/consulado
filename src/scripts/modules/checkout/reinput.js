@@ -35,7 +35,7 @@ Nitro.module('reinput', function() {
 	};
 
 	this.searchOrderId = function (){
-		$('body').on('keyup', 'input#previouOrderId', function (i,v) {
+		$('body').on('keyup', 'input#previouOrderId', function () {
 			var pedidodigitado = $('input#previouOrderId').val();	
 
 			if (pedidodigitado.length > 7 && pedidodigitado.length < 11 ) {		

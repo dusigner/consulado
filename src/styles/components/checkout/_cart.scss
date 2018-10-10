@@ -165,6 +165,20 @@ body {
 			}
 		}
 
+		.loading-inline {
+			display: none!important;
+		}
+
+		.msg-coupon {
+			background-color: $green;
+			border-radius: 5px;
+			box-shadow: 0 1px 8px 3px rgba(0, 0, 0, .2);
+			color: #fff;
+			display: inline-block;
+			margin-top: 25px;
+			padding: 2px 6px;
+		}
+
 		.totalizers {
 			padding: 0;
 			width: 46%;
@@ -543,7 +557,7 @@ body {
 
 				.coupon-fieldset {
 					.coupon-label {
-						display: inline-block;
+						display: block;
 						width: 125px;
 
 						label {
