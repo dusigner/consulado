@@ -442,7 +442,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					min-height: 60px;
 					position: relative;
 					text-align: center;
-					vertical-align: middle;
+					// vertical-align: middle;
 
 					.icon {
 						display: inline-block;
@@ -742,14 +742,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			// 	width: 0;
 			//  }
 
-			 
 			.close-warranty {
-				left: initial;
+				left: auto;
 				right: 5px;
 				top: 5px;
-				
-			}
-			
+			}	
 
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {
@@ -790,11 +787,6 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				}
 			}
 
-			.close-warranty {
-				left: auto;
-				right: 5px;
-				top: 5px;
-			}
 		}
 
 		.row-product-and-action {
