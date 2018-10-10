@@ -48,7 +48,7 @@ Nitro.setup('cta', function() {
 				id: skuid,
 				quantity: 1,
 				seller: 1
-			}]).done(orderForm => {
+			}], null, window.jssalesChannel).done(orderForm => {
 				console.info('orderForm', orderForm);
 
 				/** In case of success, we redirect the user to the payment checkout step */
