@@ -479,9 +479,9 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	};
 
 	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.hash;
+		var loc = state ? state : window.location.href;
 
-		if( /#\/filter./.test(decodeURIComponent(loc))) {	
+		if( /\?filter./.test(decodeURIComponent(loc))) {	
 			helper.setFilterRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
 			
 			$('.order-by li a').each(function(){

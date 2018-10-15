@@ -24,11 +24,11 @@ FiltersHelper.setRel = function(e, currentFilter, isOrder){
 };
 FiltersHelper.setURL = function(){
 	if(FiltersHelper.rel === '&'){
-		window.history.pushState(null, null, '#/filter' + encodeURIComponent(FiltersHelper.orderRel));
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.orderRel));
 	} else if(FiltersHelper.orderRel === '&'){
-		window.history.pushState(null, null, '#/filter' + encodeURIComponent(FiltersHelper.rel));
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.rel));
 	} else {
-		window.history.pushState(null, null, '#/filter' + encodeURIComponent(FiltersHelper.rel + FiltersHelper.orderRel));
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.rel + FiltersHelper.orderRel));
 	}
 };
 

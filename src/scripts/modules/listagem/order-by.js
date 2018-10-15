@@ -115,9 +115,9 @@ Nitro.module('order-by', function () {
 	};
 
 	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.hash;
+		var loc = state ? state : window.location.href;
 
-		if( /#\/filter./.test(decodeURIComponent(loc))) {	
+		if( /\?filter./.test(decodeURIComponent(loc))) {	
 			helper.setOrderRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
 
 			$('.multi-search-checkbox').each(function() {
