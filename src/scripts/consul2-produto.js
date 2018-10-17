@@ -348,23 +348,23 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 			$containerFrete = $('.freight-values');
 		var flag = 0;
 
-		$('#btnFreteSimulacao').on('click', function(){
+		$('#btnFreteSimulacao').on('click', function() {
 			if(flag === 0){
 				flag = 1;
 			}
 		});
 
-		$('#btnFreteSimulacao').ajaxStart(function(){
+		$('#btnFreteSimulacao').ajaxStart(function() {
 			$loadingFret.addClass('loading');
 			$containerFrete.removeClass('active erro');
 
 		});
 
-		$('#btnFreteSimulacao').ajaxStop(function(){
+		$('#btnFreteSimulacao').ajaxStop(function() {
 			$loadingFret.removeClass('loading');
 			$containerFrete.addClass('active');
 			$containerFrete.prepend('<i class="closed"></i>');	
-			if(flag === 1){
+			if (flag === 1) {
 				dataLayer.push({
 					event: 'simuladorCEP',
 					status: 'ok'
@@ -378,7 +378,7 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		});
 
 		window.alert = function(e) {
-			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.'){
+			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.' || e === 'Preencha um CEP válido.') {
 				$containerFrete.html('Preencha um CEP válido.').addClass('active erro').css('display', 'block');
 				$containerFrete.prepend('<i class="closed"></i>');
 			}
