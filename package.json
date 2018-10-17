@@ -4,6 +4,7 @@
   "version": "6.3.0",
   "author": "Jussi Platform Team",
   "private": true,
+  "proxyPort": 3000,
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "clipboard": "^1.7.1",
