@@ -116,7 +116,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				width: 10px;
 			}
 		}
-		
+
 	}
 
 	label {
@@ -191,8 +191,8 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			&:first-child { width: 265px; }
 
-			// // Esconde o primeiro select 
-			// &:nth-child(3) { 
+			// // Esconde o primeiro select
+			// &:nth-child(3) {
 			// 	display: none !important;
 			// 	height: 0;
 			// 	overflow: hidden;
@@ -218,7 +218,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				transition: .3s linear all;
 				width: 30px;
 				z-index: 22;
-				
+
 				&:before {
 					background: #e24444;
 					border: 1px solid #b72b2b;
@@ -235,7 +235,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					transition: .2s linear all;
 				}
 
-				
+
 				&:after {
 					background: #e24444;
 					border-right: 1px solid #b72b2b;
@@ -260,7 +260,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					top: 0;
 					transition: .2s linear all;
 				}
-				
+
 				&:hover {
 
 					&:before {
@@ -277,7 +277,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 					.icon-remove {
 						color: #f47921;
-						transition: .3s linear all;				
+						transition: .3s linear all;
 					}
 				}
 			}
@@ -371,7 +371,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			background-color: #fff;
 			border: 2px solid #f4f4f4;
 			display: inline-block;
-			margin: 0;			
+			margin: 0;
 			max-height: 421px;
 			min-height: 421px;
 			overflow: hidden;
@@ -605,7 +605,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				text-align: right;
 				width: 70%;
 
-				
+
 				.garantia-box-text {
 					@include responsiveFont(14, 16, true);
 					color: $txt-gray-l;
@@ -732,11 +732,10 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			// Esconder a palavra "mais" quando for
 			// na primeira opção de GAE
-
 			&:nth-child(5) .modal-warning-best-option__container span { display: none; }
 
-			// Esconde o primeiro select 
-			// &:nth-child(3) { 
+			// Esconde o primeiro select
+			// &:nth-child(3) {
 			// 	display: none !important;
 			// 	height: 0;
 			// 	overflow: hidden;
@@ -747,7 +746,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				left: auto;
 				right: 5px;
 				top: 5px;
-			}	
+			}
 
 			.box-opcao-garantia {
 				@include breakpoint(790px, 'max') {
@@ -904,7 +903,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		bottom: 0 !important;
 		height: initial !important;
 		text-align: left;
-		
+
 			h1 {
 				font-size: 26px;
 				font-weight: bold;
