@@ -378,9 +378,8 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		});
 
 		window.alert = function(e) {
-			console.info(e);
 			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.'){
-				$containerFrete.html(e).addClass('active erro').css('display', 'block');
+				$containerFrete.html('Preencha um CEP válido.').addClass('active erro').css('display', 'block');
 				$containerFrete.prepend('<i class="closed"></i>');
 			}
 			return;
