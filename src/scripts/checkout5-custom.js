@@ -122,7 +122,7 @@ $(window).on('load', function() {
 			$(document).on('click', '#cart-coupon-add', function () {
 
 				$('body').ajaxComplete(function(e, xhr, settings) {
-					if (/\/coupons/.test(settings.url)) {
+					if (/\/api\/checkout\/pub\/orderForm\/.+\/coupons/.test(settings.url)) {
 						if (window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length === 0) {
 							$('.msg-coupon').show();
 							$('.coupon-fields .info, .coupon-fields .loading-inline.loading-coupon').hide();
