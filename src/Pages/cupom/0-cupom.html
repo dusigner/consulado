@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Loja Consul - Cupons de desconto!</title>
+	<!-- @if DEBUG=false -->
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @endif -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/cupom.css" />
+</head>
+
+<body data-controller="cupom" class="cupom-page">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-header" />
+	<!-- @endif -->
+	<!-- /Header -->
+
+	<section class="cupom-header">
+		<div class="container">
+			<div class="cupom-header__aside">
+				<h1 class="cupom-header__title">Cupons de Desconto Consul</h1>
+				<h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+			</div>
+			<div class="cupom-filter">
+				<span class="cupom-filter__label">Ver cupons para:</span>
+				<div class="custom-select">
+					<div class="custom-select__selected">Todos os produtos<span class="custom-select__caret"></span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-footer" />
+	<!-- @endif -->
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/cupom.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+
+</html>
