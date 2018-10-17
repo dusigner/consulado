@@ -59,7 +59,7 @@ $(window).on('load', function() {
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		// var productsId = [];
-		// if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){			
+		// if (window.vtexjs.checkout.orderForm && window.vtexjs.checkout.orderForm.items){
 		// 	$.each(window.vtexjs.checkout.orderForm.items, function(i, val){
 		// 		productsId.push(val.id);
 		// 	});
@@ -97,10 +97,6 @@ $(window).on('load', function() {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
 			});
-
-
-
-
 		};
 
 		this.isCart = function() {
@@ -114,10 +110,41 @@ $(window).on('load', function() {
 		this.isShipping = function() {
 			return $('.shipping-data').hasClass('active');
 		};
-		
+
+		// Valida cupom no carrinho caso desconto não seja aplicado
+		this.atualizaCoupon = function () {
+			let $msgCoupon = $('.msg-coupon'),
+				$contentMsg = $('.summary-template-holder .row-fluid.summary'),
+				$renderMessage = '<span class="msg-coupon" style="display: none;">Cupom inválido, expirado ou já aplicado.</span>';
+
+			$msgCoupon.length === 0 ? $contentMsg.append($renderMessage) : '';
+
+			$(document).on('click', '#cart-coupon-add', function () {
+
+				$('body').ajaxComplete(function(e, xhr, settings) {
+					if (/\/coupons/.test(settings.url)) {
+						if (window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers.length === 0) {
+							$('.msg-coupon').show();
+							$('.coupon-fields .info, .coupon-fields .loading-inline.loading-coupon').hide();
+							$('.coupon-fields span:first-child').show();
+						}
+
+						$('body').unbind('ajaxComplete');
+						$('body').off('ajaxComplete');
+					}
+				});
+			});
+
+			setTimeout(() => {
+				$msgCoupon.fadeOut();
+			}, 4000);
+
+		};
+
 		//event
 		this.orderFormUpdated = function(e, orderForm) {
 			console.info('orderFormUpdated');
+
 			// Teste AB
 			// var urlTesteAb = window.location.search;
 			// var testeA = 'testeab=a';
@@ -205,7 +232,7 @@ $(window).on('load', function() {
 				}
 			}, 1);
 
-			if($('body').hasClass('body-cart')){				
+			if($('body').hasClass('body-cart')){
 				self.smartbeer();
 			}
 
@@ -213,6 +240,8 @@ $(window).on('load', function() {
 			self.delivery();
 
 			//testeabEntregaAgendada.setup(orderForm);
+
+			self.atualizaCoupon();
 
 		};
 
@@ -473,11 +502,11 @@ $(window).on('load', function() {
 				checkoutItems = vtexjs.checkout.orderForm.items,
 				checkoutItemsLength = checkoutItems.length,
 				btn_smartbeer = $('.btn_smartbeer'),
-				arrDeCervejeiras = ['2003600', '2003599', '2003598'];	
+				arrDeCervejeiras = ['2003600', '2003599', '2003598'];
 
 			for (var i = 0; i < checkoutItemsLength; i++) {
-				productItems.push(checkoutItems[i].productId);				
-			}			
+				productItems.push(checkoutItems[i].productId);
+			}
 
 			var hasCervejeira = productItems.some(function (item) {
 				return arrDeCervejeiras.indexOf(item) >= 0;
@@ -520,15 +549,15 @@ $(window).on('load', function() {
 				$('.fake-buttom').removeClass('hide');
 				$('.btn_smartbeer').addClass('hide');
 				$('.aviso-smartbeer').addClass('hide');
-			};	
+			};
 
 			if (hasCervejeira && !hasOnlyCervejeira) {
 				this.locksmartbeer();
 			}
-			else {				
+			else {
 				this.unlockSmarbeer();
-			}	
-		
+			}
+
 
 		};
 
@@ -537,23 +566,23 @@ $(window).on('load', function() {
 									'<span class="vtex-front-messages-detail messages-detail-delivery">Preencha a data da entrega agendada</span>'+
 								'</div>',
 				self = this;
-				
+
 			self.veryfication = function(){
 				setTimeout(function(){
-					if($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {				
+					if($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {
 						$('.vtex-front-messages-placeholder').addClass('vtex-front-messages-placeholder-opened delivery');
 						$('.scheduled-sla.shipping-option-0').addClass('active');
 						if($('.messages-detail-delivery').length < 1){
 							$(messageDelivery).insertAfter('button.vtex-front-messages-close-all.close');
 						}
-						
-						$('.picker__day').on('click', function(){							
+
+						$('.picker__day').on('click', function(){
 							$('.vtex-front-messages-placeholder').removeClass('vtex-front-messages-placeholder-opened delivery');
-							$('.scheduled-sla.shipping-option-0').removeClass('active');							
+							$('.scheduled-sla.shipping-option-0').removeClass('active');
 						});
 					}
 				},100);
-			
+
 			};
 
 			$('body').on('click', '.shipping-option-item[for*=EntregaAgendada]', function(){
@@ -562,12 +591,12 @@ $(window).on('load', function() {
 
 			if($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {
 				$('.btn-go-to-payment').trigger('click');
-			}	
+			}
 
-			$('.btn-go-to-payment').click( function(){				
-				self.veryfication();							
+			$('.btn-go-to-payment').click( function(){
+				self.veryfication();
 			});
-			
+
 		};
 
 		this.init();

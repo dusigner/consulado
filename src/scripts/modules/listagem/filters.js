@@ -56,22 +56,22 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 			var $checked = $('.multi-search-checkbox:checked');
 
-			helper.rel = '';
+			helper.setFilterRel('');
 
 			$checked.each(function() {
-				helper.rel = helper.rel + '&' + $(this).attr('rel');
+				helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
 			});
+			
 
 			$checkbox.parent('label').removeClass('active');
 			$checked.parent('label').addClass('active');
 
 			$(this).parent().addClass('loading');
-
 			self.request();
 
 		});
 
-		self.autoFilter();
+		self.autoFilter(null);
 		self.hideEmpty();
 		self.dropDown();
 		self.mobileClearFilter();
@@ -89,10 +89,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	};
 
 	this.request = function() {
-		//console.log('url',helper.url(), page, helper.rel);
-
 		$.ajax({
-			url: helper.url() + page + helper.rel,
+			url: helper.url() + page +  helper.getFilterRel() + helper.getOrderRel(),
 			dataType: 'html',
 			beforeSend: function() {
 				helper.vitrineHolder.addClass('loading');
@@ -102,7 +100,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			if( data ) {
 
 				try {
-					localStorage.setItem('filter' + vtxctx.categoryId + page + helper.rel, data);
+					localStorage.setItem('filter' + vtxctx.categoryId + page + helper.getFilterRel() + helper.getOrderRel(), data);
 				} catch (e) {
 
 					if (e.code === 22 || e.code === 1014) {
@@ -111,9 +109,9 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					}
 				}
 
-				window.history.pushState(null, null, '#/filter' + helper.rel);
+				helper.setURL();
 
-				$(window).trigger('filter', helper.rel);
+				$(window).trigger('filter', helper.getFilterRel());
 
 				$('.vitrine > .prateleira').remove();
 
@@ -221,11 +219,11 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 					var $checked = $('.multi-search-checkbox:checked');
 
-					helper.rel = '';
-					helper.rel = '&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']';
+					helper.setFilterRel('');
+					helper.setFilterRel('&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']');
 
 					$checked.each(function() {
-						helper.rel = helper.rel + '&' + $(this).attr('rel');
+						helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
 					});
 
 					helper.vitrine.addClass('filtered');
@@ -369,13 +367,13 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					$range.noUiSlider.on('change', function(){
 
 						//pega os atuais filtros
-						helper.rel = window.location.hash.substr(window.location.hash.indexOf('&'));
+						helper.setFilterRel(decodeURIComponent(window.location.hash).substr(decodeURIComponent(window.location.hash).indexOf('&')));
 						//helper.rel = '&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']';
 
 
 						//remove todas as opções do range atual da string de filtros
 						$option.find('label').each(function(){
-							helper.rel = helper.rel.replace('&' + $(this).children('input').attr('rel'), '');
+							helper.setFilterRel(helper.getFilterRel().replace('&' + $(this).children('input').attr('rel'), ''));
 						});
 
 
@@ -389,10 +387,10 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 						//adiciona na string os valores do range selecionado
 						if ($option.find('label.firstValue').index() === $option.find('label.lastValue').index()) {
-							helper.rel += '&' + $option.find('label.firstValue').children('input').attr('rel');
+							helper.setFilterRel(helper.getFilterRel() + '&' + $option.find('label.firstValue').children('input').attr('rel'));
 						} else {
 							$option.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
-								helper.rel += '&' + $(this).children('input').attr('rel');
+								helper.setFilterRel( helper.getFilterRel() + '&' + $(this).children('input').attr('rel'));
 							});
 						}
 
@@ -481,18 +479,24 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	};
 
 	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.hash;
+		var loc = state ? state : window.location.href;
 
-		if( /#\/filter/.test(loc) ) {
-			helper.rel = loc.substr(loc.indexOf('&'));
+		if( /\?filter./.test(decodeURIComponent(loc))) {	
+			helper.setFilterRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
+			
+			$('.order-by li a').each(function(){
+				helper.setFilterRel(helper.getFilterRel().replace($(this).attr('data-order'), ''));
+			});
 
-			var currentFilters = helper.rel.split('&');
+			var currentFilters = helper.getFilterRel().split('&');
 
-			currentFilters = $('.multi-search-checkbox').filter(function(){
+			currentFilters = $('.multi-search-checkbox').filter(function() {
 				return ( currentFilters.indexOf( $(this).attr('rel') ) !== -1 && $(this).attr('value') );
 			});
 
-			currentFilters.attr('checked', true).change();
+			if(currentFilters.attr('checked', false)){
+				currentFilters.attr('checked', true).change();
+			}
 
 			self.request();
 		}
