@@ -31,16 +31,18 @@ Nitro.module('order-by', function () {
 
 			$listOrders.find('li a').click(function(e){
 				e.preventDefault();
-				console.info('clicou no order-by ul li a');
 				_self.order($(this));
 			});
-
 		}
+		_self.autoFilter(null);
 	};
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-		console.info('orderValue>'+orderValue);
+		
+		helper.setOrderRel(orderValue);
+		helper.setURL();
+
 		$('.selected').removeClass('selected');
 		$orderElement.addClass('selected');
 
@@ -50,7 +52,7 @@ Nitro.module('order-by', function () {
 
 		$orderTitle.add('.order-by').removeClass('active');
 
-		_self.request(orderValue);
+		_self.request();
 	};
 
 	// RENDER HTML & ACTION FUNCTIONS
@@ -81,21 +83,21 @@ Nitro.module('order-by', function () {
 		});
 	};*/
 
-	this.request = function(orderValue){
+	this.request = function() {
+		
 		$.ajax({
-			url: helper.url() + page + helper.rel + orderValue,
+			url: helper.url() + page + helper.getFilterRel() + helper.getOrderRel(),
 			localCache: true,
 			cacheTTL: 1,
-			cacheKey: 'order' + page + helper.rel + orderValue + vtxctx.categoryId,
+			cacheKey: 'order' + page + helper.getFilterRel() + helper.getOrderRel() + vtxctx.categoryId,
 			dataType: 'html',
 			beforeSend: function(){
 				helper.vitrineHolder.addClass('loading');
 				helper.vitrine.removeClass('loaded');
 			}
 		}).done(function(data) {
-			if( data ) {
-				console.info('ordervalue', orderValue);
-				$(window).trigger('filter', [helper.rel + orderValue, true]);
+			if (data) {
+				$(window).trigger('filter', [ helper.getFilterRel() + helper.getOrderRel(), true]);
 
 				$('.vitrine > .prateleira').remove();
 
@@ -111,6 +113,35 @@ Nitro.module('order-by', function () {
 			$listMore.show();
 		});
 	};
+
+	this.autoFilter = function(state) {
+		var loc = state ? state : window.location.href;
+
+		if( /\?filter./.test(decodeURIComponent(loc))) {	
+			helper.setOrderRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
+
+			$('.multi-search-checkbox').each(function() {
+				helper.setOrderRel(helper.getOrderRel().replace($(this).attr('rel'), ''));
+			});
+
+			var currentOrder = helper.getOrderRel().split('&');
+			
+			currentOrder = $('.order-by li a').filter(function() {
+				return ( currentOrder.indexOf($(this).attr('data-order').replace('&','')) !== -1);
+			});
+
+			if(currentOrder.hasClass('selected') === false) {
+				currentOrder.addClass('selected');
+			}
+
+			_self.request();
+		}
+	};
+
+	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
+	$(window).on('calculadora.filter', function(e, res) {
+		self.autoFilter(res);
+	});
 
 	this.setup();
 

@@ -3,6 +3,7 @@
 var FiltersHelper = {};
 
 FiltersHelper.rel = '';
+FiltersHelper.orderRel = '';
 FiltersHelper.page = 2;
 FiltersHelper.filters = $('.filters');
 FiltersHelper.vitrineHolder = $('#prateleira');
@@ -20,6 +21,31 @@ FiltersHelper.setRel = function(e, currentFilter, isOrder){
 		FiltersHelper.rel = currentFilter;
 	}
 	$('#list-more').removeClass('hide');
+};
+FiltersHelper.setURL = function(){
+	if(FiltersHelper.rel === '&'){
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.orderRel));
+	} else if(FiltersHelper.orderRel === '&'){
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.rel));
+	} else {
+		window.history.pushState(null, null, '?filter' + encodeURIComponent(FiltersHelper.rel + FiltersHelper.orderRel));
+	}
+};
+
+FiltersHelper.setOrderRel = function(order){
+	FiltersHelper.orderRel = order;
+};
+
+FiltersHelper.getOrderRel = function(){
+	return this.orderRel;
+};
+
+FiltersHelper.setFilterRel = function (newRel){
+	FiltersHelper.rel = newRel;
+};
+
+FiltersHelper.getFilterRel = function (){
+	return this.rel;
 };
 
 module.exports = FiltersHelper;

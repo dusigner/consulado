@@ -171,10 +171,10 @@ body.body-order-form {
 					color: #17d427;
 
 					&:before {
-						background: #17d427;
-						font-size: 7px;
-						border: 1px solid #0a8014;
 						@include icon-get('check-mark');
+						background: #17d427;
+						border: 1px solid #0a8014;
+						font-size: 7px;
 						left: -27px;
 						top: 11.5px;
 					}
@@ -182,19 +182,19 @@ body.body-order-form {
 						background: #17d427;
 						border-color: #0a8014;
 						content: '';
-						width: 5px;
 						height: 5px;
 						left: -9px;
 						top: 18px;
+						width: 5px;
 					}
 				}
 
 				&:last-child {
 					label {
 						&:before {
+							@include icon-get('check-mark');
 							background: #17d427;
 							border: 1px solid #0a8014;
-							@include icon-get('check-mark');
 							left: -27px;
 							top: 19.5px;
 						}
@@ -203,10 +203,10 @@ body.body-order-form {
 							background: #17d427;
 							border-color: #0a8014;
 							content: '';
-							width: 5px;
 							height: 5px;
 							left: -9px;
 							top: 26px;
+							width: 5px;
 						}
 					}
 				}
