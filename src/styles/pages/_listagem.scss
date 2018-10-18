@@ -225,11 +225,11 @@ body.busca {
 
 			@include after-first(5) { display: none; }
 			
-			&:nth-child(1){	order: 2; }
-			&:nth-child(2){	order: 3; }
-			&:nth-child(3){	order: 4; }
-			&:nth-child(4){	order: 5; }
-			&:nth-child(5){	order: 1; }
+			&:nth-child(1) {	order: 2; }
+			&:nth-child(2) {	order: 3; }
+			&:nth-child(3) {	order: 4; }
+			&:nth-child(4) {	order: 5; }
+			&:nth-child(5) {	order: 1; }
 		}
 	}
 	@include breakpoint(small, 'max') {
