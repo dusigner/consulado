@@ -224,12 +224,16 @@ body.busca {
 			}
 
 			@include after-first(5) { display: none; }
-			
-			&:nth-child(1){	order: 2; }
-			&:nth-child(2){	order: 3; }
-			&:nth-child(3){	order: 4; }
-			&:nth-child(4){	order: 5; }
-			&:nth-child(5){	order: 1; }
+
+			&:nth-child(1) { order: 2; }
+
+			&:nth-child(2) { order: 3; }
+
+			&:nth-child(3) { order: 4; }
+
+			&:nth-child(4) { order: 5; }
+
+			&:nth-child(5) { order: 1; }
 		}
 	}
 	@include breakpoint(small, 'max') {
@@ -563,30 +567,30 @@ body.busca-chaordic {
 			border-bottom: 1px solid $gray;
 			color: #FFF;
 			margin-bottom: 25px;
-			
+
 			.container {
 				// background: transparent url('#{$cdn-path}images/bg_busca_hexagons.svg') right -95px no-repeat;
 				padding: 2em 90px;
 			}
-			
+
 			.busca-resultados {
 				@include responsiveFont(20, 16, true);
 				margin: 0;
 				text-transform: uppercase;
 			}
-			
+
 			i {
 				@include responsiveFont(30, 16, true);
 				color: #FFF;
 				margin-right: .5em;
 			}
-			
+
 			.busca-termos {
 				margin: 0;
 				strong {
 					@include responsiveFont(40, 16, true);
 					font-weight: 300;
-					
+
 					@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
 				}
 			}
@@ -609,7 +613,7 @@ body.busca-chaordic {
 			strong {
 				@include responsiveFont(40, 16, true);
 				font-weight: 300;
-				
+
 				@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
 				padding-bottom: 15px;
 			}
@@ -727,14 +731,14 @@ body.busca-chaordic {
 			a {
 				border: 1px solid #FFF;
 				display: block;
-				
+
 				img {
 					display: table;
 					margin: 0 auto;
 					width: 80%;
 				}
 				.quickImage {
-					min-height: 250px;	
+					min-height: 250px;
 				}
 				.quickName {
 					display: block;
@@ -751,7 +755,7 @@ body.busca-chaordic {
 				}
 			}
 		}
-	
+
 	}
 	//result-filter
 	.result-filter {
@@ -796,11 +800,11 @@ body.busca-chaordic {
 						display: none;
 					}
 				}
-				
-			} 
+
+			}
 		}
 	}
-	
+
 	.prateleira.default ul li .detalhes .prod-info .nome {
 		height: 145px;
 		overflow: hidden;
@@ -824,6 +828,6 @@ body.neemu {
 	}
 
 	p.hl-busca-vazia {
-		font-size: 1.25em;	
+		font-size: 1.25em;
 	}
 }
