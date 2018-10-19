@@ -15,7 +15,9 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
+@import 'helpers/_icons';
 @import 'consul2-coupon';
+
 .coupon {
 	&-header {
 		padding-bottom: 16px;
@@ -73,6 +75,10 @@
 		@include breakpoint(medium) {
 			min-width: 280px;
 		}
+	}
+
+	&-list {
+		background-color: $gray-l;
 	}
 
 	&-page {
@@ -243,6 +249,123 @@
 					top: 0;
 				}
 			}
+		}
+	}
+}
+
+.cupomDescontoPassos {
+	border-bottom: 4px solid $green;
+	padding: 35px 0;
+	h2 {
+		font-size: 22px;
+		font-weight: bold;
+		line-height: 23px;
+		margin-bottom: 40px;
+		& + div {
+			margin-left: -10px;
+			margin-right: -10px;
+		}
+	}
+	.boxPassos {
+		border: 1px solid $gray;
+		box-shadow: 0 2px 4px rgba(0,0,0,.1);
+		margin-bottom: 35px;
+		position: relative;
+		&.boxPassos-passo1:before {
+			content: '1';
+		}
+		&.boxPassos-passo2:before {
+			content: '2';
+		}
+		&.boxPassos-passo3 {
+			margin-bottom: 0;
+			&:before {
+				content: '3';
+			}
+			.boxPassos--content {
+				align-items: flex-start;
+			}	
+		}
+		&:before {
+			align-items: center;
+			background-color: $green;
+			border-radius: 50%;
+			color: map-get($type-colors, 'white');
+			display: flex;
+			font-size: 20px;
+			font-weight: bold;
+			height: 33px;
+			justify-content: center;
+			left: 50%;
+			position: absolute;
+			top: 0;
+			transform: translate(-50%,-50%);
+			width: 33px;
+		}
+		.boxPassos--content {
+			align-items: center;
+			display: flex;
+			height: 206px;
+			justify-content: center;
+		}
+		.boxPassos--footer {
+			background-color: $gray-l;
+			min-height: 60px;
+			padding: 10px;
+			p {
+				font-size: 16px;
+				line-height: 20px;
+				margin: 0;
+				text-align: center;
+			}
+		}
+	}
+}
+
+.cupomFeedback {
+	align-items: center;
+	background-color: rgba(27,27,27,.9);
+	border-radius: 4px;
+	bottom: 30px;
+	display: flex;
+	height: 56px;
+	justify-content: space-between;
+	left: 50%;
+	opacity: 0;
+	padding: 18px;
+	position: fixed;
+	transform: translateX(-50%);
+	transition: opacity .25s, visibility .25s;
+	visibility: hidden;
+	width: 288px;
+	z-index: 3;
+	&.show {
+		opacity: 1;
+		visibility: visible;
+	}
+	p {
+		color: map-get($type-colors, 'white');
+		font-size: 16px;
+		font-weight: bold;
+		margin: 0;
+	}
+	.icon {
+		color: map-get($type-colors, 'white');
+		height: 25px;
+		padding: 6px;
+		width: 25px;
+	}
+}
+
+@media (min-width: 768px) {
+    .cupomDescontoPassos {
+		h2 {
+			font-size: 32px;
+			font-weight: normal;
+			text-align: center;
+		}
+		.boxPassos { 
+			margin: 10px; 
 		}
 	}
 }

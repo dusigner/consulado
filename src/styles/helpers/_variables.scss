@@ -78,6 +78,7 @@ $placeholder-color:     #bbbbbb !default;
 // Colors used for our objects' borders, etc
 $object-ui-color:       #cccccc !default;
 $object-validate-color: #dc2828 !default;
+$object-dashed-gray: 	#bababa !default;
 
 
 // Dropdown colors
@@ -102,7 +103,8 @@ $bg-colors: (
 	'blue':   #4572ed,
 	'yellow': #ed9c28,
 	'red':    #d9534f,
-	'orange': $orange
+	'orange': $orange,
+	'purple': $purple
 );
 
 
