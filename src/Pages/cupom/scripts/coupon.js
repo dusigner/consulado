@@ -6,15 +6,17 @@
 'use strict';
 
 require('modules/custom-select');
+require('Dust/coupon/coupon-list.html');
 const { getCouponsByCategory } = require('modules/store/crm');
 const logger = require('js-pretty-logger');
 const { getUniques } = require('modules/helpers');
+const toastr = require('vendors/toastr');
 
 Nitro.setup(['custom-select'], function (customSelect) {
 	let self = this;
 
 	this.filterBy = 'category';
-	this.couponListSelector = '.cupom-list .container';
+	this.couponListSelector = '.coupon-list .container';
 
 	/**
 	 * @description initialize page code
@@ -23,7 +25,9 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		self.log('Initialized...');
 		self.getCoupons().then(coupons => {
 			self.initializeFilter(coupons);
-			self.renderCoupons(coupons);
+			self.renderCoupons(coupons, () => {
+				this.buttonCopyCodeClick();
+			});
 		});
 	};
 
@@ -33,7 +37,7 @@ Nitro.setup(['custom-select'], function (customSelect) {
 	 */
 	this.getCoupons = () => {
 		const deferred = $.Deferred();
-		
+
 		getCouponsByCategory().then(coupons => {
 			deferred.resolve(coupons);
 		}, error => {
@@ -42,31 +46,31 @@ Nitro.setup(['custom-select'], function (customSelect) {
 
 		return deferred.promise();
 	};
+
 	/**
 	 * @description Render the list of coupons
 	 * @param {*} coupons
 	 */
-	this.renderCoupons = coupons => {
-		const couponsTemplate = `
-		${coupons.map(coupon => `
-			<div class="coupon" data-coupon="${coupon[self.filterBy]}">
-				<h2>${coupon.coupon}</h2>
-				<b>${coupon.category}</b>
-				<small>${coupon.offer}</small>
-				<small>${coupon.valProduct}</small>
-			</div>
-		`).join('')}
-		`;
+	this.renderCoupons = (coupons, onRender) => {
 
-		$(self.couponListSelector).append(couponsTemplate);
+		dust.render('coupon-list', {coupons}, (err, out) => {
+			if (err) {
+				throw new Error('Lista de Cupons Dust error: ' + err);
+			}
+
+			$('.coupons-list_items').html(out);
+			if (typeof onRender === 'function') {
+				onRender();
+			}
+		});
 	};
 
 	this.filterCoupons = filter => {
 		if (filter) {
-			$('.coupon').hide();
+			$('.coupons-list_item').hide();
 			$(`[data-coupon=${filter}]`).show();
 		} else {
-			$('.coupon').show();
+			$('.coupons-list_item').show();
 		}
 	};
 
@@ -78,7 +82,7 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		let options = [];
 
 		coupons = getUniques(coupons, 'category');
-		
+
 		options = [].map.call(coupons, cupon => {
 			return {
 				value: cupon.category,
@@ -94,7 +98,7 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		];
 
 		customSelect.setup({
-			target: '.cupom-filter',
+			target: '.coupon-filter',
 			appendType: 'prepend',
 			options,
 			onChange(option) {
@@ -105,13 +109,67 @@ Nitro.setup(['custom-select'], function (customSelect) {
 
 	};
 
+	this.couponToastr = code => {
+		jQuery($ => {
+			const windowWidth = $(window).width();
+			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			toastr.options = {
+				closeButton: true,
+				debug: false,
+				newestOnTop: true,
+				progressBar: false,
+				positionClass: position,
+				preventDuplicates: true,
+				onclick: null,
+				showDuration: '300',
+				hideDuration: '1000',
+				timeOut: '5000',
+				extendedTimeOut: '1000',
+				showEasing: 'swing',
+				hideEasing: 'linear',
+				showMethod: 'fadeIn',
+				hideMethod: 'fadeOut',
+			};
+			toastr.info(`Código ${code} copiado`);
+		});
+	};
+
+	this.buttonCopyCodeClick = () => {
+		const buttonCopyCode = '.copy-code';
+
+		jQuery($ => {
+			$(buttonCopyCode).on('click', e => {
+				this.copyCode(e.target);
+			});
+		});
+	};
+
+	this.copyCode = triggerElement => {
+		jQuery($ => {
+			const code = $(triggerElement)
+				.closest('.content-body')
+				.find('.code')[0];
+			const temp = $('<input>');
+
+			$('body').append(temp);
+
+			temp.val($(code).text()).select();
+
+			document.execCommand('copy');
+
+			this.couponToastr($(code).text());
+
+			temp.remove();
+		});
+	};
+
 	/**
 	 * @description Log messages into console
 	 * @param {string} message - the message that will be logged
 	 * @param {string} [type] - type of message. coude be default, info, danger, success and warn
 	 */
 	this.log = (message, type = 'info') => {
-		logger('Cupom', message, { type });
+		logger('coupon', message, { type });
 	};
 
 	// Start it

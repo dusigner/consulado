@@ -12,7 +12,7 @@ Nitro.module('custom-select', function() {
 	 * @param {string} [type=default] type of message. coude be default, info, danger, success and warn
 	 * @example
 	 * customSelect.setup({
-	 *  select: '#cupomFilter',
+	 *  select: '#couponFilter',
 	 *	onChange(option) {
 	 *	   console.log(`Select changed to: ${option.value}`);
 	 *	 }
@@ -20,7 +20,7 @@ Nitro.module('custom-select', function() {
 	 * 
 	 * @example
 	 * customSelect.setup({
-	 *   target: '#cupomFilter',
+	 *   target: '#couponFilter',
 	 *   options: [{text: 'Todos os produtos'}],
 	 *   onChange(option) {
 	 *     self.log(`Select changed to: ${option.value}`);

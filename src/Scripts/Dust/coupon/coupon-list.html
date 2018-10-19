@@ -1,0 +1,26 @@
+{#coupons}
+<div class="col-4 coupons-list_item" data-coupon="{category}">
+	<div class="box">
+		<div class="discount-badge">
+			<p>{valProduct|intAsCurrency}</p>
+			<p>OFF</p>
+		</div>
+		<div class="content-body">
+			<span class="code-title">CÓDIGO</span>
+			<div class="code-wrapper">
+				<span class="code">{coupon}</span>
+			</div>
+			<div class="use-conditions">
+				<p class="use-conditions-title">Condições de uso</p>
+				<p class="use-conditions-description">Este cupom é valido apenas para produtos selecionados em “<strong class="use-conditions-category">{category}</strong>”</p>
+				<p class="use-conditions-price"><strong>{offer|intAsCurrency}</strong></p>
+			</div>
+			<div class="copy-code"><a href="#" class="primary-button">COPIAR CÓDIGO</a></div>
+			<div class="error-coupon"><a href="#">comunicar erro no cupom</a></div>
+		</div>
+		<div class="products">
+			<a href="{collection}">Ver produtos participantes</a>
+		</div>
+	</div>
+</div>
+{/coupons}
