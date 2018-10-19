@@ -15,10 +15,10 @@
 	<!-- @if DEBUG=false -->
 	<vtex:template id="0-consul-head-content" />
 	<!-- @endif -->
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/cupom.css" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/coupon.css" />
 </head>
 
-<body data-controller="coupon" class="cupom-page">
+<body data-controller="coupon" class="coupon-page">
 	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 	<!-- @endif -->
@@ -29,27 +29,23 @@
 	<!-- @endif -->
 	<!-- /Header -->
 
-	<section class="cupom-header">
+	<section class="coupon-header">
 		<div class="container">
-			<div class="cupom-header__aside">
-				<h1 class="cupom-header__title">Cupons de Desconto Consul</h1>
-				<h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+			<div class="coupon-header__aside">
+				<h1 class="coupon-header__title">Cupons de Desconto Consul</h1>
+				<h2 class="coupon-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
 			</div>
-			<div class="cupom-filter">
-				<span class="cupom-filter__label">Ver cupons para:</span>
+			<div class="coupon-filter">
+				<span class="coupon-filter__label">Ver cupons para:</span>
 			</div>
 		</div>
 	</section>
-	<section class="cupom-list">
-		<div class="container">
-		</div>
-	</section>
-	<div class="container clearfix">
-		<section class="exibicao-cupons-wrapper">
+	<section class="coupon-list">
+		<div class="container clearfix">
 			<div class="row text-center coupons-list_items">
 			</div>
-		</section>
-	</div>
+		</div>
+	</section>
 
 
 	<!-- @if DEBUG=true -->
@@ -62,7 +58,7 @@
 	<!-- @endif -->
 	<!-- /Footer -->
 
-	<script src="<!-- @echo assetsPath -->/cupom.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="<!-- @echo assetsPath -->/coupon.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 
 </html>
