@@ -1,9 +1,9 @@
 'use strict';
 
 // Avoid `console` errors in browsers that lack a console.
-(function() {
+(function () {
 	var method;
-	var noop = function noop() {};
+	var noop = function noop() { };
 	var methods = [
 		'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
 		'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
@@ -23,42 +23,42 @@
 	}
 }());
 
-String.prototype.formatArray = function(a) {
-	return this.replace(/\{(\d+)\}/g, function(r, e) {
+String.prototype.formatArray = function (a) {
+	return this.replace(/\{(\d+)\}/g, function (r, e) {
 		return a[e];
 	});
 };
-String.prototype.render = function(obj) {
-	return this.replace(/\{(\w+)\}/g, function(r, e) {
+String.prototype.render = function (obj) {
+	return this.replace(/\{(\w+)\}/g, function (r, e) {
 		return obj[e];
 	});
 };
 
-String.prototype.replaceAll = String.prototype.replaceAll || function(needle, replacement) {
+String.prototype.replaceAll = String.prototype.replaceAll || function (needle, replacement) {
 	return this.split(needle).join(replacement);
 };
 
 if (!String.prototype.trim) {
-	String.prototype.trim = function() {
+	String.prototype.trim = function () {
 		return this.replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '');
 	};
 }
 
 if (!String.prototype.capitalize) {
-	String.prototype.capitalize = function() {
+	String.prototype.capitalize = function () {
 		return this.charAt(0).toUpperCase() + this.slice(1);
 	};
 }
 
 if (!Array.prototype.forEach) {
-	Array.prototype.forEach = function(f, c) {
+	Array.prototype.forEach = function (f, c) {
 		for (var i = 0; i < this.length; i++) {
 			f.call(c, this[i], i, this);
 		}
 	};
 }
 if (!Array.prototype.map) {
-	Array.prototype.map = function(f, c) {
+	Array.prototype.map = function (f, c) {
 		for (var r = [], i = 0; i < this.length; i++) {
 			r[i] = f.call(c, this[i], i, this);
 		}
@@ -66,7 +66,7 @@ if (!Array.prototype.map) {
 	};
 }
 if (!Array.prototype.filter) {
-	Array.prototype.filter = function(f, c) {
+	Array.prototype.filter = function (f, c) {
 		for (var r = [], j = 0, i = 0, s = this, t; i < s.length; i++) {
 			if (f.call(c, t = s[i], i, s)) {
 				r[j++] = t;
@@ -76,7 +76,7 @@ if (!Array.prototype.filter) {
 	};
 }
 if (!Array.prototype.some) {
-	Array.prototype.some = function(f, c) {
+	Array.prototype.some = function (f, c) {
 		for (var i = 0; i < this.length; i++) {
 			if (f.call(c, this[i], i, this)) {
 				break;
@@ -86,7 +86,7 @@ if (!Array.prototype.some) {
 	};
 }
 if (!Function.prototype.bind) {
-	Function.prototype.bind = function(oThis) {
+	Function.prototype.bind = function (oThis) {
 		if (typeof this !== 'function') {
 			// closest thing possible to the ECMAScript 5
 			// internal IsCallable function
@@ -95,8 +95,8 @@ if (!Function.prototype.bind) {
 
 		var aArgs = Array.prototype.slice.call(arguments, 1),
 			fToBind = this,
-			Noop = function() {},
-			fBound = function() {
+			Noop = function () { },
+			fBound = function () {
 				return fToBind.apply(this instanceof Noop ? this : oThis,
 					aArgs.concat(Array.prototype.slice.call(arguments)));
 			};
@@ -109,7 +109,7 @@ if (!Function.prototype.bind) {
 }
 
 if (!Object.keys) {
-	Object.keys = (function() {
+	Object.keys = (function () {
 		var hasOwnProperty = Object.prototype.hasOwnProperty,
 			hasDontEnumBug = !({
 				toString: null
@@ -125,7 +125,7 @@ if (!Object.keys) {
 			],
 			dontEnumsLength = dontEnums.length;
 
-		return function(obj) {
+		return function (obj) {
 			if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
 				throw new TypeError('Object.keys called on non-object');
 			}
@@ -152,30 +152,30 @@ if (!Object.keys) {
 }
 
 if (!Array.prototype.find) {
-  Array.prototype.find = function(predicate) {
-    if (this === null) {
-      throw new TypeError('Array.prototype.find called on null or undefined');
-    }
-    if (typeof predicate !== 'function') {
-      throw new TypeError('predicate must be a function');
-    }
-    var list = Object(this);
-    var length = list.length >>> 0;
-    var thisArg = arguments[1];
-    var value;
+	Array.prototype.find = function (predicate) {
+		if (this === null) {
+			throw new TypeError('Array.prototype.find called on null or undefined');
+		}
+		if (typeof predicate !== 'function') {
+			throw new TypeError('predicate must be a function');
+		}
+		var list = Object(this);
+		var length = list.length >>> 0;
+		var thisArg = arguments[1];
+		var value;
 
-    for (var i = 0; i < length; i++) {
-      value = list[i];
-      if (predicate.call(thisArg, value, i, list)) {
-        return value;
-      }
-    }
-    return undefined;
-  };
+		for (var i = 0; i < length; i++) {
+			value = list[i];
+			if (predicate.call(thisArg, value, i, list)) {
+				return value;
+			}
+		}
+		return undefined;
+	};
 }
 
 if (!window.getCookie) {
-	window.getCookie = function(name) {
+	window.getCookie = function (name) {
 		var match = document.cookie.match(new RegExp(name + '=([^;]+)'));
 
 		if (match) {
@@ -185,9 +185,9 @@ if (!window.getCookie) {
 }
 
 //jQuery extensions
-(function($) {
+(function ($) {
 
-	$.calculateBusinessDays = function(fromDate, days) {
+	$.calculateBusinessDays = function (fromDate, days) {
 		var count = 0;
 		fromDate = new Date(fromDate);
 		while (count < days) {
@@ -199,7 +199,7 @@ if (!window.getCookie) {
 		return fromDate;
 	};
 
-	$.calculateDays = function(fromDate, days) {
+	$.calculateDays = function (fromDate, days) {
 		var count = 0;
 		fromDate = new Date(fromDate);
 		while (count < days) {
@@ -209,7 +209,7 @@ if (!window.getCookie) {
 		return fromDate;
 	};
 
-	$.formatDatetime = function(date, delimiter) {
+	$.formatDatetime = function (date, delimiter) {
 		delimiter = delimiter || '/';
 		var d = (date) ? new Date(date) : new Date();
 		var month = d.getMonth() + 1;
@@ -219,7 +219,7 @@ if (!window.getCookie) {
 			(day < 10 ? '0' : '') + ((date) ? day : day);
 	};
 
-	$.formatDatetimeBRL = function(date, delimiter) {
+	$.formatDatetimeBRL = function (date, delimiter) {
 		delimiter = delimiter || '/';
 		var d = (date) ? new Date(date) : new Date();
 		var month = d.getMonth() + 1;
@@ -229,15 +229,15 @@ if (!window.getCookie) {
 			d.getFullYear();
 	};
 
-	$.diffDate = function(date1, date2) {
+	$.diffDate = function (date1, date2) {
 		var diffc = new Date(date1).getTime() - new Date(date2).getTime();
 		var days = Math.round(Math.abs(diffc / (1000 * 60 * 60 * 24)));
 		return days;
 	};
 
-	$.appendUrl = function(obj) {
-		$.each(obj, function(key, value) {
-			$(key).each(function() {
+	$.appendUrl = function (obj) {
+		$.each(obj, function (key, value) {
+			$(key).each(function () {
 				var self = $(this),
 					href = self.attr('href') || '';
 				if (href.indexOf('#') !== -1 || href.indexOf('javascript') !== -1) {
@@ -248,25 +248,25 @@ if (!window.getCookie) {
 		});
 	};
 
-	$.reduce = function(arr, fnReduce, valueInitial) {
+	$.reduce = function (arr, fnReduce, valueInitial) {
 		if (Array.prototype.reduce) {
 			return Array.prototype.reduce.call(arr, fnReduce, valueInitial);
 		}
 
-		$.each(arr, function(i, value) {
+		$.each(arr, function (i, value) {
 			valueInitial = fnReduce.call(null, valueInitial, value, i, arr);
 		});
 		return valueInitial;
 	};
 
-	$.getParameterByName = function(name, string) {
+	$.getParameterByName = function (name, string) {
 		name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
 		var regex = new RegExp('(?:[\\?&]|^)' + name + '=([^&#]*)'),
 			results = regex.exec(string || window.location.search || '');
 		return results ? decodeURIComponent(results[1].replace(/\+/g, ' ')) : '';
 	};
 
-	$.replaceSpecialChars = function(str) {
+	$.replaceSpecialChars = function (str) {
 		return str.toLowerCase()
 			.replace(/[àáâãäå]/ig, 'a')
 			.replace(/[éèëê]/ig, 'e')
@@ -278,25 +278,25 @@ if (!window.getCookie) {
 			.replace(/\s/ig, '-');
 	};
 
-	$.getImagePath = function(img) {
+	$.getImagePath = function (img) {
 		if (!/^http/.test(img) && !/^\/arquivos/.test(img)) {
 			img = '//' + window.jsnomeLoja + '.vteximg.com.br/arquivos/' + img;
 		}
 		return img;
 	};
 
-	$.resizeImage = function(url, width, height) {
-		return (url = url.replace(/ids\/.+-(\d+)-(\d+)/, function(e, w, h) {
+	$.resizeImage = function (url, width, height) {
+		return (url = url.replace(/ids\/.+-(\d+)-(\d+)/, function (e, w, h) {
 			return e.replace(w, width).replace(h, height);
 		})), url.replace(/(ids\/[0-9]+)\//, '$1-' + width + '-' + height + '/');
 	};
 
-	$.currencyToInt = function(currency) {
+	$.currencyToInt = function (currency) {
 		return +currency.replace(/\D/gi, '');
 	};
 
 	$.extend($.fn, {
-		toScroll: function(offset) {
+		toScroll: function (offset) {
 			var self = $(this);
 			if (!self || self.length === 0 || !self.is(':visible')) {
 				return;
@@ -306,19 +306,19 @@ if (!window.getCookie) {
 				scrollTop: self.offset().top + (offset || 0) + 'px'
 			}, 1000);
 		},
-		scrollTo: function(target, offset) {
+		scrollTo: function (target, offset) {
 			$(target || $(this).attr('href')).toScroll(offset);
 		},
-		exists: function() {
+		exists: function () {
 			return $(this).length > 0 ? true : false;
 		},
-		validEmail: function() {
+		validEmail: function () {
 			return /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test($(this).val());
 		},
-		validFullName: function() {
+		validFullName: function () {
 			return /(.*){3,}\s(.*).{3,}/i.test($(this).val());
 		},
-		validCpf: function() {
+		validCpf: function () {
 
 			var value = $(this).val().replace(/[^\d]+/g, '');
 
@@ -360,9 +360,9 @@ if (!window.getCookie) {
 		},
 		validCnpj: function () {
 
-			var cnpj = $(this).val().replace(/[^\d]+/g,'');
+			var cnpj = $(this).val().replace(/[^\d]+/g, '');
 
-			if(cnpj == '') return false;
+			if (cnpj == '') return false;
 
 			if (cnpj.length != 14)
 				return false;
@@ -383,10 +383,10 @@ if (!window.getCookie) {
 			var tamanho, numeros, digitos, soma, pos, i, resultado;
 			// Valida DVs
 			tamanho = cnpj.length - 2;
-			numeros = cnpj.substring(0,tamanho);
+			numeros = cnpj.substring(0, tamanho);
 			digitos = cnpj.substring(tamanho);
 			soma = 0;
-			pos  = tamanho - 7;
+			pos = tamanho - 7;
 			for (i = tamanho; i >= 1; i--) {
 				soma += numeros.charAt(tamanho - i) * pos--;
 				if (pos < 2)
@@ -397,7 +397,7 @@ if (!window.getCookie) {
 				return false;
 
 			tamanho = tamanho + 1;
-			numeros = cnpj.substring(0,tamanho);
+			numeros = cnpj.substring(0, tamanho);
 			soma = 0;
 			pos = tamanho - 7;
 			for (i = tamanho; i >= 1; i--) {
@@ -407,7 +407,7 @@ if (!window.getCookie) {
 			}
 			resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
 			if (resultado != digitos.charAt(1))
-					return false;
+				return false;
 
 			return true;
 		}
@@ -415,15 +415,15 @@ if (!window.getCookie) {
 
 	$.extend($.expr[':'], {
 		// http://jqueryvalidation.org/blank-selector/
-		blank: function(a) {
+		blank: function (a) {
 			return !$.trim('' + $(a).val());
 		},
 		// http://jqueryvalidation.org/filled-selector/
-		filled: function(a) {
+		filled: function (a) {
 			return !!$.trim('' + $(a).val());
 		},
 		// http://jqueryvalidation.org/unchecked-selector/
-		unchecked: function(a) {
+		unchecked: function (a) {
 			return !$(a).prop('checked');
 		},
 
@@ -432,7 +432,39 @@ if (!window.getCookie) {
 
 }(jQuery));
 
-window.goToTopPage = $.fn.pager = $.jqzoom = $.fn.jqzoom = function() {};
+/**
+ * Returns a unique array by prop name
+ * @param {array} array - array that will be compared
+ * @param {string} compareProp - property that will be compared across the array
+ * @returns new array of objects with uniques and a new prop with number of occurrences
+ * @example:
+ * const users = [{name: 'roger', id: 1}, {name: 'roger', id: 1}, {name: 'matheus', id: 2}];
+ * getUniques(users, 'id');
+ * // [{name: 'roger', id: 1, count: 2}, {name: 'matheus', id: 2, count: 1}]
+ */
+const getUniques = (array, compareProp) => {
+	let byId = {};
+	let uniques = [];
+
+	let i = 0;
+	let item = {};
+
+	for (i; i < array.length; i++) {
+		item = array[i];
+		if (byId[item[compareProp]]) {
+			byId[item[compareProp]].count++;
+		} else {
+			byId[item[compareProp]] = item;
+			uniques.push(item);
+			item.count = 1;
+		}
+	}
+
+	return uniques;
+};
+
+
+window.goToTopPage = $.fn.pager = $.jqzoom = $.fn.jqzoom = function () { };
 
 /*if($.jqzoom){
 	$.jqzoom.defaults = $.extend({}, $.jqzoom.defaults, {
@@ -444,3 +476,6 @@ window.goToTopPage = $.fn.pager = $.jqzoom = $.fn.jqzoom = function() {};
 		hideEffect: 'fadeout'
 	} || {});
 }*/
+
+
+module.exports = { getUniques };
