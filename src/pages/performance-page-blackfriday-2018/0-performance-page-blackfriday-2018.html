@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>performance-page-blackfriday-2018</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/performance-page-blackfriday-2018.css" />
+</head>
+
+<body data-controller="performance-page-blackfriday-2018">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<section class="offers__section">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="offers__title">Navegue pelas ofertas da <strong class="offers__title-highlight">Black Friday</strong></h2>
+			</div>
+
+			<div class="offers__list">
+				<!-- Offers item -->
+				<a class="offers__item" href="#">
+					<img class="offers__item-icon" src="/arquivos/logo-consul-gae.png" alt="Garantia estendida com desconto" />
+					<span class="offers__text">Garantia estendida <b class="offers__item-bolder">com desconto</b></span>
+				</a>
+				<!--/ Offers item -->
+
+				<!-- Offers item -->
+				<a class="offers__item" href="#">
+					<img class="offers__item-icon" src="/arquivos/icone-caminhao-frete-gratis.png" alt="Produtos com frete grátis" />
+					<span class="offers__text">frete grátis <b class="offers__item-bolder">nos produtos</b></span>
+				</a>
+				<!--/ Offers item -->
+
+				<!-- Offers item -->
+				<a class="offers__item offers__item-discount" href="#">
+					<p class="offers__text">
+						<span class="offers__text-disclaimer">Até</span>
+						<span class="offers__text-discount">20%</span>
+						<span class="offers__text-disclaimer">Off</span>
+					</p>
+				</a>
+				<!--/ Offers item -->
+
+				<!-- Offers item -->
+				<a class="offers__item offers__item-discount" href="#">
+					<p class="offers__text">
+						<span class="offers__text-disclaimer">Até</span>
+						<span class="offers__text-discount">40%</span>
+						<span class="offers__text-disclaimer">Off</span>
+					</p>
+				</a>
+				<!--/ Offers item -->
+
+				<!-- Offers item -->
+				<a class="offers__item offers__item-discount" href="#">
+					<p class="offers__text">
+						<span class="offers__text-disclaimer">Até</span>
+						<span class="offers__text-discount">60%</span>
+						<span class="offers__text-disclaimer">Off</span>
+					</p>
+				</a>
+				<!--/ Offers item -->
+
+				<!-- Offers item -->
+				<a class="offers__item offers__item-discount" href="#">
+					<p class="offers__text">
+						<span class="offers__text-disclaimer">Até</span>
+						<span class="offers__text-discount">80%</span>
+						<span class="offers__text-disclaimer">Off</span>
+					</p>
+				</a>
+				<!--/ Offers item -->
+			</div>
+		</div>
+	</section>
+
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/performance-page-blackfriday-2018.min.js"></script>
+</body>
+</html>
