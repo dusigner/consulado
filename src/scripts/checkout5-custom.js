@@ -631,7 +631,9 @@ $(window).on('load', function() {
 
 			// Count how many Saturdays and Sundays exists between these dates
 			for (let i = 0; i < days; i++) {
-				if (now.getDay() === 0 || now.getDay() === 6) weekendDays++;
+				if (now.getDay() === 0 || now.getDay() === 6) {
+					weekendDays++;
+				} 
 
 				now.setDate(now.getDate()+1);
 			}
@@ -646,7 +648,7 @@ $(window).on('load', function() {
 		 */
 		this.setShippingMessage = function($workingDaysElement) {
 			let workingDays = $workingDaysElement.text().match(/ (\d+) /g); // Get the number of days, if the string has this value
-			console.log($workingDaysElement);
+			
 			// If the string has a day value, calculate how many days exists between today and Christmas and check if the order will arrive before Christmas
 			if (workingDays) {
 				let workingDaysUntilChristmas = self.countWorkingDays();
