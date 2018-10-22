@@ -5,24 +5,11 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
-	
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/performance-page-blackfriday-2018.css" />
 </head>
 <body data-controller="home">
-
-	<!-- AVISO -->
-	<!--<div class="advertisement">--> 
-	<!--	<div class="centralize">-->
-	<!--		<span>OK</span>-->
-	<!--		<p>-->
-	<!--			Estamos modernizando nossos sistemas e, por isso, até o dia 25 de fevereiro os prazos de frete, cancelamentos e estornos serão alterados.-->
-	<!--			<a href="https://consul.zendesk.com/hc/pt-br/articles/207800483-Aviso-Importante" title="Saiba mais" target="_blank">Saiba mais</a>-->
-	<!--		</p>-->
-	<!--	</div>-->
-	<!--</div>-->
-	<!-- AVISO -->
-
-
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
@@ -33,12 +20,12 @@
 
 	<!-- [ Desktop ] - Slider -->
 	<div class="banners hide-extra-small">
-	    <!-- Fake banner-->
+		<!-- Fake banner-->
 		<div class="fake-banner">
 			<vtex:contentPlaceHolder id="FakeBanner" />
 		</div>
 		<!-- Fake banner-->
-	    
+
 		<!-- Banner -->
 		<div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
 		<!-- /Banner -->
@@ -59,12 +46,12 @@
 
 	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
-	    <!-- Fake banner-->
+		<!-- Fake banner-->
 		<div class="fake-banner">
 			<vtex:contentPlaceHolder id="FakeBannerMobile" />
 		</div>
 		<!-- Fake banner-->
-	
+
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
 		<!-- /Banner -->
@@ -118,8 +105,10 @@
 	</div>
 	<!-- Lead newsletter footer -->
 
-	<!-- [ CHAORDIC ] - TOP 
-	 <div class="container"><div chaordic="top"></div></div> 
+	<!-- @include ../03 - Custom Templates/CNSoffersPerformancePage.html -->
+
+	<!-- [ CHAORDIC ] - TOP
+	 <div class="container"><div chaordic="top"></div></div>
 	 /[ CHAORDIC ] - TOP -->
 
 	<!-- [ CHAORDIC ] TOP -->
@@ -204,14 +193,14 @@
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
-	
+
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
-	
+
 	<!-- Banner novos controles -->
 	<div class="hide" style="display: none;">
 		<!-- Custom -->
 		<vtex:aBannerTeste />
-		
+
 		<!-- Controle -->
 		<vtex:contentPlaceHolder id="banner-novo-para-testes" />
 	</div>
