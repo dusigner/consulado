@@ -607,6 +607,9 @@ $(window).on('load', function() {
 				self.veryfication();
 			});
 
+			$('.shipping-option-item-text-wrapper').each(function() {
+				workingDaysCounter.setShippingMessage($(this));
+			});
 		};
 
 		this.init();
