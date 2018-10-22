@@ -1,0 +1,884 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - Consul
+	* Description: CSS desenvolvido para Consul.
+	* Author: Pedro Henrick
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: 1.0
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/icons';
+@import 'helpers/rfs';
+
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+// @import 'components/produto/facebook-share';
+
+$loja-color: #9aca3d;
+
+// Base
+.landing-blackfriday-2018 {
+	background: #000 url('/arquivos/bg-section-001.jpg') center 50px no-repeat;
+	@include breakpoint('medium', 'max') { padding-top: 70px!important; }
+	@include breakpoint('small', 'max') { padding-top: 50px!important; }
+	transition:
+		font-size .3s ease,
+		padding-top .3s ease
+	;
+}
+
+// Header
+.lpbf-header {
+	@include breakpoint('small', 'max') {
+		line-height: 50px;
+		min-height: 50px!important;
+	}
+	@include breakpoint('medium', 'max') {
+		line-height: 70px;
+		min-height: 70px!important;
+		position: fixed;
+		right: 0;
+		top: 0;
+		width: 100%;
+		z-index: 99999!important;
+	}
+	background-color: $loja-color;
+	line-height: 95px;
+	min-height: 95px !important;
+	overflow: hidden;
+	text-align: center;
+	transition:
+		line-height .3s ease,
+		min-height .3s ease
+	;
+	a {
+		display: block;
+
+		&:hover { text-decoration: none; }
+
+		&:before {
+			@include icon-get(logo-consul);
+			color: #fff;
+			font-size: 26px;
+		}
+	}
+}
+
+#lpbf {	
+	display: block;
+	height: 696px;
+	.container{
+		@include breakpoint('small', 'max'){
+			padding: 0 10px;
+		}
+	}
+	.lpbf__title {
+		@include breakpoint('extra-small', 'min') {
+			@include breakpoint('large', 'max') {
+				height: 320px;
+				margin-bottom: 30px;
+			}
+		}
+		@include breakpoint('small', 'max') {
+			height: 235px;
+			margin: 0 auto 20px auto;
+			width: 290px;
+		}
+		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -10px no-repeat;
+		background-size: contain;
+		color: transparent;
+		font-size: 1px;
+		height: 400px;
+		margin: 0;
+		overflow: hidden;
+		text-align: center;
+		text-indent: -99cm;
+		transition: .3s ease;
+		width: auto;
+	}
+
+	.lpbf__subtitle1 {
+		@include rfs(28);
+		color: #fff;
+		font-weight: 400;
+		line-height: 30px;
+		margin: -20px 0 10px;
+		text-align: center;
+		@include breakpoint('extra-small', 'max') {
+			@include rfs(20);
+
+		}
+	}
+	.lpbf__subtitle2 {
+		@include rfs(28);
+		color: $loja-color;
+		font-weight: 600;
+		margin-top: 0;
+		text-align: center;
+		@include breakpoint('small', 'max') {
+			margin-bottom: 0;
+		}
+	}
+
+	// Contador
+	.lpbf-contador {
+		@include breakpoint('small', 'max') {
+			transform: translateY(40%);
+			@include breakpoint('extra-small', 'max') {
+				transform: translateY(40%);
+			}
+		}
+		@include breakpoint('small', 'min') { transform: translateY(30%); }
+		color: $green;
+		margin: 0 auto;
+		max-width: 490px;
+
+		.lpbf-contador__title {
+			@include breakpoint('small', 'max') {
+				padding: 0 2em;
+				text-align: center;
+				transform: translateY(-20px);
+			}
+			@include rfs(18);
+			display: block;
+			line-height: 100%;
+			text-align: center;
+		}
+
+		.countdown {
+			display: flex;
+			justify-content: space-between;
+			padding: 1em 0;
+			text-align: center;
+		}
+
+		.counter {
+			@include breakpoint('extra-small', 'max') { width: 56px; }
+			@include rfs(53);
+			color: $loja-color;
+			display: block;
+			font-weight: bold;
+			line-height: 100%;
+			position: relative;
+			width: 84px;
+			@include breakpoint('small', 'max') { color: #fff; }
+
+			&.colon { 
+				color: #fff;
+				width: auto;
+			}
+		}
+
+		.countdown-text {
+			@include rfs(13);
+			color: #fff;
+			padding-top: .7em;
+			text-transform: uppercase;
+			@include breakpoint('small', 'max') { color: #fff; }
+		}
+
+
+		// Finalização do contador
+		&.is--end {
+			.countdown,
+			.lpbf-contador__title {
+				display: none;
+				visibility: hidden;
+			}
+
+			// Chegou
+			.lpbf-chegou {
+				@include breakpoint('small', 'min') {
+					background-color: #292929;
+					float: right;
+					transform: translateY(17%);
+				}
+				display: block;
+				padding: 2.5em 4em;
+				visibility: visible;
+			}
+
+			.lpbf__text {
+				@include breakpoint('small', 'max') { @include rfs(60); }
+				@include rfs(44);
+				color: #d0d0d0;
+				display: block;
+				font-weight: 400;
+			}
+
+			.lpbf-chegou__cta {
+				@include rfs(21);
+				background-color: $loja-color;
+				color: #fff;
+				display: inline-block;
+				font-weight: bold;
+				margin-top: 1.2em;
+				padding: .5em 2em;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+//Form
+// ===============================================================
+.lpbf-form__container {
+	@include breakpoint(1100px, 'max') { margin: 60px auto 10px auto; }
+	@include breakpoint(1100px, 'min') {
+		@include breakpoint(1200px, 'max') { max-width: 400px; }
+		// position: absolute;
+		// right: 20px;
+		// top: 100px;
+	}
+	margin: 40px auto 0;
+	max-width: 450px;
+	position: relative;
+	width: 100%;
+
+	&:before {
+		background-color: #1B1B1B;
+		border-radius: 25px;
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+	}
+}
+
+.lpbf-form__title {
+	@include rfs(22);
+	color: #fff;
+	font-weight: 700;
+	line-height: normal;
+	margin: 1em -1em .4em -1em;
+	strong {
+		color: $loja-color;
+	}
+}
+
+// Categorias
+.lpbf-categorys {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+#slice-hide {
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height .4s;
+}
+
+#click-more-products {
+	margin-top: 12px;
+	position: relative;
+	text-align: center;
+	&:before {
+		background: #666666;
+		content: '';
+		height: 1px;
+		left: 0;
+		position: absolute;
+		top: 50%;
+		width: 100%;
+		z-index: -1;
+	}
+	a {
+		@include rfs(14);
+		background-color: #1B1B1B;
+		border: 1px solid #666666;
+		border-radius: 30px;
+		color: #fff;
+		padding: 8px;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	.active {
+		height: auto;
+	}
+}
+
+.lpbf-categorys__item {
+	background-color: #2b2b2b;
+	border: 1px solid #666666;
+	border-radius: 30px;
+	cursor: pointer;
+	display: block;
+	margin: .5em 0 .5em 0;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 46.5%;
+
+	.check-box {
+		border: 1px solid #666666;
+		border-radius: 4px;
+		height: 15px;
+		left: 10%;
+		position: absolute;
+		top: 33%;
+		width: 15px;
+	}
+
+	input[type='checkbox'] {
+		position: absolute;
+		top: -20px;
+		visibility: visible;
+	}
+
+	// &[for='geladeira'] .lpbf-categorys__text:before { background: url($icon-geladeira) 0 0 no-repeat; }
+	// &[for='lavadora'] .lpbf-categorys__text:before { background: url($icon-lavadora) 0 0 no-repeat; }
+	// &[for='fogao'] .lpbf-categorys__text:before { background: url($icon-fogao) 0 0 no-repeat; }
+	// &[for='outros'] .lpbf-categorys__text:before { background: url($icon-outros) 0 0 no-repeat; }
+
+	// Active state
+	&:hover,
+	&:focus {
+		input[type='checkbox'] + .lpbf-categorys__text {
+			background-color: #666666;
+			color: #ececec;
+			transition: all .4s;
+		}
+		.check-box {
+			border-color: $loja-color;
+		}
+	}
+	
+	&:active { outline: none; }
+	
+	input[type='checkbox']:checked {
+		& + .lpbf-categorys__text {
+			background-color: #666666;
+			color: #ececec;
+
+			&:before { 
+				background-color: $loja-color;
+				border: 1px solid $loja-color;
+				
+			}
+			&:after { 
+				background-color: $loja-color;
+				color: #fff; 
+				left: 11%;
+				position: absolute;
+				top: 40%;
+			}
+		}
+	}
+}
+
+.lpbf-categorys__text {
+	@include breakpoint('extra-small', 'max') { 
+		@include rfs(10.5);
+		padding: .8em 0 .8em 3.5em;
+	}
+	@include breakpoint('small', 'max') { 
+		padding: .8em 0 .8em 3em;
+	}
+	@include rfs(15);
+    align-items: center;
+	color: #c3c3c3;
+    display: flex;
+	height: 48px;
+    padding: .8em 0 .8em 2.8em;
+	position: relative;
+	z-index: 0;
+
+	&:hover {
+		&:before { border: 1px solid #454545; }
+	}
+
+	&:before {
+		border: 1px solid #666666;
+		border-radius: 4px;
+		content: '';
+		height: 15px;
+		left: 10%;
+		position: absolute;
+		top: 33%;
+		width: 15px;
+	}
+
+	&:after {
+		@include icon-get ('check-mark');
+		@include rfs(9);
+		color: transparent;
+		display: inline-block;
+		position: absolute;
+	}
+}
+
+// Form
+#form-bf-2018 {
+	@include breakpoint('small', 'max'){
+		padding: 1em;
+	}
+	padding: 1em 2em;
+	position: relative;
+	z-index: 10;
+	&:hover {
+		a.btn-close { text-decoration: none; }
+	}
+	.icon {
+		@include rfs(20);
+		color: #c3c3c3;
+		display: flex;
+		justify-content: flex-end;
+		opacity: 0;
+	}
+	.lpbf-categories-chosen {
+		display: none;
+	}
+}
+
+// Exibe categorias escolhidas no form
+#form-bf-2018.active-chosen {
+	.lpbf-categories-chosen {
+		display: block;
+		ul {
+			display: inline-block;
+			margin-top: 25px;
+			width: 100%;
+		}
+		.chose-more-products {
+			@include rfs(14);
+			background: transparent;
+			border: 2px solid $loja-color;
+			border-radius: 25px;
+			color: $loja-color;
+			font-weight: bold;
+			margin-top: 26px;
+			padding: 8px 0;
+			transition: 
+				color .4s ease,
+				font-size .4s ease
+			;
+			width: 100%;
+			&:hover {
+				background: $loja-color;
+				color: #fff;
+			}
+		}
+		.txt-categories {
+			@include rfs(14);
+			color: #fff;
+			display: inline-block;
+			width: 32%;
+			&:before {
+				background-color: $loja-color;
+				border-radius: 50%;
+				content: '';
+				display: inline-block;
+				height: 12px;
+				margin-right: 7px;
+				width: 12px;
+			}
+		}
+	}
+	.lpbf-categorys {
+		display: none;
+	}
+}
+
+#form-bf-2018.active {
+	.icon {
+		opacity: 1;
+	}
+
+	#slice-hide { max-height: 334px; }
+
+	.form-blackfriday__submit.continued {
+		display: block;
+	}
+
+	.form-blackfriday__submit {
+		display: none;
+	}
+}
+
+.form-blackfriday-2018 {
+	@include inputPlaceholderColor(#fff);
+	color: #aaa;
+	position: relative;
+
+	fieldset {
+		border: 0;
+		margin: 1em 0;
+		padding: 0;
+		position: relative;
+	}
+
+	label[for='li-concordo'] {
+		@include rfs(12);
+		overflow: hidden;
+		padding-left: 30px;
+		position: relative;
+
+		&:focus { outline: none; }
+
+		input {
+			opacity: 0;
+			position: absolute;
+			top: -25px;
+
+			&:checked + span:before {
+				height: 100%;
+				width: 100%;
+			}
+			&:checked + span:after {
+				display: inline-block;
+			}
+		}
+
+		span {
+			border: 2px solid #454545;
+			border-radius: 5px;
+			cursor: pointer;
+			display: inline-block;
+			height: 18px;
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 18px;
+
+			&:before {
+				background-color: $loja-color;
+				border-radius: 3px;
+				content: '';
+				display: block;
+				height: 0;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				transition:
+					height .2s ease,
+					width .2s ease
+				;
+				width: 0;
+			}
+			&:after {
+				@include icon-get ('check-mark');
+				@include rfs(9);
+				color: #FFF;
+				display: none;
+				left: 1px;
+				position: absolute;
+				top: 2px;
+			}
+		}
+	}
+
+	.link-termos { color: #fff; }
+
+	.form-blackfriday__label {
+		@include rfs(14);
+		color: #fff;
+		font-weight: bold;
+	}
+
+	.form-blackfriday__input {
+		@include rfs(16);
+		background-color: #484848;
+		border: none;
+		border-radius: 25px;
+		color: #aaa;
+		display: block;
+		font-weight: 300;
+		margin: .5em 0;
+		padding: .7em 1em;
+		transition: all .5s;
+
+		&:focus {
+			border-bottom: 2px solid $loja-color !important;
+			color: #9c9c9c;
+			outline: none;
+		}
+
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus
+		&:-webkit-autofill {
+			-webkit-text-fill-color: #aaa;
+			background: transparent;
+			box-shadow: 0 0 0 1000px #383838 inset;
+			// border: none;
+		}
+
+		&::-webkit-input-placeholder { color: #aaa; }
+		&::-moz-placeholder { color: #aaa; }
+		&:-ms-input-placeholder { color: #aaa; }
+		&:-moz-placeholder { color: #aaa; }
+
+		&.erro {
+			background-color: #FFFDD8;
+			color: $loja-color;
+		}
+	}
+
+	// Validação e menssagens de erro
+	.message {
+		@include rfs(14);
+		color: $loja-color;
+		font-weight: 300;
+		left: 0;
+		line-height: 100%;
+		margin: 0;
+		position: absolute;
+		text-align: center;
+		top: 0;
+		width: 100%;
+	}
+
+	.success_p {
+		&:after {
+			@include icon-get ('check-mark');
+			@include rfs(10);
+			display: inline-block;
+			margin-left: 10px;
+			transform: translateY(-2px);
+		}
+	}
+
+	.error_p {
+		&:before {
+			@include icon-get ('close');
+			@include rfs(13);
+			margin-right: 10px;
+		}
+	}
+
+	
+}
+
+.form-blackfriday__submit {
+	@include rfs(18);
+	background-color: $loja-color;
+	border: none;
+	border-radius: 30px;
+	color: #fff;
+	display: block;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	margin: 1em auto;
+	padding: 16px 2em 8px 2.2em;
+	position: relative;
+	transition: width .2s ease;
+	z-index: 0;
+
+	&:focus { outline: none; }
+
+	span,
+	.icon {
+		display: inline-block;
+		position: relative;
+		transform: translate(-3px, -3px);
+	}
+
+	.icon {
+		height: 12px;
+		margin-left: 15px;
+		width: 12px;
+		z-index: 1;
+	}
+}
+
+.form-blackfriday__submit.continued {
+	display: none;
+}
+
+// Formulário sucesso
+.lpbf-form-success {
+	padding: 1em 3.5em;
+	position: relative;
+	.icon-check-thin {
+		@include rfs(72);
+		background-color: $loja-color;
+		border-radius: 50%;
+		color: #fff;
+	}
+}
+
+.lpbf-form-success__title {
+	@include rfs(18);
+	color: #fff;
+	font-weight: 100;
+	margin: 16px 0 0 0;
+
+	span {
+		@include rfs(26);
+		display: block;
+		font-weight: bold;
+		margin: 0 auto;
+	}
+}
+
+.lpbf-form-success__text {
+	@include rfs(18);
+	color: #fff;
+	margin: 0;
+	padding: 1.5em 2em;
+	
+}
+//Form
+// ===============================================================
+
+// depoimentos
+.depoimentos {
+	margin-bottom: 20px;
+	@include breakpoint('medium', 'max') {
+		padding: 200px 30px 0 30px;
+	}
+	@include breakpoint('small', 'max') {
+		padding: 450px 30px 0 30px;
+	}
+	@include breakpoint('extra-small', 'max') { padding: 405px 0 0; }
+
+	.container {
+		font-size: 0;
+		max-width: 960px;
+		padding: 0;
+	}
+
+	.row { margin: 0!important; }
+
+	.slick-dots {
+		@include breakpoint('extra-small', 'max') { margin-left: -20px; }
+		bottom: -35px;
+	}
+
+	.slick-dots li button { background: #414141; }
+
+	.slick-dots li.slick-active button {
+		background: $loja-color;
+		height: 10px;
+		width: 10px;
+	}
+
+	.slick-dots li button:after { border: none; }
+}
+
+.txt-depoimentos {
+	@include breakpoint('medium', 'min') {
+		margin-top: 200px;
+	}
+	@include breakpoint('extra-small', 'max') {
+		margin-top: 50px;
+	}
+	
+	background: transparent url('/arquivos/apostrofo.png') center center no-repeat;
+	background-size: contain;
+	height: 93px;
+	text-align: center;
+	h2 {
+		@include rfs(40);
+		color: $loja-color;
+		margin: 0;
+	}
+	h3 {
+		@include rfs(14);
+		color: #fff;
+		font-weight: normal;
+		margin: 0;
+	}
+}
+
+.bg-depoimentos {
+	background-color: $loja-color;
+	border-radius: 25px;
+	margin-top: 25px;
+	padding: 20px 0;
+	@include breakpoint('extra-small', 'max') {
+		border-bottom-right-radius: 0;
+		border-top-right-radius: 0;
+		margin-left: 45px;
+	}
+	.slick-list{
+		@include breakpoint('extra-small', 'max') {
+			overflow: visible;
+		}
+	}
+	// & > div,
+	.slick-track {
+		display: flex;
+	}
+	.slick-slide {
+		@include breakpoint('extra-small', 'max') {
+			margin: 0 35px 0 -35px;
+		}
+		box-sizing: border-box;
+		display: flex;
+		height: initial;
+		min-height: initial;
+		padding: 0 10px 0 10px;
+		width: 320px;
+		.box {
+			background-color: #fff;
+			border-radius: 25px;
+			padding: 30px 20px 30px 20px;
+			// @include breakpoint('extra-small', 'max') {
+			// 	min-height: 340px;
+			// }
+		}
+		// @include breakpoint('medium', 'max') {
+		// 	padding: 30px 0 40px 0;
+		// 	width: 100%;
+		// }
+		// @include breakpoint('extra-small', 'max') {
+		// 	margin-left: -35px;
+		// }
+		h2 {
+			@include rfs(18);
+			color: $loja-color;
+			margin: 0;
+		}
+		h3 {
+			@include rfs(12);
+			color: $loja-color;
+			font-weight: normal;
+			margin: 0;
+		}
+		p {
+			@include rfs(14);
+			margin: 30px 0 0 0;
+			@include breakpoint('extra-small', 'max') {
+				padding: 0 15px 0 15px;
+			}
+		}
+	}
+}
+
+// prateleira
+.prateleira-bf {
+	background: #000 url('/arquivos/bg-section-002.jpg') 50% 0 no-repeat;
+	margin-top: -200px;
+	.prateleira {
+		background-color: #fff;
+		border-radius: 30px 30px 0 0;
+		margin-top: 40px;
+	}
+	.row { margin: 0; }
+	.txt-prateleira {
+		@include rfs(40);
+		color: #fff;
+		margin: 0;
+		padding: 300px 0 0 0;
+	}
+	.prateleira.default .slick-next { right: 12px; }
+	.prateleira.default .slick-prev { left: 12px; }
+}
