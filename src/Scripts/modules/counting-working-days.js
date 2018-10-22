@@ -43,7 +43,7 @@ Nitro.module('workingdays-counter', function() {
 	 */
 	this.setShippingMessage = function($workingDaysElement) {
 		// Rule to not consider schedule shipping.
-		if($workingDaysElement.text().indexOf('Agendada') > 0 || $workingDaysElement.text().indexOf('Chega antes do Natal') > 0) {
+		if ($workingDaysElement.text().indexOf('Agendada') > 0 || $workingDaysElement.text().indexOf('Chega antes do Natal') > 0) {
 			return;
 		}
 		const workingDays = $workingDaysElement.text().match(/ (\d+) /g); // Get the number of days, if the string has this value
