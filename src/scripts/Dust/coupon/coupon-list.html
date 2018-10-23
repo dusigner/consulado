@@ -2,7 +2,7 @@
 <div class="col-4 coupons-list_item" data-coupon="{category}">
 	<div class="box">
 		<div class="discount-badge">
-			<p>{valProduct|intAsCurrency}</p>
+			<p>{offer|intAsCurrency}</p>
 			<p>OFF</p>
 		</div>
 		<div class="content-body">
@@ -13,7 +13,9 @@
 			<div class="use-conditions">
 				<p class="use-conditions-title">Condições de uso</p>
 				<p class="use-conditions-description">Este cupom é valido apenas para produtos selecionados em “<strong class="use-conditions-category">{category}</strong>”</p>
-				<p class="use-conditions-price"><strong>{offer|intAsCurrency}</strong></p>
+				{?valProduct}
+					<p class="use-conditions-price"><strong>Valor acima de {valProduct|intAsCurrency}</strong></p>
+				{/valProduct}
 			</div>
 			<div class="copy-code"><a href="#" class="primary-button">COPIAR CÓDIGO</a></div>
 			<!-- <div class="error-coupon"><a href="#">comunicar erro no cupom</a></div> -->
