@@ -49,10 +49,11 @@ $(window).on('load', function() {
 	require('modules/store/callcenter');
 	// require('modules/chaordic');
 	require('modules/checkout/reinput');
+	require('modules/counting-working-days');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
-	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin', 'callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput) {
+	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'workingdays-counter', 'checkout.default-message', 'customLogin', 'callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput, workingDaysCounter) {
 
 		var self = this,
 			$body = $('body');
@@ -304,6 +305,15 @@ $(window).on('load', function() {
 			this.fakeButton();
 			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
+
+			$('.shipping-sla-options li').each(function() {
+				var $elementShipping = $(this).find('span');
+				workingDaysCounter.setShippingMessage($elementShipping);
+			});
+			
+			$('.shipping-estimate').each(function() {
+				workingDaysCounter.setShippingMessage($(this));
+			});
 		};
 
 		//state
