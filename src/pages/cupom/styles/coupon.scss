@@ -44,7 +44,6 @@
 			@include breakpoint(medium) {
 				margin: 0;
 			}
-
 		}
 
 		@include breakpoint(medium) {
@@ -82,19 +81,22 @@
 	}
 
 	&-page {
-		
 		.container {
 			.row {
+				padding: 20px 0;
 				margin: 0;
 			}
 			.col-4 {
 				padding: 0 10px;
 			}
 			.box {
+				&.disabled {
+					display: none;
+				}
 				background: #fff;
-				border: 1px solid $gray ;
+				border: 1px solid $gray;
 				border-top: 2px solid $green;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 				box-sizing: border-box;
 				margin-bottom: 3em;
 				margin-top: 3em;
@@ -197,12 +199,14 @@
 						box-sizing: border-box;
 						font-size: 14px;
 						padding: 7px 40px;
-						transition: .3s all ease;
+						transition: 0.3s all ease;
 						&:hover {
-							color: #fff;
+							color: $purple;
+							background: #fff;
 						}
 					}
 				}
+
 				.error-coupon {
 					margin: 0;
 					& > a {
@@ -214,7 +218,7 @@
 					}
 				}
 				.products {
-					border-top: 1px solid $gray ;
+					border-top: 1px solid $gray;
 					display: grid;
 					& > a {
 						color: $base-link-color;
@@ -225,11 +229,32 @@
 					}
 				}
 			}
+			.coupons-expand {
+				.show-more-coupons {
+					background: #f4f2f1;
+					color: $green;
+					font-weight: bold;
+					font-size: 11px;
+					padding: 0 9px;
+					position: relative;
+					text-align: center;
+					top: 10px;
+					&:hover {
+						text-decoration-line: underline;
+					}
+				}
+				.line {
+					height: 1px;
+					background: $green;
+					margin: 0 15px;
+					margin-bottom: 37px;
+				}
+			}
 		}
 
 		#toast-container {
 			> .toast-info {
-				background-color: rgba(27, 27, 27, .9);
+				background-color: rgba(27, 27, 27, 0.9);
 				background-image: none !important;
 				border-radius: 4px;
 				box-shadow: none;
@@ -268,7 +293,7 @@
 	}
 	.boxPassos {
 		border: 1px solid $gray;
-		box-shadow: 0 2px 4px rgba(0,0,0,.1);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 		margin-bottom: 35px;
 		position: relative;
 		&.boxPassos-passo1:before {
@@ -284,7 +309,7 @@
 			}
 			.boxPassos--content {
 				align-items: flex-start;
-			}	
+			}
 		}
 		&:before {
 			align-items: center;
@@ -299,7 +324,7 @@
 			left: 50%;
 			position: absolute;
 			top: 0;
-			transform: translate(-50%,-50%);
+			transform: translate(-50%, -50%);
 			width: 33px;
 		}
 		.boxPassos--content {
@@ -324,7 +349,7 @@
 
 .cupomFeedback {
 	align-items: center;
-	background-color: rgba(27,27,27,.9);
+	background-color: rgba(27, 27, 27, 0.9);
 	border-radius: 4px;
 	bottom: 30px;
 	display: flex;
@@ -335,7 +360,7 @@
 	padding: 18px;
 	position: fixed;
 	transform: translateX(-50%);
-	transition: opacity .25s, visibility .25s;
+	transition: opacity 0.25s, visibility 0.25s;
 	visibility: hidden;
 	width: 288px;
 	z-index: 3;
@@ -358,14 +383,14 @@
 }
 
 @media (min-width: 768px) {
-    .cupomDescontoPassos {
+	.cupomDescontoPassos {
 		h2 {
 			font-size: 32px;
 			font-weight: normal;
 			text-align: center;
 		}
-		.boxPassos { 
-			margin: 10px; 
+		.boxPassos {
+			margin: 10px;
 		}
 	}
 }

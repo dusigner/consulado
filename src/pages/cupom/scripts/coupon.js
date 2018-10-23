@@ -7,19 +7,21 @@
 
 require('modules/custom-select');
 require('Dust/coupon/coupon-list.html');
-const { getCouponsByCategory } = require('modules/store/crm');
+const {getCouponsByCategory} = require('modules/store/crm');
 const logger = require('js-pretty-logger');
-const { getUniques } = require('modules/helpers');
+const {getUniques} = require('modules/helpers');
 const toastr = require('vendors/toastr');
 
-Nitro.setup(['custom-select'], function (customSelect) {
+Nitro.setup(['custom-select'], function(customSelect) {
 	let self = this;
 
 	this.filterBy = 'category';
 	this.couponListSelector = '.coupon-list .container';
 
 	/**
-	 * @description initialize page code
+	 *
+	 * @param {Object} ref The database ref object
+	 * @param {Object} data The property/value pairs to be created
 	 */
 	this.init = () => {
 		self.log('Initialized...');
@@ -32,17 +34,79 @@ Nitro.setup(['custom-select'], function (customSelect) {
 	};
 
 	/**
+	 * Add click event to show more coupons button.
+	 */
+	this.showMoreCoupons = () => {
+		$('.show-more-coupons').on('click', () => {
+			this.toggleExtraCoupons('slow');
+			$('.coupons-expand').hide();
+		});
+	};
+
+	/**
+	 * Toggle display of extra coupos
+	 * @param {string} speed Toggle transition speed (fast, slow)
+	 */
+	this.toggleExtraCoupons = speed => {
+		const couponListItems = $('.coupons-list_item');
+		const couponSize = couponListItems.length;
+		const couponLastIndex = couponSize - 1;
+		const couponMax = 3;
+
+		if (couponSize > couponMax) {
+			const extraCoupons = couponListItems.splice(
+				couponMax,
+				couponLastIndex
+			);
+
+			extraCoupons.map(extra => $(extra).toggle(speed));
+			this.showMoreCoupons();
+		}
+	};
+
+	/**
+	 * Get a mock list of coupons for when we do not have them comming from the api
+	 */
+	this.getMockedCoupons = () => {
+		const deferred = $.Deferred();
+
+		const coupon = {
+			valProduct: 20000,
+			coupon: 'GELAR300',
+			category: 'geladeira',
+			offer: 200,
+			collection: '#',
+		};
+
+		const coupons = [
+			{...coupon},
+			Object.assign({...coupon}, {coupon: 'GELAR400'}),
+			Object.assign({...coupon}, {coupon: 'GELAR500'}),
+			{...coupon},
+			Object.assign({...coupon}, {coupon: 'GELAR400'}),
+			Object.assign({...coupon}, {coupon: 'GELAR500'}),
+		];
+
+		deferred.resolve(coupons);
+
+		return deferred.promise();
+	};
+
+	/**
 	 * @description retrieve list of available coupons
 	 * @returns Promise - list of coupons or error message
 	 */
 	this.getCoupons = () => {
 		const deferred = $.Deferred();
 
-		getCouponsByCategory().then(coupons => {
-			deferred.resolve(coupons);
-		}, error => {
-			deferred.reject(error);
-		});
+		getCouponsByCategory().then(
+			coupons => {
+				deferred.resolve(coupons);
+			},
+			error => {
+				deferred.reject(error);
+			}
+		);
 
 		return deferred.promise();
 	};
@@ -52,13 +116,14 @@ Nitro.setup(['custom-select'], function (customSelect) {
 	 * @param {*} coupons
 	 */
 	this.renderCoupons = (coupons, onRender) => {
-
 		dust.render('coupon-list', {coupons}, (err, out) => {
 			if (err) {
 				throw new Error('Lista de Cupons Dust error: ' + err);
 			}
 
 			$('.coupons-list_items').html(out);
+
+			this.toggleExtraCoupons('fast');
 			if (typeof onRender === 'function') {
 				onRender();
 			}
@@ -86,15 +151,16 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		options = [].map.call(coupons, cupon => {
 			return {
 				value: cupon.category,
-				text: cupon.category
+				text: cupon.category,
 			};
 		});
 
 		options = [
 			{
 				text: 'Todas as categorias',
-				value: ''
-			}, ...options
+				value: '',
+			},
+			...options,
 		];
 
 		customSelect.setup({
@@ -104,15 +170,19 @@ Nitro.setup(['custom-select'], function (customSelect) {
 			onChange(option) {
 				self.log(`Select changed to: ${option.value}`);
 				self.filterCoupons(option.value);
-			}
+			},
 		});
-
 	};
 
+	/**
+	 * Show a toastr alert with the coupon code
+	 * @param {string} code Coupon code
+	 */
 	this.couponToastr = code => {
 		jQuery($ => {
 			const windowWidth = $(window).width();
-			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			const position =
+				windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
 			toastr.options = {
 				closeButton: true,
 				debug: false,
@@ -134,6 +204,9 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		});
 	};
 
+	/**
+	 * Add click event to copy code button
+	 */
 	this.buttonCopyCodeClick = () => {
 		const buttonCopyCode = '.copy-code';
 
@@ -144,6 +217,10 @@ Nitro.setup(['custom-select'], function (customSelect) {
 		});
 	};
 
+	/**
+	 * Copy coupon code to the clipboard
+	 * @param {Object} triggerElement Element triggering the copy code event
+	 */
 	this.copyCode = triggerElement => {
 		jQuery($ => {
 			const code = $(triggerElement)
@@ -169,7 +246,7 @@ Nitro.setup(['custom-select'], function (customSelect) {
 	 * @param {string} [type] - type of message. coude be default, info, danger, success and warn
 	 */
 	this.log = (message, type = 'info') => {
-		logger('coupon', message, { type });
+		logger('coupon', message, {type});
 	};
 
 	// Start it
