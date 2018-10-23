@@ -83,8 +83,8 @@
 	&-page {
 		.container {
 			.row {
-				padding: 20px 0;
 				margin: 0;
+				padding: 20px 0;
 			}
 			.col-4 {
 				padding: 0 10px;
@@ -95,8 +95,8 @@
 				}
 				background: #fff;
 				border: 1px solid $gray;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 				border-top: 2px solid $green;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 				box-sizing: border-box;
 				margin-bottom: 3em;
 				margin-top: 3em;
@@ -199,10 +199,11 @@
 						box-sizing: border-box;
 						font-size: 14px;
 						padding: 7px 40px;
-						transition: 0.3s all ease;
+						transition: .3s all ease;
+
 						&:hover {
-							color: $purple;
 							background: #fff;
+							color: $purple;
 						}
 					}
 				}
@@ -233,28 +234,29 @@
 				.show-more-coupons {
 					background: #f4f2f1;
 					color: $green;
-					font-weight: bold;
 					font-size: 11px;
+					font-weight: bold;
 					padding: 0 9px;
 					position: relative;
 					text-align: center;
 					top: 10px;
+
 					&:hover {
 						text-decoration-line: underline;
 					}
 				}
 				.line {
-					height: 1px;
 					background: $green;
-					margin: 0 15px;
+					height: 1px;
 					margin-bottom: 37px;
+					margin: 0 15px;
 				}
 			}
 		}
 
 		#toast-container {
 			> .toast-info {
-				background-color: rgba(27, 27, 27, 0.9);
+				background-color: rgba(27, 27, 27, .9);
 				background-image: none !important;
 				border-radius: 4px;
 				box-shadow: none;
@@ -293,7 +295,7 @@
 	}
 	.boxPassos {
 		border: 1px solid $gray;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 		margin-bottom: 35px;
 		position: relative;
 		&.boxPassos-passo1:before {
@@ -349,7 +351,7 @@
 
 .cupomFeedback {
 	align-items: center;
-	background-color: rgba(27, 27, 27, 0.9);
+	background-color: rgba(27, 27, 27, .9);
 	border-radius: 4px;
 	bottom: 30px;
 	display: flex;
@@ -360,7 +362,7 @@
 	padding: 18px;
 	position: fixed;
 	transform: translateX(-50%);
-	transition: opacity 0.25s, visibility 0.25s;
+	transition: opacity .25s, visibility .25s;
 	visibility: hidden;
 	width: 288px;
 	z-index: 3;

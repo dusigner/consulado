@@ -16,11 +16,13 @@
 				<p class="use-conditions-price"><strong>{offer|intAsCurrency}</strong></p>
 			</div>
 			<div class="copy-code"><a href="#" class="primary-button">COPIAR CÓDIGO</a></div>
-			<div class="error-coupon"><a href="#">comunicar erro no cupom</a></div>
+			<!-- <div class="error-coupon"><a href="#">comunicar erro no cupom</a></div> -->
 		</div>
-		<div class="products">
-			<a href="{collection}">Ver produtos participantes</a>
-		</div>
+		{?collection}
+			<div class="products">
+				<a href="{collection}">Ver produtos participantes</a>
+			</div>
+		{/collection}
 	</div>
 </div>
 {/coupons}

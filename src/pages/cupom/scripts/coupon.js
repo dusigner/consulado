@@ -65,40 +65,11 @@ Nitro.setup(['custom-select'], function(customSelect) {
 	};
 
 	/**
-	 * Get a mock list of coupons for when we do not have them comming from the api
-	 */
-	this.getMockedCoupons = () => {
-		const deferred = $.Deferred();
-
-		const coupon = {
-			valProduct: 20000,
-			coupon: 'GELAR300',
-			category: 'geladeira',
-			offer: 200,
-			collection: '#',
-		};
-
-		const coupons = [
-			{...coupon},
-			Object.assign({...coupon}, {coupon: 'GELAR400'}),
-			Object.assign({...coupon}, {coupon: 'GELAR500'}),
-			{...coupon},
-			Object.assign({...coupon}, {coupon: 'GELAR400'}),
-			Object.assign({...coupon}, {coupon: 'GELAR500'}),
-		];
-
-		deferred.resolve(coupons);
-
-		return deferred.promise();
-	};
-
-	/**
 	 * @description retrieve list of available coupons
 	 * @returns Promise - list of coupons or error message
 	 */
 	this.getCoupons = () => {
 		const deferred = $.Deferred();
-
 		getCouponsByCategory().then(
 			coupons => {
 				deferred.resolve(coupons);
@@ -137,6 +108,8 @@ Nitro.setup(['custom-select'], function(customSelect) {
 		} else {
 			$('.coupons-list_item').show();
 		}
+
+		$('.coupons-expand').hide();
 	};
 
 	/**
