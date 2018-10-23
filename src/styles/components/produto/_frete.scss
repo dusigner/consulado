@@ -258,15 +258,23 @@ body.open-frete {
         }
     }
 
-    @media screen and (max-width: 768px) {
+    @include breakpoint ('extra-large', 'max') {
         .title-frete i { margin: 0; }
+
         .title-frete p {
             float: left;
             margin-left: 15px !important;
+            margin-top: 5px;
         }
-        .prefixo {width: 85%; }
+
+        .prefixo { width: 85%; }
+
         .prefixo input,
-        .title-frete,
-        .cep-busca a { width: 100%; }
+        .title-frete { width: 100%; }
+
+        .cep-busca a { 
+            float: left;
+            width: 20% 
+        }
     }
 }
