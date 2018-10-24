@@ -19,7 +19,7 @@ const
 	fs 				= require('fs'),
 	middlewares 	= require('./middlewares'),
 	url 			= require('url'),
-	secureUrl 		= $.util.env.qa ? false : (pkg.secureUrl ? pkg.secureUrl : true),
+	secureUrl 		= pkg.secureUrl ? pkg.secureUrl : true,
 	proxyPort		= process.env.PROXY_PORT || pkg.proxyPort || 80,
 	environment 	= $.util.env.VTEX_HOST || 'vtexcommercestable',
 	accountName 	= $.util.env.account ? $.util.env.account : ($.util.env.qa ? 'consulqa' : pkg.accountName),
