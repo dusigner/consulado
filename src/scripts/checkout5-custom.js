@@ -328,11 +328,7 @@ $(window).on('load', function() {
 				pj.hideChangeAddress();
 			}
 
-			setTimeout(function() { 
-				$('.shipping-option-item-text-wrapper').each(function() {
-					workingDaysCounter.setShippingMessage($(this));
-				});
-			}, 2000);
+			self.setShippingMessage();
 
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
@@ -612,23 +608,19 @@ $(window).on('load', function() {
 				self.veryfication();
 			});
 
-			$('.shipping-option-item-text-wrapper').each(function() {
-				workingDaysCounter.setShippingMessage($(this));
-			});
+			self.setShippingMessage();
 			
+			$(document).on('click', '.shipping-option-item.label-vertical-group.input.btn', function() { 
+				self.setShippingMessage();
+			});
+		};
+
+		this.setShippingMessage = function() {
 			setTimeout(function() { 
 				$('.shipping-option-item-text-wrapper').each(function() {
 					workingDaysCounter.setShippingMessage($(this));
 				});
 			}, 2000);
-			
-			$(document).on('click', '.shipping-option-item.label-vertical-group.input.btn', function() { 
-				setTimeout(function() { 
-					$('.shipping-option-item-text-wrapper').each(function() {
-						workingDaysCounter.setShippingMessage($(this));
-					});
-				}, 2000);
-			});
 		};
 
 		this.init();
