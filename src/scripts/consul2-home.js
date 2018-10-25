@@ -76,13 +76,9 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 			e.preventDefault();
 			
 			if($(this).hasClass('shelf-pre-title--active')) {
-				console.log('tem');
 				$(this).removeClass('shelf-pre-title--active');
 			}
 			else {
-				console.log('nao tem');
-				$(this).addClass('shelf-pre-title--active');
-				$(this).addClass('shelf-pre-title--active');
 				$(this).addClass('shelf-pre-title--active');
 			}
 		});
