@@ -16,6 +16,10 @@ Nitro.module('counter', function() {
 
 	this.initCounter = () => {
 		let $counter = $('.counter'),
+			$endMessage = $('.counter__end-promotion'),
+			$buyButtyon = $('.counter__offer-cta'),
+			$counterSubSection = $('.counter__offer-count'),
+			$counterSection = $('.counter__section'),
 			$days = $counter.find('.days'),
 			$hours = $counter.find('.hours'),
 			$minutes = $counter.find('.minutes'),
@@ -36,12 +40,29 @@ Nitro.module('counter', function() {
 					'minutes': minutes >= 0 ? minutes : 0,
 					'seconds': seconds >= 0 ? seconds : 0
 				};
+			
+			if (isNaN(finalDate)) { 
+				return null;
+			}
 
 			return timeRemaining;
 		}
 
 		setInterval(function() {
 			timeRemaining = getTimeRemaining(endDate);
+			
+			if (timeRemaining === null) {
+				$counterSection.addClass('hide');
+				return;
+			}
+
+			if (timeRemaining.days === 0 && timeRemaining.hours === 0 && timeRemaining.minutes === 0 && timeRemaining.seconds === 0) {
+				$counterSubSection.addClass('button-hidden');
+				$counter.addClass('hide');
+				$endMessage.removeClass('hide');
+				$buyButtyon.addClass('hide');
+				return;
+			}
 
 			$days.text(timeRemaining.days > 9 ? timeRemaining.days : '0' + timeRemaining.days);
 			$hours.text(timeRemaining.hours > 9 ? timeRemaining.hours : '0' + timeRemaining.hours);

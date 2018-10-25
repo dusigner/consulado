@@ -135,9 +135,14 @@
 			min-height: 125px;
 			padding: 10px;
 			
-			@include breakpoint('small', 'max') {
-				flex-basis: 100%;
+			@include breakpoint('large', 'max') {
+				flex-basis: calc(50% - 10px);
+				
+				@include breakpoint('small', 'max') {
+					flex-basis: 100%;
+				}
 			}
+
 			
 			.counter {
 				margin: 0 auto;
@@ -192,6 +197,24 @@
 					   margin: 0 5px;
 					}
 				}
+
+				&__end-promotion {
+					margin-left: auto;
+					margin-right: auto;
+					
+					@include breakpoint('large', 'max') {
+						width: 100%;
+					}
+				}
+
+				&__end-message {
+					color: #9aca3c;
+					display: block;
+					font-size: 23px;
+					font-weight: 600;
+					min-width: 25px;
+					text-align: center;
+				} 
 			}
 		}
 
@@ -203,8 +226,8 @@
 			flex-wrap: wrap;
 			margin-bottom: 0;
 			min-height: 125px;
-			padding: 10px;
-			@include breakpoint('medium', 'max') {
+			
+			@include breakpoint('large', 'max') {
 				flex-basis: 100%;
 			}
 		}
@@ -227,13 +250,22 @@
 				color: $btn-promotion;
 				text-decoration: none;
 			}
-			@include breakpoint('medium', 'max') {
+
+			@include breakpoint('large', 'max') {
 				width: 100%;
 			}
 		}
-
-	}
-
+		
+		.hide {
+			display: none;
+		}
 	
+		.button-hidden {
+			flex-basis: calc(50% - 10px);
 	
+			@include breakpoint('small', 'max') {
+				flex-basis: 100%;
+			}
+		}
+	}	
 }

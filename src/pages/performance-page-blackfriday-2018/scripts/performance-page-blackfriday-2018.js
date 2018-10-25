@@ -7,7 +7,7 @@
 
 require('./modules/counter');
 
-Nitro.setup(['counter'], () => {
+Nitro.setup(['counter'], function() {
 	/**
 	 * Função init bootstrap
 	 */
