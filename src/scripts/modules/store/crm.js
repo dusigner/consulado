@@ -4,7 +4,7 @@
 
 var CRM = {
 
-	baseURL: '/api/dataentities/{table}/{action}',
+	baseURL: '//localhost:3000/api/dataentities/{table}/{action}',
 
 	ajax: function(options) {
 
@@ -30,6 +30,13 @@ var CRM = {
 		return $.getJSON(CRM.formatUrl('SP', 'search'), {
 			_fields: 'orderId,state,city,status,description,lastChange,finished',
 			orderId: orderId
+		});
+	},
+
+	getCouponsByCategory: function (category) {
+		return $.getJSON(CRM.formatUrl('CM', 'search'), {
+			_fields: 'id,category,collection,coupon,offer,valProduct',
+			...category && {_where: `category=${category}`}
 		});
 	},
 
