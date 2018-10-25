@@ -12,7 +12,11 @@ const logger = require('js-pretty-logger');
 const {getUniques} = require('modules/helpers');
 const toastr = require('vendors/toastr');
 
+<<<<<<< HEAD:src/Pages/cupom/scripts/cns-coupon.js
 Nitro.setup(['custom-select'], function(customSelect) {
+=======
+Nitro.controller('coupon', ['custom-select'], function(customSelect) {
+>>>>>>> PLAT-7489_coupon_filter:src/Pages/cupom/scripts/cns-coupon.js
 	let self = this;
 
 	this.filterBy = 'category';
