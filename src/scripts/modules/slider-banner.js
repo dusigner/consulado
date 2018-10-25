@@ -1,11 +1,11 @@
 'use strict';
 
-require('modules/smartFocus');
+// require('modules/smartFocus');
 
-Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
-	if($('body').hasClass('home')) {
+Nitro.module('slider-banner', [/* 'smartFocus' */],  function(/* smartFocus */) {
+	/* if($('body').hasClass('home')) {
 		smartFocus.renderBanner();
-	}
+	} */
 
 	var self = this,
 		$buttonOpenRegulamento = $('.open-regulamento'),
@@ -14,7 +14,7 @@ Nitro.module('slider-banner', ['smartFocus'],  function(smartFocus) {
 	this.lazyLoad = function() {
 		$(window).on('load', function() {
 			$bannerPrincipal.addClass('banner-loaded');
-			self.setupMainSlider();		
+			self.setupMainSlider();
 			$('.fake-banner').hide();
 		});
 
