@@ -11,10 +11,11 @@ require('vendors/slick');
 require('modules/store/facebook-init');
 // require('modules/product/facebook-share');
 
+require('./modules/accordion');
+
 var CRM = require('modules/store/crm');
 
-Nitro.setup(function () {
-
+Nitro.setup(['accordion'], function () {
 	var cupons = null;
 
 	var contador;
