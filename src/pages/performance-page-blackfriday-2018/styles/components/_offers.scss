@@ -1,0 +1,165 @@
+.offers {
+	&__section {
+		background-color: $section-color;
+		padding-bottom: 20px;
+		padding-top: 20px;
+
+		@include breakpoint('medium', 'min') {
+			padding-bottom: 40px;
+			padding-top: 40px;
+		}
+
+		.container {
+			@include breakpoint('small', 'max') { padding: 0 10px; }
+		}
+	}
+
+	&__title {
+		@include responsiveFont(24, 16, true);
+		color: #fff;
+		font-weight: 300;
+		line-height: 1.3;
+		margin-bottom: 10px;
+		margin-top: 0;
+		text-align: center;
+
+		@include breakpoint('small', 'min') {
+			@include responsiveFont(28, 16, true);
+			background-color: #fff;
+			border-radius: 4px;
+			color: $text-color;
+			display: inline-block;
+			font-weight: 700;
+			margin-bottom: 25px;
+			margin-left: auto;
+			margin-right: auto;
+			padding: 5px 30px;
+		}
+
+		@include breakpoint('large', 'min') {
+			@include responsiveFont(36, 16, true);
+		}
+
+		&-highlight {
+			background-color: #fff;
+			border-radius: 4px;
+			color: $text-color;
+			display: block;
+			font-weight: 600;
+			margin: 5px auto 0;
+			max-width: 160px;
+			padding: 3px 5px;
+
+			@include breakpoint('small', 'min') {
+				background-color: transparent;
+				color: $text-color;
+				display: inline;
+				max-width: auto;
+				padding: 0;
+			}
+		}
+	}
+
+	&__list {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	&__item {
+		@include transition(all);
+		align-items: center;
+		background-color: $theme-color;
+		border-radius: 55px;
+		display: flex;
+		flex-basis: calc(50% - 10px);
+		flex-wrap: wrap;
+		margin-bottom: 20px;
+		min-height: 125px;
+		padding: 10px;
+		text-align: center;
+
+		@include breakpoint('small', 'min') {
+			border-radius: 60px;
+			flex-basis: calc(33.33333% - 10px);
+			margin-bottom: 15px;
+		}
+
+		@include breakpoint('extra-large', 'min') {
+			flex-basis: calc(16.66666% - 20px);
+			margin-bottom: 0;
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+
+		&:hover,
+		&:focus,
+		&:active { text-decoration: none; }
+
+		&:hover,
+		&:focus { background-color: $theme-color-hover; }
+
+		&-icon {
+			display: block;
+			margin: 0 auto 5px;
+		}
+
+		&-bolder {
+			color: #fff;
+
+			@include breakpoint('extra-small', 'min') { display: block; }
+		}
+
+		&-discount {
+			.offers__text {
+				display: block;
+				margin-left: auto !important;
+				margin-right: auto !important;
+				max-width: 130px;
+			}
+		}
+	}
+
+	&__text {
+		@include responsiveFont(14, 16, true);
+		color: $text-color;
+		display: block;
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: 0;
+		margin-top: 0;
+		width: 100%;
+
+		@include breakpoint('small', 'min') { @include responsiveFont(15, 16, true); }
+
+		&-discount {
+			@include responsiveFont(40, 16, true);
+			color: $text-color;
+			line-height: 1.2;
+			margin-bottom: 5px;
+			margin-top: 5px;
+
+			@include breakpoint('large', 'min') { @include responsiveFont(42, 16, true); }
+		}
+
+		&-disclaimer {
+			@include responsiveFont(17, 16, true);
+			color: #fff;
+			display: block;
+			line-height: 1;
+
+			@include breakpoint('large', 'min') { @include responsiveFont(22, 16, true); }
+
+			&:first-child {
+				margin-left: 10PX;
+				text-align: left;
+			}
+
+			&:last-child {
+				margin-right: 10PX;
+				text-align: right;
+			}
+		}
+	}
+}

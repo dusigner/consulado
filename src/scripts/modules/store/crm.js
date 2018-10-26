@@ -33,6 +33,13 @@ var CRM = {
 		});
 	},
 
+	getCouponsByCategory: function (category) {
+		return $.getJSON(CRM.formatUrl('CM', 'search'), {
+			_fields: 'id,category,collection,coupon,offer,valProduct',
+			...category && {_where: `category=${category}`}
+		});
+	},
+
 	insertClient: function (data) {
 		return CRM.ajax({
 			url: CRM.formatUrl('CL', 'documents'),

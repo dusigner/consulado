@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Loja Consul - Cupons de desconto!</title>
+	<!-- @if DEBUG=false -->
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @endif -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/cns-coupon.css" />
+</head>
+
+<body data-controller="coupon" class="coupon-page">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-header" />
+	<!-- @endif -->
+	<!-- /Header -->
+
+	<section class="coupon-header">
+		<div class="container">
+			<div class="coupon-header__aside">
+				<h1 class="coupon-header__title">Cupons de Desconto Consul</h1>
+				<h2 class="coupon-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+			</div>
+			<div class="coupon-filter">
+				<span class="coupon-filter__label">Ver cupons para:</span>
+			</div>
+		</div>
+	</section>
+	<section class="coupon-list">
+		<div class="container clearfix">
+			<div class="row text-center coupons-list_items">
+			</div>
+		</div>
+	</section>
+	<section class="cupomDescontoPassos">
+
+		<div class="container">
+
+			<h2>Siga os passos para usar um cupom de desconto</h2>
+
+			<div class="row">
+
+				<div class="col-4">
+					<div class="boxPassos boxPassos-passo1">
+						<div class="boxPassos--content">
+							<img src="/arquivos/cns-cupom-passo1.png" />
+						</div>
+						<div class="boxPassos--footer">
+							<p>Copie o código do que você deseja usar ;)</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="boxPassos boxPassos-passo2">
+						<div class="boxPassos--content">
+							<img src="/arquivos/cns-cupom-passo2.png" />
+						</div>
+						<div class="boxPassos--footer">
+							<p>Utilize o código do cupom escolhido no carrinho de compras</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-4">
+					<div class="boxPassos boxPassos-passo3">
+						<div class="boxPassos--content">
+							<img src="/arquivos/cns-cupom-passo3.png" />
+						</div>
+						<div class="boxPassos--footer">
+							<p>Pronto! Aproveite o desconto na sua compra!</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<!-- @if DEBUG=false -->
+	<vtex:template id="0-consul-footer" />
+	<!-- @endif -->
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/cns-coupon.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+
+</html>
