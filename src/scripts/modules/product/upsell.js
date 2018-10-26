@@ -112,5 +112,11 @@ Nitro.module('upsell', function() {
 		});
 	};
 
-	((showNotAvaiable === 'Sim' && skuJson.available === false) || (showNotAvaiable === '' && skuJson.available === true)) && (urlUpgradetd.length >= 1 || verifyDowngrade > 0) && this.init();
+	const
+		isCheckedAndUnavailable = (showNotAvaiable === 'Sim' && skuJson.available === false),
+		isNotChecketAndAvailable = (showNotAvaiable === '' && skuJson.available === true),
+		availableUpsell = (isCheckedAndUnavailable || isNotChecketAndAvailable),
+		hasBeenRegistred = urlUpgradetd.length >= 1 || verifyDowngrade > 0;
+
+	availableUpsell && hasBeenRegistred && this.init();
 });
