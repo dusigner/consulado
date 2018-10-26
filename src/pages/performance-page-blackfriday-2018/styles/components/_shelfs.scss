@@ -11,11 +11,11 @@
 	}
 
 	&__disclaimer {
-		margin-top: 10px;
+		margin-top: 30px;
 		position: relative;
 
 		&::before {
-			background-color: #fff;
+			background-color: $theme-color;
 			content: '';
 			height: 1px;
 			left: -28px;
@@ -32,10 +32,10 @@
 		}
 
 		&-btn {
-			@include responsiveFont(14, 16, true);
+			@include responsiveFont(13, 16, true);
 			@include transition(all);
 			background-color: $tabs-background;
-			border-radius: 5px;
+			border-radius: 30px;
 			color: $theme-color;
 			display: block;
 			font-weight: 700;
@@ -47,24 +47,29 @@
 			text-align: center;
 			z-index: 9;
 
+			@include breakpoint('small', 'min') {
+				@include responsiveFont(16, 16, true);
+				max-width: 300px;
+			}
+
 			&:hover,
 			&:focus,
 			&:active { text-decoration: none; }
 
 			&:hover {
 				background-color: $theme-color;
-				color: #fff;
+				color: $tabs-background;
 			}
 
-			@include breakpoint('small', 'min') {
-				@include responsiveFont(16, 16, true);
-				max-width: 300px;
-			}
 		}
 	}
 }
 
 .shelf {
+	&__item {
+		text-align: center;
+	}
+
 	&__image {
 		position: relative;
 
@@ -79,6 +84,14 @@
 		}
 	}
 
+	&__stamps {
+		bottom: 0;
+		display: none;
+		left: 0;
+		position: absolute;
+		right: 0;
+	}
+
 	&__title {
 		@include responsiveFont(16, 16, true);
 		color: #cecece;
@@ -86,12 +99,14 @@
 		height: 40px;
 		line-height: 1.3;
 		margin-bottom: 5px;
-		margin-top: 10px;
+		margin-top: 15px;
 		overflow: hidden;
 	}
 
 	&__price {
+		font-weight: 700;
 		height: 80px;
+		margin-bottom: 10px;
 
 		&-old,
 		&-new {
@@ -122,11 +137,17 @@
 	}
 
 	&__buy {
+		@include responsiveFont(14, 16, true);
 		@include transition(all);
+		border-radius: 30px;
 		display: block;
 		font-weight: 700;
 		padding: 5px 20px;
 		text-align: center;
+
+		@include breakpoint('small', 'min') {
+			@include responsiveFont(16, 16, true);
+		}
 
 		&:hover,
 		&:focus,
@@ -137,7 +158,7 @@
 		}
 
 		&-fast {
-			background-color: $theme-color;
+			background-color: #802894;
 			color: #fff !important;
 
 			&::before {
@@ -147,15 +168,15 @@
 				transform: translateY(2px);
 			}
 
-			&:hover { background-color: #cf3800; }
+			&:hover { background-color: #6B0086; }
 		}
 
 		&-button {
 			background-color: #fff;
-			color: $theme-color !important;
+			color: #802894 !important;
 
 			&:hover {
-				background-color: $theme-color;
+				background-color: #802894;
 				color: #fff !important;
 			}
 		}

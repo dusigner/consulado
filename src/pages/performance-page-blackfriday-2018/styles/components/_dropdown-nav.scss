@@ -3,8 +3,9 @@ $dropdown-color: #2d2d2d;
 .dropdown {
 	&__nav {
 		@include transition(all);
-		background-color: $dropdown-color;
-		border-radius: 5px;
+		background-color: #fff;
+		border-radius: 30px;
+		color: $text-color;
 		cursor: pointer;
 		display: block;
 		margin: 0 auto 25px;
@@ -15,7 +16,14 @@ $dropdown-color: #2d2d2d;
 		@include breakpoint('small', 'min') { display: none; }
 
 		&.is-visible {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+			border-top-left-radius: 5px;
+
 			.icon-arrow-down {
+				border-bottom-left-radius: 5px;
+				border-bottom-right-radius: 0;
+				border-top-right-radius: 5px;
 				transform: rotate(180deg);
 			}
 
@@ -27,7 +35,8 @@ $dropdown-color: #2d2d2d;
 		.icon-arrow-down {
 			align-items: center;
 			background-color: $theme-color;
-			border-radius: 5px;
+			border-bottom-right-radius: 30px;
+			border-top-right-radius: 30px;
 			bottom: 0;
 			color: #fff;
 			display: flex;
@@ -42,15 +51,16 @@ $dropdown-color: #2d2d2d;
 
 		&-selected {
 			@include responsiveFont(16, 16, true);
-			color: $theme-color;
+			color: $text-color;
 			font-weight: 700;
 		}
 
 		&-list {
 			@include transition(all);
-			background-color: $dropdown-color;
+			background-color: #fff;
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
+			box-shadow: 0 3px 5px rgba(0,0,0,.3);
 			left: 0;
 			opacity: 0;
 			position: absolute;
@@ -67,7 +77,7 @@ $dropdown-color: #2d2d2d;
 			@include responsiveFont(16, 16, true);
 			@include transition(all);
 			background-color: transparent !important;
-			color: #868686;
+			color: $text-color;
 			display: block;
 			padding: 8px 15px;
 

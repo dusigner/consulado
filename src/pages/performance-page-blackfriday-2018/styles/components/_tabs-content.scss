@@ -22,11 +22,27 @@
 
 			ul li {
 				flex-basis: 25%;
+				padding-left: 12px;
+				padding-right: 12px;
 			}
 
 			.slick-prev { left: 0; }
 
 			.slick-next { right: 0; }
+		}
+
+		.slick-slider {
+			@include transition(all);
+			opacity: 0;
+
+			&.slick-initialized { opacity: 1; }
+		}
+
+		.slick-arrow {
+			color: #666;
+			top: 35%;
+
+			&:hover { color: $theme-color; }
 		}
 	}
 }

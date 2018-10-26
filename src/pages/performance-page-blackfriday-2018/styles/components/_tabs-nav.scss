@@ -37,16 +37,18 @@
 			@include responsiveFont(14, 16, true);
 			@include transition(all);
 			background-color: $tabs-background;
-			border-bottom: 2px solid transparent;
-			color: #868686;
+			border-radius: 30px;
+			color: #656565;
 			display: block;
-			padding: 10px 5px;
+			font-weight: 700;
+			padding: 8px 5px;
 			position: relative;
 			text-align: center;
 
 			@include breakpoint('small', 'min') {
 				@include responsiveFont(16, 16, true);
-				padding: 10px;
+				padding-left: 10px;
+				padding-right: 10px;
 			}
 
 			&::before {
@@ -70,13 +72,9 @@
 			&:hover,
 			&.is-active {
 				background-color: $tabs-background-hover;
-				border-bottom-color: $theme-color;
-				color: $theme-color;
+				color: $text-color;
 
-				&::before {
-					border-top-color: $theme-color;
-					bottom: -11px;
-				}
+				&::before { border-top-color: $theme-color; }
 			}
 		}
 	}
