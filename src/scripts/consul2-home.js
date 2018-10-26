@@ -75,12 +75,7 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		$('.slider.vitrines h2').click(function(e){
 			e.preventDefault();
 			
-			if($(this).hasClass('shelf-pre-title--active')) {
-				$(this).removeClass('shelf-pre-title--active');
-			}
-			else {
-				$(this).addClass('shelf-pre-title--active');
-			}
+			$(this).toggleClass('shelf-pre-title--active');
 		});
 	}
 
