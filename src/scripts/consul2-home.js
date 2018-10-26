@@ -65,10 +65,8 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		});
 
 		$('section.slider').eq(0).find('.pre-title').trigger('click');
-	}
 
-	//mobile - vitrines padrões vtex
-	if ($(window).width() <= 768) {
+		//vitrines padrões vtex
 		$('.slider.vitrines h2').addClass('pre-title');
 		self.setupSlider($('.slider.vitrines .prateleira-slider .prateleira>ul'));
 
@@ -77,6 +75,6 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 			
 			$(this).toggleClass('shelf-pre-title--active');
 		});
+		//\ vitrines padrões vtex
 	}
-
 });
