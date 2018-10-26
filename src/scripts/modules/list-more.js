@@ -7,7 +7,7 @@ Nitro.module('list-more', function() {
 		$button = $('#list-more'),
 		$vitrine = $('.vitrine'),
 		$prateleira = $vitrine.find('> .prateleira'),
-		query = /load\(\'(.*)\'/.exec( $vitrine.find('> script').text() ),
+		query = /load\(\\'(.*)\\'/.exec( $vitrine.find('> script').text() ),
 		grid = +$('#PS').val(),
 		page = 2,
 		url,
