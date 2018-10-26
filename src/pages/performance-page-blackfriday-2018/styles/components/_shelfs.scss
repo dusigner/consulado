@@ -1,0 +1,163 @@
+.shelfs {
+	&__section {
+		background-color: $section-color;
+		padding-bottom: 20px;
+		padding-top: 20px;
+
+		@include breakpoint('medium', 'min') {
+			padding-bottom: 40px;
+			padding-top: 40px;
+		}
+	}
+
+	&__disclaimer {
+		margin-top: 10px;
+		position: relative;
+
+		&::before {
+			background-color: #fff;
+			content: '';
+			height: 1px;
+			left: -28px;
+			position: absolute;
+			right: -28px;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 1;
+
+			@include breakpoint('small', 'min') {
+				left: 0;
+				right: 0;
+			}
+		}
+
+		&-btn {
+			@include responsiveFont(14, 16, true);
+			@include transition(all);
+			background-color: $tabs-background;
+			border-radius: 5px;
+			color: $theme-color;
+			display: block;
+			font-weight: 700;
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 250px;
+			padding: 5px;
+			position: relative;
+			text-align: center;
+			z-index: 9;
+
+			&:hover,
+			&:focus,
+			&:active { text-decoration: none; }
+
+			&:hover {
+				background-color: $theme-color;
+				color: #fff;
+			}
+
+			@include breakpoint('small', 'min') {
+				@include responsiveFont(16, 16, true);
+				max-width: 300px;
+			}
+		}
+	}
+}
+
+.shelf {
+	&__image {
+		position: relative;
+
+		img {
+			display: block;
+			height: auto;
+			margin-left: auto;
+			margin-right: auto;
+			max-height: 180px;
+			max-width: 100%;
+			width: auto;
+		}
+	}
+
+	&__title {
+		@include responsiveFont(16, 16, true);
+		color: #cecece;
+		font-weight: 700;
+		height: 40px;
+		line-height: 1.3;
+		margin-bottom: 5px;
+		margin-top: 10px;
+		overflow: hidden;
+	}
+
+	&__price {
+		height: 80px;
+
+		&-old,
+		&-new {
+			@include responsiveFont(16, 16, true);
+			display: block;
+			margin-bottom: 2px;
+		}
+
+		&-old {
+			.shelf__price-val { color: #656565; }
+		}
+
+		&-new {
+			color: #cecece;
+
+			&:first-letter { text-transform: lowercase; }
+		}
+	}
+
+	&__installment {
+		@include responsiveFont(16, 16, true);
+		color: $theme-color;
+	}
+
+	&__sku-list {
+		display: none;
+		margin-bottom: 20px;
+	}
+
+	&__buy {
+		@include transition(all);
+		display: block;
+		font-weight: 700;
+		padding: 5px 20px;
+		text-align: center;
+
+		&:hover,
+		&:focus,
+		&:active { text-decoration: none; }
+
+		+ .shelf__buy {
+			margin-top: 10px;
+		}
+
+		&-fast {
+			background-color: $theme-color;
+			color: #fff !important;
+
+			&::before {
+				content: url('/arquivos/icone-compra-rapida-cns.png');
+				display: inline-block;
+				margin-right: 10px;
+				transform: translateY(2px);
+			}
+
+			&:hover { background-color: #cf3800; }
+		}
+
+		&-button {
+			background-color: #fff;
+			color: $theme-color !important;
+
+			&:hover {
+				background-color: $theme-color;
+				color: #fff !important;
+			}
+		}
+	}
+}

@@ -1,26 +1,30 @@
 /**
  *
- * @fileOverview 
+ * @fileOverview This is a performance page to show new components that will be used on Brastemp Black Friday 2018
  *
  */
 'use strict';
 
-Nitro.controller('performance-page-blackfriday-2018', [], function() {
-	/**
-	 * Função init bootstrap
-	 */
-	this.init = () => {
+import 'vendors/nitro';
 
-		this.method();
-	};
+import './modules/tabs';
+import './modules/shelfs';
 
-	/**
-	 * Apenas um exemplo arrow func com retorno
-	 * @param  {String} param um texto que será concatenado
-	 * @returns {String} texto example with concatenando param
-	 */
-	this.method = param => `example with ${param}`;
+Nitro.setup(['tabs', 'shelfs'], function() {
+	// /**
+	//  * Função init bootstrap
+	//  */
+	// this.init = () => {
+	// 	this.method();
+	// };
 
-	// Start it
-	this.init();
+	// /**
+	//  * Apenas um exemplo arrow func com retorno
+	//  * @param  {String} param um texto que será concatenado
+	//  * @returns {String} texto example with concatenando param
+	//  */
+	// this.method = param => `example with ${param}`;
+
+	// // Start it
+	// this.init();
 });
