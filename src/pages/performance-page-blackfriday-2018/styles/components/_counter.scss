@@ -104,7 +104,15 @@
 					.shelf__price {
 						font-size:  16px;
 						text-align: left;
-						
+						.shelf__price-old {
+							.shelf__price-val {
+								&::before {
+									content: ':';
+									font-size: 16px;
+									margin-right: 5px;
+								}
+							}
+						}
 						.shelf__price-new {
 							color: $green;
 							display: block;
@@ -113,12 +121,17 @@
 								font-size: 0;
 								font-weight: 700;
 								&::before {
+									content: ':';
+									font-size: 16px;
+								}
+								&::after {
 									content: 'Descubra';
 									font-size: 16px;
+									margin-left: 5px;
 								}
 							}
 						}
-						.shelf__installment{
+						.shelf__installment {
 							display: none;
 						}
 						
