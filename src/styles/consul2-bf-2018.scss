@@ -1,0 +1,494 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+$bg-bf: #2d2d2d;
+$bg-black1: #000000;
+$bg-black2: #1b1b1b;
+$bg-green1: #9aca3c;
+$bg-green2: #7fbf01;
+$bg-grey1: #282828;
+$bg-grey2: #222222;
+$bg-grey3: #333333;
+
+$bg-input: #464646;
+$placeholder-input: #999999;
+$border-input: #737373;
+
+$color-text: #b0b0b0;
+$white-text: #ffffff;
+$green-text: #9aca3c;
+$grey1-text: #83838f;
+$grey2-text: #585858;
+$grey3-text: #bbbbbb;
+
+$border: #333333;
+$border-footer: #4f4f4f;
+
+@mixin bg-gradient () {
+    // sass-lint:disable-all
+    background: rgba(21, 21, 21, 1);
+    background: -moz-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(21, 21, 21, 1)), color-stop(30%, rgba(45, 45, 45, 1)), color-stop(70%, rgba(45, 45, 45, 1)), color-stop(100%, rgba(21, 21, 21, 1)));
+    background: -webkit-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -o-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(left, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    background: linear-gradient(to right, rgba(21, 21, 21, 1) 0%, rgba(45, 45, 45, 1) 30%, rgba(45, 45, 45, 1) 70%, rgba(21, 21, 21, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#151515', endColorstr='#151515', GradientType=1 );
+    // sass-lint:enable-all
+}
+
+.account {
+    min-height: 55px;
+
+    @include breakpoint(small, 'min') {
+        width: 15%;
+
+        .view-cotas {
+            right: -11px;
+        }
+
+        .welcome a[href='/no-cache/user/logout'] {
+            bottom: -2px;
+        }
+
+        .ajax-content-loader {
+            overflow: hidden;
+
+            .welcome {
+                height: 33px;
+                margin: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.logo {
+    padding: 2px 0 0 90px;
+
+    .icon-logo-consul {
+        font-size: 24px;
+        margin-left: 20px;
+        position: relative;
+        z-index: 1;
+
+        &::after {
+            background-image: url('/arquivos/logo-consul-bf.png?v=2');
+            content: '';
+            display: block;
+            font-family: soleto;
+            height: 86px;
+            left: -107px;
+            position: absolute;
+            top: -27px;
+            width: 121px;
+            z-index: -1;
+        }
+    }
+}
+
+.pre-header {
+    background-color: $bg-grey1;
+
+    a {
+        color: $white-text;
+        &.active {
+            border-bottom-color: $green-text;
+            color: $green-text;
+        }
+        &[title*='Televendas'] {
+            color: $green-text;
+        }
+        &[title*='Central de Atendimento'] {
+            color: $grey1-text;
+        }
+    }
+}
+
+header {
+    background-color: $bg-black1;
+    border-bottom: 4px solid $bg-green1;
+    padding-top: 15px;
+}
+
+
+nav {
+    &.top-navigation {
+        background-color: $bg-black1;
+    }
+
+    .menu-department {
+        border-top-color: $border;
+        
+        >.item {
+            >a {
+                color: $white-text;
+            }
+
+        }
+
+        &.no-border {
+            border-color: transparent;
+        }
+
+        .dropdown {
+            border: 1px solid $border;
+
+            .menu-category {
+                background-color: $bg-bf;
+                border-color: $border;
+                top: 55px;
+
+                &::before {
+                    background-color: $bg-bf;
+                    border: 1px solid $border;
+                    height: 57px;
+                    top: -57px;
+                }
+            }
+
+            &.topmenu-active {
+                .icon-hamburger {
+                    border: none;
+
+                    &::before {
+                        background-color: transparent !important;
+                    }
+                }
+            }
+
+            .icon-hamburger {
+                border-color: $green;
+                color: $border !important;
+
+                &::before {
+                    background-color: $green !important;
+                }
+            }
+        }
+
+
+    }
+}
+
+.lead-newsletter {
+
+    background-color: $bg-black1;
+
+    margin-top: 0;
+
+        .form-newsletter {
+            margin-left: 20px;
+
+            input {
+                background-color: $bg-input;
+                border: none !important;
+                width: 140px !important;
+
+                &::placeholder {
+                    color: $placeholder-input;
+                }
+            }
+
+            .campo-checkbox {
+                label {
+                    color: $grey2-text;
+                    font-size: 13px;
+                    font-weight: bold;
+                    line-height: 12px;
+                    width: 160px;
+                    a {
+                        color: $grey2-text !important;
+                        font-size: 13px;
+                        font-weight: bold;
+                        line-height: 12px;
+                    }
+                }
+            }
+
+            input[type='submit'].submit {
+                background-color: $bg-green1;
+                border-color: $bg-green1;
+                font-weight: bold;
+
+                &:hover {
+                    background-color: $bg-green2;
+                    border-color: $bg-green2;
+                    color: $white-text;
+                }
+            }
+        }
+}
+
+.form-search {
+    
+    .text-search {
+        background-color: $bg-input;
+        border-color: $border-input;
+        &::placeholder {
+            color: $placeholder-input;
+        }
+    }
+
+}
+
+.dropdown.topmenu-active a[title='Departamentos'] {
+    color: $color-text;
+    
+    &:before {
+        background: #2d2d2d!important;
+        content: '';
+        height: 25PX;
+        margin-left: -11px;
+        position: absolute;
+        width: 11px;
+    }
+
+}
+
+.dropdown.topmenu-active .icon-hamburger {
+    color: $color-text;
+}
+
+div.account {
+    
+    #login,
+    .link-meus-pedidos span {
+        background-color: transparent;
+        color: $white-text;    
+    }
+    
+    .account__icon {
+        fill: $white-text;
+    }
+
+}
+
+.footer-duvidas {
+    background-color: $bg-black1;
+    border-color: $border-footer;
+}
+
+.footer-gray {
+    background-color: $bg-grey2;
+    
+    .footer-notes {
+        border-color: $border-footer;
+    }
+}
+
+// MOBILE
+.menu-mobile {
+    background-color: $bg-black1;
+
+    .open-menu-mobile {
+        background-color: $bg-black1;
+    }
+
+    .account {
+        background-color: $bg-black2;
+        border-bottom-color: $bg-black2;
+    }
+}
+
+.minicart .link-cart {
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.minicart .cart-quantity {
+    background-color: $green-text;
+    color: #2d2d2d;
+}
+
+// ######################################################################################################################################################
+
+@include breakpoint (small, 'max') {
+    .menu-mobile {
+        background-color: $bg-black1;
+    }
+
+    .header .menu-mobile div.account.logged-user .welcome-message .welcome {
+    overflow: hidden;
+    padding-right: 5px;
+    text-overflow: ellipsis;
+    }
+
+    header {
+        background-color: $bg-black1;
+        box-shadow: 0 3px 0 $bg-green1;
+        border: none;
+        padding-top: 0;
+
+        .container {
+            border-bottom: none !important;
+        }
+
+        .cont-search {
+            border-color: $bg-black1 !important;
+        }
+    }
+
+    .welcome-message {
+        overflow: hidden;
+    }
+
+    .form-search .text-search {
+        background-color: #202020;
+        border: solid 1px;
+        height: 40px;
+    }
+
+    .header .cont-search {
+        border: solid 13px #121212;
+        border-color: #121212;
+        border-top: solid 6px #121212;
+        height: 45px;
+        top: 45px;
+    }
+
+    .logo .icon-logo-consul::after {
+        background-image: url('/arquivos/logo-consul-bf.png');
+        background-size: 100% 100%;
+        height: 56px;
+        left: -67px;
+        top: -22px;
+        width: 79px;
+    }
+
+    .logo {
+        padding: 20px 5px 0 90px;
+    }
+
+    .logo .icon-logo-consul {
+        color: $green-text;
+        font-size: 23px;
+    }
+
+    .form-search {
+        
+        .icon-brastemp-loupe {
+            line-height: 41px;
+        }
+
+        .text-search {
+            background-color: $bg-input;
+            font-weight: bold;
+        }
+    }
+
+    .cont-logo-mobile {
+        height: 45px;
+
+        a {
+            padding: 6px 0 0 44px;
+        }
+    }
+
+    .menu-department {
+        
+        min-height: 880px;
+        top: 60px;
+
+
+        .item.item-department,
+        .item.customItemMenu {
+            background-color: $bg-black2;
+
+            a {
+                color: $white-text;
+                border-top-color: $border;
+            }
+        }
+
+        .item.txt-gray {
+            a[href*='tel:551130037872'] {
+                color: #9aca3c !important;
+            }
+        }
+
+        .submenu {
+            background-color: $bg-black2;
+
+            a {
+                color: $white-text !important;
+            }
+
+        }
+
+        .sub-itens a {
+            font-weight: bold;
+        }
+
+        .account > a {
+            background-color: $bg-grey3 !important;
+            border: none;
+            margin: 10px 10px 10px 5px !important;
+            width: calc(50% - 15px) !important;
+        }
+
+        .account__icon svg {
+            fill: $white-text !important;
+        }
+
+        .show-personal {
+            margin: 10px 5px 10px 10px !important;
+            width: calc(50% - 15px) !important;
+            a {
+                background-color: $bg-grey3 !important;
+                border: none !important;
+            }
+        }
+
+    }
+
+    .item.txt-gray {
+        a[href*='tel:551130037872'] {
+            color: #9aca3c !important;
+        }
+    }
+
+    .menu-mobile .open-menu-mobile {
+        background-color: $bg-black1;
+        height: 45px;
+    }
+
+    .minicart .cart-quantity {
+        background-color: $bg-green1;
+        color: $bg-black1;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 17px;
+        top: 0;
+    }
+
+    .menu-mobile.menu-active .open-menu-mobile {
+        background-color: $bg-black1;
+    }
+
+    .menu-mobile.menu-active .open-menu-mobile .icon-hamburger:before {
+        color: #ffffff;
+    }
+
+    .header .menu-mobile div.account .welcome-message .welcome a#login {
+        background: #000000;
+    }
+
+    .header .menu-mobile div.account a[href='/minhaconta/pedidos'] {
+        background: #000000;
+    }
+
+    .menu-department {
+        background-color: $bg-grey3 !important;
+        & > .account {
+            background-color: $bg-black2 !important;
+            height: 80px !important;
+        }
+    }
+
+    .menu-mobile .txt-gray a {
+        color: #ffffff;
+    }
+}
