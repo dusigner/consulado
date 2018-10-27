@@ -6,7 +6,7 @@ Nitro.module('chatHome', function () {
 
 	this.init = function() {
 		self.chatHome();
-	};	
+	};
 
 	this.chatHome = function(){
 
@@ -101,7 +101,7 @@ Nitro.module('chatHome', function () {
 			var chat = window.open(url, 'Ajuda_online','height=600,width=350');
 			this.parentElement.parentElement.querySelector('.close').click();
 			console.info(chat);
-			
+
 		}
 
 		function redirect(e) {
@@ -111,7 +111,7 @@ Nitro.module('chatHome', function () {
 			dimmer.classList.toggle('dimmer');
 
 			var modal = document.createElement('div');
-			modal.innerHTML = '<p style="font-family:consul,Helvetica\ Neue,Helvetica,Arial,sans-serif">Você será direcionado para o Portal de Atendimento Consul.</p> <p style="font-family:consul,Helvetica\ Neue,Helvetica,Arial,sans-serif">Por favor, aguarde... (<span class="counter">5</span>)</p>';
+			modal.innerHTML = '<p style="font-family:consul,Helvetica Neue,Helvetica,Arial,sans-serif">Você será direcionado para o Portal de Atendimento Consul.</p> <p style="font-family:consul,Helvetica Neue,Helvetica,Arial,sans-serif">Por favor, aguarde... (<span class="counter">5</span>)</p>';
 
 			var content = document.querySelector('#rnChatContent');
 			dimmer.appendChild(modal);
@@ -139,7 +139,7 @@ Nitro.module('chatHome', function () {
 			dimmer.classList.toggle('dimmer');
 
 			var modal = document.createElement('div');
-			modal.innerHTML = '<p style="font-family:consul,Helvetica\ Neue,Helvetica,Arial,sans-serif">Você será direcionado para o Portal de Atendimento Consul.</p> <p style="font-family:consul,Helvetica\ Neue,Helvetica,Arial,sans-serif">Por favor, aguarde... (<span class="counter">5</span>)</p>';
+			modal.innerHTML = '<p style="font-family:consul,Helvetica Neue,Helvetica,Arial,sans-serif">Você será direcionado para o Portal de Atendimento Consul.</p> <p style="font-family:consul,Helvetica Neue,Helvetica,Arial,sans-serif">Por favor, aguarde... (<span class="counter">5</span>)</p>';
 
 			var content = document.querySelector('#rnChatContent');
 			dimmer.appendChild(modal);
