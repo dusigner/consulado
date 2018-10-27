@@ -34,7 +34,6 @@
 		}
 
 		@include breakpoint('large', 'min') { @include responsiveFont(24, 16, true); }
-
 		&-highlight { font-weight: 600; }
 	}
 
@@ -47,7 +46,6 @@
 		padding-top: 10px;
 
 		&-prod {
-
 			align-items: center;
 			display: flex;
 			flex-basis: calc(50% - 10px);
@@ -61,13 +59,14 @@
 			}
 
 			.prateleira.default {
-				
 				h2 {
 					display: none;
 				}
+
 				ul li {
 					width: 100%;
 				}
+
 				article {
 					display: flex;
 					flex-direction: row;
@@ -75,10 +74,12 @@
 					min-height: auto;
 					padding: 0;
 				}
+
 				.shelf__image {
 					display: block;
 					height: 100px;
 					width: 100px;
+
 					img {
 						height: auto;
 						width: 100%;
@@ -87,6 +88,7 @@
 						display: none;
 					}
 				}
+
 				.shelf__details {
 					padding-left: 40px;
 					position: relative;
@@ -98,21 +100,25 @@
 						padding: 0;
 						text-align: left;
 					}
+
 					.shelf__price {
 						font-size:  16px;
 						text-align: left;
+						
 						.shelf__price-new {
 							color: $green;
-						}
-						.shelf__installment {
-							color: $green;
 							display: block;
+
+							.shelf__price-val {
+								font-weight: 700;
+							}
 						}
 					}
 
 					.shelf__buy-fast {
 						display: none;
 					}
+
 					.shelf__buy-button {
 						font-size: 0;
 						height: 100%;
@@ -123,7 +129,6 @@
 					}
 				}
 			}
-
 		}
 
 		&-count {
@@ -244,6 +249,7 @@
 			padding: 14px 0 0;
 			text-align: center;
 			width: 240px;
+			
 			&:hover {
 				background-color: transparent;
 				border: 2px solid $btn-promotion;
