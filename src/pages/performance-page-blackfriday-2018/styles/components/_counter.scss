@@ -74,7 +74,7 @@
 					min-height: auto;
 					padding: 0;
 				}
-
+				
 				.shelf__image {
 					display: block;
 					height: 100px;
@@ -110,9 +110,18 @@
 							display: block;
 
 							.shelf__price-val {
+								font-size: 0;
 								font-weight: 700;
+								&::before {
+									content: 'Descubra';
+									font-size: 16px;
+								}
 							}
 						}
+						.shelf__installment{
+							display: none;
+						}
+						
 					}
 
 					.shelf__buy-fast {
