@@ -121,7 +121,7 @@ nav {
 
     .menu-department {
         border-top-color: $border;
-        
+
         >.item {
             >a {
                 color: $white-text;
@@ -223,7 +223,7 @@ nav {
 }
 
 .form-search {
-    
+
     .text-search {
         background-color: $bg-input;
         border-color: $border-input;
@@ -236,7 +236,7 @@ nav {
 
 .dropdown.topmenu-active a[title='Departamentos'] {
     color: $color-text;
-    
+
     &:before {
         background: #2d2d2d!important;
         content: '';
@@ -253,13 +253,13 @@ nav {
 }
 
 div.account {
-    
+
     #login,
     .link-meus-pedidos span {
         background-color: transparent;
-        color: $white-text;    
+        color: $white-text;
     }
-    
+
     .account__icon {
         fill: $white-text;
     }
@@ -273,7 +273,7 @@ div.account {
 
 .footer-gray {
     background-color: $bg-grey2;
-    
+
     .footer-notes {
         border-color: $border-footer;
     }
@@ -318,8 +318,8 @@ div.account {
 
     header {
         background-color: $bg-black1;
-        box-shadow: 0 3px 0 $bg-green1;
         border: none;
+        box-shadow: 0 3px 0 $bg-green1;
         padding-top: 0;
 
         .container {
@@ -368,7 +368,7 @@ div.account {
     }
 
     .form-search {
-        
+
         .icon-brastemp-loupe {
             line-height: 41px;
         }
@@ -388,7 +388,7 @@ div.account {
     }
 
     .menu-department {
-        
+
         min-height: 880px;
         top: 60px;
 
@@ -398,8 +398,8 @@ div.account {
             background-color: $bg-black2;
 
             a {
-                color: $white-text;
                 border-top-color: $border;
+                color: $white-text;
             }
         }
 
