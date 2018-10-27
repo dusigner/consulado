@@ -1,11 +1,13 @@
 /**
  *
- * @fileOverview 
+ * @fileOverview This is a performance page to show new components that will be used on Consul Black Friday 2018
  *
  */
 'use strict';
 
-Nitro.controller('performance-page-blackfriday-2018', [], function() {
+require('./modules/counter');
+
+Nitro.setup(['counter'], function() {
 	/**
 	 * Função init bootstrap
 	 */
