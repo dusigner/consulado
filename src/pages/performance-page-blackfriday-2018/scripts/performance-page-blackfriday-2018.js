@@ -5,24 +5,10 @@
  */
 'use strict';
 
-require('./modules/counter');
+import 'vendors/nitro';
 
-Nitro.setup(['counter'], function() {
-	/**
-	 * Função init bootstrap
-	 */
-	this.init = () => {
+import './modules/tabs';
+import './modules/shelfs';
+import './modules/counter';
 
-		this.method();
-	};
-
-	/**
-	 * Apenas um exemplo arrow func com retorno
-	 * @param  {String} param um texto que será concatenado
-	 * @returns {String} texto example with concatenando param
-	 */
-	this.method = param => `example with ${param}`;
-
-	// Start it
-	this.init();
-});
+Nitro.setup(['tabs', 'shelfs', 'counter'], function() {});
