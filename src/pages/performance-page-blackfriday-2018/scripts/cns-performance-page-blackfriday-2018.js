@@ -11,8 +11,9 @@ import './modules/tabs';
 import './modules/shelfs';
 import './modules/counter';
 import './modules/prodStock';
+import './modules/fast-buy';
 
-Nitro.setup(['prodStock', 'tabs', 'shelfs', 'counter'], function(prodStock) {
+Nitro.setup(['prodStock', 'tabs', 'shelfs', 'counter', 'fast-buy'], function(prodStock) {
 	this.init = () => {
 		prodStock.buildProductStock();
 	};
