@@ -32,7 +32,7 @@ const
 const paths = {
 	scripts      : 'src/Scripts/**/*.js',
 	webpack      : 'src/Scripts/*.js',
-	styles       : 'src/Styles/**/*.scss',
+	styles       : 'src/styles/**/*.scss',
 	fonts        : 'src/Fonts/**/*.{eot,svg,ttf,woff,woff2}',
 	images       : 'src/Images/**/*.{png,jpeg,jpg,gif,svg}',
 	dust         : 'src/Scripts/Dust/**/*.html',
@@ -114,8 +114,8 @@ const processHTML = (sourcePath, destPath) => {
 gulp.task('sassLint', function () {
 
 	return gulp.src( getPath('styles')
-	    .concat('!src/Styles/helpers/*')
-        .concat('!src/Styles/libs/*'))
+	    .concat('!src/styles/helpers/*')
+        .concat('!src/styles/libs/*'))
 		.pipe($.cached('sassLinting'))
 		.pipe($.sassLint({
 			options: {
@@ -213,7 +213,7 @@ gulp.task('styles', ['sassLint'], function () {
 
 	return gulp.src( getPath('styles') )
 		.pipe($.util.env.page ? $.util.noop() : $.cached('styling'))
-		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/Styles/'))
+		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/styles/'))
 		.pipe($.plumber())
 		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
 		.pipe( $.sass({
@@ -222,7 +222,7 @@ gulp.task('styles', ['sassLint'], function () {
 			includePaths: [
 				// https://github.com/dlmanning/gulp-sass/commit/6b65a312f44f076c6f92ed3e35c20848bd9cdf6a
 				'node_modules/bootstrap-sass/assets/stylesheets/',
-				'src/Styles',
+				'src/styles',
 				'node_modules/'
 			]
 		}).on('error', $.sass.logError))
