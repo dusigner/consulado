@@ -10,5 +10,12 @@ import 'vendors/nitro';
 import './modules/tabs';
 import './modules/shelfs';
 import './modules/counter';
+import './modules/prodStock';
 
-Nitro.setup(['tabs', 'shelfs', 'counter'], function() {});
+Nitro.setup(['prodStock', 'tabs', 'shelfs', 'counter'], function(prodStock) {
+	this.init = () => {
+		prodStock.buildProductStock();
+	};
+
+	this.init();
+});

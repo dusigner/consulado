@@ -6,8 +6,9 @@
 'use strict';
 
 import 'vendors/nitro';
+import './prodStock';
 
-Nitro.module('tabs', function() {
+Nitro.module('tabs', ['prodStock'], function(prodStock) {
 	const tabsItems = $('.tabs__nav-link');
 	const tabPanes = $('.tabs__pane');
 	const dropdownNav = $('.dropdown__nav');
@@ -45,6 +46,11 @@ Nitro.module('tabs', function() {
 
 			// To finish, we change the dropdown active text
 			dropdownActive.text(self.text());
+
+			// prevent from load stock to current tab products if its already loaded
+			if (!self.hasClass('stock-loaded')) {
+				prodStock.buildProductStock(() => self.addClass('stock-loaded'));
+			}
 		});
 	};
 
