@@ -17,6 +17,7 @@ $theme-color-hover: #7fbf01;
 $text-color: #1e1e1e;
 $tabs-background: #1c1c1c;
 $tabs-background-hover: #9aca3c;
+$btn-promotion: #802894; 
 
 @import 'helpers/mixins';
 @import 'helpers/variables';
@@ -26,3 +27,4 @@ $tabs-background-hover: #9aca3c;
 @import 'components/tabs-content';
 @import 'components/dropdown-nav';
 @import 'components/shelfs';
+@import 'components/counter';

@@ -24,6 +24,9 @@
 @import 'layout/gridresponsive';
 // @import 'components/produto/facebook-share';
 
+// Modules
+@import 'modules/faq';
+
 $loja-color: #9aca3d;
 
 // Base
@@ -881,4 +884,36 @@ $loja-color: #9aca3d;
 	}
 	.prateleira.default .slick-next { right: 12px; }
 	.prateleira.default .slick-prev { left: 12px; }
+}
+
+//FAQ
+.faq {
+	background: #262626;
+	padding: 30px 0 50px;
+	position: relative;
+
+	&:before {
+		background-color: #9aca3c;
+		content: '';
+		display: block;
+		height: 8px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.title {
+		color: #fff;
+		font-size: 40px;
+		font-weight: 100;
+		margin: 0 0 40px;
+		text-align: center;
+		text-transform: inherit;
+
+		@include breakpoint('small', 'max') {
+			font-size: 24px;
+			line-height: 24px;
+		}
+	}
 }

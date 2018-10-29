@@ -30,13 +30,13 @@ const
 	isProdEnv = () => accountName === 'consul' || accountName === 'consulempresa';
 
 const paths = {
-	scripts      : 'src/Scripts/**/*.js',
-	webpack      : 'src/Scripts/*.js',
-	styles       : 'src/Styles/**/*.scss',
-	fonts        : 'src/Fonts/**/*.{eot,svg,ttf,woff,woff2}',
-	images       : 'src/Images/**/*.{png,jpeg,jpg,gif,svg}',
-	dust         : 'src/Scripts/Dust/**/*.html',
-	pages        : 'src/Pages/**/*.html',
+	scripts      : 'src/scripts/**/*.js',
+	webpack      : 'src/scripts/*.js',
+	styles       : 'src/styles/**/*.scss',
+	fonts        : 'src/fonts/**/*.{eot,svg,ttf,woff,woff2}',
+	images       : 'src/images/**/*.{png,jpeg,jpg,gif,svg}',
+	dust         : 'src/scripts/Dust/**/*.html',
+	pages        : 'src/pages/**/*.html',
 
 	html         : {
 		templates       : 'src/01 - HTML Templates/*.html',
@@ -80,7 +80,7 @@ const getPath = source => {
 
 		if($.util.env.page) {
 			if ( $.util.env.page === 'ALL' ) {
-				let pagesDir = fs.readdirSync(`${__dirname}/src/Pages`);
+				let pagesDir = fs.readdirSync(`${__dirname}/src/pages`);
 				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|templates|header)/.test(path) ) : pagesDir;
 				$.util.env.page = pagesDir.join(',');
 			}
@@ -89,10 +89,10 @@ const getPath = source => {
 				const multiPages = $.util.env.page.split(',');
 
 				multiPages.map(singlePage => {
-					newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'Pages/' + singlePage + replaceSource ) );
+					newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + singlePage + replaceSource ) );
 				});
 			} else {
-				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'Pages/' + $.util.env.page + replaceSource ) );
+				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + $.util.env.page + replaceSource ) );
 			}
 		}
 
@@ -114,8 +114,8 @@ const processHTML = (sourcePath, destPath) => {
 gulp.task('sassLint', function () {
 
 	return gulp.src( getPath('styles')
-	    .concat('!src/Styles/helpers/*')
-        .concat('!src/Styles/libs/*'))
+	    .concat('!src/styles/helpers/*')
+        .concat('!src/styles/libs/*'))
 		.pipe($.cached('sassLinting'))
 		.pipe($.sassLint({
 			options: {
@@ -129,8 +129,8 @@ gulp.task('sassLint', function () {
 gulp.task('lint', function () {
 
 	return gulp.src( getPath('scripts')
-		.concat('!src/Scripts/vendors/*.js')
-		.concat('!src/Scripts/modules/helpers.js') )
+		.concat('!src/scripts/vendors/*.js')
+		.concat('!src/scripts/modules/helpers.js') )
 		.pipe($.cached('jsLinting'))
 		.pipe($.eslint())
 		.pipe($.eslint.format())
@@ -159,7 +159,7 @@ gulp.task('scripts', ['lint'], function () {
 				'jquery': 'jQuery'
 			},
 			resolve: {
-				modules: ['src/Scripts', 'node_modules'],
+				modules: ['src/scripts', 'node_modules'],
 				alias: {
 					// templates: path.resolve('./src/templates')
 					bootstrap: path.resolve('./node_modules/bootstrap-sass/assets/javascripts/bootstrap'),
@@ -213,7 +213,7 @@ gulp.task('styles', ['sassLint'], function () {
 
 	return gulp.src( getPath('styles') )
 		.pipe($.util.env.page ? $.util.noop() : $.cached('styling'))
-		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/Styles/'))
+		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/styles/'))
 		.pipe($.plumber())
 		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
 		.pipe( $.sass({
@@ -222,7 +222,7 @@ gulp.task('styles', ['sassLint'], function () {
 			includePaths: [
 				// https://github.com/dlmanning/gulp-sass/commit/6b65a312f44f076c6f92ed3e35c20848bd9cdf6a
 				'node_modules/bootstrap-sass/assets/stylesheets/',
-				'src/Styles',
+				'src/styles',
 				'node_modules/'
 			]
 		}).on('error', $.sass.logError))
@@ -328,7 +328,7 @@ gulp.task('server', ['watch'], () => {
 		reloadOnRestart: true
 	});
 
-	if ( $.util.env.page ) htmlFile = fs.readdirSync(`${__dirname}/src/Pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
+	if ( $.util.env.page ) htmlFile = fs.readdirSync(`${__dirname}/src/pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
 
 	return $.util.env.page && bs.create().init({
 		files: [ 'build/**', '!build/**/*.map'],
@@ -405,7 +405,7 @@ gulp.task('html', function() {
 	let pagesDest = [`build/${$.util.env.page}`];
 
 	if ( $.util.env.page && $.util.env.page.indexOf(',') > 0 ) {
-		pagesDest = [`build/pages`];
+		pagesDest = ['build/pages'];
 	}
 
 	if($.util.env.production) {

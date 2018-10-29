@@ -204,7 +204,9 @@ body {
 
 			.info {
 				@include responsiveFont(13, 16, true);
+				padding-left: 15px;
 				padding-right: 30px;
+				text-align: left;
 				text-transform: uppercase;
 				vertical-align: middle;
 				width: 55%;
@@ -313,10 +315,8 @@ body {
 
 						.info-shipping {
 							display: inline-block;
-							padding: 8px 0;
-							padding-right: 14px;
-							text-align: right;
-							width: 55%;
+							padding: 8px 15px;
+							width: 60%;
 						}
 
 						.postal-code-for-sla {
@@ -342,11 +342,16 @@ body {
 						.shipping-sla-selector {
 							border-top: 1px solid $gray-l;
 							padding: 16px 0;
+							padding-left: 15px;
 							padding-right: 30px;
 							text-align: right;
 
+							@include breakpoint(extra-large, 'max') {
+								padding-top: 30px;
+							}
+
 							@include breakpoint(extra-small, 'max') {
-								padding-right: 0;
+								padding-right: 15px;
 								text-align: center;
 							}
 
@@ -389,7 +394,11 @@ body {
 								position: relative;
 								text-align: left;
 								text-transform: initial;
-								width: 55%;
+								width: 60%;
+
+								@include breakpoint(extra-large, 'max') {
+									width: 100%;
+								}
 
 								&:before {
 									@include responsiveFont(13, 16, true);
@@ -397,10 +406,15 @@ body {
 									content: 'Tipo de entrega';
 									display: block;
 									font-weight: normal;
-									left: -125px;
+									left: -180px;
 									position: absolute;
 									text-transform: uppercase;
 									top: 4px;
+
+									@include breakpoint(extra-large, 'max') {
+										left: 0;
+										top: -25px;
+									}
 								}
 
 								&:after {
@@ -412,14 +426,6 @@ body {
 									right: 6px;
 									top: 50%;
 									transform: translateY(-50%);
-								}
-
-								@include breakpoint(extra-small, 'max') {
-									width: 90%;
-
-									&:before {
-										display: none;
-									}
 								}
 							}
 
@@ -736,10 +742,12 @@ body {
 			padding: 0 0 0 10px;
 			position: fixed;
 		    z-index: 15;
+			
 			tr {
 				border-bottom: none;
 				display: inline-block;
 			}
+
 			.info {
 				@include responsiveFont(13, 16, true);
 				display: block;
@@ -748,6 +756,7 @@ body {
 				text-align: left;
 				text-transform: uppercase;
 			}
+			
 			.monetary {
 				@include responsiveFont(16, 16, true);
 				color: #fff;
