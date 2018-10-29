@@ -9,7 +9,7 @@ import 'vendors/nitro';
 import 'vendors/slick';
 
 Nitro.module('shelfs', function() {
-	const shelfList = $('.prateleira');
+	const shelfList = $('.shelfs__section .prateleira');
 
 	/**
 	 * Default method to initialize all functions inside module
