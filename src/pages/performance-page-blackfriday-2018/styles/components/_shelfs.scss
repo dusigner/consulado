@@ -184,7 +184,7 @@
 		color: #736C6B;
 		cursor: pointer;
 		display: inline-block;
-		font-weight: 400;
+		font-weight: 700;
 		position: relative;
 
 		& + .shelf__label { margin-left: 15px; }
@@ -198,10 +198,11 @@
 		}
 
 		&-text {
+			@include responsiveFont(16, 16, true);
 			@include transition(all);
 			color: #736C6B;
 			display: inline-block;
-			font-weight: 400 !important;
+			font-weight: 700 !important;
 			position: relative;
 
 			&::before,
@@ -226,7 +227,7 @@
 				height: 10px;
 				left: 5px;
 				position: absolute;
-				top: 8px;
+				top: 7px;
 				width: 10px;
 			}
 		}
