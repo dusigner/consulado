@@ -17,7 +17,7 @@ Nitro.module('custom-select', function() {
 	 *	   console.log(`Select changed to: ${option.value}`);
 	 *	 }
 	 * });
-	 * 
+	 *
 	 * @example
 	 * customSelect.setup({
 	 *   target: '#couponFilter',
@@ -98,7 +98,7 @@ Nitro.module('custom-select', function() {
 						onChange({text, value});
 					} catch (e) {
 						self.log(e.message, 'danger');
-						console.trace('custom-select');
+						// console.trace('custom-select');
 					}
 				}
 			}
