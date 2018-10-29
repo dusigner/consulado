@@ -567,7 +567,7 @@ body.busca-chaordic {
 			border-bottom: 1px solid $gray;
 			color: #FFF;
 			margin-bottom: 25px;
-
+      
 			.container {
 				// background: transparent url('#{$cdn-path}images/bg_busca_hexagons.svg') right -95px no-repeat;
 				padding: 2em 90px;
@@ -578,19 +578,19 @@ body.busca-chaordic {
 				margin: 0;
 				text-transform: uppercase;
 			}
-
+      
 			i {
 				@include responsiveFont(30, 16, true);
 				color: #FFF;
 				margin-right: .5em;
 			}
-
+      
 			.busca-termos {
 				margin: 0;
 				strong {
 					@include responsiveFont(40, 16, true);
 					font-weight: 300;
-
+          
 					@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
 				}
 			}
@@ -613,9 +613,9 @@ body.busca-chaordic {
 			strong {
 				@include responsiveFont(40, 16, true);
 				font-weight: 300;
-
-				@include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
-				padding-bottom: 15px;
+        padding-bottom: 15px;
+				
+        @include breakpoint(small, 'max') { @include responsiveFont(32, 16, true); }
 			}
 		}
 		#prateleira .busca-vazio {
@@ -731,21 +731,24 @@ body.busca-chaordic {
 			a {
 				border: 1px solid #FFF;
 				display: block;
-
+        
 				img {
 					display: table;
 					margin: 0 auto;
 					width: 80%;
 				}
+        
 				.quickImage {
 					min-height: 250px;
 				}
+        
 				.quickName {
 					display: block;
 					font-weight: 600;
 					padding: 10px;
 					text-align: center;
 				}
+        
 				&:hover {
 					border: 1px solid $green;
 					.quickName {
@@ -755,8 +758,8 @@ body.busca-chaordic {
 				}
 			}
 		}
-
 	}
+  
 	//result-filter
 	.result-filter {
 		.filter-container {
@@ -800,11 +803,10 @@ body.busca-chaordic {
 						display: none;
 					}
 				}
-
 			}
 		}
 	}
-
+  
 	.prateleira.default ul li .detalhes .prod-info .nome {
 		height: 145px;
 		overflow: hidden;
@@ -828,6 +830,6 @@ body.neemu {
 	}
 
 	p.hl-busca-vazia {
-		font-size: 1.25em;
+		font-size: 1.25em;	
 	}
 }
