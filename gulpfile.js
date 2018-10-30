@@ -129,8 +129,8 @@ gulp.task('sassLint', function () {
 gulp.task('lint', function () {
 
 	return gulp.src( getPath('scripts')
-		.concat('!src/scripts/vendors/*.js')
-		.concat('!src/scripts/modules/helpers.js') )
+		.concat('!src/Scripts/vendors/*.js')
+		.concat('!src/Scripts/modules/helpers.js') )
 		.pipe($.cached('jsLinting'))
 		.pipe($.eslint())
 		.pipe($.eslint.format())
