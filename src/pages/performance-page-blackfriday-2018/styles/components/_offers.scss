@@ -82,12 +82,12 @@
 
 		@include breakpoint('small', 'min') {
 			border-radius: 60px;
-			flex-basis: calc(33.33333% - 10px);
 			margin-bottom: 15px;
 		}
 
+		@include breakpoint('large', 'min') { flex-basis: calc(25% - 20px); }
+
 		@include breakpoint('extra-large', 'min') {
-			flex-basis: calc(16.66666% - 20px);
 			margin-bottom: 0;
 			padding-left: 5px;
 			padding-right: 5px;
@@ -114,9 +114,15 @@
 		&-discount {
 			.offers__text {
 				display: block;
-				margin-left: auto !important;
-				margin-right: auto !important;
+				margin-left: auto;
+				margin-right: auto;
 				max-width: 130px;
+
+				@include breakpoint('small', 'min') {
+					align-items: center;
+					display: flex;
+					justify-content: center;
+				}
 			}
 		}
 	}
@@ -137,8 +143,8 @@
 			@include responsiveFont(40, 16, true);
 			color: $text-color;
 			line-height: 1.2;
-			margin-bottom: 5px;
-			margin-top: 5px;
+			margin-left: 5px;
+			margin-right: 5px;
 
 			@include breakpoint('large', 'min') { @include responsiveFont(42, 16, true); }
 		}
