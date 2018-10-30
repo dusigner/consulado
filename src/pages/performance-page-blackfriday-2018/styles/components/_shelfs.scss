@@ -132,8 +132,118 @@
 	}
 
 	&__sku-list {
+		@include transition(all);
+		border-radius: 5px;
+		margin: 0 auto 20px;
+		max-width: 200px;
+		padding: 5px 10px;
+		position: relative;
+		text-align: center;
+
+		&.is-invalid {
+			background-color: #262626;
+
+			&::before,
+			&::after {
+				left: 50%;
+				position: absolute;
+				transform: translateX(-50%);
+				z-index: 9;
+			}
+
+			&::before {
+				@include responsiveFont(14, 16, true);
+				background-color: $theme-color;
+				border-radius: 5px;
+				color: $text-color;
+				content: 'Selecione a voltagem';
+				display: block;
+				font-weight: 700;
+				padding: 5px 10px;
+				text-align: center;
+				top: -38px;
+				width: 220px;
+			}
+
+			&::after {
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-top: 10px solid $theme-color;
+				content: '';
+				height: 0;
+				top: -7px;
+				width: 0;
+			}
+		}
+
+		.product-insertsku { display: none !important; }
+	}
+
+	&__label {
+		@include transition(all);
+		color: #736C6B;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 700;
+		position: relative;
+
+		& + .shelf__label { margin-left: 15px; }
+
+		&:hover {
+			.shelf__label-text {
+				color: $theme-color;
+
+				&::before { border-color: $theme-color; }
+			}
+		}
+
+		&-text {
+			@include responsiveFont(16, 16, true);
+			@include transition(all);
+			color: #736C6B;
+			display: inline-block;
+			font-weight: 700 !important;
+			position: relative;
+
+			&::before,
+			&::after {
+				@include transition(all);
+				border-radius: 50%;
+				content: '';
+			}
+
+			&::before {
+				border: 2px solid #736C6B;
+				display: inline-block;
+				height: 20px;
+				margin-right: 5px;
+				vertical-align: middle;
+				width: 20px;
+			}
+
+			&::after {
+				background-color: transparent;
+				display: block;
+				height: 10px;
+				left: 5px;
+				position: absolute;
+				top: 7px;
+				width: 10px;
+			}
+		}
+	}
+
+	&__radio {
 		display: none;
-		margin-bottom: 20px;
+
+		&:hover,
+		&:checked + .shelf__label-text {
+			color: $theme-color;
+
+			&::before { border-color: $theme-color; }
+		}
+
+		&:checked + .shelf__label-text::after { background-color: $theme-color; }
 	}
 
 	&__buy {
