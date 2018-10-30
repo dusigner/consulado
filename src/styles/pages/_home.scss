@@ -93,6 +93,12 @@ body.home {
 								}
 							}
 						}
+
+						li article .detalhes .image {
+							display: block!important;
+							margin: 0 auto!important;
+							max-height: 130px;
+						}
 					}
 					@include breakpoint(600px, 'max') {
 						padding: 0 30px;
@@ -100,12 +106,6 @@ body.home {
 							display: block !important;
 						}
 					}
-				}
-
-				li article .detalhes .image {
-					display: block!important;
-					margin: 0 auto!important;
-					max-height: 130px;
 				}
 			}
 		}
