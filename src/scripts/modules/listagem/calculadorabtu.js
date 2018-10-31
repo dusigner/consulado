@@ -44,8 +44,8 @@ Nitro.module('calculadorabtu', function () {
 			distanceLeftValue = parseInt((minimo / totalRange) * range),
 			distanceRightValue = parseInt((maximo / totalRange) * range);
 
-		de.text((minimo/1000) + ' BTU\\/h');
-		ate.text((maximo/1000) + ' BTU\\/h');
+		de.text((minimo/1000) + ' BTU\/h'); // eslint-disable-line
+		ate.text((maximo/1000) + ' BTU\/h'); // eslint-disable-line
 		distanceLeft.css('left', distanceLeftValue);
 		distanceRight.css('left', distanceRightValue);
 	};

@@ -17,7 +17,7 @@ define('store', function() {
 	this.accountName  = 'consul';
 
 	var publicUrl = [
-		'^\\/$',
+		'^\/$', // eslint-disable-line
 		'/institucional',
 		'/pre-home'
 	];

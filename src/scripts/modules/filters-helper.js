@@ -8,7 +8,7 @@ FiltersHelper.page = 2;
 FiltersHelper.filters = $('.filters');
 FiltersHelper.vitrineHolder = $('#prateleira');
 FiltersHelper.vitrine = FiltersHelper.vitrineHolder.find('.vitrine');
-FiltersHelper.query = /load\(\\'(.*)\\'/.exec( FiltersHelper.vitrine.find('> script').text() );
+FiltersHelper.query = /load\(\'(.*)\'/.exec( FiltersHelper.vitrine.find('> script').text() ); // eslint-disable-line
 FiltersHelper.url = function(){
 	if( FiltersHelper.query && FiltersHelper.query.length > 0 ) {
 		return FiltersHelper.query[1];
