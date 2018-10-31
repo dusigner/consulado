@@ -13,6 +13,16 @@ $dropdown-color: #2d2d2d;
 		padding: 10px 15px;
 		position: relative;
 
+		&::before {
+			bottom: 0;
+			content: '';
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 99;
+		}
+
 		@include breakpoint('small', 'min') { display: none; }
 
 		&.is-visible {
