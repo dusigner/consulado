@@ -4,10 +4,11 @@ require('Dust/product/upgrade.html');
 require('Dust/product/downgrade.html');
 
 Nitro.module('upsell', function() {
-		
+
 	const self = this;
-	
-	let 
+
+	let
+		showNotAvaiable = $('td.value-field.Condicao-Indisponivel').text(),
 		urlUpgradetd = $('td.value-field.Link-do-Upgrade'),
 		urlUpgrade = $('td.value-field.Link-do-Upgrade').text(),
 		uri = window.location.href,
@@ -26,7 +27,7 @@ Nitro.module('upsell', function() {
 			'method': 'GET'
 		};
 		$.ajax(setAPI).then(function (responseDowngrade) {
-			apiResponseDowngrade = responseDowngrade[0];			
+			apiResponseDowngrade = responseDowngrade[0];
 			return responseDowngrade;
 		}).done(function(){
 			let setAPI = {
@@ -60,7 +61,7 @@ Nitro.module('upsell', function() {
 
 	this.openCloseAndMobile = () => {
 		// Abre o modal de upgrade
-		$('.btn-interessado-upgrade').click(function() {			
+		$('.btn-interessado-upgrade').click(function() {
 			$('#modal-produto-upgrade').vtexModal();
 		});
 		// Abre modal se for campanha automatica
@@ -73,8 +74,8 @@ Nitro.module('upsell', function() {
 		// verifica device
 		if ($(window).width() <= 768) {
 			$(document).ready(function(){
-				$('.product-upgrade').addClass('mobile');		
-				$('.upgrade-mobile').removeClass('hide');			
+				$('.product-upgrade').addClass('mobile');
+				$('.upgrade-mobile').removeClass('hide');
 				$('#upsell').addClass('mobile');
 			});
 		}
@@ -86,7 +87,7 @@ Nitro.module('upsell', function() {
 		(priceBar < 1 && apiResponseUpgrade.items[1]) ? priceBar = Number(apiResponseUpgrade.items[1].sellers[0].commertialOffer.Price) : '';
 		(verifyDowngrade > 0 && priceBar < 1) ? priceBar = Number(apiResponseDowngrade.items[1].sellers[0].commertialOffer.Price) : '';
 		$('.title-price-upgrade span, .corpo-produtos-modal .oportunidadePro span, .price-mobile-upgrade').html(`R$ ${_.formatCurrency( priceBar )}`);
-		
+
 		(priceBar < 1) && $('#upsell').remove(); // Se nenhum preco estiver disponivel nao exibe o upsell
 
 		let // formata o preco do pruduto atual dentro do modal
@@ -120,5 +121,11 @@ Nitro.module('upsell', function() {
 		});
 	};
 
-	(urlUpgradetd.length >= 1 || verifyDowngrade > 0) && this.init();
+	const
+		isCheckedAndUnavailable = (showNotAvaiable === 'Sim' && skuJson.available === false),
+		isNotChecketAndAvailable = (showNotAvaiable === '' && skuJson.available === true),
+		availableUpsell = (isCheckedAndUnavailable || isNotChecketAndAvailable),
+		hasBeenRegistred = urlUpgradetd.length >= 1 || verifyDowngrade > 0;
+
+	availableUpsell && hasBeenRegistred && this.init();
 });

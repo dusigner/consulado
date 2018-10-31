@@ -1,7 +1,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
-/*var CRM = require('modules/store/crm');*/
+// var CRM = require('modules/store/crm');
 
 var redirect = require('modules/store/redirect');
 

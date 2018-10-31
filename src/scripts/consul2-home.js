@@ -46,7 +46,6 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		self.setupSlider($slider);
 	}
 
-
 	//mobile - abrir vitrines
 	if ($(window).width() <= 768) {
 		$('section.slider .pre-title').click(function(e){
@@ -66,5 +65,16 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		});
 
 		$('section.slider').eq(0).find('.pre-title').trigger('click');
+
+		//vitrines padrões vtex
+		$('.slider.vitrines h2').addClass('pre-title');
+		self.setupSlider($('.slider.vitrines .prateleira-slider .prateleira>ul'));
+
+		$('.slider.vitrines h2').click(function(e){
+			e.preventDefault();
+			
+			$(this).toggleClass('shelf-pre-title--active');
+		});
+		//\ vitrines padrões vtex
 	}
 });

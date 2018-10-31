@@ -15,10 +15,17 @@ $section-color: #0E0E0E;
 $theme-color: #9aca3c;
 $theme-color-hover: #7fbf01;
 $text-color: #1e1e1e;
-$btn-promotion: #802894; 
+$tabs-background: #1c1c1c;
+$tabs-background-hover: #9aca3c;
+$btn-promotion: #802894;
 
 @import 'helpers/mixins';
 @import 'helpers/variables';
 
 @import 'components/offers';
+@import 'components/tabs-nav';
+@import 'components/tabs-content';
+@import 'components/dropdown-nav';
+@import 'components/shelfs';
 @import 'components/counter';
+@import 'components/stock';

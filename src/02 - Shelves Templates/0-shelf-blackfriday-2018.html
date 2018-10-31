@@ -1,0 +1,51 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<article class="shelf__item $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end"
+ data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
+	<a class="shelf__image" href="$uri" title="$escapedName">
+		$product.GetImageTag(345, 345)
+
+		<div class="shelf__stamps">
+			<div class="shelf__stamps-highlight">
+				$product.DiscountHightLight
+				$product.HightLight
+			</div>
+		</div>
+
+		<div class="shelf__stock"></div>
+	</a>
+
+	<div class="shelf__details">
+		<h3 class="shelf__title">$product.Name</h3>
+
+		#if ($product.IsInStock)
+			<div class="shelf__price">
+				#if ($product.HasBestPrice)
+					<span class="shelf__price-old">
+						De <span class="shelf__price-val">$product.ListPrice</span>
+					</span>
+				#end
+
+				<span class="shelf__price-new">
+					Por <span class="shelf__price-val">$product.BestPrice</span>
+				</span>
+
+				#if ($product.NumbersOfInstallment > 1)
+					<span class="shelf__installment">
+						<span class="shelf__installment-total">$product.NumbersOfInstallment</span>x de
+						<span class="shelf__installment-val">$product.InstallmentValue</span> sem juros
+					</span>
+				#end
+			</div>
+
+			<div class="shelf__sku-list">$product.InsertSku</div>
+
+			<a class="shelf__buy shelf__buy-fast" href="javascript:void(0)">Compra rápida</a>
+			<a class="shelf__buy shelf__buy-button" href="$uri">Ver produto</a>
+		#else
+			<span class="shelf__unavailable">Produto indisponível</span>
+		#end
+	</div>
+</article>

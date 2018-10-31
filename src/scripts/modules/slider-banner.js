@@ -1,12 +1,6 @@
 'use strict';
 
-// require('modules/smartFocus');
-
-Nitro.module('slider-banner', [/* 'smartFocus' */],  function(/* smartFocus */) {
-	/* if($('body').hasClass('home')) {
-		smartFocus.renderBanner();
-	} */
-
+Nitro.module('slider-banner', [],  function() {
 	var self = this,
 		$buttonOpenRegulamento = $('.open-regulamento'),
 		$bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
