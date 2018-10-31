@@ -9,6 +9,8 @@ $bg-green2: #7fbf01;
 $bg-grey1: #282828;
 $bg-grey2: #222222;
 $bg-grey3: #333333;
+$bg-grey4: #666666;
+$bg-grey5: #999999;
 
 $bg-input: #464646;
 $placeholder-input: #999999;
@@ -65,30 +67,6 @@ $border-footer: #4f4f4f;
     }
 }
 
-.logo {
-    padding: 2px 0 0 90px;
-
-    .icon-logo-consul {
-        font-size: 24px;
-        margin-left: 20px;
-        position: relative;
-        z-index: 1;
-
-        &::after {
-            background-image: url('/arquivos/logo-consul-bf.png?v=2');
-            content: '';
-            display: block;
-            font-family: soleto;
-            height: 86px;
-            left: -107px;
-            position: absolute;
-            top: -27px;
-            width: 121px;
-            z-index: -1;
-        }
-    }
-}
-
 .pre-header {
     background-color: $bg-grey1;
 
@@ -110,7 +88,6 @@ $border-footer: #4f4f4f;
 header {
     background-color: $bg-black1;
     border-bottom: 4px solid $bg-green1;
-    padding-top: 15px;
 }
 
 
@@ -146,6 +123,19 @@ nav {
                     border: 1px solid $border;
                     height: 57px;
                     top: -57px;
+                }
+
+                .menu-subcategory {
+                    .item {
+                        a {
+                            border-color: $bg-grey4;
+                            color: $bg-grey5;
+                            &:hover {
+                                border-color: transparent;
+                                color: $white-text;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -399,7 +389,7 @@ div.account {
 
             a {
                 border-top-color: $border;
-                color: $white-text;
+                color: $grey3-text;
             }
         }
 
