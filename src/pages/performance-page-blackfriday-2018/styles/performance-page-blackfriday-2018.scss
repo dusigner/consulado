@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+
+$section-color: #0E0E0E;
+$theme-color: #9aca3c;
+$theme-color-hover: #7fbf01;
+$text-color: #1e1e1e;
+$btn-promotion: #802894; 
+
+@import 'helpers/mixins';
+@import 'helpers/variables';
+
+@import 'components/offers';
+@import 'components/counter';
