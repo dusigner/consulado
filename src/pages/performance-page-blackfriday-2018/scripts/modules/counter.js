@@ -26,6 +26,8 @@ Nitro.module('counter', function() {
 			$seconds = $counter.find('.seconds'),
 			timeRemaining;
 
+		$('.counter__offer-btn').attr('href', $('.counter__offer .shelf__buy-button').attr('href'));
+
 		function getTimeRemaining(endDate) {
 			var today = Date.parse(new Date()),
 				finalDate = Date.parse(endDate),
