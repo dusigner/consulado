@@ -116,13 +116,13 @@
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
-				max-width: 130px;
+				max-width: 200px;
 
-				@include breakpoint('small', 'min') {
-					align-items: center;
-					display: flex;
-					justify-content: center;
-				}
+				// @include breakpoint('small', 'min') {
+				// 	align-items: center;
+				// 	display: flex;
+				// 	justify-content: center;
+				// }
 			}
 		}
 	}
@@ -140,7 +140,7 @@
 		@include breakpoint('small', 'min') { @include responsiveFont(15, 16, true); }
 
 		&-discount {
-			@include responsiveFont(40, 16, true);
+			@include responsiveFont(28, 16, true);
 			color: $text-color;
 			line-height: 1.2;
 			margin-left: 5px;
@@ -150,22 +150,22 @@
 		}
 
 		&-disclaimer {
-			@include responsiveFont(17, 16, true);
+			@include responsiveFont(18, 16, true);
 			color: #fff;
 			display: block;
 			line-height: 1;
 
-			@include breakpoint('large', 'min') { @include responsiveFont(22, 16, true); }
+			// @include breakpoint('large', 'min') { @include responsiveFont(, 16, true); }
 
-			&:first-child {
-				margin-left: 10PX;
-				text-align: left;
-			}
+			// &:first-child {
+			// 	margin-left: 10px;
+			// 	text-align: left;
+			// }
 
-			&:last-child {
-				margin-right: 10PX;
-				text-align: right;
-			}
+			// &:last-child {
+			// 	margin-right: 10px;
+			// 	text-align: right;
+			// }
 		}
 	}
 }
