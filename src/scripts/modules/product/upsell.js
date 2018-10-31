@@ -91,7 +91,16 @@ Nitro.module('upsell', function() {
 
 		let // formata o preco do pruduto atual dentro do modal
 			priceCurrentmodal = Number($('.voce-esta-vendo span').text());
-		$('.voce-esta-vendo span').html(`R$ ${_.formatCurrency( priceCurrentmodal )}`);
+
+		
+		// Check if current product is available. If not, set price with unavailable message
+		if (priceCurrentmodal) {
+			$('.voce-esta-vendo span').html(`R$ ${_.formatCurrency( priceCurrentmodal )}`);
+
+		} else { 
+
+			$('.voce-esta-vendo span').html('Indisponível');
+		}
 
 		let // Pega, formata e subtrai os valores dos produtos na Barra fixa
 			priceCurrent = $('.prod-preco .skuBestPrice').text().replace(/\D/gmi, ''),
