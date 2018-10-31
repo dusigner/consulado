@@ -94,11 +94,20 @@ body.home {
 							}
 						}
 
-						li article .detalhes .image {
-							display: block!important;
-							margin: 0 auto!important;
-							max-height: 130px;
-							overflow: hidden;
+						li article .detalhes {
+							.image {
+								display: block!important;
+								margin: 0 auto!important;
+								// max-height: 130px;
+								overflow: hidden;
+
+								& > span { min-height: auto }
+							}
+
+							.prod-info {
+								margin-top: 1rem;
+								text-align: center;
+							}
 						}
 					}
 					@include breakpoint(600px, 'max') {
