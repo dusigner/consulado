@@ -95,8 +95,8 @@
 				}
 				background: #fff;
 				border: 1px solid $gray;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 				border-top: 2px solid $green;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
 				box-sizing: border-box;
 				margin-bottom: 3em;
 				margin-top: 3em;
@@ -139,6 +139,8 @@
 						width: 0;
 					}
 				}
+
+				.discount-text { display: block; }
 
 				.code-title {
 					background: #ffffff;
@@ -223,7 +225,8 @@
 					display: grid;
 					& > a {
 						color: $base-link-color;
-						font-size: 14px;
+						font-size: 16px;
+						font-weight: bold;
 						line-height: normal;
 						margin: 11px 0;
 						text-align: center;
@@ -248,8 +251,8 @@
 				.line {
 					background: $green;
 					height: 1px;
-					margin-bottom: 37px;
 					margin: 0 15px;
+					margin-bottom: 37px;
 				}
 			}
 		}
