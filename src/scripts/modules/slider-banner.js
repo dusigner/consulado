@@ -1,21 +1,10 @@
 'use strict';
 
 Nitro.module('slider-banner', [],  function() {
-	var self = this,
-		$buttonOpenRegulamento = $('.open-regulamento'),
-		$bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
-
-	this.lazyLoad = function() {
-		$(window).on('load', function() {
-			$bannerPrincipal.addClass('banner-loaded');
-			self.setupMainSlider();
-			$('.fake-banner').hide();
-		});
-
-	};
+	var $buttonOpenRegulamento = $('.open-regulamento');
 
 	this.setupMainSlider = function() {
-		var qtdBanners;
+		var qtdBanners, $bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
 		$bannerPrincipal.on('init', function(){
 			qtdBanners = $('.banners .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
@@ -58,6 +47,5 @@ Nitro.module('slider-banner', [],  function() {
 		});
 	};
 
-	this.lazyLoad();
-
+	this.setupMainSlider();
 });
