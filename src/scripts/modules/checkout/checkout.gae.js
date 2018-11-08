@@ -268,6 +268,22 @@ Nitro.module('checkout.gae', function() {
 					label: $(this).parents('.modal-body').find('.active .title-garantia').text()
 				});
 			});
+
+			$('.gae-sub-title.-mobile').on('click',  function () {
+				var documento = $(this);
+				if (documento.hasClass('-is-active')) {
+					documento.removeClass( '-is-active' );
+					$( '#gae-show-mobile' ).removeClass( '-is-active' );
+				} else {
+					documento.addClass( '-is-active' );
+					$( '#gae-show-mobile' ).addClass( '-is-active' );
+				}
+			});
+
+			// Scroll Event to close "modal of modals" buttons, im not proud of this.
+			$('#modal-warranty .modal-body').scroll(function() {
+				if($('.seguro-de-garantia').hasClass('ativo')) $('.close-seguro-garantia.abreefecha').css('top', $('#modal-warranty .modal-body').scrollTop());
+			}).scroll();
 		});
 	};
 
