@@ -826,6 +826,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				background: $brand;
 				border-radius: 5px;
 				color: $white;
+				cursor: pointer;
 				display: none;
 				margin: 30px auto 12px auto;
 				padding: 15px;
@@ -1464,7 +1465,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	width: 92%;
 
 	&.-is-active {
-		height: 250px;
+		height: auto;
 	}
 
 	@media( min-width: #{$tablet-l} ){
