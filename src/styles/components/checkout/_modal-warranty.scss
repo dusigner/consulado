@@ -6,10 +6,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAB0CAMAAAA1vs
 // Configurações Globais
 $white: #ffffff;
 $black: #000000;
-$brand: #592b6d;
+$brand: #99ca3b;
+$g-color:#6f2c8f;
 $p-color: #dbd6d2;
 $p-black: #766c6b;
-$btn-color: #592b6d;
+$btn-color: #99ca3b;
 $card-bg: #e4e4e4;
 $footer-bg: #f5f5f5;
 $font: 'soleto, Helvetica Neue, Helvetica, Arial, sans-serif';
@@ -17,6 +18,7 @@ $btn-height: 56px;
 $tablet-p: 640px;
 $tablet-l: 960px;
 $desk: 1100px;
+$highlight: #99ca3b;
 
 // Fontes
 $b-bold: 'Soleto_W_Bd', sans-serif;
@@ -34,6 +36,10 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	position: absolute;
 	top: 2%;
 	width: 100%;
+
+	.close.i-close{
+		right:15px;	
+	}
 
 	.modal-warranty__mobile-continue-button {
 		@include breakpoint(medium, 'min') {
@@ -63,7 +69,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 		.btn-continue {
 			align-items: center;
-			background-color: $brand;
+			background-color: $btn-color;
 			background-image: none;
 			color: $white;
 			display: flex;
@@ -93,11 +99,13 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 	// Close
 	.close {
-		background: transparent url($icon--close) center center no-repeat;
+		// background: transparent url($icon--close) center center no-repeat;
+		color: #747474;
 		background-size: 70%;
 		border: none;
+		top: 10px;
 		font-size: 22px;
-
+		z-index: 50;
 		.icon { display: none; }
 
 		&:focus { outline: none; }
@@ -108,7 +116,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 		align-items: center;
 		display: flex;
 		flex-flow: wrap;
-		padding: 20px 50px;
+		padding: 30px 50px;
 
 		@include breakpoint(medium, 'max') {
 		   padding: 20px 60px 20px 15px;
@@ -119,7 +127,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			background-size: cover;
 			height: 40px;
 			margin: 0 15px 0 0;
-			width: 32px;
+			position: initial;
+			width: 36px;
+
 			@media ( min-width: 768px ) {
 				display: block;
 			}
@@ -131,14 +141,15 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 		.title {
 			box-sizing: border-box;
-			color: $brand;
-			font-size: initial;
-			font-weight: initial;
+			color: #736c6b;
+			font-size: 13px;
+			font-weight: 300;
+			line-height: 1;
+			margin-bottom: 17px;
 			padding: 0;
 			text-align: left;
 			text-transform: initial;
 			width: calc(100% - 100px);
-
 			@include breakpoint(medium, 'max') {
 			   width: auto;
 			}
@@ -146,7 +157,8 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			.gae-title {
 				color: $brand;
 				font-size: 1.4em;
-				margin: 0;
+				line-height: 1;
+				margin: 10px 0 7px 0;
 
 				@include breakpoint(medium, 'max') {
 				   font-size: 14px;
@@ -157,6 +169,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 			.gae-sub {
 				font-size: 1em;
+				font-weight: 600;
+				letter-spacing: 1px;
+				margin-bottom: 0;
 
 				@include breakpoint(medium, 'max') {
 				   font-size: 13px;
@@ -186,12 +201,12 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 		&:checked {
 			& + .modal__cell {
 				.box-opcao-garantia {
-					background-color: $brand;
-					border-color: $brand;
+					background-color: $g-color;
+					border-color: $g-color;
 
 					p.title-garantia,
 					.bottom-garantia {
-						background-color: $brand;
+						background-color: $g-color;
 						color: $white;
 
 
@@ -202,13 +217,13 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				.modal-warning-best-option.modal-warning-best-option--final {
 					display: block;
 					opacity: 1;
-					transform: translate(100px, -95px) scale(1);
+					transform: translate(100px, -85px) scale(1);
 				}
 
 				& + input + .modal__cell .modal-warning-best-option:not(.modal-warning-best-option--final) {
 					display: block;
 					opacity: 1;
-					transform: translate(100px, -95px) scale(1);
+					transform: translate(100px, -85px) scale(1);
 				}
 			}
 		}
@@ -314,22 +329,26 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			width: 100%;
 
 			.recomendado {
-				background: $brand;
+				background: $highlight;
 				border-radius: 3px 3px 0 0;
-				color: $white;
+				color: #ffffff;
 				content: 'recomendado*';
-				font-size: 12px;
-				margin-right: -25%;
-				padding: 3px 10px;
+				font-size: 14px;
+				font-weight: 600;
+				letter-spacing: .5px;
+				line-height: 1;
+				padding: 5px 10px 3px;
 				position: absolute;
 				right: 50%;
 				text-transform: uppercase;
-				top: -20px;
+				top: -15px;
+				transform: translateX(50%);
+				z-index: 5;
 
 				@include breakpoint(860px, 'max') {
 					border-radius: 10px 10px 0 0;
-					margin-right: 1%;
-					right: 0;
+					
+					right: 50%;
 					top: 0;
 					width: 98%;
 					z-index: 9;
@@ -564,7 +583,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			img {
 				display: block;
 				float: left;
-				margin: 5px 15px 0 -10px;
+				margin-right: 10px;
 			}
 
 			p {
@@ -577,13 +596,16 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 		// Produto
 		.warranty-benefits__item--product {
 			// max-height: 100px;
-			overflow: hidden;
-			padding: 64px 20px 0;
 			// min-height: 100px;
+			// padding: 64px 20px 0;
+			align-items: center;
+			display: flex;
+			overflow: hidden;
 
 			p {
 				color: #766c6b;
-				font-size: 15px;
+				font-size: 12px;
+				line-height: 1.3;
 			}
 		}
 
@@ -601,7 +623,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			margin: 0;
 			min-height: 190px;
 			overflow: hidden;
-			padding: 20px 16px 0;
+			padding: 18px 16px 0;
 			padding-bottom: 0;
 			position: relative;
 			vertical-align: top;
@@ -616,7 +638,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				font-weight: normal;
 				line-height: 25px;
 				margin: -18px -25px 0 -25px;
-				padding: 50px 20px 2px 20px;
+				padding: 50px 25px 5px 25px;
 				position: relative;
 				text-align: center;
 				text-transform: none;
@@ -748,7 +770,12 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			&.first-box-garantia {
 				margin-left: 0;
 
-				// .title-garantia { font-weight: 200; }
+				.title-garantia { 
+					padding: 50px 20px 30px 20px;
+					@include breakpoint(860px, 'max'){
+						padding: 20px 20px 10px 60px;
+					}
+				}
 			}
 
 			&:last-child {
@@ -782,9 +809,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			}
 		}
 		.gae-sub-title {
-			font-size: 1.2em;
+			font-size: 1em;
 			margin-bottom: 10px;
-			margin-top: 30px;
+			margin-top: 20px;
 			padding: 0 46px;
 			text-align: left;
 			text-transform: uppercase;
@@ -804,6 +831,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				padding: 15px;
 				position: relative;
 				width: 92%;
+				z-index: 50;
 
 				@include breakpoint ('medium', 'max') {
 					display: block;
@@ -811,22 +839,22 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				&::after {
 					color: $brand;
-					content: 1+1;
+					content: '+';
 					font-size: 25px;
 					position: absolute;
-					right: 25px;
+					right: 24px;
 					top: 50%;
 					transform: translate(-50%, -50%);
 				}
 				&.-is-active::after {
-					content: 1-1;
-					right: 29px;
+					content: '-';
+					right: 31px;
 					transform: translate(-50%, -51%);
 				}
 				&::before {
 					background: $black;
 					border-radius: 20px;
-					content: 11;
+					content: '';
 					height: 25px;
 					opacity: .3;
 					position: absolute;
@@ -840,11 +868,6 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			@media( min-width: #{$tablet-l} ){
 				letter-spacing: 1px;
 				text-transform: none;
-			}
-
-			@media( min-width: #{$desk} ){
-				font-size: 1.3em;
-				margin-bottom: 10px;
 			}
 		}
 
@@ -963,14 +986,11 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				}
 
 				span {
-					bottom: -3px;
-					position: relative;
-
-						a {
-							color: $brand;
-							cursor: pointer;
-							font-weight: 600;
-						}
+					a {
+						color: $brand;
+						cursor: pointer;
+						font-weight: 600;
+					}
 				}
 
 				.warranty__label-check-termos {
@@ -1208,7 +1228,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	.corpo-seguro-garantia {
 		background: $white;
 		font-size: 12px;
-		height: 100%;
+		min-height: 100%;
 		padding: 30px;
 		position: absolute;
 		right: 0;
@@ -1474,9 +1494,11 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	}
 
 	h4 {
+		color: $g-color;
 		font-size: 1.1rem;
+		font-weight: 600;
 		line-height: 20px;
-		margin: 0;
+		margin: 0 0 5px 0 !important;
 		position: relative;
 		text-align: left;
 
@@ -1501,16 +1523,16 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 .icone {
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: contain;
 	display: inline-block;
-	height: 40px;
-	left: -55px;
+	height: 45px;
+	left: -57px;
 	position: absolute;
 	text-indent: -999999px;
 	top: 0;
-	width: 43px;
+	width: 50px;
 
 	@include breakpoint ('medium', 'max') {
+		background-size: contain;
 		height: 25px;
 		margin-right: 5px;
 		position: static;

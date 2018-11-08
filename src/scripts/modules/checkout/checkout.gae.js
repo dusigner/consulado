@@ -195,9 +195,9 @@ Nitro.module('checkout.gae', function() {
 			}
 		});
 
-		if ($(window).width() < 840) {
-			template = 'modal-warranty-mobile';
-		}
+		// if ($(window).width() < 840) {
+		// 	template = 'modal-warranty-mobile';
+		// }
 
 		dust.render(template, data, function(err, out) {
 			if (err) {
@@ -240,7 +240,7 @@ Nitro.module('checkout.gae', function() {
 			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); //descomentar fora do teste
 			// // Adicionando garantia definida ao produto
 			// $('.btn-continue').click(function() {
-
+			var $boxOpcao = $modalWarranty.find('.box-opcao-garantia');
 			// 	if($('#check-termos').is(':checked') || $('#warranty1').is(':checked')) {
 
 			// 		$('.form-termos').removeClass('erro');
@@ -250,6 +250,43 @@ Nitro.module('checkout.gae', function() {
 			// 		$('.form-termos').addClass('erro');
 			// 	}
 			// });
+
+			//abrindo mais detalhes da garantia
+			$('.box-opcao-garantia .show-more').on('click', function() {
+				$(this).parents('.box-opcao-garantia').toggleClass('open');
+				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
+			});
+
+
+			// clique em uma garantia dispara um datalayer
+			$('.box-opcao-garantia').on('click', function() {
+				var label = $(this).find('.title-garantia strong').text() || 'sem garantia';
+
+				dataLayer.push({ event: 'modalEscolhaTipoGarantia', label: label });
+			});
+
+			// clique no 'saiba como funciona' dispara um datalayer
+			$('.garantia-box-proceed .garantia-box-text a').on('click', function() {
+				dataLayer.push({ event: 'modalSaibaMais'});
+			});
+
+			// clique no botao 'continuar' dispara um datalayer
+			$('.garantia-box-proceed .btn-continue').on('click', function() {
+				dataLayer.push({ event: 'modalContinuar'});
+			});
+
+			// abre modal seguro
+			$('.abreefecha').click(function() {
+				$('.seguro-de-garantia').toggleClass('ativo');
+				$('.close-seguro-garantia.abreefecha').css('top', 0);
+
+				if (window.innerWidth < 991) {
+					$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
+						scrollTop: 0
+					}, 'slow');
+				}
+			});
+	
 
 			$('.abreefecha').click(function() {
 				$('.seguro-de-garantia').toggleClass('ativo');
@@ -269,6 +306,7 @@ Nitro.module('checkout.gae', function() {
 				});
 			});
 
+
 			$('.gae-sub-title.-mobile').on('click',  function () {
 				var documento = $(this);
 				if (documento.hasClass('-is-active')) {
@@ -279,7 +317,17 @@ Nitro.module('checkout.gae', function() {
 					$( '#gae-show-mobile' ).addClass( '-is-active' );
 				}
 			});
+			
+			$boxOpcao.on('click', function() {
+				$boxOpcao.removeClass('active');
+				$(this).addClass('active');
+				$('.modal__cell').removeClass('active');
+				$(this).parent('.modal__cell').addClass('active');
 
+			});
+
+			//adicionando garantia definida ao produto
+			$modalWarranty.find('.btn-continue').on('click', self.addkWarranty); 
 			// Scroll Event to close "modal of modals" buttons, im not proud of this.
 			$('#modal-warranty .modal-body').scroll(function() {
 				if($('.seguro-de-garantia').hasClass('ativo')) $('.close-seguro-garantia.abreefecha').css('top', $('#modal-warranty .modal-body').scrollTop());
