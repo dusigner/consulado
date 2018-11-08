@@ -35,7 +35,7 @@ var CRM = {
 
 	getCouponsByCategory: function (category) {
 		return $.getJSON(CRM.formatUrl('CM', 'search'), {
-			_fields: 'id,category,collection,coupon,offer,valProduct',
+			_fields: 'id,category,collection,coupon,offer,offerText,valProduct',
 			...category && {_where: `category=${category}`}
 		});
 	},
