@@ -1,7 +1,7 @@
 'use strict';
 
 var Uri = require('vendors/Uri');
-/*var CRM = require('modules/store/crm');*/
+// var CRM = require('modules/store/crm');
 
 var redirect = require('modules/store/redirect');
 
@@ -17,7 +17,7 @@ define('store', function() {
 	this.accountName  = 'consul';
 
 	var publicUrl = [
-		'^\/$',
+		'^\/$', // eslint-disable-line
 		'/institucional',
 		'/pre-home'
 	];
@@ -52,7 +52,7 @@ define('store', function() {
 		// return this.checkAccess();
 
 		if( this.isCorp ) {
-			
+
 			this.autoLogin();
 
 			// Trocar URL logo para empresas
@@ -104,17 +104,17 @@ define('store', function() {
 		$.removeCookie('userData', {path: '/'});
 	};
 
-	this.checkAccess = function() {		
-		
+	this.checkAccess = function() {
+
 		this.isPrivateUrl = !publicUrl.some(function(item) {
-			
+
 			return new RegExp(item, 'i').test(this.uri.path());
 
 		}.bind(this));
 
 		var approved = false;
 
-		if(Object.keys(this.userData).length && this.userData.xValidationPJ !== 'reprovado') {			
+		if(Object.keys(this.userData).length && this.userData.xValidationPJ !== 'reprovado') {
 			approved = true;
 		}
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>performance-page-blackfriday-2018</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/cns-performance-page-blackfriday-2018.css" />
+</head>
+
+<body data-controller="cns-performance-page-blackfriday-2018">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../03 - Custom Templates/CNSoffersPerformancePage.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../03 - Custom Templates/CNScounterPerformancePage.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../03 - Custom Templates/CNSshelfsPerformancePage.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/cns-performance-page-blackfriday-2018.min.js"></script>
+</body>
+</html>

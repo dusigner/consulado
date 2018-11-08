@@ -5,24 +5,13 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
-	
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+	<!--
+		<link rel="stylesheet" href="<!-- @echo assetsPath -->/cns-performance-page-blackfriday-2018.css" />
+	 -->
 </head>
 <body data-controller="home">
-
-	<!-- AVISO -->
-	<!--<div class="advertisement">--> 
-	<!--	<div class="centralize">-->
-	<!--		<span>OK</span>-->
-	<!--		<p>-->
-	<!--			Estamos modernizando nossos sistemas e, por isso, até o dia 25 de fevereiro os prazos de frete, cancelamentos e estornos serão alterados.-->
-	<!--			<a href="https://consul.zendesk.com/hc/pt-br/articles/207800483-Aviso-Importante" title="Saiba mais" target="_blank">Saiba mais</a>-->
-	<!--		</p>-->
-	<!--	</div>-->
-	<!--</div>-->
-	<!-- AVISO -->
-
-
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
@@ -33,12 +22,7 @@
 
 	<!-- [ Desktop ] - Slider -->
 	<div class="banners hide-extra-small">
-	    <!-- Fake banner-->
-		<div class="fake-banner">
-			<vtex:contentPlaceHolder id="FakeBanner" />
-		</div>
-		<!-- Fake banner-->
-	    
+		
 		<!-- Banner -->
 		<div class="banner-principal slides"><vtex:contentPlaceHolder id="SliderHome" /></div>
 		<!-- /Banner -->
@@ -59,12 +43,7 @@
 
 	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
-	    <!-- Fake banner-->
-		<div class="fake-banner">
-			<vtex:contentPlaceHolder id="FakeBannerMobile" />
-		</div>
-		<!-- Fake banner-->
-	
+		
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="SliderHomeMobile" /></div>
 		<!-- /Banner -->
@@ -118,8 +97,16 @@
 	</div>
 	<!-- Lead newsletter footer -->
 
-	<!-- [ CHAORDIC ] - TOP 
-	 <div class="container"><div chaordic="top"></div></div> 
+	<div class="hide hidden" style="display: none !important;">
+		<!-- @include ../03 - Custom Templates/CNSoffersPerformancePage.html -->
+
+		<!-- @include ../03 - Custom Templates/CNScounterPerformancePage.html -->
+
+		<!-- @include ../03 - Custom Templates/CNSshelfsPerformancePage.html -->
+	</div>
+
+	<!-- [ CHAORDIC ] - TOP
+	 <div class="container"><div chaordic="top"></div></div>
 	 /[ CHAORDIC ] - TOP -->
 
 	<!-- [ CHAORDIC ] TOP -->
@@ -184,6 +171,17 @@
 	<div data-chaordic="bottom"></div>
 	<!-- /[ CHAORDIC ] BOTTOM -->
 
+	<!-- VITRINES VTEX -->
+	<section class="slider container vitrines">
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome1" />
+		</div>
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome2" />
+		</div>
+	</section>
+	<!-- /VITRINES VTEX -->
+
 	<!-- Serviços -->
 	<vtex:template id="0-consul-servicos" />
 	<!-- /Serviços -->
@@ -204,17 +202,21 @@
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
-	
+
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
-	
+
 	<!-- Banner novos controles -->
 	<div class="hide" style="display: none;">
 		<!-- Custom -->
 		<vtex:aBannerTeste />
-		
+
 		<!-- Controle -->
 		<vtex:contentPlaceHolder id="banner-novo-para-testes" />
 	</div>
 	<!-- /Banner novos controles -->
+
+	<!--
+		<script src="<!-- @echo assetsPath -->/cns-performance-page-blackfriday-2018.min.js"></script>
+	 -->
 </body>
 </html>

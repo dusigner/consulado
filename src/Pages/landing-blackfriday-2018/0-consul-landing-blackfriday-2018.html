@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 <head>
-	<title>Black Friday | Consul</title>
-	<vtex:metaTags />
+	<!-- <vtex:metaTags /> -->
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
-	
+
 	<!-- @if DEBUG=true -->
-	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../includes/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
-	
+
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css" />
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul-landing-blackfriday-2018.css" />
 </head>
@@ -39,7 +38,7 @@
 								<i class="icon icon-close"></i>
 							</a>
 							<h2 class="lpbf-form__title text-center">
-								Escolha es produtos que você<br />deseja na <strong>Black Friday</strong>
+								Escolha os produtos que você<br />deseja na <strong>Black Friday</strong>
 							</h2>
 
 							<div class="lpbf-categories-chosen js-categories">
@@ -84,21 +83,21 @@
 										<span class="lpbf-categorys__text">Freezer</span>
 									</label>
 									<!-- /Freezer -->
-	
+
 									<!-- Forno -->
 									<label class="lpbf-categorys__item" for="forno" tabindex="4">
 										<input type="checkbox" name="receberOfertasBlackFriday" value="forno" id="forno" />
 										<span class="lpbf-categorys__text">Forno</span>
 									</label>
 									<!-- Forno -->
-	
+
 									<!-- Cooktop -->
 									<label class="lpbf-categorys__item" for="cooktop" tabindex="4">
 										<input type="checkbox" name="receberOfertasBlackFriday" value="cooktop" id="cooktop" />
 										<span class="lpbf-categorys__text">Cooktop</span>
 									</label>
 									<!-- Cooktop -->
-	
+
 									<!-- Coifa -->
 									<label class="lpbf-categorys__item" for="coifa" tabindex="4">
 										<input type="checkbox" name="receberOfertasBlackFriday" value="coifa" id="coifa" />
@@ -154,7 +153,7 @@
 									<label for="li-concordo" tabindex="7">
 										<input type="checkbox" name="li-concordo" id="li-concordo"  tabindex="7" checked="checked" />
 										<span></span>
-										Aceito receber por email ofertas exclusivas da Consul 
+										Aceito receber por email ofertas exclusivas da Consul
 									</label>
 								</fieldset>
 
@@ -163,7 +162,7 @@
 								</button>
 
 							</div>
-							
+
 							<button class="form-blackfriday__submit continued text-uppercase" type="submit" id="submit-continued" name="Continuar"  tabindex="8">
 								<span>Continuar</span>
 							</button>
@@ -259,14 +258,14 @@
 								<h2>Solange</h2>
 								<h3>Rio de Janeiro</h3>
 								<p>Tudo perfeito, entregaram em 1 semana. O atendimento do televendas foi excelente. Os entregadores subiram pelas escadas com o refrigerador, preocupados em não retirar a embalagem, todos muito educado. Amei a minha compra. Obrigada Consul.</p>
-							</div>	
+							</div>
 						</div>
 						<!-- <div class="depoimento-4">
-							<div class="box">	
+							<div class="box">
 								<h2>Thiago</h2>
 								<h3>Osasco - SP</h3>
 								<p>O site passa de forma bem clara todas as informações necessárias, o processo de compra é simples, a entrega foi pontual e estava sendo informado o tempo todo sobre a entrega via SMS. Gostei muito de comprar com vocês.</p>
-							</div>		
+							</div>
 						</div> -->
 					</div>
 				</div>
@@ -279,7 +278,7 @@
 	<div class="prateleira-bf">
 		<div class="container">
 			<div class="row">
-				<p class="txt-prateleira text-center">Confira as promoções<br />mais bem pensada</p>
+				<vtex:contentPlaceHolder id="textoPrateleira" />
 				<div class="prateleira-slider">
 					<vtex:contentPlaceHolder id="Prateleira Ofertas Landing" />
 				</div>
@@ -287,6 +286,129 @@
 		</div>
 	</div>
 	<!-- Prateleira -->
+
+	<!-- FAQ -->
+	<div class="faq">
+		<div class="container">
+			<h3 class="title">
+				Dúvidas Frequentes sobre a Black Friday
+			</h3>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						O que é Black Friday?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						A Black Friday é a data mais importante do ano para o varejo nacional. A Consul, assim como diversas outras lojas, oferece o máximo de vantagens e promoções para você começar a fazer suas compras de fim de ano com economia antecipadamente. Classificada como excelente pela especialista em reputação de e-commerce, a Ebit, nossa loja virtual é totalmente segura para compras em qualquer época do ano.
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						Quando acontece a Black Friday da Consul?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						A Black Friday esse ano é na penúltima sexta-feira de novembro, dia 23. Mas, a Consul, pensando em você e na sua casa, vai ter ofertas o mês todo. Basta se cadastrar e receber as nossas melhores ofertas antes de todo mundo. É super rápido e simples! ;)
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						As políticas de troca e devolução continuam valendo na Black Friday?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						Sim, continuam valendo na Black Friday. Para solicitar uma troca ou devolução é necessário que o eletrodoméstico não apresente sinais de mau uso e que ainda esteja com seus componentes originais presentes como no ato da entrega, assim como etiquetas e manuais. E fique atento: a solicitação em nosso Canal de Atendimento Online (https://consul.custhelp.com/app/atendimento) só poderá ser realizada em até 7 dias úteis após o recebimento do eletrodoméstico. A nota fiscal referente à compra também deverá ser apresentada para validação. Para mais informações, <a href="https://consul.custhelp.com/" title="custhelp" target="_blank">clique aqui</a>.
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						E como fica o prazo de entrega?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						Todo tempo de entrega é contabilizado a partir do pagamento do produto. Por ser época de Black Friday, é possível que ele sofra uma pequena modificação, assim como o prazo para ocorrer os faturamentos. Mas fique tranquilo! Vamos trabalhar ao máximo para que seu eletrodoméstico chegue em casa no tempo certo. ;)
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						Onde posso tirar dúvidas e recorrer caso eu tenha algum problema ou dúvida com meu pedido?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						Para sua comodidade, você pode entrar em contato conosco pela nossa Central de Atendimento Online (https://consul.custhelp.com/app/atendimento). Estamos disponíveis para descomplicar qualquer dúvida ou processo!
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						Todos os produtos entram na Black Friday?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						Nem todos, apenas aqueles que estiverem com o selo da Black Friday ao lado. E como a Black Friday da Consul desse ano está antecipada, nenhum eletrodoméstico que estiver com desconto antes do dia 23 (data oficial da Black Friday) diminuirá ainda mais de preço.
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						O desconto da Black Friday é real?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						Sim, todos os descontos da Black Friday da Consul são verdadeiros. Pode confiar e aproveitar!
+					</p>
+				</div>
+			</div>
+
+			<div class="wrapper">
+				<div class="wrapper__question">
+					<p class="wrapper__question__title">
+						Por que comprar na Black Friday da Consul?
+					</p>
+					<i class="icon icon-arrow-down"></i>
+				</div>
+				<div class="wrapper__answer">
+					<p class="wrapper__answer__text">
+						A Black Friday da Consul é o empurrãozinho que faltava para você que desejava comprar os melhores eletrodomésticos sem gastar muito. É também a sua chance de completar ou renovar a casa com total facilidade.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /FAQ -->
+
 
 	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->

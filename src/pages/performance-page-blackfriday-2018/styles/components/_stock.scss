@@ -1,0 +1,33 @@
+.shelf__image {
+	background: #fff;
+}
+
+.shelf__stock {
+	@include responsiveFont(14, 16, true);
+	background-color: #fff;
+	border-top: solid 2px $theme-color;
+	font-weight: 700;
+	min-height: 28px;
+	padding: 4px 0 1px;
+	position: relative;
+	text-align: center;
+
+	&:after {
+		@include spinner($theme-color);
+		border-width: 1px;
+		content: '';
+		height: 15px;
+		top: 2px;
+		width: 15px !important;
+	}
+
+	&.loaded {
+		&:after {
+			content: none;
+		}
+	}
+
+	span {
+		color: $theme-color;
+	}
+}

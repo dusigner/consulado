@@ -5,8 +5,122 @@ body.home {
 		@include breakpoint(small, 'max') { display: none; }
 	}
 
-	.btn-comparar {
-		display: none;
+	.btn-comparar { display: none }
+
+	.slider.vitrines {
+		@include breakpoint(600px, 'max') {
+			max-width: 100%;
+		}
+		.prateleira {
+			h2 {
+				@include responsiveFont(30);
+				color: #736c6b;
+				display: block;
+				margin: 20px 0;
+				@include breakpoint(small, 'max') {
+					background-color: #9aca3c;
+					border: 1px solid #fff;
+					color: #fff;
+					padding: 15px;
+					&:after {
+						color: #fff;
+						font-size: 5px;
+						top: 50%;
+						transform: translateY(-50%) rotate(0deg) !important;
+					}
+					+ul {
+						overflow: hidden;
+						padding: 0 20px;
+						transition: max-height .8s ease;
+					}
+					&.shelf-pre-title--active {
+						&:after {
+							top: 50%;
+							transform: translateY(-50%) rotate(180deg) !important;
+						}
+						+ul {
+							max-height: 0;
+						}
+					}
+				}
+			}
+
+			ul {
+				&.slick-slider {
+					@include breakpoint(small, 'max') {
+						padding: 0 50px;
+						.slick-arrow {
+							color: #f47921;
+							display: none !important;
+							&.slick-prev {
+								left: 4%;
+							}
+							&.slick-next {
+								right: 4%;
+							}
+							&:before {
+								font-size: 1.5625rem;
+							}
+						}
+						/* .slick-list {
+							li {
+								border: 1px solid #ccc;
+								margin: 0;
+								padding: 10px;
+								text-align: left;
+							}
+						} */
+						.slick-dots {
+							bottom: 0;
+							display: block !important;
+							margin: 5% 0;
+							position: relative;
+							li {
+								display: inline-block;
+    							float: none !important;
+								height: 20px!important;
+								margin: 0 5px 0 0;
+								padding: 0;
+								position: relative;
+								width: 20px!important;
+								&.slick-active {
+									button {
+										background: #f47921;
+										&:after {
+											border: 2px solid #e4e4e4;
+										}
+									}
+								}
+							}
+						}
+
+						li article .detalhes {
+							.image {
+								display: block!important;
+								margin: 0 auto!important;
+								// max-height: 130px;
+								overflow: hidden;
+
+								& > span { min-height: auto }
+							}
+
+							.prod-info {
+								margin-top: 1rem;
+								text-align: center;
+							}
+						}
+					}
+					@include breakpoint(600px, 'max') {
+						padding: 0 30px;
+						.slick-arrow {
+							display: block !important;
+						}
+					}
+				}
+			}
+
+			.department-nav { display: none }
+		}
 	}
 }
 

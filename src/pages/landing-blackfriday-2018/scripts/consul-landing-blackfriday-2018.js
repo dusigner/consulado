@@ -11,12 +11,11 @@ require('vendors/slick');
 require('modules/store/facebook-init');
 // require('modules/product/facebook-share');
 
+require('./modules/accordion');
+
 var CRM = require('modules/store/crm');
 
-Nitro.setup(function () {
-
-	var cupons = null;
-
+Nitro.setup(['accordion'], function () {
 	var contador;
 
 	var Index = {
@@ -146,11 +145,11 @@ Nitro.setup(function () {
 							dataLayer.push(
 								{ event: 'generic-event-trigger', label: 'sucesso cadastro', action: 'Cadastro de Interesses', category: 'LP - Black Friday' }
 							);
-							
+
 							$(categoryArray).each((index, category) => {
-							
+
 								dataLayer.push(
-								 	{ event: 'generic-event-trigger', label: category, action: 'Sucesso Cadastro', category: 'LP - Black Friday' }
+									{ event: 'generic-event-trigger', label: category, action: 'Sucesso Cadastro', category: 'LP - Black Friday' }
 								);
 							});
 
@@ -165,36 +164,35 @@ Nitro.setup(function () {
 
 		sliderDepoimentos: function() {
 			// if ($(window).width() <= 980) {
-				$('.depoimentos .bg-depoimentos').slick({
-					arrows: false,
-					infinite: true,
-					dots: true,
-					slidesToShow: 3,
-					slidesToScroll: 3,
-					responsive: [{
-						breakpoint: 990,
-						settings: {
-							arrows: false,
-							dots: true,
-							slidesToShow: 1,
-							slidesToScroll:1
-						}
-					}, {
-						breakpoint: 480,
-						settings: {
-							arrow: false,
-							dots: true,
-							slidesToShow: 1,
-							slidesToScroll: 1
-						}
-					}]
-				});
+			$('.depoimentos .bg-depoimentos').slick({
+				arrows: false,
+				infinite: true,
+				dots: true,
+				slidesToShow: 3,
+				slidesToScroll: 3,
+				responsive: [{
+					breakpoint: 990,
+					settings: {
+						arrows: false,
+						dots: true,
+						slidesToShow: 1,
+						slidesToScroll:1
+					}
+				}, {
+					breakpoint: 480,
+					settings: {
+						arrow: false,
+						dots: true,
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
+				}]
+			});
 			// }
 		},
 
 		// monta slick da prateleira
 		sliderPrateleira: function() {
-			console.log('slick');
 			$('.helperComplement').remove();
 			$(window).on('load', function() {
 				$('.prateleira-bf .prateleira-slider ul').slick({
@@ -223,7 +221,7 @@ Nitro.setup(function () {
 				});
 			});
 		},
-		
+
 		// mostra mais produtos para selecionar
 		showProducts: function () {
 
@@ -237,14 +235,14 @@ Nitro.setup(function () {
 				$elementForm.find('.lpbf-categorys').css('display', 'flex');
 				$elementForm.find('.js-categories li').remove();
 			});
-			
+
 			// Exibe mais produtos para escolher
 			$('#click-more-products a').on('click', function (e) {
 				e.preventDefault();
 				$elementForm.addClass('active');
 				$elementForm.find('#click-more-products, .form-blackfriday-2018').hide();
 			});
-			
+
 			// Esconde a opção de mais produtos
 			$('a.btn-close').on('click', function () {
 				$elementForm.removeClass('active');
@@ -255,26 +253,26 @@ Nitro.setup(function () {
 			$('#form-bf-2018 #submit-continued[type="submit"]').on('click', function (e) {
 				e.preventDefault();
 
-				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() { 
-					return this.value; 
+				var category = $('.lpbf-categorys__item input[type=checkbox]:checked').map(function() {
+					return this.value;
 				});
 
 				// Renderiza opções de categorias escolhidas
-				$.each(category, function (i) {			
+				$.each(category, function (i) {
 					var $renderOptions = ' <li class="txt-categories">' + category[i] + '</li>';
 					$('.js-categories ul').append($renderOptions);
-				});									
-			
+				});
+
 				$('.js-categories').show();
 				$('.lpbf-categorys').hide();
 				$elementForm.addClass('active-chosen');
 				$elementForm.removeClass('active');
-				$elementForm.find('.form-blackfriday-2018').fadeIn();				
-				
-			});		
+				$elementForm.find('.form-blackfriday-2018').fadeIn();
+
+			});
 		}
 
-		
+
 	};
 
 	Index.init();

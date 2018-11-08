@@ -1,0 +1,112 @@
+<section class="shelfs__section">
+	<div class="container">
+		<!-- Tabs nav -->
+		<ul class="tabs__nav" role="tablist">
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link is-active" href="#tabs-pane-freezers" data-tab="#tabs-pane-freezers">Geladeiras</a>
+			</li>
+
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link" href="#tabs-pane-washing" data-tab="#tabs-pane-washing">Lavadoras</a>
+			</li>
+
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link" href="#tabs-pane-cookers" data-tab="#tabs-pane-cookers">Fogões</a>
+			</li>
+
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link" href="#tabs-pane-airs" data-tab="#tabs-pane-airs">Ar-condicionados</a>
+			</li>
+
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link" href="#tabs-pane-beers" data-tab="#tabs-pane-beers">Cervejeiras</a>
+			</li>
+
+			<li class="tabs__nav-item">
+				<a class="tabs__nav-link" href="#tabs-pane-purifiers" data-tab="#tabs-pane-purifiers">Purificadores</a>
+			</li>
+		</ul>
+		<!--/ Tabs nav -->
+
+		<!-- Select nav -->
+		<div class="dropdown__nav">
+			<span class="dropdown__nav-selected">Geladeiras</span>
+			<span class="icon icon-arrow-down"></span>
+
+			<ul class="dropdown__nav-list">
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-freezers" data-tab="#tabs-pane-freezers">Geladeiras</a>
+				</li>
+
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-washing" data-tab="#tabs-pane-washing">Lavadoras</a>
+				</li>
+
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-cookers" data-tab="#tabs-pane-cookers">Fogões</a>
+				</li>
+
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-airs" data-tab="#tabs-pane-airs">Ar-condicionados</a>
+				</li>
+
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-beers" data-tab="#tabs-pane-beers">Cervejeiras</a>
+				</li>
+
+				<li class="dropdown__nav-item">
+					<a class="dropdown__nav-link" href="#tabs-pane-purifiers" data-tab="#tabs-pane-purifiers">Purificadores</a>
+				</li>
+			</ul>
+		</div>
+		<!--/ Select nav -->
+
+		<!-- Tabs content -->
+		<div class="tabs__content">
+			<div class="tabs__pane is-active" id="tabs-pane-freezers">
+				<vtex:contentPlaceHolder id="Abas de produtos - Geladieras" />
+
+				<!-- @if DEBUG=true -->
+				<!-- @include ./mockedShelfs.html -->
+				<!-- @endif -->
+			</div>
+
+			<div class="tabs__pane" id="tabs-pane-washing">
+				<vtex:contentPlaceHolder id="Abas de produtos - Lavadoras" />
+
+				<!-- @if DEBUG=true -->
+				<!-- @include ./mockedShelfs.html -->
+				<!-- @endif -->
+			</div>
+
+			<div class="tabs__pane" id="tabs-pane-cookers">
+				<vtex:contentPlaceHolder id="Abas de produtos - Fogões" />
+			</div>
+
+			<div class="tabs__pane" id="tabs-pane-airs">
+				<vtex:contentPlaceHolder id="Abas de produtos - Ar-condicionados" />
+
+				<!-- @include ./mockedShelfs.html -->
+			</div>
+
+			<div class="tabs__pane" id="tabs-pane-beers">
+				<vtex:contentPlaceHolder id="Abas de produtos - Cervejeiras" />
+			</div>
+
+			<div class="tabs__pane" id="tabs-pane-purifiers">
+				<vtex:contentPlaceHolder id="Abas de produtos - Purificadores" />
+
+				<!-- @include ./mockedShelfs.html -->
+			</div>
+		</div>
+		<!--/ Tabs content -->
+
+		<!-- @if DEBUG=true -->
+		<div class="shelfs__disclaimer">
+			<a class="shelfs__disclaimer-btn" href="#">Veja mais produtos na Black Friday</a>
+		</div>
+		<!-- @endif -->
+
+		<vtex:contentPlaceHolder id="Call to action para Black Friday" />
+	</div>
+</section>

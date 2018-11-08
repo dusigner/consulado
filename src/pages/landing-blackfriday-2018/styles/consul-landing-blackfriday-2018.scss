@@ -24,6 +24,9 @@
 @import 'layout/gridresponsive';
 // @import 'components/produto/facebook-share';
 
+// Modules
+@import 'modules/faq';
+
 $loja-color: #9aca3d;
 
 // Base
@@ -74,11 +77,11 @@ $loja-color: #9aca3d;
 	}
 }
 
-#lpbf {	
+#lpbf {
 	display: block;
 	height: 696px;
-	.container{
-		@include breakpoint('small', 'max'){
+	.container {
+		@include breakpoint('small', 'max') {
 			padding: 0 10px;
 		}
 	}
@@ -173,7 +176,7 @@ $loja-color: #9aca3d;
 			width: 84px;
 			@include breakpoint('small', 'max') { color: #fff; }
 
-			&.colon { 
+			&.colon {
 				color: #fff;
 				width: auto;
 			}
@@ -357,22 +360,22 @@ $loja-color: #9aca3d;
 			border-color: $loja-color;
 		}
 	}
-	
+
 	&:active { outline: none; }
-	
+
 	input[type='checkbox']:checked {
 		& + .lpbf-categorys__text {
 			background-color: #666666;
 			color: #ececec;
 
-			&:before { 
+			&:before {
 				background-color: $loja-color;
 				border: 1px solid $loja-color;
-				
+
 			}
-			&:after { 
+			&:after {
 				background-color: $loja-color;
-				color: #fff; 
+				color: #fff;
 				left: 11%;
 				position: absolute;
 				top: 40%;
@@ -382,11 +385,11 @@ $loja-color: #9aca3d;
 }
 
 .lpbf-categorys__text {
-	@include breakpoint('extra-small', 'max') { 
+	@include breakpoint('extra-small', 'max') {
 		@include rfs(10.5);
 		padding: .8em 0 .8em 3.5em;
 	}
-	@include breakpoint('small', 'max') { 
+	@include breakpoint('small', 'max') {
 		padding: .8em 0 .8em 3em;
 	}
 	@include rfs(15);
@@ -424,7 +427,7 @@ $loja-color: #9aca3d;
 
 // Form
 #form-bf-2018 {
-	@include breakpoint('small', 'max'){
+	@include breakpoint('small', 'max') {
 		padding: 1em;
 	}
 	padding: 1em 2em;
@@ -463,7 +466,7 @@ $loja-color: #9aca3d;
 			font-weight: bold;
 			margin-top: 26px;
 			padding: 8px 0;
-			transition: 
+			transition:
 				color .4s ease,
 				font-size .4s ease
 			;
@@ -663,7 +666,7 @@ $loja-color: #9aca3d;
 		}
 	}
 
-	
+
 }
 
 .form-blackfriday__submit {
@@ -733,7 +736,7 @@ $loja-color: #9aca3d;
 	color: #fff;
 	margin: 0;
 	padding: 1.5em 2em;
-	
+
 }
 //Form
 // ===============================================================
@@ -780,7 +783,7 @@ $loja-color: #9aca3d;
 	@include breakpoint('extra-small', 'max') {
 		margin-top: 50px;
 	}
-	
+
 	background: transparent url('/arquivos/apostrofo.png') center center no-repeat;
 	background-size: contain;
 	height: 93px;
@@ -808,7 +811,7 @@ $loja-color: #9aca3d;
 		border-top-right-radius: 0;
 		margin-left: 45px;
 	}
-	.slick-list{
+	.slick-list {
 		@include breakpoint('extra-small', 'max') {
 			overflow: visible;
 		}
@@ -866,7 +869,7 @@ $loja-color: #9aca3d;
 // prateleira
 .prateleira-bf {
 	background: #000 url('/arquivos/bg-section-002.jpg') 50% 0 no-repeat;
-	margin-top: -200px;
+
 	.prateleira {
 		background-color: #fff;
 		border-radius: 30px 30px 0 0;
@@ -881,4 +884,36 @@ $loja-color: #9aca3d;
 	}
 	.prateleira.default .slick-next { right: 12px; }
 	.prateleira.default .slick-prev { left: 12px; }
+}
+
+//FAQ
+.faq {
+	background: #262626;
+	padding: 30px 0 50px;
+	position: relative;
+
+	&:before {
+		background-color: #9aca3c;
+		content: '';
+		display: block;
+		height: 8px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.title {
+		color: #fff;
+		font-size: 40px;
+		font-weight: 100;
+		margin: 0 0 40px;
+		text-align: center;
+		text-transform: inherit;
+
+		@include breakpoint('small', 'max') {
+			font-size: 24px;
+			line-height: 24px;
+		}
+	}
 }

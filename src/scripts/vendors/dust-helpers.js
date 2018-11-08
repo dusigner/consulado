@@ -1,12 +1,69 @@
 /*! dustjs-helpers - v1.4.0
  * https://github.com/linkedin/dustjs-helpers
  * Copyright (c) 2014 Aleksander Williams; Released under the MIT License */
-(function(dust) {
+'use strict';
+
+$.extend(dust.filters, {
+	capitalizeSequence: function (str) {
+		return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
+			return index === 0 ? letter.toUpperCase() : letter.toLowerCase();
+		}).replace(/\s+/g, '');
+	},
+
+	formatDateAndHour: function (value) {
+		var d = (value) ? new Date(value) : new Date(),
+			month = d.getUTCMonth() + 1,
+			day = d.getUTCDate(),
+			hours = d.getUTCHours(),
+			minutes = d.getUTCMinutes();
+
+		return (day < 10 ? '0' : '') + day + '/' +
+			(month < 10 ? '0' : '') + month + ' - ' +
+			(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+	},
+
+	formatDate: function (value) {
+		var d = (value) ? new Date(value) : new Date(),
+			month = d.getUTCMonth() + 1,
+			day = d.getUTCDate();
+
+		return (day < 10 ? '0' : '') + day + '/' +
+			(month < 10 ? '0' : '') + month;
+	},
+
+	formatDateAndYear: function (value) {
+		var d = (value) ? new Date(value) : new Date(),
+			month = d.getUTCMonth() + 1,
+			day = d.getUTCDate(),
+			year = d.getFullYear();
+
+		return (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + (year < 10 ? '0' : '') + year;
+	},
+
+
+	formatPhone: function (value) {
+		value = value.replace(/D/g, '');
+		value = value.replace(/^(\d\d)(\d)/g, '($1) $2');
+		value = value.replace(/(\d{5})(\d)/, '$1-$2');
+
+		return value;
+	},
+
+	formatDocument: value => value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4'),
+	formatMovimentationValue: value => value.replace('-', ''),
+	formatValue: value => window.defaultStoreCurrency + ' ' + _.formatCurrency(value),
+	intAsCurrency: value => _.intAsCurrency(value),
+	formatCurrency: value => _.formatCurrency(parseFloat(value)),
+	notificationShortTitle: value => value.substr(0, 80),
+	sanitize: value => $.replaceSpecialChars(value).toLowerCase(),
+	parseInt: value => parseInt(value)
+});
+(function (dust) {
 
 	//using the built in logging method of dust when accessible
-	var _log = dust.log ? function(mssg) {
+	var _log = dust.log ? function (mssg) {
 		dust.log(mssg, "INFO");
-	} : function() {};
+	} : function () { };
 
 	function isSelect(context) {
 		var value = context.current();
@@ -44,7 +101,7 @@
 			actualKey = context.current().selectKey;
 			//	supports only one of the blocks in the select to be selected
 			if (context.current().isResolved) {
-				filterOp = function() {
+				filterOp = function () {
 					return false;
 				};
 			}
@@ -73,7 +130,7 @@
 
 	function coerce(value, type, context) {
 		if (value) {
-			switch (type || typeof(value)) {
+			switch (type || typeof (value)) {
 				case 'number':
 					return +value;
 				case 'string':
@@ -112,7 +169,7 @@
  dust render emits <	and we return the partial output
 
 		*/
-		"tap": function(input, chunk, context) {
+		"tap": function (input, chunk, context) {
 			// return given input if there is no dust reference to resolve
 			// dust compiles a string/reference such as {foo} to a function
 			if (typeof input !== "function") {
@@ -124,7 +181,7 @@
 
 			//use chunk render to evaluate output. For simple functions result will be returned from render call,
 			//for dust body functions result will be output via callback function
-			returnValue = chunk.tap(function(data) {
+			returnValue = chunk.tap(function (data) {
 				dustBodyOutput += data;
 				return '';
 			}).render(input, context);
@@ -142,7 +199,7 @@
 			}
 		},
 
-		"sep": function(chunk, context, bodies) {
+		"sep": function (chunk, context, bodies) {
 			var body = bodies.block;
 			if (context.stack.index === context.stack.of - 1) {
 				return chunk;
@@ -154,7 +211,7 @@
 			}
 		},
 
-		"idx": function(chunk, context, bodies) {
+		"idx": function (chunk, context, bodies) {
 			var body = bodies.block;
 			if (body) {
 				return bodies.block(chunk, context.push(context.stack.index));
@@ -179,7 +236,7 @@
 		cond argument should evaluate to a valid javascript expression
  **/
 
-		"if": function(chunk, context, bodies, params) {
+		"if": function (chunk, context, bodies, params) {
 			var body = bodies.block,
 				skip = bodies['else'];
 			if (params && params.cond) {
@@ -216,10 +273,10 @@
  @param type (optional), supported types are	number, boolean, string, date, context, defaults to string
  Note : use type="number" when comparing numeric
  **/
-		"eq": function(chunk, context, bodies, params) {
+		"eq": function (chunk, context, bodies, params) {
 			if (params) {
 				params.filterOpType = "eq";
-				return filter(chunk, context, bodies, params, function(expected, actual) {
+				return filter(chunk, context, bodies, params, function (expected, actual) {
 					return actual === expected;
 				});
 			}
@@ -231,7 +288,7 @@
 		 * Note : size helper is self closing and does not support bodies
 		 * @param key, the element whose size is returned
 		 */
-		"size": function(chunk, context, bodies, params) {
+		"size": function (chunk, context, bodies, params) {
 			var key, value = 0,
 				nr, k;
 			params = params || {};
@@ -271,23 +328,23 @@
 
 })(typeof exports !== 'undefined' ? require('dustjs-linkedin') : dust);
 
-dust.helpers.neq = function(chunk, context, bodies, params) {
-    var location = params.key,
-        value = params.value,
-        body = bodies.block;
+dust.helpers.neq = function (chunk, context, bodies, params) {
+	var location = params.key,
+		value = params.value,
+		body = bodies.block;
 
-    if (location !== value) {
-        chunk.render(body, context);
+	if (location !== value) {
+		chunk.render(body, context);
 	}
 
-    return chunk;
+	return chunk;
 };
 
-dust.helpers.equalzero = function(chunk, context, bodies, params) {
+dust.helpers.equalzero = function (chunk, context, bodies, params) {
 	let location = params.key,
-        value = params.value,
+		value = params.value,
 		body = bodies.block;
-		
+
 	if (location == 0) {
 		chunk.render('Igual a zero');
 	} else {
@@ -295,4 +352,4 @@ dust.helpers.equalzero = function(chunk, context, bodies, params) {
 	}
 
 	return chunk;
-}
+};
