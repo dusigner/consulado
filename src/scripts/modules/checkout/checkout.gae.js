@@ -63,29 +63,22 @@ Nitro.module('checkout.gae', function() {
 
 		/* validação via modal desativada
 		$('#btn-concordo').off().on('click', function() {
-
 			var attachmentName = 'Aceite do Termo',
 				content = {
 					'Aceito': 'Aceito'
 				};
-
 			self.orderForm.items.forEach(function(elem, elemIndex) {
-
 				elem.bundleItems.filter(function(bundle) {
 					return bundle.attachmentOfferings.length > 0;
 				}).forEach(function(bundle) {
-
 					// console.log('bundle', bundle);
-
 					return vtexjs.checkout.addBundleItemAttachment(elemIndex, bundle.id, attachmentName, content);
 				});
 			});
-
 			$('#modal-services').modal('hide');
 			//$('.btn-place-order').trigger('click');
 			window.location.href = '#/orderform';
 		});
-
 		*/
 
 
@@ -195,9 +188,9 @@ Nitro.module('checkout.gae', function() {
 			}
 		});
 
-		if ($(window).width() < 840) {
-			template = 'modal-warranty-mobile';
-		}
+		// if ($(window).width() < 840) {
+		// 	template = 'modal-warranty-mobile';
+		// }
 
 		dust.render(template, data, function(err, out) {
 			if (err) {
@@ -253,10 +246,23 @@ Nitro.module('checkout.gae', function() {
 
 			$('.abreefecha').click(function() {
 				$('.seguro-de-garantia').toggleClass('ativo');
+				$('.close-seguro-garantia.abreefecha').css('top', 0);
+
+				if (window.innerWidth < 991) {
+					$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
+						scrollTop: 0
+					}, 'slow');
+				}
 			});
 
 			$('.abreefecha-pgto').click(function() {
 				$('.autorizacao-de-pgto').toggleClass('ativo');
+
+				if (window.innerWidth < 991) {
+					$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
+						scrollTop: 0
+					}, 'slow');
+				}
 			});
 
 			// Tagueamento do click de envio
@@ -268,6 +274,22 @@ Nitro.module('checkout.gae', function() {
 					label: $(this).parents('.modal-body').find('.active .title-garantia').text()
 				});
 			});
+
+			$('.gae-sub-title.-mobile').on('click',  function () {
+				var documento = $(this);
+				if (documento.hasClass('-is-active')) {
+					documento.removeClass( '-is-active' );
+					$( '#gae-show-mobile' ).removeClass( '-is-active' );
+				} else {
+					documento.addClass( '-is-active' );
+					$( '#gae-show-mobile' ).addClass( '-is-active' );
+				}
+			});
+
+			// Scroll Event to close "modal of modals" buttons, im not proud of this.
+			$('#modal-warranty .modal-body').scroll(function() {
+				if($('.seguro-de-garantia').hasClass('ativo')) $('.close-seguro-garantia.abreefecha').css('top', $('#modal-warranty .modal-body').scrollTop());
+			}).scroll();
 		});
 	};
 
