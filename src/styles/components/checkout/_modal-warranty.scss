@@ -7,7 +7,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAB0CAMAAAA1vs
 $white: #ffffff;
 $black: #000000;
 $brand: #99ca3b;
-$g-color:#6f2c8f;
+$g-color: #6f2c8f;
 $p-color: #dbd6d2;
 $p-black: #766c6b;
 $btn-color: #99ca3b;
@@ -37,8 +37,8 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	top: 2%;
 	width: 100%;
 
-	.close.i-close{
-		right:15px;	
+	.close.i-close {
+		right: 15px;	
 	}
 
 	.modal-warranty__mobile-continue-button {
@@ -100,11 +100,11 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	// Close
 	.close {
 		// background: transparent url($icon--close) center center no-repeat;
-		color: #747474;
 		background-size: 70%;
 		border: none;
-		top: 10px;
+		color: #747474;
 		font-size: 22px;
+		top: 10px;
 		z-index: 50;
 		.icon { display: none; }
 
@@ -772,7 +772,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				.title-garantia { 
 					padding: 50px 20px 30px 20px;
-					@include breakpoint(860px, 'max'){
+					@include breakpoint(860px , 'max'){
 						padding: 20px 20px 10px 60px;
 					}
 				}
