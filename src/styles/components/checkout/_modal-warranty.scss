@@ -1,11 +1,33 @@
 // Variables
 $li-image    : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3ppVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMzgwMTE3NDA3MjA2ODExODIyQUMzMDc3RTFDQzlDQSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo2MTlGN0I0QzNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo2MTlGN0I0QjNBRTkxMUU1ODQ4RDg1NDE4OTc0QTYwNSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REE5MThCOUM4RDIwNjgxMThDMTRERkJFQkNGRjdFRTMiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo2MTQ4ZGE2Ny01MDM1LTExNzgtOTc4OS1kZTUwYjc4ZTYxYzMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5m27QmAAAAj0lEQVR42mL8GKXEgAOoAPF2IC5mwqFAFKoApHA6SBEjEEsjKeAC4s1QBf+BuAykaBIQ3wNiJyBmBuLlQGwO1VAFxEtZgEQoELMB8Tog3gXEflAF04G4A8QAmeQPxD+BmB+qAQQ2AXEuzH6QopNAnAy1HwT2AXE4EP+FKWKB0kuBWBKII4A4CIh/IHsVIMAAaoEXErHLiuMAAAAASUVORK5CYII=';
-$icon--close : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABlCAYAAAC7vkbxAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjdERDE0Q0IyMjVGODExRTc4RkJCQUNGRkNCQzIyRTZEIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjdERDE0Q0IzMjVGODExRTc4RkJCQUNGRkNCQzIyRTZEIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6N0REMTRDQjAyNUY4MTFFNzhGQkJBQ0ZGQ0JDMjJFNkQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6N0REMTRDQjEyNUY4MTFFNzhGQkJBQ0ZGQ0JDMjJFNkQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6FdhlgAAAI3klEQVR42uyd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';
-$icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZyaiWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjg3MkVBM0E1MjVGODExRTdCQUI3OUUwQjVCMTI0QTg1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjg3MkVBM0E2MjVGODExRTdCQUI3OUUwQjVCMTI0QTg1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6ODcyRUEzQTMyNUY4MTFFN0JBQjc5RTBCNUIxMjRBODUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ODcyRUEzQTQyNUY4MTFFN0JBQjc5RTBCNUIxMjRBODUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4QurS3AAAHI0lEQVR42uzd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';
+$icon--close : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAAB3BAMAAADLF8K5AAAAElBMVEUAAAC0r620r620r620r620r60iHMrTAAAABXRSTlMAfHuDu/c7P6gAAAHASURBVFjDlM09SoNREIbRq3EBaewFSW/jQoyZ/W8ll4QwH7zFYZ5ufuCsR6evNer7OPxe16T3+unhVDWiL/V/gKuuI7g23fCIvlRtuuGgAW+64aABb7rhoAVvuuGgAW+64aAFb7rhoAFvuuGmCTf9WUELfnVeb9X9DeDn95E+z+AV9AAGDRg04KA7wKABgwYMGjBowKABgwYMGnDQhEEDBg0YNGDQgEEDBg0YNGDReTCNPWisQQMGDRg0YNCAQQMGDbgLCDBowKADntABD+hbwKazhE0DBg0YNGDQgEEDBg0YNGDQAZM2bDph91Hd7U6IHdtADMQwEAy+Jnfy/dfiAxxsQBwmJzQhJSm8tYg9HMseTgDAoAGDBgwaMGjAoAGTNhxtGDRg04b/QwtGYwBGVwFGSxJ2Pxu+04ZBAwYNGDTgC00YNGDQgEEDBg0YNGDQgEEDBg0YNOChAYMGDBowaMwFjbGgDSMEmCnDGxMMGjBowKABgwYM+gabBgwaMOhnYNL9t38Dm+6p/wwMOrinfjDo4Ohg0MHRwaY/ODrYdPChBxYdfOiBQQcfemDRB45+F0hiT9MAicdMYm9RGEIBAOshFd2x1hCFAAAAAElFTkSuQmCC';
+$icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAAB0CAMAAAA1vskmAAAAkFBMVEUAAADzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhbzUhb2GT9/AAAAL3RSTlMAAvwGCuESMxgN58KXPPn28OyvHtrUJMq1pk9Fu4t+Z1vPoXIo8nhWkoUtbGIrS/inFD0AAAL9SURBVHja7ZvpjqJAFIVvuaAgm+K+4IbStst9/7ebyTg9rQ3XKFOUpzt+f00IlQj13ToHwmPuKkJmzTyqEi4x/6YDe4dqxn+Y1ggS5fJfWjYBolb8j6VFcFQ7fEGvSWDUhnxFNyIo7BZ/oZ4QENaAMzjvBEOzxzm0GwRC1OVcQo8g6NdZwCUEjg4LvEF4Q6PNAjtCwAtZYEsITAIW2BMCY5/zqRwIgUWF8/FTQmAu3V8wJgTWLLCZEAIxM/IGctZ73C1YuSzgQGiWWrFAvU8AXOo9okjXhiywhBhF7BYLDCCGuazeY43DzR4LDCEOFPL1HudIRtb7FYQ+y3qPcSwo6/0M4v5kvY8JAVnv14SArPdzQkDU+8qCEBD13gfX++Cl9z9b7yHOKF96r1Pv8ZKGl97r13ukvPD76j1GZv199R4jXfBC7HRhEuhPFxp9Kl/vubjeexsnQdb7U6DPzuYlpAupL/itVr0/UVEOFSEA0Kn3G0/DmoNTaXofNrSs2U/h9F7N9MV4aiTqfaJvzfsS9L4eFb5mzpq3QHqff82dFr3XUcWyp5JwaNV7i4rSkU+MNeq9TYVJtElv1C0nXejX5eti6L2ewevolJcuNJfyfxtD7+Wnb2lh6L09ld+vmvVe+w7QjYrovf7yUPU/9vhFxUR5SK1kSzKp9zLqrdgx8pqNlYd2RUw9Nlke2j4866iZ2XRhz4+FQco1nS4cHpq31ch8eSh9IJCsdp6RLozv3hRq0+ekC5MNC8SC3psuD3nhPbUCa/C8dEFWJ1cJEmk4XUgcWY7L03s9+t6p3vG7AaLurTHg6Dy/PHRjDLAbbYR04cYYEGKUh+T3HEp5SBoDcMpD+XstUnkobwzAKg9lfQ+tPPTFmBHLQzF/glkeWvMHqOWhj7kXtzx0PjlALg+NfWbs8tAkwC4PEXkhcnnoPAbglofOvDuo5aHPvAKzPHQ5BiCWh67zCrzy0DXWEq08lB0DsMpDWWpTpE+T88cAnE+TpbwC5dsACeWmZJBfNpyJpnkSnucAAAAASUVORK5CYII=';
+
+// Configurações Globais
+$white: #ffffff;
+$black: #000000;
+$brand: #99ca3b;
+$g-color: #6f2c8f;
+$p-color: #dbd6d2;
+$p-black: #766c6b;
+$btn-color: #99ca3b;
+$card-bg: #e4e4e4;
+$footer-bg: #f5f5f5;
+$font: 'soleto, Helvetica Neue, Helvetica, Arial, sans-serif';
+$btn-height: 56px;
+$tablet-p: 640px;
+$tablet-l: 960px;
+$desk: 1100px;
+$highlight: #99ca3b;
+
+// Fontes
+$b-bold: 'Soleto_W_Bd', sans-serif;
+$b-regular: 'Soleto_W_Rg', sans-serif;
+$b-light: 'Soleto_W_Lt', sans-serif;
 
 #modal-warranty {
 	@include vendor(transform, translateX(-50%));
-	background-color: #f4f4f4;
+	background-color: $white;
 	border-radius: 0;
 	left: 50%;
 	margin-bottom: 2%;
@@ -15,30 +37,158 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 	top: 2%;
 	width: 100%;
 
+	.close.i-close {
+		right: 15px;	
+	}
+
+	.modal-warranty__mobile-continue-button {
+		@include breakpoint(medium, 'min') {
+		   display: none
+		}
+
+		background-color: $black;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		height: 60px;
+		left: 0;
+		position: fixed;
+		width: 100%;
+
+		span {
+			display: block;
+		}
+
+		.mobile-continue-button__warn {
+			background: $white;
+			color: #766c6b;
+			font-size: 12px;
+			padding: 4px 0;
+			text-align: center;
+		}
+
+		.btn-continue {
+			align-items: center;
+			background-color: $btn-color;
+			background-image: none;
+			color: $white;
+			display: flex;
+			flex: 1;
+			justify-content: center;
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+
+	@include breakpoint(medium, 'max') {
+		height: calc(100% - 20px);
+		top: 10px;
+		width: calc(100% - 20px);
+
+		.modal-content {
+			height: calc(100% - 60px);
+			left: 0;
+			overflow-y: scroll;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+
 	.fakeInput { display: none; }
 
 	// Close
 	.close {
-		background: transparent url($icon--close) center center no-repeat;
+		// background: transparent url($icon--close) center center no-repeat;
 		background-size: 70%;
 		border: none;
+		color: #747474;
 		font-size: 22px;
-
+		top: 10px;
+		z-index: 50;
 		.icon { display: none; }
 
 		&:focus { outline: none; }
 	}
+
+	// TITULO START
+	.title-intro {
+		align-items: center;
+		display: flex;
+		flex-flow: wrap;
+		padding: 30px 50px;
+
+		@include breakpoint(medium, 'max') {
+		   padding: 20px 60px 20px 15px;
+		}
+
+		.icone.-brasao {
+			background-image: url('/arquivos/modal-gae-cns_brasao-01.png');
+			background-size: cover;
+			height: 40px;
+			margin: 0 15px 0 0;
+			position: initial;
+			width: 36px;
+
+			@media ( min-width: 768px ) {
+				display: block;
+			}
+
+			@include breakpoint(medium, 'max') {
+			   display: none;
+			}
+		}
+
+		.title {
+			box-sizing: border-box;
+			color: #736c6b;
+			font-size: 13px;
+			font-weight: 300;
+			line-height: 1;
+			margin-bottom: 17px;
+			padding: 0;
+			text-align: left;
+			text-transform: initial;
+			width: calc(100% - 100px);
+			@include breakpoint(medium, 'max') {
+			   width: auto;
+			}
+
+			.gae-title {
+				color: $brand;
+				font-size: 1.4em;
+				line-height: 1;
+				margin: 10px 0 7px 0;
+
+				@include breakpoint(medium, 'max') {
+				   font-size: 14px;
+				   line-height: 1.3;
+				   margin-bottom: 5px;
+				}
+			}
+
+			.gae-sub {
+				font-size: 1em;
+				font-weight: 600;
+				letter-spacing: 1px;
+				margin-bottom: 0;
+
+				@include breakpoint(medium, 'max') {
+				   font-size: 13px;
+				   line-height: 1.3;
+				}
+			}
+		}
+	}
+
+	// TITULO END
+
 
 	// Active state
 	input[type='radio'] {
 		display: none;
 		opacity: 0;
 		position: absolute;
-
-		@include breakpoint(small, 'max') {
-			display: inline-block;
-			position: initial;
-		}
 
 		&:hover + label,
 		&:checked + label {
@@ -51,34 +201,29 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		&:checked {
 			& + .modal__cell {
 				.box-opcao-garantia {
-					border-color: $green;
+					background-color: $g-color;
+					border-color: $g-color;
 
-					.title-garantia {
-						background-color: $green;
-						color: #fff;
-
-							// &:before,
-							// &:after {
-							// 	display: none;
-							// }
-					}
-
+					p.title-garantia,
 					.bottom-garantia {
-						background-color: $green;
-						color: #fff;
+						background-color: $g-color;
+						color: $white;
+
+
+
 					}
 				}
 
 				.modal-warning-best-option.modal-warning-best-option--final {
 					display: block;
 					opacity: 1;
-					transform: translate(-55px, 85px) scale(1);
+					transform: translate(100px, -85px) scale(1);
 				}
 
 				& + input + .modal__cell .modal-warning-best-option:not(.modal-warning-best-option--final) {
 					display: block;
 					opacity: 1;
-					transform: translate(-55px, 85px) scale(1);
+					transform: translate(100px, -85px) scale(1);
 				}
 			}
 		}
@@ -91,7 +236,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 				&:after {
 				background: #f78383;
-				color: #fff;
+				color: $white;
 				content: 'Aceite os termos';
 				display: block;
 				left: -22px;
@@ -137,12 +282,12 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			width: 20px;
 
 			&::before {
-				@include breakpoint(small, 'max') {
-					display: none !important;
-					height: auto;
-					width: 100%;
-				}
-				background-color: #ffffff;
+				// @include breakpoint(small, 'max') {
+				// 	display: none !important;
+				// 	height: auto;
+				// 	width: 100%;
+				// }
+				background-color: $white;
 				border: 2px solid $txt-gray-l;
 				border-radius: 50%;
 				content: '';
@@ -156,6 +301,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 	.modal-body {
 		max-height: none;
+		overflow-y: auto;
 		padding: 0;
 		text-align: center;
 
@@ -165,7 +311,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			// Title
 			.modal__title {
 				@include responsiveFont(26, 16, true);
-				color: $green;
+				color: $brand;
 				font-weight: bold;
 				line-height: 120%;
 				padding: 20px 0;
@@ -177,19 +323,55 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 		// Table definitions
 		.modal__table {
-			display: table;
+			display: flex;
 			padding: 0 40px;
-			table-layout: fixed;
+			position: relative;
 			width: 100%;
+
+			.recomendado {
+				background: $highlight;
+				border-radius: 3px 3px 0 0;
+				color: #ffffff;
+				content: 'recomendado*';
+				font-size: 14px;
+				font-weight: 600;
+				letter-spacing: .5px;
+				line-height: 1;
+				padding: 5px 10px 3px;
+				position: absolute;
+				right: 50%;
+				text-transform: uppercase;
+				top: -15px;
+				transform: translateX(50%);
+				z-index: 5;
+
+				@include breakpoint(860px, 'max') {
+					border-radius: 10px 10px 0 0;
+					
+					right: 50%;
+					top: 0;
+					width: 98%;
+					z-index: 9;
+				}
+			}
+
 		}
 
 		.modal__cell {
-			@include breakpoint(860px, 'min') { display: table-cell; }
+			flex: 1;
 			padding: 0 5px;
 			position: relative;
 			vertical-align: top;
 
-			&:first-child { width: 265px; }
+			.show-mobile {
+				display: none;
+
+				@include breakpoint(860px, 'max') {
+					display: inline-block;
+				}
+			}
+
+			&:first-child { width: 100%; }
 
 			// // Esconde o primeiro select
 			// &:nth-child(3) {
@@ -199,13 +381,34 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			// 	width: 0;
 			// }
 
-
 			&.active {
+
 				.close-warranty {
 					opacity: 1;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
+
+				.title-garantia {
+					&::before {
+						background-color: $brand;
+						border-radius: 15px;
+						content: '';
+						height: 16px;
+						left: 50%;
+						margin-left: -8px;
+						position: absolute;
+						top: 24px;
+						width: 16px;
+						z-index: 2;
+
+						@include breakpoint(860px, 'max') {
+							left: 30px;
+							top: 34px;
+						}
+					}
+				}
+
 			}
 
 			.close-warranty {
@@ -223,7 +426,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					background: #e24444;
 					border: 1px solid #b72b2b;
 					border-radius: 4px;
-					color: #fff;
+					color: $white;
 					content: 'Remover';
 					font-size: 10px;
 					opacity: 0;
@@ -253,7 +456,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				}
 
 				.icon-remove {
-					color: #fff;
+					color: $white;
 					cursor: pointer;
 					font-size: 22px;
 					right: 0;
@@ -276,7 +479,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					}
 
 					.icon-remove {
-						color: #f47921;
+						color: #e4e4e4;
 						transition: .3s linear all;
 					}
 				}
@@ -286,13 +489,13 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		// Warning Best Option
 		.modal-warning-best-option {
 			background-color: #f4f4f4;
-			border: 2px solid $gray-d;
-			border-radius: 50% 0 50% 50%;
+			border: 1px solid #000;
+			border-radius: 50% 50% 50% 0;
 			box-shadow: 0 1px 10px rgba(0, 0, 0, .25);
-			color: $txt-gray;
+			color: #736c6b;
 			font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
 			font-size: 13px;
-			height: 140px;
+			height: 120px;
 			left: 0;
 			letter-spacing: -1px;
 			line-height: 120%;
@@ -305,17 +508,59 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				opacity .2s ease,
 				transform .2s linear
 			;
-			width: 140px;
+			width: 120px;
 			z-index: 10;
 
-			.modal-warning-best-option__container { padding: 17px 0; }
+			@include breakpoint(860px, 'max') {
+				border-radius: 0;
+				height: auto;
+				left: inherit;
+				overflow: inherit;
+				right: 100px;
+				top: 105px;
 
-			strong { display: block; }
+				&:after,
+				&:before {
+					border: solid transparent;
+					content: '';
+					height: 0;
+					pointer-events: none;
+					position: absolute;
+					right: 100%;
+					top: 50%;
+					width: 0;
+				}
+
+				&:after {
+					border-color: rgba(255, 255, 255, 0);
+					border-right-color: #f4f4f4;
+					border-width: 7px;
+					margin-top: -7px;
+				}
+
+				&:before {
+					border-color: rgba(0, 0, 0, 0);
+					border-right-color: #000;
+					border-width: 8px;
+					margin-top: -8px;
+				}
+			}
+
+			.modal-warning-best-option__container {
+				padding: 32px 10px;
+
+				@include breakpoint(860px, 'max') {
+					padding: 5px 10px;
+				}
+			}
+
+			strong {
+				color: $brand;
+			}
 		}
 
 		// Descrição produto e vantagens
 		.warranty-benefits {
-			border-radius: 10px;
 			list-style-type: none;
 			margin: 0;
 			overflow: hidden;
@@ -325,24 +570,20 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		}
 
 		.warranty-benefits__item {
-			background-color: #fff;
-			border-top: 1px solid #f4f4f4;
+			background-color: $white;
+			border: 2px solid #dbd6d2;
+			border-radius: 12px;
 			display: block;
 			font-size: 13px;
-			min-height: 60px;
+			min-height: 190px;
 			padding: 17px 20px;
 			white-space: normal;
 			width: 100%;
 
-			&:first-child {
-				border-top: 0;
-
-			}
-
 			img {
 				display: block;
 				float: left;
-				margin: 0 20px 20px -10px;
+				margin-right: 10px;
 			}
 
 			p {
@@ -354,11 +595,18 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 		// Produto
 		.warranty-benefits__item--product {
-			max-height: 100px;
+			// max-height: 100px;
+			// min-height: 100px;
+			// padding: 64px 20px 0;
+			align-items: center;
+			display: flex;
 			overflow: hidden;
-			padding: 20px;
 
-			p { font-size: 12px; }
+			p {
+				color: #766c6b;
+				font-size: 12px;
+				line-height: 1.3;
+			}
 		}
 
 		// Valor
@@ -368,47 +616,80 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		.box-opcao-garantia {
 			@include responsiveFont(16, 16, true);
 			@include vendor(border-radius, 10px);
-			background-color: #fff;
+			@include vendor(transition, all .3s ease);
+			background-color: #e4e4e4;
 			border: 2px solid #f4f4f4;
 			display: inline-block;
 			margin: 0;
-			max-height: 421px;
-			min-height: 421px;
+			min-height: 190px;
 			overflow: hidden;
-			padding: 10px 16px 45px;
+			padding: 18px 16px 0;
 			padding-bottom: 0;
 			position: relative;
 			vertical-align: top;
 			width: 100%;
 
+			@include breakpoint(860px, 'max') {
+				min-height: auto;
+			}
+
 			.title-garantia {
 				@include responsiveFont(22, 16, true);
-				background-color: #e4e4e4;
 				font-weight: normal;
 				line-height: 25px;
 				margin: -18px -25px 0 -25px;
-				padding: 33px 20px 25px 20px;
+				padding: 50px 25px 5px 25px;
 				position: relative;
 				text-align: center;
 				text-transform: none;
 				white-space: normal;
 
+				&::after {
+					background-color: $white;
+					border-radius: 15px;
+					content: '';
+					height: 24px;
+					left: 50%;
+					margin-left: -12px;
+					position: absolute;
+					top: 20px;
+					width: 24px;
+					z-index: 1;
+
+					@include breakpoint(860px, 'max') {
+						border: 1px solid #999;
+						left: 30px;
+						top: 30px;
+					}
+				}
+
 				strong { display: block; }
 
 				span {
-					@include responsiveFont(9.5, 16, true);
+					// @include responsiveFont(13, 16, true);
 					display: block;
+					font-size: 15px;
+					line-height: 20px;
+					margin: 8px auto;
 					text-transform: none;
+				}
+
+				@include breakpoint(860px, 'max') {
+					padding: 20px 20px 10px 60px;
+					text-align: left;
 				}
 			}
 
 			// Bottom
 			.bottom-garantia {
-				background-color: #e4e4e4;
 				line-height: 100%;
 				margin: 0 -30px;
-				padding: 14px 35px 25px;
+				padding: 12px 20px 20px 20px;
 				text-align: center;
+
+				@include breakpoint(860px, 'max') {
+					display: none;
+				}
 
 				span {
 					display: inline-block;
@@ -426,9 +707,11 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			p {
 				@include responsiveFont(14, 16, true);
 				text-align: justify;
+
 			}
 
 			.warranty-benefits-list {
+				display: none;
 				list-style-image: url($li-image);
 				margin: 0;
 				padding: 0;
@@ -442,7 +725,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					min-height: 60px;
 					position: relative;
 					text-align: center;
-					// vertical-align: middle;
+					vertical-align: middle;
 
 					.icon {
 						display: inline-block;
@@ -468,24 +751,31 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 			&:hover,
 			&.active {
+				@include vendor(transition, all .3s ease);
 				border-color: $gray;
-
 				.footer-box-opcao-garantia { background: $gray; }
+
 			}
 
 			// Recomendação
 			&:hover {
 				.title-garantia,
 				.bottom-garantia {
-					background-color: #9aca3c;
-					color: #fff;
+					@include vendor(transition, all .3s ease);
+					background-color: #736c6b;
+					color: $white;
 				}
 			}
 
 			&.first-box-garantia {
 				margin-left: 0;
 
-				.title-garantia { font-weight: 200; }
+				.title-garantia { 
+					padding: 50px 20px 30px 20px;
+					@include breakpoint(860px , 'max'){
+						padding: 20px 20px 10px 60px;
+					}
+				}
 			}
 
 			&:last-child {
@@ -501,6 +791,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 
 		.modal-message {
 			@include breakpoint(860px, 'min') { text-align: right; }
+			display: none;
 			padding: 10px;
 
 			p {
@@ -517,67 +808,81 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				text-align: center;
 			}
 		}
-
-		.row-product-and-action {
+		.gae-sub-title {
+			font-size: 1em;
+			margin-bottom: 10px;
 			margin-top: 20px;
-			padding: 0 73px;
+			padding: 0 46px;
+			text-align: left;
+			text-transform: uppercase;
 
-			@include breakpoint(860px, 'min') {
-				padding: 10px 46px 35px 46px;
-				text-align: right;
+			&.-desk {
+				@include breakpoint ('medium', 'max') {
+					display: none;
+				}
 			}
 
-			.termos-de-autorizacao {
-				float: left;
-				font-size: 13px;
-				line-height: 0;
-				padding: 30px 0 30px;
+			&.-mobile {
+				background: $brand;
+				border-radius: 5px;
+				color: $white;
+				cursor: pointer;
+				display: none;
+				margin: 30px auto 12px auto;
+				padding: 15px;
 				position: relative;
-				text-align: left;
-				width: 100%;
+				width: 92%;
+				z-index: 50;
 
-				input {
-					display: inline-block;
-					margin-bottom: 0;
-					margin-left: 6px;
-					margin-right: 10px;
-					margin-top: 0;
-					position: relative;
-				}
-
-				span {
-					bottom: -3px;
-					position: relative;
-
-						a {
-							color: #9aca3c;
-							cursor: pointer;
-							font-weight: 600;
-						}
-				}
-
-				&:after {
-					background: #fff;
-					border-radius: 8px;
-					content: 'Caso não aceite as condições do Termo de Autorização de Cobrança de Prêmio de Seguro, selecione a opção "Sem Garantia Estendida" e clique no botão "Continuar"';
+				@include breakpoint ('medium', 'max') {
 					display: block;
-					font-size: 11px;
-					padding: 12px;
-					position: absolute;
-					top: 55px;
 				}
 
-				&:before {
-					background: #fff;
+				&::after {
+					color: $brand;
+					content: '+';
+					font-size: 25px;
+					position: absolute;
+					right: 24px;
+					top: 50%;
+					transform: translate(-50%, -50%);
+				}
+				&.-is-active::after {
+					content: '-';
+					right: 31px;
+					transform: translate(-50%, -51%);
+				}
+				&::before {
+					background: $black;
+					border-radius: 20px;
 					content: '';
-					display: block;
-					height: 15px;
-					left: 5px;
+					height: 25px;
+					opacity: .3;
 					position: absolute;
-					top: 51px;
-					transform: rotate(45deg);
-					width: 15px;
+					right: 14px;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: 25px;
 				}
+			}
+
+			@media( min-width: #{$tablet-l} ){
+				letter-spacing: 1px;
+				text-transform: none;
+			}
+		}
+
+		.row-product-and-action {
+			margin-top: 10px;
+			padding: 0 73px;
+
+			@include breakpoint(medium, 'max') {
+			   padding: 0 15px !important;
+			}
+
+			@include breakpoint(860px, 'min') {
+				padding: 10px 46px 20px 46px;
+				text-align: right;
 			}
 
 			.garantia-box-produto {
@@ -601,10 +906,8 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			}
 
 			.garantia-box-proceed {
-				display: inline-block;
-				text-align: right;
-				width: 70%;
-
+				align-items: center;
+				display: flex;
 
 				.garantia-box-text {
 					@include responsiveFont(14, 16, true);
@@ -617,7 +920,7 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					p { margin-bottom: 0; }
 
 					a {
-						color: $green;
+						color: $brand;
 						font-weight: bold;
 					}
 				}
@@ -625,7 +928,8 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				.btn-continue {
 					cursor: pointer;
 					display: inline-block;
-					padding: 11px 47px;
+					padding: 8px 15px;
+					text-transform: uppercase;
 
 					span { margin-left: 10px; }
 
@@ -643,25 +947,112 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 					}
 
 					&.locked {
-						background-color: #ffffff;
-    					color: #f47921;
+						background-color: $white;
+						color: #f47921;
 					}
 				}
 			}
+
+
+			.termos-de-autorizacao {
+				font-size: 13px;
+				margin-right: 10px;
+				position: relative;
+				text-align: left;
+
+				label.warranty__label-check-termos {
+					@include breakpoint(medium, 'max') {
+					   font-size: 11px !important;
+					   line-height: 1.3;
+					   margin-bottom: 15px;
+					}
+				}
+
+				input {
+					display: none;
+					margin-bottom: 0;
+					margin-left: 6px;
+					margin-right: 10px;
+					margin-top: 0;
+					position: relative;
+					visibility: hidden;
+
+					&:checked {
+						& + label {
+							&::after {
+								background-color: $brand;
+							}
+						}
+					}
+				}
+
+				span {
+					a {
+						color: $brand;
+						cursor: pointer;
+						font-weight: 600;
+					}
+				}
+
+				.warranty__label-check-termos {
+
+					color: #766c6b;
+					height: auto;
+					padding-left: 35px;
+					position: initial;
+					width: auto;
+					&::before {
+						background-color: transparent;
+						border-color: #808080;
+						border-radius: 3px;
+						border-width: 1px;
+						display: block;
+						height: 18px;
+						left: 5px;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 18px;
+					}
+
+					&::after {
+						background-color: transparent;
+						border-radius: 3px;
+						content: '';
+						height: 8px;
+						left: 10px;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 8px;
+					}
+				}
+			}
+
 		}
 
 		.garantia-disclaimer {
-			@include responsiveFont(11, 16, true);
-			background: $gray-l;
+			@include responsiveFont(9, 16, true);
+			background: #f5f5f5;
 			clear: both;
-			margin-top: 15px;
 			padding: 20px 0;
 			text-align: left;
 
-			p { padding: 10px 46px; }
+			p {
+				padding: 0 46px;
+
+				@include breakpoint(medium, 'max') {
+				   padding: 0 15px;
+				}
+			}
 
 			a {
 				&:hover { text-decoration: underline; }
+			}
+
+			.warranty__footer-assurant {
+				display: block;
+				margin: auto;
+				width: 170px;
 			}
 		}
 
@@ -670,17 +1061,21 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			@include vendor(border-radius, 3px);
 			@include vendor(box-shadow, none);
 			@include vendor(transition, all .3s ease);
-			background-color: $orange;
+			background-color: $brand;
 			background-image: none;
-			border: 3px solid $orange;
-			border-radius: 50px;
-			color: #ffffff;
+			border: 3px solid $brand;
+			color: $white;
 			padding: 16px 26px;
 			text-shadow: none;
+			white-space: nowrap;
+
+			@include breakpoint(medium, 'max') {
+			   display: none !important;
+			}
 
 			&:hover {
-				background-color: #ffffff;
-				color: $orange;
+				background-color: $white;
+				color: $brand;
 			}
 		}
 	}
@@ -690,20 +1085,23 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		// Descrição produto e vantagens
 		.warranty-benefits {
 			@include breakpoint(860px, 'max') {
-				background-color: #fff;
-				margin-left: -10px;
-				position: fixed;
-				width: 190px;
+				// margin-left: -10px;
+				// position: fixed;
+				background-color: $white;
+				width: 100%;
 				z-index: 100;
 			}
 		}
 
 		.warranty-benefits__item {
 			@include breakpoint(860px, 'max') {
+				border: 0;
+				border-radius: 0;
+				border-top: 1px dotted #ccc;
 				line-height: normal!important;
 				min-height: auto;
-				padding: 14px 10px!important;
-				width: 190px;
+				padding: 30px 10px!important;
+				width: 100%;
 			}
 		}
 
@@ -713,28 +1111,25 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				display: block;
 				margin: 0 auto;
 				max-width: 92%;
-				overflow-x: auto;
 				padding: 0;
 				position: relative;
-				white-space: nowrap;
 			}
 		}
 		.modal__cell {
 			@include breakpoint(860px, 'max') {
-				display: inline-block;
 				margin: 10px 0;
-				width: 125px;
+
+				label {
+					background-color: $white;
+					border: 2px solid #dbd6d2;
+				}
 			}
 
-			&:first-child {
-				@include breakpoint(small, 'max') { width: 190px; }
-			}
-
-			// Esconder a palavra "mais" quando for
+			// Esconder a palavra 1mais1 quando for
 			// na primeira opção de GAE
 			&:nth-child(5) .modal-warning-best-option__container span { display: none; }
 
-			// Esconde o primeiro select
+			// // Esconde o primeiro select
 			// &:nth-child(3) {
 			// 	display: none !important;
 			// 	height: 0;
@@ -742,17 +1137,15 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			// 	width: 0;
 			//  }
 
-			.close-warranty {
-				left: auto;
+
+			 .close-warranty {
+
+				left: initial;
 				right: 5px;
 				top: 5px;
 			}
 
 			.box-opcao-garantia {
-				@include breakpoint(790px, 'max') {
-					padding-bottom: 0;
-					padding-top: 0;
-				}
 
 				// Title
 				.title-garantia {
@@ -780,13 +1173,12 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 				}
 			}
 
-			.first-box-garantia {
-				.title-garantia {
-					@include breakpoint(1090px, 'max') { padding: 42px 20px 25px 20px; }
-					@include breakpoint(1014px, 'max') { @include responsiveFont(20); }
-				}
-			}
-
+			// .first-box-garantia {
+			// 	.title-garantia {
+			// 		// @include breakpoint(1090px, 'max') { padding: 42px 20px 25px 20px; }
+			// 		// @include breakpoint(1014px, 'max') { @include responsiveFont(20); }
+			// 	}
+			// }
 		}
 
 		.row-product-and-action {
@@ -797,11 +1189,20 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 	}
 
 	.seguro-de-garantia {
-		display: none;
 
-			&.ativo {
-				display: block;
+		.corpo-seguro-garantia {
+			transform: translate3d(-110%, 0, 0);
+			transition: z-index .4s step-end, transform .4s ease-out;
+			z-index: -1;
+		}
+
+		&.ativo {
+			.corpo-seguro-garantia {
+				transform: translate3d(0, 0, 0);
+				transition: z-index .4s step-start, transform .4s ease-out;
+				z-index: 1043;
 			}
+		}
 	}
 
 	.pgto-corpo {
@@ -809,15 +1210,26 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 	}
 
 	.autorizacao-de-pgto {
-		display: none;
 
-			&.ativo {
-				display: block;
+		.corpo-seguro-garantia {
+			transform: translate3d(-110%, 0, 0);
+			transition: z-index .4s step-end, transform .4s ease-out;
+			z-index: -1;
+		}
+
+		&.ativo {
+			.corpo-seguro-garantia {
+				transform: translate3d(0, 0, 0);
+				transition: z-index .4s step-start, transform .4s ease-out;
+				z-index: 1043;
 			}
+		}
 	}
 
 	.corpo-seguro-garantia {
-		background: #fff;
+		background: $white;
+		font-size: 12px;
+		min-height: 100%;
 		padding: 30px;
 		position: absolute;
 		right: 0;
@@ -825,32 +1237,41 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 		top: 0;
 		z-index: 99;
 
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
 
-			h1 {
-				margin-top: 0;
+		h1 {
+			border-bottom: 1px solid $p-color;
+			font-size: 18px;
+			margin: 0 0 1em;
+			padding: 0 0 1em 40px;
+
+			@include breakpoint(medium, 'max') {
+			   line-height: 1;
 			}
-			ul {
-				margin: 15px 0 15px 0;
-
-				li {
-					display: block;
-					list-style: none;
-					margin-bottom: 15px;
-
-						ul {
-							padding-left: 15px;
-						}
-
-						strong {
-							display: block;
-							text-transform: uppercase;
-						}
-				}
-			}
+		}
 
 		h2 {
-			display: block;
-			font-size: 16px;
+			font-size: 15px;
+			margin: 1em 0;
+		}
+
+		h3 {
+			font-size: 11px;
+			margin: 1em 0;
+		}
+
+		li {
+			font-size: 12px;
+		}
+
+
+		p {
+			font-size: 12px;
+			margin-bottom: 1em!important;
 		}
 
 		.close-seguro-garantia {
@@ -912,3 +1333,265 @@ $icon--check : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAABkCAYAAABZya
 			}
 	}
 }
+
+//----------------------------
+// MODAL - Garantia Extendida
+// by Visie --     24/set/2018
+//----------------------------
+
+
+
+
+@font-face {
+	// src: url('1../fonts/Soleto_W_Bd.ttf1') format('truetype');
+	font-family: 'Soleto_W_Bd';
+	font-style: normal;
+	font-weight: normal;
+	// src: url('1../fonts/Soleto_W_Bd.ttf1');
+}
+
+@font-face {
+	// src: url(1../fonts/Soleto_W_Rg.ttf1) format('truetype');
+	font-family: 'Soleto_W_Rg';
+	font-style: normal;
+	font-weight: normal;
+	src: url('1../fonts/Soleto_W_Rg.ttf1');
+}
+
+@font-face {
+	// src: url(1../fonts/Soleto_W_Lt.ttf1) format('truetype');
+	font-family: 'Soleto_W_Lt';
+	font-style: normal;
+	font-weight: normal;
+	src: url('1../fonts/Soleto_W_Lt.ttf1');
+}
+
+
+// CSS - Debug
+// Remover antes de enviar
+.debug > .container {
+	min-height: 100vh;
+}
+
+
+// CSS - Mask
+
+.mask-gae {
+	//[1] Z-index encontrado no css da loja
+
+	background: #736c6b;
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	opacity: .9;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 1040; //[1]
+
+}
+
+
+// CSS - Modal
+
+%modal {
+	background-color: $white;
+	bottom: 0;
+	font-family: $b-regular;
+	font-size: 10px;
+	height: calc( 100% - 8px );
+	left: 0;
+	margin: auto;
+	overflow: auto;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: calc( 100% - 8px );
+	z-index: 1041;
+
+	.fechar {
+		display: block;
+		height: 42px;
+		line-height: 42px;
+		margin: auto;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+		width: 42px;
+		z-index: 1;
+
+		@media (min-width: #{$tablet-l}) {
+			right: 10px;
+			top: 10px;
+		}
+
+		@media (min-width: #{$desk}) {
+			height: 28px;
+			line-height: 28px;
+			right: 0;
+			top: 0;
+			width: 28px;
+		}
+	}
+
+	@media (min-width: #{$tablet-p}) {
+		font-size: 12px;
+	}
+
+	&.-mobile,
+	.-mobile {
+		@media (min-width: #{$tablet-l}) {
+			display: none!important;
+		}
+	}
+
+	.-desk {
+		display: none;
+		@media (min-width: #{$tablet-l}) {
+			display: block;
+		}
+	}
+}
+
+.gae-vantagens {
+	height: 0;
+	list-style: none;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	overflow: hidden;
+	transition: height .5s;
+	width: 92%;
+
+	&.-is-active {
+		height: auto;
+	}
+
+	@media( min-width: #{$tablet-l} ){
+		border-top: 1px solid $p-color;
+		display: flex;
+		height: auto;
+		justify-content: space-between;
+		margin: 0 46px;
+		padding: 20px 0 15px;
+	}
+
+	@include breakpoint ('medium', 'max') {
+		border: 0;
+	}
+}
+
+.gae-vantagens .vantagem {
+	padding-left: 65px;
+
+	@include breakpoint ('medium', 'max') {
+		margin-bottom: 10px;
+		padding-left: 2px;
+	}
+
+	@media( min-width: #{$tablet-l} ){
+		width: calc( 25% - 5px );
+	}
+
+	h4 {
+		color: $g-color;
+		font-size: 1.1rem;
+		font-weight: 600;
+		line-height: 20px;
+		margin: 0 0 5px 0 !important;
+		position: relative;
+		text-align: left;
+
+		@media (min-width: #{$tablet-l} ){
+			margin: 0;
+		}
+	}
+
+	p {
+		@include breakpoint ('medium', 'max') {
+			font-size: .9rem;
+    		text-align: left;
+		}
+
+		@media (min-width: #{$tablet-l} ){
+			font-size: .7em;
+			text-align: left;
+		}
+	}
+}
+
+.icone {
+	background-position: center center;
+	background-repeat: no-repeat;
+	display: inline-block;
+	height: 45px;
+	left: -57px;
+	position: absolute;
+	text-indent: -999999px;
+	top: 0;
+	width: 50px;
+
+	@include breakpoint ('medium', 'max') {
+		background-size: contain;
+		height: 25px;
+		margin-right: 5px;
+		position: static;
+		vertical-align: middle;
+		width: 25px;
+	}
+
+	&.-economia {
+		background-image: url('/arquivos/modal-gae-cns_economia.png');
+	}
+
+	&.-tranquilidade {
+		background-image: url('/arquivos/modal-gae-cns_tranquilidade.png');
+	}
+
+	&.-seguranca {
+		background-image: url('/arquivos/modal-gae-cns_seguranca.png');
+	}
+
+	&.-qualidade {
+		background-image: url('/arquivos/modal-gae-cns_facilidade.png');
+	}
+}
+
+.warranty__parcele-text {
+	border-bottom: 1px solid #dbd6d2;
+	color: #766c6b;
+	font-size: 12px;
+	margin: 0 46px;
+	padding-bottom: 10px;
+	text-align: right;
+
+	@include breakpoint(medium, 'max') {
+		margin: 0 15px;
+	   	text-align: left;
+	}
+
+	a {
+		color: $brand !important;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	span {
+		display: block;
+
+		@include breakpoint(medium, 'max') {
+		   display: none;
+		}
+	}
+}
+
+.-hide-mobile {
+	@include breakpoint(medium, 'max') {
+	   display: none;
+	}
+}
+
+
