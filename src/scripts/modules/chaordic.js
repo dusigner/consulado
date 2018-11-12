@@ -483,18 +483,33 @@ Nitro.module('chaordic', function() {
 		self.priceRender(renderData, $elem);
 		self.voltageRender(renderData, $elem);
 		self.hightlightRender(renderData, $elem);
-		if(renderData && renderData.finalImages) {
+
+		if (renderData && renderData.finalImages) {
 			if (renderData.finalImages.principal) {
 				$elem.find('.js-item-image-principal').html(renderData.finalImages.principal);
 			}
+
 			if (renderData.finalImages.perspectiva) {
 				$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
 			}
 		}
+
 		$elem.find('.js-item-sku').text(renderData.productReference);
 		$elem.attr('data-percent', renderData.priceInfo.percentOff);
 
-		$elem.attr('data-sku', renderData.itemId);
+		if (renderData.items.length > 1) {
+			for (let i = 0; i < renderData.items.length; i++) {
+				if (renderData.items[0].name.includes('110')) {
+					$elem.attr('data-sku', renderData.items[0].itemId);
+					$elem.attr('data-sku-220', renderData.items[1].itemId);
+				} else {
+					$elem.attr('data-sku', renderData.items[1].itemId);
+					$elem.attr('data-sku-220', renderData.items[0].itemId);
+				}
+			}
+		} else {
+			$elem.attr('data-sku', renderData.items[0].itemId);
+		}
 
 		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
 		$elem.addClass('box-produto');
@@ -510,6 +525,7 @@ Nitro.module('chaordic', function() {
 		var dfd = jQuery.Deferred();
 		var placeholderDust;
 		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
+
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
@@ -519,7 +535,6 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
-
 
 			self.buyChaordicInstall();
 		});
@@ -555,8 +570,9 @@ Nitro.module('chaordic', function() {
 
 			$elem.find('.js-item-voltage').html(out);
 			self.buyChaordicInstallCart();
+
 			$.each(renderData.items, function(i, val) {
-				if(val.name === 'BIVOLT') {
+				if (val.name === 'BIVOLT') {
 					$elem.find('.js-shelf-item__button-cart').attr('data-href', val.itemId);
 				}
 			});
@@ -603,15 +619,20 @@ Nitro.module('chaordic', function() {
 			var buyButton      = $('#BuyButton a.buy-button'),
 				buyButtonLink  = buyButton.attr('href'),
 				modalBuyButton = $('#modal-sku .buy-button'),
-				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku');
+				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku'),
+				skuInstall220  = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku-220');
 
 			if ($('.skuselector-specification-label').hasClass('checked')) {
-				$(location).attr('href', buyButtonLink + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+				let itemSelected = $('.skuselector-specification-label.checked').attr('value');
+
+				itemSelected.includes('220') && skuInstall220 ? $(location).attr('href', `${buyButtonLink}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`) : $(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
 			} else {
 				buyButton.trigger('click');
 
 				$(window).on('skuSelected.vtex', function() {
-					modalBuyButton.attr('href', modalBuyButton.attr('href') + '&sku='+skuInstall+'&qty=1&seller=1&redirect=true&sc=3');
+					let itemSelected = $('.skuselector-specification-label.checked').attr('value');
+
+					itemSelected.includes('220') && skuInstall220 ? modalBuyButton.attr('href', `${modalBuyButton.attr('href')}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`) : modalBuyButton.attr('href', `${modalBuyButton.attr('href')}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
 				});
 			}
 		});
@@ -639,6 +660,7 @@ Nitro.module('chaordic', function() {
 				quantity: 1,
 				seller: '1'
 			};
+
 			vtexjs.checkout.addToCart([item], null, 3)
 				.done(function() {
 					$('html, body').animate({ scrollTop: 0 }, 'slow');
