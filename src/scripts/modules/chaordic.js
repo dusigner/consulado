@@ -622,7 +622,9 @@ Nitro.module('chaordic', function() {
 				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku'),
 				skuInstall220  = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku-220');
 
-			if ($('.skuselector-specification-label').hasClass('checked')) {
+			if ($('.skuselector-specification-label').length <= 0) {
+				$(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
+			} else if ($('.skuselector-specification-label').hasClass('checked')) {
 				let itemSelected = $('.skuselector-specification-label.checked').attr('value');
 
 				itemSelected.includes('220') && skuInstall220 ? $(location).attr('href', `${buyButtonLink}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`) : $(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
