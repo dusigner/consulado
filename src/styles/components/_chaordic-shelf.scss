@@ -298,7 +298,7 @@ div[data-chaordic] {
 				display: block;
 			}
 			li {
-				
+
 				.shelf-item__image {
 					float: left;
 					max-width: 150px;
@@ -367,7 +367,7 @@ div[data-chaordic] {
 	&--history-personalized-cart {
 		ul {
 			li {
-				// display: block!important; 
+				// display: block!important;
 				// margin: 10px 0;
 				// max-width: 340px;
 				// width: 100%!important;
@@ -406,7 +406,7 @@ div[data-chaordic] {
 				}
 				.shelf-item__button {
 					font-size: 13px;
-					width: 100%;	
+					width: 100%;
 				}
 			}
 		}
@@ -468,12 +468,10 @@ div[data-chaordic] {
 		text-align: center;
 		transition: all 250ms ease-out;
 		width: 130px;
+
 		&:hover {
 			background: transparent;
 			color: #f47921;
-		}
-		@include breakpoint('small', 'max') {
-			display: none;
 		}
 	}
 
