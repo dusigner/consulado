@@ -38,7 +38,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	width: 100%;
 
 	.close.i-close {
-		right: 15px;	
+		right: 15px;
 	}
 
 	.modal-warranty__mobile-continue-button {
@@ -347,7 +347,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				@include breakpoint(860px, 'max') {
 					border-radius: 10px 10px 0 0;
-					
+
 					right: 50%;
 					top: 0;
 					width: 98%;
@@ -770,9 +770,10 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			&.first-box-garantia {
 				margin-left: 0;
 
-				.title-garantia { 
+				.title-garantia {
 					padding: 50px 20px 30px 20px;
-					@include breakpoint(860px , 'max'){
+
+					@include breakpoint(860px , 'max') {
 						padding: 20px 20px 10px 60px;
 					}
 				}
