@@ -151,7 +151,7 @@ Nitro.module('chaordic', function() {
 						}
 
 						self.cropName(v, 25);
-						v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized';
+						v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized' || v.feature === 'CartPersonalized';
 					});
 
 					self.placeHolderRender(shelf, $self).then(function($chaordicShelf) {
@@ -535,6 +535,7 @@ Nitro.module('chaordic', function() {
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
+
 
 			self.buyChaordicInstall();
 		});
