@@ -25,6 +25,7 @@ Nitro.setup(['accordion'], function () {
 			this.sliderDepoimentos();
 			this.sliderPrateleira();
 			this.showProducts();
+			this.tags();
 
 			contador = setInterval(this.countdown, 1000);
 		},
@@ -270,9 +271,18 @@ Nitro.setup(['accordion'], function () {
 				$elementForm.find('.form-blackfriday-2018').fadeIn();
 
 			});
+		},
+
+		tags : function() {
+			$('.faq .wrapper__question').on('click', function() {
+				dataLayer.push({
+					event: 'generic-event-trigger',
+					category: 'LP - Black Friday',
+					action: 'FAQ ',
+					label: $(this).text()
+				});
+			});
 		}
-
-
 	};
 
 	Index.init();

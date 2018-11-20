@@ -113,7 +113,7 @@ Nitro.module('upsell', function() {
 	this.tag = () => {
 		$('.tag').click(function() {
 			dataLayer.push({
-				event: 'visualTracking',
+				event: 'generic-event-trigger',
 				category: $(this).attr('data-category'),
 				action: $(this).attr('data-action'),
 				label: $(this).attr('data-label')
