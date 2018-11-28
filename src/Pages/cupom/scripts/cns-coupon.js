@@ -99,6 +99,8 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 				onRender();
 			}
 		});
+
+		self.tags();
 	};
 
 	this.filterCoupons = filter => {
@@ -220,6 +222,38 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 	 */
 	this.log = (message, type = 'info') => {
 		logger('coupon', message, {type});
+	};
+
+	/**
+	 * @description Send events to analytics
+	 */
+	this.tags = () => {
+		$('.content-body .primary-button').on('click', function() {
+			dataLayer.push({
+				event: 'generic-event-trigger',
+				category: 'Categoria de Cupom',
+				action: 'Copiar código ',
+				label: $(this).parents('.content-body').find('.code').text()
+			});
+		});
+
+		$('.coupon-list .products').find('a').on('click', function() {
+			dataLayer.push({
+				event: 'generic-event-trigger',
+				category: 'Categoria de Cupom',
+				action: 'Ver produtos participantes ',
+				label: '- '
+			});
+		});
+
+		$('.show-more-coupons').on('click', function() {
+			dataLayer.push({
+				event: 'generic-event-trigger',
+				category: 'Categoria de Cupom',
+				action: 'Ver mais cupons ',
+				label: '- '
+			});
+		});
 	};
 
 	// Start it

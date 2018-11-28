@@ -193,8 +193,7 @@ body.busca {
 		background-color: #ffffff;
 		border-radius: 10px;
 		box-shadow: 0 0 10px $gray;
-		display: flex;
-		flex-direction: column;
+		display: none;
 		min-width: 200px;
 		opacity: 0;
 		padding: 1em;
@@ -203,8 +202,10 @@ body.busca {
 		top: 35px;
 		// visibility: hidden;
 		z-index: 10;
-
+		
 		&.active {
+			display: flex;
+			flex-direction: column;
 			opacity: 1;
 			visibility: visible;
 		}

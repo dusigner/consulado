@@ -56,7 +56,8 @@ $(window).on('load', function() {
 	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'workingdays-counter', 'checkout.default-message', 'customLogin', 'callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput, workingDaysCounter) {
 
 		var self = this,
-			$body = $('body');
+			$body = $('body'),
+			flagCoupon;
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		// var productsId = [];
@@ -112,6 +113,19 @@ $(window).on('load', function() {
 			return $('.shipping-data').hasClass('active');
 		};
 
+		this.checkCouponGTM = function (check) {
+			let couponValue;
+
+			check ? couponValue = check : couponValue = 'Erro';
+
+			dataLayer.push({
+				event: 'generic-event-trigger',
+				category: 'Cart',
+				action: 'Adicionar cupom ',
+				label: couponValue
+			});
+		};
+
 		// Valida cupom no carrinho caso desconto não seja aplicado
 		this.atualizaCoupon = function () {
 			let $msgCoupon = $('.msg-coupon'),
@@ -128,6 +142,15 @@ $(window).on('load', function() {
 							$('.msg-coupon').show();
 							$('.coupon-fields .info, .coupon-fields .loading-inline.loading-coupon').hide();
 							$('.coupon-fields span:first-child').show();
+							if (flagCoupon) {
+								self.checkCouponGTM(false);
+								flagCoupon = false;
+							}
+						} else {
+							if (flagCoupon) {
+								self.checkCouponGTM($('#cart-coupon').val());
+								flagCoupon = false;
+							}
 						}
 
 						$('body').unbind('ajaxComplete');
@@ -313,6 +336,10 @@ $(window).on('load', function() {
 			
 			$('.shipping-estimate').each(function() {
 				workingDaysCounter.setShippingMessage($(this));
+			});
+
+			$('.link-coupon-add').on('click', function() {
+				flagCoupon = true;
 			});
 		};
 
