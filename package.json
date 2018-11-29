@@ -81,5 +81,10 @@
     "create-controller": "node node_modules/jussitb createController",
     "create-module": "node node_modules/jussitb createModule",
     "create-page": "node node_modules/jussitb createPage --account consul"
-  }
+  },
+  "husky": {
+		"hooks": {
+			"pre-commit": "gulp pre-commit-lint"
+		}
+	}
 }

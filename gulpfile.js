@@ -139,6 +139,13 @@ gulp.task('lint', function () {
 		.pipe($.eslint.failAfterError());
 });
 
+gulp.task('pre-commit-lint', () => {
+
+	$.util.env.preCommit = true;
+
+	return gulp.start('sassLint', 'lint');
+});
+
 gulp.task('fonts',/*  ['icons'], */ function () {
 
 	return gulp.src(paths.fonts)
