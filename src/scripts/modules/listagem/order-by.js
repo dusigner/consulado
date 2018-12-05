@@ -1,5 +1,7 @@
 'use strict';
 
+require('vendors/ajax.localstorage');
+
 var helper = require('modules/filters-helper');
 
 Nitro.module('order-by', function () {
@@ -27,19 +29,27 @@ Nitro.module('order-by', function () {
 				return '<li><a href="javascript:void()" title="' + self.text() + '" data-order="&O=' + self.val() + '">' + self.text() + '</a></li>';
 			}).get().join('');
 
-			$listOrders.append($filters);
+			$listOrders.html($filters);
 
 			$listOrders.find('li a').click(function(e){
 				e.preventDefault();
 				_self.order($(this));
 			});
+
+			if (helper.getFilterRel() === null || helper.getFilterRel() === '' ) {
+				$(window).load(function(){
+					_self.autoSort();
+				});
+			} else {
+				_self.autoSort();
+			}
+
 		}
-		_self.autoFilter(null);
 	};
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-		
+
 		helper.setOrderRel(orderValue);
 		helper.setURL();
 
@@ -47,9 +57,7 @@ Nitro.module('order-by', function () {
 		$orderElement.addClass('selected');
 
 		$orderTitle.addClass('loading');
-
 		$orderTitle.find('em').text($orderElement.text());
-
 		$orderTitle.add('.order-by').removeClass('active');
 
 		_self.request();
@@ -83,11 +91,10 @@ Nitro.module('order-by', function () {
 		});
 	};*/
 
-	this.request = function() {
-		
+	this.request = function(){
 		$.ajax({
 			url: helper.url() + page + helper.getFilterRel() + helper.getOrderRel(),
-			localCache: true,
+			localCache: true, 
 			cacheTTL: 1,
 			cacheKey: 'order' + page + helper.getFilterRel() + helper.getOrderRel() + vtxctx.categoryId,
 			dataType: 'html',
@@ -96,8 +103,8 @@ Nitro.module('order-by', function () {
 				helper.vitrine.removeClass('loaded');
 			}
 		}).done(function(data) {
-			if (data) {
-				$(window).trigger('filter', [ helper.getFilterRel() + helper.getOrderRel(), true]);
+			if( data ) {
+				$(window).trigger('filter', [helper.getFilterRel() + helper.getOrderRel(), true]);
 
 				$('.vitrine > .prateleira').remove();
 
@@ -106,6 +113,8 @@ Nitro.module('order-by', function () {
 				$(window).trigger('changedFilter');
 
 				Nitro.module('prateleira');
+
+				helper.setURL();
 			}
 		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
@@ -114,36 +123,16 @@ Nitro.module('order-by', function () {
 		});
 	};
 
-	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.href;
-
-		if( /\?filter./.test(decodeURIComponent(loc))) {	
-			helper.setOrderRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
-
-			$('.multi-search-checkbox').each(function() {
-				helper.setOrderRel(helper.getOrderRel().replace($(this).attr('rel'), ''));
-			});
-
-			var currentOrder = helper.getOrderRel().split('&');
-			
-			currentOrder = $('.order-by li a').filter(function() {
-				return ( currentOrder.indexOf($(this).attr('data-order').replace('&','')) !== -1);
-			});
-
-			if(currentOrder.hasClass('selected') === false) {
-				currentOrder.addClass('selected');
+	this.autoSort = function() {
+		var sortComponent = helper.autoSortAndFilter(false);
+		if (sortComponent) {			
+			if (!sortComponent.hasClass('selected')) {
+				sortComponent.addClass('selected');
+				_self.order(sortComponent);
 			}
-
-			_self.request();
 		}
 	};
 
-	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
-	$(window).on('calculadora.filter', function(e, res) {
-		self.autoFilter(res);
-	});
-
 	this.setup();
-
 
 });

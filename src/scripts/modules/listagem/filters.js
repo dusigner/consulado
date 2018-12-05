@@ -135,6 +135,12 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					$('#list-more').removeClass('hidden');
 				}
 
+				//hide btu buttons on filter list
+				$ ('.sidebar-filter-submenu li').each( function() {
+					if ($(this).attr('data-rel') && $(this).attr('data-rel').includes('BTU')) {
+						$(this).css('display', 'none');
+					}	
+				});
 			}
 		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
@@ -367,7 +373,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					$range.noUiSlider.on('change', function(){
 
 						//pega os atuais filtros
-						helper.setFilterRel(decodeURIComponent(window.location.hash).substr(decodeURIComponent(window.location.hash).indexOf('&')));
+						helper.setFilterRel(decodeURIComponent(window.location.search).substr(decodeURIComponent(window.location.search).indexOf('&')));
 						//helper.rel = '&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']';
 
 
@@ -397,7 +403,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						helper.vitrine.addClass('filtered');
 
 						self.request();
-
 					});
 				}
 			}
@@ -478,33 +483,21 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 	};
 
-	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.href;
-
-		if( /\?filter./.test(decodeURIComponent(loc))) {	
-			helper.setFilterRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
-			
-			$('.order-by li a').each(function(){
-				helper.setFilterRel(helper.getFilterRel().replace($(this).attr('data-order'), ''));
-			});
-
-			var currentFilters = helper.getFilterRel().split('&');
-
-			currentFilters = $('.multi-search-checkbox').filter(function() {
-				return ( currentFilters.indexOf( $(this).attr('rel') ) !== -1 && $(this).attr('value') );
-			});
-
-			if(currentFilters.attr('checked', false)){
-				currentFilters.attr('checked', true).change();
+	this.autoFilter = function() {
+		let filterComponents = helper.autoSortAndFilter(true);
+		
+		if (filterComponents) {
+			if (filterComponents.attr('checked', false)) {
+				filterComponents.attr('checked', true).change();
 			}
-
 			self.request();
 		}
 	};
 
 	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
 	$(window).on('calculadora.filter', function(e, res) {
-		self.autoFilter(res);
+		helper.setFilterRel(helper.getFilterRel() + res);
+		self.request();
 	});
 
 	/*window.onpopstate = function(e) {
