@@ -152,9 +152,9 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.clearFilter = function() {
 		$('.multi-search-checkbox:checked').prop('checked', false).change();
-
 		$('.priceRange').remove();
 		self.priceRange();
+		self.specificationRange();
 	};
 
 	this.mobileClearFilter = function() {
