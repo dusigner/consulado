@@ -65,7 +65,7 @@ FiltersHelper.autoSortAndFilter = function (isFilter) {
 			this.setOrderRel(sortComponent);
 		}
 		sortComponent = $('.order-by li a').filter(function() {
-			if($(this).attr('data-order')) return (sortComponent.indexOf($(this).attr('data-order').replace('&','')) !== -1);
+			if ($(this).parent().css('display') !== 'none' && $(this).attr('data-order')) return (sortComponent.indexOf($(this).attr('data-order').replace('&','')) !== -1);
 		});
 	}
 	

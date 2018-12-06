@@ -1,7 +1,5 @@
 'use strict';
 
-require('vendors/ajax.localstorage');
-
 var helper = require('modules/filters-helper');
 
 Nitro.module('order-by', function () {
@@ -29,7 +27,7 @@ Nitro.module('order-by', function () {
 				return '<li><a href="javascript:void()" title="' + self.text() + '" data-order="&O=' + self.val() + '">' + self.text() + '</a></li>';
 			}).get().join('');
 
-			$listOrders.html($filters);
+			$listOrders.append($filters);
 
 			$listOrders.find('li a').click(function(e){
 				e.preventDefault();
@@ -43,13 +41,12 @@ Nitro.module('order-by', function () {
 			} else {
 				_self.autoSort();
 			}
-
 		}
 	};
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-
+		
 		helper.setOrderRel(orderValue);
 		helper.setURL();
 
@@ -57,7 +54,9 @@ Nitro.module('order-by', function () {
 		$orderElement.addClass('selected');
 
 		$orderTitle.addClass('loading');
+
 		$orderTitle.find('em').text($orderElement.text());
+
 		$orderTitle.add('.order-by').removeClass('active');
 
 		_self.request();
@@ -66,35 +65,26 @@ Nitro.module('order-by', function () {
 	// RENDER HTML & ACTION FUNCTIONS
 	/*this.render = function(){
 		dust.render('order', orderBy, function(err, out) {
-
 			if (err) {
 				throw new Error('Filters Dust error: ' + err);
 			}
-
 			// console.log(out);
-
 			$container.html(out);
 			helper.filters.removeClass('hide');
 			$('.filters__order').removeClass('hide');
-
 			$('.order__item a').click(function(e) {
 				e.preventDefault();
-
 				var orderValue = $(this).data('order');
-
 				$orderBtn.find('span').html(': ' + $(this).text());
-
 				_self.request(orderValue);
-
 			});
-
 		});
 	};*/
 
-	this.request = function(){
+	this.request = function() {
 		$.ajax({
 			url: helper.url() + page + helper.getFilterRel() + helper.getOrderRel(),
-			localCache: true, 
+			localCache: true,
 			cacheTTL: 1,
 			cacheKey: 'order' + page + helper.getFilterRel() + helper.getOrderRel() + vtxctx.categoryId,
 			dataType: 'html',
@@ -103,8 +93,8 @@ Nitro.module('order-by', function () {
 				helper.vitrine.removeClass('loaded');
 			}
 		}).done(function(data) {
-			if( data ) {
-				$(window).trigger('filter', [helper.getFilterRel() + helper.getOrderRel(), true]);
+			if (data) {
+				$(window).trigger('filter', [ helper.getFilterRel() + helper.getOrderRel(), true]);
 
 				$('.vitrine > .prateleira').remove();
 
@@ -113,8 +103,6 @@ Nitro.module('order-by', function () {
 				$(window).trigger('changedFilter');
 
 				Nitro.module('prateleira');
-
-				helper.setURL();
 			}
 		}).always(function() {
 			helper.vitrineHolder.removeClass('loading');
@@ -125,7 +113,7 @@ Nitro.module('order-by', function () {
 
 	this.autoSort = function() {
 		var sortComponent = helper.autoSortAndFilter(false);
-		if (sortComponent) {			
+		if (sortComponent) {
 			if (!sortComponent.hasClass('selected')) {
 				sortComponent.addClass('selected');
 				_self.order(sortComponent);
@@ -134,5 +122,4 @@ Nitro.module('order-by', function () {
 	};
 
 	this.setup();
-
 });
