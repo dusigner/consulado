@@ -359,8 +359,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					$range.noUiSlider.on('update', function(v){
 						sliderStats.start = v[0];
 						sliderStats.end = v[1];
-						$('#' + rangeId).find('.slider__value--from').text(v[0] + ' ' + measure);
-						$('#' + rangeId).find('.slider__value--to').text(v[1] + ' ' + measure);
+						$('#' + rangeId).find('.slider__value--from').text((v[0] * 1000).toLocaleString('pt-BR') + ' ' + measure);
+						$('#' + rangeId).find('.slider__value--to').text((v[1] * 1000).toLocaleString('pt-BR') + ' ' + measure);
 					});
 
 
