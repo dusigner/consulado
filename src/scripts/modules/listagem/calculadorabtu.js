@@ -91,7 +91,7 @@ Nitro.module('calculadorabtu', function () {
 	// ACABOU O PROCESSO E TEM RESULTADO
 	$(window).on('calculadora.end', function(e, res) {
 		//STRING ENVIADA PARA FILTRO, SE FOR QA RETORNA TODOS BIVOLT, EM PROD FILTRA BTUS
-		var tpl = '#/filter'+ updateRange(res.btu);
+		var tpl = updateRange(res.btu);
 		var bulletFilter = $('.noUi-origin.noUi-connect'),
 			bulletFilterD = $('.noUi-origin.noUi-background');
 
