@@ -83,8 +83,8 @@
     "create-page": "node node_modules/jussitb createPage --account consul"
   },
   "husky": {
-		"hooks": {
-			"pre-commit": "gulp pre-commit-lint"
-		}
-	}
+    "hooks": {
+      "pre-commit": "gulp pre-commit-lint"
+    }
+  }
 }
