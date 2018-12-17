@@ -116,14 +116,14 @@ gulp.task('sassLint', function () {
 	return gulp.src( getPath('styles')
 	    .concat('!src/styles/helpers/*')
         .concat('!src/styles/libs/*'))
-		.pipe($.cached('sassLinting'))
+		.pipe($.util.env.preCommit ? $.util.noop() : $.cached('sassLinting'))
 		.pipe($.sassLint({
 			options: {
-				'config-file': '.sass-lint.yml'
+				'config-file': `.sass-lint${$.util.env.preCommit ? '.commit' : ''}.yml`
 			}
 		}))
-		.pipe($.sassLint.format());
-	// .pipe(sassLint.failOnError());
+		.pipe($.sassLint.format())
+		.pipe($.util.env.preCommit ? $.sassLint.failOnError() : $.util.noop());
 });
 
 gulp.task('lint', function () {
@@ -131,10 +131,19 @@ gulp.task('lint', function () {
 	return gulp.src( getPath('scripts')
 		.concat('!src/scripts/vendors/*.js')
 		.concat('!src/scripts/modules/helpers.js') )
-		.pipe($.cached('jsLinting'))
-		.pipe($.eslint())
+		.pipe($.util.env.preCommit ? $.util.noop() : $.cached('jsLinting'))
+		.pipe($.eslint({
+			'configFile': `.eslintrc${$.util.env.preCommit ? '.commit' : ''}.js`
+		}))
 		.pipe($.eslint.format())
 		.pipe($.eslint.failAfterError());
+});
+
+gulp.task('pre-commit-lint', () => {
+
+	$.util.env.preCommit = true;
+
+	return gulp.start('sassLint', 'lint');
 });
 
 gulp.task('fonts',/*  ['icons'], */ function () {
@@ -324,13 +333,18 @@ gulp.task('server', ['watch'], () => {
 		] : [],
 		serveStatic: ['./build'],
 		port: proxyPort,
-		open: !$.util.env.page && !$.util.env.no,
+		open: false,
 		reloadOnRestart: true
 	});
 
+	const options = {
+		uri: secureUrl ? `http://${accountName}.vtexlocal.com.br:${proxyPort}/?debugcss=true&debugjs=true` : `http://localhost:3000`,
+		app: 'chrome'
+	};
+
 	if ( $.util.env.page ) htmlFile = fs.readdirSync(`${__dirname}/src/pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
 
-	return $.util.env.page && bs.create().init({
+	return $.util.env.page ? bs.create().init({
 		files: [ 'build/**', '!build/**/*.map'],
 		server: {
 			baseDir: ['build']
@@ -339,7 +353,7 @@ gulp.task('server', ['watch'], () => {
 		port: 3002,
 		startPath: $.util.env.page.indexOf(',') > 0 ? 'pages' : (htmlFile ? `${$.util.env.page}/${htmlFile}` : $.util.env.page),
 		open: !$.util.env.no
-	});
+	}) : (!$.util.env.no ? gulp.src(__filename).pipe($.open(options)) : null) ;
 
 });
 
