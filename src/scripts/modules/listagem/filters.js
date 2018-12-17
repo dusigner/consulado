@@ -161,9 +161,9 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.clearFilter = function() {
 		$('.multi-search-checkbox:checked').prop('checked', false).change();
-
 		$('.priceRange').remove();
 		self.priceRange();
+		self.specificationRange();
 	};
 
 	this.mobileClearFilter = function() {
@@ -368,6 +368,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						sliderStats.end = v[1];
 						$('#' + rangeId).find('.slider__value--from').text(v[0] + ' ' + measure);
 						$('#' + rangeId).find('.slider__value--to').text(v[1] + ' ' + measure);
+						$('#rangeBTUs').find('.slider__value--from').text((v[0] * 1000).toLocaleString('pt-BR') + ' ' + measure);
+						$('#rangeBTUs').find('.slider__value--to').text((v[1] * 1000).toLocaleString('pt-BR') + ' ' + measure);
 					});
 
 
