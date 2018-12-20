@@ -16,10 +16,9 @@ require('modules/product/share');
 require('modules/product/quiz-install');
 require('modules/product/upsell');
 require('modules/chaordic');
-require('modules/counting-working-days');
 // require('modules/product/special-content');
 
-Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell', 'workingdays-counter' /*, 'special-content'*/ ],  function(chaordic, skuFetch, gallery, productNav, video, details, specifications, selos, supermodel, skuSelect, boleto, notifyMe, share, quizInstall, upsell, workingDaysCounter) {
+Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell' /*, 'special-content'*/ ], function(chaordic) {
 	var self = this,
 		$body = $('body');
 
@@ -375,10 +374,6 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 				});			
 				flag = 0;
 			}
-
-			$('.freight-values.active').find('tbody').find('td').each(function() {
-				workingDaysCounter.setShippingMessage($(this));
-			});
 		});
 
 		$('body').on('click', '.freight-values .closed', function() {
