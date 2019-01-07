@@ -98,6 +98,7 @@ Nitro.module('custom-select', function() {
 						onChange({text, value});
 					} catch (e) {
 						self.log(e.message, 'danger');
+						console.trace('custom-select');
 					}
 				}
 			}
