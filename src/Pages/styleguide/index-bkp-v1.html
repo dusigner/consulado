@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Consul - StyleGuide documentation v1.0</title>
+
+	<link rel="stylesheet" href="/files/consul2-styleguide.css" type="text/css" />
+	<!-- <link rel="index" title="Index"	href="genindex.html"/>
+	<link rel="search" title="Search" href="search.html"/> -->
+	<link rel="top" title="None" href="index.#document-index"/> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js"></script>
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<!-- <link rel="canonical" href="http://virtualenv.pypa.io/en/stable/" /> -->
+
+<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+
+<!-- <script type="text/javascript" src="_static/readthedocs-data.js"></script> -->
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<!-- <script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'index'
+</script> -->
+
+<!-- <script type="text/javascript" src="https://media.readthedocs.org/javascript/readthedocs-analytics.js"></script> -->
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav" role="document">
+	 
+	<div class="wy-grid-for-nav">
+		
+		<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+			<div class="wy-side-scroll">
+				<div class="wy-side-nav-search">
+					
+					<a href="index.html#document-index" class=""> <img src="/arquivos/logo-consul.png" alt="Consul"> </a>
+					<div class="version"> StyleGuide Documentation v1.0</div>		
+					<!-- <div role="search">
+						<form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+							<input type="text" name="q" placeholder="Search docs" />
+							<input type="hidden" name="check_keywords" value="yes" />
+							<input type="hidden" name="area" value="default" />
+						</form>
+					</div>					 -->
+				</div>
+
+				<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+					<div class="local-toc">
+						<ul>
+							<li class="toctree-l1"><a class="reference internal" href="index.html#document-installation">Installation</a></li>
+							<li class="toctree-l1"><a class="reference internal" href="index.html#document-userguide">User Guide</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#usage">Usage</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#using-virtualenv-without-bin-python">Using Virtualenv without <code class="docutils literal notranslate"><span class="pre">bin/python</span></code></a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#making-environments-relocatable">Making Environments Relocatable</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#the-extra-search-dir-option">The <code class="docutils literal notranslate"><span class="pre">--extra-search-dir</span></code> option</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1"><a class="reference internal" href="index.html#document-reference">Reference Guide</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#virtualenv-command"><code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> Command</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#configuration">Configuration</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#extending-virtualenv">Extending Virtualenv</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1"><a class="reference internal" href="index.html#document-development">Development</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#contributing">Contributing</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#running-the-tests">Running the tests</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#status-and-license">Status and License</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1"><a class="reference internal" href="index.html#document-changes">Release History</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#unreleased">16.1.0 (unreleased)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id1">16.0.0 (2018-05-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id2">15.2.0 (2018-03-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id3">15.1.0 (2016-11-15)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id4">15.0.3 (2016-08-05)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id5">15.0.2 (2016-05-28)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id6">15.0.1 (2016-03-17)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id7">15.0.0 (2016-03-05)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id8">14.0.6 (2016-02-07)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id9">14.0.5 (2016-02-01)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id10">14.0.4 (2016-01-31)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id11">14.0.3 (2016-01-28)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id12">14.0.2 (2016-01-28)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id13">14.0.1 (2016-01-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id14">14.0.0 (2016-01-19)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id15">13.1.2 (2015-08-23)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id16">13.1.1 (2015-08-20)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id17">13.1.0 (2015-06-30)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id18">13.0.3 (2015-06-01)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id19">13.0.2 (2015-06-01)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id20">13.0.1 (2015-05-22)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id21">13.0.0 (2015-05-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id22">12.1.1 (2015-04-07)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id23">12.1.0 (2015-04-07)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id24">12.0.7 (2015-02-04)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id25">12.0.6 (2015-01-28)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id26">12.0.5 (2015-01-03)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id27">12.0.4 (2014-12-23)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id28">12.0.3 (2014-12-23)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id29">12.0.2 (2014-12-23)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id30">12.0.1 (2014-12-22)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id31">12.0 (2014-12-22)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id32">1.11.6 (2014-05-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id33">1.11.5 (2014-05-03)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id34">1.11.4 (2014-02-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id35">1.11.3 (2014-02-20)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id36">1.11.2 (2014-01-26)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id37">1.11.1 (2014-01-20)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id38">1.11 (2014-01-02)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id39">1.10.1 (2013-08-07)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id40">1.10 (2013-07-23)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id41">1.9.1 (2013-03-08)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id42">1.9 (2013-03-07)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id43">1.8.4 (2012-11-25)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id44">1.8.3 (2012-11-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id45">1.8.2 (2012-09-06)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id46">1.8.1 (2012-09-03)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id47">1.8 (2012-09-01)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id48">1.7.2 (2012-06-22)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id49">1.7.1.2 (2012-02-17)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id50">1.7.1.1 (2012-02-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id51">1.7.1 (2012-02-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id52">1.7 (2011-11-30)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id53">1.6.4 (2011-07-21)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id54">1.6.3 (2011-07-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id55">1.6.2 (2011-07-16)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id56">1.6.1 (2011-04-30)</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id57">1.6</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id58">1.5.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id59">1.5.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id60">1.5</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id61">1.4.9</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id62">1.4.8</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id63">1.4.7</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id64">1.4.6</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id65">1.4.5</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id66">1.4.4</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id67">1.4.3</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id68">1.4.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id69">1.4.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id70">1.4</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id71">1.3.4</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id72">1.3.3</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id73">1.3.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id74">1.3.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id75">1.3</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id76">1.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id77">1.1.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id78">1.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id79">1.0</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id80">0.9.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id81">0.9.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id82">0.9</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id83">0.8.4</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id84">0.8.3</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id85">0.8.2</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id86">0.8.1</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#id87">0.8</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+			<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+					<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+					<a href="index.html#document-index">virtualenv</a>
+			</nav>
+
+			<div class="wy-nav-content">
+				<div class="rst-content">
+
+					<div role="navigation" aria-label="breadcrumbs navigation">
+						<ul class="wy-breadcrumbs">
+							<li><a href="index.html#document-index">Docs</a> &raquo;</li>
+							<li>virtualenv 16.1.0.dev0 documentation</li>
+							<li class="wy-breadcrumbs-aside"><a href="https://github.com/pypa/virtualenv/blob/master/docs/index.rst" class="fa fa-github"> Edit on GitHub</a></li>
+						</ul>
+					</div>
+					<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+						<div itemprop="articleBody">
+						
+							<div class="section" id="virtualenv">
+								<h1>Virtualenv<a class="headerlink" href="#virtualenv" title="Permalink to this headline">¶</a></h1>
+								<p><a class="reference external" href="http://groups.google.com/group/python-virtualenv">Mailing list</a> |
+								<a class="reference external" href="https://github.com/pypa/virtualenv/issues">Issues</a> |
+								<a class="reference external" href="https://github.com/pypa/virtualenv">Github</a> |
+								<a class="reference external" href="https://pypi.python.org/pypi/virtualenv/">PyPI</a> |
+								User IRC: #pypa
+								Dev IRC: #pypa-dev</p>
+								<div class="section" id="introduction">
+									<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+									<p><code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> is a tool to create isolated Python environments.</p>
+									<p>The basic problem being addressed is one of dependencies and versions, and indirectly permissions. Imagine you have an application that needs version 1 of LibFoo, but another application requires version									2. How can you use both these applications?  If you install everything into <code class="docutils literal notranslate"><span class="pre">/usr/lib/python2.7/site-packages</span></code> (or whatever your
+									platform’s standard location is), it’s easy to end up in a situation where you unintentionally upgrade an application that shouldn’t be
+									upgraded.</p>
+									<p>Or more generally, what if you want to install an application <em>and leave it be</em>?  If an application works, any change in its libraries or the versions of those libraries can break the application.</p>
+									<p>Also, what if you can’t install packages into the global	<code class="docutils literal notranslate"><span class="pre">site-packages</span></code> directory?  For instance, on a shared host.</p>
+									<p>In all these cases, <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> can help you. It creates an environment that has its own installation directories, that doesn’t share libraries with other virtualenv environments (and optionally	doesn’t access the globally installed libraries either).</p>
+									<div class="toctree-wrapper compound">
+										<span id="document-installation"></span>
+										<div class="section" id="installation">
+											<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+											<div class="admonition warning">
+												<p class="first admonition-title">Warning</p>
+												<p class="last">We advise installing virtualenv-1.9 or greater. Prior to version 1.9, the pip included in virtualenv did not download from PyPI over SSL.</p>
+											</div>
+											<div class="admonition warning">
+												<p class="first admonition-title">Warning</p>
+												<p class="last">When using pip to install virtualenv, we advise using pip 1.3 or greater. Prior to version 1.3, pip did not download from PyPI over SSL.</p>
+											</div>
+											<div class="admonition warning">
+												<p class="first admonition-title">Warning</p>
+												<p class="last">We advise against using easy_install to install virtualenv when using setuptools &lt; 0.9.7, because easy_install didn’t download from PyPI over SSL and was broken in some subtle ways.</p>
+											</div>
+											<p>To install globally with <cite>pip</cite> (if you have pip 1.3 or greater installed globally):</p>
+											<div class="highlight-default notranslate">
+												<div class="highlight"><pre><span></span>$ [sudo] pip install virtualenv</pre></div>
+											</div>
+											<p>Or to get the latest unreleased dev version:</p>
+											<div class="highlight-default notranslate">
+												<div class="highlight"><pre><span></span>$ [sudo] pip install https://github.com/pypa/virtualenv/tarball/master</pre></div>
+											</div>
+											<p>To install version X.X globally from source:</p>
+											<div class="highlight-default notranslate">
+												<div class="highlight">
+<pre><span></span>$ curl -O https://pypi.python.org/packages/source/v/virtualenv/virtualenv-X.X.tar.gz
+$ tar xvfz virtualenv-X.X.tar.gz
+$ cd virtualenv-X.X
+$ [sudo] python setup.py install
+</pre>
+												</div>
+											</div>
+											<p>To <em>use</em> locally from source:</p>
+											<div class="highlight-default notranslate">
+												<div class="highlight">
+
+												</div>
+											</div>
+
+<pre class="html"><code>
+&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+&#x3C;head&#x3E;
+&#x9;&#x3C;title&#x3E;Page Title&#x3C;/title&#x3E;
+&#x9;&#x3C;style&#x3E;
+&#x9;body {background-color: powderblue;}
+&#x9;h1 {color: red;}    
+&#x9;p {color: blue;}
+&#x9;&#x3C;/style&#x3E;
+&#x3C;/head&#x3E;  
+&#x3C;body&#x3E;
+
+&#x3C;h1&#x3E;This is a Heading&#x3C;/h1&#x3E;
+&#x3C;p&#x3E;This is a paragraph.&#x3C;/p&#x3E;
+&#x9;
+&#x3C;/body&#x3E;
+&#x3C;/html&#x3E;
+</code></pre>
+
+<pre><code class="javascript">
+{
+    id: "393747",
+    name: "webcam-4500.png",
+    changed: "2018-04-19T13:26:10.153Z",
+    version: "",
+    owner: {
+        type: "Общие",
+        key: "Общие",
+        inn: null,
+        name: null
+    }
+}
+</code></pre>
+
+											<div class="admonition note">
+												<p class="first admonition-title">Note</p>
+												<p class="last">The <code class="docutils literal notranslate"><span class="pre">virtualenv.py</span></code> script is <em>not</em> supported if run without the
+												necessary pip/setuptools/virtualenv distributions available locally. All
+												of the installation methods above include a <code class="docutils literal notranslate"><span class="pre">virtualenv_support</span></code>
+												directory alongside <code class="docutils literal notranslate"><span class="pre">virtualenv.py</span></code> which contains a complete set of
+												pip and setuptools distributions, and so are fully supported.</p>
+											</div>
+										</div>
+					 				</div>
+					 				<div class="articleComments">
+									</div>
+								</div>
+
+								<footer>
+								
+
+									<hr/>
+
+									<div role="contentinfo">
+										<p>&copy; Copyright 2007-2014, Ian Bicking, The Open Planning Project, PyPA.
+											<span class="commit">
+												Revision <code>515503c9</code>.
+											</span>
+										</p>
+									</div>
+									Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+								</footer>
+							</div>
+						</div>
+					</div>
+		</section>
+
+	</div>
+	
+
+
+	<script type="text/javascript">
+		var DOCUMENTATION_OPTIONS = {
+				URL_ROOT:'./',
+				VERSION:'16.1.0.dev0',
+				COLLAPSE_INDEX:false,
+				FILE_SUFFIX:'.html',
+				HAS_SOURCE:  true,
+				SOURCELINK_SUFFIX: '.txt'
+		};
+	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore.js"></script>
+	<!-- <script type="text/javascript" src="/files/doctools.min.js"></script> -->
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script type="text/javascript">
+			// jQuery(function () {
+			// 		SphinxRtdTheme.StickyNav.enable();
+			// });
+			// $(document).ready(function(){
+			// hljs.initHighlightingOnLoad();
+			// });
+			$(document).ready(function() {
+				// $('pre code').each(function(i, block) {
+				// 	hljs.highlightBlock(block);
+				// });
+				hljs.initHighlighting();
+			});
+	</script>
+	 
+
+</body>
+</html>

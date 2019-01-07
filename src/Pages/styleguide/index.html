@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul - StyleGuide documentation v1.0</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+
+	<!-- @if DEBUG='development' -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<!-- @if DEBUG='production' -->
+	<vtex:template id="0-consul-head-content" />
+	<!-- @endif -->
+
+	<!-- <link rel="stylesheet" href="/arquivos/smart-beer.css" /> -->
+	
+	<link rel="stylesheet" href="/arquivos/consul2-styleguide.css" type="text/css" />
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	
+	<link rel="stylesheet" href="https://media.readthedocs.org/css/readthedocs-doc-embed.css" type="text/css" />
+	
+	<link rel="stylesheet" href="/arquivos/consul2-style.css" />
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+	
+	<div id="modal-video" style="display:none">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+	</div>
+
+	<div id="modal-html" style="display:none;">
+		<h1>Lorem Ipsum</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac fringilla justo. Quisque a finibus sapien. Vestibulum eget diam dui. Vestibulum ipsum neque, imperdiet at urna quis, bibendum scelerisque ex. Vivamus tempus, orci sit amet posuere feugiat, odio ex viverra ligula, vel pharetra mauris orci eu mi. Ut ac venenatis est. Sed mattis mauris non sapien vestibulum porttitor. Pellentesque id dolor congue, lobortis eros at, euismod risus. Phasellus et hendrerit justo, et vehicula risus. Nulla viverra a ligula non efficitur. Vivamus dignissim felis sit amet laoreet vehicula. Quisque quis felis purus. Praesent posuere massa a felis viverra, id ultricies dui interdum. Integer sed justo venenatis, finibus velit non, luctus sem. In a dapibus turpis, bibendum faucibus arcu.</p>
+	</div>
+
+	<div class="wy-grid-for-nav">
+		
+		<nav data-toggle="wy-nav-shift" class="wy-nav-side">
+			<div class="wy-side-scroll">
+				<div class="wy-side-nav-search">
+					
+					<a href="index.html#document-index" class=""> <img src="/arquivos/logo-consul.png" alt="Consul"> </a>
+					<div class="version"> StyleGuide Documentation v1.0</div>		
+					<!-- <div role="search">
+						<form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+							<input type="text" name="q" placeholder="Search docs" />
+							<input type="hidden" name="check_keywords" value="yes" />
+							<input type="hidden" name="area" value="default" />
+						</form>
+					</div>					 -->
+				</div>
+
+				<div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+					<div class="local-toc">
+						<ul>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#introducao">Introdução</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#visao-geral">Visão Geral</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#beneficios">Beneficios</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#cores">Cores</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#variaveis">Variaveis</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#fundos">Fundos</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#tipografia">Tipografia</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#fontes">Fontes</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#cabecalhos">Cabeçalhos</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#paragrafos">Pagragrafos</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#estrutura">Estrutura</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#grade">Grade</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#responsividade">Responsividade</a></li>
+									<!-- <li class="toctree-l2 current"><a class="reference internal" href="index.html#id1">16.0.0 (2018-05-16)</a></li> -->
+								</ul>
+							</li>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#formulario">Formulários</a>
+								<ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#campos">campos</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#botoes">Botões</a></li>
+								</ul>
+							</li>
+							<li class="toctree-l1 current"><a class="reference internal" href="index.html#modal">Modal</a>
+								<!-- <ul>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#">campos</a></li>
+									<li class="toctree-l2"><a class="reference internal" href="index.html#">Botões</a></li>
+								</ul> -->
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+			<nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+					<i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+					<a href="index.html#document-index">Consul Styleguide</a>
+			</nav>
+
+			<div class="wy-nav-content">
+				<div class="rst-content">
+
+					<div role="navigation" aria-label="breadcrumbs navigation">
+						<ul class="wy-breadcrumbs">
+							<li><a href="index.html#document-index">Consul</a> &raquo;</li>
+							<li>Styleguide documentation v1.0</li>
+							<li class="wy-breadcrumbs-aside"><a href="https://github.com/jussilabs/consul-vtex" class="fa fa-github"> jussilabs/consul-vtex</a></li>
+						</ul>
+					</div>
+					<div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+						<div itemprop="articleBody">
+						
+							<div class="section" id="introducao">
+								<h1>Introdução<a class="headerlink" href="#introducao" title="Permalink to this headline">¶</a></h1>
+								
+								<div class="section">
+									<h2 id="visao-geral">Visão Geral<a class="headerlink" href="#visao-geral" title="Permalink to this headline">¶</a></h2>
+									<p>Este guia de estilo foi criado para os desenvolvedores Front-end da Jussi, mas esperamos que seja útil para outras equipes também, como de UX e Criação.</p>
+									<p>Poderá servir como guia de estilo visual para futuras criações de Landing Pages e etc, assim como padronizar os códigos responsáveis por exibir os elementos na interface do usuário.</p>
+									<h2 id="beneficios">Benefícios<a class="headerlink" href="#beneficios" title="Permalink to this headline">¶</a></h2>
+									<p>- Podemos construir de forma consistente, concentrando nossa energia em fluxos de trabalho e lógica, não em formulários da Web e itens de lista.</p>
+									<p>- Podemos reutilizar o código em vez de reinventar a roda.</p>
+									<p>- Podemos ver todos os nossos padrões em um só lugar, resolvendo rapidamente problemas de manutenção.</p>					
+								</div>
+							</div>
+
+							<div class="section" id="cores">
+								<h1>Cores<a class="headerlink" href="#cores" title="Permalink to this headline">¶</a></h1>
+								
+								<div class="section">
+									<h2 id="variaveis">Variaveis<a class="headerlink" href="#variavies" title="Permalink to this headline">¶</a></h2>
+									<p>As cores do guia de estilos são declaradas em  _variables.scss</p>
+									<p>Cores diversas Aplicações:</p>
+									<ul class="cores">
+										<li class="color-green"><span>$green</span><span>#9aca3c</span></li>
+										<li class="color-orange"><span>$orange</span><span>#f47921</span></li>
+										<li class="color-gray"><span>$gray</span><span>#e4e4e4</span></li>
+										<li class="color-gray-d"><span>$gray-d</span><span>#736c6b</span></li>
+										<li class="color-gray-l"><span>$gray-l</span><span>#f4f2f1</span></li>										
+									</ul>
+									<p>Cores para textos:</p>
+									<ul class="cores">
+										<li class="color-txt-gray"><span>$txt-gray</span><span>#736c6b</span></li>
+										<li class="color-txt-gray-l"><span>$txt-gray-l</span><span>#b4afad</span></li>										
+									</ul>
+									<h2 id="fundos">Fundos<a class="headerlink" href="#fundos" title="Permalink to this headline">¶</a></h2>
+									<ul class="cores">
+										<li class="bg-colors-white"><span>$bg-colors(white)</span><span>#ffffff</span></li>
+										<li class="bg-colors-black"><span>$bg-colors(black)</span><span>#222222</span></li>
+										<li class="bg-colors-gray"><span>$bg-colors(gray)</span><span>#e4e4e4</span></li>
+										<li class="bg-colors-green"><span>$bg-colors(green)</span><span>#9aca3c</span></li>
+										<li class="bg-colors-blue"><span>$bg-colors(blue)</span><span>#4572ed</span></li>
+										<li class="bg-colors-yellow"><span>$bg-colors(yellow)</span><span>#ed9c28</span></li>
+										<li class="bg-colors-red"><span>$bg-colors(red)</span><span>#d9534f</span></li>
+										<li class="bg-colors-orange"><span>$bg-colors(orange)</span><span>#f47921</span></li>
+										
+									</ul>
+								</div>
+							</div>
+
+							<div class="section" id="tipografia">
+								<h1>Tipografia<a class="headerlink" href="#tipografia" title="Permalink to this headline">¶</a></h1>
+								
+								<div class="section">
+									<h2 id="fontes">Fontes<a class="headerlink" href="#fontes" title="Permalink to this headline">¶</a></h2>
+									<p>As Fontes do guia de estilos são declaradas em  _fonts.scss</p>
+									<p>Fonte padrão: Consul;</p>
+									<p>Importação via: font-face;</p>
+
+									<h2 id="cabecalhos">Cabeçalhos<a class="headerlink" href="#cabecalhos" title="Permalink to this headline">¶</a></h2>
+									<div class="highlight-default notranslate">
+										<div class="highlight">
+											
+											<h1 class="title">Titulo h1</h1>
+											<h2 class="title">Titulo h2</h2>
+											<h3 class="title">Titulo h3</h3>
+											<h4 class="title">Titulo h4</h4>
+											<div class="pageName"><h2 class="titulo-sessao">Titulo categoria</h2></div>
+											<h2 class="pre-title shelf-pre-title js-pre-title">Titulo <span>Section</span></h2>
+											<h2 class="pre-title shelf-pre-title">Titulo h2 pre-title</h2>
+											<h3 class="box-title">Titulo h3 Box title</h3>
+										</div>
+									</div>
+<pre class="html"><code>
+&#x3C;h1 class="title"&#x3E;Titulo h1&#x3C;/h1&#x3E;
+&#x3C;h2 class="title"&#x3E;Titulo h2&#x3C;/h2&#x3E;
+&#x3C;h3 class="title"&#x3E;Titulo h3&#x3C;/h3&#x3E;
+&#x3C;h4 class="title"&#x3E;Titulo h4&#x3C;/h4&#x3E;
+&#x3C;div class="pageName"&#x3E;&#x3C;h2 class="titulo-sessao"&#x3E;Titulo categoria&#x3C;/h2&#x3E;&#x3C;/div&#x3E;
+&#x3C;h2 class="pre-title shelf-pre-title js-pre-title"&#x3E;Titulo &#x3C;span&#x3E;Section&#x3C;/span&#x3E;&#x3C;/h2&#x3E;
+&#x3C;h2 class="pre-title shelf-pre-title"&#x3E;Titulo h2 pre-title&#x3C;/h2&#x3E;
+&#x3C;h3 class="box-title"&#x3E;Titulo h3 Box title&#x3C;/h3&#x3E;
+&#x9;
+</code></pre>
+
+									<h2 id="paragrafos">Paragrafos<a class="headerlink" href="#paragrafos" title="Permalink to this headline">¶</a></h2>
+									<div class="highlight-default notranslate">
+										<div class="highlight">
+											
+											<p>Exemplo de texto de parágrafo.</p>
+											<p class="text">Exemplo de texto de parágrafo.</p>
+
+										</div>
+									</div>
+<pre class="html"><code>
+&#x3C;p&#x3E;Exemplo de texto de parágrafo.&#x3C;/p&#x3E;
+&#x3C;p class="text"&#x3E;Exemplo de texto de parágrafo.&#x3C;/p&#x3E;
+&#x9;
+</code></pre>
+
+								</div>
+							</div>
+
+							<div class="section" id="estrutura">
+								<h1>Estrutura<a class="headerlink" href="#estrutura" title="Permalink to this headline">¶</a></h1>
+								
+								<div class="section">
+									<h2 id="grade">Grade<a class="headerlink" href="#grade" title="Permalink to this headline">¶</a></h2>
+										
+										<div class="highlight-default notranslate">
+											<div class="highlight">
+												<div class="row exempleGrid">
+													<div class="col-12">
+														1/1
+													</div>
+												</div>
+												<div class="row exempleGrid">
+													<div class="col-6"> 1/2	</div>
+													<div class="col-6"> 1/2	</div>
+												</div>
+												<div class="row exempleGrid">
+													<div class="col-4"> 1/3	</div>
+													<div class="col-4"> 1/3	</div>
+													<div class="col-4"> 1/3	</div>
+												</div>
+												<div class="row exempleGrid">
+													<div class="col-3"> 1/4	</div>
+													<div class="col-3"> 1/4	</div>
+													<div class="col-3"> 1/4	</div>
+													<div class="col-3"> 1/4	</div>
+												</div>
+												<div class="row exempleGrid">
+													<div class="col-2"> 1/6	</div>
+													<div class="col-2"> 1/6	</div>
+													<div class="col-2"> 1/6	</div>
+													<div class="col-2"> 1/6	</div>
+													<div class="col-2"> 1/6	</div>
+													<div class="col-2"> 1/6	</div>
+												</div>
+											</div>
+										</div>
+<pre class="html"><code>
+&#x3C;div class="row"&#x3E;
+	&#x3C;div class="col-12"&#x3E;
+		1/1
+	&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class="row"&#x3E;
+	&#x3C;div class="col-6"&#x3E; 1/2	&#x3C;/div&#x3E;
+	&#x3C;div class="col-6"&#x3E; 1/2	&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class="row"&#x3E;
+	&#x3C;div class="col-4"&#x3E; 1/3	&#x3C;/div&#x3E;
+	&#x3C;div class="col-4"&#x3E; 1/3	&#x3C;/div&#x3E;
+	&#x3C;div class="col-4"&#x3E; 1/3	&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class="row"&#x3E;
+	&#x3C;div class="col-3"&#x3E; 1/4	&#x3C;/div&#x3E;
+	&#x3C;div class="col-3"&#x3E; 1/4	&#x3C;/div&#x3E;
+	&#x3C;div class="col-3"&#x3E; 1/4	&#x3C;/div&#x3E;
+	&#x3C;div class="col-3"&#x3E; 1/4	&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class="row"&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+	&#x3C;div class="col-2"&#x3E; 1/6	&#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+</code></pre>
+
+									<h2 id="Fundos">Responsividade<a class="headerlink" href="#fundos" title="Permalink to this headline">¶</a></h2>
+									
+<pre class="javascript"><code>
+// Breakpoints
+$breakpoint-map: (
+	'extra-small': 30em, //480px
+	'small':       48em, //768px
+	'medium':      60em, //960px
+	'large':       70em, //1120px
+	'extra-large': 80em  //1280px
+);
+&#x9;
+</code></pre>
+
+								</div>
+							</div>
+
+							<div class="section" id="formularios">
+								<h1>Formulários<a class="headerlink" href="#formularios" title="Permalink to this headline">¶</a></h1>
+								
+								<div class="section">
+									<h2 id="campos">Campos<a class="headerlink" href="#campos" title="Permalink to this headline">¶</a></h2>
+									<div class="highlight-default notranslate">
+										<div class="highlight">
+												<input type="text" class="text-input" name="campo" required="required" title="Campo" placeholder="Digite algo aqui" maxlength="100">
+												<fieldset class="campo-checkbox">
+													<input type="checkbox" id="termos" name="termos">
+													<label for="termos">
+														Li e concordo com os
+														<a href="#" target="_blank"><span> termos e condições</span></a>
+													</label>
+												</fieldset>
+											</div>
+									</div>
+<pre class="html"><code>
+&#x3C;input type="text" class="text-input" name="campo" required="required" title="Campo" placeholder="Digite algo aqui" maxlength="100"&#x3E;
+&#x3C;fieldset class="campo-checkbox"&#x3E;
+	&#x3C;input type="checkbox" id="termos" name="termos"&#x3E;
+	&#x3C;label for="termos"&#x3E;
+		Li e concordo com os
+		&#x3C;a href="#" target="_blank"&#x3E;&#x3C;span&#x3E; termos e condições&#x3C;/span&#x3E;&#x3C;/a&#x3E;
+	&#x3C;/label&#x3E;
+&#x3C;/fieldset&#x3E;
+&#x9;
+</code></pre>									
+									<h2 id="botoes">Botões<a class="headerlink" href="#botoes" title="Permalink to this headline">¶</a></h2>
+																		
+									<button class="btn-primary-button bold large">Comprar</button>
+									<button class="btn-secondary-button bold large">Comprar</button>
+
+									<button class="btn-primary-button green bold small">Comprar</button>
+									<button class="btn-secondary-button green bold small">Comprar</button>
+									<br /><br />
+<pre class="html"><code>
+&#x3C;button class="btn-primary-button bold large"&#x3E;Comprar&#x3C;/button&#x3E;
+&#x3C;button class="btn-secondary-button bold large"&#x3E;Comprar&#x3C;/button&#x3E;
+
+&#x3C;button class="btn-primary-button green bold small"&#x3E;Comprar&#x3C;/button&#x3E;
+&#x3C;button class="btn-secondary-button green bold small"&#x3E;Comprar&#x3C;/button&#x3E;
+&#x9;
+</code></pre>									
+
+								</div>
+							</div>
+
+							<div class="section" id="modal">
+								<h1>Modal<a class="headerlink" href="#modal" title="Permalink to this headline">¶</a></h1>
+								
+
+								<div class="section">
+									<!-- <h2 id="variaveis">Variaveis<a class="headerlink" href="#variavies" title="Permalink to this headline">¶</a></h2>
+									
+									<h2 id="Fundos">Fundos<a class="headerlink" href="#fundos" title="Permalink to this headline">¶</a></h2> -->
+									<span id="btn-modal-video" class="secondary-button">Modal video</span>
+									<span id="btn-modal-html" class="primary-button">Modal HTML</span>
+<br/>
+<br/>
+<pre class="html"><code>
+//estrutura HTML do modal
+&#x3C;div id="modal-video" style="display:none"&#x3E;
+   &#x3C;iframe width="560" height="315" src="https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0"
+   frameborder="0" allow="autoplay; encrypted-media"&#x3E;&#x3C;/iframe&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div id="modal-html" style="display:none;"&#x3E;
+   &#x3C;h1&#x3E;Lorem Ipsum&#x3C;/h1&#x3E;
+   &#x3C;p&#x3E;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac fringilla justo. Quisque a finibus sapien. Vestibulum eget diam dui. Vestibulum ipsum neque, imperdiet at urna quis, bibendum scelerisque ex. Vivamus tempus, orci sit amet posuere feugiat, odio ex viverra ligula, vel pharetra mauris orci eu mi. Ut ac venenatis est. Sed mattis mauris non sapien vestibulum porttitor. Pellentesque id dolor congue, lobortis eros at, euismod risus. Phasellus et hendrerit justo, et vehicula risus. Nulla viverra a ligula non efficitur. Vivamus dignissim felis sit amet laoreet vehicula. Quisque quis felis purus. Praesent posuere massa a felis viverra, id ultricies dui interdum. Integer sed justo venenatis, finibus velit non, luctus sem. In a dapibus turpis, bibendum faucibus arcu.&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+
+//estrutura HTML dos Botões
+&#x3C;span id="btn-modal-video" class="secondary-button"&#x3E;Modal video&#x3C;/span&#x3E;
+&#x3C;span id="btn-modal-html" class="primary-button"&#x3E;Modal HTML&#x3C;/span&#x3E;
+&#x9;
+</code></pre>
+
+<pre><code class="javascript hljs">
+//função abrir modal Video
+$('#btn-modal-video').on('click', function () {
+   $('#modal-video').vtexModal();
+   $('#vtex-modal-video iframe').attr('src', 'https://www.youtube.com/embed/fb-87TkTkfk?rel=0&amp;showinfo=0');
+});
+//função fechar modal Video
+$(window).on('closeVtexModal', function() {
+   $('#vtex-modal-video iframe').removeAttr('src');
+});
+//função abrir modal HTML
+$('#btn-modal-html').on('click', function () {
+   $('#modal-html').vtexModal();
+});
+&#x9;
+</code></pre>
+
+								</div>
+							</div>
+
+							<footer>
+							
+
+								<hr/>
+
+								<div role="contentinfo">
+									<p>&copy; Copyright 2018, JUSSI - The Business Agency.
+										<span class="commit">
+											Revision <code>v1.0</code>.
+										</span>
+									</p>
+								</div> 
+
+							</footer>
+						</div>
+					</div>
+			</div>
+		</section>
+
+	</div>
+	
+	<script src="/arquivos/consul2-app.min.js"></script>
+
+	<!-- <script type="text/javascript">
+		var DOCUMENTATION_OPTIONS = {
+				URL_ROOT:'./',
+				VERSION:'16.1.0.dev0',
+				COLLAPSE_INDEX:false,
+				FILE_SUFFIX:'.html',
+				HAS_SOURCE:  true,
+				SOURCELINK_SUFFIX: '.txt'
+		};
+	</script> -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.1/underscore.js"></script>
+	<!-- <script type="text/javascript" src="/files/doctools.min.js"></script> -->
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script> -->
+	
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script type="text/javascript">
+	// jQuery(function () {
+	// 		SphinxRtdTheme.StickyNav.enable();
+	// });
+	// $(document).ready(function(){
+	// hljs.initHighlightingOnLoad();
+	// });
+	$(document).ready(function() {
+	// $('pre code').each(function(i, block) {
+		// 	hljs.highlightBlock(block);
+		// });
+		hljs.initHighlighting();
+		
+	});
+	</script>
+	 
+	 <script src="/arquivos/styleguide.min.js"></script>
+</body>
+</html>
