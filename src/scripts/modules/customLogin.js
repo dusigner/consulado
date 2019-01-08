@@ -261,6 +261,7 @@ Nitro.module('customLogin', function() {
 
 	this.request = function(route, params) {
 		return $.ajax({
+			type: 'POST',
 			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
 			data: params,
 			dataType: 'jsonp'
