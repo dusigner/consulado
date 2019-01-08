@@ -830,6 +830,12 @@ $loja-color: #9aca3d;
 	padding: 20px 0;
 	position: relative;
 	
+	@media (max-width: 1120px) {
+		&:before {
+			top: calc(50% - 137px);
+		}
+	}
+	
 	@include breakpoint('small', 'min') {
 		&:before {
 			background-color: $green;
@@ -843,6 +849,7 @@ $loja-color: #9aca3d;
 			width: 90%;
 		}
 	}
+
 
 	@include breakpoint('extra-small', 'max') {
 		border-bottom-right-radius: 0;
