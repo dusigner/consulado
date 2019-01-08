@@ -86,26 +86,54 @@ $loja-color: #9aca3d;
 		}
 	}
 	.lpbf__title {
+		&:before {
+			background: #9aca3c;
+			border-radius: 5px;
+			color: #343533;
+			content: 'encerrado';
+			display: block;
+			font-size: 38px;
+			padding: 7px 100px;
+			text-indent: 0;
+			text-transform: uppercase;
+			transform: rotate(-30deg);
+			
+			@include breakpoint('small', 'max') {
+				font-size: 26px;
+				margin-top: -80px;
+				padding: 7px 70px;
+			}
+			
+			@include breakpoint('extra-small', 'max') {
+				margin-top: -40px;
+				padding: 7px 40px;
+			}
+		}
+
 		@include breakpoint('extra-small', 'min') {
 			@include breakpoint('large', 'max') {
 				height: 320px;
 				margin-bottom: 30px;
 			}
 		}
+
 		@include breakpoint('small', 'max') {
 			height: 235px;
 			margin: 0 auto 20px auto;
 			width: 290px;
 		}
+		align-items: center;
 		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -10px no-repeat;
 		background-size: contain;
 		color: transparent;
+		display: flex;
 		font-size: 1px;
 		height: 400px;
+		justify-content: center;
 		margin: 0;
 		overflow: hidden;
 		text-align: center;
-		text-indent: -99cm;
+		text-indent: -9999999cm;
 		transition: .3s ease;
 		width: auto;
 	}
@@ -115,7 +143,7 @@ $loja-color: #9aca3d;
 		color: #fff;
 		font-weight: 400;
 		line-height: 30px;
-		margin: -20px 0 10px;
+		margin-top: 20px;
 		text-align: center;
 		@include breakpoint('extra-small', 'max') {
 			@include rfs(20);
@@ -142,7 +170,7 @@ $loja-color: #9aca3d;
 			}
 		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
-		color: $green;
+		color: #fff;
 		margin: 0 auto;
 		max-width: 490px;
 
@@ -230,47 +258,42 @@ $loja-color: #9aca3d;
 				text-decoration: none;
 			}
 		}
+
+		&__cta {
+			.text {
+				@include rfs(23);
+				color: $green;
+				
+				@include breakpoint('small', 'max') {
+					@include rfs(32);
+				}
+			}
+			
+			.btn {
+				@include rfs(14);
+				background-color: $green;
+				border-radius: 25px;
+				color: #fff;
+				font-weight: bold;
+				margin-top: 15px;
+				padding: 13px 40px;
+				text-transform: uppercase;
+				
+				@include breakpoint('small', 'max') {
+					@include rfs(32);
+					border-radius: 40px;
+					display: block;
+					padding: 15px 0;
+					margin-top: 50px;
+					width: 100%;
+				}
+			}
+		}
 	}
 }
 
 //Form
 // ===============================================================
-.lpbf-form__container {
-	@include breakpoint(1100px, 'max') { margin: 60px auto 10px auto; }
-	@include breakpoint(1100px, 'min') {
-		@include breakpoint(1200px, 'max') { max-width: 400px; }
-		// position: absolute;
-		// right: 20px;
-		// top: 100px;
-	}
-	margin: 40px auto 0;
-	max-width: 450px;
-	position: relative;
-	width: 100%;
-
-	&:before {
-		background-color: #1B1B1B;
-		border-radius: 25px;
-		content: '';
-		display: block;
-		height: 100%;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 100%;
-	}
-}
-
-.lpbf-form__title {
-	@include rfs(22);
-	color: #fff;
-	font-weight: 700;
-	line-height: normal;
-	margin: 1em -1em .4em -1em;
-	strong {
-		color: $loja-color;
-	}
-}
 
 // Categorias
 .lpbf-categorys {
@@ -750,7 +773,7 @@ $loja-color: #9aca3d;
 	@include breakpoint('small', 'max') {
 		padding: 450px 30px 0 30px;
 	}
-	@include breakpoint('extra-small', 'max') { padding: 405px 0 0; }
+	@include breakpoint('extra-small', 'max') { padding: 80px 0 0; }
 
 	.container {
 		font-size: 0;
@@ -778,7 +801,7 @@ $loja-color: #9aca3d;
 
 .txt-depoimentos {
 	@include breakpoint('medium', 'min') {
-		margin-top: 200px;
+		margin-top: 300px;
 	}
 	@include breakpoint('extra-small', 'max') {
 		margin-top: 50px;
@@ -802,19 +825,32 @@ $loja-color: #9aca3d;
 }
 
 .bg-depoimentos {
-	background-color: $loja-color;
 	border-radius: 25px;
-	margin-top: 25px;
+	margin: 25px auto 0;
 	padding: 20px 0;
+	position: relative;
+	
+	@include breakpoint('small', 'min') {
+		&:before {
+			background-color: $green;
+			border-radius: 25px;
+			content: '';
+			display: block;
+			height: 100%;
+			left: calc(50% - 432px);
+			position: absolute;
+			top: calc(50% - 152px);
+			width: 90%;
+		}
+	}
+
 	@include breakpoint('extra-small', 'max') {
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
 		margin-left: 45px;
 	}
 	.slick-list {
-		@include breakpoint('extra-small', 'max') {
-			overflow: visible;
-		}
+		overflow: visible;
 	}
 	// & > div,
 	.slick-track {
@@ -824,12 +860,13 @@ $loja-color: #9aca3d;
 		@include breakpoint('extra-small', 'max') {
 			margin: 0 35px 0 -35px;
 		}
+
 		box-sizing: border-box;
 		display: flex;
 		height: initial;
 		min-height: initial;
 		padding: 0 10px 0 10px;
-		width: 320px;
+
 		.box {
 			background-color: #fff;
 			border-radius: 25px;

@@ -48,7 +48,7 @@ Nitro.setup(['accordion'], function () {
 		},
 
 		countdown: function() {
-			var endDate       = '2018/11/23',
+			var endDate       = '2019/11/29',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
