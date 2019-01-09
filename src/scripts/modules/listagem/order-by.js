@@ -33,8 +33,15 @@ Nitro.module('order-by', function () {
 				e.preventDefault();
 				_self.order($(this));
 			});
+
+			if (helper.getFilterRel() === null || helper.getFilterRel() === '' ) {
+				$(window).load(function(){
+					_self.autoSort();
+				});
+			} else {
+				_self.autoSort();
+			}
 		}
-		_self.autoFilter(null);
 	};
 
 	this.order = function($orderElement) {
@@ -58,33 +65,23 @@ Nitro.module('order-by', function () {
 	// RENDER HTML & ACTION FUNCTIONS
 	/*this.render = function(){
 		dust.render('order', orderBy, function(err, out) {
-
 			if (err) {
 				throw new Error('Filters Dust error: ' + err);
 			}
-
 			// console.log(out);
-
 			$container.html(out);
 			helper.filters.removeClass('hide');
 			$('.filters__order').removeClass('hide');
-
 			$('.order__item a').click(function(e) {
 				e.preventDefault();
-
 				var orderValue = $(this).data('order');
-
 				$orderBtn.find('span').html(': ' + $(this).text());
-
 				_self.request(orderValue);
-
 			});
-
 		});
 	};*/
 
 	this.request = function() {
-		
 		$.ajax({
 			url: helper.url() + page + helper.getFilterRel() + helper.getOrderRel(),
 			localCache: true,
@@ -114,36 +111,15 @@ Nitro.module('order-by', function () {
 		});
 	};
 
-	this.autoFilter = function(state) {
-		var loc = state ? state : window.location.href;
-
-		if( /\?filter./.test(decodeURIComponent(loc))) {	
-			helper.setOrderRel(decodeURIComponent(loc).substr(decodeURIComponent(loc).indexOf('&')));
-
-			$('.multi-search-checkbox').each(function() {
-				helper.setOrderRel(helper.getOrderRel().replace($(this).attr('rel'), ''));
-			});
-
-			var currentOrder = helper.getOrderRel().split('&');
-			
-			currentOrder = $('.order-by li a').filter(function() {
-				return ( currentOrder.indexOf($(this).attr('data-order').replace('&','')) !== -1);
-			});
-
-			if(currentOrder.hasClass('selected') === false) {
-				currentOrder.addClass('selected');
+	this.autoSort = function() {
+		var sortComponent = helper.autoSortAndFilter(false);
+		if (sortComponent) {
+			if (!sortComponent.hasClass('selected')) {
+				sortComponent.addClass('selected');
+				_self.order(sortComponent);
 			}
-
-			_self.request();
 		}
 	};
 
-	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
-	$(window).on('calculadora.filter', function(e, res) {
-		self.autoFilter(res);
-	});
-
 	this.setup();
-
-
 });
