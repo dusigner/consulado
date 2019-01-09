@@ -43,6 +43,7 @@ replaceHtmlBody = (environment, accountName, secureUrl) => (req, res, next) => {
 			data = data.replace(new RegExp('vteximg', 'g'), 'vtexlocal');
 
 			if (secureUrl) {
+				data = data.replace(new RegExp('(https?:)?\/\/whirlpool(qa)?.vtexlocal', 'g'), 'https://' + accountName);
 				data = data.replace(new RegExp('https:\/\/' + accountName, 'g'), 'http://' + accountName);
 			}
 
