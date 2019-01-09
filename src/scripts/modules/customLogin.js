@@ -14,8 +14,8 @@ Nitro.module('customLogin', function() {
 			authenticateByEmailKey: '/pub/authentication/accesskey/validate',
 			authenticateLogin: '/pub/authentication/classic/validate',
 			getEmailAcessKey: '/pub/authentication/accesskey/send',
-			getToken: '/pub/authentication/start',
 			setPassword: '/pub/authentication/classic/setpassword',
+			getToken: '/pub/authentication/start',
 			getOAuthUrl: 'https://vtexid.vtex.com.br/api/vtexid/pub/authentication/oauth/redirect'
 		},
 		userInfos = {
@@ -260,12 +260,29 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
-		return $.ajax({
-			type: 'POST',
-			url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
-			data: params,
-			dataType: 'jsonp'
-		});
+		if (route.toString().includes('start')) {
+			return $.ajax({
+				url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
+				data: params,
+				dataType: 'jsonp'
+			});
+		} else {
+			var formData = new FormData();
+			for (var attribute in params) {
+				formData.set(attribute, params[attribute]);
+			}
+			return $.ajax({
+				type: 'POST',
+				url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
+				data: formData,
+				processData: false, 
+				contentType: false,
+	
+				complete: function (data) {
+					return data;
+				}
+			});
+		}
 	};
 
 	this.setListeners = function() {
