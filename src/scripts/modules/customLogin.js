@@ -21,7 +21,7 @@ Nitro.module('customLogin', function() {
 		userInfos = {
 			initialCallback: {
 				callbackUrl: window.location.protocol + '//' + window.location.host + '/api/vtexid/pub/authentication/finish',
-				scope: window.jsnomeLoja,
+				scope: (location.host.indexOf('vtexcommercestable') > -1 || location.host.indexOf('vtexlocal') > -1) ? location.host.split('.')[0] : window.jsnomeLoja || location.host,
 				user: null,
 				locale: 'pt-BR'
 			},
@@ -163,7 +163,6 @@ Nitro.module('customLogin', function() {
 
 	this.init = function() {
 		self.setListeners();
-		userInfos.initialCallback.scope = (location.host.indexOf('vtexcommercestable') > -1) ? location.host.split('.')[0] : location.host;
 
 		setEnviroment();
 		window.setInterval(setEnviroment, 1000 * 60 * 5);
@@ -260,29 +259,28 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
-		if (route.toString().includes('start')) {
-			return $.ajax({
-				url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
-				data: params,
-				dataType: 'jsonp'
-			});
-		} else {
-			var formData = new FormData();
+		const isStartRoute = route.toString().includes('start');
+		let data = params;
+		
+		if (!isStartRoute) {
+			data = new FormData();
 			for (var attribute in params) {
-				formData.set(attribute, params[attribute]);
+				data.set(attribute, params[attribute]);
 			}
-			return $.ajax({
-				type: 'POST',
-				url: 'https://vtexid.vtex.com.br/api/vtexid' + route,
-				data: formData,
-				processData: false, 
-				contentType: false,
-	
-				complete: function (data) {
-					return data;
-				}
-			});
 		}
+
+		return $.ajax({
+			type: isStartRoute ? 'GET' : 'POST',
+			url: '/api/vtexid' + route,
+			data: data,
+			...isStartRoute && { dataType: 'jsonp' },
+			...!isStartRoute && { processData: false }, 
+			...!isStartRoute && { contentType: false },
+
+			complete: function (data) {
+				return data;
+			}
+		});
 	};
 
 	this.setListeners = function() {
