@@ -782,10 +782,17 @@ $loja-color: #9aca3d;
 	}
 	@include breakpoint('extra-small', 'max') { padding: 80px 0 0; }
 
-	.container {
+	.depoimentos-container {
+		display: block;
 		font-size: 0;
-		max-width: 960px;
+		margin: 0 auto;
+		width: 80%;
+		max-width: 1280px;
 		padding: 0;
+
+		@include breakpoint('small', 'max') {
+			width: 100%;
+		}
 	}
 
 	.row { margin: 0!important; }
@@ -877,10 +884,10 @@ $loja-color: #9aca3d;
 			content: '';
 			display: block;
 			height: 100%;
-			left: calc(50% - 432px);
+			left: calc(50% - 595px);
 			position: absolute;
-			top: calc(50% - 187px);
-			width: 90%;
+			top: calc(50% - 188px);
+			width: 93%;
 		}
 	}
 
@@ -919,7 +926,7 @@ $loja-color: #9aca3d;
 		// 	margin-left: -35px;
 		// }
 		h2 {
-			@include rfs(19);
+			@include rfs(24);
 			color: $loja-color;
 			margin: 0;
 
@@ -932,7 +939,7 @@ $loja-color: #9aca3d;
 			margin: 0;
 		}
 		p {
-			@include rfs(18);
+			@include rfs(20);
 			line-height: 22fpx;
 			margin: 30px 0 0 0;
 			@include breakpoint('extra-small', 'max') {
