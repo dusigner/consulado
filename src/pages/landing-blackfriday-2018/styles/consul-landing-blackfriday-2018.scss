@@ -773,7 +773,7 @@ $loja-color: #9aca3d;
 .depoimentos {
 	margin-bottom: 20px;
 	padding: 100px 0;
-	
+
 	@include breakpoint('medium', 'max') {
 		padding: 200px 30px 0 30px;
 	}
@@ -879,7 +879,7 @@ $loja-color: #9aca3d;
 			height: 100%;
 			left: calc(50% - 432px);
 			position: absolute;
-			top: calc(50% - 152px);
+			top: calc(50% - 187px);
 			width: 90%;
 		}
 	}
@@ -919,7 +919,7 @@ $loja-color: #9aca3d;
 		// 	margin-left: -35px;
 		// }
 		h2 {
-			@include rfs(18);
+			@include rfs(19);
 			color: $loja-color;
 			margin: 0;
 
@@ -932,7 +932,8 @@ $loja-color: #9aca3d;
 			margin: 0;
 		}
 		p {
-			@include rfs(14);
+			@include rfs(18);
+			line-height: 22fpx;
 			margin: 30px 0 0 0;
 			@include breakpoint('extra-small', 'max') {
 				font-size: 16px !important;
