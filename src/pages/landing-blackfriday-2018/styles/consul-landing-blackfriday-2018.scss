@@ -283,8 +283,8 @@ $loja-color: #9aca3d;
 					@include rfs(32);
 					border-radius: 40px;
 					display: block;
-					padding: 15px 0;
 					margin-top: 50px;
+					padding: 15px 0;
 					width: 100%;
 				}
 			}
@@ -932,7 +932,7 @@ $loja-color: #9aca3d;
 
 //FAQ
 .faq {
-	background: #262626;
+	background: #111;
 	padding: 30px 0 50px;
 	position: relative;
 
