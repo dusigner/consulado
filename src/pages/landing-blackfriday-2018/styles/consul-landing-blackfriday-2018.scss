@@ -203,7 +203,10 @@ $loja-color: #9aca3d;
 			line-height: 100%;
 			position: relative;
 			width: 84px;
-			@include breakpoint('small', 'max') { color: #fff; }
+			@include breakpoint('small', 'max') {
+				color: #fff;
+				font-size: 2rem !important;
+			}
 
 			&.colon {
 				color: #fff !important;
@@ -775,10 +778,10 @@ $loja-color: #9aca3d;
 	padding: 100px 0;
 
 	@include breakpoint('medium', 'max') {
-		padding: 200px 30px 0 30px;
+		padding-top: 200px;
 	}
 	@include breakpoint('small', 'max') {
-		padding: 450px 30px 0 30px;
+		padding-top: 450px;
 	}
 	@include breakpoint('extra-small', 'max') { padding: 80px 0 0; }
 
@@ -786,9 +789,9 @@ $loja-color: #9aca3d;
 		display: block;
 		font-size: 0;
 		margin: 0 auto;
-		width: 80%;
 		max-width: 1280px;
 		padding: 0;
+		width: 80%;
 
 		@include breakpoint('small', 'max') {
 			width: 100%;
@@ -878,20 +881,31 @@ $loja-color: #9aca3d;
 		top: calc(50% - 180px);
 		width: 90%;
 		
+		@media (min-width: 480px) and (max-width: 770px) {
+			top: calc(50% - 120px);
+		}
+		
 		@include breakpoint('small', 'min') {
 			background-color: $green;
 			border-radius: 25px;
 			content: '';
 			display: block;
 			height: 100%;
-			left: calc(50% - 595px);
+			left: 0;
+			right: 0;
+			margin: 0 auto;
 			position: absolute;
 			top: calc(50% - 188px);
 			width: 93%;
 		}
+
+		@media (min-width: 770px) and (max-width: 990px) {
+			top: calc(50% - 127px);
+		}
+		
 	}
 
-	@include breakpoint('extra-small', 'max') {
+	@include breakpoint('small', 'max') {
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
 	}
