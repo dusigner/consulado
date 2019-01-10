@@ -142,11 +142,11 @@ $loja-color: #9aca3d;
 		@include rfs(28);
 		color: #fff;
 		font-weight: 400;
-		line-height: 30px;
+		line-height: 24px;
 		margin-top: 20px;
 		text-align: center;
 		@include breakpoint('extra-small', 'max') {
-			@include rfs(20);
+			@include rfs(23);
 
 		}
 	}
@@ -166,7 +166,7 @@ $loja-color: #9aca3d;
 		@include breakpoint('small', 'max') {
 			transform: translateY(40%);
 			@include breakpoint('extra-small', 'max') {
-				transform: translateY(40%);
+				transform: translateY(20%);
 			}
 		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
@@ -175,28 +175,29 @@ $loja-color: #9aca3d;
 		max-width: 490px;
 
 		.lpbf-contador__title {
+			@include rfs(18);
+			display: block;
+			line-height: 100%;
+			text-align: center;
+			
 			@include breakpoint('small', 'max') {
 				padding: 0 2em;
 				text-align: center;
 				transform: translateY(-20px);
 			}
-			@include rfs(18);
-			display: block;
-			line-height: 100%;
-			text-align: center;
 		}
 
 		.countdown {
 			display: flex;
 			justify-content: space-between;
-			padding: 1em 0;
+			padding-bottom: 1em;
 			text-align: center;
 		}
 
 		.counter {
 			@include breakpoint('extra-small', 'max') { width: 56px; }
 			@include rfs(53);
-			color: $loja-color;
+			color: $loja-color !important;
 			display: block;
 			font-weight: bold;
 			line-height: 100%;
@@ -205,7 +206,7 @@ $loja-color: #9aca3d;
 			@include breakpoint('small', 'max') { color: #fff; }
 
 			&.colon {
-				color: #fff;
+				color: #fff !important;
 				width: auto;
 			}
 		}
@@ -256,6 +257,10 @@ $loja-color: #9aca3d;
 				margin-top: 1.2em;
 				padding: .5em 2em;
 				text-decoration: none;
+
+				@include breakpoint('small', 'max') {
+					font-size: 21px;
+				}
 			}
 		}
 
@@ -276,7 +281,7 @@ $loja-color: #9aca3d;
 				color: #fff;
 				font-weight: bold;
 				margin-top: 15px;
-				padding: 13px 40px;
+				padding: 10px 40px;
 				text-transform: uppercase;
 				
 				@include breakpoint('small', 'max') {
