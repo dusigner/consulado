@@ -174,18 +174,12 @@ Nitro.setup(['accordion'], function () {
 				responsive: [{
 					breakpoint: 990,
 					settings: {
-						arrows: false,
+						arrows: true,
 						dots: true,
 						slidesToShow: 1,
-						slidesToScroll:1
-					}
-				}, {
-					breakpoint: 480,
-					settings: {
-						arrow: false,
-						dots: true,
-						slidesToShow: 1,
-						slidesToScroll: 1
+						slidesToScroll:1,
+						appendDots:$('.depoimentos-controllers'),
+						appendArrows:$('.depoimentos-controllers')
 					}
 				}]
 			});

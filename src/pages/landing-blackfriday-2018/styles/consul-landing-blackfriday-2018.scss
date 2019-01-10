@@ -783,9 +783,19 @@ $loja-color: #9aca3d;
 
 	.row { margin: 0!important; }
 
+	.depoimentos-controllers {
+		margin: 40px 25px 0;
+		position: relative;
+
+		@include breakpoint('small', 'min') { display: none; }
+
+		.slick-arrow { color: $loja-color; }
+	}
+
 	.slick-dots {
-		@include breakpoint('extra-small', 'max') { margin-left: -20px; }
 		bottom: -35px;
+
+		@include breakpoint('extra-small', 'max') { position: static; }
 	}
 
 	.slick-dots li button { background: #414141; }
@@ -793,7 +803,19 @@ $loja-color: #9aca3d;
 	.slick-dots li.slick-active button {
 		background: $loja-color;
 		height: 10px;
+		position: relative;
 		width: 10px;
+
+		&:before {
+			border: 1px solid #fff;
+			border-radius: 100%;
+			content: '';
+			height: 14px;
+			left: -2px;
+			position: absolute;
+			top: -2px;
+			width: 14px;
+		}
 	}
 
 	.slick-dots li button:after { border: none; }
@@ -827,17 +849,22 @@ $loja-color: #9aca3d;
 .bg-depoimentos {
 	border-radius: 25px;
 	margin: 25px auto 0;
+	overflow: hidden;
 	padding: 20px 0;
 	position: relative;
-	
-	@media (max-width: 1120px) {
-		&:before {
-			top: calc(50% - 137px);
-		}
-	}
-	
-	@include breakpoint('small', 'min') {
-		&:before {
+
+	&:before {
+		background-color: #9aca3c;
+		border-radius: 25px;
+		content: '';
+		display: block;
+		height: 95%;
+		position: absolute;
+		right: -22px;
+		top: calc(50% - 180px);
+		width: 90%;
+		
+		@include breakpoint('small', 'min') {
 			background-color: $green;
 			border-radius: 25px;
 			content: '';
@@ -850,11 +877,9 @@ $loja-color: #9aca3d;
 		}
 	}
 
-
 	@include breakpoint('extra-small', 'max') {
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
-		margin-left: 45px;
 	}
 	.slick-list {
 		overflow: visible;
@@ -864,10 +889,6 @@ $loja-color: #9aca3d;
 		display: flex;
 	}
 	.slick-slide {
-		@include breakpoint('extra-small', 'max') {
-			margin: 0 35px 0 -35px;
-		}
-
 		box-sizing: border-box;
 		display: flex;
 		height: initial;
@@ -878,9 +899,10 @@ $loja-color: #9aca3d;
 			background-color: #fff;
 			border-radius: 25px;
 			padding: 30px 20px 30px 20px;
-			// @include breakpoint('extra-small', 'max') {
-			// 	min-height: 340px;
-			// }
+			@include breakpoint('extra-small', 'max') {
+				margin: 0 10px;
+				min-height: 340px;
+			}
 		}
 		// @include breakpoint('medium', 'max') {
 		// 	padding: 30px 0 40px 0;
@@ -893,6 +915,8 @@ $loja-color: #9aca3d;
 			@include rfs(18);
 			color: $loja-color;
 			margin: 0;
+
+			@include breakpoint('extra-small', 'max') { font-size: 20px !important; }
 		}
 		h3 {
 			@include rfs(12);
@@ -904,6 +928,7 @@ $loja-color: #9aca3d;
 			@include rfs(14);
 			margin: 30px 0 0 0;
 			@include breakpoint('extra-small', 'max') {
+				font-size: 16px !important;
 				padding: 0 15px 0 15px;
 			}
 		}
