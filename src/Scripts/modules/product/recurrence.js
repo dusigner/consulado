@@ -4,6 +4,8 @@ require('Dust/product/recurrence.html');
 
 Nitro.module('recurrence', function() {
 
+	var itemIndex = 0;
+
 	this.init = () => {
 		this.signExchange();
 	};
@@ -30,12 +32,10 @@ Nitro.module('recurrence', function() {
 	this.signExchange = () => {
 		vtexjs.checkout.getOrderForm().then((e) => {
 			var hasRecurrence = false;
-
+			
 			const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
 			</a>`;
 			// <span>Troca recomendada a cada ${e.items[0].attachments[0].content.periodo}</span>
-
-			// console.log('e', e);
 
 			// if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {
 			hasRecurrence = true;
@@ -45,7 +45,11 @@ Nitro.module('recurrence', function() {
 
 			// return false;
 			// }
-
+			
+			vtexjs.checkout.addItemAttachment(itemIndex, 'Recorrência', periods).done(function() {
+				// console.log('fim', e);
+			});
+			
 			return hasRecurrence;
 		});
 
@@ -62,13 +66,8 @@ Nitro.module('recurrence', function() {
 			$('#exchange-recurrence').on('click', function(e) {
 				e.preventDefault();
 
-				var itemIndex = 0;
-
 				$(out).vtexModal();
 
-				vtexjs.checkout.addItemAttachment(itemIndex, 'Recorrência', periods).then(function() {
-					// console.log('fim', e);
-				});
 			});
 
 		});
