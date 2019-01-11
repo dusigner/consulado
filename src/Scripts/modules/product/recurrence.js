@@ -4,8 +4,6 @@ require('Dust/product/recurrence.html');
 
 Nitro.module('recurrence', function() {
 
-	var itemIndex = 0;
-
 	this.init = () => {
 		this.signExchange();
 	};
@@ -26,37 +24,51 @@ Nitro.module('recurrence', function() {
 		'C3L02ABANA' : 'diaria',
 		'W10601110' : '6 meses'
 	};
-
-	// console.log('periods', periods);
 	
-	this.signExchange = () => {
+	this.signExchange = (sku) => {
+		
 		vtexjs.checkout.getOrderForm().then((e) => {
-			var hasRecurrence = false;
+			var hasRecurrence = false;			
 			
-			const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
-			</a>`;
-			// <span>Troca recomendada a cada ${e.items[0].attachments[0].content.periodo}</span>
-
-			// if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {
-			hasRecurrence = true;
-			$('.sku-selector-container').append(renderInfoRecurrence);
-
-			this.renderInfoRecurrence(e);
-
-			// return false;
-			// }
+			$.each(periods, function (i) {
+				let sku;
+				
+				if (i === e.items[0].refId) {
+					sku = periods[i];
+					// console.log('sku', periods[i]);
+				}				
+				
+				return sku;
+			});		
 			
-			vtexjs.checkout.addItemAttachment(itemIndex, 'Recorrência', periods).done(function() {
-				// console.log('fim', e);
-			});
-			
+			// verifies that the product has recurrence
+			if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {				
+				hasRecurrence = true;
+
+				const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
+					<span>Troca recomendada a cada ${sku}</span>
+				</a>`;
+				
+				$('.sku-selector-container').append(renderInfoRecurrence);
+
+				this.renderInfoRecurrence(e);
+				
+				return false;
+			}
+
 			return hasRecurrence;
 		});
 
 	};	
 
-	this.renderInfoRecurrence = (e) => {
-		// console.log('eeee', e);
+	this.renderInfoRecurrence = (e) => {		
+
+		let item = {
+			id: skuJson.skus[0].sku,
+			quantity: 1,
+			seller: '1'
+		};
+		
 		dust.render('recurrence', e, function (err, out) {
 			
 			if (err) {
@@ -66,8 +78,11 @@ Nitro.module('recurrence', function() {
 			$('#exchange-recurrence').on('click', function(e) {
 				e.preventDefault();
 
-				$(out).vtexModal();
-
+				vtexjs.checkout.addToCart([item], null, window.jssalesChannel)
+					.done(function(/*orderForm*/) {
+						// console.log(orderForm);
+						$(out).vtexModal();
+					});
 			});
 
 		});
