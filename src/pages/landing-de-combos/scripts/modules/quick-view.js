@@ -64,6 +64,8 @@ Nitro.module('quick-view', function () {
 							app.loadAccordionMobile();
 							selectVoltage.init();
 
+							$(window).trigger('2-step-combo-rendered');
+
 							// fake click para "contar" o primeiro como removido TODO: forma de ja vir considerado
 							$('.combos-product-list__item:first').click();
 						}.bind(this));
