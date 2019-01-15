@@ -43,14 +43,16 @@ Nitro.module('recurrence', function() {
 				if (skuProduct) {
 					sku = periods[i];
 
+					// console.log('if');
+
 					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
 													<span>Troca recomendada a cada ${sku}</span>
 												</a>`;
 				
 					$('.sku-selector-container').append(renderInfoRecurrence);
-				}				
+					
+				}
 				
-				return sku;
 			});		
 			
 			// verifies that the product has recurrence
@@ -84,10 +86,16 @@ Nitro.module('recurrence', function() {
 			$('#exchange-recurrence').on('click', function(e) {
 				e.preventDefault();
 
+				$(out).vtexModal();
+
 				vtexjs.checkout.addToCart([item], null, window.jssalesChannel)
-					.done(function(/*orderForm*/) {
-						// console.log(orderForm);
-						$(out).vtexModal();
+					.done(function() {
+						const buyButtonRecurrence = $('#BuyButton'),
+							cloneButton = $('#buy-button-recurrence');
+
+						// console.log('cloneButton', cloneButton);
+
+						buyButtonRecurrence.clone().appendTo(cloneButton);
 					});
 			});
 
