@@ -25,36 +25,42 @@ Nitro.module('recurrence', function() {
 		'W10601110' : '6 meses'
 	};
 	
-	this.signExchange = (sku) => {
+	this.signExchange = () => {
 		
 		vtexjs.checkout.getOrderForm().then((e) => {
-			var hasRecurrence = false;			
+			// console.log('e', e);
+			
+			let hasRecurrence = false;
 			
 			$.each(periods, function (i) {
+
+				let skuProduct = window.skuJson.skus[0].skuname === i ? true : false;
+				// console.log('skuProduct', skuProduct);
+				// console.log('i', i);
+				
 				let sku;
 				
-				if (i === e.items[0].refId) {
+				if (skuProduct) {
 					sku = periods[i];
-					// console.log('sku', periods[i]);
+
+					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
+													<span>Troca recomendada a cada ${sku}</span>
+												</a>`;
+				
+					$('.sku-selector-container').append(renderInfoRecurrence);
 				}				
 				
 				return sku;
 			});		
 			
 			// verifies that the product has recurrence
-			if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {				
-				hasRecurrence = true;
+			// if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {		
+			hasRecurrence = true;
 
-				const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
-					<span>Troca recomendada a cada ${sku}</span>
-				</a>`;
+			this.renderInfoRecurrence(e);
 				
-				$('.sku-selector-container').append(renderInfoRecurrence);
-
-				this.renderInfoRecurrence(e);
-				
-				return false;
-			}
+			// return false;
+			// }
 
 			return hasRecurrence;
 		});
