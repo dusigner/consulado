@@ -6,36 +6,53 @@ var Helpers = require('./helpers');
 
 Nitro.module('shelves', function () {
 	var self = this,
-		discounts = [
-			{
-				quantity: 6,
-				discount: 10
-			},
-			{
-				quantity: 5,
-				discount: 8
-			},
-			{
-				quantity: 4,
-				discount: 6
-			},
-			{
-				quantity: 3,
-				discount: 5
-			},
-			{
-				quantity: 2,
-				discount: 5
-			},
-			{
-				quantity: 1,
-				discount: 0
+		discounts = [];
+
+	self.getDiscountsInMD = function(){
+		$.ajax({
+			url: '/api/dataentities/CD/search?_fields=faixaum,faixadois,faixatres,faixaquatro,faixacinco', 
+
+			success: function(data){
+				discounts.push(
+					{
+						quantity: 6,
+						discount: data[0].faixaum
+					},
+					{
+						quantity: 5,
+						discount: data[0].faixadois
+					},
+					{
+						quantity: 4,
+						discount: data[0].faixatres
+					},
+					{
+						quantity: 3,
+						discount: data[0].faixaquatro
+					},
+					{
+						quantity: 2,
+						discount: data[0].faixacinco
+					}
+		
+				);
 			}
-		];
+		});
+		return discounts;
+	};
 
 	self.init = function () {
-		self.loadPrateleiras();
-		self.loadPrice();
+		self.getDiscountsInMD();
+
+		$(document).ajaxComplete(function(event, xhr, settings) {
+
+			$.each(settings.url.split('/'), function(i,v){
+				if(v === 'dataentities'){
+					self.loadPrateleiras();
+					self.loadPrice();
+				}
+			});
+		});
 	};
 
 	self.actionPrateleiraMobile = function() {
