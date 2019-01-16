@@ -455,6 +455,12 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				}
 
 			}
+			
+			&:last-child {
+				.box-opcao-garantia {
+					padding-top: 30px;
+				}
+			}
 
 			.close-warranty {
 				height: 30px;
@@ -731,10 +737,15 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				strong { 
 
 					color: $purple;
-					display: block;
+					display: inline-flex;
 					font-size: 18px;
 					span {
 						font-size: 10px;
+					}
+					b {
+						font-size: 32px;
+						line-height: .75;
+						padding: 0 8px;
 					}
 			   }
 

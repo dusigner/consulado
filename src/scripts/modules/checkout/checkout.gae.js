@@ -190,8 +190,9 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].priceMonth = val.price / warrantyTime;
 			data.warranty[index].priceDay   = val.price / self.monthToDays(warrantyTime);
 			data.warranty[index].months     = warrantyTime;
-			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1 ano' : (warrantyTime === 18) ? '1 ano e 6 meses' : '2 anos',
+			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : '2',
 			data.warranty[index].isPrimary  = (warrantyTime === 12) ? true : false;
+			data.warranty[index].isMiddle   = (warrantyTime === 18) ? true : false;
 			data.warranty[index].isLast     = (warrantyTime === 24) ? true : false;
 			data.warranty[index].isCheaper  = false;
 
