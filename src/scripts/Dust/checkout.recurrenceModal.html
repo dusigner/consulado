@@ -19,19 +19,9 @@
 				</div>
 				<span class="modal-recurrence-line-desktop"></span>
 				<div class="modal-recurrence__advantages clearfix">
-					<div class="modal-recurrence__container">
-						<span class="modal-recurrence-line-mobile"></span>
-						<div class="modal-recurrence__advantage">
-							<p class="modal-recurrence__advantage-title">Mais economia</p>
-							<div class="modal-recurrence__advantage-body">
-								<p class="modal-recurrence__advantage-text">Além de não pagar nada a mais pela assinatura, você ainda receberá desconto nas próximas compras recorrentes.</p>
-							</div>
-						</div>
-					</div>
-					<div class="modal-recurrence-line-desktop-vertical"></div>
-					<div class="modal-recurrence__container">
-						<span class="modal-recurrence-line-mobile"></span>
-						<div class="modal-recurrence__advantage">
+					<span class="modal-recurrence-line-mobile"></span>
+					<div class="modal-recurrence__advantage -praticidade">
+						<div class="modal-recurrence__advantage-element">
 							<p class="modal-recurrence__advantage-title js-recurrence-accordion">Mais praticidade e comodidade</p>
 							<div class="modal-recurrence__advantage-body">
 								<p class="modal-recurrence__advantage-text">
@@ -39,9 +29,11 @@
 								</p>
 							</div>
 						</div>
-
-						<span class="modal-recurrence-line-mobile"></span>
-						<div class="modal-recurrence__advantage">
+					</div>
+					<div class="modal-recurrence-line-desktop-vertical"></div>
+					<span class="modal-recurrence-line-mobile"></span>
+					<div class="modal-recurrence__advantage -controle">
+						<div class="modal-recurrence__advantage-element">
 							<p class="modal-recurrence__advantage-title js-recurrence-accordion">Mais controle</p>
 							<div class="modal-recurrence__advantage-body">
 								<p class="modal-recurrence__advantage-text">
@@ -54,11 +46,13 @@
 				<span class="modal-recurrence-line-desktop"></span>
 				<span class="modal-recurrence-line-mobile"></span>
 				<div class="modal-recurrence__footer">
-					<p><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
-					<a href="#" class="modal-recurrence__cta primary-button text-uppercase js-recurrence-add" data-index="{index}" {^isOpen}data-period="{period}"{/isOpen}>Assinar compra recorrente</a>
+					<p class="modal-recurrence__term"><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
+					<a href="#" class="modal-recurrence__cta -desktop primary-button text-uppercase js-recurrence-add" data-index="{index}" {^isOpen}data-period="{period}"{/isOpen}>Assinar compra recorrente</a>
 					<i class="loading-text icon-spinner icon-spin hide"></i>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </div>
+
+<a href="#" class="modal-recurrence__cta -mobile primary-button text-uppercase js-recurrence-add" data-index="{index}" {^isOpen}data-period="{period}"{/isOpen}>Assinar compra recorrente</a>

@@ -9,7 +9,7 @@
 
 .add-item-attachment-container {
 	@include breakpoint(small, 'max') {
-		bottom: -25px;
+		bottom: 5px;
 		left: 52%;
 		position: absolute;
 		transform: translateX(-50%);
@@ -221,21 +221,10 @@
 
 .recurrence__remove {
 	@include font-size(12px);
-	border: 2px solid darken($gray, 10%);
-	border-radius: 18px;
 	color: darken($gray, 20%);
-	display: inline-block;
-	margin-left: 1em;
-	padding: .5em .75em;
-	text-transform: uppercase;
-
-	&:hover,
-	&:active,
-	&:focus {
-		background-color: darken($gray, 10%);
-		color: #fff;
-		text-decoration: none
-	}
+	display: block;
+	font-weight: 100;
+	text-decoration: underline;
 }
 
 //bugfixes iphone5
@@ -244,5 +233,25 @@
 		@include breakpoint(small, 'max') {
 			@include font-size(12px);
 		}
+	}
+
+	&-text {
+		display: block;
+		font-size: .8125rem;
+		margin-bottom: 0;
+	}
+
+	&-container {
+		display: flex;
+		&::before {
+			background: url('https://consul.vteximg.com.br/arquivos/recurrenceIcon.png') no-repeat top;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 35px;
+			margin: 0 15px 0 0;
+			width: 35px;
+		}
+
 	}
 }

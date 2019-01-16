@@ -14,7 +14,12 @@
 
 	{?hasActiveRecurrence}
 		<div class="recurrence__step recurrence__step--three hide">
-			<p>Comprar a cada {selectedRecurrence|recurrenceSemanas} <a href="javascript:void(0)" class="recurrence__remove js-recurrence-remove" data-index="{index}" data-period="{selectedRecurrence}">Cancelar</a>&nbsp;<i class="loading-text icon-spinner icon-spin hide"></i></p>
+			<div class="recurrence__step-container">
+				<div class="recurrence__step-container-inner">
+					<p class="recurrence__step-text">Compra recorrente a cada {selectedRecurrence|recurrenceSemanas}</p>
+					<a href="javascript:void(0)" class="recurrence__remove js-recurrence-remove" data-index="{index}" data-period="{selectedRecurrence}">Cancelar</a>&nbsp;<i class="loading-text icon-spinner icon-spin hide"></i>	
+				</div>
+			</div>
 		</div>
 	{/hasActiveRecurrence}
 </div>
