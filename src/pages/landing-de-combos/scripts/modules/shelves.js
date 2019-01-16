@@ -45,11 +45,13 @@ Nitro.module('shelves', function () {
 		self.getDiscountsInMD();
 
 		$(document).ajaxComplete(function(event, xhr, settings) {
-			console.log(settings.url.split('/')[4]);
-			if(settings.url.split('/')[4] === 'dataentities'){
-				self.loadPrateleiras();
-				self.loadPrice();
-			}
+
+			$.each(settings.url.split('/'), function(i,v){
+				if(v === 'dataentities'){
+					self.loadPrateleiras();
+					self.loadPrice();
+				}
+			});
 		});
 	};
 
