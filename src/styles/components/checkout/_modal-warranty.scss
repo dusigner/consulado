@@ -458,7 +458,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			
 			&:last-child {
 				.box-opcao-garantia {
-					padding-top: 30px;
+					@include breakpoint(860px, 'max') {
+						padding-top: 30px;
+					}
 				}
 			}
 
