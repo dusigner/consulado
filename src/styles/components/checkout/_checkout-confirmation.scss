@@ -311,45 +311,6 @@ body[class*='consul'] {
 							border-color: transparent;
 
 							@include breakpoint(small, 'max') { display: inline-block; }
-
-							.recurrence-item {
-								@include breakpoint (small, 'max') { text-align: center; }
-								&-table {
-									align-items: center;
-									display: flex !important;
-									flex-wrap: wrap;
-									width: 100% !important; 
-									
-									&::before {
-										background: url('/arquivos/recurrenceIcon.png') no-repeat;
-										background-size: contain;
-										content: '';
-										height: 25px;
-										margin-right: 10px;
-										width: 25px;
-
-										@include breakpoint (small, 'max') { margin: 0 auto 10px; }
-									}
-								}
-								
-								&-message {
-									color: #736c6b;
-									font-size: .8rem;
-									font-weight: 300;
-									padding-top: 0;
-								}
-							
-								&-period { margin-bottom: 0; }
-							
-								&-mail {
-									background-color: #e5e5e5;
-									color: #736c6b;
-									font-size: .8rem;
-									font-weight: 300;
-									margin-top: 10px;
-									padding: 5px 50px 5px 10px;
-								}
-							}
 						}
 
 						td {
@@ -393,6 +354,10 @@ body[class*='consul'] {
 
 							&>div { padding-top: 10px; }
 						}
+
+						.cconf-attachment-recorrencia-custom {
+							display: none;
+						}
 					}
 				}
 
@@ -419,10 +384,73 @@ body[class*='consul'] {
 			}
 		}
 	}	
-}
 
-.empty-td {
-	@include breakpoint (small, 'max') {
-		display: none;
-	}
+	&.-teste-b {
+		#app-top,
+		#app-container {
+			.ph3-ns {
+				.cconf-product-table {
+					tbody {
+						tr {
+							.recurrence-item {
+								@include breakpoint (small, 'max') { text-align: center; }
+								&-table {
+									align-items: center;
+									display: flex !important;
+									flex-wrap: wrap;
+									width: 100% !important; 
+									
+									&::before {
+										background: url('/arquivos/recurrenceIcon.png') no-repeat;
+										background-size: contain;
+										content: '';
+										height: 25px;
+										margin-right: 10px;
+										width: 25px;
+
+										@include breakpoint (small, 'max') { margin: 0 auto 10px; }
+									}
+								}								
+								&-message {
+									color: #736c6b;
+									font-size: .8rem;
+									font-weight: 300;
+									padding-top: 0;
+								}
+							
+								&-period { margin-bottom: 0; }
+							
+								&-mail {
+									background-color: #e5e5e5;
+									color: #736c6b;
+									font-size: .8rem;
+									font-weight: 300;
+									margin-top: 10px;
+									padding: 5px 50px 5px 10px;
+								}
+							}
+
+						}
+
+						.cconf-attachment-recorrencia-custom {
+							display: table-row;
+						}
+						
+						.cconf-attachment-recorrencia {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+		
+
+		
+		
+		.empty-td {
+			@include breakpoint (small, 'max') {
+				display: none;
+			}
+		}
+	}	
 }

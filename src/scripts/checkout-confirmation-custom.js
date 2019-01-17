@@ -183,8 +183,8 @@ $(window).on('load', function() {
 		};
 
 		this.updateRecurrenceItem = function() {
-			for (let i = 0; i < $('.cconf-attachment-recorrencia').length; i++) {
-				$('.cconf-attachment-recorrencia').eq(i).is(":hidden") ? '' : $(`
+			for (let i = 0; i < $('.cconf-attachment-recorrencia:not(.checked)').length; i++) {
+				$('.cconf-attachment-recorrencia:not(.checked)').eq(i).is(":hidden") ? '' : $(`
 					<tr class="cconf-attachment-recorrencia-custom">
 						<td class="recurrence-item-table">
 							<div class="recurrence-item-message">
@@ -199,7 +199,7 @@ $(window).on('load', function() {
 						<td class="empty-td"></td>
 					</tr>
 				`).insertBefore($('.cconf-attachment-recorrencia').eq(i));
-				$('.cconf-attachment-recorrencia').eq(i).css('display', 'none');
+				$('.cconf-attachment-recorrencia').eq(i).addClass('checked');
 			}
 
 		};

@@ -118,7 +118,7 @@ Nitro.module('checkout.recurrence', function() {
 	};
 
 	this.setModalActive = function() {
-		$('body').addClass('overflow-hidden');
+		$('body').hasClass('-teste-b') ? $('body').addClass('overflow-hidden') : '';
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 	};
 
