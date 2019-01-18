@@ -160,6 +160,13 @@ body.-teste-b {
 			padding: 15px 35px;
 			width: 30%;
 
+			&:hover,
+			&:focus {
+				background-color: $green;
+				color: #fff;
+				outline: none;
+			}
+
 		}
 		&__container {
 			display: inline-block;

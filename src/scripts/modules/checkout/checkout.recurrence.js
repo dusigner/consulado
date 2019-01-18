@@ -66,9 +66,9 @@ Nitro.module('checkout.recurrence', function() {
 			$('body').append(out);
 			
 			$('#modal-recurrence').modal({}, self.setModalActive()).on('hidden.bs.modal', function() {
-				$('.modal-recurrence__cta.-mobile').remove();
 				$('body').removeClass('overflow-hidden');
 				$('#modal-recurrence').remove();
+				$('.modal-recurrence__cta.-mobile').remove();
 			});
 
 			var $openRecurrenceToggle = $('.js-select-toggle'),
