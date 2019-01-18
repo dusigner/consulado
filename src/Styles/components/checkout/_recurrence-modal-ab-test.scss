@@ -1,0 +1,264 @@
+@charset 'UTF-8';
+
+body.-teste-b {
+	.-testeA {
+		display: none;
+	}
+
+	.-teste-b {
+		display: block;
+	}
+
+	.modal-recurrence {		
+		@include breakpoint(small, 'max') {
+			background: transparent;
+			height: 100%;
+			left: 0;
+			overflow: scroll;
+			padding-bottom: 100px;
+			top: 0 !important;
+			transform: translate(0, 0);
+		}
+
+		background-color: #fff;
+		top: 20%!important;
+
+		@include breakpoint('small', 'max') {
+			margin: 5% 3%;
+			width: 94%;
+		}
+
+		&__body {
+			padding-top: 20px;
+		}
+
+		&__title {
+			@include breakpoint(small, 'max') {
+				@include font-size(20px);
+				line-height: 1.2;
+			}
+			@include font-size(28px);
+			line-height: 1;
+			
+			@include breakpoint(small, 'min') {
+				margin: 15px auto;
+				width: 70%;
+			}
+		}
+
+		&__deadline {
+			font-size: .8rem;
+
+			@include breakpoint(small, 'min') {
+				font-size: 1.125rem;
+				margin-bottom: 20px;
+			}
+		}
+
+		&__advantages {
+			@include breakpoint(small, 'max') { display: block; }
+			@include breakpoint(small, 'min') { 
+				margin: 10px 0;
+				text-align: left; 
+				
+			}
+		}
+
+		&__advantage {
+
+			&-body {
+				padding: 0;
+
+				@include breakpoint (small, 'max') {
+					display: block;
+				}
+			}
+
+			@include breakpoint(small, 'max') {
+				display: block;
+				margin: 0 auto 15px;
+				max-width: 100%;
+			}
+			display: flex;
+			max-width: 500px;
+
+			&-element {
+				
+				@include breakpoint ('small', 'max') {
+					display: block;
+				}
+			}
+
+			&-title {
+				@include breakpoint(small, 'max') {
+				//	border-bottom-left-radius: 50px;
+				//	border-bottom-right-radius: 50px;
+					padding-right: 16px;
+					pointer-events: none;
+					position: relative;
+				//	transition: border-bottom-left-radius .5s ease,
+				//				border-bottom-right-radius .5s ease;
+
+				//	&--active {
+				//		border-bottom-left-radius: 0;
+				//		border-bottom-right-radius: 0;
+				//	}
+				}
+				@include font-size(20px);
+
+				background-color: #fff;
+				color: #736c6b;
+				font-weight: 600;
+				padding-bottom: 5px;
+				padding-top: 15px;
+
+				&:after {
+					display: none;
+				}
+			}
+
+			&-text {
+				@include font-size(16px);
+				@include breakpoint(small, 'max') { display: block; }
+			}
+
+			strong {
+				@include font-size(20px);
+				color: $green;
+			}
+			&::before {
+				flex-wrap: wrap;
+				height: 100px;
+				margin: 15px 15px;
+				width: 100px;
+				
+				@include breakpoint ('small', 'max') {
+					display: block;
+					height: 60px;
+					margin: 15px auto;
+					width: 60px;
+				}
+			}
+		}
+
+
+		&__cta {
+			@include breakpoint(small, 'max') { 
+				@include font-size(15px);	
+				bottom: 0;
+				left: 0;
+				margin: 15px 0 0 0;
+				position: fixed;
+				right: 0;
+				width: 100%;
+				z-index: 9999999;
+			}
+
+			@include font-size(14px);
+		
+			margin: 15px auto;
+			padding: 15px 35px;
+			width: 30%;
+
+			&:hover,
+			&:focus {
+				background-color: $green;
+				color: #fff;
+				outline: none;
+			}
+
+		}
+		&__container {
+			display: inline-block;
+			
+			@include breakpoint ('small', 'max') {
+				display: block;
+			}
+		}
+
+		&-line-mobile {
+			border-top: 1px solid #ddd;
+			display: block;
+			position: relative;
+			width: 100%; 
+			
+			@include breakpoint ('small', 'min') {
+				display: none;
+			}
+			&:before {
+				bottom: -18px;
+				color: #ddd;
+				content: '•';
+				font-size: 1.5rem;
+				left: 48%;
+				position: absolute;
+				
+				@include breakpoint ('small', 'min') {
+					display: none;
+				}
+			}
+		}
+
+		&-line-desktop {
+			border-top: 1px solid #ddd;
+			display: block;
+			position: relative;
+			width: 96%; 
+			
+			&-vertical {
+				border-left: 1px solid #ddd;
+			}
+
+			@include breakpoint ('small', 'max') {
+				display: none;
+			}
+		}
+
+		.close {
+			border: 3px solid #b4afad;
+		}
+
+		&__term {
+			color: #B4AFAD;
+			margin: 15px 0;
+			
+			small {
+				font-size: .875rem;
+			}
+
+			@include breakpoint ('small', 'max') {
+				color: #736c6b;
+				line-height: 1;
+			}
+		}
+	}
+
+	.-desktop {
+		display: block;
+		@include breakpoint(small, 'max') { display: none; }
+	}
+
+	.-mobile {
+		border-radius: 0;
+		display: none;
+		padding: 15px 0;
+		@include breakpoint(small, 'max') { display: block; }
+	}
+
+	.-praticidade::before {
+		background: url('/arquivos/CNSmoreEconomy.png') no-repeat top;
+		content: '';
+	}
+
+	.-controle::before {
+		background: url('/arquivos/CNSmoreControl.png') no-repeat top;
+		content: '';
+	}
+
+	.modal-dialog {
+		@include breakpoint ('small', 'max') {
+			background-color: #fff;
+			border-radius: 15px;
+		}
+	}	
+}
