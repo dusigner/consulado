@@ -8,6 +8,7 @@ Nitro.module('recurrence', function() {
 		this.signExchange();
 	};
 
+	// Object with recurrences
 	const periods = {
 		'W10515645'  : '6 meses',
 		'326070989'  : '6 meses',
@@ -25,25 +26,16 @@ Nitro.module('recurrence', function() {
 		'W10601110' : '6 meses'
 	};
 	
+	// Render infos recurrence page product
 	this.signExchange = () => {
 		
-		vtexjs.checkout.getOrderForm().then((e) => {
-			// console.log('e', e);
-			
-			let hasRecurrence = false;
-			
+		vtexjs.checkout.getOrderForm().then((e) => {						
 			$.each(periods, function (i) {
-
-				let skuProduct = window.skuJson.skus[0].skuname === i ? true : false;
-				// console.log('skuProduct', skuProduct);
-				// console.log('i', i);
-				
-				let sku;
+				let skuProduct = window.skuJson.skus[0].skuname === i ? true : false,				
+					sku;
 				
 				if (skuProduct) {
 					sku = periods[i];
-
-					// console.log('if');
 
 					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">
 													<b>Troca recomendada a cada ${sku}</b>
@@ -52,25 +44,15 @@ Nitro.module('recurrence', function() {
 												</a>`;
 				
 					$('.sku-selector-container').append(renderInfoRecurrence);
-					
-				}
-				
-			});		
-			
-			// verifies that the product has recurrence
-			// if(e.items[0].attachmentOfferings[0].name.indexOf('Recorrência') !== -1) {		
-			hasRecurrence = true;
+				}				
+			});
 
 			this.renderInfoRecurrence(e);
-				
-			// return false;
-			// }
-
-			return hasRecurrence;
 		});
 
 	};	
 
+	// Render modal recurrence page page product with Dust Render
 	this.renderInfoRecurrence = (e) => {		
 
 		let item = {
@@ -79,7 +61,7 @@ Nitro.module('recurrence', function() {
 			seller: '1'
 		};
 		
-		dust.render('recurrence', e, function (err, out) {
+		dust.render('recurrence', e, function (err, out) {			
 			
 			if (err) {
 				throw new Error('RecurrenceSteps Dust error: ' + err);
@@ -103,6 +85,20 @@ Nitro.module('recurrence', function() {
 
 		});
 				
+	};
+
+	// Render mode recurrence button Modal
+	this.addRecurrenceToCart = () => {
+
+		const $btnRecurrence = $('.js-recurrence-add-cart');
+		let item = 0;
+
+		$btnRecurrence.on('click', function (e) {
+			e.preventDefault();
+			vtexjs.checkout.addItemAttachment(item, 'Recorrência' /*,content*/).then(function() {
+				$('#modal-recurrence').modal('hide');
+			});
+		});
 	};
 
 	this.init();
