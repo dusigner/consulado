@@ -775,7 +775,7 @@ $loja-color: #9aca3d;
 // depoimentos
 .depoimentos {
 	margin-bottom: 20px;
-	padding: 100px 0;
+	padding: 30px 0 100px;
 
 	@include breakpoint('medium', 'max') {
 		padding-top: 200px;
