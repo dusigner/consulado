@@ -417,11 +417,13 @@ body {
 @import 'components/checkout/cart';
 @import 'components/checkout/payment';
 @import 'components/checkout/checkout-confirmation';
+@import 'components/checkout/checkout-confirmation-ab-test';
 @import 'components/checkout/footer';
 @import 'components/checkout/modal-services';
 @import 'components/checkout/modal-phones';
 @import 'components/checkout/modal-login';
 @import 'components/checkout/recurrence';
+@import 'components/checkout/recurrence-ab-test';
 // GAE
 @import 'components/checkout/modal-warranty';
 @import 'components/checkout/modal-warranty-mobile';

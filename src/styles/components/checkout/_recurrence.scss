@@ -243,54 +243,6 @@
 }
 
 
-.-teste-b {
-	.recurrence__step-message {
-		display: none;
-	}
-
-	.recurrence__remove {
-		@include font-size(12px);
-		border: none;
-		border-radius: 0;
-		color: darken($gray, 20%);
-		display: block;
-		font-weight: 100;
-		margin-left: 0;
-		padding: 0;
-		text-decoration: underline;
-		text-transform: none;
-
-
-		&:hover,
-		&:active,
-		&:focus {
-			background-color: none;
-			color: none;
-			text-decoration: none;
-		}
-	}
-	.recurrence__step {
-		&-text {
-			display: block;
-			font-size: .8125rem;
-			margin-bottom: 0;
-		}
-	
-		&-container {
-			display: flex;
-			&::before {
-				background: url('https://consul.vteximg.com.br/arquivos/recurrenceIcon.png') no-repeat top;
-				background-size: contain;
-				content: '';
-				display: block;
-				height: 35px;
-				margin: 0 15px 0 0;
-				width: 35px;
-			}
-		}
-	}
-}
-
 //bugfixes iphone5
 .recurrence__step {
 	&--three {
