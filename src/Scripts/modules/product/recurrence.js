@@ -45,8 +45,10 @@ Nitro.module('recurrence', function() {
 
 					// console.log('if');
 
-					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">CLICK
-													<span>Troca recomendada a cada ${sku}</span>
+					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">
+													<b>Troca recomendada a cada ${sku}</b>
+													<span>Assine e receba um novo próximo da data de troca</span>
+													<span>Saiba mais</span>
 												</a>`;
 				
 					$('.sku-selector-container').append(renderInfoRecurrence);
