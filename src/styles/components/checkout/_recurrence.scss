@@ -9,7 +9,7 @@
 
 .add-item-attachment-container {
 	@include breakpoint(small, 'max') {
-		bottom: -25px;
+		bottom: 5px;
 		left: 52%;
 		position: absolute;
 		transform: translateX(-50%);
@@ -219,6 +219,10 @@
 	}
 }
 
+.recurrence__step-container {
+	display: none;
+}
+
 .recurrence__remove {
 	@include font-size(12px);
 	border: 2px solid darken($gray, 10%);
@@ -237,6 +241,7 @@
 		text-decoration: none
 	}
 }
+
 
 //bugfixes iphone5
 .recurrence__step {

@@ -100,13 +100,13 @@ Nitro.module('checkout.gae', function() {
 	};
 
 	this.addkWarranty = function() {
-
 		var $self = $(this),
 			index = $self.data('index'),
 			idOffering = $('input[name="warranty-value"]:checked').val(),
-			liAceito = $('#check-termos').is(':checked');
-
-		if ( idOffering !== '' && liAceito ) {
+			liAceito = $('#check-termos').is(':checked'),
+			winWidth = $('body').width();
+		
+		if ( idOffering !== undefined && liAceito ) {
 			$self.addClass('icon-loading');
 
 			vtexjs.checkout.addOffering(idOffering, index).always(function() {
@@ -116,15 +116,37 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
-		}
-		else if ( idOffering === '' && !liAceito || idOffering === '' && liAceito) {
+		} else if ( idOffering === '' && !liAceito && idOffering === '' && liAceito ) {
 			$modalWarranty.modal('hide');
 		} else {
-			$('.form-termos').addClass('erro');
+			if ( liAceito === false ) {
+				$('.form-termos').addClass('erro');
+	
+				setTimeout(function(){
+					$('.form-termos').removeClass('erro');
+				}, 5000);
+			}
+			if ( idOffering === undefined ) {
 
-			setTimeout(function(){
-				$('.form-termos').removeClass('erro');
-			}, 3000);
+				$('.box-opcao-garantia').css('border', '2px solid #f78383');
+				$('.modal__table .erro').fadeIn('slow');
+				
+				setTimeout(function(){
+					$('.box-opcao-garantia').css('border', '2px solid #e4e4e4');
+					$('.modal__table .erro').fadeOut('slow');
+					
+				}, 5000);
+			}
+		}
+
+		if (winWidth < 991 && idOffering === undefined) {
+			$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
+				scrollTop: 100
+			}, 'slow');
+		} else if (winWidth < 991 && liAceito === false) {
+			$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
+				scrollTop: 650
+			}, 'slow');
 		}
 	};
 
@@ -168,7 +190,9 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].priceMonth = val.price / warrantyTime;
 			data.warranty[index].priceDay   = val.price / self.monthToDays(warrantyTime);
 			data.warranty[index].months     = warrantyTime;
+			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : '2',
 			data.warranty[index].isPrimary  = (warrantyTime === 12) ? true : false;
+			data.warranty[index].isMiddle   = (warrantyTime === 18) ? true : false;
 			data.warranty[index].isLast     = (warrantyTime === 24) ? true : false;
 			data.warranty[index].isCheaper  = false;
 

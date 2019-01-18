@@ -25,6 +25,7 @@
 				<div class="modal__table">
 					<!-- Descrição produto e vantagens -->
 					<div class="modal__cell">
+						<div class="erro">Selecione uma opção</div>
 						<ul class="warranty-benefits">
 							<li class="warranty-benefits__item warranty-benefits__item--product">
 								<img src="{product.image}" alt="{product.name}" title="{product.name}" />
@@ -35,9 +36,9 @@
 					<!-- /Descrição produto e vantagens -->
 
 					<!-- Sem garantia -->
-					<input type="radio" name="warranty-value" id="warranty1" value="" checked="checked" class="fakeInput">
-					<div class="modal__cell active ">
-						<label for="warranty1" class="box-opcao-garantia box-garantia-secundaria anchor-gae first-box-garantia active">
+					<input type="radio" name="warranty-value" id="warranty1" value="" class="fakeInput">
+					<div class="modal__cell">
+						<label for="warranty1" class="box-opcao-garantia box-garantia-secundaria anchor-gae first-box-garantia">
 
 							<p class="title-garantia">Sem garantia estendida<span>(Apenas garantia de fábrica)</span></p>
 
@@ -54,16 +55,19 @@
 							<!-- <span class="close-warranty"><i class="icon icon-remove item-remove-ico"></i></span> -->
 							<label for="warranty{id}" class="box-opcao-garantia anchor-gae">
 
-								<p class="title-garantia">
-									<strong>+ {months} meses <b class='show-mobile'>por {fullPrice|intAsCurrency}</b></strong>
-									<span>Após garantia de fábrica</span>
-								</p>
+									<p class="title-garantia">
+										<strong>+ <b>{monthsYear}</b> {?isPrimary}ano{/isPrimary} {?isMiddle}ano e meio{/isMiddle} {?isLast}anos{/isLast} </strong>
+										<span>Após garantia de fábrica</span>
+										<strong class='show-mobile'><span>Por {months}x sem juros de {priceMonth|intAsCurrency}</span></strong>
+										<span class='show-mobile'>ou 1x de {fullPrice|intAsCurrency}</span>
+									</p>
 
-								<p class="bottom-garantia">
-									<strong>{fullPrice|intAsCurrency}</strong>
-									<!-- <span>Apenas {priceMonth|intAsCurrency}/mês de cobertura.</span> -->
-								</p>
-							</label>
+									<p class="bottom-garantia">
+										<strong>{months}x <span>sem juros de</span> {priceMonth|intAsCurrency}</strong>
+										<span>1x de {fullPrice|intAsCurrency}</span>
+									</p>
+								</label>
+
 
 							<!-- Next best option -->
 							<div class="modal-warning-best-option">

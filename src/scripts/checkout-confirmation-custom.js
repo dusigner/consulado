@@ -9,7 +9,7 @@ $.ajax({
 });
 
 $(window).on('load', function() {
-
+	
 	require('modules/helpers');
 
 	if (VERSION) {
@@ -24,18 +24,18 @@ $(window).on('load', function() {
 	//load Nitro Lib
 	require('vendors/nitro');
 
+	require('vendors/jquery.cookie');
 	require('expose-loader?store!modules/store/store');
 
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
+	
 	var CRM = require('modules/store/crm.js');
-
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
 	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas'], function(phones, termoColeta, cotas) {
-
-		var self = this,
+		const self = this,
 			$body = $('body');
 
 		this.init = function() {
@@ -74,6 +74,8 @@ $(window).on('load', function() {
 				cotas.updateCotasEletrodomesticos();
 				highlightVoltage($('.cconf-product-table .w-80-ns p'));
 			}
+
+			$(document).ajaxStop(() => self.updateRecurrenceItem());
 		};
 
 		this.replaceOrderId = function() {
@@ -96,15 +98,15 @@ $(window).on('load', function() {
 
 			for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
 				var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
-
+				
 				if ( entregas.id === entregaEscolhida ) {
-					var startag = new Date(entregas.deliveryWindow.startDateUtc),
-						endag   = new Date(entregas.deliveryWindow.endDateUtc);
+					var startag = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.startDateUtc) : '',
+						endag   = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.endDateUtc) : '';
 				}
 			}
 
-			var starHor        = startag.getUTCHours(),
-				andHor         = endag.getUTCHours(),
+			var starHor        = startag ? startag.getUTCHours() : '',
+				andHor         = endag ? endag.getUTCHours() : '',
 				$wrapper       = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
 				HTMLTemporario = $wrapper.innerHTML,
 				HTMLNovo       = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
@@ -175,15 +177,35 @@ $(window).on('load', function() {
 					}
 				});
 				
-			}else {
+			} else {
 				console.info('nao tem o localStorage');
 			}
+		};
+
+		this.updateRecurrenceItem = function() {
+			for (let i = 0; i < $('.cconf-attachment-recorrencia:not(.checked)').length; i++) {
+				$('.cconf-attachment-recorrencia:not(.checked)').eq(i).is(":hidden") ? '' : $(`
+					<tr class="cconf-attachment-recorrencia-custom">
+						<td class="recurrence-item-table">
+							<div class="recurrence-item-message">
+								<p class="recurrence-item-period">assinatura de compra recorrente a cada ${$('.cconf-attachment-recorrencia').eq(i).find('.cconf-attachment-value').text()}</p>
+							</div>
+
+							<p class="recurrence-item-mail">Você receberá por e-mail todos os detalhes da sua assinatura</p>
+						</td>
+
+						<td class="empty-td"></td>
+						<td class="empty-td"></td>
+						<td class="empty-td"></td>
+					</tr>
+				`).insertBefore($('.cconf-attachment-recorrencia').eq(i));
+				$('.cconf-attachment-recorrencia').eq(i).addClass('checked');
+			}
+
 		};
 
 		this.init();
 
 		$(window).on('orderPlacedReady.vtex', this.orderPlacedUpdated);
-
 	});
-
 });
