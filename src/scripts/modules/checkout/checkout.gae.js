@@ -146,11 +146,11 @@ Nitro.module('checkout.gae', function() {
 			}
 		}
 
-		if (winWidth < 991 && idOffering === undefined) {
+		if (winWidth < 991 && idOffering === undefined && titleOffering !== '(Apenas garantia de fábrica)') {
 			$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
 				scrollTop: 100
 			}, 'slow');
-		} else if (winWidth < 991 && liAceito === false) {
+		} else if (winWidth < 991 && liAceito === false && titleOffering !== '(Apenas garantia de fábrica)') {
 			$('#modal-warranty .modal-body, #modal-warranty .modal-content, html').animate({
 				scrollTop: 650
 			}, 'slow');
