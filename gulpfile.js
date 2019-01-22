@@ -70,7 +70,7 @@ const getPath = source => {
 	let newPath = [ paths[ source ] ],
 		replaceSource;
 
-	if( $.util.env.page ) {
+	if( $.util.env.custom ) {
 
 		if( source === 'webpack' ) {
 			source = 'scripts';
@@ -78,21 +78,21 @@ const getPath = source => {
 
 		replaceSource = source === 'pages' ? '' : `/${source}`;
 
-		if($.util.env.page) {
-			if ( $.util.env.page === 'ALL' ) {
+		if($.util.env.custom) {
+			if ( $.util.env.custom === 'ALL' ) {
 				let pagesDir = fs.readdirSync(`${__dirname}/src/pages`);
 				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|templates|header)/.test(path) ) : pagesDir;
-				$.util.env.page = pagesDir.join(',');
+				$.util.env.custom = pagesDir.join(',');
 			}
 
-			if( $.util.env.page.indexOf(',') > 0 ) {
-				const multiPages = $.util.env.page.split(',');
+			if( $.util.env.custom.indexOf(',') > 0 ) {
+				const multiPages = $.util.env.custom.split(',');
 
 				multiPages.map(singlePage => {
 					newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + singlePage + replaceSource ) );
 				});
 			} else {
-				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + $.util.env.page + replaceSource ) );
+				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + $.util.env.custom + replaceSource ) );
 			}
 		}
 
@@ -221,8 +221,8 @@ gulp.task('scripts', ['lint'], function () {
 gulp.task('styles', ['sassLint'], function () {
 
 	return gulp.src( getPath('styles') )
-		.pipe($.util.env.page ? $.util.noop() : $.cached('styling'))
-		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/styles/'))
+		.pipe($.util.env.custom ? $.util.noop() : $.cached('styling'))
+		.pipe($.util.env.custom ? $.util.noop() : $.sassPartialsImported('src/styles/'))
 		.pipe($.plumber())
 		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
 		.pipe( $.sass({
@@ -295,7 +295,7 @@ gulp.task('server', ['watch'], () => {
 	};
 
 	bs({
-		files: $.util.env.page ? [] : [ 'build/**', '!build/**/*.map'],
+		files: $.util.env.custom ? [] : [ 'build/**', '!build/**/*.map'],
 		startPath: `${secureUrl ? `http://${accountName}.vtexlocal.com.br${proxyPort !== 80 ? `:${proxyPort}` : ''}/?debugcss=true&debugjs=true` : '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue' }`,
 		rewriteRules: [
 			{
@@ -342,16 +342,16 @@ gulp.task('server', ['watch'], () => {
 		app: 'chrome'
 	};
 
-	if ( $.util.env.page ) htmlFile = fs.readdirSync(`${__dirname}/src/pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
+	if ( $.util.env.custom ) htmlFile = fs.readdirSync(`${__dirname}/src/pages/${$.util.env.custom}`).filter(file => /\.html$/.test(file))[0];
 
-	return $.util.env.page ? bs.create().init({
+	return $.util.env.custom ? bs.create().init({
 		files: [ 'build/**', '!build/**/*.map'],
 		server: {
 			baseDir: ['build']
 		},
 		ui: false,
 		port: 3002,
-		startPath: $.util.env.page.indexOf(',') > 0 ? 'pages' : (htmlFile ? `${$.util.env.page}/${htmlFile}` : $.util.env.page),
+		startPath: $.util.env.custom.indexOf(',') > 0 ? 'pages' : (htmlFile ? `${$.util.env.custom}/${htmlFile}` : $.util.env.custom),
 		open: !$.util.env.no
 	}) : (!$.util.env.no ? gulp.src(__filename).pipe($.open(options)) : null) ;
 
@@ -359,7 +359,7 @@ gulp.task('server', ['watch'], () => {
 
 gulp.task('pages', ['html'], function () {
 /*
-	return $.util.env.page && gulp.src( getPath('pages'), {base: 'src/Pages'} )
+	return $.util.env.custom && gulp.src( getPath('pages'), {base: 'src/Pages'} )
 		.pipe($.newer('build'))
 		.pipe(gulp.dest('build')); */
 });
@@ -416,9 +416,9 @@ gulp.task('shelves', function() {
 });
 
 gulp.task('html', function() {
-	let pagesDest = [`build/${$.util.env.page}`];
+	let pagesDest = [`build/${$.util.env.custom}`];
 
-	if ( $.util.env.page && $.util.env.page.indexOf(',') > 0 ) {
+	if ( $.util.env.custom && $.util.env.custom.indexOf(',') > 0 ) {
 		pagesDest = ['build/pages'];
 	}
 
@@ -428,7 +428,7 @@ gulp.task('html', function() {
 		pagesDest = pagesDest.concat(paths.dest.html.templates);
 	}
 
-	return $.util.env.page && processHTML(getPath('pages'), pagesDest);
+	return $.util.env.custom && processHTML(getPath('pages'), pagesDest);
 });
 
 gulp.task('watch', [ 'fonts', 'images', 'styles', 'scripts', 'pages'], function () {
