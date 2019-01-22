@@ -103,9 +103,10 @@ Nitro.module('checkout.gae', function() {
 		var $self = $(this),
 			index = $self.data('index'),
 			idOffering = $('input[name="warranty-value"]:checked').val(),
+			titleOffering = $('.modal__cell.active .title-garantia span').text(),
 			liAceito = $('#check-termos').is(':checked'),
 			winWidth = $('body').width();
-		
+			
 		if ( idOffering !== undefined && liAceito ) {
 			$self.addClass('icon-loading');
 
@@ -116,10 +117,14 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
+			
 		} else if ( idOffering === '' && !liAceito && idOffering === '' && liAceito ) {
 			$modalWarranty.modal('hide');
+		
 		} else {
-			if ( liAceito === false ) {
+		
+			if ( liAceito === false && titleOffering !== '(Apenas garantia de fábrica)') {
+				
 				$('.form-termos').addClass('erro');
 	
 				setTimeout(function(){
@@ -127,7 +132,6 @@ Nitro.module('checkout.gae', function() {
 				}, 5000);
 			}
 			if ( idOffering === undefined ) {
-
 				$('.box-opcao-garantia').css('border', '2px solid #f78383');
 				$('.modal__table .erro').fadeIn('slow');
 				
@@ -136,6 +140,9 @@ Nitro.module('checkout.gae', function() {
 					$('.modal__table .erro').fadeOut('slow');
 					
 				}, 5000);
+			}
+			if (titleOffering === '(Apenas garantia de fábrica)'){
+				$modalWarranty.modal('hide');
 			}
 		}
 
