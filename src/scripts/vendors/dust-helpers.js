@@ -56,7 +56,8 @@ $.extend(dust.filters, {
 	formatCurrency: value => _.formatCurrency(parseFloat(value)),
 	notificationShortTitle: value => value.substr(0, 80),
 	sanitize: value => $.replaceSpecialChars(value).toLowerCase(),
-	parseInt: value => parseInt(value)
+	parseInt: value => parseInt(value),
+	tolowercase: value => value.toLowerCase()
 });
 (function (dust) {
 
