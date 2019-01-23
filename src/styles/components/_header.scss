@@ -398,7 +398,8 @@ div.account {
 		width: 100%;
 
 		@include breakpoint(770px, 'max') { 
-			background: #e6e6e6;
+			background: #e6e6e6;    
+			padding: 10px 20px 0 20px;
 		}
 
 		@include breakpoint(1280px, 'min') { 		
@@ -423,12 +424,12 @@ div.account {
 				
 				@include breakpoint(770px, 'max') { 
 					border: 0;
-					bottom: 5px;
+					bottom: -8px;
 					left: 0;
-					padding: 0 10px 0 0;
+					padding: 23px 0 0 0;
 					position: absolute;
 					right: 0;
-					text-align: right;
+					text-align: center;
 				}
 			}
 		}
@@ -455,6 +456,13 @@ div.account {
 		&.account__icon--profile {
 			position: relative;
 			top: 5px;
+
+			@include breakpoint(700px, 'max') {
+				left: 50%;
+				position: absolute;
+				top: -5px;
+				transform: translateX(-50%);
+			}
 		}
 
 		&--enter,
