@@ -389,8 +389,13 @@ div.account {
 		// left: 35%;
 		// font-size: 0;
 		margin: 0 0 .5em;
+		overflow: hidden;
+		padding-bottom: 5px;
 		position: relative;
 		// width: 75%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 245px;
 
 		em {
 			display: block;
@@ -403,7 +408,7 @@ div.account {
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: -8px;
+				bottom: -5px;
 				font-size: 10px;
 				left: 30px;
 				position: absolute;
