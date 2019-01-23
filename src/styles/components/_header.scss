@@ -395,7 +395,15 @@ div.account {
 		// width: 75%;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: 245px;
+		width: 100%;
+
+		@include breakpoint(770px, 'max') { 
+			background: #e6e6e6;
+		}
+
+		@include breakpoint(1280px, 'min') { 		
+			width: 150%;
+		}
 
 		em {
 			display: block;
@@ -412,10 +420,20 @@ div.account {
 				font-size: 10px;
 				left: 30px;
 				position: absolute;
+				
+				@include breakpoint(770px, 'max') { 
+					border: 0;
+					bottom: 5px;
+					left: 0;
+					padding: 0 10px 0 0;
+					position: absolute;
+					right: 0;
+					text-align: right;
+				}
 			}
 		}
 
-		svg { max-height: 20px; }
+		svg { max-height: 20px;}
 	}
 
 	#login {
@@ -433,6 +451,11 @@ div.account {
 		margin-right: .5em;
 		vertical-align: middle;
 		width: 20px;
+
+		&.account__icon--profile {
+			position: relative;
+			top: 5px;
+		}
 
 		&--enter,
 		&--profile {fill: $green}
