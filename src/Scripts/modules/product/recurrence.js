@@ -4,6 +4,8 @@ require('Dust/product/recurrence.html');
 
 Nitro.module('recurrence', function() {
 
+	$('body').addClass('-teste-b');
+
 	this.init = () => {
 		this.signExchange();
 	};
@@ -21,52 +23,39 @@ Nitro.module('recurrence', function() {
 		'W10637798'  : '6 meses',
 		'CIX01AXONA' : '36 semanas',
 		'CIX06AXONA' : '6 meses',
-		'C3L02AB'    : '36 semanas',
-		'C3L02ABANA' : 'diaria',
-		'W10601110' : '6 meses'
+		'C3L02AB'    : '6 meses',
+		'C3L02ABANA' : 'diaria'
 	};
 	
 	// Render infos recurrence page product
-	this.signExchange = () => {
-		
-		vtexjs.checkout.getOrderForm().then((e) => {						
-			$.each(periods, function (i) {
-				let skuProduct = $('.productReference').text() === i ? true : false,				
-					sku;
-				
-				if (skuProduct) {
-					sku = periods[i];
+	this.signExchange = () => {	
+		let sku = [];				
+		$.each(periods, function (i) {
+			let skuProduct = $('.productReference').text() === i ? true : false;
 
-					const renderInfoRecurrence = `<div class="recurrence-step">
-													<a href="" id="exchange-recurrence" class="recurrence-step-exchange">
-														<div class="recurrence-step-container">
-															<div class="recurrence-step-text">
-																<p class="recurrence-step-title">Troca recomendada a cada ${sku}</p>
-																<p class="recurrence-step-message">Assine e receba um novo próximo da data de troca</p>
-																<p class="recurrence-step-link">Saiba mais</p>
-															</div>
-														</div>
-													</a>
-												</div>`;
-				
-					$(renderInfoRecurrence).insertAfter('.prod-sku-selector');
-				}				
-			});
-
-			this.renderInfoRecurrence(e);
+			if (skuProduct) {
+				sku.period = periods[i];
+				const renderInfoRecurrence = `<div class="recurrence-step">
+												<a href="" id="exchange-recurrence" class="recurrence-step-exchange">
+													<div class="recurrence-step-container">
+													<div class="recurrence-step-text">
+														<p class="recurrence-step-title">Troca recomendada a cada ${sku.period}</p>
+														<p class="recurrence-step-message">Assine e receba um novo próximo da data de troca</p>
+														<p class="recurrence-step-link">Saiba mais</p>
+													</div>
+												</div>
+											</a>
+										</div>`;
+			
+				$(renderInfoRecurrence).insertAfter('.prod-sku-selector');
+			}				
 		});
-
+		this.renderInfoRecurrence(sku);
 	};	
 
 	// Render modal recurrence page page product with Dust Render
 	this.renderInfoRecurrence = (e) => {		
-
-		let item = {
-			id: skuJson.skus[0].sku,
-			quantity: 1,
-			seller: '1'
-		};
-		
+				
 		dust.render('recurrence', e, function (err, out) {			
 			
 			if (err) {
@@ -77,35 +66,13 @@ Nitro.module('recurrence', function() {
 				e.preventDefault();
 
 				$(out).vtexModal();
-
-				vtexjs.checkout.addToCart([item], null, window.jssalesChannel)
-					.done(function() {
-						const buyButtonRecurrence = $('#BuyButton'),
-							cloneButton = $('#buy-button-recurrence');
-
-						// console.log('cloneButton', cloneButton);
-
-						buyButtonRecurrence.clone().appendTo(cloneButton);
-					});
 			});
 
 		});
 				
 	};
 
-	// Render mode recurrence button Modal
-	this.addRecurrenceToCart = () => {
 
-		const $btnRecurrence = $('.js-recurrence-add-cart');
-		let item = 0;
-
-		$btnRecurrence.on('click', function (e) {
-			e.preventDefault();
-			vtexjs.checkout.addItemAttachment(item, 'Recorrência' /*,content*/).then(function() {
-				$('#modal-recurrence').modal('hide');
-			});
-		});
-	};
 
 	this.init();
 });

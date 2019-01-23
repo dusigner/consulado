@@ -3,7 +3,16 @@
 
 body {
 	.recurrence-step {
+		display: none;
+	}	
 
+}
+.-teste-b {
+
+	.recurrence-step {
+
+		display: block;
+		
 		&-container {
 			&::before {
 				background: url('/arquivos/recurrenceIcon.png') no-repeat;

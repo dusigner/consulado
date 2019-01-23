@@ -434,6 +434,7 @@ body.-teste-b {
 			color: #9aca3c;
 			display: inline-block;
 			font-size: 3.5rem;
+			margin-top: 0;
 			text-align: right;
 			width: 38%;
 
@@ -494,5 +495,16 @@ body.-teste-b {
 			background-color: #fff;
 			border-radius: 15px;
 		}
-    }
+	}
+	
+	.close {
+		background: #fff;
+		border: none;
+		border-radius: 50%;
+		color: #B4AFAD;
+		font-size: 25px;
+		position: absolute;
+		right: 5px;
+		top: 5px;
+	}
 }
