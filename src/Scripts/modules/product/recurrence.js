@@ -31,19 +31,25 @@ Nitro.module('recurrence', function() {
 		
 		vtexjs.checkout.getOrderForm().then((e) => {						
 			$.each(periods, function (i) {
-				let skuProduct = window.skuJson.skus[0].skuname === i ? true : false,				
+				let skuProduct = $('.productReference').text() === i ? true : false,				
 					sku;
 				
 				if (skuProduct) {
 					sku = periods[i];
 
-					const renderInfoRecurrence = `<a href="" id="exchange-recurrence">
-													<b>Troca recomendada a cada ${sku}</b>
-													<span>Assine e receba um novo próximo da data de troca</span>
-													<span>Saiba mais</span>
-												</a>`;
+					const renderInfoRecurrence = `<div class="recurrence-step">
+													<a href="" id="exchange-recurrence" class="recurrence-step-exchange">
+														<div class="recurrence-step-container">
+															<div class="recurrence-step-text">
+																<p class="recurrence-step-title">Troca recomendada a cada ${sku}</p>
+																<p class="recurrence-step-message">Assine e receba um novo próximo da data de troca</p>
+																<p class="recurrence-step-link">Saiba mais</p>
+															</div>
+														</div>
+													</a>
+												</div>`;
 				
-					$('.sku-selector-container').append(renderInfoRecurrence);
+					$(renderInfoRecurrence).insertAfter('.prod-sku-selector');
 				}				
 			});
 

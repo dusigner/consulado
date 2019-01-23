@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import 'components/produto/recurrence';
+
 body.produto {
 	.main {
 		@include breakpoint(small, 'max') {
@@ -288,4 +290,17 @@ div#modal-custom-share {
 			margin-right: 5px;
 		}
 	}
+}
+
+.close {
+	border-radius: 50%;
+	cursor: pointer;
+	height: 30px;
+	opacity: 1;
+	padding: 0;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 30px;
+	z-index: 10;
 }

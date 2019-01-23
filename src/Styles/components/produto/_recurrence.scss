@@ -1,0 +1,42 @@
+
+@charset 'UTF-8';
+
+body {
+	.recurrence-step {
+
+		&-container {
+			&::before {
+				background: url('/arquivos/recurrenceIcon.png') no-repeat;
+				background-size: contain;
+				content: '';
+				display: inline-block;
+				height: 40px;
+				margin: 10px;
+				width: 40px;
+			}
+		}
+
+		margin-bottom: 15px;
+		
+		&-text {
+			display: inline-block;
+		}
+		
+		p {
+			font-size: .9rem;
+			margin: 0;
+		}
+
+		&-title {
+			color: #736c6b;;
+			font-weight: 700;
+			
+		}
+		
+		&-link {
+			color: #9aca3c;
+			font-weight: 700;
+			text-decoration: underline;
+		}
+	}
+}
