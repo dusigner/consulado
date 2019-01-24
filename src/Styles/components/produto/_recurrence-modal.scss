@@ -223,9 +223,12 @@ body.-teste-b {
 		}
 
 		background-color: #fff;
-		top: 20%!important;
+		border-radius: 13px;
+		top: 10%!important;
 
 		@include breakpoint('small', 'max') {
+			border-bottom-left-radius: 0;
+    		border-bottom-right-radius: 0;
 			margin: 5% 3%;
 			width: 94%;
 		}
@@ -344,21 +347,25 @@ body.-teste-b {
 		}
 
 
-		&__cta {
-			@include breakpoint(small, 'max') { 
-				@include font-size(15px);	
-				bottom: 0;
-				left: 0;
-				margin: 15px 0 0 0;
-				position: fixed;
-				right: 0;
-				width: 100%;
-				z-index: 9999999;
+		&__cta {	
+			@include breakpoint(large, 'max') { 
+				margin: 15px 15px;
+				width: 45%;
+				
+				@include breakpoint(small, 'max') { 
+					@include font-size(15px);	
+					bottom: 0;
+					left: 0;
+					margin: 0;
+					right: 0;
+					width: 100%;
+					z-index: 9999999;
+				}
 			}
 
 			@include font-size(14px);
 		
-			margin: 15px auto;
+			margin: 15px 20px;
 			padding: 15px 35px;
 			width: 30%;
 
@@ -367,6 +374,20 @@ body.-teste-b {
 				background-color: $green;
 				color: #fff;
 				outline: none;
+			}
+
+			&.-buy {
+				background-color: #fff;
+				color: #9aca3c;
+			}
+
+			&-buttons {
+				&.cta-mobile {
+					bottom: 0;
+					left: 0;
+					position: fixed;
+					right: 0;
+				}
 			}
 
 		}
@@ -460,10 +481,31 @@ body.-teste-b {
 				color: #9aca3c;
 			}
 		}
+
+		&__productInfo {
+			border-bottom: #ddd 1px solid;
+			padding: 10px 10px 0;
+			text-align: left;
+		}
+
+		&__productName {
+			display: inline-block;
+			font-size: 1.1rem;
+			font-weight: 600;
+			margin-left: 25px;
+		}
+
+		&__productImage {
+			display: inline-block;
+			height: 50px;
+			margin-left: 10px;
+			vertical-align: middle;
+			width: 50px;
+		}
 	}
 
 	.-desktop {
-		display: block;
+		display: inline-block;
 		@include breakpoint(small, 'max') { display: none; }
 	}
 
@@ -471,7 +513,11 @@ body.-teste-b {
 		border-radius: 0;
 		display: none;
 		padding: 15px 0;
-		@include breakpoint(small, 'max') { display: block; }
+
+		@include breakpoint(small, 'max') { 
+			display: block; 
+			margin-top: 0;
+		}
 	}
 
 	.-praticidade::before {
@@ -497,14 +543,20 @@ body.-teste-b {
 		}
 	}
 	
-	.close {
-		background: #fff;
-		border: none;
-		border-radius: 50%;
-		color: #B4AFAD;
-		font-size: 25px;
-		position: absolute;
-		right: 5px;
-		top: 5px;
+	.close {	
+		display: none;
+
+		&.i-close {
+			background: #fff;
+			border: none;
+			border-radius: 50%;
+			color: #B4AFAD;
+			display: block;
+			font-size: 25px;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			z-index: 999999
+		}
 	}
 }

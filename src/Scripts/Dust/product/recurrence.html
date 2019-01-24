@@ -1,17 +1,26 @@
 <div id="modal-recurrence" role="dialog" class="modal fade in modal-recurrence" style="display: none">	
 	<div class="-teste-b">
 		<div class="modal-dialog modal-lg">
+			{! Modal content !}
 			<div class="modal-content">
-				<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close">
+				<a href="javascript:void(0)" class="close i-close">
 					<i class="icon icon-close item-close-ico"></i>
-				</button>
+				</a>
+
+				<div class="modal-header modal-recurrence__productInfo">
+					<img src="{productImage}" alt="{productName}" class="modal-recurrence__productImage">
+					<p class="modal-recurrence__productName">{productName}</p>
+				</div>
+
 				<div class="modal-body text-center modal-recurrence__body">
 					<div class="modal-recurrence__header">
 						<p class="modal-recurrence__title">Já pensou em assinar e receber um novo produto próximo da data de troca?</p>
 						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada {period}
 						</div>
 					</div>
+
 					<span class="modal-recurrence-line-desktop"></span>
+
 					<div class="modal-recurrence__advantages clearfix">
 						<span class="modal-recurrence-line-mobile"></span>
 						<div class="modal-recurrence__container">
@@ -31,7 +40,9 @@
 							</p>
 							<span class="modal-recurrence-line-mobile"></span>
 						</div>
+
 						<div class="modal-recurrence-line-desktop-vertical"></div>
+
 						<div class="modal-recurrence__container">
 							<div class="modal-recurrence__advantage -praticidade">
 								<div class="modal-recurrence__advantage-element">
@@ -56,17 +67,23 @@
 							</div>
 						</div>	
 					</div>
+
 					<span class="modal-recurrence-line-desktop"></span>
 					<span class="modal-recurrence-line-mobile"></span>
+
 					<div class="modal-recurrence__footer">
 						<p class="modal-recurrence__term"><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
-						<a href="#" class="modal-recurrence__cta -desktop primary-button text-uppercase js-recurrence-add">Assinar compra recorrente</a>
+						<div class="modal-recurrence__cta-buttons">
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy primary-button text-uppercase">Comprar produto</a>
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy-recurrence primary-button text-uppercase">Comprar produto e assinar</a>
+						</div>
 						<i class="loading-text icon-spinner icon-spin hide"></i>
 					</div>
 				</div>
 			</div>
-		</div>	
+			{! Modal content !}
+		</div>
+
 	</div>
-    <a href="#" class="modal-recurrence__cta -mobile primary-button text-uppercase js-recurrence-add -teste-b">Assinar compra recorrente</a>
 </div>
 

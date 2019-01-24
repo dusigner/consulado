@@ -29,6 +29,11 @@ body {
 		
 		&-text {
 			display: inline-block;
+
+			@include breakpoint('extra-large', 'max') {
+    			margin-top: 20px;
+				width: 75%;
+			}
 		}
 		
 		p {
