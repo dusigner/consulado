@@ -5,8 +5,6 @@ require('Dust/product/recurrence.html');
 Nitro.module('recurrence', function() {
 	var self = this;
 
-	$('body').addClass('-teste-b');
-
 	this.init = () => {
 		this.signExchange();
 	};
