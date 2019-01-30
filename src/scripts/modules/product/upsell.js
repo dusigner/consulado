@@ -43,6 +43,12 @@ Nitro.module('upsell', function() {
 		});
 	};
 
+	this.verifyIfNoStock = function(){
+		if(!skuJson.available){
+			$('.textupgrade p').html('Infelizmente esse produto está indisponível no momento. <br /> Mas confira essa outra oferta interessante que pode te atender.');
+		}
+	};
+
 	this.renderUpsell = () => {
 		apiResponse = {
 			apiResponseDowngrade,
@@ -57,6 +63,7 @@ Nitro.module('upsell', function() {
 		self.openCloseAndMobile();
 		self.tag();
 		self.formatPrice();
+		self.verifyIfNoStock();
 	};
 
 	this.openCloseAndMobile = () => {
