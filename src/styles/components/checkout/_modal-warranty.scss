@@ -72,6 +72,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			background-color: $btn-color;
 			background-image: none;
 			color: $white;
+			cursor: pointer;
 			display: flex;
 			flex: 1;
 			justify-content: center;
@@ -82,6 +83,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 	@include breakpoint(medium, 'max') {
 		height: calc(100% - 20px);
+		position: fixed;
 		top: 10px;
 		width: calc(100% - 20px);
 
@@ -190,7 +192,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 		opacity: 0;
 		position: absolute;
 
-		&:hover + label,
+		&:hover + label, 
 		&:checked + label {
 			&::before {
 				@include breakpoint(small, 'max') { border: none; }
@@ -206,11 +208,8 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 					p.title-garantia,
 					.bottom-garantia {
-						background-color: $g-color;
+						// background-color: $g-color;
 						color: $white;
-
-
-
 					}
 				}
 
@@ -327,6 +326,43 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			padding: 0 40px;
 			position: relative;
 			width: 100%;
+			
+			.erro {
+				@include breakpoint (medium , 'max') {
+					left: 50%;
+					margin-left: -90px;
+					top: 85px;
+				}
+				background: #f78383;
+				color: #fff;
+				display: none;
+				left: 60px;
+				line-height: 1;
+				padding: 10px 0;
+				position: absolute;
+				text-align: center;
+				top: 15px;
+				width: 180px;
+
+
+ 				&:before {
+					background: #f78383;
+					content: '';
+					display: block;
+					height: 10px;
+					left: 175px;
+					position: absolute;
+					top: 15px;
+					transform: rotate(45deg);
+					transition: .5s linear all;
+					width: 10px;
+					@include breakpoint ( medium , 'max' ) {
+						left: 50%;
+						margin-left: -10px;
+						top: 30px;
+					}
+				}
+			}
 
 			.recomendado {
 				background: $highlight;
@@ -388,8 +424,17 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
+				
+				.bottom-garantia { 
+					strong {
+						color: $white;
+					}
+				}
 
 				.title-garantia {
+					strong {
+						color: #fff;
+					}
 					&::before {
 						background-color: $brand;
 						border-radius: 15px;
@@ -409,6 +454,14 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 					}
 				}
 
+			}
+			
+			&:last-child {
+				.box-opcao-garantia {
+					@include breakpoint(860px, 'max') {
+						padding-top: 30px;
+					}
+				}
 			}
 
 			.close-warranty {
@@ -579,6 +632,13 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			padding: 17px 20px;
 			white-space: normal;
 			width: 100%;
+			
+			@include breakpoint(large, 'max') {
+				min-height: 270px;
+			}
+			@include breakpoint(medium, 'max') {
+				min-height: 350px;
+			}
 
 			img {
 				display: block;
@@ -588,8 +648,12 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 			p {
 				display: inline;
+				float: left;
+				height: 74px;
 				line-height: 100%;
+				overflow: hidden;
 				vertical-align: middle;
+				width: 140px;
 			}
 		}
 
@@ -601,6 +665,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			align-items: center;
 			display: flex;
 			overflow: hidden;
+			padding: 74px 20px 74px;
 
 			p {
 				color: #766c6b;
@@ -617,17 +682,24 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			@include responsiveFont(16, 16, true);
 			@include vendor(border-radius, 10px);
 			@include vendor(transition, all .3s ease);
-			background-color: #e4e4e4;
-			border: 2px solid #f4f4f4;
+			background-color: #FFF;
+			border: 2px solid #dbd6d2;
 			display: inline-block;
 			margin: 0;
-			min-height: 190px;
+			min-height: 230px;
 			overflow: hidden;
 			padding: 18px 16px 0;
 			padding-bottom: 0;
 			position: relative;
 			vertical-align: top;
 			width: 100%;
+			
+			@include breakpoint(large, 'max') {
+				min-height: 270px;
+			}
+			@include breakpoint(medium, 'max') {
+				min-height: 350px;
+			}
 
 			@include breakpoint(860px, 'max') {
 				min-height: auto;
@@ -638,7 +710,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				font-weight: normal;
 				line-height: 25px;
 				margin: -18px -25px 0 -25px;
-				padding: 50px 25px 5px 25px;
+				padding: 60px 20px 5px 20px;
 				position: relative;
 				text-align: center;
 				text-transform: none;
@@ -646,6 +718,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				&::after {
 					background-color: $white;
+					border: 2px solid #dbd6d2;
 					border-radius: 15px;
 					content: '';
 					height: 24px;
@@ -663,7 +736,27 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 					}
 				}
 
-				strong { display: block; }
+				strong { 
+
+					color: $purple;
+					display: inline-flex;
+					font-size: 18px;
+					span {
+						font-size: 10px;
+					}
+					b {
+						font-size: 32px;
+						line-height: .75;
+						padding: 0 1px;
+					}
+			   }
+
+				.show-mobile {
+				   display: none;
+				   @include breakpoint( medium , 'max' ) {
+					   display: block;
+				   }
+			   }
 
 				span {
 					// @include responsiveFont(13, 16, true);
@@ -684,7 +777,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			.bottom-garantia {
 				line-height: 100%;
 				margin: 0 -30px;
-				padding: 12px 20px 20px 20px;
+				padding: 2px 20px 20px 20px;
 				text-align: center;
 
 				@include breakpoint(860px, 'max') {
@@ -698,8 +791,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				}
 
 				strong {
+					color: $brand;
 					display: block;
-					font-size: 22px;
+					font-size: 14px;
 					margin-bottom: 5px;
 				}
 			}
@@ -752,18 +846,23 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			&:hover,
 			&.active {
 				@include vendor(transition, all .3s ease);
-				border-color: $gray;
+				// border-color: $gray;
 				.footer-box-opcao-garantia { background: $gray; }
 
 			}
 
 			// Recomendação
 			&:hover {
+				background: #736c6b;
 				.title-garantia,
 				.bottom-garantia {
 					@include vendor(transition, all .3s ease);
-					background-color: #736c6b;
+					// background-color: #736c6b;
 					color: $white;
+					strong {
+						@include vendor(transition, all .3s ease);
+						color: #FFF;
+					}
 				}
 			}
 
@@ -771,7 +870,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				margin-left: 0;
 
 				.title-garantia {
-					padding: 50px 20px 30px 20px;
+					padding: 74px 20px 30px 24px;
 
 					@include breakpoint(860px , 'max') {
 						padding: 20px 20px 10px 60px;
@@ -1066,6 +1165,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			background-image: none;
 			border: 3px solid $brand;
 			color: $white;
+			cursor: pointer;
 			padding: 16px 26px;
 			text-shadow: none;
 			white-space: nowrap;

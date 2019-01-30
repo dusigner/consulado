@@ -41,7 +41,7 @@ Nitro.module('quick-view', function () {
 		};
 
 		app.actionCombos = function () {
-			buttonStepOne.on('click', function() {
+			$('#combos').on('click', '.combos-finalization__button', function() {
 				var integrationView = new appIntegrationView(),
 					quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
 					combosFinalization = $(this).closest('.combos-finalization'),
