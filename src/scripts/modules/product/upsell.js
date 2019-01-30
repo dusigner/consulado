@@ -43,19 +43,14 @@ Nitro.module('upsell', function() {
 		});
 	};
 
-	this.verifyIfNoStock = function(){
-		if(!skuJson.available){
-			$('.textupgrade p').html('Infelizmente esse produto está indisponível no momento. <br /> Mas confira essa outra oferta interessante que pode te atender.');
-		}
-	};
-
 	this.renderUpsell = () => {
 		apiResponse = {
 			apiResponseDowngrade,
 			apiResponseUpgrade,
 			diferential01: apiResponseDowngrade['Diferencial 01'][0],
 			diferential02: apiResponseDowngrade['Diferencial 02'][0],
-			diferential03: apiResponseDowngrade['Diferencial 03'][0]
+			diferential03: apiResponseDowngrade['Diferencial 03'][0],
+			available: skuJson.available
 		},dust.render(template, apiResponse, function(err, out) {
 			if (err) { 	throw new Error('upsell Dust error: ' + err); }
 			$('#upsell').html(out);
@@ -63,7 +58,6 @@ Nitro.module('upsell', function() {
 		self.openCloseAndMobile();
 		self.tag();
 		self.formatPrice();
-		self.verifyIfNoStock();
 	};
 
 	this.openCloseAndMobile = () => {
