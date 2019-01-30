@@ -395,7 +395,7 @@ div.account {
 		// width: 75%;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: 100%;
+		width: 90%;
 
 		@include breakpoint(770px, 'max') { 
 			background: #e6e6e6;    
@@ -403,7 +403,7 @@ div.account {
 		}
 
 		@include breakpoint(1280px, 'min') { 		
-			width: 150%;
+			width: 90%;
 		}
 
 		em {
