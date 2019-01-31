@@ -82,6 +82,7 @@ Nitro.module('checkout.recurrence', function() {
 				var $self = $(this);
 
 				self.actionsAttachment($self, function(item, content) {
+					
 					vtexjs.checkout.addItemAttachment(item, 'Recorrência', content).then(function() {
 						$('#modal-recurrence').modal('hide');
 					});
