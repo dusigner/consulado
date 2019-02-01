@@ -17,6 +17,7 @@ Nitro.module('checkout.gae', function() {
 		this.link();
 		this.terms();
 		this.autoOpen();
+		this.introOpen();
 	};
 
 	this.monthToDays = function( months ) {
@@ -392,6 +393,33 @@ Nitro.module('checkout.gae', function() {
 			}
 			//}
 		}, 1500);
+	};
+
+	this.introOpen = function (){
+
+		var winWidth = $('body').width();
+		
+		if ( winWidth < 960 ){
+			setTimeout(function() {
+				
+				if ($.cookie('cns-intro-gae') == null ){
+					//Entrou na condição, Cookie não existe
+					//insere a classe para mostrar o modal intro
+					$('#modal-intro-gae').addClass('-is-visible');
+					$('#modal-intro-gae').fadeIn(300);
+				
+					$('#modal-intro-gae .btn-confirm').on('click', function(){
+						//Clicou no btn então fecha o modal
+						$.cookie('cns-intro-gae', 'cns-intro-gae', { expires: 60 });
+						$('#modal-intro-gae').fadeOut(300);
+					});
+
+				} else {
+					$('#modal-intro-gae').remove();
+				}
+
+			}, 1500);
+		}
 	};
 
 	/*$(window).load(function() {
