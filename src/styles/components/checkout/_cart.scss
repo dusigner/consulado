@@ -3,6 +3,8 @@ body {
 		.cart {
 			padding: 0;
 
+			@include breakpoint(small 'max') { padding-bottom: 25px }
+			
 			.cart-items {
 				thead {
 					@include responsiveFont(14, 16, true);
@@ -34,7 +36,7 @@ body {
 						overflow: initial;
 						padding: 30px 0;
 
-						@include breakpoint(small, 'max') { padding-bottom: 0; }
+						@include breakpoint(small, 'max') { padding-bottom: 45px; }
 
 						&:first-child {
 							border-bottom: none;

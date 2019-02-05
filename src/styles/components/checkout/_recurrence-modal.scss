@@ -1,214 +1,214 @@
 @charset 'UTF-8';
 
-.modal-recurrence {
-	@include breakpoint(small, 'max') {
-		left: 0;
-		top: 0!important;
-		transform: translate(0, 0);
-	}
-	background-color: $gray-l;
-	left: 50%;
-	margin: 0;
-	max-width: 1080px;
-	position: absolute;
-	top: 2%!important;
-	transform: translateX(-50%);
-	width: 100%;
-
-	&__body {
-		@include breakpoint(small, 'max') { padding: 15px }
-		color: $txt-gray;
-		max-height: none;
-		padding: 20px;
+body {
+	.-teste-b {
+		display: none;
 	}
 
-	&__title {
+	.modal-recurrence {
 		@include breakpoint(small, 'max') {
-			@include font-size(19px);
-			margin-top: 1em;
+			left: 0;
+			top: 0!important;
+			transform: translate(0, 0);
 		}
-		@include font-size(22px);
-		color: $green;
-		font-weight: bold;
-	}
-
-	&__deadline {
-		vertical-align: middle;
-
-		&-period {
-			@include font-size(18px);
-			// background-color: $green;
-			border-radius: 50px;
-			color: $green;
-			display: inline-block;
-			font-weight: bold;
-			// margin-left: .5em;
-			// padding: 12px 42px;
-		}
-	}
-
-	&__advantages {
-		@include breakpoint(small, 'max') { display: block }
-		display: flex;
-		justify-content: space-between;
-		margin: 20px 0;
-	}
-
-	&__advantage {
-		@include breakpoint(small, 'max') { margin: 0 auto 15px }
-		background-color: #fff;
-		border-radius: 50px;
-		max-width: 320px;
+		background-color: $gray-l;
+		left: 50%;
+		margin: 0;
+		max-width: 1080px;
+		position: absolute;
+		top: 2%!important;
+		transform: translateX(-50%);
 		width: 100%;
-
-		&-body {
-			@include breakpoint(small, 'max') { display: none }
-			padding: 15px;
+	
+		&__body {
+			@include breakpoint(small, 'max') { padding: 15px }
+			color: $txt-gray;
+			max-height: none;
+			padding: 20px;
 		}
-
-		&-title {
+	
+		&__title {
 			@include breakpoint(small, 'max') {
-				border-bottom-left-radius: 50px;
-				border-bottom-right-radius: 50px;
-				padding-right: 16px;
-				position: relative;
-				transition: border-bottom-left-radius .5s ease,
-							border-bottom-right-radius .5s ease;
-
-				&:after {
-					@include font-size(5px);
-					@include icon-get('arrow-down');
-					display: block;
-					position: absolute;
-					right: 12px;
-					top: 50%;
-					transform: translateY(-50%) rotate(0deg);
-					transition: transform .5s ease;
-				}
-
-				&--active {
-					border-bottom-left-radius: 0;
-					border-bottom-right-radius: 0;
-
-					&:after { transform: translateY(-50%) rotate(180deg); }
-				}
+				@include font-size(19px);
+				margin-top: 1em;
 			}
-			@include font-size(20px);
-			background-color: $gray-d;
-			border-top-left-radius: 50px;
-			border-top-right-radius: 50px;
-			color: #fff;
-			line-height: 1;
-			margin: 0;
-			padding: 20px 0;
+			@include font-size(22px);
+			color: $green;
+			font-weight: bold;
 		}
-
-		&-text {
-			@include font-size(14px)
-			margin: 0 0 15px;
-
-			&:last-child { margin: 0; }
-		}
-
-		&--lg {
-			.modal-recurrence__icon {
-				height: 64px;
-				width: 64px;
+	
+		&__deadline {
+			vertical-align: middle;
+	
+			&-period {
+				@include font-size(18px);
+				// background-color: $green;
+				border-radius: 50px;
+				color: $green;
+				display: inline-block;
+				font-weight: bold;
+				// margin-left: .5em;
+				// padding: 12px 42px;
 			}
-
-			.modal-recurrence__advantage-text { @include font-size(17px) }
 		}
-
-		strong {
-			@include font-size(20px)
-			color: $green;
+	
+		&__advantages {
+			@include breakpoint(small, 'max') { display: block }
+			display: flex;
+			justify-content: space-between;
+			margin: 20px 0;
 		}
-	}
+	
+		&__advantage {
+			@include breakpoint(small, 'max') { margin: 0 auto 15px }
+			background-color: #fff;
+			border-radius: 50px;
+			max-width: 320px;
+			width: 100%;
+	
+			&-body {
+				@include breakpoint(small, 'max') { display: none }
+				padding: 15px;
+			}
+	
+			&-title {
+				@include breakpoint(small, 'max') {
+					border-bottom-left-radius: 50px;
+					border-bottom-right-radius: 50px;
+					padding-right: 16px;
+					position: relative;
+					transition: border-bottom-left-radius .5s ease,
+								border-bottom-right-radius .5s ease;
+	
+					&:after {
+						@include font-size(5px);
+						@include icon-get('arrow-down');
+						display: block;
+						position: absolute;
+						right: 12px;
+						top: 50%;
+						transform: translateY(-50%) rotate(0deg);
+						transition: transform .5s ease;
+					}
 
-	&__icon {
-		display: block;
-		fill: $gray-d;
-		height: 25px;
-		margin: 0 auto;
-		width: 25px;
-	}
-
-	&__cta {
-		@include breakpoint(small, 'max') { @include font-size(15px) }
-		@include font-size(22px);
-		background-color: $green;
-		border-color: $green;
-
-		&:hover,
-		&:focus {
-			color: $green;
-			outline: none;
+				}
+				@include font-size(20px);
+				background-color: $gray-d;
+				border-top-left-radius: 50px;
+				border-top-right-radius: 50px;
+				color: #fff;
+				line-height: 1;
+				margin: 0;
+				padding: 20px 0;
+			}
+	
+			&-text {
+				@include font-size(14px);
+				margin: 0 0 15px;
+	
+				&:last-child { margin: 0; }
+			}
+	
+			&--lg {
+				.modal-recurrence__icon {
+					height: 64px;
+					width: 64px;
+				}
+	
+				.modal-recurrence__advantage-text { @include font-size(17px) }
+			}
+	
+			strong {
+				@include font-size(20px);
+				color: $green;
+			}
 		}
-
-	}
-
-	.loading-text { @include font-size(22px) }
-
-	&__select {
-		@include breakpoint('small', 'max') {
+	
+		&__icon {
 			display: block;
-			margin: 15px auto;
-			max-width: 150px;
+			fill: $gray-d;
+			height: 25px;
+			margin: 0 auto;
+			width: 25px;
 		}
-		@include font-size(14px);
-		background-color: #fff;
-		border: 1px solid $green;
-		color: $green;
-		cursor: pointer;
-		display: inline-block;
-		font-weight: bold;
-		margin-left: 15px;
-		position: relative;
-		text-align: left;
-
-		.icon {
-			@include font-size(8px);
-			display: inline-block;
-			margin-left: 1em;
-			position: absolute;
-			right: 14px;
-			top: 50%;
-			transform: rotate3d(0, 0, 0, 0) translateY(-50%);
-			transition: transform .5s ease;
-		}
-
-		&-current {
-			display: inline-block;
-			min-width: 130px;
-			padding: 1em;
-
-			&--active {
-				.icon { transform: rotate3d(1, 0, 0, 180deg) translateY(50%); }
+	
+		&__cta {
+			@include breakpoint(small, 'max') { @include font-size(15px) }
+			@include font-size(22px);
+			background-color: $green;
+			border-color: $green;
+	
+			&:hover,
+			&:focus {
+				color: $green;
+				outline: none;
 			}
+	
 		}
-
-		&-period {
+	
+		.loading-text { @include font-size(22px) }
+	
+		&__select {
+			@include breakpoint('small', 'max') {
+				display: block;
+				margin: 15px auto;
+				max-width: 150px;
+			}
+			@include font-size(14px);
 			background-color: #fff;
 			border: 1px solid $green;
-			box-sizing: content-box;
-			color: $gray-d;
-			display: none;
-			left: -1px;
-			margin: 0;
-			padding: 0;
-			position: absolute;
+			color: $green;
+			cursor: pointer;
+			display: inline-block;
+			font-weight: bold;
+			margin-left: 15px;
+			position: relative;
 			text-align: left;
-			top: 100%;
-			width: 100%;
-			z-index: 10;
-		}
-
-		&-item {
-			padding: 1em;
-
-			&:hover {
-				background-color: $green;
-				color: #fff;
+	
+			.icon {
+				@include font-size(8px);
+				display: inline-block;
+				margin-left: 1em;
+				position: absolute;
+				right: 14px;
+				top: 50%;
+				transform: rotate3d(0, 0, 0, 0) translateY(-50%);
+				transition: transform .5s ease;
+			}
+	
+			&-current {
+				display: inline-block;
+				min-width: 130px;
+				padding: 1em;
+	
+				&--active {
+					.icon { transform: rotate3d(1, 0, 0, 180deg) translateY(50%); }
+				}
+			}
+	
+			&-period {
+				background-color: #fff;
+				border: 1px solid $green;
+				box-sizing: content-box;
+				color: $gray-d;
+				display: none;
+				left: -1px;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				text-align: left;
+				top: 100%;
+				width: 100%;
+				z-index: 10;
+			}
+	
+			&-item {
+				padding: 1em;
+	
+				&:hover {
+					background-color: $green;
+					color: #fff;
+				}
 			}
 		}
 	}

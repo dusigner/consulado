@@ -354,6 +354,14 @@ body[class*='consul'] {
 
 							&>div { padding-top: 10px; }
 						}
+
+						.cconf-attachment-recorrencia-custom {
+							display: none;
+						}
+
+						.cconf-attachment-recorrencia.bg-near-white {
+							width: 100%;
+						}
 					}
 				}
 
@@ -379,5 +387,5 @@ body[class*='consul'] {
 				}
 			}
 		}
-	}
+	}	
 }
