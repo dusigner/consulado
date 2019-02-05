@@ -134,7 +134,11 @@
 				<span>POR + R$0,00</span> dê um <strong>upgrade</strong> no seu produto
 			</h2>
 			<p>
-				Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
+				{?available}
+					Aproveite a oportunidade de dar um upgrade na sua compra levando esse modelo com ainda mais benefícios.
+				{:else}
+					Infelizmente esse produto está indisponível no momento. <br /> Mas confira essa outra oferta interessante que pode te atender.
+				{/available}
 			</p>
 		</div>
 

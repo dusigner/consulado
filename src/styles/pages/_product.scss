@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import 'components/produto/recurrence';
+
 body.produto {
 	.main {
 		@include breakpoint(small, 'max') {
@@ -288,4 +290,8 @@ div#modal-custom-share {
 			margin-right: 5px;
 		}
 	}
+}
+
+.overflow-hidden {
+	overflow: hidden;
 }

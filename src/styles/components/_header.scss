@@ -389,8 +389,22 @@ div.account {
 		// left: 35%;
 		// font-size: 0;
 		margin: 0 0 .5em;
+		overflow: hidden;
+		padding-bottom: 5px;
 		position: relative;
 		// width: 75%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 90%;
+
+		@include breakpoint(770px, 'max') { 
+			background: #e6e6e6;    
+			padding: 10px 20px 0 20px;
+		}
+
+		@include breakpoint(1280px, 'min') { 		
+			width: 90%;
+		}
 
 		em {
 			display: block;
@@ -403,14 +417,24 @@ div.account {
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: -8px;
+				bottom: -5px;
 				font-size: 10px;
 				left: 30px;
 				position: absolute;
+				
+				@include breakpoint(770px, 'max') { 
+					border: 0;
+					bottom: -8px;
+					left: 0;
+					padding: 23px 0 0 0;
+					position: absolute;
+					right: 0;
+					text-align: center;
+				}
 			}
 		}
 
-		svg { max-height: 20px; }
+		svg { max-height: 20px;}
 	}
 
 	#login {
@@ -428,6 +452,18 @@ div.account {
 		margin-right: .5em;
 		vertical-align: middle;
 		width: 20px;
+
+		&.account__icon--profile {
+			position: relative;
+			top: 5px;
+
+			@include breakpoint(700px, 'max') {
+				left: 50%;
+				position: absolute;
+				top: -5px;
+				transform: translateX(-50%);
+			}
+		}
 
 		&--enter,
 		&--profile {fill: $green}
