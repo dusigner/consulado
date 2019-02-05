@@ -162,5 +162,4 @@ Nitro.module('specifications', function() {
 			$self.text('Ver mais especificações');
 		}
 	});
-
 });
