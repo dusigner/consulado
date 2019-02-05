@@ -9,9 +9,10 @@ require('Dust/modal-warranty-mobile.html');
 Nitro.module('checkout.gae', function() {
 
 	var self = this,
+		winWidth = $('body').width(),
+		$modalWarranty = $('#modal-warranty');
 		// $body = $('body'),
 		// template = $body.hasClass('teste-ab-gae') ? 'modal-warranty-desktop-teste-ab' : 'modal-warranty-desktop',
-		$modalWarranty = $('#modal-warranty');
 
 	this.setup = function() {
 		this.link();
@@ -105,8 +106,7 @@ Nitro.module('checkout.gae', function() {
 			index = $self.data('index'),
 			idOffering = $('input[name="warranty-value"]:checked').val(),
 			titleOffering = $('.modal__cell.active .title-garantia span').text(),
-			liAceito = $('#check-termos').is(':checked'),
-			winWidth = $('body').width();
+			liAceito = $('#check-termos').is(':checked');
 			
 		if ( idOffering !== undefined && liAceito ) {
 			$self.addClass('icon-loading');
@@ -397,25 +397,25 @@ Nitro.module('checkout.gae', function() {
 
 	this.introOpen = function (){
 
-		var winWidth = $('body').width();
-		
+		var modalIntro = $('#modal-intro-gae');
+
 		if ( winWidth < 960 ){
 			setTimeout(function() {
 				
 				if ($.cookie('cns-intro-gae') == null ){
 					//Entrou na condição, Cookie não existe
 					//insere a classe para mostrar o modal intro
-					$('#modal-intro-gae').addClass('-is-visible');
-					$('#modal-intro-gae').fadeIn(300);
+					modalIntro.addClass('-is-visible');
+					modalIntro.fadeIn(300);
 				
 					$('#modal-intro-gae .btn-confirm').on('click', function(){
 						//Clicou no btn então fecha o modal
 						$.cookie('cns-intro-gae', 'cns-intro-gae', { expires: 60 });
-						$('#modal-intro-gae').fadeOut(300);
+						modalIntro.fadeOut(300);
 					});
 
 				} else {
-					$('#modal-intro-gae').remove();
+					modalIntro.remove();
 				}
 
 			}, 1500);
