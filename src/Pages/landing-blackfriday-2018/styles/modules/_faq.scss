@@ -1,4 +1,8 @@
 .faq {
+	.title {
+		margin: 50px 0 65px !important;
+	}
+
 	.wrapper {
 		background-color: #222222;
 		border-radius: 40px;
@@ -36,6 +40,11 @@
 				font-size: 18px;
 				font-weight: bold;
 				margin: 0;
+
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+					font-weight: 100;
+				}
 			}
 
 			.icon {
@@ -57,6 +66,11 @@
 				color: #9f9f9f;
 				font-size: 16px;
 				margin-bottom: 40px;
+
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+					font-weight: 100;
+				}
 			}
 		}
 	}

@@ -1,0 +1,53 @@
+@charset 'UTF-8';
+
+@import 'components/checkout/recurrence-modal-ab-test';
+
+.-teste-b {
+	.recurrence {
+		&__step-message {
+			display: none;
+		}
+		
+		&__remove {
+			@include font-size(12px);
+			border: none;
+			border-radius: 0;
+			color: darken($gray, 20%);
+			display: block;
+			font-weight: 100;
+			margin-left: 0;
+			padding: 0;
+			text-decoration: underline;
+			text-transform: none;
+	
+	
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: #fff;
+				color: none;
+			}
+		}
+
+		&__step {
+			&-text {
+				display: block;
+				font-size: .8125rem;
+				margin-bottom: 0;
+			}
+		
+			&-container {
+				display: flex;
+				&::before {
+					background: url('/arquivos/recurrenceIcon.png') no-repeat top;
+					background-size: contain;
+					content: '';
+					display: block;
+					height: 30px;
+					margin: 0 15px 0 0;
+					width: 30px;
+				}
+			}
+		}
+	}   
+}
