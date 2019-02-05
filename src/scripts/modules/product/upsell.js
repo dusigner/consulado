@@ -49,7 +49,8 @@ Nitro.module('upsell', function() {
 			apiResponseUpgrade,
 			diferential01: apiResponseDowngrade['Diferencial 01'][0],
 			diferential02: apiResponseDowngrade['Diferencial 02'][0],
-			diferential03: apiResponseDowngrade['Diferencial 03'][0]
+			diferential03: apiResponseDowngrade['Diferencial 03'][0],
+			available: skuJson.available
 		},dust.render(template, apiResponse, function(err, out) {
 			if (err) { 	throw new Error('upsell Dust error: ' + err); }
 			$('#upsell').html(out);
