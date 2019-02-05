@@ -1,0 +1,89 @@
+<div id="modal-recurrence" role="dialog" class="modal fade in modal-recurrence" style="display: none">	
+	<div class="-teste-b">
+		<div class="modal-dialog modal-lg">
+			{! Modal content !}
+			<div class="modal-content">
+				<a href="javascript:void(0)" class="close i-close">
+					<i class="icon icon-close item-close-ico"></i>
+				</a>
+
+				<div class="modal-header modal-recurrence__productInfo">
+					<img src="{productImage}" alt="{productName}" class="modal-recurrence__productImage">
+					<p class="modal-recurrence__productName">{productName}</p>
+				</div>
+
+				<div class="modal-body text-center modal-recurrence__body">
+					<div class="modal-recurrence__header">
+						<p class="modal-recurrence__title">Já pensou em assinar e receber um novo produto próximo da data de troca?</p>
+						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada {period}
+						</div>
+					</div>
+
+					<span class="modal-recurrence-line-desktop"></span>
+
+					<div class="modal-recurrence__advantages clearfix">
+						<span class="modal-recurrence-line-mobile"></span>
+						<div class="modal-recurrence__container">
+							<div class="modal-recurrence__advantage -economia">
+								<div class="modal-recurrence__advantage-element">
+									<p class="modal-recurrence__advantage-title js-recurrence-accordion">Mais economia</p>
+									<div class="modal-recurrence__advantage-body">
+										<p class="modal-recurrence__advantage-text">
+											Além de não pagar nada a mais pela assinatura, você ainda receberá desconto nas próximas compras recorrentes
+										</p>
+									</div>
+								</div>
+							</div>
+							<p class="modal-recurrence__discount">10%</p>
+							<p class="modal-recurrence__discount-text">
+								<strong class="modal-recurrence__discount-highlight">de desconto</strong> nas próximas compras recorrentes*
+							</p>
+							<span class="modal-recurrence-line-mobile"></span>
+						</div>
+
+						<div class="modal-recurrence-line-desktop-vertical"></div>
+
+						<div class="modal-recurrence__container">
+							<div class="modal-recurrence__advantage -praticidade">
+								<div class="modal-recurrence__advantage-element">
+									<p class="modal-recurrence__advantage-title js-recurrence-accordion">Mais praticidade e comodidade</p>
+									<div class="modal-recurrence__advantage-body">
+										<p class="modal-recurrence__advantage-text">
+											O produto chega na sua casa e você não precisa lembrar de comprar a cada troca periódica
+										</p>
+									</div>
+								</div>
+							</div>
+							<span class="modal-recurrence-line-mobile"></span>
+							<div class="modal-recurrence__advantage -controle">
+								<div class="modal-recurrence__advantage-element">
+									<p class="modal-recurrence__advantage-title js-recurrence-accordion">Mais controle</p>
+									<div class="modal-recurrence__advantage-body">
+										<p class="modal-recurrence__advantage-text">
+											Você tem o controle do dia exato da compra e pode cancelar a assinatura a qualquer momento em "meus pedidos"
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+
+					<span class="modal-recurrence-line-desktop"></span>
+					<span class="modal-recurrence-line-mobile"></span>
+
+					<div class="modal-recurrence__footer">
+						<p class="modal-recurrence__term"><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
+						<div class="modal-recurrence__cta-buttons">
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy primary-button text-uppercase">Comprar produto</a>
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy-recurrence primary-button text-uppercase">Comprar produto e assinar</a>
+						</div>
+						<i class="loading-text icon-spinner icon-spin hide"></i>
+					</div>
+				</div>
+			</div>
+			{! Modal content !}
+		</div>
+
+	</div>
+</div>
+
