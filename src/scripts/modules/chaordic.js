@@ -536,7 +536,6 @@ Nitro.module('chaordic', function() {
 			$elem.addClass('chaordic--run');
 			dfd.resolve($elem.find('.js-chaordic-shelf'));
 
-
 			self.buyChaordicInstall();
 		});
 

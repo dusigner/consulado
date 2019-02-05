@@ -41,7 +41,7 @@ Nitro.module('quick-view', function () {
 		};
 
 		app.actionCombos = function () {
-			buttonStepOne.on('click', function() {
+			$('#combos').on('click', '.combos-finalization__button', function() {
 				var integrationView = new appIntegrationView(),
 					quantityInactive = $(this).closest('.combos-prateleira').find('.combo-product--inactive').length,
 					combosFinalization = $(this).closest('.combos-finalization'),
@@ -63,6 +63,8 @@ Nitro.module('quick-view', function () {
 							app.loadGeneralInformation(this);
 							app.loadAccordionMobile();
 							selectVoltage.init();
+
+							$(window).trigger('2-step-combo-rendered');
 
 							// fake click para "contar" o primeiro como removido TODO: forma de ja vir considerado
 							$('.combos-product-list__item:first').click();

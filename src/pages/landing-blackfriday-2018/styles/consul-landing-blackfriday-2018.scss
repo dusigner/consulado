@@ -86,26 +86,54 @@ $loja-color: #9aca3d;
 		}
 	}
 	.lpbf__title {
+		&:before {
+			background: #9aca3c;
+			border-radius: 5px;
+			color: #343533;
+			content: 'encerrado';
+			display: block;
+			font-size: 38px;
+			padding: 7px 100px;
+			text-indent: 0;
+			text-transform: uppercase;
+			transform: rotate(-30deg);
+			
+			@include breakpoint('small', 'max') {
+				font-size: 26px;
+				margin-top: -80px;
+				padding: 7px 70px;
+			}
+			
+			@include breakpoint('extra-small', 'max') {
+				margin-top: -40px;
+				padding: 7px 40px;
+			}
+		}
+
 		@include breakpoint('extra-small', 'min') {
 			@include breakpoint('large', 'max') {
 				height: 320px;
 				margin-bottom: 30px;
 			}
 		}
+
 		@include breakpoint('small', 'max') {
 			height: 235px;
 			margin: 0 auto 20px auto;
 			width: 290px;
 		}
+		align-items: center;
 		background: transparent url('/arquivos/logo-blackfriday-consul.png') center -10px no-repeat;
 		background-size: contain;
 		color: transparent;
+		display: flex;
 		font-size: 1px;
 		height: 400px;
+		justify-content: center;
 		margin: 0;
 		overflow: hidden;
 		text-align: center;
-		text-indent: -99cm;
+		text-indent: -9999999cm;
 		transition: .3s ease;
 		width: auto;
 	}
@@ -114,11 +142,11 @@ $loja-color: #9aca3d;
 		@include rfs(28);
 		color: #fff;
 		font-weight: 400;
-		line-height: 30px;
-		margin: -20px 0 10px;
+		line-height: 24px;
+		margin-top: 20px;
 		text-align: center;
 		@include breakpoint('extra-small', 'max') {
-			@include rfs(20);
+			@include rfs(23);
 
 		}
 	}
@@ -138,46 +166,50 @@ $loja-color: #9aca3d;
 		@include breakpoint('small', 'max') {
 			transform: translateY(40%);
 			@include breakpoint('extra-small', 'max') {
-				transform: translateY(40%);
+				transform: translateY(20%);
 			}
 		}
 		@include breakpoint('small', 'min') { transform: translateY(30%); }
-		color: $green;
+		color: #fff;
 		margin: 0 auto;
 		max-width: 490px;
 
 		.lpbf-contador__title {
+			@include rfs(18);
+			display: block;
+			line-height: 100%;
+			text-align: center;
+			
 			@include breakpoint('small', 'max') {
 				padding: 0 2em;
 				text-align: center;
 				transform: translateY(-20px);
 			}
-			@include rfs(18);
-			display: block;
-			line-height: 100%;
-			text-align: center;
 		}
 
 		.countdown {
 			display: flex;
 			justify-content: space-between;
-			padding: 1em 0;
+			padding-bottom: 1em;
 			text-align: center;
 		}
 
 		.counter {
 			@include breakpoint('extra-small', 'max') { width: 56px; }
 			@include rfs(53);
-			color: $loja-color;
+			color: $loja-color !important;
 			display: block;
 			font-weight: bold;
 			line-height: 100%;
 			position: relative;
 			width: 84px;
-			@include breakpoint('small', 'max') { color: #fff; }
+			@include breakpoint('small', 'max') {
+				color: #fff;
+				font-size: 2rem !important;
+			}
 
 			&.colon {
-				color: #fff;
+				color: #fff !important;
 				width: auto;
 			}
 		}
@@ -228,6 +260,41 @@ $loja-color: #9aca3d;
 				margin-top: 1.2em;
 				padding: .5em 2em;
 				text-decoration: none;
+
+				@include breakpoint('small', 'max') {
+					font-size: 21px;
+				}
+			}
+		}
+
+		&__cta {
+			.text {
+				@include rfs(23);
+				color: $green;
+				
+				@include breakpoint('small', 'max') {
+					@include rfs(32);
+				}
+			}
+			
+			.btn {
+				@include rfs(14);
+				background-color: $green;
+				border-radius: 25px;
+				color: #fff;
+				font-weight: bold;
+				margin-top: 15px;
+				padding: 10px 40px;
+				text-transform: uppercase;
+				
+				@include breakpoint('small', 'max') {
+					@include rfs(32);
+					border-radius: 40px;
+					display: block;
+					margin-top: 50px;
+					padding: 15px 0;
+					width: 100%;
+				}
 			}
 		}
 	}
@@ -235,42 +302,6 @@ $loja-color: #9aca3d;
 
 //Form
 // ===============================================================
-.lpbf-form__container {
-	@include breakpoint(1100px, 'max') { margin: 60px auto 10px auto; }
-	@include breakpoint(1100px, 'min') {
-		@include breakpoint(1200px, 'max') { max-width: 400px; }
-		// position: absolute;
-		// right: 20px;
-		// top: 100px;
-	}
-	margin: 40px auto 0;
-	max-width: 450px;
-	position: relative;
-	width: 100%;
-
-	&:before {
-		background-color: #1B1B1B;
-		border-radius: 25px;
-		content: '';
-		display: block;
-		height: 100%;
-		position: absolute;
-		right: 0;
-		top: 0;
-		width: 100%;
-	}
-}
-
-.lpbf-form__title {
-	@include rfs(22);
-	color: #fff;
-	font-weight: 700;
-	line-height: normal;
-	margin: 1em -1em .4em -1em;
-	strong {
-		color: $loja-color;
-	}
-}
 
 // Categorias
 .lpbf-categorys {
@@ -744,25 +775,44 @@ $loja-color: #9aca3d;
 // depoimentos
 .depoimentos {
 	margin-bottom: 20px;
+	padding: 30px 0 100px;
+
 	@include breakpoint('medium', 'max') {
-		padding: 200px 30px 0 30px;
+		padding-top: 200px;
 	}
 	@include breakpoint('small', 'max') {
-		padding: 450px 30px 0 30px;
+		padding-top: 450px;
 	}
-	@include breakpoint('extra-small', 'max') { padding: 405px 0 0; }
+	@include breakpoint('extra-small', 'max') { padding: 80px 0 0; }
 
-	.container {
+	.depoimentos-container {
+		display: block;
 		font-size: 0;
-		max-width: 960px;
+		margin: 0 auto;
+		max-width: 1280px;
 		padding: 0;
+		width: 80%;
+
+		@include breakpoint('small', 'max') {
+			width: 100%;
+		}
 	}
 
 	.row { margin: 0!important; }
 
+	.depoimentos-controllers {
+		margin: 40px 25px 0;
+		position: relative;
+
+		@include breakpoint('small', 'min') { display: none; }
+
+		.slick-arrow { color: $loja-color; }
+	}
+
 	.slick-dots {
-		@include breakpoint('extra-small', 'max') { margin-left: -20px; }
 		bottom: -35px;
+
+		@include breakpoint('extra-small', 'max') { position: static; }
 	}
 
 	.slick-dots li button { background: #414141; }
@@ -770,7 +820,19 @@ $loja-color: #9aca3d;
 	.slick-dots li.slick-active button {
 		background: $loja-color;
 		height: 10px;
+		position: relative;
 		width: 10px;
+
+		&:before {
+			border: 1px solid #fff;
+			border-radius: 100%;
+			content: '';
+			height: 14px;
+			left: -2px;
+			position: absolute;
+			top: -2px;
+			width: 14px;
+		}
 	}
 
 	.slick-dots li button:after { border: none; }
@@ -778,7 +840,7 @@ $loja-color: #9aca3d;
 
 .txt-depoimentos {
 	@include breakpoint('medium', 'min') {
-		margin-top: 200px;
+		margin-top: 300px;
 	}
 	@include breakpoint('extra-small', 'max') {
 		margin-top: 50px;
@@ -802,41 +864,73 @@ $loja-color: #9aca3d;
 }
 
 .bg-depoimentos {
-	background-color: $loja-color;
 	border-radius: 25px;
-	margin-top: 25px;
+	margin: 25px auto 0;
+	overflow: hidden;
 	padding: 20px 0;
-	@include breakpoint('extra-small', 'max') {
+	position: relative;
+
+	&:before {
+		background-color: #9aca3c;
+		border-radius: 25px;
+		content: '';
+		display: block;
+		height: 95%;
+		position: absolute;
+		right: -22px;
+		top: calc(50% - 180px);
+		width: 90%;
+		
+		@media (min-width: 480px) and (max-width: 770px) {
+			top: calc(50% - 120px);
+		}
+		
+		@include breakpoint('small', 'min') {
+			background-color: $green;
+			border-radius: 25px;
+			content: '';
+			display: block;
+			height: 100%;
+			left: 0;
+			margin: 0 auto;
+			position: absolute;
+			right: 0;
+			top: calc(50% - 188px);
+			width: 93%;
+		}
+
+		@media (min-width: 770px) and (max-width: 990px) {
+			top: calc(50% - 127px);
+		}
+		
+	}
+
+	@include breakpoint('small', 'max') {
 		border-bottom-right-radius: 0;
 		border-top-right-radius: 0;
-		margin-left: 45px;
 	}
 	.slick-list {
-		@include breakpoint('extra-small', 'max') {
-			overflow: visible;
-		}
+		overflow: visible;
 	}
 	// & > div,
 	.slick-track {
 		display: flex;
 	}
 	.slick-slide {
-		@include breakpoint('extra-small', 'max') {
-			margin: 0 35px 0 -35px;
-		}
 		box-sizing: border-box;
 		display: flex;
 		height: initial;
 		min-height: initial;
 		padding: 0 10px 0 10px;
-		width: 320px;
+
 		.box {
 			background-color: #fff;
 			border-radius: 25px;
 			padding: 30px 20px 30px 20px;
-			// @include breakpoint('extra-small', 'max') {
-			// 	min-height: 340px;
-			// }
+			@include breakpoint('extra-small', 'max') {
+				margin: 0 10px;
+				min-height: 340px;
+			}
 		}
 		// @include breakpoint('medium', 'max') {
 		// 	padding: 30px 0 40px 0;
@@ -846,9 +940,11 @@ $loja-color: #9aca3d;
 		// 	margin-left: -35px;
 		// }
 		h2 {
-			@include rfs(18);
+			@include rfs(24);
 			color: $loja-color;
 			margin: 0;
+
+			@include breakpoint('extra-small', 'max') { font-size: 20px !important; }
 		}
 		h3 {
 			@include rfs(12);
@@ -857,9 +953,11 @@ $loja-color: #9aca3d;
 			margin: 0;
 		}
 		p {
-			@include rfs(14);
+			@include rfs(20);
+			line-height: 22fpx;
 			margin: 30px 0 0 0;
 			@include breakpoint('extra-small', 'max') {
+				font-size: 16px !important;
 				padding: 0 15px 0 15px;
 			}
 		}
@@ -880,7 +978,7 @@ $loja-color: #9aca3d;
 		@include rfs(40);
 		color: #fff;
 		margin: 0;
-		padding: 300px 0 0 0;
+		padding: 35px 0 0 0;
 	}
 	.prateleira.default .slick-next { right: 12px; }
 	.prateleira.default .slick-prev { left: 12px; }
@@ -888,7 +986,7 @@ $loja-color: #9aca3d;
 
 //FAQ
 .faq {
-	background: #262626;
+	background: #111;
 	padding: 30px 0 50px;
 	position: relative;
 

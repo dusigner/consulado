@@ -33,10 +33,10 @@ const paths = {
 	scripts      : 'src/scripts/**/*.js',
 	webpack      : 'src/scripts/*.js',
 	styles       : 'src/styles/**/*.scss',
-	fonts        : 'src/fonts/**/*.{eot,svg,ttf,woff,woff2}',
-	images       : 'src/images/**/*.{png,jpeg,jpg,gif,svg}',
+	fonts        : 'src/Fonts/**/*.{eot,svg,ttf,woff,woff2}',
+	images       : 'src/Images/**/*.{png,jpeg,jpg,gif,svg}',
 	dust         : 'src/scripts/Dust/**/*.html',
-	pages        : 'src/pages/**/*.html',
+	pages        : 'src/Pages/**/*.html',
 
 	html         : {
 		templates       : 'src/01 - HTML Templates/*.html',

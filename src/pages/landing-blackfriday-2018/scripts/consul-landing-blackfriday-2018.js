@@ -48,7 +48,7 @@ Nitro.setup(['accordion'], function () {
 		},
 
 		countdown: function() {
-			var endDate       = '2018/11/23',
+			var endDate       = '2019/11/29',
 				$countdown    = $('.countdown'),
 				$days         = $countdown.find('.countdown-days .counter'),
 				$hours        = $countdown.find('.countdown-hours .counter'),
@@ -174,18 +174,12 @@ Nitro.setup(['accordion'], function () {
 				responsive: [{
 					breakpoint: 990,
 					settings: {
-						arrows: false,
+						arrows: true,
 						dots: true,
 						slidesToShow: 1,
-						slidesToScroll:1
-					}
-				}, {
-					breakpoint: 480,
-					settings: {
-						arrow: false,
-						dots: true,
-						slidesToShow: 1,
-						slidesToScroll: 1
+						slidesToScroll:1,
+						appendDots:$('.depoimentos-controllers'),
+						appendArrows:$('.depoimentos-controllers')
 					}
 				}]
 			});
