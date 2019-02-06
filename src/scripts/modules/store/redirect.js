@@ -6,7 +6,7 @@ var Uri = require('vendors/Uri');
 var CRM = require('modules/store/crm');
 
 var redirect = module.exports.redirect = function (data) {
-	
+
 	$(document).trigger('redirect', data);
 
 	store.setUserData(data, true);
@@ -48,7 +48,7 @@ var redirect = module.exports.redirect = function (data) {
 
 	} else if (data.status === 'Login') {
 		vtexjs.checkout.getOrderForm().done(function (res) {
-			if (res.loggedIn) {
+			if (res.loggedIn || res.userType === 'callCenterOperator') {
 				window.location.href = store.uri
 					.setPath(uriRedirect ? uriRedirect : '/empresas')
 					.deleteQueryParam('ReturnUrl')
