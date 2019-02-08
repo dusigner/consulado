@@ -398,7 +398,7 @@ Nitro.module('checkout.gae', function() {
 	this.introOpen = function (){
 
 		
-		if ( winWidth < 960 ){
+		if ( winWidth < 960 ) {
 			
 			setTimeout(function() {
 				var modalIntro = $('#modal-intro-gae');
