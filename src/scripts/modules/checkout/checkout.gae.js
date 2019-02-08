@@ -397,17 +397,18 @@ Nitro.module('checkout.gae', function() {
 
 	this.introOpen = function (){
 
-		var modalIntro = $('#modal-intro-gae');
-
+		
 		if ( winWidth < 960 ){
+			
 			setTimeout(function() {
+				var modalIntro = $('#modal-intro-gae');
 				
 				if ($.cookie('cns-intro-gae') == null ){
 					//Entrou na condição, Cookie não existe
 					//insere a classe para mostrar o modal intro
 					modalIntro.addClass('-is-visible');
 					modalIntro.fadeIn(300);
-				
+					
 					$('#modal-intro-gae .btn-confirm').on('click', function(){
 						//Clicou no btn então fecha o modal
 						$.cookie('cns-intro-gae', 'cns-intro-gae', { expires: 60 });
