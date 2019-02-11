@@ -1,0 +1,58 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+.cozinha-ambientada {
+	&__title {
+		color: #FFFFFF;
+		font-weight: normal;
+		text-align: center;
+	}
+
+	&__banner {
+		background-color: #898481;
+		padding: 1rem 0 2rem;
+	}
+}
+
+.mosaic-banner {
+	height: 600px;
+
+	&__image {
+		height: 100%;
+		left: 50%;
+		object-fit: cover;
+		object-position: center;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
+
+	&__item {
+		min-height: 300px;
+		overflow: hidden;
+		position: relative;
+		width: 100%;
+
+		&--full {
+			min-height: 600px;
+		}
+	}
+
+	&__multiple-items {
+		display: flex;
+
+		&--vertical {
+			flex-direction: column;
+		}
+	}
+}
