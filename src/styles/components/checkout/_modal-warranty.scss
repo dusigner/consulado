@@ -328,11 +328,6 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			width: 100%;
 			
 			.erro {
-				@include breakpoint (medium , 'max') {
-					left: 50%;
-					margin-left: -90px;
-					top: 85px;
-				}
 				background: #f78383;
 				color: #fff;
 				display: none;
@@ -343,25 +338,31 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				text-align: center;
 				top: 15px;
 				width: 180px;
-
-
- 				&:before {
-					background: #f78383;
-					content: '';
-					display: block;
-					height: 10px;
-					left: 175px;
-					position: absolute;
-					top: 15px;
-					transform: rotate(45deg);
-					transition: .5s linear all;
-					width: 10px;
-					@include breakpoint ( medium , 'max' ) {
-						left: 50%;
-						margin-left: -10px;
-						top: 30px;
-					}
+				
+				&:before {
+				   background: #f78383;
+				   content: '';
+				   display: block;
+				   height: 10px;
+				   left: 175px;
+				   position: absolute;
+				   top: 15px;
+				   transform: rotate(45deg);
+				   transition: .5s linear all;
+				   width: 10px;
+				   @include breakpoint ( medium , 'max' ) {
+					   left: 50%;
+					   margin-left: -10px;
+					   top: 30px;
+				   }
+			   }
+				
+				@include breakpoint (medium , 'max') {
+					left: 50%;
+					margin-left: -90px;
+					top: 85px;
 				}
+
 			}
 
 			.recomendado {
@@ -736,14 +737,15 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 					}
 				}
 
-				strong { 
-
+				strong {
 					color: $purple;
 					display: inline-flex;
 					font-size: 18px;
+
 					span {
 						font-size: 10px;
 					}
+
 					b {
 						font-size: 32px;
 						line-height: .75;
@@ -753,6 +755,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				.show-mobile {
 				   display: none;
+				   
 				   @include breakpoint( medium , 'max' ) {
 					   display: block;
 				   }
@@ -1694,5 +1697,4 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	   display: none;
 	}
 }
-
 
