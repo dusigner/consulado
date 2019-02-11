@@ -20,10 +20,11 @@ Nitro.module('recurrence', function() {
 		'W10324578'  : '6 meses',
 		'W10322320'  : '6 meses',
 		'W10637798'  : '6 meses',
-		'CIX01AXONA' : '36 semanas',
+		'CIX01AXONA' : '9 meses',
 		'CIX06AXONA' : '6 meses',
-		'C3L02AB'    : '6 meses',
-		'C3L02ABANA' : 'diaria'
+		'C3L02AB'    : '9 meses',
+		'C3L02ABANA' : 'diaria',
+		'W10601110' : '6 meses'
 	};
 	
 	// Render infos recurrence page product
