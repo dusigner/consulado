@@ -1711,18 +1711,9 @@ body {
 			display: block; 
 			visibility: visible;
 		}
-		
-		
-		#modal-warranty {
-			input[type='radio']:checked + .modal__cell { 
-				.modal-warning-best-option:nth-last-child(2) { display: none }
-			}
 
-			.modal-body {
-				.modal__table {
-					.recomendado:nth-last-child(2) { display: none }
-				}
-			}
+		.-not-last {
+			display: none!important;
 		}
 	}
 }

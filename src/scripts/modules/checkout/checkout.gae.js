@@ -187,8 +187,6 @@ Nitro.module('checkout.gae', function() {
 			productIndex: index
 		};
 
-		var abTest = $('body').hasClass('-teste-b-gae');
-
 		$.each(offerings, function(index, val) {
 			var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
 
@@ -204,6 +202,8 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].isMiddle   = (warrantyTime === 18) ? true : false;
 			data.warranty[index].isLast     = (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
 			data.warranty[index].isCheaper  = false;
+
+			(data.warranty[index].months === 36) ? data.warranty[index-1].hasThreeYears = '-not-last' : '';
 
 			if( offerings[index - 1] ) {
 				var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);

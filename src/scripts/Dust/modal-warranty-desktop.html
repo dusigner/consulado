@@ -50,7 +50,7 @@
 						<input type="radio" name="warranty-value" id="warranty{id}" value="{id}" class="fakeInput">
 						<div class="modal__cell -gae-{months}">
 								{?isLast}
-									<div class="recomendado -gae-{months}">Recomendado*</div>
+									<div class="recomendado -gae-{months} {hasThreeYears}">Recomendado*</div>
 								{/isLast}
 							<!-- <span class="close-warranty"><i class="icon icon-remove item-remove-ico"></i></span> -->
 							<label class="box-opcao-garantia anchor-gae select-gae">
@@ -86,7 +86,7 @@
 							{?isLast}
 
 								<!-- Melhor custo benefício -->
-								<div class="modal-warning-best-option modal-warning-best-option--final -gae-{months}">
+								<div class="modal-warning-best-option modal-warning-best-option--final -gae-{months} {hasThreeYears}">
 									<p class="modal-warning-best-option__container">
 										<strong>Melhor custo benefício!</strong><br/>
 										Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura.
