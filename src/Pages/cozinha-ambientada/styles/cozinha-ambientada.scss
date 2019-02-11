@@ -10,6 +10,10 @@
 	=================================================
 */
 /*!*/
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
 .cozinha-ambientada {
 	&__title {
 		color: #FFFFFF;
@@ -54,5 +58,51 @@
 		&--vertical {
 			flex-direction: column;
 		}
+	}
+}
+
+.mosaic-banner-consul-item {
+	background-color: $green;
+	text-align: center;
+
+	&__title {
+		margin: 0 0 .3rem;
+    	line-height: 1;
+	}
+
+	&__text-wrapper {
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 179px;
+		z-index: 20;
+
+		&::before {
+			background: #ffffff;
+			border-radius: 115px;
+			content: '';
+			height: 130%;
+			left: -123px;
+			position: absolute;
+			top: -260px;
+			transform: rotate(-45deg);
+			width: 500%;
+			z-index: -5;
+		}
+	}
+
+	&__btn {
+		background: $green;
+		border-radius: 20px;
+		border: 0;
+		color: #FFFFFF;
+		padding: .3rem .8rem;
+	}
+
+	p {
+		font-size: .8em;
+		font-weight: bold;
+		margin: 0 0 .8rem;
 	}
 }
