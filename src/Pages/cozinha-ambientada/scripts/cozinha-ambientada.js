@@ -5,10 +5,50 @@
  */
 'use strict';
 
+
+import './../Dust/mosaic-banner.html';
+
 Nitro.setup([], function() {
 
+	var hasSlideActive = false;
+
 	this.init = () => {
+		this.buildMosaic();
 		this.setListeners();
+	};
+
+	/* Build Mosaic Banner */
+	this.buildMosaic = () => {
+		const data = this.getDataFromPlaceholders();
+
+		dust.render('mosaic-banner', data, function (err, out) {
+			if (err) {
+				throw new Error('Mosaic Dust error: ' + err);
+			}
+
+			$('.cozinha-ambientada__mosaic.mosaic-banner').append(out);
+		});
+	};
+
+	/* Build a object with only usefull data from placeholders */
+	this.getDataFromPlaceholders = () => {
+		let data = {},
+			iterator = 0;
+
+		$('.cozinha-ambientada-placeholders__item').each(function() {
+			const $this = $(this);
+			let banners = $this.find('.box-banner');
+
+			data[iterator] = {
+				banner: $(banners[0]).find('img').attr('src'),
+				text: $this.text(),
+				detail: $(banners[1]).find('img').attr('src')
+			};
+
+			++iterator;
+		});
+
+		return data;
 	};
 
 	this.setListeners = () => {
@@ -20,12 +60,19 @@ Nitro.setup([], function() {
 
 		var handleActiveItem = (toggleActiveEl) => {
 			const	$activeButton 	=	$(toggleActiveEl);
-			const 	$itemModal		= 	$activeButton.parent();
 			const	$itemSlide		=	$activeButton.parent().parent();
 
-			$activeButton.hasClass('-is-active') ? $activeButton.removeClass('-is-active') : $activeButton.addClass('-is-active');
-			$itemModal.hasClass('-is-active') ? $itemModal.removeClass('-is-active') : $itemModal.addClass('-is-active');
-			$itemSlide.hasClass('-is-active') ? $itemSlide.removeClass('-is-active') : $itemSlide.addClass('-is-active');
+			if (!hasSlideActive) {
+				$itemSlide.addClass('-is-active');
+				$('body').addClass('-displaying-mosaic-item');
+
+				hasSlideActive = true;
+			} else {
+				$itemSlide.removeClass('-is-active');
+				$('body').removeClass('-displaying-mosaic-item');
+
+				hasSlideActive = false;
+			}
 		};
 	};
 
