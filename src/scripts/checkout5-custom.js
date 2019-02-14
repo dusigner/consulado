@@ -53,7 +53,6 @@ $(window).on('load', function() {
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin', 'callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput) {
-
 		var self = this,
 			$body = $('body'),
 			flagCoupon;

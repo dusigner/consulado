@@ -251,3 +251,152 @@
 		}
 	}
 }
+
+.btn-link-green {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none;
+    color: #9aca3c;
+}
+.btn-link-green:hover {
+    background-color: transparent !important;
+    box-shadow: none;
+    color: #87b133 !important;
+}
+.btn-link-green:active {
+    background-color: transparent !important;
+    box-shadow: none;
+    color: #789e2d !important;
+}
+
+.recurrence__conditions {
+	
+	.header-recurrence__conditions {
+		background: #fff;
+		padding-top: 20px;
+		position: sticky;
+		top: -30px;
+	}
+	.corpo-recurrence__conditions {
+		height: 100vh;
+		overflow-y: auto;
+		transform: translate3d(-110%, 0, 0);
+		transition: z-index .4s step-end, transform .4s ease-out;
+		z-index: -1;
+	}
+
+	&.ativo {
+		.corpo-recurrence__conditions {
+			transform: translate3d(0, 0, 0);
+			transition: z-index .4s step-start, transform .4s ease-out;
+			z-index: 1043;
+		}
+	}
+}
+
+.corpo-recurrence__conditions {
+	background: #fff;
+	font-size: 12px;
+	min-height: 100%;
+	padding: 30px;
+	position: absolute;
+	right: 0;
+	text-align: justify;
+	top: 0;
+	z-index: 99;
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		border-bottom: 1px solid $primary-color;
+		font-size: 18px;
+		margin: 0 0 1em;
+		padding: 0 0 1em;
+
+		@include breakpoint('tablet', 'max') {
+			box-shadow: 0 8px 16px 2px $white;
+			line-height: 1;
+			padding-right: 40px;
+		}
+	}
+
+	h2 {
+		font-size: 15px;
+		margin: 1em 0;
+	}
+
+	h3 {
+		font-size: 11px;
+		margin: 1em 0;
+	}
+
+	li {
+		font-size: 12px;
+	}
+
+
+	p {
+		font-size: 12px;
+		margin-bottom: 1em!important;
+	}
+
+	.close-recurrence__conditions {
+		align-items: center;
+		background: $primary-color;
+		border-radius: 10rem;
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: 15px;
+		padding: 3px 10px;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		top: 0;
+
+		@include breakpoint('phone', 'max') {
+			margin-top: 60px;
+		}
+		
+		span {
+			font-size: 12px;
+		}
+		.icon {
+			margin-right: .25rem;
+		}
+	}
+
+}
+
+.corpo-recurrence__conditions-mobile {
+	padding: 15px !important;
+	text-align: left !important;
+	width: 100%;
+
+		h1 {
+			font-size: 26px;
+			font-weight: bold;
+			line-height: 1;
+			margin-top: 0;
+		}
+}
+
+.corpo-recurrence__conditions-mobile-d {
+
+	bottom: 0 !important;
+	height: initial !important;
+	text-align: left;
+
+	h1 {
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 1;
+		margin-top: 0;
+	}
+}
