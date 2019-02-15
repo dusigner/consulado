@@ -39,8 +39,12 @@ body {
 .mosaic-banner {
 	height: 600px;
 
+	@include breakpoint(medium, 'max') {
+	   height: auto;
+	}
+
 	&__overlay {
-		background-color: rgba(0, 0, 0, 0.75);
+		background-color: rgba(0, 0, 0, .75);
 		display: none;
 		height: 100vh;
 		left: 0;
@@ -80,8 +84,13 @@ body {
 
 			.mosaic-banner-modal__capsule {
 				opacity: 1;
-				width: 385px;
 				transform: rotate(45deg) scale(1);
+				width: 385px;
+
+				@include breakpoint(medium, 'max') {
+					transform: none;
+					width: auto;
+				}
 			}
 		}
 
@@ -89,22 +98,35 @@ body {
 			.mosaic-banner-modal__capsule {
 				left: -300px;
 				transform: rotate(-225deg) scale(0);
+
+				@include breakpoint(medium, 'max') {
+					left: -70px;
+					transform: scale(1);
+				}
 			}
 
 			.mosaic-banner-modal__text,
 			.mosaic-banner-modal__img {
 				transform: rotate(-135deg);
+
+				@include breakpoint(medium, 'max') { transform: none }
 			}
 
 			&.-is-active {
 				.mosaic-banner-modal__capsule {
 					transform: rotate(-225deg) scale(1);
+
+					@include breakpoint(medium, 'max') { transform: scale(1) }
 				}
 			}
 		}
 
 		&--full {
 			min-height: 600px;
+
+			@include breakpoint(medium, 'max') {
+			   min-height: auto;
+			}
 		}
 	}
 
@@ -122,6 +144,8 @@ body {
 	background-color: $green;
 	overflow: hidden;
 	text-align: center;
+	position: relative;
+	z-index: 0;
 
 	&__title {
     	line-height: 1;
@@ -129,43 +153,49 @@ body {
 	}
 
 	&__text-wrapper {
-		left: 50%;
-		position: absolute;
-		top: 50%;
-		transform: translate(-50%, -50%);
-		width: 179px;
-		z-index: 20;
+		color: #FFFFFF;
+		margin: 0 auto;
+		padding-top: 55px;
+		position: relative;
+		width: 195px;
+		z-index: -5;
+
+		@include breakpoint(medium, 'max') {
+		   width: 163px;
+		}
 
 		&::before {
-			background: #ffffff;
+			background: transparent;
 			border-radius: 115px;
+			border: solid 1px #FFFFFF;
 			content: '';
-			height: 130%;
-			left: -123px;
+			height: 160px;
+			left: -115px;
 			position: absolute;
-			top: -260px;
-			transform: rotate(-45deg);
-			width: 500%;
+			top: 22px;
+			width: 340px;
 			z-index: -5;
+
+			@include breakpoint(medium, 'max') {
+			   left: -175px;
+			   top: 177px;
+			   height: 57px;
+			}
 		}
 	}
 
-	&__btn {
-		background: $green;
-		border: 0;
-		border-radius: 20px;
-		color: #FFFFFF;
-		padding: .3rem .8rem;
-	}
-
-	&__discount {
-		color: $green;
-		font-size: 1.2em;
+	img {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 215px;
+		z-index: 5;
 	}
 
 	p {
-		font-size: .8em;
-		font-weight: bold;
+		font-size: 1em;
+		font-weight: normal;
 		margin: 0 0 .8rem;
 	}
 }
@@ -177,8 +207,8 @@ body {
 
 	&__toggle-icon {
 		background-color: $green;
-		border-radius: 100%;
 		border: 0;
+		border-radius: 100%;
 		color: #FFFFFF;
 		cursor: pointer;
 		font-size: .8em;
@@ -189,9 +219,9 @@ body {
 		width: 30px;
 		z-index: 30;
 
-		&:focus { outline:0; }
+		&:focus { outline: 0; }
 
-		i {
+		.icon {
 			left: 50%;
 			position: absolute;
 			top: 50%;
@@ -201,8 +231,8 @@ body {
 
 	&__capsule {
 		background-color: #9aca3c;
-		border-radius: 100px;
 		border: solid 10px #9aca2c;
+		border-radius: 100px;
 		display: flex;
 		height: 200px;
 		justify-content: space-between;
@@ -215,11 +245,20 @@ body {
 		transition: opacity .4s ease-in-out, width .6s ease-in-out, transform .2s ease-in-out;
 		width: 385px;
 		z-index: 20;
+
+		@include breakpoint(medium, 'max') {
+			flex-direction: column;
+			height: auto;
+			left: -70px;
+			top: 15px;
+			transform: none;
+			width: auto;
+		}
 	}
 
 	&__text {
-		border-radius: 100%;
 		border: dashed 2px #FFFFFF;
+		border-radius: 100%;
 		color: #FFFFFF;
 		font-weight: 100;
 		height: 180px;
@@ -228,6 +267,14 @@ body {
 		text-align: center;
 		transform: rotate(-45deg);
 		width: 180px;
+
+		@include breakpoint(medium, 'max') {
+			height: 150px;
+			min-width: 150px;
+			padding: 22px 20px 22px;
+			transform: none;
+			width: 150px;
+		}
 
 		span {
 			color: #736C6B;
@@ -238,10 +285,40 @@ body {
 
 	&__img {
 		transform: rotate(-45deg);
+
+		@include breakpoint(medium, 'max') {
+			margin-top: 1rem;
+			transform: none;
+		}
 	}
 }
 
 /* Placeholders Wrapper */
 .cozinha-ambientada-placeholders {
 	display: none;
+}
+
+.-custom-share-mobile {
+	display: flex;
+	height: 330px;
+
+	@include breakpoint(medium, 'max') {
+	   min-height: 330px;
+	}
+}
+
+.-only-mobile {
+	display: none;
+
+	@include breakpoint(medium, 'max') {
+	   display: block;
+	}
+}
+
+.-only-desktop {
+	display: block;
+
+	@include breakpoint(medium, 'max') {
+	   display: none;
+	}
 }
