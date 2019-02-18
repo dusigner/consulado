@@ -11,6 +11,11 @@
 					<span class="mosaic-banner-modal__details">
 						+ detalhes
 					</span>
+					{#[0].link}
+						<a href={.} class="mosaic-banner-modal__link">
+							Comprar
+						</a>
+					{/[0].link}
 				</div>
 				<img class='mosaic-banner-modal__img' src="{[0].detail}" alt="" srcset="">
 			</div>

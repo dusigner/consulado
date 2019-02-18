@@ -35,6 +35,7 @@ Nitro.setup([], function() {
 		let data = {},
 			iterator = 0;
 
+
 		$('.cozinha-ambientada-placeholders__item').each(function() {
 			const $this = $(this);
 			let banners = $this.find('.box-banner');
@@ -42,6 +43,7 @@ Nitro.setup([], function() {
 			data[iterator] = {
 				banner: $(banners[0]).find('img').attr('src'),
 				text: $this.text(),
+				link: $(banners[0]).find('a').attr('href') || '',
 				detail: $(banners[1]).find('img').attr('src')
 			};
 
