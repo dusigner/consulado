@@ -251,7 +251,7 @@ body {
 			left: -70px;
 			top: 15px;
 			transform: none;
-			width: auto;
+			width: 170px;
 		}
 	}
 
@@ -294,8 +294,10 @@ body {
 		width: 180px;
 
 		@include breakpoint(medium, 'max') {
+			height: 150px;
 			margin-top: 1rem;
 			transform: none;
+			width: 150px;
 		}
 
 		img {
@@ -304,6 +306,12 @@ body {
 			bottom: 0;
 			width: 80%;
 			height: 80%;
+
+			@include breakpoint(medium, 'max') {
+				height: 100%;
+				left: 0;
+				width: 100%;
+			}
 		}
 	}
 
@@ -316,6 +324,10 @@ body {
 		position: absolute;
 		transform: translateX(-50%);
 		white-space: nowrap;
+
+		@include breakpoint(medium, 'max') {
+			bottom: -10px;
+		}
 	}
 }
 
