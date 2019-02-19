@@ -12,6 +12,19 @@ Nitro.module('checkout.recurrence', function() {
 	this.setup = function() {
 		self.render();
 		self.autoOpen();
+		self.conditionsRecurrence();
+	};
+
+	this.conditionsRecurrence = () => {
+		$('body').on('click', '.modal-recurrence__conditions', function(e){
+			e.preventDefault();
+			$('.recurrence__conditions').toggleClass('ativo');
+		});
+
+		$('body').on('click', '.abreefecha', function(e) {
+			e.preventDefault();
+			$('.recurrence__conditions').toggleClass('ativo');
+		});
 	};
 
 	//Skus e respectivos periodos de recorrência (do html, tentando facilitar a troca disso e não tive mais ideias)
