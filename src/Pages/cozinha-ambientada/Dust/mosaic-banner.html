@@ -13,11 +13,13 @@
 					</span>
 					{#[0].link}
 						<a href={.} class="mosaic-banner-modal__link">
-							Comprar
+							+ comprar
 						</a>
 					{/[0].link}
 				</div>
-				<img class='mosaic-banner-modal__img' src="{[0].detail}" alt="" srcset="">
+				<figure class="mosaic-banner-modal__img">
+					<img src="{[0].detail}" alt="" srcset="">
+				</figure>
 			</div>
 		</div>
 	</div>
@@ -34,8 +36,15 @@
 						<span class="mosaic-banner-modal__details">
 							+ detalhes
 						</span>
+						{#[1].link}
+							<a href={.} class="mosaic-banner-modal__link">
+								+ comprar
+							</a>
+						{/[1].link}
 					</div>
-					<img class='mosaic-banner-modal__img' src="{[1].detail}" alt="" srcset="">
+					<figure class="mosaic-banner-modal__img">
+						<img src="{[1].detail}" alt="" srcset="">
+					</figure>
 				</div>
 			</div>
 		</div>
@@ -57,8 +66,15 @@
 					<span class="mosaic-banner-modal__details">
 						+ detalhes
 					</span>
+					{#[3].link}
+						<a href={.} class="mosaic-banner-modal__link">
+							+ comprar
+						</a>
+					{/[3].link}
 				</div>
-				<img class='mosaic-banner-modal__img' src="{[3].detail}" alt="" srcset="">
+				<figure class="mosaic-banner-modal__img">
+					<img src="{[3].detail}" alt="" srcset="">
+				</figure>
 			</div>
 		</div>
 	</div>
