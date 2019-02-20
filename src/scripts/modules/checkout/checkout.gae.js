@@ -21,6 +21,29 @@ Nitro.module('checkout.gae', function() {
 		this.introOpen();
 	};
 
+	this.installments = function() {
+		let installmentStart = 0,
+			installmentEnd = 0;
+
+		self.orderForm.paymentData.installmentOptions.forEach(function(elem) {
+
+			if (installmentStart > installmentEnd) {
+				installmentEnd = installmentStart;
+				installmentStart = 0;
+			} else { 
+				installmentStart = 0;
+			}
+
+			elem.installments.forEach(function(installment) {
+				if (installment.hasInterestRate === false && installment.interestRate === 0) {
+					installmentStart ++;
+				}
+			});			
+		});
+
+		return installmentEnd;
+	};
+
 	this.monthToDays = function( months ) {
 		var CurrentDate = new Date();
 		var nextDate = new Date();
@@ -191,25 +214,27 @@ Nitro.module('checkout.gae', function() {
 		$.each(offerings, function(index, val) {
 			var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
 
-			data.warranty[index]            = {};
-			data.warranty[index].id         = val.id;
-			data.warranty[index].price      = val.price / 10;
-			data.warranty[index].fullPrice  = val.price;
-			data.warranty[index].priceMonth = val.price / warrantyTime;
-			data.warranty[index].priceDay   = val.price / self.monthToDays(warrantyTime);
-			data.warranty[index].months     = warrantyTime;
-			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
-			data.warranty[index].isPrimary  = (warrantyTime === 12) ? true : false;
-			data.warranty[index].isMiddle   = (warrantyTime === 18) ? true : false;
-			data.warranty[index].isLast     = (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
-			data.warranty[index].isCheaper  = false;
+			data.warranty[index]            		= {};
+			data.warranty[index].id         		= val.id;
+			data.warranty[index].price      		= val.price / 10;
+			data.warranty[index].fullPrice  		= val.price;
+			data.warranty[index].priceMonth 		= val.price / warrantyTime;
+			data.warranty[index].priceInstallment	= val.price / self.installments();
+			data.warranty[index].priceDay   		= val.price / self.monthToDays(warrantyTime);
+			data.warranty[index].installment		= self.installments();
+			data.warranty[index].months     		= warrantyTime;
+			data.warranty[index].monthsYear			= (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
+			data.warranty[index].isPrimary  		= (warrantyTime === 12) ? true : false;
+			data.warranty[index].isMiddle   		= (warrantyTime === 18) ? true : false;
+			data.warranty[index].isLast    	 		= (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
+			data.warranty[index].isCheaper  		= false;
 
 			(data.warranty[index].months === 36) ? data.warranty[index-1].hasThreeYears = '-not-last' : '';
 
 			if( offerings[index - 1] ) {
 				var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);
 				data.warranty[index].diffMonths = warrantyTime - prevWarrantyTime;
-				data.warranty[index].diffPrice = data.warranty[index].priceMonth - (offerings[index - 1].price / prevWarrantyTime);
+				data.warranty[index].diffPrice = data.warranty[index].priceInstallment - (offerings[index - 1].price / prevWarrantyTime);
 
 				if( data.warranty[index].diffPrice < 0 ) {
 					data.warranty[index].isCheaper = true;
@@ -218,7 +243,7 @@ Nitro.module('checkout.gae', function() {
 
 			} else {
 				data.warranty[index].diffMonths = warrantyTime - 0;
-				data.warranty[index].diffPrice = data.warranty[index].priceMonth - 0;
+				data.warranty[index].diffPrice = data.warranty[index].priceInstallment - 0;
 			}
 		});
 
