@@ -58,12 +58,12 @@
 									<p class="title-garantia">
 										<strong>+ <b>{monthsYear}</b> {?isPrimary}ano{/isPrimary} {?isMiddle}ano e meio{/isMiddle} {?isLast}anos{/isLast} </strong>
 										<span>Após garantia de fábrica</span>
-										<strong class='show-mobile'><span>Por {installment}x sem juros de {priceInstallment|intAsCurrency}</span></strong>
+										{?isParcel}<strong class='show-mobile'><span>Por {installment}x sem juros de {priceInstallment|intAsCurrency}</span></strong>{/isParcel}
 										<span class='show-mobile'>ou 1x de {fullPrice|intAsCurrency}</span>
 									</p>
 
 									<p class="bottom-garantia">
-										<strong>{installment}x <span>sem juros de</span> {priceInstallment|intAsCurrency}</strong>
+										{?isParcel}<strong>{installment}x <span>sem juros de</span> {priceInstallment|intAsCurrency}</strong>{/isParcel}
 										<span>1x de {fullPrice|intAsCurrency}</span>
 									</p>
 								</label>
@@ -72,10 +72,13 @@
 							<!-- Next best option -->
 							<div class="modal-warning-best-option -gae-{months}">
 								<p class="modal-warning-best-option__container">
-									Por<span>{?isCheaper} menos{:else} mais{/isCheaper}</span><br />
-									<strong>{diffPrice|intAsCurrency}/mês</strong> contrate <strong>{months} meses</strong>
-									<br/>
-									<!-- Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura. -->
+									{?isParcel}
+										Por<span>{?isCheaper} menos{:else} mais{/isCheaper}</span><br />
+										<strong>{diffPrice|intAsCurrency}/mês</strong> contrate <strong>{months} meses</strong>
+										<br/>
+									{:else}
+										Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura.
+									{/isParcel}
 									<!-- de seguro de garantia estendida -->
 								</p>
 							</div>

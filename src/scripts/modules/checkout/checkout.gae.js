@@ -210,15 +210,16 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].isMiddle   		= (warrantyTime === 18) ? true : false;
 			data.warranty[index].isLast    	 		= (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
 			data.warranty[index].isCheaper  		= false;
+			data.warranty[index].isParcel	  		= (self.installments()) ? true : false;
 
 			(data.warranty[index].months === 36) ? data.warranty[index-1].hasThreeYears = '-not-last' : '';
 
-			if( offerings[index - 1] ) {
+			if ( offerings[index - 1] ) {
 				var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);
 				data.warranty[index].diffMonths = warrantyTime - prevWarrantyTime;
 				data.warranty[index].diffPrice = data.warranty[index].priceInstallment - (offerings[index - 1].price / self.installments());
 
-				if( data.warranty[index].diffPrice < 0 ) {
+				if ( data.warranty[index].diffPrice < 0 ) {
 					data.warranty[index].isCheaper = true;
 					data.warranty[index].diffPrice = data.warranty[index].diffPrice * -1;
 				}
