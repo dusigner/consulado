@@ -11,8 +11,6 @@ Nitro.module('checkout.gae', function() {
 	var self = this,
 		winWidth = $('body').width(),
 		$modalWarranty = $('#modal-warranty');
-		// $body = $('body'),
-		// template = $body.hasClass('teste-ab-gae') ? 'modal-warranty-desktop-teste-ab' : 'modal-warranty-desktop',
 
 	this.setup = function() {
 		this.link();
@@ -22,26 +20,10 @@ Nitro.module('checkout.gae', function() {
 	};
 
 	this.installments = function() {
-		let installmentStart = 0,
-			installmentEnd = 0;
-
-		self.orderForm.paymentData.installmentOptions.forEach(function(elem) {
-
-			if (installmentStart > installmentEnd) {
-				installmentEnd = installmentStart;
-				installmentStart = 0;
-			} else { 
-				installmentStart = 0;
-			}
-
-			elem.installments.forEach(function(installment) {
-				if (installment.hasInterestRate === false && installment.interestRate === 0) {
-					installmentStart ++;
-				}
-			});			
-		});
-
-		return installmentEnd;
+		const sortCountASC = (a, b) => b.count - a.count;
+		return self.orderForm.paymentData.installmentOptions
+			.map(elem => elem.installments.filter(installment => !installment.hasInterestRate).sort(sortCountASC)[0])
+			.sort(sortCountASC)[0].count;
 	};
 
 	this.monthToDays = function( months ) {
@@ -234,7 +216,7 @@ Nitro.module('checkout.gae', function() {
 			if( offerings[index - 1] ) {
 				var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);
 				data.warranty[index].diffMonths = warrantyTime - prevWarrantyTime;
-				data.warranty[index].diffPrice = data.warranty[index].priceInstallment - (offerings[index - 1].price / prevWarrantyTime);
+				data.warranty[index].diffPrice = data.warranty[index].priceInstallment - (offerings[index - 1].price / self.installments());
 
 				if( data.warranty[index].diffPrice < 0 ) {
 					data.warranty[index].isCheaper = true;
