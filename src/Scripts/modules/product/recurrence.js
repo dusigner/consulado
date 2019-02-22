@@ -1,6 +1,7 @@
 'use strict';
 
 require('Dust/product/recurrence.html');
+require('Dust/product/recurrenceStep.html');
 
 Nitro.module('recurrence', function() {
 	var self = this;
@@ -23,9 +24,9 @@ Nitro.module('recurrence', function() {
 		'W11043747'  : '4 meses',
 		'W10349302'  : '6 meses',
 
-		'CIX01AXONA' : '9 meses',
+		'CIX01AXONA' : '36 semanas',
 		'CIX06AXONA' : '6 meses',
-		'C3L02AB'    : '9 meses',
+		'C3L02AB'    : '36 semanas',
 		'C3L02ABANA' : '6 meses',
 		'W10601110' : '6 meses'
 	};
@@ -34,7 +35,7 @@ Nitro.module('recurrence', function() {
 	this.signExchange = () => {	
 		let sku = [];				
 		$.each(periods, function (i) {
-			let skuProduct = $('.productReference').text() === i ? true : false;
+			let skuProduct = $('.skuReference').text() === i ? true : false;
 			if (skuProduct) {
 				let productInfo = window.skuJson;
 				sku.period = periods[i];
@@ -43,19 +44,14 @@ Nitro.module('recurrence', function() {
 				sku.productSku = productInfo.skus[0].sku;
 				sku.productId = productInfo.productId;
 				sku.productSellerId = productInfo.skus[0].sellerId;
-				const renderInfoRecurrence = `<div class="recurrence-step">
-												<a href="javascript:void(0)" id="exchange-recurrence" class="recurrence-step-exchange">
-													<div class="recurrence-step-container">
-													<div class="recurrence-step-text">
-														<p class="recurrence-step-title">Troca recomendada a cada ${sku.period}</p>
-														<p class="recurrence-step-message">Assine e receba um novo próximo da data de troca</p>
-														<p class="recurrence-step-link">Saiba mais</p>
-													</div>
-												</div>
-											</a>
-										</div>`;
-			
-				$(renderInfoRecurrence).insertAfter('.prod-sku-selector');
+
+				dust.render('recurrenceStep', sku, function(err, out) {
+					if (err) {
+						throw new Error('RecurrenceSteps Dust error: ' + err);
+					}
+		
+					$(out).insertAfter('.prod-sku-selector');
+				});
 			}				
 		});
 		
@@ -150,5 +146,16 @@ Nitro.module('recurrence', function() {
 		$('html').removeClass('overflow-hidden');
 	};
 
+	dust.filters.recurrenceSemanas = function(value) {
+		var intPeriod = value.match(/^\d{1,}/gmi);
+	
+		if(intPeriod && intPeriod[0] > 12) {
+			value = (intPeriod / 4) + ' meses';
+		}
+	
+		return value;
+	};
+
 	this.init();
+
 });

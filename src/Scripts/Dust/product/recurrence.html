@@ -15,7 +15,10 @@
 				<div class="modal-body text-center modal-recurrence__body">
 					<div class="modal-recurrence__header">
 						<p class="modal-recurrence__title">Já pensou em assinar e receber um novo produto próximo da data de troca?</p>
-						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada {period}
+						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada 
+							{#period}
+								{.|recurrenceSemanas}
+							{/period}
 						</div>
 					</div>
 
