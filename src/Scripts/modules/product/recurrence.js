@@ -7,7 +7,7 @@ Nitro.module('recurrence', function () {
 	var self = this;
 
 	this.init = () => {
-		this.signExchange();
+		self.signExchange();
 	};
 
 	// Object with recurrences
@@ -152,12 +152,12 @@ Nitro.module('recurrence', function () {
 	};
 
 	this.conditionsRecurrence = () => {
-		$('body').on('click', '.modal-recurrence__conditions', function (e) {
+		$('.modal-recurrence__conditions').on('click', function (e) {
 			e.preventDefault();
 			$('.recurrence__conditions').toggleClass('ativo');
 		});
 
-		$('body').on('click', '.abreefecha', function (e) {
+		$('.abreefecha').on('click', function (e) {
 			e.preventDefault();
 			$('.recurrence__conditions').toggleClass('ativo');
 		});

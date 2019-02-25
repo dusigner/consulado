@@ -11,8 +11,12 @@ body {
 
 .-teste-b {
 
-	.recurrence-step {
+	.modal-body {
+		overflow-y: auto;
+		position: relative;
+	}
 
+	.recurrence-step {
 		display: block;
 
 		&-container {
@@ -88,7 +92,7 @@ body {
 	}
 
 	.corpo-recurrence__conditions {
-		height: 100vh;
+
 		overflow-y: auto;
 		transform: translate3d(-110%, 0, 0);
 		transition: z-index .4s step-end, transform .4s ease-out;
@@ -106,6 +110,7 @@ body {
 
 .corpo-recurrence__conditions {
 	background: #fff;
+	border-radius: 15px;
 	font-size: 12px;
 	min-height: 100%;
 	padding: 30px;
@@ -170,8 +175,10 @@ body {
 		text-align: center;
 		top: 0;
 
-		@include breakpoint('phone', 'max') {
+		@include breakpoint('small', 'max') {
 			margin-top: 60px;
+			right: 10px;
+			top: -75px;
 		}
 
 		span {
