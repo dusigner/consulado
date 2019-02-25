@@ -7,12 +7,12 @@
 
 require('modules/custom-select');
 require('Dust/coupon/coupon-list.html');
-const {getCouponsByCategory} = require('modules/store/crm');
+const { getCouponsByCategory } = require('modules/store/crm');
 const logger = require('js-pretty-logger');
-const {getUniques} = require('modules/helpers');
+const { getUniques } = require('modules/helpers');
 const toastr = require('vendors/toastr');
 
-Nitro.controller('coupon', ['custom-select'], function(customSelect) {
+Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 	let self = this;
 
 	this.filterBy = 'category';
@@ -51,7 +51,7 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 		const couponListItems = $('.coupons-list_item');
 		const couponSize = couponListItems.length;
 		const couponLastIndex = couponSize - 1;
-		const couponMax = 3;
+		const couponMax = 6;
 
 		if (couponSize > couponMax) {
 			const extraCoupons = couponListItems.splice(
@@ -87,7 +87,7 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 	 * @param {*} coupons
 	 */
 	this.renderCoupons = (coupons, onRender) => {
-		dust.render('coupon-list', {coupons}, (err, out) => {
+		dust.render('coupon-list', { coupons }, (err, out) => {
 			if (err) {
 				throw new Error('Lista de Cupons Dust error: ' + err);
 			}
@@ -221,14 +221,14 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 	 * @param {string} [type] - type of message. coude be default, info, danger, success and warn
 	 */
 	this.log = (message, type = 'info') => {
-		logger('coupon', message, {type});
+		logger('coupon', message, { type });
 	};
 
 	/**
 	 * @description Send events to analytics
 	 */
 	this.tags = () => {
-		$('.content-body .primary-button').on('click', function() {
+		$('.content-body .primary-button').on('click', function () {
 			dataLayer.push({
 				event: 'generic-event-trigger',
 				category: 'Categoria de Cupom',
@@ -237,7 +237,7 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 			});
 		});
 
-		$('.coupon-list .products').find('a').on('click', function() {
+		$('.coupon-list .products').find('a').on('click', function () {
 			dataLayer.push({
 				event: 'generic-event-trigger',
 				category: 'Categoria de Cupom',
@@ -246,7 +246,7 @@ Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 			});
 		});
 
-		$('.show-more-coupons').on('click', function() {
+		$('.show-more-coupons').on('click', function () {
 			dataLayer.push({
 				event: 'generic-event-trigger',
 				category: 'Categoria de Cupom',
