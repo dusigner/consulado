@@ -1,4 +1,4 @@
-<div id="modal-recurrence" role="dialog" class="modal fade in modal-recurrence" style="display: none">	
+<div id="modal-recurrence" role="dialog" class="modal fade in modal-recurrence" style="display: none">
 	<div class="-teste-b">
 		<div class="modal-dialog modal-lg">
 			{! Modal content !}
@@ -15,9 +15,9 @@
 				<div class="modal-body text-center modal-recurrence__body">
 					<div class="modal-recurrence__header">
 						<p class="modal-recurrence__title">Já pensou em assinar e receber um novo produto próximo da data de troca?</p>
-						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada 
+						<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada &nbsp;
 							{#period}
-								{.|recurrenceSemanas}
+							{.|recurrenceSemanas}
 							{/period}
 						</div>
 					</div>
@@ -68,20 +68,97 @@
 									</div>
 								</div>
 							</div>
-						</div>	
+						</div>
 					</div>
 
 					<span class="modal-recurrence-line-desktop"></span>
 					<span class="modal-recurrence-line-mobile"></span>
 
 					<div class="modal-recurrence__footer">
-						<p class="modal-recurrence__term"><small>*Preço do produto e frete respeitarão os valores vigentes no dia da compra recorrente.</small></p>
+						<a href="#" class="modal-recurrence__conditions btn-link-green">Saiba mais sobre as Condições Gerais da Compra
+							Recorrente</a>
+						<br>
+						<p class="modal-recurrence__term"><small>*Preço do produto e frete respeitarão os valores vigentes no dia&nbsp;
+								da compra recorrente.</small></p>
 						<div class="modal-recurrence__cta-buttons">
-							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy primary-button text-uppercase">Comprar produto</a>
-							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy-recurrence primary-button text-uppercase">Comprar produto e assinar</a>
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy primary-button text-uppercase">Comprar
+								produto</a>
+							<a href="javascript:void(0)" class="modal-recurrence__cta -desktop -buy-recurrence primary-button text-uppercase">Comprar
+								produto e assinar</a>
 						</div>
 						<i class="loading-text icon-spinner icon-spin hide"></i>
 					</div>
+				</div>
+			</div>
+			<div class="recurrence__conditions">
+				<div class="corpo-recurrence__conditions">
+					<div class="header-recurrence__conditions">
+						<div class="close-recurrence__conditions abreefecha"><i class="icon icon-arrow-left"></i> <span>voltar</span></div>
+						<h1>Saiba mais sobre as Condições Gerais da Compra Recorrente</h1>
+					</div>
+					<h2>1. APRESENTAÇÃO</h2>
+					<ul>
+						<li>
+							A recorrência de refil permite que o produto selecionado seja comprado automaticamente no intervalo de tempo
+							&nbsp;
+							selecionado de acordo com o prazo de substituição necessário. Dessa forma você não precisa se preocupar em
+							&nbsp;
+							comprar o seu refil toda vez que estiver próximo ao seu vencimento. &nbsp;
+							Você poderá cancelar a sua recorrência a qualquer momento em "Meus pedidos". &nbsp;
+							Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste
+							&nbsp;
+							no valor do produto, você será informado por e-mail.
+						</li>
+					</ul>
+					<h2>2. COMO FUNCIONA?</h2>
+					<ul>
+						<li>
+							Escolha o produto que deseja comprar automaticamente. &nbsp;
+							Finalize o pedido pagando com cartão de crédito. &nbsp;
+							Após a aprovação a recorrência será ativada.
+						</li>
+					</ul>
+					<h2>3. QUAIS VANTAGENS?</h2>
+					<ul>
+						<li>
+							Você não paga nada a mais por esse serviço. &nbsp;
+							Controle: saiba o dia exato da compra e pagamento. &nbsp;
+							Segurança: ambiente protegido contra fraudes. &nbsp;
+							Praticidade e comodidade: não precisa lembrar de comprar o mesmo produto toda vez.
+						</li>
+					</ul>
+					<h2>3. COMO DESATIVAR SUA RECORRÊNCIA?</h2>
+					<ul>
+						<li>
+							Confira o passo a passo de como desativar recorrência.
+						</li>
+						<li>
+							1. Acesse a página de “Meus Pedidos” no cabeçalho da página;
+						</li>
+						<li>
+							2. Faça o login utilizando seu usuário e senha;
+						</li>
+						<li>
+							1. Acesse a página de “Meus Pedidos” no cabeçalho da página;
+						</li>
+						<li>
+							3. Acesse a aba “Recorrências” no canto superior direito;
+						</li>
+						<li>
+							4. No lado direito, é possível editar sua forma de pagamento e alterar o cartão de crédito utilizado. Do lado
+							&nbsp;
+							esquerdo, há um campo marcado como "Recorrência Ativa";
+						</li>
+						<li>
+							5. Clicando nesse campo, aparecerá um modal de confirmação para você inativar a recorrência;
+						</li>
+						<li>
+							6. Clique em “Desativar Recorrências” e confirme;
+						</li>
+						<li>
+							7. Após a recorrência inativada, o antigo campo ficará vazio e a sua recorrência não estará mais ativa.
+						</li>
+					</ul>
 				</div>
 			</div>
 			{! Modal content !}
@@ -89,4 +166,3 @@
 
 	</div>
 </div>
-
