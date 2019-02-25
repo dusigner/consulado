@@ -53,8 +53,6 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 		const couponLastIndex = couponSize - 1;
 		const couponMax = 6;
 
-		console.log("Quantidade!!!!!!" + couponSize);
-
 		if (couponSize > couponMax) {
 			const extraCoupons = couponListItems.splice(
 				couponMax,
