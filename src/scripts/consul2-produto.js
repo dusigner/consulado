@@ -23,8 +23,6 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 	var self = this,
 		$body = $('body');
 
-	$body.addClass('-teste-b');
-
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
 	chaordic.init('product', window.skuJson.productId);
 
