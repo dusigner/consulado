@@ -1,0 +1,16 @@
+{
+	"workbench.colorCustomizations": {
+		"titleBar.activeForeground": "#000",
+		"titleBar.inactiveForeground": "#000000CC",
+		"titleBar.activeBackground": "#9aca3c",
+		"titleBar.inactiveBackground": "#9aca3c"
+	},
+	"files.trimTrailingWhitespace": true,
+	"editor.tabSize": 4,
+	"editor.detectIndentation": true,
+	"search.exclude": {
+		"**/build": true,
+		"**/node_modules": true
+	},
+	"editor.formatOnSave": true
+}
