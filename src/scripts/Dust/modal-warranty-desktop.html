@@ -38,7 +38,7 @@
 					<!-- Sem garantia -->
 					<input type="radio" name="warranty-value" id="warranty1" value="" class="fakeInput">
 					<div class="modal__cell">
-						<label class="box-opcao-garantia box-garantia-secundaria anchor-gae first-box-garantia select-gae">
+						<label for="warranty1" class="box-opcao-garantia box-garantia-secundaria anchor-gae first-box-garantia">
 
 							<p class="title-garantia">Sem garantia estendida<span>(Apenas garantia de fábrica)</span></p>
 
@@ -48,12 +48,12 @@
 
 					{#warranty}
 						<input type="radio" name="warranty-value" id="warranty{id}" value="{id}" class="fakeInput">
-						<div class="modal__cell -gae-{months}">
+						<div class="modal__cell">
 								{?isLast}
-									<div class="recomendado -gae-{months} {hasThreeYears}">Recomendado*</div>
+									<div class="recomendado">Recomendado*</div>
 								{/isLast}
 							<!-- <span class="close-warranty"><i class="icon icon-remove item-remove-ico"></i></span> -->
-							<label class="box-opcao-garantia anchor-gae select-gae">
+							<label for="warranty{id}" class="box-opcao-garantia anchor-gae">
 
 									<p class="title-garantia">
 										<strong>+ <b>{monthsYear}</b> {?isPrimary}ano{/isPrimary} {?isMiddle}ano e meio{/isMiddle} {?isLast}anos{/isLast} </strong>
@@ -70,7 +70,7 @@
 
 
 							<!-- Next best option -->
-							<div class="modal-warning-best-option -gae-{months}">
+							<div class="modal-warning-best-option">
 								<p class="modal-warning-best-option__container">
 									<!-- Por<span>{?isCheaper} menos{:else} mais{/isCheaper}</span><br />
 									<strong>{diffPrice|intAsCurrency}/mês</strong>
@@ -86,7 +86,7 @@
 							{?isLast}
 
 								<!-- Melhor custo benefício -->
-								<div class="modal-warning-best-option modal-warning-best-option--final -gae-{months} {hasThreeYears}">
+								<div class="modal-warning-best-option modal-warning-best-option--final">
 									<p class="modal-warning-best-option__container">
 										<strong>Melhor custo benefício!</strong><br/>
 										Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura.
