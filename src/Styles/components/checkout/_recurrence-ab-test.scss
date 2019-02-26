@@ -2,12 +2,12 @@
 
 @import 'components/checkout/recurrence-modal-ab-test';
 
-.-teste-b {
+.body-cart {
 	.recurrence {
 		&__step-message {
 			display: none;
 		}
-		
+
 		&__remove {
 			@include font-size(12px);
 			border: none;
@@ -19,8 +19,8 @@
 			padding: 0;
 			text-decoration: underline;
 			text-transform: none;
-	
-	
+
+
 			&:hover,
 			&:active,
 			&:focus {
@@ -35,7 +35,7 @@
 				font-size: .8125rem;
 				margin-bottom: 0;
 			}
-		
+
 			&-container {
 				display: flex;
 				&::before {
@@ -49,5 +49,5 @@
 				}
 			}
 		}
-	}   
+	}
 }
