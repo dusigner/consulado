@@ -119,7 +119,7 @@ Nitro.module('recurrence', function () {
 					};
 					vtexjs.checkout.getOrderForm().done(function (orderForm) {
 						let recurrenceItemIndex = orderForm.items.findIndex(e => e.id === sku.productSku.toString());
-						if (recurrenceItemIndex > -1) {
+						if (recurrenceItemIndex < 0) {
 							vtexjs.checkout.addToCart([recurrenceSku], null, window.jssalesChannel).done(function () {
 								window.location.href = "/checkout/#/cart";
 							});
@@ -149,6 +149,7 @@ Nitro.module('recurrence', function () {
 			$('.cta-mobile').remove();
 		});
 		$('html').removeClass('overflow-hidden');
+		$('.recurrence__conditions').removeClass('ativo');
 	};
 
 	this.conditionsRecurrence = () => {
