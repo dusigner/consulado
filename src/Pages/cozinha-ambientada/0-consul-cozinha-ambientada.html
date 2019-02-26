@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>cozinha-ambientada</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/cozinha-ambientada.css" />
+</head>
+
+<body data-controller="cozinha-ambientada">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<section id="cozinha-ambientada__wrapper">
+		<div class="cozinha-ambientada__banner">
+			<div class="container">
+				<h1 class="cozinha-ambientada__title">
+					Você merece uma casa Bem Pensada
+				</h1>
+				<div class="cozinha-ambientada__mosaic mosaic-banner">
+					<div class="mosaic-banner__overlay"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="cozinha-ambientada-placeholders">
+			<div class="cozinha-ambientada-placeholders__item" data-ref-slide="1">
+				<vtex:contentPlaceHolder id="Item 1" />
+			</div>
+
+			<div class="cozinha-ambientada-placeholders__item" data-ref-slide="2">
+				<vtex:contentPlaceHolder id="Item 2" />
+			</div>
+
+			<div class="cozinha-ambientada-placeholders__item" data-ref-slide="3">
+				<vtex:contentPlaceHolder id="Item 3" />
+			</div>
+
+			<div class="cozinha-ambientada-placeholders__item" data-ref-slide="4">
+				<vtex:contentPlaceHolder id="Item 4" />
+			</div>
+
+			<div class="cozinha-ambientada-placeholders__item" data-ref-slide="5">
+				<vtex:contentPlaceHolder id="Item 5" />
+			</div>
+		</div>
+	</section>
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/cozinha-ambientada.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<div class="col-6">
+	<div class="mosaic-banner__item mosaic-banner__item--up-item">
+		<img class='mosaic-banner__image' src="{[0].banner}" alt="" srcset="">
+		<div class="mosaic-banner-modal">
+			<button class="mosaic-banner-modal__toggle-icon -js-toggle-active-item">
+				<span class="icon icon-close-icon"></span>
+			</button>
+			<div class="mosaic-banner-modal__capsule">
+				<div class="mosaic-banner-modal__text">
+					{[0].text}
+					<span class="mosaic-banner-modal__details">
+						+ detalhes
+					</span>
+					{#[0].link}
+						<a href={.} class="mosaic-banner-modal__link">
+							+ comprar
+						</a>
+					{/[0].link}
+				</div>
+				<figure class="mosaic-banner-modal__img">
+					<img src="{[0].detail}" alt="" srcset="">
+				</figure>
+			</div>
+		</div>
+	</div>
+	<div class="mosaic-banner__multiple-items">
+		<div class="mosaic-banner__item mosaic-banner__item--half">
+			<img class='mosaic-banner__image' src="{[1].banner}" alt="" srcset="">
+			<div class="mosaic-banner-modal">
+				<button class="mosaic-banner-modal__toggle-icon -js-toggle-active-item">
+					<span class="icon icon-close-icon"></span>
+				</button>
+				<div class="mosaic-banner-modal__capsule">
+					<div class="mosaic-banner-modal__text">
+						{[1].text}
+						<span class="mosaic-banner-modal__details">
+							+ detalhes
+						</span>
+						{#[1].link}
+							<a href={.} class="mosaic-banner-modal__link">
+								+ comprar
+							</a>
+						{/[1].link}
+					</div>
+					<figure class="mosaic-banner-modal__img">
+						<img src="{[1].detail}" alt="" srcset="">
+					</figure>
+				</div>
+			</div>
+		</div>
+		<div class="mosaic-banner__item mosaic-banner__item--half">
+			<img class='mosaic-banner__image' src="https://via.placeholder.com/270x300/2e11ab" alt="" srcset="">
+		</div>
+	</div>
+</div>
+<div class="col-3 -custom-share-mobile">
+	<div class="mosaic-banner__item mosaic-banner__item--full -right-modal">
+		<img class='mosaic-banner__image' src="{[3].banner}" alt="" srcset="">
+		<div class="mosaic-banner-modal ">
+			<button class="mosaic-banner-modal__toggle-icon -js-toggle-active-item">
+				<span class="icon icon-close-icon"></span>
+			</button>
+			<div class="mosaic-banner-modal__capsule">
+				<div class="mosaic-banner-modal__text">
+					{[3].text}
+					<span class="mosaic-banner-modal__details">
+						+ detalhes
+					</span>
+					{#[3].link}
+						<a href={.} class="mosaic-banner-modal__link">
+							+ comprar
+						</a>
+					{/[3].link}
+				</div>
+				<figure class="mosaic-banner-modal__img">
+					<img src="{[3].detail}" alt="" srcset="">
+				</figure>
+			</div>
+		</div>
+	</div>
+
+	<div class="mosaic-banner__item mosaic-banner-consul-item -only-mobile">
+		<div class="mosaic-banner-consul-item__text-wrapper">
+			<h2 class="mosaic-banner-consul-item__title">
+				Cozinha Consul
+			</h2>
+			<p class="mosaic-banner-consul-item__description">
+				Leve todos os produtos dessa cozinha e ganhe ate 10% de desconto.
+			</p>
+		</div>
+		<img src="/arquivos/CFO4VAT_frontal.png" alt="" srcset="">
+	</div>
+</div>
+<div class="col-3">
+	<div class="mosaic-banner__multiple-items mosaic-banner__multiple-items--vertical -only-desktop">
+		<div class="mosaic-banner__item mosaic-banner__item--half mosaic-banner-consul-item">
+			<div class="mosaic-banner-consul-item__text-wrapper">
+				<h2 class="mosaic-banner-consul-item__title">
+					Cozinha Consul
+				</h2>
+				<p class="mosaic-banner-consul-item__description">
+					Leve todos os produtos dessa cozinha e ganhe ate 10% de desconto.
+				</p>
+			</div>
+			<img src="/arquivos/CFO4VAT_frontal.png" alt="" srcset="">
+		</div>
+		<div class="mosaic-banner__item mosaic-banner__item--half">
+			<img class='mosaic-banner__image' src="https://via.placeholder.com/270x300/a2ab11" alt="" srcset="">
+		</div>
+	</div>
+</div>
