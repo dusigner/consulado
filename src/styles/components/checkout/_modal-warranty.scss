@@ -222,7 +222,8 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				& + input + .modal__cell .modal-warning-best-option:not(.modal-warning-best-option--final) {
 					display: block;
 					opacity: 1;
-					transform: translate(100px, -85px) scale(1);
+				//	transform: translate(100px, -85px) scale(1);
+					
 				}
 			}
 		}
@@ -1692,9 +1693,43 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	}
 }
 
+body {
+	.-gae-18 { 
+		display: block; 
+		visibility: visible;
+	}
+	
+	.-gae-36 { 
+		display: none; 
+		visibility: hidden;
+	}
+
+	&.-teste-b-gae {
+		.-gae-18 { 
+			display: none; 
+			visibility: hidden;
+		}
+	
+		.-gae-36 { 
+			display: block; 
+			visibility: visible;
+		}
+
+		.-not-last {
+			display: none!important;
+		}
+	}
+}
+
 .-hide-mobile {
 	@include breakpoint(medium, 'max') {
 	   display: none;
 	}
 }
 
+.modal-warning-best-option.active {
+    display: block;
+    opacity: 1!important;
+	transform: translate(100px, -85px) scale(1)!important;
+    visibility: visible;
+}

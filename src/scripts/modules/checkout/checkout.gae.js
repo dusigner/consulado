@@ -198,11 +198,13 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].priceMonth = val.price / warrantyTime;
 			data.warranty[index].priceDay   = val.price / self.monthToDays(warrantyTime);
 			data.warranty[index].months     = warrantyTime;
-			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : '2',
+			data.warranty[index].monthsYear = (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
 			data.warranty[index].isPrimary  = (warrantyTime === 12) ? true : false;
 			data.warranty[index].isMiddle   = (warrantyTime === 18) ? true : false;
-			data.warranty[index].isLast     = (warrantyTime === 24) ? true : false;
+			data.warranty[index].isLast     = (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
 			data.warranty[index].isCheaper  = false;
+
+			(data.warranty[index].months === 36) ? data.warranty[index-1].hasThreeYears = '-not-last' : '';
 
 			if( offerings[index - 1] ) {
 				var prevWarrantyTime = parseInt(offerings[index - 1].name.match(/\d+/)[0]);
@@ -252,6 +254,13 @@ Nitro.module('checkout.gae', function() {
 			$('.box-opcao-garantia .show-more').on('click', function() {
 				$(this).parents('.box-opcao-garantia').toggleClass('open');
 				$(this).next('.desc').slideToggle(); // remover comentário quando não tiver no teste ab
+			});
+
+			
+			$('.select-gae').on('click', function() {
+				$(this).parent().prev('input').attr('checked', 'checked');
+				$('.modal-warning-best-option.active').removeClass('active');
+				$(this).parent().nextAll('.modal__cell:visible').first().find('.modal-warning-best-option:not(.modal-warning-best-option--final)').addClass('active');
 			});
 
 			// Desmarcar opção selecionada
