@@ -29,8 +29,13 @@
 				<h1 class="cozinha-ambientada__title">
 					Você merece uma casa Bem Pensada
 				</h1>
-				<div class="cozinha-ambientada__mosaic mosaic-banner">
+
+				<div class="cozinha-ambientada__mosaic mosaic-banner clearfix">
 					<div class="mosaic-banner__overlay"></div>
+				</div>
+
+				<div class="text-center">
+					<a class="cozinha-ambientada__combos primary-button" href="/combos">Conheça os combos</a>
 				</div>
 			</div>
 		</div>
@@ -59,10 +64,12 @@
 	</section>
 
 	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-servicos.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
 	<!-- @endif -->
 
 	<!-- Footer -->
+	<vtex:template id="0-consul-servicos" />
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
 

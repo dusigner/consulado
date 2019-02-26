@@ -33,6 +33,17 @@ body {
 		background-color: #898481;
 		padding: 1rem 0 2rem;
 	}
+
+	&__combos {
+		background-color: $green;
+		border-color: $green;
+		margin-top: 2rem;
+		max-width: 100%;
+		padding: .5rem 0;
+		width: 400px;
+
+		&:hover { color: $green }
+	}
 }
 
 /* Mosaic-banner */
@@ -43,6 +54,15 @@ body {
 	   height: auto;
 	}
 
+	@include breakpoint(768px, 'min') {
+		@include breakpoint(960px, 'max') {
+			[class*='col-'] {
+				float: none;
+				width: auto;
+			}
+		}
+	}
+
 	&__overlay {
 		background-color: rgba(0, 0, 0, .75);
 		display: none;
@@ -51,7 +71,7 @@ body {
 		position: fixed;
 		top: 0;
 		width: 100vw;
-		z-index: 5;
+		z-index: 11;
 	}
 
 	&__image {
@@ -73,7 +93,7 @@ body {
 		z-index: 0;
 
 		&.-is-active {
-			z-index: 5;
+			z-index: 11;
 
 			.mosaic-banner-modal__toggle-icon {
 				-moz-box-shadow: 0 0 0 8px rgba(0, 0, 0, .3);
@@ -148,8 +168,8 @@ body {
 	z-index: 0;
 
 	&__title {
+		line-height: 1;
 		margin: 0 0 .3rem;
-    	line-height: 1;
 	}
 
 	&__text-wrapper {
@@ -166,8 +186,8 @@ body {
 
 		&::before {
 			background: transparent;
-			border-radius: 115px;
 			border: solid 1px #FFFFFF;
+			border-radius: 115px;
 			content: '';
 			height: 160px;
 			left: -115px;
@@ -263,10 +283,10 @@ body {
 		height: 180px;
 		min-width: 180px;
 		padding: 30px 15px 0;
+		position: relative;
 		text-align: center;
 		transform: rotate(-45deg);
 		width: 180px;
-		position: relative;
 
 		@include breakpoint(medium, 'max') {
 			height: 150px;
@@ -301,11 +321,11 @@ body {
 		}
 
 		img {
+			bottom: 0;
+			height: 80%;
 			position: absolute;
 			right: 0;
-			bottom: 0;
 			width: 80%;
-			height: 80%;
 
 			@include breakpoint(medium, 'max') {
 				height: 100%;
@@ -324,6 +344,12 @@ body {
 		position: absolute;
 		transform: translateX(-50%);
 		white-space: nowrap;
+
+		@include breakpoint(768px, 'min') {
+			@include breakpoint(960px, 'max') {
+				bottom: -15px;
+			}
+		}
 
 		@include breakpoint(medium, 'max') {
 			bottom: -10px;
