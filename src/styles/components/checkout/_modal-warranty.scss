@@ -1698,3 +1698,9 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	}
 }
 
+.modal-warning-best-option.active {
+    display: block;
+    opacity: 1!important;
+	transform: translate(100px, -85px) scale(1)!important;
+    visibility: visible;
+}
