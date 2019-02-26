@@ -5,32 +5,45 @@
 .add-item-attachment,
 .clone-item-container,
 .clone-item-sep,
-.clone-item { display: none!important }
+.clone-item {
+	display: none !important
+}
 
 .add-item-attachment-container {
-	@include breakpoint(small, 'max') {
-		bottom: 5px;
-		left: 52%;
-		position: absolute;
+	@include breakpoint ('small', 'max') {
+		left: 60%;
+		position: relative;
 		transform: translateX(-50%);
-		width: 95%;
+		width: 150%;
+
+		@include breakpoint('extra-small', 'max') {
+			position: inherit;
+			transform: translateX(0) translatey(0);
+			width: 95%;
+
+		}
 	}
 }
 
 .recurrence {
 	@include breakpoint(small, 'max') {
 		a {
-			display: inline-block!important;
+			display: inline-block !important;
 			vertical-align: middle;
 			// padding-right: 0!important;
 		}
 
 		.recurrence__select {
+
 			&--active,
-			&--act { padding-right: 0!important; }
+			&--act {
+				padding-right: 0 !important;
+			}
 		}
 
-		.recurrence__remove { padding-right: 1em!important; }
+		.recurrence__remove {
+			padding-right: 1em !important;
+		}
 	}
 
 	margin-top: 10px;
@@ -40,11 +53,34 @@
 			@include font-size(10px);
 			width: 90%;
 		}
+
 		@include font-size(11px);
 		background-color: $green;
 		border-color: $green;
 
-		&:hover { color: $green }
+		&:hover {
+			color: $green
+		}
+	}
+
+	&__discount-warning {
+		font-size: .8rem;
+		font-weight: normal;
+		margin-top: 10px;
+
+		&:before {
+			background: url('/arquivos/recurrence-icon.png') no-repeat top;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 12px;
+			margin-right: 5px;
+			width: 16px;
+		}
+	}
+
+	&__discount-spotlight {
+		color: $green;
 	}
 }
 
@@ -100,14 +136,18 @@
 
 .recurrence__tip-container {
 	@include font-size(12px);
+
 	@include breakpoint(medium, 'min') {
 		&:hover {
 			background-color: $green;
 
 			.recurrence__tip,
-			&:before { display: block }
+			&:before {
+				display: block
+			}
 		}
 	}
+
 	background-color: $gray-d;
 	border-radius: 50%;
 	color: #fff;
@@ -138,7 +178,9 @@
 .recurrence__select {
 	position: relative;
 
-	&--active { color: $green; }
+	&--active {
+		color: $green;
+	}
 
 	&--items {
 		background-color: #fff;
@@ -162,7 +204,9 @@
 
 		&:hover,
 		&:active,
-		&:focus { text-decoration: none }
+		&:focus {
+			text-decoration: none
+		}
 
 		.icon {
 			@include font-size(10px);
@@ -197,6 +241,7 @@
 	}
 
 	a {
+
 		&:hover,
 		&:active,
 		&:focus {
@@ -215,7 +260,9 @@
 	}
 
 	&.recurrence__select--drop {
-		.icon-arrow-down { transform: rotate(180deg) }
+		.icon-arrow-down {
+			transform: rotate(180deg)
+		}
 	}
 }
 
@@ -253,30 +300,33 @@
 }
 
 .btn-link-green {
-    background-color: transparent !important;
-    border-color: transparent !important;
-    box-shadow: none;
-    color: #9aca3c;
+	background-color: transparent !important;
+	border-color: transparent !important;
+	box-shadow: none;
+	color: #9aca3c;
 }
+
 .btn-link-green:hover {
-    background-color: transparent !important;
-    box-shadow: none;
-    color: #87b133 !important;
+	background-color: transparent !important;
+	box-shadow: none;
+	color: #87b133 !important;
 }
+
 .btn-link-green:active {
-    background-color: transparent !important;
-    box-shadow: none;
-    color: #789e2d !important;
+	background-color: transparent !important;
+	box-shadow: none;
+	color: #789e2d !important;
 }
 
 .recurrence__conditions {
-	
+
 	.header-recurrence__conditions {
 		background: #fff;
 		padding-top: 20px;
 		position: sticky;
 		top: -30px;
 	}
+
 	.corpo-recurrence__conditions {
 		height: 100vh;
 		overflow-y: auto;
@@ -341,7 +391,7 @@
 
 	p {
 		font-size: 12px;
-		margin-bottom: 1em!important;
+		margin-bottom: 1em !important;
 	}
 
 	.close-recurrence__conditions {
@@ -363,10 +413,11 @@
 		@include breakpoint('phone', 'max') {
 			margin-top: 60px;
 		}
-		
+
 		span {
 			font-size: 12px;
 		}
+
 		.icon {
 			margin-right: .25rem;
 		}
@@ -379,12 +430,12 @@
 	text-align: left !important;
 	width: 100%;
 
-		h1 {
-			font-size: 26px;
-			font-weight: bold;
-			line-height: 1;
-			margin-top: 0;
-		}
+	h1 {
+		font-size: 26px;
+		font-weight: bold;
+		line-height: 1;
+		margin-top: 0;
+	}
 }
 
 .corpo-recurrence__conditions-mobile-d {
@@ -399,4 +450,8 @@
 		line-height: 1;
 		margin-top: 0;
 	}
+}
+
+.modal-recurrence__footer {
+	padding-top: 10px;
 }

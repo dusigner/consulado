@@ -1,10 +1,6 @@
 @charset 'UTF-8';
 
 body {
-	.-teste-b {
-		display: none;
-	}
-
 	.modal-recurrence {
 		@include breakpoint(small, 'max') {
 			left: 0;
@@ -19,14 +15,14 @@ body {
 		top: 2%!important;
 		transform: translateX(-50%);
 		width: 100%;
-	
+
 		&__body {
 			@include breakpoint(small, 'max') { padding: 15px }
 			color: $txt-gray;
 			max-height: none;
 			padding: 20px;
 		}
-	
+
 		&__title {
 			@include breakpoint(small, 'max') {
 				@include font-size(19px);
@@ -36,10 +32,10 @@ body {
 			color: $green;
 			font-weight: bold;
 		}
-	
+
 		&__deadline {
 			vertical-align: middle;
-	
+
 			&-period {
 				@include font-size(18px);
 				// background-color: $green;
@@ -51,26 +47,26 @@ body {
 				// padding: 12px 42px;
 			}
 		}
-	
+
 		&__advantages {
 			@include breakpoint(small, 'max') { display: block }
 			display: flex;
 			justify-content: space-between;
 			margin: 20px 0;
 		}
-	
+
 		&__advantage {
 			@include breakpoint(small, 'max') { margin: 0 auto 15px }
 			background-color: #fff;
 			border-radius: 50px;
 			max-width: 320px;
 			width: 100%;
-	
+
 			&-body {
 				@include breakpoint(small, 'max') { display: none }
 				padding: 15px;
 			}
-	
+
 			&-title {
 				@include breakpoint(small, 'max') {
 					border-bottom-left-radius: 50px;
@@ -79,17 +75,6 @@ body {
 					position: relative;
 					transition: border-bottom-left-radius .5s ease,
 								border-bottom-right-radius .5s ease;
-	
-					&:after {
-						@include font-size(5px);
-						@include icon-get('arrow-down');
-						display: block;
-						position: absolute;
-						right: 12px;
-						top: 50%;
-						transform: translateY(-50%) rotate(0deg);
-						transition: transform .5s ease;
-					}
 
 				}
 				@include font-size(20px);
@@ -101,29 +86,29 @@ body {
 				margin: 0;
 				padding: 20px 0;
 			}
-	
+
 			&-text {
 				@include font-size(14px);
 				margin: 0 0 15px;
-	
+
 				&:last-child { margin: 0; }
 			}
-	
+
 			&--lg {
 				.modal-recurrence__icon {
 					height: 64px;
 					width: 64px;
 				}
-	
+
 				.modal-recurrence__advantage-text { @include font-size(17px) }
 			}
-	
+
 			strong {
 				@include font-size(20px);
 				color: $green;
 			}
 		}
-	
+
 		&__icon {
 			display: block;
 			fill: $gray-d;
@@ -131,23 +116,23 @@ body {
 			margin: 0 auto;
 			width: 25px;
 		}
-	
+
 		&__cta {
 			@include breakpoint(small, 'max') { @include font-size(15px) }
 			@include font-size(22px);
 			background-color: $green;
 			border-color: $green;
-	
+
 			&:hover,
 			&:focus {
 				color: $green;
 				outline: none;
 			}
-	
+
 		}
-	
+
 		.loading-text { @include font-size(22px) }
-	
+
 		&__select {
 			@include breakpoint('small', 'max') {
 				display: block;
@@ -164,7 +149,7 @@ body {
 			margin-left: 15px;
 			position: relative;
 			text-align: left;
-	
+
 			.icon {
 				@include font-size(8px);
 				display: inline-block;
@@ -175,17 +160,17 @@ body {
 				transform: rotate3d(0, 0, 0, 0) translateY(-50%);
 				transition: transform .5s ease;
 			}
-	
+
 			&-current {
 				display: inline-block;
 				min-width: 130px;
 				padding: 1em;
-	
+
 				&--active {
 					.icon { transform: rotate3d(1, 0, 0, 180deg) translateY(50%); }
 				}
 			}
-	
+
 			&-period {
 				background-color: #fff;
 				border: 1px solid $green;
@@ -201,10 +186,10 @@ body {
 				width: 100%;
 				z-index: 10;
 			}
-	
+
 			&-item {
 				padding: 1em;
-	
+
 				&:hover {
 					background-color: $green;
 					color: #fff;
