@@ -1,0 +1,16 @@
+/*
+
+	_root.scss is the file that must have only non-rendered info, like:
+
+	- Variables
+	- Mixins
+	- functions
+
+	Like this, it can be reused at any file
+
+*/
+
+@import '/boostrap/scss/_functions';
+@import 'boostrap/scss/_variables';
+@import '../_variables/all'; // override variables
+@import 'boostrap/scss/_mixins';

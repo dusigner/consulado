@@ -1,3 +1,5 @@
+@import '_font-family';
+
 // Body
 // Settings for the `<body>` element.
 $body-bg: $white;
@@ -9,3 +11,12 @@ $link-color: $gray-700;
 $link-decoration: none;
 $link-hover-color: $gray-900;
 $link-hover-decoration: underline;
+
+$font-size-base: 16px;
+$font-weight-base: 500;
+$line-height-base: 1.15;
+
+$paragraph-margin-bottom: 1rem;
+$headings-margin-bottom: .5rem;
+
+$font-weight-bolder: bolder;
