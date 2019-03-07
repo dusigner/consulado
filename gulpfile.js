@@ -3,39 +3,35 @@
 let pkg = require('./package.json');
 
 const
-	gulp 			= require('gulp'),
-	$ 				= require('gulp-load-plugins')(),
-	del 			= require('del'),
-	webpack 		= require('webpack-stream'),
-	bs 				= require('browser-sync'),
-	named 			= require('vinyl-named'),
-	path 			= require('path'),
-	projectConfig 	= require('./config.js'),
-	cssnano 		= require('cssnano'),
-	cssMqpacker 	= require('css-mqpacker'),
-	autoprefixer 	= require('autoprefixer'),
-	flexibility 	= require('postcss-flexibility'),
-	shell 			= require('shelljs'),
-	fs 				= require('fs'),
-	middlewares 	= require('./middlewares'),
-	url 			= require('url'),
-	secureUrl 		= pkg.secureUrl ? pkg.secureUrl : true,
-	proxyPort		= process.env.PROXY_PORT || pkg.proxyPort || 80,
-	environment 	= $.util.env.VTEX_HOST || 'vtexcommercestable',
+	gulp          = require('gulp'),
+	os            = require('os'),
+	$             = require('gulp-load-plugins')(),
+	del           = require('del'),
+	bs            = require('browser-sync'),
+	projectConfig = require('./config.js'),
+	shell         = require('shelljs'),
+	fs            = require('fs'),
+	middlewares   = require('./middlewares'),
+	url           = require('url'),
+	httpPlease    = require('connect-http-please'),
+	serveStatic   = require('serve-static'),
+	proxy         = require('proxy-middleware'),
+	secureUrl     = pkg.secureUrl ? pkg.secureUrl : true,
+	proxyPort     = process.env.PROXY_PORT || pkg.proxyPort || 80,
+	environment   = $.util.env.VTEX_HOST || 'vtexcommercestable',
 	accountName 	= $.util.env.account ? $.util.env.account : ($.util.env.qa ? 'consulqa' : pkg.accountName),
-	httpPlease 		= require('connect-http-please'),
-	serveStatic 	= require('serve-static'),
-	proxy 			= require('proxy-middleware'),
-	HardSourceWebpackPlugin = require('hard-source-webpack-plugin'),
 	isProdEnv = () => accountName === 'consul' || accountName === 'consulempresa';
 
+const browser = os.platform() === 'linux' ? 'google-chrome' : 'chrome';
+
 const paths = {
-	scripts      : 'src/scripts/**/*.js',
-	webpack      : 'src/scripts/*.js',
-	styles       : 'src/styles/**/*.scss',
+	scripts      : 'src/Scripts/**/*.js',
+	webpack      : 'src/Scripts/*.js',
+	styles       : 'src/Styles/**/*.scss',
 	fonts        : 'src/Fonts/**/*.{eot,svg,ttf,woff,woff2}',
+	icons        : 'src/Icons/**/*.svg',
 	images       : 'src/Images/**/*.{png,jpeg,jpg,gif,svg}',
-	dust         : 'src/scripts/Dust/**/*.html',
+	dust         : 'src/Scripts/Dust/**/*.html',
 	pages        : 'src/Pages/**/*.html',
 
 	html         : {
@@ -80,8 +76,8 @@ const getPath = source => {
 
 		if($.util.env.page) {
 			if ( $.util.env.page === 'ALL' ) {
-				let pagesDir = fs.readdirSync(`${__dirname}/src/pages`);
-				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|templates|header)/.test(path) ) : pagesDir;
+				let pagesDir = fs.readdirSync(`${__dirname}/src/Pages`);
+				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|header)/.test(path) ) : pagesDir;
 				$.util.env.page = pagesDir.join(',');
 			}
 
@@ -89,10 +85,10 @@ const getPath = source => {
 				const multiPages = $.util.env.page.split(',');
 
 				multiPages.map(singlePage => {
-					newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + singlePage + replaceSource ) );
+					newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'Pages/' + singlePage + replaceSource ) );
 				});
 			} else {
-				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'pages/' + $.util.env.page + replaceSource ) );
+				newPath.push( newPath[0].replace( new RegExp(source, 'i'), 'Pages/' + $.util.env.page + replaceSource ) );
 			}
 		}
 
@@ -105,183 +101,91 @@ const getPath = source => {
 	return newPath;
 };
 
-const processHTML = (sourcePath, destPath) => {
-	return gulp.src( sourcePath )
-		.pipe($.preprocess(preprocessContext)) //To set environment variables in-line
-		.pipe(Array.isArray(destPath) ? $.multiDest(destPath) : gulp.dest( destPath ) );
+const getTask = (task, helpers) => {
+
+	const _ = {
+		...helpers,
+		paths,
+		preprocessContext,
+		getPath,
+		pkg,
+		isProdEnv
+	};
+
+	return require('./gulpTasks/' + task)(gulp, $, _);
 };
 
-gulp.task('sassLint', function () {
+const clean = () => del('build');
 
-	return gulp.src( getPath('styles')
-	    .concat('!src/styles/helpers/*')
-        .concat('!src/styles/libs/*'))
-		.pipe($.util.env.preCommit ? $.util.noop() : $.cached('sassLinting'))
-		.pipe($.sassLint({
-			options: {
-				'config-file': `.sass-lint${$.util.env.preCommit ? '.commit' : ''}.yml`
-			}
-		}))
-		.pipe($.sassLint.format())
-		.pipe($.util.env.preCommit ? $.sassLint.failOnError() : $.util.noop());
-});
+const predeploy = (done) => {
+	$.util.env.production = true;
+	preprocessContext.context.DEBUG = false;
+	pkg = JSON.parse(require('fs').readFileSync('./package.json')); //fix update pkg from bump
 
-gulp.task('lint', function () {
+	done();
+};
 
-	return gulp.src( getPath('scripts')
-		.concat('!src/scripts/vendors/*.js')
-		.concat('!src/scripts/modules/helpers.js') )
-		.pipe($.util.env.preCommit ? $.util.noop() : $.cached('jsLinting'))
-		.pipe($.eslint({
-			'configFile': `.eslintrc${$.util.env.preCommit ? '.commit' : ''}.js`
-		}))
-		.pipe($.eslint.format())
-		.pipe($.eslint.failAfterError());
-});
+const bump = () => {
 
-gulp.task('pre-commit-lint', () => {
+	return gulp.src('package.json')
+		.pipe(isProdEnv() && !$.util.env.nobump ? $.bump({ version: pkg.version }) : $.util.noop())
+		.pipe(gulp.dest('.'));
+};
 
-	$.util.env.preCommit = true;
+//get last git tag and bump version in package.json
+const gitTag = (done) => {
+	// FORCE DEPLOY CONFIGS / PRODUCTION
+	$.util.env.production = true;
 
-	return gulp.start('sassLint', 'lint');
-});
+	if (isProdEnv() && !$.util.env.nobump) {
+		if (shell.exec('git fetch --tags').code !== 0) {
+			shell.echo('Error: Git fetch tags failed');
+			shell.exit(1);
+			done();
+		} else {
+			shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function (code, stdout) {
+				pkg.version = stdout.replace('refs/tags/v', '').trim();
 
-gulp.task('fonts',/*  ['icons'], */ function () {
-
-	return gulp.src(paths.fonts)
-		.pipe($.rename(function(file){
-			file.extname += '.css';
-		}))
-		.pipe(gulp.dest(paths.dest.default));
-});
-
-gulp.task('scripts', ['lint'], function () {
-
-	return gulp.src( getPath('webpack') )
-		.pipe($.plumber())
-		.pipe(named())
-		.pipe(webpack({
-			output: {
-				filename: '[name].min.js'
-			},
-			externals: {
-				'jquery': 'jQuery'
-			},
-			resolve: {
-				modules: ['src/scripts', 'node_modules'],
-				alias: {
-					// templates: path.resolve('./src/templates')
-					bootstrap: path.resolve('./node_modules/bootstrap-sass/assets/javascripts/bootstrap'),
-					bs: path.resolve('./node_modules/bootstrap/js/')
-				}
-			},
-			module: {
-				rules: [
-					{
-						test: /\.js$/,
-						exclude: /node_modules\/(?!bootstrap\/).*/,
-						use: {
-							loader: 'babel-loader?cacheDirectory',
-							options: {
-								presets: ['babel-preset-env'],
-								plugins: ['transform-object-rest-spread']
-							}
-						}
-					},
-					{
-						test: /\.html$/,
-						use: {
-							loader: 'dust-loader'
-						}
+				preprocessContext = {
+					context: {
+						...projectConfig[accountName],
+						package: {
+							...pkg
+						},
+						DEBUG: false,
 					}
-				]
-			},
-			plugins: [
-				new webpack.webpack.DefinePlugin({
-					VERSION: JSON.stringify( pkg.version )
-				}),
-				new webpack.webpack.BannerPlugin('Build Version: ' + pkg.version),
-				$.util.env.production ? new webpack.webpack.optimize.UglifyJsPlugin({
-					minimize: true,
-					compress: {
-						warnings: false
-					}
-				}) : $.util.noop,
-				$.util.env.production ? $.util.noop : new HardSourceWebpackPlugin()
-			],
-			devtool: $.util.env.production ? '' : 'eval-source-map'
-		}))
-		.pipe($.preprocess(preprocessContext))
-		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files))
-		.pipe($.filter(f => /checkout/.test(f.path)))
-		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
-		.pipe(gulp.dest(paths.dest.files));
-});
+				};
+				done();
 
-gulp.task('styles', ['sassLint'], function () {
+			});
+		}
+	} else {
+		pkg.version = new Date().getTime();
+		done();
+	}
 
-	return gulp.src( getPath('styles') )
-		.pipe($.util.env.page ? $.util.noop() : $.cached('styling'))
-		.pipe($.util.env.page ? $.util.noop() : $.sassPartialsImported('src/styles/'))
-		.pipe($.plumber())
-		.pipe( $.util.env.production ? $.util.noop() : $.sourcemaps.init() )
-		.pipe( $.sass({
-			errLogToConsole: true,
-			outputStyle: $.util.env.production ? 'compressed' : 'nested',
-			includePaths: [
-				// https://github.com/dlmanning/gulp-sass/commit/6b65a312f44f076c6f92ed3e35c20848bd9cdf6a
-				'node_modules/bootstrap-sass/assets/stylesheets/',
-				'src/styles',
-				'node_modules/'
-			]
-		}).on('error', $.sass.logError))
-		.pipe( $.util.env.production ? $.postcss([
-			autoprefixer(),
-			flexibility(),
-			cssMqpacker(),
-			cssnano({
-				zindex: false,
-				reduceIdents: false
-			}),
-		]) : $.postcss([
-			cssMqpacker()
-		]))
-		.pipe($.util.env.production ? $.preprocess(preprocessContext) : $.util.noop())
-		.pipe(!$.util.env.production ? $.sourcemaps.write('.') : $.util.noop())
-		.pipe((isProdEnv()) ? gulp.dest(paths.dest.default) : gulp.dest(paths.dest.files))
-		.pipe($.filter(f => /checkout/.test(f.path)))
-		.pipe($.rename(file => file.basename = file.basename.replace('.min', '')))
-		.pipe(gulp.dest(paths.dest.files));
-});
+};
 
-gulp.task('images', function () {
+const watch = (done) => {
+	gulp.watch(getPath('fonts'), gulp.parallel(getTask('fonts')));
+	gulp.watch(getPath('images'), gulp.parallel(getTask('images')));
+	gulp.watch(getPath('styles'), gulp.parallel(getTask('styles', { getTask })));
+	gulp.watch(getPath('scripts'), gulp.parallel(getTask('scripts', { getTask })));
+	gulp.watch(getPath('dust'), gulp.parallel(getTask('scripts', { getTask })));
+	gulp.watch(getPath('pages'), gulp.parallel(getTask('pages', { getTask })));
 
-	return gulp.src( getPath('images') )
-		.pipe($.plumber())
-		.pipe($.newer(paths.dest.default))
-		/* .pipe($.imagemin({
-			optimizationLevel: $.util.env.production ? 5 : 1,
-			progressive: true,
-			interlaced: true
-		}))
-		.pipe($.flatten()) */
-		.pipe(gulp.dest(paths.dest.default));
-});
+	done();
+};
 
-gulp.task('clean', function () {
-
-	return del.sync('build');
-});
-
-gulp.task('server', ['watch'], () => {
+const server = () => {
 	let htmlFile = null;
 
-	let portalHost         = `${accountName}.${environment}.com.br`,
-		imgProxyOptions    = url.parse(`https://${accountName}.vteximg.com.br/arquivos`),
+	let portalHost = `${accountName}.${environment}.com.br`,
+		imgProxyOptions = url.parse(`https://${accountName}.vteximg.com.br/arquivos`),
 		portalProxyOptions = url.parse(`https://${portalHost}/`),
-		localHost          = `${accountName}.vtexlocal.com.br`;
+		localHost = `${accountName}.vtexlocal.com.br`;
 
-	if(proxyPort !== 80) localHost += `:${proxyPort}`;
+	if (proxyPort !== 80) localHost += `:${proxyPort}`;
 
 	imgProxyOptions.route = '/arquivos';
 	portalProxyOptions.preserveHost = true;
@@ -295,8 +199,8 @@ gulp.task('server', ['watch'], () => {
 	};
 
 	bs({
-		files: $.util.env.page ? [] : [ 'build/**', '!build/**/*.map'],
-		startPath: `${secureUrl ? `http://${accountName}.vtexlocal.com.br${proxyPort !== 80 ? `:${proxyPort}` : ''}/?debugcss=true&debugjs=true` : '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue' }`,
+		files: $.util.env.page ? [] : ['build/**', '!build/**/*.map'],
+		startPath: `${secureUrl ? `http://${accountName}.vtexlocal.com.br${proxyPort !== 80 ? `:${proxyPort}` : ''}/?debugcss=true&debugjs=true` : '/admin/Site/Login.aspx?ReturnUrl=%2f%3fdebugcss%3dtrue%26debugjs%3dtrue'}`,
 		rewriteRules: [
 			{
 				match: new RegExp('["\'](?:https?://|//)' + pkg.name + '.*?(/.*?)?["\']', 'gm'),
@@ -339,13 +243,13 @@ gulp.task('server', ['watch'], () => {
 
 	const options = {
 		uri: secureUrl ? `http://${accountName}.vtexlocal.com.br:${proxyPort}/?debugcss=true&debugjs=true` : `http://localhost:3000`,
-		app: 'chrome'
+		app: browser
 	};
 
-	if ( $.util.env.page ) htmlFile = fs.readdirSync(`${__dirname}/src/pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
+	if ($.util.env.page) htmlFile = fs.readdirSync(`${__dirname}/src/Pages/${$.util.env.page}`).filter(file => /\.html$/.test(file))[0];
 
 	return $.util.env.page ? bs.create().init({
-		files: [ 'build/**', '!build/**/*.map'],
+		files: ['build/**', '!build/**/*.map'],
 		server: {
 			baseDir: ['build']
 		},
@@ -353,115 +257,42 @@ gulp.task('server', ['watch'], () => {
 		port: 3002,
 		startPath: $.util.env.page.indexOf(',') > 0 ? 'pages' : (htmlFile ? `${$.util.env.page}/${htmlFile}` : $.util.env.page),
 		open: !$.util.env.no
-	}) : (!$.util.env.no ? gulp.src(__filename).pipe($.open(options)) : null) ;
+	}) : (!$.util.env.no ? gulp.src(__filename).pipe($.open(options)) : null);
+};
 
+gulp.task('pre-commit-lint', done => {
+	$.util.env.preCommit = true;
+	$.util.env.page = 'ALL';
+
+	gulp.parallel(
+		getTask('styles.lint'),
+		getTask('scripts.lint')
+	);
+
+	done();
 });
 
-gulp.task('pages', ['html'], function () {
-/*
-	return $.util.env.page && gulp.src( getPath('pages'), {base: 'src/Pages'} )
-		.pipe($.newer('build'))
-		.pipe(gulp.dest('build')); */
-});
+gulp.task('icons', getTask('icons'));
 
-//get last git tag and bump version in package.json
-gulp.task('gitTag', function() {
-	// FORCE DEPLOY CONFIGS / PRODUCTION
-	$.util.env.production = true;
+gulp.task('watch', gulp.parallel([
+	getTask('fonts'),
+	getTask('images'),
+	getTask('styles', { getTask }),
+	getTask('scripts', { getTask }),
+	getTask('pages', { getTask })
+], watch));
 
-	if( shell.exec('git fetch --tags').code !== 0 ) {
-		shell.echo('Error: Git fetch tags failed');
-		shell.exit(1);
-	}else {
-		shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function(code, stdout) {
-			if (isProdEnv()) {
-				pkg.version = stdout.replace('refs/tags/v','').trim();
-			}else{
-				pkg.version = new Date().getTime();
-			}
+gulp.task('develop', gulp.series('watch', server));
 
-			preprocessContext = {
-				context: {
-					...projectConfig[accountName],
-					package: {
-						...pkg
-					},
-					DEBUG: false,
-				}
-			};
+gulp.task('default', gulp.series([clean, 'develop']));
 
-			// Tasks que dependem da versão atualizada para build deploy \/
-			gulp.start( 'bump', 'html', 'styles', 'scripts' );
-		});
-	}
-});
-
-gulp.task('bump', function() {
-
-	return gulp.src('package.json')
-		.pipe($.util.env.nobump ? $.util.noop() : $.bump({ version: pkg.version }))
-		.pipe(gulp.dest('.'));
-});
-
-gulp.task('templates', function() {
-	return $.util.env.production && processHTML(paths.html.templates, paths.dest.html.templates);
-});
-
-gulp.task('sub', function() {
-	return $.util.env.production && processHTML(paths.html.subTemplates, paths.dest.html.subTemplates);
-});
-
-gulp.task('shelves', function() {
-	return $.util.env.production && processHTML(paths.html.shelvesTemplates, paths.dest.html.shelvesTemplates);
-});
-
-gulp.task('html', function() {
-	let pagesDest = [`build/${$.util.env.page}`];
-
-	if ( $.util.env.page && $.util.env.page.indexOf(',') > 0 ) {
-		pagesDest = ['build/pages'];
-	}
-
-	if($.util.env.production) {
-		gulp.start('templates', 'sub', 'shelves');
-
-		pagesDest = pagesDest.concat(paths.dest.html.templates);
-	}
-
-	return $.util.env.page && processHTML(getPath('pages'), pagesDest);
-});
-
-gulp.task('watch', [ 'fonts', 'images', 'styles', 'scripts', 'pages'], function () {
-
-	gulp.watch( getPath('fonts'), ['fonts']);
-	gulp.watch( getPath('images'), ['images']);
-	gulp.watch( getPath('styles'), ['styles']);
-	gulp.watch( getPath('scripts'), ['scripts']);
-	gulp.watch( getPath('dust'), ['scripts']);
-	gulp.watch( getPath('pages'), ['pages']);
-});
-
-gulp.task('default', ['clean'], function() {
-
-	gulp.start( 'server' );
-});
-
-gulp.task('deploy', ['clean', 'gitTag'], function() {
-
-	$.util.env.production = true;
-
-	pkg	= JSON.parse( require('fs').readFileSync('./package.json') ); //fix update pkg from bump
-
-	gulp.start( 'fonts', 'images' );
-});
-
-// gulp.task('service-worker', () => {
-// 	return workboxBuild.injectManifest({
-// 		swSrc: 'src/04 - Portal/src-service-worker.js',
-// 		swDest: 'src/04 - Portal/service-worker.js',
-// 		globDirectory: 'build/files',
-// 		globPatterns: [
-// 		'**\/*.{js,css,html,png}',
-// 		]
-// 	});
-// });
+gulp.task('deploy', gulp.series([clean, gitTag, bump, predeploy],
+		gulp.parallel([
+			getTask('fonts'),
+			getTask('images'),
+			getTask('html'),
+			getTask('styles', { getTask }),
+			getTask('scripts', { getTask })
+		])
+	)
+);

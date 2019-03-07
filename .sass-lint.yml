@@ -1,8 +1,8 @@
 ---
 options:
   merge-default-rules: false
+  # formatter: stylish
   formatter: stylish
-  # formatter: html
   # output-file: 'sass-lint.html'
 rules:
   extends-before-declarations: 1
@@ -20,7 +20,7 @@ rules:
       extra-properties:
         - font-smooth
   no-trailing-zero: 1
-  # no-transition-all: 0
+  # no-transition-all: 1
   one-declaration-per-line: 1
   property-sort-order: 1
   quotes: 1
