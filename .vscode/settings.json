@@ -11,6 +11,5 @@
 	"search.exclude": {
 		"**/build": true,
 		"**/node_modules": true
-	},
-	"editor.formatOnSave": true
+	}
 }
