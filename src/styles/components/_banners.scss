@@ -199,7 +199,7 @@
 		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: center;
 
 		@include breakpoint('extra-large', 'min') {
 			flex-wrap: nowrap;
@@ -215,6 +215,8 @@
 		flex-basis: calc(50% - 10px);
 		flex-wrap: wrap;
 		margin-bottom: 20px;
+		margin-left: 10px;
+		margin-right: 10px;
 		min-height: 125px;
 		padding: 10px;
 		text-align: center;
