@@ -2,14 +2,15 @@
 'use strict';
 
 require('modules/slider-banner');
-// require('custom/modal.overlayLead');
 require('custom/tabs-consumidor');
 require('custom/lead-newsletter');
 require('modules/chaordic');
 require('modules/linkDoubleClick');
 require('modules/chatHome');
 
-Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome'], function (chaordic) {
+import 'modules/counter';
+
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', 'counter'], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 

@@ -1,0 +1,368 @@
+$detail: #702F8F;
+$text-color: #736C6B;
+$primary: #9ACA3C;
+
+.counter {
+
+	&__section {
+		position: relative;
+
+		&:before {
+			background: $orange;
+			content: '';
+			height: 4px;
+			left: 50%;
+			margin-left: -82px;
+			position: absolute;
+			top: 0;
+			width: 164px;
+		}
+
+		>.container {
+			background: #f1f1f1;
+			padding: 20px;
+		}
+	}
+
+
+	&__title {
+		@include responsiveFont(18, 14, true);
+		color: $text-color;
+		font-weight: 300;
+		line-height: 1.3;
+		margin-bottom: 10px;
+		margin-top: 0;
+		text-align: center;
+
+		@include breakpoint('small', 'min') {
+			@include responsiveFont(18, 14, true);
+			margin-bottom: 25px;
+		}
+
+		@include breakpoint('large', 'min') {
+			@include responsiveFont(24, 16, true);
+		}
+
+		&-highlight {
+			color: $detail;
+			font-weight: 600;
+		}
+	}
+
+	&__offer {
+		align-items: center;
+		border-top: 1px solid #C6C6C6;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding-top: 10px;
+
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
+		}
+
+		&>div {
+			flex: 1;
+		}
+
+		&-prod {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 0;
+			min-height: 125px;
+			padding: 10px;
+
+			@include breakpoint('small', 'max') {
+				flex-basis: 100%;
+			}
+
+			.prateleira.default {
+
+				h2 {
+					display: none;
+				}
+
+				ul li {
+					width: 100%;
+				}
+
+				article {
+					display: flex;
+					flex-direction: row;
+					margin: 0;
+					min-height: auto;
+					padding: 0;
+				}
+
+				.shelf__image {
+					display: block;
+					height: 100px;
+					position: relative;
+					width: 100px;
+
+					@include breakpoint('medium', 'max') {
+						width: 100%;
+					}
+
+					img {
+						height: auto;
+						width: 100%;
+					}
+
+					.shelf__stamps-highlight {
+						.flag {
+							bottom: -10px;
+							height: 70%;
+							right: -30px;
+							width: 70%;
+
+							@include breakpoint('medium', 'max') {
+								bottom: -40px;
+								right: -20px;
+							}
+						}
+					}
+				}
+
+				.shelf__stock {
+					display: none;
+				}
+
+				.shelf__details {
+					padding-left: 40px;
+					position: relative;
+
+					@include breakpoint('medium', 'max') {
+						padding-left: 30px;
+					}
+
+					h3 {
+						color: $text-color;
+						font-size: 16px;
+						margin: 0;
+						padding: 0;
+						text-align: left;
+					}
+
+					.shelf__price {
+						font-size: 16px;
+						text-align: left;
+
+						.shelf__price-old {
+							.shelf__price-val {
+								text-decoration: line-through;
+							}
+						}
+
+						.shelf__price-new {
+							color: $orange;
+
+							@include breakpoint('medium', 'max') {
+								display: block;
+							}
+
+							.shelf__price-val {
+								font-size: 16px;
+								font-weight: 700;
+							}
+						}
+
+						.shelf__installment {
+							color: #f35216;
+							display: block;
+							font-size: 14px;
+						}
+
+					}
+
+					.shelf__sku-list {
+						display: none;
+					}
+
+					.shelf__buy-fast {
+						display: none;
+					}
+
+					.shelf__buy-button {
+						background: transparent;
+						border-radius: 0;
+						font-size: 0;
+						height: 70%;
+						left: 0;
+						margin: 0;
+						padding: 0;
+						position: absolute;
+						top: 0;
+						width: 100%;
+					}
+				}
+			}
+		}
+
+		&-count {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 0;
+			min-height: 125px;
+			padding: 10px;
+
+			@include breakpoint('large', 'max') {
+				flex-basis: calc(50% - 10px);
+
+				@include breakpoint('small', 'max') {
+					flex-basis: 100%;
+					margin-top: 20px;
+					min-height: 105px;
+					padding: 0;
+				}
+			}
+
+			.counter {
+				margin: 0 auto;
+
+				&__title {
+					font-size: 16px;
+					margin-bottom: 0;
+					text-align: center;
+
+					&__second {
+						color: #FFF;
+						font-size: 14px;
+						text-align: center;
+					}
+				}
+
+				&__clock {
+					display: flex;
+					justify-content: space-between;
+					margin: 5px 0;
+				}
+
+				&__item {
+					background-color: #585858;
+					border-radius: 4px;
+					color: $primary;
+					flex-direction: column;
+					padding: 8px 0;
+					text-align: center;
+					width: 33%;
+
+					.days {
+						display: none;
+					}
+
+					@include breakpoint('medium', 'max') {
+						width: 100%;
+					}
+				}
+
+				&__timetext {
+					display: block;
+					font-size: .6em;
+					margin-top: -11px;
+				}
+
+				&__time {
+					color: $primary;
+					display: block;
+					font-size: 24px;
+					font-weight: 600;
+					margin-bottom: .4px;
+
+					@include breakpoint('medium', 'max') {
+						font-size: 28px;
+						font-weight: 400;
+						margin-bottom: -5px;
+						min-width: auto;
+					}
+				}
+
+				&__colon {
+					color: #FFF;
+					font-size: 35px;
+					line-height: 35px;
+					margin: 0 10px;
+
+					@include breakpoint('medium', 'max') {
+						font-size: 33px;
+						margin: 0 15px;
+					}
+				}
+
+				&__end-promotion {
+					margin-left: auto;
+					margin-right: auto;
+
+					@include breakpoint('large', 'max') {
+						width: 100%;
+					}
+				}
+
+				&__end-message {
+					color: #f35216;
+					display: block;
+					font-size: 18px;
+					font-weight: 600;
+					min-width: 25px;
+					text-align: center;
+				}
+			}
+		}
+
+		&-cta {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+			margin-bottom: 0;
+			min-height: 125px;
+			padding: 10px;
+
+			@include breakpoint('large', 'max') {
+				flex-basis: 100%;
+			}
+
+			@include breakpoint('medium', 'max') {
+				min-height: 70px;
+				padding: 0;
+			}
+		}
+
+		&-btn {
+			@include responsiveFont(20, 16, true);
+			@include transition(all);
+			background-color: $detail;
+			border: 2px solid transparent;
+			border-radius: 100px;
+			color: #FFF;
+			padding: 15px 0;
+			text-align: center;
+			width: 100%;
+
+			&:hover {
+				background-color: transparent;
+				border: 2px solid $detail;
+				color: $detail;
+				text-decoration: none;
+			}
+
+			@include breakpoint('large', 'max') {
+				width: 100%;
+			}
+
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.button-hidden {
+			flex-basis: calc(50% - 10px);
+
+			@include breakpoint('small', 'max') {
+				flex-basis: 100%;
+			}
+		}
+	}
+}
