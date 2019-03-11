@@ -212,7 +212,7 @@
 		border: 1px solid #9ACA3C;
 		border-radius: 10px;
 		display: flex;
-		flex-basis: calc(50% - 10px);
+		flex-basis: calc(50% - 20px);
 		flex-wrap: wrap;
 		margin-bottom: 20px;
 		margin-left: 10px;
@@ -222,8 +222,7 @@
 		text-align: center;
 
 		@include breakpoint('small', 'min') {
-			flex-basis: calc(33.3% - 20px);
-			margin-bottom: 15px;
+			flex-basis: calc(40% - 10px);
 		}
 
 		@include breakpoint('large', 'min') {
@@ -234,6 +233,56 @@
 			margin-bottom: 0;
 			padding-left: 5px;
 			padding-right: 5px;
+		}
+
+		&-discount {
+			flex-basis: calc(100% - 10px) !important;
+
+			@include breakpoint('small', 'min') {
+				flex-basis: calc(40% - 10px) !important;
+			}
+
+			@include breakpoint('large', 'min') {
+				flex-basis: calc(16.6% - 20px) !important;
+			}
+		}
+
+		&-special {
+			align-items: center;
+			border: 0;
+			display: flex;
+			flex-basis: calc(100% - 20px) !important;
+			flex-wrap: nowrap;
+			justify-content: center;
+
+			@include breakpoint('small', 'min') {
+				flex-basis: calc(40% - 10px) !important;
+			}
+
+			@include breakpoint('large', 'min') {
+				flex-basis: calc(25% - 20px) !important;
+			}
+
+			&:hover {
+				background: transparent !important;
+			}
+
+			.banners-offers {
+				&__item-icon {
+					margin: 0;
+					margin-right: 20px;
+				}
+
+				&__text {
+					color: #736c6b;
+					width: auto;
+				}
+
+				&__item-bolder {
+					color: #702f8f;
+					display: inline;
+				}
+			}
 		}
 
 		&:hover,
