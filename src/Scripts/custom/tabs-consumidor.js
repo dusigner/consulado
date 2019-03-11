@@ -57,7 +57,6 @@ Nitro.module('tabs-consumidor', function () {
 		contentTitles.click(function () {
 			const pageWidth = $(window).width();
 			if (pageWidth < 768) {
-				// console.log('Page W', pageWidth);
 				contentTitles.toggleClass('is-mobile--active');
 			}
 		});
