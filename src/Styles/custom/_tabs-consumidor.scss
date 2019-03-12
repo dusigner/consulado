@@ -1,0 +1,194 @@
+@charset 'UTF-8';
+
+.prateleira-tabs {
+	overflow: hidden;
+	position: relative;
+
+	@include breakpoint('medium', 'min') {
+		padding: 2em;
+	}
+
+	// container
+	.container {
+		position: relative;
+
+		@include breakpoint('small', 'max') {
+			max-width: 100%;
+			padding: 0;
+		}
+	}
+
+	// Títulos default Vtex
+	.prateleira h2 {
+		border: none !important;
+		height: 0;
+		margin: 0 !important;
+		opacity: 0;
+		overflow: hidden;
+		padding: 0 !important;
+		visibility: hidden;
+		width: 0;
+	}
+
+	// Container das tabs
+	&__tabs {
+		border: 1px solid transparent;
+
+		@include breakpoint('small', 'min') {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		@include breakpoint('small', 'max') {
+			background-color: #f6f6f6;
+			border-color: #f6f6f6;
+			border-radius: 20px;
+			margin: 1.2em;
+			max-height: 40px;
+			overflow: hidden;
+			padding-top: 40px;
+			position: relative;
+			transition: max-height .3s ease;
+		}
+
+		// Mobile Arrow
+		&:before,
+		&:after {
+			@include breakpoint('small', 'max') {
+				display: block;
+				position: absolute;
+				right: 0;
+				z-index: 2;
+			}
+		}
+
+		&:before {
+			@include breakpoint('small', 'max') {
+				background-color: #9aca3c;
+				border-radius: 0 20px 20px 0;
+				content: '';
+				height: 40px;
+				top: 0;
+				width: 70px;
+			}
+		}
+
+		&:after {
+			@include breakpoint('small', 'max') {
+				-moz-osx-font-smoothing: grayscale;
+				-webkit-font-smoothing: antialiased;
+				color: #fff;
+				content: '\e601';
+				font: normal bold normal 9px 'whirlpool';
+				line-height: 1;
+				text-transform: none;
+				top: 0;
+				transform: translate(-25px, 16px);
+			}
+		}
+
+		// Mobile active
+		&.is-mobile--active {
+			max-height: 800px;
+		}
+	}
+
+	// TAB
+	&__tab {
+		font-size: 16px;
+		font-weight: 400;
+		position: relative;
+		transition:
+			background-color .1s ease,
+			color .2s ease,
+			text-indent .3s ease;
+
+		@include breakpoint('small', 'min') {
+			border: 1px solid #9aca3c;
+			border-radius: 30px;
+			color: #9aca3c;
+			margin: .8em .5em;
+			padding: .4em 2.2em;
+		}
+
+		@include breakpoint('small', 'max') {
+			padding: .5em 1em;
+		}
+
+		// Arrow
+		&:before {
+			@include breakpoint('small', 'min') {
+				border: 11px solid #9aca3c;
+				border-color: #9aca3c transparent transparent transparent;
+				bottom: 0;
+				content: '';
+				height: 0;
+				opacity: 0;
+				position: absolute;
+				right: 50%;
+				transform: translate(50%, 12px);
+				transition:
+					opacity .2s ease,
+					transform .3s ease;
+				width: 0;
+				z-index: -1;
+			}
+		}
+
+		// Hover and active state
+		&:hover,
+		&.is--active {
+			color: #0e0e0e;
+
+			@include breakpoint('small', 'min') {
+				background-color: #9aca3c;
+				z-index: 1;
+			}
+		}
+
+		&:hover {
+			@include breakpoint('small', 'max') {
+				background-color: #fff;
+				text-indent: 10px;
+			}
+		}
+
+		&.is--active {
+			@include breakpoint('small', 'min') {
+				&:before {
+					opacity: 1;
+					transform: translate(50%, 21px);
+				}
+			}
+
+			@include breakpoint('small', 'max') {
+				border-radius: 20px;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
+	}
+
+	// Content tabs
+	.prateleira {
+		background-color: #fff;
+		bottom: 0;
+		left: 0;
+		max-width: 1098px;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+
+		// Active tabs
+		&.is--active {
+			opacity: 1;
+			position: relative;
+			z-index: 1;
+		}
+	}
+
+}
