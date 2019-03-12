@@ -3,7 +3,6 @@ $text-color: #736C6B;
 $primary: #9ACA3C;
 
 .counter {
-
 	&__section {
 		position: relative;
 
@@ -23,7 +22,6 @@ $primary: #9ACA3C;
 			padding: 20px;
 		}
 	}
-
 
 	&__title {
 		@include responsiveFont(18, 14, true);
@@ -78,7 +76,6 @@ $primary: #9ACA3C;
 			}
 
 			.prateleira.default {
-
 				h2 {
 					display: none;
 				}
@@ -96,8 +93,7 @@ $primary: #9ACA3C;
 				}
 
 				.shelf__image {
-					display: block;
-					height: 100px;
+					display: block; // height: 100px;
 					position: relative;
 					width: 100px;
 
@@ -107,6 +103,7 @@ $primary: #9ACA3C;
 
 					img {
 						height: auto;
+						max-width: 300px;
 						width: 100%;
 					}
 
@@ -156,7 +153,7 @@ $primary: #9ACA3C;
 						}
 
 						.shelf__price-new {
-							color: $orange;
+							color: #656565;
 
 							@include breakpoint('medium', 'max') {
 								display: block;
@@ -169,11 +166,15 @@ $primary: #9ACA3C;
 						}
 
 						.shelf__installment {
-							color: #f35216;
+							color: #736C6B;
 							display: block;
-							font-size: 14px;
-						}
+							font-size: 13px;
+							font-weight: normal;
 
+							span {
+								font-weight: normal;
+							}
+						}
 					}
 
 					.shelf__sku-list {
@@ -213,14 +214,16 @@ $primary: #9ACA3C;
 
 				@include breakpoint('small', 'max') {
 					flex-basis: 100%;
-					margin-top: 20px;
+					margin: 20px 0;
 					min-height: 105px;
 					padding: 0;
+					width: 100%;
 				}
 			}
 
 			.counter {
-				margin: 0 auto;
+				margin: auto 30px;
+				width: 100%;
 
 				&__title {
 					font-size: 16px;
@@ -252,10 +255,6 @@ $primary: #9ACA3C;
 					.days {
 						display: none;
 					}
-
-					@include breakpoint('medium', 'max') {
-						width: 100%;
-					}
 				}
 
 				&__timetext {
@@ -267,7 +266,7 @@ $primary: #9ACA3C;
 				&__time {
 					color: $primary;
 					display: block;
-					font-size: 24px;
+					font-size: 37px;
 					font-weight: 600;
 					margin-bottom: .4px;
 
@@ -326,6 +325,7 @@ $primary: #9ACA3C;
 			@include breakpoint('medium', 'max') {
 				min-height: 70px;
 				padding: 0;
+				width: 100%;
 			}
 		}
 
@@ -350,7 +350,6 @@ $primary: #9ACA3C;
 			@include breakpoint('large', 'max') {
 				width: 100%;
 			}
-
 		}
 
 		.hide {
