@@ -9,8 +9,9 @@ require('modules/linkDoubleClick');
 require('modules/chatHome');
 
 import 'modules/counter';
+import 'modules/datalayer_track';
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', 'counter'], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', 'counter', 'datalayer_track'], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
