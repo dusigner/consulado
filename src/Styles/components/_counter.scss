@@ -4,6 +4,8 @@ $primary: #9ACA3C;
 
 .counter {
 	&__section {
+		background: rgba(115, 108, 107, .2);
+		padding-bottom: 20px;
 		position: relative;
 
 		&:before {
@@ -18,7 +20,7 @@ $primary: #9ACA3C;
 		}
 
 		>.container {
-			background: #f1f1f1;
+			background: #ffffff;
 			padding: 20px;
 		}
 	}
