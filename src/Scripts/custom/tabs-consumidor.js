@@ -18,6 +18,7 @@ Nitro.module('tabs-consumidor', function () {
 		tabs.firstActiveTabs();
 		tabs.handleActiveMobileTabs();
 		tabs.initSlick();
+		tabs.buildProductStock();
 	};
 
 	// Titles
@@ -69,7 +70,7 @@ Nitro.module('tabs-consumidor', function () {
 
 	// Start the slick shelfs
 	tabs.initSlick = () => {
-		tabPrateleira.find('.prateleira.default ul').slick({
+		tabPrateleira.find('.prateleira.default > ul').slick({
 			adaptiveHeight: false,
 			infinite: true,
 			slidesToShow: 3,
@@ -91,6 +92,78 @@ Nitro.module('tabs-consumidor', function () {
 			}]
 		});
 	};
+
+	/*
+	* This method get all .shelf__item current visibles and genereate stock values into each one
+	*/
+	tabs.buildProductStock = (callback) => {
+		const $shelfsShowing = tabPrateleira.find('.box-produto');
+
+		let params = '?',
+			currentProductsIDs = [],
+			prodsWithStock = [];
+
+		/* get productId from DOM to currentProductsIDs Array */
+		$.each($shelfsShowing, (idx, el) => currentProductsIDs.push($(el).data('idproduto')));
+
+		/* Build ajax parameters */
+		currentProductsIDs.forEach((el) => {
+			params += `fq=productId:${el}&`;
+		});
+
+		let currentProdStock ;
+
+		/* Ajax to get products from API*/
+		tabs.getProdSearchAPI(params).then(res => {
+
+			/* Iterates products */
+			res.map(function(el) {
+				currentProdStock = 0;
+
+				/* Iterate Item skus */
+				for (const item of el.items) {
+					currentProdStock += item.sellers[0].commertialOffer.AvailableQuantity;
+				}
+
+				/* Add product objects to an array */
+				prodsWithStock.push({
+					productID: el.productId,
+					stock: currentProdStock > 500 ? 500 : currentProdStock
+				});
+			});
+
+			/* Render stock on products */
+			for (const item of prodsWithStock) {
+				const $shelfs = tabPrateleira.find(`[data-idproduto="${item.productID}"]`);
+				const $image = $shelfs.find('.image');
+
+				let template = `
+					<div class="shelf__stock">
+						Últimos <span>${item.stock}</span> em estoque
+					</div>
+				`;
+
+				$image.after(template);
+			}
+
+			callback && callback();
+		});
+	};
+
+	/**
+	 * Get product information using the VTEX Search API to render stock information on shelf elements
+	 * @param {String} params a string with the products that will be searched on VTEX Search API
+	 * @returns an array of objects with each product information
+	 */
+	tabs.getProdSearchAPI = (params) => {
+		return $.ajax({
+			'url': '/api/catalog_system/pub/products/search/' + params,
+			'method': 'GET'
+		}).then(res => {
+			return res;
+		});
+	};
+
 
 	tabs.init();
 });
