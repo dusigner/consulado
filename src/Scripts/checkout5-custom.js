@@ -262,9 +262,9 @@ $(window).on('load', function() {
 			self.delivery();
 
 			//testeabEntregaAgendada.setup(orderForm);
-
 			self.atualizaCoupon();
 
+			self.TrackMercadoPago();
 		};
 
 		this.cotasInit = function() {
@@ -413,6 +413,19 @@ $(window).on('load', function() {
 
 			recurrence.hidePayments();
 
+			self.TrackMercadoPago();
+		};
+
+		this.TrackMercadoPago = function() {
+			var $pagamentoMercadoPago = $('#payment-group-MercadoPagoPaymentGroup');
+			$pagamentoMercadoPago.click(function() {
+				dataLayer.push({
+					event: 'generic',
+					category: 'Botão de Compra',
+					action: 'Opção de Compra com 2 cartões ',
+					label: 'Pagar com 2 cartões '
+				});
+			});
 		};
 
 		this.clickFakeButton = function(e) {

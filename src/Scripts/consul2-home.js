@@ -2,20 +2,22 @@
 'use strict';
 
 require('modules/slider-banner');
-// require('custom/modal.overlayLead');
+require('custom/tabs-consumidor');
 require('custom/lead-newsletter');
 require('modules/chaordic');
 require('modules/linkDoubleClick');
 require('modules/chatHome');
 
-Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', */ 'lead-newsletter', 'linkDoubleClick', 'chatHome'], function(chaordic) {
+import 'modules/counter';
+
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', 'counter'], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
 	chaordic.init('home');
 
-	this.setupSlider = function($currentSlider) {
+	this.setupSlider = function ($currentSlider) {
 		$currentSlider.not('.slick-initialized').slick({
 			infinite: true,
 			slidesToShow: 3,
@@ -48,7 +50,7 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 
 	//mobile - abrir vitrines
 	if ($(window).width() <= 768) {
-		$('section.slider .pre-title').click(function(e){
+		$('section.slider .pre-title').click(function (e) {
 			e.preventDefault();
 
 			if ($(this).hasClass('open')) {
@@ -58,7 +60,7 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 				$('section.slider .open').siblings().find('.prateleira>ul').slideUp();
 				$('section.slider .open').removeClass('open');
 				$(this).addClass('open');
-				$(this).siblings().find('.prateleira>ul').slideDown('slow',function(){
+				$(this).siblings().find('.prateleira>ul').slideDown('slow', function () {
 					self.setupSlider($(this));
 				});
 			}
@@ -70,9 +72,9 @@ Nitro.controller('home', ['chaordic', 'slider-banner', /* 'modal.overlayLead', *
 		$('.slider.vitrines h2').addClass('pre-title');
 		self.setupSlider($('.slider.vitrines .prateleira-slider .prateleira>ul'));
 
-		$('.slider.vitrines h2').click(function(e){
+		$('.slider.vitrines h2').click(function (e) {
 			e.preventDefault();
-			
+
 			$(this).toggleClass('shelf-pre-title--active');
 		});
 		//\ vitrines padrões vtex

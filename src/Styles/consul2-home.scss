@@ -1,12 +1,12 @@
 @charset 'UTF-8';
 
 /*! =================================================
-	* Theme Name: Layout - PKG_ACCOUNTNAME
-	* Description: CSS desenvolvido para PKG_NAME.
-	* Author: PKG_AUTHOR
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
 	* Empresa: Jüssi
 	* Author URI: http://www.jussi.com.br/
-	* Version: PKG_BUILD_VERSION
+	* Version: // @echo package.version
 	=================================================
 */
 /*!*/
@@ -35,3 +35,5 @@
 @import 'pages/home';
 
 @import 'custom/lead-newsletter';
+
+@import 'components/counter';

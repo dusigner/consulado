@@ -1,10 +1,14 @@
 body {
 	&.body-cart {
+		.checkout-container {
+			padding-bottom: 40px;
+		}
+
 		.cart {
 			padding: 0;
 
 			@include breakpoint(small 'max') { padding-bottom: 25px }
-			
+
 			.cart-items {
 				thead {
 					@include responsiveFont(14, 16, true);
@@ -744,7 +748,7 @@ body {
 			padding: 0 0 0 10px;
 			position: fixed;
 		    z-index: 15;
-			
+
 			tr {
 				border-bottom: none;
 				display: inline-block;
@@ -758,7 +762,7 @@ body {
 				text-align: left;
 				text-transform: uppercase;
 			}
-			
+
 			.monetary {
 				@include responsiveFont(16, 16, true);
 				color: #fff;

@@ -40,12 +40,12 @@ const paths = {
 		shelvesTemplates: 'src/02 - Shelves Templates/*.html'
 	},
 
-	dest         : {
+	dest: {
 		default: 'build/arquivos',
-		files  : 'build/files',
-		html   : {
-			templates       : 'build/html',
-			subTemplates    : 'build/html/sub',
+		files: 'build/files',
+		html: {
+			templates: 'build/html',
+			subTemplates: 'build/html/sub',
 			shelvesTemplates: 'build/shelf'
 		}
 	}
@@ -63,12 +63,12 @@ let preprocessContext = {
 
 const getPath = source => {
 
-	let newPath = [ paths[ source ] ],
+	let newPath = [paths[source]],
 		replaceSource;
 
-	if( $.util.env.page ) {
+	if ($.util.env.page) {
 
-		if( source === 'webpack' ) {
+		if (source === 'webpack') {
 			source = 'scripts';
 		}
 
@@ -81,7 +81,7 @@ const getPath = source => {
 				$.util.env.page = pagesDir.join(',');
 			}
 
-			if( $.util.env.page.indexOf(',') > 0 ) {
+			if ($.util.env.page.indexOf(',') > 0) {
 				const multiPages = $.util.env.page.split(',');
 
 				multiPages.map(singlePage => {
@@ -94,7 +94,7 @@ const getPath = source => {
 
 	}
 
-	if( source === 'pages' ) {
+	if (source === 'pages') {
 		newPath.shift();
 	}
 
