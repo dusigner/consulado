@@ -83,6 +83,8 @@ $(window).on('load', function() {
 		this.init = function() {
 			self.hashChanged();
 			self.delivery();
+			self.shippingSelector();
+			self.shippingSelectorInformation();
 
 			this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -96,6 +98,37 @@ $(window).on('load', function() {
 			return window.crossroads && window.crossroads.routed.add(function(request) {
 				self.hashChanged();
 				return self[request] && self[request].call(self);
+			});
+		};
+
+		this.shippingSelector = function() {
+			const $btnShippingSelector = $('.shipping-sla-selector .btn-mini');
+			const $shippingOptions = $('.shipping-sla-options');
+
+			$btnShippingSelector.removeAttr('data-toggle');
+
+			$btnShippingSelector.click(() => {
+				$shippingOptions.slideToggle();
+			});
+		};
+
+		this.shippingSelectorInformation = function() {
+			const $shippingToggle = $('.shipping-sla-button');
+			const $shippingItems = $('.shipping-sla-options li a span');
+
+			$shippingItems.each( (index, element) => {
+				let shippingItemText = $(element).text().split('-');
+				let newText = `<strong>${shippingItemText[0]}</strong>`;
+
+				$(shippingItemText).each((i, e) => {
+					if(i !== 0) {
+						newText = `${newText} - ${e}`;
+					}
+				});
+
+				$(element).html(newText);
+
+				if (index + 1 === $shippingItems.length) $shippingToggle.addClass('has-interaction');
 			});
 		};
 
@@ -637,7 +670,7 @@ $(window).on('load', function() {
 		this.init();
 
 		$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
-
+		$(window).on('orderFormUpdated.vtex', this.shippingSelectorInformation);
 	});
 
 });
