@@ -72,22 +72,25 @@ Nitro.module('tabs-consumidor', function () {
 	tabs.initSlick = () => {
 		tabPrateleira.find('.prateleira.default > ul').slick({
 			adaptiveHeight: false,
+			arrows: true,
 			infinite: true,
-			slidesToShow: 3,
 			slidesToScroll: 3,
+			slidesToShow: 3,
 			responsive: [{
 				breakpoint: 990,
 				settings: {
+					arrows: true,
 					dots: true,
-					slidesToShow: 2,
-					slidesToScroll: 2
+					slidesToScroll: 2,
+					slidesToShow: 2
 				}
 			}, {
 				breakpoint: 480,
 				settings: {
+					arrows: true,
 					dots: true,
-					slidesToShow: 1,
-					slidesToScroll: 1
+					slidesToScroll: 1,
+					slidesToShow: 1
 				}
 			}]
 		});

@@ -117,8 +117,13 @@ $primary: #9ACA3C;
 							width: 70%;
 
 							@include breakpoint('medium', 'max') {
-								bottom: -40px;
+								bottom: -20px;
 								right: -20px;
+							}
+
+							@include breakpoint('small', 'max') {
+								max-height: 80px;
+								max-width: 80px;
 							}
 						}
 					}
@@ -250,6 +255,7 @@ $primary: #9ACA3C;
 					border-radius: 4px;
 					color: $primary;
 					flex-direction: column;
+					min-height: 50px;
 					padding: 8px 0;
 					text-align: center;
 					width: 33%;

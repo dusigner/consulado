@@ -1,5 +1,13 @@
 @charset 'UTF-8';
 
+// Slick
+body.home .prateleira-tabs div.prateleira-slider div.prateleira ul.slick-slider button.slick-arrow {
+	@include breakpoint('small', 'max') {
+		display: inline-block!important;
+	}
+}
+
+
 .prateleira-tabs {
 	overflow: hidden;
 	position: relative;
@@ -18,18 +26,6 @@
 		}
 	}
 
-	// Títulos default Vtex
-	.prateleira h2 {
-		border: none !important;
-		height: 0;
-		margin: 0 !important;
-		opacity: 0;
-		overflow: hidden;
-		padding: 0 !important;
-		visibility: hidden;
-		width: 0;
-	}
-
 	// Container das tabs
 	&__tabs {
 		border: 1px solid transparent;
@@ -41,52 +37,57 @@
 		}
 
 		@include breakpoint('small', 'max') {
-			background-color: #f6f6f6;
-			border-color: #f6f6f6;
-			border-radius: 20px;
-			margin: 1.2em;
-			max-height: 40px;
-			overflow: hidden;
-			padding-top: 40px;
-			position: relative;
-			transition: max-height .3s ease;
+			display: none;
+			visibility: hidden;
 		}
+
+		// @include breakpoint('small', 'max') {
+		// 	background-color: #f6f6f6;
+		// 	border-color: #f6f6f6;
+		// 	border-radius: 20px;
+		// 	margin: 1.2em;
+		// 	max-height: 40px;
+		// 	overflow: hidden;
+		// 	padding-top: 40px;
+		// 	position: relative;
+		// 	transition: max-height .3s ease;
+		// }
 
 		// Mobile Arrow
-		&:before,
-		&:after {
-			@include breakpoint('small', 'max') {
-				display: block;
-				position: absolute;
-				right: 0;
-				z-index: 2;
-			}
-		}
+		// &:before,
+		// &:after {
+		// 	@include breakpoint('small', 'max') {
+		// 		display: block;
+		// 		position: absolute;
+		// 		right: 0;
+		// 		z-index: 2;
+		// 	}
+		// }
 
-		&:before {
-			@include breakpoint('small', 'max') {
-				background-color: #9aca3c;
-				border-radius: 0 20px 20px 0;
-				content: '';
-				height: 40px;
-				top: 0;
-				width: 70px;
-			}
-		}
+		// &:before {
+		// 	@include breakpoint('small', 'max') {
+		// 		background-color: #9aca3c;
+		// 		border-radius: 0 20px 20px 0;
+		// 		content: '';
+		// 		height: 40px;
+		// 		top: 0;
+		// 		width: 70px;
+		// 	}
+		// }
 
-		&:after {
-			@include breakpoint('small', 'max') {
-				-moz-osx-font-smoothing: grayscale;
-				-webkit-font-smoothing: antialiased;
-				color: #fff;
-				content: '\e601';
-				font: normal bold normal 9px 'whirlpool';
-				line-height: 1;
-				text-transform: none;
-				top: 0;
-				transform: translate(-25px, 16px);
-			}
-		}
+		// &:after {
+		// 	@include breakpoint('small', 'max') {
+		// 		-moz-osx-font-smoothing: grayscale;
+		// 		-webkit-font-smoothing: antialiased;
+		// 		color: #fff;
+		// 		content: '\e601';
+		// 		font: normal bold normal 9px 'whirlpool';
+		// 		line-height: 1;
+		// 		text-transform: none;
+		// 		top: 0;
+		// 		transform: translate(-25px, 16px);
+		// 	}
+		// }
 
 		// Mobile active
 		&.is-mobile--active {
@@ -112,9 +113,9 @@
 			padding: .4em 2.2em;
 		}
 
-		@include breakpoint('small', 'max') {
-			padding: .5em 1em;
-		}
+		// @include breakpoint('small', 'max') {
+		// 	padding: .5em 1em;
+		// }
 
 		// Arrow
 		&:before {
@@ -140,6 +141,7 @@
 		&:hover,
 		&.is--active {
 			color: #0e0e0e;
+			cursor: pointer;
 
 			@include breakpoint('small', 'min') {
 				background-color: #9aca3c;
@@ -147,12 +149,12 @@
 			}
 		}
 
-		&:hover {
-			@include breakpoint('small', 'max') {
-				background-color: #fff;
-				text-indent: 10px;
-			}
-		}
+		// &:hover {
+		// 	@include breakpoint('small', 'max') {
+		// 		background-color: #fff;
+		// 		text-indent: 10px;
+		// 	}
+		// }
 
 		&.is--active {
 			@include breakpoint('small', 'min') {
@@ -162,26 +164,62 @@
 				}
 			}
 
-			@include breakpoint('small', 'max') {
-				border-radius: 20px;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
+			// @include breakpoint('small', 'max') {
+			// 	border-radius: 20px;
+			// 	left: 0;
+			// 	position: absolute;
+			// 	top: 0;
+			// 	width: 100%;
+			// }
 		}
 	}
 
 	// Content tabs
 	.prateleira {
 		background-color: #fff;
-		bottom: 0;
-		left: 0;
 		max-width: 1098px;
-		opacity: 0;
-		position: absolute;
 		width: 100%;
-		z-index: -1;
+
+		@include breakpoint('small', 'min') {
+			bottom: 0;
+			left: 0;
+			opacity: 0;
+			position: absolute;
+			z-index: -1;
+		}
+
+		// Títulos default Vtex
+		h2 {
+			@include breakpoint('small', 'min') {
+				border: none !important;
+				height: 0;
+				margin: 0 !important;
+				opacity: 0;
+				overflow: hidden;
+				padding: 0 !important;
+				visibility: hidden;
+				width: 0;
+			}
+
+			@include breakpoint('small', 'max') {
+				background-color: #fff!important;
+				color: #736c6b!important;
+				font-size: 2.2em!important;
+				margin-bottom: 0!important;
+				position: relative;
+
+				&:before {
+					background-color: #87d054;
+					content: '';
+					height: 2px;
+					left: 50%;
+					position: absolute;
+					top: 100%!important;
+					transform: translate(-50%, -50%);
+					width: 35px;
+				}
+			}
+		}
 
 		// Active tabs
 		&.is--active {

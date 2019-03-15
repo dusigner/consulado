@@ -217,7 +217,7 @@
 		margin-bottom: 20px;
 		margin-left: 10px;
 		margin-right: 10px;
-		min-height: 108px;
+		min-height: 175px;
 		padding: 10px;
 		text-align: center;
 
@@ -233,6 +233,11 @@
 			margin-bottom: 0;
 			padding-left: 5px;
 			padding-right: 5px;
+		}
+
+		@include breakpoint('extra-small', 'max') {
+			flex-basis: calc(100% - 20px);
+			min-height: 145px;
 		}
 
 		&-discount {
@@ -255,6 +260,7 @@
 			flex-basis: calc(100% - 20px) !important;
 			flex-wrap: nowrap;
 			justify-content: center;
+			min-height: 115px;
 
 			@include breakpoint('small', 'min') {
 				flex-basis: calc(40% - 10px) !important;
@@ -267,6 +273,8 @@
 			&:hover {
 				background: transparent !important;
 			}
+
+			&:after { display: none; }
 
 			.banners-offers {
 				&__item-icon {
@@ -286,15 +294,40 @@
 			}
 		}
 
+		// CTA
+		&:not(.banners-offers__item-special):after {
+			// border: navajowhite;
+			background: #702f8f;
+			border: 2px solid #702f8f;
+			border-radius: 25px;
+			color: #fff;
+			content: 'Ver produtos';
+			display: block;
+			font-size: 13px;
+			font-weight: bold;
+			margin: 10px auto 0 auto;
+			max-width: 190px;
+			padding: 10px 6px;
+			width: 95%;
+		}
+
+		// Hover state
 		&:hover,
 		&:focus,
 		&:active {
 			text-decoration: none;
+
+			&:after {
+				background: #fff;
+				color: #702f8f;
+			}
 		}
 
 		&:hover,
 		&:focus {
-			background: darken(#f1f1f1, 5%);
+			background: darken(#f1f1f1, 2%);
+			background-color: #fff;
+			box-shadow: -5px 5px 10px rgba(15, 15, 15, .25);
 		}
 
 		&-icon {
@@ -312,9 +345,9 @@
 	}
 
 	&__text {
-		@include responsiveFont(14, 16, true);
 		color: #702f8f;
 		display: block;
+		font-size: 16px;
 		font-weight: 400;
 		line-height: 1.2;
 		margin-bottom: 0;
@@ -322,7 +355,7 @@
 		width: 100%;
 
 		@include breakpoint('small', 'min') {
-			@include responsiveFont(15, 16, true);
+			@include responsiveFont(16, 16, true);
 		}
 
 		&-discount {
