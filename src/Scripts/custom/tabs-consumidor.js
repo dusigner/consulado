@@ -142,7 +142,7 @@ Nitro.module('tabs-consumidor', function () {
 
 				let template = `
 					<div class="shelf__stock">
-						Últimos <span>${item.stock}</span> em estoque
+						Últimos <span class="${item.stock < 100 ? 'is--active' : ''}">${item.stock}</span> em estoque
 					</div>
 				`;
 
