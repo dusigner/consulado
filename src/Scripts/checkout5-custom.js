@@ -263,8 +263,6 @@ $(window).on('load', function() {
 
 			//testeabEntregaAgendada.setup(orderForm);
 			self.atualizaCoupon();
-
-			self.TrackMercadoPago();
 		};
 
 		this.cotasInit = function() {
