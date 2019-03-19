@@ -3,7 +3,7 @@
 module.exports = {
 	consul: {
 		accountName: 'consul',
-		listagemPrateleira: '33be8da0-7037-4956-980e-9cbf82b5d31b',
+		listagemPrateleira: 'dbf5acd6-5115-4ee0-9795-138b70bf8a68',
 		assetsPath: '//consul.vteximg.com.br/arquivos',
 		isQA: false,
 		shelfProductFieldSelos: '700',
@@ -15,7 +15,7 @@ module.exports = {
 	},
 	consulqa: {
 		accountName: 'consulqa',
-		listagemPrateleira: 'bc64bc35-02e8-4159-9a77-a4973d666b64',
+		listagemPrateleira: 'd3c2e649-5d24-4dc7-be0d-c13e47cf8d46',
 		assetsPath: '/files',
 		isQA: true,
 		shelfProductFieldSelos: '16',
