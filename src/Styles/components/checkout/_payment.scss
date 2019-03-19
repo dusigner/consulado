@@ -110,6 +110,23 @@ body {
 			}
 
 			.shipping-options {
+				.sla-items-list {
+					.shipping-option-item {
+						.shipping-option-item-text-wrapper {
+							margin-left: 8%;
+
+							.shipping-option-item-name {
+								// color: #000000;
+								font-weight: bold;
+							}
+						}
+
+						[class*='icon'] {
+							left: 10px;
+						}
+					}
+				}
+
 				.btn-group {
 					@include responsiveFont(14);
 
@@ -118,7 +135,7 @@ body {
 						margin-bottom: 5px;
 
 						&.active {
-							background: $gray-l;
+							background: rgba(#736c6b, .2);
 							color: $txt-gray;
 						}
 
