@@ -282,6 +282,7 @@ body.home .prateleira-tabs div.prateleira-slider div.prateleira ul.slick-slider 
 				top: 50%;
 				transform: translate(50%, -50%);
 				width: 3px;
+				z-index: -1;
 			}
 
 			&.is--active {

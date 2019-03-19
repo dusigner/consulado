@@ -127,7 +127,10 @@ div[data-chaordic] {
 					}
 				}
 
-				.shelf-item__name { font-weight: bold }
+				.shelf-item__name {
+					// font-weight: bold;
+					text-shadow: 0 0 1px #736c6b;
+				}
 			}
 		}
 
