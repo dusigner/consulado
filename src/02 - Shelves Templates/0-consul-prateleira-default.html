@@ -5,8 +5,8 @@
 <article class="box-produto $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
 	<div class="detalhes">
 		<a href="$uri" title="$escapedName" class="image">
-			<span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span>
-			<span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span>
+			<!-- <span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span> -->
+			<!-- <span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span> -->
 			<span class="img backup">$product.GetImageTag(345, 345)</span>
 			$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
 
