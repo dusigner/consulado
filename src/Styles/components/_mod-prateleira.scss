@@ -105,7 +105,10 @@
 						}
 
 						&:hover {
-							.nome { font-weight: bold; }
+							.nome {
+								// font-weight: bold;
+								text-shadow: 0 0 1px #736c6b;
+							}
 
 							.img.hover {
 								opacity: 1;
