@@ -397,13 +397,7 @@ $(window).on('load', function() {
 				$('#is-corporate-client').click();
 			}
 
-			$('#client-first-name').bind('keypress', function(e) {
-				if (!e.key.match(/[A-Za-záàâãéèêíïóôõöúùüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÙÜÇÑ' ]/)) {
-					return false;
-				}
-			});
-
-			$('#client-last-name').bind('keypress', function(e) {
+			$('#client-last-name, #client-first-name').bind('keypress', function(e) {
 				if (!e.key.match(/[A-Za-záàâãéèêíïóôõöúùüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÙÜÇÑ' ]/)) {
 					return false;
 				}
