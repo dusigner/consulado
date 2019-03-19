@@ -396,6 +396,18 @@ $(window).on('load', function() {
 			if(store.isCorp) {
 				$('#is-corporate-client').click();
 			}
+
+			$('#client-first-name').bind('keypress', function(e) {
+				if (!e.key.match(/[A-Za-záàâãéèêíïóôõöúùüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÙÜÇÑ' ]/)) {
+					return false;
+				}
+			});
+
+			$('#client-last-name').bind('keypress', function(e) {
+				if (!e.key.match(/[A-Za-záàâãéèêíïóôõöúùüçñÁÀÂÃÉÈÍÏÓÔÕÖÚÙÜÇÑ' ]/)) {
+					return false;
+				}
+			});
 		};
 
 		//state
