@@ -366,9 +366,44 @@ body {
 								border: none;
 								box-shadow: none;
 								padding: 0;
+								pointer-events: none;
 								text-align: right;
 								text-shadow: none;
 								width: 100%;
+
+								.shipping-estimate {
+									&::after {
+										background: url('//io.vtex.com.br/checkout-ui/5.15.31/img/loader-inline.gif') center center no-repeat;
+										content: '';
+										display: block;
+										height: 17px;
+										position: absolute;
+										right: 6px;
+										top: 50%;
+										transform: translateY(-50%);
+										width: 17px;
+									}
+								}
+
+								&.has-interaction {
+									pointer-events: all;
+
+									.shipping-estimate {
+										&::after {
+											@include contentBefore();
+											@include font-size(8px, true, false);
+											@include icon-get('arrow-down');
+											background: none;
+											display: block;
+											height: auto;
+											position: absolute;
+											right: 6px;
+											top: 50%;
+											transform: translateY(-50%);
+											width: auto;
+										}
+									}
+								}
 
 								.caret {display: none;}
 
@@ -423,59 +458,95 @@ body {
 									}
 								}
 
-								&:after {
-									@include contentBefore();
-									@include font-size(8px, true, false);
-									@include icon-get('arrow-down');
-									display: block;
-									position: absolute;
-									right: 6px;
-									top: 50%;
-									transform: translateY(-50%);
-								}
+								// &:after {
+								// 	@include contentBefore();
+								// 	@include font-size(8px, true, false);
+								// 	@include icon-get('arrow-down');
+								// 	display: block;
+								// 	position: absolute;
+								// 	right: 6px;
+								// 	top: 50%;
+								// 	transform: translateY(-50%);
+								// }
 							}
 
 							.shipping-sla-options {
 								@include responsiveFont(16, 16, true);
 								background: #fff;
-								border: 1px solid #f4f4f4;
-								border-radius: 0;
-								box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+								border: 0;
+								box-shadow: none;
+								float: none;
 								line-height: normal;
-								min-width: 120px;
+								min-width: auto;
 								padding: 0;
-								right: 30px;
+								position: initial;
 								text-align: left;
-								top: 41px;
+								top: 45px;
 
 								@include breakpoint(extra-small, 'max') {
-									left: 5%;
-									max-width: 90%;
-									right: 0;
-									width: 90%;
+									max-width: 100%;
 								}
 
 								li {
-									border-bottom: 1px solid #f4f4f4;
+									border: 1px solid #cccccc;
+									margin: 5px 0;
 									padding: 6px 10px;
+									position: relative;
 									text-transform: initial;
 
-									a {
-										padding: 0;
-										transition: color 400ms ease-out;
+									&.selected {
+										background: rgba(#736c6b, .2);
+										box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
 
-										&:hover {
-											background: #ffffff;
-											color: $green;
-										}
+										a {
+											&:hover,
+											&:focus {
+												background: transparent;
+												color: #46a546;
+											}
 
-										.icon-ok {
-											display: none;
+											.icon-ok {
+												&::before {
+													color: #46a546;
+													content: '\f05d';
+												}
+											}
 										}
 									}
 
-									&:last-child {
-										border-bottom: none;
+									a {
+										align-items: center;
+										display: flex;
+										justify-content: space-between;
+										padding: 0;
+										transition: color 400ms ease-out;
+										white-space: normal;
+
+										&:hover {
+											color: #46a546;
+
+											.icon-ok {
+												&::before {
+													color: #46a546;
+												}
+											}
+										}
+
+										.icon-ok {
+											display: initial !important;
+											font-size: 20px;
+											margin-right: 5px;
+											// order: 1;
+
+											&::before {
+												color: #999999;
+												content: '\f10c';
+											}
+										}
+
+										span {
+											width: 100%;
+										}
 									}
 								}
 							}
