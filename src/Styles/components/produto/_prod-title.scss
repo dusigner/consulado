@@ -21,13 +21,13 @@
 
 		.reference,
 		.productSku {
-			@include responsiveFont(19, 16, true);
 			color: $txt-gray;
-			display: inline-block;
+			display: block;
+			font-size: 19px;
 			font-weight: 200;
-			padding-left: 10px;
+			margin-top: 5px;
 
-			@include breakpoint(small, 'max') { display: none; }
+			@include breakpoint(small, 'max') { font-size: 16px; }
 
 			div { display: inline; }
 
