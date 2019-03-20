@@ -27,6 +27,12 @@ Nitro.controller('pre-home', ['login', 'register.corporate', 'callcenter'], func
 			}
 		}]
 	});
+
+	$('.firstName, .lastName').bind('keypress', function(e) {
+		if (!e.key.match(/[A-Za-záàâãéèêíïóôõöúçñüÜÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s'"]+/)) {
+			return false;
+		}
+	});
 });
 
 
