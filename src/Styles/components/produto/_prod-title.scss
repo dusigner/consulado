@@ -14,7 +14,6 @@
 			@include breakpoint(small, 'max') {
 				@include responsiveFont(18, 16, true);
 				color: $txt-gray;
-				display: inline-block;
 				line-height: 20px;
 			}
 		}
@@ -22,10 +21,10 @@
 		.reference,
 		.productSku {
 			color: $txt-gray;
-			display: block;
+			display: inline-block;
 			font-size: 19px;
 			font-weight: 200;
-			margin-top: 5px;
+			padding-left: 10px;
 
 			@include breakpoint(small, 'max') { font-size: 16px; }
 
