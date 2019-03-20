@@ -10,49 +10,10 @@
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
+
 	<!--  Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
-
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small banner-default"><vtex:contentPlaceHolder id="BannerTopo" /></div>
-	<!-- /Slide -->
-
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small banner-default"><vtex:contentPlaceHolder id="BannerTopo BannerMobile" /></div>
-	<!-- /Slide mobile-->
-
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small banner-dormir-100"><vtex:contentPlaceHolder id="BannerTopoDormir100" /></div>
-	<!-- /Slide -->
-
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small banner-dormir-100"><vtex:contentPlaceHolder id="BannerTopoDormir100 BannerMobileDormir100" /></div>
-	<!-- /Slide mobile-->
-
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small banner-dormir-200"><vtex:contentPlaceHolder id="BannerTopoDormir200" /></div>
-	<!-- /Slide -->
-
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small banner-dormir-200"><vtex:contentPlaceHolder id="BannerTopoDormir200 BannerMobileDormir200" /></div>
-	<!-- /Slide mobile-->
-
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small banner-dormir-400"><vtex:contentPlaceHolder id="BannerTopoDormir400" /></div>
-	<!-- /Slide -->
-
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small banner-dormir-400"><vtex:contentPlaceHolder id="BannerTopoDormir400 BannerMobileDormir400" /></div>
-	<!-- /Slide mobile-->
-
-	<!-- Slide -->
-	<div class="banner-principal slides hide-extra-small banner-dormir-800"><vtex:contentPlaceHolder id="BannerTopoDormir800" /></div>
-	<!-- /Slide -->
-
-	<!-- Slide mobile-->
-	<div class="banner-principal banner-mobile slides show-extra-small banner-dormir-800"><vtex:contentPlaceHolder id="BannerTopoDormir800 BannerMobileDormir800" /></div>
-	<!-- /Slide mobile-->
 
 	<div class="resultado-busca" data-module="resultado-busca">
 		<div class="container clearfix">
@@ -79,7 +40,6 @@
 	<div class="container list-container clearfix">
 		<div class="row gutters">
 			<div class="col-12 list-content">
-
 				<!-- Prateleira -->
 				<section id="prateleira">
 					<div class="top-wrapper clearfix">
@@ -92,7 +52,6 @@
 					<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="9" columnCount="9" />
 				</section>
 				<!-- /Prateleira -->
-
 			</div>
 
 			<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
@@ -101,21 +60,10 @@
 		</div>
 	</div>
 
-	<section id="relacionados" class="slider">
-	<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados Busca - Titulo" /></p>
-	<div class="container">
-		<div class="row">
-			<div class="prateleira-slider clearfix">
-			<vtex:contentPlaceHolder id="Relacionados Busca" />
-		  </div>
-			</div>
-	</div>
-  </section>
-
 	<!-- Footer -->
 	<vtex:template id="0-consul-footer" />
 	<!-- /Footer -->
-	
+
 	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 </html>
