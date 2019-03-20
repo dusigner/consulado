@@ -303,6 +303,7 @@ $(window).on('load', function() {
 		//state
 		this.cart = function() {
 			console.info('cart');
+			this.fakeButton();
 
 			$('.info-shipping').remove();
 
@@ -321,7 +322,6 @@ $(window).on('load', function() {
 
 			recurrence.setup();
 
-			this.fakeButton();
 			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
 
