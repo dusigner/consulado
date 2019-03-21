@@ -17,7 +17,7 @@
 // 	}
 // }, 400);
 
-$(window).on('load', function() {
+$(document).on('ready', function() {
 	require('modules/helpers');
 
 	if (VERSION) {
