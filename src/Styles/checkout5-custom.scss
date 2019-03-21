@@ -120,7 +120,7 @@ body {
 		@include vendor(transition,
 		all .3s ease);
 		@include vendor(border-radius,
-		20px);
+		30px);
 		@include vendor(box-shadow,
 		none); // background-color: $gray;
 		border: 3px solid $gray;

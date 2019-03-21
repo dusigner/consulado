@@ -732,11 +732,11 @@ body {
 
 				#cart-choose-more-products {
 					@include responsiveFont(13, 16, true);
+					display: none;
 					font-weight: bold;
 					margin-right: 15px;
 					padding: 15px 25px;
 					text-transform: uppercase;
-
 					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
 						display: inline-block;
