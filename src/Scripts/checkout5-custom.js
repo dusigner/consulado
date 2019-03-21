@@ -499,6 +499,7 @@ $(window).on('load', function() {
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
+				$('.link-choose-more-products-wrapper #cart-choose-more-products').css('display', 'inline-block');
 			}
 
 			// monta a barra fixa no mobile dentro do carrinho
