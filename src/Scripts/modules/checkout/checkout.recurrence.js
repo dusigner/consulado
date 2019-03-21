@@ -133,7 +133,7 @@ Nitro.module('checkout.recurrence', function () {
 	};
 
 	this.setModalActive = function () {
-		$('body').addClass('overflow-hidden');
+		// $('body').addClass('overflow-hidden'); - TASK JIRA IC-51
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 	};
 
