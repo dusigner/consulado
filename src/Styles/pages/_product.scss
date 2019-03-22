@@ -259,11 +259,6 @@ div#modal-custom-share {
 	@include breakpoint(small, 'max') { display: none; }
 }
 
-#depoimentos {
-	border-bottom: 1px solid #e5e5e5;
-	display      : none;
-}
-
 .btn-pecas-produto {
 	display: none;
 
