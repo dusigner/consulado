@@ -18,7 +18,6 @@ $animation-mode: true!default;
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/icons';
 @import 'helpers/helpers';
 @import 'helpers/animation';
 
@@ -37,7 +36,7 @@ $animation-mode: true!default;
 @import 'components/buttons';
 @import 'components/colors';
 
-// Component styles 
+// Component styles
 @import 'components/buttons';
 @import 'components/colors';
 @import 'components/footer';
@@ -463,9 +462,9 @@ h2 {
 				display: block;
 				font-weight: bold;
 
-				@include breakpoint(extra-small, 'max') { 
+				@include breakpoint(extra-small, 'max') {
 					@include responsiveFont(22, 16, true);
-					margin-bottom: 10px; 
+					margin-bottom: 10px;
 				}
 			}
 
@@ -478,9 +477,9 @@ h2 {
 					@include responsiveFont(33, 16, true);
 				}
 				@include breakpoint(extra-small, 'max') {
-					@include responsiveFont(20, 16, true);	
+					@include responsiveFont(20, 16, true);
 					strong {
-						@include responsiveFont(22, 16, true);	
+						@include responsiveFont(22, 16, true);
 					}
 				}
 			}

@@ -88,6 +88,31 @@
 }
 
 
+// Icons
+@mixin icon-hamburger ($color: #ffffff) {
+	@extend %icon-hamburger;
+	border-bottom: 2px solid $color;
+	border-top: 2px solid $color;
+	color: $color;
+
+	&:before { background-color: $color; }
+}
+
+@mixin icon-get( $icon ) {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'whirlpool' !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	line-height: 1;
+	speak: none;
+	text-transform: none !important;
+
+	content: map-get($icons, $icon);
+};
+
+
 
 //
 // Uses `calculate-rem()` to calculate rem font-size and px

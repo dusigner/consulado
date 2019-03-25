@@ -17,7 +17,6 @@
 @import 'helpers/variables';
 @import 'helpers/mixins';
 @import 'helpers/functions';
-@import 'helpers/_icons';
 // ===============================================================
 
 .landing-birthday-2018 {
@@ -57,7 +56,7 @@
 			}
 			li {
 			   @include breakpoint(768px, 'max') { margin: 0;}
-		   	}			
+		   	}
 		}
 
 		.detalhes {
@@ -67,12 +66,12 @@
 				float: left;
 				padding: 0 40px;
 				width: 50%;
-				@include breakpoint(768px, 'max') {	
+				@include breakpoint(768px, 'max') {
 					padding: 0;
 					width: 100%;
 				}
 			}
-			
+
 			a.prod-info {
 				float: right;
 				width: 50%;
@@ -119,7 +118,7 @@
 				}
 			}
 		}
-	
+
 
 		button.slick-prev {
 			left: 20px;
@@ -176,7 +175,7 @@
 			text-align: center;
 			text-transform: uppercase;
 
-			@include breakpoint(1121px, 'max') { font-size: 20px; }			
+			@include breakpoint(1121px, 'max') { font-size: 20px; }
 		}
 	}
 
