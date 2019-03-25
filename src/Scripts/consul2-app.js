@@ -50,8 +50,6 @@ require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
-require('controllers/landing-gae-compra-interno');
-require('controllers/pre-home');
 require('modules/chatHome');
 require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
@@ -76,7 +74,7 @@ const changeCallcenterLinks = () => {
 	}
 };
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome', 'isTelevendasCorp', 'callcenter'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'chatHome', 'isTelevendasCorp', 'callcenter'], function() {
 
 	var path = window.location.pathname;
 
