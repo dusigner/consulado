@@ -1,17 +1,14 @@
 /* global $:true, Nitro: true */
 'use strict';
 
-require('modules/slider-banner');
+import 'modules/slider-banner';
 import 'components/tabs-consumidor';
 import 'components/lead-newsletter';
-require('modules/chaordic');
-require('modules/linkDoubleClick');
-require('modules/chatHome');
+import 'modules/chaordic';
+import 'modules/linkDoubleClick';
+import 'modules/chatHome';
 
-// import 'modules/counter';
-import 'modules/datalayer_track';
-
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', /*'counter', 'datalayer_track'*/], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
