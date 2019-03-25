@@ -2,8 +2,8 @@
 'use strict';
 
 require('modules/slider-banner');
-require('custom/tabs-consumidor');
-require('custom/lead-newsletter');
+import 'components/tabs-consumidor';
+import 'components/lead-newsletter';
 require('modules/chaordic');
 require('modules/linkDoubleClick');
 require('modules/chatHome');
