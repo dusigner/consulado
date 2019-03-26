@@ -359,22 +359,27 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 			}
 		});
 
-		$simulatorSelector.ajaxStart(function () {
+		$(document).ajaxStart(function () {
 			$loadingFret.addClass('loading');
 			$containerFrete.removeClass('active erro');
 
 		});
 
-		$simulatorSelector.ajaxStop(function () {
-			$loadingFret.removeClass('loading');
-			$containerFrete.addClass('active');
-			$containerFrete.prepend('<i class="closed"></i>');
-			if (flag === 1) {
-				dataLayer.push({
-					event: 'simuladorCEP',
-					status: 'ok'
-				});
-				flag = 0;
+		$(document).ajaxComplete(function(event,xhr,settings) {
+			var frete = settings.url.split('/')[1];
+
+			if(frete === 'frete'){
+
+				$loadingFret.removeClass('loading');
+				$containerFrete.addClass('active');
+				$containerFrete.prepend('<i class="closed"></i>');
+				if (flag === 1) {
+					dataLayer.push({
+						event: 'simuladorCEP',
+						status: 'ok'
+					});
+					flag = 0;
+				}
 			}
 		});
 
