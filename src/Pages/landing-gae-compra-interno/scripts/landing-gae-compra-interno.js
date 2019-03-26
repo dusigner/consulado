@@ -2,9 +2,9 @@
 
 var CRM = require('modules/store/crm');
 
-require('modules/gae-compra-interno/order.states');
-require('modules/gae-compra-interno/order.warranty.gae');
-require('Dust/gae-compra-interno/warrantySpare.emptyOrders.html');
+import './gae-compra-interno/order.states';
+import './gae-compra-interno/order.warranty.gae';
+import 'Dust/gae-compra-interno/warrantySpare.emptyOrders.html';
 
 
 Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.gae'], function(states, warranty) {
@@ -14,7 +14,7 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		allOrders = [],
 		loading = '<div class="load"><div class="loading"></div></div>',
 		getOrdersUrl,
-		getUserEmail;		
+		getUserEmail;
 
 	if($.cookie('vtex-current-user')) {
 		getUserEmail = window.getCookie('vtex-impersonated-customer-email').replace('vtex-impersonated-customer-email=', '');

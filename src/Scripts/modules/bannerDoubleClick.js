@@ -1,9 +1,9 @@
 'use strict';
 require('vendors/Uri');
 
-Nitro.module('linkDoubleClick', function () {
+Nitro.module('bannerDoubleClick', function () {
 	var self = this;
-	
+
 	this.init = function() {
 		self.checklinkdouble();
 	};
