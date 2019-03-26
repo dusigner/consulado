@@ -17,7 +17,7 @@
 // 	}
 // }, 400);
 
-$(window).on('load', function() {
+$(document).on('ready', function() {
 	require('modules/helpers');
 
 	if (VERSION) {
@@ -303,6 +303,7 @@ $(window).on('load', function() {
 		//state
 		this.cart = function() {
 			console.info('cart');
+			this.fakeButton();
 
 			$('.info-shipping').remove();
 
@@ -321,7 +322,6 @@ $(window).on('load', function() {
 
 			recurrence.setup();
 
-			this.fakeButton();
 			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
 
@@ -505,6 +505,7 @@ $(window).on('load', function() {
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
+				$('.link-choose-more-products-wrapper #cart-choose-more-products').css('display', 'inline-block');
 			}
 
 			// monta a barra fixa no mobile dentro do carrinho
