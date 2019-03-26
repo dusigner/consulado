@@ -74,6 +74,7 @@ Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-
 
 	var path = window.location.pathname;
 
+
 	if (path === '/atendimento') {
 		$(location).attr('href', '//consul.custhelp.com/');
 	}
