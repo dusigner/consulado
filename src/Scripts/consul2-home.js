@@ -5,10 +5,10 @@ import 'modules/slider-banner';
 import 'components/tabs-consumidor';
 import 'components/lead-newsletter';
 import 'modules/chaordic';
-import 'modules/linkDoubleClick';
+import 'modules/bannerDoubleClick';
 import 'modules/chatHome';
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'bannerDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
