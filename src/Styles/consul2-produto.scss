@@ -19,27 +19,18 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-//@import 'helpers/normalize';
-//@import 'helpers/animation';
-@import 'helpers/helpers';
-@import 'helpers/conditional';
-//@import 'helpers/debug';
-//@import 'helpers/responsive-debug';
-//@import 'helpers/family';
+@import 'helpers/whp-modal';
 
 // Base styles
 @import 'base/fonts';
-//@import 'base/print';
-//@import 'base/main';
-//@import 'base/vertical-rhythm';
-//@import 'base/selection';
-//@import 'base/type';
 
 // Component styles
+
 @import 'components/buttons';
 @import 'components/selos';
 @import 'components/chaordic-shelf';
 @import 'components/mod-prateleira';
+
 
 
 @import 'pages/product';

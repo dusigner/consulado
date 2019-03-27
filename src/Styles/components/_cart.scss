@@ -28,7 +28,7 @@ $cart-size: 405px;
 		@include breakpoint(small, 'min') { color: #fff; }
 
 		@include breakpoint(small, 'max') {
- 			@include responsiveFont(22, 16, true); 
+ 			@include responsiveFont(22, 16, true);
  			color: #ffffff;
  			position: relative;
     		right: 20px;
@@ -65,7 +65,7 @@ $cart-size: 405px;
 	}
 
 	.cart-quantity {
-		@extend %single-transition;
+		@include singleTransition();
 		background-color: $orange;
 		border-radius: 50%;
 		font-weight: 700;
@@ -216,7 +216,7 @@ $cart-size: 405px;
 			width: 30px;
 
 			.cartSkuRemove {
-				@extend %single-transition;
+				@include singleTransition();
 				background: transparent;
 				border: 0;
 				color: $gray;

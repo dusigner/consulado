@@ -1,7 +1,8 @@
 module.exports = function (gulp, $, _) {
-
 	return function sassLint(done) {
-		gulp.src(_.getPath('styles'))
+		gulp.src(_.getPath('styles')
+			.concat('!./src/Styles/consul2-icons.scss')
+			.concat('!./src/Styles/helpers/_mixins.scss'))
 			.pipe($.util.env.preCommit ? $.util.noop() : $.cached('sassLinting'))
 			.pipe($.sassLint({
 				options: {
@@ -14,3 +15,4 @@ module.exports = function (gulp, $, _) {
 		done();
 	};
 };
+

@@ -4,7 +4,7 @@
 //  HEADER
 //------------------------------------
 
-#ajaxBusy { @extend %superhide; }
+#ajaxBusy { @include superHide(); }
 
 // Ajuste modal Vtex - BTN Close
 .vtexIdUI .modal-header {
@@ -130,7 +130,7 @@ header {
 			}
 		}
 
-		.account { 
+		.account {
 			left: 54%;
 		}
 
@@ -280,7 +280,7 @@ div.account {
 
 					span { margin-top: -4px; }
 				}
-				
+
 			}
 
 			a[href='/minhaconta/pedidos'] {
@@ -397,12 +397,12 @@ div.account {
 		white-space: nowrap;
 		width: 90%;
 
-		@include breakpoint(770px, 'max') { 
-			background: #e6e6e6;    
+		@include breakpoint(770px, 'max') {
+			background: #e6e6e6;
 			padding: 10px 20px 0 20px;
 		}
 
-		@include breakpoint(1280px, 'min') { 		
+		@include breakpoint(1280px, 'min') {
 			width: 90%;
 		}
 
@@ -421,8 +421,8 @@ div.account {
 				font-size: 10px;
 				left: 30px;
 				position: absolute;
-				
-				@include breakpoint(770px, 'max') { 
+
+				@include breakpoint(770px, 'max') {
 					border: 0;
 					bottom: -8px;
 					left: 0;
@@ -487,8 +487,8 @@ body.consulempresa {
 	.welcome-message {
 		position: relative;
 
-		.welcome { 
-			margin-bottom: 0; 
+		.welcome {
+			margin-bottom: 0;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;

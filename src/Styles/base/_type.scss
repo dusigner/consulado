@@ -60,7 +60,7 @@
 
 		&.highlight {
 			&:before {
-				@extend %contentBefore;
+				@include contentBefore();
 				// background-color: $sony-blue;
 				bottom: -3px;
 				height: 3px;

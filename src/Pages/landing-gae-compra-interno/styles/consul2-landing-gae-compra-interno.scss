@@ -7,7 +7,6 @@
 // Utility helpers
 @import 'helpers/variables';
 @import 'helpers/mixins';
-@import 'helpers/helpers';
 
 // Component styles
 @import 'components/buttons';
@@ -30,7 +29,7 @@
           margin-right: 5px;
 
           a {
-            @extend %single-transition;
+            @include singleTransition();
             @include responsiveFont(14, 16, true);
             color: $txt-gray;
             cursor: initial;

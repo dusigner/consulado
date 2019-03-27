@@ -15,28 +15,21 @@
 /* @IMPORTS */
 // ===============================================================
 
+@import './consul2-icons';
+
 // Utility helpers
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-
-/*
-	Ícones estão em um arquivo único em todo o site, porém no checkout
-	ele precisa ser importado dentro do checkout5 porque não conseguimos
-	adicionar nenhum outro css além dele
-*/
-
-@import './consul2-icons';
-
-@import 'helpers/family';
+@import 'helpers/helpers';
 @import 'helpers/conditional';
 @import 'helpers/slick';
+
 // Base styles
 @import 'base/fonts';
 @import 'base/main';
 // Layout styles
 @import 'layout/container';
-@import 'helpers/helpers';
 @import 'components/buttons';
 @import 'components/modal';
 @import 'components/modalLogin';

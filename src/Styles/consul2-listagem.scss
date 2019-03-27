@@ -19,11 +19,10 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/conditional';
-@import 'helpers/helpers';
 @import 'helpers/family';
 
 // Component styles
+@import 'helpers/nouislider';
 @import 'components/buttons';
 @import 'components/banners';
 @import 'components/banners-controller';

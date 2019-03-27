@@ -21,15 +21,9 @@
 @import 'helpers/functions';
 @import 'helpers/mixins';
 
-// Utility helpers
-@import 'helpers/helpers';
-
 // Component styles
 @import 'components/buttons';
 @import 'components/colors';
-
-@import 'helpers/conditional';
-
 
 //BOOTSRAP MIXINS
 @import 'bootstrap/variables';
