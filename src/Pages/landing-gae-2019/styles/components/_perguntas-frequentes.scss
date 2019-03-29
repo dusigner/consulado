@@ -1,0 +1,132 @@
+//----------------------
+// Perguntas Frequentes
+//----------------------
+
+.perguntas-frequentes {
+
+    h2 {
+        font-weight: bolder;
+        color: $brand;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 20px 0;
+    }
+
+    &.-no-column {
+        position: relative;
+
+        h3 {
+            margin-top: 0;
+            position: absolute;
+            top: -10px;
+            right: 0;
+            left: 0;
+            background-color: $gray-light;
+            margin: 0 230px;
+            z-index: 1;
+            text-transform: uppercase;
+        }
+    }
+
+    .perguntas-frequentes__listas {
+
+        .perguntas-frequentes__lista::before {
+            position: relative;
+            border: none;
+        }
+    
+        & {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    }
+
+    .perguntas-frequentes__lista {
+        
+        @include laptop {
+            margin: 0 0 20px;
+            max-width: 50%;
+            padding: 0 20px;
+            border-right: 2px solid $brand;
+    
+            &:last-of-type {
+                border-right: none;
+            }
+
+            &.-no-column {
+                max-width: 100%;
+                border-color: $gray;
+
+                li {
+                    border-top: 1px solid #b9b9b9;
+                }
+            }
+        }
+    }
+
+
+    .perguntas-frequentes__item {
+        position: relative;
+        padding: 0 0 0 20px;
+        text-align: left;
+        border-top: 1px solid $gray-light;
+        border-bottom: 1px solid $gray-light;
+
+        @include laptop {
+            cursor: pointer;
+        }
+
+        > p {
+            padding: 12px 0;
+            margin: 0;
+        }
+
+        div {
+            transition: max-height 1s;  
+            overflow: hidden;
+            max-height: 0;
+
+            p {
+                padding: 12px 0;
+                margin: 0;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            background-color: $brand;
+            top: 21px;
+            left: 0;
+        
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 2px;
+            background-color: $brand;
+            top: 21px;
+            left: 0;
+            transform: rotate(-90deg);
+            transition: transform .5s ease-in;        
+        }
+        
+        &.-is-active {
+
+            &::after {
+                transform: rotate(0deg);
+            }
+
+            div {
+                max-height: 700px;
+            }
+
+        }
+    }
+
+}

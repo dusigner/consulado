@@ -1,0 +1,165 @@
+//-------------------------------------------
+// Arquivo Gerador de buttons para Landings
+//-------------------------------------------
+//-------------------------
+// Cores do botão primário
+//-------------------------
+// Cor do botão
+$pri-background: $brand;
+// Cor do texto do botão
+$pri-color: $white;
+// Cor da borda do botão
+$pri-border: transparent;
+// Cor do botão com hover
+$pri-hover-background: transparent;
+// Cor do texto com hover
+$pri-hover-color: $brand;
+// Cor da borda com hover
+$pri-hover-border: $brand;
+//-------------------------
+//-------------------------
+// Cores do botão secundário
+//-------------------------
+// Cor do botão
+$sec-background: transparent;
+// Cor do texto do botão
+$sec-color: $purple;
+// Cor da borda do botão
+$sec-border: $purple;
+// Cor do botão com hover
+$sec-hover-background: $purple;
+// Cor do texto com hover
+$sec-hover-color: $white;
+// Cor da borda com hover
+$sec-hover-border: $purple;
+//-------------------------
+//-------------------------
+// Cores do botão terciário
+//-------------------------
+// Cor do botão
+$ter-background: transparent;
+// Cor do texto do botão
+$ter-color: $white;
+// Cor da borda do botão
+$ter-border: $white;
+// Cor do botão com hover
+$ter-hover-background: $white;
+// Cor do texto com hover
+$ter-hover-color: $brand;
+// Cor da borda com hover
+$ter-hover-border: $white;
+//-------------------------
+//-------------------------
+// Cores do botão quartenário
+//-------------------------
+// Cor do botão
+$quar-background: transparent;
+// Cor do texto do botão
+$quar-color: $brand;
+// Cor da borda do botão
+$quar-border: $brand;
+//-------------------------
+@mixin button {
+    width: auto;
+    display: inline-block;
+    background-color: $pri-background;
+    border: 2px solid $pri-border;
+    font-weight: 600;
+    color: $pri-color;
+    line-height: 0px;
+    padding: 20px 40px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .25s ease-out;
+
+    &:hover {
+        color: $pri-hover-color;
+        background-color: $pri-hover-background;
+        border: 2px solid $pri-hover-border;
+        text-decoration: none;
+    }
+    &.-secundary {
+        font-weight: normal;
+        background-color: $sec-background;
+        color: $sec-color;
+        border: 2px solid $sec-border;
+        transition: all .25s ease-out;
+        
+        &:hover {
+            color: $sec-hover-color;
+            background-color: $sec-hover-background;
+            border: 2px solid $sec-hover-border;
+            text-decoration: none;
+        }
+    }
+    &.-tertiary {
+        font-weight: normal;
+        background-color: $ter-background;
+        color: $ter-color;
+        border: 2px solid $ter-border;
+        text-transform: uppercase;
+        transition: all .25s ease-out;
+        
+        &:hover {
+            color: $ter-hover-color;
+            background-color: $ter-hover-background;
+            border: 2px solid $ter-hover-border;
+            text-decoration: none;
+        }
+    }
+    &.-quaternary {
+        font-weight: normal;
+        text-transform: capitalize;
+        background-color: $quar-background;
+        color: $quar-color;
+        border: 2px solid $quar-border;
+    }
+}
+
+//-----------------
+// 
+//-----------------
+%input {
+    label {
+        & {
+            position: relative;
+            padding: 0 0 0 20px;
+            line-height: .9;
+        }
+        input[type=radio] {
+            & {
+                // visibility: hidden;
+                display: none;
+            }
+            &+span {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                display: block;
+                width: 14px;
+                height: 14px;
+                border-radius: 100%;
+                background-color: transparent;
+                border: 1px solid $gray-dark;
+            }
+            &:checked+span:before {
+                content: '';
+                display: block;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                transform: translate(-50%, -50%);
+                width: 6px;
+                height: 6px;
+                border-radius: 100%;
+                background-color: $brand;
+                border: 1px solid $brand;
+            }
+        }
+    }
+}

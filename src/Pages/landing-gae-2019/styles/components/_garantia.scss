@@ -1,0 +1,369 @@
+//-----------------
+// Módulo Garantia
+//-----------------
+.garantia__modulo {
+    display: none;
+    background-color: $gray-light;
+    text-align: center;
+
+    &.-is-active,
+    &.-show {
+        display: block;
+    }
+
+    & {
+        padding: 20px;
+    }
+}
+
+.garantia__cobertura {
+
+    &.-border {
+        border: none;
+
+        @include laptop {
+            padding: 20px;
+            border: 1px solid $purple;
+            border-radius: 40px;
+        }
+    }
+
+    h3 {
+        margin: 0;
+        padding: 10px;
+
+        @include laptop {
+            padding: 20px 0;
+            margin: initial;
+        }
+    }
+
+    .-is-borderless {
+        border: none;
+    }
+
+    fieldset {
+        padding: 0;
+        margin-top: 20px;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    legend {
+        margin-bottom: 10px;
+    }
+}
+
+.garantia__select {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-flow: initial;
+    padding: 0;
+
+    .slick-prev,
+    .slick-next {
+        z-index: 1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        color: transparent;
+        width: 15px;
+        height: 15px;
+        border: none;
+        position: absolute;
+        background-color: transparent;
+    }
+    .slick-prev {
+        margin-left: 10px;
+        bottom: 50%;
+        right: 85%;
+        transform: translate(-50%,50%);
+        background-image: url('/arquivos/landing-gae-2019-angle-left-solid-white.png');
+    }
+    .slick-next {
+        bottom: 50%;
+        right: 0;
+        transform: translate(-50%,50%);
+        margin-right: 10px;
+        background-image: url('/arquivos/landing-gae-2019-angle-right-solid-white.png');
+    }
+}
+
+.garantia__item {
+    & {
+        background-color: $gray-light;
+        padding: 10px;
+        line-height: 30px;
+        width: 25%;
+    }
+    a {
+        position: relative;
+        border-radius: 50px;
+        border: 1px solid lighten($gray, 20);
+        text-align: center;
+        display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+
+        &:hover,
+        &:focus {
+            color: $white;
+            background-color: lighten($gray, 20);
+            transition: .2s ease;
+        }
+        &.-is-active {
+            & {
+                color: $white;
+                background-color: $brand;
+                border: 1px solid $brand;
+            }
+        }
+    }
+}
+
+.garantia__box {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+//-----------------
+// O que é
+//-----------------
+// Cobertura
+.cobertura__caption {
+
+    text-align: center;
+    br {
+        display: none;
+        @include laptop {
+            display: block;
+        }
+    }
+    span {
+        color: $brand;
+        font-weight: bold;
+    }
+}
+
+.cobertura__title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.cobertura__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 0 50px;
+    border-bottom: 1px solid $brand;
+
+    @include laptop {
+        border: none;
+        padding: 0;
+        text-align: left;
+        justify-content: space-around;
+    }
+}
+
+.cobertura__item {
+    & {
+        width: 100%;
+        margin-bottom: 10px;
+        @include laptop {
+            width: initial;
+        }
+    }
+
+    i {
+        display: block;
+        @include laptop {
+            float: left;
+        }
+    }
+}
+
+.cobertura__icone {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+}
+
+// Vantagens
+.vantagens__title {
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.vantagens__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.vantagens__item {
+    text-align: center;
+    width: 230px;
+
+    h4 {
+        margin-bottom: 10px;
+    }
+
+    h4,
+    a {
+        color: $brand;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    img {
+        width: 50px;
+    }
+}
+
+.vantagens__button {
+    @include button;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+//------------------
+// Como contratar
+//------------------
+.garantia__contratar {
+    position: relative;
+    padding: 0;
+
+    h3 {
+        text-transform: uppercase;
+    }
+}
+
+
+
+.contratar__title {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    left: 0;
+    background-color: $gray-light;
+    margin: 0 200px;
+}
+
+.contratar__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.contratar__item {
+    width: auto;
+    text-align: center;
+
+    @include laptop {
+        width: 430px;
+    }
+
+    a {
+        color: $brand;
+        text-decoration: underline;
+    }
+    img {
+        width: 50px;
+        height: auto;
+        margin-right: 10px;
+    }
+}
+
+.contratar__caption {
+    margin-top: 20px;
+    font-weight: bold;
+    span {
+        color: $brand;
+    }
+}
+
+.contratar__button {
+    @include button;
+    margin-top: 20px;
+}
+
+//-----------------
+// Garantia Acionar
+//-----------------
+.garantia__acionar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    p {
+        margin-bottom: 0;
+    }
+}
+
+.acionar__step-icon {
+    width: 70px!important;
+}
+
+.acionar__list {
+    text-align: left;
+    width: 100%;
+    @include laptop {
+        width: 55%;
+        padding: 40px;
+    }
+    &.-smaller {
+        @include laptop {
+            width: 35%;
+        }
+    }
+}
+
+.acionar__item {
+    position: relative;
+    margin-bottom: 20px;
+    img {
+        width: 30px;
+    }
+
+    i {
+        float: left;
+        margin-right: 10px;
+    }
+}
+
+.acionar__title {
+    position: absolute;
+    top: -60;
+    right: 0;
+    left: 0;
+    background-color: $gray-light;
+    text-align: center;
+}
+
+.acionar__step {
+    text-transform: uppercase;
+    color: $brand;
+    margin: 0;
+}
+
+.acionar__box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    p {
+        margin: 0 20px 0 0;
+    }
+}
+
+.acionar__button {
+    @include button;
+    font-size: 16px;
+}

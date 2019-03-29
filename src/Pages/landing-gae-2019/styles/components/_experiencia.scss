@@ -1,0 +1,174 @@
+//-------------
+// Experiẽncia
+//-------------
+
+.experiencia {
+
+    & {
+        margin: 20px 0;
+        padding: 20px;
+        
+        @include laptop {
+            padding: 0;
+        }
+    }
+
+    .wrap {
+        // background-color: $gray-light;
+        padding: 20px;
+    }
+}
+
+.experiencia form {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.experiencia h2 {
+    font-weight: bolder;
+    color: $brand;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+.experiencia .btn {
+    @include button;
+    margin-left: auto;
+}
+
+.experiencia textarea {
+    width: 100%;
+    vertical-align: middle;
+    height: 135px;
+    border: 0;
+    box-sizing: border-box;
+    padding: .5em 1em;
+    margin-bottom: 20px;
+    
+    @include laptop {
+        margin-right: 30px;
+        margin-bottom: 0;
+        width: calc(100% - 650px);
+    }
+}
+
+.experiencia__dados input {
+    
+    @include laptop {
+        width: calc(100% - 650px);
+    }
+
+    &:first-of-type {
+        margin-right: 30px;
+    }
+}
+
+.experiencia__avaliacao {
+    display: inline-block;
+    border: 1px solid $gray-footer;
+    color: $white;
+    vertical-align: middle;
+    width: 100%;
+    height: 135px;
+    padding: 13px;
+    
+    @include laptop {
+        padding: 20px;
+        width: calc(100% - 650px);
+    }
+
+    p {
+        line-height: 1.4em;
+        color: $gray-footer;
+        padding-bottom: 10px;
+        text-align: center;
+
+        @include laptop {
+            text-align: left;
+            line-height: normal;
+        }
+    }
+
+    label {
+        color: $gray-footer;
+        
+        span {
+            border-color: $gray-footer;
+        }
+    }
+
+}
+
+.experiencia__avalie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @include laptop {
+        justify-content: unset;
+    }
+}
+
+.experiencia__divulgacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin-top: 20px;
+    align-items: center;
+    padding: 0;
+
+    @include laptop {
+        padding: 0 100px;
+    }
+
+    p {
+        margin: 0 10px;
+    }
+
+    span {
+        border: 1px solid $brand!important;
+    }
+}
+
+.experiencia__avalie label,
+.experiencia__divulgacao label {
+    position: relative;
+    padding: 1px 7px 0px 20px;
+    line-height: .9;
+}
+
+.experiencia__avalie label input[type=radio],
+.experiencia__divulgacao label input[type=radio] {
+    display: none;
+}
+
+.experiencia__avalie label input[type=radio] + span,
+.experiencia__divulgacao label input[type=radio] + span {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 1px solid $gray-footer;
+}
+
+.experiencia__avalie label input[type=radio]:checked + span:before,
+.experiencia__divulgacao label input[type=radio]:checked + span:before{
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    background-color: $brand;
+    border: 1px solid $brand;
+}
