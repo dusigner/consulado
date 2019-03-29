@@ -141,6 +141,9 @@ Nitro.module('checkout.recurrence', function () {
 	 * Renderiza na tela o componente de botões (2 passos) de recorrência -> botões abrir modal e cancelar
 	 */
 	this.render = function () {
+
+		if (!self.orderForm) return;
+
 		$.each(self.orderForm.items, function (i, v) {
 			var $self = $($('.product-item').get(i)), //seleciona table>tr do produto no html
 				$attachmentContainer = $self.find('.add-item-attachment-container'), //container que deve renderizar o componente
