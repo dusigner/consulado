@@ -15,7 +15,10 @@
 /* @IMPORTS */
 // ===============================================================
 
+// Arquivos únicos nas demais páginas do site, porém
+// importados como "componentes" aqui no checkout
 @import './consul2-icons';
+@import './consul2-fonts';
 
 // Utility helpers
 @import 'helpers/variables';
@@ -26,7 +29,6 @@
 @import 'helpers/slick';
 
 // Base styles
-@import 'base/fonts';
 @import 'base/main';
 // Layout styles
 @import 'layout/container';

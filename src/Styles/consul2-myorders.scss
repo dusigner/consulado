@@ -1,22 +1,10 @@
 @charset 'UTF-8';
 
-// Utility helpers
-// @import 'helpers/variables';
-// @import 'helpers/functions';
-// @import 'helpers/mixins';
-
-// // Base styles
-// @import 'base/fonts';
-// @import 'base/main';
-
-// // Layout styles
-// @import 'layout/container';
-
-
 // ===============================================================
 /* ACCOUNT/ORDERS */
 // ===============================================================
 
+// Utility helpers
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
@@ -48,10 +36,6 @@
 
 
 body.orders-page {
-	/* bootstrap reset */
-	// @import 'base/type';
-	// @import 'layout/container';
-
 	a { text-decoration: none!important; }
 
 	.payment-connector { display: none!important; }
