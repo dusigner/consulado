@@ -12,6 +12,9 @@ $website-bg-color: #ffffff !default;
 // Enable font smoothing?
 $enable-font-smoothing: true !default;
 
+// Base fonf-family
+$base-font-family       : 'consul', 'Helvetica Neue',  Helvetica, Arial, sans-serif !default;
+$base-print-font-family : Georgia,  'Times New Roman', Times, serif !default;
 
 // Base font sizes and colors
 $base-font-size         : 16px !default;
@@ -25,7 +28,6 @@ $base-sub-heading-color : #808080 !default;
 $base-spacing-unit: $base-line-height !default;
 $half-spacing-unit: $base-spacing-unit / 2 !default;
 $line-height-ratio: $base-line-height / $base-font-size;
-
 
 $base-main: 1080px;
 
