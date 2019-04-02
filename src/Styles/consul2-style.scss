@@ -22,23 +22,12 @@
 @import 'helpers/normalize';
 @import 'helpers/animation';
 @import 'helpers/helpers';
-@import 'helpers/icons';
 @import 'helpers/conditional';
-@import 'helpers/debug';
-@import 'helpers/responsive-debug';
-@import 'helpers/family';
-
-// Utility helpers / Vendors
 @import 'helpers/slick';
 @import 'helpers/mfp-main';
-@import 'helpers/nouislider';
-@import 'helpers/nouislider';
-@import 'helpers/whp-modal';
 
 
 // Base styles
-@import 'base/fonts';
-@import 'base/print';
 @import 'base/main';
 @import 'base/vertical-rhythm';
 @import 'base/selection';

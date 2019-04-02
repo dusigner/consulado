@@ -52,7 +52,7 @@
 		}
 
 		#btn-client-pre-email {
-			@extend %single-transition;
+			@include singleTransition();
 			@include responsiveFont(14, 16, true);
 			background-color: $green;
 			background-image: none;

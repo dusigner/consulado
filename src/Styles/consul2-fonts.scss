@@ -1,3 +1,10 @@
+@charset 'UTF-8';
+
+// Imports
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
 // Base font-family
 @font-face {
 	font-family: 'consul';
@@ -22,3 +29,6 @@
 		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff') format('woff'),
 		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff2') format('woff2');
 }
+
+$base-font-family       : 'consul', 'Helvetica Neue',  Helvetica, Arial, sans-serif !default;
+$base-print-font-family : Georgia,  'Times New Roman', Times, serif !default;

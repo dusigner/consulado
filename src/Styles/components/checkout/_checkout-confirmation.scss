@@ -34,7 +34,7 @@ body[class*='consul'] {
 
 				#print-bank-invoice {
 					.link {
-						@extend %single-transition;
+						@include singleTransition();
 						@include responsiveFont(13, 16, true);
 						background: $green;
 						border: 1px solid $green;
@@ -367,7 +367,7 @@ body[class*='consul'] {
 
 				.cconf-myorders-button,
 				.cconf-continue-button {
-					@extend %single-transition;
+					@include singleTransition();
 					background: transparent;
 					border: 1px solid $green;
 					border-radius: 20px;
@@ -387,5 +387,5 @@ body[class*='consul'] {
 				}
 			}
 		}
-	}	
+	}
 }
