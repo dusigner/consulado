@@ -1,9 +1,23 @@
+'use strict';
 
-jQuery(function () {
+require('vendors/jquery.inputmask');
+require('vendors/jquery.form-validator');
+require('vendors/slick');
 
+var CRM = require('modules/store/crm');
+
+Nitro.controller('landing-gae', [], function () {
 
 	var width = jQuery(window).width(),
 		mobile = false;
+
+	var formGae = $('.contatos__fale form');
+	var formGaeinputs = formGae.find('input[type="text"]');
+
+	$.validate({
+		validateOnBlur : true,
+		scrollToTopOnError : false
+	});
 
 	if (width < 1024) {
 
@@ -96,12 +110,6 @@ jQuery(function () {
 		return false;
 	});
 
-	jQuery('.-enviar').on('click', function () {
-		jQuery('.avalie-garantia').removeClass('-is-active');
-		jQuery('.form-submit, .mascara-garantia').addClass('-is-active');
-		return false;
-	});
-
 	jQuery('.-condicoes').on('click', function () {
 		jQuery('.condicoes-gerais, .mascara-garantia').addClass('-is-active');
 		return false;
@@ -137,4 +145,66 @@ jQuery(function () {
 		jQuery(this).val(texto);
 
 	});
+
+
+	var Index = {
+		init: function () {
+			Index.serviceForm();
+		},
+
+		emailValidation: function (email){
+			var rx = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/;
+
+			return rx.test(email);
+		},
+
+		transformForminObj: function(obj) {
+			var fsplit = obj.split('&');
+			var ssplit = {};
+
+			var i = 0;
+			var t = fsplit.length;
+
+			for(i; i<t; i++){
+				var splited = fsplit[i].replace('%40', '@').replace( new RegExp('\\+','gm'), ' ').split('=');
+				ssplit[splited[0]] = splited[1];
+			}
+
+			return ssplit;
+		},
+
+		serviceForm: function() {
+			console.log('tttteste');
+			$('#telefone-gae').inputmask('(99) 9999[9]-9999');
+
+			formGae.on('submit', function (e){
+				e.preventDefault();
+
+				// formGae.addClass('gae-form-is-sended');
+
+				if ( formGaeinputs.hasClass('valid') ) {
+
+					var data = formGae.serialize();
+					var obj  = Index.transformForminObj(data);
+
+					CRM.insertClientGE(obj).done(function () {
+
+						$('#nome-gae').val('');
+						$('#email-gae').val('');
+						$('#horario-gae').val('');
+						$('#telefone-gae').val('');
+
+						formGae.addClass('gae-form-is-sended');
+						jQuery('.avalie-garantia').removeClass('-is-active');
+						jQuery('.form-submit, .mascara-garantia').addClass('-is-active');
+
+					});
+				}
+			});
+		}
+	};
+
+	Index.init();
+
 });
+

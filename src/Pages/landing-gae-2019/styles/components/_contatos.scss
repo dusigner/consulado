@@ -4,10 +4,19 @@
 
 .contatos {
 
+
     @include laptop {
         display: flex;
         flex-flow: wrap;
         justify-content: center;
+    }
+    position: relative;
+
+    .help-block {
+        color: #fd7878;
+		left: 5px;
+        position: absolute;
+		top: -22px;
     }
 
     .contatos__fale {
@@ -42,19 +51,26 @@
         }
 
         .contatos__inputs {
-            @include laptop {
-                display: flex;
-                flex-flow: nowrap;
+			@include laptop {
+				display: flex;
+				flex-flow: nowrap;
+				justify-content: space-between;
+				& > div {
+					flex-grow: 1;
+					padding: 0 5px;
+				}
 
                 & > input {
-                    margin-right: 20px;
+					margin-right: 20px;
+					width: 100%;
 
                     &:last-child {
-                        margin-right: 0;
+						margin-right: 0;
                         width: 50%;
                     }
                 }
             }
+			margin: 0 -5px;
         }
 
         .contatos__row {
@@ -76,7 +92,13 @@
                     margin: 0 0 50px;
                 }
                 margin: 0 0 15px;
-            }
+			}
+
+			.help-block {
+				bottom: -20px;
+				top: inherit;
+				width: 200px;
+			}
 
             p,
             label {
