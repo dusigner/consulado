@@ -7,7 +7,7 @@
     & {
         margin: 20px 0;
         padding: 20px;
-        
+
         @include laptop {
             padding: 0;
         }
@@ -25,11 +25,11 @@
 }
 
 .experiencia h2 {
-    font-weight: bolder;
     color: $brand;
+    font-weight: bolder;
+    margin: 20px 0;
     text-align: center;
     text-transform: uppercase;
-    margin: 20px 0;
 }
 
 .experiencia .btn {
@@ -38,23 +38,23 @@
 }
 
 .experiencia textarea {
-    width: 100%;
-    vertical-align: middle;
-    height: 135px;
     border: 0;
     box-sizing: border-box;
-    padding: .5em 1em;
+    height: 135px;
     margin-bottom: 20px;
-    
+    padding: .5em 1em;
+    vertical-align: middle;
+    width: 100%;
+
     @include laptop {
-        margin-right: 30px;
         margin-bottom: 0;
+        margin-right: 30px;
         width: calc(100% - 650px);
     }
 }
 
 .experiencia__dados input {
-    
+
     @include laptop {
         width: calc(100% - 650px);
     }
@@ -65,34 +65,34 @@
 }
 
 .experiencia__avaliacao {
-    display: inline-block;
     border: 1px solid $gray-footer;
     color: $white;
-    vertical-align: middle;
-    width: 100%;
+    display: inline-block;
     height: 135px;
     padding: 13px;
-    
+    vertical-align: middle;
+    width: 100%;
+
     @include laptop {
         padding: 20px;
         width: calc(100% - 650px);
     }
 
     p {
-        line-height: 1.4em;
         color: $gray-footer;
+        line-height: 1.4em;
         padding-bottom: 10px;
         text-align: center;
 
         @include laptop {
-            text-align: left;
             line-height: normal;
+            text-align: left;
         }
     }
 
     label {
         color: $gray-footer;
-        
+
         span {
             border-color: $gray-footer;
         }
@@ -111,11 +111,11 @@
 }
 
 .experiencia__divulgacao {
+    align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
     margin-top: 20px;
-    align-items: center;
     padding: 0;
 
     @include laptop {
@@ -133,9 +133,9 @@
 
 .experiencia__avalie label,
 .experiencia__divulgacao label {
-    position: relative;
-    padding: 1px 7px 0px 20px;
     line-height: .9;
+    padding: 1px 7px 0px 20px;
+    position: relative;
 }
 
 .experiencia__avalie label input[type=radio],
@@ -145,30 +145,30 @@
 
 .experiencia__avalie label input[type=radio] + span,
 .experiencia__divulgacao label input[type=radio] + span {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    display: block;
-    width: 14px;
-    height: 14px;
-    border-radius: 100%;
-    background-color: transparent;
+	background-color: transparent;
     border: 1px solid $gray-footer;
+    border-radius: 100%;
+    bottom: 0;
+    display: block;
+    height: 14px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 14px;
 }
 
 .experiencia__avalie label input[type=radio]:checked + span:before,
 .experiencia__divulgacao label input[type=radio]:checked + span:before{
-    content: '';
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 100%;
     background-color: $brand;
     border: 1px solid $brand;
+    border-radius: 100%;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 6px;
+    position: absolute;
+    right: 0;
+    transform: translate(-50%, -50%);
+    width: 6px;
 }

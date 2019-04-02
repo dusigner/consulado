@@ -60,74 +60,74 @@ $quar-color: $brand;
 $quar-border: $brand;
 //-------------------------
 @mixin button {
-    width: auto;
-    display: inline-block;
     background-color: $pri-background;
+    border-radius: 50px;
     border: 2px solid $pri-border;
-    font-weight: 600;
     color: $pri-color;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
     line-height: 0px;
     padding: 20px 40px;
-    text-transform: uppercase;
-    text-decoration: none;
     text-align: center;
-    border-radius: 50px;
-    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
     transition: all .25s ease-out;
+    width: auto;
 
     &:hover {
-        color: $pri-hover-color;
         background-color: $pri-hover-background;
         border: 2px solid $pri-hover-border;
+        color: $pri-hover-color;
         text-decoration: none;
     }
     &.-secundary {
-        font-weight: normal;
         background-color: $sec-background;
-        color: $sec-color;
         border: 2px solid $sec-border;
+        color: $sec-color;
+        font-weight: normal;
         transition: all .25s ease-out;
-        
+
         &:hover {
-            color: $sec-hover-color;
             background-color: $sec-hover-background;
             border: 2px solid $sec-hover-border;
+            color: $sec-hover-color;
             text-decoration: none;
         }
     }
     &.-tertiary {
-        font-weight: normal;
         background-color: $ter-background;
-        color: $ter-color;
         border: 2px solid $ter-border;
+        color: $ter-color;
+        font-weight: normal;
         text-transform: uppercase;
         transition: all .25s ease-out;
-        
+
         &:hover {
-            color: $ter-hover-color;
             background-color: $ter-hover-background;
             border: 2px solid $ter-hover-border;
+            color: $ter-hover-color;
             text-decoration: none;
         }
     }
     &.-quaternary {
+        background-color: $quar-background;
+        border: 2px solid $quar-border;
+        color: $quar-color;
         font-weight: normal;
         text-transform: capitalize;
-        background-color: $quar-background;
-        color: $quar-color;
-        border: 2px solid $quar-border;
     }
 }
 
 //-----------------
-// 
+//
 //-----------------
 %input {
     label {
         & {
-            position: relative;
-            padding: 0 0 0 20px;
             line-height: .9;
+            padding: 0 0 0 20px;
+            position: relative;
         }
         input[type=radio] {
             & {
@@ -135,30 +135,30 @@ $quar-border: $brand;
                 display: none;
             }
             &+span {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                display: block;
-                width: 14px;
-                height: 14px;
-                border-radius: 100%;
                 background-color: transparent;
                 border: 1px solid $gray-dark;
-            }
-            &:checked+span:before {
-                content: '';
+                border-radius: 100%;
+                bottom: 0;
                 display: block;
+                height: 14px;
+                left: 0;
                 position: absolute;
                 right: 0;
-                bottom: 0;
-                transform: translate(-50%, -50%);
-                width: 6px;
-                height: 6px;
-                border-radius: 100%;
+                top: 0;
+                width: 14px;
+            }
+            &:checked+span:before {
                 background-color: $brand;
                 border: 1px solid $brand;
+                border-radius: 100%;
+                bottom: 0;
+                content: '';
+                display: block;
+                height: 6px;
+                position: absolute;
+                right: 0;
+                transform: translate(-50%, -50%);
+                width: 6px;
             }
         }
     }

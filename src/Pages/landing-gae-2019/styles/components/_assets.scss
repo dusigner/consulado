@@ -6,7 +6,7 @@
 // Colors
 
 $white: #fff;
-$orange: #ff7f02; 
+$orange: #ff7f02;
 $green: #9aca3c;
 $blue: #00b5dc;
 $purple: #752e90;
@@ -42,24 +42,24 @@ $footer-layer-03: $gray-footer-dark;
 
 @font-face {
     font-family: 'consul_co_headlinebold';
-    src: url('../../fonts/consulcoheadline_std_bd-webfont.ttf');
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_bd-webfont.ttf');
 }
 
 @font-face {
     font-family: 'consul_co_headline_lightRg';
-    src: url('../../fonts/consulcoheadline_std_lt-webfont.ttf');    
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_lt-webfont.ttf');
 
 }
 
 @font-face {
     font-family: 'consul_co_headlineregular';
-    src: url('../../fonts/consulcoheadline_std_rg-webfont.ttf');    
-    font-weight: normal;
     font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_rg-webfont.ttf');
 }
 
 
