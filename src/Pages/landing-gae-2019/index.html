@@ -12,8 +12,6 @@
 	<!-- @endif -->
 
 	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/consul.css?v=<!-- @echo package.version -->" />
-	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/slick.css?v=<!-- @echo package.version -->" />
 	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/landing-gae-2019.css?v=<!-- @echo package.version -->" />
 </head>
 
@@ -32,6 +30,7 @@
 
 	<main>
 
+		<!-- @if DEBUG=true -->
 		<a class="banner -comprar" href="#">
 			<picture class="banner__picture">
 				<source media="(min-width: 650px)" srcset="/arquivos/landing-gae-2019-banner-consul-desktop.png">
@@ -39,6 +38,18 @@
 				<img class="banner__image" src="/arquivos/landing-gae-2019-banner-consul-mobile.png" alt="Banner de Consul">
 			</picture>
 		</a>
+		<!-- @endif -->
+
+		<div class="banner -comprar">
+			<picture class="banner__picture -desktop">
+				<vtex:contentPlaceHolder id="BannerDesktop" />
+			</picture>
+			<picture class="banner__picture -mobile">
+				<vtex:contentPlaceHolder id="BannerMobile" />
+			</picture>
+		</div>
+
+
 
 		<section class="garantia">
 			<div class="wrap">
@@ -60,13 +71,9 @@
 							</p>
 							<h3>Cobertura</h3>
 							<ul class="cobertura__list">
-								<li class="cobertura__item"><i><img class="cobertura__icone"
-											src="/arquivos/landing-gae-2019-casa-01.png" alt=""></i>Assistência Técnica</li>
-								<li class="cobertura__item"><i><img class="cobertura__icone"
-											src="/arquivos/landing-gae-2019-engrenagem-01.png" alt=""></i>Peças Originais</li>
-								<li class="cobertura__item"><i><img class="cobertura__icone"
-											src="/arquivos/landing-gae-2019-setas-01.png" alt=""></i>Troca de produto por outro igual
-									ou similar<small><br>Em caso de impossibilidade de reparo coberto.</small></li>
+								<li class="cobertura__item"><i><img class="cobertura__icone" src="/arquivos/landing-gae-2019-casa-01.png" alt="" /></i>Assistência Técnica</li>
+								<li class="cobertura__item"><i><img class="cobertura__icone" src="/arquivos/landing-gae-2019-engrenagem-01.png" alt="" /></i>Peças Originais</li>
+								<li class="cobertura__item"><i><img class="cobertura__icone" src="/arquivos/landing-gae-2019-setas-01.png" alt="" /></i>Troca de produto por outro igual ou similar<small><br />Em caso de impossibilidade de reparo coberto.</small></li>
 							</ul>
 						</div>
 
@@ -75,7 +82,7 @@
 							<ul class="vantagens__list">
 								<li class="vantagens__item">
 									<i>
-										<img src="/arquivos/landing-gae-2019-economia-01.png" alt="Ícone de Economia">
+										<img src="/arquivos/landing-gae-2019-economia-01.png" alt="Ícone de Economia" />
 									</i>
 									<h4>Mais economia</h4>
 									<p>A Garantia Estendida Original pode ser mais barata do que o conserto do produto.
@@ -83,14 +90,14 @@
 								</li>
 								<li class="vantagens__item">
 									<i>
-										<img src="/arquivos/landing-gae-2019-tranquilidade-01.png" alt="Ícone de Tranquilidade">
+										<img src="/arquivos/landing-gae-2019-tranquilidade-01.png" alt="Ícone de Tranquilidade" />
 									</i>
 									<h4>Mais tranquilidade</h4>
 									<p>Proteção por até mais 3 anos após a garantia de fábrica, com a mesma cobertura.</p>
 								</li>
 								<li class="vantagens__item">
 									<i>
-										<img src="/arquivos/landing-gae-2019-seguranca.png" alt="Ícone de Segurança">
+										<img src="/arquivos/landing-gae-2019-seguranca.png" alt="Ícone de Segurança" />
 									</i>
 									<h4>Mais segurança</h4>
 									<p>Consertos com assistências técnicas de qualidade e peças originais. Se não for
@@ -98,7 +105,7 @@
 								</li>
 								<li class="vantagens__item">
 									<i>
-										<img src="/arquivos/landing-gae-2019-qualidade-01.png" alt="Ícone de Qualidade">
+										<img src="/arquivos/landing-gae-2019-qualidade-01.png" alt="Ícone de Qualidade" />
 									</i>
 									<h4>Mais qualidade</h4>
 									<p>Assistências técnicas em todo Brasil com <a class="como-acionar"
@@ -116,14 +123,14 @@
 								<legend>Entenda como obter o seguro Garantia Estendida Original</legend>
 								<ul class="contratar__list">
 									<li class="contratar__item">
-										<i><img src="/arquivos/landing-gae-2019-compre-junto-01.png" alt=""></i>
+										<i><img src="/arquivos/landing-gae-2019-compre-junto-01.png" alt="" /></i>
 										<h3>Compre junto com o produto</h3>
 										<p>Assim que você comprar seu produto Consul, você pode escolher o plano ideal de
 											Garantia Estendida e adicionar ao carrinho. Clique aqui, escolha seu produto.
 											Após a compra com Garantia Estendida, você receberá seu bilhete por email.</p>
 									</li>
 									<li class="contratar__item">
-										<i><img src="/arquivos/landing-gae-2019-compra-avulsa-01.png" alt=""></i>
+										<i><img src="/arquivos/landing-gae-2019-compra-avulsa-01.png" alt="" /></i>
 										<h3>Compra independente</h3>
 										<p>Ainda não possui Garantia Estendida? Caso já tenha seu produto adquirido na Loja
 											Consul e tenha até 11 meses após a data de emissão da nota fiscal, clique aqui
@@ -135,7 +142,7 @@
 						</div>
 						<div class="contratar__box">
 							<p class="contratar__caption">Para a Garantia Estendida Original você pode escolher entre os
-								planos de <br><span><b>1 ano</b></span>, <span><b>2 anos</b></span> ou <span><b>3
+								planos de <br />/><span><b>1 ano</b></span>, <span><b>2 anos</b></span> ou <span><b>3
 										anos</b></span> após a garantia de fábrica.</p>
 							<a class="contratar__button -comprar" href="#">Contratar</a>
 						</div>
@@ -149,10 +156,10 @@
 								<ul>
 									<li class="acionar__item">
 										<i>
-											<img src="/arquivos/landing-gae-2019-" alt="">
+											<img src="/arquivos/landing-gae-2019-" alt="" />
 										</i>
 										<i>
-											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-1.png" alt="">
+											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-1.png" alt="" />
 										</i>
 										<h4 class="acionar__step">Ligue na seguradora:</h4>
 										<p>Se o seu produto está no período de Garantia Estendida Original e apresentou
@@ -160,10 +167,10 @@
 									</li>
 									<li class="acionar__item">
 										<i>
-											<img src="/arquivos/landing-gae-2019-" alt="">
+											<img src="/arquivos/landing-gae-2019-" alt="" />
 										</i>
 										<i>
-											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-2.png" alt="">
+											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-2.png" alt="" />
 										</i>
 										<h4 class="acionar__step">Avaliação do técnico</h4>
 										<p>Será aberto o protocolo de atendimento para que o técnico avalie o seu produto.
@@ -171,10 +178,10 @@
 									</li>
 									<li class="acionar__item">
 										<i>
-											<img src="/arquivos/landing-gae-2019-" alt="">
+											<img src="/arquivos/landing-gae-2019-" alt="" />
 										</i>
 										<i>
-											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-3.png" alt="">
+											<img class="acionar__step-icon" src="/arquivos/landing-gae-2019-3.png" alt="" />
 										</i>
 										<h4 class="acionar__step">Problema resolvido:</h4>
 										<p>Será feito reparo ou será realizada a troca do seu produto. Viu como é fácil? Bem
@@ -184,27 +191,27 @@
 							</fieldset>
 
 							<fieldset class="acionar__list">
-								<legend>Contato para acionar <br> garantia estendida original assurant</legend>
+								<legend>Contato para acionar <br /> garantia estendida original assurant</legend>
 								<ul>
 									<li class="acionar__item">
-										<i><img src="/arquivos/landing-gae-2019-telefone-maior-01.png" alt=""></i>
-										<h4>SAC<br> Serviço de Atendimento ao Cliente</h4>
-										<p>Sugestões, informações, reclamações e abertura de sinistros:<br> <span><b>0800
+										<i><img src="/arquivos/landing-gae-2019-telefone-maior-01.png" alt="" /></i>
+										<h4>SAC<br /> Serviço de Atendimento ao Cliente</h4>
+										<p>Sugestões, informações, reclamações e abertura de sinistros:<br /> <span><b>0800
 													773 3588</b></span></p>
 										<p>Horário de atendimento para abertura de sinistros:</p>
 										<p>Das 8h às 20h - De segunda à sábado</p>
 										<p>Horário de atendimento do SAC: 24h por dia, 7 dias por semana</p>
 									</li>
 									<li class="acionar__item">
-										<i><img src="/arquivos/landing-gae-2019-telefone-mao-01.png" alt=""></i>
-										<h4>SAC e Ouvidoria para<br> Pessoa com Deficiência Auditiva ou de Fala</h4>
+										<i><img src="/arquivos/landing-gae-2019-telefone-mao-01.png" alt="" /></i>
+										<h4>SAC e Ouvidoria para<br /> Pessoa com Deficiência Auditiva ou de Fala</h4>
 										<p><b>0800 726 6363</b></p>
 										<p>Horário de atendimento para abertura de sinistros:</p>
 										<p>Das 8h às 20h - De segunda à sábado</p>
 										<p>Horário de atendimento do SAC: 24h por dia, 7 dias por semana.</p>
 									</li>
 									<li class="acionar__item">
-										<i><img src="/arquivos/landing-gae-2019-fone-ouvido-01.png" alt=""></i>
+										<i><img src="/arquivos/landing-gae-2019-fone-ouvido-01.png" alt="" /></i>
 										<h4>Ouvidoria</h4>
 										<p>Canal de comunicação entre o cliente e a seguradora para mediar situações de
 											conflito. Caso já tenha registrado sua reclamação no SAC e não esteja
@@ -340,8 +347,7 @@
 											<p>Não é preciso de avaliação de técnicos para contratar a Garantia Estendida
 												Original. Quando for realizar a contratação e o acionamento da Garantia
 												Estendida Original, tenha em mãos seus documentos pessoais e a nota fiscal
-												do seu produto comprado em nossa <a target="_blank"
-													href="https://loja.consul.com.br">Loja Online</a>.
+												do seu produto comprado em nossa <a target="_blank"	href="https://loja.consul.com.br">Loja Online</a>.
 											</p>
 
 										</div>
@@ -371,7 +377,7 @@
 			<div class="wrap">
 				<div class="opiniao__field">
 					<h2 class="opiniao__title">Opinião de quem usa</h2>
-					<h3>Veja o que estão falando sobre a <br>Garantia Estendida Original</h3>
+					<h3>Veja o que estão falando sobre a <br />Garantia Estendida Original</h3>
 					<div class="opiniao__frame">
 						<iframe width="460" height="260" src="https://www.youtube.com/embed/TmmKsT-f2XU" frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -581,7 +587,7 @@
 
 		<div class="naologado-garantia">
 			<a class="close" href="#">x</a>
-			<img src="/arquivos/landing-gae-2019-tristeza.jpg" alt="Tristeza">
+			<img src="/arquivos/landing-gae-2019-tristeza.jpg" alt="Tristeza" />
 			<p>A Garantia Estendida Original é para clientes exclusivos da <b>Loja Consul</b></p>
 			<a class="btn -secundary" href="#">Veja as vantagens de adquirir a <b>Garantia Estendida Original Consul</b></a>
 		</div>

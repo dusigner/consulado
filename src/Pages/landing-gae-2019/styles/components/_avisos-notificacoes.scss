@@ -2,7 +2,7 @@
 // Avisos e notificações
 //----------------------
 .mascara-garantia {
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     height: 0;
     left: 0;
     opacity: 0;
@@ -13,7 +13,7 @@
     z-index: 20;
 
     &.-is-active {
-        background-color: rgba(0,0,0,.4);
+        background-color: rgba(0, 0, 0, .4);
         height: 100%;
         opacity: 1;
         transition: .5s opacity, .5s background-color;
