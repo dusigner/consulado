@@ -2,11 +2,11 @@
 // Generics
 //---------------
 
-*, 
+*,
 :after,
 :before {
-   margin: 0;
-   box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
 }
 
 body:not(.produto) {
@@ -14,8 +14,8 @@ body:not(.produto) {
 }
 
 body:not(.produto) header {
-    position: relative;
     padding: 0;
+    position: relative;
 }
 
 header {
@@ -23,30 +23,19 @@ header {
 }
 
 .wrap {
-    padding: 0 20px;
 
-    @include laptop {
+	@include laptop {
+		margin: 0 auto;
         max-width: 1100px;
-        margin: 0 auto;
         padding: 0;
     }
+	padding: 0 20px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-p,
-a {
-    color: $gray-dark;
-    font-family: $f-cns-regular;
-}
 
 a {
-    cursor: pointer;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 h1 {
@@ -61,7 +50,6 @@ h2 {
 }
 
 h3 {
-    font-family: $f-cns-regular;
     font-size: 1.17em;
     line-height: 1.2em;
 }
@@ -81,29 +69,14 @@ h6 {
     line-height: 1.2em;
 }
 
-p {
-    font-family: $f-cns-light;
-    font-size: .9em;
-    font-weight: normal;
-}
-
 //-----------------
 
 small {
     font-size:  75%;
 }
 
-img {
-    width: 100%;
-}
-
-
 ol {
     list-style-type: none;
-}
-
-a {
-    text-decoration: none;
 }
 
 a:hover {
@@ -112,21 +85,20 @@ a:hover {
 
 h3,
 legend {
-    font: 16px/1.5 $f-cns-regular;
-    font-weight: bold;
-    text-transform: uppercase;
     color: $gray;
+    font: 16px/1.5;
+    font-weight: bold;
 }
 
 fieldset {
-    
-    border: none;
 
-    @include laptop {
-        border: 1px solid $purple;
+
+	@include laptop {
+		border: 1px solid $purple;
         border-radius: 40px;
         padding: 40px 0;
     }
+	border: none;
 
 }
 
@@ -135,12 +107,13 @@ button {
 }
 
 legend {
-    padding: 0 10px;
     font-size: 16px;
+    padding: 0 10px;
     text-align: center;
 }
 
-ul, ol {
+ul,
+ol {
     list-style: none;
     padding: 0;
 }
@@ -149,7 +122,11 @@ label {
     margin-bottom: 0;
 }
 
-input[type=email], input[type=password], input[type=tel], input[type=text], textarea {
+input[type=email],
+input[type=password],
+input[type=tel],
+input[type=text],
+textarea {
     background-color: #f1f1f1;
     border: 0;
     box-sizing: border-box;

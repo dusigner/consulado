@@ -5,7 +5,22 @@
 
 .banner {
     display: block;
-    margin-bottom: 10px;
+	margin-bottom: 10px;
+	img {
+		height: auto;
+		width: 100%;
+	}
+	.-desktop {
+		@include tablet-p {
+			display: block;
+		}
+		display: none;
+	}
+	.-mobile {
+		@include tablet-p {
+			display: none;
+		}
+	}
 }
 
 .banner__image {
