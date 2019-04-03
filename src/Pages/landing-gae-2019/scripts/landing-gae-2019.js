@@ -39,7 +39,7 @@ Nitro.controller('landing-gae', [], function () {
 
 	if (modulo) {
 
-		jQuery(this).find('.perguntas-frequentes__item').on('click', function () {
+		modulo.find('.perguntas-frequentes__item').on('click', function () {
 
 			if (jQuery(this).hasClass('-is-active')) {
 				jQuery(this).removeClass('-is-active');
