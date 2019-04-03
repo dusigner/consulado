@@ -11,9 +11,6 @@ Nitro.controller('landing-gae', [], function () {
 	var width = jQuery(window).width(),
 		mobile = false;
 
-	var formGae = $('.contatos__fale form');
-	var formGaeinputs = formGae.find('input[type="text"]');
-
 	$.validate({
 		validateOnBlur : true,
 		scrollToTopOnError : false
@@ -88,12 +85,12 @@ Nitro.controller('landing-gae', [], function () {
 		return false;
 	});
 
-	jQuery('.-comprar').on('click', function () {
+	/* jQuery('.-comprar').on('click', function () {
 		if (jQuery('body').hasClass('-nao-logado')) {
 			jQuery('.naologado-garantia, .mascara-garantia').addClass('-is-active');
 			return false;
 		}
-	});
+	}); */
 
 	jQuery('.planos__veja-mais').on('click', function () {
 		jQuery('.table__tbody').toggleClass('-is-active');
@@ -146,10 +143,16 @@ Nitro.controller('landing-gae', [], function () {
 
 	});
 
+	var formGae = $('.contatos__fale form');
+	var formGaeinputs = formGae.find('input[type="text"]');
+	var formOpiniao = $('.experiencia form');
+	var formOpiniaoInputs = formOpiniao.find('input[type="text"],textarea');
+
 
 	var Index = {
 		init: function () {
 			Index.serviceForm();
+			Index.opinionForm();
 		},
 
 		emailValidation: function (email){
@@ -174,13 +177,10 @@ Nitro.controller('landing-gae', [], function () {
 		},
 
 		serviceForm: function() {
-			console.log('tttteste');
 			$('#telefone-gae').inputmask('(99) 9999[9]-9999');
 
 			formGae.on('submit', function (e){
 				e.preventDefault();
-
-				// formGae.addClass('gae-form-is-sended');
 
 				if ( formGaeinputs.hasClass('valid') ) {
 
@@ -195,6 +195,32 @@ Nitro.controller('landing-gae', [], function () {
 						$('#telefone-gae').val('');
 
 						formGae.addClass('gae-form-is-sended');
+						jQuery('.avalie-garantia').removeClass('-is-active');
+						jQuery('.form-submit, .mascara-garantia').addClass('-is-active');
+
+					});
+				}
+			});
+		},
+
+		opinionForm: function () {
+			formOpiniao.on('submit', function (e) {
+				e.preventDefault();
+
+				if (formOpiniaoInputs.hasClass('valid')) {
+
+					var data = formOpiniao.serialize();
+					var obj = Index.transformForminObj(data);
+
+					CRM.ajax({
+						url: CRM.formatUrl('OG', 'documents'),
+						type: 'PATCH',
+						data: JSON.stringify(obj)
+					}).done(function () {
+
+						formOpiniaoInputs.val('');
+
+						formOpiniao.addClass('gae-form-is-sended');
 						jQuery('.avalie-garantia').removeClass('-is-active');
 						jQuery('.form-submit, .mascara-garantia').addClass('-is-active');
 
