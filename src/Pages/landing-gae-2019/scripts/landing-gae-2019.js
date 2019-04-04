@@ -4,9 +4,12 @@ require('vendors/jquery.inputmask');
 require('vendors/jquery.form-validator');
 require('vendors/slick');
 
+import DataLayer from './modules/dataLayer';
+
 var CRM = require('modules/store/crm');
 
 Nitro.controller('landing-gae', [], function () {
+
 
 	var width = jQuery(window).width(),
 		mobile = false;
@@ -51,14 +54,15 @@ Nitro.controller('landing-gae', [], function () {
 
 	}
 
-	modulo = jQuery('.garantia');
+	const garantia = jQuery('.garantia');
 
-	if (modulo) {
+	if (garantia) {
 
-		var menu = modulo.find('.garantia__select');
-		var conteudo = modulo.find('.garantia__modulo');
+		var menu = garantia.find('.garantia__select');
+		var conteudo = garantia.find('.garantia__modulo');
 
 		menu.find('li a').on('click', function () {
+
 
 			conteudo.removeClass('-is-active');
 			menu.find('li a').removeClass('-is-active');
@@ -231,6 +235,9 @@ Nitro.controller('landing-gae', [], function () {
 	};
 
 	Index.init();
+
+	const dataLayer = new DataLayer;
+	dataLayer.setup();
 
 });
 
