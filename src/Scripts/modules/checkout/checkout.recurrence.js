@@ -220,7 +220,7 @@ Nitro.module('checkout.recurrence', function () {
 						var mobileTip = '<div class="recurrence__tip--mobile">' +
 							'<button type="button" data-dismiss="modal" aria-label="Close" class="close i-close js-close-tip"><i class="icon icon-remove item-remove-ico"></i></button>' +
 							'<p class="recurrence__tip--title">Compra Recorrente</p>' +
-							'<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>' +
+							'<p>A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma, você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.</p>' +
 							'<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>' +
 							'<p><strong>Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.</strong></p>' +
 							'</div>';
