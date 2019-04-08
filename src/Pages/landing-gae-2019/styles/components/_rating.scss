@@ -1,0 +1,25 @@
+
+.rating {
+    & {
+        display: inline-block;
+        margin-top: 20px;
+    }
+}
+
+.rating__star {
+    & {
+        content: '';
+        display: inline-block;
+        background-image: url('/arquivos/landing-gae-2019-star-solid.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+    }
+
+    &.-is-active {
+        background-image: url('/arquivos/landing-gae-2019-star-solid-active.png');
+    }
+}
