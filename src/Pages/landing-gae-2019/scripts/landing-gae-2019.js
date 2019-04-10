@@ -34,7 +34,18 @@ Nitro.controller('landing-gae', [], function () {
 			slidesToScroll: 1,
 			centerPadding: '0',
 			variableWidth: false,
-			centerMode: true
+			centerMode: true,
+			asNavFor: '.garantia__modulos'
+		});
+
+		$('.garantia__modulos').slick({
+			infinite: true,
+			arrows: false,
+			dots: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			adaptiveHeight: true,
+			asNavFor: '.garantia__select'
 		});
 	}
 
