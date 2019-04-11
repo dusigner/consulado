@@ -1,0 +1,24 @@
+// Colors
+//
+$c1:	#9ACA3c;
+$c2:	#90b447;
+$c3:	#736c6b;
+$c4:	transparentize($c3, 20);
+$c5:	transparentize($c3, 10);
+$c13: #FFFFFF;
+
+// secondary
+$c6: #702F8F;
+$c7: #007DC4;
+$c8: #0FB6DE;
+$c9: #EC008C;
+$c10: #FCB816;
+$c11: #9B1C29;
+$c12: #7D3C1F;
+
+// Typography
+//
+
+@import '_font-face';
+// Font, line-height, and color for body text, headings, and more.
+$font-family-base: 'consul';
