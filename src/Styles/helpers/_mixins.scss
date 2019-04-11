@@ -18,6 +18,8 @@
 @import 'bootstrap/mixins/forms';
 @import 'bootstrap/mixins/opacity';
 
+@import 'helpers/functions';
+
 
 // div { transition: |property| |duration| |timing-function| |delay|; }
 @mixin singleTransition($time: 250) {
