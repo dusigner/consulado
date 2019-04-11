@@ -1,7 +1,5 @@
-// BOOTSTRAP
-
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/mixins";
+// BOOTSTRAP GRID
 @import 'bootstrap/scss/bootstrap-grid';
-//@import 'bootstrap/scss/utilities';
+
+//SECTIONS
+@import 'components/section-banner';
