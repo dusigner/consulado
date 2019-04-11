@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul-landing-embutir.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="landing-gae">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-top-header" />
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
+
+	<main>
+
+		<section id="banner">
+			<picture>
+				<img src="/arquivos/cns-landing-embutir-banner@2x.jpg" alt="consul linha de embutir" class="d-none d-lg-block" />
+				<img src="/arquivos/cns-landing-embutir-banner-mobile@2x.jpg" alt="consul linha de embutir" class="d-block d-lg-none" />
+			</picture>
+
+		</section>
+
+	</main>
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+
+	<!-- Footer -->
+	<vtex:template id="0-consul-footer" />
+	<!-- /Footer -->
+</body>
+
+</html>
