@@ -1,0 +1,20 @@
+//--------------
+// Destaque
+//--------------
+
+.destaque {
+    
+    & {
+        padding: 20px;
+    }
+
+    .wrap {
+        text-align: center;
+    }
+
+    img {
+        @include laptop {
+            width: auto;
+        }
+    }
+}

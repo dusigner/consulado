@@ -1,0 +1,129 @@
+//----------------------
+// Avisos e notificações
+//----------------------
+.mascara-garantia {
+    background-color: rgba(0, 0, 0, .4);
+    height: 0;
+    left: 0;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    transition: .5s opacity .5s, background-color;
+    width: 100%;
+    z-index: 20;
+
+    &.-is-active {
+        background-color: rgba(0, 0, 0, .4);
+        height: 100%;
+        opacity: 1;
+        transition: .5s opacity, .5s background-color;
+    }
+}
+
+.naologado-garantia {
+    background-color: #fff;
+    display: none;
+    left: 50%;
+    max-width: 750px;
+    padding: 40px 30px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 21;
+    p {
+        margin: 0 0 20px!important;
+    }
+    .close {
+        color: $brand;
+        font: 16px $f-btp;
+        font-weight: bolder;
+        padding: 10px 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    img {
+        display: block;
+        margin: 0 auto 20px;
+        width: auto;
+    }
+    .btn {
+        @include button;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0 auto!important;
+    }
+    &.-is-active {
+        display: block;
+    }
+}
+
+.condicoes-gerais,
+.form-submit,
+.avalie-garantia {
+    background-color: #fff;
+    display: none;
+    left: 50%;
+    max-width: 750px;
+    padding: 40px 30px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 21;
+    .close {
+        color: $brand;
+        font: 16px $f-btp;
+        font-weight: bolder;
+        padding: 10px 20px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    h3 {
+        color: $brand;
+        font: 20px $f-btp;
+        font-weight: bolder;
+        text-transform: capitalize;
+    }
+    .btn {
+        @include button;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: bolder!important;
+        line-height: 1.5;
+        margin: 5px auto!important;
+    }
+    &.-is-active {
+        display: block;
+    }
+}
+
+.avalie-garantia {
+    background-color: $gray-light;
+    div {
+		@include laptop {
+			align-items: center;
+			flex-flow: nowrap;
+		}
+        display: flex;
+        flex-flow: column;
+        input,
+        textarea,
+        >div
+        {
+            background-color: #fff;
+            margin: 0 0 16px;
+            width: 50%;
+        }
+        .radio-grupo {
+            @extend %input;
+            p {
+                display: block;
+            }
+        }
+    }
+}

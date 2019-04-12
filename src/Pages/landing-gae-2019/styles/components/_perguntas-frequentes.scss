@@ -1,0 +1,136 @@
+//----------------------
+// Perguntas Frequentes
+//----------------------
+
+.perguntas-frequentes {
+
+    h2 {
+        color: $brand;
+        font-weight: bolder;
+        margin: 20px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &.-no-column {
+        position: relative;
+
+        h3 {
+            background-color: $gray-light;
+            left: 0;
+            margin: 0 230px;
+            margin-top: 0;
+            position: absolute;
+            right: 0;
+            text-transform: uppercase;
+            top: -10px;
+            z-index: 1;
+        }
+    }
+
+    .perguntas-frequentes__listas {
+
+        .perguntas-frequentes__lista::before {
+            border: none;
+            position: relative;
+        }
+
+        & {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+    }
+
+    .perguntas-frequentes__lista {
+
+        @include laptop {
+            border-right: 2px solid $brand;
+            margin: 0 0 20px;
+            max-width: 50%;
+            padding: 0 20px;
+
+            &:last-of-type {
+                border-right: none;
+            }
+
+            &.-no-column {
+                border-color: $gray;
+                max-width: 100%;
+
+                li {
+                    border-top: 1px solid #b9b9b9;
+                }
+            }
+        }
+    }
+
+
+    .perguntas-frequentes__item {
+        @include laptop {
+            cursor: pointer;
+        }
+        border-bottom: 1px solid $gray-light;
+        border-top: 1px solid $gray-light;
+        padding: 0 0 0 20px;
+        position: relative;
+        text-align: left;
+
+
+        > p {
+            margin: 0;
+            padding: 12px 0;
+        }
+
+        div {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 1s;
+
+            p {
+                margin: 0;
+                padding: 12px 0;
+			}
+
+			a {
+				font-weight: bold;
+			}
+        }
+
+        &::before {
+            background-color: $brand;
+            content: '';
+            height: 2px;
+            left: 0;
+            position: absolute;
+            top: 21px;
+            width: 10px;
+
+        }
+
+        &::after {
+            background-color: $brand;
+            content: '';
+            height: 2px;
+            left: 0;
+            position: absolute;
+            top: 21px;
+            transform: rotate(-90deg);
+            transition: transform .5s ease-in;
+            width: 10px;
+        }
+
+        &.-is-active {
+
+            &::after {
+                transform: rotate(0deg);
+            }
+
+            div {
+                max-height: 700px;
+            }
+
+        }
+    }
+
+}
