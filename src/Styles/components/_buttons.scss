@@ -4,7 +4,7 @@
 	//------------------------------------
 	%primary-button,
 	.primary-button {
-		@extend %single-transition;
+		@include singleTransition();
 		@include font-size(16px);
 		background-color: $orange;
 		border: 2px solid $orange;
@@ -58,7 +58,7 @@
 		}
 	}
 
-	a.primary-button, 
+	a.primary-button,
 	a.secondary-button { text-decoration: none; }
 
 
@@ -246,23 +246,23 @@ $something: false;
   transition: .3s ease;
   user-select: none;
   vertical-align: baseline;
-  
+
   &:hover  {
     background: transparent;
     color: $orange;
   }
-  
+
   &.bold { font-weight: 700; }
-  
+
   &.large { padding: .7em 2.5em; }
-  
+
   &.small { padding: .3em 1.2em; }
-  
+
   &.green  {
     background-color: $green;
 	  border-color: $green;
     color: #fff;
-    
+
     &:hover {
       background-color: transparent;
       border-color: $green;
@@ -286,7 +286,7 @@ $something: false;
   background-color: transparent;
   color: $orange;
   padding: .7em 1.2em;
-  
+
     &.green  {
       background-color: transparent;
       border-color: $green;
@@ -304,5 +304,5 @@ $something: false;
   }
 }
 
-a.btn-primary-button, 
+a.btn-primary-button,
 a.btn-secondary-button { text-decoration: none; }

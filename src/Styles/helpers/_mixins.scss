@@ -21,6 +21,28 @@
 @import 'helpers/functions';
 
 
+//------------------------------------
+//  CONDITIONAL
+//------------------------------------
+
+// Silent Classes
+// (mixins have to be used instead of proper silent classes
+//  because of the scope of `@include` inside of media queries.)
+@mixin show-conditional($display: null) {
+	@if($display) {
+		display: #{$display}!important;
+	} @else {
+		display: block!important;
+	}
+	visibility: visible!important;
+}
+
+@mixin hide-conditional {
+	display: none!important;
+	visibility: hidden!important;
+}
+
+
 // div { transition: |property| |duration| |timing-function| |delay|; }
 @mixin singleTransition($time: 250) {
 		transition: all #{$time}ms ease-out;
@@ -65,11 +87,11 @@
 }
 
 @mixin wFull() {
-		box-sizing: border-box;
-	 -o-box-sizing: border-box;
+	-o-box-sizing: border-box;
 	-ms-box-sizing: border-box;
-   -moz-box-sizing: border-box;
--webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 @mixin contentBefore($content: "", $absolute: true) {
@@ -81,6 +103,28 @@
 	}
 }
 
+@mixin invisible() {
+	background: transparent;
+	border: 0;
+	color: transparent;
+	font-size: 0;
+	height: 0;
+	left: 0;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	text-indent: -99999cm;
+	top: 0;
+	visibility: hidden;
+	width: 0;
+}
+
+@mixin superHide() {
+	@include invisible();
+	display: none;
+}
+
 // Just include in her context
 @mixin inputPlaceholderColor( $color ) {
 	::-webkit-input-placeholder { color: $color; }
@@ -88,6 +132,31 @@
 	::-moz-placeholder          { color: $color; }
 	:-moz-placeholder           { color: $color; }
 }
+
+
+// Icons
+@mixin icon-hamburger ($color: #ffffff) {
+	@extend %icon-hamburger;
+	border-bottom: 2px solid $color;
+	border-top: 2px solid $color;
+	color: $color;
+
+	&:before { background-color: $color; }
+}
+
+@mixin icon-get( $icon ) {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'whirlpool' !important;
+	font-style: normal !important;
+	font-variant: normal !important;
+	font-weight: normal !important;
+	line-height: 1;
+	speak: none;
+	text-transform: none !important;
+
+	content: map-get($icons, $icon);
+};
 
 
 

@@ -17,7 +17,6 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/icons';
 @import 'helpers/rfs';
 
 @import 'layout/grid';
@@ -97,13 +96,13 @@ $loja-color: #9aca3d;
 			text-indent: 0;
 			text-transform: uppercase;
 			transform: rotate(-30deg);
-			
+
 			@include breakpoint('small', 'max') {
 				font-size: 26px;
 				margin-top: -80px;
 				padding: 7px 70px;
 			}
-			
+
 			@include breakpoint('extra-small', 'max') {
 				margin-top: -40px;
 				padding: 7px 40px;
@@ -179,7 +178,7 @@ $loja-color: #9aca3d;
 			display: block;
 			line-height: 100%;
 			text-align: center;
-			
+
 			@include breakpoint('small', 'max') {
 				padding: 0 2em;
 				text-align: center;
@@ -271,12 +270,12 @@ $loja-color: #9aca3d;
 			.text {
 				@include rfs(23);
 				color: $green;
-				
+
 				@include breakpoint('small', 'max') {
 					@include rfs(32);
 				}
 			}
-			
+
 			.btn {
 				@include rfs(14);
 				background-color: $green;
@@ -286,7 +285,7 @@ $loja-color: #9aca3d;
 				margin-top: 15px;
 				padding: 10px 40px;
 				text-transform: uppercase;
-				
+
 				@include breakpoint('small', 'max') {
 					@include rfs(32);
 					border-radius: 40px;
@@ -880,11 +879,11 @@ $loja-color: #9aca3d;
 		right: -22px;
 		top: calc(50% - 180px);
 		width: 90%;
-		
+
 		@media (min-width: 480px) and (max-width: 770px) {
 			top: calc(50% - 120px);
 		}
-		
+
 		@include breakpoint('small', 'min') {
 			background-color: $green;
 			border-radius: 25px;
@@ -902,7 +901,7 @@ $loja-color: #9aca3d;
 		@media (min-width: 770px) and (max-width: 990px) {
 			top: calc(50% - 127px);
 		}
-		
+
 	}
 
 	@include breakpoint('small', 'max') {
