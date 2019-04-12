@@ -484,7 +484,11 @@ body {
 								top: 45px;
 
 								@include breakpoint(extra-small, 'max') {
-									max-width: 100%;
+									left: 5%;
+									max-width: 90%;
+									position: absolute;
+									right: 0;
+									width: 90%;
 								}
 
 								li {
