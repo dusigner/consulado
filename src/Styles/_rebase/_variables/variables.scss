@@ -3,8 +3,10 @@
 $c1:	#9ACA3c;
 $c2:	#90b447;
 $c3:	#736c6b;
-$c4:	transparentize($c3, 20);
-$c5:	transparentize($c3, 10);
+/* $c4:	transparentize($c3, 20);
+$c5:	transparentize($c3, 10); */
+$c4:	lighten($c3, 20%);
+$c5:	lighten($c3, 10%);
 $c13: #FFFFFF;
 
 // secondary
