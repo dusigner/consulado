@@ -2,4 +2,10 @@
 @import 'bootstrap/scss/bootstrap-grid';
 
 //SECTIONS
-@import 'components/section-banner';
+@import 'components/banner';
+@import 'components/linhas-embutir';
+
+
+main {
+	color: #736C6B;
+}

@@ -1,0 +1,40 @@
+#linhas-embutir {
+	margin-top: 20px;
+	.title {
+		font-weight: 100;
+		line-height: 16px;
+		&::after {
+			border-bottom: 3px solid #9ACA3C;
+			content: '';
+			display: block;
+			margin-top: 10px;
+			width: 20%;
+		}
+	}
+	.list-items {
+		li {
+			flex-grow: 1;
+			margin: 0 9px;
+			&:last-child {
+				text-align: right;
+			}
+			a {
+				color: #702F8F;
+			}
+		}
+	}
+	.btn-tab {
+		background-color: transparent;
+		border: 1px solid #E3E1E1;
+		border-radius: 4px;
+		color: #736C6B;
+		padding: 10px 15px;
+		text-align: left;
+		transition: border .3s ease, background-color .3s ease, color .3s ease;
+		width: 100%;
+		&:hover {
+			background-color: #9ACA3C;
+			color: #fff;
+		}
+	}
+}
