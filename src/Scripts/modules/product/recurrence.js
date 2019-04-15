@@ -76,7 +76,7 @@ Nitro.module('recurrence', function () {
 
 				/** Create and insert all mobile buttons */
 				let mobileButtons = `<div class="modal-recurrence__cta-buttons cta-mobile">
-										<a href="javascript:void(0)" class="modal-recurrence__cta -mobile -buy-recurrence primary-button text-uppercase js-recurrence-add -teste-b">Comprar produto e assinar</a>
+										<a href="javascript:void(0)" class="modal-recurrence__cta -mobile -buy-recurrence primary-button text-uppercase js-recurrence-add -teste-b">Adicione a recorrência</a>
 										<a href="javascript:void(0)" class="modal-recurrence__cta -mobile -buy primary-button text-uppercase js-recurrence-add -teste-b">Comprar produto</a>
 									</div>`;
 

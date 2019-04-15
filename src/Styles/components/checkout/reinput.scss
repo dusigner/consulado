@@ -2,14 +2,13 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/icons';
 
 .fieldsReinput {
 	display: none;
 }
 
 body.body-order-form {
-	
+
 	.fieldsReinput {
 		border: 3px solid #f4f2f1;
 		display: block;
@@ -67,7 +66,7 @@ body.body-order-form {
 
 			textarea {
 				border: 1px solid #ccc;
-				box-shadow: none;				
+				box-shadow: none;
 				height: 40px;
 				outline: none;
 				width: 100%;
@@ -83,7 +82,7 @@ body.body-order-form {
 					background: #f35216;
 					border: 1px solid #c13708;
 					border-radius: 5px;
-					color: #fff;					
+					color: #fff;
 					font-size: 11px;
 					left: -104px;
 					line-height: 1;
@@ -99,7 +98,7 @@ body.body-order-form {
 					background: #f35216;
 					border: 1px solid #c13708;
 					border-bottom: 0;
-					border-right: 0;					
+					border-right: 0;
 					display: block;
 					height: 10px;
 					left: -12px;
@@ -116,7 +115,7 @@ body.body-order-form {
 					}
 					&:after {
 						content: '';
-					}				
+					}
 				}
 
 				&.Lreason {
@@ -127,7 +126,7 @@ body.body-order-form {
 					&:after {
 						content: '';
 					}
-				}				
+				}
 				&.Lalcada {
 					&:before {
 						content: 'Porque teve que alterar o preço ?';
@@ -136,7 +135,7 @@ body.body-order-form {
 						content: '';
 					}
 				}
-				
+
 				&.Lcomment {
 					&:before {
 						content: 'Campo livre para comentários';
@@ -146,7 +145,7 @@ body.body-order-form {
 						content: '';
 						top: 25px;
 					}
-				}				
+				}
 			}
 
 			&.load {

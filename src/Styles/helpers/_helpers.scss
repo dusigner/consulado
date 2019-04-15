@@ -5,6 +5,7 @@
   //  HELPER
   //------------------------------------
 
+	// Clear
 	.clearfix {
 		&:after {
 			clear: both;
@@ -15,13 +16,13 @@
 			visibility: hidden;
 		}
 	}
-	* html .clearfix {zoom:1;}
-	*:first-child+html .clearfix {zoom: 1;}
+	* html .clearfix { zoom: 1; }
+	*:first-child+html .clearfix { zoom: 1; }
 
-	// Clear
 	.clear-all   { clear: both; }
 	.clear-left  { clear: left; }
 	.clear-right { clear: left; }
+
 
 	// Add/remove floats
 	.float-left  { float: left;  }
@@ -30,8 +31,7 @@
 
 
 	// Position elements
-	.align-center,
-	%align-center {
+	.align-center {
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
@@ -48,12 +48,19 @@
 	.inline-b { display: inline-block; }
 	.block    { display: block; }
 
-	// Hide elements
-	.hide { display: none; visibility: hidden; }
-	.show { display: block; visibility: visible; }
 
-	.invisible,
-	%invisible {
+	// Hide elements
+	.hide {
+		display: none;
+		visibility: hidden;
+	}
+
+	.show {
+		display: block;
+		visibility: visible;
+	}
+
+	.invisible {
 		background: transparent;
 		border: 0;
 		color: transparent;
@@ -69,17 +76,15 @@
 		visibility: hidden;
 		width: 0;
 	}
-	.superhide,
-	%superhide {
-		@extend %invisible;
+	.superhide {
+		@extend .invisible;
 		display: none;
 	}
 
+
 	// Hide text
 	.screen-reader,
-	%screen-reader,
-	.text-hide,
-	%text-hide {
+	.text-hide {
 		border: 0;
 		clip: rect(0 0 0 0);
 		height: 1px;
@@ -94,8 +99,7 @@
 	// Full-width elements
 	.full-width { width: 100%; }
 
-	img.full-width,
-	%full-width-image {
+	img.full-width {
 		display: block;
 		height: auto;
 		max-width: 100%;
@@ -104,21 +108,16 @@
 
 
 	// Text alignment
-	.text-left    { text-align: left;    }
-	.text-right   { text-align: right;   }
-	.text-center  { text-align: center;  }
+	.text-left { text-align: left; }
+	.text-right { text-align: right; }
+	.text-center { text-align: center; }
 	.text-justify { text-align: justify; }
 
 
 	// Font weights
-	.weight-light,
-	%weight-light { font-weight: 300; }
-
-	.weight-normal,
-	%weight-normal { font-weight: 400; }
-
-	.weight-semibold,
-	%weight-semibold { font-weight: 600; }
+	.weight-light { font-weight: 300; }
+	.weight-normal { font-weight: 400; }
+	.weight-semibold { font-weight: 600; }
 
 
 	// All-caps text
@@ -147,27 +146,7 @@
 		max-width: 100%;
 	}
 
-	.wFull,
-	%wFull {
-		box-sizing: border-box;
-	}
+	.wFull { box-sizing: border-box; }
 
-	.single-transition,
-	%single-transition {
-		transition: all 250ms ease-out;
-	}
-
-	.contentBefore,
-	%contentBefore {
-		content: ' ';
-		display: block;
-		position: absolute;
-	}
-
-	%contentTransition {
-		content: ' ';
-		display: block;
-		position: absolute;
-		transition: all 250ms ease-out;
-	}
+	.single-transition { transition: all 250ms ease-out; }
 }

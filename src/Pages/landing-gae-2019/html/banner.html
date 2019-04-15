@@ -1,0 +1,18 @@
+<!-- @if DEBUG=true -->
+<a class="banner -comprar" href="#">
+	<picture class="banner__picture">
+		<source media="(min-width: 650px)" srcset="/arquivos/landing-gae-2019-banner-consul-desktop.png">
+		<source media="(min-width: 465px)" srcset="/arquivos/landing-gae-2019-banner-consul-desktop.png">
+		<img class="banner__image" src="/arquivos/landing-gae-2019-banner-consul-mobile.png" alt="Banner de Consul">
+	</picture>
+</a>
+<!-- @endif -->
+
+<div class="banner -comprar">
+	<picture class="banner__picture -desktop">
+		<vtex:contentPlaceHolder id="BannerDesktop" />
+	</picture>
+	<picture class="banner__picture -mobile">
+		<vtex:contentPlaceHolder id="BannerMobile" />
+	</picture>
+</div>

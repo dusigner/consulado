@@ -20,7 +20,6 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/helpers';
 
 // Sidebar
 .inst-sidebar {
@@ -35,7 +34,7 @@
 	.navigation {
 		li {
 			a {
-				@extend %single-transition;
+				@include singleTransition();
 				display: block;
 				padding: 5px 0;
 				text-decoration: none;

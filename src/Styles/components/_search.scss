@@ -77,7 +77,7 @@ body.search-active {
 	}
 
 	.text-search {
-		@extend %single-transition;
+		@include singleTransition();
 		background: $gray-l;
 		border: 1px solid #c9c6c6;
 		color: $txt-gray;
@@ -183,7 +183,7 @@ body.search-active {
 		width: 65px;
 
 		img {
-			@extend %single-transition;
+			@include singleTransition();
 			display: block;
 			margin-bottom: -28px;
 			margin-right: 10px;

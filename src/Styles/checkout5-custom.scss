@@ -1,4 +1,5 @@
 @charset 'UTF-8';
+
 /*! =================================================
 	* Theme Name: Layout - // @echo package.accountName
 	* Description: CSS desenvolvido para // @echo package.name
@@ -8,24 +9,29 @@
 	* Version: // @echo package.version
 	=================================================
 */
-
-
 /*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Arquivos únicos nas demais páginas do site, porém
+// importados como "componentes" aqui no checkout
+@import './consul2-icons';
+@import './consul2-fonts';
 
 // Utility helpers
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/icons';
-@import 'helpers/family';
+@import 'helpers/helpers';
 @import 'helpers/conditional';
 @import 'helpers/slick';
+
 // Base styles
-@import 'base/fonts';
 @import 'base/main';
 // Layout styles
 @import 'layout/container';
-@import 'helpers/helpers';
 @import 'components/buttons';
 @import 'components/modal';
 @import 'components/modalLogin';

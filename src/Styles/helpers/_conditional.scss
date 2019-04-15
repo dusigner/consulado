@@ -2,23 +2,6 @@
 //  CONDITIONAL
 //------------------------------------
 
-// Silent Classes
-// (mixins have to be used instead of proper silent classes
-//  because of the scope of `@include` inside of media queries.)
-@mixin show-conditional($display: null) {
-	@if($display) {
-		display: #{$display}!important;
-	} @else {
-		display: block!important;
-	}
-	visibility: visible!important;
-}
-
-@mixin hide-conditional {
-	display: none!important;
-	visibility: hidden!important;
-}
-
 // Thanks to Bootstrap for having a good method of
 // showing/hiding content via breakpoints
 // (http://getbootstrap.com/css/#responsive-utilities)
