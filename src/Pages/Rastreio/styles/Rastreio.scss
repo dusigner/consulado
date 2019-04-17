@@ -1,0 +1,182 @@
+@charset 'UTF-8';
+
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+header {
+	background: $green;
+	padding: 13px 0;
+
+	.atendimento {
+		text-align: right;
+		a {
+			border: 1px solid $selection-color;
+			border-radius: 20px;
+			color: $selection-color;
+			font-size: 14px;
+			padding: 5px 15px;
+		}
+		@include breakpoint(medium, 'max') {
+			display: none
+		}
+	}
+	.logo-hewader {
+		i {
+			color: $selection-color;
+			@include breakpoint(medium, 'max') {
+				font-size: 23px;
+			}
+		}
+		@include breakpoint(medium, 'max') {
+			text-align: center;
+		}
+	}
+	@include breakpoint(medium, 'max') {
+		min-height: 50px;
+	}
+}
+body {
+	@include breakpoint(medium, 'max') {
+		padding-top: 40px!important;
+	}
+	.endereco {
+		margin-left: 10px;
+
+		@include breakpoint(medium, 'max') {
+			margin-left: 0;
+		}
+	}
+	.info-client {
+		margin: auto;
+		max-width: 650px;
+
+		h1 {
+			color: $green ;
+			font-size: 48px;
+			margin-bottom: 0;
+			text-align: center;
+
+			@include breakpoint(medium, 'max') {
+				font-size: 32px;
+			}
+		}
+		p {
+			color: $base-font-color;
+			font-size: 16px;
+			margin: 0;
+			text-align: center;
+		}
+		.client-info {
+			display: inline-block;
+			margin-top: 50px;
+			vertical-align: text-top;
+
+			h2 {
+				color: $purple;
+				font-size: 20px;
+				margin: 0 0 10px 0;
+			}
+
+			.box-info {
+				border: 1px solid $dropdown-hover-color;
+				border-radius: 5px;
+				max-width: 315px;
+				padding: 5px;
+
+				@include breakpoint(medium, 'max') {
+					max-width: 100%;
+				}
+
+				p {
+					color: $gray-d;
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+
+	}
+
+	.info-pedido {
+		h2 {
+			color: $gray-d;
+			font-size: 20px;
+			font-weight: normal;
+
+			b {
+				color: $purple;
+			}
+		}
+	}
+}
+footer {
+	background: $dropdown-hover-color;
+	padding: 30px 0;
+
+	.title-footer {
+		color: $gray-d;
+		font-size: 20px;
+	}
+	.itens-footer {
+		ul {
+			li {
+				p {
+					color: $gray-d;
+					display: inline-block;
+					font-size: 14px;
+					margin: 5px 0;
+					padding: 0 0 0 15px;
+					width: 90%;
+
+					@include breakpoint(medium, 'max') {
+						margin: 10px 0;
+						padding: 0 0 0 8px;
+						text-align: justify;
+					}
+				}
+
+				&:before {
+					background: url('/arquivos/atencao.png');
+					content: '';
+					display: inline-block;
+					height: 22px;
+					vertical-align: super;
+					width: 22px;
+
+					@include breakpoint(medium, 'max') {
+						margin-top: 10px;
+						vertical-align: top;
+					}
+				}
+			}
+		}
+	}
+}
+.footer-copyright {
+	background: $green;
+    display: block;
+    height: 26px;
+	width: 100%;
+	@include breakpoint(medium, 'max') {
+		border-top: 10px solid #000;
+		height: auto;
+		padding: 10px 0;
+		text-align: center;
+	}
+
+	a {
+		border: 1px solid $selection-color;
+		border-radius: 20px;
+		color: $selection-color;
+		display: none;
+		font-size: 14px;
+		margin: auto;
+		padding: 5px 15px;
+		width: 80%;
+
+		@include breakpoint(medium, 'max') {
+			display: block;
+		}
+	}
+}
