@@ -253,10 +253,6 @@ $(document).on('ready', function() {
 				self.cart();
 			}
 
-			if (self.isShipping()) {
-				pj.hideChangeAddress();
-			}
-
 			// Verifica se está "logado"
 			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
 				if($(window).width() < 767) {
@@ -375,10 +371,6 @@ $(document).on('ready', function() {
 			$('#ship-more-info, #ship-number').attr('maxlength', 10);
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
-
-			if (store && store.isCorp) {
-				pj.hideChangeAddress();
-			}
 
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
