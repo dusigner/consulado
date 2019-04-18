@@ -1,63 +1,130 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:vtex='http://www.vtex.com.br/2009/vtex-common' xmlns:vtex.cmc='http://www.vtex.com.br/2009/vtex-commerce'>
 
 <head>
 	<title>Rastreio</title>
 	<vtex:metaTags />
-	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:contentPlaceHolder id='Meta Tags Adicionais' />
 	<!-- @if DEBUG=true -->
 	<!-- @include ../includes/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
 
-	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/Rastreio.css" />
+	<vtex:template id='0-consul-head-content' />
+	<link rel='stylesheet' href='<!-- @echo assetsPath -->/Rastreio.css' />
 </head>
 
-<body data-controller="Rastreio">
+<body data-controller='Rastreio'>
 
 	<!-- Header -->
-	<header data-module="header">
-		<div class="topo-header container clearfix">
-			<div class="col-6 logo-hewader">
-				<i class="icon icon-logo-consul"></i>
+	<header data-module='header'>
+		<div class='topo-header container clearfix'>
+			<div class='col-6 logo-hewader'>
+				<i class='icon icon-logo-consul'></i>
 			</div>
-			<div class="col-6 atendimento">
-				<a href="#">Central de Atendimento</a>
+			<div class='col-6 atendimento'>
+				<a href='https://consul.custhelp.com/' target="_blank">Central de Atendimento</a>
 			</div>
 		</div>
 	</header>
 	<!-- /Header -->
 
-	<div class="container">
+	<div class='container'>
 
-		<div class="info-client">
+		<div class='info-client'>
 			<h1>Ratreamento de pedidos</h1>
 			<p>Acompanhe seus pedidos do <b>Mercado Livre</b></p>
-			<div class="client-info destinatario">
+			<div class='client-info destinatario'>
 				<h2>Destinatário</h2>
-				<div class="box-info">
+				<div class='box-info'>
 					<p><b>Email:</b> AQUI VAI O EMAIL DO CLIENTE</p>
 					<p><b>Contato:</b> AQUI VAI O CONTATO DO CLIENTE</p>
 				</div>
 			</div>
-			<div class="client-info endereco">
+			<div class='client-info endereco'>
 				<h2>Endereço de entrega</h2>
-				<div class="box-info">
+				<div class='box-info'>
 					<p><b>Logradouro:</b> AQUI VAI O Logradouro DO CLIENTE</p>
 					<p><b>Bairro:</b> AQUI VAI O Bairro DO CLIENTE</p>
 				</div>
 			</div>
 		</div>
 
-		<div class="info-pedido">
+		<div class='info-pedido'>
 			<h2><b>Pedido</b> AQUI VAI O PEDIDO DO CLIENTE</h2>
-			<div class="box-pedido">
-				<div class="info-status">
-
+			<div class='box-pedido'>
+				<div class='info-status'>
+					<div class='buy-data'>
+						<p>Data da compra</p>
+						<h2>20/12/2019</h2>
+					</div>
+					<div class='statu'>
+						<div class='statu1'>
+							<span class='checked'></span>
+							<h3>Pedido consirmado</h3>
+							<p>28/02/2019<br/>
+								11:07h</p>
+						</div>
+						<div class='statu2'>
+							<span class='failed'></span>
+							<h3>Aguardando pagamento</h3>
+							<p>28/02/2019<br/>
+								11:07h</p>
+						</div>
+						<div class='statu3'>
+							<span></span>
+							<h3>Nota fiscal emitida</h3>
+							<p>28/02/2019<br/>
+								11:07h</p>
+						</div>
+						<div class='statu4'>
+							<span></span>
+							<h3>Preparando pedido</h3>
+							<p>28/02/2019<br/>
+								11:07h</p>
+						</div>
+						<div class='statu5'>
+							<span></span>
+							<h3>Enviado à transportadora</h3>
+							<p>28/02/2019<br/>
+								11:07h</p>
+						</div>
+						<div class='statu6'>
+							<span></span>
+							<h3>Entrega até</h3>
+							<p>28/02/2019</p>
+						</div>
+					</div>
 				</div>
-				<div class="info-produto">
-
+				<div class='info-produto clearfix'>
+					<div class='header-info-product'>
+						<div class='col-8'>
+							<p>Produto: </p>
+						</div>
+						<div class='col-4'>
+							<p>Voltagem:</p>
+							<p>Código do produto:</p>
+						</div>
+					</div>
+					<div class='info-product'>
+							<div class='col-8'>
+								<div class='img-product'>
+									<img src='https://via.placeholder.com/100x100' />
+								</div>
+								<div class='product-name'>
+									<p>Fogão brastemp 5 bocas duplo forno cor inox com mesa de vidro e quadrichama</p>
+									<a href="#">Ver manual do produto</a>
+								</div>
+							</div>
+							<div class='col-4'>
+								<div class='volts-product'>
+									<p>127 V</p>
+								</div>
+								<div class='cod-product'>
+									<p>BFD5QBRRNA</p>
+								</div>
+							</div>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -66,22 +133,22 @@
 
 	<!-- Footer -->
 	<footer>
-		<div class="container">
-			<h2 class="title-footer">Importante.</h2>
-			<div class="itens-footer">
+		<div class='container'>
+			<h2 class='title-footer'>Importante.</h2>
+			<div class='itens-footer'>
 				<ul>
-					<li class="iten-1"><p>Caso você não esteja na localidade para receber o produto, verifique se alguém próximo (com 18 anos ou mais) pode receber o produto por você. Vale ressaltar que o produto só poderá ser entregue no endereço da Nota Fiscal</p></li>
-					<li class="iten-2"><p>Atente-se às dimensões da localidade: verifique se é necessário realizar algum procedimento para o deslocamento do produto no local (por exemplo, desembalar o produto para entrar no elevador)</p></li>
-					<li class="iten-3"><p>Confira o seu produto no momento da entrega. Caso haja alguma avaria ou distinção de modelo, cor ou voltagem em relação ao que foi solicitado, recuse a entrega.</p></li>
+					<li class='iten-1'><p>Caso você não esteja na localidade para receber o produto, verifique se alguém próximo (com 18 anos ou mais) pode receber o produto por você. Vale ressaltar que o produto só poderá ser entregue no endereço da Nota Fiscal</p></li>
+					<li class='iten-2'><p>Atente-se às dimensões da localidade: verifique se é necessário realizar algum procedimento para o deslocamento do produto no local (por exemplo, desembalar o produto para entrar no elevador)</p></li>
+					<li class='iten-3'><p>Confira o seu produto no momento da entrega. Caso haja alguma avaria ou distinção de modelo, cor ou voltagem em relação ao que foi solicitado, recuse a entrega.</p></li>
 				</ul>
 			</div>
 		</div>
 	</footer>
-	<div class="footer-copyright">
-		<a href="#">Central de Atendimento</a>
+	<div class='footer-copyright'>
+		<a href='https://consul.custhelp.com/' target="_blank">Central de Atendimento</a>
 	</div>
 	<!-- /Footer -->
 
-	<script src="<!-- @echo assetsPath -->/Rastreio.min.js"></script>
+	<script src='<!-- @echo assetsPath -->/Rastreio.min.js'></script>
 </body>
 </html>

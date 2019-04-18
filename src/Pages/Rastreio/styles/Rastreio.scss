@@ -99,6 +99,9 @@ body {
 	}
 
 	.info-pedido {
+		margin: 30px 0;
+		padding: 40px 0;
+
 		h2 {
 			color: $gray-d;
 			font-size: 20px;
@@ -106,6 +109,108 @@ body {
 
 			b {
 				color: $purple;
+			}
+		}
+		.box-pedido {
+			border: 1px solid $gray-l;
+			padding: 10px;
+
+			.buy-data {
+				text-align: right;
+
+				p {
+					color: #58595B;
+					font-size: 12px;
+					margin: 0;
+				}
+				h2 {
+					color: $purple;
+					font-size: 20px;
+					font-weight: bold;
+					margin: 0;
+				}
+			}
+			.statu {
+				padding: 25px 0;
+
+				div {
+					display: inline-block;
+					text-align: center;
+					vertical-align: top;
+					width: 15%;
+					span {
+						border: 1px solid $green;
+						border-radius: 30px;
+						display: block;
+						height: 50px;
+						margin: auto;
+						width: 50px;
+
+						&.checked {
+							background: url('/arquivos/Union-success.png') no-repeat 10px;
+							background-color: $green;
+						}
+						&.failed {
+							background: url('/arquivos/Union-failed.png') no-repeat 14px;
+							background-color: $object-validate-color;
+						}
+					}
+					h3 {
+						color: $selection-background;
+						font-size: 12px;
+						font-weight: normal;
+						margin: 0;
+					}
+					p {
+						color: $txt-gray-l;
+						font-size: 12px;
+						margin: 0;
+					}
+				}
+			}
+			.info-produto {
+				padding: 0 15px;
+				.header-info-product {
+					border-top: 1px solid $gray-l;
+					padding: 10px 0;
+
+					p {
+						color: $selection-background;
+						display: inline-block;
+						font-size: 12px;
+						font-weight: bold;
+						margin: 5px 20px 5px 0;
+					}
+				}
+				.info-product {
+					div {
+						display: inline-block;
+						vertical-align: top;
+						&.product-name {
+							padding: 0 25px;
+							width: 80%;
+							p {
+								color: $gray-d;
+								font-size: 16px;
+								font-weight: bold;
+								margin: 0;
+							}
+							a {
+								color: $purple;
+								font-size: 14px;
+								font-weight: bold;
+								margin: 15px 0;
+							}
+						}
+						&.col-4 {
+							p {
+								color: #736c6b;
+								font-size: 16px;
+								margin: 0 45px 0 0;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
