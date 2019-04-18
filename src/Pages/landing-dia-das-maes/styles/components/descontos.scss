@@ -14,16 +14,58 @@
 			width: 20%;
 		}
 	}
-	.list-items {
-		background-color: #fff;
-		position: relative;
-		z-index: 102;
+	.group {
 		@include breakpoint(medium, 'max') {
-			&:not(.-opened) {
-				li:not(.-active) {
-					display: none;
+			/* &:not(.-opened) {
+				.list-items:not(.-active) {
+
+				}
+			} */
+			&.-opened {
+				.item-selected {
+					border: none;
+				}
+
+				@keyframes slideDown {
+					from {height: 0;}
+					to {height: 230px;}
+				}
+				@keyframes slideUp {
+					from {height: 230px;}
+					to {height: 0;}
+				}
+				.list-items {
+					animation: slideDown ease .7s forwards;
 				}
 			}
+			.list-items {
+				animation: slideUp ease .7s forwards;
+				height: 0;
+			}
+			button {
+				border: none;
+			}
+			li {
+				border-top: 1px solid #E3E1E1;
+			}
+		}
+		background-color: #fff;
+		border-radius: 4px;
+		position: relative;
+		z-index: 102;
+
+		.list-items {
+			overflow: hidden;
+		}
+
+		.item-selected {
+			background-color: transparent;
+			border: 1px solid #E3E1E1;
+			border-radius: 4px;
+			color: #EC008C;
+			padding: 10px 15px;
+			text-align: left;
+			width: 100%;
 		}
 		li {
 			flex-grow: 1;
@@ -49,8 +91,32 @@
 	}
 }
 
+@keyframes showOverlay {
+	from {
+		opacity: 0;
+		z-index: 101;
+	}
+	to {
+		height: .7s;
+		z-index: 101;
+	}
+}
+@keyframes hideOverlay {
+	0% {
+		opacity: .6;
+		z-index: 101;
+	}
+	99% {
+		z-index: 101;
+	}
+	100% {
+		opacity: 0;
+		visibility: hidden;
+		z-index: -1;
+	}
+}
 .overlay {
-	@include transition( opacity 1s );
+	animation: showOverlay ease .7s forwards;
 	background-color: #000;
 	bottom: 0;
 	left: 0;
@@ -59,12 +125,10 @@
 	right: 0;
 	top: 0;
 	visibility: visible;
-	z-index: 101;
+
 
 	&.-hidden {
-		@include transition( opacity .6s );
-		opacity: 0;
-		visibility: hidden;
-		z-index: -1;
+		animation: hideOverlay ease .7s forwards;
+
 	}
 }

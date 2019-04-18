@@ -40,16 +40,24 @@ Nitro.setup(['dia-das-maes'], function () {
 		}
 
 		sectionDescontos() {
-			const $listItem = $('#descontos .list-items li'),
+			const $listItem = $('#descontos .list-items'),
 				$overlay = $('.overlay'),
+				$selectedItem = $('.item-selected'),
 				openItems = () => {
 					if ($(window).width() < 960) {
 
-						$listItem.unbind().click(() => {
+						const changeTextButton = () => $selectedItem.html($listItem.find('.-active button').html());
+
+						changeTextButton();
+
+						$selectedItem.add($listItem.find('li')).unbind().click(() => {
 							$overlay.toggleClass('-hidden');
-							$listItem.parents('.list-items').toggleClass('-opened');
+							$listItem.toggleClass('-active').parents('.group').toggleClass('-opened');
+
+							changeTextButton();
+
 						});
-					} else $listItem.unbind();
+					} else $selectedItem.unbind();
 				};
 
 			openItems();
