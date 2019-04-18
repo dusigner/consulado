@@ -25,7 +25,7 @@ header {
 		i {
 			color: $selection-color;
 			@include breakpoint(medium, 'max') {
-				font-size: 23px;
+				font-size: 21px;
 			}
 		}
 		@include breakpoint(medium, 'max') {
@@ -39,6 +39,9 @@ header {
 body {
 	@include breakpoint(medium, 'max') {
 		padding-top: 40px!important;
+		.container {
+			padding: 0;
+		}
 	}
 	.endereco {
 		margin-left: 10px;
@@ -59,6 +62,9 @@ body {
 
 			@include breakpoint(medium, 'max') {
 				font-size: 32px;
+				margin: auto;
+				max-width: 200px;
+				padding: 70px 0 0 0;
 			}
 		}
 		p {
@@ -71,6 +77,9 @@ body {
 			display: inline-block;
 			margin-top: 50px;
 			vertical-align: text-top;
+			@include breakpoint(medium, 'max') {
+				margin-top: 35px;
+			}
 
 			h2 {
 				color: $purple;
@@ -86,6 +95,7 @@ body {
 
 				@include breakpoint(medium, 'max') {
 					max-width: 100%;
+					padding: 25px 10px;
 				}
 
 				p {
@@ -101,6 +111,10 @@ body {
 	.info-pedido {
 		margin: 30px 0;
 		padding: 40px 0;
+
+		@include breakpoint(medium, 'max') {
+			padding: 0;
+		}
 
 		h2 {
 			color: $gray-d;
@@ -118,6 +132,10 @@ body {
 			.buy-data {
 				text-align: right;
 
+				@include breakpoint(medium, 'max') {
+					text-align: left;
+				}
+
 				p {
 					color: #58595B;
 					font-size: 12px;
@@ -132,13 +150,40 @@ body {
 			}
 			.statu {
 				padding: 25px 0;
+				background: url('/arquivos/Line-status.png') no-repeat;
+				background-size: 85% 1px;
+				background-position: 45% 50px;
+
+				@include breakpoint(medium, 'max') {
+					background: url('/arquivos/Line-status-mobile.png') no-repeat;
+					background-size: 1px 450px;
+					background-position: 14px 60px;
+				}
 
 				div {
 					display: inline-block;
 					text-align: center;
 					vertical-align: top;
-					width: 15%;
+					width: 16.3%;
+
+					@include breakpoint(medium, 'max') {
+						margin: 25px 0;
+						text-align: left;
+						width: 100%;
+					}
+
+					&.info-status-pedido {
+						width: 100%;
+
+						@include breakpoint(medium, 'max') {
+							display: inline-block;
+							margin: 0 0 0 20px;
+							width: 80%;
+						}
+					}
+
 					span {
+						background: #fff;
 						border: 1px solid $green;
 						border-radius: 30px;
 						display: block;
@@ -153,6 +198,22 @@ body {
 						&.failed {
 							background: url('/arquivos/Union-failed.png') no-repeat 14px;
 							background-color: $object-validate-color;
+							border: 1px solid $object-validate-color;
+						}
+						@include breakpoint(medium, 'max') {
+							background-size: contain;
+							display: inline-block;
+							height: 30px;
+							margin: 0;
+							width: 30px;
+							&.failed {
+								background-position-x: 2.5px;
+								border: 3px solid $object-validate-color;
+							}
+							&.checked {
+								background-position-x: 0;
+								border: 3px solid $green;
+							}
 						}
 					}
 					h3 {
@@ -160,19 +221,37 @@ body {
 						font-size: 12px;
 						font-weight: normal;
 						margin: 0;
+						@include breakpoint(medium, 'max') {
+							font-size: 14px;
+						}
 					}
 					p {
 						color: $txt-gray-l;
 						font-size: 12px;
 						margin: 0;
+						@include breakpoint(medium, 'max') {
+							display: inline-block;
+							width: 45%;
+							&.time {
+								text-align: right;
+							}
+						}
 					}
 				}
 			}
 			.info-produto {
 				padding: 0 15px;
+				@include breakpoint(medium, 'max') {
+					padding: 0;
+				}
 				.header-info-product {
 					border-top: 1px solid $gray-l;
 					padding: 10px 0;
+					@include breakpoint(medium, 'max') {
+						.col-4 {
+							display: none;
+						}
+					}
 
 					p {
 						color: $selection-background;
@@ -209,6 +288,31 @@ body {
 								margin: 0 45px 0 0;
 							}
 						}
+						@include breakpoint(medium, 'max') {
+							&.img-product {
+								max-width: 85px;
+							}
+							&.product-name {
+								max-width: 60%;
+								padding: 0 0 0 10px;
+								p {
+									font-size: 14px;
+								}
+								a {
+									display: none;
+								}
+							}
+							&.volts-product {
+								width: 85px;
+								p {
+									display: none;
+								}
+							}
+							&.cod-product {
+								max-width: 60%;
+								padding: 0 0 0 10px;
+							}
+						}
 					}
 				}
 			}
@@ -222,6 +326,9 @@ footer {
 	.title-footer {
 		color: $gray-d;
 		font-size: 20px;
+		@include breakpoint(medium, 'max') {
+			margin-left: 30px;
+		}
 	}
 	.itens-footer {
 		ul {
@@ -282,6 +389,7 @@ footer {
 
 		@include breakpoint(medium, 'max') {
 			display: block;
+			max-width: 220px;
 		}
 	}
 }
