@@ -1,0 +1,41 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+#seu-jeitinho {
+	.tab {
+		border: 1px solid #E3E1E1;
+		border-radius: 20px;
+		margin-bottom: 30px;
+		padding: 2px;
+		li {
+			width: calc(100% / 3);
+		}
+		button {
+			@include responsiveFont(12, 16, true);
+			background: none;
+			border: none;
+			padding: 10px 0;
+			width: 100%;
+			&.-active {
+				background: $green;
+				border-radius: 20px;
+				color: #fff;
+			}
+		}
+	}
+	.caption {
+		.all-collections {
+			display: block;
+			margin-top: 50px;
+		}
+		.info {
+			min-height: 235px;
+		}
+	}
+
+	.shelfs {
+		height: 502px;
+		overflow: hidden;
+		padding: 0 20px;
+	}
+}
