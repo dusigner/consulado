@@ -149,10 +149,10 @@ body {
 				}
 			}
 			.statu {
-				padding: 25px 0;
 				background: url('/arquivos/Line-status.png') no-repeat;
 				background-size: 85% 1px;
 				background-position: 45% 50px;
+				padding: 25px 0;
 
 				@include breakpoint(medium, 'max') {
 					background: url('/arquivos/Line-status-mobile.png') no-repeat;
@@ -207,12 +207,12 @@ body {
 							margin: 0;
 							width: 30px;
 							&.failed {
-								background-position-x: 2.5px;
-								border: 3px solid $object-validate-color;
+								background: url('/arquivos/Union-failed-mobile.png') no-repeat 8px;
+								background-color: $object-validate-color;
 							}
 							&.checked {
-								background-position-x: 0;
-								border: 3px solid $green;
+								background: url('/arquivos/Union-success-mobile.png') no-repeat 6px;
+								background-color: $green;
 							}
 						}
 					}
