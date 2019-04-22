@@ -150,14 +150,14 @@ body {
 			}
 			.statu {
 				background: url('/arquivos/Line-status.png') no-repeat;
-				background-size: 85% 1px;
 				background-position: 45% 50px;
+				background-size: 85% 1px;
 				padding: 25px 0;
 
 				@include breakpoint(medium, 'max') {
 					background: url('/arquivos/Line-status-mobile.png') no-repeat;
-					background-size: 1px 450px;
 					background-position: 14px 60px;
+					background-size: 1px 450px;
 				}
 
 				div {
@@ -314,6 +314,33 @@ body {
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+	.info-truck {
+		h2 {
+			color: $purple;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		div {
+			p {
+				color: $gray-d;
+				display: inline-block;
+				font-size: 16px;
+				margin: 10px 0;
+				width: 55%;
+
+				&.data {
+					width: 35%;
+				}
+			}
+			&.table-head {
+				p {
+					color: $purple;
+					font-size: 12px;
+					font-weight: 600;
 				}
 			}
 		}
