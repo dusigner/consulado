@@ -374,9 +374,6 @@ $(document).on('ready', function() {
 
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
-				if (store && store.isCorp) {
-					pj.disableInputs(e);
-				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
