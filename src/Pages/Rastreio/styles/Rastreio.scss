@@ -43,6 +43,28 @@ body {
 			padding: 0;
 		}
 	}
+	.id-fail {
+		padding: 20% 0;
+		text-align: center;
+
+		h1 {
+			color: $purple;
+			font-size: 48px;
+			margin: 0;
+			@include breakpoint(medium, 'max') {
+				font-size: 28px;
+			}
+		}
+		p {
+			font-size: 20px;
+			margin: 15px 0;
+			@include breakpoint(medium, 'max') {
+				font-size: 16px;
+				margin: 20px 0;
+			}
+		}
+
+	}
 	.endereco {
 		margin-left: 10px;
 
@@ -331,6 +353,9 @@ body {
 				font-size: 16px;
 				margin: 10px 0;
 				width: 55%;
+				@include breakpoint(medium, 'max') {
+					font-size: 14px;
+				}
 
 				&.data {
 					width: 35%;
