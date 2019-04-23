@@ -1,7 +1,7 @@
 <div class="overlay -hidden"></div>
 <section id="descontos">
 	<div class="container">
-		<nav class="row align-items-center">
+		<nav class="row align-items-center pb-3">
 			<div class="col-12 col-md-2">
 				<div class="title">
 					<strong>Navegue</strong><br />
@@ -11,15 +11,45 @@
 			<div class="col-12 col-md-10">
 				<div class="group">
 					<button class="item-selected"></button>
-					<ul class="list-items d-flex flex-column flex-md-row align-items-stretch align-items-md-center">
-						<li class="-active"><button class="btn-tab">Até <strong>R$ 100 OFF</strong></button></li>
-						<li><button class="btn-tab">Até <strong>R$ 200 OFF</strong></button></li>
-						<li><button class="btn-tab">Até <strong>R$ 300 OFF</strong></button></li>
-						<li><button class="btn-tab">Até <strong>R$ 500 OFF</strong></button></li>
+					<ul data-tab-name="descontos" class="list-items d-flex flex-column flex-md-row align-items-stretch align-items-md-center">
+						<li><button class="btn-tab -active" data-tab-nav="100off">Até <strong>R$ 100 OFF</strong></button></li>
+						<li><button class="btn-tab" data-tab-nav="200off">Até <strong>R$ 200 OFF</strong></button></li>
+						<li><button class="btn-tab" data-tab-nav="300off">Até <strong>R$ 300 OFF</strong></button></li>
+						<li><button class="btn-tab" data-tab-nav="500off">Até <strong>R$ 500 OFF</strong></button></li>
 						<li><a href="#">Ver todos os modelos</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
+		<div class="row">
+			<div class="col-12">
+				<article class="shelfs" data-tab-name="descontos">
+					<div class="prateleira-slider" data-tab-content="100off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos R$ 100 OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="200off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos R$ 200 OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="300off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos R$ 300 OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="500off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos R$ 500 OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+				</article>
+			</div>
+		</div>
 	</div>
 </section>

@@ -7,35 +7,29 @@ import Tab from 'modules/tabs';
 Nitro.setup(['dia-das-maes'], function () {
 
 	class DiaDasMaes {
-		constructor() {
-			this.slickConfig = {
-				slidesToShow: 2,
-				slidesToScroll: 2,
-				responsive: [
-					{
-						breakpoint: 640,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1,
-						}
-					}
-				]
-			};
-		}
 
 		sectionSeuJeitinho() {
-			const tab = new Tab('seu-jeitinho');
+			const tab = new Tab('seu-jeitinho'),
+				slickConfig = {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+					responsive: [
+						{
+							breakpoint: 640,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							}
+						}
+					]
+				};
+
 			tab.init();
-		}
 
-		initSlick() {
-			$('.prateleira-slider .prateleira>ul').slick(this.slickConfig);
-		}
+			$('#seu-jeitinho .prateleira-slider .prateleira>ul').slick(slickConfig);
 
-		reInitSlickOnTabChange() {
 			$(window).on('Tab.changed', (e, $nav, $content) => {
-				$($content).find('.prateleira > ul').slick('unslick').slick(this.slickConfig);
-
+				$($content).find('.prateleira > ul').slick('refresh');
 			});
 		}
 
@@ -43,10 +37,25 @@ Nitro.setup(['dia-das-maes'], function () {
 			const $listItem = $('#descontos .list-items'),
 				$overlay = $('.overlay'),
 				$selectedItem = $('.item-selected'),
+				tab = new Tab('descontos'),
+				slickConfig = {
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					infinite: true,
+					responsive: [
+						{
+							breakpoint: 640,
+							settings: {
+								slidesToShow: 1,
+								slidesToScroll: 1,
+							}
+						}
+					]
+				},
 				openItems = () => {
 					if ($(window).width() < 960) {
 
-						const changeTextButton = () => $selectedItem.html($listItem.find('.-active button').html());
+						const changeTextButton = () => $selectedItem.html($listItem.find('button.-active').html());
 
 						changeTextButton();
 
@@ -61,6 +70,13 @@ Nitro.setup(['dia-das-maes'], function () {
 				};
 
 			openItems();
+			tab.init();
+
+			$('#descontos .prateleira-slider .prateleira>ul').slick(slickConfig);
+
+			$(window).on('Tab.changed', (e, $nav, $content) => {
+				$($content).find('.prateleira > ul').slick('refresh');
+			});
 
 			$(window).on('resize', () => {
 				openItems();
@@ -69,8 +85,6 @@ Nitro.setup(['dia-das-maes'], function () {
 
 		init() {
 			this.sectionSeuJeitinho();
-			this.initSlick();
-			this.reInitSlickOnTabChange();
 			this.sectionDescontos();
 		}
 

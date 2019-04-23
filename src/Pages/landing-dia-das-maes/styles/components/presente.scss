@@ -1,0 +1,42 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+#presente {
+	.banner {
+		@include responsiveFont(14, 16, true);
+		display: block;
+		overflow: hidden;
+		position: relative;
+		transition: box-shadow .5s ease;
+		&.-top {
+			&::before {
+				bottom: inherit;
+				top: 40px;
+				transform: translate(-50%, -85px);
+			}
+		}
+		&:hover {
+			@include vendor(box-shadow, 0 0 3px 0 rgba(154, 202, 60, 1));
+			&::before {
+				opacity: 1;
+				transform: translate(-50%, 0);
+			}
+		}
+		@include breakpoint(medium, 'min') {
+			&::before {
+				background-color: $green;
+				border-radius: 100px;
+				bottom: 40px;
+				color: #fff;
+				content: 'Conheça';
+				left: 50%;
+				opacity: 0;
+				padding: 10px 72px;
+				position: absolute;
+				transform: translate(-50%, 85px);
+				transition: transform .5s ease-in-out, opacity .5s ease-in-out;
+
+			}
+		}
+	}
+}
