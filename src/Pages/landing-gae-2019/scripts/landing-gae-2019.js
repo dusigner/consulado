@@ -10,7 +10,6 @@ var CRM = require('modules/store/crm');
 
 Nitro.controller('landing-gae', [], function () {
 
-
 	var width = jQuery(window).width(),
 		mobile = false;
 
@@ -88,7 +87,8 @@ Nitro.controller('landing-gae', [], function () {
 		});
 	}
 
-	jQuery('a.como-acionar').on('click', function () {
+	jQuery('a.como-acionar').on('click', function (e) {
+		e.preventDefault();
 		jQuery('#como-acionar').click();
 		return false;
 	});
