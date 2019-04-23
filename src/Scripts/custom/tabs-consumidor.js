@@ -18,7 +18,7 @@ Nitro.module('tabs-consumidor', function () {
 		tabs.firstActiveTabs();
 		tabs.handleActiveMobileTabs();
 		tabs.initSlick();
-		tabs.buildProductStock();
+		//tabs.buildProductStock();
 	};
 
 	// Titles

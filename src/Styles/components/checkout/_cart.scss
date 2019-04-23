@@ -420,6 +420,10 @@ body {
 									color: $green;
 									font-size: 12px;
 									font-weight: bold;
+									span {
+										color: #736C6B;
+										font-weight: normal;
+									}
 								}
 
 								@include breakpoint(extra-small, 'max') {
