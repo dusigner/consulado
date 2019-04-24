@@ -12,6 +12,7 @@
 			margin-bottom: 20px;
 			text-align: center;
 		}
+		@include responsiveFont(16, 16, true);
 		font-weight: 100;
 		line-height: 16px;
 		&::after {

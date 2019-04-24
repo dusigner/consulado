@@ -1,5 +1,8 @@
 // BOOTSTRAP GRID
 @import 'bootstrap/scss/bootstrap-grid';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities/sizing';
+@import 'bootstrap/scss/utilities/text';
 
 //HELPERS
 @import 'helpers/variables';
@@ -12,6 +15,7 @@
 @import 'components/facilidade';
 @import 'components/descontos';
 @import 'components/presente';
+@import 'components/cartinha';
 
 //COMPONENTS
 @import 'components/selos';

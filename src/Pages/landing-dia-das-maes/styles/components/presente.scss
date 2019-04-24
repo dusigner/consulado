@@ -26,10 +26,12 @@
 			}
 		}
 		&:hover {
-			@include vendor(box-shadow, 0 0 3px 0 rgba(154, 202, 60, 1));
-			&::before {
-				opacity: 1;
-				transform: translate(-50%, 0);
+			@include breakpoint(medium, 'min') {
+				@include vendor(box-shadow, 0 0 3px 0 rgba(154, 202, 60, 1));
+				&::before {
+					opacity: 1;
+					transform: translate(-50%, 0);
+				}
 			}
 		}
 		@include breakpoint(medium, 'min') {
