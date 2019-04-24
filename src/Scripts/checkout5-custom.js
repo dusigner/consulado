@@ -115,6 +115,8 @@ $(document).on('ready', function() {
 		this.shippingSelectorInformation = function() {
 			const $shippingToggle = $('.shipping-sla-button');
 			const $shippingItems = $('.shipping-sla-options li a span');
+			const $shippingEstimate = $shippingToggle.find('.shipping-estimate');
+			const monetary = $('.full-cart .Shipping .monetary').text();
 
 			$shippingItems.each( (index, element) => {
 				let shippingItemText = $(element).text().split('-');
@@ -130,6 +132,9 @@ $(document).on('ready', function() {
 
 				if (index + 1 === $shippingItems.length) $shippingToggle.addClass('has-interaction');
 			});
+			if($('body').is('.teste-preco-frete')) {
+				$shippingEstimate.html(`${$shippingEstimate.html()} <span> - ${monetary}</span>`);
+			}
 		};
 
 		this.isCart = function() {
@@ -246,10 +251,6 @@ $(document).on('ready', function() {
 
 			if (self.isCart()) {
 				self.cart();
-			}
-
-			if (self.isShipping()) {
-				pj.hideChangeAddress();
 			}
 
 			// Verifica se está "logado"
@@ -371,15 +372,8 @@ $(document).on('ready', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
-			if (store && store.isCorp) {
-				pj.hideChangeAddress();
-			}
-
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
-				if (store && store.isCorp) {
-					pj.disableInputs(e);
-				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
