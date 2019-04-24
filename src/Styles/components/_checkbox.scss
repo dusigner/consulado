@@ -1,3 +1,9 @@
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+
 input[type=checkbox] {
 	cursor: pointer;
 	display: inline-block;
@@ -5,37 +11,46 @@ input[type=checkbox] {
 	visibility: hidden;
 
 	+ label {
-		padding: 5px 0 5px 20px;
+		font-weight: lighter;
+		padding: 5px 0 5px 30px;
 		position: relative;
+
 		&:after {
 			background-color: #fff;
-			border: 1px solid $gray-d;
-			border-radius: 3px;
+			border-radius: 2px;
+			border: 1px solid #BBBBBB;
 			content: ' ';
 			display: inline-block;
-			height: 15px;
+			height: 20px;
 			left: 0;
 			position: absolute;
 			top: 50%;
 			transform: translate(0%, -50%);
 			visibility: visible;
-			width: 15px;
+			width: 20px;
+		}
+
+		&:before {
+			color:		#fff;
+			content: '';
+			font-size: 	10px;
+			left: 		4px;
+			position: 	absolute;
+			top: 		13px;
+			z-index:	1;
 		}
 	}
 	&:checked {
+		+ label {
+			font-weight: bold;
+		}
+
 		+ label:before {
-			background-color: $orange;
-			content: ' ';
-			display: inline-block;
-			height: 9px;
-			left: 0;
-			margin-left: 3px;
-			position: absolute;
-			top: 50%;
-			transform: translate(0%, -50%);
-			visibility: visible;
-			width: 9px;
-			z-index: 1;
+			@include icon-get(check-mark);
+		}
+
+		+ label:after {
+			background: #90B447;
 		}
 	}
 	&.loading {
