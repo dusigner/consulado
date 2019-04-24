@@ -15,8 +15,8 @@
 				width: 33.3333%;
 
 				& > .box-produto {
-					border-radius: 4px;
 					border: solid 1px #E3E1E1;
+					border-radius: 4px;
 					display: flex;
 					flex-direction: column;
 					height: 100%;
@@ -24,13 +24,13 @@
 
 					.detalhes {
 						display: flex;
-						flex-direction: column;
 						flex: 1;
+						flex-direction: column;
 
 						.prod-info {
 							display: flex;
-							flex-direction: column;
 							flex: 1;
+							flex-direction: column;
 
 							.nome {
 								flex: 1;
