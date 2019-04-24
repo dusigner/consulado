@@ -17,8 +17,8 @@ input[type=checkbox] {
 
 		&:after {
 			background-color: #fff;
-			border-radius: 2px;
 			border: 1px solid #BBBBBB;
+			border-radius: 2px;
 			content: ' ';
 			display: inline-block;
 			height: 20px;
@@ -31,22 +31,24 @@ input[type=checkbox] {
 		}
 
 		&:before {
+			@include icon-get(check-mark);
 			color:		#fff;
-			content: '';
 			font-size: 	10px;
 			left: 		4px;
 			position: 	absolute;
 			top: 		13px;
+			opacity: 0;
+			transition: all .3s ease;
 			z-index:	1;
 		}
 	}
 	&:checked {
 		+ label {
-			font-weight: bold;
+			font-weight: 500;
 		}
 
 		+ label:before {
-			@include icon-get(check-mark);
+			opacity: 1;
 		}
 
 		+ label:after {
