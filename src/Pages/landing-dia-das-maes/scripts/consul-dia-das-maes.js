@@ -42,15 +42,25 @@ Nitro.setup(['dia-das-maes'], function () {
 					slidesToShow: 4,
 					slidesToScroll: 1,
 					infinite: true,
-					responsive: [
-						{
-							breakpoint: 640,
-							settings: {
-								slidesToShow: 1,
-								slidesToScroll: 1,
-							}
+					responsive: [{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 1,
 						}
-					]
+					}, {
+						breakpoint: 960,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 1,
+						}
+					}, {
+						breakpoint: 640,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1,
+						}
+					}]
 				},
 				openItems = () => {
 					if ($(window).width() < 960) {

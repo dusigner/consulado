@@ -2,6 +2,16 @@
 @import 'helpers/mixins';
 
 #presente {
+	background-color: #FCFCFC;
+	padding: 20px 0;
+	.title {
+		@include responsiveFont(20, 16, true);
+		font-weight: 300;
+		span {
+			@include responsiveFont(35, 16, true);
+			font-weight: bold;
+		}
+	}
 	.banner {
 		@include responsiveFont(14, 16, true);
 		display: block;

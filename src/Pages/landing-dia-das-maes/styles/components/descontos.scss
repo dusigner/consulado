@@ -69,7 +69,7 @@
 		}
 
 		.item-selected {
-			@include breakpoint(large, 'min') { display: none; }
+			@include breakpoint(medium, 'min') { display: none; }
 			background-color: transparent;
 			border: 1px solid #E3E1E1;
 			border-radius: 4px;
