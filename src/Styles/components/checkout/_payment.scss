@@ -314,12 +314,26 @@ body {
 				&:after {
 					color: $green;
 					// content: 'O boleto do pedido será emitido pelo Itaú Shopline. \A O prazo de entrega do produto come\00e7 a a contar a partir da confirma\00e7 \00e3 o do pagamento, que pode variar em at\00e9  2 dias \00fa teis.';
-					// content: 'Para emitir o boleto clique em "FINALIZAR COMPRA" \A\A O boleto será emitido pelo Itaú Shopline com o prazo para pagamento de 1 dia útil e pode ser pago em qualquer agência bancária e Internet Banking.\A\A Caso não seja pago durante esse período será automaticamente cancelado.\A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis.';
-					content: 'O boleto bancário será exibido após a finalização da compra e também será enviado para o seu e-mail. \A\A O prazo para pagamento do boleto é de 3 dias. \A\A Caso não seja pago durante esse período será automaticamente cancelado. O prazo de entrega do pedido começa a contar após a confirmação do pagamento do boleto. \A\A Whirlpool S.A \A CNPJ: 59.105.999/0039-59 \A\A Whirlpool Eletrodomesticos AM S.A. \A CNPJ: 63.699.839/0001-80 \A\A Whirlpool S.A \A CNPJ: 59.105.999/0003-48';
+					content: 'Para emitir o boleto clique em "FINALIZAR COMPRA" \A\A O boleto será emitido pelo Itaú Shopline com o prazo para pagamento de 1 dia útil e pode ser pago em qualquer agência bancária e Internet Banking.\A\A Caso não seja pago durante esse período será automaticamente cancelado.\A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis.';
+					// content: 'O boleto bancário será exibido após a finalização da compra e também será enviado para o seu e-mail. \A\A O prazo para pagamento do boleto é de 3 dias. \A\A Caso não seja pago durante esse período será automaticamente cancelado. O prazo de entrega do pedido começa a contar após a confirmação do pagamento do boleto. \A\A Whirlpool S.A \A CNPJ: 59.105.999/0039-59 \A\A Whirlpool Eletrodomesticos AM S.A. \A CNPJ: 63.699.839/0001-80 \A\A Whirlpool S.A \A CNPJ: 59.105.999/0003-48';
 					font-size: 13px;
 					font-weight: bold;
 					white-space: pre-wrap;
 					word-wrap: break-word;
+				}
+			}
+		}
+	}
+
+	&[class*='consulempresa'],
+	&[class*='consulqa2']
+	 {
+		&.body-order-form {
+			.box-payment-option {
+				&.bankInvoicePaymentGroup {
+					&:after {
+						content: 'O boleto bancário será exibido após a finalização da compra e também será enviado para o seu e-mail. \A\A O prazo para pagamento do boleto é de 3 dias. \A\A Caso não seja pago durante esse período será automaticamente cancelado. O prazo de entrega do pedido começa a contar após a confirmação do pagamento do boleto. \A\A Whirlpool S.A \A CNPJ: 59.105.999/0039-59 \A\A Whirlpool Eletrodomesticos AM S.A. \A CNPJ: 63.699.839/0001-80 \A\A Whirlpool S.A \A CNPJ: 59.105.999/0003-48';
+					}
 				}
 			}
 		}
