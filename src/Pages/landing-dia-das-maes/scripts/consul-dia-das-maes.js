@@ -28,8 +28,10 @@ Nitro.setup(['dia-das-maes'], function () {
 
 			$('#seu-jeitinho .prateleira-slider .prateleira>ul').slick(slickConfig);
 
-			$(window).on('Tab.changed', (e, $nav, $content) => {
-				$($content).find('.prateleira > ul').slick('refresh');
+			$(window).on('Tab.willChange', (e, $nav, $prevContent, $content) => {
+				setTimeout(() => {
+					$($content).find('.prateleira > ul').slick('setPosition', 0);
+				}, 650);
 			});
 		}
 
@@ -84,8 +86,10 @@ Nitro.setup(['dia-das-maes'], function () {
 
 			$('#descontos .prateleira-slider .prateleira>ul').slick(slickConfig);
 
-			$(window).on('Tab.changed', (e, $nav, $content) => {
-				$($content).find('.prateleira > ul').slick('refresh');
+			$(window).on('Tab.willChange', (e, $nav, $prevContent, $content) => {
+				setTimeout(() => {
+					$($content).find('.prateleira > ul').slick('setPosition', 0);
+				}, 650);
 			});
 
 			$(window).on('resize', () => {
