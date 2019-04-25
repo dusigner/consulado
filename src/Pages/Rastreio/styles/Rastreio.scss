@@ -43,6 +43,32 @@ body {
 			padding: 0;
 		}
 	}
+	.tracking_loading {
+		position: relative;
+
+		&:before{
+			background: #fff;
+			background-color: #fff;
+			background-image: url('/arquivos/consul-trakink-loading.gif');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 100px;
+			content: '';
+			height: 100%;
+			left: 0;
+			opacity: 1;
+			position: absolute;
+			top: 0;
+			transition: all 0.3s;
+			width: 100%;
+			z-index: 5;
+		}
+
+		&.load:before {
+			opacity: 0;
+			z-index: -1;
+		}
+	}
 	.id-fail {
 		padding: 20% 0;
 		text-align: center;
