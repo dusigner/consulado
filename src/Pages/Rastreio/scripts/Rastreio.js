@@ -32,7 +32,7 @@ Nitro.controller('Rastreio', [], function() {
 				order = url[1].split('=')[1];
 
 			if(marketplace && order){
-				self.getData('brastempqa' , order);
+				self.getData('consulqa' , order);
 			}
 		}else{
 			let html = `
