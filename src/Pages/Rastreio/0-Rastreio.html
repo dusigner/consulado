@@ -29,12 +29,7 @@
 	</header>
 	<!-- /Header -->
 
-	<div class='container'>
-
-		<div class='id-fail'>
-			<h1>Desculpa, algo errado aconteceu...</h1>
-			<p>O seu pedido Mercado Livre <b>não foi encontrado.</b></p>
-		</div>
+	<div class='container tracking_loading'>
 
 		<div class='id-success'>
 
@@ -44,75 +39,28 @@
 				<div class='client-info destinatario'>
 					<h2>Destinatário</h2>
 					<div class='box-info'>
-						<p><b>E-mail:</b> AQUI VAI O EMAIL DO CLIENTE</p>
-						<p><b>Contato:</b> AQUI VAI O CONTATO DO CLIENTE</p>
+						<p><b>E-mail:</b> <span class="tracking_email"></span></p>
+						<p><b>Contato:</b> <span class="tracking_phone"></span></p>
 					</div>
 				</div>
 				<div class='client-info endereco'>
 					<h2>Endereço de entrega</h2>
 					<div class='box-info'>
-						<p><b>Logradouro:</b> AQUI VAI O Logradouro DO CLIENTE</p>
-						<p><b>Bairro:</b> AQUI VAI O Bairro DO CLIENTE</p>
+						<p><b>Logradouro:</b> <span class="tracking_street"></span></p>
+						<p><b>Bairro:</b> <span class="tracking_neighborhood"></span></p>
 					</div>
 				</div>
 			</div>
 
 			<div class='info-pedido'>
-				<h2><b>Pedido</b> AQUI VAI O PEDIDO DO CLIENTE</h2>
+				<h2><b>Pedido</b> <span class="tracking_orderId"></span></h2>
 				<div class='box-pedido'>
 					<div class='info-status'>
 						<div class='buy-data'>
 							<p>Data da compra</p>
-							<h2>20/12/2019</h2>
+							<h2 class="tracking_orderCreate"></h2>
 						</div>
 						<div class='statu'>
-							<div class='statu1'>
-								<span class='checked'></span>
-								<div class='info-status-pedido'>
-									<h3>Pedido consirmado</h3>
-									<p class='date'>28/02/2019</p>
-									<p class='time'>11:07h</p>
-								</div>
-							</div>
-							<div class='statu2'>
-								<span class='failed'></span>
-								<div class='info-status-pedido'>
-									<h3>Aguardando pagamento</h3>
-									<p class='date'>28/02/2019</p>
-									<p class='time'>11:07h</p>
-								</div>
-							</div>
-							<div class='statu3'>
-								<span></span>
-								<div class='info-status-pedido'>
-									<h3>Nota fiscal emitida</h3>
-									<p class='date'>28/02/2019</p>
-									<p class='time'>11:07h</p>
-								</div>
-							</div>
-							<div class='statu4'>
-								<span></span>
-								<div class='info-status-pedido'>
-									<h3>Preparando pedido</h3>
-									<p class='date'>28/02/2019</p>
-									<p class='time'>11:07h</p>
-								</div>
-							</div>
-							<div class='statu5'>
-								<span></span>
-								<div class='info-status-pedido'>
-									<h3>Enviado à transportadora</h3>
-									<p class='date'>28/02/2019</p>
-									<p class='time'>11:07h</p>
-								</div>
-							</div>
-							<div class='statu6'>
-								<span></span>
-								<div class='info-status-pedido'>
-									<h3>Entrega até</h3>
-									<p class='date'>28/02/2019</p>
-								</div>
-							</div>
 						</div>
 					</div>
 					<div class='info-produto clearfix'>
@@ -126,37 +74,10 @@
 							</div>
 						</div>
 						<div class='info-product'>
-								<div class='col-8'>
-									<div class='img-product'>
-										<img src='https://via.placeholder.com/100x100' />
-									</div>
-									<div class='product-name'>
-										<p>Fogão brastemp 5 bocas duplo forno cor inox com mesa de vidro e quadrichama</p>
-										<a href="#">Ver manual do produto</a>
-									</div>
-								</div>
-								<div class='col-4'>
-									<div class='volts-product'>
-										<p>127 V</p>
-									</div>
-									<div class='cod-product'>
-										<p>BFD5QBRRNA</p>
-									</div>
-								</div>
+							<div class="tracking_product">
 							</div>
+						</div>
 					</div>
-				</div>
-			</div>
-
-			<div class='info-truck'>
-				<h2>Status de rastreio</h2>
-				<div class='table-head'>
-					<p class='data'>Data e hora</p>
-					<p>Descrição</p>
-				</div>
-				<div class='table-info'>
-					<p class='data'>21/01/2019 às 13:00</p>
-					<p>Pedido encontra-se longe pra porra!</p>
 				</div>
 			</div>
 
