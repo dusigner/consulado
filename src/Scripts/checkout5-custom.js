@@ -253,10 +253,6 @@ $(document).on('ready', function() {
 				self.cart();
 			}
 
-			if (self.isShipping()) {
-				pj.hideChangeAddress();
-			}
-
 			// Verifica se está "logado"
 			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
 				if($(window).width() < 767) {
@@ -376,15 +372,8 @@ $(document).on('ready', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
-			if (store && store.isCorp) {
-				pj.hideChangeAddress();
-			}
-
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
-				if (store && store.isCorp) {
-					pj.disableInputs(e);
-				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
