@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:vtex='http://www.vtex.com.br/2009/vtex-common' xmlns:vtex.cmc='http://www.vtex.com.br/2009/vtex-commerce'>
+
+<head>
+	<title>Rastreio</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id='Meta Tags Adicionais' />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id='0-consul-head-content' />
+	<link rel='stylesheet' href='<!-- @echo assetsPath -->/Rastreio.css' />
+</head>
+
+<body data-controller='Rastreio'>
+
+	<!-- Header -->
+	<header data-module='header'>
+		<div class='topo-header container clearfix'>
+			<div class='col-6 logo-hewader'>
+				<i class='icon icon-logo-consul'></i>
+			</div>
+			<div class='col-6 atendimento'>
+				<a href='https://consul.custhelp.com/' target="_blank">Central de Atendimento</a>
+			</div>
+		</div>
+	</header>
+	<!-- /Header -->
+
+	<div class='container tracking_loading'>
+
+		<div class='id-success'>
+
+			<div class='info-client'>
+				<h1>Ratreamento de pedidos</h1>
+				<p>Acompanhe seus pedidos do <b>Mercado Livre</b></p>
+				<div class='client-info destinatario'>
+					<h2>Destinatário</h2>
+					<div class='box-info'>
+						<p><b>E-mail:</b> <span class="tracking_email"></span></p>
+						<p><b>Contato:</b> <span class="tracking_phone"></span></p>
+					</div>
+				</div>
+				<div class='client-info endereco'>
+					<h2>Endereço de entrega</h2>
+					<div class='box-info'>
+						<p><b>Logradouro:</b> <span class="tracking_street"></span></p>
+						<p><b>Bairro:</b> <span class="tracking_neighborhood"></span></p>
+					</div>
+				</div>
+			</div>
+
+			<div class='info-pedido'>
+				<h2><b>Pedido</b> <span class="tracking_orderId"></span></h2>
+				<div class='box-pedido'>
+					<div class='info-status'>
+						<div class='buy-data'>
+							<p>Data da compra</p>
+							<h2 class="tracking_orderCreate"></h2>
+						</div>
+						<div class='statu'>
+						</div>
+					</div>
+					<div class='info-produto clearfix'>
+						<div class='header-info-product'>
+							<div class='col-8'>
+								<p>Produto: </p>
+							</div>
+							<div class='col-4'>
+								<p>Voltagem:</p>
+								<p>Código do produto:</p>
+							</div>
+						</div>
+						<div class='info-product'>
+							<div class="tracking_product">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class='container'>
+			<h2 class='title-footer'>Importante.</h2>
+			<div class='itens-footer'>
+				<ul>
+					<li class='iten-1'><p>Caso você não esteja na localidade para receber o produto, verifique se alguém próximo (com 18 anos ou mais) pode receber o produto por você. Vale ressaltar que o produto só poderá ser entregue no endereço da Nota Fiscal</p></li>
+					<li class='iten-2'><p>Atente-se às dimensões da localidade: verifique se é necessário realizar algum procedimento para o deslocamento do produto no local (por exemplo, desembalar o produto para entrar no elevador)</p></li>
+					<li class='iten-3'><p>Confira o seu produto no momento da entrega. Caso haja alguma avaria ou distinção de modelo, cor ou voltagem em relação ao que foi solicitado, recuse a entrega.</p></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<div class='footer-copyright'>
+		<a href='https://consul.custhelp.com/' target="_blank">Central de Atendimento</a>
+	</div>
+	<!-- /Footer -->
+
+	<script src='<!-- @echo assetsPath -->/Rastreio.min.js'></script>
+</body>
+</html>

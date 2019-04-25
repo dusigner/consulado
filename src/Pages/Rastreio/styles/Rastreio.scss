@@ -1,0 +1,447 @@
+@charset 'UTF-8';
+
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+header {
+	background: $green;
+	padding: 13px 0;
+
+	.atendimento {
+		text-align: right;
+		a {
+			border: 1px solid $selection-color;
+			border-radius: 20px;
+			color: $selection-color;
+			font-size: 14px;
+			padding: 5px 15px;
+		}
+		@include breakpoint(medium, 'max') {
+			display: none
+		}
+	}
+	.logo-hewader {
+		i {
+			color: $selection-color;
+			@include breakpoint(medium, 'max') {
+				font-size: 21px;
+			}
+		}
+		@include breakpoint(medium, 'max') {
+			text-align: center;
+		}
+	}
+	@include breakpoint(medium, 'max') {
+		min-height: 50px;
+	}
+}
+body {
+	@include breakpoint(medium, 'max') {
+		padding-top: 40px!important;
+		.container {
+			padding: 0;
+		}
+	}
+	.id-fail {
+		padding: 20% 0;
+		text-align: center;
+
+		h1 {
+			color: $purple;
+			font-size: 48px;
+			margin: 0;
+			@include breakpoint(medium, 'max') {
+				font-size: 28px;
+			}
+		}
+		p {
+			font-size: 20px;
+			margin: 15px 0;
+			@include breakpoint(medium, 'max') {
+				font-size: 16px;
+				margin: 20px 0;
+			}
+		}
+
+	}
+	.endereco {
+		margin-left: 10px;
+
+		@include breakpoint(medium, 'max') {
+			margin-left: 0;
+		}
+	}
+	.info-client {
+		margin: auto;
+		max-width: 650px;
+
+		h1 {
+			color: $green ;
+			font-size: 48px;
+			margin-bottom: 0;
+			text-align: center;
+
+			@include breakpoint(medium, 'max') {
+				font-size: 32px;
+				margin: auto;
+				max-width: 200px;
+				padding: 70px 0 0 0;
+			}
+		}
+		p {
+			color: $base-font-color;
+			font-size: 16px;
+			margin: 0;
+			text-align: center;
+		}
+		.client-info {
+			display: inline-block;
+			margin-top: 50px;
+			vertical-align: text-top;
+			@include breakpoint(medium, 'max') {
+				margin-top: 35px;
+			}
+
+			h2 {
+				color: $purple;
+				font-size: 20px;
+				margin: 0 0 10px 0;
+			}
+
+			.box-info {
+				border: 1px solid $dropdown-hover-color;
+				border-radius: 5px;
+				max-width: 315px;
+				padding: 5px;
+
+				@include breakpoint(medium, 'max') {
+					max-width: 100%;
+					padding: 25px 10px;
+				}
+
+				p {
+					color: $gray-d;
+					font-size: 14px;
+					text-align: left;
+				}
+			}
+		}
+
+	}
+
+	.info-pedido {
+		margin: 30px 0;
+		padding: 40px 0;
+
+		@include breakpoint(medium, 'max') {
+			padding: 0;
+		}
+
+		h2 {
+			color: $gray-d;
+			font-size: 20px;
+			font-weight: normal;
+
+			b {
+				color: $purple;
+			}
+		}
+		.box-pedido {
+			border: 1px solid $gray-l;
+			padding: 10px;
+
+			.buy-data {
+				text-align: right;
+
+				@include breakpoint(medium, 'max') {
+					text-align: left;
+				}
+
+				p {
+					color: #58595B;
+					font-size: 12px;
+					margin: 0;
+				}
+				h2 {
+					color: $purple;
+					font-size: 20px;
+					font-weight: bold;
+					margin: 0;
+				}
+			}
+			.statu {
+				background: url('/arquivos/Line-status.png') no-repeat;
+				background-position: 45% 50px;
+				background-size: 85% 1px;
+				padding: 25px 0;
+
+				@include breakpoint(medium, 'max') {
+					background: url('/arquivos/Line-status-mobile.png') no-repeat;
+					background-position: 14px 60px;
+					background-size: 1px 450px;
+				}
+
+				div {
+					display: inline-block;
+					text-align: center;
+					vertical-align: top;
+					width: 16.3%;
+
+					@include breakpoint(medium, 'max') {
+						margin: 25px 0;
+						text-align: left;
+						width: 100%;
+					}
+
+					&.info-status-pedido {
+						width: 100%;
+
+						@include breakpoint(medium, 'max') {
+							display: inline-block;
+							margin: 0 0 0 20px;
+							width: 80%;
+						}
+					}
+
+					span {
+						background: #fff;
+						border: 1px solid $green;
+						border-radius: 30px;
+						display: block;
+						height: 50px;
+						margin: auto;
+						width: 50px;
+
+						&.checked {
+							background: url('/arquivos/Union-success.png') no-repeat 10px;
+							background-color: $green;
+						}
+						&.failed {
+							background: url('/arquivos/Union-failed.png') no-repeat 14px;
+							background-color: $object-validate-color;
+							border: 1px solid $object-validate-color;
+						}
+						@include breakpoint(medium, 'max') {
+							background-size: contain;
+							display: inline-block;
+							height: 30px;
+							margin: 0;
+							width: 30px;
+							&.failed {
+								background: url('/arquivos/Union-failed-mobile.png') no-repeat 8px;
+								background-color: $object-validate-color;
+							}
+							&.checked {
+								background: url('/arquivos/Union-success-mobile.png') no-repeat 6px;
+								background-color: $green;
+							}
+						}
+					}
+					h3 {
+						color: $selection-background;
+						font-size: 12px;
+						font-weight: normal;
+						margin: 0;
+						@include breakpoint(medium, 'max') {
+							font-size: 14px;
+						}
+					}
+					p {
+						color: $txt-gray-l;
+						font-size: 12px;
+						margin: 0;
+						@include breakpoint(medium, 'max') {
+							display: inline-block;
+							width: 45%;
+							&.time {
+								text-align: right;
+							}
+						}
+					}
+				}
+			}
+			.info-produto {
+				padding: 0 15px;
+				@include breakpoint(medium, 'max') {
+					padding: 0;
+				}
+				.header-info-product {
+					border-top: 1px solid $gray-l;
+					padding: 10px 0;
+					@include breakpoint(medium, 'max') {
+						.col-4 {
+							display: none;
+						}
+					}
+
+					p {
+						color: $selection-background;
+						display: inline-block;
+						font-size: 12px;
+						font-weight: bold;
+						margin: 5px 20px 5px 0;
+					}
+				}
+				.info-product {
+					div {
+						display: inline-block;
+						vertical-align: top;
+						&.product-name {
+							padding: 0 25px;
+							width: 80%;
+							p {
+								color: $gray-d;
+								font-size: 16px;
+								font-weight: bold;
+								margin: 0;
+							}
+							a {
+								color: $purple;
+								font-size: 14px;
+								font-weight: bold;
+								margin: 15px 0;
+							}
+						}
+						&.col-4 {
+							p {
+								color: #736c6b;
+								font-size: 16px;
+								margin: 0 45px 0 0;
+							}
+						}
+						@include breakpoint(medium, 'max') {
+							&.img-product {
+								max-width: 85px;
+							}
+							&.product-name {
+								max-width: 60%;
+								padding: 0 0 0 10px;
+								p {
+									font-size: 14px;
+								}
+								a {
+									display: none;
+								}
+							}
+							&.volts-product {
+								width: 85px;
+								p {
+									display: none;
+								}
+							}
+							&.cod-product {
+								max-width: 60%;
+								padding: 0 0 0 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.info-truck {
+		h2 {
+			color: $purple;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		div {
+			p {
+				color: $gray-d;
+				display: inline-block;
+				font-size: 16px;
+				margin: 10px 0;
+				width: 55%;
+				@include breakpoint(medium, 'max') {
+					font-size: 14px;
+				}
+
+				&.data {
+					width: 35%;
+				}
+			}
+			&.table-head {
+				p {
+					color: $purple;
+					font-size: 12px;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
+footer {
+	background: $dropdown-hover-color;
+	padding: 30px 0;
+
+	.title-footer {
+		color: $gray-d;
+		font-size: 20px;
+		@include breakpoint(medium, 'max') {
+			margin-left: 30px;
+		}
+	}
+	.itens-footer {
+		ul {
+			li {
+				p {
+					color: $gray-d;
+					display: inline-block;
+					font-size: 14px;
+					margin: 5px 0;
+					padding: 0 0 0 15px;
+					width: 90%;
+
+					@include breakpoint(medium, 'max') {
+						margin: 10px 0;
+						padding: 0 0 0 8px;
+						text-align: justify;
+					}
+				}
+
+				&:before {
+					background: url('/arquivos/atencao.png');
+					content: '';
+					display: inline-block;
+					height: 22px;
+					vertical-align: super;
+					width: 22px;
+
+					@include breakpoint(medium, 'max') {
+						margin-top: 10px;
+						vertical-align: top;
+					}
+				}
+			}
+		}
+	}
+}
+.footer-copyright {
+	background: $green;
+    display: block;
+    height: 26px;
+	width: 100%;
+	@include breakpoint(medium, 'max') {
+		border-top: 10px solid #000;
+		height: auto;
+		padding: 10px 0;
+		text-align: center;
+	}
+
+	a {
+		border: 1px solid $selection-color;
+		border-radius: 20px;
+		color: $selection-color;
+		display: none;
+		font-size: 14px;
+		margin: auto;
+		padding: 5px 15px;
+		width: 80%;
+
+		@include breakpoint(medium, 'max') {
+			display: block;
+			max-width: 220px;
+		}
+	}
+}
