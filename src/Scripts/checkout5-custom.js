@@ -132,9 +132,8 @@ $(document).on('ready', function() {
 
 				if (index + 1 === $shippingItems.length) $shippingToggle.addClass('has-interaction');
 			});
-			if($('body').is('.teste-preco-frete')) {
-				$shippingEstimate.html(`${$shippingEstimate.html()} <span> - ${monetary}</span>`);
-			}
+
+			$shippingEstimate.html(`${$shippingEstimate.html()} <span> - ${monetary}</span>`);
 		};
 
 		this.isCart = function() {
