@@ -6,8 +6,19 @@ import Tab from 'modules/tabs';
 
 Nitro.setup(['dia-das-maes'], function () {
 
+	/**
+	 * Class to create a DiaDasMaes Module
+	 *
+	 * @class DiaDasMaes
+	 */
 	class DiaDasMaes {
 
+		/**
+		 * *Section SeuJeitinho
+		 * Init tab and slick carroussel
+		 *
+		 * @memberof DiaDasMaes
+		 */
 		sectionSeuJeitinho() {
 			const tab = new Tab('seu-jeitinho'),
 				slickConfig = {
@@ -35,6 +46,12 @@ Nitro.setup(['dia-das-maes'], function () {
 			});
 		}
 
+		/**
+		 * *Section Descontos
+		 * Init tab and slick carroussel
+		 *
+		 * @memberof DiaDasMaes
+		 */
 		sectionDescontos() {
 			const $listItem = $('#descontos .list-items'),
 				$overlay = $('.overlay'),
@@ -63,23 +80,29 @@ Nitro.setup(['dia-das-maes'], function () {
 							slidesToScroll: 1,
 						}
 					}]
-				},
-				openItems = () => {
-					if ($(window).width() < 960) {
+				};
 
-						const changeTextButton = () => $selectedItem.html($listItem.find('button.-active').html());
+			/**
+			 * Create a select box
+			 * for mobile devices
+			 *
+			 */
+			const openItems = () => {
+				if ($(window).width() < 960) {
+
+					const changeTextButton = () => $selectedItem.html($listItem.find('button.-active').html());
+
+					changeTextButton();
+
+					$selectedItem.add($listItem.find('li')).unbind().click(() => {
+						$overlay.toggleClass('-hidden');
+						$listItem.toggleClass('-active').parents('.group').toggleClass('-opened');
 
 						changeTextButton();
 
-						$selectedItem.add($listItem.find('li')).unbind().click(() => {
-							$overlay.toggleClass('-hidden');
-							$listItem.toggleClass('-active').parents('.group').toggleClass('-opened');
-
-							changeTextButton();
-
-						});
-					} else $selectedItem.unbind();
-				};
+					});
+				} else $selectedItem.unbind();
+			};
 
 			openItems();
 			tab.init();
@@ -97,6 +120,11 @@ Nitro.setup(['dia-das-maes'], function () {
 			});
 		}
 
+		/**
+		 * Init DiaDasMaes
+		 *
+		 * @memberof DiaDasMaes
+		 */
 		init() {
 			this.sectionSeuJeitinho();
 			this.sectionDescontos();
