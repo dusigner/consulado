@@ -21,6 +21,7 @@ Nitro.setup(['dia-das-maes'], function () {
 		 */
 		sectionSeuJeitinho() {
 			const tab = new Tab('seu-jeitinho'),
+				$navItems = $('#seu-jeitinho .tab'),
 				slickConfig = {
 					slidesToShow: 2,
 					slidesToScroll: 2,
@@ -34,6 +35,12 @@ Nitro.setup(['dia-das-maes'], function () {
 						}
 					]
 				};
+
+			$navItems.find('li').each((index, el) => {
+				$(el).click(() => {
+					$navItems.attr('data-active-item', index);
+				});
+			});
 
 			tab.init();
 

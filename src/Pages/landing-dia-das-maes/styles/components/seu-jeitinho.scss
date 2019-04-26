@@ -7,6 +7,31 @@
 		border-radius: 20px;
 		margin-bottom: 30px;
 		padding: 2px;
+		position: relative;
+		&::before {
+			background: $green;
+			border-radius: 20px;
+			color: #fff;
+			content: '';
+			display: block;
+			height: 100%;
+			position: absolute;
+			transition: all .3s ease;
+			width: calc(100% / 3);
+		}
+		&[data-active-item='0']:before {
+			left: 0;
+			transform: translateX(0);
+		}
+		&[data-active-item='1']:before {
+			left: 50%;
+			transform: translateX(-50%);
+
+		}
+		&[data-active-item='2']:before {
+			left: 100%;
+			transform: translateX(-100%);
+		}
 		li {
 			width: calc(100% / 3);
 		}
@@ -15,11 +40,11 @@
 			background: none;
 			border: none;
 			padding: 10px 0;
+			transition: color .3s ease;
 			width: 100%;
 			&.-active {
-				background: $green;
-				border-radius: 20px;
 				color: #fff;
+				position: relative;
 			}
 		}
 	}
