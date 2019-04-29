@@ -202,7 +202,7 @@ body.busca {
 		top: 35px;
 		// visibility: hidden;
 		z-index: 10;
-		
+
 		&.active {
 			display: flex;
 			flex-direction: column;
@@ -422,85 +422,6 @@ body.busca {
 
 .listagem,
 .listagem-categoria-filtros {
-	.prateleira.default {
-		@include breakpoint(small, 'max') {
-			margin-top: 30px;
-
-			ul {
-				li {
-					display: inline-block;
-					height: auto;
-					margin: 0 1%;
-					vertical-align: top;
-					width: 49%;
-
-					&:nth-child(odd) { margin-left: 0; }
-
-					&:nth-child(even) { margin-right: 0; }
-
-					article {
-						padding: 0;
-
-						.detalhes {
-							.image {
-								img { min-height: auto; }
-							}
-
-							.img {
-								min-height: auto;
-							}
-
-							.prod-info {
-								.nome {
-									@include responsiveFont(14, 16, true);
-									font-weight: bold;
-									height: auto;
-								}
-
-								.price {
-									height: auto;
-									margin-bottom: 10px;
-									min-height: 162px;
-
-									.de {
-										@include responsiveFont(13, 16, true);
-										min-height: 20px;
-									}
-
-									.por {
-										@include responsiveFont(16, 16, true);
-										margin: 5px 0 !important;
-										position: relative;
-
-										.juros {
-											left: 0;
-											position: absolute;
-											top: 20px;
-										}
-
-										.total-parcelado { margin-top: 20px; }
-									}
-
-									.adicional {
-										@include responsiveFont(14, 16, true);
-										margin: 5px 0 !important;
-									}
-
-									.discount-boleto {
-										@include responsiveFont(13, 16, true);
-										padding: 0;
-
-										&:before { @include responsiveFont(15, 16, true); }
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	.prateleira-slider {
 		ul li { margin: 0 !important; }
 	}
