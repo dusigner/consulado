@@ -6,7 +6,6 @@
 		margin-bottom: 0;
 	}
 	@include responsiveFont(12, 16, true);
-	margin: 20px 0;
 
 	.off {
 		@include responsiveFont(17, 16, true);
@@ -31,10 +30,6 @@
 			width: 30%;
 		}
 
-		span {
-			@include breakpoint(medium, 'min') { display: none }
-		}
-
 		.val {
 			display: inline-block;
 			text-decoration: line-through
@@ -54,8 +49,11 @@
 			@include responsiveFont(12, 16, true);
 			.val { @include responsiveFont(14, 16, true) }
 		}
-		@include responsiveFont(17, 16, true);
+		color: #9ACA3c;
+		font-size: 20px;
 		font-weight: bold;
+		line-height: 1;
+		margin: 15px 0 0;
 
 		a { color: $self-primary }
 
@@ -73,6 +71,16 @@
 	&--cash {
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
+		}
+	}
+
+	.de,
+	.por {
+		span {
+			color: #702F8F;
+			font-size: 12px;
+			font-weight: 500;
+			line-height: 1.2;
 		}
 	}
 }

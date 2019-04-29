@@ -4,9 +4,13 @@
 	position: relative;
 
 	img {
-		@include breakpoint(medium, 'min') { min-height: 327px	}
-		height: auto;
-		width: 100%;
+		@include breakpoint(medium, 'min') {
+			max-height: 210px;
+			max-width: 100%;
+			width: auto;
+		}
+		width: auto;
+		max-width: 100%;
 	}
 
 	&:empty {

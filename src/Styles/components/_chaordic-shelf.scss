@@ -141,7 +141,6 @@ div[data-chaordic] {
 		}
 
 		margin: 0 auto;
-		max-width: 327px;
 		width: 100%;
 
 		&--empty {
@@ -259,8 +258,12 @@ div[data-chaordic] {
 			width: 100/3*1%;
 
 			ul li {
-				border: 1px solid $self-third;
+				// border: 1px solid $self-third;
 				width: 100%!important;
+			}
+
+			.box-produto {
+				border: 0;
 			}
 		}
 
