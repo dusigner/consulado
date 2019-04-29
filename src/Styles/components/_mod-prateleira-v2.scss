@@ -2,201 +2,211 @@
 
 @import '_rebase/_root';
 
-.prateleira {
-	&.default {
-		& > ul {
-			display: flex;
-			flex-wrap: wrap;
-			margin: 0 -10px;
+body.listagem {
+	.prateleira {
+		&.default {
+			& > ul {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 0 -10px;
 
-			& > li {
-				margin-bottom: 20px;
-				padding: 0 10px;
-				width: 33.3333%;
-
-				& > .box-produto {
-					border: solid 1px #E3E1E1;
-					border-radius: 4px;
-					display: flex;
-					flex-direction: column;
-					height: 100%;
-					padding: 15px;
-
-					.detalhes {
-						display: flex;
-						flex: 1;
-						flex-direction: column;
-
-						.prod-info {
-							display: flex;
-							flex: 1;
-							flex-direction: column;
-
-							.nome {
-								flex: 1;
-								font-family: 'Open Sans';
-								font-size: 14px;
-								font-weight: lighter;
-								margin: 5px 0 15px;
-							}
-
-							// nome modelo prateleira
-							.product_field_770 {
-								font-size: 0; // hide field title
-
-								& > ul li {
-									font-family: 'consul';
-									font-size: 12px;
-									font-weight: bold;
-								}
-							}
-
-							.price {
-								.de,
-								.por {
-									color: $c6;
-									font-size: 12px;
-									font-weight: 500;
-									line-height: 1.2;
-								}
-
-								.de {
-									margin: 0;
-									text-decoration: line-through;
-								}
-
-								.por {
-									margin: 0 0 5px;
-
-									.off { display: none }
-								}
-							}
-
-							.adicional {
-								color: $c1;
-								font-size: 20px;
-								font-weight: bold;
-								line-height: 1;
-								margin: 15px 0 0;
-
-								.total-parcelado {
-									display: none;
-								}
-							}
-
-							.discount-boleto {
-								font-size: 12px;
-								font-weight: normal;
-								margin: 0;
-							}
-
-							.indisponivel {
-								margin: 0;
-								text-align: center;
-							}
-						}
-					}
-
-					.btn-comparar {
-						position: relative;
-
-						fieldset {
-							border: 0;
-							margin: 0;
-							padding: 0;
-
-							input {
-								position: absolute;
-							}
-
-							label {
-								margin-top: 15px;
-							}
-						}
-					}
-
-					.image {
-						display: block;
-						line-height: 0;
-						position: relative;
-						text-align: center;
-
-						// Revisar - Não sei se essa é a melhor opção
-						// 2h05 AM
-						&:before {
-							@include singleTransition(150);
-							background: transparent url('/arquivos/selo-badge-consul.png') left bottom no-repeat;
-							background-size: contain;
-							bottom: 0;
-							content: ' ';
-							display: block;
-							height: 30%;
-							opacity: 0;
-							position: absolute;
-							right: 0;
-							width: 30%;
-							z-index: 3;
-
-							@include breakpoint(small, 'max') {
-								display: none;
-							}
-						}
-
-						&:hover {
-							&:before { opacity: 1; }
-							.flag { opacity: 0; }
-						}
-
-						span {
-							display: block;
-							min-height: auto;
-							position: absolute;
-
-							@include breakpoint(large, 'max')       { min-height: 220px; }
-							@include breakpoint(small, 'max')       { min-height: 284px; }
-							@include breakpoint(extra-small, 'max') { min-height: 235px; }
-
-							&.main {
-								width: 100%;
-								z-index: 1;
-							}
-
-							&.backup {
-								position: relative;
-								z-index: 0;
-							}
-						}
-
-						img {
-							height: auto;
-							margin: 0 auto;
-							max-width: 100%;
-						}
-
-						.product-field {
-							bottom: 0;
-							font-size: 0;
-							position: absolute;
-							right: 0;
-							text-indent: -9999999cm;
-							width: 30%;
-							z-index: 3;
-
-							li {
-								background-color: transparent;
-								background-position: left bottom;
-								background-repeat: no-repeat;
-								background-size: contain;
-								clear: both;
-								display: block;
-								height: 103px;
-								width: 100%;
-
-								&:first-child { display: block; }
-							}
-						}
-					}
+				& > li {
+					margin-bottom: 20px;
+					padding: 0 10px;
+					width: 33.3333%;
 				}
+			}
+		}
+	}
+}
+
+.box-produto {
+	border-radius: 4px;
+	border: solid 1px #E3E1E1;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0 auto;
+	max-width: 270px;
+	padding: 15px;
+	transition: border .2s ease, box-shadow .2s ease;
+
+	&:hover {
+		border-color: $c1;
+		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+	}
+
+	.detalhes {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+
+		.prod-info {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+
+			.nome {
+				flex: 1;
+				font-family: 'Open Sans';
+				font-size: 14px;
+				font-weight: lighter;
+				margin: 5px 0 15px;
+			}
+
+			// nome modelo prateleira
+			.product_field_770 {
+				font-size: 0; // hide field title
+
+				& > ul li {
+					font-family: 'consul';
+					font-size: 12px;
+					font-weight: bold;
+				}
+			}
+
+			.price {
+				.de,
+				.por {
+					color: $c6;
+					font-size: 12px;
+					font-weight: 500;
+					line-height: 1.2;
+				}
+
+				.de {
+					margin: 0;
+					text-decoration: line-through;
+				}
+
+				.por {
+					margin: 0 0 5px;
+
+					.off { display: none }
+				}
+			}
+
+			.adicional {
+				color: $c1;
+				font-size: 20px;
+				font-weight: bold;
+				line-height: 1;
+				margin: 15px 0 0;
+
+				.total-parcelado {
+					display: none;
+				}
+			}
+
+			.discount-boleto {
+				font-size: 12px;
+				font-weight: normal;
+				margin: 0;
+			}
+
+			.indisponivel {
+				margin: 0;
+				text-align: center;
+			}
+		}
+	}
+
+	.btn-comparar {
+		position: relative;
+
+		fieldset {
+			border: 0;
+			margin: 0;
+			padding: 0;
+
+			input {
+				position: absolute;
+			}
+
+			label {
+				margin-top: 15px;
+			}
+		}
+	}
+
+	.image {
+		display: block;
+		line-height: 0;
+		position: relative;
+		text-align: center;
+
+		// Revisar - Não sei se essa é a melhor opção
+		// 2h05 AM
+		&:before {
+			@include singleTransition(150);
+			background: transparent url('/arquivos/selo-badge-consul.png') left bottom no-repeat;
+			background-size: contain;
+			bottom: 0;
+			content: ' ';
+			display: block;
+			height: 30%;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			width: 30%;
+			z-index: 3;
+
+			@include breakpoint(small, 'max') {
+				display: none;
+			}
+		}
+
+		&:hover {
+			&:before { opacity: 1; }
+			.flag { opacity: 0; }
+		}
+
+		span {
+			display: block;
+			min-height: auto;
+			position: absolute;
+
+			@include breakpoint(large, 'max')       { min-height: 220px; }
+			@include breakpoint(small, 'max')       { min-height: 284px; }
+			@include breakpoint(extra-small, 'max') { min-height: 235px; }
+
+			&.main {
+				width: 100%;
+				z-index: 1;
+			}
+
+			&.backup {
+				position: relative;
+				z-index: 0;
+			}
+		}
+
+		img {
+			max-height: 210px;
+			max-width: 100%;
+			width: auto;
+		}
+
+		.product-field {
+			bottom: 0;
+			font-size: 0;
+			position: absolute;
+			right: 0;
+			text-indent: -9999999cm;
+			width: 30%;
+			z-index: 3;
+
+			li {
+				background-color: transparent;
+				background-position: left bottom;
+				background-repeat: no-repeat;
+				background-size: contain;
+				clear: both;
+				display: block;
+				height: 103px;
+				width: 100%;
+
+				&:first-child { display: block; }
 			}
 		}
 	}
