@@ -46,7 +46,7 @@ body {
 	.tracking_loading {
 		position: relative;
 
-		&:before{
+		&:before {
 			background: #fff;
 			background-color: #fff;
 			background-image: url('/arquivos/consul-trakink-loading.gif');
@@ -59,7 +59,7 @@ body {
 			opacity: 1;
 			position: absolute;
 			top: 0;
-			transition: all 0.3s;
+			transition: all .3s;
 			width: 100%;
 			z-index: 5;
 		}
@@ -101,6 +101,7 @@ body {
 	.info-client {
 		margin: auto;
 		max-width: 650px;
+		text-align: center;
 
 		h1 {
 			color: $green ;
@@ -124,7 +125,9 @@ body {
 		.client-info {
 			display: inline-block;
 			margin-top: 50px;
+			text-align: left;
 			vertical-align: text-top;
+
 			@include breakpoint(medium, 'max') {
 				margin-top: 35px;
 			}
