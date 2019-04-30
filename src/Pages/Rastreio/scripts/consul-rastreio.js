@@ -30,12 +30,13 @@ Nitro.controller('Rastreio', [], function() {
 
 	this.getUrlParam = () => {
 		let url = document.URL.split('?');
+		console.log("NE Q FOI!!");
 
 		if(url[1]){
 			let marketplace = url[1].split('=')[0],
-				order = url[1].split('=')[1];
+				order = url[1].split('=')[1],
+				marketplaceName = marketplace.replace('_',' ').toLowerCase();
 
-			marketplaceName = marketplace.replace('_',' ').toLowerCase();
 			let html = `
 				<h1>Ratreamento de pedidos</h1>
 				<p>Acompanhe seus pedidos do <b>${marketplaceName}</b></p>

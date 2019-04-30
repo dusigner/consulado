@@ -121,6 +121,10 @@ body {
 			font-size: 16px;
 			margin: 0;
 			text-align: center;
+
+			b {
+				text-transform: capitalize;
+			}
 		}
 		.client-info {
 			display: inline-block;
