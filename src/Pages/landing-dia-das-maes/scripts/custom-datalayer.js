@@ -37,25 +37,25 @@ Nitro.module('custom-datalayer', function() {
 			);
 		});
 
-		$('#seu-jeitinho .slick-prev').on('click', function() {
-			const currentCategory = $('#seu-jeitinho .tab button.-active').text();
+		$('body')
+			.on('click', '#seu-jeitinho .slick-prev', function() {
+				const currentCategory = $('#seu-jeitinho .tab button.-active').text();
 
-			pushDataLayer(
-				`Categoria ${currentCategory}`,
-				'Clique seta esquerda',
-				`Ver produtos para esquerda`
-			);
-		});
+				pushDataLayer(
+					`Categoria ${currentCategory}`,
+					'Clique seta esquerda',
+					`Ver produtos para esquerda`
+				);
+			})
+			.on('click', '#seu-jeitinho .slick-next', function() {
+				const currentCategory = $('#seu-jeitinho .tab button.-active').text();
 
-		$('#seu-jeitinho .slick-next').on('click', function() {
-			const currentCategory = $('#seu-jeitinho .tab button.-active').text();
-
-			pushDataLayer(
-				`Categoria ${currentCategory}`,
-				'Clique seta direita',
-				`Ver produtos para direita`
-			);
-		});
+				pushDataLayer(
+					`Categoria ${currentCategory}`,
+					'Clique seta direita',
+					`Ver produtos para direita`
+				);
+			});
 	};
 
 	this.descontoSection = () => {
@@ -85,26 +85,25 @@ Nitro.module('custom-datalayer', function() {
 			);
 		});
 
-		$('#descontos .slick-prev').on('click', function() {
-			const currentCategory = $('#descontos .btn-tab.-active').text();
+		$('body')
+			.on('click', '#descontos .slick-prev', function() {
+				const currentCategory = $('#descontos .btn-tab.-active').text();
 
-			pushDataLayer(
-				`Categoria ${currentCategory}`,
-				'Clique seta esquerda',
-				`Ver produtos para esquerda`
-			);
-		});
+				pushDataLayer(
+					`Categoria ${currentCategory}`,
+					'Clique seta esquerda',
+					`Ver produtos para esquerda`
+				);
+			})
+			.on('click', '#descontos .slick-next', function() {
+				const currentCategory = $('#descontos .btn-tab.-active').text();
 
-		$('#descontos .slick-next').on('click', function() {
-			console.log('oi');
-			const currentCategory = $('#descontos .btn-tab.-active').text();
-
-			pushDataLayer(
-				`Categoria ${currentCategory}`,
-				'Clique seta direita',
-				`Ver produtos para direita`
-			);
-		});
+				pushDataLayer(
+					`Categoria ${currentCategory}`,
+					'Clique seta direita',
+					`Ver produtos para direita`
+				);
+			});
 	};
 
 	this.init();
