@@ -8,6 +8,10 @@
 		1560px: 0 center
 	));
 
+	@include breakpoint(small, 'max') {
+		background-image: url('/arquivos/consul-dia-das-maes-facilidade-mobile.png');
+	}
+
 	@include breakpoint(medium, 'max') {
 		background-position: -5vw top;
 		background-size: contain;
