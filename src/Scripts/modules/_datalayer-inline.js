@@ -5,7 +5,7 @@
  * example: class="js-track-gtm" data-gtm="Category|action|label|event"
  */
 export const checkInlineDatalayers = () => {
-	$('body').on('click', '.js-track-gtm', function() {
+	$('body').on('click', '.-js-track-gtm', function() {
 		const gtmData = $(this).attr('data-gtm').split('|');
 		parseDataLayer(gtmData);
 	});
