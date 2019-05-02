@@ -38,7 +38,7 @@ Nitro.controller('Rastreio', [], function() {
 				marketplaceName = marketplace.replace('_',' ').toLowerCase();
 
 			let html = `
-				<h1>Ratreamento de pedidos</h1>
+				<h1>Rastreamento de pedidos</h1>
 				<p>Acompanhe seus pedidos do <b>${marketplaceName}</b></p>
 			`;
 			self.titlePage(html);
