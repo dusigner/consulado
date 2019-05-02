@@ -2,9 +2,12 @@
 
 import 'vendors/nitro';
 import 'vendors/slick';
+import { checkInlineDatalayers } from 'modules/_datalayer-inline';
 import Tab from 'modules/tabs';
+import './custom-datalayer';
 
-Nitro.setup(['dia-das-maes'], function () {
+Nitro.setup(['custom-datalayer'], function () {
+	checkInlineDatalayers();
 
 	/**
 	 * Class to create a DiaDasMaes Module
