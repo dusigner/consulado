@@ -142,7 +142,7 @@ Nitro.controller('Rastreio', [], function() {
 
 		let createTime = data.creationDate.split('T')[1].split('.')[0].split(':')[0] + ':' + data.creationDate.split('T')[1].split('.')[0].split(':')[1];
 
-		let shippingEstimateDateSplit = data.shippingData.logisticsInfo[0].shippingEstimateDate.split('T')[0].split('-'),
+		let shippingEstimateDateSplit = (data.shippingData.logisticsInfo[0].shippingEstimateDate) ? data.shippingData.logisticsInfo[0].shippingEstimateDate.split('T')[0].split('-') : "",
 			shippingEstimateDate = shippingEstimateDateSplit[2] + '/' + shippingEstimateDateSplit[1] + '/' + shippingEstimateDateSplit[0];
 
 		let statusOrder = 0;
