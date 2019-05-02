@@ -16,6 +16,13 @@ Nitro.controller('Rastreio', [], function() {
 		$('.id-success .info-client').prepend(msg);
 	}
 
+	this.returnMarketPlace = () => {
+		const urlMarketplace = document.URL.split('?')[1].split('=')[0],
+			treatedMarketPlace = urlMarketplace.replace('_', ' ').toLowerCase();
+
+		return treatedMarketPlace
+	};
+
 	this.errorPage = (msg) => {
 		let html = `
 			<div class='id-fail'>
@@ -34,12 +41,11 @@ Nitro.controller('Rastreio', [], function() {
 
 		if(url[1]){
 			let marketplace = url[1].split('=')[0],
-				order = url[1].split('=')[1],
-				marketplaceName = marketplace.replace('_',' ').toLowerCase();
+				order = url[1].split('=')[1];
 
 			let html = `
 				<h1>Rastreamento de pedidos</h1>
-				<p>Acompanhe seus pedidos do <b>${marketplaceName}</b></p>
+				<p>Acompanhe seus pedidos do <b>${this.returnMarketPlace()}</b></p>
 			`;
 			self.titlePage(html);
 
@@ -49,7 +55,7 @@ Nitro.controller('Rastreio', [], function() {
 		}else{
 			let html = `
 				<h1>Desculpa, algo errado aconteceu...</h1>
-				<p>O seu pedido não foi encontrado.</p>
+				<p>O seu <b>${this.returnMarketPlace()}</b> pedido não foi encontrado.</p>
 			`;
 			self.errorPage(html);
 		}
@@ -113,7 +119,7 @@ Nitro.controller('Rastreio', [], function() {
 				}else{
 					let html = `
 						<h1>Desculpa, algo errado aconteceu...</h1>
-						<p>O seu pedido <b>Mercado Livre</b> não foi encontrado.</p>
+						<p>O seu pedido <b>${this.returnMarketPlace()}</b> não foi encontrado.</p>
 					`;
 					self.errorPage(html);
 				}
