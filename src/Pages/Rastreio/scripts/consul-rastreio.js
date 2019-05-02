@@ -12,6 +12,10 @@ Nitro.controller('Rastreio', [], function() {
 		this.getUrlParam();
 	};
 
+	this.titlePage = (msg) => {
+		$('.id-success .info-client').prepend(msg);
+	}
+
 	this.errorPage = (msg) => {
 		let html = `
 			<div class='id-fail'>
@@ -26,10 +30,18 @@ Nitro.controller('Rastreio', [], function() {
 
 	this.getUrlParam = () => {
 		let url = document.URL.split('?');
+		console.log("NE Q FOI!!");
 
 		if(url[1]){
 			let marketplace = url[1].split('=')[0],
-				order = url[1].split('=')[1];
+				order = url[1].split('=')[1],
+				marketplaceName = marketplace.replace('_',' ').toLowerCase();
+
+			let html = `
+				<h1>Ratreamento de pedidos</h1>
+				<p>Acompanhe seus pedidos do <b>${marketplaceName}</b></p>
+			`;
+			self.titlePage(html);
 
 			if(marketplace && order){
 				self.getData('consulqa' , order);
@@ -37,7 +49,7 @@ Nitro.controller('Rastreio', [], function() {
 		}else{
 			let html = `
 				<h1>Desculpa, algo errado aconteceu...</h1>
-				<p>O seu pedido <b>Mercado Livre</b> não foi encontrado.</p>
+				<p>O seu pedido não foi encontrado.</p>
 			`;
 			self.errorPage(html);
 		}
@@ -134,8 +146,15 @@ Nitro.controller('Rastreio', [], function() {
 			shippingEstimateDate = shippingEstimateDateSplit[2] + '/' + shippingEstimateDateSplit[1] + '/' + shippingEstimateDateSplit[0];
 
 		let statusOrder = 0;
+		let packageAttachment
 
-		let packageAttachment = data.packageAttachment.packages[0].courierStatus.finished;
+		if (data.packageAttachment.packages[0] != null){
+			packageAttachment = data.packageAttachment.packages[0].courierStatus.finished;
+		} else {
+			packageAttachment = 'false';
+		}
+
+
 
 		switch (data.statusDescription) {
 			case "Pedido Confirmado":
