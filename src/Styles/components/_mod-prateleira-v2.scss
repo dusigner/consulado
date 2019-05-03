@@ -34,6 +34,17 @@ body.listagem {
 	}
 }
 
+.prateleira-slider {
+	.slick-track {
+		padding: 2px 0;
+
+		.slick-slide { margin: 0 10px; }
+	}
+
+	.slick-prev { left: -2%; }
+	.slick-next { right: -2%; }
+}
+
 .box-produto {
 	border: solid 1px #E3E1E1;
 	border-radius: 4px;
