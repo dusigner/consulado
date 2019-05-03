@@ -113,6 +113,11 @@
 		text-align: left;
 		transition: border .3s ease, background-color .3s ease, color .3s ease;
 		width: 100%;
+
+		&:focus {
+			outline: none;
+		}
+
 		@include breakpoint(large, 'min') {
 			&.-active,
 			&:hover {
