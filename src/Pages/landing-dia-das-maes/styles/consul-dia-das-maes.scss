@@ -61,3 +61,13 @@ main {
 	}
 
 }
+
+@include breakpoint(small, 'max') {
+	.header {
+		.cont-search {
+			flex: 0;
+			max-width: 100% !important;
+		}
+	}
+}
+

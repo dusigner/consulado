@@ -164,9 +164,11 @@ header {
 
 .cont-logo-mobile {
 	@include breakpoint(small, 'max') {
+		flex: 0 !important;
 		float: none;
+		max-width: 100% !important;
 		text-align: center;
-		width: 85%;
+		width: 85% !important;
 
 		a {
 			display: inline-block;
