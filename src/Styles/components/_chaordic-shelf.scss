@@ -22,9 +22,9 @@ div[data-chaordic] {
 			margin: 20px 0;
 
 			li:not([id^='slick-']) {
-					margin: 0 0 0 0;
+				margin: 0 0 0 0;
 
-					&:nth-child(1) {display: none!important}
+				&:nth-child(1) {display: none!important}
 			}
 		}
 	}
@@ -54,7 +54,7 @@ div[data-chaordic] {
 		position: relative;
 	}
 
-	.slick-track { display: flex }
+	.slick-track { display: flex; }
 }
 
 .shelf {
