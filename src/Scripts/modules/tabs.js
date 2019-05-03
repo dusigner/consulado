@@ -28,6 +28,8 @@ class Tab {
 				prevNav = this.$tabNavItems.filter('.-active').data('tab-nav'),
 				$prevContent = this.$tabContentItems.filter(`[data-tab-content=${prevNav}]`);
 
+			if ($(e.currentTarget).hasClass('-active')) return false;
+
 			this.$tabNavItems.removeClass('-active');
 			$(e.currentTarget).addClass('-active');
 
