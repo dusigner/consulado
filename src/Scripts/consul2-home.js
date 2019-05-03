@@ -17,8 +17,8 @@ Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-
 
 	this.setupSlider = function ($currentSlider) {
 		$currentSlider.not('.slick-initialized').slick({
-			infinite: true,
-			slidesToShow: 3,
+			infinite: false,
+			slidesToShow: 4,
 			slidesToScroll: 3,
 			responsive: [{
 				breakpoint: 990,
