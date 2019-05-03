@@ -43,7 +43,7 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.handleData = () => {
-		$(document).ajaxComplete(function (event, xhr, settings) {
+		$(document).ajaxComplete( (event, xhr, settings) => {
 			var frete = settings.url.split('/')[1];
 
 			if (frete === 'frete') {
@@ -58,8 +58,34 @@ Nitro.module('deliveryTime', () => {
 					});
 					flag = 0;
 				}
+
+
+				this.setPostalCodeStorage();
 			}
 		});
+	};
+
+	/**
+	 * Set localStorage for user CEP
+	 *
+	 * @memberof deliveryTime
+	 */
+	this.setPostalCodeStorage = () => {
+
+		try {
+			localStorage.setItem('user_cep', $('#txtCep').val());
+		} catch (error) {
+			console.info(error);
+		}
+	};
+
+	this.autoGetPostalCode = () => {
+		if (localStorage && localStorage.getItem('user_cep')) {
+			$('#txtCep').val(localStorage.getItem('user_cep'));
+
+			$('#btnFreteSimulacao').trigger('click');
+
+		}
 	};
 
 	/**
@@ -104,6 +130,7 @@ Nitro.module('deliveryTime', () => {
 			this.openShippingOptions();
 			this.handleData();
 			this.closeShippingOptions();
+			this.autoGetPostalCode();
 
 		});
 
