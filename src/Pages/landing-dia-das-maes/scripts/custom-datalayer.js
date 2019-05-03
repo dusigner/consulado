@@ -21,9 +21,7 @@ Nitro.module('custom-datalayer', function() {
 			);
 		});
 
-		$('#seu-jeitinho .box-produto').on('click', function(e) {
-			e.preventDefault();
-
+		$('#seu-jeitinho .box-produto').on('click', function() {
 			const currentCategory = $('#seu-jeitinho .tab button.-active').text(),
 				$this 	= $(this),
 				nome 	= $this.find('.image').attr('title'),
@@ -69,9 +67,7 @@ Nitro.module('custom-datalayer', function() {
 			);
 		});
 
-		$('#descontos .box-produto').on('click', function(e) {
-			e.preventDefault();
-
+		$('#descontos .box-produto').on('click', function() {
 			const currentCategory = $('#descontos .btn-tab.-active').text(),
 				$this 	= $(this),
 				nome 	= $this.find('.image').attr('title'),
