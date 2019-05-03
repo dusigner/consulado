@@ -84,7 +84,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	});
 
 
-	window.vtexjs.checkout.getOrderForm().done(function(result) {
+	window.vtexjs && window.vtexjs.checkout.getOrderForm().done(function(result) {
 		var orderForm = result;
 
 		if (orderForm && orderForm.clientProfileData && orderForm.clientProfileData.email) {

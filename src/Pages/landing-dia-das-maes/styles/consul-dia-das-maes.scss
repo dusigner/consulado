@@ -1,0 +1,63 @@
+// BOOTSTRAP GRID
+@import 'bootstrap/scss/bootstrap-grid';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities/sizing';
+@import 'bootstrap/scss/utilities/text';
+
+//HELPERS
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/fix-header-bootstrap4';
+@import 'helpers/fix-footer-bootstrap4';
+
+//SECTIONS
+@import 'components/banner';
+@import 'components/seu-jeitinho';
+@import 'components/facilidade';
+@import 'components/descontos';
+@import 'components/presente';
+@import 'components/cartinha';
+
+//COMPONENTS
+@import 'components/selos';
+@import 'components/chaordic-shelf';
+@import 'components/mod-prateleira';
+
+
+main {
+	color: #736C6B;
+	h2 {
+		@include responsiveFont(35, 16, true);
+		line-height: normal;
+		span {
+			color: #9ACA3C;
+		}
+	}
+	.caption {
+		line-height: 1.7;
+	}
+	.prateleira.default {
+		.btn-comparar,
+		.department-nav {
+			display: none;
+		}
+		.detalhes .nome,
+		.product-field {
+			font-weight: 100;
+		}
+
+		.detalhes .nome {
+			@include responsiveFont(16, 16, true);
+			margin: 10px 0;
+			min-height: 70px!important;
+			padding: 0 10px;
+		}
+
+	}
+	.slick-list {
+		display: block;
+		width: 100%;
+	}
+
+}

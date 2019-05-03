@@ -1,0 +1,48 @@
+<div class="overlay -hidden"></div>
+<section id="descontos">
+	<div class="container">
+		<nav class="row align-items-center pb-3">
+			<div class="col-12 col-md-2">
+				<h2 class="title">
+					<strong>Navegue</strong><br />
+					Por descontos
+				</h2>
+			</div>
+			<div class="col-12 col-md-10">
+				<div class="group">
+					<button class="item-selected"></button>
+					<ul data-tab-name="descontos" class="list-items d-flex flex-column flex-md-row align-items-stretch align-items-md-center">
+						<li><button class="btn-tab -active" data-tab-nav="ate20off">Até <strong>20% OFF</strong></button></li>
+						<li><button class="btn-tab" data-tab-nav="ate40off">Até <strong>40% OFF</strong></button></li>
+						<li><button class="btn-tab" data-tab-nav="frete_reduzido"><strong>Frete reduzido</strong></button></li>
+						<li><a class="-js-track-gtm" data-gtm="Ver todos os cupons|Clique na categoria|Redirecionamento do usuário" href="/cupons">Ver todos os cupons</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="row">
+			<div class="col-12">
+				<article class="shelfs" data-tab-name="descontos">
+					<div class="prateleira-slider" data-tab-content="ate20off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos Até 20% OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="ate40off">
+						<vtex:contentPlaceHolder id="Prateleira Descontos Até 40% OFF" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="frete_reduzido">
+						<vtex:contentPlaceHolder id="Prateleira Descontos Frete Reduzido" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
