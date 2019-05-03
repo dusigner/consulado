@@ -1,0 +1,61 @@
+@charset 'UTF-8';
+
+// Imports
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+//------------------------------------
+//  ICONS
+//------------------------------------
+
+@font-face {
+	font-family: 'whirlpool';
+	font-style: normal;
+	font-weight: normal;
+	src: url('#{$icon-path}whirlpool2.eot');
+	src: url('#{$icon-path}whirlpool2.eot?#iefix') format('embedded-opentype'),
+		 url('#{$icon-path}whirlpool2.woff2') format('woff2'),
+		 url('#{$icon-path}whirlpool2.woff') format('woff'),
+		 url('#{$icon-path}whirlpool2.ttf') format('truetype'),
+		 url('#{$icon-path}whirlpool2.svg#whirlpool') format('svg');
+}
+
+.icon {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'whirlpool';
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+
+	@each $key, $value in $icons {
+		&.icon-#{$key}:before { content: $value }
+	};
+}
+
+%icon-hamburger {
+	@include responsiveFont(13);
+	display: inline-block;
+	height: 14px;
+	position: relative;
+	width: 16px;
+
+	&:before {
+		content: ' ';
+		height: 2px;
+		margin-top: -1px;
+		position: absolute;
+		right: 0;
+		top: 50%;
+		width: 100%;
+	}
+}
+
+
+.icon-hamburger {
+	@include icon-hamburger ();
+}

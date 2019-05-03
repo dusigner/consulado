@@ -28,10 +28,10 @@
 
 	&,
 	a,
-	.submenu { @extend %single-transition; }
+	.submenu { @include singleTransition(); }
 
 	.menu-category {
-		&:before { @extend %contentBefore; }
+		&:before { @include contentBefore(); }
 	}
 
 	&.no-border { border-color: #ffffff; }
@@ -384,7 +384,7 @@ $menu-colors: (
 
 	// Ícone menu
 	.open-menu-mobile {
-		@extend %single-transition;
+		@include singleTransition();
 		background-color: $green;
 		cursor: pointer;
 		float: left;

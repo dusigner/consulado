@@ -27,8 +27,6 @@ if (VERSION) {
 //load Nitro Lib
 require('vendors/nitro');
 
-// require('modules/_autoloader');
-
 // Global
 var URI = require('urijs');
 var localStore = require('store');
@@ -37,7 +35,6 @@ window.URI = URI;
 window.localStore = localStore;
 
 require('expose-loader?store!modules/store/store');
-require('expose-loader?publishDataLayer!modules/bi/publish-data-layer');
 
 //load modules individually
 require('modules/vtex-events')();
@@ -50,9 +47,6 @@ require('modules/store/vtex-login');
 require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
-require('controllers/landing-gae-compra-interno');
-require('controllers/pre-home');
-require('modules/chatHome');
 require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
 
@@ -76,9 +70,10 @@ const changeCallcenterLinks = () => {
 	}
 };
 
-Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'landing-gae-compra-interno', 'chatHome', 'isTelevendasCorp', 'callcenter'], function() {
+Nitro.setup([/*'geo', */'cluster', 'percentoff', 'descadastrar.emailCRM', 'vtex-login', 'prateleira' /*, 'login.url'*/, 'redirect', 'customLogin', 'isTelevendasCorp', 'callcenter'], function() {
 
 	var path = window.location.pathname;
+
 
 	if (path === '/atendimento') {
 		$(location).attr('href', '//consul.custhelp.com/');

@@ -1,0 +1,79 @@
+//---------------
+// Assets
+//---------------
+
+//--------------------------------
+// Colors
+
+$white: #fff;
+$orange: #ff7f02;
+$green: #9aca3c;
+$blue: #00b5dc;
+$purple: #752e90;
+$yellow: #f4ca0d;
+$gray: #4d4d4d;
+$gray-light: #f1f1f1;
+$gray-dark: #464646;
+$gray-footer-light: #736c6b;
+$gray-footer-dark: #676261;
+$gray-light: #f1f1f1;
+$gray-dark: #464646;
+$gray-footer: #898989;
+// General Color
+
+$brand: $green;
+// $brand: $green;
+// $brand: $purple;
+
+// Text Colors
+
+$font-color: $gray-dark;
+
+// Footer Colors
+
+$footer-layer-01: $gray-light;
+$footer-layer-02: $gray-footer-light;
+$footer-layer-03: $gray-footer-dark;
+
+//--------------------------------
+// Fonts
+// Consul
+//---------------
+
+/* @font-face {
+    font-family: 'consul_co_headlinebold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_bd-webfont.ttf');
+} */
+
+/* @font-face {
+    font-family: 'consul_co_headline_lightRg';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_lt-webfont.ttf');
+
+} */
+
+/* @font-face {
+    font-family: 'consul_co_headlineregular';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../../fonts/consulcoheadline_std_rg-webfont.ttf');
+}
+ */
+
+$f-btp: soleto, sans-serif;
+
+/* $f-cns-bold: 'consul_co_headlinebold', sans-serif;
+$f-cns-regular: 'consul_co_headlineregular', sans-serif;
+$f-cns-light: 'consul_co_headlinelightRg', sans-serif;
+ */
+//---------------------------------
+// Effects
+
+// .box-shadow {
+//     box-shadow: 0 1px 5px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.2);
+//     overflow: hidden;
+//     border-radius: 20px;
+// }

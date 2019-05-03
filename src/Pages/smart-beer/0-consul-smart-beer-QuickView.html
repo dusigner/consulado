@@ -5,7 +5,7 @@
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
-		<!-- @if DEBUG=true -->
+	<!-- @if DEBUG=true -->
 	<!-- @include ../templates/head-vtex.html -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
 	<!-- @endif -->
@@ -18,29 +18,23 @@
 	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 
 	<div class="hide">
-		  <!-- Top Header -->
+		<!-- Top Header -->
 		<!-- @if DEBUG=true -->
-	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
-	<!-- @endif -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+		<!-- @endif -->
+		<vtex:template id="0-consul-top-header" />
+		<!-- /Top Header -->
 
-	<vtex:template id="0-consul-top-header" />
-
-	<!-- /Top Header -->
-
-  		<!-- @if DEBUG=true -->
+		<!-- @if DEBUG=true -->
 		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
 		<!-- @endif -->
-
 		<vtex:template id="0-consul-header" />
-
 	</div>
 
 	<!-- Main -->
 	<div class="main clearfix">
-
 		<div class="container clearfix">
 			<div class="row no-margin">
-
 				<!-- Box-right -->
 				<div class="col-v2 l5 m12 gutters-on prod-title">
 					<h1 class="lead">
@@ -53,7 +47,6 @@
 
 				<!-- Box-left -->
 				<div class="col-v2 l7 m12 gutters-on prod-image">
-
 					<div class="prod-selos hide-small">
 						<vtex.cmc:discountHightLight />
 						<vtex.cmc:hightLight />
@@ -90,42 +83,28 @@
 							<vtex.cmc:skuSelection />
 						</div>
 
-						<div class="col-v2 l6 m12 select-color" data-product-field="13">
-
-						</div>
-
+						<div class="col-v2 l6 m12 select-color" data-product-field="13"></div>
 					</div>
 
 					<div id="BuyButton" class="clearfix">
 						<vtex.cmc:BuyButton/>
-					</div>			
-
-					<!--  Controle: Forma de pagamento -->
-					<!-- <div id="productPayment"><vtex.cmc:OtherPaymentMethod/></div> -->
-					<!--  /Controle: Forma de pagamento -->
-
-					<!--  Controle: disponibilidade -->
-					<!-- <vtex.cmc:Delivery /> -->
-					<!-- /Controle: disponibilidade -->
+					</div>
 				</div>
 				<!-- /Box-right -->
 			</div>
 		</div>
 	</div>
 
-
-
-	
 	<!-- Chaordic TOP -->
 	<div class="container hide">
 		<div chaordic="top"></div>
 	</div>
-	
-	
-    <div id="upsell" class="js-upsell">
-        <vtex:contentPlaceHolder id="Upsell" />
-    </div>
-    
+	<!-- /Chaordic TOP -->
+
+	<div id="upsell" class="js-upsell">
+		<vtex:contentPlaceHolder id="Upsell" />
+	</div>
+
 	<div class="cont-prod-details-nav hide">
 		<section class="prod-details-nav">
 			<div class="container clearfix">
@@ -134,7 +113,6 @@
 						<li class="item hide"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
 						<li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
 						<li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
-						<li class="item hide"><a href="#depoimentos" class="scroll-to">Depoimentos</a></li>
 						<li class="item"><a href="#relacionados" class="scroll-to">Relacionados</a></li>
 					</ul>
 					<div class="right clearfix nav-price">
@@ -150,12 +128,12 @@
 	<div class="container hide">
 		<div chaordic="middle"></div>
 	</div>
-	
+	<!-- /Chaordic MIDDLE -->
+
+	<!-- Main -->
 	<div class="main clearfix after-prod hide">
 		<section id="detalhes" class="detalhes hide"></section>
-
 		<section id="video" class="video hide"></section>
-
 		<section id="especificacoes" class="content-toggle hide">
 			<h2 class="title text-center">
 				Especificações <span>técnicas</span>
@@ -164,17 +142,6 @@
 			</h2>
 			<div class="slide-none">
 				<div class="container"></div>
-			</div>
-		</section>
-
-		<section id="depoimentos">
-			<h2 class="title text-center">Depoimentos</h2>
-			<div class="container"><!--vtex.cmc:UserReview /--></div>
-		</section>
-
-		<section id="compre-junto hide">
-			<div class="compre-junto">
-				<vtex.cmc:BuyTogether />
 			</div>
 		</section>
 
@@ -202,8 +169,7 @@
 				</div>
 
 				<div class="voltagem-ted">
-						<strong>ATENÇÃO:</strong> Este produto é exclusivo e sua compra
-						deverá ser realizada separadamente de outros produtos.
+					<strong>ATENÇÃO:</strong> Este produto é exclusivo e sua compra deverá ser realizada separadamente de outros produtos.
 				</div>
 			</div>
 
@@ -248,7 +214,6 @@
 				</ul>
 			</div>
 		</div>
-
 	</div>
 	<!-- /Main -->
 
@@ -256,51 +221,48 @@
 	<div class="container hide">
 		<div chaordic="bottom"></div>
 	</div>
-	
+	<!-- /Chaordic BOTTOM -->
+
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5801703bb1e23dde"></script> -->
 	<!-- Modal custom Share -->
-    <div id="modal-custom-share" data-title="Compartilhar por e-mail" style="display: none;">
-			<form id="formshare" action="">
-				<div class="form-group">
-					<label for="remetente">De:</label>
-					<input type="email" class="form-control" id="remetente" placeholder="E-mail remetente" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-				</div>
-				<div class="form-group">
-					<label for="destinatario">Para:</label>
-					<input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
-				</div>
-				<div class="form-group">
-					<label for="nomeremetente">Nome:</label>
-					<input type="text" class="form-control" id="nomeremetente" placeholder="Nome" required="required" />
-				</div>
-				<div class="form-group">
-					<label for="assuntoemail">Assunto:</label>
-					<input type="text" class="form-control" id="assuntoemail" placeholder="Assunto"/>
-				</div>
-				<div class="form-group">
-					<label for="mensagememail">Mensagem:</label>
-					<textarea class="form-control" id="mensagememail"></textarea>
-				</div>
-				<button type="submit" class="btn btn-default">Enviar</button>
-				
-				<div class="enviadocomsucesso">
-					e-mail enviado com sucesso
-				</div>
-				
-			</form>
-		</div>
+	<div id="modal-custom-share" data-title="Compartilhar por e-mail" style="display: none;">
+		<form id="formshare" action="">
+			<div class="form-group">
+				<label for="remetente">De:</label>
+				<input type="email" class="form-control" id="remetente" placeholder="E-mail remetente" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+			</div>
+			<div class="form-group">
+				<label for="destinatario">Para:</label>
+				<input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+			</div>
+			<div class="form-group">
+				<label for="nomeremetente">Nome:</label>
+				<input type="text" class="form-control" id="nomeremetente" placeholder="Nome" required="required" />
+			</div>
+			<div class="form-group">
+				<label for="assuntoemail">Assunto:</label>
+				<input type="text" class="form-control" id="assuntoemail" placeholder="Assunto"/>
+			</div>
+			<div class="form-group">
+				<label for="mensagememail">Mensagem:</label>
+				<textarea class="form-control" id="mensagememail"></textarea>
+			</div>
+			<button type="submit" class="btn btn-default">Enviar</button>
+
+			<div class="enviadocomsucesso">e-mail enviado com sucesso</div>
+		</form>
+	</div>
+
 	<!-- Modal custom login  -->
 	<div class="hide">
-		
 		<!-- @if DEBUG=true -->
-	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
-	  <!-- @endif -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+		<!-- @endif -->
 
-  
-	  <!-- Footer -->
-	  <vtex:template id="0-consul-footer" />
-	  <!-- /Footer -->
+		<!-- Footer -->
+		<vtex:template id="0-consul-footer" />
+		<!-- /Footer -->
 	</div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+
+// Imports
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
+// Base font-family
+@font-face {
+	font-family: 'consul';
+	font-weight: 400;
+	src: url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.ttf.css') format('truetype'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.woff.css') format('woff'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.woff2.css') format('woff2');
+}
+
+@font-face {
+	font-family: 'consul';
+	font-weight: 500;
+	src: url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.ttf.css') format('truetype'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.woff.css') format('woff'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.woff2.css') format('woff2');
+}
+
+@font-face {
+	font-family: 'consul';
+	font-weight: 700;
+	src: ('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std.ttf.css') format('truetype'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std.woff.css') format('woff'),
+	url('https://consulqa.vteximg.com.br/arquivos/ConsulCoHeadline_Std.woff2.css') format('woff2');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+$base-font-family       : 'consul', 'Helvetica Neue',  Helvetica, Arial, sans-serif !default;
+$base-print-font-family : Georgia,  'Times New Roman', Times, serif !default;

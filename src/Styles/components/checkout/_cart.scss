@@ -420,6 +420,10 @@ body {
 									color: $green;
 									font-size: 12px;
 									font-weight: bold;
+									span {
+										color: #736C6B;
+										font-weight: normal;
+									}
 								}
 
 								@include breakpoint(extra-small, 'max') {
@@ -484,7 +488,11 @@ body {
 								top: 45px;
 
 								@include breakpoint(extra-small, 'max') {
-									max-width: 100%;
+									left: 5%;
+									max-width: 90%;
+									position: absolute;
+									right: 0;
+									width: 90%;
 								}
 
 								li {
@@ -732,11 +740,11 @@ body {
 
 				#cart-choose-more-products {
 					@include responsiveFont(13, 16, true);
+					display: none;
 					font-weight: bold;
 					margin-right: 15px;
 					padding: 15px 25px;
 					text-transform: uppercase;
-
 					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
 						display: inline-block;

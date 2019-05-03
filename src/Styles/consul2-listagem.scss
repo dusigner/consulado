@@ -19,16 +19,15 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/conditional';
-@import 'helpers/helpers';
-@import 'helpers/icons';
 @import 'helpers/family';
 
 // Component styles
+@import 'helpers/nouislider';
 @import 'components/buttons';
 @import 'components/banners';
 @import 'components/banners-controller';
-@import 'components/mod-prateleira';
+// @import 'components/mod-prateleira';
+@import 'components/mod-prateleira-v2';
 @import 'components/chaordic-shelf';
 @import 'components/selos';
 

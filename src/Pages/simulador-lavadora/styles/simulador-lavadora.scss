@@ -17,7 +17,6 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
-@import 'helpers/icons';
 @import 'helpers/rfs';
 
 @import 'layout/grid';
@@ -75,7 +74,7 @@ body .hidden {
     position: absolute;
     right: 0;
     top: 0;
-    
+
 }
 
 
@@ -94,7 +93,7 @@ body .hidden {
         padding-top: 0;
         transition: .5s linear all;
     }
-    
+
         h1 {
             color: #fff;
             font-size: 42px;
@@ -150,9 +149,9 @@ body .hidden {
     width: 60%;
 
     &.desativado {
-        height: 0;             
+        height: 0;
     }
-        
+
     h2 {
         background-color: #fff;
         border-radius: 10px;
@@ -189,12 +188,12 @@ body .hidden {
                 transition: .5s linear all;
 
                 i {
-                    
+
                     opacity: 1;
-                    
+
                 }
-                
-                
+
+
             }
         }
 
@@ -204,7 +203,7 @@ body .hidden {
             position: absolute;
             right: 170px;
         }
-        
+
         legend {
             -moz-transition: color 0s;
             -o-transition: color 0s;
@@ -229,8 +228,8 @@ body .hidden {
                     transition-delay: .5s;
                     width: 35px;
                 }
-            
-            
+
+
 
         }
 }
@@ -253,7 +252,7 @@ body .hidden {
             transition: .5s linear all;
             transition-delay: .6s;
         }
-    
+
         .content {
             box-sizing: border-box;
             display: flex;
@@ -261,7 +260,7 @@ body .hidden {
             padding-right: 68px;
             padding-top: 15px;
             position: relative;
-        
+
             label {
                 color: #736C6B;
                 cursor: pointer;
@@ -270,7 +269,7 @@ body .hidden {
                 margin: 8px 0;
                 width: 50%;
             }
-        
+
             input[type='checkbox'] {
                 -moz-appearance: none;
                 -webkit-appearance: none;
@@ -444,7 +443,7 @@ fieldset#comoseparar {
                     position: relative;
                     right: 15px;
                     top: 38px;
-                    
+
                         small {
                             font-size: 34px;
                             left: -5px;
@@ -595,7 +594,7 @@ fieldset#comoseparar {
                 content: '';
                 display: block;
             }
-        
+
 
             li {
                 background: #fff;
@@ -737,13 +736,13 @@ fieldset#comoseparar {
                     i:nth-child(3) {
                         left: -213px;
                     }
-                    
-                    
+
+
                     i:nth-child(2) {
                         left: -98px;
                         width: 232px !important;
                     }
-                    
+
                     i:nth-child(1) {
                         width: 190px !important;
                     }
@@ -774,12 +773,12 @@ fieldset#comoseparar {
                     i:nth-child(7) {
                         float: right !important;
                         right: -187px;
-                        top: -244px;                     
+                        top: -244px;
                     }
             }
 
         }
- 
+
 
 }
 
@@ -842,8 +841,8 @@ fieldset#comoseparar {
         padding: 12px 0;
         text-align: justify;
         word-break: break-all;
-    }  
-} 
+    }
+}
 
 @media screen and (max-width: 768px) and (min-width: 0) {
     .play {
@@ -889,8 +888,8 @@ fieldset#comoseparar {
                     bottom: -34px;
                     padding: 0 16px;
                     width: 121px;
-                }                
-                
+                }
+
             }
 
             .corpocehckbox.ativo {
@@ -923,11 +922,11 @@ fieldset#comoseparar {
             right: 5px !important;
             width: 96% !important;
         }
-        
+
         #diasrange {
             padding: 17px 10px !important;
         }
-        
+
     }
 
 
@@ -1049,28 +1048,28 @@ fieldset#comoseparar {
         position: relative;
         top: 29px;
     }
-    
-    
+
+
     label[for='dia-6'] {
         position: relative;
         top: 60px;
     }
-    
+
     label[for='dia-5'] {
         position: relative;
         top: 89px;
     }
-    
+
     label[for='dia-4'] {
         position: relative;
         top: -90px;
     }
-    
+
     label[for='dia-3'] {
         position: relative;
         top: -60px;
     }
-    
+
     label[for='dia-2'] {
         position: relative;
         top: -30px;

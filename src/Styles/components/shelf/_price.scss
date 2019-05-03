@@ -6,15 +6,18 @@
 		margin-bottom: 0;
 	}
 	@include responsiveFont(12, 16, true);
-	margin: 20px 0;
 
 	.off {
 		@include responsiveFont(17, 16, true);
-		background-color: $self-primary;
-		color: #fff;
+		background-color: #702F8F;
+		border-radius: 100px;
+		color: #FFF;
 		display: none;
-		font-weight: bold;
-		padding: 3px 5px;
+		font-size: 10px;
+		padding: 6px 18px;
+		position: absolute;
+		right: 15px;
+		top: 15px;
 	}
 
 	&--list {
@@ -29,10 +32,6 @@
 			height: 16px;
 			margin: 0 auto;
 			width: 30%;
-		}
-
-		span {
-			@include breakpoint(medium, 'min') { display: none }
 		}
 
 		.val {
@@ -54,8 +53,11 @@
 			@include responsiveFont(12, 16, true);
 			.val { @include responsiveFont(14, 16, true) }
 		}
-		@include responsiveFont(17, 16, true);
+		color: #9ACA3c;
+		font-size: 20px;
 		font-weight: bold;
+		line-height: 1;
+		margin: 15px 0 0;
 
 		a { color: $self-primary }
 
@@ -73,6 +75,14 @@
 	&--cash {
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
+		}
+	}
+
+	.de,
+	.por {
+		a {
+			color: #702F8F;
+			font-weight: 500;
 		}
 	}
 }

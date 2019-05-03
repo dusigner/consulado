@@ -17,7 +17,7 @@
 // 	}
 // }, 400);
 
-$(window).on('load', function() {
+$(document).on('ready', function() {
 	require('modules/helpers');
 
 	if (VERSION) {
@@ -115,6 +115,8 @@ $(window).on('load', function() {
 		this.shippingSelectorInformation = function() {
 			const $shippingToggle = $('.shipping-sla-button');
 			const $shippingItems = $('.shipping-sla-options li a span');
+			const $shippingEstimate = $shippingToggle.find('.shipping-estimate');
+			const monetary = $('.full-cart .Shipping .monetary').text();
 
 			$shippingItems.each( (index, element) => {
 				let shippingItemText = $(element).text().split('-');
@@ -130,6 +132,8 @@ $(window).on('load', function() {
 
 				if (index + 1 === $shippingItems.length) $shippingToggle.addClass('has-interaction');
 			});
+
+			$shippingEstimate.html(`${$shippingEstimate.html()} <span> - ${monetary}</span>`);
 		};
 
 		this.isCart = function() {
@@ -248,10 +252,6 @@ $(window).on('load', function() {
 				self.cart();
 			}
 
-			if (self.isShipping()) {
-				pj.hideChangeAddress();
-			}
-
 			// Verifica se está "logado"
 			if ( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email ) {
 				if($(window).width() < 767) {
@@ -336,6 +336,7 @@ $(window).on('load', function() {
 		//state
 		this.cart = function() {
 			console.info('cart');
+			this.fakeButton();
 
 			$('.info-shipping').remove();
 
@@ -354,7 +355,6 @@ $(window).on('load', function() {
 
 			recurrence.setup();
 
-			this.fakeButton();
 			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
 
@@ -371,15 +371,8 @@ $(window).on('load', function() {
 
 			$('#ship-street, #ship-name').attr('maxlength', 35);
 
-			if (store && store.isCorp) {
-				pj.hideChangeAddress();
-			}
-
 			return ($.listen && $.listen('parsley:field:init', function(e) {
 
-				if (store && store.isCorp) {
-					pj.disableInputs(e);
-				}
 				$('.ship-more-info').find('label span').empty().addClass('custom-label-complemento');
 				$('.ship-reference').show().find('label span').empty().addClass('custom-label-referencia');
 
@@ -538,6 +531,7 @@ $(window).on('load', function() {
 				$fakeButton.on('click', self.clickFakeButton);
 
 				$('.btn-place-order').addClass('hide');
+				$('.link-choose-more-products-wrapper #cart-choose-more-products').css('display', 'inline-block');
 			}
 
 			// monta a barra fixa no mobile dentro do carrinho

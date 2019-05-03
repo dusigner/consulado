@@ -1,0 +1,262 @@
+//----------------------
+// Contatos
+//----------------------
+
+.contatos {
+
+
+    @include laptop {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+    position: relative;
+
+    .help-block {
+        color: #fd7878;
+		left: 5px;
+        position: absolute;
+		top: -22px;
+    }
+
+    .contatos__fale {
+        @include laptop {
+            padding: 0;
+            text-align: left;
+        }
+        background-color: $purple;
+        margin-top: 20px;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+
+
+        h2 {
+            @include laptop {
+                margin: 50px 0 15px;
+                text-align: left;
+            }
+            color: $white;
+            font-weight: bolder;
+            margin: 30px 0 15px;
+            text-align: left;
+            text-transform: uppercase;
+
+        }
+
+        p {
+            color: $white;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .contatos__inputs {
+			@include laptop {
+				display: flex;
+				flex-flow: nowrap;
+				justify-content: space-between;
+				& > div {
+					flex-grow: 1;
+					padding: 0 5px;
+				}
+
+                & > input {
+					margin-right: 20px;
+					width: 100%;
+
+                    &:last-child {
+						margin-right: 0;
+                        width: 50%;
+                    }
+                }
+            }
+			margin: 0 -5px;
+        }
+
+        .contatos__row {
+            @include laptop {
+                display: flex;
+                flex-flow: wrap;
+                justify-content: space-between;
+
+                input {
+                    width: calc(50% - 7px);
+                }
+            }
+        }
+
+        .contatos__row-submit {
+
+            div {
+                @include laptop {
+                    margin: 0 0 50px;
+                }
+				margin: 0 0 25px;
+				text-align: left;
+			}
+
+			.help-block {
+				bottom: -20px;
+				top: inherit;
+				width: 200px;
+			}
+
+            p,
+            label {
+				@include laptop {
+					font-weight: normal;
+                }
+				color: $white;
+                font-weight: lighter;
+                margin: 0;
+
+            }
+
+            label {
+                display: inline;
+                margin: 0 5px;
+            }
+
+            @include laptop {
+                align-items: center;
+                display: flex;
+                flex-flow: nowrap;
+                justify-content: space-between;
+
+                p,
+                label {
+                    color: $white;
+                    display: inline;
+                    vertical-align: middle;
+                }
+
+                span::before {
+                    background-color: #fff !important;
+                    border: 1px solid #fff !important;
+                }
+
+                label {
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .contatos__submit {
+            @include button;
+            @include laptop {
+                margin: 0;
+            }
+            font-weight: normal!important;
+            margin: 0 0 10px;
+
+        }
+    }
+
+
+    .contatos__info {
+        @include laptop {
+            padding: 0;
+        }
+        background-color: $brand;
+        padding: 0 20px;
+        width: 100%;
+
+
+        .wrap {
+            padding: 20px 0;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        h2,
+        p {
+            @include laptop {
+                text-align: left;
+            }
+            color: #fff;
+            line-height: 1.5em;
+            text-align: center;
+
+        }
+
+        p {
+            font-weight: lighter;
+            margin: 0 0 15px!important;
+
+            b {
+                display: block
+            }
+        }
+
+        .contatos__info-vendas {
+            @include laptop {
+                display: none;
+            }
+        }
+
+        .contatos__info-atendimento {
+            align-items: baseline;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .-border-item {
+                @include laptop {
+                    border-bottom: none;
+                    border-right: 1px solid #fff;
+                    margin: initial;
+                    padding-right: 50px;
+                }
+                border-bottom: 1px solid #fff;
+                line-height: 0;
+                margin: 0 auto;
+
+
+            }
+
+            div {
+                @include laptop {
+                    margin-right: 30px;
+                }
+                max-width: 360px;
+                padding: 10px;
+
+
+                &:last-of-type {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+}
+
+.contatos__submit {
+    @include button;
+    max-width: 160px;
+}
+
+.contatos__labels {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 0;
+
+    p,
+    label {
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+}
+
+.contatos__row-submit {
+    @extend %input;
+
+    span {
+        border-color: $white!important;
+    }
+}

@@ -1,0 +1,124 @@
+//--------------
+// Header
+//--------------
+.header {
+    display: flex;
+    flex-wrap: wrap;
+    // box-shadow: 0 1px 5px rgba(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .2);
+    @include laptop {
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.wrap.-mobile{
+    padding: 20px 0;
+}
+
+.header__link {
+    display: block;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.header__logo,
+.footer__logo {
+    img {
+        max-width: 100px;
+        width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+    h1,
+    p {
+        margin: 0;
+    }
+    p {
+        color: $gray;
+        text-transform: uppercase;
+        border-top: 1px solid $gray;
+        padding-top: 5px;
+        @include laptop {
+            margin-left: 10px;
+            margin-top: 10px;
+            padding-left: 10px;
+            padding-top: 0;
+            border-top: none;
+            border-left: 1px solid $gray;
+            line-height: 1;
+        }
+    }
+}
+
+.header__logo {
+    & {
+        @include laptop {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    }
+}
+
+.header__button {
+    @include button;
+    display: none;
+    padding: 0;
+    width: 100%;
+    order: 1;
+    text-align: center;
+    line-height: 60px;
+    height: 60px;
+    margin-top: 20px;
+    @include laptop {
+        display: block;
+        order: 0;
+        width: 195px;
+        margin-top: 0;
+        height: auto;
+        line-height: 45px;
+    }
+}
+
+.header__user-field {
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+}
+
+.header__user-field,
+.header__user-sair {
+    text-align: left;
+}
+
+.header__user-menu {
+    & {
+        width: 110px;
+        margin-left: auto;
+        @include laptop {
+            margin-left: inherit;
+        }
+    }
+    i {
+        display: inline-block;
+        float: left;
+        margin-right: 5px;
+    }
+    img {
+        width: 20px;
+        height: auto;
+    }
+    p,
+    a {
+        margin: 0;
+    }
+}
+
+.header__user {
+    color: $brand;
+}
+
+.header__cart {
+    font-weight: bold;
+}

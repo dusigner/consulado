@@ -496,12 +496,6 @@ body.departamento {
 							}
 						}
 					}
-					&.filtro-preco {
-						display: none !important;
-						label {
-							display: none !important;
-						}
-					}
 
 					.priceRange,
 					.specificationRange {
@@ -575,10 +569,6 @@ body.departamento {
 		.prateleira {
 			li {
 				width: calc(100%/3);
-				@include breakpoint(large, 'max') {
-					margin-left: 2.5%;
-					width: 45%;
-				}
 			}
 		}
 		@include breakpoint(medium, 'max') {
