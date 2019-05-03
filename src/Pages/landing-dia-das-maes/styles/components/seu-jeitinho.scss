@@ -46,6 +46,10 @@
 				color: #fff;
 				position: relative;
 			}
+
+			&:focus {
+				outline: none;
+			}
 		}
 	}
 	.caption {
