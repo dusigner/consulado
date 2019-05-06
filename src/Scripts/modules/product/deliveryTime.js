@@ -6,7 +6,8 @@ Nitro.module('deliveryTime', () => {
 
 	let $loadingFret,
 		$containerFrete,
-		flag = 0;
+		flag = 0,
+		ajaxCompleted = false;
 
 
 	/**
@@ -44,9 +45,9 @@ Nitro.module('deliveryTime', () => {
 	 */
 	this.handleData = () => {
 		$(document).ajaxComplete( (event, xhr, settings) => {
-			var frete = settings.url.split('/')[1];
+			var calculaFrete = settings.url.split('/')[2];
 
-			if (frete === 'frete') {
+			if (calculaFrete === 'calcula') {
 
 				$loadingFret.removeClass('loading');
 				$containerFrete.addClass('active');
@@ -58,7 +59,6 @@ Nitro.module('deliveryTime', () => {
 					});
 					flag = 0;
 				}
-
 
 				this.setPostalCodeStorage();
 			}
@@ -121,16 +121,22 @@ Nitro.module('deliveryTime', () => {
 		this.activeShippingCalculate();
 		this.handleAlert();
 
-		$(window).load(() => {
+		$(document).ajaxComplete((event, xhr, settings) => {
+			var frete = settings.url.split('/')[1];
 
-			$loadingFret = $('span.frete-calcular');
-			$containerFrete = $('.freight-values');
-			flag = 0;
+			if (frete === 'frete' && !ajaxCompleted) {
 
-			this.openShippingOptions();
-			this.handleData();
-			this.closeShippingOptions();
-			this.autoGetPostalCode();
+				$loadingFret = $('span.frete-calcular');
+				$containerFrete = $('.freight-values');
+				flag = 0;
+
+				this.openShippingOptions();
+				this.handleData();
+				this.closeShippingOptions();
+				this.autoGetPostalCode();
+
+				ajaxCompleted = true;
+			}
 
 		});
 
