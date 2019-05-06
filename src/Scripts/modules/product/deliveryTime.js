@@ -73,12 +73,47 @@ Nitro.module('deliveryTime', () => {
 	this.setPostalCodeStorage = () => {
 
 		try {
-			localStorage.setItem('user_cep', $('#txtCep').val());
+			const textCep = $('#txtCep').val();
+
+			localStorage.setItem('user_cep', textCep);
+			this.setPostalCodeOrderForm(textCep);
 		} catch (error) {
 			console.info(error);
 		}
 	};
 
+	/**
+	 * Set orderForm for user CEP
+	 *
+	 * @memberof deliveryTime
+	 */
+	this.setPostalCodeOrderForm = (textCep) => {
+
+		const orderForm = vtexjs.checkout.orderForm;
+
+		if ((!orderForm.canEditData) || (orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.postalCode && orderForm.shippingData.address.postalCode === textCep)) {
+			return;
+		}
+
+		try {
+			vtexjs.checkout.getOrderForm().done(() => {
+				const address = {
+					"postalCode": textCep,
+					"country": 'BRA'
+				};
+				return vtexjs.checkout.calculateShipping(address);
+			});
+
+		} catch (error) {
+			console.info(error);
+		}
+	};
+
+	/**
+	 * Auto get Postal Code by localStorage
+	 *
+	 * @memberof deliveryTime
+	 */
 	this.autoGetPostalCode = () => {
 		if (localStorage && localStorage.getItem('user_cep')) {
 			$('#txtCep').val(localStorage.getItem('user_cep'));
@@ -141,6 +176,7 @@ Nitro.module('deliveryTime', () => {
 		});
 
 	};
+
 
 	this.init();
 
