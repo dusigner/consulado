@@ -1,6 +1,8 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
+const promoDestaque = require('./_promo-destaque');
+
 Nitro.module('percentoff', function() {
 
 	this.init = function() {
@@ -14,6 +16,9 @@ Nitro.module('percentoff', function() {
 				percentage;
 			promoDiscountBoleto.value = [0];
 			promoDiscountCartao.value = [0];
+
+			// Init Promo destaque - dias das mães
+			promoDestaque(self);
 
 			// Nova solução de troca de selos por promoções
 			// A ideia é que o nome da promoção seja o mesmo
