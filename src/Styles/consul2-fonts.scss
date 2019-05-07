@@ -8,39 +8,29 @@
 // Base font-family
 @font-face {
 	font-family: 'consul';
-	font-style: normal;
-	font-weight: 300;
-	src: url('#{$font-path}consulcoheadline_std_lt-webfont.eot'),
-		url('#{$font-path}consulcoheadline_std_lt-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font-path}consulcoheadline_std_lt-webfont.svg#consul') format('svg'),
-		url('#{$font-path}consulcoheadline_std_lt-webfont.ttf') format('truetype'),
-		url('#{$font-path}consulcoheadline_std_lt-webfont.woff') format('woff'),
-		url('#{$font-path}consulcoheadline_std_lt-webfont.woff2') format('woff2');
+	font-weight: 400;
+	src: url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.ttf.css') format('truetype'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.woff.css') format('woff'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Lt.woff2.css') format('woff2');
 }
 
 @font-face {
 	font-family: 'consul';
-	font-style: normal;
 	font-weight: 500;
-	src: url('#{$font-path}consulcoheadline_std_rg-webfont.eot'),
-		url('#{$font-path}consulcoheadline_std_rg-webfont.eot?#iefix') format('embedded-opentype'),
-		url('#{$font-path}consulcoheadline_std_rg-webfont.svg#consul') format('svg'),
-		url('#{$font-path}consulcoheadline_std_rg-webfont.ttf') format('truetype'),
-		url('#{$font-path}consulcoheadline_std_rg-webfont.woff') format('woff'),
-		url('#{$font-path}consulcoheadline_std_rg-webfont.woff2') format('woff2');
+	src: url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.ttf.css') format('truetype'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.woff.css') format('woff'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std_Rg.woff2.css') format('woff2');
 }
 
 @font-face {
 	font-family: 'consul';
-	font-style: normal;
 	font-weight: 700;
-	src: url('#{$font-path}consulcoheadline_std_bd-webfont.eot'),
-		 url('#{$font-path}consulcoheadline_std_bd-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('#{$font-path}consulcoheadline_std_bd-webfont.svg#consul') format('svg'),
-		 url('#{$font-path}consulcoheadline_std_bd-webfont.ttf') format('truetype'),
-		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff') format('woff'),
-		 url('#{$font-path}consulcoheadline_std_bd-webfont.woff2') format('woff2');
+	src: ('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std.ttf.css') format('truetype'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std.woff.css') format('woff'),
+	url('https://consul.vteximg.com.br/arquivos/ConsulCoHeadline_Std.woff2.css') format('woff2');
 }
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 $base-font-family       : 'consul', 'Helvetica Neue',  Helvetica, Arial, sans-serif !default;
 $base-print-font-family : Georgia,  'Times New Roman', Times, serif !default;
