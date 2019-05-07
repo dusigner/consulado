@@ -1,9 +1,11 @@
 <section id="banner" class="-js-track-gtm" data-gtm="Banner principal|Clique no banner|Ir para categoria">
 	<picture>
-		<img src="/arquivos/cns-landing-dia-das-maes@2x.jpg" alt="consul linha de embutir"
-			class="d-none d-md-block" />
-		<img src="/arquivos/cns-landing-dia-das-maes-mobile@2x.jpg" alt="consul linha de embutir"
-			class="d-block d-md-none" />
+		<div class="d-none d-md-block"><vtex:contentPlaceHolder id="Banner Desktop" /></div>
+		<div class="d-block d-md-none"><vtex:contentPlaceHolder id="Banner Mobile" /></div>
+		<!-- @if DEBUG=true -->
+			<img src="/arquivos/cns-landing-dia-das-maes@2x.jpg" alt="consul linha de embutir" class="d-none d-md-block" />
+			<img src="/arquivos/cns-landing-dia-das-maes-mobile@2x.jpg" alt="consul linha de embutir" class="d-block d-md-none" />
+		<!-- @endif -->
 	</picture>
 
 </section>
