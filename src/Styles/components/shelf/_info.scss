@@ -1,7 +1,9 @@
 @charset 'UTF-8';
 
 &__info {
-	background: transparent!important
+	background: transparent !important;
+	margin: 5px 0 15px;
+	text-align: left;
 }
 
 &__name {
@@ -11,10 +13,8 @@
 		line-height: 14px;
 	}
 	display: inline-block;
-	margin-top: 1em;
-	min-height: 45px;
-	text-align: center;
-	width: 100%;
+	font-family: 'Open Sans';
+	font-size: 14px;
 
 	&:empty {
 		display: block;
@@ -24,7 +24,9 @@
 }
 
 &__sku {
-	display: inline-block;
+    font-family: 'consul';
+    font-size: 12px;
+    font-weight: bold;
 
 	&:empty {
 		@include breakpoint(small, 'max') {	display: none }
