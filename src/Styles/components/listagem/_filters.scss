@@ -286,6 +286,7 @@
 .sidebar-filter-submenu {
 	border-bottom: 1px solid $gray;
 	padding-bottom: 10px;
+	margin-bottom: 10px;
 	width: 100%;
 
 	ul {
@@ -569,10 +570,6 @@ body.departamento {
 		.prateleira {
 			li {
 				width: calc(100%/3);
-				@include breakpoint(large, 'max') {
-					margin-left: 2.5%;
-					width: 45%;
-				}
 			}
 		}
 		@include breakpoint(medium, 'max') {

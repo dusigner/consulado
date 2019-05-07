@@ -41,7 +41,7 @@ define('store', function() {
 
 		this.isCorp = /consulempresa/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host) || /consulqa2/.test(window.jsnomeLoja || window.vtex.accountName || window.location.host);
 
-		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || window.vtex.vtexid.accountName || window.location.host);
+		this.isQA = /consulqa/.test(window.jsnomeLoja || window.vtex.accountName || (window.vtex.vtexid && window.vtex.vtexid.accountName) || window.location.host);
 
 		this.accountName = window.jsnomeLoja || window.vtex.accountName || account;
 
