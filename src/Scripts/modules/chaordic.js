@@ -159,7 +159,7 @@ Nitro.module('chaordic', function() {
 						var $slider = $chaordicShelf.filter('.js-chaordic-slider').not('.slick-initialized');
 
 						$slider.each(function() {
-							var slidesToShow = $(this).data('slidestoshow') || 3;
+							var slidesToShow = $(this).data('slidestoshow') || 4;
 							self.slider($(this), slidesToShow);
 						});
 
