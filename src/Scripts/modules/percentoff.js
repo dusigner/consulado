@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
-const promoDestaque = require('./_promo-destaque');
+import promoDestaque from './_promo-destaque';
 
 Nitro.module('percentoff', function() {
 

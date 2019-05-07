@@ -4,15 +4,16 @@ const valueFormatting = text => {
 };
 
 // Promo destaque - Dia das mães
-module.exports = (produto) => {
-	const promoProd = $(produto).find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
+const promoDestaque = produto => {
+	const promoProd = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
 
-	promoProd.each(function(index, element) {
-		const $promoItem = $(element).parents('.box-produto');
-		const $prodInfo = $promoItem.find('.prod-info');
-		const precoDe = valueFormatting($promoItem.find('.de .val').text());
-		const precoPor = valueFormatting($promoItem.find('.por .val').text());
+	promoProd.each(() => {
+		const $prodInfo = produto.find('.prod-info');
+		const precoDe = valueFormatting(produto.find('.de .val').text());
+		const precoPor = valueFormatting(produto.find('.por .val').text());
 		let desconto;
+
+		promoProd.parents('.detalhes').addClass('promo-destaque--is-active');
 
 		if (precoDe) {
 			desconto = Number(precoDe - precoPor).toFixed(2);
@@ -20,8 +21,12 @@ module.exports = (produto) => {
 
 			const $promoDestaque = `
 				<div class="promo-destaque">
+					<div class="promo-destaque__text">
+						Promoção<br />
+						DIA DAS MÃES
+					</div>
 					<div class="promo-destaque__price">
-						-R$${desconto}
+						R$-${desconto}
 					</div>
 				</div>
 			`;
@@ -30,3 +35,5 @@ module.exports = (produto) => {
 		}
 	});
 };
+
+export default promoDestaque;
