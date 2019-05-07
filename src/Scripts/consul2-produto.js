@@ -1,25 +1,44 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-require('modules/product/video');
-require('modules/product/sku-fetch');
-require('modules/product/gallery');
-require('modules/product/product-nav');
-require('modules/product/details');
-require('modules/product/specifications');
-require('modules/product/selos');
-require('modules/product/supermodel');
-require('modules/product/sku-select');
-require('modules/product/boleto');
-require('modules/product/notify-me');
-require('modules/product/share');
-require('modules/product/quiz-install');
-require('modules/product/upsell');
-require('modules/product/recurrence');
-require('modules/chaordic');
+import 'modules/product/video';
+import 'modules/product/sku-fetch';
+import 'modules/product/gallery';
+import 'modules/product/product-nav';
+import 'modules/product/details';
+import 'modules/product/specifications';
+import 'modules/product/selos';
+import 'modules/product/supermodel';
+import 'modules/product/sku-select';
+import 'modules/product/boleto';
+import 'modules/product/notify-me';
+import 'modules/product/share';
+import 'modules/product/quiz-install';
+import 'modules/product/upsell';
+import 'modules/product/recurrence';
+import 'modules/product/deliveryTime';
+import 'modules/chaordic';
 // require('modules/product/special-content');
 
-Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 'video', 'details', 'specifications', 'selos', 'supermodel', 'sku-select', 'boleto', 'notify-me', 'share', 'quiz-install', 'upsell', 'recurrence' /*, 'special-content'*/ ], function (chaordic) {
+Nitro.controller('produto', [
+	'chaordic',
+	'sku-fetch',
+	'gallery',
+	'product-nav',
+	'video',
+	'details',
+	'specifications',
+	'selos',
+	'supermodel',
+	'sku-select',
+	'boleto',
+	'notify-me',
+	'share',
+	'quiz-install',
+	'upsell',
+	'deliveryTime',
+	'recurrence' /*, 'special-content'*/
+], function (chaordic) {
 	var self = this,
 		$body = $('body');
 
@@ -341,59 +360,5 @@ Nitro.controller('produto', ['chaordic', 'sku-fetch', 'gallery', 'product-nav', 
 		});
 
 	})(window, document, jQuery);
-
-	// ativa calculo de frete na pagina de produto
-	$('#popupCalculoFreteWrapper a').trigger('click');
-	$(window).load(function () {
-
-		var $loadingFret = $('span.frete-calcular'),
-			$containerFrete = $('.freight-values');
-
-		const $simulatorSelector = $('#btnFreteSimulacao');
-
-		var flag = 0;
-
-		$simulatorSelector.on('click', function () {
-			if (flag === 0) {
-				flag = 1;
-			}
-		});
-
-		$(document).ajaxStart(function () {
-			$loadingFret.addClass('loading');
-			$containerFrete.removeClass('active erro');
-
-		});
-
-		$(document).ajaxComplete(function(event,xhr,settings) {
-			var frete = settings.url.split('/')[1];
-
-			if(frete === 'frete'){
-
-				$loadingFret.removeClass('loading');
-				$containerFrete.addClass('active');
-				$containerFrete.prepend('<i class="closed"></i>');
-				if (flag === 1) {
-					dataLayer.push({
-						event: 'simuladorCEP',
-						status: 'ok'
-					});
-					flag = 0;
-				}
-			}
-		});
-
-		$('body').on('click', '.freight-values .closed', function () {
-			$containerFrete.html('').removeClass('active erro');
-		});
-
-		window.alert = function (e) {
-			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.' || e === 'Preencha um CEP válido.') {
-				$containerFrete.html('Preencha um CEP válido.').addClass('active erro').css('display', 'block');
-				$containerFrete.prepend('<i class="closed"></i>');
-			}
-			return;
-		};
-	});
 
 });
