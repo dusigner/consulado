@@ -6,7 +6,7 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 .promo-destaque--is-active {
 	position: relative;
 
-	@include breakpoint(670px, 'max') { padding-top: 35px; }
+	@include breakpoint(670px, 'max') { border-top: 35px solid #fff; }
 }
 
 .promo-destaque {
@@ -17,14 +17,17 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	overflow: hidden;
 	position: relative;
 
-	@include breakpoint(670px, 'max') {
-		height: 30px;
-		left: 0;
-		margin: 0;
-		position: absolute;
-		top: 0;
-		width: 100%;
+	&:not(.promo-produto) {
+		@include breakpoint(670px, 'max') {
+			height: 30px;
+			left: 0;
+			margin: 0;
+			position: absolute;
+			top: -35px;
+			width: 100%;
+		}
 	}
+
 
 	&__text,
 	&__price {
@@ -34,7 +37,7 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	}
 
 	// Background box
-	&::after,
+	&:after,
 	&__text::before {
 		content: '';
 		display: block;
@@ -42,25 +45,21 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		position: absolute;
 	}
 
-	&::after {
+	&:after {
 		background-color: $dia-das-maes-color;
 		border-radius: 4px;
 		left: 100%;
-		transform: translateX(-95px);
+		transform: translateX(-80px);
 		transition: transform .3s ease;
 		width: 100%;
 
-		@include breakpoint(990px, 'min') {
-			@include breakpoint('large', 'max') { transform: translateX(-85px); }
-		}
-
-		@include breakpoint(670px, 'max') { transform: translateX(-80px); }
+		@include breakpoint(670px, 'max') { transform: translateX(-60px); }
 	}
 
 	// Text
 	&__text {
 		color: $dia-das-maes-color;
-		font-size: 12px;
+		font-size: 11px;
 		left: 0;
 		line-height: 100%;
 		padding-left: 40px;
@@ -69,11 +68,10 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		transition: color .3s ease;
 		z-index: 1;
 
-		@include breakpoint(990px, 'min') {
-			@include breakpoint('large', 'max') { font-size: 11px; }
+		@include breakpoint(670px, 'max') {
+			font-size: 9px;
+			padding-left: 28px;
 		}
-
-		@include breakpoint(670px, 'max') { font-size: 10px; }
 
 		&:before {
 			background-image: url($dia-das-maes-icon-pink);
@@ -85,34 +83,87 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 			top: 50%;
 			transform: translateY(-50%);
 			width: 25px;
+
+			@include breakpoint(670px, 'max') {
+				background-size: 20px!important;
+				height: 20px;
+				left: 4px;
+			}
 		}
 	}
 
 	// Price
 	&__price {
 		color: #fff;
-		font-size: 14px;
+		font-size: 12px;
 		line-height: 13px;
 		right: 8px;
 		z-index: 10;
 
-		@include breakpoint(990px, 'min') {
-			@include breakpoint('large', 'max') { font-size: 12px; }
+		@include breakpoint(670px, 'max') {
+			font-size: 10px;
+			right: 4px;
 		}
-		@include breakpoint(670px, 'max') { font-size: 12px; }
+	}
+
+	// Página de produto
+	&.promo-produto {
+		border-radius: 4px;
+		box-shadow: 0 1px 5px rgba(0, 0, 0, .15);
+
+		span {
+			display: inline-block;
+
+			@include breakpoint(1180px, 'min') {
+				display: inline-block;
+			}
+		}
+
+		&:after {
+			border-radius: 0;
+			left: inherit;
+			right: 0;
+			transform: translateX(0);
+			width: 130px;
+		}
+
+		.promo-destaque__text {
+			color: #fff;
+			font-size: 11px;
+			left: inherit;
+			padding-left: 40px;
+			right: 10px;
+			width: 122px;
+
+			&:before {
+				background-image: url($dia-das-maes-icon-white);
+				background-size: 24px!important;
+				height: 24px;
+				left: 8px;
+				width: 25px;
+			}
+		}
+
+		.promo-destaque__price {
+			color: $dia-das-maes-color;
+			font-size: 14px;
+			left: 10px;
+			right: inherit;
+			width: calc(100% - 155px);
+		}
 	}
 }
 
 .box-produto {
 	&:hover {
 		.promo-destaque {
+			&::after { transform: translateX(-100%); }
+
 			&__text {
 				color: #fff;
 
 				&:before { background-image: url($dia-das-maes-icon-white); }
 			}
-
-			&::after { transform: translateX(-100%); }
 		}
 	}
 }

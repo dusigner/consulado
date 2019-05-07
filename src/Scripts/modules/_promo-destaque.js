@@ -3,6 +3,11 @@ const valueFormatting = text => {
 	return value;
 };
 
+const calculateDiscount = (listPrice, bestPrice) => {
+	let discount = Number(listPrice - bestPrice).toFixed(2);
+	return discount.replace('.', ',');
+};
+
 // Promo destaque - Dia das mães
 const promoDestaque = produto => {
 	const promoProd = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
@@ -11,13 +16,10 @@ const promoDestaque = produto => {
 		const $prodInfo = produto.find('.prod-info');
 		const precoDe = valueFormatting(produto.find('.de .val').text());
 		const precoPor = valueFormatting(produto.find('.por .val').text());
-		let desconto;
 
 		promoProd.parents('.detalhes').addClass('promo-destaque--is-active');
 
 		if (precoDe) {
-			desconto = Number(precoDe - precoPor).toFixed(2);
-			desconto = desconto.replace('.', ',');
 
 			const $promoDestaque = `
 				<div class="promo-destaque">
@@ -26,7 +28,7 @@ const promoDestaque = produto => {
 						DIA DAS MÃES
 					</div>
 					<div class="promo-destaque__price">
-						R$-${desconto}
+						R$-${calculateDiscount(precoDe, precoPor)}
 					</div>
 				</div>
 			`;
@@ -35,5 +37,39 @@ const promoDestaque = produto => {
 		}
 	});
 };
+
+const prodPromoDestaque = () => {
+	const hasPromoDestaque = $('.prod-selos .flag[class*="_promo-destaque_"]');
+	const $prodPreco = $('.prod-preco');
+	const precoDe = valueFormatting($prodPreco.find('.skuListPrice').text());
+	const precoPor = valueFormatting($prodPreco.find('.skuBestPrice').text());
+
+	if (hasPromoDestaque) {
+		const $promoDestaque = `
+			<div class="promo-destaque promo-produto">
+				<div class="promo-destaque__text">
+					Promoção<br />
+					DIA DAS MÃES
+				</div>
+				<div class="promo-destaque__price">
+					Produto com <span>R$${calculateDiscount(precoDe, precoPor)} de desconto</span>
+				</div>
+			</div>
+		`;
+
+		$prodPreco.after($promoDestaque);
+	}
+};
+
+if ($('body').hasClass('produto')) {
+	prodPromoDestaque();
+}
+
+
+
+
+
+
+
 
 export default promoDestaque;
