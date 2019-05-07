@@ -4,7 +4,7 @@
 
 body.listagem {
 	.main {
-		margin-top: 20px;
+		margin-top: 10px;
 	}
 
 	.prateleira {
@@ -13,6 +13,7 @@ body.listagem {
 				display: flex;
 				flex-wrap: wrap;
 				margin: 0 -10px;
+				width: 100%;
 
 				& > li {
 					margin-bottom: 20px;
@@ -168,6 +169,8 @@ body.listagem {
 			}
 		}
 	}
+
+	.department-nav { display: none; }
 
 	.image {
 		display: block;
