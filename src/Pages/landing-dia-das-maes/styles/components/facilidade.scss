@@ -1,0 +1,38 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+#facilidade {
+	@include responsive('background-position', -35vw center, (
+		1200px: -20vw center,
+		1349px: -15vw center,
+		1560px: 0 center
+	));
+
+	@include breakpoint(small, 'max') {
+		background-image: url('/arquivos/consul-dia-das-maes-facilidade-mobile.png');
+	}
+
+	@include breakpoint(medium, 'max') {
+		background-position: -5vw top;
+		background-size: contain;
+		height: auto;
+		padding: 60% 0 30px 0;
+	}
+
+	background-color: #F1F0F0;
+	background-image: url('/arquivos/consul-dia-das-maes-facilidade.png');
+	background-repeat: no-repeat;
+	height: 406px;
+
+	.container,
+	.container > .row {
+		height: 100%;
+	}
+
+	.caption {
+		.title {
+			margin-top: 0;
+		}
+	}
+
+}

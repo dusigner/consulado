@@ -181,7 +181,7 @@
 				slide = true;
 			}
 			this.element.addClass('amount-items-in-cart-loading');
-			return vtexjs.checkout.getOrderForm(this.EXPECTED_ORDER_FORM_SECTIONS).done(function(data) {
+			return window.vtexjs && vtexjs.checkout.getOrderForm(this.EXPECTED_ORDER_FORM_SECTIONS).done(function(data) {
 				_this.element.removeClass('amount-items-in-cart-loading');
 				_this.element.trigger('vtex.minicart.updated');
 				_this.element.trigger('minicartUpdated.vtex');
