@@ -22,7 +22,7 @@
 //COMPONENTS
 @import 'components/selos';
 @import 'components/chaordic-shelf';
-@import 'components/mod-prateleira';
+@import 'components/mod-prateleira-v2';
 
 
 main {
@@ -38,28 +38,31 @@ main {
 		line-height: 1.7;
 	}
 	.prateleira.default {
+
+		.box-produto {
+			margin: 0 10px;
+		}
+
 		.btn-comparar,
 		.department-nav {
 			display: none;
 		}
-		.detalhes .nome,
-		.product-field {
-			font-weight: 100;
-		}
-
-		.detalhes .nome {
-			@include responsiveFont(16, 16, true);
-			margin: 10px 0;
-			min-height: 70px!important;
-			padding: 0 10px;
-		}
-
 	}
 	.slick-list {
 		display: block;
 		width: 100%;
 	}
 
+	.slick-track {
+		display: flex;
+		flex-direction: row;
+
+		li {
+			float: none;
+			height: auto;
+			margin: 0 0 10px;
+		}
+	}
 }
 
 @include breakpoint(small, 'max') {
