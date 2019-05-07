@@ -15,10 +15,19 @@
 /* @IMPORTS */
 // ===============================================================
 
+// BOOTSTRAP GRID
+@import 'bootstrap/scss/bootstrap-grid';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities/sizing';
+@import 'bootstrap/scss/utilities/text';
+
+
 // Utility helpers
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
+@import 'helpers/fix-header-bootstrap4';
+@import 'helpers/fix-footer-bootstrap4';
 
 // Component styles
 @import 'components/buttons';
@@ -34,3 +43,9 @@
 @import 'custom/lead-newsletter';
 
 @import 'components/counter';
+
+
+// Tabs Consumidor
+@import 'custom/tabs-consumidor';
+// Tabs Dia das Mães
+@import 'custom/tabs-descontos';

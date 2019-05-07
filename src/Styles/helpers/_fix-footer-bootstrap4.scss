@@ -1,4 +1,6 @@
-footer {
+footer,
+.servicos,
+.newsletter {
 	.row {
 		display: block;
 		margin-left: inherit;
@@ -8,4 +10,17 @@ footer {
 		max-width: unset;
 	}
 
+}
+
+.servicos,
+.newsletter {
+	&.row {
+		display: block;
+		margin-left: inherit;
+		margin-right: inherit;
+	}
+}
+
+.newsletter {
+	@include breakpoint(small, 'min') {display: none !important;}
 }
