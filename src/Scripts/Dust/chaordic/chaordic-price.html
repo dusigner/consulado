@@ -2,13 +2,13 @@
 	{@neq key=priceInfo.ListPrice value=priceInfo.Price}
 		<div class="shelf-item__price--list de">
 			<a href="{link}" alt="{productName}" title="{productName}" data-tracking="{trackingUrl}">
-				{! <span>De: </span> !}<span class="val">{priceInfo.ListPrice|chaordicCurrency}</span>
+				<span>De: </span><span class="val">{priceInfo.ListPrice|chaordicCurrency}</span>
 			</a>
 		</div>
 	{/neq}
 	<div class="shelf-item__price--best por hide-extra-small">
 		<a href="{link}" alt="{productName}" title="{productName}" data-tracking="{trackingUrl}">
-			{! <span>Por: </span> !}<span class="val">{priceInfo.Price|chaordicCurrency} </span><span class="off"></span>
+			<span>Por: </span><span class="val">{priceInfo.Price|chaordicCurrency} </span><span class="off"></span>
 		</a>
 	</div>
 	<div class="shelf-item__price--installment">

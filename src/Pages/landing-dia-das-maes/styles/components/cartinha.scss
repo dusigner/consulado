@@ -1,0 +1,55 @@
+@import 'helpers/variables';
+@import 'helpers/mixins';
+
+#cartinha {
+	@include breakpoint(medium, 'min') {
+		height: 487px;
+	}
+	position: relative;
+
+	&::before {
+		background: url('/arquivos/cns-landing-dia-das-maes-banner-cartinha.jpg') no-repeat center right;
+		content: '';
+		height: 100%;
+		position: absolute;
+		width: calc(100% * 5 / 12); //12 = number max of col || 5 = is the size of columns I want to fill
+		@include breakpoint(extra-large, 'min') {
+			background-position: center left;
+		}
+		@include breakpoint(medium, 'max') { display: none; }
+
+	}
+	.banner.-mobile {
+		margin-top: 30px;
+		max-width: 100%;
+	}
+	.caption {
+		position: relative;
+		&::before {
+			background: rgba(115, 108, 107, .03);
+			border-radius: 50%;
+			bottom: -50%;
+			content: '';
+			height: 210px;
+			left: -50px;
+			position: absolute;
+			width: 210px;
+			@include breakpoint(medium, 'max') {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+		.icon-letter {
+			margin-left: 30px;
+			position: relative;
+			width: 75px;
+		}
+		.title {
+			margin-top: 0;
+			position: relative;
+		}
+	}
+	.info {
+		position: relative;
+	}
+}

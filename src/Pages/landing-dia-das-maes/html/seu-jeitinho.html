@@ -1,0 +1,60 @@
+<section id="seu-jeitinho">
+	<div class="container">
+		<nav class="row align-items-center">
+			<div class="col-12 col-lg-6">
+				<div class="caption">
+					<h2 class="title">
+						Cada mãe tem<br/>
+						o seu <span>jeitinho</span>
+					</h2>
+					<div class="info" data-tab-name="seu-jeitinho">
+						<ul class="tab d-flex align-items-center" data-active-item="0">
+							<li><button class="-active" data-tab-nav="descolada">Mãe Descolada</button></li>
+							<li><button data-tab-nav="pratica">Mãe Prática</button></li>
+							<li><button data-tab-nav="coruja">Mãe Coruja</button></li>
+						</ul>
+
+						<div class="-active" data-tab-content="descolada">
+							A mãe que está sempre por dentro das novidades, adora produtos atrativos, coloridos e principalmente dos conectados!
+							<a href="#" class="all-collections">Para todas as mães</a>
+						</div>
+
+						<div style="display: none" data-tab-content="pratica">
+							Aquela mãe que tem uma rotina super agitada, e sempre procura praticidade para o dia-a-dia!
+
+							<a href="#" class="all-collections">Para todas as mães</a>
+						</div>
+
+						<div style="display: none" data-tab-content="coruja">
+							A mãe que faz tudo pelo seu filho, e os protege em todas as situações.
+
+							<a href="#" class="all-collections">Para todas as mães</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-6">
+				<article class="shelfs" data-tab-name="seu-jeitinho">
+					<div class="prateleira-slider" data-tab-content="descolada">
+						<vtex:contentPlaceHolder id="Prateleira Seu Jeitinho Descolada" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="pratica">
+						<vtex:contentPlaceHolder id="Prateleira Seu Jeitinho Solteira" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+					<div style="display: none" class="prateleira-slider" data-tab-content="coruja">
+						<vtex:contentPlaceHolder id="Prateleira Seu Jeitinho Familia" />
+						<!-- @if DEBUG=true -->
+						<!-- @include ../../includes/shelf.html -->
+						<!-- @endif -->
+					</div>
+				</article>
+			</div>
+		</nav>
+	</div>
+</section>

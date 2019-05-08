@@ -1,0 +1,76 @@
+// BOOTSTRAP GRID
+@import 'bootstrap/scss/bootstrap-grid';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities/sizing';
+@import 'bootstrap/scss/utilities/text';
+
+//HELPERS
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/fix-header-bootstrap4';
+@import 'helpers/fix-footer-bootstrap4';
+
+//SECTIONS
+@import 'components/banner';
+@import 'components/seu-jeitinho';
+@import 'components/facilidade';
+@import 'components/descontos';
+@import 'components/presente';
+@import 'components/cartinha';
+
+//COMPONENTS
+@import 'components/selos';
+@import 'components/chaordic-shelf';
+@import 'components/mod-prateleira-v2';
+
+
+main {
+	color: #736C6B;
+	h2 {
+		@include responsiveFont(35, 16, true);
+		line-height: normal;
+		span {
+			color: #9ACA3C;
+		}
+	}
+	.caption {
+		line-height: 1.7;
+	}
+	.prateleira.default {
+
+		.box-produto {
+			margin: 0 10px;
+		}
+
+		.btn-comparar,
+		.department-nav {
+			display: none;
+		}
+	}
+	.slick-list {
+		display: block;
+		width: 100%;
+	}
+
+	.slick-track {
+		display: flex;
+		flex-direction: row;
+
+		li {
+			float: none;
+			height: auto;
+			margin: 0 0 10px;
+		}
+	}
+}
+
+@include breakpoint(small, 'max') {
+	.header {
+		.cont-search {
+			flex: 0;
+			max-width: 100% !important;
+		}
+	}
+}
+
