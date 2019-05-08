@@ -2,13 +2,14 @@
 'use strict';
 
 import 'modules/slider-banner';
-import 'components/tabs-consumidor';
+//import 'components/tabs-consumidor';
+import 'components/tabs-descontos';
 import 'components/lead-newsletter';
 import 'modules/chaordic';
 import 'modules/bannerDoubleClick';
 import 'modules/chatHome';
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'bannerDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'tabs-consumidor', */ 'tabs-descontos', 'bannerDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
@@ -38,7 +39,7 @@ Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-
 		});
 
 		//ajusta para mobile - prateleira slider
-		$('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
+		//$('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
 	};
 
 	//inicia automaticamente prateleiras sliders no desktop

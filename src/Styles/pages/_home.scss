@@ -11,7 +11,7 @@ body.home {
 		display: none
 	}
 
-	.slider.vitrines {
+	.vitrines {
 		@include breakpoint(600px, 'max') {
 			max-width: 100%;
 		}
@@ -203,6 +203,3 @@ section.slider {
 	}
 }
 
-
-// Tabs Consumidor
-@import '../custom/tabs-consumidor';
