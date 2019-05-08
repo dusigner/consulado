@@ -7,11 +7,12 @@ require('custom/lead-newsletter');
 require('modules/chaordic');
 require('modules/linkDoubleClick');
 require('modules/chatHome');
+require('modules/shelfCategoryHome');
 
 // import 'modules/counter';
 import 'modules/datalayer_track';
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', /*'counter', 'datalayer_track'*/], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', 'tabs-consumidor', 'linkDoubleClick', 'chatHome', 'shelfCategoryHome' /*'counter', 'datalayer_track'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
