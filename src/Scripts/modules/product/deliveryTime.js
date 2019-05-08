@@ -139,7 +139,8 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.activeShippingCalculate = () => {
-		$('#popupCalculoFreteWrapper a').trigger('click');
+		//$('#popupCalculoFreteWrapper a').trigger('click');
+		window.ShippingValue && window.ShippingValue();
 	};
 
 	/**
