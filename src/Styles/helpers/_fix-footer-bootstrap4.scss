@@ -22,5 +22,5 @@ footer,
 }
 
 .newsletter {
-	@include breakpoint(small, 'min') {display: none !important;}
+	@include breakpoint(extra-small, 'min') {display: none !important;}
 }
