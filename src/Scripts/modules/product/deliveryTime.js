@@ -83,15 +83,22 @@ Nitro.module('deliveryTime', () => {
 	};
 
 	/**
+	 * Return postalCode from orderForm
+	 *
+	 * @memberof deliveryTime
+	 */
+	this.getOrderFormPostalCode = () => {
+		return (((((vtexjs || {}).checkout || {}).orderForm || {}).shippingData || {}).address || {}).postalCode;
+	};
+
+	/**
 	 * Set orderForm for user CEP
 	 *
 	 * @memberof deliveryTime
 	 */
 	this.setPostalCodeOrderForm = (textCep) => {
 
-		const orderForm = vtexjs.checkout.orderForm;
-
-		if ((!orderForm.canEditData) || (orderForm.shippingData && orderForm.shippingData.address && orderForm.shippingData.address.postalCode && orderForm.shippingData.address.postalCode === textCep)) {
+		if ((!vtexjs.checkout.orderForm.canEditData) || (this.getOrderFormPostalCode() === textCep)) {
 			return;
 		}
 
@@ -115,12 +122,15 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.autoGetPostalCode = () => {
-		if (localStorage && localStorage.getItem('user_cep')) {
-			$('#txtCep').val(localStorage.getItem('user_cep'));
-
-			$('#btnFreteSimulacao').trigger('click');
-
-		}
+		vtexjs.checkout.getOrderForm().done(() => {
+			if (this.getOrderFormPostalCode()) {
+				$('#txtCep').val(this.getOrderFormPostalCode());
+				$('#btnFreteSimulacao').trigger('click');
+			} else if (localStorage && localStorage.getItem('user_cep')) {
+				$('#txtCep').val(localStorage.getItem('user_cep'));
+				$('#btnFreteSimulacao').trigger('click');
+			}
+		});
 	};
 
 	/**
@@ -177,6 +187,9 @@ Nitro.module('deliveryTime', () => {
 
 	};
 
+	$(document).on('skuSelected.vtex', () => {
+		this.autoGetPostalCode();
+	});
 
 	this.init();
 

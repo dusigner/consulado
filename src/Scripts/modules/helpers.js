@@ -187,6 +187,18 @@ if (!window.getCookie) {
 //jQuery extensions
 (function ($) {
 
+	$.checkObjectNested = (obj /*, level1, level2, ... levelN*/) => {
+		const args = Array.prototype.slice.call(arguments, 1);
+
+		for (let i = 0; i < args.length; i++) {
+			if (!obj || !obj.hasOwnProperty(args[i])) {
+				return false;
+			}
+			obj = obj[args[i]];
+		}
+		return true;
+	};
+
 	$.calculateBusinessDays = function (fromDate, days) {
 		var count = 0;
 		fromDate = new Date(fromDate);
