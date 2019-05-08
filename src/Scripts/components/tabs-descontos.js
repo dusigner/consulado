@@ -10,20 +10,20 @@ Nitro.module('tabs-descontos', function () {
 		tab = new Tab('descontos'),
 		slickConfig = {
 			slidesToShow: 4,
-			slidesToScroll: 1,
+			slidesToScroll: 4,
 			infinite: true,
 			adaptiveHeight: false,
 			responsive: [{
 				breakpoint: 1200,
 				settings: {
 					slidesToShow: 3,
-					slidesToScroll: 1,
+					slidesToScroll: 3,
 				}
 			}, {
 				breakpoint: 960,
 				settings: {
 					slidesToShow: 2,
-					slidesToScroll: 1,
+					slidesToScroll: 2,
 				}
 			}, {
 				breakpoint: 640,
