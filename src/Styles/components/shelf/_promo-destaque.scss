@@ -4,9 +4,11 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 
 // Promo destaque dias das mães - Prateleiras
 .promo-destaque--is-active {
-	position: relative;
+	// position: relative;
 
 	@include breakpoint(670px, 'max') { border-top: 35px solid #fff; }
+
+	.prod-info .price .por .off { top: 50px!important; }
 }
 
 .promo-destaque {
@@ -16,15 +18,22 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	margin-top: 10px;
 	overflow: hidden;
 	position: relative;
+	width: calc(100% + 15px);
+
+	@include breakpoint('small', 'max') {
+		margin-left: -15px;
+		width: calc(100% + 30px);
+	}
 
 	&:not(.promo-produto) {
+		@include breakpoint('large', 'max') { height: 30px; }
 		@include breakpoint(670px, 'max') {
-			height: 30px;
 			left: 0;
 			margin: 0;
 			position: absolute;
-			top: -35px;
+			top: 10px;
 			width: 100%;
+			z-index: 1;
 		}
 	}
 
@@ -48,12 +57,15 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	&:after {
 		background-color: $dia-das-maes-color;
 		border-radius: 4px;
-		left: 100%;
-		transform: translateX(-80px);
-		transition: transform .3s ease;
-		width: 100%;
+		left: calc(100% - 15px);
+		transform: translateX(-90px);
+		transition: transform .2s ease;
+		width: calc(100% - 15px);
 
-		@include breakpoint(670px, 'max') { transform: translateX(-60px); }
+		@include breakpoint('extra-small', 'max') { transform: translateX(-65px); }
+		@include breakpoint('large', 'max') {
+			@include breakpoint('extra-small', 'min') { transform: translateX(-85px); }
+		}
 	}
 
 	// Text
@@ -65,10 +77,10 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		padding-left: 40px;
 		text-align: left;
 		text-indent: 0;
-		transition: color .3s ease;
+		transition: color .2s ease;
 		z-index: 1;
 
-		@include breakpoint(670px, 'max') {
+		@include breakpoint('large', 'max') {
 			font-size: 9px;
 			padding-left: 28px;
 		}
@@ -84,7 +96,7 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 			transform: translateY(-50%);
 			width: 25px;
 
-			@include breakpoint(670px, 'max') {
+			@include breakpoint('large', 'max') {
 				background-size: 20px!important;
 				height: 20px;
 				left: 4px;
@@ -97,13 +109,11 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		color: #fff;
 		font-size: 12px;
 		line-height: 13px;
-		right: 8px;
+		right: 25px;
 		z-index: 10;
 
-		@include breakpoint(670px, 'max') {
-			font-size: 10px;
-			right: 4px;
-		}
+		@include breakpoint('large', 'max') { font-size: 10px; }
+		@include breakpoint(670px, 'max') { right: 4px; }
 	}
 
 	// Página de produto
@@ -114,9 +124,7 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		span {
 			display: inline-block;
 
-			@include breakpoint(1180px, 'min') {
-				display: inline-block;
-			}
+			@include breakpoint(1180px, 'min') { display: inline-block; }
 		}
 
 		&:after {
@@ -157,12 +165,14 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 .box-produto {
 	&:hover {
 		.promo-destaque {
-			&::after { transform: translateX(-100%); }
+			@include breakpoint('small', 'min') {
+				&::after { transform: translateX(-100%); }
 
-			&__text {
-				color: #fff;
+				&__text {
+					color: #fff;
 
-				&:before { background-image: url($dia-das-maes-icon-white); }
+					&:before { background-image: url($dia-das-maes-icon-white); }
+				}
 			}
 		}
 	}
