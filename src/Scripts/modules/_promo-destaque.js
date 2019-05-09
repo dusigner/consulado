@@ -19,7 +19,7 @@ const promoDestaque = produto => {
 
 		promoProd.parents('.detalhes').addClass('promo-destaque--is-active');
 
-		if (precoDe) {
+		if (precoDe.length) {
 
 			const $promoDestaque = `
 				<div class="promo-destaque">
@@ -44,7 +44,7 @@ const prodPromoDestaque = () => {
 	const precoDe = valueFormatting($prodPreco.find('.skuListPrice').text());
 	const precoPor = valueFormatting($prodPreco.find('.skuBestPrice').text());
 
-	if (hasPromoDestaque) {
+	if (hasPromoDestaque.length) {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
