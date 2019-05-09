@@ -143,6 +143,8 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 			right: 10px;
 			width: 122px;
 
+			@include breakpoint('extra-small', 'max') { font-size: 10px; }
+
 			&:before {
 				background-image: url($dia-das-maes-icon-white);
 				background-size: 24px!important;
@@ -155,9 +157,11 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		.promo-destaque__price {
 			color: $dia-das-maes-color;
 			font-size: 14px;
-			left: 10px;
+			left: 12px;
 			right: inherit;
 			width: calc(100% - 155px);
+
+			@include breakpoint('extra-small', 'max') { font-size: 12px; }
 		}
 	}
 }
