@@ -122,8 +122,8 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.autoGetPostalCode = () => {
-		vtexjs.checkout.getOrderForm().done(() => {
-			if (this.getOrderFormPostalCode()) {
+		vtexjs.checkout.getOrderForm().done((orderForm) => {
+			if (orderForm.canEditData && this.getOrderFormPostalCode()) {
 				$('#txtCep').val(this.getOrderFormPostalCode());
 				$('#btnFreteSimulacao').trigger('click');
 			} else if (localStorage && localStorage.getItem('user_cep')) {
