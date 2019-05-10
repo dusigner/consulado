@@ -42,7 +42,6 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	&__price {
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
 	}
 
 	// Background box
@@ -77,7 +76,11 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		padding-left: 40px;
 		text-align: left;
 		text-indent: 0;
-		transition: color .2s ease;
+		transform: translate(-8px, -50%);
+		transition:
+			color .2s ease,
+			transform .2s ease
+		;
 		z-index: 1;
 
 		@include breakpoint('large', 'max') {
@@ -109,7 +112,8 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 		color: #fff;
 		font-size: 12px;
 		line-height: 13px;
-		right: 25px;
+		right: 22px;
+		transform: translateY(-50%);
 		z-index: 10;
 
 		@include breakpoint('large', 'max') { font-size: 10px; }
@@ -141,6 +145,7 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 			left: inherit;
 			padding-left: 40px;
 			right: 10px;
+			transform: translate(0, -50%);
 			width: 122px;
 
 			@include breakpoint('extra-small', 'max') { font-size: 10px; }
@@ -166,17 +171,16 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	}
 }
 
-.box-produto {
-	&:hover {
+.box-produto:hover {
+	@include breakpoint('small', 'min') {
 		.promo-destaque {
-			@include breakpoint('small', 'min') {
-				&::after { transform: translateX(-100%); }
+			&::after { transform: translateX(-100%); }
 
-				&__text {
-					color: #fff;
+			&__text {
+				color: #fff;
+				transform: translate(-3px, -50%);
 
-					&:before { background-image: url($dia-das-maes-icon-white); }
-				}
+				&:before { background-image: url($dia-das-maes-icon-white); }
 			}
 		}
 	}

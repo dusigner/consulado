@@ -11,40 +11,35 @@ const calculateDiscount = (listPrice, bestPrice) => {
 // Promo destaque - Dia das mães
 const promoDestaque = produto => {
 	const promoProd = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
+	const $prodInfo = produto.find('.prod-info');
+	const precoDe   = valueFormatting(produto.find('.de .val').text());
+	const precoPor  = valueFormatting(produto.find('.por .val').text());
 
-	promoProd.each(() => {
-		const $prodInfo = produto.find('.prod-info');
-		const precoDe = valueFormatting(produto.find('.de .val').text());
-		const precoPor = valueFormatting(produto.find('.por .val').text());
+	if (promoProd.length && precoDe.length) {
+		const $promoDestaque = `
+			<div class="promo-destaque">
+				<div class="promo-destaque__text">
+					Promoção<br />
+					DIA DAS MÃES
+				</div>
+				<div class="promo-destaque__price">
+					R$-${calculateDiscount(precoDe, precoPor)}
+				</div>
+			</div>
+		`;
 
 		promoProd.parents('.detalhes').addClass('promo-destaque--is-active');
-
-		if (precoDe.length) {
-
-			const $promoDestaque = `
-				<div class="promo-destaque">
-					<div class="promo-destaque__text">
-						Promoção<br />
-						DIA DAS MÃES
-					</div>
-					<div class="promo-destaque__price">
-						R$-${calculateDiscount(precoDe, precoPor)}
-					</div>
-				</div>
-			`;
-
-			$prodInfo.prepend($promoDestaque);
-		}
-	});
+		$prodInfo.prepend($promoDestaque);
+	}
 };
 
 const prodPromoDestaque = () => {
-	const hasPromoDestaque = $('.prod-selos .flag[class*="_promo-destaque_"]');
+	const hasPromo   = $('.prod-selos .flag[class*="_promo-destaque_"]');
 	const $prodPreco = $('.prod-preco');
-	const precoDe = valueFormatting($prodPreco.find('.skuListPrice').text());
-	const precoPor = valueFormatting($prodPreco.find('.skuBestPrice').text());
+	const precoDe    = valueFormatting($prodPreco.find('.skuListPrice').text());
+	const precoPor   = valueFormatting($prodPreco.find('.skuBestPrice').text());
 
-	if (hasPromoDestaque.length) {
+	if (hasPromo.length) {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
