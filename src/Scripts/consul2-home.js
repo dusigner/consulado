@@ -46,9 +46,9 @@ Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'ta
 	};
 
 	//inicia automaticamente prateleiras sliders no desktop
-	if ($(window).width() > 768) {
-		self.setupSlider($slider);
-	}
+	// if ($(window).width() > 768) {
+	self.setupSlider($slider);
+	// }
 
 	//mobile - abrir vitrines
 	if ($(window).width() <= 768) {

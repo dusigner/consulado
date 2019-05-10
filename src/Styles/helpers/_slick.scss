@@ -51,13 +51,12 @@
 		user-select: none;
 		z-index: 0;
 
-		@include breakpoint(small, 'max') {
-			padding: 0 50px;
+		.home & {
+			@include breakpoint('small', 'max') { padding: 0; }
 		}
 
-		@include breakpoint(extra-small, 'max') {
-			padding: 0;
-		}
+		@include breakpoint('small', 'max') { padding: 0 50px; }
+		@include breakpoint('extra-small', 'max') { padding: 0; }
 
 		* {
 			outline: none !important
