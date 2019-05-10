@@ -33,6 +33,8 @@ body.listagem {
 	}
 }
 
+.prateleira > ul > li { float: left; }
+
 .prateleira-slider {
 	.slick-track {
 		padding: 2px 0;
