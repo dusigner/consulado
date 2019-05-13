@@ -12,8 +12,10 @@ $dia-das-maes-icon-pink: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3
 	position: relative;
 	width: calc(100% + 15px);
 
-	.shelf-item__info & {
-		margin-top: 15px;
+	.shelf-item__info & { margin-top: 15px; }
+
+	.shelf--history-personalized-ref & {
+		.promo-destaque__text { display: none; }
 	}
 
 	&__text,

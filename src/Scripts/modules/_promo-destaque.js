@@ -32,7 +32,7 @@ const promoDestaque = produto => {
 		const $promoDestaque = `
 			<div class="promo-destaque">
 				<div class="promo-destaque__text">
-					Promoção<br />
+					Saldão<br />
 					DIA DAS MÃES
 				</div>
 				<div class="promo-destaque__price">
@@ -56,7 +56,7 @@ const prodPromoDestaque = () => {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
-					Promoção<br />
+					Saldão<br />
 					DIA DAS MÃES
 				</div>
 				<div class="promo-destaque__price">
