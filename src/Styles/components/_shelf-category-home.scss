@@ -6,22 +6,29 @@
 	justify-content: center;
 	padding: 2em 0;
 
+	a,
+	span { display: block; }
+
 	&-card {
 		border: 1px solid #f1f0f0;
 		border-radius: 4px;
+		display: block;
 		line-height: normal;
 		margin: 7px;
 		position: relative;
+		transition: border-color .3s ease;
 		width: 175px;
+
+		// Coifa
+		&.shelf-coifa { overflow: hidden; }
 
 		&__image-container {
 			bottom: 44px;
 			height: 120px;
-			left: -5%;
 			overflow: hidden;
-			padding: 5px 12px;
+			padding: 5px 15px;
 			position: absolute;
-			width: 110%;
+			width: 100%;
 		}
 
 		&__image {
@@ -32,9 +39,15 @@
 
 			img {
 				display: block;
-				transition: transform .3s ease;
-				transform: translateY(20px);
+				transition: transform .4s ease;
 			}
+
+			img[alt='Cervejeiras'] { transform: translateY(28px); }
+			img[alt='Geladeiras'] { transform: translateY(52px); }
+			img[alt='Cooktops'] { transform: translate(-90px, 20px); }
+			img[alt='Coifas'] { transform: translate(-45px, -18px); }
+			img[alt='Fornos'] { transform: translate(0, 38px); }
+			img[alt='Lavadoras'] { transform: translate(0, 55px); }
 		}
 
 		&__text {
@@ -57,15 +70,20 @@
 
 		// Hover
 		&:hover {
+			border-color: #9aca3c;
+			box-shadow: 0 2px 7px rgba(0, 0, 0, .226);
+			overflow: inherit;
+
 			.shelf-category-home-card__image {
 				background-color: #9aca3c;
-				overflow: inherit;
 
-				img {
-					transform: translateY(-20px);
-				}
+				img[alt='Cervejeiras'] { transform: translateY(-30px); }
+				img[alt='Geladeiras'] { transform: translateY(-5px); }
+				img[alt='Cooktops'] { transform: translate(-60px, -28px); }
+				img[alt='Coifas'] { transform: translate(-20px, -30px); }
+				img[alt='Fornos'] { transform: translate(0, -18px); }
+				img[alt='Lavadoras'] { transform: translate(0, 0); }
 			}
 		}
 	}
-
 }
