@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/landing-gae-2019.css?v=<!-- @echo package.version -->" />
 </head>
 
-<body data-controller="landing-gae">
+<body data-controller="landing-gae" class="landing-gae">
 	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
 	<!-- @endif -->
@@ -37,17 +37,72 @@
 		<!-- @include /html/experiencia.html -->
 		<!-- @include /html/feedback.html -->
 
+		<section class="contatos">
+			<div class="contatos__info">
+				<div class="wrap">
+					<div class="contatos__info-atendimento">
+						<div class="-border-item">
+							<h2>Canais de Venda</h2>
+							<small><p>Capitais e regiões metropolitanas: <br> <b>3004 2290</b></p></small>
+							<small><p>Outras localidades: <br> <b>0800 727 2290</b></p></small>
+							<small><p>Horário das vendas: <br> Das 8h às 22h - De segunda à sábado <br> (inclusive feriados)</p></small>
+						</div>
+						<div>
+							<h2>Fale com a Seguradora</h2></small>
+							<small><p>SAC - Serviço de Atendimento ao Cliente <br> <b>0800 773 3588</b></p></small>
+							<small><p>SAC e Ouvidoria para Pessoa com Deficiência Auditiva ou de Fala <br> <b>0800 726 6363</b></p></small>
+							<small><p>Horário de atendimento para abertura de sinistros <br> Das 8h às 20h - De segunda à sábado. <br> Horário de atendimento do SAC: <br> 24h por dia, 7 dias por semana.</p></small>
+						</div>
+						<div>
+							<h2>Ouvidoria</h2>
+							<small><p>Canal de comunicação entre o cliente e a seguradora para mediar situações de conflito. Caso já tenha registrado sua reclamação no SAC e não esteja satisfeito, entre em contato: <br> <b>0800 771 7266</b></p></small>
+							<small><p>Horário de atendimento: <br> Das 9h às 18h - De segunda à sexta.</p></small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</main>
 
 
-	<!-- @if DEBUG=true -->
-	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
-	<!-- @endif -->
+	<footer class="footer">
+		<section class="footer__group -light">
+			<nav>
+				<ul class="footer__list">
+					<li class="footer__item"> <small><a target="_blank" href="https://www.consul.com.br/sobreaconsul/">Sobre a Consul</a></small>  </li>
+					<li class="footer__item"> <small><a target="_blank" href="https://consul.custhelp.com/app/answers/detail/a_id/511">Politica de privacidade</a></small>  </li>
+					<li class="footer__item"> <small><a target="_blank" href="https://www.consul.com.br/termos/">Termos de uso</a></small>  </li>
+					<li class="footer__item"> <small><a target="_blank" href="https://loja.consul.com.br/institucional/acessibilidade">Acessibilidade</a></small>  </li>
+				</ul>
+			</nav>
+			<div>
+				<picture>
+					<source media="(min-width: 650px)" srcset="assets/img/banner-pagamento.png">
+					<source media="(min-width: 465px)" srcset="assets/img/banner-pagamento.png">
+					<img class="footer__pagamentos-image" src="assets/img/banner-pagamento.png" alt="Banner de Formas de Pagamento">
+				</picture>
+			</div>
+
+		</section>
+		<section class="footer__group">
+			<div class="wrap">
+				<p class="footer__caption"><small>A contratação de seguro é OPCIONAL, sendo possível a desistência do contrato em até 7 (sete) dias corridos com a devolução integral do valor pago. A comercialização de seguro é fiscalizada pela SUSEP. O registro deste plano na SUSEP não implica,
+					por parte da Autarquia, incentivo ou recomendação a sua comercialização. É proibido condicionar desconto. Acesse www.susep.gov.br ou ligue para 0800 021 8484. Bud Comercio de Eletrodomésticos Ltda., CNPJ: 62.058.318/0007-76 é representante de seguros da Assurant Seguradora
+					S.A. e está autorizado a comercializar o Seguro de Garantia Estendida Original. Este seguro é garantido pela Assurant Seguradora S.A, sob o CNPJ 03.823.704/0001-52, sob sede na Alameda Rio Negro, 585, 3o andar, Bloco C, Alphaville, Barueri-SP,
+					CEP: 06454-000. Site: www.assurant.com.br. SAC: 0800 773 3588. Deficiente auditivo ou de fala: 0800 726 6363. 24 horas, 7 dias por semana. Ouvidoria: 0800 771 7266. Segunda a sexta das 09hs às 18hs.Seguro Garantia Estendida Original -
+					Processo Susep 15414.900032/2014-26. Ramo 0195 - Garantia Estendida/Extensão de Garantia - Bens em Geral.</small></p>
+				<small><a class="-condicoes" href="#">Saiba mais informações das condições de contratação</a></small>
+				<img class="footer_image" src="assets/img/assurant.png" alt="Assurant">
+			</div>
+		</section>
+		<section class="footer__group -dark">
+			<div class="wrap">
+				<p class="footer__caption"><small>Copyright BUD Comércio de Eletrodomésticos Ltda. ® 2018 – Todos os Direitos Reservados. CNPJ 62.058.318/0007-76. Endereço Sede: Rua Olympia Semeraro, 675, Jardim Santa Emília, São Paulo/SP, CEP 04183-090 Inscrição Municipal/Estadual: 148.044.198.118 | contato@consul.zendesk.com</small></p>
+			</div>
+		</section>
+	</footer>
 
 
-	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
 	<script type="text/javascript"	src="<!-- @echo assetsPath -->/landing-gae-2019.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 
