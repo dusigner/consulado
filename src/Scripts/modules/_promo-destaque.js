@@ -52,7 +52,7 @@ const prodPromoDestaque = () => {
 	const precoPor   = valueFormat($prodPreco.find('.skuBestPrice').text());
 	const desconto   = discountCalculate(precoDe, precoPor);
 
-	if (hasPromo.length) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto)) {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
