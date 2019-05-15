@@ -10,127 +10,123 @@
 }
 
 body:not(.produto) {
-    padding: 0;
+	padding: 0;
 }
 
 body:not(.produto) header {
-    padding: 0;
-    position: relative;
+	padding: 0;
+	position: relative;
 }
 
-header {
-    background-color: initial;
+body.landing-gae {
+	header { background-color: initial; }
+
+	.wrap {
+		@include laptop {
+			margin: 0 auto;
+			max-width: 1100px;
+			padding: 0;
+		}
+		padding: 0 20px;
+	}
+
+	a {
+		cursor: pointer;
+		text-decoration: none;
+	}
+
+	h1 {
+		font-size: 2em;
+		line-height: 1.2em;
+	}
+
+	h2 {
+		// font-family: $f-cns-light;
+		font-size: 1.5em;
+		line-height: 1.2em;
+	}
+
+	h3 {
+		font-size: 1.17em;
+		line-height: 1.2em;
+	}
+
+	h4 {
+		font-size: 1em;
+		line-height: 1.2em;
+	}
+
+	h5 {
+		font-size: .83em;
+		line-height: 1.2em;
+	}
+
+	h6 {
+		font-size: .75em;
+		line-height: 1.2em;
+	}
+
+	//-----------------
+
+	small {
+		font-size:  70%;
+	}
+
+	ol {
+		list-style-type: none;
+	}
+
+	a:hover {
+		text-decoration: none;
+	}
+
+	h3,
+	legend {
+		color: $gray;
+		font: 16px/1.5;
+		font-weight: bold;
+	}
+
+	fieldset {
+		@include laptop {
+			border: 1px solid $purple;
+			border-radius: 40px;
+			padding: 40px 0;
+		}
+		border: none;
+	}
+
+	button {
+		cursor: pointer;
+	}
+
+	legend {
+		font-size: 16px;
+		padding: 0 10px;
+		text-align: center;
+	}
+
+	ul,
+	ol {
+		list-style: none;
+		padding: 0;
+	}
+
+	label {
+		margin-bottom: 0;
+	}
+
+	input[type=email],
+	input[type=password],
+	input[type=tel],
+	input[type=text],
+	textarea {
+		background-color: #f1f1f1;
+		border: 0;
+		box-sizing: border-box;
+		margin-bottom: 1.5em;
+		padding: .5em 1em;
+		width: 100%;
+	}
 }
 
-.wrap {
-
-	@include laptop {
-		margin: 0 auto;
-        max-width: 1100px;
-        padding: 0;
-    }
-	padding: 0 20px;
-}
-
-
-a {
-	cursor: pointer;
-	text-decoration: none;
-}
-
-h1 {
-    font-size: 2em;
-    line-height: 1.2em;
-}
-
-h2 {
-    // font-family: $f-cns-light;
-    font-size: 1.5em;
-    line-height: 1.2em;
-}
-
-h3 {
-    font-size: 1.17em;
-    line-height: 1.2em;
-}
-
-h4 {
-    font-size: 1em;
-    line-height: 1.2em;
-}
-
-h5 {
-    font-size: .83em;
-    line-height: 1.2em;
-}
-
-h6 {
-    font-size: .75em;
-    line-height: 1.2em;
-}
-
-//-----------------
-
-small {
-    font-size:  75%;
-}
-
-ol {
-    list-style-type: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-h3,
-legend {
-    color: $gray;
-    font: 16px/1.5;
-    font-weight: bold;
-}
-
-fieldset {
-
-
-	@include laptop {
-		border: 1px solid $purple;
-        border-radius: 40px;
-        padding: 40px 0;
-    }
-	border: none;
-
-}
-
-button {
-    cursor: pointer;
-}
-
-legend {
-    font-size: 16px;
-    padding: 0 10px;
-    text-align: center;
-}
-
-ul,
-ol {
-    list-style: none;
-    padding: 0;
-}
-
-label {
-    margin-bottom: 0;
-}
-
-input[type=email],
-input[type=password],
-input[type=tel],
-input[type=text],
-textarea {
-    background-color: #f1f1f1;
-    border: 0;
-    box-sizing: border-box;
-    margin-bottom: 1.5em;
-    padding: .5em 1em;
-    width: 100%;
-}
