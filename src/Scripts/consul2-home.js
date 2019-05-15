@@ -2,18 +2,18 @@
 'use strict';
 
 require('modules/slider-banner');
-//require('custom/tabs-consumidor');
-require('custom/tabs-descontos');
-require('custom/lead-newsletter');
+//require('components/tabs-consumidor');
+require('components/tabs-descontos');
+require('components/lead-newsletter');
 require('modules/chaordic');
-require('modules/linkDoubleClick');
+require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
 
 // import 'modules/counter';
-import 'modules/datalayer_track';
+// import 'modules/datalayer_track';
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'tabs-consumidor', */ 'tabs-descontos', 'linkDoubleClick', 'chatHome', 'shelfCategoryHome' /*'counter', 'datalayer_track'*/], function (chaordic) {
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'tabs-consumidor', */ 'tabs-descontos', 'bannerDoubleClick', 'chatHome', 'shelfCategoryHome' /*'counter', 'datalayer_track'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
