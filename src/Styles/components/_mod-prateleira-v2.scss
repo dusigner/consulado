@@ -3,9 +3,7 @@
 @import '_rebase/_root';
 
 body.listagem {
-	.main {
-		margin-top: 10px;
-	}
+	.main { margin-top: 10px; }
 
 	.prateleira {
 		&.default {
@@ -34,6 +32,8 @@ body.listagem {
 		}
 	}
 }
+
+.prateleira > ul > li { float: left; }
 
 .prateleira-slider {
 	.slick-track {
@@ -225,6 +225,7 @@ body.listagem {
 		}
 
 		img {
+			height: auto;
 			max-height: 210px;
 			max-width: 100%;
 			width: auto;

@@ -1,6 +1,30 @@
 @charset 'UTF-8';
 
 body.home {
+
+	// Ajustes home mobile pós bootstrap 4
+	.container.vitrines {
+		padding: 0;
+		@include breakpoint('small', 'max') { max-width: 100%!important; }
+
+		ul.slick-slider {
+			@include breakpoint('small', 'max') {
+				margin-left: auto;
+				margin-right: auto;
+				max-width: 540px;
+			}
+		}
+	}
+
+	#descontos .container {
+		padding: 0;
+
+		.row {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
 	section.destaque {
 		@include breakpoint(small, 'max') {
 			display: none;
@@ -11,7 +35,7 @@ body.home {
 		display: none
 	}
 
-	.slider.vitrines {
+	.vitrines {
 		@include breakpoint(600px, 'max') {
 			max-width: 100%;
 		}
@@ -27,6 +51,7 @@ body.home {
 					background-color: #9aca3c;
 					border: 1px solid #fff;
 					color: #fff;
+					font-size: 1rem;
 					padding: 15px;
 
 					&:after {
@@ -58,7 +83,7 @@ body.home {
 			ul {
 				&.slick-slider {
 					@include breakpoint(small, 'max') {
-						padding: 0 50px;
+						// padding: 0 50px;
 
 						.slick-arrow {
 							color: #f47921;
@@ -126,7 +151,7 @@ body.home {
 					}
 
 					@include breakpoint(600px, 'max') {
-						padding: 0 30px;
+						// padding: 0 30px;
 
 						.slick-arrow {
 							display: block !important;
@@ -203,6 +228,3 @@ section.slider {
 	}
 }
 
-
-// Tabs Consumidor
-@import '../custom/tabs-consumidor';

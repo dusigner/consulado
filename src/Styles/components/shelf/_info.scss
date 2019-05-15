@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 &__info {
+	border-top: 1px solid #f1f0f0;
 	background: transparent !important;
 	flex: 1;
 	margin: 5px 0 15px;
@@ -16,6 +17,7 @@
 	display: inline-block;
 	font-family: 'Open Sans';
 	font-size: 14px;
+	margin-top: 5px;
 
 	&:empty {
 		display: block;
