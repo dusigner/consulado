@@ -12,12 +12,13 @@ const discountCalculate = (listPrice, bestPrice) => Number(listPrice - bestPrice
 const discountFormat = discount => discount.replace('.', ',');
 
 // Verifica se o desconto está dentro do range estabelecido pelas regras de negócio.
-const discountValidate = discount => {
+const discountValidate = (discount, productPrice) => {
 	const prodDiscount = Number(discount);
+	const prodPrice    = Number(productPrice);
 	const minPrice     = 50.00;
 	const maxPrice     = 950.00;
 
-	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice);
+	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice && prodDiscount < prodPrice);
 };
 
 // Promo destaque - Dia das mães
@@ -28,7 +29,7 @@ const promoDestaque = produto => {
 	const precoPor  = valueFormat(produto.find('.por .val').text());
 	const desconto  = discountCalculate(precoDe, precoPor);
 
-	if (hasPromo.length && precoDe.length && discountValidate(desconto)) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
 		const $promoDestaque = `
 			<div class="promo-destaque">
 				<div class="promo-destaque__text">
@@ -52,7 +53,7 @@ const prodPromoDestaque = () => {
 	const precoPor   = valueFormat($prodPreco.find('.skuBestPrice').text());
 	const desconto   = discountCalculate(precoDe, precoPor);
 
-	if (hasPromo.length && precoDe.length && discountValidate(desconto)) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
@@ -72,12 +73,5 @@ const prodPromoDestaque = () => {
 if ($('body').hasClass('produto')) {
 	prodPromoDestaque();
 }
-
-
-
-
-
-
-
 
 export default promoDestaque;
