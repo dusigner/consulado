@@ -764,3 +764,9 @@ body.body-order-form {
 .overflow-hidden {
 	overflow: hidden;
 }
+
+
+.modal__cell:nth-of-type(6) {
+	display: none;
+	visibility: hidden;
+}

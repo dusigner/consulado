@@ -30,6 +30,7 @@
 @import 'helpers/fix-footer-bootstrap4';
 
 // Component styles
+@import 'components/page-title';
 @import 'components/buttons';
 @import 'components/banners';
 @import 'components/banners-controller';
@@ -37,6 +38,7 @@
 @import 'components/chaordic-shelf';
 @import 'components/selos';
 @import 'components/chatHome';
+@import 'components/shelf-category-home';
 
 @import 'pages/home';
 

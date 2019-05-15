@@ -1,15 +1,19 @@
 /* global $:true, Nitro: true */
 'use strict';
 
-import 'modules/slider-banner';
-//import 'components/tabs-consumidor';
-import 'components/tabs-descontos';
-import 'components/lead-newsletter';
-import 'modules/chaordic';
-import 'modules/bannerDoubleClick';
-import 'modules/chatHome';
+require('modules/slider-banner');
+//require('custom/tabs-consumidor');
+require('custom/tabs-descontos');
+require('custom/lead-newsletter');
+require('modules/chaordic');
+require('modules/linkDoubleClick');
+require('modules/chatHome');
+require('modules/shelfCategoryHome');
 
-Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'tabs-consumidor', */ 'tabs-descontos', 'bannerDoubleClick', 'chatHome', /*'counter'*/], function (chaordic) {
+// import 'modules/counter';
+import 'modules/datalayer_track';
+
+Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'tabs-consumidor', */ 'tabs-descontos', 'linkDoubleClick', 'chatHome', 'shelfCategoryHome' /*'counter', 'datalayer_track'*/], function (chaordic) {
 	var self = this,
 		$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
@@ -43,9 +47,9 @@ Nitro.controller('home', ['chaordic', 'slider-banner', 'lead-newsletter', /* 'ta
 	};
 
 	//inicia automaticamente prateleiras sliders no desktop
-	if ($(window).width() > 768) {
-		self.setupSlider($slider);
-	}
+	// if ($(window).width() > 768) {
+	self.setupSlider($slider);
+	// }
 
 	//mobile - abrir vitrines
 	if ($(window).width() <= 768) {

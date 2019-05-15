@@ -4,16 +4,16 @@
 
 	//$slick-font-path: './fonts/' !default;
 	//$slick-font-family: 'slick' !default;
-	$slick-arrow-color: white !default;
+	$slick-arrow-color: #fff !default;
 	$slick-dot-character: '•' !default;
-	$slick-dot-color-active: white !default;
-	$slick-dot-color: white !default;
+	$slick-dot-color-active: #fff !default;
+	$slick-dot-color: #fff !default;
 	$slick-dot-size: 45px !default;
 	$slick-loader-path: './' !default;
 	$slick-next-character: '\e603' !default;
 	$slick-next-down-character: '\e601' !default;
-	$slick-opacity-default: 0.75 !default;
-	$slick-opacity-not-active: 0.25 !default;
+	$slick-opacity-default: .75 !default;
+	$slick-opacity-not-active: .25 !default;
 	$slick-opacity-on-hover: 1 !default;
 	$slick-prev-character: '\e602' !default;
 	$slick-prev-up-character: '\e604' !default;
@@ -51,13 +51,12 @@
 		user-select: none;
 		z-index: 0;
 
-		@include breakpoint(small, 'max') {
-			padding: 0 50px;
+		.home & {
+			@include breakpoint('small', 'max') { padding: 0; }
 		}
 
-		@include breakpoint(extra-small, 'max') {
-			padding: 0;
-		}
+		@include breakpoint('small', 'max') { padding: 0 50px; }
+		@include breakpoint('extra-small', 'max') { padding: 0; }
 
 		* {
 			outline: none !important
@@ -105,12 +104,26 @@
 		.slick-loading & {
 			visibility: hidden;
 		}
+
+		.prod-galeria & {
+			display: block;
+			left: 0;
+			position: relative;
+			top: 0;
+		}
 	}
 
 	.slick-slide {
 		float: none;
 		height: auto;
 		margin: 0 0 10px;
+
+		.prod-galeria & {
+			display: none;
+			float: left;
+			height: 100%;
+			min-height: 1px;
+		}
 
 		// *{outline:none!important}
 
@@ -175,7 +188,7 @@
 		color: #9ACA3C;
 		cursor: pointer;
 		display: block;
-		font-size: 0px;
+		font-size: 0;
 		height: 50px;
 		outline: none;
 		padding: 0;
@@ -255,12 +268,12 @@
 			button {
 				@include square(7px);
 				background: $gray;
-				border-radius: 50%;
 				border: none;
+				border-radius: 50%;
 				color: transparent;
 				cursor: pointer;
 				display: block;
-				font-size: 0px;
+				font-size: 0;
 				line-height: 0;
 				margin: 7px 0 0 7px;
 				padding: 0;
@@ -292,7 +305,7 @@
 					left: 4px;
 					top: 4px;
 					transform: scale(0);
-					transition: transform 0.2s ease;
+					transition: transform .2s ease;
 					width: 13px;
 				}
 
@@ -324,8 +337,8 @@
 				}
 
 				&__info {
-					margin: 0;
 					height: auto;
+					margin: 0;
 				}
 
 				&__name {

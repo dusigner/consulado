@@ -1,58 +1,67 @@
-const valueFormatting = text => {
-	const value = text.replace('R$ ', '').replace('.', '').replace(',', '.') ;
+// Transforma o texto do front em números para o cálculo do desconto.
+const valueFormat = text => {
+	let value = text.replace('R$ ', '').replace('.', '').replace(',', '.');
+
 	return value;
 };
 
-const calculateDiscount = (listPrice, bestPrice) => {
-	let discount = Number(listPrice - bestPrice).toFixed(2);
-	return discount.replace('.', ',');
+// Calcula a diferença entre o preço anterior do produto e o preço atual.
+const discountCalculate = (listPrice, bestPrice) => Number(listPrice - bestPrice).toFixed(2);
+
+// Troca o ponto por vírgula para exibição no front.
+const discountFormat = discount => discount.replace('.', ',');
+
+// Verifica se o desconto está dentro do range estabelecido pelas regras de negócio.
+const discountValidate = (discount, productPrice) => {
+	const prodDiscount = Number(discount);
+	const prodPrice    = Number(productPrice);
+	const minPrice     = 50.00;
+	const maxPrice     = 950.00;
+
+	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice && prodDiscount < prodPrice);
 };
 
 // Promo destaque - Dia das mães
 const promoDestaque = produto => {
-	const promoProd = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
+	const hasPromo  = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
+	const $prodInfo = produto.find('.prod-info, .shelf-item__info');
+	const precoDe   = valueFormat(produto.find('.de .val').text());
+	const precoPor  = valueFormat(produto.find('.por .val').text());
+	const desconto  = discountCalculate(precoDe, precoPor);
 
-	promoProd.each(() => {
-		const $prodInfo = produto.find('.prod-info');
-		const precoDe = valueFormatting(produto.find('.de .val').text());
-		const precoPor = valueFormatting(produto.find('.por .val').text());
-
-		promoProd.parents('.detalhes').addClass('promo-destaque--is-active');
-
-		if (precoDe) {
-
-			const $promoDestaque = `
-				<div class="promo-destaque">
-					<div class="promo-destaque__text">
-						Promoção<br />
-						DIA DAS MÃES
-					</div>
-					<div class="promo-destaque__price">
-						R$-${calculateDiscount(precoDe, precoPor)}
-					</div>
-				</div>
-			`;
-
-			$prodInfo.prepend($promoDestaque);
-		}
-	});
-};
-
-const prodPromoDestaque = () => {
-	const hasPromoDestaque = $('.prod-selos .flag[class*="_promo-destaque_"]');
-	const $prodPreco = $('.prod-preco');
-	const precoDe = valueFormatting($prodPreco.find('.skuListPrice').text());
-	const precoPor = valueFormatting($prodPreco.find('.skuBestPrice').text());
-
-	if (hasPromoDestaque) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
 		const $promoDestaque = `
-			<div class="promo-destaque promo-produto">
+			<div class="promo-destaque">
 				<div class="promo-destaque__text">
-					Promoção<br />
+					Saldão<br />
 					DIA DAS MÃES
 				</div>
 				<div class="promo-destaque__price">
-					Produto com <span>R$${calculateDiscount(precoDe, precoPor)} de desconto</span>
+					R$-${discountFormat(desconto)}
+				</div>
+			</div>
+		`;
+
+		$prodInfo.prepend($promoDestaque);
+	}
+};
+
+const prodPromoDestaque = () => {
+	const hasPromo   = $('.prod-selos .flag[class*="_promo-destaque_"]');
+	const $prodPreco = $('.prod-preco');
+	const precoDe    = valueFormat($prodPreco.find('.skuListPrice').text());
+	const precoPor   = valueFormat($prodPreco.find('.skuBestPrice').text());
+	const desconto   = discountCalculate(precoDe, precoPor);
+
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
+		const $promoDestaque = `
+			<div class="promo-destaque promo-produto">
+				<div class="promo-destaque__text">
+					Saldão<br />
+					DIA DAS MÃES
+				</div>
+				<div class="promo-destaque__price">
+					Produto com <span>R$${discountFormat(desconto)} de desconto</span>
 				</div>
 			</div>
 		`;
@@ -64,12 +73,5 @@ const prodPromoDestaque = () => {
 if ($('body').hasClass('produto')) {
 	prodPromoDestaque();
 }
-
-
-
-
-
-
-
 
 export default promoDestaque;

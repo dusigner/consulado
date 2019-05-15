@@ -1,0 +1,135 @@
+@charset 'UTF-8';
+
+.shelf-category-home {
+	@include breakpoint('small', 'max') {
+		margin-bottom: 1em;
+		margin-left: -5px;
+		padding: 0;
+		width: 130%;
+	}
+
+	// Ajustes no slick que quebra a layout
+	&,
+	.slick-track {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.slick-track { padding: 1.5em 0; }
+	.slick-list { width: 100%; }
+	.slick-prev { left: -2%; }
+	.slick-next { right: -2%; }
+
+	.slick-dots {
+		@include breakpoint('small', 'max') {
+			bottom: 0;
+			left: 2px;
+			text-align: left;
+		}
+
+		li {
+			margin: 0;
+
+			button {
+				height: 8px;
+				width: 8px;
+
+				&:after { display: none!important; }
+			}
+
+			&.slick-active {
+				button { background-color: #9aca3c; }
+			}
+		}
+	}
+
+	a,
+	span { display: block; }
+
+	&-card {
+		border: 1px solid #f1f0f0;
+		border-radius: 4px;
+		display: block;
+		line-height: normal;
+		margin: 7px;
+		position: relative;
+		transition: border-color .3s ease;
+		width: 175px;
+
+		// Coifa
+		&.shelf-coifa { overflow: hidden; }
+
+		&__image-container {
+			bottom: 44px;
+			height: 120px;
+			overflow: hidden;
+			padding: 5px 15px;
+			position: absolute;
+			width: 100%;
+		}
+
+		&__image {
+			background-color: #fff;
+			border-radius: 4px 4px 0 0;
+			height: 85px;
+			transition: background-color .3s ease;
+
+			img {
+				display: block;
+				margin: 0;
+				transition: transform .4s ease;
+			}
+
+			img[alt='Cervejeiras'] { transform: translate(0, 28px); }
+			img[alt='Geladeiras'] { transform: translate(0, 52px); }
+			img[alt='Cooktops'] { transform: translate(-90px, 20px); }
+			img[alt='Coifas'] { transform: translate(-45px, -15px); }
+			img[alt='Fornos'] { transform: translate(0, 38px); }
+			img[alt='Lavadoras'] { transform: translate(0, 55px); }
+		}
+
+		&__text {
+			background-color: #fff;
+			border-radius: 0 0 4px 4px;
+			border-top: 1px solid #f1f0f0;
+			color: #736c6b;
+			font-size: 14px;
+			font-weight: bold;
+			padding: 5px 15px;
+			position: relative;
+			z-index: 2;
+		}
+
+		&__title {
+			color: #9aca3c;
+			font-size: 14px;
+			margin: 0;
+		}
+
+		// Hover and Active state
+		// - Usando o mixin pra ter um único lugar para alterar, porque o comportamento
+		// - é diferente no desktop e no mobile)
+		@mixin activeState {
+			border-color: #9aca3c;
+			box-shadow: 0 2px 7px rgba(0, 0, 0, .226);
+			overflow: inherit;
+
+			.shelf-category-home-card__image {
+				background-color: #9aca3c;
+
+				img[alt='Cervejeiras'] { transform: translate(15px, -20px); }
+				img[alt='Geladeiras'] { transform: translate(20px, 5px); }
+				img[alt='Cooktops'] { transform: translate(-60px, -25px); }
+				img[alt='Coifas'] { transform: translate(-20px, -21px); }
+				img[alt='Fornos'] { transform: translate(10px, -9px); }
+				img[alt='Lavadoras'] { transform: translate(20px, 7px); }
+			}
+		}
+
+		&:hover { @include activeState; }
+		&.slick-current {
+			@include breakpoint('small', 'max') { @include activeState; }
+		}
+	}
+}
