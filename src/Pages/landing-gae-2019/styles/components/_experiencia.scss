@@ -142,9 +142,9 @@
 }
 
 .experiencia__divulgacao {
-    @include laptop {
-        padding: 0 100px;
-    }
+    // @include laptop {
+    //     padding: 0 100px;
+    // }
     align-items: center;
     display: flex;
     flex-wrap: wrap;
