@@ -187,6 +187,10 @@ body.landing-gae-2019 {
 
 				div {
 					@include laptop { margin-right: 30px; }
+					@include max-phone {
+						margin-left: auto;
+						margin-right: auto!important;
+					}
 					max-width: 360px;
 					padding: 10px;
 

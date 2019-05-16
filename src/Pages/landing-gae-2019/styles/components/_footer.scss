@@ -81,6 +81,11 @@ body.landing-gae-2019 {
 	}
 
 	.footer__pagamentos-image {
+		@include max-phone {
+			display: block;
+			margin-top: 10px;
+			max-width: 100%;
+		}
 		max-width: 440px;
 		vertical-align: middle;
 	}
