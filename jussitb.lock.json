@@ -999,40 +999,40 @@
     },
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
-            "content": "61762076502eb71cca5aab71d37adca6",
-            "lastUpdate": "2019-05-15T22:37:25.564Z"
+            "content": "c20f215d59c773231b119956f10e45fc",
+            "lastUpdate": "2019-05-16T13:57:06.602Z"
         },
         "files/checkout-confirmation-custom.min.js": {
-            "content": "61762076502eb71cca5aab71d37adca6",
-            "lastUpdate": "2019-05-15T22:37:25.567Z"
+            "content": "c20f215d59c773231b119956f10e45fc",
+            "lastUpdate": "2019-05-16T13:57:06.604Z"
         },
         "files/checkout5-custom.css": {
             "content": "90679f32c3513a8a8ecfed6f1bf0ac60",
             "lastUpdate": "2019-05-15T15:56:15.573Z"
         },
         "files/checkout5-custom.js": {
-            "content": "f1e14f0eb98d09600f5875c69d551fa3",
-            "lastUpdate": "2019-05-15T22:37:25.569Z"
+            "content": "4da09b255870d7188d6929e624e070c8",
+            "lastUpdate": "2019-05-16T13:57:06.608Z"
         },
         "files/checkout5-custom.min.js": {
-            "content": "f1e14f0eb98d09600f5875c69d551fa3",
-            "lastUpdate": "2019-05-15T22:37:25.572Z"
+            "content": "4da09b255870d7188d6929e624e070c8",
+            "lastUpdate": "2019-05-16T13:57:06.611Z"
         },
         "files/consul-dia-das-maes.css": {
             "content": "e389d7af55fb25954860da630d62093c",
             "lastUpdate": "2019-05-15T22:37:25.585Z"
         },
         "files/consul-dia-das-maes.min.js": {
-            "content": "359081da1289de5160ce3f6769a94da2",
-            "lastUpdate": "2019-05-15T22:37:25.588Z"
+            "content": "584bcda9c7b7babb55b53614bd54f093",
+            "lastUpdate": "2019-05-16T13:57:06.620Z"
         },
         "files/consul2-account.css": {
             "content": "a478bbea9acfa4f26a64628de1393ec5",
             "lastUpdate": "2019-05-03T19:15:14.192Z"
         },
         "files/consul2-app.min.js": {
-            "content": "29ec8be15ca2474f22a3238198f20bf6",
-            "lastUpdate": "2019-05-15T22:37:25.614Z"
+            "content": "b46b4b7b46e8960e936ca80f0df93c8c",
+            "lastUpdate": "2019-05-16T13:57:06.651Z"
         },
         "files/consul2-bf-2018.css": {
             "content": "d6cf553878690ca4bb9e2916b1dd782a",
@@ -1047,16 +1047,16 @@
             "lastUpdate": "2019-05-03T13:44:42.841Z"
         },
         "files/consul2-cta.min.js": {
-            "content": "1ab09d4c861bc6d023e76b912c75d518",
-            "lastUpdate": "2019-05-15T22:37:25.627Z"
+            "content": "f5df82769fa5fcc8e755d0bf20874d5b",
+            "lastUpdate": "2019-05-16T13:57:06.660Z"
         },
         "files/consul2-home.css": {
             "content": "c6c1f248a92bbd0d4c3bb8edf26a2d59",
             "lastUpdate": "2019-05-15T15:56:15.591Z"
         },
         "files/consul2-home.min.js": {
-            "content": "17c6791ab37519cfa4f9d4a5f5598e0a",
-            "lastUpdate": "2019-05-15T22:37:25.632Z"
+            "content": "38ff117125a299a34284269d9069442b",
+            "lastUpdate": "2019-05-16T13:57:06.664Z"
         },
         "files/consul2-institucional.css": {
             "content": "456389876f7241f974a2889726d7960f",
@@ -1067,8 +1067,8 @@
             "lastUpdate": "2019-05-15T15:56:15.600Z"
         },
         "files/consul2-listagem.min.js": {
-            "content": "ea52bf233e4febc3b75eccb5ba9fed6f",
-            "lastUpdate": "2019-05-15T22:37:25.638Z"
+            "content": "b2bf6e73307b9f91a9f6a67d9d0ef28b",
+            "lastUpdate": "2019-05-16T13:57:06.670Z"
         },
         "files/consul2-login.css": {
             "content": "cdf8b74291f7dd5a9457e9a7a3d6d636",
@@ -1079,16 +1079,16 @@
             "lastUpdate": "2019-05-09T17:01:37.448Z"
         },
         "files/consul2-myorders.min.js": {
-            "content": "45b36bf29b9c7f04f4d9605fa4214da2",
-            "lastUpdate": "2019-05-15T22:37:25.642Z"
+            "content": "13599daa3ae2fcc3f034da7e987e4319",
+            "lastUpdate": "2019-05-16T13:57:06.674Z"
         },
         "files/consul2-produto.css": {
             "content": "c4d02a0037f4631739a2c3d6fd7ef31c",
             "lastUpdate": "2019-05-15T15:56:15.610Z"
         },
         "files/consul2-produto.min.js": {
-            "content": "37ce65cae6e7b84d4f848c0bb91b1039",
-            "lastUpdate": "2019-05-15T22:37:25.650Z"
+            "content": "1a0dc36e78779750655f6e08bf3b4501",
+            "lastUpdate": "2019-05-16T13:57:06.681Z"
         },
         "files/consul2-style.css": {
             "content": "3c9ee31e66970acc216e25c91ae3e8de",
@@ -1307,132 +1307,132 @@
             "lastUpdate": "2019-05-03T19:15:14.201Z"
         },
         "files/custom-datalayer.min.js": {
-            "content": "a637f73813e56c375cd7c9acf8542892",
-            "lastUpdate": "2019-05-15T22:37:25.659Z"
+            "content": "16ed3698a9bd1fc8379203e95389b382",
+            "lastUpdate": "2019-05-16T13:57:06.689Z"
         },
         "files/calculadora-btu.min.js": {
-            "content": "b2afd0539da5b1449bbf936fd7c72315",
-            "lastUpdate": "2019-05-15T22:37:25.562Z"
+            "content": "1e7a80a8b73b0ff31c210405f54ff361",
+            "lastUpdate": "2019-05-16T13:57:06.599Z"
         },
         "files/cns-coupon.css": {
             "content": "010624e44403d20715b998dd7b6b6c13",
             "lastUpdate": "2019-05-15T22:37:25.574Z"
         },
         "files/cns-coupon.min.js": {
-            "content": "b51e6da8e603ae7e84fa08ba1d6d6f9e",
-            "lastUpdate": "2019-05-15T22:37:25.576Z"
+            "content": "006bc53962f593703ea2211be869cfe2",
+            "lastUpdate": "2019-05-16T13:57:06.614Z"
         },
         "files/cns-performance-page-blackfriday-2018.min.js": {
-            "content": "8c4b0e9755604ac227933a03e8744154",
-            "lastUpdate": "2019-05-15T22:37:25.582Z"
+            "content": "d64fcc6d81ee0a0fcc530ed1f6fe7d5a",
+            "lastUpdate": "2019-05-16T13:57:06.617Z"
         },
         "files/consul-landing-blackfriday-2018.css": {
             "content": "0c9b1889774dfe264956c5e4c5c67de9",
             "lastUpdate": "2019-05-07T17:19:34.925Z"
         },
         "files/consul-landing-blackfriday-2018.min.js": {
-            "content": "3365630750a1921725ac0a64b5a09aee",
-            "lastUpdate": "2019-05-15T22:37:25.592Z"
+            "content": "a9aa16d5f544d4e40eff5c85489f0d59",
+            "lastUpdate": "2019-05-16T13:57:06.624Z"
         },
         "files/consul-landing-combos.css": {
             "content": "445e82f09a941138e5372306b68f077f",
             "lastUpdate": "2019-05-07T17:19:34.930Z"
         },
         "files/consul-landing-combos.min.js": {
-            "content": "112d76d3fae19f926239c91f92e5bf4d",
-            "lastUpdate": "2019-05-15T22:37:25.595Z"
+            "content": "d762713591c1e01fb22299b015a2c92e",
+            "lastUpdate": "2019-05-16T13:57:06.628Z"
         },
         "files/consul-landing-concurso.css": {
             "content": "65813ae3b9a3972e66aba10bc1cdc3ff",
             "lastUpdate": "2019-05-07T17:19:34.938Z"
         },
         "files/consul-landing-concurso.min.js": {
-            "content": "e2b48c3997a45746fb77e30afb3bc5ba",
-            "lastUpdate": "2019-05-15T22:37:25.598Z"
+            "content": "4aba722a39241ee62bc99311d94d9553",
+            "lastUpdate": "2019-05-16T13:57:06.632Z"
         },
         "files/consul-landing-gae-2017.css": {
             "content": "c908384e657b0b0110240b8c6b071765",
             "lastUpdate": "2019-05-07T17:19:34.943Z"
         },
         "files/consul-landing-gae-2017.min.js": {
-            "content": "036fb30042353f646790f3466cc3fa2e",
-            "lastUpdate": "2019-05-15T22:37:25.602Z"
+            "content": "d986d102337f9edfcc2d9118dcd20a53",
+            "lastUpdate": "2019-05-16T13:57:06.639Z"
         },
         "files/consul-landing-wonderland.css": {
             "content": "f758c15ffb77cdc51710f7d1f9cd7c2a",
             "lastUpdate": "2019-05-07T17:19:34.947Z"
         },
         "files/consul-landing-wonderland.min.js": {
-            "content": "ea19baea54bc831f3a049c6b45d1ce51",
-            "lastUpdate": "2019-05-15T22:37:25.606Z"
+            "content": "828778f1f7d663f8fe7fa11cb463cff3",
+            "lastUpdate": "2019-05-16T13:57:06.644Z"
         },
         "files/consul-rastreio.min.js": {
-            "content": "da3a6cc70d936196679212fbc7dfd3ed",
-            "lastUpdate": "2019-05-15T22:37:25.609Z"
+            "content": "345f22365a01303543ce91fee1f0f709",
+            "lastUpdate": "2019-05-16T13:57:06.648Z"
         },
         "files/consul2-comparador.css": {
             "content": "9e9a20a69bd34945b9a2a75ae667ad88",
             "lastUpdate": "2019-05-15T22:37:25.618Z"
         },
         "files/consul2-comparador.min.js": {
-            "content": "722a7f566950b0fb57c40a489592f91c",
-            "lastUpdate": "2019-05-15T22:37:25.621Z"
+            "content": "2faf7c9230fa65af58a67bb6d3b5fa2a",
+            "lastUpdate": "2019-05-16T13:57:06.655Z"
         },
         "files/consul2-landing-gae-compra-interno.css": {
             "content": "1380bece80f4786f7b5351bebc75c516",
             "lastUpdate": "2019-05-07T17:19:34.972Z"
         },
         "files/consul2-pre-home.min.js": {
-            "content": "8ab4b68b7f77c40c06e80d77e0885e27",
-            "lastUpdate": "2019-05-15T22:37:25.645Z"
+            "content": "68a7afcb2fca642b59f26ebd957a164a",
+            "lastUpdate": "2019-05-16T13:57:06.678Z"
         },
         "files/cozinha-ambientada.css": {
             "content": "7b2d38f24d16a932d296d1978fcc5d9f",
             "lastUpdate": "2019-05-15T22:37:25.655Z"
         },
         "files/cozinha-ambientada.min.js": {
-            "content": "15f0c67e88d6fe968d1e9ecbe868cfbd",
-            "lastUpdate": "2019-05-15T22:37:25.657Z"
+            "content": "b888e1ddafcd0ad90ee88b6bd48bdbac",
+            "lastUpdate": "2019-05-16T13:57:06.685Z"
         },
         "files/landing-birthday-2018-2.css": {
             "content": "869e35e4ab629203ba77f773212caef8",
             "lastUpdate": "2019-05-07T17:19:35.011Z"
         },
         "files/landing-birthday-2018-2.min.js": {
-            "content": "4dc948d4ae271050f6aee2810763b109",
-            "lastUpdate": "2019-05-15T22:37:25.662Z"
+            "content": "4c0b015884e20304443296b489ee716f",
+            "lastUpdate": "2019-05-16T13:57:06.696Z"
         },
         "files/landing-birthday-2018.css": {
             "content": "d3c3cff0e6a493e4d5177f6c2d3be77a",
             "lastUpdate": "2019-05-07T17:19:35.015Z"
         },
         "files/landing-birthday-2018.min.js": {
-            "content": "f4dd53c066ca1692ab2192fd05c65c96",
-            "lastUpdate": "2019-05-15T22:37:25.664Z"
+            "content": "05125cb4a9676dd5d6b6cd84042b3599",
+            "lastUpdate": "2019-05-16T13:57:06.702Z"
         },
         "files/landing-gae-2019.css": {
             "content": "a114c84d6ae071dbdf984298e67cc19c",
             "lastUpdate": "2019-05-07T17:19:35.022Z"
         },
         "files/landing-gae-2019.min.js": {
-            "content": "225aeed06a28ac9f2efde0eb87c61fdd",
-            "lastUpdate": "2019-05-15T22:37:25.668Z"
+            "content": "7247c6a9f243f203a625172be9ab3773",
+            "lastUpdate": "2019-05-16T13:57:06.705Z"
         },
         "files/landing-gae-compra-interno.min.js": {
-            "content": "0ddc54aebd5b0b97406460c23e3419e4",
-            "lastUpdate": "2019-05-15T22:37:25.671Z"
+            "content": "dafad4843572115ef80dd7068e04208b",
+            "lastUpdate": "2019-05-16T13:57:06.707Z"
         },
         "files/simulador-lavadora.min.js": {
-            "content": "76229281bcde5add326219167e88ab53",
-            "lastUpdate": "2019-05-15T22:37:25.674Z"
+            "content": "37722939c22ef822f5a5a73a158b15a5",
+            "lastUpdate": "2019-05-16T13:57:06.710Z"
         },
         "files/smart-beer-custom.min.js": {
-            "content": "6a195ebcc01e09b1299b6b924c1aca5a",
-            "lastUpdate": "2019-05-15T22:37:25.677Z"
+            "content": "30ac251fd796788a1710e2ed4b47ea29",
+            "lastUpdate": "2019-05-16T13:57:06.713Z"
         },
         "files/smart-beer.min.js": {
-            "content": "d7d60c23dae40caeb22e3d780f23927d",
-            "lastUpdate": "2019-05-15T22:37:25.680Z"
+            "content": "82cffff3f3e163bbd39abf1d3b20d624",
+            "lastUpdate": "2019-05-16T13:57:06.715Z"
         },
         "0-consul-compare": {
             "content": "fd5496a98797c84cb5aeadfe5ee9d479",
