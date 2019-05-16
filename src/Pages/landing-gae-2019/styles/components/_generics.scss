@@ -9,16 +9,13 @@
 	margin: 0;
 }
 
-body:not(.produto) {
-	padding: 0;
-}
-
+body:not(.produto) { padding: 0; }
 body:not(.produto) header {
 	padding: 0;
 	position: relative;
 }
 
-body.landing-gae {
+body.landing-gae-2019 {
 	header { background-color: initial; }
 
 	.wrap {

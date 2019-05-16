@@ -1,20 +1,14 @@
 //--------------
 // Destaque
 //--------------
+body.landing-gae-2019 {
+	.destaque {
+		& { padding: 20px; }
 
-.destaque {
-    
-    & {
-        padding: 20px;
-    }
+		.wrap { text-align: center; }
 
-    .wrap {
-        text-align: center;
-    }
-
-    img {
-        @include laptop {
-            width: auto;
-        }
-    }
+		img {
+			@include laptop { width: auto; }
+		}
+	}
 }
