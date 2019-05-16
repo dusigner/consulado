@@ -1,24 +1,24 @@
 //---------
 // Footer
 //---------
-body.landing-gae {
+body.landing-gae-2019 {
 	.footer {
 		background-color: transparent;
-		box-shadow: 1px -3px 6px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.2);
+		box-shadow: 1px -3px 6px rgba(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .2);
 	}
 
 	.footer__logo {
 		& {
+			align-items: center;
 			display: flex;
 			flex-wrap: wrap;
-			align-items: center;
 		}
 	}
 
 	.footer__group  {
 		background-color: $gray;
-		text-align: left;
 		padding: 20px;
+		text-align: left;
 
 		a {
 			color: $white;
@@ -26,49 +26,44 @@ body.landing-gae {
 		}
 
 		&.-light {
+			@include desktop { padding: 5px 310px; }
+			align-items: center;
+			background-color: $gray-light;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-around;
-			align-items: center;
-			background-color: $gray-light;
 			padding: 20px;
-			@include desktop {
-				padding: 5px 310px;
-			}
 		}
 
 		&.-dark {
-			display: block;
 			background-color: $gray-dark;
+			display: block;
 		}
 	}
 
 	.footer__caption {
-		margin-bottom: 5px;
+		color: #fff;
 		line-height: 1;
-		color: white;
+		margin-bottom: 5px;
 	}
 
 	.footer__list {
+		@include laptop { justify-content: left; }
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-
-		@include laptop {
-			justify-content: left;
-		}
 	}
 
 
 	.footer__item {
+		border-right: 2px solid $brand;
 		line-height: 1;
 		margin-right: 10px;
 		padding-right: 10px;
-		border-right: 2px solid $brand;
 
 		&:last-child {
-			padding: 0;
 			border: none;
+			padding: 0;
 		}
 
 		a {
@@ -79,10 +74,10 @@ body.landing-gae {
 	}
 
 	.footer_image {
-		max-width: 100px;
-		width: 100%;
 		display: inline-block;
+		max-width: 100px;
 		vertical-align: middle;
+		width: 100%;
 	}
 
 	.footer__pagamentos-image {

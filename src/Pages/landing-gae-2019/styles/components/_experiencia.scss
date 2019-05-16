@@ -1,206 +1,175 @@
 //-------------
 // Experiẽncia
 //-------------
+body.landing-gae-2019 {
+	.experiencia {
+		& {
+			@include laptop { padding: 0; }
+			margin: 20px 0;
+			padding: 20px;
+		}
 
-.experiencia {
+		.help-block {
+			color: #fd7878;
+			left: 5px;
+			position: absolute;
+			top: -22px;
+		}
 
-    & {
-        @include laptop {
-            padding: 0;
-        }
-        margin: 20px 0;
-        padding: 20px;
+		.group {
+			@include laptop { flex-wrap: nowrap; }
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+
+			& > div {
+				flex-grow: 1;
+				margin: 0 20px;
+				min-width: calc(50% - 40px);
+			}
+		}
+
+		.wrap { padding: 20px; }
+	}
+
+	.experiencia form {
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.experiencia h2 {
+		color: $brand;
+		font-weight: bolder;
+		margin: 20px 0;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.experiencia .btn {
+		@include button;
+		margin-left: auto;
+	}
+
+	.experiencia textarea {
+		@include laptop {
+			margin-bottom: 0;
+			margin-right: 30px;
+			width: 100%;
+		}
+		border: 0;
+		box-sizing: border-box;
+		height: 135px;
+		margin-bottom: 20px;
+		padding: .5em 1em;
+		vertical-align: middle;
+		width: 100%;
 
 	}
 
-	.help-block {
-        color: #fd7878;
-		left: 5px;
-        position: absolute;
-		top: -22px;
-    }
+	.experiencia__dados input {
+		@include laptop { width: 100%; }
 
-	.group {
-		@include laptop {
-			flex-wrap: nowrap;
+		&:first-of-type { margin-right: 30px; }
+	}
+
+	.experiencia__avaliacao {
+		@include laptop { padding: 20px; }
+		border: 1px solid $gray-footer;
+		color: $white;
+		display: inline-block;
+		padding: 25px 13px;
+		vertical-align: middle;
+
+		p {
+			@include laptop {
+				line-height: normal;
+				text-align: left;
+			}
+			color: $gray-footer;
+			line-height: 1.4em;
+			padding-bottom: 10px;
+			text-align: center;
 		}
+
+		label {
+			color: $gray-footer;
+			font-size: 14px;
+
+			span { border-color: $gray-footer; }
+		}
+	}
+
+	.experiencia__avalie {
+		@include laptop { justify-content: unset; }
 		display: flex;
 		flex-wrap: wrap;
-		//margin: 0 -10px;
-		width: 100%;
-		& > div {
-			flex-grow: 1;
-			margin: 0 20px;
-			min-width: calc(50% - 40px);
+		justify-content: center;
+
+		.help-block {
+			@include laptop {
+				bottom: -15px;
+				text-align: left;
+			}
+			bottom: -30px;
+			left: 0;
+			text-align: center;
+			top: inherit;
+			width: 200px;
 		}
 	}
 
-    .wrap {
-        // background-color: $gray-light;
-        padding: 20px;
-    }
-}
+	.experiencia__divulgacao {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: left;
+		margin-top: 20px !important;
+		padding: 0;
 
-.experiencia form {
-    margin: 0 auto;
-    text-align: center;
-}
+		p { margin: 0 10px; }
 
-.experiencia h2 {
-    color: $brand;
-    font-weight: bolder;
-    margin: 20px 0;
-    text-align: center;
-    text-transform: uppercase;
-}
+		span { border: 1px solid $brand!important; }
+	}
 
-.experiencia .btn {
-    @include button;
-    margin-left: auto;
-}
+	.experiencia__avalie label,
+	.experiencia__divulgacao label {
+		line-height: .9;
+		padding: 1px 7px 0 20px;
+		position: relative;
+	}
 
-.experiencia textarea {
-    @include laptop {
-        margin-bottom: 0;
-        margin-right: 30px;
-        width: 100%;
-    }
-    border: 0;
-    box-sizing: border-box;
-    height: 135px;
-    margin-bottom: 20px;
-    padding: .5em 1em;
-    vertical-align: middle;
-    width: 100%;
+	.experiencia__avalie label input[type=radio],
+	.experiencia__divulgacao label input[type=radio] {
+		display: none;
+	}
 
-}
-
-.experiencia__dados input {
-
-    @include laptop {
-        width: 100%;
-    }
-
-    &:first-of-type {
-        margin-right: 30px;
-    }
-}
-
-.experiencia__avaliacao {
-    @include laptop {
-        padding: 20px;
-    }
-    border: 1px solid $gray-footer;
-    color: $white;
-    display: inline-block;
-    padding: 25px 13px;
-    vertical-align: middle;
-
-
-    p {
-        @include laptop {
-            line-height: normal;
-            text-align: left;
-        }
-        color: $gray-footer;
-        line-height: 1.4em;
-        padding-bottom: 10px;
-        text-align: center;
-
-    }
-
-    label {
-		color: $gray-footer;
-		font-size: 14px;
-
-        span {
-            border-color: $gray-footer;
-        }
-    }
-
-}
-
-.experiencia__avalie {
-    @include laptop {
-        justify-content: unset;
-    }
-	display: flex;
-    flex-wrap: wrap;
-	justify-content: center;
-
-	.help-block {
-		@include laptop {
-			bottom: -15px;
-			text-align: left;
-		}
-		bottom: -30px;
+	.experiencia__avalie label input[type=radio] + span,
+	.experiencia__divulgacao label input[type=radio] + span {
+		background-color: transparent;
+		border: 1px solid $gray-footer;
+		border-radius: 100%;
+		bottom: 0;
+		display: block;
+		height: 14px;
 		left: 0;
-		text-align: center;
-		top: inherit;
-		width: 200px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 14px;
 	}
-}
 
-.experiencia__divulgacao {
-    // @include laptop {
-    //     padding: 0 100px;
-    // }
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    margin-top: 20px !important;
-	padding: 0;
-
-
-
-    p {
-        margin: 0 10px;
-    }
-
-    span {
-        border: 1px solid $brand!important;
-    }
-}
-
-.experiencia__avalie label,
-.experiencia__divulgacao label {
-    line-height: .9;
-    padding: 1px 7px 0 20px;
-    position: relative;
-}
-
-.experiencia__avalie label input[type=radio],
-.experiencia__divulgacao label input[type=radio] {
-    display: none;
-}
-
-.experiencia__avalie label input[type=radio] + span,
-.experiencia__divulgacao label input[type=radio] + span {
-	background-color: transparent;
-    border: 1px solid $gray-footer;
-    border-radius: 100%;
-    bottom: 0;
-    display: block;
-    height: 14px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 14px;
-}
-
-.experiencia__avalie label input[type=radio]:checked + span:before,
-.experiencia__divulgacao label input[type=radio]:checked + span:before {
-    background-color: $brand;
-    border: 1px solid $brand;
-    border-radius: 100%;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 6px;
-    position: absolute;
-    right: 0;
-    transform: translate(-50%, -50%);
-    width: 6px;
+	.experiencia__avalie label input[type=radio]:checked + span:before,
+	.experiencia__divulgacao label input[type=radio]:checked + span:before {
+		background-color: $brand;
+		border: 1px solid $brand;
+		border-radius: 100%;
+		bottom: 0;
+		content: '';
+		display: block;
+		height: 6px;
+		position: absolute;
+		right: 0;
+		transform: translate(-50%, -50%);
+		width: 6px;
+	}
 }
