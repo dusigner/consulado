@@ -24,6 +24,7 @@ module.exports = function (gulp, $, _) {
 
 		if ($.util.env.production) {
 			_.preprocessContext.context.DEBUG = false;
+			_.preprocessContext.context.package.version = `v${_.pkg.version}`;
 			templates();
 			sub();
 			shelves();
