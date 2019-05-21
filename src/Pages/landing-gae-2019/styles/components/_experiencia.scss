@@ -5,6 +5,7 @@ body.landing-gae-2019 {
 	.experiencia {
 		& {
 			@include laptop { padding: 0; }
+			@include max-phone { padding: 0; }
 			margin: 20px 0;
 			padding: 20px;
 		}
@@ -95,6 +96,7 @@ body.landing-gae-2019 {
 		}
 
 		label {
+			@include max-phone { padding: 1em .5em 1em 1.5em; }
 			color: $gray-footer;
 			font-size: 14px;
 
@@ -148,6 +150,10 @@ body.landing-gae-2019 {
 
 	.experiencia__avalie label input[type=radio] + span,
 	.experiencia__divulgacao label input[type=radio] + span {
+		@include max-phone {
+			top: 50%;
+			transform: translateY(-50%);
+		}
 		background-color: transparent;
 		border: 1px solid $gray-footer;
 		border-radius: 100%;
