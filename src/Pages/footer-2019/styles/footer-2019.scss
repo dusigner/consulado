@@ -1,0 +1,33 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// variables
+@import '../../../Styles/helpers/variables';
+$default-color-green: #9ACA3C;
+$default-color-gray: #736C6B;
+$default-color-purple: #702F8F;
+
+
+// Helpers
+@import '../../../Styles/helpers/mixins';
+@import '../../../Styles/helpers/rfs';
+
+// Components
+@import './components/cns-button';
+@import './components/footer-services';
+
+

@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+.cns-button {
+	@include rfs(14);
+	background: transparent;
+	border: 1px solid;
+	border-radius: 100px;
+	display: block;
+	font-weight: 500;
+	margin: 1em 0;
+	padding: .65em;
+	text-align: center;
+	width: 100%;
+
+	&.--purple {
+		border-color: $default-color-purple;
+		color: $default-color-purple;
+	}
+}

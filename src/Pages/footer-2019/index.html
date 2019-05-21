@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/footer-2019.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="landing-gae">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-top-header" />
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
+
+	<main>
+		<div class="container">
+			<h1> Content Landing </h1>
+		</div>
+	</main>
+
+	<div class="container">
+		<div class="footer-services">
+			<div class="footer-services__item">
+				<i class="footer-services__icon"></i>
+				<h4 class="footer-services__title">Ajuda online</h4>
+				<p class="footer-services__text">Entre contato com um de nossos atendentes e agilize o seu dia.</p>
+				<button class="footer-services__cta cns-button --purple">
+					Acessar chat
+				</button>
+			</div>
+
+			<div class="footer-services__item">
+				<i class="footer-services__icon"></i>
+				<h4 class="footer-services__title">Meus Pedidos</h4>
+				<p class="footer-services__text">Acompanhe o status do seu pedido e informações sobre a sua compra.</p>
+				<a href="#" class="footer-services__cta cns-button --purple" title="Acompanhar pedido">
+					Acompanhar pedido
+				</a>
+			</div>
+
+			<div class="footer-services__item">
+				<i class="footer-services__icon"></i>
+				<h4 class="footer-services__title">Trocas e Devoluções</h4>
+				<p class="footer-services__text">Você tem até 7 dias úteis para solicitar uma troca ou devolução.</p>
+				<a href="#" class="footer-services__cta cns-button --purple" title="Fazer solicitação">
+					Fazer solicitação
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+	<footer class="page-footer" data-module="footer"></footer>
+
+	<script type="text/javascript"	src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>

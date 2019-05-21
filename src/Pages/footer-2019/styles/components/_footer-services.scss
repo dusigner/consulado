@@ -1,0 +1,72 @@
+@charset 'UTF-8';
+
+// Services
+.footer-services {
+	@include breakpoint('small', 'min') { text-align: center; }
+	@include breakpoint('small', 'max') {
+		align-items: center;
+		flex-direction: column;
+	}
+	color: $default-color-gray;
+	display: flex;
+	justify-content: space-between;
+
+	// Item
+	&__item {
+		@include breakpoint('small', 'max') {
+			padding-left: 80px;
+		}
+		border: 1px solid #333;
+		display: flex;
+		flex-direction: column;
+		max-width: 300px;
+		padding: 1.2em;
+	}
+
+	// Icon
+	&__icon {
+		@include square(40px);
+		background-color: $default-color-purple;
+		display: block;
+		margin: auto;
+	}
+
+	// Title
+	&__title {
+		@include rfs(16);
+		margin: 1em 0;
+		padding: 5px 0;
+		position: relative;
+
+		// title border
+		&:after {
+			@include breakpoint('small', 'min') {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			background-color: $default-color-green;
+			bottom: 0;
+			content: ' ';
+			display: block;
+			height: 2px;
+			position: absolute;
+			width: 25px;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(14);
+		flex-grow: 3;
+		margin: 1em 0;
+	}
+
+	// Button
+	&__cta {
+		margin-top: 2em;
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
