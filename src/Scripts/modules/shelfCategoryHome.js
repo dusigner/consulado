@@ -3,26 +3,19 @@
 require('vendors/slick');
 
 Nitro.module('shelfCategoryHome', function() {
+	// Variables
+	const $shelfCategory = $('.shelf-category-home');
 
 	// Tabs
 	const shelfCategoryHome = {};
 
 	// Start all
-	shelfCategoryHome.init = function() {
-		// let categoriasHome = `
-		// 	<!-- shelf category home --> <div class="container"> <h2 class="page-title"> Talvez se <strong>interesse por</strong> </h2> <div class="shelf-category-home"> <!-- Geladeiras --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__geladeiras.png" alt="Geladeiras" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras"> Nossas <h2 class="shelf-category-home-card__title">Geladeiras</h2> </a> </div> <!-- Fogões --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/fogao" title="Fogões"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__fogao.png" alt="Fogões" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/fogao" title="Fogões"> Nossos <h2 class="shelf-category-home-card__title">Fogões</h2> </a> </div> <!-- Lavadoras --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__lavadoras.png" alt="Lavadoras" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras"> Nossas <h2 class="shelf-category-home-card__title">Lavadoras</h2> </a> </div> <!-- Cervejeiras --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/cervejeira" title="Cervejeiras"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__cervejeiras.png" alt="Cervejeiras" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/cervejeira" title="Cervejeiras"> Nossas <h2 class="shelf-category-home-card__title">Cervejeiras</h2> </a> </div> <!-- Cooktops --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/cooktop" title="Cooktops"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__cooktops.png" alt="Cooktops" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/cooktop" title="Cooktops"> Nossos <h2 class="shelf-category-home-card__title">Cooktops</h2> </a> </div> <!-- Coifas --> <div class="shelf-category-home-card shelf-coifa"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/coifa-e-depurador" title="Coifas"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__coifas.png" alt="Coifas" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/coifa-e-depurador" title="Coifas"> Nossas <h2 class="shelf-category-home-card__title">Coifas</h2> </a> </div> <!-- Fornos --> <div class="shelf-category-home-card"> <a class="shelf-category-home-card__image" href="/eletrodomesticos/forno" title="Fornos"> <span class="shelf-category-home-card__image-container"> <img src="/arquivos/shelf-category-home__fornos.png" alt="Fornos" /> </span> </a> <a class="shelf-category-home-card__text" href="/eletrodomesticos/forno" title="Fornos"> Nossos <h2 class="shelf-category-home-card__title">Fornos</h2> </a> </div> </div> </div> <!-- /shelf category home -->
-		// `;
-		// const $homeBanners = $('.banners.hide-extra-small');
-		// $homeBanners.after(categoriasHome);
-
-		// setTimeout(shelfCategoryHome.startSlick, 3000);
-
+	shelfCategoryHome.init = () => {
 		shelfCategoryHome.startSlick();
+		shelfCategoryHome.Tracking();
 	};
 
-	shelfCategoryHome.startSlick = function() {
-		const $shelfCategory = $('.shelf-category-home');
-
+	shelfCategoryHome.startSlick = () => {
 		$shelfCategory.slick({
 			adaptiveHeight: false,
 			arrows: true,
@@ -48,6 +41,49 @@ Nitro.module('shelfCategoryHome', function() {
 					slidesToShow: 1
 				}
 			}]
+		});
+	};
+
+	shelfCategoryHome.Tracking = () => {
+		const prevButton = $shelfCategory.find('.slick-prev');
+		const nextButton = $shelfCategory.find('.slick-next');
+		const cardItems = $shelfCategory.find('.shelf-category-home-card');
+
+		prevButton.click(() => {
+			dataLayer.push({
+				event: 'generic',
+				category: 'Talvez se interesse por',
+				action: 'Clique Seta  Esquerda ',
+				label: 'Ver Categorias para esquerda'
+			});
+		});
+
+		nextButton.click(() => {
+			dataLayer.push({
+				event: 'generic',
+				category: 'Talvez se interesse por',
+				action: 'Clique Seta  Direita ',
+				label: 'Ver Categorias para Direita'
+			});
+		});
+
+		cardItems.click(function(e) {
+			e.preventDefault();
+
+			const $card = $(this);
+			const cardLink = $card.find('.shelf-category-home-card__text').attr('href');
+			const cardText = $card.find('.shelf-category-home-card__text').text().replace(/\s+/gmi, ' ');
+
+			dataLayer.push({
+				event: 'generic',
+				category: `Talvez se interesse por ${cardText}`,
+				action: 'Clique na categoria',
+				label: 'Ir para categoria'
+			});
+
+			setTimeout(() => {
+				window.location.href = cardLink;
+			}, 500);
 		});
 	};
 
