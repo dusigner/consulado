@@ -25,7 +25,21 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 	}
 
 	.slick-list.draggable {
-		@include breakpoint('small', 'max') { overflow: inherit; }
+		@include breakpoint('small', 'max') {
+			overflow: inherit;
+
+			&:before {
+				background-color: #f4f4f4;
+				content: '';
+				display: block;
+				height: 105%;
+				position: absolute;
+				right: 102%;
+				top: 0;
+				width: 100%;
+				z-index: 2;
+			}
+		}
 	}
 
 	.slick-track { padding: 1.5em 0; }
