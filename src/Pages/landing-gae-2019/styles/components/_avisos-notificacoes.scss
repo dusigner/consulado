@@ -65,6 +65,7 @@ body.landing-gae-2019 {
 	.condicoes-gerais,
 	.form-submit,
 	.avalie-garantia {
+		@include max-phone { padding: 2em 1.5em; }
 		background-color: #fff;
 		display: none;
 		left: 50%;
@@ -96,6 +97,7 @@ body.landing-gae-2019 {
 
 		.btn {
 			@include button;
+			@include max-phone { display: block; }
 			display: inline-block;
 			font-size: 14px;
 			font-weight: bolder!important;
