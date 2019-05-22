@@ -1,6 +1,7 @@
 //------------------------
 // Mixins
 //------------------------
+
 @import 'mixins/mqueries';
 //------------------------
 // Components
@@ -9,9 +10,14 @@
 //------------------------
 // Global
 //------------------------
+
+@import 'components/header';
+@import 'components/footer';
 @import 'components/quero-contratar';
 @import 'components/perguntas-frequentes';
 @import 'components/contatos';
 /* @import 'components/opiniao'; */
 @import 'components/experiencia';
 @import 'components/avisos-notificacoes';
+@import 'components/modal-warranty';
+

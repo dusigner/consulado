@@ -1,124 +1,123 @@
 //--------------
 // Header
 //--------------
-.header {
-    display: flex;
-    flex-wrap: wrap;
-    // box-shadow: 0 1px 5px rgba(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .2);
-    @include laptop {
-        align-items: center;
-        justify-content: space-between;
-    }
-}
+body.landing-gae-2019 {
+	header .menu-mobile .minicart,
+	header .menu-mobile .account
+	nav.top-navigation.hide-extra-small,
+	nav.top-navigation.hide-extra-small .container,
+	nav.top-navigation.hide-extra-small .container .menu.menu-department {
+		display: none!important;
+		visibility: hidden!important;
+	}
 
-.wrap.-mobile{
-    padding: 20px 0;
-}
+	.header {
+		@include laptop {
+			align-items: center;
+			justify-content: space-between;
+		}
+		display: flex;
+		flex-wrap: wrap;
+	}
 
-.header__link {
-    display: block;
-    &:hover {
-        text-decoration: none;
-    }
-}
+	.wrap.-mobile { padding: 20px 0; }
 
-.header__logo,
-.footer__logo {
-    img {
-        max-width: 100px;
-        width: 100%;
-        height: auto;
-        vertical-align: middle;
-    }
-    h1,
-    p {
-        margin: 0;
-    }
-    p {
-        color: $gray;
-        text-transform: uppercase;
-        border-top: 1px solid $gray;
-        padding-top: 5px;
-        @include laptop {
-            margin-left: 10px;
-            margin-top: 10px;
-            padding-left: 10px;
-            padding-top: 0;
-            border-top: none;
-            border-left: 1px solid $gray;
-            line-height: 1;
-        }
-    }
-}
+	.header__link {
+		display: block;
 
-.header__logo {
-    & {
-        @include laptop {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-    }
-}
+		&:hover { text-decoration: none; }
+	}
 
-.header__button {
-    @include button;
-    display: none;
-    padding: 0;
-    width: 100%;
-    order: 1;
-    text-align: center;
-    line-height: 60px;
-    height: 60px;
-    margin-top: 20px;
-    @include laptop {
-        display: block;
-        order: 0;
-        width: 195px;
-        margin-top: 0;
-        height: auto;
-        line-height: 45px;
-    }
-}
+	.header__logo,
+	.footer__logo {
+		img {
+			height: auto;
+			max-width: 100px;
+			vertical-align: middle;
+			width: 100%;
+		}
 
-.header__user-field {
-    display: flex;
-    flex-flow: nowrap;
-    align-items: center;
-}
+		h1,
+		p { margin: 0; }
 
-.header__user-field,
-.header__user-sair {
-    text-align: left;
-}
+		p {
+			@include laptop {
+				border-left: 1px solid $gray;
+				border-top: none;
+				line-height: 1;
+				margin-left: 10px;
+				margin-top: 10px;
+				padding-left: 10px;
+				padding-top: 0;
+			}
+			border-top: 1px solid $gray;
+			color: $gray;
+			padding-top: 5px;
+			text-transform: uppercase;
+		}
+	}
 
-.header__user-menu {
-    & {
-        width: 110px;
-        margin-left: auto;
-        @include laptop {
-            margin-left: inherit;
-        }
-    }
-    i {
-        display: inline-block;
-        float: left;
-        margin-right: 5px;
-    }
-    img {
-        width: 20px;
-        height: auto;
-    }
-    p,
-    a {
-        margin: 0;
-    }
-}
+	.header__logo {
+		& {
+			@include laptop {
+				align-items: center;
+				display: flex;
+				flex-wrap: wrap;
+			}
+		}
+	}
 
-.header__user {
-    color: $brand;
-}
+	.header__button {
+		@include button;
+		@include laptop {
+			display: block;
+			height: auto;
+			line-height: 45px;
+			margin-top: 0;
+			order: 0;
+			width: 195px;
+		}
+		display: none;
+		height: 60px;
+		line-height: 60px;
+		margin-top: 20px;
+		order: 1;
+		padding: 0;
+		text-align: center;
+		width: 100%;
+	}
 
-.header__cart {
-    font-weight: bold;
+	.header__user-field {
+		align-items: center;
+		display: flex;
+		flex-flow: nowrap;
+	}
+
+	.header__user-field,
+	.header__user-sair { text-align: left; }
+
+	.header__user-menu {
+		& {
+			@include laptop { margin-left: inherit; }
+			margin-left: auto;
+			width: 110px;
+		}
+
+		i {
+			// display: inline-block;
+			float: left;
+			margin-right: 5px;
+		}
+
+		img {
+			height: auto;
+			width: 20px;
+		}
+
+		p,
+		a { margin: 0; }
+	}
+
+	.header__user { color: $brand; }
+	.header__cart { font-weight: bold; }
 }

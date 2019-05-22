@@ -2,27 +2,25 @@
 //----------------
 // Banner
 //----------------
+body.landing-gae-2019 {
+	.banner {
+		display: block;
+		margin-bottom: 10px;
 
-.banner {
-    display: block;
-	margin-bottom: 10px;
-	img {
-		height: auto;
-		width: 100%;
-	}
-	.-desktop {
-		@include tablet-p {
-			display: block;
+		img {
+			height: auto;
+			width: 100%;
 		}
-		display: none;
-	}
-	.-mobile {
-		@include tablet-p {
+
+		.-desktop {
+			@include tablet-p { display: block; }
 			display: none;
 		}
-	}
-}
 
-.banner__image {
-    width: 100%;
+		.-mobile {
+			@include tablet-p { display: none; }
+		}
+	}
+
+	.banner__image { width: 100%; }
 }

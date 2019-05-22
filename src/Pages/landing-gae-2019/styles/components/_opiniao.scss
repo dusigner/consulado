@@ -1,76 +1,73 @@
 //------------
 //
 //------------
-.opiniao {
-    margin: 0 auto;
-    text-align: center;
-}
+body.landing-gae-2019 {
+	.opiniao {
+		margin: 0 auto;
+		text-align: center;
+	}
 
-.opiniao__picture {
-    display: inline-block;
-    width: 120px;
-    height: 120px;
-    float: left;
-    border-radius: 100%;
-    overflow: hidden;
-    position: relative;
-}
+	.opiniao__picture {
+		border-radius: 100%;
+		float: left;
+		height: 120px;
+		overflow: hidden;
+		position: relative;
+		width: 120px;
+	}
 
-.opiniao__frame {
-    display: block;
+	.opiniao__frame {
+		display: block;
 
-    iframe {
-        width: 100%;
-    }
+		iframe { width: 100%; }
 
-    @include laptop {
-        display: flex;
-        justify-content: center;
+		@include laptop {
+			display: flex;
+			justify-content: center;
 
-        iframe {
-            width: 40%;
-        }
-    }
-}
+			iframe { width: 40%; }
+		}
+	}
 
-.opiniao__image {
-    position: absolute;
-    max-width: 100%;
-    max-height: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+	.opiniao__image {
+		left: 50%;
+		max-height: 100%;
+		max-width: 100%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
 
-.opiniao__field {
-    margin: 40px 0;
+	.opiniao__field {
+		margin: 40px 0;
 
-    h3 {
-        text-transform: initial;
-        margin-bottom: 20px;
-        font-weight: 100;
-    }
-}
+		h3 {
+			font-weight: 100;
+			margin-bottom: 20px;
+			text-transform: initial;
+		}
+	}
 
-.opiniao__title {
-    text-transform: uppercase;
-    color: $brand;
-    margin-bottom: 10px;
-}
+	.opiniao__title {
+		color: $brand;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+	}
 
-.opiniao__subtitle {
-	color: $brand;
-    text-transform: capitalize;
-    margin-bottom: 10px!important;
-    font-size: 20px;
-}
+	.opiniao__subtitle {
+		color: $brand;
+		font-size: 20px;
+		margin-bottom: 10px!important;
+		text-transform: capitalize;
+	}
 
-.opiniao__links {
-    width: 300px;
-    margin: 20px auto 0 auto;
-}
+	.opiniao__links {
+		margin: 20px auto 0 auto;
+		width: 300px;
+	}
 
-.opiniao__button {
-    @include button;
-    margin-top: 20px;
+	.opiniao__button {
+		@include button;
+		margin-top: 20px;
+	}
 }
