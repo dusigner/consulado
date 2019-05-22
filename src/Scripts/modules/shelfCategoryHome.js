@@ -52,7 +52,7 @@ Nitro.module('shelfCategoryHome', function() {
 		prevButton.click(() => {
 			dataLayer.push({
 				event: 'generic',
-				category: 'Talvez se interesse por',
+				category: '[SQUAD] - Talvez se interesse por',
 				action: 'Clique Seta  Esquerda ',
 				label: 'Ver Categorias para esquerda'
 			});
@@ -61,7 +61,7 @@ Nitro.module('shelfCategoryHome', function() {
 		nextButton.click(() => {
 			dataLayer.push({
 				event: 'generic',
-				category: 'Talvez se interesse por',
+				category: '[SQUAD] - Talvez se interesse por',
 				action: 'Clique Seta  Direita ',
 				label: 'Ver Categorias para Direita'
 			});
@@ -76,7 +76,7 @@ Nitro.module('shelfCategoryHome', function() {
 
 			dataLayer.push({
 				event: 'generic',
-				category: `Talvez se interesse por ${cardText}`,
+				category: `[SQUAD] - Talvez se interesse por ${cardText}`,
 				action: 'Clique na categoria',
 				label: 'Ir para categoria'
 			});
