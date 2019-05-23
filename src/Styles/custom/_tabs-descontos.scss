@@ -9,12 +9,13 @@
 	.title {
 		@include breakpoint(medium, 'max') {
 			@include responsiveFont(14, 16, true);
-			margin-bottom: 20px;
 			text-align: center;
 		}
 		@include responsiveFont(16, 16, true);
 		font-weight: 100;
 		line-height: 16px;
+		margin-bottom: 0;
+
 		&::after {
 			border-bottom: 3px solid $green;
 			content: '';

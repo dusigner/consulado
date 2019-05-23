@@ -10,6 +10,13 @@ var CRM = require('modules/store/crm');
 
 Nitro.controller('landing-gae', [], function () {
 
+	var $openModalWarranty = $('#open-modal-warranty');
+	var $modalWarranty = $('#modal-warranty');
+	$openModalWarranty.click(function(e) {
+		e.preventDefault();
+		$modalWarranty.vtexModal();
+	});
+
 	var width = jQuery(window).width(),
 		mobile = false;
 
@@ -19,9 +26,7 @@ Nitro.controller('landing-gae', [], function () {
 	});
 
 	if (width < 1024) {
-
 		mobile = true;
-
 	}
 
 	if (mobile) {
@@ -51,29 +56,22 @@ Nitro.controller('landing-gae', [], function () {
 	var modulo = jQuery('.perguntas-frequentes');
 
 	if (modulo) {
-
 		modulo.find('.perguntas-frequentes__item').on('click', function () {
-
 			if (jQuery(this).hasClass('-is-active')) {
 				jQuery(this).removeClass('-is-active');
 			} else {
 				jQuery(this).addClass('-is-active');
 			}
-
 		});
-
 	}
 
 	const garantia = jQuery('.garantia');
 
 	if (garantia) {
-
 		var menu = garantia.find('.garantia__select');
 		var conteudo = garantia.find('.garantia__modulo');
 
 		menu.find('li a').on('click', function () {
-
-
 			conteudo.removeClass('-is-active');
 			menu.find('li a').removeClass('-is-active');
 			jQuery(this).addClass('-is-active');
@@ -83,7 +81,6 @@ Nitro.controller('landing-gae', [], function () {
 			conteudo.eq(posicao).addClass('-is-active');
 
 			return false;
-
 		});
 	}
 
@@ -162,8 +159,6 @@ Nitro.controller('landing-gae', [], function () {
 	var formGaeinputs = formGae.find('input[type="text"]');
 	var formOpiniao = $('.experiencia form');
 	var formOpiniaoInputs = formOpiniao.find('input[type="text"],textarea');
-
-
 	var Index = {
 		init: function () {
 			Index.serviceForm();

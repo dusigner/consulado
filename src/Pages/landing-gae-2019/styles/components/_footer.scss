@@ -1,0 +1,92 @@
+//---------
+// Footer
+//---------
+body.landing-gae-2019 {
+	.footer {
+		background-color: transparent;
+		box-shadow: 1px -3px 6px rgba(0, 0, 0, .1), 0 1px 2px rgba(0, 0, 0, .2);
+	}
+
+	.footer__logo {
+		& {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	.footer__group  {
+		background-color: $gray;
+		padding: 20px;
+		text-align: left;
+
+		a {
+			color: $white;
+			text-decoration: underline;
+		}
+
+		&.-light {
+			@include desktop { padding: 5px 310px; }
+			align-items: center;
+			background-color: $gray-light;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+			padding: 20px;
+		}
+
+		&.-dark {
+			background-color: $gray-dark;
+			display: block;
+		}
+	}
+
+	.footer__caption {
+		color: #fff;
+		line-height: 1;
+		margin-bottom: 5px;
+	}
+
+	.footer__list {
+		@include laptop { justify-content: left; }
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+
+	.footer__item {
+		border-right: 2px solid $brand;
+		line-height: 1;
+		margin-right: 10px;
+		padding-right: 10px;
+
+		&:last-child {
+			border: none;
+			padding: 0;
+		}
+
+		a {
+			color: $gray-dark;
+			font-weight: bold;
+			text-decoration: none;
+		}
+	}
+
+	.footer_image {
+		display: inline-block;
+		max-width: 100px;
+		vertical-align: middle;
+		width: 100%;
+	}
+
+	.footer__pagamentos-image {
+		@include max-phone {
+			display: block;
+			margin-top: 10px;
+			max-width: 100%;
+		}
+		max-width: 440px;
+		vertical-align: middle;
+	}
+}
