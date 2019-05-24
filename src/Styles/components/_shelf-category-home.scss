@@ -55,10 +55,10 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 
 	.slick-dots {
 		@include breakpoint('small', 'max') {
-			bottom: 0;
+			bottom: -10px;
 			left: 2px;
 			text-align: left;
-			width: 150px;
+			width: 250px;
 		}
 
 		li {
@@ -203,8 +203,11 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 					transform: translate(10px, -9px);
 				}
 				img[alt='Purificadores'] {
-					@include breakpoint('small', 'max') { max-width: 100px; }
-					transform: translate(-5px, 5px);
+					@include breakpoint('small', 'max') {
+						max-width: 100px;
+						transform: translate(-5px, 5px);
+					}
+					transform: translate(-15px, -8px);
 				}
 			}
 		}
