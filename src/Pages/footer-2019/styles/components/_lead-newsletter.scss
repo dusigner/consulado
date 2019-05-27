@@ -1,307 +1,163 @@
 @charset 'UTF-8';
-.newsletter {
-	@include breakpoint('medium', 'max') { padding: 15px 0; }
-
-	& > .container {
-		@include breakpoint('medium', 'max') {
-			margin: 0!important;
-			max-width: 100%;
-
-			.container {
-				margin-left: auto!important;
-				margin-right: auto!important;
-			}
-		}
-	}
-}
-
-
-.lead-newsletter-show {
-	display: none;
-
-	.row { margin-bottom: 0; }
-
-	@include breakpoint(extra-small, 'max') {
-		background-color: #fff;
-		display: block;
-		margin: 0 auto;
-		text-align: center;
-		width: 100%;
-
-		.container {
-			@include responsiveFont(15, 16, true);
-			border-bottom: 1px solid $gray-d;
-			border-top: 1px solid $gray-d;
-			font-family: 'soleto';
-			margin-top: 20px;
-			padding-bottom: 17px;
-			padding-top: 17px;
-			text-align: center;
-		}
-
-		p {
-			@include breakpoint(extra-small, 'max') {
-				display: inline-block;
-				font-family: 'consul';
-				line-height: 20px;
-				margin-top: 0;
-				top: 0;
-				width: 200px;
-			}
-		}
-
-		.icon-email {
-			display: inline-block;
-			height: 40px;
-			width: 45px;
-
-			&::before {
-				@include contentBefore();
-				@include responsiveFont(27, 16, true);
-				color: $green;
-				content: '\e900';
-				font-family: 'whirlpool';
-				margin-top: 5px;
-			}
-		}
-	}
-}
 
 .lead-newsletter {
-	margin-top: 15px;
+	background-color: $default-color-purple;
+	padding: .2em 0;
 
-	@include breakpoint(extra-small, 'max') { display: none; }
-
-	.row {
-		border-bottom: 1px solid $gray-d;
-		border-top: 1px solid $gray-d;
-		margin-bottom: 0;
-
-		.container {
-			@include breakpoint('large', 'min') { max-width: 1100px; }
-			@include breakpoint(large, 'max') { text-align: center; }
-			padding: 10px 0;
-
-			@include breakpoint(extra-small, 'max') {
-				.btn_close {
-					display: block;
-					float: right;
-					height: 27px;
-					text-align: center;
-					width: 10px;
-
-					&::before {
-						color: $gray-d;
-						content: 'x';
-						display: block;
-						float: right;
-						font-size: 20px;
-						position: relative;
-						right: 8px;
-						text-align: right;
-						top: -30px;
-						width: 10px;
-					}
-				}
-			}
+	.container {
+		@include breakpoint(1200px, 'min') {
+			align-items: center;
+			justify-content: space-between;
 		}
-
-		.or_news {
-			margin: 0;
-			padding: 0;
+		@include breakpoint(1200px, 'max') {
+			align-items: center;
+			flex-direction: column;
 		}
+		display: flex;
+	}
 
-		p:not(.message-success),
-		form,
-		input {
+	p:not(.message-success),
+	form,
+	input {
+		@include breakpoint('medium', 'min') { display: inline-block; }
+		margin: 0;
+	}
+
+	// Title
+	&__title {
+		@include breakpoint(1200px, 'min') { padding-right: 10px; }
+		@include rfs(14);
+		color: #fff;
+		font-weight: bold;
+	}
+
+	form {
+		@include breakpoint('small', 'max') { width: 100%; }
+		user-select: none;
+	}
+
+	fieldset {
+		@include breakpoint('small', 'max') { width: 45%; }
+		@include breakpoint('extra-small', 'max') { width: 100%; }
+		border: none;
+		display: inline-block;
+		margin: 0;
+		padding: 8px 0;
+		position: relative;
+		vertical-align: middle;
+
+		&.campo-cadastro-telefone { display: none; }
+
+		label {
+			@include breakpoint('small', 'min') { width: 150px; }
+			@include rfs(10);
 			display: inline-block;
-			width: auto;
-		}
-
-		p:not(.message-success) {
-			@include breakpoint(large, 'max') {
-				margin-bottom: 10px;
-				width: 100%;
-			}
-			@include responsiveFont(16, 16, true);
-			color: $green;
-			font-weight: bold;
-			margin: 0;
-			padding: 0;
-		}
-
-		form {
-			@include breakpoint(small, 'max') {
-				text-align: center;
-				width: 75%;
-			}
-			@include breakpoint(extra-small, 'max') {
-				display: block;
-				margin: 10px auto;
-				width: 95%;
-			}
-			user-select: none;
-		}
-
-		fieldset {
-			@include breakpoint(extra-small, 'max') {
-				display: block;
-				width: 100%;
-			}
-			border: none;
-			display: inline-block;
-			margin: 0;
-			padding: 8px 0;
-			position: relative;
-			vertical-align: middle;
-
-			&.campo-checkbox {
-				@include breakpoint('small', 'max') { text-align: left; }
-			}
-
-			// input { margin: 0 15px; }
-
-			label {
-				@include breakpoint('small', 'max') {
-					@include responsiveFont(11, 16, true);
-					line-height: 12px;
-					margin: 0;
-					width: 100%;
-				}
-				@include responsiveFont(12, 16, true);
-				display: inline-block;
-				margin: 0 10px;
-				padding-left: 25px;
-				position: relative;
-				text-align-last: left;
-				width: 150px;
-
-				a {
-					text-decoration: none;
-
-					span { text-decoration: underline; }
-				}
-			}
-
-			label[for='termos'] { line-height: 10px; }
-		}
-
-		input {
-			@include responsiveFont(13, 16, true);
-			border: 1px solid $gray-d;
-			border-radius: 5px;
-			color: $txt-gray;
 			margin: 0 10px;
-			outline: none;
-			padding: 8px;
-			width: 150px;
+			padding-left: 25px;
+			position: relative;
 
-			&:first-child { margin-left: 0; }
 
-			@include breakpoint(extra-small, 'max') {
-				display: block;
-				width: 100%;
+			&,
+			a { color: #fff; }
 
-				&:first-child { margin-left: auto; }
+			a { text-decoration: none; }
+			span { text-decoration: underline; }
+		}
 
-				&:last-child { margin-bottom: 0; }
-			}
+		label[for='termos'] { line-height: 10px; }
+	}
 
-			&[type=checkbox] {
-				display: none;
+	input {
+		@include breakpoint('small', 'max') { width: calc(100% - 21px); }
+		@include rfs(12);
+		border: 1px solid #fff;
+		border-radius: 4px;
+		color: $txt-gray;
+		margin: 0 10px;
+		outline: none;
+		padding: 7px;
+		width: 150px;
 
-				& + label {
-					&:before,
-					&:after {
-						content: ' ';
-						display: inline-block;
-						left: 0;
-						position: absolute;
-						top: 50%;
-						transform: translateY(-50%);
-						visibility: visible;
-					}
-
-					&:after {
-						background-color: #fff;
-						border: 1px solid #736c6b;
-						border-radius: 3px;
-						height: 15px;
-						width: 15px;
-					}
+		&[type=checkbox] {
+			display: none;
+			& + label {
+				&:before,
+				&:after {
+					@include square(15px);
+					content: ' ';
+					display: inline-block;
+					left: 0;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					visibility: visible;
 				}
 
-				&.error + label {
-					position: relative;
-
-					&,
-					a { color: #f49a9a; }
-
-					&::after {
-						@include contentBefore();
-						border: 3px solid #f49a9a;
-						border-radius: 2px;
-						height: 15px;
-						left: 0;
-						position: absolute;
-						// top: 3px;
-						width: 15px;
-					}
-				}
+				&:after { background-color: #fff; }
 			}
 
-			&[type=checkbox]:checked + label {
+			&.error + label {
 				position: relative;
-
-				&:before {
-					background-color: $green;
-					height: 9px;
-					margin-left: 3px;
-					width: 9px;
-					z-index: 1;
-				}
 
 				&,
-				a { color: $txt-gray; }
+				a { color: #f49a9a; }
+
+				&::after {
+					@include contentBefore();
+					border: 3px solid #f49a9a;
+					border-radius: 2px;
+					left: 0;
+					position: absolute;
+					// top: 3px;
+				}
 			}
 		}
 
-		@include inputPlaceholderColor($txt-gray);
+		&[type=checkbox]:checked + label {
+			position: relative;
 
-		input[type='submit'] {
-			// @extend .primary-button;
-			@include breakpoint('medium', 'min') { margin-left: 20px; }
-			@include responsiveFont(14, 16, true);
-			background: #7f2893;
-			border: 2px solid #7f2893;
-			display: inline-block;
-			font-weight: normal;
-			margin: 0;
-			margin-left: 20px;
-			outline: none;
-			padding: .5em;
-			text-transform: uppercase;
-
-			&:hover { color: #7f2893; }
-
-			@include breakpoint(extra-small, 'max') {
-				display: block;
-				margin: 0 auto;
-				margin-top: 20px;
-				max-width: 170px;
+			&:before {
+				background-color: $green;
+				z-index: 2;
 			}
 		}
-
-		label[for=name],
-		label[for=email],
-		label[for=telefone] {
-			display: none;
-		}
-
-		.toggle-newsletter { display: none; }
-
-		p.message-success-fixed { display: none; }
 	}
+
+	@include inputPlaceholderColor($txt-gray);
+
+	input[type='submit'] {
+		// @extend .primary-button;
+		@include breakpoint('medium', 'min') { margin-left: 20px; }
+		@include rfs(14);
+		background: #7f2893;
+		border: 2px solid #7f2893;
+		display: inline-block;
+		font-weight: normal;
+		margin: 0;
+		margin-left: 20px;
+		outline: none;
+		padding: .5em;
+		text-transform: uppercase;
+
+		&:hover { color: #7f2893; }
+
+		@include breakpoint(extra-small, 'max') {
+			display: block;
+			margin: 0 auto;
+			margin-top: 20px;
+			max-width: 170px;
+		}
+	}
+
+	label[for=name],
+	label[for=email],
+	label[for=telefone] {
+		display: none;
+	}
+
+	.toggle-newsletter { display: none; }
+
+	p.message-success-fixed { display: none; }
 
 	p.message-success { display: none; }
 
@@ -312,7 +168,7 @@
 		form#form-newsletter-footer { display: none; }
 
 		p.message-success {
-			@include responsiveFont(13, 16, true);
+			@include rfs(13);
 			color: $orange;
 			display: block !important;
 			font-weight: bold;
@@ -325,7 +181,7 @@
 			&:before {
 				@include contentBefore();
 				@include icon-get('check-mark');
-				@include responsiveFont(14, 16, true);
+				@include rfs(14);
 				color: #9aca3c;
 				display: block;
 				font-weight: bold !important;
@@ -337,208 +193,6 @@
 		}
 
 		p.title { display: none; }
-	}
-
-	&.lead-newsletter--fixed {
-		margin-top: 0;
-		position: fixed;
-		right: 0;
-		top: 370px;
-		transition: all .3s linear;
-		z-index: 999999;
-
-		.container {
-			background-color: #ffffff;
-			border-color: #f35216;
-			padding: 0;
-			width: 936px !important;
-
-			p {
-				@include responsiveFont(28, 16, true);
-				font-weight: 300;
-				padding: 20px 0 30px 86px;
-
-				&:before {
-					background: url('/arquivos/icon-email-cns.png');
-					content: '';
-    			height: 21px;
-					left: 36px;
-					margin-top: 10px;
-					position: absolute;
-					width: 27px;
-				}
-
-				&.message-success { display: none !important; }
-			}
-
-			span.subtitle {
-				display: block;
-				padding: 15px 0 20px 36px;
-			}
-
-			form {
-				align-items: center;
-				background-color: #f4f2f1;
-				display: flex;
-				flex-direction: row;
-				height: 110px;
-				justify-content: flex-start;
-				padding-left: 36px;
-				width: 100%;
-
-				fieldset {
-					display: flex;
-					flex-direction: column;
-
-					input {
-						border-radius: 0;
-						margin: 0 15px 0 0;
-						width: 207px;
-					}
-
-					label[for=name],
-					label[for=email] {
-						@include responsiveFont(16, 18, true);
-						display: block;
-						font-weight: bold;
-						margin: 0;
-						padding: 0;
-
-						&::before { display: none; }
-					}
-
-					// label[for=termos] {
-					// 	padding-left: 30px;
-					// 	width: 150px;
-
-					// 	&::before {
-					// 		height: 20px;
-					// 		margin-top: 10px;
-					// 		width: 20px;
-					// 	}
-
-					// 	&::after {
-					// 		height: 20px;
-					// 		margin-top: 7px;
-					// 		width: 20px;
-					// 	}
-					// }
-
-					input[type='submit'] { height: 40px; }
-
-					::-webkit-input-placeholder { /* WebKit browsers */
-						color: transparent;
-					}
-					:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-						color: transparent;
-					}
-					::-moz-placeholder { /* Mozilla Firefox 19+ */
-						color: transparent;
-					}
-					:-ms-input-placeholder { /* Internet Explorer 10+ */
-						color: transparent;
-					}
-
-					&.campo-cadastro-telefone {
-						display: none;
-					}
-				}
-			}
-		}
-
-		&:before {
-			background-color: $green;
-			content: '';
-			height: 100%;
-			left: -44px;
-			position: absolute;
-			width: 44px;
-		}
-
-		.toggle-newsletter {
-			align-items: center;
-			color: #ffffff;
-			cursor: pointer;
-			display: flex;
-			flex-direction: column;
-			flex-flow: column-reverse;
-			font-size: 1.5625rem;
-			height: 100%;
-			justify-content: center;
-			left: -44px;
-			position: absolute;
-			width: 44px;
-
-			.toggle-newsletter__title {
-				@include responsiveFont(18, 16, true);
-				background-color: $green;
-				color: #fff;
-				display: none;
-				font-family: 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-				margin: 79px -86px 0 0;
-				padding: 10px;
-				text-transform: uppercase;
-				transform: rotate(270deg);
-				width: 184px;
-
-				&:after {
-					background: url('/arquivos/icon-email-white.png');
-					content: '';
-    				height: 21px;
-					// left: 36px;
-					// margin-top: 10px;
-					// position: absolute;
-					transform: rotate(90deg);
-					width: 27px;
-				}
-			}
-
-			&:before { transform: rotate(180deg); }
-		}
-
-		&.secrete {
-			right: -936px;
-
-			.toggle-newsletter {
-				align-items: flex-end;
-				justify-content: space-between;
-				left: -62px;
-				padding: 0 25px 20px 0;
-				width: 62px;
-
-				.toggle-newsletter__title {
-					display: flex;
-					justify-content: space-around;
-
-					&:before { display: none; }
-				}
-
-				&:before { transform: rotate(0deg); }
-			}
-
-			&:before {
-				left: -62px;
-				width: 62px;
-			}
-		}
-
-		&.success {
-			.title { display: block; }
-
-			.message-success,
-			form { display: none; }
-
-			.message-success-fixed {
-				@include responsiveFont(26, 16, true);
-				background-color: #f4f2f1;
-				display: block;
-				margin: 0;
-				padding: 30px 0;
-				text-align: center;
-
-				&:before { display: none; }
-			}
-		}
 	}
 
 	.form-newsletter_error-email {
@@ -581,13 +235,5 @@
 		}
 	}
 }
-
-.lead-newsletter form {
-	fieldset.campo-cadastro-telefone { display: none; }
-}
-
-
-
-
 
 
