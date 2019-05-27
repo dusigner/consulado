@@ -590,7 +590,7 @@ Nitro.module('chaordic', function() {
 			slidesToShow: slidesToShow,
 			slidesToScroll: slidesToShow,
 			responsive: [{
-				breakpoint: 990,
+				breakpoint: 768,
 				settings: {
 					dots: true,
 					slidesToShow: 2,

@@ -55,10 +55,10 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 
 	.slick-dots {
 		@include breakpoint('small', 'max') {
-			bottom: 0;
+			bottom: -10px;
 			left: 2px;
 			text-align: left;
-			width: 150px;
+			width: 250px;
 		}
 
 		li {
@@ -128,19 +128,9 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 				transform: translate(-42px, 45px);
 			}
 
-			img[alt='Cervejeiras'] {
-				@include breakpoint('small', 'max') { max-width: 75px; }
-				transform: translate(0, 28px);
-			}
-
-			img[alt='Cooktops'] {
-				@include breakpoint('small', 'max') { max-width: 195px; }
-				transform: translate(-90px, 20px);
-			}
-
-			img[alt='Coifas'] {
-				@include breakpoint('small', 'max') { max-width: 150px; }
-				transform: translate(-45px, -15px);
+			img[alt='Lavadoras'] {
+				@include breakpoint('small', 'max') { max-width: 70px; }
+				transform: translate(0, 55px);
 			}
 
 			img[alt='Fornos'] {
@@ -148,11 +138,28 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 				transform: translate(0, 38px);
 			}
 
-			img[alt='Lavadoras'] {
-				@include breakpoint('small', 'max') { max-width: 70px; }
-				transform: translate(0, 55px);
+			img[alt='Cervejeiras'] {
+				@include breakpoint('small', 'max') { max-width: 75px; }
+				transform: translate(0, 28px);
 			}
 
+			img[alt='Coifas'] {
+				@include breakpoint('small', 'max') { max-width: 150px; }
+				transform: translate(-45px, -15px);
+			}
+
+			img[alt='Cooktops'] {
+				@include breakpoint('small', 'max') { max-width: 195px; }
+				transform: translate(-90px, 20px);
+			}
+
+			img[alt='Purificadores'] {
+				@include breakpoint('small', 'max') {
+					max-width: 110px;
+					transform: translate(-20px, 38px);
+				}
+				transform: translate(-35px, 38px);
+			}
 		}
 
 		&__text {
@@ -194,6 +201,13 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 				img[alt='Fornos'] {
 					@include breakpoint('small', 'max') { transform: translate(3px, -9px); }
 					transform: translate(10px, -9px);
+				}
+				img[alt='Purificadores'] {
+					@include breakpoint('small', 'max') {
+						max-width: 100px;
+						transform: translate(-5px, 5px);
+					}
+					transform: translate(-15px, -8px);
 				}
 			}
 		}

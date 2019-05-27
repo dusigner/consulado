@@ -284,29 +284,29 @@ div[data-chaordic] {
 	}
 
 	&--history-personalized-ref {
-		height: 595px;
-		width: 33.3%;
-		z-index: 50;
 		@include breakpoint('small', 'max') {
 			height: auto;
 			width: 100%;
 		}
-		ul {
-			&.slick-slider {
-				height: 100%;
-			}
-			.slick-track {
-				display: block;
-			}
-			li {
+		height: 525px;
+		width: 33.3%;
+		z-index: 50;
 
+
+		ul {
+			// &.slick-slider { height: 100%; }
+			.slick-track {
+				@include breakpoint('small', 'min') { display: block; }
+			}
+
+			li {
 				.shelf-item__image {
 					float: left;
 					max-width: 150px;
 					width: 100%;
-					img {
-						min-height: unset;
-					}
+
+					img { min-height: unset; }
+
 					@include breakpoint('small', 'max') {
 						float: none;
 						max-width: none;
@@ -314,52 +314,46 @@ div[data-chaordic] {
 						width: auto;
 					}
 				}
+
 				.shelf-item__info {
 					height: 68px;
 					overflow: hidden;
 				}
+
 				.shelf-item__infos {
 					float: right;
 					max-width: 162px;
 					width: 100%;
-					@include breakpoint('medium', 'max') {
-						max-width: 100%;
-					}
-					@include breakpoint('small', 'max') {
-						float: none;
-					}
+					@include breakpoint('medium', 'max') { max-width: 100%; }
+					@include breakpoint('small', 'max') { float: none; }
 				}
+
 				.shelf-item__name.show-mobile {
 					display: none;
 					font-size: 12px;
 					text-align: center;
-					@include breakpoint('small', 'max') {
-						display: block;
-					}
+					@include breakpoint('small', 'max') { display: block; }
 				}
+
 				.shelf-item__name.show-desk {
 					font-size: 17px;
 					text-align: left;
-					@include breakpoint('small', 'max') {
-						display: none;
-					}
+
+					@include breakpoint('small', 'max') { display: none; }
 				}
+
 				.shelf-item__price {
+					@include breakpoint('small', 'max') { font-size: 12px; }
 					font-size: .875rem;
 					margin: 0;
-					span.off {
-						display: none!important;
-					}
-					@include breakpoint('small', 'max') {
-						font-size: 12px;
-					}
+
+					span.off { display: none!important; }
 				}
+
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
+					@include breakpoint('small', 'max') { display: block; }
 					display: none;
-					@include breakpoint('small', 'max') {
-						display: block;
-					}
 				}
 			}
 		}
