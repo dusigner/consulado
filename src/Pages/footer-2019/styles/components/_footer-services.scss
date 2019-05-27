@@ -14,27 +14,57 @@
 	// Item
 	&__item {
 		@include breakpoint('small', 'max') {
-			padding-left: 80px;
-		}
-		border: 1px solid #333;
+			border: 1px solid #e3e1e1;
+			border-radius: 4px;
+			margin: .5em 0;
+			padding-left: 90px;
+		} @include breakpoint('small', 'min') { max-width: 300px; }
 		display: flex;
 		flex-direction: column;
-		max-width: 300px;
+		min-width: 230px;
 		padding: 1.2em;
+		position: relative;
+		width: 100%;
 	}
 
 	// Icon
 	&__icon {
-		@include square(40px);
-		background-color: $default-color-purple;
+		@include breakpoint('small', 'max') {
+			@include square(45px);
+			background-position: center center;
+			left: 22px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		@include square(55px);
+		background-color: transparent;
+		background-position: bottom center;
+		background-repeat: no-repeat;
 		display: block;
 		margin: auto;
+
+		&--ajuda-online {
+			@include breakpoint('small', 'max') { background-size: 22px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/ajuda-online-consul-icone.png');
+		}
+
+		&--meus-pedidos {
+			@include breakpoint('small', 'max') { background-size: 44px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/meus-pedidos-consul-icone.png');
+		}
+
+		&--trocas-e-devolucoes {
+			@include breakpoint('small', 'max') { background-size: 27px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/trocas-e-devolucoes-consul-icone.png?v=2');
+		}
 	}
 
 	// Title
 	&__title {
+		@include breakpoint('small', 'max') { margin: 0; }
 		@include rfs(16);
-		margin: 1em 0;
+		margin: .8em 0;
 		padding: 5px 0;
 		position: relative;
 
@@ -58,15 +88,15 @@
 	&__text {
 		@include rfs(14);
 		flex-grow: 3;
-		margin: 1em 0;
+		margin: 0;
 	}
 
 	// Button
 	&__cta {
-		margin-top: 2em;
 		@include breakpoint('small', 'max') {
 			display: none;
 			visibility: hidden;
 		}
+		margin-top: 2em;
 	}
 }

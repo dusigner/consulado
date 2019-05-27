@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
 	<title>Consul</title>
@@ -11,7 +12,8 @@
 	<!-- @endif -->
 
 	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/footer-2019.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" type="text/css"
+		href="<!-- @echo assetsPath -->/footer-2019.css?v=<!-- @echo package.version -->" />
 </head>
 
 <body data-controller="landing-gae">
@@ -34,9 +36,14 @@
 	</main>
 
 	<div class="container">
+		<h3 class="footer-title text-center">
+			Atendimento loja <strong>Consul</strong>
+		</h3>
+
+		<!-- Serviços -->
 		<div class="footer-services">
 			<div class="footer-services__item">
-				<i class="footer-services__icon"></i>
+				<i class="footer-services__icon footer-services__icon--ajuda-online"></i>
 				<h4 class="footer-services__title">Ajuda online</h4>
 				<p class="footer-services__text">Entre contato com um de nossos atendentes e agilize o seu dia.</p>
 				<button class="footer-services__cta cns-button --purple">
@@ -45,7 +52,7 @@
 			</div>
 
 			<div class="footer-services__item">
-				<i class="footer-services__icon"></i>
+				<i class="footer-services__icon footer-services__icon--meus-pedidos"></i>
 				<h4 class="footer-services__title">Meus Pedidos</h4>
 				<p class="footer-services__text">Acompanhe o status do seu pedido e informações sobre a sua compra.</p>
 				<a href="#" class="footer-services__cta cns-button --purple" title="Acompanhar pedido">
@@ -54,7 +61,7 @@
 			</div>
 
 			<div class="footer-services__item">
-				<i class="footer-services__icon"></i>
+				<i class="footer-services__icon footer-services__icon--trocas-e-devolucoes"></i>
 				<h4 class="footer-services__title">Trocas e Devoluções</h4>
 				<p class="footer-services__text">Você tem até 7 dias úteis para solicitar uma troca ou devolução.</p>
 				<a href="#" class="footer-services__cta cns-button --purple" title="Fazer solicitação">
@@ -62,11 +69,49 @@
 				</a>
 			</div>
 		</div>
+		<!-- /Serviços -->
 	</div>
 
+	<div class="lead-newsletter">
+		<div class="row">
+			<div class="container clearfix"><span class="btn_close"></span>
+				<div class="toggle-newsletter icon-arrow-left icon">
+					<span class="toggle-newsletter__title">promoções</span>
+				</div>
+				<p class="title">Receba nossas <strong>ofertas, lançamentos</strong> e <strong>promoções!</strong></p>
+				<form class="form-newsletter" id="form-newsletter">
+					<fieldset>
+						<label for="name">Nome</label>
+						<input type="text" id="name" name="name" placeholder="Nome">
+					</fieldset>
+					<fieldset>
+						<label for="email">E-mail</label>
+						<input type="email" id="email" name="email" placeholder="E-mail">
+					</fieldset>
+					<fieldset class="campo-cadastro-telefone">
+						<label for="telefone">Telefone (opcional)</label>
+						<input type="tel" id="telefone" name="homePhone" placeholder="Telefone (opcional)">
+					</fieldset>
+					<fieldset class="campo-checkbox">
+						<input type="checkbox" id="termos" name="termos">
+						<label for="termos">
+							Li e concordo com os
+							<a href="http://consul.custhelp.com/app/answers/detail/a_id/511"
+								title="Li e concordo com os termos e condições" target="_blank"><span> termos e
+									condições</span></a></label>
+					</fieldset>
+					<input type="submit" name="submit" class="submit" value="Cadastre-se">
+				</form>
+				<p class="message-success">E-mail cadastrado com sucesso!</p>
+				<p class="message-success-fixed">Cadastro efetuado com <strong>sucesso!</strong></p>
+			</div>
+		</div>
+	</div>
 
 	<footer class="page-footer" data-module="footer"></footer>
 
-	<script type="text/javascript"	src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->"></script>
+	<script type="text/javascript" src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->">
+	</script>
 </body>
+
 </html>

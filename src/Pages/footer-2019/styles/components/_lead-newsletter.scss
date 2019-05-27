@@ -269,7 +269,7 @@
 		@include inputPlaceholderColor($txt-gray);
 
 		input[type='submit'] {
-			@extend .primary-button;
+			// @extend .primary-button;
 			@include breakpoint('medium', 'min') { margin-left: 20px; }
 			@include responsiveFont(14, 16, true);
 			background: #7f2893;
@@ -578,57 +578,6 @@
 			border-color: rgba(0, 0, 0, 0);
 			border-width: 11px;
 			margin-left: -11px;
-		}
-	}
-}
-
-
-
-// Teste AB telefone
-body.teste-ab__news-phone-show--b {
-	.lead-newsletter {
-		.row {
-			p.title {
-				@include breakpoint('large', 'max') { text-align: center; }
-				@include breakpoint('large', 'min') {
-					float: left;
-					margin-right: 0;
-					max-width: 250px;
-				}
-			}
-
-			form:not(.form-newsletter-footer) {
-				fieldset {
-					@include breakpoint('medium', 'max') {
-						margin: 0 5px;
-						width: 42.5%;
-
-						input {
-							margin: 0;
-							width: 100%;
-						}
-					}
-					@include breakpoint('small', 'max') { width: 100%; }
-
-					&.campo-checkbox {
-						text-align: left;
-
-						label { margin-left: 0; }
-					}
-				}
-
-				@include breakpoint('large', 'min') {
-					display: block;
-					float: right;
-				}
-			}
-
-			form fieldset.campo-cadastro-telefone {
-				@include breakpoint('small', 'max') {
-					input {  margin: 0; }
-				}
-				display: inline-block;
-			}
 		}
 	}
 }
