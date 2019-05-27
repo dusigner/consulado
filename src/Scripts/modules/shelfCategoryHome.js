@@ -38,9 +38,10 @@ Nitro.module('shelfCategoryHome', function() {
 				settings: {
 					arrows: false,
 					dots: true,
-					infinite: true,
+					infinite: false,
 					slidesToScroll: 1,
-					slidesToShow: 1
+					slidesToShow: 1,
+					swipeToSlide: true
 				}
 			}]
 		});
