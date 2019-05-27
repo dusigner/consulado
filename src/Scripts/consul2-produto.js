@@ -18,10 +18,12 @@ import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/chaordic';
+import 'custom/testeab-entrega';
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [
 	'chaordic',
+	'testeab-entrega',
 	'sku-fetch',
 	'gallery',
 	'product-nav',
@@ -38,9 +40,11 @@ Nitro.controller('produto', [
 	'upsell',
 	'deliveryTime',
 	'recurrence' /*, 'special-content'*/
-], function (chaordic) {
+], function (chaordic, testeabEntrega) {
 	var self = this,
 		$body = $('body');
+
+	testeabEntrega.productSetup();
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
 	chaordic.init('product', window.skuJson.productId);

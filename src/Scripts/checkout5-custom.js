@@ -42,7 +42,7 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
-	//require('custom/testeab-entregaAgendada');
+	require('custom/testeab-entrega');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
@@ -52,7 +52,26 @@ $(document).on('ready', function() {
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
-	Nitro.setup([/*'chaordic'*/ 'checkout.gae', 'checkout.recurrence', 'checkout.cotas', 'checkout.pj', 'reinput', 'checkout.default-message', 'customLogin', 'callcenter'], function(/*chaordic*/ gae, recurrence, cotas, pj, reinput) {
+	Nitro.setup([
+		/*'chaordic'*/
+		'checkout.gae',
+		'checkout.recurrence',
+		'checkout.cotas',
+		'checkout.pj',
+		'reinput',
+		'testeab-entrega',
+		'checkout.default-message',
+		'customLogin',
+		'callcenter'
+	], function(
+		/*chaordic*/
+		gae,
+		recurrence,
+		cotas,
+		pj,
+		reinput,
+		testeabEntrega
+	) {
 		var self = this,
 			$body = $('body'),
 			flagCoupon;
@@ -294,7 +313,7 @@ $(document).on('ready', function() {
 			reinput.setup();
 			self.delivery();
 
-			//testeabEntregaAgendada.setup(orderForm);
+			testeabEntrega.checkoutSetup(orderForm);
 			self.atualizaCoupon();
 		};
 

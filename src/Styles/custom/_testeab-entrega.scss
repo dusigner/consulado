@@ -1,0 +1,85 @@
+body {
+
+	// #Cenário Controle
+	// - Todas as opções de frete
+
+
+	// #Cenário A
+	// - Esconde Convencional
+	// - Esconde Entrega Agendada | Convencional
+
+	// #Cenário B
+	// - Esconde Entrega Agendada | Econômica
+	// - Esconde Entrega Econômica
+
+
+
+	// .shipping-options      { border: 5px solid #dd0!important; } // [loja]/checkout/#/shipping
+	// .shipping-sla-options  { border: 5px solid #d0d!important; } // [loja]/checkout/#/cart
+	// #change-sla-items-list { border: 5px solid #00d!important; } // [loja]/checkout/#/shipping
+
+
+	// [ VERSÃO A ]
+	&.testeab-entregas--a {
+		// Aplica nas opções do carrinho
+		.shipping-sla-options:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			li.seller-1-sla-Convencional,
+			li.seller-1-sla-EntregaAgendada-Convencional { display: none; }
+		}
+
+		// Aplica nas opções na página de entrega no formato de radio button
+		.shipping-options:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			label[for='seller-1-sla-Convencional'],
+			label[for='seller-1-sla-EntregaAgendada-Convencional'] { display: none; }
+		}
+
+		// Aplica nas opções na página de entrega no formato de select
+		#change-sla-items-list:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			option[value='Convencional'],
+			option[value='Entrega Agendada - Convencional'],
+			option[value='Entrega Agendada Convencional'] { display: none; }
+		}
+	}
+
+	// [ VERSÃO B ]
+	&.testeab-entregas--b {
+		.shipping-sla-options:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			li.seller-1-sla-Economica,
+			li.seller-1-sla-EntregaAgendada-Economica {
+				display: none;
+			}
+
+		}
+
+		// Aplica nas opções na página de entrega no formato de radio button
+		.shipping-options:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			label[for='seller-1-sla-Economica'],
+			label[for='seller-1-sla-EntregaAgendada-Economica'] { display: none; }
+		}
+
+		// Aplica nas opções na página de entrega no formato de select
+		#change-sla-items-list:not(.not-hide) {
+
+			//Esconde as opções que não são para exibir
+			option[value='Entrega Agendada Econômica'],
+			option[value='Entrega Agendada - Econômica'],
+			option[value='Econômica'] { display: none; }
+		}
+	}
+
+
+	&.not-hide-shipping-options {
+		.shipping-options label { display: block !important; }
+	}
+}
+
