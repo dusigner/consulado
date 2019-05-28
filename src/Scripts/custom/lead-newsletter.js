@@ -5,6 +5,8 @@ var CRM = require('modules/store/crm');
 
 Nitro.module('lead-newsletter', function() {
 
+	console.log('@@@@@@@ FOOTER');
+
 	// Teste AB Controller
 	// var urlTesteAb = window.location.search;
 	// var $body = $('body');

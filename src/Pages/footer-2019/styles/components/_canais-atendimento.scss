@@ -1,0 +1,46 @@
+.canais-atendimento {
+	background-color: #f1f0f0;
+	padding-bottom: .5em;
+
+	.container { display: flex; }
+
+	.border { border-left: 4px solid $default-color-green; }
+
+	// Elements
+	p {
+		@include rfs(12);
+		margin: 10px 0 0 0;
+	}
+
+	br { height: 20px; }
+
+	// Item
+	&__item {
+		width: 100%;
+
+		&:nth-child(1),
+		&:nth-child(2) {
+			padding-right: 70px;
+		}
+	}
+
+	// Title
+	&__title {
+		@include rfs(20);
+		margin: 0;
+		padding: 1.8em 0;
+	}
+
+	// Text
+	&__section-text {
+		margin-bottom: 2em;
+		padding: 0 0 0 1em;
+	}
+
+	// Section title
+	&__section-title {
+		@include rfs(14);
+		line-height: 100%;
+		margin: 0 0 .8em 0;
+	}
+}

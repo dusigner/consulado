@@ -1,8 +1,9 @@
 @charset 'UTF-8';
 
-.cns-button {
+.cns-button,
+input[type='submit'].cns-button {
 	@include rfs(14);
-	background: transparent;
+	background: #fff;
 	border: 1px solid;
 	border-radius: 100px;
 	display: block;
@@ -10,10 +11,23 @@
 	margin: 1em 0;
 	padding: .65em;
 	text-align: center;
+	transition:
+		background-color .3s ease,
+		color .3s ease
+	;
 	width: 100%;
 
-	&.--purple {
+	&:focus { outline: none; }
+
+	&--purple {
 		border-color: $default-color-purple;
 		color: $default-color-purple;
+
+		&:hover,
+		&:focus {
+			background-color: $default-color-purple;
+			border-color: #fff;
+			color: #fff;
+		}
 	}
 }

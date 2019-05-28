@@ -35,18 +35,18 @@
 		</div>
 	</main>
 
-	<div class="container">
+	<!-- Serviços -->
+	<div class="footer-services">
 		<h3 class="footer-title text-center">
 			Atendimento loja <strong>Consul</strong>
 		</h3>
 
-		<!-- Serviços -->
-		<div class="footer-services">
+		<div class="container">
 			<div class="footer-services__item">
 				<i class="footer-services__icon footer-services__icon--ajuda-online"></i>
 				<h4 class="footer-services__title">Ajuda online</h4>
 				<p class="footer-services__text">Entre contato com um de nossos atendentes e agilize o seu dia.</p>
-				<button class="footer-services__cta cns-button --purple">
+				<button class="footer-services__cta cns-button cns-button--purple">
 					Acessar chat
 				</button>
 			</div>
@@ -55,7 +55,7 @@
 				<i class="footer-services__icon footer-services__icon--meus-pedidos"></i>
 				<h4 class="footer-services__title">Meus Pedidos</h4>
 				<p class="footer-services__text">Acompanhe o status do seu pedido e informações sobre a sua compra.</p>
-				<a href="#" class="footer-services__cta cns-button --purple" title="Acompanhar pedido">
+				<a href="#" class="footer-services__cta cns-button cns-button--purple" title="Acompanhar pedido">
 					Acompanhar pedido
 				</a>
 			</div>
@@ -64,14 +64,15 @@
 				<i class="footer-services__icon footer-services__icon--trocas-e-devolucoes"></i>
 				<h4 class="footer-services__title">Trocas e Devoluções</h4>
 				<p class="footer-services__text">Você tem até 7 dias úteis para solicitar uma troca ou devolução.</p>
-				<a href="#" class="footer-services__cta cns-button --purple" title="Fazer solicitação">
+				<a href="#" class="footer-services__cta cns-button cns-button--purple" title="Fazer solicitação">
 					Fazer solicitação
 				</a>
 			</div>
 		</div>
-		<!-- /Serviços -->
 	</div>
+	<!-- /Serviços -->
 
+	<!-- Newsletter -->
 	<div class="lead-newsletter">
 		<div class="container">
 			<p class="lead-newsletter__title">
@@ -83,29 +84,131 @@
 					<label for="name">Nome</label>
 					<input type="text" id="name" name="name" placeholder="Nome">
 				</fieldset>
+
 				<fieldset>
 					<label for="email">E-mail</label>
 					<input type="email" id="email" name="email" placeholder="E-mail">
 				</fieldset>
+
 				<fieldset class="campo-cadastro-telefone">
 					<label for="telefone">Telefone (opcional)</label>
 					<input type="tel" id="telefone" name="homePhone" placeholder="Telefone (opcional)">
 				</fieldset>
+
 				<fieldset class="campo-checkbox">
 					<input type="checkbox" id="termos" name="termos">
 					<label for="termos">
 						Li e concordo com os
-						<a href="http://consul.custhelp.com/app/answers/detail/a_id/511"
-							title="Li e concordo com os termos e condições" target="_blank"><span> termos e
-								condições</span></a></label>
+						<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank">
+							<span> termos e condições</span>
+						</a>
+					</label>
 				</fieldset>
-				<input type="submit" name="submit" class="submit" value="Cadastre-se">
+
+				<input type="submit" name="submit" class="submit cns-button cns-button--purple cns-button--bold" value="Cadastre-se">
 			</form>
 
 			<!-- <p class="message-success">E-mail cadastrado com sucesso!</p>
 			<p class="message-success-fixed">Cadastro efetuado com <strong>sucesso!</strong></p> -->
 		</div>
 	</div>
+	<!-- /Newsletter -->
+
+	<!-- Canais de atendimento -->
+	<div class="canais-atendimento">
+		<div class="container">
+			<!-- Item -->
+			<div class="canais-atendimento__item">
+				<h3 class="canais-atendimento__title">Canais de Atendimento</h3>
+
+				<div class="border">
+					<!-- Chat online -->
+					<article class="canais-atendimento__section-text">
+						<h4 class="canais-atendimento__section-title">Chat online</h4>
+
+						<p>
+							<b>Acesse a Ajuda Online</b><br />
+							Segunda à sexta 8h00 às 20h00, exceto feriados<br />
+							Sábado 8h00 às 14h00, exceto feriados
+						</p>
+					</article>
+					<!-- /Chat online -->
+
+					<!-- Fale Conosco -->
+					<article class="canais-atendimento__section-text">
+						<h4 class="canais-atendimento__section-title">Fale Conosco</h4>
+
+						<p>
+							<b>Envie sua mensagem</b><br />
+							Tire suas dúvidas de pagamento, status do seu pedido, trocas e devoluções, entre outros
+						</p>
+					</article>
+					<!-- /Fale Conosco -->
+				</div>
+			</div>
+			<!-- /Item -->
+
+			<!-- Item -->
+			<div class="canais-atendimento__item">
+				<div class="canais-atendimento__title">&nbsp;</div>
+
+				<div class="border">
+					<!-- Vendas Corporativas -->
+					<article class="canais-atendimento__section-text">
+						<h4 class="canais-atendimento__section-title">Vendas Corporativas</h4>
+
+						<p>
+							<b>Veja mais</b>
+						</p>
+					</article>
+					<!-- /Vendas Corporativas -->
+
+					<!-- Televendas -->
+					<article class="canais-atendimento__section-text">
+						<h4 class="canais-atendimento__section-title">Televendas</h4>
+
+						<p>
+							<b>3003-7872</b><br />
+							Capitais e regiões metropolitanas
+						</p>
+
+						<p>
+							<b>0800 722 7872</b><br />
+							Outras localidades<br />
+							Segunda à sábado 8h às 22h, inclusive feriado.
+						</p>
+					</article>
+					<!-- /Televendas -->
+				</div>
+			</div>
+			<!-- /Item -->
+
+
+			<!-- Item -->
+			<div class="canais-atendimento__item">
+				<h3 class="canais-atendimento__title">Dúvidas</h3>
+
+				<div class="border">
+					<!-- Dúvidas mais frequentes -->
+					<article class="canais-atendimento__section-text">
+						<h4 class="canais-atendimento__section-title">Dúvidas mais frequentes</h4>
+
+						<p>
+							Tenho direito a me arrepender da compra?<br />
+							Como acompanho a entrega dos meus produtos?<br />
+							Como funciona o Seguro Garantia Estendida Original?<br />
+						</p>
+						<p>
+							<strong>Ver todas as dúvidas</strong>
+						</p>
+					</article>
+					<!-- /Dúvidas mais frequentes -->
+				</div>
+			</div>
+			<!-- /Item -->
+		</div>
+	</div>
+	<!-- /Canais de atendimento -->
 
 	<br>
 	<br>

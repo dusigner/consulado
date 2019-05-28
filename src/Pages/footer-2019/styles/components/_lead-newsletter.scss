@@ -2,8 +2,10 @@
 
 .lead-newsletter {
 	background-color: $default-color-purple;
+	min-height: 55px;
 	padding: .2em 0;
 
+	// Container
 	.container {
 		@include breakpoint(1200px, 'min') {
 			align-items: center;
@@ -16,29 +18,41 @@
 		display: flex;
 	}
 
-	p:not(.message-success),
-	form,
-	input {
-		@include breakpoint('medium', 'min') { display: inline-block; }
-		margin: 0;
-	}
-
 	// Title
 	&__title {
 		@include breakpoint(1200px, 'min') { padding-right: 10px; }
 		@include rfs(14);
 		color: #fff;
 		font-weight: bold;
+		padding: 1em 0;
 	}
 
+	// Default elements
+	p:not(.message-success),
+	input {
+		@include breakpoint('medium', 'min') { display: inline-block; }
+		margin: 0;
+	}
+
+	// Form
 	form {
-		@include breakpoint('small', 'max') { width: 100%; }
+		@include breakpoint('small', 'max') {
+			margin-bottom: 1.5em;
+			max-width: 350px;
+		}
+		@include breakpoint('small', 'min') {
+			align-items: center;
+			display: flex;
+		}
 		user-select: none;
 	}
 
+	label[for=name],
+	label[for=email],
+	label[for=telefone] { display: none; }
+
 	fieldset {
-		@include breakpoint('small', 'max') { width: 45%; }
-		@include breakpoint('extra-small', 'max') { width: 100%; }
+		@include breakpoint('small', 'max') { width: 100%; }
 		border: none;
 		display: inline-block;
 		margin: 0;
@@ -46,16 +60,16 @@
 		position: relative;
 		vertical-align: middle;
 
+		// Remover o campo telefone
 		&.campo-cadastro-telefone { display: none; }
 
 		label {
 			@include breakpoint('small', 'min') { width: 150px; }
 			@include rfs(10);
 			display: inline-block;
-			margin: 0 10px;
+			margin: 0 5px;
 			padding-left: 25px;
 			position: relative;
-
 
 			&,
 			a { color: #fff; }
@@ -67,33 +81,37 @@
 		label[for='termos'] { line-height: 10px; }
 	}
 
-	input {
-		@include breakpoint('small', 'max') { width: calc(100% - 21px); }
+	// Form fields
+	input:not([type='submit']) {
+		@include breakpoint('small', 'max') {
+			margin: 0;
+			width: 100%;
+		}
 		@include rfs(12);
 		border: 1px solid #fff;
 		border-radius: 4px;
 		color: $txt-gray;
-		margin: 0 10px;
+		margin: 0 5px;
 		outline: none;
 		padding: 7px;
-		width: 150px;
+		width: 170px;
 
 		&[type=checkbox] {
 			display: none;
+
 			& + label {
-				&:before,
-				&:after {
-					@include square(15px);
+				&:before {
+					@include square(16px);
+					background-color: #fff;
+					border-radius: 4px;
 					content: ' ';
-					display: inline-block;
+					display: block;
 					left: 0;
 					position: absolute;
 					top: 50%;
 					transform: translateY(-50%);
 					visibility: visible;
 				}
-
-				&:after { background-color: #fff; }
 			}
 
 			&.error + label {
@@ -102,14 +120,7 @@
 				&,
 				a { color: #f49a9a; }
 
-				&::after {
-					@include contentBefore();
-					border: 3px solid #f49a9a;
-					border-radius: 2px;
-					left: 0;
-					position: absolute;
-					// top: 3px;
-				}
+				&:before { background-color: #f49a9a; }
 			}
 		}
 
@@ -117,48 +128,23 @@
 			position: relative;
 
 			&:before {
-				background-color: $green;
-				z-index: 2;
+				background: $default-color-purple url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAQxJREFUOI2d0j1OAlEUxfH/eYAKaKK1y7CYhFhRookVC7Cg1prWxgVY+LEDCxMhsaScKLFwDSbWFGoQDXMsyCCJBGa43cu7v/Nyb54u+7VjWWeSdslZhpOi0IWkSl48SfB5ECtiQFI55H4Ud4E4PRdz8s5OddAcfmxufan0KlTJEeDOdnXQHAzLRVG6TUefjmD8Y3u4FI83ukj19CakOIiDgA8No6x4GiDw2Cq0orgXnDTA31nwzAhaC/j+5qlWb0VxL0FHxnfLMICu+/v+2wOj4KTRiuIewNXzXmUR/hcwG5IURo/LMMz5B4L1ROGBcfkFES3CcwPSkCwYJkv8zNI4t+z3YGivZv1G0OkvgSh5ieLwmzcAAAAASUVORK5CYII=') center center no-repeat;
 			}
 		}
 	}
 
-	@include inputPlaceholderColor($txt-gray);
+	@include inputPlaceholderColor($default-color-gray);
 
+	// Submit form
 	input[type='submit'] {
-		// @extend .primary-button;
-		@include breakpoint('medium', 'min') { margin-left: 20px; }
-		@include rfs(14);
-		background: #7f2893;
-		border: 2px solid #7f2893;
-		display: inline-block;
-		font-weight: normal;
-		margin: 0;
-		margin-left: 20px;
-		outline: none;
-		padding: .5em;
-		text-transform: uppercase;
-
-		&:hover { color: #7f2893; }
-
-		@include breakpoint(extra-small, 'max') {
-			display: block;
-			margin: 0 auto;
-			margin-top: 20px;
-			max-width: 170px;
-		}
+		@include breakpoint('small', 'min') { width: 190px; }
+		color: $default-color-gray;
+		font-weight: bold;
+		margin: .5em 0;
 	}
 
-	label[for=name],
-	label[for=email],
-	label[for=telefone] {
-		display: none;
-	}
-
-	.toggle-newsletter { display: none; }
-
-	p.message-success-fixed { display: none; }
-
+	.toggle-newsletter,
+	p.message-success-fixed,
 	p.message-success { display: none; }
 
 	&.success {
@@ -196,7 +182,7 @@
 	}
 
 	.form-newsletter_error-email {
-		background: #FFF;
+		background: #fff;
 		border: 1px solid #f49a9a;
 		border-radius: 5px;
 		bottom: -35px;
@@ -207,6 +193,7 @@
 		text-align: center;
 		width: 100%;
 		z-index: 5;
+
 		&:after,
 		&:before {
 			border: solid transparent;
