@@ -3,7 +3,7 @@
 'use strict';
 
 require('Dust/modal-warranty-desktop.html');
-require('Dust/modal-warranty-mobile.html');
+//require('Dust/modal-warranty-mobile.html');
 
 
 Nitro.module('checkout.gae', function() {
@@ -112,7 +112,7 @@ Nitro.module('checkout.gae', function() {
 			idOffering = $('input[name="warranty-value"]:checked').val(),
 			titleOffering = $('.modal__cell.active .title-garantia span').text(),
 			liAceito = $('#check-termos').is(':checked');
-			
+
 		if ( idOffering !== undefined && liAceito ) {
 			$self.addClass('icon-loading');
 
@@ -123,16 +123,16 @@ Nitro.module('checkout.gae', function() {
 					$self.removeClass('icon-loading');
 				});
 			});
-			
+
 		} else if ( idOffering === '' && !liAceito && idOffering === '' && liAceito ) {
 			$modalWarranty.modal('hide');
-		
+
 		} else {
-		
+
 			if ( liAceito === false && titleOffering !== '(Apenas garantia de fábrica)') {
-				
+
 				$('.form-termos').addClass('erro');
-	
+
 				setTimeout(function(){
 					$('.form-termos').removeClass('erro');
 				}, 5000);
@@ -140,11 +140,11 @@ Nitro.module('checkout.gae', function() {
 			if ( idOffering === undefined ) {
 				$('.box-opcao-garantia').css('border', '2px solid #f78383');
 				$('.modal__table .erro').fadeIn('slow');
-				
+
 				setTimeout(function(){
 					$('.box-opcao-garantia').css('border', '2px solid #e4e4e4');
 					$('.modal__table .erro').fadeOut('slow');
-					
+
 				}, 5000);
 			}
 			if (titleOffering === '(Apenas garantia de fábrica)'){
@@ -268,7 +268,7 @@ Nitro.module('checkout.gae', function() {
 			// $('body').on('click', '.close-warranty', function(){
 			// 	$('#warranty1').trigger('click');
 			// 	$('.modal__cell').removeClass('active');
-			// 	$('.row-product-and-action .btn-continue').html('Não tenho interesse <span>›</span>').addClass('locked');	
+			// 	$('.row-product-and-action .btn-continue').html('Não tenho interesse <span>›</span>').addClass('locked');
 			// });
 
 			//Retornar true ou false
@@ -407,18 +407,18 @@ Nitro.module('checkout.gae', function() {
 
 	this.introOpen = function (){
 
-		
+
 		if ( winWidth < 960 ) {
-			
+
 			setTimeout(function() {
 				var modalIntro = $('#modal-intro-gae');
-				
+
 				if ($.cookie('cns-intro-gae') == null ){
 					//Entrou na condição, Cookie não existe
 					//insere a classe para mostrar o modal intro
 					modalIntro.addClass('-is-visible');
 					modalIntro.fadeIn(300);
-					
+
 					$('#modal-intro-gae .btn-confirm').on('click', function(){
 						//Clicou no btn então fecha o modal
 						$.cookie('cns-intro-gae', 'cns-intro-gae', { expires: 60 });
