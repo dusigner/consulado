@@ -106,8 +106,8 @@ Nitro.module('testeab-entrega', function() {
 			const textCartSlaConvencional = $('.seller-1-sla-Convencional span').html();
 			const textCartSlaAgendadaConvencional = $('.seller-1-sla-EntregaAgendada-Convencional span').html();
 
-			$('.seller-1-sla-Convencional span').html(textCartSlaConvencional.replace('Convencional', 'Econômica'));
-			$('.seller-1-sla-EntregaAgendada-Convencional span').html(textCartSlaAgendadaConvencional.replace('Convencional', 'Econômica'));
+			textCartSlaConvencional && $('.seller-1-sla-Convencional span').html(textCartSlaConvencional.replace('Convencional', 'Econômica'));
+			textCartSlaAgendadaConvencional && $('.seller-1-sla-EntregaAgendada-Convencional span').html(textCartSlaAgendadaConvencional.replace('Convencional', 'Econômica'));
 
 			// Espera a VTEX carregar os dados de entrega na página de shipping
 			setTimeout(() => {
