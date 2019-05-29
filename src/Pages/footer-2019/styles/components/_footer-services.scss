@@ -19,7 +19,7 @@
 	&__item {
 		@include breakpoint('small', 'min') { max-width: 300px; }
 		@include breakpoint('small', 'max') {
-			border: 1px solid #e3e1e1;
+			border: 1px solid $default-color-gray-light;
 			border-radius: 4px;
 			margin: .5em 0;
 			padding-left: 90px;

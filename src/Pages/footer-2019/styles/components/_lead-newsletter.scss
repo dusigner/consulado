@@ -1,9 +1,11 @@
 @charset 'UTF-8';
 
 .lead-newsletter {
+	@include breakpoint('small', 'max') { display: none; }
 	background-color: $default-color-purple;
 	min-height: 55px;
 	padding: .2em 0;
+
 
 	// Container
 	.container {
@@ -64,10 +66,12 @@
 		&.campo-cadastro-telefone { display: none; }
 
 		label {
-			@include breakpoint('small', 'min') { width: 150px; }
+			@include breakpoint('small', 'min') {
+				margin: 0 5px;
+				width: 150px;
+			}
 			@include rfs(10);
 			display: inline-block;
-			margin: 0 5px;
 			padding-left: 25px;
 			position: relative;
 
