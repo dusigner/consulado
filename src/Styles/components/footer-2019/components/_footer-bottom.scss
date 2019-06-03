@@ -1,0 +1,66 @@
+@charset 'UTF-8';
+
+.footer-bottom {
+	background-color: $default-color-gray-dark;
+	border-top: 1px solid #707070;
+	color: #fff;
+	padding: 1.5em 0;
+
+	.container {
+		@include breakpoint('small', 'min') {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	&__item {
+		@include breakpoint('small', 'max') { width: 100%!important; }
+		width: 30%;
+
+		&:first-child { width: 60%; }
+
+		img {
+			display: inline-block;
+			margin: 0 20px 20px 0;
+		}
+	}
+
+	// Title
+	&__title {
+		@include rfs(14);
+		display: block;
+		font-weight: normal;
+		margin-bottom: 1.2em;
+		padding-bottom: 1em;
+		position: relative;
+
+		&:before {
+			background-color: $default-color-gray-light;
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 2px;
+			opacity: .5;
+			position: absolute;
+			width: 100%;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(11);
+
+		a {
+			color: #fff;
+
+			&:hover { text-decoration: underline; }
+		}
+	}
+
+}
+
+// logo vtex
+.vtex-logo-footer {
+	display: block;
+	margin-top: 1em;
+}
