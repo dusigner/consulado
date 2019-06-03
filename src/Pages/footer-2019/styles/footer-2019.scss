@@ -19,14 +19,15 @@
 @import '../../../Styles/helpers/variables';
 $default-color-green: #9ACA3C;
 $default-color-gray: #736C6B;
+$default-color-gray-dark: #534C4B;
 $default-color-purple: #702F8F;
 $default-color-gray-light: #d9d8d8;
+
+
 
 // Helpers
 @import '../../../Styles/helpers/mixins';
 @import '../../../Styles/helpers/rfs';
-
-.display-flex { display: flex; }
 
 // Components
 @import './components/cns-button';
@@ -35,5 +36,13 @@ $default-color-gray-light: #d9d8d8;
 @import './components/lead-newsletter';
 @import './components/canais-atendimento';
 @import './components/menu-footer';
+@import './components/footer-bottom';
+
+.footer-2019 {
+	@include breakpoint('small', 'max') {
+		display: flex;
+		flex-direction: column;
+	}
+}
 
 

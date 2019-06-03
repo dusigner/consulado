@@ -1,6 +1,5 @@
 @charset 'UTF-8';
 
-
 .menu-footer {
 	background-color: #424340;
 
@@ -15,7 +14,6 @@
 				margin: 0;
 				width: 50%;
 			}
-			margin-right: 50px;
 		}
 
 		&__link {
@@ -24,6 +22,7 @@
 			display: block;
 			font-weight: normal;
 			height: 100%;
+			margin-right: 50px;
 			padding: .8em 0!important;
 
 			&:hover { text-decoration: underline; }
