@@ -87,21 +87,21 @@
 				<form class="form-newsletter" id="form-newsletter">
 					<fieldset>
 						<label for="name">Nome</label>
-						<input type="text" id="name" name="name" placeholder="Nome">
+						<input type="text" id="name" name="name" placeholder="Nome" />
 					</fieldset>
 
 					<fieldset>
 						<label for="email">E-mail</label>
-						<input type="email" id="email" name="email" placeholder="E-mail">
+						<input type="email" id="email" name="email" placeholder="E-mail" />
 					</fieldset>
 
 					<fieldset class="campo-cadastro-telefone">
 						<label for="telefone">Telefone (opcional)</label>
-						<input type="tel" id="telefone" name="homePhone" placeholder="Telefone (opcional)">
+						<input type="tel" id="telefone" name="homePhone" placeholder="Telefone (opcional)" />
 					</fieldset>
 
 					<fieldset class="campo-checkbox">
-						<input type="checkbox" id="termos" name="termos">
+						<input type="checkbox" id="termos" name="termos" />
 						<label for="termos">
 							Li e concordo com os
 							<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank" rel="noreferrer noopener">
@@ -110,7 +110,7 @@
 						</label>
 					</fieldset>
 
-					<input type="submit" name="submit" class="submit cns-button cns-button--purple cns-button--bold" value="Cadastre-se">
+					<input type="submit" name="submit" class="submit cns-button cns-button--purple cns-button--bold" value="Cadastre-se" />
 				</form>
 
 				<!-- <p class="message-success">E-mail cadastrado com sucesso!</p>
@@ -314,8 +314,8 @@
 						Formas<br />
 						de Pagamento
 					</strong>
-					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-01-2019.png" alt="Formas de pagemento Consul">
-					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-02-2019.png" alt="Formas de pagemento Consul">
+					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-01-2019.png" alt="Formas de pagemento Consul" />
+					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-02-2019.png" alt="Formas de pagemento Consul" />
 				</div>
 
 				<div class="footer-bottom__item">
@@ -331,16 +331,102 @@
 				<div class="footer-bottom__text">
 					Os valores "A partir de" dos produtos são referentes ao seu preço no boleto bancário. Todos os preços e condições comerciais estão sujeitos a alteração sem aviso prévio. O preço válido será garantido após a finalização da compra. A simples inclusão de produtos no "carrinho de compras" não implica em sua reserva pelo consumidor. Copyright BUD Comércio de Eletrodomésticos Ltda. ® 2014 – Todos os Direitos Reservados. CNPJ 62.058.318/0007-76. Endereço Sede : Rua Olympia Semeraro, 675, Jardim Santa Emília, São Paulo/ SP, CEP 04183-090 | Inscrição Municipal/Estadual 148.044.198.118 | <a href="mailto:contato@consul.zendesk.com" title="contato@consul.zendesk.com">contato@consul.zendesk.com</a>.
 
-					<img src="//consul.vteximg.com.br/arquivos/logo-vtex-consul.png" alt="" class="vtex-logo-footer">
+					<img src="//consul.vteximg.com.br/arquivos/logo-vtex-consul.png" alt="" class="vtex-logo-footer" />
 				</div>
 			</div>
 		</div>
 		<!-- /Bottom footer -->
 	</footer>
 
-	<footer class="page-footer" data-module="footer"></footer>
-	<script type="text/javascript" src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->"></script>
 
-</body>
 
-</html>
+<!-- <a href="#" class="call-newsletter"><strong>Cadastre-se </strong>e Receba promoções<i class="icon icon-arrow-down"></i></a> -->
+
+<!-- Go to top -->
+<a href="javascript:void(0)" class="bt-gototop hide"></a>
+<!-- /Go to top -->
+
+<div class="mask"></div>
+
+
+<!-- Modal Email Master Data OptOut -->
+<div id="modal-emailCRM" style="display:none">
+	<div class="modal-body">
+		<form method="POST" action="/" class="emailCRM">
+			<div class="step1">
+				<div class="row">
+					<p class="col-12">Você tem certeza de que não quer receber mais esse tipo de e-mail?</p>
+				</div>
+				<div class="row">
+					<div class="col-12 text-center"><button class="avancar" type="button">Avançar</button></div>
+				</div>
+			</div>
+			<div class="step2">
+				<div class="row">
+					<p class="col-12">Por favor, informe o motivo do seu descadastramento:</p>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="frequencia" value="Considero a frequência de envio muito alta" />
+						<label for="frequencia">Considero a frequência de envio muito alta</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="conteudo" value="O conteúdo dos e-mails não me interessa" />
+						<label for="conteudo">O conteúdo dos e-mails não me interessa</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="autorizacao" value="Não autorizei ou não me recordo de ter autorizado o envio de mensagens para o meu e-mail"
+						/>
+						<label for="autorizacao">Não autorizei ou não me recordo de ter autorizado o envio de mensagens para o meu e-mail</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="tempo" value="Não tenho tempo para ler os e-mails diretamente" />
+						<label for="tempo">Não tenho tempo para ler os e-mails diretamente</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="outro" value="Outro" />
+						<label for="outro">Outro</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 text-center">
+						<button type="submit" class="descadastrar">Descadastrar</button>
+					</div>
+				</div>
+			</div>
+			<div class="step3 success">
+				<div class="row">
+					<p class="col-12">Você foi descadastrado e não receberá mais esse tipo de email</p>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
+<!--URL QA-->
+<!--<script src="//consulqa.vteximg.com.br/arquivos/consul2-app.min.js?v=3.0.0"></script>-->
+<!--<script src="//whirlpool.vteximg.com.br/arquivos/consul2-app.min.js"></script>-->
+
+<!--URL Produção-->
+<script src="<!-- @echo assetsPath -->/consul2-app.min.js?v=<!-- @echo package.version -->"></script>
+
+<!-- Script pescaria TLV -->
+<script>
+	(function () {
+		var ab = document.createElement('script'); ab.async = true; ab.src = '//autobots.visie.com.br/consul/static/p/consul.js?t=1540501258.681'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ab, s); }
+	)();
+</script>
+<!-- Script pescaria TLV -->
+
+<script type="text/javascript" src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->"></script>
