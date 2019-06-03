@@ -15,7 +15,7 @@ Nitro.module('slider-banner', [],  function() {
 		});
 
 		$bannerPrincipal.slick({
-			autoplay: true,
+			autoplay: false,
 			autoplaySpeed: 6000,
 			mobileFirst: true,
 			dots: true,

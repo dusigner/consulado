@@ -323,26 +323,33 @@
 
 	.slick-vertical {
 
+		.slick-list {
+			border: 10px solid #fff;
+			border-width: 10px 0;
+			min-height: 410px;
+		}
+
 		.box-produto {
 			align-items: center;
 			flex-direction: row;
-			margin: 5px auto;
+			margin: 3px auto;
 			padding: 8px 15px;
+			min-height: 180px;
 
 			.shelf-item {
 				&__image {
-					img {
-						height: auto;
-					}
+					img { height: auto; }
 				}
 
 				&__info {
+					border: none;
 					height: auto;
 					margin: 0;
 				}
 
 				&__name {
-					font-size: 13px;
+					font-size: 14px!important;
+					margin: 0;
 				}
 			}
 		}

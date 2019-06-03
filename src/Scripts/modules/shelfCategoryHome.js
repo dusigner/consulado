@@ -5,6 +5,8 @@ require('vendors/slick');
 Nitro.module('shelfCategoryHome', function() {
 	// Variables
 	const $shelfCategory = $('.shelf-category-home');
+	const $shelfCategoryConteinaer = $('.shelf-category-home-container');
+	const shelfTtitle = $shelfCategoryConteinaer.find('.page-title').text().trim();
 
 	// Tabs
 	const shelfCategoryHome = {};
@@ -36,9 +38,10 @@ Nitro.module('shelfCategoryHome', function() {
 				settings: {
 					arrows: false,
 					dots: true,
-					infinite: true,
+					infinite: false,
 					slidesToScroll: 1,
-					slidesToShow: 1
+					slidesToShow: 1,
+					swipeToSlide: true
 				}
 			}]
 		});
@@ -52,7 +55,7 @@ Nitro.module('shelfCategoryHome', function() {
 		prevButton.click(() => {
 			dataLayer.push({
 				event: 'generic',
-				category: 'Talvez se interesse por',
+				category: `[SQUAD] - ${shelfTtitle}`,
 				action: 'Clique Seta  Esquerda ',
 				label: 'Ver Categorias para esquerda'
 			});
@@ -61,7 +64,7 @@ Nitro.module('shelfCategoryHome', function() {
 		nextButton.click(() => {
 			dataLayer.push({
 				event: 'generic',
-				category: 'Talvez se interesse por',
+				category: `[SQUAD] - ${shelfTtitle}`,
 				action: 'Clique Seta  Direita ',
 				label: 'Ver Categorias para Direita'
 			});
@@ -76,7 +79,7 @@ Nitro.module('shelfCategoryHome', function() {
 
 			dataLayer.push({
 				event: 'generic',
-				category: `Talvez se interesse por ${cardText}`,
+				category: `[SQUAD] - ${shelfTtitle} - ${cardText}`,
 				action: 'Clique na categoria',
 				label: 'Ir para categoria'
 			});
