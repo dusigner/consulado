@@ -1,0 +1,8 @@
+@charset 'UTF-8';
+
+.footer-title {
+	@include rfs(25);
+	font-weight: bold;
+
+	strong { color: $default-color-green; }
+}
