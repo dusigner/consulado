@@ -1,0 +1,107 @@
+@charset 'UTF-8';
+
+// Services
+.footer-services {
+	color: $default-color-gray;
+	margin: 1em 0;
+
+	.container {
+		@include breakpoint('small', 'min') { text-align: center; }
+		@include breakpoint('small', 'max') {
+			align-items: center;
+			flex-direction: column;
+		}
+		display: flex;
+		justify-content: space-between;
+	}
+
+	// Item
+	&__item {
+		@include breakpoint('small', 'min') { max-width: 300px; }
+		@include breakpoint('small', 'max') {
+			border: 1px solid $default-color-gray-light;
+			border-radius: 4px;
+			margin: .5em 0;
+			padding-left: 90px;
+		}
+		display: flex;
+		flex-direction: column;
+		min-width: 230px;
+		padding: 1.2em;
+		position: relative;
+		width: 100%;
+	}
+
+	// Icon
+	&__icon {
+		@include breakpoint('small', 'max') {
+			@include square(45px);
+			background-position: center center;
+			left: 22px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		@include square(55px);
+		background-color: transparent;
+		background-position: bottom center;
+		background-repeat: no-repeat;
+		display: block;
+		margin: auto;
+
+		&--ajuda-online {
+			@include breakpoint('small', 'max') { background-size: 22px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/ajuda-online-consul-icone.png');
+		}
+
+		&--meus-pedidos {
+			@include breakpoint('small', 'max') { background-size: 44px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/meus-pedidos-consul-icone.png');
+		}
+
+		&--trocas-e-devolucoes {
+			@include breakpoint('small', 'max') { background-size: 27px auto; }
+			background-image: url('//consul.vteximg.com.br/arquivos/trocas-e-devolucoes-consul-icone.png?v=2');
+		}
+	}
+
+	// Title
+	&__title {
+		@include breakpoint('small', 'max') { margin: 0; }
+		@include rfs(16);
+		margin: .8em 0;
+		padding: 5px 0;
+		position: relative;
+
+		// title border
+		&:after {
+			@include breakpoint('small', 'min') {
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			background-color: $default-color-green;
+			bottom: 0;
+			content: ' ';
+			display: block;
+			height: 2px;
+			position: absolute;
+			width: 25px;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(14);
+		flex-grow: 3;
+		margin: 0;
+	}
+
+	// Button
+	&__cta {
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+		}
+		margin-top: 2em;
+	}
+}

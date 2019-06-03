@@ -1,9 +1,11 @@
 'use strict';
 
-var Uri = require('vendors/Uri');
+// var Uri = require('vendors/Uri');
 var CRM = require('modules/store/crm');
 
 Nitro.module('lead-newsletter', function() {
+
+	console.log('@@@@@@@ FOOTER');
 
 	// Teste AB Controller
 	// var urlTesteAb = window.location.search;
@@ -22,14 +24,14 @@ Nitro.module('lead-newsletter', function() {
 	$('input[type=tel]').inputmask('99 [9]9999-9999');
 
 	var self = this,
-		$formNewsletter = ($(window).width() <= 768) ? $('#form-newsletter-footer') : $('#form-newsletter'),
+		$formNewsletter = $('#form-newsletter'),
 		$inputName = $formNewsletter.find('input[type="text"]'),
 		$inputEmail = $formNewsletter.find('input[type="email"]'),
 		$inputTel = $formNewsletter.find('input[type="tel"]'),
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
-		valid = false,
+		valid = false;
 		// hasSession = sessionStorage.getItem('leadNewsletter'),
-		$newsletterFixed = $('.toggle-newsletter');
+		// $newsletterFixed = $('.toggle-newsletter');
 
 	this.setup = function(/*orderForm*/) {
 		$formNewsletter.submit(function(e) {
@@ -143,56 +145,4 @@ Nitro.module('lead-newsletter', function() {
 	window.vtexjs.checkout.getOrderForm().done(function(/*result*/) {
 		self.setup(/*result*/);
 	});
-
-
-	$('.lead-newsletter-show').click(function() {
-		$(this).hide();
-		$(this).next('.lead-newsletter').fadeIn();
-		$('#name').focus();
-	});
-
-	$('.btn_close').click(function() {
-		$('.lead-newsletter').hide();
-		$('.lead-newsletter-show').fadeIn();
-	});
-
-	/**
-	 * Retorna verdadeiro se existir o valor 'visite_a_loja' no parâmetro da url
-	 *
-	 * @returns {boolean}
-	 */
-	this.isParameterVisiteALoja = function() {
-
-		var uri = new Uri(window.location.href),
-			parameters = uri.queryPairs;
-
-		return parameters.find(function(parameter) {
-			return parameter[1] === 'visite_a_loja';
-		});
-	};
-
-	this.toggleNewsletter = function() {
-		if( self.isParameterVisiteALoja() ) {
-			$newsletterFixed.closest('.lead-newsletter').addClass('lead-newsletter--fixed secrete');
-
-			$newsletterFixed.on('click', function() {
-				$(this).closest('.lead-newsletter--fixed').toggleClass('secrete');
-			});
-		}
-	};
-
-	/**
-	 * Abre newsletter fixa depois de determinado tempo
-	 *
-	 * @param {int} time
-	 */
-	this.newsletterFixedOpenAfter = function(time) {
-
-		$(window).ready(function() {
-			setTimeout(function() {
-				$newsletterFixed.closest('.lead-newsletter--fixed')
-					.toggleClass('secrete');
-			}, time);
-		});
-	};
 });
