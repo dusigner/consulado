@@ -322,14 +322,14 @@
 	<br />
 
 	<!-- Lead newsletter -->
-	<div class="lead-newsletter">
+	<!-- <div class="lead-newsletter">
 		<div class="row">
 			<div class="container clearfix">
 				<span class="btn_close"></span>
 				<vtex:contentPlaceHolder id="LeadNewsletter" />
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- /Lead newsletter -->
 
 	<!-- Lead newsletter footer -->
@@ -382,7 +382,14 @@
 	<!-- /Footer -->
 
 	<!-- Footer 2019 -->
-	<vtex:template id="0-consul-footer-2019" />
+	<footer class="footer-2019">
+		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-newsletter" />
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+		<vtex:template id="0-consul-footer-2019-after" />
+	</footer>
 	<!-- /Footer 2019 -->
 
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
