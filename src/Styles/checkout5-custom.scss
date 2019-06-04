@@ -85,10 +85,12 @@ body {
 	.hide {
 		visibility: visible;
 	}
-	.step,
-	.cart,
-	.totalizers{
+	.step{
 		border: 1px solid $gray-l;
+	}
+
+	.cart{
+		border: none;
 	}
 
 	.totalizers {

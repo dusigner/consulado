@@ -1,5 +1,10 @@
 body {
 	&.body-cart {
+
+		.cart-template  {
+			width: 99.99%;
+		}
+
 		.checkout-container {
 			padding-bottom: 40px;
 		}
@@ -12,11 +17,11 @@ body {
 			.cart-items {
 				thead {
 					@include responsiveFont(14, 16, true);
-					background-color: $gray-l;
+					border-bottom: 3px solid $green;
 
 					th {
 						padding: 15px;
-						text-transform: uppercase;
+						text-transform: capitalize;
 					}
 				}
 
@@ -24,6 +29,11 @@ body {
 
 					td {
 						padding: 20px 10px;
+
+						@include  breakpoint(small 'min') {
+							padding: 20px 10px 0;
+						}
+
 						@include breakpoint(768px, 'max') {
 							vertical-align: top;
 
@@ -42,6 +52,17 @@ body {
 								}
 							}
 						}
+
+						&.product-image {
+
+							@include  breakpoint(small 'max') {
+								padding: 0;
+							}
+
+							img {
+								max-height: 45px;
+							}
+						}
 						@include breakpoint(small, 'max') {
 							padding: 10px 0 !important;
 						}
@@ -55,18 +76,18 @@ body {
 					}
 
 					.product-item {
-						border-top: 3px solid $gray-l;
+						border: 1px solid $gray-l;
+						border-radius: 3px;
+						margin-bottom: 20px;
 						overflow: initial;
 						padding: 10px 0;
 
+
 						@include breakpoint(small, 'max') { padding-bottom: 10px; }
 
-						&:first-child {
-							border-bottom: none;
-
-							@include breakpoint(small, 'max') {
-								border-top: 0 !important;
-							}
+						@include breakpoint(small, 'min') {
+							border-radius: 3px;
+							margin: 15px 0;
 						}
 
 						.brand,
@@ -77,6 +98,19 @@ body {
 							@include responsiveFont(12, 16, true);
 							color: $purple;
 							font-weight: normal;
+						}
+
+						.shipping-date,
+						.product-price,
+						.quantity-price,
+						.item-remove,
+						.quantity {
+
+							@include breakpoint(small, 'min') {
+								padding-bottom: 10px;
+								padding-top: 45px;
+								vertical-align: top;
+							}
 						}
 
 						.product-name {
@@ -98,14 +132,16 @@ body {
 								position: relative;
 								width: calc(100% - 60px);
 
-								&:before {
-									background: $gray-l;
-									bottom: 0;
-									content: '';
-									height: 2px;
-									left: 0;
-									position: absolute;
-									width: 100%;
+								@include breakpoint(small, 'max') {
+									&:before {
+										background: $gray-l;
+										bottom: 0;
+										content: '';
+										height: 2px;
+										left: 0;
+										position: absolute;
+										width: 100%;
+									}
 								}
 							}
 
@@ -120,14 +156,29 @@ body {
 							}
 
 							.product-service {
+								padding-top: 10px;
+								position: relative;
+
+								@include breakpoint(small, 'min') {
+
+									&::before {
+										background: #F1F0F0;
+										content: '';
+										height: 1px;
+										position: absolute;
+										width: 1000%;
+									}
+								}
+
 								.linkWarranty {
-									@include responsiveFont(11, 16, true);
-									font-weight: 500;
-									margin-top: 15px;
+									@include responsiveFont(12, 16, true);
+									font-weight: 600;
+									margin-top: 20px;
 									text-transform: capitalize;
 
 									@include breakpoint(small, 'max') {
 										@include responsiveFont(13, 18, true);
+										font-weight: 500;
 										line-height: normal;
 										padding: 10px 0;
 									}
@@ -135,7 +186,58 @@ body {
 							}
 						}
 
+						.item-remove {
+
+							.item-link-remove {
+								.icon {
+									background-size: 100% 100%;
+									display: inline-block;
+									height: 13px;
+									margin-top: 5px;
+									width: 13px;
+
+									&:before {
+										visibility: hidden;
+									}
+
+									&.icon-remove {
+										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
+									}
+								}
+							}
+
+							@include breakpoint(small, 'min') {
+								padding-right: 45px;
+								padding-top: 51px;
+
+								&:before {
+									background: #fff;
+									content: '';
+									height: 1px;
+									margin: 49px 0 0 0;
+									position: absolute;
+									right: 0;
+									width: 20px;
+
+								}
+							}
+						}
+
+						.quantity-price {
+							color: $green;
+							font-weight: bold;
+							padding: 20px 5px;
+
+							@include breakpoint(small, 'min') {
+								padding-top: 53px;
+							}
+						}
+
 						.shipping-date {
+							@include breakpoint(small, 'min') {
+								padding-top: 55px;
+							}
+
 							.shipping-estimate-date {
 								@include responsiveFont(13, 16, true);
 								color: $txt-gray;
@@ -171,8 +273,8 @@ body {
 							   margin-top: 10px;
 							}
 							input {
-								height: 35px;
-								width: 40px;
+								height: 24px;
+								width: 30px;
 							}
 
 							.item-quantity-change {
@@ -184,7 +286,10 @@ body {
 									background-size: 100% 100%;
 									display: inline-block;
 									height: 16px;
+									left: 1px;
 									margin-top: 5px;
+									position: relative;
+									top: 4px;
 									width: 16px;
 
 									&.icon-minus-sign {
@@ -201,38 +306,95 @@ body {
 								}
 							 }
 						}
+					}
 
-						.quantity-price {
-							color: $green;
-							font-weight: bold;
-							padding: 20px 5px;
+					.item-service {
+						border: 1px solid #E3E1E1;
+						position: relative;
+
+						@include breakpoint(small, 'max') {
+							margin-bottom: 10px;
+							margin-top: -21px;
 						}
 
-						.item-remove {
+						@include breakpoint(small, 'min') {
+
+							&:before {
+								background: #fff;
+								content: '';
+								height: 2px;
+								margin-top: -1px;
+								position: absolute;
+								width: 100%;
+							}
+
 							.item-link-remove {
-								.icon {
+								position: relative;
+
+								&:before {
+									background: #fff;
+									content: '';
+									height: 2px;
+									position: absolute;
+									right: -35px;
+									top: -12px;
+									width: 20px;
+								}
+							}
+						}
+
+						td {
+							padding: 10px 10px 25px 10px;
+
+							&.bundle-item-image {
+								display: none;
+							}
+
+							&.quantity-price,
+							&.item-remove {
+								padding: 0;
+							}
+
+							&.item-remove {
+								padding-right: 25px;
+
+								.icon-remove {
+									background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
 									background-size: 100% 100%;
 									display: inline-block;
 									height: 13px;
 									margin-top: 5px;
 									width: 13px;
 
+
 									&:before {
 										visibility: hidden;
-									}
-
-									&.icon-remove {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
 									}
 								}
 							}
 						}
-					}
 
-					.item-service {
-						td { padding: 10px 10px 25px 10px; }
+						.bundle-item-name {
+							@include responsiveFont(14, 16, true);
+							padding: 15px 0;
+							position: relative;
 
-						.bundle-item-name { @include responsiveFont(14, 16, true); }
+							span {
+								padding-left: 10px;
+							}
+
+							@include breakpoint(small, 'min') {
+
+								&::before {
+									background: #F1F0F0;
+									content: '';
+									height: 1px;
+									position: absolute;
+									top: 0;
+									width: 1000%;
+								}
+							}
+						}
 
 						.quantity-price {
 							@include responsiveFont(12, 16, true);
@@ -266,6 +428,69 @@ body {
 			padding: 0;
 			width: 46%;
 
+			&.summary-totalizers {
+
+				.accordion-body {
+
+					@include breakpoint(small, 'min') {
+						overflow: hidden;
+					}
+				}
+
+				@include breakpoint(small, 'min') {
+					border: 1px solid #E3E1E1;
+					border-radius: 3px;
+					margin-top: 5px;
+
+					.totalizers-list {
+
+						tr {
+
+							.info {
+								@include responsiveFont(14, 16, true);
+								padding-left: 20px;
+								position: relative;
+
+								&::before {
+									background: #fff;
+									bottom: -1px;
+									content: '';
+									height: 1px;
+									left: calc( -100% + 20px);
+									position: absolute;
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.Shipping {
+
+				.info {
+
+					&::before {
+						display: none;
+					}
+				}
+			}
+
+			.monetary {
+				padding-right: 20px;
+				position: relative;
+
+				&::before {
+					background: #fff;
+					bottom: -1px;
+					content: '';
+					height: 1px;
+					position: absolute;
+					right: calc( -100% + 20px);
+					width: 100%;
+				}
+			}
+
 			@include breakpoint(small, 'max') {
 				width: 100%;
 			}
@@ -273,6 +498,7 @@ body {
 			.quantity-price,
 			.monetary {
 				@include responsiveFont(13, 16, true);
+				color: $purple;
 				font-weight: bold;
 				text-align: right;
 				width: auto;
@@ -305,6 +531,16 @@ body {
 
 					tr {
 						border-bottom: 1px solid $gray-l;
+						position: relative;
+
+						// &::before,
+						// &:after{
+						// 	content: '';
+						// 	background: #000;
+						// 	height: 100%;
+						// 	width: 15px;
+						// 	position: absolute;
+						// }
 					}
 				}
 
@@ -424,6 +660,22 @@ body {
 							margin-top: 4px;
 							min-width: auto;
 							padding: 6px 0;
+							position: relative;
+
+							@include breakpoint('small', 'min') {
+								padding-right: 20px;
+
+								&::before {
+									background: #fff;
+									bottom: -1px;
+									content: '';
+									height: 1px;
+									position: absolute;
+									right: calc( -100% + 20px);
+									width: 100%;
+									z-index: 1;
+								}
+							}
 
 							.shipping-name,
 							.shipping-name-to {
@@ -443,6 +695,11 @@ body {
 							border-top: 1px solid $gray-l;
 							padding: 16px 0;
 							text-align: right;
+
+
+							@include breakpoint('small', 'min') {
+								padding: 10px 20px 10px 0;
+							}
 
 							@include breakpoint(extra-large, 'max') {
 								padding-top: 10px;
@@ -539,6 +796,11 @@ body {
 									left: -180px;
 									position: absolute;
 									top: 4px;
+
+
+									@include breakpoint('small', 'min') {
+										left: -188px;
+									}
 
 									@include breakpoint(extra-large, 'max') {
 										left: -141px;
@@ -658,6 +920,10 @@ body {
 						color: $purple;
 						font-weight: bold;
 						padding-right: 10px;
+
+						@include breakpoint(small, 'min') {
+							padding-right: 0;
+						}
 					}
 
 					.icon-remove-sign {
@@ -676,8 +942,13 @@ body {
 						@include responsiveFont(18, 16, true);
 						font-weight: 700;
 
+						@include breakpoint(small, 'min') {
+							padding: 12px 0 12px 20px ;
+						}
+
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
+							padding-left: 10px;
 						}
 					}
 
@@ -685,6 +956,14 @@ body {
 						@include responsiveFont(18, 16, true);
 						color: $green;
 						font-weight: 700;
+
+						@include breakpoint(small, 'min') {
+							padding: 12px 20px 12px 0 ;
+						}
+
+						&::before {
+							display: none;
+						}
 
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
@@ -712,6 +991,11 @@ body {
 			.summary-coupon {
 				float: none;
 
+				@include breakpoint(small, 'min') {
+					margin-left: 0;
+					margin-top: 10px;
+				}
+
 				.coupon-data {
 					float: none;
 
@@ -728,9 +1012,19 @@ body {
 						padding: 12px 25px;
 						text-transform: capitalize;
 
+						@include breakpoint(small, 'min') {
+							padding: 12px 45px;
+						}
+
 						span {
 							color: #736C6B;
-							&:first-child { display: none; }
+							&:first-child {
+								display: none;
+
+								@include breakpoint(small, 'min') {
+									display: inline-block;
+								}
+							}
 						}
 
 						@include breakpoint(small, 'max') {
@@ -821,10 +1115,38 @@ body {
 		}
 
 		.cart-links-bottom {
+			position: relative;
+
+			@include breakpoint(small, 'min') {
+				padding: 0 35px;
+				width: 46%;
+			}
+
 			.link-choose-more-products-wrapper {
+				display: block;
+				left: 0;
+				padding: 0 35px;
+				position: absolute;
+				top: 57px;
+				width: 100%;
+
+
+				a {
+					border: 3px solid transparent;
+					color: $purple;
+					text-align: center;
+					transition: all .2s;
+					width: 100%;
+
+					&:hover {
+						border: 3px solid #e4e4e4;
+					}
+				}
+
 				@media screen and (min-width: 320px) and (max-width: 490px) {
 					position: absolute;
 				}
+
 				@include breakpoint(small, 'max') {
 					display: block;
 					left: 0;
@@ -833,12 +1155,12 @@ body {
 				}
 
 				#cart-choose-more-products {
-					@include responsiveFont(13, 16, true);
+					@include responsiveFont(14, 16, true);
 					display: none;
 					font-weight: bold;
 					margin-right: 15px;
 					padding: 15px 25px;
-					text-transform: uppercase;
+					text-transform: capitalize;
 					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
 						display: inline-block;
@@ -853,24 +1175,33 @@ body {
 
 			// Fake button
 			.fake-buttom {
-				@include breakpoint(768px, 'min') {
-					position: relative;
-				 }
 				@include responsiveFont(15, 16, true);
+				background: $green;
+				border: 0;
+				color: transparent;
 				font-weight: bold;
 				padding: 14px 50px;
-				padding-right: 65px;
 				position: relative;
-				text-transform: uppercase;
+				text-transform: capitalize;
+				width: 100%;
+
+				&:hover {
+					background: lighten($green, 10%) ;
+				}
+
+				@include breakpoint(768px, 'min') {
+					position: relative;
+				}
 
 				&:before {
-					@include contentBefore();
-					@include font-size(16px, true, false);
-					@include icon-get('arrow-right');
+					@include responsiveFont(15, 16, true);
+					color: #fff;
+					content: 'Finalizar compra';
 					display: inline-block;
-					right: 40px;
+					left: 50%;
+					position: absolute;
 					top: 50%;
-					transform: translateY(-50%) scaleY(1);
+					transform: translateY(-50%) translateX(-50%);
 					transition: transform .2s ease-in;
 				}
 
@@ -898,7 +1229,7 @@ body {
 			.link-choose-more-products {
 				@include responsiveFont(14, 16, true);
 				@include vendor(border-radius, 20px);
-				background-color: $green;
+				//background-color: $green;
 				border: none;
 				color: #fff;
 			}
@@ -959,7 +1290,7 @@ body {
 	}
 	.cart-links-bottom {
 		.fake-buttom {
-			display: none!important;
+			margin: 20px 0 0;
 		}
 	}
 }
