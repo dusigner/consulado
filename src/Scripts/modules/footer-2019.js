@@ -29,6 +29,12 @@ Nitro.module('footer-2019', function() {
 	footer.toogleNewsletterMobile = () => {
 		$openMobileNewsletter.click(function() {
 			$leadNewsletter.toggleClass('is--mobile-active');
+
+			if ($leadNewsletter.hasClass('success')) {
+				setTimeout(() => {
+					$leadNewsletter.removeClass('success');
+				}, 700);
+			}
 		});
 	};
 
@@ -57,4 +63,4 @@ Nitro.module('footer-2019', function() {
 	};
 
 	footer.init();
-})();
+});
