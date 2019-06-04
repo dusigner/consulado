@@ -42,7 +42,7 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
-	require('custom/testeab-entrega');
+	require('components/testeab-entrega');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
