@@ -211,17 +211,24 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 				position: relative;
 
 				&,
-				a { color: #f49a9a; }
+				a { color: #eb008b; }
 
-				&:before { background-color: #f49a9a; }
+				&:before { background-color: #eb008b; }
 			}
 		}
 
-		&[type=checkbox]:checked + label {
-			position: relative;
+		&[type=checkbox]:checked {
+			& + label {
+				position: relative;
 
-			&:before {
-				background: $default-color-purple url($checkbox-image) center center no-repeat;
+				&:before { background: $default-color-purple url($checkbox-image) center center no-repeat; }
+			}
+
+			&.error + label {
+				&,
+				a { color: #fff; }
+
+				&:before { background-color: #fff; }
 			}
 		}
 	}
@@ -248,7 +255,7 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 
 		p.message-success {
 			@include rfs(13);
-			color: $orange;
+			color: #fff;
 			display: block !important;
 			font-weight: bold;
 			margin: 10px auto;
@@ -256,19 +263,6 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 			position: relative;
 			text-transform: uppercase;
 			width: 280px;
-
-			&:before {
-				@include contentBefore();
-				@include icon-get('check-mark');
-				@include rfs(14);
-				color: #9aca3c;
-				display: block;
-				font-weight: bold !important;
-				left: 15px;
-				position: absolute;
-				top: 0;
-				transform: translateX(-50%);
-			}
 		}
 
 		p.title { display: none; }
@@ -276,7 +270,7 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 
 	.form-newsletter_error-email {
 		background: #fff;
-		border: 1px solid #f49a9a;
+		border: 1px solid #eb008b;
 		border-radius: 5px;
 		bottom: -35px;
 		font-size: 14px;
