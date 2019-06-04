@@ -255,7 +255,6 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 
 		p.message-success {
 			@include rfs(13);
-			color: #fff;
 			display: block !important;
 			font-weight: bold;
 			margin: 10px auto;

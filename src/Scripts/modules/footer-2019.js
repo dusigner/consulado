@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-(function(){
+Nitro.module('footer', function() {
 	const $window = $(window);
 	const $canaisAtendimentoTtitle = $('.canais-atendimento__title');
 	const $openMobileNewsletter = $('.open-mobile-newsletter');
@@ -56,8 +56,5 @@
 		});
 	};
 
-
-
 	footer.init();
-
 })();
