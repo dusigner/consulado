@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-Nitro.module('footer', function() {
+Nitro.module('footer-2019', function() {
 	const $window = $(window);
 	const $canaisAtendimentoTtitle = $('.canais-atendimento__title');
 	const $openMobileNewsletter = $('.open-mobile-newsletter');

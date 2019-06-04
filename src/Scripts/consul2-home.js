@@ -4,7 +4,7 @@
 require('modules/slider-banner');
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
-require('custom/lead-newsletter');
+require('components/lead-newsletter');
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
