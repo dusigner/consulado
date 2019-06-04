@@ -5,8 +5,6 @@ var CRM = require('modules/store/crm');
 
 Nitro.module('lead-newsletter', function() {
 
-	console.log('@@@@@@@ FOOTER');
-
 	// Teste AB Controller
 	// var urlTesteAb = window.location.search;
 	// var $body = $('body');
@@ -59,8 +57,8 @@ Nitro.module('lead-newsletter', function() {
 			}
 		});
 
-		self.toggleNewsletter();
-		self.newsletterFixedOpenAfter(4000);
+		// self.toggleNewsletter();
+		// self.newsletterFixedOpenAfter(4000);
 	};
 
 	this.validateInputs = function() {
