@@ -158,6 +158,10 @@
 	}
 
 	.economia-de { display: none; }
+
+	@include breakpoint(small, 'max') {
+		padding-top: 20px;
+	}
 }
 
 .prod-sku-selector {
