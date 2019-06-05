@@ -8,7 +8,7 @@ require('modules/listagem/filters');
 require('modules/listagem/order-by');
 require('modules/listagem/calculadorabtu');
 require('modules/listagem/comparebar');
-require('modules/slider-banner');
+// require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
@@ -17,7 +17,34 @@ require('modules/listagem/comparebar');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
+
+console.log('@@@@@@@@@@ heading-banner @@@@@@@@@@');
+
+const $container = document.querySelector('.top-navigation');
+const $template = `
+<div class="heading-banner">
+		<div class="container">
+			<div class="heading-banner__title">
+				<h1>
+					Nossas <span>Geladeiras</span>
+				</h1>
+			</div>
+
+			<div class="box-banner">
+				<a>
+					<img width="1280" height="340" alt="Teste" src="/arquivos/banner-heading-tag-seo.png" complete="complete">
+				</a>
+			</div>
+		</div>
+	</div>
+`;
+
+$container.insertAdjacentHTML('afterend', $template);
+
+
+
+
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC

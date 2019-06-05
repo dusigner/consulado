@@ -1,0 +1,58 @@
+.heading-banner {
+	background-color: #f4f4f4;
+	height: 160px;
+	overflow: hidden;
+	position: relative;
+
+	// Border
+	&:before {
+		border: 2px solid #9aca3c;
+		border-radius: 300px;
+		content: '';
+		height: 655px;
+		left: -15%;
+		position: absolute;
+		top: 0;
+		transform: rotate(-300deg) translateY(-85%);
+		width: 290px;
+	}
+
+	& > .container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	// Title
+	&__title {
+		// background-color: #ccc;
+		align-self: center;
+		position: relative;
+
+		h1 {
+			@include rfs(35);
+			margin: 0;
+		}
+
+		span {
+			color: $green;
+			display: block;
+		}
+	}
+
+
+	// Banner
+	.box-banner {
+		border: 1px solid #d0d;
+		width: 450px;
+
+		img {
+			display: block;
+			height: 160px;
+			max-width: 100%;
+			width: auto;
+		}
+	}
+}
+
+
+
