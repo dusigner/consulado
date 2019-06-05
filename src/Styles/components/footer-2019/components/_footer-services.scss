@@ -7,10 +7,8 @@
 
 	.container {
 		@include breakpoint('small', 'min') { text-align: center; }
-		@include breakpoint('small', 'max') {
-			align-items: center;
-			flex-direction: column;
-		}
+		@include breakpoint('small', 'max') { flex-direction: column; }
+		align-items: center;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -99,9 +97,16 @@
 	// Button
 	&__cta {
 		@include breakpoint('small', 'max') {
-			display: none;
-			visibility: hidden;
+			@include square(100%);
+			border-radius: 0;
+			left: 0;
+			margin: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			z-index: 1;
 		}
 		margin-top: 2em;
+		position: relative;
 	}
 }
