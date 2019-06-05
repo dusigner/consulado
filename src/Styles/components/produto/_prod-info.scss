@@ -31,28 +31,23 @@
 		text-align: center;
 
 		p {
-			//display: inline-block;
 			display: none;
 			float: left;
 			margin-right: 20px;
+
 			&:last-child {
+				@include breakpoint(small, 'max') { display: none; }
 				display: block;
-				@include breakpoint(small, 'max') {
-					display: none;
-				}
 			}
 		}
 
 		@include breakpoint(small, 'max') {
-			// display: block!important;
 			position: inherit;
 			right: inherit;
 			top: inherit;
-			// visibility: visible!important;
 			width: 100%;
-			.flag {
-				position: static;
-			}
+
+			.flag { position: static; }
 		}
 	}
 }
@@ -70,15 +65,15 @@
 		}
 
 		&.valor-de {
-			@include breakpoint(small, 'max') { display: inline-block !important; }
+			@include breakpoint('small', 'max') { display: inline-block !important; }
 			@include rfs(14);
-			line-height:100%;
+			line-height: 100%;
 
 			strong { text-decoration: line-through; }
 		}
 
 		&.valor-por {
-			@include breakpoint(small, 'max') {
+			@include breakpoint('small', 'max') {
 				@include rfs(14);
 				position: relative;
 			}
@@ -89,8 +84,8 @@
 			color: $green;
 			display: block;
 			font-weight: 700;
-			position: relative;
 			margin-top: 5px;
+			position: relative;
 
 			strong {
 				display: inline-block;
@@ -103,9 +98,7 @@
 				font-weight: bold;
 
 				& + span {
-					@include breakpoint('small', 'max') {
-						transform: translate(15px, 0)
-					}
+					@include breakpoint('medium', 'max') { transform: translate(15px, 0) }
 					@include rfs(11);
 					background-color: $purple;
 					border-radius: 25px;
@@ -113,7 +106,7 @@
 					display: inline-block;
 					font-weight: bold;
 					padding: 4px 18px;
-					transform: translate(15px, 7px);
+					transform: translate(15px, .5em);
 					vertical-align: top;
 				}
 			}
@@ -129,11 +122,10 @@
 	}
 
 	.preco-a-vista {
+		@include breakpoint('small', 'max') { display: none !important; }
 		color: $txt-gray-l;
 		display: block!important;
 		font-size: 0;
-
-		@include breakpoint(small, 'max') { display: none !important; }
 
 		&:before { @include font-size(18px, true, false); }
 
@@ -148,7 +140,7 @@
 	}
 
 	.discount-boleto {
-		@include breakpoint('small', 'max') {
+		@include breakpoint('medium', 'max') {
 			@include rfs(25);
 			margin: 2px 0;
 		}
@@ -177,10 +169,7 @@
 
 .prod-sku-selector,
 #modal-sku {
-
-	@include breakpoint(small, 'min') {
-		color: $txt-gray-l;
-	}
+	@include breakpoint(small, 'min') { color: $txt-gray-l; }
 
 	.specification {
 		font-size: 0;
