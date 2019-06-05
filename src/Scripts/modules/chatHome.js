@@ -68,7 +68,8 @@ Nitro.module('chatHome', function () {
 			return div;
 		}
 
-		var btn = $('.box-chat, .box-chat .primary-button, #footer-duvidas .col-6 div .row:nth-child(1) a.sub-title');
+		// var btn = $('.box-chat, .box-chat .primary-button, #footer-duvidas .col-6 div .row:nth-child(1) a.sub-title');
+		var btn = $('.js-open-chat-online');
 
 		for (var i = 0; i < btn.length; i++) {
 			btn[i].onclick = btnClick;
