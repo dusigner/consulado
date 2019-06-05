@@ -18,37 +18,31 @@ Nitro.module('testeab-entrega', function() {
 
 	// Setup para página de produto
 	this.productSetup = () => {
-		if ($body.is('.testeab-entregas--a')) {
-			$(document).ajaxComplete((event, xhr, settings) => {
-				var frete = settings.url.split('/')[1];
+		$(document).ajaxComplete((event, xhr, settings) => {
+			var frete = settings.url.split('/')[1];
 
-				if (frete === 'frete') {
+			if (frete === 'frete') {
 
-					$('.freight-values td').each((i, el) => {
-						const optionText = $(el).text();
-						if (optionText.indexOf('Frete Entrega Agendada - Convencional') !== -1 || optionText.indexOf('Frete Convencional') !== -1) {
-							$(el).parent('tr').addClass('hide');
-						}
-					});
-				}
+				$('.freight-values td').each((i, el) => {
+					const optionText = $(el).text();
+					if ($body.is('.testeab-entregas--a') && (optionText.indexOf('Frete Entrega Agendada - Convencional') !== -1 || optionText.indexOf('Frete Convencional') !== -1)) {
+						$(el).parent('tr').addClass('hide');
+					}
 
-			});
-		} else if ($body.is('.testeab-entregas--b')) {
-			$(document).ajaxComplete((event, xhr, settings) => {
-				var frete = settings.url.split('/')[1];
-
-				if (frete === 'frete') {
-
-					$('.freight-values td').each((i, el) => {
-						const optionText = $(el).text();
+					if ($body.is('.testeab-entregas--b')) {
 						if (optionText.indexOf('Frete Entrega Agendada - Econômica') !== -1 || optionText.indexOf('Frete Econômica') !== -1) {
 							$(el).parent('tr').addClass('hide');
 						}
-					});
-				}
+						// Muda o nome de Convencional para Econômica (no backend vende a convencional, mas no front apresenta como Econômica)
+						if (optionText.indexOf('Frete Entrega Agendada - Convencional') !== -1 || optionText.indexOf('Frete Convencional') !== -1) {
+							$(el).text(optionText.replace('Convencional', 'Econômica'));
+						}
 
-			});
-		}
+					}
+				});
+			}
+
+		});
 	};
 
 	this.entregasVariacaoA = function() {
@@ -106,5 +100,35 @@ Nitro.module('testeab-entrega', function() {
 				}
 			});
 		}
+
+		// Muda o texto de Convencional para Econômica  na página cart e de shipping
+		const changeName = () => {
+			const textCartSlaConvencional = $('.seller-1-sla-Convencional span').html();
+			const textCartSlaAgendadaConvencional = $('.seller-1-sla-EntregaAgendada-Convencional span').html();
+
+			textCartSlaConvencional && $('.seller-1-sla-Convencional span').html(textCartSlaConvencional.replace('Convencional', 'Econômica'));
+			textCartSlaAgendadaConvencional && $('.seller-1-sla-EntregaAgendada-Convencional span').html(textCartSlaAgendadaConvencional.replace('Convencional', 'Econômica'));
+
+			// Espera a VTEX carregar os dados de entrega na página de shipping
+			setTimeout(() => {
+				$('.shipping-option-item-name').each((i, name) => {
+					const nameText = $(name).text();
+					if (nameText.indexOf('Convencional') !== -1) {
+						$(name).text(nameText.replace('Convencional', 'Econômica'));
+					}
+				});
+
+				$('.shipping-selected-sla .sla').text($('.shipping-selected-sla .sla').text().replace('Convencional', 'Econômica'));
+			}, 600);
+
+		};
+
+		//chama a função de trocar o nome toda vez que a hash na url mudar
+		window.hasher.changed.add(() => changeName());
+		window.crossroads.routed.add(() => changeName());
+
+		//inicia a função de trocar o nome
+		changeName();
+
 	};
 });
