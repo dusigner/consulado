@@ -121,7 +121,7 @@ Nitro.module('specifications', function() {
 
 	// ACCORDION SPECIFICATION PRODUCTS
 	var btnSpecs = false;
-	var buttonTemplate = '<button id="mais-especs" class="secondary-button show-extra-small text-uppercase">Ver mais especificações</button>';
+	var buttonTemplate = '<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
 
 	accordionBtnProduct.on('click', function(e) {
 		if ( btnSpecs === false ) {
