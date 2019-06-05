@@ -70,134 +70,57 @@
 		}
 
 		&.valor-de {
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(14, 16, true);
-				display: inline-block !important;
-			}
+			@include breakpoint(small, 'max') { display: inline-block !important; }
+			@include rfs(14);
+			line-height:100%;
 
 			strong { text-decoration: line-through; }
 		}
 
 		&.valor-por {
-			font-weight: 700;
-
-			.skuBestPrice {
-				font-weight: 700;
-			}
-
 			@include breakpoint(small, 'max') {
-				@include responsiveFont(14, 16, true);
-				color: $orange;
-				display: inline-block !important;
-				margin-left: 5px;
+				@include rfs(14);
 				position: relative;
-
-				&:after {
-					@include responsiveFont(14, 16, true);
-					color: $orange;
-					content: ' ou';
-					display: inline-block;
-					position: absolute;
-					right: -20px;
-					top: 0;
-				}
 			}
 		}
 
 		&.valor-dividido {
-			@include font-size(12px, true, false);
+			@include rfs(26);
+			color: $green;
 			display: block;
+			font-weight: 700;
 			position: relative;
+			margin-top: 5px;
 
-			@include breakpoint(small, 'max') {
-				padding-left: 50px;
+			strong {
+				display: inline-block;
 				position: relative;
-
-				&:after {
-					@include responsiveFont(14, 16, true);
-					color: $orange;
-					content: 'em at\00e9';
-					display: inline-block;
-					left: 0;
-					position: absolute;
-					top: 0;
-				}
 			}
 
 			label { display: inline; }
 
 			.skuBestInstallmentValue {
-				@include font-size(28px, true, false);
-				color: $green;
-				font-weight: 700;
-
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(14, 16, true);
-					color: $orange;
-					font-weight: normal;
-				}
-
-				&:before { content: 'de '; }
+				font-weight: bold;
 
 				& + span {
-					@include font-size(28px, true, false);
-					display: inline-block;
-					font-weight: 700;
-					padding-left: 18px;
-
-					@include breakpoint (small, 'max') {
-						@include responsiveFont(12, 16, true);
-						padding-left: 5px;
+					@include breakpoint('small', 'max') {
+						transform: translate(15px, 0)
 					}
-				}
-			}
-
-			& > span {
-				& > span {
+					@include rfs(11);
+					background-color: $purple;
+					border-radius: 25px;
+					color: #fff;
 					display: inline-block;
-					font-size: 0;
-					height: 30px;
-					line-height: inherit;
-					margin-right: 10px;
-					text-align: center;
+					font-weight: bold;
+					padding: 4px 18px;
+					transform: translate(15px, 7px);
 					vertical-align: top;
-
-					@include breakpoint(small, 'max') {
-						height: auto;
-						margin-right: 5px;
-					}
-				}
-			}
-
-			.skuBestInstallmentNumber {
-				@include font-size(20px, true, false);
-				color: $orange;
-				font-weight: 700;
-				text-align: center;
-
-				&::after {
-					@include font-size(10px, true, false);
-					content: 's/ juros';
-					display: block;
-					line-height: 10px;
-					margin-top: -5px;
-				}
-
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(14, 16, true);
-					font-weight: normal;
-
-					&:after {
-						@include responsiveFont(14, 16, true);
-						display: inline-block;
-						margin-left: 5px;
-					}
 				}
 			}
 		}
 
 		.preco-a-vista {
-			@include font-size(18px, true, false);
+			@include rfs(18);
 			color: $txt-gray-l;
 			display: block!important;
 
@@ -225,24 +148,13 @@
 	}
 
 	.discount-boleto {
-		@include font-size(17px, true, false);
-		color: $txt-gray-l;
-
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(14, 16, true);
-			color: $orange;
-			font-weight: normal;
+		@include breakpoint('small', 'max') {
+			@include rfs(25);
+			margin: 2px 0;
 		}
-
-		>span {
-			color: $base-font-color;
-
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(14, 16, true);
-				color: $orange;
-				font-weight: normal;
-			}
-		}
+		@include rfs(20);
+		font-weight: bold;
+		margin-top: -6px;
 	}
 
 	.economia-de { display: none; }
@@ -372,32 +284,32 @@
 		}
 
 		@include breakpoint(small, 'max') {
-	    border-radius: 0;
-	    bottom: 0;
-	    display: inline-block;
-	    font-size: 0;
-	    height: 54px;
-	    left: 0;
-	    margin: 0;
-	    position: fixed;
-	    text-transform: uppercase;
-	    width: 100%;
-	    z-index: 9999;
+			border-radius: 0;
+			bottom: 0;
+			display: inline-block;
+			font-size: 0;
+			height: 54px;
+			left: 0;
+			margin: 0;
+			position: fixed;
+			text-transform: uppercase;
+			width: 100%;
+			z-index: 9999;
 
-	      	&:before {
-	        @include responsiveFont(16, 16, true);
-	        content: 'Adicionar ao carrinho';
-	        display: inline-block;
-	        font-family: $base-font-family !important;
-	        font-weight: bold !important;
-	        left: 50%;
-	        position: absolute;
-	        text-transform: uppercase !important;
-	        top: 50%;
-	        transform: translate(-50%, -50%);
-	        width: 100%;
-	      	}
-    	}
+					&:before {
+					@include responsiveFont(16, 16, true);
+					content: 'Adicionar ao carrinho';
+					display: inline-block;
+					font-family: $base-font-family !important;
+					font-weight: bold !important;
+					left: 50%;
+					position: absolute;
+					text-transform: uppercase !important;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: 100%;
+					}
+			}
 	}
 }
 
@@ -550,7 +462,7 @@ body.consulempresa {
 			content: 'à vista no boleto';
 			display: block;
 			font-weight: normal;
-			
+
 		}
 	}
 }
