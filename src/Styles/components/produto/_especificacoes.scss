@@ -106,6 +106,7 @@
 
 	.title {
 		background-color: #f1f0f0;
+		display: none;
 		font-size: 1rem;
 		height: 10%;
 		padding: 20px 0 20px 15px;
@@ -113,6 +114,9 @@
 		width: 100%;
 
 
+		@include breakpoint (small, 'max') {
+			display: block;
+		}
 
 		i {
 			@include breakpoint(small, 'max') {
@@ -120,9 +124,9 @@
 				font-size: 1rem;
 				height: 26px;
 				position: absolute;
-				right: 25px;
-				top: 15px;
-				transform: rotate(-90deg);
+				right: 30px;
+				top: 20px;
+				transform: translate(10px) rotate(-90deg);
 				width: 26px;
 			}
 			@include vendor(transform, rotate(-90deg));
@@ -144,14 +148,43 @@
 
 		.row {
 			display: flex;
+			margin: 0;
+
 			@include breakpoint(small, 'max') {
 				border-bottom: 1px solid #ffffff;
+			}
+
+			&.info {
+				display: block;
+
+				.specs {
+					&-title {
+						border-bottom: 2px solid #9aca3c;
+						display: block;
+						font-size: 1rem;
+						font-weight: 700;
+						margin: 40px 0 15px;
+						padding-bottom: 5px;
+						text-align: left;
+					}
+
+					&-value {
+						font-size: 1rem;
+						font-weight: 100;
+    					padding-right: 20px;
+						text-align: left;
+
+						@include breakpoint(small, 'max') {
+							font-size: .75rem;
+						}
+					}
+				}
 			}
 		}
 
 		li {
 			clear: both;
-			margin-bottom: 12px;
+			margin-bottom: 5px;
 
 
 
@@ -197,8 +230,9 @@
 		&-title {
 			display: inline-block;
 			margin: 0;
-			min-width: 100px;
+			min-width: 170px;
 			text-align: left;
+			text-transform: capitalize;
 		}
 
 		&-value {

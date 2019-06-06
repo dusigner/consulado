@@ -91,7 +91,7 @@ Nitro.module('specifications', function() {
 	this.render = function() {
 
 		// console.log('specifications data', data);
-
+		console.log(data);
 		dust.render('specifications', data, function(err, out) {
 			if (err) {
 				throw new Error('Specifications Dust error: ' + err);
