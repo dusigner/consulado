@@ -163,10 +163,10 @@ div[data-chaordic] {
 
 	&-plus,
 	&-equals {
-		color: #802195;
+		color: $green;
 		float: left;
-		font-size: 40px;
-		font-weight: bold;
+		font-size: 36px;
+		font-weight: 400;
 		margin: 26% 1.3%;
 		@include breakpoint(small, 'max') {
 			display: none;
@@ -227,15 +227,15 @@ div[data-chaordic] {
 			@include breakpoint(small, 'max') {
 				width: 100%;
 			}
-			background: #f4f2f1;
 			padding-bottom: 35px;
 			text-align: center;
 			width: 23%;
 
 			.shelf-item__button {
-				font-size: 18px;
-				height: 55px;
-				line-height: 50px;
+				font-size: 1rem;
+				font-weight: 500;
+				height: 45px;
+				line-height: 40px;
 				margin: 0 auto;
 				width: 215px;
 			}
@@ -449,8 +449,8 @@ div[data-chaordic] {
 	}
 
 	&-item__button {
-		background: #f47921;
-		border: 2px solid #f47921;
+		background: $green;
+		border: 2px solid $green;
 		border-radius: 50px;
 		color: #fff;
 		cursor: pointer;
@@ -466,39 +466,60 @@ div[data-chaordic] {
 
 		&:hover {
 			background: transparent;
-			color: #f47921;
+			color: $green;
 		}
 	}
 
 	&-res-text {
 		color: #736c6b;
-		font-size: 30px;
+		font-size: 1.2rem;
 		line-height: 30px;
-		margin: 55px 0 30px 0;
-		span {
-			font-weight: bold;
+		margin: 55px 0 15px 0;
+
+		&-first {
+			display: block;
+			margin: 0;
 		}
+
+		&-second {
+			display: block;
+			font-weight: bold;
+			margin: 0;
+		}
+
 		@include breakpoint(small, 'max') {
 			margin: 20px 0;
 		}
 	}
 
+	&-line {
+		border-top: 2px solid $green;
+		display: block;
+		margin: 0 auto;
+		width: 10%;
+	}
+
 	&-res-prices {
-		margin: 50px 0 45px 0;
+		margin: 30px 0 15px 0;
 		@include breakpoint(small, 'max') {
 			margin: 0 0 15px 0;
 		}
 		.old-price {
-			font-size: 20px;
+			color: #702F8F;
+			font-size: 1rem;
+			font-weight: 500;
 			text-decoration: line-through;
 		}
 		.price {
-			font-size: 23px;
+			color: $green;
+			font-size: 1.8rem;
+			font-weight: 700;
 		}
 		.installments {
-			color: #9aca3c;
-			font-size: 1.125rem;
+			color: #736c6b;
+			font-size: .9rem;
 			font-weight: bold;
+			margin-top: 20px;
 		}
 	}
 
