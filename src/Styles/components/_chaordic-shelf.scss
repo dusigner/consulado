@@ -58,42 +58,7 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(16, 16, true);
-			background-color: $self-primary;
-			border: 1px solid #fff;
-			color: #fff;
-			display: block;
-			font-weight: bold;
-			line-height: 1.5;
-			margin: 0 0 15px;
-			padding: 15px;
-			position: relative;
-			text-align: left;
 
-			&+div {
-				//max-height: 1000px;
-				overflow: hidden;
-				transition: max-height .8s ease;
-			}
-
-			&:not(.shelf-sub-title):after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(5, 16, true);
-				display: block;
-				position: absolute;
-				right: 10px;
-				top: 50%;
-				transform: translateY(-50%);
-				transition: transform .5s ease;
-			}
-
-			&--active {
-				&+div {	max-height: 0 }
-
-				&:after { transform: translateY(-50%) rotate(180deg)!important; }
-			}
-		}
 		margin: 20px 0;
 
 		span {
@@ -109,6 +74,19 @@ div[data-chaordic] {
 
 	}
 
+	&-title {
+		font-size: 1.5625rem;
+		font-weight: 700;
+
+		.shelf--compre-junto {
+			color: $green;
+			display: inline-block;
+			font-size: 1.5625rem;
+			font-weight: 700;
+			text-transform: none;
+
+		}
+	}
 	&-item {
 		//HOVER ON SHELF ITEM ACTIONS
 		@include breakpoint (medium, 'min') {
@@ -159,6 +137,12 @@ div[data-chaordic] {
 		@import 'components/shelf/price';
 
 		a { text-decoration: none }
+
+		&__installment-value {
+			@include breakpoint('small', 'max') {
+				font-size: 1.25rem;
+			}
+		}
 	}
 
 	&-plus,
@@ -167,7 +151,7 @@ div[data-chaordic] {
 		float: left;
 		font-size: 36px;
 		font-weight: 400;
-		margin: 26% 1.3%;
+		margin: 17% 1.3% 35%;
 		@include breakpoint(small, 'max') {
 			display: none;
 		}
@@ -224,8 +208,12 @@ div[data-chaordic] {
 		}
 
 		&-res {
-			@include breakpoint(small, 'max') {
-				width: 100%;
+			@include breakpoint (large, 'max') {
+				width: 21%;
+				@include breakpoint(small, 'max') {
+					background: #f2f2f2;
+					width: 100%;
+				}
 			}
 			padding-bottom: 35px;
 			text-align: center;
@@ -238,6 +226,14 @@ div[data-chaordic] {
 				line-height: 40px;
 				margin: 0 auto;
 				width: 215px;
+
+				@include breakpoint (large, 'max') {
+					width: 160px;
+
+					@include breakpoint (small, 'max') {
+						width: 215px;
+					}
+				}
 			}
 		}
 
@@ -259,6 +255,7 @@ div[data-chaordic] {
 
 			.box-produto {
 				border: 0;
+				min-height: 475px;
 			}
 		}
 
@@ -354,6 +351,14 @@ div[data-chaordic] {
 				.shelf-item__price--cash {
 					@include breakpoint('small', 'max') { display: block; }
 					display: none;
+
+					.discount-boleto {
+						@include breakpoint ('small', 'max') {
+							font-size: .625rem;
+							font-weight: 700;
+							margin-top: 5px;
+						}
+					}
 				}
 			}
 		}
@@ -490,6 +495,21 @@ div[data-chaordic] {
 		@include breakpoint(small, 'max') {
 			margin: 20px 0;
 		}
+
+		&:before {
+			background: url('/arquivos/compre-junto-icon.png') no-repeat top;
+			background-size: contain;
+			content: '';
+			display: block;
+			flex-wrap: wrap;
+			height: 55px;
+			margin: 15px auto;
+			width: 47px;
+
+			@include breakpoint ('small', 'max') {
+				display: none;
+			}
+		}
 	}
 
 	&-line {
@@ -497,6 +517,11 @@ div[data-chaordic] {
 		display: block;
 		margin: 0 auto;
 		width: 10%;
+
+		@include breakpoint ('small', 'max') {
+			margin-bottom: 15px;
+			width: 7.75%;
+		}
 	}
 
 	&-res-prices {
@@ -514,6 +539,14 @@ div[data-chaordic] {
 			color: $green;
 			font-size: 1.8rem;
 			font-weight: 700;
+
+			@include breakpoint(large, 'max') {
+				font-size: 1.2rem;
+
+				@include breakpoint(small, 'max') {
+					font-size: 1.8rem;
+				}
+			}
 		}
 		.installments {
 			color: #736c6b;

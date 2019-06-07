@@ -51,7 +51,7 @@
 	&--installment {
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
-			.val { @include responsiveFont(14, 16, true) }
+			.val { @include responsiveFont(20, 16, true) }
 		}
 		color: #9ACA3c;
 		font-size: 20px;
