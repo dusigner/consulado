@@ -77,7 +77,7 @@ div[data-chaordic] {
 				transition: max-height .8s ease;
 			}
 
-			&:not(.shelf-sub-title):after {
+			&:not(.shelf-sub-title):not(.Preferidos):after {
 				@include icon-get('arrow-down');
 				@include responsiveFont(5, 16, true);
 				display: block;
@@ -104,6 +104,43 @@ div[data-chaordic] {
 				font-weight: 100;
 				line-height: 1;
 				text-transform: capitalize;
+			}
+		}
+
+		&.Preferidos {
+			@include responsive('max-width', 95%,
+				(
+					'small'       : 768px,
+					'medium'      : 960px,
+					'large'       : 1200px,
+					'extra-large' : 1280px
+				)
+			);
+
+			font-size: 1.25rem;
+			margin: 0 auto 20px;
+			text-align: left;
+
+			@include breakpoint ('medium', 'max') {
+				background: #fff;
+				color: #736c6b;
+				font-size: 1rem;
+				font-weight: 400;
+				margin: 15px auto;
+				max-width: 95%;
+				padding: 0 20px;
+			}
+
+			span {
+				font-size: 2.1875rem;
+				font-weight: 700;
+				text-transform: none;
+
+				@include breakpoint ('medium', 'max') {
+					color: $green;
+					display: block;
+					font-size: 1.1875rem;
+				}
 			}
 		}
 
