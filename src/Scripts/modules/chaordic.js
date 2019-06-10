@@ -524,7 +524,12 @@ Nitro.module('chaordic', function() {
 	this.placeHolderRender = function(renderData, $elem) {
 		var dfd = jQuery.Deferred();
 		var placeholderDust;
+
 		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
+
+		if(renderData[0] && renderData[0].name === 'Complementares') {
+			renderData[0].subtitle = 'Compre <span class="shelf--compre-junto">junto</span>';
+		}
 
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
