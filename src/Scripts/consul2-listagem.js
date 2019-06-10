@@ -75,6 +75,9 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 's
 
 	var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
 
+	($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
+
+
 	if ($('body').is('.departamento')) {
 
 		//get all categories

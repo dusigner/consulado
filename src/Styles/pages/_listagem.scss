@@ -142,7 +142,10 @@ body.busca {
 		width: 65px;
 	}
 
-	@include breakpoint(small, 'max') { display: inline-block; }
+	@include breakpoint(medium, 'max') {
+		display: inline-block;
+		float: right;
+	}
 }
 
 .order-wrapper {
@@ -750,4 +753,113 @@ body.neemu {
 	p.hl-busca-vazia {
 		font-size: 1.25em;
 	}
+}
+
+body.categoria {
+	.category-postheader {
+		background: #fcfcfc;
+		border: 1px solid #e3e1e1;
+		margin-bottom: 30px;
+
+		@include breakpoint ('medium', 'max') {
+			overflow-x: scroll;
+			overflow-y: hidden;
+			white-space: nowrap;
+		}
+	}
+
+	section.breadcrumb {
+		margin: 0 auto;
+		width: 75%;
+
+		.bread-crumb {
+			margin: 10px 0;
+
+			li {
+				color: #736c6b;
+				display: inline-block;
+				font-weight: 400;
+
+				a {
+					color: #736c6b;
+					font-size: .75rem;
+
+					&:before {
+						color: $green;
+						content: '•';
+						display: inline-block;
+						font-size: .75rem;
+						font-weight: 700;
+
+						@include breakpoint ('medium', 'max') {
+							color: #e3e1e1;
+						}
+					}
+
+					@include breakpoint ('medium', 'max') {
+						font-size: 0;
+						pointer-events: none;
+					}
+				}
+
+				&:first-child {
+					a {
+						font-size: 0;
+
+						&:before {
+							color: #736c6b;
+							content: 'Home';
+							font-size: .75rem;
+							font-weight: 400;
+
+							@include breakpoint ('medium', 'max') {
+								pointer-events: auto;
+							}
+						}
+					}
+				}
+
+				&:nth-child(2) {
+					a {
+						&:before {
+							color: $green;
+						}
+					}
+				}
+
+				&:last-child {
+					a {
+						&:before {
+							color: $green;
+							content: '>';
+							pointer-events: none;
+						}
+
+						@include breakpoint ('medium', 'max') {
+							font-size: .75rem;
+							pointer-events: auto;
+						}
+					}
+				}
+			}
+
+			&.show-active {
+				ul {
+					li {
+						a {
+							pointer-events: auto;
+						}
+					}
+				}
+			}
+		}
+
+		@include breakpoint ('medium', 'max') {
+			margin-left: 15px;
+			padding: 0;
+			width: auto;
+		}
+
+	}
+
 }
