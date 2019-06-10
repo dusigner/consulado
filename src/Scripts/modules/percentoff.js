@@ -76,10 +76,13 @@ Nitro.module('percentoff', function() {
 			 */
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				self.find('.discount-boleto')
-					.text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
-			}else {
+					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
+					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))) + ' <span>À vista</span>');
+			}
+			else {
 				self.find('.discount-boleto')
-					.text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
+					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
+					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' <span>À vista</span>');
 			}
 
 			self.addClass('list-percent');

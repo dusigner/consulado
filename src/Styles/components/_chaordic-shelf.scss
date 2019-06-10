@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import '../helpers/rfs';
+
 $self-primary: $green!default;
 $self-secondary: $txt-gray-l!default;
 $self-third: $gray-l!default;
@@ -131,7 +133,7 @@ div[data-chaordic] {
 		@include breakpoint(small, 'max') {
 			text-align: left;
 
-			.flag { bottom: 60% }
+			// .flag { bottom: 60% }
 		}
 
 		margin: 0 auto;
@@ -316,7 +318,7 @@ div[data-chaordic] {
 				}
 
 				.shelf-item__info {
-					height: 68px;
+					height: 70px;
 					overflow: hidden;
 				}
 
@@ -329,31 +331,39 @@ div[data-chaordic] {
 				}
 
 				.shelf-item__name.show-mobile {
-					display: none;
-					font-size: 12px;
-					text-align: center;
 					@include breakpoint('small', 'max') { display: block; }
+					display: none;
 				}
 
 				.shelf-item__name.show-desk {
-					font-size: 17px;
 					text-align: left;
 
 					@include breakpoint('small', 'max') { display: none; }
 				}
 
 				.shelf-item__price {
-					@include breakpoint('small', 'max') { font-size: 12px; }
-					font-size: .875rem;
 					margin: 0;
 
 					span.off { display: none!important; }
 				}
 
+				.shelf-item__button { display: none; }
+
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
 					@include breakpoint('small', 'max') { display: block; }
-					display: none;
+					// display: none;
+
+					.discount-boleto {
+						@include rfs(16);
+
+						span {
+							@include breakpoint('small', 'min') {
+								display: block;
+							}
+							@include rfs(12);
+						}
+					}
 				}
 			}
 		}
@@ -391,9 +401,9 @@ div[data-chaordic] {
 					font-size: .875rem;
 					margin: 0;
 					text-align: left;
-					span.off {
-						display: none!important;
-					}
+					// span.off {
+					// 	display: none!important;
+					// }
 				}
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {

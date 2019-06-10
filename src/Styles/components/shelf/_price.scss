@@ -1,29 +1,39 @@
 @charset 'UTF-8';
 
 &__price {
-	@include breakpoint(small, 'max') {
-		line-height: 14px;
-		margin-bottom: 0;
-	}
-	@include responsiveFont(12, 16, true);
+	@include rfs(12);
+	line-height: normal;
 
 	.off {
-		@include responsiveFont(17, 16, true);
 		background-color: #702F8F;
-		border-radius: 100px;
-		color: #FFF;
 		display: none;
-		font-size: 10px;
 		padding: 6px 18px;
-		position: absolute;
 		right: 15px;
 		top: 15px;
+
+		&,
+		&:before {
+			@include rfs(10);
+			border-radius: 100px;
+			color: #fff;
+			position: absolute;
+			z-index: 1;
+		}
+
+		&::before {
+			background-color: #0fb6de;
+			content: '+5% OFF à vista';
+			padding: 6px 14px;
+			right: 0;
+			top: calc(100% + 7px);
+			white-space: nowrap;
+		}
 	}
 
+
 	&--list {
-		@include breakpoint(small, 'max') {
-			span:not(.val) { display: none }
-		}
+		span:not(.val) { display: none }
+
 		&:empty {
 			@include breakpoint(small, 'max') {
 				margin: 0;
@@ -41,25 +51,35 @@
 	}
 
 	&--best {
+		display: none;
+		visibility: hidden;
+
 		&:empty {
 			height: 16px;
 			margin: .5em auto;
 			width: 45%;
 		}
+
+		span:not(.val) { display: none }
 	}
 
 	&--installment {
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(12, 16, true);
-			.val { @include responsiveFont(14, 16, true) }
-		}
-		color: #9ACA3c;
-		font-size: 20px;
-		font-weight: bold;
-		line-height: 1;
-		margin: 15px 0 0;
+		@include rfs(13);
+		color: #736c6b;
 
-		a { color: $self-primary }
+		// @include breakpoint(small, 'max') {
+		// 	@include responsiveFont(12, 16, true);
+		// 	.val { @include responsiveFont(14, 16, true) }
+		// }
+		// color: #9ACA3c;
+		// font-size: 20px;
+		// font-weight: bold;
+		// line-height: 1;
+		// margin: 15px 0 0;
+
+		a { color: #736c6b; }
+
+		strong { font-weight: normal; }
 
 		&:empty {
 			@include breakpoint(small, 'max') {
@@ -73,16 +93,23 @@
 	}
 
 	&--cash {
-		@include breakpoint(small, 'max') {
-			@include responsiveFont(12, 16, true);
+		.discount-boleto {
+			@include rfs(24);
+			color: #9aca3c;
+			display: block;
+			font-weight: bold;
+			margin-bottom: .4em;
+
+			span { @include rfs(16); }
 		}
 	}
 
 	.de,
 	.por {
 		a {
-			color: #702F8F;
-			font-weight: 500;
+			@include rfs(15);
+			color: #736c6b;
+			// font-weight: 500;
 		}
 	}
 }
