@@ -796,15 +796,23 @@ body.categoria {
 						}
 					}
 
-					@include breakpoint ('medium', 'max') {
-						font-size: 0;
+					@include breakpoint('medium', 'max') {
 						pointer-events: none;
 					}
+
+				}
+
+				@include breakpoint ('medium', 'max') {
+					max-width: 5px;
+					overflow: hidden;
+
+					transition: max-width .5s ease;
 				}
 
 				&:first-child {
 					a {
 						font-size: 0;
+						max-width: inherit;
 
 						&:before {
 							color: #736c6b;
@@ -816,6 +824,12 @@ body.categoria {
 								pointer-events: auto;
 							}
 						}
+
+
+					}
+
+					@include breakpoint ('medium', 'max') {
+						max-width: inherit;
 					}
 				}
 
@@ -832,7 +846,6 @@ body.categoria {
 						&:before {
 							color: $green;
 							content: '>';
-							pointer-events: none;
 						}
 
 						@include breakpoint ('medium', 'max') {
@@ -840,14 +853,23 @@ body.categoria {
 							pointer-events: auto;
 						}
 					}
+
+					@include breakpoint ('medium', 'max') {
+						max-width: inherit;
+					}
 				}
 			}
 
 			&.show-active {
 				ul {
-					li {
+					li:not(:first-child) {
+						max-width: 200px;
 						a {
 							pointer-events: auto;
+
+							&:before {
+								color: $green;
+							}
 						}
 					}
 				}
@@ -859,7 +881,5 @@ body.categoria {
 			padding: 0;
 			width: auto;
 		}
-
 	}
-
 }
