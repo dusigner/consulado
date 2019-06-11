@@ -346,8 +346,8 @@ Nitro.module('chaordic', function() {
 
 							product.finalImages = self.prepareImages(item[0].images, '300');
 
-							product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
-							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights);
+							// product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
+							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights, item[0].sellers[0].commertialOffer.Teasers);
 
 
 							self.finalRender(product, $box);
@@ -429,6 +429,7 @@ Nitro.module('chaordic', function() {
 	 * @param  {Object} teasers objeto de promos do produto
 	 * @returns {Object} objeto com o nome da promo de desconto
 	 */
+	// TODO: Review if method is useful
 	this.prepareDiscountPromo = function(teasers) {
 		return teasers.reduce(function(prev, curr) {
 			if(/(Cartão e Boleto|Cartão|Boleto) \d+%/ig.test(curr['<Name>k__BackingField'])) {
@@ -442,15 +443,23 @@ Nitro.module('chaordic', function() {
 	 * @param  {Object} clusterHighlights objeto de promos do produto
 	 * @returns {Array}
 	 */
-	this.prepareclusterHighlights = function(clusterHighlights) {
+	this.prepareclusterHighlights = function(clusterHighlights, benefitsHighlights) {
 		var arr = [];
 
-
+		// TODO: each function abstraction to avoid duplicate
 		$.each(clusterHighlights, function(i, clusterHighlight) {
 			if( typeof clusterHighlight === 'string' ) {
 				arr.push($.replaceSpecialChars(clusterHighlight));
 			}
 		});
+
+		if(benefitsHighlights && $.isArray(benefitsHighlights) && benefitsHighlights.length) {
+			$.each(benefitsHighlights, function(i, benefitHighlight) {
+				if( typeof benefitHighlight['<Name>k__BackingField'] === 'string' ) {
+					arr.push($.replaceSpecialChars(benefitHighlight['<Name>k__BackingField']));
+				}
+			});
+		}
 
 		return arr;
 	};
