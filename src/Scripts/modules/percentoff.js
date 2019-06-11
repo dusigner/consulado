@@ -85,6 +85,15 @@ Nitro.module('percentoff', function() {
 					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' <span>À vista</span>');
 			}
 
+			if (cmcDiscountCartao || cmcDiscountBoleto) {
+				self.find('.por .off').after(`
+					<span class="product-with-5-off">
+						+${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}
+						% OFF à vista
+					</span>
+				`);
+			}
+
 			self.addClass('list-percent');
 		});
 	};

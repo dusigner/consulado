@@ -128,26 +128,27 @@ body.listagem {
 						background-color: #702F8F;
 						display: none;
 						padding: 6px 18px;
+
+						&:not(:empty) + .product-with-5-off { top: 45px; }
+					}
+
+					.off,
+					.product-with-5-off {
+						@include rfs(10);
+						border-radius: 100px;
+						color: #fff;
+						position: absolute;
 						right: 15px;
 						top: 15px;
+						z-index: 1;
 
-						&,
-						&:before {
-							@include rfs(10);
-							border-radius: 100px;
-							color: #fff;
-							position: absolute;
-							z-index: 1;
-						}
+						&:empty { display: none; }
+					}
 
-						&::before {
-							background-color: #0fb6de;
-							content: '+5% OFF à vista';
-							padding: 6px 14px;
-							right: 0;
-							top: calc(100% + 7px);
-							white-space: nowrap;
-						}
+					.product-with-5-off {
+						background-color: #0fb6de;
+						padding: 6px 14px;
+						white-space: nowrap;
 					}
 				}
 			}

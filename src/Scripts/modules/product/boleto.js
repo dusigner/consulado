@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, dust:true, _:true */
 'use strict';
 
-require('Dust/price.html');
+// require('Dust/price.html');
 
 Nitro.module('boleto', function() {
 
@@ -128,7 +128,11 @@ Nitro.module('boleto', function() {
 
 				/*console.log('cmcDiscountCartao', cmcDiscountCartao);
 				console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
-				$('.valor-de.price-list-price').after(boletoInfo);
+
+				setTimeout(function() {
+					$('.discount-boleto').remove();
+					$('.valor-dividido.price-installments').before(boletoInfo);
+				}, 0);
 			}
 		});
 
@@ -158,6 +162,16 @@ Nitro.module('boleto', function() {
 					</p>
 				`;
 			}
+
+			if (cmcDiscountCartao || cmcDiscountBoleto) {
+				$prodPreco.find('.valor-por').before(`
+					<span class="product-with-5-off">
+						${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}
+						% OFF
+					</span>
+				`);
+			}
+
 			/*console.log('cmcDiscountCartao', cmcDiscountCartao);
 			console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
 			$('.valor-de.price-list-price').after(boletoInfo);

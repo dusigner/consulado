@@ -86,10 +86,8 @@ body.produto {
 		}
 
 		&.valor-de {
-			@include breakpoint('small', 'max') { display: inline-block !important; }
-			@include breakpoint('small', 'min') {
-				margin-top: 10px;
-			}
+			@include breakpoint('small', 'min') { margin-top: 10px; }
+			display: block;
 			font-size: 0;
 			line-height: 100%;
 
@@ -145,6 +143,21 @@ body.produto {
 		}
 	}
 
+	.product-with-5-off {
+		@include rfs(10);
+		background-color: #0fb6de;
+		border-radius: 100px;
+		color: #fff;
+		display: inline-block;
+		font-weight: 500;
+		margin-left: 15px;
+		padding: 6px 14px;
+		transform: translateY(-5px);
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+
+
 	.preco-a-vista {
 		@include breakpoint('small', 'max') { display: none !important; }
 		color: $txt-gray-l;
@@ -166,33 +179,17 @@ body.produto {
 	.discount-boleto {
 		@include rfs(34);
 		color: $green;
+		display: inline-block;
 		font-weight: bold;
 
 		span {
 			@include rfs(24);
-
-			&:after {
-				@include rfs(10);
-				background-color: #0fb6de;
-				border-radius: 100px;
-				color: #fff;
-				content: '5% OFF';
-				display: inline-block;
-				font-weight: 500;
-				margin-left: 15px;
-				padding: 6px 14px;
-				transform: translateY(-3px);
-				vertical-align: middle;
-				white-space: nowrap;
-			}
 		}
 	}
 
 	.economia-de { display: none; }
 
-	@include breakpoint(small, 'max') {
-		padding-top: 20px;
-	}
+	@include breakpoint(small, 'max') { padding-top: 20px; }
 }
 
 .prod-sku-selector {
