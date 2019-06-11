@@ -803,7 +803,7 @@ body.categoria {
 				}
 
 				@include breakpoint ('medium', 'max') {
-					max-width: 5px;
+					max-width: 10px;
 					overflow: hidden;
 
 					transition: max-width .5s ease;
@@ -863,7 +863,7 @@ body.categoria {
 			&.show-active {
 				ul {
 					li:not(:first-child) {
-						max-width: 200px;
+						max-width: 500px;
 						a {
 							pointer-events: auto;
 
