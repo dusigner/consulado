@@ -349,6 +349,10 @@ div[data-chaordic] {
 
 				.shelf-item__button { display: none; }
 
+				.shelf-item__price--list.de {
+					a { @include rfs(12); }
+				}
+
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
 					@include breakpoint('small', 'max') { display: block; }
@@ -358,9 +362,7 @@ div[data-chaordic] {
 						@include rfs(16);
 
 						span {
-							@include breakpoint('small', 'min') {
-								display: block;
-							}
+							@include breakpoint('small', 'min') { display: block; }
 							@include rfs(12);
 						}
 					}

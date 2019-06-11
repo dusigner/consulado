@@ -144,7 +144,7 @@ Nitro.controller('produto', [
 			$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 			$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
 
-		$showParcelas.text('Ver parcelas');
+		// $showParcelas.text('Ver parcelas');
 
 		$opcoesParcelamento.find('li').each(function () {
 			var $numeroParcelas = $(this).find('span:first-child'),

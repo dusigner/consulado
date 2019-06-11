@@ -1,5 +1,26 @@
 @charset 'UTF-8';
 
+body.produto {
+	.tag {
+		@include breakpoint('medium', 'max') { transform: translate(15px, 0) }
+		@include rfs(11);
+		background-color: $purple;
+		border-radius: 25px;
+		color: #fff;
+		display: inline-block;
+		font-weight: 500;
+		padding: 7px 18px 5px 18px;
+		position: absolute;
+		right: 25px;
+		top: 15px;
+		transition: opacity .3s ease;
+	}
+
+	.prod-galeria:hover {
+		& + .tag { opacity: 0; }
+	}
+}
+
 .prod-info {
 	.secure {
 		@include font-size(12px, true, false);
@@ -66,10 +87,16 @@
 
 		&.valor-de {
 			@include breakpoint('small', 'max') { display: inline-block !important; }
-			@include rfs(14);
+			@include breakpoint('small', 'min') {
+				margin-top: 10px;
+			}
+			font-size: 0;
 			line-height: 100%;
 
-			strong { text-decoration: line-through; }
+			strong {
+				@include rfs(14);
+				text-decoration: line-through;
+			}
 		}
 
 		&.valor-por {
@@ -77,14 +104,13 @@
 				@include rfs(14);
 				position: relative;
 			}
+			display: none!important;
+			visibility: hidden;
 		}
 
 		&.valor-dividido {
-			@include rfs(26);
-			color: $green;
+			@include rfs(18);
 			display: block;
-			font-weight: 700;
-			margin-top: 5px;
 			position: relative;
 
 			strong {
@@ -95,8 +121,6 @@
 			label { display: inline; }
 
 			.skuBestInstallmentValue {
-				font-weight: bold;
-
 				& + span {
 					@include breakpoint('medium', 'max') { transform: translate(15px, 0) }
 					@include rfs(11);
@@ -140,13 +164,28 @@
 	}
 
 	.discount-boleto {
-		@include breakpoint('medium', 'max') {
-			@include rfs(25);
-			margin: 2px 0;
-		}
-		@include rfs(20);
+		@include rfs(34);
+		color: $green;
 		font-weight: bold;
-		margin-top: -6px;
+
+		span {
+			@include rfs(24);
+
+			&:after {
+				@include rfs(10);
+				background-color: #0fb6de;
+				border-radius: 100px;
+				color: #fff;
+				content: '5% OFF';
+				display: inline-block;
+				font-weight: 500;
+				margin-left: 15px;
+				padding: 6px 14px;
+				transform: translateY(-3px);
+				vertical-align: middle;
+				white-space: nowrap;
+			}
+		}
 	}
 
 	.economia-de { display: none; }
@@ -250,7 +289,6 @@
 		position: relative;
 		z-index: 1;
 	}
-
 }
 
 .select-voltage {
@@ -323,7 +361,7 @@
 		cursor: pointer;
 		display: block;
 		margin: 10px 0;
-		padding-bottom: 10px;
+		padding: 0 10px 10px 0;
 		position: relative;
 		text-transform: uppercase;
 
@@ -331,7 +369,7 @@
 			@include contentBefore();
 			@include icon-get('arrow-down');
 			@include responsiveFont(8, 16, true);
-			left: 85px;
+			left: 175px;
 			top: 4px;
 			transform: rotate(0deg);
 			transition: transform .2s ease-in;
