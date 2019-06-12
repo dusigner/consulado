@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true, dust:true, _:true */
 'use strict';
 
-require('Dust/price.html');
+// require('Dust/price.html');
 
 Nitro.module('boleto', function() {
 
@@ -133,11 +133,11 @@ Nitro.module('boleto', function() {
 					$('.discount-boleto').remove();
 					$('.product-with-5-off').remove();
 
-					$('.valor-dividido.price-installments').before(boletoInfo);
+					$('.valor-de.price-list-price').after(boletoInfo);
 
 					if (cmcDiscountCartao || cmcDiscountBoleto) {
 						$prodPreco.addClass('product-has-5-off');
-						$prodPreco.find('.valor-dividido.price-installments').before(`
+						$prodPreco.find('.valor-por').before(`
 							<span class="product-with-5-off">
 								${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
 							</span>

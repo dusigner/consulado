@@ -97,7 +97,8 @@ body.produto {
 			line-height: 100%;
 
 			strong {
-				@include rfs(14);
+				@include rfs(18);
+				font-weight: 400;
 				text-decoration: line-through;
 			}
 		}
