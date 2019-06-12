@@ -73,6 +73,13 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 's
 
 	var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
 
+	($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
+
+	//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
+	$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb').addClass('show-active');
+	});
+
 	if ($('body').is('.departamento')) {
 
 		//get all categories
