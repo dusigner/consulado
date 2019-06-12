@@ -12,10 +12,10 @@
 	<!-- @endif -->
 
 	<vtex:template id="0-consul-head-content" />
-	  
+
 
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/landing-birthday-2018.css?v=<!-- @echo package.version -->" />
-	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />	
+	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />
 	<meta property="og:title"              content="Celebrando ideias bem pensadas" />
 	<meta property="og:description"        content="Faça parte do nosso aniversário antes mesmo da festa começar. Cadastre-se e fique por dentro de todas as novidades e ofertas em primeira mão. Aniversário Consul - Celebrando ideias bem pensadas!" />
 	<meta property="og:image"			   content="https://consul.vteximg.com.br/arquivos/hero-cns-birthday-2018-m.jpg" />
@@ -140,21 +140,20 @@
 		<small>* Para compras acima de R$ 1099. Válido até 08/07</small>
 	</div>
 
-  	<!-- Footer -->
-	<vtex:template id="0-consul-servicos" />
-	<!-- /Footer -->
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
 
 
-
-
-		<!-- @if DEBUG=true -->
-	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
-	  <!-- @endif -->
-
-  
-	  <!-- Footer -->
-	  <vtex:template id="0-consul-footer" />
-	  <!-- /Footer -->
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
 
 	<script type="text/javascript" src="<!-- @echo assetsPath -->/landing-birthday-2018.min.js?v=<!-- @echo package.version -->"></script>
 
