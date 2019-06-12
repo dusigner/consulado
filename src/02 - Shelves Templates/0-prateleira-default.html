@@ -56,10 +56,9 @@
 					<p class="discount-boleto"></p>
 
 					<p class="adicional">
-						#if ($product.NumbersOfInstallment == 1)
-							<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
-						#else
-							<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
+						#if ($product.NumbersOfInstallment > 1)
+							<strong>ou <span>$product.BestPrice</span></strong>
+							<strong><span>Em</span> até <span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span> sem juros</strong>
 						#end
 
 						#if ($product.NumbersOfInstallment > 1)
