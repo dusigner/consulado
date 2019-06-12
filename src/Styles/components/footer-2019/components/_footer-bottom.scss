@@ -6,6 +6,13 @@
 	color: #fff;
 	padding: 1.5em 0;
 
+	// [ Checkout ] - Adaptações
+	.footer-2019--checkout & {
+		border-top: 5px solid #e5e3e3;
+		background-color: #f1f0f0;
+		color: #736c6b;
+	}
+
 	.container {
 		@include breakpoint('small', 'min') {
 			display: flex;
@@ -23,6 +30,9 @@
 			display: inline-block;
 			margin: 0 20px 20px 0;
 		}
+
+		// Ebit
+		#seloEbit { max-width: 35px; }
 	}
 
 	// Title
@@ -53,10 +63,12 @@
 		a {
 			color: #fff;
 
+			// [ Checkout ] - Adaptações
+			.footer-2019--checkout & { color: #736c6b; }
+
 			&:hover { text-decoration: underline; }
 		}
 	}
-
 }
 
 // logo vtex
