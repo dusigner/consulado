@@ -7,13 +7,8 @@ $self-secondary: $txt-gray-l!default;
 $self-third: $gray-l!default;
 
 @keyframes contentPlaceholder {
-	from {
-		left: 0%;
-	}
-
-	to {
-		left: 100%;
-	}
+	from { left: 0%; }
+	to { left: 100%; }
 }
 
 div[data-chaordic] {
@@ -281,9 +276,7 @@ div[data-chaordic] {
 		}
 	}
 
-	&--history-personalized {
-		margin-bottom: 35px;
-	}
+	&--history-personalized { margin-bottom: 35px; }
 
 	&--history-personalized-ref {
 		@include breakpoint('small', 'max') {
@@ -344,7 +337,8 @@ div[data-chaordic] {
 				.shelf-item__price {
 					margin: 0;
 
-					span.off { display: none!important; }
+					span.off,
+					span.product-with-5-off { display: none!important; }
 				}
 
 				.shelf-item__button { display: none; }
@@ -367,6 +361,8 @@ div[data-chaordic] {
 						}
 					}
 				}
+
+				.shelf-item__price--installment { @include rfs(11); }
 			}
 		}
 	}

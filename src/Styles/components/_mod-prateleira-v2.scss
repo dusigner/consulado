@@ -64,6 +64,46 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 	}
 
+
+	&.product-has-5-off {
+		.adicional {
+			strong {
+				&:first-child { display: block; }
+
+				span {
+					&:first-child {
+						text-transform: none;
+
+						&:before { display: none; }
+					}
+				}
+			}
+		}
+	}
+
+	.adicional {
+		.d { display: none; }
+
+		strong {
+			display: block;
+			font-weight: 500;
+
+			&:first-child { display: none; }
+
+			span {
+				&:first-child {
+					text-transform: lowercase;
+
+					&:before { content: 'ou '; }
+				}
+			}
+			.x:before { display: none;}
+		}
+	}
+
+
+
+
 	.detalhes {
 		display: flex;
 		flex: 1;
@@ -157,15 +197,8 @@ body.listagem {
 				@include rfs(13);
 				color: #736c6b;
 				margin: 0;
-				// color: $c1;
-				// font-size: 20px;
-				// font-weight: bold;
-				// line-height: 1;
-				// margin: 15px 0 0;
 
-				.total-parcelado {
-					display: none;
-				}
+				.total-parcelado { display: none; }
 			}
 
 			.discount-boleto {
