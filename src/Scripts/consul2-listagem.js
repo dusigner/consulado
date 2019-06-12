@@ -20,30 +20,6 @@ require('modules/listagem/comparebar');
 
 console.log('@@@@@@@@@@ heading-banner @@@@@@@@@@');
 
-const $container = document.querySelector('.top-navigation');
-const $template = `
-<div class="heading-banner">
-		<div class="container">
-			<div class="heading-banner__title">
-				<h1>
-					Nossas <span>Geladeiras</span>
-				</h1>
-			</div>
-
-			<div class="box-banner">
-				<a>
-					<img width="1280" height="340" alt="Teste" src="/arquivos/banner-heading-tag-seo.png" complete="complete">
-				</a>
-			</div>
-		</div>
-	</div>
-`;
-
-$container.insertAdjacentHTML('afterend', $template);
-
-
-
-
 Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
 	var $body = $('body');
 
