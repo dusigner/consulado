@@ -76,10 +76,23 @@ Nitro.module('percentoff', function() {
 			 */
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				self.find('.discount-boleto')
-					.text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
-			}else {
+					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
+					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))) + ' <span>À vista</span>');
+			}
+			else {
 				self.find('.discount-boleto')
-					.text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
+					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
+					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' <span>À vista</span>');
+			}
+
+			if (cmcDiscountCartao || cmcDiscountBoleto) {
+				self.addClass('product-has-5-off');
+				self.find('.por .off').after(`
+					<span class="product-with-5-off">
+						+${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}
+						% OFF à vista
+					</span>
+				`);
 			}
 
 			self.addClass('list-percent');

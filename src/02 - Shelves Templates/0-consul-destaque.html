@@ -36,6 +36,9 @@
 						<span class="txtPor">Por: </span><span class="val">$product.BestPrice</span>
 						<span class="off"></span>
 					</p>
+
+					<p class="discount-boleto"></p>
+
 					<p class="adicional">
 						#if ($product.NumbersOfInstallment == 1)
 							<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
@@ -43,7 +46,6 @@
 							<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
 						#end
 					</p>
-					<p class="discount-boleto"></p>
 				</div>
 			#end
 		</a>

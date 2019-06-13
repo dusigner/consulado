@@ -1,6 +1,16 @@
 .prod-galeria {
 	position: relative;
 
+	// Clearfix
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+		font-size: 0;
+		height: 0;
+		visibility: hidden;
+	}
+
 	#show,
 	.gallery.slick-slider {
 		position: relative;
@@ -29,7 +39,6 @@
 
 			&:after { display: none; }
 		}
-
 	}
 
 	.slick-dots {
@@ -48,12 +57,11 @@
 
 	.gallery {
 		@include breakpoint(medium, 'min') { float: right; }
-
 		@include breakpoint(small, 'max') {
 			display: inline-block;
 			float: right;
 			padding: 0;
-			width: 70%;
+			width: calc(100% - 90px);
 
 			.slick-arrow { display: none !important; }
 		}
@@ -158,9 +166,8 @@
 		@include breakpoint(small, 'max') {
 			display: inline-block;
 			float: left;
-			max-height: 200px;
+			max-height: 285px;
 			padding: 0;
-			width: 30%;
 		}
 
 		.slick-list { min-height: 195px; }

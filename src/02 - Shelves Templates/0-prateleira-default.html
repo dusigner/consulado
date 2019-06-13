@@ -49,26 +49,27 @@
 						<span class="off"></span>
 					</p>
 
-						<p class="adicional">
-							#if ($product.NumbersOfInstallment == 1)
-								<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
-							#else
-								<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
-							#end
-
-							#if ($product.NumbersOfInstallment > 1)
-								<span class="total-parcelado">
-									<span class="total-parcelado__txt">Total parcelado: </span>
-									<span class="val"> $product.BestPrice</span>
-								</span>
-							#end
-						</p>
-
 					<p class="por-boleto hide">
 						<span class="txtPor">Por: </span> <span class="val">$product.BestPrice<span class="cash"> à vista no boleto</span></span>
 						<span class="off"></span>
 					</p>
 					<p class="discount-boleto"></p>
+
+					<p class="adicional">
+						#if ($product.NumbersOfInstallment == 1)
+							<span class="val">$product.InstallmentValue</span><span class="cash"> à vista</span>
+						#else
+							<span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span>
+						#end
+
+
+						#if ($product.NumbersOfInstallment > 1)
+							<span class="total-parcelado">
+								<span class="total-parcelado__txt">Total parcelado: </span>
+								<span class="val"> $product.BestPrice</span>
+							</span>
+						#end
+					</p>
 				</div>
 			#else
 				<p class="indisponivel">Produto indisponível</p>
