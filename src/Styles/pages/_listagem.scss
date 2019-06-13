@@ -763,8 +763,6 @@ body.departamento {
 		margin-bottom: 30px;
 
 		@include breakpoint ('medium', 'max') {
-			overflow-x: scroll;
-			overflow-y: hidden;
 			white-space: nowrap;
 		}
 	}
@@ -873,10 +871,13 @@ body.departamento {
 					}
 				}
 			}
+
+			@include breakpoint ('medium', 'max') {
+				overflow: auto;
+			}
 		}
 
 		@include breakpoint ('medium', 'max') {
-			margin-left: 15px;
 			padding: 0;
 			width: auto;
 		}
