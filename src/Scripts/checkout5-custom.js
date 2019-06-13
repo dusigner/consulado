@@ -347,9 +347,25 @@ $(document).on('ready', function() {
 			if (self.isOrderForm()) {
 				if (store && store.isCorp === true) {
 					pj.changeProfileData();
+					self.disabledShipping();
 				}
 			}
+		};
 
+		this.disabledShipping = function (){
+			let interval = setInterval(function(){
+
+				if($('.box-delivery').length){
+					$('#ship-postal-code').attr('disabled', true);
+					$('#force-shipping-fields').hide();
+					$('.address-list-placeholder .address-create').hide();
+					$('.address-list-placeholder .address-edit').hide();
+					$('.box-delivery input').each(function(){
+						$(this).attr('disabled', true);
+					});
+					clearInterval(interval);
+				}
+			},100);
 		};
 
 		//state
