@@ -52,10 +52,14 @@
 		h1 {
 			@include rfs(35);
 			line-height: 125%;
-			margin: 0;
+			margin: 15px 0;
 			padding-right: 1em;
 			position: relative;
 			z-index: 1;
+		}
+
+		h1:empty {
+			display: none;
 		}
 
 		span {
