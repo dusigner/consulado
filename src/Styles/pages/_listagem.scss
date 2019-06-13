@@ -755,7 +755,8 @@ body.neemu {
 	}
 }
 
-body.categoria, body.departamento {
+body.categoria,
+body.departamento {
 	.category-postheader {
 		background: #fcfcfc;
 		border: 1px solid #e3e1e1;
@@ -770,7 +771,6 @@ body.categoria, body.departamento {
 
 	section.breadcrumb {
 		margin: 0 auto;
-		width: 75%;
 
 		.bread-crumb {
 			margin: 10px 0;
@@ -809,29 +809,6 @@ body.categoria, body.departamento {
 					transition: max-width .5s ease;
 				}
 
-				&:first-child {
-					a {
-						font-size: 0;
-						max-width: inherit;
-
-						&:before {
-							color: #736c6b;
-							content: 'Home';
-							font-size: .75rem;
-							font-weight: 400;
-
-							@include breakpoint ('medium', 'max') {
-								pointer-events: auto;
-							}
-						}
-
-
-					}
-
-					@include breakpoint ('medium', 'max') {
-						max-width: inherit;
-					}
-				}
 
 				&:nth-child(2) {
 					a {
@@ -851,6 +828,28 @@ body.categoria, body.departamento {
 						@include breakpoint ('medium', 'max') {
 							font-size: .75rem;
 							pointer-events: auto;
+						}
+					}
+
+					@include breakpoint ('medium', 'max') {
+						max-width: inherit;
+					}
+				}
+
+				&:first-child {
+					a {
+						font-size: 0;
+						max-width: inherit;
+
+						&:before {
+							color: #736c6b;
+							content: 'Home';
+							font-size: .75rem;
+							font-weight: 400;
+
+							@include breakpoint ('medium', 'max') {
+								pointer-events: auto;
+							}
 						}
 					}
 
