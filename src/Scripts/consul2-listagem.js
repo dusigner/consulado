@@ -17,9 +17,6 @@ require('modules/listagem/comparebar');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-
-console.log('@@@@@@@@@@ heading-banner @@@@@@@@@@');
-
 Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
 	var $body = $('body');
 
