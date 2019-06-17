@@ -1,7 +1,9 @@
 /* global $:true, Nitro: true */
 'use strict';
 
+require('modules/banners-controller');
 require('modules/slider-banner');
+
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/lead-newsletter');

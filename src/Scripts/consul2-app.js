@@ -45,7 +45,6 @@ require('modules/store/cluster');
 require('modules/percentoff');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
-require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
 require('modules/isTelevendasCorp');
