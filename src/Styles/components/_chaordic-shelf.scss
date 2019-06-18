@@ -139,7 +139,8 @@ div[data-chaordic] {
 				@include breakpoint ('medium', 'max') {
 					color: $green;
 					display: block;
-					font-size: 1.1875rem;
+					font-size: 1.875rem;
+					line-height: 1;
 				}
 			}
 		}
