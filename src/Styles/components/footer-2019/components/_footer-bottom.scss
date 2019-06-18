@@ -83,7 +83,11 @@
 		}
 
 		// Ebit
-		#seloEbit { max-width: 35px; }
+		#seloEbit {
+			max-width: 35px;
+
+			img { max-width: 100%; }
+		}
 	}
 
 	// Title
