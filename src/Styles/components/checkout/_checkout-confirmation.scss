@@ -26,8 +26,11 @@ body[class*='consul'] {
 			padding-bottom: 20px;
 
 			.dib.cf.w-100.pt4 {
-				align-items: stretch;
-				display: flex;
+				@include breakpoint('small', 'min') {
+
+					align-items: stretch;
+					display: flex;
+				}
 
 				& > div { border: 1px solid $gray; }
 			}
@@ -52,7 +55,7 @@ body[class*='consul'] {
 						color: #ffffff;
 						font-weight: bold;
 						opacity: 1 !important;
-						padding: 8px 0;
+						padding: 8px 15px;
 						text-align: center;
 						text-transform: uppercase;
 						width: 150px;

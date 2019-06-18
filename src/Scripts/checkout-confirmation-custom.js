@@ -132,7 +132,7 @@ $(window).on('load', function() {
 				$(document).on('click', '.js-print-bankInvoice-button', function() {
 					$('#app-top #print-bank-invoice .link').trigger('click');
 				});
-			}, 500);
+			}, 800);
 		};
 
 		this.orderReinput = function () {
