@@ -1,4 +1,4 @@
-	@charset 'UTF-8';
+@charset 'UTF-8';
 
 @keyframes arrowLeft {
 	0%   {right: 0;}
@@ -71,31 +71,6 @@
 				display: block;
 				height: 50px;
 				line-height: 50px;
-			}
-		}
-
-		.title-filter {
-			@include responsiveFont(18, 16, true);
-			display: inline-block;
-			float: left;
-			font-weight: 400;
-			line-height: 76px;
-			margin: 0 1.5em 0 0;
-
-			@include breakpoint(small, 'max') {
-				display: block;
-				float: none;
-				margin: 0;
-				text-align: center;
-
-				&.active { color: $orange; }
-
-				&::after {
-					@include icon-get('arrow-down');
-					@include responsiveFont(12, 16, true);
-					@include transition(transform, 200);
-					margin-left: 1em;
-				}
 			}
 		}
 	}
@@ -342,21 +317,11 @@ body.departamento {
 	}
 	.filter-wrapper {
 		background-color: #fff;
-		border: 1px solid $gray;
 		display: inline-block;
 		vertical-align: top;
 		width: 260px;
 		z-index: 10;
-		&:before {
-			@include responsiveFont(20, 16, true);
-			background-color: $gray;
-			content: 'Filtrar';
-			display: block;
-			padding: 20px 0 20px 20px;
-			text-transform: uppercase;
-			width: 100%;
 
-		}
 		fieldset {
 			border: none;
 			margin: 0;
@@ -367,7 +332,6 @@ body.departamento {
 			@include breakpoint(medium, 'max') {
 				width: 100% !important;
 			}
-			.title-filter { display: none; }
 			.menu-departamento {
 				h3,
 				h4,
@@ -389,26 +353,31 @@ body.departamento {
 								border-radius: 3px;
 								content: ' ';
 								display: inline-block;
-								height: 15px;
+								height: 20px;
 								left: 0;
 								position: absolute;
 								top: 50%;
 								transform: translate(0%, -50%);
 								visibility: visible;
-								width: 15px;
+								width: 20px;
 							}
 							&.active:after {
-								background-color: $orange;
-								content: ' ';
+								@include icon-get('check-thin');
+								background-color: $purple-n;
+								color: #fff;
 								display: inline-block;
-								height: 9px;
-								left: 0;
-								margin-left: 3px;
+								font-size: 1.5rem;
+								font-weight: 0;
+								height: 18px;
+								left: 1px;
+								//line-height: 1;
+								margin-left: 0;
 								position: absolute;
-								top: 50%;
+								text-align: center;
+								top: 11px;
 								transform: translate(0%, -50%);
 								visibility: visible;
-								width: 9px;
+								width: 18px;
 							}
 							&.loading {
 								&:after { display: none; }
@@ -447,21 +416,23 @@ body.departamento {
 
 				h5 {
 					@include responsiveFont(15, 16, true);
-					color: $orange;
+					color: $gray-d;
 					cursor: pointer;
+					font-size: .875rem;
 					margin: 7px 0;
-					padding-left: 45px;
 					text-transform: uppercase;
-					&:before {
+
+					&:after {
 						@include contentBefore();
 						@include icon-get('arrow-up');
 						@include responsiveFont(6, 16, true);
-						left: 20px;
+						display: inline-block;
 						margin-top: 7px;
+						right: 0;
 						transition: transform .4s ease;
 					}
 					&.closed {
-						&:before {
+						&:after {
 							transform: rotate(-180deg);
 						}
 					}
@@ -482,6 +453,7 @@ body.departamento {
 						@include responsiveFont(15, 16, true);
 						cursor: pointer;
 						display: none;
+						font-size: .875rem;
 						margin: 4px 25px;
 						position: relative;
 						@include breakpoint(medium, 'max') {
@@ -536,6 +508,18 @@ body.departamento {
 
 			&.opened {
 				transform: translateX(0);
+			}
+		}
+
+		.title-filter {
+			border-bottom: 2px solid #9aca3c;
+			font-size: 1rem;
+			font-weight: 700;
+			margin: 50px 0 0;
+			padding-bottom: 2px;
+
+			&:first-child {
+				margin: 0;
 			}
 		}
 	}
