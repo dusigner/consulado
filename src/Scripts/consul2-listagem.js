@@ -311,4 +311,8 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 
 		// $('section.slider').eq(0).find('.pre-title').trigger('click');
 	}
+
+	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
+		$('.heading-banner').addClass('hide');
+	}
 });
