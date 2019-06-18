@@ -9,7 +9,7 @@ $.ajax({
 });
 
 $(window).on('load', function() {
-	
+
 	require('modules/helpers');
 
 	if (VERSION) {
@@ -30,7 +30,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.phones');
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
-	
+
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
@@ -98,7 +98,7 @@ $(window).on('load', function() {
 
 			for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
 				var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
-				
+
 				if ( entregas.id === entregaEscolhida ) {
 					var startag = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.startDateUtc) : '',
 						endag   = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.endDateUtc) : '';
@@ -118,16 +118,21 @@ $(window).on('load', function() {
 
 
 		this.infoBoleto = function() {
-			var $bankInvoice = $('#app-top #print-bank-invoice');
-			if ($bankInvoice.length > 0) {
-				$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
+			setTimeout(function() {
+				var $btnPrintBankInvoice = $('#app-top #print-bank-invoice');
+				var $btnPrintBankInvoiceCopy = $btnPrintBankInvoice.clone();
 
-				$('.cconf-payment article.fl .lh-copy').append($bankInvoice.clone());
-			}
+				$btnPrintBankInvoiceCopy.addClass('js-print-bankInvoice-button');
 
-			$(document).on('click', '.cconf-payment article.fl .lh-copy #print-bank-invoice', function(){
-				$('#app-top #print-bank-invoice .link').trigger('click');
-			});
+				if ($btnPrintBankInvoice.length > 0) {
+					$('.cconf-alert .db').text('Falta pouco! Efetue o pagamento do boleto e finalize seu pedido.');
+					$('.cconf-payment article.fl .lh-copy').append($btnPrintBankInvoiceCopy);
+				}
+
+				$(document).on('click', '.js-print-bankInvoice-button', function() {
+					$('#app-top #print-bank-invoice .link').trigger('click');
+				});
+			}, 500);
 		};
 
 		this.orderReinput = function () {
@@ -137,12 +142,12 @@ $(window).on('load', function() {
 				orderR = localStorage.getItem('orderR'),
 				newOrder = $('#order-id').text(),
 				company = localStorage.getItem('company'),
-				reason = localStorage.getItem('reason'),		
+				reason = localStorage.getItem('reason'),
 				alcada = localStorage.getItem('alcada'),
 				obsUser = localStorage.getItem('obsUser');
-			
 
-			if(istelevendas !== null){		
+
+			if(istelevendas !== null){
 
 
 				// concatena as variaveis no date
@@ -162,7 +167,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function () {						
+					success: function () {
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
@@ -176,7 +181,7 @@ $(window).on('load', function() {
 						console.info('error; ' + error);
 					}
 				});
-				
+
 			} else {
 				console.info('nao tem o localStorage');
 			}
