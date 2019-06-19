@@ -56,6 +56,42 @@ div[data-chaordic] {
 .shelf {
 	&-pre-title {
 
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(16, 16, true);
+			background-color: $self-primary;
+			border: 1px solid #fff;
+			color: #fff;
+			display: block;
+			font-weight: bold;
+			line-height: 1.5;
+			margin: 0 0 15px;
+			padding: 15px;
+			position: relative;
+			text-align: left;
+
+			&+div {
+				//max-height: 1000px;
+				overflow: hidden;
+				transition: max-height .8s ease;
+			}
+
+			&:not(.shelf-sub-title):not(.Preferidos):after {
+				@include icon-get('arrow-down');
+				@include responsiveFont(5, 16, true);
+				display: block;
+				position: absolute;
+				right: 10px;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: transform .5s ease;
+			}
+
+			&--active {
+				&+div {	max-height: 0 }
+
+				&:after { transform: translateY(-50%) rotate(180deg)!important; }
+			}
+		}
 		margin: 20px 0;
 
 		span {
@@ -66,6 +102,44 @@ div[data-chaordic] {
 				font-weight: 100;
 				line-height: 1;
 				text-transform: capitalize;
+			}
+		}
+
+		&.Preferidos {
+			@include responsive('max-width', 95%,
+				(
+					'small'       : 768px,
+					'medium'      : 960px,
+					'large'       : 1200px,
+					'extra-large' : 1280px
+				)
+			);
+
+			font-size: 1.25rem;
+			margin: 0 auto 20px;
+			text-align: left;
+
+			@include breakpoint ('medium', 'max') {
+				background: #fff;
+				color: #736c6b;
+				font-size: 1rem;
+				font-weight: 400;
+				margin: 15px auto;
+				max-width: 95%;
+				padding: 0 20px;
+			}
+
+			span {
+				font-size: 2.1875rem;
+				font-weight: 700;
+				text-transform: none;
+
+				@include breakpoint ('medium', 'max') {
+					color: $green;
+					display: block;
+					font-size: 1.875rem;
+					line-height: 1;
+				}
 			}
 		}
 

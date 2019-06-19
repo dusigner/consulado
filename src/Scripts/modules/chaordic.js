@@ -539,6 +539,9 @@ Nitro.module('chaordic', function() {
 		if(renderData[0] && renderData[0].name === 'Complementares') {
 			renderData[0].subtitle = 'Compre <span class="shelf--compre-junto">junto</span>';
 		}
+		if (renderData[1] && renderData[1].name === 'Preferidos') {
+			renderData[1].title = 'Confira <span class="shelf--preferidos">os preferidos</span>';
+		}
 
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
