@@ -38,7 +38,7 @@
 		.footer-2019--checkout & {
 			@include breakpoint('small', 'max') {
 				margin: 0;
-				width: 30%!important;
+				width: 35%!important;
 			}
 			margin-right: 5%;
 			width: 20%;
@@ -50,7 +50,7 @@
 			// [ Checkout ] - Adaptações
 			.footer-2019--checkout & {
 				@include breakpoint('small', 'max') {
-					margin-right: 4%;
+					margin-right: 5%;
 					width: 60%!important;
 
 					img { margin-right: 0; }
