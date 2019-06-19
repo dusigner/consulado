@@ -373,7 +373,7 @@ body.departamento {
 									width: 18px;
 
 									@include breakpoint ('medium', 'max') {
-										left: 21px;
+										left: 11px;
 										top: 21px;
 									}
 								}
@@ -392,7 +392,7 @@ body.departamento {
 									width: 18px !important;
 
 									@include breakpoint ('medium', 'max') {
-										left: 20px;
+										left: 10px;
 										top: 12px;
 									}
 								}
@@ -402,10 +402,10 @@ body.departamento {
 								border-bottom: none;
 								display: block;
 								margin: 5px 15px;
-								padding-left: 45px;
+								padding-left: 35px;
 
 								&:before {
-									left: 20px;
+									left: 10px;
 								}
 							}
 						}
@@ -438,7 +438,7 @@ body.departamento {
 						transition: transform .4s ease;
 
 						@include breakpoint ('medium', 'max') {
-							left: 65px;
+							left: 55px;
 							right: inherit;
 						}
 					}
@@ -486,7 +486,8 @@ body.departamento {
 				}
 
 				@include breakpoint ('medium', 'max') {
-					padding: 0 35px;
+					margin-bottom: 100px;
+					padding: 0 25px;
 				}
 			}
 		}
@@ -532,7 +533,7 @@ body.departamento {
 			}
 
 			@include breakpoint ('medium', 'max') {
-				margin: 50px 50px 0;
+				margin: 15px 40px 0;
 
 			}
 		}

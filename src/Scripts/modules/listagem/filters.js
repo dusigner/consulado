@@ -442,19 +442,20 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		$('.open-filter').click(function() {
 			$filterWrapper.addClass('opened');
 			//console.log('teste');
-			 if($('.overlay-filter').length === 0) {
-			 	$('body').prepend('<div class="overlay-filter"></div>');
+			if($('.overlay-filter').length === 0) {
+				$('body').prepend('<div class="overlay-filter"></div>');
 			} else {
-			 	$('.overlay-filter').removeClass('hide');
+				$('.overlay-filter').removeClass('hide');
 			}
 
 			$('.overlay-filter').unbind('click').click(function() {
-			 	self.closeFilter();
+				self.closeFilter();
 			});
 		});
 	};
 
 	this.closeFilter = function() {
+		$('.overlay-filter').addClass('hide');
 		$filterWrapper.removeClass('opened');
 	};
 
