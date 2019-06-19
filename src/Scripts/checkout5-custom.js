@@ -354,6 +354,8 @@ $(document).on('ready', function() {
 
 		this.disabledShipping = function (){
 			let interval = setInterval(function(){
+				$('.address-list-placeholder .address-create').hide();
+				$('.address-list-placeholder .address-edit').hide();
 
 				if($('.box-delivery').length){
 					$('#ship-postal-code').attr('disabled', true);
