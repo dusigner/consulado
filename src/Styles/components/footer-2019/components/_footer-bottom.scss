@@ -38,17 +38,24 @@
 		.footer-2019--checkout & {
 			@include breakpoint('small', 'max') {
 				margin: 0;
-				width: 48%!important;
+				width: 30%!important;
 			}
 			margin-right: 5%;
+			width: 20%;
 		}
 
 		&:first-child {
+			width: 60%;
+
 			// [ Checkout ] - Adaptações
 			.footer-2019--checkout & {
-				@include breakpoint('small', 'max') { margin-right: 4%; }
+				@include breakpoint('small', 'max') {
+					margin-right: 4%;
+					width: 60%!important;
+
+					img { margin-right: 0; }
+				}
 			}
-			width: 60%;
 		}
 
 		&:last-child {
@@ -67,12 +74,15 @@
 					}
 				}
 
+				// Vtex Logo
 				img {
 					@include breakpoint('small', 'max') {
+						display: block;
 						position: absolute;
 						right: 0;
 						top: 20px;
 					}
+					@include breakpoint('small', 'min') { display: none; }
 				}
 			}
 		}
@@ -80,6 +90,11 @@
 		img {
 			display: inline-block;
 			margin: 0 20px 20px 0;
+
+			&:last-child {
+				// [ Checkout ] - Adaptações
+				.footer-2019--checkout & { margin-right: 0; }
+			}
 		}
 
 		// Ebit
@@ -98,6 +113,7 @@
 		margin-bottom: 1.2em;
 		padding-bottom: 1em;
 		position: relative;
+		white-space: nowrap;
 
 		&:before {
 			background-color: $default-color-gray-light;
@@ -120,6 +136,9 @@
 	&__text {
 		@include rfs(11);
 
+		// [ Checkout ] - Adaptações
+		.footer-2019--checkout & { max-width: 100%; }
+
 		a {
 			color: #fff;
 
@@ -129,10 +148,23 @@
 			&:hover { text-decoration: underline; }
 		}
 	}
+
+	&__vtex {
+		text-align: right;
+		width: 90%;
+
+		img { display: inline-block; }
+	}
 }
 
 // logo vtex
 .vtex-logo-footer {
 	display: block;
 	margin-top: 1em;
+
+	// [ Checkout ] - Adaptações
+	.footer-2019--checkout & {
+		@include breakpoint('small', 'max') { display: none; }
+	}
 }
+
