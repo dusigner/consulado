@@ -55,6 +55,8 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
+		@include responsiveFont(20, 16, true);
+
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(16, 16, true);
 			background-color: $self-primary;
@@ -66,7 +68,6 @@ div[data-chaordic] {
 			margin: 0 0 15px;
 			padding: 15px;
 			position: relative;
-			text-align: left;
 
 			&+div {
 				//max-height: 1000px;
@@ -91,14 +92,17 @@ div[data-chaordic] {
 				&:after { transform: translateY(-50%) rotate(180deg)!important; }
 			}
 		}
+
 		margin: 20px 0;
+		text-align: left;
 
 		span {
+
 			@include breakpoint(medium, 'min') {
-				@include responsiveFont(78, 16, true);
+				@include responsiveFont(35, 16, true);
 				color: $self-primary;
 				display: block;
-				font-weight: 100;
+				font-weight: bold;
 				line-height: 1;
 				text-transform: capitalize;
 			}
