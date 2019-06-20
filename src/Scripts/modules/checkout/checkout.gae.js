@@ -16,7 +16,7 @@ Nitro.module('checkout.gae', function() {
 		this.link();
 		this.terms();
 		this.autoOpen();
-		this.introOpen();
+		// this.introOpen();
 	};
 
 	this.installments = function() {
@@ -212,8 +212,6 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].isCheaper  		= false;
 			data.warranty[index].isParcel	  		= (self.installments()) ? true : false;
 
-			console.log('#####', warrantyTime);
-
 			(data.warranty[index].months === 36) ? data.warranty[index-1].hasThreeYears = '-not-last' : '';
 
 			if ( offerings[index - 1] ) {
@@ -407,9 +405,7 @@ Nitro.module('checkout.gae', function() {
 		}, 1500);
 	};
 
-	this.introOpen = function (){
-
-
+	this.introOpen = function() {
 		if ( winWidth < 960 ) {
 
 			setTimeout(function() {
