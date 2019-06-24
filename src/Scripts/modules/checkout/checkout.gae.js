@@ -15,7 +15,7 @@ Nitro.module('checkout.gae', function() {
 	this.setup = function() {
 		this.link();
 		this.terms();
-		this.autoOpen();
+		// this.autoOpen();
 		// this.introOpen();
 	};
 
