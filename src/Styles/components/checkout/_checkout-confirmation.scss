@@ -21,9 +21,19 @@ body[class*='consul'] {
 
 		#app-top,
 		#app-container {
-			background: #ffffff;
+			background: #fff;
 			box-shadow: none;
 			padding-bottom: 20px;
+
+			.dib.cf.w-100.pt4 {
+				@include breakpoint('small', 'min') {
+
+					align-items: stretch;
+					display: flex;
+				}
+
+				& > div { border: 1px solid $gray; }
+			}
 
 			.ph3-ns {
 				max-width: 1280px;
@@ -33,6 +43,9 @@ body[class*='consul'] {
 				@include breakpoint(small, 'max') { padding: 0 20px; }
 
 				#print-bank-invoice {
+					cursor: pointer;
+					display: inline-block;
+
 					.link {
 						@include singleTransition();
 						@include responsiveFont(13, 16, true);
@@ -42,7 +55,7 @@ body[class*='consul'] {
 						color: #ffffff;
 						font-weight: bold;
 						opacity: 1 !important;
-						padding: 8px 0;
+						padding: 8px 15px;
 						text-align: center;
 						text-transform: uppercase;
 						width: 150px;
@@ -130,10 +143,8 @@ body[class*='consul'] {
 						width: 100%;
 					}
 
-					&>.fl {
-						border: 1px solid $gray;
+					& > .fl {
 						box-shadow: none;
-						height: 170px;
 						min-height: 170px;
 
 						@include breakpoint(small, 'max') {
@@ -192,9 +203,7 @@ body[class*='consul'] {
 						}
 					}
 
-					#print-bank-invoice {
-						.link { margin-top: 16px; }
-					}
+					// #print-bank-invoice { }
 				}
 
 				.cconf-summary {

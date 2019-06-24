@@ -16,7 +16,7 @@ Nitro.module('checkout.gae', function() {
 		this.link();
 		this.terms();
 		this.autoOpen();
-		this.introOpen();
+		// this.introOpen();
 	};
 
 	this.installments = function() {
@@ -405,9 +405,7 @@ Nitro.module('checkout.gae', function() {
 		}, 1500);
 	};
 
-	this.introOpen = function (){
-
-
+	this.introOpen = function() {
 		if ( winWidth < 960 ) {
 
 			setTimeout(function() {
