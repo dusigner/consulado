@@ -55,52 +55,28 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
-		@include breakpoint(small, 'max') {
+
+		@include responsiveFont(20, 16, true);
+		color: $gray-d;
+		margin-bottom: 15px;
+		text-align: left;
+
+		@include breakpoint('medium', 'max') {
 			@include responsiveFont(16, 16, true);
-			background-color: $self-primary;
-			border: 1px solid #fff;
-			color: #fff;
-			display: block;
-			font-weight: bold;
-			line-height: 1.5;
-			margin: 0 0 15px;
-			padding: 15px;
-			position: relative;
-			text-align: left;
-
-			&+div {
-				//max-height: 1000px;
-				overflow: hidden;
-				transition: max-height .8s ease;
-			}
-
-			&:not(.shelf-sub-title):after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(5, 16, true);
-				display: block;
-				position: absolute;
-				right: 10px;
-				top: 50%;
-				transform: translateY(-50%);
-				transition: transform .5s ease;
-			}
-
-			&--active {
-				&+div {	max-height: 0 }
-
-				&:after { transform: translateY(-50%) rotate(180deg)!important; }
-			}
+			margin: 0 auto;
+			padding: 0 10%;
+			width: 100%;
 		}
-		margin: 20px 0;
 
 		span {
-			@include breakpoint(medium, 'min') {
-				@include responsiveFont(78, 16, true);
-				color: $self-primary;
-				display: block;
-				font-weight: 100;
-				line-height: 1;
-				text-transform: capitalize;
+			@include responsiveFont(35, 16, true);
+			color: $green;
+			display: block;
+			font-weight: bold;
+			text-transform: capitalize;
+
+			@include breakpoint('medium', 'max') {
+				@include responsiveFont(30, 16, true);
 			}
 		}
 
@@ -189,19 +165,11 @@ div[data-chaordic] {
 
 		h2 {
 			@include breakpoint(small, 'max') {
-				&:not(.shelf-sub-title) {
-					margin-left: calc(-0% - 20px);
-					margin-right: calc(-0% - 20px);
-					@include breakpoint('extra-small', 'max') {
-						margin-left: calc(-3% - 20px);
-						margin-right: calc(-3% - 20px);
-					}
-				}
+				margin: 0;
 
 				&.shelf-sub-title {
 					display: block;
 					position: relative;
-					text-align: center;
 
 					&:before {
 						border-color: $self-third transparent transparent transparent;
@@ -265,14 +233,13 @@ div[data-chaordic] {
 				width: 100%;
 
 				h2 {
-					background-color: $self-third;
 					font-weight: normal;
 				}
 			}
 			width: 100/3*2%;
 
 			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
-			h2 { color: $self-primary }
+
 		}
 	}
 
@@ -522,4 +489,33 @@ div[data-chaordic] {
 			color: #7f2893;
 		}
 	}
+
+	&.slick-vertical {
+		.shelf-item {
+			margin: 3px 0;
+
+		}
+		button {
+			left: 80%!important;
+			position: relative;
+			width: 10px;
+
+			&.slick-prev {
+				top: 195px;
+			}
+
+			&.slick-next {
+				bottom: 200px;
+			}
+
+			&:before {
+				font-size: .5rem;
+			}
+
+			@include breakpoint('extra-large', 'max') {
+				left: 85%!important;
+			}
+		}
+	}
 }
+
