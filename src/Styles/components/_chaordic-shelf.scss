@@ -59,37 +59,16 @@ div[data-chaordic] {
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(16, 16, true);
-			background-color: $self-primary;
-			border: 1px solid #fff;
-			color: #fff;
+			color: $gray-d;
 			display: block;
-			font-weight: bold;
-			line-height: 1.5;
-			margin: 0 0 15px;
-			padding: 15px;
 			position: relative;
 
-			&+div {
-				//max-height: 1000px;
-				overflow: hidden;
-				transition: max-height .8s ease;
-			}
-
-			&:not(.shelf-sub-title):after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(5, 16, true);
+			span {
+				@include responsiveFont(30, 16, true);
+				color: $green;
 				display: block;
-				position: absolute;
-				right: 10px;
-				top: 50%;
-				transform: translateY(-50%);
-				transition: transform .5s ease;
-			}
-
-			&--active {
-				&+div {	max-height: 0 }
-
-				&:after { transform: translateY(-50%) rotate(180deg)!important; }
+				font-weight: bold;
+				text-transform: capitalize;
 			}
 		}
 
