@@ -164,15 +164,22 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		$('.priceRange').remove();
 		self.priceRange();
 		self.specificationRange();
+		self.clearFilterRel();
 	};
 
 	this.mobileClearFilter = function() {
-		var $button = $('<button class="clear-filter">Limpar filtros</div>');
+		var $button = $(`<div class="mobile-buttons">
+							<button class="clear-filter">Limpar filtros</button>
+							<button class="close-filter">Voltar</button>
+						</div>`);
 
-		$filterWrapper.append($button);
+		$filterWrapper.prepend($button);
 
 		$('.clear-filter').click(function() {
 			self.clearFilter();
+		});
+
+		$('.close-filter').on('click', function() {
 			self.closeFilter();
 		});
 
@@ -433,13 +440,13 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.openFilter = function() {
 		$('.open-filter').click(function() {
+			$filterWrapper.addClass('opened');
 			//console.log('teste');
 			if($('.overlay-filter').length === 0) {
 				$('body').prepend('<div class="overlay-filter"></div>');
 			} else {
 				$('.overlay-filter').removeClass('hide');
 			}
-			$filterWrapper.addClass('opened');
 
 			$('.overlay-filter').unbind('click').click(function() {
 				self.closeFilter();
@@ -448,8 +455,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	};
 
 	this.closeFilter = function() {
-		$filterWrapper.removeClass('opened');
 		$('.overlay-filter').addClass('hide');
+		$filterWrapper.removeClass('opened');
 	};
 
 
