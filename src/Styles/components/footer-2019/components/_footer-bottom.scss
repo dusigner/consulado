@@ -25,6 +25,7 @@
 			@include breakpoint('small', 'max') {
 				display: flex;
 				flex-wrap: wrap;
+				justify-content: space-between;
 			}
 		}
 	}
@@ -50,7 +51,7 @@
 			// [ Checkout ] - Adaptações
 			.footer-2019--checkout & {
 				@include breakpoint('small', 'max') {
-					margin-right: 5%;
+					margin-right: 4%;
 					width: 60%!important;
 
 					img { margin-right: 0; }
