@@ -213,18 +213,27 @@
 	span {
 		@include responsiveFont(12, 16, true);
 		background: #ffffff;
-		border: 1px solid $orange;
-		color: $orange;
+		border: 1px solid #702F8F;
+		border-radius: 20px;
+		color: #702F8F;
 		display: block;
 		font-weight: 700;
 		padding: 5px 0;
 		text-align: center;
 		text-transform: none;
 		width: 65px;
+
+
+		@include breakpoint ('medium', 'max') {
+			padding: 10px 15px;
+			width: 100%;
+		}
 	}
 
-	@include breakpoint(small, 'max') {
+	@include breakpoint(medium, 'max') {
 		display: inline-block;
+		float: none;
+		width: 46%;
 	}
 }
 
@@ -301,8 +310,10 @@ body.departamento {
 	}
 	.order-wrapper {
 		@include breakpoint(medium, 'min') {
+			bottom: 65px;
 			float: right;
 			padding-right: 0;
+
 		}
 	}
 	.filter-wrapper {
@@ -669,3 +680,13 @@ body.departamento {
 }
 
 @import 'components/checkbox';
+
+body.categoria.btu {
+	.result-filter {
+		.order-wrapper {
+			@include breakpoint ('large', 'min') {
+				bottom: 944px;
+			}
+		}
+	}
+}
