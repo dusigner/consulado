@@ -11,7 +11,7 @@ Nitro.module('checkout.recurrence', function () {
 	//WHY?!
 	this.setup = function () {
 		self.render();
-		self.autoOpen();
+		// self.autoOpen();
 	};
 
 	this.conditionsRecurrence = () => {
