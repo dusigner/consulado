@@ -365,4 +365,7 @@ Nitro.controller('produto', [
 
 	})(window, document, jQuery);
 
+	$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb').addClass('show-active');
+	});
 });
