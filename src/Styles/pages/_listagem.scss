@@ -69,6 +69,13 @@ body.busca {
 	@include breakpoint(small, 'max') { padding: 30px 10px !important; }
 
 	.list-content { margin-left: 0 !important; }
+
+
+	.see-more {
+		border-top: 1px solid #e3e1e1;
+		display: inline-block;
+		width: calc(100% - 20px);
+	}
 }
 
 
@@ -259,7 +266,7 @@ body.busca {
 }
 
 #list-more {
-	@include responsiveFont(18);
+	@include responsiveFont(14, 16,  true);
 	//FIX TABLET
 	@media screen and(min-width: 768px) {
 		@media screen and(max-width: 768px) {
@@ -273,6 +280,10 @@ body.busca {
 		padding: 0;
 		width: 100%;
 	}
+	background-color: #fff;
+    border: none;
+    border-radius: initial;
+    color: $purple;
 	min-height: 50px;
 	outline: none;
 

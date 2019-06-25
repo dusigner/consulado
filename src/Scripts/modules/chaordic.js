@@ -542,6 +542,15 @@ Nitro.module('chaordic', function() {
 		if (renderData[1] && renderData[1].name === 'Preferidos') {
 			renderData[1].title = 'Confira <span class="shelf--preferidos">os preferidos</span>';
 		}
+		if(renderData[0] && renderData[0].name === 'Visualizados') {
+			renderData[0].title = 'Você <span class="shelf--visited">visitou</span>';
+			renderData[0].subtitle = 'Talvez se <span class="shelf--visited">interesse por</span>';
+		}
+
+		if(renderData[1] && renderData[1].name === 'Histórico') {
+			renderData[1].title = 'Últimos <span class="shelf--visited">vistos</span>';
+			renderData[1].subtitle = 'Relacionados aos <span class="shelf--visited">seus interesses</span>';
+		}
 
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
