@@ -126,17 +126,15 @@ Nitro.module('boleto', function() {
 					`;
 				}
 
-				/*console.log('cmcDiscountCartao', cmcDiscountCartao);
-				console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
-
 				setTimeout(function() {
 					$('.discount-boleto').remove();
 					$('.product-with-5-off').remove();
 
-					$('.valor-de.price-list-price').after(boletoInfo);
+					$('.valor-por.price-best-price').before(boletoInfo);
 
 					if (cmcDiscountCartao || cmcDiscountBoleto) {
 						$prodPreco.addClass('product-has-5-off');
+
 						$prodPreco.find('.valor-por').before(`
 							<span class="product-with-5-off">
 								${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
@@ -176,16 +174,16 @@ Nitro.module('boleto', function() {
 
 			if (cmcDiscountCartao || cmcDiscountBoleto) {
 				$prodPreco.addClass('product-has-5-off');
-				$prodPreco.find('.valor-por').before(`
-					<span class="product-with-5-off">
-						${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
-					</span>
-				`);
+				setTimeout(() => {
+					$prodPreco.find('.valor-por').before(`
+						<span class="product-with-5-off">
+							${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
+						</span>
+					`);
+				}, 100);
 			}
 
-			/*console.log('cmcDiscountCartao', cmcDiscountCartao);
-			console.log('cmcDiscountBoleto', cmcDiscountBoleto);*/
-			$('.valor-de.price-list-price').after(boletoInfo);
+			$('.valor-por.price-best-price').before(boletoInfo);
 
 			/*
 			* oh yeah, vtex hack!
