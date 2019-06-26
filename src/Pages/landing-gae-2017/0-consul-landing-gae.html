@@ -214,7 +214,7 @@
 				<p>Para consultar a <strong>tabela de preços</strong> do Seguro de Garantia Estendida Original adquirida junto a compra do seu produto,</p>
 				<a href="http://whirlpool.s3.amazonaws.com/wp-content/uploads/2016/12/Tabela-GE-Compra-Certa-nov-2016-site-v2.pdf" class="gae-link" target="_blank">clique aqui</a>
 			</div>
-			
+
 			<div class="box-gae-links-list">
 				<p>Para consultar a <strong>tabela de preços</strong> do Seguro de Garantia Estendida Original adquirida após a compra do seu produto,</p>
 				<a href="http://whirlpool.s3.amazonaws.com/wp-content/uploads/2016/12/Tabela-GE-Compra-Certa-nov-2016-avulso-v2.pdf" target="_blank">clique aqui</a>
@@ -258,14 +258,20 @@
 </section>
 
 
-		<!-- @if DEBUG=true -->
-	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
-	  <!-- @endif -->
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
 
-  
-	  <!-- Footer -->
-	  <vtex:template id="0-consul-footer" />
-	  <!-- /Footer -->
-<script type="text/javascript" src="<!-- @echo assetsPath -->/consul-landing-gae.min.js?v=<!-- @echo package.version -->"></script>
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<script type="text/javascript" src="<!-- @echo assetsPath -->/consul-landing-gae.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 </html>

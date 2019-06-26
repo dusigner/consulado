@@ -321,45 +321,6 @@
 
 	<br />
 
-	<!-- Lead newsletter -->
-	<div class="lead-newsletter">
-		<div class="row">
-			<div class="container clearfix">
-				<span class="btn_close"></span>
-				<vtex:contentPlaceHolder id="LeadNewsletter" />
-			</div>
-		</div>
-	</div>
-	<!-- /Lead newsletter -->
-
-	<!-- Lead newsletter footer -->
-	<div class="row gutters newsletter">
-		<div class="container">
-			<div class="lead-newsletter-show">
-				<div class="row">
-					<div class="container">
-						<span class="icon-email"></span>
-						<p>Gostaria de receber ofertas imperdíveis no seu e-mail?</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="lead-newsletter">
-				<div class="row">
-					<div class="container">
-						<span class="btn_close"></span>
-						<vtex:contentPlaceHolder id="LeadNewsletterFooter" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Lead newsletter footer -->
-
-	<!-- Serviços -->
-	<vtex:template id="0-consul-servicos" />
-	<!-- /Serviços -->
-
 	<!-- [ Mobile ] - Home Banners Secundários Slick Três -->
 	<section class="banners-secundarios-mobile clearfix show-mobile">
 		<div class="container">
@@ -377,9 +338,16 @@
 	</section>
 	<!-- /[ Mobile ] - Home Banners Secundários Slick Três -->
 
-	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-newsletter" />
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
 
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
 </body>

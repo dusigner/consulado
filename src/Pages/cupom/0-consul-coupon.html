@@ -98,11 +98,18 @@
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
 	<!-- @endif -->
 
-	<!-- Footer -->
+	<!-- Footer 2019 -->
 	<!-- @if DEBUG=false -->
-	<vtex:template id="0-consul-footer" />
+		<footer class="footer-2019" data-module="footer-2019">
+			<vtex:template id="0-consul-footer-2019-atendimento" />
+			<vtex:template id="0-consul-footer-2019-menu" />
+			<vtex:template id="0-consul-footer-2019-bottom" />
+		</footer>
+		<vtex:template id="0-consul-footer-2019-after" />
 	<!-- @endif -->
-	<!-- /Footer -->
+	<!-- /Footer 2019 -->
+
+
 
 	<script src="<!-- @echo assetsPath -->/cns-coupon.min.js?v=<!-- @echo package.version -->"></script>
 </body>
