@@ -741,6 +741,20 @@ body.busca-chaordic {
 
 }
 
+.show-mobile {
+	display: none;
+
+	@include breakpoint ('small', 'max') {
+		display: block;
+		margin: 0 auto;
+		max-width: 360px;
+
+		img {
+			height: auto;
+			max-width: 100%;
+		}
+	}
+}
 
 body.neemu {
 	p.tit-busca-vazia {
