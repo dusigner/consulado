@@ -16,72 +16,27 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
-	<!-- Slider -->
-	<div class="banners hide-extra-small">
-		<!-- Banner -->
-		<div class="banner-principal slides"><vtex:contentPlaceHolder id="BannerTopo" /></div>
-		<!-- /Banner -->
-
-		<!-- Abrir regulamento banner -->
+	<!-- Heading banner -->
+	<div class="heading-banner">
 		<div class="container">
-			<div class="row">
-			<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+			<div class="heading-banner__title">
+				<h1>
+					<vtex:contentPlaceHolder id="titulo-pagina-categoria" />
+				</h1>
+			</div>
 
-			<!-- Modal regulamento -->
-			<div id="modal-regulamento-banner" style="display: none;">
-				<vtex.cmc:regulamentoBannerCategoriaCNS />
+			<!-- Banner -->
+			<div class="category-page-top-banner">
+				<vtex:contentPlaceHolder id="banner-topo-pagina-categoria" />
 			</div>
-			<!-- /Modal regulamento -->
-			</div>
+			<!-- /Banner -->
 		</div>
-		<!-- Abrir regulamento banner -->
 	</div>
-	<!-- /Slider -->
+	<!-- /Heading banner -->
 
-	<!-- Slider mobile -->
-	<div class="banners-mobile">
-		<!-- Banner -->
-		<div class="banner-principal banner-mobile slides"><vtex:contentPlaceHolder id="BannerTopo BannerMobile" /></div>
-		<!-- /Banner -->
 
-		<!-- Abrir regulamento banner -->
-		<div class="container">
-			<div class="row">
-			<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
 
-			<!-- Modal regulamento -->
-			<div id="modal-regulamento-banner" style="display: none;">
-				<vtex.cmc:regulamentoBannerCategoriaCNS />
-			</div>
-			<!-- /Modal regulamento -->
-			</div>
-		</div>
-		<!-- Abrir regulamento banner -->
-	</div>
-	<!-- /Slider mobile -->
 
-	<!-- Home Banners Secundários Slick Três -->
-	<section class="banners-secundarios-mosaico clearfix">
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico7">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario4" />
-					</div>
-				</div>
-
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right hide-mobile">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico8">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario5" />
-					</div>
-					<div class="banner-secundario-mosaico banner-secundario-mosaico9 hide-mobile">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario6" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Home Banners Secundários Slick Três -->
 
 	<div class="container result-filter">
 		<div class="pageName"><vtex.cmc:searchTitle /></div>
