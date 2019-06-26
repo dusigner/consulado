@@ -18,7 +18,7 @@ import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/chaordic';
-import 'custom/testeab-entrega';
+import 'components/testeab-entrega';
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [
