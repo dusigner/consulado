@@ -75,6 +75,13 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 
 	var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
 
+	($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
+
+	//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
+	$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb').addClass('show-active');
+	});
+
 	if ($('body').is('.departamento')) {
 
 		//get all categories
@@ -305,5 +312,9 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 		});
 
 		// $('section.slider').eq(0).find('.pre-title').trigger('click');
+	}
+
+	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
+		$('.heading-banner').addClass('hide');
 	}
 });

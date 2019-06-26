@@ -142,7 +142,10 @@ body.busca {
 		width: 65px;
 	}
 
-	@include breakpoint(small, 'max') { display: inline-block; }
+	@include breakpoint(medium, 'max') {
+		display: inline-block;
+		float: right;
+	}
 }
 
 .order-wrapper {
