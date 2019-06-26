@@ -10,15 +10,9 @@ body.home {
             }
 
             @include breakpoint ('small', 'max') {
-                background-color: #9aca3c;
+                @include responsiveFont(26, 16, true);
                 border: 1px solid #fff;
-                color: #fff;
-                font-size: 1rem;
-                padding: 15px;
-
-                span {
-                    color: #fff;
-                }
+                margin: 0 25px 15px 25px;
             }
         }
 
