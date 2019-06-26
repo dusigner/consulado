@@ -401,7 +401,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			}
 
 			// Retirar a RECOMENDAÇÃO dos 36 meses
-			&.months-36 {
+			&.months-24 {
 				.recomendado {
 					display: none;
 					visibility: hidden;
