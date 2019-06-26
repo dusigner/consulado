@@ -1,0 +1,33 @@
+body.home {
+    .vitrine-promocao {
+        h2 {
+            @include responsiveFont(30, 16, true);
+
+            span {
+                color: $green;
+                font-weight: bold;
+                line-height: 1;
+            }
+
+            @include breakpoint ('small', 'max') {
+                background-color: #9aca3c;
+                border: 1px solid #fff;
+                color: #fff;
+                font-size: 1rem;
+                padding: 15px;
+
+                span {
+                    color: #fff;
+                }
+            }
+        }
+
+        .prateleira-slider {
+            .prateleira {
+                h2 {
+                    display: none;
+                }
+            }
+        }
+    }
+}
