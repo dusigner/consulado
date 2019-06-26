@@ -259,9 +259,10 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.request = function(route, params) {
-		const isStartRoute = route.toString().includes('start');
+		// const isStartRoute = route.toString().includes('start');
+		const isStartRoute = route.toString().indexOf('start') > -1 ? true : false;
 		let data = params;
-		
+
 		if (!isStartRoute) {
 			data = new FormData();
 			for (var attribute in params) {
@@ -274,7 +275,7 @@ Nitro.module('customLogin', function() {
 			url: '/api/vtexid' + route,
 			data: data,
 			...isStartRoute && { dataType: 'jsonp' },
-			...!isStartRoute && { processData: false }, 
+			...!isStartRoute && { processData: false },
 			...!isStartRoute && { contentType: false },
 
 			complete: function (data) {
@@ -394,7 +395,7 @@ Nitro.module('customLogin', function() {
 				userInfos.email = helpers.formtoobj($(this)).custom_login_email;
 
 				if(helpers.isEmail(userInfos.email)) {
-					
+
 					self.request(routes.getEmailAcessKey,{
 						email: userInfos.email,
 						authenticationToken: userInfos.authenticationToken
@@ -617,7 +618,7 @@ Nitro.module('customLogin', function() {
 
 	// Substituindo todos os triggers do botão #login e envia para /login
 	var url_atual = window.location.pathname;
-	var url = location.href; 
+	var url = location.href;
 	url = url.split('/');
 	$('body').off('click','#login');
 	$('body').on('click', '#login', function() {

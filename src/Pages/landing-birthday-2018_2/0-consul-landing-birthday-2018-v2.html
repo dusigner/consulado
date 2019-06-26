@@ -10,16 +10,16 @@
 
 	<vtex:template id="0-consul-head-content" />
 
-    <link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
-    <link rel="stylesheet" href="<!-- @echo assetsPath -->/landing-birthday-2018-2.css?v=<!-- @echo package.version -->" />
-	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />	
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/landing-birthday-2018-2.css?v=<!-- @echo package.version -->" />
+	<meta property="og:url"                content="https://loja.consul.com.br/landing/cadastro" />
 	<meta property="og:title"              content="Celebrando ideias bem pensadas" />
 	<meta property="og:description"        content="Faça parte do nosso aniversário antes mesmo da festa começar. Cadastre-se e fique por dentro de todas as novidades e ofertas em primeira mão. Aniversário Consul - Celebrando ideias bem pensadas!" />
 	<meta property="og:image"			   content="https://consul.vteximg.com.br/arquivos/hero-cns-birthday-2018-m.jpg" />
 </head>
 <body data-controller="listagem">
 
-	
+
 	<!-- @if DEBUG=true -->
 	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
 	<!-- @endif -->
@@ -32,32 +32,32 @@
 
 	<vtex:template id="0-consul-header" />
 
-    <!-- HERO -->
-    <section class="hero">
+	<!-- HERO -->
+	<section class="hero">
 			<div class="hide-mobile">
 				<vtex:contentPlaceHolder id="BannerHeroDesk"/>
 			</div>
 			<div class="show-mobile">
 				<vtex:contentPlaceHolder id="BannerHeroMobile"/>
-			</div>		
+			</div>
 	</section>
-    <!-- /HERO -->
+	<!-- /HERO -->
 
-    <div class="new-showcase">
-        <div class="container">
+	<div class="new-showcase">
+		<div class="container">
 			<vtex:contentPlaceHolder id="vitrineSlick"/>
-        </div>
-    </div>
+		</div>
+	</div>
 
-    <!-- Register Bar-->
-    <section class="bar-register">
-        <div class="container">
-            <h2>Confira mais ofertas de Aniversário!</h2>
-        </div>
-    </section>
-    <!-- /Register Bar-->
+	<!-- Register Bar-->
+	<section class="bar-register">
+		<div class="container">
+			<h2>Confira mais ofertas de Aniversário!</h2>
+		</div>
+	</section>
+	<!-- /Register Bar-->
 
-    <!-- Conteudo -->
+	<!-- Conteudo -->
 	<div class="result-filter">
 		<div class="pageName"><vtex.cmc:searchTitle /></div>
 
@@ -91,9 +91,9 @@
 							</div>
 						</div>
 
-                        <div>
-                            <vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="12" columnCount="12" />
-                        </div>
+						<div>
+							<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="12" columnCount="12" />
+						</div>
 
 					</section>
 				</div>
@@ -104,71 +104,76 @@
 				</button>
 			</div>
 		</div>
-    </div>
-    <!-- /Conteudo -->
+	</div>
+	<!-- /Conteudo -->
 
-    <!-- SECTION VIDEOS -->
-    <section class="tbs-videos">
-        <div class="mask-movie">
-            <a class="play-movie">
-                <span class="icon-play"></span>
-                <img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
+	<!-- SECTION VIDEOS -->
+	<section class="tbs-videos">
+		<div class="mask-movie">
+			<a class="play-movie">
+				<span class="icon-play"></span>
+				<img src="/arquivos/movie-airplane-cns-birthday-2018.jpg" alt="Veja a história do avião" />
 
-                <div class="embed-responsive">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LakzlROlC5M?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
-                </div>
-            </a>
-        </div>
-        <div class="mask-movie">
-            <a class="play-movie">
-                <span class="icon-play"></span>
-                <img src="/arquivos/movie-radio-cns-birthday-2018.jpg" alt="Veja a história do Rádio" />
-                <div class="embed-responsive">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sMP8GGPPqhs?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
-                </div>
-            </a>
-        </div>
-        <div class="mask-movie">
-            <a class="play-movie">
-                <span class="icon-play"></span>
-                <img src="/arquivos/movie-brigadeiro-cns-birthday-2018.jpg" alt="Veja a história do Brigadeiro" />
-                <div class="embed-responsive">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/O5Uz6iMnq2s?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
-                </div>
-            </a>
-        </div>
-        <div class="mask-movie">
-            <a class="play-movie">
-                <span class="icon-play"></span>
-                <img src="/arquivos/movie-futeboll-cns-birthday-2018.jpg" alt="Veja a história do Futebol" />
-                <div class="embed-responsive">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LfRZhMmDEY4?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
-                </div>
-            </a>
-        </div>
-    </section>
-    <!-- /SECTION VIDEOS -->
-    
-    <!-- SECTION SAHRE -->
-    <section class="share">
-        <div>
-            <a><img src="/arquivos/share-face-birthday-2018.png" alt="Compartilhar no facebook" /></a>
-        </div>
-    </section>
-    <!-- /SECTION SAHRE -->
+				<div class="embed-responsive">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LakzlROlC5M?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+				</div>
+			</a>
+		</div>
+		<div class="mask-movie">
+			<a class="play-movie">
+				<span class="icon-play"></span>
+				<img src="/arquivos/movie-radio-cns-birthday-2018.jpg" alt="Veja a história do Rádio" />
+				<div class="embed-responsive">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sMP8GGPPqhs?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+				</div>
+			</a>
+		</div>
+		<div class="mask-movie">
+			<a class="play-movie">
+				<span class="icon-play"></span>
+				<img src="/arquivos/movie-brigadeiro-cns-birthday-2018.jpg" alt="Veja a história do Brigadeiro" />
+				<div class="embed-responsive">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/O5Uz6iMnq2s?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+				</div>
+			</a>
+		</div>
+		<div class="mask-movie">
+			<a class="play-movie">
+				<span class="icon-play"></span>
+				<img src="/arquivos/movie-futeboll-cns-birthday-2018.jpg" alt="Veja a história do Futebol" />
+				<div class="embed-responsive">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LfRZhMmDEY4?rel=0&amp;controls=0&amp;showinfo=0" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+				</div>
+			</a>
+		</div>
+	</section>
+	<!-- /SECTION VIDEOS -->
 
-	
-		<!-- @if DEBUG=true -->
-	  <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
-	  <!-- @endif -->
+	<!-- SECTION SAHRE -->
+	<section class="share">
+		<div>
+			<a><img src="/arquivos/share-face-birthday-2018.png" alt="Compartilhar no facebook" /></a>
+		</div>
+	</section>
+	<!-- /SECTION SAHRE -->
 
-  
-	  <!-- Footer -->
-	  <vtex:template id="0-consul-footer" />
-	  <!-- /Footer -->
 
-	
-    <script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
-    <script type="text/javascript" src="<!-- @echo assetsPath -->/landing-birthday-2018-2.min.js?v=<!-- @echo package.version -->"></script>
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+
+	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
+	<script type="text/javascript" src="<!-- @echo assetsPath -->/landing-birthday-2018-2.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 </html>

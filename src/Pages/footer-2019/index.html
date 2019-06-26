@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Consul</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../templates/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" type="text/css"
+		href="<!-- @echo assetsPath -->/footer-2019.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="landing-gae">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-top-header" />
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-header" />
+
+
+	<footer class="footer-2019">
+		<!-- Serviços -->
+		<div class="footer-services">
+			<h3 class="footer-title text-center">
+				Atendimento loja <strong>Consul</strong>
+			</h3>
+
+			<div class="container">
+				<div class="footer-services__item">
+					<i class="footer-services__icon footer-services__icon--ajuda-online"></i>
+					<h4 class="footer-services__title">Ajuda online</h4>
+					<p class="footer-services__text">Entre contato com um de nossos atendentes e agilize o seu dia.</p>
+					<a href="javascript:void(0)" class="footer-services__cta cns-button cns-button--purple" title="Acessar chat">
+						Acessar chat
+					</a>
+				</div>
+
+				<div class="footer-services__item">
+					<i class="footer-services__icon footer-services__icon--meus-pedidos"></i>
+					<h4 class="footer-services__title">Meus Pedidos</h4>
+					<p class="footer-services__text">Acompanhe o status do seu pedido e informações sobre a sua compra.</p>
+					<a href="/minhaconta/pedidos" class="footer-services__cta cns-button cns-button--purple" title="Acompanhar pedido">
+						Acompanhar pedido
+					</a>
+				</div>
+
+				<div class="footer-services__item">
+					<i class="footer-services__icon footer-services__icon--trocas-e-devolucoes"></i>
+					<h4 class="footer-services__title">Trocas e Devoluções</h4>
+					<p class="footer-services__text">Você tem até 7 dias úteis para solicitar uma troca ou devolução.</p>
+					<a href="https://consul.custhelp.com/app/answers/detail/a_id/356" class="footer-services__cta cns-button cns-button--purple" title="Fazer solicitação"  target="_blank" rel="noreferrer noopener">
+						Fazer solicitação
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- /Serviços -->
+
+		<!-- Newsletter -->
+		<div class="lead-newsletter">
+			<div class="open-mobile-newsletter">
+				<div class="container">
+					<strong class="open-mobile-newsletter__title">
+						Gostaria de receber ofertas<br />
+						imperdíveis no seu e-mail?
+					</strong>
+				</div>
+			</div>
+
+			<div class="container">
+				<p class="lead-newsletter__title">
+					Receba nossas ofertas, lançamentos e promoções!
+				</p>
+
+				<form class="form-newsletter" id="form-newsletter">
+					<fieldset>
+						<label for="name">Nome</label>
+						<input type="text" id="name" name="name" placeholder="Nome" />
+					</fieldset>
+
+					<fieldset>
+						<label for="email">E-mail</label>
+						<input type="email" id="email" name="email" placeholder="E-mail" />
+					</fieldset>
+
+					<fieldset class="campo-cadastro-telefone">
+						<label for="telefone">Telefone (opcional)</label>
+						<input type="tel" id="telefone" name="homePhone" placeholder="Telefone (opcional)" />
+					</fieldset>
+
+					<fieldset class="campo-checkbox">
+						<input type="checkbox" id="termos" name="termos" />
+						<label for="termos">
+							Li e concordo com os
+							<a href="http://consul.custhelp.com/app/answers/detail/a_id/511" title="Li e concordo com os termos e condições" target="_blank" rel="noreferrer noopener">
+								<span> termos e condições</span>
+							</a>
+						</label>
+					</fieldset>
+
+					<input type="submit" name="submit" class="submit cns-button cns-button--purple cns-button--bold" value="Cadastre-se" />
+				</form>
+
+				<!-- <p class="message-success">E-mail cadastrado com sucesso!</p>
+				<p class="message-success-fixed">Cadastro efetuado com <strong>sucesso!</strong></p> -->
+			</div>
+		</div>
+		<!-- /Newsletter -->
+
+		<!-- Canais de atendimento -->
+		<div class="canais-atendimento">
+			<div class="container">
+				<div class="section-atendimento">
+					<h3 class="canais-atendimento__title">Canais de Atendimento</h3>
+
+					<!-- Item -->
+					<div class="canais-atendimento__item">
+						<div class="border">
+							<!-- Chat online -->
+							<article class="canais-atendimento__section-text">
+								<h4 class="canais-atendimento__section-title">
+									<a href="javascript:void(0)" title="Chat online">Chat online</a>
+								</h4>
+
+								<p>
+									<b>
+										<a href="javascript:void(0)" title="Acesse a Ajuda Online">
+											Acesse a Ajuda Online
+										</a>
+									</b><br />
+									Segunda à sexta 8h00 às 20h00, exceto feriados<br />
+									Sábado 8h00 às 14h00, exceto feriados
+								</p>
+							</article>
+							<!-- /Chat online -->
+
+							<!-- Fale Conosco -->
+							<article class="canais-atendimento__section-text">
+								<h4 class="canais-atendimento__section-title">
+									<a href="https://consul.custhelp.com/app/atendimento" title="Fale Conosco" target="_blank" rel="noreferrer noopener">
+										Fale Conosco
+									</a>
+								</h4>
+
+								<p>
+									<b>
+										<a href="https://consul.custhelp.com/app/atendimento" title="Envie sua mensagem" target="_blank" rel="noreferrer noopener">
+											Envie sua mensagem
+										</a>
+									</b><br />
+									Tire suas dúvidas de pagamento, status do seu pedido, trocas e devoluções, entre outros
+								</p>
+							</article>
+							<!-- /Fale Conosco -->
+						</div>
+					</div>
+					<!-- /Item -->
+
+					<!-- Item -->
+					<div class="canais-atendimento__item">
+						<div class="border">
+							<!-- Vendas Corporativas -->
+							<article class="canais-atendimento__section-text">
+								<h4 class="canais-atendimento__section-title">
+									<a href="https://loja.consulempresa.com.br" title="Vendas Corporativas" target="_blank" rel="noreferrer noopener">Vendas Corporativas</a>
+								</h4>
+
+								<p>
+									<b>
+										<a href="https://loja.consulempresa.com.br" title="Veja mais sobre Vendas Corporativas" target="_blank" rel="noreferrer noopener">
+											Veja mais
+										</a>
+									</b>
+								</p>
+							</article>
+							<!-- /Vendas Corporativas -->
+
+							<!-- Televendas -->
+							<article class="canais-atendimento__section-text">
+								<h4 class="canais-atendimento__section-title">Televendas</h4>
+
+								<p>
+									<b>
+										<a href="tel:+551130037872" title="3003-7872">3003-7872</a>
+									</b><br />
+									Capitais e regiões metropolitanas
+								</p>
+
+								<p>
+									<b>
+										<a href="tel:+551108007227872" title="0800 722 7872">0800 722 7872</a>
+									</b><br />
+									Outras localidades<br />
+									Segunda à sábado 8h às 22h, inclusive feriado.
+								</p>
+							</article>
+							<!-- /Televendas -->
+						</div>
+					</div>
+					<!-- /Item -->
+				</div>
+
+
+				<div class="section-duvidas">
+					<h3 class="canais-atendimento__title">Dúvidas</h3>
+					<!-- Item -->
+					<div class="canais-atendimento__item">
+						<div class="border">
+							<!-- Dúvidas mais frequentes -->
+							<article class="canais-atendimento__section-text">
+								<h4 class="canais-atendimento__section-title">Dúvidas mais frequentes</h4>
+
+								<p>
+									<a href="https://consul.custhelp.com/app/answers/detail/a_id/344" title="">
+										Tenho direito a me arrepender da compra?
+									</a><br />
+									Como acompanho a entrega dos meus produtos?<br />
+									Como funciona o Seguro Garantia Estendida Original?<br />
+								</p>
+								<p>
+									<strong>
+										<a href="https://consul.custhelp.com/app/answers/detail/a_id/344" title="Ver todas as dúvidas" class="link link--arrow">
+											Ver todas as dúvidas
+										</a>
+									</strong>
+								</p>
+							</article>
+							<!-- /Dúvidas mais frequentes -->
+						</div>
+					</div>
+					<!-- /Item -->
+
+					<!-- Redes sociais -->
+					<ul class="canais-atendimento-redes">
+						<li class="canais-atendimento-redes__item">
+							<a class="canais-atendimento-redes__icon canais-atendimento-redes--facebook" href="https://www.facebook.com/consulbr" title="Facebook" target="_blank" rel="noreferrer noopener">
+								Facebook
+							</a>
+						</li>
+						<li class="canais-atendimento-redes__item">
+							<a class="canais-atendimento-redes__icon canais-atendimento-redes--instagram" href="https://www.instagram.com/consul/" title="Instagram" target="_blank" rel="noreferrer noopener">
+								Instagram
+							</a>
+						</li>
+						<li class="canais-atendimento-redes__item">
+								<a class="canais-atendimento-redes__icon canais-atendimento-redes--twitter" href="https://twitter.com/consulbr" title="Twitter" target="_blank" rel="noreferrer noopener">
+									Twitter
+								</a>
+							</li>
+							<li class="canais-atendimento-redes__item">
+								<a class="canais-atendimento-redes__icon canais-atendimento-redes--youtube" href="https://www.youtube.com/user/consulevoce" title="Youtube" target="_blank" rel="noreferrer noopener">
+									youtube
+								</a>
+							</li>
+						</ul>
+					<!-- /Redes sociais -->
+				</div>
+			</div>
+		</div>
+		<!-- /Canais de atendimento -->
+
+		<!-- Footer mmenu -->
+		<div class="menu-footer">
+			<div class="container">
+				<ul class="menu-footer-list">
+					<li class="menu-footer-list__item">
+						<a href="https://www.consul.com.br/sobreaconsul/" title="Sobre a Consul" target="_blank" rel="noreferrer noopener" class="menu-footer-list__link">
+							Sobre a Consul
+						</a>
+					</li>
+					<li class="menu-footer-list__item">
+						<a href="https://consul.custhelp.com/app/answers/detail/a_id/511" title="Política de privacidade" target="_blank" rel="noreferrer noopener" class="show-personal menu-footer-list__link">
+							Política de privacidade
+						</a>
+						<a href="https://whirlpool.vteximg.com.br/arquivos/CONSUL%20VENDAS%20CORPORATIVAS%20-%20Política%20de%20Privacidade.pdf" title="Política de privacidade" target="_blank" rel="noreferrer noopener" class="show-corp menu-footer-list__link">
+							Política de privacidade
+						</a>
+					</li>
+					<li class="menu-footer-list__item">
+						<a href="https://www.consul.com.br/termos/" title="Termos de Uso" target="_blank" class="show-personal menu-footer-list__link">
+							Termos de Uso
+						</a>
+						<a href="https://whirlpool.vteximg.com.br/arquivos/CONSUL%20VENDAS%20CORPORATIVAS%20-%20Termos%20e%20Condições%20de%20Uso.pdf" title="Termos de Uso" target="_blank" rel="noreferrer noopener" class="show-corp menu-footer-list__link">
+							Termos de Uso
+						</a>
+					</li>
+					<li class="menu-footer-list__item">
+						<a href="/institucional/acessibilidade" title="Acessibilidade" class="menu-footer-list__link">
+							Acessibilidade
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /Footer mmenu -->
+
+		<!-- Bottom footer -->
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="footer-bottom__item">
+					<strong class="footer-bottom__title">
+						Formas<br />
+						de Pagamento
+					</strong>
+					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-01-2019.png" alt="Formas de pagemento Consul" />
+					<img src="//consul.vteximg.com.br/arquivos/formas-de-pagamento-consul-02-2019.png" alt="Formas de pagemento Consul" />
+				</div>
+
+				<div class="footer-bottom__item">
+					<strong class="footer-bottom__title">
+						Compra<br />
+						Segura
+					</strong>
+					<a href="//www.ebit.com.br/#consul" target="_blank" id="seloEbit"></a>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="footer-bottom__text">
+					Os valores "A partir de" dos produtos são referentes ao seu preço no boleto bancário. Todos os preços e condições comerciais estão sujeitos a alteração sem aviso prévio. O preço válido será garantido após a finalização da compra. A simples inclusão de produtos no "carrinho de compras" não implica em sua reserva pelo consumidor. Copyright BUD Comércio de Eletrodomésticos Ltda. ® 2014 – Todos os Direitos Reservados. CNPJ 62.058.318/0007-76. Endereço Sede : Rua Olympia Semeraro, 675, Jardim Santa Emília, São Paulo/ SP, CEP 04183-090 | Inscrição Municipal/Estadual 148.044.198.118 | <a href="mailto:contato@consul.zendesk.com" title="contato@consul.zendesk.com">contato@consul.zendesk.com</a>.
+
+					<img src="//consul.vteximg.com.br/arquivos/logo-vtex-consul.png" alt="" class="vtex-logo-footer" />
+				</div>
+			</div>
+		</div>
+		<!-- /Bottom footer -->
+	</footer>
+
+
+
+<!-- <a href="#" class="call-newsletter"><strong>Cadastre-se </strong>e Receba promoções<i class="icon icon-arrow-down"></i></a> -->
+
+<!-- Go to top -->
+<a href="javascript:void(0)" class="bt-gototop hide"></a>
+<!-- /Go to top -->
+
+<div class="mask"></div>
+
+
+<!-- Modal Email Master Data OptOut -->
+<div id="modal-emailCRM" style="display:none">
+	<div class="modal-body">
+		<form method="POST" action="/" class="emailCRM">
+			<div class="step1">
+				<div class="row">
+					<p class="col-12">Você tem certeza de que não quer receber mais esse tipo de e-mail?</p>
+				</div>
+				<div class="row">
+					<div class="col-12 text-center"><button class="avancar" type="button">Avançar</button></div>
+				</div>
+			</div>
+			<div class="step2">
+				<div class="row">
+					<p class="col-12">Por favor, informe o motivo do seu descadastramento:</p>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="frequencia" value="Considero a frequência de envio muito alta" />
+						<label for="frequencia">Considero a frequência de envio muito alta</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="conteudo" value="O conteúdo dos e-mails não me interessa" />
+						<label for="conteudo">O conteúdo dos e-mails não me interessa</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="autorizacao" value="Não autorizei ou não me recordo de ter autorizado o envio de mensagens para o meu e-mail"
+						/>
+						<label for="autorizacao">Não autorizei ou não me recordo de ter autorizado o envio de mensagens para o meu e-mail</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="tempo" value="Não tenho tempo para ler os e-mails diretamente" />
+						<label for="tempo">Não tenho tempo para ler os e-mails diretamente</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<input type="radio" name="motivo" id="outro" value="Outro" />
+						<label for="outro">Outro</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 text-center">
+						<button type="submit" class="descadastrar">Descadastrar</button>
+					</div>
+				</div>
+			</div>
+			<div class="step3 success">
+				<div class="row">
+					<p class="col-12">Você foi descadastrado e não receberá mais esse tipo de email</p>
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>
+
+
+<!--URL QA-->
+<!--<script src="//consulqa.vteximg.com.br/arquivos/consul2-app.min.js?v=3.0.0"></script>-->
+<!--<script src="//whirlpool.vteximg.com.br/arquivos/consul2-app.min.js"></script>-->
+
+<!--URL Produção-->
+<script src="<!-- @echo assetsPath -->/consul2-app.min.js?v=<!-- @echo package.version -->"></script>
+
+<!-- Script pescaria TLV -->
+<script>
+	(function () {
+		var ab = document.createElement('script'); ab.async = true; ab.src = '//autobots.visie.com.br/consul/static/p/consul.js?t=1540501258.681'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ab, s); }
+	)();
+</script>
+<!-- Script pescaria TLV -->
+
+<script type="text/javascript" src="<!-- @echo assetsPath -->/footer-2019.min.js?v=<!-- @echo package.version -->"></script>

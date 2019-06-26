@@ -42,12 +42,12 @@ require('expose-loader?publishDataLayer!modules/bi/publish-data-layer');
 //load modules individually
 require('modules/vtex-events')();
 require('modules/header');
-require('modules/footer');
+// require('modules/footer');
+require('modules/footer-2019');
 require('modules/store/cluster');
 require('modules/percentoff');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
-require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
 require('controllers/landing-gae-compra-interno');
