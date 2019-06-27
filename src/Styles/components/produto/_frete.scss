@@ -1,279 +1,281 @@
 @charset 'UTF-8';
 @import 'helpers/mixins';
 
-$template-primary: $orange!default;
+$template-primary: $orange !default;
 
 body.open-frete {
-    .calc-frete {
-        display: block;
-    }
+	.calc-frete { display: block; }
 }
 
-
 .calc-frete {
-    border: 1px solid #e4e4e4;
-    padding: 10px;
-    position: relative;
+	// border: 1px solid #e4e4e4;
+	// padding: 10px;
+	position: relative;
 
-    &:after {
-        clear: both;
-        content: '';
-        display: block;
-    }
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
 
-    .title-frete {
-        display: block;
-        float: left;
-        font-size: 14px;
-        width: 50%;
+	.title-frete {
+		display: block;
+		float: left;
+		font-size: 14px;
+		width: 50%;
 
-        & i {
-            display: block;
-            float: left;
-            font-size: 50px;
-            margin: 10px 10px 0 0;
-        }
+		& i {
+			display: block;
+			float: left;
+			font-size: 50px;
+			margin: 10px 10px 0 0;
+		}
 
-        & p {
-            display: block;
-            float: right;
-            margin-bottom: 0;
-            max-width: 132px;
-        }
-    }
+		& p {
+			display: block;
+			float: right;
+			margin-bottom: 0;
+			max-width: 132px;
+		}
+	}
 
-    #popupCalculoFreteWrapper {
-        display: none;
-    }
+	#popupCalculoFreteWrapper { display: none; }
 
-    #calculoFrete {
-        .header,
-        .footer,
-        .quantity {
-            display: none;
-        }
-    }
+	#calculoFrete {
+		.header,
+		.footer,
+		.quantity {
+			display: none;
+		}
+	}
 
-    fieldset {
-        display: contents;
-        margin: 0;
-    }
+	fieldset {
+		display: contents;
+		margin: 0;
+	}
 
-    .prefixo {
-        display: block;
-        float: left;
-        font-size: 0;
-        padding-top: 15px;
-        position: relative;
-        width: 35%;
+	.prefixo {
+		display: block;
+		float: left;
+		font-size: 0;
+		padding-top: 15px;
+		position: relative;
+		width: 35%;
 
-        input {
-            background: #fff;
-            border: 1px solid #e4e4e4;
-            color: #333;
-            font-size: 15px;
-            height: 40px;
-            margin: 0;
-            outline: none;
-            width: 100%;
-        }
-    }
+		input {
+			background: #fff;
+			border: 1px solid #e4e4e4;
+			color: #333;
+			font-size: 15px;
+			height: 40px;
+			margin: 0;
+			outline: none;
+			width: 100%;
+		}
+	}
 
-    span.frete-calcular {
-        display: block;
-        float: right;
-        padding-top: 15px;
-        position: relative;
-        width: 15%;
+	span.frete-calcular {
+		display: block;
+		float: right;
+		padding-top: 15px;
+		position: relative;
+		width: 15%;
 
-            &.loading {
-                &::before {
-                    @include spinner($template-primary);
-                    bottom: 0;
-                    content: '';
-                    display: block;
-                    left: 50%;
-                    margin-left: -.5em;
-                    margin-top: -.2em;
-                    position: absolute;
-                    top: 50%;
-                    z-index: 99;
-                }
+		&.loading {
+			&::before {
+				@include spinner($template-primary);
+				bottom: 0;
+				content: '';
+				display: block;
+				left: 50%;
+				margin-left: -.5em;
+				margin-top: -.2em;
+				position: absolute;
+				top: 50%;
+				z-index: 99;
+			}
 
-                #btnFreteSimulacao {
-                    background: #fff !important;
-                    color: #fff;
-                }
-            }
+			#btnFreteSimulacao {
+				background: #fff !important;
+				color: #fff;
+			}
+		}
 
-        #btnFreteSimulacao {
-            border-radius: 0;
-            height: 40px;
-            margin: 0;
-            max-width: 100%;
-            padding: 0;
-            text-align: center;
-            width: 100%;
-        }
+		#btnFreteSimulacao {
+			border-radius: 0;
+			height: 40px;
+			margin: 0;
+			max-width: 100%;
+			padding: 0;
+			text-align: center;
+			width: 100%;
+		}
+	}
 
-    }
+	.cep-busca {
+		clear: both;
+		display: block;
+		text-align: right;
+		width: 100%;
 
-    .cep-busca {
-        clear: both;
-        display: block;
-        text-align: right;
-        width: 100%;
+		&:after {
+			clear: both;
+			content: '';
+			display: block;
+		}
 
-        &:after {
-            clear: both;
-            content: '';
-            display: block;
-        }
+		& a {
+			color: #b9b8b8;
+			display: block;
+			float: right;
+			font-size: 10px;
+			text-align: left;
+			width: 50%;
+		}
+	}
 
-        & a {
-            color: #b9b8b8;
-            display: block;
-            float: right;
-            font-size: 10px;
-            text-align: left;
-            width: 50%;
-        }
-    }
+	.freight-values {
+		// border: 1px solid #e4e4e4;
+		display: block;
+		margin-top: 10px;
+		opacity: 0;
+		position: relative;
+		transition: .2s linear all;
 
-    .freight-values {
-        border: 1px solid #e4e4e4;
-        display: block;
-        margin-top: 10px;
-        opacity: 0;
-        position: relative;
-        transition: .2s linear all;
+		&.active {
+			opacity: 1;
+			transition: .3s linear all;
 
-        &.active {
-            opacity: 1;
-            transition: .3s linear all;
+			.closed {
+				color: #f35216;
+				cursor: pointer;
+				display: block;
+				font-size: 20px;
+				font-style: normal;
+				font-weight: bold;
+				height: 25px;
+				line-height: 1;
+				position: absolute;
+				right: 8px;
+				text-align: center;
+				top: 8px;
+				transition: .3s linear all;
+				width: 25px;
+				z-index: 55;
 
-            .closed {
-                    color: #f35216;
-                    cursor: pointer;
-                    display: block;
-                    font-size: 20px;
-                    font-style: normal;
-                    font-weight: bold;
-                    height: 25px;
-                    line-height: 1;
-                    position: absolute;
-                    right: 1px;
-                    text-align: center;
-                    top: 1px;
-                    transition: .3s linear all;
-                    width: 25px;
-                    z-index: 55;
+				&::before { display: none; }
+				&:after { content: 'x'; }
+				&:hover {
+					background: #f35216;
+					color: #fff;
+					transition: .3s linear all;
+				}
+			}
+		}
 
-                    &::before {
-                        display: none;
-                    }
+		&.erro {
+			border-color: #f00;
+			color: #f00;
+			font-size: 13px;
+			padding-bottom: 6px;
+			padding-left: 9px;
+			padding-top: 6px;
+			text-transform: uppercase;
 
-                    &:after {
-                        content: 'x';
-                    }
+			.closed {
+				height: 29px;
+				line-height: 1.5;
+			}
+		}
 
-                    &:hover {
-                        background: #f35216;
-                        color: #fff;
-                        transition: .3s linear all;
-                    }
-                }
-            }
+		// &> :before {
+		// 	background: #e4e4e4;
+		// 	content: '';
+		// 	display: block;
+		// 	height: 10px;
+		// 	left: 15px;
+		// 	position: absolute;
+		// 	top: -6px;
+		// 	transform: rotate(224deg);
+		// 	width: 10px;
+		// }
 
-        &.erro {
-            border-color: #f00;
-            color: #f00;
-            font-size: 13px;
-            padding-bottom: 6px;
-            padding-left: 9px;
-            padding-top: 6px;
-            text-transform: uppercase;
+		table {
+			width: 100%;
+		}
 
-            .closed {
-                height: 29px;;
-                line-height: 1.5;
-            }
-        }
+		& thead {
+			tr {
+				background: #F1F0F0;
+				color: #585858;
+				font-size: 14px;
+				text-align: left;
 
-        & > :before {
-            background: #e4e4e4;
-            content: '';
-            display: block;
-            height: 10px;
-            left: 15px;
-            position: absolute;
-            top: -6px;
-            transform: rotate(224deg);
-            width: 10px;
-        }
-        table {
-            width: 100%;
-        }
+				th { padding: 10px 10px; }
 
-        & thead {
-            tr {
-                background: #e4e4e4;
-                color: #585858;
-                font-size: 12px;
-                text-transform: uppercase;
+				& th:first-child {
+					font-size: 0;
+					min-width: 95px;
 
-                & th:first-child {
-                    border-right: 1px solid #ccc;
-                    font-size: 0;
-                    padding: 5px 10px;
+					&:before {
+						content: 'Valor';
+						font-size: 14px;
+					}
+				}
+			}
+		}
 
-                    &:before {
-                        content: 'Valor';
-                        font-size: 12px;
-                    }
-                }
-            }
-        }
+		& tbody {
+			& tr {
+				box-shadow: 0 1px 0 #ccc;
+				font-size: 13px;
+				margin: 0;
+				width: 100%;
 
-        & tbody {
-            & tr {
-                font-size: 13px;
+				& td:not(:last-child) {
+					font-size: 12px;
+					padding: 5px 10px;
 
-                &:nth-child(2n) { background: #f7f7f7; }
+					&:first-child { min-width: 95px; }
+				}
 
-                & td:not(:last-child) {
-                    font-size: 12px;
-                    padding: 5px 10px;
+				// Hover
+				&.frete-gratis {
+					background-color: #fff;
+					border-radius: 10px;
+					box-shadow: 0 1px 10px #E3E1E1;
+					overflow: hidden;
+					transform: scale(1.03);
+					width: 100%;
+					z-index: 5;
+				}
+			}
+		}
+	}
 
-                    &:first-child {
-                        border-right: 1px solid #ccc;
-                        font-size: 14px;
-                        font-weight: bold;
-                        padding: 5px 10px;
-                        text-align: center;
-                    }
-                }
-            }
-        }
-    }
+	@include breakpoint ('extra-large', 'max') {
+		.title-frete i {
+			margin: 0;
+		}
 
-    @include breakpoint ('extra-large', 'max') {
-        .title-frete i { margin: 0; }
+		.title-frete p {
+			float: left;
+			margin-left: 15px !important;
+			margin-top: 5px;
+		}
 
-        .title-frete p {
-            float: left;
-            margin-left: 15px !important;
-            margin-top: 5px;
-        }
+		.prefixo {
+			width: 85%;
+		}
 
-        .prefixo { width: 85%; }
+		.prefixo input,
+		.title-frete {
+			width: 100%;
+		}
 
-        .prefixo input,
-        .title-frete { width: 100%; }
-
-        .cep-busca a {
-            float: left;
-            width: 20%
-        }
-    }
+		.cep-busca a {
+			float: left;
+			width: 20%
+		}
+	}
 }
