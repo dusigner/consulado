@@ -22,7 +22,7 @@ Nitro.module('checkout.gae', function() {
 	this.installments = function() {
 		const sortCountASC = (a, b) => b.count - a.count;
 		return self.orderForm.paymentData.installmentOptions
-			.map(elem => elem.installments.filter(installment => !installment.hasInterestRate).sort(sortCountASC)[0])
+			.map(elem => elem.installments.length > 0 && elem.installments.filter(installment => !installment.hasInterestRate).sort(sortCountASC)[0])
 			.sort(sortCountASC)[0].count;
 	};
 
@@ -194,6 +194,10 @@ Nitro.module('checkout.gae', function() {
 		};
 
 		$.each(offerings, function(index, val) {
+			if (!val.name.match(/\d+/)) {
+				return;
+			}
+
 			var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
 
 			data.warranty[index]            		= {};
