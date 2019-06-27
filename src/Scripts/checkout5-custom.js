@@ -371,7 +371,7 @@ $(document).on('ready', function() {
 			// os produtos forem da categoria purificadores
 			if(self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 				const checkoutProducts = self.orderForm.items;
-				const categoryName = /190/gmi; // Purificadores
+				const categoryName = window.store.isQA ? /1/gmi : /190/gmi; // Purificadores
 				let hasReccurence = false;
 
 				const allProductsIsPurificadores = checkoutProducts.every(prod => {
