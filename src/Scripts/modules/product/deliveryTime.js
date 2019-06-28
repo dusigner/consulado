@@ -66,14 +66,14 @@ Nitro.module('deliveryTime', () => {
 	};
 
 	this.hasFreeShipping = () => {
-		console.clear();
-		console.log('this.hasFreeShipping...');
 		const tableShipping = $('.freight-values table');
 
 		if (tableShipping.length > 0) {
 			const allShippings = tableShipping.find('tr td:first-child');
+
 			allShippings.each((i, el) => {
 				const shipping = $(el);
+
 				if (shipping.text() === 'Frete Grátis') {
 					shipping.parent('tr').addClass('frete-gratis');
 				}

@@ -10,6 +10,7 @@ body.open-frete {
 .calc-frete {
 	// border: 1px solid #e4e4e4;
 	// padding: 10px;
+	max-width: 600px;
 	position: relative;
 
 	&:after {
@@ -201,53 +202,115 @@ body.open-frete {
 		// }
 
 		table {
+			display: block;
+			margin: 0 auto;
+			padding: 0 10px;
 			width: 100%;
-		}
 
-		& thead {
-			tr {
-				background: #F1F0F0;
-				color: #585858;
-				font-size: 14px;
-				text-align: left;
-
-				th { padding: 10px 10px; }
-
-				& th:first-child {
-					font-size: 0;
-					min-width: 95px;
+			thead {
+				tr {
+					border: none;
+					position: relative;
 
 					&:before {
-						content: 'Valor';
-						font-size: 14px;
+						background: #f1f0f0;
+						content: '';
+						display: block;
+						height: 100%;
+						position: absolute;
+						right: -10px;
+						width: calc(100% + 20px);
 					}
 				}
 			}
-		}
 
-		& tbody {
-			& tr {
-				box-shadow: 0 1px 0 #ccc;
-				font-size: 13px;
-				margin: 0;
-				width: 100%;
+			tr {
+				align-items: center;
+				border-top: 1px solid #e3e1e1;
+				display: flex;
+				min-height: 45px;
 
-				& td:not(:last-child) {
+				&:first-child { border: none; }
+
+				th,
+				td {
+					display: block;
 					font-size: 12px;
-					padding: 5px 10px;
+					padding: 5px;
+					position: relative;
+					text-align: left;
+					z-index: 1;
 
-					&:first-child { min-width: 95px; }
+					&:empty { display: none; }
+
+					&:first-child { min-width: 115px; }
 				}
 
-				// Hover
+				th {
+					color: #736c6b;
+					font-size: 14px;
+					padding: 10px 5px;
+				}
+
+				td { color: #736c6b; }
+
+				// frete grátis
 				&.frete-gratis {
-					background-color: #fff;
-					border-radius: 10px;
-					box-shadow: 0 1px 10px #E3E1E1;
-					overflow: hidden;
-					transform: scale(1.03);
-					width: 100%;
-					z-index: 5;
+					border-color: transparent;
+					font-weight: bold;
+					position: relative;
+
+					td {
+						color: #0fb6de;
+						font-size: 11px;
+					}
+
+					// active box
+					&:before,
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+					}
+
+					&:before {
+						@include breakpoint('medium', 'min') {
+							background: transparent url('//consul.vteximg.com.br/arquivos/icon-destaque-frete.png') center center no-repeat;
+							background-size: contain;
+							height: 30px;
+							right: 100%;
+							width: 55px;
+						}
+						@include breakpoint('medium', 'max') {
+							background: #0fb6de;
+							height: 100%;
+							right: calc(100% + 7px);
+							width: 3px;
+						}
+						content: '';
+						z-index: 10;
+					}
+
+					&:after {
+						background-color: #fff;
+						border-radius: 4px;
+						box-shadow: 0 1px 10px #e3e1e1;
+						height: 100%;
+						right: -10px;
+						top: 0;
+						width: calc(100% + 20px);
+					}
+
+					& + tr { border-color: transparent; }
+
+					& + tr.frete-gratis {
+						&:after {
+							border-radius: 0 0 4px 4px;
+							border-top: 1px solid #e3e1e1;
+							box-shadow: 0 3px 5px #e3e1e1;
+							margin-top: -1px;
+						}
+					}
 				}
 			}
 		}
@@ -264,9 +327,7 @@ body.open-frete {
 			margin-top: 5px;
 		}
 
-		.prefixo {
-			width: 85%;
-		}
+		.prefixo { width: 85%; }
 
 		.prefixo input,
 		.title-frete {
