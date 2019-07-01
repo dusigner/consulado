@@ -147,12 +147,27 @@ $(document).on('ready', function() {
 					}
 				});
 
+				// Verifica se o frete é grátis
+				self.hasFreeShipping(element);
+
 				$(element).html(newText);
+
 
 				if (index + 1 === $shippingItems.length) $shippingToggle.addClass('has-interaction');
 			});
 
 			$shippingEstimate.html(`${$shippingEstimate.html()} <span> - ${monetary}</span>`);
+		};
+
+		// Verifica se o frete do produto é grátis
+		this.hasFreeShipping = (elementShipping) => {
+			const hasFreeSheeping = $(elementShipping).text().indexOf('Grátis') >= 0 || $(elementShipping).text().indexOf('R$ 0,00') >= 0;
+
+			if (hasFreeSheeping) {
+				$(elementShipping)
+					.parents('li')
+					.addClass('frete-gratis');
+			}
 		};
 
 		this.isCart = function() {
