@@ -194,6 +194,9 @@ Nitro.module('checkout.gae', function() {
 		};
 
 		$.each(offerings, function(index, val) {
+			if (!val.name.match(/\d+/)) {
+				return;
+			}
 			var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
 
 			data.warranty[index]            		= {};
