@@ -41,12 +41,13 @@ Nitro.module('order-by', function () {
 			} else {
 				_self.autoSort();
 			}
+
 		}
 	};
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-		
+
 		helper.setOrderRel(orderValue);
 		helper.setURL();
 
@@ -54,9 +55,7 @@ Nitro.module('order-by', function () {
 		$orderElement.addClass('selected');
 
 		$orderTitle.addClass('loading');
-
-		$orderTitle.find('em').text($orderElement.text());
-
+		$orderTitle.find('em').text($orderElement.attr('title'));
 		$orderTitle.add('.order-by').removeClass('active');
 
 		_self.request();
@@ -65,19 +64,28 @@ Nitro.module('order-by', function () {
 	// RENDER HTML & ACTION FUNCTIONS
 	/*this.render = function(){
 		dust.render('order', orderBy, function(err, out) {
+
 			if (err) {
 				throw new Error('Filters Dust error: ' + err);
 			}
+
 			// console.log(out);
+
 			$container.html(out);
 			helper.filters.removeClass('hide');
 			$('.filters__order').removeClass('hide');
+
 			$('.order__item a').click(function(e) {
 				e.preventDefault();
+
 				var orderValue = $(this).data('order');
+
 				$orderBtn.find('span').html(': ' + $(this).text());
+
 				_self.request(orderValue);
+
 			});
+
 		});
 	};*/
 
@@ -122,4 +130,5 @@ Nitro.module('order-by', function () {
 	};
 
 	this.setup();
+
 });
