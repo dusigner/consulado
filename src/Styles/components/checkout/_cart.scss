@@ -456,7 +456,9 @@ body {
 										white-space: normal;
 										z-index: 1;
 
-										&:hover {
+										&:hover,
+										&:focus {
+											background: transparent;
 											color: #702F8F;
 
 											.icon-ok:before { color: #702F8F; }
