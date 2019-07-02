@@ -193,6 +193,9 @@ Nitro.module('checkout.gae', function() {
 			productIndex: index
 		};
 
+		// Remove GAE 18 months from the GAE object list
+		offerings = $.grep(offerings, function(element) {return element.type === "Seguro Garantia Estendida Original - 18 meses";},  true);
+
 		$.each(offerings, function(index, val) {
 			if (!val.name.match(/\d+/)) {
 				return;
@@ -211,8 +214,8 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].months     		= warrantyTime;
 			data.warranty[index].monthsYear			= (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
 			data.warranty[index].isPrimary  		= (warrantyTime === 12) ? true : false;
-			data.warranty[index].isMiddle   		= (warrantyTime === 18) ? true : false;
-			data.warranty[index].isLast    	 		= (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
+			data.warranty[index].isMiddle   		= (warrantyTime === 24) ? true : false;
+			data.warranty[index].isLast    	 		= (warrantyTime === 36) ? true : false;
 			data.warranty[index].isCheaper  		= false;
 			data.warranty[index].isParcel	  		= (self.installments()) ? true : false;
 
