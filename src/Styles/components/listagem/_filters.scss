@@ -9,6 +9,8 @@
 
 // Exibição de filtro de preço
 .filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco {
+	order: -1;
+
 	@include breakpoint('extra-small', 'max') { display: block !important; }
 
 	label {
@@ -340,7 +342,8 @@ body.departamento {
 				.search-single-navigator { display: none !important; }
 
 				.search-multiple-navigator {
-					display: block !important;
+					display: flex!important;
+					flex-direction: column;
 
 					fieldset {
 						label {
