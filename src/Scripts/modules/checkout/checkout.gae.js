@@ -210,8 +210,8 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].months     		= warrantyTime;
 			data.warranty[index].monthsYear			= (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
 			data.warranty[index].isPrimary  		= (warrantyTime === 12) ? true : false;
-			data.warranty[index].isMiddle   		= (warrantyTime === 24) ? true : false;
-			data.warranty[index].isLast    	 		= (warrantyTime === 36) ? true : false;
+			data.warranty[index].isMiddle   		= (warrantyTime === 24 && offerings.length > 2) ? true : false;
+			data.warranty[index].isLast    	 		= ((warrantyTime === 36 && offerings.length > 2) || (warrantyTime === 24 && offerings.length < 3)) ? true : false;
 			data.warranty[index].isCheaper  		= false;
 			data.warranty[index].isParcel	  		= (self.installments()) ? true : false;
 
