@@ -312,7 +312,9 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 		// $('section.slider').eq(0).find('.pre-title').trigger('click');
 	}
 
-	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
-		$('.heading-banner').addClass('hide');
+
+	if ($('.category-list ul').length === 0) {
+		$('.category-list').addClass('hide');
+		$('.filter-wrapper > p:first-of-type').addClass('hide');
 	}
 });

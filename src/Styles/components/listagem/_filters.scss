@@ -345,7 +345,7 @@ body.departamento {
 					fieldset {
 						label {
 							cursor: pointer;
-							display: inline-block;
+							display: block;
 							padding-left: 30px;
 							position: relative;
 							&:before {
@@ -374,11 +374,10 @@ body.departamento {
 									font-weight: 0;
 									height: 18px;
 									left: 1px;
-									//line-height: 1;
 									margin-left: 0;
 									position: absolute;
 									text-align: center;
-									top: 11px;
+									top: 50%;
 									transform: translate(0%, -50%);
 									visibility: visible;
 									width: 18px;
