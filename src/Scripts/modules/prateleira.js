@@ -1,6 +1,6 @@
 'use strict';
 
-require('modules/percentoff');
+require('modules/listagem/percentoff');
 
 Nitro.module('prateleira', ['percentoff'], function() {
 	$('.helperComplement').remove();
