@@ -93,6 +93,7 @@
 	display: none;
 	font-weight: normal;
 	left: -20px;
+	line-height: 135%;
 	padding: 1em;
 	position: absolute;
 	text-align: left;
@@ -320,7 +321,6 @@
 }
 
 .recurrence__conditions {
-
 	.header-recurrence__conditions {
 		background: #fff;
 		padding-top: 20px;
@@ -329,10 +329,11 @@
 	}
 
 	.corpo-recurrence__conditions {
-		height: 100vh;
+		// height: 100vh;
+		height: 100%;
 		overflow-y: auto;
 		transform: translate3d(-110%, 0, 0);
-		transition: z-index .4s step-end, transform .4s ease-out;
+		transition: z-index .3s step-end, transform .3s ease-out;
 		z-index: -1;
 	}
 
@@ -396,6 +397,7 @@
 	}
 
 	.close-recurrence__conditions {
+		@include breakpoint('phone', 'max') { margin-top: 60px; }
 		align-items: center;
 		background: $primary-color;
 		border-radius: 10rem;
@@ -404,22 +406,19 @@
 		display: flex;
 		font-size: 16px;
 		font-weight: bold;
+		margin: 0;
 		margin-top: 15px;
-		padding: 3px 10px;
+		padding: 5px 15px;
 		position: absolute;
 		right: 0;
 		text-align: center;
-		top: 0;
+		top: 50%;
+		transform: translateY(-50%);
 
-		@include breakpoint('phone', 'max') {
-			margin-top: 60px;
-		}
-
-		span {
-			font-size: 12px;
-		}
+		span { font-size: 12px; }
 
 		.icon {
+			font-size: 12px;
 			margin-right: .25rem;
 		}
 	}

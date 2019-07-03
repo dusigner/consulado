@@ -228,7 +228,6 @@ $(document).on('ready', function() {
 			setTimeout(() => {
 				$msgCoupon.fadeOut();
 			}, 4000);
-
 		};
 
 		//event
@@ -272,7 +271,6 @@ $(document).on('ready', function() {
 				gae.info();
 				recurrence.hidePayments();
 				highlightVoltage($('.fn.product-name'));
-
 			}
 
 			if(store.isCorp) {
@@ -298,11 +296,9 @@ $(document).on('ready', function() {
 						store.setUserData(userData, true);
 					});
 				}
-
 			} else {
 				self.userData = null;
 			}
-
 
 			// Verificar se o box de Brinde existe e aplica as class
 			setTimeout(function(){
@@ -330,7 +326,6 @@ $(document).on('ready', function() {
 		};
 
 		this.cotasInit = function() {
-
 			// Verifica se está "logado"
 			if( self.orderForm && self.orderForm.clientProfileData && self.orderForm.clientProfileData.email && self.orderForm.userProfileId ) {
 
@@ -349,7 +344,6 @@ $(document).on('ready', function() {
 					cotas.limitQuantity(self.userData.xSkuSalesChannel5);
 				}
 			} else {
-
 				self.userData = null;
 			}
 		};
@@ -361,7 +355,6 @@ $(document).on('ready', function() {
 					pj.changeProfileData();
 				}
 			}
-
 		};
 
 		//state
@@ -375,16 +368,41 @@ $(document).on('ready', function() {
 			$('.Shipping td:first').attr('colspan', '4');
 			$('.caret').removeClass('caret').addClass('icon icon-chevron-down');
 
-			if(store && store.isPersonal) {
-				gae.setup();
-			}
-
 			if (store && store.isCorp) {
 				$('#cart-reset-postal-code').css('visibility', 'hidden');
 				$('#cart-choose-more-products').attr('href', '/empresas');
 			}
 
+			// Start GAE and RECURRENCE
+			if(store && store.isPersonal) {
+				gae.setup();
+			}
 			recurrence.setup();
+
+			// Priorizar a exibição de RECORRÊNCIA quando
+			// os produtos forem da categoria purificadores
+			if(self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
+				const checkoutProducts = self.orderForm.items;
+				const categoryName = window.store.isQA ? '1' : '190'; // Categoria de Purificadores
+				const categoryRegex = new RegExp(categoryName, 'gmi');
+
+				const someProductsHasRecurrence = checkoutProducts.some(prod => {
+					return recurrence.selectHasRecurrence(prod.attachmentOfferings);
+				});
+
+				const allProductsIsPurificadores = checkoutProducts.every(prod => {
+					return String(prod.productCategoryIds).match(categoryRegex) ? true: false;
+				});
+
+				if (allProductsIsPurificadores && someProductsHasRecurrence) {
+					recurrence.autoOpen();
+				}
+				else {
+					if(store && store.isPersonal) {
+						gae.autoOpen();
+					}
+				}
+			}
 
 			this.modalInfoPj(self.orderForm);
 			highlightVoltage($('.product-name > a'));
