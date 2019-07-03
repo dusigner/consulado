@@ -31,10 +31,6 @@
 		padding: 6px 14px;
 	}
 
-	.product-has-class-5-off & {
-		background-color: #ccc;
-	}
-
 	&--list {
 		span:not(.val) { display: none }
 
@@ -118,7 +114,10 @@
 			font-weight: bold;
 			margin-bottom: .4em;
 
-			span { @include rfs(16); }
+			span {
+				@include rfs(16);
+				display: none;
+			}
 		}
 	}
 
@@ -127,7 +126,6 @@
 		a {
 			@include rfs(15);
 			color: #736c6b;
-			// font-weight: 500;
 		}
 	}
 }
