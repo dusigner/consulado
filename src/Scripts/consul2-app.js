@@ -45,7 +45,7 @@ require('modules/header');
 // require('modules/footer');
 require('modules/footer-2019');
 require('modules/store/cluster');
-require('modules/percentoff');
+require('modules/listagem/percentoff');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
 require('modules/prateleira');
