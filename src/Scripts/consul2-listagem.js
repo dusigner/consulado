@@ -13,6 +13,7 @@ require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
 require('modules/listagem/comparebar');
+require('modules/_pagina-cervejeiras');
 // require('modules/compare');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
