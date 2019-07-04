@@ -402,15 +402,18 @@ $(document).on('ready', function() {
 			// os produtos forem da categoria purificadores
 			if(self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 				const checkoutProducts = self.orderForm.items;
-				const categoryName = window.store.isQA ? /1/gmi : /190/gmi; // Purificadores
-				let hasReccurence = false;
+				const categoryName = window.store.isQA ? '1' : '190'; // Categoria de Purificadores
+				const categoryRegex = new RegExp(categoryName, 'gmi');
 
-				const allProductsIsPurificadores = checkoutProducts.every(prod => {
-					hasReccurence = recurrence.selectHasRecurrence(prod.attachmentOfferings);
-					return String(prod.productCategoryIds).match(categoryName) ? true: false;
+				const someProductsHasRecurrence = checkoutProducts.some(prod => {
+					return recurrence.selectHasRecurrence(prod.attachmentOfferings);
 				});
 
-				if (allProductsIsPurificadores && hasReccurence) {
+				const allProductsIsPurificadores = checkoutProducts.every(prod => {
+					return String(prod.productCategoryIds).match(categoryRegex) ? true: false;
+				});
+
+				if (allProductsIsPurificadores && someProductsHasRecurrence) {
 					recurrence.autoOpen();
 				}
 				else {

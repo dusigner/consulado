@@ -3,6 +3,8 @@
 
 // require('Dust/price.html');
 
+import dynamicStamps from '../_dynamic-stamps';
+
 Nitro.module('boleto', function() {
 
 	this.init = function() {
@@ -13,18 +15,8 @@ Nitro.module('boleto', function() {
 		promoDiscountCartao.value = [0];
 
 		// Nova solução de troca de selos por promoções
-		// A ideia é que o nome da promoção seja o mesmo
-		// nome da imagem, Assim não teremos problemas com cache
-		prodSelos.find('.flag[class*="-selo-"]').each(function(i, e) {
-			var elFlag = $(e);
-			var flagName = elFlag.attr('class').replace('flag', '').trim();
+		dynamicStamps(prodSelos, '.flag[class*="-selo-"]');
 
-			elFlag.css({
-				'background-image'    : 'url(/arquivos/' + flagName + '.png)',
-				'background-position' : 'center center',
-				'background-repeat'   : 'no-repeat'
-			});
-		});
 
 		prodSelos.find('[class*="boleto"]').each(function(i, e) {
 			var promoName = $(e).text();

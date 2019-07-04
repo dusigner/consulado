@@ -1,7 +1,8 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
-import promoDestaque from './_promo-destaque';
+import promoDestaque from '../_promo-destaque';
+import dynamicStamps from '../_dynamic-stamps';
 
 Nitro.module('percentoff', function() {
 
@@ -21,18 +22,8 @@ Nitro.module('percentoff', function() {
 			promoDestaque(self);
 
 			// Nova solução de troca de selos por promoções
-			// A ideia é que o nome da promoção seja o mesmo
-			// nome da imagem, Assim não teremos problemas com cache
-			self.find('.FlagsHightLight .flag[class*="-selo-"]').each(function(i, e) {
-				var elFlag = $(e);
-				var flagName = elFlag.attr('class').replace('flag', '').trim();
+			dynamicStamps(self, '.FlagsHightLight .flag[class*="-selo-"]');
 
-				elFlag.css({
-					'background-image'    : 'url(/arquivos/' + flagName + '.png)',
-					'background-position' : 'center center',
-					'background-repeat'   : 'no-repeat'
-				});
-			});
 
 			self.find('.FlagsHightLight [class*="boleto"]').each(function(i, e) {
 				var promoName = $(e).text();
