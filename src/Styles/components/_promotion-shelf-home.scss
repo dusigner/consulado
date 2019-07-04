@@ -1,10 +1,10 @@
 body.home {
 	.vitrine-promocao {
 		h2 {
-			@include responsiveFont(28, 16, true);
+			@include rfs(28);
 
 			span {
-				@include responsiveFont(34, 16, true);
+				@include rfs(34);
 				color: $green;
 				display: block;
 				font-weight: bold;
@@ -12,7 +12,7 @@ body.home {
 			}
 
 			@include breakpoint ('small', 'max') {
-				@include responsiveFont(26, 16, true);
+				@include rfs(26);
 				border: 1px solid #fff;
 				margin: 0 25px 15px 25px;
 			}
