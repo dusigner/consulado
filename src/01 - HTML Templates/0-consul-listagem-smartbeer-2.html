@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
+</head>
+<body data-controller="listagem">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Heading banner -->
+	<div class="heading-banner">
+		<div class="container">
+			<div class="heading-banner__title">
+				<h1>
+					<vtex:contentPlaceHolder id="titulo-pagina-categoria" />
+				</h1>
+			</div>
+
+			<!-- Banner -->
+			<div class="category-page-top-banner">
+				<vtex:contentPlaceHolder id="banner-topo-pagina-categoria" />
+			</div>
+			<!-- /Banner -->
+		</div>
+	</div>
+	<!-- /Heading banner -->
+
+	<div class="category-postheader">
+		<div class="container">
+			<!-- Breadcrumb -->
+			<section class="breadcrumb">
+				<vtex.cmc:breadCrumb />
+			</section>
+			<!-- /Breadcrumb -->
+		</div>
+	</div>
+
+
+	<div class="pagina-cervejeiras">
+		<!-- Seleção de cores -->
+		<div class="cervejeiras-cores">
+			<div class="container">
+				<div class="cervejeiras-cores__item">
+					<h2 class="cervejeiras-cores__title">
+						Cervejeira Consul <span class="cor">Vermelha</span>
+					</h2>
+					<p class="cervejeiras-cores__text">
+						A Cervejeira Consul é tudo o que você precisa para ter suas cervejas sempre geladas em casa. Com capacidade para até 75 latinhas,tem prateleiras ajustáveis, porta com vidro para visualização interna, painel de controle digital, 5 níveis de temperatura e sistema Frost Free.
+					</p>
+					<button class="cervejeiras-cores__cta green btn-primary-button large bold">Quero!</button>
+				</div>
+
+				<div class="cervejeiras-cores__item item--cervejeira">
+					<img src="/arquivos/pagina-cervejeiras__cervejeira-vermelha.png" alt="Cervejeira Consul Titanium" />
+				</div>
+
+				<div class="cervejeiras-cores__item cor">
+					<h2 class="cervejeiras-cores__title">
+						Design atrativo e cores incríveis!
+					</h2>
+					<p class="cervejeiras-cores__text">
+						Cores que combinam com você e com seu ambiente! Você pode colocar na sala, na cozinha, na churrasqueira ou onde você preferir.
+					</p>
+
+					<ul class="cervejeira-selecao-cores">
+						<li class="cervejeira-selecao-cores__item" data-color="titanium">
+							<img src="/arquivos/pagina-cervejeiras__cervejeira-vermelha-front.png" alt="Cervejeira Consul Titanium" />
+						</li>
+						<li class="cervejeira-selecao-cores__item" data-color="vermelha">
+							<img src="/arquivos/pagina-cervejeiras__cervejeira-vermelha-front.png" alt="Cervejeira Consul Vermelha" />
+						</li>
+						<li class="cervejeira-selecao-cores__item" data-color="amarela">
+							<img src="/arquivos/pagina-cervejeiras__cervejeira-vermelha-front.png" alt="Cervejeira Consul Amarela" />
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Seleção de cores -->
+	</div>
+
+	<!-- Compare -->
+	<vtex.cmc:compareBar />
+	<!-- /Compare -->
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>
