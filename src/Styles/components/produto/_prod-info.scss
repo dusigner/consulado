@@ -77,7 +77,13 @@ body.produto {
 .prod-preco {
 	p { margin: 0; }
 
-	&.product-has-5-off em.valor-por { display: inline-block!important; }
+	&.product-has-5-off {
+		em.valor-por { display: inline-block!important; }
+
+		.discount-boleto span {
+			display: inline-block!important;
+		}
+	}
 
 	em {
 		font-style: normal;
@@ -197,6 +203,7 @@ body.produto {
 
 		span {
 			@include rfs(24);
+			display: none;
 		}
 	}
 

@@ -118,19 +118,11 @@ div[data-chaordic] {
 
 					&:before { opacity: 1; }
 
-					.flag {
-						opacity: 0;
-					}
+					.flag { opacity: 0; }
 				}
 			}
 		}
-
-		@include breakpoint(small, 'max') {
-			text-align: left;
-
-			// .flag { bottom: 60% }
-		}
-
+		@include breakpoint(small, 'max') { text-align: left; }
 		margin: 0 auto;
 		width: 100%;
 
@@ -156,6 +148,14 @@ div[data-chaordic] {
 		@import 'components/shelf/price';
 
 		a { text-decoration: none }
+
+
+	&.product-has-5-off {
+		.discount-boleto {
+			span { display: inline-block!important; }
+		}
+	}
+
 	}
 
 	&-plus,
@@ -221,9 +221,7 @@ div[data-chaordic] {
 		}
 
 		&-res {
-			@include breakpoint(small, 'max') {
-				width: 100%;
-			}
+			@include breakpoint(small, 'max') { width: 100%; }
 			background: #f4f2f1;
 			padding-bottom: 35px;
 			text-align: center;
@@ -249,19 +247,13 @@ div[data-chaordic] {
 			}
 			width: 100/3*1%;
 
-			ul li {
-				// border: 1px solid $self-third;
-				width: 100%!important;
-			}
+			ul li { width: 100%!important; }
 
-			.box-produto {
-				border: 0;
-			}
+			.box-produto { border: 0; }
 		}
 
 		&-rec {
 			@include breakpoint(small, 'max') {
-				// margin-top: -20px;
 				width: 100%;
 
 				h2 {
@@ -289,7 +281,6 @@ div[data-chaordic] {
 
 
 		ul {
-			// &.slick-slider { height: 100%; }
 			.slick-track {
 				@include breakpoint('small', 'min') { display: block; }
 			}
@@ -350,7 +341,6 @@ div[data-chaordic] {
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
 					@include breakpoint('small', 'max') { display: block; }
-					// display: none;
 
 					.discount-boleto {
 						@include rfs(16);

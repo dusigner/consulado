@@ -66,6 +66,10 @@ body.listagem {
 
 
 	&.product-has-5-off {
+		.discount-boleto {
+			span { display: inline-block!important; }
+		}
+
 		.adicional {
 			strong {
 				&:first-child { display: block; }
@@ -100,9 +104,6 @@ body.listagem {
 			.x:before { display: none;}
 		}
 	}
-
-
-
 
 	.detalhes {
 		display: flex;
@@ -208,7 +209,10 @@ body.listagem {
 				font-weight: bold;
 				margin: 0 0 .4em 0;
 
-				span { @include rfs(16); }
+				span {
+					@include rfs(16);
+					display: none;
+				}
 			}
 
 			.indisponivel {
