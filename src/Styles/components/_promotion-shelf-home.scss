@@ -5,8 +5,8 @@ body.home {
 
 			span {
 				@include responsiveFont(34, 16, true);
-				display: block;
 				color: $green;
+				display: block;
 				font-weight: bold;
 				line-height: 1;
 			}
