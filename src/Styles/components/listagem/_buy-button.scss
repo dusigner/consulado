@@ -1,0 +1,28 @@
+.semEstoque {
+	.prod__selectSKU {
+		display: none;
+	}
+}
+
+.prod__selectSKU {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    white-space: nowrap;
+    width: 75%;
+}
+
+.sku {
+    &__selector {
+        display: inline-block;
+    }
+
+    &_radio {
+        display: inline-block;
+    }
+
+    &_title {
+        display: inline-block;
+    }
+}

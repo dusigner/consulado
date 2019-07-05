@@ -318,4 +318,6 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
 		$('.heading-banner').addClass('hide');
 	}
+
+	$('.prod__selectSKU').removeClass('hide');
 });

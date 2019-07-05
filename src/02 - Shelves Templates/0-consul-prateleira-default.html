@@ -16,12 +16,8 @@
 			</div>
 		</a>
 
-		<div style="display: none!important;">
+		<div>
 			$product.InsertSku
-		</div>
-
-		<div class="prod__selectSKU">
-
 		</div>
 
 		<a href="$uri" title="$escapedName" class="prod-info">
@@ -77,14 +73,15 @@
 						#end
 					</p>
 				</div>
+
+				<div class="buy-button">
+
+				</div>
 			#else
 				<p class="indisponivel">Produto indisponível</p>
 			#end
 		</a>
 
-		<div class="buy-button">
-
-		</div>
 	</div>
 	<div class="btn-comparar form-check-inline">$product.Compare</div>
 	<a href="$product.CategoryLink" class="department-nav">Ver mais em <span>$product.CategoryName</span></a>
