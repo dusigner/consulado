@@ -84,8 +84,8 @@ Nitro.module('upsell', function() {
 
 	this.formatPrice = () => {
 		let priceBar; // pega e formata o preço do produto upgrade
-		(verifyDowngrade > 0) ? priceBar = Number(apiResponseDowngrade.items[0].sellers[0].commertialOffer.Price) : priceBar = Number(apiResponseUpgrade.items[0].sellers[0].commertialOffer.Price);
-		(priceBar < 1 && apiResponseUpgrade.items[1]) ? priceBar = Number(apiResponseUpgrade.items[1].sellers[0].commertialOffer.Price) : '';
+		(verifyDowngrade > 0) ? priceBar = Number(apiResponseDowngrade.items[0].sellers[0].commertialOffer.Price) : priceBar = Number(apiResponseUpgrade ? apiResponseUpgrade.items[0].sellers[0].commertialOffer.Price : '0');
+		(priceBar < 1 && apiResponseUpgrade && apiResponseUpgrade.items[1]) ? priceBar = Number(apiResponseUpgrade.items[1].sellers[0].commertialOffer.Price) : '';
 		(verifyDowngrade > 0 && priceBar < 1) ? priceBar = Number(apiResponseDowngrade.items[1].sellers[0].commertialOffer.Price) : '';
 		$('.title-price-upgrade span, .corpo-produtos-modal .oportunidadePro span, .price-mobile-upgrade').html(`R$ ${_.formatCurrency( priceBar )}`);
 
@@ -94,12 +94,12 @@ Nitro.module('upsell', function() {
 		let // formata o preco do pruduto atual dentro do modal
 			priceCurrentmodal = Number($('.voce-esta-vendo span').text());
 
-		
+
 		// Check if current product is available. If not, set price with unavailable message
 		if (priceCurrentmodal) {
 			$('.voce-esta-vendo span').html(`R$ ${_.formatCurrency( priceCurrentmodal )}`);
 
-		} else { 
+		} else {
 
 			$('.voce-esta-vendo span').html('Indisponível');
 		}
