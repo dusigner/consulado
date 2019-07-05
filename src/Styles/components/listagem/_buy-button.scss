@@ -20,9 +20,18 @@
 
     &_radio {
         display: inline-block;
+
+        &.unavailable {
+            opacity: .3;
+        }
     }
 
     &_title {
         display: inline-block;
+
+        &.unavailable {
+            opacity: .3;
+        }
     }
+
 }
