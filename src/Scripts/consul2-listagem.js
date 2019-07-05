@@ -13,11 +13,12 @@ require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
 require('modules/listagem/comparebar');
+require('modules/listagem/buyButton');
 // require('modules/compare');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar', 'buy-button' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
