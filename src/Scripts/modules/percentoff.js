@@ -2,8 +2,9 @@
 'use strict';
 
 import promoDestaque from './_promo-destaque';
+import setSKUselector from './listagem/buyButton';
 
-Nitro.module('percentoff', function() {
+Nitro.module('percentoff', 'buy-button', function() {
 
 	this.init = function() {
 		$('.box-produto:not(.list-percent)').each(function() {
@@ -97,6 +98,8 @@ Nitro.module('percentoff', function() {
 
 			self.addClass('list-percent');
 		});
+
+		setSKUselector();
 	};
 
 	if (store && store.isPersonal) {
