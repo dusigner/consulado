@@ -4,7 +4,6 @@
 
 .cervejeiras-cores {
 	background-color: #fff;
-	border: 1px solid #d0d;
 	overflow: hidden;
 	padding: 90px 0 60px 0;
 	position: relative;
@@ -108,34 +107,69 @@
 
 	// CTA
 	&__cta { padding: .6em 4em!important; }
+}
 
-	// Slider
-	.cervejeiras-slider {
-		position: relative;
-		width: 100%;
-		z-index: 1;
+// Slider
+.cervejeiras-slider {
+	position: relative;
+	width: 100%;
+	z-index: 1;
 
-		li { margin: 0; }
+	li {
+		margin: 0;
+
+		img { max-width: 450px; }
 	}
 }
 
-
+// Seleção de cores
+.cervejeira-selecao-cores__container {
+	max-width: 250px;
+	overflow: hidden;
+}
 .cervejeira-selecao-cores {
 	align-items: center;
 	display: flex;
-	padding: 20px 0;
+	margin: 20px auto;
+	max-width: 90px;
+	position: relative;
 	width: 100%;
+
+	.slick-list {
+		max-width: 100%;
+		overflow: inherit;
+	}
 
 	.slick-track { align-items: center; }
 
-	&__item {
-		width: 65px!important;
-
-		img { max-width: 100%; }
+	.slick-slide:not(.slick-active) {
+		img { transform: translateX(-45%) scale(.7); }
 	}
 
-	&__item:nth-child(2) {
-		width: 95px!important;
+	.slick-prev,
+	.slick-next {
+		height: 100%;
+		width: 100%;
+
+		&:before { display: none; }
+
+		&.slick-disabled { display: none!important; }
+	}
+
+	.slick-prev { left: -100%; }
+
+	.slick-next { right: -100%; }
+
+
+	&__item {
+		img {
+			display: block;
+			left: 50%;
+			max-width: 95px;
+			position: relative;
+			transform: translateX(-45%);
+			transition: transform .3s ease;
+		}
 	}
 }
 

@@ -2,6 +2,8 @@
 	'use strict';
 
 	const cervejeiras = {};
+	const slider = $('.cervejeiras-slider');
+	const selecaoCores = $('.cervejeira-selecao-cores');
 
 	cervejeiras.init = () => {
 		cervejeiras.slider();
@@ -9,26 +11,24 @@
 	};
 
 	cervejeiras.slider = () => {
-		const slider = $('.cervejeiras-slider');
 		slider.slick({
 			arrows: false,
-			dots: false,
+			asNavFor: selecaoCores,
+			dots: true,
 			fade: true,
-			infinite: true,
 			slidesToScroll: 1,
 			slidesToShow: 1
 		});
 	};
 
 	cervejeiras.selectColor = () => {
-		const selecaoCores = $('.cervejeira-selecao-cores');
 		selecaoCores.slick({
-			arrows: false,
+			asNavFor: slider,
 			dots: true,
-			// fade: true,
-			infinite: true,
+			infinite: false,
 			slidesToScroll: 1,
-			slidesToShow: 3
+			slidesToShow: 1,
+			initialSlide: 1
 		});
 	};
 
