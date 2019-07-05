@@ -8,7 +8,6 @@ import 'modules/product/product-nav';
 import 'modules/product/details';
 import 'modules/product/specifications';
 import 'modules/product/selos';
-import 'modules/product/supermodel';
 import 'modules/product/sku-select';
 import 'modules/product/boleto';
 import 'modules/product/notify-me';
@@ -17,6 +16,7 @@ import 'modules/product/quiz-install';
 import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
+import 'modules/product/color-selector';
 import 'modules/chaordic';
 import 'components/testeab-entrega';
 // require('modules/product/special-content');
@@ -24,6 +24,7 @@ import 'components/testeab-entrega';
 Nitro.controller('produto', [
 	'chaordic',
 	'testeab-entrega',
+	'color-selector',
 	'sku-fetch',
 	'gallery',
 	'product-nav',
@@ -31,7 +32,6 @@ Nitro.controller('produto', [
 	'details',
 	'specifications',
 	'selos',
-	'supermodel',
 	'sku-select',
 	'boleto',
 	'notify-me',
