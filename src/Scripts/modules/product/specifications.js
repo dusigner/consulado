@@ -22,7 +22,7 @@ Nitro.module('specifications', function() {
 		// $body = $('body'),
 
 		specs = {
-			'Mais Informações': 'informações',
+			'Mais Informações': 'info',
 			'Tipo do produto': 'tipo',
 			'Cor': 'cor',
 			'Garantia do Fornecedor (mês)': 'garantia',
