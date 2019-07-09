@@ -4,6 +4,8 @@
 require('Dust/checkout.recurrenceSteps.html');
 require('Dust/checkout.recurrenceModal.html');
 
+console.log('QAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+
 Nitro.module('checkout.recurrence', function () {
 
 	var self = this;
