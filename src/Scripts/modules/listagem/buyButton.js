@@ -24,17 +24,30 @@ const setSKUselector = () => {
 
 			sku.find('.unavailable').attr('disabled', true);
 
+			productLink.find('.prod-info').after(`
+				<a class="sku_buy -not-selected">Comprar</a>
+			`);
+
 			if(sku.find('.available').length === 2) {
 				sku.find('.available').attr('checked', 'checked');
 				setUrlButton(productLink);
 			}
 
-			productLink.find('.price').after(`
-				<a href="#" class="sku_buy">Comprar</a>
-			`);
 
 			productLink.find('.sku_radio').on('change', function () {
 				setUrlButton(productLink);
+			});
+
+			$('.-not-selected').on('click', function() {
+				if ($(this).parents('.detalhes').find('.sku_error').length === 0) {
+					let message = `
+									<div class="sku_error">
+										<span class="select-sku"> Selecione uma voltagem </span>
+									</div>
+								`;
+
+					$(message).insertBefore(productLink.find('.prod__selectSKU'));
+				}
 			});
 		}
 	});
@@ -45,8 +58,9 @@ const setSKUselector = () => {
 };
 
 const setUrlButton = (productLink) => {
-	let skuData = $(productLink.find('.sku_radio:checked').data('sku-value'));
-	productLink.find('.sku_buy').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
+	let skuData = $(productLink).find('.sku_radio:checked').data('sku-value'),
+		skuButton = productLink.find('.sku_buy');
+	skuButton.unbind().removeClass('-not-selected').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
 };
 
 export default setSKUselector;

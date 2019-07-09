@@ -12,6 +12,7 @@
     position: relative;
     white-space: nowrap;
     width: 75%;
+    z-index: 5;
 }
 
 .sku {
@@ -86,6 +87,12 @@
         position: relative;
         text-align: center;
         width: 85%;
+        z-index: 5;
     }
+}
 
+.select-sku {
+    display: block;
+    text-align: center;
+    width: 100%;
 }
