@@ -95,7 +95,11 @@ Nitro.module('checkout.recurrence', function () {
 	 * @param discount {String} Nome da promoção encontrada
 	*/
 	this.formatRecurrenceDiscountValue = function(discount) {
-		return Number(discount.match(/_reco-(\w+)_/gmi)[0].match(/\d+/gmi));
+		if (discount && discount.match(/_reco-(\w+)_/gmi)) {
+			return Number(discount.match(/_reco-(\w+)_/gmi)[0].match(/\d+/gmi));
+		}
+
+		return false;
 	};
 
 	/**
@@ -227,6 +231,7 @@ Nitro.module('checkout.recurrence', function () {
 
 				templateData.index = i;
 				templateData.period = selfPeriod;
+				templateData.discount = self.getRecurrenceDiscount();
 
 				if (!templateData.period) {
 					return false;

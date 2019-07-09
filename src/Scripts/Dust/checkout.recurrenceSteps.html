@@ -19,7 +19,14 @@
 			</div>
 		</div>
 		<div class="recurrence__discount-warning">
-			<strong class='recurrence__discount-spotlight'>10% de desconto</strong> nas compras recorrentes
+			<strong class='recurrence__discount-spotlight'>
+				{#discount}
+					{discount}% de desconto
+				{:else}
+					10% de desconto
+				{/discount}
+			</strong>
+			&nbsp; nas compras recorrentes
 		</div>
 	</div>
 
