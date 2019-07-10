@@ -168,10 +168,12 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	};
 
 	this.mobileClearFilter = function() {
-		var $button = $(`<div class="mobile-buttons">
-							<button class="clear-filter">Limpar filtros</button>
-							<button class="close-filter">Voltar</button>
-						</div>`);
+		var $button = $(`
+			<div class="mobile-buttons">
+				<button class="clear-filter">Limpar filtros</button>
+				<button class="close-filter">Voltar</button>
+			</div>
+		`);
 
 		$filterWrapper.prepend($button);
 
