@@ -1,7 +1,7 @@
 {
 	"name": "consul",
 	"accountName": "consul",
-	"version": "v6.32.0",
+	"version": "v6.34.3",
 	"author": "Jussi Platform Team",
 	"private": true,
 	"secureUrl": true,
@@ -12,6 +12,7 @@
 		"clipboard": "^1.7.1",
 		"enquire.js": "^2.1.6",
 		"js-pretty-logger": "^1.2.10",
+		"popper.js": "^1.15.0",
 		"store": "^2.0.12",
 		"urijs": "^1.19.1"
 	},

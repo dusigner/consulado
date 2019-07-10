@@ -52,7 +52,7 @@ require('modules/store/callcenter');
 
 const changeCallcenterLinks = () => {
 
-	if( $('body').is('.neemu.listagem.busca.consul') && (window.location.search.indexOf('vtexcommercestable=1') > 0 || (window.getCookie && window.getCookie('MTC').indexOf('.vtexcommercestable.com.br') > 0 ))) {
+	if( $('body').is('.neemu.listagem.busca.consul') && (window.location.search.indexOf('vtexcommercestable=1') > 0 || (window.getCookie && window.getCookie('MTC') && window.getCookie('MTC').indexOf('.vtexcommercestable.com.br') > 0 ))) {
 		localStorage.removeItem('lastUrl');
 		$('a[href*="//loja.consul.com.br/"]').attr('href', function() {
 			return $(this).attr('href').replace('loja.consul.com.br', 'consul.vtexcommercestable.com.br');

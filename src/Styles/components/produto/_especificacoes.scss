@@ -159,13 +159,19 @@
 
 				.specs {
 					&-title {
-						border-bottom: 2px solid #9aca3c;
-						display: block;
-						font-size: 1rem;
-						font-weight: 700;
-						margin: 40px 0 15px;
-						padding-bottom: 5px;
-						text-align: left;
+						font-size: 0;
+						width: 100%;
+
+						&:before {
+							border-bottom: 2px solid #9aca3c;
+							content: 'Informações';
+							display: block;
+							font-size: 1rem;
+							font-weight: 700;
+							margin: 40px 0 15px;
+							padding-bottom: 5px;
+							text-align: left;
+						}
 					}
 
 					&-value {
