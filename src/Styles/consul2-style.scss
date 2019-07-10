@@ -100,3 +100,23 @@
 // @import 'consul2-bf-2018';
 //
 @import 'components/custom-select';
+
+
+html {
+	body {
+		// border: 10px solid #d0d;
+
+		div#sm-push,
+		div#sm-tracking,
+		div#sm-onsite-sales {
+			@include breakpoint('medium', 'max') {
+				display: none!important;
+				max-height: 0!important;
+				max-width: 0!important;
+				opacity: 0!important;
+				overflow: !important;
+				visibility: hidden!important;
+			}
+		}
+	}
+}

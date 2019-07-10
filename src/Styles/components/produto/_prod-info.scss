@@ -24,7 +24,8 @@ body.produto {
 
 .prod-info {
 	.secure {
-		@include font-size(12px, true, false);
+		@include breakpoint('small', 'max') { display: none!important; }
+		@include rfs(12);
 		display: none;
 		text-transform: uppercase;
 
@@ -217,9 +218,11 @@ body.produto {
 
 	@include breakpoint(small, 'max') {
 		margin-bottom: 0;
-		margin-top: 0;
 
-		.select-voltage { display: none; }
+		.select-voltage {
+			// display: none;
+			margin: 0;
+		}
 	}
 }
 
@@ -233,7 +236,7 @@ body.produto {
 		min-height: 30px;
 
 		&:before {
-			@include responsiveFont(18, 16, true);
+			@include rfs(18);
 			content: 'Selecione a voltagem';
 			display: block;
 			position: absolute;
@@ -260,7 +263,7 @@ body.produto {
 		}
 
 		label {
-			@include responsiveFont(18, 16, true);
+			@include rfs(18);
 			cursor: pointer;
 			display: inline;
 			font-weight: 700;
@@ -274,16 +277,15 @@ body.produto {
 				background-color: #fff;
 				border: 2px solid $txt-gray;
 				border-radius: 50%;
-				bottom: 4px;
 				content: '';
 				height: 14px;
 				left: 0;
 				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
 				width: 14px;
 
-				@include breakpoint(small, 'min') {
-					border-color: $txt-gray-l;
-				}
+				@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
 			}
 		}
 	}
