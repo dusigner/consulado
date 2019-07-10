@@ -186,8 +186,14 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	 *  Clear button which works on mobile
 	 * */
 	this.mobileClearFilter = function() {
-		var $button = $('<button class="clear-filter">Limpar filtros</div>');
-		$filterWrapper.append($button);
+		var $button = $(`
+			<div class="mobile-buttons">
+				<button class="clear-filter">Limpar filtros</button>
+				<button class="close-filter">Voltar</button>
+			</div>
+		`);
+
+		$filterWrapper.prepend($button);
 
 		$('.clear-filter').click(function() {
 			self.clearFilter();
