@@ -127,6 +127,7 @@
 	max-width: 250px;
 	overflow: hidden;
 }
+
 .cervejeira-selecao-cores {
 	align-items: center;
 	display: flex;
@@ -159,6 +160,19 @@
 	.slick-prev { left: -100%; }
 
 	.slick-next { right: -100%; }
+
+	.slick-dots {
+		bottom: 0;
+
+		li {
+			margin: 0;
+			transform: scale(.6);
+
+			button:after { border: none; }
+
+			&.slick-active button { background-color: #9aca3c; }
+		}
+	}
 
 
 	&__item {
