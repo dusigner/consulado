@@ -46,7 +46,7 @@ Nitro.module('order-by', function () {
 
 	this.order = function($orderElement) {
 		var orderValue = $orderElement.data('order');
-		
+
 		helper.setOrderRel(orderValue);
 		helper.setURL();
 
@@ -56,6 +56,7 @@ Nitro.module('order-by', function () {
 		$orderTitle.addClass('loading');
 
 		$orderTitle.find('em').text($orderElement.text());
+		$orderTitle.find('.order-show-mobile').text($orderElement.text());
 
 		$orderTitle.add('.order-by').removeClass('active');
 
