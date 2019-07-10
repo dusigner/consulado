@@ -24,7 +24,10 @@ body.produto {
 
 .prod-info {
 	.secure {
-		@include breakpoint('small', 'max') { display: none!important; }
+		@include breakpoint('small', 'max') {
+			// background-color: #ccc;
+			display: none!important;
+		}
 		@include rfs(12);
 		display: none;
 		text-transform: uppercase;
