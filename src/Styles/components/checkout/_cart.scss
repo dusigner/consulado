@@ -1,13 +1,10 @@
 body {
 	&.body-cart {
-		.checkout-container {
-			padding-bottom: 40px;
-		}
+		.checkout-container { padding-bottom: 40px; }
 
 		.cart {
-			padding: 0;
-
 			@include breakpoint(small 'max') { padding-bottom: 25px }
+			padding: 0;
 
 			.cart-items {
 				thead {
@@ -24,30 +21,22 @@ body {
 					padding-bottom: 30px;
 
 					td {
+						@include breakpoint(768px, 'max') { vertical-align: top; }
+						@include breakpoint(small, 'max') { padding: 10px 0 !important; }
 						padding: 20px 10px;
-						@include breakpoint(768px, 'max') {
-							vertical-align: top;
-						}
-						@include breakpoint(small, 'max') {
-							padding: 10px 0 !important;
-						}
 					}
 
 					.item-remove { right: 7px; }
 
 					.product-item {
+						@include breakpoint(small, 'max') { padding-bottom: 45px; }
 						border-top: 3px solid $gray-l;
 						overflow: initial;
 						padding: 30px 0;
 
-						@include breakpoint(small, 'max') { padding-bottom: 45px; }
-
 						&:first-child {
+							@include breakpoint(small, 'max') { border-top: 0 !important; }
 							border-bottom: none;
-
-							@include breakpoint(small, 'max') {
-								border-top: 0 !important;
-							}
 						}
 
 						.brand,
@@ -61,13 +50,12 @@ body {
 						}
 
 						.product-name {
+							@include breakpoint(small, 'max') { width: 240px; }
 							@include responsiveFont(14, 16, true);
 							font-weight: bold;
 							width: 385px;
 
-							@include breakpoint(small, 'max') { width: 240px; }
-
-							&>a {
+							& > a {
 								display: block;
 								width: 100%;
 							}
@@ -105,9 +93,7 @@ body {
 						}
 
 						.product-price {
-							@include breakpoint(small, 'max') {
-								margin-right: 16px;
-							}
+							@include breakpoint(small, 'max') { margin-right: 16px; }
 
 							.list-price {
 								@include responsiveFont(13, 16, true);
@@ -124,21 +110,20 @@ body {
 
 						.quantity {
 							@include breakpoint(768px, 'max') {
-							   align-content: center;
-							   align-items: center;
-							   display: flex;
+								align-content: center;
+								align-items: center;
+								display: flex;
 							}
+
 							input {
 								height: 35px;
 								width: 40px;
 							}
 
 							.item-quantity-change {
-								@include breakpoint(768px, 'min') {
-									position: initial;
-								}
+								@include breakpoint(768px, 'min') { position: initial; }
 								color: $gray;
-							 }
+							}
 						}
 
 						.quantity-price {
@@ -171,9 +156,7 @@ body {
 			}
 		}
 
-		.loading-inline {
-			display: none!important;
-		}
+		.loading-inline { display: none!important; }
 
 		.msg-coupon {
 			background-color: $green;
@@ -186,12 +169,9 @@ body {
 		}
 
 		.totalizers {
+			@include breakpoint(small, 'max') { width: 100%; }
 			padding: 0;
 			width: 46%;
-
-			@include breakpoint(small, 'max') {
-				width: 100%;
-			}
 
 			.quantity-price,
 			.monetary {
@@ -203,9 +183,7 @@ body {
 			}
 
 			.monetary {
-				@include breakpoint(small, 'max') {
-					padding-right: 50px;
-				}
+				@include breakpoint(small, 'max') { padding-right: 50px; }
 			}
 
 			.info {
@@ -227,9 +205,7 @@ body {
 				tfoot {
 					padding: 5px;
 
-					tr {
-						border-bottom: 1px solid $gray-l;
-					}
+					tr { border-bottom: 1px solid $gray-l; }
 				}
 
 				.Items {
@@ -271,6 +247,7 @@ body {
 								}
 
 								button#cart-shipping-calculate {
+									@include breakpoint(extra-small, 'max') { margin-right: 50px; }
 									background: transparent;
 									border: 2px solid $gray;
 									color: $txt-gray-l;
@@ -280,10 +257,6 @@ body {
 									text-transform: capitalize;
 									width: 90px;
 
-									@include breakpoint(extra-small, 'max') {
-										margin-right: 50px;
-									}
-
 									&:hover {
 										background: $gray;
 										color: #ffffff;
@@ -291,26 +264,18 @@ body {
 								}
 							}
 
-							.error {
-								text-align: left;
-							}
+							.error { text-align: left; }
 
-							#cart-dont-know-postal-code {
-								display: none;
-							}
+							#cart-dont-know-postal-code { display: none; }
 						}
 
-						.shipping-calculate-link {
-							display: none;
-						}
+						.shipping-calculate-link { display: none; }
 					}
 				}
 
 				.Shipping {
 					.monetary,
-					.space {
-						display: none;
-					}
+					.space { display: none; }
 
 					.info {
 						@include responsiveFont(13, 16, true);
@@ -326,7 +291,6 @@ body {
 						}
 
 						.postal-code-for-sla {
-							display: inline-block;
 							float: right;
 							min-width: auto;
 							padding: 6px 0;
@@ -336,33 +300,25 @@ body {
 								display: none;
 							}
 
-							.cart-reset-postal-code {
-								padding-right: 8px;
-							}
+							.cart-reset-postal-code { padding-right: 8px; }
 						}
 
-						.shipping-selected-sla-estimate {
-							display: none;
-						}
+						.shipping-selected-sla-estimate { display: none; }
 
 						.shipping-sla-selector {
+							@include breakpoint(extra-large, 'max') { padding-top: 30px; }
+							@include breakpoint(extra-small, 'max') {
+								padding-right: 15px;
+								text-align: center;
+							}
 							border-top: 1px solid $gray-l;
 							padding: 16px 0;
 							padding-left: 15px;
 							padding-right: 30px;
 							text-align: right;
 
-							@include breakpoint(extra-large, 'max') {
-								padding-top: 30px;
-							}
-
-							@include breakpoint(extra-small, 'max') {
-								padding-right: 15px;
-								text-align: center;
-							}
-
 							.shipping-sla-button {
-								background: #ffffff;
+								background: #fff;
 								border: none;
 								box-shadow: none;
 								padding: 0;
@@ -410,7 +366,7 @@ body {
 								&:hover,
 								&:focus,
 								&.btn.dropdown-toggle {
-									background: #ffffff;
+									background: #fff;
 									border: none;
 									box-shadow: none;
 									text-shadow: none;
@@ -420,15 +376,14 @@ body {
 									color: $green;
 									font-size: 12px;
 									font-weight: bold;
+
 									span {
 										color: #736C6B;
 										font-weight: normal;
 									}
 								}
 
-								@include breakpoint(extra-small, 'max') {
-									text-align: center;
-								}
+								@include breakpoint(extra-small, 'max') { text-align: center; }
 							}
 
 							.shipping-estimate {
@@ -441,9 +396,7 @@ body {
 								text-transform: initial;
 								width: 60%;
 
-								@include breakpoint(extra-large, 'max') {
-									width: 100%;
-								}
+								@include breakpoint(extra-large, 'max') { width: 100%; }
 
 								&:before {
 									@include responsiveFont(13, 16, true);
@@ -461,28 +414,18 @@ body {
 										top: -25px;
 									}
 								}
-
-								// &:after {
-								// 	@include contentBefore();
-								// 	@include font-size(8px, true, false);
-								// 	@include icon-get('arrow-down');
-								// 	display: block;
-								// 	position: absolute;
-								// 	right: 6px;
-								// 	top: 50%;
-								// 	transform: translateY(-50%);
-								// }
 							}
 
 							.shipping-sla-options {
-								@include responsiveFont(16, 16, true);
 								background: #fff;
-								border: 0;
+								border: 1px solid #F1F0F0;
+								border-radius: 0;
 								box-shadow: none;
 								float: none;
+								font-size: 16px;
 								line-height: normal;
 								min-width: auto;
-								padding: 0;
+								padding: 10px 20px;
 								position: initial;
 								text-align: left;
 								top: 45px;
@@ -496,72 +439,116 @@ body {
 								}
 
 								li {
-									border: 1px solid #cccccc;
-									margin: 5px 0;
-									padding: 6px 10px;
+									border-top: 1px solid #ccc;
+									padding: 0 10px;
 									position: relative;
 									text-transform: initial;
 
-									&.selected {
-										background: rgba(#736c6b, .2);
-										box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
-
-										a {
-											&:hover,
-											&:focus {
-												background: transparent;
-												color: #46a546;
-											}
-
-											.icon-ok {
-												&::before {
-													color: #46a546;
-													content: '\f05d';
-												}
-											}
-										}
-									}
+									&:first-child { border: none; }
 
 									a {
 										align-items: center;
 										display: flex;
-										justify-content: space-between;
-										padding: 0;
-										transition: color 400ms ease-out;
+										font-size: 12px;
+										padding: 10px 0;
+										position: relative;
+										transition: color .2s ease;
 										white-space: normal;
+										z-index: 1;
 
-										&:hover {
-											color: #46a546;
+										&:hover,
+										&:focus {
+											background: transparent;
+											color: #702F8F;
 
-											.icon-ok {
-												&::before {
-													color: #46a546;
-												}
-											}
+											.icon-ok:before { color: #702F8F; }
 										}
 
 										.icon-ok {
 											display: initial !important;
 											font-size: 20px;
 											margin-right: 5px;
-											// order: 1;
 
 											&::before {
-												color: #999999;
+												color: #999;
 												content: '\f10c';
 											}
 										}
 
-										span {
+										span { width: 100%; }
+									}
+
+									// Active state
+									&.selected {
+										a {
+											background: transparent;
+											color: #702F8F;
+
+											.icon-ok:before {
+												color: #702F8F;
+												content: '\f05d';
+											}
+										}
+									}
+
+									// frete grátis
+									&.frete-gratis {
+										position: relative;
+
+										a {
+											color: #0fb6de;
+											font-weight: bold;
+
+											&:hover { color: #702F8F; }
+										}
+
+										&.selected {
+											a { color: #702F8F; }
+										}
+
+										// active box
+										&:before,
+										&:after {
+											content: '';
+											display: block;
+											position: absolute;
+										}
+
+										&:before {
+											@include breakpoint('medium', 'max') {
+												background: #0fb6de;
+												height: 100%;
+												left: 0%;
+												width: 3px;
+											}
+											z-index: 10;
+										}
+
+										&:after {
+											background-color: #fff;
+											border-radius: 4px;
+											box-shadow: 0 1px 10px #e3e1e1;
+											height: 100%;
+											right: 0;
+											top: 0;
 											width: 100%;
+										}
+
+										& + li { border-color: transparent; }
+
+										& + li.frete-gratis {
+											&:after {
+												border-radius: 0 0 4px 4px;
+												border-top: 1px solid #e3e1e1;
+												box-shadow: 0 3px 5px #e3e1e1;
+												margin-top: -1px;
+											}
 										}
 									}
 								}
 							}
 
-							.icon-chevron-down {
-								display: none;
-							}
+							.icon-chevron-down { display: none; }
 						}
 					}
 
@@ -575,9 +562,7 @@ body {
 					.icon-remove-sign {
 						@include responsiveFont(16, 16, true);
 
-						&:before {
-							content: '\f00d';
-						}
+						&:before { content: '\f00d'; }
 					}
 				}
 
@@ -612,14 +597,10 @@ body {
 			@include breakpoint(small, 'max') {
 				width: 100%;
 
-				.coupon {
-					width: 100%;
-				}
+				.coupon { width: 100%; }
 			}
 
-			input {
-				height: 35px;
-			}
+			input { height: 35px; }
 
 			.summary-coupon {
 				float: none;
@@ -651,20 +632,16 @@ body {
 						display: block;
 						width: 125px;
 
-						label {
-							font-weight: bold;
-						}
+						label { font-weight: bold; }
 					}
 
 					.coupon-fields {
 						display: inline-block;
 
-						input {
-							height: 40px;
-						}
+						input { height: 40px; }
 
 						button {
-							background: #ffffff;
+							background: #fff;
 							border: 2px solid $gray;
 							box-shadow: none;
 							color: $gray;
@@ -684,7 +661,7 @@ body {
 		}
 
 		.shipping-sla-button {
-			background: #ffffff;
+			background: #fff;
 			border: none;
 			box-shadow: none;
 			padding: 0;
@@ -695,7 +672,7 @@ body {
 			&:hover,
 			&:focus,
 			&.btn.dropdown-toggle {
-				background: #ffffff;
+				background: #fff;
 				border: none;
 				box-shadow: none;
 				text-shadow: none;
@@ -710,16 +687,18 @@ body {
 
 		.shipping-sla-options {
 			@include font-size(16px);
-			background: #ffffff;
+			background: #fff;
 			box-shadow: 0 0 7px rgba(0, 0, 0, .2);
 			line-height: normal;
 			min-width: 120px;
 			padding: 0;
+
 			li {
 				a {
 					transition: color 400ms ease-out;
+
 					&:hover {
-						background: #ffffff;
+						background: transparent;
 						color: $green;
 					}
 				}
@@ -728,9 +707,7 @@ body {
 
 		.cart-links-bottom {
 			.link-choose-more-products-wrapper {
-				@media screen and (min-width: 320px) and (max-width: 490px) {
-					position: absolute;
-				}
+				@media screen and (min-width: 320px) and (max-width: 490px) { position: absolute; }
 				@include breakpoint(small, 'max') {
 					display: block;
 					left: 0;
@@ -759,9 +736,7 @@ body {
 
 			// Fake button
 			.fake-buttom {
-				@include breakpoint(768px, 'min') {
-					position: relative;
-				 }
+				@include breakpoint(768px, 'min') { position: relative; }
 				@include responsiveFont(15, 16, true);
 				font-weight: bold;
 				padding: 14px 50px;
@@ -801,6 +776,7 @@ body {
 		.cart-links-bottom {
 			margin-bottom: 0;
 			min-height: auto;
+
 			.link-choose-more-products {
 				@include responsiveFont(14, 16, true);
 				@include vendor(border-radius, 20px);
@@ -812,13 +788,14 @@ body {
 	}
 	.field-button {
 		background-color: #592b6d;
-	    bottom: 0;
-	    display: block;
-	    padding: 10px;
+		bottom: 0;
+		display: block;
+		padding: 10px;
 		position: fixed;
-	    right: 0;
-	    width: 100%;
-	    z-index: 12;
+		right: 0;
+		width: 100%;
+		z-index: 12;
+
 		tfoot {
 			background-color: transparent;
 			bottom: 10px;
@@ -826,7 +803,7 @@ body {
 			left: 0;
 			padding: 0 0 0 10px;
 			position: fixed;
-		    z-index: 15;
+			z-index: 15;
 
 			tr {
 				border-bottom: none;
@@ -864,8 +841,6 @@ body {
 		}
 	}
 	.cart-links-bottom {
-		.fake-buttom {
-			display: none!important;
-		}
+		.fake-buttom { display: none!important; }
 	}
 }

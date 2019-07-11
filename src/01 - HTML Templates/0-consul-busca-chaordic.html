@@ -124,7 +124,7 @@
 							<ul class="order-by"></ul>
 						</div>
 					</div>
-					<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="9" columnCount="9" /> 
+					<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="9" columnCount="9" />
 				</section>
 				<!-- /Prateleira -->
 
@@ -136,9 +136,14 @@
 		</div>
 	</div>
 
-	<!-- Footer -->
-	<vtex:template id="0-consul-footer" />
-	<!-- /Footer -->
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
 
 	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
 </body>

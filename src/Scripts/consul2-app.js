@@ -42,12 +42,12 @@ require('expose-loader?publishDataLayer!modules/bi/publish-data-layer');
 //load modules individually
 require('modules/vtex-events')();
 require('modules/header');
-require('modules/footer');
+// require('modules/footer');
+require('modules/footer-2019');
 require('modules/store/cluster');
-require('modules/percentoff');
+require('modules/listagem/percentoff');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
-require('modules/banners-controller');
 require('modules/prateleira');
 require('modules/customLogin');
 require('controllers/landing-gae-compra-interno');
@@ -58,7 +58,7 @@ require('modules/store/callcenter');
 
 const changeCallcenterLinks = () => {
 
-	if( $('body').is('.neemu.listagem.busca.consul') && (window.location.search.indexOf('vtexcommercestable=1') > 0 || (window.getCookie && window.getCookie('MTC').indexOf('.vtexcommercestable.com.br') > 0 ))) {
+	if( $('body').is('.neemu.listagem.busca.consul') && (window.location.search.indexOf('vtexcommercestable=1') > 0 || (window.getCookie && window.getCookie('MTC') && window.getCookie('MTC').indexOf('.vtexcommercestable.com.br') > 0 ))) {
 		localStorage.removeItem('lastUrl');
 		$('a[href*="//loja.consul.com.br/"]').attr('href', function() {
 			return $(this).attr('href').replace('loja.consul.com.br', 'consul.vtexcommercestable.com.br');

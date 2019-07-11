@@ -48,7 +48,6 @@ Nitro.module('deliveryTime', () => {
 			var calculaFrete = settings.url.split('/')[2];
 
 			if (calculaFrete === 'calcula') {
-
 				$loadingFret.removeClass('loading');
 				$containerFrete.addClass('active');
 				$containerFrete.prepend('<i class="closed"></i>');
@@ -61,8 +60,25 @@ Nitro.module('deliveryTime', () => {
 				}
 
 				this.setPostalCodeStorage();
+				this.hasFreeShipping();
 			}
 		});
+	};
+
+	this.hasFreeShipping = () => {
+		const tableShipping = $('.freight-values table');
+
+		if (tableShipping.length > 0) {
+			const allShippings = tableShipping.find('tr td:first-child');
+
+			allShippings.each((i, el) => {
+				const shipping = $(el);
+
+				if (shipping.text() === 'Frete Grátis') {
+					shipping.parent('tr').addClass('frete-gratis');
+				}
+			});
+		}
 	};
 
 	/**
@@ -180,6 +196,7 @@ Nitro.module('deliveryTime', () => {
 				this.handleData();
 				this.closeShippingOptions();
 				this.autoGetPostalCode();
+				this.hasFreeShipping();
 
 				ajaxCompleted = true;
 			}

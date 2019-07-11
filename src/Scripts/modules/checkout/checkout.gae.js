@@ -15,14 +15,14 @@ Nitro.module('checkout.gae', function() {
 	this.setup = function() {
 		this.link();
 		this.terms();
-		this.autoOpen();
-		this.introOpen();
+		// this.autoOpen();
+		// this.introOpen();
 	};
 
 	this.installments = function() {
 		const sortCountASC = (a, b) => b.count - a.count;
 		return self.orderForm.paymentData.installmentOptions
-			.map(elem => elem.installments.filter(installment => !installment.hasInterestRate).sort(sortCountASC)[0])
+			.map(elem => elem.installments.length > 0 && elem.installments.filter(installment => !installment.hasInterestRate).sort(sortCountASC)[0])
 			.sort(sortCountASC)[0].count;
 	};
 
@@ -193,7 +193,14 @@ Nitro.module('checkout.gae', function() {
 			productIndex: index
 		};
 
+		// Remove GAE 18 months from the GAE object list
+		offerings = $.grep(offerings, function(element) {return element.type === "Seguro Garantia Estendida Original - 18 meses";},  true);
+
 		$.each(offerings, function(index, val) {
+			if (!val.name.match(/\d+/)) {
+				return;
+			}
+
 			var warrantyTime = parseInt(val.name.match(/\d+/)[0]);
 
 			data.warranty[index]            		= {};
@@ -207,8 +214,8 @@ Nitro.module('checkout.gae', function() {
 			data.warranty[index].months     		= warrantyTime;
 			data.warranty[index].monthsYear			= (warrantyTime === 12) ? '1' : (warrantyTime === 18) ? '1' : (warrantyTime === 24) ? '2' : '3',
 			data.warranty[index].isPrimary  		= (warrantyTime === 12) ? true : false;
-			data.warranty[index].isMiddle   		= (warrantyTime === 18) ? true : false;
-			data.warranty[index].isLast    	 		= (warrantyTime === 24) ? true : (warrantyTime === 36) ? true : false;
+			data.warranty[index].isMiddle   		= (warrantyTime === 24 && offerings.length > 2) ? true : false;
+			data.warranty[index].isLast    	 		= ((warrantyTime === 36 && offerings.length > 2) || (warrantyTime === 24 && offerings.length < 3)) ? true : false;
 			data.warranty[index].isCheaper  		= false;
 			data.warranty[index].isParcel	  		= (self.installments()) ? true : false;
 
@@ -405,9 +412,7 @@ Nitro.module('checkout.gae', function() {
 		}, 1500);
 	};
 
-	this.introOpen = function (){
-
-
+	this.introOpen = function() {
 		if ( winWidth < 960 ) {
 
 			setTimeout(function() {

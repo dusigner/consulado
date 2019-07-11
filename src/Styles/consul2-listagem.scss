@@ -19,13 +19,15 @@
 @import 'helpers/variables';
 @import 'helpers/functions';
 @import 'helpers/mixins';
+@import 'helpers/rfs';
 @import 'helpers/family';
 
 // Component styles
 @import 'helpers/nouislider';
 @import 'components/buttons';
-@import 'components/banners';
-@import 'components/banners-controller';
+@import 'components/heading-banner';
+// @import 'components/banners';
+// @import 'components/banners-controller';
 // @import 'components/mod-prateleira';
 @import 'components/mod-prateleira-v2';
 @import 'components/chaordic-shelf';
@@ -37,4 +39,5 @@
 
 @import 'components/listagem/filters';
 @import 'components/listagem/calculadora-btu';
+@import 'components/listagem/category-list';
 @import 'components/listagem/comparebar';

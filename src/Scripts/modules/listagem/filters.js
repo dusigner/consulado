@@ -3,7 +3,6 @@
 var helper = require('modules/filters-helper');
 var noUiSlider = require('vendors/nouislider');
 
-require('Dust/listagem/range-price.html');
 require('Dust/listagem/range.html');
 require('Dust/listagem/filter-submenu.html');
 require('modules/listagem/order-by');
@@ -16,14 +15,11 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		$options = $holder.find('fieldset.refino'),
 		$checkbox =$('.multi-search-checkbox'),
 		$listMore = $('#list-more'),
-		$checked,
 		page = 1,
 		sliderStats = {
 			start: 0,
 			end: 150
 		},
-		sliderInit,
-		sliderEnd,
 		sliderOpts = {
 			connect: true,
 			step: 100,
@@ -41,38 +37,48 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.setup = function() {
 
-		// if (!$('body').hasClass('ab-test__mobile--show-b')) { // teste ab
-		// 	// REMOVE NÚMEROS DOS ITENS DE FILTRO *(NN)*
-		// 	$('.refino label, .refino-marca label').each(function() {
-		// 		var menuText = $(this).text(),
-		// 			menuInput = $(this).find('input');
+		$options.each(function() {
+			let $option = $(this),
+				title = $option.find('h5').text();
 
-		// 		$(this).text(menuText.replace(/ \(\d+\)/, ''));
-		// 		$(this).prepend(menuInput);
-		// 	}).css('display', 'block');
-		// } // teste ab
+			if( title === 'Faixa de preço' ){
+				$option.addClass('filtro-preco');
+			}
+		});
+
+		let priceInputs = $('.filtro-preco label');
+
+		priceInputs.each(function() {
+			let values = $(this).text().replace('á','à').split(' à '),
+				input = $(this).find('input');
+			$(this).text('R$ ' + values[0] + ' à R$ ' + values[1]).prepend(input);
+		});
 
 		$checkbox.change(function(e) {
 			e.preventDefault();
 
-			self.clearFilterRel();
+			var $checked = $('.multi-search-checkbox:checked');
+
+			self.setFilters();
 
 			$checkbox.parent('label').removeClass('active');
 			$checked.parent('label').addClass('active');
 
 			$(this).parent().addClass('loading');
-			self.request();
+
 		});
 
-		self.autoFilter();
 		self.hideEmpty();
 		self.dropDown();
 		self.mobileClearFilter();
-		self.priceRange();
 		self.specificationRange();
 		self.openFilter();
+		self.autoFilter();
 	};
 
+	/**
+	 * Hides something empty
+	 * */
 	this.hideEmpty = function() {
 		$options.each(function() {
 			if( $(this).find('div').children().length === 0 ) {
@@ -81,6 +87,9 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 	};
 
+	/**
+	 * Make an ajax request to fill the showcase
+	 * */
 	this.request = function() {
 		$.ajax({
 			url: helper.url() + page + helper.getFilterRel() + helper.getOrderRel(),
@@ -90,18 +99,15 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 				helper.vitrine.removeClass('loaded');
 			}
 		}).done(function(data) {
-			if( data ) {
-
+			if (data) {
 				try {
 					localStorage.setItem('filter' + vtxctx.categoryId + page + helper.getFilterRel() + helper.getOrderRel(), data);
 				} catch (e) {
-
 					if (e.code === 22 || e.code === 1014) {
 						console.info('Quota exceeded! Clean ');
 						localStorage.clear();
 					}
 				}
-
 				$(window).trigger('filter', helper.getFilterRel());
 
 				$('.vitrine > .prateleira').remove();
@@ -137,12 +143,16 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						if ($(this).attr('data-rel') && $(this).attr('data-name').match(/[0-9]*Kg/)) {
 							$(this).css('display', 'none');
 						}
+						if ($(this).attr('data-rel') && $(this).attr('data-value').match(/\[(\d+) TO (\d+)\]/)) {
+							$(this).css('display', 'none');
+						}
 					}
 				});
 
 				if ($('.sidebar-filter-submenu li:visible').length === 1) {
 					$('.erase-filter').css('display', 'none');
 				}
+
 				helper.setURL();
 			}
 		}).always(function() {
@@ -159,16 +169,23 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 	};
 
+	/**
+	 *  Clear all filters selected and show the default product list without filters
+	 * */
 	this.clearFilter = function() {
+		// Remove class which defines the first and last value of range
+		$('.filtro-range label').removeClass('firstValue').removeClass('lastValue');
+		helper.setFilterRel('');
 		$('.multi-search-checkbox:checked').prop('checked', false).change();
-		$('.priceRange').remove();
-		self.priceRange();
 		self.specificationRange();
+		self.request();
 	};
 
+	/**
+	 *  Clear button which works on mobile
+	 * */
 	this.mobileClearFilter = function() {
 		var $button = $('<button class="clear-filter">Limpar filtros</div>');
-
 		$filterWrapper.append($button);
 
 		$('.clear-filter').click(function() {
@@ -178,74 +195,10 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	};
 
-	this.priceRange = function() {
-		$options.each(function() {
-
-			var $option = $(this),
-				title = $option.find('h5').text();
-
-			if( title === 'Faixa de preço' ){
-				var $labels = $option.find('label'),
-					firstLabel = $labels.filter(':first-child').find('input').val(),
-					lastLabel = $labels.filter(':last-child').find('input').val();
-
-				sliderInit = $.trim(firstLabel.substring(1, firstLabel.indexOf(' TO')));
-				sliderEnd = $.trim(lastLabel.substring( lastLabel.lastIndexOf(' '), lastLabel.lastIndexOf(']') ));
-
-
-				dust.render('range-price', [], function(err, out) {
-					if (err) {
-						throw new Error('Modal Warranty Dust error: ' + err);
-					}
-
-					$option.find('div').append(out);
-
-				});
-
-
-				$option.addClass('filtro-preco');
-
-				var $range = $('#range')[0];
-
-				sliderOpts.start = [0, parseInt(sliderEnd)];
-				sliderOpts.step = 500;
-				sliderOpts.range = {
-					'min': parseInt(sliderInit),
-					'max': parseInt(sliderEnd)
-				};
-
-				noUiSlider.create($range, sliderOpts);
-
-				$range.noUiSlider.on('update', function(v){
-					sliderStats.start = v[0];
-					sliderStats.end = v[1];
-					//console.log(v[0], v[1]);
-					$('#range').find('.slider__value--from').text('R$ ' + _.formatCurrency(v[0]));
-					$('#range').find('.slider__value--to').text('R$ ' + _.formatCurrency(v[1]));
-				});
-
-
-				$range.noUiSlider.on('change', function(){
-
-					var $checked = $('.multi-search-checkbox:checked');
-
-					helper.setFilterRel('');
-					helper.setFilterRel('&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']');
-
-					$checked.each(function() {
-						helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
-					});
-
-					helper.vitrine.addClass('filtered');
-					self.request();
-				});
-
-			}
-		});
-	};
-
+	/**
+	 * Create a range selector based on category specification
+	*/
 	this.specificationRange = function() {
-
 		//REORDENA HTML ASC LIST = LABELS DO REFINO
 		var sortLabels = function (list) {
 			list.sort(function(a, b) {
@@ -260,7 +213,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		};
 
 		$options.each(function() {
-
 			var $option = $(this),
 				title = $option.find('h5').text();
 
@@ -271,8 +223,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 				$labels.hide();
 
+				// Choose the correct parameters to create the range slider based on category page
 				if($labels.length >= 1){
-
 					if(title === 'Capacidade' && vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
 						rangeId = 'rangeListagem';
 						measure = 'L';
@@ -300,14 +252,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						$('h5:contains("Capacidade") + div').html($labelList);
 					}
 
-					/*if(title === 'CapacidadeTeste' && vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
-						rangeId = 'rangeTeste';
-						measure = 'Kg';
-						var $labelList =  $('h5:contains("CapacidadeTeste") + div label');
-						sortLabels($labelList);
-						$('h5:contains("CapacidadeTeste") + div').html($labelList);
-					}*/
-
 					//MONTA ARRAY COM VALORES UNICOS P/ MONTAR O RANGE
 					$labels.each(function() {
 						var value = $(this).find('input').val(),
@@ -322,18 +266,15 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						return a - b;
 					});
 
+					// Render slider
 					dust.render('range', { rangeId: rangeId}, function(err, out) {
 						if (err) {
 							throw new Error('Modal Warranty Dust error: ' + err);
 						}
-
 						$option.find('div').append(out);
-
 					});
 
-
 					$option.addClass('filtro-range');
-
 					var $range = $('#' + rangeId)[0],
 						steps = (100 / arrayOfLabels.length),
 						actualStep = 0;
@@ -343,7 +284,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					//MONTA CADA STEPS DO RANGE COM BASE NO ARRAYDELABELS ORDENADO
 					$.each(arrayOfLabels, function(i, e) {
 						var actualFinal = '';
-
 						actualStep += steps;
 
 						if(i === 0) {
@@ -356,6 +296,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						}
 					});
 
+					// Set intervals to the slider
 					sliderOpts.start = [arrayOfLabels[0], arrayOfLabels[arrayOfLabels.length - 1]];
 					sliderOpts.snap = true;
 					sliderOpts.step = step;
@@ -364,6 +305,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 					noUiSlider.create($range, sliderOpts);
 
+					// Function to update displayed intervals
 					$range.noUiSlider.on('update', function(v){
 						sliderStats.start = v[0];
 						sliderStats.end = v[1];
@@ -373,26 +315,8 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						$('#rangeBTUs').find('.slider__value--to').text((v[1] * 1000).toLocaleString('pt-BR') + ' ' + measure);
 					});
 
-
-					$range.noUiSlider.on('change', function(){
-						// Add all url parameters to a variable
-						let actualFiltersURL = decodeURIComponent(decodeURIComponent(window.location.search)).match(/fq=specificationFilter([^&]*)/gmi);
-
-						// Remove check from all specification range
-						if (actualFiltersURL) {
-							$option.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
-								if ($(this).find('input').attr('checked', true)) {
-									$(this).find('input').attr('checked', false).change();
-								}
-							});
-
-							self.clearFilterRel();
-						} else {
-							helper.setFilterRel('');
-						}
-
-						//helper.rel = '&fq=P:[' + sliderStats.start + ' TO ' + sliderStats.end + ']';
-
+					// Set the first and last interval values.
+					$range.noUiSlider.on('change', function() {
 						//RANGE ATUAL
 						var thisRange = $('#' + rangeId).parents('.refino');
 
@@ -401,30 +325,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						thisRange.find('input[value^="' + sliderStats.start + '"]').parent().addClass('firstValue');
 						thisRange.find('input[value^="' + sliderStats.end + '"]').parent().addClass('lastValue');
 
-
-						//adiciona na string os valores do range selecionado
-						if ($option.find('label.firstValue').index() === $option.find('label.lastValue').index()) {
-							helper.setFilterRel(helper.getFilterRel() + '&' + $option.find('label.firstValue').children('input').attr('rel'));
-						} else if ($('.refino.filtro-range label').eq(0).hasClass('firstValue') && $('.refino.filtro-range label').eq($('.refino.filtro-range label').length-1).hasClass('lastValue')) {
-							// If selected slider items are the first and last, does not add URL parameters
-							$option.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
-								if ($(this).find('ipnut').attr('checked', true)) {
-									$(this).find('ipnut').attr('checked', false).change();
-								}
-								self.clearFilterRel();
-							});
-						}
-						else {
-							// Add URL parameters for all BTU/capacities between selected items in slider.
-							$option.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
-								if ($(this).find('ipnut').attr('checked', false)) {
-									$(this).find('ipnut').attr('checked', true).change();
-								}
-								helper.setFilterRel(helper.getFilterRel() + '&' + $(this).children('input').attr('rel'));
-							});
-						}
-
-						self.request();
+						self.setFilters();
 					});
 				}
 			}
@@ -433,12 +334,12 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 	this.openFilter = function() {
 		$('.open-filter').click(function() {
-			//console.log('teste');
-			if($('.overlay-filter').length === 0) {
+			if ($('.overlay-filter').length === 0) {
 				$('body').prepend('<div class="overlay-filter"></div>');
 			} else {
 				$('.overlay-filter').removeClass('hide');
 			}
+
 			$filterWrapper.addClass('opened');
 
 			$('.overlay-filter').unbind('click').click(function() {
@@ -452,15 +353,21 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		$('.overlay-filter').addClass('hide');
 	};
 
-
+	/**
+	 * Render submenu, where user can remove filters
+	 * */
 	self.renderSubmenu = function() {
-		var $checked = $('.multi-search-checkbox:checked'),
+		let $checked = $('.multi-search-checkbox:checked'),
+			$range,
+			measure,
 			data = {};
 
 		data.filters = [];
+		data.range = [];
+		data.showEraseAll = false;
 
+		// Find all checked filters
 		$('.sidebar-filter-submenu').remove();
-
 		$checked.each(function(i, e) {
 			var filter = {};
 			if($(e).parents('fieldset').is('.refino-marca')) {
@@ -471,12 +378,35 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			filter.rel = $(e).attr('rel');
 			filter.name = $(e).attr('name');
 
-
 			data.filters.push(filter);
+			data.showEraseAll = true;
 		});
 
-		//console.log('filters', data);
+		// Find the correct parameters based on category page
+		if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+			measure = 'L';
+		} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+			measure = 'Kg';
+		} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0)  {
+			measure = 'BTU/h';
+		} else {
+			measure = 'not';
+		}
 
+		// Find the first and last element in the slider interval
+		$range = self.getRange();
+		if (measure !== 'not' && $range.length > 0 && self.checkRange()) {
+			var range = {};
+			if ($range[0] === $range[1]) {
+				range.value = $range[0] + ' ' + measure;
+			} else {
+				range.value = $range[0] + ' ' + measure + ' a ' + $range[1] + ' ' + measure;
+			}
+			data.range.push(range);
+			data.showEraseAll = true;
+		}
+
+		// Render submenu
 		dust.render('filter-submenu', data, function(err, out) {
 			if (err) {
 				throw new Error('Sidebar Filter Submenu Dust error: ' + err);
@@ -486,9 +416,13 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 	};
 
+	/**
+	 * Add functions to the submenu buttons
+	 */
 
 	self.filterSubmenu = function() {
-		$('.sidebar-filter-submenu li').not('.erase-filter').on('click', function(e) {
+		// Button to remove regular filters
+		$('.sidebar-filter-submenu li').not('.erase-filter').not('.remove-range').on('click', function(e) {
 			e.stopPropagation();
 
 			var rel = $(this).data('rel');
@@ -496,44 +430,158 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 		});
 
+		// Button to remove slider filters
+		$('.remove-range').on('click', function(e) {
+			e.stopPropagation();
+
+			$('.filtro-range label').removeClass('firstValue').removeClass('lastValue');
+			self.setFilters();
+
+			self.specificationRange();
+		});
+
+		// Button to remove all filters
 		$('.erase-filter').on('click', function(e) {
 			e.stopPropagation();
 
 			self.clearFilter();
-
 		});
 	};
 
+	/**
+	 * Function to read all URL parameters and filter according to fq parameters.
+	 * Additionally, also reads ranged filters and display the slider according to the interval
+	 * */
 	this.autoFilter = function() {
-		var filterComponents = helper.autoSortAndFilter(true);
-		if(filterComponents) {
-			if (filterComponents.attr('checked', false)) {
-				filterComponents.attr('checked', true).change();
+		let filterComponents = helper.autoSortAndFilter(true),
+			$range = $('.filtro-range');
+
+		for (let index = 0; index < filterComponents.length; index++) {
+			let element = filterComponents.eq(index);
+
+			// Checks if this is a ranged filter and determines the first and last value from range
+			// Else, if this is a regular filter, just check the respective checkbox
+			if (self.isRangeFilter(element[0])) {
+				if($range.length > 0 && !$range.find('label').hasClass('firstValue')) {
+					element.parent().addClass('firstValue').addClass('lastValue');
+				} else if($range.find('label').hasClass('firstValue')) {
+					filterComponents.eq(index-1).parent().removeClass('lastValue');
+					element.parent().addClass('lastValue');
+				}
+			} else {
+				if (element.attr('checked', false)) {
+					element.attr('checked', true).change();
+				}
 			}
-			self.request();
 		}
+
+		$range.find('label').removeClass('active');
+
+		self.setFilters();
+	};
+
+	this.isRangeFilter = function(elementParameter) {
+		let isQA = ($('body').hasClass('consul')) ? false : true;
+		if (!isQA) {
+			return (elementParameter.outerHTML.includes('specificationFilter_810') || elementParameter.outerHTML.includes('specificationFilter_811') || elementParameter.outerHTML.includes('specificationFilter_814'));
+		} else {
+			return (elementParameter.outerHTML.includes('specificationFilter_74') || elementParameter.outerHTML.includes('specificationFilter_77'));
+		}
+	};
+
+	/**
+	 * Filter according to selected filters
+	 * */
+	this.setFilters = () => {
+		var $checked = $('.multi-search-checkbox:checked'),
+			$option = $('.filtro-range'),
+			rangeId;
+
+		helper.setFilterRel('');
+
+		// Find the correct parameters based on category page
+		if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+			rangeId = 'rangeListagem';
+		} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+			rangeId = 'rangeQuilos';
+		} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0) {
+			rangeId = 'rangeBTUs';
+		} else {
+			rangeId = 'not';
+		}
+
+		// Add to URL regular filters selected
+		$checked.each(function() {
+			helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
+		});
+		// Add to URL ranged filters selected
+		if (rangeId !== 'not' && self.checkRange()) {
+			if ($option.find('label').hasClass('firstValue')) {
+				// Checks if the first value and the last value in the interval are the same.
+				if ($option.find('label.firstValue').index() === $option.find('label.lastValue').index()) {
+					helper.setFilterRel(helper.getFilterRel() + '&' + $option.find('label.firstValue').children('input').attr('rel'));
+				} else {
+					$option.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
+						helper.setFilterRel(helper.getFilterRel() + '&' + $(this).children('input').attr('rel'));
+					});
+				}
+			}
+			helper.vitrine.addClass('filtered');
+
+			let startAndEnd = self.getRange(),
+				$range = $('#' + rangeId)[0];
+
+			// Show on the slider the correct interval values
+			if (startAndEnd.length > 0) {
+				sliderOpts.start = [startAndEnd[0], startAndEnd[1]];
+				$range.noUiSlider.updateOptions(sliderOpts);
+			}
+		}
+
+		self.request();
+	};
+
+	/**
+	 * Check if the first value is also the last interval element and if the last value is also the last interval element on slider. If they are, them it is not filtering anything
+	 * @return true if they are not the same respective value
+	 * @return false if they are the same respective value
+	 */
+	this.checkRange = () => {
+		let isFiltering,
+			$element = $('.filtro-range label');
+
+		($element.first().hasClass('firstValue') && $element.last().hasClass('lastValue')) ? isFiltering = false : isFiltering = true;
+		if (!isFiltering) {
+			$element.removeClass('firstValue').removeClass('lastValue');
+		}
+		return isFiltering;
+	};
+
+	/**
+	 * Get the first and the last selected value on slider
+	 * @return an array containing the first and last value selected by the user
+	 * */
+	this.getRange = () => {
+		let ans = [],
+			$element = $('.filtro-range');
+
+		if ($element.find('label').hasClass('firstValue') ) {
+			// Get the first selected element on range
+			ans.push($element.find('.firstValue')[0].innerText.match(/(\d+)/gmi)[0]);
+
+			// Get the last selected element on range
+			ans.push($element.find('.lastValue')[0].innerText.match(/(\d+)/gmi)[0]);
+		}
+
+		return ans;
 	};
 
 	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
 	$(window).on('calculadora.filter', function(e, res) {
 		helper.setFilterRel(helper.getFilterRel() + res);
-		self.request();
+		helper.setURL();
+		self.autoFilter();
 	});
-
-	/*window.onpopstate = function(e) {
-		window.history.pushState(null, null, e.currentTarget.location.hash);
-		self.autoFilter(e.currentTarget.location.hash);
-	};*/
-
-	this.clearFilterRel = function() {
-		$checked = $('.multi-search-checkbox:checked');
-
-		helper.setFilterRel('');
-
-		$checked.each(function() {
-			helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
-		});
-	};
 
 	this.setup();
 

@@ -11,7 +11,7 @@ Nitro.module('checkout.recurrence', function () {
 	//WHY?!
 	this.setup = function () {
 		self.render();
-		self.autoOpen();
+		// self.autoOpen();
 	};
 
 	this.conditionsRecurrence = () => {
@@ -66,10 +66,49 @@ Nitro.module('checkout.recurrence', function () {
 	};
 
 	/**
+	 * Verifica todas as promoções do produto e retorna o melhor desconto
+	*/
+	this.getRecurrenceDiscount = function() {
+		if (window && window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm ) {
+			const allDiscounts = window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers;
+
+			if(allDiscounts.length <= 0) {
+				return;
+			}
+			else if (allDiscounts.length === 1) {
+				return self.formatRecurrenceDiscountValue(allDiscounts[0].name);
+			}
+
+			const discountValue = allDiscounts.reduce(function(dicountAcumulated, discountActual) {
+				const actual = self.formatRecurrenceDiscountValue(discountActual.name);
+				const accumulated = self.formatRecurrenceDiscountValue(dicountAcumulated.name);
+
+				return actual > accumulated ? actual : accumulated;
+			});
+
+			return discountValue;
+		}
+	};
+
+	/**
+	 * Formata o nome da promoção e extrai apenas o valor do desconto
+	 * @param discount {String} Nome da promoção encontrada
+	*/
+	this.formatRecurrenceDiscountValue = function(discount) {
+		if (discount && discount.match(/_reco-(\w+)_/gmi)) {
+			return Number(discount.match(/_reco-(\w+)_/gmi)[0].match(/\d+/gmi));
+		}
+
+		return false;
+	};
+
+	/**
 	 * Cria modal com CTA de adicionar recorrência
 	 * @param templateData {Object} dados para renderização
 	 */
 	this.recurrenceModal = function (templateData) {
+		templateData.discount = self.getRecurrenceDiscount();
+
 		dust.render('checkout.recurrenceModal', templateData, function (err, out) {
 			if (err) {
 				throw new Error('RecurrenceModal Dust error: ' + err);
@@ -192,6 +231,7 @@ Nitro.module('checkout.recurrence', function () {
 
 				templateData.index = i;
 				templateData.period = selfPeriod;
+				templateData.discount = self.getRecurrenceDiscount();
 
 				if (!templateData.period) {
 					return false;

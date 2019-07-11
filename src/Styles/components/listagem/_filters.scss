@@ -9,12 +9,7 @@
 
 // Exibição de filtro de preço
 .filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco {
-	@include breakpoint('extra-small', 'max') { display: block !important; }
-
-	label {
-		@include breakpoint('extra-small', 'min') { display: none !important; }
-		@include breakpoint('extra-small', 'max') { display: block !important;}
-	}
+	order: -1;
 }
 
 .listagem.busca {
@@ -285,8 +280,8 @@
 }
 .sidebar-filter-submenu {
 	border-bottom: 1px solid $gray;
-	padding-bottom: 10px;
 	margin-bottom: 10px;
+	padding-bottom: 10px;
 	width: 100%;
 
 	ul {
@@ -375,7 +370,8 @@ body.departamento {
 				.search-single-navigator { display: none !important; }
 
 				.search-multiple-navigator {
-					display: block !important;
+					display: flex!important;
+					flex-direction: column;
 
 					fieldset {
 						label {
@@ -409,6 +405,10 @@ body.departamento {
 								transform: translate(0%, -50%);
 								visibility: visible;
 								width: 9px;
+
+								@include breakpoint ('medium', 'max') {
+									left: 20px;
+								}
 							}
 							&.loading {
 								&:after { display: none; }
@@ -422,6 +422,19 @@ body.departamento {
 									top: 2px;
 									transform: initial;
 									width: 18px !important;
+
+									@include breakpoint ('medium', 'max') {
+										left: 18px;
+										top: 12px;
+									}
+								}
+							}
+
+							@include breakpoint('medium', 'max') {
+								padding-left: 45px;
+
+								&:before {
+									left: 20px;
 								}
 							}
 						}
@@ -534,7 +547,7 @@ body.departamento {
 
 	.list-container {
 		display: inline-block;
-		margin-left: 3%;
+		margin-left: 2%;
 		margin-top: 0;
 		padding: 0;
 		width: calc(100% - (260px + 3%)) !important;
@@ -578,5 +591,9 @@ body.departamento {
 		}
 	}
 }
+
+// .filtro-preco {
+// 	display: none!important;
+// }
 
 @import 'components/checkbox';

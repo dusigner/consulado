@@ -4,19 +4,16 @@
 	background: transparent !important;
 	border-top: 1px solid #f1f0f0;
 	flex: 1;
+	line-height: normal;
 	margin: 5px 0 15px;
+	position: relative;
 	text-align: left;
 }
 
 &__name {
-	@include breakpoint(small, 'max') {
-		@include responsiveFont(12, 16, true);
-		font-weight: bold;
-		line-height: 14px;
-	}
+	@include rfs(14);
 	display: inline-block;
 	font-family: 'Open Sans';
-	font-size: 14px;
 	margin-top: 5px;
 
 	&:empty {
@@ -27,12 +24,11 @@
 }
 
 &__sku {
-    font-family: 'consul';
-    font-size: 12px;
-    font-weight: bold;
+	@include rfs(11);
+	font-family: 'consul';
+	font-weight: bold;
 
 	&:empty {
-		@include breakpoint(small, 'max') {	display: none }
 		display: block;
 		height: 16px;
 		margin: 0 auto;

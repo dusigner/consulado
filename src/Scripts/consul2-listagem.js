@@ -8,7 +8,7 @@ require('modules/listagem/filters');
 require('modules/listagem/order-by');
 require('modules/listagem/calculadorabtu');
 require('modules/listagem/comparebar');
-require('modules/slider-banner');
+// require('modules/slider-banner');
 require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
@@ -17,7 +17,7 @@ require('modules/listagem/comparebar');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 'slider-banner', 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
@@ -74,6 +74,13 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 's
 
 
 	var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
+
+	($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
+
+	//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
+	$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb').addClass('show-active');
+	});
 
 	if ($('body').is('.departamento')) {
 
@@ -305,5 +312,9 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 's
 		});
 
 		// $('section.slider').eq(0).find('.pre-title').trigger('click');
+	}
+
+	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
+		$('.heading-banner').addClass('hide');
 	}
 });

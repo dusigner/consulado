@@ -331,10 +331,6 @@
 						@include responsiveFont(14, 16, true);
 						height: 21px;
 
-						/* .txtDe {
-							//@include breakpoint (medium, 'min') { display: none; }
-						} */
-
 						.val { text-decoration: line-through; }
 					}
 
@@ -356,15 +352,15 @@
 
 							@include breakpoint(extra-small, 'max') {
 								border-radius: 50%;
-							    bottom: 200px;
-							    font-size: 12px;
-							    height: 40px;
-							    line-height: 14px;
-							    padding: 6px 5px;
-							    position: absolute;
-							    right: 0;
-							    width: 40px;
-							    z-index: 2;
+								bottom: 200px;
+								font-size: 12px;
+								height: 40px;
+								line-height: 14px;
+								padding: 6px 5px;
+								position: absolute;
+								right: 0;
+								width: 40px;
+								z-index: 2;
 
 								small { vertical-align: initial; }
 
@@ -519,7 +515,7 @@
 												}
 											}
 
-											.adicional { @include responsiveFont(12, 16, true); }
+											// .adicional { @include responsiveFont(12, 16, true); }
 
 											.discount-boleto {
 												padding-top: 0 !important;

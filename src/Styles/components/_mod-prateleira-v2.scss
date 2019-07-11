@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import '_rebase/_root';
+@import '../helpers/rfs';
 
 body.listagem {
 	.main { margin-top: 10px; }
@@ -63,6 +64,47 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 	}
 
+
+	&.product-has-5-off {
+		.discount-boleto {
+			span { display: inline-block!important; }
+		}
+
+		.adicional {
+			strong {
+				&:first-child { display: block; }
+
+				span {
+					&:first-child {
+						text-transform: none;
+
+						&:before { display: none; }
+					}
+				}
+			}
+		}
+	}
+
+	.adicional {
+		.d { display: none; }
+
+		strong {
+			display: block;
+			font-weight: 500;
+
+			&:first-child { display: none; }
+
+			span {
+				&:first-child {
+					text-transform: lowercase;
+
+					&:before { content: 'ou '; }
+				}
+			}
+			.x:before { display: none;}
+		}
+	}
+
 	.detalhes {
 		display: flex;
 		flex: 1;
@@ -73,13 +115,14 @@ body.listagem {
 			display: flex;
 			flex: 1;
 			flex-direction: column;
+			line-height: normal;
 			margin-top: 1em;
 			padding-top: .3em;
 
 			.nome {
+				@include rfs(14);
 				flex: 1;
 				font-family: 'Open Sans';
-				font-size: 14px;
 				font-weight: lighter;
 				margin: 5px 0 15px;
 			}
@@ -87,11 +130,12 @@ body.listagem {
 			// nome modelo prateleira
 			.product_field_770,
 			.product_field_25 {
+				@include breakpoint('small', 'max') { display: none; }
 				font-size: 0; // hide field title
 
 				& > ul li {
+					@include rfs(11);
 					font-family: 'consul';
-					font-size: 12px;
 					font-weight: bold;
 				}
 			}
@@ -106,44 +150,69 @@ body.listagem {
 				}
 
 				.de {
+					@include rfs(15);
+					color: #736c6b;
+					font-weight: normal;
 					margin: 0;
 					text-decoration: line-through;
+
+					.txtDe { display: none;	}
 				}
 
 				.por {
 					margin: 0 0 5px;
 
+					.txtPor,
+					.val { display: none; }
+
 					.off {
 						background-color: #702F8F;
-						border-radius: 100px;
-						color: #FFF;
 						display: none;
-						font-size: 10px;
 						padding: 6px 18px;
+
+						&:not(:empty) + .product-with-5-off { top: 45px; }
+					}
+
+					.off,
+					.product-with-5-off {
+						@include rfs(10);
+						border-radius: 100px;
+						color: #fff;
 						position: absolute;
 						right: 15px;
 						top: 15px;
 						z-index: 1;
+
+						&:empty { display: none; }
+					}
+
+					.product-with-5-off {
+						background-color: #0fb6de;
+						padding: 6px 14px;
+						white-space: nowrap;
 					}
 				}
 			}
 
 			.adicional {
-				color: $c1;
-				font-size: 20px;
-				font-weight: bold;
-				line-height: 1;
-				margin: 15px 0 0;
+				@include rfs(13);
+				color: #736c6b;
+				margin: 0;
 
-				.total-parcelado {
-					display: none;
-				}
+				.total-parcelado { display: none; }
 			}
 
 			.discount-boleto {
-				font-size: 12px;
-				font-weight: normal;
-				margin: 0;
+				@include rfs(24);
+				color: #9aca3c;
+				display: block;
+				font-weight: bold;
+				margin: 0 0 .4em 0;
+
+				span {
+					@include rfs(16);
+					display: none;
+				}
 			}
 
 			.indisponivel {

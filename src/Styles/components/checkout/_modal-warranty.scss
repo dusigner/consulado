@@ -37,23 +37,19 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	top: 2%;
 	width: 100%;
 
-	.close.i-close {
-		right: 15px;
-	}
+	.close.i-close { right: 15px; }
 
 	.modal-warranty__mobile-continue-button {
-		@include breakpoint(medium, 'min') {
-		   display: none
-		}
-
+		@include breakpoint(medium, 'min') { display: none }
 		background-color: $black;
 		bottom: 0;
 		display: flex;
 		flex-direction: column;
-		height: 60px;
+		height: 80px;
 		left: 0;
 		position: fixed;
 		width: 100%;
+		z-index: 55;
 
 		span {
 			display: block;
@@ -192,7 +188,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 		opacity: 0;
 		position: absolute;
 
-		&:hover + label, 
+		&:hover + label,
 		&:checked + label {
 			&::before {
 				@include breakpoint(small, 'max') { border: none; }
@@ -326,7 +322,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			padding: 0 40px;
 			position: relative;
 			width: 100%;
-			
+
 			.erro {
 				background: #f78383;
 				color: #fff;
@@ -338,7 +334,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				text-align: center;
 				top: 15px;
 				width: 180px;
-				
+
 				&:before {
 				   background: #f78383;
 				   content: '';
@@ -356,7 +352,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 					   top: 30px;
 				   }
 			   }
-				
+
 				@include breakpoint (medium , 'max') {
 					left: 50%;
 					margin-left: -90px;
@@ -384,14 +380,12 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				@include breakpoint(860px, 'max') {
 					border-radius: 10px 10px 0 0;
-
 					right: 50%;
 					top: 0;
-					width: 98%;
+					width: calc(100% - 10px);
 					z-index: 9;
 				}
 			}
-
 		}
 
 		.modal__cell {
@@ -400,12 +394,23 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			position: relative;
 			vertical-align: top;
 
-			.show-mobile {
+			// Retirar a garantia de 18 MESES
+			&.months-18 {
 				display: none;
+				visibility: hidden;
+			}
 
-				@include breakpoint(860px, 'max') {
-					display: inline-block;
+			// Retirar a RECOMENDAÇÃO dos 36 meses
+			&.months-24 {
+				.recomendado {
+					display: none;
+					visibility: hidden;
 				}
+			}
+
+			.show-mobile {
+				@include breakpoint(860px, 'max') { display: inline-block; }
+				display: none;
 			}
 
 			&:first-child { width: 100%; }
@@ -419,14 +424,13 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			// }
 
 			&.active {
-
 				.close-warranty {
 					opacity: 1;
 					transform: scale(1);
 					transition: .3s linear all;
 				}
-				
-				.bottom-garantia { 
+
+				.bottom-garantia {
 					strong {
 						color: $white;
 					}
@@ -456,7 +460,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 				}
 
 			}
-			
+
 			&:last-child {
 				.box-opcao-garantia {
 					@include breakpoint(860px, 'max') {
@@ -633,7 +637,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			padding: 17px 20px;
 			white-space: normal;
 			width: 100%;
-			
+
 			@include breakpoint(large, 'max') {
 				min-height: 270px;
 			}
@@ -694,7 +698,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 			position: relative;
 			vertical-align: top;
 			width: 100%;
-			
+
 			@include breakpoint(large, 'max') {
 				min-height: 270px;
 			}
@@ -755,7 +759,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 
 				.show-mobile {
 				   display: none;
-				   
+
 				   @include breakpoint( medium , 'max' ) {
 					   display: block;
 				   }
@@ -1615,7 +1619,7 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 	p {
 		@include breakpoint ('medium', 'max') {
 			font-size: .9rem;
-    		text-align: left;
+			text-align: left;
 		}
 
 		@media (min-width: #{$tablet-l} ){
@@ -1699,8 +1703,8 @@ $b-light: 'Soleto_W_Lt', sans-serif;
 }
 
 .modal-warning-best-option.active {
-    display: block;
-    opacity: 1!important;
+	display: block;
+	opacity: 1!important;
 	transform: translate(100px, -85px) scale(1)!important;
-    visibility: visible;
+	visibility: visible;
 }

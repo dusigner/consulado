@@ -58,9 +58,12 @@
 @import 'components/supermodel';
 @import 'components/breadcrumb';
 @import 'components/notify-me';
-@import 'components/footer';
-@import 'components/servicos';
+// @import 'components/footer';
+// @import 'components/servicos';
 //@import 'components/selos';
+
+@import 'components/footer-2019/footer-2019';
+
 @import 'components/modal-emailCRM';
 @import 'components/chatHome';
 @import 'components/custom-select';
@@ -97,3 +100,21 @@
 // @import 'consul2-bf-2018';
 //
 @import 'components/custom-select';
+
+
+html {
+	body {
+		div#sm-push,
+		div#sm-tracking,
+		div#sm-onsite-sales {
+			@include breakpoint('medium', 'max') {
+				display: none!important;
+				max-height: 0!important;
+				max-width: 0!important;
+				opacity: 0!important;
+				overflow: !important;
+				visibility: hidden!important;
+			}
+		}
+	}
+}

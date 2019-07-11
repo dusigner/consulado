@@ -1,0 +1,31 @@
+@charset 'UTF-8';
+
+.menu-footer {
+	background-color: #424340;
+
+	&-list {
+		@include breakpoint('small', 'min') { align-items: center; }
+		display: flex;
+		flex-wrap: wrap;
+		min-height: 40px;
+
+		&__item {
+			@include breakpoint('small', 'max') {
+				margin: 0;
+				width: 50%;
+			}
+		}
+
+		&__link {
+			@include rfs(12);
+			color: #fff;
+			display: block;
+			font-weight: normal;
+			height: 100%;
+			margin-right: 50px;
+			padding: .8em 0!important;
+
+			&:hover { text-decoration: underline; }
+		}
+	}
+}

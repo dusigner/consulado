@@ -97,7 +97,7 @@ body {
 			line-height: 70px;
 		}
 		.logo {
-			background: transparent url('/arquivos/consul-logo.png') left center no-repeat;
+			background: transparent url('https://whirlpool.vteximg.com.br/arquivos/consul-logo.png') left center no-repeat;
 			background-size: contain;
 			display: inline-block;
 			font-size: 0;
@@ -482,7 +482,8 @@ body {
 @import 'components/checkout/payment';
 @import 'components/checkout/checkout-confirmation';
 @import 'components/checkout/checkout-confirmation-ab-test';
-@import 'components/checkout/footer';
+// @import 'components/checkout/footer';
+@import 'components/checkout/footer-2019';
 @import 'components/checkout/modal-services';
 @import 'components/checkout/modal-phones';
 @import 'components/checkout/modal-login';
@@ -490,8 +491,8 @@ body {
 @import 'components/checkout/recurrence-ab-test';
 // GAE
 @import 'components/checkout/modal-warranty';
-@import 'components/checkout/modal-warranty-intro';
-@import 'components/checkout/modal-warranty-mobile';
+// @import 'components/checkout/modal-warranty-intro';
+// @import 'components/checkout/modal-warranty-mobile';
 
 @import 'components/modalLogin';
 
@@ -594,6 +595,8 @@ body {
 			}
 		}
 	}
+
+	#render-checkout-buttons { border: none; }
 }
 
 // removendo opção de editar dados no checkout
@@ -609,6 +612,7 @@ body[class*='consulempresa'] {
 	padding: 16px 65px 10px 50px !important;
 	position: relative;
 	text-transform: uppercase;
+
 	&:before {
 		@include contentBefore();
 		@include font-size(16px,
@@ -621,6 +625,7 @@ body[class*='consulempresa'] {
 		transform: translateY(-50%) scaleY(1);
 		transition: transform .2s ease-in;
 	}
+
 	&.mobile {
 		padding: 10px 40px !important;
 		&:before {
@@ -643,6 +648,7 @@ body[class*='consulempresa'] {
 		color: #fff;
 		font-size: 0;
 		margin-bottom: 25px;
+
 		.close {
 			color: #747474;
 			font-size: 13px;
@@ -650,18 +656,27 @@ body[class*='consulempresa'] {
 			right: 3px !important;
 			top: 3px !important;
 			z-index: 33;
+
 			&:before {
 				@include icon-get('close-icon');
 			}
 		}
 	}
+
 	.modal-holder {
 		max-width: 665px;
+
 		.text-modal-smartbeer {
 			color: #736c6b;
 			font-size: 18px;
 			padding: 15px;
-			&>h2 {
+
+			& > h2 {
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+					line-height: 18px;
+					padding: 10px 24px;
+				}
 				border: 1px solid #94bc42;
 				border-radius: 61px;
 				display: block;
@@ -669,15 +684,9 @@ body[class*='consulempresa'] {
 				font-weight: normal;
 				line-height: 26px;
 				padding: 10px 30px;
-				strong {
-					color: #94bc42;
-				}
-				@include breakpoint('small',
-				'max') {
-					font-size: 14px;
-					line-height: 18px;
-					padding: 10px 24px;
-				}
+
+				strong { color: #94bc42; }
+
 			}
 			button.close {
 				background: #94bc42;
@@ -689,8 +698,7 @@ body[class*='consulempresa'] {
 				margin: 21px auto 7px;
 				opacity: 1;
 				padding: 6px 23px;
-				@include breakpoint('small',
-				'max') {
+				@include breakpoint('small', 'max') {
 					font-size: 14px;
 					padding: 12px 37px;
 				}
@@ -699,14 +707,9 @@ body[class*='consulempresa'] {
 	}
 }
 
-@include breakpoint('small',
-'max') {
-	.cart-links .btn_smartbeer {
-		display: none !important;
-	}
+@include breakpoint('small', 'max') {
+	.cart-links .btn_smartbeer { display: none !important; }
 }
-
-
 
 body.body-order-form {
 
@@ -762,12 +765,11 @@ body.body-order-form {
 	visibility: hidden;
 }
 
-.overflow-hidden {
-	overflow: hidden;
-}
+.overflow-hidden { overflow: hidden; }
 
 
-.modal__cell:nth-of-type(6) {
-	display: none;
-	visibility: hidden;
-}
+// Em teoria, esconde o modal de socialminer
+// body #sm-bounce {
+// 	display: none!important;
+// 	visibility: hidden!important;
+// }

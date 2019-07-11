@@ -1,6 +1,6 @@
 
 {?products}
-	
+
 {#products}
 <li>
 
@@ -36,7 +36,7 @@
 					</span>
 				</h3>
 				<div class="descricao-prod">
-					
+
 					<div class="price">
 						<p class="de">
 							<span class="txtDe">De: </span> <span class="val">{oldPrice|chaordicCurrency}</span>
@@ -52,14 +52,15 @@
 								<span class="val"> {price|chaordicCurrency}</span>
 							</span>
 						</p>
-						
-						<p class="discount-boleto">1x no cartão de crédito: {price|chaordicCurrency}</p>
+
+						<!-- <p class="discount-boleto">1x no cartão de crédito: {price|chaordicCurrency}</p> -->
+						<p class="discount-boleto">{price|chaordicCurrency}<span> à vista</span></p>
 					</div>
 
 				</div>
 			</a>
 		</div>
-		
+
 	</article>
 </li>
 {/products}

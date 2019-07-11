@@ -56,7 +56,7 @@
 							<label for="warranty{id}" class="box-opcao-garantia anchor-gae">
 
 									<p class="title-garantia">
-										<strong>+ <b>{monthsYear}</b> {?isPrimary}ano{/isPrimary} {?isMiddle}ano e meio{/isMiddle} {?isLast}anos{/isLast} </strong>
+										<strong>+ <b>{monthsYear}</b> {?isPrimary}ano{/isPrimary} {?isMiddle}anos{/isMiddle} {?isLast}anos{/isLast} </strong>
 										<span>Após garantia de fábrica</span>
 										{?isParcel}<strong class='show-mobile'><span>Por {installment}x sem juros de {priceInstallment|intAsCurrency}</span></strong>{/isParcel}
 										<span class='show-mobile'>ou 1x de {fullPrice|intAsCurrency}</span>
@@ -77,7 +77,7 @@
 										<strong>{diffPrice|intAsCurrency}/mês</strong> contrate <strong>{months} meses</strong>
 										<br/>
 									{:else}
-										Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura.
+										Por mais <strong>{priceMonth|intAsCurrency}</strong> por mês.
 									{/isParcel}
 									<!-- de seguro de garantia estendida -->
 								</p>
@@ -90,7 +90,7 @@
 								<div class="modal-warning-best-option modal-warning-best-option--final">
 									<p class="modal-warning-best-option__container">
 										<strong>Melhor custo benefício!</strong><br/>
-										Só <strong>{priceMonth|intAsCurrency}</strong> por mês de cobertura.
+										Só <strong>{priceInstallment|intAsCurrency}</strong> por mês.
 									</p>
 								</div>
 								<!-- /Melhor custo benefício -->
@@ -596,7 +596,7 @@
 	</div>
 </div>
 
-
+<!--
 <div id="modal-intro-gae" class="intro-gae -mobile">
 	<div class="group">
 		<h2>SAIBA COMO PROTEGER SEU<br>PRODUTO POR MAIS TEMPO</h2>
@@ -626,4 +626,4 @@
 	</div>
 
 	<div class="btn-limit"><a href="#" class="btn-confirm">OK, Entendi</a></div>
-</div>
+</div> -->

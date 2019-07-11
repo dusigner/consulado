@@ -1,0 +1,171 @@
+@charset 'UTF-8';
+
+.footer-bottom {
+	background-color: $default-color-gray-dark;
+	border-top: 1px solid #707070;
+	color: #fff;
+	padding: 1.5em 0;
+
+	// [ Checkout ] - Adaptações
+	.footer-2019--checkout & {
+		background-color: #f1f0f0;
+		border-top: 5px solid #e5e3e3;
+		color: #736c6b;
+	}
+
+	.container {
+		@include breakpoint('small', 'min') {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		// [ Checkout ] - Adaptações
+		.footer-2019--checkout & {
+			@include breakpoint('small', 'min') { justify-content: flex-start; }
+			@include breakpoint('small', 'max') {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+			}
+		}
+	}
+
+	&__item {
+		@include breakpoint('small', 'max') { width: 100%!important; }
+		position: relative;
+		width: 30%;
+
+		// [ Checkout ] - Adaptações
+		.footer-2019--checkout & {
+			@include breakpoint('small', 'max') {
+				margin: 0;
+				width: 35%!important;
+			}
+			margin-right: 5%;
+			width: 20%;
+		}
+
+		&:first-child {
+			width: 60%;
+
+			// [ Checkout ] - Adaptações
+			.footer-2019--checkout & {
+				@include breakpoint('small', 'max') {
+					margin-right: 4%;
+					width: 60%!important;
+
+					img { margin-right: 0; }
+				}
+			}
+		}
+
+		&:last-child {
+			.footer-2019--checkout & {
+				@include breakpoint('small', 'max') { width: 100%!important; }
+				margin-right: 0;
+
+				.footer-bottom__title {
+					@include breakpoint('small', 'max') {
+						margin-top: 20px;
+
+						&:before {
+							bottom: inherit;
+							top: -20px;
+						}
+					}
+				}
+
+				// Vtex Logo
+				img {
+					@include breakpoint('small', 'max') {
+						display: block;
+						position: absolute;
+						right: 0;
+						top: 20px;
+					}
+					@include breakpoint('small', 'min') { display: none; }
+				}
+			}
+		}
+
+		img {
+			display: inline-block;
+			margin: 0 20px 20px 0;
+
+			&:last-child {
+				// [ Checkout ] - Adaptações
+				.footer-2019--checkout & { margin-right: 0; }
+			}
+		}
+
+		// Ebit
+		#seloEbit {
+			max-width: 35px;
+
+			img { max-width: 100%; }
+		}
+	}
+
+	// Title
+	&__title {
+		@include rfs(14);
+		display: block;
+		font-weight: normal;
+		margin-bottom: 1.2em;
+		padding-bottom: 1em;
+		position: relative;
+		white-space: nowrap;
+
+		&:before {
+			background-color: $default-color-gray-light;
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 2px;
+			opacity: .5;
+			position: absolute;
+			width: 100%;
+		}
+
+		a {
+			color: #736c6b;
+			text-decoration: none;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(11);
+
+		// [ Checkout ] - Adaptações
+		.footer-2019--checkout & { max-width: 100%; }
+
+		a {
+			color: #fff;
+
+			// [ Checkout ] - Adaptações
+			.footer-2019--checkout & { color: #736c6b; }
+
+			&:hover { text-decoration: underline; }
+		}
+	}
+
+	&__vtex {
+		text-align: right;
+		width: 90%;
+
+		img { display: inline-block; }
+	}
+}
+
+// logo vtex
+.vtex-logo-footer {
+	display: block;
+	margin-top: 1em;
+
+	// [ Checkout ] - Adaptações
+	.footer-2019--checkout & {
+		@include breakpoint('small', 'max') { display: none; }
+	}
+}
+

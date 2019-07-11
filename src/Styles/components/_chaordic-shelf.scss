@@ -1,17 +1,14 @@
 @charset 'UTF-8';
 
+@import '../helpers/rfs';
+
 $self-primary: $green!default;
 $self-secondary: $txt-gray-l!default;
 $self-third: $gray-l!default;
 
 @keyframes contentPlaceholder {
-	from {
-		left: 0%;
-	}
-
-	to {
-		left: 100%;
-	}
+	from { left: 0%; }
+	to { left: 100%; }
 }
 
 div[data-chaordic] {
@@ -100,19 +97,11 @@ div[data-chaordic] {
 
 					&:before { opacity: 1; }
 
-					.flag {
-						opacity: 0;
-					}
+					.flag { opacity: 0; }
 				}
 			}
 		}
-
-		@include breakpoint(small, 'max') {
-			text-align: left;
-
-			.flag { bottom: 60% }
-		}
-
+		@include breakpoint(small, 'max') { text-align: left; }
 		margin: 0 auto;
 		width: 100%;
 
@@ -139,11 +128,13 @@ div[data-chaordic] {
 
 		a { text-decoration: none }
 
-		&__installment-value {
-			@include breakpoint('small', 'max') {
-				font-size: 1.25rem;
-			}
+
+	&.product-has-5-off {
+		.discount-boleto {
+			span { display: inline-block!important; }
 		}
+	}
+
 	}
 
 	&-plus,
@@ -209,13 +200,8 @@ div[data-chaordic] {
 		}
 
 		&-res {
-			@include breakpoint (large, 'max') {
-				width: 21%;
-				@include breakpoint(small, 'max') {
-					background: #f2f2f2;
-					width: 100%;
-				}
-			}
+			@include breakpoint(small, 'max') { width: 100%; }
+			background: #f4f2f1;
 			padding-bottom: 35px;
 			text-align: center;
 			width: 23%;
@@ -249,20 +235,13 @@ div[data-chaordic] {
 			}
 			width: 100/3*1%;
 
-			ul li {
-				// border: 1px solid $self-third;
-				width: 100%!important;
-			}
+			ul li { width: 100%!important; }
 
-			.box-produto {
-				border: 0;
-				min-height: 475px;
-			}
+			.box-produto { border: 0; }
 		}
 
 		&-rec {
 			@include breakpoint(small, 'max') {
-				// margin-top: -20px;
 				width: 100%;
 
 				h2 {
@@ -277,9 +256,7 @@ div[data-chaordic] {
 		}
 	}
 
-	&--history-personalized {
-		margin-bottom: 35px;
-	}
+	&--history-personalized { margin-bottom: 35px; }
 
 	&--history-personalized-ref {
 		@include breakpoint('small', 'max') {
@@ -292,7 +269,6 @@ div[data-chaordic] {
 
 
 		ul {
-			// &.slick-slider { height: 100%; }
 			.slick-track {
 				@include breakpoint('small', 'min') { display: block; }
 			}
@@ -314,7 +290,7 @@ div[data-chaordic] {
 				}
 
 				.shelf-item__info {
-					height: 68px;
+					height: 70px;
 					overflow: hidden;
 				}
 
@@ -327,40 +303,44 @@ div[data-chaordic] {
 				}
 
 				.shelf-item__name.show-mobile {
-					display: none;
-					font-size: 12px;
-					text-align: center;
 					@include breakpoint('small', 'max') { display: block; }
+					display: none;
 				}
 
 				.shelf-item__name.show-desk {
-					font-size: 17px;
 					text-align: left;
 
 					@include breakpoint('small', 'max') { display: none; }
 				}
 
 				.shelf-item__price {
-					@include breakpoint('small', 'max') { font-size: 12px; }
-					font-size: .875rem;
 					margin: 0;
 
-					span.off { display: none!important; }
+					span.off,
+					span.product-with-5-off { display: none!important; }
+				}
+
+				.shelf-item__button { display: none; }
+
+				.shelf-item__price--list.de {
+					a { @include rfs(12); }
 				}
 
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {
 					@include breakpoint('small', 'max') { display: block; }
-					display: none;
 
 					.discount-boleto {
-						@include breakpoint ('small', 'max') {
-							font-size: .625rem;
-							font-weight: 700;
-							margin-top: 5px;
+						@include rfs(16);
+
+						span {
+							@include breakpoint('small', 'min') { display: block; }
+							@include rfs(12);
 						}
 					}
 				}
+
+				.shelf-item__price--installment { @include rfs(11); }
 			}
 		}
 	}
@@ -397,9 +377,9 @@ div[data-chaordic] {
 					font-size: .875rem;
 					margin: 0;
 					text-align: left;
-					span.off {
-						display: none!important;
-					}
+					// span.off {
+					// 	display: none!important;
+					// }
 				}
 				.shelf-item__price--installment,
 				.shelf-item__price--cash {

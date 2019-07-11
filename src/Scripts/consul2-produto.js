@@ -18,7 +18,7 @@ import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/chaordic';
-import 'custom/testeab-entrega';
+import 'components/testeab-entrega';
 // require('modules/product/special-content');
 
 Nitro.controller('produto', [
@@ -144,7 +144,7 @@ Nitro.controller('produto', [
 			$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 			$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
 
-		$showParcelas.text('Ver parcelas');
+		// $showParcelas.text('Ver parcelas');
 
 		$opcoesParcelamento.find('li').each(function () {
 			var $numeroParcelas = $(this).find('span:first-child'),
@@ -365,4 +365,7 @@ Nitro.controller('produto', [
 
 	})(window, document, jQuery);
 
+	$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb').addClass('show-active');
+	});
 });
