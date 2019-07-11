@@ -3,7 +3,6 @@
 var helper = require('modules/filters-helper');
 var noUiSlider = require('vendors/nouislider');
 
-require('Dust/listagem/range-price.html');
 require('Dust/listagem/range.html');
 require('Dust/listagem/filter-submenu.html');
 require('modules/listagem/order-by');
@@ -21,8 +20,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			start: 0,
 			end: 150
 		},
-		sliderInit,
-		sliderEnd,
 		sliderOpts = {
 			connect: true,
 			step: 100,
@@ -35,22 +32,27 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					return Math.round(value);
 				}
 			}
-		},
-		sliderOptsPrice = {
-			connect: true,
-			step: 500,
-			format: {
-				to: function ( value ) {
-					return Math.round(value);
-				},
-				from: function ( value ) {
-					return Math.round(value);
-				}
-			}
 		};
 
 
 	this.setup = function() {
+
+		$options.each(function() {
+			let $option = $(this),
+				title = $option.find('h5').text();
+
+			if( title === 'Faixa de preço' ){
+				$option.addClass('filtro-preco');
+			}
+		});
+
+		let priceInputs = $('.filtro-preco label');
+
+		priceInputs.each(function() {
+			let values = $(this).text().replace('á','à').split(' à '),
+				input = $(this).find('input');
+			$(this).text('R$ ' + values[0] + ' à R$ ' + values[1]).prepend(input);
+		});
 
 		$checkbox.change(function(e) {
 			e.preventDefault();
@@ -69,7 +71,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		self.hideEmpty();
 		self.dropDown();
 		self.mobileClearFilter();
-		self.priceRange();
 		self.specificationRange();
 		self.openFilter();
 		self.autoFilter();
@@ -176,8 +177,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		$('.filtro-range label').removeClass('firstValue').removeClass('lastValue');
 		helper.setFilterRel('');
 		$('.multi-search-checkbox:checked').prop('checked', false).change();
-		$('.priceRange').remove();
-		self.priceRange();
 		self.specificationRange();
 		self.request();
 	};
@@ -203,78 +202,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			self.closeFilter();
 		});
 
-	};
-
-	/**
-	 * Create a range selector by product price
-	*/
-	this.priceRange = function() {
-		$options.each(function() {
-			var $option = $(this),
-				title = $option.find('h5').text();
-
-			if( title === 'Faixa de preço' ){
-				var $labels = $option.find('label'),
-					firstLabel = $labels.filter(':first-child').find('input').val(),
-					lastLabel = $labels.filter(':last-child').find('input').val();
-				sliderInit = $.trim(firstLabel.substring(1, firstLabel.indexOf(' TO')));
-				sliderEnd = $.trim(lastLabel.substring( lastLabel.lastIndexOf(' '), lastLabel.lastIndexOf(']') ));
-
-				dust.render('range-price', [], function(err, out) {
-					if (err) {
-						throw new Error('Modal Warranty Dust error: ' + err);
-					}
-
-					$option.find('div').append(out);
-				});
-
-				$option.addClass('filtro-preco');
-
-				var $range = $('#range')[0];
-
-				sliderOptsPrice.start = [0, parseInt(sliderEnd)];
-				sliderOptsPrice.step = 500;
-				sliderOptsPrice.range = {
-					'min': parseInt(sliderInit),
-					'max': parseInt(sliderEnd)
-				};
-
-				noUiSlider.create($range, sliderOptsPrice);
-
-				$range.noUiSlider.on('update', function(v){
-					sliderStats.start = v[0];
-					sliderStats.end = v[1];
-					$('#range').find('.slider__value--from').text('R$ ' + _.formatCurrency(v[0]));
-					$('#range').find('.slider__value--to').text('R$ ' + _.formatCurrency(v[1]));
-				});
-
-				$range.noUiSlider.on('change', function(){
-					var $checked = $('.multi-search-checkbox:checked');
-
-					$checked.each(function() {
-						helper.setFilterRel(helper.getFilterRel() + '&' + $(this).attr('rel'));
-					});
-
-					var thisRange = $('#range').parents('.refino');
-
-					thisRange.find('label').removeClass('firstValue lastValue');
-
-
-					if (sliderStats.end.toString() === sliderInit) {
-						thisRange.find('input[value^="[' + (sliderStats.start) + ' TO ' + (sliderStats.start + 500) + '"]').parent().addClass('firstValue').addClass('lastValue');
-					} else  if (sliderStats.end.toString() === sliderInit || (sliderStats.start === sliderStats.end)) {
-						thisRange.find('input[value^="[' + (sliderStats.end - 500) + ' TO ' + sliderStats.end + '"]').parent().addClass('firstValue').addClass('lastValue');
-					} else {
-						thisRange.find('input[value^="[' + sliderStats.start + ' TO ' + (sliderStats.start + 500) + '"]').parent().addClass('firstValue');
-						thisRange.find('input[value^="[' + (sliderStats.end - 500) + ' TO ' + sliderStats.end + '"]').parent().addClass('lastValue');
-					}
-
-					helper.vitrine.addClass('filtered');
-					self.setFilters();
-				});
-
-			}
-		});
 	};
 
 	/**
@@ -517,8 +444,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			e.stopPropagation();
 
 			$('.filtro-range label').removeClass('firstValue').removeClass('lastValue');
-			$('.filtro-preco label').removeClass('firstValue').removeClass('lastValue');
-
 			self.setFilters();
 
 			self.specificationRange();
@@ -538,8 +463,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	 * */
 	this.autoFilter = function() {
 		let filterComponents = helper.autoSortAndFilter(true),
-			$range = $('.filtro-range'),
-			$priceRange = $('.filtro-preco');
+			$range = $('.filtro-range');
 
 		for (let index = 0; index < filterComponents.length; index++) {
 			let element = filterComponents.eq(index);
@@ -553,13 +477,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 					filterComponents.eq(index-1).parent().removeClass('lastValue');
 					element.parent().addClass('lastValue');
 				}
-			} 	else if (self.isPriceFilter(element[0])) {
-				if($priceRange.length > 0 && !$priceRange.find('label').hasClass('firstValue')) {
-					element.parent().addClass('firstValue').addClass('lastValue');
-				} else if($priceRange.find('label').hasClass('firstValue')) {
-					filterComponents.eq(index-1).parent().removeClass('lastValue');
-					element.parent().addClass('lastValue');
-				}
 			} else {
 				if (element.attr('checked', false)) {
 					element.attr('checked', true).change();
@@ -568,7 +485,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		}
 
 		$range.find('label').removeClass('active');
-		$priceRange.find('label').removeClass('active');
 
 		self.setFilters();
 	};
@@ -582,17 +498,12 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		}
 	};
 
-	this.isPriceFilter = elementParameter => {
-		return (elementParameter.outerHTML.includes('fq=P:'));
-	};
-
 	/**
 	 * Filter according to selected filters
 	 * */
 	this.setFilters = () => {
 		var $checked = $('.multi-search-checkbox:checked'),
 			$option = $('.filtro-range'),
-			$price = $('.filtro-preco'),
 			rangeId;
 
 		helper.setFilterRel('');
@@ -636,27 +547,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			}
 		}
 
-		if (self.checkPrice()) {
-			if ($price.find('label').hasClass('firstValue')) {
-				// Checks if the first value and the last value in the interval are the same.
-				if ($price.find('label.firstValue').index() === $price.find('label.lastValue').index()) {
-					helper.setFilterRel(helper.getFilterRel() + '&' + $price.find('label.firstValue').children('input').attr('rel'));
-				} else {
-					$price.find('label.firstValue').nextUntil('label.lastValue').add('label.firstValue, label.lastValue').each(function(){
-						helper.setFilterRel(helper.getFilterRel() + '&' + $(this).children('input').attr('rel'));
-					});
-				}
-			}
-			helper.vitrine.addClass('filtered');
-
-			let startAndEnd = self.getPriceRange(),
-				$range = $('#range')[0];
-			if (startAndEnd.length > 0) {
-				sliderOptsPrice.start = [startAndEnd[0], startAndEnd[1]];
-				$range.noUiSlider.updateOptions(sliderOptsPrice);
-			}
-		}
-
 		self.request();
 	};
 
@@ -668,22 +558,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 	this.checkRange = () => {
 		let isFiltering,
 			$element = $('.filtro-range label');
-
-		($element.first().hasClass('firstValue') && $element.last().hasClass('lastValue')) ? isFiltering = false : isFiltering = true;
-		if (!isFiltering) {
-			$element.removeClass('firstValue').removeClass('lastValue');
-		}
-		return isFiltering;
-	};
-
-	/**
-	 * Check if the first value is also the last interval element on price slider and if the last value is also the last interval element on slider. If they are, them it is not filtering anything
-	 * @return true if they are not the same respective value
-	 * @return false if they are the same respective value
-	 */
-	this.checkPrice = () => {
-		let isFiltering,
-			$element = $('.filtro-preco label');
 
 		($element.first().hasClass('firstValue') && $element.last().hasClass('lastValue')) ? isFiltering = false : isFiltering = true;
 		if (!isFiltering) {
@@ -710,25 +584,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 		return ans;
 	};
-
-	/**
-	 * Get the first and the last selected value on slider
-	 * @return an array containing the first and last value selected by the user
-	 * */
-	this.getPriceRange = () => {
-		let ans = [],
-			$element = $('.filtro-preco');
-		if ($element.find('label').hasClass('firstValue') ) {
-			// Get the first selected element on range
-			ans.push($element.find('.firstValue')[0].innerText.match(/(\d+)/gmi)[0]);
-
-			// Get the last selected element on range
-			ans.push($element.find('.lastValue')[0].innerText.match(/(\d+)/gmi)[1]);
-		}
-
-		return ans;
-	};
-
 
 	// ESCUTA CALCULADORA DE BTU E REALIZA FILTRO
 	$(window).on('calculadora.filter', function(e, res) {
