@@ -9,7 +9,7 @@
 					<p class="modal-recurrence__title">Já pensou em adicionar a recorrência e receber um novo produto próximo da data de troca?</p>
 					<div class="modal-recurrence__deadline"> Recomenda-se a troca deste produto a cada&nbsp;
 						{?isOpen}
-						{#period}
+							{#period}
 								{.|recurrenceSemanas}
 							{/period}
 						{:else}
@@ -31,7 +31,13 @@
 								</div>
 							</div>
 						</div>
-						<p class="modal-recurrence__discount">10%</p>
+						<p class="modal-recurrence__discount">
+							{#discount}
+								{discount}%
+							{:else}
+								10%
+							{/discount}
+						</p>
 						<p class="modal-recurrence__discount-text">
 							<strong class="modal-recurrence__discount-highlight">de desconto</strong> nas próximas compras recorrentes*
 						</p>
