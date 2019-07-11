@@ -2,6 +2,8 @@
 // 	border: 1px solid #d0d;
 // }
 
+@import 'libs/toastr';
+
 .cervejeiras-cores {
 	background-color: #fff;
 	overflow: hidden;
@@ -173,3 +175,27 @@
 	}
 }
 
+
+#toast-container {
+	> .toast-info {
+		background-color: rgba(27, 27, 27, .9);
+		background-image: none !important;
+		border-radius: 4px;
+		box-shadow: none;
+		margin-top: 2%;
+		opacity: 1;
+		padding: 12px 25px;
+		> .toast-message {
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: bold;
+			padding: 3px 0;
+		}
+		> .toast-close-button {
+			font-weight: bold;
+			position: relative;
+			right: 0;
+			top: 0;
+		}
+	}
+}
