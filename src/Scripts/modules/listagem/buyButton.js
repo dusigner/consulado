@@ -2,11 +2,15 @@ const setSKUselector = () => {
 	let productBox = $('.list-content article');
 	let skus = productBox.find('.product-insertsku');
 
+	//$('body').addClass('buyButton');
+
 	skus.each(function(index) {
 		let item = skus.eq(index).find('.from-shelf'),
 			skuName = skus.eq(index).find('input[type=checkbox]').attr('name'),
 			sku = skus.eq(index).parents('.detalhes').find('.prod__selectSKU'),
-			productLink = sku.parents('.detalhes');
+			productLink = sku.parents('.detalhes'),
+			produtoIndisponivel = productLink.parents('article').hasClass('semEstoque'),
+			textButton;
 
 		if(sku.children().length === 0) {
 			for (var i = 0; i < item.length; i++) {
@@ -24,9 +28,19 @@ const setSKUselector = () => {
 
 			sku.find('.unavailable').attr('disabled', true);
 
-			productLink.find('.prod-info').after(`
-				<a class="sku_buy -not-selected">Comprar</a>
-			`);
+			if (produtoIndisponivel) {
+				textButton =  'Produto indisponível';
+				productLink.find('.prod-info').after(`
+					<a class="sku_buy -not-available">${textButton}</a>
+				`);
+
+			} else {
+				textButton = 'Comprar';
+				productLink.find('.prod-info').after(`
+					<a class="sku_buy -not-selected">${textButton}</a>
+				`);
+			}
+
 
 			if(sku.find('.available').length === 2) {
 				sku.find('.available').attr('checked', 'checked');
@@ -42,11 +56,12 @@ const setSKUselector = () => {
 				if ($(this).parents('.detalhes').find('.sku_error').length === 0) {
 					let message = `
 									<div class="sku_error">
-										<span class="select-sku"> Selecione uma voltagem </span>
+										<span class="select-sku"> Por favor, <strong>selecione uma voltagem <strong></span>
 									</div>
 								`;
 
-					$(message).insertBefore(productLink.find('.prod__selectSKU'));
+					productLink.find('.prod-info').prepend($(message));
+					productLink.find('.nome, .promo-destaque').addClass('hide');
 				}
 			});
 		}
@@ -54,6 +69,7 @@ const setSKUselector = () => {
 
 	if($('body').hasClass('listagem')) {
 		$('.prod__selectSKU').removeClass('hide');
+		$('.buy-button').removeClass('hide');
 	}
 };
 
