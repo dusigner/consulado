@@ -1,6 +1,6 @@
 const setSKUselector = () => {
-	let productBox = $('.list-content article');
-	let skus = productBox.find('.product-insertsku');
+	let productBox = $('.list-content article'),
+		skus = productBox.find('.product-insertsku');
 
 	//$('body').addClass('buyButton');
 
