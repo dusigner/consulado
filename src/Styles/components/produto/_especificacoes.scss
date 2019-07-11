@@ -3,13 +3,46 @@
 		margin: 0;
 		padding: 10px 0;
 	}
-	background: #e9e9e9;
+	background: #fff;
 	overflow: hidden;
 	padding: 80px 0;
 	text-align: center;
 
 	.slide-none {
 		@include breakpoint('small', 'max') { display: none; }
+	}
+
+	// .container {
+	// 	max-width: 80%;
+	// }
+
+	.measure {
+		&-name {
+			font-size: 1rem;
+			text-align: center;
+		}
+
+		&-line {
+			border-top: 2px solid #ddd;
+			display: block;
+			margin: 10px auto 5px;
+			width: 15%;
+		}
+
+		@include breakpoint(medium, 'max') { @include responsiveFont(50, 16, true); }
+		@include breakpoint(small, 'max') { @include responsiveFont(30, 16, true); }
+		@include responsiveFont(50, 16, true);
+		color: $green;
+		font-weight: 700;
+		text-align: center;
+
+		span {
+			@include breakpoint(small, 'max') { @include responsiveFont(30, 16, true); }
+			@include font-size(30px);
+			color: #736c6b;
+			font-weight: 300;
+			margin-left: 5px;
+		}
 	}
 
 	div[class^='col-'] {
@@ -72,19 +105,33 @@
 	}
 
 	.title {
+		background-color: #f1f0f0;
+		display: none;
+		font-size: 1rem;
+		height: 10%;
+		padding: 20px 0 20px 15px;
+		text-align: left;
+		width: 100%;
+
+
+		@include breakpoint (small, 'max') {
+			display: block;
+		}
+
 		i {
 			@include breakpoint(small, 'max') {
 				display: block;
+				font-size: 1rem;
 				height: 26px;
 				position: absolute;
-				right: 0;
-				top: 5px;
-				transform: rotate(-90deg);
+				right: 30px;
+				top: 20px;
+				transform: translate(10px) rotate(-90deg);
 				width: 26px;
 			}
 			@include vendor(transform, rotate(-90deg));
 			@include vendor(transition, all 300ms ease-in-out);
-			display: none;
+			color: #736c6b;
 		}
 
 		.icon-consul-clipboard {
@@ -96,55 +143,60 @@
 		.title i { @include vendor(transform, rotate(-270deg)); }
 	}
 
-	h3,
-	h4 {
-		@include font-size(14px);
-		text-align: left;
-	}
-
-	h3 {
-		font-weight: 700;
-		margin: 0;
-		padding-right: 15px;
-		text-transform: uppercase;
-	}
-
-	p {
-		font-weight: 200;
-		margin: 0;
-	}
-
 	.topic {
 		&.sparse { margin-top: 40px; }
 
 		.row {
+			display: flex;
+			margin: 0 0 5px;
+
 			@include breakpoint(small, 'max') {
 				border-bottom: 1px solid #ffffff;
-				height: 11px;
+			}
+
+			&.info {
+				display: block;
+
+				.specs {
+					&-title {
+						font-size: 0;
+						width: 100%;
+
+						&:before {
+							border-bottom: 2px solid #9aca3c;
+							content: 'Informações';
+							display: block;
+							font-size: 1rem;
+							font-weight: 700;
+							margin: 40px 0 15px;
+							padding-bottom: 5px;
+							text-align: left;
+						}
+					}
+
+					&-value {
+						font-size: .875rem;
+						font-weight: 100;
+    					padding-right: 20px;
+						text-align: left;
+
+						@include breakpoint(small, 'max') {
+							font-size: .75rem;
+						}
+					}
+				}
 			}
 		}
 
 		li {
 			clear: both;
-			margin-bottom: 12px;
+			margin-bottom: 5px;
 
-			&:first-child {
-				border-bottom: 1px solid #ffffff;
-				height: 11px;
-				margin-bottom: 22px;
 
-				p {
-					background: #e9e9e9;
-					float: right;
-					padding-left: 15px;
-				}
-			}
 
-			&.change {
-				p {
-					display: block;
-					width: 100%;
-				}
+			h3 {
+				font-size: 1rem;
+				text-align: left;
 			}
 		}
 	}
@@ -163,25 +215,49 @@
 			vertical-align: middle;
 		}
 
-		h3 {
-			@include breakpoint(small, 'max') { @include font-size(10px); }
-		}
-
-		p {
-			@include breakpoint(medium, 'max') { @include responsiveFont(50, 16, true); }
-			@include breakpoint(small, 'max') { @include responsiveFont(30, 16, true); }
-			@include responsiveFont(60, 16, true);
-			font-weight: 400;
-
-			span {
-				@include breakpoint(small, 'max') { @include responsiveFont(30, 16, true); }
-				@include font-size(38px);
-			}
-		}
 	}
 
 	// Specs
 	.specs {
+		&-line {
+			border-radius: 2px;
+			border-top: 2px solid $green;
+			display: block;
+			margin-bottom: 15px;
+			width: 100%;
+		}
+
+		&-name {
+			font-size: 1rem;
+			margin-bottom: 5px;
+			text-align: left;
+		}
+
+		&-title {
+			display: inline-block;
+			font-size: .875rem;
+			margin: 0;
+			min-width: 170px;
+			text-align: left;
+			text-transform: capitalize;
+
+			@include breakpoint(small, 'max') {
+				font-size: .75rem;
+			}
+		}
+
+		&-value {
+			display: inline-block;
+			font-size: .875rem;
+			margin: 0;
+			text-align: right;
+			width: 100%;
+
+			@include breakpoint(small, 'max') {
+				font-size: .75rem;
+			}
+		}
+
 		.col-4:last-child ul {
 			position: relative;
 
@@ -197,157 +273,21 @@
 				width: 1100px;
 			}
 		}
+	}
 
-		h3,
-		h4 {
-			@include font-size(16px);
-			background: #e9e9e9;
-			color: $txt-gray;
-			float: left;
-		}
+	.download {
+		background: #fff;
+		border: 1px solid #702f8f;
+		color: #702f8f;
+		font-size: .75rem;
 
-		h4 {
-			@include breakpoint(small, 'max') { padding-right: 15px; }
-			font-weight: 200;
-			margin: 0;
-			max-width: 290px;
-		}
-
-		p {
-			@include breakpoint(small, 'max') {
-				background: #e9e9e9;
-				float: right;
-				padding-left: 15px;
-				text-align: right;
-			}
-			text-align: left;
+		&:hover {
+			background: #702f8f;
+			color: #fff;
 		}
 	}
 }
 
-// Mobile
-body.produto #especificacoes {
-	@include breakpoint('small', 'max') {
-		.container {
-			margin-top: 15px;
-			max-height: 375px;
-			overflow: hidden;
-			padding: 0 0 80px 0;
-			position: relative;
-			transition: max-height 1.2s ease;
-
-			&:before {
-				background-color: #e9e9e9;
-				bottom: 0;
-				content: '';
-				display: block;
-				height: 90px;
-				position: absolute;
-				right: 0;
-				width: 100%;
-				z-index: 1;
-			}
-
-			// Active state
-			&.open--full { max-height: 1600px; }
-		}
-
-		h2.title {
-			display: block;
-			margin: 5px 0;
-			padding: 0 20px;
-			text-align: left;
-			width: 95%;
-		}
-
-		.dimensions,
-		.specs {
-			div[class*='col-'] { width: 100%; }
-
-			h3,
-			h4,
-			p,
-			span { font-size: 16px; }
-
-			h3,
-			h4 {
-				float: none;
-				font-weight: bold;
-			}
-
-			h3,
-			h4,
-			p {
-				display: inline-block;
-			}
-
-			p { text-align: right; }
-
-			span { color: #736c6b; }
-		}
-
-
-		.dimensions {
-			margin-bottom: 0;
-
-			div[class*='col-']:nth-child(odd) { background-color: #fff; }
-
-			h3,
-			h4,
-			p {
-				width: 50%;
-			}
-
-			h3,
-			h4 {
-				font-weight: normal;
-				text-transform: none;
-			}
-
-			p {
-				font-weight: bold;
-				text-align: right;
-			}
-		}
-
-		.specs {
-			padding-top: 5px;
-			text-align: left;
-
-			p {
-				font-size: 12px;
-			}
-
-			div[class*='col-4']:last-child {
-				padding-bottom: 15px;
-
-				li { border: 0; }
-			}
-
-			.info {
-				p {
-					display: block;
-					padding: 5px 0 10px 0;
-					text-align: left;
-				}
-			}
-		}
-
-		.topic {
-			h4 { font-weight: normal; }
-		}
-
-		// BTN Mais especs
-		#mais-especs {
-			bottom: 20px;
-			font-size: 14px;
-			left: 20px;
-			padding: .7em .5em;
-			position: absolute;
-			width: calc(100% - 40px);
-			z-index: 2;
-
-			&:focus { outline: none; }
-		}
-	}
+#mais-especs {
+	display: none;
 }

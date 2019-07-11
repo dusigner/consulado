@@ -10,13 +10,6 @@
 // Exibição de filtro de preço
 .filter-wrapper .departament-nav .menu-departamento .refino.filtro-preco {
 	order: -1;
-
-	@include breakpoint('extra-small', 'max') { display: block !important; }
-
-	label {
-		@include breakpoint('extra-small', 'min') { display: none !important; }
-		@include breakpoint('extra-small', 'max') { display: block !important;}
-	}
 }
 
 .listagem.busca {
@@ -412,6 +405,10 @@ body.departamento {
 								transform: translate(0%, -50%);
 								visibility: visible;
 								width: 9px;
+
+								@include breakpoint ('medium', 'max') {
+									left: 20px;
+								}
 							}
 							&.loading {
 								&:after { display: none; }
@@ -425,6 +422,11 @@ body.departamento {
 									top: 2px;
 									transform: initial;
 									width: 18px !important;
+
+									@include breakpoint ('medium', 'max') {
+										left: 18px;
+										top: 12px;
+									}
 								}
 							}
 
@@ -590,7 +592,8 @@ body.departamento {
 	}
 }
 
-.filtro-preco {
-	display: none!important;
-}
+// .filtro-preco {
+// 	display: none!important;
+// }
+
 @import 'components/checkbox';

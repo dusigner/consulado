@@ -1,36 +1,54 @@
 <div class="row gutters dimensions">
 	<div class="col-3">
-		<h3>Largura</h3>
-		<p>{dimensions.width}
+		<p class="measure">{dimensions.width}
 			<span>cm</span>
 		</p>
+		<span class="measure-line"></span>
+		<h3 class="measure-name">Largura</h3>
 	</div>
 	<div class="col-3">
-		<h3>Altura</h3>
-		<p>{dimensions.height}
+		<p class="measure">{dimensions.height}
 			<span>cm</span>
 		</p>
+		<span class="measure-line"></span>
+		<h3 class="measure-name">Altura</h3>
 	</div>
 	<div class="col-3">
-		<h3>Profundidade</h3>
-		<p>{dimensions.length}
+		<p class="measure">{dimensions.length}
 			<span>cm</span>
 		</p>
+		<span class="measure-line"></span>
+		<h3 class="measure-name">Profundidade</h3>
 	</div>
 	<div class="col-3">
-		<h3>Peso</h3>
-		<p>{dimensions.weigh}
+		<p class="measure">{dimensions.weigh}
 			<span>kg</span>
 		</p>
+		<span class="measure-line"></span>
+		<h3 class="measure-name">Peso</h3>
 	</div>
 </div>
 <div class="row specs gutters">
+	<div class="col-5">
+		<h3 class="specs-name">Itens</h3>
+		<span class="specs-line"></span>
+		<ul class="topic">
+			{#items}
+			<li class="row">
+				<p class="col-6 specs-title">{key}</p>
+				<h4 class="col-6 specs-value">{value}</h4>
+			</li>
+			{/items}
+		</ul>
+	</div>
 	<div class="col-4">
+		<h3 class="specs-name">Especificações</h3>
+		<span class="specs-line"></span>
 		{#specs}
 		<ul class="topic">
 			<li class="row {key}">
-				<h3>{key}</h4>
-				<p>{value}</p>
+				<p class="specs-title">{key}</p>
+				<h4 class="specs-value">{value}</h4>
 			</li>
 		</ul>
 		{/specs}
@@ -86,24 +104,10 @@
 			</li>
 		</ul--> !}
 	</div>
-	<div class="col-4">
+	<div class="col-3">
+		<h3 class="specs-name">Downloads</h3>
+		<span class="specs-line"></span>
 		<ul class="topic">
-			<li>
-				<h3>Itens</h3>
-			</li>
-			{#items}
-			<li class="row">
-				<h4 class="col-6">{key}</h4>
-				<p class="col-6">{value}</p>
-			</li>
-			{/items}
-		</ul>
-	</div>
-	<div class="col-4">
-		<ul class="topic">
-			<li>
-				<h3>Downloads</h3>
-			</li>
 			{#downloads}
 				<li>
 					<a href="{file}" class="primary-button full-width download" target="_blank">{name}</a>
