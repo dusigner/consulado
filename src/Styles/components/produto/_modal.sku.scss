@@ -20,9 +20,11 @@
 }
 
 #vtex-modal-sku {
+	.modal-header { @include rfs(32); }
+
 	.sku-indisponivel {
 		.modal-voltagem {
-			@include responsiveFont(15, 16, true);
+			@include rfs(15);
 			padding: 15px 15px 0 15px;
 		}
 

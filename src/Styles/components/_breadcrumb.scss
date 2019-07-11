@@ -2,6 +2,7 @@ body.categoria,
 body.departamento,
 body.produto {
 	.category-postheader {
+		@include breakpoint('small', 'max') { margin-bottom: 10px; }
 		background: #fcfcfc;
 		border: 1px solid #e3e1e1;
 		margin-bottom: 30px;
