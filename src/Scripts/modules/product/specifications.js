@@ -22,7 +22,7 @@ Nitro.module('specifications', function() {
 		// $body = $('body'),
 
 		specs = {
-			'Mais Informações': 'info',
+			'Mais Informações': 'informações',
 			'Tipo do produto': 'tipo',
 			'Cor': 'cor',
 			'Garantia do Fornecedor (mês)': 'garantia',
@@ -90,8 +90,6 @@ Nitro.module('specifications', function() {
 
 	this.render = function() {
 
-		// console.log('specifications data', data);
-
 		dust.render('specifications', data, function(err, out) {
 			if (err) {
 				throw new Error('Specifications Dust error: ' + err);
@@ -121,7 +119,7 @@ Nitro.module('specifications', function() {
 
 	// ACCORDION SPECIFICATION PRODUCTS
 	var btnSpecs = false;
-	var buttonTemplate = '<button id="mais-especs" class="secondary-button show-extra-small text-uppercase">Ver mais especificações</button>';
+	var buttonTemplate = '<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
 
 	accordionBtnProduct.on('click', function(e) {
 		if ( btnSpecs === false ) {
