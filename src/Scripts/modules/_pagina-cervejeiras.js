@@ -11,6 +11,7 @@ const toastr = require('vendors/toastr');
 		cervejeiras.slider();
 		cervejeiras.selectColor();
 		cervejeiras.copyCupom();
+		cervejeiras.renderSmartBeerShowcase();
 	};
 
 	cervejeiras.slider = () => {
@@ -86,6 +87,20 @@ const toastr = require('vendors/toastr');
 		});
 	};
 
+	cervejeiras.renderSmartBeerShowcase = () => {
+		let productImage = [];
+		$.ajax({
+			url: '/api/catalog_system/pub/products/search/smartbeer carbono',
+			accept: 'application/json',
+			contentType: 'application/json'
+		}).done(function(data) {
+			data[0].items[0].images.forEach(function(index){
+				productImage.push(index.imageUrl);
+			});
+		});
+
+
+	};
 
 	cervejeiras.init();
 })();
