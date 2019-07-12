@@ -18,7 +18,7 @@ require('modules/_pagina-cervejeiras');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 
-Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar' ], function(chaordic) {
+Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /* 'slider-banner', */ 'resultado-busca', 'calculadorabtu' , 'busca-chaordic', 'comparebar'], function(chaordic) {
 	var $body = $('body');
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
@@ -322,4 +322,5 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', /*
 		$('.category-list').addClass('hide');
 		$('.filter-wrapper > p:first-of-type').addClass('hide');
 	}
+
 });
