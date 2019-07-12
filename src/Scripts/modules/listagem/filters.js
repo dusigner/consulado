@@ -234,7 +234,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 				// Choose the correct parameters to create the range slider based on category page
 				if($labels.length >= 1){
-					if(title === 'Capacidade' && vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+					if(title === 'Capacidade' && window.location.href.toLowerCase().indexOf('geladeira---refrigerador') >= 0) {
 						rangeId = 'rangeListagem';
 						measure = 'L';
 
@@ -252,7 +252,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						$('h5:contains("BTUs") + div').html($labelList);
 					}
 
-					if(title === 'Capacidade' && vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+					if(title === 'Capacidade' && window.location.href.toLowerCase().indexOf('lavadora-de-roupas') >= 0) {
 						rangeId = 'rangeQuilos';
 						measure = 'Kg';
 
