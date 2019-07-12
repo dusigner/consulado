@@ -135,10 +135,10 @@ body.busca {
 
 	.order-title-chaordic,
 	.order-title {
-		@include responsiveFont(13, 16, true);
 		color: $orange;
 		cursor: pointer;
 		display: inline;
+		font-size: 0;
 		font-weight: bold;
 		margin: 0;
 		text-align: right;
@@ -146,16 +146,30 @@ body.busca {
 
 		&:first-letter { text-transform: uppercase; }
 
-		span {
+		span.show-desktop {
+			@include responsiveFont(13, 16, true);
 			color: $txt-gray;
 			text-transform: none;
 			@include breakpoint('medium', 'max') { display: none; }
 		}
 
-		em {
+		em.show-desktop {
+			@include responsiveFont(13, 16, true);
 			color: #702F8F;
 			font-style: normal;
 			@include breakpoint('medium', 'max') { display: none; }
+		}
+
+		span.order-show-mobile {
+			@include responsiveFont(13, 16, true);
+			color: #736C6B;
+			display: none;
+			font-size: 12px;
+			text-align: center;
+			text-transform: capitalize;
+			width: 85%;
+
+			@include breakpoint('medium', 'max') { display: inline-block; }
 		}
 
 		&:after {
@@ -169,6 +183,7 @@ body.busca {
 
 			@include breakpoint('medium', 'max') {
 				@include responsiveFont(5, 16, true);
+				margin-bottom: 5px;
 				margin-left: 6px;
 				width: 5%;
 			}
@@ -185,14 +200,12 @@ body.busca {
 			padding: 10px 15px;
 			width: 100%;
 
-			&:before {
-				color: #736C6B;
-				content: 'ordenar por';
-				display: inline-block;
-				font-size: 12px;
-				text-align: center;
-				width: 85%;
-			}
+		}
+	}
+
+	.order-title {
+		@include breakpoint ('medium', 'max') {
+			font-size: 0;
 		}
 	}
 
