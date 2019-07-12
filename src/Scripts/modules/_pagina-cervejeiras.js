@@ -88,7 +88,8 @@ const toastr = require('vendors/toastr');
 	};
 
 	cervejeiras.renderSmartBeerShowcase = () => {
-		let productImage = [];
+		let productImage = [],
+			productDescription = `<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>`;
 		$.ajax({
 			url: '/api/catalog_system/pub/products/search/smartbeer carbono',
 			accept: 'application/json',
@@ -99,7 +100,7 @@ const toastr = require('vendors/toastr');
 			});
 		});
 
-
+		$('.vitrine-smartbeer').find('.product-description').append(productDescription);
 	};
 
 	cervejeiras.init();
