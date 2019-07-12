@@ -1,8 +1,8 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
-import promoDestaque from './_promo-destaque';
-import setSKUselector from './listagem/buyButton';
+import promoDestaque from '../_promo-destaque';
+import setSKUselector from '../listagem/buyButton';
 
 Nitro.module('percentoff', 'buy-button', function() {
 
