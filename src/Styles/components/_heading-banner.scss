@@ -139,12 +139,14 @@
 
 		img {
 			display: block;
-			height: 160px;
-			width: 450px;
+			height: auto;
+			width: auto;
 		}
 	}
 
 	.category-page-top-banner {
+		align-items: flex-end;
+		display: flex;
 		min-height: 160px;
 	}
 }
