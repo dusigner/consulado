@@ -224,3 +224,79 @@
 		}
 	}
 }
+
+.vitrine-smartbeer {
+	background: linear-gradient(90deg, #fff 30%, #F2F2F2 30%);
+	padding: 50px 0;
+	width: 100%;
+
+	h2 {
+	 	display: none!important;
+	}
+
+	.product {
+		&-gallery,
+		&-image,
+		&-details {
+			display: inline-block;
+		}
+
+		&-gallery {
+			width: 20%;
+		}
+
+		&-image {
+			width: 30%;
+		}
+
+		&-details {
+			line-height: 1;
+			width: 25%;
+		}
+
+		&-description-text {
+			@include rfs(26);
+			color: #404636;
+
+			span {
+				color: $green;
+				display: block;
+			}
+		}
+
+		&-name {
+			@include rfs(16);
+			color: #5B5B5B;
+			max-width: 300px;
+		}
+
+		&-price {
+			&-from {
+				@include rfs(16);
+				color: #702F8F;
+				font-weight: 500;
+				line-height: 1;
+				margin: 0;
+				text-decoration: line-through;
+			}
+
+			&-to {
+				@include rfs(30);
+				color: $green;
+				font-weight: bold;
+				line-height: 1;
+				margin: 0;
+
+				span {
+					@include rfs(17);
+				}
+			}
+
+			.adicional {
+				@include rfs(13);
+				color: #736C6B;
+				line-height: 1;
+			}
+		}
+	}
+}

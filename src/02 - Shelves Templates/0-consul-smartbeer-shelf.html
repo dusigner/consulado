@@ -1,0 +1,39 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<div class="smartbeer-showcase">
+	<div class="product-gallery">
+		<ul>
+
+		</ul>
+	</div>
+
+	<div class="product-image">
+		<span class="img backup">$product.GetImageTag(345, 345)</span>
+	</div>
+
+	<div class="product-details">
+		<div class="product-info">
+			<div class="product-description">
+
+			</div>
+
+			<h3 class="product-name">$product.Name</h3>
+
+			<div class="product-price">
+				#if ($product.HasBestPrice)
+					<p class="product-price-from">$product.ListPrice</p>
+				#end
+
+				<p class="product-price-to">$product.BestPrice <span>À vista</span></p>
+
+				<p class="adicional">
+					#if ($product.NumbersOfInstallment > 1)
+						ou $product.BestPrice em até <span>$product.NumbersOfInstallment</span>x de $product.InstallmentValue sem juros
+					#end
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
