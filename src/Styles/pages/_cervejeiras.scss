@@ -3,6 +3,7 @@
 // }
 
 @import 'libs/toastr';
+//@import 'gallery';
 
 .cervejeiras-cores {
 	background-color: #fff;
@@ -227,7 +228,6 @@
 
 .vitrine-smartbeer {
 	background: linear-gradient(90deg, #fff 30%, #F2F2F2 30%);
-	padding: 50px 0;
 	width: 100%;
 
 	h2 {
@@ -235,19 +235,6 @@
 	}
 
 	.product {
-		&-gallery,
-		&-image,
-		&-details {
-			display: inline-block;
-		}
-
-		&-gallery {
-			width: 20%;
-		}
-
-		&-image {
-			width: 30%;
-		}
 
 		&-details {
 			line-height: 1;
@@ -257,6 +244,7 @@
 		&-description-text {
 			@include rfs(26);
 			color: #404636;
+			line-height: 1.2;
 
 			span {
 				color: $green;
@@ -267,7 +255,8 @@
 		&-name {
 			@include rfs(16);
 			color: #5B5B5B;
-			max-width: 300px;
+			font-weight: 400;
+			max-width: 280px;
 		}
 
 		&-price {
@@ -296,7 +285,133 @@
 				@include rfs(13);
 				color: #736C6B;
 				line-height: 1;
+				margin: 5px 0 5px;
 			}
 		}
+
+		&-skuSelector {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			margin-top: 20px;
+			position: relative;
+			white-space: nowrap;
+			width: 40%;
+			z-index: 3;
+		}
+
+		&-sku {
+			&__selector {
+				display: inline-block;
+			}
+
+			&_radio {
+				display: none!important;
+
+				&.unavailable {
+					opacity: .3;
+				}
+
+				&:checked {
+					& + label {
+						font-weight: bold;
+
+						&:before {
+							background-color: #702f8f;
+							border: 2px solid #fff;
+							border-radius: 10px;
+							box-shadow: 0 0 0 2px #702f8f;
+							content: '';
+							display: inline-block;
+							height: 10px;
+							margin: 2px 2px;
+							position: relative;
+							right: 5px;
+							top: 2px;
+							width: 10px;
+						}
+					}
+				}
+			}
+
+			&_title {
+				@include rfs(14);
+				display: inline-block;
+				min-width: 65px;
+
+				&.unavailable {
+					opacity: .3;
+				}
+
+				&:before {
+					border: 1px solid #BBBBBB;
+					border-radius: 10px;
+					content: '';
+					display: inline-block;
+					height: 14px;
+					position: relative;
+					right: 5px;
+					top: 2px;
+					width: 14px;
+				}
+			}
+
+			&_error {
+				background-color: #702F8F;
+				color: #fff;
+				font-size: 11px;
+				margin-bottom: 5%;
+				margin-top: 1%;
+				padding: 10px;
+
+				&:before {
+					border: 15px solid transparent;
+					border-bottom-color: #702F8F;
+					content: '';
+					left: 45%;
+					position: absolute;
+					top: 46%;
+
+					@include breakpoint('extra-large', 'max') {
+						left: 45%;
+						top: 230px;
+
+						@include breakpoint('large', 'max') {
+							left: 45%;
+							top: 255px;
+
+							@include breakpoint('small', 'max') {
+								left: 48%;
+								top: 255px;
+
+								@include breakpoint('extra-small', 'max') {
+									left: 45%;
+									top: 270px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&-buy {
+			background: #9ACA3C;
+			border-radius: 40px;
+			color: #fff;
+			display: block;
+			font-size: 15px;
+			font-weight: 500;
+			margin: 20px 10px 5px;
+			padding: 10px 0;
+			position: relative;
+			text-align: center;
+			width: 50%;
+			z-index: 3;
+		}
+	}
+
+	.smartbeer-shelf {
+		padding: 50px 0;
 	}
 }
