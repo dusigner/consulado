@@ -1,13 +1,15 @@
+'use strict';
+
 const toastr = require('vendors/toastr');
 
-(() => {
-	'use strict';
-
+Nitro.module('cervejeira', function() {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
+	const allSlides = $(
+		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
+	);
 	const coloredBackground = $('.item--cervejeira');
 
 	cervejeiras.init = () => {
@@ -27,7 +29,7 @@ const toastr = require('vendors/toastr');
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
@@ -39,7 +41,7 @@ const toastr = require('vendors/toastr');
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
@@ -50,22 +52,28 @@ const toastr = require('vendors/toastr');
 			infinite: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-			const beforeColor = $(selecaoCoresItems[(currentSlide + 1)]).data('color');
-			const nextColor = $(selecaoCoresItems[(nextSlide + 1)]).data('color');
+		selecaoCores.on('beforeChange', function(
+			event,
+			slick,
+			currentSlide,
+			nextSlide
+		) {
+			const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data(
+				'color'
+			);
+			const nextColor = $(selecaoCoresItems[nextSlide + 1]).data('color');
 
 			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
 			coloredBackground.addClass(`cervejeira--${nextColor}`);
 		});
 	};
-
 
 	/**
 	 * Show a toastr alert with the coupon code
@@ -74,7 +82,8 @@ const toastr = require('vendors/toastr');
 	cervejeiras.couponToastr = code => {
 		jQuery($ => {
 			const windowWidth = $(window).width();
-			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			const position =
+				windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
 
 			toastr.options = {
 				closeButton: true,
@@ -91,7 +100,7 @@ const toastr = require('vendors/toastr');
 				showEasing: 'swing',
 				hideEasing: 'linear',
 				showMethod: 'fadeIn',
-				hideMethod: 'fadeOut',
+				hideMethod: 'fadeOut'
 			};
 			toastr.info(`Código ${code} copiado`);
 		});
@@ -99,7 +108,7 @@ const toastr = require('vendors/toastr');
 
 	cervejeiras.copyCupom = () => {
 		const cupom = $('.cupom').text();
-		$('.category-page-top-banner, .copiar').click((e) => {
+		$('.category-page-top-banner, .copiar').click(e => {
 			e.preventDefault();
 
 			const temp = $('<input>');
@@ -113,28 +122,29 @@ const toastr = require('vendors/toastr');
 			cervejeiras.couponToastr(cupom);
 
 			temp.remove();
-
-
 		});
 	};
 
 	cervejeiras.renderSmartBeerShowcase = () => {
 		let productImage = [],
-			productDescription = `<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>`;
+			productDescription =
+				'<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>';
 		$.ajax({
 			url: '/api/catalog_system/pub/products/search/smartbeer carbono',
 			accept: 'application/json',
 			contentType: 'application/json'
 		}).done(function(data) {
-			data[0].items[0].images.forEach(function(index){
+			data[0].items[0].images.forEach(function(index) {
 				productImage.push(index.imageUrl);
 			});
 		});
 
-		$('.vitrine-smartbeer').find('.product-description').append(productDescription);
+		$('.vitrine-smartbeer')
+			.find('.product-description')
+			.append(productDescription);
 	};
 
 	cervejeiras.init();
-})();
+});
 
 // export default promoDestaque;
