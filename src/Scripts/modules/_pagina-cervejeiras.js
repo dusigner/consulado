@@ -1,11 +1,9 @@
-
+'use strict';
 
 import 'modules/product/gallery';
 const toastr = require('vendors/toastr');
 
-(() => {
-	'use strict';
-
+Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
@@ -144,8 +142,15 @@ const toastr = require('vendors/toastr');
 			let galleryImg = $('.product-image');
 
 			data[0].items[0].images.forEach(function(index){
-				productImage.push(index.imageUrl);
+				let imgTag = $(index.imageTag);
+
+				imgTag.attr('src', window.location.origin + imgTag.attr('src').replace('~','').split('#width#').join('1650').split('#height#').join('1450'));
+				imgTag.attr('width', '1650').attr('height', '1450');
+
+				productImage.push(imgTag);
 			});
+
+			// .split('#width#').join('1650').split('#height#').join('1450');
 
 
 			if (productImage.length > 0) {
@@ -170,15 +175,17 @@ const toastr = require('vendors/toastr');
 				let galleryThumbs = galleryImg.find('.thumbs');
 
 				productImage.forEach(function(index) {
+				//	console.log($(index[0]).eq(0));
 					galleryThumbs.append(`
 						<li>
-							<a rel="${index}" title="Zoom" href="javascript:void(0);" id="botaoZoom" class="ON" zoom="${index}">
-								<img src="${index}">
+							<a rel="${$(index).attr('src')}" title="Zoom" href="javascript:void(0);" id="botaoZoom" class="ON" zoom="${$(index).attr('src')}">
+								${$(index[0])}
 							</a>
 						</li>
 					`);
 				});
 
+			//	gallery.init();
 			}
 
 
@@ -237,4 +244,4 @@ const toastr = require('vendors/toastr');
 	};
 
 	cervejeiras.init();
-})();
+});

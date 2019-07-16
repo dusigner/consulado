@@ -11,6 +11,7 @@ Nitro.module('gallery', function() {
 			$video = $('#caracteristicas h4.Video + table .value-field');
 
 		var newImages = $.map($thumbs, function(item) {
+			console.log(item);
 			var self = $(item);
 			return '<li><a href="' + $.resizeImage(self.attr('rel'), 1000, 1000) + '" class="popup-zoom"><img src="' + $.resizeImage(self.attr('rel'), 420, 420) + '" alt="' + self.find('img').attr('title') + '" width="420" height="420" /></a></li>';
 		});
