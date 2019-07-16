@@ -121,10 +121,11 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 
 	cervejeiras.renderSmartBeerShowcase = () => {
 		let productImage = [],
-			productDescription = `<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>`,
+			productDescription = '<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>',
 			productSkuSelector = $('.smartbeer-showcase').find('.product-skuSelector'),
 			productBox = $('.smartbeer-showcase'),
-			skus = productBox.find('.product-insertsku');
+			skus = productBox.find('.product-insertsku'),
+			galleryImg = $('.product-image');
 
 
 		const setUrlButton = (productLink) => {
@@ -133,63 +134,44 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			skuButton.unbind().removeClass('-not-selected').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
 		};
 
-		$.ajax({
-			//url: '/api/catalog_system/pub/products/search/smartbeer carbono',
-			url: '/api/catalog_system/pub/products/search/Geladeira Consul Bem Estar 437 Litros Branca com Horta em Casa',
-			accept: 'application/json',
-			contentType: 'application/json'
-		}).done(function(data) {
-			let galleryImg = $('.product-image');
+		galleryImg.append(`
+			<div class="prod-galeria text-center">
+				<div class="apresentacao">
+					<div id="setaThumbs"></div>
+						<div id="show">
+							<div id="include">
+								<div id="image" productindex="0">
 
-			data[0].items[0].images.forEach(function(index){
-				let imgTag = $(index.imageTag);
-
-				imgTag.attr('src', window.location.origin + imgTag.attr('src').replace('~','').split('#width#').join('1650').split('#height#').join('1450'));
-				imgTag.attr('width', '1650').attr('height', '1450');
-
-				productImage.push(imgTag);
-			});
-
-			// .split('#width#').join('1650').split('#height#').join('1450');
-
-
-			if (productImage.length > 0) {
-				galleryImg.append(`
-					<div class="prod-galeria text-center">
-						<div class="apresentacao">
-							<div id="setaThumbs"></div>
-								<div id="show">
-									<div id="include">
-										<div id="image" productindex="0">
-
-										</div>
-									</div>
-								<ul class="thumbs">
-
-								</ul>
+								</div>
 							</div>
-						</div>
+						<ul class="thumbs">
+
+						</ul>
 					</div>
-				`);
-
-				let galleryThumbs = galleryImg.find('.thumbs');
-
-				productImage.forEach(function(index) {
-				//	console.log($(index[0]).eq(0));
-					galleryThumbs.append(`
-						<li>
-							<a rel="${$(index).attr('src')}" title="Zoom" href="javascript:void(0);" id="botaoZoom" class="ON" zoom="${$(index).attr('src')}">
-								${$(index[0])}
-							</a>
-						</li>
-					`);
-				});
-
-			//	gallery.init();
-			}
+				</div>
+			</div>
+		`);
 
 
+		productImage.push('/arquivos/smartbeer-frontal.png');
+		productImage.push('/arquivos/smartbeer-lado.png');
+		productImage.push('/arquivos/smartbeer-aberta.png');
+		productImage.push('/arquivos/smartbeer-aberta-2.png');
+
+
+		let galleryThumbs = galleryImg.find('.thumbs');
+
+		productImage.forEach(function(index) {
+			galleryThumbs.append(`
+				<li>
+					<a rel="${index}" title="Zoom" href="javascript:void(0);" id="botaoZoom" class="ON" zoom="${index}">
+						<img src=${index}>
+					</a>
+				</li>
+			`);
 		});
+
+		gallery.init();
 
 		if(productSkuSelector.children().length === 0) {
 			let item = skus.find('.from-shelf'),
@@ -240,7 +222,9 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 		}
 
 
-		$('.vitrine-smartbeer').find('.product-description').append(productDescription);
+		$('.vitrine-smartbeer').find('.product-description').append(productDescription).find('.product-description-text').addClass('-desktop');
+
+		$('.vitrine-smartbeer').find('.smartbeer-showcase').prepend(productDescription).children('.product-description-text').addClass('-mobile');
 	};
 
 	cervejeiras.init();

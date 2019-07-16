@@ -42,29 +42,38 @@
 	}
 
 	.slick-dots {
-		bottom: 25px;
+		display: none!important;
 
-		li {
-			button { background: $gray; }
+		@include breakpoint ('medium', 'max') {
+			display: inline-block!important;
+			top: 100%;
 
-			&.slick-active button {
-				background: $gray-l;
+			li {
+				button { background: $gray; }
 
-				&:after  { border-color: $gray; }
+				&.slick-active button {
+					background: $green;
+
+					&:after  {
+						border: none;
+					}
+				}
 			}
 		}
 	}
 
 	.gallery {
-		@include breakpoint(medium, 'min') { float: right; }
-		@include breakpoint(small, 'max') {
-			display: inline-block;
-			float: right;
-			padding: 0;
-			width: calc(100% - 90px);
+		float: right;
 
-			.slick-arrow { display: none !important; }
+		@include breakpoint(medium, 'max') {
+			float: none;
+
+			button.slick-next.slick-arrow,
+			button.slick-prev.slick-arrow {
+				display: none!important;
+			}
 		}
+
 
 		.slick-prev,
 		.slick-next {
@@ -139,6 +148,10 @@
 						}
 					}
 				}
+
+				@include breakpoint ('medium', 'max') {
+					pointer-events: none;
+				}
 			}
 
 			&.anchor {
@@ -163,11 +176,8 @@
 		max-height: 353px;
 		width: 80px;
 
-		@include breakpoint(small, 'max') {
-			display: inline-block;
-			float: left;
-			max-height: 285px;
-			padding: 0;
+		@include breakpoint('medium', 'max') {
+			display: none;
 		}
 
 		.slick-list {
@@ -178,6 +188,7 @@
 		img {
 			@include breakpoint('small', 'max') { margin: 0; }
 			border: 2px solid $gray;
+			border-radius: 5px;
 			margin: 10px;
 		}
 
