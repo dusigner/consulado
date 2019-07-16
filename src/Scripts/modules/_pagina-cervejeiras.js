@@ -1,5 +1,6 @@
-import 'modules/product/gallery';
 
+
+import 'modules/product/gallery';
 const toastr = require('vendors/toastr');
 
 (() => {
@@ -176,8 +177,6 @@ const toastr = require('vendors/toastr');
 						</li>
 					`);
 				});
-
-
 
 			}
 
