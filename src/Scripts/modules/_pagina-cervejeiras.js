@@ -21,20 +21,9 @@ const toastr = require('vendors/toastr');
 		cervejeiras.changeColorOnSelect();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
-
-
-		$(window).resize(function () {
-			allSlides.slick('resize');
-
-			console.log('resize....');
-		});
-
-		$(window).on('orientationchange', function () {
-			allSlides.slick('resize');
-			console.log('orientationchange....');
-		});
 	};
 
+	// Seleção de cores - Conteúdo
 	cervejeiras.conteudoSlider = () => {
 		cervejeiraConteudoSlider.slick({
 			arrows: false,
@@ -47,6 +36,7 @@ const toastr = require('vendors/toastr');
 		});
 	};
 
+	// Seleção de cores - Cervejeira
 	cervejeiras.slider = () => {
 		cervejeiraSlider.slick({
 			arrows: false,
@@ -59,6 +49,7 @@ const toastr = require('vendors/toastr');
 		});
 	};
 
+	// Seleção de cores - Seleção de cor
 	cervejeiras.selectColor = () => {
 		selecaoCores.slick({
 			asNavFor: allSlides,
@@ -70,6 +61,7 @@ const toastr = require('vendors/toastr');
 		});
 	};
 
+	// Altera a cor do fundo de acordo com a cervejeira selecionada
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
