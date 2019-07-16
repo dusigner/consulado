@@ -10,13 +10,29 @@
 	color: #fff;
 	overflow: hidden;
 
+	img { display: block; }
+
 	.container {
+		@include breakpoint('medium', 'max') { flex-direction: column; }
+		align-items: center;
 		display: flex;
+		justify-content: space-between;
+
+		section { width: 100%; }
 	}
 
 	// Banner
 	&__banner {
-		max-width: 665px;
+		@include breakpoint('medium', 'min') {
+			// border: 2px solid #d0d;
+			max-width: 665px;
+		}
+		// @include breakpoint('medium', 'max') {
+		// 	@include breakpoint('small', 'min') { border: 2px solid #00d; }
+		// }
+		// @include breakpoint('small', 'max') {
+		// 	border: 2px solid #0dd;
+		// }
 
 		p {
 			@include rfs(18);
@@ -24,34 +40,41 @@
 			margin: .5em 0 1.5em 0;
 		}
 
-		img { max-width: 100%; }
+		img {
+			@include breakpoint('medium', 'min') { margin-bottom: -3.2em; }
+			max-width: 100%;
+		}
 	}
 
 	// Title
 	&__title {
 		@include rfs(34);
-		line-height: 120%;
+		line-height: 125%;
 		margin: 1em 0 0 0;
 		text-transform: uppercase;
 	}
 
-
 	// Conteúdo
 	&__conteudo {
-		max-width: 400px;
+		@include breakpoint('medium', 'min') { max-width: 370px; }
 	}
 
 }
 
 .cervejeiras-lista-funcionalidades {
-	background-color: #ccc;
-	margin: 40px;
+	@include breakpoint('medium', 'max') { margin: 1em 0 2em 0; }
+	padding: 1em;
 	width: 100%;
 
 	&__item {
+		@include breakpoint('medium', 'max') { text-align: center; }
 		align-items: center;
 		display: flex;
-		margin: 30px 0;
+		margin-top: 1.2em;
+
+		&:first-child { margin: 0; }
+
+		article { width: 100%; }
 
 		h3 {
 			@include rfs(15);
@@ -63,10 +86,18 @@
 			@include rfs(14);
 			margin: 0;
 		}
+
+		small {
+			@include rfs(10);
+			display: block;
+			font-weight: bold;
+		}
 	}
 
 	&__icon {
+		@include breakpoint('medium', 'max') { display: none; }
 		margin-right: 25px;
+		width: 45px;
 
 		img {
 			max-height: 48px;
@@ -76,9 +107,10 @@
 }
 
 .cervejeiras-cores {
+	@include breakpoint('medium', 'min') { padding: 90px 0 60px 0; }
+	padding: 1em 0;
 	background-color: #fff;
 	overflow: hidden;
-	padding: 90px 0 60px 0;
 	position: relative;
 
 	& > .container {
@@ -191,9 +223,9 @@
 
 	// Text
 	&__text {
+		@include breakpoint('medium', 'min') { line-height: 220%; }
 		@include rfs(13);
 		color: #736C6B;
-		line-height: 220%;
 		margin: 20px 0;
 
 		// Box de seleção de cores
@@ -216,6 +248,8 @@
 	display: flex;
 	position: relative;
 	width: 100%;
+
+	&.slick-slider { padding: 0; }
 }
 
 // Slider

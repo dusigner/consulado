@@ -1,5 +1,6 @@
 /* global $:true, Nitro: true, _:true */
 'use strict';
+require('modules/_pagina-cervejeiras');
 
 require('vendors/vtex-modal');
 
@@ -13,7 +14,6 @@ require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
 require('modules/listagem/comparebar');
-require('modules/_pagina-cervejeiras');
 // require('modules/compare');
 //require('custom/modal.cupom10off');
 //require('modules/filters');

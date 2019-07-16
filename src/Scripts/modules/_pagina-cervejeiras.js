@@ -3,20 +3,36 @@ const toastr = require('vendors/toastr');
 (() => {
 	'use strict';
 
+	// Variables
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
 	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
 	const coloredBackground = $('.item--cervejeira');
+	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
 
+	// Init
 	cervejeiras.init = () => {
+		cervejeiras.listaFuncionalidades();
 		cervejeiras.slider();
 		cervejeiras.conteudoSlider();
 		cervejeiras.selectColor();
 		cervejeiras.changeColorOnSelect();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
+
+
+		$(window).resize(function () {
+			allSlides.slick('resize');
+
+			console.log('resize....');
+		});
+
+		$(window).on('orientationchange', function () {
+			allSlides.slick('resize');
+			console.log('orientationchange....');
+		});
 	};
 
 	cervejeiras.conteudoSlider = () => {
@@ -57,7 +73,7 @@ const toastr = require('vendors/toastr');
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
 			const beforeColor = $(selecaoCoresItems[(currentSlide + 1)]).data('color');
 			const nextColor = $(selecaoCoresItems[(nextSlide + 1)]).data('color');
 
@@ -66,6 +82,15 @@ const toastr = require('vendors/toastr');
 		});
 	};
 
+	cervejeiras.listaFuncionalidades = () => {
+		const widthPage = $(window).width();
+
+		if (widthPage <= 960) {
+			cervejeirasListaFuncionalidades.slick({
+				dots: false,
+			});
+		}
+	};
 
 	/**
 	 * Show a toastr alert with the coupon code
