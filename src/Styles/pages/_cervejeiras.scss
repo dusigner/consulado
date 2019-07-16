@@ -4,6 +4,77 @@
 
 @import 'libs/toastr';
 
+// Funcionalidades cervejeiras
+.cervejeiras-funcionalidades {
+	background-color: #9aca3c;
+	color: #fff;
+	overflow: hidden;
+
+	.container {
+		display: flex;
+	}
+
+	// Banner
+	&__banner {
+		max-width: 665px;
+
+		p {
+			@include rfs(18);
+			color: #303030;
+			margin: .5em 0 1.5em 0;
+		}
+
+		img { max-width: 100%; }
+	}
+
+	// Title
+	&__title {
+		@include rfs(34);
+		line-height: 120%;
+		margin: 1em 0 0 0;
+		text-transform: uppercase;
+	}
+
+
+	// Conteúdo
+	&__conteudo {
+		max-width: 400px;
+	}
+
+}
+
+.cervejeiras-lista-funcionalidades {
+	background-color: #ccc;
+	margin: 40px;
+	width: 100%;
+
+	&__item {
+		align-items: center;
+		display: flex;
+		margin: 30px 0;
+
+		h3 {
+			@include rfs(15);
+			color: #3A3838;
+			margin: 0 0 10px 0;
+		}
+
+		p {
+			@include rfs(14);
+			margin: 0;
+		}
+	}
+
+	&__icon {
+		margin-right: 25px;
+
+		img {
+			max-height: 48px;
+			max-width: 45px;
+		}
+	}
+}
+
 .cervejeiras-cores {
 	background-color: #fff;
 	overflow: hidden;
@@ -26,6 +97,7 @@
 		}
 
 		&.item--cervejeira {
+			@include breakpoint('small', 'max') { padding: 1em 0 3em 0; }
 			align-self: center;
 			margin-left: -25px;
 			margin-right: -25px;
@@ -43,7 +115,6 @@
 					left: -150px;
 					width: 800px;
 				}
-				border: 1px solid #d0d;
 				content: '';
 				display: block;
 				height: 650px;
@@ -57,33 +128,59 @@
 				background-color: #fff;
 			}
 
-			&:after {
-				@include breakpoint('small', 'min') {
-					background: linear-gradient(-270deg, #9a0000 1%, #b51200 50%, #cc2100 100%);
-					left: 50%;
-				}
-				@include breakpoint('small', 'max') {
-					background: linear-gradient(-270deg, #9a0000 1%, #b51200 50%, #cc2100 100%);
-					top: 50%;
-				}
-			}
-
 			img {
-				@include breakpoint('large', 'max') { max-width: 350px; }
+				@include breakpoint('small', 'min') {
+					@include breakpoint('large', 'max') { max-width: 350px; }
+				}
+				@include breakpoint('small', 'max') { max-width: 200px; }
 				display: block;
 				margin: 0 auto;
 				transition: transform .3s ease;
+			}
+		}
+
+		// Fundo Cervejeira Vermelha
+		&.cervejeira--vermelha {
+			&:after {
+				@include breakpoint('small', 'min') { left: 50%; }
+				@include breakpoint('small', 'max') { top: 50%; }
+				background: linear-gradient(-270deg, #9a0000 1%, #b51200 50%, #cc2100 100%);
+			}
+		}
+
+		// Fundo Cervejeira Titanium
+		&.cervejeira--titanium {
+			&:after {
+				@include breakpoint('small', 'min') { left: 50%; }
+				@include breakpoint('small', 'max') { top: 50%; }
+				background: linear-gradient(-270deg, #202020 1%, #373636 50%, #403735 100%);
+			}
+		}
+
+		// Fundo Cervejeira Amarela
+		&.cervejeira--amarela {
+			&:after {
+				@include breakpoint('small', 'min') { left: 50%; }
+				@include breakpoint('small', 'max') { top: 50%; }
+				background: linear-gradient(-270deg, #e4ae1a 1%, #e1b60e 50%, #eccf13 100%);
 			}
 		}
 	}
 
 	// Title
 	&__title {
+		@include breakpoint('small', 'min') { margin: 35px 0 30px 0; }
 		@include rfs(30);
 		line-height: 120%;
-		margin: 35px 0 30px 0;
 
-		span.cor { display: block; }
+		span.cor {
+			display: block;
+			text-transform: capitalize;
+
+			&.cervejeira--vermelha { color: #9a0000; }
+			&.cervejeira--titanium { color: #202020; }
+			&.cervejeira--amarela  { color: #e4ae1a; }
+		}
 
 		// Box de seleção de cores
 		.cor & {
@@ -104,7 +201,21 @@
 	}
 
 	// CTA
-	&__cta { padding: .6em 4em!important; }
+	&__cta {
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+		}
+		padding: .6em 4em!important;
+	}
+}
+
+.cervejeiras-conteudo-slider {
+	@include breakpoint('medium', 'min') { max-width: 360px; }
+	@include breakpoint('medium', 'max') { max-width: 600px; }
+	display: flex;
+	position: relative;
+	width: 100%;
 }
 
 // Slider
@@ -130,13 +241,15 @@
 
 // Seleção de cores
 .cervejeira-selecao-cores__container {
-	// border: 2px solid #0dd;
+	@include breakpoint('small', 'max') {
+		display: none;
+		visibility: hidden;
+	}
 	max-width: 250px;
 	overflow: hidden;
 }
 
 .cervejeira-selecao-cores {
-	// border: 1px solid #dd0;
 	align-items: center;
 	display: flex;
 	margin: 20px auto;
@@ -149,9 +262,7 @@
 		overflow: inherit;
 	}
 
-	.slick-track {
-		align-items: center;
-	}
+	.slick-track { align-items: center; }
 
 	.slick-slide:not(.slick-active) {
 		img { transform: scale(.7); }
@@ -159,8 +270,6 @@
 
 	.slick-prev,
 	.slick-next {
-		// background-color: #ccc;
-		// opacity: .3;
 		height: 100%;
 		width: 100%;
 
@@ -170,7 +279,6 @@
 	}
 
 	.slick-prev { left: -100%; }
-
 	.slick-next { right: -100%; }
 
 	.slick-dots {
@@ -186,9 +294,7 @@
 		}
 	}
 
-
 	&__item {
-		// border: 1px solid #000;
 		min-width: 80px;
 
 		img {

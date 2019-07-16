@@ -4,37 +4,68 @@ const toastr = require('vendors/toastr');
 	'use strict';
 
 	const cervejeiras = {};
-	const slider = $('.cervejeiras-slider');
+	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
+	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
+	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
+	const coloredBackground = $('.item--cervejeira');
 
 	cervejeiras.init = () => {
 		cervejeiras.slider();
+		cervejeiras.conteudoSlider();
 		cervejeiras.selectColor();
+		cervejeiras.changeColorOnSelect();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
 	};
 
-	cervejeiras.slider = () => {
-		slider.slick({
+	cervejeiras.conteudoSlider = () => {
+		cervejeiraConteudoSlider.slick({
 			arrows: false,
-			asNavFor: selecaoCores,
+			asNavFor: allSlides,
+			dots: false,
+			fade: true,
+			initialSlide: 1,
+			slidesToScroll: 1,
+			slidesToShow: 1,
+		});
+	};
+
+	cervejeiras.slider = () => {
+		cervejeiraSlider.slick({
+			arrows: false,
+			asNavFor: allSlides,
 			dots: true,
 			fade: true,
+			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
 		});
 	};
 
 	cervejeiras.selectColor = () => {
 		selecaoCores.slick({
-			asNavFor: slider,
+			asNavFor: allSlides,
 			dots: true,
-			infinite: false,
+			infinite: true,
+			initialSlide: 1,
 			slidesToScroll: 1,
 			slidesToShow: 1,
-			initialSlide: 1
 		});
 	};
+
+	cervejeiras.changeColorOnSelect = () => {
+		const selecaoCoresItems = selecaoCores.find('li');
+
+		selecaoCores.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+			const beforeColor = $(selecaoCoresItems[(currentSlide + 1)]).data('color');
+			const nextColor = $(selecaoCoresItems[(nextSlide + 1)]).data('color');
+
+			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
+			coloredBackground.addClass(`cervejeira--${nextColor}`);
+		});
+	};
+
 
 	/**
 	 * Show a toastr alert with the coupon code
