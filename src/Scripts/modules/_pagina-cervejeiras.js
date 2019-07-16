@@ -8,10 +8,15 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
+	const allSlides = $(
+		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
+	);
 	const coloredBackground = $('.item--cervejeira');
+	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
 
+	// Init
 	cervejeiras.init = () => {
+		cervejeiras.listaFuncionalidades();
 		cervejeiras.slider();
 		cervejeiras.conteudoSlider();
 		cervejeiras.selectColor();
@@ -20,6 +25,7 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 		cervejeiras.renderSmartBeerShowcase();
 	};
 
+	// Seleção de cores - Conteúdo
 	cervejeiras.conteudoSlider = () => {
 		cervejeiraConteudoSlider.slick({
 			arrows: false,
@@ -28,10 +34,11 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
+	// Seleção de cores - Cervejeira
 	cervejeiras.slider = () => {
 		cervejeiraSlider.slick({
 			arrows: false,
@@ -40,10 +47,11 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
+	// Seleção de cores - Seleção de cor
 	cervejeiras.selectColor = () => {
 		selecaoCores.slick({
 			asNavFor: allSlides,
@@ -51,14 +59,15 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			infinite: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1,
+			slidesToShow: 1
 		});
 	};
 
+	// Altera a cor do fundo de acordo com a cervejeira selecionada
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
 			const beforeColor = $(selecaoCoresItems[(currentSlide + 1)]).data('color');
 			const nextColor = $(selecaoCoresItems[(nextSlide + 1)]).data('color');
 
@@ -67,6 +76,15 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 		});
 	};
 
+	cervejeiras.listaFuncionalidades = () => {
+		const widthPage = $(window).width();
+
+		if (widthPage <= 960) {
+			cervejeirasListaFuncionalidades.slick({
+				dots: false,
+			});
+		}
+	};
 
 	/**
 	 * Show a toastr alert with the coupon code
@@ -75,7 +93,8 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 	cervejeiras.couponToastr = code => {
 		jQuery($ => {
 			const windowWidth = $(window).width();
-			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			const position =
+				windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
 
 			toastr.options = {
 				closeButton: true,
@@ -92,7 +111,7 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 				showEasing: 'swing',
 				hideEasing: 'linear',
 				showMethod: 'fadeIn',
-				hideMethod: 'fadeOut',
+				hideMethod: 'fadeOut'
 			};
 			toastr.info(`Código ${code} copiado`);
 		});
@@ -100,7 +119,7 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 
 	cervejeiras.copyCupom = () => {
 		const cupom = $('.cupom').text();
-		$('.category-page-top-banner, .copiar').click((e) => {
+		$('.category-page-top-banner, .copiar').click(e => {
 			e.preventDefault();
 
 			const temp = $('<input>');
@@ -114,8 +133,6 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			cervejeiras.couponToastr(cupom);
 
 			temp.remove();
-
-
 		});
 	};
 

@@ -11,52 +11,74 @@
 	color: #fff;
 	overflow: hidden;
 
+	img { display: block; }
+
 	.container {
+		@include breakpoint('medium', 'max') { flex-direction: column; }
+		align-items: center;
 		display: flex;
+		justify-content: space-between;
+
+		section { width: 100%; }
 	}
 
 	// Banner
 	&__banner {
-		max-width: 665px;
+		@include breakpoint('medium', 'min') {
+			// border: 2px solid #d0d;
+			max-width: 665px;
+		}
+		// @include breakpoint('medium', 'max') {
+		// 	@include breakpoint('small', 'min') { border: 2px solid #00d; }
+		// }
+		// @include breakpoint('small', 'max') {
+		// 	border: 2px solid #0dd;
+		// }
 
 		p {
 			@include rfs(18);
 			color: #303030;
-			margin: .5em 0 1.5em 0;
+			margin: 0.5em 0 1.5em 0;
 		}
 
-		img { max-width: 100%; }
+		img {
+			@include breakpoint('medium', 'min') { margin-bottom: -3.2em; }
+			max-width: 100%;
+		}
 	}
 
 	// Title
 	&__title {
 		@include rfs(34);
-		line-height: 120%;
+		line-height: 125%;
 		margin: 1em 0 0 0;
 		text-transform: uppercase;
 	}
 
-
 	// Conteúdo
 	&__conteudo {
-		max-width: 400px;
+		@include breakpoint('medium', 'min') { max-width: 370px; }
 	}
-
 }
 
 .cervejeiras-lista-funcionalidades {
-	background-color: #ccc;
-	margin: 40px;
+	@include breakpoint('medium', 'max') { margin: 1em 0 2em 0; }
+	padding: 1em;
 	width: 100%;
 
 	&__item {
+		@include breakpoint('medium', 'max') { text-align: center; }
 		align-items: center;
 		display: flex;
-		margin: 30px 0;
+		margin-top: 1.2em;
+
+		&:first-child { margin: 0; }
+
+		article { width: 100%; }
 
 		h3 {
 			@include rfs(15);
-			color: #3A3838;
+			color: #3a3838;
 			margin: 0 0 10px 0;
 		}
 
@@ -64,10 +86,18 @@
 			@include rfs(14);
 			margin: 0;
 		}
+
+		small {
+			@include rfs(10);
+			display: block;
+			font-weight: bold;
+		}
 	}
 
 	&__icon {
+		@include breakpoint('medium', 'max') { display: none; }
 		margin-right: 25px;
+		width: 45px;
 
 		img {
 			max-height: 48px;
@@ -76,14 +106,18 @@
 	}
 }
 
-.cervejeiras-cores {
+.cervejeiras-cores,
+.smartbeer {
+	@include breakpoint('medium', 'min') { padding: 90px 0 60px 0; }
 	background-color: #fff;
 	overflow: hidden;
-	padding: 90px 0 60px 0;
+	padding: 1em 0;
 	position: relative;
 
 	& > .container {
-		@include breakpoint('small', 'max') { flex-direction: column; }
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
+		}
 		display: flex;
 		position: relative;
 	}
@@ -94,11 +128,15 @@
 		z-index: 1;
 
 		&:first-child {
-			@include breakpoint('small', 'min') { text-align: right; }
+			@include breakpoint('small', 'min') {
+				text-align: right;
+			}
 		}
 
 		&.item--cervejeira {
-			@include breakpoint('small', 'max') { padding: 1em 0 3em 0; }
+			@include breakpoint('small', 'max') {
+				padding: 1em 0 3em 0;
+			}
 			align-self: center;
 			margin-left: -25px;
 			margin-right: -25px;
@@ -120,57 +158,94 @@
 				display: block;
 				height: 650px;
 				position: absolute;
-				transition: transform .3s ease;
+				transition: transform 0.3s ease;
 			}
 
 			&:before {
-				@include breakpoint('small', 'min') { right: 50%; }
-				@include breakpoint('small', 'max') { bottom: 50%; }
+				@include breakpoint('small', 'min') {
+					right: 50%;
+				}
+				@include breakpoint('small', 'max') {
+					bottom: 50%;
+				}
 				background-color: #fff;
 			}
 
 			img {
 				@include breakpoint('small', 'min') {
-					@include breakpoint('large', 'max') { max-width: 350px; }
+					@include breakpoint('large', 'max') {
+						max-width: 350px;
+					}
 				}
-				@include breakpoint('small', 'max') { max-width: 200px; }
+				@include breakpoint('small', 'max') {
+					max-width: 200px;
+				}
 				display: block;
 				margin: 0 auto;
-				transition: transform .3s ease;
+				transition: transform 0.3s ease;
 			}
 		}
 
 		// Fundo Cervejeira Vermelha
 		&.cervejeira--vermelha {
 			&:after {
-				@include breakpoint('small', 'min') { left: 50%; }
-				@include breakpoint('small', 'max') { top: 50%; }
-				background: linear-gradient(-270deg, #9a0000 1%, #b51200 50%, #cc2100 100%);
+				@include breakpoint('small', 'min') {
+					left: 50%;
+				}
+				@include breakpoint('small', 'max') {
+					top: 50%;
+				}
+				background: linear-gradient(
+					-270deg,
+					#9a0000 1%,
+					#b51200 50%,
+					#cc2100 100%
+				);
 			}
 		}
 
 		// Fundo Cervejeira Titanium
 		&.cervejeira--titanium {
 			&:after {
-				@include breakpoint('small', 'min') { left: 50%; }
-				@include breakpoint('small', 'max') { top: 50%; }
-				background: linear-gradient(-270deg, #202020 1%, #373636 50%, #403735 100%);
+				@include breakpoint('small', 'min') {
+					left: 50%;
+				}
+				@include breakpoint('small', 'max') {
+					top: 50%;
+				}
+				background: linear-gradient(
+					-270deg,
+					#202020 1%,
+					#373636 50%,
+					#403735 100%
+				);
 			}
 		}
 
 		// Fundo Cervejeira Amarela
 		&.cervejeira--amarela {
 			&:after {
-				@include breakpoint('small', 'min') { left: 50%; }
-				@include breakpoint('small', 'max') { top: 50%; }
-				background: linear-gradient(-270deg, #e4ae1a 1%, #e1b60e 50%, #eccf13 100%);
+				@include breakpoint('small', 'min') {
+					left: 50%;
+				}
+				@include breakpoint('small', 'max') {
+					top: 50%;
+				}
+				background: linear-gradient(
+					-270deg,
+					#e4ae1a 1%,
+					#e1b60e 50%,
+					#eccf13 100%
+				);
 			}
 		}
 	}
 
 	// Title
 	&__title {
-		@include breakpoint('small', 'min') { margin: 35px 0 30px 0; }
+		@include breakpoint('small', 'min') {
+			margin: 35px 0 30px 0;
+		}
 		@include rfs(30);
 		line-height: 120%;
 
@@ -178,9 +253,15 @@
 			display: block;
 			text-transform: capitalize;
 
-			&.cervejeira--vermelha { color: #9a0000; }
-			&.cervejeira--titanium { color: #202020; }
-			&.cervejeira--amarela  { color: #e4ae1a; }
+			&.cervejeira--vermelha {
+				color: #9a0000;
+			}
+			&.cervejeira--titanium {
+				color: #202020;
+			}
+			&.cervejeira--amarela {
+				color: #e4ae1a;
+			}
 		}
 
 		// Box de seleção de cores
@@ -192,13 +273,15 @@
 
 	// Text
 	&__text {
+		@include breakpoint('medium', 'min') { line-height: 220%; }
 		@include rfs(13);
 		color: #736C6B;
-		line-height: 220%;
 		margin: 20px 0;
 
 		// Box de seleção de cores
-		.cor & { color: #fff; }
+		.cor & {
+			color: #fff;
+		}
 	}
 
 	// CTA
@@ -207,16 +290,31 @@
 			display: none;
 			visibility: hidden;
 		}
-		padding: .6em 4em!important;
+		padding: 0.6em 4em !important;
+	}
+}
+
+.smartbeer {
+	background-color: #000;
+	&__item {
+		&:before {
+			display: none;
+		}
 	}
 }
 
 .cervejeiras-conteudo-slider {
-	@include breakpoint('medium', 'min') { max-width: 360px; }
-	@include breakpoint('medium', 'max') { max-width: 600px; }
+	@include breakpoint('medium', 'min') {
+		max-width: 360px;
+	}
+	@include breakpoint('medium', 'max') {
+		max-width: 600px;
+	}
 	display: flex;
 	position: relative;
 	width: 100%;
+
+	&.slick-slider { padding: 0; }
 }
 
 // Slider
@@ -230,13 +328,15 @@
 			display: none;
 			visibility: hidden;
 		}
-		bottom: -25px
+		bottom: -25px;
 	}
 
 	li {
 		margin: 0;
 
-		img { max-width: 300px; }
+		img {
+			max-width: 300px;
+		}
 	}
 }
 
@@ -263,10 +363,14 @@
 		overflow: inherit;
 	}
 
-	.slick-track { align-items: center; }
+	.slick-track {
+		align-items: center;
+	}
 
 	.slick-slide:not(.slick-active) {
-		img { transform: scale(.7); }
+		img {
+			transform: scale(0.7);
+		}
 	}
 
 	.slick-prev,
@@ -274,24 +378,36 @@
 		height: 100%;
 		width: 100%;
 
-		&:before { display: none; }
+		&:before {
+			display: none;
+		}
 
-		&.slick-disabled { display: none!important; }
+		&.slick-disabled {
+			display: none !important;
+		}
 	}
 
-	.slick-prev { left: -100%; }
-	.slick-next { right: -100%; }
+	.slick-prev {
+		left: -100%;
+	}
+	.slick-next {
+		right: -100%;
+	}
 
 	.slick-dots {
 		bottom: -25px;
 
 		li {
 			margin: 0;
-			transform: scale(.6);
+			transform: scale(0.6);
 
-			button:after { border: none; }
+			button:after {
+				border: none;
+			}
 
-			&.slick-active button { background-color: #9aca3c; }
+			&.slick-active button {
+				background-color: #9aca3c;
+			}
 		}
 	}
 
@@ -302,15 +418,14 @@
 			display: block;
 			max-width: 60px;
 			position: relative;
-			transition: transform .3s ease;
+			transition: transform 0.3s ease;
 		}
 	}
 }
 
-
 #toast-container {
 	> .toast-info {
-		background-color: rgba(27, 27, 27, .9);
+		background-color: rgba(27, 27, 27, 0.9);
 		background-image: none !important;
 		border-radius: 4px;
 		box-shadow: none;
@@ -333,12 +448,12 @@
 }
 
 .vitrine-smartbeer {
-	//background: linear-gradient(90deg, #fff 30%, #F2F2F2 30%);
-	background-color: white;
+	background: linear-gradient(90deg, #fff 30%, #f2f2f2 30%);
+	padding: 50px 0;
 	width: 100%;
 
 	h2 {
-	 	display: none!important;
+		display: none !important;
 	}
 
 	.smartbeer-showcase {
@@ -413,7 +528,7 @@
 
 		&-name {
 			@include rfs(16);
-			color: #5B5B5B;
+			color: #5b5b5b;
 			font-weight: 400;
 			max-width: 280px;
 
@@ -430,7 +545,7 @@
 
 			&-from {
 				@include rfs(16);
-				color: #702F8F;
+				color: #702f8f;
 				font-weight: 500;
 				line-height: 1;
 				margin: 0;
@@ -465,7 +580,7 @@
 
 			.adicional {
 				@include rfs(13);
-				color: #736C6B;
+				color: #736c6b;
 				line-height: 1;
 				margin: 5px 0 5px;
 
