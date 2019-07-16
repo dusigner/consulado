@@ -4,6 +4,77 @@
 
 @import 'libs/toastr';
 
+// Funcionalidades cervejeiras
+.cervejeiras-funcionalidades {
+	background-color: #9aca3c;
+	color: #fff;
+	overflow: hidden;
+
+	.container {
+		display: flex;
+	}
+
+	// Banner
+	&__banner {
+		max-width: 665px;
+
+		p {
+			@include rfs(18);
+			color: #303030;
+			margin: .5em 0 1.5em 0;
+		}
+
+		img { max-width: 100%; }
+	}
+
+	// Title
+	&__title {
+		@include rfs(34);
+		line-height: 120%;
+		margin: 1em 0 0 0;
+		text-transform: uppercase;
+	}
+
+
+	// Conteúdo
+	&__conteudo {
+		max-width: 400px;
+	}
+
+}
+
+.cervejeiras-lista-funcionalidades {
+	background-color: #ccc;
+	margin: 40px;
+	width: 100%;
+
+	&__item {
+		align-items: center;
+		display: flex;
+		margin: 30px 0;
+
+		h3 {
+			@include rfs(15);
+			color: #3A3838;
+			margin: 0 0 10px 0;
+		}
+
+		p {
+			@include rfs(14);
+			margin: 0;
+		}
+	}
+
+	&__icon {
+		margin-right: 25px;
+
+		img {
+			max-height: 48px;
+			max-width: 45px;
+		}
+	}
+}
+
 .cervejeiras-cores {
 	background-color: #fff;
 	overflow: hidden;
@@ -140,8 +211,9 @@
 }
 
 .cervejeiras-conteudo-slider {
+	@include breakpoint('medium', 'min') { max-width: 360px; }
+	@include breakpoint('medium', 'max') { max-width: 600px; }
 	display: flex;
-	max-width: 360px;
 	position: relative;
 	width: 100%;
 }

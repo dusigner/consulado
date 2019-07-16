@@ -4,9 +4,10 @@ const toastr = require('vendors/toastr');
 	'use strict';
 
 	const cervejeiras = {};
-	const cervejeiraSlider = $('.cervejeiras-slider');
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
+	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
+	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
 	const coloredBackground = $('.item--cervejeira');
 
 	cervejeiras.init = () => {
@@ -21,7 +22,7 @@ const toastr = require('vendors/toastr');
 	cervejeiras.conteudoSlider = () => {
 		cervejeiraConteudoSlider.slick({
 			arrows: false,
-			asNavFor: selecaoCores,
+			asNavFor: allSlides,
 			dots: false,
 			fade: true,
 			initialSlide: 1,
@@ -33,7 +34,7 @@ const toastr = require('vendors/toastr');
 	cervejeiras.slider = () => {
 		cervejeiraSlider.slick({
 			arrows: false,
-			asNavFor: selecaoCores,
+			asNavFor: allSlides,
 			dots: true,
 			fade: true,
 			initialSlide: 1,
@@ -44,7 +45,7 @@ const toastr = require('vendors/toastr');
 
 	cervejeiras.selectColor = () => {
 		selecaoCores.slick({
-			asNavFor: cervejeiraSlider,
+			asNavFor: allSlides,
 			dots: true,
 			infinite: true,
 			initialSlide: 1,
