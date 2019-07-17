@@ -138,7 +138,6 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 
 	cervejeiras.renderSmartBeerShowcase = () => {
 		let productImage = [],
-			productDescription = '<h3 class="product-description-text">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>',
 			productSkuSelector = $('.smartbeer-showcase').find('.product-skuSelector'),
 			productBox = $('.smartbeer-showcase'),
 			skus = productBox.find('.product-insertsku'),
@@ -151,29 +150,10 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			skuButton.unbind().removeClass('-not-selected').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
 		};
 
-		galleryImg.append(`
-			<div class="prod-galeria text-center">
-				<div class="apresentacao">
-					<div id="setaThumbs"></div>
-						<div id="show">
-							<div id="include">
-								<div id="image" productindex="0">
-
-								</div>
-							</div>
-						<ul class="thumbs">
-
-						</ul>
-					</div>
-				</div>
-			</div>
-		`);
-
-
-		productImage.push('/arquivos/smartbeer-frontal.png');
-		productImage.push('/arquivos/smartbeer-lado.png');
-		productImage.push('/arquivos/smartbeer-aberta.png');
-		productImage.push('/arquivos/smartbeer-aberta-2.png');
+		productImage.push('/arquivos/smartbeer-frontal.png?v=2');
+		productImage.push('/arquivos/smartbeer-lado.png?v=2');
+		productImage.push('/arquivos/smartbeer-aberta.png?v=2');
+		productImage.push('/arquivos/smartbeer-aberta-2.png?v=2');
 
 
 		let galleryThumbs = galleryImg.find('.thumbs');
@@ -211,6 +191,8 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 					`);
 				}
 
+				$('.product-buy').addClass('-not-selected');
+
 				sku.find('.unavailable').attr('disabled', true);
 
 				if(sku.find('.available').length === 2) {
@@ -221,27 +203,17 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 
 				productLink.find('.product-sku_radio').on('change', function () {
 					setUrlButton(productLink);
+					$('.product-sku_error.-desktop').addClass('-hideBallon-desktop');
+					$('.product-sku_error.-mobile').addClass('-hideBallon-mobile');
 				});
 
-				// $('.-not-selected').on('click', function() {
-				// 	if ($(this).parents('.detalhes').find('.sku_error').length === 0) {
-				// 		let message = `
-				// 						<div class="sku_error">
-				// 							<span class="select-sku"> Por favor, <strong>selecione uma voltagem <strong></span>
-				// 						</div>
-				// 					`;
-
-				// 		productLink.find('.prod-info').prepend($(message));
-				// 		productLink.find('.nome, .promo-destaque').addClass('hide');
-				// 	}
-				// });
+				$('.-not-selected').on('click', function() {
+					$('.product-sku_error').slideDown('slow', function() {
+						$('.product-sku_error').removeClass('hide');
+					});
+				});
 			}
 		}
-
-
-		$('.vitrine-smartbeer').find('.product-description').append(productDescription).find('.product-description-text').addClass('-desktop');
-
-		$('.vitrine-smartbeer').find('.smartbeer-showcase').prepend(productDescription).children('.product-description-text').addClass('-mobile');
 	};
 
 	cervejeiras.init();
