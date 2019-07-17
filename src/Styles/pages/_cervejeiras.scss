@@ -1,6 +1,3 @@
-// .pagina-cervejeiras {
-// 	border: 1px solid #d0d;
-// }
 
 @import 'libs/toastr';
 
@@ -23,16 +20,7 @@
 
 	// Banner
 	&__banner {
-		@include breakpoint('medium', 'min') {
-			// border: 2px solid #d0d;
-			max-width: 665px;
-		}
-		// @include breakpoint('medium', 'max') {
-		// 	@include breakpoint('small', 'min') { border: 2px solid #00d; }
-		// }
-		// @include breakpoint('small', 'max') {
-		// 	border: 2px solid #0dd;
-		// }
+		@include breakpoint('medium', 'min') { max-width: 665px; }
 
 		p {
 			@include rfs(18);
@@ -50,7 +38,7 @@
 	&__title {
 		@include rfs(34);
 		line-height: 125%;
-		margin: 1em 0 0 0;
+		margin: 2em 0 0 0;
 		text-transform: uppercase;
 	}
 
@@ -61,7 +49,7 @@
 }
 
 .cervejeiras-lista-funcionalidades {
-	@include breakpoint('medium', 'max') { margin: 1em 0 2em 0; }
+	@include breakpoint('medium', 'max') { margin: 1em 0 3em 0; }
 	padding: 1em;
 	width: 100%;
 
@@ -76,13 +64,13 @@
 		article { width: 100%; }
 
 		h3 {
-			@include rfs(15);
 			color: #3a3838;
+			font-size: 15px;
 			margin: 0 0 10px 0;
 		}
 
 		p {
-			@include rfs(14);
+			font-size: 14px;
 			margin: 0;
 		}
 
@@ -103,6 +91,18 @@
 			max-width: 45px;
 		}
 	}
+
+	.slick-dots {
+		bottom: -5px;
+
+		.slick-active {
+			button {
+				background-color: #4a4d45;
+
+				&:after { display: none; }
+			}
+		}
+	}
 }
 
 .cervejeiras-cores,
@@ -114,9 +114,7 @@
 	position: relative;
 
 	& > .container {
-		@include breakpoint('small', 'max') {
-			flex-direction: column;
-		}
+		@include breakpoint('medium', 'max') { flex-direction: column; }
 		display: flex;
 		position: relative;
 	}
@@ -127,15 +125,13 @@
 		z-index: 1;
 
 		&:first-child {
-			@include breakpoint('small', 'min') {
+			@include breakpoint('medium', 'min') {
 				text-align: right;
 			}
 		}
 
 		&.item--cervejeira {
-			@include breakpoint('small', 'max') {
-				padding: 1em 0 3em 0;
-			}
+			@include breakpoint('medium', 'max') { padding: 1em 0 3em 0; }
 			align-self: center;
 			margin-left: -25px;
 			margin-right: -25px;
@@ -145,11 +141,11 @@
 			// Fundo
 			&:before,
 			&:after {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					top: -22%;
 					width: 1000px;
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					left: -150px;
 					width: 800px;
 				}
@@ -161,22 +157,22 @@
 			}
 
 			&:before {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					right: 50%;
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					bottom: 50%;
 				}
 				background-color: #fff;
 			}
 
 			img {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					@include breakpoint('large', 'max') {
 						max-width: 350px;
 					}
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					max-width: 200px;
 				}
 				display: block;
@@ -188,10 +184,10 @@
 		// Fundo Cervejeira Vermelha
 		&.cervejeira--vermelha {
 			&:after {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					left: 50%;
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					top: 50%;
 				}
 				background: linear-gradient(
@@ -206,10 +202,10 @@
 		// Fundo Cervejeira Titanium
 		&.cervejeira--titanium {
 			&:after {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					left: 50%;
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					top: 50%;
 				}
 				background: linear-gradient(
@@ -224,10 +220,10 @@
 		// Fundo Cervejeira Amarela
 		&.cervejeira--amarela {
 			&:after {
-				@include breakpoint('small', 'min') {
+				@include breakpoint('medium', 'min') {
 					left: 50%;
 				}
-				@include breakpoint('small', 'max') {
+				@include breakpoint('medium', 'max') {
 					top: 50%;
 				}
 				background: linear-gradient(
@@ -242,7 +238,7 @@
 
 	// Title
 	&__title {
-		@include breakpoint('small', 'min') {
+		@include breakpoint('medium', 'min') {
 			margin: 35px 0 30px 0;
 		}
 		@include rfs(30);
@@ -285,7 +281,7 @@
 
 	// CTA
 	&__cta {
-		@include breakpoint('small', 'max') {
+		@include breakpoint('medium', 'max') {
 			display: none;
 			visibility: hidden;
 		}
@@ -322,26 +318,42 @@
 	width: 100%;
 	z-index: 1;
 
+	// Slider dots
 	.slick-dots {
 		@include breakpoint('medium', 'min') {
 			display: none;
 			visibility: hidden;
 		}
-		bottom: -25px;
+		bottom: -35px;
+
+		.slick-active {
+			button {
+				@include breakpoint('medium', 'max') {
+					background-color: #fff;
+
+					&:after {
+						background-color: #fff;
+						border-color: #fff;
+					}
+				}
+			}
+		}
+
+		#slick-slide00 button { background-color: #d81111; }
+		#slick-slide01 button { background-color: #202020; }
+		#slick-slide02 button { background-color: #f1e20c; }
 	}
 
 	li {
 		margin: 0;
 
-		img {
-			max-width: 300px;
-		}
+		img { max-width: 300px; }
 	}
 }
 
 // Seleção de cores
 .cervejeira-selecao-cores__container {
-	@include breakpoint('small', 'max') {
+	@include breakpoint('medium', 'max') {
 		display: none;
 		visibility: hidden;
 	}
