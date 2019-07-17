@@ -34,7 +34,18 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			responsive: [
+				{
+					breakpoint: 960,
+					settings: {
+						infinite: false,
+						initialSlide: 1,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+					}
+				}
+			]
 		});
 	};
 
@@ -47,7 +58,17 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			fade: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			responsive: [
+				{
+					breakpoint: 960,
+					settings: {
+						initialSlide: 1,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+					}
+				}
+			]
 		});
 	};
 
@@ -59,7 +80,17 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			infinite: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
-			slidesToShow: 1
+			slidesToShow: 1,
+			responsive: [
+				{
+					breakpoint: 960,
+					settings: {
+						infinite: true,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+					}
+				}
+			]
 		});
 	};
 
@@ -76,14 +107,23 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 		});
 	};
 
-	cervejeiras.listaFuncionalidades = () => {
-		const widthPage = $(window).width();
 
-		if (widthPage <= 960) {
-			cervejeirasListaFuncionalidades.slick({
-				dots: false,
-			});
-		}
+	cervejeiras.listaFuncionalidades = () => {
+		$(window).resize(() => {
+			const widthPage = $(window).width();
+
+			if (widthPage < 960) {
+				cervejeirasListaFuncionalidades.not('.slick-initialized').slick({
+					arrows: false,
+					dots: true,
+				});
+			}
+			else {
+				if (cervejeirasListaFuncionalidades.hasClass('slick-initialized')) {
+					cervejeirasListaFuncionalidades.slick('unslick');
+				}
+			}
+		});
 	};
 
 	/**
