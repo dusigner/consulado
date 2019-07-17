@@ -46,14 +46,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			}
 		});
 
-		let priceInputs = $('.filtro-preco label');
-
-		priceInputs.each(function() {
-			let values = $(this).text().replace('á','à').split(' à '),
-				input = $(this).find('input');
-			$(this).text('R$ ' + values[0] + ' à R$ ' + values[1]).prepend(input);
-		});
-
 		$checkbox.change(function(e) {
 			e.preventDefault();
 
