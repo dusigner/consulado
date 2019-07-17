@@ -40,7 +40,7 @@ Nitro.controller('produto', [
 	'upsell',
 	'deliveryTime',
 	'recurrence' /*, 'special-content'*/
-], function (chaordic, testeabEntrega) {
+], function (chaordic, testeabEntrega, skuFetch, gallery) {
 	var self = this,
 		$body = $('body');
 
@@ -48,6 +48,8 @@ Nitro.controller('produto', [
 
 	//INICIA CHAMADA DAS VITRINES CHAORDIC
 	chaordic.init('product', window.skuJson.productId);
+
+	gallery.init();
 
 	// Teste AB
 	var urlTesteAb = window.location.search;

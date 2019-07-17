@@ -1,5 +1,6 @@
 
 @import 'libs/toastr';
+@import 'gallery';
 
 // Funcionalidades cervejeiras
 .cervejeiras-funcionalidades {
@@ -467,43 +468,93 @@
 		display: none !important;
 	}
 
-	.product {
-		&-gallery,
-		&-image,
-		&-details {
-			display: inline-block;
-		}
+	.smartbeer-showcase {
+		display: flex;
+		justify-content: space-between;
 
-		&-gallery {
-			width: 20%;
+		@include breakpoint ('medium', 'max') {
+			flex-direction: column;
 		}
+	}
+
+	.product {
 
 		&-image {
-			width: 30%;
+
+			width: 55%;
+
+			@include breakpoint ('medium', 'max') {
+				margin: 0 auto 20px;
+				width: 60%;
+
+				@include breakpoint('small', 'max') {
+					margin: 0 auto 20px;
+					width: 80%;
+				}
+
+			}
 		}
 
 		&-details {
 			line-height: 1;
-			width: 25%;
+			width: 40%;
+
+			@include breakpoint ('medium', 'max') {
+				border-top: 1px solid #f1f0f0;
+				margin: 60px auto 0;
+				width: 80%;
+
+				@include breakpoint ('small', 'max') {
+					margin: 50px auto 0;
+				}
+
+			}
 		}
 
 		&-description-text {
+			&.-mobile {display: none}
+
 			@include rfs(26);
 			color: #404636;
+			line-height: 1.2;
 
 			span {
 				color: $green;
 				display: block;
+			}
+
+			@include breakpoint ('medium', 'max') {
+				&.-desktop {display: none}
+				&.-mobile {display: block}
+
+				color: #736C6B;
+				font-size: 20px;
+				margin-top: 0;
+				width: 100%;
+
+				span {
+					display: inline-block;
+				}
 			}
 		}
 
 		&-name {
 			@include rfs(16);
 			color: #5b5b5b;
-			max-width: 300px;
+			font-weight: 400;
+			max-width: 280px;
+
+			@include breakpoint ('medium', 'max') {
+				color: #736C6B;
+				font-size: 15px;
+				font-weight: bold;
+				max-width: 70%;
+			}
 		}
 
 		&-price {
+			line-height: 1;
+
 			&-from {
 				@include rfs(16);
 				color: #702f8f;
@@ -511,6 +562,10 @@
 				line-height: 1;
 				margin: 0;
 				text-decoration: line-through;
+
+				@include breakpoint ('medium', 'max') {
+					margin-bottom: 10px;
+				}
 			}
 
 			&-to {
@@ -523,13 +578,169 @@
 				span {
 					@include rfs(17);
 				}
+
+
+				@include breakpoint ('medium', 'max') {
+					font-size: 20px;
+					margin-bottom: 10px;
+
+					span {
+						font-size: 20px;
+					}
+				}
 			}
 
 			.adicional {
 				@include rfs(13);
 				color: #736c6b;
 				line-height: 1;
+				margin: 5px 0 5px;
+
+				@include breakpoint ('medium', 'max') {
+					font-size: 10px;
+				}
 			}
 		}
+
+		&-skuSelector {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			margin-top: 20px;
+			position: relative;
+			white-space: nowrap;
+			width: 40%;
+			z-index: 3;
+
+			@include breakpoint ('medium', 'max') {
+				bottom: 180px;
+				display: block;
+				margin: 0 auto;
+				position: relative;
+				text-align: center;
+				width: 80%;
+				z-index: 3;
+			}
+		}
+
+		&-sku {
+			&__selector {
+				display: inline-block;
+			}
+
+			&_radio {
+				display: none!important;
+
+				&.unavailable {
+					opacity: .3;
+				}
+
+				&:checked {
+					& + label {
+						font-weight: bold;
+
+						&:before {
+							background-color: #702f8f;
+							border: 2px solid #fff;
+							border-radius: 10px;
+							box-shadow: 0 0 0 2px #702f8f;
+							content: '';
+							display: inline-block;
+							height: 10px;
+							margin: 2px 2px;
+							position: relative;
+							right: 5px;
+							top: 2px;
+							width: 10px;
+						}
+					}
+				}
+			}
+
+			&_title {
+				@include rfs(14);
+				display: inline-block;
+				min-width: 65px;
+
+				&.unavailable {
+					opacity: .3;
+				}
+
+				&:before {
+					border: 1px solid #BBBBBB;
+					border-radius: 10px;
+					content: '';
+					display: inline-block;
+					height: 14px;
+					position: relative;
+					right: 5px;
+					top: 2px;
+					width: 14px;
+				}
+			}
+
+			&_error {
+				background-color: #702F8F;
+				color: #fff;
+				font-size: 11px;
+				margin-bottom: 5%;
+				margin-top: 1%;
+				padding: 10px;
+
+				&:before {
+					border: 15px solid transparent;
+					border-bottom-color: #702F8F;
+					content: '';
+					left: 45%;
+					position: absolute;
+					top: 46%;
+
+					@include breakpoint('extra-large', 'max') {
+						left: 45%;
+						top: 230px;
+
+						@include breakpoint('large', 'max') {
+							left: 45%;
+							top: 255px;
+
+							@include breakpoint('small', 'max') {
+								left: 48%;
+								top: 255px;
+
+								@include breakpoint('extra-small', 'max') {
+									left: 45%;
+									top: 270px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&-buy {
+			background: #9ACA3C;
+			border-radius: 40px;
+			color: #fff;
+			display: block;
+			font-size: 15px;
+			font-weight: 500;
+			margin: 20px 10px 5px;
+			padding: 10px 0;
+			position: relative;
+			text-align: center;
+			width: 50%;
+			z-index: 3;
+
+			@include breakpoint ('medium', 'max') {
+				margin: 20px auto 5px;
+				padding: 15px 0;
+				width: 75%;
+			}
+		}
+	}
+
+	.smartbeer-shelf {
+		padding: 50px 0;
 	}
 }
