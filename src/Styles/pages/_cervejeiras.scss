@@ -435,6 +435,102 @@
 	}
 }
 
+// Videos
+.cervejeiras-videos {
+	background: radial-gradient(ellipse at center, #2a2727 0%, #201e1e 70%, #161616 100%);
+	padding: 2.5em 0;
+
+	// Title
+	&__title {
+		@include rfs(25);
+		color: #fff;
+		line-height: 125%;
+		margin: 0;
+		text-align: center;
+
+		span {
+			color: #9ACA3C;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	// Video
+	&__video {
+		background-color: #000;
+		margin: 0 auto;
+		max-width: 690px;
+		position: relative;
+
+		iframe {
+			@include breakpoint('small', 'max') { height: 320px; }
+			@include breakpoint(550px, 'max') { height: 250px; }
+			display: block;
+			height: 390px;
+			margin: 30px auto;
+			max-width: 690px;
+			position: relative;
+			width: 100%;
+			z-index: 1;
+		}
+
+		// Loading video
+		&.is--loading {
+			iframe { opacity: 0; }
+		}
+	}
+
+	// loading
+	.loading-container {
+		@include allCenter();
+
+		.icon-spinner {
+			display: block;
+			height: 75px;
+
+			&:before {
+				@include spinner($green, 45px);
+				content: '';
+			}
+		}
+	}
+
+	// Thumbs
+	&-thumbs {
+		display: flex;
+		justify-content: center;
+
+		&__item {
+			border: 1px solid #736C6B;
+			cursor: pointer;
+			margin: 0 8px;
+			overflow: hidden;
+			transition:
+				border-color .2s linear,
+				transform .3s ease
+			;
+			width: 110px;
+
+			img {
+				display: block;
+				max-width: 100%;
+			}
+
+			// Hover
+			&:hover {
+				border-color: #fff;
+				transform: scale(1.1);
+			}
+
+			// Active state
+			&.is--active { border-color: #fff; }
+		}
+	}
+}
+
+
+
+
 #toast-container {
 	> .toast-info {
 		background-color: rgba(27, 27, 27, 0.9);
