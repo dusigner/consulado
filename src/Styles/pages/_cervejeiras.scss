@@ -10,15 +10,21 @@
 	color: #fff;
 	overflow: hidden;
 
-	img { display: block; }
+	img {
+		display: block;
+	}
 
 	.container {
-		@include breakpoint('medium', 'max') { flex-direction: column; }
+		@include breakpoint('medium', 'max') {
+			flex-direction: column;
+		}
 		align-items: center;
 		display: flex;
 		justify-content: space-between;
 
-		section { width: 100%; }
+		section {
+			width: 100%;
+		}
 	}
 
 	// Banner
@@ -41,7 +47,9 @@
 		}
 
 		img {
-			@include breakpoint('medium', 'min') { margin-bottom: -3.2em; }
+			@include breakpoint('medium', 'min') {
+				margin-bottom: -3.2em;
+			}
 			max-width: 100%;
 		}
 	}
@@ -56,24 +64,34 @@
 
 	// Conteúdo
 	&__conteudo {
-		@include breakpoint('medium', 'min') { max-width: 370px; }
+		@include breakpoint('medium', 'min') {
+			max-width: 370px;
+		}
 	}
 }
 
 .cervejeiras-lista-funcionalidades {
-	@include breakpoint('medium', 'max') { margin: 1em 0 2em 0; }
+	@include breakpoint('medium', 'max') {
+		margin: 1em 0 2em 0;
+	}
 	padding: 1em;
 	width: 100%;
 
 	&__item {
-		@include breakpoint('medium', 'max') { text-align: center; }
+		@include breakpoint('medium', 'max') {
+			text-align: center;
+		}
 		align-items: center;
 		display: flex;
 		margin-top: 1.2em;
 
-		&:first-child { margin: 0; }
+		&:first-child {
+			margin: 0;
+		}
 
-		article { width: 100%; }
+		article {
+			width: 100%;
+		}
 
 		h3 {
 			@include rfs(15);
@@ -94,7 +112,9 @@
 	}
 
 	&__icon {
-		@include breakpoint('medium', 'max') { display: none; }
+		@include breakpoint('medium', 'max') {
+			display: none;
+		}
 		margin-right: 25px;
 		width: 45px;
 
@@ -105,9 +125,10 @@
 	}
 }
 
-.cervejeiras-cores,
-.smartbeer {
-	@include breakpoint('medium', 'min') { padding: 90px 0 60px 0; }
+.cervejeiras-cores {
+	@include breakpoint('medium', 'min') {
+		padding: 90px 0 60px 0;
+	}
 	background-color: #fff;
 	overflow: hidden;
 	padding: 1em 0;
@@ -272,9 +293,11 @@
 
 	// Text
 	&__text {
-		@include breakpoint('medium', 'min') { line-height: 220%; }
+		@include breakpoint('medium', 'min') {
+			line-height: 220%;
+		}
 		@include rfs(13);
-		color: #736C6B;
+		color: #736c6b;
 		margin: 20px 0;
 
 		// Box de seleção de cores
@@ -295,10 +318,118 @@
 
 .smartbeer {
 	background-color: #000;
-	&__item {
-		&:before {
-			display: none;
+	color: #fff;
+
+	& > .container {
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
 		}
+		align-items: center;
+		display: flex;
+		position: relative;
+	}
+	&__title {
+		@include rfs(30);
+		line-height: 120%;
+		@include breakpoint('small', 'max') {
+			margin-top: 30px;
+			text-align: center;
+		}
+		.cor {
+			color: #9aca3c;
+			display: block;
+		}
+	}
+	&__item {
+		&:first-child {
+			@include breakpoint('small', 'min') {
+				text-align: right;
+			}
+		}
+		img {
+			@include breakpoint('small', 'max') {
+				max-width: 350px;
+			}
+		}
+	}
+
+	// CTA
+	&__cta {
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+		}
+		padding: 0.6em 4em !important;
+	}
+
+	&__app {
+		display: flex;
+		justify-content: flex-end;
+		@include breakpoint('medium', 'min') {
+			margin-top: 50px;
+		}
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+
+			&--mobile {
+				@include breakpoint('small', 'max') {
+					margin-bottom: 50px;
+				}
+				.smartbeer__cta,
+				.smartbeer__app {
+					display: block;
+					visibility: visible;
+				}
+			}
+		}
+		&__box {
+			margin-right: 15px;
+			@include breakpoint('small', 'max') {
+				margin-bottom: 20px;
+				margin-right: 0;
+			}
+		}
+		&__items {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 8px;
+			@include breakpoint('small', 'max') {
+				justify-content: space-evenly;
+			}
+		}
+		&__text {
+			display: block;
+			text-align: center;
+		}
+		&__item {
+			@include breakpoint('medium', 'min') {
+				margin-left: 10px;
+			}
+		}
+		&__info {
+			@include breakpoint('small', 'max') {
+				display: none;
+			}
+		}
+
+		&--mobile {
+			@include breakpoint('medium', 'min') {
+				display: none;
+			}
+		}
+	}
+
+	// Text
+	&__text {
+		@include breakpoint('small', 'max') {
+			text-align: center;
+		}
+		@include breakpoint('medium', 'min') {
+			line-height: 220%;
+		}
+		@include rfs(13);
+		margin: 20px 0;
 	}
 }
 
@@ -313,7 +444,9 @@
 	position: relative;
 	width: 100%;
 
-	&.slick-slider { padding: 0; }
+	&.slick-slider {
+		padding: 0;
+	}
 }
 
 // Slider
