@@ -29,7 +29,7 @@ Nitro.controller(
 		'calculadorabtu',
 		'busca-chaordic',
 		'comparebar',
-		'cervejeira'
+		'cervejeiras'
 	],
 	function(chaordic) {
 		var $body = $('body');
@@ -100,8 +100,8 @@ Nitro.controller(
 		//TODO: pluralize
 		var orderText = !$('body').is('.busca')
 			? 'Temos ' +
-			  $('.resultado-busca-numero:first .value').text() +
-			  ' itens'
+			$('.resultado-busca-numero:first .value').text() +
+			' itens'
 			: '';
 		$('.order-title').html(
 			'<span>' + orderText + ' ordenados por </span><em>selecione</em>'
