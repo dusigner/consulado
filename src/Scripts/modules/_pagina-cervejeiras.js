@@ -63,7 +63,6 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 				{
 					breakpoint: 960,
 					settings: {
-						infinite: false,
 						initialSlide: 1,
 						slidesToScroll: 1,
 						slidesToShow: 1,
