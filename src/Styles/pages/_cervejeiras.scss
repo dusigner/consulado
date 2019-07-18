@@ -701,6 +701,7 @@
 				height: 30px;
 				margin-bottom: 0;
 				margin-top: 20px;
+				overflow: initial!important;
 				padding: 10px;
 				text-align: center;
 				width: 50%;
@@ -717,7 +718,6 @@
 				@include breakpoint('medium', 'max') {
 					background-color: #702F8F;
 					color: #fff;
-					overflow: initial!important;
 					position: absolute;
 					text-align: center;
 					top: 12%;
