@@ -23,18 +23,29 @@
 	// Video
 	&__video {
 		background-color: #000;
-		margin: 0 auto;
+		margin: 30px auto;
 		max-width: 690px;
+		overflow: hidden;
 		position: relative;
+
+		// &:before {
+		// 	@include allCenter;
+		// 	@include square(112%);
+		// 	background: url('/arquivos/pagina-cervejeiras__bg-video-01.png') center center no-repeat;
+		// 	background-color: #ccc;
+		// 	background-size: contain;
+		// 	margin-top: -9px;
+		// 	content: '';
+		// }
 
 		iframe {
 			@include breakpoint('small', 'max') { height: 320px; }
 			@include breakpoint(550px, 'max') { height: 250px; }
 			display: block;
 			height: 390px;
-			margin: 30px auto;
 			max-width: 690px;
 			position: relative;
+			// opacity: 0;
 			width: 100%;
 			z-index: 1;
 		}
