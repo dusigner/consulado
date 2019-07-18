@@ -1,0 +1,129 @@
+@charset 'UTF-8';
+
+// Funcionalidades cervejeiras
+.cervejeiras-funcionalidades {
+	background-color: #9aca3c;
+	color: #fff;
+	overflow: hidden;
+
+	img {
+		display: block;
+	}
+
+	.container {
+		@include breakpoint('medium', 'max') {
+			flex-direction: column;
+		}
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+
+		section {
+			width: 100%;
+		}
+	}
+
+	// Banner
+	&__banner {
+		@include breakpoint('medium', 'min') {
+			max-width: 665px;
+		}
+
+		p {
+			@include rfs(18);
+			color: #303030;
+			margin: 0.5em 0 1.5em 0;
+		}
+
+		img {
+			@include breakpoint('medium', 'min') {
+				margin-bottom: -3.2em;
+			}
+			max-width: 100%;
+		}
+	}
+
+	// Title
+	&__title {
+		@include rfs(34);
+		line-height: 125%;
+		margin: 2em 0 0 0;
+		text-transform: uppercase;
+	}
+
+	// Conteúdo
+	&__conteudo {
+		@include breakpoint('medium', 'min') {
+			max-width: 370px;
+		}
+	}
+}
+
+.cervejeiras-lista-funcionalidades {
+	@include breakpoint('medium', 'max') {
+		margin: 1em 0 3em 0;
+	}
+	padding: 1em;
+	width: 100%;
+
+	&__item {
+		@include breakpoint('medium', 'max') {
+			text-align: center;
+		}
+		align-items: center;
+		display: flex;
+		margin-top: 1.2em;
+
+		&:first-child {
+			margin: 0;
+		}
+
+		article {
+			width: 100%;
+		}
+
+		h3 {
+			color: #3a3838;
+			font-size: 15px;
+			margin: 0 0 10px 0;
+		}
+
+		p {
+			font-size: 14px;
+			margin: 0;
+		}
+
+		small {
+			@include rfs(10);
+			display: block;
+			font-weight: bold;
+		}
+	}
+
+	&__icon {
+		@include breakpoint('medium', 'max') {
+			display: none;
+		}
+		margin-right: 25px;
+		width: 45px;
+
+		img {
+			max-height: 48px;
+			max-width: 45px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -5px;
+
+		.slick-active {
+			button {
+				background-color: #4a4d45;
+
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}
