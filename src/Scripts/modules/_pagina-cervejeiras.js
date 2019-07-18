@@ -31,13 +31,14 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			asNavFor: allSlides,
 			dots: false,
 			fade: true,
+			infinite: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
 			slidesToShow: 1,
 			responsive: [{
 				breakpoint: 960,
 				settings: {
-					infinite: false,
+					infinite: true,
 					initialSlide: 1,
 					slidesToScroll: 1,
 					slidesToShow: 1,
@@ -53,12 +54,14 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 			asNavFor: allSlides,
 			dots: true,
 			fade: true,
+			infinite: true,
 			initialSlide: 1,
 			slidesToScroll: 1,
 			slidesToShow: 1,
 			responsive: [{
 				breakpoint: 960,
 				settings: {
+					infinite: true,
 					initialSlide: 1,
 					slidesToScroll: 1,
 					slidesToShow: 1,
