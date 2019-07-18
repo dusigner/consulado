@@ -1,5 +1,5 @@
 const setSKUselector = () => {
-	let productBox = $('.list-content article'),
+	let productBox = $('article.box-produto'),
 		skus = productBox.find('.product-insertsku');
 
 	//$('body').addClass('buyButton');
@@ -24,6 +24,8 @@ const setSKUselector = () => {
 				<input class="sku_radio ${isAvailable}" type="radio" id="${objectClass}" name=${skuName} data-sku-value="${skuId}">
 				<label class="sku_title ${isAvailable}" for="${objectClass}" name=${skuName}>${title}</label>
 				</div>`);
+
+				if (i === 1) break;
 			}
 
 			sku.find('.unavailable').attr('disabled', true);
@@ -31,13 +33,13 @@ const setSKUselector = () => {
 			if (produtoIndisponivel) {
 				textButton =  'Produto indisponível';
 				productLink.find('.prod-info').after(`
-					<a class="sku_buy -not-available">${textButton}</a>
+					<a class="sku_buy -not-available style="display: none">${textButton}</a>
 				`);
 
 			} else {
 				textButton = 'Comprar';
 				productLink.find('.prod-info').after(`
-					<a class="sku_buy -not-selected">${textButton}</a>
+					<a class="sku_buy -not-selected-vitrine" style="display: none">${textButton}</a>
 				`);
 			}
 
@@ -50,12 +52,11 @@ const setSKUselector = () => {
 
 			productLink.find('.sku_radio').on('change', function () {
 				setUrlButton(productLink);
-				productLink.find('.nome, .promo-destaque').removeClass('hide');
 				productLink.find('.sku_error').addClass('hide');
 
 			});
 
-			$('.-not-selected').on('click', function() {
+			$('.-not-selected-vitrine').on('click', function() {
 				if ($(this).parents('.detalhes').find('.sku_error').length === 0) {
 					let message = `
 									<div class="sku_error">
@@ -64,7 +65,6 @@ const setSKUselector = () => {
 								`;
 
 					productLink.find('.prod-info').prepend($(message));
-					productLink.find('.nome, .promo-destaque').addClass('hide');
 				}
 			});
 		}
@@ -79,7 +79,7 @@ const setSKUselector = () => {
 const setUrlButton = (productLink) => {
 	let skuData = $(productLink).find('.sku_radio:checked').data('sku-value'),
 		skuButton = productLink.find('.sku_buy');
-	skuButton.unbind().removeClass('-not-selected').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
+	skuButton.unbind().removeClass('-not-selected-vitrine').attr('href', `/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${window.jssalesChannel ? window.jssalesChannel : 3}`);
 };
 
 export default setSKUselector;

@@ -25,6 +25,9 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 		cervejeiras.videoPlay();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
+		cervejeiras.showcaseRegularCervejeiras();
+
+		$('body').addClass('buyButton');
 	};
 
 	// Seleção de cores - Conteúdo
@@ -241,7 +244,7 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 				skuButton = productLink.find('.product-buy');
 			skuButton
 				.unbind()
-				.removeClass('-not-selected')
+				.removeClass('-not-selected-smartbeer')
 				.attr(
 					'href',
 					`/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${
@@ -309,7 +312,7 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 					`);
 				}
 
-				$('.product-buy').addClass('-not-selected');
+				$('.vitrine-smartbeer .product-buy').addClass('-not-selected-smartbeer');
 
 				sku.find('.unavailable').attr('disabled', true);
 
@@ -325,13 +328,45 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 					$('.product-sku_error').slideUp('slow', function() {});
 				});
 
-				$('.-not-selected').on('click', function() {
+				$('.-not-selected-smartbeer').on('click', function() {
 					$('.product-sku_error').slideDown('slow', function() {
 						$('.product-sku_error').removeClass('hide');
 					});
 				});
 			}
 		}
+	};
+
+	cervejeiras.showcaseRegularCervejeiras = () => {
+		let showcase = $('.vitrine-promocoes').find('.adicional');
+
+		$('.vitrine-promocoes .prateleira ul').slick({
+			mobileFirst: true,
+			arrows: true,
+			dots: true,
+			slidesToShow: 1,
+			slidesToScroll:1,
+			responsive: [{
+				breakpoint: 960,
+				settings: {
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 3
+
+				}
+			}]
+		});
+
+		showcase.each(function(index, element) {
+			let parcel = $(element).find('strong');
+			if (parcel.length > 0) {
+				let text = parcel.eq(0).text().toLowerCase().replace('r$ ', 'R$') + ' ' + parcel.eq(1).text().toLowerCase().replace('r$ ', 'R$');
+
+				$(element).append(`
+									<p class="preco-parcelado"> ${text} </p>
+								`);
+			}
+		});
 	};
 
 	cervejeiras.init();
