@@ -2,10 +2,13 @@
 
 import 'modules/product/gallery';
 import Clipboard from 'clipboard';
+import 'dataLayers/dataLayer-cervejeira';
 
 const toastr = require('vendors/toastr');
 
-Nitro.module('cervejeiras', ['gallery'], function(gallery) {
+Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
+	gallery
+) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
@@ -340,21 +343,24 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 	cervejeiras.showcaseRegularCervejeiras = () => {
 		let showcase = $('.vitrine-promocoes').find('.adicional');
 
-		$('.vitrine-promocoes .prateleira ul').slick({
-			mobileFirst: true,
-			arrows: true,
-			dots: true,
-			slidesToShow: 1,
-			slidesToScroll:1,
-			responsive: [{
-				breakpoint: 960,
-				settings: {
-					infinite: false,
-					slidesToShow: 3,
-					slidesToScroll: 3
+		$(window).resize(function() {
+			const widthPage = $(window).width();
 
+			if (widthPage < 960) {
+				$('.vitrine-promocoes .prateleira>ul')
+					.not('.slick-initialized')
+					.slick({
+						infinite: false,
+						arrows: true,
+						dots: true,
+						slidesToShow: 1,
+						slidesToScroll:1
+					});
+			} else {
+				if ($('.vitrine-promocoes .prateleira>ul').hasClass('slick-initialized')) {
+					$('.vitrine-promocoes .prateleira>ul').slick('unslick');
 				}
-			}]
+			}
 		});
 
 		showcase.each(function(index, element) {

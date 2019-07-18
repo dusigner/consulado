@@ -37,7 +37,7 @@ const setSKUselector = () => {
 				`);
 
 			} else {
-				textButton = 'Comprar';
+				textButton = 'Comprar já';
 				productLink.find('.prod-info').after(`
 					<a class="sku_buy -not-selected-vitrine" style="display: none">${textButton}</a>
 				`);
