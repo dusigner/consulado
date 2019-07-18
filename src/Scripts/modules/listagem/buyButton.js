@@ -24,6 +24,8 @@ const setSKUselector = () => {
 				<input class="sku_radio ${isAvailable}" type="radio" id="${objectClass}" name=${skuName} data-sku-value="${skuId}">
 				<label class="sku_title ${isAvailable}" for="${objectClass}" name=${skuName}>${title}</label>
 				</div>`);
+
+				if (i === 1) break;
 			}
 
 			sku.find('.unavailable').attr('disabled', true);
@@ -31,13 +33,13 @@ const setSKUselector = () => {
 			if (produtoIndisponivel) {
 				textButton =  'Produto indisponível';
 				productLink.find('.prod-info').after(`
-					<a class="sku_buy -not-available">${textButton}</a>
+					<a class="sku_buy -not-available style="display: none">${textButton}</a>
 				`);
 
 			} else {
 				textButton = 'Comprar';
 				productLink.find('.prod-info').after(`
-					<a class="sku_buy -not-selected-vitrine">${textButton}</a>
+					<a class="sku_buy -not-selected-vitrine" style="display: none">${textButton}</a>
 				`);
 			}
 

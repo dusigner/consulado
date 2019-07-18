@@ -91,7 +91,7 @@ body.buyButton {
 			background: #9ACA3C;
 			border-radius: 40px;
 			color: #fff;
-			display: block;
+			display: block!important;
 			font-size: 15px;
 			font-weight: 500;
 			margin: 15px auto 5px;
@@ -154,8 +154,4 @@ body.buyButton {
 	.-not-available {
 		pointer-events: none;
 	}
-}
-
-.sku_buy {
-	display: none;
 }

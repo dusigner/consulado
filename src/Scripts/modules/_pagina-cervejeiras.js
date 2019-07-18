@@ -345,6 +345,23 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 	cervejeiras.showcaseRegularCervejeiras = () => {
 		let showcase = $('.vitrine-promocoes').find('.adicional');
 
+		$('.vitrine-promocoes .prateleira ul').slick({
+			mobileFirst: true,
+			arrows: true,
+			dots: true,
+			slidesToShow: 1,
+			slidesToScroll:1,
+			responsive: [{
+				breakpoint: 960,
+				settings: {
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 3
+
+				}
+			}]
+		});
+
 		showcase.each(function(index, element) {
 			let parcel = $(element).find('strong');
 			if (parcel.length > 0) {
