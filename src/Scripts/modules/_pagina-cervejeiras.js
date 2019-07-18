@@ -2,10 +2,13 @@
 
 import 'modules/product/gallery';
 import Clipboard from 'clipboard';
+import 'dataLayers/dataLayer-cervejeira';
 
 const toastr = require('vendors/toastr');
 
-Nitro.module('cervejeiras', ['gallery'], function(gallery) {
+Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
+	gallery
+) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
