@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .vitrine-promocoes {
-    background-color: #F2F2F2;
+    background-color: #fcfcfc;
     padding: 30px 0;
 
     @include breakpoint ('medium', 'max') {
@@ -14,6 +14,15 @@
 
         .cor {
             color: #9ACA3C;
+
+            @include breakpoint ('medium', 'max') {
+                display: block;
+            }
+        }
+
+        @include breakpoint ('medium', 'max') {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
     }
 
@@ -21,130 +30,156 @@
         h2 {
             display: none;
         }
-    }
-
-    .btn-comparar {
-        display: none;
-    }
-
-    .slick-disabled {
-        &:before {
-            color: #e4e4e4;
-        }
-    }
-
-    .slick-arrow {
-        &:hover {
-            color: #9ACA3C;
-        }
-    }
-
-    .slick-list {
-        margin: 0 auto;
-    }
-
-    article.box-produto {
-        border: 1px solid #F2F2F2;
-        min-height: 450px;
-
-        @include breakpoint ('medium', 'max') {
-            border: 1px solid #FFF;
+        .btn-comparar {
+            display: none;
         }
 
-        &:hover {
-            border: 1px solid #9ACA3C;
-        }
-
-        .detalhes {
-            a {
-                &:before {
-                    display: none;
-                }
+        .slick-disabled {
+            &:before {
+                color: #e4e4e4;
             }
+        }
 
-            .image {
-                margin: 15px;
-                position: relative;
+        .slick-arrow {
+            &:hover {
+                color: #9ACA3C;
+            }
+        }
 
-                .img.backup {visibility: hidden}
+        .slick-list {
+            margin: 0 auto;
+        }
 
-                &:before {
-                    background-color: #d0d;
-                    background-size: contain!important;
-                    content: '';
-                    display: block;
-                    height: 100%;
-                    opacity: 1;
-                    position: absolute;
-                    width: 100%;
-                    z-index: 10;
+        .slick-dots {
+            bottom: 15px;
+
+            li {
+                button {
+                    background-color: #CECCCC;
                 }
 
-                &[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
-                &[href*='vermelha']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-vermelha-frente.png') center center no-repeat; }
-                &[href*='titanium']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-titanium-frente.png') center center no-repeat; }
+                &.slick-active {
+                    button {
+                        background-color: #9ACA3C;
 
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
             }
-            .prod-info {
-                position: relative;
+        }
 
-                .nome {
-                    @include rfs(15);
-                    color: #736C6B;
-                    font-weight: bold;
+        article.box-produto {
+            border: 1px solid #fcfcfc;
+            min-height: 450px;
 
-                    .product-field {
+            @include breakpoint ('medium', 'max') {
+                border: 1px solid #FFF;
+            }
+
+            &:hover {
+                border: 1px solid #9ACA3C;
+            }
+
+            .detalhes {
+                a {
+                    &:before {
                         display: none;
                     }
+                }
 
-                    li {
-                        @include rfs(11);
+                .image {
+                    margin: 15px;
+                    position: relative;
+
+                    .img.backup {visibility: hidden}
+
+                    &:before {
+                        background-color: #d0d;
+                        background-size: contain!important;
+                        content: '';
                         display: block;
-                        font-weight: 100;
+                        height: 100%;
+                        opacity: 1;
+                        position: absolute;
+                        width: 100%;
+                        z-index: 10;
                     }
+
+                    &[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
+                    &[href*='vermelha']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-vermelha-frente.png') center center no-repeat; }
+                    &[href*='titanium']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-titanium-frente.png') center center no-repeat; }
+
                 }
 
-                .de {
-                    @include rfs(12);
-                    color: #702F8F;
-                    font-weight: 500;
-                }
+                .prod-info {
+                    border-color: #F1F0F0;
+                    position: relative;
 
-                .discount-boleto {
-                    @include rfs(24);
-                    color: #9ACA3C;
-                }
+                    .nome {
+                        @include rfs(15);
+                        color: #736C6B;
+                        font-weight: bold;
 
-                .adicional {
-                    strong {
-                        display: none;
-
-                        span:before {
-                            content: none;
+                        li {
+                            @include rfs(11);
+                            display: block;
+                            font-weight: 100;
                         }
                     }
 
-                    .preco-parcelado {
-                        @include rfs(11);
-                        margin-bottom: 0;
-                        text-transform: initial;
+                    .de {
+                        @include rfs(12);
+                        color: #702F8F;
+                        font-weight: 500;
                     }
+
+                    .discount-boleto {
+                        @include rfs(24);
+                        color: #9ACA3C;
+
+                        span {
+                            @include rfs(20);
+                            display: inline-block;
+
+                        }
+                    }
+
+                    .adicional {
+                        strong {
+                            display: none;
+
+                            span:before {
+                                content: none;
+                            }
+                        }
+
+                        .preco-parcelado {
+                            @include rfs(11);
+                            margin-bottom: 0;
+                            text-transform: initial;
+                        }
+                    }
+
+                    .sku_error {
+                        position: absolute;
+                        top: 10px;
+                        width: 100%;
+
+                        &:before {
+                            border-width: 20px;
+                            bottom: 80%;
+                            left: 42%;
+                            top: unset;
+                        }
+                    }
+
                 }
 
-                .sku_error {
-                    position: absolute;
-                    width: 100%;
+                .sku_buy {
+                    margin: 15px auto 20px;
 
-                    &:after {
-                        border-width: 20px;
-                        bottom: 220px;
-                        left: 42%;
-                        top: inherit;
-
-                        // @include breakpoint ('large', 'max') {
-
-                        // }
-                    }
                 }
             }
         }
