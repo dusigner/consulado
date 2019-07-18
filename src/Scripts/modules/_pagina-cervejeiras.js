@@ -10,13 +10,9 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $(
-		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
-	);
+	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
 	const coloredBackground = $('.item--cervejeira');
-	const cervejeirasListaFuncionalidades = $(
-		'.cervejeiras-lista-funcionalidades'
-	);
+	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
 
 	// Init
 	cervejeiras.init = () => {
@@ -26,6 +22,7 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 		cervejeiras.selectColor();
 		cervejeiras.changeColorOnSelect();
 		cervejeiras.videoControl();
+		cervejeiras.videoPlay();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
 	};
@@ -106,20 +103,13 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on(
-			'beforeChange',
-			(event, slick, currentSlide, nextSlide) => {
-				const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data(
-					'color'
-				);
-				const nextColor = $(selecaoCoresItems[nextSlide + 1]).data(
-					'color'
-				);
+		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+			const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data('color');
+			const nextColor = $(selecaoCoresItems[nextSlide + 1]).data('color');
 
-				coloredBackground.removeClass(`cervejeira--${beforeColor}`);
-				coloredBackground.addClass(`cervejeira--${nextColor}`);
-			}
-		);
+			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
+			coloredBackground.addClass(`cervejeira--${nextColor}`);
+		});
 	};
 
 	// Listagem de funcionalidades
@@ -135,11 +125,7 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 						dots: true
 					});
 			} else {
-				if (
-					cervejeirasListaFuncionalidades.hasClass(
-						'slick-initialized'
-					)
-				) {
+				if (cervejeirasListaFuncionalidades.hasClass('slick-initialized')) {
 					cervejeirasListaFuncionalidades.slick('unslick');
 				}
 			}
@@ -148,26 +134,35 @@ Nitro.module('cervejeiras', ['gallery'], function(gallery) {
 
 	// Vídeos
 	cervejeiras.videoControl = () => {
-		const videoFrame = $('.cervejeiras-videos__video');
 		const videosThumbs = $('.cervejeiras-videos-thumbs__item');
 
 		videosThumbs.click(function() {
 			const self = $(this);
-			const videoId = self.data('vid');
 
 			if (self.hasClass('is--active')) {
 				return;
 			}
-
-			cervejeiras.updateVideoUrl(videoFrame, videoId);
 
 			videosThumbs.removeClass('is--active');
 			self.addClass('is--active');
 		});
 	};
 
-	cervejeiras.updateVideoUrl = (videoContainer, videoId) => {
-		const videoURL = `https://www.youtube.com/embed/${videoId}`;
+	cervejeiras.videoPlay = () => {
+		const playVideo = $('.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video');
+
+		playVideo.click(function() {
+			const videoToPlay = $('.cervejeiras-videos-thumbs__item.is--active').data('vid');
+			const videoContainer = $('.cervejeiras-videos__video');
+
+			videoContainer.addClass('video-is-playing');
+			cervejeiras.updateVideoUrl(videoToPlay);
+		});
+	};
+
+	cervejeiras.updateVideoUrl = (videoId) => {
+		const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+		const videoContainer = $('.cervejeiras-videos__video');
 		const videoFrame = videoContainer.find('iframe');
 
 		videoContainer.addClass('is--loading');
