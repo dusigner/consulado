@@ -50,6 +50,9 @@ const setSKUselector = () => {
 
 			productLink.find('.sku_radio').on('change', function () {
 				setUrlButton(productLink);
+				productLink.find('.nome, .promo-destaque').removeClass('hide');
+				productLink.find('.sku_error').addClass('hide');
+
 			});
 
 			$('.-not-selected').on('click', function() {
