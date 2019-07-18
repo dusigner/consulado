@@ -20,6 +20,10 @@ body.buyButton {
 		white-space: nowrap;
 		width: 75%;
 		z-index: 3;
+
+		@include breakpoint ('medium', 'max') {
+			width: 50%;
+		}
 	}
 
 	.sku {
@@ -38,6 +42,10 @@ body.buyButton {
 				& + label {
 					font-weight: bold;
 
+					@include breakpoint ('medium', 'max') {
+					    padding-top: 4px;
+					}
+
 					&:before {
 						background-color: #702f8f;
 						border: 3px solid #fff;
@@ -51,6 +59,7 @@ body.buyButton {
 						right: 5px;
 						top: 2px;
 						width: 12px;
+
 					}
 				}
 			}
