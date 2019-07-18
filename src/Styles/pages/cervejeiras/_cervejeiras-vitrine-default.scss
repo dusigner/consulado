@@ -23,11 +23,75 @@
         display: none;
     }
 
-    article {
+    article.box-produto {
         border: 1px solid #F2F2F2;
 
         &:hover {
             border: 1px solid #9ACA3C;
         }
+
+        .detalhes {
+            .prod-info {
+                .nome {
+                    @include rfs(15);
+                    color: #736C6B;
+                    font-weight: bold;
+
+                    .product-field {
+                        display: none;
+                    }
+
+                    li {
+                        @include rfs(11);
+                        display: block;
+                        font-weight: 100;
+                    }
+                }
+
+                .de {
+                    @include rfs(12);
+                    color: #702F8F;
+                    font-weight: 500;
+                }
+
+                .discount-boleto {
+                    @include rfs(24);
+                    color: #9ACA3C;
+                }
+
+                .adicional {
+                    strong {
+                        display: none;
+
+                        span:before {
+                            content: none;
+                        }
+                    }
+
+                    .preco-parcelado {
+                        @include rfs(11);
+                        text-transform: initial;
+                        margin-bottom: 0;
+                    }
+                }
+
+                .sku_error {
+                    position: absolute;
+
+                    &:after {
+                        border-width: 20px;
+                        bottom: 220px;
+                        left: 42%;
+                        top: inherit;
+
+                        @include breakpoint ('large', 'max') {
+
+                        }
+                    }
+                }
+            }
+        }
     }
+
+
 }
