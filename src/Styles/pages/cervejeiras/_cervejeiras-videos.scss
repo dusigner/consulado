@@ -27,6 +27,25 @@
 		max-width: 690px;
 		overflow: hidden;
 		position: relative;
+		transition: transform .3s ease;
+
+		// Imagem inicial do vídeo
+		&:before {
+			@include allCenter;
+			@include square(110%);
+			background: url('/arquivos/pagina-cervejeiras__bg-video-01.png') center center no-repeat;
+			background-size: contain;
+			content: '';
+			cursor: pointer;
+			z-index: 10;
+		}
+
+		&.video-is-playing {
+			&:before {
+				display: none;
+				visibility: hidden;
+			}
+		}
 
 		iframe {
 			@include breakpoint('small', 'max') { height: 320px; }
@@ -43,6 +62,9 @@
 		&.is--loading {
 			iframe { opacity: 0; }
 		}
+
+		// Hover effect
+		&:hover { transform: scale(1.03); }
 	}
 
 	// loading

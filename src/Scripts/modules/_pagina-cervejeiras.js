@@ -13,13 +13,9 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $(
-		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
-	);
+	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
 	const coloredBackground = $('.item--cervejeira');
-	const cervejeirasListaFuncionalidades = $(
-		'.cervejeiras-lista-funcionalidades'
-	);
+	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
 
 	// Init
 	cervejeiras.init = () => {
@@ -29,8 +25,12 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		cervejeiras.selectColor();
 		cervejeiras.changeColorOnSelect();
 		cervejeiras.videoControl();
+		cervejeiras.videoPlay();
 		cervejeiras.copyCupom();
 		cervejeiras.renderSmartBeerShowcase();
+		cervejeiras.showcaseRegularCervejeiras();
+
+		$('body').addClass('buyButton');
 	};
 
 	// Seleção de cores - Conteúdo
@@ -109,20 +109,13 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on(
-			'beforeChange',
-			(event, slick, currentSlide, nextSlide) => {
-				const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data(
-					'color'
-				);
-				const nextColor = $(selecaoCoresItems[nextSlide + 1]).data(
-					'color'
-				);
+		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+			const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data('color');
+			const nextColor = $(selecaoCoresItems[nextSlide + 1]).data('color');
 
-				coloredBackground.removeClass(`cervejeira--${beforeColor}`);
-				coloredBackground.addClass(`cervejeira--${nextColor}`);
-			}
-		);
+			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
+			coloredBackground.addClass(`cervejeira--${nextColor}`);
+		});
 	};
 
 	// Listagem de funcionalidades
@@ -138,11 +131,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 						dots: true
 					});
 			} else {
-				if (
-					cervejeirasListaFuncionalidades.hasClass(
-						'slick-initialized'
-					)
-				) {
+				if (cervejeirasListaFuncionalidades.hasClass('slick-initialized')) {
 					cervejeirasListaFuncionalidades.slick('unslick');
 				}
 			}
@@ -151,26 +140,35 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 
 	// Vídeos
 	cervejeiras.videoControl = () => {
-		const videoFrame = $('.cervejeiras-videos__video');
 		const videosThumbs = $('.cervejeiras-videos-thumbs__item');
 
 		videosThumbs.click(function() {
 			const self = $(this);
-			const videoId = self.data('vid');
 
 			if (self.hasClass('is--active')) {
 				return;
 			}
-
-			cervejeiras.updateVideoUrl(videoFrame, videoId);
 
 			videosThumbs.removeClass('is--active');
 			self.addClass('is--active');
 		});
 	};
 
-	cervejeiras.updateVideoUrl = (videoContainer, videoId) => {
-		const videoURL = `https://www.youtube.com/embed/${videoId}`;
+	cervejeiras.videoPlay = () => {
+		const playVideo = $('.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video');
+
+		playVideo.click(function() {
+			const videoToPlay = $('.cervejeiras-videos-thumbs__item.is--active').data('vid');
+			const videoContainer = $('.cervejeiras-videos__video');
+
+			videoContainer.addClass('video-is-playing');
+			cervejeiras.updateVideoUrl(videoToPlay);
+		});
+	};
+
+	cervejeiras.updateVideoUrl = (videoId) => {
+		const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+		const videoContainer = $('.cervejeiras-videos__video');
 		const videoFrame = videoContainer.find('iframe');
 
 		videoContainer.addClass('is--loading');
@@ -249,7 +247,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 				skuButton = productLink.find('.product-buy');
 			skuButton
 				.unbind()
-				.removeClass('-not-selected')
+				.removeClass('-not-selected-smartbeer')
 				.attr(
 					'href',
 					`/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${
@@ -317,7 +315,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					`);
 				}
 
-				$('.product-buy').addClass('-not-selected');
+				$('.vitrine-smartbeer .product-buy').addClass('-not-selected-smartbeer');
 
 				sku.find('.unavailable').attr('disabled', true);
 
@@ -333,13 +331,45 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					$('.product-sku_error').slideUp('slow', function() {});
 				});
 
-				$('.-not-selected').on('click', function() {
+				$('.-not-selected-smartbeer').on('click', function() {
 					$('.product-sku_error').slideDown('slow', function() {
 						$('.product-sku_error').removeClass('hide');
 					});
 				});
 			}
 		}
+	};
+
+	cervejeiras.showcaseRegularCervejeiras = () => {
+		let showcase = $('.vitrine-promocoes').find('.adicional');
+
+		$('.vitrine-promocoes .prateleira ul').slick({
+			mobileFirst: true,
+			arrows: true,
+			dots: true,
+			slidesToShow: 1,
+			slidesToScroll:1,
+			responsive: [{
+				breakpoint: 960,
+				settings: {
+					infinite: false,
+					slidesToShow: 3,
+					slidesToScroll: 3
+
+				}
+			}]
+		});
+
+		showcase.each(function(index, element) {
+			let parcel = $(element).find('strong');
+			if (parcel.length > 0) {
+				let text = parcel.eq(0).text().toLowerCase().replace('r$ ', 'R$') + ' ' + parcel.eq(1).text().toLowerCase().replace('r$ ', 'R$');
+
+				$(element).append(`
+									<p class="preco-parcelado"> ${text} </p>
+								`);
+			}
+		});
 	};
 
 	cervejeiras.init();
