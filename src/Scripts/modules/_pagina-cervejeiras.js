@@ -268,8 +268,9 @@ Nitro.module('cervejeiras', ['gallery'],  function(gallery) {
 
 				productLink.find('.product-sku_radio').on('change', function () {
 					setUrlButton(productLink);
-					$('.product-sku_error.-desktop').addClass('-hideBallon-desktop');
-					$('.product-sku_error.-mobile').addClass('-hideBallon-mobile');
+					$('.product-sku_error').addClass('hide');
+
+					$('.product-sku_error').slideUp('slow', function() {});
 				});
 
 				$('.-not-selected').on('click', function() {
