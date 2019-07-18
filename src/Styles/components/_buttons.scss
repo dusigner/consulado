@@ -13,13 +13,13 @@
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 700;
-		padding: .7em 2.5em;
+		padding: 0.7em 2.5em;
 		position: relative;
 		text-align: center;
 		user-select: none;
 		vertical-align: baseline;
 
-		&:hover  {
+		&:hover {
 			background: transparent;
 			color: $orange;
 		}
@@ -31,10 +31,12 @@
 			outline: none;
 		}
 
-		&::-moz-focus-inner { padding: 0; }
+		&::-moz-focus-inner {
+			padding: 0;
+		}
 
 		&.loading {
-			background-color: lighten($orange, 25%)!important;
+			background-color: lighten($orange, 25%) !important;
 			font-size: 0;
 			height: 50px;
 
@@ -50,7 +52,7 @@
 		@extend %primary-button;
 		background-color: transparent;
 		color: $orange;
-		padding: .7em 1.2em;
+		padding: 0.7em 1.2em;
 
 		&:hover {
 			background-color: $orange;
@@ -59,250 +61,285 @@
 	}
 
 	a.primary-button,
-	a.secondary-button { text-decoration: none; }
-
-
-$something: false;
-
-@if $something == true {
-	.btn- {
-		background-color: $object-ui-color;
-		border: 0;
-		color: $button-font-color;
-		cursor: pointer;
-		display: inline-block;
-		font-family: inherit;
-		font-size: 100%;
-		line-height: 1;
-		padding: .5em 1em;
-		position: relative;
-		text-align: center;
+	a.secondary-button {
 		text-decoration: none;
-		user-select: none;
-		vertical-align: baseline;
-		white-space: nowrap;
+	}
 
-		&::-moz-focus-inner {
+	$something: false;
+
+	@if $something == true {
+		.btn- {
+			background-color: $object-ui-color;
 			border: 0;
-			padding: 0;
-		}
-
-		&:hover { background-color: darken($object-ui-color, 10%); }
-
-		&:active { background-color: darken($object-ui-color, 5%); }
-
-		&[disabled] {
-			&,
-			&:hover,
-			&:active,
-			&:focus {
-				background: #dededc !important;
-				border: none;
-				color: #b3b3b1;
-				cursor: not-allowed;
-			}
-		}
-
-		a.btn {
-			&,
-			&:hover {
-				color: $button-hover-font-color;
-				text-decoration: none;
-			}
-
-			&:active { outline: 0; }
-		}
-
-		input[type='submit'].btn {
 			color: $button-font-color;
-			height: auto;
-			padding: .5em 1em;
-		}
+			cursor: pointer;
+			display: inline-block;
+			font-family: inherit;
+			font-size: 100%;
+			line-height: 1;
+			padding: 0.5em 1em;
+			position: relative;
+			text-align: center;
+			text-decoration: none;
+			user-select: none;
+			vertical-align: baseline;
+			white-space: nowrap;
 
-		button.btn { color: $button-font-color; }
+			&::-moz-focus-inner {
+				border: 0;
+				padding: 0;
+			}
 
+			&:hover {
+				background-color: darken($object-ui-color, 10%);
+			}
 
-		// Background colors
-		@if $use-button-bg-colors == true {
-			@each $bg-color, $color in $bg-colors {
-				&.bg-#{$bg-color} { background-color: $color; }
-				&.bg-#{$bg-color}:hover { background-color: darken($color, 10%); }
-				&.bg-#{$bg-color}:active { background-color: darken($color, 5%); }
+			&:active {
+				background-color: darken($object-ui-color, 5%);
+			}
 
-				@if $bg-color != 'white' {
-					&.bg-light-#{$bg-color} { background-color: lighten($color, 32.5%); }
+			&[disabled] {
+				&,
+				&:hover,
+				&:active,
+				&:focus {
+					background: #dededc !important;
+					border: none;
+					color: #b3b3b1;
+					cursor: not-allowed;
+				}
+			}
+
+			a.btn {
+				&,
+				&:hover {
+					color: $button-hover-font-color;
+					text-decoration: none;
+				}
+
+				&:active {
+					outline: 0;
+				}
+			}
+
+			input[type='submit'].btn {
+				color: $button-font-color;
+				height: auto;
+				padding: 0.5em 1em;
+			}
+
+			button.btn {
+				color: $button-font-color;
+			}
+
+			// Background colors
+			@if $use-button-bg-colors == true {
+				@each $bg-color, $color in $bg-colors {
+					&.bg-#{$bg-color} {
+						background-color: $color;
+					}
+					&.bg-#{$bg-color}:hover {
+						background-color: darken($color, 10%);
+					}
+					&.bg-#{$bg-color}:active {
+						background-color: darken($color, 5%);
+					}
+
+					@if $bg-color != 'white' {
+						&.bg-light-#{$bg-color} {
+							background-color: lighten($color, 32.5%);
+						}
+					}
 				}
 			}
 		}
 	}
 
-}
+	// Button Styles
+	@if $use-button-styles == true {
+		// Full-width collapsed button
+		.btn-collapse-full {
+			display: block;
+			margin: 12px 0;
+			width: 100%;
 
-  // Button Styles
-@if $use-button-styles == true {
-	// Full-width collapsed button
-	.btn-collapse-full {
-	  display: block;
-	  margin: 12px 0;
-	  width: 100%;
-
-	  @include breakpoint(extra-small) {
-		& {
-		  display: inline-block;
-		  margin: 0;
-		  width: auto;
-		}
-	  }
-	}
-
-
-	// Button sizes
-	.btn-extra-small,
-	a.btn-extra-small,
-	p.btn-extra-small,
-	input.btn-extra-small {
-	  @include font-size(10px);
-	  padding: .25em .75em;
-	}
-
-	.btn-small,
-	a.btn-small,
-	p.btn-small,
-	input.btn-small { @include font-size(12px); }
-
-	.btn-large,
-	a.btn-large,
-	p.btn-large,
-	input.btn-large {
-	  @include font-size(18px);
-	  padding: 1em 2em;
-	}
-
-	.btn-extra-large,
-	a.btn-extra-large,
-	p.btn-extra-large,
-	input.btn-extra-large {
-	  @include font-size(24px);
-	  padding: 1em 2em;
-	}
-
-
-	// Dropdowns
-	.btn.dropdown {
-	  width: 100%;
-
-	  .dropdown-menu {
-		margin-top: auto;
-		text-align: left;
-		top: 100%;
-		width: 100%;
-	  }
-
-	  &[class*='dropdown-arrow-'] .dropdown-menu { margin-top: 10px; }
-
-	  &.up {
-		.dropdown-menu {
-		  margin-bottom: 0;
-		  top: auto;
+			@include breakpoint(extra-small) {
+				& {
+					display: inline-block;
+					margin: 0;
+					width: auto;
+				}
+			}
 		}
 
-		&[class*='dropdown-arrow-'] .dropdown-menu { margin-bottom: 10px; }
-	  }
+		// Button sizes
+		.btn-extra-small,
+		a.btn-extra-small,
+		p.btn-extra-small,
+		input.btn-extra-small {
+			@include font-size(10px);
+			padding: 0.25em 0.75em;
+		}
+
+		.btn-small,
+		a.btn-small,
+		p.btn-small,
+		input.btn-small {
+			@include font-size(12px);
+		}
+
+		.btn-large,
+		a.btn-large,
+		p.btn-large,
+		input.btn-large {
+			@include font-size(18px);
+			padding: 1em 2em;
+		}
+
+		.btn-extra-large,
+		a.btn-extra-large,
+		p.btn-extra-large,
+		input.btn-extra-large {
+			@include font-size(24px);
+			padding: 1em 2em;
+		}
+
+		// Dropdowns
+		.btn.dropdown {
+			width: 100%;
+
+			.dropdown-menu {
+				margin-top: auto;
+				text-align: left;
+				top: 100%;
+				width: 100%;
+			}
+
+			&[class*='dropdown-arrow-'] .dropdown-menu {
+				margin-top: 10px;
+			}
+
+			&.up {
+				.dropdown-menu {
+					margin-bottom: 0;
+					top: auto;
+				}
+
+				&[class*='dropdown-arrow-'] .dropdown-menu {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		@include breakpoint(small) {
+			.btn-extra-small .caret,
+			.btn-small .caret {
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				border-top: 4px solid;
+			}
+
+			.btn.dropdown {
+				width: auto;
+
+				&.extra-small .dropdown-menu {
+					margin-top: 6px;
+				}
+
+				&.dropdown-small .dropdown-menu {
+					margin-top: 11px;
+				}
+
+				&.dropdown-large .dropdown-menu {
+					margin-top: 21px;
+				}
+			}
+		}
 	}
-
-	@include breakpoint(small) {
-	  .btn-extra-small .caret,
-	  .btn-small .caret {
-		border-left: 4px solid transparent;
-		border-right: 4px solid transparent;
-		border-top: 4px solid;
-	  }
-
-	  .btn.dropdown {
-		width: auto;
-
-		&.extra-small .dropdown-menu { margin-top: 6px; }
-
-		&.dropdown-small .dropdown-menu { margin-top: 11px; }
-
-		&.dropdown-large .dropdown-menu { margin-top: 21px; }
-	  }
-	}
-  }
 }
 
 // BTN new styles
 %btn-primary-button,
 .btn-primary-button {
-  background-color: $orange;
-  border: 2px solid $orange;
-  border-radius: 50px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  position: relative;
-  text-align: center;
-  transition: .3s ease;
-  user-select: none;
-  vertical-align: baseline;
+	background-color: $orange;
+	border: 2px solid $orange;
+	border-radius: 50px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	position: relative;
+	text-align: center;
+	transition: 0.3s ease;
+	user-select: none;
+	vertical-align: baseline;
 
-  &:hover  {
-    background: transparent;
-    color: $orange;
-  }
+	&:hover {
+		background: transparent;
+		color: $orange;
+	}
 
-  &.bold { font-weight: 700; }
+	&.bold {
+		font-weight: 700;
+	}
 
-  &.large { padding: .7em 2.5em; }
+	&.large {
+		padding: 0.7em 2.5em;
+	}
 
-  &.small { padding: .3em 1.2em; }
+	&.small {
+		padding: 0.3em 1.2em;
+	}
 
-  &.green  {
-    background-color: $green;
-	  border-color: $green;
-    color: #fff;
+	&.green {
+		background-color: $green;
+		border-color: $green;
+		color: #fff;
 
-    &:hover {
-      background-color: transparent;
-      border-color: $green;
-      color: $green;
-    }
-  }
+		&:hover {
+			background-color: transparent;
+			border-color: $green;
+			color: $green;
+		}
+	}
 
-  &:focus,
-  &:active,
-  &::-moz-focus-inner {
-    border: none;
-    outline: none;
-  }
+	&:focus,
+	&:active,
+	&::-moz-focus-inner {
+		border: none;
+		outline: none;
+	}
 
-  &::-moz-focus-inner { padding: 0; }
+	&::-moz-focus-inner {
+		padding: 0;
+	}
 }
 
 %btn-secondary-button,
 .btn-secondary-button {
-  @extend %btn-primary-button;
-  background-color: transparent;
-  color: $orange;
-  padding: .7em 1.2em;
+	@extend %btn-primary-button;
+	background-color: transparent;
+	color: $orange;
+	padding: 0.7em 1.2em;
 
-    &.green  {
-      background-color: transparent;
-      border-color: $green;
-      color: $green;
+	&.green {
+		background-color: transparent;
+		border-color: $green;
+		color: $green;
 
-      &:hover {
-        background-color: $green;
-        color: #fff;
-      }
-    }
+		&:hover {
+			background-color: $green;
+			color: #fff;
+		}
+	}
 
-  &:hover {
-    background-color: $orange;
-    color: #fff;
-  }
+	&:hover {
+		background-color: $orange;
+		color: #fff;
+	}
 }
 
 a.btn-primary-button,
-a.btn-secondary-button { text-decoration: none; }
+a.btn-secondary-button {
+	text-decoration: none;
+}
