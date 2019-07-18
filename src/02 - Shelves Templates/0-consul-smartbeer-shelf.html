@@ -3,15 +3,31 @@
 #set($escapedName = $product.HtmlEscapedName)
 
 <div class="container">
+
+	<h3 class="product-description-text -mobile">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>
+
 	<div class="smartbeer-showcase">
 		<div class="product-image">
+			<div class="prod-galeria text-center">
+				<div class="apresentacao">
+					<div id="setaThumbs"></div>
+						<div id="show">
+							<div id="include">
+								<div id="image" productindex="0">
+								</div>
+							</div>
+						<ul class="thumbs">
 
+						</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="product-details">
 			<div class="product-info">
 				<div class="product-description">
-
+						<h3 class="product-description-text -desktop">Uma cervejeira conectada que avisa quando a bebida está acabando e ajuda a pedir mais? <span>Agora existe.</span></h3>
 				</div>
 
 				<h3 class="product-name">$product.Name</h3>
@@ -38,8 +54,12 @@
 
 				</div>
 
+				<div class="product-sku_error hide">
+					<span class="select-sku"> Por favor, <strong>selecione uma voltagem </strong></span>
+				</div>
+
 				<div class="product-buy-button">
-					<a class="product-buy" href="/cart">Comprar</a>
+					<a class="product-buy">Comprar</a>
 				</div>
 			</div>
 		</div>
