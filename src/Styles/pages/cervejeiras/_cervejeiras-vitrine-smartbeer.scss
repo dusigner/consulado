@@ -64,7 +64,7 @@
 
 			@include rfs(26);
 			color: #404636;
-			line-height: 1;
+			line-height: 120%;
 			margin: 30px 0 24px;
 
 			span {
@@ -173,6 +173,7 @@
 				margin: 0 auto;
 				order: -1;
 				padding-bottom: 15px;
+				padding-left: 25px;
 				width: 25%;
 			}
 		}
@@ -248,7 +249,7 @@
 				&:before {
 					border: 15px solid transparent;
 					border-bottom-color: #702F8F;
-					bottom: 85px;
+					bottom: 100px;
 					content: '';
 					left: 14%;
 					position: absolute;
@@ -295,7 +296,7 @@
 			display: block;
 			font-size: 15px;
 			font-weight: 500;
-			margin: 10px 0 5px;
+			margin: 25px 0 5px;
 			padding: 15px 0 14px;
 			position: relative;
 			text-align: center;
