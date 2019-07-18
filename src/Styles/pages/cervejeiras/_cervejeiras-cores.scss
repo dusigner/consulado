@@ -1,7 +1,10 @@
 @charset 'UTF-8';
 
 .cervejeiras-cores {
-	@include breakpoint('medium', 'min') { padding: 90px 0 60px 0; }
+	@include breakpoint('medium', 'min') {
+		padding: 90px 0 60px 0;
+		max-height: 600px;
+	}
 	background-color: #fff;
 	overflow: hidden;
 	padding: 1em 0;
@@ -143,10 +146,10 @@
 
 	// CTA
 	&__cta {
-		@include breakpoint('medium', 'max') {
-			display: none;
-			visibility: hidden;
-		}
+		// @include breakpoint('medium', 'max') {
+		// 	display: none;
+		// 	visibility: hidden;
+		// }
 		padding: 0.6em 4em !important;
 	}
 }

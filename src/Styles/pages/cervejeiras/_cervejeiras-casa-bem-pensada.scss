@@ -1,0 +1,67 @@
+@charset 'UTF-8';
+
+.cervejeiras-casa-bem-pensada {
+	@include breakpoint('medium', 'max') { flex-direction: column; }
+	display: flex;
+	overflow: hidden;
+
+	.cervejeiras-casa-bem-pensada__item {
+		flex: 1 0 25%;
+		overflow: hidden;
+
+		&:first-child,
+		&:last-child {
+			@include breakpoint('medium', 'max') {
+				display: none;
+				visibility: hidden;
+			}
+		}
+
+		img {
+			@include breakpoint('medium', 'min') { display: block; }
+			@include breakpoint('medium', 'max') {
+				display: none;
+				width: 100%;
+			}
+			max-width: 100%;
+			min-width: 360px;
+			transition: transform .3s ease;
+
+			// Mobile
+			&[src*='--mobile'] {
+				@include breakpoint('medium', 'max') { display: block; }
+				display: none;
+			}
+		}
+
+		// Hover
+		&:hover {
+			img {
+				transform: scale(1.1);
+			}
+		}
+	}
+
+	.casa-bem-pensada--conteudo {
+		min-width: 350px;
+		padding: 2.2em;
+	}
+
+	// Title
+	&__title {
+		@include rfs(35);
+		margin-top: 0;
+
+		span {
+			color: #9aca3c;
+			display: block;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(16);
+		line-height: 200%;
+		margin-bottom: 0;
+	}
+}
