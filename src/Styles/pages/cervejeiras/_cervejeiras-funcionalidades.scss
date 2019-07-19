@@ -28,9 +28,7 @@
 			margin: .5em 0 0 0;
 		}
 
-		small {
-			@include rfs(10);
-		}
+		small { @include rfs(10); }
 
 		img {
 			@include breakpoint('medium', 'min') { margin-bottom: -3.2em; }
@@ -43,7 +41,7 @@
 	&__title {
 		@include breakpoint('medium', 'min') { max-width: 460px; }
 		@include rfs(34);
-		line-height: 125%;
+		line-height: 140%;
 		margin: 1em 0 0 0;
 		text-transform: uppercase;
 	}
