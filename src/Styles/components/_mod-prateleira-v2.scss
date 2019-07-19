@@ -223,22 +223,27 @@ body.listagem {
 	}
 
 	.btn-comparar {
+		display: none;
 		position: relative;
+		visibility: hidden;
 
 		fieldset {
 			border: 0;
 			margin: 0;
 			padding: 0;
 
-			input {
-				position: absolute;
-			}
+			input { position: absolute; }
 
-			label {
-				margin-top: 15px;
-			}
+			label { margin-top: 15px; }
+		}
+
+		// Exibir opção de comparar somente em páginas de categoria
+		.listagem.categoria & {
+			display: block;
+			visibility: visible;
 		}
 	}
+
 
 	.department-nav { display: none; }
 
