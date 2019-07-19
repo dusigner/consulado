@@ -46,14 +46,6 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 			}
 		});
 
-		let priceInputs = $('.filtro-preco label');
-
-		priceInputs.each(function() {
-			let values = $(this).text().replace('á','à').split(' à '),
-				input = $(this).find('input');
-			$(this).text('R$ ' + values[0] + ' à R$ ' + values[1]).prepend(input);
-		});
-
 		$checkbox.change(function(e) {
 			e.preventDefault();
 
@@ -225,7 +217,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 
 				// Choose the correct parameters to create the range slider based on category page
 				if($labels.length >= 1){
-					if(title === 'Capacidade' && vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+					if(title === 'Capacidade' && window.location.href.toLowerCase().indexOf('geladeira---refrigerador') >= 0) {
 						rangeId = 'rangeListagem';
 						measure = 'L';
 
@@ -243,7 +235,7 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 						$('h5:contains("BTUs") + div').html($labelList);
 					}
 
-					if(title === 'Capacidade' && vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+					if(title === 'Capacidade' && window.location.href.toLowerCase().indexOf('lavadora-de-roupas') >= 0) {
 						rangeId = 'rangeQuilos';
 						measure = 'Kg';
 
@@ -383,14 +375,16 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		});
 
 		// Find the correct parameters based on category page
-		if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
-			measure = 'L';
-		} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
-			measure = 'Kg';
-		} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0)  {
-			measure = 'BTU/h';
-		} else {
-			measure = 'not';
+		if (vtxctx && vtxctx.categoryName) {
+			if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+				measure = 'L';
+			} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+				measure = 'Kg';
+			} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0)  {
+				measure = 'BTU/h';
+			} else {
+				measure = 'not';
+			}
 		}
 
 		// Find the first and last element in the slider interval
@@ -500,14 +494,16 @@ Nitro.module('filters', ['order-by'], function (orderBy) {
 		helper.setFilterRel('');
 
 		// Find the correct parameters based on category page
-		if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
-			rangeId = 'rangeListagem';
-		} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
-			rangeId = 'rangeQuilos';
-		} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0) {
-			rangeId = 'rangeBTUs';
-		} else {
-			rangeId = 'not';
+		if (vtxctx && vtxctx.categoryName) {
+			if (vtxctx.categoryName.toLowerCase().indexOf('geladeira') >= 0) {
+				rangeId = 'rangeListagem';
+			} else if (vtxctx.categoryName.toLowerCase().indexOf('lavadora') >= 0) {
+				rangeId = 'rangeQuilos';
+			} else if (vtxctx.categoryName.toLowerCase().indexOf('condicionado') >= 0) {
+				rangeId = 'rangeBTUs';
+			} else {
+				rangeId = 'not';
+			}
 		}
 
 		// Add to URL regular filters selected
