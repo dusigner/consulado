@@ -19,13 +19,13 @@ module.exports = {
 		assetsPath: '/files',
 		isQA: true,
 		shelfProductFieldSelos: '16',
-		shelfProductFieldModelo: '25',
+		shelfProductFieldModelo: '139',
 		shelfProductFieldEstado: '112',
 		shelfProductFieldCapacidade: '0',
 		shelfProductFieldDisplay: '0',
 		shelfProductFieldFormato: '0'
-    },
-    consulempresa: {
+	},
+	consulempresa: {
 		accountName: 'consulempresa',
 		listagemPrateleira: 'fdb0aae0-5533-467b-98b8-52039e22d374',
 		assetsPath: '//consulempresa.vteximg.com.br/arquivos',

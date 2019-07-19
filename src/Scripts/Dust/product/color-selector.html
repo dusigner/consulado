@@ -1,0 +1,26 @@
+<div class="input-box select js-input-box-select">
+	<div class="input-box-container">
+		<div class="input-box-border">
+			<div class="input-box-label">
+				Escolha a cor:
+			</div>
+			<div class="input-box-dropdown">
+				<span class="input-box-dropdown-toggle">
+					{#supermodels}
+						{?active}
+							{name}
+						{/active}
+					{/supermodels}
+				</span>
+				<ul class="input-box-dropdown-options">
+					{#supermodels}
+						{^active}
+							<li><a class="input-box-dropdown-item {style}" href="{link}">{name}</a></li>
+						{/active}
+					{/supermodels}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<p class="product-option-colors-available input-box-text">{supermodels.colorsLength} cores disponíveis</p>
+</div>
