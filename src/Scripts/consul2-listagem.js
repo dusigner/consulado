@@ -17,6 +17,7 @@ require('modules/listagem/comparebar');
 // require('modules/compare');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
+require('dataLayers/dataLayer-categoria');
 
 Nitro.controller(
 	'listagem',
@@ -29,7 +30,8 @@ Nitro.controller(
 		'calculadorabtu',
 		'busca-chaordic',
 		'comparebar',
-		'cervejeiras'
+		'cervejeiras',
+		'dataLayer-categoria'
 	],
 	function(chaordic) {
 		var $body = $('body');
@@ -100,8 +102,8 @@ Nitro.controller(
 		//TODO: pluralize
 		var orderText = !$('body').is('.busca')
 			? 'Temos ' +
-			$('.resultado-busca-numero:first .value').text() +
-			' itens'
+			  $('.resultado-busca-numero:first .value').text() +
+			  ' itens'
 			: '';
 		$('.order-title').html(
 			'<span>' + orderText + ' ordenados por </span><em>selecione</em>'
