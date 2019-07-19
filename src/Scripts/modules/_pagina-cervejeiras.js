@@ -3,11 +3,13 @@
 import 'modules/product/gallery';
 import Clipboard from 'clipboard';
 import 'dataLayers/dataLayer-cervejeira';
+import { pushDataLayer } from 'modules/_datalayer-inline';
 
 const toastr = require('vendors/toastr');
 
 Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
-	gallery
+	gallery,
+	dataLayerCervejeira
 ) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
@@ -277,7 +279,14 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					`/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${
 						window.jssalesChannel ? window.jssalesChannel : 3
 					}`
-				);
+				)
+				.click(() => {
+					pushDataLayer(
+						`[Squad] Comprar Cervejeira Consul smartbeer_ Carbono ${skuName}`,
+						'Clique no botão comprar',
+						`Comprar Cervejeira Cervejeira Consul smartbeer_ Carbono ${skuName}`
+					);
+				});
 
 			$(window).trigger('cervejeira.skuChanged', {
 				skuData: skuData,
@@ -422,4 +431,5 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	};
 
 	cervejeiras.init();
+	dataLayerCervejeira.init();
 });
