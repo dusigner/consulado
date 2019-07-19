@@ -1,0 +1,120 @@
+@charset 'UTF-8';
+
+// Smartbeer
+.smartbeer {
+	background-color: #232323;
+	background-image: url('/arquivos/cns-categoria-cervejeiras-smartbeer-bg.png');
+	color: #fff;
+
+	& > .container {
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
+		}
+		align-items: center;
+		display: flex;
+		position: relative;
+	}
+	&__title {
+		@include rfs(30);
+		line-height: 120%;
+		@include breakpoint('small', 'max') {
+			margin-top: 30px;
+			text-align: center;
+		}
+		.cor {
+			color: #9aca3c;
+			display: block;
+		}
+	}
+	&__item {
+		&:first-child {
+			@include breakpoint('small', 'min') {
+				text-align: right;
+			}
+		}
+		img {
+			@include breakpoint('small', 'max') {
+				max-width: 350px;
+			}
+		}
+	}
+
+	// CTA
+	&__cta {
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+		}
+		padding: 0.6em 4em !important;
+	}
+
+	&__app {
+		display: flex;
+		justify-content: flex-end;
+		@include breakpoint('medium', 'min') {
+			margin-top: 50px;
+		}
+		@include breakpoint('small', 'max') {
+			display: none;
+			visibility: hidden;
+
+			&--mobile {
+				@include breakpoint('small', 'max') {
+					margin-bottom: 50px;
+				}
+				.smartbeer__cta,
+				.smartbeer__app {
+					display: block;
+					visibility: visible;
+				}
+			}
+		}
+		&__box {
+			margin-right: 15px;
+			@include breakpoint('small', 'max') {
+				margin-bottom: 20px;
+				margin-right: 0;
+			}
+		}
+		&__items {
+			display: flex;
+			justify-content: flex-end;
+			margin-top: 8px;
+			@include breakpoint('small', 'max') {
+				justify-content: space-evenly;
+			}
+		}
+		&__text {
+			display: block;
+			text-align: center;
+		}
+		&__item {
+			@include breakpoint('medium', 'min') {
+				margin-left: 10px;
+			}
+		}
+		&__info {
+			@include breakpoint('small', 'max') {
+				display: none;
+			}
+		}
+
+		&--mobile {
+			@include breakpoint('medium', 'min') {
+				display: none;
+			}
+		}
+	}
+
+	// Text
+	&__text {
+		@include breakpoint('small', 'max') {
+			text-align: center;
+		}
+		@include breakpoint('medium', 'min') {
+			line-height: 220%;
+		}
+		@include rfs(13);
+		margin: 20px 0;
+	}
+}

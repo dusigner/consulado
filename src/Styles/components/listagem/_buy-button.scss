@@ -1,0 +1,157 @@
+
+ .prod__selectSKU {
+	 display: none;
+ }
+
+body.buyButton {
+	.semEstoque {
+		.prod__selectSKU,
+		.indisponivel {
+			display: none;
+		}
+	}
+
+	.prod__selectSKU {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0 auto;
+		position: relative;
+		white-space: nowrap;
+		width: 75%;
+		z-index: 3;
+
+		@include breakpoint ('medium', 'max') {
+			width: 50%;
+		}
+	}
+
+	.sku {
+		&__selector {
+			display: inline-block;
+		}
+
+		&_radio {
+			display: none!important;
+
+			&.unavailable {
+				opacity: .3;
+			}
+
+			&:checked {
+				& + label {
+					font-weight: bold;
+
+					@include breakpoint ('medium', 'max') {
+					    padding-top: 4px;
+					}
+
+					&:before {
+						background-color: #702f8f;
+						border: 3px solid #fff;
+						border-radius: 10px;
+						box-shadow: 0 0 0 2px #702f8f;
+						content: '';
+						display: inline-block;
+						height: 12px;
+						margin: 0 2px;
+						position: relative;
+						right: 5px;
+						top: 2px;
+						width: 12px;
+
+					}
+				}
+			}
+		}
+
+		&_title {
+			display: inline-block;
+			font-size: 10px;
+			min-width: 25px;
+
+			&.unavailable {
+				opacity: .3;
+			}
+
+			&:before {
+				border: 1px solid #BBBBBB;
+				border-radius: 10px;
+				content: '';
+				display: inline-block;
+				height: 16px;
+				position: relative;
+				right: 5px;
+				top: 4px;
+				width: 16px;
+			}
+		}
+
+		&_buy {
+			background: #9ACA3C;
+			border-radius: 40px;
+			color: #fff;
+			display: block!important;
+			font-size: 15px;
+			font-weight: 500;
+			margin: 15px auto 5px;
+			padding: 10px 0;
+			position: relative;
+			text-align: center;
+			width: 85%;
+			z-index: 3;
+		}
+
+		&_error {
+			background-color: #702F8F;
+			color: #fff;
+			font-size: 11px;
+			margin-bottom: 5%;
+			margin-top: 1%;
+			padding: 10px;
+
+			&:before {
+				border: 15px solid transparent;
+				border-bottom-color: #702F8F;
+				content: '';
+				left: 45%;
+				position: absolute;
+				top: 46%;
+
+				@include breakpoint('extra-large', 'max') {
+					left: 45%;
+					top: 230px;
+
+					@include breakpoint('large', 'max') {
+						left: 45%;
+						top: 255px;
+
+						@include breakpoint('small', 'max') {
+							left: 48%;
+							top: 255px;
+
+							@include breakpoint('extra-small', 'max') {
+								left: 45%;
+								top: 270px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.select-sku {
+		display: block;
+		text-align: center;
+		width: 100%;
+
+		strong {
+			display: block;
+		}
+	}
+
+	.-not-available {
+		pointer-events: none;
+	}
+}
