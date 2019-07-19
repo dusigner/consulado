@@ -58,7 +58,10 @@
 	width: 100%;
 
 	&__item {
-		@include breakpoint('medium', 'max') { text-align: center; }
+		@include breakpoint('medium', 'max') {
+			height: 100px;
+			text-align: center;
+		}
 		align-items: center;
 		display: flex;
 		margin-top: 1.2em;
