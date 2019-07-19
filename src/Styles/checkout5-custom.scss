@@ -234,6 +234,22 @@ body {
 		}
 	}
 
+	// Retirar dois cartões porque pararam de oferecer a solução.
+	& #payment-group-MercadoPagoPaymentGroup .payment-group-item-text:after {
+		display: none;
+		visibility: hidden;
+	}
+
+	& .payment-mercadopago-points {
+		.payment-mercadopago-point.payment-mercadopago-point-confirm {
+			&:before,
+			&:after {
+				display: none;
+				visibility: hidden;
+			}
+		}
+	}
+
 
 
 

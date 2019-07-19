@@ -3,19 +3,25 @@
 import 'modules/product/gallery';
 import Clipboard from 'clipboard';
 import 'dataLayers/dataLayer-cervejeira';
+import { pushDataLayer } from 'modules/_datalayer-inline';
 
 const toastr = require('vendors/toastr');
 
 Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
-	gallery
+	gallery,
+	dataLayerCervejeira
 ) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
+	const allSlides = $(
+		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
+	);
 	const coloredBackground = $('.item--cervejeira');
-	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
+	const cervejeirasListaFuncionalidades = $(
+		'.cervejeiras-lista-funcionalidades'
+	);
 
 	// Init
 	cervejeiras.init = () => {
@@ -109,13 +115,20 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-			const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data('color');
-			const nextColor = $(selecaoCoresItems[nextSlide + 1]).data('color');
+		selecaoCores.on(
+			'beforeChange',
+			(event, slick, currentSlide, nextSlide) => {
+				const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data(
+					'color'
+				);
+				const nextColor = $(selecaoCoresItems[nextSlide + 1]).data(
+					'color'
+				);
 
-			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
-			coloredBackground.addClass(`cervejeira--${nextColor}`);
-		});
+				coloredBackground.removeClass(`cervejeira--${beforeColor}`);
+				coloredBackground.addClass(`cervejeira--${nextColor}`);
+			}
+		);
 	};
 
 	// Listagem de funcionalidades
@@ -131,7 +144,11 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 						dots: true
 					});
 			} else {
-				if (cervejeirasListaFuncionalidades.hasClass('slick-initialized')) {
+				if (
+					cervejeirasListaFuncionalidades.hasClass(
+						'slick-initialized'
+					)
+				) {
 					cervejeirasListaFuncionalidades.slick('unslick');
 				}
 			}
@@ -155,10 +172,14 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	};
 
 	cervejeiras.videoPlay = () => {
-		const playVideo = $('.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video');
+		const playVideo = $(
+			'.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video'
+		);
 
 		playVideo.click(function() {
-			const videoToPlay = $('.cervejeiras-videos-thumbs__item.is--active').data('vid');
+			const videoToPlay = $(
+				'.cervejeiras-videos-thumbs__item.is--active'
+			).data('vid');
 			const videoContainer = $('.cervejeiras-videos__video');
 
 			videoContainer.addClass('video-is-playing');
@@ -166,7 +187,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		});
 	};
 
-	cervejeiras.updateVideoUrl = (videoId) => {
+	cervejeiras.updateVideoUrl = videoId => {
 		const videoURL = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
 		const videoContainer = $('.cervejeiras-videos__video');
 		const videoFrame = videoContainer.find('iframe');
@@ -241,10 +262,15 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 			galleryImg = $('.product-image');
 
 		const setUrlButton = productLink => {
-			let skuData = $(productLink)
+			const skuData = $(productLink)
 					.find('.product-sku_radio:checked')
 					.data('sku-value'),
-				skuButton = productLink.find('.product-buy');
+				skuButton = productLink.find('.product-buy'),
+				skuName = $(productLink)
+					.find('.product-sku_radio:checked')
+					.parent()
+					.data('title');
+
 			skuButton
 				.unbind()
 				.removeClass('-not-selected-smartbeer')
@@ -253,7 +279,19 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					`/checkout/cart/add?sku=${skuData}&qty=1&seller=1&redirect=true&sc=${
 						window.jssalesChannel ? window.jssalesChannel : 3
 					}`
-				);
+				)
+				.click(() => {
+					pushDataLayer(
+						`[Squad] Comprar Cervejeira Consul smartbeer_ Carbono ${skuName}`,
+						'Clique no botão comprar',
+						`Comprar Cervejeira Cervejeira Consul smartbeer_ Carbono ${skuName}`
+					);
+				});
+
+			$(window).trigger('cervejeira.skuChanged', {
+				skuData: skuData,
+				skuName: skuName
+			});
 		};
 
 		productImage.push('/arquivos/smartbeer-frontal.png?v=2');
@@ -315,7 +353,9 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					`);
 				}
 
-				$('.vitrine-smartbeer .product-buy').addClass('-not-selected-smartbeer');
+				$('.vitrine-smartbeer .product-buy').addClass(
+					'-not-selected-smartbeer'
+				);
 
 				sku.find('.unavailable').attr('disabled', true);
 
@@ -354,10 +394,14 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 						arrows: true,
 						dots: true,
 						slidesToShow: 1,
-						slidesToScroll:1
+						slidesToScroll: 1
 					});
 			} else {
-				if ($('.vitrine-promocoes .prateleira>ul').hasClass('slick-initialized')) {
+				if (
+					$('.vitrine-promocoes .prateleira>ul').hasClass(
+						'slick-initialized'
+					)
+				) {
 					$('.vitrine-promocoes .prateleira>ul').slick('unslick');
 				}
 			}
@@ -366,7 +410,18 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		showcase.each(function(index, element) {
 			let parcel = $(element).find('strong');
 			if (parcel.length > 0) {
-				let text = parcel.eq(0).text().toLowerCase().replace('r$ ', 'R$') + ' ' + parcel.eq(1).text().toLowerCase().replace('r$ ', 'R$');
+				let text =
+					parcel
+						.eq(0)
+						.text()
+						.toLowerCase()
+						.replace('r$ ', 'R$') +
+					' ' +
+					parcel
+						.eq(1)
+						.text()
+						.toLowerCase()
+						.replace('r$ ', 'R$');
 
 				$(element).append(`
 									<p class="preco-parcelado"> ${text} </p>
@@ -376,4 +431,5 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	};
 
 	cervejeiras.init();
+	dataLayerCervejeira.init();
 });

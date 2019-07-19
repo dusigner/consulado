@@ -15,5 +15,47 @@ Nitro.module('dataLayer-cervejeira', function() {
 		});
 	};
 
-	this.trocarCor();
+	this.galleryImageChange = () => {
+		$('.gallery').on(
+			'beforeChange',
+			(event, slick, currentSlide, nextSlide) => {
+				pushDataLayer(
+					`[Squad] Foto ${nextSlide + 1}`,
+					'Trocar Foto',
+					`Trocar Foto ${nextSlide + 1}`
+				);
+			}
+		);
+	};
+
+	this.changeSkuSmartbeer = () => {
+		$(window).on('cervejeira.skuChanged', (e, data) => {
+			pushDataLayer(
+				`[Squad] Escolher Voltagem Cervejeira Consul smartbeer_ Carbono ${
+					data.skuName
+				}`,
+				'Escolher Voltagem',
+				`Escolher Voltagem Cervejeira Consul smartbeer_ Carbono ${
+					data.skuName
+				}`
+			);
+		});
+	};
+
+	this.clickVideo = () => {
+		$('.cervejeiras-videos__video').click(() => {
+			pushDataLayer(
+				'[Squad] Assistir Vídeo',
+				'Play no vídeo',
+				'Play no vídeo'
+			);
+		});
+	};
+
+	this.init = () => {
+		this.trocarCor();
+		this.galleryImageChange();
+		this.changeSkuSmartbeer();
+		this.clickVideo();
+	};
 });

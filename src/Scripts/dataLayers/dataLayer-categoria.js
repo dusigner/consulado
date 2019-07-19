@@ -25,7 +25,18 @@ Nitro.module('dataLayer-categoria', function() {
 		});
 	};
 
+	this.shelfSelectSku = () => {
+		$(window).on('shelf.skuChanged', (e, data) => {
+			pushDataLayer(
+				`${data.productName} ${data.skuName}`,
+				'Escolher Voltagem Cervejeira',
+				`Escolher Voltagem ${data.productName} ${data.skuName}`
+			);
+		});
+	};
+
 	checkInlineDatalayers();
 
 	this.breadCrumb();
+	this.shelfSelectSku();
 });
