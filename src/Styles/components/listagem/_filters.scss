@@ -351,30 +351,14 @@ body.departamento {
 								visibility: visible;
 								width: 20px;
 							}
-							&.active {
+							&.active:not(.loading) {
 								font-weight: 700;
 
-								&:after {
+								&:before {
 									@include icon-get('check-thin');
 									background-color: $purple-n;
 									color: #fff;
-									display: inline-block;
-									font-size: 1.2rem;
-									font-weight: 0;
-									height: 18px;
-									left: 1px;
-									margin-left: 0;
-									position: absolute;
-									text-align: center;
-									top: 50%;
-									transform: translate(0%, -50%);
-									visibility: visible;
-									width: 18px;
-
-									@include breakpoint ('medium', 'max') {
-										left: 11px;
-										top: 21px;
-									}
+									font-size: 1.1rem;
 								}
 							}
 							&.loading {
