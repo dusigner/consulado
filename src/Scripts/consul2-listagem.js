@@ -105,9 +105,7 @@ Nitro.controller(
 			  $('.resultado-busca-numero:first .value').text() +
 			  ' itens'
 			: '';
-		$('.order-title').html(
-			'<span>' + orderText + ' ordenados por </span><em>selecione</em>'
-		);
+		$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>');
 		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
