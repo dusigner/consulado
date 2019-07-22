@@ -5,8 +5,6 @@
 require('Dust/filters.html');
 
 Nitro.module('filters', function() {
-
-
 	var self = this,
 		$navigator = $('.search-single-navigator'),
 		$holder = $('.filter-wrapper'),
@@ -22,7 +20,6 @@ Nitro.module('filters', function() {
 	};
 
 	this.setup = function() {
-
 		//conditional for get department item
 		//var $department = $navigator.find('h3');
 
@@ -41,57 +38,54 @@ Nitro.module('filters', function() {
 		items = items.concat(departments, categories, filters);
 
 		this.render();
-
 	};
 
 	this.createItem = function($item, type) {
+		return (
+			$item &&
+			$.map($item, function(el) {
+				el = $(el);
 
-		return $item && $.map($item, function(el) {
+				var link = el.find('a'),
+					list = el.next('ul');
 
-			el = $(el);
+				var item = {
+					name: link.length ? link.attr('title') : el.text(),
+					type: type,
+					link: link.attr('href'),
+					active: false,
+					style: list.attr('class'),
+					children: self.createItem(list.find('li'), type)
+				};
 
-			var link = el.find('a'),
-				list = el.next('ul');
+				if (item.style) {
+					item.style = $.trim(item.style.replace(/hide|even/i, '')); //$.replaceSpecialChars
+				}
 
-			var item = {
-				name: link.length ? link.attr('title') : el.text(),
-				type: type,
-				link: link.attr('href'),
-				active: false,
-				style: list.attr('class'),
-				children: self.createItem(list.find('li'), type)
-			};
+				if (type === 'department' && window.vtxctx.departmentName === item.name) {
+					item.active = true;
+				} else if (type === 'category' && window.vtxctx.categoryName === item.name) {
+					item.active = true;
+				} else if (el.hasClass('filtro-ativo')) {
+					item.active = true;
+				}
 
-			if (item.style) {
-				item.style = $.trim(item.style.replace(/hide|even/i, '')); //$.replaceSpecialChars
-			}
+				//set active parent when child filter is active
+				if (item.children && item.children.length === 1 && item.children[0].active) {
+					item.active = true;
+				}
 
-			if (type === 'department' && window.vtxctx.departmentName === item.name) {
-				item.active = true;
-			} else if (type === 'category' && window.vtxctx.categoryName === item.name) {
-				item.active = true;
-			} else if (el.hasClass('filtro-ativo')) {
-				item.active = true;
-			}
+				// console.log(el, item);
 
-			//set active parent when child filter is active
-			if (item.children && item.children.length === 1 && item.children[0].active) {
-				item.active = true;
-			}
-
-			// console.log(el, item);
-
-			return item;
-		});
-
+				return item;
+			})
+		);
 	};
 
 	this.getFilterLink = function() {
-
 		var map = _.urlParams().map;
 
 		if (map && map !== '') {
-
 			var mapParams = map.split(','),
 				urlRest = window.location.pathname.split('/');
 
@@ -102,34 +96,33 @@ Nitro.module('filters', function() {
 
 			// concat only categories from pathname plus first slash
 			return urlRest.slice(0, count + 1).join('/');
-
 		}
 	};
 
 	this.render = function() {
-
 		// console.log('items', items);
 		// console.table('filters', items);
 
-		dust.render('filters', {
-			items: items,
-			filter: self.getFilterLink(),
-			search: self.isSearch(),
-			department: self.isDepartment(),
-			categories: categories,
+		dust.render(
+			'filters',
+			{
+				items: items,
+				filter: self.getFilterLink(),
+				search: self.isSearch(),
+				department: self.isDepartment(),
+				categories: categories
+			},
+			function(err, out) {
+				if (err) {
+					throw new Error('Filters Dust error: ' + err);
+				}
 
-		}, function(err, out) {
-			if (err) {
-				throw new Error('Filters Dust error: ' + err);
+				$holder.after(out).show();
 			}
-
-			$holder.after(out).show();
-		});
-
+		);
 	};
 
 	this.setup();
-
 });
 
 /*jshint strict: false */

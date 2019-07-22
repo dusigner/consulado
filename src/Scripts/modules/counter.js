@@ -5,8 +5,7 @@
  */
 'use strict';
 
-
-Nitro.module('counter', function () {
+Nitro.module('counter', function() {
 	const endDate = $('.counter__offer-prod .prateleira.default h2').text();
 
 	this.init = () => {
@@ -34,12 +33,12 @@ Nitro.module('counter', function () {
 				seconds = Math.floor((total / 1000) % 60),
 				minutes = Math.floor((total / (1000 * 60)) % 60),
 				hours = Math.floor((total / (1000 * 60 * 60)) % 24),
-				days = Math.floor((total / (1000 * 60 * 60 * 24))),
+				days = Math.floor(total / (1000 * 60 * 60 * 24)),
 				timeRemaining = {
-					'days': days >= 0 ? days : 0,
-					'hours': hours >= 0 ? hours : 0,
-					'minutes': minutes >= 0 ? minutes : 0,
-					'seconds': seconds >= 0 ? seconds : 0
+					days: days >= 0 ? days : 0,
+					hours: hours >= 0 ? hours : 0,
+					minutes: minutes >= 0 ? minutes : 0,
+					seconds: seconds >= 0 ? seconds : 0
 				};
 
 			if (isNaN(finalDate)) {
@@ -49,7 +48,7 @@ Nitro.module('counter', function () {
 			return timeRemaining;
 		}
 
-		setInterval(function () {
+		setInterval(function() {
 			timeRemaining = getTimeRemaining(endDate);
 
 			if (timeRemaining === null) {
@@ -57,7 +56,12 @@ Nitro.module('counter', function () {
 				return;
 			}
 
-			if (timeRemaining.days === 0 && timeRemaining.hours === 0 && timeRemaining.minutes === 0 && timeRemaining.seconds === 0) {
+			if (
+				timeRemaining.days === 0 &&
+				timeRemaining.hours === 0 &&
+				timeRemaining.minutes === 0 &&
+				timeRemaining.seconds === 0
+			) {
 				$buyButton.addClass('hide');
 				$counterSubSection.addClass('button-hidden');
 				$counter.addClass('hide');

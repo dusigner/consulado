@@ -5,10 +5,9 @@
  */
 'use strict';
 
-
-Nitro.module('datalayer_track', function () {
+Nitro.module('datalayer_track', function() {
 	this.init = () => {
-		const $bannersoffers 	= $('.banners-offers__item'),
+		const $bannersoffers = $('.banners-offers__item'),
 			$prateleirasTab = $('.prateleira-tabs__tab');
 
 		// Desconto a vista tag
@@ -103,9 +102,9 @@ Nitro.module('datalayer_track', function () {
 			})
 			// TAG PRODUTO CONTADOR
 			.on('click', '.counter__offer-prod', function() {
-				const $prod 	= $(this),
-					prodName 	= $prod.find('.shelf__title').text(),
-					prodID		= $prod.find('.shelf__item').data('idproduto');
+				const $prod = $(this),
+					prodName = $prod.find('.shelf__title').text(),
+					prodID = $prod.find('.shelf__item').data('idproduto');
 
 				dataLayer.push({
 					event: 'generic',
@@ -116,15 +115,20 @@ Nitro.module('datalayer_track', function () {
 			})
 			// TAG PRODUTOS TABS
 			.on('click', '.box-produto', function() {
-				const $prod 		= $(this),
-					prodID 			= $prod.data('idproduto'),
-					prodName 		= $prod.find('.prod-info .nome')
+				const $prod = $(this),
+					prodID = $prod.data('idproduto'),
+					prodName = $prod
+						.find('.prod-info .nome')
 						.clone()
 						.children()
 						.remove()
 						.end()
-						.text().replace(/(\r\n|\n|\r)/gm, "").trim(), // remove line breakd and spaces
-					prodCategory	= $('.prateleira-tabs__tab.is--active').text().trim();
+						.text()
+						.replace(/(\r\n|\n|\r)/gm, '')
+						.trim(), // remove line breakd and spaces
+					prodCategory = $('.prateleira-tabs__tab.is--active')
+						.text()
+						.trim();
 
 				dataLayer.push({
 					event: 'generic',

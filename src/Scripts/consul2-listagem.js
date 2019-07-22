@@ -63,19 +63,12 @@ Nitro.controller(
 
 		var $filterOptions = $('#O:first option'),
 			// $filterSelected = $filterOptions.filter(':selected'),
-			ignoreFilters = [
-				'OrderByNameASC',
-				'OrderByNameDESC',
-				'OrderByReviewRateDESC'
-			],
+			ignoreFilters = ['OrderByNameASC', 'OrderByNameDESC', 'OrderByReviewRateDESC'],
 			urlParams = _.urlParams(); //parse params from url
 
 		var $filters = $filterOptions
 			.filter(function() {
-				return (
-					$(this).val() !== '' &&
-					ignoreFilters.indexOf($(this).val()) === -1
-				);
+				return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
 			})
 			.map(function() {
 				var self = $(this);
@@ -84,15 +77,7 @@ Nitro.controller(
 
 				var url = window.location.pathname + '?' + $.param(urlParams); //encode params to string
 
-				return (
-					'<li><a href="' +
-					url +
-					'" title="' +
-					self.text() +
-					'">' +
-					self.text() +
-					'</a></li>'
-				);
+				return '<li><a href="' + url + '" title="' + self.text() + '">' + self.text() + '</a></li>';
 			})
 			.get()
 			.join('');
@@ -101,22 +86,15 @@ Nitro.controller(
 
 		//TODO: pluralize
 		var orderText = !$('body').is('.busca')
-			? 'Temos ' +
-			  $('.resultado-busca-numero:first .value').text() +
-			  ' itens'
+			? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens'
 			: '';
-		$('.order-title').html(
-			'<span>' + orderText + ' ordenados por </span><em>selecione</em>'
-		);
+		$('.order-title').html('<span>' + orderText + ' ordenados por </span><em>selecione</em>');
 		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
-
-		$('body').hasClass('categoria')
-			? $('.breadcrumb')
-				.removeClass('hide-medium')
-				.removeClass('hide-large')
-				.removeClass('hide-extra-large')
+		// prettier-ignore
+		$('body').hasClass('categoria') ? $('.breadcrumb').removeClass('hide-medium')
+			.removeClass('hide-large').removeClass('hide-extra-large')
 			: '';
 
 		//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
@@ -130,14 +108,9 @@ Nitro.controller(
 
 			//create more drowpdown if category bigger than 2
 			if ($categoriesList.length > 1) {
-				$dropElements = $categoriesList.slice(
-					2,
-					$categoriesList.length
-				);
+				$dropElements = $categoriesList.slice(2, $categoriesList.length);
 
-				$moreCatHolder = $(
-					'<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>'
-				);
+				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');
 				$moreCatList = $('<ul />');
 
 				$dropElements.each(function() {
@@ -146,9 +119,7 @@ Nitro.controller(
 
 				$moreCatList.append($dropElements);
 
-				$moreCatHolder
-					.append($moreCatList)
-					.appendTo($('.departament-nav > div'));
+				$moreCatHolder.append($moreCatList).appendTo($('.departament-nav > div'));
 
 				$dropElements.remove();
 			}
@@ -167,17 +138,13 @@ Nitro.controller(
 
 				//console.log('$dropElements', $dropElements);
 
-				$moreCatHolder = $(
-					'<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>'
-				);
+				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');
 
 				$moreCatList = $('<ul />');
 
 				$moreCatList.append($dropElements.clone());
 
-				$moreCatHolder
-					.append($moreCatList)
-					.appendTo($('.departament-nav > div'));
+				$moreCatHolder.append($moreCatList).appendTo($('.departament-nav > div'));
 
 				//$dropElements.remove();
 			}
@@ -246,9 +213,7 @@ Nitro.controller(
 			// concat only categories from pathname plus first slash
 			var url = urlRest.slice(0, count + 1).join('/');
 
-			$('.departament-nav > div').append(
-				'<a href="' + url + '" class="clear-filter">Limpar</a>'
-			);
+			$('.departament-nav > div').append('<a href="' + url + '" class="clear-filter">Limpar</a>');
 		}
 
 		/*if( $searchSingle.find('.active-filter').length > 0 ) {
@@ -267,22 +232,16 @@ Nitro.controller(
 							.toggleClass('active');
 					});
 
-					$(document).on(
-						'click',
-						'.single-filter-wrapper',
-						function() {
-							$(this)
-								.find('ul')
-								.toggleClass('active');
-						}
-					);
+					$(document).on('click', '.single-filter-wrapper', function() {
+						$(this)
+							.find('ul')
+							.toggleClass('active');
+					});
 				}
 			})
 			.resize();
 
-		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not(
-			'.slick-initialized'
-		);
+		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		this.setupSlider = function($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
@@ -379,10 +338,7 @@ Nitro.controller(
 			// $('section.slider').eq(0).find('.pre-title').trigger('click');
 		}
 
-		if (
-			$('.heading-banner h1').is(':empty') &&
-			$('.category-page-top-banner').is(':empty')
-		) {
+		if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
 			$('.heading-banner').addClass('hide');
 		}
 	}

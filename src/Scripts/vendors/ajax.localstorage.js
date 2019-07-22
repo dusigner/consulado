@@ -2,7 +2,6 @@
  * Ajax Localstorage - https://github.com/SaneMethod/jquery-ajax-localstorage-cache
  */
 
-;
 (function(factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD
@@ -14,8 +13,7 @@
 		// Browser globals
 		factory(jQuery);
 	}
-}(function($) {
-
+})(function($) {
 	'use strict';
 
 	var hasLocalStorage = function() {
@@ -61,7 +59,7 @@
 	 * @param options {Object} Options for the ajax call, modified with ajax standard settings
 	 */
 	$.ajaxPrefilter(function(options) {
-		var storage = (options.localCache === true) ? (hasLocalStorage() && window.localStorage) : options.localCache,
+		var storage = options.localCache === true ? hasLocalStorage() && window.localStorage : options.localCache,
 			hourstl = options.cacheTTL || 5,
 			cacheKey = genCacheKey(options),
 			cacheValid = options.isCacheValid,
@@ -118,12 +116,11 @@
 	 * @method $.ajaxTransport
 	 * @params options {Object} Options for the ajax call, modified with ajax standard settings
 	 */
-	$.ajaxTransport("+*", function(options) {
+	$.ajaxTransport('+*', function(options) {
 		if (options.localCache) {
-
 			var cacheKey = genCacheKey(options),
-				storage = (options.localCache === true) ? (hasLocalStorage() && window.localStorage) : options.localCache,
-				value = (storage) ? storage.getItem(cacheKey) : false;
+				storage = options.localCache === true ? hasLocalStorage() && window.localStorage : options.localCache,
+				value = storage ? storage.getItem(cacheKey) : false;
 
 			if (value) {
 				// In the cache? Get it, parse it to json if the dataType is JSON,
@@ -136,10 +133,10 @@
 						completeCallback(200, 'success', response, '');
 					},
 					abort: function() {
-						console.log("Aborted ajax transport for json cache.");
+						console.log('Aborted ajax transport for json cache.');
 					}
 				};
 			}
 		}
 	});
-}));
+});

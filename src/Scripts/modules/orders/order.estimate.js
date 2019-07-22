@@ -10,8 +10,8 @@ var Estimate = {
 		return obj[0];
 	},
 	calculateSla: function(orderDate, currentSla) {
-		var isBusinessDay = (currentSla.shippingEstimate && currentSla.shippingEstimate.indexOf('bd')) ? true : false;
-		var isScheduled = (currentSla.name && currentSla.name.indexOf('Agendada')) ? true : false;
+		var isBusinessDay = currentSla.shippingEstimate && currentSla.shippingEstimate.indexOf('bd') ? true : false;
+		var isScheduled = currentSla.name && currentSla.name.indexOf('Agendada') ? true : false;
 		var estimateDate;
 
 		if (!currentSla.shippingEstimateDate) {

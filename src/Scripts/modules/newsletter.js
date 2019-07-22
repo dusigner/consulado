@@ -4,7 +4,6 @@
 require('vendors/jquery.placeholder');
 
 Nitro.module('newsletter', function() {
-
 	var self = this,
 		$newsletter = $('.form-newsletter'),
 		$submit = $newsletter.find('[type="submit"]'),
@@ -14,13 +13,16 @@ Nitro.module('newsletter', function() {
 	// $inputs.placeholder();
 
 	this.validateForm = function() {
-
 		$newsletter.find('label.error').remove();
 
 		$inputs
 			.removeClass('error')
 			.one('focus', function() {
-				$(this).removeClass('error').parent().find('.error').remove();
+				$(this)
+					.removeClass('error')
+					.parent()
+					.find('.error')
+					.remove();
 			})
 			.each(function() {
 				var self = $(this),
@@ -49,7 +51,10 @@ Nitro.module('newsletter', function() {
 	};
 
 	this.addErrorBox = function(target, message) {
-		$errorBox.clone().appendTo(target).html(message);
+		$errorBox
+			.clone()
+			.appendTo(target)
+			.html(message);
 	};
 
 	$newsletter.submit(function(e) {
@@ -64,11 +69,8 @@ Nitro.module('newsletter', function() {
 			error: self.handleError
 		})
 			.done(function(data) {
-
 				if (data) {
-
 					$newsletter.addClass('success').html($newsletter.data('msg-success'));
-
 				} else {
 					self.handleError();
 				}
@@ -77,5 +79,4 @@ Nitro.module('newsletter', function() {
 				$submit.removeClass('loading');
 			});
 	});
-
 });

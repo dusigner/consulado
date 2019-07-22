@@ -15,7 +15,7 @@ Nitro.module('login.url', ['vtex-login'], function(vtexLogin) {
 				vtexLogin.setup(userData);
 			});
 		}
-	};]
+	};
 
 	this.setup();
 });

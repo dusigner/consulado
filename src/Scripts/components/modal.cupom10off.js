@@ -2,10 +2,7 @@
 
 require('Dust/custom/modal.cupom10off.html');
 
-
 Nitro.module('modal.cupom10off', function() {
-
-
 	var categories = ['7', '12', '17'],
 		date = new Date();
 

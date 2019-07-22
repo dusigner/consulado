@@ -1,5 +1,5 @@
 // Pega todos produtos que possuem os 6 primeiros catarcteres do modelo iguais ao modelo passado no parâmetro
-export const getProductVariety = (model) => {
+export const getProductVariety = model => {
 	let productField = '/* @echo shelfProductFieldModelo */',
 		API_ENDPOINT = '/api/catalog_system/pub/products/search';
 

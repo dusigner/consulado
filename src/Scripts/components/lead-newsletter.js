@@ -4,7 +4,6 @@
 var CRM = require('modules/store/crm');
 
 Nitro.module('lead-newsletter', function() {
-
 	// Teste AB Controller
 	// var urlTesteAb = window.location.search;
 	// var $body = $('body');
@@ -28,8 +27,8 @@ Nitro.module('lead-newsletter', function() {
 		$inputTel = $formNewsletter.find('input[type="tel"]'),
 		$inputTermos = $formNewsletter.find('input[type="checkbox"]'),
 		valid = false;
-		// hasSession = sessionStorage.getItem('leadNewsletter'),
-		// $newsletterFixed = $('.toggle-newsletter');
+	// hasSession = sessionStorage.getItem('leadNewsletter'),
+	// $newsletterFixed = $('.toggle-newsletter');
 
 	this.setup = function(/*orderForm*/) {
 		$formNewsletter.submit(function(e) {
@@ -51,7 +50,7 @@ Nitro.module('lead-newsletter', function() {
 		});
 
 		//apaga o tooltip quando clica no document
-		$(document).click(function (e) {
+		$(document).click(function(e) {
 			if (!$('.form-newsletter_error-email').is(e.target)) {
 				$('.form-newsletter_error-email').remove();
 			}
@@ -82,7 +81,11 @@ Nitro.module('lead-newsletter', function() {
 	};
 
 	this.validateForm = function() {
-		if ($inputName.filter(':blank').length < 1 && $inputEmail.filter(':blank').length < 1 && $inputTermos.is(':checked')) {
+		if (
+			$inputName.filter(':blank').length < 1 &&
+			$inputEmail.filter(':blank').length < 1 &&
+			$inputTermos.is(':checked')
+		) {
 			valid = true;
 		} else {
 			self.validateInputs();
@@ -117,27 +120,31 @@ Nitro.module('lead-newsletter', function() {
 				$inputEmail.removeClass('error');
 				$('.form-newsletter_error-email').remove();
 			}
-		}).done(function() {
-			$('.lead-newsletter').addClass('success');
+		})
+			.done(function() {
+				$('.lead-newsletter').addClass('success');
 
-			sessionStorage.setItem('leadNewsletter', true);
+				sessionStorage.setItem('leadNewsletter', true);
 
-			setTimeout(function() {
-				$('.newsletter').fadeOut();
-			}, 2000);
+				setTimeout(function() {
+					$('.newsletter').fadeOut();
+				}, 2000);
 
-			dataLayer.push({
-				event: 'formulario_home',
-				status: 'ok'
+				dataLayer.push({
+					event: 'formulario_home',
+					status: 'ok'
+				});
+			})
+			.fail(function() {
+				$inputEmail.addClass('error');
+				$inputEmail
+					.parent('fieldset')
+					.append('<span class="form-newsletter_error-email">E-mail já cadastrado!</span>');
+				dataLayer.push({
+					event: 'formulario_home',
+					status: 'error'
+				});
 			});
-		}).fail(function() {
-			$inputEmail.addClass('error');
-			$inputEmail.parent('fieldset').append('<span class="form-newsletter_error-email">E-mail já cadastrado!</span>');
-			dataLayer.push({
-				event: 'formulario_home',
-				status: 'error'
-			});
-		});
 	};
 
 	window.vtexjs.checkout.getOrderForm().done(function(/*result*/) {

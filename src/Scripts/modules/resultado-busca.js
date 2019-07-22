@@ -2,31 +2,29 @@
 'use strict';
 
 Nitro.module('resultado-busca', function() {
-
-
 	var params = _.urlParams();
 
 	if ($.isEmptyObject(params) || !('fq' in params)) {
-
 		if (window.vtxctx.searchTerm) {
 			$('.busca-termos').html('Você buscou por <strong>"' + window.vtxctx.searchTerm + '"</strong>');
 		}
 
 		//Encontramos 131 itens para você dar uma olhada
 		if ($('.resultado-busca-numero').length > 0) {
-			$('.busca-resultados').html('Encontramos <strong>' + $('.resultado-busca-numero:first .value').text() + ' itens</strong> para você dar uma olhada');
+			$('.busca-resultados').html(
+				'Encontramos <strong>' +
+					$('.resultado-busca-numero:first .value').text() +
+					' itens</strong> para você dar uma olhada'
+			);
 		}
 
 		if ($('.busca-vazio').length > 0) {
 			$('body').addClass('busca-vazia');
 		}
-
 	} else {
-
 		// CAMPAIGN -  NÃO CONSIGO DORMIR
-
+		// prettier-ignore
 		switch (params.fq) {
-
 		case 'H:231':
 			$('.banner-dormir-100 .box-banner').show();
 			break;
@@ -48,8 +46,5 @@ Nitro.module('resultado-busca', function() {
 		}
 
 		$('.resultado-busca').remove();
-
 	}
-
-
 });

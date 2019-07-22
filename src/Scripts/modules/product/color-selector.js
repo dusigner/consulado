@@ -21,27 +21,29 @@ Nitro.module('color-selector', ['input-box'], function() {
 	};
 
 	this.processItens = (data, condition) => {
-		return data && data.filter(function (product) {
-			if (condition) {
-				return product && product.Cor && product.Estado[0] === condition;
-			} else {
-				return product && product.Cor;
-			}
-
-		}).map(function (product) {
-
-			return {
-				name: product.Cor[0],
-				style: $.replaceSpecialChars(product.Cor[0]),
-				link: product.link,
-				active: +product.productId === +window.skuJson.productId
-			};
-		});
+		return (
+			data &&
+			data
+				.filter(function(product) {
+					if (condition) {
+						return product && product.Cor && product.Estado[0] === condition;
+					} else {
+						return product && product.Cor;
+					}
+				})
+				.map(function(product) {
+					return {
+						name: product.Cor[0],
+						style: $.replaceSpecialChars(product.Cor[0]),
+						link: product.link,
+						active: +product.productId === +window.skuJson.productId
+					};
+				})
+		);
 	};
 
 	this.render = data => {
-
-		if( data && data.length > 1 ) {
+		if (data && data.length > 1) {
 			data.colorsLength = data.length;
 			dust.render('color-selector', { supermodels: data }, function(err, out) {
 				if (err) {
@@ -53,9 +55,7 @@ Nitro.module('color-selector', ['input-box'], function() {
 				$holder.html(out).show();
 			});
 		}
-
 	};
-
 
 	// Pega todos produtos que possuem os 6 primeiros catarcteres do modelo iguais ao modelo passado no parâmetro
 	/**
@@ -66,9 +66,11 @@ Nitro.module('color-selector', ['input-box'], function() {
 	this.getProdVariety = model => getProductVariety(model).then(res => res);
 
 	this.setup = () => {
-		productReference && productReference !== '' && this.getProdVariety(productReference).then(res => {
-			this.build(res);
-		});
+		productReference &&
+			productReference !== '' &&
+			this.getProdVariety(productReference).then(res => {
+				this.build(res);
+			});
 	};
 
 	this.setup();

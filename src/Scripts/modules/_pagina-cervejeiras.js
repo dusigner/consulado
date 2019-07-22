@@ -7,21 +7,14 @@ import { pushDataLayer } from 'modules/_datalayer-inline';
 
 const toastr = require('vendors/toastr');
 
-Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
-	gallery,
-	dataLayerCervejeira
-) {
+Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(gallery, dataLayerCervejeira) {
 	const cervejeiras = {};
 	const cervejeiraConteudoSlider = $('.cervejeiras-conteudo-slider');
 	const cervejeiraSlider = $('.cervejeiras-slider');
 	const selecaoCores = $('.cervejeira-selecao-cores');
-	const allSlides = $(
-		'.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores'
-	);
+	const allSlides = $('.cervejeiras-slider, .cervejeiras-conteudo-slider, .cervejeira-selecao-cores');
 	const coloredBackground = $('.item--cervejeira');
-	const cervejeirasListaFuncionalidades = $(
-		'.cervejeiras-lista-funcionalidades'
-	);
+	const cervejeirasListaFuncionalidades = $('.cervejeiras-lista-funcionalidades');
 
 	// Init
 	cervejeiras.init = () => {
@@ -115,20 +108,13 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	cervejeiras.changeColorOnSelect = () => {
 		const selecaoCoresItems = selecaoCores.find('li');
 
-		selecaoCores.on(
-			'beforeChange',
-			(event, slick, currentSlide, nextSlide) => {
-				const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data(
-					'color'
-				);
-				const nextColor = $(selecaoCoresItems[nextSlide + 1]).data(
-					'color'
-				);
+		selecaoCores.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+			const beforeColor = $(selecaoCoresItems[currentSlide + 1]).data('color');
+			const nextColor = $(selecaoCoresItems[nextSlide + 1]).data('color');
 
-				coloredBackground.removeClass(`cervejeira--${beforeColor}`);
-				coloredBackground.addClass(`cervejeira--${nextColor}`);
-			}
-		);
+			coloredBackground.removeClass(`cervejeira--${beforeColor}`);
+			coloredBackground.addClass(`cervejeira--${nextColor}`);
+		});
 	};
 
 	// Listagem de funcionalidades
@@ -137,18 +123,12 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 			const widthPage = $(window).width();
 
 			if (widthPage < 960) {
-				cervejeirasListaFuncionalidades
-					.not('.slick-initialized')
-					.slick({
-						arrows: false,
-						dots: true
-					});
+				cervejeirasListaFuncionalidades.not('.slick-initialized').slick({
+					arrows: false,
+					dots: true
+				});
 			} else {
-				if (
-					cervejeirasListaFuncionalidades.hasClass(
-						'slick-initialized'
-					)
-				) {
+				if (cervejeirasListaFuncionalidades.hasClass('slick-initialized')) {
 					cervejeirasListaFuncionalidades.slick('unslick');
 				}
 			}
@@ -172,14 +152,10 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	};
 
 	cervejeiras.videoPlay = () => {
-		const playVideo = $(
-			'.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video'
-		);
+		const playVideo = $('.cervejeiras-videos-thumbs__item, .cervejeiras-videos__video');
 
 		playVideo.click(function() {
-			const videoToPlay = $(
-				'.cervejeiras-videos-thumbs__item.is--active'
-			).data('vid');
+			const videoToPlay = $('.cervejeiras-videos-thumbs__item.is--active').data('vid');
 			const videoContainer = $('.cervejeiras-videos__video');
 
 			videoContainer.addClass('video-is-playing');
@@ -207,8 +183,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	cervejeiras.couponToastr = code => {
 		jQuery($ => {
 			const windowWidth = $(window).width();
-			const position =
-				windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
 
 			toastr.options = {
 				closeButton: true,
@@ -236,14 +211,11 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		$('.category-page-top-banner, .copiar').click(e => {
 			e.preventDefault();
 
-			const clipboard = new Clipboard(
-				'.category-page-top-banner, .copiar',
-				{
-					text: function() {
-						return cupom;
-					}
+			const clipboard = new Clipboard('.category-page-top-banner, .copiar', {
+				text: function() {
+					return cupom;
 				}
-			);
+			});
 
 			clipboard.on('success', function(e) {
 				cervejeiras.couponToastr(cupom);
@@ -254,9 +226,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 
 	cervejeiras.renderSmartBeerShowcase = () => {
 		let productImage = [],
-			productSkuSelector = $('.smartbeer-showcase').find(
-				'.product-skuSelector'
-			),
+			productSkuSelector = $('.smartbeer-showcase').find('.product-skuSelector'),
 			productBox = $('.smartbeer-showcase'),
 			skus = productBox.find('.product-insertsku'),
 			galleryImg = $('.product-image');
@@ -316,14 +286,13 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		if (productSkuSelector.children().length === 0) {
 			let item = skus.find('.from-shelf'),
 				skuName = skus.find('input[type=checkbox]').attr('name'),
-				sku = skus
-					.parents('.product-info')
-					.find('.product-skuSelector'),
+				sku = skus.parents('.product-info').find('.product-skuSelector'),
 				productLink = sku.parents('.product-info');
 
 			if (sku.children().length === 0) {
 				for (var i = 0; i < item.length; i++) {
 					let title =
+							// prettier-ignore
 							item
 								.eq(i)
 								.find('input[type=text]')
@@ -338,9 +307,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 							.find('input[type=checkbox]')
 							.attr('rel'),
 						objectClass = title.replace(/\s/g, '') + '_' + skuId,
-						isAvailable = item.eq(i).hasClass('unavailable')
-							? 'unavailable'
-							: 'available';
+						isAvailable = item.eq(i).hasClass('unavailable') ? 'unavailable' : 'available';
 
 					skus
 						.parents('.smartbeer-showcase')
@@ -353,9 +320,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 					`);
 				}
 
-				$('.vitrine-smartbeer .product-buy').addClass(
-					'-not-selected-smartbeer'
-				);
+				$('.vitrine-smartbeer .product-buy').addClass('-not-selected-smartbeer');
 
 				sku.find('.unavailable').attr('disabled', true);
 
@@ -397,11 +362,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 						slidesToScroll: 1
 					});
 			} else {
-				if (
-					$('.vitrine-promocoes .prateleira>ul').hasClass(
-						'slick-initialized'
-					)
-				) {
+				if ($('.vitrine-promocoes .prateleira>ul').hasClass('slick-initialized')) {
 					$('.vitrine-promocoes .prateleira>ul').slick('unslick');
 				}
 			}
@@ -431,7 +392,7 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 	};
 
 	// Iniciar somente na página de Cervejeiras
-	const bodyHasCervejeira =  $('body.smartbeer2');
+	const bodyHasCervejeira = $('body.smartbeer2');
 	if (bodyHasCervejeira.length > 0) {
 		cervejeiras.init();
 		dataLayerCervejeira.init();

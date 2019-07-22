@@ -110,46 +110,50 @@ Nitro.module('register.corporate', function() {
 					.val()
 					.replace(/\D/g, '');
 				getAddress.byPostalCode(poscalCode).done(function(endereco) {
+					// prettier-ignore
 					endereco.neighborhood
 						? $form
-								.find('.neighborhood')
-								.val(endereco.neighborhood)
-								.trigger('change')
-								.attr('readonly', 'readonly')
+							.find('.neighborhood')
+							.val(endereco.neighborhood)
+							.trigger('change')
+							.attr('readonly', 'readonly')
 						: $form
-								.find('.neighborhood')
-								.val('')
-								.removeAttr('readonly');
+							.find('.neighborhood')
+							.val('')
+							.removeAttr('readonly');
+					// prettier-ignore
 					endereco.city
 						? $form
-								.find('.city')
-								.val(endereco.city)
-								.trigger('change')
-								.attr('readonly', 'readonly')
+							.find('.city')
+							.val(endereco.city)
+							.trigger('change')
+							.attr('readonly', 'readonly')
 						: $form
-								.find('.city')
-								.val('')
-								.removeAttr('readonly');
+							.find('.city')
+							.val('')
+							.removeAttr('readonly');
+					// prettier-ignore
 					endereco.street
 						? $form
-								.find('.addressName')
-								.val(endereco.street)
-								.trigger('change')
-								.attr('readonly', 'readonly')
+							.find('.addressName')
+							.val(endereco.street)
+							.trigger('change')
+							.attr('readonly', 'readonly')
 						: $form
-								.find('.addressName')
-								.val('')
-								.removeAttr('readonly');
+							.find('.addressName')
+							.val('')
+							.removeAttr('readonly');
+					// prettier-ignore
 					endereco.state
 						? $form
-								.find('.state')
-								.val(endereco.state)
-								.trigger('change')
-								.attr('readonly', 'readonly')
+							.find('.state')
+							.val(endereco.state)
+							.trigger('change')
+							.attr('readonly', 'readonly')
 						: $form
-								.find('.state')
-								.val('')
-								.removeAttr('readonly');
+							.find('.state')
+							.val('')
+							.removeAttr('readonly');
 				});
 			}
 		});

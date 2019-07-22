@@ -6,13 +6,17 @@ import dynamicStamps from '../_dynamic-stamps';
 import setSKUselector from '../listagem/buyButton';
 
 Nitro.module('percentoff', 'buy-button', function() {
-
 	this.init = function() {
 		$('.box-produto:not(.list-percent)').each(function() {
 			var self = $(this),
 				valPercentage = self.data('percent'),
 				txtPercentage = self.find('.off'),
-				valProd = self.find('.por .val').text().replace('R$ ', '').replace('.', '').replace(',', '.'),
+				valProd = self
+					.find('.por .val')
+					.text()
+					.replace('R$ ', '')
+					.replace('.', '')
+					.replace(',', '.'),
 				promoDiscountBoleto = {},
 				promoDiscountCartao = {},
 				percentage;
@@ -25,10 +29,9 @@ Nitro.module('percentoff', 'buy-button', function() {
 			// Nova solução de troca de selos por promoções
 			dynamicStamps(self, '.FlagsHightLight .flag[class*="-selo-"]');
 
-
 			self.find('.FlagsHightLight [class*="boleto"]').each(function(i, e) {
 				var promoName = $(e).text();
-				var promoValue = parseInt(promoName.match(/\d+/ig));
+				var promoValue = parseInt(promoName.match(/\d+/gi));
 				if (!isNaN(promoValue) && promoValue > 0) {
 					promoDiscountBoleto.value.push(promoValue);
 				}
@@ -36,7 +39,7 @@ Nitro.module('percentoff', 'buy-button', function() {
 
 			self.find('.FlagsHightLight [class*="cartao"]').each(function(i, e) {
 				var promoName2 = $(e).text();
-				var promoValue2 = parseInt(promoName2.match(/\d+/ig));
+				var promoValue2 = parseInt(promoName2.match(/\d+/gi));
 				if (!isNaN(promoValue2) && promoValue2 > 0) {
 					promoDiscountCartao.value.push(promoValue2);
 				}
@@ -51,7 +54,14 @@ Nitro.module('percentoff', 'buy-button', function() {
 			});
 
 			if (valPercentage !== null && valPercentage !== 0) {
-				percentage = Math.floor(parseFloat(valPercentage.replace(',', '.').replace(' ', '').replace('%', '')));
+				percentage = Math.floor(
+					parseFloat(
+						valPercentage
+							.replace(',', '.')
+							.replace(' ', '')
+							.replace('%', '')
+					)
+				);
 				if (percentage >= 20) {
 					txtPercentage.text(percentage + '% OFF').show();
 				}
@@ -69,12 +79,19 @@ Nitro.module('percentoff', 'buy-button', function() {
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				self.find('.discount-boleto')
 					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
-					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))) + ' <span>À vista</span>');
-			}
-			else {
+					.html(
+						'R$ ' +
+							_.formatCurrency(valProd - valProd * (cmcDiscountCartao / 100)) +
+							' <span>À vista</span>'
+					);
+			} else {
 				self.find('.discount-boleto')
 					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
-					.html('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' <span>À vista</span>');
+					.html(
+						'R$ ' +
+							_.formatCurrency(valProd - valProd * (cmcDiscountBoleto / 100)) +
+							' <span>À vista</span>'
+					);
 			}
 
 			if (cmcDiscountCartao || cmcDiscountBoleto) {
@@ -96,5 +113,4 @@ Nitro.module('percentoff', 'buy-button', function() {
 	if (store && store.isPersonal) {
 		this.init();
 	}
-
 });

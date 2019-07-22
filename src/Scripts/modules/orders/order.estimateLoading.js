@@ -1,7 +1,5 @@
 'use strict';
 Nitro.module('order.estimateLoading', function() {
-
-
 	var self = this;
 
 	/**
@@ -13,36 +11,25 @@ Nitro.module('order.estimateLoading', function() {
 		var $boxOrder = $('#' + order.orderGroup),
 			shipping = {};
 
-		order.statusOrder =
-			$boxOrder.find('.order-status-wrapper');
+		order.statusOrder = $boxOrder.find('.order-status-wrapper');
 
 		if (order.statusOrder.is('.processando-pagamento')) {
-
 			shipping.orderPercent = 25;
 			shipping.deliveryStatus = 'Pedido Realizado';
 			self.calculateShipping(order, shipping);
-
 		} else if (order.statusOrder.is('.aguardando-pagamento')) {
-
 			shipping.orderPercent = 50;
 			shipping.deliveryStatus = 'Pagamento em aprovação';
 			self.calculateShipping(order, shipping);
-
 		} else if (order.statusOrder.is('.preparando-entrega')) {
-
 			shipping.orderPercent = 75;
 			shipping.deliveryStatus = 'Pagamento aprovado';
 			self.calculateShipping(order, shipping);
-
 		} else if (order.statusOrder.is('.enviado')) {
-
 			shipping.orderPercent = 100;
 			self.calculateShipping(order);
-			$boxOrder
-				.find('.order-loading-estimate .delivery').show();
-
+			$boxOrder.find('.order-loading-estimate .delivery').show();
 		}
-
 	};
 
 	/**
@@ -55,9 +42,9 @@ Nitro.module('order.estimateLoading', function() {
 		if (diff === 5) {
 			daysLeft = '';
 		} else if (diff === 1) {
-			daysLeft = ' - Falta: ' + (diff) + ' dia';
+			daysLeft = ' - Falta: ' + diff + ' dia';
 		} else {
-			daysLeft = ' - Faltam: ' + (diff) + ' dias';
+			daysLeft = ' - Faltam: ' + diff + ' dias';
 		}
 		return daysLeft;
 	};
@@ -81,7 +68,6 @@ Nitro.module('order.estimateLoading', function() {
 		return schedulingDate;
 	};
 
-
 	/**
 	 * Get selected sla info
 	 * @param {object} order
@@ -92,9 +78,11 @@ Nitro.module('order.estimateLoading', function() {
 		$(order.shippingData.logisticsInfo).each(function(i, e) {
 			if (e.selectedSla) {
 				var selectedSla = e.selectedSla;
-				shippingEstimate = e.slas && e.slas.filter(function(value) {
-					return value.name === selectedSla;
-				});
+				shippingEstimate =
+					e.slas &&
+					e.slas.filter(function(value) {
+						return value.name === selectedSla;
+					});
 			}
 		});
 		return shippingEstimate;
@@ -115,7 +103,7 @@ Nitro.module('order.estimateLoading', function() {
 		if (orderPercent !== undefined) {
 			percent = orderPercent;
 		} else if (shipping.diff >= 0 && shipping.diff <= 5) {
-			percent = 75 + (shipping.diff * 5);
+			percent = 75 + shipping.diff * 5;
 		}
 		return percent;
 	};
@@ -134,7 +122,6 @@ Nitro.module('order.estimateLoading', function() {
 
 		var boxLoading =
 			'<div class="order-loading-estimate">' +
-
 			'<div class="box-loading-gray"></div>' +
 			'<div class="box-loading" style="width: {percent}%"></div>' +
 			'<span class="realizado">{deliveryStatus}</span>' +
@@ -143,23 +130,22 @@ Nitro.module('order.estimateLoading', function() {
 			'<span class="daysLeft">{daysLeft}</span></div>' +
 			'</div>';
 
-		$(boxLoading.render({
-			percent: shipping.percent,
-			deliveryTitle: 'Previsão:',
-			deliveryDate: $.formatDatetimeBRL(shipping.deliveryDate),
-			daysLeft: shipping.daysLeft,
-			deliveryStatus: shipping.deliveryStatus
-		})).insertAfter($boxOrder
-			.find('.order-status-info'));
+		$(
+			boxLoading.render({
+				percent: shipping.percent,
+				deliveryTitle: 'Previsão:',
+				deliveryDate: $.formatDatetimeBRL(shipping.deliveryDate),
+				daysLeft: shipping.daysLeft,
+				deliveryStatus: shipping.deliveryStatus
+			})
+		).insertAfter($boxOrder.find('.order-status-info'));
 
 		if (shipping.isSchedule) {
-			$boxOrder
-				.find('.order-loading-estimate .delivery').show();
+			$boxOrder.find('.order-loading-estimate .delivery').show();
 		}
 
 		//console.log('shipping', shipping);
 	};
-
 
 	/**
 	 * Count weekend days
@@ -233,5 +219,4 @@ Nitro.module('order.estimateLoading', function() {
 
 		self.renderLoading(order, shipping);
 	};
-
 });

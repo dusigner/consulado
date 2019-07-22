@@ -3,7 +3,6 @@
 var CRM = require('modules/store/orders-crm');
 
 var PDVBOX = {
-
 	self: this,
 	dateNow: new Date(),
 
@@ -17,15 +16,14 @@ var PDVBOX = {
 
 	profileData: {},
 
-	getProfileData: function(){
-		return vtexjs.checkout.getOrderForm().done(function(res){
+	getProfileData: (function() {
+		return vtexjs.checkout.getOrderForm().done(function(res) {
 			PDVBOX.profileData = res.clientProfileData;
 			return res.clientProfileData;
 		});
-	}(),
+	})(),
 
 	get: function(orderId, productObj, orderObj) {
-
 		var orderDate = $.formatDatetime(orderObj.creationDate, '-');
 
 		var data = {
@@ -98,9 +96,17 @@ var PDVBOX = {
 			}
 		};
 
-		return $.getJSON(CRM.omsURI + skuInfo.orderFullId).then(function (result) {
-			if (result && result.packageAttachment && result.packageAttachment.packages && result.packageAttachment.packages.length > 0) {
-				data.transaction.sale.sale_date = $.formatDatetime(result.packageAttachment.packages[0].issuanceDate, '-');
+		return $.getJSON(CRM.omsURI + skuInfo.orderFullId).then(function(result) {
+			if (
+				result &&
+				result.packageAttachment &&
+				result.packageAttachment.packages &&
+				result.packageAttachment.packages.length > 0
+			) {
+				data.transaction.sale.sale_date = $.formatDatetime(
+					result.packageAttachment.packages[0].issuanceDate,
+					'-'
+				);
 			}
 			return $.post(PDVBOX.pdvBoxAPI + '/purchase/', JSON.stringify(data));
 		});
@@ -119,29 +125,30 @@ var PDVBOX = {
 			}
 		};
 
-		return $.post(PDVBOX.pdvBoxAPI + '/purchase/cancel/', JSON.stringify(data)).done(function(res) {
-			res = JSON.parse(res);
-			if (res.status) {
-				$('<p>Sua garantia foi cancelada com sucesso!</p>').vtexModal({
-					id: 'cancelar-garantia',
-					title: 'Seguro de Garantia Estendida Original',
-					destroy: true
-				});
+		return $.post(PDVBOX.pdvBoxAPI + '/purchase/cancel/', JSON.stringify(data))
+			.done(function(res) {
+				res = JSON.parse(res);
+				if (res.status) {
+					$('<p>Sua garantia foi cancelada com sucesso!</p>').vtexModal({
+						id: 'cancelar-garantia',
+						title: 'Seguro de Garantia Estendida Original',
+						destroy: true
+					});
 
-				setTimeout(function() {
-					location.reload();
-				}, 5000);
-
-			} else {
-				if (res.message === 'Sale already canceled') {
-					PDVBOX.alert('erro-cancel', 'A garantia desso produto já foi cancelada');
+					setTimeout(function() {
+						location.reload();
+					}, 5000);
 				} else {
-					PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+					if (res.message === 'Sale already canceled') {
+						PDVBOX.alert('erro-cancel', 'A garantia desso produto já foi cancelada');
+					} else {
+						PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+					}
 				}
-			}
-		}).fail(function() {
-			PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
-		});
+			})
+			.fail(function() {
+				PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
+			});
 	},
 
 	print: function(idPlan) {
@@ -154,34 +161,42 @@ var PDVBOX = {
 			}
 		};
 
-		return $.post(PDVBOX.pdvBoxAPI + '/print/' + idPlan, JSON.stringify(data)).done(function(template) {
-			var $template = $(template).filter('div');
+		return $.post(PDVBOX.pdvBoxAPI + '/print/' + idPlan, JSON.stringify(data))
+			.done(function(template) {
+				var $template = $(template).filter('div');
 
-			$template.find('tr:eq(0)').remove();
-			$template.find('a').attr('target', '_blank').removeClass('btn').addClass('secondary-button purple-button').wrapInner('<span></span>');
+				$template.find('tr:eq(0)').remove();
+				$template
+					.find('a')
+					.attr('target', '_blank')
+					.removeClass('btn')
+					.addClass('secondary-button purple-button')
+					.wrapInner('<span></span>');
 
-			$template.filter('div').vtexModal({
-				id: 'imprimir-garantia',
-				title: 'Seguro de Garantia Estendida Original',
-				destroy: true
+				$template.filter('div').vtexModal({
+					id: 'imprimir-garantia',
+					title: 'Seguro de Garantia Estendida Original',
+					destroy: true
+				});
+			})
+			.fail(function() {
+				PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
 			});
-
-		}).fail(function() {
-			PDVBOX.alert('erro-cancel', 'Ocorreu algum erro, tente novamente');
-		});
 	},
 
 	alert: function(id, text, time) {
 		var delay = time || 5000;
 
-		$('<div class="alert-box" id="' + id + '">' + text + '</div>').hide().prependTo('body').fadeIn();
+		$('<div class="alert-box" id="' + id + '">' + text + '</div>')
+			.hide()
+			.prependTo('body')
+			.fadeIn();
 		setTimeout(function() {
 			$('.alert-box#' + id).fadeOut('400', function() {
 				$(this).remove();
 			});
 		}, delay);
 	}
-
 };
 
 module.exports = PDVBOX;

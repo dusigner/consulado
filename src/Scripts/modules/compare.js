@@ -3,7 +3,6 @@
 
 // Nitro.module('compare', function() {
 
-
 // 	window.alert = function(e) {
 // 		console.error(e);
 // 		return;

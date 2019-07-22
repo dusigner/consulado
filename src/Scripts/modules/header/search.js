@@ -5,8 +5,6 @@
 //require('vendors/portal-buy-button');
 
 Nitro.module('search', function() {
-
-
 	var API_ENDPOINT = '/buscapagina?cc=10&sm=0&PageNumber=1',
 		$document = $(document),
 		$searchContainer = $('.cont-search'),
@@ -22,7 +20,6 @@ Nitro.module('search', function() {
 		searchTerm = '',
 		total = 5;
 
-
 	// $searchForm.find('> .icon').click(function(e) {
 	//     e.preventDefault();
 
@@ -31,10 +28,8 @@ Nitro.module('search', function() {
 	//     $(document).trigger('search', $searchContainer.is('.search-active') ? null : false);
 	// });
 
-	if( store.isCorp ) {
-
+	if (store.isCorp) {
 		var loadContent = $.debounce(function(term) {
-
 			console.info('loadContent', term);
 
 			$.ajax({
@@ -53,23 +48,26 @@ Nitro.module('search', function() {
 
 					$searchForm.addClass('loading').append($loader);
 				}
-			}).done(function(data) {
-				if (data) {
-					$content.html(data).find('.helperComplement').remove();
+			})
+				.done(function(data) {
+					if (data) {
+						$content
+							.html(data)
+							.find('.helperComplement')
+							.remove();
 
-					$results = $content.find('a');
+						$results = $content.find('a');
 
-					$(document).trigger('search', true);
-				}
-			}).always(function() {
-				$searchForm.removeClass('loading');
-				$loader.remove();
-			});
-
+						$(document).trigger('search', true);
+					}
+				})
+				.always(function() {
+					$searchForm.removeClass('loading');
+					$loader.remove();
+				});
 		}, 250);
 
 		$searchField.on('keyup focus', function() {
-
 			var value = $.trim($(this).val());
 
 			//console.info('input change', value);
@@ -81,50 +79,49 @@ Nitro.module('search', function() {
 					loadContent(value);
 				}
 			}
-
 		});
-
 
 		$searchForm.submit(function(e) {
 			e.preventDefault();
 			window.location.href = '/' + encodeURIComponent($searchField.val());
 		});
 
-		$document.on('search', function(e, status) {
-
-			if (status === false) {
-				$searchField.val('').trigger('keyup');
-			}
-
-			$searchBox.toggle(!!status); //force boolean
-
-			$searchActionText.text('"' + searchTerm + '"');
-
-			$searchAction.attr({
-				title: 'Buscar Por "' + searchTerm + '"',
-				href: '/' + encodeURIComponent(searchTerm)
-			});
-
-		}).keydown(function(e) {
-
-			if ((e.keyCode === 40 || e.keyCode === 38) && $('body').is('.search-active')) {
-
-				var $focus = $searchContainer.find(':focus').removeClass('active');
-
-				if (e.keyCode === 40) { //down
-
-					$results.eq($results.index($focus) + 1).focus().addClass('active');
-
-				} else if (e.keyCode === 38) { //up
-
-					($results.index($focus) <= 0 ? $searchField : $results.eq($results.index($focus) - 1)).focus().addClass('active');
-
+		$document
+			.on('search', function(e, status) {
+				if (status === false) {
+					$searchField.val('').trigger('keyup');
 				}
 
-				return false;
-			}
-		});
+				$searchBox.toggle(!!status); //force boolean
+
+				$searchActionText.text('"' + searchTerm + '"');
+
+				$searchAction.attr({
+					title: 'Buscar Por "' + searchTerm + '"',
+					href: '/' + encodeURIComponent(searchTerm)
+				});
+			})
+			.keydown(function(e) {
+				if ((e.keyCode === 40 || e.keyCode === 38) && $('body').is('.search-active')) {
+					var $focus = $searchContainer.find(':focus').removeClass('active');
+
+					if (e.keyCode === 40) {
+						//down
+
+						$results
+							.eq($results.index($focus) + 1)
+							.focus()
+							.addClass('active');
+					} else if (e.keyCode === 38) {
+						//up
+
+						($results.index($focus) <= 0 ? $searchField : $results.eq($results.index($focus) - 1))
+							.focus()
+							.addClass('active');
+					}
+
+					return false;
+				}
+			});
 	}
-
-
 });

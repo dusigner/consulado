@@ -5,18 +5,24 @@
 // require('vendors/portal-notify-me');
 
 Nitro.module('notify-me', function() {
-
-	var televendas = $('a[title*="Televendas"]').clone().attr('title', 'Televendas').addClass('notifyme-televendas');
+	var televendas = $('a[title*="Televendas"]')
+		.clone()
+		.attr('title', 'Televendas')
+		.addClass('notifyme-televendas');
 	var notifyMeButton = $('.portal-notify-me-ref').find('.notifyme-button-ok');
 
-	notifyMeButton.parent()
-		.append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
+	notifyMeButton
+		.parent()
+		.append(
+			'<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
+		);
 
 	notifyMeButton.val('Avise-me');
 	if (typeof televendas !== 'undefined') {
 		$('.notifyme-form')
 			.find('p')
-			.append('<br>Ou entre em contato com nosso ').append(televendas[0]);
+			.append('<br>Ou entre em contato com nosso ')
+			.append(televendas[0]);
 	}
 
 	var isAvailable = skuJson.skus.some(function(e) {
@@ -35,7 +41,6 @@ Nitro.module('notify-me', function() {
 	// $('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
 	// $('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
-
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
 		var dataObj = {
 			email: $('#notifymeClientEmail').val(),
@@ -51,5 +56,4 @@ Nitro.module('notify-me', function() {
 			contentType: 'application/json; charset=utf-8'
 		});
 	});
-
 });

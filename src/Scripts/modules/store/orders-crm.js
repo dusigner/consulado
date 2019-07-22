@@ -1,5 +1,3 @@
-/* global store: true */
-
 'use strict';
 
 var CRM = {

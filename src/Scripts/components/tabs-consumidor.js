@@ -2,7 +2,7 @@
 
 require('vendors/slick');
 
-Nitro.module('tabs-consumidor', function () {
+Nitro.module('tabs-consumidor', function() {
 	// Variables
 	const tabPrateleira = $('.prateleira-tabs');
 	const contentTitles = $('.prateleira-tabs__tabs');
@@ -12,7 +12,7 @@ Nitro.module('tabs-consumidor', function () {
 	const tabs = {};
 
 	// Start all
-	tabs.init = function () {
+	tabs.init = function() {
 		tabs.titleTemplate();
 		tabs.handleActiveTabs();
 		tabs.firstActiveTabs();
@@ -31,7 +31,9 @@ Nitro.module('tabs-consumidor', function () {
 				</li>
 			`;
 
-			$(tab).parent().addClass('tab-' + index);
+			$(tab)
+				.parent()
+				.addClass('tab-' + index);
 			contentTitles.append(tabTemplate);
 		});
 	};
@@ -40,7 +42,7 @@ Nitro.module('tabs-consumidor', function () {
 	tabs.handleActiveTabs = () => {
 		const tab = $('.prateleira-tabs__tab');
 
-		tab.click(function () {
+		tab.click(function() {
 			const tabId = $(this).data('tab');
 			const thisTab = $(this);
 			const cssClass = 'is--active';
@@ -55,7 +57,7 @@ Nitro.module('tabs-consumidor', function () {
 
 	// Mobile select tabs
 	tabs.handleActiveMobileTabs = () => {
-		contentTitles.click(function () {
+		contentTitles.click(function() {
 			const pageWidth = $(window).width();
 			if (pageWidth < 768) {
 				contentTitles.toggleClass('is-mobile--active');
@@ -76,30 +78,33 @@ Nitro.module('tabs-consumidor', function () {
 			infinite: true,
 			slidesToScroll: 4,
 			slidesToShow: 4,
-			responsive: [{
-				breakpoint: 990,
-				settings: {
-					arrows: true,
-					dots: true,
-					slidesToScroll: 2,
-					slidesToShow: 2
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						arrows: true,
+						dots: true,
+						slidesToScroll: 2,
+						slidesToShow: 2
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: true,
+						dots: true,
+						slidesToScroll: 1,
+						slidesToShow: 1
+					}
 				}
-			}, {
-				breakpoint: 480,
-				settings: {
-					arrows: true,
-					dots: true,
-					slidesToScroll: 1,
-					slidesToShow: 1
-				}
-			}]
+			]
 		});
 	};
 
 	/*
-	* This method get all .shelf__item current visibles and genereate stock values into each one
-	*/
-	tabs.buildProductStock = (callback) => {
+	 * This method get all .shelf__item current visibles and genereate stock values into each one
+	 */
+	tabs.buildProductStock = callback => {
 		const $shelfsShowing = tabPrateleira.find('.box-produto');
 
 		let params = '?',
@@ -110,15 +115,14 @@ Nitro.module('tabs-consumidor', function () {
 		$.each($shelfsShowing, (idx, el) => currentProductsIDs.push($(el).data('idproduto')));
 
 		/* Build ajax parameters */
-		currentProductsIDs.forEach((el) => {
+		currentProductsIDs.forEach(el => {
 			params += `fq=productId:${el}&`;
 		});
 
-		let currentProdStock ;
+		let currentProdStock;
 
 		/* Ajax to get products from API*/
 		tabs.getProdSearchAPI(params).then(res => {
-
 			/* Iterates products */
 			res.map(function(el) {
 				currentProdStock = 0;
@@ -158,15 +162,14 @@ Nitro.module('tabs-consumidor', function () {
 	 * @param {String} params a string with the products that will be searched on VTEX Search API
 	 * @returns an array of objects with each product information
 	 */
-	tabs.getProdSearchAPI = (params) => {
+	tabs.getProdSearchAPI = params => {
 		return $.ajax({
-			'url': '/api/catalog_system/pub/products/search/' + params,
-			'method': 'GET'
+			url: '/api/catalog_system/pub/products/search/' + params,
+			method: 'GET'
 		}).then(res => {
 			return res;
 		});
 	};
-
 
 	tabs.init();
 });
