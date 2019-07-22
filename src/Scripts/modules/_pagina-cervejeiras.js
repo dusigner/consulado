@@ -430,6 +430,10 @@ Nitro.module('cervejeiras', ['gallery', 'dataLayer-cervejeira'], function(
 		});
 	};
 
-	cervejeiras.init();
-	dataLayerCervejeira.init();
+	// Iniciar somente na página de Cervejeiras
+	const bodyHasCervejeira =  $('body.smartbeer2');
+	if (bodyHasCervejeira.length > 0) {
+		cervejeiras.init();
+		dataLayerCervejeira.init();
+	}
 });

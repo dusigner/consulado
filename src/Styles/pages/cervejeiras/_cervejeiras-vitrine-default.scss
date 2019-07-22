@@ -1,187 +1,191 @@
 @charset 'UTF-8';
 
 .vitrine-promocoes {
-    background-color: #fcfcfc;
-    padding: 30px 0;
+	background-color: #fcfcfc;
+	padding: 30px 0;
 
-    @include breakpoint ('medium', 'max') {
-        background-color: #fff;
-    }
+	@include breakpoint ('medium', 'max') {
+		background-color: #fff;
+	}
 
-    h2 {
-        @include rfs(28);
-        text-align: center;
+	h2 {
+		@include rfs(28);
+		text-align: center;
 
-        .cor {
-            color: #9ACA3C;
+		.cor {
+			color: #9ACA3C;
 
-            @include breakpoint ('medium', 'max') {
-                display: block;
-            }
-        }
+			@include breakpoint ('medium', 'max') {
+				display: block;
+			}
+		}
 
-        @include breakpoint ('medium', 'max') {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-    }
+		@include breakpoint ('medium', 'max') {
+			font-size: 20px;
+			margin-bottom: 10px;
+		}
+	}
 
-    .prateleira {
-        h2 {
-            display: none;
-        }
-        .btn-comparar {
-            display: none;
-        }
+	.prateleira {
+		h2 {
+			display: none;
+		}
+		.btn-comparar {
+			display: none;
+		}
 
-        .slick-disabled {
-            &:before {
-                color: #e4e4e4;
-            }
-        }
+		.slick-disabled {
+			&:before {
+				color: #e4e4e4;
+			}
+		}
 
-        .slick-arrow {
-            &:hover {
-                color: #9ACA3C;
-            }
-        }
+		.slick-arrow {
+			&:hover {
+				color: #9ACA3C;
+			}
+		}
 
-        .slick-list {
-            margin: 0 auto;
-        }
+		.slick-list {
+			margin: 0 auto;
+		}
 
-        .slick-dots {
-            bottom: 15px;
+		.slick-dots {
+			bottom: 15px;
 
-            li {
-                button {
-                    background-color: #CECCCC;
-                }
+			li {
+				button {
+					background-color: #CECCCC;
+				}
 
-                &.slick-active {
-                    button {
-                        background-color: #9ACA3C;
+				&.slick-active {
+					button {
+						background-color: #9ACA3C;
 
-                        &:after {
-                            display: none;
-                        }
-                    }
-                }
-            }
-        }
+						&:after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
 
-        article.box-produto {
-            border: 1px solid #fcfcfc;
-            min-height: 450px;
+		article.box-produto {
+			border: 1px solid #fcfcfc;
+			min-height: 450px;
 
-            @include breakpoint ('medium', 'max') {
-                border: 1px solid #FFF;
-            }
+			@include breakpoint ('medium', 'max') {
+				border: 1px solid #FFF;
+			}
 
-            &:hover {
-                border: 1px solid #9ACA3C;
-            }
+			&:hover {
+				border: 1px solid #9ACA3C;
+			}
 
-            .detalhes {
-                a {
-                    &:before {
-                        display: none;
-                    }
-                }
+			.detalhes {
+				a {
+					&:before {
+						display: none;
+					}
+				}
 
-                .image {
-                    margin: 15px;
-                    position: relative;
+				.image {
+					margin: 15px;
+					position: relative;
 
-                    .img.backup {visibility: hidden}
+					.img.backup {visibility: hidden}
 
-                    &:before {
-                        background-color: #d0d;
-                        background-size: contain!important;
-                        content: '';
-                        display: block;
-                        height: 100%;
-                        opacity: 1;
-                        position: absolute;
-                        width: 100%;
-                        z-index: 10;
-                    }
+					&:before {
+						background-color: #d0d;
+						background-size: contain!important;
+						content: '';
+						display: block;
+						height: 100%;
+						opacity: 1;
+						position: absolute;
+						width: 100%;
+						z-index: 10;
+					}
 
-                    &[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
-                    &[href*='vermelha']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-vermelha-frente.png') center center no-repeat; }
-                    &[href*='titanium']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-titanium-frente.png') center center no-repeat; }
+					&[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
+					&[href*='vermelha']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-vermelha-frente.png') center center no-repeat; }
+					&[href*='titanium']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-titanium-frente.png') center center no-repeat; }
 
-                }
+				}
 
-                .prod-info {
-                    border-color: #F1F0F0;
-                    position: relative;
+				.prod-info {
+					border-color: #F1F0F0;
+					position: relative;
 
-                    .nome {
-                        @include rfs(15);
-                        color: #736C6B;
-                        font-weight: bold;
+					.nome {
+						@include rfs(15);
+						color: #736C6B;
+						font-weight: bold;
 
-                        li {
-                            @include rfs(11);
-                            display: block;
-                            font-weight: 100;
-                        }
-                    }
+						li {
+							@include rfs(11);
+							display: block;
+							font-weight: 100;
+						}
+					}
 
-                    .de {
-                        @include rfs(12);
-                        color: #702F8F;
-                        font-weight: 500;
-                    }
+					.de {
+						@include rfs(12);
+						color: #702F8F;
+						font-weight: 500;
+					}
 
-                    .discount-boleto {
-                        @include rfs(24);
-                        color: #9ACA3C;
+					.discount-boleto {
+						@include rfs(24);
+						color: #9ACA3C;
 
-                        span {
-                            @include rfs(20);
-                            display: inline-block;
+						span {
+							@include rfs(20);
+							display: inline-block;
 
-                        }
-                    }
+						}
+					}
 
-                    .adicional {
-                        strong {
-                            display: none;
+					.adicional {
+						strong {
+							display: none;
 
-                            span:before {
-                                content: none;
-                            }
-                        }
+							span:before {
+								content: none;
+							}
+						}
 
-                        .preco-parcelado {
-                            @include rfs(11);
-                            margin-bottom: 0;
-                            text-transform: initial;
-                        }
-                    }
+						.preco-parcelado {
+							@include rfs(11);
+							margin-bottom: 0;
+							text-transform: initial;
+						}
+					}
 
-                    .sku_error {
-                        position: absolute;
-                        top: 10px;
-                        width: 100%;
+					.sku_error {
+						position: absolute;
+						top: 10px;
+						width: 100%;
 
-                        &:before {
-                            border-width: 20px;
-                            bottom: 80%;
-                            left: 42%;
-                            top: unset;
-                        }
-                    }
+						&:before {
+							border-width: 20px;
+							bottom: 80%;
+							left: 42%;
+							top: unset;
+						}
+					}
+				}
 
-                }
+				.sku_buy { margin: 15px auto 20px; }
+			}
+		}
+	}
 
-                .sku_buy {
-                    margin: 15px auto 20px;
-
-                }
-            }
-        }
-    }
+	// Remove comparador e selos das páginas de cervejeira
+	.off,
+	.product-with-5-off,
+	.btn-comparar {
+		display: none!important;
+		visibility: hidden!important;
+	}
 }
