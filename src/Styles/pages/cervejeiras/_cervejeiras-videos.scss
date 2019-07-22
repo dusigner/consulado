@@ -33,7 +33,7 @@
 		&:before {
 			@include allCenter;
 			@include square(110%);
-			background: url('/arquivos/pagina-cervejeiras__bg-video-01.png') center center no-repeat;
+			background: url('/arquivos/pagina-cervejeiras__bg-video-03.png') center center no-repeat;
 			background-size: contain;
 			content: '';
 			cursor: pointer;
@@ -88,10 +88,11 @@
 		justify-content: center;
 
 		&__item {
+			@include breakpoint('medium', 'min') { min-height: 58px; }
+			@include breakpoint('medium', 'max') { min-height: 45px; }
 			border: 1px solid #736C6B;
 			cursor: pointer;
 			margin: 0 8px;
-			min-height: 58px;
 			overflow: hidden;
 			transition:
 				border-color .2s linear,

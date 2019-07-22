@@ -40,7 +40,7 @@ Nitro.controller('produto', [
 	'upsell',
 	'deliveryTime',
 	'recurrence' /*, 'special-content'*/
-], function (chaordic, testeabEntrega, skuFetch, gallery) {
+], function (chaordic, testeabEntrega, colorSelector, skuFetch, gallery) {
 	var self = this,
 		$body = $('body');
 
