@@ -3,7 +3,10 @@
 // Dust filters
 _.extend(dust.filters, {
 	orderNumber: function(value) {
-		return value.split('-').shift().replace(/[^0-9]/g, '');
+		return value
+			.split('-')
+			.shift()
+			.replace(/[^0-9]/g, '');
 	},
 	humanizeIndex: function(value) {
 		return value + 1;
@@ -12,15 +15,25 @@ _.extend(dust.filters, {
 		return $.formatDatetimeBRL(value);
 	},
 	formatDateAndHour: function(value) {
-		var d = (value) ? new Date(value) : new Date(),
+		var d = value ? new Date(value) : new Date(),
 			month = d.getUTCMonth() + 1,
 			day = d.getUTCDate(),
 			hours = d.getUTCHours(),
 			minutes = d.getUTCMinutes();
 
-		return (day < 10 ? '0' : '') + day + '/' +
-			(month < 10 ? '0' : '') + month + ' - ' +
-			(hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+		return (
+			(day < 10 ? '0' : '') +
+			day +
+			'/' +
+			(month < 10 ? '0' : '') +
+			month +
+			' - ' +
+			(hours < 10 ? '0' : '') +
+			hours +
+			':' +
+			(minutes < 10 ? '0' : '') +
+			minutes
+		);
 	},
 	intAsCurrency: function(value) {
 		return _.intAsCurrency(value);
@@ -30,11 +43,11 @@ _.extend(dust.filters, {
 	},
 	shortName: function(value) {
 		var sku = value.split('-'),
-			name = (sku[0].length > 40 ? sku[0].substr(0, 40) + '...' : sku[0]);
+			name = sku[0].length > 40 ? sku[0].substr(0, 40) + '...' : sku[0];
 
 		sku = sku[1] ? sku[1] : false;
 
-		return '<strong>' + name+ '</strong>' + (sku ? ' ' + sku : '');
+		return '<strong>' + name + '</strong>' + (sku ? ' ' + sku : '');
 	},
 	frequencyText: function(value) {
 		var text = {
@@ -46,10 +59,10 @@ _.extend(dust.filters, {
 		return text[value];
 	},
 	recurrenceSemanas: function(value) {
-		var intPeriod = value.match(/^\d{1,}/gmi);
+		var intPeriod = value.match(/^\d{1,}/gim);
 
-		if(intPeriod && intPeriod[0] > 12) {
-			value = (intPeriod / 4) + ' meses';
+		if (intPeriod && intPeriod[0] > 12) {
+			value = intPeriod / 4 + ' meses';
 		}
 
 		return value;
@@ -57,7 +70,7 @@ _.extend(dust.filters, {
 	statusText: function(value) {
 		var finalText = '';
 
-		if( value === 'ACTIVE' ) {
+		if (value === 'ACTIVE') {
 			finalText = 'ativa';
 		} else {
 			finalText = 'inativa';
@@ -145,10 +158,10 @@ $.crmHandler = function(step, CRM) {
 $.titleStatus = function(status) {
 	var finalTitle = 'Recorrência ';
 
-	if(status === 'ACTIVE') {
-		finalTitle+='ativa';
+	if (status === 'ACTIVE') {
+		finalTitle += 'ativa';
 	} else {
-		finalTitle+='inativa';
+		finalTitle += 'inativa';
 	}
 
 	return finalTitle;

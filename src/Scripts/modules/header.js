@@ -18,7 +18,9 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 
 	topMenu.find('.dropdown > a, .icon-hamburger').click(function(e) {
 		e.preventDefault();
-		$(this).parent().toggleClass('topmenu-active');
+		$(this)
+			.parent()
+			.toggleClass('topmenu-active');
 		topMenu.toggleClass('no-border');
 	});
 
@@ -35,9 +37,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		e.preventDefault();
 
 		if (menuMobile.hasClass('menu-active')) {
-			menuMobile
-				.removeClass()
-				.addClass(defaultClass);
+			menuMobile.removeClass().addClass(defaultClass);
 
 			$('header').removeClass('menu-scroll');
 			$('header').height(100);
@@ -46,8 +46,18 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 
 			var altura = $(window).height();
 
-			$('body').find('.menu-active').parent().parent().parent().addClass('menu-scroll');
-			$('body').find('.menu-active').parent().parent().parent().height(altura);
+			$('body')
+				.find('.menu-active')
+				.parent()
+				.parent()
+				.parent()
+				.addClass('menu-scroll');
+			$('body')
+				.find('.menu-active')
+				.parent()
+				.parent()
+				.parent()
+				.height(altura);
 		}
 	});
 
@@ -69,37 +79,38 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 
 	$document
 		.on('cart', function() {
-
 			$body.toggleClass('cart-active');
-
-		}).on('search', function(e, status) {
-
+		})
+		.on('search', function(e, status) {
 			$body.toggleClass('search-active', !!status);
 		});
-
 
 	//add action to close button from vtex login
 	$('body.login').on('click', '.vtexIdUI-close', function() {
 		window.location.href = '/';
 	});
 
+	window.vtexjs &&
+		window.vtexjs.checkout.getOrderForm().done(function(result) {
+			var orderForm = result;
 
-	window.vtexjs && window.vtexjs.checkout.getOrderForm().done(function(result) {
-		var orderForm = result;
+			if (orderForm && orderForm.clientProfileData && orderForm.clientProfileData.email) {
+				$('.logout').removeClass('hide');
+			}
+		});
 
-		if (orderForm && orderForm.clientProfileData && orderForm.clientProfileData.email) {
-			$('.logout').removeClass('hide');
-		}
-	});
-
-	menuMobile.find('.sub-itens > a').on('click',function(e) {
+	menuMobile.find('.sub-itens > a').on('click', function(e) {
 		e.preventDefault();
 
-		$(this).parent().toggleClass('open');
-		$(this).siblings('.submenu').slideToggle('slow');
+		$(this)
+			.parent()
+			.toggleClass('open');
+		$(this)
+			.siblings('.submenu')
+			.slideToggle('slow');
 	});
 
-	if( store && store.isCorp ) {
+	if (store && store.isCorp) {
 		$('.logout a').click(function(e) {
 			e.preventDefault();
 			store.logout();

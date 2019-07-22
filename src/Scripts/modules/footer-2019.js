@@ -20,7 +20,9 @@ Nitro.module('footer-2019', function() {
 
 	footer.toogleAtendimento = () => {
 		$canaisAtendimentoTtitle.click(function() {
-			$(this).parent().toggleClass('is--active');
+			$(this)
+				.parent()
+				.toggleClass('is--active');
 		});
 	};
 
@@ -40,21 +42,23 @@ Nitro.module('footer-2019', function() {
 	footer.animateScrollTop = () => {
 		var reachBottom = 0;
 
-		$window.scroll(function() {
-			if ($window.scrollTop() >= 560) {
-				$toTop.removeClass('hide');
-				reachBottom = ($footer.offset().top - $window.scrollTop()) - $window.height() - 80;
-				if (reachBottom < 0) {
-					$toTop.css('bottom', 10 + Math.abs(reachBottom));
+		$window
+			.scroll(function() {
+				if ($window.scrollTop() >= 560) {
+					$toTop.removeClass('hide');
+					reachBottom = $footer.offset().top - $window.scrollTop() - $window.height() - 80;
+					if (reachBottom < 0) {
+						$toTop.css('bottom', 10 + Math.abs(reachBottom));
+					} else {
+						$toTop.css('bottom', 10);
+					}
 				} else {
-					$toTop.css('bottom', 10);
+					$toTop.addClass('hide');
 				}
-			} else {
-				$toTop.addClass('hide');
-			}
-		}).scroll();
+			})
+			.scroll();
 
-		$toTop.click(function(){
+		$toTop.click(function() {
 			$('html, body').animate({ scrollTop: 0 }, 600);
 		});
 	};

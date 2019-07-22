@@ -24,7 +24,6 @@ Nitro.module('order.warranty.gae', function() {
 		$slider = $('.garantia-estendida-compra>.content-gae');
 
 	var PDVBox = {
-
 		username: 'compracerta',
 
 		password: '8MUKHL5VSqeK8YaFCngUYcpuZZnn2WA4',
@@ -75,25 +74,29 @@ Nitro.module('order.warranty.gae', function() {
 			swipe: false
 		});
 
-		$('.breadcrumb a[href="#orders"]').click(function(){
+		$('.breadcrumb a[href="#orders"]').click(function() {
 			$slider.slick('slickGoTo', 0);
 		});
 
-		$('.breadcrumb a[href="#profile"]').click(function(){
+		$('.breadcrumb a[href="#profile"]').click(function() {
 			$slider.slick('slickPrev');
 		});
 
-		$('.breadcrumb a[href="#payment"]').click(function(){
+		$('.breadcrumb a[href="#payment"]').click(function() {
 			$slider.slick('slickNext');
 		});
 
-		$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){
+		$slider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 			//scrolltop
 			$('html, body').animate({ scrollTop: 0 }, 600);
 
 			if (nextSlide === 0) {
 				$('.breadcrumb a[href=#orders]').addClass('active');
-				$('.breadcrumb a[href=#orders]').parent().nextAll().find('a').removeClass('inactive show active');
+				$('.breadcrumb a[href=#orders]')
+					.parent()
+					.nextAll()
+					.find('a')
+					.removeClass('inactive show active');
 
 				self.getPlans(allOrders);
 			} else {
@@ -105,23 +108,21 @@ Nitro.module('order.warranty.gae', function() {
 
 					self.renderProfileData();
 
-					if(idPlanSelected === '9683'){
+					if (idPlanSelected === '9683') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step1', tipo: '+ 1 ano de Garantia Estendida' });
 					}
-					if(idPlanSelected === '9684'){
+					if (idPlanSelected === '9684') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step1', tipo: '+ 2 ano de Garantia Estendida' });
 					}
-
-
 				} else if (nextSlide === 2) {
 					$('.breadcrumb a[href=#payment]').addClass('active');
 
 					self.renderPayment();
 
-					if(idPlanSelected === '9683'){
+					if (idPlanSelected === '9683') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step2', tipo: '+ 1 ano de Garantia Estendida' });
 					}
-					if(idPlanSelected === '9684'){
+					if (idPlanSelected === '9684') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step2', tipo: '+ 2 ano de Garantia Estendida' });
 					}
 
@@ -135,13 +136,12 @@ Nitro.module('order.warranty.gae', function() {
 
 					$('.breadcrumb a[href="#profile"], .breadcrumb a[href="#payment"]').addClass('inactive');
 
-					if(idPlanSelected === '9683'){
+					if (idPlanSelected === '9683') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step3', tipo: '+ 1 ano de Garantia Estendida' });
 					}
-					if(idPlanSelected === '9684'){
+					if (idPlanSelected === '9684') {
 						dataLayer.push({ event: 'GAE Purchase', step: 'step3', tipo: '+ 2 ano de Garantia Estendida' });
 					}
-
 
 					self.renderConfirmation();
 				}
@@ -152,7 +152,10 @@ Nitro.module('order.warranty.gae', function() {
 	this.alert = function(id, text, time) {
 		var delay = time || 5000;
 
-		$('<div class="alert-box" id="' + id + '">' + text + '</div>').hide().prependTo('body').fadeIn();
+		$('<div class="alert-box" id="' + id + '">' + text + '</div>')
+			.hide()
+			.prependTo('body')
+			.fadeIn();
 		setTimeout(function() {
 			$('.alert-box#' + id).fadeOut('400', function() {
 				$(this).remove();
@@ -166,10 +169,9 @@ Nitro.module('order.warranty.gae', function() {
 	};
 
 	this.setup = function(orders) {
-		vtexjs.checkout.getOrderForm().done(function(res){
+		vtexjs.checkout.getOrderForm().done(function(res) {
 			profileData = res.clientProfileData;
 			self.getPlans(orders);
-
 		});
 	};
 
@@ -226,8 +228,8 @@ Nitro.module('order.warranty.gae', function() {
 	};
 
 	this.reduceOrder = function(orders) {
-		$.each(orders, function(index, order){
-			orders[index].products = order.products.filter(function(product){
+		$.each(orders, function(index, order) {
+			orders[index].products = order.products.filter(function(product) {
 				return typeof product.plans !== 'undefined';
 			});
 
@@ -236,10 +238,10 @@ Nitro.module('order.warranty.gae', function() {
 			}
 		});
 
-		if(allOrders.length === 0) {
+		if (allOrders.length === 0) {
 			self.renderEmptyWarranty();
 		} else {
-			$.each(allOrders, function(index,order){
+			$.each(allOrders, function(index, order) {
 				self.getOrderInfo(order);
 			});
 		}
@@ -265,16 +267,15 @@ Nitro.module('order.warranty.gae', function() {
 		boxOrder[idCurrentOrder].number = order.address.number;
 		boxOrder[idCurrentOrder].reference = order.address.reference;
 
-		var timestampDays = 334*86400*1000,
+		var timestampDays = 334 * 86400 * 1000,
 			timestampOrder = new Date(order.orderDate).getTime(),
-			limitBuyDate = $.formatDatetimeBRL(timestampDays +  timestampOrder ); //retorna 11 meses depois da data da compra
+			limitBuyDate = $.formatDatetimeBRL(timestampDays + timestampOrder); //retorna 11 meses depois da data da compra
 
 		boxOrder[idCurrentOrder].limitBuyDate = limitBuyDate;
 		boxOrder[idCurrentOrder].products = order.products;
 
 		self.getProductInfo();
 		// console.log('aqui limite' + limitBuyDate);
-
 	};
 
 	this.getProductInfo = function() {
@@ -308,8 +309,11 @@ Nitro.module('order.warranty.gae', function() {
 			var divList = $('.box-my-orders'); // pega todos os pedidos no DOM
 
 			// reordena as divs pela data do pedido
-			divList.sort(function(a, b){
-				return new Date(self.formatDate($(b).data('order-date'))).getTime() - new Date(self.formatDate($(a).data('order-date'))).getTime();
+			divList.sort(function(a, b) {
+				return (
+					new Date(self.formatDate($(b).data('order-date'))).getTime() -
+					new Date(self.formatDate($(a).data('order-date'))).getTime()
+				);
 			});
 
 			$('#orders').html(divList); // remonta o DOM reordenado
@@ -320,20 +324,30 @@ Nitro.module('order.warranty.gae', function() {
 			var $product = $('.box-my-orders .order-products');
 
 			//primeiro box vem selecionado
-			$product.find('.gae-content .box-plan:first-child input').prop('checked',true);
+			$product.find('.gae-content .box-plan:first-child input').prop('checked', true);
 			$product.find('.gae-content .box-plan:first-child .wrapper').addClass('selected');
 
 			//seleciona box que for clicado
-			$product.find('.gae-content .box-plan input').click(function(){
-				$(this).parents('form').find('.selected').removeClass('selected');
-				$(this).parents('.wrapper').addClass('selected');
+			$product.find('.gae-content .box-plan input').click(function() {
+				$(this)
+					.parents('form')
+					.find('.selected')
+					.removeClass('selected');
+				$(this)
+					.parents('.wrapper')
+					.addClass('selected');
 			});
 
 			// click em 'COMPRAR'
-			$product.find('.confirm').click(function(){
+			$product.find('.confirm').click(function() {
 				idCurrentOrder = $(this).data('id');
-				indexProductSelected = $(this).parents('.order-products').index();
-				idPlanSelected = $(this).parents('.order-products').find('input:checked').val();
+				indexProductSelected = $(this)
+					.parents('.order-products')
+					.index();
+				idPlanSelected = $(this)
+					.parents('.order-products')
+					.find('input:checked')
+					.val();
 
 				$slider.slick('slickNext');
 			});
@@ -355,14 +369,14 @@ Nitro.module('order.warranty.gae', function() {
 
 				$('#profile').html(out);
 
-				$('.back').click(function(){
+				$('.back').click(function() {
 					$slider.slick('slickPrev');
 				});
 
 				var height = $('#profile').outerHeight();
 				$slider.find('.slick-list').height(height);
 
-				$('.profile-info .confirm').click(function(){
+				$('.profile-info .confirm').click(function() {
 					self.addWarranty(user);
 				});
 			});
@@ -404,33 +418,51 @@ Nitro.module('order.warranty.gae', function() {
 			}
 		};
 
-		$.getJSON(ORDERCRM.omsURI + boxOrder[idCurrentOrder].orderId).then(function (result) {
+		$.getJSON(ORDERCRM.omsURI + boxOrder[idCurrentOrder].orderId).then(function(result) {
 			//pega data de faturamento do pedido
-			if (result && result.packageAttachment && result.packageAttachment.packages && result.packageAttachment.packages.length > 0) {
-				data.transaction.sale.sale_date = $.formatDatetime(result.packageAttachment.packages[0].issuanceDate, '-');
+			if (
+				result &&
+				result.packageAttachment &&
+				result.packageAttachment.packages &&
+				result.packageAttachment.packages.length > 0
+			) {
+				data.transaction.sale.sale_date = $.formatDatetime(
+					result.packageAttachment.packages[0].issuanceDate,
+					'-'
+				);
 			}
 
-			PDVBox.addPlan(data).done(function (res) {
-				if (res.message === 'Sale inserted' || res.message === 'Sale already inserted') {
-					$.each(boxOrder[idCurrentOrder].currentProduct.plans.coverages, function (i) {
-						if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].id === parseInt(idPlanSelected)) {
-							boxOrder[idCurrentOrder].warrantyPrice = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].price;
+			PDVBox.addPlan(data)
+				.done(function(res) {
+					if (res.message === 'Sale inserted' || res.message === 'Sale already inserted') {
+						$.each(boxOrder[idCurrentOrder].currentProduct.plans.coverages, function(i) {
+							if (
+								boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].id ===
+								parseInt(idPlanSelected)
+							) {
+								boxOrder[idCurrentOrder].warrantyPrice =
+									boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].price;
 
-							if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
-								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida';
-							} else {
-								boxOrder[idCurrentOrder].warrantyPeriod = boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period + ' Meses de garantia estendida';
+								if (boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period === 12) {
+									boxOrder[idCurrentOrder].warrantyPeriod =
+										boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period +
+										' Meses de garantia estendida';
+								} else {
+									boxOrder[idCurrentOrder].warrantyPeriod =
+										boxOrder[idCurrentOrder].currentProduct.plans.coverages[i].period +
+										' Meses de garantia estendida';
+								}
 							}
-						}
-					});
+						});
 
-					boxOrder[idCurrentOrder].linkPayment = res.link;
+						boxOrder[idCurrentOrder].linkPayment = res.link;
 
-					$slider.slick('slickNext');
-				}
-			}).fail(function () {
-				self.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
-			});
+						$slider.slick('slickNext');
+					}
+				})
+				.fail(function() {
+					self.alert('erro-addplan', 'Ocorreu algum erro, tente novamente');
+				});
 		});
 	};
 
@@ -446,7 +478,7 @@ Nitro.module('order.warranty.gae', function() {
 
 			$('#payment').html(out);
 
-			$('.back').click(function(){
+			$('.back').click(function() {
 				$slider.slick('slickPrev');
 			});
 
@@ -465,8 +497,8 @@ Nitro.module('order.warranty.gae', function() {
 				}
 			});
 
-			var interval = setInterval(function(){
-				$.get(url,function(res){
+			var interval = setInterval(function() {
+				$.get(url, function(res) {
 					res = JSON.parse(res);
 
 					if (res.status) {
@@ -506,7 +538,6 @@ Nitro.module('order.warranty.gae', function() {
 			$('#orders').append(out);
 		});
 	};
-
 
 	self.init();
 });

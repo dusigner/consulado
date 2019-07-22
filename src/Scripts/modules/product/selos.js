@@ -2,8 +2,6 @@
 'use strict';
 
 Nitro.module('selos', function() {
-
-
 	var $holder = $('.prod-selos'),
 		$selos = $('#caracteristicas .value-field.Selos');
 
@@ -18,5 +16,4 @@ Nitro.module('selos', function() {
 	}).join('');
 
 	$holder.append($selos);
-
 });

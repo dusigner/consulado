@@ -7,16 +7,13 @@ require('vendors/jquery.inputmask');
 var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.phones', function() {
-
-
 	var self = this,
 		$formPhones = $('#formPhones'),
 		$submit = $formPhones.find('[type="submit"]'),
 		$inputsPhones = $formPhones.find('input[type="tel"]');
-		// $inputHorario = $formPhones.find('input[name="horarios"]');
+	// $inputHorario = $formPhones.find('input[name="horarios"]');
 
 	this.setup = function() {
-
 		$inputsPhones.inputmask('(99) 9999[9]-9999');
 
 		CRM.clientSearchByEmail(self.getEmailClient())
@@ -31,20 +28,19 @@ Nitro.module('checkout.phones', function() {
 	};
 
 	this.getEmailClient = function() {
-
-		if ( store && store.userData && store.userData.email ) {
+		if (store && store.userData && store.userData.email) {
 			self.clientEmail = store.userData.email;
 		} else if (!self.clientEmail) {
-			self.clientEmail =  $('strong.cconf-client-email').text().replace(/\s+/g, '');
+			self.clientEmail = $('strong.cconf-client-email')
+				.text()
+				.replace(/\s+/g, '');
 		}
 
 		return self.clientEmail;
 	};
 
 	this.fillPhones = function(data) {
-
 		if (data) {
-
 			if (data.phone) {
 				$inputsPhones.filter('[name="phone"]').val(data.phone.replace('+55', ''));
 			}
@@ -52,13 +48,10 @@ Nitro.module('checkout.phones', function() {
 			if (data.xAdditionalPhone) {
 				$inputsPhones.filter('[name="xAdditionalPhone"]').val(data.xAdditionalPhone.replace('+55', ''));
 			}
-
 		}
-
 	};
 
 	this.validateForm = function() {
-
 		var valid = false;
 		$('.alert-danger').removeClass('active');
 
@@ -90,7 +83,6 @@ Nitro.module('checkout.phones', function() {
 		e.preventDefault();
 
 		if (self.validateForm()) {
-
 			var data = {};
 
 			$.map($inputsPhones, function(x) {
@@ -116,8 +108,6 @@ Nitro.module('checkout.phones', function() {
 				.fail(function() {
 					$submit.removeClass('icon-loading');
 				});
-
 		}
 	};
-
 });

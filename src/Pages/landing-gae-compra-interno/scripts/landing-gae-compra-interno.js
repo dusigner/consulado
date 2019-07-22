@@ -6,7 +6,6 @@ import './gae-compra-interno/order.states';
 import './gae-compra-interno/order.warranty.gae';
 import 'Dust/gae-compra-interno/warrantySpare.emptyOrders.html';
 
-
 Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.gae'], function(states, warranty) {
 	var self = this,
 		dateNow = new Date(),
@@ -16,9 +15,11 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		getOrdersUrl,
 		getUserEmail;
 
-	if($.cookie('vtex-current-user')) {
-		getUserEmail = window.getCookie('vtex-impersonated-customer-email').replace('vtex-impersonated-customer-email=', '');
-		getOrdersUrl = '/api/checkout/pub/orders/?customerEmail='+ getUserEmail;
+	if ($.cookie('vtex-current-user')) {
+		getUserEmail = window
+			.getCookie('vtex-impersonated-customer-email')
+			.replace('vtex-impersonated-customer-email=', '');
+		getOrdersUrl = '/api/checkout/pub/orders/?customerEmail=' + getUserEmail;
 	} else {
 		getOrdersUrl = '/api/checkout/pub/orders/';
 	}
@@ -49,16 +50,21 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		data.currentState = states.get(e.state);
 		console.info('e', e);
 		data.orderId = e.orderId;
-		data.orderIdFormatted = data.orderId.split('-').shift().replace(/[^0-9]/g, '');
+		data.orderIdFormatted = data.orderId
+			.split('-')
+			.shift()
+			.replace(/[^0-9]/g, '');
 		data.orderGroup = e.orderGroup;
 		data.formattedDate = $.formatDatetimeBRL(e.creationDate);
 		data.name = e.clientProfileData.firstName + ' ' + e.clientProfileData.lastName;
 		data.address = e.shippingData.address;
-		data.shippingMethod = (e.shippingData.logisticsInfo[0]) ? e.shippingData.logisticsInfo[0].selectedSla : '';
+		data.shippingMethod = e.shippingData.logisticsInfo[0] ? e.shippingData.logisticsInfo[0].selectedSla : '';
 		data.payments = e.paymentData.payments;
 		data.products = e.items;
-		data.Installment = (e.paymentData.transactions[0].payments[0]) ? e.paymentData.transactions[0].payments[0].installments : '';
-		data.boletoURL = (e.paymentData.transactions[0].payments[0]) ? e.paymentData.transactions[0].payments[0].url : '';
+		data.Installment = e.paymentData.transactions[0].payments[0]
+			? e.paymentData.transactions[0].payments[0].installments
+			: '';
+		data.boletoURL = e.paymentData.transactions[0].payments[0] ? e.paymentData.transactions[0].payments[0].url : '';
 		data.hasGae = false;
 
 		var orderDate = data.formattedDate.split('/');
@@ -76,7 +82,6 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 			if (e.bundleItems.length > 0) {
 				data.hasGae = true;
 			}
-
 		});
 
 		return data;
@@ -84,26 +89,27 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 
 	this.getStatus = function(order) {
 		var currentOrder = CRM.getOrderById(order.orderId).then(function(result) {
-			if (!result){
+			if (!result) {
 				return true;
 			}
 
 			$(result && result.Documents).each(function(i, e) {
 				if (!e.finished) {
-					order.currentState  = states.get( 'pedidoEntregue' );
+					order.currentState = states.get('pedidoEntregue');
 				}
 			});
 		});
 
 		//console.log('here', order);
 		//order.currentState.orderLabel = 'faturado';
-		if ($.diffDate(dateNow, order.orderDate) <= 334	&&
-		order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
-		order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
-		order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
-		order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
-
-		!order.hasGae) {
+		if (
+			$.diffDate(dateNow, order.orderDate) <= 334 &&
+			order.currentState.orderLabel.toLowerCase() !== 'cancelado' &&
+			order.currentState.orderLabel.toLowerCase() !== 'pedido cancelado' &&
+			order.currentState.orderLabel.toLowerCase() !== 'aguardando pagamento' &&
+			order.currentState.orderLabel.toLowerCase() !== 'preparando pedido' &&
+			!order.hasGae
+		) {
 			ordersPromises.push(currentOrder);
 			allOrders.push(order);
 		}
@@ -121,62 +127,64 @@ Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.
 		});
 	};
 
-	Order.list().done(function(orders) {
-		if (orders.length > 0) {
-			orders.reduce(function(prev, curr, i) {
-				if (prev.orderGroup === curr.orderGroup) {
-					delete orders[i - 1];
+	Order.list().done(
+		function(orders) {
+			if (orders.length > 0) {
+				orders.reduce(function(prev, curr, i) {
+					if (prev.orderGroup === curr.orderGroup) {
+						delete orders[i - 1];
 
-					//MERGE ITEMS
-					$(prev.items).each(function(i, e) {
-						curr.items.push(e);
-					});
+						//MERGE ITEMS
+						$(prev.items).each(function(i, e) {
+							curr.items.push(e);
+						});
 
-					//MERGE TOTALS
-					$(prev.totals).each(function(i, e) {
-						if (curr.totals[i]) {
-							curr.totals[i].value += e.value;
-						} else {
-							curr.totals[i] = e;
-						}
-					});
+						//MERGE TOTALS
+						$(prev.totals).each(function(i, e) {
+							if (curr.totals[i]) {
+								curr.totals[i].value += e.value;
+							} else {
+								curr.totals[i] = e;
+							}
+						});
 
-					curr.value += prev.value;
-				}
+						curr.value += prev.value;
+					}
 
-				return curr;
-			});
+					return curr;
+				});
 
-			orders.sort(self.sortByDate).reverse();
+				orders.sort(self.sortByDate).reverse();
 
-			$(orders).each(function(i, e) {
-				if (typeof e !== 'undefined') {
-					var data = self.getData(e);
+				$(orders).each(function(i, e) {
+					if (typeof e !== 'undefined') {
+						var data = self.getData(e);
 
-					self.getStatus(data);
-				}
-			});
-		} else {
-			$('.load').remove();
-
-			self.renderEmptyOrders();
-		}
-	}, function() {
-		var currentOrders = [];
-
-		if (ordersPromises.length === 0) {
-			self.renderEmptyOrders();
-		} else {
-			$(ordersPromises).each(function(index, promise) {
-				promise.always(function(e) {
-					currentOrders.push(e);
-
-
-					if (ordersPromises.length === currentOrders.length) {
-						warranty.setup(allOrders);
+						self.getStatus(data);
 					}
 				});
-			});
+			} else {
+				$('.load').remove();
+
+				self.renderEmptyOrders();
+			}
+		},
+		function() {
+			var currentOrders = [];
+
+			if (ordersPromises.length === 0) {
+				self.renderEmptyOrders();
+			} else {
+				$(ordersPromises).each(function(index, promise) {
+					promise.always(function(e) {
+						currentOrders.push(e);
+
+						if (ordersPromises.length === currentOrders.length) {
+							warranty.setup(allOrders);
+						}
+					});
+				});
+			}
 		}
-	});
+	);
 });

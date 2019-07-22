@@ -2,12 +2,9 @@
 'use strict';
 
 Nitro.module('sku-select', function() {
-
-
 	var self = this;
 
 	this.modalComplete = function(modal, content) {
-
 		/*content.on('change', 'input', function() {
 
 			var input = $(this);
@@ -23,14 +20,14 @@ Nitro.module('sku-select', function() {
 		content.on('click', 'label', function() {
 			//e.preventDefault();
 
-			$(this).prev().trigger('click');
+			$(this)
+				.prev()
+				.trigger('click');
 		});
 	};
 
 	this.buttonHandler = function(e, id, message) {
-
 		if (message === 'Por favor, selecione o modelo desejado.') {
-
 			$('#modal-sku').vtexModal({
 				complete: self.modalComplete
 			});
@@ -49,20 +46,22 @@ Nitro.module('sku-select', function() {
 		if (skuLabel.length === 1) {
 			skuLabel.click();
 		}
-
 	});
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
 
-	$('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
+	$('.notifyme-client-email').after(
+		'<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">'
+	);
 	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 	$(window).on('skuSelected.vtex', function(a, b, c) {
 		var templateVoltagem = {
-			template: '<div id="modal-voltagem" class="modal-voltagem">' +
-			'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
-			'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
-			'</div>'
+			template:
+				'<div id="modal-voltagem" class="modal-voltagem">' +
+				'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
+				'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
+				'</div>'
 		};
 
 		$('#vtex-modal-sku .sku-indisponivel .btn-avise').css('top', '0px');
@@ -76,7 +75,10 @@ Nitro.module('sku-select', function() {
 
 			if (!c.available) {
 				$('.modal-voltagem').show();
-				$('.content_botoes_televendas .buy-button').attr('href', 'javascript:alert(' + '\'Por favor, selecione o modelo desejado.\'' + ');');
+				$('.content_botoes_televendas .buy-button').attr(
+					'href',
+					'javascript:alert(' + "'Por favor, selecione o modelo desejado.'" + ');'
+				);
 				$('.content_botoes_televendas .buy-button').show();
 				$('.modal-voltagem').removeClass('hide');
 				$('#BuyButton .buy-button').hide();
@@ -102,14 +104,18 @@ Nitro.module('sku-select', function() {
 			if ($('.modal-avise').length === 0) {
 				$('#BuyButton .portal-notify-me-ref').addClass('modal-avise');
 				$('#BuyButton .portal-notify-me-ref').appendTo('.vtex-modal');
-				$('#vtex-modal-sku .sku-notifyme-form').append('<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>');
+				$('#vtex-modal-sku .sku-notifyme-form').append(
+					'<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
+				);
 			}
 
 			if ($('.back-window').length === 0) {
 				$('.notifyme-form').prepend('<span class="back-window"></span>');
 			}
 
-			$('.sku-notifyme-form.notifyme-form p').html('Insira seus dados abaixo para ser avisado quando o produto estiver <strong>disponível em outra voltagem.</strong>');
+			$('.sku-notifyme-form.notifyme-form p').html(
+				'Insira seus dados abaixo para ser avisado quando o produto estiver <strong>disponível em outra voltagem.</strong>'
+			);
 
 			$('.notifyme-button-ok').val('Avise-me');
 
@@ -130,5 +136,4 @@ Nitro.module('sku-select', function() {
 			});
 		});
 	});
-
 });

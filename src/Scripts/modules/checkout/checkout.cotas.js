@@ -3,7 +3,6 @@
 var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.cotas', function() {
-
 	var self = this;
 
 	// Limitação de produtos por CNPJ ou CPF
@@ -16,29 +15,33 @@ Nitro.module('checkout.cotas', function() {
 	 * @return {Function|Promise}
 	 */
 	this.getData = function() {
-
 		var userData;
 
-		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email).then(function(user) {
-			userData = user;
-			if(userData.corporateDocument || userData.document) {
-				if (store && store.isCorp) {
-					return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
+		return CRM.clientSearchByEmail(self.orderForm.clientProfileData.email)
+			.then(function(user) {
+				userData = user;
+				if (userData.corporateDocument || userData.document) {
+					if (store && store.isCorp) {
+						return CRM.clientSearchByDocument(userData.corporateDocument, 'corporateDocument');
+					} else {
+						return CRM.clientSearchByDocument(userData.document, 'document');
+					}
 				} else {
-					return CRM.clientSearchByDocument(userData.document, 'document');
+					return false;
 				}
-			}else {
-				return false;
-			}
-		}).then(function(userByDocument) {
-			var qntd = 0;
-			if( userByDocument ) {
-				$.each(userByDocument, function(index, user) {
-					qntd += user.xSkuSalesChannel5;
-				});
-			}
-			userData.xSkuSalesChannel5 = qntd;
-		}).then(function() { return userData; });
+			})
+			.then(function(userByDocument) {
+				var qntd = 0;
+				if (userByDocument) {
+					$.each(userByDocument, function(index, user) {
+						qntd += user.xSkuSalesChannel5;
+					});
+				}
+				userData.xSkuSalesChannel5 = qntd;
+			})
+			.then(function() {
+				return userData;
+			});
 	};
 
 	/*
@@ -47,16 +50,20 @@ Nitro.module('checkout.cotas', function() {
 	 * @return {Int}
 	 */
 	this._filterEletrodomesticos = function() {
-		return $.reduce(self.orderForm.items, function(o, value) {
-			var qtd = o,
-				categoryRegexID = store.isCorp ? /^\/80\//g : /^\/1\//g;
+		return $.reduce(
+			self.orderForm.items,
+			function(o, value) {
+				var qtd = o,
+					categoryRegexID = store.isCorp ? /^\/80\//g : /^\/1\//g;
 
-			if (value && value.productCategoryIds && categoryRegexID.test(value.productCategoryIds)) {
-				qtd = o + value.quantity;
-			}
+				if (value && value.productCategoryIds && categoryRegexID.test(value.productCategoryIds)) {
+					qtd = o + value.quantity;
+				}
 
-			return qtd;
-		}, 0);
+				return qtd;
+			},
+			0
+		);
 	};
 
 	/*
@@ -65,14 +72,13 @@ Nitro.module('checkout.cotas', function() {
 	 * @return {Boolean}
 	 */
 	this.limitQuantity = function(actual) {
-
 		var quantity = self._filterEletrodomesticos(),
 			totalEletrodomesticos = quantity + actual;
 
 		self.$actionButton = $('.fake-buttom, #payment-data-submit');
 
 		if (totalEletrodomesticos > self.limit) {
-
+			// prettier-ignore
 			window.vtex.checkout.MessageUtils.showMessage({
 				text: store.isCorp ? 'Atenção - Para compras acima de 10 produtos, favor ligue para nosso Televendas ou mande e-mail para vendas_corporativaspj@whirlpool.com. Temos uma condição especial para você ;)' : 'Atenção - Somente é permitido ' + self.limit + ' produtos de Eletrodoméstico por ano. Você já comprou ' + actual + ' produtos.',
 				status: 'info'
@@ -84,7 +90,7 @@ Nitro.module('checkout.cotas', function() {
 
 			try {
 				$.cookie('cota_eletrodomestico', totalEletrodomesticos);
-			} catch(ex) {
+			} catch (ex) {
 				return false;
 			}
 		}
@@ -98,11 +104,13 @@ Nitro.module('checkout.cotas', function() {
 	 * @return {String}
 	 */
 	this._getEmailClient = function() {
-		if(store && store.userData && store.userData.email) {
+		if (store && store.userData && store.userData.email) {
 			return store.userData.email;
 		}
 
-		return $('strong.cconf-client-email').text().replace(/\s+/g, '');
+		return $('strong.cconf-client-email')
+			.text()
+			.replace(/\s+/g, '');
 	};
 
 	/*
@@ -110,14 +118,11 @@ Nitro.module('checkout.cotas', function() {
 	 * O Módulo de cluster ficará responsavel por atualizar os dados das cotas do usuário.
 	 */
 	this.updatePendingCotas = function() {
-
-		CRM.clientSearchByEmail(store.userData.email).then(function(res){
-
+		CRM.clientSearchByEmail(store.userData.email).then(function(res) {
 			res.pending = true;
 
 			store.setUserData(res, true);
 		});
-
 	};
 
 	/*
@@ -131,21 +136,18 @@ Nitro.module('checkout.cotas', function() {
 
 		try {
 			eletrodomesticos = parseInt($.cookie('cota_eletrodomestico'));
-		} catch(ex) {
+		} catch (ex) {
 			return false;
 		}
 
-		if(eletrodomesticos > 0) {
-			CRM.insertClient({ email: self._getEmailClient(), xSkuSalesChannel5: eletrodomesticos })
-				.then(function() {
-
-					try {
-						$.removeCookie('cota_eletrodomestico');
-					} catch(ex) {
-						return false;
-					}
-				});
+		if (eletrodomesticos > 0) {
+			CRM.insertClient({ email: self._getEmailClient(), xSkuSalesChannel5: eletrodomesticos }).then(function() {
+				try {
+					$.removeCookie('cota_eletrodomestico');
+				} catch (ex) {
+					return false;
+				}
+			});
 		}
 	};
-
 });

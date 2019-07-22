@@ -1,7 +1,4 @@
-import {
-	checkInlineDatalayers,
-	pushDataLayer
-} from 'modules/_datalayer-inline';
+import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-categoria', function() {
 	this.breadCrumb = () => {
@@ -11,16 +8,8 @@ Nitro.module('dataLayer-categoria', function() {
 
 			pushDataLayer(
 				'[SQUAD] Breadcrumb Eletrodomésticos',
-				`Ir para a Categoria ${
-					category === 'Consul' || category === 'ConsulQA'
-						? 'Home'
-						: category
-				}`,
-				`Ir para a Categoria ${
-					category === 'Consul' || category === 'ConsulQA'
-						? 'Home'
-						: category
-				}`
+				`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`,
+				`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`
 			);
 		});
 	};

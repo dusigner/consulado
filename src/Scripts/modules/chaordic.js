@@ -23,9 +23,9 @@ require('Dust/chaordic/chaordic-hightlight.html');
 //require('vendors/dust-helpers');
 
 dust.helpers.eq = function(chunk, context, bodies, params) {
-	var location 	= params.key,
-		value 		= params.value,
-		body 		= bodies.block;
+	var location = params.key,
+		value = params.value,
+		body = bodies.block;
 
 	if (location === value) {
 		chunk.render(body, context);
@@ -55,14 +55,22 @@ dust.helpers.neq = function(chunk, context, bodies, params) {
 //MODULE
 Nitro.module('chaordic', function() {
 	var self = this,
-		API = { //OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
+		API = {
+			//OBJETO DE CONFIG GERAL PARA CHAMADAS NA API CHAORDIC
 			APIHOST: '//recs.chaordicsystems.com/v0',
 			SHELFENDPOINT: '/pages/recommendations',
 			//QUERY PARAMETROS OBRIGATÓRIOS P/ CHAMADA
 			APIPARAMS: {
-				apiKey: window.vtex.accountName || window.vtex.vtexid.accountName || window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
+				apiKey:
+					window.vtex.accountName ||
+					window.vtex.vtexid.accountName ||
+					window.jsnomeLoja.replace(/qa$|mkpqa$/, ''),
 				//name: null,
-				source: (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())) ? 'mobile' : 'desktop',
+				source: /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+					navigator.userAgent.toLowerCase()
+				)
+					? 'mobile'
+					: 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
 				productFormat: 'compact'
 			}
@@ -76,13 +84,12 @@ Nitro.module('chaordic', function() {
 	 * @param  {String} name Nome da página para request chaordic (home, product, category, subcategory, cart, etc).
 	 */
 	this.init = function(name, productId) {
-		name ? API.APIPARAMS.name = name : '';
-		productId ? API.APIPARAMS.productId = productId : '';
-		if( $('[data-chaordic]').length > 0 ) {
-
-			if(!API.APIPARAMS.deviceId) {
+		name ? (API.APIPARAMS.name = name) : '';
+		productId ? (API.APIPARAMS.productId = productId) : '';
+		if ($('[data-chaordic]').length > 0) {
+			if (!API.APIPARAMS.deviceId) {
 				var checkDeviceId = setInterval(function() {
-					if(window.getCookie('chaordic_browserId')) {
+					if (window.getCookie('chaordic_browserId')) {
 						API.APIPARAMS.deviceId = window.getCookie('chaordic_browserId');
 						self.getRecommendations();
 						$window.scroll();
@@ -102,10 +109,9 @@ Nitro.module('chaordic', function() {
 
 				var $link = $(this);
 
-				$.get($link.data('tracking'))
-					.always(function() {
-						window.location = $link.attr('href');
-					});
+				$.get($link.data('tracking')).always(function() {
+					window.location = $link.attr('href');
+				});
 			});
 
 			//ACORDION TITLE
@@ -116,10 +122,8 @@ Nitro.module('chaordic', function() {
 					$window.scroll();
 				});
 			}
-
 		}
 	};
-
 
 	/**
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
@@ -127,7 +131,7 @@ Nitro.module('chaordic', function() {
 	this.getRecommendations = function() {
 		var $shelfs = $('[data-chaordic]').not('.chaordic--run');
 
-		if($shelfs.length <= 0) {
+		if ($shelfs.length <= 0) {
 			return false;
 		}
 
@@ -143,15 +147,25 @@ Nitro.module('chaordic', function() {
 					shelf = res[position];
 
 					$.each(shelf, function(i, v) {
-						if(v.feature === 'FrequentlyBoughtTogether') {
-							v.oldPrice = _.formatCurrency(v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice);
-							v.price = _.formatCurrency(v.displays[0].references[0].price + v.displays[0].recommendations[0].price);
+						if (v.feature === 'FrequentlyBoughtTogether') {
+							v.oldPrice = _.formatCurrency(
+								v.displays[0].references[0].oldPrice + v.displays[0].recommendations[0].oldPrice
+							);
+							v.price = _.formatCurrency(
+								v.displays[0].references[0].price + v.displays[0].recommendations[0].price
+							);
 							v.numberInstallments = 10;
-							v.instalments = _.formatCurrency((v.displays[0].references[0].price + v.displays[0].recommendations[0].price) / v.numberInstallments);
+							v.instalments = _.formatCurrency(
+								(v.displays[0].references[0].price + v.displays[0].recommendations[0].price) /
+									v.numberInstallments
+							);
 						}
 
 						self.cropName(v, 25);
-						v.isPersonalized = v.feature === 'ViewPersonalized' || v.feature === 'HistoryPersonalized' || v.feature === 'CartPersonalized';
+						v.isPersonalized =
+							v.feature === 'ViewPersonalized' ||
+							v.feature === 'HistoryPersonalized' ||
+							v.feature === 'CartPersonalized';
 					});
 
 					self.placeHolderRender(shelf, $self).then(function($chaordicShelf) {
@@ -164,7 +178,6 @@ Nitro.module('chaordic', function() {
 						});
 
 						$window.scroll();
-
 					});
 				});
 			});
@@ -195,8 +208,7 @@ Nitro.module('chaordic', function() {
 	this.loadProducts = function() {
 		var $shelfs = $('[data-chaordic] .js-content-lazy:not(".vtex-load")');
 
-		if($shelfs.length <= 0) {
-
+		if ($shelfs.length <= 0) {
 			return false;
 		}
 
@@ -218,10 +230,10 @@ Nitro.module('chaordic', function() {
 					recomendations = self.prepareRecomendations(shelf, shelf.isPersonalized);
 				//
 
-				if(recomendations) {
+				if (recomendations) {
 					self.getProducts(recomendations)
 						.then(function(products) {
-							if(shelf.isPersonalized) {
+							if (shelf.isPersonalized) {
 								self.prepareData(shelf, products, 'references');
 							}
 
@@ -234,10 +246,8 @@ Nitro.module('chaordic', function() {
 
 							$self.parents('[data-chaordic]').addClass('chaordic--runned');
 							//$self.removeClass('js-content-lazy');
-
 						});
 				}
-
 			}
 		});
 	};
@@ -248,7 +258,9 @@ Nitro.module('chaordic', function() {
 	 * @returns {Boolean}
 	 */
 	this._hasFalseKeys = function(obj) {
-		return Object.keys(obj).some(function(key) { return !obj[key]; });
+		return Object.keys(obj).some(function(key) {
+			return !obj[key];
+		});
 	};
 
 	/**
@@ -257,8 +269,8 @@ Nitro.module('chaordic', function() {
 	 */
 	this.getShelf = function() {
 		var dfd = jQuery.Deferred();
-		if(!chaordicData) {
-			if(!self._hasFalseKeys(API.APIPARAMS)) {
+		if (!chaordicData) {
+			if (!self._hasFalseKeys(API.APIPARAMS)) {
 				$.ajax({
 					method: 'GET',
 					dataType: 'json',
@@ -284,7 +296,7 @@ Nitro.module('chaordic', function() {
 	this.prepareRecomendations = function(res, isPersonalized) {
 		var response = res.displays[0].recommendations.reduce(self.recomendationsReducer, '');
 
-		if(isPersonalized) {
+		if (isPersonalized) {
 			response = res.displays[0].references.reduce(self.recomendationsReducer, response);
 		}
 
@@ -292,7 +304,7 @@ Nitro.module('chaordic', function() {
 	};
 
 	this.recomendationsReducer = function(prev, curr) {
-		if($.inArray(curr.id, vtexRenderedProducts) < 0) {
+		if ($.inArray(curr.id, vtexRenderedProducts) < 0) {
 			vtexRenderedProducts.push(curr.id);
 			return prev + 'fq=productId:' + curr.id + '&';
 		} else {
@@ -306,10 +318,11 @@ Nitro.module('chaordic', function() {
 	 * @returns {Promise} com os dados da API da vtex
 	 */
 	this.getProducts = function(recomendations) {
-		return $.getJSON('/api/catalog_system/pub/products/search/?_from=0&_to=49&' + recomendations)
-			.then(function(res) {
-				return res;
-			});
+		return $.getJSON('/api/catalog_system/pub/products/search/?_from=0&_to=49&' + recomendations).then(function(
+			res
+		) {
+			return res;
+		});
 	};
 
 	/**
@@ -319,36 +332,39 @@ Nitro.module('chaordic', function() {
 	 * @returns {Object} dados mesclados prontos para o render
 	 */
 	this.prepareData = function(shelf, products, type) {
-
 		var dfd = jQuery.Deferred();
 
 		type = type || 'recommendations';
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
-
-				if(product.productId === recommendation.id) {
-
+				if (product.productId === recommendation.id) {
 					var $box = $('.shelf-item[data-idproduto="' + product.productId + '"]');
 
-					if(!$box.hasClass('box-produto')) {
-
+					if (!$box.hasClass('box-produto')) {
 						var item = product.items.filter(function(value) {
 							return value.sellers[0].commertialOffer.AvailableQuantity > 0;
 						});
 
-						if(item.length > 0) {
+						if (item.length > 0) {
 							//item = [product.items[0]];
 							product.available = item.length > 0;
 							product.priceInfo = item[0].sellers[0].commertialOffer;
-							product.maxInstallment = self.prepareInstallments(item[0].sellers[0].commertialOffer.Installments);
-							product.priceInfo.percentOff = self.preparePercentoff(item[0].sellers[0].commertialOffer.ListPrice, item[0].sellers[0].commertialOffer.Price);
+							product.maxInstallment = self.prepareInstallments(
+								item[0].sellers[0].commertialOffer.Installments
+							);
+							product.priceInfo.percentOff = self.preparePercentoff(
+								item[0].sellers[0].commertialOffer.ListPrice,
+								item[0].sellers[0].commertialOffer.Price
+							);
 
 							product.finalImages = self.prepareImages(item[0].images, '300');
 
 							// product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
-							product.clusterHighlights = self.prepareclusterHighlights(product.clusterHighlights, item[0].sellers[0].commertialOffer.Teasers);
-
+							product.clusterHighlights = self.prepareclusterHighlights(
+								product.clusterHighlights,
+								item[0].sellers[0].commertialOffer.Teasers
+							);
 
 							self.finalRender(product, $box);
 						} else {
@@ -386,9 +402,9 @@ Nitro.module('chaordic', function() {
 		finalImages.principal = self.replaceImageSize(images[0].imageTag, size);
 
 		$.each(images, function(i, image) {
-			if( image.imageLabel === 'prateleiraPrincipal' ) {
+			if (image.imageLabel === 'prateleiraPrincipal') {
 				finalImages.principal = self.replaceImageSize(image.imageTag, size);
-			} else if( image.imageLabel === 'prateleiraPerspectiva' ) {
+			} else if (image.imageLabel === 'prateleiraPerspectiva') {
 				finalImages.perspectiva = self.replaceImageSize(image.imageTag, size);
 			}
 		});
@@ -402,13 +418,15 @@ Nitro.module('chaordic', function() {
 	 * @returns {Object} dados da maior parcela sem juros
 	 */
 	this.prepareInstallments = function(installments) {
-		return installments.map(function(installment) {
-			if(installment.InterestRate === 0) {
-				return installment;
-			}
-		}).sort(function(a, b) {
-			return b.NumberOfInstallments - a.NumberOfInstallments;
-		})[0];
+		return installments
+			.map(function(installment) {
+				if (installment.InterestRate === 0) {
+					return installment;
+				}
+			})
+			.sort(function(a, b) {
+				return b.NumberOfInstallments - a.NumberOfInstallments;
+			})[0];
 	};
 
 	/**
@@ -419,7 +437,7 @@ Nitro.module('chaordic', function() {
 	 */
 	this.preparePercentoff = function(listPrice, price) {
 		var calc = ((listPrice - price) / listPrice) * 100;
-		if(calc) {
+		if (calc) {
 			return calc + ' %';
 		}
 	};
@@ -432,7 +450,7 @@ Nitro.module('chaordic', function() {
 	// TODO: Review if method is useful
 	this.prepareDiscountPromo = function(teasers) {
 		return teasers.reduce(function(prev, curr) {
-			if(/(Cartão e Boleto|Cartão|Boleto) \d+%/ig.test(curr['<Name>k__BackingField'])) {
+			if (/(Cartão e Boleto|Cartão|Boleto) \d+%/gi.test(curr['<Name>k__BackingField'])) {
 				return curr['<Name>k__BackingField'];
 			}
 		}, {});
@@ -448,14 +466,14 @@ Nitro.module('chaordic', function() {
 
 		// TODO: each function abstraction to avoid duplicate
 		$.each(clusterHighlights, function(i, clusterHighlight) {
-			if( typeof clusterHighlight === 'string' ) {
+			if (typeof clusterHighlight === 'string') {
 				arr.push($.replaceSpecialChars(clusterHighlight));
 			}
 		});
 
-		if(benefitsHighlights && $.isArray(benefitsHighlights) && benefitsHighlights.length) {
+		if (benefitsHighlights && $.isArray(benefitsHighlights) && benefitsHighlights.length) {
 			$.each(benefitsHighlights, function(i, benefitHighlight) {
-				if( typeof benefitHighlight['<Name>k__BackingField'] === 'string' ) {
+				if (typeof benefitHighlight['<Name>k__BackingField'] === 'string') {
 					arr.push($.replaceSpecialChars(benefitHighlight['<Name>k__BackingField']));
 				}
 			});
@@ -473,7 +491,7 @@ Nitro.module('chaordic', function() {
 		$elem.addClass('box-produto');
 
 		// dust render html
-		dust.render('chaordic-unavailable', '',function(err, out) {
+		dust.render('chaordic-unavailable', '', function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Price Dust error: ' + err);
 			}
@@ -534,9 +552,11 @@ Nitro.module('chaordic', function() {
 		var dfd = jQuery.Deferred();
 		var placeholderDust;
 
-		$('body').hasClass('body-cart') ? placeholderDust = 'shelf-content-placeholder-cart' : placeholderDust = 'shelf-content-placeholder';
+		$('body').hasClass('body-cart')
+			? (placeholderDust = 'shelf-content-placeholder-cart')
+			: (placeholderDust = 'shelf-content-placeholder');
 
-		if(renderData[0] && renderData[0].name === 'Complementares') {
+		if (renderData[0] && renderData[0].name === 'Complementares') {
 			renderData[0].subtitle = 'Compre <span class="shelf--compre-junto">junto</span>';
 		}
 		if (renderData[1] && renderData[1].name === 'Preferidos') {
@@ -556,7 +576,6 @@ Nitro.module('chaordic', function() {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
 			}
-
 
 			$elem.html(out);
 			$elem.addClass('chaordic--run');
@@ -615,23 +634,26 @@ Nitro.module('chaordic', function() {
 			infinite: false,
 			slidesToShow: slidesToShow,
 			slidesToScroll: slidesToShow,
-			responsive: [{
-				breakpoint: 768,
-				settings: {
-					dots: true,
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					vertical: false
+			responsive: [
+				{
+					breakpoint: 768,
+					settings: {
+						dots: true,
+						slidesToShow: 2,
+						slidesToScroll: 2,
+						vertical: false
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						dots: true,
+						slidesToShow: 1,
+						slidesToScroll: 1,
+						vertical: false
+					}
 				}
-			}, {
-				breakpoint: 480,
-				settings: {
-					dots: true,
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					vertical: false
-				}
-			}]
+			]
 		});
 	};
 
@@ -642,25 +664,44 @@ Nitro.module('chaordic', function() {
 		$('.js-shelf-item__button').on('click', function(e) {
 			e.preventDefault();
 
-			var buyButton      = $('#BuyButton a.buy-button'),
-				buyButtonLink  = buyButton.attr('href'),
+			var buyButton = $('#BuyButton a.buy-button'),
+				buyButtonLink = buyButton.attr('href'),
 				modalBuyButton = $('#modal-sku .buy-button'),
-				skuInstall     = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku'),
-				skuInstall220  = $(this).closest('.shelf--personalized').find('.js-content-sku-ref article.shelf-item').attr('data-sku-220');
+				skuInstall = $(this)
+					.closest('.shelf--personalized')
+					.find('.js-content-sku-ref article.shelf-item')
+					.attr('data-sku'),
+				skuInstall220 = $(this)
+					.closest('.shelf--personalized')
+					.find('.js-content-sku-ref article.shelf-item')
+					.attr('data-sku-220');
 
 			if ($('.skuselector-specification-label').length <= 0) {
 				$(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
 			} else if ($('.skuselector-specification-label').hasClass('checked')) {
 				let itemSelected = $('.skuselector-specification-label.checked').attr('value');
-
-				itemSelected.includes('220') && skuInstall220 ? $(location).attr('href', `${buyButtonLink}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`) : $(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
+				// prettier-ignore
+				itemSelected.includes('220') && skuInstall220
+					? $(location).attr(
+						'href',
+						`${buyButtonLink}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`
+					)
+					: $(location).attr('href', `${buyButtonLink}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
 			} else {
 				buyButton.trigger('click');
 
 				$(window).on('skuSelected.vtex', function() {
 					let itemSelected = $('.skuselector-specification-label.checked').attr('value');
-
-					itemSelected.includes('220') && skuInstall220 ? modalBuyButton.attr('href', `${modalBuyButton.attr('href')}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`) : modalBuyButton.attr('href', `${modalBuyButton.attr('href')}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`);
+					// prettier-ignore
+					itemSelected.includes('220') && skuInstall220
+						? modalBuyButton.attr(
+							'href',
+							`${modalBuyButton.attr('href')}&sku=${skuInstall220}&qty=1&seller=1&redirect=true&sc=3`
+						)
+						: modalBuyButton.attr(
+							'href',
+							`${modalBuyButton.attr('href')}&sku=${skuInstall}&qty=1&seller=1&redirect=true&sc=3`
+						);
 				});
 			}
 		});
@@ -676,8 +717,13 @@ Nitro.module('chaordic', function() {
 			var sku = $(this).attr('data-sku');
 
 			$('.shelf-item__voltage-option').removeClass('checked');
-			$(this).parent('.shelf-item__voltage-option').addClass('checked');
-			$(this).closest('.js-item-voltage').find('.js-shelf-item__button-cart').attr('data-href', sku);
+			$(this)
+				.parent('.shelf-item__voltage-option')
+				.addClass('checked');
+			$(this)
+				.closest('.js-item-voltage')
+				.find('.js-shelf-item__button-cart')
+				.attr('data-href', sku);
 		});
 
 		$('.js-shelf-item__button-cart').on('click', function(e) {
@@ -689,10 +735,9 @@ Nitro.module('chaordic', function() {
 				seller: '1'
 			};
 
-			vtexjs.checkout.addToCart([item], null, 3)
-				.done(function() {
-					$('html, body').animate({ scrollTop: 0 }, 'slow');
-				});
+			vtexjs.checkout.addToCart([item], null, 3).done(function() {
+				$('html, body').animate({ scrollTop: 0 }, 'slow');
+			});
 		});
 	};
 });

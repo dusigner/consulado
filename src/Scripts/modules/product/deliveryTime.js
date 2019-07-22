@@ -1,14 +1,11 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-
 Nitro.module('deliveryTime', () => {
-
 	let $loadingFret,
 		$containerFrete,
 		flag = 0,
 		ajaxCompleted = false;
-
 
 	/**
 	 * Close box of shipping opttions
@@ -16,7 +13,7 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.closeShippingOptions = () => {
-		$('body').on('click', '.freight-values .closed', function () {
+		$('body').on('click', '.freight-values .closed', function() {
 			$containerFrete.html('').removeClass('active erro');
 		});
 	};
@@ -29,8 +26,7 @@ Nitro.module('deliveryTime', () => {
 	this.openShippingOptions = () => {
 		const $simulatorSelector = $('#btnFreteSimulacao');
 
-
-		$simulatorSelector.on('click', function () {
+		$simulatorSelector.on('click', function() {
 			$loadingFret.addClass('loading');
 			if (flag === 0) {
 				flag = 1;
@@ -44,7 +40,7 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.handleData = () => {
-		$(document).ajaxComplete( (event, xhr, settings) => {
+		$(document).ajaxComplete((event, xhr, settings) => {
 			var calculaFrete = settings.url.split('/')[2];
 
 			if (calculaFrete === 'calcula') {
@@ -87,7 +83,6 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.setPostalCodeStorage = () => {
-
 		try {
 			const textCep = $('#txtCep').val();
 
@@ -112,21 +107,19 @@ Nitro.module('deliveryTime', () => {
 	 *
 	 * @memberof deliveryTime
 	 */
-	this.setPostalCodeOrderForm = (textCep) => {
-
-		if ((!vtexjs.checkout.orderForm.canEditData) || (this.getOrderFormPostalCode() === textCep)) {
+	this.setPostalCodeOrderForm = textCep => {
+		if (!vtexjs.checkout.orderForm.canEditData || this.getOrderFormPostalCode() === textCep) {
 			return;
 		}
 
 		try {
 			vtexjs.checkout.getOrderForm().done(() => {
 				const address = {
-					"postalCode": textCep,
-					"country": 'BRA'
+					postalCode: textCep,
+					country: 'BRA'
 				};
 				return vtexjs.checkout.calculateShipping(address);
 			});
-
 		} catch (error) {
 			console.info(error);
 		}
@@ -138,7 +131,7 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.autoGetPostalCode = () => {
-		vtexjs.checkout.getOrderForm().done((orderForm) => {
+		vtexjs.checkout.getOrderForm().done(orderForm => {
 			if (orderForm.canEditData && this.getOrderFormPostalCode()) {
 				$('#txtCep').val(this.getOrderFormPostalCode());
 				$('#btnFreteSimulacao').trigger('click');
@@ -165,9 +158,12 @@ Nitro.module('deliveryTime', () => {
 	 * @memberof deliveryTime
 	 */
 	this.handleAlert = () => {
-		window.alert = function (e) {
+		window.alert = function(e) {
 			if (e === 'O CEP deve ser informado.' || e === 'CEP inválido.' || e === 'Preencha um CEP válido.') {
-				$containerFrete.html('Preencha um CEP válido.').addClass('active erro').css('display', 'block');
+				$containerFrete
+					.html('Preencha um CEP válido.')
+					.addClass('active erro')
+					.css('display', 'block');
 				$containerFrete.prepend('<i class="closed"></i>');
 			}
 			return;
@@ -187,7 +183,6 @@ Nitro.module('deliveryTime', () => {
 			var frete = settings.url.split('/')[1];
 
 			if (frete === 'frete' && !ajaxCompleted) {
-
 				$loadingFret = $('span.frete-calcular');
 				$containerFrete = $('.freight-values');
 				flag = 0;
@@ -200,9 +195,7 @@ Nitro.module('deliveryTime', () => {
 
 				ajaxCompleted = true;
 			}
-
 		});
-
 	};
 
 	$(document).on('skuSelected.vtex', () => {
@@ -210,6 +203,4 @@ Nitro.module('deliveryTime', () => {
 	});
 
 	this.init();
-
-
 });

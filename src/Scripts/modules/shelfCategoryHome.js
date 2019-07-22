@@ -6,7 +6,10 @@ Nitro.module('shelfCategoryHome', function() {
 	// Variables
 	const $shelfCategory = $('.shelf-category-home');
 	const $shelfCategoryConteinaer = $('.shelf-category-home-container');
-	const shelfTtitle = $shelfCategoryConteinaer.find('.page-title').text().trim();
+	const shelfTtitle = $shelfCategoryConteinaer
+		.find('.page-title')
+		.text()
+		.trim();
 
 	// Tabs
 	const shelfCategoryHome = {};
@@ -24,26 +27,28 @@ Nitro.module('shelfCategoryHome', function() {
 			infinite: false,
 			slidesToScroll: 6,
 			slidesToShow: 6,
-			responsive: [{
-				breakpoint: 1100,
-				settings: {
-					arrows: true,
-					dots: false,
-					slidesToScroll: 4,
-					slidesToShow: 4
+			responsive: [
+				{
+					breakpoint: 1100,
+					settings: {
+						arrows: true,
+						dots: false,
+						slidesToScroll: 4,
+						slidesToShow: 4
+					}
+				},
+				{
+					breakpoint: 770,
+					settings: {
+						arrows: false,
+						dots: true,
+						infinite: false,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+						swipeToSlide: true
+					}
 				}
-			},
-			{
-				breakpoint: 770,
-				settings: {
-					arrows: false,
-					dots: true,
-					infinite: false,
-					slidesToScroll: 1,
-					slidesToShow: 1,
-					swipeToSlide: true
-				}
-			}]
+			]
 		});
 	};
 
@@ -75,7 +80,10 @@ Nitro.module('shelfCategoryHome', function() {
 
 			const $card = $(this);
 			const cardLink = $card.find('.shelf-category-home-card__text').attr('href');
-			const cardText = $card.find('.shelf-category-home-card__text').text().replace(/\s+/gmi, ' ');
+			const cardText = $card
+				.find('.shelf-category-home-card__text')
+				.text()
+				.replace(/\s+/gim, ' ');
 
 			dataLayer.push({
 				event: 'generic',

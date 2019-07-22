@@ -10,8 +10,6 @@
 require('Dust/specifications.html');
 
 Nitro.module('specifications', function() {
-
-
 	var self = this,
 		$holder = $('#especificacoes .container'),
 		$caracteristicas = $('#caracteristicas'),
@@ -24,13 +22,12 @@ Nitro.module('specifications', function() {
 		specs = {
 			'Mais Informações': 'info',
 			'Tipo do produto': 'tipo',
-			'Cor': 'cor',
+			Cor: 'cor',
 			'Garantia do Fornecedor (mês)': 'garantia',
 			'Consumo Aproximado de Energia (kWh)': 'consumo',
 			'Eficiência Energética': 'eficiência',
 			'Garantia do Compressor (meses)': 'garantia compressor',
 			'Garantia do Microcanal (meses)': 'garantia microcanal'
-
 		},
 		ignore = ['Manual do Produto', 'Informações para Instalação'],
 		data = {
@@ -40,7 +37,6 @@ Nitro.module('specifications', function() {
 		};
 
 	$especificacoes.each(function() {
-
 		var self = $(this),
 			key = self.find('.name-field').text(),
 			value = self.find('.value-field').text();
@@ -50,7 +46,6 @@ Nitro.module('specifications', function() {
 		}
 
 		if (key in specs) {
-
 			data.specs.push({
 				key: specs[key],
 				value: value + (specs[key].indexOf('garantia') >= 0 ? ' meses' : '')
@@ -60,24 +55,19 @@ Nitro.module('specifications', function() {
 			data.specs.sort(function(item) {
 				return item.key === 'info' ? 1 : -1;
 			});
-
 		} else {
-
 			data.items.push({
 				key: self.find('.name-field').text(),
 				value: self.find('.value-field').text()
 			});
 		}
-
 	});
 
 	$arquivos.each(function() {
-
 		var self = $(this),
 			value = self.find('.value-field').text();
 
 		if (value && value !== '') {
-
 			value = $.getImagePath(value).replace(/ids\/.+\//, '');
 		}
 
@@ -85,11 +75,9 @@ Nitro.module('specifications', function() {
 			name: self.find('.name-field').text(),
 			file: value
 		});
-
 	});
 
 	this.render = function() {
-
 		dust.render('specifications', data, function(err, out) {
 			if (err) {
 				throw new Error('Specifications Dust error: ' + err);
@@ -97,21 +85,17 @@ Nitro.module('specifications', function() {
 
 			$holder.html(out).show();
 		});
-
 	};
 
 	//listen only to the first one sku;
 	$(document).one('skuFetch', function(e, skuData) {
-
 		if (skuData) {
-
 			data.dimensions = {
 				height: skuData.RealHeight,
 				width: skuData.RealWidth,
 				length: skuData.RealLength,
 				weigh: skuData.RealWeightKg
 			};
-
 		}
 
 		self.render();
@@ -119,11 +103,12 @@ Nitro.module('specifications', function() {
 
 	// ACCORDION SPECIFICATION PRODUCTS
 	var btnSpecs = false;
-	var buttonTemplate = '<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
+	var buttonTemplate =
+		'<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
 
 	accordionBtnProduct.on('click', function(e) {
-		if ( btnSpecs === false ) {
-			$($holder).append( buttonTemplate );
+		if (btnSpecs === false) {
+			$($holder).append(buttonTemplate);
 
 			btnSpecs = true;
 		}
@@ -138,14 +123,18 @@ Nitro.module('specifications', function() {
 
 		if (self.parent().hasClass('open')) {
 			accordionBoxProduct.removeClass('open');
-			self.next().stop(true, true).slideUp();
+			self.next()
+				.stop(true, true)
+				.slideUp();
 		} else {
 			self.parent().addClass('open');
-			self.next().stop(true, true).slideDown();
+			self.next()
+				.stop(true, true)
+				.slideDown();
 		}
 	});
 
-	$holder.on('click', '#mais-especs', function(e){
+	$holder.on('click', '#mais-especs', function(e) {
 		e.preventDefault();
 		var $self = $(this);
 
@@ -153,10 +142,9 @@ Nitro.module('specifications', function() {
 
 		$self.toggleClass('is--active');
 
-		if ( $self.hasClass('is--active') ) {
+		if ($self.hasClass('is--active')) {
 			$self.text('Fechar especificações');
-		}
-		else {
+		} else {
 			$self.text('Ver mais especificações');
 		}
 	});

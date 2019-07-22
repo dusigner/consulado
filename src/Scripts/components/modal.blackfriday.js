@@ -4,9 +4,8 @@ require('vendors/vtex-modal-cookie');
 var CRM = require('modules/store/crm');
 
 Nitro.module('modal.blackfriday', function() {
-
-
-	var $template = '<div class="modal-body">' +
+	var $template =
+		'<div class="modal-body">' +
 		'<div class="row">' +
 		'<div class="col-12"><img src="/arquivos/consul-blackfriday-logo-lb.jpg" alt="Black Friday"/></div>' +
 		'</div>' +
@@ -15,7 +14,6 @@ Nitro.module('modal.blackfriday', function() {
 		'</div>' +
 		'<form action="" class="form-cadastro cf" method="GET">' +
 		'<input type="hidden" name="xBlackFriday" value="true" />' +
-
 		'<div class="fields">' +
 		'<input type="text" id="txt-nome" name="fullName" placeholder="Nome completo" required />' +
 		'<input type="email" id="txt-email" name="email" placeholder="E-mail" required />' +
@@ -23,19 +21,18 @@ Nitro.module('modal.blackfriday', function() {
 		'<div class="col-1"><input type="checkbox" id="rules" required name="rules" value="1" checked="checked" /></div>' +
 		'<div class="col-11"><label for="rules" class="lbl-aceito">li e aceito os <a id="termos" href="/landing/blackfriday#modal-termos">termos</a></label></div>' +
 		'</div>' +
-
 		'<input type="submit" class="cadastrar" value="Cadastre-se" />' +
 		'</div>' +
 		'</form>' +
 		'</div>';
 
-	var $success = '<div class="modal-body">' +
+	var $success =
+		'<div class="modal-body">' +
 		'<div class="row">' +
 		'<div class="col-12"><img src="/arquivos/consul-blackfriday-logo-lb.jpg" alt="Black Friday"/></div>' +
 		'</div>' +
 		'<h2>Cadastro realizado com sucesso!</h2>' +
 		'</div>';
-
 
 	this.setup = function() {
 		$($template).vtexModal({
@@ -51,7 +48,6 @@ Nitro.module('modal.blackfriday', function() {
 
 	this.submit = function(e) {
 		e.preventDefault();
-
 
 		var $inputs = $('.form-cadastro').find('input[type="email"], input[type="text"], input[type="hidden"]');
 		// console.log($inputs);
@@ -74,7 +70,6 @@ Nitro.module('modal.blackfriday', function() {
 
 		delete data.fullName;
 
-
 		CRM.insertClient(data)
 			.then(function() {
 				$('#vtex-blackfriday .close').trigger('click');
@@ -86,12 +81,7 @@ Nitro.module('modal.blackfriday', function() {
 			.fail(function() {
 				$('#vtex-blackfriday .close').trigger('click');
 			});
-
 	};
 
 	this.setup();
-
-
-
-
 });

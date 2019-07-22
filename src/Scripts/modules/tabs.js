@@ -1,11 +1,9 @@
-
 /**
  * Class to create a Tab Module
  *
  * @class Tab
  */
 class Tab {
-
 	/**
 	 * Creates an instance of Tab.
 	 * @param {String} name Name of Tab Module
@@ -22,7 +20,7 @@ class Tab {
 	 * @memberof Tab
 	 */
 	init() {
-		this.$tabNavItems.click((e) => {
+		this.$tabNavItems.click(e => {
 			const targetName = $(e.currentTarget).data('tab-nav'),
 				$content = this.$tabContentItems.filter(`[data-tab-content=${targetName}]`),
 				prevNav = this.$tabNavItems.filter('.-active').data('tab-nav'),
@@ -35,13 +33,11 @@ class Tab {
 
 			$(window).trigger('Tab.willChange', [$(e.currentTarget), $prevContent, $content]);
 			this.$tabContentItems.fadeOut(600);
-			$content.delay(600).fadeIn( ()=> {
+			$content.delay(600).fadeIn(() => {
 				$(window).trigger('Tab.changed', [$(e.currentTarget), $content]);
 			});
-
 		});
 	}
-
 }
 
 export default Tab;

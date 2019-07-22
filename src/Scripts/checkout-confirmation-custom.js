@@ -9,12 +9,19 @@ $.ajax({
 });
 
 $(window).on('load', function() {
-
 	require('modules/helpers');
 
 	if (VERSION) {
-
-		console.info('%c %c %c Jussi | %s Build Version: %s %c %c ', 'background:#dfdab0;padding:2px 0;', 'background:#666; padding:2px 0;', 'background:#222; color:#bada55;padding:2px 0;', (window.jsnomeLoja || '').replace(/\d/, '').capitalize(), VERSION, 'background:#666;padding:2px 0;', 'background:#dfdab0;padding:2px 0;');
+		console.info(
+			'%c %c %c Jussi | %s Build Version: %s %c %c ',
+			'background:#dfdab0;padding:2px 0;',
+			'background:#666; padding:2px 0;',
+			'background:#222; color:#bada55;padding:2px 0;',
+			(window.jsnomeLoja || '').replace(/\d/, '').capitalize(),
+			VERSION,
+			'background:#666;padding:2px 0;',
+			'background:#dfdab0;padding:2px 0;'
+		);
 
 		window._trackJs = window._trackJs || {};
 
@@ -48,9 +55,12 @@ $(window).on('load', function() {
 				});
 			}
 
-			return window.crossroads && window.crossroads.routed.add(function(request) {
-				return self[request] && self[request].call(self);
-			});
+			return (
+				window.crossroads &&
+				window.crossroads.routed.add(function(request) {
+					return self[request] && self[request].call(self);
+				})
+			);
 		};
 
 		this.orderData = [];
@@ -64,7 +74,7 @@ $(window).on('load', function() {
 			if (self.isOrderPlaced()) {
 				// console.info('orderPlacedUpdated', orderPlaced);
 
-				$('.cconf-myorders-button').attr('href','/minhaconta/pedidos');
+				$('.cconf-myorders-button').attr('href', '/minhaconta/pedidos');
 
 				self.infoBoleto();
 				self.replaceOrderId();
@@ -81,41 +91,45 @@ $(window).on('load', function() {
 		this.replaceOrderId = function() {
 			$('.orderid').each(function() {
 				var span = $(this).find('span:last');
-				span.text(span.text().split('-').shift().replace(/[^0-9]/g, ''));
+				span.text(
+					span
+						.text()
+						.split('-')
+						.shift()
+						.replace(/[^0-9]/g, '')
+				);
 			});
 		};
 
-		var urlconfir  = window.location.href,
-			absolutoconfirm = urlconfir.split('/')[urlconfir.split('/').length -1],
+		var urlconfir = window.location.href,
+			absolutoconfirm = urlconfir.split('/')[urlconfir.split('/').length - 1],
 			pedidoconfir = absolutoconfirm.replace('?og=', '');
-			// console.log(pedidoconfir);
+		// console.log(pedidoconfir);
 
-		$.getJSON( '/api/checkout/pub/orders/order-group/' + pedidoconfir, function( res ) {
+		$.getJSON('/api/checkout/pub/orders/order-group/' + pedidoconfir, function(res) {
 			console.info(res);
 
-			var	entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
-			var arrTiposDeEntrega = Object.keys( res[0].shippingData.logisticsInfo[0].slas );
+			var entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
+			var arrTiposDeEntrega = Object.keys(res[0].shippingData.logisticsInfo[0].slas);
 
-			for ( var i =0; i < arrTiposDeEntrega.length; i++ ) {
+			for (var i = 0; i < arrTiposDeEntrega.length; i++) {
 				var entregas = res[0].shippingData.logisticsInfo[0].slas[i];
 
-				if ( entregas.id === entregaEscolhida ) {
+				if (entregas.id === entregaEscolhida) {
 					var startag = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.startDateUtc) : '',
-						endag   = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.endDateUtc) : '';
+						endag = entregas.deliveryWindow ? new Date(entregas.deliveryWindow.endDateUtc) : '';
 				}
 			}
 
-			var starHor        = startag ? startag.getUTCHours() : '',
-				andHor         = endag ? endag.getUTCHours() : '',
-				$wrapper       = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
+			var starHor = startag ? startag.getUTCHours() : '',
+				andHor = endag ? endag.getUTCHours() : '',
+				$wrapper = document.querySelector('#app-container .ph3-ns .pv4 .mb0 span:nth-child(2)'),
 				HTMLTemporario = $wrapper.innerHTML,
-				HTMLNovo       = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
+				HTMLNovo = ' das: <i>' + starHor + '</i> às: <i>' + andHor + '</i>';
 
 			HTMLTemporario = HTMLTemporario + HTMLNovo;
 			$wrapper.innerHTML = HTMLTemporario;
-
 		});
-
 
 		this.infoBoleto = function() {
 			setTimeout(function() {
@@ -135,7 +149,7 @@ $(window).on('load', function() {
 			}, 800);
 		};
 
-		this.orderReinput = function () {
+		this.orderReinput = function() {
 			var istelevendas = localStorage.getItem('istelevendas'),
 				// orderformId = localStorage.getItem('orderformId'),
 				isuser = localStorage.getItem('isuser'),
@@ -146,20 +160,17 @@ $(window).on('load', function() {
 				alcada = localStorage.getItem('alcada'),
 				obsUser = localStorage.getItem('obsUser');
 
-
-			if(istelevendas !== null){
-
-
+			if (istelevendas !== null) {
 				// concatena as variaveis no date
 				var data = {
-					'company': company,
-					'LastUser': isuser,
-					'newOrder': newOrder,
-					'orderReinput': orderR,
-					'userTelesales': istelevendas,
-					'alcada': alcada,
-					'obsUser': obsUser,
-					'reason': reason
+					company: company,
+					LastUser: isuser,
+					newOrder: newOrder,
+					orderReinput: orderR,
+					userTelesales: istelevendas,
+					alcada: alcada,
+					obsUser: obsUser,
+					reason: reason
 				};
 
 				// Faz a inserção no MasterData
@@ -167,7 +178,7 @@ $(window).on('load', function() {
 					url: CRM.formatUrl('RP', 'documents'),
 					type: 'PATCH',
 					data: JSON.stringify(data),
-					success: function () {
+					success: function() {
 						localStorage.removeItem('orderformId');
 						localStorage.removeItem('istelevendas');
 						localStorage.removeItem('isuser');
@@ -177,11 +188,10 @@ $(window).on('load', function() {
 						localStorage.removeItem('obsUser');
 						localStorage.removeItem('alcada');
 					},
-					error: function (error) {
+					error: function(error) {
 						console.info('error; ' + error);
 					}
 				});
-
 			} else {
 				console.info('nao tem o localStorage');
 			}
@@ -189,6 +199,7 @@ $(window).on('load', function() {
 
 		this.updateRecurrenceItem = function() {
 			for (let i = 0; i < $('.cconf-attachment-recorrencia:not(.checked)').length; i++) {
+				// prettier-ignore
 				$('.cconf-attachment-recorrencia:not(.checked)').eq(i).is(":hidden") ? '' : $(`
 					<tr class="cconf-attachment-recorrencia-custom">
 						<td class="recurrence-item-table">
@@ -204,9 +215,10 @@ $(window).on('load', function() {
 						<td class="empty-td"></td>
 					</tr>
 				`).insertBefore($('.cconf-attachment-recorrencia').eq(i));
-				$('.cconf-attachment-recorrencia').eq(i).addClass('checked');
+				$('.cconf-attachment-recorrencia')
+					.eq(i)
+					.addClass('checked');
 			}
-
 		};
 
 		this.init();

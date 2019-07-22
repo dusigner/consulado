@@ -5,30 +5,32 @@ var CRM = require('modules/store/crm');
 require('bootstrap/tooltip');
 
 function Validation() {
-
 	//this.$errorBox = $('<span class="error text-center" data-placement="bottom" data-html="true" />');
-
 }
 
 Validation.prototype.setError = function(el, type, deferred) {
 	type = type || 'error';
 
-	if( type === 'checkbox' ) {
-		el.addClass('error').parents('.checkbox').data({
-			title: el.data('msg-' + type),
-			html: true,
-			placement: 'bottom',
-			trigger: 'manual'
-		}).tooltip('show');
+	if (type === 'checkbox') {
+		el.addClass('error')
+			.parents('.checkbox')
+			.data({
+				title: el.data('msg-' + type),
+				html: true,
+				placement: 'bottom',
+				trigger: 'manual'
+			})
+			.tooltip('show');
 	} else {
-		el.addClass('error').data({
-			title: el.data('msg-' + type),
-			html: true,
-			placement: 'bottom',
-			trigger: 'manual'
-		}).tooltip('show');
+		el.addClass('error')
+			.data({
+				title: el.data('msg-' + type),
+				html: true,
+				placement: 'bottom',
+				trigger: 'manual'
+			})
+			.tooltip('show');
 	}
-
 
 	deferred.reject(el, type);
 };
@@ -38,12 +40,21 @@ Validation.prototype.validate = function(inputs, submit) {
 		deferred = $.Deferred(),
 		pending = false;
 
-	inputs.tooltip('destroy').closest('form').find('span.error').remove();
+	inputs
+		.tooltip('destroy')
+		.closest('form')
+		.find('span.error')
+		.remove();
 
-	inputs.add($(inputs).parents('.checkbox'))
+	inputs
+		.add($(inputs).parents('.checkbox'))
 		.removeClass('error')
 		.one('focus change', function() {
-			$(this).removeClass('error').tooltip('destroy').next('span.error').remove();
+			$(this)
+				.removeClass('error')
+				.tooltip('destroy')
+				.next('span.error')
+				.remove();
 		});
 	inputs.each(function() {
 		var self = $(this),
@@ -59,7 +70,10 @@ Validation.prototype.validate = function(inputs, submit) {
 			_self.setError(self, 'cpf', deferred);
 		} else if (/cnpj/.test(validation) && !self.validCnpj()) {
 			_self.setError(self, 'cnpj', deferred);
-		} else if (/confirm/.test(validation) && self.val() !== inputs.filter('input[name="' + self.data('confirm') + '"]').val()) {
+		} else if (
+			/confirm/.test(validation) &&
+			self.val() !== inputs.filter('input[name="' + self.data('confirm') + '"]').val()
+		) {
 			_self.setError(self, 'confirm', deferred);
 		} else if (/checkbox/.test(validation) && !self.is(':checked')) {
 			_self.setError(self, 'checkbox', deferred);

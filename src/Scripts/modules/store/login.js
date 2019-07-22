@@ -6,16 +6,15 @@ var redirect = require('modules/store/redirect');
 
 var validation = require('modules/store/validation');
 
-Nitro.module('login', function () {
-
+Nitro.module('login', function() {
 	var self = this,
 		$modalRegister = $('#modal-register'),
 		$form;
 
-	this.setup = function () {
+	this.setup = function() {
 		$form = $('.form-login');
 
-		$form.each(function () {
+		$form.each(function() {
 			var _self = $(this);
 
 			_self.fields = _self.find('input[type="text"], input[type="email"]');
@@ -23,7 +22,6 @@ Nitro.module('login', function () {
 			_self.btnSubmit = _self.find('[type="submit"]');
 
 			_self.submit(self.submit.bind(_self));
-
 		});
 
 		$form.fieldEmail = $form.find('input[name="email"]');
@@ -31,78 +29,84 @@ Nitro.module('login', function () {
 		this.init();
 	};
 
-	this.init = function () {
-
+	this.init = function() {
 		var email = store.userData.email || store.uri.getQueryParamValue('email');
 
 		if (email) {
 			$form.fieldEmail.val(email);
 		}
-
 	};
 
-	this.error = function (message) {
-
+	this.error = function(message) {
 		this.btnSubmit.removeClass('loading');
 
-		this.fieldEmail.data({
-			title: message || this.data('msg-error'),
-			html: true,
-			placement: 'top',
-			trigger: 'manual'
-		}).tooltip('show');
-
+		this.fieldEmail
+			.data({
+				title: message || this.data('msg-error'),
+				html: true,
+				placement: 'top',
+				trigger: 'manual'
+			})
+			.tooltip('show');
 	};
 
-	this.submit = function (e) {
+	this.submit = function(e) {
 		e.preventDefault();
-		
-		if (!this.btnSubmit.is('.loading')) {
 
+		if (!this.btnSubmit.is('.loading')) {
 			var form = this,
-				fields = 'id,userId,email,firstName,lastName,homePhone,xAdditionalPhone,corporateDocument,corporateName,tradeName,stateRegistration,isFreeStateRegistration,xBusinessType,xContribuinteICMS,xRegimeApuracaoPIS,xValidationPJ,xApprovedDate',
+				fields =
+					'id,userId,email,firstName,lastName,homePhone,xAdditionalPhone,corporateDocument,corporateName,tradeName,stateRegistration,isFreeStateRegistration,xBusinessType,xContribuinteICMS,xRegimeApuracaoPIS,xValidationPJ,xApprovedDate',
 				dateNow = new Date().getTime();
 
-			validation.validate(this.fields, this.btnSubmit)
+			validation
+				.validate(this.fields, this.btnSubmit)
 				.then(CRM.clientSearchByEmail.bind(null, form.fieldEmail.val(), fields))
-				.done(function(data) {
-					if (data) { //e-mail cadastrado
-						var dateApproved = new Date(data.xApprovedDate).getTime();
+				.done(
+					function(data) {
+						if (data) {
+							//e-mail cadastrado
+							var dateApproved = new Date(data.xApprovedDate).getTime();
 
-						//se já foi aprovado há mais de 6 meses, solicita revalidação dos dados
-						if (data.xValidationPJ === 'aprovado' && (dateNow - dateApproved) >= 15768000000) {
-							//abre modal de revalidação
-							$('#modal-register').attr('data-title', 'Atualize os dados cadastrais para continuar no site');
+							//se já foi aprovado há mais de 6 meses, solicita revalidação dos dados
+							if (data.xValidationPJ === 'aprovado' && dateNow - dateApproved >= 15768000000) {
+								//abre modal de revalidação
+								$('#modal-register').attr(
+									'data-title',
+									'Atualize os dados cadastrais para continuar no site'
+								);
 
-							$modalRegister.vtexModal({
-								open: function () {
-									$('#modal-register').addClass('revalidation');
-									
-									//busca informações de endereço
-									self.getAddressInfo(data);
-								}
-							});
+								$modalRegister.vtexModal({
+									open: function() {
+										$('#modal-register').addClass('revalidation');
+
+										//busca informações de endereço
+										self.getAddressInfo(data);
+									}
+								});
+							} else {
+								redirect.login(data);
+							}
 						} else {
-							redirect.login(data);
+							//e-mail não cadastrado
+							var msg = 'Usuário não encontrado';
+
+							$(store).trigger('store.user.not-found', form.fieldEmail.val());
+
+							self.error.call(form, msg);
 						}
-					} else { //e-mail não cadastrado
-						var msg = 'Usuário não encontrado';
-
-						$(store).trigger('store.user.not-found', form.fieldEmail.val());
-
-						self.error.call(form, msg);
-					}
-				}.bind(form));
+					}.bind(form)
+				);
 		}
 
 		return false;
 	};
 
-	this.getAddressInfo = function (data) {
+	this.getAddressInfo = function(data) {
 		$.getJSON(CRM.formatUrl('AD', 'search'), {
 			_fields: 'postalCode,street,number,complement,neighborhood,state,city,userId',
 			userId: data.id
-		}).done(function (res) {
+		}).done(function(res) {
 			data.address = res[0];
 
 			//preenche formulário com informações cadastradas
@@ -110,7 +114,7 @@ Nitro.module('login', function () {
 		});
 	};
 
-	this.fullRevalidationForm = function (data) {
+	this.fullRevalidationForm = function(data) {
 		$modalRegister.find('.corporateDocument').attr('readonly', true);
 		$modalRegister.find('.corporateDocument').val(data.corporateDocument);
 		$modalRegister.find('.corporateName').val(data.corporateName);
@@ -120,11 +124,17 @@ Nitro.module('login', function () {
 		$modalRegister.find('.xRegimeApuracaoPIS').val(data.xRegimeApuracaoPIS);
 
 		if (data.isFreeStateRegistration) {
-			$modalRegister.find('#isFreeStateRegistration').siblings('label').trigger('click');
+			$modalRegister
+				.find('#isFreeStateRegistration')
+				.siblings('label')
+				.trigger('click');
 		}
 
 		if (data.xContribuinteICMS) {
-			$modalRegister.find('#xContribuinteICMS').siblings('label').trigger('click');
+			$modalRegister
+				.find('#xContribuinteICMS')
+				.siblings('label')
+				.trigger('click');
 		}
 
 		$modalRegister.find('.postalCode').val(data.address.postalCode);
@@ -144,5 +154,4 @@ Nitro.module('login', function () {
 	};
 
 	this.setup();
-
 });

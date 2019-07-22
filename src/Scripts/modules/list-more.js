@@ -1,8 +1,6 @@
 'use strict';
 
 Nitro.module('list-more', function() {
-
-
 	var self = this,
 		$button = $('#list-more'),
 		$vitrine = $('.vitrine'),
@@ -14,15 +12,14 @@ Nitro.module('list-more', function() {
 		rel = '',
 		path = window.location.pathname;
 
-	$(window).on('filter', function(e, currentFilter){
+	$(window).on('filter', function(e, currentFilter) {
 		rel = currentFilter;
 		page = 2;
 		$button.removeClass('hide');
 	});
 
 	this.setup = function() {
-
-		if( query && query.length > 0 && this.isActive() ) {
+		if (query && query.length > 0 && this.isActive()) {
 			url = query[1];
 		} else {
 			return;
@@ -40,11 +37,15 @@ Nitro.module('list-more', function() {
 	this.updateCompare = function() {
 		var newsIds = localStore.get('comparador');
 
-		if(newsIds) {
+		if (newsIds) {
 			newsIds.forEach(function(val) {
-				var product = $('#prateleira .compare-product-checkbox[rel='+val.rel+']');
-				if( product.length > 0 && !product.hasClass('selected') ) {
-					product.addClass('selected').parent().find('label').text('Selecionado');
+				var product = $('#prateleira .compare-product-checkbox[rel=' + val.rel + ']');
+				if (product.length > 0 && !product.hasClass('selected')) {
+					product
+						.addClass('selected')
+						.parent()
+						.find('label')
+						.text('Selecionado');
 				}
 			});
 		}
@@ -58,35 +59,36 @@ Nitro.module('list-more', function() {
 			cacheTTL: 1,
 			cacheKey: 'more' + path + page + rel,
 			dataType: 'html',
-			beforeSend: function(){
+			beforeSend: function() {
 				// console.log('page', page);
 
-				if( $button.is('loading') ){
+				if ($button.is('loading')) {
 					return false;
-				}else{
+				} else {
 					$button.addClass('loading');
 					return true;
 				}
-
 			}
-		}).done(function(data) {
-			if( data ) {
-				$('.vitrine > .prateleira').append( data );
-				Nitro.module('prateleira');
-				// console.log( 'active', self.isActive() );
-				if( self.isActive() ) {
-					page++;
-					self.prefetch();
+		})
+			.done(function(data) {
+				if (data) {
+					$('.vitrine > .prateleira').append(data);
+					Nitro.module('prateleira');
+					// console.log( 'active', self.isActive() );
+					if (self.isActive()) {
+						page++;
+						self.prefetch();
+					} else {
+						$button.addClass('hide');
+					}
 				} else {
 					$button.addClass('hide');
 				}
-			} else {
-				$button.addClass('hide');
-			}
-		}).always(function() {
-			$button.removeClass('loading');
-			self.updateCompare();
-		});
+			})
+			.always(function() {
+				$button.removeClass('loading');
+				self.updateCompare();
+			});
 	};
 
 	this.prefetch = function() {
@@ -100,5 +102,4 @@ Nitro.module('list-more', function() {
 	};
 
 	this.setup();
-
 });

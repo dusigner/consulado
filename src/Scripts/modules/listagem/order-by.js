@@ -2,8 +2,7 @@
 
 var helper = require('modules/filters-helper');
 
-Nitro.module('order-by', function () {
-
+Nitro.module('order-by', function() {
 	var _self = this,
 		$listOrders = $('ul.order-by'),
 		$filterOptions = $('#O:first option'),
@@ -15,33 +14,42 @@ Nitro.module('order-by', function () {
 	$(window).on('filter', helper.setRel.bind(this));
 
 	// PREPARE DATA TO OBJECT -> RENDER
-	this.setup = function(){
-		if($filterOptions.length > 0){
+	this.setup = function() {
+		if ($filterOptions.length > 0) {
+			var $filters = $filterOptions
+				.filter(function() {
+					return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
+				})
+				.map(function() {
+					var self = $(this);
 
-			var $filters = $filterOptions.filter(function() {
-				return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
-			}).map(function() {
-
-				var self = $(this);
-
-				return '<li><a href="javascript:void()" title="' + self.text() + '" data-order="&O=' + self.val() + '">' + self.text() + '</a></li>';
-			}).get().join('');
+					return (
+						'<li><a href="javascript:void()" title="' +
+						self.text() +
+						'" data-order="&O=' +
+						self.val() +
+						'">' +
+						self.text() +
+						'</a></li>'
+					);
+				})
+				.get()
+				.join('');
 
 			$listOrders.append($filters);
 
-			$listOrders.find('li a').click(function(e){
+			$listOrders.find('li a').click(function(e) {
 				e.preventDefault();
 				_self.order($(this));
 			});
 
-			if (helper.getFilterRel() === null || helper.getFilterRel() === '' ) {
-				$(window).load(function(){
+			if (helper.getFilterRel() === null || helper.getFilterRel() === '') {
+				$(window).load(function() {
 					_self.autoSort();
 				});
 			} else {
 				_self.autoSort();
 			}
-
 		}
 	};
 
@@ -99,27 +107,29 @@ Nitro.module('order-by', function () {
 			cacheTTL: 1,
 			cacheKey: 'order' + page + helper.getFilterRel() + helper.getOrderRel() + vtxctx.categoryId,
 			dataType: 'html',
-			beforeSend: function(){
+			beforeSend: function() {
 				helper.vitrineHolder.addClass('loading');
 				helper.vitrine.removeClass('loaded');
 			}
-		}).done(function(data) {
-			if (data) {
-				$(window).trigger('filter', [ helper.getFilterRel() + helper.getOrderRel(), true]);
+		})
+			.done(function(data) {
+				if (data) {
+					$(window).trigger('filter', [helper.getFilterRel() + helper.getOrderRel(), true]);
 
-				$('.vitrine > .prateleira').remove();
+					$('.vitrine > .prateleira').remove();
 
-				helper.vitrine.addClass('loaded').append( data );
+					helper.vitrine.addClass('loaded').append(data);
 
-				$(window).trigger('changedFilter');
+					$(window).trigger('changedFilter');
 
-				Nitro.module('prateleira');
-			}
-		}).always(function() {
-			helper.vitrineHolder.removeClass('loading');
-			$orderTitle.removeClass('loading');
-			$listMore.show();
-		});
+					Nitro.module('prateleira');
+				}
+			})
+			.always(function() {
+				helper.vitrineHolder.removeClass('loading');
+				$orderTitle.removeClass('loading');
+				$listMore.show();
+			});
 	};
 
 	this.autoSort = function() {
@@ -133,5 +143,4 @@ Nitro.module('order-by', function () {
 	};
 
 	this.setup();
-
 });

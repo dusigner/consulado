@@ -2,10 +2,7 @@
 'use strict';
 
 Nitro.module('sku-fetch', function() {
-
-
 	var objectLowerCaseProperties = function(obj, properties) {
-
 		properties.forEach(function(item) {
 			obj[item.toLowerCase()] = obj[item];
 			delete obj[item];
@@ -19,15 +16,23 @@ Nitro.module('sku-fetch', function() {
 	}
 
 	window.skuJson.skus.forEach(function(sku) {
-
 		$.get('/produto/sku/' + sku.sku).done(function(skuList) {
-
 			var skuData = skuList[0];
 
 			// change properties case, api comes with eg: 'Images', but vtex functions uses 'image';
-			skuData = objectLowerCaseProperties(skuData, ['Id', 'IdProduct', 'Name', 'ListPrice', 'Price',
-				'Availability', 'AvailabilityMessage', 'BestInstallmentValue', 'BestInstallmentNumber',
-				'Images', 'Reference', 'NotifyMe'
+			skuData = objectLowerCaseProperties(skuData, [
+				'Id',
+				'IdProduct',
+				'Name',
+				'ListPrice',
+				'Price',
+				'Availability',
+				'AvailabilityMessage',
+				'BestInstallmentValue',
+				'BestInstallmentNumber',
+				'Images',
+				'Reference',
+				'NotifyMe'
 			]);
 
 			//global object that vtex use in global functions
@@ -35,9 +40,7 @@ Nitro.module('sku-fetch', function() {
 
 			//for anyone who want this skuData;
 			$(document).trigger('skuFetch', skuData);
-
 		});
-
 	});
 
 	//don't let vtex output infinity console.log skuData;

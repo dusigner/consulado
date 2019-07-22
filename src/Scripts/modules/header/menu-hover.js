@@ -3,7 +3,7 @@
 require('Dust/customItemMenuDesktop.html');
 require('Dust/customItemMenuMobile.html');
 
-Nitro.module('menu-hover', function () {
+Nitro.module('menu-hover', function() {
 	var controleOver = $('.customItemMenu').text(),
 		ItemDesktop = $('.top-navigation .customItemMenu').text(),
 		ItemMobile = $('.menu-mobile .customItemMenu').text();
@@ -17,18 +17,22 @@ Nitro.module('menu-hover', function () {
 		$('nav .item.control').addClass('control-hide');
 		$('nav .item').removeClass('control');
 
-		dust.render('customItemMenuDesktop', ItemDesktop, function (err, out) {
+		dust.render('customItemMenuDesktop', ItemDesktop, function(err, out) {
 			if (err) {
 				throw new Error('Modal Warranty Dust error: ' + err);
 			}
-			$('.top-navigation .customItemMenu').html(out).removeClass('hide');
+			$('.top-navigation .customItemMenu')
+				.html(out)
+				.removeClass('hide');
 		});
 
-		dust.render('customItemMenuMobile', ItemMobile, function (err, out) {
+		dust.render('customItemMenuMobile', ItemMobile, function(err, out) {
 			if (err) {
 				throw new Error('Modal Warranty Dust error: ' + err);
 			}
-			$('.menu-mobile .customItemMenu').html(out).removeClass('hide');
+			$('.menu-mobile .customItemMenu')
+				.html(out)
+				.removeClass('hide');
 		});
 	}
 });

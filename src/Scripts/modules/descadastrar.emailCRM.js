@@ -3,12 +3,9 @@
 'use strict';
 var CRM = require('../modules/store/crm');
 $(document).ready(function() {
-
-
 	var url = window.location.href;
 
 	var self = this;
-
 
 	if (url.indexOf('descadastrar-email') !== -1) {
 		$('#modal-emailCRM').vtexModal();
@@ -29,8 +26,6 @@ $(document).ready(function() {
 		$formOptOut.submit(self.submit);
 	}
 
-
-
 	self.submit = function(e) {
 		e.preventDefault();
 
@@ -40,21 +35,17 @@ $(document).ready(function() {
 		xEmalTriggerUnsubscribeReason = xEmalTriggerUnsubscribeReason[0].value;
 
 		data = {
-			'email': _.urlParams().email,
-			'xIsEmalTriggerOptIn': false,
-			'xEmalTriggerUnsubscribeReason': xEmalTriggerUnsubscribeReason
+			email: _.urlParams().email,
+			xIsEmalTriggerOptIn: false,
+			xEmalTriggerUnsubscribeReason: xEmalTriggerUnsubscribeReason
 		};
 
-
-
-		CRM.insertClient(data)
-			.then(function() {
-				$step2.hide();
-				$success.fadeIn();
-			});
+		CRM.insertClient(data).then(function() {
+			$step2.hide();
+			$success.fadeIn();
+		});
 		/*				.fail(function () {
 							console.log('deu errado');
 						});*/
 	};
-
 });

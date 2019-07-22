@@ -2,8 +2,6 @@
 'use strict';
 
 Nitro.module('footer', function() {
-
-
 	var $window = $(window),
 		$footer = $('footer'),
 		accordionBtn = $('.accordion .title'),
@@ -26,10 +24,14 @@ Nitro.module('footer', function() {
 
 		if (self.parent().hasClass('open')) {
 			accordionBox.removeClass('open');
-			self.next().stop(true, true).slideUp();
+			self.next()
+				.stop(true, true)
+				.slideUp();
 		} else {
 			self.parent().addClass('open');
-			self.next().stop(true, true).slideDown();
+			self.next()
+				.stop(true, true)
+				.slideDown();
 		}
 	});
 
@@ -42,43 +44,50 @@ Nitro.module('footer', function() {
 
 		if (parent.hasClass('active')) {
 			parent.removeClass('active');
-			self.next().stop(true, true).slideUp();
+			self.next()
+				.stop(true, true)
+				.slideUp();
 		} else {
 			$duvidasList.find('li').removeClass('active');
-			$duvidasList.find('p').stop(true, true).slideUp();
+			$duvidasList
+				.find('p')
+				.stop(true, true)
+				.slideUp();
 			parent.addClass('active');
-			self.next().stop(true, true).slideDown();
+			self.next()
+				.stop(true, true)
+				.slideDown();
 		}
 	});
-
 
 	//BACK TO TOP
 	var reachBottom = 0;
 
-	$window.scroll(function() {
-		if ($window.scrollTop() >= 560) {
-			$toTop.removeClass('hide');
-			reachBottom = ($footer.offset().top - $window.scrollTop()) - $window.height() - 80;
-			if (reachBottom < 0) {
-				$toTop.css('bottom', 10 + Math.abs(reachBottom));
+	$window
+		.scroll(function() {
+			if ($window.scrollTop() >= 560) {
+				$toTop.removeClass('hide');
+				reachBottom = $footer.offset().top - $window.scrollTop() - $window.height() - 80;
+				if (reachBottom < 0) {
+					$toTop.css('bottom', 10 + Math.abs(reachBottom));
+				} else {
+					$toTop.css('bottom', 10);
+				}
 			} else {
-				$toTop.css('bottom', 10);
+				$toTop.addClass('hide');
 			}
-		} else {
-			$toTop.addClass('hide');
-		}
-	}).scroll();
+		})
+		.scroll();
 
 	// $toTop.click(function(e) {
 	//     e.preventDefault();
 	//     $('header').toScroll();
 	// });
 
-	$toTop.click(function(){
+	$toTop.click(function() {
 		$('html, body').animate({ scrollTop: 0 }, 600);
 		//return false;
 	});
-
 
 	$btnNewsletter.click(function(e) {
 		e.preventDefault();
@@ -86,26 +95,28 @@ Nitro.module('footer', function() {
 		$footer.toScroll();
 	});
 
-	$window.scroll($.throttle(function() {
-
-		if ($window.scrollTop() >= 560 && $window.scrollTop() + $window.height() <= $footer.offset().top) {
-			$btnNewsletter.addClass('newsletter-show');
-		} else {
-			$btnNewsletter.removeClass('newsletter-show');
-		}
-
-	}, 250)).scroll();
-
+	$window
+		.scroll(
+			$.throttle(function() {
+				if ($window.scrollTop() >= 560 && $window.scrollTop() + $window.height() <= $footer.offset().top) {
+					$btnNewsletter.addClass('newsletter-show');
+				} else {
+					$btnNewsletter.removeClass('newsletter-show');
+				}
+			}, 250)
+		)
+		.scroll();
 
 	//boxes atendimento -servicos
 	if ($window.width() <= 768) {
-		$servicos.find('.box:not(.box-chat)').click(function(e){
+		$servicos.find('.box:not(.box-chat)').click(function(e) {
 			e.preventDefault();
 
-			var link = $(this).find('a.primary-button').attr('href');
+			var link = $(this)
+				.find('a.primary-button')
+				.attr('href');
 
 			window.location.href = link;
 		});
 	}
-
 });
