@@ -5,7 +5,6 @@
 require('Dust/video.html');
 
 Nitro.module('video', function() {
-
 	//NEW RELEASE VIDEO MODULE
 	var self = this,
 		$holder = $('#video'),
@@ -31,7 +30,6 @@ Nitro.module('video', function() {
 		};
 
 		this.render = function() {
-
 			dust.render('video', data, function(err, out) {
 				if (err) {
 					throw new Error('Specifications Dust error: ' + err);
@@ -41,11 +39,9 @@ Nitro.module('video', function() {
 
 				$holder.find('a').click(self.click);
 			});
-
 		};
 
 		this.render();
 		$(document).trigger('nav', 'video');
 	}
-
 });

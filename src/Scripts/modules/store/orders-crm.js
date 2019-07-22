@@ -3,13 +3,14 @@
 'use strict';
 
 var CRM = {
-
-	ordersURI: $.cookie('vtex-current-user') ? '/api/checkout/pub/orders/?customerEmail=' + window.getCookie('vtex-impersonated-customer-email') : '/api/checkout/pub/orders/',
+	ordersURI: $.cookie('vtex-current-user')
+		? '/api/checkout/pub/orders/?customerEmail=' + window.getCookie('vtex-impersonated-customer-email')
+		: '/api/checkout/pub/orders/',
 	statusPedidoURI: '/api/ds/pub/documents/SP',
 	omsURI: '/api/oms/user/orders/',
 	recurrenceURI: '/api/' + window.jsnomeLoja + '/subscriptions/',
 
-	getOrders: function() {			
+	getOrders: function() {
 		return $.getJSON(CRM.ordersURI).then(function(res) {
 			return res;
 		});
@@ -28,7 +29,7 @@ var CRM = {
 				fq: 'orderId:' + orderId
 			}
 		}).always(function(res) {
-			if( res && res.Documents && res.Documents.length > 0 ) {
+			if (res && res.Documents && res.Documents.length > 0) {
 				dfd.resolve(res.Documents[0]);
 			} else {
 				dfd.resolve(false);
@@ -47,10 +48,12 @@ var CRM = {
 			type: 'GET',
 			contentType: 'application/json; charset=utf-8'
 		}).always(function(res) {
-			if( res
-				&& res.packageAttachment
-				&& res.packageAttachment.packages
-				&& res.packageAttachment.packages.length > 0 ) {
+			if (
+				res &&
+				res.packageAttachment &&
+				res.packageAttachment.packages &&
+				res.packageAttachment.packages.length > 0
+			) {
 				dfd.resolve(res);
 			} else {
 				dfd.resolve(false);
@@ -76,7 +79,7 @@ var CRM = {
 			url: CRM.recurrenceURI + 'me',
 			headers: {
 				'Content-Type': 'application/json',
-				'vtexidclientautcookie': $.cookie('VtexIdclientAutCookie')
+				vtexidclientautcookie: $.cookie('VtexIdclientAutCookie')
 			},
 			type: 'GET',
 			dataType: 'json'
@@ -107,7 +110,7 @@ var CRM = {
 			url: CRM.recurrenceURI + id + '/accounts',
 			headers: {
 				'Content-Type': 'application/json',
-				'vtexidclientautcookie': $.cookie('VtexIdclientAutCookie')
+				vtexidclientautcookie: $.cookie('VtexIdclientAutCookie')
 			},
 			type: 'PUT',
 			dataType: 'json',
@@ -139,7 +142,7 @@ var CRM = {
 			url: CRM.recurrenceURI + id + '/items/' + item,
 			headers: {
 				'Content-Type': 'application/json',
-				'vtexidclientautcookie': $.cookie('VtexIdclientAutCookie')
+				vtexidclientautcookie: $.cookie('VtexIdclientAutCookie')
 			},
 			type: 'DELETE'
 		}).then(function(res) {
