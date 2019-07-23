@@ -2,6 +2,7 @@
 
 import 'modules/product/gallery';
 import 'dataLayers/dataLayer-cervejeira';
+import 'dataLayers/dataLayer-categoria';
 
 import CupomCervejeira from 'modules/cervejeiras/cervejeiras.cupomBanner';
 import Video from 'modules/cervejeiras/cervejeiras.video';
@@ -10,7 +11,7 @@ import Cores from 'modules/cervejeiras/cervejeiras.cores';
 import Smartbeer from 'modules/cervejeiras/cervejeiras.smartbeer';
 import Ofertas from 'modules/cervejeiras/cervejeiras.ofertas';
 
-Nitro.setup(['gallery', 'dataLayer-cervejeira'], function(gallery, dataLayerCervejeira) {
+Nitro.setup(['gallery', 'dataLayer-cervejeira', 'dataLayer-categoria'], function(gallery, dataLayerCervejeira) {
 	const cervejeiras = {};
 
 	// Init
