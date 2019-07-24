@@ -6,8 +6,9 @@ require('modules/header/cotas');
 require('modules/header/welcome-message');
 require('modules/header/menu-hover');
 require('modules/header/cart');
+require('modules/header/tooltip');
 
-Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'], function() {
+Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover', 'cart', 'tooltip'], function() {
 	var $body = $('body'),
 		$document = $(document);
 
@@ -15,31 +16,6 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	var topMenu = $('.menu-department'),
 		menuMobile = $('.menu-mobile'),
 		defaultClass = 'menu-mobile';
-
-	// Banner e tooltip cervejeiras
-	let highLight = $('.home .highlight-category, .listagem:not(.smartbeer2) .highlight-category'),
-		highLightMobile = $('.item-banner .highlight-category-banner');
-
-	let setTag = selector => {
-		selector.find('a').on('click', () => {
-			dataLayer.push({
-				event: 'generic',
-				category: '[SQUAD] Cervejeira - Conheça nossa linha completa',
-				action: 'Clique Categoria Cervejeira',
-				label: 'Conheça nossa linha completa'
-			});
-		});
-	};
-
-	setTag(highLight);
-	setTag(highLightMobile);
-
-	highLight.fadeIn(function() {
-		setTimeout(() => {
-			highLight.fadeOut(function() {});
-		}, 15000);
-	});
-	// Banner e tooltip cervejeiras
 
 	topMenu.find('.dropdown > a, .icon-hamburger').click(function(e) {
 		e.preventDefault();
