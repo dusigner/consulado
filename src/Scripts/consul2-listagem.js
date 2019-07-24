@@ -1,6 +1,5 @@
 /* global $:true, Nitro: true, _:true */
 'use strict';
-//require('modules/_pagina-cervejeiras');
 
 require('vendors/vtex-modal');
 
@@ -30,7 +29,6 @@ Nitro.controller(
 		'calculadorabtu',
 		'busca-chaordic',
 		'comparebar',
-		//'cervejeiras',
 		'dataLayer-categoria'
 	],
 	function(chaordic) {
