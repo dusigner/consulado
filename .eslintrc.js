@@ -12,11 +12,12 @@ module.exports = {
 		jquery: true,
 		mocha: true
 	},
+	parser: 'babel-eslint',
 	parserOptions: {
 		ecmaVersion: 6,
 		sourceType: 'module',
 		ecmaFeatures: {
-			modules: true
+			modules: true,
 		}
 	},
 	globals: {
