@@ -68,9 +68,9 @@ Nitro.module('tooltip', function() {
 	this.showTooltip = () => {
 		let highLight = $('.home .tooltip, .listagem:not(.smartbeer2) .tooltip');
 		highLight.fadeIn(function() {
-			// setTimeout(() => {
-			// 	highLight.fadeOut(function() {});
-			// }, 15000);
+			setTimeout(() => {
+				highLight.fadeOut(function() {});
+			}, 15000);
 		});
 	};
 
