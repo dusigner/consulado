@@ -56,7 +56,6 @@ Nitro.module('order-by', function () {
 		$orderTitle.addClass('loading');
 
 		$orderTitle.find('em').text($orderElement.attr('title'));
-		$orderTitle.find('.order-show-mobile').text($orderElement.attr('title'));
 
 		$orderTitle.add('.order-by').removeClass('active');
 

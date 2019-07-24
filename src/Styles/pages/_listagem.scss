@@ -203,9 +203,15 @@ body.busca {
 		}
 	}
 
-	.order-title {
+	.order-title:before {
 		@include breakpoint ('medium', 'max') {
-			font-size: 0;
+			@include responsiveFont(12, 16, true);
+			color: #736C6B;
+			content: 'Ordenar por';
+			display: inline-block;
+			font-weight: bold;
+			text-align: center;
+			width: 85%;
 		}
 	}
 
