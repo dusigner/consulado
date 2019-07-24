@@ -1,0 +1,90 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<article class="box-produto $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
+	<div class="detalhes">
+		<a href="$uri" title="$escapedName" class="image">
+			<span class="img backup">$product.GetImageTag(345, 345)</span>
+			$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
+
+			<div class="FlagsHightLight">
+				$product.DiscountHightLight
+				$product.HightLight
+			</div>
+		</a>
+
+		<div class="content-information">
+			<a href="$uri" title="$escapedName" class="prod-info">
+				<h3 class="nome">$product.Name
+					<span>
+						$product.ProductField(<!-- @echo shelfProductFieldModelo -->)
+					</span>
+				</h3>
+
+				<div class="features">
+					$product.ProductField(<!-- @echo shelfProductFieldEstado -->)
+				</div>
+
+				<!-- Rating TrustVox -->
+				<div data-trustvox-product-code="$product.Id" style="display: none;"></div>
+				<!-- Rating TrustVox -->
+
+				<!-- Yourviews - estrelas -->
+				<div class="yv-review-quickreview hide" value="$id"></div>
+				<!-- Yourviews - estrelas -->
+			</a>
+
+			<div class="hide">$product.InsertSku</div>
+			<div class="prod__selectSKU hide"></div>
+
+			<a href="$uri" title="$escapedName" class="prod-info">
+				#if ($product.IsInStock)
+					<div class="price">
+						<p class="de">
+							#if ($product.HasBestPrice)
+								<span class="txtDe">De: </span> <span class="val">$product.ListPrice</span>
+							#end
+						</p>
+
+						<p class="por">
+							<span class="txtPor">Por: </span> <span class="val">$product.BestPrice</span>
+							<span class="off"></span>
+						</p>
+
+						<p class="discount-boleto"></p>
+						<p class="por-boleto hide">
+							<span class="txtPor">Por: </span> <span class="val">$product.BestPrice<span class="cash"> à vista no boleto</span></span>
+							<span class="off"></span>
+						</p>
+
+						<p class="adicional">
+							#if ($product.NumbersOfInstallment > 1)
+								<strong>ou <span>$product.BestPrice</span></strong>
+								<strong><span>Em</span> até <span class="vezes">$product.NumbersOfInstallment<span class="x">x</span></span> <span class="d">de</span> <span class="val">$product.InstallmentValue</span> sem juros</strong>
+							#end
+
+							#if ($product.NumbersOfInstallment > 1)
+								<span class="total-parcelado">
+									<span class="total-parcelado__txt">Total parcelado: </span>
+									<span class="val"> $product.BestPrice</span>
+								</span>
+							#end
+						</p>
+					</div>
+
+					<div class="buy-button hide"></div>
+				#else
+					<p class="indisponivel">Produto indisponível</p>
+				#end
+			</a>
+		</div>
+
+	</div>
+
+	<!-- Comparação -->
+	<div class="btn-comparar form-check-inline">$product.Compare</div>
+	<!-- /Comparação -->
+
+	<a href="$product.CategoryLink" class="department-nav">Ver mais em <span>$product.CategoryName</span></a>
+</article>

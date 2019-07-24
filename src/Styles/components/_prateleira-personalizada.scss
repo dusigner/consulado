@@ -1,13 +1,13 @@
 @charset 'UTF-8';
 
-// Evitar que o botão comprar apareça na home além do componente de Vitrine personalizada
+// Evitar que o botão comprar apareça na home além do componente de Prateleira personalizada
 body.home.buyButton {
 	.sku_buy { display: none!important; }
 }
 
 
-// Vitrine personalizada
-.vitrine-personalidade {
+// Prateleira personalizada
+.prateleira-personalizada {
 	background-color: #fcfcfc;
 	overflow: hidden;
 
@@ -37,6 +37,10 @@ body.home.buyButton {
 		@include breakpoint('medium', 'min') {
 			@include breakpoint(1200px, 'max') { @include rfs(19); }
 		}
+		@include breakpoint(992px, 'max') {
+			margin-left: auto;
+			margin-right: auto;
+		}
 		@include rfs(22);
 		line-height: 140%;
 		margin: 0 0 1.5em 0;
@@ -62,15 +66,19 @@ body.home.buyButton {
 		flex-direction: column;
 		position: relative;
 
-		// &:before {
-		// 	@include square(100%);
-		// 	content: '';
-		// 	background-color: #9aca3c;
-		// 	position: absolute;
-		// 	right: 0;
-		// 	top: 0;
-		// 	width: 300%;
-		// }
+		// Fundo infinito no mobile
+		&:before {
+			@include breakpoint(993px, 'max') {
+				@include square(100%);
+				background-color: #9aca3c;
+				content: '';
+				position: absolute;
+				right: 50%;
+				top: 0;
+				transform: translateX(50%);
+				width: 200%;
+			}
+		}
 	}
 
 	/*
@@ -211,8 +219,11 @@ body.home.buyButton {
 
 			// Seleção de SKU
 			.prod__selectSKU {
+				background-color: #ccc;
+				flex: 1 0 calc(100% - 100px);
 				justify-content: flex-start;
 				margin: 0 0 10px 0;
+				visibility: visible;
 
 				.sku__selector {
 					margin-right: 15px;
@@ -235,14 +246,11 @@ body.home.buyButton {
 				opacity: 0;
 				position: absolute;
 				transform: translate(-50%, 25%);
-				transition:
-					opacity .1s ease,
-					transform .3s ease
-				;
+				transition: transform .3s ease;
 			}
 
 			// Hover state
-			& > .box-produto:hover {
+			& .box-produto:hover {
 
 				.sku_buy {
 					opacity: 1;
