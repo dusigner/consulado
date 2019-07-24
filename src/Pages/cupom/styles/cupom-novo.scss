@@ -1,0 +1,49 @@
+@charset 'UTF-8';
+// BOOTSTRAP GRID
+@import 'bootstrap/scss/bootstrap-grid';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities/sizing';
+@import 'bootstrap/scss/utilities/text';
+//HELPERS
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
+@import 'helpers/fix-header-bootstrap4';
+@import 'helpers/fix-footer-bootstrap4';
+//COLORS
+$gray-light: #FBFAFA;
+//FONTS
+$font-light: 100;
+$font-normal: 300;
+$font-bold: 700;
+.cupom {
+    &-header {
+        &__title {
+            @include responsiveFont(35);
+            color: $gray-d;
+            margin-bottom: 0;
+            span {
+                color: $green;
+            }
+        }
+        &__subtitle {
+            @include responsiveFont(14);
+            color: $gray-d;
+        }
+    }
+}
+
+.como-utilizar {
+    &__aside {
+        background-color: $gray-light;
+        border-radius: 8em;
+        min-height: 180px;
+        width: 100%;
+    }
+    &__title {
+        color: $gray-d;
+        span {
+            color: $green;
+        }
+    }
+}

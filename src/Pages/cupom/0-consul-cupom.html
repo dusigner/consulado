@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+    <title>Consul</title>
+    <vtex:metaTags />
+    <vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+    <!-- @if DEBUG=true -->
+    <!-- @include ../templates/head-vtex.html -->
+    <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+    <!-- @endif -->
+
+    <vtex:template id="0-consul-head-content" />
+    <link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="landing-gae">
+    <!-- @if DEBUG=true -->
+    <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+    <!-- @endif -->
+
+    <vtex:template id="0-consul-top-header" />
+
+    <!-- @if DEBUG=true -->
+    <!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+    <!-- @endif -->
+
+    <vtex:template id="0-consul-header" />
+
+    <main>
+        <section class="cupom-header">
+            <div class="container">
+                <h1 class="cupom-header__title">Cupons de <span>Desconto Consul</span></h1>
+                <h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+            </div>
+        </section>
+        <section class="como-utilizar">
+            <div class="container">
+                <div class="como-utilizar__aside">
+                    <div class="row">
+                        <div class="col-3">
+                            <h2 class="como-utilizar__title">Saiba como <br><span>Utilizar</span></h2>
+                            <small>Siga os passos para usar <br>um cupom de desconto</small>
+                        </div>
+                        <div class="col-3">
+                            <div class="como-utilizar__passos">
+                                <figure><img src=""></figure>
+                                <p>Copie o código do que você deseja usar!</p>
+                            </div>
+                        </div>
+                        <div class="col-3"></div>
+                        <div class="col-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
