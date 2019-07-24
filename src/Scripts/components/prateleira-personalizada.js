@@ -2,54 +2,45 @@
 
 Nitro.module('prateleira-personalizada', function() {
 
-	var self = this;
+	// Variables
+	const self = this;
+	const pageInitialSize = $(window).width();
+	const responsiveSize = 769;
 
+	// Start
 	this.setup = function() {
-		console.log('Sttarting... prateleira personalizada');
-
 		this.listaFuncionalidades();
 		this.sliderProdutos();
 	};
-
 
 	// Listagem de funcionalidades
 	this.listaFuncionalidades = () => {
 		const $listaFuncionalidades = $('.lista-funcionalidades');
 
-		$(window).resize(() => {
-			const widthPage = $(window).width();
-
-			if (widthPage < 993) {
-				$listaFuncionalidades.not('.slick-initialized').slick({
-					arrows: false,
-					dots: true
-				});
-			}
-			else {
-				if ($listaFuncionalidades.hasClass('slick-initialized')) {
-					$listaFuncionalidades.slick('unslick');
-				}
-			}
-		});
+		responsiveSlickhelper($listaFuncionalidades, { arrows: true, dots: true });
 	};
 
 	// Slider prateleiras
 	this.sliderProdutos = () => {
 		const $prateleira = $('.prateleira-personalizada__prateleiras ul');
 
+		responsiveSlickhelper($prateleira, { arrows: true, dots: false });
+	};
+
+	// Slick Helper
+	const responsiveSlickhelper = ($element, objSlickConfig) => {
+		if (pageInitialSize < responsiveSize) {
+			$element.not('.slick-initialized').slick(objSlickConfig);
+		}
+
 		$(window).resize(() => {
 			const widthPage = $(window).width();
 
-			if (widthPage < 993) {
-				$prateleira.not('.slick-initialized').slick({
-					arrows: false,
-					dots: true
-				});
+			if (widthPage < responsiveSize) {
+				$element.not('.slick-initialized').slick(objSlickConfig);
 			}
 			else {
-				if ($prateleira.hasClass('slick-initialized')) {
-					$prateleira.slick('unslick');
-				}
+				$element.hasClass('slick-initialized') && $element.slick('unslick');
 			}
 		});
 	};
