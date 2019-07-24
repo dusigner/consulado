@@ -21,6 +21,10 @@
 		@media (max-width: 1348px) {
 			background-image: none;
 		}
+
+		& > .item:nth-child(5) {
+			white-space: nowrap;
+		}
 	}
 
 }
@@ -50,12 +54,12 @@
 		@include responsiveFont(16);
 		background-color: #fff;
 		padding: 1em 1.25em;
-		white-space: nowrap;
 
 		&.item-cervejeira {
 			border-right: 2px solid $green;
 			bottom: 1px;
 			box-shadow: 0 0 6px #e5e5e5;
+			padding-top: 1.2em;
 			position: relative;
 			right: 1px;
 		}
