@@ -103,6 +103,9 @@ body.home.buyButton {
 
 			// Container do produto
 			.box-produto {
+				@include breakpoint('small', 'max') { padding-bottom: 60px; }
+				border-color: transparent;
+				box-shadow: none;
 				max-width: inherit;
 				padding: 15px 15px 30px 15px;
 
@@ -148,10 +151,17 @@ body.home.buyButton {
 				}
 
 				.sku_error {
+					padding: 12px 10px;
 					position: absolute;
 					width: calc(100% - 145px);
 
 					&::before {
+						@include breakpoint(992px, 'max') {
+							border-bottom-color: transparent;
+							border-top-color: #702F8F;
+							bottom: -23px;
+							top: inherit;
+						}
 						left: 32px;
 						top: -23px;
 					}
@@ -236,14 +246,14 @@ body.home.buyButton {
 			// Botão comprar
 			.sku_buy {
 				@include breakpoint(992px, 'max') {
+					bottom: 10px;
 					opacity: 1;
 					order: 2;
+					transform: translateX(-50%);
 				}
 				@include breakpoint(992px, 'min') {
 					bottom: -5px;
-					left: 50%;
 					opacity: 0;
-					position: absolute;
 					transform: translate(-50%, 25%);
 					transition:
 						opacity .1s ease,
@@ -253,7 +263,9 @@ body.home.buyButton {
 				}
 				@include rfs(14);
 				display: block!important;
+				left: 50%;
 				padding: .5em;
+				position: absolute;
 			}
 
 			// Hover state
@@ -293,7 +305,10 @@ body.home.buyButton {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	@include breakpoint('small', 'max') { max-width: 255px; }
+	@include breakpoint('small', 'max') {
+		margin-bottom: 1em;
+		max-width: 255px;
+	}
 	@include rfs(22);
 	line-height: 140%;
 	margin: 0 0 1.5em 0;
@@ -407,6 +422,9 @@ body.home.buyButton {
 		img {
 			@include breakpoint(1200px, 'max') { max-width: 35px; }
 			@include breakpoint(992px, 'max') { margin: 0 auto; }
+			@include breakpoint('small', 'max') {
+				max-height: 40px;
+			}
 			max-height: 48px;
 			max-width: 45px;
 		}
