@@ -5,8 +5,7 @@
 var Uri = require('vendors/Uri');
 var CRM = require('modules/store/crm');
 
-var redirect = module.exports.redirect = function (data) {
-
+var redirect = (module.exports.redirect = function(data) {
 	$(document).trigger('redirect', data);
 
 	store.setUserData(data, true);
@@ -19,7 +18,6 @@ var redirect = module.exports.redirect = function (data) {
 	}
 
 	//uri.setPath(uriRedirect || (store.isColab ? '/colaboradorwhp'  : ( store.isMobile ? '/parceiro/mobile' : '/parceiro' ) ));
-
 
 	if (uriRedirect) {
 		uri.setPath(uriRedirect);
@@ -35,8 +33,7 @@ var redirect = module.exports.redirect = function (data) {
 	 * Caso não seja registro, abre o modal de Login
 	 */
 	if (data.status === 'Register') {
-		CRM.clientSearchByEmail(data.email).done(function (user) {
-
+		CRM.clientSearchByEmail(data.email).done(function(user) {
 			store.logout();
 			store.setUserData(user, true);
 
@@ -45,9 +42,8 @@ var redirect = module.exports.redirect = function (data) {
 				returnUrl: uri.toString()
 			});
 		});
-
 	} else if (data.status === 'Login') {
-		vtexjs.checkout.getOrderForm().done(function (res) {
+		vtexjs.checkout.getOrderForm().done(function(res) {
 			if (res.loggedIn || res.userType === 'callCenterOperator') {
 				window.location.href = store.uri
 					.setPath(uriRedirect ? uriRedirect : '/empresas')
@@ -60,7 +56,6 @@ var redirect = module.exports.redirect = function (data) {
 				});
 			}
 		});
-
 	} else if (data.status === 'Revalidation') {
 		vtexid.start({
 			email: data.email,
@@ -69,17 +64,13 @@ var redirect = module.exports.redirect = function (data) {
 	}
 
 	//trigger click de email e senha login
-	$(window).on('rendered.vtexid', function () {
+	$(window).on('rendered.vtexid', function() {
 		$('.vtexIdUI-providers-list .vtexIdUI-others-send-email').click();
 	});
+});
 
-};
-
-module.exports.login = function (data) {
-
-	dataLayer.push(
-		{ event : 'emailCadastrado' }
-	);
+module.exports.login = function(data) {
+	dataLayer.push({ event: 'emailCadastrado' });
 
 	if (!window.store) {
 		window.store = this;
@@ -94,9 +85,8 @@ module.exports.login = function (data) {
 		var documento = store.isCorp ? data.corporateDocument : data.document;
 		var tipoDocumento = store.isCorp ? 'corporateDocument' : 'document';
 
-		if(documento) {
-			CRM.clientSearchByDocument(documento, tipoDocumento).done(function (res){
-
+		if (documento) {
+			CRM.clientSearchByDocument(documento, tipoDocumento).done(function(res) {
 				var qntd = 0;
 
 				//soma a quantidade de Eletrodomésticos comprados por esses usuários
@@ -107,42 +97,37 @@ module.exports.login = function (data) {
 				data.xSkuSalesChannel5PerDocument = qntd;
 
 				redirect(data);
-
 			});
 		} else {
 			data.xSkuSalesChannel5PerDocument = data.xSkuSalesChannel5;
 			redirect(data);
 		}
-
 	} else {
-		$('<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>').vtexModal({
+		$(
+			'<p>Infelizmente seu cadastro não foi realizado com sucesso.<br /> Pedimos que entre em contato com nossa Central de Atendimento para a confirmação de alguns dados.</p>'
+		).vtexModal({
 			id: 'nao-aprovado',
 			title: 'Algo deu errado =/',
 			destroy: true
 		});
 	}
-
 };
 
-module.exports.register = function (data) {
-
+module.exports.register = function(data) {
 	$.extend(data, {
 		status: 'Register'
 	});
 	redirect(data);
-
 };
 
-module.exports.revalidation = function (data) {
+module.exports.revalidation = function(data) {
 	$.extend(data, {
 		status: 'Revalidation'
 	});
 	redirect(data);
-
 };
 
-module.exports.home = function () {
-
+module.exports.home = function() {
 	if (!window.store) {
 		window.store = this;
 	}
@@ -152,5 +137,4 @@ module.exports.home = function () {
 		.setPath('/')
 		.deleteQueryParam('idsku')
 		.toString();
-
 };

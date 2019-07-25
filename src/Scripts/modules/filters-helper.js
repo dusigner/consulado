@@ -12,14 +12,14 @@ FiltersHelper.filters = $('.filters');
 FiltersHelper.vitrineHolder = $('#prateleira');
 FiltersHelper.vitrine = FiltersHelper.vitrineHolder.find('.vitrine');
 FiltersHelper.query = /load\(\'(.*)\'/.exec( FiltersHelper.vitrine.find('> script').text() );  // eslint-disable-line
-FiltersHelper.url = function(){
-	if( FiltersHelper.query && FiltersHelper.query.length > 0 ) {
+FiltersHelper.url = function() {
+	if (FiltersHelper.query && FiltersHelper.query.length > 0) {
 		return FiltersHelper.query[1];
 	} else {
 		return;
 	}
 };
-FiltersHelper.setRel = function(e, currentFilter, isOrder){
+FiltersHelper.setRel = function(e, currentFilter, isOrder) {
 	if (!isOrder) {
 		FiltersHelper.rel = currentFilter;
 	}
@@ -31,11 +31,21 @@ FiltersHelper.setURL = function() {
 	var url = new uri(decodeURIComponent(window.location.href)).queryPairs;
 	var otherParameters = [''];
 	for (var i = 0; i < url.length; i++) {
-		if ((url[i][0] === 'fq' && url[i][1].includes('H:')) || (url[i][0] !== 'fq' && url[i][0] !== '' && url[i][0] !== 'O') && (otherParameters.includes(url[i][0] +'='+ url[i][1]) === false)) {
-			otherParameters.push(url[i][0] +'='+ url[i][1]);
+		if (
+			(url[i][0] === 'fq' && url[i][1].includes('H:')) ||
+			(url[i][0] !== 'fq' &&
+				url[i][0] !== '' &&
+				url[i][0] !== 'O' &&
+				otherParameters.includes(url[i][0] + '=' + url[i][1]) === false)
+		) {
+			otherParameters.push(url[i][0] + '=' + url[i][1]);
 		}
 	}
-	window.history.pushState(null, null, '?' + encodeURIComponent(FiltersHelper.rel + FiltersHelper.orderRel) + otherParameters.join('&'));
+	window.history.pushState(
+		null,
+		null,
+		'?' + encodeURIComponent(FiltersHelper.rel + FiltersHelper.orderRel) + otherParameters.join('&')
+	);
 };
 
 FiltersHelper.setOrderRel = function(order) {
@@ -47,17 +57,19 @@ FiltersHelper.getOrderRel = function() {
 	return this.orderRel;
 };
 
-FiltersHelper.setFilterRel = function (newRel) {
+FiltersHelper.setFilterRel = function(newRel) {
 	FiltersHelper.rel = newRel;
 };
 
-FiltersHelper.getFilterRel = function () {
+FiltersHelper.getFilterRel = function() {
 	return this.rel;
 };
 
-FiltersHelper.autoSortAndFilter = function (isFilter) {
-	var filterComponents = decodeURIComponent(window.location.search).match(/fq=specificationFilter([^&]*)|fq=p:([^&]*)/gmi) || this.getFilterRel();
-	var sortComponent = decodeURIComponent(window.location.search).match(/O=([^&]*)/gmi) || this.getOrderRel();
+FiltersHelper.autoSortAndFilter = function(isFilter) {
+	var filterComponents =
+		decodeURIComponent(window.location.search).match(/fq=specificationFilter([^&]*)|fq=p:([^&]*)/gim) ||
+		this.getFilterRel();
+	var sortComponent = decodeURIComponent(window.location.search).match(/O=([^&]*)/gim) || this.getOrderRel();
 
 	if (sortComponent) {
 		if (this.getOrderRel() === '') {
@@ -66,7 +78,13 @@ FiltersHelper.autoSortAndFilter = function (isFilter) {
 		}
 		sortComponent = $('.order-by li a').filter(function() {
 			if ($(this).attr('data-order')) {
-				return (sortComponent.indexOf($(this).attr('data-order').replace('&','')) !== -1);
+				return (
+					sortComponent.indexOf(
+						$(this)
+							.attr('data-order')
+							.replace('&', '')
+					) !== -1
+				);
 			} else {
 				return false;
 			}
@@ -75,10 +93,10 @@ FiltersHelper.autoSortAndFilter = function (isFilter) {
 
 	if (filterComponents) {
 		if (this.getFilterRel() === '') {
-			this.setFilterRel(filterComponents.toString().replace(',','&'));
+			this.setFilterRel(filterComponents.toString().replace(',', '&'));
 		}
 		filterComponents = $('.multi-search-checkbox').filter(function() {
-			return (filterComponents.indexOf( $(this).attr('rel') ) !== -1 && $(this).attr('value'));
+			return filterComponents.indexOf($(this).attr('rel')) !== -1 && $(this).attr('value');
 		});
 	}
 

@@ -17,31 +17,27 @@ const setSKUselector = () => {
 				.parents('.detalhes')
 				.find('.prod__selectSKU'),
 			productLink = sku.parents('.detalhes'),
-			produtoIndisponivel = productLink
-				.parents('article')
-				.hasClass('semEstoque'),
+			produtoIndisponivel = productLink.parents('article').hasClass('semEstoque'),
 			textButton;
 
 		if (sku.children().length === 0) {
 			for (var i = 0; i < item.length; i++) {
-				let title =
-						item
+				// prettier-ignore
+				let title =	item
+						.eq(i)
+						.find('input[type=text]')
+						.attr('title') === '127V'
+						? '110V'
+						: item
 							.eq(i)
 							.find('input[type=text]')
-							.attr('title') === '127V'
-							? '110V'
-							: item
-								.eq(i)
-								.find('input[type=text]')
-								.attr('title'),
+							.attr('title'),
 					skuId = item
 						.eq(i)
 						.find('input[type=checkbox]')
 						.attr('rel'),
 					objectClass = title.replace(/\s/g, '') + '_' + skuId,
-					isAvailable = item.eq(i).hasClass('unavailable')
-						? 'unavailable'
-						: 'available';
+					isAvailable = item.eq(i).hasClass('unavailable') ? 'unavailable' : 'available';
 
 				skus
 					.eq(index)

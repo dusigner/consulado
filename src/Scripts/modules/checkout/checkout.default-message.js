@@ -1,10 +1,9 @@
 'use strict';
 
 Nitro.module('checkout.default-message', function() {
+	var msg = $(window).width() <= 768 ? $('.js-default-message--mobile').text() : $('.js-default-message').text();
 
-	var msg = ($(window).width() <= 768) ? $('.js-default-message--mobile').text() : $('.js-default-message').text();
-
-	if( msg ) {
+	if (msg) {
 		window.vtex.checkout.MessageUtils.showMessage({
 			text: msg,
 			status: 'info'
@@ -12,5 +11,4 @@ Nitro.module('checkout.default-message', function() {
 	}
 
 	return;
-
 });

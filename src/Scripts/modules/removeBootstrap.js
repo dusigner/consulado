@@ -3,12 +3,16 @@
 Nitro.module('removeBootstrap', function() {
 	// alert(0);
 	var removejscssfile = function(filename, filetype) {
-		var targetelement = (filetype === 'js')? 'script' : (filetype === 'css')? 'link' : 'none',
-			targetattr = (filetype === 'js')? 'src' : (filetype === 'css')? 'href' : 'none',
+		var targetelement = filetype === 'js' ? 'script' : filetype === 'css' ? 'link' : 'none',
+			targetattr = filetype === 'js' ? 'src' : filetype === 'css' ? 'href' : 'none',
 			allsuspects = document.getElementsByTagName(targetelement);
 
 		for (var i = allsuspects.length; i >= 0; i--) {
-			if (allsuspects[i] && allsuspects[i].getAttribute(targetattr) !== null && allsuspects[i].getAttribute(targetattr) === filename) {
+			if (
+				allsuspects[i] &&
+				allsuspects[i].getAttribute(targetattr) !== null &&
+				allsuspects[i].getAttribute(targetattr) === filename
+			) {
 				allsuspects[i].parentNode.removeChild(allsuspects[i]);
 			}
 		}

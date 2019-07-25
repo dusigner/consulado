@@ -1,0 +1,30 @@
+@charset 'UTF-8';
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/rfs';
+@import 'helpers/family';
+
+@import 'libs/toastr';
+
+@import 'components/heading-banner';
+@import 'components/mod-prateleira-v2';
+@import 'components/selos';
+
+@import 'components/listagem/buy-button';
+@import 'components/listagem/comparebar';
+
+@import 'pages/gallery';
+@import 'pages/cervejeiras/cervejeiras-banner-cupom'; // Gus
+@import 'pages/cervejeiras/cervejeiras-funcionalidades'; // Doug
+@import 'pages/cervejeiras/cervejeiras-cores'; // Doug
+@import 'pages/cervejeiras/cervejeiras-smartbeer'; // Gus
+@import 'pages/cervejeiras/cervejeiras-vitrine-smartbeer'; // Bru
+@import 'pages/cervejeiras/cervejeiras-videos'; // Doug
+@import 'pages/cervejeiras/cervejeiras-vitrine-default'; // Bru
+@import 'pages/cervejeiras/cervejeiras-casa-bem-pensada'; // Doug
+
+
+

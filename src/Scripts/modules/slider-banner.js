@@ -1,12 +1,14 @@
 'use strict';
 
-Nitro.module('slider-banner', [],  function() {
+Nitro.module('slider-banner', [], function() {
 	var $buttonOpenRegulamento = $('.open-regulamento');
 
 	this.setupMainSlider = function() {
-		var qtdBanners, $bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+		var qtdBanners,
+			$bannerPrincipal =
+				$(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
-		$bannerPrincipal.on('init', function(){
+		$bannerPrincipal.on('init', function() {
 			qtdBanners = $('.banners .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
 
 			if ($(window).width() <= 768) {
@@ -14,31 +16,35 @@ Nitro.module('slider-banner', [],  function() {
 			}
 		});
 
-		$bannerPrincipal.slick({
-			autoplay: false,
-			autoplaySpeed: 6000,
-			mobileFirst: true,
-			dots: true,
-			arrows: false,
-			responsive: [{
-				breakpoint: 568,
-				settings: {
-					arrows: true,
+		$bannerPrincipal
+			.slick({
+				autoplay: false,
+				autoplaySpeed: 6000,
+				mobileFirst: true,
+				dots: true,
+				arrows: false,
+				responsive: [
+					{
+						breakpoint: 568,
+						settings: {
+							arrows: true
+						}
+					}
+				]
+			})
+			.on('afterChange', function(event, slick, currentSlide) {
+				if ($('#modal-regulamento-banner').text() !== '' && qtdBanners > 1 && currentSlide === qtdBanners - 1) {
+					$buttonOpenRegulamento.show();
+				} else {
+					$buttonOpenRegulamento.hide();
 				}
-			}]
-		}).on('afterChange', function(event, slick, currentSlide){
-			if ($('#modal-regulamento-banner').text() !== '' && (qtdBanners > 1) && (currentSlide === qtdBanners - 1)) {
-				$buttonOpenRegulamento.show();
-			} else {
-				$buttonOpenRegulamento.hide();
-			}
-		});
+			});
 
-		$buttonOpenRegulamento.click(function(e){
+		$buttonOpenRegulamento.click(function(e) {
 			e.preventDefault();
 
 			$('#modal-regulamento-banner').vtexModal({
-				'title': 'Regulamento',
+				title: 'Regulamento',
 				cookieOptions: {
 					expires: 0,
 					path: '/'

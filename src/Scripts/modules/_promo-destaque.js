@@ -1,6 +1,9 @@
 // Transforma o texto do front em números para o cálculo do desconto.
 const valueFormat = text => {
-	let value = text.replace('R$ ', '').replace('.', '').replace(',', '.');
+	let value = text
+		.replace('R$ ', '')
+		.replace('.', '')
+		.replace(',', '.');
 
 	return value;
 };
@@ -14,20 +17,20 @@ const discountFormat = discount => discount.replace('.', ',');
 // Verifica se o desconto está dentro do range estabelecido pelas regras de negócio.
 const discountValidate = (discount, productPrice) => {
 	const prodDiscount = Number(discount);
-	const prodPrice    = Number(productPrice);
-	const minPrice     = 50.00;
-	const maxPrice     = 950.00;
+	const prodPrice = Number(productPrice);
+	const minPrice = 50.0;
+	const maxPrice = 950.0;
 
 	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice && prodDiscount < prodPrice);
 };
 
 // Promo destaque - Dia das mães
 const promoDestaque = produto => {
-	const hasPromo  = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
+	const hasPromo = produto.find('.FlagsHightLight .flag[class*="_promo-destaque_"]');
 	const $prodInfo = produto.find('.prod-info, .shelf-item__info');
-	const precoDe   = valueFormat(produto.find('.de .val').text());
-	const precoPor  = valueFormat(produto.find('.por .val').text());
-	const desconto  = discountCalculate(precoDe, precoPor);
+	const precoDe = valueFormat(produto.find('.de .val').text());
+	const precoPor = valueFormat(produto.find('.por .val').text());
+	const desconto = discountCalculate(precoDe, precoPor);
 
 	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
 		const $promoDestaque = `
@@ -47,11 +50,11 @@ const promoDestaque = produto => {
 };
 
 const prodPromoDestaque = () => {
-	const hasPromo   = $('.prod-selos .flag[class*="_promo-destaque_"]');
+	const hasPromo = $('.prod-selos .flag[class*="_promo-destaque_"]');
 	const $prodPreco = $('.prod-preco');
-	const precoDe    = valueFormat($prodPreco.find('.skuListPrice').text());
-	const precoPor   = valueFormat($prodPreco.find('.skuBestPrice').text());
-	const desconto   = discountCalculate(precoDe, precoPor);
+	const precoDe = valueFormat($prodPreco.find('.skuListPrice').text());
+	const precoPor = valueFormat($prodPreco.find('.skuBestPrice').text());
+	const desconto = discountCalculate(precoDe, precoPor);
 
 	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
 		const $promoDestaque = `

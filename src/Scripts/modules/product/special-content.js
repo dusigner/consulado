@@ -4,10 +4,7 @@
 require('Dust/special-content.html');
 
 Nitro.module('special-content', function() {
-
-
 	var $content = $('td.Conteudo-Especial').text();
-
 
 	if ($content) {
 		var content = $content.split(',');
@@ -36,8 +33,6 @@ Nitro.module('special-content', function() {
 			}
 
 			$(out).insertBefore('#especificacoes');
-
 		});
-
 	}
 });

@@ -1,5 +1,3 @@
-/* global store: true */
-
 'use strict';
 
 //load Nitro Lib
@@ -10,7 +8,6 @@ require('modules/orders/order.orders');
 require('modules/orders/order.recurrences');
 
 Nitro.setup(['order.orders', 'order.recurrences'], function(orders, recurrences) {
-
 	var $container = $('#myorders'), //Container geral
 		modules = {
 			orders: orders,
@@ -26,7 +23,7 @@ Nitro.setup(['order.orders', 'order.recurrences'], function(orders, recurrences)
 		$('.js-link-orders').click(function(e) {
 			e.preventDefault();
 
-			if($container.hasClass('myorders--loading')) {
+			if ($container.hasClass('myorders--loading')) {
 				return false;
 			}
 
@@ -36,9 +33,9 @@ Nitro.setup(['order.orders', 'order.recurrences'], function(orders, recurrences)
 
 			$('.js-myorders-generic-render').addClass('hide');
 			modules[link]['$' + link + 'Container'].removeClass('hide');
-			$title.text( $self.text() );
+			$title.text($self.text());
 
-			if(!modules[link][link].isLoaded) {
+			if (!modules[link][link].isLoaded) {
 				modules[link].init();
 			}
 		});

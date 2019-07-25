@@ -1,21 +1,19 @@
 'use strict';
 
 var Index = {
-
-	init: function () {
+	init: function() {
 		this.calcQntBanners();
 		this.validBanners();
 	},
 
-	calcQntBanners: function () {
-
+	calcQntBanners: function() {
 		var $banners = $('.banner-secundario-mosaico');
 		var qntBanners = $banners.size();
 
 		$banners.removeClass('one-banner');
 		$banners.removeClass('two-banner');
 
-		if(qntBanners === 1) {
+		if (qntBanners === 1) {
 			$banners.parent().addClass('one-banner');
 		} else if (qntBanners === 2) {
 			$banners.parent().addClass('two-banner');
@@ -25,25 +23,23 @@ var Index = {
 		}
 	},
 
-	validBanners: function () {
-
-		if($('.banner-secundario').children().length > 0 ) {
+	validBanners: function() {
+		if ($('.banner-secundario').children().length > 0) {
 			$('.banners-secundarios').show();
 		} else {
 			$('.banners-secundarios').hide();
 		}
 
-		if($('.banner-secundario-mosaico').children().length > 0 ) {
+		if ($('.banner-secundario-mosaico').children().length > 0) {
 			$('.banners-secundarios-mosaico').show();
 		} else {
 			$('.banners-secundarios-mosaico').hide();
 		}
 
 		//banners secundarios prevent empty
-		if( $('.banner-secundario-mobile:empty').length === 2 ) {
+		if ($('.banner-secundario-mobile:empty').length === 2) {
 			$('.banners-secundarios-mobile').hide();
 		}
-
 	}
 };
 

@@ -6,14 +6,11 @@ require('vendors/jquery.inputmask');
 var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.termoColeta', function() {
-
-
 	//var self = this;
 
 	this.setup = function() {
 		this.aceiteTermoColeta();
 	};
-
 
 	this.aceiteTermoColeta = function() {
 		var metodoDeEntrega = $('.shipping-method .sla-name').text();
@@ -26,7 +23,9 @@ Nitro.module('checkout.termoColeta', function() {
 
 			$('input.cepColeta').inputmask('99999-999');
 
-			var email = $('.orderplaced-sending-email strong').text().trim(),
+			var email = $('.orderplaced-sending-email strong')
+					.text()
+					.trim(),
 				idPedido = $('.myorders-list>.ordergroup').attr('id'),
 				typeProduct,
 				btnContinue = $('#modal-termo-coleta .btn');
@@ -39,7 +38,11 @@ Nitro.module('checkout.termoColeta', function() {
 			});
 
 			$('input.nameColeta1, input.enderecoColeta, input.cepColeta').keyup(function() {
-				if ($('input.nameColeta1').val() === '' || $('input.enderecoColeta').val() === '' || $('input.cepColeta').val() === '') {
+				if (
+					$('input.nameColeta1').val() === '' ||
+					$('input.enderecoColeta').val() === '' ||
+					$('input.cepColeta').val() === ''
+				) {
 					btnContinue.attr('disabled', 'disabled');
 				} else {
 					btnContinue.removeAttr('disabled');
@@ -48,37 +51,36 @@ Nitro.module('checkout.termoColeta', function() {
 
 			btnContinue.on('click', function() {
 				var jsonColeta = JSON.stringify({
-					'key': idPedido + ' - Tipo de Produto: ' + typeProduct,
-					'point': '1',
-					'until': ''
+					key: idPedido + ' - Tipo de Produto: ' + typeProduct,
+					point: '1',
+					until: ''
 				});
 
-				var responsavelColeta = 'Nome 1: ' + $('input.nameColeta1').val() +
-					' | Nome 2: ' + $('input.nameColeta2').val();
+				var responsavelColeta =
+					'Nome 1: ' + $('input.nameColeta1').val() + ' | Nome 2: ' + $('input.nameColeta2').val();
 
 				var enderecoColeta = $('input.enderecoColeta').val() + ' - ' + $('input.cepColeta').val();
 
 				var data = {
-					'email': email,
-					'xColetaResponsavel': responsavelColeta,
-					'xEnderecoColeta': enderecoColeta
+					email: email,
+					xColetaResponsavel: responsavelColeta,
+					xEnderecoColeta: enderecoColeta
 				};
 
-				CRM.insertClient(data)
-					.then(function() {
-						//console.log('deu certo');
-						CRM.clientSearchByEmail(email).done(function(user) {
-							$.ajax({
-								contentType: 'application/json',
-								type: 'PUT',
-								url: '/api/ds/pub/documents/CL/' + user.id + '/xAceiteColeta/score',
-								data: jsonColeta,
-								success: function() {
-									//console.log('Termo de aceite para coleta de produto antigo: aceito');
-								}
-							});
+				CRM.insertClient(data).then(function() {
+					//console.log('deu certo');
+					CRM.clientSearchByEmail(email).done(function(user) {
+						$.ajax({
+							contentType: 'application/json',
+							type: 'PUT',
+							url: '/api/ds/pub/documents/CL/' + user.id + '/xAceiteColeta/score',
+							data: jsonColeta,
+							success: function() {
+								//console.log('Termo de aceite para coleta de produto antigo: aceito');
+							}
 						});
 					});
+				});
 				/*
 										.fail(function () {
 											console.log('deu errado');

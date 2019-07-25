@@ -8,7 +8,10 @@ const dynamicStamps = (context, cssSelector) => {
 
 	element.find(selector).each(function(i, e) {
 		const elFlag = $(e);
-		const flagName = elFlag.attr('class').replace('flag', '').trim();
+		const flagName = elFlag
+			.attr('class')
+			.replace('flag', '')
+			.trim();
 
 		updateImageStamps(elFlag, flagName);
 	});
@@ -16,9 +19,9 @@ const dynamicStamps = (context, cssSelector) => {
 
 const updateImageStamps = (stamp, imageName) => {
 	$(stamp).css({
-		'background-image'    : `url(/arquivos/${imageName}.png)`,
-		'background-position' : 'center center',
-		'background-repeat'   : 'no-repeat'
+		'background-image': `url(/arquivos/${imageName}.png)`,
+		'background-position': 'center center',
+		'background-repeat': 'no-repeat'
 	});
 };
 

@@ -2,7 +2,8 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:import/errors',
-		'plugin:import/warnings'
+		'plugin:import/warnings',
+		'prettier'
 	],
 	env: {
 		es6: true,
@@ -11,12 +12,12 @@ module.exports = {
 		jquery: true,
 		mocha: true
 	},
+	parser: 'babel-eslint',
 	parserOptions: {
 		ecmaVersion: 6,
 		sourceType: 'module',
 		ecmaFeatures: {
 			modules: true,
-			experimentalObjectRestSpread: true
 		}
 	},
 	globals: {
@@ -37,6 +38,13 @@ module.exports = {
 		localStore: true
 	},
 	rules: {
+		'prettier/prettier': [
+			"warn", {
+				'singleQuote': true,
+				//'parser': 'flow'
+				'printWidth': 120
+			}
+		] ,
 		eqeqeq: ['error', 'smart'],
 		'no-console': [
 			1,
@@ -54,9 +62,17 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': 1,
 		'no-var': 0,
 		'no-unresolved': 0,
-		quotes: ['warn', 'single'],
+		// quotes: [
+		// 	'warn',
+		// 	'single',
+		// 	{
+		// 		allowTemplateLiterals: true,
+		// 		avoidEscape: true
+		// 	}
+
+		// ],
 		indent: ['warn', 'tab'],
-		semi: ['error', 'always'],
+		//semi: ['error', 'always'],
 		'no-trailing-spaces': 0,
 		'eol-last': 0,
 		'no-unused-vars': 1,
@@ -65,5 +81,8 @@ module.exports = {
 		'no-lone-blocks': 0,
 		'jsx-quotes': ['warn', 'prefer-single'],
 		'import/no-unresolved': 0
-	}
+	},
+	plugins: [
+		'prettier'
+	]
 };
