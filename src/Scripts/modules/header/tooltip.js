@@ -5,7 +5,7 @@ require('Dust/header/mobile-banner.html');
 require('Dust/header/tooltip.html');
 
 Nitro.module('tooltip', function() {
-	let self = this,
+	const self = this,
 		mobileBanner = $('.home, .listagem:not(.smartbeer2)').find('.menu-mobile .menu-department'),
 		desktopTooltip = $('.home, .listagem:not(.smartbeer2)').find('.top-navigation .item-cervejeira');
 
@@ -17,7 +17,7 @@ Nitro.module('tooltip', function() {
 	};
 
 	this.renderBanner = () => {
-		let data = {
+		const data = {
 			upperText: 'Cerveja beeem gelada é na cervejeira Consul',
 			bottomText: 'Conheça nossa linha completa'
 		};
@@ -32,7 +32,7 @@ Nitro.module('tooltip', function() {
 	};
 
 	this.renderTooltip = () => {
-		let data = {
+		const data = {
 			upperText: 'Cerveja beeem gelada é na cervejeira Consul',
 			bottomText: 'Conheça nossa linha completa'
 		};
@@ -47,7 +47,7 @@ Nitro.module('tooltip', function() {
 	};
 
 	this.createTag = () => {
-		let highLight = $('.home .tooltip, .listagem:not(.smartbeer2) .tooltip'),
+		const highLight = $('.home .tooltip, .listagem:not(.smartbeer2) .tooltip'),
 			highLightMobile = $('.item-banner .tooltip-banner');
 
 		let setTag = selector => {
@@ -66,7 +66,7 @@ Nitro.module('tooltip', function() {
 	};
 
 	this.showTooltip = () => {
-		let highLight = $('.home .tooltip, .listagem:not(.smartbeer2) .tooltip');
+		const highLight = $('.home .tooltip, .listagem:not(.smartbeer2) .tooltip');
 		highLight.fadeIn(function() {
 			setTimeout(() => {
 				highLight.fadeOut(function() {});
