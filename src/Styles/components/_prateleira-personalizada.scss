@@ -15,6 +15,7 @@ body.home.buyButton {
 		@include breakpoint('medium', 'min') {
 			@include breakpoint(1200px, 'max') { padding: 2em; }
 		}
+		@include breakpoint('medium', 'max') { padding: 1.5em; }
 		padding: 2.2em 2.8em;
 	}
 
@@ -22,7 +23,7 @@ body.home.buyButton {
 
 	.container {
 		@include breakpoint(992px, 'max') { flex-direction: column; }
-		align-items: center;
+		align-items: stretch;
 		display: flex;
 		justify-content: space-between;
 
@@ -89,9 +90,10 @@ body.home.buyButton {
 						max-width: 250px;
 					}
 				}
+				@include breakpoint(992px, 'max') { margin: 10px; }
 				background-color: #fff;
 				flex: 1 0 315px;
-				margin: 20px 15px;
+				margin: 15px;
 			}
 
 			li.slick-slide {
@@ -102,8 +104,7 @@ body.home.buyButton {
 			// Container do produto
 			.box-produto {
 				max-width: inherit;
-				padding: 15px 10px 30px 10px;
-				padding-left: 0;
+				padding: 15px 15px 30px 15px;
 
 				.detalhes { flex-direction: row; }
 
@@ -112,6 +113,8 @@ body.home.buyButton {
 
 			// Imagem do produto
 			.image {
+				margin-right: 15px;
+
 				&:before {
 					display: none;
 					visibility: hidden;
@@ -134,9 +137,24 @@ body.home.buyButton {
 				margin: 0;
 				padding: 0;
 
-				&:first-child + .sku_buy {
-					display: none!important;
-					visibility: hidden!important;
+				// Nessa prateleira temos dois productinfo e algumas
+				// coisas não deveriam ser apresentadas na primeira
+				&:first-child {
+					.sku_error,
+					& + .sku_buy {
+						display: none!important;
+						visibility: hidden!important;
+					}
+				}
+
+				.sku_error {
+					position: absolute;
+					width: calc(100% - 145px);
+
+					&::before {
+						left: 32px;
+						top: -23px;
+					}
 				}
 
 				// Título do produto
@@ -180,6 +198,12 @@ body.home.buyButton {
 						display: none;
 						visibility: hidden;
 					}
+				}
+
+				// Escoder as possíveis prmoções
+				.promo-destaque {
+					display: none;
+					visibility: hidden;
 				}
 			}
 
@@ -246,8 +270,10 @@ body.home.buyButton {
 		// Ajuste slick
 		.slick-arrow {
 			height: 100%;
-			opacity: .8;
+			opacity: .6;
 			width: 30px;
+
+			&:before { font-size: 14px; }
 		}
 
 		.slick-prev { left: -10px; }
@@ -263,14 +289,20 @@ body.home.buyButton {
 		@include breakpoint(1200px, 'max') { @include rfs(19); }
 	}
 	@include breakpoint(992px, 'max') {
+		font-size: 19px;
 		margin-left: auto;
 		margin-right: auto;
 	}
+	@include breakpoint('small', 'max') { max-width: 255px; }
 	@include rfs(22);
 	line-height: 140%;
 	margin: 0 0 1.5em 0;
 	position: relative;
 	text-transform: uppercase;
+
+	br {
+		@include breakpoint(992px, 'max') { display: none; }
+	}
 }
 
 .prateleira-personalizada__conteudo {
@@ -313,7 +345,8 @@ body.home.buyButton {
 			justify-content: space-around;
 		}
 	}
-	margin: auto 0;
+	@include breakpoint('small', 'max') { max-width: 280px; }
+	margin: auto;
 	padding: 0;
 	position: relative;
 	width: 100%;
@@ -385,16 +418,28 @@ body.home.buyButton {
 		height: 100%;
 		opacity: .5;
 		width: 30px;
+
+		&:before { font-size: 14px; }
 	}
 
-	.slick-prev { left: -10px; }
-	.slick-next { right: -10px; }
+	.slick-prev { left: -25%; }
+	.slick-next { right: -25%; }
 
 	.slick-dots {
-		bottom: -5px;
+		bottom: -15px;
+
+		li {
+			margin: 0;
+
+			button {
+				@include square(5px);
+				margin: 0;
+			}
+		}
 
 		.slick-active {
 			button {
+				@include square(5px);
 				background-color: #4a4d45;
 
 				&:after { display: none; }
