@@ -13,22 +13,35 @@
 //COLORS
 $gray-light: #FBFAFA;
 //FONTS
-$font-light: 100;
-$font-normal: 300;
-$font-bold: 700;
+$font-light: 300;
+$font-normal: 500;
+$font-bold: 600;
+//BREAKPOINTS
+$breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, 'lg-desktop': 1200px, 'xlg-desktop': 1400px, );
 .cupom {
     &-header {
+        margin: 40px auto;
         &__title {
+            @include breakpoint('tablet', 'min') {
+                text-align: left;
+            }
             @include responsiveFont(35);
             color: $gray-d;
-            margin-bottom: 0;
+            margin: 0;
+            text-align: center;
             span {
                 color: $green;
             }
         }
         &__subtitle {
-            @include responsiveFont(14);
+            @include breakpoint('tablet', 'min') {
+                text-align: left;
+            }
+            @include responsiveFont(16);
             color: $gray-d;
+            font-weight: $font-light;
+            margin: 0;
+            text-align: center;
         }
     }
 }
@@ -39,11 +52,81 @@ $font-bold: 700;
         border-radius: 8em;
         min-height: 180px;
         width: 100%;
+        small {
+            @include responsiveFont(12);
+            color: $gray-d;
+            display: flex;
+            font-weight: $font-normal;
+            line-height: 15px;
+        }
     }
     &__title {
+        @include responsiveFont(18);
         color: $gray-d;
+        font-weight: $font-normal;
+        line-height: 28px;
+        margin: 0 auto 10px;
         span {
+            @include responsiveFont(35);
             color: $green;
+            font-weight: $font-bold;
+        }
+    }
+    &__passos {
+        margin: 0 auto;
+        width: 155px !important;
+        &__icone {
+            align-items: flex-end;
+            display: flex;
+            height: 60px;
+            margin: 0 auto 10px;
+            width: 65px;
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+        p {
+            @include responsiveFont(15);
+            font-weight: $font-normal;
+            line-height: 18px;
+            margin: 0;
+            text-align: center;
+        }
+        // @include breakpoint('desktop', 'min') {
+        //     &:after {
+        //         background-image: url('/arquivos/consul-linha-cinza.png');
+        //         background-size: contain;
+        //         content: '';
+        //         display: block;
+        //         height: 3px;
+        //         left: 0%;
+        //         position: absolute;
+        //         top: 50%;
+        //         width: 30px;
+        //         &:first-child {
+        //             content: '';
+        //             display: none;
+        //         }
+        //     }
+        // }
+    }
+    .slick-track {
+        display: flex;
+        justify-content: space-between;
+
+    }
+}
+
+//VITRINE
+.vitrine-desconto {
+    margin: 70px auto;
+    &__produto {
+        width: 100px;
+        img {
+            display: block;
+            width: 100%;
+
         }
     }
 }

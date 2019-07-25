@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
     <title>Consul</title>
@@ -11,7 +12,8 @@
     <!-- @endif -->
 
     <vtex:template id="0-consul-head-content" />
-    <link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->" />
+    <link rel="stylesheet" type="text/css"
+        href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->" />
 </head>
 
 <body data-controller="landing-gae">
@@ -36,25 +38,47 @@
         </section>
         <section class="como-utilizar">
             <div class="container">
-                <div class="como-utilizar__aside">
-                    <div class="row">
-                        <div class="col-3">
-                            <h2 class="como-utilizar__title">Saiba como <br><span>Utilizar</span></h2>
-                            <small>Siga os passos para usar <br>um cupom de desconto</small>
+                <div class="como-utilizar__aside d-flex align-items-center justify-content-between">
+                    <div class="como-utilizar__passos">
+                        <h2 class="como-utilizar__title">Saiba como <br><span>Utilizar</span></h2>
+                        <small>Siga os passos para usar <br>um cupom de desconto</small>
+                    </div>
+                    <div class="como-utilizar__passos">
+                        <figure class="como-utilizar__passos__icone"><img src="/arquivos/consul-cupom-passo1.png">
+                        </figure>
+                        <p>Copie o código do que você deseja usar!</p>
+                    </div>
+                    <div class="como-utilizar__passos">
+                        <figure class="como-utilizar__passos__icone"><img src="/arquivos/consul-cupom-passo2.png">
+                        </figure>
+                        <p>Utilize o código do cupom escolhido no carrinho de compras</p>
+                    </div>
+                    <div class="como-utilizar__passos">
+                        <figure class="como-utilizar__passos__icone"><img src="/arquivos/consul-cupom-passo3.png">
+                        </figure>
+                        <p>Pronto! Aproveite o desconto na sua compra!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="vitrine-desconto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="vitrine-desconto__card-cupom">
+
                         </div>
-                        <div class="col-3">
-                            <div class="como-utilizar__passos">
-                                <figure><img src=""></figure>
-                                <p>Copie o código do que você deseja usar!</p>
-                            </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="vitrine-desconto__aside">
+                            <div class="vitrine-desconto__produto"><img src="/arquivos/consul-produto.png"></div>
                         </div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <script src="<!-- @echo assetsPath -->/consul-cupom.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 
 </html>
