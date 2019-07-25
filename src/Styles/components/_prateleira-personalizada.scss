@@ -103,11 +103,8 @@ body.home.buyButton {
 
 			// Container do produto
 			.box-produto {
-				@include breakpoint('small', 'max') { padding-bottom: 60px; }
-				@include breakpoint('small', 'min') {
-					border-color: transparent;
-					box-shadow: none;
-				}
+				@include breakpoint('medium', 'max') { padding-bottom: 60px; }
+				background-color: #fff;
 				max-width: inherit;
 				padding: 15px 15px 30px 15px;
 
@@ -153,7 +150,8 @@ body.home.buyButton {
 				}
 
 				.sku_error {
-					padding: 12px 10px;
+					margin: 0;
+					padding: 14px 10px;
 					position: absolute;
 					width: calc(100% - 145px);
 
