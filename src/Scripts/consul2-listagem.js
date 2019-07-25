@@ -68,8 +68,9 @@ Nitro.controller('listagem', ['chaordic', 'list-more', 'filters', 'order-by', 's
 	$listOrders.append($filters);
 
 	//TODO: pluralize
-	var orderText = !$('body').is('.busca') ? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens' : '';
-	$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em>');
+	const itemsQuantity = $('.resultado-busca-numero:first .value').text();
+	var orderText = !$('body').is('.busca') ? `Temos ${itemsQuantity} itens` : '';
+	$('.order-title').html(`<span class="show-desktop"> ${orderText} ordenados por </span><em class="show-desktop">selecione</em>`);
 
 
 	$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');

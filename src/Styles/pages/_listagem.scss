@@ -160,18 +160,6 @@ body.busca {
 			@include breakpoint('medium', 'max') { display: none; }
 		}
 
-		span.order-show-mobile {
-			@include responsiveFont(13, 16, true);
-			color: #736C6B;
-			display: none;
-			font-size: 12px;
-			text-align: center;
-			text-transform: capitalize;
-			width: 85%;
-
-			@include breakpoint('medium', 'max') { display: inline-block; }
-		}
-
 		&:after {
 			@include icon-get('arrow-down');
 			@include transition(transform, 200);
