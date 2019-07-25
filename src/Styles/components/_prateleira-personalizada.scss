@@ -104,8 +104,10 @@ body.home.buyButton {
 			// Container do produto
 			.box-produto {
 				@include breakpoint('small', 'max') { padding-bottom: 60px; }
-				border-color: transparent;
-				box-shadow: none;
+				@include breakpoint('small', 'min') {
+					border-color: transparent;
+					box-shadow: none;
+				}
 				max-width: inherit;
 				padding: 15px 15px 30px 15px;
 
