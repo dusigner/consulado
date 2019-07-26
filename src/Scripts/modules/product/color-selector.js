@@ -56,9 +56,7 @@ Nitro.module('color-selector', ['input-box'], function() {
 				$holder.html(out).show();
 
 				$('.input-box-dropdown-item').click(function(e) {
-					e.preventDefault();
 					const itemClicked = data.filter(item => item.link === $(this).attr('href'));
-
 					$(window).trigger('color.selector.selected', [itemClicked[0]]);
 				});
 			});
