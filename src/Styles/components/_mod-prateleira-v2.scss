@@ -34,7 +34,7 @@ body.listagem {
 	}
 }
 
-.prateleira > ul > li { float: left; }
+.prateleira > ul > li { display: inline-block; }
 
 .prateleira-slider {
 	.slick-track {
