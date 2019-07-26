@@ -6,8 +6,9 @@ require('modules/header/cotas');
 require('modules/header/welcome-message');
 require('modules/header/menu-hover');
 require('modules/header/cart');
+require('modules/header/tooltip');
 
-Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'], function() {
+Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover', 'cart', 'tooltip'], function() {
 	var $body = $('body'),
 		$document = $(document);
 
