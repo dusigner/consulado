@@ -1,7 +1,6 @@
 'use strict';
 
 Nitro.module('prateleira-personalizada', function() {
-
 	// Variables
 	const self = this;
 	const pageInitialSize = $(window).width();
@@ -38,13 +37,11 @@ Nitro.module('prateleira-personalizada', function() {
 
 			if (widthPage < responsiveSize) {
 				$element.not('.slick-initialized').slick(objSlickConfig);
-			}
-			else {
+			} else {
 				$element.hasClass('slick-initialized') && $element.slick('unslick');
 			}
 		});
 	};
-
 
 	self.setup();
 });
