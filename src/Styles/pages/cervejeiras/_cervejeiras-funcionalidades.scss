@@ -53,7 +53,9 @@
 }
 
 .cervejeiras-lista-funcionalidades {
-	@include breakpoint('medium', 'max') { margin: 1em 0 3em 0; }
+	@include breakpoint('medium', 'max') {
+		margin: 1em 0 3em 0;
+	}
 	padding: 1em;
 	width: 100%;
 
@@ -66,7 +68,9 @@
 		display: flex;
 		margin-top: 1.2em;
 
-		&:first-child { margin: 0; }
+		&:first-child {
+			@include breakpoint('medium', 'min') { margin: 0; }
+		}
 
 		article { width: 100%; }
 
