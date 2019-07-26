@@ -11,7 +11,7 @@ import Cores from 'modules/cervejeiras/cervejeiras.cores';
 import Smartbeer from 'modules/cervejeiras/cervejeiras.smartbeer';
 import Ofertas from 'modules/cervejeiras/cervejeiras.ofertas';
 
-Nitro.setup(['gallery', 'dataLayer-cervejeira', 'dataLayer-categoria'], function(gallery, dataLayerCervejeira) {
+Nitro.controller('cervejeira', ['gallery', 'dataLayer-cervejeira', 'dataLayer-categoria'], function(gallery, dataLayerCervejeira) {
 	const cervejeiras = {};
 
 	// Init

@@ -104,7 +104,7 @@
 						opacity: 1;
 						position: absolute;
 						width: 100%;
-						z-index: 3;
+						z-index: 1;
 					}
 
 					&[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
@@ -115,7 +115,6 @@
 
 				.prod-info {
 					border-color: #F1F0F0;
-					position: relative;
 
 					.nome {
 						@include rfs(15);
@@ -163,9 +162,9 @@
 					}
 
 					.sku_error {
+						left: 5%;
 						position: absolute;
-						top: 10px;
-						width: 100%;
+						width: 90%;
 
 						&:before {
 							border-width: 20px;
@@ -183,7 +182,10 @@
 
 	// Remove comparador e selos das páginas de cervejeira
 	.off,
-	.product-with-5-off,
+	.product-with-5-off {
+		z-index: 4;
+	}
+
 	.btn-comparar {
 		display: none!important;
 		visibility: hidden!important;
