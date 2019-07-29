@@ -3,7 +3,7 @@ module.exports = {
 		'eslint:recommended',
 		'plugin:import/errors',
 		'plugin:import/warnings',
-		'prettier'
+		//'prettier'
 	],
 	env: {
 		es6: true,
@@ -38,13 +38,13 @@ module.exports = {
 		localStore: true
 	},
 	rules: {
-		'prettier/prettier': [
-			"warn", {
-				'singleQuote': true,
-				//'parser': 'flow'
-				'printWidth': 120
-			}
-		] ,
+		// 'prettier/prettier': [
+		// 	"warn", {
+		// 		'singleQuote': true,
+		// 		//'parser': 'flow'
+		// 		'printWidth': 120
+		// 	}
+		// ] ,
 		eqeqeq: ['error', 'smart'],
 		'no-console': [
 			1,
@@ -62,15 +62,15 @@ module.exports = {
 		'no-mixed-spaces-and-tabs': 1,
 		'no-var': 0,
 		'no-unresolved': 0,
-		// quotes: [
-		// 	'warn',
-		// 	'single',
-		// 	{
-		// 		allowTemplateLiterals: true,
-		// 		avoidEscape: true
-		// 	}
+		quotes: [
+			'warn',
+			'single',
+			{
+				allowTemplateLiterals: true,
+				avoidEscape: true
+			}
 
-		// ],
+		],
 		indent: ['warn', 'tab'],
 		//semi: ['error', 'always'],
 		'no-trailing-spaces': 0,
@@ -82,7 +82,7 @@ module.exports = {
 		'jsx-quotes': ['warn', 'prefer-single'],
 		'import/no-unresolved': 0
 	},
-	plugins: [
-		'prettier'
-	]
+	// plugins: [
+	// 	'prettier'
+	// ]
 };
