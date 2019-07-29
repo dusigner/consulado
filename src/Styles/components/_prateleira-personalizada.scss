@@ -90,6 +90,7 @@ body.home.buyButton {
 					}
 				}
 				@include breakpoint(992px, 'max') { margin: 10px; }
+				-ms-flex: 1 0 315px;
 				background-color: #fff;
 				flex: 1 0 315px;
 				margin: 15px;
@@ -462,5 +463,12 @@ body.home.buyButton {
 				&:after { display: none; }
 			}
 		}
+	}
+}
+
+
+_:-ms-fullscreen, :root {
+	.prateleira-personalizada .prateleira > ul {
+		& > li { min-height: 190px; }
 	}
 }
