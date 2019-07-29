@@ -47,17 +47,25 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
 }
 
 .como-utilizar {
+
     &__aside {
         background-color: $gray-light;
         border-radius: 8em;
         min-height: 180px;
         width: 100%;
         small {
+            @include breakpoint('tablet', 'max') {
+                @include responsiveFont(16);
+            }
             @include responsiveFont(12);
             color: $gray-d;
             display: flex;
             font-weight: $font-normal;
             line-height: 15px;
+        }
+        .slick-dots {
+            bottom: 0;
+            margin-bottom: -30px;
         }
     }
     &__title {
@@ -65,7 +73,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         color: $gray-d;
         font-weight: $font-normal;
         line-height: 28px;
-        margin: 0 auto 10px;
+        margin: 20px auto 10px;
         span {
             @include responsiveFont(35);
             color: $green;
@@ -74,46 +82,74 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
     }
     &__passos {
         margin: 0 auto;
+        position: relative;
         width: 155px ;
         &__icone {
             align-items: flex-end;
             display: flex;
             height: 60px;
-            margin: 0 auto 10px;
-            width: 65px;
+            margin: 0 auto 16px;
+            width: 74px;
             img {
                 display: block;
                 width: 100%;
             }
         }
         p {
+            @include breakpoint('tablet', 'max') {
+                @include responsiveFont(20);
+            }
             @include responsiveFont(15);
-            font-weight: $font-normal;
-            line-height: 18px;
+            font-weight: $font-bold;
+            line-height: 22px;
             margin: 0;
             text-align: center;
         }
-        // @include breakpoint('desktop', 'min') {
-        //     &:after {
-        //         background-image: url('/arquivos/consul-linha-cinza.png');
-        //         background-size: contain;
-        //         content: '';
-        //         display: block;
-        //         height: 3px;
-        //         left: 0%;
-        //         position: absolute;
-        //         top: 50%;
-        //         width: 30px;
-        //         &:first-child {
-        //             content: '';
-        //             display: none;
-        //         }
-        //     }
-        // }
+        @include breakpoint('desktop', 'min') {
+            &:after {
+                background-color: $gray-d;
+                background-size: contain;
+                content: '';
+                display: block;
+                height: 3px;
+                left: 100%;
+                margin-left: 30px;
+                position: absolute;
+                top: 50%;
+                width: 30px;
+            }
+            &:last-child,
+            &:first-child {
+                &::after {
+                content: '';
+                display: none;
+                }
+            }
+        }
+    }
+    .slick-list {
+        margin: 0 auto;
     }
     .slick-track {
-        display: flex;
-        justify-content: space-between;
+        margin: 0 auto;
+        width: 1000px;
+    }
+    .slick-dots {
+        li {
+            &.slick-active {
+                button {
+                    background: $green;
+                &:after {
+                    border: none;
+                    }
+                }
+            }
+            button {
+                &:after {
+                    border: none;
+                }
+            }
+        }
     }
 }
 
