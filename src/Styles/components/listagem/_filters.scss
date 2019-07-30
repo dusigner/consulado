@@ -84,6 +84,10 @@
 				line-height: 50px;
 			}
 		}
+
+		.mobile-buttons {
+			display: none;
+		}
 	}
 
 	.navigation {
@@ -283,7 +287,6 @@
 		top: 20%;
 	}
 }
-
 .sidebar-filter-submenu {
 	border-bottom: 1px solid $gray;
 	margin-bottom: 10px;
@@ -350,7 +353,6 @@ body.departamento {
 		vertical-align: top;
 		width: 260px;
 		z-index: 10;
-
 		fieldset {
 			border: none;
 			margin: 0;
