@@ -1,9 +1,29 @@
 @charset 'UTF-8';
 
-// Evitar que o botão comprar apareça na home além do componente de Prateleira personalizada
-body.home.buyButton {
-	.sku_buy { display: none!important; }
+body.home {
+
+	// Evitar que o botão comprar apareça na home além do componente de Prateleira personalizada
+	&.buyButton .sku_buy { display: none!important; }
+
+	// Teste AB de Prateleiras personalizadas
+	&.teste-ab__mostrar-prateleira-comum {
+		.prateleira-comum {
+			display: block!important;
+			visibility: visible!important;
+		}
+
+		.prateleira-personalizada {
+			display: none!important;
+			visibility: hidden!important;
+		}
+	}
+
+	.prateleira-comum {
+		display: none;
+		visibility: hidden;
+	}
 }
+
 
 // Prateleira personalizada
 .prateleira-personalizada {
@@ -465,7 +485,6 @@ body.home.buyButton {
 		}
 	}
 }
-
 
 _:-ms-fullscreen, :root {
 	.prateleira-personalizada .prateleira > ul {
