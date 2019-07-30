@@ -39,7 +39,7 @@ body.listagem {
 .prateleira > ul {
 	display: flex;
 	flex-wrap: wrap;
-	overflow: hidden;
+	// overflow: hidden;
 
 	& > li {
 		display: inline-block;
