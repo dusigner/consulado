@@ -18,28 +18,28 @@ Nitro.module('details', function() {
 		$modules = $('#caracteristicas h4[class*="Modulo"] + table'),
 		styleMap = [
 			{
-				item: 'item-full',
-				text: 'text-left',
-				image: 'image-right'
-			},
-			{
-				item: 'item-half',
-				text: 'text-right',
-				image: 'image-left'
-			},
-			{
-				item: 'item-half',
-				text: 'text-left',
-				image: 'image-right'
-			},
-			{
-				item: 'item-half',
-				text: 'text-right',
-				image: 'image-left'
+				item: 'item-half item-single',
+				text: 'text-left col-v2 l5',
+				image: ''
 			},
 			{
 				item: 'item-full',
-				text: '',
+				text: 'text-left col-v2 l7 m12 offset-l2',
+				image: ''
+			},
+			{
+				item: 'item-half item-right',
+				text: 'text-left col-v2 l4',
+				image: ''
+			},
+			{
+				item: 'item-half',
+				text: 'text-right col-v2 l4',
+				image: ''
+			},
+			{
+				item: 'item-extrafull item-center',
+				text: 'col-v2 l6 offset-l4 m12 offset-m3',
 				image: ''
 			}
 		];
@@ -59,7 +59,7 @@ Nitro.module('details', function() {
 		};
 	});
 
-	console.log('details data', data);
+	// console.log('details data', data);
 
 	if (isLancamento) {
 		data.releaseImg = $.getImagePath($lancamento.find('.value-field.Imagem-Lancamento').text());
