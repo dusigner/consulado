@@ -417,6 +417,7 @@ body {
 							}
 
 							.shipping-sla-options {
+								@include breakpoint('small', 'max') { max-width: 100%; }
 								background: #fff;
 								border: 1px solid #F1F0F0;
 								border-radius: 0;
@@ -430,13 +431,13 @@ body {
 								text-align: left;
 								top: 45px;
 
-								@include breakpoint(extra-small, 'max') {
-									left: 5%;
-									max-width: 90%;
-									position: absolute;
-									right: 0;
-									width: 90%;
-								}
+								// @include breakpoint(extra-small, 'max') {
+								// 	left: 5%;
+								// 	max-width: 90%;
+								// 	position: absolute;
+								// 	right: 0;
+								// 	width: 90%;
+								// }
 
 								li {
 									border-top: 1px solid #ccc;
