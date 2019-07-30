@@ -2,7 +2,9 @@
 	<!-- <h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2> -->
 	<div>
 		<div class="js-content-personalized--ref shelf--personalized__holder shelf--history-personalized-ref">
-			<h2 class="pre-title shelf-pre-title">{title|s}</h2>
+			<div class="container">
+				<h2 class="pre-title shelf-pre-title">{title|s}</h2>
+			</div>
 			<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider" data-slidestoshow="2" data-slick='{"vertical": true}'>
 				{#displays[0].references}
 					{>"shelf-content-placeholder-product-history-personalized"/}
@@ -11,7 +13,9 @@
 		</div>
 
 		<div class="js-content-personalized--rec shelf--personalized__holder shelf--personalized-rec">
-			<h2 class="pre-title shelf-pre-title shelf-sub-title">{subtitle|s}</h2>
+			<div class="container">
+				<h2 class="pre-title shelf-pre-title shelf-sub-title">{subtitle|s}</h2>
+			</div>
 			<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider " data-slidestoshow="2">
 				{#displays[0].recommendations}
 					{>"shelf-content-placeholder-product"/}

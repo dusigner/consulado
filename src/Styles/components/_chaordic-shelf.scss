@@ -55,20 +55,21 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
+		margin: 0;
+		padding: 20px 5px;
 
-		margin: 20px 0;
+		span { color: $self-primary; }
 
-		span {
-			@include breakpoint(medium, 'min') {
-				@include responsiveFont(78, 16, true);
-				color: $self-primary;
-				display: block;
-				font-weight: 100;
-				line-height: 1;
-				text-transform: capitalize;
-			}
-		}
-
+		// span {
+		// 	@include breakpoint(medium, 'min') {
+		// 		@include responsiveFont(78, 16, true);
+		// 		color: $self-primary;
+		// 		display: block;
+		// 		font-weight: 100;
+		// 		line-height: 1;
+		// 		text-transform: capitalize;
+		// 	}
+		// }
 	}
 
 	&-title {
@@ -83,9 +84,9 @@ div[data-chaordic] {
 			font-size: 1.5625rem;
 			font-weight: 700;
 			text-transform: none;
-
 		}
 	}
+
 	&-item {
 		//HOVER ON SHELF ITEM ACTIONS
 		@include breakpoint (medium, 'min') {
@@ -130,24 +131,21 @@ div[data-chaordic] {
 		a { text-decoration: none }
 
 
-	&.product-has-5-off {
-		.discount-boleto {
-			span { display: inline-block!important; }
+		&.product-has-5-off {
+			.discount-boleto {
+				span { display: inline-block!important; }
+			}
 		}
-	}
-
 	}
 
 	&-plus,
 	&-equals {
+		@include breakpoint(small, 'max') { display: none; }
 		color: $green;
 		float: left;
 		font-size: 36px;
 		font-weight: 400;
 		margin: 17% 1.3% 35%;
-		@include breakpoint(small, 'max') {
-			display: none;
-		}
 	}
 
 	&--personalized {
@@ -155,14 +153,13 @@ div[data-chaordic] {
 			.slick-arrow.slick-prev { left: 0 }
 			.slick-arrow.slick-next { right: 0 }
 
-			&>h2 { display: none }
+			& > h2 { display: none }
 		}
 
 		&__holder {
 			@include breakpoint(small, 'max') {
 				ul.content-placeholder li.inline-b:not([id^='slick-']):nth-child(1) {display: inline-block!important}
 			}
-
 			float: left;
 			max-width: 600px;
 		}
@@ -216,11 +213,8 @@ div[data-chaordic] {
 				width: 215px;
 
 				@include breakpoint (large, 'max') {
+					@include breakpoint (small, 'max') { width: 215px; }
 					width: 160px;
-
-					@include breakpoint (small, 'max') {
-						width: 215px;
-					}
 				}
 			}
 		}

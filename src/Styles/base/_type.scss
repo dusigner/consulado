@@ -1,101 +1,61 @@
-@if $use-typography == true {
-	//------------------------------------
-	//  TYPE
-	//------------------------------------
+//------------------------------------
+//  TYPE
+//------------------------------------
 
-	// Variables
-	$small-size: 12px !default;
-	$micro-size: 10px !default;
+// Variables
+$small-size: 12px !default;
+$micro-size: 10px !default;
 
+// Links
+a {
+	color: $base-link-color;
+	text-decoration: none;
 
-	// Links
-	a {
-		color: $base-link-color;
-		text-decoration: none;
+	&:hover { cursor: pointer; }
+}
 
-		&:hover {
-			// color: lighten($base-link-color, 10%);
-			cursor: pointer;
-			//text-decoration: underline;
-		}
-	}
+// Sizing
+small,
+.small { @include font-size($small-size); }
 
-	// 	p & {
-	// 		&,
-	// 		&:visited { line-height: inherit; }
-	// 	}
-	// }
+.micro { @include font-size($micro-size); }
+
+// Addresses
+address { font-style: normal; }
 
 
-	// Sizing
-	small,
-	.small { @include font-size($small-size); }
-
-	.micro { @include font-size($micro-size); }
-
-
-	// Addresses
-	address { font-style: normal; }
-
-
-	// Other elements
-	abbr {
-		&[title],
-		&[data-original-title] {
-			border-bottom: 1px dotted #999;
-			cursor: help;
-		}
-	}
-
-	acronym {
-		border-bottom: 1px dashed $base-link-color;
+// Other elements
+abbr {
+	&[title],
+	&[data-original-title] {
+		border-bottom: 1px dotted #999;
 		cursor: help;
 	}
+}
 
-	/*.title {
-		@include font-size(30px);
-		display: inline-block;
-		position: relative;
-		width: 100%;
+acronym {
+	border-bottom: 1px dashed $base-link-color;
+	cursor: help;
+}
 
-		&.highlight {
-			&:before {
-				@include contentBefore();
-				// background-color: $sony-blue;
-				bottom: -3px;
-				height: 3px;
-				width: 50px;
-			}
+.pre-title {
+	@include rfs(28);
+	font-weight: 700;
+	line-height: 1.14;
+	margin: 45px 0 0;
 
-			// &.black:before{ background-color: $sony-black; }
-		}
+	& > span { @include rfs(28); }
 
-		&.text-center:before{
-			left: 50%;
-			margin-left: -25px;
-		}
+	&:empty {display: none}
+}
 
-		&:empty { display: none; visibility: hidden; }
-	}*/
+input.error,
+select.error {
+	background: #FFF0F0!important;
+	border-color: #F49A9A!important;
+}
 
-	.pre-title {
-		@include responsiveFont(38);
-		font-weight: 400;
-		line-height: 1.14;
-		margin: 45px 0 0;
-		text-align: center;
-
-		&:empty {display: none}
-	}
-
-	input.error,
-	select.error {
-		background: #FFF0F0!important;
-		border-color: #F49A9A!important;
-	}
-
-	span.error {
-		@include font-size(11px);
-		color: #EF7373;
-	}
+span.error {
+	@include font-size(11px);
+	color: #EF7373;
 }
