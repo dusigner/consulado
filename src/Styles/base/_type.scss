@@ -44,9 +44,7 @@ acronym {
 	line-height: 1.14;
 	margin: 45px 0 0;
 
-	& > span {
-		@include rfs(28);
-	}
+	& > span { @include rfs(28); }
 
 	&:empty {display: none}
 }

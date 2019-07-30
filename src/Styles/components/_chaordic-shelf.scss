@@ -58,10 +58,7 @@ div[data-chaordic] {
 		margin: 0;
 		padding: 20px 5px;
 
-		span {
-			color: $self-primary;
-			display: block;
-		}
+		span { color: $self-primary; }
 
 		// span {
 		// 	@include breakpoint(medium, 'min') {
