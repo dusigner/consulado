@@ -7,15 +7,17 @@ body.home {
 
 	// Teste AB de Prateleiras personalizadas
 	&.teste-ab__mostrar-prateleira-comum {
-		.prateleira-comum {
-			display: block!important;
-			visibility: visible!important;
-		}
+		.prateleira-comum { max-height: 100%; }
 
 		.prateleira-personalizada {
 			display: none!important;
 			visibility: hidden!important;
 		}
+	}
+
+	.prateleira-comum {
+		max-height: 0;
+		overflow: hidden;
 	}
 }
 
