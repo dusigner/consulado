@@ -20,34 +20,29 @@ $font-bold: 600;
 $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, 'lg-desktop': 1200px, 'xlg-desktop': 1400px, );
 .cupom {
     &-header {
-        margin: 40px auto;
+        margin: 30px auto;
+        text-align: center;
         &__title {
-            @include breakpoint('tablet', 'min') {
-                text-align: left;
-            }
             @include responsiveFont(35);
             color: $gray-d;
-            margin: 0;
-            text-align: center;
+            line-height: normal;
+            margin-bottom: 6px;
             span {
                 color: $green;
+                display: inline-block;
             }
         }
         &__subtitle {
-            @include breakpoint('tablet', 'min') {
-                text-align: left;
-            }
             @include responsiveFont(16);
             color: $gray-d;
-            font-weight: $font-light;
+            font-weight: $font-normal;
+            line-height: normal;
             margin: 0;
-            text-align: center;
         }
     }
 }
 
 .como-utilizar {
-
     &__aside {
         background-color: $gray-light;
         border-radius: 8em;
@@ -71,10 +66,13 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
     &__title {
         @include responsiveFont(18);
         color: $gray-d;
-        font-weight: $font-normal;
+        font-weight: $font-light;
         line-height: 28px;
         margin: 20px auto 10px;
         span {
+            @include breakpoint('tablet', 'max') {
+                display: block;
+            }
             @include responsiveFont(35);
             color: $green;
             font-weight: $font-bold;
@@ -83,7 +81,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
     &__passos {
         margin: 0 auto;
         position: relative;
-        width: 155px ;
+        width: 155px;
         &__icone {
             align-items: flex-end;
             display: flex;
@@ -96,12 +94,13 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
             }
         }
         p {
-            @include breakpoint('tablet', 'max') {
-                @include responsiveFont(20);
+            @include breakpoint('tablet', 'min') {
+                @include responsiveFont(15);
+                line-height: 22px;
             }
-            @include responsiveFont(15);
+            @include responsiveFont(18);
             font-weight: $font-bold;
-            line-height: 22px;
+            line-height: 18px;
             margin: 0;
             text-align: center;
         }
@@ -121,8 +120,8 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
             &:last-child,
             &:first-child {
                 &::after {
-                content: '';
-                display: none;
+                    content: '';
+                    display: none;
                 }
             }
         }
@@ -139,8 +138,8 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
             &.slick-active {
                 button {
                     background: $green;
-                &:after {
-                    border: none;
+                    &:after {
+                        border: none;
                     }
                 }
             }
@@ -157,8 +156,43 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
 .vitrine-desconto {
     margin: 70px auto;
     text-align: center;
+    &__aside {
+        max-width: 100%;
+        width: 1000px;
+        .slick-next,
+        .slick-prev {
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            height: 15px;
+            margin-top: -10px;
+            position: absolute;
+            top: 0;
+            width: 9px;
+            &:before {
+                background-color: rgb(0, 192, 0);
+                content: '';
+            }
+            &.slick-disabled {
+                // background-blend-mode: luminosity;
+                background-color: #ffffff;
+                // opacity: 0.5;
+            }
+        }
+        .slick-next {
+            background-image: url('/arquivos/consul-arrow-right.png');
+            right: 0;
+        }
+        .slick-prev {
+            background-image: url('/arquivos/consul-arrow-left.png');
+            left: inherit;
+            right: 0;
+        }
+    }
     &__produto {
+        height: 430px;
         margin: 0 auto;
+        padding: 0 10px;
         width: 260px;
         img {
             display: block;
@@ -170,8 +204,9 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         border-radius: 4px;
         box-shadow: 0 1px 3px #d9d8d8;
         color: $gray-d;
+        height: 430px;
         max-width: 100%;
-        padding: 20px 0;
+        padding: 30px 0;
         width: 260px;
         p {
             @include responsiveFont(12);
@@ -182,10 +217,9 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
             @include responsiveFont(12);
             display: flex;
             font-weight: $font-normal;
-            line-height: 15px;
-            padding: 5px 30px;
+            line-height: 16px;
+            padding: 8px 40px 12px;
         }
-
     }
     &__icone-cupom {
         height: 40px;
@@ -193,7 +227,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         width: 45px;
     }
     &__card-cupom-codigo {
-        @include responsiveFont(25);
+        @include responsiveFont(22);
         background-color: $gray-light;
         color: $purple;
         font-weight: $font-bold;
@@ -205,12 +239,21 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         @include responsiveFont(32);
         color: $green;
         line-height: 22px;
+        margin: 24px auto 34px;
         span {
             @include responsiveFont(10);
         }
     }
     &__card-cupom-button {
+        @include responsiveFont(13);
         background-color: $purple;
+        border: none;
         border-radius: 18px;
+        color: #fff;
+        font-weight: $font-bold;
+        height: 36px;
+        margin-top: 20px;
+        padding: 4px 22px;
+        width: 200px;
     }
 }

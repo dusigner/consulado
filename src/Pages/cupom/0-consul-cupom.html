@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
     <title>Consul</title>
@@ -12,8 +11,7 @@
     <!-- @endif -->
 
     <vtex:template id="0-consul-head-content" />
-    <link rel="stylesheet" type="text/css"
-        href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->" />
+    <link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->" />
 </head>
 
 <body data-controller="landing-gae">
@@ -32,8 +30,12 @@
     <main>
         <section class="cupom-header">
             <div class="container">
-                <h1 class="cupom-header__title">Cupons de <span>Desconto Consul</span></h1>
-                <h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+                <div class="row d-flex justify-content-center m-auto">
+                    <div class="col-12 col-md-10 flex-column text-md-left">
+                        <h1 class="cupom-header__title">Cupons de <span>Desconto Consul</span></h1>
+                        <h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e tenha descontos nas compras</h2>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="como-utilizar">
@@ -41,7 +43,7 @@
                 <div class="como-utilizar__aside d-flex align-items-center justify-content-between slider">
                     <div class="como-utilizar__passos">
                         <h2 class="como-utilizar__title">Saiba como <br><span>Utilizar</span></h2>
-                        <small>Siga os passos para usar <br>um cupom de desconto</small>
+                        <small>Siga os passos para usar um cupom de desconto</small>
                     </div>
                     <div class="como-utilizar__passos">
                         <figure class="como-utilizar__passos__icone"><img src="/arquivos/consul-cupom-passo1.png">
@@ -63,8 +65,8 @@
         </section>
         <section class="vitrine-desconto">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row m-auto">
+                    <div class="col-md-3 pl-0">
                         <div class="vitrine-desconto__card-cupom">
                             <figure class="vitrine-desconto__icone-cupom">
                                 <img src="/arquivos/consul-cupom-desconto.png">
@@ -76,8 +78,11 @@
                             <button class="vitrine-desconto__card-cupom-button">Copiar código</button>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="vitrine-desconto__aside">
+                    <div class="col-md-9 pr-0">
+                        <div class="vitrine-desconto__aside slider-prod">
+                            <div class="vitrine-desconto__produto"><img src="/arquivos/consul-produto.png"></div>
+                            <div class="vitrine-desconto__produto"><img src="/arquivos/consul-produto.png"></div>
+                            <div class="vitrine-desconto__produto"><img src="/arquivos/consul-produto.png"></div>
                             <div class="vitrine-desconto__produto"><img src="/arquivos/consul-produto.png"></div>
                         </div>
                     </div>
