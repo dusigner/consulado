@@ -1,10 +1,18 @@
 @charset 'UTF-8';
 
 @keyframes arrowLeft {
-	0%   {right: 0;}
-	33%  {right: 90%;}
-	66%  {right: 260px;}
-	100%  {right: 280px; }
+	0% {
+		right: 0;
+	}
+	33% {
+		right: 90%;
+	}
+	66% {
+		right: 260px;
+	}
+	100% {
+		right: 280px;
+	}
 }
 
 // Exibição de filtro de preço
@@ -19,7 +27,9 @@
 		padding: 5px 15px;
 		padding-bottom: 15px;
 
-		@include breakpoint(medium, 'min') { height: 80px; }
+		@include breakpoint(medium, 'min') {
+			height: 80px;
+		}
 
 		@include breakpoint(small, 'max') {
 			display: none;
@@ -30,7 +40,9 @@
 			z-index: 4;
 		}
 
-		&:empty { @include hide-conditional(); }
+		&:empty {
+			@include hide-conditional();
+		}
 
 		a {
 			@include transition(color, 400);
@@ -43,10 +55,14 @@
 
 		h3,
 		h5,
-		ul { display: none; }
+		ul {
+			display: none;
+		}
 
 		.busca & {
-			h4 { margin-top: 0; }
+			h4 {
+				margin-top: 0;
+			}
 		}
 
 		h4 {
@@ -71,12 +87,16 @@
 	}
 
 	.navigation {
-		ul { display: inline-block; }
+		ul {
+			display: inline-block;
+		}
 
-		ul + h3 + ul { display: none; }
+		ul + h3 + ul {
+			display: none;
+		}
 
 		li {
-			display: none!important;
+			display: none !important;
 			margin: 0 1.5em 0 0;
 
 			a {
@@ -85,9 +105,15 @@
 			}
 		}
 
-		li:first-child { display: inline-block!important; }
-		li:first-child + li { display: inline-block!important; }
-		li:first-child + li +li { display: inline-block!important; }
+		li:first-child {
+			display: inline-block !important;
+		}
+		li:first-child + li {
+			display: inline-block !important;
+		}
+		li:first-child + li + li {
+			display: inline-block !important;
+		}
 	}
 
 	.more-cat {
@@ -98,19 +124,23 @@
 		top: 0;
 		z-index: 2;
 
-		&:hover { z-index: 120; }
+		&:hover {
+			z-index: 120;
+		}
 
 		h5 {
 			@include responsiveFont(16, 16, true);
 			cursor: pointer;
-			display: block!important;
+			display: block !important;
 			height: 80px;
 			line-height: 80px;
 			margin: 0;
-			padding: .1em;
+			padding: 0.1em;
 
 			&:hover {
-				& + ul { display: block; }
+				& + ul {
+					display: block;
+				}
 			}
 
 			&::after {
@@ -132,14 +162,16 @@
 			top: 70px;
 			z-index: 10;
 
-			&:hover { display: block; }
+			&:hover {
+				display: block;
+			}
 		}
 	}
 	.single-filter-wrapper {
 		cursor: pointer;
 		display: inline-block;
 		margin-right: 1em;
-		padding: 0 .5em;
+		padding: 0 0.5em;
 		ul {
 			@include responsiveFont(16, 12, true);
 			background-color: #ffffff;
@@ -157,7 +189,9 @@
 			z-index: 10;
 
 			@include breakpoint(small, 'max') {
-				&.active { display: block; }
+				&.active {
+					display: block;
+				}
 			}
 
 			a {
@@ -187,14 +221,13 @@
 					}
 				}
 
-				ul { display: block; }
+				ul {
+					display: block;
+				}
 			}
 		}
-
 	}
-
 }
-
 
 .open-filter {
 	display: none;
@@ -208,9 +241,9 @@
 	span {
 		@include responsiveFont(12, 16, true);
 		background: #ffffff;
-		border: 1px solid #702F8F;
+		border: 1px solid #702f8f;
 		border-radius: 20px;
-		color: #702F8F;
+		color: #702f8f;
 		display: block;
 		font-weight: 700;
 		padding: 5px 0;
@@ -218,8 +251,7 @@
 		text-transform: none;
 		width: 65px;
 
-
-		@include breakpoint ('medium', 'max') {
+		@include breakpoint('medium', 'max') {
 			padding: 10px 15px;
 			width: 100%;
 		}
@@ -233,7 +265,7 @@
 }
 
 .overlay-filter {
-	background-color: rgba(0, 0, 0, .6);
+	background-color: rgba(0, 0, 0, 0.6);
 	height: 100%;
 	position: fixed;
 	top: 100px;
@@ -295,7 +327,9 @@ body.departamento {
 		}
 
 		.pageName {
-			@include breakpoint(medium, 'max') { display: none; }
+			@include breakpoint(medium, 'max') {
+				display: none;
+			}
 			h2 {
 				color: $orange;
 				display: block;
@@ -308,7 +342,6 @@ body.departamento {
 			bottom: 65px;
 			float: right;
 			padding-right: 0;
-
 		}
 	}
 	.filter-wrapper {
@@ -332,10 +365,12 @@ body.departamento {
 				h3,
 				h4,
 				.bt-refinar,
-				.search-single-navigator { display: none !important; }
+				.search-single-navigator {
+					display: none !important;
+				}
 
 				.search-multiple-navigator {
-					display: flex!important;
+					display: flex !important;
 					flex-direction: column;
 
 					fieldset {
@@ -370,7 +405,9 @@ body.departamento {
 								}
 							}
 							&.loading {
-								&:after { display: none; }
+								&:after {
+									display: none;
+								}
 								&:before {
 									@include responsiveFont(12, 16, true);
 									@include spinner($purple-n);
@@ -382,7 +419,7 @@ body.departamento {
 									transform: initial;
 									width: 18px !important;
 
-									@include breakpoint ('medium', 'max') {
+									@include breakpoint('medium', 'max') {
 										left: 10px;
 										top: 12px;
 									}
@@ -401,12 +438,12 @@ body.departamento {
 							}
 						}
 
-						input[type=checkbox] {
+						input[type='checkbox'] {
 							display: none;
 						}
 
-						input[type=checkbox],
-						input[type=radio] {
+						input[type='checkbox'],
+						input[type='radio'] {
 							margin-right: 10px;
 						}
 					}
@@ -426,9 +463,9 @@ body.departamento {
 						display: inline-block;
 						margin-top: 7px;
 						right: 0;
-						transition: transform .4s ease;
+						transition: transform 0.4s ease;
 
-						@include breakpoint ('medium', 'max') {
+						@include breakpoint('medium', 'max') {
 							left: 55px;
 							right: inherit;
 						}
@@ -442,10 +479,11 @@ body.departamento {
 						margin: 0;
 						padding: 8px 8px 8px 35px;
 					}
-
 				}
 
-				.refino-marca { display: none; }
+				.refino-marca {
+					display: none;
+				}
 				.refino {
 					border-bottom: 1px solid $gray-n;
 					margin-top: 10px;
@@ -455,7 +493,7 @@ body.departamento {
 						@include responsiveFont(15, 16, true);
 						cursor: pointer;
 						display: none;
-						font-size: .875rem;
+						font-size: 0.875rem;
 						margin: 5px 25px;
 						position: relative;
 						@include breakpoint(medium, 'max') {
@@ -471,12 +509,12 @@ body.departamento {
 						position: relative;
 					}
 
-					@include breakpoint ('medium', 'max') {
+					@include breakpoint('medium', 'max') {
 						margin: 10px 22px 0;
 					}
 				}
 
-				@include breakpoint ('medium', 'max') {
+				@include breakpoint('medium', 'max') {
 					margin-bottom: 100px;
 					padding: 0 25px;
 				}
@@ -492,7 +530,7 @@ body.departamento {
 			right: 0;
 			top: 100px;
 			transform: translateX(100%);
-			transition: transform .3s ease;
+			transition: transform 0.3s ease;
 			width: 100%;
 			z-index: 100;
 
@@ -518,14 +556,13 @@ body.departamento {
 			&:first-of-type {
 				margin: 0;
 
-				@include breakpoint ('medium', 'max') {
+				@include breakpoint('medium', 'max') {
 					display: none;
 				}
 			}
 
-			@include breakpoint ('medium', 'max') {
+			@include breakpoint('medium', 'max') {
 				margin: 15px 40px 0;
-
 			}
 		}
 	}
@@ -543,7 +580,9 @@ body.departamento {
 		}
 
 		.list-sidebar,
-		.titulo-sessao { display: none; }
+		.titulo-sessao {
+			display: none;
+		}
 		.list-content {
 			width: 100%;
 		}
@@ -561,13 +600,15 @@ body.departamento {
 					text-align: center;
 				}
 				.prateleira,
-				.sidebar-filter-submenu { display: none; }
+				.sidebar-filter-submenu {
+					display: none;
+				}
 			}
 		}
 
 		.prateleira {
 			li {
-				width: calc(100%/3);
+				width: calc(100% / 3);
 			}
 		}
 		@include breakpoint(medium, 'max') {
@@ -579,7 +620,7 @@ body.departamento {
 	.mobile-buttons {
 		display: none;
 
-		@include breakpoint ('medium', 'max') {
+		@include breakpoint('medium', 'max') {
 			border-bottom: 2px solid #9aca3c;
 			display: flex;
 			justify-content: space-between;
@@ -628,15 +669,15 @@ body.departamento {
 .priceRange:before {
 	background-color: $gray;
 	border-radius: 10px;
-    content: '';
+	content: '';
 	display: inline-block;
-    height: 7px;
-    left: 20%;
-    position: absolute;
-    top: 47px;
-    width: 7px;
+	height: 7px;
+	left: 20%;
+	position: absolute;
+	top: 47px;
+	width: 7px;
 
-	@include breakpoint ('medium', 'max') {
+	@include breakpoint('medium', 'max') {
 		left: 50px;
 	}
 }
@@ -645,15 +686,15 @@ body.departamento {
 .priceRange:after {
 	background-color: $gray;
 	border-radius: 10px;
-    content: '';
-    display: inline-block;
-    height: 7px;
-    left: 80%;
-    position: absolute;
-    top: 47px;
-    width: 7px;
+	content: '';
+	display: inline-block;
+	height: 7px;
+	left: 80%;
+	position: absolute;
+	top: 47px;
+	width: 7px;
 
-	@include breakpoint ('medium', 'max') {
+	@include breakpoint('medium', 'max') {
 		left: inherit;
 		right: 45px;
 	}
@@ -668,7 +709,7 @@ body.departamento {
 body.categoria.btu {
 	.result-filter {
 		.order-wrapper {
-			@include breakpoint ('large', 'min') {
+			@include breakpoint('large', 'min') {
 				bottom: 944px;
 			}
 		}
