@@ -332,6 +332,12 @@ Nitro.module('filters', ['order-by'], function(orderBy) {
 					});
 
 					$option.addClass('filtro-range');
+
+					if ($('.filtro-range').find('label').length <= 1) {
+						$('.filtro-range').addClass('hide');
+						return;
+					}
+
 					var $range = $('#' + rangeId)[0],
 						steps = 100 / arrayOfLabels.length,
 						actualStep = 0;
