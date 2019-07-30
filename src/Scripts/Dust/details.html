@@ -1,13 +1,13 @@
 {#items}
 	<div class="item clearfix {style.item}">
 		<div class="container">
-			<div class="row">
-				<div class="text {style.text}">
-					<h3>{title}</h3>
-					<p>{text}</p>
-				</div>
-			</div>
 		</div>
-		<div class="image {style.image}" style="background-image: url('{image}');"></div>
+		<div class="details-description">
+			<div class="text {style.text}">
+				<h3>{title}</h3>
+				<p>{text}</p>
+			</div>
+			<img class="image {style.image}" src={image} alt={title} />
+		</div>
 	</div>
 {/items}
