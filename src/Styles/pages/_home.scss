@@ -46,6 +46,7 @@ body.home {
 				color: #736c6b;
 				display: block;
 				margin: 20px 0;
+				padding: 0 10px;
 
 				@include breakpoint(small, 'max') {
 					background-color: #9aca3c;
