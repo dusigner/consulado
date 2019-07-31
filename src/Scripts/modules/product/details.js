@@ -111,7 +111,7 @@ Nitro.module('details', function() {
 	}
 
 	dust.render('details', data, function(err, out) {
-		console.log(data);
+
 		if (err) {
 			throw new Error('Details Dust error: ' + err);
 		}
