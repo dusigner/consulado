@@ -26,10 +26,10 @@ Nitro.module('gallery', function() {
 			var self = $(item);
 			return (
 				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-				$.resizeImage(self.attr('rel'), 56, 56) +
+				$.resizeImage(self.attr('rel'), 75, 75) +
 				'" alt="' +
 				self.find('img').attr('title') +
-				'" width="56" height="56" /></a></li>'
+				'" width="75" height="75" /></a></li>'
 			);
 		});
 
@@ -51,8 +51,8 @@ Nitro.module('gallery', function() {
 				3,
 				0,
 				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-					$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56) +
-					'" alt="Vídeo" width="56" height="56" /></a></li>'
+					$.resizeImage('/arquivos/cns-video-icon.jpg', 75, 75) +
+					'" alt="Vídeo" width="75" height="75" /></a></li>'
 			);
 		}
 

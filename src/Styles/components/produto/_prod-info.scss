@@ -239,7 +239,8 @@ body.produto {
 		min-height: 30px;
 
 		&:before {
-			@include rfs(18);
+			@include rfs(14);
+			color: #736C6B;
 			content: 'Selecione a voltagem';
 			display: block;
 			position: absolute;
@@ -257,36 +258,42 @@ body.produto {
 			position: absolute;
 			visibility: hidden;
 
-			&:hover + label,
 			&:checked + label {
-				color: $button-bg-color;
+				font-weight: bold;
 
-				&:before { border: 4px solid $button-bg-color; }
+				&:before {
+					background-color: #702F8F;
+					border: 4px solid #fff;
+					box-shadow: 0 0 0 2px #702f8f;
+					height: 16px;
+					width: 16px;
+				}
 			}
 		}
 
 		label {
-			@include rfs(18);
+			@include rfs(14);
+			color: #736C6B;
 			cursor: pointer;
 			display: inline;
-			font-weight: 700;
+			font-weight: 400;
 			margin-right: 25px;
-			padding-left: 21px;
+			padding-left: 25px;
 			position: relative;
 			transition: .4s ease;
 			vertical-align: middle;
 
 			&:before {
 				background-color: #fff;
-				border: 2px solid $txt-gray;
+				border: 1px solid $txt-gray;
 				border-radius: 50%;
 				content: '';
-				height: 14px;
+				height: 20px;
 				left: 0;
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				width: 14px;
+				width: 20px;
 
 				@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
 			}
@@ -325,9 +332,17 @@ body.produto {
 
 	.buy-button {
 		@extend .primary-button;
+		background-color: $green;
+		border-color: $green;
 		float: left;
 		font-size: 1em;
 		padding: 13px 28px;
+
+		&:hover,
+		&:focus {
+			background-color: #fff;
+			color: $green;
+		}
 
 		&:before {
 			@include icon-get('consul-cart');
