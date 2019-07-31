@@ -160,18 +160,6 @@ body.busca {
 			@include breakpoint('medium', 'max') { display: none; }
 		}
 
-		span.order-show-mobile {
-			@include responsiveFont(13, 16, true);
-			color: #736C6B;
-			display: none;
-			font-size: 12px;
-			text-align: center;
-			text-transform: capitalize;
-			width: 85%;
-
-			@include breakpoint('medium', 'max') { display: inline-block; }
-		}
-
 		&:after {
 			@include icon-get('arrow-down');
 			@include transition(transform, 200);
@@ -197,15 +185,21 @@ body.busca {
 			border: 1px solid #E3E1E1;
 			border-radius: 20px;
 			display: inline-block;
-			padding: 10px 15px;
+			padding: 5px 15px;
 			width: 100%;
 
 		}
 	}
 
-	.order-title {
+	.order-title:before {
 		@include breakpoint ('medium', 'max') {
-			font-size: 0;
+			@include responsiveFont(12, 16, true);
+			color: #736C6B;
+			content: 'Ordenar por';
+			display: inline-block;
+			font-weight: bold;
+			text-align: center;
+			width: 85%;
 		}
 	}
 

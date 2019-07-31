@@ -255,8 +255,9 @@
 		text-transform: none;
 		width: 65px;
 
-		@include breakpoint('medium', 'max') {
-			padding: 10px 15px;
+
+		@include breakpoint ('medium', 'max') {
+			padding: 5px 15px;
 			width: 100%;
 		}
 	}
