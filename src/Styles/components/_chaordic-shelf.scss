@@ -76,6 +76,7 @@ div[data-chaordic] {
 		font-size: 1.5625rem;
 		font-weight: 700;
 		margin-bottom: 15px;
+		text-align: center;
 
 		.shelf--compre-junto {
 			color: $green;
@@ -541,6 +542,23 @@ div[data-chaordic] {
 		width: 100%;
 		span {
 			color: #7f2893;
+		}
+	}
+
+}
+
+#relacionados {
+	h2 {
+		display: none;
+	}
+
+	.pre-title {
+		font-size: 1.5625rem;
+		margin-bottom: 20px;
+		text-align: center;
+
+		span {
+			font-size: 1.5625rem;
 		}
 	}
 }
