@@ -32,6 +32,7 @@ Nitro.setup([], function() {
         arrows: true,
         slidesToShow: 3,
         infinite: false,
+        adaptiveHeight: true,
         responsive: [{
                 breakpoint: 1024,
                 settings: {
@@ -40,9 +41,10 @@ Nitro.setup([], function() {
                 }
             },
             {
-                breakpoint: 768,
+                breakpoint: 769,
                 settings: {
                     slidesToShow: 2,
+                    centerPadding: '10px',
                     dots: true
                 }
             },

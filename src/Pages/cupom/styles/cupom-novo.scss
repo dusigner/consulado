@@ -17,7 +17,7 @@ $font-light: 300;
 $font-normal: 500;
 $font-bold: 600;
 //BREAKPOINTS
-$breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, 'lg-desktop': 1200px, 'xlg-desktop': 1400px, );
+$breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, 'lg-desktop': 1200px, 'xlg-desktop': 1400px, );
 .cupom {
     &-header {
         margin: 30px auto;
@@ -44,14 +44,9 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
 
 .como-utilizar {
     &__aside {
-        background-color: $gray-light;
-        border-radius: 8em;
         min-height: 180px;
         width: 100%;
         small {
-            @include breakpoint('tablet', 'max') {
-                @include responsiveFont(16);
-            }
             @include responsiveFont(12);
             color: $gray-d;
             display: flex;
@@ -62,13 +57,27 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
             bottom: 0;
             margin-bottom: -30px;
         }
+        .slick-next,
+        .slick-prev {
+            margin: 0;
+            top: 50%;
+            &.slick-disabled {
+                opacity: 0;
+            }
+        }
+        .slick-next {
+            right: 20px;
+        }
+        .slick-prev {
+            left: 20px;
+        }
     }
     &__title {
         @include responsiveFont(18);
         color: $gray-d;
         font-weight: $font-light;
         line-height: 28px;
-        margin: 20px auto 10px;
+        margin: 10px auto 10px;
         span {
             @include breakpoint('tablet', 'max') {
                 display: block;
@@ -98,7 +107,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
                 @include responsiveFont(15);
                 line-height: 22px;
             }
-            @include responsiveFont(18);
+            @include responsiveFont(15);
             font-weight: $font-bold;
             line-height: 18px;
             margin: 0;
@@ -128,71 +137,97 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
     }
     .slick-list {
         margin: 0 auto;
+        padding: 0 20px;
     }
     .slick-track {
+        align-items: center;
+        background-color: $gray-light;
+        border-radius: 8em;
         margin: 0 auto;
+        min-height: 180px;
         width: 1000px;
     }
-    .slick-dots {
-        li {
-            &.slick-active {
-                button {
-                    background: $green;
-                    &:after {
-                        border: none;
-                    }
-                }
-            }
+}
+
+.slick-dots {
+    li {
+        &.slick-active {
             button {
+                background: $green;
                 &:after {
                     border: none;
                 }
+            }
+        }
+        button {
+            &:after {
+                border: none;
             }
         }
     }
 }
 
 //VITRINE
+.slick-next,
+.slick-prev {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 15px;
+    margin-top: -20px;
+    position: absolute;
+    top: 0;
+    width: 9px;
+    &:before {
+        content: '';
+    }
+    &.slick-disabled {
+        background-color: #ffffff;
+    }
+}
+
+.slick-next {
+    background-image: url('/arquivos/consul-arrow-right.png');
+}
+
+.slick-prev {
+    background-image: url('/arquivos/consul-arrow-left.png');
+}
+
 .vitrine-desconto {
     margin: 70px auto;
     text-align: center;
     &__aside {
-        max-width: 100%;
-        width: 1000px;
-        .slick-next,
-        .slick-prev {
-            background-repeat: no-repeat;
-            background-size: contain;
-            display: block;
-            height: 15px;
-            margin-top: -10px;
-            position: absolute;
-            top: 0;
-            width: 9px;
-            &:before {
-                background-color: rgb(0, 192, 0);
-                content: '';
+        strong {
+            @include breakpoint('tablet',
+            'max') {
+                bottom: 0;
+                position: absolute;
             }
-            &.slick-disabled {
-                // background-blend-mode: luminosity;
-                background-color: #ffffff;
-                // opacity: 0.5;
+            @include responsiveFont(14);
+            color: $purple;
+            display: inline-block;
+            margin: 0 50px 10px;
+        }
+        .slider-prod {
+            max-width: 100%;
+            width: 1000px;
+            .slick-slider {
+                padding: 0;
             }
         }
         .slick-next {
-            background-image: url('/arquivos/consul-arrow-right.png');
-            right: 0;
+            right: 16px;
         }
         .slick-prev {
-            background-image: url('/arquivos/consul-arrow-left.png');
-            left: inherit;
-            right: 0;
+            left: inherit !important;
+            right: 40px;
         }
     }
     &__produto {
-        height: 430px;
+        height: 440px;
         margin: 0 auto;
-        padding: 0 10px;
+        padding: 0 8px;
         width: 260px;
         img {
             display: block;
@@ -200,20 +235,37 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         }
     }
     &__card-cupom {
+        @include breakpoint('phone',
+        'max') {
+            margin-bottom: 30px;
+            padding: 0 0 40px;
+            width: 100%;
+        }
         background-color: #fff;
         border-radius: 4px;
         box-shadow: 0 1px 3px #d9d8d8;
         color: $gray-d;
-        height: 430px;
+        height: auto;
+        margin: 30px auto 20px;
         max-width: 100%;
         padding: 30px 0;
         width: 260px;
         p {
+            @include breakpoint('phone',
+            'max') {
+                @include responsiveFont(16);
+            }
             @include responsiveFont(12);
             font-weight: $font-bold;
             margin: 0;
         }
         small {
+            @include breakpoint('phone',
+            'max') {
+                @include responsiveFont(16);
+                display: inline-block;
+                padding: 10px 20px;
+            }
             @include responsiveFont(12);
             display: flex;
             font-weight: $font-normal;
@@ -225,6 +277,19 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         height: 40px;
         margin: 0 auto;
         width: 45px;
+        @include breakpoint('phone',
+        'max') {
+            background-color: #fff;
+            border-top: 1px solid rgba(212, 212, 212, 0.42);
+            border-top-left-radius: 4em;
+            border-top-right-radius: 4em;
+            bottom: 24px;
+            box-shadow: 0 -2px 5px -2px #ececec;
+            height: 15px;
+            padding: 14px 14px;
+            position: relative;
+            width: 60px;
+        }
     }
     &__card-cupom-codigo {
         @include responsiveFont(22);
@@ -234,17 +299,42 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 768px, 'desktop': 992px, '
         padding: 10px;
         text-transform: uppercase;
         width: 100%;
+        @include breakpoint('tablet',
+        'max') {
+            background: transparent;
+            margin: 0;
+            padding: 0;
+        }
     }
     &__card-cupom-desconto {
+        @include breakpoint('phone',
+        'max') {
+            margin: 16px auto 20px;
+        }
         @include responsiveFont(32);
         color: $green;
         line-height: 22px;
         margin: 24px auto 34px;
         span {
+            @include breakpoint('phone',
+            'max') {
+                display: inline-block;
+                font-size: inherit;
+            }
             @include responsiveFont(10);
+            display: block;
         }
     }
     &__card-cupom-button {
+        @include breakpoint('phone',
+        'max') {
+            @include responsiveFont(18);
+            bottom: 0;
+            left: 0;
+            margin: 10px auto 20px;
+            position: absolute;
+            right: 0;
+        }
         @include responsiveFont(13);
         background-color: $purple;
         border: none;
