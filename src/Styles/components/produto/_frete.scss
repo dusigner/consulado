@@ -20,12 +20,13 @@ body.open-frete {
 	}
 
 	.title-frete {
+		@include rfs(11);
 		display: block;
 		float: left;
-		font-size: 14px;
-		width: 50%;
+		width: 45%;
 
 		& i {
+			color: #793c96;
 			display: block;
 			float: left;
 			font-size: 50px;
@@ -36,7 +37,14 @@ body.open-frete {
 			display: block;
 			float: right;
 			margin-bottom: 0;
+			margin-top: 20px;
 			max-width: 132px;
+
+			@include breakpoint ('small', 'max') {
+				font-size: 12px;
+				margin-top: 25px !important;
+				max-width: inherit;
+			}
 		}
 	}
 
@@ -61,11 +69,12 @@ body.open-frete {
 		font-size: 0;
 		padding-top: 15px;
 		position: relative;
-		width: 35%;
+		width: 40%;
 
 		input {
 			background: #fff;
 			border: 1px solid #e4e4e4;
+			border-right: none;
 			color: #333;
 			font-size: 15px;
 			height: 40px;
@@ -83,33 +92,32 @@ body.open-frete {
 		width: 15%;
 
 		&.loading {
-			&::before {
-				@include spinner($template-primary);
-				bottom: 0;
-				content: '';
-				display: block;
-				left: 50%;
-				margin-left: -.5em;
-				margin-top: -.2em;
-				position: absolute;
-				top: 50%;
-				z-index: 99;
-			}
 
 			#btnFreteSimulacao {
 				background: #fff !important;
-				color: #fff;
+				border: 1px solid #e4e4e4 !important;
+				box-shadow: none;
 			}
 		}
 
 		#btnFreteSimulacao {
+			background-color: #fff;
+			border: 1px solid #e4e4e4;
+			border-left: none;
 			border-radius: 0;
+			color: #702F8F;
 			height: 40px;
 			margin: 0;
 			max-width: 100%;
 			padding: 0;
 			text-align: center;
 			width: 100%;
+
+			&:hover,
+			&:focus {
+				border: 1px solid #e4e4e4;
+				border-left: none;
+			}
 		}
 	}
 
@@ -148,7 +156,7 @@ body.open-frete {
 			transition: .3s linear all;
 
 			.closed {
-				color: #f35216;
+				color: #793c96;
 				cursor: pointer;
 				display: block;
 				font-size: 20px;
@@ -336,7 +344,13 @@ body.open-frete {
 
 		.cep-busca a {
 			float: left;
-			width: 20%
+			width: 20%;
+
+			@include breakpoint('small', 'max') {
+				color: #0fb6de;
+				margin-top: 2px;
+				width: 100%;
+			}
 		}
 	}
 }

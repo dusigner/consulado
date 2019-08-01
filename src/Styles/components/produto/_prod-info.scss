@@ -24,23 +24,25 @@ body.produto {
 
 .prod-info {
 	.secure {
+
 		@include breakpoint('small', 'max') {
 			// background-color: #ccc;
 			display: none!important;
 		}
 		@include rfs(12);
 		display: none;
+		opacity: 0.5;
 		text-transform: uppercase;
 
 		@include breakpoint(medium, 'min') {
-			margin-top: -15px;
-			padding-left: 5px;
+			padding-left: 60%;
+			padding-top: 4px;
 
 			i {
 				@include font-size(20px);
-				left: -25px;
 				position: relative;
-				top: 30px;
+				right: 5px;
+				top: 4px;
 			}
 		}
 
@@ -74,6 +76,28 @@ body.produto {
 			width: 100%;
 
 			.flag { position: static; }
+		}
+	}
+
+	#BuyButton {
+		.buy-button {
+			@include rfs(15);
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
+			font-weight: 500;
+			padding: 5px 0;
+			width: 50%;
+
+			@include breakpoint ('small', 'max') {
+				font-size: 0 !important;
+				width: 100%;
+			}
+
+			&:hover {
+				background-color: #fff;
+				color: $green;
+			}
 		}
 	}
 }
@@ -332,25 +356,9 @@ body.produto {
 
 	.buy-button {
 		@extend .primary-button;
-		background-color: $green;
-		border-color: $green;
 		float: left;
 		font-size: 1em;
 		padding: 13px 28px;
-
-		&:hover,
-		&:focus {
-			background-color: #fff;
-			color: $green;
-		}
-
-		&:before {
-			@include icon-get('consul-cart');
-			@include responsiveFont(22, 16, true);
-			float: left;
-			margin-right: 10px;
-		}
-
 		@include breakpoint(small, 'max') {
 			border-radius: 0;
 			bottom: 0;
@@ -364,7 +372,7 @@ body.produto {
 			width: 100%;
 			z-index: 9999;
 
-					&:before {
+				&:before {
 					@include responsiveFont(16, 16, true);
 					content: 'Adicionar ao carrinho';
 					display: inline-block;
@@ -376,7 +384,7 @@ body.produto {
 					top: 50%;
 					transform: translate(-50%, -50%);
 					width: 100%;
-					}
+				}
 			}
 	}
 }
@@ -393,21 +401,36 @@ body.produto {
 	}
 
 	.titulo-parcelamento {
-		@include responsiveFont(11, 16, true);
 		border-bottom: 1px solid $gray;
+		color: #fff;
 		cursor: pointer;
-		display: block;
+		display: flex;
+		font-size: 0;
+		justify-content: center;
 		margin: 10px 0;
-		padding: 0 10px 10px 0;
+		padding: 0 10px 5px 0;
 		position: relative;
 		text-transform: uppercase;
 
+		&:after {
+			@include responsiveFont(13, 16, true);
+			color: $default-color-purple;
+			content: 'Ver parcelas';
+			font-weight: bold;
+			margin-left: 5px;
+			position: static;
+			text-transform: initial;
+
+		}
+
 		&:before {
-			@include contentBefore();
+			//@include contentBefore();
 			@include icon-get('arrow-down');
 			@include responsiveFont(8, 16, true);
-			left: 175px;
-			top: 4px;
+			color: $default-color-purple;
+			line-height: 3;
+			margin-right: 5px;;
+			position: static;
 			transform: rotate(0deg);
 			transition: transform .2s ease-in;
 		}

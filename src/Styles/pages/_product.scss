@@ -32,14 +32,14 @@ body.produto {
 
 		h2.title {
 			@include font-size(38px);
-			display    : inline-block;
+			display: inline-block;
 			font-weight: 400;
 			@include breakpoint(small, 'max') {
 				@include font-size(24px);
 			}
 
 			span {
-				display    : block;
+				display: block;
 				font-weight: 200;
 			}
 		}
@@ -60,10 +60,10 @@ body.produto {
 
 			em.valor-dividido {
 				@include font-size(21px);
-				color        : $txt-gray-l !important;
-				font-weight  : bold;
+				color: $txt-gray-l !important;
+				font-weight: bold;
 				margin-bottom: 10px;
-				position     : relative;
+				position: relative;
 
 				.skuBestInstallmentNumber,
 				.skuBestInstallmentValue {
@@ -82,7 +82,7 @@ body.produto {
 				color: $green !important;
 
 				.bloco {
-					color  : $green !important;
+					color: $green !important;
 					display: block;
 
 					.gray {
@@ -101,48 +101,43 @@ body.produto {
 		}
 
 		p {
-				color     : #736c6b !important;
-				display   : block;
-				font-size : 14px !important;
-				margin    : 20px 0 10px 0 !important;
+				color: #736c6b !important;
+				display: block;
+				font-size: 14px !important;
+				margin: 20px 0 10px 0 !important;
 				text-align: center !important;
 		}
 
 		.buy-button {
 			background-color: #97c73d;
-			border          : 2px solid #97c73d;
-			color           : #fff;
-			display         : block;
-			font-size       : 16px;
-			font-weight     : 700;
-			height          : 54px;
-			line-height     : 30px;
-			margin          : 0;
-			padding         : .7em 2.5em;
-			text-align      : center;
-			text-transform  : uppercase;
-			z-index         : 9999;
+			border: 1px solid #97c73d;
+			border-radius: 40px;
+			color: #fff;
+			display: block;
+			font-size: 15px;
+			font-weight: normal;
+			margin: 0;
+			padding: 12px 20px;
+			text-align: center;
+			z-index: 9999;
 		}
 
 		.btn_click_call {
 			background-color: #fff;
-			border          : 2px solid #97c73d;
-			color           : #97c73d;
-			display         : block;
-			font-size       : 16px;
-			font-weight     : 700;
-			height          : 54px;
-			line-height     : 30px;
-			margin          : 0;
-			padding         : .7em 2.5em;
-			text-align      : center;
-			text-transform  : uppercase;
-			z-index         : 9999;
+			border: 1px solid #E3E1E1;
+			border-radius: 40px;
+			color: #736C6B;
+			display: block;
+			font-size: 12px;
+			font-weight: bold;
+			margin: 0;
+			padding: 12px 20px;
+			text-align: center;
 		}
 	}
 }
 
-/*==========  Produto indisponível  ==========*/
+/*==========Produto indisponível==========*/
 body.produto-indisponivel {
 	.cont-prod-details-nav,
 	.pinned {
@@ -162,23 +157,23 @@ body.produto-indisponivel {
 
 .social {
 	a {
-		display    : block;
-		float      : left;
-		height     : 30px;
+		display: block;
+		float: left;
+		height: 30px;
 		margin-left: 30px;
-		position   : relative;
-		top        : 0;
-		transition : .3s linear all;
-		width      : 30px;
+		position: relative;
+		top: 0;
+		transition: .3s linear all;
+		width: 30px;
 
 		&:hover {
-			top       : -5px;
+			top: -5px;
 			transition: .3s linear all;
 		}
 	}
 
 	#shareBtn {
-		background : url('/arquivos/face-consul-compartilha.jpg') center center #9aca3c;
+		background: url('/arquivos/face-consul-compartilha.jpg') center center #9aca3c;
 		margin-left: 0;
 	}
 
@@ -188,7 +183,7 @@ body.produto-indisponivel {
 }
 
 .social:after {
-	clear  : both;
+	clear: both;
 	contain: '';
 	display: block;
 }
@@ -198,28 +193,28 @@ div#modal-custom-share {
 		border: 1px solid #92b845;
 		height: 100px;
 		resize: none;
-		width : 93%;
+		width: 93%;
 	}
 
 	input {
 		border: 1px solid #92b845;
-		width : 93%;
+		width: 93%;
 	}
 
 	label {
-		display     : block;
+		display: block;
 		padding-left: 15px;
-		text-align  : left;
+		text-align: left;
 	}
 
 	.btn {
-		background   : #9aca3c;
-		border       : none;
-		color        : #fff;
-		font-weight  : bold;
+		background: #9aca3c;
+		border: none;
+		color: #fff;
+		font-weight: bold;
 		margin-bottom: 10px;
-		padding      : 8px;
-		width        : 93%;
+		padding: 8px;
+		width: 93%;
 	}
 
 	#formshare.sucesso {
@@ -229,10 +224,10 @@ div#modal-custom-share {
 	}
 
 	.enviadocomsucesso {
-		color         : #9aca3c;
-		display       : none;
-		font-size     : 22px;
-		font-weight   : bold;
+		color: #9aca3c;
+		display: none;
+		font-size: 22px;
+		font-weight: bold;
 		padding-bottom: 10px;
 	}
 
@@ -240,12 +235,12 @@ div#modal-custom-share {
 
 
 .pinned {
-	margin    : 0;
-	position  : fixed!important;
+	margin: 0;
+	position: fixed!important;
 	text-align: left;
-	top       : 0!important;
-	width     : 100%;
-	z-index   : 4;
+	top: 0!important;
+	width: 100%;
+	z-index: 4;
 }
 
 
@@ -257,10 +252,10 @@ div#modal-custom-share {
 
 .cont-prod-details-nav {
 	background-color: $green;
-	height          : 95px;
-	overflow        : hidden;
-	position        : relative;
-	width           : 100%;
+	height: 95px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
 
 	@include breakpoint(small, 'max') { display: none; }
 }
@@ -271,24 +266,29 @@ div#modal-custom-share {
 	@include breakpoint(medium, 'max') { margin-bottom: 20px; }
 
 	a {
-		background-color: #9aca3c;
-		border          : 2px solid #9aca3c;
-		border-radius   : 2px;
-		color           : #ffffff;
-		cursor          : pointer;
-		display         : inline-block;
-		margin-top      : 15px;
-		padding         : 15px 20px 15px 20px;
-		transition      : all .25s ease;
+		@include rfs(12);
+		background-color: #fff;
+		border: 1px solid #702F8F;
+		border-radius: 40px;
+		color: #702F8F;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: bold;
+		margin-top: 15px;
+		padding: 12px 20px 12px 20px;
+		text-align: center;
+		transition: all .25s ease;
+		width: 100%;
 
-		&:hover {
-			background     : transparent;
-			color          : #9aca3c;
+		&:hover,
+		&focus {
+			background: #702F8F;
+			color: #fff;
 			text-decoration: none;
 		}
 
 		i {
-			margin-right: 5px;
+			display: none;
 		}
 	}
 }
