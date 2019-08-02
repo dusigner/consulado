@@ -9,6 +9,7 @@ import 'modules/product/details';
 import 'modules/product/specifications';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
+import 'modules/product/kit-instalacao';
 import 'modules/product/boleto';
 import 'modules/product/notify-me';
 import 'modules/product/share';
@@ -35,6 +36,7 @@ Nitro.controller(
 		'specifications',
 		'selos',
 		'sku-select',
+		'kit-instalacao',
 		'boleto',
 		'notify-me',
 		'share',
