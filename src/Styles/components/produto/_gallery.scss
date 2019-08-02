@@ -56,8 +56,9 @@
 	}
 
 	.gallery {
-		@include breakpoint(medium, 'min') { float: right; }
-		@include breakpoint(small, 'max') {
+		float: right;
+
+		@include breakpoint(medium, 'max') {
 			display: inline-block;
 			float: right;
 			padding: 0;

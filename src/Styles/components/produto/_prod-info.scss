@@ -25,7 +25,7 @@ body.produto {
 .prod-info {
 	.secure {
 
-		@include breakpoint('small', 'max') {
+		@include breakpoint('medium', 'max') {
 			// background-color: #ccc;
 			display: none!important;
 		}
@@ -89,10 +89,15 @@ body.produto {
 			padding: 5px 0;
 			width: 50%;
 
-			@include breakpoint ('small', 'max') {
-				font-size: 0 !important;
+			@include breakpoint ('medium', 'max') {
+				padding: 12px 20px;
 				width: 100%;
+
+				@include breakpoint ('small', 'max') {
+					font-size: 0 !important;
+				}
 			}
+
 
 			&:hover {
 				background-color: #fff;
@@ -493,14 +498,24 @@ body.produto {
 }
 
 .prod-more-info {
+	border-bottom: 1px solid #F1F0F0;
 	margin-top: 15px;
 
+	@include breakpoint('medium', 'max') { border: none }
 	@include breakpoint(small, 'max') { margin: 20px 0; }
 
 	a {
-		@include font-size(12px);
-		color: $txt-gray-l;
-		text-transform: uppercase;
+		@include font-size(14px);
+		color: #736C6B;
+		margin: 6px 0;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		@include breakpoint('medium', 'max') {
+			border-bottom: 1px solid #f1f0f0;
+		}
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(14, 16, true);
@@ -513,13 +528,16 @@ body.produto {
 // TOOLS
 // ===================================
 .social {
-	height: 100px;
+	display: flex;
+	justify-content: flex-end;
 	margin-top: 20px;
-	width: 100%;
+	width: 50%;
 
-	@include breakpoint(extra-small, 'max') {
-		height: auto;
-		margin: 20px 0;
+	@include breakpoint(medium, 'max') {
+		display: flex;
+		justify-content: space-between;
+		margin: 20px auto;
+		width: 120px;
 	}
 
 	p {
@@ -529,10 +547,6 @@ body.produto {
 			width: 210px;
 		}
 	}
-}
-
-.at-share-btn {
-	background-color: #9aca3c!important;
 }
 
 .at-style-responsive .at-share-btn {
@@ -555,5 +569,13 @@ body.consulempresa {
 			font-weight: normal;
 
 		}
+	}
+}
+
+.cta-containers {
+	display: flex;
+
+	@include breakpoint ('medium', 'max') {
+		flex-direction: column;
 	}
 }

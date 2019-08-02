@@ -10,7 +10,6 @@ body.open-frete {
 .calc-frete {
 	// border: 1px solid #e4e4e4;
 	// padding: 10px;
-	max-width: 600px;
 	position: relative;
 
 	&:after {
@@ -23,7 +22,7 @@ body.open-frete {
 		@include rfs(11);
 		display: block;
 		float: left;
-		width: 45%;
+		width: 37%;
 
 		& i {
 			color: #793c96;
@@ -38,7 +37,7 @@ body.open-frete {
 			float: right;
 			margin-bottom: 0;
 			margin-top: 20px;
-			max-width: 132px;
+			max-width: 100px;
 
 			@include breakpoint ('small', 'max') {
 				font-size: 12px;
@@ -69,7 +68,7 @@ body.open-frete {
 		font-size: 0;
 		padding-top: 15px;
 		position: relative;
-		width: 40%;
+		width: 46%;
 
 		input {
 			background: #fff;
@@ -89,13 +88,13 @@ body.open-frete {
 		float: right;
 		padding-top: 15px;
 		position: relative;
-		width: 15%;
+		width: 17%;
 
 		&.loading {
 
 			#btnFreteSimulacao {
 				background: #fff !important;
-				border: 1px solid #e4e4e4 !important;
+				border: inherit;
 				box-shadow: none;
 			}
 		}
@@ -106,11 +105,12 @@ body.open-frete {
 			border-left: none;
 			border-radius: 0;
 			color: #702F8F;
+			font-size: 12px;
 			height: 40px;
 			margin: 0;
 			max-width: 100%;
-			padding: 0;
-			text-align: center;
+			padding: 0 27px 0 0;
+			text-align: right;
 			width: 100%;
 
 			&:hover,
@@ -118,6 +118,14 @@ body.open-frete {
 				border: 1px solid #e4e4e4;
 				border-left: none;
 			}
+		}
+
+		&:before {
+			@include icon-get('arrow-right');
+			position: absolute;
+			right: 15px;
+			top: 27px;
+			z-index: 1;
 		}
 	}
 
@@ -134,12 +142,12 @@ body.open-frete {
 		}
 
 		& a {
-			color: #b9b8b8;
+			color: #0FB6DE;
 			display: block;
 			float: right;
-			font-size: 10px;
+			font-size: 9px;
 			text-align: left;
-			width: 50%;
+			width: 63%;
 		}
 	}
 
@@ -335,7 +343,20 @@ body.open-frete {
 			margin-top: 5px;
 		}
 
-		.prefixo { width: 85%; }
+		.prefixo {
+			width: 77%;
+		}
+
+		span.frete-calcular {
+			width: 23%;
+
+			&:before {
+				text-align: center;
+				@include breakpoint('small', 'max') {
+					top: 29px;
+				}
+			}
+		}
 
 		.prefixo input,
 		.title-frete {

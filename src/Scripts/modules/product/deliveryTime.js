@@ -195,7 +195,11 @@ Nitro.module('deliveryTime', () => {
 
 				ajaxCompleted = true;
 			}
+
+			$('#btnFreteSimulacao').attr('value', 'Calcular');
 		});
+
+
 	};
 
 	$(document).on('skuSelected.vtex', () => {

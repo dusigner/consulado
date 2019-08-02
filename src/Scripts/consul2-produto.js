@@ -285,7 +285,7 @@ Nitro.controller(
 						.attr('href', url)
 						.parent()
 						.css({
-							display: 'block'
+							display: 'inline-block'
 						});
 				}
 				// else{

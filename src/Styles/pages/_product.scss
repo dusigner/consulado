@@ -157,29 +157,32 @@ body.produto-indisponivel {
 
 .social {
 	a {
-		display: block;
-		float: left;
+		display: inline-block;
 		height: 30px;
-		margin-left: 30px;
-		position: relative;
-		top: 0;
-		transition: .3s linear all;
+		margin: 0 15px;
 		width: 30px;
 
-		&:hover {
-			top: -5px;
-			transition: .3s linear all;
+		@include breakpoint('large', 'min') {
+			margin: 0;
+			margin-left: 15px;
 		}
 	}
 
 	#shareBtn {
-		background: url('/arquivos/face-consul-compartilha.jpg') center center #9aca3c;
-		margin-left: 0;
+		background: url('//consul.vteximg.com.br/arquivos/facebook-consul-footer-2019.png') center center no-repeat;
+		background-size: contain;
 	}
 
-	#compartilharTw { background: url('/arquivos/tw-consul-compartilha.jpg') center center #9aca3c; }
+	#compartilharTw {
+		background: url('//consul.vteximg.com.br/arquivos/twitter-consul-footer-2019.png') center center no-repeat;
+		background-size: contain;
+	}
 
-	#compartilharEmail { background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c; }
+	#compartilharEmail {
+		background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c;
+		display: none;
+	}
+
 }
 
 .social:after {
@@ -262,8 +265,13 @@ div#modal-custom-share {
 
 .btn-pecas-produto {
 	display: none;
+	margin-top: 15px;
+	width: 50%;
 
-	@include breakpoint(medium, 'max') { margin-bottom: 20px; }
+	@include breakpoint(medium, 'max') {
+		margin: 20px 0;
+		width: 100%;
+	}
 
 	a {
 		@include rfs(12);
@@ -274,7 +282,6 @@ div#modal-custom-share {
 		cursor: pointer;
 		display: inline-block;
 		font-weight: bold;
-		margin-top: 15px;
 		padding: 12px 20px 12px 20px;
 		text-align: center;
 		transition: all .25s ease;
