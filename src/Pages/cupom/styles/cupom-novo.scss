@@ -42,6 +42,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
     }
 }
 
+//COMO UTILIZAR
 .como-utilizar {
     &__aside {
         min-height: 180px;
@@ -145,10 +146,12 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
         border-radius: 8em;
         margin: 0 auto;
         min-height: 180px;
+        padding: 0 20px;
         width: 1000px;
     }
 }
 
+//SLICK
 .slick-dots {
     li {
         &.slick-active {
@@ -167,7 +170,6 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
     }
 }
 
-//VITRINE
 .slick-next,
 .slick-prev {
     background-repeat: no-repeat;
@@ -194,26 +196,46 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
     background-image: url('/arquivos/consul-arrow-left.png');
 }
 
+//VITRINE
 .vitrine-desconto {
     margin: 70px auto;
+    padding-bottom: 60px;
     text-align: center;
+    &__bg-mobile {
+        background-color: #fbfafa;
+        bottom: 0;
+        height: 320px;
+        padding-bottom: 20px;
+        position: absolute;
+    }
     &__aside {
         strong {
-            @include breakpoint('tablet',
+            @include breakpoint('phone',
             'max') {
-                bottom: 0;
+                @include responsiveFont(18);
+                bottom: -50px;
                 position: absolute;
+                text-align: left;
             }
             @include responsiveFont(14);
             color: $purple;
             display: inline-block;
-            margin: 0 50px 10px;
+            margin: 0 70px 10px 20px;
+            width: 100%;
         }
         .slider-prod {
             max-width: 100%;
             width: 1000px;
             .slick-slider {
                 padding: 0;
+            }
+        }
+        @include breakpoint('phone',
+        'max') {
+            .slick-next,
+            .slick-prev {
+                margin-top: 30px;
+                top: 100%;
             }
         }
         .slick-next {
@@ -225,7 +247,7 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
         }
     }
     &__produto {
-        height: 440px;
+        height: auto;
         margin: 0 auto;
         padding: 0 8px;
         width: 260px;
@@ -237,9 +259,17 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
     &__card-cupom {
         @include breakpoint('phone',
         'max') {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             padding: 0 0 40px;
             width: 100%;
+            p {
+                @include responsiveFont(16);
+            }
+            small {
+                @include responsiveFont(16);
+                display: inline-block;
+                padding: 10px 20px;
+            }
         }
         background-color: #fff;
         border-radius: 4px;
@@ -248,24 +278,15 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
         height: auto;
         margin: 30px auto 20px;
         max-width: 100%;
-        padding: 30px 0;
+        padding: 24px 0;
+        position: relative;
         width: 260px;
         p {
-            @include breakpoint('phone',
-            'max') {
-                @include responsiveFont(16);
-            }
             @include responsiveFont(12);
             font-weight: $font-bold;
             margin: 0;
         }
         small {
-            @include breakpoint('phone',
-            'max') {
-                @include responsiveFont(16);
-                display: inline-block;
-                padding: 10px 20px;
-            }
             @include responsiveFont(12);
             display: flex;
             font-weight: $font-normal;
@@ -310,17 +331,16 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
         @include breakpoint('phone',
         'max') {
             margin: 16px auto 20px;
-        }
-        @include responsiveFont(32);
-        color: $green;
-        line-height: 22px;
-        margin: 24px auto 34px;
-        span {
-            @include breakpoint('phone',
-            'max') {
+            span {
                 display: inline-block;
                 font-size: inherit;
             }
+        }
+        @include responsiveFont(32);
+        color: $green;
+        line-height: 26px;
+        margin: 24px auto 34px;
+        span {
             @include responsiveFont(10);
             display: block;
         }
@@ -329,11 +349,12 @@ $breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, '
         @include breakpoint('phone',
         'max') {
             @include responsiveFont(18);
-            bottom: 0;
+            bottom: -16px;
             left: 0;
-            margin: 10px auto 20px;
+            margin: 10px auto 0;
             position: absolute;
             right: 0;
+            width: 150px;
         }
         @include responsiveFont(13);
         background-color: $purple;

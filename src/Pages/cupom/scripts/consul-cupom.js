@@ -45,14 +45,14 @@ Nitro.setup([], function() {
                 settings: {
                     slidesToShow: 2,
                     centerPadding: '10px',
-                    dots: true
+                    dots: false
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    dots: true
+                    dots: false
                 }
             }
         ]
