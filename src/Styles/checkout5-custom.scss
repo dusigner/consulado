@@ -85,12 +85,23 @@ body {
 	.hide {
 		visibility: visible;
 	}
-	.step,
-	.totalizers {
-		border: 3px solid $gray-l;
+	.step{
+		border: 1px solid $gray-l;
 	}
+
+	.cart{
+		border: none;
+	}
+
+	.totalizers {
+		border-left: 0;
+		border-radius: 0;
+		border-right: 0;
+		position: relative;
+	}
+
 	header {
-		border-bottom: 3px solid $gray-l;
+		border-bottom: 1px solid $gray-l;
 		.cont-logo,
 		.come-back {
 			line-height: 70px;
@@ -275,12 +286,13 @@ body {
 		}
 	}
 	.linkWarranty {
-		background: $green;
-		border: 3px solid $green;
+		background: transparent;
+		border: 1px solid $purple;
+		color: $purple;
 		margin-top: 10px;
+
 		&:hover {
-			background: transparent;
-			border: 3px solid $green;
+			border: 1px solid $green;
 			color: $green;
 		}
 	}
@@ -520,11 +532,14 @@ body {
 
 //DESTAQUE NA VOLTAGEM
 .highlight-voltage {
-	background-color: $green;
+	border: 1px solid $gray-l;
 	border-radius: 25px;
-	color: #fff;
-	display: inline-block;
-	padding: 0 5px;
+	color: #736C6B;
+	display: table-caption;
+	font-size: 10px;
+	font-weight: 500;
+	margin: 5px 0px;
+	padding: 1px 20px;
 }
 
 //AJUSTE DISPLAY NOME
