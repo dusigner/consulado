@@ -87,7 +87,9 @@ body.produto {
 			color: #fff;
 			font-weight: 500;
 			padding: 5px 0;
+			position: relative;
 			width: 50%;
+			z-index: 3;
 
 			@include breakpoint ('medium', 'max') {
 				padding: 12px 20px;
