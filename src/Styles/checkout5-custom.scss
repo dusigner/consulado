@@ -85,11 +85,11 @@ body {
 	.hide {
 		visibility: visible;
 	}
-	.step{
+	.step {
 		border: 1px solid $gray-l;
 	}
 
-	.cart{
+	.cart {
 		border: none;
 	}
 
@@ -340,15 +340,11 @@ body {
 				}
 			}
 		} // fake buttom mobile
-		@include breakpoint(small,
-		'max') {
+		@include breakpoint(small, 'max') {
 			.field-button {
 				.btn-success {
-					@include responsiveFont(14,
-					16,
-					true);
-					@include vendor(border-radius,
-					20px);
+					@include responsiveFont(14, 16, true);
+					@include vendor(border-radius, 20px);
 					background-color: $green;
 					border: none;
 					color: #fff;
@@ -538,7 +534,7 @@ body {
 	display: table-caption;
 	font-size: 10px;
 	font-weight: 500;
-	margin: 5px 0px;
+	margin: 5px 0;
 	padding: 1px 20px;
 }
 

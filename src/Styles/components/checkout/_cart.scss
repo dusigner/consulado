@@ -43,15 +43,7 @@ body {
 								left: 15px;
 								max-height: 65px;
 
-								&:before {
-									background: $gray-l;
-									bottom: -16px;
-									content: '';
-									height: 2px;
-									left: 0;
-									position: absolute;
-									width: calc(100% + 15px);
-								}
+
 							}
 						}
 
@@ -134,18 +126,6 @@ body {
 								padding-bottom: 10px;
 								position: relative;
 								width: calc(100% - 60px);
-
-								@include breakpoint(small, 'max') {
-									&:before {
-										background: $gray-l;
-										bottom: 0;
-										content: '';
-										height: 2px;
-										left: 0;
-										position: absolute;
-										width: 100%;
-									}
-								}
 							}
 
 							.brand,
@@ -171,6 +151,11 @@ body {
 										position: absolute;
 										width: 1000%;
 									}
+								}
+
+								@include breakpoint(small, 'max') {
+									border-top: 1px solid $gray-l;
+									padding-top: 0;
 								}
 
 								.linkWarranty {
@@ -211,7 +196,6 @@ body {
 
 							@include breakpoint(small, 'min') {
 								padding-right: 45px;
-								padding-top: 51px;
 
 								&:before {
 									background: #fff;
@@ -231,15 +215,9 @@ body {
 							font-weight: bold;
 							padding: 20px 5px;
 
-							@include breakpoint(small, 'min') {
-								padding-top: 53px;
-							}
 						}
 
 						.shipping-date {
-							@include breakpoint(small, 'min') {
-								padding-top: 55px;
-							}
 
 							.shipping-estimate-date {
 								@include responsiveFont(13, 16, true);
@@ -269,6 +247,9 @@ body {
 						}
 
 						.quantity {
+							@include breakpoint(small, 'min') {
+								padding-top: 38px;
+							}
 							@include breakpoint(768px, 'max') {
 							   align-content: center;
 							   align-items: center;
@@ -291,7 +272,6 @@ body {
 									display: inline-block;
 									height: 16px;
 									left: 1px;
-									margin-top: 5px;
 									position: relative;
 									top: 4px;
 									width: 16px;
@@ -384,6 +364,7 @@ body {
 							position: relative;
 
 							span {
+								font-weight: 500;
 								padding-left: 10px;
 							}
 
@@ -427,9 +408,14 @@ body {
 		}
 
 		.totalizers {
-			@include breakpoint(small, 'max') { width: 100%; }
+			@include breakpoint(small, 'max') {
+				border-top: 1px solid $gray-l;
+				padding-top: 5px;
+				width: 100%;
+			}
+			max-width: 363px;
 			padding: 0;
-			width: 46%;
+			width: 100%;
 
 			&.summary-totalizers {
 
@@ -515,10 +501,10 @@ body {
 
 			.info {
 				@include responsiveFont(13, 16, true);
+				font-weight: 500;
 				padding-left: 0;
 				padding-right: 30px;
 				text-align: left;
-				text-transform: uppercase;
 				vertical-align: middle;
 				width: 55%;
 			}
@@ -557,6 +543,10 @@ body {
 				}
 
 				.shipping-calculate {
+					.info {
+						@include responsiveFont(14, 16, true);
+						padding-left: 20px;
+					}
 					.monetary {
 						display: none;
 
@@ -703,6 +693,7 @@ body {
 								box-shadow: none;
 								padding: 0;
 								pointer-events: none;
+								position: relative;
 								text-align: right;
 								text-shadow: none;
 								width: 100%;
@@ -771,7 +762,6 @@ body {
 								border: 1px solid $gray-l;
 								display: inline-block;
 								padding: 5px 10px;
-								position: relative;
 								text-align: left;
 								text-transform: initial;
 								width: 60%;
@@ -786,17 +776,11 @@ body {
 									content: 'Tipo de entrega';
 									display: block;
 									font-weight: 500;
-									left: -180px;
+									left: 0;
 									position: absolute;
 									top: 4px;
 
-
-									@include breakpoint('small', 'min') {
-										left: -188px;
-									}
-
 									@include breakpoint(extra-large, 'max') {
-										left: -141px;
 										top: 3px;
 									}
 								}
@@ -1084,11 +1068,10 @@ body {
 							background: #fff;
 							border: 2px solid $gray;
 							box-shadow: none;
-							color: $gray;
+							color: $txt-gray-l;;
 							font-weight: bold;
 							padding: 8px 20px;
 							text-shadow: none;
-							text-transform: uppercase;
 
 							&:hover {
 								background: $gray;
@@ -1149,29 +1132,23 @@ body {
 			position: relative;
 
 			@include breakpoint(small, 'min') {
+				max-width: 363px;
 				padding: 0 35px;
-				width: 46%;
+				width: 100%;
 			}
 
 			.link-choose-more-products-wrapper {
 				display: block;
 				left: 0;
+				margin-top: 10px;
 				padding: 0 35px;
 				position: absolute;
+				text-align: center;
 				top: 57px;
 				width: 100%;
 
-
 				a {
-					border: 3px solid transparent;
 					color: $purple;
-					text-align: center;
-					transition: all .2s;
-					width: 100%;
-
-					&:hover {
-						border: 3px solid #e4e4e4;
-					}
 				}
 
 				@media screen and (min-width: 320px) and (max-width: 490px) {
@@ -1187,11 +1164,11 @@ body {
 
 				#cart-choose-more-products {
 					@include responsiveFont(14, 16, true);
+					border: 0;
 					display: none;
 					font-weight: bold;
-					margin-right: 15px;
-					padding: 15px 25px;
-					text-transform: capitalize;
+					margin-right: 0;
+					padding: 0;
 					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
 						display: inline-block;
