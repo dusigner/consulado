@@ -1,30 +1,30 @@
 <div class="recurrence">
 	<div class="recurrence__step recurrence__step--one">
-		<a href="javascript:void(0)" class="primary-button text-uppercase recurrence__link js-modal-open">
+		<a href="javascript:void(0)" class="primary-button recurrence__link js-modal-open">
 			Adicionar Compra Recorrente
 		</a>
 		<div class="recurrence__tip-container">
-			<div class="recurrence__doubt js-tip-mobile">?
+			<div class="recurrence__doubt js-tip-mobile">
+				?
 				<div class="recurrence__tip">
 					<p>
-						A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo de tempo selecionado. Dessa forma, você não precisa se preocupar em comprar toda vez que estiver próximo ao vencimento.
+						A compra recorrente permite que o produto selecionado seja comprado automaticamente no intervalo
+						de tempo selecionado. Dessa forma, você não precisa se preocupar em comprar toda vez que estiver
+						próximo ao vencimento.
 					</p>
 					<p>Você poderá pausar ou cancelar a qualquer momento em "meus pedidos".</p>
 					<p>
 						<strong>
-							Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito. Caso haja reajuste no valor do produto, você será informado por e-mail.
+							Atenção: A recorrência só pode ser ativada caso o meio de pagamento seja cartão de crédito.
+							Caso haja reajuste no valor do produto, você será informado por e-mail.
 						</strong>
 					</p>
 				</div>
 			</div>
 		</div>
 		<div class="recurrence__discount-warning">
-			<strong class='recurrence__discount-spotlight'>
-				{#discount}
-					{discount}% de desconto
-				{:else}
-					10% de desconto
-				{/discount}
+			<strong class="recurrence__discount-spotlight">
+				{#discount} {discount}% de desconto {:else} 10% de desconto {/discount}
 			</strong>
 			nas compras recorrentes
 		</div>
@@ -35,8 +35,13 @@
 		<div class="recurrence__step-container">
 			<div class="recurrence__step-container-inner">
 				<p class="recurrence__step-text">Compra recorrente a cada {selectedRecurrence|recurrenceSemanas}</p>
-				<a href="javascript:void(0)" class="recurrence__remove js-recurrence-remove" data-index="{index}"
-					data-period="{selectedRecurrence}">Cancelar</a>
+				<a
+					href="javascript:void(0)"
+					class="recurrence__remove js-recurrence-remove"
+					data-index="{index}"
+					data-period="{selectedRecurrence}"
+					>Cancelar</a
+				>
 				<i class="loading-text icon-spinner icon-spin hide"></i>
 			</div>
 		</div>
