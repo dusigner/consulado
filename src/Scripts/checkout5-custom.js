@@ -808,22 +808,22 @@ $(document).on('ready', function() {
 								item = vtexjs.checkout.orderForm.items[prodId];
 
 							item.index = prodId;
-							item.quantity = 5;
+							item.quantity = 6;
 
 
-							if (prodQtde >= 5) {
+							if (prodQtde >= 6) {
 
 								vtexjs.checkout.getOrderForm()
 								.then(function(orderForm) {
 									var updateItem = {
 									index: prodId,
-									quantity: 5
+									quantity: 6
 									};
 									return vtexjs.checkout.updateItems([updateItem], null, false);
 								})
 								.done(function(orderForm) {
 									window.vtex.checkout.MessageUtils.showMessage({
-										text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+										text: 'Você só pode ter no máximo 6 itens do produto '+prodName+' no carrinho',
 										status: 'error'
 									});
 								});
