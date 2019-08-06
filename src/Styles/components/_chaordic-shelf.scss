@@ -55,75 +55,28 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
+		margin: 0;
+		padding: 20px 5px;
 
-		@include responsiveFont(20, 16, true);
-		color: $gray-d;
-		margin-bottom: 15px;
-		text-align: left;
+		span { color: $self-primary; }
 
-		@include breakpoint('medium', 'max') {
-			@include responsiveFont(16, 16, true);
-			margin: 0 auto;
-			padding: 0 10%;
-			width: 100%;
-		}
-
-		span {
-			@include responsiveFont(35, 16, true);
-			color: $green;
-			display: block;
-			font-weight: bold;
-			text-transform: capitalize;
-
-			@include breakpoint('medium', 'max') {
-				@include responsiveFont(30, 16, true);
-			}
-		}
-
-		&.Preferidos {
-			@include responsive('max-width', 95%,
-				(
-					'small'       : 768px,
-					'medium'      : 960px,
-					'large'       : 1200px,
-					'extra-large' : 1280px
-				)
-			);
-
-			font-size: 1.25rem;
-			margin: 0 auto 20px;
-			text-align: left;
-
-			@include breakpoint ('medium', 'max') {
-				background: #fff;
-				color: #736c6b;
-				font-size: 1rem;
-				font-weight: 400;
-				margin: 15px auto;
-				max-width: 95%;
-				padding: 0 20px;
-			}
-
-			span {
-				font-size: 2.1875rem;
-				font-weight: 700;
-				text-transform: none;
-
-				@include breakpoint ('medium', 'max') {
-					color: $green;
-					display: block;
-					font-size: 1.875rem;
-					line-height: 1;
-				}
-			}
-		}
-
+		// span {
+		// 	@include breakpoint(medium, 'min') {
+		// 		@include responsiveFont(78, 16, true);
+		// 		color: $self-primary;
+		// 		display: block;
+		// 		font-weight: 100;
+		// 		line-height: 1;
+		// 		text-transform: capitalize;
+		// 	}
+		// }
 	}
 
 	&-title {
 		font-size: 1.5625rem;
 		font-weight: 700;
 		margin-bottom: 15px;
+		text-align: center;
 
 		.shelf--compre-junto {
 			color: $green;
@@ -131,9 +84,9 @@ div[data-chaordic] {
 			font-size: 1.5625rem;
 			font-weight: 700;
 			text-transform: none;
-
 		}
 	}
+
 	&-item {
 		//HOVER ON SHELF ITEM ACTIONS
 		@include breakpoint (medium, 'min') {
@@ -177,11 +130,6 @@ div[data-chaordic] {
 
 		a { text-decoration: none }
 
-		&__installment-value {
-			@include breakpoint('small', 'max') {
-				font-size: 1.25rem;
-			}
-		}
 
 		&.product-has-5-off {
 			.discount-boleto {
@@ -192,14 +140,12 @@ div[data-chaordic] {
 
 	&-plus,
 	&-equals {
+		@include breakpoint(small, 'max') { display: none; }
 		color: $green;
 		float: left;
 		font-size: 36px;
 		font-weight: 400;
 		margin: 17% 1.3% 35%;
-		@include breakpoint(small, 'max') {
-			display: none;
-		}
 	}
 
 	&--personalized {
@@ -207,25 +153,32 @@ div[data-chaordic] {
 			.slick-arrow.slick-prev { left: 0 }
 			.slick-arrow.slick-next { right: 0 }
 
-			&>h2 { display: none }
+			& > h2 { display: none }
 		}
 
 		&__holder {
 			@include breakpoint(small, 'max') {
 				ul.content-placeholder li.inline-b:not([id^='slick-']):nth-child(1) {display: inline-block!important}
 			}
-
 			float: left;
 			max-width: 600px;
 		}
 
 		h2 {
 			@include breakpoint(small, 'max') {
-				margin: 0;
+				&:not(.shelf-sub-title) {
+					margin-left: calc(-0% - 20px);
+					margin-right: calc(-0% - 20px);
+					@include breakpoint('extra-small', 'max') {
+						margin-left: calc(-3% - 20px);
+						margin-right: calc(-3% - 20px);
+					}
+				}
 
 				&.shelf-sub-title {
 					display: block;
 					position: relative;
+					text-align: center;
 
 					&:before {
 						border-color: $self-third transparent transparent transparent;
@@ -245,13 +198,6 @@ div[data-chaordic] {
 		}
 
 		&-res {
-			@include breakpoint (large, 'max') {
-				width: 21%;
-				@include breakpoint(small, 'max') {
-					background: #f2f2f2;
-					width: 100%;
-				}
-			}
 			@include breakpoint(small, 'max') { width: 100%; }
 			background: #f4f2f1;
 			padding-bottom: 35px;
@@ -267,11 +213,8 @@ div[data-chaordic] {
 				width: 215px;
 
 				@include breakpoint (large, 'max') {
+					@include breakpoint (small, 'max') { width: 215px; }
 					width: 160px;
-
-					@include breakpoint (small, 'max') {
-						width: 215px;
-					}
 				}
 			}
 		}
@@ -289,10 +232,7 @@ div[data-chaordic] {
 
 			ul li { width: 100%!important; }
 
-			.box-produto {
-				border: 0;
-				min-height: 475px;
-			}
+			.box-produto { border: 0; }
 		}
 
 		&-rec {
@@ -300,13 +240,14 @@ div[data-chaordic] {
 				width: 100%;
 
 				h2 {
+					background-color: $self-third;
 					font-weight: normal;
 				}
 			}
 			width: 100/3*2%;
 
 			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
-
+			h2 { color: $self-primary }
 		}
 	}
 
@@ -604,32 +545,20 @@ div[data-chaordic] {
 		}
 	}
 
-	&.slick-vertical {
-		.shelf-item {
-			margin: 3px 0;
+}
 
-		}
-		button {
-			left: 80%!important;
-			position: relative;
-			width: 10px;
+#relacionados {
+	h2 {
+		display: none;
+	}
 
-			&.slick-prev {
-				top: 195px;
-			}
+	.pre-title {
+		font-size: 1.5625rem;
+		margin-bottom: 20px;
+		text-align: center;
 
-			&.slick-next {
-				bottom: 200px;
-			}
-
-			&:before {
-				font-size: .5rem;
-			}
-
-			@include breakpoint('extra-large', 'max') {
-				left: 85%!important;
-			}
+		span {
+			font-size: 1.5625rem;
 		}
 	}
 }
-
