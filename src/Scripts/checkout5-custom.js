@@ -800,7 +800,7 @@ $(document).on('ready', function() {
 				let timer = setInterval(() => {
 					if ($('body.loja-consul-com-br.body-cart .item-quantity-change, body.loja-consulqa-com-br.body-cart .item-quantity-change, body.consulqa-vtexlocal-com-br.body-cart .item-quantity-change').length > 0){
 
-						$('body.body-cart .item-quantity-change').on('click', function(){
+						$('body.body-cart').on('click','.item-quantity-change', function(){
 
 							var prodId = $(this).closest('.product-item').index('.product-item'),
 								prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
@@ -811,7 +811,7 @@ $(document).on('ready', function() {
 							item.quantity = 6;
 
 
-							if (prodQtde >= 6) {
+							if (prodQtde > 6) {
 
 								vtexjs.checkout.getOrderForm()
 								.then(function(orderForm) {
