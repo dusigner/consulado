@@ -126,6 +126,9 @@ body {
 								padding-bottom: 10px;
 								position: relative;
 								width: calc(100% - 60px);
+								@include breakpoint(small, 'max') {
+									min-height: 62px;
+								}
 							}
 
 							.brand,
@@ -211,6 +214,7 @@ body {
 						}
 
 						.quantity-price {
+							@include responsiveFont(14, 16, true);
 							color: $green;
 							font-weight: bold;
 							padding: 20px 5px;
