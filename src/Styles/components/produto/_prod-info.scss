@@ -318,12 +318,12 @@ body.produto {
 
 
 .select-voltage {
-	@include breakpoint(large, 'max')  {
+	@include breakpoint(large, 'max') {
 		margin-bottom: 10px;
 		width: 100%!important;
 	}
 	@include breakpoint(medium, 'max') { width: 50%!important;  }
-	@include breakpoint(small, 'max')  {
+	@include breakpoint(small, 'max') {
 		margin-bottom: 30px;
 		width: 100%!important;
 	}
