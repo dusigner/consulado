@@ -114,6 +114,8 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
+				self.limitQuantityCart();
+				self.mercadoPago();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -793,6 +795,56 @@ $(document).on('ready', function() {
 				$('.btn-go-to-payment').click(function() {
 					self.veryfication();
 				});
+			};
+
+			this.limitQuantityCart = function(){
+				let timer = setInterval(() => {
+					if ($('body.loja-consul-com-br.body-cart .item-quantity-change, body.loja-consulqa-com-br.body-cart .item-quantity-change, body.consulqa-vtexlocal-com-br.body-cart .item-quantity-change').length > 0){
+
+						$('body.body-cart').on('click','.item-quantity-change', function(){
+
+							var prodId = $(this).closest('.product-item').index('.product-item'),
+								prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
+								prodName = $(this).closest('.product-item').find('.product-name a').text(),
+								item = vtexjs.checkout.orderForm.items[prodId];
+
+							item.index = prodId;
+							item.quantity = 6;
+
+
+							if (prodQtde > 6) {
+
+								vtexjs.checkout.getOrderForm()
+								.then(function(orderForm) {
+									var updateItem = {
+									index: prodId,
+									quantity: 6
+									};
+									return vtexjs.checkout.updateItems([updateItem], null, false);
+								})
+								.done(function(orderForm) {
+									window.vtex.checkout.MessageUtils.showMessage({
+										text: 'Você só pode ter no máximo 6 itens do produto '+prodName+' no carrinho',
+										status: 'error'
+									});
+								});
+
+							}
+						});
+						clearInterval(timer);
+					}
+
+				}, 100);
+      };
+        
+			this.mercadoPago = function () {
+				var dmlscript= document.createElement("script");
+				var DMLSDK = '';
+				dmlscript.src = "https://http2.mlstatic.com/storage/bmsdk/js/dml-0.0.7.min.js";
+				dmlscript.onload = () => {
+					new DMLSDK({publicKey: "APP_USR-5bfa4f36-8798-4c2b-bcf5-12a979d63a30",out: "vtex.deviceFingerprint"});
+				};
+				document.body.appendChild(dmlscript);
 			};
 
 			this.init();

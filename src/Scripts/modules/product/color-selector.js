@@ -55,7 +55,7 @@ Nitro.module('color-selector', ['input-box'], function() {
 
 				$holder.html(out).show();
 
-				$('.input-box-dropdown-item').click(function(e) {
+				$('.input-box-dropdown-item').click(function() {
 					const itemClicked = data.filter(item => item.link === $(this).attr('href'));
 					$(window).trigger('color.selector.selected', [itemClicked[0]]);
 				});
@@ -89,5 +89,12 @@ Nitro.module('color-selector', ['input-box'], function() {
 		});
 	};
 
-	this.setup();
+	const departamentUnavailable = ['187'];
+	const categoryUnavailable = ['244'];
+	const prodDepartamentID = window.vtxctx && window.vtxctx.departmentyId;
+	const prodCategoryID = window.vtxctx && window.vtxctx.categoryId;
+
+	!categoryUnavailable.includes(prodCategoryID) &&
+		!departamentUnavailable.includes(prodDepartamentID) &&
+		this.setup();
 });

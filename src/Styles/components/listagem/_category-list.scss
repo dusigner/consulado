@@ -1,19 +1,27 @@
 body.departamento,
 body.categoria {
     .category-list {
-        background-color: #fcfcfc;
-        padding-left: 25px;
+
+        ul {
+            background-color: #fcfcfc;
+            padding: 15px 0 15px 25px;
+        }
 
         li {
             margin: 10px 0;
         }
 
         a {
-            font-size: .9735rem;
+            font-size: .875rem;
         }
 
         @include breakpoint ('medium', 'max') {
-            padding-left: 45px;
+            background-color: #fcfcfc;
+            padding-left: 45px
+        }
+
+        .clear-filter {
+            display: none;
         }
     }
 }
