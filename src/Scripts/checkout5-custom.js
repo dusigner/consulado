@@ -114,7 +114,6 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
-				self.mercadoPago();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -794,16 +793,6 @@ $(document).on('ready', function() {
 				$('.btn-go-to-payment').click(function() {
 					self.veryfication();
 				});
-			};
-
-			this.mercadoPago = function () {
-				var dmlscript= document.createElement("script");
-				var DMLSDK = '';
-				dmlscript.src = "https://http2.mlstatic.com/storage/bmsdk/js/dml-0.0.7.min.js";
-				dmlscript.onload = () => {
-					new DMLSDK({publicKey: "APP_USR-5bfa4f36-8798-4c2b-bcf5-12a979d63a30",out: "vtex.deviceFingerprint"});
-				};
-				document.body.appendChild(dmlscript);
 			};
 
 			this.init();
