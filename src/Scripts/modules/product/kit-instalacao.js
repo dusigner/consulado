@@ -95,9 +95,10 @@ Nitro.module('kit-instalacao', function() {
 	this.selectGasType = () => {
 		const $kitInstalacao = $('.kit-instalacao');
 		const $gasType = $('.kit-instalacao__input');
+		let gasClass = '';
 
 		$gasType.on('change', (e) => {
-			let gasClass = e.target.value;
+			gasClass = e.target.value;
 			gasClass = gasClass.toLowerCase();
 			gasClass = gasClass.replace(/\s/, '-');
 			gasClass = gasClass.replace(/[ãàáâ]/, 'a');
