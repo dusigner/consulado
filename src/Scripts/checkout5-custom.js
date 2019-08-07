@@ -114,6 +114,8 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
+				self.limitQuantityCart();
+
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -795,6 +797,46 @@ $(document).on('ready', function() {
 				});
 			};
 
+			this.limitQuantityCart = function(){
+				let timer = setInterval(() => {
+					if ($('body.loja-consul-com-br.body-cart .item-quantity-change, body.loja-consulqa-com-br.body-cart .item-quantity-change, body.consulqa-vtexlocal-com-br.body-cart .item-quantity-change').length > 0){
+
+						$('body.body-cart').on('click','.item-quantity-change', function(){
+
+							var prodId = $(this).closest('.product-item').index('.product-item'),
+								prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
+								prodName = $(this).closest('.product-item').find('.product-name a').text(),
+								item = vtexjs.checkout.orderForm.items[prodId];
+
+							item.index = prodId;
+							item.quantity = 6;
+
+
+							if (prodQtde > 6) {
+
+								vtexjs.checkout.getOrderForm()
+								.then(function(orderForm) {
+									var updateItem = {
+									index: prodId,
+									quantity: 6
+									};
+									return vtexjs.checkout.updateItems([updateItem], null, false);
+								})
+								.done(function(orderForm) {
+									window.vtex.checkout.MessageUtils.showMessage({
+										text: 'Você só pode ter no máximo 6 itens do produto '+prodName+' no carrinho',
+										status: 'error'
+									});
+								});
+
+							}
+						});
+						clearInterval(timer);
+					}
+
+				}, 100);
+      };
+       
 			this.init();
 
 			$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
