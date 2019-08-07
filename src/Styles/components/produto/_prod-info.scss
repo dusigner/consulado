@@ -329,6 +329,18 @@ body.produto {
 
 				@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
 			}
+
+			&:hover {
+				font-weight: bold;
+
+				&:before {
+					background-color: #702F8F;
+					border: 4px solid #fff;
+					box-shadow: 0 0 0 2px #702f8f;
+					height: 16px;
+					width: 16px;
+				}
+			}
 		}
 	}
 
