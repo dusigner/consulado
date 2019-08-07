@@ -86,7 +86,7 @@ Nitro.controller(
 		var orderText = !$('body').is('.busca')
 			? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens'
 			: '';
-		$('.order-title').html('<span>' + orderText + ' ordenados por </span><em>selecione</em>');
+		$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>');
 		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
@@ -336,8 +336,17 @@ Nitro.controller(
 			// $('section.slider').eq(0).find('.pre-title').trigger('click');
 		}
 
+	// Filtros de categorias
+	if ($('.category-list ul').length === 0) {
+		$('.category-list').addClass('hide');
+		$('.filter-wrapper > p:first-of-type').addClass('hide');
+	}
+
+	// Banner SEO - Ocultar quando vazio
+	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
+		$('.heading-banner').addClass('hide');
 		if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
 			$('.heading-banner').addClass('hide');
 		}
 	}
-);
+});
