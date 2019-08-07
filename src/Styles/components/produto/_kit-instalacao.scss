@@ -26,10 +26,11 @@
 	margin: 10px 0;
 	overflow: hidden;
 	padding: 5px;
+	position: relative;
 
 	&.type-gas-natural {
-		background-color: #f1f1f1;
-		padding-bottom: 20px;
+		padding-bottom: 24px;
+
 	}
 
 	&__item {
@@ -59,9 +60,7 @@
 				padding: 0;
 			}
 
-			span {
-				@include rfs(10);
-			}
+			span { @include rfs(10); }
 		}
 
 		// Price
@@ -82,6 +81,7 @@
 
 		// Select
 		&-select {
+			margin-right: 5px;
 			overflow: hidden;
 			position: relative;
 			text-align: right;
@@ -120,6 +120,30 @@
 				}
 			}
 		}
+	}
+
+	// Informação
+	&__info {
+		@include rfs(11);
+		background-color: #0fb6de;
+		bottom: 0;
+		color: #fff;
+		display: none;
+		left: 0;
+		padding: 3px 20px;
+		position: absolute;
+		width: 100%;
+
+		.icon {
+			@include rfs(16);
+			position: absolute;
+			right: 12px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		// Exibir somente para gás natural
+		.type-gas-natural & { display: block; }
 	}
 }
 
