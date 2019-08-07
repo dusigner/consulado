@@ -50,16 +50,13 @@ Nitro.module('details', function() {
 
 	data.items = $.map($modules, function(item, i) {
 		var values = $(item).find('.value-field');
-
 		return {
-			title: values.filter('[class*="Titulo"]').text(),
+			title: values.filter('[class*="Titulo"]').html(),
 			text: values.filter('[class*="Texto"]').html(),
 			image: $.getImagePath(values.filter('[class*="Imagem"]').text()),
 			style: styleMap[i]
 		};
 	});
-
-	// console.log('details data', data);
 
 	if (isLancamento) {
 		data.releaseImg = $.getImagePath($lancamento.find('.value-field.Imagem-Lancamento').text());
@@ -67,6 +64,7 @@ Nitro.module('details', function() {
 		data.skus = vtxctx.skus;
 
 		dust.render('detailsLancamento', data, function(err, out) {
+
 			if (err) {
 				throw new Error('Details Dust error: ' + err);
 			}
@@ -113,6 +111,7 @@ Nitro.module('details', function() {
 	}
 
 	dust.render('details', data, function(err, out) {
+
 		if (err) {
 			throw new Error('Details Dust error: ' + err);
 		}
