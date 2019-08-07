@@ -115,7 +115,7 @@ $(document).on('ready', function() {
 				self.shippingSelector();
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
-				self.mercadoPago();
+
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -836,17 +836,7 @@ $(document).on('ready', function() {
 
 				}, 100);
       };
-        
-			this.mercadoPago = function () {
-				var dmlscript= document.createElement("script");
-				var DMLSDK = '';
-				dmlscript.src = "https://http2.mlstatic.com/storage/bmsdk/js/dml-0.0.7.min.js";
-				dmlscript.onload = () => {
-					new DMLSDK({publicKey: "APP_USR-5bfa4f36-8798-4c2b-bcf5-12a979d63a30",out: "vtex.deviceFingerprint"});
-				};
-				document.body.appendChild(dmlscript);
-			};
-
+       
 			this.init();
 
 			$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);
