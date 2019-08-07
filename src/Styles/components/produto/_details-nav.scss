@@ -24,7 +24,7 @@
 
 		ul {
 			display: none;
-			left: -10px;
+			left: -28px;
 			margin-top: 20px;
 			min-width: 700px;
 			transform: translateX(0);
@@ -55,8 +55,8 @@
 		min-width: 900px;
 		padding: 20px 0;
 		position: absolute;
-		transform: translateX(-50%);
-		transition: .4s ease;
+		transform: translateX(-4%);
+		transition: .1s ease;
 
 		@include breakpoint(extra-large, 'min') {
 			min-width: inherit;

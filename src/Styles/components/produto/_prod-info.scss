@@ -97,6 +97,7 @@ body.produto {
 
 				@include breakpoint ('small', 'max') {
 					font-size: 0 !important;
+					position: fixed;
 				}
 			}
 
@@ -501,13 +502,18 @@ body.produto {
 
 .prod-more-info {
 	border-bottom: 1px solid #F1F0F0;
+	display: flex;
+	justify-content: space-between;
 	margin-top: 15px;
 
-	@include breakpoint('medium', 'max') { border: none }
+	@include breakpoint('medium', 'max') {
+		border: none;
+		flex-direction: column;
+	}
 	@include breakpoint(small, 'max') { margin: 20px 0; }
 
 	a {
-		@include font-size(14px);
+		@include font-size(13px);
 		color: #736C6B;
 		margin: 6px 0;
 
