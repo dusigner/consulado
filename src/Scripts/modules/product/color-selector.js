@@ -34,6 +34,7 @@ Nitro.module('color-selector', ['input-box'], function() {
 				.map(function(product) {
 					return {
 						name: product.Cor[0],
+						productName: product.productName,
 						style: $.replaceSpecialChars(product.Cor[0]),
 						link: product.link,
 						active: +product.productId === +window.skuJson.productId
@@ -49,10 +50,15 @@ Nitro.module('color-selector', ['input-box'], function() {
 				if (err) {
 					throw new Error('Supermodel Dust error: ' + err);
 				}
-				data = data.filter(obj => obj.active === true);
-				$(window).trigger('color.selector.ready', [data[0].name]);
+				const itemActive = data.filter(obj => obj.active === true);
+				$(window).trigger('color.selector.ready', [itemActive[0].name]);
 
 				$holder.html(out).show();
+
+				$('.input-box-dropdown-item').click(function() {
+					const itemClicked = data.filter(item => item.link === $(this).attr('href'));
+					$(window).trigger('color.selector.selected', [itemClicked[0]]);
+				});
 			});
 		}
 	};
@@ -71,7 +77,24 @@ Nitro.module('color-selector', ['input-box'], function() {
 			this.getProdVariety(productReference).then(res => {
 				this.build(res);
 			});
+
+		$(window).on('color.selector.selected', (event, product) => {
+			dataLayer &&
+				dataLayer.push({
+					event: 'generic',
+					category: `[SQUAD] Botão Escolher cor: ${product.name} ${product.productName}`,
+					action: 'Escolher cor do Produto ',
+					label: 'Botão escolher cor do produto '
+				});
+		});
 	};
 
-	this.setup();
+	const departamentUnavailable = ['187'];
+	const categoryUnavailable = ['244'];
+	const prodDepartamentID = window.vtxctx && window.vtxctx.departmentyId;
+	const prodCategoryID = window.vtxctx && window.vtxctx.categoryId;
+
+	!categoryUnavailable.includes(prodCategoryID) &&
+		!departamentUnavailable.includes(prodDepartamentID) &&
+		this.setup();
 });

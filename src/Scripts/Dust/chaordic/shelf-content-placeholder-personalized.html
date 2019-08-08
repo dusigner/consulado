@@ -1,8 +1,12 @@
 <div class="container clearfix js-content-lazy shelf--personalized" data-position="{position}" data-index="{$idx}" data-impressionUrl="{impressionUrl}">
-	<h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2>
+	<div class="container">
+		<h2 class="pre-title shelf-pre-title js-pre-title">{title|s}</h2>
+	</div>
 	<div>
 		<div class="js-content-personalized--ref shelf--personalized__holder shelf--personalized-ref">
-			<h2 class="pre-title shelf-pre-title">{title|s}</h2>
+			<div class="container">
+				<h2 class="pre-title shelf-pre-title">{title|s}</h2>
+			</div>
 			<ul class="shelf shelf--btp">
 				{#displays[0].references}
 					{>"shelf-content-placeholder-product"/}
@@ -11,7 +15,9 @@
 		</div>
 
 		<div class="js-content-personalized--rec shelf--personalized__holder shelf--personalized-rec">
-			<h2 class="pre-title shelf-pre-title shelf-sub-title">{subtitle|s}</h2>
+			<div class="container">
+				<h2 class="pre-title shelf-pre-title shelf-sub-title">{subtitle|s}</h2>
+			</div>
 			<ul class="shelf shelf--btp js-chaordic-shelf js-chaordic-slider " data-slidestoshow="2">
 				{#displays[0].recommendations}
 					{>"shelf-content-placeholder-product"/}

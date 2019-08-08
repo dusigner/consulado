@@ -1,0 +1,153 @@
+body,
+.listagem.smartbeer2 {
+	.tooltip {
+		display: none;
+	}
+
+	.item-banner {
+		display: none;
+	}
+
+	&.home,
+	&.listagem:not(.smartbeer2) {
+
+		.tooltip {
+			background-color: #fff;
+			border: 1px solid #d6d6d6;
+			border-bottom: 3px solid $green;
+			box-shadow: 0 0 10px 1px #d6d6d6;
+			height: calculate-em(60);
+			min-width: calculate-em(320);
+			padding: 10px 15px;
+			position: absolute;
+			top: 65px;
+			z-index: 2;
+
+			@media (max-width: 1348px) {
+				right: 15%;
+			}
+
+			&:before {
+				border: 8px solid transparent;
+				border-bottom-color: #d6d6d6;
+				bottom: 100%;
+				content: '';
+				left: 7%;
+				position: absolute;
+				z-index: 110;
+
+				@media (max-width: 1348px) {
+					left: 80%;
+				}
+			}
+
+			&-access {
+				@include responsiveFont(10);
+				color: #454140;
+				font-weight: bold;
+				margin-left: 5px;
+				text-transform: none;
+
+				&:after {
+					@include icon-get('arrow-right');
+					font-size: 8px;
+					font-weight: bold!important;
+					margin-left: 10px;
+				}
+			}
+
+			&-banner {
+				background-color: $green;
+			}
+
+			&-image {
+				display: inline-block;
+				height: 100%;
+				margin: 10px 15px 5px 15px;
+				width: 130px;
+			}
+
+			&-link {
+				display: inline-block;
+				height: 100%;
+				width: 100%;
+
+				&:after {
+					background: url('/arquivos/cervejeira-destaque-icon.png') no-repeat;
+					background-size: contain;
+					content: ' ';
+					display: inline-block;
+					height: calculate-em(30);
+					margin: 4px 0 0 18px;
+					width: calculate-em(20);
+
+					@include breakpoint ('extra-large', 'max') {
+						margin: 4px 0 0 calculate-em(12);
+					}
+				}
+
+
+				@include breakpoint ('small', 'max') {
+					display: flex;
+					flex-direction: row;
+				}
+			}
+
+			&-message {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+			}
+
+			&-text {
+				@include responsiveFont(12);
+				color: $base-font-color;
+				display: inline-block;
+				font-weight: 100;
+				margin: 0;
+				text-align: right;
+				vertical-align: top;
+
+				span {
+					display: block;
+					font-weight: bold;
+				}
+
+				@include breakpoint ('small', 'max') {
+					@include responsiveFont(12);
+					color: #fff;
+					margin: 5px 0 0 5px;
+					text-align: left;
+					text-transform: uppercase;
+				}
+			}
+
+			@include breakpoint ('medium', 'max') {
+				right: 0;
+
+				&:before {
+					left: 45%;
+				}
+			}
+		}
+
+		.item {
+			a[title='Cervejeira'] {
+				&:hover {
+					+.tooltip {
+						display: block!important;
+						visibility: visible!important;
+					}
+				}
+			}
+
+			&-banner {
+				display: none;
+
+				@include breakpoint ('small', 'max') {
+					display: block;
+				}
+			}
+		}
+	}
+}

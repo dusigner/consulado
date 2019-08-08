@@ -34,7 +34,18 @@ body.listagem {
 	}
 }
 
-.prateleira > ul > li { float: left; }
+// Ajuste para quando o slick não carregar e
+// focado no comportamento da prateleira no IE
+.prateleira > ul {
+	display: flex;
+	flex-wrap: wrap;
+	// overflow: hidden;
+
+	& > li {
+		display: inline-block;
+		flex: 1 0 auto;
+	}
+}
 
 .prateleira-slider {
 	.slick-track {
@@ -107,13 +118,13 @@ body.listagem {
 
 	.detalhes {
 		display: flex;
-		flex: 1;
+		flex: 1 1 auto;
 		flex-direction: column;
 
 		.prod-info {
 			border-top: 1px solid #f1f0f0;
 			display: flex;
-			flex: 1;
+			flex: 1 1 auto;
 			flex-direction: column;
 			line-height: normal;
 			margin-top: 1em;
@@ -121,7 +132,7 @@ body.listagem {
 
 			.nome {
 				@include rfs(14);
-				flex: 1;
+				flex: 1 1 auto;
 				font-family: 'Open Sans';
 				font-weight: lighter;
 				margin: 5px 0 15px;

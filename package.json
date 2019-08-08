@@ -1,7 +1,7 @@
 {
 	"name": "consul",
 	"accountName": "consul",
-	"version": "v6.40.0",
+	"version": "v6.45.4",
 	"author": "Jussi Platform Team",
 	"private": true,
 	"secureUrl": true,
@@ -22,6 +22,7 @@
 		"@babel/polyfill": "^7.2.5",
 		"@babel/preset-env": "^7.3.4",
 		"autoprefixer": "^9.4.10",
+		"babel-eslint": "^10.0.2",
 		"babel-loader": "^8.0.5",
 		"browser-sync": "^2.26.7",
 		"connect-http-please": "^0.3.0",

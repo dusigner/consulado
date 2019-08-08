@@ -1,5 +1,6 @@
 @charset 'UTF-8';
 
+@import 'header/tooltip';
 //------------------------------------
 //  HEADER
 //------------------------------------
@@ -447,6 +448,11 @@ div.account {
 		display: block;
 		padding: 3px 0 0 0;
 		top: 0;
+
+		@include breakpoint ('small', 'max') {
+			bottom: 9px;
+			top: auto;
+		}
 	}
 
 	.account__icon {

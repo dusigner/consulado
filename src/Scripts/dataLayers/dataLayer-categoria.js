@@ -2,8 +2,7 @@ import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline'
 
 Nitro.module('dataLayer-categoria', function() {
 	this.breadCrumb = () => {
-		$('.breadcrumb a').click(function(e) {
-			e.preventDefault();
+		$('.breadcrumb a').click(function() {
 			const category = $(this).text();
 
 			pushDataLayer(

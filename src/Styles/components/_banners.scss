@@ -48,10 +48,16 @@
 	padding: 0 !important;
 	position: relative;
 
-	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
-	@include breakpoint(extra-large, 'min') {
-		min-height: 340px;
+	.slick-arrow {
+		margin: 0 10px;
+		opacity: .5;
+		width: 30px;
+
+		&:before { color: #fff; }
 	}
+
+	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
+	@include breakpoint(extra-large, 'min') { min-height: 340px; }
 
 	.box-banner {
 		position: absolute;
