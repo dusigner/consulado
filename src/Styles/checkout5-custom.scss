@@ -115,7 +115,19 @@ body {
 			max-width: 100%;
 			position: relative;
 			vertical-align: middle;
-			width: 100%;
+			width: 173px;
+		}
+		.header {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			.compra-segura {
+				@include responsiveFont(14);
+				color: $txt-gray-l;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+
 		}
 	}
 	#cart-title,
