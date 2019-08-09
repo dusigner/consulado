@@ -167,7 +167,6 @@ body {
 									@include responsiveFont(12, 16, true);
 									font-weight: 600;
 									margin-top: 20px;
-									text-transform: capitalize;
 
 									@include breakpoint(small, 'max') {
 										@include responsiveFont(13, 18, true);
@@ -1034,7 +1033,6 @@ body {
 						border: 1px solid $gray-l;
 						font-weight: bold;
 						padding: 12px 25px;
-						text-transform: capitalize;
 
 						@include breakpoint(small, 'min') {
 							padding: 12px 45px;
