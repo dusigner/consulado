@@ -50,6 +50,10 @@ body {
 
 						&.product-image {
 
+							background-position: center 30px;
+							vertical-align: top;
+
+
 							@include  breakpoint(small 'max') {
 								padding: 0;
 							}
