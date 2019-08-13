@@ -427,13 +427,9 @@ body {
 
 
 body.store-is--televendas {
-	#app-container {
-		.App {
-			// Pagar com 2 cartões
-			.ChangeNumberOfPayments {
-				display: none;
-				visibility: hidden;
-			}
-		}
+	// Pagar com 2 cartões
+	.ChangeNumberOfPayments {
+		display: none;
+		visibility: hidden;
 	}
 }
