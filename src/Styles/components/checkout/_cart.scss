@@ -248,7 +248,20 @@ body {
 							.best-price {
 								@include responsiveFont(12, 16, true);
 								color: $purple;
+								display: flex;
 								font-weight: bold;
+							}
+							.new-product-price-label {
+								margin-right: 3px;
+							}
+							.discount {
+								margin-left: 10px;
+							}
+							.field-help {
+								margin-top: 25px;
+							}
+							.how-much-discount {
+								color: #0FB6DE;
 							}
 						}
 
@@ -1002,6 +1015,17 @@ body {
 
 		.coupon-column {
 			width: 50%;
+
+			.delete {
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 12px;
+				margin-left: 10px;
+			}
+			.info {
+				align-items: center;
+				display: flex;
+			}
 
 			@include breakpoint(small, 'max') {
 				width: 100%;
