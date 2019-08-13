@@ -530,6 +530,10 @@ $(document).on('ready', function() {
 			this.payment = function() {
 				console.info('payment');
 
+				if (window.store.isTelevendas) {
+					$('body').addClass('store-is--televendas');
+				}
+
 				// Subir a página com a intenção de exibir as formas de pagamento ainda no primeiro scroll
 				$('html, body').animate(
 					{

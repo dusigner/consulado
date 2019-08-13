@@ -399,10 +399,10 @@ body {
 		}
 
 		// Pagar com 2 cartões
-		.ChangeNumberOfPayments {
-			display: none;
-			visibility: hidden;
-		}
+		// .ChangeNumberOfPayments {
+		// 	display: none;
+		// 	visibility: hidden;
+		// }
 
 		// Cep
 		.PostalCode { width: 25%; }
@@ -420,6 +420,20 @@ body {
 			}
 
 			.payment-billing-address-complement { float: right; }
+		}
+	}
+}
+
+
+
+body.store-is--televendas {
+	#app-container {
+		.App {
+			// Pagar com 2 cartões
+			.ChangeNumberOfPayments {
+				display: none;
+				visibility: hidden;
+			}
 		}
 	}
 }
