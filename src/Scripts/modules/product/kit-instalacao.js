@@ -1,6 +1,8 @@
 /* global $: true, Nitro: true */
 'use strict';
 
+// Layout id: lid=203f5a71-a3b8-401a-9823-2b28111c8512
+
 Nitro.module('kit-instalacao', function() {
 	// Variables
 	const self = this;
@@ -8,31 +10,26 @@ Nitro.module('kit-instalacao', function() {
 	const $gasType = $('.kit-instalacao__input');
 	const $kitInstalacaoContainer = $('.kit-instalacao-container');
 
-	// Selecione o tipo de gás
-	this.selectGasType = () => {
-		$gasType.on('change', (e) => {
-			const cssClass = this.textToCssClass(e.target.value);
-
-			if (!$kitInstalacao.hasClass('kit-loaded')) {
-				this.loadingAnimation();
-				this.getProducts();
-
-				$kitInstalacao.addClass(`kit-loaded`);
-			}
-
-			$kitInstalacao.attr('data-gastype', `${cssClass}`);
-		});
+	this.init = () => {
+		this.selectKitType();
 	};
 
-	// Nomalizar o texto e retornalo com um padrao de css
-	this.textToCssClass = (text) => {
-		let gasClass = '';
-		gasClass = text;
-		gasClass = gasClass.toLowerCase();
-		gasClass = gasClass.replace(/\s/, '-');
-		gasClass = gasClass.replace(/[ãàáâ]/, 'a');
+	// Selecione o tipo de gás
+	this.selectKitType = () => {
+		$gasType.on('change', (e) => {
+			const self = e.target;
+			const collectionId = self.value;
+			const kitType = $(self).attr('id');
 
-		return gasClass;
+			if (!$kitInstalacao.hasClass(`kit-loaded-${collectionId}`)) {
+				this.loadingAnimation();
+				this.getProducts(collectionId, kitType);
+
+				$kitInstalacao.addClass(`kit-loaded-${collectionId}`);
+			}
+
+			$kitInstalacao.attr('data-kittype', `${kitType}`);
+		});
 	};
 
 	// Animação de loading...
@@ -40,29 +37,36 @@ Nitro.module('kit-instalacao', function() {
 		$kitInstalacao.toggleClass('kit-is-loading');
 	};
 
+	this.showProducts = (kitType) => {
+		const kitContent = $(`.kit-instalacao__content[data-kittype="${kitType}"]`);
+
+		kitContent.show();
+	};
+
 	// Busca todos os produtos da coleção
-	this.getProducts = () => {
-		fetch('/api/catalog_system/pub/products/search?fq=productClusterIds:1765')
+	this.getProducts = (collectionId, kitType) => {
+		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${collectionId}`)
 			.then(resp => resp.json())
-			.then(data => this.printProducts(data))
+			.then(data => this.printProducts(data, kitType))
 			.then(() => this.loadingAnimation())
+			.then(() => this.showProducts(kitType))
 			.catch(error => {
 				this.printError();
-				console.error('###Error', error);
+				console.error('#Error', error);
 			});
 	};
 
 	// Exibe os produtos na tela de produto
-	this.printProducts = (data) => {
+	this.printProducts = (data, kitType) => {
 		const products = data;
 
 		products.map(product => {
-			$kitInstalacaoContainer.after(this.productKitTemplate(product));
+			$kitInstalacaoContainer.after(this.productKitTemplate(product, kitType));
 		});
 	};
 
 	// Template a ser exibido na tela de produto
-	this.productKitTemplate = (product) => {
+	this.productKitTemplate = (product, kitType) => {
 		const { productId, productTitle, productReference } = product;
 		const productImage = product.items[0].images[0].imageUrl;
 		let { ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
@@ -73,28 +77,30 @@ Nitro.module('kit-instalacao', function() {
 
 		// Product Kit
 		const kitTemplate = `
-			<div class="kit-product product-${productId}">
-				<div class="kit-product__item kit-product__item-image">
-					<img src="${productImage}" alt="${productTitle}">
-				</div>
+			<div class="kit-instalacao__content" data-kittype="${kitType}">
+				<div class="kit-product product-${productId}">
+					<div class="kit-product__item kit-product__item-image">
+						<img src="${productImage}" alt="${productTitle}">
+					</div>
 
-				<div class="kit-product__item kit-product__item-title">
-					<h2>${productTitle}</h2>
-					<span>${productReference}</span>
-				</div>
+					<div class="kit-product__item kit-product__item-title">
+						<h2>${productTitle}</h2>
+						<span>${productReference}</span>
+					</div>
 
-				<div class="kit-product__item kit-product__item-price">
-					<div class="de">De R$ ${ListPrice}</div>
-					<div class="por">Por R$ ${Price}</div>
-				</div>
+					<div class="kit-product__item kit-product__item-price">
+						<div class="de">De R$ ${ListPrice}</div>
+						<div class="por">Por R$ ${Price}</div>
+					</div>
 
-				<div class="kit-product__item kit-product__item-select">
-					<input type="checkbox" name="product-${productId}" id="product-${productId}" />
-					<label for="product-${productId}"></label>
-				</div>
+					<div class="kit-product__item kit-product__item-select">
+						<input type="checkbox" name="product-${productId}" id="product-${productId}" />
+						<label for="product-${productId}"></label>
+					</div>
 
-				<div class="kit-product__info">
-					Conversão gratuita <i class="icon icon-question"></i>
+					<div class="kit-product__info">
+						Conversão gratuita <i class="icon icon-question"></i>
+					</div>
 				</div>
 			</div>
 		`;
@@ -123,5 +129,5 @@ Nitro.module('kit-instalacao', function() {
 		});
 	};
 
-	self.selectGasType();
+	self.init();
 });

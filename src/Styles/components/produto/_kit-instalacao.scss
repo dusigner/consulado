@@ -7,6 +7,8 @@
 
 	.skuList { margin-bottom: 10px; }
 
+	&__content { display: none; }
+
 	&__title.specification {
 		text-transform: none;
 
@@ -68,22 +70,20 @@
 	}
 
 	// Controle de exibição dos Kits com base na seleção do tipo de gás
-	&[data-gastype='gas-natural'] {
-		.kit-product.product-2003553,
-		.kit-product.product-2002761 { display: flex; }
-	}
+	// &[data-kittype='gas-natural'] {
+	// 	.kit-instalacao__content[data-kittype='gas-natural'] { display: block; }
+	// }
 
-	&[data-gastype='botijao'] {
-		.kit-product.product-2003552,
-		.kit-product.product-2002762 { display: flex; }
-	}
+	// &[data-kittype='botijao'] {
+	// 	.kit-instalacao__content[data-kittype='botijao'] { display: block; }
+	// }
 }
 
 .kit-product {
 	align-items: center;
 	border: 1px solid #e3e1e1;
 	border-radius: 4px;
-	display: none;
+	display: flex;
 	justify-content: space-between;
 	margin: 10px;
 	overflow: hidden;
