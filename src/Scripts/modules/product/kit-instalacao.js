@@ -38,9 +38,8 @@ Nitro.module('kit-instalacao', function() {
 	};
 
 	this.showProducts = (kitType) => {
-		const kitContent = $(`.kit-instalacao__content[data-kittype="${kitType}"]`);
-
-		kitContent.show();
+		$(`.kit-instalacao__content`).hide();
+		$(`.kit-instalacao__content[data-kittype="${kitType}"]`).show();
 	};
 
 	// Busca todos os produtos da coleção
