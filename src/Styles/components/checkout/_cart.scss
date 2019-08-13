@@ -21,6 +21,7 @@ body {
 
 					th {
 						padding: 15px;
+						text-align: left;
 						text-transform: capitalize;
 					}
 				}
@@ -103,6 +104,7 @@ body {
 							@include breakpoint(small, 'min') {
 								padding-bottom: 10px;
 								padding-top: 45px;
+								text-align: left;
 								vertical-align: top;
 							}
 						}
@@ -165,7 +167,6 @@ body {
 									@include responsiveFont(12, 16, true);
 									font-weight: 600;
 									margin-top: 20px;
-									text-transform: capitalize;
 
 									@include breakpoint(small, 'max') {
 										@include responsiveFont(13, 18, true);
@@ -232,21 +233,35 @@ body {
 
 						.product-price {
 							margin-top: 9px;
+							text-transform: uppercase;
 
 							@include breakpoint(small, 'max') {
 								margin-right: 16px;
 							}
 
 							.list-price {
-								@include responsiveFont(13, 16, true);
-
+								@include responsiveFont(10, 16, true);
+								font-weight: 500;
 								.old-product-price { color: $purple; }
 							}
 
 							.best-price {
-								@include responsiveFont(13, 16, true);
+								@include responsiveFont(12, 16, true);
 								color: $purple;
+								display: flex;
 								font-weight: bold;
+							}
+							.new-product-price-label {
+								margin-right: 3px;
+							}
+							.discount {
+								margin-left: 10px;
+							}
+							.field-help {
+								margin-top: 25px;
+							}
+							.how-much-discount {
+								color: #0FB6DE;
 							}
 						}
 
@@ -417,7 +432,7 @@ body {
 				padding-top: 5px;
 				width: 100%;
 			}
-			max-width: 363px;
+			max-width: 390px;
 			padding: 0;
 			width: 100%;
 
@@ -1001,6 +1016,17 @@ body {
 		.coupon-column {
 			width: 50%;
 
+			.delete {
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 12px;
+				margin-left: 10px;
+			}
+			.info {
+				align-items: center;
+				display: flex;
+			}
+
 			@include breakpoint(small, 'max') {
 				width: 100%;
 
@@ -1031,7 +1057,6 @@ body {
 						border: 1px solid $gray-l;
 						font-weight: bold;
 						padding: 12px 25px;
-						text-transform: capitalize;
 
 						@include breakpoint(small, 'min') {
 							padding: 12px 45px;
@@ -1136,7 +1161,7 @@ body {
 			position: relative;
 
 			@include breakpoint(small, 'min') {
-				max-width: 363px;
+				max-width: 390px;
 				padding: 0 35px;
 				width: 100%;
 			}
