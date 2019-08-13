@@ -366,7 +366,8 @@ Nitro.module('checkout.recurrence', function() {
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
 
-			let customData = (window.localStorage.getItem('sku-recurrence')) ? window.localStorage.getItem('sku-recurrence').split(',') : [];
+			let customData = (sessionStorage.getItem('sku-recurrence')) ? sessionStorage.getItem('sku-recurrence').split(',') : [];
+
 			const recurrenceElement = $('.product-item').last();
 
 			if ((!customData.includes(recurrenceElement.attr('data-sku')) && recurrenceElement.find('.js-modal-open').length > 0 && !recurrenceElement.find('.recurrence__step--one').hasClass('hide')) || self.showModalWhenHasPurificador()) {
@@ -376,13 +377,17 @@ Nitro.module('checkout.recurrence', function() {
 				$cartTemplate.addClass('been-called');
 			}
 
+			customData = [];
+
+			sessionStorage.removeItem('sku-recurrence');
+
 			$('.js-modal-open').each(function() {
 				let dataSku = $(this).parents('.product-item').attr('data-sku');
-				(customData.includes(dataSku)) ? '' : customData.push(dataSku);
+				customData.push(dataSku);
 
 			});
 
-			window.localStorage.setItem('sku-recurrence', customData);
+			sessionStorage.setItem('sku-recurrence', customData);
 
 			//}
 		}, 1500);
@@ -395,12 +400,19 @@ Nitro.module('checkout.recurrence', function() {
 	*/
 	this.showModalWhenHasPurificador = () => {
 		const element = $('.product-item:contains("Purificador")').last();
-		let customData = (window.localStorage.getItem('sku-cart')) ? window.localStorage.getItem('sku-cart').split(',') : [];
+		let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
 
 		if (element.length > 0 && !customData.includes(element.attr('data-sku'))) {
-			customData.push(element.attr('data-sku'));
+			sessionStorage.removeItem('sku-cart');
 
-			window.localStorage.setItem('sku-cart', customData.join(','));
+			customData = [];
+
+			$('.linkWarranty').each(function() {
+				let dataSku = $(this).parents('.product-item').attr('data-sku');
+				customData.push(dataSku);
+			});
+
+			sessionStorage.setItem('sku-cart', customData);
 
 			return true;
 		} else {
@@ -425,14 +437,14 @@ Nitro.module('checkout.recurrence', function() {
 	 */
 	this.removeFromCart = () => {
 		$('.item-link-remove').on('click', function() {
-			let skus = window.localStorage.getItem('sku-recurrence').split(','),
+			let skus = sessionStorage.getItem('sku-recurrence').split(','),
 				element = $(this);
 
 			let newListSkus = skus.filter(function(value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
-			window.localStorage.setItem('sku-recurrence', newListSkus.join(','));
+			sessionStorage.setItem('sku-recurrence', newListSkus.join(','));
 		});
 	};
 });

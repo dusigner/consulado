@@ -26,14 +26,14 @@ Nitro.module('checkout.gae', function() {
 	 */
 	this.removeFromCart = () => {
 		$('.item-link-remove').on('click', function() {
-			let skus = window.localStorage.getItem('sku-cart').split(','),
+			let skus =sessionStorage.getItem('sku-cart').split(','),
 				element = $(this);
 
 			let newListSkus = skus.filter(function(value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
-			window.localStorage.setItem('sku-cart', newListSkus.join(','));
+			sessionStorage.setItem('sku-cart', newListSkus.join(','));
 		});
 	};
 
@@ -494,7 +494,7 @@ Nitro.module('checkout.gae', function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
-			let customData = (window.localStorage.getItem('sku-cart')) ? window.localStorage.getItem('sku-cart').split(',') : [];
+			let customData = (sessionStorage.getItem('sku-cart')) ?sessionStorage.getItem('sku-cart').split(',') : [];
 
 			//if($(window).width() > 1000){
 			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {
@@ -504,16 +504,20 @@ Nitro.module('checkout.gae', function() {
 						.trigger('click');
 					$cartTemplate.addClass('been-called');
 				}
-			} else if ($('.linkWarranty').length === 0) {
-				window.localStorage.removeItem('sku-cart');
 			}
 			//}
 
+			customData = [];
+
+			sessionStorage.removeItem('sku-cart');
+
 			$('.linkWarranty').each(function() {
 				let dataSku = $(this).parents('.product-item').attr('data-sku');
-				(customData.includes(dataSku)) ? '' : customData.push(dataSku);
+				customData.push(dataSku);
 			});
-			window.localStorage.setItem('sku-cart', customData);
+
+			sessionStorage.setItem('sku-cart', customData);
+
 		}, 1500);
 	};
 
