@@ -437,3 +437,58 @@ body {
 		}
 	}
 }
+
+.ChangeNumberOfPayments {
+	align-items: center;
+	border-top: 1px solid #dfdfdf;
+	display: flex;
+	padding-top: 10px;
+	position: relative;
+	width: 100%;
+
+
+	&:before {
+			background-image: url('https://consulqa.vteximg.com.br/arquivos/cns-icon-add-cartao.jpg');
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 23px;
+			margin-right: 10px;
+			width: 49px;
+	}
+	a {
+		color: #736c6b;
+		display: block;
+		font-size: 0;
+		line-height: normal;
+		width: 100%;
+
+		&:before {
+			content: 'Adicionar mais um cartão ao pagamento';
+			font-size: 13px;
+		}
+		&:after {
+			background-image: url('https://consulqa.vteximg.com.br/arquivos/icon-arrow-gray.png');
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 8px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			width: 12px;
+		}
+	}
+}
+
+.CardForm + .CardForm + .ChangeNumberOfPayments a {
+	font-size: 13px;
+	&:before {
+		display: none;
+	}
+	&:after {
+		transform: rotate(180deg);
+	}
+}
+
+
