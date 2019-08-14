@@ -400,8 +400,33 @@ body {
 
 		// Pagar com 2 cartões
 		.ChangeNumberOfPayments {
-			// display: none;
-			// visibility: hidden;
+			border-top: 1px solid #ccc;
+			font-size: 15px;
+			font-weight: bold;
+			margin: 1em 0;
+			position: relative;
+
+			&:after {
+				@include icon-get(arrow-down);
+				font-size: 10px;
+				height: auto;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				visibility: visible;
+			}
+
+			a {
+				color: #999;
+				display: block;
+				height: 100%;
+				padding: 1em 0;
+				text-decoration: none;
+				width: 100%;
+
+				&:hover { color: #999; }
+			}
 		}
 
 		// Cep
@@ -423,5 +448,3 @@ body {
 		}
 	}
 }
-
-
