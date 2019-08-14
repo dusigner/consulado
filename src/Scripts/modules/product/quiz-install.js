@@ -33,6 +33,8 @@ Nitro.module('quiz-install', function() {
 
 			if ($('.skuselector-specification-label').hasClass('checked')) {
 				$(location).attr('href', buyButtonLink + '&' + skuInstall);
+
+				console.log('###########', buyButtonLink + '&' + skuInstall);
 			} else {
 				buyButton.trigger('click');
 

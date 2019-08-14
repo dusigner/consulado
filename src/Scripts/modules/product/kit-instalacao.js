@@ -8,7 +8,6 @@ Nitro.module('kit-instalacao', function() {
 	const self = this;
 	const $kitInstalacao = $('.kit-instalacao');
 	const $gasType = $('.kit-instalacao__input');
-	const $kitInstalacaoContainer = $('.kit-instalacao-container');
 
 	this.init = () => {
 		this.selectKitType();
@@ -29,6 +28,8 @@ Nitro.module('kit-instalacao', function() {
 			}
 
 			$kitInstalacao.attr('data-kittype', `${kitType}`);
+
+			this.showProducts(kitType);
 		});
 	};
 
@@ -37,18 +38,35 @@ Nitro.module('kit-instalacao', function() {
 		$kitInstalacao.toggleClass('kit-is-loading');
 	};
 
+	// Mostrar somente produtos ativos
 	this.showProducts = (kitType) => {
 		$(`.kit-instalacao__content`).hide();
 		$(`.kit-instalacao__content[data-kittype="${kitType}"]`).show();
+	};
+
+	this.selectProducts = () => {
+		const $product = $('input[type="checkbox"]');
+
+		$product.on('change', function() {
+			$(this).parents('.kit-product').toggleClass('is--active');
+			console.log('Click');
+		});
+
 	};
 
 	// Busca todos os produtos da coleção
 	this.getProducts = (collectionId, kitType) => {
 		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${collectionId}`)
 			.then(resp => resp.json())
-			.then(data => this.printProducts(data, kitType))
+			.then(data => {
+				console.log(data);
+				this.printProducts(data, kitType);
+			})
 			.then(() => this.loadingAnimation())
-			.then(() => this.showProducts(kitType))
+			.then(() => {
+				this.showProducts(kitType);
+				this.selectProducts();
+			})
 			.catch(error => {
 				this.printError();
 				console.error('#Error', error);
@@ -60,7 +78,7 @@ Nitro.module('kit-instalacao', function() {
 		const products = data;
 
 		products.map(product => {
-			$kitInstalacaoContainer.after(this.productKitTemplate(product, kitType));
+			$kitInstalacao.append(this.productKitTemplate(product, kitType));
 		});
 	};
 
@@ -68,7 +86,7 @@ Nitro.module('kit-instalacao', function() {
 	this.productKitTemplate = (product, kitType) => {
 		const { productId, productTitle, productReference } = product;
 		const productImage = product.items[0].images[0].imageUrl;
-		let { ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
+		let { AvailableQuantity, ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
 
 		// Formatar o preço antes de exibir na tela
 		ListPrice = _.formatCurrency(ListPrice);
@@ -77,30 +95,39 @@ Nitro.module('kit-instalacao', function() {
 		// Product Kit
 		const kitTemplate = `
 			<div class="kit-instalacao__content" data-kittype="${kitType}">
-				<div class="kit-product product-${productId}">
-					<div class="kit-product__item kit-product__item-image">
-						<img src="${productImage}" alt="${productTitle}">
-					</div>
+				<label for="product-${productId}">
+					<div class="kit-product product-${productId}">
+						<div class="kit-product__item kit-product__item-image">
+							<img src="${productImage}" alt="${productTitle}">
+						</div>
 
-					<div class="kit-product__item kit-product__item-title">
-						<h2>${productTitle}</h2>
-						<span>${productReference}</span>
-					</div>
+						<div class="kit-product__item kit-product__item-title">
+							<h2>${productTitle}</h2>
+							<span>${productReference}</span>
+						</div>
 
-					<div class="kit-product__item kit-product__item-price">
-						<div class="de">De R$ ${ListPrice}</div>
-						<div class="por">Por R$ ${Price}</div>
-					</div>
+						${AvailableQuantity ? `
+							<div class="kit-product__item kit-product__item-price">
+								<div class="de">De R$ ${ListPrice}</div>
+								<div class="por">Por R$ ${Price}</div>
+							</div>
 
-					<div class="kit-product__item kit-product__item-select">
-						<input type="checkbox" name="product-${productId}" id="product-${productId}" />
-						<label for="product-${productId}"></label>
-					</div>
+							<div class="kit-product__item kit-product__item-select">
+								<input type="checkbox" name="product-${productId}" id="product-${productId}" />
+								<div class="label"></div>
+							</div>
+							` : `
+							<div class="kit-product__item kit-product__item-unavailable">
+								Produto indisponível
+							</div>
+							<div class="kit-product__item kit-product__item-select"></div>
+						`}
 
-					<div class="kit-product__info">
-						Conversão gratuita <i class="icon icon-question"></i>
+						<div class="kit-product__info">
+							Conversão gratuita <i class="icon icon-question"></i>
+						</div>
 					</div>
-				</div>
+				</label>
 			</div>
 		`;
 
@@ -116,7 +143,7 @@ Nitro.module('kit-instalacao', function() {
 			</div>
 		`;
 
-		$kitInstalacaoContainer.after(errorTemplate);
+		$kitInstalacao.append(errorTemplate);
 		this.handleError();
 	};
 

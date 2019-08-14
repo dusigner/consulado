@@ -65,18 +65,9 @@
 	}
 
 	// Exibir informações somente depois do loading dos produtos
-	&.kit-loaded {
+	&[class*='kit-loaded'] {
 		.kit-instalacao-container { display: block; }
 	}
-
-	// Controle de exibição dos Kits com base na seleção do tipo de gás
-	// &[data-kittype='gas-natural'] {
-	// 	.kit-instalacao__content[data-kittype='gas-natural'] { display: block; }
-	// }
-
-	// &[data-kittype='botijao'] {
-	// 	.kit-instalacao__content[data-kittype='botijao'] { display: block; }
-	// }
 }
 
 .kit-product {
@@ -101,9 +92,15 @@
 
 		// Image
 		&-image {
+			@include breakpoint('medium', 'max') {
+				display: none;
+				visibility: hidden;
+			}
 			height: 60px;
 			overflow: hidden;
 			width: 60px;
+
+			a { display: block; }
 
 			img {
 				display: block;
@@ -113,6 +110,9 @@
 
 		// Title
 		&-title {
+			@include breakpoint('medium', 'max') {
+				width: 60%;
+			}
 			color: #736C6B;
 			width: 155px;
 
@@ -142,27 +142,28 @@
 			}
 		}
 
+		// Produto indisponível
+		&-unavailable {
+			@include rfs(13);
+			font-weight: bold;
+			text-align: center;
+		}
+
 		// Select
 		&-select {
 			margin-right: 5px;
 			overflow: hidden;
 			position: relative;
 			text-align: right;
+			width: 30px;
 
 			input {
 				left: -30px;
 				opacity: 0;
 				position: absolute;
-
-				&:checked + label {
-					border: 2px solid #702F8F;
-					border-radius: 2px;
-
-					&:before { opacity: 1; }
-				}
 			}
 
-			label {
+			.label {
 				@include square(20px);
 				border: 1px solid #bbb;
 				border-radius: 2px;
@@ -170,16 +171,34 @@
 				position: relative;
 				transition: border .1s ease;
 
-				&:before {
-					@include square(8px);
-					background-color: #702F8F;
-					content: '';
+				&:before,
+				&:after {
 					left: 50%;
 					opacity: 0;
 					position: absolute;
 					top: 50%;
 					transform: translate(-50%, -50%);
 					transition: opacity .1s ease;
+				}
+
+				&:before {
+					@include square(100%);
+					background-color: #9ACA3C;
+					content: '';
+				}
+
+				&:after {
+					@include icon-get(check-thin);
+					color: #fff;
+				}
+
+				// Active state
+				.is--active & {
+					border-color: #9ACA3C;
+					border-radius: 2px;
+
+					&:before,
+					&:after { opacity: 1; }
 				}
 			}
 		}
@@ -208,6 +227,12 @@
 		// Exibir somente para gás natural
 		.product-2003553 &,
 		.product-2002761 & { display: block; }
+	}
+
+	// Active state
+	&.is--active {
+		border-color: #9ACA3C;
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
 	}
 }
 
