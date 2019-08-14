@@ -82,8 +82,7 @@
 	position: relative;
 
 	// [Gás natural]
-	&.product-2003553,
-	&.product-2002761 {
+	.kit-instalacao[data-kittype='botijao'] & {
 		padding-bottom: 24px;
 	}
 
@@ -157,6 +156,17 @@
 			text-align: right;
 			width: 30px;
 
+			&:before {
+				@include square(100%);
+				background-color: #fff;
+				content: '';
+				left: 0;
+				opacity: 0;
+				position: absolute;
+				top: 0;
+				z-index: 1;
+			}
+
 			input {
 				left: -30px;
 				opacity: 0;
@@ -224,9 +234,10 @@
 			transform: translateY(-50%);
 		}
 
-		// Exibir somente para gás natural
-		.product-2003553 &,
-		.product-2002761 & { display: block; }
+		// Exibir somente para [Gás natural]
+		.kit-instalacao[data-kittype='botijao'] & {
+			display: block;
+		}
 	}
 
 	// Active state
