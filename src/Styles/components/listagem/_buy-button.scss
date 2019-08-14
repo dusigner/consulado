@@ -14,12 +14,13 @@ body.buyButton {
 	.prod__selectSKU {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		margin: 0 auto;
 		position: relative;
 		white-space: nowrap;
 		width: 75%;
 		z-index: 3;
+
 
 		@include breakpoint ('medium', 'max') {
 			width: 50%;
