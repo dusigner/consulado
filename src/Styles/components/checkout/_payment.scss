@@ -472,6 +472,9 @@ body {
 	&:before {
 		display: none;
 	}
+	&:after {
+		transform: rotate(180deg);
+	}
 }
 
 
