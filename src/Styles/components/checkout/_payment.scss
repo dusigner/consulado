@@ -406,17 +406,6 @@ body {
 			margin: 1em 0;
 			position: relative;
 
-			&:after {
-				@include icon-get(arrow-down);
-				font-size: 10px;
-				height: auto;
-				position: absolute;
-				right: 0;
-				top: 50%;
-				transform: translateY(-50%);
-				visibility: visible;
-			}
-
 			a {
 				color: #999;
 				display: block;
