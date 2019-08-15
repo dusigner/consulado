@@ -399,10 +399,24 @@ body {
 		}
 
 		// Pagar com 2 cartões
-		// .ChangeNumberOfPayments {
-		// 	display: none;
-		// 	visibility: hidden;
-		// }
+		.ChangeNumberOfPayments {
+			border-top: 1px solid #ccc;
+			font-size: 15px;
+			font-weight: bold;
+			margin: 1em 0;
+			position: relative;
+
+			a {
+				color: #999;
+				display: block;
+				height: 100%;
+				padding: 1em 0;
+				text-decoration: none;
+				width: 100%;
+
+				&:hover { color: #999; }
+			}
+		}
 
 		// Cep
 		.PostalCode { width: 25%; }

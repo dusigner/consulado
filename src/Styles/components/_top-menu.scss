@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .top-navigation {
-	background: linear-gradient(90deg, #fff 70%, #F1F0F0 70%);
+	background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
     bottom: 1px;
 	box-shadow: 0 0 12px #e5e5e5;
 	position: relative;
@@ -12,7 +12,7 @@
 	}
 
 	.menu-department {
-		background: linear-gradient(90deg, #fff 85%, #F1F0F0 85%);
+		background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
 		display: flex;
 		justify-content: space-between;
 
@@ -53,6 +53,8 @@
 	& > .item {
 		@include responsiveFont(16);
 		background-color: #fff;
+		flex-basis: auto;
+		flex-grow: 1;
 		padding: 1em 1.25em;
 
 		&.item-cervejeira {
@@ -66,6 +68,7 @@
 
 		& > a {
 			color: $green;
+			text-align: center;
 			width: 100%;
 
 			&[title='Cervejeira'] {
