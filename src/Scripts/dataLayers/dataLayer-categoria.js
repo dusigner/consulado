@@ -1,6 +1,15 @@
 import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-categoria', function() {
+
+	this.init = () => {
+		checkInlineDatalayers();
+
+		this.breadCrumb();
+		this.shelfSelectSku();
+		this.bannerDataLayer();
+	},
+
 	this.breadCrumb = () => {
 		$('.breadcrumb a').click(function() {
 			const category = $(this).text();
@@ -23,8 +32,17 @@ Nitro.module('dataLayer-categoria', function() {
 		});
 	};
 
-	checkInlineDatalayers();
+	this.bannerDataLayer = () => {
+		const category = dataLayer[0].categoryName;
+		$('.category-page-top-banner a').on('click', function() {
+			dataLayer.push({
+				event: 'generic',
+				category: `[SQUAD] Banner Categoria - ${category}`,
+				action: 'Clique no banner',
+				label: 'Banner Promocional'
+			});
+		});
+	},
 
-	this.breadCrumb();
-	this.shelfSelectSku();
+	this.init();
 });
