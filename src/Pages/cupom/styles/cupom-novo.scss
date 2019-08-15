@@ -11,361 +11,361 @@
 @import 'helpers/fix-header-bootstrap4';
 @import 'helpers/fix-footer-bootstrap4';
 //COLORS
-$gray-light: #FBFAFA;
+$gray-light: #fbfafa;
 //FONTS
 $font-light: 300;
 $font-normal: 500;
 $font-bold: 600;
 //BREAKPOINTS
-$breakpoint-map: ( 'xs': 0, 'phone': 576px, 'tablet': 769px, 'desktop': 992px, 'lg-desktop': 1200px, 'xlg-desktop': 1400px, );
+$breakpoint-map: (
+	'xs': 0,
+	'phone': 576px,
+	'tablet': 769px,
+	'desktop': 992px,
+	'lg-desktop': 1200px,
+	'xlg-desktop': 1400px
+);
 .cupom {
-    &-header {
-        margin: 30px auto;
-        text-align: center;
-        &__title {
-            @include responsiveFont(35);
-            color: $gray-d;
-            line-height: normal;
-            margin-bottom: 6px;
-            span {
-                color: $green;
-                display: inline-block;
-            }
-        }
-        &__subtitle {
-            @include responsiveFont(16);
-            color: $gray-d;
-            font-weight: $font-normal;
-            line-height: normal;
-            margin: 0;
-        }
-    }
+	&-header {
+		margin: 30px auto;
+		text-align: center;
+		&__title {
+			@include responsiveFont(35);
+			color: $gray-d;
+			line-height: normal;
+			margin-bottom: 6px;
+			span {
+				color: $green;
+				display: inline-block;
+			}
+		}
+		&__subtitle {
+			@include responsiveFont(16);
+			color: $gray-d;
+			font-weight: $font-normal;
+			line-height: normal;
+			margin: 0;
+		}
+	}
 }
 
 //COMO UTILIZAR
 .como-utilizar {
-    &__aside {
-        min-height: 180px;
-        width: 100%;
-        small {
-            @include responsiveFont(12);
-            color: $gray-d;
-            display: flex;
-            font-weight: $font-normal;
-            line-height: 15px;
-        }
-        .slick-dots {
-            bottom: 0;
-            margin-bottom: -30px;
-        }
-        .slick-next,
-        .slick-prev {
-            margin: 0;
-            top: 50%;
-            &.slick-disabled {
-                opacity: 0;
-            }
-        }
-        .slick-next {
-            right: 20px;
-        }
-        .slick-prev {
-            left: 20px;
-        }
-    }
-    &__title {
-        @include responsiveFont(18);
-        color: $gray-d;
-        font-weight: $font-light;
-        line-height: 28px;
-        margin: 10px auto 10px;
-        span {
-            @include breakpoint('tablet', 'max') {
-                display: block;
-            }
-            @include responsiveFont(35);
-            color: $green;
-            font-weight: $font-bold;
-        }
-    }
-    &__passos {
-        height: 130px;
-        margin: 0 auto;
-        position: relative;
-        width: 155px;
-        &__icone {
-            align-items: end;
-            display: flex;
-            height: 50px;
-            margin: 0 auto 16px;
-            width: 74px;
-            img {
-                display: block;
-                width: 100%;
-            }
-        }
-        p {
-            @include breakpoint('tablet', 'min') {
-                @include responsiveFont(15);
-                line-height: 22px;
-            }
-            @include responsiveFont(15);
-            font-weight: $font-bold;
-            line-height: 18px;
-            margin: 0;
-            text-align: center;
-        }
-        @include breakpoint('desktop', 'min') {
-            &:after {
-                background-color: $gray-d;
-                background-size: contain;
-                content: '';
-                display: block;
-                height: 3px;
-                left: 100%;
-                margin-left: 30px;
-                position: absolute;
-                top: 50%;
-                width: 30px;
-            }
-            &:last-child,
-            &:first-child {
-                &::after {
-                    content: '';
-                    display: none;
-                }
-            }
-        }
-    }
-    .slick-list {
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-    .slick-track {
-        align-items: center;
-        background-color: $gray-light;
-        border-radius: 8em;
-        margin: 20px auto 0;
-        min-height: 180px;
-        padding: 0 20px;
-        width: 1000px;
-    }
+	&__aside {
+		min-height: 180px;
+		width: 100%;
+		small {
+			@include responsiveFont(12);
+			color: $gray-d;
+			display: flex;
+			font-weight: $font-normal;
+			line-height: 15px;
+		}
+		.slick-dots {
+			bottom: 0;
+			margin-bottom: -30px;
+		}
+		.slick-next,
+		.slick-prev {
+			margin: 0;
+			top: 50%;
+			&.slick-disabled {
+				opacity: 0;
+			}
+		}
+		.slick-next {
+			right: 20px;
+		}
+		.slick-prev {
+			left: 20px;
+		}
+	}
+	&__title {
+		@include responsiveFont(18);
+		color: $gray-d;
+		font-weight: $font-light;
+		line-height: 28px;
+		margin: 10px auto 10px;
+		span {
+			@include breakpoint('tablet', 'max') {
+				display: block;
+			}
+			@include responsiveFont(35);
+			color: $green;
+			font-weight: $font-bold;
+		}
+	}
+	&__passos {
+		height: 130px;
+		margin: 0 auto;
+		position: relative;
+		width: 155px;
+		&__icone {
+			align-items: end;
+			display: flex;
+			height: 50px;
+			margin: 0 auto 16px;
+			width: 74px;
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+		p {
+			@include breakpoint('tablet', 'min') {
+				@include responsiveFont(15);
+				line-height: 22px;
+			}
+			@include responsiveFont(15);
+			font-weight: $font-bold;
+			line-height: 18px;
+			margin: 0;
+			text-align: center;
+		}
+		@include breakpoint('desktop', 'min') {
+			&:after {
+				background-color: $gray-d;
+				background-size: contain;
+				content: '';
+				display: block;
+				height: 3px;
+				left: 100%;
+				margin-left: 30px;
+				position: absolute;
+				top: 50%;
+				width: 30px;
+			}
+			&:last-child,
+			&:first-child {
+				&::after {
+					content: '';
+					display: none;
+				}
+			}
+		}
+	}
+	.slick-list {
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+	.slick-track {
+		align-items: center;
+		background-color: $gray-light;
+		border-radius: 8em;
+		margin: 20px auto 0;
+		min-height: 180px;
+		padding: 0 20px;
+		width: 1000px;
+	}
 }
 
 //SLICK
 .slick-dots {
-    li {
-        &.slick-active {
-            button {
-                background: $green;
-                &:after {
-                    border: none;
-                }
-            }
-        }
-        button {
-            &:after {
-                border: none;
-            }
-        }
-    }
+	li {
+		&.slick-active {
+			button {
+				background: $green;
+				&:after {
+					border: none;
+				}
+			}
+		}
+		button {
+			&:after {
+				border: none;
+			}
+		}
+	}
 }
 
 .slick-next,
 .slick-prev {
-    background-repeat: no-repeat;
-    background-size: contain;
-    display: block;
-    height: 15px;
-    margin-top: -20px;
-    position: absolute;
-    top: 0;
-    width: 9px;
-    &:before {
-        content: '';
-    }
-    &.slick-disabled {
-        background-color: #ffffff;
-    }
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	height: 15px;
+	margin-top: -20px;
+	position: absolute;
+	top: 0;
+	width: 9px;
+	&:before {
+		content: '';
+	}
+	&.slick-disabled {
+		background-color: #ffffff;
+	}
 }
 
 .slick-next {
-    background-image: url('/arquivos/consul-arrow-right.png');
+	background-image: url('/arquivos/consul-arrow-right.png');
 }
 
 .slick-prev {
-    background-image: url('/arquivos/consul-arrow-left.png');
+	background-image: url('/arquivos/consul-arrow-left.png');
 }
 
 //VITRINE
 .vitrine-desconto {
-    margin: 70px auto;
-    padding-bottom: 60px;
-    text-align: center;
-    &__bg-mobile {
-        background-color: #fbfafa;
-        bottom: 0;
-        height: 320px;
-        padding-bottom: 20px;
-        position: absolute;
-    }
-    &__aside {
-        strong {
-            @include breakpoint('phone',
-            'max') {
-                @include responsiveFont(18);
-                bottom: -50px;
-                position: absolute;
-                text-align: left;
-            }
-            @include responsiveFont(14);
-            color: $purple;
-            display: inline-block;
-            margin: 0 70px 10px 20px;
-            width: 100%;
-        }
-        .slider-prod {
-            max-width: 100%;
-            width: 1000px;
-            .slick-slider {
-                padding: 0;
-            }
-        }
-        @include breakpoint('phone',
-        'max') {
-            .slick-next,
-            .slick-prev {
-                margin-top: 30px;
-                top: 100%;
-            }
-        }
-        .slick-next {
-            right: 16px;
-        }
-        .slick-prev {
-            left: inherit !important;
-            right: 40px;
-        }
-    }
-    &__produto {
-        height: auto;
-        margin: 0 auto;
-        padding: 0 8px;
-        width: 260px;
-        img {
-            display: block;
-            width: 100%;
-        }
-    }
-    &__card-cupom {
-        @include breakpoint('phone',
-        'max') {
-            margin-bottom: 40px;
-            padding: 0 0 40px;
-            width: 100%;
-            p {
-                @include responsiveFont(16);
-            }
-            small {
-                @include responsiveFont(16);
-                display: inline-block;
-                padding: 10px 20px;
-            }
-        }
-        background-color: #fff;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px #d9d8d8;
-        color: $gray-d;
-        height: auto;
-        margin: 30px auto 20px;
-        max-width: 100%;
-        padding: 24px 0;
-        position: relative;
-        width: 260px;
-        p {
-            @include responsiveFont(12);
-            font-weight: $font-bold;
-            margin: 0;
-        }
-        small {
-            @include responsiveFont(12);
-            display: flex;
-            font-weight: $font-normal;
-            line-height: 16px;
-            padding: 8px 40px 12px;
-        }
-    }
-    &__icone-cupom {
-        height: 40px;
-        margin: 0 auto;
-        width: 45px;
-        @include breakpoint('phone',
-        'max') {
-            background-color: #fff;
-            border-top: 1px solid rgba(212, 212, 212, 0.42);
-            border-top-left-radius: 4em;
-            border-top-right-radius: 4em;
-            bottom: 24px;
-            box-shadow: 0 -2px 5px -2px #ececec;
-            height: 15px;
-            padding: 14px 14px;
-            position: relative;
-            width: 60px;
-        }
-    }
-    &__card-cupom-codigo {
-        @include responsiveFont(22);
-        background-color: $gray-light;
-        color: $purple;
-        font-weight: $font-bold;
-        padding: 10px;
-        text-transform: uppercase;
-        width: 100%;
-        @include breakpoint('tablet',
-        'max') {
-            background: transparent;
-            margin: 0;
-            padding: 0;
-        }
-    }
-    &__card-cupom-desconto {
-        @include breakpoint('phone',
-        'max') {
-            margin: 16px auto 20px;
-            span {
-                display: inline-block;
-                font-size: inherit;
-            }
-        }
-        @include responsiveFont(32);
-        color: $green;
-        line-height: 26px;
-        margin: 24px auto 34px;
-        span {
-            @include responsiveFont(10);
-            display: block;
-        }
-    }
-    &__card-cupom-button {
-        @include breakpoint('phone',
-        'max') {
-            @include responsiveFont(18);
-            bottom: -16px;
-            left: 0;
-            margin: 10px auto 0;
-            position: absolute;
-            right: 0;
-            width: 150px;
-        }
-        @include responsiveFont(13);
-        background-color: $purple;
-        border: none;
-        border-radius: 18px;
-        color: #fff;
-        font-weight: $font-bold;
-        height: 36px;
-        margin-top: 20px;
-        padding: 4px 22px;
-        width: 200px;
-    }
+	margin: 70px auto;
+	padding-bottom: 60px;
+	text-align: center;
+	&__bg-mobile {
+		background-color: #fbfafa;
+		bottom: 0;
+		height: 320px;
+		padding-bottom: 20px;
+		position: absolute;
+	}
+	&__aside {
+		strong {
+			@include breakpoint('phone', 'max') {
+				@include responsiveFont(18);
+				bottom: -50px;
+				position: absolute;
+				text-align: left;
+			}
+			@include responsiveFont(14);
+			color: $purple;
+			display: inline-block;
+			margin: 0 70px 10px 20px;
+			width: 100%;
+		}
+		.slider-prod {
+			max-width: 100%;
+			width: 1000px;
+			.slick-slider {
+				padding: 0;
+			}
+		}
+		@include breakpoint('phone', 'max') {
+			.slick-next,
+			.slick-prev {
+				margin-top: 30px;
+				top: 100%;
+			}
+		}
+		.slick-next {
+			right: 16px;
+		}
+		.slick-prev {
+			left: inherit !important;
+			right: 40px;
+		}
+	}
+	&__produto {
+		height: auto;
+		margin: 0 auto;
+		padding: 0 8px;
+		width: 260px;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+	&__card-cupom {
+		@include breakpoint('phone', 'max') {
+			margin-bottom: 40px;
+			padding: 0 0 40px;
+			width: 100%;
+			p {
+				@include responsiveFont(16);
+			}
+			small {
+				@include responsiveFont(16);
+				display: inline-block;
+				padding: 10px 20px;
+			}
+		}
+		background-color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 1px 3px #d9d8d8;
+		color: $gray-d;
+		height: auto;
+		margin: 30px auto 20px;
+		max-width: 100%;
+		padding: 24px 0;
+		position: relative;
+		width: 260px;
+		p {
+			@include responsiveFont(12);
+			font-weight: $font-bold;
+			margin: 0;
+		}
+		small {
+			@include responsiveFont(12);
+			display: flex;
+			font-weight: $font-normal;
+			line-height: 16px;
+			padding: 8px 40px 12px;
+		}
+	}
+	&__icone-cupom {
+		height: 40px;
+		margin: 0 auto;
+		width: 45px;
+		@include breakpoint('phone', 'max') {
+			background-color: #fff;
+			border-top: 1px solid rgba(212, 212, 212, 0.42);
+			border-top-left-radius: 4em;
+			border-top-right-radius: 4em;
+			bottom: 24px;
+			box-shadow: 0 -2px 5px -2px #ececec;
+			height: 15px;
+			padding: 14px 14px;
+			position: relative;
+			width: 60px;
+		}
+	}
+	&__card-cupom-codigo {
+		@include responsiveFont(22);
+		background-color: $gray-light;
+		color: $purple;
+		font-weight: $font-bold;
+		padding: 10px;
+		text-transform: uppercase;
+		width: 100%;
+		@include breakpoint('tablet', 'max') {
+			background: transparent;
+			margin: 0;
+			padding: 0;
+		}
+	}
+	&__card-cupom-desconto {
+		@include breakpoint('phone', 'max') {
+			margin: 16px auto 20px;
+			span {
+				display: inline-block;
+				font-size: inherit;
+			}
+		}
+		@include responsiveFont(32);
+		color: $green;
+		line-height: 26px;
+		margin: 24px auto 34px;
+		span {
+			@include responsiveFont(10);
+			display: block;
+		}
+	}
+	&__card-cupom-button {
+		@include breakpoint('phone', 'max') {
+			@include responsiveFont(18);
+			bottom: -16px;
+			left: 0;
+			margin: 10px auto 0;
+			position: absolute;
+			right: 0;
+			width: 150px;
+		}
+		@include responsiveFont(13);
+		background-color: $purple;
+		border: none;
+		border-radius: 18px;
+		color: #fff;
+		font-weight: $font-bold;
+		height: 36px;
+		margin-top: 20px;
+		padding: 4px 22px;
+		width: 200px;
+	}
 }

@@ -1,115 +1,124 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
-
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce"
+>
 	<head>
 		<title>Consul</title>
 		<vtex:metaTags />
-			<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-				<!-- @if DEBUG=true -->
-				<!-- @include ../templates/head-vtex.html -->
-				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
-				<!-- @endif -->
+		<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+		<!-- @if DEBUG=true -->
+		<!-- @include ../templates/head-vtex.html -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+		<!-- @endif -->
 
-				<vtex:template id="0-consul-head-content" />
-					<link rel="stylesheet" type="text/css" href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->"
-					/>
-				</head>
+		<vtex:template id="0-consul-head-content" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="<!-- @echo assetsPath -->/cupom-novo.css?v=<!-- @echo package.version -->"
+		/>
+	</head>
 
-				<body data-controller="landing-gae">
-					<!-- @if DEBUG=true -->
-					<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
-					<!-- @endif -->
+	<body data-controller="landing-gae">
+		<!-- @if DEBUG=true -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-top-header.html -->
+		<!-- @endif -->
 
-					<vtex:template id="0-consul-top-header" />
+		<vtex:template id="0-consul-top-header" />
 
-						<!-- @if DEBUG=true -->
-						<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
-						<!-- @endif -->
+		<!-- @if DEBUG=true -->
+		<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+		<!-- @endif -->
 
-						<vtex:template id="0-consul-header" />
+		<vtex:template id="0-consul-header" />
 
-							<main>
-								<section class="cupom-header">
-									<div class="container">
-										<div class="row d-flex justify-content-center m-auto">
-											<div class="col-12 col-md-11 flex-column text-md-left">
-												<h1 class="cupom-header__title">Cupons de <span>Desconto Consul</span></h1>
-												<h2 class="cupom-header__subtitle">Utilize os cupons disponíveis e
-													tenha descontos nas compras</h2>
-											</div>
-										</div>
+		<main>
+			<section class="cupom-header">
+				<div class="container">
+					<div class="row d-flex justify-content-center m-auto">
+						<div class="col-12 col-md-11 flex-column text-md-left">
+							<h1 class="cupom-header__title">Cupons de <span>Desconto Consul</span></h1>
+							<h2 class="cupom-header__subtitle">
+								Utilize os cupons disponíveis e tenha descontos nas compras
+							</h2>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="como-utilizar">
+				<div class="container-fluid p-0">
+					<div class="como-utilizar__aside px-0 d-flex slider">
+						<div class="como-utilizar__passos">
+							<h2 class="como-utilizar__title">Saiba como <br /><span>Utilizar</span></h2>
+							<small>Siga os passos para usar um cupom de desconto</small>
+						</div>
+						<div class="como-utilizar__passos">
+							<figure class="como-utilizar__passos__icone">
+								<img src="/arquivos/consul-cupom-passo1.png" />
+							</figure>
+							<p>Copie o código do que você deseja usar!</p>
+						</div>
+						<div class="como-utilizar__passos">
+							<figure class="como-utilizar__passos__icone">
+								<img src="/arquivos/consul-cupom-passo2.png" />
+							</figure>
+							<p>Utilize o código do cupom escolhido no carrinho de compras</p>
+						</div>
+						<div class="como-utilizar__passos">
+							<figure class="como-utilizar__passos__icone">
+								<img src="/arquivos/consul-cupom-passo3.png" />
+							</figure>
+							<p>Pronto! Aproveite o desconto na sua compra!</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="vitrine-desconto">
+				<div class="vitrine-desconto__bg-mobile m-auto d-block d-md-none"></div>
+				<div class="container">
+					<div class="row m-auto">
+						<div class="col-md-4 col-lg-3 p-0">
+							<div class="vitrine-desconto__card-cupom">
+								<figure class="vitrine-desconto__icone-cupom">
+									<img src="/arquivos/consul-cupom-desconto.png" />
+								</figure>
+								<h3 class="vitrine-desconto__card-cupom-codigo">Cervejeira250</h3>
+								<h4 class="vitrine-desconto__card-cupom-desconto">R$ 250 <span>de desconto</span></h4>
+								<p>Condições de uso</p>
+								<small>Este cupom é valido apenas para produtos selecionados em “Cervejeiras”</small>
+								<button class="vitrine-desconto__card-cupom-button">Copiar código</button>
+							</div>
+						</div>
+						<div class="col-md-8 col-lg-9 p-0">
+							<div class="vitrine-desconto__aside">
+								<div class="row m-auto text-right">
+									<strong>Veja todos os produtos</strong>
+								</div>
+								<div class="slider-prod">
+									<div class="vitrine-desconto__produto">
+										<img src="/arquivos/consul-produto.png" />
 									</div>
-								</section>
-								<section class="como-utilizar">
-									<div class="container-fluid p-0">
-										<div class="como-utilizar__aside px-0 d-flex slider">
-											<div class="como-utilizar__passos">
-												<h2 class="como-utilizar__title">Saiba como <br><span>Utilizar</span></h2>
-												<small>Siga os passos para usar um cupom de desconto</small>
-											</div>
-											<div class="como-utilizar__passos">
-												<figure class="como-utilizar__passos__icone"><img
-														src="/arquivos/consul-cupom-passo1.png">
-												</figure>
-												<p>Copie o código do que você deseja usar!</p>
-											</div>
-											<div class="como-utilizar__passos">
-												<figure class="como-utilizar__passos__icone"><img
-														src="/arquivos/consul-cupom-passo2.png">
-												</figure>
-												<p>Utilize o código do cupom escolhido no carrinho de compras</p>
-											</div>
-											<div class="como-utilizar__passos">
-												<figure class="como-utilizar__passos__icone"><img
-														src="/arquivos/consul-cupom-passo3.png">
-												</figure>
-												<p>Pronto! Aproveite o desconto na sua compra!</p>
-											</div>
-										</div>
-									</div>
-								</section>
-								<section class="vitrine-desconto">
-									<div class="vitrine-desconto__bg-mobile m-auto d-block d-md-none"></div>
-									<div class="container">
-										<div class="row m-auto">
-											<div class="col-md-4 col-lg-3 p-0">
-												<div class="vitrine-desconto__card-cupom">
-													<figure class="vitrine-desconto__icone-cupom">
-														<img src="/arquivos/consul-cupom-desconto.png">
-													</figure>
-													<h3 class="vitrine-desconto__card-cupom-codigo">Cervejeira250</h3>
-													<h4 class="vitrine-desconto__card-cupom-desconto">R$ 250 <span>de
-															desconto</span></h4>
-													<p>Condições de uso</p>
-													<small>Este cupom é valido apenas para produtos selecionados em
-														“Cervejeiras”</small>
-													<button class="vitrine-desconto__card-cupom-button">Copiar código</button>
-												</div>
-											</div>
-											<div class="col-md-8 col-lg-9 p-0">
-												<div class="vitrine-desconto__aside">
-													<div class="row m-auto text-right">
-														<strong>Veja todos os produtos</strong>
-													</div>
-													<div class="slider-prod">
-														<div class="vitrine-desconto__produto"><img
-																src="/arquivos/consul-produto.png"></div>
-														<div class="vitrine-desconto__produto"><img
-																src="/arquivos/consul-produto.png"></div>
-														<div class="vitrine-desconto__produto"><img
-																src="/arquivos/consul-produto.png"></div>
-														<div class="vitrine-desconto__produto"><img
-																src="/arquivos/consul-produto.png"></div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</section>
-							</main>
-							<script src="<!-- @echo assetsPath -->/consul-cupom.min.js?v=<!-- @echo package.version -->"></script>
-					</body>
 
-				</html>
+									<div class="vitrine-desconto__produto">
+										<img src="/arquivos/consul-produto.png" />
+									</div>
+
+									<div class="vitrine-desconto__produto">
+										<img src="/arquivos/consul-produto.png" />
+									</div>
+
+									<div class="vitrine-desconto__produto">
+										<img src="/arquivos/consul-produto.png" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script src="<!-- @echo assetsPath -->/consul-cupom.min.js?v=<!-- @echo package.version -->"></script>
+	</body>
+</html>
