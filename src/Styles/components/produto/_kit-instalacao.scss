@@ -4,32 +4,82 @@
 .kit-instalacao {
 	border-bottom: 1px solid #e3e1e1;
 	margin: 1em 0;
+	padding: 10px;
 
-	.skuList { margin-bottom: 10px; }
+	.skuList {
+		margin-bottom: 10px;
+		padding: 10px 0;
+	}
 
 	&__content { display: none; }
 
 	&__title.specification {
+		margin-left: -10px;
 		text-transform: none;
+		width: calc(100% + 20px);
 
 		&::before { display: none; }
 	}
 
-	&__description {
-		@include rfs(13);
-		margin: 0;
+	// Ajuda na intalação?
+	&__title {
+		@include rfs(15);
+		color: #9ACA3C;
 	}
 
-	.kit-instalacao-container {
+	&__description {
+		@include rfs(12);
+		color: #736C6B;
+		line-height: 12px;
+		margin: 5px 0 0 0;
+	}
+
+	// Container
+	&-container {
 		display: none;
-		padding: 10px;
+		margin: 10px 0 20px 0;
+	}
+
+	// Informação
+	&__info {
+		color: #0fb6de;
+		display: none;
+		margin: 20px 0 10px 0;
+		width: 100%;
+
+		strong {
+			@include rfs(11);
+			display: block;
+			margin-bottom: 5px;
+			padding-left: 20px;
+			position: relative;
+		}
+
+		.icon {
+			@include rfs(16);
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		p {
+			@include rfs(10);
+			background-color: #0fb6de;
+			color: #fff;
+			margin: 0;
+			padding: 5px 10px;
+		}
+
+		// Exibir somente para [Gás natural]
+		.kit-instalacao[data-kittype='botijao'] & { display: block; }
 	}
 
 	// Erro
 	&__error {
 		border: 1px solid #f1f0f0;
 		border-radius: 4px;
-		box-shadow: 0 5px 10px rgba(218, 218, 218, .7);
+		box-shadow: 0 5px 5px rgba(218, 218, 218, .7);
 		margin: 0 10px 20px 10px;
 		padding: 1em 2.5em;
 		text-align: center;
@@ -76,15 +126,14 @@
 	border-radius: 4px;
 	display: flex;
 	justify-content: space-between;
-	margin: 10px;
+	margin: 10px 0;
 	overflow: hidden;
 	padding: 5px;
 	position: relative;
-
-	// [Gás natural]
-	.kit-instalacao[data-kittype='botijao'] & {
-		padding-bottom: 24px;
-	}
+	transition:
+		border-color .3s ease,
+		box-shadow .3s ease
+	;
 
 	&__item {
 		padding: 5px;
@@ -109,9 +158,7 @@
 
 		// Title
 		&-title {
-			@include breakpoint('medium', 'max') {
-				width: 60%;
-			}
+			@include breakpoint('medium', 'max') { width: 60%; }
 			color: #736C6B;
 			width: 155px;
 
@@ -132,6 +179,7 @@
 			.de {
 				@include rfs(12);
 				color: #702F8F;
+				text-shadow: 0 0 1px #702F8F;
 			}
 
 			.por {
@@ -211,32 +259,6 @@
 					&:after { opacity: 1; }
 				}
 			}
-		}
-	}
-
-	// Informação
-	&__info {
-		@include rfs(11);
-		background-color: #0fb6de;
-		bottom: 0;
-		color: #fff;
-		display: none;
-		left: 0;
-		padding: 3px 20px;
-		position: absolute;
-		width: 100%;
-
-		.icon {
-			@include rfs(16);
-			position: absolute;
-			right: 12px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		// Exibir somente para [Gás natural]
-		.kit-instalacao[data-kittype='botijao'] & {
-			display: block;
 		}
 	}
 

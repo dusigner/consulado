@@ -7,6 +7,7 @@ Nitro.module('kit-instalacao', function() {
 	// Variables
 	const self = this;
 	const $kitInstalacao = $('.kit-instalacao');
+	const $kitInstalacaoInfo = $('.kit-instalacao__info');
 	const $gasType = $('.kit-instalacao__input');
 	const $buyButton = $('.buy-button.buy-button-ref');
 	const defaultProductLink = $buyButton.attr('href');
@@ -101,7 +102,7 @@ Nitro.module('kit-instalacao', function() {
 		const products = data;
 
 		products.map(product => {
-			$kitInstalacao.append(this.productKitTemplate(product, kitType));
+			$kitInstalacaoInfo.before(this.productKitTemplate(product, kitType));
 		});
 	};
 
@@ -145,10 +146,6 @@ Nitro.module('kit-instalacao', function() {
 						</div>
 						<div class="kit-product__item kit-product__item-select"></div>
 					`}
-
-					<div class="kit-product__info">
-						Conversão gratuita <i class="icon icon-question"></i>
-					</div>
 				</div>
 			</div>
 		`;
