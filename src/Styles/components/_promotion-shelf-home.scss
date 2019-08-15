@@ -1,22 +1,22 @@
 body.home {
 	.vitrine-promocao {
-		h2 {
-			@include rfs(28);
+		// h2 {
+		// 	@include rfs(28);
 
-			span {
-				@include rfs(34);
-				color: $green;
-				display: block;
-				font-weight: bold;
-				line-height: 1;
-			}
+		// 	span {
+		// 		@include rfs(34);
+		// 		color: $green;
+		// 		display: block;
+		// 		font-weight: bold;
+		// 		line-height: 1;
+		// 	}
 
-			@include breakpoint ('small', 'max') {
-				@include rfs(26);
-				border: 1px solid #fff;
-				margin: 0 25px 15px 25px;
-			}
-		}
+		// 	@include breakpoint ('small', 'max') {
+		// 		@include rfs(26);
+		// 		border: 1px solid #fff;
+		// 		margin: 0 25px 15px 25px;
+		// 	}
+		// }
 
 		.prateleira-slider {
 			.prateleira {

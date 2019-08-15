@@ -417,26 +417,28 @@ body {
 							}
 
 							.shipping-sla-options {
+								@include breakpoint('small', 'max') { max-width: 100%; }
 								background: #fff;
 								border: 1px solid #F1F0F0;
 								border-radius: 0;
 								box-shadow: none;
 								float: none;
 								font-size: 16px;
+								left: 0;
 								line-height: normal;
 								min-width: auto;
 								padding: 10px 20px;
-								position: initial;
+								position: relative;
 								text-align: left;
-								top: 45px;
+								top: 0;
 
-								@include breakpoint(extra-small, 'max') {
-									left: 5%;
-									max-width: 90%;
-									position: absolute;
-									right: 0;
-									width: 90%;
-								}
+								// @include breakpoint(extra-small, 'max') {
+								// 	left: 5%;
+								// 	max-width: 90%;
+								// 	position: absolute;
+								// 	right: 0;
+								// 	width: 90%;
+								// }
 
 								li {
 									border-top: 1px solid #ccc;
