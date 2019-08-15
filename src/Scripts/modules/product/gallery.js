@@ -11,26 +11,36 @@ Nitro.module('gallery', function() {
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
-			return (
-				'<li><a href="' +
-				$.resizeImage(self.attr('rel'), 1000, 1000) +
-				'" class="popup-zoom"><img src="' +
-				$.resizeImage(self.attr('rel'), 420, 420) +
-				'" alt="' +
-				self.find('img').attr('title') +
-				'" width="420" height="420" /></a></li>'
-			);
+			return (`
+				<li>
+					<a href="${$.resizeImage(self.attr('rel'), 1000, 1000)}" class="popup-zoom">
+						<img
+							src="${$.resizeImage(self.attr('rel'), 420, 420)}"
+							alt="${self.find('img').attr('title')}"
+							width="420"
+							height="420"
+							loading="lazy"
+						 />
+					</a>
+				</li>
+			`);
 		});
 
 		var newThumbs = $.map($thumbs, function(item) {
 			var self = $(item);
-			return (
-				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-				$.resizeImage(self.attr('rel'), 56, 56) +
-				'" alt="' +
-				self.find('img').attr('title') +
-				'" width="56" height="56" /></a></li>'
-			);
+			return (`
+				<li>
+					<a href="javascript:void(0);" class="thumb">
+						<img
+							src="${$.resizeImage(self.attr('rel'), 56, 56)}"
+							alt="${self.find('img').attr('title')}"
+							width="56"
+							height="56"
+							loading="lazy"
+						 />
+					</a>
+				</li>
+			`);
 		});
 
 		if ($video.length !== 0) {
@@ -41,18 +51,23 @@ Nitro.module('gallery', function() {
 			newImages.splice(
 				3,
 				0,
-				'<li><a href="//www.youtube-nocookie.com/embed/' +
-					videoId +
-					'?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe"><img class="image cover" width="420" height="420" src="' +
-					thumb +
-					'" /></a></li>'
+				`<li>
+					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
+						<img class="image cover" width="420" height="420" src="${thumb}" loading="lazy" />
+					</a>
+				</li>`
 			);
+
 			newThumbs.splice(
 				3,
 				0,
-				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-					$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56) +
-					'" alt="Vídeo" width="56" height="56" /></a></li>'
+				`
+					<li>
+						<a href="javascript:void(0);" class="thumb">
+							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56)}" alt="Vídeo" width="56" height="56" loading="lazy" />
+						</a>
+					</li>
+				`
 			);
 		}
 
