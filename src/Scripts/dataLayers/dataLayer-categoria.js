@@ -35,12 +35,11 @@ Nitro.module('dataLayer-categoria', function() {
 	this.bannerDataLayer = () => {
 		const category = dataLayer[0].categoryName;
 		$('.category-page-top-banner a').on('click', function() {
-			dataLayer.push({
-				event: 'generic',
-				category: `[SQUAD] Banner Categoria - ${category}`,
-				action: 'Clique no banner',
-				label: 'Banner Promocional'
-			});
+			pushDataLayer(
+				`[SQUAD] Banner Categoria - ${category}`,
+				'Clique no banner',
+				'Banner Promocional'
+			);
 		});
 	},
 
