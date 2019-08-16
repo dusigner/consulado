@@ -26,10 +26,10 @@ Nitro.module('checkout.gae', function() {
 	 */
 	this.removeFromCart = () => {
 		$('.item-link-remove').on('click', function() {
-			let skus =sessionStorage.getItem('sku-cart').split(','),
+			const skus = sessionStorage.getItem('sku-cart').split(','),
 				element = $(this);
 
-			let newListSkus = skus.filter(function(value) {
+			const newListSkus = skus.filter(function(value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
@@ -494,7 +494,7 @@ Nitro.module('checkout.gae', function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
-			let customData = (sessionStorage.getItem('sku-cart')) ?sessionStorage.getItem('sku-cart').split(',') : [];
+			let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
 
 			//if($(window).width() > 1000){
 			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {

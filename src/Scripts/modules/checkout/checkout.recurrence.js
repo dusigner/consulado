@@ -364,7 +364,7 @@ Nitro.module('checkout.recurrence', function() {
 		setTimeout(function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
-			var $cartTemplate = $('.cart-template');
+			const $cartTemplate = $('.cart-template');
 
 			let customData = (sessionStorage.getItem('sku-recurrence')) ? sessionStorage.getItem('sku-recurrence').split(',') : [];
 
@@ -382,7 +382,7 @@ Nitro.module('checkout.recurrence', function() {
 			sessionStorage.removeItem('sku-recurrence');
 
 			$('.js-modal-open').each(function() {
-				let dataSku = $(this).parents('.product-item').attr('data-sku');
+				const dataSku = $(this).parents('.product-item').attr('data-sku');
 				customData.push(dataSku);
 
 			});
@@ -437,10 +437,10 @@ Nitro.module('checkout.recurrence', function() {
 	 */
 	this.removeFromCart = () => {
 		$('.item-link-remove').on('click', function() {
-			let skus = sessionStorage.getItem('sku-recurrence').split(','),
+			const skus = sessionStorage.getItem('sku-recurrence').split(','),
 				element = $(this);
 
-			let newListSkus = skus.filter(function(value) {
+			const newListSkus = skus.filter(function(value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
