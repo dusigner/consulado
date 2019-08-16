@@ -10,7 +10,6 @@ body.open-frete {
 .calc-frete {
 	// border: 1px solid #e4e4e4;
 	// padding: 10px;
-	max-width: 600px;
 	position: relative;
 
 	&:after {
@@ -20,12 +19,13 @@ body.open-frete {
 	}
 
 	.title-frete {
+		@include rfs(11);
 		display: block;
 		float: left;
-		font-size: 14px;
-		width: 50%;
+		width: 37%;
 
 		& i {
+			color: #793c96;
 			display: block;
 			float: left;
 			font-size: 50px;
@@ -36,7 +36,14 @@ body.open-frete {
 			display: block;
 			float: right;
 			margin-bottom: 0;
-			max-width: 132px;
+			margin-top: 20px;
+			max-width: 100px;
+
+			@include breakpoint ('small', 'max') {
+				font-size: 12px;
+				margin-top: 25px !important;
+				max-width: inherit;
+			}
 		}
 	}
 
@@ -61,11 +68,12 @@ body.open-frete {
 		font-size: 0;
 		padding-top: 15px;
 		position: relative;
-		width: 35%;
+		width: 46%;
 
 		input {
 			background: #fff;
 			border: 1px solid #e4e4e4;
+			border-right: none;
 			color: #333;
 			font-size: 15px;
 			height: 40px;
@@ -80,36 +88,42 @@ body.open-frete {
 		float: right;
 		padding-top: 15px;
 		position: relative;
-		width: 15%;
+		width: 17%;
 
 		&.loading {
-			&::before {
-				@include spinner($template-primary);
-				bottom: 0;
-				content: '';
-				display: block;
-				left: 50%;
-				margin-left: -.5em;
-				margin-top: -.2em;
-				position: absolute;
-				top: 50%;
-				z-index: 99;
-			}
 
 			#btnFreteSimulacao {
 				background: #fff !important;
-				color: #fff;
 			}
 		}
 
 		#btnFreteSimulacao {
+			background-color: #fff;
+			border: 1px solid #e4e4e4;
+			border-left: none;
 			border-radius: 0;
+			color: #702F8F;
+			font-size: 12px;
 			height: 40px;
 			margin: 0;
 			max-width: 100%;
-			padding: 0;
-			text-align: center;
+			padding: 0 27px 0 0;
+			text-align: right;
 			width: 100%;
+
+			&:hover,
+			&:focus {
+				border: 1px solid #e4e4e4;
+				border-left: none;
+			}
+		}
+
+		&:before {
+			@include icon-get('arrow-right');
+			position: absolute;
+			right: 15px;
+			top: 27px;
+			z-index: 1;
 		}
 	}
 
@@ -126,12 +140,12 @@ body.open-frete {
 		}
 
 		& a {
-			color: #b9b8b8;
+			color: #0FB6DE;
 			display: block;
 			float: right;
-			font-size: 10px;
+			font-size: 9px;
 			text-align: left;
-			width: 50%;
+			width: 63%;
 		}
 	}
 
@@ -148,7 +162,7 @@ body.open-frete {
 			transition: .3s linear all;
 
 			.closed {
-				color: #f35216;
+				color: #793c96;
 				cursor: pointer;
 				display: block;
 				font-size: 20px;
@@ -327,7 +341,20 @@ body.open-frete {
 			margin-top: 5px;
 		}
 
-		.prefixo { width: 85%; }
+		.prefixo {
+			width: 77%;
+		}
+
+		span.frete-calcular {
+			width: 23%;
+
+			&:before {
+				text-align: center;
+				@include breakpoint('small', 'max') {
+					top: 29px;
+				}
+			}
+		}
 
 		.prefixo input,
 		.title-frete {
@@ -336,7 +363,13 @@ body.open-frete {
 
 		.cep-busca a {
 			float: left;
-			width: 20%
+			width: 20%;
+
+			@include breakpoint('small', 'max') {
+				color: #0fb6de;
+				margin-top: 2px;
+				width: 100%;
+			}
 		}
 	}
 }

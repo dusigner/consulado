@@ -7,7 +7,8 @@ Nitro.module('gallery', function() {
 		var $thumbs = $('.thumbs a'),
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
-			$video = $('#caracteristicas h4.Video + table .value-field');
+			$video = $('#caracteristicas h4.Video + table .value-field'),
+			$size = ($(window).width() < 768) ? 56 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
@@ -26,10 +27,10 @@ Nitro.module('gallery', function() {
 			var self = $(item);
 			return (
 				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-				$.resizeImage(self.attr('rel'), 56, 56) +
+				$.resizeImage(self.attr('rel'), $size, $size) +
 				'" alt="' +
 				self.find('img').attr('title') +
-				'" width="56" height="56" /></a></li>'
+				`" width="${$size}" height="${$size}" /></a></li>`
 			);
 		});
 
@@ -51,8 +52,8 @@ Nitro.module('gallery', function() {
 				3,
 				0,
 				'<li><a href="javascript:void(0);" class="thumb"><img src="' +
-					$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56) +
-					'" alt="Vídeo" width="56" height="56" /></a></li>'
+					$.resizeImage('/arquivos/cns-video-icon.jpg', $size, $size) +
+					`" alt="Vídeo" width="${$size}" height="${$size}" /></a></li>`
 			);
 		}
 
@@ -197,5 +198,15 @@ Nitro.module('gallery', function() {
 				e.preventDefault();
 			});
 		}*/
+
+		$(window).resize(function() {
+			const widthPage = $(window).width();
+
+			if (widthPage < 960) {
+				$('.thumb img').attr('height', '56px').attr('width', '56px');
+			} else {
+				$('.thumb img').attr('height', '75px').attr('width', '75px');
+			}
+		});
 	};
 });
