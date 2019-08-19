@@ -13,8 +13,28 @@ Nitro.module('checkout.gae', function() {
 	this.setup = function() {
 		this.link();
 		this.terms();
+		this.removeFromCart();
 		// this.autoOpen();
 		// this.introOpen();
+	};
+
+	/**
+	 * Again another shameful function.
+	 *
+	 * Add a click function to remove data sku from local storage when product is going to be removed on cart
+	 *
+	 */
+	this.removeFromCart = () => {
+		$('.item-link-remove').on('click', function() {
+			const skus = sessionStorage.getItem('sku-cart').split(','),
+				element = $(this);
+
+			const newListSkus = skus.filter(function(value) {
+				return value !== element.parents('.product-item').attr('data-sku');
+			});
+
+			sessionStorage.setItem('sku-cart', newListSkus.join(','));
+		});
 	};
 
 	this.installments = function() {
@@ -464,20 +484,40 @@ Nitro.module('checkout.gae', function() {
 		});
 	};
 
+	/*
+	* Show modal when the last item added does not have its SKU stored on local storage, and then add its SKU on sku-cart object.
+	*
+	* Not even proud about what I had done here. If someone ask me, I will deny until the very end!
+	*/
 	this.autoOpen = function() {
 		setTimeout(function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
+			let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
 
 			//if($(window).width() > 1000){
 			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {
-				$('.linkWarranty')
-					.last()
-					.trigger('click');
-				$cartTemplate.addClass('been-called');
+				if (!customData.includes($('.product-item').last().attr('data-sku')) && $('.product-item').last().find('.linkWarranty').length > 0) {
+					$('.linkWarranty')
+						.last()
+						.trigger('click');
+					$cartTemplate.addClass('been-called');
+				}
 			}
 			//}
+
+			customData = [];
+
+			sessionStorage.removeItem('sku-cart');
+
+			$('.linkWarranty').each(function() {
+				let dataSku = $(this).parents('.product-item').attr('data-sku');
+				customData.push(dataSku);
+			});
+
+			sessionStorage.setItem('sku-cart', customData);
+
 		}, 1500);
 	};
 
