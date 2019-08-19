@@ -492,3 +492,46 @@ body {
 }
 
 
+.payment-group-item {
+	border: none;
+	border-left: 4px solid #F1F0F0;
+	border-radius: 0;
+	display: flex;
+	justify-content: space-between;
+
+	&.active {
+		background-color: #fff;
+		border-left: 4px solid #9ACA3C;
+		margin-left: 5px;
+
+		.payment-group-item-text {
+			@include rfs(15);
+			color: #736C6B;
+			font-weight: bold;
+			text-decoration: none;
+		}
+
+		&:after {
+			background-color: #9ACA3C;
+			border: none;
+		}
+	}
+
+	.payment-group-item-text {
+		@include rfs(16);
+		background-position: left center;
+		padding: 8px 0 8px 55px;
+
+	}
+
+	&:after {
+		border: 1px solid #BBBBBB;
+		content: '';
+		display: inline-block;
+		height: 16px;
+		position: relative;
+		top: 12px;
+		width: 16px;
+
+	}
+}
