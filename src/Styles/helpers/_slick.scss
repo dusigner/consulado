@@ -312,10 +312,10 @@
 			}
 
 			&.slick-active button {
-				background: $orange;
+				background: $green;
 
 				&:after {
-					transform: scale(1);
+					border: none;
 				}
 			}
 		}
@@ -333,8 +333,8 @@
 			align-items: center;
 			flex-direction: row;
 			margin: 3px auto;
-			padding: 8px 15px;
 			min-height: 180px;
+			padding: 8px 15px;
 
 			.shelf-item {
 				&__image {
