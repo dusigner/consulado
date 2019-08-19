@@ -312,10 +312,10 @@
 			}
 
 			&.slick-active button {
-				background: $orange;
+				background: $green;
 
 				&:after {
-					transform: scale(1);
+					border: none;
 				}
 			}
 		}
