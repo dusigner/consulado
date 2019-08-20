@@ -210,7 +210,7 @@ $breakpoint-map: (
 
 //VITRINE
 .vitrine-desconto {
-	margin: 70px auto;
+	margin: 70px auto 0;
 	padding-bottom: 60px;
 	text-align: center;
 	&__bg-mobile {
@@ -221,22 +221,28 @@ $breakpoint-map: (
 		position: absolute;
 	}
 	&__aside {
-		strong {
+		.veja-todos-prod {
 			@include breakpoint('phone', 'max') {
 				@include responsiveFont(18);
-				bottom: -50px;
+				bottom: 12px;
 				position: absolute;
 				text-align: left;
 			}
 			@include responsiveFont(14);
 			color: $purple;
 			display: inline-block;
+			font-weight: $font-bold;
 			margin: 0 70px 10px 20px;
 			width: 100%;
+
 		}
 		.slider-prod {
 			max-width: 100%;
+			text-align: left;
 			width: 1000px;
+			@include breakpoint('phone', 'max') {
+				margin-bottom: 60px;
+			}
 			.slick-slider {
 				padding: 0;
 			}

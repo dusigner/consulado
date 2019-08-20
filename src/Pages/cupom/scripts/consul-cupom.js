@@ -121,9 +121,9 @@ Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 	}
 	this.copyCupom = (cupomText) => {
 		const element = `.vitrine-desconto__card-cupom-button.${cupomText}`;
-		console.log("chamou")
+		// console.log("chamou")
 		$(element).click(e => {
-			console.log('Clicou')
+			// console.log('Clicou')
 			e.preventDefault();
 
 			const clipboard = new Clipboard(element, {
