@@ -55,28 +55,35 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
-
 		@include responsiveFont(20, 16, true);
-		color: $gray-d;
-		margin-bottom: 15px;
-		text-align: left;
 
-		@include breakpoint('medium', 'max') {
+		@include breakpoint(small, 'max') {
 			@include responsiveFont(16, 16, true);
-			margin: 0 auto;
-			padding: 0 10%;
-			width: 100%;
+			color: $gray-d;
+			display: block;
+			position: relative;
+
+			span {
+				@include responsiveFont(30, 16, true);
+				color: $green;
+				display: block;
+				font-weight: bold;
+				text-transform: capitalize;
+			}
 		}
 
-		span {
-			@include responsiveFont(35, 16, true);
-			color: $green;
-			display: block;
-			font-weight: bold;
-			text-transform: capitalize;
+		margin: 20px 0;
+		text-align: left;
 
-			@include breakpoint('medium', 'max') {
-				@include responsiveFont(30, 16, true);
+		span {
+
+			@include breakpoint(medium, 'min') {
+				@include responsiveFont(35, 16, true);
+				color: $self-primary;
+				display: block;
+				font-weight: bold;
+				line-height: 1;
+				text-transform: capitalize;
 			}
 		}
 	}
@@ -559,3 +566,6 @@ div[data-chaordic] {
 	}
 }
 
+.container > .container > .pre-title {
+	display: none;
+}
