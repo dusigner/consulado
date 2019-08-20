@@ -78,7 +78,7 @@
 			<section class="vitrine-desconto">
 				<div class="vitrine-desconto__bg-mobile m-auto d-block d-md-none"></div>
 				<div class="container">
-					<div class="row m-auto">
+					<!-- <div class="row m-auto">
 						<div class="col-md-4 col-lg-3 p-0">
 							<div class="vitrine-desconto__card-cupom">
 								<figure class="vitrine-desconto__icone-cupom">
@@ -115,10 +115,31 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</section>
 		</main>
+		<!-- Footer 2019 -->
+		<footer class="footer-2019" data-module="footer-2019">
+			<vtex:template id="0-consul-footer-2019-servicos" />
+			<vtex:template id="0-consul-footer-2019-newsletter" />
+			<vtex:template id="0-consul-footer-2019-atendimento" />
+			<vtex:template id="0-consul-footer-2019-menu" />
+			<vtex:template id="0-consul-footer-2019-bottom" />
+			<!-- @if DEBUG=true -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-servicos.html -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-newsletter.html -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-atendimento.html -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-menu.html -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-bottom.html -->
+			<!-- @endif -->
+		</footer>
+
+		<vtex:template id="0-consul-footer-2019-after" />
+		<!-- /Footer 2019 -->
+			<!-- @if DEBUG=true -->
+				<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer-2019-after.html -->
+			<!-- @endif -->
 		<script src="<!-- @echo assetsPath -->/consul-cupom.min.js?v=<!-- @echo package.version -->"></script>
 	</body>
 </html>

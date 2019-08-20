@@ -10,6 +10,10 @@
 @import 'helpers/functions';
 @import 'helpers/fix-header-bootstrap4';
 @import 'helpers/fix-footer-bootstrap4';
+@import 'components/mod-prateleira-v2';
+@import 'components/chaordic-shelf';
+@import 'components/selos';
+@import 'libs/toastr';
 //COLORS
 $gray-light: #fbfafa;
 //FONTS
@@ -367,5 +371,33 @@ $breakpoint-map: (
 		margin-top: 20px;
 		padding: 4px 22px;
 		width: 200px;
+	}
+}
+//style copy cupom
+
+// Breadcrumb
+.pagina-cervejeiras .category-postheader { margin: 0!important; }
+
+#toast-container {
+	> .toast-info {
+		background-color: rgba(27, 27, 27, 0.9);
+		background-image: none !important;
+		border-radius: 4px;
+		box-shadow: none;
+		margin-top: 2%;
+		opacity: 1;
+		padding: 12px 25px;
+		> .toast-message {
+			color: #ffffff;
+			font-size: 16px;
+			font-weight: bold;
+			padding: 3px 0;
+		}
+		> .toast-close-button {
+			font-weight: bold;
+			position: relative;
+			right: 0;
+			top: 0;
+		}
 	}
 }
