@@ -183,13 +183,14 @@ body.busca {
 			@include icon-get('arrow-down');
 			@include transition(transform, 200);
 			@include responsiveFont(8, 16, true);
-			color: #736C6B;
+			color: #702F8F;
 			display: inline-block;
 			margin-left: 10px;
 			vertical-align: middle;
 
 			@include breakpoint('medium', 'max') {
 				@include responsiveFont(5, 16, true);
+				color: #736C6B;
 				margin-bottom: 5px;
 				margin-left: 6px;
 				width: 5%;
