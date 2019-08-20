@@ -47,8 +47,6 @@ body.busca {
 
 	.list-content h2 { display: none; }
 
-	&.categoria .title-filter { display: none; }
-
 	&.departamento,
 	&.busca {
 		.title-filter {
@@ -99,29 +97,6 @@ body.busca {
 }
 
 /*==========  CATEGORIA  ==========*/
-
-.clear-filter {
-	@include responsiveFont(12, 16, true);
-	color: $orange;
-	display: block;
-	margin-top: 26px;
-	right: 0;
-	text-transform: uppercase;
-	top: 7px;
-
-	@include breakpoint(small, 'max') {
-		float: none;
-		text-align: center;
-	}
-
-	&:after {
-		@include icon-get('close-icon');
-		@include responsiveFont(8, 16, true);
-		margin-left: .5em;
-	}
-
-	.more-cat + & { right: 180px; }
-}
 
 .open-filter {
 	display: none;

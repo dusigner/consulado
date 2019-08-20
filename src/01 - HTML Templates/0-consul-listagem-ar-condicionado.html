@@ -55,22 +55,23 @@
 
 		<!-- Filtros -->
 		<div class="filter-wrapper">
-			<div class="category-list">
+				<p class="title-filter">Categorias</p>
+				<div class="category-list">
+					<div class="container departament-nav clearfix">
+						<div class="clearfix">
+
+							<vtex:contentPlaceHolder id="category-list" />
+						</div>
+					</div>
+				</div>
+				<p class="title-filter">Filtrar</p>
 				<div class="container departament-nav clearfix">
 					<div class="clearfix">
-						<p class="title-filter">Categorias</p>
-						<vtex:contentPlaceHolder id="category-list" />
+						<vtex.cmc:searchNavigator keepCurrentPath="true" />
 					</div>
 				</div>
 			</div>
-			<div class="container departament-nav clearfix">
-				<div class="clearfix">
-					<p class="title-filter"></p>
-					<vtex.cmc:searchNavigator keepCurrentPath="true" />
-				</div>
-			</div>
-		</div>
-		<!-- /Filtros -->
+			<!-- /Filtros -->
 
 		<div class="container list-container clearfix">
 			<div class="row gutters">

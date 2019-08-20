@@ -48,7 +48,7 @@
 			@include transition(color, 400);
 
 			&:hover {
-				color: $orange;
+				color: $purple-n;
 				text-decoration: none;
 			}
 		}
@@ -84,36 +84,6 @@
 				line-height: 50px;
 			}
 		}
-
-		.title-filter {
-			@include responsiveFont(18, 16, true);
-			display: inline-block;
-			float: left;
-			font-weight: 400;
-			line-height: 76px;
-			margin: 0 1.5em 0 0;
-
-			@include breakpoint(small, 'max') {
-				display: block;
-				float: none;
-				margin: 0;
-				text-align: center;
-
-				&.active {
-					color: $orange;
-				}
-
-				&::after {
-					@include icon-get('arrow-down');
-					@include responsiveFont(12, 16, true);
-					@include transition(transform, 200);
-					margin-left: 1em;
-				}
-			}
-		}
-		.mobile-buttons {
-			display: none;
-		}
 	}
 
 	.navigation {
@@ -130,7 +100,7 @@
 			margin: 0 1.5em 0 0;
 
 			a {
-				color: $orange;
+				color: $purple-n;
 				font-weight: bold;
 			}
 		}
@@ -177,7 +147,7 @@
 				@include icon-get('arrow-down');
 				@include responsiveFont(8, 16, true);
 				@include transition(transform, 200);
-				color: $orange;
+				color: $purple-n;
 				margin-left: 1em;
 			}
 		}
@@ -257,6 +227,10 @@
 			}
 		}
 	}
+
+	.mobile-buttons {
+		display: none;
+	}
 }
 
 .open-filter {
@@ -290,7 +264,7 @@
 	background-color: rgba(0, 0, 0, 0.6);
 	height: 100%;
 	position: fixed;
-	top: 0;
+	top: 100px;
 	width: 100%;
 	z-index: 21;
 	&:before {
@@ -303,19 +277,6 @@
 		position: fixed;
 		right: 280px;
 		top: 20%;
-	}
-}
-.clear-filter {
-	@include responsiveFont(18, 16, true);
-	background-color: $orange;
-	border: none;
-	color: #fff;
-	letter-spacing: 1px;
-	padding: 13px 0;
-	text-transform: uppercase;
-	width: 100%;
-	@include breakpoint(large, 'min') {
-		display: none;
 	}
 }
 .sidebar-filter-submenu {
@@ -343,8 +304,8 @@
 				margin: 0 5px 0 5px;
 			}
 			&.erase-filter {
-				background: $orange;
-				border: 1px solid $orange;
+				background: $purple;
+				border: 1px solid $purple;
 				color: #fff;
 				font-weight: normal;
 			}
@@ -379,32 +340,19 @@ body.departamento {
 	}
 	.filter-wrapper {
 		background-color: #fff;
-		border: 1px solid $gray;
 		display: inline-block;
 		vertical-align: top;
 		width: 260px;
 		z-index: 10;
-		&:before {
-			@include responsiveFont(20, 16, true);
-			background-color: $gray;
-			content: 'Filtrar';
-			display: block;
-			padding: 20px 0 20px 20px;
-			text-transform: uppercase;
-			width: 100%;
-		}
 		fieldset {
 			border: none;
 			margin: 0;
 			padding: 0;
 		}
 		.departament-nav {
-			padding: 15px 0;
+			padding: 5px 0;
 			@include breakpoint(medium, 'max') {
 				width: 100% !important;
-			}
-			.title-filter {
-				display: none;
 			}
 			.menu-departamento {
 				h3,
@@ -421,38 +369,32 @@ body.departamento {
 					fieldset {
 						label {
 							cursor: pointer;
-							display: inline-block;
-							padding-left: 25px;
+							display: block;
+							padding-left: 30px;
 							position: relative;
 							&:before {
 								background-color: #fff;
-								border: 1px solid $gray-d;
+								border: 1px solid $gray-b;
 								border-radius: 3px;
 								content: ' ';
 								display: inline-block;
-								height: 15px;
+								height: 20px;
 								left: 0;
 								position: absolute;
 								top: 50%;
 								transform: translate(0%, -50%);
 								visibility: visible;
-								width: 15px;
+								width: 20px;
 							}
-							&.active:after {
-								background-color: $orange;
-								content: ' ';
-								display: inline-block;
-								height: 9px;
-								left: 0;
-								margin-left: 3px;
-								position: absolute;
-								top: 50%;
-								transform: translate(0%, -50%);
-								visibility: visible;
-								width: 9px;
+							&.active:not(.loading) {
+								font-weight: 700;
 
-								@include breakpoint('medium', 'max') {
-									left: 20px;
+								&:before {
+									@include icon-get('check-thin');
+									background-color: $purple-n;
+									color: #fff;
+									font-size: 1.1rem;
+									line-height: 1.1;
 								}
 							}
 							&.loading {
@@ -461,7 +403,7 @@ body.departamento {
 								}
 								&:before {
 									@include responsiveFont(12, 16, true);
-									@include spinner($orange);
+									@include spinner($purple-n);
 									background-color: transparent;
 									height: auto;
 									left: -1px;
@@ -470,18 +412,21 @@ body.departamento {
 									transform: initial;
 									width: 18px !important;
 
-									@include breakpoint('medium', 'max') {
-										left: 18px;
+									@include breakpoint ('medium', 'max') {
+										left: 10px;
 										top: 12px;
 									}
 								}
 							}
 
 							@include breakpoint('medium', 'max') {
-								padding-left: 45px;
+								border-bottom: none;
+								display: block;
+								margin: 5px 15px;
+								padding-left: 35px;
 
 								&:before {
-									left: 20px;
+									left: 10px;
 								}
 							}
 						}
@@ -498,31 +443,34 @@ body.departamento {
 				}
 
 				h5 {
-					@include responsiveFont(15, 16, true);
-					color: $orange;
+					@include responsiveFont(14, 16, true);
+					color: $gray-d;
 					cursor: pointer;
 					margin: 7px 0;
-					padding-left: 45px;
-					text-transform: uppercase;
-					&:before {
+
+					&:after {
 						@include contentBefore();
 						@include icon-get('arrow-up');
 						@include responsiveFont(6, 16, true);
-						left: 20px;
+						color: $green;
+						display: inline-block;
 						margin-top: 7px;
-						transition: transform 0.4s ease;
+						right: 0;
+						transition: transform .4s ease;
+
+						@include breakpoint ('medium', 'max') {
+							left: 55px;
+							right: inherit;
+						}
 					}
 					&.closed {
-						&:before {
+						&:after {
 							transform: rotate(-180deg);
 						}
 					}
 					@include breakpoint(medium, 'max') {
 						margin: 0;
-						padding: 8px 8px 8px 45px;
-						&.closed {
-							border-bottom: 1px solid $gray-l;
-						}
+						padding: 8px 8px 8px 35px;
 					}
 				}
 
@@ -530,32 +478,21 @@ body.departamento {
 					display: none;
 				}
 				.refino {
-					margin-bottom: 5px;
+					border-bottom: 1px solid $gray-n;
+					margin-top: 10px;
+					padding-bottom: 15px;
+
 					label {
 						@include responsiveFont(15, 16, true);
 						cursor: pointer;
 						display: none;
-						margin: 4px 25px;
+						font-size: .875rem;
+						margin: 5px 25px;
 						position: relative;
 						@include breakpoint(medium, 'max') {
 							border-bottom: 1px solid $gray-l;
 							margin-bottom: 0;
 							padding: 10px 25px;
-							&.active {
-								background-color: $gray-l;
-								border-bottom: 1px solid $gray;
-								// &:before {
-								// 	@include icon-get('close-icon');
-								// 	@include responsiveFont(10, 16, true);
-								// 	background-color: transparent;
-								// 	display: inline-block;
-								// 	margin: 0;
-								// 	position:  absolute;
-								// 	right: 20px;
-								// 	top: 50%;
-								// 	transform: translate(0, -50%);
-								// }
-							}
 						}
 					}
 
@@ -564,6 +501,15 @@ body.departamento {
 						padding: 50px 45px 35px 55px;
 						position: relative;
 					}
+
+					@include breakpoint ('medium', 'max') {
+						margin: 10px 22px 0;
+					}
+				}
+
+				@include breakpoint ('medium', 'max') {
+					margin-bottom: 100px;
+					padding: 0 25px;
 				}
 			}
 		}
@@ -575,9 +521,10 @@ body.departamento {
 			overflow-y: auto;
 			position: fixed;
 			right: 0;
-			top: 0;
+			top: 100px;
 			transform: translateX(100%);
-			transition: transform 0.3s ease;
+			transition: transform .3s ease;
+			width: 100%;
 			z-index: 100;
 
 			&:before {
@@ -589,6 +536,27 @@ body.departamento {
 
 			&.opened {
 				transform: translateX(0);
+			}
+		}
+
+		.title-filter {
+			border-bottom: 2px solid #9aca3c;
+			font-size: 1rem;
+			font-weight: 700;
+			margin: 20px 0 0;
+			padding-bottom: 2px;
+
+			&:first-of-type {
+				margin: 0;
+
+				@include breakpoint ('medium', 'max') {
+					display: none;
+				}
+			}
+
+			@include breakpoint ('medium', 'max') {
+				margin: 15px 40px 0;
+
 			}
 		}
 	}
@@ -617,7 +585,7 @@ body.departamento {
 			.list-content {
 				padding: 50px 0 100px 0;
 				&:before {
-					@include spinner($orange);
+					@include spinner($purple-n);
 					background-color: transparent;
 					content: '';
 					display: block;
@@ -641,6 +609,88 @@ body.departamento {
 			//margin-top: 50px;
 			width: 100% !important;
 		}
+	}
+
+	.mobile-buttons {
+		display: none;
+
+		@include breakpoint ('medium', 'max') {
+			border-bottom: 2px solid #9aca3c;
+			display: flex;
+			justify-content: space-between;
+			padding: 15px;
+		}
+
+		button {
+			@include responsiveFont(12, 16, true);
+			background-color: #fff;
+			border: 1px solid #e3e1e1;
+			border-radius: 20px;
+			color: #736c6b;
+			display: inline-block;
+			font-weight: 700;
+			margin: 0 auto;
+			padding: 5px 10px 5px 10px;
+			width: 45%;
+
+			&.close-filter {
+				background-color: $purple-n;
+				border-color: $purple-n;
+				color: #fff;
+
+				&:hover,
+				&:focus {
+					background-color: #fff;
+					color: $purple-n;
+				}
+			}
+		}
+		// .clear-filter {
+		// 	@include responsiveFont(18, 16, true);
+		// 	background-color: $orange;
+		// 	border: none;
+		// 	color: #fff;
+		// 	letter-spacing: 1px;
+		// 	padding: 13px 0;
+		// 	text-transform: uppercase;
+		// 	width: 100%;
+		// 	@include breakpoint(large, 'min') { display: none; }
+		// }
+	}
+}
+
+.specificationRange:before,
+.priceRange:before {
+	background-color: $gray;
+	border-radius: 10px;
+    content: '';
+	display: inline-block;
+    height: 7px;
+    left: 20%;
+    position: absolute;
+    top: 47px;
+    width: 7px;
+
+	@include breakpoint ('medium', 'max') {
+		left: 50px;
+	}
+}
+
+.specificationRange:after,
+.priceRange:after {
+	background-color: $gray;
+	border-radius: 10px;
+    content: '';
+    display: inline-block;
+    height: 7px;
+    left: 80%;
+    position: absolute;
+    top: 47px;
+    width: 7px;
+
+	@include breakpoint ('medium', 'max') {
+		left: inherit;
+		right: 45px;
 	}
 }
 
