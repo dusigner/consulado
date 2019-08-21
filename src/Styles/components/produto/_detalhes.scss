@@ -20,16 +20,22 @@
 		}
 
 		h3 {
-			color: $button-bg-color;
+			color: #736c6b;
+			font-weight: bold;
 			line-height: 1em;
 			margin-bottom: 0;
+
 			@include breakpoint(small, 'max') {
 				margin: 0;
+			}
+
+			span {
+				color: $green;
 			}
 		}
 
 		p {
-			@include font-size(18px);
+			@include font-size(14px);
 			font-weight: 300;
 			margin-top: 10px;
 
@@ -66,11 +72,6 @@
 
 
 		&.item-single {
-			h3 {
-				font-size: 48px;
-				font-weight: 100;
-			}
-
 			.image {
 				background-size: contain;
 				width: 80%!important;
