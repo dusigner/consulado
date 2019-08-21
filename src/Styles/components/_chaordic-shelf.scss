@@ -55,10 +55,8 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
-		@include responsiveFont(25, 16, true);
-
 		@include breakpoint(small, 'max') {
-			@include responsiveFont(16, 16, true);
+			@include responsiveFont(25, 16, true);
 			color: $gray-d;
 			display: block;
 			position: relative;
@@ -72,6 +70,7 @@ div[data-chaordic] {
 			}
 		}
 
+		font-size: 25px;
 		margin: 20px 0;
 		text-align: center;
 
@@ -88,6 +87,15 @@ div[data-chaordic] {
 			&.shelf--compre-junto {
 				@include responsiveFont(25, 16, true);
 				display: inline-block;
+
+			}
+
+			@include breakpoint('medium', 'max') {
+				&.shelf--compre-junto {
+					color: $green;
+					font-size: 25px;
+				}
+
 			}
 		}
 
