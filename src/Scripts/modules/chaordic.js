@@ -570,6 +570,10 @@ Nitro.module('chaordic', function() {
 			renderData[1].subtitle = 'Relacionados aos <span class="shelf--visited">seus interesses</span>';
 		}
 
+		if (renderData[1] && renderData[1].name === 'Preferidos') {
+			renderData[1].title = 'Confira <span class="shelf--preferidos">os preferidos</span>';
+		}
+
 		dust.render(placeholderDust, renderData, function(err, out) {
 			if (err) {
 				throw new Error('Chaordic Placeholder Dust error: ' + err);
