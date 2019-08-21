@@ -285,7 +285,7 @@ Nitro.controller(
 						.attr('href', url)
 						.parent()
 						.css({
-							display: 'block'
+							display: 'inline-block'
 						});
 				}
 				// else{
@@ -376,5 +376,7 @@ Nitro.controller(
 		$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
 			$('.bread-crumb').addClass('show-active');
 		});
+
+		$('.secure').removeClass('col-v2 l2 offset-l1');
 	}
 );

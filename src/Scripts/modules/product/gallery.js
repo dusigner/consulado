@@ -7,7 +7,8 @@ Nitro.module('gallery', function() {
 		var $thumbs = $('.thumbs a'),
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
-			$video = $('#caracteristicas h4.Video + table .value-field');
+			$video = $('#caracteristicas h4.Video + table .value-field'),
+			$size = ($(window).width() < 768) ? 56 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
@@ -212,5 +213,15 @@ Nitro.module('gallery', function() {
 				e.preventDefault();
 			});
 		}*/
+
+		$(window).resize(function() {
+			const widthPage = $(window).width();
+
+			if (widthPage < 960) {
+				$('.thumb img').attr('height', '56px').attr('width', '56px');
+			} else {
+				$('.thumb img').attr('height', '75px').attr('width', '75px');
+			}
+		});
 	};
 });

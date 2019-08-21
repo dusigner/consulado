@@ -1,5 +1,5 @@
 .prod-details-nav {
-	background-color: $green;
+	background-color: #F1F0F0;
 	min-height: 95px;
 	position: relative;
 	text-align: center;
@@ -24,7 +24,8 @@
 
 		ul {
 			display: none;
-			left: -10px;
+			left: -28px;
+			margin-top: 20px;
 			min-width: 700px;
 			transform: translateX(0);
 
@@ -51,12 +52,11 @@
 	}
 
 	ul {
-		left: 50%;
 		min-width: 900px;
-		padding: 26px 0;
+		padding: 20px 0;
 		position: absolute;
-		transform: translateX(-50%);
-		transition: .4s ease;
+		transform: translateX(-4%);
+		transition: .1s ease;
 
 		@include breakpoint(extra-large, 'min') {
 			min-width: inherit;
@@ -64,27 +64,33 @@
 	}
 
 	li {
-		@include font-size(18px, true, false);
+		@include font-size(14px, true, false);
 		display: inline-block;
-		margin-right: 6px;
 		vertical-align: middle;
 
 		a {
 			border-radius: 22px;
-			color: #ffffff;
+			color: #736C6B;
 			display: inline-block;
-			padding: 8px 10px;
+			font-weight: bold;
+			padding: 8px 36.5px;
 			position: relative;
 			transition: color .4s ease, background .4s ease;
 
 			&:hover,
 			&.active-nav {
-				background: #ffffff;
-				color: $green;
+				background: #f1f0f0;
+				color: #736C6B;
 			}
 		}
 
 		&.hide { display: none; }
+
+		&:not(:last-child) {
+			&:after {
+				content: '|';
+			}
+		}
 	}
 
 	.nav-price {
@@ -98,7 +104,7 @@
 	}
 
 	.details-preco {
-		color: #ffffff;
+		color: #736C6B;
 		float: right;
 		text-align: right;
 
@@ -107,10 +113,25 @@
 
 			em { font-style: normal; }
 
-			strong { font-weight: 400; }
+			.skuBestPrice {
+				@include rfs(20);
+				color: $green;
+				font-weight: bold;
+			}
 		}
 
-		.valor-de,
+		.valor-de {
+			font-size: 0;
+
+			strong {
+				@include rfs(14);
+				color: #736c6b;
+				font-weight: 400;
+				text-decoration: line-through;
+			}
+		}
+
+		.discount-boleto,
 		.preco-a-vista,
 		.economia-de { display: none!important; }
 
@@ -125,15 +146,29 @@
 		}
 
 		.valor-dividido {
-			@include responsiveFont(18, 16, true);
 			display: block!important;
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(12, 16, true);
-			}
+			font-size: 0;
 
 			label {
+				@include rfs(15);
 				display: inline-block;
-				font-weight: 700;
+				font-weight: 500;
+
+				&.skuBestInstallmentValue {
+					&:after {
+						content: ' sem juros';
+					}
+				}
+
+				&.skuBestInstallmentNumber {
+					&:before {
+						content: 'em até ';
+					}
+
+					&:after {
+						content: '\00a0';
+					}
+				}
 			}
 		}
 	}
@@ -143,7 +178,11 @@
 		float: right;
 
 		.buy-button {
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
 			margin-left: 20px;
+			margin-top: 10px;
 
 			@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
@@ -155,8 +194,8 @@
 			}
 
 			&:hover {
-				background-color: #fff;
-				border-color: $orange;
+				background-color: #F1F0F0;
+				color: $green;
 			}
 		}
 	}

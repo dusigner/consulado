@@ -24,23 +24,25 @@ body.produto {
 
 .prod-info {
 	.secure {
-		@include breakpoint('small', 'max') {
+
+		@include breakpoint('medium', 'max') {
 			// background-color: #ccc;
 			display: none!important;
 		}
 		@include rfs(12);
 		display: none;
+		opacity: 0.5;
 		text-transform: uppercase;
 
 		@include breakpoint(medium, 'min') {
-			margin-top: -15px;
-			padding-left: 5px;
+			padding-left: 60%;
+			padding-top: 4px;
 
 			i {
 				@include font-size(20px);
-				left: -25px;
 				position: relative;
-				top: 30px;
+				right: 5px;
+				top: 4px;
 			}
 		}
 
@@ -74,6 +76,36 @@ body.produto {
 			width: 100%;
 
 			.flag { position: static; }
+		}
+	}
+
+	#BuyButton {
+		.buy-button {
+			@include rfs(15);
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
+			font-weight: 500;
+			padding: 5px 0;
+			position: relative;
+			width: 50%;
+			z-index: 3;
+
+			@include breakpoint ('medium', 'max') {
+				padding: 12px 20px;
+				width: 100%;
+
+				@include breakpoint ('small', 'max') {
+					font-size: 0 !important;
+					position: fixed;
+				}
+			}
+
+
+			&:hover {
+				background-color: #fff;
+				color: $green;
+			}
 		}
 	}
 }
@@ -239,7 +271,8 @@ body.produto {
 		min-height: 30px;
 
 		&:before {
-			@include rfs(18);
+			@include rfs(14);
+			color: #736C6B;
 			content: 'Selecione a voltagem';
 			display: block;
 			position: absolute;
@@ -257,38 +290,56 @@ body.produto {
 			position: absolute;
 			visibility: hidden;
 
-			&:hover + label,
 			&:checked + label {
-				color: $button-bg-color;
+				font-weight: bold;
 
-				&:before { border: 4px solid $button-bg-color; }
+				&:before {
+					background-color: #702F8F;
+					border: 4px solid #fff;
+					box-shadow: 0 0 0 2px #702f8f;
+					height: 16px;
+					width: 16px;
+				}
 			}
 		}
 
 		label {
-			@include rfs(18);
+			@include rfs(14);
+			color: #736C6B;
 			cursor: pointer;
 			display: inline;
-			font-weight: 700;
+			font-weight: 400;
 			margin-right: 25px;
-			padding-left: 21px;
+			padding-left: 25px;
 			position: relative;
 			transition: .4s ease;
 			vertical-align: middle;
 
 			&:before {
 				background-color: #fff;
-				border: 2px solid $txt-gray;
+				border: 1px solid $txt-gray;
 				border-radius: 50%;
 				content: '';
-				height: 14px;
+				height: 20px;
 				left: 0;
 				position: absolute;
 				top: 50%;
 				transform: translateY(-50%);
-				width: 14px;
+				width: 20px;
 
 				@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
+			}
+
+			&:hover {
+				font-weight: bold;
+
+				&:before {
+					background-color: #702F8F;
+					border: 4px solid #fff;
+					box-shadow: 0 0 0 2px #702f8f;
+					height: 16px;
+					width: 16px;
+				}
 			}
 		}
 	}
@@ -328,14 +379,6 @@ body.produto {
 		float: left;
 		font-size: 1em;
 		padding: 13px 28px;
-
-		&:before {
-			@include icon-get('consul-cart');
-			@include responsiveFont(22, 16, true);
-			float: left;
-			margin-right: 10px;
-		}
-
 		@include breakpoint(small, 'max') {
 			border-radius: 0;
 			bottom: 0;
@@ -349,7 +392,7 @@ body.produto {
 			width: 100%;
 			z-index: 9999;
 
-					&:before {
+				&:before {
 					@include responsiveFont(16, 16, true);
 					content: 'Adicionar ao carrinho';
 					display: inline-block;
@@ -361,7 +404,7 @@ body.produto {
 					top: 50%;
 					transform: translate(-50%, -50%);
 					width: 100%;
-					}
+				}
 			}
 	}
 }
@@ -378,21 +421,36 @@ body.produto {
 	}
 
 	.titulo-parcelamento {
-		@include responsiveFont(11, 16, true);
 		border-bottom: 1px solid $gray;
+		color: #fff;
 		cursor: pointer;
-		display: block;
+		display: flex;
+		font-size: 0;
+		justify-content: center;
 		margin: 10px 0;
-		padding: 0 10px 10px 0;
+		padding: 0 10px 5px 0;
 		position: relative;
 		text-transform: uppercase;
 
+		&:after {
+			@include responsiveFont(13, 16, true);
+			color: $default-color-purple;
+			content: 'Ver parcelas';
+			font-weight: bold;
+			margin-left: 5px;
+			position: static;
+			text-transform: initial;
+
+		}
+
 		&:before {
-			@include contentBefore();
+			//@include contentBefore();
 			@include icon-get('arrow-down');
 			@include responsiveFont(8, 16, true);
-			left: 175px;
-			top: 4px;
+			color: $default-color-purple;
+			line-height: 3;
+			margin-right: 5px;;
+			position: static;
 			transform: rotate(0deg);
 			transition: transform .2s ease-in;
 		}
@@ -455,14 +513,29 @@ body.produto {
 }
 
 .prod-more-info {
+	border-bottom: 1px solid #F1F0F0;
+	display: flex;
+	justify-content: space-between;
 	margin-top: 15px;
 
+	@include breakpoint('medium', 'max') {
+		border: none;
+		flex-direction: column;
+	}
 	@include breakpoint(small, 'max') { margin: 20px 0; }
 
 	a {
-		@include font-size(12px);
-		color: $txt-gray-l;
-		text-transform: uppercase;
+		@include font-size(13px);
+		color: #736C6B;
+		margin: 6px 0;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		@include breakpoint('medium', 'max') {
+			border-bottom: 1px solid #f1f0f0;
+		}
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(14, 16, true);
@@ -475,13 +548,16 @@ body.produto {
 // TOOLS
 // ===================================
 .social {
-	height: 100px;
+	display: flex;
+	justify-content: flex-end;
 	margin-top: 20px;
-	width: 100%;
+	width: 50%;
 
-	@include breakpoint(extra-small, 'max') {
-		height: auto;
-		margin: 20px 0;
+	@include breakpoint(medium, 'max') {
+		display: flex;
+		justify-content: space-between;
+		margin: 20px auto;
+		width: 120px;
 	}
 
 	p {
@@ -491,10 +567,6 @@ body.produto {
 			width: 210px;
 		}
 	}
-}
-
-.at-share-btn {
-	background-color: #9aca3c!important;
 }
 
 .at-style-responsive .at-share-btn {
@@ -517,5 +589,13 @@ body.consulempresa {
 			font-weight: normal;
 
 		}
+	}
+}
+
+.cta-containers {
+	display: flex;
+
+	@include breakpoint ('medium', 'max') {
+		flex-direction: column;
 	}
 }
