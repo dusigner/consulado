@@ -85,13 +85,23 @@ body {
 	.hide {
 		visibility: visible;
 	}
-	.step,
-	.cart,
-	.totalizers {
-		border: 3px solid $gray-l;
+	.step {
+		border: 1px solid $gray-l;
 	}
+
+	.cart {
+		border: none;
+	}
+
+	.totalizers {
+		border-left: 0;
+		border-radius: 0;
+		border-right: 0;
+		position: relative;
+	}
+
 	header {
-		border-bottom: 3px solid $gray-l;
+		border-bottom: 1px solid $gray-l;
 		.cont-logo,
 		.come-back {
 			line-height: 70px;
@@ -105,7 +115,19 @@ body {
 			max-width: 100%;
 			position: relative;
 			vertical-align: middle;
-			width: 100%;
+			width: 173px;
+		}
+		.header {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			.compra-segura {
+				@include responsiveFont(14);
+				color: $txt-gray-l;
+				font-weight: 500;
+				text-transform: uppercase;
+			}
+
 		}
 	}
 	#cart-title,
@@ -276,12 +298,13 @@ body {
 		}
 	}
 	.linkWarranty {
-		background: $green;
-		border: 3px solid $green;
+		background: transparent;
+		border: 1px solid $purple;
+		color: $purple;
 		margin-top: 10px;
+
 		&:hover {
-			background: transparent;
-			border: 3px solid $green;
+			border: 1px solid $green;
 			color: $green;
 		}
 	}
@@ -329,15 +352,11 @@ body {
 				}
 			}
 		} // fake buttom mobile
-		@include breakpoint(small,
-		'max') {
+		@include breakpoint(small, 'max') {
 			.field-button {
 				.btn-success {
-					@include responsiveFont(14,
-					16,
-					true);
-					@include vendor(border-radius,
-					20px);
+					@include responsiveFont(14, 16, true);
+					@include vendor(border-radius, 20px);
 					background-color: $green;
 					border: none;
 					color: #fff;
@@ -521,11 +540,14 @@ body {
 
 //DESTAQUE NA VOLTAGEM
 .highlight-voltage {
-	background-color: $green;
+	border: 1px solid $gray-l;
 	border-radius: 25px;
-	color: #fff;
-	display: inline-block;
-	padding: 0 5px;
+	color: #736C6B;
+	display: table-caption;
+	font-size: 10px;
+	font-weight: 500;
+	margin: 5px 0;
+	padding: 1px 20px;
 }
 
 //AJUSTE DISPLAY NOME
@@ -621,110 +643,6 @@ body[class*='consulempresa'] {
 		display: none;
 		visibility: hidden;
 	}
-}
-
-.btn_smartbeer {
-	font-size: .9375rem !important;
-	padding: 16px 65px 10px 50px !important;
-	position: relative;
-	text-transform: uppercase;
-
-	&:before {
-		@include contentBefore();
-		@include font-size(16px,
-		true,
-		false);
-		@include icon-get('arrow-right');
-		display: inline-block;
-		right: 40px;
-		top: 50%;
-		transform: translateY(-50%) scaleY(1);
-		transition: transform .2s ease-in;
-	}
-
-	&.mobile {
-		padding: 10px 40px !important;
-		&:before {
-			right: 20px;
-		}
-	}
-}
-
-.aviso-smartbeer {
-	border-bottom: 1px solid #f4f2f1 !important;
-	border-top: 1px solid #f4f2f1 !important;
-	color: #736c6b;
-	font-size: 16px;
-	text-align: center !important;
-}
-
-#vtex-modal-smartbeer {
-	.modal-header {
-		border: none;
-		color: #fff;
-		font-size: 0;
-		margin-bottom: 25px;
-
-		.close {
-			color: #747474;
-			font-size: 13px;
-			opacity: 1 !important;
-			right: 3px !important;
-			top: 3px !important;
-			z-index: 33;
-
-			&:before {
-				@include icon-get('close-icon');
-			}
-		}
-	}
-
-	.modal-holder {
-		max-width: 665px;
-
-		.text-modal-smartbeer {
-			color: #736c6b;
-			font-size: 18px;
-			padding: 15px;
-
-			& > h2 {
-				@include breakpoint('small', 'max') {
-					font-size: 14px;
-					line-height: 18px;
-					padding: 10px 24px;
-				}
-				border: 1px solid #94bc42;
-				border-radius: 61px;
-				display: block;
-				font-size: 18px;
-				font-weight: normal;
-				line-height: 26px;
-				padding: 10px 30px;
-
-				strong { color: #94bc42; }
-
-			}
-			button.close {
-				background: #94bc42;
-				color: #fff;
-				display: block;
-				float: none;
-				font-size: 12px;
-				font-weight: normal;
-				margin: 21px auto 7px;
-				opacity: 1;
-				padding: 6px 23px;
-				@include breakpoint('small', 'max') {
-					font-size: 14px;
-					padding: 12px 37px;
-				}
-			}
-		}
-	}
-}
-
-@include breakpoint('small', 'max') {
-	.cart-links .btn_smartbeer { display: none !important; }
 }
 
 body.body-order-form {
