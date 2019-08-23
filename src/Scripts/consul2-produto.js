@@ -71,6 +71,7 @@ Nitro.controller(
 			$('.secure').show();
 		} else {
 			$('body').addClass('produto-indisponivel');
+			$('.calc-frete').hide();
 		}
 
 		var $reference = $('.reference'),

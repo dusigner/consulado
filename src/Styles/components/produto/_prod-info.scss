@@ -407,6 +407,28 @@ body.produto {
 				}
 			}
 	}
+
+	.notifyme-button-ok {
+		&:not([href='#relacionados']) {
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
+
+			&:hover {
+				background-color: #fff;
+				color: $green;
+			}
+		}
+
+		background-color: #fff;
+		border-color: $gray-b;
+		color: $gray-b;
+
+		&:hover {
+			background-color: $gray-b;
+			color: #fff;
+		}
+	}
 }
 
 .valores-parcelas {
