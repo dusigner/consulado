@@ -30,7 +30,7 @@ body {
 		right: 0;
 		transition: opacity .3s ease;
 		width: 30%;
-		z-index: 3;
+		z-index: 1;
 
 		@include breakpoint(extra-small, 'max') {
 			bottom: 80px;

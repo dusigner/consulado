@@ -60,14 +60,6 @@ div[data-chaordic] {
 			color: $gray-d;
 			display: block;
 			position: relative;
-
-			&:not(.shelf-sub-title):not(.Preferidos):after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(5, 16, true);
-				display: block;
-				font-weight: bold;
-				text-transform: capitalize;
-			}
 		}
 
 		font-size: 25px;
