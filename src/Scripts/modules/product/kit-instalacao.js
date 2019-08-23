@@ -12,9 +12,6 @@ Nitro.module('kit-instalacao', function() {
 	const $buyButton = $('.buy-button.buy-button-ref');
 	const defaultProductLink = $buyButton.attr('href');
 
-	console.log('$$$$$', $buyButton);
-	console.log('buyButtonLink', defaultProductLink);
-
 	this.init = () => {
 		this.selectKitType();
 		this.selectProducts();
@@ -59,14 +56,15 @@ Nitro.module('kit-instalacao', function() {
 		$kitInstalacao.on('click', '.kit-product.available', function() {
 			const $selectSelf = $(this);
 			const productSku = $selectSelf.data('sku');
+			const actualProductLink = $buyButton.attr('href');
 
 			// Caso o clintete descelecione a o kit, voltamos o link para o padrão
 			if ($selectSelf.hasClass('is--active')) {
-				const defaultLink = defaultProductLink.replace(`${productSku}`, '');
-				self.updateButtonLink(defaultLink);
+				const productLink = actualProductLink.replace(`${productSku}`, '');
+				self.updateButtonLink(productLink);
 			}
 			else {
-				const defaultLinkAndSku = `${defaultProductLink}${productSku}`;
+				const defaultLinkAndSku = `${actualProductLink}${productSku}`;
 				self.updateButtonLink(defaultLinkAndSku);
 			}
 
@@ -83,14 +81,9 @@ Nitro.module('kit-instalacao', function() {
 	this.getProducts = (collectionId, kitType) => {
 		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${collectionId}`)
 			.then(resp => resp.json())
-			.then(data => {
-				console.log(data);
-				this.printProducts(data, kitType);
-			})
+			.then(data => this.printProducts(data, kitType))
 			.then(() => this.loadingAnimation())
-			.then(() => {
-				this.showProducts(kitType);
-			})
+			.then(() => this.showProducts(kitType))
 			.catch(error => {
 				this.printError();
 				console.error('#Error', error);
@@ -162,7 +155,11 @@ Nitro.module('kit-instalacao', function() {
 			</div>
 		`;
 
-		$kitInstalacao.append(errorTemplate);
+		if (!$kitInstalacao.hasClass('kit-error')) {
+			$kitInstalacao.append(errorTemplate);
+		}
+
+		$kitInstalacao.addClass('kit-error');
 		this.handleError();
 	};
 
