@@ -136,4 +136,20 @@ Nitro.module('sku-select', function() {
 			});
 		});
 	});
+
+	this.unavailableSKU = () => {
+		$('label.dimension-Voltagem').on('click', () => {
+			setTimeout(function() {
+				if ($('.notifyme.sku-notifyme').is(':visible')) {
+					$('.secure').hide();
+					$('.calc-frete').hide();
+				} else {
+					$('.secure').show();
+					$('.calc-frete').show();
+				}
+			}, 1000);
+		})
+	};
+
+	this.unavailableSKU();
 });
