@@ -89,11 +89,12 @@ body.produto {
 			padding: 5px 0;
 			position: relative;
 			width: 50%;
-			z-index: 3;
+			z-index: 1;
 
 			@include breakpoint ('medium', 'max') {
 				padding: 12px 20px;
 				width: 100%;
+				z-index: 3;
 
 				@include breakpoint ('small', 'max') {
 					font-size: 0 !important;
@@ -408,6 +409,28 @@ body.produto {
 		}
 
 		&:hover { background-color: #fff; }
+	}
+
+	.notifyme-button-ok {
+		&:not([href='#relacionados']) {
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
+
+			&:hover {
+				background-color: #fff;
+				color: $green;
+			}
+		}
+
+		background-color: #fff;
+		border-color: $gray-b;
+		color: $gray-b;
+
+		&:hover {
+			background-color: $gray-b;
+			color: #fff;
+		}
 	}
 }
 
