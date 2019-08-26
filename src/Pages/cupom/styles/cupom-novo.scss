@@ -286,6 +286,9 @@ $breakpoint-map: (
 				padding: 10px 20px;
 			}
 		}
+		@include breakpoint('desktop', 'min') {
+			box-shadow: none;
+		}
 		background-color: #fff;
 		border-radius: 4px;
 		box-shadow: 0 1px 3px #d9d8d8;
@@ -328,7 +331,7 @@ $breakpoint-map: (
 	}
 	&__card-cupom-codigo {
 		@include responsiveFont(22);
-		background-color: $gray-light;
+		background-color: #f7f7f7;
 		color: $purple;
 		font-weight: $font-bold;
 		padding: 10px;
@@ -338,6 +341,16 @@ $breakpoint-map: (
 			background: transparent;
 			margin: 0;
 			padding: 0;
+		}
+		@include breakpoint ('desktop', 'min'){
+			border-radius: 30px;
+			color: $purple;
+			display: inline-block;
+			font-weight: $font-bold;
+			margin: 28px auto 10px;
+			padding: 10px 38px;
+			text-transform: uppercase;
+			width: auto;
 		}
 	}
 	&__card-cupom-desconto {
