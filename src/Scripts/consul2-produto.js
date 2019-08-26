@@ -13,13 +13,13 @@ import 'modules/product/kit-instalacao';
 import 'modules/product/boleto';
 import 'modules/product/notify-me';
 import 'modules/product/share';
-import 'modules/product/quiz-install';
 import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/chaordic';
 import 'components/testeab-entrega';
+// import 'modules/product/quiz-install';
 // require('modules/product/special-content');
 
 Nitro.controller(
@@ -40,10 +40,11 @@ Nitro.controller(
 		'boleto',
 		'notify-me',
 		'share',
-		'quiz-install',
 		'upsell',
 		'deliveryTime',
-		'recurrence' /*, 'special-content'*/
+		'recurrence',
+		// 'quiz-install',
+		// 'special-content',
 	],
 	function(chaordic, testeabEntrega, colorSelector, skuFetch, gallery) {
 		var self = this,
