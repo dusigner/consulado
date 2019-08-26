@@ -20,7 +20,8 @@ Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 		})
 	}
 	this.getShelf = (idCollection) => {
-		return fetch(`/buscapagina?fq=H:${idCollection}&sl=d3c2e649-5d24-4dc7-be0d-c13e47cf8d46&cc=12&sm=0&PS=9`).then(res => res.text())
+		const shelfId = $('.vitrine-desconto').data('shelf-id');
+		return fetch(`/buscapagina?fq=H:${idCollection}&sl=${shelfId}&cc=12&sm=0&PS=9`).then(res => res.text())
 	}
 	this.renderCupom = (cupom) => {
 		dust.render('cupom-list',  cupom, (err, out) => {
