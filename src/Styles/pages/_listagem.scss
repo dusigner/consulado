@@ -47,8 +47,6 @@ body.busca {
 
 	.list-content h2 { display: none; }
 
-	&.categoria .title-filter { display: none; }
-
 	&.departamento,
 	&.busca {
 		.title-filter {
@@ -71,6 +69,14 @@ body.busca {
 	@include breakpoint(small, 'max') { padding: 30px 10px !important; }
 
 	.list-content { margin-left: 0 !important; }
+
+
+	.see-more {
+		border-top: 1px solid #e3e1e1;
+		display: flex;
+		justify-content: center;
+		width: calc(100% - 20px);
+	}
 }
 
 
@@ -100,29 +106,6 @@ body.busca {
 
 /*==========  CATEGORIA  ==========*/
 
-.clear-filter {
-	@include responsiveFont(12, 16, true);
-	color: $orange;
-	display: block;
-	margin-top: 26px;
-	right: 0;
-	text-transform: uppercase;
-	top: 7px;
-
-	@include breakpoint(small, 'max') {
-		float: none;
-		text-align: center;
-	}
-
-	&:after {
-		@include icon-get('close-icon');
-		@include responsiveFont(8, 16, true);
-		margin-left: .5em;
-	}
-
-	.more-cat + & { right: 180px; }
-}
-
 .open-filter {
 	display: none;
 	float: right;
@@ -148,6 +131,22 @@ body.busca {
 	}
 }
 
+.clear-filter {
+	@include responsiveFont(12, 16, true);
+	color: $orange;
+	display: block;
+	margin-top: 26px;
+	right: 0;
+	top: 7px;
+
+	@include breakpoint(small, 'max') {
+		float: none;
+		text-align: center;
+	}
+
+	.more-cat + & { right: 180px; }
+}
+
 .order-wrapper {
 	float: left;
 	padding-right: 1em;
@@ -155,10 +154,10 @@ body.busca {
 
 	.order-title-chaordic,
 	.order-title {
-		@include responsiveFont(18);
 		color: $orange;
 		cursor: pointer;
 		display: inline;
+		font-size: 0;
 		font-weight: bold;
 		margin: 0;
 		text-align: right;
@@ -166,28 +165,61 @@ body.busca {
 
 		&:first-letter { text-transform: uppercase; }
 
-		span {
+		span.show-desktop {
+			@include responsiveFont(13, 16, true);
 			color: $txt-gray;
+			text-transform: none;
+			@include breakpoint('medium', 'max') { display: none; }
+		}
 
-			@include breakpoint(small, 'max') { display: none; }
+		em.show-desktop {
+			@include responsiveFont(13, 16, true);
+			color: #702F8F;
+			font-style: normal;
+			@include breakpoint('medium', 'max') { display: none; }
 		}
 
 		&:after {
 			@include icon-get('arrow-down');
 			@include transition(transform, 200);
 			@include responsiveFont(8, 16, true);
+			color: #702F8F;
 			display: inline-block;
 			margin-left: 10px;
 			vertical-align: middle;
 
-			@include breakpoint(small, 'max') {
+			@include breakpoint('medium', 'max') {
 				@include responsiveFont(5, 16, true);
+				color: #736C6B;
+				margin-bottom: 5px;
 				margin-left: 6px;
+				width: 5%;
 			}
 		}
 
 		&.active {
 			&:after { transform: rotate(180deg); }
+		}
+
+		@include breakpoint ('medium', 'max') {
+			border: 1px solid #E3E1E1;
+			border-radius: 20px;
+			display: inline-block;
+			padding: 5px 15px;
+			width: 100%;
+
+		}
+	}
+
+	.order-title:before {
+		@include breakpoint ('medium', 'max') {
+			@include responsiveFont(12, 16, true);
+			color: #736C6B;
+			content: 'Ordenar por';
+			display: inline-block;
+			font-weight: bold;
+			text-align: center;
+			width: 85%;
 		}
 	}
 
@@ -236,13 +268,9 @@ body.busca {
 			&:nth-child(5) { order: 1; }
 		}
 	}
-	@include breakpoint(small, 'max') {
-		.txt-filtro {
-			&:before {
-				content: 'ordenar por';
-				font-size: 16px;
-			}
-		}
+
+	@include breakpoint ('medium', 'max') {
+		width: 50%;
 	}
 }
 
@@ -265,7 +293,7 @@ body.busca {
 }
 
 #list-more {
-	@include responsiveFont(18);
+	@include responsiveFont(12, 16,  true);
 	//FIX TABLET
 	@media screen and(min-width: 768px) {
 		@media screen and(max-width: 768px) {
@@ -274,13 +302,15 @@ body.busca {
 			margin: 0;
 		}
 	}
-	@include breakpoint(small, 'max') {
-		min-height: 35px;
-		padding: 0;
-		width: 100%;
-	}
-	min-height: 50px;
+
+	background-color: #fff;
+    border: 1px solid $purple;
+	color: $purple;
+	margin-top: 10px;
 	outline: none;
+	padding: 8px 16px;
+	position: static;
+	width: 200px;
 
 	&.loading {
 		font-size: 0;

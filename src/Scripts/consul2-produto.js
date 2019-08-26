@@ -9,6 +9,7 @@ import 'modules/product/details';
 import 'modules/product/specifications';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
+import 'modules/product/kit-instalacao';
 import 'modules/product/boleto';
 import 'modules/product/notify-me';
 import 'modules/product/share';
@@ -35,6 +36,7 @@ Nitro.controller(
 		'specifications',
 		'selos',
 		'sku-select',
+		'kit-instalacao',
 		'boleto',
 		'notify-me',
 		'share',
@@ -71,6 +73,7 @@ Nitro.controller(
 			$('.secure').show();
 		} else {
 			$('body').addClass('produto-indisponivel');
+			$('.calc-frete').hide();
 		}
 
 		var $reference = $('.reference'),
@@ -285,7 +288,7 @@ Nitro.controller(
 						.attr('href', url)
 						.parent()
 						.css({
-							display: 'block'
+							display: 'inline-block'
 						});
 				}
 				// else{
@@ -376,5 +379,7 @@ Nitro.controller(
 		$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
 			$('.bread-crumb').addClass('show-active');
 		});
+
+		$('.secure').removeClass('col-v2 l2 offset-l1');
 	}
 );
