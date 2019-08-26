@@ -264,13 +264,6 @@ body.produto {
 		font-weight: bold;
 		padding: 10px 15px;
 		text-transform: lowercase;
-
-		&:before {
-			content: 'Selecione a';
-			display: inline-block;
-			margin-right: 5px;
-			text-transform: initial;
-		}
 	}
 
 	.nomeSku,
@@ -288,15 +281,6 @@ body.produto {
 	display: inline-block;
 	padding: 10px 15px;
 	position: relative;
-
-		&:before {
-			@include rfs(14);
-			color: #736C6B;
-			content: 'Selecione a voltagem';
-			display: block;
-			position: absolute;
-		}
-	}
 
 	span { position: relative; }
 
