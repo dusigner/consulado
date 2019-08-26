@@ -248,27 +248,45 @@ body.produto {
 	@include breakpoint(small, 'max') { padding-top: 20px; }
 }
 
+
+
+// Seleção de SKU's
 .prod-sku-selector {
-	margin-top: 15px;
-
-	@include breakpoint(small, 'max') {
-		margin-bottom: 0;
-
-		.select-voltage {
-			// display: none;
-			margin: 0;
-		}
-	}
-}
-
-.prod-sku-selector,
-#modal-sku {
 	@include breakpoint(small, 'min') { color: $txt-gray-l; }
+	margin: 30px 0;
 
 	.specification {
-		font-size: 0;
-		margin-bottom: -3px;
-		min-height: 30px;
+		@include rfs(16);
+		background-color: #f1f0f0;
+		color: #736c6b;
+		display: block;
+		font-weight: bold;
+		padding: 10px 15px;
+		text-transform: lowercase;
+
+		&:before {
+			content: 'Selecione a';
+			display: inline-block;
+			margin-right: 5px;
+			text-transform: initial;
+		}
+	}
+
+	.nomeSku,
+	.preco,
+	.buy-button,
+	.seller-data { display: none; }
+}
+
+// Modal de seleção de SKU's
+#modal-sku {
+	.row.options { margin: 0 0 1em 0; }
+}
+
+.skuList {
+	display: inline-block;
+	padding: 10px 15px;
+	position: relative;
 
 		&:before {
 			@include rfs(14);
@@ -279,95 +297,77 @@ body.produto {
 		}
 	}
 
-	.skuList,
-	.options {
-		display: inline-block;
+	span { position: relative; }
+
+	label {
+		@include rfs(14);
+		cursor: pointer;
+		display: inline;
+		font-weight: bold;
+		margin-right: 40px;
+		padding-left: 20px;
 		position: relative;
+		transition: color .2s ease;
+		vertical-align: middle;
 
-		span { position: relative; }
+		&:last-child { margin: 0; }
 
-		input[type='radio'] {
+		&:before,
+		&:after {
+			border-radius: 50%;
+			content: '';
+			left: 0;
 			position: absolute;
-			visibility: hidden;
-
-			&:checked + label {
-				font-weight: bold;
-
-				&:before {
-					background-color: #702F8F;
-					border: 4px solid #fff;
-					box-shadow: 0 0 0 2px #702f8f;
-					height: 16px;
-					width: 16px;
-				}
-			}
+			top: 50%;
+			transform: translateY(-50%);
 		}
 
-		label {
-			@include rfs(14);
-			color: #736C6B;
-			cursor: pointer;
-			display: inline;
-			font-weight: 400;
-			margin-right: 25px;
-			padding-left: 25px;
-			position: relative;
-			transition: .4s ease;
-			vertical-align: middle;
+		&:before {
+			@include square(15px);
+			background-color: #fff;
+			border: 1px solid $txt-gray;
+			transition: border-color .2s ease;
 
-			&:before {
-				background-color: #fff;
-				border: 1px solid $txt-gray;
-				border-radius: 50%;
-				content: '';
-				height: 20px;
-				left: 0;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 20px;
+			@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
+		}
 
-				@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
-			}
-
-			&:hover {
-				font-weight: bold;
-
-				&:before {
-					background-color: #702F8F;
-					border: 4px solid #fff;
-					box-shadow: 0 0 0 2px #702f8f;
-					height: 16px;
-					width: 16px;
-				}
-			}
+		&:after {
+			@include square(5px);
+			background-color: #702F8F;
+			left: 5px;
+			opacity: 0;
+			transition: opacity .2s ease;
 		}
 	}
 
-	.nomeSku,
-	.preco,
-	.buy-button,
-	.seller-data { display: none; }
+	// Hover and active state
+	input[type='radio'] {
+		position: absolute;
+		visibility: hidden;
+
+		&:hover + label,
+		&:checked + label {
+			color: #702F8F;
+
+			&:before { border: 2px solid #702F8F; }
+			&:after { opacity: 1; }
+		}
+	}
 }
 
+
+
 .select-voltage {
-	@include breakpoint(large, 'max')  {
+	@include breakpoint(large, 'max') {
 		margin-bottom: 10px;
 		width: 100%!important;
 	}
 	@include breakpoint(medium, 'max') { width: 50%!important;  }
-	@include breakpoint(small, 'max')  {
+	@include breakpoint(small, 'max') {
 		margin-bottom: 30px;
 		width: 100%!important;
 	}
 }
-
-// .select-color {
-// 	p {
-// 		position: relative;
-// 		z-index: 1;
-// 	}
-// }
 
 #BuyButton {
 	@include font-size(18px, true, false);
@@ -392,20 +392,22 @@ body.produto {
 			width: 100%;
 			z-index: 9999;
 
-				&:before {
-					@include responsiveFont(16, 16, true);
-					content: 'Adicionar ao carrinho';
-					display: inline-block;
-					font-family: $base-font-family !important;
-					font-weight: bold !important;
-					left: 50%;
-					position: absolute;
-					text-transform: uppercase !important;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					width: 100%;
-				}
+			&:before {
+				@include responsiveFont(16, 16, true);
+				content: 'Adicionar ao carrinho';
+				display: inline-block;
+				font-family: $base-font-family !important;
+				font-weight: bold !important;
+				left: 50%;
+				position: absolute;
+				text-transform: uppercase !important;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				width: 100%;
 			}
+		}
+
+		&:hover { background-color: #fff; }
 	}
 }
 
@@ -507,9 +509,7 @@ body.produto {
 		}
 	}
 
-	.see-other-payment-method-link {
-		display: none;
-	}
+	.see-other-payment-method-link { display: none; }
 }
 
 .prod-more-info {
@@ -569,11 +569,12 @@ body.produto {
 	}
 }
 
+.at-share-btn { background-color: #9aca3c!important; }
+
 .at-style-responsive .at-share-btn {
 	margin-left: 30px!important;
-	&:first-child {
-		margin-left: 0!important;
-	}
+
+	&:first-child { margin-left: 0!important; }
 }
 
 body.consulempresa {
@@ -581,13 +582,13 @@ body.consulempresa {
 		@include responsiveFont(28, 16, true);
 		color: $green;
 		font-weight: 700;
+
 		&:after {
 			@include responsiveFont(16, 16, true);
 			color: $txt-gray;
 			content: 'à vista no boleto';
 			display: block;
 			font-weight: normal;
-
 		}
 	}
 }
