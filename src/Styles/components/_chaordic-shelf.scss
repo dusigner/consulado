@@ -55,35 +55,78 @@ div[data-chaordic] {
 
 .shelf {
 	&-pre-title {
-		margin: 0;
-		padding: 20px 5px;
+		@include breakpoint(small, 'max') {
+			@include responsiveFont(25, 16, true);
+			color: $gray-d;
+			display: block;
+			position: relative;
+		}
 
-		span { color: $self-primary; }
-
-		// span {
-		// 	@include breakpoint(medium, 'min') {
-		// 		@include responsiveFont(78, 16, true);
-		// 		color: $self-primary;
-		// 		display: block;
-		// 		font-weight: 100;
-		// 		line-height: 1;
-		// 		text-transform: capitalize;
-		// 	}
-		// }
-	}
-
-	&-title {
-		font-size: 1.5625rem;
-		font-weight: 700;
-		margin-bottom: 15px;
+		font-size: 25px;
+		margin: 20px 0;
 		text-align: center;
 
-		.shelf--compre-junto {
-			color: $green;
-			display: inline-block;
-			font-size: 1.5625rem;
-			font-weight: 700;
-			text-transform: none;
+		span {
+			@include breakpoint(medium, 'min') {
+				@include responsiveFont(35, 16, true);
+				color: $self-primary;
+				display: block;
+				font-weight: bold;
+				line-height: 1;
+				text-transform: capitalize;
+			}
+
+			&.shelf--compre-junto {
+				@include responsiveFont(25, 16, true);
+				display: inline-block;
+
+			}
+
+			@include breakpoint('medium', 'max') {
+				&.shelf--compre-junto {
+					color: $green;
+					font-size: 25px;
+				}
+
+			}
+		}
+
+		&.Preferidos {
+			@include responsive('max-width', 95%,
+				(
+					'small'       : 768px,
+					'medium'      : 960px,
+					'large'       : 1200px,
+					'extra-large' : 1280px
+				)
+			);
+
+			font-size: 1.25rem;
+			margin: 0 auto 20px;
+			text-align: left;
+
+			@include breakpoint ('medium', 'max') {
+				background: #fff;
+				color: #736c6b;
+				font-size: 1rem;
+				font-weight: 400;
+				margin: 15px auto;
+				max-width: 95%;
+				padding: 0 20px;
+			}
+
+			span {
+				font-size: 2.1875rem;
+				font-weight: 700;
+				text-transform: none;
+
+				@include breakpoint ('medium', 'max') {
+					color: $green;
+					display: block;
+					font-size: 1.875rem;
+					line-height: 1;
+				}
+			}
 		}
 	}
 
@@ -166,19 +209,11 @@ div[data-chaordic] {
 
 		h2 {
 			@include breakpoint(small, 'max') {
-				&:not(.shelf-sub-title) {
-					margin-left: calc(-0% - 20px);
-					margin-right: calc(-0% - 20px);
-					@include breakpoint('extra-small', 'max') {
-						margin-left: calc(-3% - 20px);
-						margin-right: calc(-3% - 20px);
-					}
-				}
+				margin: 0;
 
 				&.shelf-sub-title {
 					display: block;
 					position: relative;
-					text-align: center;
 
 					&:before {
 						border-color: $self-third transparent transparent transparent;
@@ -240,14 +275,13 @@ div[data-chaordic] {
 				width: 100%;
 
 				h2 {
-					background-color: $self-third;
 					font-weight: normal;
 				}
 			}
 			width: 100/3*2%;
 
 			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
-			h2 { color: $self-primary }
+
 		}
 	}
 
@@ -545,20 +579,35 @@ div[data-chaordic] {
 		}
 	}
 
-}
+	&.slick-vertical {
+		.shelf-item {
+			margin: 3px 0;
 
-#relacionados {
-	h2 {
-		display: none;
-	}
+		}
+		button {
+			left: 80%!important;
+			position: relative;
+			width: 10px;
 
-	.pre-title {
-		font-size: 1.5625rem;
-		margin-bottom: 20px;
-		text-align: center;
+			&.slick-prev {
+				top: 195px;
+			}
 
-		span {
-			font-size: 1.5625rem;
+			&.slick-next {
+				bottom: 200px;
+			}
+
+			&:before {
+				font-size: .5rem;
+			}
+
+			@include breakpoint('extra-large', 'max') {
+				left: 85%!important;
+			}
 		}
 	}
+}
+
+.container > .container > .pre-title {
+	display: none;
 }

@@ -6,7 +6,6 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
 	<vtex:template id="0-consul-head-content" />
-
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="produto">
@@ -16,7 +15,7 @@
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
 
-	<!--  Header -->
+	<!-- Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
@@ -34,7 +33,6 @@
 	<div class="main clearfix">
 		<div class="container clearfix">
 			<div class="row no-margin">
-
 				<!-- Box-right -->
 				<div class="col-v2 l5 m12 gutters-on prod-title">
 					<h1 class="lead">
@@ -76,23 +74,74 @@
 						<vtex.cmc:hightLight />
 					</div>
 
-					<div class="select-color">
-						<div class="product-select-color -js-product-color"></div>
-					</div>
-
 					<div class="row prod-sku-selector">
 						<!--vtex.cmc:stockKeepingUnitSelection /-->
 
+						<!-- Selecionar voltagem -->
 						<div class="select-voltage">
 							<vtex.cmc:skuSelection />
 						</div>
+						<!-- /Selecionar voltagem -->
 
+						<!-- Kit instalação -->
+						<div class="kit-instalacao">
+
+							<!-- Opções de Kit -->
+							<vtex:contentPlaceHolder id="[KIT] - Opcoes-de-kit" />
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- <strong class="kit-instalacao__title specification">Selecione o tipo de gás</strong>
+							<div class="skuList">
+								<span>
+									<input type="radio" name="kit-type" class="kit-instalacao__input" id="botijao" value="1766" />
+									<label for="botijao" class="kit-instalacao__label">Botijão</label>
+
+									<input type="radio" name="kit-type" class="kit-instalacao__input" id="gas-natural" value="1765" />
+									<label for="gas-natural" class="kit-instalacao__label">Gás natural</label>
+								</span>
+							</div> -->
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- Opções de Kit -->
+
+							<!-- Texto auxiliar -->
+							<vtex:contentPlaceHolder id="[KIT] - Texto-auxilio" />
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- <div class="kit-instalacao-container">
+								<strong class="kit-instalacao__title">Ajuda na instalação?</strong>
+								<p class="kit-instalacao__description">
+									Você pode adicionar à compra um kit de instalação original aprovado pela Consul
+								</p>
+							</div> -->
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- /Texto auxiliar -->
+
+							<!-- loading... -->
+							<section class="loading-container">
+								<i class="icon-spinner"></i>
+							</section>
+							<!-- /loading... -->
+
+							<!-- Informação -->
+							<vtex:contentPlaceHolder id="[KIT] - Informacoes" />
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- <div class="kit-instalacao__info">
+								<strong>
+									<i class="icon icon-question"></i>
+									Conversão gratuita
+								</strong>
+								<p>Você tem até 90 dias após a compra para fazer a conversão de gás</p>
+							</div> -->
+							<!-- ### NÃO APAGAR - Layout modelo que fica cadastrado no controle -->
+							<!-- /Informação -->
+						</div>
+						<!-- /Kit instalação -->
+
+						<div class="col-v2 l6 m12 select-color" data-product-field="13"></div>
 					</div>
 
 					<div id="BuyButton" class="clearfix">
 						<vtex.cmc:BuyButton/>
 
-						<div class="secure">
+						<div class="secure col-v2 l2 offset-l1">
 							<i class="icon icon-lock"></i> Compra Segura
 						</div>
 					</div>
@@ -111,38 +160,36 @@
 						<vtex.cmc:shippingValue/>
 					</div>
 
-					<div class="cta-containers">
-						<div class="btn-pecas-produto">
-							<a href="#">Peças para este produto</a>
-						</div>
+					<div class="btn-pecas-produto">
+						<a href="#">
+							<i class="icon icon-icon-engrenagem"></i>Peças para este produto
+						</a>
+					</div>
 
-						<div class="content_botoes_televendas">
-							<vtex.cmc:BuyButton/>
-							<p>Ou compre pelo telefone</p>
-							<a href="tel:112739-4826" class="btn_click_call">Televendas</a>
-						</div>
+					<div class="content_botoes_televendas">
+						<vtex.cmc:BuyButton/>
+						<p>Ou compre pelo telefone</p>
+						<a href="tel:112739-4826" class="btn_click_call">Televendas</a>
+					</div>
 
-						<div class="social">
-							<a id="shareBtn" class="compartilharFc"></a>
-							<a id="compartilharTw"  rel="nofollow" href=""></a>
-							<a id="compartilharEmail"></a>
-						</div>
+					<!-- Go to www.addthis.com/dashboard to customize your tools -->
+					<div class="social">
+						<p>Gostou? Compartilhe esse produto!</p>
+						<a id="shareBtn" class="compartilharFc"></a>
+						<a id="compartilharTw"  rel="nofollow" href=""></a>
+						<a id="compartilharEmail"></a>
 					</div>
 
 					<div class="row prod-more-info">
-						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" title="Informações de contratação" target="_blank">Informações de contratação</a>
-						<a href="#" class="tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de entrega</a>
+						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" class="col-v2 l4 m12" title="Informações de contratação" target="_blank">Informações de contratação</a>
+						<a href="#" class="col-v2 l4 m12 tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de entrega</a>
 						<!-- <a href="#" class="col-v2 l4 m12 entrega-premium" title="Entrega Premium" data-modal="entrega-premium">Entrega Premium</a> -->
-						<a href="http://loja.consulempresa.com.br" class="show-personal" title="Vendas Corporativas">Vendas Corporativas</a>
+						<a href="//loja.consulempresa.com.br" class="col-v2 l4 m12 show-personal" title="Vendas Corporativas">Vendas Corporativas</a>
 					</div>
 				</div>
 				<!-- /Box-right -->
 			</div>
 		</div>
-	</div>
-
-	<div id="upsell" class="js-upsell">
-		<vtex:contentPlaceHolder id="Upsell" />
 	</div>
 
 	<div class="cont-prod-details-nav">
@@ -172,6 +219,7 @@
 	<div data-chaordic="middle"></div>
 	<!-- /Chaordic MIDDLE -->
 
+	<!-- Main -->
 	<div class="main clearfix after-prod">
 		<section id="detalhes" class="detalhes"></section>
 		<section id="video" class="video"></section>
@@ -188,9 +236,7 @@
 
 		<!-- Produtos relacionados - Vtex -->
 		<section id="relacionados" class="slider">
-			<div class="container">
-				<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
-			</div>
+			<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
 			<div class="container">
 				<div class="row">
 					<div class="prateleira-slider clearfix">
@@ -258,13 +304,12 @@
 	</div>
 	<!-- /Main -->
 
-	<!-- [ CHAORDIC ] BOTTOM -->
+	<!-- Chaordic BOTTOM -->
 	<div data-chaordic="bottom"></div>
-	<!-- /[ CHAORDIC ] BOTTOM -->
+	<!-- /Chaordic BOTTOM -->
 
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5801703bb1e23dde"></script> -->
-
 	<!-- Modal custom Share -->
 	<div id="modal-custom-share" data-title="Compartilhar por e-mail" style="display: none;">
 		<form id="formshare" action="">

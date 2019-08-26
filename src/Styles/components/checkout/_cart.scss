@@ -1,42 +1,92 @@
 body {
 	&.body-cart {
-		.checkout-container { padding-bottom: 40px; }
+
+		.cart-template  {
+			width: 99.99%;
+		}
+
+		.checkout-container {
+			padding-bottom: 40px;
+		}
 
 		.cart {
 			@include breakpoint(small 'max') { padding-bottom: 25px }
+			border: 0;
 			padding: 0;
 
 			.cart-items {
 				thead {
 					@include responsiveFont(14, 16, true);
-					background-color: $gray-l;
+					border-bottom: 3px solid $green;
 
 					th {
 						padding: 15px;
-						text-transform: uppercase;
+						text-align: left;
+						text-transform: capitalize;
 					}
 				}
 
 				tbody {
-					padding-bottom: 30px;
 
 					td {
 						@include breakpoint(768px, 'max') { vertical-align: top; }
 						@include breakpoint(small, 'max') { padding: 10px 0 !important; }
 						padding: 20px 10px;
+
+						@include  breakpoint(small 'min') {
+							padding: 20px 10px 0;
+						}
+
+						@include breakpoint(768px, 'max') {
+							vertical-align: top;
+
+							&.product-image {
+								left: 15px;
+								max-height: 65px;
+
+
+							}
+						}
+
+						&.product-image {
+
+							background-position: center 30px;
+							vertical-align: top;
+
+
+							@include  breakpoint(small 'max') {
+								padding: 0;
+							}
+
+							img {
+								max-height: 45px;
+							}
+						}
+						@include breakpoint(small, 'max') {
+							padding: 10px 0 !important;
+						}
+
+
 					}
 
-					.item-remove { right: 7px; }
+					.item-remove {
+						right: 20px;
+						top: -2px;
+					}
 
 					.product-item {
-						@include breakpoint(small, 'max') { padding-bottom: 45px; }
-						border-top: 3px solid $gray-l;
+						border: 1px solid $gray-l;
+						border-radius: 3px;
+						margin-bottom: 20px;
 						overflow: initial;
-						padding: 30px 0;
+						padding: 10px 0;
 
-						&:first-child {
-							@include breakpoint(small, 'max') { border-top: 0 !important; }
-							border-bottom: none;
+
+						@include breakpoint(small, 'max') { padding-bottom: 10px; }
+
+						@include breakpoint(small, 'min') {
+							border-radius: 3px;
+							margin: 15px 0;
 						}
 
 						.brand,
@@ -45,8 +95,22 @@ body {
 						.product-price,
 						.quantity-price {
 							@include responsiveFont(12, 16, true);
-							color: $txt-gray-l;
+							color: $purple;
 							font-weight: normal;
+						}
+
+						.shipping-date,
+						.product-price,
+						.quantity-price,
+						.item-remove,
+						.quantity {
+
+							@include breakpoint(small, 'min') {
+								padding-bottom: 10px;
+								padding-top: 45px;
+								text-align: left;
+								vertical-align: top;
+							}
 						}
 
 						.product-name {
@@ -55,36 +119,115 @@ body {
 							font-weight: bold;
 							width: 385px;
 
-							& > a {
-								display: block;
+							@include breakpoint(small, 'max') {
+								margin-left: 0;
+								padding: 0 15px !important;
 								width: 100%;
 							}
 
-							.brand {
-								display: inline-block;
-
-								&:after {
-									content: ' - ';
-									display: inline-block;
+							&>a {
+								display: block;
+								font-weight: 500;
+								margin-left: 60px;
+								padding-bottom: 10px;
+								position: relative;
+								width: calc(100% - 60px);
+								@include breakpoint(small, 'max') {
+									min-height: 62px;
 								}
 							}
 
+							.brand,
+							.seller {
+								display: none;
+
+								// &:after {
+								// 	content: ' - ';
+								// 	display: inline-block;
+								// }
+							}
+
 							.product-service {
+								padding-top: 10px;
+								position: relative;
+
+								@include breakpoint(small, 'min') {
+
+									&::before {
+										background: #F1F0F0;
+										content: '';
+										height: 1px;
+										position: absolute;
+										width: 1000%;
+									}
+								}
+
+								@include breakpoint(small, 'max') {
+									border-top: 1px solid $gray-l;
+									padding-top: 0;
+								}
+
 								.linkWarranty {
-									@include responsiveFont(11, 16, true);
-									text-transform: uppercase;
+									@include responsiveFont(12, 16, true);
+									font-weight: 600;
+									margin-top: 20px;
 
 									@include breakpoint(small, 'max') {
-										@include responsiveFont(10, 16, true);
+										@include responsiveFont(13, 18, true);
+										font-weight: 500;
 										line-height: normal;
-										margin-right: 10px;
 										padding: 10px 0;
 									}
 								}
 							}
 						}
 
+						.item-remove {
+
+							.item-link-remove {
+								.icon {
+									background-size: 100% 100%;
+									display: inline-block;
+									height: 13px;
+									margin-top: 5px;
+									width: 13px;
+
+									&:before {
+										visibility: hidden;
+									}
+
+									&.icon-remove {
+										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
+									}
+								}
+							}
+
+							@include breakpoint(small, 'min') {
+								padding-right: 45px;
+
+								&:before {
+									background: #fff;
+									content: '';
+									height: 1px;
+									margin: 49px 0 0 0;
+									position: absolute;
+									right: 0;
+									width: 20px;
+
+								}
+							}
+						}
+
+						.quantity-price {
+							@include responsiveFont(14, 16, true);
+							color: $green;
+							font-weight: bold;
+							padding: 20px 5px;
+
+						}
+
 						.shipping-date {
+
 							.shipping-estimate-date {
 								@include responsiveFont(13, 16, true);
 								color: $txt-gray;
@@ -93,54 +236,173 @@ body {
 						}
 
 						.product-price {
-							@include breakpoint(small, 'max') { margin-right: 16px; }
+							margin-top: 9px;
+							text-transform: uppercase;
+
+							@include breakpoint(small, 'max') {
+								margin-right: 16px;
+							}
 
 							.list-price {
-								@include responsiveFont(13, 16, true);
-
-								.old-product-price { color: $txt-gray-l; }
+								@include responsiveFont(10, 16, true);
+								font-weight: 500;
+								.old-product-price { color: $purple; }
 							}
 
 							.best-price {
-								@include responsiveFont(13, 16, true);
-								color: $txt-gray;
+								@include responsiveFont(12, 16, true);
+								color: $purple;
+								display: flex;
 								font-weight: bold;
+							}
+							.new-product-price-label {
+								margin-right: 3px;
+							}
+							.discount {
+								margin-left: 10px;
+							}
+							.field-help {
+								margin-top: 25px;
+							}
+							.how-much-discount {
+								color: #0FB6DE;
 							}
 						}
 
 						.quantity {
+							@include breakpoint(small, 'min') {
+								padding-top: 38px;
+							}
 							@include breakpoint(768px, 'max') {
-								align-content: center;
-								align-items: center;
-								display: flex;
+							   align-content: center;
+							   align-items: center;
+							   display: flex;
+							   margin-top: 10px;
 							}
 
 							input {
-								height: 35px;
-								width: 40px;
+								height: 24px;
+								width: 30px;
 							}
 
 							.item-quantity-change {
-								@include breakpoint(768px, 'min') { position: initial; }
-								color: $gray;
-							}
-						}
+								@include breakpoint(768px, 'min') {
+									position: initial;
+								}
 
-						.quantity-price {
-							color: $green;
-							font-weight: bold;
-							padding: 20px 5px;
-						}
+								.icon {
+									background-size: 100% 100%;
+									display: inline-block;
+									height: 16px;
+									left: 1px;
+									position: relative;
+									top: 4px;
+									width: 16px;
 
-						.item-remove {
-							.item-link-remove { color: $txt-gray-l; }
+									&.icon-minus-sign {
+										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_minus-.png');
+									}
+
+									&.icon-plus-sign {
+										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_plus-.png');
+									}
+
+									&::before {
+										visibility: hidden;
+									}
+								}
+							 }
 						}
 					}
 
 					.item-service {
-						td { padding: 10px 10px 25px 10px; }
+						border: 1px solid #E3E1E1;
+						position: relative;
 
-						.bundle-item-name { @include responsiveFont(14, 16, true); }
+						@include breakpoint(small, 'max') {
+							margin-bottom: 10px;
+							margin-top: -21px;
+						}
+
+						@include breakpoint(small, 'min') {
+
+							&:before {
+								background: #fff;
+								content: '';
+								height: 2px;
+								margin-top: -1px;
+								position: absolute;
+								width: 100%;
+							}
+
+							.item-link-remove {
+								position: relative;
+
+								&:before {
+									background: #fff;
+									content: '';
+									height: 2px;
+									position: absolute;
+									right: -35px;
+									top: -12px;
+									width: 20px;
+								}
+							}
+						}
+
+						td {
+							padding: 10px 10px 25px 10px;
+
+							&.bundle-item-image {
+								display: none;
+							}
+
+							&.quantity-price,
+							&.item-remove {
+								padding: 0;
+							}
+
+							&.item-remove {
+								padding-right: 25px;
+
+								.icon-remove {
+									background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
+									background-size: 100% 100%;
+									display: inline-block;
+									height: 13px;
+									margin-top: 5px;
+									width: 13px;
+
+
+									&:before {
+										visibility: hidden;
+									}
+								}
+							}
+						}
+
+						.bundle-item-name {
+							@include responsiveFont(14, 16, true);
+							padding: 15px 0;
+							position: relative;
+
+							span {
+								font-weight: 500;
+								padding-left: 10px;
+							}
+
+							@include breakpoint(small, 'min') {
+
+								&::before {
+									background: #F1F0F0;
+									content: '';
+									height: 1px;
+									position: absolute;
+									top: 0;
+									width: 1000%;
+								}
+							}
+						}
 
 						.quantity-price {
 							@include responsiveFont(12, 16, true);
@@ -169,29 +431,103 @@ body {
 		}
 
 		.totalizers {
-			@include breakpoint(small, 'max') { width: 100%; }
+			@include breakpoint(small, 'max') {
+				border-top: 1px solid $gray-l;
+				padding-top: 5px;
+				width: 100%;
+			}
+			max-width: 390px;
 			padding: 0;
-			width: 46%;
+			width: 100%;
+
+			&.summary-totalizers {
+
+				.accordion-body {
+
+					@include breakpoint(small, 'min') {
+						overflow: hidden;
+					}
+				}
+
+				@include breakpoint(small, 'min') {
+					border: 1px solid #E3E1E1;
+					border-radius: 3px;
+					margin-top: 5px;
+
+					.totalizers-list {
+
+						tr {
+
+							.info {
+								@include responsiveFont(14, 16, true);
+								padding-left: 20px;
+								position: relative;
+
+								&::before {
+									background: #fff;
+									bottom: -1px;
+									content: '';
+									height: 1px;
+									left: calc( -100% + 20px);
+									position: absolute;
+									width: 100%;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.Shipping {
+
+				.info {
+
+					&::before {
+						display: none;
+					}
+				}
+			}
+
+			.monetary {
+				padding-right: 20px;
+				position: relative;
+
+				&::before {
+					background: #fff;
+					bottom: -1px;
+					content: '';
+					height: 1px;
+					position: absolute;
+					right: calc( -100% + 20px);
+					width: 100%;
+				}
+			}
+
+			@include breakpoint(small, 'max') {
+				width: 100%;
+			}
 
 			.quantity-price,
 			.monetary {
 				@include responsiveFont(13, 16, true);
+				color: $purple;
 				font-weight: bold;
-				padding-right: 34px;
 				text-align: right;
 				width: auto;
 			}
 
-			.monetary {
-				@include breakpoint(small, 'max') { padding-right: 50px; }
-			}
+			// .monetary {
+			// 	@include breakpoint(small, 'max') {
+			// 		padding-right: 50px;
+			// 	}
+			// }
 
 			.info {
 				@include responsiveFont(13, 16, true);
-				padding-left: 15px;
+				font-weight: 500;
+				padding-left: 0;
 				padding-right: 30px;
 				text-align: left;
-				text-transform: uppercase;
 				vertical-align: middle;
 				width: 55%;
 			}
@@ -205,19 +541,35 @@ body {
 				tfoot {
 					padding: 5px;
 
-					tr { border-bottom: 1px solid $gray-l; }
+					tr {
+						border-bottom: 1px solid $gray-l;
+						position: relative;
+
+						// &::before,
+						// &:after{
+						// 	content: '';
+						// 	background: #000;
+						// 	height: 100%;
+						// 	width: 15px;
+						// 	position: absolute;
+						// }
+					}
 				}
 
 				.Items {
 					.info {
 						@include responsiveFont(13, 16, true);
-						font-weight: normal;
+						font-weight: 500;
 						padding-right: 26px;
-						text-transform: uppercase;
+						text-transform: capitalize;
 					}
 				}
 
 				.shipping-calculate {
+					.info {
+						@include responsiveFont(14, 16, true);
+						padding-left: 20px;
+					}
 					.monetary {
 						display: none;
 
@@ -282,18 +634,52 @@ body {
 						font-weight: normal;
 						padding: 0;
 						text-align: left;
-						text-transform: uppercase;
+						text-transform: capitalize;
 
 						.info-shipping {
 							display: inline-block;
+							font-size: 0;
 							padding: 8px 15px;
+							position: relative;
 							width: 60%;
+
+							&:before {
+								@include responsiveFont(13, 16, true);
+								color: $gray-d;
+								content: 'Entrega';
+								display: block;
+								font-weight: 500;
+								left: 0;
+								position: absolute;
+								top: 8px;
+
+								// @include breakpoint(extra-large, 'max') {
+								// 	left: 0;
+								// }
+							}
 						}
 
 						.postal-code-for-sla {
 							float: right;
+							margin-top: 4px;
 							min-width: auto;
 							padding: 6px 0;
+							position: relative;
+
+							@include breakpoint('small', 'min') {
+								padding-right: 20px;
+
+								&::before {
+									background: #fff;
+									bottom: -1px;
+									content: '';
+									height: 1px;
+									position: absolute;
+									right: calc( -100% + 20px);
+									width: 100%;
+									z-index: 1;
+								}
+							}
 
 							.shipping-name,
 							.shipping-name-to {
@@ -313,9 +699,16 @@ body {
 							}
 							border-top: 1px solid $gray-l;
 							padding: 16px 0;
-							padding-left: 15px;
-							padding-right: 30px;
 							text-align: right;
+
+
+							@include breakpoint('small', 'min') {
+								padding: 10px 20px 10px 0;
+							}
+
+							@include breakpoint(extra-large, 'max') {
+								padding-top: 10px;
+							}
 
 							.shipping-sla-button {
 								background: #fff;
@@ -323,21 +716,24 @@ body {
 								box-shadow: none;
 								padding: 0;
 								pointer-events: none;
+								position: relative;
 								text-align: right;
 								text-shadow: none;
 								width: 100%;
 
 								.shipping-estimate {
+
 									&::after {
-										background: url('//io.vtex.com.br/checkout-ui/5.15.31/img/loader-inline.gif') center center no-repeat;
-										content: '';
+										background: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_arrow-purple-right-.png') 100% 100% no-repeat !important;
+										background-size: 100% !important;
+										content: '' !important;
 										display: block;
-										height: 17px;
+										height: 17px !important;
 										position: absolute;
-										right: 6px;
-										top: 50%;
-										transform: translateY(-50%);
-										width: 17px;
+										right: 12px !important;
+										top: 41% !important;
+										transform: translateY(-54%);
+										width: 17px !important;
 									}
 								}
 
@@ -373,17 +769,15 @@ body {
 								}
 
 								span {
-									color: $green;
+									color: $purple;
 									font-size: 12px;
 									font-weight: bold;
 
 									span {
 										color: #736C6B;
-										font-weight: normal;
+										font-weight: 500;
 									}
 								}
-
-								@include breakpoint(extra-small, 'max') { text-align: center; }
 							}
 
 							.shipping-estimate {
@@ -391,29 +785,43 @@ body {
 								border: 1px solid $gray-l;
 								display: inline-block;
 								padding: 5px 10px;
-								position: relative;
 								text-align: left;
 								text-transform: initial;
 								width: 60%;
 
-								@include breakpoint(extra-large, 'max') { width: 100%; }
+								// @include breakpoint(extra-large, 'max') {
+								// 	width: 100%;
+								// }
 
 								&:before {
 									@include responsiveFont(13, 16, true);
 									color: $gray-d;
 									content: 'Tipo de entrega';
 									display: block;
-									font-weight: normal;
-									left: -180px;
+									font-weight: 500;
+									left: 0;
 									position: absolute;
-									text-transform: uppercase;
 									top: 4px;
 
 									@include breakpoint(extra-large, 'max') {
-										left: 0;
-										top: -25px;
+										top: 3px;
 									}
 								}
+
+								span.shipping-estimate {
+									width: 60%;
+								}
+
+								// &:after {
+								// 	@include contentBefore();
+								// 	@include font-size(8px, true, false);
+								// 	@include icon-get('arrow-down');
+								// 	display: block;
+								// 	position: absolute;
+								// 	right: 6px;
+								// 	top: 50%;
+								// 	transform: translateY(-50%);
+								// }
 							}
 
 							.shipping-sla-options {
@@ -556,9 +964,13 @@ body {
 
 					.postal-code-value {
 						@include responsiveFont(13, 16, true);
-						color: $green;
+						color: $purple;
 						font-weight: bold;
 						padding-right: 10px;
+
+						@include breakpoint(small, 'min') {
+							padding-right: 0;
+						}
 					}
 
 					.icon-remove-sign {
@@ -575,8 +987,13 @@ body {
 						@include responsiveFont(18, 16, true);
 						font-weight: 700;
 
+						@include breakpoint(small, 'min') {
+							padding: 12px 0 12px 20px ;
+						}
+
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
+							padding-left: 10px;
 						}
 					}
 
@@ -584,6 +1001,14 @@ body {
 						@include responsiveFont(18, 16, true);
 						color: $green;
 						font-weight: 700;
+
+						@include breakpoint(small, 'min') {
+							padding: 12px 20px 12px 0 ;
+						}
+
+						&::before {
+							display: none;
+						}
 
 						@include breakpoint(small, 'max') {
 							@include responsiveFont(16, 16, true);
@@ -596,6 +1021,17 @@ body {
 		.coupon-column {
 			width: 50%;
 
+			.delete {
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 12px;
+				margin-left: 10px;
+			}
+			.info {
+				align-items: center;
+				display: flex;
+			}
+
 			@include breakpoint(small, 'max') {
 				width: 100%;
 
@@ -606,6 +1042,11 @@ body {
 
 			.summary-coupon {
 				float: none;
+
+				@include breakpoint(small, 'min') {
+					margin-left: 0;
+					margin-top: 10px;
+				}
 
 				.coupon-data {
 					float: none;
@@ -618,9 +1059,24 @@ body {
 
 					.link-coupon-add {
 						@include responsiveFont(12, 16, true);
+						border: 1px solid $gray-l;
 						font-weight: bold;
-						padding: 15px 25px;
-						text-transform: uppercase;
+						padding: 12px 25px;
+
+						@include breakpoint(small, 'min') {
+							padding: 12px 45px;
+						}
+
+						span {
+							color: #736C6B;
+							&:first-child {
+								display: none;
+
+								@include breakpoint(small, 'min') {
+									display: inline-block;
+								}
+							}
+						}
 
 						@include breakpoint(small, 'max') {
 							display: inline-block !important;
@@ -646,11 +1102,10 @@ body {
 							background: #fff;
 							border: 2px solid $gray;
 							box-shadow: none;
-							color: $gray;
+							color: $txt-gray-l;;
 							font-weight: bold;
 							padding: 8px 20px;
 							text-shadow: none;
-							text-transform: uppercase;
 
 							&:hover {
 								background: $gray;
@@ -681,7 +1136,7 @@ body {
 			}
 
 			span {
-				color: $green;
+				color: $purple;
 				font-size: 12px;
 				font-weight: bold;
 			}
@@ -708,8 +1163,32 @@ body {
 		}
 
 		.cart-links-bottom {
+			position: relative;
+
+			@include breakpoint(small, 'min') {
+				max-width: 390px;
+				padding: 0 35px;
+				width: 100%;
+			}
+
 			.link-choose-more-products-wrapper {
-				@media screen and (min-width: 320px) and (max-width: 490px) { position: absolute; }
+				display: block;
+				left: 0;
+				margin-top: 10px;
+				padding: 0 35px;
+				position: absolute;
+				text-align: center;
+				top: 57px;
+				width: 100%;
+
+				a {
+					color: $purple;
+				}
+
+				@media screen and (min-width: 320px) and (max-width: 490px) {
+					position: absolute;
+				}
+
 				@include breakpoint(small, 'max') {
 					display: block;
 					left: 0;
@@ -718,12 +1197,12 @@ body {
 				}
 
 				#cart-choose-more-products {
-					@include responsiveFont(13, 16, true);
+					@include responsiveFont(14, 16, true);
+					border: 0;
 					display: none;
 					font-weight: bold;
-					margin-right: 15px;
-					padding: 15px 25px;
-					text-transform: uppercase;
+					margin-right: 0;
+					padding: 0;
 					@include breakpoint(small, 'max') {
 						@include responsiveFont(12, 16, true);
 						display: inline-block;
@@ -738,22 +1217,33 @@ body {
 
 			// Fake button
 			.fake-buttom {
-				@include breakpoint(768px, 'min') { position: relative; }
 				@include responsiveFont(15, 16, true);
+				background: $green;
+				border: 0;
+				color: transparent;
 				font-weight: bold;
 				padding: 14px 50px;
-				padding-right: 65px;
 				position: relative;
-				text-transform: uppercase;
+				text-transform: capitalize;
+				width: 100%;
+
+				&:hover {
+					background: lighten($green, 10%) ;
+				}
+
+				@include breakpoint(768px, 'min') {
+					position: relative;
+				}
 
 				&:before {
-					@include contentBefore();
-					@include font-size(16px, true, false);
-					@include icon-get('arrow-right');
+					@include responsiveFont(15, 16, true);
+					color: #fff;
+					content: 'Finalizar compra';
 					display: inline-block;
-					right: 40px;
+					left: 50%;
+					position: absolute;
 					top: 50%;
-					transform: translateY(-50%) scaleY(1);
+					transform: translateY(-50%) translateX(-50%);
 					transition: transform .2s ease-in;
 				}
 
@@ -782,7 +1272,7 @@ body {
 			.link-choose-more-products {
 				@include responsiveFont(14, 16, true);
 				@include vendor(border-radius, 20px);
-				background-color: $green;
+				//background-color: $green;
 				border: none;
 				color: #fff;
 			}
@@ -843,6 +1333,8 @@ body {
 		}
 	}
 	.cart-links-bottom {
-		.fake-buttom { display: none!important; }
+		.fake-buttom {
+			margin: 20px 0 0;
+		}
 	}
 }
