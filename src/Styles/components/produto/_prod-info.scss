@@ -89,11 +89,12 @@ body.produto {
 			padding: 5px 0;
 			position: relative;
 			width: 50%;
-			z-index: 3;
+			z-index: 1;
 
 			@include breakpoint ('medium', 'max') {
 				padding: 12px 20px;
 				width: 100%;
+				z-index: 3;
 
 				@include breakpoint ('small', 'max') {
 					font-size: 0 !important;
@@ -263,13 +264,6 @@ body.produto {
 		font-weight: bold;
 		padding: 10px 15px;
 		text-transform: lowercase;
-
-		&:before {
-			content: 'Selecione a';
-			display: inline-block;
-			margin-right: 5px;
-			text-transform: initial;
-		}
 	}
 
 	.nomeSku,
@@ -330,7 +324,6 @@ body.produto {
 			transition: opacity .2s ease;
 		}
 	}
-
 
 	// Hover and active state
 	input[type='radio'] {
@@ -400,6 +393,28 @@ body.produto {
 		}
 
 		&:hover { background-color: #fff; }
+	}
+
+	.notifyme-button-ok {
+		&:not([href='#relacionados']) {
+			background-color: $green;
+			border-color: $green;
+			color: #fff;
+
+			&:hover {
+				background-color: #fff;
+				color: $green;
+			}
+		}
+
+		background-color: #fff;
+		border-color: $gray-b;
+		color: $gray-b;
+
+		&:hover {
+			background-color: $gray-b;
+			color: #fff;
+		}
 	}
 }
 

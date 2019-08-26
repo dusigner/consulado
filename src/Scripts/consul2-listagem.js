@@ -47,9 +47,10 @@ Nitro.controller(
 		var testeA = 'testeab=a';
 		var testeB = 'testeab=b';
 
-		if (urlTesteAb.indexOf(testeA) >= 0) {
+		if ( urlTesteAb.indexOf(testeA) >= 0 ) {
 			$body.addClass('ab-test__mobile--show-b');
-		} else if (urlTesteAb.indexOf(testeB) >= 0) {
+		}
+		else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
 			$body.addClass('ab-test__mobile--show-b');
 			// teste vitrine chaordic
 			$body.addClass('test__vitrine--show-b');
@@ -64,21 +65,18 @@ Nitro.controller(
 			ignoreFilters = ['OrderByNameASC', 'OrderByNameDESC', 'OrderByReviewRateDESC'],
 			urlParams = _.urlParams(); //parse params from url
 
-		var $filters = $filterOptions
-			.filter(function() {
-				return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
-			})
-			.map(function() {
-				var self = $(this);
+		var $filters = $filterOptions.filter(function() {
+			return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
+		}).map(function() {
 
-				urlParams.O = self.val(); //set Order Parameter value
+			var self = $(this);
 
-				var url = window.location.pathname + '?' + $.param(urlParams); //encode params to string
+			urlParams.O = self.val(); //set Order Parameter value
 
-				return '<li><a href="' + url + '" title="' + self.text() + '">' + self.text() + '</a></li>';
-			})
-			.get()
-			.join('');
+			var url = window.location.pathname + '?' + $.param(urlParams); //encode params to string
+
+			return '<li><a href="' + url + '" title="' + self.text() + '">' + self.text() + '</a></li>';
+		}).get().join('');
 
 		$listOrders.append($filters);
 
@@ -89,11 +87,10 @@ Nitro.controller(
 		$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>');
 		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
+
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
-		// prettier-ignore
-		$('body').hasClass('categoria') ? $('.breadcrumb').removeClass('hide-medium')
-			.removeClass('hide-large').removeClass('hide-extra-large')
-			: '';
+
+		($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
 
 		//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
 		$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
@@ -101,11 +98,13 @@ Nitro.controller(
 		});
 
 		if ($('body').is('.departamento')) {
+
 			//get all categories
 			$categoriesList = $searchSingle.find('h4');
 
 			//create more drowpdown if category bigger than 2
 			if ($categoriesList.length > 1) {
+
 				$dropElements = $categoriesList.slice(2, $categoriesList.length);
 
 				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');

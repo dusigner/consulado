@@ -7,6 +7,7 @@ Nitro.module('kit-instalacao', function() {
 	// Variables
 	const self = this;
 	const $kitInstalacao = $('.kit-instalacao');
+	const $productKit = $('.kit-product');
 	const $kitInstalacaoInfo = $('.kit-instalacao__info');
 	const $gasType = $('.kit-instalacao__input');
 	const $buyButton = $('.buy-button.buy-button-ref');
@@ -23,7 +24,7 @@ Nitro.module('kit-instalacao', function() {
 			const selfKit = e.target;
 			const collectionId = selfKit.value;
 			const kitType = $(selfKit).attr('id');
-			const productKit = $('.kit-product');
+			const kitName = $(`label[for="${kitType}"]`).text();
 
 			if (!$kitInstalacao.hasClass(`kit-loaded-${collectionId}`)) {
 				this.loadingAnimation();
@@ -33,10 +34,21 @@ Nitro.module('kit-instalacao', function() {
 			}
 
 			$kitInstalacao.attr('data-kittype', `${kitType}`);
-			productKit.removeClass('is--active');
+			$productKit.removeClass('is--active');
 
 			this.showProducts(kitType);
 			this.updateButtonLink(defaultProductLink);
+			this.tagSelectType(kitName);
+		});
+	};
+
+	// Taguemento
+	this.tagSelectType = (typeName) => {
+		dataLayer.push({
+			event: 'generic',
+			category: `[SQUAD] Kit de Instalação para ${typeName}`,
+			action: `Escolher tipo de gás ${typeName}`,
+			label: 'Step Selação do tipo de gás'
 		});
 	};
 
