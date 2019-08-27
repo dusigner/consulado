@@ -102,7 +102,7 @@ body {
 				}
 
 				p {
-					display: inline-block;
+					float: left!important;
 					margin-bottom: 0;
 					margin-top: 12px;
 
@@ -125,15 +125,20 @@ body {
 						}
 					}
 
-					&.client-last-name {
-						@include breakpoint (490px, 'max') {
-							margin-left: 4%;
-						}
+					&.client-first-name,
+					&.client-document {
+						margin-right: 2.5%!important;
 					}
 
 					&.client-last-name,
 					&.client-phone {
-						float: right !important;
+						margin-left: 2.5%!important;
+					}
+
+					&.client-last-name {
+						@include breakpoint (490px, 'max') {
+							margin-left: 4%;
+						}
 					}
 
 					span.error {
@@ -174,6 +179,26 @@ body {
 						color: $green;
 					}
 				}
+			}
+
+			.client-profile-email {
+				&:before {
+					color: $gray-d;
+					content: 'E-mail';
+					display: block;
+					font-size: 12px;
+					font-weight: 500;
+				}
+				span {
+					&.email {
+						font-size: 15px;
+						font-weight: 400;
+					}
+				}
+			}
+
+			.client-profile-summary {
+				font-size: 15px;
 			}
 
 			.newsletter {
@@ -401,7 +426,63 @@ body {
 							border: 2px solid #fff;
 							box-shadow: 0 0 0 2px #702f8f;
 							height: 10px;
+							left: calc(4% + 1px);
+							width: 10px;
+						}
+					}
+				}
+				.scheduled-sla-label {
+					color: $gray-d;
+					font-size: 12px;
+					margin-bottom: 5px;
+				}
 
+				.scheduled-sla-edit {
+					color: $purple;
+				}
+
+				.scheduled-sla-select,
+				.scheduled-sla-value,
+				span {
+					color: $gray-d;
+				}
+
+				.scheduled-sla.active {
+					background-color: #fff;
+					border: 1px solid $red-error;
+				}
+
+				.delivery-windows {
+					label {
+						position: relative;
+					}
+
+					input {
+						display: none;
+					}
+
+					span {
+						&:before {
+							border: 1px solid $gray-b;
+							border-radius: 12px;
+							content: '';
+							display: inline-block;
+							height: 12px;
+							left: 2px;
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 12px;
+						}
+					}
+
+					input:checked + span {
+						&:before {
+							background-color: $purple;
+							border: 2px solid #fff;
+							box-shadow: 0 0 0 2px #702f8f;
+							height: 10px;
+							left: 3px;
 							width: 10px;
 						}
 					}
@@ -415,6 +496,7 @@ body {
 
 				p.shipping-selected-sla {
 					border: none;
+					margin-bottom: 2px;
 
 					span {
 						color: $gray-d;
@@ -428,7 +510,7 @@ body {
 					}
 				}
 
-				#change-other-shipping-option{
+				#change-other-shipping-option {
 					border: 1px solid $gray-n;
 					color: $gray-d;
 					font-size: 12px;
@@ -445,8 +527,13 @@ body {
 				border: none;
 				border-left: 4px solid #F1F0F0;
 				border-radius: 0;
+				border-top: 1px solid $gray-n;
 				display: flex;
 				justify-content: space-between;
+
+				&:last-child {
+					border-bottom: 1px solid $gray-n;
+				}
 
 				&.active {
 					background-color: #fff;
@@ -461,8 +548,11 @@ body {
 					}
 
 					&:after {
+						@include icon-get('check-thin');
 						background-color: #9ACA3C;
 						border: none;
+						color: #fff;
+						font-size: 1rem;
 					}
 				}
 
