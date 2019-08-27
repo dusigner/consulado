@@ -24,11 +24,7 @@ body.produto {
 
 .prod-info {
 	.secure {
-
-		@include breakpoint('medium', 'max') {
-			// background-color: #ccc;
-			display: none!important;
-		}
+		@include breakpoint('medium', 'max') { display: none!important; }
 		@include rfs(12);
 		display: none;
 		opacity: 0.5;
@@ -102,7 +98,6 @@ body.produto {
 				}
 			}
 
-
 			&:hover {
 				background-color: #fff;
 				color: $green;
@@ -117,9 +112,7 @@ body.produto {
 	&.product-has-5-off {
 		em.valor-por { display: inline-block!important; }
 
-		.discount-boleto span {
-			display: inline-block!important;
-		}
+		.discount-boleto span { display: inline-block!important; }
 	}
 
 	em {
@@ -250,7 +243,6 @@ body.produto {
 }
 
 
-
 // Seleção de SKU's
 .prod-sku-selector {
 	@include breakpoint(small, 'min') { color: $txt-gray-l; }
@@ -264,6 +256,14 @@ body.produto {
 		font-weight: bold;
 		padding: 10px 15px;
 		text-transform: lowercase;
+		position: relative;
+
+		&:before {
+			content: 'Selecione a';
+			display: inline-block;
+			padding-right: 4px;
+			text-transform: none;
+		}
 	}
 
 	.nomeSku,
@@ -281,14 +281,6 @@ body.produto {
 	display: inline-block;
 	padding: 10px 15px;
 	position: relative;
-
-	&:before {
-		@include rfs(14);
-		color: #736C6B;
-		content: 'Selecione a voltagem';
-		display: block;
-		position: absolute;
-	}
 
 	span { position: relative; }
 
