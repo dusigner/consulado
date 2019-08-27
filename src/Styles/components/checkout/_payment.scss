@@ -21,12 +21,30 @@ body {
 		}
 
 		.step {
-			@include responsiveFont(14);
 			color: $txt-gray-l;
-			padding: 0;
+			font-size: 13px;
+			padding: 0 20px;
+
+			&.client-profile-data {
+
+				.btn-success {
+					background-color: $green;
+					border: 2px solid $green;
+					font-size: 16px;
+					font-weight: 500;
+					height: 40px;
+					line-height: 0;
+					width: 100%;
+
+					&:hover,
+					&:focus {
+						background-color: #fff;
+						color: $green;
+					}
+				}
+			}
 
 			.accordion-heading {
-				background-color: $gray-l;
 				text-align: center;
 
 				i { display: none; }
@@ -44,10 +62,140 @@ body {
 				}
 
 				.accordion-toggle {
-					@include responsiveFont(22);
-					color: $txt-gray;
+					color: $gray-d;
+					font-size: 16px;
 					font-weight: bold;
-					padding: 10px 0;
+					padding: 18px 0 10px;
+					text-align: left;
+
+					&::after {
+						border: 1px solid $green;
+						border-radius: 10px;
+						content: '';
+						display: block;
+						margin-top: 10px;
+						width: 35px;
+					}
+				}
+			}
+
+			.accordion-inner {
+				padding: 9px 0;
+			}
+
+
+			.box-client-info-pf {
+				color: $gray-d;
+				margin: 0;
+
+				input.success {
+					background-position: right;
+					border-color: $green;
+				}
+
+				input {
+					width: 100% !important;
+
+					&.error {
+						border-color: $red-error;
+					}
+				}
+
+				p {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-top: 12px;
+
+					&.client-notice {
+						margin: 0;
+						max-width: 100%;
+						text-align: justify;
+					}
+
+					&.input {
+						display: inline-block;
+						width: 47.5%;
+
+						&.client-email {
+							width: 100%;
+
+							#client-email {
+								max-width: unset;
+							}
+						}
+					}
+
+					&.client-last-name {
+						@include breakpoint (490px, 'max') {
+							margin-left: 4%;
+						}
+					}
+
+					&.client-last-name,
+					&.client-phone {
+						float: right !important;
+					}
+
+					span.error {
+						color: $red-error;
+						font-size: 12px;
+						font-weight: bold;
+						margin-bottom: 0;
+						position: relative;
+					}
+				}
+
+				label {
+					color: $gray-d;
+					font-size: 12px;
+					font-weight: 500;
+				}
+			}
+
+			#go-to-shipping {
+				float: none !important;
+				text-transform: none;
+				width: 100%;
+			}
+
+			.newsletter {
+				color: $gray-d;
+				font-size: 13px;
+				margin: 20px 0 15px;
+				position: relative;
+
+				span {
+					padding-left: 10px;
+
+					&:before {
+						background-color: #fff;
+						border: 1px solid $green;
+						border-radius: 2px;
+						content: '';
+						display: inline-block;
+						height: 18px;
+						left: 0;
+						position: absolute;
+						width: 18px;
+					}
+
+				}
+
+				input {
+					display: none;
+
+					&:checked {
+						& + span {
+
+							&:before {
+								@include icon-get('check-thin');
+								background-color: $green;
+								color: #fff;
+								font-size: 1rem;
+							}
+						}
+
+					}
 				}
 			}
 
