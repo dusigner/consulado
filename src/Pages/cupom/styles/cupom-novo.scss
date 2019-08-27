@@ -160,6 +160,9 @@ $breakpoint-map: (
 		min-height: 180px;
 		padding: 0 20px;
 		width: 1000px;
+		@include breakpoint('desktop', 'max') {
+			padding: 0;
+		}
 	}
 }
 
@@ -342,7 +345,7 @@ $breakpoint-map: (
 			margin: 0;
 			padding: 0;
 		}
-		@include breakpoint ('desktop', 'min'){
+		@include breakpoint ('desktop', 'min') {
 			border-radius: 30px;
 			color: $purple;
 			display: inline-block;
