@@ -152,10 +152,28 @@ body {
 				}
 			}
 
-			#go-to-shipping {
+			#go-to-shipping,
+			#go-to-payment,
+			.btn-go-to-payment {
 				float: none !important;
 				text-transform: none;
 				width: 100%;
+
+				&.btn-success {
+					background-color: $green;
+					border: 2px solid $green;
+					font-size: 16px;
+					font-weight: 500;
+					height: 40px;
+					line-height: 0;
+					width: 100%;
+
+					&:hover,
+					&:focus {
+						background-color: #fff;
+						color: $green;
+					}
+				}
 			}
 
 			.newsletter {
@@ -196,6 +214,274 @@ body {
 						}
 
 					}
+				}
+			}
+
+			.icon-edit {
+				color: $purple-n;
+			}
+
+			.address-search-placeholder {
+				span {
+					color: $gray-d;
+					font-size: 12px;
+					font-weight: bold;
+				}
+
+				small {
+					margin-left: 16px;
+
+					#dont-know-postal-code {
+						font-size: 12px;
+					}
+				}
+			}
+
+			.address-data {
+
+				input {
+					max-width: 100%;
+					width: 100%;
+				}
+
+				label {
+					span {
+						color: $gray-d;
+						font-size: 12px;
+						font-weight: bold;
+					}
+
+					small {
+						margin-left: 16px;
+
+						#dont-know-postal-code {
+							font-size: 12px;
+						}
+					}
+				}
+
+				.ship-number {
+					float: none;
+					margin: 0 2% 0 0;
+					width: 48%;
+				}
+
+				p.ship-postal-code {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					width: 100%;
+
+					label {
+						width: 100%;
+					}
+
+					input,
+					small {
+						line-height: 3.5;
+						max-width: 48%;
+					}
+				}
+
+				.ship-filled-data {
+					margin-bottom: 15px;
+					margin-top: 15px;
+
+					span {
+						color: $gray-d;
+						font-size: 13px;
+						font-weight: 400;
+
+						.link-edit {
+							color: $purple;
+							font-weight: 500;
+							text-transform: capitalize;
+						}
+					}
+				}
+
+				.ship-more-info {
+					margin: 0 0 0 2%;
+					width: 48%;
+				}
+
+				.required {
+					input {
+						&.success {
+							background-position: right;
+							border-color: $green;
+						}
+
+						&.error {
+							border-color: $red-error;
+						}
+					}
+				}
+
+
+				.ship-reference,
+				.ship-name {
+					width: 100%;
+				}
+
+				.error-list {
+					width: 100%;
+					span.error-description {
+						color: $red-error;
+						font-size: 12px;
+						font-weight: bold;
+						margin-bottom: 0;
+						position: relative;
+					}
+				}
+
+				.box-delivery {
+					p {
+						&.ship-number,
+						&.ship-more-info {
+							float: left;
+						}
+					}
+				}
+
+				p.input {
+					margin-bottom: 11px;
+				}
+
+			}
+
+			.address-shipping-options {
+				.choose-shipping-option {
+					font-size: 12px;
+				}
+
+				.shipping-option-item {
+					border: 1px solid $gray-n;
+					border-radius: 5px;
+					margin-bottom: 5px;
+					padding-left: 10%;
+					position: relative;
+
+					i {
+						display: none;
+					}
+
+					&:before {
+						border: 1px solid $gray-b;
+						border-radius: 12px;
+						content: '';
+						display: inline-block;
+						height: 12px;
+						left: 4%;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 12px;
+					}
+
+					.shipping-option-item-text-wrapper {
+						span {
+							color: $gray-d;
+							font-size: 12px;
+							font-weight: 500;
+						}
+
+						.shipping-option-item-name {
+							color: $purple;
+							font-weight: bold;
+						}
+					}
+
+					&.active {
+						background-color: #fff;
+						border: 1px solid $purple;
+
+						&:before {
+							background-color: $purple;
+							border: 2px solid #fff;
+							box-shadow: 0 0 0 2px #702f8f;
+							height: 10px;
+
+							width: 10px;
+						}
+					}
+				}
+			}
+
+			.shipping-summary-placeholder {
+				.address {
+					font-size: 13px;
+				}
+
+				p.shipping-selected-sla {
+					border: none;
+
+					span {
+						color: $gray-d;
+						font-weight: 500;
+					}
+
+					.text,
+					.sla {
+						color: $purple;
+						font-weight: bold;
+					}
+				}
+
+				#change-other-shipping-option{
+					border: 1px solid $gray-n;
+					color: $gray-d;
+					font-size: 12px;
+
+					&:hover,
+					&:focus {
+						background-color: $gray-n;
+					}
+				}
+			}
+
+
+			.payment-group-item {
+				border: none;
+				border-left: 4px solid #F1F0F0;
+				border-radius: 0;
+				display: flex;
+				justify-content: space-between;
+
+				&.active {
+					background-color: #fff;
+					border-left: 4px solid #9ACA3C;
+					margin-left: 5px;
+
+					.payment-group-item-text {
+						@include rfs(15);
+						color: #736C6B;
+						font-weight: bold;
+						text-decoration: none;
+					}
+
+					&:after {
+						background-color: #9ACA3C;
+						border: none;
+					}
+				}
+
+				.payment-group-item-text {
+					@include rfs(16);
+					background-position: left center;
+					padding: 8px 0 8px 55px;
+
+				}
+
+				&:after {
+					border: 1px solid #BBBBBB;
+					content: '';
+					display: inline-block;
+					height: 16px;
+					position: relative;
+					top: 12px;
+					width: 16px;
+
 				}
 			}
 
@@ -255,46 +541,6 @@ body {
 				@include responsiveFont(16);
 				margin-top: 15px;
 				width: 100%;
-			}
-
-			.shipping-options {
-				.sla-items-list {
-					.shipping-option-item {
-						.shipping-option-item-text-wrapper {
-							margin-left: 8%;
-
-							.shipping-option-item-name {
-								// color: #000000;
-								font-weight: bold;
-							}
-						}
-
-						[class*='icon'] {
-							left: 10px;
-						}
-					}
-				}
-
-				.btn-group {
-					@include responsiveFont(14);
-
-					.shipping-option-item {
-						border-radius: 0;
-						margin-bottom: 5px;
-
-						&.active {
-							background: rgba(#736c6b, .2);
-							color: $txt-gray;
-						}
-
-						&:hover {
-							background: $gray-l;
-							color: $txt-gray;
-						}
-					}
-				}
-
-				p { border-top: 3px solid $gray-l; }
 			}
 
 			.scheduled-sla-value-container:hover {
@@ -636,50 +882,5 @@ body {
 	}
 	&:after {
 		transform: rotate(180deg);
-	}
-}
-
-
-.payment-group-item {
-	border: none;
-	border-left: 4px solid #F1F0F0;
-	border-radius: 0;
-	display: flex;
-	justify-content: space-between;
-
-	&.active {
-		background-color: #fff;
-		border-left: 4px solid #9ACA3C;
-		margin-left: 5px;
-
-		.payment-group-item-text {
-			@include rfs(15);
-			color: #736C6B;
-			font-weight: bold;
-			text-decoration: none;
-		}
-
-		&:after {
-			background-color: #9ACA3C;
-			border: none;
-		}
-	}
-
-	.payment-group-item-text {
-		@include rfs(16);
-		background-position: left center;
-		padding: 8px 0 8px 55px;
-
-	}
-
-	&:after {
-		border: 1px solid #BBBBBB;
-		content: '';
-		display: inline-block;
-		height: 16px;
-		position: relative;
-		top: 12px;
-		width: 16px;
-
 	}
 }
