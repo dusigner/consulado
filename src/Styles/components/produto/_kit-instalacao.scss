@@ -73,8 +73,9 @@
 			padding: 5px 10px;
 		}
 
-		// Exibir somente para [Gás natural]
-		.kit-instalacao[data-kittype='gas-natural'] & { display: block; }
+		// Exibir somente para [Gás natural/encanado]
+		.kit-instalacao[data-kittype='gas-natural'] &,
+		.kit-instalacao[data-kittype='gas-encanado'] & { display: block; }
 	}
 
 	// Erro
