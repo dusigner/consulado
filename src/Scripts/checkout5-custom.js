@@ -84,7 +84,8 @@ $(document).on('ready', function() {
 		) {
 			var self = this,
 				$body = $('body'),
-				flagCoupon;
+				flagCoupon,
+				modals = true;
 
 			//INICIA CHAMADA DAS VITRINES CHAORDIC
 			// var productsId = [];
@@ -427,12 +428,50 @@ $(document).on('ready', function() {
 						return String(prod.productCategoryIds).match(categoryRegex) ? true : false;
 					});
 
-					if (allProductsIsPurificadores && someProductsHasRecurrence) {
-						recurrence.autoOpen();
-					} else {
-						if (store && store.isPersonal) {
-							gae.autoOpen();
+					const hasRecurrence = item => {
+						return item.attachmentOfferings.length > 0;
+					};
+
+					if (modals === true) {
+						const skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart') : '',
+							orderFormItems = self.orderForm.items;
+
+						let skuId = '',
+							recurrenceId = '',
+							isPurificator = false,
+							lastRecurrenceItem = '';
+
+						for (let i = 0; i < orderFormItems.length; i++) {
+							hasRecurrence(orderFormItems[i]) ? lastRecurrenceItem = orderFormItems[i].id : '';
+
+							if (!skuList.includes(orderFormItems[i].id)) {
+								if (hasRecurrence(orderFormItems[i])) {
+									recurrenceId = orderFormItems[i].id;
+								} else {
+									skuId = orderFormItems[i].id;
+									(orderFormItems[i].detailUrl.toLowerCase().includes('purificador')) ? isPurificator = true : isPurificator = false;
+								}
+							}
 						}
+
+						if (isPurificator && lastRecurrenceItem !== '') {
+							let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+							skuList.push(skuId);
+
+							recurrence.autoOpen(lastRecurrenceItem);
+
+							sessionStorage.setItem('sku-cart', skuList);
+						}
+						else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
+							recurrence.autoOpen(recurrenceId);
+						} else if (skuId !== '') {
+							if (store && store.isPersonal) {
+								gae.autoOpen(skuId);
+
+							}
+						}
+
+						modals = false;
 					}
 				}
 

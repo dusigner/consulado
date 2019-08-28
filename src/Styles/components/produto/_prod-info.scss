@@ -255,8 +255,8 @@ body.produto {
 		display: block;
 		font-weight: bold;
 		padding: 10px 15px;
-		text-transform: lowercase;
 		position: relative;
+		text-transform: lowercase;
 
 		&:before {
 			content: 'Selecione a';
