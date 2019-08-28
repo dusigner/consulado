@@ -7,7 +7,7 @@ require('modules/slider-banner');
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/lead-newsletter');
-require('components/prateleira-personalizada');
+// require('components/prateleira-personalizada');
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
@@ -22,7 +22,7 @@ Nitro.controller(
 		'chaordic',
 		'slider-banner',
 		'lead-newsletter',
-		'prateleira-personalizada',
+		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'shelfCategoryHome' /*'counter', 'datalayer_track'*/
