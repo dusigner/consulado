@@ -1,3 +1,8 @@
+/**
+* About the new styleguide: I am not proud about everything I had done here.
+* Please, disrespect all floats and importants written below.
+*/
+
 body {
 	/* Change label inputs - Checkout Payment*/
 	.custom-label-complemento:after {
@@ -18,6 +23,19 @@ body {
 			padding-bottom: 40px;
 
 			.cart-fixed { background: #ffffff; }
+		}
+
+		#payment-data {
+			.accordion-heading {
+				left: 0;
+				padding: 0 0 0 20px;
+				position: absolute;
+				z-index: 8;
+			}
+
+			.accordion-inner {
+				padding: 0;
+			}
 		}
 
 		.step {
@@ -74,6 +92,7 @@ body {
 						content: '';
 						display: block;
 						margin-top: 10px;
+						position: relative;
 						width: 35px;
 					}
 				}
@@ -522,6 +541,13 @@ body {
 				}
 			}
 
+			.payment-group {
+				padding-top: 70px;
+			}
+
+			.link-gift-card {
+				top: 75px;
+			}
 
 			.payment-group-item {
 				border: none;
@@ -530,6 +556,7 @@ body {
 				border-top: 1px solid $gray-n;
 				display: flex;
 				justify-content: space-between;
+				margin-left: 0;
 
 				&:last-child {
 					border-bottom: 1px solid $gray-n;
@@ -538,7 +565,6 @@ body {
 				&.active {
 					background-color: #fff;
 					border-left: 4px solid #9ACA3C;
-					margin-left: 5px;
 
 					.payment-group-item-text {
 						@include rfs(15);
@@ -550,9 +576,10 @@ body {
 					&:after {
 						@include icon-get('check-thin');
 						background-color: #9ACA3C;
-						border: none;
+						border: 1px solid #BBBBBB;
 						color: #fff;
-						font-size: 1rem;
+						font-size: .9rem;
+						line-height: .975;
 					}
 				}
 
