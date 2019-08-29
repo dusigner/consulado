@@ -25,18 +25,37 @@ body {
 			.cart-fixed { background: #ffffff; }
 		}
 
-		#payment-data {
-			.accordion-heading {
-				left: 0;
-				padding: 0 0 0 20px;
-				position: absolute;
-				z-index: 8;
-			}
+		// #payment-data {
+		// 	.accordion-heading {
+		// 		left: 0;
+		// 		padding: 0 0 0 20px;
+		// 		position: absolute;
+		// 		z-index: 8;
+		// 	}
 
-			.accordion-inner {
-				padding: 0;
-			}
-		}
+		// 	.accordion-inner {
+		// 		padding: 0;
+		// 	}
+
+		// 	.step {
+		// 		padding: 0 0 0 20px;
+		// 	}
+
+		// 	.steps-view {
+		// 		border-radius: 0;
+		// 		min-height: 325px;
+		// 		width: 55%;
+		// 	}
+
+		// 	.notification {
+		// 		position: absolute;
+		// 		top: 70px;
+		// 	}
+
+		// 	.link-box-edit {
+		// 		right: 0;
+		// 	}
+		// }
 
 		.step {
 			color: $txt-gray-l;
@@ -59,6 +78,10 @@ body {
 						background-color: #fff;
 						color: $green;
 					}
+				}
+
+				&.filled:not(.active) {
+					height: 212px;
 				}
 			}
 
@@ -207,8 +230,11 @@ body {
 					display: block;
 					font-size: 12px;
 					font-weight: 500;
+					margin-bottom: 3px;
 				}
 				span {
+					color: $gray-d;
+
 					&.email {
 						font-size: 15px;
 						font-weight: 400;
@@ -218,6 +244,11 @@ body {
 
 			.client-profile-summary {
 				font-size: 15px;
+				margin-top: 20px;
+
+				span {
+					color: $gray-d;
+				}
 			}
 
 			.newsletter {
@@ -536,7 +567,7 @@ body {
 
 					&:hover,
 					&:focus {
-						background-color: $gray-n;
+						background-color: #fff;
 					}
 				}
 			}
