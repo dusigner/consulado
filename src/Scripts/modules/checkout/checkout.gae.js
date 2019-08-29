@@ -489,35 +489,27 @@ Nitro.module('checkout.gae', function() {
 	*
 	* Not even proud about what I had done here. If someone ask me, I will deny until the very end!
 	*/
-	this.autoOpen = function() {
+	this.autoOpen = function(skuId) {
 		setTimeout(function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
-			let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
 
 			//if($(window).width() > 1000){
 			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {
-				if (!customData.includes($('.product-item').last().attr('data-sku')) && $('.product-item').last().find('.linkWarranty').length > 0) {
-					$('.linkWarranty')
-						.last()
+				if ($(`.product-item[data-sku=${skuId}]`).find('.linkWarranty').length > 0) {
+
+					let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+					skuList.push(skuId);
+
+					$(`.product-item[data-sku=${skuId}]`).find('.linkWarranty')
 						.trigger('click');
 					$cartTemplate.addClass('been-called');
+
+					sessionStorage.setItem('sku-cart', skuList.join(','));
 				}
 			}
 			//}
-
-			customData = [];
-
-			sessionStorage.removeItem('sku-cart');
-
-			$('.linkWarranty').each(function() {
-				let dataSku = $(this).parents('.product-item').attr('data-sku');
-				customData.push(dataSku);
-			});
-
-			sessionStorage.setItem('sku-cart', customData);
-
 		}, 1500);
 	};
 

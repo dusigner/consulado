@@ -360,35 +360,25 @@ Nitro.module('checkout.recurrence', function() {
 	 *
 	 * Not even proud about what I had done here. If someone ask me, I will deny until the very end
 	 */
-	this.autoOpen = function() {
+	this.autoOpen = function(recurrenceId) {
 		setTimeout(function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			const $cartTemplate = $('.cart-template');
 
-			let customData = (sessionStorage.getItem('sku-recurrence')) ? sessionStorage.getItem('sku-recurrence').split(',') : [];
+			const recurrenceElement = $(`.product-item[data-sku=${recurrenceId}]`);
 
-			const recurrenceElement = $('.product-item').last();
+			let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+			(!skuList.join(',').includes(recurrenceId)) ? skuList.push(recurrenceId) : '';
 
-			if ((!customData.includes(recurrenceElement.attr('data-sku')) && recurrenceElement.find('.js-modal-open').length > 0 && !recurrenceElement.find('.recurrence__step--one').hasClass('hide')) || self.showModalWhenHasPurificador()) {
-				$('.js-modal-open')
-					.last()
+			sessionStorage.setItem('sku-cart', skuList.join(','));
+
+			if (recurrenceElement.find('.js-modal-open').length > 0 && !recurrenceElement.find('.recurrence__step--one').hasClass('hide')) {
+				recurrenceElement.find('.js-modal-open')
 					.trigger('click');
+
 				$cartTemplate.addClass('been-called');
 			}
-
-			customData = [];
-
-			sessionStorage.removeItem('sku-recurrence');
-
-			$('.js-modal-open').each(function() {
-				const dataSku = $(this).parents('.product-item').attr('data-sku');
-				customData.push(dataSku);
-
-			});
-
-			sessionStorage.setItem('sku-recurrence', customData);
-
 			//}
 		}, 1500);
 	};
@@ -437,14 +427,14 @@ Nitro.module('checkout.recurrence', function() {
 	 */
 	this.removeFromCart = () => {
 		$('.item-link-remove').on('click', function() {
-			const skus = sessionStorage.getItem('sku-recurrence').split(','),
+			const skus = sessionStorage.getItem('sku-cart').split(','),
 				element = $(this);
 
 			const newListSkus = skus.filter(function(value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
-			sessionStorage.setItem('sku-recurrence', newListSkus.join(','));
+			sessionStorage.setItem('sku-cart', newListSkus.join(','));
 		});
 	};
 });
