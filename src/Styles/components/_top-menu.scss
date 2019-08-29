@@ -57,28 +57,28 @@
 		flex-grow: 1;
 		padding: 1em 1.25em;
 
-		&.item-cervejeira {
-			border-right: 2px solid $green;
-			bottom: 1px;
-			box-shadow: 0 0 6px #e5e5e5;
-			padding-top: 1.2em;
-			position: relative;
-			right: 1px;
-		}
+		// &.item-cervejeira {
+		// 	border-right: 2px solid $green;
+		// 	bottom: 1px;
+		// 	box-shadow: 0 0 6px #e5e5e5;
+		// 	padding-top: 1.2em;
+		// 	position: relative;
+		// 	right: 1px;
+		// }
 
 		& > a {
 			color: $green;
 			text-align: center;
 			width: 100%;
 
-			&[title='Cervejeira'] {
-				@include responsiveFont(14);
-				font-weight: bold;
+			// &[title='Cervejeira'] {
+			// 	@include responsiveFont(14);
+			// 	font-weight: bold;
 
-				@include breakpoint('small', 'max') {
-					font-weight: 100;
-				}
-			}
+			// 	@include breakpoint('small', 'max') {
+			// 		font-weight: 100;
+			// 	}
+			// }
 		}
 
 		&#menu-cupons {
