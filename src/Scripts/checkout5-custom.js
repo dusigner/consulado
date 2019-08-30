@@ -417,7 +417,7 @@ $(document).on('ready', function() {
 				// os produtos forem da categoria purificadores
 				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 					const checkoutProducts = self.orderForm.items;
-					const categoryName = window.store.isQA ? '1' : '190'; // Categoria de Purificadores
+					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
 					const categoryRegex = new RegExp(categoryName, 'gmi');
 
 					const someProductsHasRecurrence = checkoutProducts.some(prod => {
@@ -449,7 +449,7 @@ $(document).on('ready', function() {
 									recurrenceId = orderFormItems[i].id;
 								} else {
 									skuId = orderFormItems[i].id;
-									(orderFormItems[i].detailUrl.toLowerCase().includes('purificador')) ? isPurificator = true : isPurificator = false;
+									String(orderFormItems[i].productCategoryIds).match(categoryRegex) ? isPurificator = true : isPurificator = false;
 								}
 							}
 						}
