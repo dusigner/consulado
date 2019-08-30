@@ -848,6 +848,7 @@ body {
 
 			&.bankInvoicePaymentGroup {
 				line-height: 120%;
+				min-height: 300px;
 
 				&:after {
 					color: $green;
@@ -881,9 +882,98 @@ body {
 #app-container {
 	background-color: $gray-m;
 	box-shadow: 0 45px 0 #f4f4f4;
+	padding: 20px 50px;
+
+	label.FormFieldLabel {
+		color: $gray-d;
+		font-size: 12px;
+		font-weight: 500;
+	}
+
+	.PaymentCardValue {
+		label {
+			float: none;
+		}
+	}
+
+	p.input {
+		margin-bottom: 15px;
+	}
+
+	.error {
+		border: 2px solid $red-error;
+	}
+	.help.error {
+		border: none;
+		color: $red-error;
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	.AddressToggle {
+		input {
+			display: none;
+
+			&:checked + label {
+				&:before {
+					@include icon-get('check-thin');
+					background-color: $green;
+					color: #fff;
+					font-size: 1rem;
+				}
+			}
+		}
+
+		label {
+			font-size: 12px;
+			line-height: 1;
+			margin-left: 25px;
+			position: relative;
+			width: 50%;
+
+			&:before {
+				border: 1px solid $gray-b;
+				content: '';
+				display: inline-block;
+				height: 18px;
+				left: -26px;					//please, forgive me!
+				position: absolute;
+				top: 3px;
+				width: 18px;
+			}
+		}
+	}
+
+	.SecurityEnvironmentIcon {
+		background-color: $gray-m;
+		display: flex;
+		justify-content: right;
+
+		.icon-lock {
+			color: $gray-s;
+			display: inline-block;
+			font-size: 16px;
+		}
+
+		.payment-environment-icon-text {
+			color: $gray-s;
+			display: inline-block;
+			font-size: 12px;
+			font-weight: bold;
+			width: 110px;
+
+		}
+	}
 
 	.PaymentCardFlags {
 		margin-top: 36px;
+
+		.card-flags {
+			display: flex;
+			justify-content: space-between;
+			margin: 0 auto 10px;
+			width: 90%;
+		}
 
 		.card-flag-label {
 			position: relative;
@@ -937,7 +1027,7 @@ body {
 		.input-medium,
 		.input-large,
 		.input-xlarge {
-			height: 40px;
+			height: 35px;
 			max-width: 100%;
 			width: 100%;
 		}
@@ -965,7 +1055,6 @@ body {
 
 		// Código de segurança
 		.PaymentCardCVV {
-			width: 47%;
 
 			label {
 				display: block;
@@ -1012,6 +1101,45 @@ body {
 			}
 
 			.payment-billing-address-complement { float: right; }
+		}
+
+		.CardForm {
+			.BillingAddress {
+				float: left;
+				width: 100%;
+			}
+
+			#creditCardpayment-card-0Code {
+				bottom: 4px;
+				position: relative;
+			}
+
+			.PaymentCardCVV {
+				float: left;
+				margin-right: 2%;
+				width: 38%;
+
+				label {
+					font-size: 0;
+					height: 0;
+					padding: 0;
+				}
+
+
+				&:before {
+					@include rfs(12);
+    				bottom: 4px;
+					content: 'Cod. Segurança';
+					font-weight: 500;
+					position: relative;
+				}
+			}
+
+			.PaymentCardHolderDocument {
+				float: left;
+				margin-left: 2%;
+				width: 58%;
+			}
 		}
 	}
 }
