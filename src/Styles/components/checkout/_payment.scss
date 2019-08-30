@@ -708,40 +708,43 @@ body {
 
 		.cart-template {
 			.cart-fixed {
+				border: 1px solid #f4f2f1;
+				border-radius: 5px;
 				height: 100%!important;
+				margin-right: 0;
 				position: static!important;
+				width: 100%;
 			}
 
 			.summary-cart-template-holder {
-				border: 3px solid #f4f2f1;
+				border: 0;
 				height: auto!important;
 			}
 
 			h2 {
-				@include responsiveFont(20);
-				background-color: $gray-l;
+				@include responsiveFont(16);
 				color: $txt-gray;
 				font-weight: bold;
 				line-height: 18px;
-				margin-bottom: 0;
-				padding: 16px 0;
-				text-align: center;
-			}
+				margin: 18px 20px 10px;
 
-			ul {
-				li.item:first-child {
-					border-top: none;
-					/*.shipping-date{
-						color:$txt-gray;
-					}
-					.price{
-						color:$orange;
-					}*/
+				&:after {
+					border: 1px solid #9aca3c;
+					border-radius: 10px;
+					content: '';
+					display: block;
+					margin-top: 10px;
+					position: relative;
+					width: 35px;
 				}
 			}
+
 			.item {
-				border-top: 3px solid $gray-l;
+				border: 1px solid $gray-l;
+				border-radius: 4px;
+				margin: 5px 20px;
 				padding: 15px;
+				width: 90%;
 
 				.shipping-date { color: $txt-gray-l; }
 
@@ -758,11 +761,34 @@ body {
 				margin-bottom: 0;
 
 				.badge {
-					background: $green;
-					border-color: $green;
-					color: #ffffff;
+					background: #fff;
+					border: 1px solid $purple;
+					box-shadow: none;
+					color: $purple;
+					font-weight: bold;
 					padding: 3px 6px;
 				}
+			}
+
+			.product-name {
+				color: $gray-d;
+				font-weight: 500;
+			}
+
+			.price {
+				color: $green;
+				font-size: 16px;
+				font-weight: bold;
+
+				&:before {
+					content: 'Por ';
+				}
+			}
+
+			.shipping-date {
+				color: $gray-d!important;
+				font-size: 12px;
+				font-weight: bold;
 			}
 
 			.link-cart {
