@@ -1,0 +1,201 @@
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/rfs';
+@import 'helpers/family';
+
+.pagina-embutidos {
+	& .embutidos-content {
+		& .nav-embutidos {
+			& nav {
+				align-items: center;
+				background-color: #736c6b;
+				display: flex;
+				justify-content: center;
+				@include breakpoint('small', 'max') {
+					justify-content: initial;
+					overflow: scroll;
+				}
+				a {
+					@include responsiveFont(32);
+					color: #ffffff;
+					margin: 15px 35px;
+					text-decoration: none;
+					@include breakpoint('small', 'max') {
+						margin: 5px 10px;
+					}
+				}
+			}
+		}
+
+		& .categoria {
+			.cooktops,
+			.fornos_embutidos,
+			.coifas_depuradores {
+				align-items: center;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				@include breakpoint('small', 'max') {
+					grid-template-columns: 1fr;
+				}
+
+				.box-img {
+					@include breakpoint('small', 'max') {
+						order: 1;
+					}
+					img {
+						height: auto;
+						width: 100%;
+					}
+					transition: 0.3s;
+					// & :hover {
+
+					// }
+				}
+				.box-text {
+					text-align: left;
+					// @include breakpoint('medium', 'min') {}
+					@include breakpoint('small', 'max') {
+						order: 2;
+					}
+
+					h1 {
+						margin: 0;
+					}
+					h2 {
+						// @include responsiveFont(32);
+						color: $green;
+						margin: 0;
+					}
+					// p {
+					// @include responsiveFont(13.5);
+					// }
+					a {
+						background-color: transparent;
+						border: 3px solid $green;
+						color: $green;
+						padding: 10px;
+						&:hover {
+							background-color: $green;
+							border: 3px solid $green;
+							color: #ffffff;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .informativo-embutir {
+		background-color: #736c6b;
+		border-color: $green;
+		color: #ffffff;
+		margin: 0 auto;
+
+		.dicas_embutir {
+			background: linear-gradient(180deg, transparent 30%, $green 30%);
+			@include breakpoint('small', 'max') {
+				background: initial;
+			}
+			.container {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				@include breakpoint('small', 'max') {
+					background: initial;
+					grid-gap: 15px;
+					grid-template-columns: 1fr;
+				}
+			}
+			.artigo {
+				text-align: left;
+
+				img {
+					width: 100%;
+				}
+				.box_descricao {
+					margin: 0 10px;
+
+					h3 {
+						color: #702f8f;
+						font-weight: bold;
+						margin: 0;
+						// @include responsiveFont(32);
+					}
+					p {
+						margin: 20px 0;
+						// @include responsiveFont(24);
+					}
+					a {
+						background-color: transparent;
+						border: 2px solid #ffffff;
+						color: #ffffff;
+						float: right;
+						margin: 10px 0;
+						padding: 10px;
+						// @include responsiveFont(18.5);
+					}
+				}
+
+				@include breakpoint('small', 'max') {
+					background: linear-gradient(
+						180deg,
+						transparent 20%,
+						$green 20%
+					);
+					grid-template-columns: 1fr;
+				}
+			}
+		}
+		.title_box {
+			h1 {
+				margin: 0;
+			}
+		}
+		.cervejeiras-videos-thumbs {
+			display: flex;
+			justify-content: center;
+		}
+		.cervejeiras-videos-thumbs__item {
+			background-color: #ffffff;
+			border-radius: 50%;
+			display: inline-block;
+			height: 15px;
+			margin: 10px;
+			opacity: 0.5;
+			width: 15px;
+			&.is--active {
+				opacity: 1;
+			}
+		}
+		.cervejeiras-videos__video {
+			background-color: #000;
+			margin: 30px auto;
+			max-width: 690px;
+			overflow: hidden;
+			position: relative;
+			transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+
+			iframe {
+				display: block;
+				height: 388px;
+				max-width: 690px;
+				position: relative;
+				width: 100%;
+				z-index: 2;
+			}
+
+			.loading-container {
+				-webkit-transform: translate(-50%, -50%);
+				left: 50%;
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				transform: translate(-50%, -50%);
+			}
+			.cervejeiras-videos {
+				display: block;
+				height: 75px;
+			}
+		}
+	}
+}
