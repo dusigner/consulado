@@ -60,6 +60,64 @@ body {
 					}
 				}
 			}
+
+			.steps-view {
+				min-height: 400px;
+
+				@include breakpoint('large', 'max') {
+					min-height: 410px;
+				}
+			}
+
+			.box-step-content {
+				min-height: 400px;
+			}
+
+			.gift-card-section {
+				border-radius: 0;
+				margin: 0;
+				padding: 5px;
+				position: absolute;
+				top: 325px;
+				width: 40%;
+
+				label {
+					color: #736c6b;
+					display: block;
+					font-size: 12px;
+					font-weight: 500;
+				}
+
+				#payment-discounts-code {
+					height: 30px;
+					margin-right: 2%;
+					width: 58%;
+				}
+
+				#btn-add-gift-card {
+					margin-left: 2%;
+					width: 36%;
+				}
+
+				@include breakpoint ('large', 'max') {
+					top: 350px;
+
+					@include breakpoint ('medium', 'max') {
+						top: 320px;
+
+						@include breakpoint (767px, 'max') {
+							top: 290px;
+							width: 100%;
+						}
+					}
+				}
+			}
+
+			.payment-group {
+				@include breakpoint('medium', 'max') {
+					margin-bottom: 80px;
+				}
+			}
 		}
 
 		.step {
@@ -582,7 +640,15 @@ body {
 			}
 
 			.link-gift-card {
-				top: 75px;
+				top: 330px;
+
+				@include breakpoint ('large', 'max') {
+					top: 355px;
+
+					@include breakpoint ('small', 'max') {
+						top: 330px;
+					}
+				}
 			}
 
 			.payment-group-item {
@@ -721,6 +787,7 @@ body {
 				border-radius: 5px;
 				height: 100%!important;
 				margin-right: 0;
+				padding-bottom: 40px;
 				width: 100%;
 			}
 
@@ -752,7 +819,10 @@ body {
 			.item {
 				border: 1px solid $gray-l;
 				border-radius: 4px;
-				margin: 5px 20px;
+				clear: none;
+				float: none;
+				margin: 5px auto;
+				min-height: 115px;
 				padding: 15px;
 				width: 90%;
 
@@ -825,11 +895,17 @@ body {
 					margin-bottom: 0;
 				}
 
+				.accordion-inner {
+					position: relative;
+				}
+
 				.totalizers {
 					border: none;
 					margin-bottom: 0;
 
 					.table {
+						margin: 0 auto;
+						width: 90%;
 
 						tr {
 							height: 40px;
@@ -839,6 +915,7 @@ body {
 								float: none;
 								font-size: 14px;
 								font-weight: 700;
+								width: 1%;
 							}
 
 							.monetary {
@@ -854,8 +931,13 @@ body {
 						}
 
 						tfoot {
+							background-color: $gray-n;
+							left: 0;
+							padding: 0 5%;
+							position: absolute;
+							width: 100%;
+
 							td {
-								background-color: $gray-n;
 								text-transform: uppercase;
 							}
 
@@ -880,19 +962,47 @@ body {
 					&.active { display: block; }
 				}
 			}
+
+			@include breakpoint ('medium', 'max') {
+				margin-bottom: 40px;
+			}
 		}
 
 		.payment-confirmation-wrap {
 			background: none;
-			bottom: -80px;
+			border: none!important;
+			bottom: -100px;
 			position: absolute;
 			width: 100%;
 
+			.summary-note {
+				margin: 0 !important;
+			}
+
+			.payment-submit-wrap {
+				margin: 0 !important;
+			}
+
+			.note-data {
+				@include rfs (12);
+			}
+
+			@include breakpoint('small', 'max') {
+				bottom: -80px;
+			}
+
 			button {
+				@include rfs(15);
 				background-color: $green;
 				border-color: $green;
+				border-width: 1px;
 				height: 40px;
-				line-height: 0;
+				line-height: 1;
+				padding: 10px 0;
+
+				span {
+					font-weight: 500;
+				}
 
 				&:focus,
 				&:hover {
@@ -926,7 +1036,7 @@ body {
 
 			&.bankInvoicePaymentGroup {
 				line-height: 120%;
-				min-height: 300px;
+				min-height: 365px;
 
 				&:after {
 					color: $green;
@@ -1022,6 +1132,10 @@ body {
 				position: absolute;
 				top: 3px;
 				width: 18px;
+			}
+
+			@include breakpoint(360px, 'max') {
+				width: 90%;
 			}
 		}
 	}
@@ -1135,6 +1249,19 @@ body {
 			}
 		}
 
+		.input-prepend {
+			width: 100%;
+
+			.add-on {
+				height: 35px;
+				width: 12%;
+			}
+
+			.card-value {
+				width: 88%;
+			}
+		}
+
 		// Código de segurança
 		.PaymentCardCVV {
 
@@ -1214,6 +1341,10 @@ body {
 					content: 'Cod. Segurança';
 					font-weight: 500;
 					position: relative;
+				}
+
+				.FormFieldLabel[for=creditCardpayment-card-1Code] {
+					margin-top: -4px;
 				}
 			}
 
