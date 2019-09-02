@@ -22,7 +22,10 @@ body {
 		.checkout-container {
 			padding-bottom: 40px;
 
-			.cart-fixed { background: #ffffff; }
+			.cart-fixed {
+				background: #ffffff;
+				position: relative;
+			}
 		}
 
 		#payment-data {
@@ -48,6 +51,12 @@ body {
 					.steps-view {
 						background-color: $gray-m;
 						border-radius: 0;
+
+						iframe {
+							@include breakpoint ('medium', 'max') {
+								min-height: 500px;
+							}
+						}
 					}
 				}
 			}
@@ -712,13 +721,14 @@ body {
 				border-radius: 5px;
 				height: 100%!important;
 				margin-right: 0;
-				position: static!important;
 				width: 100%;
 			}
 
 			.summary-cart-template-holder {
 				border: 0;
 				height: auto!important;
+
+
 			}
 
 			h2 {
@@ -746,9 +756,15 @@ body {
 				padding: 15px;
 				width: 90%;
 
-				.shipping-date { color: $txt-gray-l; }
+				.shipping-date {
+					color: $txt-gray-l;
+					float: right;
+				}
 
-				.price { color: $green; }
+				.price {
+					color: $green;
+					float: left;
+				}
 
 				.service-list {
 					margin-top: 10px;
@@ -802,33 +818,55 @@ body {
 
 			.summary-template-holder {
 				@include vendor(border-radius, 0);
-				border: 3px solid $gray-l;
 				border-top: 0;
 				margin-top: -1px;
+
+				.accordion-group {
+					margin-bottom: 0;
+				}
 
 				.totalizers {
 					border: none;
 					margin-bottom: 0;
 
 					.table {
+
 						tr {
 							height: 40px;
 
 							.info {
+								color: $gray-d;
 								float: none;
-								text-align: right;
+								font-size: 14px;
+								font-weight: 700;
 							}
 
 							.monetary {
-								text-align: left;
+								color: $purple;
+								font-size: 12px;
+								font-weight: bold;
 								width: 50%;
+							}
+
+							&:not(:last-child) {
+								border-bottom: 1px solid $gray-s;
 							}
 						}
 
 						tfoot {
-							td { @include responsiveFont(16); }
+							td {
+								background-color: $gray-n;
+								text-transform: uppercase;
+							}
 
-							.monetary { color: $green; }
+							.info {
+								@include responsiveFont(16);
+							}
+
+							.monetary {
+								@include responsiveFont(16);
+								color: $green;
+							}
 						}
 					}
 				}
@@ -846,8 +884,22 @@ body {
 
 		.payment-confirmation-wrap {
 			background: none;
-			margin-top: 10px;
-			position: static;
+			bottom: -80px;
+			position: absolute;
+			width: 100%;
+
+			button {
+				background-color: $green;
+				border-color: $green;
+				height: 40px;
+				line-height: 0;
+
+				&:focus,
+				&:hover {
+					background-color: #fff;
+					color: $green;
+				}
+			}
 		}
 
 		.pending-wrap {
@@ -909,6 +961,10 @@ body {
 	background-color: $gray-m;
 	box-shadow: 0 45px 0 #f4f4f4;
 	padding: 20px 50px;
+
+	@include breakpoint('medium', 'max') {
+		padding: 20px 16px;
+	}
 
 	label.FormFieldLabel {
 		color: $gray-d;
@@ -1181,6 +1237,7 @@ body {
 
 	&:before {
 			background-image: url('https://consulqa.vteximg.com.br/arquivos/cns-icon-add-cartao.jpg');
+			background-repeat: no-repeat;
 			background-size: contain;
 			content: '';
 			display: block;
