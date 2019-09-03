@@ -37,6 +37,22 @@ body {
 		}
 
 		#payment-data {
+			&.active {
+				iframe {
+					@include breakpoint ('medium', 'max') {
+						min-height: 500px;
+
+						@include breakpoint('extra-small', 'max') {
+							min-height: 570px;
+						}
+					}
+				}
+
+				.box-step-content {
+					min-height: 400px;
+				}
+			}
+
 			.accordion-group.active {
 				padding: 0;
 
@@ -59,16 +75,6 @@ body {
 					.steps-view {
 						background-color: $gray-m;
 						border-radius: 0;
-
-						iframe {
-							@include breakpoint ('medium', 'max') {
-								min-height: 500px;
-
-								@include breakpoint('extra-small', 'max') {
-									min-height: 570px;
-								}
-							}
-						}
 					}
 				}
 			}
@@ -79,10 +85,6 @@ body {
 				@include breakpoint('large', 'max') {
 					min-height: 410px;
 				}
-			}
-
-			.box-step-content {
-				min-height: 400px;
 			}
 
 			.gift-card-section {
