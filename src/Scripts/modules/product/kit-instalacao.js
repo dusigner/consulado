@@ -12,6 +12,7 @@ Nitro.module('kit-instalacao', function() {
 	const $gasType = $('.kit-instalacao__input');
 	const $buyButton = $('.buy-button.buy-button-ref');
 	const defaultProductLink = $buyButton.attr('href');
+	let kitTypeName = '';
 
 	this.init = () => {
 		this.selectKitType();
@@ -24,7 +25,7 @@ Nitro.module('kit-instalacao', function() {
 			const selfKit = e.target;
 			const collectionId = selfKit.value;
 			const kitType = $(selfKit).attr('id');
-			const kitName = $(`label[for="${kitType}"]`).text();
+			kitTypeName = $(`label[for="${kitType}"]`).text();
 
 			if (!$kitInstalacao.hasClass(`kit-loaded-${collectionId}`)) {
 				this.loadingAnimation();
@@ -38,17 +39,29 @@ Nitro.module('kit-instalacao', function() {
 
 			this.showProducts(kitType);
 			this.updateButtonLink(defaultProductLink);
-			this.tagSelectType(kitName);
+			this.tagSelectType(kitTypeName);
 		});
 	};
 
 	// Taguemento
-	this.tagSelectType = (typeName) => {
+	this.tagSelectType = (kitTypeName) => {
 		dataLayer.push({
 			event: 'generic',
-			category: `[SQUAD] Kit de Instalação para ${typeName}`,
-			action: `Escolher tipo de gás ${typeName}`,
+			category: `[SQUAD] Kit de Instalação para ${kitTypeName}`,
+			action: `Escolher tipo de gás ${kitTypeName}`,
 			label: 'Step Selação do tipo de gás'
+		});
+	};
+
+	this.tagSelectProduct = (kitName, kitSkuId, kitTypeName) => {
+		const productName = window.skuJson.name;
+		const productId = skuJson.productId;
+
+		dataLayer.push({
+			event: 'generic',
+			category: `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${kitName} - ${kitSkuId}`,
+			action: `Clique na escolha do produto + Produto Kit: ${kitName} - ${kitSkuId} + ${kitTypeName} + Produto: ${productName} - ${productId}`,
+			label: 'Step Clique na escolha do produto'
 		});
 	};
 
@@ -69,6 +82,8 @@ Nitro.module('kit-instalacao', function() {
 			const $selectSelf = $(this);
 			const productSku = $selectSelf.data('sku');
 			const actualProductLink = $buyButton.attr('href');
+			const kitName = $selectSelf.find('h2').text();
+			const kitSkuId = $selectSelf.find('span').text();
 
 			// Caso o clintete descelecione a o kit, voltamos o link para o padrão
 			if ($selectSelf.hasClass('is--active')) {
@@ -81,6 +96,8 @@ Nitro.module('kit-instalacao', function() {
 			}
 
 			$selectSelf.toggleClass('is--active');
+
+			self.tagSelectProduct(kitName, kitSkuId, kitTypeName);
 		});
 	};
 

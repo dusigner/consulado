@@ -13,7 +13,14 @@
 		.kit-instalacao__label { display: inline-block; }
 	}
 
-	&__content { display: none; }
+	&__content {
+		@include breakpoint('medium', 'max') {
+			margin-left: -10px;
+			margin-right: -10px;
+			width: calc(100% + 20px);
+		}
+		display: none;
+	}
 
 	&__title.specification {
 		margin-left: -10px;
@@ -38,12 +45,20 @@
 
 	// Container
 	&-container {
+		@include breakpoint('medium', 'max') {
+			margin: 10px -10px 20px -10px;
+			width: calc(100% + 20px);
+		}
 		display: none;
 		margin: 10px 0 20px 0;
 	}
 
 	// Informação
 	&__info {
+		@include breakpoint('medium', 'max') {
+			margin: 20px -10px 10px -10px;
+			width: calc(100% + 20px);
+		}
 		color: #0fb6de;
 		display: none;
 		margin: 20px 0 10px 0;
@@ -73,8 +88,9 @@
 			padding: 5px 10px;
 		}
 
-		// Exibir somente para [Gás natural]
-		.kit-instalacao[data-kittype='gas-natural'] & { display: block; }
+		// Exibir somente para [Gás natural/encanado]
+		.kit-instalacao[data-kittype='gas-natural'] &,
+		.kit-instalacao[data-kittype='gas-encanado'] & { display: block; }
 	}
 
 	// Erro
@@ -166,7 +182,7 @@
 			width: 155px;
 
 			h2 {
-				@include rfs(13);
+				@include rfs(12);
 				line-height: 125%;
 				margin: 0;
 				padding: 0;
@@ -177,6 +193,7 @@
 
 		// Price
 		&-price {
+			min-width: 110px;
 			text-align: right;
 
 			.de {
@@ -186,7 +203,7 @@
 			}
 
 			.por {
-				@include rfs(16);
+				@include rfs(15);
 				color: #9ACA3C;
 				font-weight: bold;
 			}
@@ -202,6 +219,7 @@
 		// Select
 		&-select {
 			margin-right: 5px;
+			min-width: 30px;
 			overflow: hidden;
 			position: relative;
 			text-align: right;
