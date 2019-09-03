@@ -114,6 +114,7 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
+				self.limitQuantityCart();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -716,6 +717,45 @@ $(document).on('ready', function() {
 					self.veryfication();
 				});
 			};
+
+			this.limitQuantityCart = function(){
+
+				if (!store.isCorp){
+
+					$('body').on('click','.item-quantity-change', function(){
+
+						var prodId = $(this).closest('.product-item').index('.product-item'),
+							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
+							prodName = $(this).closest('.product-item').find('.product-name a').text(),
+							orderForm,
+							item = vtexjs.checkout.orderForm.items[prodId];
+
+						item.index = prodId;
+						item.quantity = 6;
+
+
+						if (prodQtde > 6) {
+
+							vtexjs.checkout.getOrderForm().then(function(orderForm) {
+								var updateItem = {
+									index: prodId,
+									quantity: 6
+								};
+								return vtexjs.checkout.updateItems([updateItem], null, false);
+							})
+							.done(function(orderForm) {
+								window.vtex.checkout.MessageUtils.showMessage({
+									text: 'Você só pode ter no máximo 6 itens do produto '+prodName+' no carrinho',
+									status: 'error'
+								});
+							});
+
+						}
+					});
+
+				}
+
+     		};
 
 			this.init();
 
