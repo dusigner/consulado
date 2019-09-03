@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
-// Kit Instalação
-.kit-instalacao {
+// Produtos adicionais
+.produtos-adicionais {
 	border-bottom: 1px solid #e3e1e1;
 	margin: 1em 0;
 	padding: 10px;
@@ -10,7 +10,7 @@
 		margin-bottom: 10px;
 		padding: 10px 0;
 
-		.kit-instalacao__label { display: inline-block; }
+		.produtos-adicionais__label { display: inline-block; }
 	}
 
 	&__content {
@@ -87,10 +87,6 @@
 			margin: 0;
 			padding: 5px 10px;
 		}
-
-		// Exibir somente para [Gás natural/encanado]
-		.kit-instalacao[data-kittype='gas-natural'] &,
-		.kit-instalacao[data-kittype='gas-encanado'] & { display: block; }
 	}
 
 	// Erro
@@ -134,7 +130,7 @@
 
 	// Exibir informações somente depois do loading dos produtos
 	&[class*='kit-loaded'] {
-		.kit-instalacao-container { display: block; }
+		.produtos-adicionais-container { display: block; }
 	}
 }
 

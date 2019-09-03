@@ -6,40 +6,171 @@
 Nitro.module('kit-instalacao', function() {
 	// Variables
 	const self = this;
-	const $kitInstalacao = $('.kit-instalacao');
+	const $produtosAdicionaisContainer = $('.produtos-adicionais');
+	const $produtosAdicionaisTable = $('table.group.Produtos-adicionais');
+
 	const $productKit = $('.kit-product');
-	const $kitInstalacaoInfo = $('.kit-instalacao__info');
-	const $gasType = $('.kit-instalacao__input');
 	const $buyButton = $('.buy-button.buy-button-ref');
 	const defaultProductLink = $buyButton.attr('href');
 	let kitTypeName = '';
 
 	this.init = () => {
+		const informacoesLocais = this.pegarInformacoesNaPagina();
+		const $boxProdutosAdicionais = this.templateProdutosAdicionais(informacoesLocais);
+
+		$produtosAdicionaisContainer.html($boxProdutosAdicionais);
+
 		this.selectKitType();
 		this.selectProducts();
 	};
 
-	// Selecione o tipo do kit
-	this.selectKitType = () => {
-		$gasType.on('change', (e) => {
-			const selfKit = e.target;
-			const collectionId = selfKit.value;
-			const kitType = $(selfKit).attr('id');
-			kitTypeName = $(`label[for="${kitType}"]`).text();
+	// Pegar as informações no DOM
+	this.pegarInformacoesNaPagina = () => {
+		const tituloGrupo = $produtosAdicionaisTable.find('.value-field.titulo-do-grupo').text();
+		const tituloTexto = $produtosAdicionaisTable.find('.value-field.titulo-do-texto').text();
+		const texto       = $produtosAdicionaisTable.find('.value-field.texto').text();
 
-			if (!$kitInstalacao.hasClass(`kit-loaded-${collectionId}`)) {
-				this.loadingAnimation();
-				this.getProducts(collectionId, kitType);
+		const tipo01Text      = $produtosAdicionaisTable.find('.value-field.secao-01-tipo').text();
+		const tipo01Produtos  = $produtosAdicionaisTable.find('.value-field.secao-01-produtos').text();
+		const tipo01Mensagens = $produtosAdicionaisTable.find('.value-field.secao-01-mensagens').text();
 
-				$kitInstalacao.addClass(`kit-loaded-${collectionId}`);
+		const tipo02Text      = $produtosAdicionaisTable.find('.value-field.secao-02-tipo').text();
+		const tipo02Produtos  = $produtosAdicionaisTable.find('.value-field.secao-02-produtos').text();
+		const tipo02Mensagens = $produtosAdicionaisTable.find('.value-field.secao-02-mensagens').text();
+
+		return {
+			tituloGrupo     : tituloGrupo,
+			tituloTexto     : tituloTexto,
+			texto           : texto,
+			tipo01          : $.replaceSpecialChars(tipo01Text),
+			tipo01Text      : tipo01Text,
+			tipo01Produtos  : tipo01Produtos,
+			tipo01Mensagens : tipo01Mensagens,
+			tipo02          : $.replaceSpecialChars(tipo02Text),
+			tipo02Text      : tipo02Text,
+			tipo02Produtos  : tipo02Produtos,
+			tipo02Mensagens : tipo02Mensagens
+		};
+	};
+
+	// Template da seleção de produtos
+	this.templateProdutosAdicionais = (infoProduto) => {
+		const {
+			tituloGrupo,
+			tituloTexto,
+			texto,
+			tipo01,
+			tipo01Text,
+			tipo01Produtos,
+			tipo01Mensagens,
+			tipo02,
+			tipo02Text,
+			tipo02Produtos,
+			tipo02Mensagens
+		} = infoProduto;
+
+		const template = `
+			<strong class="produtos-adicionais__title specification">
+				${tituloGrupo}
+			</strong>
+
+			<div class="skuList">
+				<span>
+					${tipo01.length ? `
+						<input id="${tipo01}" value="${tipo01Produtos}" type="radio" name="kit-type" class="produtos-adicionais__input">
+						<label for="${tipo01}" class="produtos-adicionais__label">
+							${tipo01Text}
+						</label>
+						` : ''
+					}
+
+					${tipo02.length ? `
+						<input id="${tipo02}" value="${tipo02Produtos}" type="radio" name="kit-type" class="produtos-adicionais__input">
+						<label for="${tipo02}" class="produtos-adicionais__label">
+							${tipo02Text}
+						</label>
+						` : ''
+					}
+				</span>
+			</div>
+
+			<div class="produtos-adicionais-container">
+				<strong class="produtos-adicionais__title">
+					${tituloTexto}
+				</strong>
+				<p class="produtos-adicionais__description">
+					${texto}
+				</p>
+			</div>
+
+			${tipo01Mensagens.length ? `
+				<div class="produtos-adicionais__info" data-kittype="${tipo01}"]>
+					<strong>
+						<i class="icon icon-question"></i>
+						Conversão gratuita
+					</strong>
+					<p>${tipo01Mensagens}</p>
+				</div>
+				` : ''
 			}
 
-			$kitInstalacao.attr('data-kittype', `${kitType}`);
+			${tipo02Mensagens.length ? `
+				<div class="produtos-adicionais__info" data-kittype="${tipo02}"]>
+					<strong>
+						<i class="icon icon-question"></i>
+						Conversão gratuita
+					</strong>
+					<p>${tipo02Mensagens}</p>
+				</div>
+				` : ''
+			}
+
+			<section class="loading-container"><i class="icon-spinner"></i></section>
+		`;
+
+		return template;
+	};
+
+	// Limpa e organiza os ids dos produtos para a API
+	this.limpaIdProdutos = (ids) => {
+		let codigoRefProduto = '';
+		codigoRefProduto = ids.replace(/\s+/gmi, '');
+		codigoRefProduto = codigoRefProduto.split(',');
+
+		if (codigoRefProduto.length > 1) {
+			codigoRefProduto = codigoRefProduto.reduce((acc, curr) => {
+				return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
+			});
+		} else {
+			codigoRefProduto = `fq=alternateIds_RefId:${codigoRefProduto}`;
+		}
+
+		return codigoRefProduto;
+	};
+
+	// Selecione o tipo do kit
+	this.selectKitType = () => {
+		const $selectProdType = $produtosAdicionaisContainer.find('.produtos-adicionais__input');
+
+		$selectProdType.on('change', (e) => {
+			const selfProd = e.target;
+			const codigoRefProduto = this.limpaIdProdutos(selfProd.value);
+			const prodType = $(selfProd).attr('id');
+			kitTypeName = $(`label[for="${prodType}"]`).text();
+
+			if (!$produtosAdicionaisContainer.hasClass(`kit-loaded-${codigoRefProduto}`)) {
+				this.loadingAnimation();
+				this.getProducts(codigoRefProduto, prodType);
+
+				$produtosAdicionaisContainer.addClass(`kit-loaded-${codigoRefProduto}`);
+			}
+
+			$produtosAdicionaisContainer.attr('data-kittype', `${prodType}`);
 			$productKit.removeClass('is--active');
 
-			this.showProducts(kitType);
+			this.showProducts(prodType);
 			this.updateButtonLink(defaultProductLink);
-			this.tagSelectType(kitTypeName);
+			// this.tagSelectType(kitTypeName);
 		});
 	};
 
@@ -67,21 +198,24 @@ Nitro.module('kit-instalacao', function() {
 
 	// Animação de loading...
 	this.loadingAnimation = () => {
-		$kitInstalacao.toggleClass('kit-is-loading');
+		$produtosAdicionaisContainer.toggleClass('kit-is-loading');
 	};
 
 	// Mostrar somente produtos ativos
 	this.showProducts = (kitType) => {
 		$(`.kit-instalacao__content`).hide();
+		$(`.produtos-adicionais__info`).hide();
 		$(`.kit-instalacao__content[data-kittype="${kitType}"]`).show();
+		$(`.produtos-adicionais__info[data-kittype="${kitType}"]`).show();
 	};
 
 	// Selecionar produtos
 	this.selectProducts = () => {
-		$kitInstalacao.on('click', '.kit-product.available', function() {
+		$produtosAdicionaisContainer.on('click', '.kit-product.available', function() {
 			const $selectSelf = $(this);
 			const productSku = $selectSelf.data('sku');
 			const actualProductLink = $buyButton.attr('href');
+
 			const kitName = $selectSelf.find('h2').text();
 			const kitSkuId = $selectSelf.find('span').text();
 
@@ -108,7 +242,7 @@ Nitro.module('kit-instalacao', function() {
 
 	// Busca todos os produtos da coleção
 	this.getProducts = (collectionId, kitType) => {
-		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${collectionId}`)
+		fetch(`/api/catalog_system/pub/products/search?${collectionId}`)
 			.then(resp => resp.json())
 			.then(data => this.printProducts(data, kitType))
 			.then(() => this.loadingAnimation())
@@ -121,10 +255,11 @@ Nitro.module('kit-instalacao', function() {
 
 	// Exibe os produtos na tela de produto
 	this.printProducts = (data, kitType) => {
+		const $container =  $produtosAdicionaisContainer.find('.produtos-adicionais-container');
 		const products = data;
 
 		products.map(product => {
-			$kitInstalacaoInfo.before(this.productKitTemplate(product, kitType));
+			$container.after(this.productKitTemplate(product, kitType));
 		});
 	};
 
@@ -184,11 +319,11 @@ Nitro.module('kit-instalacao', function() {
 			</div>
 		`;
 
-		if (!$kitInstalacao.hasClass('kit-error')) {
-			$kitInstalacao.append(errorTemplate);
+		if (!$produtosAdicionaisContainer.hasClass('kit-error')) {
+			$produtosAdicionaisContainer.append(errorTemplate);
 		}
 
-		$kitInstalacao.addClass('kit-error');
+		$produtosAdicionaisContainer.addClass('kit-error');
 		this.handleError();
 	};
 
@@ -200,5 +335,8 @@ Nitro.module('kit-instalacao', function() {
 		});
 	};
 
-	self.init();
+
+	if ($produtosAdicionaisTable.length > 0) {
+		self.init();
+	}
 });
