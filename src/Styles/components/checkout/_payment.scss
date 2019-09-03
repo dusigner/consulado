@@ -22,6 +22,14 @@ body {
 		.checkout-container {
 			padding-bottom: 40px;
 
+			@include breakpoint('medium', 'max') {
+				padding-bottom: 100px;
+
+				@include breakpoint ('small' 'max') {
+					padding-bottom: 40px;
+				}
+			}
+
 			.cart-fixed {
 				background: #ffffff;
 				position: relative;
@@ -55,6 +63,10 @@ body {
 						iframe {
 							@include breakpoint ('medium', 'max') {
 								min-height: 500px;
+
+								@include breakpoint('extra-small', 'max') {
+									min-height: 570px;
+								}
 							}
 						}
 					}
@@ -82,9 +94,9 @@ body {
 				width: 40%;
 
 				label {
+					@include rfs(12);
 					color: #736c6b;
 					display: block;
-					font-size: 12px;
 					font-weight: 500;
 				}
 
@@ -121,16 +133,16 @@ body {
 		}
 
 		.step {
+			@include rfs(13);
 			color: $txt-gray-l;
-			font-size: 13px;
 			padding: 0 20px;
 
 			&.client-profile-data {
 
 				.btn-success {
+					@include rfs(16);
 					background-color: $green;
 					border: 2px solid $green;
-					font-size: 16px;
 					font-weight: 500;
 					height: 40px;
 					line-height: 0;
@@ -166,8 +178,8 @@ body {
 				}
 
 				.accordion-toggle {
+					@include rfs(16);
 					color: $gray-d;
-					font-size: 16px;
 					font-weight: bold;
 					padding: 18px 0 10px;
 					text-align: left;
@@ -247,8 +259,8 @@ body {
 					}
 
 					span.error {
+						@include rfs(12);
 						color: $red-error;
-						font-size: 12px;
 						font-weight: bold;
 						margin-bottom: 0;
 						position: relative;
@@ -256,8 +268,8 @@ body {
 				}
 
 				label {
+					@include rfs(12);
 					color: $gray-d;
-					font-size: 12px;
 					font-weight: 500;
 				}
 			}
@@ -270,9 +282,9 @@ body {
 				width: 100%;
 
 				&.btn-success {
+					@include rfs(16);
 					background-color: $green;
 					border: 2px solid $green;
-					font-size: 16px;
 					font-weight: 500;
 					height: 40px;
 					line-height: 0;
@@ -288,10 +300,10 @@ body {
 
 			.client-profile-email {
 				&:before {
+					@include rfs(12);
 					color: $gray-d;
 					content: 'E-mail';
 					display: block;
-					font-size: 12px;
 					font-weight: 500;
 					margin-bottom: 3px;
 				}
@@ -299,14 +311,14 @@ body {
 					color: $gray-d;
 
 					&.email {
-						font-size: 15px;
+						@include rfs(15);
 						font-weight: 400;
 					}
 				}
 			}
 
 			.client-profile-summary {
-				font-size: 15px;
+				@include rfs(15);
 				margin-top: 20px;
 
 				span {
@@ -315,8 +327,8 @@ body {
 			}
 
 			.newsletter {
+				@include rfs(13);
 				color: $gray-d;
-				font-size: 13px;
 				margin: 20px 0 15px;
 				position: relative;
 
@@ -361,8 +373,8 @@ body {
 
 			.address-search-placeholder {
 				span {
+					@include rfs(12);
 					color: $gray-d;
-					font-size: 12px;
 					font-weight: bold;
 				}
 
@@ -370,7 +382,7 @@ body {
 					margin-left: 16px;
 
 					#dont-know-postal-code {
-						font-size: 12px;
+						@include rfs(12);
 					}
 				}
 			}
@@ -384,8 +396,8 @@ body {
 
 				label {
 					span {
+						@include rfs(12);
 						color: $gray-d;
-						font-size: 12px;
 						font-weight: bold;
 					}
 
@@ -393,7 +405,7 @@ body {
 						margin-left: 16px;
 
 						#dont-know-postal-code {
-							font-size: 12px;
+							@include rfs(12);
 						}
 					}
 				}
@@ -426,8 +438,8 @@ body {
 					margin-top: 15px;
 
 					span {
+						@include rfs(13);
 						color: $gray-d;
-						font-size: 13px;
 						font-weight: 400;
 
 						.link-edit {
@@ -465,8 +477,8 @@ body {
 				.error-list {
 					width: 100%;
 					span.error-description {
+						@include rfs(12);
 						color: $red-error;
-						font-size: 12px;
 						font-weight: bold;
 						margin-bottom: 0;
 						position: relative;
@@ -490,7 +502,7 @@ body {
 
 			.address-shipping-options {
 				.choose-shipping-option {
-					font-size: 12px;
+					@include rfs(12);
 				}
 
 				.shipping-option-item {
@@ -519,8 +531,8 @@ body {
 
 					.shipping-option-item-text-wrapper {
 						span {
+							@include rfs(12);
 							color: $gray-d;
-							font-size: 12px;
 							font-weight: 500;
 						}
 
@@ -545,8 +557,8 @@ body {
 					}
 				}
 				.scheduled-sla-label {
+					@include rfs(12);
 					color: $gray-d;
-					font-size: 12px;
 					margin-bottom: 5px;
 				}
 
@@ -604,7 +616,7 @@ body {
 
 			.shipping-summary-placeholder {
 				.address {
-					font-size: 13px;
+					@include rfs(13);
 				}
 
 				p.shipping-selected-sla {
@@ -624,9 +636,9 @@ body {
 				}
 
 				#change-other-shipping-option {
+					@include rfs(12);
 					border: 1px solid $gray-n;
 					color: $gray-d;
-					font-size: 12px;
 
 					&:hover,
 					&:focus {
@@ -745,7 +757,9 @@ body {
 				.payment-group {
 					width: 40%;
 
-					.payment-group-list-btn { width: 100%; }
+					.payment-group-list-btn {
+						width: 100%;
+					}
 				}
 
 				.steps-view { width: 60%; }
@@ -828,17 +842,80 @@ body {
 
 				.shipping-date {
 					color: $txt-gray-l;
-					float: right;
 				}
 
 				.price {
 					color: $green;
-					float: left;
 				}
 
 				.service-list {
-					margin-top: 10px;
+					background-color: $gray-c410;
+					float: none;
+					height: 50px;
+					margin-top: 30px;
+					padding: 5px;
 					width: 100%;
+
+					.service-item {
+						.product-name {
+							display: inline-block;
+							text-overflow: ellipsis;
+							width: 70%;
+
+							.icon-ok {
+								display: none;
+							}
+						}
+						.price {
+							@include rfs(11);
+							display: inline-block;
+							position: static;
+							text-align: right;
+							width: 25%;
+
+							&:before {
+								display: none;
+							}
+						}
+					}
+
+
+					@include breakpoint (1200px, 'max') {
+						height: 65px;
+
+						@include breakpoint ('medium', 'max') {
+							height: 30px;
+
+							.product-name {
+								height: 20px;
+							}
+
+							@include breakpoint (767px, 'max') {
+								height: 50px;
+
+								.product-name {
+									height: auto;
+								}
+							}
+						}
+					}
+				}
+
+				.description {
+					margin-top: 0;
+				}
+
+				@include breakpoint('large', 'max') {
+					.shipping-date,
+					.price {
+						@include rfs (11);
+					}
+					@include breakpoint ('medium', 'max') {
+						.shipping-date,
+						.price {
+							@include rfs (12);
+						}
+					}
 				}
 			}
 
@@ -857,14 +934,37 @@ body {
 			}
 
 			.product-name {
-				color: $gray-d;
+				color: #736c6b;
+				float: none;
 				font-weight: 500;
+				height: 40px;
+				text-overflow: ellipsis;
+				white-space: normal;
+				width: calc(100% - 60px);
+
+				@include breakpoint ('medium', 'max') {
+					width: 60%;
+
+					@include breakpoint (767px, 'max') {
+						width: calc(100% - 60px);
+					}
+				}
 			}
 
 			.price {
+				@include rfs(14);
 				color: $green;
-				font-size: 16px;
 				font-weight: bold;
+
+				@include breakpoint ('medium', 'max') {
+					position: absolute;
+					right: 15px;
+					top: 15px;
+
+					@include breakpoint (767px, 'max') {
+						position: static;
+					}
+				}
 
 				&:before {
 					content: 'Por ';
@@ -872,9 +972,17 @@ body {
 			}
 
 			.shipping-date {
+				@include rfs(12);
 				color: $gray-d!important;
-				font-size: 12px;
 				font-weight: bold;
+
+				@include breakpoint ('medium', 'max') {
+					margin-left: 52px;
+
+					@include breakpoint (767px, 'max') {
+						margin-left: 0;
+					}
+				}
 			}
 
 			.link-cart {
@@ -911,16 +1019,16 @@ body {
 							height: 40px;
 
 							.info {
+								@include rfs(14);
 								color: $gray-d;
 								float: none;
-								font-size: 14px;
 								font-weight: 700;
 								width: 1%;
 							}
 
 							.monetary {
+								@include rfs(12);
 								color: $purple;
-								font-size: 12px;
 								font-weight: bold;
 								width: 50%;
 							}
@@ -957,6 +1065,7 @@ body {
 					@include responsiveFont(12);
 					color: $txt-gray;
 					display: none;
+					margin-top: 35px;
 					padding: 1em;
 
 					&.active { display: block; }
@@ -1039,9 +1148,9 @@ body {
 				min-height: 365px;
 
 				&:after {
+					@include rfs(13);
 					color: $green;
 					content: 'Para emitir o boleto clique em "FINALIZAR COMPRA". \A\A O Boleto possui o vencimento de 1 dia útil e pode ser pago em qualquer agência bancária e internet Banking.\A\A Caso não seja pago durante esse período será automaticamente cancelado.\A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis.';
-					font-size: 13px;
 					font-weight: bold;
 					margin-top: 10px;
 					white-space: pre-wrap;
@@ -1063,6 +1172,58 @@ body {
 			}
 		}
 	}
+
+	#payment-group-creditCardPaymentGroup {
+		.payment-group-item-text {
+			background-image: url('/arquivos/cartao-credito.png');
+			background-size: 40px;
+		}
+	}
+
+	#payment-group-MercadoPagoPaymentGroup {
+		.payment-group-item-text {
+			background-image: url('/arquivos/mercado-pago.png');
+			background-size: 40px;
+		}
+	}
+
+	#payment-group-payPalPaymentGroup {
+		.payment-group-item-text {
+			background-image: url('/arquivos/paypal-icone.png');
+			background-size: 40px;
+		}
+	}
+
+	#payment-group-safetypayPaymentGroup {
+		.payment-group-item-text {
+			background-image: url('/arquivos/transferencia-bancaria.png');
+			background-size: 25px;
+		}
+	}
+
+	#payment-group-bankInvoicePaymentGroup {
+		.payment-group-item-text {
+			background-image: url('/arquivos/boleto-bancario.png');
+			background-size: 40px;
+		}
+	}
+
+	#show-gift-card-group {
+		margin-left: 20px;
+		position: relative;
+
+		&:before {
+			background: url('/arquivos/vale-presente.png') no-repeat top;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 30px;
+			left: -25px;
+			position: absolute;
+			top: -5px;
+			width: 20px;
+		}
+	}
 }
 
 
@@ -1077,8 +1238,8 @@ body {
 	}
 
 	label.FormFieldLabel {
+		@include rfs(12);
 		color: $gray-d;
-		font-size: 12px;
 		font-weight: 500;
 	}
 
@@ -1096,9 +1257,9 @@ body {
 		border: 2px solid $red-error;
 	}
 	.help.error {
+		@include rfs(12);
 		border: none;
 		color: $red-error;
-		font-size: 12px;
 		font-weight: bold;
 	}
 
@@ -1117,7 +1278,7 @@ body {
 		}
 
 		label {
-			font-size: 12px;
+			@include rfs(12);
 			line-height: 1;
 			margin-left: 25px;
 			position: relative;
@@ -1146,15 +1307,15 @@ body {
 		justify-content: right;
 
 		.icon-lock {
+			@include rfs(16);
 			color: $gray-s;
 			display: inline-block;
-			font-size: 16px;
 		}
 
 		.payment-environment-icon-text {
+			@include rfs(12);
 			color: $gray-s;
 			display: inline-block;
-			font-size: 12px;
 			font-weight: bold;
 			width: 110px;
 
@@ -1166,9 +1327,20 @@ body {
 
 		.card-flags {
 			display: flex;
+			flex-wrap: wrap;
 			justify-content: space-between;
 			margin: 0 auto 10px;
 			width: 90%;
+
+			.radio {
+				@include breakpoint (326px, 'max') {
+					width: 30%;
+				}
+			}
+
+			@include breakpoint(326px, 'max') {
+				height: 110px;
+			}
 		}
 
 		.card-flag-label {
@@ -1193,6 +1365,10 @@ body {
 					left: 15px;
 					position: absolute;
 					width: 12px;
+
+					@include breakpoint('extra-small', 'max') {
+						top: -22px;
+					}
 				}
 
 				&.card-selected {
@@ -1211,11 +1387,11 @@ body {
 	.App {
 		// Lista de cartões salvos
 		.SavedCards {
-			a { font-size: 14px; }
+			a { @include rfs(14); }
 		}
 
 		// Error
-		span.error { font-size: 12px; }
+		span.error { @include rfs(12); }
 
 		// Inputs
 		.input-mini,
@@ -1276,8 +1452,8 @@ body {
 
 		// Pagar com 2 cartões
 		.ChangeNumberOfPayments {
+			@include rfs(15);
 			border-top: 1px solid #ccc;
-			font-size: 15px;
 			font-weight: bold;
 			margin: 1em 0;
 			position: relative;
@@ -1384,8 +1560,8 @@ body {
 		width: 100%;
 
 		&:before {
+			@include rfs(13);
 			content: 'Adicionar mais um cartão ao pagamento';
-			font-size: 13px;
 		}
 		&:after {
 			background-image: url('https://consulqa.vteximg.com.br/arquivos/icon-arrow-gray.png');
@@ -1402,7 +1578,7 @@ body {
 }
 
 .CardForm + .CardForm + .ChangeNumberOfPayments a {
-	font-size: 13px;
+	@include rfs(13);
 	&:before {
 		display: none;
 	}
