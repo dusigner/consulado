@@ -111,7 +111,7 @@
 	}
 
 	// Loading
-	&.kit-is-loading .loading-container { display: block; }
+	&.prod-is-loading .loading-container { display: block; }
 
 	.loading-container {
 		display: none;
@@ -129,12 +129,12 @@
 	}
 
 	// Exibir informações somente depois do loading dos produtos
-	&[class*='kit-loaded'] {
+	&[class*='prod-loaded'] {
 		.produtos-adicionais-container { display: block; }
 	}
 }
 
-.kit-product {
+.produto-adicional {
 	align-items: center;
 	border: 1px solid #e3e1e1;
 	border-radius: 4px;
