@@ -6,6 +6,90 @@
 @import 'helpers/family';
 
 .pagina-embutidos {
+	& .embutidos-header {
+		background-color: $gray;
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		@include breakpoint('medium', 'max') {
+			grid-template-columns: 1fr;
+		}
+		@include breakpoint('small', 'max') {
+			grid-template-columns: 1fr;
+		}
+
+		.box_img {
+			background-image: url('https://consulqa.vteximg.com.br/arquivos/Img_Ambiente-cozinha.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+			box-shadow: inset -1px -2px 5px 0 rgba(0, 0, 0, 0.75);
+			height: 570px;
+			position: relative;
+			@include breakpoint('small', 'max') {
+				order: 2;
+			}
+
+			&.inicial {
+				.plus {
+					align-items: center;
+					background-color: $purple-n;
+					border-radius: 25px;
+					box-shadow: 0 2px 9px #000000;
+					display: flex;
+					height: 35px;
+					justify-content: center;
+					position: absolute;
+					transition: all 0.4s ease-in;
+					width: 35px;
+
+					&:nth-child(1) {
+						right: 30%;
+						top: 60%;
+					}
+					&:nth-child(2) {
+						right: 38%;
+						top: 30%;
+					}
+					&:nth-child(3) {
+						left: 28%;
+						top: 36%;
+					}
+					span {
+						display: none;
+						opacity: 0;
+					}
+					&:hover {
+						width: 100px;
+						span {
+							color: #ffffff;
+							display: initial;
+							opacity: 1;
+						}
+					}
+				}
+				.back {
+					display: none;
+				}
+			}
+		}
+		.box_texto {
+			align-self: center;
+			padding: 0 80px;
+			@include breakpoint('small', 'max') {
+				order: 1;
+				padding: 0 20px;
+			}
+			h1 {
+				color: $purple-n;
+				font-size: 4.125em;
+				@include breakpoint('small', 'max') {
+					font-size: 2em;
+				}
+			}
+			p {
+				font-size: 1.5em;
+			}
+		}
+	}
 	& .embutidos-content {
 		& .nav-embutidos {
 			& nav {
@@ -30,6 +114,7 @@
 		}
 
 		& .categoria {
+			margin: 0 0 20px 0;
 			.cooktops,
 			.fornos_embutidos,
 			.coifas_depuradores {
@@ -45,13 +130,23 @@
 						order: 1;
 					}
 					img {
+						-moz-transition: opacity 0.4s ease-in;
+						-ms-transition: opacity 0.4s ease-in;
+						-o-transition: opacity 0.4s ease-in;
+						-webkit-transition: opacity 0.4s ease-in;
 						height: auto;
+						opacity: 1;
+						transition: opacity 0.4s ease-in;
 						width: 100%;
 					}
-					transition: 0.3s;
-					// & :hover {
-
-					// }
+					.transitioning-src {
+						-moz-transition: opacity 0.4s ease-out;
+						-ms-transition: opacity 0.4s ease-out;
+						-o-transition: opacity 0.4s ease-out;
+						-webkit-transition: opacity 0.4s ease-out;
+						opacity: 0;
+						transition: opacity 0.4s ease-out;
+					}
 				}
 				.box-text {
 					text-align: left;
@@ -64,17 +159,15 @@
 						margin: 0;
 					}
 					h2 {
-						// @include responsiveFont(32);
 						color: $green;
 						margin: 0;
 					}
-					// p {
-					// @include responsiveFont(13.5);
-					// }
 					a {
 						background-color: transparent;
 						border: 3px solid $green;
 						color: $green;
+						font-size: 1.156em;
+						font-weight: 600;
 						padding: 10px;
 						&:hover {
 							background-color: $green;
@@ -91,6 +184,15 @@
 		border-color: $green;
 		color: #ffffff;
 		margin: 0 auto;
+		padding: 10px 0 0 0;
+
+		h1 {
+			font-size: 4.125em;
+		}
+		h2 {
+			font-size: 2em;
+			font-weight: 400;
+		}
 
 		.dicas_embutir {
 			background: linear-gradient(180deg, transparent 30%, $green 30%);
@@ -107,32 +209,33 @@
 				}
 			}
 			.artigo {
+				margin: 0 0 20px 0;
 				text-align: left;
 
 				img {
 					width: 100%;
 				}
 				.box_descricao {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
 					margin: 0 10px;
 
 					h3 {
-						color: #702f8f;
+						color: $purple-n;
 						font-weight: bold;
 						margin: 0;
-						// @include responsiveFont(32);
 					}
 					p {
 						margin: 20px 0;
-						// @include responsiveFont(24);
 					}
 					a {
+						align-self: flex-end;
 						background-color: transparent;
 						border: 2px solid #ffffff;
 						color: #ffffff;
-						float: right;
 						margin: 10px 0;
 						padding: 10px;
-						// @include responsiveFont(18.5);
 					}
 				}
 
