@@ -81,7 +81,7 @@ Nitro.module('register.corporate', function() {
 		});
 
 		//verifica se o campo de inscrição tem os caracteres necessários
-		$form.find('.stateRegistration').keyup(function() {
+		$form.find('.form-control').keyup(function() {
 			var val = $(this).val();
 			val = val.replace(/[a-zA-Z]/g, '');
 			val = val.replace(/[^\w\s]/gi, '');
