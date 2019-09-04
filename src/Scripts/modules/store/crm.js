@@ -39,6 +39,11 @@ var CRM = {
 			...category && {_where: `category=${category}`}
 		});
 	},
+	getCoupons: function () {
+		return $.getJSON(CRM.formatUrl('CM', 'search'), {
+			_fields: 'id,category,collection,coupon,offer,offerText,valProduct,idCollection',
+		});
+	},
 
 	insertClient: function (data) {
 		return CRM.ajax({

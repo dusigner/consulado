@@ -106,31 +106,6 @@ body.busca {
 
 /*==========  CATEGORIA  ==========*/
 
-.open-filter {
-	display: none;
-	float: right;
-	padding-right: 0;
-
-	span {
-		@include responsiveFont(12, 16, true);
-		background: #ffffff;
-		border: 2px solid $orange;
-		border-radius: 20px;
-		color: $orange;
-		display: block;
-		font-weight: bold;
-		padding: 8px 0;
-		text-align: center;
-		text-transform: uppercase;
-		width: 65px;
-	}
-
-	@include breakpoint(medium, 'max') {
-		display: inline-block;
-		float: right;
-	}
-}
-
 .clear-filter {
 	@include responsiveFont(12, 16, true);
 	color: $orange;
