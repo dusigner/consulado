@@ -765,7 +765,7 @@ $(document).on('ready', function() {
 
 						var prodId = $(this).closest('.product-item').index('.product-item'),
 							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
-							prodName = $(this).closest('.product-item').find('.product-name a').text(),
+							prodName = $(this).closest('.product-item').find('.product-name a:nth-child(1)').text(),
 							orderForm,
 							item = vtexjs.checkout.orderForm.items[prodId];
 
