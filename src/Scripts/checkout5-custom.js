@@ -584,7 +584,7 @@ $(document).on('ready', function() {
 			};
 
 			this.TrackMercadoPago = function() {
-				var $pagamentoMercadoPago = $('#payment-group-MercadoPagoPaymentGroup');
+				var $pagamentoMercadoPago = $('#payment-group-creditCardPaymentGroup');
 				$pagamentoMercadoPago.click(function() {
 					dataLayer.push({
 						event: 'generic',
