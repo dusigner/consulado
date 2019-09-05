@@ -268,26 +268,23 @@
 			.play {
 				@include allCenter;
 				background-color: transparent;
-				box-sizing: border-box;
-				height: 74px;
-
 				border-color: transparent transparent transparent $green;
-				transition: 100ms all ease;
-				will-change: border-width;
-				cursor: pointer;
-
-				// play state
 				border-style: solid;
 				border-width: 37px 0 37px 60px;
-				z-index: 3;
+				box-sizing: border-box;
+				cursor: pointer;
+				height: 74px;
 				pointer-events: none;
+				transition: 100ms all ease;
+				will-change: border-width;
+				z-index: 3;
 			}
 
 			// Imagem inicial do vídeo
 			&:before {
 				@include allCenter;
 				@include square(100%);
-				background: url("https://i.ytimg.com/vi/C-Lhb85cz80/maxresdefault.jpg")
+				background: url('https://i.ytimg.com/vi/C-Lhb85cz80/maxresdefault.jpg')
 					center center no-repeat;
 				background-size: contain;
 				content: '';
@@ -320,12 +317,12 @@
 				@include breakpoint(550px, 'max') {
 					height: 250px;
 				}
+				cursor: pointer;
 				display: block;
 				height: 388px;
 				max-width: 690px;
 				position: relative;
 				width: 100%;
-				cursor: pointer;
 			}
 
 			.loading-container {
