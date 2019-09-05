@@ -100,6 +100,7 @@ body {
 			}
 
 			.gift-card-section {
+				background-color: $gray-m;
 				border-radius: 0;
 				margin: 0;
 				padding: 5px;
@@ -120,11 +121,18 @@ body {
 					width: 58%;
 				}
 
+				.gift-card-provider-default {
+					padding: 0 5px 0 10px;
+				}
+
 				#btn-add-gift-card {
 					background: $green;
+					border: none;
 					border-radius: 40px;
 					color: #fff;
+					font-family: $base-font-family;
 					margin-left: 2%;
+					text-shadow: none;
 					width: 36%;
 				}
 
@@ -146,10 +154,10 @@ body {
 			.payment-group {
 				@include breakpoint('medium', 'max') {
 					margin-bottom: -5px;
-					padding-top: 95px;
+					padding-top: 115px;
 
 					@include breakpoint(767px, 'max') {
-						padding-top: 130px;
+						padding-top: 150px;
 					}
 				}
 			}
@@ -671,7 +679,7 @@ body {
 			}
 
 			.payment-group {
-				padding-top: 100px;
+				padding-top: 120px;
 			}
 
 			.link-gift-card {
@@ -801,12 +809,18 @@ body {
 
 					@include breakpoint('extra-large', 'max') {
 						width: 59%;
+
+						@include breakpoint(979px, 'max') {
+							width: 60%;
+						}
 					}
 				}
 
 				@media screen and (max-width: 767px) {
 					.payment-group,
-					.steps-view { width: auto !important; }
+					.steps-view {
+						width: auto !important;
+					}
 				}
 			}
 
@@ -1195,16 +1209,24 @@ body {
 					white-space: pre-wrap;
 					word-wrap: break-word;
 				}
-
-				@include breakpoint ('medium', 'min') {
-					min-height: 405px;
-				}
 			}
 
 			&.mercadopagoPaymentGroup,
-			&.newPayPalPaymentGroup {
+			&.newPayPalPaymentGroup,
+			&.bankInvoicePaymentGroup,
+			&.safetyPayPaymentGroup {
+
 				@include breakpoint ('medium', 'min') {
-					min-height: 405px;
+					min-height: 425px;
+
+					@include breakpoint ('small', 'min') {
+						min-height: 425px;
+					}
+				}
+
+				@include breakpoint(767px, 'max') {
+					margin-bottom: -100px;
+
 				}
 			}
 		}
