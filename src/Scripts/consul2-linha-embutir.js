@@ -2,8 +2,9 @@
 
 import Video from 'modules/cervejeiras/cervejeiras.video';
 import Event from 'modules/embutidos/eventos.embutidos';
+import 'dataLayers/dataLayer-embutidos';
 
-Nitro.controller('embutidos', function() {
+Nitro.controller('embutidos', ['dataLayer-embutidos'],function(dataLayerEmbutidos) {
 	const embutidos = {};
 
 	// Init
@@ -16,6 +17,6 @@ Nitro.controller('embutidos', function() {
 	const bodyHasEmbutidos = $('body.embutidos');
 	if (bodyHasEmbutidos.length > 0) {
 		embutidos.init();
-		// da	taLayerCervejeira.init();
+		dataLayerEmbutidos.init();
 	}
 });
