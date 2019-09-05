@@ -123,47 +123,56 @@ Nitro.module('produtos-adicionais', function() {
 
 	// Limpa e organiza os códigos de referência dos produtos para fazer a chamada da API
 	this.clearProductId = (ids) => {
-		let codigoRefProduto = '';
-		codigoRefProduto = ids.replace(/\s+/gmi, '');
-		codigoRefProduto = codigoRefProduto.split(',');
+		let prodRefCode = '';
+		prodRefCode = ids.replace(/\s+/gmi, '');
+		prodRefCode = prodRefCode.split(',');
 
-		if (codigoRefProduto.length > 1) {
-			codigoRefProduto = codigoRefProduto.reduce((acc, curr) => {
+		if (prodRefCode.length > 1) {
+			prodRefCode = prodRefCode.reduce((acc, curr) => {
 				return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
 			});
 		} else {
-			codigoRefProduto = `fq=alternateIds_RefId:${codigoRefProduto}`;
+			prodRefCode = `fq=alternateIds_RefId:${prodRefCode}`;
 		}
 
-		return codigoRefProduto;
+		return prodRefCode;
 	};
 
 	// Selecione o tipo dos produtos
 	this.selectProductType = () => {
-		const $productItem = $additionalProdBox.find('.produto-adicional');
 		const $selectProdType = $additionalProdBox.find('.produtos-adicionais__input');
 
 		$selectProdType.on('change', event => {
 			const selfProd = event.target;
 			const prodType = $(selfProd).attr('id');
 			const prodRefCode = this.clearProductId(selfProd.value);
+			const prodSelected = selfProd.value.replace(', ', '-');
 
 			prodTypeName = $(`label[for="${prodType}"]`).text();
 
-			if (!$additionalProdBox.hasClass(`prod-loaded-${prodRefCode}`)) {
+			if (!$additionalProdBox.hasClass(`prod-loaded-${prodSelected}`)) {
 				this.loadingAnimation();
 				this.getProducts(prodRefCode, prodType);
 
-				$additionalProdBox.addClass(`prod-loaded-${prodRefCode}`);
+				$additionalProdBox.addClass(`prod-loaded-${prodSelected}`);
 			}
-
 			$additionalProdBox.attr('data-prodtype', `${prodType}`);
-			$productItem.removeClass('is--active');
 
+			this.resetProductBoxTemplate();
 			this.showProducts(prodType);
-			this.updateButtonLink(defaultProdLink);
 			this.tagSelectType(prodTypeName);
 		});
+	};
+
+	// Limpar os produtos selecionados anteriormente e voltar o link do produto para o padrão.
+	this.resetProductBoxTemplate = () => {
+		const $productItem = $additionalProdBox.find('.produto-adicional');
+		const $productCheckbox = $additionalProdBox.find('input[type=checkbox]');
+
+		$productItem.removeClass('is--active');
+		$productCheckbox.attr("checked", false);
+
+		this.updateButtonLink(defaultProdLink);
 	};
 
 	// Taguemento
@@ -318,6 +327,7 @@ Nitro.module('produtos-adicionais', function() {
 		this.handleError();
 	};
 
+	// Tenta carregar os produtos novamente em caso de erro na primeira chamada
 	this.handleError = () => {
 		const $kitError = $('.produtos-adicionais__error');
 
@@ -325,7 +335,6 @@ Nitro.module('produtos-adicionais', function() {
 			this.getProducts();
 		});
 	};
-
 
 	// Inicia a aplicação se encontrar itens cadastrados
 	if ($additionalProdTable.length > 0) {
