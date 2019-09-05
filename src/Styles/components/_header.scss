@@ -211,11 +211,47 @@ div.account {
 	padding: 0 0 0 fluidWidth(25px);
 	position: relative;
 	text-transform: uppercase;
+
 	.link-meus-pedidos {
 		bottom: 0;
 		position: absolute;
+
+		@include breakpoint ('small', 'max') {
+			background-color: #f4f3f1;
+			display: block;
+			height: 60px;
+			line-height: 60px;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			width: 50%;
+		}
 	}
 
+
+	@include breakpoint ('small', 'max') {
+		span {
+			&.account__icon.account__icon--truck {
+				display: inline-block;
+				margin-top: -12px;
+
+				svg {
+					fill: #9aca3c;
+				}
+			}
+
+			&:not(.account__icon) {
+				bottom: 9px;
+				display: block;
+				font-size: 12px;
+				line-height: normal;
+				position: absolute;
+				width: 100%;
+			}
+		}
+	}
 
 	// ******************************************************* //
 	// Eu, Douglas, não me orgulho do que fiz daqui para baixo //
