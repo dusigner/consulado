@@ -694,6 +694,7 @@ body {
 				border-radius: 0;
 				border-top: 1px solid $gray-n;
 				display: flex;
+				height: 60px;
 				justify-content: space-between;
 				margin-left: 0;
 
@@ -725,8 +726,8 @@ body {
 				.payment-group-item-text {
 					@include rfs(16);
 					background-position: left center;
+					line-height: 3;
 					padding: 8px 0 8px 55px;
-
 				}
 
 				&:after {
@@ -735,7 +736,7 @@ body {
 					display: inline-block;
 					height: 16px;
 					position: relative;
-					top: 12px;
+					transform: translateY(145%);
 					width: 16px;
 
 				}
@@ -1170,7 +1171,6 @@ body {
 
 			&.bankInvoicePaymentGroup {
 				line-height: 120%;
-				min-height: 365px;
 
 				&:after {
 					@include rfs(13);
@@ -1180,6 +1180,16 @@ body {
 					margin-top: 10px;
 					white-space: pre-wrap;
 					word-wrap: break-word;
+				}
+
+				@include breakpoint ('medium', 'min') {
+					min-height: 405px;
+				}
+			}
+
+			&.mercadopagoPaymentGroup {
+				@include breakpoint ('medium', 'min') {
+					min-height: 405px;
 				}
 			}
 		}
