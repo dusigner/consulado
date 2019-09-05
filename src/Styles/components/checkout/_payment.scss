@@ -689,14 +689,15 @@ body {
 			}
 
 			.payment-group-item {
+				align-items: center;
 				border: none;
 				border-left: 4px solid #F1F0F0;
 				border-radius: 0;
 				border-top: 1px solid $gray-n;
 				display: flex;
 				height: 60px;
-				justify-content: space-between;
 				margin-left: 0;
+				position: relative;
 
 				&:last-child {
 					border-bottom: 1px solid $gray-n;
@@ -726,8 +727,9 @@ body {
 				.payment-group-item-text {
 					@include rfs(16);
 					background-position: left center;
-					line-height: 3;
-					padding: 8px 0 8px 55px;
+					line-height: 1;
+					margin-bottom: 0;
+				    padding: 0 40px 0 55px;
 				}
 
 				&:after {
@@ -735,8 +737,10 @@ body {
 					content: '';
 					display: inline-block;
 					height: 16px;
-					position: relative;
-					transform: translateY(145%);
+					position: absolute;
+					right: 16px;
+					top: 50%;
+					transform: translateY(-50%);
 					width: 16px;
 
 				}
@@ -785,10 +789,20 @@ body {
 
 					.payment-group-list-btn {
 						width: 100%;
+
+						a {
+							text-decoration: none !important;
+						}
 					}
 				}
 
-				.steps-view { width: 60%; }
+				.steps-view {
+					width: 60%;
+
+					@include breakpoint('extra-large', 'max') {
+						width: 59%;
+					}
+				}
 
 				@media screen and (max-width: 767px) {
 					.payment-group,
@@ -1187,7 +1201,8 @@ body {
 				}
 			}
 
-			&.mercadopagoPaymentGroup {
+			&.mercadopagoPaymentGroup,
+			&.newPayPalPaymentGroup {
 				@include breakpoint ('medium', 'min') {
 					min-height: 405px;
 				}
@@ -1208,38 +1223,76 @@ body {
 		}
 	}
 
+	.payment-group-list-btn {
+		a {
+			position: relative;
+
+			&:before {
+				content: '';
+				display: block;
+				height: 20px;
+				position: absolute;
+				width: 40px;
+			}
+		}
+	}
+
 	#payment-group-creditCardPaymentGroup {
 		.payment-group-item-text {
-			background-image: url('/arquivos/cartao-credito.png');
-			background-size: 40px;
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/cartao-credito.png') no-repeat center;
+			background-size: contain;
 		}
 	}
 
 	#payment-group-MercadoPagoPaymentGroup {
 		.payment-group-item-text {
-			background-image: url('/arquivos/mercado-pago.png');
-			background-size: 40px;
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/mercado-pago.png') no-repeat center;
+			background-size: contain;
 		}
 	}
 
 	#payment-group-payPalPaymentGroup {
 		.payment-group-item-text {
-			background-image: url('/arquivos/paypal-icone.png');
-			background-size: 40px;
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/paypal-icone.png') no-repeat center;
+			background-size: contain;
 		}
 	}
 
 	#payment-group-safetypayPaymentGroup {
 		.payment-group-item-text {
-			background-image: url('/arquivos/transferencia-bancaria.png');
-			background-size: 25px;
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/transferencia-bancaria.png') no-repeat center;
+			background-size: contain;
+			height: 40px;
+			left: 15px;
+			width: 20px
 		}
 	}
 
 	#payment-group-bankInvoicePaymentGroup {
 		.payment-group-item-text {
-			background-image: url('/arquivos/boleto-bancario.png');
-			background-size: 40px;
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/boleto-bancario.png') no-repeat center;
+			background-size: contain;
+			width: 34px;
 		}
 	}
 

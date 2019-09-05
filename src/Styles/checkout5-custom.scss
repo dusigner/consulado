@@ -200,18 +200,10 @@ body {
 		content: '* Ganhe desconto no boleto';
 		display: block;
 		font-weight: 400;
-		height: 15px;
 		line-height: 1;
-		margin-bottom: 2px;
-		margin-top: -12px;
+		margin-top: 4px;
 		text-decoration: none;
 		width: 100%;
-
-		&:hover { text-decoration: none; }
-
-		@include breakpoint ('extra-large', 'max') {
-			margin-top: -8px;
-		}
 	}
 
 
@@ -222,18 +214,10 @@ body {
 		content: '* Pague com até dois cartões';
 		display: block;
 		font-weight: 400;
-		height: 15px;
 		line-height: 1;
-		margin-bottom: 2px;
-		margin-top: -12px;
+		margin-top: 4px;
 		text-decoration: none;
 		width: 100%;
-
-		&:hover { text-decoration: none; }
-
-		@include breakpoint ('medium', 'max') {
-			margin-top: -8px;
-		}
 	}
 
 	.orderplaced-alert .bank-invoice-print-url {
