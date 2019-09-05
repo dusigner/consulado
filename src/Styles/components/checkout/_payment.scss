@@ -4,6 +4,7 @@
 */
 
 body {
+
 	/* Change label inputs - Checkout Payment*/
 	.custom-label-complemento:after {
 		content: 'Complemento';
@@ -37,13 +38,24 @@ body {
 		}
 
 		#payment-data {
-			&.active {
+			.active {
 				iframe {
-					@include breakpoint ('medium', 'max') {
-						min-height: 500px;
+					background-color: $gray-m;
+					min-height: 465px;
 
-						@include breakpoint('extra-small', 'max') {
-							min-height: 570px;
+					@include breakpoint('large', 'max') {
+						min-height: 560px;
+
+						@include breakpoint('medium', 'max') {
+							min-height: 465px;
+
+							@include breakpoint(767px, 'max') {
+								margin-bottom: -100px;
+
+								@include breakpoint(377px, 'max') {
+									min-height: 560px;
+								}
+							}
 						}
 					}
 				}
@@ -83,7 +95,7 @@ body {
 				min-height: 400px;
 
 				@include breakpoint('large', 'max') {
-					min-height: 410px;
+					min-height: 0;
 				}
 			}
 
@@ -92,7 +104,7 @@ body {
 				margin: 0;
 				padding: 5px;
 				position: absolute;
-				top: 325px;
+				top: 75px;
 				width: 40%;
 
 				label {
@@ -109,19 +121,23 @@ body {
 				}
 
 				#btn-add-gift-card {
+					background: $green;
+					border-radius: 40px;
+					color: #fff;
 					margin-left: 2%;
 					width: 36%;
 				}
 
 				@include breakpoint ('large', 'max') {
-					top: 350px;
+					top: 75px;
 
 					@include breakpoint ('medium', 'max') {
-						top: 320px;
+						top: 70px;
 
 						@include breakpoint (767px, 'max') {
-							top: 290px;
+							top: 70px;
 							width: 100%;
+							z-index: 1;
 						}
 					}
 				}
@@ -129,7 +145,12 @@ body {
 
 			.payment-group {
 				@include breakpoint('medium', 'max') {
-					margin-bottom: 80px;
+					margin-bottom: -5px;
+					padding-top: 95px;
+
+					@include breakpoint(767px, 'max') {
+						padding-top: 130px;
+					}
 				}
 			}
 		}
@@ -650,17 +671,19 @@ body {
 			}
 
 			.payment-group {
-				padding-top: 70px;
+				padding-top: 100px;
 			}
 
 			.link-gift-card {
-				top: 330px;
+				top: 100px;
 
 				@include breakpoint ('large', 'max') {
-					top: 355px;
+					top: 100px;
 
 					@include breakpoint ('small', 'max') {
-						top: 330px;
+						position: absolute;
+						top: 90px;
+						z-index: 1;
 					}
 				}
 			}
@@ -1232,7 +1255,7 @@ body {
 // Checkout novo
 #app-container {
 	background-color: $gray-m;
-	box-shadow: 0 45px 0 #f4f4f4;
+	box-shadow: 0 45px 0 $gray-m;
 	padding: 20px 50px;
 
 	@include breakpoint('medium', 'max') {

@@ -195,30 +195,25 @@ body {
 	}
 
 	#payment-group-bankInvoicePaymentGroup .payment-group-item-text:after {
-		background: url('/arquivos/brastemp_flag-boleto.png') no-repeat;
-		content: '';
+		@include rfs(13);
+		content: '* Ganhe desconto no boleto';
 		display: block;
-		height: 30px;
-		margin-bottom: 5px;
-		margin-top: 10px;
-		text-indent: -9999px;
-		width: 150px;
+		font-weight: 400;
+		text-decoration: none;
+		width: 100%;
+
+		&:hover { text-decoration: none; }
 	}
 
 
 	// Destaque para Mercado Pago - Pagamento com 2 cartões
 	#payment-group-creditCardPaymentGroup .payment-group-item-text:after {
-		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAfCAYAAADwbH0HAAAACXBIWXMAAAsSAAALEgHS3X78AAABw0lEQVRIieWXP07DMBSHv0C7ICRAsJcNMZED0DTcAE4AI5kQi1e6kqlMXjkCNyAYDlAQB0hGBiQqIZYKhSF+xf0DolKMkPhJlhI/xZ/fz47zEpRliQ9FSRoCsb29NFq9uPGgLrADkrbihAdAaLTKpaPhCeQCV2zrAkdzg38IKoBMmtEqj5K0C5zxaTvwjdVzZJQBVwL6YiyBrMlaN5zgPCDJqD9z1tO6B3aA0D5LwwIvbaAu0KT6dvx4BAZ6DrQu0CzwIVXGAATt43Px/9Ro1bMO7NcEFG1acAHERqt8BDZaBVGS9oCTmqGzdBC0j89fqDbSHnBtAwWQewCGllU0qPzv8GnvAGtH3dQoSWOq5FoLFiyzAej7gAIYrTK5dsEdH7CvJFa7CqMkzXyDg7Is3SPt1yRH5g3W6sVm83lja/vVF/Dp8aHlgmVn01xaem3ttlsewUyCARi+vS0Xd7eFLzAwlnEuve/D4frT48O6RzDgfI+dDTZgeqfXqQ6MVyDyzewbrWJfVElwwenzmeWU/jf4V/WnwKu+YFGSjsZ2Xyf5t9mJkvQKP2s+quXGCvooSaUM9a2LyV+YmKrc3fQIzYxW3Q9qZ7L2Z0oUiQAAAABJRU5ErkJggg==') no-repeat;
-		content: 'Pague com até dois cartões';
+		@include rfs(13);
+		content: '* Pague com até dois cartões';
 		display: block;
-		font-size: 13px;
-		height: 40px;
-		line-height: 18px;
-		margin-bottom: 5px;
-		margin-top: 10px;
-		padding-left: 45px;
+		font-weight: 400;
 		text-decoration: none;
-		width: 150px;
+		width: 100%;
 
 		&:hover { text-decoration: none; }
 	}
