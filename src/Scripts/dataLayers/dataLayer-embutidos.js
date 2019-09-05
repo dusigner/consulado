@@ -1,6 +1,7 @@
 import { pushDataLayer } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-embutidos', function() {
+
 	this.clickNav = () => {
 		$('.nav-embutidos nav a').click(e => {
 			pushDataLayer(
@@ -61,7 +62,6 @@ Nitro.module('dataLayer-embutidos', function() {
 
 	this.clickDotsVideo = () => {
 		$('.cervejeiras-videos-thumbs__item').click(e => {
-			console.log(e.currentTarget.classList[1]);
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Vídeo',
