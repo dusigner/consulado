@@ -1,5 +1,8 @@
 @charset 'UTF-8';
 
+$icon-preco-a-vista : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAMAAAAS9VDrAAAAPFBMVEUAAABAPDpAPDpAOzpAMDBAOzpAOzpAOjpAPDhAOzpAODhAOztAOjpAOjpAOztAOTlAOzpBPTlAPDlAPDtn8C58AAAAE3RSTlMAwIDwEOCgX0CwIHAwkNBQzz9vwfUj9QAAAV9JREFUKM91k9muBCEIRAXEte1l6v//9Towiz3JrSdMRVIeMKyKeZBiiipv4a6tAkr8VKJZ5tXM0N6+x6OC4rerpBhuKuhLXcKPTvqUHec9SEz4ugwF5fa2riHY9ZsCMe8ATpoSQFKrtLgzQys8ppk4b/O+rp1/YmXFubi9SeXrenK5HklBRMuLttB3vKWphMXNSIazFD5KsRJvt2UjG2+osDt/AmBdz8QmgsTuL+LXrcYClxCXF8mE8aFHyHeSB9hSiWEmaQ5nCHSSfBGp6D5IXUlmNDfhdsZOxL04yWqx27RqtcvvmZdzklR297MZe7L1U+i8CHNDAtSnT0DvkHQEInMtJEt1VzmGaLA4UPLFaWHAKh3OL2GPYYgd5HxIdfaceZBAOD5P3RoLdn+akxxHMFWnwyi+QPm+mXI+7dYtibVftYlkryIvv2OZjI7HxUl8Wr8q0wB2buEfGYBf/QGrfhEE6ynUEwAAAABJRU5ErkJggg==';
+$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+
 &__price {
 	@include rfs(12);
 	line-height: normal;
@@ -58,11 +61,61 @@
 		}
 
 		span:not(.off) { display: none; }
+
+		.val {
+			@include rfs(24);
+			color: #9aca3c;
+			display: block!important;
+			font-weight: bold;
+			margin-bottom: .4em;
+		}
+	}
+
+	&--cash {
+		.discount-boleto {
+			color: #736C6B;
+			display: block;
+			margin-bottom: .4em;
+
+			// Icone pagamento
+			&:before { background-image: url($icon-preco-a-vista); }
+
+			span {
+				@include rfs(16);
+				display: none;
+			}
+		}
+	}
+
+	&--cash .discount-boleto,
+	&--installment {
+		padding-left: 20px;
+		position: relative;
+
+		// Icone pagamento
+		&:before {
+			@include square(15px);
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
 	}
 
 	&--installment {
 		@include rfs(13);
 		color: #736c6b;
+
+		// Icone pagamento parcelado
+		&:before { background-image: url($icon-preco-parcelado); }
+
+		&.shelf-item--empty {
+			&::before { display: none; }
+		}
 
 		.product-has-5-off & {
 			strong {
@@ -81,18 +134,14 @@
 		a { color: #736c6b; }
 
 		strong {
+			@include rfs(12);
+			color: #736C6B;
 			display: block;
-			font-weight: 500;
+			font-weight: normal;
 
 			&:first-child { display: none; }
 
-			span {
-				&:first-child {
-					text-transform: lowercase;
-
-					&:before { content: 'ou '; }
-				}
-			}
+			.val { font-weight: bold; }
 		}
 
 		&:empty {
@@ -106,20 +155,6 @@
 		}
 	}
 
-	&--cash {
-		.discount-boleto {
-			@include rfs(24);
-			color: #9aca3c;
-			display: block;
-			font-weight: bold;
-			margin-bottom: .4em;
-
-			span {
-				@include rfs(16);
-				display: none;
-			}
-		}
-	}
 
 	.de,
 	.por {
