@@ -80,7 +80,7 @@ Nitro.module('percentoff', 'buy-button', function() {
 				self.find('.discount-boleto')
 					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
 					.html(`
-						À vista em
+						À vista por
 						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountCartao / 100))}</strong>
 						<span>(${cmcDiscountCartao}% OFF)</span>
 					`);
@@ -88,7 +88,7 @@ Nitro.module('percentoff', 'buy-button', function() {
 				self.find('.discount-boleto')
 					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
 					.html(`
-						À vista em
+						À vista por
 						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountBoleto / 100))}</strong>
 						<span>(${cmcDiscountBoleto}% OFF)</span>
 					`);
