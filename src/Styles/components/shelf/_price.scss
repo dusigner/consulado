@@ -81,7 +81,8 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 			&:before { background-image: url($icon-preco-a-vista); }
 
 			span {
-				@include rfs(16);
+				@include rfs(10);
+				color: #EC008C;
 				display: none;
 			}
 		}
@@ -119,7 +120,7 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 
 		.product-has-discount & {
 			strong {
-				&:first-child { display: block; }
+				// &:first-child { display: block; }
 
 				span {
 					&:first-child {
