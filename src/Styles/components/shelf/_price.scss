@@ -12,11 +12,11 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		display: none;
 		padding: 6px 18px;
 
-		&:not(:empty) + .product-with-5-off { top: 45px; }
+		&:not(:empty) + .product-with-discount { top: 45px; }
 	}
 
 	.off,
-	.product-with-5-off {
+	.product-with-discount {
 		@include rfs(10);
 		border-radius: 100px;
 		color: #fff;
@@ -28,7 +28,7 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		z-index: 1;
 	}
 
-	.product-with-5-off {
+	.product-with-discount {
 		background-color: #0fb6de;
 		display: inline-block!important;
 		padding: 6px 14px;
@@ -117,7 +117,7 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 			&::before { display: none; }
 		}
 
-		.product-has-5-off & {
+		.product-has-discount & {
 			strong {
 				&:first-child { display: block; }
 

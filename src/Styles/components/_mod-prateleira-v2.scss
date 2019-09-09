@@ -78,8 +78,7 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 	}
 
-
-	&.product-has-5-off {
+	&.product-has-discount {
 		.discount-boleto {
 			span { display: inline-block!important; }
 		}
@@ -192,11 +191,11 @@ body.listagem {
 						display: none;
 						padding: 6px 18px;
 
-						&:not(:empty) + .product-with-5-off { top: 45px; }
+						&:not(:empty) + .product-with-discount { top: 45px; }
 					}
 
 					.off,
-					.product-with-5-off {
+					.product-with-discount {
 						@include rfs(10);
 						border-radius: 100px;
 						color: #fff;
@@ -208,7 +207,7 @@ body.listagem {
 						&:empty { display: none; }
 					}
 
-					.product-with-5-off {
+					.product-with-discount {
 						background-color: #0fb6de;
 						padding: 6px 14px;
 						white-space: nowrap;
