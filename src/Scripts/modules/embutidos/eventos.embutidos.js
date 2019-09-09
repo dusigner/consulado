@@ -1,7 +1,7 @@
 const Eventos = {
 	init: () => {
 		Eventos.hoverIMGS();
-		// Eventos.dotsInfo();
+		Eventos.dotsInfo();
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
@@ -106,40 +106,66 @@ const Eventos = {
 				}
 			);
 		}
+	},
+	dotsInfo: () => {
+		let h1 = $('.box_texto h1');
+		let p = $('.box_texto p');
+		let box = $('.box_img');
+		let box_pai = $('.embutidos-header');
+
+		let strH1Padrao = 'Uma cozinha que se encaixa no seu dia-a-dia';
+		let strPPadrao = 'Com a solução embutida, você economiza tempo ao se livrar dos eternos cantos engordurados.';
+
+		let strH1Cooktop = 'Facilidade para a sua cozinha';
+		let strPCooktop = 'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
+
+		let strH1forno = 'Preparos com mais facilidade';
+		let strPforno = 'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
+
+		let strH1Coifa = 'Livre de odores';
+		let strPCoifa = 'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
+
+		$('.box_img .plus').click(function() {
+			switch (this.classList[1]) {
+				case 'cooktop':
+						h1.text(strH1Cooktop);
+						p.text(strPCooktop);
+						box.removeClass('inicial');
+						box.addClass('one');
+						box_pai.addClass('one');
+					break;
+				case 'coifa':
+						h1.text(strH1Coifa);
+						p.text(strPCoifa);
+						box.removeClass('inicial');
+						box.addClass('two');
+						box_pai.addClass('two');
+					break;
+				case 'forno':
+						h1.text(strH1forno);
+						p.text(strPforno);
+						box.removeClass('inicial');
+						box.addClass('tree');
+						box_pai.addClass('tree');
+					break;
+				default:
+					break;
+			}
+		})
+
+		//Seta Back
+		$('.box_img .back').click(function() {
+				h1.text(strH1Padrao);
+				p.text(strPPadrao);
+				box.removeClass('one');
+				box.removeClass('two');
+				box.removeClass('tree');
+				box.addClass('inicial');
+				box_pai.removeClass('one');
+				box_pai.removeClass('two');
+				box_pai.removeClass('tree');
+		});
 	}
-	// dotsInfo: () => {
-	// 	let h1 = $('.box_texto h1');
-	// 	let p = $('.box_texto p');
-
-	// 	let strH1Cooktop = 'Facilidade para a sua cozinha';
-	// 	let strPCooktop = 'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
-
-	// 	let strH1forno = 'Preparos com mais facilidade';
-	// 	let strPforno = 'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
-
-	// 	let strH1Coifa = 'Livre de odores';
-	// 	let strPCoifa = 'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
-
-	// 	$('.box_img .plus').click(function() {
-	// 		switch (this.classList[1]) {
-	// 			case 'cooktop':
-	// 					h1.text(strH1Cooktop);
-	// 					p.text(strPCooktop);
-	// 				break;
-	// 			case 'coifa':
-	// 					h1.text(strH1Coifa);
-	// 					p.text(strPCoifa);
-	// 				break;
-	// 			case 'forno':
-	// 					h1.text(strH1forno);
-	// 					p.text(strPforno);
-	// 				break;
-
-	// 			default:
-	// 				break;
-	// 		}
-	// 	})
-	// }
 };
 
 export default Eventos;
