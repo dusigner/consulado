@@ -6,7 +6,6 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
 	<vtex:template id="0-consul-head-content" />
-
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="produto">
@@ -16,7 +15,7 @@
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
 
-	<!--  Header -->
+	<!-- Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
@@ -34,7 +33,6 @@
 	<div class="main clearfix">
 		<div class="container clearfix">
 			<div class="row no-margin">
-
 				<!-- Box-right -->
 				<div class="col-v2 l5 m12 gutters-on prod-title">
 					<h1 class="lead">
@@ -52,7 +50,7 @@
 						<vtex.cmc:hightLight />
 					</div>
 
-					<!--  Controle: imagem do produto -->
+					<!-- Controle: imagem do produto -->
 					<div class="prod-galeria text-center">
 						<vtex.cmc:ProductImage zoom="off" />
 					</div>
@@ -76,16 +74,24 @@
 						<vtex.cmc:hightLight />
 					</div>
 
+					<!-- Selecionar a cor -->
 					<div class="select-color">
 						<div class="product-select-color -js-product-color"></div>
 					</div>
+					<!-- /Selecionar a cor -->
 
 					<div class="row prod-sku-selector">
 						<!--vtex.cmc:stockKeepingUnitSelection /-->
 
+						<!-- Selecionar voltagem -->
 						<div class="select-voltage">
 							<vtex.cmc:skuSelection />
 						</div>
+						<!-- /Selecionar voltagem -->
+
+						<!-- Produtos adicionais -->
+						<div class="produtos-adicionais"></div>
+						<!-- /Produtos adicionais -->
 					</div>
 
 					<div id="BuyButton" class="clearfix">
@@ -140,9 +146,11 @@
 		</div>
 	</div>
 
+	<!-- UpSell -->
 	<div id="upsell" class="js-upsell">
 		<vtex:contentPlaceHolder id="Upsell" />
 	</div>
+	<!-- /UpSell -->
 
 	<div class="cont-prod-details-nav">
 		<section class="prod-details-nav">
@@ -171,6 +179,7 @@
 	<div data-chaordic="middle"></div>
 	<!-- /Chaordic MIDDLE -->
 
+	<!-- Main -->
 	<div class="main clearfix after-prod">
 		<section id="detalhes" class="detalhes"></section>
 		<section id="video" class="video"></section>
