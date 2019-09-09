@@ -1,5 +1,8 @@
 @charset 'UTF-8';
 
+$icon-preco-a-vista : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAMAAAAS9VDrAAAAPFBMVEUAAABAPDpAPDpAOzpAMDBAOzpAOzpAOjpAPDhAOzpAODhAOztAOjpAOjpAOztAOTlAOzpBPTlAPDlAPDtn8C58AAAAE3RSTlMAwIDwEOCgX0CwIHAwkNBQzz9vwfUj9QAAAV9JREFUKM91k9muBCEIRAXEte1l6v//9Towiz3JrSdMRVIeMKyKeZBiiipv4a6tAkr8VKJZ5tXM0N6+x6OC4rerpBhuKuhLXcKPTvqUHec9SEz4ugwF5fa2riHY9ZsCMe8ATpoSQFKrtLgzQys8ppk4b/O+rp1/YmXFubi9SeXrenK5HklBRMuLttB3vKWphMXNSIazFD5KsRJvt2UjG2+osDt/AmBdz8QmgsTuL+LXrcYClxCXF8mE8aFHyHeSB9hSiWEmaQ5nCHSSfBGp6D5IXUlmNDfhdsZOxL04yWqx27RqtcvvmZdzklR297MZe7L1U+i8CHNDAtSnT0DvkHQEInMtJEt1VzmGaLA4UPLFaWHAKh3OL2GPYYgd5HxIdfaceZBAOD5P3RoLdn+akxxHMFWnwyi+QPm+mXI+7dYtibVftYlkryIvv2OZjI7HxUl8Wr8q0wB2buEfGYBf/QGrfhEE6ynUEwAAAABJRU5ErkJggg==';
+$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+
 body.produto {
 	.tag {
 		@include breakpoint('medium', 'max') { transform: translate(15px, 0) }
@@ -109,7 +112,7 @@ body.produto {
 .prod-preco {
 	p { margin: 0; }
 
-	&.product-has-5-off {
+	&.product-has-discount {
 		em.valor-por { display: inline-block!important; }
 
 		.discount-boleto span { display: inline-block!important; }
@@ -119,8 +122,7 @@ body.produto {
 		font-style: normal;
 
 		&.valor-de,
-		&.valor-por,
-		&.valor-dividido {
+		&.valor-por {
 			font-weight: 500;
 
 			strong { font-weight: 500; }
@@ -140,22 +142,35 @@ body.produto {
 		}
 
 		&.valor-por {
-			display: none!important;
 			font-size: 0;
-			margin-right: 5px;
+			margin-bottom: 5px;
 			white-space: nowrap;
 
 			.skuBestPrice {
-				@include rfs(18);
-
-				&:before { content: 'ou '; }
+				@include rfs(36);
+				color: $green;
+				display: inline-block;
+				font-weight: bold;
 			}
 		}
 
 		&.valor-dividido {
-			@include rfs(18);
-			display: inline-block!important;
+			@include rfs(13);
+			display: block!important;
+			padding-left: 25px;
 			position: relative;
+
+			// Icone pagamento
+			&:before {
+				@include square(15px);
+				background: url($icon-preco-parcelado) no-repeat center center;
+				background-size: contain;
+				content: '';
+				left: 0;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
 
 			& > span {
 				span {
@@ -163,9 +178,9 @@ body.produto {
 
 					.skuBestInstallmentNumber {
 						&,
-						span { @include rfs(18); }
+						span { @include rfs(13); }
 
-						&:before { content: 'em até '; }
+						&:before { content: 'Em até '; }
 						&:after { content: ' '; }
 					}
 				}
@@ -226,13 +241,27 @@ body.produto {
 	}
 
 	.discount-boleto {
-		@include rfs(34);
-		color: $green;
+		@include rfs(13);
+		color: #736C6B;
 		display: inline-block;
-		font-weight: bold;
+		position: relative;
+		padding-left: 25px;
+
+		// Icone pagamento
+		&:before {
+			@include square(15px);
+			background: url($icon-preco-a-vista) no-repeat center center;
+			background-size: contain;
+			content: '';
+			left: 0;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
 
 		span {
-			@include rfs(24);
+			@include rfs(13);
+			color: #EC008C;
 			display: none;
 		}
 	}
