@@ -95,9 +95,9 @@ Nitro.module('percentoff', 'buy-button', function() {
 			}
 
 			if (cmcDiscountCartao || cmcDiscountBoleto) {
-				self.addClass('product-has-5-off');
+				self.addClass('product-has-discount');
 				self.find('.por .off').after(`
-					<span class="product-with-5-off">
+					<span class="product-with-discount">
 						+${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}
 						% OFF à vista
 					</span>

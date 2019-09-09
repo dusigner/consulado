@@ -116,7 +116,7 @@ Nitro.module('boleto', function() {
 				// Etiqueta que exibe a porcentagem do desconto
 				setTimeout(function() {
 					$('.discount-boleto').remove();
-					$('.product-with-5-off').remove();
+					$('.product-with-discount').remove();
 
 					$('.valor-por.price-best-price').after(boletoInfo);
 
@@ -124,7 +124,7 @@ Nitro.module('boleto', function() {
 						$prodPreco.addClass('product-has-discount');
 
 						// $prodPreco.find('.valor-por').after(`
-						// 	<span class="product-with-5-off">
+						// 	<span class="product-with-discount">
 						// 		${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
 						// 	</span>
 						// `);
@@ -166,7 +166,7 @@ Nitro.module('boleto', function() {
 
 				// setTimeout(() => {
 				// 	$prodPreco.find('.valor-por').after(`
-				// 		<span class="product-with-5-off">
+				// 		<span class="product-with-discount">
 				// 			${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
 				// 		</span>
 				// 	`);

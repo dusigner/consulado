@@ -174,7 +174,7 @@ div[data-chaordic] {
 		a { text-decoration: none }
 
 
-		&.product-has-5-off {
+		&.product-has-discount {
 			.discount-boleto {
 				span { display: inline-block!important; }
 			}
@@ -345,7 +345,7 @@ div[data-chaordic] {
 					margin: 0;
 
 					span.off,
-					span.product-with-5-off { display: none!important; }
+					span.product-with-discount { display: none!important; }
 				}
 
 				.shelf-item__price--best.por {

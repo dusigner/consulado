@@ -1,26 +1,20 @@
+$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+
 .vitrine-smartbeer {
+	@include breakpoint ('medium', 'max') { background: linear-gradient(0deg, #fff 60%, #f2f2f2 60%); }
 	background: linear-gradient(90deg, #fff 35%, #f2f2f2 35%);
 	width: 100%;
 
-	@include breakpoint ('medium', 'max') {
-		background: linear-gradient(0deg, #fff 60%, #f2f2f2 60%);
-	}
-
-	h2 {
-		display: none !important;
-	}
+	h2 { display: none !important; }
 
 	.smartbeer-showcase {
+		@include breakpoint ('medium', 'max') { flex-direction: column; }
 		display: flex;
 		justify-content: space-between;
-
-		@include breakpoint ('medium', 'max') {
-			flex-direction: column;
-		}
 	}
 
 	.product {
-
 		&-image {
 			padding: 50px 0;
 			width: 55%;
@@ -33,7 +27,6 @@
 					margin: 0 auto;
 					width: 80%;
 				}
-
 			}
 		}
 
@@ -49,18 +42,15 @@
 		}
 
 		&-info {
-			position: relative;
-
 			@include breakpoint('medium', 'max') {
 				display: flex;
 				flex-direction: column;
 			}
+			position: relative;
 		}
 
 		&-description-text {
-			&.-mobile {
-				display: none;
-			}
+			&.-mobile { display: none; }
 
 			@include rfs(26);
 			color: #404636;
@@ -81,22 +71,12 @@
 				margin: 0;
 				width: 100%;
 
-				span {
-					display: inline-block;
-				}
+				span { display: inline-block; }
 			}
 		}
 
 		&-name {
-			@include rfs(16);
-			color: #5b5b5b;
-			font-weight: 400;
-			margin-top: 50px;
-
-			@include breakpoint ('large', 'min') {
-				max-width: 280px;
-			}
-
+			@include breakpoint ('large', 'min') { max-width: 280px; }
 			@include breakpoint ('medium', 'max') {
 				border-top: 1px solid #f1f0f0;
 				color: #736C6B;
@@ -105,46 +85,32 @@
 				margin: 0;
 				padding: 5% 0 24px;
 				width: 100%;
-
 			}
+			@include rfs(16);
+			color: #5b5b5b;
+			font-weight: 400;
+			margin-top: 50px;
 		}
 
 		&-price {
 			line-height: 1;
 
 			&-from {
-				@include rfs(16);
-				color: #702f8f;
-				font-weight: 500;
+				@include breakpoint ('medium', 'max') { margin-bottom: 10px; }
+				@include rfs(18);
+				color: #5B5B5B;
 				line-height: 1;
 				margin: 0 0 5px;
 				text-decoration: line-through;
-
-				@include breakpoint ('medium', 'max') {
-					margin-bottom: 10px;
-				}
 			}
 
 			&-to {
-				@include rfs(30);
+				@include breakpoint ('medium', 'max') { margin-bottom: 10px; }
+				@include rfs(32);
 				color: $green;
 				font-weight: bold;
 				line-height: 1;
-				margin: 0 0 5px;
-
-				span {
-					@include rfs(17);
-				}
-
-
-				@include breakpoint ('medium', 'max') {
-					font-size: 20px;
-					margin-bottom: 10px;
-
-					span {
-						font-size: 20px;
-					}
-				}
+				margin: 0 0 20px 0;
 			}
 
 			.adicional {
@@ -152,10 +118,24 @@
 				color: #736c6b;
 				line-height: 1;
 				margin: 5px 0 5px;
+				padding-left: 25px;
+				position: relative;
 
-				@include breakpoint ('medium', 'max') {
-					font-size: 10px;
+				// Icone pagamento parcelado
+				&:before {
+					@include square(15px);
+					background-image: url($icon-preco-parcelado);
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: contain;
+					content: '';
+					left: 0;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
 				}
+
+				@include breakpoint ('medium', 'max') { font-size: 10px; }
 			}
 		}
 
@@ -178,16 +158,12 @@
 		}
 
 		&-sku {
-			&__selector {
-				display: inline-block;
-			}
+			&__selector { display: inline-block; }
 
 			&_radio {
 				display: none;
 
-				&.unavailable {
-					opacity: .3;
-				}
+				&.unavailable { opacity: .3; }
 
 				&:checked {
 					& + label {
@@ -214,19 +190,14 @@
 			}
 
 			&_title {
+				@include breakpoint ('medium', 'max') { padding-left: 20px; }
 				@include rfs(14);
 				display: inline-block;
 				min-width: 65px;
 				padding-left: 25px;
 				position: relative;
 
-				@include breakpoint ('medium', 'max') {
-					padding-left: 20px;
-				}
-
-				&.unavailable {
-					opacity: .3;
-				}
+				&.unavailable { opacity: .3; }
 
 				&:before {
 					border: 1px solid #BBBBBB;
@@ -268,9 +239,7 @@
 					position: absolute;
 				}
 
-				strong {
-					display: block;
-				}
+				strong { display: block; }
 
 				@include breakpoint('medium', 'max') {
 					background-color: #702F8F;
@@ -290,14 +259,10 @@
 					}
 
 					@include breakpoint('extra-small', 'max') {
-						&:before {
-							bottom: 90%;
-						}
+						&:before { bottom: 90%; }
 					}
 
-					strong {
-						display: inline-block;
-					}
+					strong { display: inline-block; }
 				}
 			}
 		}
@@ -324,7 +289,5 @@
 		}
 	}
 
-	.smartbeer-shelf {
-		padding: 50px 0;
-	}
+	.smartbeer-shelf { padding: 50px 0; }
 }
