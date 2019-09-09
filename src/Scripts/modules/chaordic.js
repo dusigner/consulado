@@ -405,7 +405,6 @@ Nitro.module('chaordic', function() {
 					item[0].sellers[0].commertialOffer.Installments
 				);
 
-				console.log(product[0]);
 				product[0].priceInfo.percentOff = self.preparePercentoff(
 					item[0].sellers[0].commertialOffer.ListPrice,
 					item[0].sellers[0].commertialOffer.Price
