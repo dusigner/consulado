@@ -1,0 +1,643 @@
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/rfs';
+@import 'helpers/family';
+
+.pagina-embutidos {
+	& .embutidos-header {
+		background-color: $gray;
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+
+		@include breakpoint('small', 'max') {
+			grid-template-columns: 1fr;
+		}
+
+		&.one,
+		&.two,
+		&.tree {
+			background: linear-gradient(90deg, transparent 59%, $green 60%);
+
+			@include breakpoint(1645px, 'max') {
+				background-color: $green;
+			}
+			p {
+				color: #ffffff;
+			}
+		}
+		.box_img {
+			position: relative;
+
+			img {
+				width: 100%;
+			}
+			@include breakpoint('small', 'max') {
+				order: 2;
+			}
+
+			.plus {
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
+				align-items: center;
+				background-color: $purple-n;
+				border-radius: 25px;
+				box-shadow: 0 2px 9px #000000;
+				display: flex;
+				height: 35px;
+				justify-content: center;
+				opacity: 1;
+				position: absolute;
+				transition: all 0.4s ease-in;
+				width: 35px;
+				z-index: 1;
+
+				&:before {
+					color: #ffffff;
+					content: '+';
+					font-size: 2em;
+					@include breakpoint('small', 'max') {
+						font-size: 1em;
+					}
+				}
+				&:hover {
+					width: 100px;
+					span {
+						color: #ffffff;
+						display: initial;
+						opacity: 1;
+					}
+					&:before {
+						display: none;
+					}
+				}
+				@include breakpoint('small', 'max') {
+					height: 17px;
+					width: 17px;
+				}
+			}
+
+			.back {
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
+				align-items: center;
+				background-color: $purple-n;
+				border-radius: 25px;
+				box-shadow: 0 2px 9px #000000;
+				color: #ffffff;
+				display: flex;
+				height: 50px;
+				justify-content: center;
+				opacity: 1;
+				position: absolute;
+				transition: all 0.4s ease-in;
+				width: 50px;
+				z-index: 1;
+
+				i {
+					font-size: 25px;
+					font-weight: 900;
+					@include breakpoint('small', 'max') {
+						font-size: 9px;
+					}
+				}
+				@include breakpoint('small', 'max') {
+					height: 15px;
+					width: 15px;
+				}
+			}
+
+			&.inicial {
+				.plus {
+					&:nth-child(1) {
+						left: 67%;
+						top: 60%;
+					}
+					&:nth-child(2) {
+						left: 60%;
+						top: 30%;
+					}
+					&:nth-child(3) {
+						left: 28%;
+						top: 36%;
+					}
+					span {
+						display: none;
+						opacity: 0;
+						pointer-events: none;
+						user-select: none;
+					}
+					&:hover {
+						width: 100px;
+						span {
+							color: #ffffff;
+							display: initial;
+							opacity: 1;
+						}
+					}
+				}
+				.back {
+					display: none;
+				}
+			}
+
+			//Cooktop
+			&.one {
+				img {
+					position: relative;
+					right: 40%;
+					top: -160px;
+					transform: scale(1.8);
+					@include breakpoint(93.75em, 'min') {
+						top: -225px;
+					}
+					@include breakpoint('small', 'max') {
+						top: -55px;
+					}
+				}
+				.plus {
+					pointer-events: none;
+					width: 265px;
+					@include breakpoint('small', 'max') {
+						width: 100px;
+					}
+					&:nth-child(1) {
+						left: 70%;
+						top: 80%;
+						@include breakpoint('small', 'max') {
+							left: 65%;
+							top: 25%;
+						}
+					}
+					&:nth-child(2) {
+						display: none;
+					}
+					&:nth-child(3) {
+						display: none;
+					}
+					span {
+						color: #ffffff;
+						font-size: 2em;
+						@include breakpoint('small', 'max') {
+							font-size: 1em;
+						}
+					}
+					&:before {
+						display: none;
+					}
+				}
+				.back {
+					right: 65%;
+					top: 80%;
+					@include breakpoint('small', 'max') {
+						right: 70%;
+						top: 25%;
+					}
+				}
+			}
+			//Coifa
+			&.two {
+				img {
+					position: relative;
+					right: 40%;
+					top: 160px;
+					transform: scale(1.8);
+					@include breakpoint('small', 'max') {
+						right: 40%;
+						top: 65px;
+					}
+				}
+				.plus {
+					pointer-events: none;
+					@include breakpoint('small', 'max') {
+						width: 100px;
+					}
+					width: 265px;
+					&:nth-child(1) {
+						display: none;
+					}
+					&:nth-child(2) {
+						left: 70%;
+						top: 60%;
+						@include breakpoint(81.25em, 'max') {
+							left: 55%;
+						}
+						@include breakpoint('small', 'max') {
+							left: 50%;
+							top: 60%;
+						}
+					}
+					&:nth-child(3) {
+						display: none;
+					}
+					span {
+						color: #ffffff;
+						font-size: 2em;
+						@include breakpoint('small', 'max') {
+							font-size: 1em;
+						}
+					}
+					&:before {
+						display: none;
+					}
+				}
+				.back {
+					right: 65%;
+					top: 60%;
+					@include breakpoint('small', 'max') {
+						right: 75%;
+					}
+				}
+			}
+			//Frono
+			&.tree {
+				img {
+					position: relative;
+					right: -35%;
+					top: -114px;
+					transform: scale(1.7);
+					@include breakpoint('small', 'max') {
+						right: -35%;
+						top: -30px;
+					}
+				}
+				.plus {
+					pointer-events: none;
+					width: 265px;
+
+					@include breakpoint('small', 'max') {
+						width: 100px;
+					}
+					&:nth-child(1) {
+						display: none;
+					}
+					&:nth-child(2) {
+						display: none;
+					}
+					&:nth-child(3) {
+						left: 60%;
+						top: 60%;
+						@include breakpoint('small', 'max') {
+							left: 65%;
+							top: 60%;
+						}
+					}
+					span {
+						color: #ffffff;
+						font-size: 2em;
+						@include breakpoint('small', 'max') {
+							font-size: 1em;
+						}
+					}
+					&:before {
+						display: none;
+					}
+				}
+				.back {
+					left: 1%;
+					top: 60%;
+				}
+			}
+
+			.mascara {
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
+				opacity: 1;
+				overflow: hidden;
+				transition: opacity 0.4s ease-in;
+				width: 100%;
+			}
+
+			.transitioning-src {
+				-moz-transition: opacity 0.4s ease-out;
+				-ms-transition: opacity 0.4s ease-out;
+				-o-transition: opacity 0.4s ease-out;
+				-webkit-transition: opacity 0.4s ease-out;
+				opacity: 0;
+				transition: opacity 0.4s ease-out;
+			}
+		}
+		.box_texto {
+			align-self: center;
+			padding: 0 40px;
+
+			@include breakpoint('medium', 'max') {
+				padding: 0 20px;
+			}
+			@include breakpoint('small', 'max') {
+				order: 1;
+			}
+			h1 {
+				color: $purple-n;
+				font-size: 2em;
+				@include breakpoint(1050px, 'max') {
+					font-size: 1.5em;
+				}
+				@include breakpoint('small', 'max') {
+					font-size: 1em;
+				}
+			}
+			p {
+				font-size: 1.5em;
+				@include breakpoint(1050px, 'max') {
+					font-size: 1.2em;
+				}
+				@include breakpoint('small', 'max') {
+					font-size: 1em;
+				}
+			}
+		}
+		.btn-primary-button {
+			background-color: transparent;
+			border: 3px solid #ffffff;
+			color: #ffffff;
+			float: right;
+			font-size: 1.156em;
+			font-weight: 300;
+			margin: 0 0 10px 0;
+			padding: 10px;
+			@include breakpoint('small', 'max') {
+				margin: 10px 0;
+			}
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+	}
+	& .embutidos-content {
+		& .nav-embutidos {
+			& nav {
+				align-items: center;
+				background-color: #736c6b;
+				display: flex;
+				justify-content: center;
+				@include breakpoint('small', 'max') {
+					justify-content: initial;
+					overflow: scroll;
+				}
+				a {
+					@include responsiveFont(32);
+					color: #ffffff;
+					margin: 15px 35px;
+					text-decoration: none;
+					@include breakpoint('small', 'max') {
+						margin: 5px 10px;
+					}
+				}
+			}
+		}
+
+		& .categoria {
+			margin: 0 0 20px 0;
+			.cooktops,
+			.fornos_embutidos,
+			.coifas_depuradores {
+				align-items: center;
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				@include breakpoint('small', 'max') {
+					grid-template-columns: 1fr;
+				}
+
+				.box-img {
+					@include breakpoint('small', 'max') {
+						order: 1;
+					}
+					img {
+						-moz-transition: opacity 0.4s ease-in;
+						-ms-transition: opacity 0.4s ease-in;
+						-o-transition: opacity 0.4s ease-in;
+						-webkit-transition: opacity 0.4s ease-in;
+						height: auto;
+						opacity: 1;
+						transition: opacity 0.4s ease-in;
+						width: 100%;
+					}
+					.transitioning-src {
+						-moz-transition: opacity 0.4s ease-out;
+						-ms-transition: opacity 0.4s ease-out;
+						-o-transition: opacity 0.4s ease-out;
+						-webkit-transition: opacity 0.4s ease-out;
+						opacity: 0;
+						transition: opacity 0.4s ease-out;
+					}
+				}
+				.box-text {
+					text-align: left;
+					// @include breakpoint('medium', 'min') {}
+					@include breakpoint('small', 'max') {
+						order: 2;
+					}
+
+					h1 {
+						margin: 0;
+					}
+					h2 {
+						color: $green;
+						margin: 0;
+					}
+					a {
+						background-color: transparent;
+						border: 3px solid $green;
+						color: $green;
+						font-size: 1.156em;
+						font-weight: 600;
+						padding: 10px;
+						&:hover {
+							background-color: $green;
+							border: 3px solid $green;
+							color: #ffffff;
+						}
+						@include breakpoint('small', 'max') {
+							margin: 10px 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .informativo-embutir {
+		background-color: #736c6b;
+		border-color: $green;
+		color: #ffffff;
+		margin: 0 auto;
+		padding: 10px 0 0 0;
+
+		h1 {
+			font-size: 4.125em;
+		}
+		h2 {
+			font-size: 2em;
+			font-weight: 400;
+		}
+
+		.dicas_embutir {
+			background: linear-gradient(180deg, transparent 30%, $green 30%);
+			@include breakpoint('small', 'max') {
+				background: initial;
+			}
+			.container {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				@include breakpoint('small', 'max') {
+					background: initial;
+					grid-gap: 15px;
+					grid-template-columns: 1fr;
+				}
+			}
+			.artigo {
+				margin: 0 0 20px 0;
+				text-align: left;
+
+				img {
+					width: 100%;
+				}
+				.box_descricao {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					margin: 0 10px;
+
+					h3 {
+						color: $purple-n;
+						font-weight: bold;
+						margin: 0;
+					}
+					p {
+						margin: 20px 0;
+					}
+					a {
+						align-self: flex-end;
+						background-color: transparent;
+						border: 2px solid #ffffff;
+						color: #ffffff;
+						margin: 10px 0;
+						padding: 10px;
+						&:hover {
+							transform: scale(1.1);
+						}
+					}
+				}
+
+				@include breakpoint('small', 'max') {
+					background: linear-gradient(
+						180deg,
+						transparent 20%,
+						$green 20%
+					);
+					grid-template-columns: 1fr;
+				}
+			}
+		}
+		.title_box {
+			h1 {
+				margin: 0;
+			}
+		}
+		.cervejeiras-videos__video {
+			background-color: #000;
+			margin: 30px auto;
+			max-width: 690px;
+			overflow: hidden;
+			position: relative;
+			transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+
+			.play {
+				@include allCenter;
+				background-color: transparent;
+				border-color: transparent transparent transparent $green;
+				border-style: solid;
+				border-width: 37px 0 37px 60px;
+				box-sizing: border-box;
+				cursor: pointer;
+				height: 74px;
+				pointer-events: none;
+				transition: 100ms all ease;
+				will-change: border-width;
+				z-index: 3;
+			}
+
+			// Imagem inicial do vídeo
+			&:before {
+				@include allCenter;
+				@include square(100%);
+				background: url('https://i.ytimg.com/vi/C-Lhb85cz80/maxresdefault.jpg')
+					center center no-repeat;
+				background-size: contain;
+				content: '';
+				cursor: pointer;
+				z-index: 2;
+			}
+
+			&.video-is-playing {
+				&:before {
+					display: none;
+					visibility: hidden;
+				}
+				.play {
+					display: none;
+					visibility: hidden;
+				}
+			}
+
+			&:hover {
+				transform: scale(1.03);
+				.play {
+					border-color: transparent transparent transparent #202020;
+				}
+			}
+
+			iframe {
+				@include breakpoint('small', 'max') {
+					height: 320px;
+				}
+				@include breakpoint(550px, 'max') {
+					height: 250px;
+				}
+				cursor: pointer;
+				display: block;
+				height: 388px;
+				max-width: 690px;
+				position: relative;
+				width: 100%;
+			}
+
+			.loading-container {
+				@include allCenter();
+
+				.icon-spinner {
+					display: block;
+					height: 75px;
+
+					&:before {
+						@include spinner($green, 45px);
+						content: '';
+					}
+				}
+			}
+		}
+		.cervejeiras-videos-thumbs {
+			display: flex;
+			justify-content: center;
+			.cervejeiras-videos-thumbs__item {
+				background-color: #ffffff;
+				border-radius: 50%;
+				display: inline-block;
+				height: 15px;
+				margin: 10px;
+				opacity: 0.5;
+				width: 15px;
+				&.is--active {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
