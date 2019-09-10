@@ -4,7 +4,9 @@ import Video from 'modules/cervejeiras/cervejeiras.video';
 import Event from 'modules/embutidos/eventos.embutidos';
 import 'dataLayers/dataLayer-embutidos';
 
-Nitro.controller('embutidos', ['dataLayer-embutidos'],function(dataLayerEmbutidos) {
+Nitro.controller('embutidos', ['dataLayer-embutidos'], function(
+	dataLayerEmbutidos
+) {
 	const embutidos = {};
 
 	// Init

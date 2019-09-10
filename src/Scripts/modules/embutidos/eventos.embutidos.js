@@ -5,14 +5,20 @@ const Eventos = {
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
-		let CooktopA = 'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg?v=636897174013430000';
-		let CooktopB = 'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg?v=636897173949000000';
+		let CooktopA =
+			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg?v=636897174013430000';
+		let CooktopB =
+			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg?v=636897173949000000';
 
-		let FornoA = 'https://whirlpoolqa.vteximg.com.br/arquivos/ids/156996-1000-1000/1.jpg?v=635348481380070000';
-		let FornoB = 'http://consulqa.vtexlocal.com.br:3000/arquivos/ids/156994-1000-1000/1.jpg?v=635348481372370000?v=635348481372370000';
+		let FornoA =
+			'https://whirlpoolqa.vteximg.com.br/arquivos/ids/156996-1000-1000/1.jpg?v=635348481380070000';
+		let FornoB =
+			'http://consulqa.vtexlocal.com.br:3000/arquivos/ids/156994-1000-1000/1.jpg?v=635348481372370000?v=635348481372370000';
 
-		let CoifaA = 'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
-		let CoifaB = 'https://consul.vteximg.com.br/arquivos/ids/164179-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-frontal_1650x1450.jpg?v=635767864275830000';
+		let CoifaA =
+			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
+		let CoifaB =
+			'https://consul.vteximg.com.br/arquivos/ids/164179-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-frontal_1650x1450.jpg?v=635767864275830000';
 
 		//Quando for mobile
 		if ($(window).width() <= 768) {
@@ -113,23 +119,26 @@ const Eventos = {
 		let img = $('.mascara');
 		let plus = $('.plus');
 
-		let strH1Padrao = 'Uma cozinha que se encaixa no seu dia-a-dia';
-		let strPPadrao = 'Com a solução embutida, você economiza tempo ao se livrar dos eternos cantos engordurados.';
+		let strH1Padrao = 'Uma cozinha planejada para o seu dia a dia';
+		let strPPadrao =
+			'Com a Linha de Embutir Consul, você tem uma cozinha mais bonita, moderna e que se adapta à sua decoração';
 
 		let strH1Cooktop = 'Facilidade para a sua cozinha';
-		let strPCooktop = 'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
+		let strPCooktop =
+			'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
 
 		let strH1forno = 'Preparos com mais facilidade';
-		let strPforno = 'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
+		let strPforno =
+			'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
 
 		let strH1Coifa = 'Livre de odores';
-		let strPCoifa = 'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
+		let strPCoifa =
+			'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
 
-			//Plus Button
+		//Plus Button
 		$('.box_img .plus').click(function() {
 			switch (this.classList[1]) {
-				case 'cooktop':
-					//<Animação>
+				case 'Cooktops':
 					img.addClass('transitioning-src');
 					plus.addClass('transitioning-src');
 					back.addClass('transitioning-src');
@@ -137,7 +146,6 @@ const Eventos = {
 						img.removeClass('transitioning-src');
 						plus.removeClass('transitioning-src');
 						back.removeClass('transitioning-src');
-					//</Animação>
 						h1.text(strH1Cooktop);
 						p.text(strPCooktop);
 						box_texto.append(
@@ -149,8 +157,7 @@ const Eventos = {
 						box_pai.addClass('one');
 					}, 400);
 					break;
-				case 'coifa':
-					//<Animação>
+				case 'Coifas/Depuradores':
 					img.addClass('transitioning-src');
 					plus.addClass('transitioning-src');
 					back.addClass('transitioning-src');
@@ -158,7 +165,6 @@ const Eventos = {
 						img.removeClass('transitioning-src');
 						plus.removeClass('transitioning-src');
 						back.removeClass('transitioning-src');
-					//</Animação>
 						h1.text(strH1Coifa);
 						p.text(strPCoifa);
 						box_texto.append(
@@ -171,8 +177,7 @@ const Eventos = {
 					}, 400);
 
 					break;
-				case 'forno':
-					//<Animação>
+				case 'Fornos-Embutidos':
 					img.addClass('transitioning-src');
 					plus.addClass('transitioning-src');
 					back.addClass('transitioning-src');
@@ -180,7 +185,6 @@ const Eventos = {
 						img.removeClass('transitioning-src');
 						plus.removeClass('transitioning-src');
 						back.removeClass('transitioning-src');
-					//</Animação>
 						h1.text(strH1forno);
 						p.text(strPforno);
 						box_texto.append(

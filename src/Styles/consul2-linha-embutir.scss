@@ -11,9 +11,6 @@
 		display: grid;
 		grid-template-columns: 1.5fr 1fr;
 
-		@include breakpoint(1645px, 'max') {
-			grid-template-columns: 1fr;
-		}
 		@include breakpoint('small', 'max') {
 			grid-template-columns: 1fr;
 		}
@@ -154,8 +151,11 @@
 				img {
 					position: relative;
 					right: 40%;
-					top: -225px;
+					top: -160px;
 					transform: scale(1.8);
+					@include breakpoint(93.75em, 'min') {
+						top: -225px;
+					}
 					@include breakpoint('small', 'max') {
 						top: -55px;
 					}
@@ -167,8 +167,8 @@
 						width: 100px;
 					}
 					&:nth-child(1) {
-						left: 80%;
-						top: 60%;
+						left: 70%;
+						top: 80%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
 							top: 25%;
@@ -193,7 +193,7 @@
 				}
 				.back {
 					right: 65%;
-					top: 60%;
+					top: 80%;
 					@include breakpoint('small', 'max') {
 						right: 70%;
 						top: 25%;
@@ -205,7 +205,7 @@
 				img {
 					position: relative;
 					right: 40%;
-					top: 215px;
+					top: 160px;
 					transform: scale(1.8);
 					@include breakpoint('small', 'max') {
 						right: 40%;
@@ -222,10 +222,13 @@
 						display: none;
 					}
 					&:nth-child(2) {
-						left: 80%;
+						left: 70%;
 						top: 60%;
+						@include breakpoint(81.25em, 'max') {
+							left: 55%;
+						}
 						@include breakpoint('small', 'max') {
-							left: 65%;
+							left: 50%;
 							top: 60%;
 						}
 					}
@@ -260,7 +263,7 @@
 					transform: scale(1.7);
 					@include breakpoint('small', 'max') {
 						right: -35%;
-						top: -33px;
+						top: -30px;
 					}
 				}
 				.plus {
@@ -277,7 +280,7 @@
 						display: none;
 					}
 					&:nth-child(3) {
-						left: 80%;
+						left: 60%;
 						top: 60%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
@@ -323,22 +326,31 @@
 		}
 		.box_texto {
 			align-self: center;
-			padding: 0 80px;
+			padding: 0 40px;
+
+			@include breakpoint('medium', 'max') {
+				padding: 0 20px;
+			}
 			@include breakpoint('small', 'max') {
 				order: 1;
-				padding: 0 20px;
 			}
 			h1 {
 				color: $purple-n;
-				font-size: 4.125em;
+				font-size: 2em;
+				@include breakpoint(1050px, 'max') {
+					font-size: 1.5em;
+				}
 				@include breakpoint('small', 'max') {
-					font-size: 2em;
+					font-size: 1em;
 				}
 			}
 			p {
-				font-size: 2em;
+				font-size: 1.5em;
+				@include breakpoint(1050px, 'max') {
+					font-size: 1.2em;
+				}
 				@include breakpoint('small', 'max') {
-					font-size: 1.5em;
+					font-size: 1em;
 				}
 			}
 		}
