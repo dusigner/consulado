@@ -84,7 +84,8 @@ $(document).on('ready', function() {
 		) {
 			var self = this,
 				$body = $('body'),
-				flagCoupon;
+				flagCoupon,
+				modals = true;
 
 			//INICIA CHAMADA DAS VITRINES CHAORDIC
 			// var productsId = [];
@@ -114,6 +115,7 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
+				self.limitQuantityCart();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -416,7 +418,7 @@ $(document).on('ready', function() {
 				// os produtos forem da categoria purificadores
 				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 					const checkoutProducts = self.orderForm.items;
-					const categoryName = window.store.isQA ? '1' : '190'; // Categoria de Purificadores
+					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
 					const categoryRegex = new RegExp(categoryName, 'gmi');
 
 					const someProductsHasRecurrence = checkoutProducts.some(prod => {
@@ -427,12 +429,50 @@ $(document).on('ready', function() {
 						return String(prod.productCategoryIds).match(categoryRegex) ? true : false;
 					});
 
-					if (allProductsIsPurificadores && someProductsHasRecurrence) {
-						recurrence.autoOpen();
-					} else {
-						if (store && store.isPersonal) {
-							gae.autoOpen();
+					const hasRecurrence = item => {
+						return item.attachmentOfferings.length > 0;
+					};
+
+					if (modals === true) {
+						const skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart') : '',
+							orderFormItems = self.orderForm.items;
+
+						let skuId = '',
+							recurrenceId = '',
+							isPurificator = false,
+							lastRecurrenceItem = '';
+
+						for (let i = 0; i < orderFormItems.length; i++) {
+							hasRecurrence(orderFormItems[i]) ? lastRecurrenceItem = orderFormItems[i].id : '';
+
+							if (!skuList.includes(orderFormItems[i].id)) {
+								if (hasRecurrence(orderFormItems[i])) {
+									recurrenceId = orderFormItems[i].id;
+								} else {
+									skuId = orderFormItems[i].id;
+									String(orderFormItems[i].productCategoryIds).match(categoryRegex) ? isPurificator = true : isPurificator = false;
+								}
+							}
 						}
+
+						if (isPurificator && lastRecurrenceItem !== '') {
+							let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+							skuList.push(skuId);
+
+							recurrence.autoOpen(lastRecurrenceItem);
+
+							sessionStorage.setItem('sku-cart', skuList);
+						}
+						else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
+							recurrence.autoOpen(recurrenceId);
+						} else if (skuId !== '') {
+							if (store && store.isPersonal) {
+								gae.autoOpen(skuId);
+
+							}
+						}
+
+						modals = false;
 					}
 				}
 
@@ -716,6 +756,45 @@ $(document).on('ready', function() {
 					self.veryfication();
 				});
 			};
+
+			this.limitQuantityCart = function(){
+
+				if (!store.isCorp){
+
+					$('body').on('click','.item-quantity-change', function(){
+
+						var prodId = $(this).closest('.product-item').index('.product-item'),
+							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
+							prodName = $(this).closest('.product-item').find('.product-name a:nth-child(1)').text(),
+							orderForm,
+							item = vtexjs.checkout.orderForm.items[prodId];
+
+						item.index = prodId;
+						item.quantity = 5;
+
+
+						if (prodQtde > 5) {
+
+							vtexjs.checkout.getOrderForm().then(function(orderForm) {
+								var updateItem = {
+									index: prodId,
+									quantity: 5
+								};
+								return vtexjs.checkout.updateItems([updateItem], null, false);
+							})
+							.done(function(orderForm) {
+								window.vtex.checkout.MessageUtils.showMessage({
+									text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+									status: 'error'
+								});
+							});
+
+						}
+					});
+
+				}
+
+     		};
 
 			this.init();
 
