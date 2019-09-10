@@ -12,6 +12,17 @@ Nitro.controller('Rastreio', [], function() {
 		this.getUrlParam();
 	};
 
+	this.titlePage = (msg) => {
+		$('.id-success .info-client').prepend(msg);
+	}
+
+	this.returnMarketPlace = () => {
+		const urlMarketplace = document.URL.split('?')[1].split('=')[0],
+			treatedMarketPlace = urlMarketplace.replace('_', ' ').toLowerCase();
+
+		return treatedMarketPlace
+	};
+
 	this.errorPage = (msg) => {
 		let html = `
 			<div class='id-fail'>
@@ -26,10 +37,17 @@ Nitro.controller('Rastreio', [], function() {
 
 	this.getUrlParam = () => {
 		let url = document.URL.split('?');
+		console.log("NE Q FOI!!");
 
 		if(url[1]){
 			let marketplace = url[1].split('=')[0],
 				order = url[1].split('=')[1];
+
+			let html = `
+				<h1>Rastreamento de pedidos</h1>
+				<p>Acompanhe seus pedidos do <b>${this.returnMarketPlace()}</b></p>
+			`;
+			self.titlePage(html);
 
 			if(marketplace && order){
 				self.getData('consulqa' , order);
@@ -37,7 +55,7 @@ Nitro.controller('Rastreio', [], function() {
 		}else{
 			let html = `
 				<h1>Desculpa, algo errado aconteceu...</h1>
-				<p>O seu pedido <b>Mercado Livre</b> não foi encontrado.</p>
+				<p>O seu <b>${this.returnMarketPlace()}</b> pedido não foi encontrado.</p>
 			`;
 			self.errorPage(html);
 		}
@@ -101,7 +119,7 @@ Nitro.controller('Rastreio', [], function() {
 				}else{
 					let html = `
 						<h1>Desculpa, algo errado aconteceu...</h1>
-						<p>O seu pedido <b>Mercado Livre</b> não foi encontrado.</p>
+						<p>O seu pedido <b>${this.returnMarketPlace()}</b> não foi encontrado.</p>
 					`;
 					self.errorPage(html);
 				}
@@ -130,12 +148,19 @@ Nitro.controller('Rastreio', [], function() {
 
 		let createTime = data.creationDate.split('T')[1].split('.')[0].split(':')[0] + ':' + data.creationDate.split('T')[1].split('.')[0].split(':')[1];
 
-		let shippingEstimateDateSplit = data.shippingData.logisticsInfo[0].shippingEstimateDate.split('T')[0].split('-'),
+		let shippingEstimateDateSplit = (data.shippingData.logisticsInfo[0].shippingEstimateDate) ? data.shippingData.logisticsInfo[0].shippingEstimateDate.split('T')[0].split('-') : "",
 			shippingEstimateDate = shippingEstimateDateSplit[2] + '/' + shippingEstimateDateSplit[1] + '/' + shippingEstimateDateSplit[0];
 
 		let statusOrder = 0;
+		let packageAttachment
 
-		let packageAttachment = data.packageAttachment.packages[0].courierStatus.finished;
+		if (data.packageAttachment.packages[0] != null){
+			packageAttachment = data.packageAttachment.packages[0].courierStatus.finished;
+		} else {
+			packageAttachment = 'false';
+		}
+
+
 
 		switch (data.statusDescription) {
 			case "Pedido Confirmado":

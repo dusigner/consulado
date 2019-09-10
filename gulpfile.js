@@ -77,7 +77,7 @@ const getPath = source => {
 		if($.util.env.page) {
 			if ( $.util.env.page === 'ALL' ) {
 				let pagesDir = fs.readdirSync(`${__dirname}/src/Pages`);
-				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|header|templates)/.test(path) ) : pagesDir;
+				pagesDir = $.util.env.production ? pagesDir.filter(path => !/(base|styleguide|includes|header|templates|footer-2019|old_styleguide)/.test(path) ) : pagesDir;
 				$.util.env.page = pagesDir.join(',');
 			}
 
