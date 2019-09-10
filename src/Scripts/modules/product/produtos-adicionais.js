@@ -8,6 +8,7 @@ Nitro.module('produtos-adicionais', function() {
 	const self = this;
 	const $additionalProdBox = $('.produtos-adicionais');
 	const $additionalProdTable = $('table.group.Produtos-adicionais');
+	const $selectVoltage = $('.select-voltage');
 	const $buyButton = $('.buy-button.buy-button-ref');
 	const defaultProdLink = $buyButton.attr('href');
 	let   prodTypeName = '';
@@ -20,8 +21,7 @@ Nitro.module('produtos-adicionais', function() {
 		$additionalProdBox.html($prodBox);
 
 		this.selectProductType();
-		this.selectProducts();
-	};
+		this.selectProducts();	};
 
 	// Pegar informações dos campos de cadastro da Vtex
 	this.getFieldValue = selector => {
@@ -143,6 +143,12 @@ Nitro.module('produtos-adicionais', function() {
 		const $selectProdType = $additionalProdBox.find('.produtos-adicionais__input');
 
 		$selectProdType.on('change', event => {
+			// Chama o modal de "selecione a voltagem" caso o cliente ainda não tenha escolhido
+			if ($selectVoltage.find('input:checked').val() === undefined) {
+				$buyButton.click();
+				return;
+			}
+
 			const selfProd = event.target;
 			const prodType = $(selfProd).attr('id');
 			const prodRefCode = this.clearProductId(selfProd.value);
