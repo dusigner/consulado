@@ -346,12 +346,10 @@ Nitro.controller(
 			$('.filter-wrapper > p:first-of-type').addClass('hide');
 		}
 
-		$('.see-more').after(`
-			<div class="listagem-apoio">
-				<p class="text-apoio">
-					Esse modelo é muito prático e vai atender todas as suas necessidades. Ah, e a geladeira de uma porta também é ideal pra quem não tem o hábito de congelar muita comida e quer mais espaço na parte de baixo pra alimentos frescos e bebidas. E o legal é que você pode comprar o seu refrigerador 1 porta com opção... de degelo automático, que é quando o gelo derrete e a água é mandada pra uma gaveta, que é só tirar e esvaziar depois.
-				</p
-			</div>
-		`);
+		$('.listagem-apoio').on('click', function(e) {
+			e.preventDefault();
+
+			$(this).toggleClass('active');
+		});
 	}
 );
