@@ -41,6 +41,10 @@
 			}
 
 			.plus {
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
 				align-items: center;
 				background-color: $purple-n;
 				border-radius: 25px;
@@ -48,11 +52,20 @@
 				display: flex;
 				height: 35px;
 				justify-content: center;
+				opacity: 1;
 				position: absolute;
 				transition: all 0.4s ease-in;
 				width: 35px;
 				z-index: 1;
 
+				&:before {
+					color: #ffffff;
+					content: '+';
+					font-size: 2em;
+					@include breakpoint('small', 'max') {
+						font-size: 1em;
+					}
+				}
 				&:hover {
 					width: 100px;
 					span {
@@ -60,33 +73,40 @@
 						display: initial;
 						opacity: 1;
 					}
+					&:before {
+						display: none;
+					}
 				}
 				@include breakpoint('small', 'max') {
 					height: 17px;
 					width: 17px;
 				}
-
 			}
 
 			.back {
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
+				align-items: center;
 				background-color: $purple-n;
 				border-radius: 25px;
 				box-shadow: 0 2px 9px #000000;
+				color: #ffffff;
+				display: flex;
 				height: 50px;
+				justify-content: center;
+				opacity: 1;
 				position: absolute;
 				transition: all 0.4s ease-in;
 				width: 50px;
 				z-index: 1;
-				color: #ffffff;
-				display: flex;
-				align-items: center;
-				justify-content: center;
+
 				i {
 					font-size: 25px;
 					font-weight: 900;
 					@include breakpoint('small', 'max') {
 						font-size: 9px;
-
 					}
 				}
 				@include breakpoint('small', 'max') {
@@ -132,16 +152,27 @@
 			//Cooktop
 			&.one {
 				img {
-					transform: scale(1.8);
 					position: relative;
-					top: -225px;
 					right: 40%;
+					top: -225px;
+					transform: scale(1.8);
+					@include breakpoint('small', 'max') {
+						top: -55px;
+					}
 				}
 				.plus {
+					pointer-events: none;
 					width: 265px;
+					@include breakpoint('small', 'max') {
+						width: 100px;
+					}
 					&:nth-child(1) {
 						left: 80%;
 						top: 60%;
+						@include breakpoint('small', 'max') {
+							left: 65%;
+							top: 25%;
+						}
 					}
 					&:nth-child(2) {
 						display: none;
@@ -152,22 +183,40 @@
 					span {
 						color: #ffffff;
 						font-size: 2em;
+						@include breakpoint('small', 'max') {
+							font-size: 1em;
+						}
+					}
+					&:before {
+						display: none;
 					}
 				}
 				.back {
 					right: 65%;
 					top: 60%;
+					@include breakpoint('small', 'max') {
+						right: 70%;
+						top: 25%;
+					}
 				}
 			}
 			//Coifa
 			&.two {
 				img {
-					transform: scale(1.8);
 					position: relative;
-					top: 215px;
 					right: 40%;
+					top: 215px;
+					transform: scale(1.8);
+					@include breakpoint('small', 'max') {
+						right: 40%;
+						top: 65px;
+					}
 				}
 				.plus {
+					pointer-events: none;
+					@include breakpoint('small', 'max') {
+						width: 100px;
+					}
 					width: 265px;
 					&:nth-child(1) {
 						display: none;
@@ -175,6 +224,10 @@
 					&:nth-child(2) {
 						left: 80%;
 						top: 60%;
+						@include breakpoint('small', 'max') {
+							left: 65%;
+							top: 60%;
+						}
 					}
 					&:nth-child(3) {
 						display: none;
@@ -182,26 +235,36 @@
 					span {
 						color: #ffffff;
 						font-size: 2em;
+						@include breakpoint('small', 'max') {
+							font-size: 1em;
+						}
+					}
+					&:before {
+						display: none;
 					}
 				}
 				.back {
 					right: 65%;
 					top: 60%;
+					@include breakpoint('small', 'max') {
+						right: 75%;
+					}
 				}
 			}
 			//Frono
 			&.tree {
 				img {
-					transform: scale(1.7);
 					position: relative;
-					top: -114px;
 					right: -35%;
+					top: -114px;
+					transform: scale(1.7);
 					@include breakpoint('small', 'max') {
-						top: -33px;
 						right: -35%;
+						top: -33px;
 					}
 				}
 				.plus {
+					pointer-events: none;
 					width: 265px;
 
 					@include breakpoint('small', 'max') {
@@ -228,17 +291,34 @@
 							font-size: 1em;
 						}
 					}
+					&:before {
+						display: none;
+					}
 				}
 				.back {
 					left: 1%;
 					top: 60%;
-
 				}
 			}
 
 			.mascara {
-				width: 100%;
+				-moz-transition: all 0.4s ease-in;
+				-ms-transition: all 0.4s ease-in;
+				-o-transition: all 0.4s ease-in;
+				-webkit-transition: all 0.4s ease-in;
+				opacity: 1;
 				overflow: hidden;
+				transition: opacity 0.4s ease-in;
+				width: 100%;
+			}
+
+			.transitioning-src {
+				-moz-transition: opacity 0.4s ease-out;
+				-ms-transition: opacity 0.4s ease-out;
+				-o-transition: opacity 0.4s ease-out;
+				-webkit-transition: opacity 0.4s ease-out;
+				opacity: 0;
+				transition: opacity 0.4s ease-out;
 			}
 		}
 		.box_texto {
@@ -260,6 +340,22 @@
 				@include breakpoint('small', 'max') {
 					font-size: 1.5em;
 				}
+			}
+		}
+		.btn-primary-button {
+			background-color: transparent;
+			border: 3px solid #ffffff;
+			color: #ffffff;
+			float: right;
+			font-size: 1.156em;
+			font-weight: 300;
+			margin: 0 0 10px 0;
+			padding: 10px;
+			@include breakpoint('small', 'max') {
+				margin: 10px 0;
+			}
+			&:hover {
+				transform: scale(1.1);
 			}
 		}
 	}
@@ -412,6 +508,9 @@
 						color: #ffffff;
 						margin: 10px 0;
 						padding: 10px;
+						&:hover {
+							transform: scale(1.1);
+						}
 					}
 				}
 

@@ -2,6 +2,36 @@ import { pushDataLayer } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-embutidos', function() {
 
+	this.clickHeaderPlus = () => {
+		$('.box_img .plus').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Zoom',
+				e.currentTarget.classList[1]
+			);
+		});
+	};
+
+	this.clickHeaderBack = () => {
+		$('.box_img .back').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Clique Zoom',
+				e.currentTarget.classList[1] + ' voltar'
+			);
+		});
+	};
+
+	this.clickHeaderLink = () => {
+		$('.box_texto a').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Clique Zoom',
+				'Ver mais ' + e.currentTarget.classList[1]
+			);
+		});
+	};
+
 	this.clickNav = () => {
 		$('.nav-embutidos nav a').click(e => {
 			pushDataLayer(
@@ -51,7 +81,7 @@ Nitro.module('dataLayer-embutidos', function() {
 	};
 
 	this.clickVideo = () => {
-		$('.cervejeiras-videos__video ').click(e => {
+		$('.cervejeiras-videos__video').click(() => {
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Vídeo',
@@ -88,5 +118,8 @@ Nitro.module('dataLayer-embutidos', function() {
 		this.clickVideo();
 		this.clickDotsVideo();
 		this.clickLinkDicas();
+		this.clickHeaderPlus();
+		this.clickHeaderBack();
+		this.clickHeaderLink();
 	};
 });
