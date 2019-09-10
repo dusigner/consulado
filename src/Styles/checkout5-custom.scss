@@ -245,14 +245,15 @@ body {
 		}
 	}
 	.linkWarranty {
-		background: transparent;
+		background-color: #fff;
 		border: 1px solid $purple;
 		color: $purple;
 		margin-top: 10px;
 
-		&:hover {
-			border: 1px solid $green;
-			color: $green;
+		&:hover,
+		&:focus {
+			background-color: $purple;
+			color: #fff;
 		}
 	}
 	&:not([class*='consulqa']) {

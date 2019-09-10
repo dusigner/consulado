@@ -9,12 +9,12 @@ require('modules/slider-banner');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');
-require('modules/linkDoubleClick');
+require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
 
 // import 'modules/counter';
-import 'modules/datalayer_track';
+// import 'modules/datalayer_track';
 
 Nitro.controller(
 	'home',

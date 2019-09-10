@@ -63,9 +63,10 @@
 		color: $purple;
 		padding: 5px 15px;
 
-		&:hover {
-			border: 1px solid $green;
-			color: $green;
+		&:hover,
+		&:focus {
+			background-color: $purple;
+			color: #fff;
 		}
 	}
 

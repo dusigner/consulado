@@ -12,7 +12,7 @@ const logger = require('js-pretty-logger');
 const { getUniques } = require('modules/helpers');
 const toastr = require('vendors/toastr');
 
-Nitro.controller('coupon', ['custom-select'], function (customSelect) {
+Nitro.controller('coupon', ['custom-select'], function(customSelect) {
 	let self = this;
 
 	this.filterBy = 'category';
@@ -42,7 +42,6 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 			$('.coupons-expand').hide();
 		});
 	};
-
 	/**
 	 * Toggle display of extra coupos
 	 * @param {string} speed Toggle transition speed (fast, slow)
@@ -54,10 +53,7 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 		const couponMax = 6;
 
 		if (couponSize > couponMax) {
-			const extraCoupons = couponListItems.splice(
-				couponMax,
-				couponLastIndex
-			);
+			const extraCoupons = couponListItems.splice(couponMax, couponLastIndex);
 
 			extraCoupons.map(extra => $(extra).toggle(speed));
 			this.showMoreCoupons();
@@ -128,16 +124,16 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 		options = [].map.call(coupons, cupon => {
 			return {
 				value: cupon.category,
-				text: cupon.category,
+				text: cupon.category
 			};
 		});
 
 		options = [
 			{
 				text: 'Todas as categorias',
-				value: '',
+				value: ''
 			},
-			...options,
+			...options
 		];
 
 		customSelect.setup({
@@ -147,7 +143,7 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 			onChange(option) {
 				self.log(`Select changed to: ${option.value}`);
 				self.filterCoupons(option.value);
-			},
+			}
 		});
 	};
 
@@ -158,8 +154,7 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 	this.couponToastr = code => {
 		jQuery($ => {
 			const windowWidth = $(window).width();
-			const position =
-				windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
+			const position = windowWidth <= 320 ? 'toast-bottom-center' : 'toast-top-center';
 			toastr.options = {
 				closeButton: true,
 				debug: false,
@@ -175,7 +170,7 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 				showEasing: 'swing',
 				hideEasing: 'linear',
 				showMethod: 'fadeIn',
-				hideMethod: 'fadeOut',
+				hideMethod: 'fadeOut'
 			};
 			toastr.info(`Código ${code} copiado`);
 		});
@@ -230,25 +225,30 @@ Nitro.controller('coupon', ['custom-select'], function (customSelect) {
 	 * @description Send events to analytics
 	 */
 	this.tags = () => {
-		$('.content-body .primary-button').on('click', function () {
+		$('.content-body .primary-button').on('click', function() {
 			dataLayer.push({
 				event: 'generic-event-trigger',
 				category: 'Categoria de Cupom',
 				action: 'Copiar código ',
-				label: $(this).parents('.content-body').find('.code').text()
+				label: $(this)
+					.parents('.content-body')
+					.find('.code')
+					.text()
 			});
 		});
 
-		$('.coupon-list .products').find('a').on('click', function () {
-			dataLayer.push({
-				event: 'generic-event-trigger',
-				category: 'Categoria de Cupom',
-				action: 'Ver produtos participantes ',
-				label: '- '
+		$('.coupon-list .products')
+			.find('a')
+			.on('click', function() {
+				dataLayer.push({
+					event: 'generic-event-trigger',
+					category: 'Categoria de Cupom',
+					action: 'Ver produtos participantes ',
+					label: '- '
+				});
 			});
-		});
 
-		$('.show-more-coupons').on('click', function () {
+		$('.show-more-coupons').on('click', function() {
 			dataLayer.push({
 				event: 'generic-event-trigger',
 				category: 'Categoria de Cupom',

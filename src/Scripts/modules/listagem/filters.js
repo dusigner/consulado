@@ -210,7 +210,7 @@ Nitro.module('filters', ['order-by'], function(orderBy) {
 			.prop('checked', false)
 			.change();
 		self.specificationRange();
-		self.clearFilterRel();
+		self.request();
 	};
 
 	/**
@@ -411,13 +411,13 @@ Nitro.module('filters', ['order-by'], function(orderBy) {
 
 	this.openFilter = function() {
 		$('.open-filter').click(function() {
-			$filterWrapper.addClass('opened');
-			//console.log('teste');
-			if($('.overlay-filter').length === 0) {
+			if ($('.overlay-filter').length === 0) {
 				$('body').prepend('<div class="overlay-filter"></div>');
 			} else {
 				$('.overlay-filter').removeClass('hide');
 			}
+
+			$filterWrapper.addClass('opened');
 
 			$('.overlay-filter')
 				.unbind('click')

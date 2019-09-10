@@ -10,7 +10,8 @@ Nitro.module('checkout.recurrence', function() {
 	//WHY?!
 	this.setup = function() {
 		self.render();
-		// self.autoOpen();
+		self.removeFromCart();
+		//self.autoOpen();
 	};
 
 	this.conditionsRecurrence = () => {
@@ -354,23 +355,59 @@ Nitro.module('checkout.recurrence', function() {
 
 	/**
 	 * Trigga click no último CTA de recorrente para abrir automaticamente o modal ao acessar o checkout
+	 *
+	 * Show modal when the last item added does not have its SKU stored on local storage, and then add its SKU on sku-cart object.
+	 *
+	 * Not even proud about what I had done here. If someone ask me, I will deny until the very end
 	 */
-	this.autoOpen = function() {
+	this.autoOpen = function(recurrenceId) {
 		setTimeout(function() {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
-			var $cartTemplate = $('.cart-template');
+			const $cartTemplate = $('.cart-template');
 
-			//if($(window).width() > 1000){
-			if (!$cartTemplate.is('.been-called') && $('.js-modal-open').length > 0) {
-				$cartTemplate
-					.find('.js-modal-open')
-					.last()
+			const recurrenceElement = $(`.product-item[data-sku=${recurrenceId}]`);
+
+			let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+			(!skuList.join(',').includes(recurrenceId)) ? skuList.push(recurrenceId) : '';
+
+			sessionStorage.setItem('sku-cart', skuList.join(','));
+
+			if (recurrenceElement.find('.js-modal-open').length > 0 && !recurrenceElement.find('.recurrence__step--one').hasClass('hide')) {
+				recurrenceElement.find('.js-modal-open')
 					.trigger('click');
+
 				$cartTemplate.addClass('been-called');
 			}
 			//}
 		}, 1500);
+	};
+
+	/**
+	 * Checks if there is any water purifier added on order form. If true, add the sku on local storage and set to show the recurrence modal
+	 * @return true if should display the modal
+	 * @return false if the modal should not be displayed
+	*/
+	this.showModalWhenHasPurificador = () => {
+		const element = $('.product-item:contains("Purificador")').last();
+		let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+
+		if (element.length > 0 && !customData.includes(element.attr('data-sku'))) {
+			sessionStorage.removeItem('sku-cart');
+
+			customData = [];
+
+			$('.linkWarranty').each(function() {
+				let dataSku = $(this).parents('.product-item').attr('data-sku');
+				customData.push(dataSku);
+			});
+
+			sessionStorage.setItem('sku-cart', customData);
+
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 	this.hidePayments = function() {
@@ -382,7 +419,26 @@ Nitro.module('checkout.recurrence', function() {
 			}
 		});
 	};
+
+	/**
+	 * Again another shameful function.
+	 *
+	 * Add a click function to remove data sku from local storage when product is going to be removed on cart
+	 */
+	this.removeFromCart = () => {
+		$('.item-link-remove').on('click', function() {
+			const skus = sessionStorage.getItem('sku-cart').split(','),
+				element = $(this);
+
+			const newListSkus = skus.filter(function(value) {
+				return value !== element.parents('.product-item').attr('data-sku');
+			});
+
+			sessionStorage.setItem('sku-cart', newListSkus.join(','));
+		});
+	};
 });
+
 
 /*jshint strict: false */
 dust.filters.intAsCurrency = function(value) {

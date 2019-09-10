@@ -1,0 +1,24 @@
+<div class="row mx-auto mb-5">
+	<div class="col-md-4 col-lg-3 p-0 d-flex align-items-center">
+		<div class="vitrine-desconto__card-cupom">
+			<figure class="vitrine-desconto__icone-cupom">
+				<img src="/arquivos/consul-cupom-desconto.png" />
+			</figure>
+			<h3 class="vitrine-desconto__card-cupom-codigo">{coupon}</h3>
+			<h4 class="vitrine-desconto__card-cupom-desconto">{offer} {offerText}<span>de desconto</span></h4>
+			<p>Condições de uso</p>
+			<small>Este cupom é valido apenas para produtos selecionados em “{category}”</small>
+			<button class="vitrine-desconto__card-cupom-button {coupon}">Copiar código</button>
+		</div>
+	</div>
+	<div class="col-md-8 col-lg-9 p-0">
+		<div class="vitrine-desconto__aside">
+			<div class="row m-auto text-right">
+				<a href="{collection}" class="veja-todos-prod">Veja todos os produtos</a>
+			</div>
+			<div class="slider-prod">
+					{shelf|s}
+			</div>
+		</div>
+	</div>
+</div>

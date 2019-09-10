@@ -2,9 +2,9 @@
 
 var CRM = require('modules/store/crm');
 
-require('modules/gae-compra-interno/order.states');
-require('modules/gae-compra-interno/order.warranty.gae');
-require('Dust/gae-compra-interno/warrantySpare.emptyOrders.html');
+import './gae-compra-interno/order.states';
+import './gae-compra-interno/order.warranty.gae';
+import 'Dust/gae-compra-interno/warrantySpare.emptyOrders.html';
 
 Nitro.controller('landing-gae-compra-interno', ['order.states', 'order.warranty.gae'], function(states, warranty) {
 	var self = this,
