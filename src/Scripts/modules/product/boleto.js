@@ -101,32 +101,33 @@ Nitro.module('boleto', function() {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							${priceCash(sku.bestPrice, 'cartao')} <span>À vista</span>
+							À vista por <strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
 						</p>
 					`;
 				} else {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							${priceCash(sku.bestPrice, 'boleto')} <span>À vista</span>
+							À vista por <strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
 						</p>
 					`;
 				}
 
+				// Etiqueta que exibe a porcentagem do desconto
 				setTimeout(function() {
 					$('.discount-boleto').remove();
-					$('.product-with-5-off').remove();
+					$('.product-with-discount').remove();
 
-					$('.valor-por.price-best-price').before(boletoInfo);
+					$('.valor-por.price-best-price').after(boletoInfo);
 
 					if (cmcDiscountCartao || cmcDiscountBoleto) {
-						$prodPreco.addClass('product-has-5-off');
+						$prodPreco.addClass('product-has-discount');
 
-						$prodPreco.find('.valor-por').before(`
-							<span class="product-with-5-off">
-								${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
-							</span>
-						`);
+						// $prodPreco.find('.valor-por').after(`
+						// 	<span class="product-with-discount">
+						// 		${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
+						// 	</span>
+						// `);
 					}
 				}, 0);
 			}
@@ -146,7 +147,7 @@ Nitro.module('boleto', function() {
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						${priceCash(prodAvailable[0].bestPrice, 'cartao')} <span>À vista</span>
+						À vista por <strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
 					</p>
 				`;
 			} else {
@@ -154,23 +155,25 @@ Nitro.module('boleto', function() {
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'boleto') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						${priceCash(prodAvailable[0].bestPrice, 'boleto')} <span>À vista</span>
+						À vista por <strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
 					</p>
 				`;
 			}
 
+			// Etiqueta que exibe a porcentagem do desconto
 			if (cmcDiscountCartao || cmcDiscountBoleto) {
-				$prodPreco.addClass('product-has-5-off');
-				setTimeout(() => {
-					$prodPreco.find('.valor-por').before(`
-						<span class="product-with-5-off">
-							${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
-						</span>
-					`);
-				}, 100);
+				$prodPreco.addClass('product-has-discount');
+
+				// setTimeout(() => {
+				// 	$prodPreco.find('.valor-por').after(`
+				// 		<span class="product-with-discount">
+				// 			${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}% OFF
+				// 		</span>
+				// 	`);
+				// }, 100);
 			}
 
-			$('.valor-por.price-best-price').before(boletoInfo);
+			$('.valor-por.price-best-price').after(boletoInfo);
 
 			/*
 			 * oh yeah, vtex hack!

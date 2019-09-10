@@ -270,16 +270,14 @@ body.busca {
 #list-more {
 	@include responsiveFont(12, 16,  true);
 	//FIX TABLET
-	@media screen and(min-width: 768px) {
-		@media screen and(max-width: 768px) {
-			float: none;
-			left: 0;
-			margin: 0;
-		}
-	}
 
+	@media screen and (min-width: 768px) and (max-width: 768px) {
+		float: none;
+		left: 0;
+		margin: 0;
+	}
 	background-color: #fff;
-    border: 1px solid $purple;
+	border: 1px solid $purple;
 	color: $purple;
 	margin-top: 10px;
 	outline: none;

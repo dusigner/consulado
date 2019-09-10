@@ -83,11 +83,7 @@
 			}
 
 			.detalhes {
-				a {
-					&:before {
-						display: none;
-					}
-				}
+				a:before { display: none; }
 
 				.image {
 					margin: 15px;
@@ -110,7 +106,6 @@
 					&[href*='amarela']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-amarela-frente.png') center center no-repeat; }
 					&[href*='vermelha']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-vermelha-frente.png') center center no-repeat; }
 					&[href*='titanium']:before { background: url('/arquivos/pagina-cervejeiras__cervejeira-titanium-frente.png') center center no-repeat; }
-
 				}
 
 				.prod-info {
@@ -128,37 +123,9 @@
 						}
 					}
 
-					.de {
-						@include rfs(12);
-						color: #702F8F;
-						font-weight: 500;
-					}
-
-					.discount-boleto {
-						@include rfs(24);
-						color: #9ACA3C;
-
-						span {
-							@include rfs(20);
-							display: inline-block;
-
-						}
-					}
-
-					.adicional {
-						strong {
-							display: none;
-
-							span:before {
-								content: none;
-							}
-						}
-
-						.preco-parcelado {
-							@include rfs(11);
-							margin-bottom: 0;
-							text-transform: initial;
-						}
+					.preco-parcelado {
+						display: none;
+						visibility: hidden;
 					}
 
 					.sku_error {
@@ -182,7 +149,7 @@
 
 	// Remove comparador e selos das páginas de cervejeira
 	.off,
-	.product-with-5-off {
+	.product-with-discount {
 		z-index: 4;
 	}
 

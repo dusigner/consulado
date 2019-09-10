@@ -131,7 +131,7 @@ div[data-chaordic] {
 		a { text-decoration: none }
 
 
-		&.product-has-5-off {
+		&.product-has-discount {
 			.discount-boleto {
 				span { display: inline-block!important; }
 			}
@@ -262,7 +262,6 @@ div[data-chaordic] {
 		width: 33.3%;
 		z-index: 50;
 
-
 		ul {
 			.slick-track {
 				@include breakpoint('small', 'min') { display: block; }
@@ -312,7 +311,11 @@ div[data-chaordic] {
 					margin: 0;
 
 					span.off,
-					span.product-with-5-off { display: none!important; }
+					span.product-with-discount { display: none!important; }
+				}
+
+				.shelf-item__price--best.por {
+					.val { @include rfs(17); }
 				}
 
 				.shelf-item__button { display: none; }
@@ -326,16 +329,35 @@ div[data-chaordic] {
 					@include breakpoint('small', 'max') { display: block; }
 
 					.discount-boleto {
-						@include rfs(16);
+						@include rfs(11);
+						@include breakpoint('small', 'min') {
+							padding-left: 0;
 
-						span {
-							@include breakpoint('small', 'min') { display: block; }
-							@include rfs(12);
+							&:before { display: none; }
 						}
+
+
+						strong { white-space: nowrap; }
+
+						span { display: none; }
 					}
+
+					span { @include rfs(11); }
 				}
 
-				.shelf-item__price--installment { @include rfs(11); }
+				.shelf-item__price--installment {
+					@include breakpoint('small', 'min') {
+						padding-left: 0;
+
+						&:before { display: none; }
+					}
+
+					strong {
+						@include rfs(11);
+
+						.val { white-space: nowrap; }
+					}
+				}
 			}
 		}
 	}

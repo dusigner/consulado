@@ -79,25 +79,25 @@ Nitro.module('percentoff', 'buy-button', function() {
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				self.find('.discount-boleto')
 					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
-					.html(
-						'R$ ' +
-							_.formatCurrency(valProd - valProd * (cmcDiscountCartao / 100)) +
-							' <span>À vista</span>'
-					);
+					.html(`
+						À vista por
+						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountCartao / 100))}</strong>
+						<span>(${cmcDiscountCartao}% OFF)</span>
+					`);
 			} else {
 				self.find('.discount-boleto')
 					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
-					.html(
-						'R$ ' +
-							_.formatCurrency(valProd - valProd * (cmcDiscountBoleto / 100)) +
-							' <span>À vista</span>'
-					);
+					.html(`
+						À vista por
+						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountBoleto / 100))}</strong>
+						<span>(${cmcDiscountBoleto}% OFF)</span>
+					`);
 			}
 
 			if (cmcDiscountCartao || cmcDiscountBoleto) {
-				self.addClass('product-has-5-off');
+				self.addClass('product-has-discount');
 				self.find('.por .off').after(`
-					<span class="product-with-5-off">
+					<span class="product-with-discount">
 						+${cmcDiscountCartao >= cmcDiscountBoleto ? cmcDiscountCartao : cmcDiscountBoleto}
 						% OFF à vista
 					</span>

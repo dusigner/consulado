@@ -3,6 +3,10 @@
 @import '_rebase/_root';
 @import '../helpers/rfs';
 
+$icon-preco-a-vista : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAMAAAAS9VDrAAAAPFBMVEUAAABAPDpAPDpAOzpAMDBAOzpAOzpAOjpAPDhAOzpAODhAOztAOjpAOjpAOztAOTlAOzpBPTlAPDlAPDtn8C58AAAAE3RSTlMAwIDwEOCgX0CwIHAwkNBQzz9vwfUj9QAAAV9JREFUKM91k9muBCEIRAXEte1l6v//9Towiz3JrSdMRVIeMKyKeZBiiipv4a6tAkr8VKJZ5tXM0N6+x6OC4rerpBhuKuhLXcKPTvqUHec9SEz4ugwF5fa2riHY9ZsCMe8ATpoSQFKrtLgzQys8ppk4b/O+rp1/YmXFubi9SeXrenK5HklBRMuLttB3vKWphMXNSIazFD5KsRJvt2UjG2+osDt/AmBdz8QmgsTuL+LXrcYClxCXF8mE8aFHyHeSB9hSiWEmaQ5nCHSSfBGp6D5IXUlmNDfhdsZOxL04yWqx27RqtcvvmZdzklR297MZe7L1U+i8CHNDAtSnT0DvkHQEInMtJEt1VzmGaLA4UPLFaWHAKh3OL2GPYYgd5HxIdfaceZBAOD5P3RoLdn+akxxHMFWnwyi+QPm+mXI+7dYtibVftYlkryIvv2OZjI7HxUl8Wr8q0wB2buEfGYBf/QGrfhEE6ynUEwAAAABJRU5ErkJggg==';
+$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+
+
 body.listagem {
 	.main { margin-top: 10px; }
 
@@ -74,8 +78,7 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 	}
 
-
-	&.product-has-5-off {
+	&.product-has-discount {
 		.discount-boleto {
 			span { display: inline-block!important; }
 		}
@@ -104,13 +107,13 @@ body.listagem {
 
 			&:first-child { display: none; }
 
-			span {
-				&:first-child {
-					text-transform: lowercase;
+			// span {
+			// 	&:first-child {
+			// 		text-transform: lowercase;
 
-					&:before { content: 'ou '; }
-				}
-			}
+			// 		&:before { content: 'ou '; }
+			// 	}
+			// }
 			.x:before { display: none;}
 		}
 	}
@@ -160,7 +163,7 @@ body.listagem {
 				}
 
 				.de {
-					@include rfs(15);
+					@include rfs(14);
 					color: #736c6b;
 					font-weight: normal;
 					margin: 0;
@@ -170,21 +173,29 @@ body.listagem {
 				}
 
 				.por {
-					margin: 0 0 5px;
+					margin: 0;
 
-					.txtPor,
-					.val { display: none; }
+					.txtPor { display: none; }
+
+					// Preço POR
+					.val {
+						@include rfs(26);
+						color: #9aca3c;
+						display: block;
+						font-weight: bold;
+						margin: 0 0 .4em 0;
+					}
 
 					.off {
 						background-color: #702F8F;
 						display: none;
 						padding: 6px 18px;
 
-						&:not(:empty) + .product-with-5-off { top: 45px; }
+						&:not(:empty) + .product-with-discount { top: 45px; }
 					}
 
 					.off,
-					.product-with-5-off {
+					.product-with-discount {
 						@include rfs(10);
 						border-radius: 100px;
 						color: #fff;
@@ -196,7 +207,7 @@ body.listagem {
 						&:empty { display: none; }
 					}
 
-					.product-with-5-off {
+					.product-with-discount {
 						background-color: #0fb6de;
 						padding: 6px 14px;
 						white-space: nowrap;
@@ -205,22 +216,54 @@ body.listagem {
 			}
 
 			.adicional {
-				@include rfs(13);
-				color: #736c6b;
 				margin: 0;
 
+				strong {
+					font-weight: normal;
+
+					&:first-child { display: none; }
+
+					.val { font-weight: bold; }
+				}
+
 				.total-parcelado { display: none; }
+
+				// Icone pagamento parcelado
+				&:before { background-image: url($icon-preco-parcelado); }
 			}
 
+			.adicional,
 			.discount-boleto {
-				@include rfs(24);
-				color: #9aca3c;
+				@include rfs(12);
+				color: #736C6B;
 				display: block;
-				font-weight: bold;
+				padding-left: 20px;
+				position: relative;
+
+				// Icone pagamento
+				&:before {
+					@include square(15px);
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: contain;
+					content: '';
+					left: 0;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+
+
+			.discount-boleto {
 				margin: 0 0 .4em 0;
 
+				// Icone pagamento
+				&:before { background-image: url($icon-preco-a-vista); }
+
 				span {
-					@include rfs(16);
+					@include rfs(10);
+					color: #EC008C;
 					display: none;
 				}
 			}
