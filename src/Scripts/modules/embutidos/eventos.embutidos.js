@@ -6,14 +6,14 @@ const Eventos = {
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
 		let CooktopA =
-			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg?v=636897174013430000';
+			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
 		let CooktopB =
-			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg?v=636897173949000000';
+			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg';
 
 		let FornoA =
-			'https://whirlpoolqa.vteximg.com.br/arquivos/ids/156996-1000-1000/1.jpg?v=635348481380070000';
+			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
 		let FornoB =
-			'http://consulqa.vtexlocal.com.br:3000/arquivos/ids/156994-1000-1000/1.jpg?v=635348481372370000?v=635348481372370000';
+			'https://consul.vteximg.com.br/arquivos/ids/193585-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_3.jpg';
 
 		let CoifaA =
 			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
