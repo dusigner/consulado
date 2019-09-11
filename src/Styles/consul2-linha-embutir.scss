@@ -378,10 +378,6 @@
 				background-color: #736c6b;
 				display: flex;
 				justify-content: center;
-				@include breakpoint('small', 'max') {
-					justify-content: initial;
-					overflow: scroll;
-				}
 				a {
 					@include responsiveFont(32);
 					color: #ffffff;
@@ -391,6 +387,9 @@
 						margin: 5px 10px;
 					}
 				}
+			}
+			@include breakpoint('small', 'max') {
+				display: none;
 			}
 		}
 
@@ -477,7 +476,9 @@
 			font-size: 2em;
 			font-weight: 400;
 		}
-
+		hr {
+			border: 2px solid $green;
+		}
 		.dicas_embutir {
 			background: linear-gradient(180deg, transparent 30%, $green 30%);
 			@include breakpoint('small', 'max') {
