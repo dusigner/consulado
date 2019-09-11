@@ -174,14 +174,6 @@ Nitro.module('produtos-adicionais', function() {
 		const $selectProdType = $additionalProdBox.find('.produtos-adicionais__input');
 
 		$selectProdType.on('change', event => {
-			// Se o cliente tentar selecionar os adicionais, sem selecionar a voltagem
-			// Forçamos a apresentação do modal de "selecione a voltagem"
-			if ($selectVoltage.find('input:checked').val() === undefined) {
-				$buyButton.click();
-				$selectProdType.attr('checked', false);
-				return;
-			}
-
 			const selfProd = event.target;
 			const prodType = $(selfProd).attr('id');
 			const prodRefCode = this.clearProductId(selfProd.value);
