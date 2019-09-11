@@ -10,10 +10,10 @@ Nitro.module('produtos-adicionais', function() {
 	const $additionalProdTable = $('table.group.Produtos-adicionais');
 	const $selectVoltage = $('.select-voltage');
 	const $buyButton = $('.buy-button.buy-button-ref');
-	const defaultProdLink = $buyButton.attr('href');
+	let   defaultProdLink = $buyButton.attr('href');
 	let   prodTypeName = '';
 
-	// iniciar a aplicação
+	// Iniciar a aplicação
 	this.init = () => {
 		const localData = this.getDOMInformation();
 		const $prodBox = this.additionalProdTemplate(localData);
@@ -33,18 +33,45 @@ Nitro.module('produtos-adicionais', function() {
 	// Pegar as informações no DOM
 	this.getDOMInformation = () => {
 		return {
-			tituloGrupo     : this.getFieldValue('.titulo-do-grupo'),
-			tituloTexto     : this.getFieldValue('.titulo-do-texto'),
-			texto           : this.getFieldValue('.texto'),
-			tipo01Text      : this.getFieldValue('.secao-01-tipo'),
-			tipo01Produtos  : this.getFieldValue('.secao-01-produtos'),
-			tipo01Mensagens : this.getFieldValue('.secao-01-mensagens'),
-			tipo02Text      : this.getFieldValue('.secao-02-tipo'),
-			tipo02Produtos  : this.getFieldValue('.secao-02-produtos'),
-			tipo02Mensagens : this.getFieldValue('.secao-02-mensagens'),
-			tipo01          : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
-			tipo02          : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
+			tituloGrupo       : this.getFieldValue('.titulo-do-grupo'),
+			tituloTexto       : this.getFieldValue('.titulo-do-texto'),
+			texto             : this.getFieldValue('.texto'),
+			tipo01Text        : this.getFieldValue('.secao-01-tipo'),
+			tipo01Produtos    : this.getFieldValue('.secao-01-produtos'),
+			tipo01MensagensTit: this.getFieldValue('.secao-01-mensagens').split('|')[0],
+			tipo01Mensagens   : this.getFieldValue('.secao-01-mensagens').split('|')[1],
+			tipo02Text        : this.getFieldValue('.secao-02-tipo'),
+			tipo02Produtos    : this.getFieldValue('.secao-02-produtos'),
+			tipo02MensagensTit: this.getFieldValue('.secao-02-mensagens').split('|')[0],
+			tipo02Mensagens   : this.getFieldValue('.secao-02-mensagens').split('|')[1],
+			tipo01            : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
+			tipo02            : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
 		};
+	};
+
+	// Procura os produtos selecionados anteriormente e atualizam o link do botão comprar
+	this.getActiveProducts = () => {
+		const activeProducts = $additionalProdBox.find('.produto-adicional.available.is--active');
+		let productsLink = '';
+
+		activeProducts.each(function() {
+			productsLink += $(this).data('sku');
+		});
+
+		self.updateButtonLink(defaultProdLink + productsLink);
+	};
+
+	// Busca todos os produtos da coleção
+	this.getProducts = (prodRefCode, prodType) => {
+		fetch(`/api/catalog_system/pub/products/search?${prodRefCode}`)
+			.then(resp => resp.json())
+			.then(data => this.printProducts(data, prodType))
+			.then(() => this.loadingAnimation())
+			.then(() => this.showProducts(prodType))
+			.catch(error => {
+				this.printError();
+				console.error('#Error', error);
+			});
 	};
 
 	// Template da seleção de produtos
@@ -57,9 +84,11 @@ Nitro.module('produtos-adicionais', function() {
 			tipo01Text,
 			tipo01Produtos,
 			tipo01Mensagens,
+			tipo01MensagensTit,
 			tipo02,
 			tipo02Text,
 			tipo02Produtos,
+			tipo02MensagensTit,
 			tipo02Mensagens
 		} = infoProduto;
 
@@ -103,7 +132,7 @@ Nitro.module('produtos-adicionais', function() {
 				<div class="produtos-adicionais__info" data-prodtype="${tipo01}"]>
 					<strong>
 						<i class="icon icon-question"></i>
-						Conversão gratuita
+						${tipo01MensagensTit}
 					</strong>
 					<p>${tipo01Mensagens}</p>
 				</div>
@@ -113,7 +142,7 @@ Nitro.module('produtos-adicionais', function() {
 				<div class="produtos-adicionais__info" data-prodtype="${tipo02}"]>
 					<strong>
 						<i class="icon icon-question"></i>
-						Conversão gratuita
+						${tipo02MensagensTit}
 					</strong>
 					<p>${tipo02Mensagens}</p>
 				</div>
@@ -145,7 +174,8 @@ Nitro.module('produtos-adicionais', function() {
 		const $selectProdType = $additionalProdBox.find('.produtos-adicionais__input');
 
 		$selectProdType.on('change', event => {
-			// Chama o modal de "selecione a voltagem" caso o cliente ainda não tenha escolhido
+			// Se o cliente tentar selecionar os adicionais, sem selecionar a voltagem
+			// Forçamos a apresentação do modal de "selecione a voltagem"
 			if ($selectVoltage.find('input:checked').val() === undefined) {
 				$buyButton.click();
 				$selectProdType.attr('checked', false);
@@ -173,7 +203,7 @@ Nitro.module('produtos-adicionais', function() {
 		});
 	};
 
-	// Limpar os produtos selecionados anteriormente e voltar o link do produto para o padrão.
+	// Limpar os produtos selecionados anteriormente e volta o link do produto para o padrão.
 	this.resetProductBoxTemplate = () => {
 		const $productItem = $additionalProdBox.find('.produto-adicional');
 		const $productCheckbox = $additionalProdBox.find('input[type=checkbox]');
@@ -181,29 +211,7 @@ Nitro.module('produtos-adicionais', function() {
 		$productItem.removeClass('is--active');
 		$productCheckbox.attr('checked', false);
 
-		this.updateButtonLink(defaultProdLink);
-	};
-
-	// Taguemento
-	this.tagSelectType = (prodTypeName) => {
-		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Kit de Instalação para ${prodTypeName}`,
-			action: `Escolher tipo de gás ${prodTypeName}`,
-			label: 'Step Selação do tipo de gás'
-		});
-	};
-
-	this.tagSelectProduct = (prodName, prodSkuId, prodTypeName) => {
-		const productName = window.skuJson.name;
-		const productId = skuJson.productId;
-
-		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
-			action: `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
-			label: 'Step Clique na escolha do produto'
-		});
+		self.updateButtonLink(defaultProdLink);
 	};
 
 	// Animação de loading
@@ -211,7 +219,7 @@ Nitro.module('produtos-adicionais', function() {
 		$additionalProdBox.toggleClass('prod-is-loading');
 	};
 
-	// Exibir somente os produtos e informações da seção escolhida
+	// Exibe somente os produtos e informações da seção escolhida
 	this.showProducts = (prodType) => {
 		$(`.produtos-adicionais__content`).hide();
 		$(`.produtos-adicionais__info`).hide();
@@ -219,16 +227,15 @@ Nitro.module('produtos-adicionais', function() {
 		$(`.produtos-adicionais__info[data-prodtype="${prodType}"]`).show();
 	};
 
-	// Selecione a voltagem
+	// Ao trocar a voltagem, atualizar o link padrão do produto
 	this.selectSku = () => {
-		$selectVoltage.on('click', 'label', function() {
-			const lorem = document.querySelectorAll('.produto-adicional.available.is--active');
-			
-			// 
+		$selectVoltage.find('input').on('change', function() {
+			setTimeout(() => { defaultProdLink = $buyButton.attr('href'); }, 1);
+			setTimeout(() => { self.getActiveProducts(); }, 2);
 		});
 	};
 
-	// Selecionar os produtos
+	// Ao selecionar os produtos, atualiza o status ativo e chama a função de tagueamento
 	this.selectProducts = () => {
 		$additionalProdBox.on('click', '.produto-adicional.available', function() {
 			const $selectSelf = $(this);
@@ -237,7 +244,7 @@ Nitro.module('produtos-adicionais', function() {
 			const prodName = $selectSelf.find('h2').text();
 			const prodSkuId = $selectSelf.find('span').text();
 
-			// Caso o clintete descelecione a o kit, voltamos o link para o padrão
+			// Altera o link do botão comprar de acordo com os produtos adicionais selecionados
 			if ($selectSelf.hasClass('is--active')) {
 				const productLink = currentProdLink.replace(`${prodSku}`, '');
 				self.updateButtonLink(productLink);
@@ -253,23 +260,9 @@ Nitro.module('produtos-adicionais', function() {
 		});
 	};
 
-
 	// Atualizar link do botão
 	this.updateButtonLink = (link) => {
 		$buyButton.attr('href', link);
-	};
-
-	// Busca todos os produtos da coleção
-	this.getProducts = (prodRefCode, prodType) => {
-		fetch(`/api/catalog_system/pub/products/search?${prodRefCode}`)
-			.then(resp => resp.json())
-			.then(data => this.printProducts(data, prodType))
-			.then(() => this.loadingAnimation())
-			.then(() => this.showProducts(prodType))
-			.catch(error => {
-				this.printError();
-				console.error('#Error', error);
-			});
 	};
 
 	// Exibe os produtos
@@ -308,7 +301,9 @@ Nitro.module('produtos-adicionais', function() {
 
 					${AvailableQuantity ? `
 						<div class="produto-adicional__item produto-adicional__item-price">
-							<div class="de">De R$ ${ListPrice}</div>
+							${ListPrice > Price ? `
+								<div class="de">De R$ ${ListPrice}</div>
+							`: ''}
 							<div class="por">Por R$ ${Price}</div>
 						</div>
 
@@ -327,6 +322,29 @@ Nitro.module('produtos-adicionais', function() {
 		`;
 
 		return prodTemplate;
+	};
+
+	// Taguemento do tipo de produto selecionado
+	this.tagSelectType = (prodTypeName) => {
+		dataLayer.push({
+			event: 'generic',
+			category: `[SQUAD] Kit de Instalação para ${prodTypeName}`,
+			action: `Escolher tipo de gás ${prodTypeName}`,
+			label: 'Step Selação do tipo de gás'
+		});
+	};
+
+	// Taguemento dos produtos selecionados
+	this.tagSelectProduct = (prodName, prodSkuId, prodTypeName) => {
+		const productName = window.skuJson.name;
+		const productId = skuJson.productId;
+
+		dataLayer.push({
+			event: 'generic',
+			category: `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
+			action: `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
+			label: 'Step Clique na escolha do produto'
+		});
 	};
 
 	// Template de erro
@@ -353,7 +371,7 @@ Nitro.module('produtos-adicionais', function() {
 		$kitError.find('button').click(() => this.getProducts());
 	};
 
-	// Inicia a aplicação se encontrar itens cadastrados
+	// Inicia a aplicação somente se encontrar itens cadastrados
 	if ($additionalProdTable.length > 0) {
 		self.init();
 	}
