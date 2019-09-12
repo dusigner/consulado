@@ -160,7 +160,7 @@ $breakpoint-map: (
 		min-height: 180px;
 		padding: 0 20px;
 		width: 1000px;
-		@include breakpoint('desktop', 'max') {
+		@include breakpoint('xlg-desktop', 'max') {
 			padding: 0;
 		}
 	}
@@ -185,6 +185,32 @@ $breakpoint-map: (
 	}
 }
 
+.slick-next,
+.slick-prev {
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	height: 15px;
+	margin-top: -20px;
+	position: absolute;
+	top: 0;
+	width: 9px;
+	&:before {
+		content: '';
+	}
+	&.slick-disabled {
+		background-color: #ffffff;
+		color: $gray-light;
+	}
+}
+
+.slick-next {
+	background-image: url('/arquivos/consul-arrow-right.png');
+}
+
+.slick-prev {
+	background-image: url('/arquivos/consul-arrow-left.png');
+}
 
 //VITRINE
 .vitrine-desconto {
@@ -210,7 +236,7 @@ $breakpoint-map: (
 			color: $purple;
 			display: inline-block;
 			font-weight: $font-bold;
-			margin: 0 10px 10px 20px;
+			margin: 0 70px 10px 20px;
 			width: 100%;
 
 		}
@@ -224,6 +250,20 @@ $breakpoint-map: (
 			.slick-slider {
 				padding: 0;
 			}
+		}
+		@include breakpoint('phone', 'max') {
+			.slick-next,
+			.slick-prev {
+				margin-top: 30px;
+				top: 100%;
+			}
+		}
+		.slick-next {
+			right: 16px;
+		}
+		.slick-prev {
+			left: inherit !important;
+			right: 40px;
 		}
 	}
 	&__produto {

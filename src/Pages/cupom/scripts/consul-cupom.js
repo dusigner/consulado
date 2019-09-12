@@ -69,7 +69,7 @@ Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 		$('.slider-prod .prateleira ul:not(.slick-initialized)').slick({
 			arrows: true,
 			slidesToShow: 3,
-			infinite: false,
+			infinite: true,
 			adaptiveHeight: true,
 			responsive: [
 				{
