@@ -13,7 +13,7 @@ const Eventos = {
 		let FornoA =
 			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
 		let FornoB =
-			'https://consul.vteximg.com.br/arquivos/ids/193585-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_3.jpg';
+			'/arquivos/embutir_forno02.png';
 
 		let CoifaA =
 			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';

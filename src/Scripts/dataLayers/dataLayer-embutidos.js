@@ -14,6 +14,9 @@ Nitro.module('dataLayer-embutidos', function() {
 
 	this.clickHeaderBack = () => {
 		$('.box_img .back').click(e => {
+			setTimeout(function () {
+				console.log(e.currentTarget.classList);
+			}, 300);
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Clique Zoom',
@@ -58,16 +61,6 @@ Nitro.module('dataLayer-embutidos', function() {
 				clearTimeout(timeout);
 			}
 		);
-	};
-
-	this.clickNav = () => {
-		$('.box-text').hover(e => {
-			pushDataLayer(
-				'[CB-GOC] Página Built-in',
-				'Clique banner',
-				e.currentTarget.title
-			);
-		});
 	};
 
 	this.clickLinkA = () => {
