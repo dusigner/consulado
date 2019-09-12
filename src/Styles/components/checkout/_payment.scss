@@ -1,4 +1,10 @@
+/**
+* About the new styleguide: I am not proud about everything I had done here.
+* Please, disrespect all floats and importants written below.
+*/
+
 body {
+
 	/* Change label inputs - Checkout Payment*/
 	.custom-label-complemento:after {
 		content: 'Complemento';
@@ -17,16 +23,175 @@ body {
 		.checkout-container {
 			padding-bottom: 40px;
 
-			.cart-fixed { background: #ffffff; }
+			@include breakpoint('medium', 'max') {
+				padding-bottom: 100px;
+
+				@include breakpoint ('small' 'max') {
+					padding-bottom: 40px;
+				}
+			}
+
+			.cart-fixed {
+				background: #ffffff;
+				position: relative;
+			}
+		}
+
+		#payment-data {
+			.active {
+				iframe {
+					background-color: $gray-m;
+					min-height: 465px;
+
+					@include breakpoint('large', 'max') {
+						min-height: 560px;
+
+						@include breakpoint('medium', 'max') {
+							min-height: 465px;
+
+							@include breakpoint(767px, 'max') {
+								margin-bottom: -100px;
+
+								@include breakpoint(377px, 'max') {
+									min-height: 560px;
+								}
+							}
+						}
+					}
+				}
+
+				.box-step-content {
+					min-height: 400px;
+				}
+			}
+
+			.accordion-group.active {
+				padding: 0;
+
+				.accordion-heading {
+					padding: 0 20px;
+					span {
+						margin-bottom: -70px;							// Commited by anyone but me.
+						position: relative;
+						z-index: 1;
+					}
+				}
+
+				.accordion-body {
+					padding: 0;
+
+					.accordion-inner {
+						padding: 0;
+					}
+
+					.steps-view {
+						background-color: $gray-m;
+						border-radius: 0;
+					}
+				}
+			}
+
+			.steps-view {
+				min-height: 400px;
+
+				@include breakpoint('large', 'max') {
+					min-height: 0;
+				}
+			}
+
+			.gift-card-section {
+				background-color: $gray-m;
+				border-radius: 0;
+				margin: 0;
+				padding: 5px;
+				position: absolute;
+				top: 75px;
+				width: 40%;
+
+				label {
+					@include rfs(12);
+					color: #736c6b;
+					display: block;
+					font-weight: 500;
+				}
+
+				#payment-discounts-code {
+					height: 30px;
+					margin-right: 2%;
+					width: 58%;
+				}
+
+				.gift-card-provider-default {
+					padding: 0 5px 0 10px;
+				}
+
+				#btn-add-gift-card {
+					background: $green;
+					border: none;
+					border-radius: 40px;
+					color: #fff;
+					font-family: $base-font-family;
+					margin-left: 2%;
+					text-shadow: none;
+					width: 36%;
+				}
+
+				@include breakpoint ('large', 'max') {
+					top: 75px;
+
+					@include breakpoint ('medium', 'max') {
+						top: 70px;
+
+						@include breakpoint (767px, 'max') {
+							top: 70px;
+							width: 100%;
+							z-index: 1;
+						}
+					}
+				}
+			}
+
+			.payment-group {
+				@include breakpoint('medium', 'max') {
+					margin-bottom: -5px;
+					padding-top: 115px;
+
+					@include breakpoint(767px, 'max') {
+						padding-top: 150px;
+					}
+				}
+			}
 		}
 
 		.step {
-			@include responsiveFont(14);
+			@include rfs(13);
 			color: $txt-gray-l;
-			padding: 0;
+			padding: 0 20px;
+
+			&.client-profile-data {
+
+				.btn-success {
+					@include rfs(16);
+					background-color: $green;
+					border: 2px solid $green;
+					font-weight: 500;
+					height: 40px;
+					line-height: 0;
+					width: 100%;
+
+					&:hover,
+					&:focus {
+						background-color: #fff;
+						color: $green;
+					}
+				}
+
+				&.filled:not(.active) {
+					height: 212px;
+				}
+			}
 
 			.accordion-heading {
-				background-color: $gray-l;
 				text-align: center;
 
 				i { display: none; }
@@ -44,10 +209,548 @@ body {
 				}
 
 				.accordion-toggle {
-					@include responsiveFont(22);
-					color: $txt-gray;
+					@include rfs(16);
+					color: $gray-d;
 					font-weight: bold;
-					padding: 10px 0;
+					padding: 18px 0 10px;
+					text-align: left;
+
+					&::after {
+						border: 1px solid $green;
+						border-radius: 10px;
+						content: '';
+						display: block;
+						margin-top: 10px;
+						position: relative;
+						width: 35px;
+					}
+				}
+			}
+
+			.accordion-inner {
+				padding: 9px 0;
+			}
+
+
+			.box-client-info-pf {
+				color: $gray-d;
+				margin: 0;
+
+				input.success {
+					background-position: right;
+					border-color: $green;
+				}
+
+				input {
+					width: 100% !important;
+
+					&.error {
+						border-color: $red-error;
+					}
+				}
+
+				p {
+					float: left!important;
+					margin-bottom: 0;
+					margin-top: 12px;
+
+					&.client-notice {
+						margin: 0;
+						max-width: 100%;
+						text-align: justify;
+					}
+
+					&.input {
+						display: inline-block;
+						width: 47.5%;
+
+						&.client-email {
+							width: 100%;
+
+							#client-email {
+								max-width: unset;
+							}
+						}
+					}
+
+					&.client-first-name,
+					&.client-document {
+						margin-right: 2.5%!important;
+					}
+
+					&.client-last-name,
+					&.client-phone {
+						margin-left: 2.5%!important;
+					}
+
+					&.client-last-name {
+						@include breakpoint (490px, 'max') {
+							margin-left: 4%;
+						}
+					}
+
+					span.error {
+						@include rfs(12);
+						color: $red-error;
+						font-weight: bold;
+						margin-bottom: 0;
+						position: relative;
+					}
+				}
+
+				label {
+					@include rfs(12);
+					color: $gray-d;
+					font-weight: 500;
+				}
+			}
+
+			#go-to-shipping,
+			#go-to-payment,
+			.btn-go-to-payment {
+				float: none !important;
+				text-transform: none;
+				width: 100%;
+
+				&.btn-success {
+					@include rfs(16);
+					background-color: $green;
+					border: 2px solid $green;
+					font-weight: 500;
+					height: 40px;
+					line-height: 0;
+					width: 100%;
+
+					&:hover,
+					&:focus {
+						background-color: #fff;
+						color: $green;
+					}
+				}
+			}
+
+			.client-profile-email {
+				&:before {
+					@include rfs(12);
+					color: $gray-d;
+					content: 'E-mail';
+					display: block;
+					font-weight: 500;
+					margin-bottom: 3px;
+				}
+				span {
+					color: $gray-d;
+
+					&.email {
+						@include rfs(15);
+						font-weight: 400;
+					}
+				}
+			}
+
+			.client-profile-summary {
+				@include rfs(15);
+				margin-top: 20px;
+
+				span {
+					color: $gray-d;
+				}
+			}
+
+			.newsletter {
+				@include rfs(13);
+				color: $gray-d;
+				margin: 20px 0 15px;
+				position: relative;
+
+				span {
+					padding-left: 10px;
+
+					&:before {
+						background-color: #fff;
+						border: 1px solid $green;
+						border-radius: 2px;
+						content: '';
+						display: inline-block;
+						height: 18px;
+						left: 0;
+						position: absolute;
+						width: 18px;
+					}
+
+				}
+
+				input {
+					display: none;
+
+					&:checked {
+						& + span {
+
+							&:before {
+								@include icon-get('check-thin');
+								background-color: $green;
+								color: #fff;
+								font-size: 1rem;
+							}
+						}
+
+					}
+				}
+			}
+
+			.icon-edit {
+				color: $purple-n;
+			}
+
+			.address-search-placeholder {
+				span {
+					@include rfs(12);
+					color: $gray-d;
+					font-weight: bold;
+				}
+
+				small {
+					margin-left: 16px;
+
+					#dont-know-postal-code {
+						@include rfs(12);
+					}
+				}
+			}
+
+			.address-data {
+
+				input {
+					max-width: 100%;
+					width: 100%;
+				}
+
+				label {
+					span {
+						@include rfs(12);
+						color: $gray-d;
+						font-weight: bold;
+					}
+
+					small {
+						margin-left: 16px;
+
+						#dont-know-postal-code {
+							@include rfs(12);
+						}
+					}
+				}
+
+				.ship-number {
+					float: none;
+					margin: 0 2% 0 0;
+					width: 48%;
+				}
+
+				p.ship-postal-code {
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					width: 100%;
+
+					label {
+						width: 100%;
+					}
+
+					input,
+					small {
+						line-height: 3.5;
+						max-width: 48%;
+					}
+				}
+
+				.ship-filled-data {
+					margin-bottom: 15px;
+					margin-top: 15px;
+
+					span {
+						@include rfs(13);
+						color: $gray-d;
+						font-weight: 400;
+
+						.link-edit {
+							color: $purple;
+							font-weight: 500;
+							text-transform: capitalize;
+						}
+					}
+				}
+
+				.ship-more-info {
+					margin: 0 0 0 2%;
+					width: 48%;
+				}
+
+				.required {
+					input {
+						&.success {
+							background-position: right;
+							border-color: $green;
+						}
+
+						&.error {
+							border-color: $red-error;
+						}
+					}
+				}
+
+
+				.ship-reference,
+				.ship-name {
+					width: 100%;
+				}
+
+				.error-list {
+					width: 100%;
+					span.error-description {
+						@include rfs(12);
+						color: $red-error;
+						font-weight: bold;
+						margin-bottom: 0;
+						position: relative;
+					}
+				}
+
+				.box-delivery {
+					p {
+						&.ship-number,
+						&.ship-more-info {
+							float: left;
+						}
+					}
+				}
+
+				p.input {
+					margin-bottom: 11px;
+				}
+
+			}
+
+			.address-shipping-options {
+				.choose-shipping-option {
+					@include rfs(12);
+				}
+
+				.shipping-option-item {
+					border: 1px solid $gray-n;
+					border-radius: 5px;
+					margin-bottom: 5px;
+					padding-left: 10%;
+					position: relative;
+
+					i {
+						display: none;
+					}
+
+					&:before {
+						border: 1px solid $gray-b;
+						border-radius: 12px;
+						content: '';
+						display: inline-block;
+						height: 12px;
+						left: 4%;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 12px;
+					}
+
+					.shipping-option-item-text-wrapper {
+						span {
+							@include rfs(12);
+							color: $gray-d;
+							font-weight: 500;
+						}
+
+						.shipping-option-item-name {
+							color: $purple;
+							font-weight: bold;
+						}
+					}
+
+					&.active {
+						background-color: #fff;
+						border: 1px solid $purple;
+
+						&:before {
+							background-color: $purple;
+							border: 2px solid #fff;
+							box-shadow: 0 0 0 2px #702f8f;
+							height: 10px;
+							left: calc(4% + 1px);
+							width: 10px;
+						}
+					}
+				}
+				.scheduled-sla-label {
+					@include rfs(12);
+					color: $gray-d;
+					margin-bottom: 5px;
+				}
+
+				.scheduled-sla-edit {
+					color: $purple;
+				}
+
+				.scheduled-sla-select,
+				.scheduled-sla-value,
+				span {
+					color: $gray-d;
+				}
+
+				.scheduled-sla.active {
+					background-color: #fff;
+					border: 1px solid $red-error;
+				}
+
+				.delivery-windows {
+					label {
+						position: relative;
+					}
+
+					input {
+						display: none;
+					}
+
+					span {
+						&:before {
+							border: 1px solid $gray-b;
+							border-radius: 12px;
+							content: '';
+							display: inline-block;
+							height: 12px;
+							left: 2px;
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 12px;
+						}
+					}
+
+					input:checked + span {
+						&:before {
+							background-color: $purple;
+							border: 2px solid #fff;
+							box-shadow: 0 0 0 2px #702f8f;
+							height: 10px;
+							left: 3px;
+							width: 10px;
+						}
+					}
+				}
+			}
+
+			.shipping-summary-placeholder {
+				.address {
+					@include rfs(13);
+				}
+
+				p.shipping-selected-sla {
+					border: none;
+					margin-bottom: 2px;
+
+					span {
+						color: $gray-d;
+						font-weight: 500;
+					}
+
+					.text,
+					.sla {
+						color: $purple;
+						font-weight: bold;
+					}
+				}
+
+				#change-other-shipping-option {
+					@include rfs(12);
+					border: 1px solid $gray-n;
+					color: $gray-d;
+
+					&:hover,
+					&:focus {
+						background-color: #fff;
+					}
+				}
+			}
+
+			.payment-group {
+				padding-top: 120px;
+			}
+
+			.link-gift-card {
+				top: 100px;
+
+				@include breakpoint ('large', 'max') {
+					top: 100px;
+
+					@include breakpoint ('small', 'max') {
+						position: absolute;
+						top: 90px;
+						z-index: 1;
+					}
+				}
+			}
+
+			.payment-group-item {
+				align-items: center;
+				border: none;
+				border-left: 4px solid #F1F0F0;
+				border-radius: 0;
+				border-top: 1px solid $gray-n;
+				display: flex;
+				height: 60px;
+				margin-left: 0;
+				position: relative;
+
+				&:last-child {
+					border-bottom: 1px solid $gray-n;
+				}
+
+				&.active {
+					background-color: #fff;
+					border-left: 4px solid #9ACA3C;
+
+					.payment-group-item-text {
+						@include rfs(15);
+						color: #736C6B;
+						font-weight: bold;
+						text-decoration: none;
+					}
+
+					&:after {
+						@include icon-get('check-thin');
+						background-color: #9ACA3C;
+						border: 1px solid #BBBBBB;
+						color: #fff;
+						font-size: .9rem;
+						line-height: .975;
+					}
+				}
+
+				.payment-group-item-text {
+					@include rfs(16);
+					background-position: left center;
+					line-height: 1;
+					margin-bottom: 0;
+				    padding: 0 40px 0 55px;
+				}
+
+				&:after {
+					border: 1px solid #BBBBBB;
+					content: '';
+					display: inline-block;
+					height: 16px;
+					position: absolute;
+					right: 16px;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 16px;
+
 				}
 			}
 
@@ -92,14 +795,32 @@ body {
 				.payment-group {
 					width: 40%;
 
-					.payment-group-list-btn { width: 100%; }
+					.payment-group-list-btn {
+						width: 100%;
+
+						a {
+							text-decoration: none !important;
+						}
+					}
 				}
 
-				.steps-view { width: 60%; }
+				.steps-view {
+					width: 60%;
+
+					@include breakpoint('extra-large', 'max') {
+						width: 59%;
+
+						@include breakpoint(979px, 'max') {
+							width: 60%;
+						}
+					}
+				}
 
 				@media screen and (max-width: 767px) {
 					.payment-group,
-					.steps-view { width: auto !important; }
+					.steps-view {
+						width: auto !important;
+					}
 				}
 			}
 
@@ -107,46 +828,6 @@ body {
 				@include responsiveFont(16);
 				margin-top: 15px;
 				width: 100%;
-			}
-
-			.shipping-options {
-				.sla-items-list {
-					.shipping-option-item {
-						.shipping-option-item-text-wrapper {
-							margin-left: 8%;
-
-							.shipping-option-item-name {
-								// color: #000000;
-								font-weight: bold;
-							}
-						}
-
-						[class*='icon'] {
-							left: 10px;
-						}
-					}
-				}
-
-				.btn-group {
-					@include responsiveFont(14);
-
-					.shipping-option-item {
-						border-radius: 0;
-						margin-bottom: 5px;
-
-						&.active {
-							background: rgba(#736c6b, .2);
-							color: $txt-gray;
-						}
-
-						&:hover {
-							background: $gray-l;
-							color: $txt-gray;
-						}
-					}
-				}
-
-				p { border-top: 3px solid $gray-l; }
 			}
 
 			.scheduled-sla-value-container:hover {
@@ -170,48 +851,125 @@ body {
 
 		.cart-template {
 			.cart-fixed {
+				border: 1px solid #f4f2f1;
+				border-radius: 5px;
 				height: 100%!important;
-				position: static!important;
+				margin-right: 0;
+				padding-bottom: 40px;
+				width: 100%;
 			}
 
 			.summary-cart-template-holder {
-				border: 3px solid #f4f2f1;
+				border: 0;
 				height: auto!important;
+
+
 			}
 
 			h2 {
-				@include responsiveFont(20);
-				background-color: $gray-l;
+				@include responsiveFont(16);
 				color: $txt-gray;
 				font-weight: bold;
 				line-height: 18px;
-				margin-bottom: 0;
-				padding: 16px 0;
-				text-align: center;
-			}
+				margin: 18px 20px 10px;
 
-			ul {
-				li.item:first-child {
-					border-top: none;
-					/*.shipping-date{
-						color:$txt-gray;
-					}
-					.price{
-						color:$orange;
-					}*/
+				&:after {
+					border: 1px solid #9aca3c;
+					border-radius: 10px;
+					content: '';
+					display: block;
+					margin-top: 10px;
+					position: relative;
+					width: 35px;
 				}
 			}
+
 			.item {
-				border-top: 3px solid $gray-l;
+				border: 1px solid $gray-l;
+				border-radius: 4px;
+				clear: none;
+				float: none;
+				margin: 5px auto;
+				min-height: 115px;
 				padding: 15px;
+				width: 90%;
 
-				.shipping-date { color: $txt-gray-l; }
+				.shipping-date {
+					color: $txt-gray-l;
+				}
 
-				.price { color: $green; }
+				.price {
+					color: $green;
+				}
 
 				.service-list {
-					margin-top: 10px;
+					background-color: $gray-c410;
+					float: none;
+					height: 50px;
+					margin-top: 30px;
+					padding: 5px;
 					width: 100%;
+
+					.service-item {
+						.product-name {
+							display: inline-block;
+							text-overflow: ellipsis;
+							width: 70%;
+
+							.icon-ok {
+								display: none;
+							}
+						}
+						.price {
+							@include rfs(11);
+							display: inline-block;
+							position: static;
+							text-align: right;
+							width: 25%;
+
+							&:before {
+								display: none;
+							}
+						}
+					}
+
+
+					@include breakpoint (1200px, 'max') {
+						height: 65px;
+
+						@include breakpoint ('medium', 'max') {
+							height: 30px;
+
+							.product-name {
+								height: 20px;
+							}
+
+							@include breakpoint (767px, 'max') {
+								height: 50px;
+
+								.product-name {
+									height: auto;
+								}
+							}
+						}
+					}
+				}
+
+				.description {
+					margin-top: 0;
+				}
+
+				@include breakpoint('large', 'max') {
+					.shipping-date,
+					.price {
+						@include rfs (11);
+					}
+					@include breakpoint ('medium', 'max') {
+						.shipping-date,
+						.price {
+							@include rfs (12);
+						}
+					}
 				}
 			}
 
@@ -220,10 +978,64 @@ body {
 				margin-bottom: 0;
 
 				.badge {
-					background: $green;
-					border-color: $green;
-					color: #ffffff;
+					background: #fff;
+					border: 1px solid $purple;
+					box-shadow: none;
+					color: $purple;
+					font-weight: bold;
 					padding: 3px 6px;
+				}
+			}
+
+			.product-name {
+				color: #736c6b;
+				float: none;
+				font-weight: 500;
+				height: 40px;
+				text-overflow: ellipsis;
+				white-space: normal;
+				width: calc(100% - 60px);
+
+				@include breakpoint ('medium', 'max') {
+					width: 60%;
+
+					@include breakpoint (767px, 'max') {
+						width: calc(100% - 60px);
+					}
+				}
+			}
+
+			.price {
+				@include rfs(14);
+				color: $green;
+				font-weight: bold;
+
+				@include breakpoint ('medium', 'max') {
+					position: absolute;
+					right: 15px;
+					top: 15px;
+
+					@include breakpoint (767px, 'max') {
+						position: static;
+					}
+				}
+
+				&:before {
+					content: 'Por ';
+				}
+			}
+
+			.shipping-date {
+				@include rfs(12);
+				color: $gray-d!important;
+				font-weight: bold;
+
+				@include breakpoint ('medium', 'max') {
+					margin-left: 52px;
+
+					@include breakpoint (767px, 'max') {
+						margin-left: 0;
+					}
 				}
 			}
 
@@ -238,33 +1050,67 @@ body {
 
 			.summary-template-holder {
 				@include vendor(border-radius, 0);
-				border: 3px solid $gray-l;
 				border-top: 0;
 				margin-top: -1px;
+
+				.accordion-group {
+					margin-bottom: 0;
+				}
+
+				.accordion-inner {
+					position: relative;
+				}
 
 				.totalizers {
 					border: none;
 					margin-bottom: 0;
 
 					.table {
+						margin: 0 auto;
+						width: 90%;
+
 						tr {
 							height: 40px;
 
 							.info {
+								@include rfs(14);
+								color: $gray-d;
 								float: none;
-								text-align: right;
+								font-weight: 700;
+								width: 1%;
 							}
 
 							.monetary {
-								text-align: left;
+								@include rfs(12);
+								color: $purple;
+								font-weight: bold;
 								width: 50%;
+							}
+
+							&:not(:last-child) {
+								border-bottom: 1px solid $gray-s;
 							}
 						}
 
 						tfoot {
-							td { @include responsiveFont(16); }
+							background-color: $gray-n;
+							left: 0;
+							padding: 0 5%;
+							position: absolute;
+							width: 100%;
 
-							.monetary { color: $green; }
+							td {
+								text-transform: uppercase;
+							}
+
+							.info {
+								@include responsiveFont(16);
+							}
+
+							.monetary {
+								@include responsiveFont(16);
+								color: $green;
+							}
 						}
 					}
 				}
@@ -273,17 +1119,60 @@ body {
 					@include responsiveFont(12);
 					color: $txt-gray;
 					display: none;
+					margin-top: 35px;
 					padding: 1em;
 
 					&.active { display: block; }
 				}
 			}
+
+			@include breakpoint ('medium', 'max') {
+				margin-bottom: 40px;
+			}
 		}
 
 		.payment-confirmation-wrap {
 			background: none;
-			margin-top: 10px;
-			position: static;
+			border: none!important;
+			bottom: -100px;
+			position: absolute;
+			width: 100%;
+
+			.summary-note {
+				margin: 0 !important;
+			}
+
+			.payment-submit-wrap {
+				margin: 0 !important;
+			}
+
+			.note-data {
+				@include rfs (12);
+			}
+
+			@include breakpoint('small', 'max') {
+				bottom: -80px;
+			}
+
+			button {
+				@include rfs(15);
+				background-color: $green;
+				border-color: $green;
+				border-width: 1px;
+				height: 40px;
+				line-height: 1;
+				padding: 10px 0;
+
+				span {
+					font-weight: 500;
+				}
+
+				&:focus,
+				&:hover {
+					background-color: #fff;
+					color: $green;
+				}
+			}
 		}
 
 		.pending-wrap {
@@ -312,13 +1201,32 @@ body {
 				line-height: 120%;
 
 				&:after {
+					@include rfs(13);
 					color: $green;
 					content: 'Para emitir o boleto clique em "FINALIZAR COMPRA". \A\A O Boleto possui o vencimento de 1 dia útil e pode ser pago em qualquer agência bancária e internet Banking.\A\A Caso não seja pago durante esse período será automaticamente cancelado.\A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis.';
-					font-size: 13px;
 					font-weight: bold;
 					margin-top: 10px;
 					white-space: pre-wrap;
 					word-wrap: break-word;
+				}
+			}
+
+			&.mercadopagoPaymentGroup,
+			&.newPayPalPaymentGroup,
+			&.bankInvoicePaymentGroup,
+			&.safetyPayPaymentGroup {
+
+				@include breakpoint ('medium', 'min') {
+					min-height: 425px;
+
+					@include breakpoint ('small', 'min') {
+						min-height: 425px;
+					}
+				}
+
+				@include breakpoint(767px, 'max') {
+					margin-bottom: -100px;
+
 				}
 			}
 		}
@@ -336,22 +1244,264 @@ body {
 			}
 		}
 	}
+
+	.payment-group-list-btn {
+		a {
+			position: relative;
+
+			&:before {
+				content: '';
+				display: block;
+				height: 20px;
+				position: absolute;
+				width: 40px;
+			}
+		}
+	}
+
+	#payment-group-creditCardPaymentGroup {
+		.payment-group-item-text {
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/cartao-credito.png') no-repeat center;
+			background-size: contain;
+		}
+	}
+
+	#payment-group-MercadoPagoPaymentGroup {
+		.payment-group-item-text {
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/mercado-pago.png') no-repeat center;
+			background-size: contain;
+		}
+	}
+
+	#payment-group-payPalPaymentGroup {
+		.payment-group-item-text {
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/paypal-icone.png') no-repeat center;
+			background-size: contain;
+		}
+	}
+
+	#payment-group-safetypayPaymentGroup {
+		.payment-group-item-text {
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/transferencia-bancaria.png') no-repeat center;
+			background-size: contain;
+			height: 40px;
+			left: 15px;
+			width: 20px
+		}
+	}
+
+	#payment-group-bankInvoicePaymentGroup {
+		.payment-group-item-text {
+			background: none;
+		}
+
+		&:before {
+			background: url('/arquivos/boleto-bancario.png') no-repeat center;
+			background-size: contain;
+			width: 34px;
+		}
+	}
+
+	#show-gift-card-group {
+		margin-left: 20px;
+		position: relative;
+
+		&:before {
+			background: url('/arquivos/vale-presente.png') no-repeat top;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 30px;
+			left: -25px;
+			position: absolute;
+			top: -5px;
+			width: 20px;
+		}
+	}
 }
 
 
 // Checkout novo
 #app-container {
-	background-color: #f4f4f4;
-	box-shadow: 0 45px 0 #f4f4f4;
+	background-color: $gray-m;
+	box-shadow: 0 45px 0 $gray-m;
+	padding: 20px 50px;
+
+	@include breakpoint('medium', 'max') {
+		padding: 20px 16px;
+	}
+
+	label.FormFieldLabel {
+		@include rfs(12);
+		color: $gray-d;
+		font-weight: 500;
+	}
+
+	.PaymentCardValue {
+		label {
+			float: none;
+		}
+	}
+
+	p.input {
+		margin-bottom: 15px;
+	}
+
+	.error {
+		border: 2px solid $red-error;
+	}
+	.help.error {
+		@include rfs(12);
+		border: none;
+		color: $red-error;
+		font-weight: bold;
+	}
+
+	.AddressToggle {
+		input {
+			display: none;
+
+			&:checked + label {
+				&:before {
+					@include icon-get('check-thin');
+					background-color: $green;
+					color: #fff;
+					font-size: 1rem;
+				}
+			}
+		}
+
+		label {
+			@include rfs(12);
+			line-height: 1;
+			margin-left: 25px;
+			position: relative;
+			width: 50%;
+
+			&:before {
+				border: 1px solid $gray-b;
+				content: '';
+				display: inline-block;
+				height: 18px;
+				left: -26px;					//please, forgive me!
+				position: absolute;
+				top: 3px;
+				width: 18px;
+			}
+
+			@include breakpoint(360px, 'max') {
+				width: 90%;
+			}
+		}
+	}
+
+	.SecurityEnvironmentIcon {
+		background-color: $gray-m;
+		display: flex;
+		justify-content: right;
+
+		.icon-lock {
+			@include rfs(16);
+			color: $gray-s;
+			display: inline-block;
+		}
+
+		.payment-environment-icon-text {
+			@include rfs(12);
+			color: $gray-s;
+			display: inline-block;
+			font-weight: bold;
+			width: 110px;
+
+		}
+	}
+
+	.PaymentCardFlags {
+		margin-top: 36px;
+
+		.card-flags {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			margin: 0 auto 10px;
+			width: 90%;
+
+			.radio {
+				@include breakpoint (326px, 'max') {
+					width: 30%;
+				}
+			}
+
+			@include breakpoint(326px, 'max') {
+				height: 110px;
+			}
+		}
+
+		.card-flag-label {
+			position: relative;
+
+			input[type=radio] {
+				display: none;
+			}
+
+
+			span {
+				font-size: 0;
+				text-indent: 0;
+
+				&:before {
+					border: 1px solid $gray-b;
+					border-radius: 12px;
+					bottom: 36px;
+					content: '';
+					display: inline-block;
+					height: 12px;
+					left: 15px;
+					position: absolute;
+					width: 12px;
+
+					@include breakpoint('extra-small', 'max') {
+						top: -22px;
+					}
+				}
+
+				&.card-selected {
+					&:before {
+						background-color: $purple;
+						border: 2px solid #fff;
+						box-shadow: 0 0 0 2px #702f8f;
+						height: 10px;
+						width: 10px;
+					}
+				}
+			}
+		}
+	}
 
 	.App {
 		// Lista de cartões salvos
 		.SavedCards {
-			a { font-size: 14px; }
+			a { @include rfs(14); }
 		}
 
 		// Error
-		span.error { font-size: 12px; }
+		span.error { @include rfs(12); }
 
 		// Inputs
 		.input-mini,
@@ -359,7 +1509,7 @@ body {
 		.input-medium,
 		.input-large,
 		.input-xlarge {
-			height: 40px;
+			height: 35px;
 			max-width: 100%;
 			width: 100%;
 		}
@@ -385,9 +1535,21 @@ body {
 			}
 		}
 
+		.input-prepend {
+			width: 100%;
+
+			.add-on {
+				height: 35px;
+				width: 12%;
+			}
+
+			.card-value {
+				width: 88%;
+			}
+		}
+
 		// Código de segurança
 		.PaymentCardCVV {
-			width: 47%;
 
 			label {
 				display: block;
@@ -400,8 +1562,8 @@ body {
 
 		// Pagar com 2 cartões
 		.ChangeNumberOfPayments {
+			@include rfs(15);
 			border-top: 1px solid #ccc;
-			font-size: 15px;
 			font-weight: bold;
 			margin: 1em 0;
 			position: relative;
@@ -435,6 +1597,49 @@ body {
 
 			.payment-billing-address-complement { float: right; }
 		}
+
+		.CardForm {
+			.BillingAddress {
+				float: left;
+				width: 100%;
+			}
+
+			#creditCardpayment-card-0Code {
+				bottom: 4px;
+				position: relative;
+			}
+
+			.PaymentCardCVV {
+				float: left;
+				margin-right: 2%;
+				width: 38%;
+
+				label {
+					font-size: 0;
+					height: 0;
+					padding: 0;
+				}
+
+
+				&:before {
+					@include rfs(12);
+    				bottom: 4px;
+					content: 'Cod. Segurança';
+					font-weight: 500;
+					position: relative;
+				}
+
+				.FormFieldLabel[for=creditCardpayment-card-1Code] {
+					margin-top: -4px;
+				}
+			}
+
+			.PaymentCardHolderDocument {
+				float: left;
+				margin-left: 2%;
+				width: 58%;
+			}
+		}
 	}
 }
 
@@ -449,6 +1654,7 @@ body {
 
 	&:before {
 			background-image: url('https://consulqa.vteximg.com.br/arquivos/cns-icon-add-cartao.jpg');
+			background-repeat: no-repeat;
 			background-size: contain;
 			content: '';
 			display: block;
@@ -464,8 +1670,8 @@ body {
 		width: 100%;
 
 		&:before {
+			@include rfs(13);
 			content: 'Adicionar mais um cartão ao pagamento';
-			font-size: 13px;
 		}
 		&:after {
 			background-image: url('https://consulqa.vteximg.com.br/arquivos/icon-arrow-gray.png');
@@ -482,7 +1688,7 @@ body {
 }
 
 .CardForm + .CardForm + .ChangeNumberOfPayments a {
-	font-size: 13px;
+	@include rfs(13);
 	&:before {
 		display: none;
 	}
@@ -490,5 +1696,3 @@ body {
 		transform: rotate(180deg);
 	}
 }
-
-
