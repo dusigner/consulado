@@ -354,6 +354,7 @@ Nitro.controller(
 			}
 
 		}
+
 		$('.listagem-apoio').on('click', function(e) {
 			e.preventDefault();
 
