@@ -213,9 +213,11 @@ const Eventos = {
 			box_pai.removeClass('one');
 			box_pai.removeClass('two');
 			box_pai.removeClass('tree');
-			back.removeClass('Fornos-Embutidos');
-			back.removeClass('Coifas');
-			back.removeClass('Cooktops');
+			setTimeout(function () {
+				back.removeClass('Fornos-Embutidos');
+				back.removeClass('Coifas');
+				back.removeClass('Cooktops');
+			},500);
 		});
 	}
 };

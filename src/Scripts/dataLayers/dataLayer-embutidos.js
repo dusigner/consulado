@@ -14,9 +14,6 @@ Nitro.module('dataLayer-embutidos', function() {
 
 	this.clickHeaderBack = () => {
 		$('.box_img .back').click(e => {
-			setTimeout(function () {
-				console.log(e.currentTarget.classList);
-			}, 300);
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Clique Zoom',
@@ -95,7 +92,6 @@ Nitro.module('dataLayer-embutidos', function() {
 
 	this.clickLinkDicas = () => {
 		$('.box_descricao a').click(e => {
-			// dataLayer.push({ category, action, label, event });
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Clique Botão',
