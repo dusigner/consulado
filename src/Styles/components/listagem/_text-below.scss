@@ -1,0 +1,58 @@
+body.listagem {
+	.listagem-apoio {
+		border: 1px solid #e5e5e5;
+		border-top: 2px solid #9ACA3C;
+		margin: 20px 0 0;
+
+		padding: 20px 60px 20px 35px;
+		position: relative;
+		width: 98%;
+
+
+		@include breakpoint('medium', 'max') {
+			padding: 20px 32px 20px 15px;
+		}
+
+		&::after {
+			@include icon-get('arrow-down');
+			font-size: 5px;
+			position: absolute;
+			right: 20px;
+			top: 20px;
+			transition: transform .3s ease;
+
+			@include breakpoint('medium', 'max') {
+				right: 10px;
+				top: 20px;
+			}
+		}
+
+		.text-apoio {
+			@include rfs(12);
+			color: #736C6B;
+			margin: 0;
+			max-height: 40px;
+			overflow: hidden;
+			text-align: justify;
+			transition: max-height .4s ease;
+
+			&:empty {
+				display: none;
+			}
+		}
+
+		&.active {
+			.text-apoio {
+				max-height: 200px;
+			}
+
+			&:after {
+				transform: rotate(180deg);
+			}
+		}
+
+		&:empty {
+			display: none;
+		}
+	}
+}
