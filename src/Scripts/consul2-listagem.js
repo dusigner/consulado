@@ -353,11 +353,11 @@ Nitro.controller(
 				$('.filter-wrapper > p:first-of-type').addClass('hide');
 			}
 
-			$('.listagem-apoio').on('click', function(e) {
-				e.preventDefault();
-
-				$(this).toggleClass('active');
-			});
 		}
+		$('.listagem-apoio').on('click', function(e) {
+			e.preventDefault();
+
+			$(this).toggleClass('active');
+		});
 	}
 );
