@@ -16,23 +16,11 @@
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
-	<!-- Heading banner -->
-	<div class="heading-banner">
-		<div class="container">
-			<div class="heading-banner__title">
-				<h1>
-					<vtex:contentPlaceHolder id="titulo-pagina-categoria" />
-				</h1>
-			</div>
-
-			<!-- Banner -->
-			<div class="category-page-top-banner">
-				<vtex:contentPlaceHolder id="banner-topo-pagina-categoria" />
-			</div>
-			<!-- /Banner -->
-		</div>
+	<!-- Banner mobile -->
+	<div class="category-banner-mobile">
+		<vtex:contentPlaceHolder id="banner-mobile" />
 	</div>
-	<!-- /Heading banner -->
+	<!-- /Banner mobile -->
 
 	<div class="category-postheader">
 		<div class="container">
@@ -41,6 +29,11 @@
 				<vtex.cmc:breadCrumb />
 			</section>
 			<!-- /Breadcrumb -->
+
+			<div class="order-wrapper -desktop">
+				<p class="order-title">Ordenar por</p>
+				<ul class="order-by"></ul>
+			</div>
 		</div>
 	</div>
 
@@ -52,6 +45,9 @@
 	<!-- /Calculadora BTU -->
 
 	<div class="container result-filter">
+		<!-- Category Title -->
+		<vtex:contentPlaceHolder id="category-title" />
+		<!-- /Category Title-->
 
 		<!-- Filtros -->
 		<div class="filter-wrapper">
@@ -74,6 +70,12 @@
 			<!-- /Filtros -->
 
 		<div class="container list-container clearfix">
+			<!-- Banner Desktop -->
+			<div class="category-banner-desktop">
+				<vtex:contentPlaceHolder id="banner-desktop" />
+			</div>
+			<!-- /Banner Desktop -->
+
 			<div class="row gutters">
 				<!-- Prateleira -->
 				<div class="col-12 list-content">
@@ -85,7 +87,7 @@
 								<span>Filtrar</span>
 							</div>
 
-							<div class="order-wrapper">
+							<div class="order-wrapper -mobile">
 								<p class="order-title">Ordenar por</p>
 								<ul class="order-by"></ul>
 							</div>
