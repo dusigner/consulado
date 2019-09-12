@@ -398,7 +398,9 @@ Nitro.module('chaordic', function() {
 			accept:'application/json'
 		}).then(function(product) {
 			if (!$box.hasClass('box-produto')) {
-				let item = product[0].items;
+				let item = product[0].items.filter(function(value) {
+					return value.sellers[0].commertialOffer.AvailableQuantity > 0;
+				});
 				product[0].available = item.length > 0;
 				product[0].priceInfo = item[0].sellers[0].commertialOffer;
 				product[0].maxInstallment = self.prepareInstallments(
