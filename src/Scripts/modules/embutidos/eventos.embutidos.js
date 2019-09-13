@@ -6,14 +6,13 @@ const Eventos = {
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
 		let CooktopA =
-			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
-		let CooktopB =
 			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg';
+		let CooktopB =
+			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
 
 		let FornoA =
 			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
-		let FornoB =
-			'/arquivos/embutir_forno02.png';
+		let FornoB = '/arquivos/embutir_forno02.png';
 
 		let CoifaA =
 			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
@@ -213,11 +212,11 @@ const Eventos = {
 			box_pai.removeClass('one');
 			box_pai.removeClass('two');
 			box_pai.removeClass('tree');
-			setTimeout(function () {
+			setTimeout(function() {
 				back.removeClass('Fornos-Embutidos');
 				back.removeClass('Coifas');
 				back.removeClass('Cooktops');
-			},500);
+			}, 500);
 		});
 	}
 };
