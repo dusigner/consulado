@@ -130,7 +130,6 @@
 						user-select: none;
 					}
 					&:hover {
-						width: 100px;
 						span {
 							color: #ffffff;
 							display: initial;
@@ -164,10 +163,13 @@
 						width: 100px;
 					}
 					&:nth-child(1) {
+						justify-content: flex-start;
 						left: 70%;
+    					padding: 0 40px;
 						top: 80%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
+							padding: 0 10px;
 							top: 25%;
 						}
 					}
@@ -179,7 +181,8 @@
 					}
 					span {
 						color: #ffffff;
-						font-size: 2em;
+						font-size: 1.5em;
+						font-weight: bold;
 						@include breakpoint('small', 'max') {
 							font-size: 1em;
 						}
@@ -219,13 +222,13 @@
 						display: none;
 					}
 					&:nth-child(2) {
-						left: 70%;
+						justify-content: flex-start;
+						left: 67%;
+    					padding: 0 40px;
 						top: 60%;
-						@include breakpoint(81.25em, 'max') {
-							left: 55%;
-						}
 						@include breakpoint('small', 'max') {
 							left: 50%;
+							padding: 0 10px;
 							top: 60%;
 						}
 					}
@@ -234,7 +237,8 @@
 					}
 					span {
 						color: #ffffff;
-						font-size: 2em;
+						font-size: 1.5em;
+						font-weight: bold;
 						@include breakpoint('small', 'max') {
 							font-size: 1em;
 						}
@@ -277,16 +281,20 @@
 						display: none;
 					}
 					&:nth-child(3) {
+						justify-content: flex-start;
 						left: 60%;
+    					padding: 0 40px;
 						top: 60%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
+							padding: 0 10px;
 							top: 60%;
 						}
 					}
 					span {
 						color: #ffffff;
-						font-size: 2em;
+						font-size: 1.5em;
+						font-weight: bold;
 						@include breakpoint('small', 'max') {
 							font-size: 1em;
 						}
@@ -326,7 +334,7 @@
 			padding: 0 40px;
 
 			@include breakpoint('medium', 'max') {
-				padding: 0 20px;
+				padding:  0 20px 10px 20px ;
 			}
 			@include breakpoint('small', 'max') {
 				order: 1;
@@ -340,6 +348,7 @@
 			}
 			p {
 				font-size: 1.5em;
+				font-weight: 300;
 				@include breakpoint(1050px, 'max') {
 					font-size: 1em;
 				}
@@ -347,10 +356,9 @@
 		}
 		.btn-primary-button {
 			background-color: transparent;
-			border: 3px solid #ffffff;
+			border: 2px solid #ffffff;
 			color: #ffffff;
 			float: right;
-			font-size: 1.156em;
 			font-weight: 300;
 			margin: 0 0 10px 0;
 			min-height: 40px;
@@ -358,6 +366,7 @@
 			padding: 9px 40px;
 			@include breakpoint('small', 'max') {
 				margin: 10px 0;
+				padding: 9px 20px;
 			}
 			&:hover {
 				transform: scale(1.1);
@@ -447,6 +456,7 @@
 						}
 						@include breakpoint('small', 'max') {
 							margin: 10px 0;
+							padding: 9px 20px;
 						}
 					}
 				}
@@ -512,7 +522,10 @@
 						border: 2px solid #ffffff;
 						color: #ffffff;
 						margin: 10px 0;
-						padding: 10px;
+						padding: 9px 40px;
+						@include breakpoint('small', 'max') {
+							padding: 9px 20px;
+						}
 						&:hover {
 							transform: scale(1.1);
 						}
