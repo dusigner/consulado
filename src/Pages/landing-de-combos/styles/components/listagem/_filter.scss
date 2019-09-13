@@ -224,7 +224,7 @@
 		width: 215px;
 
 		@include breakpoint(small, 'max') {
-			background-color: #e6e6e6;
+			background-color: #e4e4e4;
 			margin: 0 10px 10px 0;
 			padding: 0 !important;
 			text-transform: initial;
@@ -237,19 +237,19 @@
 			@include breakpoint(small, 'max') { padding-bottom: 10px; }
 		}
 
-		
+
 		label {
 			cursor: pointer;
 			padding-left: 25px;
 			position: relative;
-			
+
 			@include breakpoint(small, 'max') {
 				line-height: 1;
 				margin: 0;
 				padding: 13px 10px;
 				width: 100%;
 			}
-			
+
 			&:after {
 				@include breakpoint(small, 'max') { content: none; }
 			}

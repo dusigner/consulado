@@ -162,7 +162,7 @@
 	.combos-quick-view__header {
 		display: flex;
 		justify-content: space-between;
-		
+
 		@include breakpoint(small, 'max') {
 			flex-direction: column;
 			position: relative;
@@ -173,7 +173,7 @@
 			transform: translateY(1px);
 			width: 10px;
 			z-index: 1;
-			
+
 			@include breakpoint(small, 'max') { display: none; }
 		}
 	}
@@ -243,7 +243,7 @@
 
 .border-top {
 	border-top: solid 1px  $gray;
-	
+
 	@include breakpoint(small, 'max') { border: none; }
 }
 
@@ -272,7 +272,7 @@
 
 	.product-quick-view__container-description {
 		width: 50%;
-		
+
 		@include breakpoint(small, 'max') {
 			text-align: center;
 			width: 100%;
@@ -424,7 +424,7 @@
 
 @mixin accordion-title() {
 	@include responsiveFont(13, 16, true);
-	background-color: #e6e6e6;
+	background-color: #e4e4e4;
 	border-bottom: 1px solid #ffffff;
 	color: $txt-gray;
 	padding: 10px;
@@ -671,7 +671,7 @@
 	margin-top: 10px;
 	position: absolute !important;
 	z-index: 9999;
-	
+
 	.tooltip-arrow {
 		border-bottom-color: $template-primary !important;
 		border-color: transparent;
