@@ -1,5 +1,5 @@
 @charset 'UTF-8';
-body.quiz { 
+body.quiz {
 	#quiz-install {
 		padding: 20px 0 40px;
 		.container {
@@ -8,7 +8,7 @@ body.quiz {
 				padding  : 0;
 			}
 		}
-		h2 { 
+		h2 {
 			@include breakpoint(1124px, 'max') { font-size: 30px; }
 			@include breakpoint(767, 'max') { font-size: 28px; }
 			@include breakpoint(380, 'max') { font-size: 22px; }
@@ -17,7 +17,7 @@ body.quiz {
 			font-weight: 300;
 			margin-bottom: 30px;
 		}
-		a.primary-button { 
+		a.primary-button {
 			display: table;
 			float: none;
 			font-weight: 400;
@@ -32,7 +32,7 @@ body.quiz {
 		&.current {
 			display: block;
 			transition: all 250ms ease-out;
-		}	
+		}
 	}
 
 	.quiz-intro-start {
@@ -61,8 +61,8 @@ body.quiz {
 
 	}
 	.quiz-steeps {
-		@include breakpoint(1124px, 'max') { 
-			background-color: #f2f2f2;
+		@include breakpoint(1124px, 'max') {
+			background-color: #f4f2f1;
 		}
 		.steep {
 			border: 1px solid $green;
@@ -71,7 +71,7 @@ body.quiz {
 			padding: 0 5%;
 			text-align: center;
 			transition: all 250ms ease-out;
-			@include breakpoint(1124px, 'max') { 
+			@include breakpoint(1124px, 'max') {
 				border: 1px solid transparent;
 				border-bottom: 1px solid $green;
 				border-top: 1px solid $green;
@@ -101,7 +101,7 @@ body.quiz {
 			}
 			.rede-de-servicos {
 				color: #000;
-				@include breakpoint(767px, 'max') { 
+				@include breakpoint(767px, 'max') {
 					border: 1px solid #000;
 					display: table;
 					font-size: 20px;
@@ -116,9 +116,9 @@ body.quiz {
 			.box-quiz {
 				@include breakpoint(1080px, 'max') { min-height: 280px; }
 				@include breakpoint(870px, 'max') { min-height: 340px; }
-				@include breakpoint(767px, 'max') { 
+				@include breakpoint(767px, 'max') {
 					min-height: inherit!important;
-					padding: 10px 10px  15px; 
+					padding: 10px 10px  15px;
 				}
 				background-color: #FFF;
 				border: 1px solid #ADADAD;
@@ -219,7 +219,7 @@ body.quiz {
 						transition: all 250ms ease-out;
 						.icon svg {
 							color: #FFF;
-						}						
+						}
 						p {
 							color: #FFF;
 						}
@@ -249,7 +249,7 @@ body.quiz {
 					min-height: 430px;
 					@include breakpoint(810px, 'max') { min-height: 460px; }
 					@include breakpoint(767px, 'max') { min-height: inherit !important; }
-					h4 { 
+					h4 {
 						margin: 5px 0 20px;
 						min-height: 50px;
 						overflow: hidden;

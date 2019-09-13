@@ -766,7 +766,7 @@ h2 {
 		@include breakpoint(extra-small, 'max') {
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
-			background: -webkit-linear-gradient(#333333, #eeeeee);
+			background: -webkit-linear-gradient(#333333, #f4f2f1);
 		}
 	}
 	.btn-download,

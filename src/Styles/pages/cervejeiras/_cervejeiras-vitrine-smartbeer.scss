@@ -2,8 +2,8 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
 
 .vitrine-smartbeer {
-	@include breakpoint ('medium', 'max') { background: linear-gradient(0deg, #fff 60%, #f2f2f2 60%); }
-	background: linear-gradient(90deg, #fff 35%, #f2f2f2 35%);
+	@include breakpoint ('medium', 'max') { background: linear-gradient(0deg, #fff 60%, #f4f2f1 60%); }
+	background: linear-gradient(90deg, #fff 35%, #f4f2f1 35%);
 	width: 100%;
 
 	h2 { display: none !important; }
