@@ -1175,7 +1175,7 @@
 						cursor: 'pointer'
 					},
 					activeSuggestionCSS: {
-						background: '#E9E9E9'
+						background: '#f4f2f1'
 					}
 				},
 				setSuggsetionPosition = function($suggestionContainer, $input) {
