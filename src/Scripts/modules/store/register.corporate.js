@@ -81,9 +81,15 @@ Nitro.module('register.corporate', function() {
 		});
 
 		//verifica se o campo de inscrição tem os caracteres necessários
-		$form.find('.form-control').keyup(function() {
+		$form.find('.form-control').not('.email').not('.confirmEmail').not('.tradeName').not('.firstName').not('.lastName').keyup(function() {
 			var val = $(this).val();
 			val = val.replace(/[a-zA-Z]/g, '');
+			val = val.replace(/[^\w\s]/gi, '');
+			$(this).val(val);
+		});
+
+		$form.find('.tradeName, .firstName, .lastName').keyup(function() {
+			var val = $(this).val();
 			val = val.replace(/[^\w\s]/gi, '');
 			$(this).val(val);
 		});
