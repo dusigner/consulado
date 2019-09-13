@@ -91,7 +91,7 @@ Nitro.module('dataLayer-embutidos', function() {
 	};
 
 	this.clickLinkDicas = () => {
-		$('.box_descricao a').click(e => {
+		$('.artigo a').click(e => {
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Clique Botão',

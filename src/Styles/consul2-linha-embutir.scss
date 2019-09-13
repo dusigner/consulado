@@ -165,7 +165,7 @@
 					&:nth-child(1) {
 						justify-content: flex-start;
 						left: 70%;
-    					padding: 0 40px;
+						padding: 0 40px;
 						top: 80%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
@@ -224,7 +224,7 @@
 					&:nth-child(2) {
 						justify-content: flex-start;
 						left: 67%;
-    					padding: 0 40px;
+						padding: 0 40px;
 						top: 60%;
 						@include breakpoint('small', 'max') {
 							left: 50%;
@@ -283,7 +283,7 @@
 					&:nth-child(3) {
 						justify-content: flex-start;
 						left: 60%;
-    					padding: 0 40px;
+						padding: 0 40px;
 						top: 60%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
@@ -334,7 +334,7 @@
 			padding: 0 40px;
 
 			@include breakpoint('medium', 'max') {
-				padding:  0 20px 10px 20px ;
+				padding: 0 20px 10px 20px;
 			}
 			@include breakpoint('small', 'max') {
 				order: 1;
@@ -442,10 +442,9 @@
 					}
 					a {
 						background-color: transparent;
-						border: 3px solid $green;
+						border: 2px solid $green;
 						color: $green;
-						font-size: 1.156em;
-						font-weight: 600;
+						font-weight: 300;
 						min-height: 40px;
 						min-width: 130px;
 						padding: 9px 40px;
@@ -471,10 +470,11 @@
 		padding: 10px 0 0 0;
 
 		h1 {
-			font-size: 4.125em;
+			@include responsiveFont(32);
+			margin-bottom: 8px;
 		}
 		h2 {
-			font-size: 2em;
+			@include responsiveFont(22);
 			font-weight: 400;
 		}
 		hr {
@@ -496,39 +496,38 @@
 				}
 			}
 			.artigo {
-				margin: 0 0 20px 0;
+				display: flex;
+				flex-flow: column nowrap;
 				text-align: left;
 
 				img {
 					width: 100%;
 				}
-				.box_descricao {
-					display: flex;
-					flex-direction: column;
-					justify-content: flex-start;
-					margin: 0 10px;
 
-					h3 {
-						color: $purple-n;
-						font-weight: bold;
-						margin: 0;
+				h3 {
+					@include responsiveFont(22);
+					color: $purple-n;
+					font-weight: bold;
+					margin-top: 0;
+					min-height: 66px;
+					@include breakpoint('small', 'max') {
+						min-height: 50px;
 					}
-					p {
-						margin: 20px 0;
+				}
+				a {
+					align-self: flex-end;
+					background-color: transparent;
+					border: 2px solid #ffffff;
+					color: #ffffff;
+					margin-bottom: 10px;
+					margin-top: auto;
+					padding: 9px 40px;
+					@include breakpoint('small', 'max') {
+						margin-top: 10px;
+						padding: 9px 20px;
 					}
-					a {
-						align-self: flex-end;
-						background-color: transparent;
-						border: 2px solid #ffffff;
-						color: #ffffff;
-						margin: 10px 0;
-						padding: 9px 40px;
-						@include breakpoint('small', 'max') {
-							padding: 9px 20px;
-						}
-						&:hover {
-							transform: scale(1.1);
-						}
+					&:hover {
+						transform: scale(1.1);
 					}
 				}
 
