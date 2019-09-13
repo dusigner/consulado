@@ -1,7 +1,7 @@
 @charset 'UTF-8';
 
 .top-navigation {
-	background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
+	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
     bottom: 1px;
 	box-shadow: 0 0 12px #e4e4e4;
 	position: relative;
@@ -12,7 +12,7 @@
 	}
 
 	.menu-department {
-		background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
+		background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
 		display: flex;
 		justify-content: space-between;
 
@@ -82,7 +82,7 @@
 		}
 
 		&#menu-cupons {
-			background-color: #F1F0F0;
+			background-color: #f4f2f1;
 			a {
 				@include responsiveFont(16);
 				color: #736C6B;

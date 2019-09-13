@@ -4,7 +4,7 @@ $icon-arrow-purple: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAYAA
 $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB1aeb6AAAABHNCSVQICAgIfAhkiAAAAjJJREFUSImt1T9oE2EYx/Hv8zaJ2iZTQHHx7+QiOolYJEpthEJBMCi4dLFDSxbr4HiDSxcznD3hoJsieAgiiK3FUqFLB8lQ6KaDLpIUwV5sav49DjZayzW5K3mmu3vfez6/930PTgDGx8f7k4nYtCAjqB5F5LMqs49mZgqAss+6l5+4Ky0mVOSMKN+AhZoxU7ZtbwCIZVkxv1z6iMjZ3S8r+q4ufaO2bf+KglqWFdtYLz0V5FbA8KdqS885jlMxfrn8IAgGEGQ4oa25fD5/IArsr5de7QEDnD5keAhgFG536ZcJG6ANg4x0mqfIDQCDcKpb0zABwsIAAsdyuVyfQbUYAu8YIAoMoPDF87ymEeVxSDwwQFR4W38OIABTkxMeIjcjhFiqibmeTqebUWFVff+1VM56ntc0AKlS+Q4wHwHPJLQ1t7FefhltxbpcqTdGPc9rwvbKAaxcLuEfOfwayEYIEb5Ul/16I+u67mb7UV/7YmltrZk9fuJFLTlwCTjZW5gVv964thMGMDtvLM+rpSo/R4DFXsJV1aHdMOzY9v9CjI0d9JMDb4CrvYAdx6kEDQfifwMM9C8gMrg/V4tbLS7vBXfE4c/fLhWPzUcNoGgxXmtcmXbdH53mdcT/BYgvIlzoJQy7Prigcl13s6o6hLLSHWY1LBwKB3Acp9ItgMKqxrcyYeHQeDtAzZhhVJ8F0G81vpUpFGa/h+0HIc48qO5PTl5U0fOqklDTKhbsJx/20+c3CTgdQcaZYYsAAAAASUVORK5CYII=';
 
 .canais-atendimento {
-	background-color: #f1f0f0;
+	background-color: #f4f2f1;
 
 	.container {
 		@include breakpoint('small', 'min') { display: flex; }

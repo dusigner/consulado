@@ -154,7 +154,7 @@ body {
 								@include breakpoint(small, 'min') {
 
 									&::before {
-										background: #F1F0F0;
+										background: #f4f2f1;
 										content: '';
 										height: 1px;
 										position: absolute;
@@ -394,7 +394,7 @@ body {
 							@include breakpoint(small, 'min') {
 
 								&::before {
-									background: #F1F0F0;
+									background: #f4f2f1;
 									content: '';
 									height: 1px;
 									position: absolute;
@@ -827,7 +827,7 @@ body {
 							.shipping-sla-options {
 								@include breakpoint('small', 'max') { max-width: 100%; }
 								background: #fff;
-								border: 1px solid #F1F0F0;
+								border: 1px solid #f4f2f1;
 								border-radius: 0;
 								box-shadow: none;
 								float: none;

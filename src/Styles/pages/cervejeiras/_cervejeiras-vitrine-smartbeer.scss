@@ -78,7 +78,7 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		&-name {
 			@include breakpoint ('large', 'min') { max-width: 280px; }
 			@include breakpoint ('medium', 'max') {
-				border-top: 1px solid #f1f0f0;
+				border-top: 1px solid #f4f2f1;
 				color: #736C6B;
 				font-size: 15px;
 				font-weight: bold;

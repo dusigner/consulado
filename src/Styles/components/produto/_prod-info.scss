@@ -279,7 +279,7 @@ body.produto {
 
 	.specification {
 		@include rfs(16);
-		background-color: #f1f0f0;
+		background-color: #f4f2f1;
 		color: #736c6b;
 		display: block;
 		font-weight: bold;
@@ -549,7 +549,7 @@ body.produto {
 }
 
 .prod-more-info {
-	border-bottom: 1px solid #F1F0F0;
+	border-bottom: 1px solid #f4f2f1;
 	display: flex;
 	justify-content: space-between;
 	margin-top: 15px;
@@ -570,7 +570,7 @@ body.produto {
 		}
 
 		@include breakpoint('medium', 'max') {
-			border-bottom: 1px solid #f1f0f0;
+			border-bottom: 1px solid #f4f2f1;
 		}
 
 		@include breakpoint(small, 'max') {
