@@ -10,9 +10,9 @@ const Eventos = {
 		let CooktopB =
 			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
 
-		let FornoA =
+		let FornoA = '/arquivos/embutir_forno02.png';
+		let FornoB =
 			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
-		let FornoB = '/arquivos/embutir_forno02.png';
 
 		let CoifaA =
 			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
@@ -117,6 +117,7 @@ const Eventos = {
 		let img = $('.mascara');
 		let plus = $('.plus');
 		let buttonA = $('.embutidos-header a');
+		let imgMascara = $('.mascara img');
 
 		let strH1Padrao = 'Uma cozinha planejada para o seu dia a dia';
 		let strPPadrao =
@@ -154,6 +155,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('one');
 						box_pai.addClass('one');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_cooktop.jpg'
+						);
 					}, 400);
 					break;
 				case 'Coifas/Depuradores':
@@ -176,6 +181,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('two');
 						box_pai.addClass('two');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_coifa.jpg'
+						);
 					}, 400);
 
 					break;
@@ -199,6 +208,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('tree');
 						box_pai.addClass('tree');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_forno.jpg'
+						);
 					}, 400);
 					break;
 				default:
@@ -214,7 +227,6 @@ const Eventos = {
 			box.removeClass('two');
 			box.removeClass('tree');
 			box.addClass('inicial');
-			// box_texto.children('a').remove();
 			buttonA.removeClass('Cooktops');
 			buttonA.removeClass('Coifas');
 			buttonA.removeClass('Fornos-Embutidos');
@@ -227,6 +239,7 @@ const Eventos = {
 				back.removeClass('Coifas');
 				back.removeClass('Cooktops');
 			}, 500);
+			imgMascara.attr('src', '/arquivos/embutir_ambientada1.png');
 		});
 	}
 };
