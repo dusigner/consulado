@@ -117,6 +117,7 @@ const Eventos = {
 		let img = $('.mascara');
 		let plus = $('.plus');
 		let buttonA = $('.embutidos-header a');
+		let imgMascara = $('.mascara img');
 
 		let strH1Padrao = 'Uma cozinha planejada para o seu dia a dia';
 		let strPPadrao =
@@ -154,6 +155,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('one');
 						box_pai.addClass('one');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_cooktop.jpg'
+						);
 					}, 400);
 					break;
 				case 'Coifas/Depuradores':
@@ -176,6 +181,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('two');
 						box_pai.addClass('two');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_coifa.jpg'
+						);
 					}, 400);
 
 					break;
@@ -199,6 +208,10 @@ const Eventos = {
 						box.removeClass('inicial');
 						box.addClass('tree');
 						box_pai.addClass('tree');
+						imgMascara.attr(
+							'src',
+							'/arquivos/embutir_zoom_forno.jpg'
+						);
 					}, 400);
 					break;
 				default:
@@ -214,7 +227,6 @@ const Eventos = {
 			box.removeClass('two');
 			box.removeClass('tree');
 			box.addClass('inicial');
-			// box_texto.children('a').remove();
 			buttonA.removeClass('Cooktops');
 			buttonA.removeClass('Coifas');
 			buttonA.removeClass('Fornos-Embutidos');
@@ -227,6 +239,7 @@ const Eventos = {
 				back.removeClass('Coifas');
 				back.removeClass('Cooktops');
 			}, 500);
+			imgMascara.attr('src', '/arquivos/embutir_ambientada1.png');
 		});
 	}
 };

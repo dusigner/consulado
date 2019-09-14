@@ -26,10 +26,17 @@
 			p {
 				color: #ffffff;
 			}
+			span {
+				color: #ffffff;
+				font-size: 1.5em;
+				font-weight: bold;
+				@include breakpoint('small', 'max') {
+					font-size: 1em;
+				}
+			}
 		}
 		.box_img {
 			position: relative;
-
 			img {
 				display: block;
 				width: 100%;
@@ -145,33 +152,21 @@
 
 			//Cooktop
 			&.one {
-				img {
-					position: relative;
-					right: 40%;
-					top: -160px;
-					transform: scale(1.8);
-					@include breakpoint(93.75em, 'min') {
-						top: -225px;
-					}
-					@include breakpoint('small', 'max') {
-						top: -55px;
-					}
-				}
 				.plus {
 					pointer-events: none;
-					width: 265px;
+					width: 230px;
 					@include breakpoint('small', 'max') {
 						width: 100px;
 					}
 					&:nth-child(1) {
 						justify-content: flex-start;
-						left: 70%;
 						padding: 0 40px;
-						top: 80%;
+						right: -2%;
+						top: 15%;
 						@include breakpoint('small', 'max') {
 							left: 65%;
 							padding: 0 10px;
-							top: 25%;
+							top: 15%;
 						}
 					}
 					&:nth-child(2) {
@@ -180,69 +175,43 @@
 					&:nth-child(3) {
 						display: none;
 					}
-					span {
-						color: #ffffff;
-						font-size: 1.5em;
-						font-weight: bold;
-						@include breakpoint('small', 'max') {
-							font-size: 1em;
-						}
-					}
 					&:before {
 						display: none;
 					}
 				}
 				.back {
 					right: 65%;
-					top: 80%;
+					top: 15%;
 					@include breakpoint('small', 'max') {
 						right: 70%;
-						top: 25%;
+						top: 15%;
 					}
 				}
 			}
 			//Coifa
 			&.two {
-				img {
-					position: relative;
-					right: 40%;
-					top: 160px;
-					transform: scale(1.8);
-					@include breakpoint('small', 'max') {
-						right: 40%;
-						top: 65px;
-					}
-				}
 				.plus {
 					pointer-events: none;
+					width: 230px;
 					@include breakpoint('small', 'max') {
 						width: 100px;
 					}
-					width: 265px;
 					&:nth-child(1) {
 						display: none;
 					}
 					&:nth-child(2) {
 						justify-content: flex-start;
-						left: 67%;
 						padding: 0 40px;
-						top: 60%;
+						right: -2%;
+						top: 55%;
 						@include breakpoint('small', 'max') {
-							left: 50%;
 							padding: 0 10px;
-							top: 60%;
+							right: 2%;
+							top: 25%;
 						}
 					}
 					&:nth-child(3) {
 						display: none;
-					}
-					span {
-						color: #ffffff;
-						font-size: 1.5em;
-						font-weight: bold;
-						@include breakpoint('small', 'max') {
-							font-size: 1em;
-						}
 					}
 					&:before {
 						display: none;
@@ -250,27 +219,17 @@
 				}
 				.back {
 					right: 65%;
-					top: 60%;
+					top: 55%;
 					@include breakpoint('small', 'max') {
-						right: 75%;
+						top: 25%;
 					}
 				}
 			}
 			//Frono
 			&.tree {
-				img {
-					position: relative;
-					right: -35%;
-					top: -114px;
-					transform: scale(1.7);
-					@include breakpoint('small', 'max') {
-						right: -35%;
-						top: -30px;
-					}
-				}
 				.plus {
 					pointer-events: none;
-					width: 265px;
+					width: 230px;
 
 					@include breakpoint('small', 'max') {
 						width: 100px;
@@ -283,21 +242,13 @@
 					}
 					&:nth-child(3) {
 						justify-content: flex-start;
-						left: 60%;
 						padding: 0 40px;
+						right: -2%;
 						top: 60%;
 						@include breakpoint('small', 'max') {
-							left: 65%;
 							padding: 0 10px;
+							right: 10%;
 							top: 60%;
-						}
-					}
-					span {
-						color: #ffffff;
-						font-size: 1.5em;
-						font-weight: bold;
-						@include breakpoint('small', 'max') {
-							font-size: 1em;
 						}
 					}
 					&:before {
