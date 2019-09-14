@@ -109,7 +109,6 @@ const Eventos = {
 		}
 	},
 	dotsInfo: () => {
-		let box_texto = $('.box_texto');
 		let h1 = $('.box_texto h1');
 		let p = $('.box_texto p');
 		let box = $('.box_img');
@@ -117,6 +116,7 @@ const Eventos = {
 		let back = $('.back');
 		let img = $('.mascara');
 		let plus = $('.plus');
+		let buttonA = $('.embutidos-header a');
 
 		let strH1Padrao = 'Uma cozinha planejada para o seu dia a dia';
 		let strPPadrao =
@@ -147,9 +147,9 @@ const Eventos = {
 						back.removeClass('transitioning-src');
 						h1.text(strH1Cooktop);
 						p.text(strPCooktop);
-						box_texto.append(
-							'<a href="/eletrodomesticos/cooktop" class="btn-primary-button Cooktops">Ver mais sobre Cooktop</a>'
-						);
+						buttonA.attr('href', '/eletrodomesticos/cooktop');
+						buttonA.addClass('Cooktops');
+						buttonA.text('Ver mais sobre Cooktops');
 						back.addClass('Cooktops');
 						box.removeClass('inicial');
 						box.addClass('one');
@@ -166,9 +166,12 @@ const Eventos = {
 						back.removeClass('transitioning-src');
 						h1.text(strH1Coifa);
 						p.text(strPCoifa);
-						box_texto.append(
-							'<a href="/eletrodomesticos/coifa-e-depurador" class="btn-primary-button Coifas">Ver mais sobre Coifas</a>'
+						buttonA.attr(
+							'href',
+							'/eletrodomesticos/coifa-e-depurador'
 						);
+						buttonA.addClass('Coifas');
+						buttonA.text('Ver mais sobre Coifas');
 						back.addClass('Coifas');
 						box.removeClass('inicial');
 						box.addClass('two');
@@ -186,9 +189,12 @@ const Eventos = {
 						back.removeClass('transitioning-src');
 						h1.text(strH1forno);
 						p.text(strPforno);
-						box_texto.append(
-							'<a href="/eletrodomesticos/forno/forno-de-embutir" class="btn-primary-button Fornos-Embutidos">Ver mais sobre Fornos</a>'
+						buttonA.attr(
+							'href',
+							'/eletrodomesticos/forno/forno-de-embutir'
 						);
+						buttonA.addClass('Fornos-Embutidos');
+						buttonA.text('Ver mais sobre Fornos');
 						back.addClass('Fornos-Embutidos');
 						box.removeClass('inicial');
 						box.addClass('tree');
@@ -208,7 +214,11 @@ const Eventos = {
 			box.removeClass('two');
 			box.removeClass('tree');
 			box.addClass('inicial');
-			box_texto.children('a').remove();
+			// box_texto.children('a').remove();
+			buttonA.removeClass('Cooktops');
+			buttonA.removeClass('Coifas');
+			buttonA.removeClass('Fornos-Embutidos');
+			buttonA.attr('href', '#');
 			box_pai.removeClass('one');
 			box_pai.removeClass('two');
 			box_pai.removeClass('tree');
