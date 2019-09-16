@@ -245,8 +245,10 @@ $(document).on('ready', function() {
 								}
 							}
 
+
 							$('body').unbind('ajaxComplete');
 							$('body').off('ajaxComplete');
+
 						}
 					});
 				});
@@ -442,6 +444,9 @@ $(document).on('ready', function() {
 				$('.link-coupon-add').on('click', function() {
 					flagCoupon = true;
 				});
+
+				self.dataLayerCoupon();
+
 			};
 
 			//state
@@ -714,6 +719,27 @@ $(document).on('ready', function() {
 
 				$('.btn-go-to-payment').click(function() {
 					self.veryfication();
+				});
+			};
+
+			this.dataLayerCoupon = () => {
+				const pushDataLayer = (cat, act, lbl) => {
+						dataLayer.push({
+							event: 'generic',
+							category: cat,
+							action: act,
+							label: lbl
+						})
+					},
+					addCoupon = $('.link-coupon-add'),
+					sendCoupon = $('#cart-coupon-add');
+
+				addCoupon.on('click', function() {
+					pushDataLayer('Cupom de Desconto - Carrinho', 'Adicionar Cupom', 'Adicionar cupom de desconto - checkout');
+				});
+
+				sendCoupon.on('click', function() {
+					pushDataLayer(('Cupom de Desconto - Carrinho - ' + $('#cart-coupon').val()), 'Selecionar Cupom', 'Cupom selecionado no carrinho');
 				});
 			};
 
