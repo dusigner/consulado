@@ -5,19 +5,14 @@ const Eventos = {
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
-		let CooktopA =
-			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg';
-		let CooktopB =
-			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
+		let CooktopA = '/arquivos/embutir_cooktop01.jpg';
+		let CooktopB = '/arquivos/embutir_cooktop02.jpg';
 
-		let FornoA = '/arquivos/embutir_forno02.png';
-		let FornoB =
-			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
+		let FornoA = '/arquivos/embutir_forno01.jpg';
+		let FornoB = '/arquivos/embutir_forno02.jpg';
 
-		let CoifaA =
-			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
-		let CoifaB =
-			'https://consul.vteximg.com.br/arquivos/ids/164179-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-frontal_1650x1450.jpg?v=635767864275830000';
+		let CoifaA = '/arquivos/embutir_coifa01.jpg';
+		let CoifaB = '/arquivos/embutir_coifa02.jpg';
 
 		//Quando for mobile
 		if ($(window).width() <= 768) {
