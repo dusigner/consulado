@@ -124,15 +124,15 @@ const Eventos = {
 
 		let strH1Cooktop = 'Facilidade para a sua cozinha';
 		let strPCooktop =
-			'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
+			'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar';
 
 		let strH1forno = 'Preparos com mais facilidade';
 		let strPforno =
-			'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
+			'Alie conforto e organização dentro da sua cozinha: o eletrodoméstico se adapta à sua decoração, e não o contrário';
 
 		let strH1Coifa = 'Livre de odores';
 		let strPCoifa =
-			'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
+			'Dê o toque final de beleza à sua cozinha e mantenha o ar livre de odores desagradáveis, além de limpar a gordura do cozimento';
 
 		//Plus Button
 		$('.box_img .plus').click(function() {
