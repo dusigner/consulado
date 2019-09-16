@@ -5,14 +5,14 @@ const Eventos = {
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
-		let CooktopA = '/arquivos/embutir_cooktop01.jpg';
-		let CooktopB = '/arquivos/embutir_cooktop02.jpg';
+		let CooktopInicial = '/arquivos/embutir_cooktop01.jpg';
+		let CooktopSecundaria = '/arquivos/embutir_cooktop02.jpg';
 
-		let FornoA = '/arquivos/embutir_forno01.jpg';
-		let FornoB = '/arquivos/embutir_forno02.jpg';
+		let FornoInicial = '/arquivos/embutir_forno01.jpg';
+		let FornoSecundaria = '/arquivos/embutir_forno02.jpg';
 
-		let CoifaA = '/arquivos/embutir_coifa01.jpg';
-		let CoifaB = '/arquivos/embutir_coifa02.jpg';
+		let CoifaInicial = '/arquivos/embutir_coifa01.jpg';
+		let CoifaSecundaria = '/arquivos/embutir_coifa02.jpg';
 
 		//Quando for mobile
 		if ($(window).width() <= 768) {
@@ -20,25 +20,25 @@ const Eventos = {
 				let current = '/arquivos/'+this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
 					case 'Cooktops':
-						if (current === CooktopA) {
-							this.src = CooktopB;
+						if (current === CooktopInicial) {
+							this.src = CooktopSecundaria;
 						} else {
-							this.src = CooktopA;
+							this.src = CooktopInicial;
 						}
 						break;
 					case 'Forno':
-						if (current === FornoA) {
-							this.src = FornoB;
+						if (current === FornoInicial) {
+							this.src = FornoSecundaria;
 						} else {
-							this.src = FornoA;
+							this.src = FornoInicial;
 						}
 
 						break;
 					case 'Coifa':
-							if (current === CoifaA) {
-								this.src = CoifaB;
+							if (current === CoifaInicial) {
+								this.src = CoifaSecundaria;
 							} else {
-								this.src = CoifaA;
+								this.src = CoifaInicial;
 							}
 						break;
 					default:
@@ -53,21 +53,21 @@ const Eventos = {
 						case 'Cooktops':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = CooktopB;
+								this.src = CooktopSecundaria;
 								this.className = '';
 							}, 400);
 							break;
 						case 'Forno':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = this.src = FornoB;
+								this.src = this.src = FornoSecundaria;
 								this.className = '';
 							}, 400);
 							break;
 						case 'Coifa':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = CoifaB;
+								this.src = CoifaSecundaria;
 								this.className = '';
 							}, 400);
 							break;
@@ -78,13 +78,13 @@ const Eventos = {
 				function() {
 					switch (this.alt) {
 						case 'Cooktops':
-							this.src = CooktopA;
+							this.src = CooktopInicial;
 							break;
 						case 'Forno':
-							this.src = FornoA;
+							this.src = FornoInicial;
 							break;
 						case 'Coifa':
-							this.src = CoifaA;
+							this.src = CoifaInicial;
 							break;
 						default:
 							break;
