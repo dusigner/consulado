@@ -244,8 +244,8 @@ body.produto {
 		@include rfs(13);
 		color: #736C6B;
 		display: block;
-		position: relative;
 		padding-left: 25px;
+		position: relative;
 
 		// Icone pagamento
 		&:before {
@@ -369,6 +369,8 @@ body.produto {
 	}
 }
 
+
+.select-color { margin-bottom: 40px; }
 
 
 .select-voltage {
