@@ -300,6 +300,7 @@ Nitro.module('chaordic', function() {
 			response = res.displays[0].references.reduce(self.recomendationsReducer, response);
 		}
 
+
 		return response;
 	};
 
@@ -335,6 +336,9 @@ Nitro.module('chaordic', function() {
 		var dfd = jQuery.Deferred();
 
 		type = type || 'recommendations';
+		if (shelf.feature === 'FrequentlyBoughtTogether') {
+			self.renderReferenceShelf(shelf);
+		}
 
 		$.each(shelf.displays[0][type], function(i, recommendation) {
 			$.each(products, function(i, product) {
@@ -378,6 +382,46 @@ Nitro.module('chaordic', function() {
 
 		dfd.resolve();
 		return dfd.promise();
+	};
+
+	/**
+	 * Render reference shelf on frequently bought together section
+	*/
+
+	this.renderReferenceShelf = shelf => {
+		const referenceItem = shelf.displays[0]['references'][0];
+
+		let $box = $('.shelf-item[data-idproduto="' + referenceItem.id + '"]');
+
+		$.ajax({
+			url: '/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId,
+			accept:'application/json'
+		}).then(function(product) {
+			if (!$box.hasClass('box-produto')) {
+				let item = product[0].items.filter(function(value) {
+					return value.sellers[0].commertialOffer.AvailableQuantity > 0;
+				});
+				product[0].available = item.length > 0;
+				product[0].priceInfo = item[0].sellers[0].commertialOffer;
+				product[0].maxInstallment = self.prepareInstallments(
+					item[0].sellers[0].commertialOffer.Installments
+				);
+
+				product[0].priceInfo.percentOff = self.preparePercentoff(
+					item[0].sellers[0].commertialOffer.ListPrice,
+					item[0].sellers[0].commertialOffer.Price
+				);
+				product[0].finalImages = self.prepareImages(item[0].images, '300');
+				// product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
+				product[0].clusterHighlights = self.prepareclusterHighlights(
+					product[0].clusterHighlights,
+					item[0].sellers[0].commertialOffer.Teasers
+				);
+				self.finalRender(product[0], $box);
+			} else {
+				self.renderUnavailable(product[0], $box);
+			}
+		});
 	};
 
 	/**
