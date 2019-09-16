@@ -228,9 +228,9 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 				position: relative;
 
 				&,
-				a { color: #eb008b; }
+				a { color: #ec008c; }
 
-				&:before { background-color: #eb008b; }
+				&:before { background-color: #ec008c; }
 			}
 		}
 
@@ -306,7 +306,7 @@ $contact-icon: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAABBCAMAAAC6nj
 		@include rfs(12);
 		background: #fff;
 		border-radius: 4px;
-		color: #eb008b;
+		color: #ec008c;
 		font-weight: bold;
 		left: 5px;
 		padding: 5px;

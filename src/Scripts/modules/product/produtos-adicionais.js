@@ -99,14 +99,14 @@ Nitro.module('produtos-adicionais', function() {
 
 			<div class="skuList">
 				<span>
-					${tipo01.length ? `
+					${tipo01 && tipo01.length > 0 ? `
 						<input id="${tipo01}" value="${tipo01Produtos}" type="radio" name="prod-type" class="produtos-adicionais__input">
 						<label for="${tipo01}" class="produtos-adicionais__label">
 							${tipo01Text}
 						</label>
 					` : ''}
 
-					${tipo02.length ? `
+					${tipo02 && tipo02.length > 0 ? `
 						<input id="${tipo02}" value="${tipo02Produtos}" type="radio" name="prod-type" class="produtos-adicionais__input">
 						<label for="${tipo02}" class="produtos-adicionais__label">
 							${tipo02Text}
@@ -128,7 +128,7 @@ Nitro.module('produtos-adicionais', function() {
 				<i class="icon-spinner"></i>
 			</section>
 
-			${tipo01Mensagens.length ? `
+			${tipo01Mensagens && tipo01Mensagens.length > 0 ? `
 				<div class="produtos-adicionais__info" data-prodtype="${tipo01}"]>
 					<strong>
 						<i class="icon icon-question"></i>
@@ -138,7 +138,7 @@ Nitro.module('produtos-adicionais', function() {
 				</div>
 			` : ''}
 
-			${tipo02Mensagens.length ? `
+			${tipo02Mensagens && tipo02Mensagens.length > 1 ? `
 				<div class="produtos-adicionais__info" data-prodtype="${tipo02}"]>
 					<strong>
 						<i class="icon icon-question"></i>

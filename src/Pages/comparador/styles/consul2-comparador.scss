@@ -18,7 +18,7 @@
 @import 'consul2-listagem';
 
 @mixin diffHighlight() {
-	background-color: #E6E6E6;
+	background-color: #e4e4e4;
 
 	&:before,
 	&:after {
@@ -71,8 +71,8 @@ body.compare {
 
 			tr {
 				&:not(.remover) {
-					@include breakpoint('small', 'max') { 
-						align-items: flex-start; 
+					@include breakpoint('small', 'max') {
+						align-items: flex-start;
 						margin-bottom: 15px;
 					}
 					align-items: flex-end;
@@ -80,7 +80,7 @@ body.compare {
 					flex-direction: row;
 				}
 
-				&.remover { 
+				&.remover {
 					display: none;
 				}
 
@@ -93,7 +93,7 @@ body.compare {
 					width: calc(100% / 4);
 					@include breakpoint('small', 'max') {
 						max-width: 100%;
-						width: calc(100% / 2);					   
+						width: calc(100% / 2);
 					}
 
 					&:first-child {
@@ -109,7 +109,7 @@ body.compare {
 						.default.prateleira {
 							& > ul {
 								& > li {
-									border: solid 1px #E6E6E6;
+									border: solid 1px #e4e4e4;
 									margin: 0;
 									max-width: 100%;
 									position: relative;
@@ -155,7 +155,7 @@ body.compare {
 			width: 100%;
 
 			tr {
-				border-bottom: solid 2px  #E6E6E6;
+				border-bottom: solid 2px  #e4e4e4;
 				display: none;
 				position: relative;
 				width: 100%;
@@ -172,7 +172,7 @@ body.compare {
 				&[class*='Caracter'],
 				&.specs-title,
 				&.remover {
-					display: flex;				
+					display: flex;
 
 					@include breakpoint('small', 'max') {
 						display: block;
@@ -196,7 +196,7 @@ body.compare {
 
 				&:before,
 				&:after {
-					background: #E6E6E6;
+					background: #e4e4e4;
 					bottom: -2px;
 					content: '';
 					height: 2px;
@@ -268,7 +268,7 @@ body.compare {
 					}
 
 					td {
-						&:first-child {							
+						&:first-child {
 							width: 25%;
 							@include breakpoint('small', 'max') { display: none; }
 						}
@@ -276,7 +276,7 @@ body.compare {
 				}
 
 				// &:nth-child(odd) {
-				// 	background: #E6E6E6;
+				// 	background: #e4e4e4;
 				// }
 
 				&:first-child { display: none; }
@@ -292,11 +292,11 @@ body.compare {
 					font-weight: 700;
 					padding-left: 0;
 					text-align: left;
-					width: 25%;						
+					width: 25%;
 				}
 
-				td { 
-					max-width: 300px;					
+				td {
+					max-width: 300px;
 					vertical-align: top;
 					width: calc(100% / 4);
 					@include breakpoint('small', 'max') {
@@ -306,11 +306,11 @@ body.compare {
 			}
 		}
 
-		
+
 		.selection-product {
 			display: none;
 		}
-		
+
 	}
 
 	// fallbacks
@@ -345,23 +345,23 @@ body.compare {
 	}
 }
 
-body { 
+body {
 	overflow-x: hidden;
 
 	thead.barraFixa {
 
 
 		@media (min-width: 60em) {	padding: 0 90px; }
-		@media (min-width: 60em) {	padding: 0 90px; }		
-		
+		@media (min-width: 60em) {	padding: 0 90px; }
+
 
 		background: #fff;
 		border-bottom: 1px solid #BBBBBB;
-		left: 0;		
+		left: 0;
 		position: fixed;
 		right: 0;
 		top: -400px;
-		transition: .8s ease-out all;		
+		transition: .8s ease-out all;
 		z-index: 22;
 
 		tr.remover {
@@ -420,12 +420,12 @@ body {
 							margin-right: 5px;
 							width: 20px;
 
-							@include breakpoint('small', 'max') { 
+							@include breakpoint('small', 'max') {
 								height: auto;
 								width: auto;
 							}
 						}
-						
+
 					}
 
 				}
@@ -452,7 +452,7 @@ body {
 
 			.box-produto {
 
-				border-right: 1px solid #e6e6e6;
+				border-right: 1px solid #e4e4e4;
 				min-height: auto;
 				padding: 0;
 
@@ -467,7 +467,7 @@ body {
 						font-size: 1rem;
 					}
 				}
-	
+
 				.price,
 				a.department-nav {
 					display: none;
@@ -479,38 +479,38 @@ body {
 
 				&:hover {
 					h3.nome {
-						font-weight: normal !important; 
+						font-weight: normal !important;
 					}
 				}
 			}
 
 		}
 	}
-	
-	&.-is-desktop--active { 
-		thead.barraFixa {			
+
+	&.-is-desktop--active {
+		thead.barraFixa {
 			top: 0;
 			transition: .8s ease-out all;
 		}
-		
+
 		.corpo-comparacao table thead {
 			opacity: 0;
 			transition: .8s ease-out all;
-		}		
+		}
 	}
 
-	&.-is-mobile--active { 
-		thead.barraFixa {			
+	&.-is-mobile--active {
+		thead.barraFixa {
 			top: 0;
 			transition: .8s ease-out all;
-			
+
 			tr:nth-child(2) {
 				> th {
-					border: 1px solid #e6e6e6;
-					margin: 2.5%;					
+					border: 1px solid #e4e4e4;
+					margin: 2.5%;
 					width: 45%;
 				}
-			}			
+			}
 		}
 
 		.corpo-comparacao table thead {
@@ -547,7 +547,7 @@ body {
 	right: 5px;
 	top: 5px;
 	transition: all .2s ease;
-	width: 20px;	
+	width: 20px;
 	z-index: 1;
 	&:after {
 		background: #fff;
@@ -583,15 +583,15 @@ body {
 			}
 			.form-check {
 				margin: 0 !important;
-			}			
-		}		
+			}
+		}
 	}
 }
 
 .diff-highlight {
 	// @include breakpoint('extra-small', 'max') { margin: 0 .7em!important; }
 	@include breakpoint('small', 'max') {
-		border: 1px solid #3B3B3A;		
+		border: 1px solid #3B3B3A;
 		padding: .5em;
 
 		span {
