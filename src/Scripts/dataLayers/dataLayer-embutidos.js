@@ -60,16 +60,6 @@ Nitro.module('dataLayer-embutidos', function() {
 		);
 	};
 
-	this.clickNav = () => {
-		$('.box-text').hover(e => {
-			pushDataLayer(
-				'[CB-GOC] Página Built-in',
-				'Clique banner',
-				e.currentTarget.title
-			);
-		});
-	};
-
 	this.clickLinkA = () => {
 		$('.box-text a').click(e => {
 			pushDataLayer(
@@ -101,8 +91,7 @@ Nitro.module('dataLayer-embutidos', function() {
 	};
 
 	this.clickLinkDicas = () => {
-		$('.box_descricao a').click(e => {
-			// dataLayer.push({ category, action, label, event });
+		$('.artigo a').click(e => {
 			pushDataLayer(
 				'[CB-GOC] Página Built-in',
 				'Clique Botão',
