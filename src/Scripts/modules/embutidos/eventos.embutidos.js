@@ -17,39 +17,29 @@ const Eventos = {
 		//Quando for mobile
 		if ($(window).width() <= 768) {
 			$('.box-img img').click(function() {
+				let current = '/arquivos/'+this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
 					case 'Cooktops':
-						if (this.src !== CooktopA && this.src !== CooktopB) {
-							this.src = CooktopA;
+						if (current === CooktopA) {
+							this.src = CooktopB;
 						} else {
-							if (this.src === CooktopA) {
-								this.src = CooktopB;
-							} else {
-								this.src = CooktopA;
-							}
+							this.src = CooktopA;
 						}
 						break;
 					case 'Forno':
-						if (this.src !== FornoA && this.src !== FornoB) {
-							this.src = FornoA;
+						if (current === FornoA) {
+							this.src = FornoB;
 						} else {
-							if (this.src === FornoA) {
-								this.src = FornoB;
-							} else {
-								this.src = FornoA;
-							}
+							this.src = FornoA;
 						}
+
 						break;
 					case 'Coifa':
-						if (this.src !== CoifaA && this.src !== CoifaB) {
-							this.src = CoifaA;
-						} else {
-							if (this.src === CoifaA) {
+							if (current === CoifaA) {
 								this.src = CoifaB;
 							} else {
 								this.src = CoifaA;
 							}
-						}
 						break;
 					default:
 						break;
@@ -63,21 +53,21 @@ const Eventos = {
 						case 'Cooktops':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = CooktopA;
+								this.src = CooktopB;
 								this.className = '';
 							}, 400);
 							break;
 						case 'Forno':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = this.src = FornoA;
+								this.src = this.src = FornoB;
 								this.className = '';
 							}, 400);
 							break;
 						case 'Coifa':
 							this.className = 'transitioning-src';
 							setTimeout(() => {
-								this.src = CoifaA;
+								this.src = CoifaB;
 								this.className = '';
 							}, 400);
 							break;
@@ -88,13 +78,13 @@ const Eventos = {
 				function() {
 					switch (this.alt) {
 						case 'Cooktops':
-							this.src = CooktopB;
+							this.src = CooktopA;
 							break;
 						case 'Forno':
-							this.src = FornoB;
+							this.src = FornoA;
 							break;
 						case 'Coifa':
-							this.src = CoifaB;
+							this.src = CoifaA;
 							break;
 						default:
 							break;
