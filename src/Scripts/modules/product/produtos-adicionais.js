@@ -158,15 +158,9 @@ Nitro.module('produtos-adicionais', function() {
 		prodRefCode = ids.replace(/\s+/gmi, '');
 		prodRefCode = prodRefCode.split(',');
 
-		if (prodRefCode.length > 1) {
-			prodRefCode = prodRefCode.reduce((acc, curr) => {
-				return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
-			});
-		} else {
-			prodRefCode = `fq=alternateIds_RefId:${prodRefCode}`;
-		}
-
-		return prodRefCode;
+		return prodRefCode.reduce((acc, curr) => {
+			return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
+		}, prodRefCode);
 	};
 
 	// Selecione o tipo dos produtos
@@ -202,7 +196,6 @@ Nitro.module('produtos-adicionais', function() {
 
 		$productItem.removeClass('is--active');
 		$productCheckbox.attr('checked', false);
-
 		self.updateButtonLink(defaultProdLink);
 	};
 
@@ -227,14 +220,14 @@ Nitro.module('produtos-adicionais', function() {
 		});
 	};
 
-	// Ao selecionar os produtos, atualiza o status ativo e chama a função de tagueamento
+	// Ao selecionar os produtos, atualiza o status ativo, o link do botão e chama a função de tagueamento
 	this.selectProducts = () => {
 		$additionalProdBox.on('click', '.produto-adicional.available', function() {
 			const $selectSelf = $(this);
 			const prodSku = $selectSelf.data('sku');
-			const currentProdLink = $buyButton.attr('href');
 			const prodName = $selectSelf.find('h2').text();
 			const prodSkuId = $selectSelf.find('span').text();
+			let currentProdLink = $buyButton.attr('href');
 
 			// Altera o link do botão comprar de acordo com os produtos adicionais selecionados
 			if ($selectSelf.hasClass('is--active')) {
@@ -242,7 +235,11 @@ Nitro.module('produtos-adicionais', function() {
 				self.updateButtonLink(productLink);
 			}
 			else {
-				const defaultLinkAndSku = `${currentProdLink}${prodSku}`;
+				// A ideia do código abaixo é mandar o produto, sempre depois dos produtos adicionais.
+				// Com isso, conseguiremos garantir que o modal de GAE apareça no checkout
+				currentProdLink = currentProdLink.replace('/checkout/cart/add?', '&');
+				const defaultLinkAndSku = `/checkout/cart/add?${prodSku}${currentProdLink}`;
+
 				self.updateButtonLink(defaultLinkAndSku);
 			}
 
@@ -319,23 +316,22 @@ Nitro.module('produtos-adicionais', function() {
 	// Taguemento do tipo de produto selecionado
 	this.tagSelectType = (prodTypeName) => {
 		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Kit de Instalação para ${prodTypeName}`,
-			action: `Escolher tipo de gás ${prodTypeName}`,
-			label: 'Step Selação do tipo de gás'
+			event    : 'generic',
+			category : `[SQUAD] Kit de Instalação para ${prodTypeName}`,
+			action   : `Escolher tipo de gás ${prodTypeName}`,
+			label    : 'Step Selação do tipo de gás'
 		});
 	};
 
 	// Taguemento dos produtos selecionados
 	this.tagSelectProduct = (prodName, prodSkuId, prodTypeName) => {
 		const productName = window.skuJson.name;
-		const productId = skuJson.productId;
-
+		const productId   = skuJson.productId;
 		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
-			action: `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
-			label: 'Step Clique na escolha do produto'
+			event    : 'generic',
+			category : `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
+			action   : `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
+			label    : 'Step Clique na escolha do produto'
 		});
 	};
 
