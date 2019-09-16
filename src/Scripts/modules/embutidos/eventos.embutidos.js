@@ -224,7 +224,7 @@ const Eventos = {
 				back.removeClass('Coifas');
 				back.removeClass('Cooktops');
 			}, 500);
-			imgMascara.attr('src', '/arquivos/embutir_ambientada1.png');
+			imgMascara.attr('src', '/arquivos/embutir_ambientada1.jpg');
 		});
 	}
 };
