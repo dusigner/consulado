@@ -5,19 +5,14 @@ const Eventos = {
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
-		let CooktopA =
-			'https://consul.vteximg.com.br/arquivos/ids/191348-1000-1000/Consul_Cooktop_CD075AE_Imagem_Frontal.jpg';
-		let CooktopB =
-			'https://consul.vteximg.com.br/arquivos/ids/191349-1000-1000/Consul_Cooktop_CD075AE_Imagem_3_4.jpg';
+		let CooktopA = '/arquivos/embutir_cooktop01.jpg';
+		let CooktopB = '/arquivos/embutir_cooktop02.jpg';
 
-		let FornoA = '/arquivos/embutir_forno02.png';
-		let FornoB =
-			'https://consul.vteximg.com.br/arquivos/ids/193582-1000-1000/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg';
+		let FornoA = '/arquivos/embutir_forno01.jpg';
+		let FornoB = '/arquivos/embutir_forno02.jpg';
 
-		let CoifaA =
-			'https://consul.vteximg.com.br/arquivos/ids/164180-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-perspectiva_1650x1450.jpg?v=635767864842200000';
-		let CoifaB =
-			'https://consul.vteximg.com.br/arquivos/ids/164179-1000-1000/CA060BR-coifa-consul-piramidal-60-cm-frontal_1650x1450.jpg?v=635767864275830000';
+		let CoifaA = '/arquivos/embutir_coifa01.jpg';
+		let CoifaB = '/arquivos/embutir_coifa02.jpg';
 
 		//Quando for mobile
 		if ($(window).width() <= 768) {
@@ -125,15 +120,15 @@ const Eventos = {
 
 		let strH1Cooktop = 'Facilidade para a sua cozinha';
 		let strPCooktop =
-			'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar.';
+			'Fogões de mesa que valorizam o ambiente, para você que não quer complicação na hora de cozinhar';
 
 		let strH1forno = 'Preparos com mais facilidade';
 		let strPforno =
-			'Não é preciso se abaixar para acompanhar a receita no forno de embutir. Opções de forno elétrico e à gás.';
+			'Alie conforto e organização dentro da sua cozinha: o eletrodoméstico se adapta à sua decoração, e não o contrário';
 
 		let strH1Coifa = 'Livre de odores';
 		let strPCoifa =
-			'A solução de Linha de Embutir conta com coifas de parede que filtram o ar sujo e devolvem limpinho para o ambiente.';
+			'Dê o toque final de beleza à sua cozinha e mantenha o ar livre de odores desagradáveis, além de limpar a gordura do cozimento';
 
 		//Plus Button
 		$('.box_img .plus').click(function() {
