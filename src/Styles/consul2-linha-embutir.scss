@@ -125,10 +125,10 @@
 					}
 					&:nth-child(2) {
 						left: 60%;
-						top: 30%;
+						top: 35%;
 					}
 					&:nth-child(3) {
-						left: 28%;
+						left: 30%;
 						top: 36%;
 					}
 					span {
@@ -203,7 +203,7 @@
 						justify-content: flex-start;
 						padding: 0 40px;
 						right: -2%;
-						top: 55%;
+						top: 25%;
 						@include breakpoint('small', 'max') {
 							padding: 0 10px;
 							right: 2%;
@@ -219,7 +219,7 @@
 				}
 				.back {
 					right: 65%;
-					top: 55%;
+					top: 25%;
 					@include breakpoint('small', 'max') {
 						top: 25%;
 					}
