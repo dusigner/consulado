@@ -17,32 +17,32 @@ const Eventos = {
 		//Quando for mobile
 		if ($(window).width() <= 768) {
 			$('.box-img img').click(function() {
-				let current = '/arquivos/'+this.src.split('/')[4].split('?')[0];
+				let current = '/arquivos/' + this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
-					case 'Cooktops':
-						if (current === CooktopInicial) {
-							this.src = CooktopSecundaria;
-						} else {
-							this.src = CooktopInicial;
-						}
-						break;
-					case 'Forno':
-						if (current === FornoInicial) {
-							this.src = FornoSecundaria;
-						} else {
-							this.src = FornoInicial;
-						}
+				case 'Cooktops':
+					if (current === CooktopInicial) {
+						this.src = CooktopSecundaria;
+					} else {
+						this.src = CooktopInicial;
+					}
+					break;
+				case 'Forno':
+					if (current === FornoInicial) {
+						this.src = FornoSecundaria;
+					} else {
+						this.src = FornoInicial;
+					}
 
-						break;
-					case 'Coifa':
-							if (current === CoifaInicial) {
-								this.src = CoifaSecundaria;
-							} else {
-								this.src = CoifaInicial;
-							}
-						break;
-					default:
-						break;
+					break;
+				case 'Coifa':
+					if (current === CoifaInicial) {
+						this.src = CoifaSecundaria;
+					} else {
+						this.src = CoifaInicial;
+					}
+					break;
+				default:
+					break;
 				}
 			});
 		} else {
@@ -50,44 +50,44 @@ const Eventos = {
 			$('.box-img img').hover(
 				function() {
 					switch (this.alt) {
-						case 'Cooktops':
-							this.className = 'transitioning-src';
-							setTimeout(() => {
-								this.src = CooktopSecundaria;
-								this.className = '';
-							}, 400);
-							break;
-						case 'Forno':
-							this.className = 'transitioning-src';
-							setTimeout(() => {
-								this.src = this.src = FornoSecundaria;
-								this.className = '';
-							}, 400);
-							break;
-						case 'Coifa':
-							this.className = 'transitioning-src';
-							setTimeout(() => {
-								this.src = CoifaSecundaria;
-								this.className = '';
-							}, 400);
-							break;
-						default:
-							break;
+					case 'Cooktops':
+						this.className = 'transitioning-src';
+						setTimeout(() => {
+							this.src = CooktopSecundaria;
+							this.className = '';
+						}, 400);
+						break;
+					case 'Forno':
+						this.className = 'transitioning-src';
+						setTimeout(() => {
+							this.src = this.src = FornoSecundaria;
+							this.className = '';
+						}, 400);
+						break;
+					case 'Coifa':
+						this.className = 'transitioning-src';
+						setTimeout(() => {
+							this.src = CoifaSecundaria;
+							this.className = '';
+						}, 400);
+						break;
+					default:
+						break;
 					}
 				},
 				function() {
 					switch (this.alt) {
-						case 'Cooktops':
-							this.src = CooktopInicial;
-							break;
-						case 'Forno':
-							this.src = FornoInicial;
-							break;
-						case 'Coifa':
-							this.src = CoifaInicial;
-							break;
-						default:
-							break;
+					case 'Cooktops':
+						this.src = CooktopInicial;
+						break;
+					case 'Forno':
+						this.src = FornoInicial;
+						break;
+					case 'Coifa':
+						this.src = CoifaInicial;
+						break;
+					default:
+						break;
 					}
 				}
 			);
@@ -123,84 +123,83 @@ const Eventos = {
 		//Plus Button
 		$('.box_img .plus').click(function() {
 			switch (this.classList[1]) {
-				case 'Cooktops':
-					img.addClass('transitioning-src');
-					plus.addClass('transitioning-src');
-					back.addClass('transitioning-src');
-					setTimeout(function() {
-						img.removeClass('transitioning-src');
-						plus.removeClass('transitioning-src');
-						back.removeClass('transitioning-src');
-						h1.text(strH1Cooktop);
-						p.text(strPCooktop);
-						buttonA.attr('href', '/eletrodomesticos/cooktop');
-						buttonA.addClass('Cooktops');
-						buttonA.text('Ver mais sobre Cooktops');
-						back.addClass('Cooktops');
-						box.removeClass('inicial');
-						box.addClass('one');
-						box_pai.addClass('one');
-						imgMascara.attr(
-							'src',
-							'/arquivos/embutir_zoom_cooktop.jpg'
-						);
-					}, 400);
-					break;
-				case 'Coifas/Depuradores':
-					img.addClass('transitioning-src');
-					plus.addClass('transitioning-src');
-					back.addClass('transitioning-src');
-					setTimeout(function() {
-						img.removeClass('transitioning-src');
-						plus.removeClass('transitioning-src');
-						back.removeClass('transitioning-src');
-						h1.text(strH1Coifa);
-						p.text(strPCoifa);
-						buttonA.attr(
-							'href',
-							'/eletrodomesticos/coifa-e-depurador'
-						);
-						buttonA.addClass('Coifas');
-						buttonA.text('Ver mais sobre Coifas');
-						back.addClass('Coifas');
-						box.removeClass('inicial');
-						box.addClass('two');
-						box_pai.addClass('two');
-						imgMascara.attr(
-							'src',
-							'/arquivos/embutir_zoom_coifa.jpg'
-						);
-					}, 400);
-
-					break;
-				case 'Fornos-Embutidos':
-					img.addClass('transitioning-src');
-					plus.addClass('transitioning-src');
-					back.addClass('transitioning-src');
-					setTimeout(function() {
-						img.removeClass('transitioning-src');
-						plus.removeClass('transitioning-src');
-						back.removeClass('transitioning-src');
-						h1.text(strH1forno);
-						p.text(strPforno);
-						buttonA.attr(
-							'href',
-							'/eletrodomesticos/forno/forno-de-embutir'
-						);
-						buttonA.addClass('Fornos-Embutidos');
-						buttonA.text('Ver mais sobre Fornos');
-						back.addClass('Fornos-Embutidos');
-						box.removeClass('inicial');
-						box.addClass('tree');
-						box_pai.addClass('tree');
-						imgMascara.attr(
-							'src',
-							'/arquivos/embutir_zoom_forno.jpg'
-						);
-					}, 400);
-					break;
-				default:
-					break;
+			case 'Cooktops':
+				img.addClass('transitioning-src');
+				plus.addClass('transitioning-src');
+				back.addClass('transitioning-src');
+				setTimeout(function() {
+					img.removeClass('transitioning-src');
+					plus.removeClass('transitioning-src');
+					back.removeClass('transitioning-src');
+					h1.text(strH1Cooktop);
+					p.text(strPCooktop);
+					buttonA.attr('href', '/eletrodomesticos/cooktop');
+					buttonA.addClass('Cooktops');
+					buttonA.text('Ver mais sobre Cooktops');
+					back.addClass('Cooktops');
+					box.removeClass('inicial');
+					box.addClass('one');
+					box_pai.addClass('one');
+					imgMascara.attr(
+						'src',
+						'/arquivos/embutir_zoom_cooktop.jpg'
+					);
+				}, 400);
+				break;
+			case 'Coifas/Depuradores':
+				img.addClass('transitioning-src');
+				plus.addClass('transitioning-src');
+				back.addClass('transitioning-src');
+				setTimeout(function() {
+					img.removeClass('transitioning-src');
+					plus.removeClass('transitioning-src');
+					back.removeClass('transitioning-src');
+					h1.text(strH1Coifa);
+					p.text(strPCoifa);
+					buttonA.attr(
+						'href',
+						'/eletrodomesticos/coifa-e-depurador'
+					);
+					buttonA.addClass('Coifas');
+					buttonA.text('Ver mais sobre Coifas');
+					back.addClass('Coifas');
+					box.removeClass('inicial');
+					box.addClass('two');
+					box_pai.addClass('two');
+					imgMascara.attr(
+						'src',
+						'/arquivos/embutir_zoom_coifa.jpg'
+					);
+				}, 400);
+				break;
+			case 'Fornos-Embutidos':
+				img.addClass('transitioning-src');
+				plus.addClass('transitioning-src');
+				back.addClass('transitioning-src');
+				setTimeout(function() {
+					img.removeClass('transitioning-src');
+					plus.removeClass('transitioning-src');
+					back.removeClass('transitioning-src');
+					h1.text(strH1forno);
+					p.text(strPforno);
+					buttonA.attr(
+						'href',
+						'/eletrodomesticos/forno/forno-de-embutir'
+					);
+					buttonA.addClass('Fornos-Embutidos');
+					buttonA.text('Ver mais sobre Fornos');
+					back.addClass('Fornos-Embutidos');
+					box.removeClass('inicial');
+					box.addClass('tree');
+					box_pai.addClass('tree');
+					imgMascara.attr(
+						'src',
+						'/arquivos/embutir_zoom_forno.jpg'
+					);
+				}, 400);
+				break;
+			default:
+				break;
 			}
 		});
 
