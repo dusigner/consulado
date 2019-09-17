@@ -33,32 +33,42 @@ Nitro.module('produtos-adicionais', function() {
 	// Pegar as informações no DOM
 	this.getDOMInformation = () => {
 		return {
-			tituloGrupo       : this.getFieldValue('.titulo-do-grupo'),
-			tituloTexto       : this.getFieldValue('.titulo-do-texto'),
-			texto             : this.getFieldValue('.texto'),
-			tipo01Text        : this.getFieldValue('.secao-01-tipo'),
-			tipo01Produtos    : this.getFieldValue('.secao-01-produtos'),
-			tipo01MensagensTit: this.getFieldValue('.secao-01-mensagens').split('|')[0],
-			tipo01Mensagens   : this.getFieldValue('.secao-01-mensagens').split('|')[1],
-			tipo02Text        : this.getFieldValue('.secao-02-tipo'),
-			tipo02Produtos    : this.getFieldValue('.secao-02-produtos'),
-			tipo02MensagensTit: this.getFieldValue('.secao-02-mensagens').split('|')[0],
-			tipo02Mensagens   : this.getFieldValue('.secao-02-mensagens').split('|')[1],
-			tipo01            : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
-			tipo02            : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
+			tituloGrupo        : this.getFieldValue('.titulo-do-grupo'),
+			tituloTexto        : this.getFieldValue('.titulo-do-texto'),
+			texto              : this.getFieldValue('.texto'),
+			tipo01Text         : this.getFieldValue('.secao-01-tipo'),
+			tipo01Produtos     : this.getFieldValue('.secao-01-produtos'),
+			tipo01MensagensTit : this.getFieldValue('.secao-01-mensagens').split('|')[0],
+			tipo01Mensagens    : this.getFieldValue('.secao-01-mensagens').split('|')[1],
+			tipo02Text         : this.getFieldValue('.secao-02-tipo'),
+			tipo02Produtos     : this.getFieldValue('.secao-02-produtos'),
+			tipo02MensagensTit : this.getFieldValue('.secao-02-mensagens').split('|')[0],
+			tipo02Mensagens    : this.getFieldValue('.secao-02-mensagens').split('|')[1],
+			tipo01             : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
+			tipo02             : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
 		};
 	};
 
 	// Procura os produtos selecionados anteriormente e atualizam o link do botão comprar
 	this.getActiveProducts = () => {
 		const activeProducts = $additionalProdBox.find('.produto-adicional.available.is--active');
+		const linkHasJs = /javascript:alert/gmi.test(defaultProdLink);
 		let productsLink = '';
+		let defaultLinkAndSku = '';
 
 		activeProducts.each(function() {
 			productsLink += $(this).data('sku');
 		});
 
-		self.updateButtonLink(defaultProdLink + productsLink);
+		if (!linkHasJs) {
+			defaultProdLink = defaultProdLink.replace('/checkout/cart/add?', '&');
+			defaultLinkAndSku = `/checkout/cart/add?${productsLink}${defaultProdLink}`;
+		}
+		else {
+			defaultLinkAndSku = `${defaultProdLink}${productsLink}`;
+		}
+
+		self.updateButtonLink(defaultLinkAndSku);
 	};
 
 	// Busca todos os produtos da coleção
@@ -152,15 +162,28 @@ Nitro.module('produtos-adicionais', function() {
 		return template;
 	};
 
+	// Função que inverte a ordem do array.
+	// EM JavaScript tem o .reverse(), mas no IE não tem suporte.
+	this.reverseArr = (arr) => {
+		const arrReverse = new Array;
+		for(let i = arr.length -1; i >= 0; i--) {
+			arrReverse.push(arr[i]);
+		}
+
+		return arrReverse;
+	};
+
 	// Limpa e organiza os códigos de referência dos produtos para fazer a chamada da API
 	this.clearProductId = (ids) => {
 		let prodRefCode = '';
 		prodRefCode = ids.replace(/\s+/gmi, '');
 		prodRefCode = prodRefCode.split(',');
+		prodRefCode = this.reverseArr(prodRefCode);
+		prodRefCode = prodRefCode.reduce((acc, curr) => {
+			return `${acc}` + `&fq=alternateIds_RefId:${curr}`;
+		}, '');
 
-		return prodRefCode.reduce((acc, curr) => {
-			return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
-		}, prodRefCode);
+		return prodRefCode;
 	};
 
 	// Selecione o tipo dos produtos
@@ -224,27 +247,12 @@ Nitro.module('produtos-adicionais', function() {
 	this.selectProducts = () => {
 		$additionalProdBox.on('click', '.produto-adicional.available', function() {
 			const $selectSelf = $(this);
-			const prodSku = $selectSelf.data('sku');
 			const prodName = $selectSelf.find('h2').text();
 			const prodSkuId = $selectSelf.find('span').text();
-			let currentProdLink = $buyButton.attr('href');
 
-			// Altera o link do botão comprar de acordo com os produtos adicionais selecionados
-			if ($selectSelf.hasClass('is--active')) {
-				const productLink = currentProdLink.replace(`${prodSku}`, '');
-				self.updateButtonLink(productLink);
-			}
-			else {
-				// A ideia do código abaixo é mandar o produto, sempre depois dos produtos adicionais.
-				// Com isso, conseguiremos garantir que o modal de GAE apareça no checkout
-				currentProdLink = currentProdLink.replace('/checkout/cart/add?', '&');
-				const defaultLinkAndSku = `/checkout/cart/add?${prodSku}${currentProdLink}`;
-
-				self.updateButtonLink(defaultLinkAndSku);
-			}
+			setTimeout(() => { self.getActiveProducts(); }, 2);
 
 			$selectSelf.toggleClass('is--active');
-
 			self.tagSelectProduct(prodName, prodSkuId, prodTypeName);
 		});
 	};
@@ -256,11 +264,11 @@ Nitro.module('produtos-adicionais', function() {
 
 	// Exibe os produtos
 	this.printProducts = (data, prodType) => {
-		const $container =  $additionalProdBox.find('.produtos-adicionais-container');
+		const $container =  $additionalProdBox.find('.loading-container');
 		const products = data;
 
 		products.map(product => {
-			$container.after(this.productBoxTemplate(product, prodType));
+			$container.before(this.productBoxTemplate(product, prodType));
 		});
 	};
 
