@@ -247,8 +247,10 @@ $(document).on('ready', function() {
 								}
 							}
 
+
 							$('body').unbind('ajaxComplete');
 							$('body').off('ajaxComplete');
+
 						}
 					});
 				});
@@ -482,6 +484,9 @@ $(document).on('ready', function() {
 				$('.link-coupon-add').on('click', function() {
 					flagCoupon = true;
 				});
+
+				self.dataLayerCoupon();
+
 			};
 
 			//state
@@ -782,19 +787,39 @@ $(document).on('ready', function() {
 								};
 								return vtexjs.checkout.updateItems([updateItem], null, false);
 							})
-							.done(function(orderForm) {
-								window.vtex.checkout.MessageUtils.showMessage({
-									text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
-									status: 'error'
+								.done(function(orderForm) {
+									window.vtex.checkout.MessageUtils.showMessage({
+										text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+										status: 'error'
+									});
 								});
-							});
 
 						}
 					});
 
 				}
+			};
 
-     		};
+			this.dataLayerCoupon = () => {
+				const pushDataLayer = (cat, act, lbl) => {
+						dataLayer.push({
+							event: 'generic',
+							category: cat,
+							action: act,
+							label: lbl
+						})
+					},
+					addCoupon = $('.link-coupon-add'),
+					sendCoupon = $('#cart-coupon-add');
+
+				addCoupon.on('click', function() {
+					pushDataLayer('Cupom de Desconto - Carrinho', 'Adicionar Cupom', 'Adicionar cupom de desconto - checkout');
+				});
+
+				sendCoupon.on('click', function() {
+					pushDataLayer(('Cupom de Desconto - Carrinho - ' + $('#cart-coupon').val()), 'Selecionar Cupom', 'Cupom selecionado no carrinho');
+				});
+			};
 
 			this.init();
 

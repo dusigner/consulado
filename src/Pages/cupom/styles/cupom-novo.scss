@@ -160,7 +160,7 @@ $breakpoint-map: (
 		min-height: 180px;
 		padding: 0 20px;
 		width: 1000px;
-		@include breakpoint('desktop', 'max') {
+		@include breakpoint('xlg-desktop', 'max') {
 			padding: 0;
 		}
 	}
@@ -200,6 +200,7 @@ $breakpoint-map: (
 	}
 	&.slick-disabled {
 		background-color: #ffffff;
+		color: $gray-light;
 	}
 }
 
