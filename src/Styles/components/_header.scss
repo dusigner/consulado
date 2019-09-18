@@ -23,7 +23,7 @@
 	}
 }
 
-$mobile-header-height: 100px;
+$mobile-header-height: 84px;
 
 // Header
 header {
@@ -135,8 +135,21 @@ header {
 					height: 34px;
 				}
 
+				.icon-consul-loupe {
+					@include rfs (12);
+					left: unset;
+					right: 5px;
+				}
+
 				.text-search {
+					background-color: #F5F5F5;
 					border: none;
+
+					&::placeholder {
+						@include rfs(9);
+						color: #707070;
+						font-weight: bold;
+					}
 				}
 			}
 		}
