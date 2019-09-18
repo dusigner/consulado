@@ -33,32 +33,42 @@ Nitro.module('produtos-adicionais', function() {
 	// Pegar as informações no DOM
 	this.getDOMInformation = () => {
 		return {
-			tituloGrupo       : this.getFieldValue('.titulo-do-grupo'),
-			tituloTexto       : this.getFieldValue('.titulo-do-texto'),
-			texto             : this.getFieldValue('.texto'),
-			tipo01Text        : this.getFieldValue('.secao-01-tipo'),
-			tipo01Produtos    : this.getFieldValue('.secao-01-produtos'),
-			tipo01MensagensTit: this.getFieldValue('.secao-01-mensagens').split('|')[0],
-			tipo01Mensagens   : this.getFieldValue('.secao-01-mensagens').split('|')[1],
-			tipo02Text        : this.getFieldValue('.secao-02-tipo'),
-			tipo02Produtos    : this.getFieldValue('.secao-02-produtos'),
-			tipo02MensagensTit: this.getFieldValue('.secao-02-mensagens').split('|')[0],
-			tipo02Mensagens   : this.getFieldValue('.secao-02-mensagens').split('|')[1],
-			tipo01            : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
-			tipo02            : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
+			tituloGrupo        : this.getFieldValue('.titulo-do-grupo'),
+			tituloTexto        : this.getFieldValue('.titulo-do-texto'),
+			texto              : this.getFieldValue('.texto'),
+			tipo01Text         : this.getFieldValue('.secao-01-tipo'),
+			tipo01Produtos     : this.getFieldValue('.secao-01-produtos'),
+			tipo01MensagensTit : this.getFieldValue('.secao-01-mensagens').split('|')[0],
+			tipo01Mensagens    : this.getFieldValue('.secao-01-mensagens').split('|')[1],
+			tipo02Text         : this.getFieldValue('.secao-02-tipo'),
+			tipo02Produtos     : this.getFieldValue('.secao-02-produtos'),
+			tipo02MensagensTit : this.getFieldValue('.secao-02-mensagens').split('|')[0],
+			tipo02Mensagens    : this.getFieldValue('.secao-02-mensagens').split('|')[1],
+			tipo01             : $.replaceSpecialChars(this.getFieldValue('.secao-01-tipo')),
+			tipo02             : $.replaceSpecialChars(this.getFieldValue('.secao-02-tipo')),
 		};
 	};
 
 	// Procura os produtos selecionados anteriormente e atualizam o link do botão comprar
 	this.getActiveProducts = () => {
 		const activeProducts = $additionalProdBox.find('.produto-adicional.available.is--active');
+		const linkHasJs = /javascript:alert/gmi.test(defaultProdLink);
 		let productsLink = '';
+		let defaultLinkAndSku = '';
 
 		activeProducts.each(function() {
 			productsLink += $(this).data('sku');
 		});
 
-		self.updateButtonLink(defaultProdLink + productsLink);
+		if (!linkHasJs) {
+			defaultProdLink = defaultProdLink.replace('/checkout/cart/add?', '&');
+			defaultLinkAndSku = `/checkout/cart/add?${productsLink}${defaultProdLink}`;
+		}
+		else {
+			defaultLinkAndSku = `${defaultProdLink}${productsLink}`;
+		}
+
+		self.updateButtonLink(defaultLinkAndSku);
 	};
 
 	// Busca todos os produtos da coleção
@@ -152,19 +162,26 @@ Nitro.module('produtos-adicionais', function() {
 		return template;
 	};
 
+	// Função que inverte a ordem do array.
+	// EM JavaScript tem o .reverse(), mas no IE não tem suporte.
+	this.reverseArr = (arr) => {
+		const arrReverse = new Array;
+		for(let i = arr.length -1; i >= 0; i--) {
+			arrReverse.push(arr[i]);
+		}
+
+		return arrReverse;
+	};
+
 	// Limpa e organiza os códigos de referência dos produtos para fazer a chamada da API
 	this.clearProductId = (ids) => {
 		let prodRefCode = '';
 		prodRefCode = ids.replace(/\s+/gmi, '');
 		prodRefCode = prodRefCode.split(',');
-
-		if (prodRefCode.length > 1) {
-			prodRefCode = prodRefCode.reduce((acc, curr) => {
-				return `fq=alternateIds_RefId:${acc}` + `&fq=alternateIds_RefId:${curr}`;
-			});
-		} else {
-			prodRefCode = `fq=alternateIds_RefId:${prodRefCode}`;
-		}
+		prodRefCode = this.reverseArr(prodRefCode);
+		prodRefCode = prodRefCode.reduce((acc, curr) => {
+			return `${acc}` + `&fq=alternateIds_RefId:${curr}`;
+		}, '');
 
 		return prodRefCode;
 	};
@@ -202,7 +219,6 @@ Nitro.module('produtos-adicionais', function() {
 
 		$productItem.removeClass('is--active');
 		$productCheckbox.attr('checked', false);
-
 		self.updateButtonLink(defaultProdLink);
 	};
 
@@ -227,27 +243,16 @@ Nitro.module('produtos-adicionais', function() {
 		});
 	};
 
-	// Ao selecionar os produtos, atualiza o status ativo e chama a função de tagueamento
+	// Ao selecionar os produtos, atualiza o status ativo, o link do botão e chama a função de tagueamento
 	this.selectProducts = () => {
 		$additionalProdBox.on('click', '.produto-adicional.available', function() {
 			const $selectSelf = $(this);
-			const prodSku = $selectSelf.data('sku');
-			const currentProdLink = $buyButton.attr('href');
 			const prodName = $selectSelf.find('h2').text();
 			const prodSkuId = $selectSelf.find('span').text();
 
-			// Altera o link do botão comprar de acordo com os produtos adicionais selecionados
-			if ($selectSelf.hasClass('is--active')) {
-				const productLink = currentProdLink.replace(`${prodSku}`, '');
-				self.updateButtonLink(productLink);
-			}
-			else {
-				const defaultLinkAndSku = `${currentProdLink}${prodSku}`;
-				self.updateButtonLink(defaultLinkAndSku);
-			}
+			setTimeout(() => { self.getActiveProducts(); }, 2);
 
 			$selectSelf.toggleClass('is--active');
-
 			self.tagSelectProduct(prodName, prodSkuId, prodTypeName);
 		});
 	};
@@ -259,11 +264,11 @@ Nitro.module('produtos-adicionais', function() {
 
 	// Exibe os produtos
 	this.printProducts = (data, prodType) => {
-		const $container =  $additionalProdBox.find('.produtos-adicionais-container');
+		const $container =  $additionalProdBox.find('.loading-container');
 		const products = data;
 
 		products.map(product => {
-			$container.after(this.productBoxTemplate(product, prodType));
+			$container.before(this.productBoxTemplate(product, prodType));
 		});
 	};
 
@@ -319,23 +324,22 @@ Nitro.module('produtos-adicionais', function() {
 	// Taguemento do tipo de produto selecionado
 	this.tagSelectType = (prodTypeName) => {
 		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Kit de Instalação para ${prodTypeName}`,
-			action: `Escolher tipo de gás ${prodTypeName}`,
-			label: 'Step Selação do tipo de gás'
+			event    : 'generic',
+			category : `[SQUAD] Kit de Instalação para ${prodTypeName}`,
+			action   : `Escolher tipo de gás ${prodTypeName}`,
+			label    : 'Step Selação do tipo de gás'
 		});
 	};
 
 	// Taguemento dos produtos selecionados
 	this.tagSelectProduct = (prodName, prodSkuId, prodTypeName) => {
 		const productName = window.skuJson.name;
-		const productId = skuJson.productId;
-
+		const productId   = skuJson.productId;
 		dataLayer.push({
-			event: 'generic',
-			category: `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
-			action: `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
-			label: 'Step Clique na escolha do produto'
+			event    : 'generic',
+			category : `[SQUAD] Produto: ${productName} - ${productId} + Produto Kit: ${prodName} - ${prodSkuId}`,
+			action   : `Clique na escolha do produto + Produto Kit: ${prodName} - ${prodSkuId} + ${prodTypeName} + Produto: ${productName} - ${productId}`,
+			label    : 'Step Clique na escolha do produto'
 		});
 	};
 
