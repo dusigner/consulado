@@ -79,6 +79,16 @@
 			// 		font-weight: 100;
 			// 	}
 			// }
+
+			@include breakpoint ('small', 'max') {
+				@include rfs (14);
+				color: $gray-d;
+				font-weight: 500;
+				height: 60px;
+				line-height: 2.5;
+				padding-left: 15px;
+				text-align: left;
+			}
 		}
 
 		&#menu-cupons {
@@ -470,6 +480,12 @@ $menu-colors: (
 			text-align: left;
 			width: 100%;
 
+			@include breakpoint('small', 'max') {
+				height: 60px;
+				padding: 0;
+				text-align: unset;
+			}
+
 			a { @include responsiveFont(14, 16, true); }
 
 			&:first-child a { border: none; }
@@ -499,6 +515,10 @@ $menu-colors: (
 					top: 50%;
 					transform: translateY(-50%);
 					transition: all .3s linear;
+
+					@include breakpoint('small', 'max') {
+						color: $green;
+					}
 				}
 
 				.submenu {
