@@ -1,5 +1,5 @@
 .prod-details-nav {
-	background-color: #F1F0F0;
+	background-color: #f4f2f1;
 	min-height: 95px;
 	position: relative;
 	text-align: center;
@@ -79,7 +79,7 @@
 
 			&:hover,
 			&.active-nav {
-				background: #f1f0f0;
+				background: #f4f2f1;
 				color: #736C6B;
 			}
 		}
@@ -194,7 +194,7 @@
 			}
 
 			&:hover {
-				background-color: #F1F0F0;
+				background-color: #f4f2f1;
 				color: $green;
 			}
 		}

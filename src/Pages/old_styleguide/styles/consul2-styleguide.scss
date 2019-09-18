@@ -7,7 +7,7 @@
 // theme base
 // @import 'theme';
 * {
-	
+
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -3484,7 +3484,7 @@ hr {
     margin-bottom: 24px;
 }
 .wy-plain-list-disc li, .rst-content .section ul li, .rst-content .toctree-wrapper ul li, article ul li {
-    
+
 }
 .wy-plain-list-disc li p:last-child, .rst-content .section ul li p:last-child, .rst-content .toctree-wrapper ul li p:last-child, article ul li p:last-child {
     margin-bottom: 0;
@@ -3967,12 +3967,12 @@ div[class^='highlight'] pre {
     font-size: 0.9em;
 }
 .wy-menu-vertical li.toctree-l3.current>a {
-    background: #bdbdbd;
+    background: #bbbbbb;
     padding: .4045em 4.045em;
 }
 .wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
     display: block;
-    background: #bdbdbd;
+    background: #bbbbbb;
     padding: .4045em 5.663em;
     border-top: none;
     border-bottom: none;
@@ -4760,7 +4760,7 @@ span[id*='MathJax-Span'] {
     font-style: normal;
     font-weight: 700;
     src: local("Roboto Slab Bold"),local("RobotoSlab-Bold"),url(../fonts/RobotoSlab-Bold.ttf) format("truetype");
-} 
+}
 
 ul.cores{
 	float: left;

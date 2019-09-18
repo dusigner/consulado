@@ -6,7 +6,6 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
 	<vtex:template id="0-consul-head-content" />
-
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="produto">
@@ -51,7 +50,7 @@
 						<vtex.cmc:hightLight />
 					</div>
 
-					<!--  Controle: imagem do produto -->
+					<!-- Controle: imagem do produto -->
 					<div class="prod-galeria text-center">
 						<vtex.cmc:ProductImage zoom="off" />
 					</div>
@@ -75,6 +74,12 @@
 						<vtex.cmc:hightLight />
 					</div>
 
+					<!-- Selecionar a cor -->
+					<div class="select-color">
+						<div class="product-select-color -js-product-color"></div>
+					</div>
+					<!-- /Selecionar a cor -->
+
 					<div class="row prod-sku-selector">
 						<!--vtex.cmc:stockKeepingUnitSelection /-->
 
@@ -84,9 +89,9 @@
 						</div>
 						<!-- /Selecionar voltagem -->
 
-						<!-- Selecionar a cor -->
-						<div class="select-color" data-product-field="13"></div>
-						<!-- /Selecionar a cor -->
+						<!-- Produtos adicionais -->
+						<div class="produtos-adicionais"></div>
+						<!-- /Produtos adicionais -->
 					</div>
 
 					<div id="BuyButton" class="clearfix">

@@ -22,7 +22,7 @@
 			display: block;
 			padding: 10px 0 0 0;
 			ul { margin: 0 0 20px 0; }
-			li:not(.erase-filter) { background-color: #e6e6e6; }
+			li:not(.erase-filter) { background-color: #e4e4e4; }
 			li {
 				@include responsiveFont(12, 16, true);
 				border: none;

@@ -1,9 +1,9 @@
 @charset 'UTF-8';
 
 .top-navigation {
-	background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
+	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
     bottom: 1px;
-	box-shadow: 0 0 12px #e5e5e5;
+	box-shadow: 0 0 12px #e4e4e4;
 	position: relative;
     z-index: 5;
 
@@ -12,7 +12,7 @@
 	}
 
 	.menu-department {
-		background: linear-gradient(90deg, #fff 50%, #F1F0F0 50%);
+		background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
 		display: flex;
 		justify-content: space-between;
 
@@ -60,7 +60,7 @@
 		// &.item-cervejeira {
 		// 	border-right: 2px solid $green;
 		// 	bottom: 1px;
-		// 	box-shadow: 0 0 6px #e5e5e5;
+		// 	box-shadow: 0 0 6px #e4e4e4;
 		// 	padding-top: 1.2em;
 		// 	position: relative;
 		// 	right: 1px;
@@ -82,7 +82,7 @@
 		}
 
 		&#menu-cupons {
-			background-color: #F1F0F0;
+			background-color: #f4f2f1;
 			a {
 				@include responsiveFont(16);
 				color: #736C6B;
@@ -104,7 +104,7 @@
 
 	.dropdown {
 		@include responsiveFont(16);
-		border-right: 1px solid #e5e5e5;
+		border-right: 1px solid #e4e4e4;
 		padding-left: 45px;
 
 		// margin: 0 calculate-em(5) 0 0;
@@ -370,10 +370,10 @@
 }
 
 $menu-colors: (
-	'gelar'      : #702c8f,
+	'gelar'      : #702f8f,
 	'cozinhar'   : #007dc3,
-	'lavar'      : #01b6dd,
-	'beber'      : #ea008a,
+	'lavar'      : #0fb6de,
+	'beber'      : #ec008c,
 	'refrescar'  : #fdb912,
 	'servicos'   : #f47921
 );
