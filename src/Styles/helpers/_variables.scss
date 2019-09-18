@@ -1,58 +1,50 @@
 @charset 'UTF-8';
-
 //------------------------------------
 //  BASE
 //------------------------------------
-
 //@import 'bootstrap/variables';
-
 // Website background (can use color or image)
 $website-bg-color: #ffffff !default;
-
 // Enable font smoothing?
 $enable-font-smoothing: true !default;
-
 // Base fonf-family
-$base-font-family       : 'consul', 'Helvetica Neue',  Helvetica, Arial, sans-serif !default;
-$base-print-font-family : Georgia,  'Times New Roman', Times, serif !default;
-
+$base-font-family: 'consul',
+'Helvetica Neue',
+Helvetica,
+Arial,
+sans-serif !default;
+$base-print-font-family: Georgia,
+'Times New Roman',
+Times,
+serif !default;
 // Base font sizes and colors
-$base-font-size         : 16px !default;
-$base-line-height       : 24px !default;
-$base-font-color        : #736c6b !default;
-$base-link-color        : #83838f !default;
-$base-heading-color     : #181818 !default;
-$base-sub-heading-color : #808080 !default;
-
+$base-font-size: 16px !default;
+$base-line-height: 24px !default;
+$base-font-color: #736c6b !default;
+$base-link-color: #83838f !default;
+$base-heading-color: #181818 !default;
+$base-sub-heading-color: #808080 !default;
 // Element spacing and line-height ratio
 $base-spacing-unit: $base-line-height !default;
 $half-spacing-unit: $base-spacing-unit / 2 !default;
 $line-height-ratio: $base-line-height / $base-font-size;
-
 $base-main: 1080px;
-
 //------------------------------------
 //  RESPONSIVE
 //------------------------------------
-
 // Breakpoints
-$breakpoint-map: (
-	'extra-small': 30em, //480px
-	'small':       48em, //768px
-	'medium':      60em, //960px
-	'large':       70em, //1120px
-	'extra-large': 80em  //1280px
+$breakpoint-map: ( 'extra-small': 30em, //480px
+'small' : 48em, //768px
+'medium' : 60em, //960px
+'large' : 70em, //1120px
+'extra-large': 80em //1280px
 );
-
-
 //------------------------------------
 //  PATHS
 //------------------------------------
-
-$img-path	: '/arquivos/';
-$icon-path	: '//d2hzip0rm2jjhg.cloudfront.net/whirlpool/fonts/'; //jussi cdn
-$font-path	: '//d2hzip0rm2jjhg.cloudfront.net/consul/fonts/'; //jussi cdn
-
+$img-path: '/arquivos/';
+$icon-path: '//d2hzip0rm2jjhg.cloudfront.net/whirlpool/fonts/'; //jussi cdn
+$font-path: '//d2hzip0rm2jjhg.cloudfront.net/consul/fonts/'; //jussi cdn
 //------------------------------------
 //  COLORS
 //------------------------------------
@@ -70,178 +62,51 @@ $gray-s		: #e3e1e1;
 
 $txt-gray: $gray-d; //DARK
 $txt-gray-l: #b4afad; //LIGHT
-
 $default-color-green: #9ACA3C;
 $default-color-gray: #736C6B;
 $default-color-gray-dark: #534C4B;
 $default-color-purple: #702F8F;
 $default-color-gray-light: #d9d8d8;
-
-
-
-
 // Selection colors
-$selection-background:  #777777 !default;
-$selection-color:       #ffffff !default;
-
-
+$selection-background : #777777 !default;
+$selection-color : #ffffff !default;
 // Form placeholder colors
-$placeholder-color:     #bbbbbb !default;
-
-
+$placeholder-color : #bbbbbb !default;
 // Colors used for our objects' borders, etc
-$object-ui-color:       #cccccc !default;
+$object-ui-color : #cccccc !default;
 $object-validate-color: #dc2828 !default;
-$object-dashed-gray: 	#bababa !default;
-
-
+$object-dashed-gray : #bababa !default;
 // Dropdown colors
 $dropdown-bg-color:     #ffffff !default;
 $dropdown-border-color: #f4f2f1 !default;
 $dropdown-hover-color:  #f3f8f8 !default;
 $dropdown-header-color: #aaaaaa !default;
-
-
 // Button font color
-$button-bg-color:         $orange !default;
-$button-font-color:       #ffffff !default;
+$button-bg-color : $orange !default;
+$button-font-color : #ffffff !default;
 $button-hover-font-color: #ffffff !default;
-
-
 // Background colors
-$bg-colors: (
-	'white':  #ffffff,
-	'black':  #222222,
-	'gray':   $gray,
-	'green':  $green,
-	'blue':   #4572ed,
-	'yellow': #ed9c28,
-	'red':    #d9534f,
-	'orange': $orange,
-	'purple': $purple
-);
-
-
+$bg-colors: ( 'white' : #ffffff, 'black' : #222222, 'gray' : $gray, 'green' : $green, 'blue' : #4572ed, 'yellow': #ed9c28, 'red' : #d9534f, 'orange': $orange, 'purple': $purple);
 // Type colors
-$type-colors: (
-	'white':  #ffffff,
-	'black':  #222222,
-	'gray':   $txt-gray,
-	'green':  $green,
-	'blue':   #4572ed,
-	'yellow': #c09853,
-	'red':    #d2322d,
-	'orange': $orange
-);
-
-
-
+$type-colors: ( 'white' : #ffffff, 'black' : #222222, 'gray' : $txt-gray, 'green' : $green, 'blue' : #4572ed, 'yellow': #c09853, 'red' : #d2322d, 'orange': $orange);
 //------------------------------------
 //  Components
 //------------------------------------
-
 // Gutter size
 $gutters: 2% !default;
-
-
 // Prefix for grid columns. By default columns
 // are formatted as `.column-8`
 $column-prefix: 'col-' !default;
-
-
 // Dictate how many columns you would like your
 // grid system to use. Default is 16.
 $column-number: 12 !default;
-
-
 //------------------------------------
 //  Icons
 //------------------------------------
-
-$icons: (
-	'arrow-left'              : '\e602',
-	'arrow-right'             : '\e603',
-	'arrow-up'                : '\e604',
-	'arrow-down'              : '\e601',
-	'boxes'                   : '\e61f',
-	'consul-boxes'            : '\e605',
-	'clipboard'               : '\e620',
-	'consul-clipboard'        : '\e60c',
-	'search'                  : '\e613',
-	'chat'                    : '\e61e',
-	'consul-chat'             : '\e60a',
-
-	'brastemp-account'        : '\e622',
-	'consul-account'          : '\e612',
-	'brastemp-cart'           : '\e621',
-	'consul-cart'             : '\e608',
-	'brastemp-loupe'          : '\e624',
-	'consul-loupe'            : '\e613',
-
-	'logo-brastemp'           : '\e623',
-	'logo-consul'             : '\e60e',
-
-	'icecream'                : '\e618',
-	'house'                   : '\e619',
-	'waves'                   : '\e61a',
-	'ice'                     : '\e61b',
-	'blob'                    : '\e61c',
-	'pan'                     : '\e61d',
-
-	'check-mark'              : '\e60b',
-	'close-icon'              : '\e60d',
-	'close'                   : '\e606',
-
-	'lock'                    : '\e614',
-
-	'features-card'           : '\e607',
-	'features-factory'        : '\e610',
-	'features-money'          : '\e609',
-	'features-shield'         : '\e615',
-	'features-truck'          : '\e616',
-
-	'social-facebook'         : '\e60f',
-	'social-linkedin'         : '\e611',
-	'social-twitter'          : '\e617',
-	'social-youtube'          : '\e600',
-	'social-instagram'        : '\e90c',
-
-	'email'                   : '\e900',
-
-	'gae-truck'               : '\e901',
-	'gae-solucao'             : '\e902',
-	'gae-seguranca'           : '\e903',
-	'gae-protecao'            : '\e904',
-	'gae-phone'               : '\e905',
-	'gae-cubo'                : '\e906',
-	'gae-balcao'              : '\e907',
-
-	'icon-engrenagem'         : '\e90d',
-
-	'cadastrar'               : '\e908',
-	'facebook-messenger'      : '\e909',
-	'eye'                     : '\e90a',
-	'logo-consul-aniversario' : '\e90b',
-
-	'orderState-pedidoRealizado'  : '\e90e',
-	'orderState-pagamento'        : '\e90f',
-	'orderState-pagamentoAprovado': '\e910',
-	'orderState-faturado'         : '\e911',
-	'orderState-entregaDoPedido'  : '\e912',
-	'orderState-cancelado'        : '\e913',
-
-	'download'                : '\e914',
-	'check-thin'              : '\e915',
-	'question'                : '\e916'
-);
-
-
-
-
+$icons: ( 'arrow-left': '\e602', 'arrow-right': '\e603', 'arrow-up': '\e604', 'arrow-down': '\e601', 'boxes': '\e61f', 'consul-boxes': '\e605', 'clipboard': '\e620', 'consul-clipboard': '\e60c', 'search': '\e613', 'chat': '\e61e', 'consul-chat': '\e60a', 'brastemp-account': '\e622', 'consul-account': '\e612', 'brastemp-cart': '\e621', 'consul-cart': '\e608', 'brastemp-loupe': '\e624', 'consul-loupe': '\e613', 'logo-brastemp': '\e623', 'logo-consul': '\e60e', 'icecream': '\e618', 'house': '\e619', 'waves': '\e61a', 'ice': '\e61b', 'blob': '\e61c', 'pan': '\e61d', 'check-mark': '\e60b', 'close-icon': '\e60d', 'close': '\e606', 'lock': '\e614', 'features-card': '\e607', 'features-factory': '\e610', 'features-money': '\e609', 'features-shield': '\e615', 'features-truck': '\e616', 'social-facebook': '\e60f', 'social-linkedin': '\e611', 'social-twitter': '\e617', 'social-youtube': '\e600', 'social-instagram': '\e90c', 'email': '\e900', 'gae-truck': '\e901', 'gae-solucao': '\e902', 'gae-seguranca': '\e903', 'gae-protecao': '\e904', 'gae-phone': '\e905', 'gae-cubo': '\e906', 'gae-balcao': '\e907', 'icon-engrenagem': '\e90d', 'cadastrar': '\e908', 'facebook-messenger': '\e909', 'eye': '\e90a', 'logo-consul-aniversario': '\e90b', 'orderState-pedidoRealizado': '\e90e', 'orderState-pagamento': '\e90f', 'orderState-pagamentoAprovado': '\e910', 'orderState-faturado': '\e911', 'orderState-entregaDoPedido': '\e912', 'orderState-cancelado': '\e913', 'download': '\e914', 'check-thin': '\e915', 'question': '\e916');
 //------------------------------------
 //  INCLUDE
 //------------------------------------
-
 // Set whatever components you want included
 // in your project to `true` and any components
 // you do not wish to be included to `false`
@@ -249,54 +114,45 @@ $icons: (
 // Thanks to inuitcss (https://github.com/csswizardry/inuit.css/blob/master/_defaults.scss)
 // for the idea to use feature switches in a framework. It's an absolutely brilliant idea
 // that makes customization so much easier.
-
 // Utility
-	$use-normalize:        true !default;
-	$use-clearfix:         true !default;
-	$use-vertical-rhythm:  true !default;
-
-
+$use-normalize : true !default;
+$use-clearfix : true !default;
+$use-vertical-rhythm : true !default;
 // Base
-	$use-main:           true !default;
-	$use-selection:      true !default;
-	$use-container:      true !default;
-	$use-typography:     true !default;
-	$use-forms:          true !default;
-	  $use-form-styles:  false !default;
-	$use-grid:           true !default;
-	  $use-push:	     true !default;
-	  $use-pull:	     true !default;
-	$use-grid-v2:        true !default;
-
-
+$use-main : true !default;
+$use-selection : true !default;
+$use-container : true !default;
+$use-typography : true !default;
+$use-forms : true !default;
+$use-form-styles : false !default;
+$use-grid : true !default;
+$use-push : true !default;
+$use-pull : true !default;
+$use-grid-v2 : true !default;
 // Components
-	$use-type-colors               : false !default;
-	$use-bg-colors                 : false !default;
-	$use-buttons                   : true !default;
-		$use-button-bg-colors      : false !default;
-		$use-button-styles         : false !default;
-	$use-dropdowns                 : false !default;
-	$use-navigation                : false !default;
-		$use-responsive-navigation : true !default;
-
-	$use-com-cart                  : true !default;
-	$use-com-scroll                : true !default;
-	$use-com-prateleira            : true !default;
-	$use-com-zoom                  : false !default;
-	$use-com-notify                : false !default;
-	$use-com-popup                 : false !default;
-	$use-com-slick                 : true !default;
-	// $use-com-header                : true !default;
-	$use-com-tipbar                : true !default;
-	$use-com-footer                : true !default;
-	$use-com-foot-news             : true !default;
-
-
+$use-type-colors: false !default;
+$use-bg-colors: false !default;
+$use-buttons: true !default;
+$use-button-bg-colors: false !default;
+$use-button-styles: false !default;
+$use-dropdowns: false !default;
+$use-navigation: false !default;
+$use-responsive-navigation: true !default;
+$use-com-cart: true !default;
+$use-com-scroll: true !default;
+$use-com-prateleira: true !default;
+$use-com-zoom: false !default;
+$use-com-notify: false !default;
+$use-com-popup: false !default;
+$use-com-slick: true !default;
+// $use-com-header                : true !default;
+$use-com-tipbar: true !default;
+$use-com-footer: true !default;
+$use-com-foot-news: true !default;
 // Helpers
-	$use-helper:      true !default;
-	// $use-conditional: true !default;
-	$use-print:       true !default;
-	$debug-mode:      false !default;
-		$use-responsive-debug: false !default;
-	$animation-mode:  true !default;
-
+$use-helper : true !default;
+// $use-conditional: true !default;
+$use-print : true !default;
+$debug-mode : false !default;
+$use-responsive-debug: false !default;
+$animation-mode : true !default;

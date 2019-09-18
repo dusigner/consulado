@@ -371,7 +371,7 @@ Nitro.module('checkout.recurrence', function() {
 			let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
 			(!skuList.join(',').includes(recurrenceId)) ? skuList.push(recurrenceId) : '';
 
-			sessionStorage.setItem('sku-cart', skuList);
+			sessionStorage.setItem('sku-cart', skuList.join(','));
 
 			if (recurrenceElement.find('.js-modal-open').length > 0 && !recurrenceElement.find('.recurrence__step--one').hasClass('hide')) {
 				recurrenceElement.find('.js-modal-open')
@@ -381,6 +381,33 @@ Nitro.module('checkout.recurrence', function() {
 			}
 			//}
 		}, 1500);
+	};
+
+	/**
+	 * Checks if there is any water purifier added on order form. If true, add the sku on local storage and set to show the recurrence modal
+	 * @return true if should display the modal
+	 * @return false if the modal should not be displayed
+	*/
+	this.showModalWhenHasPurificador = () => {
+		const element = $('.product-item:contains("Purificador")').last();
+		let customData = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+
+		if (element.length > 0 && !customData.includes(element.attr('data-sku'))) {
+			sessionStorage.removeItem('sku-cart');
+
+			customData = [];
+
+			$('.linkWarranty').each(function() {
+				let dataSku = $(this).parents('.product-item').attr('data-sku');
+				customData.push(dataSku);
+			});
+
+			sessionStorage.setItem('sku-cart', customData);
+
+			return true;
+		} else {
+			return false;
+		}
 	};
 
 	this.hidePayments = function() {

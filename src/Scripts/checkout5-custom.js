@@ -115,6 +115,7 @@ $(document).on('ready', function() {
 				self.delivery();
 				self.shippingSelector();
 				self.shippingSelectorInformation();
+				self.limitQuantityCart();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -417,7 +418,7 @@ $(document).on('ready', function() {
 				// os produtos forem da categoria purificadores
 				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 					const checkoutProducts = self.orderForm.items;
-					const categoryName = window.store.isQA ? '1' : '190'; // Categoria de Purificadores
+					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
 					const categoryRegex = new RegExp(categoryName, 'gmi');
 
 					const someProductsHasRecurrence = checkoutProducts.some(prod => {
@@ -449,7 +450,7 @@ $(document).on('ready', function() {
 									recurrenceId = orderFormItems[i].id;
 								} else {
 									skuId = orderFormItems[i].id;
-									(orderFormItems[i].detailUrl.toLowerCase().includes('purificador')) ? isPurificator = true : isPurificator = false;
+									String(orderFormItems[i].productCategoryIds).match(categoryRegex) ? isPurificator = true : isPurificator = false;
 								}
 							}
 						}
@@ -756,6 +757,45 @@ $(document).on('ready', function() {
 				});
 			};
 
+			this.limitQuantityCart = function(){
+
+				if (!store.isCorp){
+
+					$('body').on('click','.item-quantity-change', function(){
+
+						var prodId = $(this).closest('.product-item').index('.product-item'),
+							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
+							prodName = $(this).closest('.product-item').find('.product-name a:nth-child(1)').text(),
+							orderForm,
+							item = vtexjs.checkout.orderForm.items[prodId];
+
+						item.index = prodId;
+						item.quantity = 6;
+
+
+						if (prodQtde > 6) {
+
+							vtexjs.checkout.getOrderForm().then(function(orderForm) {
+								var updateItem = {
+									index: prodId,
+									quantity: 6
+								};
+								return vtexjs.checkout.updateItems([updateItem], null, false);
+							})
+							.done(function(orderForm) {
+								window.vtex.checkout.MessageUtils.showMessage({
+									text: 'Você só pode ter no máximo 6 itens do produto '+prodName+' no carrinho',
+									status: 'error'
+								});
+							});
+
+						}
+					});
+
+				}
+
+     		};
+      
 			this.init();
 
 			$(window).on('orderFormUpdated.vtex', this.orderFormUpdated);

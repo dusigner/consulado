@@ -75,7 +75,7 @@ body {
 					}
 
 					.product-item {
-						border: 1px solid $gray-l;
+						border: 1px solid #E3E1E1;
 						border-radius: 3px;
 						margin-bottom: 20px;
 						overflow: initial;
@@ -1059,7 +1059,7 @@ body {
 
 					.link-coupon-add {
 						@include responsiveFont(12, 16, true);
-						border: 1px solid $gray-l;
+						border: 1px solid #E3E1E1;
 						font-weight: bold;
 						padding: 12px 25px;
 
