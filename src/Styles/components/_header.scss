@@ -126,8 +126,18 @@ header {
 			width: 100%;
 
 			@include breakpoint(small, 'max') {
-				border: 7px solid $green;
+				border: none;
+				height: 34px;
+				padding: 0;
 				top: 50px;
+
+				.form-search {
+					height: 34px;
+				}
+
+				.text-search {
+					border: none;
+				}
 			}
 		}
 

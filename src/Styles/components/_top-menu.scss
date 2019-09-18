@@ -395,16 +395,20 @@ $menu-colors: (
 //Menu mobile
 .menu-mobile {
 	@include breakpoint(768px, 'min') { display: none; }
-	background-color: $green;
+	background-color: #fff;
 	height: 50px;
 	overflow: hidden;
 	position: relative;
 	transition: all 300ms linear;
 
+	.icon-logo-consul {
+		color: $green;
+	}
+
 	// Ícone menu
 	.open-menu-mobile {
 		@include singleTransition();
-		background-color: $green;
+		background-color: #fff;
 		cursor: pointer;
 		float: left;
 		height: 50px;
@@ -416,11 +420,11 @@ $menu-colors: (
 		.txt { position: absolute; }
 
 		.icon-hamburger {
-			border-color: #fff;
+			border-color: $green;
 			left: 10px;
 			top: 18px;
 
-			&:before { background-color: #fff; }
+			&:before { background-color: $green; }
 		}
 
 		.txt {

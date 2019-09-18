@@ -29,7 +29,7 @@ $cart-size: 405px;
 
 		@include breakpoint(small, 'max') {
  			@include responsiveFont(22, 16, true);
- 			color: #ffffff;
+ 			color: $purple-n;
  			position: relative;
     		right: 20px;
     		top: -9px;
@@ -53,10 +53,10 @@ $cart-size: 405px;
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(17);
-			    background-color: $orange;
-			    border: none;
+			    background-color: #fff;
+			    border: 1px solid $purple;
 			    border-radius: 50%;
-			    font-weight: 400;
+			    font-weight: bold;
 			    height: 16px;
 			    line-height: 19px;
 			    top: 10px;
@@ -81,14 +81,14 @@ $cart-size: 405px;
 		&:hover { transform: scale(1.2); }
 
 		@include breakpoint(small, 'max') {
-			@include responsiveFont(12, 13, true);
+			@include rfs(12);
 			background-color: transparent;
 			border: none;
-			color: #ffffff;
-			font-weight: normal;
+			color: $purple;
+			font-weight: bold;
 			height: 16px;
-			right: 0;
-			top: -8px;
+			right: -1px;
+			top: -10px;
 			width: 16px;
 		}
 	}
