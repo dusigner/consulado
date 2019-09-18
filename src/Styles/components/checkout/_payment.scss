@@ -1214,17 +1214,12 @@ body {
 			&.bankInvoicePaymentGroup,
 			&.safetyPayPaymentGroup {
 
-				@include breakpoint ('medium', 'min') {
+				@include breakpoint ('small', 'min') {
 					min-height: 425px;
-
-					@include breakpoint ('small', 'min') {
-						min-height: 425px;
-					}
 				}
 
 				@include breakpoint(767px, 'max') {
 					margin-bottom: -100px;
-
 				}
 			}
 		}
