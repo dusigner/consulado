@@ -3,6 +3,8 @@
 @import 'components/produto/recurrence';
 
 body.produto {
+	overflow: initial!important;
+
 	.main {
 		@include breakpoint(small, 'max') {
 			.container { padding: 0 10px; }
@@ -247,7 +249,14 @@ div#modal-custom-share {
 }
 
 
+
 .prod-image {
+	@include breakpoint('medium', 'min') {
+		position: sticky;
+		top: 15px;
+		z-index: 15;
+	}
+	padding-left: 0!important;
 	position: relative;
 
 	@include breakpoint(small, 'max') { margin-top: 20px; }
