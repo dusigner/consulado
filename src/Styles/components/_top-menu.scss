@@ -86,7 +86,7 @@
 				font-weight: 500;
 				height: 60px;
 				line-height: 2.5;
-				padding-left: 15px;
+				padding-left: 20px;
 				text-align: left;
 			}
 		}
@@ -481,7 +481,6 @@ $menu-colors: (
 			width: 100%;
 
 			@include breakpoint('small', 'max') {
-				height: 60px;
 				padding: 0;
 				text-align: unset;
 			}
@@ -491,14 +490,12 @@ $menu-colors: (
 			&:first-child a { border: none; }
 
 			&.txt-gray {
-				background-color: #f4f2f1;
-				border-top: none;
+				background-color: #F1F0F0;
 
 				&:last-child { display: none; }
 
 				a {
-					border-top: none;
-					&[href*='tel:551130037872'] { color: $orange; }
+					&[href*='tel:551130037872'] { color: $purple; }
 				}
 			}
 
@@ -529,7 +526,7 @@ $menu-colors: (
 
 					li {
 						border: none;
-						padding: 0 20px;
+						padding: 0 35px;
 
 						a {
 							border: none;

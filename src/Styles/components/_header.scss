@@ -190,14 +190,23 @@ header {
 	@include breakpoint(small, 'max') {
 		flex: 0 !important;
 		float: none;
+		height: 50px;
 		max-width: 100% !important;
 		text-align: center;
-		width: 85% !important;
+		width: 100% !important;
 
 		a {
 			display: inline-block;
 			padding: 6px 0;
 			top: 0;
+			width: 85%;
+		}
+
+		.logo-mobile-svg {
+			height: 35px;
+			left: 50%;
+			position: absolute;
+			transform: translateX(-50%);
 		}
 	}
 }
@@ -217,6 +226,7 @@ header {
 		color: #ffffff;
 		display: block;
 		margin-top: 0;
+		position: static;
 		text-align: center;
 		top: -40px;
 	}
@@ -241,7 +251,6 @@ div.account {
 
 		@include breakpoint ('small', 'max') {
 			background-color: #f4f2f1;
-			display: block;
 			height: 60px;
 			line-height: 60px;
 			margin: 0;
@@ -310,7 +319,6 @@ div.account {
 
 			.welcome-message,
 			a[href='/minhaconta/pedidos'] {
-				display: block;
 				height: 60px;
 				line-height: 60px;
 				margin: 0;
@@ -346,17 +354,7 @@ div.account {
 			}
 
 			a[href='/minhaconta/pedidos'] {
-				background-color: #f4f2f1;
 				right: 0;
-
-				span:not(.account__icon) {
-					bottom: 9px;
-					display: block;
-					font-size: 12px;
-					line-height: normal;
-					position: absolute;
-					width: 100%;
-				}
 
 				.account__icon.account__icon--truck {
 					display: inline-block;
@@ -594,6 +592,77 @@ body.consulempresa {
 			.logo {
 				line-height: inherit;
 				margin-top: 10px;
+			}
+		}
+	}
+}
+
+body {
+	header {
+		.menu-mobile {
+			.menu-department {
+				.account {
+					@include breakpoint('small', 'max') {
+						.welcome-message {
+							background-color: #fff;
+
+							.welcome {
+								background-color: #fff;
+
+								#login {
+									background-color: #fff;
+									border: none;
+								}
+							}
+						}
+					}
+
+					.link-meus-pedidos {
+						align-items: center;
+						background-color: #fff;
+    					display: flex;
+    					justify-content: center;
+
+						.account__icon.account__icon--truck {
+							@include breakpoint('small', 'max') {
+								@include rfs(15);
+								bottom: unset;
+								display: inline-block;
+								height: 100%;
+								line-height: 0;
+								margin: 0 5px;
+								position: relative;
+								top: 0;
+
+								svg {
+									left: 0;
+    								position: absolute;
+    								top: 50%;
+    								transform: translateY(-50%);
+								}
+							}
+						}
+
+						.account-text {
+							@include breakpoint('small', 'max') {
+								@include rfs(12);
+								color: $gray-d;
+								display: inline-block;
+								margin: 0 5px;
+								position: static;
+								text-align: left;
+								text-transform: none;
+								width: unset;
+
+								&:after {
+									content: 'Acompanhe!';
+									display: block;
+									font-weight: 400;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
