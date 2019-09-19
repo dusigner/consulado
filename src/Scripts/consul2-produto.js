@@ -126,7 +126,7 @@ Nitro.controller(
 						}
 					},
 					{
-						breakpoint: 480,
+						breakpoint: 768,
 						settings: {
 							dots: true,
 							slidesToShow: 1,
@@ -211,14 +211,9 @@ Nitro.controller(
 		}
 
 		//inicia automaticamente prateleiras sliders no desktop
+		self.setupSlider($slider);
 		if ($(window).width() > 768) {
-			self.setupSlider($slider);
-			$('html, body').animate(
-				{
-					scrollTop: 190
-				},
-				1500
-			);
+			$('html, body').animate( { scrollTop: 190 }, 1500 );
 		}
 
 		//mobile - abrir vitrines
