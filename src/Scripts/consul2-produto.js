@@ -18,7 +18,7 @@ import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/chaordic';
-import 'components/testeab-entrega';
+// import 'components/testeab-entrega';
 // import 'modules/product/quiz-install';
 // require('modules/product/special-content');
 
@@ -26,7 +26,7 @@ Nitro.controller(
 	'produto',
 	[
 		'chaordic',
-		'testeab-entrega',
+		/*'testeab-entrega',*/
 		'color-selector',
 		'sku-fetch',
 		'gallery',
@@ -46,11 +46,11 @@ Nitro.controller(
 		// 'quiz-install',
 		// 'special-content',
 	],
-	function(chaordic, testeabEntrega, colorSelector, skuFetch, gallery) {
+	function(chaordic, /*testeabEntrega,*/ colorSelector, skuFetch, gallery) {
 		var self = this,
 			$body = $('body');
 
-		testeabEntrega.productSetup();
+		// testeabEntrega.productSetup();
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		chaordic.init('product', window.skuJson.productId);
