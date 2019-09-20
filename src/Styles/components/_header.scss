@@ -328,30 +328,7 @@ div.account {
 				width: 50%;
 			}
 
-			.welcome-message {
-				left: 0;
 
-				.welcome a#login {
-					background-color: #e4e4e4;
-					display: block;
-					font-size: 0;
-					height: 60px;
-					padding: 0;
-
-					&:after {
-						bottom: 8px;
-						content: 'Entrar';
-						display: block;
-						font-size: 12px;
-						line-height: normal;
-						position: absolute;
-						width: 100%;
-					}
-
-					span { margin-top: -4px; }
-				}
-
-			}
 
 			a[href='/minhaconta/pedidos'] {
 				right: 0;
@@ -599,19 +576,96 @@ body.consulempresa {
 
 body {
 	header {
+		.a {
+			stroke: none;
+		}
 		.menu-mobile {
 			.menu-department {
+
+				.welcome-message {
+					@include breakpoint('small', 'max') {
+						.ajax-content-loader {
+							align-items: center;
+							background-color: #fff;
+							display: flex;
+							height: 100%;
+							justify-content: center;
+
+							.welcome {
+								margin: 0;
+								padding: 0;
+							}
+
+							.account__icon.account__icon--enter {
+								@include breakpoint('small', 'max') {
+									@include rfs(15);
+									bottom: unset;
+									display: inline-block;
+									height: 100%;
+									line-height: 0;
+									margin: 0;
+									position: relative;
+									top: 0;
+
+									svg {
+										left: 0;
+										position: absolute;
+										top: 50%;
+										transform: translateY(-50%);
+									}
+								}
+							}
+
+							.login-text {
+								@include breakpoint('small', 'max') {
+									@include rfs(12);
+									color: $gray-d;
+									display: inline-block;
+									margin: 0 5px;
+									position: static;
+									text-align: left;
+									text-transform: none;
+									width: unset;
+
+									&:after {
+										@include rfs(10);
+										content: 'Acesse sua conta!';
+										display: block;
+										font-weight: 400;
+									}
+								}
+							}
+						}
+					}
+				}
+
 				.account {
 					@include breakpoint('small', 'max') {
+						padding: 0;
+
 						.welcome-message {
 							background-color: #fff;
 
 							.welcome {
 								background-color: #fff;
+								height: 100%;
+								left: 0;
+								top: 0;
+								width: 100%;
+
+								em {
+									height: 100%;
+								}
 
 								#login {
+									align-items: center;
 									background-color: #fff;
 									border: none;
+									display: flex;
+									height: 100%;
+									justify-content: center;
+									padding: 0;
+									top: 0;
 								}
 							}
 						}
@@ -655,11 +709,20 @@ body {
 								width: unset;
 
 								&:after {
+									@include rfs(10);
 									content: 'Acompanhe!';
 									display: block;
 									font-weight: 400;
 								}
 							}
+						}
+
+						&:before {
+							border: 1px solid #E3E1E1;
+							content: '';
+							height: 40%;
+							position: absolute;
+							right: 100%;
 						}
 					}
 				}

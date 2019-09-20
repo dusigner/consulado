@@ -76,7 +76,6 @@ Nitro.module('cotas', function() {
 	this.init();
 
 	$('.open-menu-mobile').click(function() {
-		$('.menu-department').prepend($('.header .account'));
 
 		if (isLogged) {
 			$('.header .account').addClass('logged-user');

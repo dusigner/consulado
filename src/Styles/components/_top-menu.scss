@@ -604,7 +604,7 @@ $menu-colors: (
 	&.menu-active {
 		// Ícone menu
 		.open-menu-mobile {
-			background-color: $gray;
+			background-color: #fff;
 
 			.icon-hamburger {
 				border-color: transparent;
@@ -612,7 +612,7 @@ $menu-colors: (
 				&:before {
 					@include icon-get( close-icon );
 					background-color: transparent;
-					color: $orange;
+					color: $green;
 					font-size: 16px;
 					top: -1px;
 				}
