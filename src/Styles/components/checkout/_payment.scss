@@ -706,6 +706,10 @@ body {
 				margin-left: 0;
 				position: relative;
 
+				@include breakpoint('extra-small', 'max') {
+					height: 50px;
+				}
+
 				&:last-child {
 					border-bottom: 1px solid $gray-n;
 				}
@@ -904,51 +908,45 @@ body {
 				.service-list {
 					background-color: $gray-c410;
 					float: none;
-					height: 50px;
 					margin-top: 30px;
 					padding: 5px;
 					width: 100%;
 
 					.service-item {
+						position: relative;
+
 						.product-name {
 							display: inline-block;
 							text-overflow: ellipsis;
-							width: 70%;
 
+							@include breakpoint (1120px, 'max') {
+
+								height: 60px;
+								width: 50%;
+
+								@include breakpoint (980px, 'max') {
+									height: 20px;
+									width: 70%;
+								}
+							}
 							.icon-ok {
 								display: none;
 							}
 						}
+
 						.price {
 							@include rfs(11);
 							display: inline-block;
-							position: static;
+							margin: 0;
+							position: absolute;
+							right: 0;
 							text-align: right;
-							width: 25%;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 100%;
 
 							&:before {
 								display: none;
-							}
-						}
-					}
-
-
-					@include breakpoint (1200px, 'max') {
-						height: 65px;
-
-						@include breakpoint ('medium', 'max') {
-							height: 30px;
-
-							.product-name {
-								height: 20px;
-							}
-
-							@include breakpoint (767px, 'max') {
-								height: 50px;
-
-								.product-name {
-									height: auto;
-								}
 							}
 						}
 					}
@@ -1215,17 +1213,12 @@ body {
 			&.bankInvoicePaymentGroup,
 			&.safetyPayPaymentGroup {
 
-				@include breakpoint ('medium', 'min') {
+				@include breakpoint ('small', 'min') {
 					min-height: 425px;
-
-					@include breakpoint ('small', 'min') {
-						min-height: 425px;
-					}
 				}
 
 				@include breakpoint(767px, 'max') {
 					margin-bottom: -100px;
-
 				}
 			}
 		}
@@ -1389,9 +1382,10 @@ body {
 		label {
 			@include rfs(12);
 			line-height: 1;
+			margin-bottom: 10px;
 			margin-left: 25px;
 			position: relative;
-			width: 50%;
+			width: 90%;
 
 			&:before {
 				border: 1px solid $gray-b;
@@ -1400,7 +1394,7 @@ body {
 				height: 18px;
 				left: -26px;					//please, forgive me!
 				position: absolute;
-				top: 3px;
+				top: -2px;
 				width: 18px;
 			}
 
@@ -1646,7 +1640,7 @@ body {
 	align-items: center;
 	border-top: 1px solid #dfdfdf;
 	display: flex;
-	padding-top: 10px;
+	padding-top: 5px;
 	position: relative;
 	width: 100%;
 
