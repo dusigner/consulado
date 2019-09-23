@@ -2,6 +2,7 @@ const Eventos = {
 	init: () => {
 		Eventos.hoverIMGS();
 		Eventos.dotsInfo();
+		Eventos.compreJunto();
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
@@ -225,6 +226,16 @@ const Eventos = {
 			}, 500);
 			imgMascara.attr('src', '/arquivos/embutir_ambientada1.jpg');
 		});
+	},
+	compreJunto: () => {
+		let totalPor = 0;
+		let totalDe = 0;
+		$.map($('.de'),x => (totalDe += parseFloat(x.textContent.split(' ')[1].replace('.', ''))));
+		$.map($('.por'),x => (totalPor += parseFloat(x.textContent.split(' ')[1].replace('.', ''))));
+		totalPor = 'R$ ' + totalPor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+		totalDe = 'R$ ' + totalDe.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+		$('.vitrine ul').append(`<li><h1>Comprando Junto</h1> <p class="de-final"> De: ${totalDe}</p> <p class="por-final">Por: ${totalPor}</p> <a class="btn-primary-button" >Ir para Carrinho</a></li>`);
+		$('.remove-item').click(x => console.log(x));
 	}
 };
 

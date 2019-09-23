@@ -420,6 +420,86 @@
 			}
 		}
 	}
+	.vitrine {
+
+		.btn-primary-button {
+			background-color: $green;
+			border: 2px solid transparent;
+			color: #ffffff;
+			font-weight: 600;
+			min-height: 40px;
+			min-width: 130px;
+			padding: 9px 40px;
+		}
+
+		ul {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			li {
+				display: flex;
+				flex-flow: column nowrap;
+				position: relative;
+				padding: 50px;
+				article {
+					padding: 30px;
+					border: 1px solid $green;
+					border-radius: 7px;
+					.add-item,
+					.remove-item {
+						display: none;
+						&.active {
+							display: initial;
+						}
+					}
+					.remove-item {
+						&::before {
+							content: '+';
+							font-size: 1.5em;
+							transform: rotate(45deg);
+							padding-right: 10px;
+						}
+					}
+					h3 {
+						color: $green;
+						min-height: 60px;
+					}
+					.de, .por {
+						color: $purple-n;
+					}
+					.de {
+						font-weight: 600;
+						font-size: 1em;
+						text-decoration: line-through;
+					}
+					.por {
+						font-weight: 600;
+						font-size: 1.5em;
+					}
+
+				}
+				&::after {
+					color: $green;
+					content: '+';
+					font-size: 2em;
+					font-weight: 600;
+					position: absolute;
+					right: 0;
+					top: 50%;
+				}
+				&:nth-child(3) {
+					&::after{
+						content: '=';
+					}
+				}
+				&:nth-child(4) {
+					&::after{
+						content: '';
+					}
+				}
+
+			}
+		}
+	}
 	.informativo-embutir {
 		background-color: #736c6b;
 		border-color: $green;
