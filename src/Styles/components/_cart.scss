@@ -21,11 +21,9 @@ $cart-size: 405px;
 	& > svg,
 	.icon-consul-cart {
 		@include responsiveFont(25);
-		color: $gray-d;
+		color: $purple-n;
 		line-height: 54px;
 		z-index: 10;
-
-		@include breakpoint(small, 'min') { color: #fff; }
 
 		@include breakpoint(small, 'max') {
  			@include responsiveFont(22, 16, true);
@@ -45,11 +43,6 @@ $cart-size: 405px;
 		position: relative;
 		text-decoration: none;
 		width: 50px;
-
-		@include breakpoint(small, 'min') {
-			background: $green;
-			border-radius: 50%;
-		}
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(17);

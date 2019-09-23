@@ -221,6 +221,11 @@ header {
 	position: relative;
 	vertical-align: top;
 
+	.logo-desktop-svg {
+		line-height: 1;
+    	width: 100px;
+	}
+
 	@include breakpoint(small, 'max') {
 		@include responsiveFont(25.5, 16, true);
 		color: #ffffff;
@@ -243,7 +248,6 @@ div.account {
 	min-height: 60px;
 	padding: 0 0 0 fluidWidth(25px);
 	position: relative;
-	text-transform: uppercase;
 
 	.link-meus-pedidos {
 		bottom: 0;
@@ -471,14 +475,18 @@ div.account {
 			}
 		}
 
-		svg { max-height: 20px;}
+		svg {
+			margin: 0 auto;
+			max-height: 20px;
+			width: 25px;
+		}
 	}
 
 	#login {
 		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 		@include responsiveFont(12, 16, true);
 		background-color: #ffffff;
-		color: $green;
+		color: $base-link-color;
 		display: block;
 		padding: 3px 0 0 0;
 		top: 0;
@@ -493,7 +501,7 @@ div.account {
 		display: inline-block;
 		margin-right: .5em;
 		vertical-align: middle;
-		width: 20px;
+		width: 25px;
 
 		&.account__icon--profile {
 			position: relative;
@@ -641,6 +649,7 @@ body {
 
 				.account {
 					@include breakpoint('small', 'max') {
+						float: none;
 						padding: 0;
 
 						.welcome-message {
