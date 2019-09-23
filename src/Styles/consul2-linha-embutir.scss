@@ -6,7 +6,7 @@
 @import 'helpers/family';
 
 .pagina-embutidos {
-	& .embutidos-header {
+	.embutidos-header {
 		background-color: $gray;
 		display: grid;
 		grid-template-columns: 1.5fr 1fr;
@@ -331,7 +331,7 @@
 			}
 		}
 	}
-	& .embutidos-content {
+	.embutidos-content {
 		& .nav-embutidos {
 			& nav {
 				align-items: center;
@@ -420,7 +420,7 @@
 			}
 		}
 	}
-	& .informativo-embutir {
+	.informativo-embutir {
 		background-color: #736c6b;
 		border-color: $green;
 		color: #ffffff;
