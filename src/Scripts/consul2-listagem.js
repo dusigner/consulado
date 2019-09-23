@@ -335,17 +335,29 @@ Nitro.controller(
 			// $('section.slider').eq(0).find('.pre-title').trigger('click');
 		}
 
-	// Filtros de categorias
-	if ($('.category-list ul').length === 0) {
-		$('.category-list').addClass('hide');
-		$('.filter-wrapper > p:first-of-type').addClass('hide');
-	}
+		// Filtros de categorias
+		if ($('.category-list ul').length === 0) {
+			$('.category-list').addClass('hide');
+			$('.filter-wrapper > p:first-of-type').addClass('hide');
+		}
 
-	// Banner SEO - Ocultar quando vazio
-	if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
-		$('.heading-banner').addClass('hide');
+		// Banner SEO - Ocultar quando vazio
 		if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
 			$('.heading-banner').addClass('hide');
+			if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
+				$('.heading-banner').addClass('hide');
+			}
 		}
+
+		if ($('.category-list ul').length === 0) {
+			$('.category-list').addClass('hide');
+			$('.filter-wrapper > p:first-of-type').addClass('hide');
+		}
+
+		$('.listagem-apoio').on('click', function(e) {
+			e.preventDefault();
+
+			$(this).toggleClass('active');
+		});
 	}
-});
+);
