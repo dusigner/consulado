@@ -102,50 +102,50 @@ Nitro.module('specifications', function() {
 	});
 
 	// ACCORDION SPECIFICATION PRODUCTS
-	var btnSpecs = false;
-	var buttonTemplate =
-		'<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
+	// var btnSpecs = false;
+	// var buttonTemplate =
+	// 	'<button id="mais-especs" class="secondary-button text-uppercase">Ver mais especificações</button>';
 
-	accordionBtnProduct.on('click', function(e) {
-		if (btnSpecs === false) {
-			$($holder).append(buttonTemplate);
+	// accordionBtnProduct.on('click', function(e) {
+	// 	if (btnSpecs === false) {
+	// 		$($holder).append(buttonTemplate);
 
-			btnSpecs = true;
-		}
+	// 		btnSpecs = true;
+	// 	}
 
-		if ($(window).width() > 767) {
-			return true;
-		}
+	// 	if ($(window).width() > 767) {
+	// 		return true;
+	// 	}
 
-		e.preventDefault();
+	// 	e.preventDefault();
 
-		var self = $(this);
+	// 	var self = $(this);
 
-		if (self.parent().hasClass('open')) {
-			accordionBoxProduct.removeClass('open');
-			self.next()
-				.stop(true, true)
-				.slideUp();
-		} else {
-			self.parent().addClass('open');
-			self.next()
-				.stop(true, true)
-				.slideDown();
-		}
-	});
+	// 	if (self.parent().hasClass('open')) {
+	// 		accordionBoxProduct.removeClass('open');
+	// 		self.next()
+	// 			.stop(true, true)
+	// 			.slideUp();
+	// 	} else {
+	// 		self.parent().addClass('open');
+	// 		self.next()
+	// 			.stop(true, true)
+	// 			.slideDown();
+	// 	}
+	// });
 
-	$holder.on('click', '#mais-especs', function(e) {
-		e.preventDefault();
-		var $self = $(this);
+	// $holder.on('click', '#mais-especs', function(e) {
+	// 	e.preventDefault();
+	// 	var $self = $(this);
 
-		$holder.toggleClass('open--full');
+	// 	$holder.toggleClass('open--full');
 
-		$self.toggleClass('is--active');
+	// 	$self.toggleClass('is--active');
 
-		if ($self.hasClass('is--active')) {
-			$self.text('Fechar especificações');
-		} else {
-			$self.text('Ver mais especificações');
-		}
-	});
+	// 	if ($self.hasClass('is--active')) {
+	// 		$self.text('Fechar especificações');
+	// 	} else {
+	// 		$self.text('Ver mais especificações');
+	// 	}
+	// });
 });

@@ -20,7 +20,6 @@ Nitro.module('gallery', function() {
 							alt="${self.find('img').attr('title')}"
 							width="420"
 							height="420"
-							loading="lazy"
 						 />
 					</a>
 				</li>
@@ -37,7 +36,6 @@ Nitro.module('gallery', function() {
 							alt="${self.find('img').attr('title')}"
 							width="56"
 							height="56"
-							loading="lazy"
 						 />
 					</a>
 				</li>
@@ -54,7 +52,7 @@ Nitro.module('gallery', function() {
 				0,
 				`<li>
 					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
-						<img class="image cover" width="420" height="420" src="${thumb}" loading="lazy" />
+						<img class="image cover" width="420" height="420" src="${thumb}" />
 					</a>
 				</li>`
 			);
@@ -65,7 +63,7 @@ Nitro.module('gallery', function() {
 				`
 					<li>
 						<a href="javascript:void(0);" class="thumb">
-							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56)}" alt="Vídeo" width="56" height="56" loading="lazy" />
+							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56)}" alt="Vídeo" width="56" height="56" />
 						</a>
 					</li>
 				`
@@ -84,7 +82,6 @@ Nitro.module('gallery', function() {
 			asNavFor: '.galleryThumbs',
 			dots: true,
 			draggable: false,
-			lazyLoad: 'ondemand',
 			responsive: [
 				{
 					breakpoint: 992,

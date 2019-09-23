@@ -180,6 +180,7 @@
 			@include breakpoint('small', 'max') { margin: 0; }
 			border: 2px solid $gray;
 			border-radius: 5px;
+			font-size: 7px;
 			margin: 10px;
 		}
 

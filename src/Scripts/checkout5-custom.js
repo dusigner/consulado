@@ -50,7 +50,7 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
-	require('components/testeab-entrega');
+	// require('components/testeab-entrega');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
 	require('modules/customLogin');
@@ -68,7 +68,7 @@ $(document).on('ready', function() {
 			'checkout.cotas',
 			'checkout.pj',
 			'reinput',
-			'testeab-entrega',
+			/* 'testeab-entrega', */
 			'checkout.default-message',
 			'customLogin',
 			'callcenter'
@@ -80,7 +80,7 @@ $(document).on('ready', function() {
 			cotas,
 			pj,
 			reinput,
-			testeabEntrega
+			/*testeabEntrega*/
 		) {
 			var self = this,
 				$body = $('body'),
@@ -355,7 +355,7 @@ $(document).on('ready', function() {
 				reinput.setup();
 				self.delivery();
 
-				testeabEntrega.checkoutSetup(orderForm);
+				// testeabEntrega.checkoutSetup(orderForm);
 				self.atualizaCoupon();
 			};
 
@@ -796,7 +796,6 @@ $(document).on('ready', function() {
 
 						}
 					});
-
 				}
 			};
 
