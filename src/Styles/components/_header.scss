@@ -425,13 +425,13 @@ div.account {
 
 	.welcome {
 		// @include responsiveFont(12);
-		color: $green;
+		color: $base-link-color;
 		display: block;
 		// left: 35%;
 		// font-size: 0;
 		margin: 0 0 .5em;
 		overflow: hidden;
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 		position: relative;
 		// width: 75%;
 		text-overflow: ellipsis;
@@ -458,9 +458,9 @@ div.account {
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: -5px;
+				bottom: 0;
 				font-size: 10px;
-				left: 30px;
+				left: 35px;
 				position: absolute;
 
 				@include breakpoint(770px, 'max') {
@@ -506,13 +506,6 @@ div.account {
 		&.account__icon--profile {
 			position: relative;
 			top: 5px;
-
-			@include breakpoint(700px, 'max') {
-				left: 50%;
-				position: absolute;
-				top: -5px;
-				transform: translateX(-50%);
-			}
 		}
 
 		&--enter,
@@ -600,11 +593,17 @@ body {
 							justify-content: center;
 
 							.welcome {
+								@include rfs(12);
+								color: $gray-d;
+								display: inline-block;
 								margin: 0;
 								padding: 0;
+								position: relative;
+
 							}
 
-							.account__icon.account__icon--enter {
+							.account__icon.account__icon--enter,
+							.account__icon.account__icon--profile {
 								@include breakpoint('small', 'max') {
 									@include rfs(15);
 									bottom: unset;
@@ -659,7 +658,7 @@ body {
 								background-color: #fff;
 								height: 100%;
 								left: 0;
-								top: 0;
+								top: -4px;
 								width: 100%;
 
 								em {
