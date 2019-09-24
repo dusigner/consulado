@@ -228,14 +228,50 @@ const Eventos = {
 		});
 	},
 	compreJunto: () => {
+
+		function formatReal( int ) {
+			var tmp = int+'';
+			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+			if( tmp.length > 6 )
+				tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+			return tmp;
+		}
+
+		function getMoney( str ) {
+			return parseInt( str.replace(/[\D]+/g,'') );
+		}
+
 		let totalPor = 0;
+		let valPor = 0;
 		let totalDe = 0;
-		$.map($('.de'),x => (totalDe += parseFloat(x.textContent.split(' ')[1].replace('.', ''))));
-		$.map($('.por'),x => (totalPor += parseFloat(x.textContent.split(' ')[1].replace('.', ''))));
-		totalPor = 'R$ ' + totalPor.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-		totalDe = 'R$ ' + totalDe.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-		$('.vitrine ul').append(`<li><h1>Comprando Junto</h1> <p class="de-final"> De: ${totalDe}</p> <p class="por-final">Por: ${totalPor}</p> <a class="btn-primary-button" >Ir para Carrinho</a></li>`);
-		$('.remove-item').click(x => console.log(x));
+		let valDe = 0;
+		//Carregamento
+
+		$.map($('.de'),x => totalDe += getMoney(x.textContent));
+		$.map($('.por'),x => totalPor += getMoney(x.textContent));
+		totalPor = formatReal(totalPor);
+		totalDe = formatReal(totalDe);
+		$('.vitrine ul').append(`<li><h1>Comprando Junto</h1> <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button" >Ir para Carrinho</a></li>`);
+
+
+		//Açoes
+		$('.remove-item').click(x => {
+			x.currentTarget.classList = 'remove-item';
+			x.currentTarget.nextElementSibling.classList = 'add-item active';
+			valPor = getMoney(x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[3].innerText);
+			valDe = getMoney(x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[5].innerText);
+
+			totalPor = getMoney(totalPor) - valPor
+			totalDe = getMoney(totalDe) - valDe
+
+
+
+		});
+		$('.add-item').click(x => {
+			x.currentTarget.classList = 'add-item';
+			x.currentTarget.previousElementSibling.classList = 'remove-item active';
+			// console.log('depois',x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[5]);
+		});
 	}
 };
 
