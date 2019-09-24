@@ -84,6 +84,10 @@
 				line-height: 50px;
 			}
 		}
+
+		.mobile-buttons {
+			display: none;
+		}
 	}
 
 	.navigation {
@@ -245,9 +249,9 @@
 	span {
 		@include responsiveFont(12, 16, true);
 		background: #ffffff;
-		border: 1px solid #702F8F;
+		border: 1px solid #702f8f;
 		border-radius: 20px;
-		color: #702F8F;
+		color: #702f8f;
 		display: block;
 		font-weight: 700;
 		padding: 5px 0;
@@ -346,7 +350,6 @@ body.departamento {
 			bottom: 65px;
 			float: right;
 			padding-right: 0;
-
 		}
 	}
 	.filter-wrapper {
@@ -423,7 +426,7 @@ body.departamento {
 									transform: initial;
 									width: 18px !important;
 
-									@include breakpoint ('medium', 'max') {
+									@include breakpoint('medium', 'max') {
 										left: 10px;
 										top: 12px;
 									}
@@ -467,9 +470,9 @@ body.departamento {
 						display: inline-block;
 						margin-top: 7px;
 						right: 0;
-						transition: transform .4s ease;
+						transition: transform 0.4s ease;
 
-						@include breakpoint ('medium', 'max') {
+						@include breakpoint('medium', 'max') {
 							left: 55px;
 							right: inherit;
 						}
@@ -497,7 +500,7 @@ body.departamento {
 						@include responsiveFont(15, 16, true);
 						cursor: pointer;
 						display: none;
-						font-size: .875rem;
+						font-size: 0.875rem;
 						margin: 5px 25px;
 						position: relative;
 						@include breakpoint(medium, 'max') {
@@ -513,12 +516,12 @@ body.departamento {
 						position: relative;
 					}
 
-					@include breakpoint ('medium', 'max') {
+					@include breakpoint('medium', 'max') {
 						margin: 10px 22px 0;
 					}
 				}
 
-				@include breakpoint ('medium', 'max') {
+				@include breakpoint('medium', 'max') {
 					margin-bottom: 100px;
 					padding: 0 25px;
 				}
@@ -534,7 +537,7 @@ body.departamento {
 			right: 0;
 			top: 100px;
 			transform: translateX(100%);
-			transition: transform .3s ease;
+			transition: transform 0.3s ease;
 			width: 100%;
 			z-index: 100;
 
@@ -560,14 +563,13 @@ body.departamento {
 			&:first-of-type {
 				margin: 0;
 
-				@include breakpoint ('medium', 'max') {
+				@include breakpoint('medium', 'max') {
 					display: none;
 				}
 			}
 
-			@include breakpoint ('medium', 'max') {
+			@include breakpoint('medium', 'max') {
 				margin: 15px 40px 0;
-
 			}
 		}
 	}
@@ -625,7 +627,7 @@ body.departamento {
 	.mobile-buttons {
 		display: none;
 
-		@include breakpoint ('medium', 'max') {
+		@include breakpoint('medium', 'max') {
 			border-bottom: 2px solid #9aca3c;
 			display: flex;
 			justify-content: space-between;
@@ -674,15 +676,15 @@ body.departamento {
 .priceRange:before {
 	background-color: $gray;
 	border-radius: 10px;
-    content: '';
+	content: '';
 	display: inline-block;
-    height: 7px;
-    left: 20%;
-    position: absolute;
-    top: 47px;
-    width: 7px;
+	height: 7px;
+	left: 20%;
+	position: absolute;
+	top: 47px;
+	width: 7px;
 
-	@include breakpoint ('medium', 'max') {
+	@include breakpoint('medium', 'max') {
 		left: 50px;
 	}
 }
@@ -691,15 +693,15 @@ body.departamento {
 .priceRange:after {
 	background-color: $gray;
 	border-radius: 10px;
-    content: '';
-    display: inline-block;
-    height: 7px;
-    left: 80%;
-    position: absolute;
-    top: 47px;
-    width: 7px;
+	content: '';
+	display: inline-block;
+	height: 7px;
+	left: 80%;
+	position: absolute;
+	top: 47px;
+	width: 7px;
 
-	@include breakpoint ('medium', 'max') {
+	@include breakpoint('medium', 'max') {
 		left: inherit;
 		right: 45px;
 	}
@@ -714,8 +716,8 @@ body.departamento {
 body.categoria.btu {
 	.result-filter {
 		.order-wrapper {
-			@include breakpoint ('large', 'min') {
-				bottom: 944px;
+			@include breakpoint('large', 'min') {
+				bottom: 752px;
 			}
 		}
 	}

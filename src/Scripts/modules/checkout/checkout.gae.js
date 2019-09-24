@@ -495,7 +495,6 @@ Nitro.module('checkout.gae', function() {
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
 
-
 			//if($(window).width() > 1000){
 			if (!$cartTemplate.is('.been-called') && $('.linkWarranty').length > 0) {
 				if ($(`.product-item[data-sku=${skuId}]`).find('.linkWarranty').length > 0) {
@@ -507,7 +506,7 @@ Nitro.module('checkout.gae', function() {
 						.trigger('click');
 					$cartTemplate.addClass('been-called');
 
-					sessionStorage.setItem('sku-cart', skuList);
+					sessionStorage.setItem('sku-cart', skuList.join(','));
 				}
 			}
 			//}
