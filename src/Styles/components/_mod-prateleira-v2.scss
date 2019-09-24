@@ -54,8 +54,10 @@ body.listagem {
 	.slick-track {
 		padding: 2px 0;
 
-		// .slick-slide { margin: 0 10px; }
-		.slick-slide { margin: 0 4px; }
+		.slick-slide {
+			@include breakpoint('medium', 'max') { margin: 0 10px; }
+			margin: 0 4px;
+		}
 	}
 
 	.slick-prev { left: -2%; }

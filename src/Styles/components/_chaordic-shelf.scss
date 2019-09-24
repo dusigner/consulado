@@ -157,8 +157,8 @@ div[data-chaordic] {
 
 	&--personalized {
 		@include breakpoint(medium, 'min') {
-			.slick-arrow.slick-prev { left: 0 }
-			.slick-arrow.slick-next { right: 0 }
+			.slick-arrow.slick-prev { left: -4% }
+			.slick-arrow.slick-next { right: -4% }
 
 			& > h2 { display: none }
 		}
@@ -170,7 +170,8 @@ div[data-chaordic] {
 				ul.content-placeholder li.inline-b:not([id^='slick-']):nth-child(1) {display: inline-block!important}
 			}
 			float: left;
-			max-width: 600px;
+			// max-width: 600px;
+			max-width: 560px;
 
 			& > .container { padding: 0; }
 		}
@@ -251,22 +252,12 @@ div[data-chaordic] {
 		}
 
 		&-rec {
-			@include breakpoint(small, 'max') {
-				width: 100%;
-
-				// h2 {
-				// 	background-color: $self-third;
-				// 	font-weight: normal;
-				// }
-			}
+			@include breakpoint(small, 'max') { width: 100%; }
 			width: 100/3*2%;
 
-			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
+			h2 { padding-left: 15px; }
 
-			// h2 {
-			// 	color: $self-primary;
-			// 	background-color: #ccc;
-			// }
+			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
 		}
 	}
 
