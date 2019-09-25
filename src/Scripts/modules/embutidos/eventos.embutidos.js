@@ -2,6 +2,7 @@ const Eventos = {
 	init: () => {
 		Eventos.hoverIMGS();
 		Eventos.dotsInfo();
+		Eventos.compreJunto();
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
@@ -17,7 +18,8 @@ const Eventos = {
 		//Quando for mobile
 		if ($(window).width() <= 768) {
 			$('.box-img img').click(function() {
-				let current = '/arquivos/' + this.src.split('/')[4].split('?')[0];
+				let current =
+					'/arquivos/' + this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
 				case 'Cooktops':
 					if (current === CooktopInicial) {
@@ -224,6 +226,77 @@ const Eventos = {
 				back.removeClass('Cooktops');
 			}, 500);
 			imgMascara.attr('src', '/arquivos/embutir_ambientada1.jpg');
+		});
+	},
+	compreJunto: () => {
+		function formatReal(int) {
+			var tmp = int + '';
+			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+			if (tmp.length > 6)
+				tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+			return tmp;
+		}
+
+		function getMoney(str) {
+			return parseInt(str.replace(/[\D]+/g, ''));
+		}
+
+		let totalPor = 0;
+		let valPor = 0;
+		let totalDe = 0;
+		let valDe = 0;
+		//Carregamento
+
+		$.map($('.de'), x => (totalDe += getMoney(x.textContent)));
+		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
+		totalPor = formatReal(totalPor);
+		totalDe = formatReal(totalDe);
+		$('.vitrine ul').append(
+			`<li><h1>Comprando Junto</h1> <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
+		);
+		//Açoes
+		$('.remove-item').click(x => {
+			x.currentTarget.classList = 'remove-item';
+			x.currentTarget.nextElementSibling.classList = 'add-item active';
+
+			valDe = getMoney(
+				x.currentTarget.nextElementSibling.nextElementSibling
+					.children[1].childNodes[3].innerText
+			);
+			valPor = getMoney(
+				x.currentTarget.nextElementSibling.nextElementSibling
+					.children[1].childNodes[5].innerText
+			);
+
+			totalDe = formatReal(getMoney(totalDe) - valDe);
+			totalPor = formatReal(getMoney(totalPor) - valPor);
+
+			$('.de-final').text(`De: R$ ${totalDe}`);
+			$('.por-final').text(`Por: R$ ${totalPor}`);
+
+			x.currentTarget.parentElement.classList.add('removido');
+		});
+		$('.add-item').click(x => {
+			x.currentTarget.classList = 'add-item';
+			x.currentTarget.previousElementSibling.classList =
+				'remove-item active';
+
+			valDe = getMoney(
+				x.currentTarget.nextElementSibling.children[1].childNodes[3]
+					.innerText
+			);
+			valPor = getMoney(
+				x.currentTarget.nextElementSibling.children[1].childNodes[5]
+					.innerText
+			);
+
+			totalDe = formatReal(getMoney(totalDe) + valDe);
+			totalPor = formatReal(getMoney(totalPor) + valPor);
+
+			$('.de-final').text(`De: R$ ${totalDe}`);
+			$('.por-final').text(`Por: R$ ${totalPor}`);
+
+			x.currentTarget.parentElement.classList.remove('removido');
 		});
 	}
 };
