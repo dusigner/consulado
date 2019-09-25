@@ -424,17 +424,19 @@
 		ul {
 			display: grid;
 			grid-template-columns: repeat(4, 1fr);
+
 			li {
 				display: flex;
-				flex-flow: column nowrap;
-				position: relative;
+				flex-flow: column;
 				padding: 50px;
+				position: relative;
 
 				article {
-					padding: 30px;
 					border: 1px solid $green;
 					border-radius: 7px;
 					min-height: 550px;
+					padding: 30px;
+
 					.add-item,
 					.remove-item {
 						cursor: pointer;
@@ -463,14 +465,14 @@
 					}
 					.de {
 						color: $base-font-color;
-						font-weight: 600;
 						font-size: 1em;
+						font-weight: 600;
 						text-decoration: line-through;
 					}
 					.por {
 						color: $purple-n;
-						font-weight: 600;
 						font-size: 1.5em;
+						font-weight: 600;
 					}
 					&.removido {
 						opacity: 0.7;
@@ -494,6 +496,10 @@
 					}
 				}
 				&:nth-child(4) {
+
+					img {
+						width: 30%;
+					}
 					&::after {
 						content: '';
 					}

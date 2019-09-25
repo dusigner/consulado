@@ -252,7 +252,7 @@ const Eventos = {
 		totalPor = formatReal(totalPor);
 		totalDe = formatReal(totalDe);
 		$('.vitrine ul').append(
-			`<li><h1>Comprando Junto</h1> <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
+			`<li><img src="/arquivos/icone_compre_junto.jpg" alt="moedas"/> <h1>Compre o combo</h1> <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
 		);
 		//Açoes
 		$('.remove-item').click(x => {
