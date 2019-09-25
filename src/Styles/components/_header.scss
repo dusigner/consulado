@@ -160,10 +160,11 @@ header {
 
 		.minicart {
 			@include breakpoint(small, 'max') {
-				right: 0;
+				right: 10px;
 				text-align: right;
 				top: 0;
 			}
+
 			background-color: transparent;
 			right: 30px;
 		}
@@ -353,7 +354,6 @@ div.account {
 				.welcome-message {
 					background-color: #e4e4e4;
 					line-height: normal;
-					z-index: 100;
 
 					.welcome {
 						@include breakpoint(360px, 'max') { font-size: 11px; }
@@ -646,11 +646,20 @@ body {
 					}
 				}
 
-				.account {
+				.account,
+				.account.logged-user {
 					@include breakpoint('small', 'max') {
 						float: none;
 						padding: 0;
 
+						&.logged-user {
+							.welcome-message {
+								.account__icon.account__icon--profile {
+									left: 30px;
+									padding-left: 55px;
+								}
+							}
+						}
 						.welcome-message {
 							background-color: #fff;
 
@@ -658,11 +667,20 @@ body {
 								background-color: #fff;
 								height: 100%;
 								left: 0;
+								padding: 0;
 								top: -4px;
 								width: 100%;
 
 								em {
 									height: 100%;
+
+									a[href='/no-cache/user/logout'] {
+										color: $gray-d;
+										font-weight: 400;
+										padding: 0;
+										text-decoration: none;
+										top: 35px;
+									}
 								}
 
 								#login {
