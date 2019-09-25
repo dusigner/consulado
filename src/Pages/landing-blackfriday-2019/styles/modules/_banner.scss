@@ -1,0 +1,69 @@
+.banner {
+	background-color: #0e0e0e;
+	overflow: hidden;
+	position: relative;
+
+	&__capsule {
+		border-radius: 300px;
+		border: 2px solid #323232;
+		height: 325px;
+		position: absolute;
+		right: 10%;
+		top: 5%;
+		transform: rotate(37deg);
+		width: 850px;
+
+		@media (min-width: 1300px) {
+			right: 0%;
+		}
+
+		@media (min-width: 1700px) {
+			right: 15%;
+		}
+
+		&::after {
+			background: #0e0e0e;
+			bottom: -5px;
+			content: '';
+			display: block;
+			height: 10px;
+			position: absolute;
+			right: 0;
+			width: 50%;
+		}
+	}
+
+	&__logo {
+		max-width: 400px;
+		padding-top: 22px;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&__content {
+		position: relative;
+	}
+
+	&__produtos {
+		max-width: 395px;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	&__text {
+		color: #fff;
+		font-size: 1.25em;
+		left: 10px;
+		line-height: 23px;
+		position: absolute;
+		text-align: right;
+		top: 5px;
+
+		strong {
+			color: #9dcb40;
+			display: block;
+		}
+	}
+}
