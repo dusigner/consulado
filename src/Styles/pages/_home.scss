@@ -44,7 +44,7 @@ body.home {
 
 		.prateleira {
 			h2 {
-				@include responsiveFont(28);
+				@include rfs(28);
 				color: #736c6b;
 				display: block;
 				margin: 45px 0 20px 0;
