@@ -348,62 +348,62 @@ div.account {
 		}
 
 		// Usuário loggado
-		&.logged-user {
-			.header .menu-mobile & {
+		// &.logged-user {
+		// 	.header .menu-mobile & {
 
-				.welcome-message {
-					background-color: #e4e4e4;
-					line-height: normal;
+		// 		.welcome-message {
+		// 			background-color: #e4e4e4;
+		// 			line-height: normal;
 
-					.welcome {
-						@include breakpoint(360px, 'max') { font-size: 11px; }
-						font-size: 12px;
-						height: 60px;
-						padding: 12px 0 0 45px;
-						text-align: left;
-						white-space: nowrap;
-					}
-				}
+		// 			.welcome {
+		// 				@include breakpoint(360px, 'max') { font-size: 11px; }
+		// 				font-size: 12px;
+		// 				height: 60px;
+		// 				padding: 12px 0 0 45px;
+		// 				text-align: left;
+		// 				white-space: nowrap;
+		// 			}
+		// 		}
 
-				.account__icon.account__icon--profile {
-					left: 15px;
-					position: absolute;
-					top: 18px;
-				}
+		// 		.account__icon.account__icon--profile {
+		// 			left: 15px;
+		// 			position: absolute;
+		// 			top: 18px;
+		// 		}
 
-				// Sair
-				a[href='/no-cache/user/logout'] {
-					border: none;
-					bottom: 12px;
-					display: block;
-					font-weight: normal;
-					height: 20px;
-					left: inherit;
-					position: absolute;
-					right: 0;
-					text-decoration: underline;
-					top: inherit;
-					width: 35px;
-				}
+		// 		// Sair
+		// 		a[href='/no-cache/user/logout'] {
+		// 			border: none;
+		// 			bottom: 12px;
+		// 			display: block;
+		// 			font-weight: normal;
+		// 			height: 20px;
+		// 			left: inherit;
+		// 			position: absolute;
+		// 			right: 0;
+		// 			text-decoration: underline;
+		// 			top: inherit;
+		// 			width: 35px;
+		// 		}
 
-				.view-cotas  {
-					@include breakpoint(360px, 'max') { font-size: 11px; }
-					background: none;
-					bottom: 10px;
-					color: #9aca3c;
-					font-size: 12px;
-					font-weight: normal;
-					left: 32px;
-					position: absolute;
-					right: inherit;
-					text-align: left;
-					top: inherit;
-					transform: translate(0, 0);
-					white-space: nowrap;
-					width: 70%;
-				}
-			}
-		}
+		// 		.view-cotas  {
+		// 			@include breakpoint(360px, 'max') { font-size: 11px; }
+		// 			background: none;
+		// 			bottom: 10px;
+		// 			color: #9aca3c;
+		// 			font-size: 12px;
+		// 			font-weight: normal;
+		// 			left: 32px;
+		// 			position: absolute;
+		// 			right: inherit;
+		// 			text-align: left;
+		// 			top: inherit;
+		// 			transform: translate(0, 0);
+		// 			white-space: nowrap;
+		// 			width: 70%;
+		// 		}
+		// 	}
+		// }
 	}
 	// ****************************************************** //
 	// Eu, Douglas, não me orgulho do que fiz daqui para cima //
@@ -459,7 +459,9 @@ div.account {
 
 			&[href='/no-cache/user/logout'] {
 				bottom: 0;
+				color: $gray-d;
 				font-size: 10px;
+				font-weight: 400;
 				left: 35px;
 				position: absolute;
 
@@ -623,8 +625,16 @@ body {
 								}
 							}
 
-							.login-text {
+							.account__icon.account__icon--profile {
 								@include breakpoint('small', 'max') {
+									bottom: 1px;
+									top: unset;
+								}
+							}
+
+							@include breakpoint('small', 'max') {
+								.login-text,
+								.logout-text {
 									@include rfs(12);
 									color: $gray-d;
 									display: inline-block;
@@ -633,7 +643,9 @@ body {
 									text-align: left;
 									text-transform: none;
 									width: unset;
+								}
 
+								.login-text {
 									&:after {
 										@include rfs(10);
 										content: 'Acesse sua conta!';
@@ -641,25 +653,20 @@ body {
 										font-weight: 400;
 									}
 								}
+								.logout-text {
+									bottom: 6px;
+									position: relative;
+								}
 							}
 						}
 					}
 				}
 
-				.account,
-				.account.logged-user {
+				.account {
 					@include breakpoint('small', 'max') {
 						float: none;
 						padding: 0;
 
-						&.logged-user {
-							.welcome-message {
-								.account__icon.account__icon--profile {
-									left: 30px;
-									padding-left: 55px;
-								}
-							}
-						}
 						.welcome-message {
 							background-color: #fff;
 
@@ -668,7 +675,7 @@ body {
 								height: 100%;
 								left: 0;
 								padding: 0;
-								top: -4px;
+								top: 0;
 								width: 100%;
 
 								em {
@@ -678,8 +685,9 @@ body {
 										color: $gray-d;
 										font-weight: 400;
 										padding: 0;
+										right: 10px;
 										text-decoration: none;
-										top: 35px;
+										top: 7px;
 									}
 								}
 
