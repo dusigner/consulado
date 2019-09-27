@@ -372,6 +372,7 @@ Nitro.module('chaordic', function() {
 
 							self.finalRender(product, $box);
 						} else {
+							product.finalImages = self.prepareImages(product.items[0].images, '300')
 							self.renderUnavailable(product, $box);
 						}
 					}
@@ -530,18 +531,23 @@ Nitro.module('chaordic', function() {
 	 * Método render do HTML da prateleira para produtos indisponiveis
 	 */
 	this.renderUnavailable = function(renderData, $elem) {
-		$elem.find('.js-item-sku').text(renderData.productReference);
-		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
-		$elem.addClass('box-produto');
 
-		// dust render html
-		dust.render('chaordic-unavailable', '', function(err, out) {
-			if (err) {
-				throw new Error('Chaordic Price Dust error: ' + err);
+		if (renderData && renderData.finalImages) {
+			if (renderData.finalImages.principal) {
+				$elem.find('.js-item-image-principal').html(renderData.finalImages.principal);
 			}
 
-			$elem.find('.js-item-price').html(out);
-		});
+			if (renderData.finalImages.perspectiva) {
+				$elem.find('.js-item-image').html(renderData.finalImages.perspectiva);
+			}
+		}
+
+		$elem.find('.js-item-sku').text(renderData.productReference);
+
+		$elem.find('.shelf-item__price--list').text('Produto Indisponível');
+
+		$elem.find('.shelf-item--empty').removeClass('shelf-item--empty');
+		$elem.addClass('box-produto').addClass('unavailable');
 	};
 
 	/**
