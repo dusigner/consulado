@@ -112,10 +112,11 @@ Nitro.controller(
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		this.setupSlider = function($currentSlider) {
+			const quantity = ($currentSlider[0].childElementCount >= 3) ? 3 : $currentSlider[0].childElementCount;
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: true,
-				slidesToShow: 3,
-				slidesToScroll: 3,
+				slidesToShow: quantity,
+				slidesToScroll: quantity,
 				responsive: [
 					{
 						breakpoint: 990,
