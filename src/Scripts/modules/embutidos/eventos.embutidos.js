@@ -251,14 +251,21 @@ const Eventos = {
 		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
 		totalPor = formatReal(totalPor);
 		totalDe = formatReal(totalDe);
-		$('.vitrine ul').append(
-			`<li><h1>Comprando Junto</h1> <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
-		);
-		//Açoes
+		$('.de-final').text(`De: R$ ${totalDe}`);
+		$('.por-final').text(`Por: R$ ${totalPor}`);
+		//Copia o elemento de fora e joga para dentro da vitrine;
+		$('.vitrine-total').clone().appendTo( ".vitrine ul" );
+		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+		$('.vitrine-total').remove();
+		// $('.vitrine ul').append(
+		// 	`<li><img src="/arquivos/icone_compre_junto.jpg" alt="moedas"/> <h3>Compre o combo</h3 <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
+		// );
+
+		//Açoes Add and Remove
 		$('.remove-item').click(x => {
 			x.currentTarget.classList = 'remove-item';
 			x.currentTarget.nextElementSibling.classList = 'add-item active';
-
+			//Preço
 			valDe = getMoney(
 				x.currentTarget.nextElementSibling.nextElementSibling
 					.children[1].childNodes[3].innerText
@@ -267,16 +274,17 @@ const Eventos = {
 				x.currentTarget.nextElementSibling.nextElementSibling
 					.children[1].childNodes[5].innerText
 			);
-
 			totalDe = formatReal(getMoney(totalDe) - valDe);
 			totalPor = formatReal(getMoney(totalPor) - valPor);
-
 			$('.de-final').text(`De: R$ ${totalDe}`);
 			$('.por-final').text(`Por: R$ ${totalPor}`);
 
 			x.currentTarget.parentElement.classList.add('removido');
+			//Remove o produto do carrinho do botão
+			x.currentTarget.parentElement.dataset.idproduto
 		});
 		$('.add-item').click(x => {
+			//Preço
 			x.currentTarget.classList = 'add-item';
 			x.currentTarget.previousElementSibling.classList =
 				'remove-item active';

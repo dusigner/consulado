@@ -420,21 +420,55 @@
 			}
 		}
 	}
+	.vitrine-header {
+		.monte-combo {
+			@include responsiveFont(24);
+			color: $green;
+			font-weight: 900;
+			margin-bottom: 0;
+		}
+		.cozinha-completa {
+			@include responsiveFont(36);
+			color: $purple-n;
+			font-weight: 900;
+			margin-bottom: 8px;
+			margin-top: 0;
+		}
+		.text-combo {
+			@include responsiveFont(16);
+			color: $base-font-color;
+			font-weight: 900;
+			margin-bottom: 32px;
+		}
+	}
 	.vitrine {
+		h2 {
+			display: none;
+		}
 		ul {
-			display: grid;
-			grid-template-columns: repeat(4, 1fr);
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
 			li {
-				display: flex;
-				flex-flow: column nowrap;
-				position: relative;
+				flex: 1;
 				padding: 50px;
+				position: relative;
+				@include breakpoint('small', 'max') {
+					padding: 30px;
+				}
 
 				article {
-					padding: 30px;
 					border: 1px solid $green;
 					border-radius: 7px;
 					min-height: 550px;
+					padding: 30px;
+					text-align: center;
+
+					@include breakpoint('small', 'max') {
+						padding: 10px;
+					}
+
 					.add-item,
 					.remove-item {
 						cursor: pointer;
@@ -446,54 +480,67 @@
 					.remove-item {
 						&::before {
 							content: 'x';
-							// font-size: 1.5em;
 							padding-right: 10px;
 						}
 					}
 					.add-item {
 						&::before {
 							content: '+';
-							// font-size: 1.5em;
 							padding-right: 10px;
 						}
 					}
 					h3 {
-						color: $green;
-						min-height: 60px;
-					}
-					.de {
 						color: $base-font-color;
-						font-weight: 600;
-						font-size: 1em;
-						text-decoration: line-through;
-					}
-					.por {
-						color: $purple-n;
-						font-weight: 600;
-						font-size: 1.5em;
+						min-height: 60px;
 					}
 					&.removido {
 						opacity: 0.7;
 						.add-item {
 							color: $green;
+							font-weight: 900;
 						}
+					}
+					a {
+						display: block;
 					}
 				}
 				&::after {
 					color: $green;
 					content: '+';
-					font-size: 2em;
+					font-size: 3em;
 					font-weight: 600;
 					position: absolute;
 					right: 0;
 					top: 50%;
 				}
+				.de,
+				.de-final {
+					color: $purple-n;
+					font-size: 1em;
+					font-weight: 600;
+					text-decoration: line-through;
+				}
+				.por,
+				.por-final {
+					color: $green;
+					font-size: 1.5em;
+					font-weight: 600;
+				}
+
 				&:nth-child(3) {
 					&::after {
 						content: '=';
 					}
 				}
 				&:nth-child(4) {
+					align-items: center;
+					display: flex;
+					flex-flow: column;
+					justify-content: center;
+
+					img {
+						width: 30%;
+					}
 					&::after {
 						content: '';
 					}
