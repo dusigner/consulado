@@ -363,7 +363,8 @@
 
 		.slick-prev:before,
 		.slick-next:before {
-			@include responsiveFont(16, 16, true);
+			// @include rfs(12px);
+			font-size: 10px;
 		}
 
 		.slick-prev {

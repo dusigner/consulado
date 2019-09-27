@@ -347,12 +347,6 @@ Nitro.controller(
 			if ($('.heading-banner h1').is(':empty') && $('.category-page-top-banner').is(':empty')) {
 				$('.heading-banner').addClass('hide');
 			}
-
-			if ($('.category-list ul').length === 0) {
-				$('.category-list').addClass('hide');
-				$('.filter-wrapper > p:first-of-type').addClass('hide');
-			}
-
 		}
 
 		$('.listagem-apoio').on('click', function(e) {

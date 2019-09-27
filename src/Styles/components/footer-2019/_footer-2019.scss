@@ -43,6 +43,8 @@ $default-color-gray-light: #d9d8d8;
 		display: flex;
 		flex-direction: column;
 	}
+
+	:not(.home) & { margin-top: 35px; }
 }
 
 

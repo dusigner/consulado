@@ -4,8 +4,10 @@ body.home {
 
 	// Ajustes home mobile pós bootstrap 4
 	.container.vitrines {
-		padding: 0;
-		@include breakpoint('small', 'max') { max-width: 100%!important; }
+		@include breakpoint('small', 'max') {
+			max-width: 100%!important;
+			padding: 5px;
+		}
 
 		ul.slick-slider {
 			@include breakpoint('small', 'max') {
@@ -42,18 +44,19 @@ body.home {
 
 		.prateleira {
 			h2 {
-				@include responsiveFont(30);
+				@include rfs(28);
 				color: #736c6b;
 				display: block;
-				margin: 20px 0;
+				margin: 45px 0 20px 0;
 				padding: 0 10px;
 
 				@include breakpoint(small, 'max') {
-					background-color: #9aca3c;
-					border: 1px solid #fff;
-					color: #fff;
+					// background-color: #9aca3c;
+					// border: 1px solid #fff;
+					// color: #fff;
 					font-size: 1rem;
-					padding: 15px;
+					padding: 0 20px;
+					margin: 25px 0 20px 0;
 
 					&:after {
 						color: #fff;
@@ -87,16 +90,11 @@ body.home {
 						// padding: 0 50px;
 
 						.slick-arrow {
-							color: #f47921;
+							// color: #f47921;
 							display: none !important;
 
-							&.slick-prev {
-								left: 4%;
-							}
-
-							&.slick-next {
-								right: 4%;
-							}
+							&.slick-prev { left: 2%; }
+							&.slick-next { right: 2%; }
 
 							&:before {
 								font-size: 1.5625rem;

@@ -6,6 +6,7 @@ require('modules/slider-banner');
 
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
+require('components/titulo-prateleira');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');

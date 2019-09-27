@@ -42,8 +42,11 @@ div[data-chaordic] {
 		}
 	}
 
-	.slick-prev { left: -5% }
-	.slick-next { right: -5% }
+	// .slick-prev { left: -5% }
+	// .slick-next { right: -5% }
+
+	.slick-prev { left: -2% }
+	.slick-next { right: -2% }
 	.slick-dots {
 		bottom: 0;
 		margin: 5% 0;
@@ -54,8 +57,12 @@ div[data-chaordic] {
 }
 
 .shelf {
+	&.shelf-max-size {
+		@include breakpoint('medium', 'min') { max-width: 270px; }
+	}
+
 	&-pre-title {
-		margin: 0;
+		// margin: 0;
 		padding: 20px 5px;
 
 		span { color: $self-primary; }
@@ -150,50 +157,58 @@ div[data-chaordic] {
 
 	&--personalized {
 		@include breakpoint(medium, 'min') {
-			.slick-arrow.slick-prev { left: 0 }
-			.slick-arrow.slick-next { right: 0 }
+			.slick-arrow.slick-prev { left: -4% }
+			.slick-arrow.slick-next { right: -4% }
 
 			& > h2 { display: none }
 		}
-		position: relative;
+
+		// &.container { padding: 0; }
 
 		&__holder {
 			@include breakpoint(small, 'max') {
 				ul.content-placeholder li.inline-b:not([id^='slick-']):nth-child(1) {display: inline-block!important}
 			}
 			float: left;
-			max-width: 600px;
+			// max-width: 600px;
+			max-width: 560px;
+
+			& > .container { padding: 0; }
 		}
 
 		h2 {
 			@include breakpoint(small, 'max') {
 				&:not(.shelf-sub-title) {
-					margin-left: calc(-0% - 20px);
-					margin-right: calc(-0% - 20px);
+					margin-left: calc(-0% - 10px);
+					margin-right: calc(-0% - 10px);
+
 					@include breakpoint('extra-small', 'max') {
-						margin-left: calc(-3% - 20px);
-						margin-right: calc(-3% - 20px);
+						margin-left: calc(-3% - 10px);
+						margin-right: calc(-3% - 10px);
 					}
 				}
 
 				&.shelf-sub-title {
 					display: block;
-					position: relative;
-					text-align: center;
+					padding-left: 0;
+					padding-right: 0;
 
-					&:before {
-						border-color: $self-third transparent transparent transparent;
-						border-style: solid;
-						border-width: 10px 10px 0 10px;
-						bottom: -10px;
-						content: '';
-						/*display: block;*/
-						height: 0;
-						left: 50%;
-						position: absolute;
-						transform: translateX(-50%);
-						width: 0;
-					}
+					// position: relative;
+					// text-align: center;
+
+					// &:before {
+					// 	border-color: $self-third transparent transparent transparent;
+					// 	border-style: solid;
+					// 	border-width: 10px 10px 0 10px;
+					// 	bottom: -10px;
+					// 	content: '';
+					// 	/*display: block;*/
+					// 	height: 0;
+					// 	left: 50%;
+					// 	position: absolute;
+					// 	transform: translateX(-50%);
+					// 	width: 0;
+					// }
 				}
 			}
 		}
@@ -233,26 +248,20 @@ div[data-chaordic] {
 
 			ul li { width: 100%!important; }
 
-			.box-produto { border: 0; }
+			.box-produto { border-color: transparent; }
 		}
 
 		&-rec {
-			@include breakpoint(small, 'max') {
-				width: 100%;
-
-				h2 {
-					background-color: $self-third;
-					font-weight: normal;
-				}
-			}
+			@include breakpoint(small, 'max') { width: 100%; }
 			width: 100/3*2%;
 
+			h2 { padding-left: 15px; }
+
 			ul.content-placeholder li:not([id^='slick-']) { width: 50%; }
-			h2 { color: $self-primary }
 		}
 	}
 
-	&--history-personalized { margin-bottom: 35px; }
+	// &--history-personalized { margin-bottom: 35px; }
 
 	&--history-personalized-ref {
 		@include breakpoint('small', 'max') {
