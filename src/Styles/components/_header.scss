@@ -23,7 +23,7 @@
 	}
 }
 
-$mobile-header-height: 100px;
+$mobile-header-height: 84px;
 
 // Header
 header {
@@ -126,8 +126,31 @@ header {
 			width: 100%;
 
 			@include breakpoint(small, 'max') {
-				border: 7px solid $green;
+				border: none;
+				height: 34px;
+				padding: 0;
 				top: 50px;
+
+				.form-search {
+					height: 34px;
+				}
+
+				.icon-consul-loupe {
+					@include rfs (12);
+					left: unset;
+					right: 5px;
+				}
+
+				.text-search {
+					background-color: #F5F5F5;
+					border: none;
+
+					&::placeholder {
+						@include rfs(9);
+						color: #707070;
+						font-weight: bold;
+					}
+				}
 			}
 		}
 
@@ -137,10 +160,11 @@ header {
 
 		.minicart {
 			@include breakpoint(small, 'max') {
-				right: 0;
+				right: 10px;
 				text-align: right;
 				top: 0;
 			}
+
 			background-color: transparent;
 			right: 30px;
 		}
@@ -167,14 +191,23 @@ header {
 	@include breakpoint(small, 'max') {
 		flex: 0 !important;
 		float: none;
+		height: 50px;
 		max-width: 100% !important;
 		text-align: center;
-		width: 85% !important;
+		width: 100% !important;
 
 		a {
 			display: inline-block;
 			padding: 6px 0;
 			top: 0;
+			width: 85%;
+		}
+
+		.logo-mobile-svg {
+			height: 35px;
+			left: 50%;
+			position: absolute;
+			transform: translateX(-50%);
 		}
 	}
 }
@@ -189,11 +222,17 @@ header {
 	position: relative;
 	vertical-align: top;
 
+	.logo-desktop-svg {
+		line-height: 1;
+    	width: 100px;
+	}
+
 	@include breakpoint(small, 'max') {
 		@include responsiveFont(25.5, 16, true);
 		color: #ffffff;
 		display: block;
 		margin-top: 0;
+		position: static;
 		text-align: center;
 		top: -40px;
 	}
@@ -210,7 +249,6 @@ div.account {
 	min-height: 60px;
 	padding: 0 0 0 fluidWidth(25px);
 	position: relative;
-	text-transform: uppercase;
 
 	.link-meus-pedidos {
 		bottom: 0;
@@ -218,7 +256,6 @@ div.account {
 
 		@include breakpoint ('small', 'max') {
 			background-color: #f4f2f1;
-			display: block;
 			height: 60px;
 			line-height: 60px;
 			margin: 0;
@@ -287,7 +324,6 @@ div.account {
 
 			.welcome-message,
 			a[href='/minhaconta/pedidos'] {
-				display: block;
 				height: 60px;
 				line-height: 60px;
 				margin: 0;
@@ -297,43 +333,10 @@ div.account {
 				width: 50%;
 			}
 
-			.welcome-message {
-				left: 0;
 
-				.welcome a#login {
-					background-color: #e4e4e4;
-					display: block;
-					font-size: 0;
-					height: 60px;
-					padding: 0;
-
-					&:after {
-						bottom: 8px;
-						content: 'Entrar';
-						display: block;
-						font-size: 12px;
-						line-height: normal;
-						position: absolute;
-						width: 100%;
-					}
-
-					span { margin-top: -4px; }
-				}
-
-			}
 
 			a[href='/minhaconta/pedidos'] {
-				background-color: #f4f2f1;
 				right: 0;
-
-				span:not(.account__icon) {
-					bottom: 9px;
-					display: block;
-					font-size: 12px;
-					line-height: normal;
-					position: absolute;
-					width: 100%;
-				}
 
 				.account__icon.account__icon--truck {
 					display: inline-block;
@@ -345,63 +348,62 @@ div.account {
 		}
 
 		// Usuário loggado
-		&.logged-user {
-			.header .menu-mobile & {
+		// &.logged-user {
+		// 	.header .menu-mobile & {
 
-				.welcome-message {
-					background-color: #e4e4e4;
-					line-height: normal;
-					z-index: 100;
+		// 		.welcome-message {
+		// 			background-color: #e4e4e4;
+		// 			line-height: normal;
 
-					.welcome {
-						@include breakpoint(360px, 'max') { font-size: 11px; }
-						font-size: 12px;
-						height: 60px;
-						padding: 12px 0 0 45px;
-						text-align: left;
-						white-space: nowrap;
-					}
-				}
+		// 			.welcome {
+		// 				@include breakpoint(360px, 'max') { font-size: 11px; }
+		// 				font-size: 12px;
+		// 				height: 60px;
+		// 				padding: 12px 0 0 45px;
+		// 				text-align: left;
+		// 				white-space: nowrap;
+		// 			}
+		// 		}
 
-				.account__icon.account__icon--profile {
-					left: 15px;
-					position: absolute;
-					top: 18px;
-				}
+		// 		.account__icon.account__icon--profile {
+		// 			left: 15px;
+		// 			position: absolute;
+		// 			top: 18px;
+		// 		}
 
-				// Sair
-				a[href='/no-cache/user/logout'] {
-					border: none;
-					bottom: 12px;
-					display: block;
-					font-weight: normal;
-					height: 20px;
-					left: inherit;
-					position: absolute;
-					right: 0;
-					text-decoration: underline;
-					top: inherit;
-					width: 35px;
-				}
+		// 		// Sair
+		// 		a[href='/no-cache/user/logout'] {
+		// 			border: none;
+		// 			bottom: 12px;
+		// 			display: block;
+		// 			font-weight: normal;
+		// 			height: 20px;
+		// 			left: inherit;
+		// 			position: absolute;
+		// 			right: 0;
+		// 			text-decoration: underline;
+		// 			top: inherit;
+		// 			width: 35px;
+		// 		}
 
-				.view-cotas  {
-					@include breakpoint(360px, 'max') { font-size: 11px; }
-					background: none;
-					bottom: 10px;
-					color: #9aca3c;
-					font-size: 12px;
-					font-weight: normal;
-					left: 32px;
-					position: absolute;
-					right: inherit;
-					text-align: left;
-					top: inherit;
-					transform: translate(0, 0);
-					white-space: nowrap;
-					width: 70%;
-				}
-			}
-		}
+		// 		.view-cotas  {
+		// 			@include breakpoint(360px, 'max') { font-size: 11px; }
+		// 			background: none;
+		// 			bottom: 10px;
+		// 			color: #9aca3c;
+		// 			font-size: 12px;
+		// 			font-weight: normal;
+		// 			left: 32px;
+		// 			position: absolute;
+		// 			right: inherit;
+		// 			text-align: left;
+		// 			top: inherit;
+		// 			transform: translate(0, 0);
+		// 			white-space: nowrap;
+		// 			width: 70%;
+		// 		}
+		// 	}
+		// }
 	}
 	// ****************************************************** //
 	// Eu, Douglas, não me orgulho do que fiz daqui para cima //
@@ -423,13 +425,13 @@ div.account {
 
 	.welcome {
 		// @include responsiveFont(12);
-		color: $green;
+		color: $base-link-color;
 		display: block;
 		// left: 35%;
 		// font-size: 0;
 		margin: 0 0 .5em;
 		overflow: hidden;
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 		position: relative;
 		// width: 75%;
 		text-overflow: ellipsis;
@@ -456,9 +458,11 @@ div.account {
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: -5px;
+				bottom: 0;
+				color: $gray-d;
 				font-size: 10px;
-				left: 30px;
+				font-weight: 400;
+				left: 35px;
 				position: absolute;
 
 				@include breakpoint(770px, 'max') {
@@ -473,14 +477,18 @@ div.account {
 			}
 		}
 
-		svg { max-height: 20px;}
+		svg {
+			margin: 0 auto;
+			max-height: 20px;
+			width: 25px;
+		}
 	}
 
 	#login {
 		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
 		@include responsiveFont(12, 16, true);
 		background-color: #ffffff;
-		color: $green;
+		color: $base-link-color;
 		display: block;
 		padding: 3px 0 0 0;
 		top: 0;
@@ -495,18 +503,11 @@ div.account {
 		display: inline-block;
 		margin-right: .5em;
 		vertical-align: middle;
-		width: 20px;
+		width: 25px;
 
 		&.account__icon--profile {
 			position: relative;
 			top: 5px;
-
-			@include breakpoint(700px, 'max') {
-				left: 50%;
-				position: absolute;
-				top: -5px;
-				transform: translateX(-50%);
-			}
 		}
 
 		&--enter,
@@ -571,6 +572,194 @@ body.consulempresa {
 			.logo {
 				line-height: inherit;
 				margin-top: 10px;
+			}
+		}
+	}
+}
+
+body {
+	header {
+		.a {
+			stroke: none;
+		}
+		.menu-mobile {
+			.menu-department {
+
+				.welcome-message {
+					@include breakpoint('small', 'max') {
+						.ajax-content-loader {
+							align-items: center;
+							background-color: #fff;
+							display: flex;
+							height: 100%;
+							justify-content: center;
+
+							.welcome {
+								@include rfs(12);
+								color: $gray-d;
+								display: inline-block;
+								margin: 0;
+								padding: 0;
+								position: relative;
+
+							}
+
+							.account__icon.account__icon--enter,
+							.account__icon.account__icon--profile {
+								@include breakpoint('small', 'max') {
+									@include rfs(15);
+									bottom: unset;
+									display: inline-block;
+									height: 100%;
+									line-height: 0;
+									margin: 0;
+									position: relative;
+									top: 0;
+
+									svg {
+										left: 0;
+										position: absolute;
+										top: 50%;
+										transform: translateY(-50%);
+									}
+								}
+							}
+
+							.account__icon.account__icon--profile {
+								@include breakpoint('small', 'max') {
+									bottom: 1px;
+									top: unset;
+								}
+							}
+
+							@include breakpoint('small', 'max') {
+								.login-text,
+								.logout-text {
+									@include rfs(12);
+									color: $gray-d;
+									display: inline-block;
+									margin: 0 5px;
+									position: static;
+									text-align: left;
+									text-transform: none;
+									width: unset;
+								}
+
+								.login-text {
+									&:after {
+										@include rfs(10);
+										content: 'Acesse sua conta!';
+										display: block;
+										font-weight: 400;
+									}
+								}
+								.logout-text {
+									bottom: 6px;
+									position: relative;
+								}
+							}
+						}
+					}
+				}
+
+				.account {
+					@include breakpoint('small', 'max') {
+						float: none;
+						padding: 0;
+
+						.welcome-message {
+							background-color: #fff;
+
+							.welcome {
+								background-color: #fff;
+								height: 100%;
+								left: 0;
+								padding: 0;
+								top: 0;
+								width: 100%;
+
+								em {
+									height: 100%;
+
+									a[href='/no-cache/user/logout'] {
+										color: $gray-d;
+										font-weight: 400;
+										padding: 0;
+										right: 10px;
+										text-decoration: none;
+										top: 7px;
+									}
+								}
+
+								#login {
+									align-items: center;
+									background-color: #fff;
+									border: none;
+									display: flex;
+									height: 100%;
+									justify-content: center;
+									padding: 0;
+									top: 0;
+								}
+							}
+						}
+					}
+
+					.link-meus-pedidos {
+						align-items: center;
+						background-color: #fff;
+    					display: flex;
+    					justify-content: center;
+
+						.account__icon.account__icon--truck {
+							@include breakpoint('small', 'max') {
+								@include rfs(15);
+								bottom: unset;
+								display: inline-block;
+								height: 100%;
+								line-height: 0;
+								margin: 0 5px;
+								position: relative;
+								top: 0;
+
+								svg {
+									left: 0;
+    								position: absolute;
+    								top: 50%;
+    								transform: translateY(-50%);
+								}
+							}
+						}
+
+						.account-text {
+							@include breakpoint('small', 'max') {
+								@include rfs(12);
+								color: $gray-d;
+								display: inline-block;
+								margin: 0 5px;
+								position: static;
+								text-align: left;
+								text-transform: none;
+								width: unset;
+
+								&:after {
+									@include rfs(10);
+									content: 'Acompanhe!';
+									display: block;
+									font-weight: 400;
+								}
+							}
+						}
+
+						&:before {
+							border: 1px solid #E3E1E1;
+							content: '';
+							height: 40%;
+							position: absolute;
+							right: 100%;
+						}
+					}
+				}
 			}
 		}
 	}

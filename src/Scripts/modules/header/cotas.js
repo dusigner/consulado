@@ -73,12 +73,21 @@ Nitro.module('cotas', function() {
 		$('header .account .welcome-message').append(template.render(cota));
 	};
 
-	this.init();
+	//this.init();
 
 	$('.open-menu-mobile').click(function() {
-		$('.menu-department').prepend($('.header .account'));
-
 		if (isLogged) {
+			if ($('.logout-text').length === 0) {
+				let nameSelector = $('.menu-department .account__icon.account__icon--profile').parent();
+				nameSelector.html(
+					`
+						${nameSelector.find('span').prop('outerHTML')}
+						<span class="logout-text">${nameSelector.text().match(/Olá (\w| )+?(?=\.)/)[0]}</span>
+						${nameSelector.find('em').prop('outerHTML')}
+					`
+				)
+			}
+
 			$('.header .account').addClass('logged-user');
 		} else {
 			$('.header .account').removeClass('logged-user');
