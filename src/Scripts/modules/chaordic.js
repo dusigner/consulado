@@ -362,7 +362,7 @@ Nitro.module('chaordic', function() {
 								item[0].sellers[0].commertialOffer.Price
 							);
 
-							product.finalImages = self.prepareImages(item[0].images, '300');
+							product.finalImages = self.prepareImages(item[0].images, '210');
 
 							// product.clusterHighlights.inCash = self.prepareDiscountPromo(item[0].sellers[0].commertialOffer.Teasers);
 							product.clusterHighlights = self.prepareclusterHighlights(
@@ -372,7 +372,7 @@ Nitro.module('chaordic', function() {
 
 							self.finalRender(product, $box);
 						} else {
-							product.finalImages = self.prepareImages(product.items[0].images, '300')
+							product.finalImages = self.prepareImages(product.items[0].images, '210')
 							self.renderUnavailable(product, $box);
 						}
 					}
