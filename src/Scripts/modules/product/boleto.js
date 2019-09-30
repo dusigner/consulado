@@ -79,7 +79,7 @@ Nitro.module('boleto', function() {
 				}
 			}
 		});
-		console.log(prodAvailable[0], $prodPreco.find('.valor-de').length > 0, prodAvailable[0].valPercentage >= 5, isPurificador, prodAvailable[0].valPercentage >= 20 );
+
 		if ($prodPreco.find('.valor-de').length > 0 && ((prodAvailable[0].valPercentage >= 5 && dataLayer[0].pageDepartment.toLowerCase() === 'purificador') || prodAvailable[0].valPercentage >= 20 )) {
 			appendOff($('.prod-galeria'), prodAvailable[0].valPercentage);
 		}
