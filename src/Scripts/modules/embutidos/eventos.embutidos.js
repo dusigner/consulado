@@ -229,6 +229,16 @@ const Eventos = {
 		});
 	},
 	compreJunto: () => {
+		//Carregamento
+		let totalPor = 0;
+		let valPor = 0;
+		let totalDe = 0;
+		let valDe = 0;
+		let linkSkus = '/checkout/cart/add?';
+		//Set SKU
+		let skus = [{cart:true, sku:565},{cart:true, sku:490},{cart:true, sku:428}];
+
+		//Functions Custom
 		function formatReal(int) {
 			var tmp = int + '';
 			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
@@ -241,12 +251,32 @@ const Eventos = {
 			return parseInt(str.replace(/[\D]+/g, ''));
 		}
 
-		let totalPor = 0;
-		let valPor = 0;
-		let totalDe = 0;
-		let valDe = 0;
-		//Carregamento
+		function setLink() {
+			linkSkus = '/checkout/cart/add?'
+			skus.map(n => {
+				if (n.cart === true) {
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`
+				}
+			});
 
+			if (linkSkus === '/checkout/cart/add?') {
+				$('.go').attr('href', linkSkus);
+				$('.go').addClass('disable');
+			}else{
+				$('.go').attr('href', linkSkus);
+				$('.go').removeClass('disable');
+			}
+		}
+
+		function setStatusLinks(idProduto,operador) {
+			skus.map(v => {
+				if (v.sku.toString() === idProduto) {
+					v.cart=operador;
+				}
+			});
+		}
+
+		//SetPirce on HTML
 		$.map($('.de'), x => (totalDe += getMoney(x.textContent)));
 		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
 		totalPor = formatReal(totalPor);
@@ -254,57 +284,48 @@ const Eventos = {
 		$('.de-final').text(`De: R$ ${totalDe}`);
 		$('.por-final').text(`Por: R$ ${totalPor}`);
 		//Copia o elemento de fora e joga para dentro da vitrine;
-		$('.vitrine-total').clone().appendTo( ".vitrine ul" );
+		$('.vitrine-total').clone().appendTo('.vitrine ul');
 		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
 		$('.vitrine-total').remove();
-		// $('.vitrine ul').append(
-		// 	`<li><img src="/arquivos/icone_compre_junto.jpg" alt="moedas"/> <h3>Compre o combo</h3 <p class="de-final"> De: R$ ${totalDe}</p> <p class="por-final">Por: R$ ${totalPor}</p> <a class="btn-primary-button go" href="/checkout/cart/add?sku=429&qty=1&seller=1&redirect=true&sc=3&sku=565&qty=1&seller=1&redirect=true&sc=3&sku=490&qty=1&seller=1&redirect=true&sc=3" >Ir para Carrinho</a></li>`
-		// );
+		//Set Link on Button
+		setLink();
 
-		//Açoes Add and Remove
+		//Action Add and Remove
 		$('.remove-item').click(x => {
 			x.currentTarget.classList = 'remove-item';
 			x.currentTarget.nextElementSibling.classList = 'add-item active';
-			//Preço
-			valDe = getMoney(
-				x.currentTarget.nextElementSibling.nextElementSibling
-					.children[1].childNodes[3].innerText
-			);
-			valPor = getMoney(
-				x.currentTarget.nextElementSibling.nextElementSibling
-					.children[1].childNodes[5].innerText
-			);
+			//Price
+			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[3].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[5].innerText );
+			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) - valDe);
 			totalPor = formatReal(getMoney(totalPor) - valPor);
+			//Set Price on HTML
 			$('.de-final').text(`De: R$ ${totalDe}`);
 			$('.por-final').text(`Por: R$ ${totalPor}`);
 
 			x.currentTarget.parentElement.classList.add('removido');
-			//Remove o produto do carrinho do botão
-			x.currentTarget.parentElement.dataset.idproduto
+			//Set Link on Button
+			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto,false);
+			setLink();
 		});
 		$('.add-item').click(x => {
-			//Preço
 			x.currentTarget.classList = 'add-item';
-			x.currentTarget.previousElementSibling.classList =
-				'remove-item active';
-
-			valDe = getMoney(
-				x.currentTarget.nextElementSibling.children[1].childNodes[3]
-					.innerText
-			);
-			valPor = getMoney(
-				x.currentTarget.nextElementSibling.children[1].childNodes[5]
-					.innerText
-			);
-
+			x.currentTarget.previousElementSibling.classList = 'remove-item active';
+			//Price
+			valDe = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[3].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[5].innerText );
+			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) + valDe);
 			totalPor = formatReal(getMoney(totalPor) + valPor);
-
+			//Set Price on HTML
 			$('.de-final').text(`De: R$ ${totalDe}`);
 			$('.por-final').text(`Por: R$ ${totalPor}`);
 
 			x.currentTarget.parentElement.classList.remove('removido');
+			//Set Link on Button
+			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto, true);
+			setLink();
 		});
 	}
 };
