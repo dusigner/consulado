@@ -70,6 +70,36 @@ Nitro.module('dataLayer-embutidos', function() {
 		});
 	};
 
+	this.removeCombo = () => {
+		$('.remove-item').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Remover combo',
+				e.currentTarget.parentElement.dataset.idproduto
+			);
+		});
+	};
+
+	this.addCombo = () => {
+		$('.add-item').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Adicionar combo',
+				e.currentTarget.parentElement.dataset.idproduto
+			);
+		});
+	};
+
+	this.buyCombo = () => {
+		$('.go').click(e => {
+			pushDataLayer(
+				'[CB-GOC] Página Built-in',
+				'Clique Botão',
+				'Cozinha completa'
+			);
+		});
+	};
+
 	this.clickVideo = () => {
 		$('.cervejeiras-videos__video').click(() => {
 			pushDataLayer(
@@ -104,6 +134,9 @@ Nitro.module('dataLayer-embutidos', function() {
 		this.clickNav();
 		this.hoverImgs();
 		this.clickLinkA();
+		this.removeCombo();
+		this.addCombo();
+		this.buyCombo();
 		this.clickVideo();
 		this.clickDotsVideo();
 		this.clickLinkDicas();
