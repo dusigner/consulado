@@ -3,6 +3,12 @@
 	position: relative;
 	z-index: 1;
 
+	.text {
+		font-size: .75em;
+		font-weight: 500;
+		margin: 0;
+	}
+
 	&__content {
 		background-color: #fff;
 		border-bottom: 2px solid #9aca3c;
@@ -68,7 +74,7 @@
 		color: #ffffff !important;
 		font-size: .75em !important;
 		font-weight: lighter !important;
-		margin: 40px 7px 20px;
+		margin: 20px 7px;
 		max-width: 140px;
 		padding: 1px auto !important;
 
@@ -84,6 +90,17 @@
 			&:hover {
 				background-color: #ddd !important;
 			}
+		}
+	}
+
+	&__finish {
+		text-align: center;
+
+		button {
+			border-radius: 20px;
+			max-width: 200px;
+			padding: 9px 32px;
+			width: 100%;
 		}
 	}
 
@@ -195,8 +212,30 @@
 	img[class*=-image] {
 		bottom: 0;
 		position: absolute;
+		z-index: 1;
 	}
 
 	.left-image { left: -60px; }
 	.right-image { right: -70px; }
+
+	.social-networks {
+		display: flex;
+		justify-content: center;
+		margin: 0 auto 40px;
+
+		&__link {
+			margin: 0 20px;
+			text-align: center;
+		}
+
+		&__icon {
+			display: block;
+			margin: 5px auto;
+		}
+
+		&__title {
+			font-size: .75em;
+			font-weight: 500;
+		}
+	}
 }
