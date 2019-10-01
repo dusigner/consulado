@@ -87,6 +87,7 @@
 		}
 	}
 
+	.benefits,
 	.products {
 		&-form { text-align: center; }
 
@@ -114,6 +115,7 @@
 				}
 			}
 
+			input[type*=radio],
 			input[type*=checkbox] {
 				&:checked + label {
 					background-color: #404040;
@@ -127,6 +129,19 @@
 						left: 6px;
 						top: 3px;
 					}
+				}
+			}
+		}
+	}
+
+	.benefits {
+		&-form {
+			input[type*=radio] {
+				position: absolute;
+				visibility: hidden;
+
+				&:checked + label {
+					&::before { display: none; }
 				}
 			}
 		}
