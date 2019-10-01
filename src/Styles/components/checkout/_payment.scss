@@ -647,7 +647,9 @@ body {
 
 			.shipping-summary-placeholder {
 				.address {
-					@include rfs(13);
+					@include rfs(14);
+					color: #595453;
+					line-height: 2;
 				}
 
 				p.shipping-selected-sla {
@@ -668,8 +670,9 @@ body {
 
 				#change-other-shipping-option {
 					@include rfs(12);
-					border: 1px solid $gray-n;
-					color: $gray-d;
+					border: 1px solid #403C3B;
+					color: #403C3B;
+					font-weight: 500;
 
 					&:hover,
 					&:focus {
