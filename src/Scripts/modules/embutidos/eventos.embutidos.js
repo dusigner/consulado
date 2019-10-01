@@ -236,7 +236,8 @@ const Eventos = {
 		let valDe = 0;
 		let linkSkus = '/checkout/cart/add?';
 		//Set SKU
-		let skus = [{cart:true, sku:565},{cart:true, sku:490},{cart:true, sku:428}];
+		let skus = [{cart:true, sku:666},{cart:true, sku:666},{cart:true, sku:666}];
+		$.map($('.combos-prateleira'), (data,index) => skus[index].sku = data.dataset.idproduto);
 
 		//Functions Custom
 		function formatReal(int) {
