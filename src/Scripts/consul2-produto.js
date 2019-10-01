@@ -112,7 +112,7 @@ Nitro.controller(
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		this.setupSlider = function($currentSlider) {
-			const quantity = ($currentSlider[0].childElementCount >= 3) ? 3 : $currentSlider[0].childElementCount;
+			const quantity = ($currentSlider.length > 0 && $currentSlider[0].childElementCount < 3) ? $currentSlider[0].childElementCount : 3;
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: true,
 				slidesToShow: quantity,
