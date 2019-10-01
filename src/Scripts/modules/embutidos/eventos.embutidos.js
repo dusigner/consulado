@@ -236,7 +236,8 @@ const Eventos = {
 		let valDe = 0;
 		let linkSkus = '/checkout/cart/add?';
 		//Set SKU
-		let skus = [{cart:true, sku:565},{cart:true, sku:490},{cart:true, sku:428}];
+		let skus = [{cart:true, sku:666},{cart:true, sku:666},{cart:true, sku:666}];
+		$.map($('.combos-prateleira'), (data,index) => skus[index].sku = data.dataset.idproduto);
 
 		//Functions Custom
 		function formatReal(int) {
@@ -295,8 +296,8 @@ const Eventos = {
 			x.currentTarget.classList = 'remove-item';
 			x.currentTarget.nextElementSibling.classList = 'add-item active';
 			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[3].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[5].innerText );
+			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
 			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) - valDe);
 			totalPor = formatReal(getMoney(totalPor) - valPor);
@@ -313,8 +314,8 @@ const Eventos = {
 			x.currentTarget.classList = 'add-item';
 			x.currentTarget.previousElementSibling.classList = 'remove-item active';
 			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[3].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[5].innerText );
+			valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
 			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) + valDe);
 			totalPor = formatReal(getMoney(totalPor) + valPor);
