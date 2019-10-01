@@ -76,9 +76,10 @@ Nitro.module('cotas', function() {
 	//this.init();
 
 	$('.open-menu-mobile').click(function() {
-		if (isLogged) {
+		let nameSelector = $('.menu-department .account__icon.account__icon--profile');
+		if (nameSelector.length > 0) {
 			if ($('.logout-text').length === 0) {
-				let nameSelector = $('.menu-department .account__icon.account__icon--profile').parent();
+				nameSelector = nameSelector.parent();
 				nameSelector.html(
 					`
 						${nameSelector.find('span').prop('outerHTML')}
