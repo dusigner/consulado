@@ -234,32 +234,37 @@ const Eventos = {
 		let valPor = 0;
 		let totalDe = 0;
 		let valDe = 0;
-		let linkSkus = '/checkout/cart/add?';
 		//Set SKU
-		let skus = [{cart:true, id:666, sku:666},{cart:true, id:666, sku:666},{cart:true, id:666, sku:666}];
-		 $.map($('.combos-prateleira'), (data,index) =>{
+		let skus = [];
+		for (let i = 0; i < $('.combos-prateleira').length; i++) {
+			skus.push({ cart: true, id: 666, sku: 666 });
+		}
+		$.map($('.combos-prateleira'), (data, index) => {
 			skus[index].id = data.dataset.idproduto;
-			getSkuByIdProduct(data.dataset.idproduto,index);
+			getSkuByIdProduct(data.dataset.idproduto, index);
 		});
 
 		//Functions Custom
-		function getSkuByIdProduct(productId,index) {
+		function getSkuByIdProduct(productId, index) {
 			var urlOrigin = window.origin || window.location.origin,
-				apiUrl = urlOrigin + '/api/catalog_system/pub/products/search?fq=productId:' + productId;
+				apiUrl =
+					urlOrigin +
+					'/api/catalog_system/pub/products/search?fq=productId:' +
+					productId;
 			$.ajax({
-				'url': apiUrl,
-				'type': 'GET'
-			}).then(function (data) {
-				if (data[0].items.length <= 1) {
-					// console.log('1',data[0].items[0].itemId);
-					skus[index].sku = data[0].items[0].itemId;
-				} else {
-					// console.log('2',data[0].items.filter(x => x.name.includes('110V'))[0].itemId);
-					skus[index].sku = data[0].items.filter(x => x.name.includes('110V'))[0].itemId;
-				}
-			}).fail(function (data) {
-				return data;
-			});
+				url: apiUrl,
+				type: 'GET'
+			})
+				.then(function(data) {
+					if (data[0].items.length <= 1) {
+						skus[index].sku = data[0].items[0].itemId;
+					} else {
+						skus[index].sku = data[0].items.filter(x => x.name.includes('110V'))[0].itemId;
+					}
+				})
+				.fail(function(data) {
+					return data;
+				});
 		}
 
 		function formatReal(int) {
@@ -275,43 +280,43 @@ const Eventos = {
 		}
 
 		function setLink() {
-			linkSkus = '/checkout/cart/add?'
+			let linkSkus = '/checkout/cart/add?';
 			skus.map(n => {
 				if (n.cart === true) {
-					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`;
 				}
 			});
 
 			if (linkSkus === '/checkout/cart/add?') {
 				$('.go').attr('href', linkSkus);
 				$('.go').addClass('disable');
-			}else{
+			} else {
 				$('.go').attr('href', linkSkus);
 				$('.go').removeClass('disable');
 			}
 		}
 
-		function setStatusLinks(idProduto,operador) {
+		function setStatusLinks(idProduto, operador) {
 			skus.map(v => {
 				if (v.id.toString() === idProduto) {
-					v.cart=operador;
+					v.cart = operador;
 				}
 			});
 		}
 
 		//SetPirce on HTML
-		$.map($('.de'), x => (totalDe += getMoney(x.textContent)));
-		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
+		$.map( $('article .de-preco'), x => (totalDe += getMoney(x.textContent)));
+		$.map( $('article .por-preco'), x => (totalPor += getMoney(x.textContent)));
 		totalPor = formatReal(totalPor);
 		totalDe = formatReal(totalDe);
-		$('.de-final').text(`De: R$ ${totalDe}`);
-		$('.por-final').text(`Por: R$ ${totalPor}`);
+		$('li .de-final').text(`De: R$ ${totalDe}`);
+		$('li .por-final').text(`Por: R$ ${totalPor}`);
 		//Copia o elemento de fora e joga para dentro da vitrine;
 		$('.vitrine-total').clone().appendTo('.vitrine ul');
 		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
 		$('.vitrine-total').remove();
 		//Set Link on Button
-		setTimeout( () => setLink(),3000);
+		setTimeout(() => setLink(), 3000);
 		//Action Add and Remove
 		$('.remove-item').click(x => {
 			x.currentTarget.classList = 'remove-item';
@@ -328,7 +333,7 @@ const Eventos = {
 
 			x.currentTarget.parentElement.classList.add('removido');
 			//Set Link on Button
-			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto,false);
+			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, false);
 			setLink();
 		});
 		$('.add-item').click(x => {
@@ -346,7 +351,7 @@ const Eventos = {
 
 			x.currentTarget.parentElement.classList.remove('removido');
 			//Set Link on Button
-			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto, true);
+			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, true );
 			setLink();
 		});
 	}
