@@ -236,10 +236,32 @@ const Eventos = {
 		let valDe = 0;
 		let linkSkus = '/checkout/cart/add?';
 		//Set SKU
-		let skus = [{cart:true, sku:666},{cart:true, sku:666},{cart:true, sku:666}];
-		$.map($('.combos-prateleira'), (data,index) => skus[index].sku = data.dataset.idproduto);
+		let skus = [{cart:true, id:666, sku:666},{cart:true, id:666, sku:666},{cart:true, id:666, sku:666}];
+		 $.map($('.combos-prateleira'), (data,index) =>{
+			skus[index].id = data.dataset.idproduto;
+			getSkuByIdProduct(data.dataset.idproduto,index);
+		});
 
 		//Functions Custom
+		function getSkuByIdProduct(productId,index) {
+			var urlOrigin = window.origin || window.location.origin,
+				apiUrl = urlOrigin + '/api/catalog_system/pub/products/search?fq=productId:' + productId;
+			$.ajax({
+				'url': apiUrl,
+				'type': 'GET'
+			}).then(function (data) {
+				if (data[0].items.length <= 1) {
+					// console.log('1',data[0].items[0].itemId);
+					skus[index].sku = data[0].items[0].itemId;
+				} else {
+					// console.log('2',data[0].items.filter(x => x.name.includes('110V'))[0].itemId);
+					skus[index].sku = data[0].items.filter(x => x.name.includes('110V'))[0].itemId;
+				}
+			}).fail(function (data) {
+				return data;
+			});
+		}
+
 		function formatReal(int) {
 			var tmp = int + '';
 			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
@@ -271,7 +293,7 @@ const Eventos = {
 
 		function setStatusLinks(idProduto,operador) {
 			skus.map(v => {
-				if (v.sku.toString() === idProduto) {
+				if (v.id.toString() === idProduto) {
 					v.cart=operador;
 				}
 			});
@@ -289,8 +311,7 @@ const Eventos = {
 		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
 		$('.vitrine-total').remove();
 		//Set Link on Button
-		setLink();
-
+		setTimeout( () => setLink(),3000);
 		//Action Add and Remove
 		$('.remove-item').click(x => {
 			x.currentTarget.classList = 'remove-item';
