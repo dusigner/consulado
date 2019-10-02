@@ -22,6 +22,7 @@
 		border: 1px solid #3D3D3D;
 		box-shadow: 0 1px 3px rbga(0, 0, 0, .7);
 		height: 100%;
+		overflow: auto;
 		width: 25%;
 
 		&.is-small {
