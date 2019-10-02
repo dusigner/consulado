@@ -107,7 +107,7 @@ $(window).on('load', function() {
 		// console.log(pedidoconfir);
 
 		$.getJSON('/api/checkout/pub/orders/order-group/' + pedidoconfir, function(res) {
-			console.info(res);
+			// console.info(res);
 
 			var entregaEscolhida = res[0].shippingData.logisticsInfo[0].selectedSla;
 			var arrTiposDeEntrega = Object.keys(res[0].shippingData.logisticsInfo[0].slas);
