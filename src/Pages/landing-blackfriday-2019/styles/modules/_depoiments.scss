@@ -1,5 +1,6 @@
 .depoiments {
 	background-color: #212121;
+	padding-bottom: 50px;
 
 	.title {
 		padding: 60px 0 40px;
@@ -14,8 +15,66 @@
 		justify-content: space-between;
 	}
 
-	.slick-next { right: -50px; }
-	.slick-prev { left: -50px; }
+	.slick-next,
+	.slick-prev {
+
+		&::before {
+			@media (max-width: 920px) {
+				font-size: 16px;
+			}
+		}
+
+		@media (max-width: 920px) {
+			bottom: -65px;
+			color: #736c6b;
+			top: initial;
+			left: initial;
+		}
+	}
+
+	.slick-next {
+		right: -50px;
+
+		@media (max-width: 920px) {
+			right: 55px;
+			top: initial;
+		}
+
+		@media (max-width: 480px) {
+			right: 0;
+		}
+	}
+
+	.slick-prev {
+		left: -50px;
+
+		@media (max-width: 920px) {
+			right: 110px;
+		}
+
+		@media (max-width: 480px) {
+			right: 55px;
+		}
+	}
+
+	.slick-dots {
+
+		@media (max-width: 920px) {
+			bottom: -25px;
+			margin-left: 44px;
+			text-align: left;
+		}
+
+		@media (max-width: 480px) {
+			margin-left: -7px;
+		}
+
+		li {
+			@media (max-width: 920px) {
+				margin: 0 -7px 0 0;
+			}
+		}
+	}
 
 	.card {
 		background: #2D2D2D 0% 0% no-repeat padding-box;
@@ -32,6 +91,17 @@
 
 		&.is-big {
 			width: 31%;
+		}
+
+		.mobile-slide {
+			display: block;
+			width: 100%;
+		}
+
+		@media (max-width: 920px) {
+			display: block;
+			height: 100% !important;
+			width: 100% !important;
 		}
 
 		&__container {
