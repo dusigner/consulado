@@ -1,0 +1,89 @@
+.depoiments {
+	background-color: #212121;
+
+	.title {
+		padding: 60px 0 40px;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		height: 400px;
+		justify-content: space-between;
+	}
+
+	.slick-next { right: -50px; }
+	.slick-prev { left: -50px; }
+
+	.card {
+		background: #2D2D2D 0% 0% no-repeat padding-box;
+		border: 1px solid #3D3D3D;
+		box-shadow: 0 1px 3px rbga(0, 0, 0, .7);
+		height: 100%;
+		width: 25%;
+
+		&.is-small {
+			height: 47%;
+			width: 45%;
+		}
+
+		&.is-big {
+			width: 31%;
+		}
+
+		&__container {
+			display: block;
+			margin: 0 auto;
+			width: 90%;
+		}
+
+		&__header {
+			border-bottom: 1px solid #f1f0f0;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__owner {
+
+			.name {
+				color: #fff;
+				font-size: 1.125em;
+				font-weight: 500;
+				margin: 20px 0 3px;
+			}
+
+			.location {
+				color: #0fb6de;
+				font-size: .875em;
+				font-weight: 500;
+				margin: 0;
+				margin-bottom: 15px;
+			}
+		}
+
+		&__product {
+			color: #fff;
+			text-align: right;
+
+			.description {
+				font-size: .75em;
+				font-weight: 500;
+				margin: 20px 0 13px;
+			}
+
+			.product-name {
+				font-size: .875em;
+				margin: 0;
+			}
+		}
+
+		&__message {
+			.text {
+				color: #bebebe;
+				line-height: 21px;
+			}
+		}
+	}
+}

@@ -24,8 +24,11 @@
 // @import 'components/produto/facebook-share';
 
 // Modules
+@import 'modules/common';
+
 @import 'modules/banner';
 @import 'modules/lead';
+@import 'modules/depoiments';
 
 body {
 	background-color: #ccc;
