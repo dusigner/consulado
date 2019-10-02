@@ -7,6 +7,7 @@ require('modules/slider-banner');
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
+require('components/instagram-stories');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');
@@ -23,6 +24,7 @@ Nitro.controller(
 		'chaordic',
 		'slider-banner',
 		'lead-newsletter',
+		'instagram-stories',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
