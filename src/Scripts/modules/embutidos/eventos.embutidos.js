@@ -2,6 +2,7 @@ const Eventos = {
 	init: () => {
 		Eventos.hoverIMGS();
 		Eventos.dotsInfo();
+		Eventos.compreJunto();
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
@@ -17,7 +18,8 @@ const Eventos = {
 		//Quando for mobile
 		if ($(window).width() <= 768) {
 			$('.box-img img').click(function() {
-				let current = '/arquivos/' + this.src.split('/')[4].split('?')[0];
+				let current =
+					'/arquivos/' + this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
 				case 'Cooktops':
 					if (current === CooktopInicial) {
@@ -224,6 +226,107 @@ const Eventos = {
 				back.removeClass('Cooktops');
 			}, 500);
 			imgMascara.attr('src', '/arquivos/embutir_ambientada1.jpg');
+		});
+	},
+	compreJunto: () => {
+		//Carregamento
+		let totalPor = 0;
+		let valPor = 0;
+		let totalDe = 0;
+		let valDe = 0;
+		let linkSkus = '/checkout/cart/add?';
+		//Set SKU
+		let skus = [{cart:true, sku:666},{cart:true, sku:666},{cart:true, sku:666}];
+		$.map($('.combos-prateleira'), (data,index) => skus[index].sku = data.dataset.idproduto);
+
+		//Functions Custom
+		function formatReal(int) {
+			var tmp = int + '';
+			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+			if (tmp.length > 6)
+				tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+			return tmp;
+		}
+
+		function getMoney(str) {
+			return parseInt(str.replace(/[\D]+/g, ''));
+		}
+
+		function setLink() {
+			linkSkus = '/checkout/cart/add?'
+			skus.map(n => {
+				if (n.cart === true) {
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`
+				}
+			});
+
+			if (linkSkus === '/checkout/cart/add?') {
+				$('.go').attr('href', linkSkus);
+				$('.go').addClass('disable');
+			}else{
+				$('.go').attr('href', linkSkus);
+				$('.go').removeClass('disable');
+			}
+		}
+
+		function setStatusLinks(idProduto,operador) {
+			skus.map(v => {
+				if (v.sku.toString() === idProduto) {
+					v.cart=operador;
+				}
+			});
+		}
+
+		//SetPirce on HTML
+		$.map($('.de'), x => (totalDe += getMoney(x.textContent)));
+		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
+		totalPor = formatReal(totalPor);
+		totalDe = formatReal(totalDe);
+		$('.de-final').text(`De: R$ ${totalDe}`);
+		$('.por-final').text(`Por: R$ ${totalPor}`);
+		//Copia o elemento de fora e joga para dentro da vitrine;
+		$('.vitrine-total').clone().appendTo('.vitrine ul');
+		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+		$('.vitrine-total').remove();
+		//Set Link on Button
+		setLink();
+
+		//Action Add and Remove
+		$('.remove-item').click(x => {
+			x.currentTarget.classList = 'remove-item';
+			x.currentTarget.nextElementSibling.classList = 'add-item active';
+			//Price
+			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
+			//Format and calculator price
+			totalDe = formatReal(getMoney(totalDe) - valDe);
+			totalPor = formatReal(getMoney(totalPor) - valPor);
+			//Set Price on HTML
+			$('.de-final').text(`De: R$ ${totalDe}`);
+			$('.por-final').text(`Por: R$ ${totalPor}`);
+
+			x.currentTarget.parentElement.classList.add('removido');
+			//Set Link on Button
+			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto,false);
+			setLink();
+		});
+		$('.add-item').click(x => {
+			x.currentTarget.classList = 'add-item';
+			x.currentTarget.previousElementSibling.classList = 'remove-item active';
+			//Price
+			valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
+			//Format and calculator price
+			totalDe = formatReal(getMoney(totalDe) + valDe);
+			totalPor = formatReal(getMoney(totalPor) + valPor);
+			//Set Price on HTML
+			$('.de-final').text(`De: R$ ${totalDe}`);
+			$('.por-final').text(`Por: R$ ${totalPor}`);
+
+			x.currentTarget.parentElement.classList.remove('removido');
+			//Set Link on Button
+			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto, true);
+			setLink();
 		});
 	}
 };

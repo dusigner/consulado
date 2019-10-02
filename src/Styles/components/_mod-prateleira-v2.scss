@@ -76,6 +76,17 @@ body.listagem {
 	position: relative;
 	transition: border .2s ease, box-shadow .2s ease;
 
+	&.unavailable {
+		.shelf-item__price--installment {
+			display: none;
+		}
+
+		.shelf-item__price--list {
+			@include rfs(12);
+			font-weight: bold;
+		}
+	}
+
 	&:hover {
 		border-color: $c1!important;
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);

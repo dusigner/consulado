@@ -400,16 +400,15 @@ input[type='submit'].custom-login-btn {
 						margin-top: 35px;
 
 						.modal-custom-login-btn {
-							background-position: center 10px;
+							background-position: calc(50% - 60px) 12px;
 							font-size: 11px;
-							height: 70px;
+							height: 40px;
 							margin: 0;
-							padding: 35px 5px 5px 5px;
+							padding: 0;
 							text-align: center;
-							width: 70px;
+							width: 100%;
 						}
 					}
-
 				}
 
 				.modal-custom-login--email-access-layout,
