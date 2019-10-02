@@ -7,6 +7,10 @@
 		font-size: .75em;
 		font-weight: 500;
 		margin: 0;
+
+		@media (max-width: 920px) {
+			font-size: 1em;
+		}
 	}
 
 	&__content {
@@ -115,6 +119,10 @@
 			max-width: 200px;
 			padding: 9px 32px;
 			width: 100%;
+
+			@media (max-width: 920px) {
+				width: 100% !important;
+			}
 		}
 	}
 
@@ -183,6 +191,22 @@
 
 				&:checked + label {
 					&::before { display: none; }
+				}
+			}
+
+			@media (max-width: 920px) {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+			}
+
+			.lead__title {
+				order: -2;
+			}
+
+			.text {
+				@media (max-width: 920px) {
+					order: 1;
 				}
 			}
 		}
@@ -286,6 +310,10 @@
 		&__title {
 			font-size: .75em;
 			font-weight: 500;
+
+			@media (max-width: 920px) {
+				font-size: 1em;
+			}
 		}
 	}
 }
