@@ -582,17 +582,40 @@ body {
 		.a {
 			stroke: none;
 		}
+
+		.account {
+			.account__icon {
+				&.account__icon--profile,
+				&.account__icon--enter {
+					display: none!important;
+				}
+			}
+
+			.welcome {
+				padding-left: 31px;
+
+				&:before {
+					@include icon-get('icon-truck-consul');
+					color: $green;
+					font-size: 16px;
+					left: -1px;
+					position: absolute;
+					top: 6px;
+				}
+
+				a[href='/no-cache/user/logout'] {
+					left: 31px;
+				}
+			}
+		}
+
 		.menu-mobile {
 			.menu-department {
-
 				.welcome-message {
 					@include breakpoint('small', 'max') {
 						.ajax-content-loader {
-							align-items: center;
 							background-color: #fff;
-							display: flex;
 							height: 100%;
-							justify-content: center;
 
 							.welcome {
 								@include rfs(12);
@@ -602,34 +625,10 @@ body {
 								padding: 0;
 								position: relative;
 
-							}
-
-							.account__icon.account__icon--enter,
-							.account__icon.account__icon--profile {
-								@include breakpoint('small', 'max') {
-									@include rfs(15);
-									bottom: unset;
-									display: inline-block;
-									height: 100%;
-									line-height: 0;
-									margin: 0;
-									position: relative;
-									top: 0;
-
-									svg {
-										left: 0;
-										position: absolute;
-										top: 50%;
-										transform: translateY(-50%);
-									}
+								&:before {
+									display: none;
 								}
-							}
 
-							.account__icon.account__icon--profile {
-								@include breakpoint('small', 'max') {
-									bottom: 1px;
-									top: unset;
-								}
 							}
 						}
 					}
@@ -640,14 +639,6 @@ body {
 						float: none;
 						padding: 0;
 
-						&.logged-user {
-							.welcome-message {
-								.welcome {
-									padding: 0 0 73px;
-								}
-							}
-						}
-
 						.welcome-message {
 							background-color: #fff;
 
@@ -655,7 +646,6 @@ body {
 								background-color: #fff;
 								height: 100%;
 								left: 0;
-								padding: 0 0 71px;
 								top: 0;
 								width: 100%;
 
@@ -663,7 +653,8 @@ body {
 									height: 100%;
 
 									a[href='/no-cache/user/logout'] {
-										color: $gray-d;
+										color: #fff;
+										font-size: 0;
 										font-weight: 400;
 										padding: 0;
 										right: 10px;
@@ -681,16 +672,34 @@ body {
 									position: relative;
 									top: 0;
 
-									span {
+									&:before {
 										display: none;
 									}
+								}
+
+								.login-text,
+								.logout-text {
+									color: #736c6b;
+									display: block;
+									left: 50%;
+									margin: 0 auto;
+									position: relative;
+									text-align: left;
+									top: 17px;
+									width: 50%;
 
 									&:before {
-										@include icon-get('icon-login-consul');
+										@include icon-get('icon-truck-consul');
 										color: $green;
-										font-size: 12px;
+										font-size: 16px;
+										left: -34px;
 										position: absolute;
+    									top: 6px;
 									}
+								}
+
+								.login-text {
+									transform: translateX(-70%);
 
 									&:after {
 										@include rfs(10);
@@ -698,16 +707,23 @@ body {
 										display: block;
 										font-weight: 400;
 										left: 0;
-										position: absolute;
-										text-align: center;
-										top: 12px;
-										width: 100%;
-
+										position: relative;
+										text-align: left;
 									}
 								}
 
-								span {
-									display: none!important;
+								.logout-text {
+									transform: translateX(-60%);
+
+									&:after {
+										@include rfs(10);
+										content: 'Sair';
+										display: block;
+										font-weight: 400;
+										left: 0;
+										position: relative;
+										text-align: left;
+									}
 								}
 							}
 						}
