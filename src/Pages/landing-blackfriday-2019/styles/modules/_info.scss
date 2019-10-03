@@ -4,11 +4,27 @@
 	.title {
 		margin: 0;
 		width: 45%;
+
+		@media (max-width: 920px) {
+			margin-bottom: 20px;
+			text-align: left;
+			width: 100%;
+		}
+
+		br {
+			@media (max-width: 920px) {
+				display: none;
+			}
+		}
 	}
 
 	&__content {
 		display: flex;
 		padding: 34px 0;
+
+		@media (max-width: 920px) {
+			flex-direction: column;
+		}
 	}
 
 	&__text {
@@ -17,5 +33,9 @@
 		line-height: 25px;
 		margin: 0;
 		padding-left: 60px;
+
+		@media (max-width: 920px) {
+			padding: 0;
+		}
 	}
 }
