@@ -1,0 +1,139 @@
+.countdown {
+	background-color: #242424;
+	padding: 200px 0 40px;
+
+	h2.title {
+		font-size: 2em;
+		line-height: 35px;
+		text-align: left;
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 60px;
+	}
+
+	&__description {
+		background-color: #333;
+		color: #fff;
+		font-size: .75em;
+		line-height: 25px;
+		padding: 20px 10% 20px 30px;
+		position: relative;
+		width: 75%;
+
+		&::after {
+			content: url('/arquivos/bf2019-countdown-icon.png');
+			display: block;
+			position: absolute;
+			right: 30px;
+			top: 20px;
+		}
+	}
+
+	&__content {
+		display: flex;
+	}
+
+	&__topics {
+		display: flex;
+		width: 75%;
+		position: relative;
+
+		&::after {
+			background-color: #5b5b5b;
+			content: '';
+			height: 80px;
+			position: absolute;
+			width: 2px;
+			right: 10px;
+			top: 35%;
+		}
+	}
+
+	.topic {
+		&__icon {
+			margin-bottom: 8px;
+		}
+
+		&__title {
+			border-bottom: 2px solid #5b5b5b;
+			color: #fff;
+			font-size: 1.125em;
+			padding-bottom: 15px;
+			width: 100%;
+		}
+
+		&__subtitle {
+			color: #fff;
+			font-size: .875em;
+			padding: 15px 0 10px;
+			position: relative;
+
+			&::after {
+				background-color: #9aca3c;
+				border-radius: 3px;
+				content: '';
+				display: block;
+				height: 2px;
+				width: 17px;
+			}
+		}
+
+		&__text {
+			color: #fff;
+			font-size: .75em;
+			line-height: 25px;
+			width: 90%;
+		}
+	}
+
+	&__calendar {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+	}
+
+	&__indicators {
+		border-bottom: 2px solid #5b5b5b;
+		color: #fff;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		padding: 0 10%;
+
+		&-wrapper {
+			&::before {
+				color: #9aca3c;
+				content: 'Aguarde!';
+				display: block;
+				font-size: 1.125em;
+				font-weight: bold;
+				margin-bottom: 5px;
+				padding: 0 10%;
+			}
+		}
+
+		.indicators {
+			&__number {
+				font-size: 2.125em;
+				font-weight: bold;
+			}
+
+			&__title {
+				font-size: .75em;
+			}
+		}
+	}
+
+	&__final-date {
+		color: #fff;
+		font-size: 7.05em;
+		font-weight: bolder;
+		margin: 0;
+		padding: 0 10%;
+
+		.small { font-size: 0.21em; }
+	}
+}
