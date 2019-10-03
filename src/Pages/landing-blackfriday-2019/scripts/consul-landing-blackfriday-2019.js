@@ -9,8 +9,8 @@ $( document ).ready(function() {
 
 const adaptHtmlToSliderMobile = () => {
 	if ($(window).width() < 920) {
-		$('.depoiments__content, .card').unwrap()
-		$('.card').wrap('<div class="mobile-slide"></div>')
+		$('.depoiments__content,.depoiments .card').unwrap()
+		$('.depoiments .card').wrap('<div class="mobile-slide"></div>')
 	}
 }
 
