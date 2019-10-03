@@ -27,8 +27,8 @@
 		@media (max-width: 920px) {
 			bottom: -65px;
 			color: #736c6b;
-			top: initial;
 			left: initial;
+			top: initial;
 		}
 	}
 
@@ -81,7 +81,7 @@
 		border: 1px solid #3D3D3D;
 		box-shadow: 0 1px 3px rbga(0, 0, 0, .7);
 		height: 100%;
-		overflow: auto;
+		overflow: hidden;
 		width: 25%;
 
 		&.is-small {
