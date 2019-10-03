@@ -200,7 +200,7 @@ $(window).on('load', function() {
 		this.updateRecurrenceItem = function() {
 			for (let i = 0; i < $('.cconf-attachment-recorrencia:not(.checked)').length; i++) {
 				// prettier-ignore
-				$('.cconf-attachment-recorrencia:not(.checked)').eq(i).is(":hidden") ? '' : $(`
+				$('.cconf-attachment-recorrencia:not(.checked)').eq(i).is(':hidden') ? '' : $(`
 					<tr class="cconf-attachment-recorrencia-custom">
 						<td class="recurrence-item-table">
 							<div class="recurrence-item-message">

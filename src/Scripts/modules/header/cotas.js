@@ -78,17 +78,6 @@ Nitro.module('cotas', function() {
 	$('.open-menu-mobile').click(function() {
 		let nameSelector = $('.menu-department .account__icon.account__icon--profile');
 		if (nameSelector.length > 0) {
-			if ($('.logout-text').length === 0) {
-				nameSelector = nameSelector.parent();
-				nameSelector.html(
-					`
-						${nameSelector.find('span').prop('outerHTML')}
-						<span class="logout-text">${nameSelector.text().match(/Olá (\w| )+?(?=\.)/)[0]}</span>
-						${nameSelector.find('em').prop('outerHTML')}
-					`
-				)
-			}
-
 			$('.header .account').addClass('logged-user');
 		} else {
 			$('.header .account').removeClass('logged-user');
