@@ -58,9 +58,9 @@
 	}
 
 	.slick-dots {
+		bottom: -25px;
 
 		@media (max-width: 920px) {
-			bottom: -25px;
 			margin-left: 44px;
 			text-align: left;
 		}
