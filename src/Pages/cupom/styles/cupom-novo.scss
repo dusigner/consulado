@@ -296,7 +296,8 @@ $breakpoint-map: (
 			}
 		}
 		@include breakpoint('desktop', 'min') {
-			box-shadow: none;
+			margin: 0 auto;
+			padding: 25px 0;
 		}
 		background-color: #fff;
 		border-radius: 4px;
@@ -352,14 +353,13 @@ $breakpoint-map: (
 			padding: 0;
 		}
 		@include breakpoint ('desktop', 'min') {
-			border-radius: 30px;
 			color: $purple;
 			display: inline-block;
 			font-weight: $font-bold;
 			margin: 28px auto 10px;
 			padding: 10px 38px;
 			text-transform: uppercase;
-			width: auto;
+			width: 100%;
 		}
 	}
 	&__card-cupom-desconto {
