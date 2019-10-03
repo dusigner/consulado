@@ -1,0 +1,21 @@
+.info {
+	background: transparent linear-gradient(180deg, #9ACA3C 0%, #81AE29 59%, #729D1D 100%) 0% 0% no-repeat padding-box;
+
+	.title {
+		margin: 0;
+		width: 45%;
+	}
+
+	&__content {
+		display: flex;
+		padding: 34px 0;
+	}
+
+	&__text {
+		color: #fff;
+		font-size: 1em;
+		line-height: 25px;
+		margin: 0;
+		padding-left: 60px;
+	}
+}
