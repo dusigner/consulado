@@ -2,60 +2,81 @@
 <div class="modal fade" id="modal-more-phones" tabindex="-1" role="dialog" aria-hidden="true" style="display:none">
 	<div class="modal-dialog">
 		<div class="modal-content">
+
+			<button class="modal-close" title="Fechar">
+				x
+			</button>
+
 			<div class="modal-header">
-				<h4 class="modal-title">Atendimento</h4>
+				<h4 class="modal-title">
+					Informe o celular para acompanhar seu pedido em tempo real.
+				</h4>
 			</div>
+
 			<div class="modal-body">
 				<form method="POST" action="/" id="formPhones">
-
 					<fieldset class="messages">
-						<div class="phone-error-message alert alert-danger" style="display:none">
+						<!-- Form messages -->
+						<div class="phone-error-message alert-danger" style="display:none">
 							<strong>Atenção!</strong>
-							<ul>
-								<li>Por favor, preencha seu telefone celular</li>
-							</ul>
+							<p>Por favor, preencha seu telefone celular</p>
 						</div>
-                      	<div class="turnoLigacao-error-message alert alert-danger" style="display:none">
+						<div class="turnoLigacao-error-message alert-danger" style="display:none">
 							<strong>Atenção!</strong>
-							<ul>
-								<li>Informe o melhor horário para entrarmos em contato com você.</li>
-							</ul>
+							<p>Informe o melhor horário para entrarmos em contato com você.</p>
 						</div>
-						<div class="default-message">
-							<p>Olá! Entraremos em contato se houver necessidade, informe seus telefones de contato</p>
-                        </div>
-						<div class="success-message alert alert-success">
-							Seus telefones foram atualizados com sucesso!
-						</div>
-						<div class="error-message  alert alert-danger">
-							Ocorreu um erro! Tente Novamente!
-						</div>
+						<!-- /Form messages -->
+
+						<div class="default-message"></div>
+
+						<!-- Form feedback -->
+						<div class="success-message alert-success">Seus telefones foram atualizados com sucesso!</div>
+						<div class="error-message alert-danger">Ocorreu um erro! Tente Novamente!</div>
+						<!-- /Form feedback -->
 					</fieldset>
+
 					<fieldset class="data clearfix">
-						<div class="contact-modal">	
+						<div class="contact-modal">
 							<div>
 								<label for="CL_phone">Telefone celular <span>(obrigatório)</span></label>
-								<input type="tel" id="CL_phone" name="phone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+								<input
+									type="tel"
+									id="CL_phone"
+									name="phone"
+									class="phone"
+									data-validation="even_phone"
+									data-validation-length="min14"
+									placeholder="Digite o seu telefone celular"
+								/>
 							</div>
+						</div>
+
+						<!-- Add phone -->
+						<div class="add-phone">Adicionar Telefone</div>
+						<!-- /Add phone -->
+
+						<div class="contact-modal additional-phone">
 							<div>
 								<label for="CL_homePhone">Telefone Adicional <span>(opcional)</span></label>
-								<input type="tel" id="CL_additionalPhone" name="xAdditionalPhone" class="phone" data-validation="even_phone" data-validation-length="min14" />
+								<input
+									type="tel"
+									id="CL_additionalPhone"
+									name="xAdditionalPhone"
+									class="phone"
+									data-validation="even_phone"
+									data-validation-length="min14"
+									placeholder="Digite um telefone adicional"
+								/>
 							</div>
 						</div>
-                      	<!-- <div class="turno-ligacao">
-							<span>Melhor horário para contato</span>
-							<input type="radio" id="horarioManha" name="horarios" value="Manhã" data-validation="horario_checked">
-                          <label for="horarioManha">Manhã (9:00 às 11:00)</label> <br />
-                          	<input type="radio" id="horarioTarde" name="horarios" value="Tarde" data-validation="horario_checked">
-                          	<label for="horarioTarde">Tarde (12:00 às 20:00)</label>
-						</div> -->
+
 						<div class="submit">
-							<button type="submit" class="enviar" value="Enviar">Enviar</button>
+							<button type="submit" class="enviar" value="Enviar">
+								Enviar informações
+							</button>
 						</div>
 					</fieldset>
-
 				</form>
-
 			</div>
 		</div>
 	</div>
