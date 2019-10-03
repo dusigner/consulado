@@ -1,33 +1,21 @@
 #modal-sku {
 	.options {
-		background: #eee;
-		margin: 0 -1em 20px;
-		padding: 21px 0;
+		margin: 1em 0;
 
 		.specification { display: none; }
 	}
 
-	.buy-button {
-		@extend .primary-button;
-		@include breakpoint('medium', 'max') { max-width: 200px; }
-		font-size: 1em;
-		margin: 0 auto;
-		max-width: 160px;
-		width: auto;
-	}
+	.button { margin: 0; }
 
-	.portal-notify-me-ref { display: none; }
+	.buy-button { @extend .primary-button; }
+
+	// .portal-notify-me-ref { display: none; }
 }
 
 #vtex-modal-sku {
-	.modal-header { @include rfs(32); }
+	.modal-header { text-align: center; }
 
 	.sku-indisponivel {
-		.modal-voltagem {
-			@include rfs(15);
-			padding: 15px 15px 0 15px;
-		}
-
 		.btn-avise {
 			@include responsiveFont(16, 16, true);
 			background-color: #fff;
@@ -41,6 +29,7 @@
 			text-align: center;
 			text-decoration: none;
 		}
+
 		.buy-button {
 			@include breakpoint('medium', 'max') {
 				margin: 0 auto 12px auto;
@@ -52,7 +41,7 @@
 	}
 
 	.modal-avise {
-		background-color: #ffffff;
+		background-color: #fff;
 		border-radius: 6px;
 		display: inline-block;
 		margin: 0 auto;
@@ -69,12 +58,12 @@
 		.sku-notifyme,
 		.notifyme-client-name,
 		.notifyme-client-email,
-		input
-		 { display: block!important; }
-		 @include breakpoint(extra-small, 'max') {
-			&[href*='#relacionados'] {
-				display: none!important;
-			}
+		input {
+			display: block!important;
+		}
+
+		@include breakpoint(extra-small, 'max') {
+			&[href*='#relacionados'] { display: none!important; }
 		}
 	}
 
@@ -83,6 +72,7 @@
 		display: block;
 		height: 25px;
 		width: 25px;
+
 		&:before {
 			@include icon-get('arrow-left');
 			display: block;
