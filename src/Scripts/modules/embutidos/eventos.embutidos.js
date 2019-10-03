@@ -234,11 +234,39 @@ const Eventos = {
 		let valPor = 0;
 		let totalDe = 0;
 		let valDe = 0;
-		let linkSkus = '/checkout/cart/add?';
 		//Set SKU
-		let skus = [{cart:true, sku:565},{cart:true, sku:490},{cart:true, sku:428}];
+		let skus = [];
+		for (let i = 0; i < $('.combos-prateleira').length; i++) {
+			skus.push({ cart: true, id: 666, sku: 666 });
+		}
+		$.map($('.combos-prateleira'), (data, index) => {
+			skus[index].id = data.dataset.idproduto;
+			getSkuByIdProduct(data.dataset.idproduto, index);
+		});
 
 		//Functions Custom
+		function getSkuByIdProduct(productId, index) {
+			var urlOrigin = window.origin || window.location.origin,
+				apiUrl =
+					urlOrigin +
+					'/api/catalog_system/pub/products/search?fq=productId:' +
+					productId;
+			$.ajax({
+				url: apiUrl,
+				type: 'GET'
+			})
+				.then(function(data) {
+					if (data[0].items.length <= 1) {
+						skus[index].sku = data[0].items[0].itemId;
+					} else {
+						skus[index].sku = data[0].items.filter(x => x.name.includes('110V'))[0].itemId;
+					}
+				})
+				.fail(function(data) {
+					return data;
+				});
+		}
+
 		function formatReal(int) {
 			var tmp = int + '';
 			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
@@ -252,51 +280,50 @@ const Eventos = {
 		}
 
 		function setLink() {
-			linkSkus = '/checkout/cart/add?'
+			let linkSkus = '/checkout/cart/add?';
 			skus.map(n => {
 				if (n.cart === true) {
-					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`;
 				}
 			});
 
 			if (linkSkus === '/checkout/cart/add?') {
 				$('.go').attr('href', linkSkus);
 				$('.go').addClass('disable');
-			}else{
+			} else {
 				$('.go').attr('href', linkSkus);
 				$('.go').removeClass('disable');
 			}
 		}
 
-		function setStatusLinks(idProduto,operador) {
+		function setStatusLinks(idProduto, operador) {
 			skus.map(v => {
-				if (v.sku.toString() === idProduto) {
-					v.cart=operador;
+				if (v.id.toString() === idProduto) {
+					v.cart = operador;
 				}
 			});
 		}
 
 		//SetPirce on HTML
-		$.map($('.de'), x => (totalDe += getMoney(x.textContent)));
-		$.map($('.por'), x => (totalPor += getMoney(x.textContent)));
+		$.map( $('article .de-preco'), x => (totalDe += getMoney(x.textContent)));
+		$.map( $('article .por-preco'), x => (totalPor += getMoney(x.textContent)));
 		totalPor = formatReal(totalPor);
 		totalDe = formatReal(totalDe);
-		$('.de-final').text(`De: R$ ${totalDe}`);
-		$('.por-final').text(`Por: R$ ${totalPor}`);
+		$('li .de-final').text(`De: R$ ${totalDe}`);
+		$('li .por-final').text(`Por: R$ ${totalPor}`);
 		//Copia o elemento de fora e joga para dentro da vitrine;
 		$('.vitrine-total').clone().appendTo('.vitrine ul');
 		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
 		$('.vitrine-total').remove();
 		//Set Link on Button
-		setLink();
-
+		setTimeout(() => setLink(), 3000);
 		//Action Add and Remove
 		$('.remove-item').click(x => {
 			x.currentTarget.classList = 'remove-item';
 			x.currentTarget.nextElementSibling.classList = 'add-item active';
 			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[3].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[1].childNodes[5].innerText );
+			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
 			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) - valDe);
 			totalPor = formatReal(getMoney(totalPor) - valPor);
@@ -306,15 +333,15 @@ const Eventos = {
 
 			x.currentTarget.parentElement.classList.add('removido');
 			//Set Link on Button
-			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto,false);
+			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, false);
 			setLink();
 		});
 		$('.add-item').click(x => {
 			x.currentTarget.classList = 'add-item';
 			x.currentTarget.previousElementSibling.classList = 'remove-item active';
 			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[3].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.children[1].childNodes[5].innerText );
+			valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
+			valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
 			//Format and calculator price
 			totalDe = formatReal(getMoney(totalDe) + valDe);
 			totalPor = formatReal(getMoney(totalPor) + valPor);
@@ -324,7 +351,7 @@ const Eventos = {
 
 			x.currentTarget.parentElement.classList.remove('removido');
 			//Set Link on Button
-			setStatusLinks(x.currentTarget.parentElement.dataset.idproduto, true);
+			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, true );
 			setLink();
 		});
 	}

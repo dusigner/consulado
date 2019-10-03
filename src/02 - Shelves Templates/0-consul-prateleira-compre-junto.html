@@ -8,11 +8,9 @@
 	<p class="add-item">Adicionar ao combo</p>
 	<a href="$uri" class="link">
 		$product.GetImageTag(300, 210)
-        <div class="product-description-prateleira">
-			<h3 class="title">$product.Name <span>$product.ProductField(434)</span></h3>
-			<p class="de">$product.ListPrice</p>
-			<p class="por">$product.BestPrice</p>
-        </div>
+		<h3 class="title">$product.Name <span style="display: none;">$product.ProductField(<!-- @echo shelfProductFieldModelo -->)</span></h3>
+		<p class="de-preco">$product.ListPrice</p>
+		<p class="por-preco">$product.BestPrice</p>
     </a>
 </article>
 #end
