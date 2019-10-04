@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?snaxqr');
-  src:  url('fonts/icomoon.eot?snaxqr#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?snaxqr') format('truetype'),
-    url('fonts/icomoon.woff?snaxqr') format('woff'),
-    url('fonts/icomoon.svg?snaxqr#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?t6w8r4');
+  src:  url('fonts/icomoon.eot?t6w8r4#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?t6w8r4') format('truetype'),
+    url('fonts/icomoon.woff?t6w8r4') format('woff'),
+    url('fonts/icomoon.svg?t6w8r4#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -205,10 +205,19 @@
 .icon-icon-question:before {
   content: "\e916";
 }
-.icon-icon-login-consul:before {
-  content: "\e917";
-}
 .icon-icon-truck-consul:before {
+  content: "\e917";
+  color: #595453;
+}
+.icon-icon-cart-consul:before {
   content: "\e918";
-  color: #9aca3c;
+  color: #595453;
+}
+.icon-icon-menu-consul:before {
+  content: "\e919";
+  color: #595453;
+}
+.icon-icon-profile-consul:before {
+  content: "\e91a";
+  color: #595453;
 }
