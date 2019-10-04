@@ -1,6 +1,4 @@
-/*********************************************************/
 // Modal More Phones
-/*********************************************************/
 #modal-more-phones {
 	@include breakpoint(small, 'max') {
 		top: 50%;
@@ -22,8 +20,8 @@
 
 		.modal-close {
 			background-color: transparent;
-			border-radius: 0;
 			border: none;
+			border-radius: 0;
 			color: #736C6B;
 			font-size: 16px;
 			height: 40px;
@@ -109,20 +107,24 @@
 		.add-phone {
 			cursor: pointer;
 			font-size: 12px;
+			margin-bottom: 10px;
+			margin-top: -10px;
+			text-align: right;
 			text-decoration: underline;
 
 			&.is--active {
 				display: none;
 
-				& + .additional-phone { max-height: 400px; }
+				& + .additional-phone {
+					margin: 1.2em 0;
+					max-height: 400px;
+				}
 			}
 		}
 
 		.contact-modal {
 			color: #736C6B;
-			margin-bottom: 1em;
-
-			& > div { margin: 1em 0; }
+			margin: 1.2em 0;
 
 			label {
 				display: block;
@@ -151,6 +153,7 @@
 
 			// Telefone adicional
 			&.additional-phone {
+				margin: 0;
 				max-height: 0;
 				overflow: hidden;
 				transition: max-height .2s ease;
@@ -159,8 +162,6 @@
 
 		// Submit button
 		.submit {
-			text-align: right;
-
 			input[type='submit'],
 			button {
 				background-color: $green !important;
