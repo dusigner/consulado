@@ -74,6 +74,10 @@
 		color: #736C6b;
 		padding: 0 70px;
 
+		@media (max-width: 920px) {
+			padding: 0 10px;
+		}
+
 		&.is-actived {
 			.faq__header {
 				&::after {
@@ -92,6 +96,10 @@
 		font-weight: bold;
 		padding-bottom: 15px;
 		position: relative;
+
+		@media (max-width: 920px) {
+			padding-right: 40px;
+		}
 
 		&::after {
 			color: #9aca3c;
