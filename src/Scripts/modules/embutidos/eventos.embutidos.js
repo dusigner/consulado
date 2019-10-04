@@ -280,10 +280,10 @@ const Eventos = {
 		}
 
 		function setLink() {
-			let linkSkus = '/checkout/cart/add?';
+			let linkSkus = '/checkout/cart/add?sc=3&redirect=true&';
 			skus.map(n => {
 				if (n.cart === true) {
-					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`;
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&`;
 				}
 			});
 
