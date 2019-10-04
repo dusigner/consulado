@@ -7,9 +7,14 @@
 
 	.button { margin: 0; }
 
-	.buy-button { @extend .primary-button; }
+	.buy-button {
+		@extend .primary-button;
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 200px;
+	}
 
-	// .portal-notify-me-ref { display: none; }
+	.portal-notify-me-ref { display: none; }
 }
 
 #vtex-modal-sku {
