@@ -5,6 +5,8 @@ require('vendors/slick');
 $( document ).ready(function() {
 	initDepoimentsSlider();
 	initCountdownSlider();
+	createAccordeon($('.category__title'))
+	createAccordeon($('.faq__header'))
 });
 
 
@@ -37,6 +39,14 @@ const initCountdownSlider = () => {
 			arrows: true
 		});
 	}
+}
+
+const createAccordeon = title => {
+	title.click(event => {
+		$(event.target).toggleClass('is-actived');
+		$(event.target).siblings().toggleClass('is-actived');
+		$(event.target).parent().toggleClass('is-actived');
+	})
 }
 
 // -------------------------------------------

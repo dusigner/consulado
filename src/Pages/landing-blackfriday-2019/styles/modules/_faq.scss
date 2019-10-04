@@ -1,0 +1,115 @@
+.faq {
+	.title {
+		margin: 60px 0;
+	}
+
+	&__category {
+		background-color: #fff;
+		border-radius: 4px;
+		margin-bottom: 20px;
+
+		&:nth-child(2) { .category__title { &::before { content: url('/arquivos/bf2019-faq-01.png'); }}}
+		&:nth-child(3) { .category__title { &::before { content: url('/arquivos/bf2019-faq-02.png'); }}}
+		&:nth-child(4) { .category__title { &::before { content: url('/arquivos/bf2019-faq-03.png'); }}}
+		&:nth-child(5) { .category__title { &::before { content: url('/arquivos/bf2019-faq-04.png'); }}}
+
+		&.is-actived {
+			border-left: 2px solid #9aca3c;
+
+			.category__title {
+				&::after {
+					transform: rotate(90deg);
+				}
+			}
+
+			.category__content {
+				max-height: 2000px;
+			}
+		}
+	}
+
+	.category {
+		&__title {
+			color: #736c6b;
+			cursor: pointer;
+			font-size: 1em;
+			font-weight: bold;
+			padding: 17px 24px;
+			position: relative;
+
+			&::before {
+				margin-right: 25px;
+				margin-top: 3px;
+			}
+
+			&::after {
+				content: '';
+				font-family: 'whirlpool' !important;
+				font-size: 1rem;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+				line-height: 1;
+				position: absolute;
+				right: 20px;
+				top: 21px;
+				transform: rotate(-90deg);
+				transition: transform .3s ease;
+			}
+
+		}
+
+		&__content {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height .3s ease;
+
+			&.is-actived {
+				max-height: 2000px;
+			}
+		}
+	}
+
+	&__question {
+		color: #736C6b;
+		padding: 0 70px;
+
+		&.is-actived {
+			.faq__header {
+				&::after {
+					content: '-';
+					right: 20px;
+					font-size: 30px;
+					font-weight: lighter;
+					transform: initial;
+				}
+			}
+		}
+	}
+
+	&__header {
+		border-bottom: 1px solid #f1f0f0;
+		font-weight: bold;
+		padding-bottom: 15px;
+		position: relative;
+
+		&::after {
+			color: #9aca3c;
+			content: '×';
+			position: absolute;
+			right: 20px;
+			transform: rotate(45deg);
+		}
+	}
+
+	&__answer {
+		max-height: 0;
+		overflow: hidden;
+		padding: 15px 0;
+		transition: max-height .3s ease;
+
+		&.is-actived {
+			max-height: 2000px;
+		}
+	}
+}
