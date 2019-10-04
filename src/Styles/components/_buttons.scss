@@ -4,8 +4,8 @@
 	//------------------------------------
 	%primary-button,
 	.primary-button {
-		@include singleTransition();
 		@include font-size(16px);
+		@include singleTransition();
 		background-color: $green;
 		border: 2px solid $green;
 		border-radius: 50px;
@@ -13,12 +13,12 @@
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 500;
+		min-width: 140px;
 		padding: 0.4em 1.2em;
 		position: relative;
 		text-align: center;
 		user-select: none;
 		vertical-align: baseline;
-		min-width: 140px;
 
 		&:hover {
 			background: transparent;
