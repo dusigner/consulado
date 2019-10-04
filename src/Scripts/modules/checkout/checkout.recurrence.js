@@ -69,7 +69,14 @@ Nitro.module('checkout.recurrence', function() {
 	 * Verifica todas as promoções do produto e retorna o melhor desconto
 	 */
 	this.getRecurrenceDiscount = function() {
-		if (window && window.vtexjs && window.vtexjs.checkout && window.vtexjs.checkout.orderForm) {
+		if (
+			window
+			&& window.vtexjs
+			&& window.vtexjs.checkout
+			&& window.vtexjs.checkout.orderForm
+			&& window.vtexjs.checkout.orderForm.ratesAndBenefitsData
+			&& window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers
+		) {
 			const allDiscounts = window.vtexjs.checkout.orderForm.ratesAndBenefitsData.rateAndBenefitsIdentifiers;
 
 			if (allDiscounts.length <= 0) {
