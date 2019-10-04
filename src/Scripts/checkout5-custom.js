@@ -488,7 +488,9 @@ $(document).on('ready', function() {
 			this.shipping = function() {
 				console.info('shipping');
 
-				$('#ship-more-info, #ship-number').attr('maxlength', 10);
+				$('#ship-number').attr('maxlength', 10);
+
+				$('#ship-more-info').attr('maxlength', 750);
 
 				$('#ship-street, #ship-name').attr('maxlength', 35);
 
@@ -505,10 +507,17 @@ $(document).on('ready', function() {
 							.empty()
 							.addClass('custom-label-referencia');
 
-						if (e.$element.is('#ship-more-info, #ship-number')) {
+						if (e.$element.is('#ship-number')) {
 							e.$element.attr({
 								maxlength: 10,
 								'data-parsley-maxlength': 10
+							});
+						}
+
+						if (e.$element.is('#ship-more-info')) {
+							e.$element.attr({
+								maxlength: 750,
+								'data-parsley-maxlength': 750
 							});
 						}
 
@@ -766,7 +775,6 @@ $(document).on('ready', function() {
 						var prodId = $(this).closest('.product-item').index('.product-item'),
 							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
 							prodName = $(this).closest('.product-item').find('.product-name a:nth-child(1)').text(),
-							orderForm,
 							item = vtexjs.checkout.orderForm.items[prodId];
 
 						item.index = prodId;
@@ -775,19 +783,19 @@ $(document).on('ready', function() {
 
 						if (prodQtde > 5) {
 
-							vtexjs.checkout.getOrderForm().then(function(orderForm) {
+							vtexjs.checkout.getOrderForm().then(function() {
 								var updateItem = {
 									index: prodId,
 									quantity: 5
 								};
 								return vtexjs.checkout.updateItems([updateItem], null, false);
 							})
-							.done(function(orderForm) {
-								window.vtex.checkout.MessageUtils.showMessage({
-									text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
-									status: 'error'
+								.done(function() {
+									window.vtex.checkout.MessageUtils.showMessage({
+										text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+										status: 'error'
+									});
 								});
-							});
 						}
 					});
 				}
