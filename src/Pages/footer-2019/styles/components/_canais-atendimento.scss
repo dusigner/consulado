@@ -25,8 +25,7 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 
 	br { height: 20px; }
 
-	a {color: $default-color-gray;
-		&:hover { transform: translateX(5px); }}
+	a {color: $default-color-gray;}
 
 	.link {
 		@include rfs(14);
