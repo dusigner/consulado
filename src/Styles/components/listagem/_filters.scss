@@ -345,13 +345,6 @@ body.departamento {
 			}
 		}
 	}
-	.order-wrapper {
-		@include breakpoint(medium, 'min') {
-			bottom: 65px;
-			float: right;
-			padding-right: 0;
-		}
-	}
 	.filter-wrapper {
 		background-color: #fff;
 		display: inline-block;
