@@ -56,7 +56,7 @@
 
 	// CTA's
 	.unavailable-actions {
-		@include breakpoint('small', 'min') { display: flex; }
+		// @include breakpoint('small', 'min') { display: flex; }
 
 		.btn {
 			border: 2px solid;
@@ -76,26 +76,25 @@
 				border-color .3s ease
 			;
 
-			&:focus {
-				box-shadow: 0 0 2px 1px #0FB6DE;
-			}
+			&:focus { box-shadow: 0 0 2px 1px #0FB6DE; }
 		}
 
 		.btn.unavailable-button {
-			@include breakpoint('small', 'min') { margin: 0 .5em 0 0; }
 			background: #fff;
-			border-color: $green;
-			color: $green;
+			border-color: #403C3B;
+			color: #403C3B;
+			margin-bottom: 5px;
 
 			&:hover {
-				border-color: darken($green, 10%);
-				color: darken($green, 10%);
+				background: #403C3B;
+				border-color: #403C3B;
+				color: #fff;
 			}
 		}
 
 		.btn.btn-success {
-			@include breakpoint('small', 'min') { margin: 0 0 0 .5em; }
 			background: $green;
+			border-color: $green;
 			color: #fff;
 
 			&:hover {
