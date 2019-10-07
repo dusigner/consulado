@@ -422,6 +422,7 @@
 	}
 	.vitrine-header {
 		padding: 0 50px;
+		transform: scale(0.8);
 
 		@include breakpoint('small', 'max') {
 			padding: 0 20px;
