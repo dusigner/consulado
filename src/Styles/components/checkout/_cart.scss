@@ -62,11 +62,12 @@ body {
 								max-height: 45px;
 							}
 						}
-						@include breakpoint(small, 'max') {
-							padding: 10px 0 !important;
+
+						&.item-unavailable-message {
+							@include breakpoint(small, 'max') {
+								padding: 10px 5px !important;
+							}
 						}
-
-
 					}
 
 					.item-remove {

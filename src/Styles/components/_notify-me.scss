@@ -2,8 +2,10 @@
 
 .portal-notify-me-ref {
 	.notifyme-title {
-		@include font-size(18px, true, false);
-		font-weight: 700;
+		@include rfs(18px);
+		color: #5B5B5B;
+		font-weight: bold;
+		line-height: 24px;
 		margin-bottom: 0;
 		position: relative;
 	}
@@ -15,10 +17,12 @@
 
 		&.success,
 		&.error {
-			@include responsiveFont(14);
+			@include rfs(14px);
 			display: block;
 			margin: 10px 0;
 			padding: 10px;
+
+			em { font-style: normal; }
 		}
 
 		&.success { color: $txt-gray; }
@@ -26,27 +30,39 @@
 	}
 
 	form p {
-		@include font-size(16px, true, false);
-		font-style: italic;
-		margin-top: 0;
+		@include rfs(14px);
+		line-height: 20px;
+		margin: 0;
+		padding: 1em 0 1.5em 0;
+
+		a {
+			color: #8437A8;
+			font-weight: 500;
+		}
 	}
 
 	.notifyme-client-name,
 	.notifyme-client-email,
 	.notifyme-client-phone {
 		@include singleTransition();
-		@include responsiveFont(14);
-		background-color: $gray-l;
-		border: 1px solid $gray;
+		@include rfs(14px);
+		background-color: #fff;
+		border: 1px solid #E3E1E1;
+		border-radius: 4px;
 		color: $txt-gray;
 		font-weight: 200;
-		height: 44px;
+		height: 45px;
 
 		&:focus {
 			background-color: #fff;
 			border-color: $gray-d;
 			outline: none;
 		}
+	}
+
+	.notifyme-loading-message {
+		@include rfs(14px);
+		margin: 0;
 	}
 
 	.notifyme-button-ok {
@@ -70,7 +86,5 @@
 }
 
 .content_botoes_televendas {
-	.portal-notify-me-ref {
-		display: none;
-	}
+	.portal-notify-me-ref { display: none; }
 }

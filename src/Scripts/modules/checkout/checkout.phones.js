@@ -25,6 +25,9 @@ Nitro.module('checkout.phones', function() {
 			});
 
 		$formPhones.submit(this.submit);
+
+		this.handleAddPhone();
+		this.closeModal();
 	};
 
 	this.getEmailClient = function() {
@@ -109,5 +112,17 @@ Nitro.module('checkout.phones', function() {
 					$submit.removeClass('icon-loading');
 				});
 		}
+	};
+
+	this.handleAddPhone = function() {
+		$('.add-phone').click(function() {
+			$(this).toggleClass('is--active');
+		});
+	};
+
+	this.closeModal = function() {
+		$('#modal-more-phones .modal-close').click(function() {
+			$('#modal-more-phones').modal('hide');
+		});
 	};
 });
