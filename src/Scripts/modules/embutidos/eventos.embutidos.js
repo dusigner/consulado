@@ -234,6 +234,8 @@ const Eventos = {
 		let valPor = 0;
 		let totalDe = 0;
 		let valDe = 0;
+		let money = 0;
+		let valMoney = 0;
 		//Set SKU
 		let skus = [];
 		for (let i = 0; i < $('.combos-prateleira').length; i++) {
@@ -259,7 +261,9 @@ const Eventos = {
 					if (data[0].items.length <= 1) {
 						skus[index].sku = data[0].items[0].itemId;
 					} else {
-						skus[index].sku = data[0].items.filter(x => x.name.includes('110V'))[0].itemId;
+						skus[index].sku = data[0].items.filter(x =>
+							x.name.includes('110V')
+						)[0].itemId;
 					}
 				})
 				.fail(function(data) {
@@ -280,14 +284,14 @@ const Eventos = {
 		}
 
 		function setLink() {
-			let linkSkus = '/checkout/cart/add?';
+			let linkSkus = '/checkout/cart/add?sc=3&redirect=true&';
 			skus.map(n => {
 				if (n.cart === true) {
-					linkSkus += `sku=${n.sku}&qty=1&seller=1&redirect=true&`;
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&`;
 				}
 			});
 
-			if (linkSkus === '/checkout/cart/add?') {
+			if (linkSkus === '/checkout/cart/add?sc=3&redirect=true&') {
 				$('.go').attr('href', linkSkus);
 				$('.go').addClass('disable');
 			} else {
@@ -303,57 +307,80 @@ const Eventos = {
 				}
 			});
 		}
+		function checkAvista(totalPor,money) {
+			if (!totalPor === formatReal(money)) {
+				$('li .money-final').text(`À vista por R$ ${formatReal(money)}`);
+			}
+		}
+		//Valida se tem 3 produtos na vitrine
+		if (skus.length >= 3) {
+			//SetPirce on HTML
+			$.map( $('article .de .val'), x => (totalDe += getMoney(x.textContent)) );
+			$.map( $('article .por .val'), x => (totalPor += getMoney(x.textContent)) );
+			$.map( $('article .por-boleto .val'), x => (money += getMoney(x.textContent)) );
 
-		//SetPirce on HTML
-		$.map( $('article .de-preco'), x => (totalDe += getMoney(x.textContent)));
-		$.map( $('article .por-preco'), x => (totalPor += getMoney(x.textContent)));
-		totalPor = formatReal(totalPor);
-		totalDe = formatReal(totalDe);
-		$('li .de-final').text(`De: R$ ${totalDe}`);
-		$('li .por-final').text(`Por: R$ ${totalPor}`);
-		//Copia o elemento de fora e joga para dentro da vitrine;
-		$('.vitrine-total').clone().appendTo('.vitrine ul');
-		$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
-		$('.vitrine-total').remove();
-		//Set Link on Button
-		setTimeout(() => setLink(), 3000);
-		//Action Add and Remove
-		$('.remove-item').click(x => {
-			x.currentTarget.classList = 'remove-item';
-			x.currentTarget.nextElementSibling.classList = 'add-item active';
-			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
-			//Format and calculator price
-			totalDe = formatReal(getMoney(totalDe) - valDe);
-			totalPor = formatReal(getMoney(totalPor) - valPor);
-			//Set Price on HTML
-			$('.de-final').text(`De: R$ ${totalDe}`);
-			$('.por-final').text(`Por: R$ ${totalPor}`);
+			totalDe = formatReal(totalDe);
+			totalPor = formatReal(totalPor);
 
-			x.currentTarget.parentElement.classList.add('removido');
+			$('li .de-final').text(`De: R$ ${totalDe}`);
+			$('li .por-final').text(`Por: R$ ${totalPor}`);
+			checkAvista(totalPor,money);
+
+
+			//Copia o elemento de fora e joga para dentro da vitrine;
+			$('.vitrine-total').clone().appendTo('.vitrine ul');
+			$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+			$('.vitrine-total').remove();
 			//Set Link on Button
-			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, false);
-			setLink();
-		});
-		$('.add-item').click(x => {
-			x.currentTarget.classList = 'add-item';
-			x.currentTarget.previousElementSibling.classList = 'remove-item active';
-			//Price
-			valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
-			valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
-			//Format and calculator price
-			totalDe = formatReal(getMoney(totalDe) + valDe);
-			totalPor = formatReal(getMoney(totalPor) + valPor);
-			//Set Price on HTML
-			$('.de-final').text(`De: R$ ${totalDe}`);
-			$('.por-final').text(`Por: R$ ${totalPor}`);
+			setTimeout(() => setLink(), 3000);
 
-			x.currentTarget.parentElement.classList.remove('removido');
-			//Set Link on Button
-			setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, true );
-			setLink();
-		});
+			//Action Add and Remove
+			$('.remove-item').click(x => {
+				x.currentTarget.classList = 'remove-item';
+				x.currentTarget.nextElementSibling.classList = 'add-item active';
+				//Price
+				valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
+				valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[5].innerText );
+				//Format and calculator price
+				totalDe = formatReal(getMoney(totalDe) - valDe);
+				totalPor = formatReal(getMoney(totalPor) - valPor);
+				money = money - valMoney;
+				//Set Price on HTML
+				$('.de-final').text(`De: R$ ${totalDe}`);
+				$('.por-final').text(`Por: R$ ${totalPor}`);
+				checkAvista(totalPor,money);
+
+				x.currentTarget.parentElement.classList.add('removido');
+				//Set Link on Button
+				setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, false );
+				setLink();
+			});
+			$('.add-item').click(x => {
+				x.currentTarget.classList = 'add-item';
+				x.currentTarget.previousElementSibling.classList = 'remove-item active';
+				//Price
+				valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
+				valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.children[5].innerText );
+				//Format and calculator price
+				totalDe = formatReal(getMoney(totalDe) + valDe);
+				totalPor = formatReal(getMoney(totalPor) + valPor);
+				money = money + valMoney;
+				//Set Price on HTML
+				$('.de-final').text(`De: R$ ${totalDe}`);
+				$('.por-final').text(`Por: R$ ${totalPor}`);
+				checkAvista(totalPor,money);
+
+				x.currentTarget.parentElement.classList.remove('removido');
+				//Set Link on Button
+				setStatusLinks( x.currentTarget.parentElement.dataset.idproduto,true );
+				setLink();
+			});
+		} else {
+			$('.vitrine-header').addClass('hide');
+			$('.vitrine').addClass('hide');
+		}
 	}
 };
 
