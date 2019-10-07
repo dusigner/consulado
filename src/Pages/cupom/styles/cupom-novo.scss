@@ -26,25 +26,26 @@ $breakpoint-map: (
 	'phone': 576px,
 	'tablet': 769px,
 	'desktop': 992px,
+	'md-desktop': 1024px,
 	'lg-desktop': 1200px,
 	'xlg-desktop': 1400px
 );
 .cupom {
 	&-header {
-		margin: 30px auto;
+		margin: 30px auto 20px;
 		text-align: center;
 		&__title {
-			@include responsiveFont(35);
+			@include responsiveFont(31);
 			color: $gray-d;
 			line-height: normal;
-			margin-bottom: 6px;
+			margin-bottom: 0;
 			span {
 				color: $green;
 				display: inline-block;
 			}
 		}
 		&__subtitle {
-			@include responsiveFont(16);
+			@include responsiveFont(14);
 			color: $gray-d;
 			font-weight: $font-normal;
 			line-height: normal;
@@ -56,8 +57,10 @@ $breakpoint-map: (
 //COMO UTILIZAR
 .como-utilizar {
 	&__aside {
+		margin: 0 auto;
 		min-height: 180px;
 		width: 100%;
+
 		small {
 			@include responsiveFont(12);
 			color: $gray-d;
@@ -85,11 +88,11 @@ $breakpoint-map: (
 		}
 	}
 	&__title {
-		@include responsiveFont(18);
+		@include responsiveFont(19);
 		color: $gray-d;
 		font-weight: $font-light;
-		line-height: 28px;
-		margin: 10px auto 10px;
+		line-height: 32px;
+		margin: 10px auto 6px;
 		span {
 			@include breakpoint('tablet', 'max') {
 				display: block;
@@ -103,7 +106,7 @@ $breakpoint-map: (
 		height: 130px;
 		margin: 0 auto;
 		position: relative;
-		width: 155px;
+		width: 155px !important;
 		&__icone {
 			align-items: end;
 			display: flex;
@@ -158,10 +161,10 @@ $breakpoint-map: (
 		border-radius: 8em;
 		margin: 20px auto 0;
 		min-height: 180px;
-		padding: 0 20px;
-		width: 1000px;
-		@include breakpoint('desktop', 'max') {
-			padding: 0;
+		padding: 0;
+		@include breakpoint('lg-desktop', 'min') {
+			padding: 0 22px;
+			width: 1140px !important;
 		}
 	}
 }
@@ -200,6 +203,7 @@ $breakpoint-map: (
 	}
 	&.slick-disabled {
 		background-color: #ffffff;
+		color: $gray-light;
 	}
 }
 
@@ -213,17 +217,37 @@ $breakpoint-map: (
 
 //VITRINE
 .vitrine-desconto {
-	margin: 70px auto 0;
-	padding-bottom: 60px;
+	margin: 70px auto 40px;
+	padding-bottom: 0;
+	position: relative;
 	text-align: center;
-	&__bg-mobile {
-		background-color: #fbfafa;
-		bottom: 0;
-		height: 320px;
-		padding-bottom: 20px;
-		position: absolute;
-	}
+		&__bg-mobile {
+			height: auto;
+			left: 0;
+			position: absolute;
+			width: 100%;
+			z-index: 0;
+			&:after {
+				background-color: #fbfafa;
+				content: '';
+				display: inline-block;
+				height: 650px;
+				left: auto;
+				padding-bottom: 20px;
+				position: relative;
+				right: 0;
+				top: 190px;
+				width: 100%;
+			}
+		}
+
 	&__aside {
+		.box-produto {
+			background-color: #ffffff;
+		}
+		.prateleira-slider .slick-track {
+			padding: 0;
+		}
 		.veja-todos-prod {
 			@include breakpoint('phone', 'max') {
 				@include responsiveFont(18);
@@ -277,6 +301,7 @@ $breakpoint-map: (
 	}
 	&__card-cupom {
 		@include breakpoint('phone', 'max') {
+			height: auto;
 			margin-bottom: 40px;
 			padding: 0 0 40px;
 			width: 100%;
@@ -290,13 +315,14 @@ $breakpoint-map: (
 			}
 		}
 		@include breakpoint('desktop', 'min') {
-			box-shadow: none;
+			margin: 0 auto;
+			padding: 25px 0;
 		}
 		background-color: #fff;
 		border-radius: 4px;
 		box-shadow: 0 1px 3px #d9d8d8;
 		color: $gray-d;
-		height: auto;
+		height: 100%;
 		margin: 30px auto 20px;
 		max-width: 100%;
 		padding: 8px 0;
@@ -346,14 +372,13 @@ $breakpoint-map: (
 			padding: 0;
 		}
 		@include breakpoint ('desktop', 'min') {
-			border-radius: 30px;
 			color: $purple;
 			display: inline-block;
 			font-weight: $font-bold;
 			margin: 28px auto 10px;
 			padding: 10px 38px;
 			text-transform: uppercase;
-			width: auto;
+			width: 100%;
 		}
 	}
 	&__card-cupom-desconto {

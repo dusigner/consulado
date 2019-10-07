@@ -3,6 +3,7 @@ import 'vendors/slick';
 import Clipboard from 'clipboard';
 import toastr from 'vendors/toastr';
 import {getCoupons} from 'modules/store/crm';
+import DataLayer from './modules/dataLayer';
 require('modules/listagem/percentoff');
 require('modules/prateleira');
 require('Dust/coupon/cupom-list.html');
@@ -17,12 +18,19 @@ Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 					this.renderCupom(dataCupom)
 				})
 			});
-		})
+		});
+
+		$(window).load(function(){
+			const dataLayer = new DataLayer;
+			dataLayer.setup();
+		});
 	}
+
 	this.getShelf = (idCollection) => {
 		const shelfId = $('.vitrine-desconto').data('shelf-id');
 		return fetch(`/buscapagina?fq=H:${idCollection}&sl=${shelfId}&cc=12&sm=0&PS=9`).then(res => res.text())
 	}
+
 	this.renderCupom = (cupom) => {
 		dust.render('cupom-list',  cupom, (err, out) => {
 			if (err) {
@@ -35,7 +43,6 @@ Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 			percentoff.init();
 
 			this.slick();
-
 		});
 	}
 	this.slick = () => {
