@@ -291,7 +291,7 @@ const Eventos = {
 				}
 			});
 
-			if (linkSkus === '/checkout/cart/add?') {
+			if (linkSkus === '/checkout/cart/add?sc=3&redirect=true&') {
 				$('.go').attr('href', linkSkus);
 				$('.go').addClass('disable');
 			} else {
