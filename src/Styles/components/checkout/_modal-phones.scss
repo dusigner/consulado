@@ -4,32 +4,20 @@
 		top: 50%;
 		transform: translate(-50%, -50%);
 	}
+	background: #fff;
+	border-bottom: 2px solid $green;
 	border-radius: 0;
 	box-shadow: 0 5px 6px rgba(0, 0, 0, .16);
 	left: 50%;
 	margin: 0;
 	max-width: 450px;
+	padding: 2.5em;
 	transform: translateX(-50%);
 	width: 90%;
 
 	.modal-dialog {
-		border-bottom: 2px solid $green;
 		border-radius: 0;
-		padding: 2.5em;
 		position: relative;
-
-		.modal-close {
-			background-color: transparent;
-			border: none;
-			border-radius: 0;
-			color: #736C6B;
-			font-size: 16px;
-			height: 40px;
-			position: absolute;
-			right: 0;
-			top: 0;
-			width: 40px;
-		}
 	}
 
 	// Modal Header
@@ -55,12 +43,6 @@
 	.modal-body {
 		max-height: 100%;
 		padding: 0;
-	}
-
-	.close {
-		border-color: #fff;
-		color: #fff;
-		padding-bottom: 3px;
 	}
 
 	form { margin: 0; }
@@ -106,8 +88,8 @@
 	.data {
 		.add-phone {
 			cursor: pointer;
+			float: right;
 			font-size: 12px;
-			margin-bottom: 10px;
 			margin-top: -10px;
 			text-align: right;
 			text-decoration: underline;
@@ -127,6 +109,7 @@
 			margin: 1.2em 0;
 
 			label {
+				cursor: inherit;
 				display: block;
 				font-size: 12px;
 				font-weight: 500;
