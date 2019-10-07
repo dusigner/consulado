@@ -106,7 +106,7 @@ $breakpoint-map: (
 		height: 130px;
 		margin: 0 auto;
 		position: relative;
-		width: 155px;
+		width: 155px !important;
 		&__icone {
 			align-items: end;
 			display: flex;
