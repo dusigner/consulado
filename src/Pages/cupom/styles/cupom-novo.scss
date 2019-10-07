@@ -32,20 +32,20 @@ $breakpoint-map: (
 );
 .cupom {
 	&-header {
-		margin: 30px auto;
+		margin: 30px auto 20px;
 		text-align: center;
 		&__title {
-			@include responsiveFont(35);
+			@include responsiveFont(31);
 			color: $gray-d;
 			line-height: normal;
-			margin-bottom: 6px;
+			margin-bottom: 0;
 			span {
 				color: $green;
 				display: inline-block;
 			}
 		}
 		&__subtitle {
-			@include responsiveFont(16);
+			@include responsiveFont(14);
 			color: $gray-d;
 			font-weight: $font-normal;
 			line-height: normal;
@@ -58,7 +58,6 @@ $breakpoint-map: (
 .como-utilizar {
 	&__aside {
 		margin: 0 auto;
-		max-width: 1140px;
 		min-height: 180px;
 		width: 100%;
 
@@ -89,11 +88,11 @@ $breakpoint-map: (
 		}
 	}
 	&__title {
-		@include responsiveFont(18);
+		@include responsiveFont(19);
 		color: $gray-d;
 		font-weight: $font-light;
-		line-height: 28px;
-		margin: 10px auto 10px;
+		line-height: 32px;
+		margin: 10px auto 6px;
 		span {
 			@include breakpoint('tablet', 'max') {
 				display: block;
@@ -154,7 +153,6 @@ $breakpoint-map: (
 	}
 	.slick-list {
 		margin: 0 auto;
-		max-width: 1024px;
 		padding: 0 20px;
 	}
 	.slick-track {
@@ -164,9 +162,9 @@ $breakpoint-map: (
 		margin: 20px auto 0;
 		min-height: 180px;
 		padding: 0;
-		width: 1000px;
-		@include breakpoint('xlg-desktop', 'max') {
-			padding: 0;
+		@include breakpoint('lg-desktop', 'min') {
+			padding: 0 22px;
+			width: 1140px !important;
 		}
 	}
 }
@@ -221,15 +219,32 @@ $breakpoint-map: (
 .vitrine-desconto {
 	margin: 70px auto 0;
 	padding-bottom: 60px;
+	position: relative;
 	text-align: center;
-	&__bg-mobile {
-		background-color: #fbfafa;
-		bottom: 0;
-		height: 320px;
-		padding-bottom: 20px;
-		position: absolute;
-	}
+		&__bg-mobile {
+			height: auto;
+			left: 0;
+			position: absolute;
+			width: 100%;
+			z-index: 0;
+			&:after {
+				background-color: #fbfafa;
+				content: '';
+				display: inline-block;
+				height: 650px;
+				left: auto;
+				padding-bottom: 20px;
+				position: relative;
+				right: 0;
+				top: 190px;
+				width: 100%;
+			}
+		}
+
 	&__aside {
+		.prateleira-slider .slick-track {
+			padding: 0;
+		}
 		.veja-todos-prod {
 			@include breakpoint('phone', 'max') {
 				@include responsiveFont(18);
@@ -283,6 +298,7 @@ $breakpoint-map: (
 	}
 	&__card-cupom {
 		@include breakpoint('phone', 'max') {
+			height: auto;
 			margin-bottom: 40px;
 			padding: 0 0 40px;
 			width: 100%;
@@ -303,7 +319,7 @@ $breakpoint-map: (
 		border-radius: 4px;
 		box-shadow: 0 1px 3px #d9d8d8;
 		color: $gray-d;
-		height: auto;
+		height: 100%;
 		margin: 30px auto 20px;
 		max-width: 100%;
 		padding: 8px 0;

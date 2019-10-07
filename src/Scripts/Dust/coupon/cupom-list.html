@@ -1,14 +1,17 @@
 <div class="row mx-auto mb-5">
-	<div class="col-md-4 col-lg-3 px-3 pl-md-3 d-flex align-items-center" style="padding-top: 30px;">
-		<div class="vitrine-desconto__card-cupom">
-			<figure class="vitrine-desconto__icone-cupom">
-				<img src="/arquivos/consul-cupom-desconto.png" />
-			</figure>
-			<h3 class="vitrine-desconto__card-cupom-codigo">{coupon}</h3>
-			<h4 class="vitrine-desconto__card-cupom-desconto">{offer} {offerText}<span>de desconto</span></h4>
-			<p>Condições de uso</p>
-			<small>Este cupom é valido apenas para produtos selecionados em “{category}”</small>
-			<button class="vitrine-desconto__card-cupom-button {coupon}">Copiar código</button>
+	<div class="vitrine-desconto__bg-mobile d-block d-md-none"></div>
+		<div class="col-md-4 col-lg-3 px-3 pr-md-3 pl-md-0 d-flex align-items-center" style="padding-top: 30px;">
+			<div class="vitrine-desconto__card-cupom d-flex align-items-center">
+				<div class="row m-auto d-block">
+					<figure class="vitrine-desconto__icone-cupom">
+						<img src="/arquivos/consul-cupom-desconto.png" />
+					</figure>
+					<h3 class="vitrine-desconto__card-cupom-codigo">{coupon}</h3>
+					<h4 class="vitrine-desconto__card-cupom-desconto">{offer} {offerText}<span>de desconto</span></h4>
+					<p>Condições de uso</p>
+					<small>Este cupom é valido apenas para produtos selecionados em “{category}”</small>
+					<button class="vitrine-desconto__card-cupom-button {coupon}">Copiar código</button>
+			</div>
 		</div>
 	</div>
 	<div class="col-md-8 col-lg-9 p-0">
