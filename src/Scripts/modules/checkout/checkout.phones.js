@@ -7,11 +7,13 @@ require('vendors/jquery.inputmask');
 var CRM = require('modules/store/crm');
 
 Nitro.module('checkout.phones', function() {
-	var self = this,
-		$formPhones = $('#formPhones'),
-		$submit = $formPhones.find('[type="submit"]'),
-		$inputsPhones = $formPhones.find('input[type="tel"]');
-	// $inputHorario = $formPhones.find('input[name="horarios"]');
+	const self             = this;
+	const $modalMorePhones = $('#modal-more-phones');
+	const $formPhones      = $('#formPhones');
+	const $submit          = $formPhones.find('[type="submit"]');
+	const $inputsPhones    = $formPhones.find('input[type="tel"]');
+	const $requiredPhone   = $('#CL_phone');
+	const $phoneError      = $('.phone-error-message');
 
 	this.setup = function() {
 		$inputsPhones.inputmask('(99) 9999[9]-9999');
@@ -19,24 +21,26 @@ Nitro.module('checkout.phones', function() {
 		CRM.clientSearchByEmail(self.getEmailClient())
 			.done(self.fillPhones)
 			.always(function() {
-				$('#modal-more-phones').modal({
-					backdrop: 'static'
-				});
+				$modalMorePhones.modal({ backdrop: 'static' });
 			});
 
 		$formPhones.submit(this.submit);
 
 		this.handleAddPhone();
-		this.closeModal();
+	};
+
+	this.handleAddPhone = function() {
+		$('.add-phone').click(function() {
+			$(this).toggleClass('is--active');
+		});
 	};
 
 	this.getEmailClient = function() {
 		if (store && store.userData && store.userData.email) {
 			self.clientEmail = store.userData.email;
-		} else if (!self.clientEmail) {
-			self.clientEmail = $('strong.cconf-client-email')
-				.text()
-				.replace(/\s+/g, '');
+		}
+		else if (!self.clientEmail) {
+			self.clientEmail = $('strong.cconf-client-email').text().replace(/\s+/g, '');
 		}
 
 		return self.clientEmail;
@@ -55,31 +59,20 @@ Nitro.module('checkout.phones', function() {
 	};
 
 	this.validateForm = function() {
-		var valid = false;
 		$('.alert-danger').removeClass('active');
 
-		if ($inputsPhones.filter(':blank').length <= 1) {
-			valid = true;
-		} else {
-			if ($inputsPhones.filter(':blank').length > 1) {
-				$('.phone-error-message').addClass('active');
-			} else {
-				$('.phone-error-message').removeClass('active');
-			}
+		$inputsPhones.on('change input', () => $phoneError.removeClass('active'));
 
-			// if (!$inputHorario.is(':checked')) {
-			// 	$('.turnoLigacao-error-message').addClass('active');
-			// } else {
-			// 	$('.turnoLigacao-error-message').removeClass('active');
-			// }
+		if ($requiredPhone.val() === '' || $requiredPhone.val() === undefined) {
+			$phoneError.addClass('active');
+			return;
 		}
 
-		if (valid) {
-			$submit.addClass('icon-loading');
-			$('.submit button').text('');
-		}
+		$phoneError.removeClass('active');
+		$submit.addClass('icon-loading');
+		$submit.text('');
 
-		return valid;
+		return true;
 	};
 
 	this.submit = function(e) {
@@ -88,41 +81,28 @@ Nitro.module('checkout.phones', function() {
 		if (self.validateForm()) {
 			var data = {};
 
-			$.map($inputsPhones, function(x) {
-				if (!x.value || x.value === '') {
-					return;
-				}
-				data[x.name] = x.value;
+			$.map($inputsPhones, item => {
+				data[item.name] = item.value;
 			});
-
-			// data.turnoLigacao = $inputHorario.filter(':checked').val();
 
 			data.email = self.getEmailClient();
 
-			CRM.insertClient(data)
-				.then(function() {
-					$formPhones.find('.data, .default-message').hide();
-					$formPhones.find('.messages,.success-message').fadeIn();
-
-					setTimeout(function() {
-						$('#modal-more-phones').modal('hide');
-					}, 2000);
-				})
-				.fail(function() {
-					$submit.removeClass('icon-loading');
-				});
+			self.saveClientData(data);
 		}
 	};
 
-	this.handleAddPhone = function() {
-		$('.add-phone').click(function() {
-			$(this).toggleClass('is--active');
-		});
-	};
+	this.saveClientData = function(clientData) {
+		CRM.insertClient(clientData)
+			.then(function () {
+				$formPhones.find('.data, .default-message').hide();
+				$formPhones.find('.messages,.success-message').fadeIn();
 
-	this.closeModal = function() {
-		$('#modal-more-phones .modal-close').click(function() {
-			$('#modal-more-phones').modal('hide');
-		});
-	};
+				setTimeout(function () {
+					$modalMorePhones.modal('hide');
+				}, 2000);
+			})
+			.fail(function () {
+				$submit.removeClass('icon-loading');
+			});
+	}
 });
