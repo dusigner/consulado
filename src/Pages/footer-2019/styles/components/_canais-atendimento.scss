@@ -25,7 +25,8 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 
 	br { height: 20px; }
 
-	a { color: $default-color-gray; }
+	a {color: $default-color-gray;
+		&:hover { transform: translateX(5px); }}
 
 	.link {
 		@include rfs(14);
@@ -154,6 +155,13 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 	&__section-text {
 		margin-bottom: 2em;
 		padding: 0 0 0 1em;
+		p a {
+				color: $default-color-green;
+				font-weight: bold;
+				&:hover {
+					font-weight: bold;
+				}
+			}
 	}
 
 	// Section title
