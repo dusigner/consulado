@@ -242,6 +242,9 @@ $breakpoint-map: (
 		}
 
 	&__aside {
+		.box-produto {
+			background-color: #ffffff;
+		}
 		.prateleira-slider .slick-track {
 			padding: 0;
 		}
