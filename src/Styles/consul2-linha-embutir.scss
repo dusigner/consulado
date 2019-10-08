@@ -543,7 +543,7 @@
 						text-decoration: line-through;
 					}
 					&.de-final {
-						color: $green;
+						color: $base-font-color;
 						font-size: 1em;
 						font-weight: 600;
 						text-decoration: line-through;
@@ -561,6 +561,7 @@
 						margin: 0;
 					}
 					&.money-final {
+						color: $green;
 						font-weight: 600;
 					}
 				}

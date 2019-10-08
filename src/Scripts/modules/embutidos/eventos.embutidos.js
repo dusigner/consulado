@@ -299,7 +299,6 @@ const Eventos = {
 				$('.go').removeClass('disable');
 			}
 		}
-
 		function setStatusLinks(idProduto, operador) {
 			skus.map(v => {
 				if (v.id.toString() === idProduto) {
@@ -308,8 +307,10 @@ const Eventos = {
 			});
 		}
 		function checkAvista(totalPor,money) {
-			if (!totalPor === formatReal(money)) {
+			if (getMoney(totalPor) !== money) {
 				$('li .money-final').text(`À vista por R$ ${formatReal(money)}`);
+			} else if(getMoney(totalPor) === money) {
+				$('li .money-final').text('');
 			}
 		}
 		//Valida se tem 3 produtos na vitrine
@@ -317,20 +318,18 @@ const Eventos = {
 			//SetPirce on HTML
 			$.map( $('article .de .val'), x => (totalDe += getMoney(x.textContent)) );
 			$.map( $('article .por .val'), x => (totalPor += getMoney(x.textContent)) );
-			$.map( $('article .por-boleto .val'), x => (money += getMoney(x.textContent)) );
-
+			$.map( $('article .discount-boleto strong'), x => (money += getMoney(x.textContent)) );
 			totalDe = formatReal(totalDe);
 			totalPor = formatReal(totalPor);
-
 			$('li .de-final').text(`De: R$ ${totalDe}`);
 			$('li .por-final').text(`Por: R$ ${totalPor}`);
 			checkAvista(totalPor,money);
-
 
 			//Copia o elemento de fora e joga para dentro da vitrine;
 			$('.vitrine-total').clone().appendTo('.vitrine ul');
 			$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
 			$('.vitrine-total').remove();
+
 			//Set Link on Button
 			setTimeout(() => setLink(), 3000);
 
@@ -341,11 +340,13 @@ const Eventos = {
 				//Price
 				valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
 				valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
-				valMoney = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[5].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[4].children[0].innerText );
+
 				//Format and calculator price
 				totalDe = formatReal(getMoney(totalDe) - valDe);
 				totalPor = formatReal(getMoney(totalPor) - valPor);
 				money = money - valMoney;
+
 				//Set Price on HTML
 				$('.de-final').text(`De: R$ ${totalDe}`);
 				$('.por-final').text(`Por: R$ ${totalPor}`);
@@ -362,11 +363,13 @@ const Eventos = {
 				//Price
 				valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
 				valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
-				valMoney = getMoney( x.currentTarget.nextElementSibling.children[5].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.children[4].children[0].innerText );
+
 				//Format and calculator price
 				totalDe = formatReal(getMoney(totalDe) + valDe);
 				totalPor = formatReal(getMoney(totalPor) + valPor);
 				money = money + valMoney;
+
 				//Set Price on HTML
 				$('.de-final').text(`De: R$ ${totalDe}`);
 				$('.por-final').text(`Por: R$ ${totalPor}`);
