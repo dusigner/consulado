@@ -46,7 +46,7 @@ $cart-size: 405px;
 
 		@include breakpoint(small, 'max') {
 			@include responsiveFont(17);
-			    background-color: #fff;
+			    background-color: $purple;
 			    border: 1px solid $purple;
 			    border-radius: 50%;
 			    font-weight: bold;
@@ -77,8 +77,8 @@ $cart-size: 405px;
 			@include rfs(12);
 			background-color: transparent;
 			border: none;
-			color: $purple;
-			font-weight: bold;
+			color: #fff;
+			font-weight: 500;
 			height: 16px;
 			line-height: 34px;
 			right: -1px;

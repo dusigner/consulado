@@ -452,6 +452,15 @@ $menu-colors: (
 				font-weight: 700;
 			}
 		}
+
+	}
+
+	&.menu-active {
+		.icon-hamburger {
+			&:after {
+				display: none;
+			}
+		}
 	}
 
 	// Submenus

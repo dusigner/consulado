@@ -811,3 +811,16 @@ body {
 		}
 	}
 }
+
+.icon-icon-cart-consul {
+	&:before {
+		color: $purple;
+		font-size: 35px;
+		position: absolute;
+
+		@include breakpoint('small', 'max') {
+			right: 5px;
+			top: -2px;
+		}
+	}
+}
