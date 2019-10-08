@@ -32,7 +32,13 @@ $( document ).ready(function() {
 
 const initLeadsBlackfriday = () => {
 
+	var categoriasLista;
+	var firstName;
+	var email;
+	var term;
+
 	var form = $('#contact-lbf2019');
+
 
 
 	form.validate({
@@ -46,12 +52,16 @@ const initLeadsBlackfriday = () => {
 				required: true,
 				email: true,
 
+			},
+			term: {
+				required: true
+
 			}
 		}
 	});
 
 	$('.btn1').on('click', function(){
-		// console.log('#### CLICOU NO BTN 1 ###');
+		console.log('#### CLICOU NO BTN 1 ###');
 		var steep1 = false;
 		if ($('#firstName').val() !== '' && $('#email').val() !== '') {
 			steep1 = true;
@@ -61,14 +71,21 @@ const initLeadsBlackfriday = () => {
 		}
 		if ($('#term').attr('checked') === undefined){
 			steep1 = false;
+
+			//exibir msg de erro termo
 		}
 		if(steep1 === true) {
 			$('.steep1').fadeOut();
 			$('.steep2').delay(500).fadeIn();
 
-			// console.log($('#firstName').val());
-			// console.log($('#email').val());
-			// console.log($('#term').val());
+			firstName = $('#firstName').val();
+			email = $('#email').val();
+			term = $('#term').val();
+
+			console.log(firstName);
+			console.log(email);
+			console.log(term);
+			console.log('################ steep1 OK ################');
 		}
 	});
 
@@ -77,29 +94,63 @@ const initLeadsBlackfriday = () => {
 		$('.steep2').fadeOut();
 		$('.steep3').delay(500).fadeIn();
 
-		// console.log($('#geladeiras').val());
-		// console.log($('#fogoes').val());
-		// console.log($('#arcondicionado').val());
-		// console.log($('#freezers').val());
-		// console.log($('#lavadoras').val());
-		// console.log($('#cervejeiras').val());
-		// console.log($('#coifas').val());
+		var categorias = [];
+
+		($('#geladeiras').is(":checked"))? categorias.push('geladeiras'):'';
+		($('#fogoes').is(":checked")) ? categorias.push('fogoes'):'';
+		($('#arcondicionado').is(":checked")) ? categorias.push('arcondicionado'):'';
+		($('#freezers').is(":checked")) ? categorias.push('freezers'):'';
+		($('#lavadoras').is(":checked")) ? categorias.push('lavadoras'):'';
+		($('#cervejeiras').is(":checked")) ? categorias.push('cervejeiras'):'';
+		($('#coifas').is(":checked")) ? categorias.push('coifas'):'';
+
+		categoriasLista = categorias.join(', ');
+		console.log(categoriasLista);
+		console.log('################ steep2 OK ################');
 	});
 
-	$('.btn3').on('click', function(){
-		// console.log('#### CLICOU NO BTN 3 ###');
-		$('.steep3').fadeOut();
-		$('.steep4').delay(500).fadeIn();
+	$('.btn3').on('click', function(e){
+		console.log('#### CLICOU NO BTN 3 ###');
+		e.preventDefault();
 
-		// console.log($('#geladeiras').val());
-		// console.log($('#fogoes').val());
-		// console.log($('#arcondicionado').val());
-		// console.log($('#freezers').val());
-		// console.log($('#lavadoras').val());
-		// console.log($('#cervejeiras').val());
-		// console.log($('#coifas').val());
+		var benefits = $('input[name=benefits]:checked').attr('id');
+		benefits = $('label[for='+benefits+']').text();
+
+		console.log(benefits);
+
+		var dataToPost = {
+			firstName: firstName,
+			email: email,
+			cadastroBlackFriday: (term===1)?true:false,
+			receberOfertasBlackFriday: categoriasLista,
+			beneficiosBlackFriday: benefits,
+			newsletterType: 'blackfriday2019'
+		};
+
+		console.log(dataToPost);
+		$.ajax({
+			url: "https://api.vtex.com/consulqa/dataentities/CL/documents",
+			type: "PUT",
+			data: JSON.stringify(dataToPost),
+			headers: {
+				"Content-Type": "application/json",
+				"Accept": "application/vnd.vtex.ds.v10+json"
+			}
+
+		}).done(function() {
+			$('.steep3').fadeOut();
+			$('.steep4').delay(500).fadeIn();
+		});
+
+
+		console.log('################ steep3 OK ################');
 	});
+
 }
+
+
+
+
 
 const adaptHtmlToSliderMobile = () => {
 	if ($(window).width() < 920) {
