@@ -27,6 +27,8 @@ $mobile-header-height: 84px;
 
 // Header
 header {
+	max-height: 90px;
+
 	&.menu-scroll {
 		overflow-y: scroll;
 
@@ -38,7 +40,11 @@ header {
 		}
 	}
 
-	@include breakpoint(small, 'max') { min-height: $mobile-header-height; }
+	@include breakpoint(small, 'max') {
+		max-height: unset;
+		min-height: $mobile-header-height;
+	}
+
 }
 
 @include breakpoint(small, 'max') {
@@ -252,7 +258,22 @@ div.account {
 
 	.link-meus-pedidos {
 		bottom: 0;
-		position: absolute;
+		display: inline-block;
+		position: relative;
+
+		&:before {
+			@include icon-get('icon-truck-consul');
+			color: $green;
+			font-size: 30px;
+			margin-right: 5px;
+		}
+
+		.account-text {
+			position: absolute;
+			top: 45%;
+			transform: translateY(-50%);
+			width: 120px;
+		}
 
 		@include breakpoint ('small', 'max') {
 			background-color: #f4f2f1;
@@ -451,6 +472,7 @@ div.account {
 			display: block;
 			font-size: 12px;
 			font-style: normal;
+			margin-left: 5px;
 		}
 
 		a {
@@ -491,7 +513,7 @@ div.account {
 		color: $base-link-color;
 		display: block;
 		padding: 3px 0 0 0;
-		top: 0;
+		top: 2px;
 
 		@include breakpoint ('small', 'max') {
 			bottom: 9px;
@@ -583,10 +605,12 @@ body {
 			stroke: none;
 		}
 
+
 		.account {
 			.account__icon {
 				&.account__icon--profile,
-				&.account__icon--enter {
+				&.account__icon--enter,
+				&.account__icon--truck {
 					display: none!important;
 				}
 			}
@@ -595,12 +619,12 @@ body {
 				padding-left: 31px;
 
 				&:before {
-					@include icon-get('icon-truck-consul');
+					@include icon-get('icon-profile-consul');
 					color: $green;
-					font-size: 16px;
-					left: -1px;
+					font-size: 26px;
+					left: 0;
 					position: absolute;
-					top: 6px;
+					top: 2px;
 				}
 
 				a[href='/no-cache/user/logout'] {
@@ -651,6 +675,7 @@ body {
 
 								em {
 									height: 100%;
+									top: 0;
 
 									a[href='/no-cache/user/logout'] {
 										color: #fff;
@@ -698,6 +723,10 @@ body {
 									}
 								}
 
+								.logout-text {
+									width: 54%;
+								}
+
 								.login-text {
 									transform: translateX(-70%);
 
@@ -733,15 +762,11 @@ body {
 						align-items: center;
 						background-color: #fff;
     					display: flex;
-    					justify-content: center;
-
-						.account__icon.account__icon--truck {
-							@include breakpoint('small', 'max') {
-								display: none;
-							}
-						}
+						justify-content: center;
+						position: absolute;
 
 						.account-text {
+
 							@include breakpoint('small', 'max') {
 								@include rfs(12);
 								color: $gray-d;
@@ -752,6 +777,7 @@ body {
 								text-align: left;
 								text-transform: none;
 								top: 0;
+								transform: none;
 								width: unset;
 
 								&:after {
