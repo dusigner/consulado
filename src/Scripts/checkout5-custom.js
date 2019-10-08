@@ -767,7 +767,6 @@ $(document).on('ready', function() {
 				if (!store.isCorp){
 
 					$('body').on('click','.item-quantity-change', function(){
-
 						var prodId = $(this).closest('.product-item').index('.product-item'),
 							prodQtde = $(this).closest('.product-item').find('.quantity input').val(),
 							prodName = $(this).closest('.product-item').find('.product-name a:nth-child(1)').text(),
@@ -786,14 +785,12 @@ $(document).on('ready', function() {
 									quantity: 5
 								};
 								return vtexjs.checkout.updateItems([updateItem], null, false);
-							})
-								.done(function(orderForm) {
-									window.vtex.checkout.MessageUtils.showMessage({
-										text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
-										status: 'error'
-									});
+							}).done(function(orderForm) {
+								window.vtex.checkout.MessageUtils.showMessage({
+									text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+									status: 'error'
 								});
-
+							});
 						}
 					});
 				}
