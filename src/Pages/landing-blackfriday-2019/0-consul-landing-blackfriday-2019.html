@@ -50,135 +50,154 @@
 		<section class="lead">
 			<div class="container">
 				<div class="lead__content">
-					<div class="lead__email" id="lead__email">
-						<img src="/arquivos/bf2019_lead-fogao.png" class="left-image" alt="Fogão Consul" />
 
-						<form class="email-form" action="#">
-							<p class="lead__title">
-								Seja o primeiro a saber das ofertas<br /> da Black Friday da Consul!
-								<span class="green">Cadastre-se e não perca descontos exclusivos.</span>
-							</p>
+					<form id="contact-lbf2019" method="post" action="#">
 
-							<div class="form__input">
-								<label class="input-label" for="email">
-									Digite seu e-mail
-								</label>
-								<input type="text" class="input-box" placeholder="seu@email.com.br"/>
+						<div class="lead__email steep steep1" id="lead__email">
+							<img src="/arquivos/bf2019_lead-fogao.png" class="left-image" alt="Fogão Consul" />
+
+							<!-- Steep 1 - User - START -->
+							<div class="email-form">
+								<p class="lead__title">
+									Seja o primeiro a saber das ofertas<br /> da Black Friday da Consul!
+									<span class="green">Cadastre-se e não perca descontos exclusivos.</span>
+								</p>
+
+								<div class="form__input">
+									<label class="input-label" for="firstName">
+										Digite seu e-mail
+									</label>
+									<input id="firstName" name="firstName" type="text" class="input-box" placeholder="Nome Completo" />
+								</div>
+
+								<div class="form__input">
+									<label class="input-label" for="email">
+										Digite seu e-mail
+									</label>
+									<input id="email" name="email" type="email" class="input-box" placeholder="seu@email.com.br" />
+								</div>
+
+								<div class="form__term">
+									<input type="checkbox" name="term" class="term" id="term" value="1" />
+									<label class="term-label" for="term">Li e concordo com os <a href="#">termos e condições</a></label>								</div>
+
+								<button class="form__button btn btn1">
+									Quero agora!
+								</button>
 							</div>
 
-							<div class="form__term">
-								<input type="checkbox" class="term" id="term">
-								<label class="term-label" for="term">Li e concordo com os <a href="#">termos e condições</a></label>
+							<img src="/arquivos/bf2019_lead-lavadora.png" class="right-image" alt="Fogão Consul" />
+						</div>
+						<!-- Steep 1 - User - End -->
+
+						<!-- Steep 2 - Category - Start -->
+						<div class="lead__products steep steep2" id="lead__products" style="display: none;">
+
+							<div class="products-form">
+								<p class="lead__title">
+									Obrigado por se cadastrar
+									<span class="green">Já sabe quais produtos irá aproveitar?</span>
+								</p>
+
+
+								<div class="products-options">
+									<input type="checkbox" name="products" id="geladeiras" />
+									<label for="geladeiras">Geladeiras</label>
+
+									<input type="checkbox" name="products" id="fogoes" />
+									<label for="fogoes">Fogões</label>
+
+									<input type="checkbox" name="products" id="arcondicionado" />
+									<label for="arcondicionado">Ar-Condicionado</label>
+
+									<input type="checkbox" name="products" id="freezers" />
+									<label for="freezers">Freezers</label>
+
+									<input type="checkbox" name="products" id="lavadoras" />
+									<label for="lavadoras">Lavadoras</label>
+
+									<input type="checkbox" name="products" id="cervejeiras" />
+									<label for="cervejeiras">Cervejeiras</label>
+
+									<input type="checkbox" name="products" id="coifas" />
+									<label for="coifas">Coifas</label>
+
+								</div>
+
+								<input type="button" class="lead__btn btn btn-finished is-inverted" value="Finalizar">
+								<input type="button" class="lead__btn btn2" value="Continuar">
 							</div>
 
-							<button class="form__button">
-								Quero agora!
-							</button>
-						</form>
+						</div>
+						<!-- Steep 2 - Category - End -->
 
-						<img src="/arquivos/bf2019_lead-lavadora.png" class="right-image" alt="Fogão Consul" />
-					</div>
+						<!-- Steep 3 - Interesses - Start -->
+						<div class="lead__benefits steep steep3" id="lead__benefits" style="display: none;">
 
-					<div class="lead__products" id="lead__products">
-
-						<form class="products-form" action="#">
-							<p class="lead__title">
-								Obrigado por se cadastrar
-								<span class="green">Já sabe quais produtos irá aproveitar?</span>
-							</p>
+							<div class="benefits-form">
+								<p class="lead__title">
+									Pensando na Black Friday
+									<span class="green">Qual benefício mais e atrai?</span>
+								</p>
 
 
-							<div class="products-options">
-								<input type="checkbox" name="products" id="geladeiras" />
-								<label for="geladeiras">Geladeiras</label>
+								<div class="products-options">
+									<input type="radio" name="benefits" id="desconto-progressivo" />
+									<label for="benefits">Desconto progressivo</label>
 
-								<input type="checkbox" name="products" id="fogoes" />
-								<label for="fogoes">Fogões</label>
+									<input type="radio" name="benefits" id="frete-gratis" />
+									<label for="benefits">Frete Grátis</label>
 
-								<input type="checkbox" id="arcondicionado" />
-								<label for="arcondicionado">Ar-Condicionado</label>
+									<input type="radio" name="benefits" id="rs200off" />
+									<label for="benefits">R$ 200 OFF</label>
 
-								<input type="checkbox" id="freezers" />
-								<label for="freezers">Freezers</label>
+									<input type="radio" name="benefits" id="entrega-agendada" />
+									<label for="benefits">Entrega agendada</label>
+								</div>
 
-								<input type="checkbox" id="lavadoras" />
-								<label for="lavadoras">Lavadoras</label>
+								<p class="text">
+									Selecione apenas o mais desejado
+								</p>
 
-								<input type="checkbox" id="cervejeiras" />
-								<label for="cervejeiras">Cervejeiras</label>
-
-								<input type="checkbox" id="coifas" />
-								<label for="coifas">Coifas</label>
-
+								<input type="button" class="lead__btn btn btn-finished is-inverted" value="Finalizar">
+								<input type="submit" class="lead__btn btn3" value="Continuar">
 							</div>
 
-							<input type="button" class="lead__btn is-inverted" value="Finalizar">
-							<input type="submit" class="lead__btn" value="Continuar">
-						</form>
+						</div>
+						<!-- Steep 3 - Interesses - End -->
 
-					</div>
+						<!-- Steep 4 - Obrigado - Start -->
+						<div class="lead__finish steep steep4" id="lead__finish" style="display: none;">
 
-					<div class="lead__benefits" id="lead__benefits">
-
-						<form class="benefits-form" action="#">
 							<p class="lead__title">
-								Pensando na Black Friday
-								<span class="green">Qual benefício mais e atrai?</span>
+								Cadastro concluído!
+								<span class="green">Compartilhe com seus amigos</span>
 							</p>
 
+							<div class="social-networks">
+								<a href="" class="social-networks__link">
+									<img src="/arquivos/bf2019-facebook.png" class="social-networks__icon" alt="Facebook" />
+									<span class="social-networks__title">Facebook</span>
+								</a>
 
-							<div class="products-options">
-								<input type="radio" name="benefits" id="geladeiras" />
-								<label for="geladeiras">Desconto progressivo</label>
-
-								<input type="radio" name="benefits" id="fogoes" />
-								<label for="fogoes">Frete Grátis</label>
-
-								<input type="radio" name="benefits" id="arcondicionado" />
-								<label for="arcondicionado">R$ 200 OFF</label>
-
-								<input type="radio" name="benefits" id="freezers" />
-								<label for="freezers">Entrega agendada</label>
+								<a href="" class="social-networks__link">
+										<img src="/arquivos/bf2019-whatsapp.png" class="social-networks__icon" alt="Whatsapp" />
+										<span class="social-networks__title">Whatsapp</span>
+									</a>
 							</div>
 
 							<p class="text">
-								Selecione apenas o mais desejado
+								Obrigado! Boa Black Friday
 							</p>
 
-							<input type="button" class="lead__btn is-inverted" value="Finalizar">
-							<input type="submit" class="lead__btn" value="Continuar">
-						</form>
+							<button class="lead__btn">
+								Cadastrar outro e-mail
+							</button>
 
-					</div>
-
-					<div class="lead__finish" id="lead__finish">
-
-						<p class="lead__title">
-							Cadastro concluído!
-							<span class="green">Compartilhe com seus amigos</span>
-						</p>
-
-						<div class="social-networks">
-							<a href="" class="social-networks__link">
-								<img src="/arquivos/bf2019-facebook.png" class="social-networks__icon" alt="Facebook" />
-								<span class="social-networks__title">Facebook</span>
-							</a>
-
-							<a href="" class="social-networks__link">
-									<img src="/arquivos/bf2019-whatsapp.png" class="social-networks__icon" alt="Whatsapp" />
-									<span class="social-networks__title">Whatsapp</span>
-								</a>
 						</div>
+						<!-- Steep 4 - Obrigado - End -->
 
-						<p class="text">
-							Obrigado! Boa Black Friday
-						</p>
-
-						<button class="lead__btn">
-							Cadastrar outro e-mail
-						</button>
-
-					</div>
+					</form>
 				</div>
 
 			</div>
@@ -1234,6 +1253,9 @@
 	</footer>
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
+
+	<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.js"></script>
 
 	<script type="text/javascript" src="<!-- @echo assetsPath -->/consul-landing-blackfriday-2019.min.js"></script>
 </body>
