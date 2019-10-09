@@ -27,7 +27,6 @@
 
 		// Title
 		.modal-title {
-			@include responsiveFont(20, 16, true);
 			color: #5B5B5B;
 			font-size: 20px;
 			font-weight: bold;
@@ -75,8 +74,10 @@
 
 	// Messages
 	.default-message {
-		@include responsiveFont(16, 16, true);
-		color: #767676;
+		color: #5B5B5B;
+		font-size: 13px;
+
+		p { margin: 1em 0 0 0; }
 	}
 
 	.btn-confirmation {
