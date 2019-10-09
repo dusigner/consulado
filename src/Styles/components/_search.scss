@@ -13,7 +13,9 @@ body.search-active {
 	position: relative;
 
 	@include breakpoint(extra-large, 'min') {
-		&.col-6 { width: 47.5%; }
+		&.col-6 {
+			width: 55%;
+		}
 	}
 
 	@include breakpoint(small, 'max') {
@@ -66,7 +68,8 @@ body.search-active {
 		line-height: 50px;
 		padding: 0 14px;
 		position: absolute;
-		top: 0;
+		top: 60%;
+		transform: translateY(-50%);
 
 		@include breakpoint(small, 'max') {
 			left: 85%;

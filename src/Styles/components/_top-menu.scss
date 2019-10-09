@@ -455,14 +455,6 @@ $menu-colors: (
 
 	}
 
-	&.menu-active {
-		.icon-hamburger {
-			&:after {
-				display: none;
-			}
-		}
-	}
-
 	// Submenus
 	.menu-department {
 		background-color: $gray-l;
@@ -621,11 +613,16 @@ $menu-colors: (
 			.icon-hamburger {
 				border-color: transparent;
 
+				&:after {
+					display: none;
+				}
+
 				&:before {
 					@include icon-get( close-icon );
 					background-color: transparent;
 					color: $green;
 					font-size: 16px;
+					left: 0;
 					top: -1px;
 				}
 			}

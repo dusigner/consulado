@@ -27,12 +27,13 @@ $mobile-header-height: 84px;
 
 // Header
 header {
-	max-height: 90px;
+	height: 60px;
 
 	&.menu-scroll {
 		overflow-y: scroll;
 
 		@media(max-width: 768px) {
+			height: unset;
 			position: fixed;
 			top: 0;
 			width: 100%;
@@ -97,7 +98,46 @@ header {
 
 .header {
 	margin: 0;
-	padding: 12px 0 12px;
+
+	section {
+		display: flex;
+		justify-content: space-between;
+
+		@include breakpoint('small', 'max') {
+			display: block;
+		}
+
+		.account {
+			align-items: center;
+			display: flex;
+			margin-left: 20px;
+			width: 260px;
+
+			@include breakpoint('small', 'max') {
+				margin-left: 0;
+			}
+		}
+
+		.form-search {
+			margin-top: 0;
+		}
+
+		.text-search {
+			background-color: #F5F5F5;
+			border: none;
+			height: 60px;
+
+			&::placeholder {
+				@include rfs(11);
+				color: #707070;
+				font-weight: bold;
+			}
+
+			@include breakpoint ('small', 'max') {
+				height: 36px;
+			}
+		}
+	}
 
 	@include breakpoint(small, 'max') {
 		padding: 0;
@@ -223,14 +263,15 @@ header {
 	@include responsiveFont(30, 16, true);
 	color: $green;
 	display: inline-block;
-	padding-left: 30px;
-	padding-top: 7px;
+	padding: 5px 18px 0 12px;
 	position: relative;
 	vertical-align: top;
 
 	.logo-desktop-svg {
 		line-height: 1;
-    	width: 100px;
+		position: relative;
+		top: 50%;
+		width: 90px;
 	}
 
 	@include breakpoint(small, 'max') {
@@ -252,39 +293,50 @@ div.account {
 	@include responsiveFont(12);
 	color: $txt-gray-l;
 	font-weight: 700;
-	min-height: 60px;
-	padding: 0 0 0 fluidWidth(25px);
+	height: 60px;
+	padding: 0;
 	position: relative;
 
 	.link-meus-pedidos {
-		bottom: 0;
-		display: inline-block;
-		position: relative;
+		width: 130px;
 
 		&:before {
 			@include icon-get('icon-truck-consul');
 			color: $green;
 			font-size: 30px;
 			margin-right: 5px;
+			position: relative;
+			top: 20%;
 		}
 
 		.account-text {
 			position: absolute;
-			top: 45%;
-			transform: translateY(-50%);
-			width: 120px;
+
+
+			&:after {
+				@include rfs(10);
+				bottom: 4px;
+				content: 'Acompanhe!';
+				display: block;
+				font-weight: 400;
+				position: relative;
+			}
 		}
 
-		@include breakpoint ('small', 'max') {
-			background-color: #f4f2f1;
-			height: 60px;
-			line-height: 60px;
-			margin: 0;
-			padding: 0;
-			position: absolute;
-			right: 0;
-			text-align: center;
-			width: 50%;
+		@include breakpoint('extra-large', 'max') {
+			right: 60px;
+
+			@include breakpoint ('small', 'max') {
+				background-color: #f4f2f1;
+				height: 60px;
+				line-height: 60px;
+				margin: 0;
+				padding: 0;
+				position: absolute;
+				right: 0;
+				text-align: center;
+				width: 50%;
+			}
 		}
 	}
 
@@ -317,6 +369,26 @@ div.account {
 	// Responsive fix
 	// Esconder opção no desktop, caso
 	// os itens estejam dentro do menu
+
+	.welcome-message {
+		width: 130px;
+
+		&:after {
+			border-left: 1px solid #E3E1E1;
+			content: '';
+			display: inline-block;
+			height: 30%;
+			left: 47%;
+			position: absolute;
+			top: 48%;
+			transform: translateY(-50%);
+
+			@include breakpoint('small', 'max') {
+				display: none;
+			}
+		}
+	}
+
 	.menu.menu-department & {
 		@include breakpoint('small', 'min') {
 			display: none;
@@ -450,14 +522,12 @@ div.account {
 		display: block;
 		// left: 35%;
 		// font-size: 0;
-		margin: 0 0 .5em;
 		overflow: hidden;
-		padding-bottom: 10px;
+		padding: 0 0 0 31px;
 		position: relative;
 		// width: 75%;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		width: 90%;
 
 		@include breakpoint(770px, 'max') {
 			background: #e4e4e4;
@@ -472,7 +542,6 @@ div.account {
 			display: block;
 			font-size: 12px;
 			font-style: normal;
-			margin-left: 5px;
 		}
 
 		a {
@@ -480,12 +549,12 @@ div.account {
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: 0;
+				bottom: 7px;
 				color: $gray-d;
 				font-size: 10px;
 				font-weight: 400;
-				left: 35px;
-				position: absolute;
+				left: 0;
+				position: relative;
 
 				@include breakpoint(770px, 'max') {
 					border: 0;
@@ -512,12 +581,25 @@ div.account {
 		background-color: #ffffff;
 		color: $base-link-color;
 		display: block;
-		padding: 3px 0 0 0;
-		top: 2px;
 
 		@include breakpoint ('small', 'max') {
 			bottom: 9px;
 			top: auto;
+		}
+
+		&:after {
+			@include rfs(10);
+			bottom: 4px;
+			content: 'Faça login!';
+			display: block;
+			font-weight: 400;
+			left: 0;
+			position: relative;
+			text-align: left;
+
+			@include breakpoint ('small', 'max') {
+				display: none;
+			}
 		}
 	}
 
@@ -614,22 +696,22 @@ body {
 					display: none!important;
 				}
 			}
+			.welcome-message {
+				.welcome {
+					margin: 0;
+					padding-left: 31px;
 
-			.welcome {
-				padding-left: 31px;
-
-				&:before {
-					@include icon-get('icon-profile-consul');
-					color: $green;
-					font-size: 26px;
-					left: 0;
-					position: absolute;
-					top: 2px;
+					&:before {
+						@include icon-get('icon-profile-consul');
+						color: $green;
+						font-size: 26px;
+						left: 0;
+						position: absolute;
+						top: 50%;
+    					transform: translateY(-50%);
+					}
 				}
 
-				a[href='/no-cache/user/logout'] {
-					left: 31px;
-				}
 			}
 		}
 
@@ -705,13 +787,14 @@ body {
 								.login-text,
 								.logout-text {
 									color: #736c6b;
-									display: block;
-									left: 50%;
-									margin: 0 auto;
-									position: relative;
+									display: inline-block;
+									position: absolute;
+									right: 30px;
 									text-align: left;
-									top: 17px;
-									width: 50%;
+									top: 50%;
+									transform: translateY(-70%);
+									width: unset;
+
 
 									&:before {
 										@include icon-get('icon-profile-consul');
@@ -723,16 +806,10 @@ body {
 									}
 								}
 
-								.logout-text {
-									width: 54%;
-								}
-
 								.login-text {
-									transform: translateX(-70%);
-
 									&:after {
 										@include rfs(10);
-										content: 'Acesse sua conta!';
+										content: 'Faça login!';
 										display: block;
 										font-weight: 400;
 										left: 0;
@@ -742,7 +819,6 @@ body {
 								}
 
 								.logout-text {
-									transform: translateX(-60%);
 
 									&:after {
 										@include rfs(10);
@@ -761,12 +837,12 @@ body {
 					.link-meus-pedidos {
 						align-items: center;
 						background-color: #fff;
+						border-top: none;
     					display: flex;
 						justify-content: center;
 						position: absolute;
 
 						.account-text {
-
 							@include breakpoint('small', 'max') {
 								@include rfs(12);
 								color: $gray-d;
@@ -782,6 +858,7 @@ body {
 
 								&:after {
 									@include rfs(10);
+									bottom: 0;
 									content: 'Acompanhe!';
 									display: block;
 									font-weight: 400;
@@ -802,6 +879,7 @@ body {
 							border: 1px solid #E3E1E1;
 							content: '';
 							height: 40%;
+							margin: 0;
 							position: absolute;
 							right: 100%;
 						}
@@ -816,11 +894,19 @@ body {
 	&:before {
 		color: $purple;
 		font-size: 35px;
+		left: 10px;
 		position: absolute;
 
 		@include breakpoint('small', 'max') {
+			left: unset;
 			right: 5px;
 			top: -2px;
 		}
+	}
+}
+
+@include breakpoint('small', 'max') {
+	.container.clearfix > .account {
+		display: none;
 	}
 }
