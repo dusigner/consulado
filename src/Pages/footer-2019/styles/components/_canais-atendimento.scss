@@ -154,13 +154,6 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 	&__section-text {
 		margin-bottom: 2em;
 		padding: 0 0 0 1em;
-		p a {
-				color: $default-color-green;
-				font-weight: bold;
-				&:hover {
-					font-weight: bold;
-				}
-			}
 	}
 
 	// Section title

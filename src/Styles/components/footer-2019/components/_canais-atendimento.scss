@@ -72,7 +72,28 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 	}
 
 	.section-duvidas {
-		@include breakpoint('small', 'min') { width: 410px; }
+		@include breakpoint('small', 'min') { width: 410px; };
+		p {
+			a {
+				border-bottom: 1px solid transparent;
+				line-height: 20px;
+				position: relative;
+				transition: all .2s ease;
+				&:hover {
+					border-bottom: 1px solid #736c6b;
+					padding-bottom: 1px;
+					transition: all .2s ease;
+				}
+			}
+			&:last-child {
+				a {
+					border: none;
+					&:hover {
+						border: none;
+					}
+				}
+			}
+		}
 	}
 
 	.section-atendimento {
