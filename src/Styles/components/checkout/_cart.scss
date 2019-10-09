@@ -1,13 +1,9 @@
 body {
 	&.body-cart {
 
-		.cart-template  {
-			width: 99.99%;
-		}
+		.cart-template  { width: 99.99%; }
 
-		.checkout-container {
-			padding-bottom: 40px;
-		}
+		.checkout-container { padding-bottom: 40px; }
 
 		.cart {
 			@include breakpoint(small 'max') { padding-bottom: 25px }
@@ -20,22 +16,20 @@ body {
 					border-bottom: 3px solid $green;
 
 					th {
-						padding: 15px;
+						padding: 15px 10px;
 						text-align: left;
 						text-transform: capitalize;
+
+						&.product { padding-left: 0; }
 					}
 				}
 
 				tbody {
-
 					td {
-						@include breakpoint(768px, 'max') { vertical-align: top; }
 						@include breakpoint(small, 'max') { padding: 10px 0 !important; }
+						@include  breakpoint(small 'min') { padding: 20px 10px 0; }
+						// outline: 1px solid #d0d;
 						padding: 20px 10px;
-
-						@include  breakpoint(small 'min') {
-							padding: 20px 10px 0;
-						}
 
 						@include breakpoint(768px, 'max') {
 							vertical-align: top;
@@ -43,51 +37,46 @@ body {
 							&.product-image {
 								left: 15px;
 								max-height: 65px;
-
-
+								padding-top: 0!important;
+								width: 65px;
 							}
 						}
 
-						&.product-image {
+						&:empty { display: none; }
 
+						&.product-image {
+							@include breakpoint('medium', 'min') { width: 60px; }
+							@include  breakpoint(small 'max') { padding: 0; }
 							background-position: center 30px;
 							vertical-align: top;
 
-
-							@include  breakpoint(small 'max') {
-								padding: 0;
-							}
+							a { display: block; }
 
 							img {
-								max-height: 45px;
+								height: 65px;
+								max-width: 65px;
+								width: 65px;
 							}
 						}
-						@include breakpoint(small, 'max') {
-							padding: 10px 0 !important;
-						}
-
-
 					}
 
 					.item-remove {
-						right: 20px;
+						right: 10px;
 						top: -2px;
+						width: inherit;
 					}
 
 					.product-item {
+						@include breakpoint(small, 'max') { padding-bottom: 10px; }
+						@include breakpoint(small, 'min') {
+							border-radius: 3px;
+							margin: 15px 0;
+						}
 						border: 1px solid #E3E1E1;
 						border-radius: 3px;
 						margin-bottom: 20px;
 						overflow: initial;
 						padding: 10px 0;
-
-
-						@include breakpoint(small, 'max') { padding-bottom: 10px; }
-
-						@include breakpoint(small, 'min') {
-							border-radius: 3px;
-							margin: 15px 0;
-						}
 
 						.brand,
 						.seller,
@@ -104,8 +93,7 @@ body {
 						.quantity-price,
 						.item-remove,
 						.quantity {
-
-							@include breakpoint(small, 'min') {
+							@include breakpoint('medium', 'min') {
 								padding-bottom: 10px;
 								padding-top: 45px;
 								text-align: left;
@@ -114,76 +102,76 @@ body {
 						}
 
 						.product-name {
-							@include breakpoint(small, 'max') { width: 240px; }
-							@include responsiveFont(14, 16, true);
-							font-weight: bold;
-							width: 385px;
-
 							@include breakpoint(small, 'max') {
 								margin-left: 0;
 								padding: 0 15px !important;
 								width: 100%;
 							}
+							@include responsiveFont(14, 16, true);
+							font-weight: bold;
+							width: 385px;
 
-							&>a {
-								display: block;
-								font-weight: 500;
-								margin-left: 60px;
-								padding-bottom: 10px;
-								position: relative;
-								width: calc(100% - 60px);
-								@include breakpoint(small, 'max') {
+							& > a {
+								@include breakpoint('small', 'min') { width: calc(100% - 60px); }
+								@include breakpoint('extra-small', 'max') {
+									margin-left: 75px;
 									min-height: 62px;
 								}
+								display: block;
+								font-weight: 500;
+								padding-bottom: 10px;
+								position: relative;
 							}
 
 							.brand,
 							.seller {
 								display: none;
-
-								// &:after {
-								// 	content: ' - ';
-								// 	display: inline-block;
-								// }
 							}
 
 							.product-service {
 								padding-top: 10px;
-								position: relative;
 
 								@include breakpoint(small, 'min') {
-
 									&::before {
-										background: #f4f2f1;
+										background: #F1F0F0;
 										content: '';
 										height: 1px;
 										position: absolute;
-										width: 1000%;
+										right: 15px;
+										width: calc(100% - 110px);
 									}
 								}
-
 								@include breakpoint(small, 'max') {
 									border-top: 1px solid $gray-l;
 									padding-top: 0;
 								}
 
 								.linkWarranty {
-									@include responsiveFont(12, 16, true);
-									font-weight: 600;
-									margin-top: 20px;
-
 									@include breakpoint(small, 'max') {
 										@include responsiveFont(13, 18, true);
 										font-weight: 500;
 										line-height: normal;
 										padding: 10px 0;
 									}
+									@include responsiveFont(12, 16, true);
+									font-weight: 600;
+									margin-top: 20px;
+								}
+							}
+
+							@include breakpoint(690px, 'max') {
+								@include breakpoint(491px, 'min') {
+									.product-service,
+									.add-item-attachment-container {
+										left: 0;
+										transform: translateX(0);
+										width: 220%;
+									}
 								}
 							}
 						}
 
 						.item-remove {
-
 							.item-link-remove {
 								.icon {
 									background-size: 100% 100%;
@@ -192,28 +180,9 @@ body {
 									margin-top: 5px;
 									width: 13px;
 
-									&:before {
-										visibility: hidden;
-									}
+									&:before { visibility: hidden; }
 
-									&.icon-remove {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
-									}
-								}
-							}
-
-							@include breakpoint(small, 'min') {
-								padding-right: 45px;
-
-								&:before {
-									background: #fff;
-									content: '';
-									height: 1px;
-									margin: 49px 0 0 0;
-									position: absolute;
-									right: 0;
-									width: 20px;
-
+									&.icon-remove { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png'); }
 								}
 							}
 						}
@@ -223,11 +192,9 @@ body {
 							color: $green;
 							font-weight: bold;
 							padding: 20px 5px;
-
 						}
 
 						.shipping-date {
-
 							.shipping-estimate-date {
 								@include responsiveFont(13, 16, true);
 								color: $txt-gray;
@@ -239,13 +206,12 @@ body {
 							margin-top: 9px;
 							text-transform: uppercase;
 
-							@include breakpoint(small, 'max') {
-								margin-right: 16px;
-							}
+							@include breakpoint(small, 'max') { margin-right: 16px; }
 
 							.list-price {
 								@include responsiveFont(10, 16, true);
 								font-weight: 500;
+
 								.old-product-price { color: $purple; }
 							}
 
@@ -255,40 +221,33 @@ body {
 								display: flex;
 								font-weight: bold;
 							}
-							.new-product-price-label {
-								margin-right: 3px;
-							}
-							.discount {
-								margin-left: 10px;
-							}
-							.field-help {
-								margin-top: 25px;
-							}
-							.how-much-discount {
-								color: #0FB6DE;
-							}
+
+							.new-product-price-label { margin-right: 3px; }
+
+							.discount { margin-left: 10px; }
+
+							.field-help { margin-top: 25px; }
+
+							.how-much-discount { color: #0FB6DE; }
 						}
 
 						.quantity {
-							@include breakpoint(small, 'min') {
-								padding-top: 38px;
-							}
-							@include breakpoint(768px, 'max') {
-							   align-content: center;
-							   align-items: center;
-							   display: flex;
-							   margin-top: 10px;
+							@include breakpoint(small, 'min') { padding-top: 38px; }
+							@include breakpoint('extra-small', 'max') {
+								align-content: center;
+								align-items: center;
+								display: flex;
+								margin-left: 90px;
+								margin-top: 10px;
 							}
 
 							input {
+								display: inline-block;
 								height: 24px;
-								width: 30px;
 							}
 
 							.item-quantity-change {
-								@include breakpoint(768px, 'min') {
-									position: initial;
-								}
+								@include breakpoint(768px, 'min') { position: initial; }
 
 								.icon {
 									background-size: 100% 100%;
@@ -299,17 +258,11 @@ body {
 									top: 4px;
 									width: 16px;
 
-									&.icon-minus-sign {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_minus-.png');
-									}
+									&.icon-minus-sign { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_minus-.png'); }
 
-									&.icon-plus-sign {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_plus-.png');
-									}
+									&.icon-plus-sign { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_plus-.png'); }
 
-									&::before {
-										visibility: hidden;
-									}
+									&::before { visibility: hidden; }
 								}
 							 }
 						}
@@ -391,17 +344,17 @@ body {
 								padding-left: 10px;
 							}
 
-							@include breakpoint(small, 'min') {
+							// @include breakpoint(small, 'min') {
 
-								&::before {
-									background: #f4f2f1;
-									content: '';
-									height: 1px;
-									position: absolute;
-									top: 0;
-									width: 1000%;
-								}
-							}
+							// 	&::before {
+							// 		background: #f4f2f1;
+							// 		content: '';
+							// 		height: 1px;
+							// 		position: absolute;
+							// 		top: 0;
+							// 		width: 1000%;
+							// 	}
+							// }
 						}
 
 						.quantity-price {
