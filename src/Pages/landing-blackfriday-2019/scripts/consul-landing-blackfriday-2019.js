@@ -3,6 +3,7 @@
 require('vendors/slick');
 
 $( document ).ready(function() {
+	// console.log('###################### PROXY ######################');
 	initLeadsBlackfriday();
 	initDepoimentsSlider();
 	initCountdownSlider();
@@ -128,6 +129,7 @@ const initLeadsBlackfriday = () => {
 			newsletterType: 'blackfriday2019'
 		};
 
+
 		// console.log(dataToPatch);
 		$.ajax({
 			url: 'https://api.vtex.com/consul/dataentities/CL/documents',
@@ -141,6 +143,15 @@ const initLeadsBlackfriday = () => {
 		}).done(function() {
 			$('.steep3').fadeOut();
 			$('.steep4').delay(500).fadeIn();
+
+			//Envio de dados para o Salesforce
+			$.ajax({
+				url: `https://pub.s7.exacttarget.com/lij42bd45oo?q1=${dataToPatch.firstName}&q2=${dataToPatch.email}&q3=cns`,
+				type: 'post',
+				contentType: 'application/json',
+				processData: false
+			});
+
 		});
 		// console.log('################ steep3 OK ################');
 	});

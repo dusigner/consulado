@@ -6,6 +6,9 @@
 		font-size: 2em;
 		line-height: 35px;
 		text-align: left;
+		@media (max-width: 920px) {
+			font-size: 1.2rem;
+		}
 	}
 
 	&__header {
