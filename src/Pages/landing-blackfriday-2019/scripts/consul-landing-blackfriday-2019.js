@@ -61,7 +61,7 @@ const initLeadsBlackfriday = () => {
 	});
 
 	$('.btn1').on('click', function(){
-		console.log('#### CLICOU NO BTN 1 ###');
+		// console.log('#### CLICOU NO BTN 1 ###');
 		var steep1 = false;
 		if ($('#firstName').val() !== '' && $('#email').val() !== '') {
 			steep1 = true;
@@ -82,10 +82,10 @@ const initLeadsBlackfriday = () => {
 			email = $('#email').val();
 			term = $('#term').val();
 
-			console.log(firstName);
-			console.log(email);
-			console.log(term);
-			console.log('################ steep1 OK ################');
+			// console.log(firstName);
+			// console.log(email);
+			// console.log(term);
+			// console.log('################ steep1 OK ################');
 		}
 	});
 
@@ -96,60 +96,70 @@ const initLeadsBlackfriday = () => {
 
 		var categorias = [];
 
-		($('#geladeiras').is(":checked"))? categorias.push('geladeiras'):'';
-		($('#fogoes').is(":checked")) ? categorias.push('fogoes'):'';
-		($('#arcondicionado').is(":checked")) ? categorias.push('arcondicionado'):'';
-		($('#freezers').is(":checked")) ? categorias.push('freezers'):'';
-		($('#lavadoras').is(":checked")) ? categorias.push('lavadoras'):'';
-		($('#cervejeiras').is(":checked")) ? categorias.push('cervejeiras'):'';
-		($('#coifas').is(":checked")) ? categorias.push('coifas'):'';
+		($('#geladeiras').is(':checked'))? categorias.push('geladeiras'):'';
+		($('#fogoes').is(':checked')) ? categorias.push('fogoes'):'';
+		($('#arcondicionado').is(':checked')) ? categorias.push('arcondicionado'):'';
+		($('#freezers').is(':checked')) ? categorias.push('freezers'):'';
+		($('#lavadoras').is(':checked')) ? categorias.push('lavadoras'):'';
+		($('#cervejeiras').is(':checked')) ? categorias.push('cervejeiras'):'';
+		($('#coifas').is(':checked')) ? categorias.push('coifas'):'';
 
 		categoriasLista = categorias.join(', ');
-		console.log(categoriasLista);
-		console.log('################ steep2 OK ################');
+		// console.log(categoriasLista);
+		// console.log('################ steep2 OK ################');
 	});
 
 	$('.btn3').on('click', function(e){
-		console.log('#### CLICOU NO BTN 3 ###');
+		// console.log('#### CLICOU NO BTN 3 ###');
 		e.preventDefault();
 
 		var benefits = $('input[name=benefits]:checked').attr('id');
 		benefits = $('label[for='+benefits+']').text();
 
-		console.log(benefits);
+		// console.log(benefits);
 
-		var dataToPost = {
+		var dataToPatch = {
 			firstName: firstName,
 			email: email,
 			cadastroBlackFriday: (term===1)?true:false,
 			receberOfertasBlackFriday: categoriasLista,
 			beneficiosBlackFriday: benefits,
+			isNewsletterOptIn: true,
 			newsletterType: 'blackfriday2019'
 		};
 
-		console.log(dataToPost);
+		// console.log(dataToPatch);
 		$.ajax({
-			url: "https://api.vtex.com/consulqa/dataentities/CL/documents",
-			type: "PUT",
-			data: JSON.stringify(dataToPost),
+			url: 'https://api.vtex.com/consul/dataentities/CL/documents',
+			type: 'PATCH',
+			data: JSON.stringify(dataToPatch),
 			headers: {
-				"Content-Type": "application/json",
-				"Accept": "application/vnd.vtex.ds.v10+json"
+				'Content-Type': 'application/json',
+				'Accept': 'application/vnd.vtex.ds.v10+json'
 			}
 
 		}).done(function() {
 			$('.steep3').fadeOut();
 			$('.steep4').delay(500).fadeIn();
 		});
-
-
-		console.log('################ steep3 OK ################');
+		// console.log('################ steep3 OK ################');
 	});
 
+	$('.steep2 .btn-finished').on('click', function(e){
+		e.preventDefault();
+		$('.btn2').trigger( 'click' );
+		// console.log('#### CLICOU NO BTN FINALIZAR steep2 ###');
+	});
+
+	$('.steep3 .btn-finished').on('click', function(e){
+		e.preventDefault();
+		$('.btn3').trigger( 'click' );
+		// console.log('#### CLICOU NO BTN FINALIZAR steep3 ###');
+	});
+	$('.steep4 .lead__btn').on('click', function(){
+		window.location.replace('http://loja.consul.com.br/landing/blackfriday');
+	});
 }
-
-
-
 
 
 const adaptHtmlToSliderMobile = () => {

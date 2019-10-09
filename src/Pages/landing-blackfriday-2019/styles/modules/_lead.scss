@@ -4,6 +4,8 @@
 	position: relative;
 	z-index: 1;
 
+
+
 	.text {
 		font-size: .75em;
 		font-weight: 500;
@@ -19,6 +21,8 @@
 		border-bottom: 2px solid #9aca3c;
 		overflow: hidden;
 		position: relative;
+		transition: all 1s ease-out;
+		// min-height: 440px;
 
 		@media (max-width: 920px) {
 			padding: 20px 0;
