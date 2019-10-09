@@ -47,7 +47,12 @@
 			width: 25%;
 		}
 
-		.photo { margin-right: 5px; }
+		.photo {
+			font-size: 8px;
+			line-height: 8px;
+			margin-right: 5px;
+			width: 45px;
+		}
 
 		.product-name { color: #5B5B5B; }
 
@@ -75,8 +80,6 @@
 				background .3s ease,
 				border-color .3s ease
 			;
-
-			&:focus { box-shadow: 0 0 2px 1px #0FB6DE; }
 		}
 
 		.btn.unavailable-button {
@@ -104,6 +107,4 @@
 			}
 		}
 	}
-
 }
-
