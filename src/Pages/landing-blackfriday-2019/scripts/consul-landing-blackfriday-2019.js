@@ -4,6 +4,7 @@ require('vendors/slick');
 
 $( document ).ready(function() {
 	// console.log('###################### PROXY ######################');
+	initTags();
 	initLeadsBlackfriday();
 	initDepoimentsSlider();
 	initCountdownSlider();
@@ -31,8 +32,25 @@ $( document ).ready(function() {
 	});
 });
 
-const initLeadsBlackfriday = () => {
+const shootDataLayer = (event, category, action, label) => {
+	if( typeof(dataLayer) !== "undefined" ) {
+		dataLayer.push({
+			event,
+			category,
+			action,
+			label
+		});
+	}
+}
 
+const initTags = () => {
+	$('.tips .card .card__link').on('click', e => {
+		const title = $(e.target).parents('.card').find('.card__title').text().trim();
+		shootDataLayer('generic', 'lp_black_friday_2019', 'nossas_dicas', `veja_mais_${title}`);
+	})
+}
+
+const initLeadsBlackfriday = () => {
 	var categoriasLista;
 	var firstName;
 	var email;
@@ -40,23 +58,18 @@ const initLeadsBlackfriday = () => {
 
 	var form = $('#contact-lbf2019');
 
-
-
 	form.validate({
 		debug: true,
 		rules: {
 			firstName: {
-				required: true,
-
+				required: true
 			},
 			email: {
 				required: true,
 				email: true,
-
 			},
 			term: {
 				required: true
-
 			}
 		}
 	});
@@ -76,6 +89,8 @@ const initLeadsBlackfriday = () => {
 			//exibir msg de erro termo
 		}
 		if(steep1 === true) {
+			shootDataLayer('generic', 'lp_black_friday_2019', 'cadastro', 'quero_agora');
+
 			$('.steep1').fadeOut();
 			$('.steep2').delay(500).fadeIn();
 
