@@ -11,12 +11,8 @@ body.search-active {
 
 .cont-search {
 	position: relative;
+	width: 50%;
 
-	@include breakpoint(extra-large, 'min') {
-		&.col-6 {
-			width: 55%;
-		}
-	}
 
 	@include breakpoint(small, 'max') {
 		@include singleTransition();

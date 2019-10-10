@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?t6w8r4');
-  src:  url('fonts/icomoon.eot?t6w8r4#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?t6w8r4') format('truetype'),
-    url('fonts/icomoon.woff?t6w8r4') format('woff'),
-    url('fonts/icomoon.svg?t6w8r4#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?o6vtku');
+  src:  url('fonts/icomoon.eot?o6vtku#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?o6vtku') format('truetype'),
+    url('fonts/icomoon.woff?o6vtku') format('woff'),
+    url('fonts/icomoon.svg?o6vtku#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -219,5 +219,9 @@
 }
 .icon-icon-profile-consul:before {
   content: "\e91a";
+  color: #595453;
+}
+.icon-icon-loupe-consul:before {
+  content: "\e91b";
   color: #595453;
 }

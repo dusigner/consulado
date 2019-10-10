@@ -110,8 +110,10 @@ header {
 		.account {
 			align-items: center;
 			display: flex;
-			margin-left: 20px;
-			width: 260px;
+			flex: 0 0 300px;
+			justify-content: center;
+			margin-left: 40px;
+			width: 300px;
 
 			@include breakpoint('small', 'max') {
 				margin-left: 0;
@@ -220,8 +222,6 @@ header {
 .cont-logo {
 	text-align: left;
 
-	@include breakpoint(extra-large, 'max') { width: 19%; }
-
 	@include breakpoint(extra-large, 'min') {
 		&.col-3 { width: 20%; }
 	}
@@ -270,8 +270,8 @@ header {
 	.logo-desktop-svg {
 		line-height: 1;
 		position: relative;
-		top: 50%;
-		width: 90px;
+		transform: translateY(15%);
+		width: 85px;
 	}
 
 	@include breakpoint(small, 'max') {
@@ -297,21 +297,38 @@ div.account {
 	padding: 0;
 	position: relative;
 
+	&:after {
+		border-left: 1px solid #E3E1E1;
+		content: '';
+		display: inline-block;
+		height: 20%;
+		position: absolute;
+		right: 50%;
+		top: 48%;
+		transform: translateY(-50%);
+
+		@include breakpoint('small', 'max') {
+			display: none;
+		}
+	}
+
 	.link-meus-pedidos {
-		width: 130px;
+		padding-left: 53px;
+		position: relative;
+		width: 150px;
 
 		&:before {
 			@include icon-get('icon-truck-consul');
 			color: $green;
 			font-size: 30px;
-			margin-right: 5px;
-			position: relative;
-			top: 20%;
+			left: 16px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
 		}
 
 		.account-text {
-			position: absolute;
-
+			position: relative;
 
 			&:after {
 				@include rfs(10);
@@ -320,6 +337,7 @@ div.account {
 				display: block;
 				font-weight: 400;
 				position: relative;
+				width: 60px;
 			}
 		}
 
@@ -371,22 +389,7 @@ div.account {
 	// os itens estejam dentro do menu
 
 	.welcome-message {
-		width: 130px;
-
-		&:after {
-			border-left: 1px solid #E3E1E1;
-			content: '';
-			display: inline-block;
-			height: 30%;
-			left: 47%;
-			position: absolute;
-			top: 48%;
-			transform: translateY(-50%);
-
-			@include breakpoint('small', 'max') {
-				display: none;
-			}
-		}
+		width: 150px;
 	}
 
 	.menu.menu-department & {
@@ -421,7 +424,6 @@ div.account {
 				line-height: 60px;
 				margin: 0;
 				padding: 0;
-				position: absolute;
 				text-align: center;
 				width: 50%;
 			}
@@ -529,13 +531,8 @@ div.account {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
-		@include breakpoint(770px, 'max') {
-			background: #e4e4e4;
-			padding: 10px 20px 0 20px;
-		}
-
 		@include breakpoint(1280px, 'min') {
-			width: 90%;
+			width: 100%;
 		}
 
 		em {
@@ -544,27 +541,23 @@ div.account {
 			font-style: normal;
 		}
 
+		.account__icon--profile ~ em {
+    		bottom: 4px;
+			line-height: 1.2;;
+			position: relative;
+		}
+
 		a {
 			color: $green;
 			position: relative;
 
 			&[href='/no-cache/user/logout'] {
-				bottom: 7px;
+				bottom: 0;
 				color: $gray-d;
 				font-size: 10px;
 				font-weight: 400;
 				left: 0;
 				position: relative;
-
-				@include breakpoint(770px, 'max') {
-					border: 0;
-					bottom: -8px;
-					left: 0;
-					padding: 23px 0 0 0;
-					position: absolute;
-					right: 0;
-					text-align: center;
-				}
 			}
 		}
 
@@ -654,7 +647,6 @@ body.consulempresa {
 				bottom: -11px;
 				font-size: 10px;
 				left: 0;
-				position: absolute;
 			}
 		}
 	}
@@ -698,8 +690,11 @@ body {
 			}
 			.welcome-message {
 				.welcome {
+					display: flex;
+					justify-content: flex-end;
 					margin: 0;
-					padding-left: 31px;
+					padding-left: 30px;
+					padding-right: 20px;
 
 					&:before {
 						@include icon-get('icon-profile-consul');
@@ -710,6 +705,10 @@ body {
 						top: 50%;
     					transform: translateY(-50%);
 					}
+				}
+				@include breakpoint ('small', 'max') {
+					left: 0;
+					max-width: unset;
 				}
 
 			}
@@ -840,7 +839,8 @@ body {
 						border-top: none;
     					display: flex;
 						justify-content: center;
-						position: absolute;
+						position: relative;
+						right: 0;
 
 						.account-text {
 							@include breakpoint('small', 'max') {
