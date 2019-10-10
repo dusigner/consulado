@@ -263,7 +263,7 @@ $(document).on('ready', function() {
 			//event
 			this.orderFormUpdated = function(e, orderForm) {
 				console.info('orderFormUpdated');
-
+				$('input#client-phone').inputmask('(99) 9999[9]-9999');
 				// Teste AB
 				// var urlTesteAb = window.location.search;
 				// var testeA = 'testeab=a';
