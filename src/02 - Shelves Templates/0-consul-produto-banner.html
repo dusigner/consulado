@@ -1,0 +1,58 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<div class="container">
+	<div class="smartbeer-showcase">
+		<div class="product-image">
+			<div class="prod-galeria text-center">
+				<div class="apresentacao">
+					<div id="setaThumbs"></div>
+					<div id="show">
+						<div id="include">
+							<div id="image" productindex="0"></div>
+						</div>
+						<ul class="thumbs"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="product-details">
+			<div class="product-info">
+				<h3 class="product-name">$product.Name</h3>
+
+				<div class="product-price">
+					#if ($product.HasBestPrice)
+					<p class="product-price-from">$product.ListPrice</p>
+					#end
+
+					<p class="product-price-to">$product.BestPrice</p>
+
+					<p class="adicional">
+						#if ($product.NumbersOfInstallment > 1) Em até
+						<span>$product.NumbersOfInstallment</span>x de
+						<strong>$product.InstallmentValue</strong> sem juros
+						#end
+					</p>
+				</div>
+
+				<div class="hide">
+					$product.InsertSku
+				</div>
+
+				<div class="product-skuSelector"></div>
+
+				<div class="product-sku_error hide">
+					<span class="select-sku">
+						Por favor,
+						<strong>selecione uma voltagem </strong></span>
+				</div>
+
+				<div class="product-buy-button">
+					<a class="product-buy">Comprar já</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
