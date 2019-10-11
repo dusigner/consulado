@@ -1,0 +1,163 @@
+.depoiments {
+	background-color: #212121;
+	padding-bottom: 50px;
+
+	.title {
+		padding: 60px 0 40px;
+	}
+
+	&__content {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		height: 400px;
+		justify-content: space-between;
+	}
+
+	.slick-next,
+	.slick-prev {
+
+		&::before {
+			@media (max-width: 920px) {
+				font-size: 16px;
+			}
+		}
+
+		@media (max-width: 920px) {
+			bottom: -65px;
+			color: #736c6b;
+			left: initial;
+			top: initial;
+		}
+	}
+
+	.slick-next {
+		right: -50px;
+
+		@media (max-width: 920px) {
+			right: 55px;
+			top: initial;
+		}
+
+		@media (max-width: 480px) {
+			right: 0;
+		}
+	}
+
+	.slick-prev {
+		left: -50px;
+
+		@media (max-width: 920px) {
+			right: 110px;
+		}
+
+		@media (max-width: 480px) {
+			right: 55px;
+		}
+	}
+
+	.slick-dots {
+		bottom: -25px;
+
+		@media (max-width: 920px) {
+			margin-left: 44px;
+			text-align: left;
+		}
+
+		@media (max-width: 480px) {
+			margin-left: -7px;
+		}
+
+		li {
+			@media (max-width: 920px) {
+				margin: 0 -7px 0 0;
+			}
+		}
+	}
+
+	.card {
+		background: #2D2D2D 0% 0% no-repeat padding-box;
+		border: 1px solid #3D3D3D;
+		box-shadow: 0 1px 3px rbga(0, 0, 0, .7);
+		height: 100%;
+		overflow: hidden;
+		width: 25%;
+
+		&.is-small {
+			height: 47%;
+			width: 45%;
+
+			&:nth-child(2) { height: 52%; }
+			&:nth-child(3) { height: 42%; }
+		}
+
+		&.is-big {
+			width: 31%;
+		}
+
+		.mobile-slide {
+			display: block;
+			width: 100%;
+		}
+
+		@media (max-width: 920px) {
+			display: block;
+			height: 100% !important;
+			width: 100% !important;
+		}
+
+		&__container {
+			display: block;
+			margin: 0 auto;
+			width: 90%;
+		}
+
+		&__header {
+			border-bottom: 1px solid #f1f0f0;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		&__owner {
+
+			.name {
+				color: #fff;
+				font-size: 1.125em;
+				font-weight: 500;
+				margin: 20px 0 3px;
+			}
+
+			.location {
+				color: #0fb6de;
+				font-size: .875em;
+				font-weight: 500;
+				margin: 0;
+				margin-bottom: 15px;
+			}
+		}
+
+		&__product {
+			color: #fff;
+			text-align: right;
+
+			.description {
+				font-size: .75em;
+				font-weight: 500;
+				margin: 20px 0 13px;
+			}
+
+			.product-name {
+				font-size: .875em;
+				margin: 0;
+			}
+		}
+
+		&__message {
+			.text {
+				color: #bebebe;
+				line-height: 21px;
+			}
+		}
+	}
+}
