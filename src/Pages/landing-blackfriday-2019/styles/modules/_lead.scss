@@ -262,14 +262,19 @@
 				&::before {
 					left: 55px;
 					top: 10px;
+
 					@media (max-width: 920px) {
-						left: 53px;
+						left: 43px;
 						top: 8px;
 					}
 				}
 
 				&::after {
 					left: 50px;
+
+					@media (max-width: 920px) {
+						left: 40px;
+					}
 				}
 			}
 		}

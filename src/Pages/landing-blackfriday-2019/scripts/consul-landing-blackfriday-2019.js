@@ -126,9 +126,21 @@ const initLeadsBlackfriday = () => {
 	});
 
 	$('.btn3').on('click', function(e){
-		// console.log('#### CLICOU NO BTN 3 ###');
 		e.preventDefault();
 
+		generateLead();
+	});
+
+	$('.btn-finished').on('click', function(e){
+		e.preventDefault();
+		generateLead();
+	});
+
+	$('.steep4 .lead__btn').on('click', function(){
+		window.location.replace('http://loja.consul.com.br/landing/blackfriday');
+	});
+
+	function generateLead(){
 		var benefits = $('input[name=benefits]:checked').attr('id');
 		benefits = $('label[for='+benefits+']').text();
 
@@ -156,6 +168,7 @@ const initLeadsBlackfriday = () => {
 			}
 
 		}).done(function() {
+			$('.steep2').fadeOut();
 			$('.steep3').fadeOut();
 			$('.steep4').delay(500).fadeIn();
 
@@ -168,23 +181,7 @@ const initLeadsBlackfriday = () => {
 			});
 
 		});
-		// console.log('################ steep3 OK ################');
-	});
-
-	$('.steep2 .btn-finished').on('click', function(e){
-		e.preventDefault();
-		$('.btn2').trigger( 'click' );
-		// console.log('#### CLICOU NO BTN FINALIZAR steep2 ###');
-	});
-
-	$('.steep3 .btn-finished').on('click', function(e){
-		e.preventDefault();
-		$('.btn3').trigger( 'click' );
-		// console.log('#### CLICOU NO BTN FINALIZAR steep3 ###');
-	});
-	$('.steep4 .lead__btn').on('click', function(){
-		window.location.replace('http://loja.consul.com.br/landing/blackfriday');
-	});
+	}
 }
 
 
