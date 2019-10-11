@@ -51,23 +51,6 @@ body.body-cart {
 
 						a { display: block; }
 
-<<<<<<< HEAD
-							img {
-								max-height: 45px;
-							}
-						}
-
-						&.item-unavailable-message {
-							@include breakpoint(small, 'max') {
-								padding: 10px 5px !important;
-							}
-						}
-					}
-
-					.item-remove {
-						right: 20px;
-						top: -2px;
-=======
 						img {
 							display: block;
 							height: 65px;
@@ -75,7 +58,6 @@ body.body-cart {
 							max-width: 65px;
 							width: 65px;
 						}
->>>>>>> ICD-743__alteracao-visual-checkout
 					}
 
 					// Nome do produto
