@@ -301,8 +301,9 @@ div.minicart { float: right }
 // Conta
 div.account {
 	@include breakpoint(extra-large, 'max') { width: 22.66667%; }
-	@include responsiveFont(12);
+
 	color: $txt-gray-l;
+	font-size: 12px;
 	font-weight: 700;
 	height: 60px;
 	padding: 0;
@@ -665,11 +666,6 @@ body.consulempresa {
 
 body {
 	header {
-		.a {
-			stroke: none;
-		}
-
-
 		.account {
 			.account__icon {
 				&.account__icon--profile,

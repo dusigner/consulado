@@ -55,12 +55,12 @@ body.search-active {
 		margin-top: 0;
 	}
 
-	.icon-consul-loupe {
-		@include responsiveFont(28);
+	.icon-icon-loupe-consul {
+		@include responsiveFont(16);
 		color: $green;
 		cursor: pointer;
 		height: 100%;
-		left: 0;
+		left: 10px;
 		line-height: 50px;
 		padding: 0 14px;
 		position: absolute;
