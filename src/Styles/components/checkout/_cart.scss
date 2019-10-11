@@ -75,6 +75,7 @@ body.body-cart {
 							@include breakpoint(490px, 'max') {
 								margin-left: 75px;
 								min-height: 66px;
+								padding-right: 25px;
 							}
 							display: block;
 							font-weight: 500;
@@ -101,8 +102,8 @@ body.body-cart {
 
 							&::before {
 								@include breakpoint('medium', 'min') {
-									content: '';
 									background: #F1F0F0;
+									content: '';
 									height: 1px;
 									position: absolute;
 									right: 15px;
@@ -134,18 +135,22 @@ body.body-cart {
 					}
 
 					// Preço do produto
+					&.product-price { white-space: nowrap; }
+
+					// Preço total do produto
 					&.quantity-price {
 						@include rfs(14px);
 						color: $green;
 						font-weight: bold;
 						text-align: right;
+						white-space: nowrap;
 					}
 
 					// Remover produtos
 					&.item-remove {
 						@include breakpoint('extra-small', 'max') {
 							right: 5px;
-							top: 0;
+							top: -5px;
 							width: inherit;
 						}
 						min-width: 30px;
@@ -202,9 +207,14 @@ body.body-cart {
 						@include breakpoint('medium', 'min') {
 							padding-bottom: 10px;
 							padding-top: 42px;
-							text-align: left;
 							vertical-align: top;
 						}
+					}
+					.shipping-date,
+					.product-price,
+					.item-remove,
+					.quantity {
+						@include breakpoint('medium', 'min') { text-align: left; }
 					}
 
 
@@ -282,17 +292,19 @@ body.body-cart {
 					}
 				}
 
-				.item-service {
-					@include breakpoint(small, 'max') {
+				// Serviços e GAE
+				tr.item-service {
+					@include breakpoint('small', 'max') {
 						margin-bottom: 10px;
 						margin-top: -21px;
 					}
 					@include breakpoint('extra-small', 'min') {
-						border: 1px solid #E3E1E1;
 						border-top: 2px solid transparent;
 						position: relative;
 						transform: translateY(-15px);
 					}
+					border: 1px solid #E3E1E1;
+					border-radius: 0 0 2px 2px;
 
 					&:before {
 						@include breakpoint('extra-small', 'min') { content: ''; }
@@ -310,6 +322,11 @@ body.body-cart {
 						vertical-align: middle;
 
 						&.bundle-item-image { display: none; }
+
+						&.product-price,
+						&.quantity {
+							@include breakpoint('extra-small', 'max') { display: none; }
+						}
 					}
 
 					.bundle-item-name {
