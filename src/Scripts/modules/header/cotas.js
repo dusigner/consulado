@@ -78,24 +78,11 @@ Nitro.module('cotas', function() {
 	$('.open-menu-mobile').click(function() {
 		let nameSelector = $('.menu-department .account__icon.account__icon--profile');
 		if (nameSelector.length > 0) {
-			let loginOption = $('.menu-department .account__icon--profile').parent();
-			loginOption.html(
-				`
-					<span class="logout-text">${loginOption.text().trim().split('\n')[0]}</span>
-					<em>
-						${loginOption.find('em').html()}
-					</em>
-				`
-			);
+
 			$('.header .account').addClass('logged-user');
 
 		} else {
-			let loginOption = $('.menu-department .account__icon--enter').parent();
-			loginOption.html(
-				`
-					<span class="login-text">${loginOption.text()}</span>
-				`
-			);
+
 			$('.header .account').removeClass('logged-user');
 		}
 	});

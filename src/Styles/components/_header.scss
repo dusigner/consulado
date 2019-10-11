@@ -115,8 +115,19 @@ header {
 			margin-left: 40px;
 			width: 300px;
 
-			@include breakpoint('small', 'max') {
+			@include breakpoint ('small', 'max') {
 				margin-left: 0;
+
+				&:before {
+					border-left: 1px solid #E3E1E1;
+					content: '';
+					display: inline-block;
+					height: 20%;
+					position: absolute;
+					right: 50%;
+					top: 48%;
+					transform: translateY(-50%);
+				}
 			}
 		}
 
@@ -339,47 +350,19 @@ div.account {
 				position: relative;
 				width: 60px;
 			}
+
+			@include breakpoint('small', 'max') {
+				@include rfs(12);
+				color: $base-link-color;
+				line-height: 1.5;
+			}
 		}
 
-		@include breakpoint('extra-large', 'max') {
-			right: 60px;
-
-			@include breakpoint ('small', 'max') {
-				background-color: #f4f2f1;
-				height: 60px;
-				line-height: 60px;
-				margin: 0;
-				padding: 0;
-				position: absolute;
-				right: 0;
-				text-align: center;
-				width: 50%;
-			}
+		@include breakpoint('small', 'max') {
+			padding-left: 24px !important;
 		}
 	}
 
-
-	@include breakpoint ('small', 'max') {
-		span {
-			&.account__icon.account__icon--truck {
-				display: inline-block;
-				margin-top: -12px;
-
-				svg {
-					fill: #9aca3c;
-				}
-			}
-
-			&:not(.account__icon) {
-				bottom: 9px;
-				display: block;
-				font-size: 12px;
-				line-height: normal;
-				position: absolute;
-				width: 100%;
-			}
-		}
-	}
 
 	// ******************************************************* //
 	// Eu, Douglas, não me orgulho do que fiz daqui para baixo //
@@ -390,6 +373,10 @@ div.account {
 
 	.welcome-message {
 		width: 150px;
+
+		@include breakpoint('small', 'max') {
+			width: 50%;
+		}
 	}
 
 	.menu.menu-department & {
@@ -399,8 +386,6 @@ div.account {
 		}
 	}
 	@include breakpoint(small, 'max') {
-		border-bottom: 1px solid #e4e4e4;
-		margin-bottom: -1px;
 		opacity: 0;
 		visibility: hidden;
 
@@ -557,6 +542,7 @@ div.account {
 				font-size: 10px;
 				font-weight: 400;
 				left: 0;
+				padding: 0;
 				position: relative;
 			}
 		}
@@ -574,11 +560,11 @@ div.account {
 		background-color: #ffffff;
 		color: $base-link-color;
 		display: block;
-
-		@include breakpoint ('small', 'max') {
-			bottom: 9px;
-			top: auto;
-		}
+		max-width: 100px;
+		overflow: hidden;
+		text-align: left;
+		text-overflow: ellipsis;
+    	white-space: nowrap;
 
 		&:after {
 			@include rfs(10);
@@ -589,10 +575,14 @@ div.account {
 			left: 0;
 			position: relative;
 			text-align: left;
+			z-index: 1;
+		}
 
-			@include breakpoint ('small', 'max') {
-				display: none;
-			}
+		@include breakpoint('small', 'max') {
+			border: none;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
 		}
 	}
 
@@ -691,10 +681,14 @@ body {
 			.welcome-message {
 				.welcome {
 					display: flex;
+					flex-direction: column;
+					float: right;
 					justify-content: flex-end;
 					margin: 0;
+					max-width: 150px;
 					padding-left: 30px;
 					padding-right: 20px;
+					width: fit-content;
 
 					&:before {
 						@include icon-get('icon-profile-consul');
@@ -703,7 +697,13 @@ body {
 						left: 0;
 						position: absolute;
 						top: 50%;
-    					transform: translateY(-50%);
+						transform: translateY(-50%);
+						z-index: 1;
+					}
+
+					@include breakpoint('small', 'max') {
+						height: 100%;
+						justify-content: center;
 					}
 				}
 				@include breakpoint ('small', 'max') {
@@ -721,118 +721,11 @@ body {
 						.ajax-content-loader {
 							background-color: #fff;
 							height: 100%;
-
-							.welcome {
-								@include rfs(12);
-								color: $gray-d;
-								display: inline-block;
-								margin: 0;
-								padding: 0;
-								position: relative;
-
-								&:before {
-									display: none;
-								}
-
-							}
 						}
 					}
 				}
 
 				.account {
-					@include breakpoint('small', 'max') {
-						float: none;
-						padding: 0;
-
-						.welcome-message {
-							background-color: #fff;
-
-							.welcome {
-								background-color: #fff;
-								height: 100%;
-								left: 0;
-								top: 0;
-								width: 100%;
-
-								em {
-									height: 100%;
-									top: 0;
-
-									a[href='/no-cache/user/logout'] {
-										color: #fff;
-										font-size: 0;
-										font-weight: 400;
-										padding: 0;
-										right: 10px;
-										text-decoration: none;
-										top: 14px;
-									}
-								}
-
-								#login {
-									align-items: center;
-									background-color: #fff;
-									border: none;
-									height: 100%;
-									padding: 0;
-									position: relative;
-									top: 0;
-
-									&:before {
-										display: none;
-									}
-								}
-
-								.login-text,
-								.logout-text {
-									color: #736c6b;
-									display: inline-block;
-									position: absolute;
-									right: 30px;
-									text-align: left;
-									top: 50%;
-									transform: translateY(-70%);
-									width: unset;
-
-
-									&:before {
-										@include icon-get('icon-profile-consul');
-										color: $green;
-										font-size: 28px;
-										left: -34px;
-										position: absolute;
-    									top: -2px;
-									}
-								}
-
-								.login-text {
-									&:after {
-										@include rfs(10);
-										content: 'Faça login!';
-										display: block;
-										font-weight: 400;
-										left: 0;
-										position: relative;
-										text-align: left;
-									}
-								}
-
-								.logout-text {
-
-									&:after {
-										@include rfs(10);
-										content: 'Sair';
-										display: block;
-										font-weight: 400;
-										left: 0;
-										position: relative;
-										text-align: left;
-									}
-								}
-							}
-						}
-					}
-
 					.link-meus-pedidos {
 						align-items: center;
 						background-color: #fff;
@@ -841,48 +734,6 @@ body {
 						justify-content: center;
 						position: relative;
 						right: 0;
-
-						.account-text {
-							@include breakpoint('small', 'max') {
-								@include rfs(12);
-								color: $gray-d;
-								display: inline-block;
-								left: 8px;
-								margin: 0 5px;
-								position: relative;
-								text-align: left;
-								text-transform: none;
-								top: 0;
-								transform: none;
-								width: unset;
-
-								&:after {
-									@include rfs(10);
-									bottom: 0;
-									content: 'Acompanhe!';
-									display: block;
-									font-weight: 400;
-								}
-
-								&:before {
-									@include icon-get('icon-truck-consul');
-									color: $green;
-									font-size: 32px;
-									left: -38px;
-									position: absolute;
-									top: -2px;
-								}
-							}
-						}
-
-						&:before {
-							border: 1px solid #E3E1E1;
-							content: '';
-							height: 40%;
-							margin: 0;
-							position: absolute;
-							right: 100%;
-						}
 					}
 				}
 			}
