@@ -3,6 +3,7 @@
 import Video from 'modules/cervejeiras/cervejeiras.video';
 import Event from 'modules/embutidos/eventos.embutidos';
 import 'dataLayers/dataLayer-embutidos';
+import 'modules/listagem/percentoff';
 
 Nitro.controller('embutidos', ['dataLayer-embutidos'], function(
 	dataLayerEmbutidos

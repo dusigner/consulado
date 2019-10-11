@@ -2,6 +2,7 @@ const Eventos = {
 	init: () => {
 		Eventos.hoverIMGS();
 		Eventos.dotsInfo();
+		Eventos.compreJunto();
 	},
 	// Hover event troca Img do componete
 	hoverIMGS: () => {
@@ -17,7 +18,8 @@ const Eventos = {
 		//Quando for mobile
 		if ($(window).width() <= 768) {
 			$('.box-img img').click(function() {
-				let current = '/arquivos/' + this.src.split('/')[4].split('?')[0];
+				let current =
+					'/arquivos/' + this.src.split('/')[4].split('?')[0];
 				switch (this.alt) {
 				case 'Cooktops':
 					if (current === CooktopInicial) {
@@ -225,6 +227,163 @@ const Eventos = {
 			}, 500);
 			imgMascara.attr('src', '/arquivos/embutir_ambientada1.jpg');
 		});
+	},
+	compreJunto: () => {
+		//Carregamento
+		let totalPor = 0;
+		let valPor = 0;
+		let totalDe = 0;
+		let valDe = 0;
+		let money = 0;
+		let valMoney = 0;
+		//Set SKU
+		let skus = [];
+		for (let i = 0; i < $('.combos-prateleira').length; i++) {
+			skus.push({ cart: true, id: 666, sku: 666 });
+		}
+		$.map($('.combos-prateleira'), (data, index) => {
+			skus[index].id = data.dataset.idproduto;
+			getSkuByIdProduct(data.dataset.idproduto, index);
+		});
+
+		//Functions Custom
+		function getSkuByIdProduct(productId, index) {
+			var urlOrigin = window.origin || window.location.origin,
+				apiUrl =
+					urlOrigin +
+					'/api/catalog_system/pub/products/search?fq=productId:' +
+					productId;
+			$.ajax({
+				url: apiUrl,
+				type: 'GET'
+			})
+				.then(function(data) {
+					if (data[0].items.length <= 1) {
+						skus[index].sku = data[0].items[0].itemId;
+					} else {
+						skus[index].sku = data[0].items.filter(x =>
+							x.name.includes('110V')
+						)[0].itemId;
+					}
+				})
+				.fail(function(data) {
+					return data;
+				});
+		}
+
+		function formatReal(int) {
+			var tmp = int + '';
+			tmp = tmp.replace(/([0-9]{2})$/g, ',$1');
+			if (tmp.length > 6)
+				tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, '.$1,$2');
+			return tmp;
+		}
+
+		function getMoney(str) {
+			return parseInt(str.replace(/[\D]+/g, ''));
+		}
+
+		function setLink() {
+			let linkSkus = '/checkout/cart/add?sc=3&redirect=true&';
+			skus.map(n => {
+				if (n.cart === true) {
+					linkSkus += `sku=${n.sku}&qty=1&seller=1&`;
+				}
+			});
+
+			if (linkSkus === '/checkout/cart/add?sc=3&redirect=true&') {
+				$('.go').attr('href', linkSkus);
+				$('.go').addClass('disable');
+			} else {
+				$('.go').attr('href', linkSkus);
+				$('.go').removeClass('disable');
+			}
+		}
+		function setStatusLinks(idProduto, operador) {
+			skus.map(v => {
+				if (v.id.toString() === idProduto) {
+					v.cart = operador;
+				}
+			});
+		}
+		function checkAvista(totalPor,money) {
+			if (getMoney(totalPor) !== money) {
+				$('li .money-final').text(`À vista por R$ ${formatReal(money)}`);
+			} else if(getMoney(totalPor) === money) {
+				$('li .money-final').text('');
+			}
+		}
+		//Valida se tem 3 produtos na vitrine
+		if (skus.length >= 3) {
+			//SetPirce on HTML
+			$.map( $('article .de .val'), x => (totalDe += getMoney(x.textContent)) );
+			$.map( $('article .por .val'), x => (totalPor += getMoney(x.textContent)) );
+			$.map( $('article .discount-boleto strong'), x => (money += getMoney(x.textContent)) );
+			totalDe = formatReal(totalDe);
+			totalPor = formatReal(totalPor);
+			$('li .de-final').text(`De: R$ ${totalDe}`);
+			$('li .por-final').text(`Por: R$ ${totalPor}`);
+			checkAvista(totalPor,money);
+
+			//Copia o elemento de fora e joga para dentro da vitrine;
+			$('.vitrine-total').clone().appendTo('.vitrine ul');
+			$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+			$('.vitrine-total').remove();
+
+			//Set Link on Button
+			setTimeout(() => setLink(), 3000);
+
+			//Action Add and Remove
+			$('.remove-item').click(x => {
+				x.currentTarget.classList = 'remove-item';
+				x.currentTarget.nextElementSibling.classList = 'add-item active';
+				//Price
+				valDe = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[2].innerText );
+				valPor = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[3].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.nextElementSibling.children[4].children[0].innerText );
+
+				//Format and calculator price
+				totalDe = formatReal(getMoney(totalDe) - valDe);
+				totalPor = formatReal(getMoney(totalPor) - valPor);
+				money = money - valMoney;
+
+				//Set Price on HTML
+				$('.de-final').text(`De: R$ ${totalDe}`);
+				$('.por-final').text(`Por: R$ ${totalPor}`);
+				checkAvista(totalPor,money);
+
+				x.currentTarget.parentElement.classList.add('removido');
+				//Set Link on Button
+				setStatusLinks( x.currentTarget.parentElement.dataset.idproduto, false );
+				setLink();
+			});
+			$('.add-item').click(x => {
+				x.currentTarget.classList = 'add-item';
+				x.currentTarget.previousElementSibling.classList = 'remove-item active';
+				//Price
+				valDe = getMoney( x.currentTarget.nextElementSibling.children[2].innerText );
+				valPor = getMoney( x.currentTarget.nextElementSibling.children[3].innerText );
+				valMoney = getMoney( x.currentTarget.nextElementSibling.children[4].children[0].innerText );
+
+				//Format and calculator price
+				totalDe = formatReal(getMoney(totalDe) + valDe);
+				totalPor = formatReal(getMoney(totalPor) + valPor);
+				money = money + valMoney;
+
+				//Set Price on HTML
+				$('.de-final').text(`De: R$ ${totalDe}`);
+				$('.por-final').text(`Por: R$ ${totalPor}`);
+				checkAvista(totalPor,money);
+
+				x.currentTarget.parentElement.classList.remove('removido');
+				//Set Link on Button
+				setStatusLinks( x.currentTarget.parentElement.dataset.idproduto,true );
+				setLink();
+			});
+		} else {
+			$('.vitrine-header').addClass('hide');
+			$('.vitrine').addClass('hide');
+		}
 	}
 };
 

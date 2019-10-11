@@ -1,0 +1,36 @@
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+#if ($product.IsInStock)
+<article
+	class="box-produto combos-prateleira $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end"
+	data-idproduto="$id"
+	data-department="$product.DepartmentName"
+	data-category="$product.CategoryName"
+	data-percent="$product.ListPriceMinusBestPriceInPercent"
+>
+	<p class="remove-item active">Remover do combo</p>
+	<p class="add-item">Adicionar ao combo</p>
+	<a href="$uri" class="link">
+		$product.GetImageTag(300, 210)
+		<h3 class="title">$product.Name</h3>
+		<p class="de">
+			<span class="txtDe">De: </span>
+			<span class="val">$product.ListPrice</span>
+		</p>
+		<p class="por">
+			<span class="txtPor">Por: </span>
+			<span class="val">$product.BestPrice</span>
+		</p>
+		<p class="discount-boleto hide"></p>
+		<p class="por-boleto hide">
+			<span class="txtPor">Por: </span> <span class="val">$product.BestPrice<span class="cash"> à vista no boleto</span></span>
+			<span class="off"></span>
+		</p>
+		<div class="FlagsHightLight" style="display: none;">
+			$product.DiscountHightLight $product.HightLight
+		</div>
+	</a>
+</article>
+#end

@@ -60,7 +60,8 @@ Nitro.module('boleto', function() {
 			prodAvailable = $.grep(window.skuJson.skus, function(n) {
 				return n.available;
 			}),
-			valPercentage;
+			valPercentage,
+			isPurificador = dataLayer[0].pageDepartment.toLowerCase() === 'purificador';
 
 		$.each(window.skuJson.skus, function(i, sku) {
 			sku.valPercentage = sku.cashPercentage = false;
@@ -68,7 +69,7 @@ Nitro.module('boleto', function() {
 			if (sku.available && sku.listPrice > sku.bestPrice) {
 				valPercentage = Math.floor(((sku.listPrice - sku.bestPrice) / sku.listPrice) * 100);
 
-				if (valPercentage >= 20) {
+				if (valPercentage >= 20 || (isPurificador && valPercentage >= 5)) {
 					sku.valPercentage = valPercentage;
 					if (cmcDiscountCartao >= cmcDiscountBoleto) {
 						sku.cashPercentage = valPercentage + cmcDiscountCartao;
@@ -79,7 +80,7 @@ Nitro.module('boleto', function() {
 			}
 		});
 
-		if ($prodPreco.find('.valor-de').length > 0 && prodAvailable[0].valPercentage >= 20) {
+		if ($prodPreco.find('.valor-de').length > 0 && ((prodAvailable[0].valPercentage >= 5 && dataLayer[0].pageDepartment.toLowerCase() === 'purificador') || prodAvailable[0].valPercentage >= 20 )) {
 			appendOff($('.prod-galeria'), prodAvailable[0].valPercentage);
 		}
 
