@@ -1,63 +1,57 @@
-body {
-	&.body-cart {
+body.body-cart {
+	.cart-template  { width: 99.99%; }
 
-		.cart-template  {
-			width: 99.99%;
-		}
+	.checkout-container { padding-bottom: 40px; }
 
-		.checkout-container {
-			padding-bottom: 40px;
-		}
+	.cart {
+		@include breakpoint('small' 'max') { padding-bottom: 25px }
+		border: 0;
+		padding: 0;
 
-		.cart {
-			@include breakpoint(small 'max') { padding-bottom: 25px }
-			border: 0;
-			padding: 0;
+		table.cart-items {
 
-			.cart-items {
-				thead {
-					@include responsiveFont(14, 16, true);
-					border-bottom: 3px solid $green;
+			// Labels das colunas do carrinho
+			thead {
+				@include rfs(14px);
+				border-bottom: 3px solid $green;
 
-					th {
-						padding: 15px;
-						text-align: left;
-						text-transform: capitalize;
-					}
+				th {
+					padding: 15px 10px;
+					text-align: left;
+					text-transform: capitalize;
+
+					&.product { padding-left: 0; }
+
+					&.shipping-date { width: 120px; }
+
+					&.product-price,
+					&.quantity,
+					&.quantity-price { width: 150px; }
+
+					&.item-remove { width: 50px; }
 				}
+			}
 
-				tbody {
+			tbody {
+				td {
+					@include breakpoint('small', 'max') { padding: 10px 0 !important; }
+					// padding: 20px 10px;
+					vertical-align: top;
 
-					td {
-						@include breakpoint(768px, 'max') { vertical-align: top; }
-						@include breakpoint(small, 'max') { padding: 10px 0 !important; }
-						padding: 20px 10px;
-
-						@include  breakpoint(small 'min') {
-							padding: 20px 10px 0;
+					// Imagem do produto
+					&.product-image {
+						@include breakpoint('small', 'max') {
+							left: 15px;
+							max-height: 65px;
+							padding-top: 0!important;
+							width: 65px;
 						}
+						background-position: center 30px;
+						vertical-align: top;
 
-						@include breakpoint(768px, 'max') {
-							vertical-align: top;
+						a { display: block; }
 
-							&.product-image {
-								left: 15px;
-								max-height: 65px;
-
-
-							}
-						}
-
-						&.product-image {
-
-							background-position: center 30px;
-							vertical-align: top;
-
-
-							@include  breakpoint(small 'max') {
-								padding: 0;
-							}
-
+<<<<<<< HEAD
 							img {
 								max-height: 45px;
 							}
@@ -73,1198 +67,1133 @@ body {
 					.item-remove {
 						right: 20px;
 						top: -2px;
+=======
+						img {
+							display: block;
+							height: 65px;
+							max-height: 65px;
+							max-width: 65px;
+							width: 65px;
+						}
+>>>>>>> ICD-743__alteracao-visual-checkout
 					}
 
-					.product-item {
-						border: 1px solid #E3E1E1;
-						border-radius: 3px;
-						margin-bottom: 20px;
-						overflow: initial;
-						padding: 10px 0;
+					// Nome do produto
+					&.product-name {
+						@include breakpoint('small', 'max') {
+							margin-left: 0;
+							padding: 0 15px !important;
+							width: 100%;
+						}
+						@include rfs(14px);
+						font-weight: bold;
+						width: 40%;
 
-
-						@include breakpoint(small, 'max') { padding-bottom: 10px; }
-
-						@include breakpoint(small, 'min') {
-							border-radius: 3px;
-							margin: 15px 0;
+						& > a {
+							@include breakpoint(490px, 'max') {
+								margin-left: 75px;
+								min-height: 66px;
+								padding-right: 25px;
+							}
+							display: block;
+							font-weight: 500;
+							position: relative;
 						}
 
+						// Esconder marca e entregador
 						.brand,
-						.seller,
-						.shipping-date,
-						.product-price,
-						.quantity-price {
-							@include responsiveFont(12, 16, true);
-							color: $purple;
-							font-weight: normal;
-						}
+						.seller { display: none; }
 
-						.shipping-date,
-						.product-price,
-						.quantity-price,
-						.item-remove,
-						.quantity {
-
-							@include breakpoint(small, 'min') {
-								padding-bottom: 10px;
-								padding-top: 45px;
-								text-align: left;
-								vertical-align: top;
+						// Serviços adicionados ao produto
+						.product-service {
+							@include breakpoint(490px, 'max') { max-width: 100%; }
+							@include breakpoint('extra-small', 'max') {
+								border-top: 1px solid #F1F0F0;
+								padding-top: 0;
 							}
-						}
-
-						.product-name {
-							@include breakpoint(small, 'max') { width: 240px; }
-							@include responsiveFont(14, 16, true);
-							font-weight: bold;
-							width: 385px;
-
-							@include breakpoint(small, 'max') {
-								margin-left: 0;
-								padding: 0 15px !important;
-								width: 100%;
-							}
-
-							&>a {
-								display: block;
-								font-weight: 500;
-								margin-left: 60px;
-								padding-bottom: 10px;
+							@include breakpoint('medium', 'max') {
 								position: relative;
-								width: calc(100% - 60px);
-								@include breakpoint(small, 'max') {
-									min-height: 62px;
-								}
+								width: 220%;
+								z-index: 1;
 							}
+							padding: 10px 0;
 
-							.brand,
-							.seller {
-								display: none;
-
-								// &:after {
-								// 	content: ' - ';
-								// 	display: inline-block;
-								// }
-							}
-
-							.product-service {
-								padding-top: 10px;
-								position: relative;
-
-								@include breakpoint(small, 'min') {
-
-									&::before {
-										background: #f4f2f1;
-										content: '';
-										height: 1px;
-										position: absolute;
-										width: 1000%;
-									}
-								}
-
-								@include breakpoint(small, 'max') {
-									border-top: 1px solid $gray-l;
-									padding-top: 0;
-								}
-
-								.linkWarranty {
-									@include responsiveFont(12, 16, true);
-									font-weight: 600;
-									margin-top: 20px;
-
-									@include breakpoint(small, 'max') {
-										@include responsiveFont(13, 18, true);
-										font-weight: 500;
-										line-height: normal;
-										padding: 10px 0;
-									}
-								}
-							}
-						}
-
-						.item-remove {
-
-							.item-link-remove {
-								.icon {
-									background-size: 100% 100%;
-									display: inline-block;
-									height: 13px;
-									margin-top: 5px;
-									width: 13px;
-
-									&:before {
-										visibility: hidden;
-									}
-
-									&.icon-remove {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
-									}
-								}
-							}
-
-							@include breakpoint(small, 'min') {
-								padding-right: 45px;
-
-								&:before {
-									background: #fff;
+							&::before {
+								@include breakpoint('medium', 'min') {
+									background: #F1F0F0;
 									content: '';
 									height: 1px;
-									margin: 49px 0 0 0;
 									position: absolute;
-									right: 0;
-									width: 20px;
-
+									right: 15px;
+									width: calc(100% - 110px);
 								}
 							}
-						}
 
-						.quantity-price {
-							@include responsiveFont(14, 16, true);
-							color: $green;
-							font-weight: bold;
-							padding: 20px 5px;
-
-						}
-
-						.shipping-date {
-
-							.shipping-estimate-date {
-								@include responsiveFont(13, 16, true);
-								color: $txt-gray;
-								font-weight: bold;
-							}
-						}
-
-						.product-price {
-							margin-top: 9px;
-							text-transform: uppercase;
-
-							@include breakpoint(small, 'max') {
-								margin-right: 16px;
-							}
-
-							.list-price {
-								@include responsiveFont(10, 16, true);
-								font-weight: 500;
-								.old-product-price { color: $purple; }
-							}
-
-							.best-price {
-								@include responsiveFont(12, 16, true);
-								color: $purple;
-								display: flex;
-								font-weight: bold;
-							}
-							.new-product-price-label {
-								margin-right: 3px;
-							}
-							.discount {
-								margin-left: 10px;
-							}
-							.field-help {
-								margin-top: 25px;
-							}
-							.how-much-discount {
-								color: #0FB6DE;
-							}
-						}
-
-						.quantity {
-							@include breakpoint(small, 'min') {
-								padding-top: 38px;
-							}
-							@include breakpoint(768px, 'max') {
-							   align-content: center;
-							   align-items: center;
-							   display: flex;
-							   margin-top: 10px;
-							}
-
-							input {
-								height: 24px;
-								width: 30px;
-							}
-
-							.item-quantity-change {
-								@include breakpoint(768px, 'min') {
-									position: initial;
+							.linkWarranty {
+								@include breakpoint(small, 'max') {
+									font-weight: 500;
+									line-height: normal;
+									padding: 10px 15px;
 								}
+								@include rfs(12px);
+								font-weight: 600;
+								margin-top: 20px;
+							}
+						}
 
-								.icon {
-									background-size: 100% 100%;
-									display: inline-block;
-									height: 16px;
-									left: 1px;
-									position: relative;
-									top: 4px;
-									width: 16px;
-
-									&.icon-minus-sign {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_minus-.png');
-									}
-
-									&.icon-plus-sign {
-										background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_plus-.png');
-									}
-
-									&::before {
-										visibility: hidden;
-									}
-								}
-							 }
+						// Compra recorrente
+						.add-item-attachment-container {
+							@include breakpoint(491px, 'min') {
+								left: 0;
+								transform: translateX(0);
+								width: 220%;
+								z-index: 1;
+							}
 						}
 					}
 
-					.item-service {
-						border: 1px solid #E3E1E1;
-						position: relative;
+					// Preço do produto
+					&.product-price { white-space: nowrap; }
 
-						@include breakpoint(small, 'max') {
-							margin-bottom: 10px;
-							margin-top: -21px;
+					// Preço total do produto
+					&.quantity-price {
+						@include rfs(14px);
+						color: $green;
+						font-weight: bold;
+						text-align: right;
+						white-space: nowrap;
+					}
+
+					// Remover produtos
+					&.item-remove {
+						@include breakpoint('extra-small', 'max') {
+							right: 5px;
+							top: -5px;
+							width: inherit;
+						}
+						min-width: 30px;
+
+						.item-link-remove {
+							@include breakpoint('extra-small', 'min') { margin-top: -7px; }
+							align-items: center;
+							display: flex;
+							justify-content: center;
+							padding: 10px;
+							text-align: center;
+
+							.icon {
+								background-size: 100% 100%;
+								display: block;
+								height: 13px;
+								width: 13px;
+
+								&:before { visibility: hidden; }
+
+								&.icon-remove { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png'); }
+							}
+						}
+					}
+				}
+
+
+				tr.product-item {
+					@include breakpoint(small, 'max') { padding-bottom: 10px; }
+					@include breakpoint(small, 'min') {
+						border-radius: 3px;
+						margin: 15px 0;
+					}
+					border: 1px solid #E3E1E1;
+					border-radius: 3px;
+					margin-bottom: 20px;
+					overflow: initial;
+					padding: 10px 0;
+
+					.brand,
+					.seller,
+					.shipping-date,
+					.product-price {
+						@include rfs(12px);
+						color: $purple;
+						font-weight: normal;
+					}
+
+					.shipping-date,
+					.product-price,
+					.quantity-price,
+					.item-remove,
+					.quantity {
+						@include breakpoint('medium', 'min') {
+							padding-bottom: 10px;
+							padding-top: 42px;
+							vertical-align: top;
+						}
+					}
+					.shipping-date,
+					.product-price,
+					.item-remove,
+					.quantity {
+						@include breakpoint('medium', 'min') { text-align: left; }
+					}
+
+
+					.shipping-date {
+						.shipping-estimate-date {
+							@include responsiveFont(13, 16, true);
+							color: $txt-gray;
+							font-weight: bold;
+						}
+					}
+
+					.product-price {
+						margin-top: 9px;
+						text-transform: uppercase;
+
+						@include breakpoint(small, 'max') { margin-right: 16px; }
+
+						.list-price {
+							@include responsiveFont(10, 16, true);
+							font-weight: 500;
+
+							.old-product-price { color: $purple; }
 						}
 
-						@include breakpoint(small, 'min') {
+						.best-price {
+							@include responsiveFont(12, 16, true);
+							color: $purple;
+							display: flex;
+							font-weight: bold;
+						}
 
-							&:before {
+						.new-product-price-label { margin-right: 3px; }
+
+						.discount { margin-left: 10px; }
+
+						.field-help { margin-top: 25px; }
+
+						.how-much-discount { color: #0FB6DE; }
+					}
+
+					.quantity {
+						@include breakpoint('extra-small', 'max') {
+							align-content: center;
+							align-items: center;
+							display: flex;
+							margin-left: 90px;
+							margin-top: 10px;
+						}
+
+						input {
+							display: inline-block;
+							height: 24px;
+							width: 25px;
+						}
+
+						.item-quantity-change {
+							@include breakpoint(768px, 'min') { position: initial; }
+
+							.icon {
+								background-size: 100% 100%;
+								display: inline-block;
+								height: 16px;
+								left: 1px;
+								position: relative;
+								top: 4px;
+								width: 16px;
+
+								&.icon-minus-sign { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_minus-.png'); }
+
+								&.icon-plus-sign { background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_plus-.png'); }
+
+								&::before { visibility: hidden; }
+							}
+						}
+					}
+				}
+
+				// Serviços e GAE
+				tr.item-service {
+					@include breakpoint('small', 'max') {
+						margin-bottom: 10px;
+						margin-top: -21px;
+					}
+					@include breakpoint('extra-small', 'min') {
+						border-top: 2px solid transparent;
+						position: relative;
+						transform: translateY(-15px);
+					}
+					border: 1px solid #E3E1E1;
+					border-radius: 0 0 2px 2px;
+
+					&:before {
+						@include breakpoint('extra-small', 'min') { content: ''; }
+						background: transparent;
+						height: 2px;
+						margin-top: -1px;
+						position: absolute;
+						top: -1px;
+						width: 100%;
+					}
+
+					td {
+						padding-bottom: 5px;
+						padding-top: 5px;
+						vertical-align: middle;
+
+						&.bundle-item-image { display: none; }
+
+						&.product-price,
+						&.quantity {
+							@include breakpoint('extra-small', 'max') { display: none; }
+						}
+					}
+
+					.bundle-item-name {
+						@include responsiveFont(14, 16, true);
+						padding: 15px 0;
+						position: relative;
+
+						span {
+							display: inline-block;
+							font-weight: 500;
+							padding-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.loading-inline { display: none!important; }
+
+	// Adicionar cupom
+	.coupon-column {
+		width: 50%;
+
+		.delete {
+			font-size: 12px;
+			font-weight: bold;
+			line-height: 12px;
+			margin-left: 10px;
+		}
+
+		.info {
+			align-items: center;
+			display: flex;
+		}
+
+		@include breakpoint(small, 'max') {
+			width: 100%;
+
+			.coupon { width: 100%; }
+		}
+
+		input { height: 35px; }
+
+		.summary-coupon {
+			float: none;
+
+			@include breakpoint(small, 'min') {
+				margin-left: 0;
+				margin-top: 10px;
+			}
+
+			.coupon-data {
+				float: none;
+
+				@include breakpoint(small, 'max') {
+					margin-bottom: 25px;
+					text-align: center;
+					width: 100%;
+				}
+
+				.link-coupon-add {
+					@include responsiveFont(12, 16, true);
+					border: 1px solid #E3E1E1;
+					font-weight: bold;
+					padding: 12px 25px;
+
+					@include breakpoint(small, 'min') {
+						padding: 12px 45px;
+					}
+
+					span {
+						color: #736C6B;
+						&:first-child {
+							display: none;
+
+							@include breakpoint(small, 'min') {
+								display: inline-block;
+							}
+						}
+					}
+
+					@include breakpoint(small, 'max') {
+						display: inline-block !important;
+						width: 100%;
+					}
+				}
+			}
+
+			.coupon-fieldset {
+				.coupon-label {
+					display: block;
+					width: 125px;
+
+					label { font-weight: bold; }
+				}
+
+				.coupon-fields {
+					display: inline-block;
+
+					input { height: 40px; }
+
+					button {
+						background: #fff;
+						border: 2px solid $gray;
+						box-shadow: none;
+						color: $txt-gray-l;;
+						font-weight: bold;
+						padding: 8px 20px;
+						text-shadow: none;
+
+						&:hover {
+							background: $gray;
+							color: #ffffff;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.msg-coupon {
+		background-color: $green;
+		border-radius: 5px;
+		box-shadow: 0 1px 8px 3px rgba(0, 0, 0, .2);
+		color: #fff;
+		display: inline-block;
+		margin-top: 25px;
+		padding: 2px 6px;
+	}
+
+	// Informação total do carrinho
+	.totalizers {
+		@include breakpoint(small, 'max') {
+			border-top: 1px solid $gray-l;
+			padding-top: 5px;
+			width: 100%;
+		}
+		max-width: 390px;
+		padding: 0;
+		width: 100%;
+
+		&.summary-totalizers {
+
+			.accordion-body {
+
+				@include breakpoint(small, 'min') {
+					overflow: hidden;
+				}
+			}
+
+			@include breakpoint(small, 'min') {
+				border: 1px solid #E3E1E1;
+				border-radius: 3px;
+				margin-top: 5px;
+
+				.totalizers-list {
+
+					tr {
+						.info {
+							@include responsiveFont(14, 16, true);
+							padding-left: 20px;
+							position: relative;
+
+							&::before {
 								background: #fff;
+								bottom: -1px;
 								content: '';
-								height: 2px;
-								margin-top: -1px;
+								height: 1px;
+								left: calc( -100% + 20px);
 								position: absolute;
 								width: 100%;
 							}
-
-							.item-link-remove {
-								position: relative;
-
-								&:before {
-									background: #fff;
-									content: '';
-									height: 2px;
-									position: absolute;
-									right: -35px;
-									top: -12px;
-									width: 20px;
-								}
-							}
-						}
-
-						td {
-							padding: 10px 10px 25px 10px;
-
-							&.bundle-item-image {
-								display: none;
-							}
-
-							&.quantity-price,
-							&.item-remove {
-								padding: 0;
-							}
-
-							&.item-remove {
-								padding-right: 25px;
-
-								.icon-remove {
-									background-image: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_close.png');
-									background-size: 100% 100%;
-									display: inline-block;
-									height: 13px;
-									margin-top: 5px;
-									width: 13px;
-
-
-									&:before {
-										visibility: hidden;
-									}
-								}
-							}
-						}
-
-						.bundle-item-name {
-							@include responsiveFont(14, 16, true);
-							padding: 15px 0;
-							position: relative;
-
-							span {
-								font-weight: 500;
-								padding-left: 10px;
-							}
-
-							@include breakpoint(small, 'min') {
-
-								&::before {
-									background: #f4f2f1;
-									content: '';
-									height: 1px;
-									position: absolute;
-									top: 0;
-									width: 1000%;
-								}
-							}
-						}
-
-						.quantity-price {
-							@include responsiveFont(12, 16, true);
-							color: $green;
-							font-weight: bold;
-						}
-
-						.item-remove {
-							.item-link-remove { color: $txt-gray-l; }
 						}
 					}
 				}
 			}
 		}
 
-		.loading-inline { display: none!important; }
-
-		.msg-coupon {
-			background-color: $green;
-			border-radius: 5px;
-			box-shadow: 0 1px 8px 3px rgba(0, 0, 0, .2);
-			color: #fff;
-			display: inline-block;
-			margin-top: 25px;
-			padding: 2px 6px;
+		.Shipping {
+			.info {
+				&::before { display: none; }
+			}
 		}
 
-		.totalizers {
-			@include breakpoint(small, 'max') {
-				border-top: 1px solid $gray-l;
-				padding-top: 5px;
+		.monetary {
+			padding-right: 20px;
+			position: relative;
+
+			&::before {
+				background: #fff;
+				bottom: -1px;
+				content: '';
+				height: 1px;
+				position: absolute;
+				right: calc( -100% + 20px);
 				width: 100%;
 			}
-			max-width: 390px;
-			padding: 0;
+		}
+
+		@include breakpoint(small, 'max') {
 			width: 100%;
+		}
 
-			&.summary-totalizers {
+		.quantity-price,
+		.monetary {
+			@include responsiveFont(13, 16, true);
+			color: $purple;
+			font-weight: bold;
+			text-align: right;
+			width: auto;
+		}
 
-				.accordion-body {
+		.info {
+			@include responsiveFont(13, 16, true);
+			font-weight: 500;
+			padding-left: 20px;
+			text-align: left;
+			vertical-align: middle;
+			width: 55%;
+		}
 
-					@include breakpoint(small, 'min') {
-						overflow: hidden;
-					}
+		.empty { display: none; }
+
+		.accordion-group {
+			margin-bottom: 0;
+
+			tbody,
+			tfoot {
+				padding: 5px;
+
+				tr {
+					border-bottom: 1px solid $gray-l;
+					position: relative;
 				}
+			}
 
-				@include breakpoint(small, 'min') {
-					border: 1px solid #E3E1E1;
-					border-radius: 3px;
-					margin-top: 5px;
+			.Items {
+				.info {
+					@include responsiveFont(13, 16, true);
+					font-weight: 500;
+					padding-right: 26px;
+					text-transform: capitalize;
+				}
+			}
 
-					.totalizers-list {
+			.shipping-calculate {
+				.info {
+					@include responsiveFont(14, 16, true);
+					padding-left: 20px;
+				}
+				.monetary {
+					display: none;
 
-						tr {
+					&.form-postal-code {
+						display: table-cell !important;
+						padding-left: 18px;
 
-							.info {
-								@include responsiveFont(14, 16, true);
-								padding-left: 20px;
-								position: relative;
+						@include breakpoint(extra-small, 'max') {
+							padding-left: 0;
+							padding-right: 0;
+						}
 
-								&::before {
-									background: #fff;
-									bottom: -1px;
-									content: '';
-									height: 1px;
-									left: calc( -100% + 20px);
-									position: absolute;
-									width: 100%;
+						.shipping-form-inline {
+							text-align: right;
+
+							input.postal-code {
+								border-radius: 0;
+								margin-right: 5px;
+								max-width: 90px;
+								padding: 16px 5px;
+								width: 90px;
+
+								@include breakpoint(large, 'max') {
+									max-width: 70px;
+									width: 70px;
+								}
+							}
+
+							button#cart-shipping-calculate {
+								@include breakpoint(extra-small, 'max') { margin-right: 50px; }
+								background: transparent;
+								border: 2px solid $gray;
+								color: $txt-gray-l;
+								max-width: 90px;
+								padding: 6px 12px;
+								text-align: center;
+								text-transform: capitalize;
+								width: 90px;
+
+								&:hover {
+									background: $gray;
+									color: #ffffff;
 								}
 							}
 						}
+
+						.error { text-align: left; }
+
+						#cart-dont-know-postal-code { display: none; }
 					}
+
+					.shipping-calculate-link { display: none; }
 				}
 			}
 
 			.Shipping {
+				.monetary,
+				.space { display: none; }
 
 				.info {
+					@include responsiveFont(13, 16, true);
+					font-weight: normal;
+					padding: 0;
+					text-align: left;
+					text-transform: capitalize;
 
-					&::before {
-						display: none;
+					.info-shipping {
+						display: inline-block;
+						font-size: 0;
+						padding: 8px 15px;
+						position: relative;
+						width: 60%;
+
+						&:before {
+							@include responsiveFont(13, 16, true);
+							color: $gray-d;
+							content: 'Entrega';
+							display: block;
+							font-weight: 500;
+							left: 0;
+							position: absolute;
+							top: 8px;
+
+							// @include breakpoint(extra-large, 'max') {
+							// 	left: 0;
+							// }
+						}
 					}
-				}
-			}
 
-			.monetary {
-				padding-right: 20px;
-				position: relative;
-
-				&::before {
-					background: #fff;
-					bottom: -1px;
-					content: '';
-					height: 1px;
-					position: absolute;
-					right: calc( -100% + 20px);
-					width: 100%;
-				}
-			}
-
-			@include breakpoint(small, 'max') {
-				width: 100%;
-			}
-
-			.quantity-price,
-			.monetary {
-				@include responsiveFont(13, 16, true);
-				color: $purple;
-				font-weight: bold;
-				text-align: right;
-				width: auto;
-			}
-
-			// .monetary {
-			// 	@include breakpoint(small, 'max') {
-			// 		padding-right: 50px;
-			// 	}
-			// }
-
-			.info {
-				@include responsiveFont(13, 16, true);
-				font-weight: 500;
-				padding-left: 0;
-				padding-right: 30px;
-				text-align: left;
-				vertical-align: middle;
-				width: 55%;
-			}
-
-			.empty { display: none; }
-
-			.accordion-group {
-				margin-bottom: 0;
-
-				tbody,
-				tfoot {
-					padding: 5px;
-
-					tr {
-						border-bottom: 1px solid $gray-l;
+					.postal-code-for-sla {
+						float: right;
+						margin-top: 4px;
+						min-width: auto;
+						padding: 6px 0;
 						position: relative;
 
-						// &::before,
-						// &:after{
-						// 	content: '';
-						// 	background: #000;
-						// 	height: 100%;
-						// 	width: 15px;
-						// 	position: absolute;
-						// }
-					}
-				}
+						@include breakpoint('small', 'min') {
+							padding-right: 20px;
 
-				.Items {
-					.info {
-						@include responsiveFont(13, 16, true);
-						font-weight: 500;
-						padding-right: 26px;
-						text-transform: capitalize;
-					}
-				}
-
-				.shipping-calculate {
-					.info {
-						@include responsiveFont(14, 16, true);
-						padding-left: 20px;
-					}
-					.monetary {
-						display: none;
-
-						&.form-postal-code {
-							display: table-cell !important;
-							padding-left: 18px;
-
-							@include breakpoint(extra-small, 'max') {
-								padding-left: 0;
-								padding-right: 0;
+							&::before {
+								background: #fff;
+								bottom: -1px;
+								content: '';
+								height: 1px;
+								position: absolute;
+								right: calc( -100% + 20px);
+								width: 100%;
+								z-index: 1;
 							}
-
-							.shipping-form-inline {
-								text-align: right;
-
-								input.postal-code {
-									border-radius: 0;
-									margin-right: 5px;
-									max-width: 90px;
-									padding: 16px 5px;
-									width: 90px;
-
-									@include breakpoint(large, 'max') {
-										max-width: 70px;
-										width: 70px;
-									}
-								}
-
-								button#cart-shipping-calculate {
-									@include breakpoint(extra-small, 'max') { margin-right: 50px; }
-									background: transparent;
-									border: 2px solid $gray;
-									color: $txt-gray-l;
-									max-width: 90px;
-									padding: 6px 12px;
-									text-align: center;
-									text-transform: capitalize;
-									width: 90px;
-
-									&:hover {
-										background: $gray;
-										color: #ffffff;
-									}
-								}
-							}
-
-							.error { text-align: left; }
-
-							#cart-dont-know-postal-code { display: none; }
 						}
 
-						.shipping-calculate-link { display: none; }
+						.shipping-name,
+						.shipping-name-to {
+							display: none;
+						}
+
+						.cart-reset-postal-code { padding-right: 8px; }
 					}
-				}
 
-				.Shipping {
-					.monetary,
-					.space { display: none; }
+					.shipping-selected-sla-estimate { display: none; }
 
-					.info {
-						@include responsiveFont(13, 16, true);
-						font-weight: normal;
-						padding: 0;
-						text-align: left;
-						text-transform: capitalize;
+					.shipping-sla-selector {
+						@include breakpoint(extra-large, 'max') { padding-top: 30px; }
+						@include breakpoint(extra-small, 'max') {
+							padding-right: 15px;
+							text-align: center;
+						}
+						border-top: 1px solid $gray-l;
+						padding: 16px 0;
+						text-align: right;
 
-						.info-shipping {
-							display: inline-block;
-							font-size: 0;
-							padding: 8px 15px;
+
+						@include breakpoint('small', 'min') {
+							padding: 10px 20px 10px 0;
+						}
+
+						@include breakpoint(extra-large, 'max') {
+							padding-top: 10px;
+						}
+
+						.shipping-sla-button {
+							background: #fff;
+							border: none;
+							box-shadow: none;
+							padding: 0;
+							pointer-events: none;
 							position: relative;
+							text-align: right;
+							text-shadow: none;
+							width: 100%;
+
+							.shipping-estimate {
+
+								&::after {
+									background: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_arrow-purple-right-.png') 100% 100% no-repeat !important;
+									background-size: 100% !important;
+									content: '' !important;
+									display: block;
+									height: 17px !important;
+									position: absolute;
+									right: 12px !important;
+									top: 41% !important;
+									transform: translateY(-54%);
+									width: 17px !important;
+								}
+							}
+
+							&.has-interaction {
+								pointer-events: all;
+
+								.shipping-estimate {
+									&::after {
+										@include contentBefore();
+										@include font-size(8px, true, false);
+										@include icon-get('arrow-down');
+										background: none;
+										display: block;
+										height: auto;
+										position: absolute;
+										right: 6px;
+										top: 50%;
+										transform: translateY(-50%);
+										width: auto;
+									}
+								}
+							}
+
+							.caret {display: none;}
+
+							&:hover,
+							&:focus,
+							&.btn.dropdown-toggle {
+								background: #fff;
+								border: none;
+								box-shadow: none;
+								text-shadow: none;
+							}
+
+							span {
+								color: $purple;
+								font-size: 12px;
+								font-weight: bold;
+
+								span {
+									color: #736C6B;
+									font-weight: 500;
+								}
+							}
+						}
+
+						.shipping-estimate {
+							@include responsiveFont(13, 16, true);
+							border: 1px solid $gray-l;
+							display: inline-block;
+							padding: 5px 10px;
+							text-align: left;
+							text-transform: initial;
 							width: 60%;
+
+							// @include breakpoint(extra-large, 'max') {
+							// 	width: 100%;
+							// }
 
 							&:before {
 								@include responsiveFont(13, 16, true);
 								color: $gray-d;
-								content: 'Entrega';
+								content: 'Tipo de entrega';
 								display: block;
 								font-weight: 500;
 								left: 0;
 								position: absolute;
-								top: 8px;
+								top: 4px;
 
-								// @include breakpoint(extra-large, 'max') {
-								// 	left: 0;
-								// }
+								@include breakpoint(extra-large, 'max') {
+									top: 3px;
+								}
 							}
+
+							span.shipping-estimate {
+								width: 60%;
+							}
+
+							// &:after {
+							// 	@include contentBefore();
+							// 	@include font-size(8px, true, false);
+							// 	@include icon-get('arrow-down');
+							// 	display: block;
+							// 	position: absolute;
+							// 	right: 6px;
+							// 	top: 50%;
+							// 	transform: translateY(-50%);
+							// }
 						}
 
-						.postal-code-for-sla {
-							float: right;
-							margin-top: 4px;
+						.shipping-sla-options {
+							@include breakpoint('small', 'max') { max-width: 100%; }
+							background: #fff;
+							border: 1px solid #f4f2f1;
+							border-radius: 0;
+							box-shadow: none;
+							float: none;
+							font-size: 16px;
+							left: 0;
+							line-height: normal;
 							min-width: auto;
-							padding: 6px 0;
+							padding: 10px 20px;
 							position: relative;
+							text-align: left;
+							top: 0;
 
-							@include breakpoint('small', 'min') {
-								padding-right: 20px;
+							// @include breakpoint(extra-small, 'max') {
+							// 	left: 5%;
+							// 	max-width: 90%;
+							// 	position: absolute;
+							// 	right: 0;
+							// 	width: 90%;
+							// }
 
-								&::before {
-									background: #fff;
-									bottom: -1px;
-									content: '';
-									height: 1px;
-									position: absolute;
-									right: calc( -100% + 20px);
-									width: 100%;
-									z-index: 1;
-								}
-							}
-
-							.shipping-name,
-							.shipping-name-to {
-								display: none;
-							}
-
-							.cart-reset-postal-code { padding-right: 8px; }
-						}
-
-						.shipping-selected-sla-estimate { display: none; }
-
-						.shipping-sla-selector {
-							@include breakpoint(extra-large, 'max') { padding-top: 30px; }
-							@include breakpoint(extra-small, 'max') {
-								padding-right: 15px;
-								text-align: center;
-							}
-							border-top: 1px solid $gray-l;
-							padding: 16px 0;
-							text-align: right;
-
-
-							@include breakpoint('small', 'min') {
-								padding: 10px 20px 10px 0;
-							}
-
-							@include breakpoint(extra-large, 'max') {
-								padding-top: 10px;
-							}
-
-							.shipping-sla-button {
-								background: #fff;
-								border: none;
-								box-shadow: none;
-								padding: 0;
-								pointer-events: none;
+							li {
+								border-top: 1px solid #ccc;
+								padding: 0 10px;
 								position: relative;
-								text-align: right;
-								text-shadow: none;
-								width: 100%;
+								text-transform: initial;
 
-								.shipping-estimate {
+								&:first-child { border: none; }
 
-									&::after {
-										background: url('https://consulqa.vteximg.com.br/arquivos/ckt-nw-ico_arrow-purple-right-.png') 100% 100% no-repeat !important;
-										background-size: 100% !important;
-										content: '' !important;
-										display: block;
-										height: 17px !important;
-										position: absolute;
-										right: 12px !important;
-										top: 41% !important;
-										transform: translateY(-54%);
-										width: 17px !important;
+								a {
+									align-items: center;
+									display: flex;
+									font-size: 12px;
+									padding: 10px 0;
+									position: relative;
+									transition: color .2s ease;
+									white-space: normal;
+									z-index: 1;
+
+									&:hover,
+									&:focus {
+										background: transparent;
+										color: #702F8F;
+
+										.icon-ok:before { color: #702F8F; }
 									}
+
+									.icon-ok {
+										display: initial !important;
+										font-size: 20px;
+										margin-right: 5px;
+
+										&::before {
+											color: #999;
+											content: '\f10c';
+										}
+									}
+
+									span { width: 100%; }
 								}
 
-								&.has-interaction {
-									pointer-events: all;
+								// Active state
+								&.selected {
+									a {
+										background: transparent;
+										color: #702F8F;
 
-									.shipping-estimate {
-										&::after {
-											@include contentBefore();
-											@include font-size(8px, true, false);
-											@include icon-get('arrow-down');
-											background: none;
-											display: block;
-											height: auto;
-											position: absolute;
-											right: 6px;
-											top: 50%;
-											transform: translateY(-50%);
-											width: auto;
+										.icon-ok:before {
+											color: #702F8F;
+											content: '\f05d';
 										}
 									}
 								}
 
-								.caret {display: none;}
-
-								&:hover,
-								&:focus,
-								&.btn.dropdown-toggle {
-									background: #fff;
-									border: none;
-									box-shadow: none;
-									text-shadow: none;
-								}
-
-								span {
-									color: $purple;
-									font-size: 12px;
-									font-weight: bold;
-
-									span {
-										color: #736C6B;
-										font-weight: 500;
-									}
-								}
-							}
-
-							.shipping-estimate {
-								@include responsiveFont(13, 16, true);
-								border: 1px solid $gray-l;
-								display: inline-block;
-								padding: 5px 10px;
-								text-align: left;
-								text-transform: initial;
-								width: 60%;
-
-								// @include breakpoint(extra-large, 'max') {
-								// 	width: 100%;
-								// }
-
-								&:before {
-									@include responsiveFont(13, 16, true);
-									color: $gray-d;
-									content: 'Tipo de entrega';
-									display: block;
-									font-weight: 500;
-									left: 0;
-									position: absolute;
-									top: 4px;
-
-									@include breakpoint(extra-large, 'max') {
-										top: 3px;
-									}
-								}
-
-								span.shipping-estimate {
-									width: 60%;
-								}
-
-								// &:after {
-								// 	@include contentBefore();
-								// 	@include font-size(8px, true, false);
-								// 	@include icon-get('arrow-down');
-								// 	display: block;
-								// 	position: absolute;
-								// 	right: 6px;
-								// 	top: 50%;
-								// 	transform: translateY(-50%);
-								// }
-							}
-
-							.shipping-sla-options {
-								@include breakpoint('small', 'max') { max-width: 100%; }
-								background: #fff;
-								border: 1px solid #f4f2f1;
-								border-radius: 0;
-								box-shadow: none;
-								float: none;
-								font-size: 16px;
-								left: 0;
-								line-height: normal;
-								min-width: auto;
-								padding: 10px 20px;
-								position: relative;
-								text-align: left;
-								top: 0;
-
-								// @include breakpoint(extra-small, 'max') {
-								// 	left: 5%;
-								// 	max-width: 90%;
-								// 	position: absolute;
-								// 	right: 0;
-								// 	width: 90%;
-								// }
-
-								li {
-									border-top: 1px solid #ccc;
-									padding: 0 10px;
+								// frete grátis
+								&.frete-gratis {
 									position: relative;
-									text-transform: initial;
-
-									&:first-child { border: none; }
 
 									a {
-										align-items: center;
-										display: flex;
-										font-size: 12px;
-										padding: 10px 0;
-										position: relative;
-										transition: color .2s ease;
-										white-space: normal;
-										z-index: 1;
+										color: #0fb6de;
+										font-weight: bold;
 
-										&:hover,
-										&:focus {
-											background: transparent;
-											color: #702F8F;
-
-											.icon-ok:before { color: #702F8F; }
-										}
-
-										.icon-ok {
-											display: initial !important;
-											font-size: 20px;
-											margin-right: 5px;
-
-											&::before {
-												color: #999;
-												content: '\f10c';
-											}
-										}
-
-										span { width: 100%; }
+										&:hover { color: #702F8F; }
 									}
 
-									// Active state
 									&.selected {
-										a {
-											background: transparent;
-											color: #702F8F;
-
-											.icon-ok:before {
-												color: #702F8F;
-												content: '\f05d';
-											}
-										}
+										a { color: #702F8F; }
 									}
 
-									// frete grátis
-									&.frete-gratis {
-										position: relative;
+									// active box
+									&:before,
+									&:after {
+										content: '';
+										display: block;
+										position: absolute;
+									}
 
-										a {
-											color: #0fb6de;
-											font-weight: bold;
-
-											&:hover { color: #702F8F; }
-										}
-
-										&.selected {
-											a { color: #702F8F; }
-										}
-
-										// active box
-										&:before,
-										&:after {
-											content: '';
-											display: block;
-											position: absolute;
-										}
-
-										&:before {
-											@include breakpoint('medium', 'max') {
-												background: #0fb6de;
-												height: 100%;
-												left: 0%;
-												width: 3px;
-											}
-											z-index: 10;
-										}
-
-										&:after {
-											background-color: #fff;
-											border-radius: 4px;
-											box-shadow: 0 1px 10px #e3e1e1;
+									&:before {
+										@include breakpoint('medium', 'max') {
+											background: #0fb6de;
 											height: 100%;
-											right: 0;
-											top: 0;
-											width: 100%;
+											left: 0%;
+											width: 3px;
 										}
+										z-index: 10;
+									}
 
-										& + li { border-color: transparent; }
+									&:after {
+										background-color: #fff;
+										border-radius: 4px;
+										box-shadow: 0 1px 10px #e3e1e1;
+										height: 100%;
+										right: 0;
+										top: 0;
+										width: 100%;
+									}
 
-										& + li.frete-gratis {
-											&:after {
-												border-radius: 0 0 4px 4px;
-												border-top: 1px solid #e3e1e1;
-												box-shadow: 0 3px 5px #e3e1e1;
-												margin-top: -1px;
-											}
+									& + li { border-color: transparent; }
+
+									& + li.frete-gratis {
+										&:after {
+											border-radius: 0 0 4px 4px;
+											border-top: 1px solid #e3e1e1;
+											box-shadow: 0 3px 5px #e3e1e1;
+											margin-top: -1px;
 										}
 									}
 								}
 							}
-
-							.icon-chevron-down { display: none; }
 						}
-					}
 
-					.postal-code-value {
-						@include responsiveFont(13, 16, true);
-						color: $purple;
-						font-weight: bold;
-						padding-right: 10px;
-
-						@include breakpoint(small, 'min') {
-							padding-right: 0;
-						}
-					}
-
-					.icon-remove-sign {
-						@include responsiveFont(16, 16, true);
-
-						&:before { content: '\f00d'; }
+						.icon-chevron-down { display: none; }
 					}
 				}
 
-				tfoot {
-					background: $gray-l;
+				.postal-code-value {
+					@include responsiveFont(13, 16, true);
+					color: $purple;
+					font-weight: bold;
+					padding-right: 10px;
 
-					.info {
-						@include responsiveFont(18, 16, true);
-						font-weight: 700;
-
-						@include breakpoint(small, 'min') {
-							padding: 12px 0 12px 20px ;
-						}
-
-						@include breakpoint(small, 'max') {
-							@include responsiveFont(16, 16, true);
-							padding-left: 10px;
-						}
-					}
-
-					.monetary {
-						@include responsiveFont(18, 16, true);
-						color: $green;
-						font-weight: 700;
-
-						@include breakpoint(small, 'min') {
-							padding: 12px 20px 12px 0 ;
-						}
-
-						&::before {
-							display: none;
-						}
-
-						@include breakpoint(small, 'max') {
-							@include responsiveFont(16, 16, true);
-						}
+					@include breakpoint(small, 'min') {
+						padding-right: 0;
 					}
 				}
-			}
-		}
 
-		.coupon-column {
-			width: 50%;
+				.icon-remove-sign {
+					@include responsiveFont(16, 16, true);
 
-			.delete {
-				font-size: 12px;
-				font-weight: bold;
-				line-height: 12px;
-				margin-left: 10px;
-			}
-			.info {
-				align-items: center;
-				display: flex;
-			}
-
-			@include breakpoint(small, 'max') {
-				width: 100%;
-
-				.coupon { width: 100%; }
-			}
-
-			input { height: 35px; }
-
-			.summary-coupon {
-				float: none;
-
-				@include breakpoint(small, 'min') {
-					margin-left: 0;
-					margin-top: 10px;
+					&:before { content: '\f00d'; }
 				}
+			}
 
-				.coupon-data {
-					float: none;
+			tfoot {
+				background: $gray-l;
+
+				.info {
+					@include responsiveFont(18, 16, true);
+					font-weight: 700;
+
+					@include breakpoint(small, 'min') {
+						padding: 12px 0 12px 20px ;
+					}
 
 					@include breakpoint(small, 'max') {
-						margin-bottom: 25px;
-						text-align: center;
-						width: 100%;
-					}
-
-					.link-coupon-add {
-						@include responsiveFont(12, 16, true);
-						border: 1px solid #E3E1E1;
-						font-weight: bold;
-						padding: 12px 25px;
-
-						@include breakpoint(small, 'min') {
-							padding: 12px 45px;
-						}
-
-						span {
-							color: #736C6B;
-							&:first-child {
-								display: none;
-
-								@include breakpoint(small, 'min') {
-									display: inline-block;
-								}
-							}
-						}
-
-						@include breakpoint(small, 'max') {
-							display: inline-block !important;
-							width: 100%;
-						}
+						@include responsiveFont(16, 16, true);
+						padding-left: 10px;
 					}
 				}
 
-				.coupon-fieldset {
-					.coupon-label {
-						display: block;
-						width: 125px;
+				.monetary {
+					@include responsiveFont(18, 16, true);
+					color: $green;
+					font-weight: 700;
 
-						label { font-weight: bold; }
+					@include breakpoint(small, 'min') {
+						padding: 12px 20px 12px 0 ;
 					}
 
-					.coupon-fields {
-						display: inline-block;
+					&::before {
+						display: none;
+					}
 
-						input { height: 40px; }
-
-						button {
-							background: #fff;
-							border: 2px solid $gray;
-							box-shadow: none;
-							color: $txt-gray-l;;
-							font-weight: bold;
-							padding: 8px 20px;
-							text-shadow: none;
-
-							&:hover {
-								background: $gray;
-								color: #ffffff;
-							}
-						}
+					@include breakpoint(small, 'max') {
+						@include responsiveFont(16, 16, true);
 					}
 				}
 			}
 		}
+	}
 
-		.shipping-sla-button {
+	.shipping-sla-button {
+		background: #fff;
+		border: none;
+		box-shadow: none;
+		padding: 0;
+		text-shadow: none;
+
+		.caret {display: none;}
+
+		&:hover,
+		&:focus,
+		&.btn.dropdown-toggle {
 			background: #fff;
 			border: none;
 			box-shadow: none;
-			padding: 0;
 			text-shadow: none;
-
-			.caret {display: none;}
-
-			&:hover,
-			&:focus,
-			&.btn.dropdown-toggle {
-				background: #fff;
-				border: none;
-				box-shadow: none;
-				text-shadow: none;
-			}
-
-			span {
-				color: $purple;
-				font-size: 12px;
-				font-weight: bold;
-			}
 		}
 
-		.shipping-sla-options {
-			@include font-size(16px);
-			background: #fff;
-			box-shadow: 0 0 7px rgba(0, 0, 0, .2);
-			line-height: normal;
-			min-width: 120px;
-			padding: 0;
-
-			li {
-				a {
-					transition: color 400ms ease-out;
-
-					&:hover {
-						background: transparent;
-						color: $green;
-					}
-				}
-			}
+		span {
+			color: $purple;
+			font-size: 12px;
+			font-weight: bold;
 		}
+	}
 
-		.cart-links-bottom {
-			position: relative;
+	.shipping-sla-options {
+		@include font-size(16px);
+		background: #fff;
+		box-shadow: 0 0 7px rgba(0, 0, 0, .2);
+		line-height: normal;
+		min-width: 120px;
+		padding: 0;
 
-			@include breakpoint(small, 'min') {
-				max-width: 390px;
-				padding: 0 35px;
-				width: 100%;
-			}
-
-			.link-choose-more-products-wrapper {
-				display: block;
-				left: 0;
-				margin-top: 10px;
-				padding: 0 35px;
-				position: absolute;
-				text-align: center;
-				top: 57px;
-				width: 100%;
-
-				a {
-					color: $purple;
-				}
-
-				@media screen and (min-width: 320px) and (max-width: 490px) {
-					position: absolute;
-				}
-
-				@include breakpoint(small, 'max') {
-					display: block;
-					left: 0;
-					margin: 20px 0;
-					width: 100%;
-				}
-
-				#cart-choose-more-products {
-					@include responsiveFont(14, 16, true);
-					border: 0;
-					display: none;
-					font-weight: bold;
-					margin-right: 0;
-					padding: 0;
-					@include breakpoint(small, 'max') {
-						@include responsiveFont(12, 16, true);
-						display: inline-block;
-						text-align: center;
-						width: 100%;
-					}
-				}
-			}
-
-			// Botão original Vtex - Fechar pedido
-			#cart-to-orderform { visibility: hidden; }
-
-			// Fake button
-			.fake-buttom {
-				@include responsiveFont(15, 16, true);
-				background: $green;
-				border: 0;
-				color: transparent;
-				font-weight: bold;
-				padding: 14px 50px;
-				position: relative;
-				text-transform: capitalize;
-				width: 100%;
+		li {
+			a {
+				transition: color 400ms ease-out;
 
 				&:hover {
-					background: lighten($green, 10%) ;
+					background: transparent;
+					color: $green;
 				}
+			}
+		}
+	}
 
-				@include breakpoint(768px, 'min') {
-					position: relative;
-				}
+	.cart-links-bottom {
+		position: relative;
 
-				&:before {
-					@include responsiveFont(15, 16, true);
-					color: #fff;
-					content: 'Finalizar compra';
-					display: inline-block;
-					left: 50%;
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%) translateX(-50%);
-					transition: transform .2s ease-in;
-				}
+		@include breakpoint(small, 'min') {
+			max-width: 390px;
+			padding: 0 35px;
+			width: 100%;
+		}
 
+		.link-choose-more-products-wrapper {
+			display: block;
+			left: 0;
+			margin-top: 10px;
+			padding: 0 35px;
+			position: absolute;
+			text-align: center;
+			top: 57px;
+			width: 100%;
+
+			a { color: $purple; }
+
+			@media screen and (min-width: 320px) and (max-width: 490px) {
+				position: absolute;
+			}
+
+			@include breakpoint(small, 'max') {
+				display: block;
+				left: 0;
+				margin: 20px 0;
+				width: 100%;
+			}
+
+			#cart-choose-more-products {
+				@include responsiveFont(14, 16, true);
+				border: 0;
+				display: none;
+				font-weight: bold;
+				margin-right: 0;
+				padding: 0;
 				@include breakpoint(small, 'max') {
-					@include responsiveFont(20, 16, true);
-					display: block;
-					left: 0;
-					margin: 10px 0;
-					position: absolute;
-					top: 0;
+					@include responsiveFont(12, 16, true);
+					display: inline-block;
+					text-align: center;
 					width: 100%;
 				}
+			}
+		}
+
+		// Botão original Vtex - Fechar pedido
+		#cart-to-orderform { visibility: hidden; }
+
+		// Fake button
+		.fake-buttom {
+			@include responsiveFont(15, 16, true);
+			background: $green;
+			border: 0;
+			color: transparent;
+			font-weight: bold;
+			padding: 14px 50px;
+			position: relative;
+			text-transform: capitalize;
+			width: 100%;
+
+			&:hover {
+				background: lighten($green, 10%) ;
+			}
+
+			@include breakpoint(768px, 'min') {
+				position: relative;
+			}
+
+			&:before {
+				@include responsiveFont(15, 16, true);
+				color: #fff;
+				content: 'Finalizar compra';
+				display: inline-block;
+				left: 50%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%) translateX(-50%);
+				transition: transform .2s ease-in;
+			}
+
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(20, 16, true);
+				display: block;
+				left: 0;
+				margin: 10px 0;
+				position: absolute;
+				top: 0;
+				width: 100%;
 			}
 		}
 	}
 }
 
 // barra fixa no mobile dentro do carrinho
+.field-button {
+	background-color: #ccc;
+	display: none;
+}
+
 @include breakpoint(small, 'max') {
 	.btn-place-order-wrapper { display: block; }
+
 	.cart-template {
 		.cart-links-bottom {
 			margin-bottom: 0;
@@ -1273,12 +1202,12 @@ body {
 			.link-choose-more-products {
 				@include responsiveFont(14, 16, true);
 				@include vendor(border-radius, 20px);
-				//background-color: $green;
 				border: none;
 				color: #fff;
 			}
 		}
 	}
+
 	.field-button {
 		background-color: #592b6d;
 		bottom: 0;
@@ -1320,6 +1249,7 @@ body {
 			}
 		}
 	}
+
 	.container-main {
 		.btn-success {
 			@include responsiveFont(14, 16, true);
@@ -1334,8 +1264,6 @@ body {
 		}
 	}
 	.cart-links-bottom {
-		.fake-buttom {
-			margin: 20px 0 0;
-		}
+		.fake-buttom { margin: 20px 0 0; }
 	}
 }
