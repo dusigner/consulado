@@ -82,7 +82,7 @@ Nitro.module('busca-chaordic', function() {
 						'.busca-chaordic.result-filter .filter-container, .busca-chaordic.result-filter .order-wrapper'
 					).css('display', 'none');
 					$('.busca-chaordic.result-filter.container').append(
-						'<h2><strong>Ops...Não encontramos nenhum</strong><br/>produto relacionado à sua busca.</h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Mas não precisa desanimar! Quer uma dica? </h3><ul><li class="nm-not-found-tip">Verifique se a palavra foi digitada corretamente</li><li class="nm-not-found-tip">Tente buscar por palavras-chave diferentes</li><li class="nm-not-found-tip">Faça buscas relacionadas</li></ul></div>'
+						'<h2><strong>Ops...Não encontramos nenhum</strong><br/>produto relacionado à sua busca.</h2><div class="nm-not-found-tips-container"><h3 class="nm-not-found-tip-title"> Mas não precisa desanimar! Quer uma dica? </h3><ul><li class="nm-not-found-tip">Verifique se a palavra foi digitada corretamente;</li><li class="nm-not-found-tip">Tente buscar por palavras-chave diferentes;</li><li class="nm-not-found-tip">Faça buscas relacionadas.</li></ul></div>'
 					);
 					setTimeout(function() {
 						$('.busca-chaordic.resultado-busca .resultado-wrapper').html(
