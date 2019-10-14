@@ -56,12 +56,12 @@ body.search-active {
 	}
 
 	.icon-icon-loupe-consul {
-		@include responsiveFont(16);
+		@include responsiveFont(24);
 		color: $green;
 		cursor: pointer;
 		height: 100%;
 		left: 10px;
-		line-height: 50px;
+		line-height: 54px;
 		padding: 0 14px;
 		position: absolute;
 		top: 60%;
@@ -69,7 +69,7 @@ body.search-active {
 
 		@include breakpoint(small, 'max') {
 			left: 85%;
-			line-height: 32px;
+			line-height: 30px;
 		}
 
 		@include breakpoint(small, 'min') { color: $green;}
