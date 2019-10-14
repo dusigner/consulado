@@ -1,0 +1,52 @@
+.blog {
+	background-color: #212121;
+	padding-bottom: 62px;
+
+	.title {
+		margin-bottom: 32px;
+	}
+
+	.tips {
+		display: flex;
+		justify-content: space-between;
+
+		@media (max-width: 920px) {
+			overflow-x: auto;
+		}
+	}
+
+	.card {
+		font-size: .875em;
+		width: 24%;
+
+		@media (max-width: 920px) {
+			font-size: 1em;
+			margin: 0 10px;
+			min-width: 80%;
+		}
+
+		&__image {
+			height: auto;
+			width: 100%;
+		}
+
+		&__title {
+			color: #fff;
+			margin-bottom: 10px;
+		}
+
+		&__description {
+			color: #9e9e9e;
+			line-height: 25px;
+			width: 85%;
+		}
+
+		&__link {
+			color: #9aca3c;
+
+			&::hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

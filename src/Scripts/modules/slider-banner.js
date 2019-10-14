@@ -18,8 +18,8 @@ Nitro.module('slider-banner', [], function() {
 
 		$bannerPrincipal
 			.slick({
-				autoplay: false,
-				autoplaySpeed: 6000,
+				autoplay: true,
+				autoplaySpeed: 7000,
 				mobileFirst: true,
 				dots: true,
 				arrows: false,
