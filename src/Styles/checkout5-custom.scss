@@ -27,6 +27,7 @@
 @import 'helpers/helpers';
 @import 'helpers/conditional';
 @import 'helpers/slick';
+@import 'helpers/rfs';
 
 // Base styles
 @import 'base/main';
@@ -35,6 +36,7 @@
 @import 'components/buttons';
 @import 'components/modal';
 @import 'components/modalLogin';
+@import 'components/checkout/modal-unavailable-modal';
 @import 'components/checkout/modal-info-pj';
 @import 'components/chaordic-shelf';
 @import 'components/produto/selos';

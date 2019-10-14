@@ -1,0 +1,123 @@
+.modal.unavailable-modal {
+	border-bottom: 2px solid $green;
+	border-radius: 0;
+	box-shadow: 0 5px 6px rgba(0, 0, 0, .16);
+	padding: 2.5em;
+	@include breakpoint('extra-small', 'max') {
+		padding: 1.5em;
+	}
+
+	// Reset body
+	.modal-body {
+		overflow: inherit;
+		padding: 5px;
+	}
+
+	// Title
+	.unavailable-message {
+		p {
+			@include rfs(20px);
+			color: #5B5B5B;
+			font-weight: bold;
+			line-height: 24px;
+		}
+	}
+
+	// Lista de produtos
+	.unavailable-items {
+		border-radius: 0;
+		margin: 1.5em 0;
+		max-height: 180px;
+		overflow: auto;
+
+		li {
+			align-items: center;
+			border-top: 1px solid #e3e1e1;
+			display: flex;
+
+			&:first-child { border-top: 0; }
+		}
+
+		.span10,
+		.span2 {
+			@include breakpoint('extra-small', 'max') {
+				@include rfs(11px);
+				width: auto;
+			}
+			@include rfs(13px);
+			align-items: center;
+			display: flex;
+			line-height: 18px;
+		}
+
+		.span2 {
+			justify-content: flex-end;
+			margin-left: 0;
+			width: 25%;
+		}
+
+		.photo {
+			@include rfs(8px);
+			line-height: 8px;
+			margin-right: 5px;
+			width: 45px;
+		}
+
+		.product-name { color: #5B5B5B; }
+
+		.price {
+			color: $green;
+			padding-left: 0.5em;
+			white-space: nowrap;
+		}
+	}
+
+	// CTA's
+	.unavailable-actions {
+		// @include breakpoint('small', 'min') { display: flex; }
+
+		.btn {
+			@include rfs(14px);
+			border: 2px solid;
+			border-radius: 300px;
+			box-shadow: none;
+			font-family: 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-weight: 500;
+			line-height: 14px!important;
+			min-height: 40px;
+			min-width: 140px;
+			outline: none;
+			padding: 0 45px;
+			text-shadow: none;
+			transition:
+				background .3s ease,
+				border-color .3s ease
+			;
+		}
+
+		.btn.unavailable-button {
+			background: #fff;
+			border-color: #403C3B;
+			color: #403C3B;
+			margin-bottom: 5px;
+
+			&:hover {
+				background: #403C3B;
+				border-color: #403C3B;
+				color: #fff;
+			}
+		}
+
+		.btn.btn-success {
+			background: $green;
+			border-color: $green;
+			color: #fff;
+
+			&:hover {
+				background: darken($green, 10%);
+				border-color: darken($green, 10%);
+				color: #fff;
+			}
+		}
+	}
+}
