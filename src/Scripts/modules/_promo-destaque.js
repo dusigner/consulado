@@ -24,12 +24,8 @@ const discountValidate = (discount, productPrice) => {
 	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice && prodDiscount < prodPrice);
 };
 
-const clearText = str => {
-	let text = str.replace(/\s+/gmi, '-');
-	text = text.toLowerCase();
-
-	return text;
-};
+// Troca os espaços do texto por traços e padroniza o tamanho para definirmos o nome das imagens
+const clearText = str => str.replace(/\s+/gmi, '-').toLowerCase();
 
 // Promoção para as prateleiras
 const promoDestaque = produto => {
@@ -39,8 +35,8 @@ const promoDestaque = produto => {
 	const precoPor = formatValue(produto.find('.por .val').text());
 	const desconto = discountCalculate(precoDe, precoPor);
 
-	// if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
-	if (hasPromo.length) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
+	// if (hasPromo.length) {
 		const promoText = hasPromo.text().split('__');
 		const promoPreTitle = promoText[2];
 		const promoTitle = promoText[3];
@@ -49,8 +45,8 @@ const promoDestaque = produto => {
 		const $promoDestaque = `
 			<div class="promo-destaque">
 				<div class="promo-destaque__text" style="color: ${promoColor}">
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/promo__${clearText(promoPreTitle + '-' + promoTitle)}.png')"></div>
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}.png?v=dln')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
 
 					${promoPreTitle}<br />
 					${promoTitle}
@@ -64,10 +60,6 @@ const promoDestaque = produto => {
 		`;
 
 		$prodInfo.prepend($promoDestaque);
-
-		// $.each(hasPromo, function(idx, $el) {
-
-		// });
 	}
 };
 
@@ -79,8 +71,8 @@ const prodPromoDestaque = () => {
 	const precoPor = formatValue($prodPreco.find('.skuBestPrice').text());
 	const desconto = discountCalculate(precoDe, precoPor);
 
-	// if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
-	if (hasPromo.length) {
+	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
+	// if (hasPromo.length) {
 		const promoText = hasPromo.text().split('__');
 		const promoPreTitle = promoText[2];
 		const promoTitle = promoText[3];
@@ -89,7 +81,7 @@ const prodPromoDestaque = () => {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
 					${promoPreTitle}<br />
 					${promoTitle}
 				</div>
@@ -105,6 +97,7 @@ const prodPromoDestaque = () => {
 	}
 };
 
+// Inicia a promoção somente na página de produto
 if ($('body').hasClass('produto')) {
 	prodPromoDestaque();
 }
