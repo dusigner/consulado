@@ -1,0 +1,53 @@
+@charset 'UTF-8';
+//Variables
+$gray-light: #3B3B3B;
+$gray-medium: #333333;
+$gray-dark: #2A2A2A;
+
+// Breakpoints
+$breakpoint-map: (
+	'extra-small': 30em,   //480px
+	'small'      : 48em,   //768px
+	'medium'     : 60em,   //960px
+	'large'      : 70em,   //1120px
+	'extra-large': 80em    //1280px
+);
+
+// Envelopamento Black Friday
+.footer-2019 {
+	& .canais-atendimento {
+		background-color: $gray-light;
+		color: #fff;
+		&__section-title,
+		& a {
+			background-color: transparent;
+			color: #fff;
+		}
+		& h4 {
+			font-weight: 500;
+			& a {
+				font-weight: 500;
+			}
+		}
+		& a {
+			font-weight: 400;
+		}
+		&-redes__item {
+			&--facebook {
+				backdrop-filter: #fff;
+			}
+		}
+		&__title {
+			@include breakpoint('small', 'max') {
+				border: none;
+			}
+		}
+	}
+	& .menu-footer {
+		background-color: $gray-medium;
+	}
+	& .footer-bottom {
+		background-color: $gray-dark;
+		border-top: none;
+	}
+}
