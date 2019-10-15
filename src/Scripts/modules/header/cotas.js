@@ -100,5 +100,4 @@ Nitro.module('cotas', function() {
 			}
 		}
 	});
-
 });

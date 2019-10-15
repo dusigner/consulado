@@ -116,8 +116,10 @@ body {
 				transform: translateY(-50%);
 
 				@include breakpoint(small, 'max') {
-					left: 85%;
+					left: unset;
 					line-height: 30px;
+					right: 0;
+					width: 50px;
 				}
 
 				@include breakpoint(small, 'min') { color: $green;}
