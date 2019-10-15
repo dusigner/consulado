@@ -22,7 +22,6 @@ body {
 			border: none;
 			height: 34px;
 			left: 0;
-			padding: 0;
 			position: absolute;
 			text-align: left;
 			top: 50px;
@@ -35,16 +34,13 @@ body {
 			@include breakpoint(small, 'min') { padding-left: 60px; }
 			@include singleTransition();
 			background-color: #F5F5F5;
-			border: none;
 			color: $txt-gray;
-			display: block;
 			height: 60px;
 			padding: 0 20px 0 45px;
 			width: 100%;
 
 			@include breakpoint(small, 'max') {
 				@include rfs(15);
-				// border-bottom: 1px solid $gray;
 				background-color: #F5F5F5;
 				border: none;
 				display: block;

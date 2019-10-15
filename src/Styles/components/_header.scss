@@ -26,150 +26,108 @@
 $mobile-header-height: 84px;
 
 body {
-    .pre-header {
-        background: $gray-d;
-        margin: 0;
-        max-height: 25px;
+	.pre-header {
+		background: $gray-d;
+		margin: 0;
+		max-height: 25px;
 
-        a {
-            @include responsiveFont(9);
-            border-bottom: 2px solid transparent;
-            color: #fff;
-            display: inline-block;
-            font-weight: bold;
-            margin-left: 20px;
+		a {
+			@include responsiveFont(9);
+			border-bottom: 2px solid transparent;
+			color: #fff;
+			display: inline-block;
+			font-weight: bold;
+			margin-left: 20px;
 
-            &:first-child { margin-left: 0; }
+			&:first-child { margin-left: 0; }
 
-            &.active {
-                color: $green;
-            }
+			&.active { color: $green; }
 
-            &[href*='tel'] { border-bottom-color: transparent; }
+			&[href*='tel'] { border-bottom-color: transparent; }
 
-            &[href*='tel:+551130037872'] { margin-left: 0; }
+			&[href*='tel:+551130037872'] { margin-left: 0; }
 
-            &[title*='Televendas'] {
-                margin-left: 4px;
-            }
-        }
+			&[title*='Televendas'] { margin-left: 4px; }
+		}
 
-        .float-right { text-align: right; }
-    }
+		.float-right { text-align: right; }
+	}
 
-    header {
-        height: 60px;
+	header {
+		@include breakpoint(small, 'max') {
+			max-height: unset;
+			min-height: $mobile-header-height;
+		}
 
-        @include breakpoint(small, 'max') {
-            max-height: unset;
-            min-height: $mobile-header-height;
-        }
+		height: 60px;
 
-        &.menu-scroll {
-            overflow-y: scroll;
+		&.menu-scroll {
+			@include breakpoint(small, 'max') {
+				height: unset;
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 99999;
+			}
 
-            @include breakpoint(small, 'max') {
-                height: unset;
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 99999;
-            }
-        }
+			overflow-y: scroll;
+		}
 
-        .header {
-            margin: 0;
+		.header {
+			margin: 0;
 
-            section {
-                display: flex;
-                justify-content: space-between;
+			section {
+				@include breakpoint('small', 'max') { display: block; }
+				display: flex;
+				justify-content: space-between;
+			}
 
-                @include breakpoint('small', 'max') {
-                    display: block;
+			div.account {
+				@include breakpoint ('small', 'max') {
+					margin-left: 0;
+					opacity: 0;
+					visibility: hidden;
 				}
-            }
+				@include rfs(12);
+				align-items: center;
+				color: $txt-gray-l;
+				display: flex;
+				flex: 0 0 300px;
+				font-weight: 700;
+				height: 60px;
+				justify-content: center;
+				margin-left: 40px;
+				padding: 0;
+				position: relative;
+				width: 300px;
 
-            div.account {
-                @include rfs(12);
-                align-items: center;
-                color: $txt-gray-l;
-                display: flex;
-                flex: 0 0 300px;
-                font-weight: 700;
-                height: 60px;
-                justify-content: center;
-                margin-left: 40px;
-                padding: 0;
-                position: relative;
-                width: 300px;
 
-                @include breakpoint ('small', 'max') {
-                    margin-left: 0;
-                }
-
-                &:before {
-                    @include breakpoint ('small', 'max') {
-                        border-left: 1px solid #E3E1E1;
-                        content: '';
-                        display: inline-block;
-                        height: 20%;
-                        position: absolute;
-                        right: 50%;
-                        top: 48%;
-                        transform: translateY(-50%);
-                    }
-                }
-
-                &:after {
-                    border-left: 1px solid #E3E1E1;
-                    content: '';
-                    display: inline-block;
-                    height: 20%;
-                    position: absolute;
-                    right: 50%;
-                    top: 48%;
-                    transform: translateY(-50%);
-
-                    @include breakpoint('small', 'max') {
-                        display: none;
-                    }
-                }
-
-                .link-meus-pedidos {
-					padding-left: 53px;
-                    position: relative;
-                    width: 150px;
-
-                    &:before {
-						@include icon-get('icon-truck-consul');
-						color: $green;
-						font-size: 30px;
-                        left: 16px;
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-
-                    .account-text {
-                        position: relative;
-
-                        &:after {
-                            @include rfs(10);
-                            bottom: 4px;
-                            content: 'Acompanhe!';
-                            display: block;
-                            font-weight: 400;
-                            position: relative;
-                            width: 60px;
-                        }
-
-                        @include breakpoint('small', 'max') {
-                            @include rfs(12);
-                            color: $base-link-color;
-                            line-height: 1.5;
-                        }
+				&:before {
+					@include breakpoint ('small', 'max') {
+						border-left: 1px solid #E3E1E1;
+						content: '';
+						display: inline-block;
+						height: 20%;
+						position: absolute;
+						right: 50%;
+						top: 48%;
+						transform: translateY(-50%);
 					}
+				}
 
+				&:after {
+					@include breakpoint('small', 'max') { display: none; }
+					border-left: 1px solid #E3E1E1;
+					content: '';
+					display: inline-block;
+					height: 20%;
+					position: absolute;
+					right: 50%;
+					top: 48%;
+					transform: translateY(-50%);
+				}
+
+				.link-meus-pedidos {
 					@include breakpoint('small', 'max') {
 						align-items: center;
 						background-color: #fff;
@@ -181,46 +139,85 @@ body {
 						right: 0;
 						width: 50%;
 					}
-                }
 
-                .welcome-message {
-                    width: 150px;
+					padding-left: 53px;
+					position: relative;
+					width: 150px;
 
-                    @include breakpoint ('small', 'max') {
-                        left: 0;
-                        max-width: unset;
-                        width: 50%;
-                    }
-                }
+					&:before {
+						@include icon-get('icon-truck-consul');
+						color: $green;
+						font-size: 30px;
+						left: 16px;
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+					}
 
-                .icon-brastemp-account {
-                    @include responsiveFont(33, 16, true);
-                    color: $gray-d;
-                    display: block;
-                    float: left;
-                    font-weight: bold;
-                    height: 50px;
-                    line-height: 42px;
-                    margin-right: 10px;
-                    margin-top: 5px;
-                    width: 30px;
-                }
+					.account-text {
+						@include breakpoint('small', 'max') {
+							@include rfs(12);
+							color: $base-link-color;
+							line-height: 1.5;
+						}
 
-                .hide { @include show-conditional(); }
+						position: relative;
 
-                .welcome {
-                    color: $base-link-color;
-                    display: flex;
+						&:after {
+							@include rfs(10);
+							bottom: 4px;
+							content: 'Acompanhe!';
+							display: block;
+							font-weight: 400;
+							position: relative;
+							width: 60px;
+						}
+					}
+				}
+
+				.welcome-message {
+					@include breakpoint ('small', 'max') {
+						left: 0;
+						max-width: unset;
+						width: 50%;
+					}
+					width: 150px;
+
+				}
+
+				.icon-brastemp-account {
+					@include responsiveFont(33, 16, true);
+					color: $gray-d;
+					display: block;
+					float: left;
+					font-weight: bold;
+					height: 50px;
+					line-height: 42px;
+					margin-right: 10px;
+					margin-top: 5px;
+					width: 30px;
+				}
+
+				.hide { @include show-conditional(); }
+
+				.welcome {
+					@include breakpoint('small', 'max') {
+						height: 100%;
+						justify-content: center;
+					}
+
+					color: $base-link-color;
+					display: flex;
 					flex-direction: column;
 					float: right;
 					justify-content: flex-end;
 					margin: 0;
 					max-width: 150px;
-                    overflow: hidden;
-                    padding: 0 20px 0 30px;
-                    position: relative;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
+					overflow: hidden;
+					padding: 0 20px 0 30px;
+					position: relative;
+					text-overflow: ellipsis;
+					white-space: nowrap;
 					width: fit-content;
 
 					&:before {
@@ -234,116 +231,103 @@ body {
 						z-index: 1;
 					}
 
-					@include breakpoint('small', 'max') {
-						height: 100%;
-						justify-content: center;
-                    }
-
-                    em {
+					em {
 						@include rfs(12);
-                        display: block;
-                        font-style: normal;
-                    }
-
-                    .account__icon--profile ~ em {
-                        bottom: 4px;
-                        line-height: 1.2;
-                        position: relative;
-                        text-align: left;
-
-                        @include breakpoint('small', 'max') {
-                            bottom: 24px;
-                        }
-
-                        a {
-                            @include breakpoint('small', 'max') {
-                                border: none;
-                            }
-                        }
-                    }
-
-                    a {
-                        color: $green;
-                        position: relative;
-
-                        &[href='/no-cache/user/logout'] {
-							@include rfs(10);
-                            bottom: 0;
-                            color: $gray-d;
-                            font-weight: 400;
-                            left: 0;
-                            padding: 0;
-                            position: relative;
-                        }
-                    }
-
-                    svg {
-                        margin: 0 auto;
-                        max-height: 20px;
-                        width: 25px;
-                    }
-                }
-
-                #login {
-                    @include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
-                    @include responsiveFont(12, 16, true);
-                    background-color: #ffffff;
-                    color: $base-link-color;
-                    display: block;
-                    max-width: 100px;
-                    overflow: hidden;
-                    text-align: left;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-
-                    &:after {
-                        @include rfs(10);
-                        bottom: 4px;
-                        content: 'Faça login!';
-                        display: block;
-                        font-weight: 400;
-                        left: 0;
-                        position: relative;
-                        text-align: left;
-                        z-index: 1;
-                    }
-
-                    @include breakpoint('small', 'max') {
-                        border: none;
-                        line-height: 1.5;
-                        margin: 0;
-                        padding: 0;
-                    }
-                }
-
-                .account__icon {
-                    display: inline-block;
-                    margin-right: .5em;
-                    vertical-align: middle;
-                    width: 25px;
-
-                    &.account__icon--profile {
-                        position: relative;
-                        top: 5px;
-                    }
-
-                    &--enter,
-                    &--profile {fill: $green}
-                    &--truck {fill: $gray-d}
-
-					&.account__icon--profile,
-                    &.account__icon--enter,
-                    &.account__icon--truck {
-                        display: none!important;
+						display: block;
+						font-style: normal;
 					}
 
-                    svg { max-height: 20px; }
-                }
+					.account__icon--profile ~ em {
+						@include breakpoint('small', 'max') { bottom: 24px;	}
+						bottom: 4px;
+						line-height: 1.2;
+						position: relative;
+						text-align: left;
 
-                @include breakpoint(small, 'max') {
-					opacity: 0;
-                    visibility: hidden;
-                }
+						a {
+							@include breakpoint('small', 'max') { border: none;	}
+						}
+					}
+
+					a {
+						color: $green;
+						position: relative;
+
+						&[href='/no-cache/user/logout'] {
+							@include rfs(10);
+							bottom: 0;
+							color: $gray-d;
+							font-weight: 400;
+							left: 0;
+							padding: 0;
+							position: relative;
+						}
+					}
+
+					svg {
+						margin: 0 auto;
+						max-height: 20px;
+						width: 25px;
+					}
+				}
+
+				#login {
+					@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
+					@include breakpoint('small', 'max') {
+						border: none;
+						line-height: 1.5;
+						margin: 0;
+						padding: 0;
+					}
+					@include responsiveFont(12, 16, true);
+					background-color: #ffffff;
+					color: $base-link-color;
+					display: block;
+					max-width: 100px;
+					overflow: hidden;
+					text-align: left;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+
+					&:after {
+						@include rfs(10);
+						bottom: 4px;
+						content: 'Faça login!';
+						display: block;
+						font-weight: 400;
+						left: 0;
+						position: relative;
+						text-align: left;
+						z-index: 1;
+					}
+
+				}
+
+				.account__icon {
+					display: inline-block;
+					margin-right: .5em;
+					vertical-align: middle;
+					width: 25px;
+
+					&.account__icon--profile {
+						position: relative;
+						top: 5px;
+					}
+
+					&--enter,
+					&--profile { fill: $green }
+					&--truck { fill: $gray-d }
+
+					&.account__icon--profile,
+					&.account__icon--enter,
+					&.account__icon--truck {
+						display: none!important;
+					}
+
+					svg { max-height: 20px; }
+				}
+
+
 			}
 
 			.menu.menu-department .account {
@@ -398,196 +382,195 @@ body {
 				}
 			}
 
-            .container {
-                @include breakpoint(small, 'max') {
-                    border-bottom: 1px solid $gray;
-                    max-width: 100%;
-                    padding: 0;
-                    position: relative;
-                    width: 100%;
-                }
-            }
+			.container {
+				@include breakpoint(small, 'max') {
+					border-bottom: 1px solid $gray;
+					max-width: 100%;
+					padding: 0;
+					position: relative;
+					width: 100%;
+				}
+			}
 
-            .account,
-            .minicart {
-                @include breakpoint(small, 'max') {
-                    background-color: #fff;
-                    height: 50px;
-                    position: absolute;
-                    text-align: left;
-                    top: 44px;
-                    vertical-align: top;
-                    width: 100% / 4 * 1;
-                    z-index: 10;
-                }
-            }
+			.account,
+			.minicart {
+				@include breakpoint(small, 'max') {
+					background-color: #fff;
+					height: 50px;
+					position: absolute;
+					text-align: left;
+					top: 44px;
+					vertical-align: top;
+					width: 100% / 4 * 1;
+					z-index: 10;
+				}
+			}
 
-            .minicart {
-                float: right;
+			.minicart {
+				@include breakpoint(small, 'max') {
+					background-color: transparent;
+					right: 10px;
+					text-align: right;
+					top: 0;
+				}
 
-                @include breakpoint(small, 'max') {
-                    background-color: transparent;
-                    right: 10px;
-                    text-align: right;
-                    top: 0;
-                }
-            }
+				float: right;
+			}
 
-            @include breakpoint(small, 'max') {
-                padding: 0;
-                padding-bottom: 0;
-                text-align: right;
-            }
-        }
-
-        .cont-logo {
-            text-align: left;
-
-            @include breakpoint(small, 'max') {
-                display: none;
-                text-align: center;
-                width: 100% !important;
-            }
-        }
-
-        .cont-logo-mobile {
-            a {
-                @include breakpoint(small, 'max') {
-                    display: inline-block;
-                    padding: 6px 0;
-                    top: 0;
-                    width: 85%;
-                }
-            }
-
-            .logo-mobile-svg {
-                @include breakpoint(small, 'max') {
-                    height: 35px;
-                    left: 50%;
-                    position: absolute;
-                    transform: translateX(-50%);
-                }
-            }
-
-            @include breakpoint(small, 'max') {
-                flex: 0 !important;
-                float: none;
-                height: 50px;
-                max-width: 100% !important;
-                text-align: center;
-                width: 100% !important;
-            }
-        }
-
-        .logo {
-            @include breakpoint(1119px, 'max') { padding-left: 0; }
-            @include responsiveFont(30, 16, true);
-            color: $green;
-            display: inline-block;
-            padding: 5px 18px 0 12px;
-            position: relative;
-            vertical-align: top;
-
-            .logo-desktop-svg {
-                line-height: 1;
-                position: relative;
-                transform: translateY(15%);
-                width: 85px;
-            }
-
-            @include breakpoint(small, 'max') {
-                @include responsiveFont(25.5, 16, true);
-                color: #ffffff;
-                display: block;
-                margin-top: 0;
-                position: static;
-                text-align: center;
-                top: -40px;
-            }
-        }
-    }
-
-    &:not(.produto):not(.pre-home) {
-        @include breakpoint(small, 'max') {
-            padding-top: $mobile-header-height;
-        }
-
-        header {
-            @include breakpoint(small, 'max') {
-                position: fixed;
-                top: 0;
-                width: 100%;
-                z-index: 4;
-            }
+			@include breakpoint(small, 'max') {
+				padding: 0;
+				padding-bottom: 0;
+				text-align: right;
+			}
 		}
-    }
 
-    &.consulempresa {
-        .welcome-message {
-            position: relative;
+		.cont-logo {
+			@include breakpoint(small, 'max') {
+				display: none;
+				text-align: center;
+				width: 100% !important;
+			}
 
-            .welcome {
-                margin-bottom: 0;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                width: 145px;
+			text-align: left;
+		}
 
-                .email { @include responsiveFont(10, 16, true); }
-            }
+		.cont-logo-mobile {
+			@include breakpoint(small, 'max') {
+				flex: 0 !important;
+				float: none;
+				height: 50px;
+				max-width: 100% !important;
+				text-align: center;
+				width: 100% !important;
+			}
 
-            a {
-                color: $green;
-                position: relative;
+			a {
+				@include breakpoint(small, 'max') {
+					display: inline-block;
+					padding: 6px 0;
+					top: 0;
+					width: 85%;
+				}
+			}
 
-                &[href='/no-cache/user/logout'] {
+			.logo-mobile-svg {
+				@include breakpoint(small, 'max') {
+					height: 35px;
+					left: 50%;
+					position: absolute;
+					transform: translateX(-50%);
+				}
+			}
+		}
+
+		.logo {
+			@include breakpoint(1119px, 'max') { padding-left: 0; }
+			@include breakpoint(small, 'max') {
+				@include responsiveFont(25.5, 16, true);
+				color: #ffffff;
+				display: block;
+				margin-top: 0;
+				position: static;
+				text-align: center;
+				top: -40px;
+			}
+			@include responsiveFont(30, 16, true);
+			color: $green;
+			display: inline-block;
+			padding: 5px 18px 0 12px;
+			position: relative;
+			vertical-align: top;
+
+			.logo-desktop-svg {
+				line-height: 1;
+				position: relative;
+				transform: translateY(15%);
+				width: 85px;
+			}
+
+		}
+	}
+
+	&:not(.produto):not(.pre-home) {
+		@include breakpoint(small, 'max') {
+			padding-top: $mobile-header-height;
+		}
+
+		header {
+			@include breakpoint(small, 'max') {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				z-index: 4;
+			}
+		}
+	}
+
+	&.consulempresa {
+		.welcome-message {
+			position: relative;
+
+			.welcome {
+				margin-bottom: 0;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				width: 145px;
+
+				.email { @include responsiveFont(10, 16, true); }
+			}
+
+			a {
+				color: $green;
+				position: relative;
+
+				&[href='/no-cache/user/logout'] {
 					@include rfs(10);
-                    bottom: -11px;
-                    left: 0;
-                }
-            }
-        }
+					bottom: -11px;
+					left: 0;
+				}
+			}
+		}
 
-        .link-meus-pedidos {
-            display: inline-block;
-            margin-top: 10px;
-        }
+		.link-meus-pedidos {
+			display: inline-block;
+			margin-top: 10px;
+		}
 
-        .logout a {
-            @include responsiveFont(12);
-            color: $orange;
-        }
+		.logout a {
+			@include responsiveFont(12);
+			color: $orange;
+		}
 
-        &.pre-home {
-            .header {
-                padding-bottom: 14px;
+		&.pre-home {
+			.header {
+				padding-bottom: 14px;
 
-                .logo {
-                    line-height: inherit;
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
+				.logo {
+					line-height: inherit;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
 
-    .icon-icon-cart-consul {
-        &:before {
+	.icon-icon-cart-consul {
+		&:before {
+			@include breakpoint('small', 'max') {
+				left: unset;
+				right: 5px;
+				top: -2px;
+			}
 			color: $purple;
 			font-size: 35px;
-            left: 10px;
-            position: absolute;
+			left: 10px;
+			position: absolute;
+		}
+	}
 
-            @include breakpoint('small', 'max') {
-                left: unset;
-                right: 5px;
-                top: -2px;
-            }
-        }
-    }
-
-    .container.clearfix > .account {
-        @include breakpoint('small', 'max') {
-            display: none;
-        }
+	.container.clearfix > .account {
+		@include breakpoint('small', 'max') {
+			display: none;
+		}
 	}
 }
