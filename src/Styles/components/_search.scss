@@ -154,7 +154,7 @@ body {
 		}
 
 		a {
-			@include font-size(13px);
+			@include rfs(13px);
 			border-bottom: 1px solid #e4e4e4;
 			color: $gray-d;
 			display: block;
@@ -195,7 +195,7 @@ body {
 		.image:empty + .img { display: inline-block; }
 
 		h3 {
-			@include font-size(13px);
+			@include rfs(13);
 			bottom: -5px;;
 			display: inline-block;
 			font-weight: normal;
@@ -215,7 +215,7 @@ body {
 					li { display: inline; }
 
 					ul {
-						li { font-size: 14px; }
+						li { @include rfs(14); }
 					}
 				}
 
@@ -224,7 +224,7 @@ body {
 
 		// Footer
 		.autocomplete-footer a {
-			@include font-size(16px);
+			@include rfs(16);
 			color: $txt-gray-l;
 			padding: 30px 10px;
 

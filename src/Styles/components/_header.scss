@@ -141,9 +141,9 @@ body {
                     width: 150px;
 
                     &:before {
-                        @include icon-get('icon-truck-consul');
-                        color: $green;
-                        font-size: 30px;
+						@include icon-get('icon-truck-consul');
+						color: $green;
+						font-size: 30px;
                         left: 16px;
                         position: absolute;
                         top: 50%;
@@ -240,8 +240,8 @@ body {
                     }
 
                     em {
+						@include rfs(12);
                         display: block;
-                        font-size: 12px;
                         font-style: normal;
                     }
 
@@ -267,9 +267,9 @@ body {
                         position: relative;
 
                         &[href='/no-cache/user/logout'] {
+							@include rfs(10);
                             bottom: 0;
                             color: $gray-d;
-                            font-size: 10px;
                             font-weight: 400;
                             left: 0;
                             padding: 0;
@@ -541,8 +541,8 @@ body {
                 position: relative;
 
                 &[href='/no-cache/user/logout'] {
+					@include rfs(10);
                     bottom: -11px;
-                    font-size: 10px;
                     left: 0;
                 }
             }
@@ -572,8 +572,8 @@ body {
 
     .icon-icon-cart-consul {
         &:before {
+			@include rfs(35);
             color: $purple;
-            font-size: 35px;
             left: 10px;
             position: absolute;
 
