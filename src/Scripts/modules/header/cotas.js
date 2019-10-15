@@ -76,21 +76,28 @@ Nitro.module('cotas', function() {
 	//this.init();
 
 	$('.open-menu-mobile').click(function() {
-		if (isLogged) {
-			if ($('.logout-text').length === 0) {
-				let nameSelector = $('.menu-department .account__icon.account__icon--profile').parent();
-				nameSelector.html(
-					`
-						${nameSelector.find('span').prop('outerHTML')}
-						<span class="logout-text">${nameSelector.text().match(/Olá (\w| )+?(?=\.)/)[0]}</span>
-						${nameSelector.find('em').prop('outerHTML')}
-					`
-				)
-			}
+		let nameSelector = $('.menu-department .account__icon.account__icon--profile');
+		if (nameSelector.length > 0) {
 
 			$('.header .account').addClass('logged-user');
+
 		} else {
+
 			$('.header .account').removeClass('logged-user');
+		}
+	});
+
+	$(window).load(function() {
+		if ($('.account__icon.account__icon--profile').length > 0) {
+			let welcomeMessage = $('.welcome');
+			let loginText = welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0];
+			if (loginText.length > 15) {
+				welcomeMessage.html(`
+					${welcomeMessage.find('span').prop('outerHTML')}
+					${welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0].substring(0, 14) + '...'}
+					${welcomeMessage.find('em').prop('outerHTML')}
+				`);
+			}
 		}
 	});
 });
