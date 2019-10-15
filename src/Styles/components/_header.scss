@@ -41,18 +41,7 @@ body {
 
 			&:first-child { margin-left: 0; }
 
-<<<<<<< HEAD
-		header {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 6;
-		}
-	}
-}
-=======
 			&.active { color: $green; }
->>>>>>> ICD-108_headerMobile
 
 			&[href*='tel'] { border-bottom-color: transparent; }
 
