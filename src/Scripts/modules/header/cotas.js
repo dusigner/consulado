@@ -90,11 +90,14 @@ Nitro.module('cotas', function() {
 	$(window).load(function() {
 		if ($('.account__icon.account__icon--profile').length > 0) {
 			let welcomeMessage = $('.welcome');
-			welcomeMessage.html(`
-				${welcomeMessage.find('span').prop('outerHTML')}
-				${welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0].substring(0, 19) + '...'}
-				${welcomeMessage.find('em').prop('outerHTML')}
-			`);
+			let loginText = welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0];
+			if (loginText.length > 15) {
+				welcomeMessage.html(`
+					${welcomeMessage.find('span').prop('outerHTML')}
+					${welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0].substring(0, 14) + '...'}
+					${welcomeMessage.find('em').prop('outerHTML')}
+				`);
+			}
 		}
 	});
 

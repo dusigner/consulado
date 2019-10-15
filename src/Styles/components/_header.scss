@@ -25,667 +25,202 @@
 
 $mobile-header-height: 84px;
 
-// Header
-header {
-	height: 60px;
-
-	&.menu-scroll {
-		overflow-y: scroll;
-
-		@media(max-width: 768px) {
-			height: unset;
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 99999;
-		}
-	}
-
-	@include breakpoint(small, 'max') {
-		max-height: unset;
-		min-height: $mobile-header-height;
-	}
-
-}
-
-@include breakpoint(small, 'max') {
-	body:not(.produto):not(.pre-home) {
-		padding-top: $mobile-header-height;
-
-		header {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 4;
-		}
-	}
-}
-
-// Pre header
-.pre-header {
-	background: $gray-d;
-	margin: 0;
-	max-height: 25px;
-
-	a {
-		@include responsiveFont(9);
-		border-bottom: 2px solid transparent;
-		color: #fff;
-		display: inline-block;
-		font-weight: bold;
-		margin-left: 20px;
-
-		&:first-child { margin-left: 0; }
-
-		&.active {
-			color: $green;
-		}
-
-		&[href*='tel'] { border-bottom-color: transparent; }
-
-		&[href*='tel:+551130037872'] { margin-left: 0; }
-
-		&[title*='Televendas'] {
-			margin-left: 4px;
-		}
-	}
-
-	.float-right { text-align: right; }
-}
-
-.header {
-	margin: 0;
-
-	section {
-		display: flex;
-		justify-content: space-between;
-
-		@include breakpoint('small', 'max') {
-			display: block;
-		}
-
-		.account {
-			align-items: center;
-			display: flex;
-			flex: 0 0 300px;
-			justify-content: center;
-			margin-left: 40px;
-			width: 300px;
-
-			@include breakpoint ('small', 'max') {
-				margin-left: 0;
-
-				&:before {
-					border-left: 1px solid #E3E1E1;
-					content: '';
-					display: inline-block;
-					height: 20%;
-					position: absolute;
-					right: 50%;
-					top: 48%;
-					transform: translateY(-50%);
-				}
-			}
-		}
-
-		.form-search {
-			margin-top: 0;
-		}
-
-		.text-search {
-			background-color: #F5F5F5;
-			border: none;
-			height: 60px;
-
-			&::placeholder {
-				@include rfs(11);
-				color: #707070;
-				font-weight: bold;
-			}
-
-			@include breakpoint ('small', 'max') {
-				height: 36px;
-			}
-		}
-	}
-
-	@include breakpoint(small, 'max') {
-		padding: 0;
-		padding-bottom: 0;
-		text-align: right;
-
-		.container {
-			border-bottom: 1px solid $gray;
-			max-width: 100%;
-			padding: 0;
-			position: relative;
-			width: 100%;
-		}
-
-		.cont-search,
-		.account,
-		.minicart {
-			background-color: $gray-l;
-			height: 50px;
-			position: absolute;
-			text-align: left;
-			top: 44px;
-			vertical-align: top;
-			width: 100% / 4 * 1;
-			z-index: 10;
-		}
-
-		.cont-search {
-			background-color: #ffffff;
-			left: 0;
-			top: 93px;
-			width: 100%;
-
-			@include breakpoint(small, 'max') {
-				border: none;
-				height: 34px;
-				padding: 0;
-				top: 50px;
-
-				.form-search {
-					height: 34px;
-				}
-
-				.icon-consul-loupe {
-					@include rfs (12);
-					left: unset;
-					right: 5px;
-				}
-
-				.text-search {
-					background-color: #F5F5F5;
-					border: none;
-
-					&::placeholder {
-						@include rfs(9);
-						color: #707070;
-						font-weight: bold;
-					}
-				}
-			}
-		}
-
-		.account {
-			left: 54%;
-		}
-
-		.minicart {
-			@include breakpoint(small, 'max') {
-				right: 10px;
-				text-align: right;
-				top: 0;
-			}
-
-			background-color: transparent;
-			right: 30px;
-		}
-	}
-}
-
-.cont-logo {
-	text-align: left;
-
-	@include breakpoint(extra-large, 'min') {
-		&.col-3 { width: 20%; }
-	}
-
-	@include breakpoint(small, 'max') {
-		display: none;
-		text-align: center;
-		width: 100% !important;
-	}
-}
-
-.cont-logo-mobile {
-	@include breakpoint(small, 'max') {
-		flex: 0 !important;
-		float: none;
-		height: 50px;
-		max-width: 100% !important;
-		text-align: center;
-		width: 100% !important;
-
-		a {
-			display: inline-block;
-			padding: 6px 0;
-			top: 0;
-			width: 85%;
-		}
-
-		.logo-mobile-svg {
-			height: 35px;
-			left: 50%;
-			position: absolute;
-			transform: translateX(-50%);
-		}
-	}
-}
-
-.logo {
-	@include breakpoint(1119px, 'max') { padding-left: 0; }
-	@include responsiveFont(30, 16, true);
-	color: $green;
-	display: inline-block;
-	padding: 5px 18px 0 12px;
-	position: relative;
-	vertical-align: top;
-
-	.logo-desktop-svg {
-		line-height: 1;
-		position: relative;
-		transform: translateY(15%);
-		width: 85px;
-	}
-
-	@include breakpoint(small, 'max') {
-		@include responsiveFont(25.5, 16, true);
-		color: #ffffff;
-		display: block;
-		margin-top: 0;
-		position: static;
-		text-align: center;
-		top: -40px;
-	}
-}
-
-div.minicart { float: right }
-
-// Conta
-div.account {
-	@include breakpoint(extra-large, 'max') { width: 22.66667%; }
-
-	color: $txt-gray-l;
-	font-size: 12px;
-	font-weight: 700;
-	height: 60px;
-	padding: 0;
-	position: relative;
-
-	&:after {
-		border-left: 1px solid #E3E1E1;
-		content: '';
-		display: inline-block;
-		height: 20%;
-		position: absolute;
-		right: 50%;
-		top: 48%;
-		transform: translateY(-50%);
-
-		@include breakpoint('small', 'max') {
-			display: none;
-		}
-	}
-
-	.link-meus-pedidos {
-		padding-left: 53px;
-		position: relative;
-		width: 150px;
-
-		&:before {
-			@include icon-get('icon-truck-consul');
-			color: $green;
-			font-size: 30px;
-			left: 16px;
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.account-text {
-			position: relative;
-
-			&:after {
-				@include rfs(10);
-				bottom: 4px;
-				content: 'Acompanhe!';
-				display: block;
-				font-weight: 400;
-				position: relative;
-				width: 60px;
-			}
-
-			@include breakpoint('small', 'max') {
-				@include rfs(12);
-				color: $base-link-color;
-				line-height: 1.5;
-			}
-		}
-	}
-
-
-	// ******************************************************* //
-	// Eu, Douglas, não me orgulho do que fiz daqui para baixo //
-	// ******************************************************* //
-	// Responsive fix
-	// Esconder opção no desktop, caso
-	// os itens estejam dentro do menu
-
-	.welcome-message {
-		width: 150px;
-
-		@include breakpoint('small', 'max') {
-			width: 50%;
-		}
-	}
-
-	.menu.menu-department & {
-		@include breakpoint('small', 'min') {
-			display: none;
-			visibility: hidden;
-		}
-	}
-	@include breakpoint(small, 'max') {
-		opacity: 0;
-		visibility: hidden;
-
-		.menu-mobile.menu-active & {
-			opacity: 1;
-			visibility: visible;
-		}
-
-		.header .menu-mobile & {
-			height: 60px;
-			left: 0;
-			overflow: hidden;
-			position: relative;
-			top: 0;
-			width: 100%;
-			z-index: 100;
-
-			.welcome-message,
-			a[href='/minhaconta/pedidos'] {
-				height: 60px;
-				line-height: 60px;
-				margin: 0;
-				padding: 0;
-				text-align: center;
-				width: 50%;
-			}
-
-
-
-			a[href='/minhaconta/pedidos'] {
-				right: 0;
-
-				.account__icon.account__icon--truck {
-					display: inline-block;
-					margin-top: -12px;
-
-					svg { fill: #9aca3c; }
-				}
-			}
-		}
-
-		// Usuário loggado
-		// &.logged-user {
-		// 	.header .menu-mobile & {
-
-		// 		.welcome-message {
-		// 			background-color: #e4e4e4;
-		// 			line-height: normal;
-
-		// 			.welcome {
-		// 				@include breakpoint(360px, 'max') { font-size: 11px; }
-		// 				font-size: 12px;
-		// 				height: 60px;
-		// 				padding: 12px 0 0 45px;
-		// 				text-align: left;
-		// 				white-space: nowrap;
-		// 			}
-		// 		}
-
-		// 		.account__icon.account__icon--profile {
-		// 			left: 15px;
-		// 			position: absolute;
-		// 			top: 18px;
-		// 		}
-
-		// 		// Sair
-		// 		a[href='/no-cache/user/logout'] {
-		// 			border: none;
-		// 			bottom: 12px;
-		// 			display: block;
-		// 			font-weight: normal;
-		// 			height: 20px;
-		// 			left: inherit;
-		// 			position: absolute;
-		// 			right: 0;
-		// 			text-decoration: underline;
-		// 			top: inherit;
-		// 			width: 35px;
-		// 		}
-
-		// 		.view-cotas  {
-		// 			@include breakpoint(360px, 'max') { font-size: 11px; }
-		// 			background: none;
-		// 			bottom: 10px;
-		// 			color: #9aca3c;
-		// 			font-size: 12px;
-		// 			font-weight: normal;
-		// 			left: 32px;
-		// 			position: absolute;
-		// 			right: inherit;
-		// 			text-align: left;
-		// 			top: inherit;
-		// 			transform: translate(0, 0);
-		// 			white-space: nowrap;
-		// 			width: 70%;
-		// 		}
-		// 	}
-		// }
-	}
-	// ****************************************************** //
-	// Eu, Douglas, não me orgulho do que fiz daqui para cima //
-	// ****************************************************** //
-	.icon-brastemp-account {
-		@include responsiveFont(33, 16, true);
-		color: $gray-d;
-		display: block;
-		float: left;
-		font-weight: bold;
-		height: 50px;
-		line-height: 42px;
-		margin-right: 10px;
-		margin-top: 5px;
-		width: 30px;
-	}
-
-	.hide { @include show-conditional(); }
-
-	.welcome {
-		// @include responsiveFont(12);
-		color: $base-link-color;
-		display: block;
-		// left: 35%;
-		// font-size: 0;
-		overflow: hidden;
-		padding: 0 0 0 31px;
-		position: relative;
-		// width: 75%;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-
-		@include breakpoint(1280px, 'min') {
-			width: 100%;
-		}
-
-		em {
-			display: block;
-			font-size: 12px;
-			font-style: normal;
-		}
-
-		.account__icon--profile ~ em {
-    		bottom: 4px;
-			line-height: 1.2;
-			position: relative;
-			text-align: left;
-
-			@include breakpoint('small', 'max') {
-				bottom: 24px;
-
-				a {
-					border: none;
-				}
-			}
-		}
-
-		a {
-			color: $green;
-			position: relative;
-
-			&[href='/no-cache/user/logout'] {
-				bottom: 0;
-				color: $gray-d;
-				font-size: 10px;
-				font-weight: 400;
-				left: 0;
-				padding: 0;
-				position: relative;
-			}
-		}
-
-		svg {
-			margin: 0 auto;
-			max-height: 20px;
-			width: 25px;
-		}
-	}
-
-	#login {
-		@include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
-		@include responsiveFont(12, 16, true);
-		background-color: #ffffff;
-		color: $base-link-color;
-		display: block;
-		max-width: 100px;
-		overflow: hidden;
-		text-align: left;
-		text-overflow: ellipsis;
-    	white-space: nowrap;
-
-		&:after {
-			@include rfs(10);
-			bottom: 4px;
-			content: 'Faça login!';
-			display: block;
-			font-weight: 400;
-			left: 0;
-			position: relative;
-			text-align: left;
-			z-index: 1;
-		}
-
-		@include breakpoint('small', 'max') {
-			border: none;
-			line-height: 1.5;
-			margin: 0;
-			padding: 0;
-		}
-	}
-
-	.account__icon {
-		display: inline-block;
-		margin-right: .5em;
-		vertical-align: middle;
-		width: 25px;
-
-		&.account__icon--profile {
-			position: relative;
-			top: 5px;
-		}
-
-		&--enter,
-		&--profile {fill: $green}
-		&--truck {fill: $gray-d}
-
-		svg { max-height: 20px; }
-	}
-
-	.view-cotas {
-		background: $green;
-		color: #fff;
-		padding: 1px 1.2em;
-		position: absolute;
-		right: 0;
-		top: 0;
-		transform: translateX(90%);
-	}
-}
-
-body.consulempresa {
-	.welcome-message {
-		position: relative;
-
-		.welcome {
-			margin-bottom: 0;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			white-space: nowrap;
-			width: 145px;
-
-			.email { @include responsiveFont(10, 16, true); }
-		}
-
-		a {
-			color: $green;
-			position: relative;
-
-			&[href='/no-cache/user/logout'] {
-				bottom: -11px;
-				font-size: 10px;
-				left: 0;
-			}
-		}
-	}
-
-	.link-meus-pedidos {
-		display: inline-block;
-		margin-top: 10px;
-	}
-
-	.logout a {
-		@include responsiveFont(12);
-		color: $orange;
-	}
-
-	&.pre-home {
-		.header {
-			padding-bottom: 14px;
-
-			.logo {
-				line-height: inherit;
-				margin-top: 10px;
-			}
-		}
-	}
-}
-
 body {
-	header {
-		.account {
-			.account__icon {
-				&.account__icon--profile,
-				&.account__icon--enter,
-				&.account__icon--truck {
-					display: none!important;
+    .pre-header {
+        background: $gray-d;
+        margin: 0;
+        max-height: 25px;
+
+        a {
+            @include responsiveFont(9);
+            border-bottom: 2px solid transparent;
+            color: #fff;
+            display: inline-block;
+            font-weight: bold;
+            margin-left: 20px;
+
+            &:first-child { margin-left: 0; }
+
+            &.active {
+                color: $green;
+            }
+
+            &[href*='tel'] { border-bottom-color: transparent; }
+
+            &[href*='tel:+551130037872'] { margin-left: 0; }
+
+            &[title*='Televendas'] {
+                margin-left: 4px;
+            }
+        }
+
+        .float-right { text-align: right; }
+    }
+
+    header {
+        height: 60px;
+
+        @include breakpoint(small, 'max') {
+            max-height: unset;
+            min-height: $mobile-header-height;
+        }
+
+        &.menu-scroll {
+            overflow-y: scroll;
+
+            @include breakpoint(small, 'max') {
+                height: unset;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 99999;
+            }
+        }
+
+        .header {
+            margin: 0;
+
+            section {
+                display: flex;
+                justify-content: space-between;
+
+                @include breakpoint('small', 'max') {
+                    display: block;
 				}
-			}
-			.welcome-message {
-				.welcome {
-					display: flex;
+            }
+
+            div.account {
+                @include rfs(12);
+                align-items: center;
+                color: $txt-gray-l;
+                display: flex;
+                flex: 0 0 300px;
+                font-weight: 700;
+                height: 60px;
+                justify-content: center;
+                margin-left: 40px;
+                padding: 0;
+                position: relative;
+                width: 300px;
+
+                @include breakpoint ('small', 'max') {
+                    margin-left: 0;
+                }
+
+                &:before {
+                    @include breakpoint ('small', 'max') {
+                        border-left: 1px solid #E3E1E1;
+                        content: '';
+                        display: inline-block;
+                        height: 20%;
+                        position: absolute;
+                        right: 50%;
+                        top: 48%;
+                        transform: translateY(-50%);
+                    }
+                }
+
+                &:after {
+                    border-left: 1px solid #E3E1E1;
+                    content: '';
+                    display: inline-block;
+                    height: 20%;
+                    position: absolute;
+                    right: 50%;
+                    top: 48%;
+                    transform: translateY(-50%);
+
+                    @include breakpoint('small', 'max') {
+                        display: none;
+                    }
+                }
+
+                .link-meus-pedidos {
+					padding-left: 53px;
+                    position: relative;
+                    width: 150px;
+
+                    &:before {
+                        @include icon-get('icon-truck-consul');
+                        color: $green;
+                        font-size: 30px;
+                        left: 16px;
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+
+                    .account-text {
+                        position: relative;
+
+                        &:after {
+                            @include rfs(10);
+                            bottom: 4px;
+                            content: 'Acompanhe!';
+                            display: block;
+                            font-weight: 400;
+                            position: relative;
+                            width: 60px;
+                        }
+
+                        @include breakpoint('small', 'max') {
+                            @include rfs(12);
+                            color: $base-link-color;
+                            line-height: 1.5;
+                        }
+					}
+
+					@include breakpoint('small', 'max') {
+						align-items: center;
+						background-color: #fff;
+                    	border-top: none;
+						display: flex;
+						height: 100%;
+						justify-content: flex-start;
+    					padding: 0 0 0 53px;
+						right: 0;
+						width: 50%;
+					}
+                }
+
+                .welcome-message {
+                    width: 150px;
+
+                    @include breakpoint ('small', 'max') {
+                        left: 0;
+                        max-width: unset;
+                        width: 50%;
+                    }
+                }
+
+                .icon-brastemp-account {
+                    @include responsiveFont(33, 16, true);
+                    color: $gray-d;
+                    display: block;
+                    float: left;
+                    font-weight: bold;
+                    height: 50px;
+                    line-height: 42px;
+                    margin-right: 10px;
+                    margin-top: 5px;
+                    width: 30px;
+                }
+
+                .hide { @include show-conditional(); }
+
+                .welcome {
+                    color: $base-link-color;
+                    display: flex;
 					flex-direction: column;
 					float: right;
 					justify-content: flex-end;
 					margin: 0;
 					max-width: 150px;
-					padding-left: 30px;
-					padding-right: 20px;
+                    overflow: hidden;
+                    padding: 0 20px 0 30px;
+                    position: relative;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
 					width: fit-content;
 
 					&:before {
@@ -702,65 +237,357 @@ body {
 					@include breakpoint('small', 'max') {
 						height: 100%;
 						justify-content: center;
+                    }
+
+                    em {
+                        display: block;
+                        font-size: 12px;
+                        font-style: normal;
+                    }
+
+                    .account__icon--profile ~ em {
+                        bottom: 4px;
+                        line-height: 1.2;
+                        position: relative;
+                        text-align: left;
+
+                        @include breakpoint('small', 'max') {
+                            bottom: 24px;
+                        }
+
+                        a {
+                            @include breakpoint('small', 'max') {
+                                border: none;
+                            }
+                        }
+                    }
+
+                    a {
+                        color: $green;
+                        position: relative;
+
+                        &[href='/no-cache/user/logout'] {
+                            bottom: 0;
+                            color: $gray-d;
+                            font-size: 10px;
+                            font-weight: 400;
+                            left: 0;
+                            padding: 0;
+                            position: relative;
+                        }
+                    }
+
+                    svg {
+                        margin: 0 auto;
+                        max-height: 20px;
+                        width: 25px;
+                    }
+                }
+
+                #login {
+                    @include breakpoint(large, 'max') { @include responsiveFont(11, 16, true); }
+                    @include responsiveFont(12, 16, true);
+                    background-color: #ffffff;
+                    color: $base-link-color;
+                    display: block;
+                    max-width: 100px;
+                    overflow: hidden;
+                    text-align: left;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                    &:after {
+                        @include rfs(10);
+                        bottom: 4px;
+                        content: 'Faça login!';
+                        display: block;
+                        font-weight: 400;
+                        left: 0;
+                        position: relative;
+                        text-align: left;
+                        z-index: 1;
+                    }
+
+                    @include breakpoint('small', 'max') {
+                        border: none;
+                        line-height: 1.5;
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+
+                .account__icon {
+                    display: inline-block;
+                    margin-right: .5em;
+                    vertical-align: middle;
+                    width: 25px;
+
+                    &.account__icon--profile {
+                        position: relative;
+                        top: 5px;
+                    }
+
+                    &--enter,
+                    &--profile {fill: $green}
+                    &--truck {fill: $gray-d}
+
+					&.account__icon--profile,
+                    &.account__icon--enter,
+                    &.account__icon--truck {
+                        display: none!important;
 					}
+
+                    svg { max-height: 20px; }
+                }
+
+                @include breakpoint(small, 'max') {
+					opacity: 0;
+                    visibility: hidden;
+                }
+			}
+
+			.menu.menu-department .account {
+				@include breakpoint('small', 'min') {
+					display: none;
+					visibility: hidden;
 				}
-				@include breakpoint ('small', 'max') {
+			}
+			.menu-mobile.menu-active .account {
+				@include breakpoint(small, 'max') {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
+
+			.menu-mobile .account {
+				@include breakpoint(small, 'max') {
+					height: 60px;
 					left: 0;
-					max-width: unset;
+					overflow: hidden;
+					position: relative;
+					top: 0;
+					width: 100%;
+					z-index: 100;
 				}
 
-			}
-		}
-
-		.menu-mobile {
-			.menu-department {
 				.welcome-message {
-					@include breakpoint('small', 'max') {
-						.ajax-content-loader {
-							background-color: #fff;
-							height: 100%;
+					@include breakpoint(small, 'max') {
+						height: 60px;
+						line-height: 60px;
+						margin: 0;
+						padding: 0;
+						text-align: center;
+						width: 50%;
+					}
+				}
+
+				a[href='/minhaconta/pedidos'] {
+					.account__icon.account__icon--truck {
+						@include breakpoint(small, 'max') {
+							display: inline-block;
+							margin-top: -12px;
 						}
 					}
 				}
 
-				.account {
-					.link-meus-pedidos {
-						align-items: center;
+				.ajax-content-loader {
+					@include breakpoint('small', 'max') {
 						background-color: #fff;
-						border-top: none;
-    					display: flex;
-						justify-content: center;
-						position: relative;
-						right: 0;
-
-						@include breakpoint('small', 'max') {
-							justify-content: flex-start;
-							padding-left: 53px;
-						}
+						height: 100%;
 					}
 				}
 			}
+
+            .container {
+                @include breakpoint(small, 'max') {
+                    border-bottom: 1px solid $gray;
+                    max-width: 100%;
+                    padding: 0;
+                    position: relative;
+                    width: 100%;
+                }
+            }
+
+            .account,
+            .minicart {
+                @include breakpoint(small, 'max') {
+                    background-color: #fff;
+                    height: 50px;
+                    position: absolute;
+                    text-align: left;
+                    top: 44px;
+                    vertical-align: top;
+                    width: 100% / 4 * 1;
+                    z-index: 10;
+                }
+            }
+
+            .minicart {
+                float: right;
+
+                @include breakpoint(small, 'max') {
+                    background-color: transparent;
+                    right: 10px;
+                    text-align: right;
+                    top: 0;
+                }
+            }
+
+            @include breakpoint(small, 'max') {
+                padding: 0;
+                padding-bottom: 0;
+                text-align: right;
+            }
+        }
+
+        .cont-logo {
+            text-align: left;
+
+            @include breakpoint(small, 'max') {
+                display: none;
+                text-align: center;
+                width: 100% !important;
+            }
+        }
+
+        .cont-logo-mobile {
+            a {
+                @include breakpoint(small, 'max') {
+                    display: inline-block;
+                    padding: 6px 0;
+                    top: 0;
+                    width: 85%;
+                }
+            }
+
+            .logo-mobile-svg {
+                @include breakpoint(small, 'max') {
+                    height: 35px;
+                    left: 50%;
+                    position: absolute;
+                    transform: translateX(-50%);
+                }
+            }
+
+            @include breakpoint(small, 'max') {
+                flex: 0 !important;
+                float: none;
+                height: 50px;
+                max-width: 100% !important;
+                text-align: center;
+                width: 100% !important;
+            }
+        }
+
+        .logo {
+            @include breakpoint(1119px, 'max') { padding-left: 0; }
+            @include responsiveFont(30, 16, true);
+            color: $green;
+            display: inline-block;
+            padding: 5px 18px 0 12px;
+            position: relative;
+            vertical-align: top;
+
+            .logo-desktop-svg {
+                line-height: 1;
+                position: relative;
+                transform: translateY(15%);
+                width: 85px;
+            }
+
+            @include breakpoint(small, 'max') {
+                @include responsiveFont(25.5, 16, true);
+                color: #ffffff;
+                display: block;
+                margin-top: 0;
+                position: static;
+                text-align: center;
+                top: -40px;
+            }
+        }
+    }
+
+    &:not(.produto):not(.pre-home) {
+        @include breakpoint(small, 'max') {
+            padding-top: $mobile-header-height;
+        }
+
+        header {
+            @include breakpoint(small, 'max') {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 4;
+            }
 		}
-	}
-}
+    }
 
-.icon-icon-cart-consul {
-	&:before {
-		color: $purple;
-		font-size: 35px;
-		left: 10px;
-		position: absolute;
+    &.consulempresa {
+        .welcome-message {
+            position: relative;
 
-		@include breakpoint('small', 'max') {
-			left: unset;
-			right: 5px;
-			top: -2px;
-		}
-	}
-}
+            .welcome {
+                margin-bottom: 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                width: 145px;
 
-@include breakpoint('small', 'max') {
-	.container.clearfix > .account {
-		display: none;
+                .email { @include responsiveFont(10, 16, true); }
+            }
+
+            a {
+                color: $green;
+                position: relative;
+
+                &[href='/no-cache/user/logout'] {
+                    bottom: -11px;
+                    font-size: 10px;
+                    left: 0;
+                }
+            }
+        }
+
+        .link-meus-pedidos {
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .logout a {
+            @include responsiveFont(12);
+            color: $orange;
+        }
+
+        &.pre-home {
+            .header {
+                padding-bottom: 14px;
+
+                .logo {
+                    line-height: inherit;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+
+    .icon-icon-cart-consul {
+        &:before {
+            color: $purple;
+            font-size: 35px;
+            left: 10px;
+            position: absolute;
+
+            @include breakpoint('small', 'max') {
+                left: unset;
+                right: 5px;
+                top: -2px;
+            }
+        }
+    }
+
+    .container.clearfix > .account {
+        @include breakpoint('small', 'max') {
+            display: none;
+        }
 	}
 }
