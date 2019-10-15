@@ -9,192 +9,195 @@ $text-gray-bf2019: #BFBEBE;
 $text-gray-d-bf2019: #757575;
 
 body {
-    div.pre-header {
-        background-color: $top-header;
+	div.pre-header {
+		background-color: $top-header;
 
-        section {
-            div {
-                a {
-                    color: $text-gray-bf2019 !important;
-                }
+		section {
+			div {
+				a {
+					color: $text-gray-bf2019 !important;
+				}
 
-                &.float-right {
-                    a {
-                        color: $text-gray-d-bf2019;
-                    }
-                }
-            }
-        }
-    }
+				&.float-right {
+					a {
+						color: $text-gray-d-bf2019;
+					}
+				}
+			}
+		}
+	}
 
-    header {
-        div.header {
-            background-color: #333333;
+	header {
+		div.header {
+			background-color: #333333;
 
-            div.account {
-                p.welcome {
-                    color: #fff;
+			div.account {
+				p.welcome {
+					color: #fff;
 
-                    em {
-                        a[href='/no-cache/user/logout'] {
-                            color: #fff;
-                        }
-                    }
-                }
+					em {
+						a[href='/no-cache/user/logout'] {
+							color: #fff;
+						}
+					}
 
-                a.link-meus-pedidos {
-                    background-color: $middle-header;
+					#login {
+						background-color: transparent;
+						color: #fff;
+					}
+				}
 
-                    span.account-text {
-                        color: #fff;
+				a.link-meus-pedidos {
+					background-color: $middle-header;
 
-                        &:after {
-                            color: #fff;
-                        }
-                    }
-                }
-            }
+					span.account-text {
+						color: #fff;
 
-            .icon-icon-cart-consul:before {
-                color: #fff;
-            }
+						&:after {
+							color: #fff;
+						}
+					}
+				}
+			}
 
-            .menu-mobile {
-                background-color: $middle-header;
+			.icon-icon-cart-consul:before {
+				color: #fff;
+			}
 
-                .account {
-                    .ajax-content-loader {
-                        background-color: $middle-header;
-                    }
-                }
+			.menu-mobile {
+				background-color: $middle-header;
 
-                .open-menu-mobile {
-                    background-color: $middle-header;
+				.account {
+					.ajax-content-loader {
+						background-color: $middle-header;
+					}
+				}
 
-                    .icon.icon-hamburger {
-                        border-color: #fff;
+				.open-menu-mobile {
+					background-color: $middle-header;
 
-                        &:before,
-                        &:after {
-                            background-color: #fff;
-                        }
-                    }
-                }
+					.icon.icon-hamburger {
+						border-color: #fff;
 
-                &.menu-active {
-                    .icon.icon-hamburger {
-                        border-color: transparent;
+						&:before,
+						&:after {
+							background-color: #fff;
+						}
+					}
+				}
 
-                        &:before {
-                            background-color: $middle-header;
-                            color: #fff;
-                        }
-                    }
+				&.menu-active {
+					.icon.icon-hamburger {
+						border-color: transparent;
 
-                    .open-menu-mobile {
-                        background-color: $middle-header;
-                    }
-                }
+						&:before {
+							background-color: $middle-header;
+							color: #fff;
+						}
+					}
 
-                .menu-department {
-                    .item {
-                        background-color: $middle-header;
+					.open-menu-mobile {
+						background-color: $middle-header;
+					}
+				}
 
-                        a {
-                            @include rfs(14);
-                            border-color: $border-color-mobile;
-                            color: #fff;
+				.menu-department {
+					.item {
+						background-color: $middle-header;
 
-                            .icon.icon-arrow-down {
-                                color: #fff;
-                            }
-                        }
+						a {
+							@include rfs(14);
+							border-color: $border-color-mobile;
+							color: #fff;
 
-                        &.txt-gray {
-                            a[href*='tel:551130037872'] {
-                                color: $green;
-                            }
-                        }
+							.icon.icon-arrow-down {
+								color: #fff;
+							}
+						}
 
-                        .submenu {
-                            li {
-                                a {
-                                    color: #fff;
-                               }
-                            }
-                        }
-                    }
-                }
+						&.txt-gray {
+							a[href*='tel:551130037872'] {
+								color: $green;
+							}
+						}
 
-            }
-        }
+						.submenu {
+							li {
+								a {
+									color: #fff;
+							   }
+							}
+						}
+					}
+				}
 
-        .cont-search {
-            input.text-search {
-                background-color: $search;
-                color: #fff;
+			}
+		}
 
-                &::placeholder {
-                    color: #fff;
-                }
-            }
+		.cont-search {
+			input.text-search {
+				background-color: $search;
+				color: #fff;
 
-            .icon-icon-loupe-consul {
-                color: #fff !important;
-            }
-        }
-    }
+				&::placeholder {
+					color: #fff;
+				}
+			}
 
-    nav.top-navigation {
-        background: linear-gradient(90deg, $menu-section 50%, $search 50%);
-        border-top: 1px solid $border-color;
-        box-shadow: none;
+			.icon-icon-loupe-consul {
+				color: #fff !important;
+			}
+		}
+	}
 
-        .menu-department {
-            background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+	nav.top-navigation {
+		background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+		border-top: 1px solid $border-color;
+		box-shadow: none;
 
-            & > .item:not(.dropdown) {
-                background-color: $menu-section;
+		.menu-department {
+			background: linear-gradient(90deg, $menu-section 50%, $search 50%);
 
-                &#menu-cupons {
-                    background-color: $search;
+			& > .item:not(.dropdown) {
+				background-color: $menu-section;
 
-                    a {
-                        color: #fff;
-                        font-weight: 500;
-                        text-transform: none;
-                    }
-                }
+				&#menu-cupons {
+					background-color: $search;
 
-                a {
-                    @include rfs(14);
-                    color: #fff;
+					a {
+						color: #fff;
+						font-weight: 500;
+						text-transform: none;
+					}
+				}
 
-                }
-            }
+				a {
+					@include rfs(14);
+					color: #fff;
 
-
-            .dropdown {
-                background-color: $menu-section;
-                border-right: 1px solid $border-color;
-
-                &:not(.topmenu-active) {
-                    a[title='Departamentos'] {
-                        color: #fff;
-                    }
-
-                    .icon.icon-hamburger {
-                        border-color: #fff;
-
-                        &:before,
-                        &:after {
-                            background-color: #fff;
-                        }
-                    }
-                }
-            }
-        }
-    }
+				}
+			}
 
 
+			.dropdown {
+				background-color: $menu-section;
+				border-right: 1px solid $border-color;
+
+				&:not(.topmenu-active) {
+					a[title='Departamentos'] {
+						color: #fff;
+					}
+
+					.icon.icon-hamburger {
+						border-color: #fff;
+
+						&:before,
+						&:after {
+							background-color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
 }
