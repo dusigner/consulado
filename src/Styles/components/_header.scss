@@ -1,4 +1,5 @@
 @charset 'UTF-8';
+@import './header/blackfriday-2019';
 
 // @import 'header/tooltip';
 //------------------------------------
@@ -375,10 +376,8 @@ body {
 				}
 
 				.ajax-content-loader {
-					@include breakpoint('small', 'max') {
-						background-color: #fff;
-						height: 100%;
-					}
+					background-color: #fff;
+					height: 100%;
 				}
 			}
 

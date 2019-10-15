@@ -261,6 +261,10 @@
 				margin: 0;
 				top: 1px;
 			}
+
+			&:after {
+				display: none;
+			}
 		}
 
 		.first-level {
@@ -616,6 +620,7 @@ $menu-colors: (
 
 	// Televendas
 	a[title^='Televendas'] { font-weight: 400; }
+
 
 	// Controle de ações do menu com base no item pai ( menu-mobile )
 	&.menu-active {
