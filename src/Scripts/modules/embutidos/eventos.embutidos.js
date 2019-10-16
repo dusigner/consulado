@@ -316,9 +316,9 @@ const Eventos = {
 		//Valida se tem 3 produtos na vitrine
 		if (skus.length >= 3) {
 			//SetPirce on HTML
-			$.map( $('article .de .val'), x => (totalDe += getMoney(x.textContent)) );
-			$.map( $('article .por .val'), x => (totalPor += getMoney(x.textContent)) );
-			$.map( $('article .discount-boleto strong'), x => (money += getMoney(x.textContent)) );
+			$.map( $('.vitrine-comprejunto article .de .val'), x => totalDe += getMoney(x.textContent) );
+			$.map( $('.vitrine-comprejunto article .por .val'), x => {totalPor += getMoney(x.textContent); console.log('totalPor',x.textContent)} );
+			$.map( $('.vitrine-comprejunto article .discount-boleto strong'), x => money += getMoney(x.textContent) );
 			totalDe = formatReal(totalDe);
 			totalPor = formatReal(totalPor);
 			$('li .de-final').text(`De: R$ ${totalDe}`);
@@ -381,8 +381,7 @@ const Eventos = {
 				setLink();
 			});
 		} else {
-			$('.vitrine-header').addClass('hide');
-			$('.vitrine').addClass('hide');
+			$('.vitrine-comprejunto').addClass('hide');
 		}
 	}
 };
