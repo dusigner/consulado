@@ -4,15 +4,6 @@ $gray-light: #3B3B3B;
 $gray-medium: #333333;
 $gray-dark: #2A2A2A;
 
-// Breakpoints
-$breakpoint-map: (
-	'extra-small': 30em,   //480px
-	'small'      : 48em,   //768px
-	'medium'     : 60em,   //960px
-	'large'      : 70em,   //1120px
-	'extra-large': 80em    //1280px
-);
-
 // Envelopamento Black Friday
 .footer-2019 {
 	& .canais-atendimento {
@@ -23,26 +14,76 @@ $breakpoint-map: (
 			background-color: transparent;
 			color: #fff;
 		}
+
+		& a {
+			font-weight: 400;
+		}
+
+		& p {
+			margin-top: 12px;
+		}
+
 		& h4 {
 			font-weight: 500;
 			& a {
 				font-weight: 500;
 			}
 		}
-		& a {
-			font-weight: 400;
+
+		&__title::before {
+				border-bottom-color: #4A4A4A;
 		}
-		&-redes__item {
+		& .border {
+			border-width: 1px;
+		}
+		& .line-bottom {
+		@media (min-width: 980px) {
+				padding-bottom: 30px;
+				&::after {
+					background-color: #ccc;
+					content: '';
+					display: block;
+					height: 1px;
+					position: relative;
+					top: 30px;
+					width: 14px;
+				}
+			 }
+		}
+		& .section-atendimento,
+		& .section-duvidas {
+			border-left-color: $gray-dark;
+			border-width: 0 0 0 4px;
+		}
+		& .section-atendimento {
+			border-top-color: $gray-light;
+			&.is--active {
+				border-bottom: 1px solid #4A4A4A;
+			}
+		}
+		&-redes {
 			&--facebook {
-				backdrop-filter: #fff;
+				background-image: url('/arquivos/facebook-consul-footer-blackfriday-2019.png');
+			}
+			&--instagram {
+				background-image: url('/arquivos/instagram-consul-footer-blackfriday-2019.png');
+			}
+			&--twitter {
+				background-image: url('/arquivos/twitter-consul-footer-blackfriday-2019.png');
+			}
+			&--youtube {
+				background-image: url('/arquivos/youtube-consul-footer-blackfriday-2019.png');
 			}
 		}
-		&__title {
-			@include breakpoint('small', 'max') {
-				border: none;
-			}
+		& .link--arrow:after {
+			background: none;
+			background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAYAAABLN4eXAAABS2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxMzggNzkuMTU5ODI0LCAyMDE2LzA5LzE0LTAxOjA5OjAxICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIi8+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgo8P3hwYWNrZXQgZW5kPSJyIj8+IEmuOgAAAMdJREFUKJGV0TFqAkEUh/FvF2+QNkeIjY0XSG+RdMHGLp1lCvEKFoK9YuUpcgIbD+AWpl0ErfNZLSz6ZhYfPBiY+fH+vEF9UTdqre7VT5Vco659rO8uVAcoC1EPCaQ6SaGPDPqPYHOYdsCvCD0F7/N2wVGEUH8y8C+FUH8z8DUCiwyo1LL9uFBXGVCrb+14hbrNgLPat7W9nrrrAAPv/mn+DGjQKQEuEVApiesKvAP78FadBROG0YSmC7UExsAIOAJLoEokAOAGKXQQ3WrYp8EAAAAASUVORK5CYII=');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: contain;
 		}
 	}
+
 	& .menu-footer {
 		background-color: $gray-medium;
 	}
