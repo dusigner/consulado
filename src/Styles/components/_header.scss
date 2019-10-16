@@ -1,4 +1,5 @@
 @charset 'UTF-8';
+//@import './header/blackfriday-2019';
 
 // @import 'header/tooltip';
 //------------------------------------
@@ -31,12 +32,15 @@ body {
 		margin: 0;
 		max-height: 25px;
 
+		.col-6:not(.float-right) {
+			padding-left: 22px;
+		}
+
 		a {
 			@include responsiveFont(9);
-			border-bottom: 2px solid transparent;
 			color: #fff;
 			display: inline-block;
-			font-weight: bold;
+			font-weight: 500;
 			margin-left: 20px;
 
 			&:first-child { margin-left: 0; }
@@ -96,7 +100,6 @@ body {
 				font-weight: 700;
 				height: 60px;
 				justify-content: center;
-				margin-left: 40px;
 				padding: 0;
 				position: relative;
 				width: 300px;
@@ -131,11 +134,11 @@ body {
 					@include breakpoint('small', 'max') {
 						align-items: center;
 						background-color: #fff;
-                    	border-top: none;
+						border-top: none;
 						display: flex;
 						height: 100%;
 						justify-content: flex-start;
-    					padding: 0 0 0 53px;
+						padding: 0 0 0 53px;
 						right: 0;
 						width: 50%;
 					}
@@ -292,7 +295,7 @@ body {
 					&:after {
 						@include rfs(10);
 						bottom: 4px;
-						content: 'Faça login!';
+						content: 'Acesse sua conta!';
 						display: block;
 						font-weight: 400;
 						left: 0;
@@ -375,10 +378,8 @@ body {
 				}
 
 				.ajax-content-loader {
-					@include breakpoint('small', 'max') {
-						background-color: #fff;
-						height: 100%;
-					}
+					background-color: #fff;
+					height: 100%;
 				}
 			}
 
@@ -425,12 +426,18 @@ body {
 		}
 
 		.cont-logo {
-			@include breakpoint(small, 'max') {
-				display: none;
-				text-align: center;
-				width: 100% !important;
+			@include breakpoint('large', 'max') {
+				padding-left: 22px;
+
+				@include breakpoint(small, 'max') {
+					display: none;
+					text-align: center;
+					width: 100% !important;
+				}
 			}
 
+			flex: 0 0 209px;
+			padding-left: 10px;
 			text-align: left;
 		}
 
