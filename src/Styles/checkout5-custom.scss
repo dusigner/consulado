@@ -666,11 +666,28 @@ body.body-order-form {
 		font-size: 0;
 
 		&:after {
-			content: 'Não temos entrega disponível para este produto no CEP informado';
+			content: 'Não temos entrega disponível para este produto no CEP informado.';
 			display: inline-block;
 			font-size: .8rem;
-			padding-left: 25px;
+			padding-left: 20px;
+			position: relative;
+			top: 3px;
+
+			@include breakpoint ('small', 'max') {
+				padding-left: 15px;
+				position: relative;
+				top: 2px;
+			}
 		}
+	}
+
+	.icon-warning-sign {
+
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
 	}
 
 	td {
