@@ -1,6 +1,7 @@
 'use strict';
 
 import 'modules/product/gallery';
+import 'modules/listagem/percentoff';
 
 import DestaqueEmbutidos from 'modules/embutidos/destaque.embutidos';
 import CompreJunto from 'modules/embutidos/eventos.embutidos';
