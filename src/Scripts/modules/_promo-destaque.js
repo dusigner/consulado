@@ -45,8 +45,8 @@ const promoDestaque = produto => {
 		const $promoDestaque = `
 			<div class="promo-destaque">
 				<div class="promo-destaque__text" style="color: ${promoColor}">
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}.png?v=dln')"></div>
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}.png?v=dln')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
 
 					${promoPreTitle}<br />
 					${promoTitle}
@@ -81,7 +81,7 @@ const prodPromoDestaque = () => {
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
 				<div class="promo-destaque__text">
-					<div class="promo-destaque__icon" style="background-image: url('//loja.consul.com.br/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
+					<div class="promo-destaque__icon" style="background-image: url('/arquivos/cns__promo__${clearText(promoPreTitle + '-' + promoTitle)}__hover.png?v=dln')"></div>
 					${promoPreTitle}<br />
 					${promoTitle}
 				</div>
