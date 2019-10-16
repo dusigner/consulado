@@ -103,14 +103,18 @@
 	.dropdown {
 		@include responsiveFont(16);
 		border-right: 1px solid #e4e4e4;
+		flex: 0 0 210px;
 		padding-left: 45px;
 
 		// margin: 0 calculate-em(5) 0 0;
 		a[title='Departamentos'] {
+			display: inline;
 			position: relative;
 			text-transform: uppercase;
 			z-index: 4;
-			@include breakpoint(extra-large, 'max') { font-size: 14px; }
+			@include breakpoint(extra-large, 'max') {
+				font-size: 14px;
+			}
 		}
 		.icon-hamburger {
 			border-bottom: 2px solid $green;
