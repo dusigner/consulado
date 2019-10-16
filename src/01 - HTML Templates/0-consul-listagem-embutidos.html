@@ -5,9 +5,10 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
 
-	<link rel="stylesheet" href="/files/consul2-listagem-embutidos.css" />
-	<link rel="stylesheet" href="/files/consul2-listagem.css" />
+	<!-- <link rel="stylesheet" href="/files/consul2-listagem-embutidos.css" />
+	<link rel="stylesheet" href="/files/consul2-listagem.css" /> -->
 
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem-embutidos.css?v=<!-- @echo package.version -->" />
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="listagem">
@@ -86,17 +87,15 @@
 					<section id="prateleira">
 						<div class="top-wrapper clearfix">
 							<vtex.cmc:searchTitle />
-
 							<div class="col-md-6 open-filter">
 								<span>Filtrar</span>
 							</div>
-
 							<div class="order-wrapper -mobile">
 								<p class="order-title">Ordenar por</p>
 								<ul class="order-by"></ul>
 							</div>
 						</div>
-						<vtex.cmc:searchResult layout="d3c2e649-5d24-4dc7-be0d-c13e47cf8d46" itemCount="12" columnCount="12" />
+						<!-- <vtex.cmc:searchResult layout="d3c2e649-5d24-4dc7-be0d-c13e47cf8d46" itemCount="12" columnCount="12" /> -->
 						<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="12" columnCount="12" />
 					</section>
 				</div>
@@ -182,9 +181,10 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="/files/consul2-listagem-embutidos.min.js"></script>
-	<script src="/files/consul2-listagem.min.js"></script>
+	<!-- <script src="/files/consul2-listagem-embutidos.min.js"></script>
+	<script src="/files/consul2-listagem.min.js"></script> -->
 
+	<script src="<!-- @echo assetsPath -->/consul2-listagem-embutidos.min.js?v=<!-- @echo package.version -->"></script>
 	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
 </body>
 </html>
