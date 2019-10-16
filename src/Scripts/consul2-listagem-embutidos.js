@@ -2,16 +2,16 @@
 
 import 'modules/product/gallery';
 
-import Smartbeer from 'modules/cervejeiras/cervejeiras.smartbeer';
-import Ofertas from 'modules/cervejeiras/cervejeiras.ofertas';
+import DestaqueEmbutidos from 'modules/embutidos/destaque.embutidos';
+import CompreJunto from 'modules/embutidos/eventos.embutidos';
 
 Nitro.controller('listagem-embutidos', ['gallery'], function(gallery) {
 	const listEmbutidos = {};
 
 	// Init
 	listEmbutidos.init = () => {
-		Smartbeer.renderSmartBeerShowcase(gallery);
-		Ofertas.showcaseRegularCervejeiras();
+		DestaqueEmbutidos.renderDestaqueEmbutidos(gallery);
+		CompreJunto.compreJunto();
 
 		$('body').addClass('buyButton');
 	};
