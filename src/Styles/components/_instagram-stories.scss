@@ -121,21 +121,28 @@
 			display: block;
 			font-weight: 500;
 		}
+	}
 
-		& > button {
-			position: absolute;
-			right: 15px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
+	// fechar o card
+	&__close {
+		background: none;
+		border: none;
+		padding: 8px;
+		position: absolute;
+		right: 7px;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.icon { vertical-align: middle; }
 	}
 
 	// Title
 	&__title {
 		font-size: 18px;
+		height: 70px;
 		line-height: 20px;
 		margin: 8px 0;
-		padding: 15px;
+		padding: 15px 45px 15px 15px;
 	}
 
 	// Marcador do stories
@@ -170,17 +177,16 @@
 
 		&__item {
 			display: flex!important;
-			// flex: 1 0 100%;
 			flex-direction: column;
-			min-height: calc(100vh - 110px);
-			padding: 0 30px;
 			height: 100%;
+			min-height: calc(100vh - 130px);
+			padding: 0 30px;
 			position: relative;
 
 			// Produto indisponível
 			&-unavailable {
-				padding: 2em 1em;
 				margin-top: auto;
+				padding: 2em 1em;
 				text-align: center;
 			}
 		}
@@ -195,9 +201,11 @@
 		// Image
 		&__image {
 			background-color: #fff;
+			min-height: 200px;
 
 			img {
 				display: block;
+				height: auto;
 				margin: 0 auto;
 				max-width: 100%;
 			}
@@ -205,8 +213,15 @@
 
 		// Title
 		&__title {
-			font-size: 14px;
+			@include rfs(14px);
+			font-weight: 400;
 			margin: 2em 0 1em 0;
+
+			strong {
+				@include rfs(11px);
+				color: #0FB6DE;
+				display: block;
+			}
 		}
 
 		// Description
@@ -220,31 +235,30 @@
 			p { margin: 0; }
 
 			.list-price {
+				@include rfs(14px);
 				color: #736c6b;
-				font-size: 14px;
 				text-decoration: line-through;
 			}
 
 			.best-price {
+				@include rfs(24px);
 				color: #9aca3c;
 				display: block;
-				font-size: 24px;
 				font-weight: bold;
 			}
 		}
 
 		// Comprar
 		&__cta {
-			background-color: #fff;
+			@include rfs(12px);
+			background-color: #9ACA3C;
 			border: 2px solid #9aca3c;
 			border-radius: 100px;
 			bottom: 1em;
-			color: #9aca3c;
-			display: block;
-			font-weight: bold;
-			line-height: 16px;
+			color: #fff;
+			font-weight: 400;
 			margin: auto auto 1em auto;
-			padding: .8em 3em;
+			padding: .7em 3em;
 			text-align: center;
 			text-decoration: none;
 			width: 100%;

@@ -8,16 +8,13 @@ Nitro.module('instagram-stories', function() {
 	// Variables
 	const self = this;
 	const $stories = $('.stories');
+	const $closeStories = $('.stories-card__close');
 	const $storiesItem = $stories.find('.stories-circle-list__item');
 	const $storiesCard = $stories.find('.stories-card');
+	const $loadingItem = $stories.find('.loading-container');
 
 	// const colecaoAntecipadasQA = 204;
 	const colecaoAntecipadasQA = 193;
-
-
-
-
-	const $additionalProdBox = $('.produtos-adicionais');
 
 	// Iniciar a aplicação
 	this.init = () => {
@@ -25,30 +22,33 @@ Nitro.module('instagram-stories', function() {
 		$storiesItem.click(function(e) {
 			e.preventDefault();
 
-			$storiesCard.addClass('is--open');
-			$('.stories-card__title').addClass('split-title');
+			self.openStories();
 			self.getProducts(colecaoAntecipadasQA);
 		});
 
+		$closeStories.click(() => self.openStories());
 	};
 
+	this.openStories = () => {
+		$storiesCard.toggleClass('is--open');
+	};
+
+	this.startSlick = ($el) => {
+		$($el).slick({
+			appendDots: $('.stories-card__header'),
+			infinite: false,
+			arrows: true,
+			dots: true,
+			dotsClass: 'stories-card__marker',
+		});
+	};
 
 	// Busca todos os produtos da coleção
 	this.getProducts = (clusterId) => {
 		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${clusterId}`)
 			.then(resp => resp.json())
 			.then(data => this.printProducts(data))
-			.then(() => {
-				$('.stories-card-list').slick({
-					// autoplay: true,
-					// autoplaySpeed: 9000,
-					appendDots: $('.stories-card__header'),
-					infinite: false,
-					arrows: true,
-					dots: true,
-					dotsClass: 'stories-card__marker',
-				});
-			})
+			.then(() => this.startSlick($('.stories-card-list')))
 			.then(() => this.loadingAnimation())
 			.catch(error => {
 				console.error('#Error', error);
@@ -56,9 +56,7 @@ Nitro.module('instagram-stories', function() {
 	};
 
 	// Animação de loading
-	this.loadingAnimation = () => {
-		$additionalProdBox.toggleClass('prod-is-loading');
-	};
+	this.loadingAnimation = () => $loadingItem.toggleClass('is--loading');
 
 	// Exibe os produtos
 	this.printProducts = (data) => {
@@ -101,18 +99,18 @@ Nitro.module('instagram-stories', function() {
 					${newImage}
 				</div>
 
-				<h2 class="stories-card-list__title">${productTitle} <span>${productReference}</span></h2>
+				<h2 class="stories-card-list__title">${productTitle} <strong>${productReference}</strong></h2>
 
 				${AvailableQuantity ? `
 					<div class="stories-card-list__prices">
 						${ListPrice > Price ? `
-							<p class="list-price">De R$ ${ListPrice}</p>
+							<p class="list-price">R$ ${ListPrice}</p>
 						`: ''}
-						<p class="best-price">Por R$ ${Price}</p>
+						<p class="best-price">R$ ${Price}</p>
 					</div>
 
-					<a href="#" class="button stories-card-list__cta" title="Comprar">
-						Ver produto
+					<a href="#" class="button stories-card-list__cta" title="Detalhes do produto">
+						Detalhes do produto
 					</a>
 					` : `
 					<div class="stories-card-list__item-unavailable">
