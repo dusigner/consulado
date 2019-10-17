@@ -1,0 +1,23 @@
+$background : #272727;
+
+body {
+	.banners {
+		display: none!important;
+	}
+
+	.banners-static {
+		@include breakpoint('small', 'max') { display: none; }
+		background-color: $background;
+		line-height: 0;
+
+		.slider-banner,
+		.lateral-banners {
+			display: inline-block;
+			float: none;
+
+			.box-banner {
+				line-height: 0;
+			}
+		}
+	}
+}
