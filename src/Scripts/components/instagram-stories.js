@@ -11,7 +11,8 @@ Nitro.module('instagram-stories', function() {
 	const $storiesItem = $stories.find('.stories-circle-list__item');
 	const $storiesCard = $stories.find('.stories-card');
 
-	const colecaoAntecipadasQA = 204;
+	// const colecaoAntecipadasQA = 204;
+	const colecaoAntecipadasQA = 193;
 
 
 
@@ -25,6 +26,7 @@ Nitro.module('instagram-stories', function() {
 			e.preventDefault();
 
 			$storiesCard.addClass('is--open');
+			$('.stories-card__title').addClass('split-title');
 			self.getProducts(colecaoAntecipadasQA);
 		});
 
@@ -72,7 +74,7 @@ Nitro.module('instagram-stories', function() {
 	};
 
 	this.changeImageSize = imageTag => {
-		const newImageSize = 350;
+		const newImageSize = 300;
 		let newImage = imageTag;
 		newImage = newImage.replace('~', '');
 		newImage = newImage.replace(/#\w+#/gmi, newImageSize);

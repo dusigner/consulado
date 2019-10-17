@@ -169,13 +169,20 @@
 		* { outline: none!important; }
 
 		&__item {
-			// display: flex!important;
+			display: flex!important;
 			// flex: 1 0 100%;
-			// flex-direction: column;
-			// justify-content: flex-start;
-			min-height: calc(100vh - 2em);
+			flex-direction: column;
+			min-height: calc(100vh - 110px);
 			padding: 0 30px;
+			height: 100%;
 			position: relative;
+
+			// Produto indisponível
+			&-unavailable {
+				padding: 2em 1em;
+				margin-top: auto;
+				text-align: center;
+			}
 		}
 
 		// Contador
