@@ -13,8 +13,6 @@ Nitro.controller('listagem-embutidos', ['gallery'], function(gallery) {
 	listEmbutidos.init = () => {
 		DestaqueEmbutidos.renderDestaqueEmbutidos(gallery);
 		CompreJunto.compreJunto();
-
-		$('body').addClass('buyButton');
 	};
 
 	// Iniciar somente na página de Cervejeiras

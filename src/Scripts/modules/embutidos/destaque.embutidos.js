@@ -1,8 +1,7 @@
 const DestaqueEmbutidos = {
-	init: () => {
-		DestaqueEmbutidos.renderDestaqueEmbutidos();
-		DestaqueEmbutidos.compreJunto();
-	},
+	// init: () => {
+	// 	DestaqueEmbutidos.renderDestaqueEmbutidos();
+	// },
 	renderDestaqueEmbutidos: gallery => {
 		let productImage = [],
 			productSkuSelector = $('.smartbeer-showcase').find('.product-skuSelector'),
@@ -13,7 +12,7 @@ const DestaqueEmbutidos = {
 
 		switch (productBox.attr('data-idproduto')) {
 			//Coifa 1517
-			case '1517':
+			case '428':
 				fatherBox.addClass('Coifa-Cooktop');
 				productImage.push('/arquivos/CAP60AR_destaque_coifa_lado_1.png');
 				productImage.push('/arquivos/CAP60AR_destaque_coifa_frente_1.png');
@@ -23,23 +22,23 @@ const DestaqueEmbutidos = {
 				break;
 			//Cooktop 346
 			case '346':
-					fatherBox.addClass('Coifa-Cooktop');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_topview_1.png');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_topview_2.png');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_ambientada_1.png');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_ambientada_2.png');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_detail_2.png');
-					productImage.push('/arquivos/CD060AE_destaque_cooktop_detail_3.png');
-					break;
+				fatherBox.addClass('Coifa-Cooktop');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_topview_1.png');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_topview_2.png');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_ambientada_1.png');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_ambientada_2.png');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_detail_2.png');
+				productImage.push('/arquivos/CD060AE_destaque_cooktop_detail_3.png');
+				break;
 			//Forno 2002768
-			case '428':
-					fatherBox.addClass('Forno');
-					productImage.push('/arquivos/COB84AR_destaque_forno_frente_3.png');
-					productImage.push('/arquivos/COB84AR_destaque_forno_lado_1.png');
-					productImage.push('/arquivos/COB84AR_destaque_forno_aberto_2.png');
-					productImage.push('/arquivos/COB84AR_destaque_forno_ambientado_4.png');
-					productImage.push('/arquivos/COB84AR_destaque_forno_ambientado_5.png');
-					break;
+			case '2002768':
+				fatherBox.addClass('Forno');
+				productImage.push('/arquivos/COB84AR_destaque_forno_frente_3.png');
+				productImage.push('/arquivos/COB84AR_destaque_forno_lado_1.png');
+				productImage.push('/arquivos/COB84AR_destaque_forno_aberto_2.png');
+				productImage.push('/arquivos/COB84AR_destaque_forno_ambientado_4.png');
+				productImage.push('/arquivos/COB84AR_destaque_forno_ambientado_5.png');
+				break;
 
 			default:
 				break;
