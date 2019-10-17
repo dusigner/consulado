@@ -2,11 +2,12 @@
 
 import 'modules/product/gallery';
 import 'modules/listagem/percentoff';
+import 'dataLayers/dataLayer-vitrine-embutidos';
 
 import DestaqueEmbutidos from 'modules/embutidos/destaque.embutidos';
 import CompreJunto from 'modules/embutidos/eventos.embutidos';
 
-Nitro.controller('listagem-embutidos', ['gallery'], function(gallery) {
+Nitro.controller('listagem-embutidos', ['gallery','dataLayer-vitrine-embutidos'], function(gallery,dataLayerVitrineEmbutidos) {
 	const listEmbutidos = {};
 
 	// Init
@@ -19,5 +20,6 @@ Nitro.controller('listagem-embutidos', ['gallery'], function(gallery) {
 	const bodyHaslistEmbutidos = $('body.listagem-embutidos');
 	if (bodyHaslistEmbutidos.length > 0) {
 		listEmbutidos.init();
+		dataLayerVitrineEmbutidos.init();
 	}
 });
