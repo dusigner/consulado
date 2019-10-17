@@ -7,20 +7,46 @@ Nitro.module('instagram-stories', function() {
 
 	// Variables
 	const self = this;
-	const $instaContainer = $('.shelf-category-home-container');
+	const $stories = $('.stories');
+	const $storiesItem = $stories.find('.stories-circle-list__item');
+	const $storiesCard = $stories.find('.stories-card');
+
+	const colecaoAntecipadasQA = 204;
+
+
+
+
 	const $additionalProdBox = $('.produtos-adicionais');
 
 	// Iniciar a aplicação
 	this.init = () => {
-		this.getProducts();
+		// Impedir que os stories levem para os links
+		$storiesItem.click(function(e) {
+			e.preventDefault();
+
+			$storiesCard.addClass('is--open');
+			self.getProducts(colecaoAntecipadasQA);
+		});
+
 	};
 
 
 	// Busca todos os produtos da coleção
-	this.getProducts = (prodRefCode) => {
-		fetch(`/api/catalog_system/pub/products/search?${prodRefCode}`)
+	this.getProducts = (clusterId) => {
+		fetch(`/api/catalog_system/pub/products/search?fq=productClusterIds:${clusterId}`)
 			.then(resp => resp.json())
 			.then(data => this.printProducts(data))
+			.then(() => {
+				$('.stories-card-list').slick({
+					// autoplay: true,
+					// autoplaySpeed: 9000,
+					appendDots: $('.stories-card__header'),
+					infinite: false,
+					arrows: true,
+					dots: true,
+					dotsClass: 'stories-card__marker',
+				});
+			})
 			.then(() => this.loadingAnimation())
 			.catch(error => {
 				console.error('#Error', error);
@@ -35,22 +61,32 @@ Nitro.module('instagram-stories', function() {
 	// Exibe os produtos
 	this.printProducts = (data) => {
 		const products = data;
-		const $instagramConainer = $('<div class="instagram-stories-container"></div>');
+		const $cardContainer = $('<ul class="stories-card-list"></ul>');
 
 		products.map(product => {
-			$instagramConainer.append(this.instagramStoriesItem(product));
+			$cardContainer.append(this.instagramStoriesItem(product));
 		});
 
-		$instaContainer.after($instagramConainer);
+		$storiesCard.append($cardContainer);
 
 	};
+
+	this.changeImageSize = imageTag => {
+		const newImageSize = 350;
+		let newImage = imageTag;
+		newImage = newImage.replace('~', '');
+		newImage = newImage.replace(/#\w+#/gmi, newImageSize);
+
+		return newImage;
+	}
 
 	// Template a ser exibido na tela de produto
 	this.instagramStoriesItem = (product) => {
 		const { productTitle, productReference } = product;
-		const productSku = product.items[0].itemId;
-		const productImage = product.items[0].images[0].imageUrl;
+		const { imageTag } = product.items[0].images[0];
+		const newImage = this.changeImageSize(imageTag);
 		let { AvailableQuantity, ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
+
 
 		// Formatar o preço antes de exibir na tela
 		ListPrice = _.formatCurrency(ListPrice);
@@ -59,14 +95,8 @@ Nitro.module('instagram-stories', function() {
 		// Product Kit
 		const prodTemplate = `
 			<li class="stories-card-list__item ${AvailableQuantity ? 'available' : ''}">
-				<div class="stories-card-list__actions">
-					<div class="stories-card-list__counter"></div>
-					<button class="stories-action stories-prev">Voltar</button>
-					<button class="stories-action stories-next">Avançar</button>
-				</div>
-
 				<div class="stories-card-list__image">
-					<img src="${productImage}" alt="${productTitle}" />
+					${newImage}
 				</div>
 
 				<h2 class="stories-card-list__title">${productTitle} <span>${productReference}</span></h2>
