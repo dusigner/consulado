@@ -30,8 +30,15 @@ $gray-dark: #2A2A2A;
 			}
 		}
 
-		&__title::before {
+		&__title {
+			&::before {
 				border-bottom-color: #4A4A4A;
+			}
+			&::after {
+				background: transparent url('/arquivos/icon-arrow-white-bf.png') no-repeat center right;
+				background-size: contain;
+    			width: 12px;
+			}
 		}
 		& .border {
 			border-width: 1px;
@@ -81,11 +88,19 @@ $gray-dark: #2A2A2A;
 			background-position: center center;
 			background-repeat: no-repeat;
 			background-size: contain;
+			height: 7px;
+			margin-top: 1px;
+			right: -18px;
+			width: 8px;
 		}
 	}
 
 	& .menu-footer {
 		background-color: $gray-medium;
+		&-list__link {
+			color: #BFBEBE;
+			font-weight: 500;
+		}
 	}
 	& .footer-bottom {
 		background-color: $gray-dark;
