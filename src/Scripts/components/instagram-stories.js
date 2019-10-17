@@ -12,8 +12,7 @@ Nitro.module('instagram-stories', function() {
 
 	// Iniciar a aplicação
 	this.init = () => {
-
-		$instaContainer.after('<div class="instagram-stories-container"></div>');
+		this.getProducts();
 	};
 
 
@@ -36,10 +35,14 @@ Nitro.module('instagram-stories', function() {
 	// Exibe os produtos
 	this.printProducts = (data) => {
 		const products = data;
+		const $instagramConainer = $('<div class="instagram-stories-container"></div>');
 
 		products.map(product => {
-			$instaContainer.before(this.instagramStoriesItem(product));
+			$instagramConainer.append(this.instagramStoriesItem(product));
 		});
+
+		$instaContainer.after($instagramConainer);
+
 	};
 
 	// Template a ser exibido na tela de produto
@@ -55,37 +58,36 @@ Nitro.module('instagram-stories', function() {
 
 		// Product Kit
 		const prodTemplate = `
-			<div class="produtos-adicionais__content">
-				<div class="produto-adicional ${AvailableQuantity ? 'available' : ''}" data-sku="&sku=${productSku}&qty=1&seller=1&redirect=true&sc=3">
-					<div class="produto-adicional__item produto-adicional__item-image">
-						<img src="${productImage}" alt="${productTitle}" />
-					</div>
-
-					<div class="produto-adicional__item produto-adicional__item-title">
-						<h2>${productTitle}</h2>
-						<span>${productReference}</span>
-					</div>
-
-					${AvailableQuantity ? `
-						<div class="produto-adicional__item produto-adicional__item-price">
-							${ListPrice > Price ? `
-								<div class="de">De R$ ${ListPrice}</div>
-							`: ''}
-							<div class="por">Por R$ ${Price}</div>
-						</div>
-
-						<div class="produto-adicional__item produto-adicional__item-select">
-							<input type="checkbox" name="product-${productSku}" id="product-${productSku}" />
-							<label for="product-${productSku}" class="label"></label>
-						</div>
-						` : `
-						<div class="produto-adicional__item produto-adicional__item-unavailable">
-							Produto indisponível
-						</div>
-						<div class="produto-adicional__item produto-adicional__item-select"></div>
-					`}
+			<li class="stories-card-list__item ${AvailableQuantity ? 'available' : ''}">
+				<div class="stories-card-list__actions">
+					<div class="stories-card-list__counter"></div>
+					<button class="stories-action stories-prev">Voltar</button>
+					<button class="stories-action stories-next">Avançar</button>
 				</div>
-			</div>
+
+				<div class="stories-card-list__image">
+					<img src="${productImage}" alt="${productTitle}" />
+				</div>
+
+				<h2 class="stories-card-list__title">${productTitle} <span>${productReference}</span></h2>
+
+				${AvailableQuantity ? `
+					<div class="stories-card-list__prices">
+						${ListPrice > Price ? `
+							<p class="list-price">De R$ ${ListPrice}</p>
+						`: ''}
+						<p class="best-price">Por R$ ${Price}</p>
+					</div>
+
+					<a href="#" class="button stories-card-list__cta" title="Comprar">
+						Ver produto
+					</a>
+					` : `
+					<div class="stories-card-list__item-unavailable">
+						Produto indisponível
+					</div>
+				`}
+			</li>
 		`;
 
 		return prodTemplate;
