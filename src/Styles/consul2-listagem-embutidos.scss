@@ -7,16 +7,10 @@
 @import 'helpers/rfs';
 @import 'helpers/family';
 
-// @import 'components/mod-prateleira-v2';
-
-@import 'components/listagem/buy-button';
 @import 'components/listagem/comparebar';
 
 @import 'pages/gallery';
-// @import 'pages/cervejeiras/cervejeiras-funcionalidades'; // Doug
-// @import 'pages/cervejeiras/cervejeiras-smartbeer'; // Gus
 @import 'pages/cervejeiras/cervejeiras-vitrine-smartbeer'; // Bru
-// @import 'pages/cervejeiras/cervejeiras-vitrine-default'; // Bru
 
 body .category-postheader {
 	margin-bottom: 0 !important;
@@ -29,11 +23,23 @@ body .category-postheader {
 		background: url('/arquivos/bg_destaque_cooktop_coifa.jpg') no-repeat
 			center;
 		background-size: 100% 100%;
+
+		@include breakpoint('medium', 'max') {
+			background: url('/arquivos/bg_mobile_destaque_cooktop_coifa.jpg')
+				no-repeat center;
+			background-size: initial;
+		}
 	}
 
 	&.Forno {
 		background: url('/arquivos/bg_destaque_forno.png') no-repeat center;
 		background-size: 100% 100%;
+
+		@include breakpoint('medium', 'max') {
+			background: url('/arquivos/bg_mobile_destaque_forno.jpg') no-repeat
+				center;
+			background-size: initial;
+		}
 
 		.product-price-to {
 			color: $purple-n;
