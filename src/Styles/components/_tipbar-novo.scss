@@ -1,0 +1,36 @@
+@charset 'UTF-8';
+// ===============================================================
+/* IMPORTS */
+// ===============================================================
+
+// Helpers
+@import '../../../Styles/helpers/mixins';
+@import '../../../Styles/helpers/rfs';
+@import '../helpers/variables';
+
+// ===============================================================
+/* TIPBAR */
+// ===============================================================
+.tipbar-novo {
+	background-color: $gray-m;
+	padding: 30px 0;
+	& .row {
+		margin: 0 auto;
+	}
+	&__icone {
+		height: 60px;
+		margin: 0 auto;
+		max-width: 100%;
+		width: 60px;
+	}
+	&__title {
+		@include rfs(14);
+		color: $base-font-color;
+		font-weight: 500;
+		margin: 0 auto;
+	}
+	& p {
+		@include rfs(12);
+		margin: 0 auto;
+	}
+}

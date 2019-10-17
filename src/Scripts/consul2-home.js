@@ -16,7 +16,6 @@ require('modules/shelfCategoryHome');
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
-
 Nitro.controller(
 	'home',
 	[
@@ -28,7 +27,11 @@ Nitro.controller(
 		'chatHome',
 		'shelfCategoryHome' /*'counter', 'datalayer_track'*/
 	],
+
 	function(chaordic) {
+
+		$('.banners').after('<article class="tipbar-novo"> <div class="container"><div class="row"><div class="col-3"><div class="col-3"><div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-loja-oficial.png"></div></div><div class="col-9"><h2 class="tipbar-novo__title">Loja Oficial</h2><p>Aproveite todas as vantagens de comprar direto da fábrica;</p></div></div><div class="col-3"><div class="col-3"><div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-pagamento.png"></div></div><div class="col-9"><h2 class="tipbar-novo__title">Pagamento com 2 cartões</h2><p>Utilize até 2 cartões para efetuar sua compra;</p></div></div><div class="col-3"><div class="col-3"><div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-parcelamento.png"></div></div><div class="col-9"><h2 class="tipbar-novo__title">Parcelamento</h2><p>Suas compras em até 12x sem juros no cartão;</p></div></div><div class="col-3"><div class="col-3"><div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-compra-segura.png"></div></div><div class="col-9"><h2 class="tipbar-novo__title">Compra segura</h2><p>Seguro garantia estendida original, segurança e qualidade para você;</p></div></div></div></article>');
+
 		var self = this,
 			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
