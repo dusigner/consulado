@@ -1,3 +1,6 @@
+@import 'helpers/variables';
+@import 'helpers/rfs';
+
 $top-header: #171717;
 $middle-header: #333333;
 $search: #2A2A2A;
@@ -158,7 +161,7 @@ body {
 		.menu-department {
 			background: linear-gradient(90deg, $menu-section 50%, $search 50%);
 
-			& > .item:not(.dropdown) {
+			.menu-header-category {
 				background-color: $menu-section;
 
 				&#menu-cupons {
@@ -177,7 +180,6 @@ body {
 
 				}
 			}
-
 
 			.dropdown {
 				background-color: $menu-section;
@@ -198,6 +200,13 @@ body {
 					}
 				}
 			}
+		}
+	}
+
+	.logo-desktop-svg,
+	.logo-mobile-svg {
+		#Caminho_847 {
+			fill: #fff;
 		}
 	}
 }

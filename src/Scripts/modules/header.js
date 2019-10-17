@@ -119,7 +119,4 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 			window.location = $(this).attr('href');
 		});
 	}
-
-	// $('.logo-desktop-svg').find('#Caminho_847').attr('fill', '#fff');
-	// $('.logo-mobile-svg').find('#Caminho_847').attr('fill', '#fff');
 });
