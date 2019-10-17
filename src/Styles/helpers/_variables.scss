@@ -65,6 +65,7 @@ $red-error	: #9B1C29;
 $gray-m		: #fcfcfc;
 $gray-c410	: #FAF9F9;
 $c9			: #EC008C;
+$gray-c     : #595453;
 
 $txt-gray: $gray-d; //DARK
 $txt-gray-l: #b4afad; //LIGHT
@@ -157,7 +158,7 @@ $icons: (
 	'brastemp-cart'               : '\e621',
 	'consul-cart'                 : '\e608',
 	'brastemp-loupe'              : '\e624',
-	'consul-loupe'                : '\e613',
+	//'consul-loupe'                : '\e613',
 	'logo-brastemp'               : '\e623',
 	'logo-consul'                 : '\e60e',
 	'icecream'                    : '\e618',
@@ -206,7 +207,7 @@ $icons: (
 	'icon-cart-consul'			  : '\e918',
 	'icon-menu-consul'			  : '\e919',
 	'icon-profile-consul'		  : '\e91a',
-	'icon-loupe-consul'			  : '\e91b'
+	'consul-loupe'				  : '\e91b'
 );
 
 //------------------------------------
