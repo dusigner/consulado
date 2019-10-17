@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<title>Loja Consul - Eletrodomésticos para Sua Casa</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+</head>
+<body data-controller="home">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+
+
+	<!-- [ Mobile ] - Instagram Stories -->
+	<section class="stories">
+		<strong class="stories__title">Aproveite as ofertas</strong>
+		<div class="stories__container">
+			<ul class="stories-circle-list">
+				<li class="stories-circle-list__item">
+					<a class="stories-circle-list__link" href="/eletrodomesticos/geladeira---refrigerador" title="À Vista">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-20-off-2x.png" alt="À Vista" />
+						</span>
+
+						<strong class="stories-circle-list__title">À Vista</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item">
+					<a class="stories-circle-list__link" href="/eletrodomesticos/fogao" title="Frete Grátis">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-40-off-2x.png" alt="Frete Grátis" />
+						</span>
+
+						<strong class="stories-circle-list__title">Frete Grátis</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A206" title="20% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-a-vista-2x.png" alt="20% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">20% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A193" title="40% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-bf-antecipadas-2x.png" alt="40% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">40% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A205" title="Antecipadas">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-frete-gratis-2x.png" alt="Antecipadas" />
+						</span>
+
+						<strong class="stories-circle-list__title">Antecipadas</strong>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<!-- /[ Mobile ] - Instagram Stories -->
+
+
+
+
+
+
+
+
+
+
+	<!-- [ Desktop ] - Slider -->
+	<div class="banners hide-extra-small">
+
+		<!-- Banner -->
+		<div class="banner-principal slides">
+			<vtex:contentPlaceHolder id="SliderHome" />
+		</div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- Abrir regulamento banner -->
+	</div>
+	<!-- /[ Desktop ] - Slider -->
+
+	<!-- [ Mobile ] - Slider mobile -->
+	<div class="banners-mobile show-extra-small">
+
+		<!-- Banner -->
+		<div class="banner-principal banner-mobile slides">
+			<vtex:contentPlaceHolder id="SliderHomeMobile" />
+		</div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- /Abrir regulamento banner -->
+	</div>
+	<!-- /[ Mobile ] - Slider mobile -->
+
+	<!-- shelf category home -->
+	<div class="shelf-category-home-container">
+		<div class="container">
+			<h2 class="page-title">
+				Navegue por <strong>departamentos</strong>
+			</h2>
+
+			<div class="shelf-category-home">
+
+				<!-- Geladeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__geladeiras.png" alt="Geladeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/geladeira---refrigerador" title="Geladeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Geladeiras</h2>
+					</a>
+				</div>
+
+				<!-- Fogões -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/fogao" title="Fogões">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fogao.png" alt="Fogões" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/fogao" title="Fogões">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fogões</h2>
+					</a>
+				</div>
+
+				<!-- Lavadoras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__lavadoras.png" alt="Lavadoras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/lavadora-de-roupas" title="Lavadoras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Lavadoras</h2>
+					</a>
+				</div>
+
+				<!-- Fornos -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/forno" title="Fornos">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fornos.png" alt="Fornos" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/forno" title="Fornos">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fornos</h2>
+					</a>
+				</div>
+
+				<!-- Coifas -->
+				<div class="shelf-category-home-card shelf-coifa">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/coifa-e-depurador" title="Coifas">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__coifas.png" alt="Coifas" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/coifa-e-depurador" title="Coifas">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Coifas</h2>
+					</a>
+				</div>
+
+				<!-- Cooktops -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cooktop" title="Cooktops">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cooktops.png" alt="Cooktops" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cooktop" title="Cooktops">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Cooktops</h2>
+					</a>
+				</div>
+
+				<!-- Purificadores -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/purificador/purificador" title="Purificadores">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__purificador.png" alt="Purificadores" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/purificador/purificador" title="Purificadores">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Purificadores</h2>
+					</a>
+				</div>
+
+				<!-- Cervejeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cervejeiras.png" alt="Cervejeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Cervejeiras</h2>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- /shelf category home -->
+
+	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+	<section class="container vitrines">
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome1" />
+		</div>
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome2" />
+		</div>
+	</section>
+	<!-- /VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-newsletter" />
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>
