@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+	<!-- <link rel="stylesheet" href="/files/consul2-listagem-embutidos.css" />
+	<link rel="stylesheet" href="/files/consul2-listagem.css" /> -->
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem-embutidos.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-listagem.css?v=<!-- @echo package.version -->" />
+</head>
+<body data-controller="listagem-embutidos">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!--  Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- Banner mobile -->
+	<div class="category-banner-mobile">
+		<vtex:contentPlaceHolder id="banner-mobile" />
+	</div>
+	<!-- /Banner mobile -->
+
+	<div class="category-postheader">
+		<div class="container">
+			<!-- Breadcrumb -->
+			<section class="breadcrumb">
+				<vtex.cmc:breadCrumb />
+			</section>
+			<!-- /Breadcrumb -->
+
+			<div class="order-wrapper -desktop">
+				<p class="order-title">Ordenar por</p>
+				<ul class="order-by"></ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- Banner-Interativo -->
+	<section class="vitrine-smartbeer">
+		<vtex:contentPlaceHolder id="banner-interativo" />
+	</section>
+	<!-- /Banner-Interativo -->
+
+	<div class="container result-filter">
+		<!-- Category Title -->
+		<h1 class="category-title">
+			<vtex:contentPlaceHolder id="titulo-pagina-categoria" />
+		</h1>
+		<!-- /Category Title-->
+
+		<!-- Filtros -->
+		<div class="filter-wrapper">
+			<p class="title-filter">Categorias</p>
+			<div class="category-list">
+				<div class="container departament-nav clearfix">
+					<div class="clearfix">
+						<vtex:contentPlaceHolder id="category-list" />
+					</div>
+				</div>
+			</div>
+			<p class="title-filter">Filtrar</p>
+			<div class="container departament-nav clearfix">
+				<div class="clearfix">
+					<vtex.cmc:searchNavigator keepCurrentPath="true" />
+				</div>
+			</div>
+		</div>
+		<!-- /Filtros -->
+
+
+		<div class="container list-container clearfix">
+			<!-- Banner Desktop -->
+			<div class="category-banner-desktop">
+				<vtex:contentPlaceHolder id="banner-desktop" />
+			</div>
+			<!-- /Banner Desktop -->
+
+			<div class="row gutters">
+				<!-- Prateleira -->
+				<div class="col-12 list-content">
+					<section id="prateleira">
+						<div class="top-wrapper clearfix">
+							<vtex.cmc:searchTitle />
+							<div class="col-md-6 open-filter">
+								<span>Filtrar</span>
+							</div>
+							<div class="order-wrapper -mobile">
+								<p class="order-title">Ordenar por</p>
+								<ul class="order-by"></ul>
+							</div>
+						</div>
+						<!-- <vtex.cmc:searchResult layout="d3c2e649-5d24-4dc7-be0d-c13e47cf8d46" itemCount="12" columnCount="12" /> -->
+						<vtex.cmc:searchResult layout="<!-- @echo listagemPrateleira -->" itemCount="12" columnCount="12" />
+					</section>
+				</div>
+				<!-- /Prateleira -->
+
+				<div class="see-more">
+					<button type="button" id="list-more" class="col-4 push-4 primary-button hide" value="Ver mais">
+						Ver mais produtos
+					</button>
+				</div>
+
+				<vtex:contentPlaceHolder id="texto-de-apoio" />
+			</div>
+		</div>
+
+
+	</div>
+
+	<!-- Vitrine Compre Junto -->
+	<div class="vitrine-comprejunto">
+		<div class="vitrine-header">
+			<h3 class="monte-combo">Compre Junto</h3>
+			<h1 class="cozinha-completa">Cozinha completa</h1>
+			<p class="text-combo">Compre mais de um produto da Cozinha de Embutir Consul e obtenha descontos exclusivos. Quanto mais produtos no combo, maior o desconto.</p>
+		</div>
+		<div class="vitrine">
+			<vtex:contentPlaceHolder id="Vitrine-CompreJunto" />
+			<li class="vitrine-total">
+				<img src="/arquivos/icone_compre_junto.jpg" alt="moedas"/>
+				<h3>Compre o combo</h3>
+				<hr></hr>
+				<p class="de-final"></p>
+				<p class="por-final"></p>
+				<p class="money-final"></p>
+				<a class="btn-primary-button go" href="#">Ir para Carrinho</a>
+			</li>
+		</div>
+	</div>
+	<!-- /Vitrine Compre Junto -->
+
+	<!-- Chaordic MIDDLE -->
+	<div data-chaordic="middle"></div>
+	<!-- /Chaordic MIDDLE -->
+
+	<!-- [ CHAORDIC ] BOTTOM -->
+	<div data-chaordic="bottom"></div>
+	<!-- /[ CHAORDIC ] BOTTOM -->
+
+	<!-- Pesquisas Relacionadas -->
+	<div class="relacionado-list container">
+		<h3 class="title-relacionado">Pesquisas relacionadas :</h3>
+		<vtex:contentPlaceHolder id="pesquisas-relacionadas-list"/>
+	</div>
+	<!-- /Pesquisas Relacionadas -->
+
+	<!-- Home Banners Secundários Slick Três -->
+	<section class="banners-secundarios-mobile clearfix show-mobile">
+		<div class="container">
+			<div class="row">
+				<div class="prateleira-banners-secundarios-mobile">
+					<div class="banner-secundario-mobile banner-mobile3">
+						<vtex:contentPlaceHolder id="BannerMobileSecundario3" />
+					</div>
+					<div class="banner-secundario-mobile banner-mobile4">
+						<vtex:contentPlaceHolder id="BannerMobileSecundario4" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Home Banners Secundários Slick Três -->
+
+	<!-- Compare -->
+	<vtex.cmc:compareBar />
+	<!-- /Compare -->
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<!-- <script src="/files/consul2-listagem-embutidos.min.js"></script>
+	<script src="/files/consul2-listagem.min.js"></script> -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-listagem-embutidos.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="<!-- @echo assetsPath -->/consul2-listagem.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>
