@@ -5,9 +5,15 @@
 	overflow: hidden;
 	width: 100%;
 
+	.home-bf-2019 & {
+		background-color: #232323;
+		color: #fff;
+	}
+
 	&__title {
 		@include rfs(12px);
 		display: block;
+		font-weight: 500;
 		padding: 15px;
 	}
 
@@ -50,6 +56,8 @@
 		&__link {
 			color: #595453;
 			display: block;
+
+			.home-bf-2019 & { color: #fff; }
 		}
 
 		// Image
@@ -60,6 +68,8 @@
 			display: block;
 			overflow: hidden;
 			position: relative;
+
+			.home-bf-2019 & { border-color: #656565; }
 
 			img {
 				border: 2px solid transparent;
@@ -73,6 +83,7 @@
 		&__title {
 			@include rfs(11px);
 			display: block;
+			font-weight: 500;
 			line-height: 16px;
 			margin: 7px 0 0 0;
 			padding: 0;
