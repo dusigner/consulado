@@ -326,8 +326,8 @@ const Eventos = {
 			checkAvista(totalPor,money);
 
 			//Copia o elemento de fora e joga para dentro da vitrine;
-			$('.vitrine-total').clone().appendTo('.vitrine ul');
-			$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+			$('.vitrine-total').clone().appendTo('.vitrine-comprejunto .vitrine ul');
+			$('.vitrine-comprejunto .vitrine ul .vitrine-total').removeClass('vitrine-total');
 			$('.vitrine-total').remove();
 
 			//Set Link on Button
