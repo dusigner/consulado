@@ -1,9 +1,31 @@
 $button-color: #404040;
 $border: #E3E1E1;
+$txt: #5B5B5B;
+$bg-color: #FAF9F9;
+$txt-light: #736C6B;
 
 body {
 	.vitrine-ofertas-interesses {
 		@include breakpoint ('small', 'max') { display: none; }
+		background-color: $bg-color;
+
+		.interesses-title {
+			h4 {
+				@include rfs(28);
+				color: $txt;
+				font-weight: bold;
+				margin: 0;
+				text-align: center;
+			}
+
+			span {
+				@include rfs(14);
+				color: $txt-light;
+				display: block;
+				margin: 8px 0 42px;
+				text-align: center;
+			}
+		}
 
 		.discount-selector {
 			.discount-list {
@@ -14,12 +36,25 @@ body {
 				.discount-item {
 					@include rfs(12);
 					border: 1px solid $border;
+					border-radius: 4px;
 					color: $button-color;
 					display: inline-block;
 					height: 32px;
 					line-height: 2.5;
+					text-align: center;
 					width: 152px;
+
+					&.active {
+						background-color: $button-color;
+						color: #fff;
+					}
 				}
+			}
+		}
+
+		.vitrines-interesses {
+			li {
+				background-color: #fff;
 			}
 		}
 	}
