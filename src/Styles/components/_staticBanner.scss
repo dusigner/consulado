@@ -1,6 +1,7 @@
 $background : #272727;
 
 body {
+
 	.banners {
 		display: none!important;
 	}
@@ -10,13 +11,25 @@ body {
 		background-color: $background;
 		line-height: 0;
 
-		.slider-banner,
+		.slider-banner {
+			display: inline-block;
+			height: 100%;
+			width: 66.5%;
+		}
+
 		.lateral-banners {
 			display: inline-block;
-			float: none;
+			height: auto;
+			width: 33.5%;
+		}
 
-			.box-banner {
-				line-height: 0;
+		.box-banner {
+			line-height: 0;
+			margin-bottom: 0;
+
+			img {
+				height: auto;
+    			width: 100%;
 			}
 		}
 	}
