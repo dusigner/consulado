@@ -13,6 +13,7 @@ require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
+require('modules/interested-shelf');
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
@@ -20,13 +21,13 @@ require('modules/shelfCategoryHome');
 Nitro.controller(
 	'home',
 	[
-		'chaordic',
 		'slider-banner',
 		'lead-newsletter',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
-		'shelfCategoryHome' /*'counter', 'datalayer_track'*/
+		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
+		'interested-shelf'
 	],
 	function(chaordic) {
 		var self = this,

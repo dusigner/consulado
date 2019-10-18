@@ -1,0 +1,26 @@
+$button-color: #404040;
+$border: #E3E1E1;
+
+body {
+	.vitrine-ofertas-interesses {
+		@include breakpoint ('small', 'max') { display: none; }
+
+		.discount-selector {
+			.discount-list {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+
+				.discount-item {
+					@include rfs(12);
+					border: 1px solid $border;
+					color: $button-color;
+					display: inline-block;
+					height: 32px;
+					line-height: 2.5;
+					width: 152px;
+				}
+			}
+		}
+	}
+}
