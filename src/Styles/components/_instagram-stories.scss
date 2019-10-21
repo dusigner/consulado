@@ -173,7 +173,11 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 			// Item ativo do storie
 			&.slick-active { background-color: #9ACA3C; }
 
-			button { opacity: 0; }
+			button {
+				opacity: 0;
+				transform: translateY(-50%);
+				width: 100%;
+			}
 		}
 	}
 
@@ -288,18 +292,23 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 
 	// Mensagem de erro
 	&__error {
-		border: 1px solid #d0d;
 		display: flex;
-		align-items: center;
-		min-height: 300px;
+		flex-direction: column;
+		height: calc(100vh - 125px);
+		justify-content: center;
 		padding: 15px;
+		text-align: center;
+
+		p {
+			@include rfs(26px);
+			margin: 0;
+		}
 
 		span {
+			@include rfs(32px);
 			display: inline-block;
 			transform: rotate(90deg);
 		}
-
-		p { margin: 0; }
 	}
 }
 

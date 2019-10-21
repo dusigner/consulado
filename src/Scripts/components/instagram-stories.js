@@ -37,7 +37,7 @@ Nitro.module('instagram-stories', function() {
 			}
 			self.loadingAnimation();
 
-			self.getProducts('agdadag')
+			self.getProducts(collectionId)
 				.then(data => self.printProducts(data, collectionId))
 				.then(() => self.startSlick($(`.stories-card-list[data-collection-id="${collectionId}"]`)))
 				.then(() => self.loadingAnimation());
@@ -172,9 +172,8 @@ Nitro.module('instagram-stories', function() {
 	this.errorMessage = () => {
 		const errorTemplate = `
 			<div class="stories-card__error">
-				<p>
-					Infelizmente não conseguimos carregar os produtos dessa promoção. <span> =( </span>
-				</p>
+				<p>Infelizmente não conseguimos carregar os produtos dessa promoção.</p>
+				<p><span> =( </span></p>
 			</div>
 		`;
 
