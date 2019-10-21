@@ -27,24 +27,24 @@ $mobile-header-height: 84px;
 
 body {
 	.pre-header {
-		background: $gray-d;
+		background: $gray-c;
+		font-family: 'Open Sans';
+		height: 22px;
+		line-height: 1.2;
 		margin: 0;
-		max-height: 25px;
 
 		.col-6:not(.float-right) {
 			padding-left: 22px;
 		}
 
 		a {
-			@include responsiveFont(9);
+			@include responsiveFont(12);
 			color: #fff;
 			display: inline-block;
 			font-weight: 500;
 			margin-left: 20px;
 
 			&:first-child { margin-left: 0; }
-
-			&.active { color: $green; }
 
 			&[href*='tel'] { border-bottom-color: transparent; }
 

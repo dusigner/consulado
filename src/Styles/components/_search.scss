@@ -99,7 +99,8 @@ body {
 			position: relative;
 			width: 100%;
 
-			.icon-icon-loupe-consul {
+			.icon-icon-loupe-consul,
+			.icon-consul-loupe {
 				@include responsiveFont(24);
 				color: $green;
 				cursor: pointer;

@@ -134,6 +134,12 @@ const DestaqueEmbutidos = {
 				});
 			}
 		}
+	},
+	addLinkTesteAB: () => {
+		$.map( $('.category-list ul li a'), x => x.href = x.href + '?lid=e2364031-a5a2-4cbf-8253-5191d5413942');
+		setTimeout(() => {
+			$('.category-list ul').clone().appendTo('.relacionado-list')
+		}, 3000);
 	}
 };
 
