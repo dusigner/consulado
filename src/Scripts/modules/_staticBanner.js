@@ -9,15 +9,7 @@ Nitro.module('static-banner', function() {
 				autoplaySpeed: 7000,
 				mobileFirst: true,
 				dots: true,
-				arrows: false,
-				responsive: [
-					{
-						breakpoint: 568,
-						settings: {
-							arrows: true
-						}
-					}
-				]
+				arrows: false
 			});
 	};
 
