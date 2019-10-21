@@ -1,7 +1,7 @@
 Nitro.module('static-banner', function() {
 
 	this.slickStaticBanner = () => {
-		var $bannerPrincipal = $(window).width() >= 768 ? $('.banners-static .slider-banner') : '';
+		var $bannerPrincipal = $('.banners-static .slider-banner');
 
 		$bannerPrincipal
 			.slick({
