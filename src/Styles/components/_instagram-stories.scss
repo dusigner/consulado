@@ -1,3 +1,5 @@
+$storie-arrow-left: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMAAAD5ENUgAAAAXVBMVEUAAABZU1NYU1JZU1JYU1NZU1NXUlJWUlJWTk5YU1JYVFNZVFNZU1JZU1JZU1JYUVFaSkpVTExYU1NYU1JZU1JZVFJYVFNZVFJZU1JZVFNZVFJZU1NYUlJaUlJZVFP6HOvFAAAAHnRSTlMA15Xu0Ic2GROc8/Hg3jAqEAmRj3hu4cm7qqd+Yx/UUGPvAAAAiUlEQVQoz33N2RLCIAxA0YCA3ZRS6678/2dah2ZhUr0PeTiTTED2ct0wpYra/M3VVJo15SuRzdgFacrUnba4WOgk6PyTvKCnJl9o1hQEWSjdNEFP9ADMkO0ims+Mx9XSYQP3A2O/iQFRnHf/0YhHzYqNQAsaDTBqg9HRrUT6waV2IRehbgzvZX4Afy8hiQOMe4YAAAAASUVORK5CYII=';
+$storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMAAAD5ENUgAAAAaVBMVEUAAABYU1JZU1NZVFJYU1JYTk5YVFNYU1NYU1JYU1JYU1JYVFJZU1FYVFRYUlJaS0tdRkZYVFJYU1JYU1NYU1NYU1JZTU1ZVFNYU1NYU1JZU1NYVFJYUlJYVFFXVFFVVU9XUVFaUlJZVFOI1Nt3AAAAInRSTlMA99aOOA3zz8umnXtvQBoRB+Xi27aUFO7IloeGhXRSLSwiQEhkMAAAAIpJREFUKM+NzusOgjAMhuEP2HCAzgni+dj7v0gVLKvpEnl/PknzFbB1m7kbZCGnT4W0M5HCjjTuSeOWpi5shmInxkZgw1j8wyXjMYV9CmuBjwRWid9bJlNO5jTRVdMijJRFyv1AK0m7WbQeyJeKUInFL2ETyYJNUbw9RIIfZ52F6N69qQ/47WksZC+iQCXxtTvMKAAAAABJRU5ErkJggg==';
 
 .stories {
 	@include breakpoint('small', 'min') { display: none; }
@@ -143,12 +145,15 @@
 		line-height: 20px;
 		margin: 8px 0;
 		padding: 15px 45px 15px 15px;
+
+		span { color: #9aca3c; }
 	}
 
-	// Marcador do stories
-	&__marker {
+	// Marcador da quantidade dos stories e do item ativo
+	[class*='stories-card__marker-'] {
 		align-items: center;
-		display: flex!important;
+		background-color: #fff;
+		display: flex;
 		flex-wrap: nowrap;
 		height: 16px;
 		justify-content: space-between;
@@ -165,6 +170,7 @@
 			height: 2px;
 			margin: 0 2px;
 
+			// Item ativo do storie
 			&.slick-active { background-color: #9ACA3C; }
 
 			button { opacity: 0; }
@@ -175,12 +181,33 @@
 	&-list {
 		* { outline: none!important; }
 
+		// Slick
+		button.slick-arrow {
+			background-position: center 225px;
+			background-repeat: no-repeat;
+			background-size: 7px;
+			height: calc(100% + 80px);
+			margin-top: -46px;
+			width: 40px;
+
+			&::before { display: none; }
+
+			&.slick-prev { background-image: url($storie-arrow-left); }
+			&.slick-next { background-image: url($storie-arrow-right); }
+
+			&.slick-disabled {
+				display: none;
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
 		&__item {
 			display: flex!important;
 			flex-direction: column;
 			height: 100%;
 			min-height: calc(100vh - 130px);
-			padding: 0 30px;
+			padding: 0 40px;
 			position: relative;
 
 			// Produto indisponível
@@ -224,13 +251,7 @@
 			}
 		}
 
-		// Description
-		&__description {
-			font-size: 12px;
-			margin: 1em 0 2em 0;
-		}
-
-		// Prices
+		// Informação de preço do produto
 		&__prices {
 			p { margin: 0; }
 
@@ -248,7 +269,7 @@
 			}
 		}
 
-		// Comprar
+		// Ver detalhes do produto
 		&__cta {
 			@include rfs(12px);
 			background-color: #9ACA3C;
@@ -263,6 +284,22 @@
 			text-decoration: none;
 			width: 100%;
 		}
+	}
+
+	// Mensagem de erro
+	&__error {
+		border: 1px solid #d0d;
+		display: flex;
+		align-items: center;
+		min-height: 300px;
+		padding: 15px;
+
+		span {
+			display: inline-block;
+			transform: rotate(90deg);
+		}
+
+		p { margin: 0; }
 	}
 }
 
