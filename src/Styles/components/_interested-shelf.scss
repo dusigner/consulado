@@ -28,6 +28,8 @@ body {
 		}
 
 		.discount-selector {
+			margin-bottom: 36px;
+
 			.discount-list {
 				display: flex;
 				flex-direction: row;
@@ -52,9 +54,27 @@ body {
 			}
 		}
 
-		.vitrines-interesses {
-			li {
-				background-color: #fff;
+		.vitrines {
+			position: relative;
+
+			.vitrines-interesses {
+				opacity: 1;
+				position: relative;
+				z-index: 1;
+
+				li {
+					background-color: #fff;
+				}
+
+				h2.shelf-pre-title {
+					display: none;
+				}
+
+				&.not-show {
+					opacity: 0;
+					position: absolute;
+					z-index: 0;
+				}
 			}
 		}
 	}
