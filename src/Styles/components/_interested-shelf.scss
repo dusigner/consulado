@@ -3,6 +3,7 @@ $border: #E3E1E1;
 $txt: #5B5B5B;
 $bg-color: #FAF9F9;
 $txt-light: #736C6B;
+$txt-dark: #403C3B;
 
 body {
 	.vitrine-ofertas-interesses {
@@ -73,7 +74,25 @@ body {
 				&.not-show {
 					opacity: 0;
 					position: absolute;
+					width: 100%;
 					z-index: 0;
+
+				}
+			}
+
+			.link-shelf {
+				display: block;
+				padding: 34px 0 32px;
+				text-align: center;
+
+				a {
+					@include rfs(12);
+					color: $txt-dark;
+					font-weight: 500;
+
+					&:after {
+						@include icon-get('arrow-right');
+					}
 				}
 			}
 		}

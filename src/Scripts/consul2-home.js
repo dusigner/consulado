@@ -34,7 +34,7 @@ Nitro.controller(
 			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		chaordic.init('home');
+		//chaordic.init('home');
 
 		this.setupSlider = function($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
