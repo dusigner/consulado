@@ -23,23 +23,22 @@ Nitro.module('instagram-stories', function() {
 			const $thisElement = $(this);
 			const cardTitle = $thisElement.data('storie-card-title');
 			const collectionId = Number($thisElement.data('storie-card-collection-id'));
+			const searchedCollection = $(`.stories-card-list[data-collection-id="${collectionId}"]`);
 
 			activeStorieId = collectionId;
-
-			const jaTem = $(`.stories-card-list[data-collection-id="${collectionId}"]`);
 
 			self.openStories();
 			self.updateCardTitle(cardTitle);
 
-			if (jaTem.length > 0) {
-				console.log('Já tem');
+			// Se a coleção já foi pesquisada, evita que uma outra chamada seja feita.
+			if (searchedCollection.length > 0) {
 				return;
 			}
-			self.loadingAnimation();
 
+			self.loadingAnimation();
 			self.getProducts(collectionId)
 				.then(data => self.printProducts(data, collectionId))
-				.then(() => self.startSlick($(`.stories-card-list[data-collection-id="${collectionId}"]`)))
+				.then(() => self.startSlick(searchedCollection))
 				.then(() => self.loadingAnimation());
 		});
 
@@ -48,13 +47,14 @@ Nitro.module('instagram-stories', function() {
 		});
 	};
 
-	// Abre e fecha o card dos Stories
+	// Abre o card dos Stories
 	this.openStories = () => {
 		$stories.find(`.stories-card__marker-${activeStorieId}`).show();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).show();
 		$storiesCard.addClass('is--open');
 	};
 
+	// Fecha o card dos Stories
 	this.closeStories = () => {
 		$stories.find(`.stories-card__marker-${activeStorieId}`).hide();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).hide();
@@ -81,7 +81,7 @@ Nitro.module('instagram-stories', function() {
 		newTitle = newTitle.replace(/#(.+)#/gmi, '<span>$1</span>');
 
 		return newTitle;
-	}
+	};
 
 	// Atualiza o DOM com o título do Card
 	this.updateCardTitle = title => $cardTitle.html(this.preparTitle(title));
@@ -103,7 +103,6 @@ Nitro.module('instagram-stories', function() {
 			.then(response => response.json())
 			.catch(error => {
 				console.error('#Error', error);
-
 				self.errorMessage();
 				self.loadingAnimation();
 			});
@@ -112,11 +111,9 @@ Nitro.module('instagram-stories', function() {
 	};
 
 	// Exibe os produtos
-	this.printProducts = (data, collectionId) => {
+	this.printProducts = (productData, collectionId) => {
 		const $cardContainer = $(`<ul class="stories-card-list" data-collection-id="${collectionId}"></ul>`);
-		const products = data;
-
-		// $('.stories-card-list').remove();
+		const products = productData;
 
 		products.map(product => {
 			$cardContainer.append(this.instagramStoriesItem(product));
