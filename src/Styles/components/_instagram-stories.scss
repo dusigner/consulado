@@ -13,10 +13,11 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 
 	&__title {
 		@include rfs(12px);
-		color: #fff;
 		display: block;
 		font-weight: 500;
 		padding: 15px;
+
+		.home-bf-2019 & { color: #fff; }
 	}
 
 	&__container { overflow: auto; }
