@@ -2,7 +2,7 @@ $storie-arrow-left: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMAA
 $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMAAAD5ENUgAAAAaVBMVEUAAABYU1JZU1NZVFJYU1JYTk5YVFNYU1NYU1JYU1JYU1JYVFJZU1FYVFRYUlJaS0tdRkZYVFJYU1JYU1NYU1NYU1JZTU1ZVFNYU1NYU1JZU1NYVFJYUlJYVFFXVFFVVU9XUVFaUlJZVFOI1Nt3AAAAInRSTlMA99aOOA3zz8umnXtvQBoRB+Xi27aUFO7IloeGhXRSLSwiQEhkMAAAAIpJREFUKM+NzusOgjAMhuEP2HCAzgni+dj7v0gVLKvpEnl/PknzFbB1m7kbZCGnT4W0M5HCjjTuSeOWpi5shmInxkZgw1j8wyXjMYV9CmuBjwRWid9bJlNO5jTRVdMijJRFyv1AK0m7WbQeyJeKUInFL2ETyYJNUbw9RIIfZ52F6N69qQ/47WksZC+iQCXxtTvMKAAAAABJRU5ErkJggg==';
 
 .stories {
-	@include breakpoint('small', 'min') { display: none; }
+	@include breakpoint('extra-small', 'min') { display: none; }
 	color: #595453;
 	overflow: hidden;
 	width: 100%;
@@ -144,7 +144,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 		height: 70px;
 		line-height: 20px;
 		margin: 8px 0;
-		padding: 15px 45px 15px 15px;
+		padding: 15px ;
 
 		span { color: #9aca3c; }
 	}

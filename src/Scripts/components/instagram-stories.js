@@ -17,20 +17,19 @@ Nitro.module('instagram-stories', function() {
 
 	// Iniciar a aplicação
 	this.init = () => {
-		// Impedir que os stories levem para os links
 		$storiesItem.click(function(e) {
 			e.preventDefault();
+
 			const $thisElement = $(this);
 			const cardTitle = $thisElement.data('storie-card-title');
 			const collectionId = Number($thisElement.data('storie-card-collection-id'));
 			const searchedCollection = $(`.stories-card-list[data-collection-id="${collectionId}"]`);
-
 			activeStorieId = collectionId;
 
 			self.openStories();
 			self.updateCardTitle(cardTitle);
 
-			// Se a coleção já foi pesquisada, evita que uma outra chamada seja feita.
+			// Se a coleção já foi pesquisada, evita que uma outra chamada à API seja feita.
 			if (searchedCollection.length > 0) {
 				return;
 			}
@@ -38,7 +37,7 @@ Nitro.module('instagram-stories', function() {
 			self.loadingAnimation();
 			self.getProducts(collectionId)
 				.then(data => self.printProducts(data, collectionId))
-				.then(() => self.startSlick(searchedCollection))
+				.then(() => self.startSlick($(`.stories-card-list[data-collection-id="${collectionId}"]`)))
 				.then(() => self.loadingAnimation());
 		});
 
@@ -84,7 +83,7 @@ Nitro.module('instagram-stories', function() {
 	};
 
 	// Atualiza o DOM com o título do Card
-	this.updateCardTitle = title => $cardTitle.html(this.preparTitle(title));
+	this.updateCardTitle = title => $cardTitle.html(self.preparTitle(title));
 
 	// Inicia o slic no template de Stories
 	this.startSlick = ($el) => {
@@ -103,8 +102,8 @@ Nitro.module('instagram-stories', function() {
 			.then(response => response.json())
 			.catch(error => {
 				console.error('#Error', error);
-				self.errorMessage();
 				self.loadingAnimation();
+				self.errorMessage();
 			});
 
 		return products;
@@ -116,7 +115,7 @@ Nitro.module('instagram-stories', function() {
 		const products = productData;
 
 		products.map(product => {
-			$cardContainer.append(this.instagramStoriesItem(product));
+			$cardContainer.append(self.instagramStoriesItem(product));
 		});
 
 		$storiesCard.append($cardContainer);
@@ -124,10 +123,9 @@ Nitro.module('instagram-stories', function() {
 
 	// Template do stories
 	this.instagramStoriesItem = (product) => {
-		const { productTitle, productReference } = product;
+		const { productTitle, productReference, link } = product;
 		const { AvailableQuantity, ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
-		const image = product.items[0].images[0].imageTag;
-		const newImage = this.changeImageSize(image);
+		const newImage = self.changeImageSize(product.items[0].images[0].imageTag);
 
 		// Formatar e verificar dados antes de exibir na tela
 		const hasDiscount  = ListPrice > Price ? true : false;
@@ -151,7 +149,7 @@ Nitro.module('instagram-stories', function() {
 						<p class="best-price">R$ ${newPrice}</p>
 					</div>
 
-					<a href="#" class="button stories-card-list__cta" title="Detalhes do produto">
+					<a href="${link}" class="button stories-card-list__cta" title="Detalhes do produto">
 						Detalhes do produto
 					</a>
 				` : `
@@ -178,6 +176,7 @@ Nitro.module('instagram-stories', function() {
 	};
 
 	// Inicia a aplicação somente se encontrar itens cadastrados
-	// if ($additionalProdTable.length > 0) { }
-	self.init();
+	if ($storiesItem.length > 0) {
+		self.init();
+	}
 });
