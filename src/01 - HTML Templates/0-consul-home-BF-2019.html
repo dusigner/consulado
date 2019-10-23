@@ -262,58 +262,34 @@
 	</div>
 	<!-- /shelf category home -->
 
-	<!-- Shelf Interesses -->
-	<section class=" vitrine-ofertas-interesses">
-		<div class="container">
-
-			<div class="interesses-title">
-				<h4>O que te interessa mais?</h4>
-				<span>Selecione uma opção e veja abaixo as melhores ofertas</span>
-			</div>
-			<div class="discount-selector">
-				<ul class="discount-list">
-					<li><a href="javascript:void(0)" class="discount-item active" data-value="1">À vista</a></li>
-					<li><a href="javascript:void(0)" class="discount-item" data-value="2">Frete Grátis</a></li>
-					<li><a href="javascript:void(0)" class="discount-item" data-value="3">20% off</a></li>
-					<li><a href="javascript:void(0)" class="discount-item" data-value="4">40% off</a></li>
-					<li><a href="javascript:void(0)" class="discount-item" data-value="5">Antecipadas</a></li>
-				</ul>
-			</div>
-			<div class="vitrines">
-				<div class="vitrines-interesses prateleira-slider" data-value="1">
-					<vtex:contentPlaceHolder id="VitrineInteresses1" />
-					<span class="link-shelf">
-						<vtex:contentPlaceHolder id="LinkVitrine1" />
-					</span>
-				</div>
-				<div class="vitrines-interesses prateleira-slider" data-value="2">
-					<vtex:contentPlaceHolder id="VitrineInteresses2" />
-					<span class="link-shelf">
-						<vtex:contentPlaceHolder id="LinkVitrine2" />
-					</span>
-				</div>
-				<div class="vitrines-interesses prateleira-slider" data-value="3">
-					<vtex:contentPlaceHolder id="VitrineInteresses3" />
-					<span class="link-shelf">
-						<vtex:contentPlaceHolder id="LinkVitrine3" />
-					</span>
-				</div>
-				<div class="vitrines-interesses prateleira-slider" data-value="4">
-					<vtex:contentPlaceHolder id="VitrineInteresses4" />
-					<span class="link-shelf">
-						<vtex:contentPlaceHolder id="LinkVitrine4" />
-					</span>
-				</div>
-				<div class="vitrines-interesses prateleira-slider" data-value="5">
-					<vtex:contentPlaceHolder id="VitrineInteresses5" />
-					<span class="link-shelf">
-						<vtex:contentPlaceHolder id="LinkVitrine5" />
-					</span>
-				</div>
+	<!-- Tabs Interesses -->
+	<section class="prateleira-tabs vitrine-ofertas-interesses">
+		<div class="interesses-title">
+			<h4>O que te interessa mais?</h4>
+			<span>Selecione uma opção e veja abaixo as melhores ofertas</span>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras" />
 			</div>
 		</div>
 	</section>
-	<!-- /Shelf Interesses -->
+	<!-- /Tabs Interesses -->
+
+	<!-- Tabs Alavancas -->
+	<section class="prateleira-tabs vitrine-ofertas-alavancas">
+		<div class="interesses-title">
+			<h4>Ofertas especiais para você!</h4>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras2" />
+			</div>
+		</div>
+	</section>
+	<!-- /Tabs Alavancas -->
 
 	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
 	<section class="container vitrines">
