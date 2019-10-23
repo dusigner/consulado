@@ -9,6 +9,16 @@
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="home">
+
+	<!-- dataLayer -->
+   <div style="display:none;">
+     <script>
+         window.aux_list_name = 'home';
+     </script>
+     <vtex:contentPlaceHolder id="GA Prateleira Ofertas" />
+   </div>
+  <!-- fim dataLayer -->
+
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
