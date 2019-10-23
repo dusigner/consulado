@@ -3,6 +3,8 @@
 import 'modules/product/gallery';
 import 'modules/listagem/percentoff';
 import 'dataLayers/dataLayer-vitrine-embutidos';
+import 'modules/listagem/comparebar';
+import 'modules/listagem/filters';
 
 import DestaqueEmbutidos from 'modules/embutidos/destaque.embutidos';
 import CompreJunto from 'modules/embutidos/eventos.embutidos';
