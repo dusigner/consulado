@@ -85,4 +85,41 @@
 	</div>
 	<div class="btn-comparar form-check-inline">$product.Compare</div>
 	<a href="$product.CategoryLink" class="department-nav">Ver mais em <span>$product.CategoryName</span></a>
+
+	<!--dataLayer-->
+	<div style="display:none">
+	    <div class="aux-$product.Id">
+          $product.ProductField(14)
+          $product.ProductField(873)
+        </div>
+        <script>
+            window.aux_best_price   = parseFloat('$product.BestPrice'.replace('R$', '').replace('.', '').replace(',','.').trim());
+            window.aux_list_price   = parseFloat('$product.ListPrice'.replace('R$', '').replace('.', '').replace(',','.').trim());
+            window.aux_selector     = document.querySelector('.aux-'+$product.Id);
+            window.aux_color        = window.aux_selector.querySelector('.product_field_14 ul li') ? window.aux_selector.querySelector('.product_field_14 ul li').innerText : '';
+            window.aux_category_sap = window.aux_selector.querySelector('.product_field_873 ul li') ? window.aux_selector.querySelector('.product_field_873 ul li').innerText : '';
+            window.aux_position     = window.aux_position || 1;
+            window.productList      = window.productList || [];
+
+            window.productList.push({
+                'id': '$product.DescriptionShort'.split('/')[0].split(',')[0].split('-')[0].trim(),
+                'id_vtex': '$product.Id',
+                'fullId': "$product.DescriptionShort",
+                'name': '$product.Name',
+                'brand': '$product.BrandName',
+                'availability': #if ($product.IsInStock) 'Disponível' #else 'Indisponível' #end,
+                'price': window.aux_best_price,
+                'originalPrice': window.aux_list_price,
+                'categorySAP': window.aux_category_sap,
+                'category': '$product.CategoryName',
+                'department': '$product.DepartmentName',
+                'color': window.aux_color != 'Não se aplica' ? window.aux_color  : '',
+                'position': window.aux_position,
+                'list': window.aux_list_name,
+                'comboName': undefined
+            });
+            window.aux_position+=1;
+        </script>
+	</div>
+	<!--dataLayer-->
 </article>
