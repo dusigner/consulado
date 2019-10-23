@@ -33,40 +33,73 @@ Nitro.controller(
 
 		$('.tipbar-novo .container .row').slick ({
 			mobileFirst: false,
+			slidesToShow: 4,
+			centerPadding: '10px',
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
 			arrows: false,
 			dots: false,
 			responsive: [
 				{
 					breakpoint: 1024,
 					settings: {
-						slidesToShow: 4,
-						dots: false
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						centerPadding: '30px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+
+						index: 0
 					}
 				},
 				{
 					breakpoint: 768,
 					settings: {
-						slidesToShow: 4,
-						dots: false
-					}
-				},
-				{
-					breakpoint: 620,
-					settings: {
-						slidesToShow: 2,
-						dots: false
+						slidesToShow: 2.1,
+						slidesToScroll: 2,
+						centerPadding: '30px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
 					}
 				},
 				{
 					breakpoint: 580,
 					settings: {
-						slidesToShow: 1.1,
+						slidesToShow: 2.1,
 						slidesToScroll: 1,
-						centerPadding: '40px',
+						centerPadding: '25px',
 						infinite: true,
 						initialSlide: 1,
 						centerMode: true,
-						index: 1
+						index: 0
+					}
+				},
+				{
+					breakpoint: 520,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '25px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 375,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '15px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
 					}
 				}
 			]
