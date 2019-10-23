@@ -1065,12 +1065,9 @@ $(document).on('ready', function() {
   function getCheckoutChanges() {
     window.checkout_watcher = true;
     window.onpopstate = function(event) {
-      if(! window.updating_checkout_list) {
-        window.updating_checkout_list = true;
-        setTimeout(function() {
-          window.pushDataLayer();
-        }, 500);
-      }
+      setTimeout(function() {
+        window.pushDataLayer();
+      }, 500);
     }
   }
 
@@ -1166,6 +1163,7 @@ $(document).on('ready', function() {
     init();
   });
 })(window, document);
+
 
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {
