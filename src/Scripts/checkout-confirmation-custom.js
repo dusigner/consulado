@@ -226,3 +226,119 @@ $(window).on('load', function() {
 		$(window).on('orderPlacedReady.vtex', this.orderPlacedUpdated);
 	});
 });
+
+(function(window, document) {
+
+  "use strict";
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  window.pushDataLayer = function() {
+      window.dataLayer = window.dataLayer || [];
+      var order = [];
+      var products = [];
+      var product;
+      var additionalInfo;
+      for(var i = 0, max = window.dataLayer.length ; i < max ; i+=1) {
+        if(window.dataLayer[i].event && window.dataLayer[i].event == "orderPlaced") {
+          products = [];
+          for(var j = 0, max_products = window.dataLayer[i].transactionProducts.length ; j < max_products ; j+=1) {
+            product = window.dataLayer[i].transactionProducts[j];
+            additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
+            products.push({
+              'id' : additionalInfo ? additionalInfo.ref_id : product.skuRefId,
+              'id_vtex' : product.id,
+              'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
+              'name' : product.name,
+              'brand' : product.brand,
+              'availability' : "Disponível",
+              'quantity' : product.quantity,
+              'originalPrice' : additionalInfo ? additionalInfo.originalPrice : product.originalPrice,
+              'price' : product.price,
+              'categorySAP' : additionalInfo ? additionalInfo.category_sap :  '',
+              'category' : product.category,
+              'department' : product.categoryTree.length ? product.categoryTree[0] : '',
+              'color' : additionalInfo ? additionalInfo.color : '',
+              'variant' : product.skuName,
+              'coupon' : "",
+              'comboName': '',
+              'warrantyType' : additionalInfo ? additionalInfo.warrantyType : null,
+              'warrantyPrice' : additionalInfo ? additionalInfo.warrantyPrice : null,
+              'shippingPrice' : additionalInfo ? additionalInfo.shippingPrice : null,
+              'shippingType' : additionalInfo ? additionalInfo.shippingType : null,
+              'shippingTime' : additionalInfo ? additionalInfo.shippingTime : null
+            });
+          }
+          order.push({
+            'id': window.dataLayer[i].transactionId,
+            'revenue' : (window.dataLayer[i].transactionTotal - window.dataLayer[i].transactionShipping),
+          	'shipping' : window.dataLayer[i].transactionShipping,
+          	'coupon' : window.dataLayer[i].coupon,
+          	'paymentMethod' : window.dataLayer[i].transactionPaymentType.length ? window.dataLayer[i].transactionPaymentType[0].paymentSystemName : '',
+            'installments' : window.dataLayer[i].transactionPaymentType.length ? window.dataLayer[i].transactionPaymentType[0].installments : 1
+          });
+        }
+      }
+      var user     = {
+        'firstLogin': null,
+        'loginStatus': 'Deslogado',
+        'userId': ''
+      };
+      var userinfo;
+      for(var d = 0, max_dataLayer = window.dataLayer.length ; d < max_dataLayer ; d+=1) {
+        if(window.dataLayer[d].visitorId) {
+          user = {
+            'firstLogin': '',
+            'loginStatus': window.dataLayer[d].visitorLoginState ? 'Logado' : 'Deslogado',
+            'userId': window.dataLayer[d].visitorId
+          };
+          break;
+        }
+      }
+      userinfo = (getCookie('userinfo') != '') ? JSON.parse(getCookie('userinfo')) : '';
+      if(user.loginStatus == 'Deslogado' && (userinfo && userinfo !== '')) {
+        user = {
+          'firstLogin': userinfo.firstLogin,
+          'loginStatus': userinfo.loginStatus,
+          'userId': userinfo.userId
+        }
+      }
+
+      window.dataLayer.push({
+        'event': 'virtualPageview',
+        'step': 'orderPlaced',
+        'page': {
+          'type': 'purchase',
+          'currencyCode': "BRL"
+        },
+        'checkout': {
+          'step': undefined,
+          'order': order,
+          'products' : products
+        },
+        'user': user
+      });
+  }
+
+  function init() {
+      window.pushDataLayer();
+  }
+  window.onload  = (function() {
+    init();
+  });
+
+})(window, document);
