@@ -74,7 +74,7 @@
     return false;
   }
 
-  function setProducts() {
+  function setProducts(firstRun) {
     if(! document.querySelectorAll('.box-produto').length) {
       return false;
     }
@@ -86,7 +86,7 @@
     var productListTotal = window.productList.length;
 
     if(products) {
-
+      console.log('teste');
       for(var i = 0, max = products.length ; i < max ; i += 1) {
         product = products[i];
         if(! product.classList.contains('ga-tracked')) {
@@ -118,13 +118,17 @@
           ids.push(id);
         }
       }
-      if(ids.length) {
-        for(var j = 0, max = window.dataLayer.length ; j < max ; j += 1) {
-          if(window.dataLayer[j].page && window.dataLayer[j].page.impressions) {
-            updateImpressions(ids);
-            break;
+      if(! firstRun) {
+        if(ids.length) {
+          for(var j = 0, max = window.dataLayer.length ; j < max ; j += 1) {
+            if(window.dataLayer[j].page && window.dataLayer[j].page.impressions) {
+              updateImpressions(ids);
+              break;
+            }
           }
         }
+      } else {
+        setObserverOnShelf();
       }
     }
   }
@@ -137,7 +141,7 @@
           if(mutationsList[i].type == 'childList' && !window.updating_product_list) {
             window.updating_product_list = true;
             setTimeout(function() {
-              setProducts();
+              setProducts(false);
               window.updating_product_list = false;
             }, 2000);
             break;
@@ -177,11 +181,6 @@
     });
   }
 
-  setPromos();
-  setProducts();
-  setObserverOnShelf();
-  setAddToCartEvent();
-
   function updateImpressions(ids) {
     var products    = [];
     for(var i = 0, max = window.productList.length ; i < max ; i+=1) {
@@ -189,10 +188,18 @@
         products.push(window.productList[i]);
       }
     }
-    window.dataLayer.push({
-      'event': 'updateImpressions',
-      'impressions': products
-    });
+    window.product_list_name = window.product_list_name || '';
+    for(var p = 0, max_products = products.length ; p < max_products ; p+=1) {
+      if(products[p].list ==  '' || typeof products[p].list == undefined) {
+        products[p].list = window.product_list_name;
+      }
+    }
+    if(products) {
+      window.dataLayer.push({
+        'event': 'updateImpressions',
+        'impressions': products
+      });
+    }
   }
   window.pushDataLayer = function(update) {
     var category   =  null;
@@ -202,6 +209,7 @@
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer_product = {};
+
     if(update) {
       window.dataLayer.push({
         'event': 'updateImpressions',
@@ -251,7 +259,7 @@
       searchTerm = document.location.search.split('q=')[1].split('&')[0];
       window.dataLayer_pageName = 'search';
     }
-
+    window.product_list_name = window.product_list_name || '';
     switch(window.dataLayer_pageName) {
       case 'search':
         if(window.product_list && window.product_list.length) {
@@ -262,15 +270,24 @@
         break;
       case 'category':
         step = 'categoria/'+category.replace(' / ', '/').replace(/ /g, '-').trim().toLowerCase();
+        window.product_list_name = 'category';
         break;
       case 'product':
         step = 'produto/'+ sku + ( voltagem ? '/'+voltagem : '');
+        window.product_list_name = 'product';
         break;
       case 'parceiro':
         step = 'home';
         window.dataLayer_pageName = 'home';
+        window.product_list_name = 'home';
       default:
         step = window.dataLayer_pageName;
+    }
+
+    for(var p = 0, max_products = window.productList.length ; p < max_products ; p+=1) {
+      if(window.productList[p].list ==  '' || typeof window.productList[p].list == 'undefined') {
+        window.productList[p].list = window.product_list_name;
+      }
     }
 
     var products = window.productList;
@@ -326,5 +343,10 @@
   }
 
   window.pushDataLayer(false);
+  window.onload  = (function() {
+    setPromos();
+    setProducts(true);
+    setAddToCartEvent();
+  });
 
 })(window, document);

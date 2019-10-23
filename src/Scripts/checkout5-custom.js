@@ -263,7 +263,10 @@ $(document).on('ready', function() {
 			//event
 			this.orderFormUpdated = function(e, orderForm) {
 				console.info('orderFormUpdated');
-
+				$('input#client-phone').inputmask('(99) [9]999-99999', {placeholder: ' ', showMaskOnFocus: false, keepStatic: true, clearMaskOnLostFocus: true});
+				$('input#client-document').inputmask('999.999.999-99');
+				$('input#summary-postal-code').inputmask('99999-999');
+				$('input#creditCardpayment-card-0Number').inputmask('9999-9999-9999-9999');
 				// Teste AB
 				// var urlTesteAb = window.location.search;
 				// var testeA = 'testeab=a';
@@ -285,14 +288,6 @@ $(document).on('ready', function() {
 							.parent(0)
 							.removeClass('email-confirm');
 					});
-					if ($('body').hasClass('abMask')) {
-						//inserir essa classe para *(teste AB)*
-						//insere a mascara de inpu somente em mobile no metodo de pagamento campos de cpf e phone
-						$('input#client-document').inputmask('999.999.999-99');
-						$('input#client-phone').inputmask('(99) 9999[9]-9999');
-						$('input#summary-postal-code').inputmask('99999-999');
-						$('input#creditCardpayment-card-0Number').inputmask('9999-9999-9999-9999');
-					}
 				}
 				//desabilita o click no btn editar no box de pagamento - pemitindo email não seja apagado no box profile
 				$('#payment-data .link-box-edit').click(function(e) {
@@ -1070,12 +1065,9 @@ $(document).on('ready', function() {
   function getCheckoutChanges() {
     window.checkout_watcher = true;
     window.onpopstate = function(event) {
-      if(! window.updating_checkout_list) {
-        window.updating_checkout_list = true;
-        setTimeout(function() {
-          window.pushDataLayer();
-        }, 500);
-      }
+      setTimeout(function() {
+        window.pushDataLayer();
+      }, 500);
     }
   }
 
@@ -1171,6 +1163,7 @@ $(document).on('ready', function() {
     init();
   });
 })(window, document);
+
 
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {

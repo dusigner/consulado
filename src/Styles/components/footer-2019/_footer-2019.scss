@@ -14,6 +14,8 @@
 // ===============================================================
 /* @IMPORTS */
 // ===============================================================
+//Envelopamento blackfriday
+@import 'footer-2019-blackfriday';
 
 // variables
 @import '../../../Styles/helpers/variables';
@@ -22,8 +24,6 @@ $default-color-gray: #736C6B;
 $default-color-gray-dark: #534C4B;
 $default-color-purple: #702F8F;
 $default-color-gray-light: #d9d8d8;
-
-
 
 // Helpers
 @import '../../../Styles/helpers/mixins';
