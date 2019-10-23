@@ -4,7 +4,7 @@
 require('modules/banners-controller');
 require('modules/slider-banner');
 
-require('components/tabs-consumidor');
+//require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
