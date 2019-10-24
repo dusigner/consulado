@@ -2,8 +2,10 @@ $background : #272727;
 
 body {
 
-	.banners {
-		display: none!important;
+	&.home-bf-2019 {
+		.banners {
+			display: none!important;
+		}
 	}
 
 	.banners-static {
