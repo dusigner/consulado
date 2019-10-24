@@ -116,26 +116,17 @@ Nitro.module('instagram-stories', function() {
 
 		products.map(product => {
 			const currentProduct = product.productReference;
-
-			// console.log('###', product.productReference, product);
+			let previewsSku = '';
 
 			product.items.map((productSku, productIndex) => {
 				const productIsAvailable = productSku.sellers[0].commertialOffer.AvailableQuantity;
-				let previewsSku = '';
-
-				console.log('@@@', 'currentProduct', currentProduct, 'previewsSku', previewsSku);
-
-				// console.log('$$$', productSku.complementName);
-				// console.log(`index: ${productIndex}`, productIsAvailable, productSku);
 
 				if (productIsAvailable && currentProduct !== previewsSku) {
 					previewsSku = productSku.complementName;
+
 					$cardContainer.append(self.instagramStoriesItem(product, productIndex));
 				}
 			});
-
-			// $cardContainer.append(self.instagramStoriesItem(product, 0));
-
 		});
 
 		$storiesCard.append($cardContainer);
