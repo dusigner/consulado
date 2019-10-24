@@ -7,9 +7,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 	overflow: hidden;
 	width: 100%;
 
-	.home-bf-2019 & {
-		background-color: #232323;
-	}
+	.home-bf-2019 & { background-color: #232323; }
 
 	&__title {
 		@include rfs(12px);

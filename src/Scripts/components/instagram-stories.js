@@ -115,22 +115,58 @@ Nitro.module('instagram-stories', function() {
 		const products = productData;
 
 		products.map(product => {
-			$cardContainer.append(self.instagramStoriesItem(product));
+			const currentProduct = product.productReference;
+			let previewsSku = '';
+
+			product.items.map((productSku, productIndex) => {
+				const productIsAvailable = productSku.sellers[0].commertialOffer.AvailableQuantity;
+
+				if (productIsAvailable && currentProduct !== previewsSku) {
+					previewsSku = productSku.complementName;
+
+					$cardContainer.append(self.instagramStoriesItem(product, productIndex));
+				}
+			});
 		});
 
 		$storiesCard.append($cardContainer);
 	};
 
-	// Template do stories
-	this.instagramStoriesItem = (product) => {
+	// Pega as informações que o template de storiecard vai precisar
+	this.instagramPrepareData = (product, productIndex) => {
 		const { productTitle, productReference, link } = product;
-		const { AvailableQuantity, ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
-		const newImage = self.changeImageSize(product.items[0].images[0].imageTag);
+		const { AvailableQuantity, ListPrice, Price } = product.items[productIndex].sellers[0].commertialOffer;
+		const newImage = self.changeImageSize(product.items[productIndex].images[0].imageTag);
 
 		// Formatar e verificar dados antes de exibir na tela
 		const hasDiscount  = ListPrice > Price ? true : false;
 		const newListPrice = _.formatCurrency(ListPrice);
 		const newPrice     = _.formatCurrency(Price);
+
+		return {
+			productTitle,
+			productReference,
+			link,
+			AvailableQuantity,
+			newImage,
+			hasDiscount,
+			newListPrice,
+			newPrice
+		}
+	};
+
+	// Template do stories
+	this.instagramStoriesItem = (product, productIndex) => {
+		const {
+			productTitle,
+			productReference,
+			link,
+			AvailableQuantity,
+			newImage,
+			hasDiscount,
+			newListPrice,
+			newPrice,
+		} = self.instagramPrepareData(product, productIndex);
 
 		// Product Kit
 		const storieCardTemplate = `
