@@ -15,7 +15,7 @@ require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
 // require('modules/_staticBanner');
-
+require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 
@@ -32,6 +32,7 @@ Nitro.controller(
 		'shelfCategoryHome',
 		/* 'static-banner' */
 		/*'counter', 'datalayer_track'*/
+		'subCategoryList'
 	],
 	function(chaordic) {
 		var self = this,
