@@ -1,6 +1,7 @@
 $txt-color: #5B5B5B;
 $txt-inactive: #BFBEBE;
 $txt-subTitle: #736C6B;
+$txt-active: #595453;
 $border: #F1F0F0;
 $green: #9ACA3C;
 
@@ -30,16 +31,38 @@ body {
 		}
 
 		.categories-list {
+			margin-bottom: 25px;
+
 			ul {
 				display: flex;
 				flex-direction: row;
 				justify-content: space-between;
+				width: 100%;
 			}
 
 			a {
 				@include rfs(14);
 				color: $txt-inactive;
+
+				&.active {
+					@include rfs(18);
+					color: $txt-active;
+					font-weight: bold;
+					position: relative;
+
+					&:after {
+						border: 2px solid $green;
+						border-radius: 2px;
+						content: '';
+						display: block;
+						left: 50%;
+						position: absolute;
+						transform: translateX(-50%);
+						width: 30px;
+					}
+				}
 			}
+
 		}
 
 		.subcategories-list {
