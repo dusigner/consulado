@@ -4,6 +4,7 @@
 require('modules/banners-controller');
 require('modules/slider-banner');
 
+
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
@@ -18,7 +19,6 @@ require('modules/_staticBanner');
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
-
 Nitro.controller(
 	'home',
 	[
@@ -32,7 +32,84 @@ Nitro.controller(
 		'shelfCategoryHome',
 		'static-banner' /*'counter', 'datalayer_track'*/
 	],
+
 	function(chaordic) {
+
+		$('.tipbar-novo .container .row').slick ({
+			mobileFirst: false,
+			slidesToShow: 4,
+			centerPadding: '10px',
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			arrows: false,
+			dots: false,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						centerPadding: '30px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+
+						index: 0
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 2,
+						centerPadding: '30px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 580,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 1,
+						centerPadding: '25px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 520,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '25px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 375,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '15px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				}
+			]
+		});
+
+
 		var self = this,
 			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
