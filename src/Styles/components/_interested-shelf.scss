@@ -1,0 +1,172 @@
+$button-color: #404040;
+$border: #E3E1E1;
+$txt: #5B5B5B;
+$bg-color: #FAF9F9;
+$txt-light: #736C6B;
+$txt-dark: #403C3B;
+
+body {
+	.vitrine-ofertas-interesses,
+	.vitrine-ofertas-alavancas {
+		background-color: $bg-color;
+		padding-top: 38px;
+
+		.interesses-title {
+			h4 {
+				@include rfs(28);
+				color: $txt;
+				font-weight: bold;
+				margin: 0;
+				text-align: center;
+			}
+
+			span {
+				@include rfs(14);
+				color: $txt-light;
+				display: block;
+				margin: 0;
+				text-align: center;
+			}
+		}
+
+		.prateleira-tabs__tabs {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-bottom: 32px;
+
+			li {
+				margin: 0 6px 12px;
+			}
+
+			.discount-item {
+				@include rfs(12);
+				border: 1px solid $border;
+				border-radius: 4px;
+				color: $button-color;
+				display: inline-block;
+				height: 32px;
+				line-height: 2.5;
+				text-align: center;
+				width: 152px;
+
+				&.active {
+					background-color: $button-color;
+					color: #fff;
+				}
+			}
+		}
+
+
+		.vitrines {
+			margin-top: 42px;
+			position: relative;
+
+			.prateleira {
+				opacity: 1;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+
+				.box-produto {
+					background-color: #fff;
+				}
+
+				h2 {
+					display: none !important;
+				}
+
+				&.not-show {
+					opacity: 0;
+					position: absolute;
+					z-index: 0;
+				}
+			}
+
+			.link-shelf {
+				display: block;
+				padding: 34px 0 32px;
+				text-align: center;
+
+				a {
+					@include rfs(12);
+					color: $txt-dark;
+					font-weight: 500;
+
+					&:after {
+						@include icon-get('arrow-right');
+						font-size: 7px;
+						font-weight: bold !important;
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.vitrine-ofertas-interesses {
+		//@include breakpoint ('small', 'max') { display: none; }
+		.prateleira-tabs__tabs {
+			span {
+				display: inline-block;
+				width: 120px;
+			}
+
+			.discount-item {
+				position: relative;
+
+				&:before {
+					display: inline-block;
+					font-size: 16px;
+					left: 5px;
+					position: relative;
+					top: 50%;
+					transform: translateY(-75%);
+					width: 20px;
+				}
+
+				&:after {
+					border-left: 1px solid $border;
+					content: '';
+					display: inline-block;
+					height: 14px;
+					left: 37px;
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+				}
+			}
+
+			.frete {
+				&:before {
+					@include icon-get('frete-gratis');
+				}
+			}
+
+			.vista {
+				&:before {
+					@include icon-get('desconto-a-vista');
+				}
+			}
+
+			.vinte {
+				&:before {
+					@include icon-get('desconto-20off');
+				}
+			}
+
+			.quarenta {
+				&:before {
+					@include icon-get('desconto-40off');
+				}
+			}
+
+			.antecipada {
+				&:before {
+					@include icon-get('desconto-antecipadas');
+				}
+			}
+		}
+	}
+}

@@ -4,8 +4,7 @@
 require('modules/banners-controller');
 require('modules/slider-banner');
 
-
-//require('custom/tabs-consumidor');
+//require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
 require('components/instagram-stories');
@@ -16,13 +15,13 @@ require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
 require('modules/_staticBanner');
+require('modules/interested-shelf');
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 Nitro.controller(
 	'home',
 	[
-		'chaordic',
 		'slider-banner',
 		'lead-newsletter',
 		'instagram-stories',
@@ -30,7 +29,8 @@ Nitro.controller(
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'shelfCategoryHome',
-		'static-banner' /*'counter', 'datalayer_track'*/
+		'static-banner', /*'counter', 'datalayer_track'*/
+		'interested-shelf'
 	],
 
 	function(chaordic) {
@@ -114,7 +114,7 @@ Nitro.controller(
 			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		chaordic.init('home');
+		//chaordic.init('home');
 
 		this.setupSlider = function($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
