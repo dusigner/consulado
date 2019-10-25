@@ -1,0 +1,63 @@
+.onpage-search {
+	background-color: #111111;
+	color: #fff;
+	padding: 4.5em 0;
+	text-align: center;
+
+	// Title
+	&__title {
+		@include rfs(28px);
+		display: block;
+		font-weight: 900;
+	}
+
+	&__description {
+		@include rfs(14px);
+		font-weight: 500;
+	}
+
+	// Form
+	&__form {
+		@include inputPlaceholderColor(#fff);
+		background-color: #ccc;
+		margin: 2em auto;
+		max-width: 600px;
+		position: relative;
+
+		.icon-consul-loupe,
+		button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.icon-consul-loupe {
+			@include rfs(18px);
+			left: 20px;
+		}
+
+		button {
+			@include rfs(14px);
+			background: none;
+			border: none;
+			font-weight: 500;
+			right: 30px;
+		}
+
+		input {
+			@include rfs(12px);
+			background-color: #2A2A2A;
+			display: block;
+			height: 70px;
+			padding: 10px 90px 10px 45px;
+			width: 100%;
+		}
+	}
+
+	// Link
+	&__link {
+		@include rfs(12px);
+		color: #9ACA3C;
+		font-weight: 500;
+	}
+}

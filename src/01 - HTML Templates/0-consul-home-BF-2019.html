@@ -120,17 +120,37 @@
 	<!-- On Page Search -->
 	<section class="onpage-search">
 		<div class="container">
-			<header class="onpage-search__title">
-				<strong>Está procurando algo especial?</strong>
-				<span>Digite o que procura e encontramos para você!</span>
+			<header>
+				<strong class="onpage-search__title">Está procurando algo especial?</strong>
+				<span class="onpage-search__description">Digite o que procura e encontramos para você!</span>
 			</header>
+
+			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
+				<i class="icon icon-consul-loupe"></i>
+				<input
+					type="text"
+					class="text-search"
+					name="q"
+					required="required"
+					pattern=".{3,}"
+					title="Mínimo de 3 caracteres "
+					placeholder="O que você está procurando hoje?"
+					autocomplete="off"
+					maxlength="100"
+				/>
+				<button type="submit">
+					Buscar
+				</button>
+			</form>
+
+			<footer>
+				<a href="#" class="onpage-search__link" title="Ver todos os produtos da loja">
+					Ver todos os produtos da loja
+				</a>
+			</footer>
 		</div>
 	</section>
 	<!-- /On Page Search -->
-
-
-
-
 
 
 
