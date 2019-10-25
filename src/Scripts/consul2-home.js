@@ -17,6 +17,8 @@ require('modules/shelfCategoryHome');
 require('modules/_staticBanner');
 require('modules/interested-shelf');
 
+// require('modules/_staticBanner');
+require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 Nitro.controller(
@@ -30,7 +32,10 @@ Nitro.controller(
 		'chatHome',
 		'shelfCategoryHome',
 		'static-banner', /*'counter', 'datalayer_track'*/
-		'interested-shelf'
+		'interested-shelf',
+		/* 'static-banner' */
+		/*'counter', 'datalayer_track'*/
+		'subCategoryList'
 	],
 
 	function(chaordic) {
