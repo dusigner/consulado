@@ -7,14 +7,14 @@ require('modules/slider-banner');
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
-require('components/instagram-stories');
+// require('components/instagram-stories');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
-require('modules/_staticBanner');
+// require('modules/_staticBanner');
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
@@ -30,7 +30,8 @@ Nitro.controller(
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'shelfCategoryHome',
-		'static-banner' /*'counter', 'datalayer_track'*/
+		/* 'static-banner' */
+		/*'counter', 'datalayer_track'*/
 	],
 	function(chaordic) {
 		var self = this,

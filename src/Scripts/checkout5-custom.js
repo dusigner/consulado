@@ -826,6 +826,7 @@ $(document).on('ready', function() {
 
   window.updating_checkout_list = false;
   window.checkout_watcher       = false;
+  window.last_step              = document.location.hash;
 
   function getCookie(cname) {
     var name = cname + "=";
@@ -848,24 +849,47 @@ $(document).on('ready', function() {
       document.querySelector('.chaordic.page-render iframe').contentDocument.addEventListener('mousedown', function(event) {
         var elem = event.target;
         var id;
+        var product;
 
         window.dataLayer = window.dataLayer || [];
 
         if(elem.matches('.item a:not(.buy), .item a:not(.buy) *')) {
           id = elem.tagName.toLowerCase == 'a' ? elem.getAttribute('href') : elem.parentElement.getAttribute('href');
           id = id.split('idsku')[1].replace('=', '');
-          console.log(id)
+          window.dataLayer = window.dataLayer || [];
+          for(var i = (window.dataLayer.length - 1), min  = 0 ; min < i ; i-=1) {
+            if(window.dataLayer[i].checkout && window.dataLayer[i].page.impressions) {
+              var products = window.dataLayer[i].checkout.products;
+              for(var j = 0, max_products =  window.dataLayer[i].page.impressions.length ; j < max_products ; j+=1) {
+                if(products[j].id_vtex == id) {
+                  product = products[j];
+                  break;
+                }
+              }
+            }
+          }
           window.dataLayer.push({
             'event': 'productClick',
-            'product': []
+            'product': [product]
           });
 
         } else if(elem.matches('.item a.buy')) {
           id = elem.getAttribute('id').replace('buy-', '');
-          console.log(id);
+          window.dataLayer = window.dataLayer || [];
+          for(var i = (window.dataLayer.length - 1), min  = 0 ; min < i ; i-=1) {
+            if(window.dataLayer[i].checkout && window.dataLayer[i].page.impressions) {
+              var products = window.dataLayer[i].page.impressions;
+              for(var j = 0, max_products =  window.dataLayer[i].page.impressions.length ; j < max_products ; j+=1) {
+                if(products[j] && products[j].id_vtex == id) {
+                  product = products[j];
+                  break;
+                }
+              }
+            }
+          }
           window.dataLayer.push({
             'event': 'addToCart',
-            'product': []
+            'product': [product]
           });
         }
 
@@ -1044,7 +1068,7 @@ $(document).on('ready', function() {
       'page': {
         'type': 'checkout',
         'currencyCode': "BRL",
-        'impressions': []
+        'impressions': step == 'checkout_step_1_cart' ? window.productList : ''
       },
       'checkout': {
         'step': step_number,
@@ -1055,6 +1079,7 @@ $(document).on('ready', function() {
 
     if(! window.checkout_watcher) {
       getCheckoutChanges();
+      setProducts();
     } else {
       setTimeout(function() {
         window.updating_checkout_list = false;
@@ -1066,7 +1091,10 @@ $(document).on('ready', function() {
     window.checkout_watcher = true;
     window.onpopstate = function(event) {
       setTimeout(function() {
-        window.pushDataLayer();
+        if(window.last_step != document.location.hash) {
+          window.last_step = document.location.hash;
+          window.pushDataLayer();
+        }
       }, 500);
     }
   }
@@ -1151,8 +1179,9 @@ $(document).on('ready', function() {
     var initdataLayerSettings = setInterval(function() {
       if(typeof vtexjs != 'undefined' && vtexjs.checkout && vtexjs.checkout.orderForm) {
         clearInterval(initdataLayerSettings);
-        window.pushDataLayer();
-        setProducts();
+        if(! (document.location.hash.indexOf('cart') >= 0)) {
+          window.pushDataLayer();
+        }
       }
     }, 500);
 
@@ -1162,7 +1191,10 @@ $(document).on('ready', function() {
   window.onload  = (function() {
     init();
   });
+
 })(window, document);
+
+
 
 
 
