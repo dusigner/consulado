@@ -11,6 +11,242 @@
         "files/checkout5-custom.js": {
             "content": "3f1ed7ac3ad3711bd505057f344e9935",
             "lastUpdate": "2019-10-25T16:02:25.751Z"
+        },
+        "arquivos/checkout-confirmation-custom.min.js": {
+            "content": "eca01800888cbcee2a687bdf7e66c282",
+            "lastUpdate": "2019-10-25T17:08:01.674Z"
+        },
+        "arquivos/checkout5-custom.min.js": {
+            "content": "3f1ed7ac3ad3711bd505057f344e9935",
+            "lastUpdate": "2019-10-25T17:08:01.680Z"
+        },
+        "arquivos/consul2-app.min.js": {
+            "content": "aa0e26cc7959539b8494862deee79528",
+            "lastUpdate": "2019-10-25T17:08:01.687Z"
+        },
+        "arquivos/consul2-cervejeiras.min.js": {
+            "content": "61fd12ee6742961d822083786af6cb36",
+            "lastUpdate": "2019-10-25T17:08:01.694Z"
+        },
+        "arquivos/consul2-cta.min.js": {
+            "content": "325b5ec1565cfc57fb7e3394bd0ebb42",
+            "lastUpdate": "2019-10-25T17:08:01.700Z"
+        },
+        "arquivos/consul2-home.min.js": {
+            "content": "aad451632d9a66a7a7d2a5e59a3819b5",
+            "lastUpdate": "2019-10-25T17:08:01.705Z"
+        },
+        "arquivos/consul2-linha-embutir.min.js": {
+            "content": "98e9334dec1ed3f56381a8db8e91cb3d",
+            "lastUpdate": "2019-10-25T17:08:01.711Z"
+        },
+        "arquivos/consul2-listagem-embutidos.min.js": {
+            "content": "7625b19967843fffd9e634182c3db3a6",
+            "lastUpdate": "2019-10-25T17:08:01.717Z"
+        },
+        "arquivos/consul2-listagem.min.js": {
+            "content": "e828dc940d2dd4e61a6e69ae810eeccd",
+            "lastUpdate": "2019-10-25T17:08:01.723Z"
+        },
+        "arquivos/consul2-myorders.min.js": {
+            "content": "5307e0453539d6ee800cb79f561c1143",
+            "lastUpdate": "2019-10-25T17:08:01.728Z"
+        },
+        "arquivos/consul2-produto.min.js": {
+            "content": "0c3ff8511c64599430047be363fd3b99",
+            "lastUpdate": "2019-10-25T17:08:01.733Z"
+        },
+        "0-consul-footer-2019-after": {
+            "content": "fda0c9d4b687b8b04fb3f4b1e21ea9f0",
+            "lastUpdate": "2019-10-25T17:08:04.629Z"
+        },
+        "0-consul-footer-2019-atendimento": {
+            "content": "1fb9c407d3af57b7efad826c3ce1fa70",
+            "lastUpdate": "2019-10-25T17:08:04.634Z"
+        },
+        "0-consul-footer-2019-bottom": {
+            "content": "e4d6803d7dbf1c3c805bbb2d6694b59c",
+            "lastUpdate": "2019-10-25T17:08:04.647Z"
+        },
+        "0-consul-footer-2019-menu": {
+            "content": "9dd11962e0488780255221520ac070de",
+            "lastUpdate": "2019-10-25T17:08:04.652Z"
+        },
+        "0-consul-footer-2019-newsletter": {
+            "content": "a7c0fc212ca26f62f6f13d33b235867b",
+            "lastUpdate": "2019-10-25T17:08:04.657Z"
+        },
+        "0-consul-footer-2019-servicos": {
+            "content": "319a5846c81cbe49d3bc0a0ff7755a36",
+            "lastUpdate": "2019-10-25T17:08:04.661Z"
+        },
+        "0-consul-footer": {
+            "content": "5908db6ca22f9efa913db59552252e51",
+            "lastUpdate": "2019-10-25T17:08:04.667Z"
+        },
+        "0-consul-head-content": {
+            "content": "7aaaf60d68a9aed33a50980a833c6645",
+            "lastUpdate": "2019-10-25T17:08:04.672Z"
+        },
+        "0-consul-header-landing-aniversario": {
+            "content": "0a1034578528692c332dbb04da134a2f",
+            "lastUpdate": "2019-10-25T17:08:04.678Z"
+        },
+        "0-consul-header": {
+            "content": "21d6aaa4f7a66353913edd86dadd89f9",
+            "lastUpdate": "2019-10-25T17:08:04.685Z"
+        },
+        "0-consul-servicos": {
+            "content": "5ba5fffced30e6f0e60ebc222b6b1ae4",
+            "lastUpdate": "2019-10-25T17:08:04.693Z"
+        },
+        "0-consul-top-header": {
+            "content": "37b64caf4e4fe78ca7fb93cd7b6a7b75",
+            "lastUpdate": "2019-10-25T17:08:04.698Z"
+        },
+        "0-consul-busca-chaordic": {
+            "content": "94a9c703164bad490083999d22d0bbc8",
+            "lastUpdate": "2019-10-25T17:08:06.987Z"
+        },
+        "0-consul-busca-chaordic2": {
+            "content": "2bea06088763eb841ca0e541a128fc80",
+            "lastUpdate": "2019-10-25T17:08:06.993Z"
+        },
+        "0-consul-busca": {
+            "content": "4e11a688732633f2fcf162ba87aa787d",
+            "lastUpdate": "2019-10-25T17:08:06.998Z"
+        },
+        "0-consul-calculadora-btu": {
+            "content": "0ef41be47e174a26400d317c6f5f8d37",
+            "lastUpdate": "2019-10-25T17:08:07.004Z"
+        },
+        "0-consul-cta": {
+            "content": "afec46be59ec4739c298fcdfab5c5662",
+            "lastUpdate": "2019-10-25T17:08:07.018Z"
+        },
+        "0-consul-home-BF-2019": {
+            "content": "4066a58321ecf1d117480f4ae5accb24",
+            "lastUpdate": "2019-10-25T17:08:07.027Z"
+        },
+        "0-consul-home-chaordic": {
+            "content": "290133e6cb99daeddbb0a15f0645984e",
+            "lastUpdate": "2019-10-25T17:08:07.033Z"
+        },
+        "0-consul-home-pj": {
+            "content": "1bb20074552316c97e3376a4f8865850",
+            "lastUpdate": "2019-10-25T17:08:07.038Z"
+        },
+        "0-consul-home": {
+            "content": "95ca0de56e38407e55625df0cff1aadf",
+            "lastUpdate": "2019-10-25T17:08:07.043Z"
+        },
+        "0-consul-institucional": {
+            "content": "f28a780f586e8f4483f5c7b935335f75",
+            "lastUpdate": "2019-10-25T17:08:07.048Z"
+        },
+        "0-consul-landing-cwh14ab": {
+            "content": "0f2c58dc1af4039260ccc23b84059fdf",
+            "lastUpdate": "2019-10-25T17:08:07.055Z"
+        },
+        "0-consul-linha-embutir": {
+            "content": "28d8c78de7c322791da50b5836bd39db",
+            "lastUpdate": "2019-10-25T17:08:07.060Z"
+        },
+        "0-consul-listagem-ar-condicionado": {
+            "content": "ab8ed225ad79fa416c0e6bfc95184fe8",
+            "lastUpdate": "2019-10-25T17:08:07.065Z"
+        },
+        "0-consul-listagem-embutidos": {
+            "content": "a944784438acaea3e4d3657e65755697",
+            "lastUpdate": "2019-10-25T17:08:07.070Z"
+        },
+        "0-consul-listagem-smartbeer-2": {
+            "content": "5ebff9d535e5943289a77af127883909",
+            "lastUpdate": "2019-10-25T17:08:07.078Z"
+        },
+        "0-consul-listagem": {
+            "content": "277ce94a2a9e97919da1ce7067131a61",
+            "lastUpdate": "2019-10-25T17:08:07.084Z"
+        },
+        "0-consul-login": {
+            "content": "1d2cf34ce2bed2c6c636aba332ae8597",
+            "lastUpdate": "2019-10-25T17:08:07.090Z"
+        },
+        "0-consul-meuspedidos": {
+            "content": "6efd491115309f0e45a34141855dfa1e",
+            "lastUpdate": "2019-10-25T17:08:07.099Z"
+        },
+        "0-consul-minhaconta": {
+            "content": "6149c48ff1c83b978ea0a301e64a40ca",
+            "lastUpdate": "2019-10-25T17:08:07.105Z"
+        },
+        "0-consul-minicart": {
+            "content": "9a64cdaf2de672b917e58e378eccc313",
+            "lastUpdate": "2019-10-25T17:08:07.110Z"
+        },
+        "0-consul-neemu": {
+            "content": "47e280c4c45905249de40c0fcc412201",
+            "lastUpdate": "2019-10-25T17:08:07.116Z"
+        },
+        "0-consul-pedidos": {
+            "content": "a20c8bed48e1c5ebfdf3c4c3d7a85fcf",
+            "lastUpdate": "2019-10-25T17:08:07.122Z"
+        },
+        "0-consul-produto-kit": {
+            "content": "622803fd2d179548db282a295b645945",
+            "lastUpdate": "2019-10-25T17:08:07.128Z"
+        },
+        "0-consul-produto-produtos-adicionais": {
+            "content": "ef99894190446e71c39ca7276d3b2156",
+            "lastUpdate": "2019-10-25T17:08:07.134Z"
+        },
+        "0-consul-produto-quiz": {
+            "content": "b9b025c6f3073322d2a9757e42caf9e1",
+            "lastUpdate": "2019-10-25T17:08:07.140Z"
+        },
+        "0-consul-produto-refri": {
+            "content": "95874a306c052fb8b55baa4ff0102c19",
+            "lastUpdate": "2019-10-25T17:08:07.146Z"
+        },
+        "0-consul-produto": {
+            "content": "32d14814e0d69650ff4b8f6c6c8714a5",
+            "lastUpdate": "2019-10-25T17:08:07.152Z"
+        },
+        "0-consul-destaque": {
+            "content": "eff9bc74812a84792144166a6aa4e3a7",
+            "lastUpdate": "2019-10-25T17:08:09.591Z"
+        },
+        "0-consul-prateleira-compre-junto": {
+            "content": "47b3943122737d246fdad1067023b6ea",
+            "lastUpdate": "2019-10-25T17:08:09.595Z"
+        },
+        "0-consul-prateleira-default": {
+            "content": "ebc6e544e6fa9867ce1e89724e2b9afb",
+            "lastUpdate": "2019-10-25T17:08:09.601Z"
+        },
+        "0-consul-prateleira-personalizada": {
+            "content": "9b7729297e36ba4c9ad17e468b6f6c77",
+            "lastUpdate": "2019-10-25T17:08:09.606Z"
+        },
+        "0-consul-produto-banner": {
+            "content": "b774639b1cabfda6535ef0045cd8e899",
+            "lastUpdate": "2019-10-25T17:08:09.611Z"
+        },
+        "0-consul-smartbeer-shelf": {
+            "content": "313b398b77d43e87d0e1d213c1dc3eb1",
+            "lastUpdate": "2019-10-25T17:08:09.617Z"
+        },
+        "0-ga-impressions": {
+            "content": "9b4403097cf746796508ab0c570b399e",
+            "lastUpdate": "2019-10-25T17:08:09.623Z"
+        },
+        "0-prateleira-default": {
+            "content": "17f1f376be70688eab02fcb07546d783",
+            "lastUpdate": "2019-10-25T17:08:09.628Z"
+        },
+        "0-shelf-blackfriday-2018": {
+            "content": "7c31fe6c4a3b6934544a0c9dd9b8f8be",
+            "lastUpdate": "2019-10-25T17:08:09.634Z"
         }
     }
 }
