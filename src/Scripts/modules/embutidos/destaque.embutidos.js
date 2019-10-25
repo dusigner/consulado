@@ -1,3 +1,5 @@
+import { pushDataLayer } from '../_datalayer-inline';
+
 const DestaqueEmbutidos = {
 	renderDestaqueEmbutidos: gallery => {
 		let productImage = [],
@@ -138,7 +140,15 @@ const DestaqueEmbutidos = {
 	addLinkTesteAB: () => {
 		$.map( $('.category-list ul li a'), x => x.href = x.href + '?lid=e2364031-a5a2-4cbf-8253-5191d5413942');
 		setTimeout(() => {
-			$('.category-list ul').clone().appendTo('.relacionado-list')
+			$('.category-list ul').clone().appendTo('.relacionado-list');
+
+			$('.relacionado-list ul li a').click(e => {
+				pushDataLayer(
+					`[CB-GOC] Vitrine  ${$('.category-title').text()}`,
+					'Pesquisas relacionadas',
+					e.currentTarget.innerText
+				);
+			});
 		}, 3000);
 	}
 };

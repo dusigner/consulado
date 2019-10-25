@@ -338,7 +338,9 @@ $(window).on('load', function() {
       window.pushDataLayer();
   }
   window.onload  = (function() {
-    init();
+		setTimeout(function() {
+			init();
+		}, 1000);
   });
 
 })(window, document);

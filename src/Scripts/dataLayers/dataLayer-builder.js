@@ -86,7 +86,6 @@
     var productListTotal = window.productList.length;
 
     if(products) {
-      console.log('teste');
       for(var i = 0, max = products.length ; i < max ; i += 1) {
         product = products[i];
         if(! product.classList.contains('ga-tracked')) {
@@ -341,8 +340,9 @@
       }
     });
   }
-
-  window.pushDataLayer(false);
+  if(! document.location.hostname.indexOf('busca') >= 0) {
+    window.pushDataLayer(false);
+  }
   window.onload  = (function() {
     setPromos();
     setProducts(true);

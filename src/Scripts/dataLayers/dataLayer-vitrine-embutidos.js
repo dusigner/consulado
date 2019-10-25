@@ -32,6 +32,7 @@ Nitro.module('dataLayer-vitrine-embutidos', function() {
 		});
 	};
 
+	//Esse so pega os que estão no painel da VTEX
 	this.pesquisaRelacionada = () => {
 		$('.relacionado-list ul li a').click(e => {
 			pushDataLayer(

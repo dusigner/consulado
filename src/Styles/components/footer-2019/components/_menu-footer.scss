@@ -4,19 +4,18 @@
 	background-color: #424340;
 
 	&-list {
-		@include breakpoint('small', 'min') { align-items: center; }
+		@include breakpoint('small', 'max') { justify-content: center; }
 		display: flex;
 		flex-wrap: wrap;
 		min-height: 40px;
+		text-align: center;
 
 		&__item {
-			@include breakpoint('small', 'max') {
-				margin: 0;
-				width: 50%;
-			}
+			@include breakpoint('small', 'max') { margin: 0; }
 		}
 
 		&__link {
+			@include breakpoint('small', 'max') { margin: 0 10px; }
 			@include rfs(12);
 			color: #fff;
 			display: block;
