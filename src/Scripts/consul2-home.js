@@ -29,13 +29,8 @@ Nitro.controller(
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'shelfCategoryHome',
-<<<<<<< HEAD
 		'static-banner', /*'counter', 'datalayer_track'*/
 		'interested-shelf'
-=======
-		/* 'static-banner' */
-		/*'counter', 'datalayer_track'*/
->>>>>>> 68a4e118c5e4ed7827cc8ff78853d46ad2b0c5c9
 	],
 
 	function(chaordic) {
