@@ -826,6 +826,7 @@ $(document).on('ready', function() {
 
   window.updating_checkout_list = false;
   window.checkout_watcher       = false;
+  window.last_step              = document.location.hash;
 
   function getCookie(cname) {
     var name = cname + "=";
@@ -1067,7 +1068,7 @@ $(document).on('ready', function() {
       'page': {
         'type': 'checkout',
         'currencyCode': "BRL",
-        'impressions': window.productList
+        'impressions': step == 'checkout_step_1_cart' ? window.productList : ''
       },
       'checkout': {
         'step': step_number,
@@ -1090,7 +1091,10 @@ $(document).on('ready', function() {
     window.checkout_watcher = true;
     window.onpopstate = function(event) {
       setTimeout(function() {
-        window.pushDataLayer();
+        if(window.last_step != document.location.hash) {
+          window.last_step = document.location.hash;
+          window.pushDataLayer();
+        }
       }, 500);
     }
   }
@@ -1175,7 +1179,7 @@ $(document).on('ready', function() {
     var initdataLayerSettings = setInterval(function() {
       if(typeof vtexjs != 'undefined' && vtexjs.checkout && vtexjs.checkout.orderForm) {
         clearInterval(initdataLayerSettings);
-        if(! document.location.hash.indexOf('cart') >= 0) {
+        if(! (document.location.hash.indexOf('cart') >= 0)) {
           window.pushDataLayer();
         }
       }
@@ -1187,7 +1191,9 @@ $(document).on('ready', function() {
   window.onload  = (function() {
     init();
   });
+
 })(window, document);
+
 
 
 
