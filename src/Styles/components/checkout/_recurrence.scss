@@ -10,13 +10,13 @@
 }
 
 .add-item-attachment-container {
-	@include breakpoint ('small', 'max') {
+	@include breakpoint (490px, 'max') {
 		border-top: 1px solid $gray-l;
-		left: 60%;
+		// left: 60%;
 		padding-top: 20px;
 		position: relative;
-		transform: translateX(-50%);
-		width: 150%;
+		// transform: translateX(-50%);
+		width: 100%;
 
 		@include breakpoint('extra-small', 'max') {
 			position: inherit;
@@ -51,16 +51,16 @@
 	margin-top: 10px;
 
 	&__link {
-		@include breakpoint(small, 'max') {
+		@include breakpoint('small', 'max') {
 			@include font-size(13px);
 			font-weight: 500;
-			width: 90%;
 		}
-
+		@include breakpoint('extra-small', 'max') { width: 90%; }
 		@include font-size(12px);
-		background: transparent;
+		background: #fff;
 		border: 1px solid $purple;
 		color: $purple;
+		font-weight: 600;
 		padding: 5px 15px;
 
 		&:hover,
