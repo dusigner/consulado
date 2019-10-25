@@ -102,6 +102,7 @@ body {
 			}
 
 			.categoryLink {
+				@include breakpoint('small', 'max') { text-align: left; }
 				@include rfs(12);
 				color: $green;
 				display: inline-block;
