@@ -27,6 +27,7 @@
 @import 'helpers/helpers';
 @import 'helpers/conditional';
 @import 'helpers/slick';
+@import 'helpers/rfs';
 
 // Base styles
 @import 'base/main';
@@ -35,6 +36,7 @@
 @import 'components/buttons';
 @import 'components/modal';
 @import 'components/modalLogin';
+@import 'components/checkout/modal-unavailable-modal';
 @import 'components/checkout/modal-info-pj';
 @import 'components/chaordic-shelf';
 @import 'components/produto/selos';
@@ -657,3 +659,52 @@ body.body-order-form {
 // .ChangeNumberOfPayments {
 // 	display: none !important;
 // }
+
+.item-unavailable {
+	margin-top: 0!important;
+	span[data-bind = 'visible: unavailableForDelivery'] {
+		font-size: 0;
+
+		&:after {
+			content: 'Não temos entrega disponível para este produto no CEP informado.';
+			display: inline-block;
+			font-size: .8rem;
+			padding-left: 20px;
+			position: relative;
+			top: 3px;
+
+			@include breakpoint ('small', 'max') {
+				padding-left: 15px;
+				position: relative;
+				top: 2px;
+			}
+		}
+	}
+
+	.icon-warning-sign {
+
+		display: inline-block;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+
+	}
+
+	td {
+		padding-left: 5px!important;
+
+		@include breakpoint ('small', 'max') {
+			text-align: left;
+		}
+	}
+
+	.icon-warning-message {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+}
+
+.product-item.unavailable {
+	margin-bottom: 0!important;
+}

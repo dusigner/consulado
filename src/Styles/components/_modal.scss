@@ -1,10 +1,12 @@
 @charset 'UTF-8';
 
+@import './../helpers/rfs';
+
 .vtex-modal {
-	//transition: .4s opacity ease;
-	background: rgba(0, 0, 0, .5);
+	background: rgba(0, 0, 0, .7);
 	bottom: 0;
 	display: none;
+	font-family: 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	left: 0;
 	overflow-y: auto;
 	position: fixed;
@@ -22,29 +24,31 @@
 
 	.modal-holder {
 		background-color: #fff;
-		border-radius: 6px;
+		border-bottom: 2px solid $green;
+		box-shadow: 0 5px 6px rgba(0, 0, 0, .16);
 		display: inline-block;
-		font-weight: 300;
 		margin: 0 auto;
-		max-width: 400px; //TROCAR P/ CADA MODAL
+		max-width: 400px;
+		padding: 2.5em;
 		text-align: left;
 		vertical-align: middle;
 		width: 90%;
 	}
 
 	.modal-header {
-		font-size: 32px;
-		padding: .5em;
+		@include rfs(20px);
+		color: #5B5B5B;
+		font-weight: bold;
+		line-height: 24px;
 		position: relative;
-		text-align: center;
+		text-align: left;
 
 		.close {
-			//color: $txt-gray-l;
-			@include responsiveFont(22, 16, true);
+			@include rfs(22px);
 			background-color: #fff;
 			border: 0;
 			border-radius: 50%;
-			color: #f47921; /* Mudança de cor para teste*/
+			color: #5B5B5B;
 			height: 34px;
 			line-height: .7;
 			outline: 0;
@@ -55,9 +59,7 @@
 			top: -17px;
 			width: 34px;
 
-			&:before {
-				@include icon-get('close');
-			}
+			&:before { @include icon-get('close'); }
 
 			@include breakpoint(small, 'max') {
 				right: -14px;
@@ -66,9 +68,6 @@
 		}
 	}
 
-	.modal-content {
-		/*padding: 1em;*/
-		text-align: center;
-	}
+	.modal-content { text-align: center; }
 }
 

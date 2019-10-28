@@ -10,12 +10,12 @@ $consul-primary: #9aca3c;
 
 #vtex-modal-custom-login {
 
-    .modal-holder {
+	.modal-holder {
 		margin-bottom: 20px;
 		margin-top: 20px;
 		max-width: 800px;
 
-        .modal-header {
+		.modal-header {
 			padding: 0;
 
 			.close {
@@ -30,28 +30,26 @@ $consul-primary: #9aca3c;
 			}
 		}
 
-        .mode-custom-login--header {
+		.mode-custom-login--header {
 
-            .modal-custom-login--title {
-                color: $consul-primary;
-                margin-bottom: 0;
+			.modal-custom-login--title {
+				color: $consul-primary;
+				margin-bottom: 0;
 			}
 
-            .modal-custom-login--subtitle1 {
-                font-size: 15px;
-                font-weight: 700;
-                margin: 0;
+			.modal-custom-login--subtitle1 {
+				font-size: 15px;
+				font-weight: 700;
+				margin: 0;
 			}
 
-            .modal-custom-login--subtitle2 {
-                font-weight: 400;
-                margin-top: 10px;
-            }
+			.modal-custom-login--subtitle2 {
+				font-weight: 400;
+				margin-top: 10px;
+			}
 		}
 
 		.modal-custom-login--body {
-			padding: 0 30px 30px 30px;
-
 			.modal-custom-login--errorBox {
 				color: #ff0000;
 				font-weight: 300;
@@ -241,7 +239,7 @@ $consul-primary: #9aca3c;
 				}
 			}
 		}
-    }
+	}
 }
 
 /* MISCELLANOUS */
@@ -381,9 +379,9 @@ input[type='submit'].custom-login-btn {
 
 					.modal-custom-login--forms {
 						input[type='submit'] {
-    						border-radius: 50px;
-    						padding: 10px 15px;
-    						width: 100%;
+							border-radius: 50px;
+							padding: 10px 15px;
+							width: 100%;
 						}
 					}
 
