@@ -1,42 +1,118 @@
 @charset 'UTF-8';
 
 //Imports
-@import 'helpers/variables';
-@import 'helpers/mixins';
+@import '../helpers/_variables';
+@import '../helpers/_mixins';
+
+$breakpoint-map: (
+	'small' 	: 	767px,
+	'medium'    :	980px,
+);
 
 //Style Banner Combos Blackfriday
 
 .banner-combos {
-	background: linear-gradient(to bottom, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
-	// background: -moz-linear-gradient(top, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
-	// background: -ms-linear-gradient(top, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
-	// background: -o-linear-gradient(top, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
-	// background: rgba(34, 34, 34, 1);
-	// background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(34, 34, 34, 1)), color-stop(100%, rgba(13, 12, 12, 1)));
-	// background: -webkit-linear-gradient(top, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
-	display: block;
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#0d0c0c', GradientType=0 );
-	height: 300px;
-    margin: 0 auto;
+	&:after {
+		background: -webkit-linear-gradient(top, rgba(34, 34, 34, 1) 0%, rgba(13, 12, 12, 1) 100%);
+		content: '';
+		display: block;
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#0d0c0c', GradientType=0 );
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 1;
+	}
+	&:before {
+		@include breakpoint('small', 'max') {
+			background-image: url('/arquivos/banner-combo-bf-consul-mobile.png');
+			background-position: left bottom;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		@include breakpoint('small', 'min') {
+			background-image: url('/arquivos/banner-combo-bf-consul-desk.png');
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+		}
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+	}
+	& .container {
+		& .row {
+			align-items: center;
+			margin: 0;
+		}
+		margin: 0 auto;
+		padding: 0;
+		position: relative;
+		z-index: 3;
+	}
+	margin: 0 auto;
+	min-height: 280px;
+	padding: 32px 0 30px;
+	position: relative;
 	width: 100%;
+	@include breakpoint('small', 'max') {
+		padding: 10px 0 40px;
+	}
+
 	&__title {
-		@include rfs(30);
+		@include rfs(42);
 		color: #fff;
-		font-weight: 500;
+		font-weight: 600;
+		line-height: 40px;
+		@include breakpoint('small', 'max') {
+			line-height: 24px;
+			margin-bottom: 0;
+		}
+		text-align: right;
 	}
 	&__subtitle {
-		@include rfs(30);
+		@include rfs(20);
 		color: #fff;
-		font-weight: 500;
+		font-weight: 600;
+		@include breakpoint('small', 'max') {
+			text-align: right;
+		}
+		span {
+			@include rfs(40);
+			color: #9aca3c;
+		}
 	}
 	p {
 		@include rfs(20);
-		color: #ccc;
+		color: #9aca3c;
 		font-weight: 500;
+		line-height: 22px;
+		text-align: right;
 	}
 	& .btn-outline {
-		border: 1px solid #ccc;
+		@include rfs(14);
+		border: 2px solid #fff;
+		border-radius: 10em;
+		color: #fff;
 		display: block;
+		font-weight: 500;
 		margin: 0 auto;
+		padding: 6px 20px;
+		text-align: center;
+		transition: background-color, border-color, 0.3s ease;
+		width: 130px;
+		&:hover {
+			background-color: #9aca3c;
+			border-color: transparent;
+		}
+		@include breakpoint('small', 'max') {
+			background-color: #9aca3c;
+			border-width: 0;
+			float: right;
+		}
 	}
 }
