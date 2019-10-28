@@ -57,6 +57,7 @@ Nitro.module('instagram-stories', function() {
 	this.closeStories = () => {
 		$stories.find(`.stories-card__marker-${activeStorieId}`).hide();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).hide();
+		$stories.find('.stories-card__error').remove();
 		$storiesCard.removeClass('is--open');
 	};
 
@@ -114,6 +115,11 @@ Nitro.module('instagram-stories', function() {
 		const $cardContainer = $(`<ul class="stories-card-list" data-collection-id="${collectionId}"></ul>`);
 		const products = productData;
 
+		if (products.length === 0) {
+			self.errorMessage();
+			return;
+		}
+
 		products.map(product => {
 			const currentProduct = product.productReference;
 			let previewsSku = '';
@@ -152,7 +158,7 @@ Nitro.module('instagram-stories', function() {
 			hasDiscount,
 			newListPrice,
 			newPrice
-		}
+		};
 	};
 
 	// Template do stories
