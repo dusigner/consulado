@@ -30,10 +30,7 @@
 @import 'components/chaordic-shelf';
 @import 'components/mod-prateleira-v2';
 
-
-
 @import 'pages/product';
-
 
 @import 'components/produto/_upsell-prod';
 @import 'components/produto/_frete';
@@ -52,3 +49,18 @@
 @import 'components/produto/special-content';
 @import 'components/produto/recurrence-modal';
 // @import 'components/produto/quiz-install';
+
+.trustvox-widget-rating .ts-shelf-container,
+.trustvox-widget-rating .trustvox-shelf-container {
+	display: inline-block;
+}
+.trustvox-widget-rating span.rating-click-here {
+	color: #DAA81D;
+	display: inline-block;
+	font-size: 12px;
+	position: relative;
+	top: -3px;
+}
+.trustvox-widget-rating:hover span.rating-click-here {
+	text-decoration: underline;
+}
