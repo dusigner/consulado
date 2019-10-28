@@ -49,6 +49,7 @@
 			background-color: #2A2A2A;
 			display: block;
 			height: 70px;
+			margin: 0;
 			padding: 10px 90px 10px 45px;
 			width: 100%;
 		}
@@ -59,5 +60,7 @@
 		@include rfs(12px);
 		color: #9ACA3C;
 		font-weight: 500;
+
+		&:hover { text-decoration: underline; }
 	}
 }
