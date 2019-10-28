@@ -3,11 +3,11 @@
 
 require('modules/banners-controller');
 require('modules/slider-banner');
+require('components/instagram-stories');
 
 //require('custom/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
-// require('components/instagram-stories');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');
@@ -24,8 +24,8 @@ Nitro.controller(
 	[
 		'chaordic',
 		'slider-banner',
-		'lead-newsletter',
 		'instagram-stories',
+		'lead-newsletter',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
