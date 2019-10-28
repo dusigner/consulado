@@ -37,7 +37,7 @@ body {
 		}
 
 		.prateleira-tabs__tabs {
-			@include breakpoint ('extra-small', 'max') {
+			@include breakpoint (500px, 'max') {
 				margin: 0 auto 12px;
 				width: 310px;
 			}
@@ -65,7 +65,7 @@ body {
 			}
 
 			.discount-item {
-				@include breakpoint ('extra-small', 'max') { width: 146px; }
+				@include breakpoint (500px, 'max') { width: 146px; }
 				@include rfs(16);
 				border: 1px solid $border;
 				border-radius: 4px;
@@ -145,10 +145,10 @@ body {
 	.vitrine-ofertas-interesses {
 		.prateleira-tabs__tabs {
 			.fifthItem {
-				@include breakpoint ('extra-small', 'max') { width: 304px; }
+				@include breakpoint (500px, 'max') { width: 304px; }
 
 				.discount-item {
-					@include breakpoint ('extra-small', 'max') {
+					@include breakpoint (500px, 'max') {
 						width: 305px;
 					}
 				}
