@@ -88,6 +88,9 @@ Nitro.module('interested-shelf', function() {
 
 		if (tabElement.length === 5) {
 			$('.antecipada').addClass('fifthItem');
+			$('.frete').addClass('fourthItem');
+			$('.vinte, .quarenta, .vista').addClass('minorButton');
+
 		}
 	};
 

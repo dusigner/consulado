@@ -37,7 +37,7 @@ body {
 		}
 
 		.prateleira-tabs__tabs {
-			@include breakpoint (500px, 'max') {
+			@include breakpoint ('small', 'max') {
 				margin: 0 auto 12px;
 				width: 310px;
 			}
@@ -50,22 +50,10 @@ body {
 
 			li {
 				margin: 0 6px 12px;
-
-				&:nth-child(odd) {
-					@include breakpoint(500px, 'max') { margin-left: 0; }
-				}
-
-				&:nth-child(even) {
-					@include breakpoint(500px, 'max') { margin-right: 0; }
-				}
-
-				&:nth-child(5) {
-					@include breakpoint(500px, 'max') { margin: 0 0 12px; }
-				}
 			}
 
 			.discount-item {
-				@include breakpoint (500px, 'max') { width: 146px; }
+				@include breakpoint ('small', 'max') { width: 146px; }
 				@include rfs(16);
 				border: 1px solid $border;
 				border-radius: 4px;
@@ -84,8 +72,8 @@ body {
 			}
 
 			span {
+				@include breakpoint ('small', 'min') { width: 120px; }
 				display: inline-block;
-				width: 120px;
 			}
 		}
 
@@ -144,12 +132,58 @@ body {
 
 	.vitrine-ofertas-interesses {
 		.prateleira-tabs__tabs {
-			.fifthItem {
-				@include breakpoint (500px, 'max') { width: 304px; }
+
+			.fifthItem,
+			.fourthItem {
+				@include breakpoint ('small', 'max') { width: 149px; }
 
 				.discount-item {
-					@include breakpoint (500px, 'max') {
-						width: 305px;
+					@include breakpoint ('small', 'max') {
+						width: 100%
+					}
+				}
+			}
+
+			.fourthItem {
+				@include breakpoint ('small', 'max') { order: 5; }
+			}
+
+			.minorButton {
+				@include breakpoint ('small', 'max') { width: 95px }
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%;
+					}
+				}
+			}
+
+			li {
+				&.vista,
+				&.antecipada {
+					@include breakpoint ('small', 'max') { margin-left: 0 };
+				}
+
+				&.frete,
+				&.quarenta {
+					@include breakpoint ('small', 'max') { margin-right: 0 };
+				}
+			}
+		}
+	}
+
+	.vitrine-ofertas-alavancas {
+		.vitrines {
+			.prateleira-slider {
+				.prateleira-tabs__tabs {
+					li {
+						&:nth-child(odd) {
+							@include breakpoint('small', 'max') { margin-left: 0; }
+						}
+
+						&:nth-child(even) {
+							@include breakpoint('small', 'max') { margin-right: 0; }
+						}
 					}
 				}
 			}
