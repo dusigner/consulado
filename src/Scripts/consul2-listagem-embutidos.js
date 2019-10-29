@@ -15,7 +15,7 @@ Nitro.controller('listagem-embutidos', ['gallery','dataLayer-vitrine-embutidos']
 	// Init
 	listEmbutidos.init = () => {
 		DestaqueEmbutidos.renderDestaqueEmbutidos(gallery);
-		DestaqueEmbutidos.addLinkTesteAB();
+		// DestaqueEmbutidos.addLinkTesteAB();
 		CompreJunto.compreJunto();
 	};
 
