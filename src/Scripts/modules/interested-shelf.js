@@ -125,6 +125,13 @@ Nitro.module('interested-shelf', function() {
 		});
 	};
 
+	this.checkDynamicItems = shelf => {
+		const tabs = shelf.find('.prateleira-tabs__tabs');
+		if (tabs.find('li').length === 1) {
+			tabs.addClass('hide');
+		}
+	};
+
 	this.init = () => {
 		const interestingItems = $('.vitrine-ofertas-interesses'),
 			dynamicItems = $('.vitrine-ofertas-alavancas');
@@ -142,6 +149,7 @@ Nitro.module('interested-shelf', function() {
 		// Cria alavanca dinamica
 		if (this.check(dynamicItems)) {
 			this.createTabList(dynamicItems);
+			this.checkDynamicItems(dynamicItems);
 			this.createShelf(dynamicItems);
 			this.prepareShelf(dynamicItems);
 		} else {
