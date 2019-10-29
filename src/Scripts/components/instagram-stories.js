@@ -28,6 +28,7 @@ Nitro.module('instagram-stories', function() {
 
 			self.openStories();
 			self.updateCardTitle(cardTitle);
+			self.startSlick(searchedCollection);
 
 			// Se a coleção já foi pesquisada, evita que uma outra chamada à API seja feita.
 			if (searchedCollection.length > 0) {
@@ -94,6 +95,18 @@ Nitro.module('instagram-stories', function() {
 			arrows: true,
 			dots: true,
 			dotsClass: `stories-card__marker-${activeStorieId}`,
+			responsive: [
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: true,
+						dots: true,
+						infinite: false,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+					}
+				}
+			]
 		});
 	};
 
@@ -178,7 +191,9 @@ Nitro.module('instagram-stories', function() {
 		const storieCardTemplate = `
 			<li class="stories-card-list__item ${AvailableQuantity ? 'available' : ''}">
 				<div class="stories-card-list__image">
-					${newImage}
+					<a href="${link}" title="${productTitle}">
+						${newImage}
+					</a>
 				</div>
 
 				<h2 class="stories-card-list__title">
