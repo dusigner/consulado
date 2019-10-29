@@ -61,11 +61,7 @@ const DestaqueEmbutidos = {
 			const skuData = $(productLink)
 					.find('.product-sku_radio:checked')
 					.data('sku-value'),
-				skuButton = productLink.find('.product-buy'),
-				skuName = $(productLink)
-					.find('.product-sku_radio:checked')
-					.parent()
-					.data('title');
+				skuButton = productLink.find('.product-buy');
 
 			skuButton
 				.unbind()
@@ -76,11 +72,6 @@ const DestaqueEmbutidos = {
 						window.jssalesChannel ? window.jssalesChannel : 3
 					}`
 				);
-
-			$(window).trigger('cervejeira.skuChanged', {
-				skuData: skuData,
-				skuName: skuName
-			});
 		};
 
 		if (productSkuSelector.children().length === 0) {
