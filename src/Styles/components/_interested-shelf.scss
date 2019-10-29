@@ -50,6 +50,14 @@ body {
 
 			li {
 				margin: 0 6px 12px;
+
+				&:nth-child(odd) {
+					@include breakpoint('small', 'max') { margin-left: 0; }
+				}
+
+				&:nth-child(even) {
+					@include breakpoint('small', 'max') { margin-right: 0; }
+				}
 			}
 
 			.discount-item {
@@ -158,33 +166,28 @@ body {
 				}
 			}
 
-			li {
+			.fifthItem,
+			.minorButton,
+			.fourthItem {
+
 				&.vista,
 				&.antecipada {
-					@include breakpoint ('small', 'max') { margin-left: 0 };
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 6px;
+					}
 				}
 
 				&.frete,
 				&.quarenta {
-					@include breakpoint ('small', 'max') { margin-right: 0 };
-				}
-			}
-		}
-	}
-
-	.vitrine-ofertas-alavancas {
-		.vitrines {
-			.prateleira-slider {
-				.prateleira-tabs__tabs {
-					li {
-						&:nth-child(odd) {
-							@include breakpoint('small', 'max') { margin-left: 0; }
-						}
-
-						&:nth-child(even) {
-							@include breakpoint('small', 'max') { margin-right: 0; }
-						}
+					@include breakpoint ('small', 'max') {
+						margin-left: 6px;
+						margin-right: 0;
 					}
+				}
+
+				&.vinte {
+					@include breakpoint ('small', 'max') { margin-left: 6px; }
 				}
 			}
 		}
