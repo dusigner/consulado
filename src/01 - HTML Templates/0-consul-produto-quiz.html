@@ -40,6 +40,16 @@
 						<span class="reference"><vtex.cmc:productReference/></span>
 						<span class="productSku hide"><vtex.cmc:skuReference /></span>
 					</h1>
+
+					<!-- Trustvox Estrelas -->
+					<!-- <div class="trustvox-rating"> -->
+					<div class="trustvox-rating" style="display:none !important;">
+						<a class="trustvox-fluid-jump trustvox-widget-rating" href="#trustvox-reviews" title="Pergunte e veja opiniões de quem já comprou">
+							<div class="trustvox-shelf-container" data-trustvox-product-code-js="skuJson.productId" data-trustvox-should-skip-filter="true" data-trustvox-display-rate-schema="true"></div>
+							<span class="rating-click-here">Clique e veja!</span>
+						</a>
+					</div>
+					<!-- /Trustvox -->
 				</div>
 				<!-- Box-right -->
 
@@ -531,6 +541,14 @@
 	<div data-chaordic="bottom"></div>
 	<!-- /Chaordic BOTTOM -->
 
+	<!-- Trustvox -->
+	<!-- <div class="trustvox-container"> -->
+	<div class="trustvox-container" style="display:none !important;">
+		<h3 id="trustvox-reviews">Pergunte e veja opiniões de quem já comprou</h3>
+		<div id="_trustvox_widget"></div>
+	</div>
+	<!-- /Trustvox -->
+
 	<!-- Go to www.addthis.com/dashboard to customize your tools -->
 	<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5801703bb1e23dde"></script> -->
 	<!-- Modal custom Share -->
@@ -573,5 +591,8 @@
 	<!-- /Footer 2019 -->
 
 	<script src="<!-- @echo assetsPath -->/consul2-produto.min.js?v=<!-- @echo package.version -->"></script>
+
+	<script type="text/javascript" async="true" src="//static.trustvox.com.br/sincero/sincero.js"></script>
+	<script type="text/javascript" async="true" src="//rate.trustvox.com.br/widget.js"></script>
 </body>
 </html>

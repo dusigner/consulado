@@ -349,11 +349,6 @@ Nitro.controller(
 			}
 		}
 
-		if ($('.category-list ul').length === 0) {
-			$('.category-list').addClass('hide');
-			$('.filter-wrapper > p:first-of-type').addClass('hide');
-		}
-
 		$('.listagem-apoio').on('click', function(e) {
 			e.preventDefault();
 

@@ -312,3 +312,18 @@ div#modal-custom-share {
 .overflow-hidden {
 	overflow: hidden;
 }
+
+.cep-invalido {
+	.valor {
+		strong {
+			display: none;
+		}
+
+		&:after {
+			content: 'Não temos entrega disponível para este produto no CEP informado.';
+			display: block;
+			font-weight: 700;
+			width: 90%;
+		}
+	}
+}

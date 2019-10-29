@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+//colors blackfriday
+$gray-light: #3B3B3B;
+$gray-medium: #333333;
+$gray-dark: #2A2A2A;
+
+//Footer Envelopamento Blackfriday
+.footer-2019 {
+	& .canais-atendimento {
+		background-color: $gray-light;
+		& .section-atendimento,
+		& a,
+		&__section-title,
+		&__title {
+			color: #fff;
+		}
+	}
+	& .menu-footer {
+		background-color: $gray-medium;
+	}
+	& .footer-bottom {
+		background-color: $gray-dark;
+		border-top: none;
+	}
+}

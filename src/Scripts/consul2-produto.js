@@ -378,5 +378,26 @@ Nitro.controller(
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
+
+		//TrustVox Comentarios
+		window._trustvox =  [];
+		_trustvox.push(['_storeId', 3531 ]);
+		_trustvox.push(['_productId',  skuJson.productId]);
+		_trustvox.push(['_productName', skuJson.name]);
+		_trustvox.push(['_productPhotos', [skuJson.skus[0].image]]);
+
+		$('.trustvox-fluid-jump').on('click', function(event) {
+			event.preventDefault();
+			var offset = $($(this).attr('href')).offset().top;
+			$('html, body').animate({scrollTop:offset}, 500);
+		});
+
+		//TrustVox Estrelas
+		var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
+		_trustvox_shelf_rate.push(['_storeId', 3531 ]);
+		_trustvox_shelf_rate.push(['_productContainer', 'body']);
+		_trustvox_shelf_rate.push(['_watchSubtree', true]);
+
+
 	}
 );

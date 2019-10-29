@@ -69,7 +69,6 @@ $gray-c     : #595453;
 
 $txt-gray: $gray-d; //DARK
 $txt-gray-l: #b4afad; //LIGHT
-
 $default-color-green: #9ACA3C;
 $default-color-gray: #736C6B;
 $default-color-gray-dark: #534C4B;
@@ -89,9 +88,9 @@ $object-validate-color: #dc2828 !default;
 $object-dashed-gray   : #bababa !default;
 
 // Dropdown colors
-$dropdown-bg-color    : #ffffff !default;
+$dropdown-bg-color:     #ffffff !default;
 $dropdown-border-color: #f4f2f1 !default;
-$dropdown-hover-color : #f3f8f8 !default;
+$dropdown-hover-color:  #f3f8f8 !default;
 $dropdown-header-color: #aaaaaa !default;
 
 // Button font color
@@ -217,6 +216,24 @@ $icons: (
 	'icon-loja-oficial'           : '\e922',
 	'icon-pagamento-2cartoes'     : '\e923',
 	'icon-parcelamento'           : '\e924',
+	'sparkles'                    : '\e925',
+	'lupa'                        : '\e926',
+	'bottom-arrow'                : '\e927',
+	'top-arrow'                   : '\e928',
+	'left-arrow'                  : '\e929',
+	'right-arrow'                 : '\e92a',
+	'redes-facebook'              : '\e92b',
+	'redes-twitter'               : '\e92c',
+	'redes-instagram'             : '\e92d',
+	'redes-youtube'               : '\e92e',
+	'pagamentos-american-express' : '\e92f',
+	'pagamentos-paypal'           : '\e930',
+	'pagementos-visa'             : '\e931',
+	'pagamentos-elo'              : '\e932',
+	'pagamentos-diners'           : '\e933',
+	'pagamentos-master-card'      : '\e934',
+	'pagamentos-mercado-pago'     : '\e935',
+	'pagamentos-boleto'           : '\e946',
 );
 
 
@@ -273,7 +290,6 @@ $use-com-foot-news        : true !default;
 
 // Helpers
 // $use-conditional: true !default;
-$use-helper          : true !default;
 $use-print           : true !default;
 $debug-mode          : false !default;
 $use-responsive-debug: false !default;
