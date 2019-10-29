@@ -50,6 +50,12 @@
 @import 'components/produto/recurrence-modal';
 // @import 'components/produto/quiz-install';
 
+
+#trustvox-reviews {
+	@include responsiveFont(25);
+	margin: 50px 0;
+	text-align: center;
+}
 .trustvox-widget-rating .ts-shelf-container,
 .trustvox-widget-rating .trustvox-shelf-container {
 	display: inline-block;
