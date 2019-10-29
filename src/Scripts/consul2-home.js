@@ -33,6 +33,29 @@ Nitro.controller(
 		/* 'static-banner' */
 		/*'counter', 'datalayer_track'*/
 	],
+	$('.banner-areas').slick({
+		infinite: false,
+		slidesToShow: 4,
+		slidesToScroll: 3,
+		responsive: [
+			{
+				breakpoint: 990,
+				settings: {
+					dots: true,
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					dots: true,
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	}),
 	function(chaordic) {
 		var self = this,
 			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
