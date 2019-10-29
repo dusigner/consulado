@@ -26,7 +26,7 @@ body.produto {
 		h1.lead {
 			@include breakpoint('small', 'max') { margin-bottom: 10px; }
 			display: inline-block;
-			margin-bottom: 25px;
+			margin-bottom: 0;
 		}
 
 		h2.title,
