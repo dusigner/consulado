@@ -1,0 +1,114 @@
+@charset 'UTF-8';
+
+.formas-pagamento-container {
+	background-color: #ccc;
+	height: 39px;
+	margin-top: 25px;
+	overflow: hidden;
+	position: relative;
+
+	// Active state
+	&.is--active { overflow: inherit; }
+}
+
+.valores-parcelas {
+	background-color: #fff;
+
+	// Parent active state
+	.is--active & {
+		border: 1px solid #f1f0f0;
+		border-bottom: 2px solid $green;
+		box-shadow: 0 5px 6px rgba(0, 0, 0, .16);
+		left: 0;
+		opacity: 1;
+		position: absolute;
+		top: -1px;
+		width: 100%;
+		z-index: 10;
+	}
+
+	.titulo-parcelamento {
+		@include rfs(12px);
+		border-top: 1px solid #E3E1E1;
+		color: #736C6B;
+		cursor: pointer;
+		display: block;
+		font-weight: 500;
+		padding: 10px 10px 10px 25px;
+		position: relative;
+
+		// Parent active state
+		.is--active & {
+			background-color: #FCFCFC;
+			border-bottom: 1px solid #F1F0F0;
+			padding: 10px 35px;
+		}
+
+		&:before {
+			@include icon-get('bottom-arrow');
+			@include rfs(8px);
+			left: 0;
+			margin-right: 12px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: transform .3s;
+
+			.is--active & { transform: translate(10px, -50%) rotate(-180deg); }
+		}
+	}
+
+	.other-payment-method {
+		&-ul {
+			@include rfs(14px);
+			font-weight: normal;
+			margin: 1em 15px 1em 35px;
+			max-height: 200px;
+			overflow: auto;
+			padding-right: 15px;
+			position: relative;
+			transition: max-height .5s;
+
+			&::-webkit-scrollbar {
+				position: relative;
+				width: 4px;
+			}
+
+			&::-webkit-scrollbar-track { background: #F1F0F0; }
+
+			&::-webkit-scrollbar-thumb {
+				background: #BFBEBE;
+				width: 4px;
+			}
+
+			li {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 6px;
+				text-transform: capitalize;
+
+				&.vista { display: none; }
+
+				span:not(.other-payment-method-intereset-no) { font-weight: 500; }
+
+				span:not(.other-payment-method-intereset-no):not(.valor-total) { width: 35px; }
+
+				.other-payment-method-intereset-no {
+					width: 80px;
+				}
+
+				strong { font-weight: normal; }
+			}
+		}
+	}
+
+	p {
+		@include rfs(12px);
+		display: block;
+		margin: 1em 35px;
+		max-width: 290px;
+	}
+
+	.see-other-payment-method-link { display: none; }
+}
+

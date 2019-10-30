@@ -33,13 +33,15 @@
 
 
 @import 'pages/product';
+@import 'components/produto/prod-title';
+@import 'components/produto/prod-info';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/prod-info-parcelas-v2';
 
 // @import 'components/produto/_upsell-prod';
 // @import 'components/produto/_frete';
 // @import 'components/produto/gallery';
-// @import 'components/produto/prod-title';
-// @import 'components/produto/prod-info';
-// @import 'components/produto/produtos-adicionais';
+@import 'components/produto/produtos-adicionais';
 
 @import 'components/produto/selos';
 

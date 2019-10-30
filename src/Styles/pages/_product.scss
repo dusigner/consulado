@@ -19,16 +19,6 @@ body.produto {
 			}
 		}
 
-		h1.lead,
-		h2.title,
-		.item h3 { @include font-size(30px); }
-
-		h1.lead {
-			@include breakpoint('small', 'max') { margin-bottom: 10px; }
-			display: inline-block;
-			margin-bottom: 25px;
-		}
-
 		h2.title,
 		.item h3 { font-weight: 300; }
 
@@ -56,9 +46,7 @@ body.produto {
 
 	&.google-pla {
 		.prod-preco {
-			.descricao-preco {
-				color: $txt-gray-l;
-			}
+			.descricao-preco { color: $txt-gray-l; }
 
 			em.valor-dividido {
 				@include font-size(21px);
@@ -87,9 +75,7 @@ body.produto {
 					color: $green !important;
 					display: block;
 
-					.gray {
-						color: $txt-gray;
-					}
+					.gray { color: $txt-gray; }
 				}
 			}
 		}
@@ -156,7 +142,6 @@ body.produto-indisponivel {
 	#BuyButton .buy-button { display: none; }
 }
 
-
 .social {
 	a {
 		display: inline-block;
@@ -184,7 +169,6 @@ body.produto-indisponivel {
 		background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c;
 		display: none;
 	}
-
 }
 
 .social:after {
@@ -223,9 +207,7 @@ div#modal-custom-share {
 	}
 
 	#formshare.sucesso {
-		.enviadocomsucesso {
-			display: block;
-		}
+		.enviadocomsucesso { display: block; }
 	}
 
 	.enviadocomsucesso {
@@ -235,7 +217,6 @@ div#modal-custom-share {
 		font-weight: bold;
 		padding-bottom: 10px;
 	}
-
 }
 
 
@@ -303,21 +284,15 @@ div#modal-custom-share {
 			text-decoration: none;
 		}
 
-		i {
-			display: none;
-		}
+		i { display: none; }
 	}
 }
 
-.overflow-hidden {
-	overflow: hidden;
-}
+.overflow-hidden { overflow: hidden; }
 
 .cep-invalido {
 	.valor {
-		strong {
-			display: none;
-		}
+		strong { display: none; }
 
 		&:after {
 			content: 'Não temos entrega disponível para este produto no CEP informado.';
