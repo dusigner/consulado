@@ -1,9 +1,10 @@
-$button-color: #404040;
-$border: #E3E1E1;
-$txt: #5B5B5B;
-$bg-color: #FAF9F9;
+$button-color: #2A2A2A;
+$border: #404040;
+$txt: #fff;
+$bg-color: #212121;
 $txt-light: #736C6B;
 $txt-dark: #403C3B;
+$green: #9ACA3C;
 
 body {
 	.vitrine-ofertas-interesses,
@@ -11,8 +12,13 @@ body {
 		background-color: $bg-color;
 		padding-top: 38px;
 
+		.box-produto {
+			border: 1px solid #F1F0F0;
+		}
+
 		.interesses-title {
 			h4 {
+				@include breakpoint ('small', 'max') { text-align: left ;}
 				@include rfs(28);
 				color: $txt;
 				font-weight: bold;
@@ -21,8 +27,9 @@ body {
 			}
 
 			span {
+				@include breakpoint ('small', 'max') { text-align: left ;}
 				@include rfs(14);
-				color: $txt-light;
+				color: $txt;
 				display: block;
 				margin: 0;
 				text-align: center;
@@ -30,6 +37,11 @@ body {
 		}
 
 		.prateleira-tabs__tabs {
+			@include breakpoint ('small', 'max') {
+				margin: 0 auto 12px;
+				width: 310px;
+			}
+
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -38,23 +50,39 @@ body {
 
 			li {
 				margin: 0 6px 12px;
+
+				&:nth-child(odd) {
+					@include breakpoint('small', 'max') { margin-left: 0; }
+				}
+
+				&:nth-child(even) {
+					@include breakpoint('small', 'max') { margin-right: 0; }
+				}
 			}
 
 			.discount-item {
-				@include rfs(12);
+				@include breakpoint ('small', 'max') { width: 146px; }
+				@include rfs(16);
 				border: 1px solid $border;
 				border-radius: 4px;
-				color: $button-color;
+				color: $txt;
 				display: inline-block;
-				height: 32px;
+				height: 38px;
 				line-height: 2.5;
 				text-align: center;
-				width: 152px;
+				width: 160px;
 
-				&.active {
-					background-color: $button-color;
+				&.active,
+				&:hover {
+					background-color: $green;
 					color: #fff;
+					font-weight: bold;
 				}
+			}
+
+			span {
+				@include breakpoint ('small', 'min') { width: 120px; }
+				display: inline-block;
 			}
 		}
 
@@ -82,6 +110,12 @@ body {
 					position: absolute;
 					z-index: -1;
 				}
+
+				ul.slick-slider {
+					@include breakpoint ('medium', 'max') {
+						padding: 0;
+					}
+				}
 			}
 
 			.link-shelf {
@@ -91,7 +125,7 @@ body {
 
 				a {
 					@include rfs(12);
-					color: $txt-dark;
+					color: $green;
 					font-weight: 500;
 
 					&:after {
@@ -106,65 +140,55 @@ body {
 	}
 
 	.vitrine-ofertas-interesses {
-		//@include breakpoint ('small', 'max') { display: none; }
 		.prateleira-tabs__tabs {
-			span {
-				display: inline-block;
-				width: 120px;
-			}
 
-			.discount-item {
-				position: relative;
+			.fifthItem,
+			.fourthItem {
+				@include breakpoint ('small', 'max') { width: 149px; }
 
-				&:before {
-					display: inline-block;
-					font-size: 16px;
-					left: 5px;
-					position: relative;
-					top: 50%;
-					transform: translateY(-75%);
-					width: 20px;
-				}
-
-				&:after {
-					border-left: 1px solid $border;
-					content: '';
-					display: inline-block;
-					height: 14px;
-					left: 37px;
-					position: absolute;
-					top: 50%;
-					transform: translateY(-50%);
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%
+					}
 				}
 			}
 
-			.frete {
-				&:before {
-					@include icon-get('frete-gratis');
+			.fourthItem {
+				@include breakpoint ('small', 'max') { order: 5; }
+			}
+
+			.minorButton {
+				@include breakpoint ('small', 'max') { width: 95px }
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%;
+					}
 				}
 			}
 
-			.vista {
-				&:before {
-					@include icon-get('desconto-a-vista');
-				}
-			}
+			.fifthItem,
+			.minorButton,
+			.fourthItem {
 
-			.vinte {
-				&:before {
-					@include icon-get('desconto-20off');
+				&.vista,
+				&.antecipada {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 6px;
+					}
 				}
-			}
 
-			.quarenta {
-				&:before {
-					@include icon-get('desconto-40off');
+				&.frete,
+				&.quarenta {
+					@include breakpoint ('small', 'max') {
+						margin-left: 6px;
+						margin-right: 0;
+					}
 				}
-			}
 
-			.antecipada {
-				&:before {
-					@include icon-get('desconto-antecipadas');
+				&.vinte {
+					@include breakpoint ('small', 'max') { margin-left: 6px; }
 				}
 			}
 		}

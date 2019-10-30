@@ -21,8 +21,11 @@
 @import 'helpers/mixins';
 @import 'helpers/rfs';
 
+// @import 'components/staticBanner';
+
 // Component styles
 
+@import 'components/interested-shelf';
 @import 'components/subCategoryList';
 @import 'components/instagram-stories';
 @import 'components/home/on-page-search';

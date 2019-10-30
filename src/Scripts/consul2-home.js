@@ -116,7 +116,7 @@ Nitro.controller(
 
 
 		var self = this,
-			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
+			$slider = $('section.vitrines:not(.vitrine-ofertas-interesses, .vitrine-ofertas-alavancas)').find('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		//chaordic.init('home');

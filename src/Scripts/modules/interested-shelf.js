@@ -39,6 +39,8 @@ Nitro.module('interested-shelf', function() {
 			shelves.eq($(this).attr('data-index')).removeClass('not-show');
 
 			shelves.eq($(this).attr('data-index')).find('ul').slick({
+				arrows: false,
+				dots: false,
 				infinite: false,
 				slidesToShow: 4,
 				slidesToScroll: 3,
@@ -46,16 +48,14 @@ Nitro.module('interested-shelf', function() {
 					{
 						breakpoint: 990,
 						settings: {
-							dots: true,
-							slidesToShow: 2,
+							slidesToShow: 2.2,
 							slidesToScroll: 2
 						}
 					},
 					{
 						breakpoint: 480,
 						settings: {
-							dots: true,
-							slidesToShow: 1,
+							slidesToShow: 1.4,
 							slidesToScroll: 1
 						}
 					}
@@ -79,12 +79,57 @@ Nitro.module('interested-shelf', function() {
 		$.each(tabElement, function (index, value) {
 			const tabText = $(value).text().toLowerCase();
 
-			(tabText.indexOf('frete') > -1) ? $(value).addClass('frete') : '';
-			(tabText.indexOf('vista') > -1) ? $(value).addClass('vista') : '';
-			(tabText.indexOf('20') > -1) ? $(value).addClass('vinte') : '';
-			(tabText.indexOf('40') > -1) ? $(value).addClass('quarenta') : '';
-			(tabText.indexOf('antecipada') > -1) ? $(value).addClass('antecipada') : '';
+			(tabText.indexOf('frete') > -1) ? $(value).parent().addClass('frete') : '';
+			(tabText.indexOf('vista') > -1) ? $(value).parent().addClass('vista') : '';
+			(tabText.indexOf('20') > -1) ? $(value).parent().addClass('vinte') : '';
+			(tabText.indexOf('40') > -1) ? $(value).parent().addClass('quarenta') : '';
+			(tabText.indexOf('antecipada') > -1) ? $(value).parent().addClass('antecipada') : '';
 		});
+
+		if (tabElement.length === 5) {
+			$('.antecipada').addClass('fifthItem');
+			$('.frete').addClass('fourthItem');
+			$('.vinte, .quarenta, .vista').addClass('minorButton');
+
+		}
+	};
+
+	this.createShelf = shelf => {
+		const shelves = shelf.find('.prateleira.default');
+
+		shelves.find('.slick-initialized').slick('unslick');
+
+		shelves.find('ul').slick({
+			adaptiveHeight: false,
+			arrows: false,
+			dots: false,
+			infinite: false,
+			slidesToShow: 4,
+			slidesToScroll: 3,
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						slidesToShow: 2.2,
+						slidesToScroll: 2
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1.4,
+						slidesToScroll: 1
+					}
+				}
+			]
+		});
+	};
+
+	this.checkDynamicItems = shelf => {
+		const tabs = shelf.find('.prateleira-tabs__tabs');
+		if (tabs.find('li').length === 1) {
+			tabs.addClass('hide');
+		}
 	};
 
 	this.init = () => {
@@ -94,6 +139,7 @@ Nitro.module('interested-shelf', function() {
 		// Cria e estiliza vitrine para alavancas predefinidas
 		if (this.check(interestingItems)) {
 			this.createTabList(interestingItems);
+			this.createShelf(interestingItems);
 			this.prepareShelf(interestingItems);
 			this.setIcons(interestingItems);
 		} else {
@@ -103,6 +149,8 @@ Nitro.module('interested-shelf', function() {
 		// Cria alavanca dinamica
 		if (this.check(dynamicItems)) {
 			this.createTabList(dynamicItems);
+			this.checkDynamicItems(dynamicItems);
+			this.createShelf(dynamicItems);
 			this.prepareShelf(dynamicItems);
 		} else {
 			dynamicItems.addClass('hide');
