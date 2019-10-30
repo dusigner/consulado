@@ -1,0 +1,109 @@
+
+// Seleção de SKU's
+// .prod-sku-selector {
+// 	@include breakpoint(small, 'min') { color: $txt-gray-l; }
+// 	margin: 30px 0;
+
+// 	.specification {
+// 		@include rfs(16);
+// 		background-color: #f4f2f1;
+// 		color: #736c6b;
+// 		display: block;
+// 		font-weight: bold;
+// 		padding: 10px 15px;
+// 		position: relative;
+// 		text-transform: lowercase;
+
+// 		&:before {
+// 			content: 'Selecione a';
+// 			display: inline-block;
+// 			padding-right: 4px;
+// 			text-transform: none;
+// 		}
+// 	}
+
+// 	.nomeSku,
+// 	.preco,
+// 	.buy-button,
+// 	.seller-data { display: none; }
+// }
+
+// .skuList {
+// 	display: inline-block;
+// 	padding: 10px 15px;
+// 	position: relative;
+
+// 	span { position: relative; }
+
+// 	label {
+// 		@include rfs(14px);
+// 		cursor: pointer;
+// 		display: inline;
+// 		font-weight: bold;
+// 		line-height: 14px;
+// 		margin-right: 40px;
+// 		padding: .5em 0 .5em 20px;
+// 		position: relative;
+// 		transition: color .2s ease;
+// 		vertical-align: middle;
+
+// 		&:last-child { margin: 0; }
+
+// 		&:before,
+// 		&:after {
+// 			border-radius: 50%;
+// 			content: '';
+// 			left: 0;
+// 			position: absolute;
+// 			top: 50%;
+// 			transform: translateY(-50%);
+// 		}
+
+// 		&:before {
+// 			@include square(14px);
+// 			background-color: #fff;
+// 			border: 1px solid #C1C1C1;
+// 			transition: border-color .2s ease;
+
+// 			@include breakpoint(small, 'min') { border-color: $txt-gray-l; }
+// 		}
+
+// 		&:after {
+// 			@include square(6px);
+// 			background-color: #5B5B5B;
+// 			left: 4px;
+// 			opacity: 0;
+// 			transition: opacity .2s ease;
+// 		}
+// 	}
+
+// 	// Hover and active state
+// 	input[type='radio'] {
+// 		position: absolute;
+// 		visibility: hidden;
+
+// 		&:hover + label,
+// 		&:checked + label {
+// 			color: #5B5B5B;
+
+// 			&:before { border: 2px solid #5B5B5B; }
+// 			&:after { opacity: 1; }
+// 		}
+// 	}
+// }
+
+
+// .select-color { margin-bottom: 40px; }
+
+
+// .select-voltage {
+// 	@include breakpoint(large, 'max') {
+// 		margin-bottom: 10px;
+// 		width: 100%!important;
+// 	}
+// 	@include breakpoint(medium, 'max') { width: 50%!important;  }
+// 	@include breakpoint(small, 'max') {
+// 		margin-bottom: 30px;
+// 		width: 100%!important;
+// 	}
+// }
