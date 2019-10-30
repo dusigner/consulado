@@ -35,21 +35,23 @@ Nitro.controller(
 	],
 	$('.banner-areas').slick({
 		infinite: false,
-		slidesToShow: 4,
+		slidesToShow: 3,
 		slidesToScroll: 3,
 		responsive: [
 			{
 				breakpoint: 990,
 				settings: {
 					dots: true,
-					slidesToShow: 2,
-					slidesToScroll: 2
+					arrows: false,
+					slidesToShow: 3,
+					slidesToScroll: 3
 				}
 			},
 			{
 				breakpoint: 480,
 				settings: {
 					dots: true,
+					arrows: false,
 					slidesToShow: 1,
 					slidesToScroll: 1
 				}
