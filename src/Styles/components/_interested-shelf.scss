@@ -37,6 +37,10 @@ body {
 		}
 
 		.prateleira-tabs__tabs {
+			@include breakpoint ('small', 'max') {
+				justify-content: space-between;
+				margin: 0 0 32px;
+			}
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -44,19 +48,17 @@ body {
 			margin-bottom: 32px;
 
 			li {
+				@include breakpoint ('small', 'max') {
+					margin: 0 0 12px;
+					width: 48%;
+				}
 				margin: 0 6px 12px;
 
-				&:nth-child(odd) {
-					@include breakpoint('small', 'max') { margin-left: 0; }
-				}
 
-				&:nth-child(even) {
-					@include breakpoint('small', 'max') { margin-right: 0; }
-				}
 			}
 
 			.discount-item {
-				@include breakpoint ('small', 'max') { width: 146px; }
+				@include breakpoint ('small', 'max') { width: 100%; }
 				@include rfs(16);
 				border: 1px solid $border;
 				border-radius: 4px;
@@ -136,10 +138,6 @@ body {
 
 	.vitrine-ofertas-interesses {
 		.prateleira-tabs__tabs.fiveElements {
-			@include breakpoint ('small', 'max') {
-				justify-content: space-between;
-				margin: 0 0 32px;
-			}
 
 			.fifthItem,
 			.fourthItem {
