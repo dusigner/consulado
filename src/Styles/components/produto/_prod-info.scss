@@ -28,32 +28,6 @@ body.produto {
 .prod-info {
 	padding: 0;
 
-	.secure {
-		@include breakpoint('medium', 'max') { display: none!important; }
-		@include rfs(12);
-		display: none;
-		opacity: 0.5;
-		text-transform: uppercase;
-
-		@include breakpoint(medium, 'min') {
-			padding-left: 60%;
-			padding-top: 4px;
-
-			i {
-				@include font-size(20px);
-				position: relative;
-				right: 5px;
-				top: 4px;
-			}
-		}
-
-		@include breakpoint(medium, 'max') {
-			margin: 0;
-			margin-top: 20px;
-			width: 100%;
-		}
-	}
-
 	.prod-selos {
 		display: none!important;
 		margin: 20px auto;
@@ -79,102 +53,7 @@ body.produto {
 			.flag { position: static; }
 		}
 	}
-
-	#BuyButton {
-		.buy-button {
-			@include rfs(15);
-			background-color: $green;
-			border-color: $green;
-			color: #fff;
-			font-weight: 500;
-			padding: 5px 0;
-			position: relative;
-			width: 50%;
-			z-index: 1;
-
-			@include breakpoint ('medium', 'max') {
-				padding: 12px 20px;
-				width: 100%;
-				z-index: 3;
-
-				@include breakpoint ('small', 'max') {
-					font-size: 0 !important;
-					position: fixed;
-				}
-			}
-
-			&:hover {
-				background-color: #fff;
-				color: $green;
-			}
-		}
-	}
 }
-
-#BuyButton {
-	@include font-size(18px, true, false);
-
-	.buy-button-amount { display: none!important; }
-
-	.buy-button {
-		@extend .primary-button;
-		float: left;
-		font-size: 1em;
-		padding: 13px 28px;
-		@include breakpoint(small, 'max') {
-			border-radius: 0;
-			bottom: 0;
-			display: inline-block;
-			font-size: 0;
-			height: 54px;
-			left: 0;
-			margin: 0;
-			position: fixed;
-			text-transform: uppercase;
-			width: 100%;
-			z-index: 9999;
-
-			&:before {
-				@include responsiveFont(16, 16, true);
-				content: 'Adicionar ao carrinho';
-				display: inline-block;
-				font-family: $base-font-family !important;
-				font-weight: bold !important;
-				left: 50%;
-				position: absolute;
-				text-transform: uppercase !important;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				width: 100%;
-			}
-		}
-
-		&:hover { background-color: #fff; }
-	}
-
-	.notifyme-button-ok {
-		&:not([href='#relacionados']) {
-			background-color: $green;
-			border-color: $green;
-			color: #fff;
-
-			&:hover {
-				background-color: #fff;
-				color: $green;
-			}
-		}
-
-		background-color: #fff;
-		border-color: $gray-b;
-		color: $gray-b;
-
-		&:hover {
-			background-color: $gray-b;
-			color: #fff;
-		}
-	}
-}
-
 
 .prod-more-info {
 	border-bottom: 1px solid #f4f2f1;

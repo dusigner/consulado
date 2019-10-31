@@ -22,30 +22,26 @@
 @import 'helpers/whp-modal';
 @import 'helpers/rfs';
 
-
-
 // Component styles
 @import 'components/buttons';
 @import 'components/selos';
 @import 'components/chaordic-shelf';
 @import 'components/mod-prateleira-v2';
 
-
-
 @import 'pages/product';
+@import 'components/produto/gallery';
 @import 'components/produto/prod-title';
 @import 'components/produto/prod-info';
 @import 'components/produto/prod-info-descricao';
 @import 'components/produto/prod-info-preco';
 @import 'components/produto/prod-info-parcelas-v2';
 @import 'components/produto/prod-info-sku-v2';
-
-// @import 'components/produto/_upsell-prod';
-// @import 'components/produto/_frete';
-// @import 'components/produto/gallery';
 @import 'components/produto/produtos-adicionais';
-
+@import 'components/produto/prod-buy-button';
 @import 'components/produto/selos';
+@import 'components/produto/frete-v2';
+@import 'components/produto/upsell-prod';
+
 
 
 @import 'components/produto/details-nav';

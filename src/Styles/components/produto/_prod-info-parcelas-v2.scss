@@ -34,21 +34,21 @@
 		cursor: pointer;
 		display: block;
 		font-weight: 500;
-		padding: 10px 10px 10px 25px;
+		padding: 10px 10px 10px 20px;
 		position: relative;
+		transition: text-indent .3s;
 
 		// Parent active state
 		.is--active & {
 			background-color: #FCFCFC;
 			border-bottom: 1px solid #F1F0F0;
-			padding: 10px 35px;
+			text-indent: 15px;
 		}
 
 		&:before {
 			@include icon-get('bottom-arrow');
-			@include rfs(8px);
+			@include rfs(6px);
 			left: 0;
-			margin-right: 12px;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);

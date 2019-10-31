@@ -93,7 +93,11 @@
 }
 
 
-.select-color { margin-bottom: 40px; }
+.select-color {
+	margin-bottom: 40px;
+
+	.sku-title-label { display: none; }
+}
 
 
 .select-voltage {

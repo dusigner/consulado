@@ -2,9 +2,8 @@
 
 // Produtos adicionais
 .produtos-adicionais {
-	border-bottom: 1px solid #e3e1e1;
-	margin: 1em 0;
 	padding: 10px;
+
 
 	.skuList {
 		margin-bottom: 10px;
@@ -22,7 +21,14 @@
 		display: none;
 	}
 
+	// Título label
 	&__title.specification {
+		@include rfs(12px);
+		background-color: #F1F0F0;
+		color: #736C6B;
+		display: block;
+		font-weight: 500;
+		padding: 8px 15px;
 		margin-left: -10px;
 		text-transform: none;
 		width: calc(100% + 20px);

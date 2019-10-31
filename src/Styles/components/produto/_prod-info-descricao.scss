@@ -1,12 +1,13 @@
 // Descrição do produto
 .descricao-produto {
 	background-color: #FAF9F9;
+	margin: .5em 0 1em 0;
 	padding: 20px;
 
 	.productDescription {
 		@include rfs(12px);
 		color: #736C6B;
-		max-height: 130px;
+		max-height: 100px;
 		overflow: auto;
 		padding-right: 20px;
 
@@ -28,8 +29,8 @@
 			border-top: 1px solid #BFBEBE;
 			content: 'A' !important;
 			display: block !important;
-			margin-top: .2em !important;
 			margin-bottom: .8em !important;
+			margin-top: .2em !important;
 		}
 	}
 }
