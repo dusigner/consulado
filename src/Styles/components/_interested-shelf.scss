@@ -39,7 +39,7 @@ body {
 		.prateleira-tabs__tabs {
 			@include breakpoint ('small', 'max') {
 				justify-content: space-between;
-				margin: 0 0 32px;
+				margin: 0 auto 32px;
 			}
 			display: flex;
 			flex-direction: row;
