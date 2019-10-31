@@ -7,6 +7,8 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 	p { margin: 0; }
 
 	&.product-has-discount {
+		min-height: 100px;
+
 		em.valor-por { display: inline-block!important; }
 
 		.discount-boleto span { display: inline-block!important; }

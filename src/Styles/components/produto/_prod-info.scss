@@ -26,6 +26,8 @@ body.produto {
 }
 
 .prod-info {
+	padding: 0;
+
 	.secure {
 		@include breakpoint('medium', 'max') { display: none!important; }
 		@include rfs(12);
