@@ -104,6 +104,7 @@
 	}
 
 	.topic {
+		flex: 1;
 		@media (max-width: 920px) {
 			margin: 0 40px 0 0;
 		}
