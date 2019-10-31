@@ -90,6 +90,7 @@ Nitro.module('interested-shelf', function() {
 			$('.antecipada').addClass('fifthItem');
 			$('.frete').addClass('fourthItem');
 			$('.vinte, .quarenta, .vista').addClass('minorButton');
+			shelf.find('.prateleira-tabs__tabs').addClass('fiveElements');
 
 		}
 	};
