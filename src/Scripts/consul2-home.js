@@ -37,31 +37,6 @@ Nitro.controller(
 		/*'counter', 'datalayer_track'*/
 		'subCategoryList'
 	],
-	$('.banner-areas').slick({
-		infinite: false,
-		slidesToShow: 3,
-		slidesToScroll: 3,
-		responsive: [
-			{
-				breakpoint: 990,
-				settings: {
-					dots: true,
-					arrows: false,
-					slidesToShow: 3,
-					slidesToScroll: 3
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					dots: true,
-					arrows: false,
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}
-		]
-	}),
 	function(chaordic) {
 
 		$('.tipbar-novo .container .row').slick ({
@@ -174,6 +149,32 @@ Nitro.controller(
 			//$('section.slider .prateleira-slider .prateleira ul').find('.detalhes>a').addClass('col-xs-6 col-md-12');
 		};
 
+		//	SLICK BANNER AREAS
+		$('.banner-areas').slick({
+			infinite: false,
+			slidesToShow: 3,
+			slidesToScroll: 3,
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						dots: true,
+						arrows: false,
+						slidesToShow: 3,
+						slidesToScroll: 3
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						dots: true,
+						arrows: false,
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
+				}
+			]
+		});
 		//inicia automaticamente prateleiras sliders no desktop
 		// if ($(window).width() > 768) {
 		self.setupSlider($slider);
