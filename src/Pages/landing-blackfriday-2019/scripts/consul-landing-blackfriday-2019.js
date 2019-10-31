@@ -263,9 +263,20 @@ const initCountdownSlider = () => {
 
 const createAccordeon = title => {
 	title.click(event => {
-		$(event.target).toggleClass('is-actived');
-		$(event.target).siblings().toggleClass('is-actived');
-		$(event.target).parent().toggleClass('is-actived');
+
+		$(title).not(event.target).removeClass('is-actived');
+		$(title).not(event.target).siblings().removeClass('is-actived');
+		$(title).not(event.target).parent().removeClass('is-actived');
+
+		if( !$(event.target).hasClass("is-actived")){
+				$(event.target).addClass('is-actived');
+				$(event.target).siblings().addClass('is-actived');
+				$(event.target).parent().addClass('is-actived');
+		} else {
+				$(event.target).removeClass('is-actived');
+				$(event.target).siblings().removeClass('is-actived');
+				$(event.target).parent().removeClass('is-actived');
+		}
 	})
 }
 
@@ -327,4 +338,3 @@ Index.init();
 // -------------------------------------------
 //       FIM DO CÓDIGO ROUBADO
 // -------------------------------------------
-
