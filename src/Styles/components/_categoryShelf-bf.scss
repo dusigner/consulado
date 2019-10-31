@@ -94,6 +94,8 @@ body.home-bf-2019 {
 			border-color: $border;
 
 			@mixin activeState {
+				background-color: #fff;
+
 				.shelf-category-home-card__text {
 					border-top: 1px solid #f4f2f1;
 					color: $txt;
@@ -108,8 +110,6 @@ body.home-bf-2019 {
 				}
 
 				.shelf-category-home-card {
-					background-color: #fff;
-
 					&__image {
 						background-color: $green;
 						background-image: url($bg-shelf-image-white);
