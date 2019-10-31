@@ -115,7 +115,6 @@
 
 	<!-- [ Desktop ] - Slider -->
 	<div class="banners hide-extra-small">
-
 		<!-- Banner -->
 		<div class="banner-principal slides">
 			<vtex:contentPlaceHolder id="SliderHome" />
@@ -140,7 +139,6 @@
 
 	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
-
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides">
 			<vtex:contentPlaceHolder id="SliderHomeMobile" />
@@ -351,6 +349,42 @@
 		</div>
 	</section>
 	<!-- /VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+
+
+	<!-- On Page Search -->
+	<section class="onpage-search">
+		<div class="container">
+			<div class="onpage-search__header">
+				<strong class="onpage-search__title">Está procurando algo especial?</strong>
+				<span class="onpage-search__description">Digite o que procura e encontramos para você!</span>
+			</div>
+
+			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
+				<i class="icon icon-consul-loupe"></i>
+				<input
+					type="text"
+					class="text-search"
+					name="q"
+					required="required"
+					pattern=".{3,}"
+					title="Mínimo de 3 caracteres "
+					placeholder="O que você está procurando hoje?"
+					autocomplete="off"
+					maxlength="100"
+				/>
+				<button type="submit">
+					Buscar
+				</button>
+			</form>
+
+			<div class="onpage-search__footer">
+				<a href="/eletrodomesticos" class="onpage-search__link" title="Ver todos os produtos da loja">
+					Ver todos os produtos da loja
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- /On Page Search -->
 
 	<!-- Footer 2019 -->
 	<footer class="footer-2019" data-module="footer-2019">
