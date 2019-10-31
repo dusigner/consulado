@@ -1,0 +1,35 @@
+// Descrição do produto
+.descricao-produto {
+	background-color: #FAF9F9;
+	padding: 20px;
+
+	.productDescription {
+		@include rfs(12px);
+		color: #736C6B;
+		max-height: 130px;
+		overflow: auto;
+		padding-right: 20px;
+
+		&::-webkit-scrollbar {
+			position: relative;
+			width: 4px;
+		}
+
+		&::-webkit-scrollbar-track { background: #F1F0F0; }
+
+		&::-webkit-scrollbar-thumb {
+			background: #BFBEBE;
+			width: 4px;
+		}
+
+		p { margin: 0 0 1.5em 0; }
+
+		br {
+			border-top: 1px solid #BFBEBE;
+			content: 'A' !important;
+			display: block !important;
+			margin-top: .2em !important;
+			margin-bottom: .8em !important;
+		}
+	}
+}
