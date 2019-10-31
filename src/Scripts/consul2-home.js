@@ -37,7 +37,31 @@ Nitro.controller(
 		/*'counter', 'datalayer_track'*/
 		'subCategoryList'
 	],
-
+	$('.banner-areas').slick({
+		infinite: false,
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		responsive: [
+			{
+				breakpoint: 990,
+				settings: {
+					dots: true,
+					arrows: false,
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			},
+			{
+				breakpoint: 480,
+				settings: {
+					dots: true,
+					arrows: false,
+					slidesToShow: 1,
+					slidesToScroll: 1
+				}
+			}
+		]
+	}),
 	function(chaordic) {
 
 		$('.tipbar-novo .container .row').slick ({

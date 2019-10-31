@@ -1,0 +1,56 @@
+@charset 'UTF-8';
+//import font
+@import 'helpers/rfs';
+
+// Style banners
+.area-banners {
+	background-color: #111111;
+	color: #fff;
+	display: block;
+	height: auto;
+	padding: 42px 0 50px;
+	width: 100%;
+	.container {
+		padding: 5px;
+	}
+	.row {
+		align-items: center;
+		flex-flow: column;
+		line-height: normal;
+		margin: 0 auto;
+	}
+	&__title {
+		@include rfs(32px);
+		font-weight: 600;
+		margin: 0 auto 10px;
+	}
+	p {
+		@include rfs(16px);
+		font-weight: 500;
+		margin: 0 auto 40px;
+	}
+	& .banner-areas {
+		display: flex;
+    	justify-content: space-between;
+		& .slick-slide {
+			margin: 0 auto;
+			@include breakpoint(small, 'min') {
+				padding: 0 10px;
+			}
+		}
+		& .slick-dots {
+			bottom: 0;
+			top: 100%;
+		}
+		.box-banner {
+			height: auto;
+			max-width: 100%;
+			width: 360px !important;
+			img {
+				height: auto;
+				max-width: 100%;
+				width: 100%;
+			}
+		}
+	}
+}
