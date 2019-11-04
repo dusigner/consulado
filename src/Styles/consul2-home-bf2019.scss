@@ -20,6 +20,8 @@
 @import 'helpers/functions';
 @import 'helpers/mixins';
 @import 'helpers/rfs';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
 
 // @import 'components/staticBanner';
 
@@ -27,3 +29,4 @@
 @import 'components/interested-shelf';
 @import 'components/instagram-stories';
 @import 'components/home/on-page-search';
+@import 'components/_banner-combos-blackfriday';
