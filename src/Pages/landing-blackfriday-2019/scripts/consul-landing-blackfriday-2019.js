@@ -8,8 +8,9 @@ $(document).ready(function () {
 	initLeadsBlackfriday();
 	initDepoimentsSlider();
 	initCountdownSlider();
-	createAccordeon($('.category__title'))
-	createAccordeon($('.faq__header'))
+	createAccordeon($('.category__title'));
+	createAccordeon($('.faq__header'));
+	initSlider();
 
 	jQuery.extend(jQuery.validator.messages, {
 		required: 'Este campo &eacute; requerido.',
@@ -48,6 +49,41 @@ const initTags = () => {
 		const title = $(e.target).parents('.card').find('.card__title').text().trim();
 		shootDataLayer('generic', 'lp_black_friday_2019', 'nossas_dicas', `veja_mais_${title}`);
 	})
+}
+
+const initSlider = () => {
+	const $prateleiraHolder = $('.prateleira-holder__list .prateleira > ul');
+	$prateleiraHolder.children('li.helperComplement').remove();
+
+	const $items = $prateleiraHolder.children('li');
+
+	if( $items.length > 4 ) {
+		$prateleiraHolder.slick({
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			infinite: false,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1
+					}
+				}
+			]
+		});
+	}
 }
 
 const initLeadsBlackfriday = () => {
