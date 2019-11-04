@@ -2,6 +2,8 @@
 
 'use strict';
 
+require('@babel/polyfill');
+
 require('modules/helpers');
 
 // Vendors
@@ -128,3 +130,17 @@ Nitro.setup(
 );
 
 $(window).load(changeCallcenterLinks);
+
+// $(window).load(function() {
+// 	const loginText = $('.menu-mobile .account__icon--profile');
+
+// 	if (loginText) {
+// 		let loginData = `
+// 			${loginText[0].innerHTML}
+// 			<span class="logout-text"> ${loginText.parent()[0].innerText.split('Sair')[0]} </span>
+// 			${loginText.siblings('em')[0].innerHTML}
+// 		`;
+// 		loginText.parent().html(loginData);
+
+// 	}
+// });

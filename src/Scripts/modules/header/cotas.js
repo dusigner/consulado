@@ -73,15 +73,31 @@ Nitro.module('cotas', function() {
 		$('header .account .welcome-message').append(template.render(cota));
 	};
 
-	this.init();
+	//this.init();
 
 	$('.open-menu-mobile').click(function() {
-		$('.menu-department').prepend($('.header .account'));
+		let nameSelector = $('.menu-department .account__icon.account__icon--profile');
+		if (nameSelector.length > 0) {
 
-		if (isLogged) {
 			$('.header .account').addClass('logged-user');
+
 		} else {
+
 			$('.header .account').removeClass('logged-user');
+		}
+	});
+
+	$(window).load(function() {
+		if ($('.account__icon.account__icon--profile').length > 0) {
+			let welcomeMessage = $('.welcome');
+			let loginText = welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0];
+			if (loginText.length > 15) {
+				welcomeMessage.html(`
+					${welcomeMessage.find('span').prop('outerHTML')}
+					${welcomeMessage.eq(0).text().match(/Olá (\w| )+?(?=\.)/)[0].substring(0, 14) + '...'}
+					${welcomeMessage.find('em').prop('outerHTML')}
+				`);
+			}
 		}
 	});
 });

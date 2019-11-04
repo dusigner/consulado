@@ -135,7 +135,7 @@ const Eventos = {
 					back.removeClass('transitioning-src');
 					h1.text(strH1Cooktop);
 					p.text(strPCooktop);
-					buttonA.attr('href', '/eletrodomesticos/cooktop');
+					buttonA.attr( 'href', '/eletrodomesticos/cooktop' );
 					buttonA.addClass('Cooktops');
 					buttonA.text('Ver mais sobre Cooktops');
 					back.addClass('Cooktops');
@@ -158,10 +158,7 @@ const Eventos = {
 					back.removeClass('transitioning-src');
 					h1.text(strH1Coifa);
 					p.text(strPCoifa);
-					buttonA.attr(
-						'href',
-						'/eletrodomesticos/coifa-e-depurador'
-					);
+					buttonA.attr( 'href', '/eletrodomesticos/coifa-e-depurador' );
 					buttonA.addClass('Coifas');
 					buttonA.text('Ver mais sobre Coifas');
 					back.addClass('Coifas');
@@ -184,10 +181,7 @@ const Eventos = {
 					back.removeClass('transitioning-src');
 					h1.text(strH1forno);
 					p.text(strPforno);
-					buttonA.attr(
-						'href',
-						'/eletrodomesticos/forno/forno-de-embutir'
-					);
+					buttonA.attr( 'href', '/eletrodomesticos/forno/forno-de-embutir' );
 					buttonA.addClass('Fornos-Embutidos');
 					buttonA.text('Ver mais sobre Fornos');
 					back.addClass('Fornos-Embutidos');
@@ -316,9 +310,9 @@ const Eventos = {
 		//Valida se tem 3 produtos na vitrine
 		if (skus.length >= 3) {
 			//SetPirce on HTML
-			$.map( $('article .de .val'), x => (totalDe += getMoney(x.textContent)) );
-			$.map( $('article .por .val'), x => (totalPor += getMoney(x.textContent)) );
-			$.map( $('article .discount-boleto strong'), x => (money += getMoney(x.textContent)) );
+			$.map( $('.vitrine-comprejunto article .de .val'), x => totalDe += getMoney(x.textContent) );
+			$.map( $('.vitrine-comprejunto article .por .val'), x => {totalPor += getMoney(x.textContent)} );
+			$.map( $('.vitrine-comprejunto article .discount-boleto strong'), x => money += getMoney(x.textContent) );
 			totalDe = formatReal(totalDe);
 			totalPor = formatReal(totalPor);
 			$('li .de-final').text(`De: R$ ${totalDe}`);
@@ -326,8 +320,8 @@ const Eventos = {
 			checkAvista(totalPor,money);
 
 			//Copia o elemento de fora e joga para dentro da vitrine;
-			$('.vitrine-total').clone().appendTo('.vitrine ul');
-			$('.vitrine ul .vitrine-total').removeClass('vitrine-total');
+			$('.vitrine-total').clone().appendTo('.vitrine-comprejunto .vitrine ul');
+			$('.vitrine-comprejunto .vitrine ul .vitrine-total').removeClass('vitrine-total');
 			$('.vitrine-total').remove();
 
 			//Set Link on Button
@@ -381,8 +375,7 @@ const Eventos = {
 				setLink();
 			});
 		} else {
-			$('.vitrine-header').addClass('hide');
-			$('.vitrine').addClass('hide');
+			$('.vitrine-comprejunto').addClass('hide');
 		}
 	}
 };

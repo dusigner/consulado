@@ -72,7 +72,14 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 	}
 
 	.section-duvidas {
-		@include breakpoint('small', 'min') { width: 410px; }
+		@include breakpoint('small', 'min') { width: 410px; };
+		p {
+			& > a {
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 
 	.section-atendimento {

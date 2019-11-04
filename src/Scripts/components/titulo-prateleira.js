@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-	const $shelfElTitle = $('.vitrines h2');
+	const $shelfElTitle = $('.vitrines h2, .split-title');
 	let shelfTitle = '';
 
 	const titleShelf = {};
