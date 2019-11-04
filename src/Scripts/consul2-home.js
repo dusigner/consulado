@@ -6,7 +6,7 @@ require('modules/slider-banner');
 require('components/instagram-stories');
 
 
-//require('custom/tabs-consumidor');
+//require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
@@ -15,6 +15,7 @@ require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
+require('modules/interested-shelf');
 // require('modules/_staticBanner');
 
 // import 'modules/counter';
@@ -22,16 +23,14 @@ require('modules/shelfCategoryHome');
 Nitro.controller(
 	'home',
 	[
-		'chaordic',
 		'slider-banner',
 		'instagram-stories',
 		'lead-newsletter',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
-		'shelfCategoryHome',
-		/* 'static-banner' */
-		/*'counter', 'datalayer_track'*/
+		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
+		'interested-shelf'
 	],
 
 	function(chaordic) {
@@ -112,10 +111,10 @@ Nitro.controller(
 
 
 		var self = this,
-			$slider = $('.prateleira-slider .prateleira>ul').not('.slick-initialized');
+			$slider = $('section.vitrines:not(.vitrine-ofertas-interesses, .vitrine-ofertas-alavancas)').find('.prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		chaordic.init('home');
+		//chaordic.init('home');
 
 		this.setupSlider = function($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
