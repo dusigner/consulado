@@ -22,11 +22,14 @@
 @import 'layout/grid';
 @import 'layout/gridresponsive';
 // @import 'components/produto/facebook-share';
+@import 'components/mod-prateleira-v2';
 
 // Modules
 @import 'modules/common';
 
 @import 'modules/banner';
+@import 'modules/shelf';
+@import 'modules/slick';
 @import 'modules/lead';
 @import 'modules/countdown';
 @import 'modules/info';

@@ -50,21 +50,20 @@
 	}
 
 	&__logo {
-		max-width: 400px;
+		background: url('/arquivos/bf2019-logo.png') 0 22px no-repeat;
+		background-size: 400px;
+		height: 330px;
 		padding-top: 22px;
 		position: relative;
-		width: 100%;
+		text-indent: -9000px;
+		width: 400px;
 		z-index: 1;
 
 		@media (max-width: 920px) {
+			background-size: 200px;
+			height: 180px;
 			margin: 0 auto 20px;
-			max-width: 200px;
-		}
-
-		img {
-			@media (max-width: 920px) {
-				width: 100%;
-			}
+			width: 200px;
 		}
 	}
 

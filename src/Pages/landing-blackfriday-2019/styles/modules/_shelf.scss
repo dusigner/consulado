@@ -1,0 +1,22 @@
+.prateleira-holder {
+	background-color: #FFF;
+	padding: 45px 0;
+
+	.title {
+		margin: 0 0 50px;
+	}
+
+	&__list {
+		h2 {
+			display: none;
+		}
+	}
+
+	.slick-prev {
+		left: -20px;
+	}
+
+	.slick-next {
+		right: -20px;
+	}
+}
