@@ -60,6 +60,22 @@ body.home-bf-2019 {
 			.shelf-category-home-card__image {
 				background-color: $bgcolor;
 				background-image: url($bg-shelf-image-bf);
+
+
+				img[alt='Ar Condicionado'] {
+					@include breakpoint('small', 'max') { max-width: 100px; }
+					height: auto;
+					// max-width: 120px;
+					// transform: translate(0, 74px);
+					max-width: 140px;
+    				transform: translate(-50px, 63px);
+				}
+
+				img[alt='Freezer'] {
+					@include breakpoint('small', 'max') { max-width: 80px; }
+
+					transform: translate(0, 55px);
+				}
 			}
 
 			.shelf-category-home-card__image-container {
@@ -78,6 +94,8 @@ body.home-bf-2019 {
 			border-color: $border;
 
 			@mixin activeState {
+				background-color: #fff;
+
 				.shelf-category-home-card__text {
 					border-top: 1px solid #f4f2f1;
 					color: $txt;
@@ -91,9 +109,14 @@ body.home-bf-2019 {
 					background-color: #fff;
 				}
 
-				.shelf-category-home-card__image {
-					background-color: $green;
-					background-image: url($bg-shelf-image-white);
+				.shelf-category-home-card {
+					&__image {
+						background-color: $green;
+						background-image: url($bg-shelf-image-white);
+
+						img[alt='Ar Condicionado'] { transform: translate(0px, 14px); }
+						img[alt='Freezer'] { transform: translate(20px, 10px); }
+					}
 				}
 			}
 
