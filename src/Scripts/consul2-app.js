@@ -2,6 +2,8 @@
 
 'use strict';
 
+require('@babel/polyfill');
+
 require('modules/helpers');
 
 // Vendors
