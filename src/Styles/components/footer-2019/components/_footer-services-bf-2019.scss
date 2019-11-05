@@ -1,0 +1,100 @@
+@charset 'UTF-8';
+@import 'helpers/rfs';
+
+// Services
+.footer-services {
+	background-color: #2A2A2A;
+	color: #fff;
+	margin: 0;
+	padding: 40px 0 20px;
+	.footer-title {
+		@include rfs(30);
+		color: #fff;
+		margin-top: 0;
+		strong {
+			color: #fff;
+		}
+	}
+	@include breakpoint('small', 'max') {
+		color: #D9D8D8;
+		padding: 25px 0 30px;
+	}
+
+	// Icon
+	&__icon {
+		&--ajuda-online {
+			@include breakpoint('small', 'max') { background-size: 26px auto; }
+			background-image: url('/arquivos/ajuda-online-consul-icone-bf.png');
+			background-size: 36px auto;
+		}
+
+		&--meus-pedidos {
+			@include breakpoint('small', 'max') { background-size: 36px auto; }
+			background-image: url('/arquivos/meus-pedidos-consul-icone-bf.png');
+			background-size: 52px auto;
+		}
+
+		&--trocas-e-devolucoes {
+			@include breakpoint('small', 'max') { background-size: 24px auto; }
+			background-image: url('/arquivos/trocas-devolucoes-consul-icone-bf.png');
+			background-size: 32px auto;
+		}
+	}
+
+	// Title
+	&__title {
+		@include breakpoint('small', 'max') { margin: 0; }
+		@include rfs(16);
+		font-weight: 500;
+		margin: .8em 0;
+		padding: 5px 0;
+		position: relative;
+
+		// title border
+		&:after {
+			@include breakpoint('small', 'min') {
+				background-color: $default-color-green;
+				left: 50%;
+				transform: translateX(-50%);
+
+			}
+			background-color: #2a2a2a;
+			bottom: 0;
+			content: ' ';
+			display: block;
+			height: 2px;
+			position: absolute;
+			width: 25px;
+		}
+	}
+
+	// Text
+	&__text {
+		@include rfs(14);
+		flex-grow: 3;
+		margin: 0;
+	}
+
+	// Button
+	&__cta {
+		@include breakpoint('small', 'max') {
+			@include square(100%);
+			border-radius: 0;
+			left: 0;
+			margin: 0;
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			z-index: 1;
+		}
+		background-color: transparent;
+		border-color: #fff;
+		color: #fff;
+		margin-top: 2em;
+		position: relative;
+		&:hover {
+			background-color: #ffffff;
+			color: #2a2a2a;
+		}
+	}
+}
