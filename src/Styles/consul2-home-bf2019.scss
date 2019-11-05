@@ -20,24 +20,17 @@
 @import 'helpers/functions';
 @import 'helpers/mixins';
 @import 'helpers/rfs';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
 
 // @import 'components/staticBanner';
 
 // Component styles
-
-@import 'components/interested-shelf';
-@import 'components/subCategoryList';
-@import 'components/instagram-stories';
-@import 'components/home/on-page-search';
-@import 'components/categoryShelf-bf';
-@import 'layout/grid';
-@import 'layout/gridresponsive';
-@import 'components/chaordic-bf';
-
-
-//Combos Black Friday
-@import 'components/_banner-combos-blackfriday';
 @import 'components/_area-banners';
-@import './components/_barra_black';
-@import './components/footer-2019/components/footer-services-bf-2019';
-@import './components/footer-2019/components/lead-newsletter-bf-2019';
+@import 'components/_banner-combos-blackfriday';
+@import 'components/_barra_black';
+@import 'components/categoryShelf-bf';
+@import 'components/chaordic-bf';
+@import 'components/home/on-page-search';
+@import 'components/interested-shelf';
+@import 'components/instagram-stories';
