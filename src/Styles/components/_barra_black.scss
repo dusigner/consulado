@@ -4,21 +4,24 @@
 .barra-black-verdade {
 	background: transparent linear-gradient(180deg, #9ACA3C 0%, #81AE29 59%, #729D1D 100%) 0% 0% no-repeat padding-box;
 	display: flex;
+	margin-bottom: -35px;
 	padding: 32px 0 ;
+
 	.row {
 		align-items: center;
 	    margin: 0 auto;
 	}
+
 	h2 {
 		@include rfs(36);
 		color: #404040;
 		font-weight: 600;
 		line-height: normal;
 		margin: 0;
-		span {
-			color: #fff;
-		}
+
+		span { color: #fff; }
 	}
+
 	p {
 		color: #fff;
 		font-weight: 400;
