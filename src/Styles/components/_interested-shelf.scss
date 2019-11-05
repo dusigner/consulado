@@ -9,6 +9,7 @@ $green: #9ACA3C;
 body {
 	.vitrine-ofertas-interesses,
 	.vitrine-ofertas-alavancas {
+		@include breakpoint('small', 'max') { overflow: hidden; }
 		background-color: $bg-color;
 		padding-top: 38px;
 
@@ -17,8 +18,10 @@ body {
 		}
 
 		.interesses-title {
+			@include breakpoint ('small', 'max') { padding: 0 15px; }
+
 			h4 {
-				@include breakpoint ('small', 'max') { text-align: left ;}
+				@include breakpoint ('small', 'max') { text-align: left;}
 				@include rfs(28);
 				color: $txt;
 				font-weight: bold;
@@ -39,7 +42,8 @@ body {
 		.prateleira-tabs__tabs {
 			@include breakpoint ('small', 'max') {
 				justify-content: space-between;
-				margin: 0 auto 32px;
+				margin: 0 auto 20px;
+				padding: 0 10px;
 			}
 			display: flex;
 			flex-direction: row;
@@ -85,6 +89,7 @@ body {
 
 
 		.vitrines {
+			@include breakpoint ('small', 'max') { margin-top: 30px; }
 			margin-top: 42px;
 			position: relative;
 
@@ -116,9 +121,12 @@ body {
 			}
 
 			.link-shelf {
+				@include breakpoint('small', 'min') {
+					padding: 34px 0 32px 0;
+					text-align: center;
+				}
 				display: block;
-				padding: 34px 0 32px;
-				text-align: center;
+				padding: 22px 10px 26px 10px;
 
 				a {
 					@include rfs(12);
@@ -169,7 +177,7 @@ body {
 			.fourthItem {
 
 				&.vista,
-				&.antecipada {
+				&.blackfriday {
 					@include breakpoint ('small', 'max') {
 						margin-left: 0;
 						margin-right: 0;
@@ -192,5 +200,10 @@ body {
 				}
 			}
 		}
+	}
+
+	.hideTab {
+		display: none !important;
+		visibility: hidden !important;
 	}
 }

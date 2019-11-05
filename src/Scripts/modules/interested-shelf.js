@@ -39,7 +39,7 @@ Nitro.module('interested-shelf', function() {
 			shelves.eq($(this).attr('data-index')).removeClass('not-show');
 
 			shelves.eq($(this).attr('data-index')).find('ul').slick({
-				arrows: false,
+				arrows: true,
 				dots: false,
 				infinite: false,
 				slidesToShow: 4,
@@ -55,6 +55,7 @@ Nitro.module('interested-shelf', function() {
 					{
 						breakpoint: 480,
 						settings: {
+							arrows: false,
 							slidesToShow: 1.4,
 							slidesToScroll: 1
 						}
@@ -79,19 +80,18 @@ Nitro.module('interested-shelf', function() {
 		$.each(tabElement, function (index, value) {
 			const tabText = $(value).text().toLowerCase();
 
+			(tabText.indexOf('friday') > -1) ? $(value).parent().addClass('blackfriday') : '';
 			(tabText.indexOf('frete') > -1) ? $(value).parent().addClass('frete') : '';
-			(tabText.indexOf('vista') > -1) ? $(value).parent().addClass('vista') : '';
-			(tabText.indexOf('20') > -1) ? $(value).parent().addClass('vinte') : '';
 			(tabText.indexOf('40') > -1) ? $(value).parent().addClass('quarenta') : '';
-			(tabText.indexOf('antecipada') > -1) ? $(value).parent().addClass('antecipada') : '';
+			(tabText.indexOf('20') > -1) ? $(value).parent().addClass('vinte') : '';
+			(tabText.indexOf('vista') > -1) ? $(value).parent().addClass('vista') : '';
 		});
 
 		if (tabElement.length === 5) {
-			$('.antecipada').addClass('fifthItem');
-			$('.frete').addClass('fourthItem');
+			$('.blackfriday').addClass('firstItem');
+			$('.frete').addClass('secondItem');
 			$('.vinte, .quarenta, .vista').addClass('minorButton');
 			shelf.find('.prateleira-tabs__tabs').addClass('fiveElements');
-
 		}
 	};
 
@@ -102,7 +102,7 @@ Nitro.module('interested-shelf', function() {
 
 		shelves.find('ul').slick({
 			adaptiveHeight: false,
-			arrows: false,
+			arrows: true,
 			dots: false,
 			infinite: false,
 			slidesToShow: 4,
@@ -118,6 +118,7 @@ Nitro.module('interested-shelf', function() {
 				{
 					breakpoint: 480,
 					settings: {
+						arrows: false,
 						slidesToShow: 1.4,
 						slidesToScroll: 1
 					}
@@ -129,7 +130,7 @@ Nitro.module('interested-shelf', function() {
 	this.checkDynamicItems = shelf => {
 		const tabs = shelf.find('.prateleira-tabs__tabs');
 		if (tabs.find('li').length === 1) {
-			tabs.addClass('hide');
+			tabs.addClass('hideTab');
 		}
 	};
 
