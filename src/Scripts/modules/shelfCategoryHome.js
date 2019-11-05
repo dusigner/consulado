@@ -41,6 +41,7 @@ Nitro.module('shelfCategoryHome', function() {
 					breakpoint: 770,
 					settings: {
 						arrows: false,
+						dots: true,
 						infinite: false,
 						slidesToScroll: 1,
 						slidesToShow: 1,
