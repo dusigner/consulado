@@ -16,6 +16,8 @@ require('modules/chatHome');
 require('modules/shelfCategoryHome');
 require('modules/_staticBanner');
 require('modules/interested-shelf');
+require('dataLayers/dataLayer-home-BF.js')
+// require('modules/_staticBanner');
 
 // require('modules/_staticBanner');
 require('modules/subCategoryList')
@@ -30,12 +32,9 @@ Nitro.controller(
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
-		'shelfCategoryHome',
-		'static-banner', /*'counter', 'datalayer_track'*/
+		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
 		'interested-shelf',
-		/* 'static-banner' */
-		/*'counter', 'datalayer_track'*/
-		'subCategoryList'
+		'dataLayer-home-bf'
 	],
 	function(chaordic) {
 
