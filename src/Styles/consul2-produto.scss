@@ -64,7 +64,8 @@
 }
 .trustvox-widget-rating span.rating-click-here {
 	color: #DAA81D;
-	display: inline-block;
+	// display: inline-block;
+	display: none; // Sumir com o link de avaliações até liberarem a seção de comentários
 	font-size: 12px;
 	position: relative;
 	top: -3px;
