@@ -62,7 +62,9 @@ Nitro.module('percentoff', 'buy-button', function() {
 							.replace('%', '')
 					)
 				);
+
 				const isPurificador = (($(this).attr('data-department') !== undefined && $(this).attr('data-department').toLowerCase() === 'purificador') || ($(this).attr('data-ispurificador') !== undefined && $(this).attr('data-ispurificador') === 'true'));
+
 				if (percentage >= 20) {
 					txtPercentage.text(percentage + '% OFF').show();
 				} else if (percentage >= 5 && isPurificador) {
