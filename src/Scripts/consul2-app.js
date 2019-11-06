@@ -2,6 +2,13 @@
 
 'use strict';
 
+/*
+ - TODO:
+ - Esse import foi colocado para reolver os problemas do IE.
+ - Os problemas foram resolvidos, porém o arquivo quase dobrou de tamanho.
+ - O ideal é estudar uma forma de importar somente o necessário ou rever
+ - tudo o que usamos de ES6 e mudarmos para o funcionamento no IE.
+*/
 require('@babel/polyfill');
 
 require('modules/helpers');
