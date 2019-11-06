@@ -102,14 +102,14 @@ Nitro.module('boleto', function() {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							À vista por <strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
+							1x no cartão de crédito por <strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
 						</p>
 					`;
 				} else {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							À vista por <strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
+							À vista no boleto por <strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
 						</p>
 					`;
 				}
@@ -148,7 +148,7 @@ Nitro.module('boleto', function() {
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						À vista por <strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
+						1x no cartão de crédito por <strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
 					</p>
 				`;
 			} else {
@@ -156,7 +156,7 @@ Nitro.module('boleto', function() {
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'boleto') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						À vista por <strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
+						À vista no boleto por <strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
 					</p>
 				`;
 			}
