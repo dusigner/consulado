@@ -1,7 +1,7 @@
 'use strict';
 
 (function(){
-	const $shelfElTitle = $('.vitrines h2, .split-title');
+	const $shelfElTitle = $('section.vitrines:not(.vitrine-ofertas-interesses, .vitrine-ofertas-alavancas)').find('h2');
 	let shelfTitle = '';
 
 	const titleShelf = {};

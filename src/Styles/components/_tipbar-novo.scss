@@ -1,0 +1,178 @@
+@charset 'UTF-8';
+// ===============================================================
+/* IMPORTS */
+// ===============================================================
+
+// Helpers
+@import '../../../Styles/helpers/mixins';
+@import '../../../Styles/helpers/rfs';
+@import '../helpers/variables';
+
+// ===============================================================
+/* TIPBAR */
+// ===============================================================
+$breakpoint-map: (
+	'medium-small' : 520px,    //520px
+	'small'        : 767px,   //767px
+);
+//colors
+$gray-dark: #2E2E2E;
+
+.tipbar-novo {
+	background-color: $gray-m;
+	@include breakpoint('small', 'min') {
+		padding: 30px 0;
+	}
+	& ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	& li {
+		align-items: flex-start;
+		display: flex;
+		margin: 0 auto;
+		max-width: 100%;
+		@include breakpoint('small', 'max') {
+			border-right: 2px solid $base-font-color;
+			padding: 20px 0 10px;
+		    padding-left: 20px;
+			width: 260px;
+		}
+	}
+	&__coluna {
+		display: flex;
+		@include breakpoint('small', 'min') {
+			width: 270px;
+		}
+	}
+	& .slick-track {
+		margin: 0 auto;
+		padding: 0;
+	}
+	& .slick-slide {
+		max-width: 100% !important;
+		@include breakpoint('small', 'max') {
+			width: 260px;
+		}
+	}
+	& .container {
+		@include breakpoint('small', 'max') {
+			max-width: 100%;
+			padding: 0;
+		}
+		margin: 0 auto;
+	}
+	& .row {
+		list-style: none;
+		margin: 0 auto;
+	}
+	&__icone {
+		height: 60px;
+		margin: 0 auto;
+		max-width: 100%;
+		width: 60px;
+	}
+	&__title {
+		@include rfs(14);
+		color: $base-font-color;
+		font-weight: 500;
+		margin: 0 auto;
+	}
+	& p {
+		@include rfs(12);
+		margin: 0 auto;
+	}
+	& .col-3,
+	& .col-9 {
+		max-width: 100% ;
+	}
+	& .col-3 {
+		width: 50px;
+	}
+	& .col-9 {
+		padding: 0 10px;
+		width: auto;
+	}
+	& .icon-loja-oficial {
+		height: 60px;
+		text-align: center;
+		width: 60px;
+		&::before {
+			-webkit-font-smoothing: antialiased;
+			color: $default-color-gray-light;
+			content: '\e922';
+			font-family: 'whirlpool' !important;
+			font-size: 40px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+	& .icon-pagamento-2cartoes {
+		height: 60px;
+		width: 60px;
+		&::before {
+			-webkit-font-smoothing: antialiased;
+			color: $default-color-gray-light;
+			content: '\e923';
+			font-family: 'whirlpool' !important;
+			font-size: 40px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+	& .icon-parcelamento {
+		height: 60px;
+		width: 60px;
+		&::before {
+			-webkit-font-smoothing: antialiased;
+			color: $default-color-gray-light;
+			content: '\e924';
+			font-family: 'whirlpool' !important;
+			font-size: 40px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+	& .icon-compra-segura {
+		height: 60px;
+		width: 60px;
+		&::before {
+			-webkit-font-smoothing: antialiased;
+			color: $default-color-gray-light;
+			content: '\e921';
+			font-family: 'whirlpool' !important;
+			font-size: 40px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+	&.blackfriday {
+		background-color: $gray-dark;
+		color: $default-color-gray-light;
+		& .tipbar-novo__title {
+			color: $default-color-gray-light;
+		}
+		@include breakpoint('small', 'max') {
+			color: $default-color-gray-light;
+			& .tipbar-novo__title {
+				color: $default-color-gray-light;
+			}
+			& .slick-active {
+				color: $base-font-color;
+				& .tipbar-novo__title {
+					color: $base-font-color;
+				}
+				& i {
+					&::before {
+						color: $base-font-color;
+					}
+				}
+			}
+		}
+	}
+}
