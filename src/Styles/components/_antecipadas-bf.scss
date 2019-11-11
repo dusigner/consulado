@@ -1,0 +1,56 @@
+.vitrine-antecipada {
+    text-align: center;
+    &__card-desconto {
+        background-color: #97c63b;
+        height: auto;
+        padding: 10px 26px;
+        text-align: left;
+        width: 260px;
+        h2 {
+            @include rfs(50px);
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 28px;
+            span {
+                @include rfs(22px);
+                color: #403c3b;
+            }
+        }
+        h3 {
+            @include rfs(60px);
+            color: #ffffff;
+            font-weight: 800;
+            line-height: 28px;
+            small {
+                @include rfs(12px);
+            }
+            strong {
+                @include rfs(22px);
+                color: #403c3b;
+            }
+        }
+    }
+    &__title {
+        @include rfs(28px);
+        margin: 40px auto 0;
+    }
+    &__subtitle {
+        @include rfs(15);
+        margin: 10px auto 30px;
+    }
+    .vitrine-slider {
+        background-color: #f7f7f7;
+        margin-left: 20px;
+        max-width: 100%;
+        overflow: hidden;
+        width: 100%;
+
+    }
+    .row {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 100%;
+    }
+}

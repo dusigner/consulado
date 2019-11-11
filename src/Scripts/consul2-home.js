@@ -11,6 +11,7 @@ require('components/instagram-stories');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
+
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
@@ -111,6 +112,67 @@ Nitro.controller(
 			]
 		});
 
+
+		$('.vitrine-slider').find('.prateleira h2').remove(),
+		$('.vitrine-slider').find('.prateleira>ul').not('.slick-initialized').slick({
+			mobileFirst: false,
+			slidesToShow: 3,
+			centerPadding: '10px',
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			arrows: false,
+			dots: false,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						centerPadding: '30px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+
+						index: 0
+					}
+				},
+
+				{
+					breakpoint: 580,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 1,
+						centerPadding: '25px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 520,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '25px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 375,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						centerPadding: '15px',
+						index: 0
+					}
+				}
+			]
+		});
 
 		var self = this,
 			$slider = $('section.vitrines:not(.vitrine-ofertas-interesses, .vitrine-ofertas-alavancas)').find('.prateleira-slider .prateleira>ul').not('.slick-initialized');
