@@ -36,7 +36,7 @@ Nitro.controller(
 		'dataLayer-home-bf'
 	],
 
-	function(chaordic) {
+	function() {
 
 		$('.tipbar-novo .container .row').slick ({
 			mobileFirst: false,
@@ -112,15 +112,10 @@ Nitro.controller(
 			]
 		});
 
-
-		$('.vitrine-slider').find('.prateleira h2').remove(),
 		$('.vitrine-slider').find('.prateleira>ul').not('.slick-initialized').slick({
 			mobileFirst: false,
 			slidesToShow: 3,
 			centerPadding: '10px',
-			fade: false,
-			cssEase: 'ease',
-			easing: 'linear',
 			arrows: false,
 			dots: false,
 			responsive: [
@@ -133,18 +128,27 @@ Nitro.controller(
 						infinite: true,
 						initialSlide: 1,
 						centerMode: true,
-
 						index: 0
 					}
 				},
-
+				{
+					breakpoint: 998,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 2.1,
+						centerPadding: '20px',
+						infinite: true,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
+					}
+				},
 				{
 					breakpoint: 580,
 					settings: {
 						slidesToShow: 2.1,
 						slidesToScroll: 1,
 						centerPadding: '25px',
-						infinite: true,
 						initialSlide: 1,
 						centerMode: true,
 						index: 0
@@ -156,7 +160,6 @@ Nitro.controller(
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
 						centerPadding: '25px',
-						infinite: true,
 						initialSlide: 1,
 						centerMode: true,
 						index: 0
@@ -167,8 +170,10 @@ Nitro.controller(
 					settings: {
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
-						centerPadding: '15px',
-						index: 0
+						centerPadding: '20px',
+						initialSlide: 1,
+						centerMode: true,
+						index: 1
 					}
 				}
 			]

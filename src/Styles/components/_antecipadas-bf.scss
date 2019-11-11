@@ -1,34 +1,82 @@
 .vitrine-antecipada {
     text-align: center;
     &__card-desconto {
-        background-color: #97c63b;
-        height: auto;
-        padding: 10px 26px;
-        text-align: left;
-        width: 260px;
+		@include breakpoint('small', 'max') {
+			background-image: url('/arquivos/bg-mobile-antecipada-consul.png');
+			border-radius: 0;
+			width: 100%;
+			h2 {
+				// @include rfs(42px);
+				display: block;
+				float: left;
+				font-size: 42px;
+				margin: 20px auto;
+				width: 58%;
+				span {
+					// @include rfs(20px);
+					font-size: 26px;
+				}
+			}
+			h3 {
+				display: block;
+				float: right;
+				font-size: 50px;
+				margin: 0;
+				width: 42%;
+				strong {
+					// @include rfs(18px);
+					// font-size: 18px;
+					font-weight: 500;
+					position: relative;
+					top: -5px;
+				}
+				small {
+					@include rfs(14px);
+					font-size: 14px;
+				}
+			}
+		};
+		background-color: #86b034;
+		background-image: url('/arquivos/bg-desktop-antecipada-consul.png');
+		background-position: -70px 0;
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-radius: 4px;
+		height: auto;
+		padding: 80px 26px;
+		text-align: left;
+		width: 260px;
         h2 {
             @include rfs(50px);
             color: #ffffff;
             font-weight: 800;
-            line-height: 28px;
+            line-height: 35px;
             span {
-                @include rfs(22px);
+                @include rfs(30px);
                 color: #403c3b;
             }
         }
         h3 {
-            @include rfs(60px);
+            @include rfs(70px);
             color: #ffffff;
-            font-weight: 800;
-            line-height: 28px;
+			font-weight: 800;
+			line-height: 42px;
+   			margin-top: 50px;
             small {
-                @include rfs(12px);
+				@include rfs(22px);
+				font-weight: 500;
             }
             strong {
-                @include rfs(22px);
-                color: #403c3b;
+                @include rfs(26px);
+				color: #403c3b;
+				position: relative;
+				top: -12px;
             }
-        }
+		}
+		 a {
+			 @include rfs(12px);
+			 color: #ffffff;
+		 }
     }
     &__title {
         @include rfs(28px);
@@ -39,14 +87,46 @@
         margin: 10px auto 30px;
     }
     .vitrine-slider {
-        background-color: #f7f7f7;
-        margin-left: 20px;
-        max-width: 100%;
+		@include breakpoint('small', 'max') {
+			background-color: #91be38;
+			margin: 0 auto;
+			padding-bottom: 30px;
+			& .slick-slide {
+				margin-left: 20px;
+			}
+		};
+		background-color: #f7f7f7;
+		margin-left: 15px;
+		max-width: 100%;
         overflow: hidden;
         width: 100%;
-
-    }
-    .row {
+		& .box-produto {
+			background-color: #fff;
+			text-align: left;
+		}
+		& .prateleira > h2 {
+			display: none;
+			visibility: hidden;
+		}
+		& .slick-slide {
+			margin: 0 auto;
+			width: 260px !important;
+		}
+		& .slick-slider {
+			padding: 0 0 0 10px;
+		}
+	}
+	& .container {
+		@include breakpoint('small', 'max') {
+			max-width: 100%;
+			padding: 0;
+			width: 100%;
+		}
+	}
+    & .row {
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
+		};
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
