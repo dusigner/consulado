@@ -5,6 +5,7 @@ $bg-color: #212121;
 $txt-light: #736C6B;
 $txt-dark: #403C3B;
 $green: #9ACA3C;
+$txt-frete: #BBBBBB;
 
 body {
 	.vitrine-ofertas-interesses,
@@ -206,4 +207,41 @@ body {
 		display: none !important;
 		visibility: hidden !important;
 	}
+
+	.freteGratis {
+		position: relative;
+
+		&:after {
+			@include rfs(12);
+			color: $txt-frete;
+			content: '**Frete grátis apenas para regiões sul e sudeste';
+			left: 0;
+			position: absolute;
+		}
+	}
+
+	.prateleira-tabs__tabs.freteGratis {
+		&.active {
+			&:after {
+				@include breakpoint('small', 'max') {
+					display: inline-block;
+					left: 10px;
+					position: relative;
+				}
+				display: none;
+			}
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+
+	.link-shelf.freteGratis {
+		&:after {
+			@include breakpoint('small', 'max') { display: none; }
+			display: inline-block;
+		}
+	}
+
 }
