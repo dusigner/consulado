@@ -22,18 +22,20 @@ Nitro.module('instagram-stories', function() {
 
 			const $thisElement = $(this);
 			const cardTitle = $thisElement.data('storie-card-title');
-			const collectionId = Number($thisElement.data('storie-card-collection-id'));
+			const collectionId = (store.isQA) ? Number($thisElement.data('storie-card-collection-id-qa')) : Number($thisElement.data('storie-card-collection-id'));
 			const searchedCollection = $(`.stories-card-list[data-collection-id="${collectionId}"]`);
 			activeStorieId = collectionId;
-
 			self.openStories();
 			self.updateCardTitle(cardTitle);
-			self.startSlick(searchedCollection);
+
 
 			// Se a coleção já foi pesquisada, evita que uma outra chamada à API seja feita.
 			if (searchedCollection.length > 0) {
 				return;
+			} else {
+				self.startSlick(searchedCollection);
 			}
+
 
 			self.loadingAnimation();
 			self.getProducts(collectionId)
@@ -49,8 +51,10 @@ Nitro.module('instagram-stories', function() {
 
 	// Abre o card dos Stories
 	this.openStories = () => {
+		const title = $('.stories-card__header strong');
 		$stories.find(`.stories-card__marker-${activeStorieId}`).show();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).show();
+		(activeStorieId === 1834 || activeStorieId === 166) ? title.text('Frete grátis para as regiões Sul e Sudeste') : title.text('Produtos atualizados todo dia')
 		$storiesCard.addClass('is--open');
 	};
 

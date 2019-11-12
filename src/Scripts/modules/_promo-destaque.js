@@ -14,14 +14,23 @@ const discountCalculate = (listPrice, bestPrice) => Number(listPrice - bestPrice
 // Troca o ponto por vírgula para exibição no front.
 const discountFormat = discount => discount.replace('.', ',');
 
-// Verifica se o desconto está dentro do range estabelecido pelas regras de negócio.
-const discountValidate = (discount, productPrice) => {
+// Verifica se o desconto está dentro do range nominal estabelecido pelas regras de negócio.
+/*const discountNominalValidate = (discount, productPrice) => {
 	const prodDiscount = Number(discount);
 	const prodPrice = Number(productPrice);
 	const minPrice = 50.0;
 	const maxPrice = 950.0;
 
 	return !!(prodDiscount >= minPrice && prodDiscount <= maxPrice && prodDiscount < prodPrice);
+};*/
+
+// Verifica se o desconto está dentro do range percentual estabelecido pelas regras de negócio.
+const discountPercentageValidate = (prodListPrice, prodBestPrice) => {
+	const discountPercentage = Math.abs((prodBestPrice / prodListPrice ) - 1).toFixed(2);
+	const discountMin = 0.05; // Mínimo de 5% de desconto
+	const discountMax = 0.60; // Máximo de 60% de desconto
+
+	return !!(discountPercentage >= discountMin && discountPercentage <= discountMax);
 };
 
 // Troca os espaços do texto por traços e padroniza o tamanho para definirmos o nome das imagens
@@ -35,7 +44,8 @@ const promoDestaque = produto => {
 	const precoPor = formatValue(produto.find('.por .val').text());
 	const desconto = discountCalculate(precoDe, precoPor);
 
-	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
+	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
+	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
 	// if (hasPromo.length) {
 		const promoText = hasPromo.text().split('__');
 		const promoPreTitle = promoText[2];
@@ -71,7 +81,8 @@ const prodPromoDestaque = () => {
 	const precoPor = formatValue($prodPreco.find('.skuBestPrice').text());
 	const desconto = discountCalculate(precoDe, precoPor);
 
-	if (hasPromo.length && precoDe.length && discountValidate(desconto, precoPor)) {
+	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
+	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
 	// if (hasPromo.length) {
 		const promoText = hasPromo.text().split('__');
 		const promoPreTitle = promoText[2];
