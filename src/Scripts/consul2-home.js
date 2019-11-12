@@ -116,7 +116,7 @@ Nitro.controller(
 			mobileFirst: false,
 			slidesToShow: 3,
 			centerPadding: '10px',
-			arrows: false,
+			arrows: true,
 			dots: false,
 			responsive: [
 				{
