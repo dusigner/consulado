@@ -138,9 +138,9 @@ Nitro.controller(
 		};
 
 		//setup modal
-		$('a[data-modal]').click(function(e) {
-			e.preventDefault();
-			$('#modal-' + $(this).data('modal')).vtexModal();
+		$('a[data-modal]').on('click', ({currentTarget}) => {
+			const $element = $(currentTarget);
+			$('#modal-' + $element.data('modal')).vtexModal();
 		});
 
 		//Opções de parcelamento

@@ -1,0 +1,54 @@
+.product {
+    &-assist {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 180px auto;
+        > h2 {
+            width: 100%;
+            margin: 8px 0;
+            line-height: 1.1;
+            @media(max-width: 768px) {
+                text-align: left;
+            }
+        }
+        > p {
+            width: 100%;
+            margin: 0 auto;
+            @media(max-width: 768px) {
+                text-align: left;
+            }
+        }
+        &-row {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 60px;
+            @media (max-width: 768px) {
+                margin-top: 25px;
+            }
+        }
+        &-block {
+            width: 25%;
+            padding: 0 15px;
+            @media (max-width: 768px) {
+                width: 100%;
+                padding: 15px 0;
+            }
+            > h3 {
+                margin: 0;
+                font-size: 14px;
+            }
+            > p {
+                margin: 5px 0;
+                font-size: 12px;
+            }
+            > a {
+                color: #9ACA3C;
+                font-size: 12px;
+                > b {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
