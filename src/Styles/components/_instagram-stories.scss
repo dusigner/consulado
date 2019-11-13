@@ -88,6 +88,15 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 			line-height: 16px;
 			margin: 7px 0 0 0;
 			padding: 0;
+			position: relative;
+
+			span {
+				display: inline-block;
+				font-size: 7px;
+				position: absolute;
+				right: -8px;
+				top: -2px;
+			}
 		}
 	}
 }
