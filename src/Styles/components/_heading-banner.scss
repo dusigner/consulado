@@ -44,8 +44,20 @@ body.listagem {
 	}
 
 	.category-banner {
+		&-mobile,
+		&-desktop {
+			overflow: hidden;
+
+			&.slick-slider { padding: 0; }
+
+			.box-banner a { display: block; }
+
+			img { height: auto; width: 100%; }
+		}
+
 		&-mobile {
 			display: none;
+			max-height: 500px;
 
 			img {
 				max-height: 500px;
@@ -59,14 +71,14 @@ body.listagem {
 		}
 
 		&-desktop {
-			display: inline-block;
+			@include breakpoint ('extra-small', 'max') { display: none; }
+			max-height: 190px;
+			// display: inline-block;
+			// border: 1px solid #333;
 
 			img {
+				height: auto;
 				max-width: 100%;
-			}
-
-			@include breakpoint ('extra-small', 'max') {
-				display: none;
 			}
 		}
 	}
