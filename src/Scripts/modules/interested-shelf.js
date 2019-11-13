@@ -8,6 +8,7 @@ Nitro.module('interested-shelf', function() {
 
 		$.each(shelfTitle, (index, value) => {
 			const title = $(value).find('h2').text().split(' - ');
+			let className = '';
 
 			tabList.append(`
 				<li>
@@ -17,11 +18,16 @@ Nitro.module('interested-shelf', function() {
 				</li>
 			`);
 
+			if (title[0] === 'Frete Grátis') {
+				className = 'freteGratis';
+			}
+
 			$(value).append(`
-				<span class="link-shelf">
+				<span class="link-shelf ${className}">
 					<a href="/busca?fq=H:${title[1]}">Veja todos os produtos</a>
 				</span>
 			`);
+
 		});
 	};
 
@@ -32,6 +38,8 @@ Nitro.module('interested-shelf', function() {
 		tabElement.on('click', function() {
 			tabElement.removeClass('active');
 			$(this).addClass('active');
+
+			($(this).text().trim() === 'Frete Grátis') ? $(this).parents('.freteGratis').addClass('active') : $(this).parents('.freteGratis').removeClass('active');
 
 			shelves.find('.slick-initialized').slick('unslick');
 
@@ -81,10 +89,13 @@ Nitro.module('interested-shelf', function() {
 			const tabText = $(value).text().toLowerCase();
 
 			(tabText.indexOf('friday') > -1) ? $(value).parent().addClass('blackfriday') : '';
-			(tabText.indexOf('frete') > -1) ? $(value).parent().addClass('frete') : '';
 			(tabText.indexOf('40') > -1) ? $(value).parent().addClass('quarenta') : '';
 			(tabText.indexOf('20') > -1) ? $(value).parent().addClass('vinte') : '';
 			(tabText.indexOf('vista') > -1) ? $(value).parent().addClass('vista') : '';
+			if (tabText.indexOf('frete') > -1) {
+				$(value).parent().addClass('frete');
+				shelf.find('.prateleira-tabs__tabs').addClass('freteGratis');
+			}
 		});
 
 		if (tabElement.length === 5) {

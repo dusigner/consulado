@@ -387,10 +387,17 @@ Nitro.controller(
 			}
 		}
 
-		$('.listagem-apoio').on('click', function(e) {
-			e.preventDefault();
 
-			$(this).toggleClass('active');
-		});
+		const listagemApoio = $('.listagem-apoio');
+
+		if ($('.listagem-apoio p:empty').length !== 0 ) {
+			listagemApoio.addClass('hideText');
+		} else {
+			listagemApoio.find('.icon-arrow-down').on('click', function(e) {
+				e.preventDefault();
+
+				$(this).parents('.listagem-apoio').toggleClass('active');
+			});
+		}
 	}
 );
