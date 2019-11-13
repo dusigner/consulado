@@ -8,12 +8,15 @@
     	padding-right: 20px;
     	text-align: right;
 		@include breakpoint('small', 'max') {
-			bottom: 10px;
+			bottom: 20px;
 			color: #ffffff;
 			position: absolute;
 		}
    }
     &__card-desconto {
+		@include breakpoint('small', 'min') {
+			margin-top: 30px;
+		}
 		@include breakpoint('small', 'max') {
 			background-image: url('/arquivos/bg-mobile-antecipada-consul.png');
 			background-position: -75px -40px;
@@ -114,7 +117,8 @@
 		@include breakpoint('small', 'max') {
 			background-color: #96c53a;
 			margin: 0 auto;
-			padding-bottom: 30px;
+			padding-bottom: 50px;
+			padding-left: 5px;
 			& .slick-slide {
 				margin-left: 20px;
 			}
@@ -126,7 +130,6 @@
 				margin: 0 20px;
 			}
 		};
-		margin-left: 15px;
 		max-width: 100%;
 		overflow: hidden;
 		position: relative;
@@ -142,24 +145,37 @@
 			visibility: hidden;
 		}
 		& .slick-slide {
+			@include breakpoint('small', 'min') {
+				padding-left: 15px;
+			}
 			margin: 0 auto;
-			width: 260px !important;
+			width: 280px !important;
+
 		}
 		& .slick-slider {
 			padding: 0 0 0 2px;
 		}
 		& .slick-prev {
 			left: inherit;
-			right: 45px;
+			right: 50px;
 		}
 		& .slick-next {
 			left: inherit;
-			right: 10px;
+			right: 20px;
 		}
 		& .slick-prev,
 		& .slick-next {
 			color: #fff;
-			top: -20px;
+			@include breakpoint('small', 'min') {
+				top: -20px;
+			};
+			@include breakpoint('small', 'max') {
+				bottom: -84px;
+				top: auto;
+				&:before {
+					color: #fff;
+				}
+			};
 			&:before {
 				color: #403C3B;
 				font-size: 12px;

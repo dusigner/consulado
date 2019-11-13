@@ -134,13 +134,13 @@ Nitro.controller(
 				{
 					breakpoint: 998,
 					settings: {
-						slidesToShow: 2.1,
-						slidesToScroll: 2.1,
-						centerPadding: '20px',
+						slidesToShow: 2,
+						slidesToScroll: 1,
+						centerPadding: '30px',
 						infinite: true,
-						initialSlide: 1,
-						centerMode: true,
-						index: 0
+						// initialSlide: 1,
+						// centerMode: true,
+						// index: 0
 					}
 				},
 				{
@@ -170,7 +170,7 @@ Nitro.controller(
 					settings: {
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
-						centerPadding: '20px',
+						centerPadding: '15px',
 						initialSlide: 1,
 						centerMode: true,
 						index: 1
