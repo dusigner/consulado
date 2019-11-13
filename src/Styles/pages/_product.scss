@@ -315,15 +315,20 @@ div#modal-custom-share {
 
 .cep-invalido {
 	.valor {
+		background-color: $gray-c410;
+		padding: 12px;
+
 		strong {
 			display: none;
 		}
 
 		&:after {
+			@include rfs(12);
+			color: $red-error;
 			content: 'Não temos entrega disponível para este produto no CEP informado.';
 			display: block;
-			font-weight: 700;
-			width: 90%;
+			font-weight: 500;
+			width: 70%;
 		}
 	}
 }
