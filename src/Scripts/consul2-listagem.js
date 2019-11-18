@@ -275,10 +275,12 @@ Nitro.controller(
 
 
 		// Banners categoris
-		var $bannersSlider = $('.category-banner-desktop').not('.slick-initialized');
+		var $bannersSlider = $('.category-banner-desktop, .category-banner-mobile').not('.slick-initialized');
 
 		this.setupBannersSlider = function($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
+				autoplay: true,
+				autoplaySpeed: 7000,
 				infinite: true,
 				slidesToShow: 1,
 				slidesToScroll: 1,
@@ -310,6 +312,18 @@ Nitro.controller(
 				.addClass('col-xs-6 col-md-12');
 		};
 
+		self.setupBannersSlider($bannersSlider);
+
+		$(window).resize(() => {
+			self.setupBannersSlider($bannersSlider);
+		});
+
+		//inicia automaticamente prateleiras sliders no desktop
+		if ($(window).width() > 768) {
+			self.setupSlider($slider);
+			self.setupBannersSlider($bannersSlider);
+		}
+
 		//ANTIGO FILTRO
 		//click abrir filtros no mobile
 		// $('.open-filter').click(function(e) {
@@ -331,11 +345,6 @@ Nitro.controller(
 		//     $singleFilterOptions.slideToggle().toggleClass('open');
 		// });
 
-		//inicia automaticamente prateleiras sliders no desktop
-		if ($(window).width() > 768) {
-			self.setupSlider($slider);
-			self.setupBannersSlider($bannersSlider);
-		}
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
