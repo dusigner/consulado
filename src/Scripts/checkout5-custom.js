@@ -490,7 +490,7 @@ $(document).on('ready', function() {
 
 				$('#ship-number').attr('maxlength', 10);
 
-				$('#ship-more-info').attr('maxlength', 750);
+				$('#ship-more-info').attr('maxlength', 50);
 
 				$('#ship-street, #ship-name').attr('maxlength', 35);
 
@@ -516,8 +516,8 @@ $(document).on('ready', function() {
 
 						if (e.$element.is('#ship-more-info')) {
 							e.$element.attr({
-								maxlength: 750,
-								'data-parsley-maxlength': 750
+								maxlength: 50,
+								'data-parsley-maxlength': 50
 							});
 						}
 
