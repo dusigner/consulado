@@ -156,6 +156,7 @@ body {
 	nav.top-navigation {
 		background: linear-gradient(90deg, $menu-section 50%, $search 50%);
 		border-top: 1px solid $border-color;
+		bottom: 0;
 		box-shadow: none;
 
 		.menu-department {

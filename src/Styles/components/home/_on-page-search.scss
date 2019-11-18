@@ -1,0 +1,96 @@
+.onpage-search {
+	@include breakpoint('small', 'min') { text-align: center; }
+	background-color: #111111;
+	color: #fff;
+	padding: 4.5em 0;
+
+	// Title
+	&__title {
+		@include rfs(28px);
+		display: block;
+		font-weight: 900;
+	}
+
+	&__description {
+		@include rfs(14px);
+		font-weight: 500;
+	}
+
+	// Form
+	&__form {
+		@include inputPlaceholderColor(#fff);
+		background-color: #ccc;
+		margin: 2em auto;
+		max-width: 600px;
+		position: relative;
+
+		.icon-consul-loupe,
+		button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.icon-consul-loupe {
+			@include breakpoint('small', 'max') { display: none; }
+			@include rfs(18px);
+			left: 20px;
+		}
+
+		button {
+			@include breakpoint('small', 'max') {
+				@include rfs(11px);
+				padding-right: 10px;
+				right: 10px;
+			}
+			@include rfs(14px);
+			background: none;
+			border: none;
+			font-weight: 500;
+			padding-right: 15px;
+			right: 30px;
+
+			&:after {
+				@include breakpoint('small', 'max') { @include rfs(6px); }
+				@include icon-get('right-arrow');
+				@include rfs(9px);
+				position: absolute;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+
+		input {
+			@include breakpoint('small', 'max') { padding: 10px 65px 10px 10px; }
+			@include rfs(12px);
+			background-color: #2A2A2A;
+			display: block;
+			height: 70px;
+			margin: 0;
+			padding: 10px 90px 10px 45px;
+			width: 100%;
+		}
+	}
+
+	// Link
+	&__link {
+		@include rfs(12px);
+		color: #9ACA3C;
+		display: inline-block;
+		font-weight: 500;
+		padding-right: 17px;
+		position: relative;
+
+		&:after {
+			@include icon-get('right-arrow');
+			font-size: 9px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&:hover { text-decoration: underline; }
+	}
+}

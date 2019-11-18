@@ -1,0 +1,24 @@
+$bgcolor: #212121;
+
+body {
+	.shelf-bf {
+		background-color: $bgcolor;
+		overflow: hidden;
+
+		.pre-title {
+			color: #fff;
+			margin: 0 0 20px;
+			text-align: center;
+
+			span { color: #fff; }
+		}
+
+		.box-produto { background-color: #fff; }
+
+		div[data-chaordic] {
+			margin: 48px 0;
+
+			&:empty { display: none; }
+		}
+	}
+}
