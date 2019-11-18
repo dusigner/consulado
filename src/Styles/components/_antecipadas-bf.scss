@@ -1,0 +1,217 @@
+.vitrine-antecipada {
+	text-align: center;
+	.link-vitrine {
+		@include rfs(14px);
+		color: #ffffff;
+		display: block;
+		margin-left: 25px;
+    	text-align: right;
+		@include breakpoint('small', 'max') {
+			bottom: 20px;
+			color: #ffffff;
+			position: absolute;
+		}
+   }
+    &__card-desconto {
+		@include breakpoint('small', 'min') {
+			margin-top: 30px;
+		}
+		@include breakpoint('small', 'max') {
+			background-image: url('/arquivos/bg-mobile-antecipada-consul.png');
+			background-position: -75px -40px;
+			background-size: 124%;
+			border-radius: 0;
+			padding: 12px 26px;
+			width: 100%;
+			h2 {
+				display: block;
+				float: left;
+				line-height: 24px;
+				margin: 20px auto;
+				padding: 0;
+				width: 58%;
+			}
+			h3 {
+				display: block;
+				float: right;
+				line-height: 26px;
+				margin: 0;
+				padding: 0;
+				width: 42%;
+				strong {
+					font-weight: 500;
+					position: relative;
+					top: -5px;
+				}
+			}
+			.link-vitrine {
+				display: none;
+			}
+		}
+		align-content: space-between;
+		background: transparent linear-gradient(180deg, #9ACA3C 0%, #86B034 100%) 0% 0% no-repeat padding-box;
+		border-radius: 4px;
+		display: flex;
+		flex-wrap: wrap;
+		height: auto;
+		overflow: hidden;
+		padding: 70px 0 20px;
+		text-align: left;
+		width: 310px;
+        h2 {
+            @include rfs(50px);
+            color: #ffffff;
+            font-weight: 800;
+			line-height: 35px;
+			margin: 0;
+			padding-left: 25px;
+            span {
+                @include rfs(30px);
+                color: #403c3b;
+            }
+        }
+        h3 {
+            @include rfs(70px);
+            color: #ffffff;
+			font-weight: 800;
+			line-height: 42px;
+			margin: 0;
+			padding-left: 25px;
+            small {
+				@include rfs(22px);
+				font-weight: 500;
+            }
+            strong {
+                @include rfs(26px);
+				color: #403c3b;
+				position: relative;
+				top: -12px;
+            }
+		}
+		.linha-branca {
+			display: none;
+		}
+		@include breakpoint('small', 'min') {
+			.linha-branca {
+				display: block;
+				height: auto;
+				margin: 0 auto -80px;
+				width: 240px;
+				img {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+    }
+    &__title {
+        @include rfs(28px);
+        margin: 40px auto 0;
+    }
+    &__subtitle {
+        @include rfs(15);
+        margin: 10px auto 30px;
+    }
+    .vitrine-slider {
+		@include breakpoint('small', 'max') {
+			background-color: #96c53a;
+			margin: 0 auto;
+			padding-bottom: 50px;
+			padding-left: 5px;
+			& .slick-slide {
+				margin-left: 20px;
+			}
+			& .prateleira {
+				margin-bottom: 10px;
+			}
+			& .link-vitrine {
+				color: #fff;
+				margin: 0 20px;
+			}
+		};
+		max-width: 100%;
+		overflow: hidden;
+		position: relative;
+		text-align: left;
+		width: 100%;
+
+		& .box-produto {
+			background-color: #fff;
+			text-align: left;
+		}
+		& .prateleira > h2 {
+			display: none;
+			visibility: hidden;
+		}
+		& .slick-slide {
+			@include breakpoint('small', 'min') {
+				padding-left: 15px;
+			}
+			margin: 0 auto;
+			width: 280px !important;
+
+		}
+
+		& .slick-next:before {
+			content: '\e92a';
+			display: block;
+		}
+		& .slick-prev:before {
+			content: '\e929';
+			display: block;
+		}
+		& .slick-slider {
+			padding: 0 0 0 2px;
+		}
+		& .slick-prev {
+			left: inherit;
+			right: 40px;
+		}
+		& .slick-next {
+			left: inherit;
+			right: 10px;
+		}
+		& .slick-prev,
+		& .slick-next {
+			@include breakpoint('small', 'min') {
+				&:before {
+					color: #403C3B;
+				}
+				top: -20px;
+			};
+			@include breakpoint('small', 'max') {
+				bottom: -84px;
+				top: auto;
+			};
+			&:before {
+				color: #ffffff;
+				display: block;
+				font-size: 12px;
+			}
+		}
+		& .link-vitrine {
+			color: #403c3b;
+			font-weight: 500;
+			margin-bottom: 10px;
+			margin-right: 80px;
+		}
+
+	}
+	& .container {
+		@include breakpoint('small', 'max') {
+			max-width: 100%;
+			padding: 0;
+			width: 100%;
+		}
+	}
+    & .row {
+		@include breakpoint('small', 'max') {
+			flex-direction: column;
+		};
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
