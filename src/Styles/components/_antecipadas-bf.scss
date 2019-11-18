@@ -5,7 +5,6 @@
 		color: #ffffff;
 		display: block;
 		margin-left: 25px;
-    	padding-right: 20px;
     	text-align: right;
 		@include breakpoint('small', 'max') {
 			bottom: 20px;
@@ -152,35 +151,7 @@
 			width: 280px !important;
 
 		}
-		& .slick-slider {
-			padding: 0 0 0 2px;
-		}
-		& .slick-prev {
-			left: inherit;
-			right: 50px;
-		}
-		& .slick-next {
-			left: inherit;
-			right: 20px;
-		}
-		& .slick-prev,
-		& .slick-next {
-			color: #fff;
-			@include breakpoint('small', 'min') {
-				top: -20px;
-			};
-			@include breakpoint('small', 'max') {
-				bottom: -84px;
-				top: auto;
-				&:before {
-					color: #fff;
-				}
-			};
-			&:before {
-				color: #403C3B;
-				font-size: 12px;
-			}
-		}
+
 		& .slick-next:before {
 			content: '\e92a';
 			display: block;
@@ -189,11 +160,40 @@
 			content: '\e929';
 			display: block;
 		}
+		& .slick-slider {
+			padding: 0 0 0 2px;
+		}
+		& .slick-prev {
+			left: inherit;
+			right: 40px;
+		}
+		& .slick-next {
+			left: inherit;
+			right: 10px;
+		}
+		& .slick-prev,
+		& .slick-next {
+			@include breakpoint('small', 'min') {
+				&:before {
+					color: #403C3B;
+				}
+				top: -20px;
+			};
+			@include breakpoint('small', 'max') {
+				bottom: -84px;
+				top: auto;
+			};
+			&:before {
+				color: #ffffff;
+				display: block;
+				font-size: 12px;
+			}
+		}
 		& .link-vitrine {
 			color: #403c3b;
 			font-weight: 500;
 			margin-bottom: 10px;
-			padding-right: 80px;
+			margin-right: 80px;
 		}
 
 	}

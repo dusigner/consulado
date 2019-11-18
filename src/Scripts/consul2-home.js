@@ -115,18 +115,20 @@ Nitro.controller(
 		$('.vitrine-slider').find('.prateleira>ul').not('.slick-initialized').slick({
 			mobileFirst: false,
 			slidesToShow: 3,
+			slidesToScroll: 3,
 			centerPadding: '10px',
 			arrows: true,
-			dots: false,
+			infinite: true,
 			responsive: [
 				{
 					breakpoint: 1024,
 					settings: {
-						slidesToShow: 3,
-						slidesToScroll: 3,
+						slidesToShow: 2.1,
+						slidesToScroll: 2.1,
 						centerPadding: '30px',
 						infinite: true,
 						initialSlide: 1,
+						arrows: true,
 						centerMode: true,
 						index: 0
 					}
@@ -138,9 +140,7 @@ Nitro.controller(
 						slidesToScroll: 1,
 						centerPadding: '30px',
 						infinite: true,
-						// initialSlide: 1,
-						// centerMode: true,
-						// index: 0
+						arrows: true,
 					}
 				},
 				{
@@ -150,6 +150,7 @@ Nitro.controller(
 						slidesToScroll: 1,
 						centerPadding: '25px',
 						initialSlide: 1,
+						arrows: true,
 						centerMode: true,
 						index: 0
 					}
@@ -162,6 +163,7 @@ Nitro.controller(
 						centerPadding: '25px',
 						initialSlide: 1,
 						centerMode: true,
+						arrows: true,
 						index: 0
 					}
 				},
@@ -173,6 +175,7 @@ Nitro.controller(
 						centerPadding: '15px',
 						initialSlide: 1,
 						centerMode: true,
+						arrows: true,
 						index: 1
 					}
 				}
