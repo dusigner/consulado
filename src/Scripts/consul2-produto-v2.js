@@ -20,7 +20,7 @@ import 'modules/product/color-selector';
 import 'modules/chaordic';
 
 Nitro.controller(
-	'produto',
+	'produto-v2',
 	[
 		'chaordic',
 		'color-selector',
@@ -45,11 +45,9 @@ Nitro.controller(
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-	//	chaordic.init('product', window.skuJson.productId);
+		//chaordic.init('product', window.skuJson.productId);
 
 		gallery.init();
-
-		console.log('@#@#@#@#@#@#@');
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
