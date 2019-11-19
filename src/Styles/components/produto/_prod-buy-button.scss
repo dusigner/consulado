@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+
+#BuyButton {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 1em;
+
+	.buy-button {
+		@include rfs(12px);
+		background-color: $green;
+		border-radius: 50px;
+		color: #fff;
+		padding: 7px 15px;
+		text-align: center;
+		width: 50%;
+
+		&:hover {
+			background-color: darken($green, 10%);
+			color: #fff;
+		}
+	}
+
+	.buy-button,
+	.secure {
+		@include breakpoint('extra-small', 'max') { flex: 1 0 100%; }
+		flex: 1 1 50%;
+		text-align: center;
+	}
+
+	.secure {
+		@include rfs(12px);
+		color: #E3E1E1;
+		font-weight: bold;
+		padding: 7px;
+		text-transform: uppercase;
+	}
+}
