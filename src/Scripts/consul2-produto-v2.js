@@ -281,7 +281,7 @@ Nitro.controller(
 					});
 					$btnPecas
 						.attr('href', url)
-						.parent()
+						.parents('.product-assist-block')
 						.addClass('has--parts');
 				}
 				// else{
