@@ -273,6 +273,57 @@ Nitro.controller(
 
 		$('#quem-viu-clicou h2').text('Produtos em destaque');
 
+
+		// Banners categoris
+		var $bannersSlider = $('.category-banner-desktop, .category-banner-mobile').not('.slick-initialized');
+
+		this.setupBannersSlider = function($currentSlider) {
+			$currentSlider.not('.slick-initialized').slick({
+				autoplay: true,
+				autoplaySpeed: 7000,
+				infinite: true,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				arrows: false,
+				dots: true,
+				responsive: [
+					{
+						breakpoint: 990,
+						settings: {
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							dots: true,
+							slidesToShow: 1,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+
+			//ajusta para mobile - prateleira slider
+			$('section.slider .prateleira-slider .prateleira ul')
+				.find('.detalhes>a')
+				.addClass('col-xs-6 col-md-12');
+		};
+
+		self.setupBannersSlider($bannersSlider);
+
+		$(window).resize(() => {
+			self.setupBannersSlider($bannersSlider);
+		});
+
+		//inicia automaticamente prateleiras sliders no desktop
+		if ($(window).width() > 768) {
+			self.setupSlider($slider);
+			self.setupBannersSlider($bannersSlider);
+		}
+
 		//ANTIGO FILTRO
 		//click abrir filtros no mobile
 		// $('.open-filter').click(function(e) {
@@ -294,10 +345,6 @@ Nitro.controller(
 		//     $singleFilterOptions.slideToggle().toggleClass('open');
 		// });
 
-		//inicia automaticamente prateleiras sliders no desktop
-		if ($(window).width() > 768) {
-			self.setupSlider($slider);
-		}
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
@@ -349,10 +396,17 @@ Nitro.controller(
 			}
 		}
 
-		$('.listagem-apoio').on('click', function(e) {
-			e.preventDefault();
 
-			$(this).toggleClass('active');
-		});
+		const listagemApoio = $('.listagem-apoio');
+
+		if ($('.listagem-apoio p:empty').length !== 0 ) {
+			listagemApoio.addClass('hideText');
+		} else {
+			listagemApoio.find('.icon-arrow-down').on('click', function(e) {
+				e.preventDefault();
+
+				$(this).parents('.listagem-apoio').toggleClass('active');
+			});
+		}
 	}
 );

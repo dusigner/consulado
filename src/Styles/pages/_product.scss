@@ -1,6 +1,6 @@
 @charset 'UTF-8';
 
-@import 'components/produto/recurrence';
+// @import 'components/produto/recurrence';
 
 body.produto {
 	overflow: initial!important;
@@ -17,6 +17,16 @@ body.produto {
 				.container { padding: 0; }
 				.slick-dots { bottom: 65px !important; }
 			}
+		}
+
+		h1.lead,
+		h2.title,
+		.item h3 { @include font-size(30px); }
+
+		h1.lead {
+			@include breakpoint('small', 'max') { margin-bottom: 10px; }
+			display: inline-block;
+			margin-bottom: 0;
 		}
 
 		h2.title,
@@ -292,13 +302,20 @@ div#modal-custom-share {
 
 .cep-invalido {
 	.valor {
-		strong { display: none; }
+		background-color: $gray-c410;
+		padding: 12px;
+
+		strong {
+			display: none;
+		}
 
 		&:after {
+			@include rfs(12);
+			color: $red-error;
 			content: 'Não temos entrega disponível para este produto no CEP informado.';
 			display: block;
-			font-weight: 700;
-			width: 90%;
+			font-weight: 500;
+			width: 70%;
 		}
 	}
 }

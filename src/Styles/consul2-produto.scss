@@ -29,6 +29,9 @@
 @import 'components/mod-prateleira-v2';
 
 @import 'pages/product';
+
+@import 'components/produto/_upsell-prod';
+@import 'components/produto/_frete';
 @import 'components/produto/gallery';
 @import 'components/produto/prod-title';
 @import 'components/produto/prod-info';
@@ -53,3 +56,27 @@
 @import 'components/produto/special-content';
 @import 'components/produto/recurrence-modal';
 // @import 'components/produto/quiz-install';
+
+.trustvox-rating {
+	margin-bottom: 24px;
+}
+#trustvox-reviews {
+	@include responsiveFont(25);
+	margin: 50px 0;
+	text-align: center;
+}
+.trustvox-widget-rating .ts-shelf-container,
+.trustvox-widget-rating .trustvox-shelf-container {
+	display: inline-block;
+}
+.trustvox-widget-rating span.rating-click-here {
+	color: #DAA81D;
+	display: inline-block;
+	font-size: 12px;
+	padding-left: 5px;
+	position: relative;
+	top: -4px;
+}
+.trustvox-widget-rating:hover span.rating-click-here {
+	text-decoration: underline;
+}

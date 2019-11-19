@@ -13,8 +13,7 @@ body.listagem {
 			padding: 20px 32px 20px 15px;
 		}
 
-		&::after {
-			@include icon-get('arrow-down');
+		.icon-arrow-down {
 			font-size: 5px;
 			position: absolute;
 			right: 20px;
@@ -46,12 +45,12 @@ body.listagem {
 				max-height: 500px;
 			}
 
-			&:after {
+			.icon-arrow-down {
 				transform: rotate(180deg);
 			}
 		}
 
-		&:empty {
+		&.hideText {
 			display: none;
 		}
 	}

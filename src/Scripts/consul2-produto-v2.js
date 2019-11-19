@@ -273,19 +273,16 @@ Nitro.controller(
 				// console.log('sim');
 				if ($pecasModels) {
 					$pecasModels = $pecasModels.replace(/\s+/g, '').split(';');
-					$pecasModels = $pecasModels.filter(function(item, pos) {
+					$pecasModels = $pecasModels.filter((item, pos) => {
 						return $pecasModels.indexOf(item) === pos && testNumber.test(item) === false;
 					});
-					$pecasModels.forEach(function(val) {
+					$pecasModels.forEach((val) => {
 						url += 'fq=alternateIds_RefId:' + val + '&';
 					});
 					$btnPecas
-						.find('a')
 						.attr('href', url)
 						.parent()
-						.css({
-							display: 'inline-block'
-						});
+						.addClass('has--parts');
 				}
 				// else{
 				// 	console.log('não');

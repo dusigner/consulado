@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+
+
+$breakpoint-map: (
+	'small' 	: 	767px,
+	'medium'    :	980px,
+	'large'    :	1200px,
+);
+
+//Style Banner Combos Blackfriday
+
+.banner-combos {
+	background: linear-gradient(to bottom, #222222 0%, #0d0c0c 100%);
+	background-color: #222222;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222222', endColorstr='#0d0c0c', GradientType=0 );
+	& .box-banner {
+		display: block;
+		height: auto;
+		width: 100%;
+		img {
+			display: block;
+			height: auto;
+			margin: 0 auto;
+			width: 100%;
+			@include breakpoint('large', 'min') {
+				height: 280px;
+				width: auto;
+			}
+		}
+	}
+
+	& .btn-outline {
+		@include rfs(14);
+		border: 2px solid #fff;
+		border-radius: 10em;
+		color: #fff;
+		display: block;
+		font-weight: 500;
+		margin: 0 auto;
+		padding: 6px 20px;
+		text-align: center;
+		transition: background-color, border-color, 0.3s ease;
+		width: 130px;
+		&:hover {
+			background-color: #9aca3c;
+			border-color: transparent;
+		}
+		@include breakpoint('small', 'max') {
+			background-color: #9aca3c;
+			border-width: 0;
+			float: right;
+		}
+	}
+}
