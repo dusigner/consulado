@@ -145,11 +145,8 @@ Nitro.controller(
 		//Opções de parcelamento
 		self.valoresParcelas = function() {
 			var $valoresParcelas = $('.valores-parcelas'),
-				$valoresParcelasContainer = $('.formas-pagamento-container'),
 				$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
-
-			// $showParcelas.text('Ver parcelas');
 
 			$opcoesParcelamento.find('li').each(function() {
 				var $numeroParcelas = $(this).find('span:first-child'),
@@ -172,23 +169,11 @@ Nitro.controller(
 				$valorParcela.text('de ' + $valorParcela.text());
 			});
 
+			// Exibe as opções de parcelamento
 			$showParcelas.click(function() {
-				$valoresParcelasContainer.toggleClass('is--active');
+				$(this).parents('.formas-pagamento-container').toggleClass('is--active');
 			});
 
-			// $showParcelas.click(function() {
-			// 	if (
-			// 		$(this).hasClass('active') ||
-			// 		$opcoesParcelamento.find('.other-payment-method-intereset-yes').length === 0
-			// 	) {
-			// 		$valoresParcelas.find('>p').slideUp();
-			// 	} else {
-			// 		$valoresParcelas.find('>p').slideDown();
-			// 	}
-
-			// 	$(this).toggleClass('active');
-			// 	$opcoesParcelamento.slideToggle();
-			// });
 
 			$('.select-voltage .select.skuList label').click(function() {
 				$valoresParcelas.find('>p').slideUp();

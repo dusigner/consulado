@@ -155,7 +155,7 @@
 			top: 10px;
 			transition: .3s linear all;
 			width: 25px;
-			z-index: 55;
+			z-index: 10;
 
 			&::before { display: none; }
 			&:after { content: 'x'; }

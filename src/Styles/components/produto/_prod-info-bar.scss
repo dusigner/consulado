@@ -1,0 +1,79 @@
+.product-info-bar {
+	background-color: #fff;
+	border-bottom: 2px solid $green;
+	border-top: 1px solid #f1f0f0;
+	bottom: 0;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
+	left: 0;
+	position: fixed;
+	width: 100%;
+	z-index: 15;
+
+	// Hide elements
+	.discount-boleto,
+	.valor-dividido,
+	.preco-a-vista,
+	.economia-de {
+		display: none!important;
+		visibility: hidden!important;
+	}
+
+	// Container
+	&__container {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		padding: 12px 15px;
+
+		& > div { flex: 1; }
+	}
+
+	// Preço
+	&__price {
+		.descricao-preco { margin: 0; }
+
+		em {
+			font-size: 0;
+			font-style: normal;
+		}
+
+		.skuListPrice {
+			@include rfs(12px);
+			color: #736C6B;
+			font-weight: 500;
+			text-decoration: line-through;
+		}
+
+		.skuBestPrice {
+			@include rfs(26px);
+			color: #9ACA3C;
+			font-weight: bold;
+		}
+	}
+
+	// Comprar
+	&__buy {
+		margin: 0!important;
+
+		.buy-button {
+			font-weight: 500;
+			padding: 0 40px
+		}
+	}
+
+	// Fomas de pagamento
+	.formas-pagamento-container {
+		margin: 0;
+		max-height: 39px;
+		transition: max-height .3s ease;
+
+		.titulo-parcelamento { text-indent: 15px; }
+
+		&.is--active {
+			height: auto;
+			max-height: 450px;
+
+			.valores-parcelas { position: relative; }
+		}
+	}
+}
