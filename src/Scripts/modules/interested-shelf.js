@@ -4,7 +4,8 @@ Nitro.module('interested-shelf', function() {
 
 	this.createTabList = shelf => {
 		const tabList = shelf.find('.prateleira-tabs__tabs'),
-			shelfTitle = shelf.find('.prateleira');
+			shelfTitle = shelf.find('.prateleira'),
+			shelfObs = shelf.find('.interesses-obs');
 
 		$.each(shelfTitle, (index, value) => {
 			const title = $(value).find('h2').text().split(' - ');
@@ -18,14 +19,16 @@ Nitro.module('interested-shelf', function() {
 				</li>
 			`);
 
-			if (title[0] === 'Frete Grátis') {
-				className = 'freteGratis';
-			}
+			shelfObs.append(`
+				<span class="link-obs-mobile" data-index=${index}>${(title[2] !== undefined) ? title[2] : ''}</span>
+			`);
 
 			$(value).append(`
 				<span class="link-shelf ${className}">
+					<span class="link-obs-desktop">${(title[2] !== undefined) ? title[2] : ''}</span>
 					<a href="/busca?fq=H:${title[1]}">Veja todos os produtos</a>
 				</span>
+
 			`);
 
 		});
@@ -33,20 +36,20 @@ Nitro.module('interested-shelf', function() {
 
 	this.prepareShelf = shelf => {
 		const tabElement = shelf.find('.discount-item'),
-			shelves = shelf.find('.prateleira.default');
+			shelves = shelf.find('.prateleira.default'),
+			shelfObs = shelf.find('.link-obs-mobile');
 
 		tabElement.on('click', function() {
+			const $this = $(this);
 			tabElement.removeClass('active');
-			$(this).addClass('active');
-
-			($(this).text().trim() === 'Frete Grátis') ? $(this).parents('.freteGratis').addClass('active') : $(this).parents('.freteGratis').removeClass('active');
+			$this.addClass('active');
 
 			shelves.find('.slick-initialized').slick('unslick');
 
 			shelves.addClass('not-show');
-			shelves.eq($(this).attr('data-index')).removeClass('not-show');
+			shelves.eq($this.attr('data-index')).removeClass('not-show');
 
-			shelves.eq($(this).attr('data-index')).find('ul').slick({
+			shelves.eq($this.attr('data-index')).find('ul').slick({
 				arrows: true,
 				dots: false,
 				infinite: false,
@@ -70,11 +73,15 @@ Nitro.module('interested-shelf', function() {
 					}
 				]
 			});
+
+			shelfObs.removeClass('showObs');
+			shelfObs.eq($this.attr('data-index')).addClass('showObs');
 		});
 
 		shelves.addClass('not-show');
 		shelves.first().removeClass('not-show');
 		tabElement.first().addClass('active');
+		shelfObs.first().addClass('showObs');
 	};
 
 	this.check = shelf => {
@@ -92,10 +99,7 @@ Nitro.module('interested-shelf', function() {
 			(tabText.indexOf('40') > -1) ? $(value).parent().addClass('quarenta') : '';
 			(tabText.indexOf('20') > -1) ? $(value).parent().addClass('vinte') : '';
 			(tabText.indexOf('vista') > -1) ? $(value).parent().addClass('vista') : '';
-			if (tabText.indexOf('frete') > -1) {
-				$(value).parent().addClass('frete');
-				shelf.find('.prateleira-tabs__tabs').addClass('freteGratis');
-			}
+			(tabText.indexOf('frete') > -1) ? $(value).parent().addClass('frete') : '';
 		});
 
 		if (tabElement.length === 5) {
