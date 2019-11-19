@@ -43,7 +43,7 @@ body {
 		.prateleira-tabs__tabs {
 			@include breakpoint ('small', 'max') {
 				justify-content: space-between;
-				margin: 0 auto 20px;
+				margin: 0 auto 0;
 				padding: 0 10px;
 			}
 			display: flex;
@@ -128,6 +128,7 @@ body {
 				}
 				display: block;
 				padding: 22px 10px 26px 10px;
+				position: relative;
 
 				a {
 					@include rfs(12);
@@ -208,40 +209,29 @@ body {
 		visibility: hidden !important;
 	}
 
-	.freteGratis {
-		position: relative;
+	.link-obs-desktop {
+		@include breakpoint('small', 'max') { display: none; }
+		@include rfs(12);
+		color: $txt-frete;
+		left: 0;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 
-		&:after {
+	.interesses-obs {
+		position: relative;
+		top: -5px;
+
+		.link-obs-mobile {
 			@include rfs(12);
 			color: $txt-frete;
-			content: '**Frete grátis apenas para regiões sul e sudeste';
-			left: 0;
-			position: absolute;
-		}
-	}
+			display: none;
+			padding-left: 10px;
 
-	.prateleira-tabs__tabs.freteGratis {
-		&.active {
-			&:after {
-				@include breakpoint('small', 'max') {
-					display: inline-block;
-					left: 10px;
-					position: relative;
-				}
-				display: none;
+			&.showObs {
+				@include breakpoint('small', 'max') { display: inline-block; }
 			}
 		}
-
-		&:after {
-			display: none;
-		}
 	}
-
-	.link-shelf.freteGratis {
-		&:after {
-			@include breakpoint('small', 'max') { display: none; }
-			display: inline-block;
-		}
-	}
-
 }
