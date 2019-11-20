@@ -1,0 +1,103 @@
+@charset 'UTF-8';
+
+.valores-parcelas {
+	margin-top: 25px;
+
+	@include breakpoint(small, 'max') { margin: 20px 0; }
+
+	& > p {
+		@include responsiveFont(14, 16, true);
+		display: none;
+		margin-top: 10px;
+	}
+
+	.titulo-parcelamento {
+		border-bottom: 1px solid $gray;
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		font-size: 0;
+		justify-content: center;
+		margin: 10px 0;
+		padding: 0 10px 5px 0;
+		position: relative;
+		text-transform: uppercase;
+
+		&:after {
+			@include responsiveFont(13, 16, true);
+			color: $default-color-purple;
+			content: 'Ver parcelas';
+			font-weight: bold;
+			margin-left: 5px;
+			position: static;
+			text-transform: initial;
+
+		}
+
+		&:before {
+			//@include contentBefore();
+			@include icon-get('arrow-down');
+			@include responsiveFont(8, 16, true);
+			color: $default-color-purple;
+			line-height: 3;
+			margin-right: 5px;;
+			position: static;
+			transform: rotate(0deg);
+			transition: transform .2s ease-in;
+		}
+
+		&.active {
+			&:before { transform: rotate(180deg); }
+		}
+	}
+
+	ul.other-payment-method-ul {
+		display: none;
+
+		li {
+			@include responsiveFont(14, 16, true);
+			color: #000;
+			margin: 5px 0;
+
+			@include breakpoint(extra-small, 'max') { margin: 10px 0; }
+
+			&:first-child { display: none; }
+
+			span {
+				&:first-child {
+					display: inline-block;
+					text-transform: lowercase;
+					width: 25px;
+
+					@include breakpoint(extra-small, 'max') { width: 20px; }
+				}
+
+				&.other-payment-method-intereset-yes {
+					font-weight: bold;
+				}
+
+				&.valor-total {
+					margin-left: 20px;
+
+					@include breakpoint(extra-small, 'max') {
+						display: block;
+						margin-left: 0;
+					}
+				}
+			}
+
+			strong {
+				display: inline-block;
+				font-weight: normal;
+				margin-left: 10px;
+				margin-right: 10px;
+				width: 100px;
+
+				@include breakpoint(extra-small, 'max') { margin: 0; }
+			}
+		}
+	}
+
+	.see-other-payment-method-link { display: none; }
+}
+

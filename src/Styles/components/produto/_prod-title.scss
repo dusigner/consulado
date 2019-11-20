@@ -1,33 +1,27 @@
 .prod-title {
 	float: right !important;
 
+	.produto-v2 & { float: none !important; }
+
 	.lead {
-		@include font-size(36px);
-		color: #736C6B;
+		color: #5B5B5B;
+		display: block;
 		font-weight: bold;
-		line-height: 1;
+		line-height: 24px;
 		margin: 0 0 10px;
 
 		.productName {
-			@include rfs(25);
-			display: inline;
-
-			@include breakpoint(small, 'max') {
-				@include responsiveFont(18, 16, true);
-				color: $txt-gray;
-				line-height: 20px;
-			}
+			@include rfs(20px);
+			display: inline-block;
+			max-width: 455px;
 		}
 
 		.reference,
 		.productSku {
-			@include rfs(14);
+			@include rfs(12px);
 			color: #0FB6DE;
 			display: block;
-			font-weight: bold;
-			margin-top: 10px;
-
-			@include breakpoint(small, 'max') { font-size: 16px; }
+			font-weight: 500;
 
 			div { display: inline; }
 
