@@ -118,7 +118,7 @@ Nitro.controller(
 			slidesToScroll: 3,
 			centerPadding: '10px',
 			arrows: true,
-			infinite: true,
+			infinite: false,
 			responsive: [
 				{
 					breakpoint: 1024,
@@ -126,7 +126,6 @@ Nitro.controller(
 						slidesToShow: 2.1,
 						slidesToScroll: 2.1,
 						centerPadding: '30px',
-						infinite: true,
 						initialSlide: 1,
 						arrows: true,
 						centerMode: true,
@@ -139,16 +138,15 @@ Nitro.controller(
 						slidesToShow: 2,
 						slidesToScroll: 1,
 						centerPadding: '30px',
-						infinite: true,
 						arrows: true,
 					}
 				},
 				{
 					breakpoint: 580,
 					settings: {
-						slidesToShow: 2.1,
+						slidesToShow: 1.3,
 						slidesToScroll: 1,
-						centerPadding: '25px',
+						centerPadding: '20px',
 						initialSlide: 1,
 						arrows: true,
 						centerMode: true,
@@ -156,11 +154,11 @@ Nitro.controller(
 					}
 				},
 				{
-					breakpoint: 520,
+					breakpoint: 414,
 					settings: {
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
-						centerPadding: '25px',
+						centerPadding: '24px',
 						initialSlide: 1,
 						centerMode: true,
 						arrows: true,
@@ -172,7 +170,7 @@ Nitro.controller(
 					settings: {
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
-						centerPadding: '15px',
+						centerPadding: '20px',
 						initialSlide: 1,
 						centerMode: true,
 						arrows: true,
