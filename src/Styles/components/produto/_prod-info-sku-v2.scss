@@ -14,7 +14,8 @@
 
 // Seleção de Voltagem
 .prod-sku-selector {
-	min-width: 145px;
+	@include breakpoint('small', 'max') { min-width: 140px; }
+	min-width: 170px;
 
 	.specification { display: none; }
 
@@ -93,6 +94,7 @@
 
 // Seleção de cor
 .select-color {
+	padding-right: 0;
 	width: 100%;
 
 	.input-box.select {
