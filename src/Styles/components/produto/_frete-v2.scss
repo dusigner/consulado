@@ -1,6 +1,10 @@
 @charset 'UTF-8';
 
 .calc-frete {
+	@include breakpoint('medium', 'max') {
+		border-top: 1px solid #E3E1E1;
+		padding-top: 2.2em;
+	}
 	position: relative;
 
 	// Hide items
@@ -60,6 +64,7 @@
 			position: relative;
 
 			&:before {
+				@include breakpoint('small', 'max') { left: 10px; }
 				@include rfs(12px);
 				color: #736C6B;
 				content: 'CEP';
@@ -72,6 +77,7 @@
 
 		// Campo de input para o CEP
 		input#txtCep {
+			@include breakpoint('medium', 'max') { text-indent: 28px; }
 			@include rfs(12px);
 			background-color: transparent;
 			border: 1px solid #E3E1E1;
@@ -101,6 +107,7 @@
 			z-index: 1;
 
 			#btnFreteSimulacao {
+				@include breakpoint('small', 'max') { padding: 13px 10px; }
 				@include rfs(12px);
 				background: none;
 				border: none;
@@ -179,13 +186,16 @@
 		.closed {
 			height: 29px;
 			line-height: 1.5;
+			text-transform: none;
 		}
 	}
 
 	table {
+		@include breakpoint('medium', 'max') { display: table; }
 		display: block;
 		margin: 0 auto;
 		padding: 0 10px;
+		text-transform: none;
 		width: 100%;
 
 		thead {
@@ -194,6 +204,10 @@
 				position: relative;
 
 				&:before {
+					@include breakpoint('medium', 'max') {
+						right: 0;
+						width: 100%;
+					}
 					background: #f4f2f1;
 					content: '';
 					display: block;

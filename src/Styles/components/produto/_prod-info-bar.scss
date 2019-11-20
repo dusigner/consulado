@@ -1,4 +1,7 @@
 .product-info-bar {
+	@include breakpoint('medium', 'min') {
+		display: none;
+	}
 	background-color: #fff;
 	border-bottom: 2px solid $green;
 	border-top: 1px solid #f1f0f0;
@@ -48,6 +51,7 @@
 			@include rfs(26px);
 			color: #9ACA3C;
 			font-weight: bold;
+			line-height: 21px;
 		}
 	}
 
@@ -57,17 +61,26 @@
 
 		.buy-button {
 			font-weight: 500;
-			padding: 0 40px
+			margin-left: auto;
+			max-width: 250px;
+			padding: 0 40px;
 		}
 	}
 
 	// Fomas de pagamento
 	.formas-pagamento-container {
+		display: block;
 		margin: 0;
-		max-height: 39px;
+		max-height: 35px;
 		transition: max-height .3s ease;
 
-		.titulo-parcelamento { text-indent: 15px; }
+		.titulo-parcelamento {
+			padding-bottom: 8px;
+			padding-top: 8px;
+			text-indent: 15px;
+		}
+
+		.other-payment-method-ul { max-height: 185px; }
 
 		&.is--active {
 			height: auto;

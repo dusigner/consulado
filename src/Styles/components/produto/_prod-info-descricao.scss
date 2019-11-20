@@ -1,5 +1,8 @@
 // Descrição do produto
 .descricao-produto {
+	@include breakpoint('medium', 'max') {
+		order: 3;
+	}
 	background-color: #FAF9F9;
 	margin: .5em 0 1em 0;
 	padding: 20px;
