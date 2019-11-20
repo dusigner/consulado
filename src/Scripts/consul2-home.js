@@ -141,6 +141,8 @@ Nitro.controller(
 						slidesToScroll: 1,
 						centerPadding: '30px',
 						arrows: true,
+						initialSlide: 0,
+						index: 0
 					}
 				},
 				{
@@ -149,7 +151,7 @@ Nitro.controller(
 						slidesToShow: 1.3,
 						slidesToScroll: 1,
 						centerPadding: '20px',
-						initialSlide: 1,
+						initialSlide: 0,
 						arrows: true,
 						centerMode: true,
 						index: 0
@@ -161,7 +163,7 @@ Nitro.controller(
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
 						centerPadding: '24px',
-						initialSlide: 1,
+						initialSlide: 0,
 						centerMode: true,
 						arrows: true,
 						index: 0
@@ -173,10 +175,10 @@ Nitro.controller(
 						slidesToShow: 1.1,
 						slidesToScroll: 1,
 						centerPadding: '20px',
-						initialSlide: 1,
+						initialSlide: 0,
 						centerMode: true,
 						arrows: true,
-						index: 1
+						index: 0
 					}
 				}
 			]
