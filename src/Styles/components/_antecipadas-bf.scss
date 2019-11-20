@@ -117,9 +117,9 @@
 			background-color: #96c53a;
 			margin: 0 auto;
 			padding-bottom: 50px;
-			padding-left: 5px;
+			padding-left: 0;
 			& .slick-slide {
-				margin-left: 20px;
+				margin-right: 20px;
 			}
 			& .prateleira {
 				margin-bottom: 10px;
@@ -161,7 +161,7 @@
 			display: block;
 		}
 		& .slick-slider {
-			padding: 0 0 0 2px;
+			padding: 0 0 0;
 		}
 		& .slick-prev {
 			left: inherit;
@@ -177,7 +177,9 @@
 				&:before {
 					color: #403C3B;
 				}
+				height: 20px;
 				top: -20px;
+				width: 20px;
 			};
 			@include breakpoint('small', 'max') {
 				bottom: -84px;
@@ -187,6 +189,11 @@
 				color: #ffffff;
 				display: block;
 				font-size: 12px;
+				margin: 0 auto;
+			}
+			&.slick-disabled {
+				cursor: auto;
+				opacity: .4;
 			}
 		}
 		& .link-vitrine {
