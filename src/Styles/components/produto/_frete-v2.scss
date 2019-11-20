@@ -1,2 +1,312 @@
 @charset 'UTF-8';
 
+.calc-frete {
+	@include breakpoint('medium', 'max') {
+		border-top: 1px solid #E3E1E1;
+		padding-top: 2.2em;
+	}
+	position: relative;
+
+	// Hide items
+	#popupCalculoFreteWrapper { display: none; }
+	#calculoFrete {
+		width: 100%;
+
+		.header,
+		.footer,
+		.quantity { display: none; }
+	}
+
+	// Calcular o prazo do frete
+	.title-frete {
+		@include rfs(11px);
+		align-items: center;
+		display: flex;
+		float: left;
+		font-weight: 500;
+		line-height: 12px;
+		max-width: 180px;
+		padding-right: 10px;
+
+		p { margin: 0; }
+
+		.icon-truck-bold {
+			@include rfs(22px);
+			color: #707070;
+			display: block;
+			padding: 12px;
+			position: relative;
+
+			&:after {
+				@include icon-get('sparkles');
+				color: #9ACA3C;
+				left: 0;
+				position: absolute;
+				top: 0;
+			}
+		}
+	}
+
+	// Formulário
+	.content {
+		fieldset {
+			border: none;
+			display: block;
+			margin: 0;
+			overflow: hidden;
+			padding: 0;
+			position: relative;
+		}
+
+		.prefixo {
+			font-size: 0;
+			font-weight: 500;
+			position: relative;
+
+			&:before {
+				@include breakpoint('small', 'max') { left: 10px; }
+				@include rfs(12px);
+				color: #736C6B;
+				content: 'CEP';
+				left: 15px;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+
+		// Campo de input para o CEP
+		input#txtCep {
+			@include breakpoint('medium', 'max') { text-indent: 28px; }
+			@include rfs(12px);
+			background-color: transparent;
+			border: 1px solid #E3E1E1;
+			border-radius: 4px;
+			height: 40px;
+			margin: 0;
+			padding: 0 15px;
+			position: relative;
+			text-indent: 35px;
+			transition:
+				background .3s ease,
+				text-indent .3s ease
+			;
+			z-index: 1;
+
+			&:focus {
+				background-color: #fff;
+				text-indent: 0;
+			}
+		}
+
+		// Calcular
+		.frete-calcular {
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
+
+			#btnFreteSimulacao {
+				@include breakpoint('small', 'max') { padding: 13px 10px; }
+				@include rfs(12px);
+				background: none;
+				border: none;
+				color: #5B5B5B;
+				font-weight: 500;
+				min-width: inherit;
+				padding: 13px 15px;
+				text-transform: lowercase;
+
+				&:after {
+					@include icon-get('right-arrow');
+					@include rfs(12px);
+				}
+			}
+		}
+
+		// Não sei o meu CEP
+		.cep-busca {
+			@include rfs(9px);
+			font-weight: 500;
+			position: relative;
+
+			a { color: #0FB6DE; }
+		}
+	}
+}
+
+// Tabela de tipos de entrega
+.freight-values {
+	display: block;
+	margin-top: 10px;
+	opacity: 0;
+	position: relative;
+	transition: .2s linear all;
+
+	&.active {
+		opacity: 1;
+		transition: .3s linear all;
+
+		.closed {
+			color: #B52130;
+			cursor: pointer;
+			display: block;
+			font-size: 20px;
+			font-style: normal;
+			font-weight: bold;
+			height: 25px;
+			line-height: 1;
+			position: absolute;
+			right: 8px;
+			text-align: center;
+			top: 10px;
+			transition: .3s linear all;
+			width: 25px;
+			z-index: 10;
+
+			&::before { display: none; }
+			&:after { content: 'x'; }
+			&:hover {
+				background: #f35216;
+				color: #fff;
+				transition: .3s linear all;
+			}
+		}
+	}
+
+	&.erro {
+		border-color: #f00;
+		color: #f00;
+		font-size: 13px;
+		padding-bottom: 6px;
+		padding-left: 9px;
+		padding-top: 6px;
+		text-transform: uppercase;
+
+		.closed {
+			height: 29px;
+			line-height: 1.5;
+			text-transform: none;
+		}
+	}
+
+	table {
+		@include breakpoint('medium', 'max') { display: table; }
+		display: block;
+		margin: 0 auto;
+		padding: 0 10px;
+		text-transform: none;
+		width: 100%;
+
+		thead {
+			tr {
+				border: none;
+				position: relative;
+
+				&:before {
+					@include breakpoint('medium', 'max') {
+						right: 0;
+						width: 100%;
+					}
+					background: #f4f2f1;
+					content: '';
+					display: block;
+					height: 100%;
+					position: absolute;
+					right: -10px;
+					width: calc(100% + 20px);
+				}
+			}
+		}
+
+		tr {
+			align-items: center;
+			border-top: 1px solid #e3e1e1;
+			display: flex;
+			min-height: 45px;
+
+			&:first-child { border: none; }
+
+			th,
+			td {
+				display: block;
+				font-size: 12px;
+				padding: 5px;
+				position: relative;
+				text-align: left;
+				z-index: 1;
+
+				&:empty { display: none; }
+
+				&:first-child { min-width: 115px; }
+			}
+
+			th {
+				color: #736c6b;
+				font-size: 14px;
+				padding: 10px 5px;
+			}
+
+			td { color: #736c6b; }
+
+			// frete grátis
+			&.frete-gratis {
+				border-color: transparent;
+				font-weight: bold;
+				position: relative;
+
+				td {
+					color: #0fb6de;
+					font-size: 11px;
+				}
+
+				// active box
+				&:before,
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+				}
+
+				&:before {
+					@include breakpoint('medium', 'min') {
+						background: transparent url('//consul.vteximg.com.br/arquivos/icon-destaque-frete.png') center center no-repeat;
+						background-size: contain;
+						height: 30px;
+						right: 100%;
+						width: 55px;
+					}
+					@include breakpoint('medium', 'max') {
+						background: #0fb6de;
+						height: 100%;
+						right: calc(100% + 7px);
+						width: 3px;
+					}
+					content: '';
+					z-index: 10;
+				}
+
+				&:after {
+					background-color: #fff;
+					border-radius: 4px;
+					box-shadow: 0 1px 10px #e3e1e1;
+					height: 100%;
+					right: -10px;
+					top: 0;
+					width: calc(100% + 20px);
+				}
+
+				& + tr { border-color: transparent; }
+
+				& + tr.frete-gratis {
+					&:after {
+						border-radius: 0 0 4px 4px;
+						border-top: 1px solid #e3e1e1;
+						box-shadow: 0 3px 5px #e3e1e1;
+						margin-top: -1px;
+					}
+				}
+			}
+		}
+	}
+}

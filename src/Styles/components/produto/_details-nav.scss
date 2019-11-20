@@ -5,7 +5,7 @@
 	text-align: center;
 	top: 0 !important;
 	width: 100%;
-	z-index: 20;
+	z-index: 14;
 
 	@include breakpoint(small, 'max') { display: none; }
 

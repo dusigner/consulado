@@ -162,7 +162,7 @@ body.open-frete {
 			transition: .3s linear all;
 
 			.closed {
-				color: #793c96;
+				color: #B52130;
 				cursor: pointer;
 				display: block;
 				font-size: 20px;
@@ -173,7 +173,8 @@ body.open-frete {
 				position: absolute;
 				right: 8px;
 				text-align: center;
-				top: 8px;
+				top: 50%;
+				transform: translateY(-15px);
 				transition: .3s linear all;
 				width: 25px;
 				z-index: 55;
@@ -202,18 +203,6 @@ body.open-frete {
 				line-height: 1.5;
 			}
 		}
-
-		// &> :before {
-		// 	background: #e4e4e4;
-		// 	content: '';
-		// 	display: block;
-		// 	height: 10px;
-		// 	left: 15px;
-		// 	position: absolute;
-		// 	top: -6px;
-		// 	transform: rotate(224deg);
-		// 	width: 10px;
-		// }
 
 		table {
 			display: block;

@@ -24,6 +24,7 @@ Nitro.module('shelfCategoryHome', function() {
 		$shelfCategory.slick({
 			adaptiveHeight: false,
 			arrows: true,
+			dots: false,
 			infinite: false,
 			slidesToScroll: 6,
 			slidesToShow: 6,
@@ -32,7 +33,6 @@ Nitro.module('shelfCategoryHome', function() {
 					breakpoint: 1100,
 					settings: {
 						arrows: true,
-						dots: false,
 						slidesToScroll: 4,
 						slidesToShow: 4
 					}

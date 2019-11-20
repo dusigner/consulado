@@ -1,0 +1,247 @@
+$button-color: #2A2A2A;
+$border: #404040;
+$txt: #fff;
+$bg-color: #212121;
+$txt-light: #736C6B;
+$txt-dark: #403C3B;
+$green: #9ACA3C;
+$txt-frete: #BBBBBB;
+
+body {
+	.vitrine-ofertas-interesses,
+	.vitrine-ofertas-alavancas {
+		@include breakpoint('small', 'max') { overflow: hidden; }
+		background-color: $bg-color;
+		padding-top: 38px;
+
+		.box-produto {
+			border: 1px solid #F1F0F0;
+		}
+
+		.interesses-title {
+			@include breakpoint ('small', 'max') { padding: 0 15px; }
+
+			h4 {
+				@include breakpoint ('small', 'max') { text-align: left;}
+				@include rfs(28);
+				color: $txt;
+				font-weight: bold;
+				margin: 0;
+				text-align: center;
+			}
+
+			span {
+				@include breakpoint ('small', 'max') { text-align: left ;}
+				@include rfs(14);
+				color: $txt;
+				display: block;
+				margin: 0;
+				text-align: center;
+			}
+		}
+
+		.prateleira-tabs__tabs {
+			@include breakpoint ('small', 'max') {
+				justify-content: space-between;
+				margin: 0 auto 20px;
+				padding: 0 10px;
+			}
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-bottom: 32px;
+
+			li {
+				@include breakpoint ('small', 'max') {
+					margin: 0 0 12px;
+					width: 48%;
+				}
+				margin: 0 6px 12px;
+
+
+			}
+
+			.discount-item {
+				@include breakpoint ('small', 'max') { width: 100%; }
+				@include rfs(16);
+				border: 1px solid $border;
+				border-radius: 4px;
+				color: $txt;
+				display: inline-block;
+				height: 38px;
+				line-height: 2.5;
+				text-align: center;
+				width: 160px;
+
+				&.active,
+				&:hover {
+					background-color: $green;
+					color: #fff;
+					font-weight: bold;
+				}
+			}
+
+			span {
+				@include breakpoint ('small', 'min') { width: 120px; }
+				display: inline-block;
+			}
+		}
+
+
+		.vitrines {
+			@include breakpoint ('small', 'max') { margin-top: 30px; }
+			margin-top: 42px;
+			position: relative;
+
+			.prateleira {
+				opacity: 1;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+
+				.box-produto {
+					background-color: #fff;
+				}
+
+				h2 {
+					display: none !important;
+				}
+
+				&.not-show {
+					opacity: 0;
+					position: absolute;
+					z-index: -1;
+				}
+
+				ul.slick-slider {
+					@include breakpoint ('medium', 'max') {
+						padding: 0;
+					}
+				}
+			}
+
+			.link-shelf {
+				@include breakpoint('small', 'min') {
+					padding: 34px 0 32px 0;
+					text-align: center;
+				}
+				display: block;
+				padding: 22px 10px 26px 10px;
+
+				a {
+					@include rfs(12);
+					color: $green;
+					font-weight: 500;
+
+					&:after {
+						@include icon-get('arrow-right');
+						font-size: 7px;
+						font-weight: bold !important;
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.vitrine-ofertas-interesses {
+		.prateleira-tabs__tabs.fiveElements {
+
+			.fifthItem,
+			.fourthItem {
+				@include breakpoint ('small', 'max') { width: 48%; }
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%
+					}
+				}
+			}
+
+			.fourthItem {
+				@include breakpoint ('small', 'max') { order: 5; }
+			}
+
+			.minorButton {
+				@include breakpoint ('small', 'max') { width: 30% }
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%;
+					}
+				}
+			}
+
+			.fifthItem,
+			.minorButton,
+			.fourthItem {
+
+				&.vista,
+				&.blackfriday {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+
+				&.frete,
+				&.quarenta {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+
+				&.vinte {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.hideTab {
+		display: none !important;
+		visibility: hidden !important;
+	}
+
+	.freteGratis {
+		position: relative;
+
+		&:after {
+			@include rfs(12);
+			color: $txt-frete;
+			content: '**Frete grátis apenas para regiões sul e sudeste';
+			left: 0;
+			position: absolute;
+		}
+	}
+
+	.prateleira-tabs__tabs.freteGratis {
+		&.active {
+			&:after {
+				@include breakpoint('small', 'max') {
+					display: inline-block;
+					left: 10px;
+					position: relative;
+				}
+				display: none;
+			}
+		}
+
+		&:after {
+			display: none;
+		}
+	}
+
+	.link-shelf.freteGratis {
+		&:after {
+			@include breakpoint('small', 'max') { display: none; }
+			display: inline-block;
+		}
+	}
+
+}

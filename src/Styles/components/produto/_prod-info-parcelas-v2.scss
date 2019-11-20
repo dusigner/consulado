@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 .formas-pagamento-container {
+	@include breakpoint('medium', 'max') { display: none; }
 	background-color: #ccc;
 	height: 39px;
 	margin-top: 25px;

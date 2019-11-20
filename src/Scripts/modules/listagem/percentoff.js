@@ -62,7 +62,9 @@ Nitro.module('percentoff', 'buy-button', function() {
 							.replace('%', '')
 					)
 				);
+
 				const isPurificador = (($(this).attr('data-department') !== undefined && $(this).attr('data-department').toLowerCase() === 'purificador') || ($(this).attr('data-ispurificador') !== undefined && $(this).attr('data-ispurificador') === 'true'));
+
 				if (percentage >= 20) {
 					txtPercentage.text(percentage + '% OFF').show();
 				} else if (percentage >= 5 && isPurificador) {
@@ -83,7 +85,7 @@ Nitro.module('percentoff', 'buy-button', function() {
 				self.find('.discount-boleto')
 					// .text('1x no cartão de crédito: R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountCartao / 100))));
 					.html(`
-						À vista por
+						1x no cartão por
 						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountCartao / 100))}</strong>
 						<span>(${cmcDiscountCartao}% OFF)</span>
 					`);
@@ -91,7 +93,7 @@ Nitro.module('percentoff', 'buy-button', function() {
 				self.find('.discount-boleto')
 					// .text('R$ ' + _.formatCurrency(valProd - (valProd * (cmcDiscountBoleto / 100))) + ' à vista no boleto');
 					.html(`
-						À vista por
+						No boleto por
 						<strong> R$ ${_.formatCurrency(valProd - valProd * (cmcDiscountBoleto / 100))}</strong>
 						<span>(${cmcDiscountBoleto}% OFF)</span>
 					`);

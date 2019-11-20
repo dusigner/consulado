@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
-#BuyButton {
+#BuyButton,
+.product-info-bar__buy {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
@@ -35,5 +36,7 @@
 		font-weight: bold;
 		padding: 7px;
 		text-transform: uppercase;
+
+		.icon-cadeado { margin-right: 8px; }
 	}
 }

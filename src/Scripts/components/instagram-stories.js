@@ -22,17 +22,20 @@ Nitro.module('instagram-stories', function() {
 
 			const $thisElement = $(this);
 			const cardTitle = $thisElement.data('storie-card-title');
-			const collectionId = Number($thisElement.data('storie-card-collection-id'));
+			const collectionId = (store.isQA) ? Number($thisElement.data('storie-card-collection-id-qa')) : Number($thisElement.data('storie-card-collection-id'));
 			const searchedCollection = $(`.stories-card-list[data-collection-id="${collectionId}"]`);
 			activeStorieId = collectionId;
-
 			self.openStories();
 			self.updateCardTitle(cardTitle);
+
 
 			// Se a coleção já foi pesquisada, evita que uma outra chamada à API seja feita.
 			if (searchedCollection.length > 0) {
 				return;
+			} else {
+				self.startSlick(searchedCollection);
 			}
+
 
 			self.loadingAnimation();
 			self.getProducts(collectionId)
@@ -48,8 +51,10 @@ Nitro.module('instagram-stories', function() {
 
 	// Abre o card dos Stories
 	this.openStories = () => {
+		const title = $('.stories-card__header strong');
 		$stories.find(`.stories-card__marker-${activeStorieId}`).show();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).show();
+		(activeStorieId === 1834 || activeStorieId === 166) ? title.text('Frete grátis para as regiões Sul e Sudeste') : title.text('Produtos atualizados todo dia')
 		$storiesCard.addClass('is--open');
 	};
 
@@ -57,6 +62,7 @@ Nitro.module('instagram-stories', function() {
 	this.closeStories = () => {
 		$stories.find(`.stories-card__marker-${activeStorieId}`).hide();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).hide();
+		$stories.find('.stories-card__error').remove();
 		$storiesCard.removeClass('is--open');
 	};
 
@@ -93,6 +99,18 @@ Nitro.module('instagram-stories', function() {
 			arrows: true,
 			dots: true,
 			dotsClass: `stories-card__marker-${activeStorieId}`,
+			responsive: [
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: true,
+						dots: true,
+						infinite: false,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+					}
+				}
+			]
 		});
 	};
 
@@ -114,29 +132,72 @@ Nitro.module('instagram-stories', function() {
 		const $cardContainer = $(`<ul class="stories-card-list" data-collection-id="${collectionId}"></ul>`);
 		const products = productData;
 
+		if (products.length === 0) {
+			self.errorMessage();
+			return;
+		}
+
 		products.map(product => {
-			$cardContainer.append(self.instagramStoriesItem(product));
+			const currentProduct = product.productReference;
+			let previewsSku = '';
+
+			product.items.map((productSku, productIndex) => {
+				const productIsAvailable = productSku.sellers[0].commertialOffer.AvailableQuantity;
+
+				if (productIsAvailable && currentProduct !== previewsSku) {
+					previewsSku = productSku.complementName;
+
+					$cardContainer.append(self.instagramStoriesItem(product, productIndex));
+				}
+			});
 		});
 
 		$storiesCard.append($cardContainer);
 	};
 
-	// Template do stories
-	this.instagramStoriesItem = (product) => {
+	// Pega as informações que o template de storiecard vai precisar
+	this.instagramPrepareData = (product, productIndex) => {
 		const { productTitle, productReference, link } = product;
-		const { AvailableQuantity, ListPrice, Price } = product.items[0].sellers[0].commertialOffer;
-		const newImage = self.changeImageSize(product.items[0].images[0].imageTag);
+		const { AvailableQuantity, ListPrice, Price } = product.items[productIndex].sellers[0].commertialOffer;
+		const newImage = self.changeImageSize(product.items[productIndex].images[0].imageTag);
 
 		// Formatar e verificar dados antes de exibir na tela
 		const hasDiscount  = ListPrice > Price ? true : false;
 		const newListPrice = _.formatCurrency(ListPrice);
 		const newPrice     = _.formatCurrency(Price);
 
+		return {
+			productTitle,
+			productReference,
+			link,
+			AvailableQuantity,
+			newImage,
+			hasDiscount,
+			newListPrice,
+			newPrice
+		};
+	};
+
+	// Template do stories
+	this.instagramStoriesItem = (product, productIndex) => {
+		const {
+			productTitle,
+			productReference,
+			link,
+			AvailableQuantity,
+			newImage,
+			hasDiscount,
+			newListPrice,
+			newPrice,
+		} = self.instagramPrepareData(product, productIndex);
+
 		// Product Kit
 		const storieCardTemplate = `
 			<li class="stories-card-list__item ${AvailableQuantity ? 'available' : ''}">
 				<div class="stories-card-list__image">
-					${newImage}
+					<a href="${link}" title="${productTitle}">
+						${newImage}
+					</a>
 				</div>
 
 				<h2 class="stories-card-list__title">
