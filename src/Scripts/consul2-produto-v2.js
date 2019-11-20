@@ -25,7 +25,7 @@ Nitro.controller(
 		'chaordic',
 		'color-selector',
 		'sku-fetch',
-		'gallery',
+		'galleryv2',
 		'product-nav',
 		'video',
 		'details',
@@ -40,14 +40,15 @@ Nitro.controller(
 		'deliveryTime',
 		'recurrence',
 	],
-	function(chaordic, colorSelector, skuFetch, gallery) {
+	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		chaordic.init('product', window.skuJson.productId);
 
-		gallery.init();
+		galleryv2.init();
+
 
 		// Teste AB
 		var urlTesteAb = window.location.search;

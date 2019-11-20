@@ -2,7 +2,7 @@
 
 require('vendors/mfp');
 
-Nitro.module('gallery', function() {
+Nitro.module('galleryv2', function() {
 
 	this.init = () => {
 		var $thumbs = $('.thumbs a'),
@@ -96,6 +96,7 @@ Nitro.module('gallery', function() {
 
 		$galleryThumbs.slick({
 			slidesToShow: 5,
+			slidesToScroll: 1,
 			draggable: true,
 			asNavFor: '.gallery',
 			focusOnSelect: true,
