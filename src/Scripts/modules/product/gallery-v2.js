@@ -3,13 +3,13 @@
 require('vendors/mfp');
 
 Nitro.module('gallery', function() {
-	console.log('teste');
+
 	this.init = () => {
 		var $thumbs = $('.thumbs a'),
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
 			$video = $('#caracteristicas h4.Video + table .value-field'),
-			$size = ($(window).width() < 768) ? 56 : 75;
+			$size = ($(window).width() < 768) ? 76 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
@@ -33,10 +33,10 @@ Nitro.module('gallery', function() {
 				<li>
 					<a href="javascript:void(0);" class="thumb">
 						<img
-							src="${$.resizeImage(self.attr('rel'), 56, 56)}"
+							src="${$.resizeImage(self.attr('rel'), 76, 76)}"
 							alt="${self.find('img').attr('title')}"
-							width="56"
-							height="56"
+							width="76"
+							height="76"
 						 />
 					</a>
 				</li>
@@ -64,7 +64,7 @@ Nitro.module('gallery', function() {
 				`
 					<li>
 						<a href="javascript:void(0);" class="thumb">
-							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 56, 56)}" alt="Vídeo" width="56" height="56" />
+							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
 						</a>
 					</li>
 				`
@@ -95,7 +95,7 @@ Nitro.module('gallery', function() {
 		});
 
 		$galleryThumbs.slick({
-			slidesToShow: 4,
+			slidesToShow: 5,
 			draggable: true,
 			asNavFor: '.gallery',
 			focusOnSelect: true,
@@ -116,7 +116,7 @@ Nitro.module('gallery', function() {
 			}
 		});
 
-		if ($(newThumbs).length <= 4) {
+		if ($(newThumbs).length <= 5) {
 			$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
 				$galleryThumbs.find('.slick-slide').removeClass('slick-current');
