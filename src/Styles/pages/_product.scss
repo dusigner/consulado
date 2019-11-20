@@ -19,16 +19,6 @@ body.produto {
 			}
 		}
 
-		h1.lead,
-		h2.title,
-		.item h3 { @include font-size(30px); }
-
-		h1.lead {
-			@include breakpoint('small', 'max') { margin-bottom: 10px; }
-			display: inline-block;
-			margin-bottom: 0;
-		}
-
 		h2.title,
 		.item h3 { font-weight: 300; }
 
@@ -302,12 +292,16 @@ div#modal-custom-share {
 
 .cep-invalido {
 	.valor {
+<<<<<<< HEAD
 		background-color: $gray-c410;
 		padding: 12px;
 
 		strong {
 			display: none;
 		}
+=======
+		strong { display: none; }
+>>>>>>> ICD-908__pagina-de-produto
 
 		&:after {
 			@include rfs(12);
