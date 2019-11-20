@@ -6,7 +6,7 @@ import 'modules/product/sku-fetch';
 import 'modules/product/gallery';
 import 'modules/product/product-nav';
 import 'modules/product/details';
-import 'modules/product/specifications';
+import 'modules/product/specifications-v2';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
 import 'modules/product/produtos-adicionais';
@@ -29,7 +29,7 @@ Nitro.controller(
 		'product-nav',
 		'video',
 		'details',
-		'specifications',
+		'specifications-v2',
 		'selos',
 		'sku-select',
 		'produtos-adicionais',
@@ -45,7 +45,7 @@ Nitro.controller(
 			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
-		chaordic.init('product', window.skuJson.productId);
+		//chaordic.init('product', window.skuJson.productId);
 
 		gallery.init();
 
