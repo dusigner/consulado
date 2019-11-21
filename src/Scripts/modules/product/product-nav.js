@@ -79,14 +79,15 @@ Nitro.module('product-nav', function() {
 		});
 	});
 
-	const getInfos = () => {
-		const $productName = $('.productName').text(),
-			  $productReference = $('.productReference').text(),
-			  $productImage = $('.prod-galeria ul li img').attr('src');
+	const setInfos = () => {
+		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/55-55/gm, '80-80'),
+			$productName = $('.productName').text(),
+			$productReference = $('.productReference').text();
 
-		console.log($productName);
-		console.log($productReference);
-		console.log($productImage);
+		$('.product-infos .box-image > img').attr('src', $productImage);
+		$('.product-infos .box-infos > p').text($productName);
+		$('.product-infos .box-infos > span').text($productReference);
 	}
-	getInfos();
+	setInfos();
+
 });

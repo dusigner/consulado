@@ -1,3 +1,9 @@
+%flex-center {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .prod-details-nav {
 	background: #f4f2f1;
 	min-height: 95px;
@@ -28,6 +34,7 @@
 			display: none;
 			min-width: 700px;
 			padding: 0;
+			width: 80%;
 
 			@include breakpoint(extra-large, 'min') {
 				display: block!important;
@@ -46,6 +53,7 @@
 		}
 
 		.row.anchors {
+			@extend %flex-center;
 			background: #FCFCFC;
 			position: relative;
 			&:after {
@@ -59,12 +67,29 @@
 				width: 4000px;
 				z-index: -1;
 			}
+
+			> button {
+				background: none;
+				border: none;
+				text-align: right;
+				width: 20%;
+			}
 		}
 	}
 
 	.row {
 		margin-bottom: 0;
 		position: relative;
+
+		&.info-product {
+			@extend %flex-center;
+
+			.product-infos {
+				@extend %flex-center;
+				text-align: left;
+				width: 60%;
+			}
+		}
 	}
 
 	ul {
@@ -114,6 +139,7 @@
 		display: none;
 		opacity: 0;
 		padding: 20px 0;
+		width: 40%;
 		@include breakpoint(small, 'max') {
 			padding: 10px 0;
 		}
