@@ -1,191 +1,191 @@
 %flex-center {
-  display: flex;
-  align-items: center;
+    align-items: center;
+    display: flex;
 }
 
 %icon-settings {
-  font-weight: bold;
-  left: 0;
-  top: 0;
-  position: absolute;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 0;
 }
 
 .product {
-  &-assist {
-    @extend %flex-center;
-    flex-wrap: wrap;
-    margin: 60px auto 120px;
-    > h2 {
-      @include breakpoint(small, "max") {
-        text-align: left;
-      }
-      font-weight: bold !important;
-      line-height: 1.1;
-      margin: 8px 0;
-      width: 100%;
-    }
-    > p {
-      @include breakpoint(small, "max") {
-        text-align: left;
-      }
-      margin: 0 auto;
-      width: 100%;
-    }
-    &-row {
-      @include breakpoint(small, "max") {
-        margin-top: 25px;
-        flex-wrap: wrap;
-      }
-      @extend %flex-center;
-      margin-top: 40px;
-      width: 100%;
-      justify-content: space-between;
-    }
-    &-block {
-      @include breakpoint(small, "max") {
-        padding: 15px 0;
-        width: 100%;
-      }
-      @extend %flex-center;
-      flex-wrap: wrap;
-      padding: 0 5px;
-
-      &.parts {
-        display: none;
-
-        &.has--parts {
-          display: flex;
-
-          .btn-pecas-produto {
-            display: block;
-            margin: 0;
-            width: 100%;
-          }
-        }
-      }
-
-      &:first-child {
-        padding-left: 0;
-      }
-
-      &:last-child {
-        padding-right: 0;
-      }
-
-      .first-block {
-        @extend %flex-center;
-        width: 10%;
-
-        .icon-parts {
-          position: relative;
-          width: 33px;
-          height: 33px;
-          &:before {
-            @extend %icon-settings;
-            @include icon-get("icon-engrenagem");
-            @include breakpoint(small, "max") {
-              @include responsiveFont(26);
-            }
-            @include breakpoint(medium, "max") {
-              @include responsiveFont(15);
-            }
-            @include responsiveFont(26);
-          }
-        }
-        .icon-infos {
-          position: relative;
-          width: 28px;
-          height: 28px;
-          &:before {
-            @extend %icon-settings;
-            @include icon-get("informacoes");
-            @include breakpoint(small, "max") {
-              @include responsiveFont(26);
-            }
-            @include breakpoint(medium, "max") {
-              @include responsiveFont(15);
-            }
-            @include responsiveFont(26);
-          }
-        }
-        .icon-delivery {
-          position: relative;
-          width: 28px;
-          height: 27px;
-          &:before {
-            @extend %icon-settings;
-            @include icon-get("entregas");
-            @include breakpoint(small, "max") {
-              @include responsiveFont(26);
-            }
-            @include breakpoint(medium, "max") {
-              @include responsiveFont(15);
-            }
-            @include responsiveFont(26);
-          }
-        }
-        .icon-corp {
-          position: relative;
-          width: 44px;
-          height: 31px;
-          &:before {
-            @extend %icon-settings;
-            @include icon-get("vendas-corporativas");
-            @include breakpoint(small, "max") {
-              @include responsiveFont(18);
-            }
-            @include breakpoint(medium, "max") {
-              @include responsiveFont(15);
-            }
-            @include responsiveFont(18);
-          }
-        }
-      }
-
-      .second-block {
+    &-assist {
         @extend %flex-center;
         flex-wrap: wrap;
-        width: 85%;
-        padding-left: 5%;
-        > h3 {
-          @include breakpoint(small, "max") {
-            @include responsiveFont(14);
+        margin: 60px auto 120px;
+        > h2 {
+            @include breakpoint(small, 'max') {
+                text-align: left;
+            }
+            font-weight: bold !important;
+            line-height: 1.1;
+            margin: 8px 0;
             width: 100%;
-          }
-          @include breakpoint(medium, "max") {
-            @include responsiveFont(10);
-            width: 100%;
-          }
-          @include responsiveFont(14);
-          margin: 0;
         }
         > p {
-          @include breakpoint(small, "max") {
-            @include responsiveFont(12);
+            @include breakpoint(small, 'max') {
+                text-align: left;
+            }
+            margin: 0 auto;
             width: 100%;
-          }
-          @include breakpoint(medium, "max") {
-            @include responsiveFont(9);
-            width: 100%;
-          }
-          @include responsiveFont(12);
-          margin: 5px 0;
         }
-        > a {
-          color: #9aca3c;
-          @include breakpoint(small, "max") {
-            @include responsiveFont(12);
+        &-row {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                flex-wrap: wrap;
+                margin-top: 25px;
+            }
+            justify-content: space-between;
+            margin-top: 40px;
             width: 100%;
-          }
-          @include breakpoint(medium, "max") {
-            @include responsiveFont(9);
-          }
-          @include responsiveFont(12);
-          > b {
-            margin-left: 10px;
-          }
         }
-      }
+        &-block {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                padding: 15px 0;
+                width: 100%;
+            }
+            flex-wrap: wrap;
+            padding: 0 5px;
+
+            &.parts {
+                display: none;
+
+                &.has--parts {
+                    display: flex;
+
+                    .btn-pecas-produto {
+                        display: block;
+                        margin: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            &:first-child {
+                padding-left: 0;
+            }
+
+            &:last-child {
+                padding-right: 0;
+            }
+
+            .first-block {
+                @extend %flex-center;
+                width: 10%;
+
+                .icon-parts {
+                    height: 33px;
+                    position: relative;
+                    width: 33px;
+                    &:before {
+                        @extend %icon-settings;
+                        @include icon-get('icon-engrenagem');
+                        @include breakpoint(small, 'max') {
+                            @include rfs(26);
+                        }
+                        @include breakpoint(medium, 'max') {
+                            @include rfs(15);
+                        }
+                        @include rfs(26);
+                    }
+                }
+                .icon-infos {
+                    height: 28px;
+                    position: relative;
+                    width: 28px;
+                    &:before {
+                        @extend %icon-settings;
+                        @include icon-get('informacoes');
+                        @include breakpoint(small, 'max') {
+                            @include rfs(26);
+                        }
+                        @include breakpoint(medium, 'max') {
+                            @include rfs(15);
+                        }
+                        @include rfs(26);
+                    }
+                }
+                .icon-delivery {
+                    height: 27px;
+                    position: relative;
+                    width: 28px;
+                    &:before {
+                        @extend %icon-settings;
+                        @include icon-get('entregas');
+                        @include breakpoint(small, 'max') {
+                            @include rfs(26);
+                        }
+                        @include breakpoint(medium, 'max') {
+                            @include rfs(15);
+                        }
+                        @include rfs(26);
+                    }
+                }
+                .icon-corp {
+                    height: 31px;
+                    position: relative;
+                    width: 44px;
+                    &:before {
+                        @extend %icon-settings;
+                        @include icon-get('vendas-corporativas');
+                        @include breakpoint(small, 'max') {
+                            @include rfs(18);
+                        }
+                        @include breakpoint(medium, 'max') {
+                            @include rfs(15);
+                        }
+                        @include rfs(18);
+                    }
+                }
+            }
+
+            .second-block {
+                @extend %flex-center;
+                flex-wrap: wrap;
+                padding-left: 5%;
+                width: 85%;
+                > h3 {
+                    @include breakpoint(small, 'max') {
+                        @include rfs(14);
+                        width: 100%;
+                    }
+                    @include breakpoint(medium, 'max') {
+                        @include rfs(10);
+                        width: 100%;
+                    }
+                    @include rfs(14);
+                    margin: 0;
+                }
+                > p {
+                    @include breakpoint(small, 'max') {
+                        @include rfs(12);
+                        width: 100%;
+                    }
+                    @include breakpoint(medium, 'max') {
+                        @include rfs(9);
+                        width: 100%;
+                    }
+                    @include rfs(12);
+                    margin: 5px 0;
+                }
+                > a {
+                    color: #9aca3c;
+                    @include breakpoint(small, 'max') {
+                        @include rfs(12);
+                        width: 100%;
+                    }
+                    @include breakpoint(medium, 'max') {
+                        @include rfs(9);
+                    }
+                    @include rfs(12);
+                    > b {
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
     }
-  }
 }
