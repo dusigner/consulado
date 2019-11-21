@@ -78,4 +78,15 @@ Nitro.module('product-nav', function() {
 			}
 		});
 	});
+
+	const getInfos = () => {
+		const $productName = $('.productName').text(),
+			  $productReference = $('.productReference').text(),
+			  $productImage = $('.prod-galeria ul li img').attr('src');
+
+		console.log($productName);
+		console.log($productReference);
+		console.log($productImage);
+	}
+	getInfos();
 });

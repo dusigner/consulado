@@ -1,5 +1,5 @@
 .prod-details-nav {
-	background-color: #f4f2f1;
+	background: #f4f2f1;
 	min-height: 95px;
 	position: relative;
 	text-align: center;
@@ -18,16 +18,16 @@
 	}
 
 	&.pinned {
+		background: #fff;
+		box-shadow: 0 2px 6px #00000029;
 		@include breakpoint(extra-large, 'max') {
 			@include opacity(1);
 		}
 
 		ul {
 			display: none;
-			left: -28px;
-			margin-top: 20px;
 			min-width: 700px;
-			transform: translateX(0);
+			padding: 0;
 
 			@include breakpoint(extra-large, 'min') {
 				display: block!important;
@@ -44,6 +44,22 @@
 		.skuBestInstallmentValue {
 			& + span {display: none;}
 		}
+
+		.row.anchors {
+			background: #FCFCFC;
+			position: relative;
+			&:after {
+				background: #FCFCFC;
+				content: '';
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				transform: translateX(-50%);
+				width: 4000px;
+				z-index: -1;
+			}
+		}
 	}
 
 	.row {
@@ -54,8 +70,7 @@
 	ul {
 		min-width: 900px;
 		padding: 20px 0;
-		position: absolute;
-		transform: translateX(-4%);
+		text-align: left;
 		transition: .1s ease;
 
 		@include breakpoint(extra-large, 'min') {
@@ -66,31 +81,32 @@
 	li {
 		@include font-size(14px, true, false);
 		display: inline-block;
+		padding: 8px 15px;
 		vertical-align: middle;
 
 		a {
 			border-radius: 22px;
 			color: #736C6B;
 			display: inline-block;
-			font-weight: bold;
-			padding: 8px 36.5px;
 			position: relative;
 			transition: color .4s ease, background .4s ease;
 
 			&:hover,
 			&.active-nav {
-				background: #f4f2f1;
 				color: #736C6B;
+				font-weight: bold;
 			}
+		}
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
 		}
 
 		&.hide { display: none; }
-
-		&:not(:last-child) {
-			&:after {
-				content: '|';
-			}
-		}
 	}
 
 	.nav-price {
