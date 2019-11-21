@@ -126,6 +126,21 @@ $(document).on('ready', function() {
 					});
 				}
 
+				$(document).ajaxComplete(function(event, xhr, settings) {
+					let shippingController = $('.btn-go-to-payment-wrapper');
+					console.log('aaaa');
+					if (settings.url.indexOf('/api/checkout/pub/postal-code/BRA') > -1 && $('#shipping-data').find('.message').length === 0) {
+						console.log('bbbb');
+						$(`
+							<div class="message">
+								<p>A <strong>entrega agendada</strong> está indisponível temporariamente devido à quantidade de pedidos no site</p>
+							</div>
+						`).insertBefore(shippingController);
+						console.log('cccc');
+					}
+					console.log(settings);
+				});
+
 				return (
 					window.crossroads &&
 					window.crossroads.routed.add(function(request) {
