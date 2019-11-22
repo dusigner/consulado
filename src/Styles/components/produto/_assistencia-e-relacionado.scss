@@ -84,12 +84,12 @@
                         @extend %icon-settings;
                         @include icon-get('icon-engrenagem');
                         @include breakpoint(small, 'max') {
-                            @include rfs(26);
+                            font-size: 26px;
                         }
                         @include breakpoint(medium, 'max') {
-                            @include rfs(15);
+                            font-size: 15px;
                         }
-                        @include rfs(26);
+                        font-size: 26px;
                     }
                 }
                 .icon-infos {
@@ -100,12 +100,12 @@
                         @extend %icon-settings;
                         @include icon-get('informacoes');
                         @include breakpoint(small, 'max') {
-                            @include rfs(26);
+                            font-size: 26px;
                         }
                         @include breakpoint(medium, 'max') {
-                            @include rfs(15);
+                            font-size: 15px;
                         }
-                        @include rfs(26);
+                        font-size: 26px;
                     }
                 }
                 .icon-delivery {
@@ -116,12 +116,12 @@
                         @extend %icon-settings;
                         @include icon-get('entregas');
                         @include breakpoint(small, 'max') {
-                            @include rfs(26);
+                            font-size: 26px;
                         }
                         @include breakpoint(medium, 'max') {
-                            @include rfs(15);
+                            font-size: 15px;
                         }
-                        @include rfs(26);
+                        font-size: 26px;
                     }
                 }
                 .icon-corp {
@@ -132,12 +132,12 @@
                         @extend %icon-settings;
                         @include icon-get('vendas-corporativas');
                         @include breakpoint(small, 'max') {
-                            @include rfs(18);
+                            font-size: 18px;
                         }
                         @include breakpoint(medium, 'max') {
-                            @include rfs(15);
+                            font-size: 15px;
                         }
-                        @include rfs(18);
+                        font-size: 18px;
                     }
                 }
             }
