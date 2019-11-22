@@ -1,0 +1,160 @@
+$textColor: #403C3B;
+$textColorLittle: #736C6B;
+$textColor3: #595453;
+$bgcolor: #FAF9F9;
+$red-error	: #9B1C29;
+
+body {
+	.client-pre-email {
+		border-top: none;
+
+		.link-cart {
+			float: none;
+			margin: 0 auto;
+		}
+
+		label {
+			@include rfs(24);
+			color: $textColor;
+			font-weight: bold;
+			line-height: 1;
+			margin: 0;
+			text-align: center;
+
+			span,
+			small {
+				display: block;
+			}
+
+			small {
+				@include rfs(14);
+				color: $textColorLittle;
+				margin-top: 8px;
+			}
+
+			span {
+				@include breakpoint('small', 'max') {
+					@include rfs(18);
+					display: inline-block;
+					text-align: center;
+					width: 245px;
+				}
+			}
+		}
+
+		.client-email {
+			margin: 0;
+			width: 100%;
+
+			&:before {
+				color: $textColor3;
+				content: 'Digite seu e-mail';
+				font-family: 'Open sans';
+				text-align: center;
+			}
+
+			#client-pre-email {
+				display: block;
+				height: 45px;
+				margin: 0 auto;
+				position: relative;
+				width: 300px;
+
+				&::placeholder {
+					@include rfs(12);
+					color: #D9D8D8;
+					position: absolute;
+					text-align: center;
+					top: 50%;
+					transform: translateY(-25%);
+				}
+
+				&.error {
+					border-color: $red-error;
+					box-shadow: none;
+				}
+			}
+			#btn-client-pre-email {
+				background-color: $green;
+				border: 2px solid $green;
+				display: block;
+				height: 32px;
+				line-height: 0;
+				margin: 20px auto 0;
+				padding: 0 !important;
+				position: relative;
+				width: 140px;
+
+				span {
+					@include rfs(12);
+					color: #fff;
+					display: inline-block;
+					font-weight: 500;
+					margin: 0 auto;
+					text-align: center;
+					width: 100px;
+				}
+			}
+		}
+
+		.emailInfo {
+			background-color: $bgcolor;
+
+			h3 {
+				color: $textColor;
+			}
+
+			.icon-lock {
+				display: none !important;
+			}
+
+			.icon-ok {
+				&:before {
+					color: $textColor;
+					font-size: 7px;
+					height: 10px;
+					line-height: 1;
+					position: absolute;
+					top: 63%;
+					transform: translateY(-50%);
+				}
+			}
+
+			span {
+				@include rfs(12);
+				color: $textColorLittle;
+				font-family: 'Open sans';
+				padding-left: 12px;
+			}
+		}
+
+		#orderform-to-cart {
+			@include breakpoint('small', 'max') { width: 140px; }
+			@include rfs(12);
+			color: $textColor;
+			display: inline-block;
+			font-weight: 500;
+			position: relative;
+			text-align: right;
+			text-decoration: none;
+			width: 160px;
+
+			&:before {
+				@include icon-get('left-arrow');
+				font-size: 10px;
+				position: absolute;
+				right: 130px;
+				top: 5px;
+			}
+		}
+
+		.help.error {
+			@include breakpoint('small', 'max') { top: 80px; }
+			color: $red-error;
+			left: 50%;
+			position: absolute;
+			top: 65px;
+			transform: translateX(-50%);
+		}
+	}
+}
