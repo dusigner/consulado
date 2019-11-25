@@ -262,6 +262,7 @@ body {
 		}
 	}
 	.container-main {
+		@include breakpoint('small', 'min') { margin-bottom: 60px; }
 		margin-top: 60px;
 		.btn-success,
 		.btn-continue-shop {

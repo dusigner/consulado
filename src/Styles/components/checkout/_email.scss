@@ -8,11 +8,6 @@ body {
 	.client-pre-email {
 		border-top: none;
 
-		.link-cart {
-			float: none;
-			margin: 0 auto;
-		}
-
 		label {
 			@include rfs(24);
 			color: $textColor;
@@ -20,6 +15,15 @@ body {
 			line-height: 1;
 			margin: 0;
 			text-align: center;
+
+			&:before {
+				background: url('/arquivos/icon-mail-checkout.png') no-repeat top;
+				background-size: contain;
+				content: '';
+				display: inline-block;
+				height: 90px;
+				width: 95px;
+			}
 
 			span,
 			small {
@@ -29,7 +33,7 @@ body {
 			small {
 				@include rfs(14);
 				color: $textColorLittle;
-				margin-top: 8px;
+				margin-top: 12px;
 			}
 
 			span {
@@ -43,7 +47,7 @@ body {
 		}
 
 		.client-email {
-			margin: 0;
+			margin: 30px 0 0;
 			width: 100%;
 
 			&:before {
@@ -99,6 +103,8 @@ body {
 
 		.emailInfo {
 			background-color: $bgcolor;
+			margin: 50px auto 0;
+			width: 470px;
 
 			h3 {
 				color: $textColor;
