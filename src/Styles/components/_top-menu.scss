@@ -1,14 +1,14 @@
 @charset 'UTF-8';
 
 .top-navigation {
-	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
+//	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
 	border-top: 1px solid #e4e4e4;
     bottom: 1px;
 	position: relative;
     z-index: 16;
 
 	.menu-department {
-		background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
+	//	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
 		display: flex;
 		justify-content: space-between;
 
@@ -18,7 +18,6 @@
 			white-space: nowrap;
 		}
 	}
-
 }
 
 // [ Desktop ] - Menu
@@ -84,7 +83,9 @@
 		}
 
 		&#menu-cupons {
-			background-color: #f4f2f1;
+			//background-color: #f4f2f1;
+			display: none;
+
 			a {
 				@include responsiveFont(16);
 				color: #736C6B;
