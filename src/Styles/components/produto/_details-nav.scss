@@ -88,6 +88,12 @@
 				@extend %flex-center;
 				text-align: left;
 				width: 60%;
+
+				.box-infos {
+					> p {
+						margin: 5px 0;
+					}
+				}
 			}
 		}
 	}

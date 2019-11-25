@@ -80,7 +80,7 @@ Nitro.module('product-nav', function() {
 	});
 
 	const setInfos = () => {
-		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/55-55/gm, '80-80'),
+		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/55-55/gm, '70-70'),
 			$productName = $('.productName').text(),
 			$productReference = $('.productReference').text();
 
