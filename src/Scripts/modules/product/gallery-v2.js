@@ -9,6 +9,7 @@ Nitro.module('galleryv2', function() {
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
 			$video = $('#caracteristicas h4.Video + table .value-field'),
+			//$video = $(''),
 			$size = ($(window).width() < 768) ? 76 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
@@ -49,7 +50,7 @@ Nitro.module('galleryv2', function() {
 				thumb = thumbnail ? $.getImagePath(thumbnail) : 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
 
 			newImages.splice(
-				3,
+				0,
 				0,
 				`<li>
 					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
@@ -59,7 +60,7 @@ Nitro.module('galleryv2', function() {
 			);
 
 			newThumbs.splice(
-				3,
+				0,
 				0,
 				`
 					<li>
@@ -71,11 +72,34 @@ Nitro.module('galleryv2', function() {
 			);
 		}
 
+		let index = 0;
+		let thumbTeste = [];
+
+		newThumbs.forEach(element => {
+
+			if(index < 9) {
+
+				thumbTeste.push(element);
+				index++;
+			}
+		});
+
+		if(index >= 9) {
+			thumbTeste.push(`
+				<li>
+					<a href="javascript:void(0);" class="thumb">
+						Ver Mais + ` + (newThumbs.length - index) + `
+					</a>
+				</li>
+				`);
+		}
+
 		newImages = newImages.join('');
-		newThumbs = newThumbs.join('');
+		//newThumbs = newThumbs.join('');
+		thumbTeste = thumbTeste.join('');
 
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
-		$gallery.after($galleryThumbs.append($(newThumbs)));
+		$gallery.after($galleryThumbs.append($(thumbTeste)));
 
 		$gallery.slick({
 			slidesToShow: 1,
@@ -99,8 +123,10 @@ Nitro.module('galleryv2', function() {
 			slidesToScroll: 1,
 			draggable: true,
 			asNavFor: '.gallery',
+			arrows: false,
 			focusOnSelect: true,
 			vertical: true,
+			infinite: false,
 			responsive: [
 				{
 					breakpoint: 992,
@@ -111,13 +137,16 @@ Nitro.module('galleryv2', function() {
 			]
 		});
 
+		//$galleryThumbs.slick('slickAdd', '<li><a style="height:76px">Ver mais +</a></li>', 9, true);
+
+
 		$(window).load(function() {
 			if ($gallery.width() === 0) {
 				$gallery.slick('refresh');
 			}
 		});
 
-		if ($(newThumbs).length <= 5) {
+		if ($(thumbTeste).length <= 5) {
 			$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
 				$galleryThumbs.find('.slick-slide').removeClass('slick-current');
@@ -127,7 +156,7 @@ Nitro.module('galleryv2', function() {
 
 		//ZOOM MAGNIFIC POP UP
 		//if($(window).width() > 1024) {
-		$('.slick-slide:not(.slick-cloned) .popup-zoom').magnificPopup({
+		$('.popup-zoom').magnificPopup({
 			type: 'image',
 			closeOnContentClick: true,
 			//disableOn: 1024,
@@ -212,6 +241,8 @@ Nitro.module('galleryv2', function() {
 				e.preventDefault();
 			});
 		}*/
+
+
 
 		$(window).resize(function() {
 			const widthPage = $(window).width();
