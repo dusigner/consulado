@@ -55,6 +55,7 @@
 		.row.anchors {
 			@extend %flex-center;
 			background: #FCFCFC;
+			justify-content: space-between;
 			position: relative;
 			&:after {
 				background: #FCFCFC;
@@ -71,8 +72,17 @@
 			> button {
 				background: none;
 				border: none;
+				position: relative;
 				text-align: right;
-				width: 20%;
+				&:before {
+					content: '^	';
+					font-size: 13px;
+					font-weight: bold;
+					left: -15px;
+					position: absolute;
+					top: 5px;
+					// transform: rotate(90deg);
+				}
 			}
 		}
 	}
@@ -90,8 +100,16 @@
 				width: 60%;
 
 				.box-infos {
+					margin-left: 10px;
 					> p {
+						font-size: 14px;
+						font-weight: 500;
+						line-height: 1;
 						margin: 5px 0;
+					}
+					> span {
+						color: #0FB6DE;
+						font-size: 14px;
 					}
 				}
 			}
@@ -119,6 +137,7 @@
 			border-radius: 22px;
 			color: #736C6B;
 			display: inline-block;
+			font-weight: 500;
 			position: relative;
 			transition: color .4s ease, background .4s ease;
 
@@ -230,7 +249,8 @@
 			border-color: $green;
 			color: #fff;
 			margin-left: 20px;
-			margin-top: 10px;
+			margin-top: 20px;
+			padding: 7px 40px;
 
 			@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
