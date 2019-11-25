@@ -40,6 +40,12 @@
 		}
 	}
 
+	.thumb-ver-mais {
+		@include rfs(20);
+		color: $gray-d;
+		font-weight: bold;
+	}
+
 	.slick-dots {
 		bottom: 25px;
 

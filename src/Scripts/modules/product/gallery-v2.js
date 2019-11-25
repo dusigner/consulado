@@ -18,10 +18,10 @@ Nitro.module('galleryv2', function() {
 				<li>
 					<a href="${$.resizeImage(self.attr('rel'), 1000, 1000)}" class="popup-zoom">
 						<img
-							src="${$.resizeImage(self.attr('rel'), 420, 420)}"
+							src="${$.resizeImage(self.attr('rel'), 520, 520)}"
 							alt="${self.find('img').attr('title')}"
-							width="420"
-							height="420"
+							width="520"
+							height="520"
 						 />
 					</a>
 				</li>
@@ -54,7 +54,7 @@ Nitro.module('galleryv2', function() {
 				0,
 				`<li>
 					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
-						<img class="image cover" width="420" height="420" src="${thumb}" />
+						<img class="image cover" width="520" height="520" src="${thumb}" />
 					</a>
 				</li>`
 			);
@@ -77,25 +77,26 @@ Nitro.module('galleryv2', function() {
 
 		newThumbs.forEach(element => {
 
-			if(index < 9) {
+			if(index < 10) {
 
 				thumbTeste.push(element);
 				index++;
 			}
 		});
 
-		if(index >= 9) {
-			thumbTeste.push(`
-				<li>
-					<a href="javascript:void(0);" class="thumb">
-						Ver Mais + ` + (newThumbs.length - index) + `
-					</a>
-				</li>
-				`);
-		}
+		// if(index >= 11) {
+		// 	thumbTeste.push(`
+		// 		<li>
+		// 			<a href="javascript:void(0);" class="thumb-ver-mais">
+		// 				Ver Mais + ${newThumbs.length - index}
+		// 			</a>
+		// 		</li>
+		// 		`);
+
+		// }
 
 		newImages = newImages.join('');
-		//newThumbs = newThumbs.join('');
+		// newThumbs = newThumbs.join('');
 		thumbTeste = thumbTeste.join('');
 
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
@@ -119,9 +120,9 @@ Nitro.module('galleryv2', function() {
 		});
 
 		$galleryThumbs.slick({
-			slidesToShow: 5,
-			slidesToScroll: 1,
-			draggable: true,
+			slidesToShow: 10,
+			// slidesToScroll: 1,
+			//draggable: true,
 			asNavFor: '.gallery',
 			arrows: false,
 			focusOnSelect: true,
@@ -137,8 +138,16 @@ Nitro.module('galleryv2', function() {
 			]
 		});
 
-		//$galleryThumbs.slick('slickAdd', '<li><a style="height:76px">Ver mais +</a></li>', 9, true);
+		if(newThumbs.length > 10) {
+			const lastSlide = $('.thumb').last();
 
+			lastSlide.parent().html(`<li>
+		 		<a href="javascript:void(0);" class="thumb-ver-mais">
+		 			+ ${newThumbs.length - index}
+				</a>
+			</li>`).unbind();
+
+		}
 
 		$(window).load(function() {
 			if ($gallery.width() === 0) {
@@ -190,7 +199,7 @@ Nitro.module('galleryv2', function() {
 			}
 		});
 		if ($(window).width() > 1024) {
-			$('.popup-zoom', '.slick-slide ')
+			$('.popup-zoom')
 				.not('.mfp-iframe')
 				.on('hover', function() {
 					var url = $(this).attr('href'); //pega o link da imagem maior do lightbox
