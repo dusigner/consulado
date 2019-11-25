@@ -154,19 +154,22 @@ body {
 	}
 
 	nav.top-navigation {
-		background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+		//background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+		background-color: $menu-section;
 		border-top: 1px solid $border-color;
 		bottom: 0;
 		box-shadow: none;
 
 		.menu-department {
-			background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+			//background: linear-gradient(90deg, $menu-section 50%, $search 50%);
+			background-color: $menu-section;
 
 			.menu-header-category {
 				background-color: $menu-section;
 
 				&#menu-cupons {
 					background-color: $search;
+					display: none;
 
 					a {
 						color: #fff;

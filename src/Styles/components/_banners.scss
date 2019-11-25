@@ -73,16 +73,14 @@
 		}
 
 		img {
+			@include breakpoint(1900px, 'min') { width: 100%; }		// Não me orgulho do que foi feito nesta linha
+			@include breakpoint(small, 'max') {	max-width: 100%; }
 			display: block;
 			height: auto;
 			left: 50%;
 			position: relative;
 			transform: translateX(-50%);
 			width: 1900px;
-
-			@include breakpoint(small, 'max') {
-				max-width: 100%;
-			}
 		}
 
 		&.slick-slide {
