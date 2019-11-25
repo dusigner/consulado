@@ -1,3 +1,10 @@
+$bg-light-gray: #f4f2f1;
+$bg-gray: #FCFCFC;
+$color-box-shadow: #00000029;
+$color-dark-gray: #736C6B;
+$color-light-blue: #0FB6DE;
+$color-white: #fff;
+
 %flex-center {
 	align-items: center;
 	display: flex;
@@ -5,7 +12,7 @@
 }
 
 .prod-details-nav {
-	background: #f4f2f1;
+	background: $bg-light-gray;
 	min-height: 95px;
 	position: relative;
 	text-align: center;
@@ -25,26 +32,28 @@
 
 	&.pinned {
 		background: #fff;
-		box-shadow: 0 2px 6px #00000029;
+		box-shadow: 0 2px 6px $color-box-shadow;
 		@include breakpoint(extra-large, 'max') {
 			@include opacity(1);
 		}
 
 		ul {
-			display: none;
-			min-width: 700px;
 			padding: 0;
+			text-align: left;
 			width: 80%;
+		}
 
-			@include breakpoint(extra-large, 'min') {
-				display: block!important;
-				min-width: inherit;
-				text-align: left;
+		.info-product {
+			@extend %flex-center;
+
+			.product-infos {
+				@extend %flex-center;
 			}
 		}
 
 		.nav-price {
-			display: block;
+			display: flex;
+			flex-wrap: wrap;
 			opacity: 1;
 		}
 
@@ -54,13 +63,13 @@
 
 		.row.anchors {
 			@extend %flex-center;
-			background: #FCFCFC;
+			background: $bg-gray;
 			justify-content: space-between;
 			position: relative;
 			&:after {
-				background: #FCFCFC;
+				background: $bg-gray;
 				content: '';
-				height: 100%;
+				height: 35px;
 				left: 0;
 				position: absolute;
 				top: 0;
@@ -72,6 +81,9 @@
 			> button {
 				background: none;
 				border: none;
+				font-size: 12px;
+				font-weight: 500;
+				margin-right: 15px;
 				position: relative;
 				text-align: right;
 				&:before {
@@ -80,8 +92,7 @@
 					font-weight: bold;
 					left: -15px;
 					position: absolute;
-					top: 5px;
-					// transform: rotate(90deg);
+					top: 2px;
 				}
 			}
 		}
@@ -92,10 +103,9 @@
 		position: relative;
 
 		&.info-product {
-			@extend %flex-center;
+			display: none;
 
 			.product-infos {
-				@extend %flex-center;
 				text-align: left;
 				width: 60%;
 
@@ -108,7 +118,7 @@
 						margin: 5px 0;
 					}
 					> span {
-						color: #0FB6DE;
+						color: $color-light-blue;
 						font-size: 14px;
 					}
 				}
@@ -117,7 +127,6 @@
 	}
 
 	ul {
-		min-width: 900px;
 		padding: 20px 0;
 		text-align: left;
 		transition: .1s ease;
@@ -135,7 +144,7 @@
 
 		a {
 			border-radius: 22px;
-			color: #736C6B;
+			color: $color-dark-gray;
 			display: inline-block;
 			font-weight: 500;
 			position: relative;
@@ -143,7 +152,7 @@
 
 			&:hover,
 			&.active-nav {
-				color: #736C6B;
+				color: $color-dark-gray;
 				font-weight: bold;
 			}
 		}
@@ -171,13 +180,13 @@
 	}
 
 	.details-preco {
-		color: #736C6B;
-		float: right;
+		color: $color-dark-gray;
+		order: 1;
 		text-align: right;
+		width: 60%;
 
 		.descricao-preco {
 			margin: 0;
-
 			em { font-style: normal; }
 
 			.skuBestPrice {
@@ -192,8 +201,8 @@
 
 			strong {
 				@include rfs(14);
-				color: #736c6b;
-				font-weight: 400;
+				color: $color-dark-gray;
+				font-weight: 500;
 				text-decoration: line-through;
 			}
 		}
@@ -224,12 +233,14 @@
 				&.skuBestInstallmentValue {
 					&:after {
 						content: ' sem juros';
+						font-weight: 400;
 					}
 				}
 
 				&.skuBestInstallmentNumber {
 					&:before {
 						content: 'em até ';
+						font-weight: 400;
 					}
 
 					&:after {
@@ -242,15 +253,15 @@
 
 	#BuyButtonDetails {
 		@extend #BuyButton;
-		float: right;
+		order: 2;
+		width: 40%;
 
 		.buy-button {
 			background-color: $green;
 			border-color: $green;
-			color: #fff;
+			color: $color-white;
 			margin-left: 20px;
 			margin-top: 20px;
-			padding: 7px 40px;
 
 			@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
@@ -262,7 +273,7 @@
 			}
 
 			&:hover {
-				background-color: #f4f2f1;
+				background-color: $bg-light-gray;
 				color: $green;
 			}
 		}
@@ -272,12 +283,12 @@
 body.consulempresa {
 	.prod-details-nav {
 		.details-preco .valor-por {
-			color: #fff;
+			color: $color-white;
 			strong {
 				font-weight: bold;
 			}
 			&:after {
-				color: #fff;
+				color: $color-white;
 			}
 		}
 		.valor-dividido {
