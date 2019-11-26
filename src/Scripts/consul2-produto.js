@@ -378,17 +378,6 @@ Nitro.controller(
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
-
-		$(document).ajaxComplete(function(event, xhr, settings) {
-			let shippingController = $('.freight-values');
-			if (settings.url.indexOf('/frete/calcula/') > -1 && shippingController.find('.message').length === 0) {
-				$(`
-					<tr class="message">
-						<td>A <strong>entrega agendada</strong> está indisponível temporariamente devido à quantidade de pedidos no site</td>
-					</tr>
-				`).insertAfter(shippingController.find('tbody tr:last-child'));
-			}
-		});
 	}
 );
 
