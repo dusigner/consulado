@@ -109,6 +109,12 @@ Nitro.module('specifications-v2', function() {
 		if ($('.specs__footer-content').find('.hide').length === 2) {
 			$('.specs__footer-content').addClass('hide');
 		}
+
+		const $footerSpecs = $('.specs__footer-content');
+
+		if ($footerSpecs.find('.hide').length === 1 && !$footerSpecs.find('.specs__additionalInfo').hasClass('hide')) {
+			$footerSpecs.find('.specs__additionalInfo').addClass('expand');
+		}
 	};
 
 	//listen only to the first one sku;
@@ -154,5 +160,7 @@ Nitro.module('specifications-v2', function() {
 			$this.toggleClass('specActive');
 			$this.parents('.specs__section').toggleClass('inactive');
 		});
+
+
 	}
 });

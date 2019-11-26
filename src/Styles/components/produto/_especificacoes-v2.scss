@@ -281,6 +281,10 @@ $bar-color: #D9D8D8;
 			}
 			margin-bottom: 30px;
 
+			&.expand {
+				width: 100%;
+			}
+
 			&-content {
 				&-value {
 					@include rfs(12);
@@ -436,4 +440,6 @@ $bar-color: #D9D8D8;
 .hide {
 	height: 0!important;
 	margin: 0!important;
+	visibility: hidden;
+	width: 0!important;
 }
