@@ -9,7 +9,6 @@ Nitro.module('galleryv2', function() {
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
 			$video = $('#caracteristicas h4.Video + table .value-field'),
-			//$video = $(''),
 			$size = ($(window).width() < 768) ? 76 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
@@ -51,7 +50,7 @@ Nitro.module('galleryv2', function() {
 
 			newImages.splice(
 				0,
-				0,
+				1,
 				`<li>
 					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
 						<img class="image cover" width="520" height="520" src="${thumb}" />
@@ -65,7 +64,7 @@ Nitro.module('galleryv2', function() {
 				`
 					<li>
 						<a href="javascript:void(0);" class="thumb">
-							<img src="${$.resizeImage('/arquivos/cns-video-icon.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
+							<img src="${$.resizeImage('/arquivos/cns-video-icon-pdp.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
 						</a>
 					</li>
 				`
@@ -73,34 +72,23 @@ Nitro.module('galleryv2', function() {
 		}
 
 		let index = 0;
-		let thumbTeste = [];
+		let thumbTodas = [];
 
 		newThumbs.forEach(element => {
 
 			if(index < 10) {
 
-				thumbTeste.push(element);
+				thumbTodas.push(element);
 				index++;
 			}
 		});
 
-		// if(index >= 11) {
-		// 	thumbTeste.push(`
-		// 		<li>
-		// 			<a href="javascript:void(0);" class="thumb-ver-mais">
-		// 				Ver Mais + ${newThumbs.length - index}
-		// 			</a>
-		// 		</li>
-		// 		`);
-
-		// }
-
 		newImages = newImages.join('');
 		// newThumbs = newThumbs.join('');
-		thumbTeste = thumbTeste.join('');
+		thumbTodas = thumbTodas.join('');
 
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
-		$gallery.after($galleryThumbs.append($(thumbTeste)));
+		$gallery.after($galleryThumbs.append($(thumbTodas)));
 
 		$gallery.slick({
 			slidesToShow: 1,
@@ -155,7 +143,7 @@ Nitro.module('galleryv2', function() {
 			}
 		});
 
-		if ($(thumbTeste).length <= 5) {
+		if ($(thumbTodas).length <= 5) {
 			$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
 				// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
 				$galleryThumbs.find('.slick-slide').removeClass('slick-current');

@@ -41,9 +41,17 @@
 	}
 
 	.thumb-ver-mais {
-		@include rfs(20);
-		color: $gray-d;
+		@include rfs(22);
+		background-color: #FAF9F9;
+		border: 1px solid #F1F0F0;
+		border-radius: 5px;
+		color: $gray-c;
 		font-weight: bold;
+		height: 76px;
+		letter-spacing: -1px;
+		padding: 20px 0;
+		text-align: center;
+		width: 76px;
 	}
 
 	.slick-dots {
@@ -63,7 +71,7 @@
 	.gallery {
 		float: right;
 		@include breakpoint(medium, 'min') {
-			width: 435px;
+			width: 430px;
 		}
 		@include breakpoint(medium, 'max') {
 			display: inline-block;
@@ -170,6 +178,7 @@
 	.galleryThumbs {
 		max-height: 353px;
 		@include breakpoint(small, 'min') {
+			margin-top: 25px;
 			width: 180px;
 		}
 		@include breakpoint(small, 'max') {
@@ -182,25 +191,30 @@
 
 		.slick-list {
 			// @include breakpoint('small', 'max') { max-height: 195px; }
+			border: none;
 			min-height: 195px;
 
 		}
 		.slick-track {
+			display: flex;
+			flex-flow: wrap;
+			height: 440px !important;
 			width: 180px;
 		}
 
 		img {
 			@include breakpoint('small', 'max') { margin: 0; }
-			border: 2px solid $gray;
+			border: 1px solid #F1F0F0;
 			border-radius: 5px;
 			font-size: 7px;
-			margin: 0;
+			margin: 0 auto;
 		}
 
 		.slick-slide {
 			@include breakpoint('small', 'max') { margin: 0; }
-			max-height: 90px;
-			width: 90px !important;
+			margin: 0 auto;
+			max-height: 78px;
+    		width: 80px !important;
 
 			a { display: inline-block; }
 
