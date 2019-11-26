@@ -68,7 +68,7 @@ body.open-frete {
 		font-size: 0;
 		padding-top: 15px;
 		position: relative;
-		width: 46%;
+		width: 31%;
 
 		input {
 			background: #fff;
@@ -88,7 +88,7 @@ body.open-frete {
 		float: right;
 		padding-top: 15px;
 		position: relative;
-		width: 17%;
+		width: 32%;
 
 		&.loading {
 
@@ -119,10 +119,12 @@ body.open-frete {
 		}
 
 		&:before {
-			@include icon-get('arrow-right');
+			@include icon-get('right-arrow');
+			color: $purple;
+			font-size: 12px;
 			position: absolute;
-			right: 15px;
-			top: 27px;
+			right: 12px;
+			top: 29px;
 			z-index: 1;
 		}
 	}
@@ -158,6 +160,7 @@ body.open-frete {
 		transition: .2s linear all;
 
 		&.active {
+			@include breakpoint('medium', 'max') { max-width: 513px; }
 			opacity: 1;
 			transition: .3s linear all;
 
@@ -173,8 +176,7 @@ body.open-frete {
 				position: absolute;
 				right: 8px;
 				text-align: center;
-				top: 50%;
-				transform: translateY(-15px);
+				top: 10px;
 				transition: .3s linear all;
 				width: 25px;
 				z-index: 55;
@@ -220,6 +222,7 @@ body.open-frete {
 			display: block;
 			margin: 0 auto;
 			padding: 0 10px;
+			position: relative;
 			width: 100%;
 
 			thead {
@@ -328,6 +331,7 @@ body.open-frete {
 					}
 				}
 			}
+
 		}
 	}
 
@@ -343,17 +347,14 @@ body.open-frete {
 		}
 
 		.prefixo {
-			width: 77%;
+			width: 54%;
 		}
 
 		span.frete-calcular {
-			width: 23%;
+			width: 46%;
 
 			&:before {
 				text-align: center;
-				@include breakpoint('small', 'max') {
-					top: 29px;
-				}
 			}
 		}
 

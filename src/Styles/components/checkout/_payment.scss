@@ -567,19 +567,20 @@ body {
 						}
 
 						.shipping-option-item-name {
-							color: $purple;
+							color: #736C6B;
 							font-weight: bold;
 						}
 					}
 
 					&.active {
 						background-color: #fff;
-						border: 1px solid $purple;
+						border: 1px solid #9ACA3C;
+						box-shadow: none;
 
 						&:before {
-							background-color: $purple;
+							background-color: #736C6B;
 							border: 2px solid #fff;
-							box-shadow: 0 0 0 2px #702f8f;
+							box-shadow: 0 0 0 2px #736C6B;
 							height: 10px;
 							left: calc(4% + 1px);
 							width: 10px;
