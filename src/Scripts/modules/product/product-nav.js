@@ -52,9 +52,7 @@ Nitro.module('product-nav', function() {
 	$window.scroll(scrollEvent).scroll();
 
 	$('.row.anchors > button').on('click', () => {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
+        $('html, body').animate({ scrollTop: 0 }, 1000);
 	});
 
 	$(document).on('click', '.scroll-to', function(e) {
