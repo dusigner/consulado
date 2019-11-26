@@ -96,7 +96,7 @@ Nitro.controller(
 				e.preventDefault();
 				var _pos = $(window).scrollTop();
 
-				if ($('body').hasClass('produto-indisponivel') || (_pos >= 300)) {
+				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
 					$('.product-info-bar').addClass('formas-pagamento-is--active');
 				} else {
 					$('.product-info-bar').removeClass('formas-pagamento-is--active');
