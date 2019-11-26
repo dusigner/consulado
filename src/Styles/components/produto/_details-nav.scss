@@ -86,6 +86,9 @@ $color-white: #fff;
 				margin-right: 15px;
 				position: relative;
 				text-align: right;
+				&:active {
+					border: none;
+				}
 				&:before {
 					content: '^	';
 					font-size: 13px;
