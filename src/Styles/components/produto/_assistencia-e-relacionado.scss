@@ -17,8 +17,10 @@
         margin: 60px auto 120px;
         > h2 {
             @include breakpoint(small, 'max') {
+                @include rfs(20);
                 text-align: left;
             }
+            @include rfs(28);
             font-weight: bold !important;
             line-height: 1.1;
             margin: 8px 0;
