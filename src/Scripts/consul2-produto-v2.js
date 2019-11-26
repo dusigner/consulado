@@ -89,18 +89,21 @@ Nitro.controller(
 			}
 		});
 
-		// Esconder botão de comprar em determinada posição da tela
-		// if ($(window).width() <= 1024) {
-		// 	$(window).scroll(function(e) {
-		// 		e.preventDefault();
-		// 		var _pos = $(window).scrollTop();
-		// 		if ($('body').hasClass('produto-indisponivel') || (_pos >= 100 && _pos <= 300)) {
-		// 			$('#BuyButton .buy-button').hide();
-		// 		} else {
-		// 			$('#BuyButton .buy-button').show();
-		// 		}
-		// 	});
-		// }
+
+		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
+		if ($(window).width() <= 1024) {
+			$(window).scroll(function(e) {
+				e.preventDefault();
+				var _pos = $(window).scrollTop();
+
+				if ($('body').hasClass('produto-indisponivel') || (_pos >= 300)) {
+					$('.product-info-bar').addClass('formas-pagamento-is--active');
+				} else {
+					$('.product-info-bar').removeClass('formas-pagamento-is--active');
+					$('.formas-pagamento-container').removeClass('is--active');
+				}
+			});
+		}
 
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 

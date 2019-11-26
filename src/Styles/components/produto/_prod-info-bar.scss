@@ -1,7 +1,5 @@
 .product-info-bar {
-	@include breakpoint('medium', 'min') {
-		display: none;
-	}
+	@include breakpoint('medium', 'min') { display: none; }
 	background-color: #fff;
 	border-bottom: 2px solid $green;
 	border-top: 1px solid #f1f0f0;
@@ -9,8 +7,12 @@
 	box-shadow: 0 2px 6px rgba(0, 0, 0, .16);
 	left: 0;
 	position: fixed;
+	transform: translateY(200px);
+	transition: transform .4s ease;
 	width: 100%;
 	z-index: 15;
+
+	&.formas-pagamento-is--active { transform: translateY(0); }
 
 	// Hide elements
 	.discount-boleto,
@@ -72,7 +74,6 @@
 		display: block;
 		margin: 0;
 		max-height: 35px;
-		transition: max-height .3s ease;
 
 		.titulo-parcelamento {
 			padding-bottom: 8px;
@@ -80,7 +81,10 @@
 			text-indent: 15px;
 		}
 
-		.other-payment-method-ul { max-height: 185px; }
+		.other-payment-method-ul {
+			margin-left: 15px;
+			max-height: 185px;
+		}
 
 		&.is--active {
 			height: auto;
