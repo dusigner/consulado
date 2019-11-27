@@ -21,7 +21,8 @@ Nitro.module('checkout.auto-fill', () => {
             // Setando as informações do cliente no cookie
             $document.ajaxSuccess((xhr, status, settings) => {
                 if (settings.url.indexOf('/attachments/clientProfileData') !== -1) {
-                    document.cookie = `clientInfos=clEmail${$clEmail.val()}/clFirstName=${$clFirstName.val()}/clLastName=${$clLastName.val()}/clDocument=${$clDocument.val()}/clPhone=${$clPhone.val()}`
+                    const expiryDate = new Date();
+                    document.cookie = `clientInfos=clEmail${$clEmail.val()}/clFirstName=${$clFirstName.val()}/clLastName=${$clLastName.val()}/clDocument=${$clDocument.val()}/clPhone=${$clPhone.val()};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
                 }
             });
         },
