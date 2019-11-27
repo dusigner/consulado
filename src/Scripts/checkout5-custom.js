@@ -502,6 +502,12 @@ $(document).on('ready', function() {
 
 				$('#ship-street, #ship-name').attr('maxlength', 35);
 
+				setTimeout(function() {
+					$('.shipping-option-item-text-wrapper').each(function() {
+						workingDays.setShippingMessage($(this));
+					});
+				}, 1000);
+
 				return (
 					$.listen &&
 					$.listen('parsley:field:init', function(e) {
@@ -781,14 +787,14 @@ $(document).on('ready', function() {
 					$('.shipping-option-item-text-wrapper').each(function() {
 						workingDays.setShippingMessage($(this));
 					});
-				}, 2000);
+				}, 1000);
 
 				$(document).on('click', '.shipping-option-item.label-vertical-group.input.btn', function() {
 					setTimeout(function() {
 						$('.shipping-option-item-text-wrapper').each(function() {
 							workingDays.setShippingMessage($(this));
 						});
-					}, 2000);
+					}, 1000);
 				});
 			};
 
