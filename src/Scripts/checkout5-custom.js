@@ -480,12 +480,8 @@ $(document).on('ready', function() {
 				highlightVoltage($('.product-name > a'));
 
 				$('.shipping-sla-options li').each(function() {
-					var $elementShipping = $(this).find('span');
+					var $elementShipping = $(this).find('a');
 					workingDays.setShippingMessage($elementShipping);
-				});
-
-				$('.shipping-estimate').each(function() {
-					workingDays.setShippingMessage($(this));
 				});
 
 				$('.link-coupon-add').on('click', function() {

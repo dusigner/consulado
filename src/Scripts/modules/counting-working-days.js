@@ -8,7 +8,7 @@ Nitro.module('workingdays-counter', function() {
 	 * @returns number of working days between these dates
 	 */
 	this.countWorkingDays = function() {
-		const christmas = new Date('December 25, 2019 00:00:00'); // Christmas date
+		const christmas = new Date('December 20, 2019 00:00:00'); // Christmas date
 		let now = new Date(); // Actual date
 		let holidays = 0; // Set number of holidays
 		let weekendDays = 0; // Number of Saturdays and Sundays
@@ -56,7 +56,7 @@ Nitro.module('workingdays-counter', function() {
 			const workingDaysUntilChristmas = self.countWorkingDays();
 
 			workingDaysUntilChristmas - parseInt(workingDays[0]) >= 0
-				? $workingDaysElement.append('<br> <strong>Chega antes do Natal </strong>')
+				? $workingDaysElement.append('<br> <strong class="message">Chega antes do Natal </strong>')
 				: '';
 		}
 	};
