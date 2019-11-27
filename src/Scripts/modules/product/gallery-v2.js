@@ -50,7 +50,7 @@ Nitro.module('galleryv2', function() {
 
 			newImages.splice(
 				0,
-				1,
+				0,
 				`<li>
 					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
 						<img class="image cover" width="520" height="520" src="${thumb}" />
@@ -64,7 +64,7 @@ Nitro.module('galleryv2', function() {
 				`
 					<li>
 						<a href="javascript:void(0);" class="thumb">
-							<img src="${$.resizeImage('/arquivos/cns-video-icon-pdp.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
+							<img src="${$.resizeImage('/arquivos/cns-icon-video-pdp.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
 						</a>
 					</li>
 				`
@@ -86,6 +86,7 @@ Nitro.module('galleryv2', function() {
 		newImages = newImages.join('');
 		// newThumbs = newThumbs.join('');
 		thumbTodas = thumbTodas.join('');
+
 
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
 		$gallery.after($galleryThumbs.append($(thumbTodas)));
@@ -134,7 +135,6 @@ Nitro.module('galleryv2', function() {
 		 			+ ${newThumbs.length - index}
 				</a>
 			</li>`).unbind();
-
 		}
 
 		$(window).load(function() {
@@ -143,17 +143,17 @@ Nitro.module('galleryv2', function() {
 			}
 		});
 
-		if ($(thumbTodas).length <= 5) {
-			$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-				// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
-				$galleryThumbs.find('.slick-slide').removeClass('slick-current');
-				$galleryThumbs.find('.slick-slide' + '[data-slick-index=' + nextSlide + ']').addClass('slick-current');
-			});
-		}
+		// if ($(thumbTodas).length <= 5) {
+		// 	$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+		// 		// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
+		// 		$galleryThumbs.find('.slick-slide').removeClass('slick-current');
+		// 		$galleryThumbs.find('.slick-slide' + '[data-slick-index=' + nextSlide + ']').addClass('slick-current');
+		// 	});
+		// }
 
 		//ZOOM MAGNIFIC POP UP
 		//if($(window).width() > 1024) {
-		$('.popup-zoom').magnificPopup({
+		$('.popup-zoom, .thumb-ver-mais').magnificPopup({
 			type: 'image',
 			closeOnContentClick: true,
 			//disableOn: 1024,
@@ -241,14 +241,14 @@ Nitro.module('galleryv2', function() {
 
 
 
-		$(window).resize(function() {
-			const widthPage = $(window).width();
+		// $(window).resize(function() {
+		// 	const widthPage = $(window).width();
 
-			if (widthPage < 960) {
-				$('.thumb img').attr('height', '56px').attr('width', '56px');
-			} else {
-				$('.thumb img').attr('height', '75px').attr('width', '75px');
-			}
-		});
+		// 	if (widthPage < 960) {
+		// 		$('.thumb img').attr('height', '56px').attr('width', '56px');
+		// 	} else {
+		// 		$('.thumb img').attr('height', '75px').attr('width', '75px');
+		// 	}
+		// });
 	};
 });

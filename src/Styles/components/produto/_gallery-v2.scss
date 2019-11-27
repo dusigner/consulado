@@ -192,13 +192,13 @@
 		.slick-list {
 			// @include breakpoint('small', 'max') { max-height: 195px; }
 			border: none;
+			height: auto !important;
 			min-height: 195px;
-
 		}
 		.slick-track {
 			display: flex;
 			flex-flow: wrap;
-			height: 440px !important;
+			height: auto !important;
 			width: 180px;
 		}
 
@@ -212,7 +212,7 @@
 
 		.slick-slide {
 			@include breakpoint('small', 'max') { margin: 0; }
-			margin: 0 auto;
+			margin: 0 10px 12px 0;
 			max-height: 78px;
     		width: 80px !important;
 
