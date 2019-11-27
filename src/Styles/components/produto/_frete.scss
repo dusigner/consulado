@@ -262,6 +262,10 @@ body.open-frete {
 					&:empty { display: none; }
 
 					&:first-child { min-width: 115px; }
+
+					strong {
+						color: #595453;
+					}
 				}
 
 				th {
