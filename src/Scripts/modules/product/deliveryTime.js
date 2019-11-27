@@ -1,7 +1,9 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-Nitro.module('deliveryTime', () => {
+require('modules/counting-working-days');
+
+Nitro.module('deliveryTime', ['workingdays-counter'], (workingDays) => {
 	let $loadingFret,
 		$containerFrete,
 		flag = 0,
@@ -54,6 +56,10 @@ Nitro.module('deliveryTime', () => {
 					});
 					flag = 0;
 				}
+
+				$('.freight-values.active').find('tbody').find('td').each(function() {
+					workingDays.setShippingMessage($(this));
+				});
 
 				this.setPostalCodeStorage();
 				this.hasFreeShipping();

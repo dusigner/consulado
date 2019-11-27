@@ -378,7 +378,6 @@ Nitro.controller(
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
-
 	}
 );
 

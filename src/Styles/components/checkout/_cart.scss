@@ -862,6 +862,22 @@ body.body-cart {
 								position: relative;
 								text-transform: initial;
 
+
+								.message {
+									color: #EC008C;
+									font-size: 11px;
+									line-height: 1.2;
+									position: absolute;
+									right: -5px;
+									text-align: right;
+									top: 50%;
+									transform: translateY(-50%);
+									width: 70px;
+								}
+
+								strong {
+									display: block;
+								}
 								&:first-child { border: none; }
 
 								a {

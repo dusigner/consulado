@@ -560,6 +560,8 @@ body {
 					}
 
 					.shipping-option-item-text-wrapper {
+						position: relative;
+
 						span {
 							@include rfs(12);
 							color: $gray-d;
@@ -567,19 +569,37 @@ body {
 						}
 
 						.shipping-option-item-name {
-							color: $purple;
+							color: #736C6B;
+							display: block;
 							font-weight: bold;
+						}
+
+						span:nth-child(2) {
+							display: none;
+						}
+
+						.message {
+							color: #EC008C;
+							font-size: 11px;
+							line-height: 1.2;
+							position: absolute;
+							right: -20px;
+							text-align: right;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 70px;
 						}
 					}
 
 					&.active {
 						background-color: #fff;
-						border: 1px solid $purple;
+						border: 1px solid #9ACA3C;
+						box-shadow: none;
 
 						&:before {
-							background-color: $purple;
+							background-color: #736C6B;
 							border: 2px solid #fff;
-							box-shadow: 0 0 0 2px #702f8f;
+							box-shadow: 0 0 0 2px #736C6B;
 							height: 10px;
 							left: calc(4% + 1px);
 							width: 10px;
