@@ -8,8 +8,8 @@ Nitro.module('galleryv2', function() {
 		var $thumbs = $('.thumbs a'),
 			$gallery = $('<ul class="gallery" />'),
 			$galleryThumbs = $('<ul class="galleryThumbs" />'),
-			$video = $('#caracteristicas h4.Video + table .value-field'),
-			$size = ($(window).width() < 768) ? 76 : 75;
+			$video = $('#caracteristicas h4.Video + table .value-field');
+			// $size = ($(window).width() < 768) ? 76 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
@@ -94,38 +94,45 @@ Nitro.module('galleryv2', function() {
 		$gallery.slick({
 			slidesToShow: 1,
 			arrows: false,
+			focusOnSelect: true,
 			asNavFor: '.galleryThumbs',
 			dots: true,
 			draggable: false,
 			responsive: [
 				{
-					breakpoint: 992,
+					breakpoint: 768,
 					settings: {
+						slidesToShow: 1,
+						slidesToScroll: 1,
 						draggable: true,
-						arrows: true
+						arrows: true,
+						asNavFor: false,
+						dots: true,
 					}
 				}
 			]
 		});
 
-		$galleryThumbs.slick({
-			slidesToShow: 10,
-			// slidesToScroll: 1,
-			//draggable: true,
-			asNavFor: '.gallery',
-			arrows: false,
-			focusOnSelect: true,
-			vertical: true,
-			infinite: false,
-			responsive: [
-				{
-					breakpoint: 992,
-					settings: {
-						slidesToShow: 3
+		if($(window).width() > 768) {
+			$galleryThumbs.slick({
+				slidesToShow: 10,
+				// slidesToScroll: 1,
+				//draggable: true,
+				asNavFor: '.gallery',
+				arrows: false,
+				focusOnSelect: true,
+				vertical: true,
+				infinite: false,
+				responsive: [
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 3
+						}
 					}
-				}
-			]
-		});
+				]
+			});
+		}
 
 		if(newThumbs.length > 10) {
 			const lastSlide = $('.thumb').last();
@@ -143,13 +150,13 @@ Nitro.module('galleryv2', function() {
 			}
 		});
 
-		// if ($(thumbTodas).length <= 5) {
-		// 	$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-		// 		// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
-		// 		$galleryThumbs.find('.slick-slide').removeClass('slick-current');
-		// 		$galleryThumbs.find('.slick-slide' + '[data-slick-index=' + nextSlide + ']').addClass('slick-current');
-		// 	});
-		// }
+		if ($(thumbTodas).length <= 5) {
+			$gallery.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+				// console.log(nextSlide, $galleryThumbs.find('.slick-slide'));
+				$galleryThumbs.find('.slick-slide').removeClass('slick-current');
+				$galleryThumbs.find('.slick-slide' + '[data-slick-index=' + nextSlide + ']').addClass('slick-current');
+			});
+		}
 
 		//ZOOM MAGNIFIC POP UP
 		//if($(window).width() > 1024) {

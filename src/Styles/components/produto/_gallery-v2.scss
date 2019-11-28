@@ -70,16 +70,15 @@
 
 	.gallery {
 		float: right;
-		@include breakpoint(medium, 'min') {
+		@include breakpoint(small, 'min') {
 			width: 430px;
 		}
-		@include breakpoint(medium, 'max') {
+		@include breakpoint(small, 'max') {
 			display: inline-block;
 			float: right;
 			padding: 0;
-			width: calc(100% - 90px);
-
-			.slick-arrow { display: none !important; }
+			// width: calc(100% - 90px);
+			width: 100%;
 		}
 
 		.slick-prev,
@@ -182,7 +181,7 @@
 			width: 180px;
 		}
 		@include breakpoint(small, 'max') {
-			display: inline-block;
+			display: none;
 			float: left;
 			max-height: 285px;
 			padding: 0;
