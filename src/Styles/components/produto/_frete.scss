@@ -239,6 +239,14 @@ body.open-frete {
 						right: -10px;
 						width: calc(100% + 20px);
 					}
+
+					th:first-child {
+						font-size: 0;
+						&:after {
+							content: 'Valor';
+							font-size: 14px;
+						}
+					}
 				}
 			}
 
@@ -261,7 +269,26 @@ body.open-frete {
 
 					&:empty { display: none; }
 
-					&:first-child { min-width: 115px; }
+					&:first-child {
+						@include breakpoint('small', 'max') { min-width: 75px; }
+						min-width: 115px;
+					}
+
+					&:nth-child(2) {
+						padding: 5px 90px 5px 5px;
+					}
+
+					.message {
+						color: #EC008C;
+						font-size: 11px;
+						line-height: 1.2;
+						position: absolute;
+						right: 0;
+						text-align: right;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 70px;
+					}
 				}
 
 				th {
@@ -347,11 +374,11 @@ body.open-frete {
 		}
 
 		.prefixo {
-			width: 54%;
+			width: 50%;
 		}
 
 		span.frete-calcular {
-			width: 46%;
+			width: 50%;
 
 			&:before {
 				text-align: center;
