@@ -85,7 +85,7 @@ $icon-arrow-gray: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAUCAYAAAB
 	.section-atendimento {
 		@include breakpoint('small', 'max') { border-top: 1px solid $default-color-gray-light; }
 		@include breakpoint('small', 'min') {
-			align-items: flex-end;
+			align-items: flex-start;
 			display: flex;
 			justify-content: stretch;
 		}

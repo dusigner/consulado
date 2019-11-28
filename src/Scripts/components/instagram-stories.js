@@ -54,7 +54,7 @@ Nitro.module('instagram-stories', function() {
 		const title = $('.stories-card__header strong');
 		$stories.find(`.stories-card__marker-${activeStorieId}`).show();
 		$stories.find(`.stories-card-list[data-collection-id="${activeStorieId}"]`).show();
-		(activeStorieId === 1834 || activeStorieId === 166) ? title.text('Frete grátis para as regiões Sul e Sudeste') : title.text('Produtos atualizados todo dia')
+		(activeStorieId === 1834 || activeStorieId === 166) ? title.text('Confira regiões participantes através do selo') : title.text('Produtos atualizados todo dia')
 		$storiesCard.addClass('is--open');
 	};
 

@@ -25,6 +25,7 @@ require('dataLayers/dataLayer-home-BF.js')
 Nitro.controller(
 	'home',
 	[
+		'chaordic',
 		'slider-banner',
 		'instagram-stories',
 		'lead-newsletter',
@@ -36,7 +37,9 @@ Nitro.controller(
 		'dataLayer-home-bf'
 	],
 
-	function() {
+	function(chaordic) {
+
+		chaordic.init('home');
 
 		$('.tipbar-novo .container .row').slick ({
 			mobileFirst: false,

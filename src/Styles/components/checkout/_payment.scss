@@ -560,6 +560,8 @@ body {
 					}
 
 					.shipping-option-item-text-wrapper {
+						position: relative;
+
 						span {
 							@include rfs(12);
 							color: $gray-d;
@@ -568,7 +570,24 @@ body {
 
 						.shipping-option-item-name {
 							color: #736C6B;
+							display: block;
 							font-weight: bold;
+						}
+
+						span:nth-child(2) {
+							display: none;
+						}
+
+						.message {
+							color: #EC008C;
+							font-size: 11px;
+							line-height: 1.2;
+							position: absolute;
+							right: -20px;
+							text-align: right;
+							top: 50%;
+							transform: translateY(-50%);
+							width: 70px;
 						}
 					}
 

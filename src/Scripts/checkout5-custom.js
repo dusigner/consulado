@@ -57,6 +57,7 @@ $(document).on('ready', function() {
 	require('modules/customLogin');
 	require('modules/store/callcenter');
 	// require('modules/chaordic');
+	require('modules/counting-working-days');
 	require('modules/checkout/reinput');
 
 	var CRM = require('modules/store/crm');
@@ -64,6 +65,7 @@ $(document).on('ready', function() {
 	Nitro.setup(
 		[
 			/*'chaordic'*/
+			'workingdays-counter',
 			'checkout.gae',
 			'checkout.recurrence',
 			'checkout.cotas',
@@ -78,6 +80,7 @@ $(document).on('ready', function() {
 		],
 		function(
 			/*chaordic*/
+			workingDays,
 			gae,
 			recurrence,
 			cotas,
@@ -416,7 +419,10 @@ $(document).on('ready', function() {
 
 				// Priorizar a exibição de RECORRÊNCIA quando
 				// os produtos forem da categoria purificadores
-				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
+
+				const run = false;
+
+				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0 && run) {
 					const checkoutProducts = self.orderForm.items;
 					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
 					const categoryRegex = new RegExp(categoryName, 'gmi');
@@ -479,6 +485,11 @@ $(document).on('ready', function() {
 				this.modalInfoPj(self.orderForm);
 				highlightVoltage($('.product-name > a'));
 
+				$('.shipping-sla-options li').each(function() {
+					var $elementShipping = $(this).find('a');
+					workingDays.setShippingMessage($elementShipping);
+				});
+
 				$('.link-coupon-add').on('click', function() {
 					flagCoupon = true;
 				});
@@ -496,6 +507,12 @@ $(document).on('ready', function() {
 				$('#ship-more-info').attr('maxlength', 50);
 
 				$('#ship-street, #ship-name').attr('maxlength', 35);
+
+				setTimeout(function() {
+					$('.shipping-option-item-text-wrapper').each(function() {
+						workingDays.setShippingMessage($(this));
+					});
+				}, 1000);
 
 				return (
 					$.listen &&
@@ -766,6 +783,24 @@ $(document).on('ready', function() {
 
 				$('.btn-go-to-payment').click(function() {
 					self.veryfication();
+				});
+
+				$('.shipping-option-item-text-wrapper').each(function() {
+					workingDays.setShippingMessage($(this));
+				});
+
+				setTimeout(function() {
+					$('.shipping-option-item-text-wrapper').each(function() {
+						workingDays.setShippingMessage($(this));
+					});
+				}, 1000);
+
+				$(document).on('click', '.shipping-option-item.label-vertical-group.input.btn', function() {
+					setTimeout(function() {
+						$('.shipping-option-item-text-wrapper').each(function() {
+							workingDays.setShippingMessage($(this));
+						});
+					}, 1000);
 				});
 			};
 
