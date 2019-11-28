@@ -12,9 +12,9 @@
 		display: block!important;
 		visibility: visible !important;
 	}
-	// @include breakpoint(small, 'max') {
-	// 	display: none!important;
-	// }
+	@include breakpoint(small, 'max') {
+		display: none!important;
+	}
 
 	p {
 		background-color: transparent;
