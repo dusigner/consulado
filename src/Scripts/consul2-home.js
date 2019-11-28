@@ -37,7 +37,7 @@ Nitro.controller(
 		'dataLayer-home-bf'
 	],
 
-	function() {
+	function(chaordic) {
 
 		chaordic.init('home');
 
