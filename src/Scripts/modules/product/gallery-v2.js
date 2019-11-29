@@ -6,16 +6,18 @@ Nitro.module('galleryv2', function() {
 
 	this.init = () => {
 		var $thumbs = $('.thumbs a'),
+			// $thumbsVideo = $('.thumbs-video a'),
+			// $thumbsVideoExtra = $('.popup'),
 			$gallery = $('<ul class="gallery" />'),
-			$galleryThumbs = $('<ul class="galleryThumbs" />'),
-			$video = $('#caracteristicas h4.Video + table .value-field');
+			$galleryThumbs = $('<ul class="galleryThumbs" />');
+			// $video = $('#caracteristicas h4.Video + table .value-field');
 			// $size = ($(window).width() < 768) ? 76 : 75;
 
 		var newImages = $.map($thumbs, function(item) {
 			var self = $(item);
 			return (`
 				<li>
-					<a href="${$.resizeImage(self.attr('rel'), 1000, 1000)}" class="popup-zoom">
+					<a href="${$.resizeImage(self.attr('rel'), 1000, 1000)}" class="popup-zoom carousel">
 						<img
 							src="${$.resizeImage(self.attr('rel'), 520, 520)}"
 							alt="${self.find('img').attr('title')}"
@@ -43,34 +45,59 @@ Nitro.module('galleryv2', function() {
 			`);
 		});
 
-		if ($video.length !== 0) {
-			var videoId = $video.filter('[class*="ID"]').text(),
-				thumbnail = $video.filter('[class*="Thumbnail"]').text(),
-				thumb = thumbnail ? $.getImagePath(thumbnail) : 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
+		//TENTAR TIRAR O SLICK PRA RESOLVER ESSA GALERIA
 
-			newImages.splice(
-				0,
-				0,
-				`<li>
-					<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
-						<img class="image cover" width="520" height="520" src="${thumb}" />
-					</a>
-				</li>`
-			);
+		// var newThumbsVideo = $.map($thumbsVideo, function(item) {
+		// 	var self = $(item);
+		// 	return (`
+		// 		<li>
+		// 			<a href="javascript:void(0);" class="thumb-video">
+		// 				<img
+		// 					src="${$.resizeImage(self.attr('rel'), 76, 76)}"
+		// 					alt="${self.find('img').attr('title')}"
+		// 					width="76"
+		// 					height="76"
+		// 				 />
+		// 			</a>
+		// 		</li>
+		// 	`);
+		// });
+		// var newImagesVideo = $.map($thumbsVideoExtra, function(item) {
+		// 	var self = $(item);
+		// 	return (
+		// 		`<li>
+		// 			<a href="//www.youtube-nocookie.com/embed/${videoId}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1" class="popup-zoom mfp-iframe">
+		// 				<img class="image cover" width="520" height="520" src="${thumb}" />
+		// 			</a>
+		// 		</li>`
+		// 	);
+		// });
 
-			newThumbs.splice(
-				0,
-				0,
-				`
-					<li>
-						<a href="javascript:void(0);" class="thumb">
-							<img src="${$.resizeImage('/arquivos/cns-icon-video-pdp.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
-						</a>
-					</li>
-				`
-			);
-		}
+		// if ($video.length !== 0) {
+		// 	var videoId = $video.filter('[class*="ID"]').text(),
+		// 		thumbnail = $video.filter('[class*="Thumbnail"]').text(),
+		// 		thumb = thumbnail ? $.getImagePath(thumbnail) : 'https://i.ytimg.com/vi/' + videoId + '/hqdefault.jpg';
 
+		// 	newImagesVideo.splice(
+		// 		1,
+		// 		0,
+
+		// 	);
+
+		// 	newThumbsVideo.splice(
+		// 		0,
+		// 		0,
+		// 		`
+		// 			<li>
+		// 				<a href="javascript:void(0);" class="thumb">
+		// 					<img src="${$.resizeImage('/arquivos/cns-icon-video-pdp.jpg', 76, 76)}" alt="Vídeo" width="76" height="76" />
+		// 				</a>
+		// 			</li>
+		// 		`
+		// 	);
+		// }
+
+		//ATE AQUI ESTÁ CERTO
 		let index = 0;
 		let thumbTodas = [];
 
@@ -84,20 +111,20 @@ Nitro.module('galleryv2', function() {
 		});
 
 		newImages = newImages.join('');
-		// newThumbs = newThumbs.join('');
 		thumbTodas = thumbTodas.join('');
 
 
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
 		$gallery.after($galleryThumbs.append($(thumbTodas)));
 
+		//NA HORA QUE MONTA O SLICK ELE CAGA TUDO O RESTO
 		$gallery.slick({
 			slidesToShow: 1,
 			arrows: false,
-			focusOnSelect: true,
+			// focusOnSelect: true,
 			asNavFor: '.galleryThumbs',
-			dots: true,
-			draggable: false,
+			// dots: true,
+			// draggable: false,
 			responsive: [
 				{
 					breakpoint: 768,
@@ -133,7 +160,7 @@ Nitro.module('galleryv2', function() {
 				]
 			});
 		}
-
+		//DAQUI PRA CÁ TA CERTO TBM
 		if(newThumbs.length > 10) {
 			const lastSlide = $('.thumb').last();
 
@@ -159,8 +186,58 @@ Nitro.module('galleryv2', function() {
 		}
 
 		//ZOOM MAGNIFIC POP UP
+		// $('.thumb-video').magnificPopup({
+		// 	type: 'image',
+		// 	closeOnContentClick: true,
+		// 	//disableOn: 1024,
+		// 	mainClass: 'mfp-no-margins mfp-with-zoom',
+		// 	image: {
+		// 		verticalFit: true
+		// 	},
+		// 	iframe: {
+		// 		markup:
+		// 			'<div class="mfp-iframe-scaler" style="width:100%; height:100%">' +
+		// 			'<div class="mfp-close"></div>' +
+		// 			'<iframe class="mfp-iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen width="100%" height="100%"></iframe>' +
+		// 			'</div>'
+		// 	},
+		// 	gallery: {
+		// 		enabled: true,
+		// 		navigateByImgClick: false
+		// 	},
+		// 	callbacks: {
+		// 		change: function() {
+		// 			$galleryThumbs.slick('slickGoTo', this.currItem.index);
+		// 		},
+		// 		close: function() {
+		// 			$gallery.slick('refresh');
+		// 		}
+		// 	}
+		// });
 		//if($(window).width() > 1024) {
-		$('.popup-zoom, .thumb-ver-mais').magnificPopup({
+
+		// $('.carousel').each(function() {
+		// 	var gallery = $(this);
+		// 	gallery
+		// 		.slick()
+		// 		.magnificPopup({
+		// 			type: 'image',
+		// 			delegate: 'a:not(.slick-cloned)',
+		// 			gallery: {
+		// 				enabled: true
+		// 			},
+		// 			callbacks: {
+		// 				open: function() {
+		// 					var current = gallery.slick('slickCurrentSlide');
+		// 					gallery.magnificPopup('goTo', current);
+		// 				},
+		// 				beforeClose: function() {
+		// 					gallery.slick('slickGoTo', parseInt(this.index));
+		// 				}
+		// 			}
+		// 		});
+		// });
+		$('.popup-zoom').magnificPopup({
 			type: 'image',
 			closeOnContentClick: true,
 			//disableOn: 1024,
