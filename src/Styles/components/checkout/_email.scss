@@ -2,11 +2,15 @@ $textColor: #403C3B;
 $textColorLittle: #736C6B;
 $textColor3: #595453;
 $bgcolor: #FAF9F9;
-$red-error	: #9B1C29;
+$red-error: #9B1C29;
 
 body {
 	.client-pre-email {
 		border-top: none;
+
+		&-h {
+			margin-top: 60px;
+		}
 
 		label {
 			@include rfs(24);
@@ -21,8 +25,12 @@ body {
 				background-size: contain;
 				content: '';
 				display: inline-block;
-				height: 90px;
-				width: 95px;
+				height: 72px;
+				left: 49%;
+				position: absolute;
+				top: 15px;
+				transform: translateX(-50%);
+				width: 72px;
 			}
 
 			span,
@@ -46,9 +54,18 @@ body {
 			}
 		}
 
+		.link-cart {
+			@include breakpoint('small', 'max') {
+				float: none;
+			}
+		}
 		.client-email {
-			margin: 30px 0 0;
-			width: 100%;
+			@include breakpoint('small', 'max') {
+				width: 264px !important;
+			}
+			float: none;
+			margin: 30px auto 0;
+			width: 320px!important;
 
 			&:before {
 				color: $textColor3;
@@ -58,10 +75,19 @@ body {
 			}
 
 			#client-pre-email {
+				@include breakpoint('small', 'max') {
+					margin: 15px auto 20px;
+					width: 264px !important;
+				}
+				@include rfs(12);
+				color: $textColor3;
 				display: block;
+				font-weight: 500;
 				height: 45px;
 				margin: 0 auto;
+				padding-right: 20px;
 				position: relative;
+				text-align: center;
 				width: 300px;
 
 				&::placeholder {
@@ -70,15 +96,25 @@ body {
 					position: absolute;
 					text-align: center;
 					top: 50%;
-					transform: translateY(-25%);
 				}
 
 				&.error {
 					border-color: $red-error;
 					box-shadow: none;
 				}
+
+				// &.success {
+
+				// }
 			}
 			#btn-client-pre-email {
+				@include breakpoint('small', 'max') {
+					height: 32px;
+					margin: 0 auto;
+					right: 50%;
+					transform: translateX(50%);
+					width: 140px;
+				}
 				background-color: $green;
 				border: 2px solid $green;
 				display: block;
@@ -102,13 +138,22 @@ body {
 		}
 
 		.emailInfo {
+			@include breakpoint('small', 'max') {
+				@include breakpoint('extra-small', 'max') { width: 100%; }
+				padding: 20px 20px 15px 35px;
+				width: 400px;
+
+			}
 			background-color: $bgcolor;
 			margin: 50px auto 0;
 			padding: 30px 85px 30px 55px;
 			width: 470px;
 
 			h3 {
+				@include rfs(12);
 				color: $textColor;
+				font-weight: 500;
+				margin-top: 0;
 			}
 
 			.icon-lock {
@@ -156,12 +201,17 @@ body {
 		}
 
 		.help.error {
-			@include breakpoint('small', 'max') { top: 80px; }
+			@include breakpoint('small', 'max') {
+				right: 0;
+				top: 75px;
+			}
+			@include rfs(10);
 			color: $red-error;
-			left: 50%;
+			font-family: 'Open Sans';
+			font-weight: 700;
 			position: absolute;
+			right: 10px;
 			top: 65px;
-			transform: translateX(-50%);
 		}
 	}
 }

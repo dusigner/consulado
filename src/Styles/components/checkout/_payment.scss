@@ -20,7 +20,7 @@ body {
 
 	&.body-order-form {
 		.checkout-container {
-			padding-bottom: 40px;
+			padding-bottom: 130px;
 
 			@include breakpoint('medium', 'max') {
 				padding-bottom: 100px;
@@ -91,7 +91,7 @@ body {
 			}
 
 			.steps-view {
-				min-height: 400px;
+				min-height: 600px;
 
 				@include breakpoint('large', 'max') {
 					min-height: 0;

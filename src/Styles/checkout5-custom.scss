@@ -291,13 +291,9 @@ body {
 				padding: 4px 12px;
 				@include breakpoint(768px,
 				'max') {
-					margin-bottom: 20px;
 					position: relative;
-					width: 100%;
-				}
-				@include breakpoint(767px,
-				'max') {
-					width: 100%;
+					right: 50%;
+					transform: translateX(50%);
 				}
 			}
 		} // fake buttom mobile
@@ -344,12 +340,9 @@ body {
 			}
 			.client-pre-email {
 				padding: 0 20px;
-				#client-pre-email {
-					margin: 15px 0;
-				}
+
 				#btn-client-pre-email {
 					display: block;
-					width: 100%;
 				}
 			}
 		}
