@@ -102,10 +102,6 @@ body {
 					border-color: $red-error;
 					box-shadow: none;
 				}
-
-				// &.success {
-
-				// }
 			}
 			#btn-client-pre-email {
 				@include breakpoint('small', 'max') {
