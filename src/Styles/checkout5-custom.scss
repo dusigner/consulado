@@ -200,7 +200,7 @@ body {
 		@include rfs(13);
 		color: $c9;
 		content: '* Ganhe desconto no boleto';
-		display: block;
+		display: none;
 		font-weight: 400;
 		line-height: 1;
 		margin-top: 4px;
