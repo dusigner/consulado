@@ -79,7 +79,6 @@ Nitro.module('galleryv2', function() {
 
 		});
 
-		//ATE AQUI ESTÁ CERTO
 		let index = 0;
 		let thumbTodas = [];
 
@@ -99,7 +98,15 @@ Nitro.module('galleryv2', function() {
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
 		$gallery.after($galleryThumbs.append($(thumbTodas)));
 
-		//NA HORA QUE MONTA O SLICK ELE CAGA TUDO O RESTO
+		var $status = $('.pagingInfo');
+		// var $slickElement = $('.slideshow');
+
+		$gallery.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
+			var i = (currentSlide ? currentSlide : 0) + 1;
+			$status.text(i + '/' + slick.slideCount);
+		});
+
 		$gallery.slick({
 			slidesToShow: 1,
 			arrows: false,
@@ -158,7 +165,6 @@ Nitro.module('galleryv2', function() {
 			$gallery.slick('slickGoTo', ($(this).index('a.thumb-index')));
 		});
 
-		//DAQUI PRA CÁ TA CERTO TBM
 		if(newThumbs.length > 10) {
 			const lastSlide = $('.thumb').last();
 
