@@ -135,7 +135,7 @@ Nitro.controller(
 
 				//console.log('$dropElements', $dropElements);
 
-				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');
+				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>Categorias</span></h5></div>');
 
 				$moreCatList = $('<ul />');
 

@@ -1,0 +1,183 @@
+$upperBar: #FCFCFC;
+$upperBarBorder: #E3E1E1;
+$selectorColor: #595453;
+$arrowDown: #403C3B;
+
+
+body.listagem.busca:not(.neemu) {
+	.title-filter {
+		display: none;
+	}
+
+	.menu-departamento {
+		ul {
+			&.eletrodomesticos {
+				display: none;
+			}
+		}
+	}
+
+	.filter-wrapper {
+		background-color: $upperBar;
+		border: 1px solid $upperBarBorder;
+		height: 45px;
+		padding: 0;
+	}
+
+	.departament-nav {
+
+		.clearfix {
+			height: 45px;
+
+			.more-cat {
+				float: none;
+				height: fit-content;
+				margin-right: 0;
+				position: absolute;
+				right: unset;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 2;
+
+				h5 {
+					@include rfs(12);
+					cursor: pointer;
+					display: block !important;
+					font-weight: 500;
+					height: fit-content;
+					margin: 0;
+					padding: 0.1em;
+
+					&.-active {
+						& + ul {
+							display: block;
+						}
+					}
+
+					&::after {
+						@include icon-get('bottom-arrow');
+						@include responsiveFont(8, 16, true);
+						@include transition(transform, 200);
+						color: $arrowDown;
+						margin-left: 1em;
+					}
+
+
+					span {
+						font-weight: 700;
+					}
+				}
+
+				&.-active {
+					z-index: 120;
+				}
+
+				ul {
+					background-color: #ffffff;
+					font-weight: 700;
+					line-height: normal;
+					position: absolute;
+					right: 0;
+					text-align: right;
+					top: 70px;
+					z-index: 10;
+
+					&.-active {
+						display: block;
+					}
+				}
+			}
+			.single-filter-wrapper {
+				cursor: pointer;
+				display: inline-block;
+				margin-right: 1em;
+				padding: 0 0.5em;
+				ul {
+					@include responsiveFont(16, 12, true);
+					background-color: #ffffff;
+					border: solid $gray;
+					border-width: 0 1px 3px 1px;
+					display: none;
+					font-weight: normal;
+					left: -2px;
+					line-height: normal;
+					min-width: 102%;
+					padding: 5px 1em;
+					position: absolute;
+					top: 70px;
+					width: auto;
+					z-index: 10;
+
+					@include breakpoint(small, 'max') {
+						&.active {
+							display: block;
+						}
+					}
+
+					a {
+						@include responsiveFont(14, 16, true);
+						font-weight: bold;
+					}
+
+					&.shorter {
+						height: auto;
+						overflow-y: scroll;
+					}
+				}
+
+				@include breakpoint(medium, 'min') {
+					&:not(.active-filter):hover {
+						background-color: #ffffff;
+						border-top: 10px solid $gray;
+
+						h5 {
+							@include transition(transform, 200);
+							color: $orange;
+							margin-top: -10px;
+
+							&::after {
+								color: $orange;
+								transform: rotate(180deg);
+							}
+						}
+
+						ul {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.list-container {
+		.order-wrapper {
+			position: absolute;
+			right: 0;
+			top: -50px;
+
+			.show-desktop {
+				@include rfs(12);
+				font-weight: 500;
+			}
+
+			.order-title {
+				&::after {
+					@include icon-get('bottom-arrow');
+					color: $arrowDown;
+				}
+			}
+		}
+	}
+
+	#list-more {
+		@include rfs(14);
+		border: 1px solid $selectorColor;
+		color: $selectorColor;
+		display: block;
+		float: none;
+		line-height: 1;
+		margin: 0 auto;
+		padding: 8px 40px;
+	}
+}
