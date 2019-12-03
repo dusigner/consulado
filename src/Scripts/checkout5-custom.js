@@ -271,36 +271,6 @@ $(document).on('ready', function() {
 				console.log('myConsole', orderForm);
 				console.info('orderFormUpdated');
 
-				const saveUserInfos = () => {
-					const expiryDate = new Date();
-
-					if (orderForm && orderForm.clientProfileData) {
-						const userInfo = {
-							$clEmail     : orderForm.clientProfileData.email,
-							$clFirstName : orderForm.clientProfileData.firstName,
-							$clLastName  : orderForm.clientProfileData.lastName,
-							$clDocument  : orderForm.clientProfileData.document,
-							$clPhone     : orderForm.clientProfileData.phone
-						}, { $clDocument, $clEmail, $clFirstName, $clLastName, $clPhone } = userInfo;
-
-						document.cookie = `userInfo=clEmail=${$clEmail}/clFirstName=${$clFirstName}/clLastName=${$clLastName}/clDocument=${$clDocument}/clPhone=${$clPhone};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
-					}
-
-					if (orderForm && orderForm.shippingData.address) {
-						const userShippingInfo = {
-							$clCEP          : orderForm.shippingData.address.postalCode,
-							$clNumber       : orderForm.shippingData.address.number,
-							$clComplement   : orderForm.shippingData.address.complement,
-							$clReference    : orderForm.shippingData.address.reference,
-							$clReceiverName : orderForm.shippingData.address.receiverName
-						}, { $clCEP, $clComplement, $clNumber, $clReceiverName, $clReference } = userShippingInfo;
-
-						document.cookie = `userShippingInfo=clCEP=${$clCEP}/clComplement=${$clComplement}/clNumber=${$clNumber}/clReceiverName=${$clReceiverName}/clReference=${$clReference};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
-					}
-				}
-
-				saveUserInfos();
-
 				$('input#client-phone').inputmask('(99) [9]999-99999', {placeholder: ' ', showMaskOnFocus: false, keepStatic: true, clearMaskOnLostFocus: true});
 				$('input#client-document').inputmask('999.999.999-99');
 				$('input#summary-postal-code').inputmask('99999-999');
@@ -390,6 +360,9 @@ $(document).on('ready', function() {
 
 				// testeabEntrega.checkoutSetup(orderForm);
 				self.atualizaCoupon();
+
+				self.saveUserInfos(orderForm);
+				getCookie('userInfo') && self.setUserInfo();
 			};
 
 			this.cotasInit = function() {
@@ -890,6 +863,73 @@ $(document).on('ready', function() {
 					pushDataLayer(('Cupom de Desconto - Carrinho - ' + $('#cart-coupon').val()), 'Selecionar Cupom', 'Cupom selecionado no carrinho');
 				});
 			};
+
+			this.saveUserInfos = (orderForm) => {
+				//Salva os dados do orderForm no cookie.
+				const expiryDate = new Date();
+
+				if (orderForm && orderForm.clientProfileData) {
+					const userInfo = {
+						clEmail     : orderForm.clientProfileData.email,
+						clFirstName : orderForm.clientProfileData.firstName,
+						clLastName  : orderForm.clientProfileData.lastName,
+						clDocument  : orderForm.clientProfileData.document,
+						clPhone     : orderForm.clientProfileData.phone
+					}, { clDocument, clEmail, clFirstName, clLastName, clPhone } = userInfo;
+
+					document.cookie = `userInfo=clEmail=${clEmail}/clFirstName=${clFirstName}/clLastName=${clLastName}/clDocument=${clDocument}/clPhone=${clPhone};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+				}
+
+				if (orderForm && orderForm.shippingData.address) {
+					const userShippingInfo = {
+						clCEP          : orderForm.shippingData.address.postalCode,
+						clNumber       : orderForm.shippingData.address.number,
+						clComplement   : orderForm.shippingData.address.complement,
+						clReference    : orderForm.shippingData.address.reference,
+						clReceiverName : orderForm.shippingData.address.receiverName
+					}, { clCEP, clComplement, clNumber, clReceiverName, clReference } = userShippingInfo;
+
+					document.cookie = `userShippingInfo=clCEP=${clCEP}/clComplement=${clComplement}/clNumber=${clNumber}/clReceiverName=${clReceiverName}/clReference=${clReference};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+				}
+			};
+
+			this.setUserInfo = () => {
+				//Seta as informações do usuario armazenada no cookie no order form.
+				const cookie = getCookie('userInfo'),
+					clEmail = self.cookieFormat(cookie, 'clEmail='),
+					clFirstName = self.cookieFormat(cookie, 'clFirstName='),
+					clLastName = self.cookieFormat(cookie, 'clLastName='),
+					clDocument = self.cookieFormat(cookie, 'clDocument='),
+					clPhone = self.cookieFormat(cookie, 'clPhone=');
+
+					vtexjs.checkout.getOrderForm().then(() => {
+						const clientProfileData =
+							{
+								corporateDocument        : null,
+								corporateName            : null,
+								corporatePhone           : null,
+								customerClass            : null,
+								document                 : clDocument,
+								documentType             : '',
+								email                    : clEmail,
+								firstName                : clFirstName,
+								isCorporate              : false,
+								lastName                 : clLastName,
+								phone                    : clPhone,
+								profileCompleteOnLoading : false,
+								profileErrorOnLoading    : false,
+								stateInscription         : '',
+								tradeName                : null
+							}
+
+					return vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData);
+				});
+			}
+
+			this.cookieFormat = (cookie, str) => {
+				//Funcao auxiliar para trazer somente o valor desejado dos cookies de userinfo e shippingdata.
+				return cookie.split(str)[1].split('/')[0];
+			}
 
 			this.init();
 
