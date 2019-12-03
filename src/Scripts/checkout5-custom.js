@@ -48,7 +48,7 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.recurrence');
 	require('modules/checkout/checkout.modify');
 	require('modules/checkout/checkout.cotas');
-	require('modules/checkout/checkout.auto-fill');
+	// require('modules/checkout/checkout.auto-fill');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
 	// require('components/testeab-entrega');
@@ -76,7 +76,7 @@ $(document).on('ready', function() {
 			'customLogin',
 			'callcenter',
 			// 'autocomplete'
-			'checkout.auto-fill'
+			// 'checkout.auto-fill'
 		],
 		function(
 			/*chaordic*/
@@ -268,7 +268,39 @@ $(document).on('ready', function() {
 
 			//event
 			this.orderFormUpdated = function(e, orderForm) {
+				console.log('myConsole', orderForm);
 				console.info('orderFormUpdated');
+
+				const saveUserInfos = () => {
+					const expiryDate = new Date();
+
+					if (orderForm && orderForm.clientProfileData) {
+						const userInfo = {
+							$clEmail     : orderForm.clientProfileData.email,
+							$clFirstName : orderForm.clientProfileData.firstName,
+							$clLastName  : orderForm.clientProfileData.lastName,
+							$clDocument  : orderForm.clientProfileData.document,
+							$clPhone     : orderForm.clientProfileData.phone
+						}, { $clDocument, $clEmail, $clFirstName, $clLastName, $clPhone } = userInfo;
+
+						document.cookie = `userInfo=clEmail=${$clEmail}/clFirstName=${$clFirstName}/clLastName=${$clLastName}/clDocument=${$clDocument}/clPhone=${$clPhone};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+					}
+
+					if (orderForm && orderForm.shippingData.address) {
+						const userShippingInfo = {
+							$clCEP          : orderForm.shippingData.address.postalCode,
+							$clNumber       : orderForm.shippingData.address.number,
+							$clComplement   : orderForm.shippingData.address.complement,
+							$clReference    : orderForm.shippingData.address.reference,
+							$clReceiverName : orderForm.shippingData.address.receiverName
+						}, { $clCEP, $clComplement, $clNumber, $clReceiverName, $clReference } = userShippingInfo;
+
+						document.cookie = `userShippingInfo=clCEP=${$clCEP}/clComplement=${$clComplement}/clNumber=${$clNumber}/clReceiverName=${$clReceiverName}/clReference=${$clReference};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+					}
+				}
+
+				saveUserInfos();
+
 				$('input#client-phone').inputmask('(99) [9]999-99999', {placeholder: ' ', showMaskOnFocus: false, keepStatic: true, clearMaskOnLostFocus: true});
 				$('input#client-document').inputmask('999.999.999-99');
 				$('input#summary-postal-code').inputmask('99999-999');
