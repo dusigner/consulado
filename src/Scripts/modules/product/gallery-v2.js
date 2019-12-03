@@ -98,15 +98,18 @@ Nitro.module('galleryv2', function() {
 		$('.apresentacao').replaceWith($gallery.append($(newImages)));
 		$gallery.after($galleryThumbs.append($(thumbTodas)));
 
-		var $status = $('.pagingInfo');
-		// var $slickElement = $('.slideshow');
+		//adicionando paginação depois na galeria do mobile
+		if($(window).width() < 768) {
+			var $slickElement = $('.prod-galeria');
+			var $status = $( '<span/>' ).addClass( 'pagingInfo' ).appendTo($slickElement);
 
-		$gallery.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
-			//currentSlide is undefined on init -- set it to 0 in this case (currentSlide is 0 based)
-			var i = (currentSlide ? currentSlide : 0) + 1;
-			$status.text(i + '/' + slick.slideCount);
-		});
+			$slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+				var i = (currentSlide ? currentSlide : 0) + 1;
+				$status.text(i + '/' + slick.slideCount);
+			});
+		}
 
+		//galeria imagem grande
 		$gallery.slick({
 			slidesToShow: 1,
 			arrows: false,
@@ -130,6 +133,7 @@ Nitro.module('galleryv2', function() {
 			]
 		});
 
+		//galeria dos thumbs a partir de tablet
 		if($(window).width() > 768) {
 			$galleryThumbs.slick({
 				slidesToShow: 10,
@@ -165,6 +169,7 @@ Nitro.module('galleryv2', function() {
 			$gallery.slick('slickGoTo', ($(this).index('a.thumb-index')));
 		});
 
+		//conta quantos slides tem e adiciona o ver mais
 		if(newThumbs.length > 10) {
 			const lastSlide = $('.thumb').last();
 
