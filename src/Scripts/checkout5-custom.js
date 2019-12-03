@@ -361,8 +361,11 @@ $(document).on('ready', function() {
 				// testeabEntrega.checkoutSetup(orderForm);
 				self.atualizaCoupon();
 
-				self.saveUserInfos(orderForm);
-				getCookie('userInfo') && self.setUserInfo();
+				if (orderForm) {
+					self.saveUserInfos(orderForm);
+					getCookie('userInfo')
+						&& self.setUserInfo(orderForm);
+				}
 			};
 
 			this.cotasInit = function() {
@@ -868,7 +871,7 @@ $(document).on('ready', function() {
 				//Salva os dados do orderForm no cookie.
 				const expiryDate = new Date();
 
-				if (orderForm && orderForm.clientProfileData) {
+				if (orderForm.clientProfileData) {
 					const userInfo = {
 						clEmail     : orderForm.clientProfileData.email,
 						clFirstName : orderForm.clientProfileData.firstName,
@@ -880,7 +883,7 @@ $(document).on('ready', function() {
 					document.cookie = `userInfo=clEmail=${clEmail}/clFirstName=${clFirstName}/clLastName=${clLastName}/clDocument=${clDocument}/clPhone=${clPhone};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
 				}
 
-				if (orderForm && orderForm.shippingData.address) {
+				if (orderForm.shippingData.address) {
 					const userShippingInfo = {
 						clCEP          : orderForm.shippingData.address.postalCode,
 						clNumber       : orderForm.shippingData.address.number,
@@ -893,14 +896,15 @@ $(document).on('ready', function() {
 				}
 			};
 
-			this.setUserInfo = () => {
+			this.setUserInfo = (orderForm) => {
 				//Seta as informações do usuario armazenada no cookie no order form.
-				const cookie = getCookie('userInfo'),
-					clEmail = self.cookieFormat(cookie, 'clEmail='),
-					clFirstName = self.cookieFormat(cookie, 'clFirstName='),
-					clLastName = self.cookieFormat(cookie, 'clLastName='),
-					clDocument = self.cookieFormat(cookie, 'clDocument='),
-					clPhone = self.cookieFormat(cookie, 'clPhone=');
+				if (!orderForm.clientProfileData) {
+					const cookie = getCookie('userInfo'),
+						clEmail = self.cookieFormat(cookie, 'clEmail='),
+						clFirstName = self.cookieFormat(cookie, 'clFirstName='),
+						clLastName = self.cookieFormat(cookie, 'clLastName='),
+						clDocument = self.cookieFormat(cookie, 'clDocument='),
+						clPhone = self.cookieFormat(cookie, 'clPhone=');
 
 					vtexjs.checkout.getOrderForm().then(() => {
 						const clientProfileData =
@@ -922,8 +926,9 @@ $(document).on('ready', function() {
 								tradeName                : null
 							}
 
-					return vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData);
-				});
+						return vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData);
+					});
+				}
 			}
 
 			this.cookieFormat = (cookie, str) => {
