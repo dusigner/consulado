@@ -302,12 +302,7 @@ div#modal-custom-share {
 
 .cep-invalido {
 	.valor {
-		background-color: $gray-c410;
-		padding: 12px;
-
-		strong {
-			display: none;
-		}
+		strong { display: none; }
 
 		&:after {
 			@include rfs(12);

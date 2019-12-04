@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
 <head>
 	<vtex.cmc:productPageTitle />
 	<vtex:metaTags />
@@ -8,6 +10,7 @@
 	<vtex:template id="0-consul-head-content" />
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto-v2.css?v=<!-- @echo package.version -->" />
 </head>
+
 <body data-controller="produto-v2">
 	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 
@@ -42,8 +45,10 @@
 					<div class="prod-title">
 						<h1 class="lead">
 							<vtex.cmc:productName />
-							<span class="reference"><vtex.cmc:productReference/></span>
-							<span class="productSku hide"><vtex.cmc:skuReference /></span>
+							<span class="reference">
+								<vtex.cmc:productReference /></span>
+							<span class="productSku hide">
+								<vtex.cmc:skuReference /></span>
 						</h1>
 					</div>
 
@@ -67,7 +72,8 @@
 					<div class="prod-preco">
 						<div class="usuarios-ativos">
 							<h4 id="qnt_stoke">Últimas unidades no estoque</h4>
-							<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa promoção no momento</p>
+							<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa
+								promoção no momento</p>
 						</div>
 
 						<vtex.cmc:skuPrice />
@@ -76,7 +82,7 @@
 					<!-- Formas de pagamento -->
 					<div class="formas-pagamento-container">
 						<div class="valores-parcelas">
-							<vtex.cmc:OtherPaymentMethod/>
+							<vtex.cmc:OtherPaymentMethod />
 
 							<p>
 								Para financiamento com juros de 0,99% a.m. <br />
@@ -88,14 +94,14 @@
 
 					<!-- Descrição do produto -->
 					<div class="descricao-produto">
-						<vtex.cmc:ProductDescription/>
+						<vtex.cmc:ProductDescription />
 					</div>
 					<!-- /Descrição do produto -->
 
 					<!-- Selos do produto -->
 					<div class="prod-selos show-medium">
 						<vtex.cmc:discountHightLight />
-						<vtex.cmc:HightLight/>
+						<vtex.cmc:HightLight />
 					</div>
 					<!-- /Selos do produto -->
 
@@ -124,7 +130,7 @@
 
 					<!-- Comprar produto -->
 					<div id="BuyButton" class="clearfix">
-						<vtex.cmc:BuyButton/>
+						<vtex.cmc:BuyButton />
 
 						<div class="secure">
 							<i class="icon icon icon-cadeado"></i> Compra Segura
@@ -141,7 +147,7 @@
 								e valor de entrega
 							</p>
 						</div>
-						<vtex.cmc:shippingValue/>
+						<vtex.cmc:shippingValue />
 					</div>
 					<!-- /Frete -->
 				</div>
@@ -266,7 +272,8 @@
 					<div class="second-block">
 						<h3>Informações de contratação</h3>
 						<p>Tire suas dúvidas sobre categorias e produtos</p>
-						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" target="_blank">Veja mais <b>></b></a>
+						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" target="_blank">Veja
+							mais <b>></b></a>
 					</div>
 				</div>
 				<div class="product-assist-block delivery" title="Tipos de entrega">
@@ -295,7 +302,9 @@
 		<!-- Produtos relacionados - Vtex -->
 		<section id="relacionados" class="slider">
 			<div class="container">
-				<p class="pre-title"><vtex:contentPlaceHolder id="Relacionados - Titulo" /></p>
+				<p class="pre-title">
+					<vtex:contentPlaceHolder id="Relacionados - Titulo" />
+				</p>
 			</div>
 			<div class="container">
 				<div class="row">
@@ -325,25 +334,32 @@
 				<!-- Texto blackfriday -->
 				<strong>Entrega Convencional</strong>
 				<ul class="list">
-					<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu produto.</li>
+					<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada
+						região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu
+						produto.</li>
 				</ul>
 				<br />
 
 				<strong>Entrega Convencional Agendada</strong>
 				<ul class="list">
-					<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.</li>
+					<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.
+					</li>
 				</ul>
 				<br />
 
 				<strong>Entrega Econômica</strong>
 				<ul class="list">
-					<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor menor pelo serviço.</li>
+					<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa
+						agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor
+						menor pelo serviço.</li>
 				</ul>
 				<br />
 
 				<strong>Entrega Rápida</strong>
 				<ul class="list">
-					<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem ocorrer até as 20hs em dias úteis.</li>
+					<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data
+						certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem
+						ocorrer até as 20hs em dias úteis.</li>
 				</ul>
 				<br />
 				<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
@@ -354,12 +370,16 @@
 			<div id="modal-entrega-premium" data-title="Entrega Premium">
 				<ul class="list">
 					<li>Tenha o melhor produto e o nosso melhor tipo de entrega.</li>
-					<li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e instalado*.</li>
+					<li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e
+						instalado*.</li>
 					<li>Tudo isso feito por um profissional que realmente conhece o produto!</li>
-					<li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo seu processo de entrega e tirará qualquer dúvida por email ou telefone.</li>
-					<li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa transportadora parceira entrará em contato por telefone para agendar sua entrega.</li>
+					<li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo
+						seu processo de entrega e tirará qualquer dúvida por email ou telefone.</li>
+					<li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa
+						transportadora parceira entrará em contato por telefone para agendar sua entrega.</li>
 					<li>
-						<small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e Micro-Ondas.</small>
+						<small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e
+							Micro-Ondas.</small>
 					</li>
 				</ul>
 			</div>
@@ -380,11 +400,13 @@
 		<form id="formshare" action="">
 			<div class="form-group">
 				<label for="remetente">De:</label>
-				<input type="email" class="form-control" id="remetente" placeholder="E-mail remetente" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+				<input type="email" class="form-control" id="remetente" placeholder="E-mail remetente"
+					required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
 			</div>
 			<div class="form-group">
 				<label for="destinatario">Para:</label>
-				<input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário" required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+				<input type="email" class="form-control" id="destinatario" placeholder="E-mail destinatário"
+					required="required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
 			</div>
 			<div class="form-group">
 				<label for="nomeremetente">Nome:</label>
@@ -392,7 +414,7 @@
 			</div>
 			<div class="form-group">
 				<label for="assuntoemail">Assunto:</label>
-				<input type="text" class="form-control" id="assuntoemail" placeholder="Assunto"/>
+				<input type="text" class="form-control" id="assuntoemail" placeholder="Assunto" />
 			</div>
 			<div class="form-group">
 				<label for="mensagememail">Mensagem:</label>
