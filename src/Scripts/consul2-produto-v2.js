@@ -140,9 +140,9 @@ Nitro.controller(
 		};
 
 		//setup modal
-		$('a[data-modal]').click(function(e) {
-			e.preventDefault();
-			$('#modal-' + $(this).data('modal')).vtexModal();
+		$('a[data-modal]').on('click', ({currentTarget}) => {
+			const $element = $(currentTarget);
+			$('#modal-' + $element.data('modal')).vtexModal();
 		});
 
 		//Opções de parcelamento
@@ -260,19 +260,16 @@ Nitro.controller(
 				// console.log('sim');
 				if ($pecasModels) {
 					$pecasModels = $pecasModels.replace(/\s+/g, '').split(';');
-					$pecasModels = $pecasModels.filter(function(item, pos) {
+					$pecasModels = $pecasModels.filter((item, pos) => {
 						return $pecasModels.indexOf(item) === pos && testNumber.test(item) === false;
 					});
-					$pecasModels.forEach(function(val) {
+					$pecasModels.forEach((val) => {
 						url += 'fq=alternateIds_RefId:' + val + '&';
 					});
 					$btnPecas
-						.find('a')
 						.attr('href', url)
-						.parent()
-						.css({
-							display: 'inline-block'
-						});
+						.parents('.product-assist-block')
+						.addClass('has--parts');
 				}
 				// else{
 				// 	console.log('não');
