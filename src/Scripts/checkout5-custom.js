@@ -268,7 +268,6 @@ $(document).on('ready', function() {
 
 			//event
 			this.orderFormUpdated = function(e, orderForm) {
-				console.log('myConsole', orderForm);
 				console.info('orderFormUpdated');
 
 				$('input#client-phone').inputmask('(99) [9]999-99999', {placeholder: ' ', showMaskOnFocus: false, keepStatic: true, clearMaskOnLostFocus: true});
