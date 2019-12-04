@@ -137,11 +137,13 @@ Nitro.controller(
 
 				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>Categorias</span></h5></div>');
 
-				$moreCatList = $('<ul />');
+				$moreCatList = $('<div class="category-list-content"><ul class="container category-list-search" /></div>');
 
-				$moreCatList.append($dropElements.clone());
+				$moreCatList.find('ul').append($dropElements.clone());
 
-				$moreCatHolder.append($moreCatList).appendTo($('.departament-nav > div'));
+				$moreCatHolder.appendTo($('.departament-nav > div'));
+				$('.filter-wrapper').append($moreCatList);
+
 
 				//$dropElements.remove();
 			}
@@ -408,5 +410,11 @@ Nitro.controller(
 				$(this).parents('.listagem-apoio').toggleClass('active');
 			});
 		}
+
+		$('body.listagem.busca:not(.neemu) .more-cat').on('click', function() {
+			$(this).toggleClass('-active');
+			$('.category-list-content').toggleClass('-active');
+
+		});
 	}
 );
