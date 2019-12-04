@@ -266,7 +266,6 @@ $(document).on('ready', function() {
 			//event
 			this.orderFormUpdated = function(e, orderForm) {
 				console.info('orderFormUpdated');
-
 				$('input#client-phone').inputmask('(99) [9]999-99999', {placeholder: ' ', showMaskOnFocus: false, keepStatic: true, clearMaskOnLostFocus: true});
 				$('input#client-document').inputmask('999.999.999-99');
 				$('input#summary-postal-code').inputmask('99999-999');
