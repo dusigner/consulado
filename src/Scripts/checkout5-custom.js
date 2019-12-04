@@ -866,7 +866,9 @@ $(document).on('ready', function() {
 
 			this.saveUserInfos = (orderForm) => {
 				//Salva os dados do orderForm no cookie.
-				const expiryDate = new Date();
+				let d = new Date();
+				d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
+				const expiresDate = `expires=${d.toUTCString()}`;
 
 				//Salva os dados do clientProfileData
 				if (orderForm.clientProfileData) {
@@ -878,7 +880,7 @@ $(document).on('ready', function() {
 						clPhone     : orderForm.clientProfileData.phone
 					}, { clDocument, clEmail, clFirstName, clLastName, clPhone } = userInfo;
 
-					document.cookie = `userInfo=clEmail=${clEmail}/clFirstName=${clFirstName}/clLastName=${clLastName}/clDocument=${clDocument}/clPhone=${clPhone};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+					document.cookie = `userInfo=clEmail=${encodeURIComponent(clEmail)}/clFirstName=${encodeURIComponent(clFirstName)}/clLastName=${encodeURIComponent(clLastName)}/clDocument=${encodeURIComponent(clDocument)}/clPhone=${encodeURIComponent(clPhone)}; ${expiresDate}; path=/;`
 				}
 
 				//Salva os dados do shippingData
@@ -892,7 +894,7 @@ $(document).on('ready', function() {
 						clReference    : orderForm.shippingData.address.reference
 					}, { clCEP, clComplement, clCountry, clNumber, clReceiverName, clReference } = userShippingInfo;
 
-					document.cookie = `userShippingInfo=clCEP=${clCEP}/clComplement=${clComplement}/clCountry=${clCountry}/clNumber=${clNumber}/clReceiverName=${clReceiverName}/clReference=${clReference};${expiryDate.setMonth(expiryDate.getMonth() + 1)}`
+					document.cookie = `userShippingInfo=clCEP=${encodeURIComponent(clCEP)}/clComplement=${encodeURIComponent(clComplement)}/clCountry=${encodeURIComponent(clCountry)}/clNumber=${encodeURIComponent(clNumber)}/clReceiverName=${encodeURIComponent(clReceiverName)}/clReference=${encodeURIComponent(clReference)}; ${expiresDate}; path=/;`
 				}
 			};
 
@@ -922,7 +924,7 @@ $(document).on('ready', function() {
 
 				//Seta as informações de endereço do usuario armazenada no cookie no order form.
 				if (getCookie('userShippingInfo') && !orderForm.shippingData.address) {
-					const cookie = getCookie('userInfo'),
+					const cookie = getCookie('userShippingInfo'),
 						clCEP = self.cookieFormat(cookie, 'clCEP='),
 						clComplement = self.cookieFormat(cookie, 'clComplement='),
 						clCountry = self.cookieFormat(cookie, 'clCountry='),
@@ -950,7 +952,7 @@ $(document).on('ready', function() {
 
 			this.cookieFormat = (cookie, str) => {
 				//Funcao auxiliar para trazer somente o valor desejado dos cookies de userinfo e shippingdata.
-				return cookie.split(str)[1].split('/')[0];
+				return decodeURIComponent(cookie.split(str)[1].split('/')[0]);
 			}
 
 			this.init();
