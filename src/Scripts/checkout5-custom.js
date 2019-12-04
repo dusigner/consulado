@@ -48,7 +48,6 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.recurrence');
 	require('modules/checkout/checkout.modify');
 	require('modules/checkout/checkout.cotas');
-	// require('modules/checkout/checkout.auto-fill');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
 	// require('components/testeab-entrega');
@@ -75,8 +74,6 @@ $(document).on('ready', function() {
 			'checkout.default-message',
 			'customLogin',
 			'callcenter',
-			// 'autocomplete'
-			// 'checkout.auto-fill'
 		],
 		function(
 			/*chaordic*/
