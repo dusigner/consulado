@@ -428,9 +428,7 @@ $(document).on('ready', function() {
 				// Priorizar a exibição de RECORRÊNCIA quando
 				// os produtos forem da categoria purificadores
 
-				const run = false;
-
-				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0 && run) {
+				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
 					const checkoutProducts = self.orderForm.items;
 					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
 					const categoryRegex = new RegExp(categoryName, 'gmi');
