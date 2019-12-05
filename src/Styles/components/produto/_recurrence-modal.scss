@@ -222,6 +222,8 @@ body {
 
 		&__container {
 			display: inline-block;
+			flex: 0 0 50%;
+			padding-right: 50px;
 
 			@include breakpoint ('small', 'max') {
 				display: block;
@@ -255,7 +257,6 @@ body {
 			border-top: 1px solid #ddd;
 			display: block;
 			position: relative;
-			width: 96%;
 
 			&-vertical {
 				border-left: 1px solid #ddd;

@@ -46,6 +46,10 @@ Nitro.module('sku-select', function() {
 		if (skuLabel.length === 1) {
 			skuLabel.click();
 		}
+
+		if (skuLabel.length <= 1 ) {
+			$('.prod-sku-selector').css('display', 'none');
+		}
 	});
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);

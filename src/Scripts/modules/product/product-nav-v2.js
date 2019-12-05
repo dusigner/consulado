@@ -51,6 +51,10 @@ Nitro.module('product-nav', function() {
 
 	$window.scroll(scrollEvent).scroll();
 
+	$('.row.anchors > button').on('click', () => {
+		$('html, body').animate({ scrollTop: 0 }, 1000);
+	});
+
 	$(document).on('click', '.scroll-to', function(e) {
 		e.preventDefault();
 
@@ -77,11 +81,17 @@ Nitro.module('product-nav', function() {
 					});
 			}
 		});
-
-		$('#relacionados').is(':visible') &&
-			$('.scroll-to[href="#opcionais"]').parent().removeClass('hide');
-
-		!$('.trustvox-widget').is(':empty') &&
-			$('.scroll-to[href="#trustvox-reviews"]').parent().removeClass('hide');
 	});
+
+	const setInfos = () => {
+		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/55-55/gm, '70-70'),
+			$productName = $('.productName').text(),
+			$productReference = $('.productReference').text();
+
+		$('.product-infos .box-image > img').attr('src', $productImage);
+		$('.product-infos .box-infos > p').text($productName);
+		$('.product-infos .box-infos > span').text($productReference);
+	}
+	setInfos();
+
 });

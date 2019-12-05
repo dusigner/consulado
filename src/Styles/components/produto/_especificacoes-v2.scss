@@ -373,10 +373,10 @@ $bar-color: #D9D8D8;
 				right: 8px;
 				top: 5px;
 				transition: transform 0.4s ease 0s;
+			}
 
-				&.specActive {
-					transform: rotate(-180deg) translateY(25%);
-				}
+			.specActive + i {
+				transform: rotate(-180deg) translateY(25%);
 			}
 
 			.container {
