@@ -417,65 +417,65 @@ $(document).on('ready', function() {
 				// Priorizar a exibição de RECORRÊNCIA quando
 				// os produtos forem da categoria purificadores
 
-				// if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
-				// 	const checkoutProducts = self.orderForm.items;
-				// 	const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
-				// 	const categoryRegex = new RegExp(categoryName, 'gmi');
+				if (self.orderForm && self.orderForm.items && self.orderForm.items.length > 0) {
+					const checkoutProducts = self.orderForm.items;
+					const categoryName = window.store.isQA ? '2' : '190'; // Categoria de Purificadores
+					const categoryRegex = new RegExp(categoryName, 'gmi');
 
-				// 	const someProductsHasRecurrence = checkoutProducts.some(prod => {
-				// 		return recurrence.selectHasRecurrence(prod.attachmentOfferings);
-				// 	});
+					const someProductsHasRecurrence = checkoutProducts.some(prod => {
+						return recurrence.selectHasRecurrence(prod.attachmentOfferings);
+					});
 
-				// 	const allProductsIsPurificadores = checkoutProducts.every(prod => {
-				// 		return String(prod.productCategoryIds).match(categoryRegex) ? true : false;
-				// 	});
+					const allProductsIsPurificadores = checkoutProducts.every(prod => {
+						return String(prod.productCategoryIds).match(categoryRegex) ? true : false;
+					});
 
-				// 	const hasRecurrence = item => {
-				// 		return item.attachmentOfferings.length > 0;
-				// 	};
+					const hasRecurrence = item => {
+						return item.attachmentOfferings.length > 0;
+					};
 
-				// 	if (modals === true) {
-				// 		const skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart') : '',
-				// 			orderFormItems = self.orderForm.items;
+					if (modals === true) {
+						const skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart') : '',
+							orderFormItems = self.orderForm.items;
 
-				// 		let skuId = '',
-				// 			recurrenceId = '',
-				// 			isPurificator = false,
-				// 			lastRecurrenceItem = '';
+						let skuId = '',
+							recurrenceId = '',
+							isPurificator = false,
+							lastRecurrenceItem = '';
 
-				// 		for (let i = 0; i < orderFormItems.length; i++) {
-				// 			hasRecurrence(orderFormItems[i]) ? lastRecurrenceItem = orderFormItems[i].id : '';
+						for (let i = 0; i < orderFormItems.length; i++) {
+							hasRecurrence(orderFormItems[i]) ? lastRecurrenceItem = orderFormItems[i].id : '';
 
-				// 			if (!skuList.includes(orderFormItems[i].id)) {
-				// 				if (hasRecurrence(orderFormItems[i])) {
-				// 					recurrenceId = orderFormItems[i].id;
-				// 				} else {
-				// 					skuId = orderFormItems[i].id;
-				// 					String(orderFormItems[i].productCategoryIds).match(categoryRegex) ? isPurificator = true : isPurificator = false;
-				// 				}
-				// 			}
-				// 		}
+							if (!skuList.includes(orderFormItems[i].id)) {
+								if (hasRecurrence(orderFormItems[i])) {
+									recurrenceId = orderFormItems[i].id;
+								} else {
+									skuId = orderFormItems[i].id;
+									String(orderFormItems[i].productCategoryIds).match(categoryRegex) ? isPurificator = true : isPurificator = false;
+								}
+							}
+						}
 
-				// 		if (isPurificator && lastRecurrenceItem !== '') {
-				// 			let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
-				// 			skuList.push(skuId);
+						if (isPurificator && lastRecurrenceItem !== '') {
+							let skuList = (sessionStorage.getItem('sku-cart')) ? sessionStorage.getItem('sku-cart').split(',') : [];
+							skuList.push(skuId);
 
-				// 			recurrence.autoOpen(lastRecurrenceItem);
+							recurrence.autoOpen(lastRecurrenceItem);
 
-				// 			sessionStorage.setItem('sku-cart', skuList);
-				// 		}
-				// 		else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
-				// 			recurrence.autoOpen(recurrenceId);
-				// 		} else if (skuId !== '') {
-				// 			if (store && store.isPersonal) {
-				// 				gae.autoOpen(skuId);
+							sessionStorage.setItem('sku-cart', skuList);
+						}
+						else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
+							recurrence.autoOpen(recurrenceId);
+						} else if (skuId !== '') {
+							if (store && store.isPersonal) {
+								gae.autoOpen(skuId);
 
-				// 			}
-				// 		}
+							}
+						}
 
-				// 		modals = false;
-				// 	}
-				// }
+						modals = false;
+					}
+				}
 
 				this.modalInfoPj(self.orderForm);
 				highlightVoltage($('.product-name > a'));
