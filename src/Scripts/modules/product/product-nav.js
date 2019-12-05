@@ -85,8 +85,8 @@ Nitro.module('product-nav', function() {
 		$('#relacionados').is(':visible') &&
 			$('.scroll-to[href="#opcionais"]').parent().removeClass('hide');
 
-		$('.trustvox-container').length &&
-			$('.scroll-to[href="#opcionais"]').parent().removeClass('hide');
+		!$('.trustvox-widget').is(':empty') &&
+			$('.scroll-to[href="#trustvox-reviews"]').parent().removeClass('hide');
 	});
 
 	const setInfos = () => {

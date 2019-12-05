@@ -1,0 +1,52 @@
+.trustvox-rating {
+	display: inline-block;
+	margin-left: 25px;
+
+	@media (max-width: 370px)  {
+		display: block;
+		margin-left: 0;
+	}
+}
+#trustvox-reviews {
+	@include responsiveFont(25);
+	margin: 50px 0;
+	text-align: center;
+}
+.trustvox-widget-rating .ts-shelf-container,
+.trustvox-widget-rating .trustvox-shelf-container {
+	display: inline-block;
+}
+.trustvox-widget-rating span.rating-click-here {
+	color: #DAA81D;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 400;
+	padding-left: 5px;
+	position: relative;
+	top: -4px;
+}
+.trustvox-widget-rating:hover span.rating-click-here {
+	text-decoration: underline;
+}
+.trustvox-widget-rating .ts-shelf-rate.ts-sprite {
+	position: relative;
+}
+.trustvox-widget-rating .ts-shelf-rate-symbols.ts-sprite {
+	position: absolute;
+}
+
+.trustvox-widget-rating .trustvox-fluid-jump.trustvox-widget-rating {
+	font-size: 14px;
+}
+
+.trustvox-widget-rating .ts-shelf-container .ts-sprite {
+	background-size: 105px 30px;
+}
+
+.trustvox-widget-rating .ts-shelf-container .ts-shelf-rate-symbols {
+    background-position: 0 -15px;
+}
+
+.trustvox-widget-rating .ts-shelf-container .ts-shelf-rate, .ts-shelf-container .ts-shelf-rate-symbols {
+	height: 15px;
+}
