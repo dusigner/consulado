@@ -76,15 +76,43 @@
 		@include breakpoint(small, 'max') {
 			display: inline-block;
 			float: right;
-			padding: 0;
+			padding: 0 20px;
 			// width: calc(100% - 90px);
 			width: 100%;
 		}
 
 		.slick-prev,
 		.slick-next {
-			top: 35%;
+			height: 35px;
+			top: 45%;
 			transform: translateY(-35%);
+			width: 35px;
+		}
+		.slick-prev {
+			text-align: left;
+			&:before {
+				color: $gray-c;
+				content: '\e929';
+				display: block;
+				font-family: 'whirlpool' !important;
+				font-size: 14px;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+			}
+		}
+		.slick-next {
+			text-align: right;
+			&:before {
+				color: $gray-c;
+				content: '\e92a';
+				display: block;
+				font-family: 'whirlpool' !important;
+				font-size: 14px;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+			}
 		}
 
 		.slick-slide {
@@ -173,6 +201,15 @@
 			}
 		}
 	}
+	.pagingInfo {
+		span {
+			color: $green;
+			font-size: 12px;
+		}
+	}
+	.miniVideo {
+
+	}
 
 	.galleryThumbs {
 		max-height: 353px;
@@ -242,8 +279,55 @@
 	}
 	.mfp-bottom-bar {
 		.mfp-counter {
+			color: #5b5b5b;
+			font-size: 12px;
+			font-weight: bold;
 			left: auto;
 			right: 50%;
+		}
+	}
+	.mfp-figure figure {
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.mfp-arrow-left {
+		@include breakpoint(small, 'min') {
+			height: 50px;
+			left: 24px;
+			width: 50px;
+		};
+		left: 10px;
+		text-align: left;
+		&:before {
+			color: $gray-c;
+			content: '\e929';
+			display: block;
+			font-family: 'whirlpool' !important;
+			font-size: 14px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+
+	.mfp-arrow-right {
+		@include breakpoint(small, 'min') {
+		    height: 50px;
+			right: 24px;
+			width: 50px;
+		};
+		right: 10px;
+		text-align: right;
+		&:before {
+			color: $gray-c;
+			content: '\e92a';
+			display: block;
+			font-family: 'whirlpool' !important;
+			font-size: 14px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
 		}
 	}
 }

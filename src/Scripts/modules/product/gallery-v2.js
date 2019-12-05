@@ -43,7 +43,6 @@ Nitro.module('galleryv2', function() {
 			`);
 		});
 
-		//TENTAR TIRAR O SLICK PRA RESOLVER ESSA GALERIA
 
 		$.map($video, function(item) {
 
@@ -101,14 +100,17 @@ Nitro.module('galleryv2', function() {
 		//adicionando paginação depois na galeria do mobile
 		if($(window).width() < 768) {
 			var $slickElement = $('.prod-galeria');
-			var $status = $( '<span/>' ).addClass( 'pagingInfo' ).appendTo($slickElement);
+			var $status = $( '<strong/>' ).addClass( 'pagingInfo' ).appendTo($slickElement);
 
 			$slickElement.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
 				var i = (currentSlide ? currentSlide : 0) + 1;
-				$status.text(i + '/' + slick.slideCount);
+				$status.html(`<span>${i}</span> / ${slick.slideCount}`);
 			});
 		}
-
+		if ($video.length !== 0) {
+			var $miniVideo = $( '<a/>' ).addClass( 'thumb-video' ).attr('href', `//www.youtube-nocookie.com/embed/${$video.text()}?rel=0&wmode=transparent&controls=0&showinfo=0&autoplay=1`).appendTo($slickElement);
+			$miniVideo.html('<span>vídeo</span>').addClass( 'miniVideo' );
+		}
 		//galeria imagem grande
 		$gallery.slick({
 			slidesToShow: 1,
