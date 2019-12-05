@@ -4,7 +4,7 @@
 import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery';
-import 'modules/product/product-nav';
+import 'modules/product/product-nav-v2';
 import 'modules/product/details';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
@@ -149,7 +149,12 @@ Nitro.controller(
 		self.valoresParcelas = function() {
 			var $valoresParcelas = $('.valores-parcelas'),
 				$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
-				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul'),
+				installmentQuantity = skuJson.skus[0].installments;
+
+			if (installmentQuantity === 1) {
+				$('.formas-pagamento-container').css('display', 'none');
+			}
 
 			$opcoesParcelamento.find('li').each(function() {
 				var $numeroParcelas = $(this).find('span:first-child'),
