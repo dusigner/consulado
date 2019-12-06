@@ -115,6 +115,7 @@ $color-white: #fff;
 
 				.box-infos {
 					margin-left: 10px;
+					width: 80%;
 					> p {
 						font-size: 14px;
 						font-weight: 500;
@@ -125,6 +126,9 @@ $color-white: #fff;
 						color: $color-light-blue;
 						font-size: 14px;
 					}
+				}
+				.box-image {
+					width: 15%;
 				}
 			}
 		}
