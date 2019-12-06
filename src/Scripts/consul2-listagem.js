@@ -412,9 +412,17 @@ Nitro.controller(
 		}
 
 		$('body.listagem.busca:not(.neemu) .more-cat').on('click', function() {
+			let $modalOverlay = $('body');
 			$(this).toggleClass('-active');
 			$('.category-list-content').toggleClass('-active');
 
+			if ($modalOverlay.find('.overlay-listagem').length === 0) {
+				$modalOverlay.append(`
+					<div class="overlay-listagem showOverlay"></div>
+				`);
+			} else {
+				$('.overlay-listagem').toggleClass('showOverlay');
+			}
 		});
 	}
 );

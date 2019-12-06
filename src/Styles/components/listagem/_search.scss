@@ -45,7 +45,7 @@ body.listagem.busca:not(.neemu) {
 				z-index: 2;
 
 				&.-active {
-					z-index: 4;
+					z-index: 12;
 
 					h5 {
 						&::after {
@@ -94,37 +94,46 @@ body.listagem.busca:not(.neemu) {
 	}
 
 	.category-list-content {
-		display: none;
+		background-color: $upperBar;
+		border-bottom: 1px solid $upperBarBorder;
+		box-sizing: border-box;
+		display: block;
+		height: 0;
+		overflow: hidden;
+		padding-top: 43px;
+		position: absolute;
+		top: 0;
+		transition: height .4s ease;
+		width: 100%;
+		z-index: -1;
 
-		&.-active {
-			background-color: $upperBar;
-			border-bottom: 1px solid $upperBarBorder;
-			box-sizing: border-box;
-			display: block;
-			padding-top: 43px;
-			position: absolute;
-			top: 0;
-			width: 100%;
-			z-index: 2;
+		.category-list-search {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			height: 155px;
 
-			.category-list-search {
-				display: flex;
-				flex-direction: column;
-				flex-wrap: wrap;
-				height: 155px;
+			li {
+				@include rfs(12);
+				color: $menuFontColor;
+				margin: 12px 0;
 
-				li {
-					@include rfs(12);
-					color: $menuFontColor;
-					margin: 12px 0;
+				&:nth-child(3n + 1) {
+					margin-top: 12px;
+				}
 
-					&:nth-child(3n + 1) {
-						margin-top: 20px;
-					}
+				&:nth-child(3n) {
+					margin-bottom: 12px;
 				}
 			}
 		}
+
+		&.-active {
+			height: 180px;
+			z-index: 11;
+		}
 	}
+
 
 	.list-container {
 		.order-wrapper {
@@ -141,6 +150,8 @@ body.listagem.busca:not(.neemu) {
 				&::after {
 					@include icon-get('bottom-arrow');
 					color: $arrowDown;
+					position: absolute;
+					top: 40%;
 				}
 			}
 		}
@@ -162,4 +173,18 @@ body.listagem.busca:not(.neemu) {
 			color: #fff;
 		}
 	}
+
+	.overlay-listagem {
+		background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+		height: calc(100% + 140px);
+		position: absolute;
+		top: 140px;
+		width: 100%;
+		z-index: 10;
+
+		&:not(.showOverlay) {
+			display: none;
+		}
+	}
+
 }
