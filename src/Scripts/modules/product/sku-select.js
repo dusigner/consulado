@@ -46,10 +46,6 @@ Nitro.module('sku-select', function() {
 		if (skuLabel.length === 1) {
 			skuLabel.click();
 		}
-
-		if (skuLabel.length <= 1 ) {
-			$('.prod-sku-selector').css('display', 'none');
-		}
 	});
 
 	$('.buy-button').on('buyButtonFailedAttempt.vtex', this.buttonHandler);
@@ -155,5 +151,15 @@ Nitro.module('sku-select', function() {
 		})
 	};
 
+	this.hideSkuSelector = () => {
+		let $skuList = $('.produto-v2').find('.prod-sku-selector');
+
+		if ($skuList.find('label').length <= 1 ) {
+			$('.prod-sku-selector').css('display', 'none');
+		}
+	};
+
+
 	this.unavailableSKU();
+	this.hideSkuSelector();
 });
