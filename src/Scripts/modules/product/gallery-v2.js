@@ -206,7 +206,7 @@ Nitro.module('galleryv2', function() {
 					'</div>'
 			},
 			gallery: {
-				enabled: true,
+				enabled: false,
 				navigateByImgClick: false
 			},
 			callbacks: {

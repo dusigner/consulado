@@ -1,4 +1,5 @@
 .prod-galeria {
+	margin-bottom: 20px;
 	position: relative;
 	// Clearfix
 	&:after {
@@ -208,7 +209,37 @@
 		}
 	}
 	.miniVideo {
-
+		span {
+			display: inline-block;
+			font-size: 12px;
+			font-weight: 500;
+			position: relative;
+			text-align: right;
+			width: 74px;
+			&:before {
+				background-color: #D9D8D8;
+				content: '';
+				display: block;
+				height: 12px;
+				left: 14px;
+				position: absolute;
+				top: 2px;
+				width: 2px;
+			}
+			&:after {
+				background-image: url('/arquivos/mini-icon-video-cns.png');
+				background-position: top center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				display: block;
+				height: 10px;
+				position: absolute;
+				right: 35px;
+				top: 4px;
+				width: 10px;
+			}
+		}
 	}
 
 	.galleryThumbs {
