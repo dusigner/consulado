@@ -420,6 +420,12 @@ Nitro.controller(
 				$modalOverlay.append(`
 					<div class="overlay-listagem showOverlay"></div>
 				`);
+
+				$modalOverlay.find('.overlay-listagem').on('click', function() {
+					$('body.listagem.busca:not(.neemu) .more-cat').toggleClass('-active');
+					$('.category-list-content').toggleClass('-active');
+					$('.overlay-listagem').toggleClass('showOverlay');
+				});
 			} else {
 				$('.overlay-listagem').toggleClass('showOverlay');
 			}

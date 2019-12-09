@@ -6,6 +6,19 @@ $menuFontColor: #736C6B;
 
 
 body.listagem.busca:not(.neemu) {
+	header,
+	.top-navigation {
+		background-color: #fff;
+		position: relative;
+		z-index: 20;
+	}
+
+	.pre-header {
+		position: relative;
+		z-index: 20;
+	}
+
+
 	.title-filter {
 		display: none;
 	}
@@ -96,15 +109,17 @@ body.listagem.busca:not(.neemu) {
 	.category-list-content {
 		background-color: $upperBar;
 		border-bottom: 1px solid $upperBarBorder;
+		border-top: 1px solid $upperBarBorder;
 		box-sizing: border-box;
 		display: block;
 		height: 0;
+		left: -1px;
 		overflow: hidden;
 		padding-top: 43px;
 		position: absolute;
-		top: 0;
+		top: -2px;
 		transition: height .4s ease;
-		width: 100%;
+		width: 101%;
 		z-index: -1;
 
 		.category-list-search {
@@ -176,9 +191,9 @@ body.listagem.busca:not(.neemu) {
 
 	.overlay-listagem {
 		background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-		height: calc(100% + 140px);
-		position: absolute;
-		top: 140px;
+		height: 100%;
+		position: fixed;
+		top: 0;
 		width: 100%;
 		z-index: 10;
 
