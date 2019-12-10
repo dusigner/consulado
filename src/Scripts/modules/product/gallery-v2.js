@@ -17,7 +17,7 @@ Nitro.module('galleryv2', function() {
 				<li>
 					<a href="${$.resizeImage(self.attr('rel'), 1000, 1000)}" class="popup-zoom">
 						<img
-							src="${$.resizeImage(self.attr('rel'), 520, 520)}"
+							src="${$.resizeImage(self.attr('rel'), 620, 620)}"
 							alt="${self.find('img').attr('title')}"
 							width="520"
 							height="520"
@@ -126,7 +126,7 @@ Nitro.module('galleryv2', function() {
 					settings: {
 						slidesToShow: 1,
 						slidesToScroll: 1,
-						draggable: true,
+						draggable: false,
 						arrows: true,
 						asNavFor: false,
 						dots: true,
@@ -136,7 +136,7 @@ Nitro.module('galleryv2', function() {
 		});
 
 		//galeria dos thumbs a partir de tablet
-		if($(window).width() > 768) {
+		if($(window).width() > 767) {
 			$galleryThumbs.slick({
 				slidesToShow: 10,
 				// slidesToScroll: 1,
@@ -145,15 +145,8 @@ Nitro.module('galleryv2', function() {
 				arrows: false,
 				focusOnSelect: true,
 				vertical: true,
-				infinite: false,
-				responsive: [
-					{
-						breakpoint: 992,
-						settings: {
-							slidesToShow: 3
-						}
-					}
-				]
+				draggable: false,
+				infinite: false
 			});
 		}
 

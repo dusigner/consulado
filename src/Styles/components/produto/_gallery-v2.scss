@@ -10,13 +10,14 @@
 		height: 0;
 		visibility: hidden;
 	}
-
+	.slick-slider {
+		padding: 0;
+	}
 	#show,
 	.gallery.slick-slider {
 		position: relative;
 
 		@include breakpoint(medium, 'min') {
-			max-width: 80%;
 			min-height: 410px;
 		}
 	}
@@ -72,13 +73,12 @@
 	.gallery {
 		float: right;
 		@include breakpoint(small, 'min') {
-			width: 430px;
+			width: calc(100% - 185px);
 		}
 		@include breakpoint(small, 'max') {
 			display: inline-block;
 			float: right;
 			padding: 0 20px;
-			// width: calc(100% - 90px);
 			width: 100%;
 		}
 
@@ -246,9 +246,9 @@
 		max-height: 353px;
 		@include breakpoint(small, 'min') {
 			margin-top: 25px;
-			width: 180px;
+			width: 170px;
 		}
-		@include breakpoint(small, 'max') {
+		@include breakpoint(767px, 'max') {
 			display: none;
 			float: left;
 			max-height: 285px;
@@ -264,8 +264,9 @@
 		}
 		.slick-track {
 			display: flex;
-			flex-flow: wrap;
-			height: auto !important;
+			flex-direction: column;
+			flex-wrap: wrap;
+			height: 520px !important;
 			width: 180px;
 		}
 
@@ -278,8 +279,7 @@
 		}
 
 		.slick-slide {
-			@include breakpoint('small', 'max') { margin: 0; }
-			margin: 0 10px 12px 0;
+			margin: 0 0 14px;
 			max-height: 78px;
     		width: 80px !important;
 
