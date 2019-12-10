@@ -89,7 +89,7 @@
 				@include breakpoint('small', 'max') { left: 10px; }
 				@include rfs(12px);
 				color: #736C6B;
-				content: 'CEP';
+				content: 'Digite seu CEP:';
 				left: 15px;
 				position: absolute;
 				top: 50%;
@@ -99,7 +99,7 @@
 
 		// Campo de input para o CEP
 		input#txtCep {
-			@include breakpoint('medium', 'max') { text-indent: 28px; }
+			@include breakpoint('medium', 'max') { text-indent: 85px; }
 			@include rfs(12px);
 			background-color: transparent;
 			border: 1px solid #E3E1E1;
@@ -108,7 +108,7 @@
 			margin: 0;
 			padding: 0 15px;
 			position: relative;
-			text-indent: 35px;
+			text-indent: 90px;
 			transition:
 				background .3s ease,
 				text-indent .3s ease

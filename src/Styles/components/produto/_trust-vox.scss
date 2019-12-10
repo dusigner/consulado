@@ -40,7 +40,7 @@
 }
 
 .trustvox-widget-rating .ts-shelf-container .ts-sprite {
-	background-size: 105px 30px;
+	background-size: 95px 30px;
 }
 
 .trustvox-widget-rating .ts-shelf-container .ts-shelf-rate-symbols {
@@ -49,4 +49,14 @@
 
 .trustvox-widget-rating .ts-shelf-container .ts-shelf-rate, .ts-shelf-container .ts-shelf-rate-symbols {
 	height: 15px;
+}
+
+.trustvox-widget-rating .ts-shelf-container .ts-shelf-rate {
+	width: 95px;
+}
+
+.box-infos {
+	.trustvox-rating {
+		vertical-align: middle;
+	}
 }

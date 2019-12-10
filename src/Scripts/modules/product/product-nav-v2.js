@@ -51,7 +51,7 @@ Nitro.module('product-nav', function() {
 
 	$window.scroll(scrollEvent).scroll();
 
-	$('.row.anchors > button').on('click', () => {
+	$('.row.anchors button').on('click', () => {
 		$('html, body').animate({ scrollTop: 0 }, 1000);
 	});
 
@@ -84,7 +84,7 @@ Nitro.module('product-nav', function() {
 	});
 
 	const setInfos = () => {
-		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/55-55/gm, '70-70'),
+		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/80-80/gm, '50-50'),
 			$productName = $('.productName').text(),
 			$productReference = $('.productReference').text();
 

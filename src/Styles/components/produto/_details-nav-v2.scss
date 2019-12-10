@@ -64,21 +64,19 @@ $color-white: #fff;
 		.row.anchors {
 			@extend %flex-center;
 			background: $bg-gray;
+			border-bottom: 2px solid #9ACA3C;
+			border-top: 1px solid #F1F0F0;
 			justify-content: space-between;
 			position: relative;
-			&:after {
-				background: $bg-gray;
-				content: '';
-				height: 35px;
-				left: 0;
-				position: absolute;
-				top: 0;
-				transform: translateX(-50%);
-				width: 4000px;
-				z-index: -1;
+
+			> .container {
+				@extend %flex-center;
+				justify-content: space-between;
+				padding-bottom: 3px;
+				padding-top: 3px;
 			}
 
-			> button {
+			button {
 				background: none;
 				border: none;
 				font-size: 12px;
@@ -115,20 +113,22 @@ $color-white: #fff;
 
 				.box-infos {
 					margin-left: 10px;
-					width: 80%;
+					width: calc(100% - 60px);
 					> p {
-						font-size: 14px;
+						font-size: rfs(16);
 						font-weight: 500;
 						line-height: 1;
 						margin: 5px 0;
 					}
 					> span {
 						color: $color-light-blue;
-						font-size: 14px;
+						font-size: rfs(14);
 					}
 				}
 				.box-image {
-					width: 15%;
+					@extend %flex-center;
+					justify-content: center;
+					width: 50px;
 				}
 			}
 		}
@@ -191,7 +191,7 @@ $color-white: #fff;
 		color: $color-dark-gray;
 		order: 1;
 		text-align: right;
-		width: 60%;
+		width: 56%;
 
 		.descricao-preco {
 			margin: 0;
@@ -247,7 +247,7 @@ $color-white: #fff;
 
 				&.skuBestInstallmentNumber {
 					&:before {
-						content: 'em até ';
+						content: 'Em até ';
 						font-weight: 400;
 					}
 
@@ -262,7 +262,7 @@ $color-white: #fff;
 	#BuyButtonDetails {
 		@extend #BuyButton;
 		order: 2;
-		width: 40%;
+		width: 44%;
 
 		.buy-button {
 			background-color: $green;
@@ -270,6 +270,7 @@ $color-white: #fff;
 			color: $color-white;
 			margin-left: 20px;
 			margin-top: 20px;
+			padding: 11px 18px;
 
 			@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);

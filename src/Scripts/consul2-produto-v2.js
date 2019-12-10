@@ -144,6 +144,7 @@ Nitro.controller(
 			const $element = $(currentTarget);
 			$('#modal-' + $element.data('modal')).vtexModal();
 		});
+		$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 
 		//Opções de parcelamento
 		self.valoresParcelas = function() {
