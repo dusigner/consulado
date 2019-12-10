@@ -31,14 +31,16 @@
 @import 'pages/product';
 @import 'components/produto/gallery';
 @import 'components/produto/prod-title';
-@import 'components/produto/prod-info';
+@import 'components/produto/prod-info-v2';
+@import 'components/produto/prod-info-bar';
+@import 'components/produto/prod-info-descricao';
 @import 'components/produto/prod-info-preco';
-@import 'components/produto/prod-info-parcelas';
-@import 'components/produto/prod-info-sku';
+@import 'components/produto/prod-info-parcelas-v2';
+@import 'components/produto/prod-info-sku-v2';
 @import 'components/produto/produtos-adicionais';
-@import 'components/produto/prod-buy-button';
+@import 'components/produto/prod-buy-button-v2';
 @import 'components/produto/selos';
-@import 'components/produto/frete';
+@import 'components/produto/frete-v2';
 @import 'components/produto/upsell-prod';
 
 
@@ -47,37 +49,10 @@
 @import 'components/produto/video-lancamento';
 @import 'components/produto/detalhes';
 @import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes';
+@import 'components/produto/especificacoes-v2';
 @import 'components/produto/modal.sku';
 @import 'components/produto/modal.entrega';
 @import 'components/produto/special-content';
 @import 'components/produto/recurrence-modal';
+@import 'components/produto/assistencia-e-relacionado';
 // @import 'components/produto/quiz-install';
-
-.trustvox-rating {
-	margin-bottom: 24px;
-}
-#trustvox-reviews {
-	@include responsiveFont(25);
-	margin: 50px 0;
-	text-align: center;
-}
-.trustvox-widget-rating .ts-shelf-container,
-.trustvox-widget-rating .trustvox-shelf-container {
-	display: inline-block;
-}
-.trustvox-widget-rating span.rating-click-here {
-	color: #DAA81D;
-	display: inline-block;
-	font-size: 12px;
-	padding-left: 5px;
-	position: relative;
-	top: -4px;
-}
-.trustvox-widget-rating:hover span.rating-click-here {
-	text-decoration: underline;
-}
-
-.corpoCalculadora {
-	display: none!important;
-}

@@ -1,0 +1,53 @@
+@charset 'UTF-8';
+
+#BuyButton,
+.product-info-bar__buy {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 1em;
+
+	.buy-button {
+		@include rfs(12px);
+		background-color: $green;
+		border-radius: 50px;
+		color: #fff;
+		padding: 7px 15px;
+		text-align: center;
+		width: 50%;
+
+		&:hover {
+			background-color: darken($green, 10%);
+			color: #fff;
+		}
+	}
+
+	.buy-button,
+	.secure {
+		@include breakpoint('extra-small', 'max') { flex: 1 0 100%; }
+		flex: 1 1 50%;
+		text-align: center;
+	}
+}
+
+
+#BuyButton {
+	@include breakpoint('medium', 'max') {
+		position: absolute;
+		right: 2px;
+		top: 15px;
+		width: 50%;
+	}
+
+	.secure {
+		@include breakpoint('medium', 'max') { @include superHide(); }
+		@include rfs(12px);
+		color: #E3E1E1;
+		font-weight: bold;
+		padding: 7px;
+		text-transform: uppercase;
+
+		.icon-cadeado { margin-right: 8px; }
+	}
+}
