@@ -1,0 +1,369 @@
+.prod-galeria {
+	margin-bottom: 20px;
+	position: relative;
+	// Clearfix
+	&:after {
+		clear: both;
+		content: '';
+		display: block;
+		font-size: 0;
+		height: 0;
+		visibility: hidden;
+	}
+	.slick-slider {
+		padding: 0;
+	}
+	#show,
+	.gallery.slick-slider {
+		position: relative;
+
+		@include breakpoint(medium, 'min') {
+			min-height: 410px;
+		}
+	}
+
+	ul.thumbs {display: none}
+
+	li:focus { outline: none; }
+
+	.thumbs/*, .slick-dots*/ {
+		bottom: 25px;
+		left: 50%;
+		padding: 5px;
+		transform: translateX(-50%);
+		width: auto;
+
+		@include breakpoint(small, 'max') { bottom: -5px; }
+
+		button {
+			&:before { color: $gray-d !important; }
+
+			&:after { display: none; }
+		}
+	}
+
+	.thumb-ver-mais {
+		@include rfs(22);
+		background-color: #FAF9F9;
+		border: 1px solid #F1F0F0;
+		border-radius: 5px;
+		color: $gray-c;
+		font-weight: bold;
+		height: 76px;
+		letter-spacing: -1px;
+		padding: 20px 0;
+		text-align: center;
+		width: 76px;
+	}
+
+	.slick-dots {
+		bottom: 25px;
+
+		li {
+			button { background: $gray; }
+
+			&.slick-active button {
+				background: $gray-l;
+
+				&:after  { border-color: $gray; }
+			}
+		}
+	}
+
+	.gallery {
+		float: right;
+		@include breakpoint(small, 'min') {
+			width: calc(100% - 185px);
+		}
+		@include breakpoint(small, 'max') {
+			display: inline-block;
+			float: right;
+			padding: 0 20px;
+			width: 100%;
+		}
+
+		.slick-prev,
+		.slick-next {
+			height: 35px;
+			top: 45%;
+			transform: translateY(-35%);
+			width: 35px;
+		}
+		.slick-prev {
+			text-align: left;
+			&:before {
+				color: $gray-c;
+				content: '\e929';
+				display: block;
+				font-family: 'whirlpool' !important;
+				font-size: 14px;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+			}
+		}
+		.slick-next {
+			text-align: right;
+			&:before {
+				color: $gray-c;
+				content: '\e92a';
+				display: block;
+				font-family: 'whirlpool' !important;
+				font-size: 14px;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+			}
+		}
+
+		.slick-slide {
+			cursor: pointer;
+			position: relative;
+
+			a {
+				display: inline-block;
+				width: 100%;
+
+				img {
+					height: auto;
+					width: 100%;
+				}
+
+				&.anchor {
+					width: auto;
+				}
+
+				&:before,
+				&:after {
+					opacity: 0;
+					transition: opacity .3s ease-in;
+				}
+
+				&:before {
+					@include contentBefore();
+					background: transparent url('/arquivos/bg-loupe-zoom.png') left top no-repeat;
+					display: none;
+					height: 67px;
+					left: 50%;
+					top: 50%;
+					transform: translateX(-50%) translateY(-50%);
+					width: 58px;
+				}
+
+				&:after {
+					@include contentBefore();
+					@include icon-get('consul-loupe');
+					@include responsiveFont(27, 16, true);
+					color: $green;
+					display: none;
+					left: 50%;
+					top: 50%;
+					transform: translateX(-50%) translateY(-50%);
+				}
+
+				&.mfp-iframe {
+					&:before {
+						display: none;
+					}
+
+					&:after {
+						@include contentBefore();
+						@include responsiveFont(20, 16, true);
+						 background: transparent url('/arquivos/thumb-play.png') left top no-repeat;
+						height: 65px;
+						width: 65px;
+					}
+				}
+
+				@include breakpoint(large, 'min') {
+					&:hover {
+						&:before,
+						&:after {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			&.anchor {
+				min-height: 346px;
+				a {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					width: auto;
+					&:hover {
+						&:before,
+						&:after {
+							opacity: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	.pagingInfo {
+		span {
+			color: $green;
+			font-size: 12px;
+		}
+	}
+	.miniVideo {
+		span {
+			display: inline-block;
+			font-size: 12px;
+			font-weight: 500;
+			position: relative;
+			text-align: right;
+			width: 74px;
+			&:before {
+				background-color: #D9D8D8;
+				content: '';
+				display: block;
+				height: 12px;
+				left: 14px;
+				position: absolute;
+				top: 2px;
+				width: 2px;
+			}
+			&:after {
+				background-image: url('/arquivos/mini-icon-video-cns.png');
+				background-position: top center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				display: block;
+				height: 10px;
+				position: absolute;
+				right: 35px;
+				top: 4px;
+				width: 10px;
+			}
+		}
+	}
+
+	.galleryThumbs {
+		max-height: 353px;
+		@include breakpoint(small, 'min') {
+			margin-top: 25px;
+			width: 170px;
+		}
+		@include breakpoint(767px, 'max') {
+			display: none;
+			float: left;
+			max-height: 285px;
+			padding: 0;
+			width: 90px;
+		}
+
+		.slick-list {
+			// @include breakpoint('small', 'max') { max-height: 195px; }
+			border: none;
+			height: auto !important;
+			min-height: 195px;
+		}
+		.slick-track {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			height: 520px !important;
+			width: 180px;
+		}
+
+		img {
+			@include breakpoint('small', 'max') { margin: 0; }
+			border: 1px solid #F1F0F0;
+			border-radius: 5px;
+			font-size: 7px;
+			margin: 0 auto;
+		}
+
+		.slick-slide {
+			margin: 0 0 14px;
+			max-height: 78px;
+    		width: 80px !important;
+
+			a { display: inline-block; }
+
+			&.slick-current {
+				img {border-color: $green;}
+			}
+		}
+
+		.slick-prev,
+		.slick-next {
+			&:before { @include responsiveFont(8, 16, true); }
+		}
+	}
+}
+
+.mfp-wrap {
+	height: 100% !important;
+	position: fixed !important;
+
+	.mfp-iframe-holder {
+		.mfp-content {
+			width: 80%;
+
+			@include breakpoint(extra-small, 'min') { height: 80%; }
+		}
+	}
+	.mfp-bottom-bar {
+		.mfp-counter {
+			color: #5b5b5b;
+			font-size: 12px;
+			font-weight: bold;
+			left: auto;
+			right: 50%;
+		}
+	}
+	.mfp-figure figure {
+		margin: 0 auto;
+		padding: 0 20px;
+	}
+
+	.mfp-arrow-left {
+		@include breakpoint(small, 'min') {
+			height: 50px;
+			left: 24px;
+			width: 50px;
+		};
+		left: 10px;
+		text-align: left;
+		&:before {
+			color: $gray-c;
+			content: '\e929';
+			display: block;
+			font-family: 'whirlpool' !important;
+			font-size: 14px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+
+	.mfp-arrow-right {
+		@include breakpoint(small, 'min') {
+		    height: 50px;
+			right: 24px;
+			width: 50px;
+		};
+		right: 10px;
+		text-align: right;
+		&:before {
+			color: $gray-c;
+			content: '\e92a';
+			display: block;
+			font-family: 'whirlpool' !important;
+			font-size: 14px;
+			font-style: normal !important;
+			font-variant: normal !important;
+			font-weight: normal !important;
+		}
+	}
+}
+
+
+.slick-dots {
+	display: none!important;
+}
