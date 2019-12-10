@@ -73,7 +73,7 @@
 	.gallery {
 		float: right;
 		@include breakpoint(small, 'min') {
-			width: calc(100% - 185px);
+			width: calc(100% - 186px);
 		}
 		@include breakpoint(small, 'max') {
 			display: inline-block;
