@@ -115,14 +115,14 @@ $color-white: #fff;
 					margin-left: 10px;
 					width: calc(100% - 60px);
 					> p {
-						font-size: rfs(16);
+						@include rfs(16);
 						font-weight: 500;
 						line-height: 1;
 						margin: 5px 0;
 					}
 					> span {
+						@include rfs(14);
 						color: $color-light-blue;
-						font-size: rfs(14);
 					}
 				}
 				.box-image {
