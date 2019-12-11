@@ -300,25 +300,20 @@
 .mfp-wrap {
 	height: 100% !important;
 	position: fixed !important;
-
-	.mpf-iframe {
-		@include breakpoint(small, 'min') {
-			margin-top: 100px;
-		}
+	@include breakpoint(small, 'max'){
+		top: 0 !important;
 	}
 	.mfp-iframe-holder {
 		.mfp-content {
-			@include breakpoint(small, 'max') {
-				vertical-align: inherit;
-			}
 			width: 80%;
-
 			@include breakpoint(extra-small, 'min') { height: 80%; }
 		}
+	}
 	.mfp-figure figure {
 		margin: 0 auto;
 		padding: 0 20px;
 	}
+
 	.mfp-bottom-bar {
 		cursor: auto;
 		display: block;
@@ -331,12 +326,9 @@
 			color: #5b5b5b;
 			font-size: 12px;
 			font-weight: bold;
-			left: auto;
-			right: 50%;
+			left: 0;
+			right: 0;
 		}
-	}
-	.mfp-arrow {
-		top: 28%;
 	}
 	.mfp-arrow-left {
 		@include breakpoint(small, 'min') {
@@ -380,7 +372,6 @@
 			}
 		}
 	}
-}
 
 
 .slick-dots {
