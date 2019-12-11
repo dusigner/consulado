@@ -152,7 +152,8 @@ body.listagem.busca:not(.neemu) {
 			height: 155px;
 
 			li {
-				@include rfs(12);
+				@include rfs(11);
+				@include breakpoint('small', 'max') { width: 50%; }
 				color: $menuFontColor;
 				margin: 12px 0;
 
@@ -168,11 +169,16 @@ body.listagem.busca:not(.neemu) {
 
 		&.-active {
 			@include breakpoint('small', 'max') {
-				height: 150px;
+				height: 500px;
+				padding-top: 90px;
+				z-index: 12;
 			}
 			height: 180px;
 			z-index: 11;
 
+			.category-list-search {
+				@include breakpoint('small', 'max') { height: 385px;}
+			}
 		}
 	}
 
@@ -277,4 +283,8 @@ body.listagem.busca:not(.neemu) {
 		color: $arrowDown;
 		font-weight: 700;
 	}
+}
+
+.overflowHidden {
+	@include breakpoint('small', 'max') { overflow: hidden; }
 }

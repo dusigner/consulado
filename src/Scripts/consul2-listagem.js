@@ -421,6 +421,7 @@ Nitro.controller(
 			let $modalOverlay = $('body');
 			$(this).toggleClass('-active');
 			$('.category-list-content').toggleClass('-active');
+			$('html').toggleClass('overflowHidden');
 
 			if ($modalOverlay.find('.overlay-listagem').length === 0) {
 				$modalOverlay.append(`
@@ -431,6 +432,7 @@ Nitro.controller(
 					$('body.listagem.busca:not(.neemu) .more-cat').toggleClass('-active');
 					$('.category-list-content').toggleClass('-active');
 					$('.overlay-listagem').toggleClass('showOverlay');
+					$('html').toggleClass('overflowHidden');
 				});
 			} else {
 				$('.overlay-listagem').toggleClass('showOverlay');
