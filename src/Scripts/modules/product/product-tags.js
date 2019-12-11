@@ -1,7 +1,7 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-Nitro.module('tagueamento', function() {
+Nitro.module('product-tags', function() {
 
     this.init = () => {
         this.tagContratacao();
