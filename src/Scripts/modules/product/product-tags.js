@@ -16,6 +16,19 @@ Nitro.module('product-tags', function() {
 
     const $document = $(document);
 
+    this.tagTrustVox = () => {
+        const $trustButton = $('.trustvox-fluid-jump').find('.rating-click-here');
+
+        $trustButton.on('click', () => {
+            dataLayer.push({
+                event: 'generic',
+                category: 'Trustvox <> Prateleira',
+                action: 'Clicou no texto',
+                label: 'Produto: Geladeira Consul Frost Free Duplex 397 litros Evox com freezer embaixo'
+            });
+        });
+    }
+
     this.tagContratacao = () => {
         const $contratacaoButton = $('.product-assist-block.infos .second-block').find('a');
 
