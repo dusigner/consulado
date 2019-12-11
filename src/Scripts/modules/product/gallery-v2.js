@@ -163,14 +163,13 @@ Nitro.module('galleryv2', function() {
 			e.preventDefault();
 			$gallery.slick('slickGoTo', ($(this).index('a.thumb-index')));
 		});
-
 		//conta quantos slides tem e adiciona o ver mais
 		if(newThumbs.length > 10) {
 			const lastSlide = $('.thumb').last();
 
 			lastSlide.parent().html(`<li >
-		 		<a class="thumb-ver-mais" onclick="$('.popup-zoom').magnificPopup('open', 9);">
-		 			+ ${newThumbs.length - index}
+		 		<a class="thumb-ver-mais" onclick="$('.popup-zoom').magnificPopup('open', 8);">
+		 			+ ${newThumbs.length - index + 1}
 				</a>
 			</li>`).unbind();
 		}
@@ -206,7 +205,8 @@ Nitro.module('galleryv2', function() {
 				close: function() {
 					$galleryThumbs.find('.slick-slide').removeClass('slick-current');
 					$galleryThumbs.find('.slick-slide' + '[data-slick-index=' + $video.length + ']').addClass('slick-current');
-					$gallery.slick('slickGoTo', 0);
+					// $gallery.slick('slickGoTo', 0);
+					// $gallery.slick('slickGoTo', this.index);
 				}
 			}
 		});
