@@ -4,6 +4,7 @@
 Nitro.module('product-tags', function() {
 
     this.init = () => {
+        this.tagTrustVox();
         this.tagContratacao();
         this.tagTiposEntrega();
         this.tagVendasCorp();
@@ -12,6 +13,7 @@ Nitro.module('product-tags', function() {
         this.tagGallery();
         this.tagMedidas();
         this.tagDownloads();
+        this.tagBuy();
     }
 
     const $document = $(document);
@@ -22,7 +24,7 @@ Nitro.module('product-tags', function() {
         $trustButton.on('click', () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Trustvox <> Prateleira',
+                category: '[SQUAD] Produto',
                 action: 'Clicou no texto',
                 label: 'Produto: Geladeira Consul Frost Free Duplex 397 litros Evox com freezer embaixo'
             });
@@ -35,7 +37,7 @@ Nitro.module('product-tags', function() {
         $contratacaoButton.on('click', () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Assistência e Relacionados',
+                category: '[SQUAD] Assistência e Relacionados',
                 action: 'Informações de contratação',
                 label: 'Veja Mais'
             });
@@ -48,7 +50,7 @@ Nitro.module('product-tags', function() {
         $entregasButton.on('click', () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Assistência e Relacionados',
+                category: '[SQUAD] Assistência e Relacionados',
                 action: 'Tipos de entrega',
                 label: 'Veja Mais'
             });
@@ -61,7 +63,7 @@ Nitro.module('product-tags', function() {
         $corpButton.on('click', () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Assistência e Relacionados',
+                category: '[SQUAD] Assistência e Relacionados',
                 action: 'Vendas corporativas',
                 label: 'Veja Mais'
             });
@@ -74,12 +76,12 @@ Nitro.module('product-tags', function() {
         $avaliationButton.on('click', () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Detalhamento do Produtos',
                 label: 'Avaliações'
             });
-        })
-    }
+        });
+    };
 
     this.tagParcelamento = () => {
         const $parcelButton = $('.formas-pagamento-container .other-payment-method').find('span.titulo-parcelamento');
@@ -90,20 +92,20 @@ Nitro.module('product-tags', function() {
             if (!$element.parents('.formas-pagamento-container').hasClass('is--active')) {
                 dataLayer.push({
                     event: 'generic',
-                    category: 'Produto',
+                    category: '[SQUAD] Produto',
                     action: 'Formas de parcelamento',
                     label: 'Abrir'
                 });
             } else {
                 dataLayer.push({
                     event: 'generic',
-                    category: 'Produto',
+                    category: '[SQUAD] Produto',
                     action: 'Formas de parcelamento',
                     label: 'Fechar'
                 });
-            }
-        })
-    }
+            };
+        });
+    };
 
     this.tagGallery = () => {
         const $galleryButtons = '.prod-galeria ul.galleryThumbs li a';
@@ -115,25 +117,35 @@ Nitro.module('product-tags', function() {
 
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Interação Galeria',
                 label: $element.attr('href').indexOf('youtube') !== -1 ? `Video|${$productId}` : `${$position}|${$productId}`
             });
         });
-    }
+    };
 
     this.tagMedidas = () => {
-        const $boxButton = '.specs__measure-selector.specs__list .specs__measure-selector-withBox';
+        const $boxButtonWith = '.specs__measure-selector.specs__list .specs__measure-selector-withBox',
+            $boxButtonWithout = '.specs__measure-selector.specs__list .specs__measure-selector-withoutBox';
 
-        $document.on('click', $boxButton, () => {
+        $document.on('click', $boxButtonWith, () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Medidas',
                 label: 'Com Caixa'
             });
         });
-    }
+
+        $document.on('click', $boxButtonWithout, () => {
+            dataLayer.push({
+                event: 'generic',
+                category: '[SQUAD] Produto',
+                action: 'Medidas',
+                label: 'Sem Caixa'
+            });
+        });
+    };
 
     this.tagDownloads = () => {
         const $productManual = '.specs__links-content.specs__list ul li:first-child a',
@@ -144,7 +156,7 @@ Nitro.module('product-tags', function() {
         $document.on('click', $productManual, () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Downloads',
                 label: 'Manual do Produto'
             });
@@ -153,7 +165,7 @@ Nitro.module('product-tags', function() {
         $document.on('click', $productGuide, () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Downloads',
                 label: 'Guia Rapido'
             });
@@ -162,7 +174,7 @@ Nitro.module('product-tags', function() {
         $document.on('click', $productEnergy110v, () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Downloads',
                 label: 'Classificacao Energetica 110v'
             });
@@ -171,11 +183,34 @@ Nitro.module('product-tags', function() {
         $document.on('click', $productEnergy220v, () => {
             dataLayer.push({
                 event: 'generic',
-                category: 'Produto',
+                category: '[SQUAD] Produto',
                 action: 'Downloads',
                 label: 'Classificacao Energetica 220v'
             });
-        })
+        });
+    }
+
+    this.tagBuy = () => {
+        const $buyButtonInfos = $('.prod-info').find('a.buy-button'),
+            $buyButtonFixedHeader = $('.cont-prod-details-nav').find('a.buy-button');
+
+        $buyButtonInfos.on('click', () => {
+            dataLayer.push({
+                event: 'generic',
+                category: '[SQUAD] Produto',
+                action: 'Botao Comprar Pagina',
+                label: 'Comprar'
+            });
+        });
+
+        $buyButtonFixedHeader.on('click', () => {
+            dataLayer.push({
+                event: 'generic',
+                category: '[SQUAD] Produto',
+                action: 'Botao Comprar Header Fixo',
+                label: 'Comprar'
+            });
+        });
     }
 
     this.init();
