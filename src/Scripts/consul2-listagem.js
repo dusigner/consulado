@@ -82,11 +82,17 @@ Nitro.controller(
 
 		//TODO: pluralize
 		var orderText = !$('body').is('.busca')
-			? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens'
+			? `Temos ${$('.resultado-busca-numero:first .value').text()} itens`
 			: '';
-		$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>');
-		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
+
+		if ($('body.listagem.busca:not(.neemu)').length > 0) {
+			$('.order-title').html(`<span class="show-desktop"> Se preferir ordene por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>`);
+			$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
+		} else {
+			$('.order-title').html(`<span class="show-desktop"> ${orderText} ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>`);
+			$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
+		}
 
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
 
@@ -135,7 +141,7 @@ Nitro.controller(
 
 				//console.log('$dropElements', $dropElements);
 
-				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>Categorias</span></h5></div>');
+				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>categoria</span></h5></div>');
 
 				$moreCatList = $('<div class="category-list-content"><ul class="container category-list-search" /></div>');
 

@@ -3,11 +3,13 @@ $upperBarBorder: #E3E1E1;
 $selectorColor: #595453;
 $arrowDown: #403C3B;
 $menuFontColor: #736C6B;
+$medium: 769px;
 
 
 body.listagem.busca:not(.neemu) {
 	header,
 	.top-navigation {
+		@include breakpoint('small', 'max') { position: fixed; }
 		background-color: #fff;
 		position: relative;
 		z-index: 20;
@@ -32,6 +34,12 @@ body.listagem.busca:not(.neemu) {
 	}
 
 	.filter-wrapper {
+		@include breakpoint('small', 'max') {
+			background-color: #fff;
+			border: none;
+			display: block;
+			position: static;
+		}
 		background-color: $upperBar;
 		border: 1px solid $upperBarBorder;
 		box-sizing: border-box;
@@ -46,6 +54,13 @@ body.listagem.busca:not(.neemu) {
 			height: 45px;
 
 			.more-cat {
+				@include breakpoint('small', 'max') {
+					border: 1px solid $selectorColor;
+					border-radius: 20px;
+					height: 30px;
+					margin-top: 14px;
+					width: 50%;
+				}
 				float: none;
 				height: fit-content;
 				margin-right: 0;
@@ -68,6 +83,13 @@ body.listagem.busca:not(.neemu) {
 				}
 
 				h5 {
+					@include breakpoint('small', 'max') {
+						color: $selectorColor;
+						padding: 5px;
+						text-align: center;
+						width: 100%;
+					}
+
 					@include rfs(12);
 					cursor: pointer;
 					display: block !important;
@@ -79,6 +101,7 @@ body.listagem.busca:not(.neemu) {
 
 
 					&::after {
+						@include breakpoint('small', 'max') { display: none }
 						@include icon-get('bottom-arrow');
 						@include responsiveFont(8, 16, true);
 						@include transition(transform, 200);
@@ -86,7 +109,7 @@ body.listagem.busca:not(.neemu) {
 						display: block;
 						margin-left: 1em;
 						position: absolute;
-						right: 0;
+						right: 5px;
 						top: 50%;
 						transform: translateY(-50%);
 					}
@@ -144,14 +167,19 @@ body.listagem.busca:not(.neemu) {
 		}
 
 		&.-active {
+			@include breakpoint('small', 'max') {
+				height: 150px;
+			}
 			height: 180px;
 			z-index: 11;
+
 		}
 	}
 
 
 	.list-container {
 		.order-wrapper {
+			@include breakpoint('small', 'max') { top: -38px; }
 			position: absolute;
 			right: 0;
 			top: -50px;
@@ -162,11 +190,36 @@ body.listagem.busca:not(.neemu) {
 			}
 
 			.order-title {
+				@include breakpoint($medium, 'min') {
+					border: none;
+					border-radius: none;
+					display: inline;
+					padding: 0;
+				}
+
+				span.show-desktop,
+				em.show-desktop {
+					@include breakpoint($medium, 'min') { display: inline; }
+				}
+
 				&::after {
+					@include breakpoint('small', 'max') { position: static }
 					@include icon-get('bottom-arrow');
 					color: $arrowDown;
+					font-size: .5rem;
 					position: absolute;
-					top: 40%;
+					top: 45%;
+					width: unset;
+				}
+
+				&::before {
+					@include breakpoint($medium, 'min') { display: none; }
+					text-transform: none;
+					width: 80%;
+				}
+
+				&.active {
+					&:after { transform: rotate(180deg); }
 				}
 			}
 		}
@@ -183,9 +236,26 @@ body.listagem.busca:not(.neemu) {
 		padding: 8px 40px;
 
 		&:hover,
-		&:focus {
-			background-color: $arrowDown;
+		&:focus,
+		&.loading {
+			background-color: $arrowDown !important;
 			color: #fff;
+			font-size: 0;
+		}
+
+		&.loading {
+			height: 32px;
+			left: 0;
+			position: relative;
+
+			&:before {
+				height: .5em !important;
+				left: 48%;
+				padding: 0;
+				position: absolute;
+				top: 30%;
+				width: .5em !important;
+			}
 		}
 	}
 
@@ -202,4 +272,9 @@ body.listagem.busca:not(.neemu) {
 		}
 	}
 
+	em.show-desktop {
+		@include rfs(12);
+		color: $arrowDown;
+		font-weight: 700;
+	}
 }
