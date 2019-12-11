@@ -14,6 +14,8 @@ Nitro.module('product-tags', function() {
         this.tagDownloads();
     }
 
+    const $document = $(document);
+
     this.tagContratacao = () => {
         const $contratacaoButton = $('.product-assist-block.infos .second-block').find('a');
 
@@ -57,7 +59,6 @@ Nitro.module('product-tags', function() {
         const $avaliationButton = $('.row.anchors ul li').find('a[href="#trustvox-reviews"]');
 
         $avaliationButton.on('click', () => {
-
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
@@ -92,8 +93,7 @@ Nitro.module('product-tags', function() {
     }
 
     this.tagGallery = () => {
-        const $galleryButtons = '.prod-galeria ul.galleryThumbs li a',
-            $document = $(document);
+        const $galleryButtons = '.prod-galeria ul.galleryThumbs li a';
 
         $document.on('click', $galleryButtons, ({currentTarget}) => {
             const $element = $(currentTarget),
@@ -110,9 +110,9 @@ Nitro.module('product-tags', function() {
     }
 
     this.tagMedidas = () => {
-        const $boxButton = $('.specs__measure-selector.specs__list').find('.specs__measure-selector-withBox');
+        const $boxButton = '.specs__measure-selector.specs__list .specs__measure-selector-withBox';
 
-        $boxButton.on('click', () => {
+        $document.on('click', $boxButton, () => {
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
@@ -123,12 +123,12 @@ Nitro.module('product-tags', function() {
     }
 
     this.tagDownloads = () => {
-        const $productManual = $('.specs__links-content.specs__list ul li:first-child').find('a'),
-            $productGuide = $('.specs__links-content.specs__list ul li:nth-child(2)').find('a'),
-            $productEnergy110v = $('.specs__links-content.specs__list ul li:nth-child(3)').find('a'),
-            $productEnergy220v = $('.specs__links-content.specs__list ul li:nth-child(4)').find('a');
+        const $productManual = '.specs__links-content.specs__list ul li:first-child a',
+            $productGuide = '.specs__links-content.specs__list ul li:nth-child(2) a',
+            $productEnergy110v = '.specs__links-content.specs__list ul li:nth-child(3) a',
+            $productEnergy220v = '.specs__links-content.specs__list ul li:nth-child(4) a';
 
-        $productManual.on('click', () => {
+        $document.on('click', $productManual, () => {
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
@@ -137,7 +137,7 @@ Nitro.module('product-tags', function() {
             });
         });
 
-        $productGuide.on('click', () => {
+        $document.on('click', $productGuide, () => {
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
@@ -146,7 +146,7 @@ Nitro.module('product-tags', function() {
             });
         });
 
-        $productEnergy110v.on('click', () => {
+        $document.on('click', $productEnergy110v, () => {
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
@@ -155,7 +155,7 @@ Nitro.module('product-tags', function() {
             });
         });
 
-        $productEnergy220v.on('click', () => {
+        $document.on('click', $productEnergy220v, () => {
             dataLayer.push({
                 event: 'generic',
                 category: 'Produto',
