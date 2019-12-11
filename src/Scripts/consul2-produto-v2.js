@@ -17,6 +17,7 @@ import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
+import 'modules/product/product-tags';
 import 'modules/chaordic';
 
 Nitro.controller(
@@ -39,6 +40,7 @@ Nitro.controller(
 		'upsell',
 		'deliveryTime',
 		'recurrence',
+		'product-tags',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
