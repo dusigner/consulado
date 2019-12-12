@@ -1,198 +1,197 @@
 %flex-center {
-    align-items: center;
-    display: flex;
+	align-items: center;
+	display: flex;
 }
 
 %icon-settings {
-    font-weight: bold;
-    left: 0;
-    position: absolute;
-    top: 0;
+	font-weight: bold;
+	left: 0;
+	position: absolute;
+	top: 0;
 }
 
 .product {
-    &-assist {
-        @include breakpoint(small, 'max') {
-            padding: 20px 0;
-        }
-        @extend %flex-center;
-        flex-wrap: wrap;
-        padding: 60px 0 120px;
-        margin: 0 auto;
-        .container {
-            > h2 {
-                @include breakpoint(small, 'max') {
-                    text-align: left;
-                }
-                font-weight: bold !important;
-                line-height: 1.1;
-                margin: 8px 0;
-                width: 100%;
-            }
-            > p {
-                @include breakpoint(small, 'max') {
-                    text-align: left;
-                }
-                margin: 0 auto;
-                width: 100%;
-            }
-        }
-        &-row {
-            @extend %flex-center;
-            @include breakpoint(small, 'max') {
-                flex-wrap: wrap;
-                margin-top: 25px;
-            }
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            margin-top: 40px;
-            width: 100%;
-        }
-        &-block {
-            @extend %flex-center;
-            @include breakpoint(small, 'max') {
-                padding: 15px 0;
-                width: 100%;
-            }
-            flex-wrap: wrap;
-            padding: 0 5px;
+	&-assist {
+		@extend %flex-center;
+		@include breakpoint(small, 'max') { padding: 20px 0; }
+		flex-wrap: wrap;
+		margin: 0 auto;
+		padding: 60px 0 120px;
+		.container {
+			> h2 {
+				@include breakpoint(small, 'max') {
+					text-align: left;
+				}
+				font-weight: bold !important;
+				line-height: 1.1;
+				margin: 8px 0;
+				width: 100%;
+			}
+			> p {
+				@include breakpoint(small, 'max') {
+					text-align: left;
+				}
+				margin: 0 auto;
+				width: 100%;
+			}
+		}
+		&-row {
+			@extend %flex-center;
+			@include breakpoint(small, 'max') {
+				flex-wrap: wrap;
+				margin-top: 25px;
+			}
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			margin-top: 40px;
+			width: 100%;
+		}
+		&-block {
+			@extend %flex-center;
+			@include breakpoint(small, 'max') {
+				padding: 15px 0;
+				width: 100%;
+			}
+			flex-wrap: wrap;
+			padding: 0 5px;
 
-            &.parts {
-                display: none;
+			&.parts {
+				display: none;
 
-                &.has--parts {
-                    display: flex;
+				&.has--parts {
+					display: flex;
 
-                    .btn-pecas-produto {
-                        display: block;
-                        margin: 0;
-                        width: 100%;
-                    }
-                }
-            }
+					.btn-pecas-produto {
+						display: block;
+						margin: 0;
+						width: 100%;
+					}
+				}
+			}
 
-            &:first-child {
-                padding-left: 0;
-            }
+			&:first-child {
+				padding-left: 0;
+			}
 
-            &:last-child {
-                padding-right: 0;
-            }
+			&:last-child {
+				padding-right: 0;
+			}
 
-            .first-block {
-                @extend %flex-center;
-                width: 10%;
+			.first-block {
+				@extend %flex-center;
+				width: 10%;
 
-                .icon-parts {
-                    height: 33px;
-                    position: relative;
-                    width: 33px;
-                    &:before {
-                        @extend %icon-settings;
-                        @include icon-get('icon-engrenagem');
-                        @include breakpoint(small, 'max') {
-                            font-size: 26px;
-                        }
-                        @include breakpoint(medium, 'max') {
-                            font-size: 15px;
-                        }
-                        font-size: 26px;
-                    }
-                }
-                .icon-infos {
-                    height: 28px;
-                    position: relative;
-                    width: 28px;
-                    &:before {
-                        @extend %icon-settings;
-                        @include icon-get('informacoes');
-                        @include breakpoint(small, 'max') {
-                            font-size: 26px;
-                        }
-                        @include breakpoint(medium, 'max') {
-                            font-size: 15px;
-                        }
-                        font-size: 26px;
-                    }
-                }
-                .icon-delivery {
-                    height: 27px;
-                    position: relative;
-                    width: 28px;
-                    &:before {
-                        @extend %icon-settings;
-                        @include icon-get('entregas');
-                        @include breakpoint(small, 'max') {
-                            font-size: 26px;
-                        }
-                        @include breakpoint(medium, 'max') {
-                            font-size: 15px;
-                        }
-                        font-size: 26px;
-                    }
-                }
-                .icon-corp {
-                    height: 31px;
-                    position: relative;
-                    width: 44px;
-                    &:before {
-                        @extend %icon-settings;
-                        @include icon-get('vendas-corporativas');
-                        @include breakpoint(small, 'max') {
-                            font-size: 18px;
-                        }
-                        @include breakpoint(medium, 'max') {
-                            font-size: 15px;
-                        }
-                        font-size: 18px;
-                    }
-                }
-            }
+				.icon-parts {
+					height: 33px;
+					position: relative;
+					width: 33px;
+					&:before {
+						@extend %icon-settings;
+						@include icon-get('icon-engrenagem');
+						@include breakpoint(small, 'max') {
+							font-size: 26px;
+						}
+						@include breakpoint(medium, 'max') {
+							font-size: 15px;
+						}
+						font-size: 26px;
+					}
+				}
+				.icon-infos {
+					height: 28px;
+					position: relative;
+					width: 28px;
+					&:before {
+						@extend %icon-settings;
+						@include icon-get('informacoes');
+						@include breakpoint(small, 'max') {
+							font-size: 26px;
+						}
+						@include breakpoint(medium, 'max') {
+							font-size: 15px;
+						}
+						font-size: 26px;
+					}
+				}
+				.icon-delivery {
+					height: 27px;
+					position: relative;
+					width: 28px;
+					&:before {
+						@extend %icon-settings;
+						@include icon-get('entregas');
+						@include breakpoint(small, 'max') {
+							font-size: 26px;
+						}
+						@include breakpoint(medium, 'max') {
+							font-size: 15px;
+						}
+						font-size: 26px;
+					}
+				}
+				.icon-corp {
+					height: 31px;
+					position: relative;
+					width: 44px;
+					&:before {
+						@extend %icon-settings;
+						@include icon-get('vendas-corporativas');
+						@include breakpoint(small, 'max') {
+							font-size: 18px;
+						}
+						@include breakpoint(medium, 'max') {
+							font-size: 15px;
+						}
+						font-size: 18px;
+					}
+				}
+			}
 
-            .second-block {
-                @extend %flex-center;
-                flex-wrap: wrap;
-                padding-left: 5%;
-                width: 85%;
-                > h3 {
-                    @include breakpoint(small, 'max') {
-                        @include rfs(14);
-                        width: 100%;
-                    }
-                    @include breakpoint(medium, 'max') {
-                        @include rfs(10);
-                        width: 100%;
-                    }
-                    @include rfs(14);
-                    margin: 0;
-                }
-                > p {
-                    @include breakpoint(small, 'max') {
-                        @include rfs(12);
-                        width: 100%;
-                    }
-                    @include breakpoint(medium, 'max') {
-                        @include rfs(9);
-                        width: 100%;
-                    }
-                    @include rfs(12);
-                    margin: 5px 0;
-                }
-                > a {
-                    color: #9aca3c;
-                    @include breakpoint(small, 'max') {
-                        @include rfs(12);
-                        width: 100%;
-                    }
-                    @include breakpoint(medium, 'max') {
-                        @include rfs(9);
-                    }
-                    @include rfs(12);
-                    > b {
-                        margin-left: 10px;
-                    }
-                }
-            }
-        }
-    }
+			.second-block {
+				@extend %flex-center;
+				flex-wrap: wrap;
+				padding-left: 5%;
+				width: 85%;
+				> h3 {
+					@include breakpoint(small, 'max') {
+						@include rfs(14);
+						width: 100%;
+					}
+					@include breakpoint(medium, 'max') {
+						@include rfs(10);
+						width: 100%;
+					}
+					@include rfs(14);
+					margin: 0;
+				}
+				> p {
+					@include breakpoint(small, 'max') {
+						@include rfs(12);
+						width: 100%;
+					}
+					@include breakpoint(medium, 'max') {
+						@include rfs(9);
+						width: 100%;
+					}
+					@include rfs(12);
+					margin: 5px 0;
+				}
+				> a {
+					@include rfs(12);
+					color: #9aca3c;
+
+					@include breakpoint(small, 'max') {
+						@include rfs(12);
+						width: 100%;
+					}
+					@include breakpoint(medium, 'max') {
+						@include rfs(9);
+					}
+					> b {
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+	}
 }

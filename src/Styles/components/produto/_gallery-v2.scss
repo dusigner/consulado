@@ -300,7 +300,7 @@
 .mfp-wrap {
 	height: 100% !important;
 	position: fixed !important;
-	@include breakpoint(small, 'max'){
+	@include breakpoint(small, 'max') {
 		top: 0 !important;
 	}
 	.mfp-iframe-holder {
