@@ -143,7 +143,14 @@ Nitro.controller(
 
 				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>categoria</span></h5></div>');
 
-				$moreCatList = $('<div class="category-list-content"><ul class="container category-list-search" /></div>');
+				$moreCatList = $(`
+					<div class="category-list-content">
+						<div class="category-list-menu-mobile">
+							<h2 class="category-list-title">Categorias</h2>
+							<p class="category-list-voltar">Voltar</p>
+						</div>
+						<ul class="container category-list-search" />
+					</div>`);
 
 				$moreCatList.find('ul').append($dropElements.clone());
 

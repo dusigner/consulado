@@ -206,6 +206,7 @@ body.listagem.busca:not(.neemu) {
 				span.show-desktop,
 				em.show-desktop {
 					@include breakpoint($medium, 'min') { display: inline; }
+					font-weight: 700;
 				}
 
 				&::after {
