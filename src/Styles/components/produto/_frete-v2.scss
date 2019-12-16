@@ -84,6 +84,15 @@
 			font-size: 0;
 			font-weight: 500;
 			position: relative;
+			&.has--cep {
+				&:before {
+					display: none;
+				}
+
+				input#txtCep {
+					text-indent: 0;
+				}
+			}
 
 			&:before {
 				@include breakpoint('small', 'max') { left: 10px; }

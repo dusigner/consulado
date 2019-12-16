@@ -5,6 +5,7 @@ Nitro.module('product-tags', function() {
 
 	this.init = () => {
 		this.tagTrustVox();
+		this.tagPecas();
 		this.tagContratacao();
 		this.tagTiposEntrega();
 		this.tagVendasCorp();
@@ -27,6 +28,19 @@ Nitro.module('product-tags', function() {
 				category: '[SQUAD] Produto',
 				action: 'Clicou no texto',
 				label: 'Produto: Geladeira Consul Frost Free Duplex 397 litros Evox com freezer embaixo'
+			});
+		});
+	}
+
+	this.tagPecas = () => {
+		const $pecasButton = $('.product-assist-block.parts');
+
+		$pecasButton.on('click', () => {
+			dataLayer.push({
+				event: 'generic',
+				category: '[SQUAD] Assistência e Relacionados',
+				action: 'Peças para este produto',
+				label: 'Veja Mais'
 			});
 		});
 	}

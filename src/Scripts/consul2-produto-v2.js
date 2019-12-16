@@ -108,6 +108,14 @@ Nitro.controller(
 			});
 		}
 
+		const $document = $(document),
+			$cepInput = '#calculoFrete .prefixo input';
+
+		$document.on('change', $cepInput, ({currentTarget}) => {
+			const $element = $(currentTarget);
+			$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
+		});
+
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
 		this.setupSlider = function($currentSlider) {
