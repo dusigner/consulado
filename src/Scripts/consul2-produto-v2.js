@@ -278,6 +278,7 @@ Nitro.controller(
 					$btnPecas
 						.attr('href', url)
 						.parents('.product-assist-block')
+						.attr('title', 'Peças para este produto')
 						.addClass('has--parts');
 				}
 				// else{

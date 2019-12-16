@@ -60,15 +60,24 @@
 			padding: 0 5px;
 
 			&.parts {
-				display: none;
+				display: flex;
+				opacity: 0.5;
+				cursor: not-allowed;
+
+				.btn-pecas-produto {
+					display: block;
+					margin: 0;
+					width: 100%;
+					font-weight: 400;
+					pointer-events: none;
+				}
 
 				&.has--parts {
-					display: flex;
-
+					opacity: 1;
+					cursor: unset;
 					.btn-pecas-produto {
-						display: block;
-						margin: 0;
-						width: 100%;
+						font-weight: 500;
+						pointer-events: all;
 					}
 				}
 			}
@@ -186,6 +195,7 @@
 				> a {
 					@include rfs(12);
 					color: #9aca3c;
+					font-weight: 500;
 
 					@include breakpoint(small, 'max') {
 						@include rfs(12);
