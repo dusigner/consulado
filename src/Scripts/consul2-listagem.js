@@ -145,7 +145,7 @@ Nitro.controller(
 
 				$moreCatList = $(`
 					<div class="category-list-content">
-						<div class="category-list-menu-mobile">
+						<div class="category-list-menu-mobile container">
 							<h2 class="category-list-title">Categorias</h2>
 							<p class="category-list-voltar">Voltar</p>
 						</div>
@@ -424,7 +424,7 @@ Nitro.controller(
 			});
 		}
 
-		$('body.listagem.busca:not(.neemu) .more-cat').on('click', function() {
+		$('body.listagem.busca:not(.neemu) .more-cat, body.listagem.busca:not(.neemu) .category-list-voltar').on('click', function() {
 			let $modalOverlay = $('body');
 			$(this).toggleClass('-active');
 			$('.category-list-content').toggleClass('-active');

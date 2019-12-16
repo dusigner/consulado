@@ -3,6 +3,7 @@ $upperBarBorder: #E3E1E1;
 $selectorColor: #595453;
 $arrowDown: #403C3B;
 $menuFontColor: #736C6B;
+$titleColor: #5B5B5B;
 $medium: 769px;
 
 
@@ -169,12 +170,58 @@ body.listagem.busca:not(.neemu) {
 
 		&.-active {
 			@include breakpoint('small', 'max') {
-				height: 500px;
+				height: 540px;
 				padding-top: 90px;
 				z-index: 12;
 			}
 			height: 180px;
 			z-index: 11;
+
+			.category-list-menu-mobile {
+				@include breakpoint('small', 'max') {
+					display: block;
+					margin-bottom: 15px;
+					margin-top: 20px;
+					position: relative;
+				}
+
+				&:after {
+					@include breakpoint('small', 'max') {
+						border-bottom: 1px solid #F1F0F0;
+						content: '';
+						display: inline-block;
+						margin-top: 10px;
+						width: 100%;
+					}
+				}
+
+				.category-list-title,
+				.category-list-voltar {
+					margin: 0;
+				}
+
+				.category-list-title {
+					@include rfs(18);
+					color: $titleColor;
+					display: inline-block;
+					text-align: left;
+					width: 48%;
+				}
+
+				.category-list-voltar {
+					@include rfs(12);
+					color: $selectorColor;
+					float: right;
+					font-weight: 500;
+					text-align: right;
+
+					&:before {
+						@include icon-get('left-arrow');
+						font-size: 8px;
+						margin-right: 5px;
+					}
+				}
+			}
 
 			.category-list-search {
 				@include breakpoint('small', 'max') { height: 385px;}
@@ -288,4 +335,8 @@ body.listagem.busca:not(.neemu) {
 
 .overflowHidden {
 	@include breakpoint('small', 'max') { overflow: hidden; }
+}
+
+.category-list-menu-mobile {
+	display: none;
 }
