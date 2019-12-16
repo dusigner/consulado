@@ -69,7 +69,7 @@ $gray-dark: #2E2E2E;
 		margin: 0 auto;
 	}
 	&__icone {
-		height: 60px;
+		height: auto;
 		margin: 0 auto;
 		max-width: 100%;
 		width: 60px;
@@ -78,7 +78,7 @@ $gray-dark: #2E2E2E;
 		@include rfs(14);
 		color: $base-font-color;
 		font-weight: 500;
-		margin: 0 auto;
+		margin: 0 auto 0;
 	}
 	& p {
 		@include rfs(12);
