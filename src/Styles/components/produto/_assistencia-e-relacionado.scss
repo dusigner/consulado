@@ -60,21 +60,21 @@
 			padding: 0 5px;
 
 			&.parts {
+				cursor: not-allowed;
 				display: flex;
 				opacity: 0.5;
-				cursor: not-allowed;
 
 				.btn-pecas-produto {
 					display: block;
-					margin: 0;
-					width: 100%;
 					font-weight: 400;
+					margin: 0;
 					pointer-events: none;
+					width: 100%;
 				}
 
 				&.has--parts {
-					opacity: 1;
 					cursor: unset;
+					opacity: 1;
 					.btn-pecas-produto {
 						font-weight: 500;
 						pointer-events: all;

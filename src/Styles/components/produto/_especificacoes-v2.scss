@@ -368,12 +368,12 @@ $bar-color: #D9D8D8;
 				@include breakpoint('small', 'min') { display: none; }
 				font-size: 8px;
 				position: absolute;
-				right: 8px;
+				right: 10px;
 				top: 5px;
 				transition: transform 0.4s ease 0s;
 			}
 
-			.specActive + i {
+			.specActive .icon {
 				transform: rotate(-180deg) translateY(25%);
 			}
 
@@ -386,7 +386,7 @@ $bar-color: #D9D8D8;
 		&__links {
 			.icon {
 				position: absolute;
-				right: -2px;
+				right: 0;
 			}
 
 			&-title {

@@ -48,6 +48,9 @@
 
 		&:before {
 			@include icon-get('bottom-arrow');
+			@include breakpoint('small', 'max') {
+				@include icon-get('top-arrow');
+			}
 			@include rfs(6px);
 			left: 0;
 			position: absolute;
