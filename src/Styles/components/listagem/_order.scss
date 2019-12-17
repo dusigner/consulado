@@ -85,6 +85,7 @@ body.listagem {
                 border: 1px solid #E3E1E1;
                 border-radius: 20px;
                 display: inline-block;
+                height: 30px;
                 padding: 5px 15px;
                 width: 100%;
 
@@ -136,7 +137,7 @@ body.listagem {
                     @include transition(color, 300);
                     text-decoration: none;
 
-                    &:hover { color: $orange; }
+                    &:hover { font-weight: 700; }
                 }
 
                 @include after-first(5) { display: none; }

@@ -82,11 +82,17 @@ Nitro.controller(
 
 		//TODO: pluralize
 		var orderText = !$('body').is('.busca')
-			? 'Temos ' + $('.resultado-busca-numero:first .value').text() + ' itens'
+			? `Temos ${$('.resultado-busca-numero:first .value').text()} itens`
 			: '';
-		$('.order-title').html('<span class="show-desktop">' + orderText + ' ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>');
-		$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
 
+
+		if ($('body.listagem.busca:not(.neemu)').length > 0) {
+			$('.order-title').html(`<span class="show-desktop"> Se preferir ordene por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>`);
+			$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
+		} else {
+			$('.order-title').html(`<span class="show-desktop"> ${orderText} ordenados por </span><em class="show-desktop">selecione</em> <span class="order-show-mobile">Ordenar por</span>`);
+			$('.order-wrapper').prepend('<span class="txt-filtro"></span> ');
+		}
 
 		var $categoriesList, $dropElements, $moreCatHolder, $moreCatList;
 
@@ -135,13 +141,22 @@ Nitro.controller(
 
 				//console.log('$dropElements', $dropElements);
 
-				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');
+				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Filtre por <span>categoria</span></h5></div>');
 
-				$moreCatList = $('<ul />');
+				$moreCatList = $(`
+					<div class="category-list-content">
+						<div class="category-list-menu-mobile container">
+							<h2 class="category-list-title">Categorias</h2>
+							<p class="category-list-voltar">Voltar</p>
+						</div>
+						<ul class="container category-list-search" />
+					</div>`);
 
-				$moreCatList.append($dropElements.clone());
+				$moreCatList.find('ul').append($dropElements.clone());
 
-				$moreCatHolder.append($moreCatList).appendTo($('.departament-nav > div'));
+				$moreCatHolder.appendTo($('.departament-nav > div'));
+				$('.filter-wrapper').append($moreCatList);
+
 
 				//$dropElements.remove();
 			}
@@ -408,5 +423,27 @@ Nitro.controller(
 				$(this).parents('.listagem-apoio').toggleClass('active');
 			});
 		}
+
+		$('body.listagem.busca:not(.neemu) .more-cat, body.listagem.busca:not(.neemu) .category-list-voltar').on('click', function() {
+			let $modalOverlay = $('body');
+			$(this).toggleClass('-active');
+			$('.category-list-content').toggleClass('-active');
+			$('html').toggleClass('overflowHidden');
+
+			if ($modalOverlay.find('.overlay-listagem').length === 0) {
+				$modalOverlay.append(`
+					<div class="overlay-listagem showOverlay"></div>
+				`);
+
+				$modalOverlay.find('.overlay-listagem').on('click', function() {
+					$('body.listagem.busca:not(.neemu) .more-cat').toggleClass('-active');
+					$('.category-list-content').toggleClass('-active');
+					$('.overlay-listagem').toggleClass('showOverlay');
+					$('html').toggleClass('overflowHidden');
+				});
+			} else {
+				$('.overlay-listagem').toggleClass('showOverlay');
+			}
+		});
 	}
 );
