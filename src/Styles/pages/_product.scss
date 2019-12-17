@@ -252,13 +252,11 @@ div#modal-custom-share {
 }
 
 .cont-prod-details-nav {
-	background-color: #f4f2f1;
-	height: 75px;
-	overflow: hidden;
-	position: relative;
-	width: 100%;
-
+	&.fixed-bar {
+		display: block;
+	}
 	@include breakpoint(small, 'max') { display: none; }
+	display: none;
 }
 
 .btn-pecas-produto {

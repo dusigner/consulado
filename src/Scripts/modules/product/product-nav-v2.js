@@ -3,24 +3,25 @@
 
 Nitro.module('product-nav', function() {
 	var $window = $(window),
-		$afterProd = $('.after-prod'),
 		nav = $('.prod-details-nav'),
 		navItems = nav.find('.item a'),
-		navStart = $afterProd.find('section:visible:first'),
+		navStart = $('#BuyButton .buy-button'),
 		sections = navItems.map(function() {
 			var item = $($(this).attr('href'));
 			if (item.length) {
 				return item;
 			}
 		}),
-		navHeight = nav.outerHeight();
+		navHeight = 100;
 
 	var scrollEvent = $.throttle(function() {
 		var top = $window.scrollTop();
 
-		if (top >= navStart.offset().top) {
+		if (top >= navStart.offset().top + 45) {
+			nav.parent().addClass('fixed-bar');
 			nav.addClass('pinned').css('top', 0);
 		} else {
+			nav.parent().removeClass('fixed-bar');
 			nav.removeClass('pinned').css('top', -70);
 			navItems.removeClass('active');
 		}
@@ -41,7 +42,7 @@ Nitro.module('product-nav', function() {
 	}, 250);
 
 	$(document).on('nav', function(e, nav) {
-		navStart = $afterProd.find('section:visible:first');
+		navStart = $('#BuyButton .buy-button');
 		scrollEvent();
 		navItems
 			.filter('a[href="#' + nav + '"]')
