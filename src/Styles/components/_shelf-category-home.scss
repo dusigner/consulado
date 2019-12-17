@@ -160,6 +160,12 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 				}
 				transform: translate(-35px, 38px);
 			}
+			img[alt='Micro-ondas'] {
+				@include breakpoint('small', 'max') {
+					max-width: 100px;
+				}
+				transform: translate(2px, 28px);
+			}
 		}
 
 		&__text {
@@ -208,6 +214,12 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 						transform: translate(-5px, 5px);
 					}
 					transform: translate(-15px, -8px);
+				}
+				img[alt='Micro-ondas'] {
+					@include breakpoint('small', 'max') {
+						transform: translate(0);
+					}
+					transform: translate(10px, -15px);
 				}
 			}
 		}
