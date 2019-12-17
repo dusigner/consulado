@@ -91,6 +91,8 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 		transition: border-color .3s ease;
 		width: 175px;
 
+		@include breakpoint ('extra-small', 'max') { background-color: #fff; }
+
 		// Coifa
 		&.shelf-coifa { overflow: hidden; }
 
