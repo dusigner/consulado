@@ -104,10 +104,10 @@ body.listagem.busca:not(.neemu) {
 					&::after {
 						@include breakpoint('small', 'max') { display: none }
 						@include icon-get('bottom-arrow');
-						@include responsiveFont(8, 16, true);
 						@include transition(transform, 200);
 						color: $arrowDown;
 						display: block;
+						font-size: 7px;
 						margin-left: 1em;
 						position: absolute;
 						right: 5px;
@@ -260,7 +260,7 @@ body.listagem.busca:not(.neemu) {
 					@include breakpoint('small', 'max') { position: static }
 					@include icon-get('bottom-arrow');
 					color: $arrowDown;
-					font-size: .5rem;
+					font-size: 7px;
 					position: absolute;
 					top: 45%;
 					width: unset;

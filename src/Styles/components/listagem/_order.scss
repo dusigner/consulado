@@ -137,7 +137,7 @@ body.listagem {
                     @include transition(color, 300);
                     text-decoration: none;
 
-                    &:hover { color: $orange; }
+                    &:hover { font-weight: 700; }
                 }
 
                 @include after-first(5) { display: none; }
