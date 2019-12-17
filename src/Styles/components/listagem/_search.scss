@@ -4,6 +4,7 @@ $selectorColor: #595453;
 $arrowDown: #403C3B;
 $menuFontColor: #736C6B;
 $titleColor: #5B5B5B;
+$skuColor: #0FB6DE;
 $medium: 769px;
 
 
@@ -294,10 +295,10 @@ body.listagem.busca:not(.neemu) {
 		&.loading {
 			background-color: $arrowDown !important;
 			color: #fff;
-			font-size: 0;
 		}
 
 		&.loading {
+			font-size: 0;
 			height: 32px;
 			left: 0;
 			position: relative;
@@ -330,6 +331,10 @@ body.listagem.busca:not(.neemu) {
 		@include rfs(12);
 		color: $arrowDown;
 		font-weight: 700;
+	}
+
+	.nome .product-field li {
+		color: $skuColor;
 	}
 }
 
