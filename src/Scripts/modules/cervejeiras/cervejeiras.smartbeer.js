@@ -113,6 +113,43 @@ const Smartbeer = {
 				});
 			}
 		}
+
+		// Checks if product is unavailable
+
+		if ($('.vitrine-smartbeer .product-price-to').text() === 'R$ 0,00') {
+			$('.product-price, .product-skuSelector, .product-buy-button').addClass('hide');
+
+			$('.product-info').append(`
+				<div class="notifyme-title-div" style="">
+					<h3 class="notifymetitle notifyme-title">Produto temporariamente indisponível</h3>
+				</div>
+				<form action="/no-cache/AviseMe.aspx" style="">
+					<fieldset class="sku-notifyme-form notifyme-form">
+						<p>Seja avisado quando estiver disponível
+							<br>Ou entre em contato com nosso
+							<a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a>
+						</p>
+						<input class="sku-notifyme-client-name notifyme-client-name" placeholder="Digite seu nome..." size="20" type="text" name="notifymeClientName" id="notifymeClientName" style="display: inline-block;">
+						<input class="sku-notifyme-client-email notifyme-client-email" placeholder="Digite seu e-mail..." size="20" type="text" name="notifymeClientEmail" id="notifymeClientEmail" style="display: inline-block;">
+						<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">
+						<input class="btn-ok sku-notifyme-button-ok notifyme-button-ok" value="Avise-me" type="button" name="notifymeButtonOK" id="notifymeButtonOK" style="display: inline-block;">
+						<input type="hidden" class="sku-notifyme-skuid notifyme-skuid" name="notifymeIdSku" value="2004086" style="display: none;">
+					</fieldset>
+				</form>
+				<p class="notifyme-loading-message" style="display: none">
+					<span class="sku-notifyme-loading notifyme-loading">Carregando...</span>
+				</p>
+				<fieldset class="success" style="display:none;">
+					<label>
+						<em><span class="sku-notifyme-success notifyme-success">Cadastrado com sucesso, assim que o produto for disponibilizado você receberá um email avisando.</span></em>
+					</label>
+				</fieldset>
+				<fieldset class="error" style="display: none">
+					<label><span class="sku-notifyme-error   notifyme-error"></span></label>
+				</fieldset>
+			</div>
+			`)
+		}
 	}
 };
 
