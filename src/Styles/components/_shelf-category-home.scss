@@ -164,8 +164,7 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 			}
 			img[alt='Micro-ondas'] {
 				@include breakpoint('small', 'max') {
-					max-width: 110px;
-					transform: translate(-8px, 15px);
+					max-width: 100px;
 				}
 				transform: translate(2px, 28px);
 			}
@@ -220,7 +219,7 @@ $bg-shelf-image-white: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy
 				}
 				img[alt='Micro-ondas'] {
 					@include breakpoint('small', 'max') {
-						transform: translate(-10px, -16px);
+						transform: translate(0);
 					}
 					transform: translate(10px, -15px);
 				}
