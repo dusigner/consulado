@@ -32,8 +32,8 @@ Nitro.controller(
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
-		'static-banner',
 		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
+		'static-banner',
 		'interested-shelf',
 		'dataLayer-home-bf'
 	],
