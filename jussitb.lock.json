@@ -1,232 +1,64 @@
 {
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
-            "content": "bc72da7f1674362c91f980bae4542a18",
-            "lastUpdate": "2020-01-08T13:12:55.178Z"
-        },
-        "files/checkout-confirmation-custom.min.js": {
-            "content": "bc72da7f1674362c91f980bae4542a18",
-            "lastUpdate": "2020-01-08T13:12:55.225Z"
+            "content": "6edd3751793fecc2c06e5dbce272911d",
+            "lastUpdate": "2020-01-08T15:08:50.155Z"
         },
         "files/checkout5-custom.css": {
-            "content": "0c043d4f3c587a2c875be86e51c8b472",
-            "lastUpdate": "2020-01-08T13:12:55.261Z"
+            "content": "5fdae42f75b8564fca2fcdb5cd6aa3a0",
+            "lastUpdate": "2020-01-08T15:08:50.160Z"
         },
         "files/checkout5-custom.js": {
-            "content": "dc5c091d64722d57236ba0659a5d9c3d",
-            "lastUpdate": "2020-01-08T13:12:55.290Z"
+            "content": "2ec1dcc25e190c8d7298a72324c421ee",
+            "lastUpdate": "2020-01-08T15:08:50.187Z"
         },
-        "files/checkout5-custom.min.js": {
-            "content": "dc5c091d64722d57236ba0659a5d9c3d",
-            "lastUpdate": "2020-01-08T13:12:55.297Z"
+        "arquivos/checkout-confirmation-custom.min.js": {
+            "content": "6edd3751793fecc2c06e5dbce272911d",
+            "lastUpdate": "2020-01-08T15:08:53.867Z"
         },
-        "files/consul2-account.css": {
-            "content": "a478bbea9acfa4f26a64628de1393ec5",
-            "lastUpdate": "2019-12-16T14:43:56.547Z"
+        "arquivos/checkout5-custom.min.js": {
+            "content": "2ec1dcc25e190c8d7298a72324c421ee",
+            "lastUpdate": "2020-01-08T15:08:53.881Z"
         },
-        "files/consul2-app.min.js": {
-            "content": "f6c9982065f5877eab9c04092a333c22",
-            "lastUpdate": "2020-01-08T13:12:55.320Z"
+        "arquivos/consul2-app.min.js": {
+            "content": "5c73380a7296513d00b00bf6a566d525",
+            "lastUpdate": "2020-01-08T15:08:53.943Z"
         },
-        "files/consul2-bf-2018.css": {
-            "content": "d6cf553878690ca4bb9e2916b1dd782a",
-            "lastUpdate": "2019-12-16T14:43:56.558Z"
+        "arquivos/consul2-cervejeiras.min.js": {
+            "content": "8753292d7b083a94b1f5a2a47eb63b43",
+            "lastUpdate": "2020-01-08T15:08:54.132Z"
         },
-        "files/consul2-bf.css": {
-            "content": "93df178d93ba18c24c3b972ece50de26",
-            "lastUpdate": "2019-12-16T14:43:56.566Z"
+        "arquivos/consul2-cta.min.js": {
+            "content": "76f1c33f30a6f397004241e645c611a9",
+            "lastUpdate": "2020-01-08T15:08:54.139Z"
         },
-        "files/consul2-cervejeiras.css": {
-            "content": "9472bb21670441a87562bce2e6afc3de",
-            "lastUpdate": "2020-01-08T13:12:55.327Z"
+        "arquivos/consul2-home.min.js": {
+            "content": "9cae2062cb90b10c85733c25b6f45fbf",
+            "lastUpdate": "2020-01-08T15:08:54.154Z"
         },
-        "files/consul2-cervejeiras.min.js": {
-            "content": "bba3a53f6930dc73aa85f66b933a20c3",
-            "lastUpdate": "2020-01-08T13:12:55.332Z"
+        "arquivos/consul2-linha-embutir.min.js": {
+            "content": "230e920595af4d7133141b11c4ce0767",
+            "lastUpdate": "2020-01-08T15:08:54.215Z"
         },
-        "files/consul2-coupon.css": {
-            "content": "5681d7bc8c2b894d1fbb5e76fcf8a8d7",
-            "lastUpdate": "2019-12-16T14:43:56.585Z"
+        "arquivos/consul2-listagem-embutidos.min.js": {
+            "content": "353eaf906dcdf51e95f706699f0eaae1",
+            "lastUpdate": "2020-01-08T15:08:54.220Z"
         },
-        "files/consul2-cta.min.js": {
-            "content": "2131ea589bf687dc4b9ac2e162d76916",
-            "lastUpdate": "2020-01-08T13:12:55.361Z"
+        "arquivos/consul2-listagem.min.js": {
+            "content": "1b22aa32e8f7f82b35099bf5b54279d2",
+            "lastUpdate": "2020-01-08T15:08:54.329Z"
         },
-        "files/consul2-fonts.css": {
-            "content": "30af80459c5d644a3c0be84fef72246c",
-            "lastUpdate": "2019-12-16T14:43:56.599Z"
+        "arquivos/consul2-myorders.min.js": {
+            "content": "79f4c39dfc095cc5854eb242c3acdf89",
+            "lastUpdate": "2020-01-08T15:08:54.437Z"
         },
-        "files/consul2-footer-bf2019.css": {
-            "content": "1031eff50c0ab6b1157c5e9c435c8ef7",
-            "lastUpdate": "2019-12-16T14:43:56.605Z"
-        },
-        "files/consul2-header-bf2019.css": {
-            "content": "2ee6d3c3b21ca943107a82baaf0d5d96",
-            "lastUpdate": "2019-12-16T14:43:56.614Z"
-        },
-        "files/consul2-home-bf2019.css": {
-            "content": "4c7602429326c4f1e0e36235a4edcfa8",
-            "lastUpdate": "2020-01-08T13:12:55.392Z"
-        },
-        "files/consul2-home.css": {
-            "content": "c85fbba5f6fa9ed09a0d14914f05c913",
-            "lastUpdate": "2020-01-08T13:12:55.395Z"
-        },
-        "files/consul2-home.min.js": {
-            "content": "cd4937793dd9c02aafec03a245673c52",
-            "lastUpdate": "2020-01-08T13:12:55.441Z"
-        },
-        "files/consul2-icons.css": {
-            "content": "ae93c4b15b3cde21bddf23f782563c3a",
-            "lastUpdate": "2019-12-16T14:43:56.642Z"
-        },
-        "files/consul2-institucional.css": {
-            "content": "8e4da91b1ee63eba7da474fd3cb70ebd",
-            "lastUpdate": "2020-01-08T13:12:55.480Z"
-        },
-        "files/consul2-linha-embutir.css": {
-            "content": "bcc6220fd80b0dabaf8a111ba7baae6e",
-            "lastUpdate": "2019-12-16T14:43:56.656Z"
-        },
-        "files/consul2-linha-embutir.min.js": {
-            "content": "b521c2cc1a97e688902b0faff1c89779",
-            "lastUpdate": "2020-01-08T13:12:55.597Z"
-        },
-        "files/consul2-listagem-embutidos.css": {
-            "content": "58130a49cf22e86feb5bb6bc857bf4b1",
-            "lastUpdate": "2020-01-08T13:12:55.622Z"
-        },
-        "files/consul2-listagem-embutidos.min.js": {
-            "content": "c9b2808bfd480ff770b996f63886919e",
-            "lastUpdate": "2020-01-08T13:12:55.628Z"
-        },
-        "files/consul2-listagem.css": {
-            "content": "f261e74c9856909df4852e33a89fb731",
-            "lastUpdate": "2020-01-08T13:12:55.652Z"
-        },
-        "files/consul2-listagem.min.js": {
-            "content": "0004389d72688d8c4a341b787a730069",
-            "lastUpdate": "2020-01-08T13:12:55.657Z"
-        },
-        "files/consul2-login.css": {
-            "content": "ef6bb1b660181c9afcca24fe8c94dea3",
-            "lastUpdate": "2020-01-08T13:12:55.659Z"
-        },
-        "files/consul2-myorders.css": {
-            "content": "5df0ab7ae28dd651b8f65f0170c72365",
-            "lastUpdate": "2019-12-16T14:43:56.708Z"
-        },
-        "files/consul2-myorders.min.js": {
-            "content": "fd3f97b55487050d713b1f9918292168",
-            "lastUpdate": "2020-01-08T13:12:55.663Z"
-        },
-        "files/consul2-produto-v2.css": {
-            "content": "5c1ff037e96e990d7d1dfee06f19d26f",
-            "lastUpdate": "2020-01-08T13:12:55.687Z"
-        },
-        "files/consul2-produto-v2.min.js": {
-            "content": "0526789c83e5fa4b4c8d48d6f0d4b976",
-            "lastUpdate": "2020-01-08T13:12:55.692Z"
-        },
-        "files/consul2-produto.css": {
-            "content": "e0b97c6800ab1b1b4209afe92e7ffc3e",
-            "lastUpdate": "2020-01-08T13:12:55.695Z"
-        },
-        "files/consul2-produto.min.js": {
-            "content": "0fcdf07946f90d82ae4f4c9da4a8b485",
-            "lastUpdate": "2020-01-08T13:12:55.721Z"
-        },
-        "files/consul2-style.css": {
-            "content": "dc15673d4d095199f91e7ca50e437fe3",
-            "lastUpdate": "2020-01-08T13:12:55.726Z"
-        },
-        "arquivos/consul-icons.svg.css": {
-            "content": "d41d8cd98f00b204e9800998ecf8427e",
-            "lastUpdate": "2019-12-16T14:43:59.095Z"
-        },
-        "arquivos/consulcoheadline_std_bd-webfont.eot.css": {
-            "content": "13b2a15696384e6546d1ebc17469be29",
-            "lastUpdate": "2019-12-16T14:43:59.107Z"
-        },
-        "arquivos/consulcoheadline_std_bd-webfont.svg.css": {
-            "content": "7c1edfcd005b803656a6ce5771639655",
-            "lastUpdate": "2019-12-16T14:43:59.119Z"
-        },
-        "arquivos/consulcoheadline_std_bd-webfont.ttf.css": {
-            "content": "5d20b3bf4856b474497772b93ca5edd4",
-            "lastUpdate": "2019-12-16T14:43:59.129Z"
-        },
-        "arquivos/consulcoheadline_std_bd-webfont.woff.css": {
-            "content": "a24fb1d6623e1a879bd6ce2410f8620c",
-            "lastUpdate": "2019-12-16T14:43:59.135Z"
-        },
-        "arquivos/consulcoheadline_std_bd-webfont.woff2.css": {
-            "content": "ebd6a9b6e9f949cea33b3765464afcc1",
-            "lastUpdate": "2019-12-16T14:43:59.143Z"
-        },
-        "arquivos/consulcoheadline_std_lt-webfont.eot.css": {
-            "content": "1d3accb3c60bf790aa55c45635d7ff5b",
-            "lastUpdate": "2019-12-16T14:43:59.149Z"
-        },
-        "arquivos/consulcoheadline_std_lt-webfont.svg.css": {
-            "content": "9310afe71921eccdec8f1c2295a40d6a",
-            "lastUpdate": "2019-12-16T14:43:59.156Z"
-        },
-        "arquivos/consulcoheadline_std_lt-webfont.ttf.css": {
-            "content": "0b5ea22ef1f79c158550b50e688ba445",
-            "lastUpdate": "2019-12-16T14:43:59.165Z"
-        },
-        "arquivos/consulcoheadline_std_lt-webfont.woff.css": {
-            "content": "bef9063956e6c10b072ee6d8c97281b6",
-            "lastUpdate": "2019-12-16T14:43:59.171Z"
-        },
-        "arquivos/consulcoheadline_std_lt-webfont.woff2.css": {
-            "content": "9917e5cbf336138d8aa0bfe3f364be5e",
-            "lastUpdate": "2019-12-16T14:43:59.180Z"
-        },
-        "arquivos/consulcoheadline_std_rg-webfont.eot.css": {
-            "content": "94a294365dcb7cbe4e1c54b39e384091",
-            "lastUpdate": "2019-12-16T14:43:59.186Z"
-        },
-        "arquivos/consulcoheadline_std_rg-webfont.svg.css": {
-            "content": "929f9f03b1b8023348e5990709d61a25",
-            "lastUpdate": "2019-12-16T14:43:59.193Z"
-        },
-        "arquivos/consulcoheadline_std_rg-webfont.ttf.css": {
-            "content": "b630c09e3ee56c6a0d05fa6bc4889b02",
-            "lastUpdate": "2019-12-16T14:43:59.200Z"
-        },
-        "arquivos/consulcoheadline_std_rg-webfont.woff.css": {
-            "content": "9bb77b94b823cbe8fbe3b7899d297e28",
-            "lastUpdate": "2019-12-16T14:43:59.207Z"
-        },
-        "arquivos/consulcoheadline_std_rg-webfont.woff2.css": {
-            "content": "179f798eb0d872074c48067d047f3dd5",
-            "lastUpdate": "2019-12-16T14:43:59.216Z"
-        },
-        "arquivos/whirlpool2.eot.css": {
-            "content": "af1e9544d9a341d4b882d3e6b9534fdc",
-            "lastUpdate": "2019-12-16T14:43:59.222Z"
-        },
-        "arquivos/whirlpool2.svg.css": {
-            "content": "f338b6a98422f3bca293f6aa1e6a3da5",
-            "lastUpdate": "2019-12-16T14:43:59.232Z"
-        },
-        "arquivos/whirlpool2.ttf.css": {
-            "content": "e7639a56979c74776fa35cd1bdc03968",
-            "lastUpdate": "2019-12-16T14:43:59.237Z"
-        },
-        "arquivos/whirlpool2.woff.css": {
-            "content": "3af078c9908279729c57b8ccf0fcb140",
-            "lastUpdate": "2019-12-16T14:43:59.246Z"
-        },
-        "arquivos/whirlpool2.woff2.css": {
-            "content": "e122b1e5d3abd6c496bdac0129e700df",
-            "lastUpdate": "2019-12-16T14:43:59.252Z"
+        "arquivos/consul2-produto.min.js": {
+            "content": "8b9320957ceabdb55096ad4f6959a8a4",
+            "lastUpdate": "2020-01-08T15:08:54.453Z"
         },
         "0-consul-footer-2019-after": {
-            "content": "49c1ec1c742597f9c4be6c4bdf0abcf1",
-            "lastUpdate": "2020-01-08T13:12:58.976Z"
+            "content": "bebdfe826585a9667bd4648fb24567f1",
+            "lastUpdate": "2020-01-08T15:08:56.060Z"
         },
         "0-consul-footer-2019-atendimento": {
             "content": "534b7381ab8e87f611a67eb13b751afe",
@@ -249,16 +81,16 @@
             "lastUpdate": "2019-12-16T14:44:01.465Z"
         },
         "0-consul-footer": {
-            "content": "1bc9039f2aba4aa86708955a641ce70a",
-            "lastUpdate": "2020-01-08T13:12:59.026Z"
+            "content": "9b3a9edcc79b55ce2700bd6c60969421",
+            "lastUpdate": "2020-01-08T15:08:56.066Z"
         },
         "0-consul-head-content": {
-            "content": "e631470e27cf0d8c08d6c55eaa1520e3",
-            "lastUpdate": "2020-01-08T13:12:59.060Z"
+            "content": "77d1d80ac09a6d0f5ea32a96b0c53890",
+            "lastUpdate": "2020-01-08T15:08:56.069Z"
         },
         "0-consul-header-landing-aniversario": {
             "content": "0a1034578528692c332dbb04da134a2f",
-            "lastUpdate": "2019-12-16T14:44:01.487Z"
+            "lastUpdate": "2020-01-07T19:01:13.339Z"
         },
         "0-consul-header": {
             "content": "83d171d80e74e6ef7c7e9be1341b766b",
@@ -273,116 +105,112 @@
             "lastUpdate": "2019-12-16T14:44:01.509Z"
         },
         "0-consul-busca-chaordic": {
-            "content": "9bce3311bfbe465a74a68567ef1f1d68",
-            "lastUpdate": "2020-01-08T13:13:02.647Z"
+            "content": "2695ca352bd8ab346f156143e5e35312",
+            "lastUpdate": "2020-01-08T15:08:58.606Z"
         },
         "0-consul-busca-chaordic2": {
-            "content": "cbce91c2a666717dbc398f809bc5ce24",
-            "lastUpdate": "2020-01-08T13:13:02.654Z"
+            "content": "24dac773a9c5be348513eb244858ae9f",
+            "lastUpdate": "2020-01-08T15:08:58.610Z"
         },
         "0-consul-busca": {
-            "content": "2545d7460dbee037e49d8f8bfbb41691",
-            "lastUpdate": "2020-01-08T13:13:02.691Z"
+            "content": "e52ac6c34d24ab0a82d9e29c2f2d96f9",
+            "lastUpdate": "2020-01-08T15:08:58.613Z"
         },
         "0-consul-calculadora-btu": {
-            "content": "bf9d71de51ad755af39655d1d3ba44c2",
-            "lastUpdate": "2020-01-08T13:13:02.720Z"
+            "content": "3fb3ee6a54674b6a694f795a6865cfa3",
+            "lastUpdate": "2020-01-08T15:08:58.620Z"
         },
         "0-consul-cta": {
-            "content": "46ffac3908ae16a608bbf407f3dd983d",
-            "lastUpdate": "2020-01-08T13:13:02.726Z"
+            "content": "cffccfd8de896fe6a11c37ce19612854",
+            "lastUpdate": "2020-01-08T15:08:58.679Z"
         },
         "0-consul-home-BF-2019": {
-            "content": "1f9d79b8cfc58dace57a173e0327a3cc",
-            "lastUpdate": "2020-01-08T13:13:02.750Z"
+            "content": "45e5d55af9e919be6dcacdf2e31ed5ec",
+            "lastUpdate": "2020-01-08T15:08:58.749Z"
         },
         "0-consul-home-chaordic": {
             "content": "290133e6cb99daeddbb0a15f0645984e",
             "lastUpdate": "2019-12-16T14:44:06.534Z"
         },
         "0-consul-home-pj": {
-            "content": "7c6de6ad8ef3eb4f6a9c412b97edd3a5",
-            "lastUpdate": "2020-01-08T13:13:02.754Z"
+            "content": "a52c556db44e3c4666cd613bb082f51a",
+            "lastUpdate": "2020-01-08T15:08:58.811Z"
         },
         "0-consul-home": {
-            "content": "e53b23247b8d800c7df7a6a933e67665",
-            "lastUpdate": "2020-01-08T13:13:02.784Z"
+            "content": "72cfffdfd1b1621f2047048cd36cf4d7",
+            "lastUpdate": "2020-01-08T15:08:58.814Z"
         },
         "0-consul-institucional": {
-            "content": "1d60b00bb5486ef3d7e1362e5548bf16",
-            "lastUpdate": "2020-01-08T13:13:02.787Z"
+            "content": "d9f335d875bfc9efb975180f2a0b66ce",
+            "lastUpdate": "2020-01-08T15:08:58.864Z"
         },
         "0-consul-landing-cwh14ab": {
             "content": "0f2c58dc1af4039260ccc23b84059fdf",
             "lastUpdate": "2019-12-16T14:44:06.561Z"
         },
         "0-consul-linha-embutir": {
-            "content": "03265ba569d5f1060d81423010aa1a2f",
-            "lastUpdate": "2020-01-08T13:13:02.817Z"
+            "content": "920f47b768aea0f2913c579a1298b9ff",
+            "lastUpdate": "2020-01-08T15:08:58.875Z"
         },
         "0-consul-listagem-ar-condicionado": {
-            "content": "85bc915f9893da4ea955b6ce4d5ae457",
-            "lastUpdate": "2020-01-08T13:13:02.820Z"
+            "content": "5b329b6172649d26a0342e2e5cb986d4",
+            "lastUpdate": "2020-01-08T15:08:58.924Z"
         },
         "0-consul-listagem-embutidos": {
-            "content": "5630ec55d1e2fbad75bf0b61104a5b1d",
-            "lastUpdate": "2020-01-08T13:13:02.851Z"
+            "content": "a7ec6b91c2e91ae62a91ee80db21bf33",
+            "lastUpdate": "2020-01-08T15:08:58.977Z"
         },
         "0-consul-listagem-smartbeer-2": {
-            "content": "43b34cbd6b6ae9c28667a399a4e91e3a",
-            "lastUpdate": "2020-01-08T13:13:02.854Z"
+            "content": "2645d4e6745fcac4ad586c40c6bfa8c3",
+            "lastUpdate": "2020-01-08T15:08:58.981Z"
         },
         "0-consul-listagem": {
-            "content": "bea91cf153d4fa5bd8cd9f9392b5b203",
-            "lastUpdate": "2020-01-08T13:13:02.884Z"
+            "content": "b7e92a51748489bd641a527b1c8f1923",
+            "lastUpdate": "2020-01-08T15:08:59.041Z"
         },
         "0-consul-login": {
-            "content": "3843d2a5578d737e860f5b25bc51775a",
-            "lastUpdate": "2020-01-08T13:13:02.887Z"
+            "content": "fd22965c717b5ea330c7ca43a0fe06e9",
+            "lastUpdate": "2020-01-08T15:08:59.045Z"
         },
         "0-consul-meuspedidos": {
-            "content": "a29855119862524680c488e31756cbb2",
-            "lastUpdate": "2020-01-08T13:13:02.917Z"
+            "content": "2b14d916c7d49b93eeb39f133a3a4d1d",
+            "lastUpdate": "2020-01-08T15:08:59.048Z"
         },
         "0-consul-minhaconta": {
-            "content": "f02dd196f67315cbb98e81724d44e04d",
-            "lastUpdate": "2020-01-08T13:13:02.920Z"
+            "content": "a7eeb9b342fcc03be6e04c0958a2dfbd",
+            "lastUpdate": "2020-01-08T15:08:59.059Z"
         },
         "0-consul-minicart": {
             "content": "9a64cdaf2de672b917e58e378eccc313",
-            "lastUpdate": "2019-12-16T14:44:06.626Z"
+            "lastUpdate": "2020-01-07T19:01:18.304Z"
         },
         "0-consul-neemu": {
-            "content": "eddee75bc389933463375c6bcbbd169a",
-            "lastUpdate": "2020-01-08T13:13:02.926Z"
+            "content": "af015fe95ba95e80476cf52fd8b7eef8",
+            "lastUpdate": "2020-01-08T15:08:59.129Z"
         },
         "0-consul-pedidos": {
-            "content": "4315e4d4fcde8c89a643921f04fa8aee",
-            "lastUpdate": "2020-01-08T13:13:02.952Z"
+            "content": "73933a787a8cd9383a827a3230626197",
+            "lastUpdate": "2020-01-08T15:08:59.133Z"
         },
         "0-consul-produto-kit": {
-            "content": "7761a49703fd6b8762333fa62c9b51fe",
-            "lastUpdate": "2020-01-08T13:13:02.956Z"
+            "content": "7a46d459238a09cf04597d09740a93c8",
+            "lastUpdate": "2020-01-08T15:08:59.274Z"
         },
         "0-consul-produto-produtos-adicionais": {
-            "content": "bda4bfbf3de3e15f9af76acaeb828056",
-            "lastUpdate": "2020-01-08T13:13:02.985Z"
+            "content": "9573fcd31f84f08b1fc78f9264263dcf",
+            "lastUpdate": "2020-01-08T15:08:59.281Z"
         },
         "0-consul-produto-quiz": {
-            "content": "f68d385181dfc37c53361b0a6c92cc8a",
-            "lastUpdate": "2020-01-08T13:13:02.988Z"
+            "content": "0d166561c2a317be8434babdddeab473",
+            "lastUpdate": "2020-01-08T15:08:59.348Z"
         },
         "0-consul-produto-refri": {
-            "content": "205559ae88bc1607724d76cae5e34adb",
-            "lastUpdate": "2020-01-08T13:13:03.098Z"
-        },
-        "0-consul-produto-v2": {
-            "content": "be90851b0d6ff55f33e99f37a5070d6c",
-            "lastUpdate": "2020-01-08T13:13:03.131Z"
+            "content": "918640c81dd058199f0d791e5be88142",
+            "lastUpdate": "2020-01-08T15:08:59.413Z"
         },
         "0-consul-produto": {
-            "content": "f2a985b1c7411064611099fc91644f64",
-            "lastUpdate": "2020-01-08T13:13:03.135Z"
+            "content": "5fa25ea8c3a85f50d1e43e7872ac7862",
+            "lastUpdate": "2020-01-08T15:08:59.511Z"
         },
         "0-consul-destaque": {
             "content": "d7f915c8e65e231b6c1bb3bc35dc37e5",
@@ -418,7 +246,171 @@
         },
         "0-shelf-blackfriday-2018": {
             "content": "7c31fe6c4a3b6934544a0c9dd9b8f8be",
-            "lastUpdate": "2019-12-16T14:44:10.512Z"
+            "lastUpdate": "2019-10-25T17:08:09.634Z"
+        },
+        "arquivos/checkout5-custom.css": {
+            "content": "5fdae42f75b8564fca2fcdb5cd6aa3a0",
+            "lastUpdate": "2020-01-08T15:08:53.871Z"
+        },
+        "arquivos/consul2-account.css": {
+            "content": "a478bbea9acfa4f26a64628de1393ec5",
+            "lastUpdate": "2019-11-21T19:33:26.739Z"
+        },
+        "arquivos/consul2-bf-2018.css": {
+            "content": "d6cf553878690ca4bb9e2916b1dd782a",
+            "lastUpdate": "2020-01-07T19:01:11.855Z"
+        },
+        "arquivos/consul2-bf.css": {
+            "content": "93df178d93ba18c24c3b972ece50de26",
+            "lastUpdate": "2020-01-07T19:01:11.861Z"
+        },
+        "arquivos/consul2-cervejeiras.css": {
+            "content": "c56d85997440b33f5381b25a0f672b12",
+            "lastUpdate": "2020-01-07T19:01:11.868Z"
+        },
+        "arquivos/consul2-coupon.css": {
+            "content": "5681d7bc8c2b894d1fbb5e76fcf8a8d7",
+            "lastUpdate": "2019-10-25T17:08:38.860Z"
+        },
+        "arquivos/consul2-fonts.css": {
+            "content": "30af80459c5d644a3c0be84fef72246c",
+            "lastUpdate": "2019-10-25T17:08:38.866Z"
+        },
+        "arquivos/consul2-footer-bf2019.css": {
+            "content": "1031eff50c0ab6b1157c5e9c435c8ef7",
+            "lastUpdate": "2019-10-25T17:08:38.872Z"
+        },
+        "arquivos/consul2-header-bf2019.css": {
+            "content": "2ee6d3c3b21ca943107a82baaf0d5d96",
+            "lastUpdate": "2020-01-07T19:01:11.892Z"
+        },
+        "arquivos/consul2-home-bf2019.css": {
+            "content": "4049f1fd4744e09d16f55052c9f488da",
+            "lastUpdate": "2020-01-08T15:08:54.147Z"
+        },
+        "arquivos/consul2-home.css": {
+            "content": "153d59d010ac1dd89de44f89ec3431a8",
+            "lastUpdate": "2020-01-08T15:08:54.151Z"
+        },
+        "arquivos/consul2-icons.css": {
+            "content": "ae93c4b15b3cde21bddf23f782563c3a",
+            "lastUpdate": "2019-11-18T13:27:13.696Z"
+        },
+        "arquivos/consul2-institucional.css": {
+            "content": "d7140f8a849a206a0604f8ce8ba44bdd",
+            "lastUpdate": "2020-01-08T15:08:54.162Z"
+        },
+        "arquivos/consul2-linha-embutir.css": {
+            "content": "bcc6220fd80b0dabaf8a111ba7baae6e",
+            "lastUpdate": "2020-01-07T19:01:11.924Z"
+        },
+        "arquivos/consul2-listagem-embutidos.css": {
+            "content": "17e1730bb8d61ed1d4a1880ace289c56",
+            "lastUpdate": "2020-01-07T19:01:11.939Z"
+        },
+        "arquivos/consul2-listagem.css": {
+            "content": "be470b305b8f775752fb747fb251ca03",
+            "lastUpdate": "2020-01-08T15:08:54.269Z"
+        },
+        "arquivos/consul2-login.css": {
+            "content": "837ac8f149043ccafaf876dd07ec9918",
+            "lastUpdate": "2020-01-08T15:08:54.368Z"
+        },
+        "arquivos/consul2-myorders.css": {
+            "content": "5df0ab7ae28dd651b8f65f0170c72365",
+            "lastUpdate": "2020-01-07T19:01:11.975Z"
+        },
+        "arquivos/consul2-produto.css": {
+            "content": "4cfbbd8055dfb75f54803745e2c8e813",
+            "lastUpdate": "2020-01-08T15:08:54.450Z"
+        },
+        "arquivos/consul2-style.css": {
+            "content": "338fc475e8ff12d0e76ae2be69131805",
+            "lastUpdate": "2020-01-08T15:08:54.529Z"
+        },
+        "arquivos/consul-icons.svg.css": {
+            "content": "d41d8cd98f00b204e9800998ecf8427e",
+            "lastUpdate": "2019-10-29T13:55:15.476Z"
+        },
+        "arquivos/consulcoheadline_std_bd-webfont.eot.css": {
+            "content": "13b2a15696384e6546d1ebc17469be29",
+            "lastUpdate": "2019-10-29T13:55:15.510Z"
+        },
+        "arquivos/consulcoheadline_std_bd-webfont.svg.css": {
+            "content": "7c1edfcd005b803656a6ce5771639655",
+            "lastUpdate": "2019-10-29T13:55:15.512Z"
+        },
+        "arquivos/consulcoheadline_std_bd-webfont.ttf.css": {
+            "content": "5d20b3bf4856b474497772b93ca5edd4",
+            "lastUpdate": "2019-10-29T13:55:15.516Z"
+        },
+        "arquivos/consulcoheadline_std_bd-webfont.woff.css": {
+            "content": "a24fb1d6623e1a879bd6ce2410f8620c",
+            "lastUpdate": "2019-10-29T13:55:15.520Z"
+        },
+        "arquivos/consulcoheadline_std_bd-webfont.woff2.css": {
+            "content": "ebd6a9b6e9f949cea33b3765464afcc1",
+            "lastUpdate": "2019-10-29T13:55:15.521Z"
+        },
+        "arquivos/consulcoheadline_std_lt-webfont.eot.css": {
+            "content": "1d3accb3c60bf790aa55c45635d7ff5b",
+            "lastUpdate": "2019-10-29T13:55:15.523Z"
+        },
+        "arquivos/consulcoheadline_std_lt-webfont.svg.css": {
+            "content": "9310afe71921eccdec8f1c2295a40d6a",
+            "lastUpdate": "2019-10-29T13:55:15.528Z"
+        },
+        "arquivos/consulcoheadline_std_lt-webfont.ttf.css": {
+            "content": "0b5ea22ef1f79c158550b50e688ba445",
+            "lastUpdate": "2019-10-29T13:55:15.529Z"
+        },
+        "arquivos/consulcoheadline_std_lt-webfont.woff.css": {
+            "content": "bef9063956e6c10b072ee6d8c97281b6",
+            "lastUpdate": "2019-10-29T13:55:15.530Z"
+        },
+        "arquivos/consulcoheadline_std_lt-webfont.woff2.css": {
+            "content": "9917e5cbf336138d8aa0bfe3f364be5e",
+            "lastUpdate": "2019-10-29T13:55:15.532Z"
+        },
+        "arquivos/consulcoheadline_std_rg-webfont.eot.css": {
+            "content": "94a294365dcb7cbe4e1c54b39e384091",
+            "lastUpdate": "2019-10-29T13:55:15.533Z"
+        },
+        "arquivos/consulcoheadline_std_rg-webfont.svg.css": {
+            "content": "929f9f03b1b8023348e5990709d61a25",
+            "lastUpdate": "2019-10-29T13:55:15.534Z"
+        },
+        "arquivos/consulcoheadline_std_rg-webfont.ttf.css": {
+            "content": "b630c09e3ee56c6a0d05fa6bc4889b02",
+            "lastUpdate": "2019-10-29T13:55:15.535Z"
+        },
+        "arquivos/consulcoheadline_std_rg-webfont.woff.css": {
+            "content": "9bb77b94b823cbe8fbe3b7899d297e28",
+            "lastUpdate": "2019-10-29T13:55:15.536Z"
+        },
+        "arquivos/consulcoheadline_std_rg-webfont.woff2.css": {
+            "content": "179f798eb0d872074c48067d047f3dd5",
+            "lastUpdate": "2019-10-29T13:55:15.537Z"
+        },
+        "arquivos/whirlpool2.eot.css": {
+            "content": "af1e9544d9a341d4b882d3e6b9534fdc",
+            "lastUpdate": "2019-10-29T13:55:15.538Z"
+        },
+        "arquivos/whirlpool2.svg.css": {
+            "content": "f338b6a98422f3bca293f6aa1e6a3da5",
+            "lastUpdate": "2019-10-29T13:55:15.540Z"
+        },
+        "arquivos/whirlpool2.ttf.css": {
+            "content": "e7639a56979c74776fa35cd1bdc03968",
+            "lastUpdate": "2019-10-29T13:55:15.541Z"
+        },
+        "arquivos/whirlpool2.woff.css": {
+            "content": "3af078c9908279729c57b8ccf0fcb140",
+            "lastUpdate": "2019-10-29T13:55:15.543Z"
+        },
+        "arquivos/whirlpool2.woff2.css": {
+            "content": "e122b1e5d3abd6c496bdac0129e700df",
+            "lastUpdate": "2019-10-29T13:55:15.546Z"
         }
     }
 }

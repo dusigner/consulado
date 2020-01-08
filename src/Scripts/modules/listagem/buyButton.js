@@ -57,7 +57,7 @@ const setSKUselector = () => {
 			if (produtoIndisponivel) {
 				textButton = 'Produto indisponível';
 				productLink.find('.prod-info').after(`
-					<a class="sku_buy -not-available style="display: none">${textButton}</a>
+					<a class="sku_buy -not-available" style="display: none">${textButton}</a>
 				`);
 			} else {
 				textButton = 'Comprar já';
@@ -94,6 +94,12 @@ const setSKUselector = () => {
 				}
 			});
 		}
+
+		const skuCod = $(this).parents('article').find('.detalhes a').attr('href').split('/p')[0].split('-').pop();
+		const skuCodText = $(this).parents('article').find('.detalhes .nome span ul li');
+
+		skuCodText.text() === '' &&
+			skuCodText.text(skuCod.toUpperCase());
 	});
 
 	if ($('body').hasClass('listagem')) {
