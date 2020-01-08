@@ -1,13 +1,13 @@
 {
 	"name": "consul",
 	"accountName": "consul",
-	"version": "v6.83.21",
+	"version": "v6.83.27",
 	"author": "Jussi Platform Team",
 	"private": true,
 	"secureUrl": true,
 	"proxyPort": 3000,
 	"dependencies": {
-		"bootstrap": "^4.3.1",
+		"bootstrap": "4.2.1",
 		"bootstrap-sass": "^3.4.1",
 		"clipboard": "^1.7.1",
 		"enquire.js": "^2.1.6",
