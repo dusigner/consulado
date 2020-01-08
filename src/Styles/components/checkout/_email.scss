@@ -1,0 +1,213 @@
+$textColor: #403C3B;
+$textColorLittle: #736C6B;
+$textColor3: #595453;
+$bgcolor: #FAF9F9;
+$red-error: #9B1C29;
+
+body {
+	.client-pre-email {
+		border-top: none;
+
+		&-h {
+			margin-top: 60px;
+		}
+
+		label {
+			@include rfs(24);
+			color: $textColor;
+			font-weight: bold;
+			line-height: 1;
+			margin: 0;
+			text-align: center;
+
+			&:before {
+				background: url('/arquivos/icon-mail-checkout.png') no-repeat top;
+				background-size: contain;
+				content: '';
+				display: inline-block;
+				height: 72px;
+				left: 49%;
+				position: absolute;
+				top: 15px;
+				transform: translateX(-50%);
+				width: 72px;
+			}
+
+			span,
+			small {
+				display: block;
+			}
+
+			small {
+				@include rfs(14);
+				color: $textColorLittle;
+				margin-top: 12px;
+			}
+
+			span {
+				@include breakpoint('small', 'max') {
+					@include rfs(18);
+					display: inline-block;
+					text-align: center;
+					width: 245px;
+				}
+			}
+		}
+
+		.link-cart {
+			@include breakpoint('small', 'max') {
+				float: none;
+			}
+		}
+		.client-email {
+			@include breakpoint('small', 'max') {
+				width: 264px !important;
+			}
+			float: none;
+			margin: 30px auto 0;
+			width: 320px!important;
+
+			&:before {
+				color: $textColor3;
+				content: 'Digite seu e-mail';
+				font-family: 'Open sans';
+				text-align: center;
+			}
+
+			#client-pre-email {
+				@include breakpoint('small', 'max') {
+					margin: 15px auto 20px;
+					width: 264px !important;
+				}
+				@include rfs(12);
+				color: $textColor3;
+				display: block;
+				font-weight: 500;
+				height: 45px;
+				margin: 0 auto;
+				padding-right: 20px;
+				position: relative;
+				text-align: center;
+				width: 300px;
+
+				&::placeholder {
+					@include rfs(12);
+					color: #D9D8D8;
+					position: absolute;
+					text-align: center;
+					top: 50%;
+				}
+
+				&.error {
+					border-color: $red-error;
+					box-shadow: none;
+				}
+			}
+			#btn-client-pre-email {
+				@include breakpoint('small', 'max') {
+					height: 32px;
+					margin: 0 auto;
+					right: 50%;
+					transform: translateX(50%);
+					width: 140px;
+				}
+				background-color: $green;
+				border: 2px solid $green;
+				display: block;
+				height: 32px;
+				line-height: 0;
+				margin: 20px auto 0;
+				padding: 0 !important;
+				position: relative;
+				width: 140px;
+
+				span {
+					@include rfs(12);
+					color: #fff;
+					display: inline-block;
+					font-weight: 500;
+					margin: 0 auto;
+					text-align: center;
+					width: 100px;
+				}
+			}
+		}
+
+		.emailInfo {
+			@include breakpoint('small', 'max') {
+				@include breakpoint('extra-small', 'max') { width: 100%; }
+				padding: 20px 20px 15px 35px;
+				width: 400px;
+
+			}
+			background-color: $bgcolor;
+			margin: 50px auto 0;
+			padding: 30px 85px 30px 55px;
+			width: 470px;
+
+			h3 {
+				@include rfs(12);
+				color: $textColor;
+				font-weight: 500;
+				margin-top: 0;
+			}
+
+			.icon-lock {
+				display: none !important;
+			}
+
+			.icon-ok {
+				&:before {
+					color: $textColor;
+					font-size: 7px;
+					height: 10px;
+					line-height: 1;
+					position: absolute;
+					top: 63%;
+					transform: translateY(-50%);
+				}
+			}
+
+			span {
+				@include rfs(12);
+				color: $textColorLittle;
+				font-family: 'Open sans';
+				padding-left: 12px;
+			}
+		}
+
+		#orderform-to-cart {
+			@include breakpoint('small', 'max') { width: 140px; }
+			@include rfs(12);
+			color: $textColor;
+			display: inline-block;
+			font-weight: 500;
+			position: relative;
+			text-align: right;
+			text-decoration: none;
+			width: 160px;
+
+			&:before {
+				@include icon-get('left-arrow');
+				font-size: 10px;
+				position: absolute;
+				right: 130px;
+				top: 5px;
+			}
+		}
+
+		.help.error {
+			@include breakpoint('small', 'max') {
+				right: 0;
+				top: 75px;
+			}
+			@include rfs(10);
+			color: $red-error;
+			font-family: 'Open Sans';
+			font-weight: 700;
+			position: absolute;
+			right: 10px;
+			top: 65px;
+		}
+	}
+}

@@ -355,6 +355,11 @@ $(document).on('ready', function() {
 
 				// testeabEntrega.checkoutSetup(orderForm);
 				self.atualizaCoupon();
+
+				if (orderForm) {
+					self.saveUserInfos(orderForm);
+					self.setUserInfo(orderForm);
+				}
 			};
 
 			this.cotasInit = function() {
@@ -853,6 +858,97 @@ $(document).on('ready', function() {
 					pushDataLayer(('Cupom de Desconto - Carrinho - ' + $('#cart-coupon').val()), 'Selecionar Cupom', 'Cupom selecionado no carrinho');
 				});
 			};
+
+			this.saveUserInfos = (orderForm) => {
+				//Salva os dados do orderForm no cookie.
+				let d = new Date();
+				d.setTime(d.getTime() + 30 * 24 * 60 * 60 * 1000);
+				const expiresDate = `expires=${d.toUTCString()}`;
+
+				//Salva os dados do clientProfileData
+				if (orderForm.clientProfileData) {
+					const userInfo = {
+						clEmail     : orderForm.clientProfileData.email,
+						clFirstName : orderForm.clientProfileData.firstName,
+						clLastName  : orderForm.clientProfileData.lastName,
+						clDocument  : orderForm.clientProfileData.document,
+						clPhone     : orderForm.clientProfileData.phone
+					}, { clDocument, clEmail, clFirstName, clLastName, clPhone } = userInfo;
+
+					document.cookie = `userInfo=clEmail=${encodeURIComponent(clEmail)}/clFirstName=${encodeURIComponent(clFirstName)}/clLastName=${encodeURIComponent(clLastName)}/clDocument=${encodeURIComponent(clDocument)}/clPhone=${encodeURIComponent(clPhone)}; ${expiresDate}; path=/;`
+				}
+
+				//Salva os dados do shippingData
+				if (orderForm.shippingData.address) {
+					const userShippingInfo = {
+						clCEP          : orderForm.shippingData.address.postalCode,
+						clComplement   : orderForm.shippingData.address.complement,
+						clCountry      : orderForm.shippingData.address.country,
+						clNumber       : orderForm.shippingData.address.number,
+						clReceiverName : orderForm.shippingData.address.receiverName,
+						clReference    : orderForm.shippingData.address.reference
+					}, { clCEP, clComplement, clCountry, clNumber, clReceiverName, clReference } = userShippingInfo;
+
+					document.cookie = `userShippingInfo=clCEP=${encodeURIComponent(clCEP)}/clComplement=${encodeURIComponent(clComplement)}/clCountry=${encodeURIComponent(clCountry)}/clNumber=${encodeURIComponent(clNumber)}/clReceiverName=${encodeURIComponent(clReceiverName)}/clReference=${encodeURIComponent(clReference)}; ${expiresDate}; path=/;`
+				}
+			};
+
+			this.setUserInfo = (orderForm) => {
+				//Seta as informações do usuario armazenada no cookie no order form.
+				if (getCookie('userInfo') && !orderForm.clientProfileData) {
+					const cookie = getCookie('userInfo'),
+						clEmail = self.cookieFormat(cookie, 'clEmail='),
+						clFirstName = self.cookieFormat(cookie, 'clFirstName='),
+						clLastName = self.cookieFormat(cookie, 'clLastName='),
+						clDocument = self.cookieFormat(cookie, 'clDocument='),
+						clPhone = self.cookieFormat(cookie, 'clPhone=');
+
+					vtexjs.checkout.getOrderForm().then(() => {
+						const clientProfileData =
+							{
+								document  : clDocument,
+								email     : clEmail,
+								firstName : clFirstName,
+								lastName  : clLastName,
+								phone     : clPhone,
+							}
+
+						return vtexjs.checkout.sendAttachment('clientProfileData', clientProfileData);
+					});
+				}
+
+				//Seta as informações de endereço do usuario armazenada no cookie no order form.
+				if (getCookie('userShippingInfo') && !orderForm.shippingData.address) {
+					const cookie = getCookie('userShippingInfo'),
+						clCEP = self.cookieFormat(cookie, 'clCEP='),
+						clComplement = self.cookieFormat(cookie, 'clComplement='),
+						clCountry = self.cookieFormat(cookie, 'clCountry='),
+						clNumber = self.cookieFormat(cookie, 'clNumber='),
+						clReceiverName = self.cookieFormat(cookie, 'clReceiverName='),
+						clReference = self.cookieFormat(cookie, 'clReference=');
+
+						vtexjs.checkout.getOrderForm().then(() => {
+							const shippingData = {
+								address:
+									{
+										complement     : clComplement,
+										country        : clCountry,
+										number         : clNumber,
+										postalCode     : clCEP,
+										receiverName   : clReceiverName,
+										reference      : clReference
+									}
+								}
+
+							return vtexjs.checkout.sendAttachment('shippingData', shippingData);
+						});
+				}
+			}
+
+			this.cookieFormat = (cookie, str) => {
+				//Funcao auxiliar para trazer somente o valor desejado dos cookies de userinfo e shippingdata.
+				return decodeURIComponent(cookie.split(str)[1].split('/')[0]);
+			}
 
 			this.init();
 
