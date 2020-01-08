@@ -1,3 +1,4 @@
+require('vendors/jquery.maskedinput');
 import { pushDataLayer } from 'modules/_datalayer-inline';
 
 const Smartbeer = {
@@ -119,6 +120,14 @@ const Smartbeer = {
 				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				return re.test(email);
 			}
+
+			const maskTel = () => {
+				jQuery(function($){
+					$('#cerv-tel').mask('(99) 9999-9999?9');
+				});
+			}
+
+			maskTel();
 
 			$(document).on('click', '#cerv-submit', () => {
 				if ($('#cerv-name').val() == '' || $('#cerv-email').val() == '' || $('#cerv-tel').val() == '') {
