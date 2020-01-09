@@ -17,11 +17,10 @@ require('modules/chatHome');
 require('modules/shelfCategoryHome');
 require('modules/_staticBanner');
 require('modules/interested-shelf');
-require('dataLayers/dataLayer-home-BF.js')
-// require('modules/_staticBanner');
+require('dataLayers/dataLayer-home-BF.js');
+require('modules/subCategoryList');
 
 // require('modules/_staticBanner');
-require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 Nitro.controller(
@@ -36,6 +35,7 @@ Nitro.controller(
 		'chatHome',
 		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
 		'interested-shelf',
+		'subCategoryList',
 		'dataLayer-home-bf'
 	],
 
