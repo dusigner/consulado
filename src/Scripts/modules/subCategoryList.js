@@ -6,6 +6,7 @@ Nitro.module('subCategoryList', function() {
 		$list.slick({
 			arrows: true,
 			dots: false,
+			infinite: false,
 			slidesToShow: 6,
 			slidesToScroll: 2,
 			responsive: [
@@ -14,7 +15,8 @@ Nitro.module('subCategoryList', function() {
 					settings: {
 						slidesToShow: 4,
 						slidesToScroll: 2,
-						swipeToSlide: true
+						swipeToSlide: true,
+						infinite: false
 					}
 				},
 				{
@@ -22,6 +24,7 @@ Nitro.module('subCategoryList', function() {
 					settings: {
 						slidesToShow: 3,
 						slidesToScroll: 2,
+						infinite: false,
 						swipeToSlide: true
 					}
 				},
@@ -30,6 +33,7 @@ Nitro.module('subCategoryList', function() {
 					settings: {
 						slidesToShow: 2,
 						slidesToScroll: 2,
+						infinite: false,
 						swipeToSlide: true
 					}
 				}
