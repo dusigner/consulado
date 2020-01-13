@@ -1,5 +1,7 @@
 // custom Modal Login
 $consul-primary: #9aca3c;
+$consul-dsColor: #5B5B5B;
+@import 'helpers/rfs';
 
 // TESTES
 #login {
@@ -16,12 +18,13 @@ $consul-primary: #9aca3c;
 		max-width: 800px;
 
 		.modal-header {
+			position: unset;
 			padding: 0;
 
 			.close {
 				font-size: 1rem;
-				right: 0;
-				top: 0;
+				right: 15px;
+				top: 10px;
 
 				&::before {
 					color: #736c6b;
@@ -31,6 +34,7 @@ $consul-primary: #9aca3c;
 		}
 
 		.mode-custom-login--header {
+			display: none;
 
 			.modal-custom-login--title {
 				color: $consul-primary;
@@ -65,9 +69,10 @@ $consul-primary: #9aca3c;
 			.modal-custom-login--init-layout {
 				display: flex;
 				flex-direction: row;
+				justify-content: space-between;
 
 				input[type='submit'] {
-					float: right;
+					float: left;
 					width: auto;
 				}
 
@@ -76,12 +81,13 @@ $consul-primary: #9aca3c;
 				flex-grow: 1;
 
 				&:first-child {
-					border-right: solid 1px $consul-primary;
+					max-width: 320px;
 					padding-right: 15px;
 					}
 
 					&:last-child {
 						padding-left: 15px;
+						max-width: 320px;
 					}
 				}
 			}
@@ -144,8 +150,9 @@ $consul-primary: #9aca3c;
 			}
 
 			.modal-custom-login--sectitles {
-				color: $consul-primary;
-				font-weight: 600;
+				@include rfs(17);
+				color: $consul-dsColor;
+				font-weight: bold;
 				margin-bottom: 10px;
 				text-align: left;
 			}
@@ -157,10 +164,11 @@ $consul-primary: #9aca3c;
 				span {
 					border-right: solid 1px #ccc;
 					cursor: pointer;
-					font-size: 13px;
+					font-size: 12px;
 					margin: 0 10px;
 					padding-right: 10px;
-					text-decoration: underline;
+					text-decoration: none;
+					color: #0FB6DE;
 
 					&:first-child {
 						margin-left: 0;
