@@ -188,18 +188,22 @@ Nitro.module('customLogin', function() {
 					'<div class="modal-custom-login--init-layout">' +
 						'<div class="modal-custom-login--forms">' +
 							'<div id="mail_pass_login">' +
-								'<p class="modal-custom-login--sectitles">Entre com um email e senha</p>' +
+								'<p class="modal-custom-login--sectitles">Entre com um email e senha:</p>' +
 								'<form id="modal-custom-login--form">' +
 									'<div class="modal-custom-login-mail_pass_login">' +
 										'<div class="modal-custom-email--inputbox">' +
-											'<input type="text" id="login" class="custom-label" name="login" autocomplete="off">' +
+											'<input type="text" id="login" placeholder="seu@email.com.br" class="custom-label" name="login" autocomplete="off">' +
 										'</div>' +
 										'<div class="modal-custom-password--inputbox">' +
-											'<input type="password" id="password" class="custom-label" name="password">' +
+											'<input type="password" id="password" placeholder="Senha" class="custom-label" name="password">' +
 										'</div>' +
 										'<div class="modal-custom-login--formOptions">' +
 											'<span class="forget_pass">Esqueci minha senha</span>' +
 											'<span class="no_pass">Não tenho uma senha</span>' +
+										'</div>' +
+										'<div class="custom-login-buttons--checkbox">' +
+										'<input type="checkbox" class="custom-login-btn-check" value="Concordo">' +
+										'<span>Li e concordo com os <a href="https://consul.custhelp.com/app/answers/detail/a_id/511" target="_blank">termos e condições</a></span>' +
 										'</div>' +
 										'<div class="custom-login-buttons--action--box">' +
 										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
@@ -211,9 +215,9 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-login--buttons">' +
 							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
 							'<div class="modal-custom-login--buttons--box">' +
+								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com <strong>Facebook</strong></button>' : '') +
+								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com <strong>Google</strong></button>' : '') +
 								'<button class="modal-custom-login-btn mailkey">' + ($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
-								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com Facebook</button>' : '') +
-								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com Google</button>' : '') +
 							'</div>' +
 						'</div>' +
 					'</div>';
@@ -288,6 +292,18 @@ Nitro.module('customLogin', function() {
 		if ($(window).width() < 768 ) {
 			$('.modal-custom-login--buttons .modal-custom-login-btn.mailkey').text('Chave por e-mail');
 		}
+
+		$(document).on('change', '.custom-login-buttons--checkbox input', ({currentTarget}) => {
+			const $element = $(currentTarget);
+
+			if ($element.is(':checked')) {
+				$element.addClass('is--checked');
+				$element.parents('#mail_pass_login').addClass('is--checked');
+			} else {
+				$element.removeClass('is--checked');
+				$element.parents('#mail_pass_login').removeClass('is--checked');
+			}
+		});
 
 		$('#modal-custom-login')
 			.on('submit', '#modal-custom-login-email-access--form--setting-pw', function(e) {
@@ -506,62 +522,55 @@ Nitro.module('customLogin', function() {
 	};
 
 	this.socialLogin = function(origem) {
-		var urlAuthentication = routes.getOAuthUrl;
+        const url = `/api/vtexid/pub/authentication/oauth/redirect?providerName=${origem}`
 
-		urlAuthentication += '?authenticationToken=' + encodeURIComponent(userInfos.authenticationToken).replace(/ /g,'+');
-		urlAuthentication += '&providerName=' + encodeURIComponent(origem);
+        //monitor the closing of a popup window
+        const popup = window.open(
+            url,
+            "DescriptiveWindowName",
+            "width=720,height=520,resizable,scrollbars=yes,status=1"
+        );
 
-		var oauthPopUp = window.open(urlAuthentication,'Authenticate', 'width=800,height=600,scrollbars=yes');
+        const redirect = window.setInterval(() => {
+            $.get("/no-cache/profileSystem/getProfile", function (data) {
+                if (data.IsUserDefined) {
+                    popup.close();
+                    clearTimer();
+                }
+            });
+        }, 1000);
 
-		var pollTimer = window.setInterval(function() {
-
-			try {
-
-				if (oauthPopUp.location.href.indexOf(window.location.host) !== -1) {
-
-					window.clearInterval(pollTimer);
-
-					var obj = helpers.urlToObject(oauthPopUp.location.search.substring(1));
-
-					obj.authStatus && (self.validateSocialOAuth(obj), oauthPopUp.close());
-
-				}
-			} catch(e) {
-				//console.error(e);
-			}
-		}, 50);
+        function clearTimer() {
+            clearInterval(redirect);
+            self.redirectUrl();
+        }
 	};
 
-	this.validateSocialOAuth = function(data) {
+	this.redirectUrl = () => {
+        const referrerVerify = document.referrer.indexOf('login');
+        const verifyConsul = document.referrer.indexOf('consul');
+        const searchParam = new URL(window.location.href).searchParams;
+        const actualUrl = window.location.href;
+        let redirectParam = '';
 
-		window.authenticationToken = data.authenticationToken ? data.authenticationToken.split('#')[0] : window.authenticationToken;
+        if (actualUrl.match(/returnUrl/g)) {
+            redirectParam = searchParam.get('returnUrl');
+        } else if (actualUrl.match(/ReturnUrl/g)) {
+            redirectParam = searchParam.get('ReturnUrl')
+        } else if (actualUrl.match(/returnURL/g)) {
+            redirectParam = searchParam.get('returnURL')
+        }
 
-		if (data.authStatus === 'Success') {
-
-			helpers.setCookie(decodeURIComponent(data.authCookieName), decodeURIComponent(data.authCookieValue), '.' + location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0], data.expiresIn);
-
-			helpers.setCookie(decodeURIComponent(data.accountAuthCookieName), decodeURIComponent(data.accountAuthCookieValue), '.' + location.hostname.split('.').reverse()[1] + '.' + location.hostname.split('.').reverse()[0], data.expiresIn);
-
-			$.magnificPopup.close();
-
-			$(window).trigger('loggedBySocialOAuth.vtexid');
-			$(window).trigger('logged.vtexid');
-
-			reload();
-
-		} else if (data.authStatus === 'Pending') {
-
-			// console.warn('SessÃ£o pendente');
-
-		} else if (data.authStatus === 'WrongCredentials'){
-
-			// console.warn('Credenciais erradas');
-
-		} else if (data.authStatus === 'MultipleAccount') {
-
-			// console.warn('Logado em mais de uma conta');
-		}
-	},
+        if (redirectParam) {
+            window.location.href = `${decodeURIComponent(redirectParam)}${window.location.hash}`;
+        } else if (referrerVerify != -1) {
+            location.href = "https://loja.consul.com.br/";
+        } else if (verifyConsul != -1) {
+            location.href = document.referrer;
+        } else {
+            location.href = "https://loja.consul.com.br/";
+        }
+	};
 
 	// Layout: Inicial
 	this.setDefaultLayout = function() {

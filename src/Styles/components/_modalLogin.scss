@@ -1,5 +1,7 @@
 // custom Modal Login
 $consul-primary: #9aca3c;
+$consul-dsColor: #5B5B5B;
+@import 'helpers/rfs';
 
 // TESTES
 #login {
@@ -14,14 +16,18 @@ $consul-primary: #9aca3c;
 		margin-bottom: 20px;
 		margin-top: 20px;
 		max-width: 800px;
+		position: relative;
 
 		.modal-header {
+			position: unset;
 			padding: 0;
 
 			.close {
-				font-size: 1rem;
-				right: 0;
-				top: 0;
+				@include rfs(10);
+				height: 24px;
+				right: 15px;
+				top: 10px;
+				width: 24px;
 
 				&::before {
 					color: #736c6b;
@@ -31,6 +37,7 @@ $consul-primary: #9aca3c;
 		}
 
 		.mode-custom-login--header {
+			display: none;
 
 			.modal-custom-login--title {
 				color: $consul-primary;
@@ -49,6 +56,10 @@ $consul-primary: #9aca3c;
 			}
 		}
 
+		.modal-custom-login--buttons--box {
+			margin-top: 40px;
+		}
+
 		.modal-custom-login--body {
 			.modal-custom-login--errorBox {
 				color: #ff0000;
@@ -65,9 +76,11 @@ $consul-primary: #9aca3c;
 			.modal-custom-login--init-layout {
 				display: flex;
 				flex-direction: row;
+				justify-content: space-between;
 
 				input[type='submit'] {
-					float: right;
+					margin-top: 15px;
+					float: left;
 					width: auto;
 				}
 
@@ -76,12 +89,13 @@ $consul-primary: #9aca3c;
 				flex-grow: 1;
 
 				&:first-child {
-					border-right: solid 1px $consul-primary;
+					max-width: 320px;
 					padding-right: 15px;
 					}
 
 					&:last-child {
 						padding-left: 15px;
+						max-width: 330px;
 					}
 				}
 			}
@@ -143,10 +157,52 @@ $consul-primary: #9aca3c;
 				}
 			}
 
+			.custom-login-buttons--checkbox {
+				align-items: center;
+				display: flex;
+				text-align: left;
+				width: 100%;
+
+				input[type="checkbox"] {
+					position: relative;
+					&.is--checked {
+						visibility: hidden;
+						&:before {
+							background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%239aca3c;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M13.667,3H4.333A1.333,1.333,0,0,0,3,4.333v9.333A1.333,1.333,0,0,0,4.333,15h9.333A1.333,1.333,0,0,0,15,13.667V4.333A1.333,1.333,0,0,0,13.667,3Zm-6,9.333L4.333,9l.94-.94,2.393,2.387,5.06-5.06.94.947Z' transform='translate(-3 -3)'/%3E%3C/svg%3E");
+							content: '';
+							height: 100%;
+							width: 100%;
+							visibility: initial;
+							position: absolute;
+							z-index: 1;
+						}
+					}
+				}
+
+				span {
+					@include rfs(12);
+					padding-left: 7px;
+
+					> a {
+						text-decoration: underline;
+					}
+				}
+			}
+
+			.modal-custom-login--init-layout {
+				.custom-login-buttons--action--box {
+					input[type='submit'] {
+						opacity: 0.5;
+						pointer-events: none;
+					}
+				}
+			}
+
 			.modal-custom-login--sectitles {
-				color: $consul-primary;
-				font-weight: 600;
-				margin-bottom: 10px;
+				@include rfs(17);
+				color: $consul-dsColor;
+				font-weight: bold;
+				margin-bottom: 20px;
 				text-align: left;
 			}
 
@@ -157,10 +213,11 @@ $consul-primary: #9aca3c;
 				span {
 					border-right: solid 1px #ccc;
 					cursor: pointer;
-					font-size: 13px;
+					font-size: 12px;
 					margin: 0 10px;
 					padding-right: 10px;
-					text-decoration: underline;
+					text-decoration: none;
+					color: #0FB6DE;
 
 					&:first-child {
 						margin-left: 0;
@@ -179,31 +236,28 @@ $consul-primary: #9aca3c;
 				.modal-custom-login-btn {
 					background-position: 30px;
 					background-repeat: no-repeat;
-					border: none;
-					color: #ffffff;
+					border: 1px solid #E3E1E1;
+					border-radius: 4px;
+					color: #736C6B;
+					font-size: 12px;
 					margin-bottom: 15px;
-					padding: 12px 17px 12px 70px;
-					text-align: left;
+					padding: 12px 0;
+					text-align: center;
 					transition: all .2s ease;
 					width: 100%;
 
-					&.mailkey {
-						background-color: #5fbd5f;
-						background-image: url('/arquivos/icon_email.png');
-					}
-
 					&.facebook_access {
-						background-color: #3b5999;
-						background-image: url('/arquivos/icon_face.png');
+						background-color: #FFFFFF;
+						background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%23404040;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M11,0A11,11,0,1,0,22,11,11.013,11.013,0,0,0,11,0Zm2.736,11.387h-1.79v6.379H9.294V11.387H8.034V9.133H9.294V7.675A2.487,2.487,0,0,1,11.97,5l1.965.008V7.194H12.509a.54.54,0,0,0-.562.614V9.133h2.02Z'/%3E%3C/svg%3E");
 					}
 
 					&.google_access {
-						background-color: #ea4235;
-						background-image: url('/arquivos/icon_google.png');
+						background-color: #FFFFFF;
+						background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%23404040;%7D%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M14,3A11,11,0,1,0,25,14,11,11,0,0,0,14,3Zm7.213,11a7.2,7.2,0,1,1-2.182-5.175l-1.262,1.3A5.335,5.335,0,0,0,14,8.59a5.41,5.41,0,1,0,0,10.82A5.5,5.5,0,0,0,19.41,14.9H14V13.1h7.213Z' transform='translate(-3 -3)'/%3E%3C/svg%3E");
 					}
 
 					&:last-child {
-						margin: 0;
+						margin-top: 7px;
 					}
 
 					&:hover {
@@ -242,18 +296,28 @@ $consul-primary: #9aca3c;
 	}
 }
 
+#mail_pass_login.is--checked {
+	.custom-login-buttons--action--box {
+		input[type='submit'] {
+			opacity: 1!important;
+			pointer-events: all!important;
+		}
+	}
+}
+
+
 /* MISCELLANOUS */
 
 // CUSTOM LABELS
 .modal-custom-email--inputbox {
 	&::before {
-		content: 'E-mail';
+		content: 'Digite seu e-mail';
 	}
 }
 
 .modal-custom-password--inputbox {
 	&::before {
-		content: 'Senha';
+		content: 'Digite sua senha';
 	}
 }
 
@@ -272,24 +336,16 @@ $consul-primary: #9aca3c;
 .modal-custom-email--inputbox,
 .modal-custom-password--inputbox,
 .modal-custom--inputbox {
-	border-bottom: solid 1px #ccc;
 	margin-bottom: 10px;
-	margin-top: 25px;
 	position: relative;
 
-	&.label-on {
-		&::before {
-			left: -7px;
-			top: -20px;
-			transform: scale(.7);
-		}
-	}
-
 	&::before {
-		left: 0;
-		position: absolute;
-		top: 0;
-		transition: all .2s ease;
+		@include rfs(13);
+		display: block;
+		font-weight: 500;
+		width: 100%;
+		line-height: 1.7;
+		text-align: left;
 	}
 
 	span {
@@ -299,20 +355,33 @@ $consul-primary: #9aca3c;
 	}
 
 	input {
-		border: 0;
+		border-radius: 4px;
+		border: 1px solid #E3E1E1;
 		box-shadow: none;
+		font-size: 12px;
 		margin-bottom: 0;
-		padding: 0 0 2px 0;
+		padding: 12px;
 		width: 100%;
+
+		&::placeholder {
+			color: #E3E1E1;
+		}
+		&::-webkit-input-placeholder { /* Edge */
+			color: #E3E1E1;
+		}
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+			color: #E3E1E1;
+		  }
 	}
 }
 
 // ESTILO BOTÕES
 .custom-login-btn,
 input[type='submit'].custom-login-btn {
+	@include rfs(12);
+	font-weight: 400;
 	border: solid 2px;
 	border-radius: 50px;
-	font-weight: 500;
 	padding: 7px 25px;
 	transition: all .2s ease;
 	width: auto;
@@ -380,8 +449,8 @@ input[type='submit'].custom-login-btn {
 					.modal-custom-login--forms {
 						input[type='submit'] {
 							border-radius: 50px;
-							padding: 10px 15px;
-							width: 100%;
+							padding: 8px 15px;
+							width: 45%;
 						}
 					}
 
@@ -394,14 +463,14 @@ input[type='submit'].custom-login-btn {
 					.modal-custom-login--buttons--box {
 						display: flex;
 						flex-direction: row;
+						flex-wrap: wrap;
 						justify-content: space-between;
 						margin-top: 35px;
 
 						.modal-custom-login-btn {
-							background-position: calc(50% - 60px) 12px;
 							font-size: 11px;
 							height: 40px;
-							margin: 0;
+							margin: 10px 0;
 							padding: 0;
 							text-align: center;
 							width: 100%;
