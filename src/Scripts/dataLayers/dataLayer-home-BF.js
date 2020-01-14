@@ -132,7 +132,6 @@ Nitro.module('dataLayer-home-bf', function() {
 				`Termo de busca`,
 				`${$element.parent().find('.text-search').val()}`
 			);
-			debugger
 		});
 	};
 
