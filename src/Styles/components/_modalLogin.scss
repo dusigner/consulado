@@ -189,10 +189,12 @@ $consul-dsColor: #5B5B5B;
 				}
 			}
 
-			.custom-login-buttons--action--box {
-				input[type='submit'] {
-					opacity: 0.5;
-					pointer-events: none;
+			.modal-custom-login--init-layout {
+				.custom-login-buttons--action--box {
+					input[type='submit'] {
+						opacity: 0.5;
+						pointer-events: none;
+					}
 				}
 			}
 
