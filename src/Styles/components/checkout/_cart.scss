@@ -79,6 +79,8 @@ body.body-cart {
 							}
 							display: block;
 							font-weight: 500;
+							min-height: 80px;
+							padding-top: 10px;
 							position: relative;
 						}
 
@@ -142,7 +144,10 @@ body.body-cart {
 						@include rfs(14px);
 						color: $green;
 						font-weight: bold;
-						text-align: right;
+						text-align: left;
+						@include breakpoint('small', 'max') {
+							text-align: right;
+						}
 						white-space: nowrap;
 					}
 
@@ -205,9 +210,10 @@ body.body-cart {
 					.item-remove,
 					.quantity {
 						@include breakpoint('medium', 'min') {
+							line-height: 15px;
 							padding-bottom: 10px;
-							padding-top: 42px;
-							vertical-align: top;
+						    padding-top: 32px;
+							vertical-align: baseline;
 						}
 					}
 					.shipping-date,
@@ -231,7 +237,11 @@ body.body-cart {
 						text-transform: uppercase;
 
 						@include breakpoint(small, 'max') { margin-right: 16px; }
-
+						@include breakpoint(small, 'min') {
+							margin-top: -1px;
+							position: absolute;
+							text-transform: uppercase;
+						}
 						.list-price {
 							@include responsiveFont(10, 16, true);
 							font-weight: 500;
