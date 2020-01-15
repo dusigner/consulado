@@ -1,3 +1,4 @@
+require('vendors/jquery.maskedinput');
 import { pushDataLayer } from 'modules/_datalayer-inline';
 
 const Smartbeer = {
@@ -112,6 +113,105 @@ const Smartbeer = {
 					});
 				});
 			}
+		}
+
+		const startForm = () => {
+			const validateEmail = (email) => {
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				return re.test(email);
+			}
+
+			const maskTel = () => {
+				jQuery(function($){
+					$('#cerv-tel').mask('(99) 9999-9999?9');
+				});
+			}
+
+			maskTel();
+
+			$(document).on('click', '#cerv-submit', () => {
+				if ($('#cerv-name').val() == '' || $('#cerv-email').val() == '' || $('#cerv-tel').val() == '') {
+					$('.form-status').text('Preencha todos os campos').show();
+				}
+				else if (!validateEmail($('#cerv-email').val())) {
+					$('.form-status').text('E-mail inválido!').show();
+				}
+				else {
+					setFields();
+				}
+			});
+		};
+
+		const setFields = () => {
+			const clientData = {
+				nome:               $('#cerv-name').val(),
+				telefone:           $('#cerv-email').val(),
+				email:              $('#cerv-tel').val(),
+			}
+
+			sendData(clientData);
+		};
+
+		const sendData = (clientData) => {
+			$.ajax({
+                "headers": {
+                    "Accept": "application/vnd.vtex.ds.v10+json",
+                    "Content-Type": "application/json"
+                },
+                "url": `/api/dataentities/NT/documents`,
+                "async": true,
+                "crossDomain": true,
+                "type": "PATCH",
+                "data": JSON.stringify(clientData)
+            }).success(() => {
+				$('.form-status').text('Dados enviados com sucesso!').show();
+            }).fail(() => {
+                $('.form-status').text('Ocorreu um erro, tente novamente mais tarde').show();
+            }).done(() =>{
+                setTimeout(() => {
+                    $('.form-status').fadeOut(500);
+                }, 5000);
+			});
+		}
+
+		// Checks if product is unavailable
+
+		if ($('.vitrine-smartbeer .product-price-to').text() === 'R$ 0,00') {
+			$('.product-price, .product-skuSelector, .product-buy-button').addClass('hide');
+
+			$('.product-info').append(`
+				<div class="notifyme-title-div" style="">
+					<h3 class="notifymetitle notifyme-title">Produto temporariamente indisponível</h3>
+				</div>
+				<form action="/no-cache/AviseMe.aspx" style="">
+					<fieldset class="sku-notifyme-form notifyme-form">
+						<p>Seja avisado quando estiver disponível
+							<br>Ou entre em contato com nosso
+							<a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a>
+						</p>
+						<input id="cerv-name" class="sku-notifyme-client-name notifyme-client-name" placeholder="Digite seu nome..." size="20" type="text" name="notifymeClientName" id="notifymeClientName" style="display: inline-block;">
+						<input id="cerv-email" class="sku-notifyme-client-email notifyme-client-email" placeholder="Digite seu e-mail..." size="20" type="text" name="notifymeClientEmail" id="notifymeClientEmail" style="display: inline-block;">
+						<input id="cerv-tel" class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">
+						<input id="cerv-submit" class="btn-ok sku-notifyme-button-ok notifyme-button-ok" value="Avise-me" type="button" name="notifymeButtonOK" id="notifymeButtonOK" style="display: inline-block;">
+						<p class="form-status" style="display:none;"></p>
+						<input type="hidden" class="sku-notifyme-skuid notifyme-skuid" name="notifymeIdSku" value="2004086" style="display: none;">
+					</fieldset>
+				</form>
+				<p class="notifyme-loading-message" style="display: none">
+					<span class="sku-notifyme-loading notifyme-loading">Carregando...</span>
+				</p>
+				<fieldset class="success" style="display:none;">
+					<label>
+						<em><span class="sku-notifyme-success notifyme-success">Cadastrado com sucesso, assim que o produto for disponibilizado você receberá um email avisando.</span></em>
+					</label>
+				</fieldset>
+				<fieldset class="error" style="display: none">
+					<label><span class="sku-notifyme-error   notifyme-error"></span></label>
+				</fieldset>
+			</div>
+			`)
+
+			startForm();
 		}
 	}
 };
