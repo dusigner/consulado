@@ -4,8 +4,8 @@
 
 // Style banners
 .area-banners {
-	background-color: #111111;
-	color: #fff;
+	background-color: #fff;
+	color: #736c6b;
 	display: block;
 	height: auto;
 	padding: 42px 0 50px;
@@ -23,11 +23,13 @@
 		@include rfs(32px);
 		font-weight: 600;
 		margin: 0 auto 10px;
+		padding: 0 15px;
 	}
 	p {
 		@include rfs(16px);
 		font-weight: 500;
 		margin: 0 auto 40px;
+		padding: 0 15px;
 	}
 	& .banner-areas {
 		display: flex;
@@ -45,6 +47,10 @@
 		.box-banner {
 			height: auto;
 			max-width: 100%;
+			padding: 0 5px 0 0;
+			@include breakpoint(small, 'min') {
+				padding: 0 5px 0 0;
+			}
 			width: 360px !important;
 			img {
 				height: auto;
