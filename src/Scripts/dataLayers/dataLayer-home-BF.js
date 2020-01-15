@@ -125,11 +125,12 @@ Nitro.module('dataLayer-home-bf', function() {
 	};
 
 	this.search = () => {
-		$('.onpage-search button').on('click', function() {
+		$('.onpage-search button').on('click', ({currentTarget}) => {
+			const $element = $(currentTarget);
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Busca - Está procurando algo especial?',
-				`O que você procura hoje?`,
-				`Buscar`
+				'[SQUAD] Pesquisa do site',
+				`Termo de busca`,
+				`${$element.parent().find('.text-search').val()}`
 			);
 		});
 	};

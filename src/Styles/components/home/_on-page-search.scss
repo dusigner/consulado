@@ -1,7 +1,7 @@
 .onpage-search {
 	@include breakpoint('small', 'min') { text-align: center; }
-	background-color: #111111;
-	color: #fff;
+	background-color: #fff;
+	color: #595453;
 	padding: 4.5em 0;
 
 	// Title
@@ -18,8 +18,9 @@
 
 	// Form
 	&__form {
-		@include inputPlaceholderColor(#fff);
+		@include inputPlaceholderColor(#595453);
 		background-color: #ccc;
+		font-weight: 600;
 		margin: 2em auto;
 		max-width: 600px;
 		position: relative;
@@ -34,6 +35,7 @@
 		.icon-consul-loupe {
 			@include breakpoint('small', 'max') { display: none; }
 			@include rfs(18px);
+			font-weight: 600;
 			left: 20px;
 		}
 
@@ -64,7 +66,7 @@
 		input {
 			@include breakpoint('small', 'max') { padding: 10px 65px 10px 10px; }
 			@include rfs(12px);
-			background-color: #2A2A2A;
+			background-color: #F1F0F0;
 			display: block;
 			height: 70px;
 			margin: 0;
