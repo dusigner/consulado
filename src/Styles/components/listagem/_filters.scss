@@ -180,6 +180,11 @@
 		top: 20%;
 	}
 }
+.busca.consul {
+	.sidebar-filter-submenu {
+		border-bottom: none;
+	}
+}
 .sidebar-filter-submenu {
 	border-bottom: 1px solid $gray;
 	margin-bottom: 10px;
