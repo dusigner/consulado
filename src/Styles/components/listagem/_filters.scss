@@ -120,118 +120,6 @@
 		}
 	}
 
-	.more-cat {
-		float: right;
-		margin-right: 0;
-		position: absolute;
-		right: 0;
-		top: 0;
-		z-index: 2;
-
-		&:hover {
-			z-index: 120;
-		}
-
-		h5 {
-			@include responsiveFont(16, 16, true);
-			cursor: pointer;
-			display: block !important;
-			height: 80px;
-			line-height: 80px;
-			margin: 0;
-			padding: 0.1em;
-
-			&:hover {
-				& + ul {
-					display: block;
-				}
-			}
-
-			&::after {
-				@include icon-get('arrow-down');
-				@include responsiveFont(8, 16, true);
-				@include transition(transform, 200);
-				color: $purple-n;
-				margin-left: 1em;
-			}
-		}
-
-		ul {
-			background-color: #ffffff;
-			font-weight: 700;
-			line-height: normal;
-			position: absolute;
-			right: 0;
-			text-align: right;
-			top: 70px;
-			z-index: 10;
-
-			&:hover {
-				display: block;
-			}
-		}
-	}
-	.single-filter-wrapper {
-		cursor: pointer;
-		display: inline-block;
-		margin-right: 1em;
-		padding: 0 0.5em;
-		ul {
-			@include responsiveFont(16, 12, true);
-			background-color: #ffffff;
-			border: solid $gray;
-			border-width: 0 1px 3px 1px;
-			display: none;
-			font-weight: normal;
-			left: -2px;
-			line-height: normal;
-			min-width: 102%;
-			padding: 5px 1em;
-			position: absolute;
-			top: 70px;
-			width: auto;
-			z-index: 10;
-
-			@include breakpoint(small, 'max') {
-				&.active {
-					display: block;
-				}
-			}
-
-			a {
-				@include responsiveFont(14, 16, true);
-				font-weight: bold;
-			}
-
-			&.shorter {
-				height: auto;
-				overflow-y: scroll;
-			}
-		}
-
-		@include breakpoint(medium, 'min') {
-			&:not(.active-filter):hover {
-				background-color: #ffffff;
-				border-top: 10px solid $gray;
-
-				h5 {
-					@include transition(transform, 200);
-					color: $orange;
-					margin-top: -10px;
-
-					&::after {
-						color: $orange;
-						transform: rotate(180deg);
-					}
-				}
-
-				ul {
-					display: block;
-				}
-			}
-		}
-	}
-
 	.mobile-buttons {
 		display: none;
 	}
@@ -290,6 +178,11 @@
 		position: fixed;
 		right: 280px;
 		top: 20%;
+	}
+}
+.busca.consul {
+	.sidebar-filter-submenu {
+		border-bottom: none;
 	}
 }
 .sidebar-filter-submenu {

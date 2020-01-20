@@ -1,0 +1,347 @@
+$upperBar: #FCFCFC;
+$upperBarBorder: #E3E1E1;
+$selectorColor: #595453;
+$arrowDown: #403C3B;
+$menuFontColor: #736C6B;
+$titleColor: #5B5B5B;
+$skuColor: #0FB6DE;
+$medium: 769px;
+
+
+body.listagem.busca:not(.neemu) {
+	header,
+	.top-navigation {
+		@include breakpoint('small', 'max') { position: fixed; }
+		background-color: #fff;
+		position: relative;
+		z-index: 20;
+	}
+
+	.pre-header {
+		position: relative;
+		z-index: 20;
+	}
+
+
+	.title-filter {
+		display: none;
+	}
+
+	.menu-departamento {
+		ul {
+			&.eletrodomesticos {
+				display: none;
+			}
+		}
+	}
+
+	.filter-wrapper {
+		@include breakpoint('small', 'max') {
+			background-color: #fff;
+			border: none;
+			display: block;
+			position: static;
+		}
+		background-color: $upperBar;
+		border: 1px solid $upperBarBorder;
+		box-sizing: border-box;
+		height: 45px;
+		padding: 0;
+		position: relative;
+	}
+
+	.departament-nav {
+
+		.clearfix {
+			height: 45px;
+
+			.more-cat {
+				@include breakpoint('small', 'max') {
+					border: 1px solid $selectorColor;
+					border-radius: 20px;
+					height: 30px;
+					margin-top: 14px;
+					width: 50%;
+				}
+				float: none;
+				height: fit-content;
+				margin-right: 0;
+				padding: 0;
+				position: absolute;
+				right: unset;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 165px;;
+				z-index: 2;
+
+				&.-active {
+					z-index: 12;
+
+					h5 {
+						&::after {
+							transform: rotate(180deg) translateY(50%);
+						}
+					}
+				}
+
+				h5 {
+					@include breakpoint('small', 'max') {
+						color: $selectorColor;
+						padding: 5px;
+						text-align: center;
+						width: 100%;
+					}
+
+					@include rfs(12);
+					cursor: pointer;
+					display: block !important;
+					font-weight: 500;
+					height: fit-content;
+					margin: 0;
+					position: relative;
+					width: 135px;
+
+
+					&::after {
+						@include breakpoint('small', 'max') { display: none }
+						@include icon-get('bottom-arrow');
+						@include transition(transform, 200);
+						color: $arrowDown;
+						display: block;
+						font-size: 7px;
+						margin-left: 1em;
+						position: absolute;
+						right: 5px;
+						top: 50%;
+						transform: translateY(-50%);
+					}
+
+
+					span {
+						font-weight: 700;
+					}
+				}
+			}
+
+			.single-filter-wrapper {
+				cursor: pointer;
+				display: inline-block;
+				margin-right: 1em;
+			}
+		}
+	}
+
+	.category-list-content {
+		background-color: $upperBar;
+		border-bottom: 1px solid $upperBarBorder;
+		border-top: 1px solid $upperBarBorder;
+		box-sizing: border-box;
+		display: block;
+		height: 0;
+		left: -1px;
+		overflow: hidden;
+		padding-top: 43px;
+		position: absolute;
+		top: -2px;
+		transition: height .4s ease;
+		width: 101%;
+		z-index: -1;
+
+		.category-list-search {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			height: 155px;
+
+			li {
+				@include rfs(11);
+				@include breakpoint('small', 'max') { width: 50%; }
+				color: $menuFontColor;
+				margin: 12px 0;
+
+				&:nth-child(3n + 1) {
+					margin-top: 12px;
+				}
+
+				&:nth-child(3n) {
+					margin-bottom: 12px;
+				}
+			}
+		}
+
+		&.-active {
+			@include breakpoint('small', 'max') {
+				height: 540px;
+				padding-top: 90px;
+				z-index: 12;
+			}
+			height: 180px;
+			z-index: 11;
+
+			.category-list-menu-mobile {
+				@include breakpoint('small', 'max') {
+					display: block;
+					margin-bottom: 15px;
+					margin-top: 20px;
+					position: relative;
+				}
+
+				&:after {
+					@include breakpoint('small', 'max') {
+						border-bottom: 1px solid #F1F0F0;
+						content: '';
+						display: inline-block;
+						margin-top: 10px;
+						width: 100%;
+					}
+				}
+
+				.category-list-title,
+				.category-list-voltar {
+					margin: 0;
+				}
+
+				.category-list-title {
+					@include rfs(18);
+					color: $titleColor;
+					display: inline-block;
+					text-align: left;
+					width: 48%;
+				}
+
+				.category-list-voltar {
+					@include rfs(12);
+					color: $selectorColor;
+					float: right;
+					font-weight: 500;
+					text-align: right;
+
+					&:before {
+						@include icon-get('left-arrow');
+						font-size: 8px;
+						margin-right: 5px;
+					}
+				}
+			}
+
+			.category-list-search {
+				@include breakpoint('small', 'max') { height: 385px;}
+			}
+		}
+	}
+
+
+	.list-container {
+		.order-wrapper {
+			@include breakpoint('small', 'max') { top: -38px; }
+			position: absolute;
+			right: 0;
+			top: -50px;
+
+			.show-desktop {
+				@include rfs(12);
+				font-weight: 500;
+			}
+
+			.order-title {
+				@include breakpoint($medium, 'min') {
+					border: none;
+					border-radius: none;
+					display: inline;
+					padding: 0;
+				}
+
+				span.show-desktop,
+				em.show-desktop {
+					@include breakpoint($medium, 'min') { display: inline; }
+					font-weight: 700;
+				}
+
+				&::after {
+					@include breakpoint('small', 'max') { position: static }
+					@include icon-get('bottom-arrow');
+					color: $arrowDown;
+					font-size: 7px;
+					position: absolute;
+					top: 45%;
+					width: unset;
+				}
+
+				&::before {
+					@include breakpoint($medium, 'min') { display: none; }
+					text-transform: none;
+					width: 80%;
+				}
+
+				&.active {
+					&:after { transform: rotate(180deg); }
+				}
+			}
+		}
+	}
+
+	#list-more {
+		@include rfs(14);
+		border: 1px solid $selectorColor;
+		color: $selectorColor;
+		display: block;
+		float: none;
+		line-height: 1;
+		margin: 0 auto;
+		padding: 8px 40px;
+
+		&:hover,
+		&:focus,
+		&.loading {
+			background-color: $arrowDown !important;
+			color: #fff;
+		}
+
+		&.loading {
+			font-size: 0;
+			height: 32px;
+			left: 0;
+			position: relative;
+
+			&:before {
+				height: .5em !important;
+				left: 48%;
+				padding: 0;
+				position: absolute;
+				top: 30%;
+				width: .5em !important;
+			}
+		}
+	}
+
+	.overlay-listagem {
+		background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+		height: 100%;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10;
+
+		&:not(.showOverlay) {
+			display: none;
+		}
+	}
+
+	em.show-desktop {
+		@include rfs(12);
+		color: $arrowDown;
+		font-weight: 700;
+	}
+
+	.nome .product-field li {
+		color: $skuColor;
+	}
+}
+
+.overflowHidden {
+	@include breakpoint('small', 'max') { overflow: hidden; }
+}
+
+.category-list-menu-mobile {
+	display: none;
+}
