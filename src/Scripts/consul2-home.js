@@ -18,6 +18,7 @@ require('modules/shelfCategoryHome');
 require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
+import 'dataLayers/datalayer-vitrine-categorizacao';
 
 Nitro.controller(
 	'home',
@@ -32,7 +33,8 @@ Nitro.controller(
 		'shelfCategoryHome',
 		/* 'static-banner' */
 		/*'counter', 'datalayer_track'*/
-		'subCategoryList'
+		'subCategoryList',
+		'dataLayer-vitrine-categorizacao'
 	],
 	function(chaordic) {
 		var self = this,
