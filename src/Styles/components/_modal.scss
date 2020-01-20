@@ -33,6 +33,9 @@
 		text-align: left;
 		vertical-align: middle;
 		width: 90%;
+		@include breakpoint(small, 'max') {
+			padding: 2.5em 1em 1em;
+		}
 	}
 
 	.modal-header {
