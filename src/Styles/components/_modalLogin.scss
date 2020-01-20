@@ -316,6 +316,12 @@ $consul-dsColor: #5B5B5B;
 	width: 100%;
 }
 
+.modal-custom-email--inputbox {
+	&::before {
+		content: 'Digite seu email';
+	}
+}
+
 .modal-custom-password--inputbox {
 	&::before {
 		content: 'Digite sua senha';
