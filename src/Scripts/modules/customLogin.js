@@ -85,6 +85,8 @@ Nitro.module('customLogin', function() {
 				'<form id="modal-custom-login-email-access--form">' +
 					'<div class="modal-custom-login-mail_pass_login">' +
 						'<div class="modal-custom-email--inputbox">' +
+							'<h3 class="modal-custom__inputitle">Bem pensado</h3>' +
+							'<p class="modal-custom__inputext">Informe seu e-mail</p>' +
 							'<input type="text" id="custom_login_email" class="custom-label" name="custom_login_email">' +
 						'</div>' +
 						'<div class="custom-login-buttons--action--box">' +
@@ -99,7 +101,9 @@ Nitro.module('customLogin', function() {
 				'<div id="access_key_fiels" class="modal-custom-login--key-access-layout">' +
 					'<form id="modal-custom-login-key-access--form' + ((resetPw) ? '-setting-pw' : '') + '">' +
 						'<div class="modal-custom-login-key">' +
-						'    <div class="modal-custom-login-key__fields">' +
+							'<h3 class="modal-custom__inputitle">Bem pensado</h3>' +
+							'<p class="modal-custom__inputext">Informe o codigo enviado para seu email</p>' +
+							'<div class="modal-custom-login-key__fields">' +
 								'<input type="tel" maxlength="1" class="acess_key_value">' +
 								'<input type="tel" maxlength="1" class="acess_key_value">' +
 								'<input type="tel" maxlength="1" class="acess_key_value">' +
@@ -117,6 +121,8 @@ Nitro.module('customLogin', function() {
 			},
 			emailToPassLayout:
 			'<div id="email-to-pass" class="modal-custom-login-email-to-pw">' +
+				'<h3 class="modal-custom__inputitle">Bem pensado</h3>' +
+				'<p class="modal-custom__inputext">Informe seu e-mail</p>' +
 				'<form id="modal-custom-login-email-access--form--setting-pw">' +
 					'<div class="modal-custom-login-mail_pass_login">' +
 						'<div class="modal-custom-email--inputbox">' +

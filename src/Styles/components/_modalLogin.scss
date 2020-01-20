@@ -56,10 +56,6 @@ $consul-dsColor: #5B5B5B;
 			}
 		}
 
-		.modal-custom-login--buttons--box {
-			margin-top: 40px;
-		}
-
 		.modal-custom-login--body {
 			.modal-custom-login--errorBox {
 				color: #ff0000;
@@ -100,17 +96,13 @@ $consul-dsColor: #5B5B5B;
 				}
 			}
 
-			#modal-custom-login-email-access--form {
-				margin-top: 60px;
-			}
-
 			// LAYOUT SOLICITAR CHAVE POR EMAIL
 			.modal-custom-login--email-access-layout,
 			.modal-custom-login-email-to-pw {
 				padding: 0 150px;
 
 				.modal-custom-email--inputbox {
-					margin-bottom: 70px;
+					margin-bottom: 30px;
 				}
 
 				.btn--voltar {
@@ -257,6 +249,7 @@ $consul-dsColor: #5B5B5B;
 					}
 
 					&:last-child {
+						background: #f0f0f0;
 						margin-top: 7px;
 					}
 
@@ -309,10 +302,18 @@ $consul-dsColor: #5B5B5B;
 /* MISCELLANOUS */
 
 // CUSTOM LABELS
-.modal-custom-email--inputbox {
-	&::before {
-		content: 'Digite seu e-mail';
-	}
+.modal-custom__inputitle {
+	margin: 0 auto;
+}
+
+.modal-custom__inputext {
+	display: block;
+	font-size: 0.8125rem;
+    font-weight: 500;
+	line-height: 1.7;
+	margin: 5px auto 35px;
+    text-align: center;
+	width: 100%;
 }
 
 .modal-custom-password--inputbox {
