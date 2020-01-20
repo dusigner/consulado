@@ -322,6 +322,14 @@ $consul-dsColor: #5B5B5B;
 	}
 }
 
+#email_access_login {
+	.modal-custom-email--inputbox {
+		&::before {
+			display: none;
+		}
+	}
+}
+
 .modal-custom-password--inputbox {
 	&::before {
 		content: 'Digite sua senha';
