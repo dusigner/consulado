@@ -19,9 +19,11 @@ require('modules/shelfCategoryHome');
 require('modules/interested-shelf');
 require('dataLayers/dataLayer-home-BF.js')
 // require('modules/_staticBanner');
-
+require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
+import 'dataLayers/datalayer-vitrine-categorizacao';
+
 Nitro.controller(
 	'home',
 	[
@@ -32,9 +34,13 @@ Nitro.controller(
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
-		'shelfCategoryHome', /*'counter', 'datalayer_track'*/
 		'interested-shelf',
-		'dataLayer-home-bf'
+		'dataLayer-home-bf',
+		'shelfCategoryHome',
+		/* 'static-banner' */
+		/*'counter', 'datalayer_track'*/
+		'subCategoryList',
+		'dataLayer-vitrine-categorizacao'
 	],
 
 	function(chaordic) {
