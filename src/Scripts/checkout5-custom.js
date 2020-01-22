@@ -1144,7 +1144,8 @@ $(document).on('ready', function() {
           'warrantyPrice' : parseFloat(warrantyPrice / 100),
           'shippingPrice' : product_shipping_info ? (product_shipping_info.price / 100) : null,
           'shippingType' : product_shipping_info ? product_shipping_info.name : null,
-          'shippingTime' : product_shipping_info ? product_shipping_info.estimate.replace(/bd/g, '') : null
+          'shippingTime' : product_shipping_info ? product_shipping_info.estimate.replace(/bd/g, '') : null,
+          'comboName': additionalInfo.comboName
         }));
       }
       products.push({
@@ -1169,7 +1170,7 @@ $(document).on('ready', function() {
         'shippingPrice' : product_shipping_info ? (product_shipping_info.price / 100) : null,
         'shippingType' : product_shipping_info ? product_shipping_info.name : null,
         'shippingTime' : product_shipping_info ? product_shipping_info.estimate.replace(/bd/g, '') : null,
-        'comboName':  ''
+        'comboName':  additionalInfo ? additionalInfo.comboName : ''
       });
     }
     var step = '';
@@ -1319,6 +1320,18 @@ $(document).on('ready', function() {
         clearInterval(initdataLayerSettings);
         if(! (document.location.hash.indexOf('cart') >= 0)) {
           window.pushDataLayer();
+        } else {
+          setTimeout(function() {
+            trigger = true;
+            for(var indexdataLayer = 0, max_dataLayer = window.dataLayer.length ; indexdataLayer < max_dataLayer ; indexdataLayer+=1) {
+              if(window.dataLayer[indexdataLayer] && window.dataLayer[indexdataLayer].event && window.dataLayer[indexdataLayer].event == 'virtualPageview') {
+                trigger = false;
+              }
+            }
+            if(trigger) {
+              window.pushDataLayer();
+            }
+          }, 1000);
         }
       }
     }, 500);
