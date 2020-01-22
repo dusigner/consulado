@@ -55,7 +55,7 @@ Nitro.controller(
 			const wishListStart = new wishList(teste, $(this));
 
 			wishListStart.addProduct();
-		});
+		});a
 
 		chaordic.init('home');
 
