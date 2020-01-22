@@ -20,12 +20,23 @@ Nitro.module('subCategoryList', function() {
 					}
 				},
 				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 2,
+						infinite: false,
+						swipeToSlide: true,
+						arrows: false
+					}
+				},
+				{
 					breakpoint: 500,
 					settings: {
 						slidesToShow: 3,
 						slidesToScroll: 2,
 						infinite: false,
-						swipeToSlide: true
+						swipeToSlide: true,
+						arrows: false
 					}
 				},
 				{
@@ -34,7 +45,8 @@ Nitro.module('subCategoryList', function() {
 						slidesToShow: 2,
 						slidesToScroll: 2,
 						infinite: false,
-						swipeToSlide: true
+						swipeToSlide: true,
+						arrows: false
 					}
 				}
 			]

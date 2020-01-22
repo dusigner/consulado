@@ -25,7 +25,7 @@ Nitro.module('dataLayer-vitrine-categorizacao', function () {
 			);
 		});
 
-		$('.vitrine-subcategorias').find('.subCategorySection a').on('click', function () {
+		$('.vitrine-subcategorias .subCategorySection a.subcategory-link').on('click', function () {
 			const label = $(this).find('img').attr('alt');
 
 			pushDataLayer(
@@ -34,6 +34,28 @@ Nitro.module('dataLayer-vitrine-categorizacao', function () {
 				`${label}`
 			);
 		});
+
+		$('.vitrine-subcategorias').find('.subCategorySection ul button.slick-arrow').on('click', function () {
+			const data = $(this).parents('.subCategorySection').attr('data-category');
+			const seta = $(this).attr('aria-label');
+			pushDataLayer(
+				'[SQUAD] Vitirine Categorizacao',
+				`${data}`,
+				`Seta ${seta === 'Previous' ? 'Esquerda' : 'Direita'}`
+			);
+		});
+
+		$('.vitrine-subcategorias .subCategorySection > a.categoryLink').on('click', function () {
+			const data = $(this).parents('.subCategorySection').attr('data-category');
+			const link = $(this).text();
+
+			pushDataLayer(
+				'[SQUAD] Vitirine Categorizacao',
+				`${data}`,
+				`${link}`
+			);
+		});
+
 	};
 
 	this.init();
