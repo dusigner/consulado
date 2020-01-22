@@ -23,6 +23,7 @@ require('modules/subCategoryList')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
+import wishList from './components/WishList/wishlist-main';
 
 Nitro.controller(
 	'home',
@@ -44,6 +45,17 @@ Nitro.controller(
 	],
 
 	function(chaordic) {
+
+		console.log('executei');
+
+		$('.prateleira ul li').on('click', function(ev) {
+			ev.preventDefault();
+			const teste = $(this).find('article').attr('data-idproduto');
+			console.log(teste);
+			const wishListStart = new wishList(teste, $(this));
+
+			wishListStart.addProduct();
+		});
 
 		chaordic.init('home');
 
