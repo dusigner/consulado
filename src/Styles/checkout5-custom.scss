@@ -331,6 +331,9 @@ body {
 	@include breakpoint(small,
 	'max') {
 		&.body-order-form {
+			.client-profile-data {
+				position: relative;
+			}
 			.email-confirm {
 				.client-profile-data {
 					background: #fff;
