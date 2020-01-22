@@ -258,7 +258,7 @@ $(window).on('load', function() {
         product = orderPlaced.transactionProducts[j];
         additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
         products.push({
-          'id' : additionalInfo ? additionalInfo.ref_id : product.skuRefId,
+          'id' : additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId,
           'id_vtex' : product.id,
           'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
           'name' : product.name,
@@ -273,7 +273,7 @@ $(window).on('load', function() {
           'color' : additionalInfo ? additionalInfo.color : '',
           'variant' : product.skuName,
           'coupon' : "",
-          'comboName': '',
+          'comboName': additionalInfo ? additionalInfo.comboName : '',
           'warrantyType' : additionalInfo ? additionalInfo.warrantyType : null,
           'warrantyPrice' : additionalInfo ? additionalInfo.warrantyPrice : null,
           'shippingPrice' : additionalInfo ? additionalInfo.shippingPrice : null,
