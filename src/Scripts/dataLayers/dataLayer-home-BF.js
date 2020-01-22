@@ -136,7 +136,6 @@ Nitro.module('dataLayer-home-bf', function() {
 					$searchValue
 				);
 			}
-			debugger
 		});
 	};
 
