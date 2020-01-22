@@ -8,8 +8,23 @@ class wishList {
         this.elementSelector = elementSelector;
     }
 
-    addProduct () {
-        fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`).then(res => res.json().then(res => console.log(res)));
+    async addProduct () {
+        try {
+            const userInfos = await (await fetch(`/no-cache/profileSystem/getProfile`)).json();
+
+            if (userInfos.IsUserDefined) {
+                const variantResponse = await (await fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`)).json(),
+                    dataBaseResponse = await (await fetch(`/api/dataentities/WL/search?email=${userInfos.Email}&_fields=id,productId`)).json(),
+                    referenceId = variantResponse.RefId,
+                    productId = dataBaseResponse.map(item => item.productId);
+
+                console.log(dataBaseResponse);
+                console.log(referenceId);
+                console.log(productId);
+            }
+        } catch(error) {
+            console.log(error);
+        }
     }
 }
 
