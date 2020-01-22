@@ -9,6 +9,15 @@ body {
 	.vitrine-subcategorias {
 		padding-top: 45px;
 
+		@include breakpoint('small', 'max') {
+			.container {
+				margin: 0 auto;
+				max-width: 100%;
+				padding-left: 16px;
+				padding-right: 0;
+			}
+		}
+
 		.title {
 			color: $txt-color;
 			margin-bottom: 50px;
@@ -89,7 +98,7 @@ body {
 			}
 
 			li {
-				@include breakpoint ('small', 'max') { margin: 0 12px}
+				@include breakpoint ('small', 'max') { margin: 0 20px 0 0;}
 			}
 
 			a {
@@ -139,6 +148,11 @@ body {
 					position: relative;
 					z-index: 1;
 				}
+					@include breakpoint('small', 'max') {
+					.slick-slide {
+						margin: 0 16px 10px 0;
+					}
+				}
 			}
 
 			.categoryLink {
@@ -163,6 +177,9 @@ body {
 				flex-direction: row;
 				justify-content: space-between;
 				padding: 0 25px;
+				@include breakpoint('small', 'max') {
+					padding: 0;
+				}
 				width: 100%;
 
 				.slick-track {
