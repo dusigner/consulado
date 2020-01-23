@@ -8,12 +8,12 @@ class wishList {
         this.productId = productId;
         this.userEmail = userEmail;
         this.elementSelector = elementSelector;
-        this.newArray = [];
+        this.arr = new Array;
     }
 
     async addProduct () {
         try {
-            const { productId, userEmail, elementSelector, newArray } = this,
+            const { productId, userEmail, elementSelector, arr } = this,
                 dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
                 variantResponse = await (await variantFetch(productId)).json(),
                 listID = dataBaseResponse.map(item => item.id),
@@ -21,13 +21,13 @@ class wishList {
                 referenceCode = variantResponse.RefId;
 
             (referenceCode && String(productCode).indexOf(referenceCode)) === -1 &&
-                newArray.push(...productCode, referenceCode);
+                arr.push(...productCode, referenceCode);
 
-            if (newArray.length) {
-                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(newArray)}};
+            if (arr.length) {
+                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
                 localStorage.setItem('WishList', JSON.stringify(localConfigs));
-                fetch(patchVariantFetch(listID, userEmail, newArray));
+                fetch(patchVariantFetch(listID, userEmail, arr));
             }
         } catch(err) {
             throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
