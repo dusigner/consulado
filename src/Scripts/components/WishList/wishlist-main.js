@@ -1,4 +1,5 @@
 import cacheSelector from './cacheSelector.js';
+import { dataBaseFetch, variantFetch, patchVariantFetch } from './wishRequests.js';
 
 const El = cacheSelector;
 
@@ -7,32 +8,25 @@ class wishList {
         this.productId = productId;
         this.userEmail = userEmail;
         this.elementSelector = elementSelector;
+        this.newArray = [];
     }
 
     async addProduct () {
         try {
-            let newArray = [];
-            const dataBaseResponse = await (await fetch(`/api/dataentities/WL/search?email=${this.userEmail}&_fields=id,productId`)).json(),
-                variantResponse = await (await fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`)).json(),
-                listId = dataBaseResponse.map(item => item.id),
+            const { productId, userEmail, elementSelector, newArray } = this,
+                dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
+                variantResponse = await (await variantFetch(productId)).json(),
+                listID = dataBaseResponse.map(item => item.id),
                 productCode = dataBaseResponse.map(item => item.productReference),
-                referenceCode = variantResponse.RefId,
-                wishData = {
-                    id: listId,
-                    email: this.userEmail,
-                    productId: newArray.push(productCode, referenceCode)
-                },
-                request = new Request(url, {
-                    method: 'PATCH',
-                    credentials: 'include',
-                    headers: {
-                        'Accept': 'application/vnd.vtex.ds.v10+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(wishData)
-                });
+                referenceCode = variantResponse.RefId;
 
-                fetch(request);
+                console.log(referenceCode);
+
+            String(productCode).indexOf(referenceCode) == -1 &&
+                newArray.push(...productCode, referenceCode);
+
+            newArray.length
+                && fetch(patchVariantFetch(listID, userEmail, newArray));
         } catch(error) {
             console.log(error);
         }
