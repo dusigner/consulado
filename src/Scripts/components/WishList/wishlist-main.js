@@ -1,5 +1,5 @@
 import cacheSelector from './cacheSelector.js';
-import { dataBaseFetch, variantFetch, patchVariantFetch, arrayFormat } from './wishlist-utils.js';
+import { arrayFormat, dataBaseFetch, variantFetch, patchVariantFetch } from './wishlist-utils.js';
 
 const El = cacheSelector;
 
