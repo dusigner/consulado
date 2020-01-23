@@ -1,5 +1,5 @@
 import cacheSelector from './cacheSelector.js';
-import { dataBaseFetch, variantFetch, patchVariantFetch } from './wishRequests.js';
+import { dataBaseFetch, variantFetch, patchVariantFetch, arrayFormat } from './wishlist-utils.js';
 
 const El = cacheSelector;
 
@@ -23,8 +23,12 @@ class wishList {
             (referenceCode && String(productCode).indexOf(referenceCode)) === -1 &&
                 newArray.push(...productCode, referenceCode);
 
-            newArray.length
-                && fetch(patchVariantFetch(listID, userEmail, newArray));
+            if (newArray.length) {
+                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(newArray)}};
+
+                localStorage.setItem('WishList', JSON.stringify(localConfigs));
+                fetch(patchVariantFetch(listID, userEmail, newArray));
+            }
         } catch(err) {
             throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
         }
