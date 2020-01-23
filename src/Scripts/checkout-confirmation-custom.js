@@ -252,13 +252,15 @@ $(window).on('load', function() {
       var order = [];
       var products = [];
       var product;
+      var product_sku;
       var additionalInfo;
       products = [];
       for(var j = 0, max_products = orderPlaced.transactionProducts.length ; j < max_products ; j+=1) {
         product = orderPlaced.transactionProducts[j];
         additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
+        product_sku = additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId;
         products.push({
-          'id' : additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId,
+          'id' : product_sku.replace(/ANA|BNA/g, ''),
           'id_vtex' : product.id,
           'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
           'name' : product.name,
