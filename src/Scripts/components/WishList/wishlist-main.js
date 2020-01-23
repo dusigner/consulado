@@ -11,14 +11,22 @@ class wishList {
 
     async addProduct () {
         try {
+            let newArray = [];
             const dataBaseResponse = await (await fetch(`/api/dataentities/WL/search?email=${this.userEmail}&_fields=id,productId`)).json(),
                 variantResponse = await (await fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`)).json(),
-                referenceId = variantResponse.RefId,
-                productId = dataBaseResponse.map(item => item.productId);
+                listId = dataBaseResponse.map(item => item.id),
+                productCode = dataBaseResponse.map(item => item.productId),
+                referenceCode = variantResponse.RefId;
+                wishData = {
+                    id: listId,
+                    email: this.userEmail,
+                    productId: newArray.push(productCode, referenceCode)
+                };
 
-            console.log(this.userEmail);
-            console.log(referenceId);
-            console.log(productId);
+            // newArray.push(productCode, referenceId);
+
+
+
         } catch(error) {
             console.log(error);
         }
