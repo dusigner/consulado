@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import 'helpers/rfs';
+
 $self-pri: $green!default;
 $self-sec: $orange!default;
 $self-bg: $txt-gray-l!default;
@@ -7,6 +9,8 @@ $purple: #7f2893;
 $gray-lightest: #f4f4f4;
 $gray-ligther: #e4e4e4;
 $gray-darkest: #736c6b;
+$gray-dark: #5B5B5B;
+$gray-very-dark: #403C3B;
 $pending-color: #dbd508;
 $canceled-color: #c0392b;
 
@@ -15,6 +19,7 @@ $canceled-color: #c0392b;
 }
 
 .section-orders {
+	background: #fff;
 	margin-bottom: 0;
 	@include breakpoint('extra-small', 'max') {
 		background: #fff;
@@ -75,29 +80,39 @@ $canceled-color: #c0392b;
 		&-item {
 			display: inline-block;
 
-			&:first-child:after {
+			&:after {
 				content: '|';
 				display: inline-block;
 				margin: 0 15px;
 			}
+			&:last-child:after {
+				content: '';
+				display: inline-block;
+			}
 		}
 
 		&-link {
-			@include font-size(14px, true, false);
-			color: $green;
-			font-weight: bold;
-			text-transform: uppercase;
+			@include rfs(18);
+			color: $gray-darkest;
+			font-weight: 500;
 
-			&:hover { text-decoration: underline!important; }
+			&:hover { text-decoration: underline !important; }
+
+			&.link-active {
+				color: $gray-dark;
+				font-weight: bold;
+			}
 		}
 
 		&-title {
-			@include font-size(22px, true, false);
-			color: $green;
+			@include rfs(30);
+			color: $gray-dark;
+			font-weight: bolder;
 			margin: 0;
-			text-transform: uppercase;
 		}
+
 	}
+
 }
 
 .order {
