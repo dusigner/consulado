@@ -20,15 +20,13 @@ class wishList {
                 productCode = dataBaseResponse.map(item => item.productReference),
                 referenceCode = variantResponse.RefId;
 
-                console.log(referenceCode);
-
-            String(productCode).indexOf(referenceCode) == -1 &&
+            (referenceCode && String(productCode).indexOf(referenceCode)) === -1 &&
                 newArray.push(...productCode, referenceCode);
 
             newArray.length
                 && fetch(patchVariantFetch(listID, userEmail, newArray));
-        } catch(error) {
-            console.log(error);
+        } catch(err) {
+            throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
         }
     }
 }
