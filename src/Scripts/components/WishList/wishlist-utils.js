@@ -4,9 +4,6 @@ export const arrayFormat = (arr) => {
 export const dataBaseFetch = (userEmail) => {
     return fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
 }
-export const variantFetch = (productId) => {
-    return fetch(`/api/catalog_system/pvt/products/ProductGet/${productId}`);
-}
 export const patchVariantFetch =  (listID, userEmail, arr) => {
     return new Request('/api/dataentities/WL/documents', {
         method: 'PATCH',

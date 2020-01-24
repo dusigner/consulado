@@ -4,8 +4,8 @@ import { arrayFormat, dataBaseFetch, variantFetch, patchVariantFetch } from './w
 const El = cacheSelector;
 
 class wishList {
-    constructor (productId, userEmail, elementSelector) {
-        this.productId = productId;
+    constructor (productID, userEmail, elementSelector) {
+        this.productID = productID;
         this.userEmail = userEmail;
         this.elementSelector = elementSelector;
         this.arr = new Array;
@@ -13,15 +13,13 @@ class wishList {
 
     async addProduct () {
         try {
-            const { productId, userEmail, elementSelector, arr } = this,
+            const { productID, userEmail, elementSelector, arr } = this,
                 dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
-                variantResponse = await (await variantFetch(productId)).json(),
                 listID = dataBaseResponse.map(item => item.id),
-                productCode = dataBaseResponse.map(item => item.productReference),
-                referenceCode = variantResponse.RefId;
+                productCode = dataBaseResponse.map(item => item.productReference);
 
-            (referenceCode && String(productCode).indexOf(referenceCode)) === -1 &&
-                arr.push(...productCode, referenceCode);
+            (productID && String(productCode).indexOf(productID)) === -1 &&
+                arr.push(...productCode, productID);
 
             if (arr.length) {
                 const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
