@@ -60,7 +60,7 @@ Nitro.module('order.favoritos', function() {
 				.fail(function() {
 					self.$container.removeClass('myorders--loading');
 					self.favoritos.isLoaded = true;
-					self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos ativos</h2>');
+					self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
 				});
 		} else {
 			self.recurrenceRender(self.favoritos.favoritos);

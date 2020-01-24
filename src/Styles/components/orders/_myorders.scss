@@ -31,8 +31,13 @@ $canceled-color: #c0392b;
 				width: 100%;
 
 				.myorders__page-control {
+					display: flex;
+					flex-flow: row;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					max-width: 100%;
 					text-align: center;
-					width: 100%;
+					width: 380px;
 				}
 			}
 		}
@@ -46,6 +51,7 @@ $canceled-color: #c0392b;
  }
 
 .myorders {
+
 	&--loading:before {
 		@include spinner($green, 100px);
 		content: '';
@@ -74,38 +80,43 @@ $canceled-color: #c0392b;
 
 	&__page {
 		align-items: center;
+		border-bottom: 5px solid #F4F4F4;
 		display: flex;
 		justify-content: space-between;
 
 		&-item {
 			display: inline-block;
-
-			&:after {
-				content: '|';
-				display: inline-block;
-				margin: 0 15px;
-			}
-			&:last-child:after {
-				content: '';
-				display: inline-block;
-			}
+			padding: 0 20px;
 		}
 
 		&-link {
-			@include rfs(18);
+			@include rfs(16);
 			color: $gray-darkest;
 			font-weight: 500;
 
-			&:hover { text-decoration: underline !important; }
+			&:hover { text-decoration: none !important; }
 
 			&.link-active {
 				color: $gray-dark;
 				font-weight: bold;
+				position: relative;
+				&:after {
+					background-color: $green;
+					border-radius: 20px;
+					bottom: 0;
+					content: '';
+					display: inline-block;
+					height: 2px;
+					left: 34%;
+					position: absolute;
+					top: 28px;
+					width: 26px;
+				}
 			}
 		}
 
 		&-title {
-			@include rfs(30);
+			@include rfs(28);
 			color: $gray-dark;
 			font-weight: bolder;
 			margin: 0;
