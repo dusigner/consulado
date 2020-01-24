@@ -29,7 +29,7 @@ class wishList {
                 localStorage.setItem('WishList', JSON.stringify(localConfigs));
                 fetch(patchVariantFetch(listID, userEmail, arr));
             }
-        } catch(err) {
+        } catch (err) {
             throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
         }
     }
