@@ -95,6 +95,10 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 
 		.detalhes {
+			.product-infos-wrap {
+				display: block;
+				position: relative;
+			}
 			.wishlist__apply {
 				span {
 					opacity: 1;
