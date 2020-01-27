@@ -19,7 +19,7 @@ $breakpoint-map: (
 $gray-dark: #2E2E2E;
 
 .tipbar-novo {
-	background-color: $gray-m;
+	background-color: #f4f4f4;
 	@include breakpoint('small', 'min') {
 		padding: 30px 0;
 	}

@@ -126,12 +126,16 @@ Nitro.module('dataLayer-home-bf', function() {
 
 	this.search = () => {
 		$('.onpage-search button').on('click', ({currentTarget}) => {
-			const $element = $(currentTarget);
-			pushDataLayer(
-				'[SQUAD] Pesquisa do site',
-				`Termo de busca`,
-				`${$element.parent().find('.text-search').val()}`
-			);
+			const $element = $(currentTarget),
+				$searchValue = $element.parent().find('.text-search').val();
+
+			if ($searchValue.length > 3) {
+				pushDataLayer(
+					'[SQUAD] Pesquisa do site',
+					`Termo de busca`,
+					$searchValue
+				);
+			}
 		});
 	};
 
