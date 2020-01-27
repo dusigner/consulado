@@ -958,6 +958,16 @@ $(document).on('ready', function() {
 	);
 });
 
+// GET PCI SCRIPT
+(function (document, tag) {
+    var scriptTag = document.createElement(tag);
+    var firstScriptTag = document.getElementsByTagName(tag)[0];
+    scriptTag.src = '/files/pci-frontend.js';
+    firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+
+    $('head').append('<link rel="stylesheet" href="/files/pci-frontend.css" type="text/css" />');
+}(document, 'script'));
+
 (function(window, document) {
 
   "use strict";
