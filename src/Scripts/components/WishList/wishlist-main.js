@@ -1,34 +1,34 @@
 import cacheSelector from './cacheSelector.js';
+import { arrayFormat, dataBaseFetch, patchVariantFetch } from './wishlist-utils.js';
 
 const El = cacheSelector;
 
 class wishList {
-    constructor (productId, userEmail, elementSelector) {
-        this.productId = productId;
+    constructor (productID, userEmail, elementSelector) {
+        this.productID = productID;
         this.userEmail = userEmail;
         this.elementSelector = elementSelector;
+        this.arr = new Array;
     }
 
     async addProduct () {
         try {
-            let newArray = [];
-            const dataBaseResponse = await (await fetch(`/api/dataentities/WL/search?email=${this.userEmail}&_fields=id,productId`)).json(),
-                variantResponse = await (await fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`)).json(),
-                listId = dataBaseResponse.map(item => item.id),
-                productCode = dataBaseResponse.map(item => item.productId),
-                referenceCode = variantResponse.RefId;
-                wishData = {
-                    id: listId,
-                    email: this.userEmail,
-                    productId: newArray.push(productCode, referenceCode)
-                };
+            const { productID, userEmail, elementSelector, arr } = this,
+                dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
+                listID = dataBaseResponse.map(item => item.id),
+                productCode = dataBaseResponse.map(item => item.productReference);
 
-            // newArray.push(productCode, referenceId);
+            (productID && String(productCode).indexOf(productID)) === -1 &&
+                arr.push(...productCode, productID);
 
+            if (arr.length) {
+                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
-
-        } catch(error) {
-            console.log(error);
+                localStorage.setItem('WishList', JSON.stringify(localConfigs));
+                fetch(patchVariantFetch(listID, userEmail, arr));
+            }
+        } catch (err) {
+            throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
         }
     }
 }

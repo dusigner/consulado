@@ -24,6 +24,7 @@ require('dataLayers/dataLayer-home-BF.js')
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
+import wishList from './components/WishList/wishlist-main';
 
 Nitro.controller(
 	'home',
@@ -45,6 +46,21 @@ Nitro.controller(
 	],
 
 	function(chaordic) {
+
+		console.log('executei');
+
+		// $.get(`/no-cache/profileSystem/getProfile`).then((res) => {
+		// 	$('.prateleira ul li').on('click', function(ev) {
+		// 		ev.preventDefault();
+		// 		const teste = $(this).find('article').attr('data-idproduto');
+
+		// 		if(res.IsUserDefined) {
+		// 			const wishListStart = new wishList(teste, res.Email, $(this));
+
+		// 			wishListStart.addProduct();
+		// 		}
+		// 	});
+		// });
 
 		chaordic.init('home');
 
