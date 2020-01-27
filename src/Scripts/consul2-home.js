@@ -48,18 +48,18 @@ Nitro.controller(
 
 		console.log('executei');
 
-		$.get(`/no-cache/profileSystem/getProfile`).then((res) => {
-			$('.prateleira ul li').on('click', function(ev) {
-				ev.preventDefault();
-				const teste = $(this).find('article').attr('data-idproduto');
+		// $.get(`/no-cache/profileSystem/getProfile`).then((res) => {
+		// 	$('.prateleira ul li').on('click', function(ev) {
+		// 		ev.preventDefault();
+		// 		const teste = $(this).find('article').attr('data-idproduto');
 
-				if(res.IsUserDefined) {
-					const wishListStart = new wishList(teste, res.Email, $(this));
+		// 		if(res.IsUserDefined) {
+		// 			const wishListStart = new wishList(teste, res.Email, $(this));
 
-					wishListStart.addProduct();
-				}
-			});
-		});
+		// 			wishListStart.addProduct();
+		// 		}
+		// 	});
+		// });
 
 		chaordic.init('home');
 
