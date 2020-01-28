@@ -17,6 +17,17 @@ const Utils = {
             },
             body: JSON.stringify({ id: String(listID), email: userEmail, productReference: Utils.arrayFormat(arr)})
         });
+    },
+
+    changingEvents(elementSelector) {
+        elementSelector
+            .parents('.wishlist__container')
+            .removeClass('loading')
+            .addClass('wished')
+            .find('.wishlist__button')
+            .attr('title', 'Remover dos favoritos')
+            .append('<span><strong>Adicionado</strong> aos favoritos</span>')
+            .find('span').first().remove();
     }
 }
 

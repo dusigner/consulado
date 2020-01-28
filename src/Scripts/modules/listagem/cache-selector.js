@@ -1,9 +1,9 @@
 export default {
     auxiliars: {
         Document: $(document),
-        wishAddButton: $('.wishlist__apply'),
+        wishAddButton: $('.wishlist__button'),
         userApi: '/no-cache/profileSystem/getProfile',
         wishContainer: '.wishlist__container',
-        wishApply: '.wishlist__apply',
+        wishButton: '.wishlist__button',
     }
 }

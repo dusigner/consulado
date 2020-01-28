@@ -95,7 +95,7 @@ body.listagem {
 		box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
 
 		.detalhes {
-			.wishlist__apply {
+			.wishlist__button {
 				span {
 					opacity: 1;
 					transform: translateX(0);
@@ -314,8 +314,18 @@ body.listagem {
 				position: absolute;
 				width: 100%;
 				z-index: 1;
+
+				&.wished {
+					.wishlist__button {
+						font-weight: bold;
+
+						strong {
+							color: #9ACA3C
+						}
+					}
+				}
 			}
-			&__apply {
+			&__button {
 				@extend %flex-center;
 				i {
 					&:before {
@@ -334,14 +344,6 @@ body.listagem {
 					transform: translateX(-10%);
 					transition: transform .2s ease;
 					visibility: hidden;
-				}
-			}
-			&__applyed {
-				display: none;
-				font-weight: bold;
-
-				strong {
-					color: #9ACA3C
 				}
 			}
 		}

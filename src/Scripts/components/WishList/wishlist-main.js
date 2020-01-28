@@ -1,7 +1,7 @@
 import cacheSelector from './cacheSelector.js';
-import { arrayFormat, dataBaseFetch, patchVariantFetch } from './wishlist-utils.js';
+import { arrayFormat, dataBaseFetch, patchVariantFetch, changingEvents } from './wishlist-utils.js';
 
-const El = cacheSelector.utils, { wishContainer, Wished, Loading } = El;
+const El = cacheSelector.utils, { wishContainer, Loading } = El;
 
 class wishList {
     constructor (productID, userEmail, elementSelector) {
@@ -26,12 +26,7 @@ class wishList {
                 const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
                 localStorage.setItem('WishList', JSON.stringify(localConfigs));
-
-                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => {
-                    elementSelector.parents(wishContainer)
-                    .removeClass(Loading)
-                    .addClass(Wished);
-                });
+                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvents(elementSelector));
             }
         } catch (err) {
             elementSelector.parents(wishContainer)
