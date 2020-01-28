@@ -30,12 +30,12 @@
 	</div>
 
 	<!-- Main -->
-	<div class="main clearfix">
+	<div class="main clearfix" itemscope="" itemtype="http://schema.org/Product">
 		<div class="container clearfix">
 			<div class="row no-margin">
 				<!-- Box-right -->
 				<div class="col-v2 l5 m12 gutters-on prod-title">
-					<h1 class="lead">
+					<h1 class="lead" itemprop="name">
 						<vtex.cmc:productName />
 						<span class="reference"><vtex.cmc:productReference/></span>
 						<span class="productSku hide"><vtex.cmc:skuReference /></span>
@@ -220,7 +220,7 @@
 		<!-- /Produtos relacionados - Vtex -->
 
 		<div class="hide">
-			<vtex.cmc:ProductDescription />
+			<span itemprop="description"><vtex.cmc:ProductDescription /></span>
 			<vtex.cmc:productSpecification />
 
 			<div id="modal-sku" data-title="Selecione a voltagem">
