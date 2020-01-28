@@ -319,6 +319,17 @@ body.listagem {
 					.wishlist__button {
 						font-weight: bold;
 
+						i {
+							&:before {
+								background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='179' height='24' viewBox='0 0 179 24'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%239aca3c;font-size:12px;font-family:ConsulCoHeadline-Bold, Consul Co Headline;font-weight:700;%7D.b%7Bfill:%23736c6b;%7D.c%7Bfill:%235b5b5b;%7D.d%7Bfill:%23ec008c;%7D.e%7Bfill:none;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1033 -809)'%3E%3Cg transform='translate(-330.807 43.193)'%3E%3Cg transform='translate(1366.401 769.008)'%3E%3Cpath class='c' d='M394.242,853.886h-1.414v-1.414a.471.471,0,0,0-.943,0v1.414h-1.414a.471.471,0,0,0,0,.943h1.414v1.414a.471.471,0,0,0,.943,0v-1.414h1.414a.471.471,0,0,0,0-.943Z' transform='translate(-390 -852)'/%3E%3Cg transform='translate(3.771 4.259)'%3E%3Cpath class='d' d='M393.7,1131a3.947,3.947,0,0,0-2.866,1.229,4.311,4.311,0,0,0,0,5.92l5.993,6.285a.584.584,0,0,0,.826.02l.02-.02,6-6.279a4.31,4.31,0,0,0,0-5.92,3.948,3.948,0,0,0-5.732,0l-.687.712-.688-.718A3.947,3.947,0,0,0,393.7,1131Z' transform='translate(-389.661 -1131)'/%3E%3C/g%3E%3C/g%3E%3Crect class='e' width='24' height='24' transform='translate(1363.807 765.807)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+								content: '';
+								display: block;
+								height: 26px;
+								margin-top: -2px;
+								width: 22px;
+							}
+						}
+
 						strong {
 							color: #9ACA3C
 						}
@@ -329,11 +340,12 @@ body.listagem {
 				@extend %flex-center;
 				i {
 					&:before {
-						background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' data-prefix='far' data-icon='heart' class='svg-inline--fa fa-heart fa-w-16' role='img' viewBox='0 0 512 512'%3E%3Cpath fill='currentColor' d='M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z'/%3E%3C/svg%3E");
+						background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%235b5b5b;%7D.b%7Bfill:%238cc63f;%7D.c%7Bfill:none;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1364.307 -766.307)'%3E%3Cg transform='translate(1366.429 769.043)'%3E%3Cg transform='translate(3.812 4.406)'%3E%3Cpath class='a' d='M426.058,889.879a3.056,3.056,0,0,1,2.229.957l.69.721.645.674.648-.671.693-.718a3.066,3.066,0,0,1,4.456,0,3.439,3.439,0,0,1,0,4.7l-3.039,3.181-2.758,2.887-5.791-6.073a3.442,3.442,0,0,1,0-4.7,3.055,3.055,0,0,1,2.228-.956m0-.9a3.961,3.961,0,0,0-2.876,1.234,4.327,4.327,0,0,0,0,5.942l6.015,6.308a.587.587,0,0,0,.829.02l.02-.02,6.021-6.3a4.325,4.325,0,0,0,0-5.942,3.963,3.963,0,0,0-5.753,0l-.69.715-.69-.721a3.961,3.961,0,0,0-2.876-1.234Z' transform='translate(-422 -888.982)'/%3E%3C/g%3E%3Cpath class='b' d='M394.289,853.906h-1.429v-1.43a.477.477,0,0,0-.953,0v1.43h-1.43a.477.477,0,0,0,0,.953h1.43v1.43a.477.477,0,0,0,.953,0v-1.43h1.429a.477.477,0,0,0,0-.953Z' transform='translate(-390 -852)'/%3E%3C/g%3E%3Crect class='c' width='24' height='24' transform='translate(1364.307 766.307)'/%3E%3C/g%3E%3C/svg%3E");
 						content: '';
 						display: block;
-						height: 18px;
-						width: 18px;
+						height: 26px;
+						margin-top: -2px;
+						width: 22px;
 					}
 				}
 				span {
