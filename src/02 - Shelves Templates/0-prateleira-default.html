@@ -4,16 +4,18 @@
 
 <article class="box-produto $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
 	<div class="detalhes">
-		<a href="$uri" title="$escapedName" class="image">
-			<span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span>
-			<span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span>
-			<span class="img backup">$product.GetImageTag(345, 345)</span>
-			$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
+		<div class="product-infos-wrap">
+			<a href="$uri" title="$escapedName" class="image">
+				<span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span>
+				<span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span>
+				<span class="img backup">$product.GetImageTag(345, 345)</span>
+				$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
 
-			<div class="FlagsHightLight">
-				$product.DiscountHightLight
-				$product.HightLight
-			</div>
+				<div class="FlagsHightLight">
+					$product.DiscountHightLight
+					$product.HightLight
+				</div>
+			</a>
 			<div class="wishlist__container">
 				<div class="wishlist__apply" data-idproduto="$id" title="Adicionar aos favoritos">
 					<i></i>
@@ -24,7 +26,7 @@
 					<span><strong>Adicionado</strong> aos favoritos</span>
 				</div>
 			</div>
-		</a>
+		</div>
 
 		<a href="$uri" title="$escapedName" class="prod-info">
 
@@ -39,8 +41,13 @@
 			</div>
 
 			<!-- Rating TrustVox -->
-			<div data-trustvox-product-code="$product.Id"></div>
+			<div data-trustvox-product-code="$product.Id" style="display: none;"></div>
 			<!-- Rating TrustVox -->
+
+			<!-- Yourviews - estrelas -->
+			<div class="yv-review-quickreview hide" value="$id"></div>
+			<!-- Yourviews - estrelas -->
+
 			#if ($product.IsInStock)
 				<div class="price">
 					<p class="de">
