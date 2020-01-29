@@ -1,12 +1,4 @@
 const Utils = {
-    async dataBaseResponse(userEmail) {
-        const dataBaseRes = await (await Utils.dataBaseFetch(userEmail)).json(),
-            listID = dataBaseRes.map(item => item.id),
-            productCode = dataBaseRes.map(item => item.productReference);
-
-        return { listID, productCode }
-    },
-
     dataBaseFetch(userEmail) {
         return fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
     },

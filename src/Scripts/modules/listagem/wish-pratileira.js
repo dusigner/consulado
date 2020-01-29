@@ -19,7 +19,7 @@ Nitro.module('wish-pratileira', function() {
 				if (res.IsUserDefined) {
 					const wishListStart = new wishList(productID, res.Email, $element);
 
-					wishListStart.addProduct();
+					wishListStart.handleEvents();
 				}
 			});
 		}));
