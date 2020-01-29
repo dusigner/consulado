@@ -10,6 +10,15 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 	align-items: center;
 }
 
+@keyframes loaderAnimation {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+}
+
 body.listagem {
 	.main { margin-top: 10px; }
 
@@ -314,11 +323,9 @@ body.listagem {
 				position: absolute;
 				width: 100%;
 				z-index: 1;
-
 				&.wished {
 					.wishlist__button {
 						font-weight: bold;
-
 						i {
 							&:before {
 								background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='179' height='24' viewBox='0 0 179 24'%3E%3Cdefs%3E%3Cstyle%3E.a%7Bfill:%239aca3c;font-size:12px;font-family:ConsulCoHeadline-Bold, Consul Co Headline;font-weight:700;%7D.b%7Bfill:%23736c6b;%7D.c%7Bfill:%235b5b5b;%7D.d%7Bfill:%23ec008c;%7D.e%7Bfill:none;%7D%3C/style%3E%3C/defs%3E%3Cg transform='translate(-1033 -809)'%3E%3Cg transform='translate(-330.807 43.193)'%3E%3Cg transform='translate(1366.401 769.008)'%3E%3Cpath class='c' d='M394.242,853.886h-1.414v-1.414a.471.471,0,0,0-.943,0v1.414h-1.414a.471.471,0,0,0,0,.943h1.414v1.414a.471.471,0,0,0,.943,0v-1.414h1.414a.471.471,0,0,0,0-.943Z' transform='translate(-390 -852)'/%3E%3Cg transform='translate(3.771 4.259)'%3E%3Cpath class='d' d='M393.7,1131a3.947,3.947,0,0,0-2.866,1.229,4.311,4.311,0,0,0,0,5.92l5.993,6.285a.584.584,0,0,0,.826.02l.02-.02,6-6.279a4.31,4.31,0,0,0,0-5.92,3.948,3.948,0,0,0-5.732,0l-.687.712-.688-.718A3.947,3.947,0,0,0,393.7,1131Z' transform='translate(-389.661 -1131)'/%3E%3C/g%3E%3C/g%3E%3Crect class='e' width='24' height='24' transform='translate(1363.807 765.807)'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -329,10 +336,50 @@ body.listagem {
 								width: 22px;
 							}
 						}
-
 						strong {
 							color: #9ACA3C
 						}
+					}
+				}
+				&.loading {
+					.wishlist__button {
+						i {
+							display: none;
+						}
+					}
+					.wishlist__loader {
+						display: block;
+					}
+				}
+			}
+
+			&__loader {
+				display: none;
+				height: 26px;
+				margin-top: -2px;
+				position: relative;
+				width: 22px;
+
+				div {
+					animation: loaderAnimation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+					border: 3px solid #c3e088;
+					border-color: #c3e088 transparent transparent transparent;
+					border-radius: 50%;
+					box-sizing: border-box;
+					display: block;
+					height: 18px;
+					margin: 4px;
+					position: absolute;
+					width: 18px;
+
+					&:nth-child(1) {
+						animation-delay: -0.45s;
+					}
+					&:nth-child(2) {
+						animation-delay: -0.3s;
+					}
+					&:nth-child(3) {
+						animation-delay: -0.15s;
 					}
 				}
 			}
@@ -350,7 +397,7 @@ body.listagem {
 				}
 				span {
 					display: block;
-					margin-left: 5px;
+					margin-left: 8px;
 					opacity: 0;
 					position: relative;
 					transform: translateX(-10%);

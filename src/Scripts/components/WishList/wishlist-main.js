@@ -14,6 +14,9 @@ class wishList {
     async addProduct () {
         const { productID, userEmail, elementSelector, arr } = this;
 
+        elementSelector.parents(wishContainer)
+            .addClass(Loading);
+
         try {
             const dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
                 listID = dataBaseResponse.map(item => item.id),
