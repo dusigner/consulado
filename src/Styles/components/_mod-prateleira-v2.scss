@@ -343,6 +343,7 @@ body.listagem {
 				}
 				&.loading {
 					.wishlist__button {
+						pointer-events: none;
 						i {
 							display: none;
 						}
