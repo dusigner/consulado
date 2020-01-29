@@ -3,7 +3,7 @@
 require('vendors/jquery.whp-modal');
 require('modules/orders/order.helpers');
 
-require('Dust/orders/recurrence/recurrences.html');
+require('Dust/orders/favoritos.html');
 
 var CRM = require('modules/store/orders-crm');
 
