@@ -1,6 +1,10 @@
 const Utils = {
-    arrayFormat(arr) {
-        return String(arr).charAt(0) === ',' ? String(arr).substr(1) : String(arr);
+    async dataBaseResponse(userEmail) {
+        const dataBaseRes = await (await Utils.dataBaseFetch(userEmail)).json(),
+            listID = dataBaseRes.map(item => item.id),
+            productCode = dataBaseRes.map(item => item.productReference);
+
+        return { listID, productCode }
     },
 
     dataBaseFetch(userEmail) {
@@ -19,7 +23,11 @@ const Utils = {
         });
     },
 
-    changingEvents(elementSelector) {
+    arrayFormat(arr) {
+        return String(arr).charAt(0) === ',' ? String(arr).substr(1) : String(arr);
+    },
+
+    changingEvent(elementSelector) {
         elementSelector
             .parents('.wishlist__container')
             .removeClass('loading')

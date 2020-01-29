@@ -1,5 +1,5 @@
 import cacheSelector from './cacheSelector.js';
-import { arrayFormat, dataBaseFetch, patchVariantFetch, changingEvents } from './wishlist-utils.js';
+import { arrayFormat, patchVariantFetch, dataBaseResponse, changingEvent } from './wishlist-utils.js';
 
 const El = cacheSelector.utils, { wishContainer, Loading } = El;
 
@@ -11,16 +11,14 @@ class wishList {
         this.arr = new Array;
     }
 
-    async addProduct () {
+    async addProduct() {
         const { productID, userEmail, elementSelector, arr } = this;
 
         elementSelector.parents(wishContainer)
             .addClass(Loading);
 
         try {
-            const dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
-                listID = dataBaseResponse.map(item => item.id),
-                productCode = dataBaseResponse.map(item => item.productReference);
+            const dataBaseReturn = await dataBaseResponse(userEmail), { listID, productCode } = dataBaseReturn;
 
             (productID && String(productCode).indexOf(productID)) === -1 &&
                 arr.push(...productCode, productID);
@@ -29,7 +27,7 @@ class wishList {
                 const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
                 localStorage.setItem('WishList', JSON.stringify(localConfigs));
-                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvents(elementSelector));
+                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
             }
         } catch (err) {
             elementSelector.parents(wishContainer)
