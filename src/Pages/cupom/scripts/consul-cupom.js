@@ -5,11 +5,11 @@ import toastr from 'vendors/toastr';
 import {getCoupons} from 'modules/store/crm';
 import DataLayer from './modules/dataLayer';
 require('modules/listagem/percentoff');
-require('modules/listagem/wish-pratileira');
+
 require('modules/prateleira');
 require('Dust/coupon/cupom-list.html');
 
-Nitro.setup(['percentoff', 'wish-pratileira', 'prateleira'], function(percentoff, prateleira) {
+Nitro.setup(['percentoff', 'prateleira'], function(percentoff, prateleira) {
 
 	this.init=()=>{
 		getCoupons().then(cupons=>{
