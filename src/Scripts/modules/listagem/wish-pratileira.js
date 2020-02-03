@@ -11,7 +11,9 @@ Nitro.module('wish-pratileira', function() {
 		const windowHash = window.location.hash;
 
 		fetch(userApi).then(res => res.json().then((res) => {
-			this.wishInit(res, windowHash);
+			setTimeout(() => {
+				this.wishInit(res, windowHash);
+			}, 1000);
 		}));
 	};
 
@@ -29,7 +31,18 @@ Nitro.module('wish-pratileira', function() {
 	};
 
 	this.setFavoriteds = (res) => {
-		if (res.IsUserDefined) {
+		const wishLocalStorage = localStorage.getItem('WishList');
+
+		if (wishLocalStorage && res.IsUserDefined) {
+			const wishLocalJson = JSON.parse(wishLocalStorage).value;
+
+			wishLocalJson.productReference.split(',').forEach((item) => {
+				changingEvent($(`.wishlist__button[data-idproduto=${item}]`))
+			});
+
+			this.handleFavorites(res);
+		}
+		else if (res.IsUserDefined) {
 			dataBaseFetch(res.Email).then(data => data.json().then((response) => {
 				response &&
 					response.map(i => i.productReference &&
