@@ -13,6 +13,7 @@ require('modules/resultado-busca');
 require('modules/chaordic');
 require('modules/listagem/busca-chaordic');
 require('modules/listagem/comparebar');
+require('modules/listagem/wish-pratileira');
 // require('modules/compare');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
@@ -29,6 +30,7 @@ Nitro.controller(
 		'calculadorabtu',
 		'busca-chaordic',
 		'comparebar',
+		'wish-pratileira',
 		'dataLayer-categoria'
 	],
 	function(chaordic) {

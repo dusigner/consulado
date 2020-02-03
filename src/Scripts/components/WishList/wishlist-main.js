@@ -1,34 +1,42 @@
 import cacheSelector from './cacheSelector.js';
+import { patchVariantFetch, dataBaseFetch, arrayFormat, changingEvent } from './wishlist-utils.js';
 
-const El = cacheSelector;
+const El = cacheSelector.utils, { wishContainer, Loading } = El;
 
 class wishList {
-    constructor (productId, userEmail, elementSelector) {
-        this.productId = productId;
+    constructor (productID, userEmail, elementSelector) {
+        this.productID = productID;
         this.userEmail = userEmail;
         this.elementSelector = elementSelector;
+        this.arr = new Array;
     }
 
-    async addProduct () {
+    async handleEvents() {
+        const { productID, userEmail, elementSelector, arr } = this;
+
+        elementSelector.parents(wishContainer)
+            .addClass(Loading);
+
         try {
-            let newArray = [];
-            const dataBaseResponse = await (await fetch(`/api/dataentities/WL/search?email=${this.userEmail}&_fields=id,productId`)).json(),
-                variantResponse = await (await fetch(`/api/catalog_system/pvt/products/ProductGet/${this.productId}`)).json(),
-                listId = dataBaseResponse.map(item => item.id),
-                productCode = dataBaseResponse.map(item => item.productId),
-                referenceCode = variantResponse.RefId;
-                wishData = {
-                    id: listId,
-                    email: this.userEmail,
-                    productId: newArray.push(productCode, referenceCode)
-                };
+            const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
+                listID = dataBaseRes.map(item => item.id),
+                productCode = dataBaseRes.map(item => item.productReference);
 
-            // newArray.push(productCode, referenceId);
+            if (productID) {
+                String(productCode).indexOf(productID) === -1 ?
+                    arr.push(...productCode, productID) :
+                    arr.push(...productCode[0].split(',').filter(item => item !== productID));
 
+                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
+                localStorage.setItem('WishList', JSON.stringify(localConfigs));
+                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
+            }
+        } catch (err) {
+            elementSelector.parents(wishContainer)
+                .removeClass(Loading);
 
-        } catch(error) {
-            console.log(error);
+            throw new Error('Wish failed :(' + err);
         }
     }
 }
