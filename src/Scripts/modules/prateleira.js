@@ -1,7 +1,6 @@
 'use strict';
 
 require('modules/listagem/percentoff');
-require('modules/listagem/wish-pratileira');
 
 Nitro.module('prateleira', ['percentoff, wish-pratileira'], function() {
 
