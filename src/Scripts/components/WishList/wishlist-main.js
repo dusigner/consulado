@@ -11,7 +11,7 @@ class wishList {
         this.arr = new Array;
     }
 
-    async handleEvents() {
+    async favoritesEvents() {
         const { productID, userEmail, elementSelector, arr } = this;
 
         elementSelector.parents(wishContainer)
