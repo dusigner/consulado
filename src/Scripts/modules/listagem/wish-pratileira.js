@@ -7,22 +7,39 @@ const El = cacheSelector.auxiliars, { Document, userApi, wishAddButton, wishCont
 
 Nitro.module('wish-pratileira', function() {
 	this.init = () => {
-		this.handleWishList();
+		const windowHash = window.location.hash;
+
+		fetch(userApi).then(res => res.json().then((res) => {
+			this.wishInit(res, windowHash);
+		}));
 	};
 
-	this.handleWishList = () => {
-		fetch(userApi).then(res => res.json().then((res) => {
-			Document.on('click', wishAddButton, ({target}) => {
-				const $element = $(target),
-					productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto');
+	this.wishInit = (res, windowHash = null) => {
+		if (windowHash) {
+			const productID = windowHash.substr(1),
+				$element = $(`.wishlist__button[data-idproduto=${productID}]`),
+				wishListStart = new wishList(productID, res.Email, $element);
 
-				if (res.IsUserDefined) {
-					const wishListStart = new wishList(productID, res.Email, $element);
+			wishListStart.handleEvents();
+			this.handleWishList(res);
+		} else {
+			this.handleWishList(res);
+		}
+	};
 
-					wishListStart.handleEvents();
-				}
-			});
-		}));
+	this.handleWishList = (res) => {
+		Document.on('click', wishAddButton, ({target}) => {
+			const $element = $(target),
+				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto');
+
+			if (res.IsUserDefined) {
+				const wishListStart = new wishList(productID, res.Email, $element);
+
+				wishListStart.handleEvents();
+			} else {
+				window.location.href = `/login?ReturnUrl=${window.location.pathname}#${productID}`;
+			}
+		});
 	};
 
 	this.init();
