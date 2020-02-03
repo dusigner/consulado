@@ -1,3 +1,4 @@
+/* global $: true, Nitro: true, _: true */
 'use strict';
 
 import wishList from './../../components/WishList/wishlist-main.js';

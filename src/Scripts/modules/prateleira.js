@@ -1,8 +1,9 @@
 'use strict';
 
 require('modules/listagem/percentoff');
+require('modules/listagem/wish-pratileira')
 
-Nitro.module('prateleira', ['percentoff'], function() {
+Nitro.module('prateleira', ['percentoff, wish-pratileira'], function() {
 
 	this.init = () =>{
 		$('.helperComplement').remove();
