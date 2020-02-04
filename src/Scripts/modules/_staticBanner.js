@@ -5,7 +5,7 @@ Nitro.module('static-banner', function() {
 
 		$bannerPrincipal
 			.slick({
-				autoplay: false,
+				autoplay: true,
 				autoplaySpeed: 7000,
 				mobileFirst: true,
 				dots: true,
