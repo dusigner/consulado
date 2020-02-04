@@ -11,17 +11,18 @@ require('components/instagram-stories');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
-
+require('modules/_staticBanner');
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
 require('modules/interested-shelf');
-require('modules/_staticBanner');
+
 require('dataLayers/dataLayer-home-BF.js')
 
 // import 'modules/counter';
 // import 'modules/datalayer_track';
+
 Nitro.controller(
 	'home',
 	[
