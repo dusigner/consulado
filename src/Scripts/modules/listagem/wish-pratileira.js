@@ -5,7 +5,7 @@ import wishList from './../../components/WishList/wishlist-main.js';
 import { dataBaseFetch, changingEvent } from './../../components/WishList/wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
-const El = cacheSelector.auxiliars, { Document, userApi, wishAddButton, wishContainer, wishButton, Wished } = El;
+const El = cacheSelector.auxiliars, { Document, userApi, wishAddButton, wishContainer, wishButton } = El;
 
 Nitro.module('wish-pratileira', function() {
 	this.init = () => {

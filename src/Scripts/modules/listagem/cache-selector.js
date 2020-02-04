@@ -5,6 +5,5 @@ export default {
         userApi: '/no-cache/profileSystem/getProfile',
         wishContainer: '.wishlist__container',
         wishButton: '.wishlist__button',
-        Wished: 'wished',
     }
 }
