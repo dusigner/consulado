@@ -38,7 +38,11 @@ Nitro.module('wish-pratileira', function() {
 			const wishLocalJson = JSON.parse(wishLocalStorage).value;
 
 			wishLocalJson.productReference.split(',').forEach((item) => {
-				changingEvent($(`.wishlist__button[data-idproduto=${item}]`))
+				$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+					const $element = $(el);
+
+					changingEvent($element);
+				});
 			});
 
 			this.handleFavorites(res);
@@ -48,7 +52,11 @@ Nitro.module('wish-pratileira', function() {
 				response &&
 					response.map(i => i.productReference &&
 						i.productReference.split(',').forEach((item) => {
-							changingEvent($(`.wishlist__button[data-idproduto=${item}]`))
+							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+								const $element = $(el);
+
+								changingEvent($element);
+							});
 						}));
 			})).then(() => this.handleFavorites(res));
 		} else {
