@@ -1,5 +1,4 @@
 $background : #272727;
-
 body {
 	.banners {
 		display: none !important;
@@ -10,25 +9,25 @@ body {
 
 	.banners-static {
 		@include breakpoint('small', 'max') { display: none; }
-		background-color: $background;
-		height: 500px;
+		height: auto;
 		line-height: 0;
 		overflow: hidden;
 
 		.slider-banner {
 			display: inline-block;
-			height: 500px;
+			height: 100%;
+			max-width: 59.5%;
 			overflow: hidden;
-			width: 66.5%;
+			width: 100%;
 		}
 
 		.lateral-banners {
 			display: inline-block;
-			height: 500px;
+			height: 100%;
 			overflow: hidden;
-			width: 33.5%;
+			width: 40.5%;
 			.box-banner {
-				height: 240px;
+				height: 50%;
 				width: 100%;
 			}
 		}
