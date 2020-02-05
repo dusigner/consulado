@@ -25,43 +25,39 @@ Nitro.module('order.favoritos', function() {
 		self.$container.addClass('myorders--loading');
 
 		if (!self.favoritos.favoritos) {
-			CRM.getRecurrences()
-				.then(function(res) {
-					if (res.status === 'INACTIVE') {
-						$.each(res.items, function(i, v) {
-							v.status = 'INACTIVE';
+			fetch('/no-cache/profileSystem/getProfile').then(response => response.json())
+				.then(result => {
+					let emailUser = result.Email;
+
+					fetch('/api/dataentities/WL/search?email=' + emailUser + '&_fields=id,productReference').then(response => response.json())
+						.then(prodFavorito => {
+
+							let referencia = prodFavorito[0].productReference.split(',');
+
+							if(referencia.length === 0) {
+								self.$container.removeClass('myorders--loading');
+								self.favoritos.isLoaded = true;
+								self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
+								return;
+							}
+
+							referencia.map(id => {
+								fetch('/api/catalog_system/pvt/products/ProductGet/' + id).then(response => response.json())
+									.then(refProduto => {
+										//montar html
+										console.log(refProduto);
+									});
+							});
 						});
-					}
-
-					self.favoritos.favoritos = res;
-
-					// Criar string com periodo de recorrência final
-					$.each(self.favoritos.favoritos.items, function(i, item) {
-						item.frequency.frequency =
-							item.frequency.interval + ' ' + dust.filters.frequencyText(item.frequency.periodicity);
-					});
-
-					self.recurrenceRender(self.favoritos.favoritos);
-
-					return res;
+					//colocar um catch
 				})
-				.then(function(res) {
-					return CRM.getAccounts(res.id).then(function(res) {
-						self.accountRender(res);
-
-						return res;
-					});
-				})
-				.then(function(res) {
-					CRM.getAddresses(res.subscription).then(function(res) {
-						self.addressRender(res);
-					});
-				})
-				.fail(function() {
+				.catch(err => {
 					self.$container.removeClass('myorders--loading');
 					self.favoritos.isLoaded = true;
 					self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
+					console.error('erro', err);
 				});
+
 		} else {
 			self.recurrenceRender(self.favoritos.favoritos);
 		}
