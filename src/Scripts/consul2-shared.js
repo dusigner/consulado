@@ -2,7 +2,7 @@
 'use strict';
 
 import { decrypt } from './../Pages/shared/scripts/shared-wishlist.js';
-import './Dust/wishlist/wishlist.html'
+import './Dust/wishlist/wishlist-shared.html'
 
 Nitro.controller('shared', function() {
     this.init = () => {
@@ -34,13 +34,13 @@ Nitro.controller('shared', function() {
                                             productName: r.productName,
                                             productLink: r.link,
                                             productImage: imageUrl,
-                                            listPrice: r.items[0].sellers[0].commertialOffer.ListPrice,
-                                            Price: r.items[0].sellers[0].commertialOffer.Price
+                                            listPrice: r.items[0].sellers[0].commertialOffer.ListPrice.toLocaleString('pt-br',{ style: 'currency', currency: 'BRL'}),
+                                            Price: r.items[0].sellers[0].commertialOffer.Price.toLocaleString('pt-br',{ style: 'currency', currency: 'BRL'})
                                         };
 
                                     console.log(data);
 
-                                    dust.render('wishlist', data, (err, out) => {
+                                    dust.render('wishlist-shared', data, (err, out) => {
                                         if (err) {
                                             throw new Error('Wish Dust error: ' + err);
                                         }
