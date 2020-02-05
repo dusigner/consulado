@@ -43,13 +43,33 @@ Nitro.module('order.favoritos', function() {
 
 							referencia.map(id => {
 								fetch('/api/catalog_system/pvt/products/ProductGet/' + id).then(response => response.json())
-									.then(refProduto => {
-										//montar html
-										console.log(refProduto);
-									});
+									.then(idProduto => {
+										let RefIdProduto = idProduto.RefId;
+										fetch('/api/catalog_system/pub/products/search/' + RefIdProduto).then(response => response.json())
+											.then(exibir => {
+												console.log(exibir);
+											})
+											.catch(err => {
+												self.$container.removeClass('myorders--loading');
+												self.favoritos.isLoaded = true;
+												self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos err</h2>');
+												console.error('erro', err);
+											})
+									})
+									.catch(err => {
+										self.$container.removeClass('myorders--loading');
+										self.favoritos.isLoaded = true;
+										self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos  eeerr</h2>');
+										console.error('erro', err);
+									})
 							});
-						});
-					//colocar um catch
+						})
+						.catch(err => {
+							self.$container.removeClass('myorders--loading');
+							self.favoritos.isLoaded = true;
+							self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos fim</h2>');
+							console.error('erro', err);
+						})
 				})
 				.catch(err => {
 					self.$container.removeClass('myorders--loading');
