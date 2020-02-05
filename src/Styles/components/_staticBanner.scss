@@ -11,6 +11,7 @@ body {
 		@include breakpoint('small', 'max') { display: none; }
 		height: auto;
 		line-height: 0;
+		margin-top: -2px;
 		overflow: hidden;
 
 		.slider-banner {

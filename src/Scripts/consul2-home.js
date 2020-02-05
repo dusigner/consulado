@@ -10,7 +10,6 @@ require('components/instagram-stories');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
-
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
@@ -18,9 +17,8 @@ require('modules/shelfCategoryHome');
 require('modules/_staticBanner');
 require('modules/interested-shelf');
 require('modules/subCategoryList');
-require('dataLayers/dataLayer-home-BF.js')
+require('dataLayers/dataLayer-home-BF.js');
 
-// require('modules/_staticBanner');
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
@@ -39,15 +37,13 @@ Nitro.controller(
 		'interested-shelf',
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
-		/* 'static-banner' */
+		'static-banner',
 		/*'counter', 'datalayer_track'*/
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao'
 	],
 
 	function(chaordic) {
-
-		console.log('executei');
 
 		// $.get(`/no-cache/profileSystem/getProfile`).then((res) => {
 		// 	$('.prateleira ul li').on('click', function(ev) {
