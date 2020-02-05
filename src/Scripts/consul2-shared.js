@@ -24,8 +24,6 @@ Nitro.controller('shared', function() {
                             productREF = productVariations.RefId,
                             productSearch = await (await fetch(`/api/catalog_system/pub/products/search/${productREF}`)).json();
 
-                            console.log(productSearch);
-
                             productSearch
                                 && productSearch.map((r) => {
                                     const imageUrl = r.items[0].images[0].imageUrl.split('.br/')[1],
@@ -38,8 +36,6 @@ Nitro.controller('shared', function() {
                                             Price: r.items[0].sellers[0].commertialOffer.Price.toLocaleString('pt-br',{ style: 'currency', currency: 'BRL'})
                                         };
 
-                                    console.log(data);
-
                                     dust.render('wishlist-shared', data, (err, out) => {
                                         if (err) {
                                             throw new Error('Wish Dust error: ' + err);
@@ -48,6 +44,7 @@ Nitro.controller('shared', function() {
                                         $('.shared__ws-container')
                                             .removeClass('hide')
                                             .append(out);
+                                        $('.shared__ws-loader-container').hide();
                                     });
                             });
                     });
