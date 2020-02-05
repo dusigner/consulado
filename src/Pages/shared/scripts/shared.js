@@ -1,26 +1,19 @@
-/**
- *
- * @fileOverview shared
- *
- */
 'use strict';
 
-Nitro.controller('shared', [], function() {
-	/**
-	 * Função init bootstrap
-	 */
+import CryptoJS from "crypto-js";
+
+Nitro.module('wish-share', function() {
 	this.init = () => {
+		console.log('executei');
+    };
 
-		this.method();
-	};
+    this.getWishList = () => {
+        const encryptedSearchParam = window.location.search.substr(1),
+            wishListID = CryptoJS.AES.decrypt(encryptedSearchParam, 'WishListProtection').toString(CryptoJS.enc.Utf8);
 
-	/**
-	 * Apenas um exemplo arrow func com retorno
-	 * @param  {String} param um texto que será concatenado
-	 * @returns {String} texto example with concatenando param
-	 */
-	this.method = param => `example with ${param}`;
+        console.log(wishListID);
+    };
 
-	// Start it
+
 	this.init();
 });
