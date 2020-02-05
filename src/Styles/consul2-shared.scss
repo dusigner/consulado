@@ -54,7 +54,7 @@
 	}
 
 	&__ws-productname {
-		width: calc(75% - 65px);
+		width: calc(35% - 65px);
 		h2 {
 			@include rfs(14);
 			font-weight: 500;
@@ -64,7 +64,7 @@
 
 	&__ws-productprice {
 		text-align: right;
-		width: calc(25% - 65px);
+		width: calc(65% - 65px);
 		span {
 			@include rfs(14);
 			color: #736C6B;
