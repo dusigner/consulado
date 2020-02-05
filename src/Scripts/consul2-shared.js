@@ -45,7 +45,9 @@ Nitro.controller('shared', function() {
                                             throw new Error('Wish Dust error: ' + err);
                                         }
 
-                                        $('.shared__ws-container').append(out);
+                                        $('.shared__ws-container')
+                                            .removeClass('hide')
+                                            .append(out);
                                     });
                             });
                     });
