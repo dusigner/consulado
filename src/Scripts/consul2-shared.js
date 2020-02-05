@@ -9,7 +9,6 @@ Nitro.controller('shared', function() {
     };
 
     this.wishShared = async () => {
-        // const urlWS = id.replace('-', 'U2FsdGVkX186oi')
         const encryptedSearchParam = window.location.search.split('?')[1],
         wishListID = decrypt(encryptedSearchParam),
         wishListRESPONSE = await (await fetch(`/api/dataentities/WL/search?id=${wishListID}&_fields=productReference`)).json(),
