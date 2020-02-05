@@ -1,5 +1,6 @@
 export default {
-    cacheSelectors: {
-        addWishButton: $('sadasd'),
+    utils: {
+        wishContainer: '.wishlist__container',
+        Loading: 'loading'
     }
 }

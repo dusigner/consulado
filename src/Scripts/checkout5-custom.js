@@ -1332,7 +1332,7 @@ $(document).on('ready', function() {
           window.pushDataLayer();
         } else {
           setTimeout(function() {
-            trigger = true;
+            var trigger = true;
             for(var indexdataLayer = 0, max_dataLayer = window.dataLayer.length ; indexdataLayer < max_dataLayer ; indexdataLayer+=1) {
               if(window.dataLayer[indexdataLayer] && window.dataLayer[indexdataLayer].event && window.dataLayer[indexdataLayer].event == 'virtualPageview') {
                 trigger = false;

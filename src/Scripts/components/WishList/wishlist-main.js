@@ -1,7 +1,7 @@
 import cacheSelector from './cacheSelector.js';
-import { arrayFormat, dataBaseFetch, patchVariantFetch } from './wishlist-utils.js';
+import { patchVariantFetch, dataBaseFetch, arrayFormat, changingEvent } from './wishlist-utils.js';
 
-const El = cacheSelector;
+const El = cacheSelector.utils, { wishContainer, Loading } = El;
 
 class wishList {
     constructor (productID, userEmail, elementSelector) {
@@ -11,24 +11,32 @@ class wishList {
         this.arr = new Array;
     }
 
-    async addProduct () {
+    async favoritesEvents() {
+        const { productID, userEmail, elementSelector, arr } = this;
+
+        elementSelector.parents(wishContainer)
+            .addClass(Loading);
+
         try {
-            const { productID, userEmail, elementSelector, arr } = this,
-                dataBaseResponse = await (await dataBaseFetch(userEmail)).json(),
-                listID = dataBaseResponse.map(item => item.id),
-                productCode = dataBaseResponse.map(item => item.productReference);
+            const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
+                listID = dataBaseRes.map(item => item.id),
+                productCode = dataBaseRes.map(item => item.productReference);
 
-            (productID && String(productCode).indexOf(productID)) === -1 &&
-                arr.push(...productCode, productID);
+            if (productID) {
+                String(productCode).indexOf(productID) === -1 ?
+                    arr.push(...productCode, productID) :
+                    arr.push(...productCode[0].split(',').filter(item => item !== productID));
 
-            if (arr.length) {
                 const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
                 localStorage.setItem('WishList', JSON.stringify(localConfigs));
-                fetch(patchVariantFetch(listID, userEmail, arr));
+                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
             }
         } catch (err) {
-            throw new Error('Ocorreu um erro ao favoritar este produto :(' + err);
+            elementSelector.parents(wishContainer)
+                .removeClass(Loading);
+
+            throw new Error('Wish failed :(' + err);
         }
     }
 }
