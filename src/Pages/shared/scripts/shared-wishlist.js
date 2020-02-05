@@ -4,7 +4,7 @@ const UtilShared = {
     },
     decrypt(s) {
         return s.replace(/\U2FsdGVkX186oi/gm, '-');
-    }
+    },
 }
 
 module.exports = UtilShared;
