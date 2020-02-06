@@ -4,39 +4,43 @@ import { patchVariantFetch, dataBaseFetch, arrayFormat, changingEvent } from './
 const El = cacheSelector.utils, { wishContainer, Loading } = El;
 
 class wishList {
-    constructor (productID, userEmail, elementSelector) {
+    constructor (productID, res, elementSelector) {
         this.productID = productID;
-        this.userEmail = userEmail;
+        this.res = res;
         this.elementSelector = elementSelector;
         this.arr = new Array;
     }
 
     async favoritesEvents() {
-        const { productID, userEmail, elementSelector, arr } = this;
+        const { productID, res, elementSelector, arr } = this, { Email: userEmail, IsUserDefined } = res;
 
-        elementSelector.parents(wishContainer)
-            .addClass(Loading);
-
-        try {
-            const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
-                listID = dataBaseRes.map(item => item.id),
-                productCode = dataBaseRes.map(item => item.productReference);
-
-            if (productID) {
-                String(productCode).indexOf(productID) === -1 ?
-                    arr.push(...productCode, productID) :
-                    arr.push(...productCode[0].split(',').filter(item => item !== productID));
-
-                const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
-
-                localStorage.setItem('WishList', JSON.stringify(localConfigs));
-                fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
-            }
-        } catch (err) {
+        if (IsUserDefined) {
             elementSelector.parents(wishContainer)
-                .removeClass(Loading);
+                .addClass(Loading);
 
-            throw new Error('Wish failed :(' + err);
+            try {
+                const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
+                    listID = dataBaseRes.map(item => item.id),
+                    productCode = dataBaseRes.map(item => item.productReference);
+
+                if (productID) {
+                    String(productCode).indexOf(productID) === -1 ?
+                        arr.push(...productCode, productID) :
+                        arr.push(...productCode[0].split(',').filter(item => item !== productID));
+
+                    const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
+
+                    localStorage.setItem('WishList', JSON.stringify(localConfigs));
+                    fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
+                }
+            } catch (err) {
+                elementSelector.parents(wishContainer)
+                    .removeClass(Loading);
+
+                throw new Error('Wish failed :(: ' + err);
+            }
+        } else {
+            window.location.href = `/login?ReturnUrl=${window.location.pathname}#productID${productID}`;
         }
     }
 }

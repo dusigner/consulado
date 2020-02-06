@@ -14,7 +14,7 @@ Nitro.module('wish-pratileira', function() {
 		$(window).on('load', () => {
 			fetch(userApi).then(res => res.json().then((res) => {
 				window.location.pathname.indexOf('login') === -1 &&
-					this.wishInit(res, windowHash);
+					setTimeout(() => { this.wishInit(res, windowHash)}, 1000);
 			}));
 		});
 	};
@@ -25,13 +25,13 @@ Nitro.module('wish-pratileira', function() {
 
 			$(`.wishlist__button[data-idproduto=${productID}]`).each((i, el) => {
 				const $element = $(el),
-					wishListStart = new wishList(productID, res.Email, $element);
+					wishListStart = new wishList(productID, res, $element);
 
 				wishListStart.favoritesEvents();
 			});
 
 			window.location.hash = '';
-			this.setFavoriteds(res);
+			this.handleFavorites(res);
 		} else {
 			this.setFavoriteds(res);
 		}
@@ -73,15 +73,10 @@ Nitro.module('wish-pratileira', function() {
 	this.handleFavorites = (res) => {
 		$document.on('click', wishButton, ({currentTarget}) => {
 			const $element = $(currentTarget),
-				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto');
+				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto'),
+				wishListStart = new wishList(productID, res, $element);
 
-			if (res.IsUserDefined) {
-				const wishListStart = new wishList(productID, res.Email, $element);
-
-				wishListStart.favoritesEvents();
-			} else {
-				window.location.href = `/login?ReturnUrl=${window.location.pathname}#productID${productID}`;
-			}
+			wishListStart.favoritesEvents();
 		});
 	};
 
