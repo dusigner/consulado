@@ -7,8 +7,12 @@
             <h2>{productName}</h2>
         </div>
         <div class="shared__ws-productprice">
-            <span>{listPrice}</span><br/>
-            <strong>{Price}</strong>
+            {?listPrice}
+                <span>{listPrice}</span><br/>
+                <strong>{Price}</strong>
+            {:else}
+                <strong>Produto Indisponível</strong>
+            {/listPrice}
         </div>
     </a>
 </div>
