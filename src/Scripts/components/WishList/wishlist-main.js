@@ -37,7 +37,7 @@ class wishList {
                 elementSelector.parents(wishContainer)
                     .removeClass(Loading);
 
-                throw new Error('Wish failed :(: ' + err);
+                throw new Error('Wish failed :( : ' + err);
             }
         } else {
             window.location.href = `/login?ReturnUrl=${window.location.pathname}#productID${productID}`;
