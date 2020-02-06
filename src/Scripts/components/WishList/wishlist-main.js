@@ -20,13 +20,15 @@ class wishList {
 
             try {
                 const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
-                    listID = dataBaseRes.map(item => item.id),
-                    productCode = dataBaseRes.map(item => item.productReference);
+                    listID = dataBaseRes.map(a => a.id),
+                    productCode = dataBaseRes.map(a => a.productReference);
 
                 if (productID) {
                     String(productCode).indexOf(productID) === -1 ?
                         arr.push(...productCode, productID) :
-                        arr.push(...productCode[0].split(',').filter(item => item !== productID));
+                        arr.push(...productCode.find((i) => {
+                            i && i.split(',').filter(f => f !== productID);
+                        }));
 
                     const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 

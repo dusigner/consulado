@@ -14,7 +14,7 @@ Nitro.module('wish-pratileira', function() {
 		$(window).on('load', () => {
 			fetch(userApi).then(res => res.json().then((res) => {
 				window.location.pathname.indexOf('login') === -1 &&
-					setTimeout(() => { this.wishInit(res, windowHash)}, 1000);
+					setTimeout(() => { this.wishInit(res, windowHash)}, 1500);
 			}));
 		});
 	};
