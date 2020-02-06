@@ -40,31 +40,32 @@ Nitro.module('wish-pratileira', function() {
 	this._setFavoriteds = (res) => {
 		const wishLocalStorage = localStorage.getItem('WishList');
 
-		if (wishLocalStorage && res.IsUserDefined) {
-			const wishLocalJson = JSON.parse(wishLocalStorage).value;
+		if (res.IsUserDefined) {
+			if (wishLocalStorage) {
+				dataBaseFetch(res.Email).then(data => data.json().then((response) => {
+					response &&
+						response.map(i => i.productReference &&
+							i.productReference.split(',').forEach((item) => {
+								$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+									const $element = $(el);
 
-			wishLocalJson.productReference.split(',').forEach((item) => {
-				$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-					const $element = $(el);
+									changingEvent($element);
+								});
+							}));
+				})).then(() => this._handleFavorites(res));
+			} else {
+				const wishLocalJson = JSON.parse(wishLocalStorage).value;
 
-					changingEvent($element);
+				wishLocalJson.productReference.split(',').forEach((item) => {
+					$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+						const $element = $(el);
+
+						changingEvent($element);
+					});
 				});
-			});
 
-			this._handleFavorites(res);
-		}
-		else if (res.IsUserDefined) {
-			dataBaseFetch(res.Email).then(data => data.json().then((response) => {
-				response &&
-					response.map(i => i.productReference &&
-						i.productReference.split(',').forEach((item) => {
-							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-								const $element = $(el);
-
-								changingEvent($element);
-							});
-						}));
-			})).then(() => this._handleFavorites(res));
+				this._handleFavorites(res);
+			}
 		} else {
 			this._handleFavorites(res);
 		}
