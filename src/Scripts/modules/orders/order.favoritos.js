@@ -25,14 +25,15 @@ Nitro.module('order.favoritos', function() {
 		self.$container.addClass('myorders--loading');
 
 		if (!self.favoritos.favoritos) {
+
 			fetch('/no-cache/profileSystem/getProfile').then(response => response.json())
 				.then(result => {
-					let emailUser = result.Email;
+					const emailUser = result.Email;
 
 					fetch('/api/dataentities/WL/search?email=' + emailUser + '&_fields=id,productReference').then(response => response.json())
 						.then(prodFavorito => {
 
-							let referencia = prodFavorito[0].productReference.split(',');
+							const referencia = prodFavorito[0].productReference.split(',');
 
 							if(referencia.length === 0) {
 								self.$container.removeClass('myorders--loading');
@@ -41,13 +42,17 @@ Nitro.module('order.favoritos', function() {
 								return;
 							}
 
-							referencia.map(id => {
+							referencia.forEach(id => {
 								fetch('/api/catalog_system/pvt/products/ProductGet/' + id).then(response => response.json())
 									.then(idProduto => {
-										let RefIdProduto = idProduto.RefId;
+										const RefIdProduto = idProduto.RefId;
+
 										fetch('/api/catalog_system/pub/products/search/' + RefIdProduto).then(response => response.json())
 											.then(exibir => {
-												console.log(exibir);
+												let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br/')[1];
+												let nomeProduto = exibir[0].items[0].nameComplete;
+												console.log(urlImg);
+												console.log(nomeProduto);
 											})
 											.catch(err => {
 												self.$container.removeClass('myorders--loading');
