@@ -40,6 +40,9 @@
 	}
 
 	&__ws-boxproduct {
+		@media (max-width: 768px) {
+			padding: 10px 0;
+		}
 		border: 1px solid #E3E1E1;
 		display: block;
 		margin-bottom: 15px;
@@ -54,7 +57,7 @@
 
 	&__ws-productimage {
 		@media (max-width: 768px) {
-			margin: 25px 25px 0 15px;
+			margin: 15px 25px 0 15px;
 		}
 		margin: 0 25px 0 15px;
 		width: 65px;
@@ -68,6 +71,10 @@
 	&__ws-productname {
 		@media (max-width: 768px) {
 			width: calc(100% - 110px);
+
+			h2 {
+				margin: 5px;
+			}
 		}
 		width: calc(35% - 65px);
 		h2 {
