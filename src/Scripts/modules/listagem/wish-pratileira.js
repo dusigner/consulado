@@ -5,77 +5,79 @@ import wishList from './../../components/WishList/wishlist-main.js';
 import { dataBaseFetch, changingEvent } from './../../components/WishList/wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
-const El = cacheSelector.auxiliars, { Document, userApi, wishAddButton, wishContainer, wishButton } = El;
+const El = cacheSelector.auxiliars, { $document, userApi, wishContainer, wishButton } = El;
 
 Nitro.module('wish-pratileira', function() {
 	this.init = () => {
 		const windowHash = window.location.hash;
 
-		fetch(userApi).then(res => res.json().then((res) => {
-			setTimeout(() => {
-				this.wishInit(res, windowHash);
-			}, 1000);
-		}));
+		$(window).on('load', () => {
+			fetch(userApi).then(res => res.json().then((res) => {
+				window.location.pathname.indexOf('login') === -1 &&
+					setTimeout(() => { this.wishInit(res, windowHash)}, 1250);
+			}));
+		});
 	};
 
 	this.wishInit = (res, windowHash = null) => {
-		if (windowHash) {
-			const productID = windowHash.split('#productID')[1],
-				$element = $(`.wishlist__button[data-idproduto=${productID}]`),
-				wishListStart = new wishList(productID, res.Email, $element);
+		if (windowHash && windowHash.indexOf('productID' ) !== -1) {
+			const productID = windowHash.split('#productID')[1];
 
-			wishListStart.favoritesEvents();
-			this.setFavoriteds(res);
+			$(`.wishlist__button[data-idproduto=${productID}]`).each((i, el) => {
+				const $element = $(el),
+					wishListStart = new wishList(productID, res, $element);
+
+				wishListStart.favoritesEvents();
+			});
+
+			window.location.hash = '';
+			this._handleFavorites(res);
 		} else {
-			this.setFavoriteds(res);
+			this._setFavoriteds(res);
 		}
 	};
 
-	this.setFavoriteds = (res) => {
+	this._setFavoriteds = (res) => {
 		const wishLocalStorage = localStorage.getItem('WishList');
 
-		if (wishLocalStorage && res.IsUserDefined) {
-			const wishLocalJson = JSON.parse(wishLocalStorage).value;
+		if (res.IsUserDefined) {
+			if (wishLocalStorage) {
+				dataBaseFetch(res.Email).then(data => data.json().then((response) => {
+					response &&
+						response.map(i => i.productReference &&
+							i.productReference.split(',').forEach((item) => {
+								$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+									const $element = $(el);
 
-			wishLocalJson.productReference.split(',').forEach((item) => {
-				$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-					const $element = $(el);
+									changingEvent($element);
+								});
+							}));
+				})).then(() => this._handleFavorites(res));
+			} else {
+				const wishLocalJson = JSON.parse(wishLocalStorage).value;
 
-					changingEvent($element);
+				wishLocalJson.productReference.split(',').forEach((item) => {
+					$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+						const $element = $(el);
+
+						changingEvent($element);
+					});
 				});
-			});
 
-			this.handleFavorites(res);
-		}
-		else if (res.IsUserDefined) {
-			dataBaseFetch(res.Email).then(data => data.json().then((response) => {
-				response &&
-					response.map(i => i.productReference &&
-						i.productReference.split(',').forEach((item) => {
-							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-								const $element = $(el);
-
-								changingEvent($element);
-							});
-						}));
-			})).then(() => this.handleFavorites(res));
+				this._handleFavorites(res);
+			}
 		} else {
-			this.handleFavorites(res);
+			this._handleFavorites(res);
 		}
 	}
 
-	this.handleFavorites = (res) => {
-		Document.on('click', wishAddButton, ({target}) => {
-			const $element = $(target),
-				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto');
+	this._handleFavorites = (res) => {
+		$document.on('click', wishButton, ({currentTarget}) => {
+			const $element = $(currentTarget),
+				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto'),
+				wishListStart = new wishList(productID, res, $element);
 
-			if (res.IsUserDefined) {
-				const wishListStart = new wishList(productID, res.Email, $element);
-
-				wishListStart.favoritesEvents();
-			} else {
-				window.location.href = `/login?ReturnUrl=${window.location.pathname}#productID${productID}`;
-			}
+			wishListStart.favoritesEvents();
 		});
 	};
 

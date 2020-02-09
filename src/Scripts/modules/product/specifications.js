@@ -83,6 +83,8 @@ Nitro.module('specifications', function() {
 				throw new Error('Specifications Dust error: ' + err);
 			}
 
+			console.log(data);
+
 			$holder.html(out).show();
 		});
 	};
