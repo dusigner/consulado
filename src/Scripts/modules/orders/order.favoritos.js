@@ -59,8 +59,6 @@ Nitro.module('order.favoritos', function() {
 												let linkProduto = exibir[0].link.split('00/')[1];
 												let qtdProdutos = exibir[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
 
-												console.log(linkProduto)
-
 												const data = {
 													productName: nomeProduto,
 													linkProduto: linkProduto,
