@@ -5,7 +5,10 @@ require('modules/orders/order.helpers');
 
 require('Dust/orders/favoritos.html');
 
-var CRM = require('modules/store/orders-crm');
+import cacheSelector from '../../../Pages/shared/scripts/cache-selector.js';
+
+const El = cacheSelector.selectorAndClasses, { sharedContainer, loaderContainer, Hide } = El;
+
 
 Nitro.module('order.favoritos', function() {
 	var self = this;
@@ -51,22 +54,50 @@ Nitro.module('order.favoritos', function() {
 											.then(exibir => {
 												let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br/')[1];
 												let nomeProduto = exibir[0].items[0].nameComplete;
-												console.log(urlImg);
-												console.log(nomeProduto);
+												let precoProduto = exibir[0].items[0].sellers[0].commertialOffer.Price;
+												let precoAnterior = exibir[0].items[0].sellers[0].commertialOffer.ListPrice;
+												let qtdProdutos = exibir[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+
+												const data = {
+													productName: nomeProduto,
+													productLink: 'link',
+													productImage: urlImg,
+													precoAnterior: precoAnterior,
+													precoProduto: precoProduto
+												};
+
+												dust.render('favoritos', data, (err, out) => {
+													if (err) {
+														throw new Error('Wish Dust error: ' + err);
+													}
+													self.$favoritosContainer
+														.removeClass(Hide)
+														.append(out);
+													self.$container.removeClass('myorders--loading');
+												});
+												// console.log(urlImg);
+												// console.log(nomeProduto);
+												// console.log(precoProduto);
+												// console.log(precoAnterior);
+												// console.log(qtdProdutos);
+												//fazer dust pro html
+												//criar obejeto pra montar o dust
+												//verificar se o produto está indisponível
+
 											})
 											.catch(err => {
 												self.$container.removeClass('myorders--loading');
 												self.favoritos.isLoaded = true;
 												self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos err</h2>');
 												console.error('erro', err);
-											})
+											});
 									})
 									.catch(err => {
 										self.$container.removeClass('myorders--loading');
 										self.favoritos.isLoaded = true;
 										self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos  eeerr</h2>');
 										console.error('erro', err);
-									})
+									});
 							});
 						})
 						.catch(err => {
@@ -74,7 +105,7 @@ Nitro.module('order.favoritos', function() {
 							self.favoritos.isLoaded = true;
 							self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos fim</h2>');
 							console.error('erro', err);
-						})
+						});
 				})
 				.catch(err => {
 					self.$container.removeClass('myorders--loading');
