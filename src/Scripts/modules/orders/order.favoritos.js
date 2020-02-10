@@ -56,11 +56,14 @@ Nitro.module('order.favoritos', function() {
 												let nomeProduto = exibir[0].items[0].nameComplete;
 												let precoProduto = exibir[0].items[0].sellers[0].commertialOffer.Price;
 												let precoAnterior = exibir[0].items[0].sellers[0].commertialOffer.ListPrice;
+												let linkProduto = exibir[0].link.split('00/')[1];
 												let qtdProdutos = exibir[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
+
+												console.log(linkProduto)
 
 												const data = {
 													productName: nomeProduto,
-													productLink: 'link',
+													linkProduto: linkProduto,
 													productImage: urlImg,
 													precoAnterior: precoAnterior,
 													precoProduto: precoProduto
@@ -75,15 +78,6 @@ Nitro.module('order.favoritos', function() {
 														.append(out);
 													self.$container.removeClass('myorders--loading');
 												});
-												// console.log(urlImg);
-												// console.log(nomeProduto);
-												// console.log(precoProduto);
-												// console.log(precoAnterior);
-												// console.log(qtdProdutos);
-												//fazer dust pro html
-												//criar obejeto pra montar o dust
-												//verificar se o produto está indisponível
-
 											})
 											.catch(err => {
 												self.$container.removeClass('myorders--loading');
