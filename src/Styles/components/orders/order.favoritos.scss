@@ -1,6 +1,10 @@
 @charset 'UTF-8';
 
 @import 'helpers/rfs';
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+
 $gray-light: #E3E1E1;
 $gray-darkest: #736c6b;
 $gray-dark: #5B5B5B;
@@ -13,8 +17,12 @@ $green: #9ACA3C;
 		.row {
 			border: 1px solid $gray-light;
 			border-radius: 6px;
+			margin-bottom: 0;
 			max-height: 100px;
 			padding: 20px 16px;
+			@include breakpoint('small', 'max') {
+				max-height: 100%;
+			}
 		}
 		&--thumb {
 		    display: inline-flex;
@@ -30,9 +38,15 @@ $green: #9ACA3C;
 			}
 		}
 		&--titulo {
+			@include breakpoint('small', 'max') {
+				width: 180px;
+				h2 {
+					padding: 0 10px;
+				}
+			}
 			display: inline-block;
 			max-width: 100%;
-			width: 280px;
+			width: 390px;
 			h2 {
 				@include rfs(14);
 				color: $gray-darkest;
@@ -47,7 +61,12 @@ $green: #9ACA3C;
 			float: right;
 			max-width: 100%;
 			text-align: right;
-			width: 280px;
+			width: 210px;
+			@include breakpoint('small', 'max') {
+				margin-top: 10px;
+				text-align: left;
+				width: 100%;
+			}
 			span {
 				@include rfs(14);
 				color: $gray-darkest;
