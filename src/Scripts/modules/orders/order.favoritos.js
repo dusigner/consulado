@@ -52,17 +52,17 @@ Nitro.module('order.favoritos', function() {
 
 										fetch('/api/catalog_system/pub/products/search/' + RefIdProduto).then(response => response.json())
 											.then(exibir => {
-												let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br/')[1];
+												let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br')[1];
 												let nomeProduto = exibir[0].items[0].nameComplete;
 												let precoProduto = exibir[0].items[0].sellers[0].commertialOffer.Price;
 												let precoAnterior = exibir[0].items[0].sellers[0].commertialOffer.ListPrice;
-												let linkProduto = exibir[0].link.split('00/')[1];
+												let linkProduto = exibir[0].link;
 												let qtdProdutos = exibir[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
 
 												const data = {
+													productImage: urlImg,
 													productName: nomeProduto,
 													linkProduto: linkProduto,
-													productImage: urlImg,
 													precoAnterior: precoAnterior,
 													precoProduto: precoProduto
 												};
