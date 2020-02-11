@@ -15,10 +15,10 @@ Nitro.controller('shared', function() {
     this.wishShared = async () => {
         try {
             const encryptedSearchParam = window.location.search.split('?listID=')[1],
-            wishListID = decrypt(encryptedSearchParam),
-            wishListRESPONSE = await (await fetchSharedList(wishListID)).json(),
-            productIDS = wishListRESPONSE &&
-                wishListRESPONSE.map(a => a.productReference);
+                wishListID = decrypt(encryptedSearchParam),
+                wishListRESPONSE = await (await fetchSharedList(wishListID)).json(),
+                productIDS = wishListRESPONSE &&
+                    wishListRESPONSE.map(a => a.productReference);
 
             if (productIDS.length) {
                 productIDS.find((ids) => {

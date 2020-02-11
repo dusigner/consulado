@@ -94,14 +94,14 @@ Nitro.module('order.favoritos', function() {
 												.catch(err => {
 													self.$container.removeClass('myorders--loading');
 													self.favoritos.isLoaded = true;
-													self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos err</h2>');
+													self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
 													console.error('erro', err);
 												});
 										})
 										.catch(err => {
 											self.$container.removeClass('myorders--loading');
 											self.favoritos.isLoaded = true;
-											self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos  eeerr</h2>');
+											self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
 											console.error('erro', err);
 										});
 								});
@@ -109,7 +109,7 @@ Nitro.module('order.favoritos', function() {
 							.catch(err => {
 								self.$container.removeClass('myorders--loading');
 								self.favoritos.isLoaded = true;
-								self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos fim</h2>');
+								self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
 								console.error('erro', err);
 							});
 					})
