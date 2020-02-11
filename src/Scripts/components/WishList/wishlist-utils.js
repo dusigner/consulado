@@ -40,11 +40,10 @@ const Utils = {
                     .append('<span>Adicionar aos favoritos</span>')
                     .find('span').first().remove();
             }
+        } else {
+            elementSelector
+            .parents('.order__favoritos').remove();
         }
-        // } else {
-        //     elementSelector
-        //     .parents('.order__favoritos').remove();
-        // }
     }
 }
 
