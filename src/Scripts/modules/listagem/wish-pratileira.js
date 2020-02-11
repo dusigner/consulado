@@ -9,35 +9,15 @@ const El = cacheSelector.auxiliars, { $document, userApi, wishContainer, wishBut
 
 Nitro.module('wish-pratileira', function() {
 	this.init = () => {
-		const windowHash = window.location.hash;
 
 		$(window).on('load', () => {
 			fetch(userApi).then(res => res.json().then((res) => {
-				window.location.pathname.indexOf('login') === -1 &&
-					setTimeout(() => { this.wishInit(res, windowHash)}, 1250);
+				setTimeout(() => { this.setFavoriteds(res)}, 1250);
 			}));
 		});
 	};
 
-	this.wishInit = (res, windowHash = null) => {
-		if (windowHash && windowHash.indexOf('productID' ) !== -1) {
-			const productID = windowHash.split('#productID')[1];
-
-			$(`.wishlist__button[data-idproduto=${productID}]`).each((i, el) => {
-				const $element = $(el),
-					wishListStart = new wishList(productID, res, $element);
-
-				wishListStart.favoritesEvents();
-			});
-
-			window.location.hash = '';
-			this._handleFavorites(res);
-		} else {
-			this._setFavoriteds(res);
-		}
-	};
-
-	this._setFavoriteds = (res) => {
+	this.setFavoriteds = (res) => {
 		const wishLocalStorage = localStorage.getItem('WishList');
 
 		if (res.IsUserDefined) {

@@ -40,7 +40,7 @@ class wishList {
                 throw new Error('Wish failed :( : ' + err);
             }
         } else {
-            window.location.href = `/login?ReturnUrl=${window.location.pathname}#productID${productID}`;
+            window.location.href = `/login?ReturnUrl=${window.location.pathname}`;
         }
     }
 }

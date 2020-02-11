@@ -30,7 +30,7 @@ Nitro.module('order.favoritos', function() {
 
 		if (!self.favoritos.favoritos) {
 
-			if(!self.$favoritosContainer.find('.order__favoritos').length) {
+			if(!self.$favoritosContainer.find('.order__favoritos').length && !self.$favoritosContainer.find('.order__favoritos-share').length) {
 				fetch('/no-cache/profileSystem/getProfile').then(response => response.json())
 					.then(result => {
 						const emailUser = result.Email;
