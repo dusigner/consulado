@@ -48,5 +48,5 @@ Nitro.setup(['order.orders', 'order.recurrences', 'order.favoritos'], function(o
 		});
 	};
 
-	this.init();
+	$(window).on('load', () => this.init());
 });
