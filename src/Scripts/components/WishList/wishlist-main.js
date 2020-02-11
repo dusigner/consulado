@@ -26,9 +26,7 @@ class wishList {
                 if (productID) {
                     String(productCode).indexOf(productID) === -1 ?
                         arr.push(...productCode, productID) :
-                        arr.push(...productCode.find((i) => {
-                            i && i.split(',').filter(f => f !== productID);
-                        }));
+                        arr.push(...productCode[0].split(',').filter(f => f !== productID));
 
                     const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 

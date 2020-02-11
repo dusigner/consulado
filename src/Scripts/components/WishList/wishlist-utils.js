@@ -20,25 +20,31 @@ const Utils = {
     },
 
     changingEvent(elementSelector) {
-        if (!elementSelector.parents('.wishlist__container').hasClass('wished')) {
-            elementSelector
-                .parents('.wishlist__container')
-                .removeClass('loading')
-                .addClass('wished')
-                .find('.wishlist__button')
-                .attr('title', 'Remover dos favoritos')
-                .append('<span><strong>Adicionado</strong> aos favoritos</span>')
-                .find('span').first().remove();
-        } else {
-            elementSelector
-                .parents('.wishlist__container')
-                .removeClass('loading')
-                .removeClass('wished')
-                .find('.wishlist__button')
-                .attr('title', 'Adicionar aos favoritos')
-                .append('<span>Adicionar aos favoritos</span>')
-                .find('span').first().remove();
+        if(window.location.pathname.indexOf('/_secure/') === -1) {
+            if (!elementSelector.parents('.wishlist__container').hasClass('wished')) {
+                elementSelector
+                    .parents('.wishlist__container')
+                    .removeClass('loading')
+                    .addClass('wished')
+                    .find('.wishlist__button')
+                    .attr('title', 'Remover dos favoritos')
+                    .append('<span><strong>Adicionado</strong> aos favoritos</span>')
+                    .find('span').first().remove();
+            } else {
+                elementSelector
+                    .parents('.wishlist__container')
+                    .removeClass('loading')
+                    .removeClass('wished')
+                    .find('.wishlist__button')
+                    .attr('title', 'Adicionar aos favoritos')
+                    .append('<span>Adicionar aos favoritos</span>')
+                    .find('span').first().remove();
+            }
         }
+        // } else {
+        //     elementSelector
+        //     .parents('.order__favoritos').remove();
+        // }
     }
 }
 
