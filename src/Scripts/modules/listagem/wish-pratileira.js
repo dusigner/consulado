@@ -41,7 +41,7 @@ Nitro.module('wish-pratileira', function() {
 		const wishLocalStorage = localStorage.getItem('WishList');
 
 		if (res.IsUserDefined) {
-			if (wishLocalStorage) {
+			if (!wishLocalStorage) {
 				dataBaseFetch(res.Email).then(data => data.json().then((response) => {
 					response &&
 						response.map(i => i.productReference &&

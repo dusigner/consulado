@@ -1,5 +1,7 @@
 @charset 'UTF-8';
 
+@import 'helpers/rfs';
+
 $self-pri: $green!default;
 $self-sec: $orange!default;
 $self-bg: $txt-gray-l!default;
@@ -7,6 +9,8 @@ $purple: #7f2893;
 $gray-lightest: #f4f4f4;
 $gray-ligther: #e4e4e4;
 $gray-darkest: #736c6b;
+$gray-dark: #5B5B5B;
+$gray-very-dark: #403C3B;
 $pending-color: #dbd508;
 $canceled-color: #c0392b;
 
@@ -15,6 +19,7 @@ $canceled-color: #c0392b;
 }
 
 .section-orders {
+	background: #fff;
 	margin-bottom: 0;
 	@include breakpoint('extra-small', 'max') {
 		background: #fff;
@@ -26,8 +31,13 @@ $canceled-color: #c0392b;
 				width: 100%;
 
 				.myorders__page-control {
+					display: flex;
+					flex-flow: row;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					max-width: 100%;
 					text-align: center;
-					width: 100%;
+					width: 380px;
 				}
 			}
 		}
@@ -41,6 +51,7 @@ $canceled-color: #c0392b;
  }
 
 .myorders {
+
 	&--loading:before {
 		@include spinner($green, 100px);
 		content: '';
@@ -69,35 +80,50 @@ $canceled-color: #c0392b;
 
 	&__page {
 		align-items: center;
+		border-bottom: 5px solid #F4F4F4;
 		display: flex;
 		justify-content: space-between;
 
 		&-item {
 			display: inline-block;
-
-			&:first-child:after {
-				content: '|';
-				display: inline-block;
-				margin: 0 15px;
-			}
+			padding: 0 20px;
 		}
 
 		&-link {
-			@include font-size(14px, true, false);
-			color: $green;
-			font-weight: bold;
-			text-transform: uppercase;
+			@include rfs(16);
+			color: $gray-darkest;
+			font-weight: 500;
 
-			&:hover { text-decoration: underline!important; }
+			&:hover { text-decoration: none !important; }
+
+			&.link-active {
+				color: $gray-dark;
+				font-weight: bold;
+				position: relative;
+				&:after {
+					background-color: $green;
+					border-radius: 20px;
+					bottom: 0;
+					content: '';
+					display: inline-block;
+					height: 2px;
+					left: 34%;
+					position: absolute;
+					top: 28px;
+					width: 26px;
+				}
+			}
 		}
 
 		&-title {
-			@include font-size(22px, true, false);
-			color: $green;
+			@include rfs(28);
+			color: $gray-dark;
+			font-weight: bolder;
 			margin: 0;
-			text-transform: uppercase;
 		}
+
 	}
+
 }
 
 .order {
@@ -317,3 +343,4 @@ $canceled-color: #c0392b;
 @import 'components/orders/order.historico';
 @import 'components/orders/order.warrantySpare';
 @import 'components/orders/order.modal.gae';
+@import 'components/orders/order.favoritos';
