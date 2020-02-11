@@ -17,6 +17,16 @@ const UtilShared = {
     decrypt(s) {
         return s.replace(/\U2FsdGVkX186oi/gm, '-');
     },
+    copyToClipBoard(t) {
+        const textArea = document.createElement("textarea");
+
+        document.body.appendChild(textArea);
+
+        textArea.value = t;
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+    },
 }
 
 module.exports = UtilShared;

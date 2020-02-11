@@ -6,7 +6,7 @@ require('modules/orders/order.helpers');
 require('Dust/orders/favoritos.html');
 
 import cacheSelector from '../../../Pages/shared/scripts/cache-selector.js';
-import { encrypt, formatPrice } from './../../../Pages/shared/scripts/shared-wishlist.js'
+import { encrypt, formatPrice, copyToClipBoard } from './../../../Pages/shared/scripts/shared-wishlist.js'
 
 const El = cacheSelector.selectorAndClasses, { Hide } = El;
 
@@ -40,7 +40,7 @@ Nitro.module('order.favoritos', function() {
 								const wishID = prodFavorito.map(i => i.id);
 
 								self.$favoritosContainer.append(`
-									<div class='order__favoritos-share' data-shared='/shared?listID=${encrypt(String(wishID))}'>
+									<div class='order__favoritos-share hide' value='${window.location.origin}/shared?listID=${encrypt(String(wishID))}'>
 										<i></i>
 										<p>Compartilhe sua lista</p>
 									</div>
@@ -87,6 +87,7 @@ Nitro.module('order.favoritos', function() {
 																.removeClass(Hide)
 																.append(out);
 															self.$container.removeClass('myorders--loading');
+															$('.order__favoritos-share').removeClass(Hide);
 														});
 													}
 												})
@@ -125,6 +126,14 @@ Nitro.module('order.favoritos', function() {
 		} else {
 			self.recurrenceRender(self.favoritos.favoritos);
 		}
+		$(document).on('click', '.order__favoritos-share', ({currentTarget}) => {
+			const $element = $(currentTarget),
+				t = String($element.attr('value'));
+				console.log(t);
+
+			copyToClipBoard(t);
+			$element.find('p').text('Link da lista copiado!');
+		});
 	};
 
 	/**
