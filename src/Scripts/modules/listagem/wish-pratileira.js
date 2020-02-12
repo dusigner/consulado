@@ -61,6 +61,7 @@ Nitro.module('wish-pratileira', function() {
 
 			wishListStart.favoritesEvents();
 		});
+		$('.box-produto .product-infos-wrap a').on('click', ev => ev.stopPropagation());
 	};
 
 	this.init();
