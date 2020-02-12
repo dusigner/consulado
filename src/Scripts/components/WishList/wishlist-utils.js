@@ -1,6 +1,8 @@
 const Utils = {
-    dataBaseFetch(userEmail) {
-        return fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
+    async dataBaseFetch(userEmail) {
+        const res = await fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
+
+        return await res.json();
     },
 
     patchVariantFetch(listID, userEmail, arr) {
