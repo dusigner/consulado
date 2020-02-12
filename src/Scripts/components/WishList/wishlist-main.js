@@ -38,7 +38,7 @@ class wishList {
                 elementSelector.parents(wishContainer)
                     .removeClass(Loading);
 
-                throw new Error('Wish failed :( : ' + err);
+                throw new Error('Ocorreu um erro ao favoritar esse produto :( ' + err);
             }
         } else {
             window.location.href = `/login?ReturnUrl=${window.location.pathname}`;
