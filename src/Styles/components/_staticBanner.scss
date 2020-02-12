@@ -12,7 +12,9 @@ body {
 		height: auto;
 		line-height: 0;
 		overflow: hidden;
-
+		.banner-slick {
+			display: inline;
+		}
 		.slider-banner {
 			display: inline-block;
 			height: 100%;

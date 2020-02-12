@@ -10,36 +10,27 @@ Nitro.module('dataLayer-banner-home', function() {
 	};
 
 	this.bannerSliderHome = () => {
-		$('.banners-static').find('.slider-banner').click(function() {
-			const action = $(this).parents('.box-banner').data('data-slick-index').text().trim();
-			const label = $(this).parents('.box-banner').attr('alt');
+
+		// $(document).on('beforeChange','.banners-static', (event, slick, currentSlide, nextSlide) => {
+		$(document).on('click','.banner-slick',function(){
+			var slideAtual = $(this).find('.slider-banner').slick('slickCurrentSlide');
+			const label = $(this).find('.slick-active img').attr('alt');
 			pushDataLayer(
 				'[SQUAD] Home',
-				`Banner posição ${action}`,
+				`Banner posição ${slideAtual + 1}`,
 				`${label}`
 			);
 		});
 	};
 	this.bannerLateralHome1 = () => {
-		$('.banners-static').find('.lateral-banner').click(function() {
-			const label = $(this).parents('.box-banner').attr('alt');
+		$(document).on('click','.lateral-banners .box-banner',function() {
+			const label = $(this).find('img').attr('alt');
 			pushDataLayer(
 				'[SQUAD] Home',
-				`Banner lateral 1`,
+				`Banner lateral`,
 				`${label}`
 			);
 		});
 	};
-	this.bannerLateralHome2 = () => {
-		$('.banners-static').find('.lateral-banner').click(function() {
-			const label = $(this).parents('img').attr('alt');
-			pushDataLayer(
-				'[SQUAD] Home',
-				`Banner lateral 2`,
-				`${label}`
-			);
-		});
-	};
-
 	this.init();
 });
