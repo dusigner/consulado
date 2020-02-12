@@ -17,22 +17,24 @@ Nitro.module('wish-pratileira', function() {
 		});
 	};
 
-	this.setFavoriteds = (res) => {
+	this.setFavoriteds = async (res) => {
 		const wishLocalStorage = localStorage.getItem('WishList');
 
 		if (res.IsUserDefined) {
 			if (!wishLocalStorage) {
-				dataBaseFetch(res.Email).then(data => data.json().then((response) => {
-					response &&
-						response.map(i => i.productReference &&
-							i.productReference.split(',').forEach((item) => {
-								$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-									const $element = $(el);
+				const response = await dataBaseFetch(res.Email);
 
-									changingEvent($element);
-								});
-							}));
-				})).then(() => this._handleFavorites(res));
+				response &&
+					response.map(i => i.productReference &&
+						i.productReference.split(',').forEach((item) => {
+							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+								const $element = $(el);
+
+								changingEvent($element);
+							});
+						}));
+
+				this._handleFavorites(res);
 			} else {
 				const wishLocalJson = JSON.parse(wishLocalStorage).value;
 
