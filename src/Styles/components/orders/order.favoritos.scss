@@ -90,6 +90,12 @@ $green: #9ACA3C;
 			right: 4%;
 			top: 50%;
 			transform: translateY(-50%);
+
+			.wishlist__button {
+				height: 35px;
+				text-align: center;
+				width: 30px;
+			}
 		}
 	}
 }
