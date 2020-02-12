@@ -1,6 +1,12 @@
 const Utils = {
-    dataBaseFetch(userEmail) {
-        return fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
+    async dataBaseFetch(userEmail) {
+        try {
+            const res = await fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
+
+            return await res.json();
+        } catch (err) {
+            throw new Error('Ocorreu um erro ao favoritar esse produto :( ' + err);
+        }
     },
 
     patchVariantFetch(listID, userEmail, arr) {

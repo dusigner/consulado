@@ -19,14 +19,15 @@ class wishList {
                 .addClass(Loading);
 
             try {
-                const dataBaseRes = await (await dataBaseFetch(userEmail)).json(),
+                const dataBaseRes = await dataBaseFetch(userEmail),
                     listID = dataBaseRes.map(a => a.id),
                     productCode = dataBaseRes.map(a => a.productReference);
 
                 if (productID) {
                     String(productCode).indexOf(productID) === -1 ?
                         arr.push(...productCode, productID) :
-                        arr.push(...productCode[0].split(',').filter(f => f !== productID));
+                        arr.push(...productCode[0].split(',')
+                            .filter(f => f !== productID));
 
                     const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
 
@@ -37,7 +38,7 @@ class wishList {
                 elementSelector.parents(wishContainer)
                     .removeClass(Loading);
 
-                throw new Error('Wish failed :( : ' + err);
+                throw new Error('Ocorreu um erro ao favoritar esse produto :( ' + err);
             }
         } else {
             window.location.href = `/login?ReturnUrl=${window.location.pathname}`;

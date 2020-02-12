@@ -1,6 +1,7 @@
 {
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
+<<<<<<< HEAD
             "content": "84b057a1ebf42f1a7fd557e9a74cd69c",
             "lastUpdate": "2020-02-11T21:25:23.807Z"
         },
@@ -11,6 +12,18 @@
         "files/checkout5-custom.js": {
             "content": "6a7ae8a0d849bb6c88e89eabcf2d4b78",
             "lastUpdate": "2020-02-11T21:25:23.852Z"
+=======
+            "content": "6a8ef424b7b3a8e87385b9a7b739b3da",
+            "lastUpdate": "2020-01-28T17:37:01.181Z"
+        },
+        "files/checkout5-custom.css": {
+            "content": "36efc0b577e6216c2c11a55b7a333abd",
+            "lastUpdate": "2020-01-28T17:37:01.186Z"
+        },
+        "files/checkout5-custom.js": {
+            "content": "d33ff238d8590738a48e17728f182d1e",
+            "lastUpdate": "2020-01-28T17:37:01.190Z"
+>>>>>>> newWishList
         },
         "arquivos/checkout-confirmation-custom.min.js": {
             "content": "6a8ef424b7b3a8e87385b9a7b739b3da",
@@ -57,8 +70,13 @@
             "lastUpdate": "2020-01-29T21:04:13.957Z"
         },
         "0-consul-footer-2019-after": {
+<<<<<<< HEAD
             "content": "014b7ca43c6932169dce0c4781db63ee",
             "lastUpdate": "2020-02-11T21:25:27.138Z"
+=======
+            "content": "2675ded202aa3f3fd3d4c29da925cf79",
+            "lastUpdate": "2020-01-29T21:04:15.558Z"
+>>>>>>> newWishList
         },
         "0-consul-footer-2019-atendimento": {
             "content": "534b7381ab8e87f611a67eb13b751afe",
@@ -81,12 +99,21 @@
             "lastUpdate": "2019-12-16T14:44:01.465Z"
         },
         "0-consul-footer": {
+<<<<<<< HEAD
             "content": "eb0cceb4f1835fdb97fea6994098fe4b",
             "lastUpdate": "2020-02-11T21:25:27.170Z"
         },
         "0-consul-head-content": {
             "content": "aaf0e4736fdc8d60a17c31baefef7dc9",
             "lastUpdate": "2020-02-11T21:25:27.173Z"
+=======
+            "content": "a29fbd1b5c597883078868c1feb4214d",
+            "lastUpdate": "2020-01-29T21:04:15.630Z"
+        },
+        "0-consul-head-content": {
+            "content": "3052aaa0656a6c6ccf497407782ff3f7",
+            "lastUpdate": "2020-01-29T21:04:15.668Z"
+>>>>>>> newWishList
         },
         "0-consul-header-landing-aniversario": {
             "content": "0a1034578528692c332dbb04da134a2f",
@@ -105,6 +132,7 @@
             "lastUpdate": "2019-12-16T14:44:01.509Z"
         },
         "0-consul-busca-chaordic": {
+<<<<<<< HEAD
             "content": "d976471fe37188194c0703e4f57578d4",
             "lastUpdate": "2020-02-11T21:25:30.089Z"
         },
@@ -127,30 +155,69 @@
         "0-consul-home-BF-2019": {
             "content": "24b66ca0b7b66552e6bf4493054ccffe",
             "lastUpdate": "2020-02-11T21:25:30.160Z"
+=======
+            "content": "7f2027e2cbb428930c864db0062bf568",
+            "lastUpdate": "2020-01-29T21:04:17.880Z"
+        },
+        "0-consul-busca-chaordic2": {
+            "content": "d17db0e16b2c82ff0ca7557cc89da255",
+            "lastUpdate": "2020-01-29T21:04:17.919Z"
+        },
+        "0-consul-busca": {
+            "content": "d7c70b4f0128e16747b7b10a3500073e",
+            "lastUpdate": "2020-01-29T21:04:17.973Z"
+        },
+        "0-consul-calculadora-btu": {
+            "content": "f1d388194d873b97ea6b3cf4a0807f28",
+            "lastUpdate": "2020-01-29T21:04:18.002Z"
+        },
+        "0-consul-cta": {
+            "content": "59c22f308f55f47c7dd2b33c8f943be2",
+            "lastUpdate": "2020-01-29T21:04:18.029Z"
+        },
+        "0-consul-home-BF-2019": {
+            "content": "f1699b27e8d5dddd557516e1dc761be5",
+            "lastUpdate": "2020-01-29T21:04:18.060Z"
+>>>>>>> newWishList
         },
         "0-consul-home-chaordic": {
             "content": "290133e6cb99daeddbb0a15f0645984e",
             "lastUpdate": "2019-12-16T14:44:06.534Z"
         },
         "0-consul-home-pj": {
+<<<<<<< HEAD
             "content": "58882c9b8a4be24fd3c5ef6ab2c5624a",
             "lastUpdate": "2020-02-11T21:25:30.189Z"
+=======
+            "content": "6ba72a82be9a99c4ce7e288cfc433462",
+            "lastUpdate": "2020-01-29T21:04:18.070Z"
+>>>>>>> newWishList
         },
         "0-consul-home": {
             "content": "087116bb047d5ab002d3d9d3b09089c7",
             "lastUpdate": "2020-02-11T21:25:30.195Z"
         },
         "0-consul-institucional": {
+<<<<<<< HEAD
             "content": "45a6f44969cbda0b913cbae61b6eb2de",
             "lastUpdate": "2020-02-11T21:25:30.224Z"
+=======
+            "content": "9263e72e609e9f05de693092b5504af4",
+            "lastUpdate": "2020-01-29T21:04:18.163Z"
+>>>>>>> newWishList
         },
         "0-consul-landing-cwh14ab": {
             "content": "0f2c58dc1af4039260ccc23b84059fdf",
             "lastUpdate": "2019-12-16T14:44:06.561Z"
         },
         "0-consul-linha-embutir": {
+<<<<<<< HEAD
             "content": "cb6a7d9ace78db16a74c597572b6d296",
             "lastUpdate": "2020-02-11T21:25:30.261Z"
+=======
+            "content": "452baaeea9dc9d1d0a5d37245424a40c",
+            "lastUpdate": "2020-01-29T21:04:18.235Z"
+>>>>>>> newWishList
         },
         "0-consul-listagem-ar-condicionado": {
             "content": "0daad57800e5a0a09f945d988d844a70",
@@ -177,16 +244,26 @@
             "lastUpdate": "2020-02-11T21:25:30.392Z"
         },
         "0-consul-minhaconta": {
+<<<<<<< HEAD
             "content": "39b7c57d35788a50f29d0e2787a45700",
             "lastUpdate": "2020-02-11T21:25:30.421Z"
+=======
+            "content": "9abc7151448fb6e6cdf08aa5275a3827",
+            "lastUpdate": "2020-01-29T21:04:18.362Z"
+>>>>>>> newWishList
         },
         "0-consul-minicart": {
             "content": "9a64cdaf2de672b917e58e378eccc313",
             "lastUpdate": "2020-01-07T19:01:18.304Z"
         },
         "0-consul-neemu": {
+<<<<<<< HEAD
             "content": "b85dd529d7364a67e3bd6f42474a3a71",
             "lastUpdate": "2020-02-11T21:25:30.455Z"
+=======
+            "content": "fc1db9122e6d27ec93091639ca53d604",
+            "lastUpdate": "2020-01-29T21:04:18.369Z"
+>>>>>>> newWishList
         },
         "0-consul-pedidos": {
             "content": "69ba2f0d777932d4fb550566d54df3cf",
@@ -209,8 +286,13 @@
             "lastUpdate": "2020-02-11T21:25:30.556Z"
         },
         "0-consul-produto": {
+<<<<<<< HEAD
             "content": "202b104c5bdf7a16bd5ba96ed8c5f0f5",
             "lastUpdate": "2020-02-11T21:25:30.596Z"
+=======
+            "content": "051b6613be7b22d56ad86946aefc34a0",
+            "lastUpdate": "2020-01-29T21:04:18.514Z"
+>>>>>>> newWishList
         },
         "0-consul-destaque": {
             "content": "d7f915c8e65e231b6c1bb3bc35dc37e5",

@@ -879,7 +879,7 @@ $(document).on('ready', function() {
 				}
 
 				//Salva os dados do shippingData
-				if (orderForm.shippingData && orderForm.shippingData.address) {
+				if (orderForm.shippingData.address) {
 					const userShippingInfo = {
 						clCEP          : orderForm.shippingData.address.postalCode,
 						clComplement   : orderForm.shippingData.address.complement,
