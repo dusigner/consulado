@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import 'helpers/rfs';
+@import 'helpers/mixins';
 
 $self-pri: $green!default;
 $self-sec: $orange!default;
@@ -109,7 +110,7 @@ $canceled-color: #c0392b;
 					height: 2px;
 					left: 34%;
 					position: absolute;
-					top: 28px;
+					top: 25px;
 					width: 26px;
 				}
 			}
