@@ -315,6 +315,7 @@ body.listagem {
 		}
 		.wishlist {
 			&__container {
+				@include breakpoint('small', 'max') { height: 45px };
 				@include rfs(12);
 				@extend %flex-center;
 				bottom: 0;
