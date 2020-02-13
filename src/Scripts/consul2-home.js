@@ -19,6 +19,8 @@ require('modules/interested-shelf');
 require('modules/subCategoryList');
 require('dataLayers/dataLayer-home-BF.js');
 
+require('dataLayers/dataLayer-banner-home.js')
+
 // import 'modules/counter';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
@@ -39,7 +41,8 @@ Nitro.controller(
 		'static-banner',
 		/*'counter', 'datalayer_track'*/
 		'subCategoryList',
-		'dataLayer-vitrine-categorizacao'
+		'dataLayer-vitrine-categorizacao',
+		'dataLayer-banner-home'
 	],
 
 	function(chaordic) {
