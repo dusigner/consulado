@@ -53,7 +53,6 @@ const UtilShared = {
     },
 
     errorReturn() {
-        console.log('executei');
         $('.shared__ws-container')
             .append('<h1 style="text-align:center;">Não há produtos favoritados nessa lista :(</h1>')
             .removeClass('hide');

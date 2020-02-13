@@ -27,29 +27,31 @@ Nitro.controller('shared', function() {
                             refID = productVariations && productVariations.RefId,
                             productSearch = refID && await fetchProductSearch(refID);
 
-                            productSearch
-                                && productSearch.map((d) => {
-                                    const imageUrl = d.items[0].images[0].imageUrl.split('.br/')[1],
-                                        data = {
-                                            productId: d.productId,
-                                            productName: d.productName,
-                                            productLink: d.link,
-                                            productImage: imageUrl,
-                                            listPrice: formatPrice(d.items[0].sellers[0].commertialOffer.ListPrice),
-                                            Price: formatPrice(d.items[0].sellers[0].commertialOffer.Price)
-                                        };
+                            const data = productSearch && productSearch.reduce((arr, cur) => {
+                                const imageUrl = cur.items[0].images[0].imageUrl.split('.br/')[1];
 
-                                    dust.render('wishlist-shared', data, (err, out) => {
-                                        if (err) {
-                                            throw new Error('Wish Dust error: ' + err);
-                                        }
+                                arr.push({
+                                    productId: cur.productId,
+                                    productName: cur.productName,
+                                    productLink: cur.link,
+                                    productImage: imageUrl,
+                                    listPrice: formatPrice(cur.items[0].sellers[0].commertialOffer.ListPrice),
+                                    Price: formatPrice(cur.items[0].sellers[0].commertialOffer.Price)
+                                });
 
-                                        sharedContainer
-                                            .removeClass(Hide)
-                                            .append(out);
-                                        loaderContainer.hide();
-                                    });
-                            });
+                                return arr;
+                            }, []);
+
+                        dust.render('wishlist-shared', data && data.find(i => i), (err, out) => {
+                            if (err) {
+                                throw new Error('Wish Dust error: ' + err);
+                            }
+
+                            sharedContainer
+                                .removeClass(Hide)
+                                .append(out);
+                            loaderContainer.hide();
+                        });
                     });
                 });
             }
