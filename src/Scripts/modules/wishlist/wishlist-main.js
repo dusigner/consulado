@@ -1,4 +1,4 @@
-import cacheSelector from './cacheSelector.js';
+import cacheSelector from './cache-selector.js';
 import { patchVariantFetch, dataBaseFetch, arrayFormat, changingEvent } from './wishlist-utils.js';
 
 const El = cacheSelector.utils, { wishContainer, Loading } = El;

@@ -1,18 +1,22 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
-import wishList from './../../components/WishList/wishlist-main.js';
-import { dataBaseFetch, changingEvent } from './../../components/WishList/wishlist-utils.js';
+import wishList from './wishlist-main.js';
+import wishTags from './wishlist-tags.js';
+import { dataBaseFetch, changingEvent } from './wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
-const El = cacheSelector.auxiliars, { $document, userApi, wishContainer, wishButton } = El;
+const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton } = El;
 
-Nitro.module('wish-pratileira', function() {
+Nitro.module('wish-init', function() {
 	this.init = () => {
 
 		$(window).on('load', () => {
 			fetch(userApi).then(res => res.json().then((res) => {
-				setTimeout(() => { this.setFavoriteds(res)}, 1250);
+				setTimeout(() => {
+					this.setFavoriteds(res);
+					wishTags.init();
+				}, 1250);
 			}));
 		});
 	};
@@ -61,6 +65,7 @@ Nitro.module('wish-pratileira', function() {
 
 			wishListStart.favoritesEvents();
 		});
+
 		$('.box-produto .product-infos-wrap a').on('click', (ev) => ev.stopPropagation());
 	};
 

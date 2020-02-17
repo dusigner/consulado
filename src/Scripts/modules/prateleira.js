@@ -2,7 +2,7 @@
 
 require('modules/listagem/percentoff');
 
-Nitro.module('prateleira', ['percentoff, wish-pratileira'], function() {
+Nitro.module('prateleira', ['percentoff'], function() {
 
 	this.init = () =>{
 		$('.helperComplement').remove();
