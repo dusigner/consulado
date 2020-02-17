@@ -4,6 +4,7 @@ import { pushDataLayer } from './../_datalayer-inline.js';
 const El = cacheSelector.utils, { $document, wishButton, wishContainer, Wished } = El;
 
 const wishTags = {
+
     init() {
         wishTags.startEvents();
     },
