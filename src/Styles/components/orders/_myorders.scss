@@ -31,14 +31,16 @@ $canceled-color: #c0392b;
 				display: block;
 				width: 100%;
 
-				.myorders__page-control {
-					display: flex;
-					flex-flow: row;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					max-width: 100%;
-					text-align: center;
-					width: 380px;
+				@include breakpoint('small', 'max') {
+					.myorders__page-control {
+						display: block;
+						flex-flow: row;
+						// flex-wrap: wrap;
+						justify-content: space-between;
+						max-width: 100%;
+						text-align: left;
+						width: 380px;
+					}
 				}
 			}
 		}
@@ -86,6 +88,10 @@ $canceled-color: #c0392b;
 		justify-content: space-between;
 
 		&-item {
+			@include breakpoint('small', 'max') {
+				display: block;
+				width: 100%;
+			}
 			display: inline-block;
 			padding: 0 20px;
 		}
@@ -97,21 +103,24 @@ $canceled-color: #c0392b;
 
 			&:hover { text-decoration: none !important; }
 
-			&.link-active {
+
+				&.link-active {
 				color: $gray-dark;
 				font-weight: bold;
 				position: relative;
-				&:after {
-					background-color: $green;
-					border-radius: 20px;
-					bottom: 0;
-					content: '';
-					display: inline-block;
-					height: 2px;
-					left: 34%;
-					position: absolute;
-					top: 25px;
-					width: 26px;
+				@include breakpoint('small', 'min') {
+					&:after {
+						background-color: $green;
+						border-radius: 20px;
+						bottom: 0;
+						content: '';
+						display: inline-block;
+						height: 2px;
+						left: 34%;
+						position: absolute;
+						top: 25px;
+						width: 26px;
+					}
 				}
 			}
 		}
@@ -124,7 +133,6 @@ $canceled-color: #c0392b;
 		}
 
 	}
-
 }
 
 .order {
