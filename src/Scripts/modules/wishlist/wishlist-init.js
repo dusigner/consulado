@@ -8,7 +8,7 @@ import cacheSelector from './cache-selector.js';
 
 const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton } = El;
 
-Nitro.module('wish-init', () => {
+Nitro.module('wishlist-init', () => {
 
 	const Methods = {
 

@@ -6,5 +6,9 @@ export default {
         Loading: 'loading',
         Wished: 'wished',
         userApi: '/no-cache/profileSystem/getProfile',
+        tabsMenu: '.myorders__page-control li a',
+        sharedButton: '.order__favoritos-share',
+        productAnchor: '.order__favoritos--titulo',
+        productAnchorShared: '.shared__ws-boxproduct',
     }
 }
