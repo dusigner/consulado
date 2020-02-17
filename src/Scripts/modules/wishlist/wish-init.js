@@ -1,73 +1,76 @@
 /* global $: true, Nitro: true, _: true */
 'use strict';
 
-import wishList from './wishlist-main.js';
+import wishList from './../../components/wishlist-default.js';
 import wishTags from './wishlist-tags.js';
 import { dataBaseFetch, changingEvent } from './wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
 const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton } = El;
 
-Nitro.module('wish-init', function() {
-	this.init = () => {
+Nitro.module('wish-init', () => {
 
-		$(window).on('load', () => {
-			fetch(userApi).then(res => res.json().then((res) => {
-				setTimeout(() => {
-					this.setFavoriteds(res);
-					wishTags.init();
-				}, 1250);
-			}));
-		});
-	};
+	const Methods = {
 
-	this.setFavoriteds = async (res) => {
-		const wishLocalStorage = localStorage.getItem('WishList');
+		init() {
+			$(window).on('load', () => {
+				fetch(userApi).then(res => res.json().then((res) => {
+					setTimeout(() => {
+						Methods.setFavoriteds(res);
+						wishTags.init();
+					}, 1250);
+				}));
+			});
+		},
 
-		if (res.IsUserDefined) {
-			if (!wishLocalStorage) {
-				const response = await dataBaseFetch(res.Email);
+		async setFavoriteds(res) {
+			const wishLocalStorage = localStorage.getItem('WishList');
 
-				response &&
-					response.map(i => i.productReference &&
-						i.productReference.split(',').forEach((item) => {
-							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-								const $element = $(el);
+			if (res.IsUserDefined) {
+				if (!wishLocalStorage) {
+					const response = await dataBaseFetch(res.Email);
 
-								changingEvent($element);
-							});
-						}));
+					response &&
+						response.map(i => i.productReference &&
+							i.productReference.split(',').forEach((item) => {
+								$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+									const $element = $(el);
 
-				this._handleFavorites(res);
-			} else {
-				const wishLocalJson = JSON.parse(wishLocalStorage).value;
+									changingEvent($element);
+								});
+							}));
 
-				wishLocalJson.productReference.split(',').forEach((item) => {
-					$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-						const $element = $(el);
+					Methods._handleFavorites(res);
+				} else {
+					const wishLocalJson = JSON.parse(wishLocalStorage).value;
 
-						changingEvent($element);
+					wishLocalJson.productReference.split(',').forEach((item) => {
+						$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+							const $element = $(el);
+
+							changingEvent($element);
+						});
 					});
-				});
 
-				this._handleFavorites(res);
+					Methods._handleFavorites(res);
+				}
+			} else {
+				Methods._handleFavorites(res);
 			}
-		} else {
-			this._handleFavorites(res);
-		}
+		},
+
+		_handleFavorites(res) {
+			$document.on('click', wishButton, ({currentTarget}) => {
+				const $element = $(currentTarget),
+					productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto'),
+					wishListStart = new wishList(productID, res, $element);
+
+				wishListStart.favoritesEvents();
+			});
+
+			$('.box-produto .product-infos-wrap a').on('click', (ev) => ev.stopPropagation());
+		},
 	}
 
-	this._handleFavorites = (res) => {
-		$document.on('click', wishButton, ({currentTarget}) => {
-			const $element = $(currentTarget),
-				productID = $element.parents(wishContainer).find(wishButton).attr('data-idproduto'),
-				wishListStart = new wishList(productID, res, $element);
-
-			wishListStart.favoritesEvents();
-		});
-
-		$('.box-produto .product-infos-wrap a').on('click', (ev) => ev.stopPropagation());
-	};
-
-	this.init();
+	Methods.init();
 });

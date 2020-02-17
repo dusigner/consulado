@@ -7,62 +7,65 @@ import './Dust/wishlist/wishlist-shared.html'
 
 const El = cacheSelector.selectorAndClasses, { sharedContainer, loaderContainer, Hide } = El;
 
-Nitro.controller('shared', function() {
-    this.init = () => {
-        this.wishShared();
-    };
+Nitro.controller('shared', () => {
+    const Methods = {
 
-    this.wishShared = async () => {
-        try {
-            const encryptedSearchParam = window.location.search.split('?listID=')[1],
-                wishListID = decrypt(encryptedSearchParam),
-                wishListRESPONSE = await fetchSharedList(wishListID),
-                productIDS = wishListRESPONSE &&
-                    wishListRESPONSE.map(a => a.productReference);
+        init() {
+            Methods.wishShared();
+        },
 
-            if (productIDS.length) {
-                productIDS.find((ids) => {
-                    ids.split(',').forEach(async (item) => {
-                        const productVariations = await fetchProductVariations(item),
-                            refID = productVariations && productVariations.RefId,
-                            productSearch = refID && await fetchProductSearch(refID);
+        async wishShared() {
+            try {
+                const encryptedSearchParam = window.location.search.split('?listID=')[1],
+                    wishListID = decrypt(encryptedSearchParam),
+                    wishListRESPONSE = await fetchSharedList(wishListID),
+                    productIDS = wishListRESPONSE &&
+                        wishListRESPONSE.map(a => a.productReference);
 
-                            const data = productSearch && productSearch.reduce((arr, cur) => {
-                                const imageUrl = cur.items[0].images[0].imageUrl.split('.br/')[1];
+                if (productIDS.length) {
+                    productIDS.find((ids) => {
+                        ids.split(',').forEach(async (item) => {
+                            const productVariations = await fetchProductVariations(item),
+                                refID = productVariations && productVariations.RefId,
+                                productSearch = refID && await fetchProductSearch(refID);
 
-                                arr.push({
-                                    productId: cur.productId,
-                                    productName: cur.productName,
-                                    productLink: cur.link,
-                                    productImage: imageUrl,
-                                    listPrice: formatPrice(cur.items[0].sellers[0].commertialOffer.ListPrice),
-                                    Price: formatPrice(cur.items[0].sellers[0].commertialOffer.Price)
-                                });
+                                const data = productSearch && productSearch.reduce((arr, cur) => {
+                                    const imageUrl = cur.items[0].images[0].imageUrl.split('.br/')[1];
 
-                                return arr;
-                            }, []);
+                                    arr.push({
+                                        productId: cur.productId,
+                                        productName: cur.productName,
+                                        productLink: cur.link,
+                                        productImage: imageUrl,
+                                        listPrice: formatPrice(cur.items[0].sellers[0].commertialOffer.ListPrice),
+                                        Price: formatPrice(cur.items[0].sellers[0].commertialOffer.Price)
+                                    });
 
-                        dust.render('wishlist-shared', data && data.find(i => i), (err, out) => {
-                            if (err) {
-                                throw new Error('Wish Dust error: ' + err);
-                            }
+                                    return arr;
+                                }, []);
 
-                            sharedContainer
-                                .removeClass(Hide)
-                                .append(out);
-                            loaderContainer.hide();
+                            dust.render('wishlist-shared', data && data.find(i => i), (err, out) => {
+                                if (err) {
+                                    throw new Error('Wish Dust error: ' + err);
+                                }
+
+                                sharedContainer
+                                    .removeClass(Hide)
+                                    .append(out);
+                                loaderContainer.hide();
+                            });
                         });
                     });
-                });
-            }
-        } catch (err) {
-            loaderContainer.hide();
-            window.alert('Ocorreu um erro ao carregar essa lista :(');
-            window.location.href = '/';
+                }
+            } catch (err) {
+                loaderContainer.hide();
+                window.alert('Ocorreu um erro ao carregar essa lista :(');
+                window.location.href = '/';
 
-            throw new Error('SharedPage Error: ' + err);
+                throw new Error('SharedPage Error: ' + err);
+            }
         }
     }
 
-    this.init();
+    Methods.init();
 });
