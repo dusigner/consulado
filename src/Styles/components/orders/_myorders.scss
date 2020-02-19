@@ -45,6 +45,12 @@ $canceled-color: #c0392b;
 					}
 				}
 			}
+			.myorders__page-control {
+				@include breakpoint('small', 'max') {
+					display: flex;
+					text-align: center;
+				}
+			}
 		}
 		@include breakpoint('small', 'max') {
 
