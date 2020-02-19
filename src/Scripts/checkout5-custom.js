@@ -827,12 +827,13 @@ $(document).on('ready', function() {
 								};
 								return vtexjs.checkout.updateItems([updateItem], null, false);
 							})
-								.done(function() {
-									window.vtex.checkout.MessageUtils.showMessage({
-										text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
-										status: 'error'
-									});
-								});
+								// .done(function() {
+								// 	window.vtex.checkout.MessageUtils.showMessage({
+								// 		text: 'Você só pode ter no máximo 5 itens do produto '+prodName+' no carrinho',
+								// 		status: 'error'
+								// 	});
+								// });
+								$('#modal-info-pj').modal();
 						}
 					});
 				}
