@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import 'helpers/rfs';
+@import 'helpers/mixins';
 
 $self-pri: $green!default;
 $self-sec: $orange!default;
@@ -21,26 +22,37 @@ $canceled-color: #c0392b;
 .section-orders {
 	background: #fff;
 	margin-bottom: 0;
-	@include breakpoint('extra-small', 'max') {
-		background: #fff;
-		padding: 20px 0;
+	padding: 20px 0;
 
 		.myorders__page {
+			margin-bottom: 20px;
+			@include breakpoint('extra-small', 'min') {
 			> div:nth-child(2) {
 				display: block;
 				width: 100%;
-
-				.myorders__page-control {
+					.myorders__page-control {
+						@include breakpoint('small', 'max') {
+							display: flex;
+							text-align: center;
+						}
+						display: block;
+						flex-flow: row;
+						flex-wrap: wrap;
+						justify-content: space-between;
+						max-width: 100%;
+						text-align: left;
+						width: 380px;
+					}
+				}
+			}
+			.myorders__page-control {
+				@include breakpoint('small', 'max') {
 					display: flex;
-					flex-flow: row;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					max-width: 100%;
 					text-align: center;
-					width: 380px;
 				}
 			}
 		}
+		@include breakpoint('small', 'max') {
 
 		.container {
 			margin: 0;
@@ -79,13 +91,14 @@ $canceled-color: #c0392b;
 	}
 
 	&__page {
-		align-items: center;
+		align-items: flex-end;
 		border-bottom: 5px solid #F4F4F4;
 		display: flex;
 		justify-content: space-between;
 
 		&-item {
 			display: inline-block;
+			line-height: 15px;
 			padding: 0 20px;
 		}
 
@@ -93,25 +106,24 @@ $canceled-color: #c0392b;
 			@include rfs(16);
 			color: $gray-darkest;
 			font-weight: 500;
-
 			&:hover { text-decoration: none !important; }
 
-			&.link-active {
+
+				&.link-active {
 				color: $gray-dark;
 				font-weight: bold;
 				position: relative;
-				&:after {
-					background-color: $green;
-					border-radius: 20px;
-					bottom: 0;
-					content: '';
-					display: inline-block;
-					height: 2px;
-					left: 34%;
-					position: absolute;
-					top: 28px;
-					width: 26px;
-				}
+					&:after {
+						background-color: $green;
+						border-radius: 20px;
+						bottom: 0;
+						content: '';
+						display: block;
+						height: 2px;
+						margin: 10px auto 0;
+						position: relative;
+						width: 26px;
+					}
 			}
 		}
 
@@ -119,11 +131,10 @@ $canceled-color: #c0392b;
 			@include rfs(28);
 			color: $gray-dark;
 			font-weight: bolder;
-			margin: 0;
+			margin: 0 auto 5px;
 		}
 
 	}
-
 }
 
 .order {

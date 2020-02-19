@@ -58,13 +58,13 @@ require('modules/header');
 require('modules/footer-2019');
 require('modules/store/cluster');
 require('modules/listagem/percentoff');
-require('modules/listagem/wish-pratileira');
 require('modules/descadastrar.emailCRM.js');
 require('modules/store/vtex-login');
 require('modules/prateleira');
 require('modules/customLogin');
 require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
+require('modules/wishlist/wishlist-init');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -101,7 +101,7 @@ Nitro.setup(
 	[
 		/*'geo', */ 'cluster',
 		'percentoff',
-		'wish-pratileira',
+		'wishlist-init',
 		'descadastrar.emailCRM',
 		'vtex-login',
 		'prateleira' /*, 'login.url'*/,

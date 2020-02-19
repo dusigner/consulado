@@ -9,16 +9,16 @@
 			</div>
 			<div class="order__favoritos--preco">
 			{?precoAnterior}
-				<span>{precoAnterior}</span><br>
+				<span>{precoAnterior}</span>
 				<p>{precoProduto}</p>
 			{:else}
-				<p>Produto Indisponível</p>
+				<p class="indisponivel">Indisponível</p>
             {/precoAnterior}
 			</div>
 			<div class="order__favoritos--close">
 				<div class="wishlist__container wished">
 					<div class="wishlist__button" data-idproduto="{productID}" title="Remover dos favoritos">
-						<span>x</span>
+						<p>x <span>Remover</span></p>
 					</div>
 				</div>
 			</div>

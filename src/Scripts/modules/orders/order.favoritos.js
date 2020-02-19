@@ -129,7 +129,6 @@ Nitro.module('order.favoritos', function() {
 		$(document).on('click', '.order__favoritos-share', ({currentTarget}) => {
 			const $element = $(currentTarget),
 				t = String($element.attr('value'));
-				console.log(t);
 
 			copyToClipBoard(t);
 			$element.find('p').text('Link da lista copiado!');
