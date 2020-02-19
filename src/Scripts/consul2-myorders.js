@@ -40,12 +40,26 @@ Nitro.setup(['order.orders', 'order.recurrences', 'order.favoritos'], function(o
 			if (!modules[link][link].isLoaded) {
 				modules[link].init();
 			}
+
 		});
+
 		$('.myorders__page-item a').click(function(e) {
 			e.preventDefault();
 			$('a').removeClass('link-active');
 			$(this).addClass('link-active');
 		});
+
+		$('#dropmenu').click (function() {
+			$('#ul li').fadeToggle();
+		});
+
+		$('#dropmenu').on('click', function() {
+			$(this).toggleClass('link-active');
+			$('.js-link-orders').toggleClass('link-active');
+		});
+		// $('.drop-box').click(function(){
+		// 	$('.rotate').toggleClass('down');
+		// });
 	};
 
 	$(window).on('load', () => this.init());
