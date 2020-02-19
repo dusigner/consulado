@@ -11,18 +11,25 @@ $gray-dark: #5B5B5B;
 $gray-very-dark: #403C3B;
 $green: #9ACA3C;
 
+
 .order {
 	&__favoritos {
 		padding: 10px 0;
 		.row {
+			align-items: center;
 			border: 1px solid $gray-light;
 			border-radius: 6px;
+			display: inline-flex;
+			justify-content: space-between;
 			margin-bottom: 0;
 			max-height: 100px;
-			padding: 20px 16px;
+			padding: 10px 10px;
 			position: relative;
 			@include breakpoint('small', 'max') {
+			    display: inline-flex;
+				flex-flow: wrap;
 				max-height: 100%;
+				padding: 10px 5px;
 			}
 		}
 		&--thumb {
@@ -34,40 +41,52 @@ $green: #9ACA3C;
 			width: 65px;
 			img {
 				display: block;
+				margin: 0 auto;
 				max-height: 100%;
 				max-width: 100%;
+			}
+			a {
+				display: block;
+				margin: 0 auto;
 			}
 		}
 		&--titulo {
 			@include breakpoint('small', 'max') {
-				width: 180px;
+				width: calc(100% - 68px);
 				h2 {
-					padding: 0 10px;
+					padding: 0 2px 10px;
+					width: 100%;
 				}
 			}
 			display: inline-block;
 			max-width: 100%;
-			width: 390px;
+			width: 100%;
 			h2 {
 				@include rfs(14);
 				color: $gray-darkest;
+				float: left;
 				font-weight: 500;
 				margin: 0 auto;
 				padding: 0 20px;
 				text-align: left;
+				width: 380px;
 			}
 		}
 		&--preco {
 			display: block;
 			float: right;
 			max-width: 100%;
-			padding-right: 10%;
+			padding-right: 20px;
 			text-align: right;
 			width: 210px;
 			@include breakpoint('small', 'max') {
-				margin-top: 10px;
+				clear: both;
+				float: left;
+				margin-top: 0;
+				padding-left: 68px;
 				text-align: left;
-				width: 100%;
+				width: auto;
+
 			}
 			span {
 				@include rfs(14);
@@ -80,21 +99,37 @@ $green: #9ACA3C;
 				color: $green;
 				font-weight: 700;
 				margin: 0 auto;
-
+				&.indisponivel {
+					@include rfs(14);
+					color: $gray-darkest;
+					font-weight: 500;
+				}
 			}
+
 		}
 		&--close {
-			@include rfs(20);
+			@include rfs(16);
 			cursor: pointer;
-			position: absolute;
-			right: 4%;
-			top: 50%;
-			transform: translateY(-50%);
+			float: right;
+			font-weight: 600;
+			position: relative;
+			text-align: center;
+			width: 70px;
+			@include breakpoint('small', 'max') {
+				width: auto;
+				p {
+					margin-top: 0;
+					span {
+						padding: 0 10px 0 5px;
+					}
+				}
+			}
 
-			.wishlist__button {
-				height: 35px;
-				text-align: center;
-				width: 30px;
+			@include breakpoint('small', 'min') {
+				span {
+					display: none;
+				}
+
 			}
 		}
 	}
