@@ -1,0 +1,144 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/whp-modal';
+@import 'helpers/rfs';
+
+// Component styles
+
+@keyframes loader-ring {
+	0% {
+	  transform: rotate(0deg);
+	}
+	100% {
+	  transform: rotate(360deg);
+	}
+}
+
+.shared {
+	&__ws-container {
+		display: block;
+		margin-top: 20px;
+	}
+
+	&__ws-boxproduct {
+		@media (max-width: 768px) {
+			padding: 10px 0;
+		}
+		border: 1px solid #E3E1E1;
+		display: block;
+		margin-bottom: 15px;
+		padding: 15px 0;
+
+		a {
+			align-items: center;
+			display: flex;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__ws-productimage {
+		@media (max-width: 768px) {
+			margin: 15px 25px 0 15px;
+		}
+		margin: 0 25px 0 15px;
+		width: 65px;
+
+		img {
+			height: 65px;
+			width: 65px;
+		}
+	}
+
+	&__ws-productname {
+		@media (max-width: 768px) {
+			width: calc(100% - 110px);
+
+			h2 {
+				margin: 5px;
+			}
+		}
+		width: calc(35% - 65px);
+		h2 {
+			@include rfs(14);
+			color: #736C6B;
+			font-weight: 500;
+		}
+	}
+
+	&__ws-productprice {
+		@media (max-width: 768px) {
+			margin-left: 110px;
+			text-align: left;
+			width: calc(100% - 110px);
+		}
+		text-align: right;
+		width: calc(65% - 65px);
+		span {
+			@include rfs(14);
+			color: #736C6B;
+			font-weight: 500;
+			text-decoration: line-through;
+		}
+		strong {
+			@include rfs(18);
+			color: #9ACA3C;
+			font-weight: 800;
+		}
+	}
+
+	&__ws-loader-container {
+		align-items: center;
+		display: flex;
+		height: 400px;
+		justify-content: center;
+		width: 100%;
+	}
+
+	&__ws-loader-ring {
+		display: inline-block;
+		height: 160px;
+		position: relative;
+		width: 160px;
+		div {
+			animation: loader-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+			border: 8px solid #dfc;
+			border-color: #dfc transparent transparent transparent;
+			border-radius: 50%;
+			box-sizing: border-box;
+			display: block;
+			height: 120px;
+			margin: 8px;
+			position: absolute;
+			width: 120px;
+
+			&:nth-child(1) {
+				animation-delay: -0.45s;
+			}
+			&:nth-child(2) {
+				animation-delay: -0.3s;
+			}
+			&:nth-child(3) {
+				animation-delay: -0.15s;
+			}
+		}
+	}
+}

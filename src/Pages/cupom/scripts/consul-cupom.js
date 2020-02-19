@@ -5,6 +5,7 @@ import toastr from 'vendors/toastr';
 import {getCoupons} from 'modules/store/crm';
 import DataLayer from './modules/dataLayer';
 require('modules/listagem/percentoff');
+
 require('modules/prateleira');
 require('Dust/coupon/cupom-list.html');
 
