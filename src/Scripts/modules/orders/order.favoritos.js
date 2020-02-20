@@ -45,7 +45,7 @@ Nitro.module('order.favoritos', function() {
 							cache: false
 						}).then((prodFavorito) => {
 
-							const wishID = prodFavorito.map(i => i.id);
+							const wishID = prodFavorito.map(i => i.productReference);
 
 							self.$favoritosContainer.append(`
 								<div class='order__favoritos-share hide' value='${window.location.origin}/shared-list?listID=${encrypt(String(wishID))}'>
