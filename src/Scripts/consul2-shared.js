@@ -2,7 +2,7 @@
 'use strict';
 
 import cacheSelector from './../Pages/shared/scripts/cache-selector.js';
-import { decrypt, fetchSharedList, fetchProductSearch, formatPrice } from './../Pages/shared/scripts/shared-wishlist.js';
+import { decrypt, fetchProductSearch, formatPrice } from './../Pages/shared/scripts/shared-wishlist.js';
 import './Dust/wishlist/wishlist-shared.html'
 
 const El = cacheSelector.selectorAndClasses, { sharedContainer, loaderContainer, Hide } = El;
@@ -14,7 +14,7 @@ Nitro.controller('shared', () => {
             Methods.wishShared();
         },
 
-        async wishShared() {
+        wishShared() {
             const encryptedSearchParam = window.location.search.split('?listID=')[1],
                 wishListID = decrypt(encryptedSearchParam);
 

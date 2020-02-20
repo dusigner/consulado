@@ -3,7 +3,7 @@
 
 import wishList from './../../components/wishlist-default.js';
 import wishTags from './wishlist-tags.js';
-import { dataBaseFetch, changingEvent } from './wishlist-utils.js';
+import { dataBaseFetch, changingEvent, patchVariantFetch } from './wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
 const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton } = El;
@@ -27,7 +27,7 @@ Nitro.module('wishlist-init', () => {
 			if (res.IsUserDefined) {
 				const response = await dataBaseFetch(res.Email);
 
-				response &&
+				response.length ?
 					response.map(i => i.productReference &&
 						i.productReference.split(',').forEach((item) => {
 							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
@@ -35,7 +35,7 @@ Nitro.module('wishlist-init', () => {
 
 								changingEvent($element);
 							});
-						}));
+						})) : patchVariantFetch('', res.Email, '');
 
 				Methods._handleFavorites(res);
 
