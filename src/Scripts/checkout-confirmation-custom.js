@@ -46,6 +46,7 @@ $(window).on('load', function() {
 			$body = $('body');
 
 		this.init = function() {
+			this.closeEbitModal();
 			this.orderPlacedUpdated();
 			this.orderReinput();
 
@@ -61,6 +62,12 @@ $(window).on('load', function() {
 					return self[request] && self[request].call(self);
 				})
 			);
+		};
+
+		this.closeEbitModal = () => {
+			$(document).on('click', '.btFechar', () => {
+				$('.boxLight').hide();
+			});
 		};
 
 		this.orderData = [];
