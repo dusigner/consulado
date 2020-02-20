@@ -1,27 +1,24 @@
 const UtilShared = {
     async fetchSharedList(wishListID) {
         try {
-            const res = await fetch(`/api/dataentities/WL/search?id=${wishListID}&_fields=productReference`);
-            return await res.json();
+            return $.ajax({
+                url: `/api/dataentities/WL/search?id=${wishListID}&_fields=id,productReference`,
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    'Content-type': 'application/json',
+                },
+                cache: false
+            });
         } catch (err) {
             UtilShared.errorReturn();
             console.log('SharedPage Error: ', err)
         }
     },
 
-    async fetchProductVariations(ids) {
+    async fetchProductSearch(productID) {
         try {
-            const res = await fetch(`/api/catalog_system/pvt/products/ProductGet/${ids}`);
-            return await res.json();
-        } catch (err) {
-            UtilShared.errorReturn();
-            console.log('SharedPage Error: ', err)
-        }
-    },
-
-    async fetchProductSearch(refID) {
-        try {
-            const res = await fetch(`/api/catalog_system/pub/products/search/${refID}`);
+            const res = await fetch(`/api/catalog_system/pub/products/search?fq=productId:${productID}`);
             return await res.json();
         } catch (err) {
             UtilShared.errorReturn();

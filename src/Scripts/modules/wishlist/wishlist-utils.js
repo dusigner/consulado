@@ -1,24 +1,37 @@
 const Utils = {
     async dataBaseFetch(userEmail) {
         try {
-            const res = await fetch(`/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`);
-
-            return await res.json();
+            return $.ajax({
+                url: `/api/dataentities/WL/search?email=${userEmail}&_fields=id,productReference`,
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    'Content-type': 'application/json',
+                },
+                cache: false
+            });
         } catch (err) {
             throw new Error('Ocorreu um erro ao favoritar esse produto :( ' + err);
         }
     },
 
     patchVariantFetch(listID, userEmail, arr) {
-        return new Request('/api/dataentities/WL/documents', {
-            method: 'PATCH',
-            credentials: 'include',
-            headers: {
-                'Accept': 'application/vnd.vtex.ds.v10+json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ id: String(listID), email: userEmail, productReference: Utils.arrayFormat(arr)})
-        });
+        try {
+            return $.ajax({
+                    headers: {
+                        'Accept': 'application/vnd.vtex.ds.v10+json',
+                        'Content-Type': 'application/json'
+                    },
+                    url: '/api/dataentities/WL/documents',
+                    async: true,
+                    crossDomain: true,
+                    type: 'PATCH',
+                    data: JSON.stringify({ id: String(listID), email: userEmail, productReference: Utils.arrayFormat(arr)}),
+                    cache: false
+                });
+        } catch (err) {
+            throw new Error('Ocorreu um erro ao favoritar esse produto :( ' + err);
+        }
     },
 
     arrayFormat(arr) {
