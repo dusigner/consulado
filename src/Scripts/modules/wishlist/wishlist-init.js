@@ -24,36 +24,21 @@ Nitro.module('wishlist-init', () => {
 		},
 
 		async setFavoriteds(res) {
-			const wishLocalStorage = localStorage.getItem('WishList');
-
 			if (res.IsUserDefined) {
-				if (!wishLocalStorage) {
-					const response = await dataBaseFetch(res.Email);
+				const response = await dataBaseFetch(res.Email);
 
-					response &&
-						response.map(i => i.productReference &&
-							i.productReference.split(',').forEach((item) => {
-								$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-									const $element = $(el);
+				response &&
+					response.map(i => i.productReference &&
+						i.productReference.split(',').forEach((item) => {
+							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
+								const $element = $(el);
 
-									changingEvent($element);
-								});
-							}));
+								changingEvent($element);
+							});
+						}));
 
-					Methods._handleFavorites(res);
-				} else {
-					const wishLocalJson = JSON.parse(wishLocalStorage).value;
+				Methods._handleFavorites(res);
 
-					wishLocalJson.productReference.split(',').forEach((item) => {
-						$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
-							const $element = $(el);
-
-							changingEvent($element);
-						});
-					});
-
-					Methods._handleFavorites(res);
-				}
 			} else {
 				Methods._handleFavorites(res);
 			}

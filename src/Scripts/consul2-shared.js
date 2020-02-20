@@ -2,7 +2,7 @@
 'use strict';
 
 import cacheSelector from './../Pages/shared/scripts/cache-selector.js';
-import { decrypt, fetchSharedList, fetchProductVariations, fetchProductSearch, formatPrice } from './../Pages/shared/scripts/shared-wishlist.js';
+import { decrypt, fetchSharedList, fetchProductSearch, formatPrice } from './../Pages/shared/scripts/shared-wishlist.js';
 import './Dust/wishlist/wishlist-shared.html'
 
 const El = cacheSelector.selectorAndClasses, { sharedContainer, loaderContainer, Hide } = El;
@@ -25,24 +25,21 @@ Nitro.controller('shared', () => {
                 if (productIDS.length) {
                     productIDS.find((ids) => {
                         ids.split(',').forEach(async (item) => {
-                            const productVariations = await fetchProductVariations(item),
-                                refID = productVariations && productVariations.RefId,
-                                productSearch = refID && await fetchProductSearch(refID);
+                                const productSearch = item && await fetchProductSearch(item),
+                                    data = productSearch && productSearch.reduce((arr, cur) => {
+                                        const imageUrl = cur.items[0].images[0].imageUrl.split('.br/')[1];
 
-                                const data = productSearch && productSearch.reduce((arr, cur) => {
-                                    const imageUrl = cur.items[0].images[0].imageUrl.split('.br/')[1];
+                                        arr.push({
+                                            productId: cur.productId,
+                                            productName: cur.productName,
+                                            productLink: cur.link,
+                                            productImage: imageUrl,
+                                            listPrice: formatPrice(cur.items[0].sellers[0].commertialOffer.ListPrice),
+                                            Price: formatPrice(cur.items[0].sellers[0].commertialOffer.Price)
+                                        });
 
-                                    arr.push({
-                                        productId: cur.productId,
-                                        productName: cur.productName,
-                                        productLink: cur.link,
-                                        productImage: imageUrl,
-                                        listPrice: formatPrice(cur.items[0].sellers[0].commertialOffer.ListPrice),
-                                        Price: formatPrice(cur.items[0].sellers[0].commertialOffer.Price)
-                                    });
-
-                                    return arr;
-                                }, []);
+                                        return arr;
+                                    }, []);
 
                             dust.render('wishlist-shared', data && data.find(i => i), (err, out) => {
                                 if (err) {
