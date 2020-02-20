@@ -176,7 +176,7 @@ Nitro.module('register.corporate', function() {
 
 		$form.fieldEmail.val(email).attr('readonly', 'readonly');
 
-		$modalRegister.vtexModal();
+		$modalRegister.vtexModal({static: true});
 	};
 
 	this.error = function(message, $field) {
