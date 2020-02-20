@@ -27,7 +27,7 @@ Nitro.module('wishlist-init', () => {
 			if (res.IsUserDefined) {
 				const response = await dataBaseFetch(res.Email);
 
-				response.length ?
+				response.length &&
 					response.map(i => i.productReference &&
 						i.productReference.split(',').forEach((item) => {
 							$(`.wishlist__button[data-idproduto=${item}]`).each((i, el) => {
@@ -35,7 +35,7 @@ Nitro.module('wishlist-init', () => {
 
 								changingEvent($element);
 							});
-						})) : patchVariantFetch('', res.Email, '');
+						}));
 
 				Methods._handleFavorites(res);
 

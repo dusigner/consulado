@@ -54,7 +54,7 @@ Nitro.module('order.favoritos', function() {
 								</div>
 							`)
 
-							const referencia = prodFavorito[0].productReference.split(',');
+							const referencia = wishID.split(',');
 
 							if(referencia.length === 0) {
 								self.$container.removeClass('myorders--loading');
