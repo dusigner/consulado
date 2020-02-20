@@ -1,0 +1,27 @@
+<div class="order__favoritos">
+	<div class="container-fluid">
+		<div class="row">
+				<div class="order__favoritos--thumb">
+					<a href="{linkProduto}" target="_blank"><img src="{productImage}" alt="{productName}"></a>
+				</div>
+			<div class="order__favoritos--titulo">
+				<h2><a href="{linkProduto}" target="_blank">{productName}</a></h2>
+			</div>
+			<div class="order__favoritos--preco">
+			{?precoAnterior}
+				<span>{precoAnterior}</span>
+				<p>{precoProduto}</p>
+			{:else}
+				<p class="indisponivel">Indisponível</p>
+            {/precoAnterior}
+			</div>
+			<div class="order__favoritos--close">
+				<div class="wishlist__container wished">
+					<div class="wishlist__button" data-idproduto="{productID}" title="Remover dos favoritos">
+						<p>x <span>Remover</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

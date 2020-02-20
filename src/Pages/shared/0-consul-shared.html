@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Loja Consul - Lista Compartilhada</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<!-- @if DEBUG=true -->
+	<!-- @include ../includes/head-vtex.html -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-head-content.html -->
+	<!-- @endif -->
+
+	<vtex:template id="0-consul-head-content" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-shared.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="shared">
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-header.html -->
+	<!-- @endif -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+	<div class="container">
+		<div class="shared__ws-container hide"><h1 style="text-align: center;">Lista Compartilhada</h1></div>
+		<div class="shared__ws-loader-container">
+			<div class="shared__ws-loader-ring"><div></div><div></div><div></div><div></div></div>
+		</div>
+	</div>
+
+
+	<!-- @if DEBUG=true -->
+	<!-- @include ../../01 - HTML Templates/Sub Templates/0-consul-footer.html -->
+	<!-- @endif -->
+
+	<!-- Footer -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-shared.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+</html>

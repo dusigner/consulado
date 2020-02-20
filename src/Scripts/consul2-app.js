@@ -64,6 +64,7 @@ require('modules/prateleira');
 require('modules/customLogin');
 require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
+require('modules/wishlist/wishlist-init');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -100,6 +101,7 @@ Nitro.setup(
 	[
 		/*'geo', */ 'cluster',
 		'percentoff',
+		'wishlist-init',
 		'descadastrar.emailCRM',
 		'vtex-login',
 		'prateleira' /*, 'login.url'*/,
