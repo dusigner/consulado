@@ -22,7 +22,7 @@ require('dataLayers/dataLayer-home-BF.js')
 
 // require('modules/_staticBanner');
 require('modules/subCategoryList')
-// import 'modules/counter';
+import 'modules/counter';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 
@@ -40,7 +40,8 @@ Nitro.controller(
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
 		/* 'static-banner' */
-		/*'counter', 'datalayer_track'*/
+		'counter',
+		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao'
 	],

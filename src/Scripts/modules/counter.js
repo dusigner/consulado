@@ -6,7 +6,8 @@
 'use strict';
 
 Nitro.module('counter', function() {
-	const endDate = $('.counter__offer-prod .prateleira.default h2').text();
+	// const endDate = $('.counter__offer-prod .prateleira.default h2').text();
+	const endDate = '2020/02/29';
 
 	this.init = () => {
 		this.initCounter();
