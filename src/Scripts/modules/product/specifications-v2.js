@@ -155,7 +155,7 @@ Nitro.module('specifications-v2', function() {
 	};
 
 	this.openSection = function() {
-		$('.specs__measure, .specs__items, .specs__specs, .specs__additionalInfo, .specs__links').find('.icon').on('click', function() {
+		$('.specs__measure, .specs__items, .specs__specs, .specs__additionalInfo, .specs__links').find('h4').on('click', function() {
 			let $this = $(this);
 			$this.toggleClass('specActive');
 			$this.parents('.specs__section').toggleClass('inactive');

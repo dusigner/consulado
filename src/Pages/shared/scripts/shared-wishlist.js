@@ -31,11 +31,11 @@ const UtilShared = {
     },
 
     encrypt(s) {
-        return s.replace(/\-/gm, 'U2FsdGVkX186oi');
+        return s.replace(/\,/gm, 'U2FsdGVkX186oi');
     },
 
     decrypt(s) {
-        return s.replace(/\U2FsdGVkX186oi/gm, '-');
+        return s.replace(/\U2FsdGVkX186oi/gm, ',');
     },
 
     copyToClipBoard(t) {

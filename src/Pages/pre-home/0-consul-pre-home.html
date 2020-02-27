@@ -14,8 +14,7 @@
 
 	<vtex:template id="0-consul-head-content" />
 
-
-    <link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-pre-home.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="/arquivos/consul2-pre-home.css" />
 </head>
 
 <body data-controller="pre-home" class="pre-home">
@@ -146,22 +145,20 @@
 							<h4 class="title">Dados da Empresa</h4>
 							<div class="group">
 								<label>CNPJ</label>
-								<input type="text" name="corporateDocument" class="form-control corporateDocument" data-validation="required cnpj" data-msg-required="Digite um CNPJ"
-								 data-msg-cpf="CNPJ inválido" />
+								<input type="number" name="corporateDocument" class="form-control corporateDocument" data-validation="required cnpj" data-msg-required="Digite um CNPJ"
+								data-msg-cnpj="CNPJ inválido" />
 							</div>
 							<div class="group">
 								<label>Razão social</label>
-								<input type="text" name="corporateName" class="form-control corporateName" data-validation="required" data-msg-required="Preencha o nome da empresa"
-								/>
+								<input type="text" name="corporateName" class="form-control corporateName" data-validation="required onlycharacter" data-msg-required="Preencha o nome da empresa" data-msg-onlycharacter="Nesse campo não são permitidos caracteres especiais"/>
 							</div>
 							<div class="group">
 								<label>Nome Fantasia</label>
-								<input type="text" name="tradeName" class="form-control tradeName" data-validation="required" data-msg-required="Preencha o nome fantasia da empresa"
-								/>
+								<input type="text" name="tradeName" class="form-control tradeName" data-validation="required onlycharacter" data-msg-required="Preencha o nome fantasia da empresa" data-msg-onlycharacter="Nesse campo não são permitidos caracteres especiais"/>
 							</div>
 							<div class="group">
 								<label>Inscrição estadual</label>
-								<input type="text" name="stateRegistration" class="form-control stateRegistration" data-validation="required stateRegistration"
+								<input type="number" name="stateRegistration" class="form-control stateRegistration" data-validation="required stateRegistration"
 								 data-msg-required="Digite uma Inscrição estadual" data-msg-cpf="Descrição estadual inválida" />
 								<div class="checkbox">
 									<input type="checkbox" name="isFreeStateRegistration" id="isFreeStateRegistration" /><label for="isFreeStateRegistration"> Isento</label>
@@ -200,19 +197,18 @@
 							<h4 class="title">Endereço da Empresa</h4>
 							<div class="group">
 								<label>CEP</label>
-								<input type="text" name="postalCode" class="form-control postalCode" data-validation="required cep" data-msg-required="Digite um CEP"
+								<input type="number" name="postalCode" class="form-control postalCode" data-validation="required cep" data-msg-required="Digite um CEP"
 								 data-msg-cpf="CEP inválido" />
 							</div>
 							<div class="group">
 								<label>Endereço</label>
-								<input type="text" name="addressName" class="form-control addressName" data-validation="required" data-msg-required="Preencha o endereço da empresa"
-								 readonly="readonly" />
+								<input type="text" name="addressName" class="form-control addressName" data-validation="required onlycharacter" data-msg-required="Preencha o endereço da empresa" readonly="readonly" data-msg-onlycharacter="Nesse campo não são permitidos caracteres especiais"/>
 							</div>
 							<div class="row">
 								<div class="col-6 padding-right-col">
 									<div class="group">
 										<label>Número</label>
-										<input type="text" name="number" class="form-control number" data-validation="required" data-msg-required="Preencha o número da empresa"
+										<input type="number" name="number" class="form-control number" data-validation="required" data-msg-required="Preencha o número da empresa"
 										/>
 									</div>
 								</div>
@@ -232,15 +228,13 @@
 								<div class="col-6 padding-right-col">
 									<div class="group">
 										<label>Estado</label>
-										<input type="text" name="state" class="form-control state" data-validation="required" data-msg-required="Preencha o estado da empresa"
-										 readonly="readonly" />
+										<input type="text" name="state" class="form-control state" data-validation="required onlycharacter" data-msg-required="Preencha o estado da empresa" readonly="readonly"  data-msg-onlycharacter="Nesse campo não são permitidos caracteres especiais"/>
 									</div>
 								</div>
 								<div class="col-6 padding-left-col">
 									<div class="group">
 										<label>Cidade</label>
-										<input type="text" name="city" class="form-control city" data-validation="required" data-msg-required="Preencha a cidade da empresa"
-										 readonly="readonly" />
+										<input type="text" name="city" class="form-control city" data-validation="required onlycharacter" data-msg-required="Preencha a cidade da empresa" readonly="readonly" data-msg-onlycharacter="Nesse campo não são permitidos caracteres especiais"/>
 									</div>
 								</div>
 							</div>
@@ -1043,6 +1037,6 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script type="text/javascript" src="<!-- @echo assetsPath -->/consul2-pre-home.min.js?v=<!-- @echo package.version -->"></script>
+	<script type="text/javascript" src="/files/consul2-pre-home.min.js"></script>
 </body>
 </html>

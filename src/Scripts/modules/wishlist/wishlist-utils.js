@@ -25,7 +25,7 @@ const Utils = {
                     url: '/api/dataentities/WL/documents',
                     async: true,
                     crossDomain: true,
-                    type: 'PATCH',
+                    type: 'PUT',
                     data: JSON.stringify({ id: String(listID), email: userEmail, productReference: Utils.arrayFormat(arr)}),
                     cache: false
                 });

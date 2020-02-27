@@ -23,11 +23,8 @@ $bar-color: #D9D8D8;
 
 			&-main {
 				@include breakpoint('small', 'max') {
-					@include rfs(20);
 					text-align: left;
-
 				}
-
 				@include rfs(28);
 				color: $title-color;
 				font-weight: bold;
@@ -277,7 +274,7 @@ $bar-color: #D9D8D8;
 			@include breakpoint('small', 'min') {
 				display: inline-block;
 				margin-bottom: 0;
-				width: 30%;
+				width: 34%;
 			}
 			margin-bottom: 30px;
 
@@ -292,6 +289,7 @@ $bar-color: #D9D8D8;
 					font-family: 'Open Sans';
 					font-weight: 500;
 					margin: 0;
+					padding-right: 20px;
 				}
 			}
 		}
@@ -299,7 +297,7 @@ $bar-color: #D9D8D8;
 		&__links {
 			@include breakpoint('small', 'min') {
 				padding-left: 16px;
-				width: 70%;
+				width: 66%;
 			}
 
 			display: inline-block;
@@ -370,13 +368,13 @@ $bar-color: #D9D8D8;
 				@include breakpoint('small', 'min') { display: none; }
 				font-size: 8px;
 				position: absolute;
-				right: 8px;
+				right: 10px;
 				top: 5px;
 				transition: transform 0.4s ease 0s;
+			}
 
-				&.specActive {
-					transform: rotate(-180deg) translateY(25%);
-				}
+			.specActive .icon {
+				transform: rotate(-180deg) translateY(25%);
 			}
 
 			.container {
@@ -388,7 +386,7 @@ $bar-color: #D9D8D8;
 		&__links {
 			.icon {
 				position: absolute;
-				right: -2px;
+				right: 0;
 			}
 
 			&-title {

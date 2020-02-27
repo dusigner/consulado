@@ -4,7 +4,7 @@
 import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
-import 'modules/product/product-nav';
+import 'modules/product/product-nav-v2';
 import 'modules/product/details';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
@@ -17,6 +17,7 @@ import 'modules/product/upsell';
 import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
+import 'modules/product/product-tags';
 import 'modules/chaordic';
 
 Nitro.controller(
@@ -39,6 +40,7 @@ Nitro.controller(
 		'upsell',
 		'deliveryTime',
 		'recurrence',
+		'product-tags',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -97,7 +99,7 @@ Nitro.controller(
 				e.preventDefault();
 				var _pos = $(window).scrollTop();
 
-				if ($('body').hasClass('produto-indisponivel') || (_pos >= 300)) {
+				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
 					$('.product-info-bar').addClass('formas-pagamento-is--active');
 				} else {
 					$('.product-info-bar').removeClass('formas-pagamento-is--active');
@@ -105,6 +107,14 @@ Nitro.controller(
 				}
 			});
 		}
+
+		const $document = $(document),
+			$cepInput = '#calculoFrete .prefixo input';
+
+		$document.on('change', $cepInput, ({currentTarget}) => {
+			const $element = $(currentTarget);
+			$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
+		});
 
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
@@ -145,12 +155,18 @@ Nitro.controller(
 			const $element = $(currentTarget);
 			$('#modal-' + $element.data('modal')).vtexModal();
 		});
+		$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 
 		//Opções de parcelamento
 		self.valoresParcelas = function() {
 			var $valoresParcelas = $('.valores-parcelas'),
 				$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
-				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul');
+				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul'),
+				installmentQuantity = skuJson.skus[0].installments;
+
+			if (installmentQuantity === 1) {
+				$('.formas-pagamento-container').css('display', 'none');
+			}
 
 			$opcoesParcelamento.find('li').each(function() {
 				var $numeroParcelas = $(this).find('span:first-child'),
@@ -270,6 +286,7 @@ Nitro.controller(
 					$btnPecas
 						.attr('href', url)
 						.parents('.product-assist-block')
+						.attr('title', 'Peças para este produto')
 						.addClass('has--parts');
 				}
 				// else{

@@ -357,6 +357,11 @@ if (!window.getCookie) {
 		scrollTo: function(target, offset) {
 			$(target || $(this).attr('href')).toScroll(offset);
 		},
+		validCharacter: function() {
+
+			return /^[ 1234567890qwertyuioôõãplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNMÇÂÃÕ ]*$/.test($(this).val());
+
+		},
 		exists: function() {
 			return $(this).length > 0 ? true : false;
 		},

@@ -1,7 +1,15 @@
 #vtex-modal-tipo-entrega,
 #vtex-modal-entrega-premium {
+	.close-modal {
+		position: absolute;
+		right: 25px;
+		top: 5px;
+		font-size: 30px;
+		cursor: pointer;
+	}
 	.modal-holder {
 		max-width: 600px;
+		position: relative;
 	}
 
 	.modal-content {
