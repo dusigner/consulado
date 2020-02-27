@@ -1,7 +1,7 @@
 
 // Seleção de SKU's
 .prod-sku-options {
-	@include breakpoint('medium', 'max') { margin-top: 1em; }
+	@include breakpoint('medium', 'max') { margin-top: 2.5em; }
 	display: flex;
 	justify-content: space-between;
 
@@ -95,6 +95,7 @@
 // Seleção de cor
 .select-color {
 	padding-right: 0;
+	min-height: 70px;
 	width: 100%;
 
 	.input-box.select {

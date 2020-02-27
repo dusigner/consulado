@@ -3,24 +3,25 @@
 
 Nitro.module('product-nav', function() {
 	var $window = $(window),
-		$afterProd = $('.after-prod'),
 		nav = $('.prod-details-nav'),
 		navItems = nav.find('.item a'),
-		navStart = $afterProd.find('section:visible:first'),
+		navStart = $('#BuyButton .buy-button'),
 		sections = navItems.map(function() {
 			var item = $($(this).attr('href'));
 			if (item.length) {
 				return item;
 			}
 		}),
-		navHeight = nav.outerHeight();
+		navHeight = 100;
 
 	var scrollEvent = $.throttle(function() {
 		var top = $window.scrollTop();
 
-		if (top >= navStart.offset().top) {
+		if (top >= navStart.offset().top + 45) {
+			nav.parent().addClass('fixed-bar');
 			nav.addClass('pinned').css('top', 0);
 		} else {
+			nav.parent().removeClass('fixed-bar');
 			nav.removeClass('pinned').css('top', -70);
 			navItems.removeClass('active');
 		}
@@ -41,7 +42,7 @@ Nitro.module('product-nav', function() {
 	}, 250);
 
 	$(document).on('nav', function(e, nav) {
-		navStart = $afterProd.find('section:visible:first');
+		navStart = $('#BuyButton .buy-button');
 		scrollEvent();
 		navItems
 			.filter('a[href="#' + nav + '"]')
@@ -50,6 +51,10 @@ Nitro.module('product-nav', function() {
 	});
 
 	$window.scroll(scrollEvent).scroll();
+
+	$('.row.anchors button').on('click', () => {
+		$('html, body').animate({ scrollTop: 0 }, 1000);
+	});
 
 	$(document).on('click', '.scroll-to', function(e) {
 		e.preventDefault();
@@ -77,11 +82,17 @@ Nitro.module('product-nav', function() {
 					});
 			}
 		});
-
-		$('#relacionados').is(':visible') &&
-			$('.scroll-to[href="#opcionais"]').parent().removeClass('hide');
-
-		!$('.trustvox-widget').is(':empty') &&
-			$('.scroll-to[href="#trustvox-reviews"]').parent().removeClass('hide');
 	});
+
+	const setInfos = () => {
+		const $productImage = $('.prod-galeria ul li img').attr('src').replace(/80-80/gm, '50-50'),
+			$productName = $('.productName').text(),
+			$productReference = $('.productReference').text();
+
+		$('.product-infos .box-image > img').attr('src', $productImage);
+		$('.product-infos .box-infos > p').text($productName);
+		$('.product-infos .box-infos > span').text($productReference);
+	}
+	setInfos();
+
 });

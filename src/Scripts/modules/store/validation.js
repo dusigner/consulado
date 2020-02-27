@@ -66,6 +66,8 @@ Validation.prototype.validate = function(inputs, submit) {
 			_self.setError(self, 'minlength', deferred);
 		} else if (/email/.test(validation) && !self.validEmail()) {
 			_self.setError(self, 'email', deferred);
+		}else if (/onlycharacter/.test(validation) && !self.validCharacter()) {
+			_self.setError(self, 'onlycharacter', deferred);
 		} else if (/cpf/.test(validation) && !self.validCpf()) {
 			_self.setError(self, 'cpf', deferred);
 		} else if (/cnpj/.test(validation) && !self.validCnpj()) {

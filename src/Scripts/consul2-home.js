@@ -45,11 +45,11 @@ Nitro.controller(
 		'dataLayer-banner-home'
 	],
 
-	function(chaordic) {
+	function (chaordic) {
 
 		chaordic.init('home');
 
-		$('.tipbar-novo .container .row').slick ({
+		$('.tipbar-novo .container .row').slick({
 			mobileFirst: false,
 			slidesToShow: 4,
 			centerPadding: '10px',
@@ -199,7 +199,7 @@ Nitro.controller(
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		//chaordic.init('home');
 
-		this.setupSlider = function($currentSlider) {
+		this.setupSlider = function ($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: false,
 				slidesToShow: 4,
@@ -261,7 +261,7 @@ Nitro.controller(
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
-			$('section.slider .pre-title').click(function(e) {
+			$('section.slider .pre-title').click(function (e) {
 				e.preventDefault();
 
 				if ($(this).hasClass('open')) {
@@ -280,7 +280,7 @@ Nitro.controller(
 					$(this)
 						.siblings()
 						.find('.prateleira>ul')
-						.slideDown('slow', function() {
+						.slideDown('slow', function () {
 							self.setupSlider($(this));
 						});
 				}
@@ -295,7 +295,7 @@ Nitro.controller(
 			$('.slider.vitrines h2').addClass('pre-title');
 			self.setupSlider($('.slider.vitrines .prateleira-slider .prateleira>ul'));
 
-			$('.slider.vitrines h2').click(function(e) {
+			$('.slider.vitrines h2').click(function (e) {
 				e.preventDefault();
 
 				$(this).toggleClass('shelf-pre-title--active');

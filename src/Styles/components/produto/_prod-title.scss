@@ -12,7 +12,7 @@
 
 		.productName {
 			@include rfs(20px);
-			display: inline-block;
+			display: block;
 			max-width: 455px;
 		}
 
@@ -20,12 +20,18 @@
 		.productSku {
 			@include rfs(12px);
 			color: #0FB6DE;
-			display: block;
 			font-weight: 500;
 
 			div { display: inline; }
 
 			&.hide { display: none!important; }
+		}
+		.reference {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.productSku {
+			display: block;
 		}
 	}
 }
