@@ -35,85 +35,79 @@ Nitro.module('order.favoritos', function() {
 					.then(result => {
 						const emailUser = result.Email;
 
-						fetch('/api/dataentities/WL/search?email=' + emailUser + '&_fields=id,productReference').then(response => response.json())
-							.then(prodFavorito => {
-								const wishID = prodFavorito.map(i => i.id);
+						$.ajax({
+							url: `/api/dataentities/WL/search?email=${emailUser}&_fields=id,productReference`,
+							method: 'GET',
+							headers: {
+								accept: 'application/json',
+								'Content-type': 'application/json',
+							},
+							cache: false
+						}).then((prodFavorito) => {
 
-								self.$favoritosContainer.append(`
-									<div class='order__favoritos-share hide' value='${window.location.origin}/shared-list?listID=${encrypt(String(wishID))}'>
-										<i></i>
-										<p>Compartilhe sua lista</p>
-									</div>
-								`)
+							const wishID = prodFavorito.map(i => i.productReference);
 
-								const referencia = prodFavorito[0].productReference.split(',');
+							self.$favoritosContainer.append(`
+								<div class='order__favoritos-share hide' value='${window.location.origin}/shared-list?listID=${encrypt(String(wishID))}'>
+									<i></i>
+									<p>Compartilhe sua lista</p>
+								</div>
+							`)
 
-								if(referencia.length === 0) {
-									self.$container.removeClass('myorders--loading');
-									self.favoritos.isLoaded = true;
-									self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
-									return;
-								}
+							const referencia = String(wishID).split(',');
 
-								referencia.forEach(id => {
-									fetch('/api/catalog_system/pvt/products/ProductGet/' + id).then(response => response.json())
-										.then(idProduto => {
-											const RefIdProduto = idProduto.RefId;
+							if(referencia.length === 0) {
+								self.$container.removeClass('myorders--loading');
+								self.favoritos.isLoaded = true;
+								self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
+								return;
+							}
 
-											fetch('/api/catalog_system/pub/products/search/' + RefIdProduto).then(response => response.json())
-												.then(exibir => {
-													if (exibir[0]) {
-														let productID = exibir[0].productId;
-														let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br')[1];
-														let nomeProduto = exibir[0].items[0].nameComplete;
-														let precoProduto = formatPrice(exibir[0].items[0].sellers[0].commertialOffer.Price);
-														let precoAnterior = formatPrice(exibir[0].items[0].sellers[0].commertialOffer.ListPrice);
-														let linkProduto = exibir[0].link;
+							referencia.forEach(id => {
+								fetch('/api/catalog_system/pub/products/search?fq=productId:' + id).then(response => response.json())
+									.then(exibir => {
+										if (exibir[0]) {
+											let productID = exibir[0].productId;
+											let urlImg = exibir[0].items[0].images[0].imageUrl.split('.br')[1];
+											let nomeProduto = exibir[0].items[0].nameComplete;
+											let precoProduto = formatPrice(exibir[0].items[0].sellers[0].commertialOffer.Price);
+											let precoAnterior = formatPrice(exibir[0].items[0].sellers[0].commertialOffer.ListPrice);
+											let linkProduto = exibir[0].link;
 
-														const data = {
-															productID: productID,
-															productImage: urlImg,
-															productName: nomeProduto,
-															linkProduto: linkProduto,
-															precoAnterior: precoAnterior,
-															precoProduto: precoProduto
-														};
+											const data = {
+												productID: productID,
+												productImage: urlImg,
+												productName: nomeProduto,
+												linkProduto: linkProduto,
+												precoAnterior: precoAnterior,
+												precoProduto: precoProduto
+											};
 
-														dust.render('favoritos', data, (err, out) => {
-															if (err) {
-																throw new Error('Wish Dust error: ' + err);
-															}
-															self.$favoritosContainer
-																.removeClass(Hide)
-																.append(out);
-															self.$container.removeClass('myorders--loading');
-															$('.order__favoritos-share').removeClass(Hide);
-														});
-													}
-												})
-												.catch(err => {
-													self.$container.removeClass('myorders--loading');
-													self.favoritos.isLoaded = true;
-													self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
-													console.error('erro', err);
-												});
-										})
-										.catch(err => {
-											self.$container.removeClass('myorders--loading');
-											self.favoritos.isLoaded = true;
-											self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
-											console.error('erro', err);
-										});
-								});
-							})
-							.catch(err => {
+											dust.render('favoritos', data, (err, out) => {
+												if (err) {
+													throw new Error('Wish Dust error: ' + err);
+												}
+												self.$favoritosContainer
+													.removeClass(Hide)
+													.append(out);
+												self.$container.removeClass('myorders--loading');
+												$('.order__favoritos-share').removeClass(Hide);
+											});
+										}
+									}).catch(err => {
+										self.$container.removeClass('myorders--loading');
+										self.favoritos.isLoaded = true;
+										self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
+										console.error('erro', err);
+									});
+							});
+						}).fail(err => {
 								self.$container.removeClass('myorders--loading');
 								self.favoritos.isLoaded = true;
 								self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');
 								console.error('erro', err);
 							});
-					})
-					.catch(err => {
+					}).catch(err => {
 						self.$container.removeClass('myorders--loading');
 						self.favoritos.isLoaded = true;
 						self.$favoritosContainer.html('<h2 class="text-center">Não há favoritos</h2>');

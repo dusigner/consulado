@@ -29,9 +29,6 @@ class wishList {
                         arr.push(...productCode[0].split(',')
                             .filter(f => f !== productID));
 
-                    const localConfigs = { value: { id: String(listID), email: userEmail, productReference: arrayFormat(arr)}};
-
-                    localStorage.setItem('WishList', JSON.stringify(localConfigs));
                     fetch(patchVariantFetch(listID, userEmail, arr)).then(() => changingEvent(elementSelector));
                 }
             } catch (err) {

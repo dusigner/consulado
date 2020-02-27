@@ -1,7 +1,5 @@
 @charset 'UTF-8';
 
-@import 'components/produto/recurrence';
-
 body.produto {
 	overflow: initial!important;
 
@@ -56,9 +54,7 @@ body.produto {
 
 	&.google-pla {
 		.prod-preco {
-			.descricao-preco {
-				color: $txt-gray-l;
-			}
+			.descricao-preco { color: $txt-gray-l; }
 
 			em.valor-dividido {
 				@include font-size(21px);
@@ -87,9 +83,7 @@ body.produto {
 					color: $green !important;
 					display: block;
 
-					.gray {
-						color: $txt-gray;
-					}
+					.gray { color: $txt-gray; }
 				}
 			}
 		}
@@ -156,7 +150,6 @@ body.produto-indisponivel {
 	#BuyButton .buy-button { display: none; }
 }
 
-
 .social {
 	a {
 		display: inline-block;
@@ -184,7 +177,6 @@ body.produto-indisponivel {
 		background: url('/arquivos/email-consul-compartilha.jpg') center center #9aca3c;
 		display: none;
 	}
-
 }
 
 .social:after {
@@ -223,9 +215,7 @@ div#modal-custom-share {
 	}
 
 	#formshare.sucesso {
-		.enviadocomsucesso {
-			display: block;
-		}
+		.enviadocomsucesso { display: block; }
 	}
 
 	.enviadocomsucesso {
@@ -235,7 +225,6 @@ div#modal-custom-share {
 		font-weight: bold;
 		padding-bottom: 10px;
 	}
-
 }
 
 
@@ -263,13 +252,11 @@ div#modal-custom-share {
 }
 
 .cont-prod-details-nav {
-	background-color: #f4f2f1;
-	height: 75px;
-	overflow: hidden;
-	position: relative;
-	width: 100%;
-
+	&.fixed-bar {
+		display: block;
+	}
 	@include breakpoint(small, 'max') { display: none; }
+	display: none;
 }
 
 .btn-pecas-produto {
@@ -303,24 +290,15 @@ div#modal-custom-share {
 			text-decoration: none;
 		}
 
-		i {
-			display: none;
-		}
+		i { display: none; }
 	}
 }
 
-.overflow-hidden {
-	overflow: hidden;
-}
+.overflow-hidden { overflow: hidden; }
 
 .cep-invalido {
 	.valor {
-		background-color: $gray-c410;
-		padding: 12px;
-
-		strong {
-			display: none;
-		}
+		strong { display: none; }
 
 		&:after {
 			@include rfs(12);

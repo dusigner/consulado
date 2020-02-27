@@ -15,7 +15,7 @@ Nitro.module('input-box', function() {
 			.not($this)
 			.find('.input-box-dropdown-options')
 			.stop()
-			.slideUp(400, function() {
+			.slideUp(250, function() {
 				$('.input-box.select')
 					.not($this)
 					.removeClass('active -active');
@@ -31,7 +31,7 @@ Nitro.module('input-box', function() {
 			$this
 				.find('.input-box-dropdown-options')
 				.stop()
-				.slideUp(400, function() {
+				.slideUp(250, function() {
 					$this.removeClass('active -active');
 				});
 		}

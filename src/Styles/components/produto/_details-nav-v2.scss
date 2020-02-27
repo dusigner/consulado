@@ -1,11 +1,23 @@
+$bg-light-gray: #f4f2f1;
+$bg-gray: #FCFCFC;
+$color-dark-gray: #736C6B;
+$color-light-blue: #0FB6DE;
+$color-white: #fff;
+
+%flex-center {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .prod-details-nav {
-	background-color: #f4f2f1;
+	background: $bg-light-gray;
 	min-height: 95px;
 	position: relative;
 	text-align: center;
 	top: 0 !important;
 	width: 100%;
-	z-index: 20;
+	z-index: 16;
 
 	@include breakpoint(small, 'max') { display: none; }
 
@@ -18,44 +30,111 @@
 	}
 
 	&.pinned {
+		background: #fff;
 		@include breakpoint(extra-large, 'max') {
 			@include opacity(1);
 		}
 
 		ul {
-			display: none;
-			left: -28px;
-			margin-top: 20px;
-			min-width: 700px;
-			transform: translateX(0);
+			padding: 0;
+			text-align: left;
+			width: 80%;
+		}
 
-			@include breakpoint(extra-large, 'min') {
-				display: block!important;
-				min-width: inherit;
-				text-align: left;
+		.info-product {
+			@extend %flex-center;
+
+			.product-infos {
+				@extend %flex-center;
 			}
 		}
 
 		.nav-price {
-			display: block;
+			display: flex;
+			flex-wrap: wrap;
 			opacity: 1;
 		}
 
 		.skuBestInstallmentValue {
 			& + span {display: none;}
 		}
+
+		.row.anchors {
+			@extend %flex-center;
+			background: $bg-gray;
+			border-bottom: 2px solid #9ACA3C;
+			border-top: 1px solid #F1F0F0;
+			justify-content: space-between;
+			position: relative;
+
+			> .container {
+				@extend %flex-center;
+				justify-content: space-between;
+				padding-bottom: 3px;
+				padding-top: 3px;
+			}
+
+			button {
+				background: none;
+				border: none;
+				font-size: 12px;
+				font-weight: 500;
+				margin-right: 15px;
+				outline: none;
+				position: relative;
+				text-align: right;
+				&:active {
+					border: none;
+				}
+				&:before {
+					content: '^	';
+					font-size: 13px;
+					font-weight: bold;
+					left: -15px;
+					position: absolute;
+					top: 2px;
+				}
+			}
+		}
 	}
 
 	.row {
 		margin-bottom: 0;
 		position: relative;
+
+		&.info-product {
+			display: none;
+
+			.product-infos {
+				text-align: left;
+				width: 60%;
+
+				.box-infos {
+					margin-left: 10px;
+					width: calc(100% - 60px);
+					> p {
+						@include rfs(16);
+						font-weight: 500;
+						line-height: 1;
+						margin: 5px 0;
+					}
+					> span {
+						@include rfs(14);
+						color: $color-light-blue;
+					}
+				}
+				.box-image {
+					@extend %flex-center;
+					justify-content: center;
+					width: 50px;
+				}
+			}
+		}
 	}
 
 	ul {
-		min-width: 900px;
 		padding: 20px 0;
-		position: absolute;
-		transform: translateX(-4%);
+		text-align: left;
 		transition: .1s ease;
 
 		@include breakpoint(extra-large, 'min') {
@@ -66,31 +145,33 @@
 	li {
 		@include font-size(14px, true, false);
 		display: inline-block;
+		padding: 8px 15px;
 		vertical-align: middle;
 
 		a {
 			border-radius: 22px;
-			color: #736C6B;
+			color: $color-dark-gray;
 			display: inline-block;
-			font-weight: bold;
-			padding: 8px 36.5px;
+			font-weight: 500;
 			position: relative;
 			transition: color .4s ease, background .4s ease;
 
 			&:hover,
 			&.active-nav {
-				background: #f4f2f1;
-				color: #736C6B;
+				color: $color-dark-gray;
+				font-weight: bold;
 			}
+		}
+
+		&:first-child {
+			padding-left: 0;
+		}
+
+		&:last-child {
+			padding-right: 0;
 		}
 
 		&.hide { display: none; }
-
-		&:not(:last-child) {
-			&:after {
-				content: '|';
-			}
-		}
 	}
 
 	.nav-price {
@@ -98,19 +179,20 @@
 		display: none;
 		opacity: 0;
 		padding: 20px 0;
+		width: 40%;
 		@include breakpoint(small, 'max') {
 			padding: 10px 0;
 		}
 	}
 
 	.details-preco {
-		color: #736C6B;
-		float: right;
+		color: $color-dark-gray;
+		order: 1;
 		text-align: right;
+		width: 56%;
 
 		.descricao-preco {
 			margin: 0;
-
 			em { font-style: normal; }
 
 			.skuBestPrice {
@@ -125,8 +207,8 @@
 
 			strong {
 				@include rfs(14);
-				color: #736c6b;
-				font-weight: 400;
+				color: $color-dark-gray;
+				font-weight: 500;
 				text-decoration: line-through;
 			}
 		}
@@ -157,12 +239,14 @@
 				&.skuBestInstallmentValue {
 					&:after {
 						content: ' sem juros';
+						font-weight: 400;
 					}
 				}
 
 				&.skuBestInstallmentNumber {
 					&:before {
-						content: 'em até ';
+						content: 'Em até ';
+						font-weight: 400;
 					}
 
 					&:after {
@@ -175,14 +259,16 @@
 
 	#BuyButtonDetails {
 		@extend #BuyButton;
-		float: right;
+		order: 2;
+		width: 44%;
 
 		.buy-button {
 			background-color: $green;
 			border-color: $green;
-			color: #fff;
+			color: $color-white;
 			margin-left: 20px;
-			margin-top: 10px;
+			margin-top: 20px;
+			padding: 11px 18px;
 
 			@include breakpoint(small, 'max') {
 			@include responsiveFont(12, 16, true);
@@ -194,7 +280,7 @@
 			}
 
 			&:hover {
-				background-color: #f4f2f1;
+				background-color: $bg-light-gray;
 				color: $green;
 			}
 		}
@@ -204,12 +290,12 @@
 body.consulempresa {
 	.prod-details-nav {
 		.details-preco .valor-por {
-			color: #fff;
+			color: $color-white;
 			strong {
 				font-weight: bold;
 			}
 			&:after {
-				color: #fff;
+				color: $color-white;
 			}
 		}
 		.valor-dividido {

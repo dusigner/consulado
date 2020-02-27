@@ -5,7 +5,6 @@ require('modules/banners-controller');
 require('modules/slider-banner');
 require('components/instagram-stories');
 
-
 //require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
@@ -16,8 +15,11 @@ require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
+require('modules/_staticBanner');
 require('modules/interested-shelf');
 require('dataLayers/dataLayer-home-BF.js')
+// require('modules/_staticBanner');
+
 // require('modules/_staticBanner');
 require('modules/subCategoryList')
 // import 'modules/counter';
