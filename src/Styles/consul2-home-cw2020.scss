@@ -28,22 +28,47 @@
 // Component styles
 @import 'components/instagram-stories';
 @import 'components/area-banners';
-@import 'components/banner-combos-blackfriday';
-@import 'components/categoryShelf-bf';
+@import 'components/categoryShelf.cw';
 @import 'components/interested-shelf';
+@import 'components/page-title';
+@import 'components/buttons';
+@import 'components/banners';
+@import 'components/banners-controller';
+@import 'components/_mod-prateleira-v2';
+@import 'components/chaordic-shelf';
+@import 'components/selos';
+@import 'components/chatHome';
+@import 'components/shelf-category-home';
+@import 'components/promotion-shelf-home';
+@import 'components/home/on-page-search';
 
+// @import 'components/staticBanner';
+@import 'components/subCategoryList';
 
-.home-bf-2019 {
-	.banners-mobile,
-	.banner-principal {
-		background-color: #111111;
-	}
+@import 'components/listagem/buy-button';
+// @import 'components/prateleira-personalizada';
 
-	.shelf-category-home-container {
-		padding-bottom: 0;
-	}
-}
+//Tipbar Home
+@import 'components/_tipbar-novo';
+
+//Banner Alavanca Home
+@import 'components/_banner-alavancas';
+
+//antecipadas BF 2019
+@import 'components/antecipadas-bf';
+
+@import 'components/area-banners';
+
+@import 'pages/home';
+
+// @import 'custom/lead-newsletter';
+
+@import 'components/counter';
+
+// Tabs Consumidor
+/* @import 'custom/tabs-consumidor'; */
+// Tabs Dia das Mães
+// @import 'custom/tabs-descontos';
+
 
 // Component styles
-
-@import 'components/subCategoryList';

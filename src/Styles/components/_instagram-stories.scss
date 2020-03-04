@@ -7,7 +7,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 	overflow: hidden;
 	width: 100%;
 
-	.home-bf-2019 & { background-color: #232323; }
+	.home-bf-2019, .home-consumer-week & { background-color: #232323; }
 
 	&__title {
 		@include rfs(12px);
@@ -15,7 +15,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 		font-weight: 500;
 		padding: 15px;
 
-		.home-bf-2019 & { color: #fff; }
+		.home-bf-2019, .home-consumer-week & { color: #fff; }
 	}
 
 	&__container { overflow: auto; }
@@ -58,7 +58,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 			color: #595453;
 			display: block;
 
-			.home-bf-2019 & { color: #fff; }
+			.home-bf-2019, .home-consumer-week & { color: #fff; }
 		}
 
 		// Image
@@ -70,7 +70,7 @@ $storie-arrow-right: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAeCAMA
 			overflow: hidden;
 			position: relative;
 
-			.home-bf-2019 & { border-color: #656565; }
+			.home-bf-2019, .home-consumer-week & { border-color: #656565; }
 
 			img {
 				border: 2px solid transparent;
