@@ -1,0 +1,49 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/rfs';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
+
+// @import 'components/staticBanner';
+
+// Component styles
+@import 'components/instagram-stories';
+@import 'components/area-banners';
+@import 'components/banner-combos-blackfriday';
+@import 'components/categoryShelf-bf';
+@import 'components/interested-shelf';
+
+
+.home-bf-2019 {
+	.banners-mobile,
+	.banner-principal {
+		background-color: #111111;
+	}
+
+	.shelf-category-home-container {
+		padding-bottom: 0;
+	}
+}
+
+// Component styles
+
+@import 'components/subCategoryList';
