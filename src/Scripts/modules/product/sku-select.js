@@ -154,7 +154,7 @@ Nitro.module('sku-select', function() {
 	this.hideSkuSelector = () => {
 		let $skuList = $('.produto-v2').find('.prod-sku-selector');
 
-		if ($skuList.find('label').length <= 1 ) {
+		if ($skuList.find('label').length < 1 ) {
 			$('.prod-sku-selector').css('display', 'none');
 		}
 	};
