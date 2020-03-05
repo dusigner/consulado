@@ -6,11 +6,10 @@
 'use strict';
 
 Nitro.module('counter', function() {
-	// const endDate = $('.counter__offer-prod .prateleira.default h2').text();
-	const endDate = '2020/02/29';
-
+	const endDate = $('.counter__offer-prod .prateleira.default h2').text();
 	this.init = () => {
 		this.initCounter();
+		this.getSku();
 	};
 
 	this.initCounter = () => {
@@ -76,6 +75,16 @@ Nitro.module('counter', function() {
 		}, 1000);
 	};
 
+	this.getSku = () => {
+		const skuCod = $(this).parents('.box-produtos').find('.detalhes a').attr('href');
+		const skuCodText = $(this).parents('article').find('.detalhes .nome span ul li');
+		// skuCodText.text() === '' && skuCodText.text(skuCod.toUpperCase());
+
+		console.log(skuCod);
+		console.log(skuCodText);
+
+		// .split('/p')[0].split('-').pop();
+	}
 	// Start it
 	this.init();
 });

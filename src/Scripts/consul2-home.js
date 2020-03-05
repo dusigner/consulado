@@ -21,7 +21,9 @@ require('dataLayers/dataLayer-home-BF.js');
 
 require('dataLayers/dataLayer-banner-home.js')
 
-// import 'modules/counter';
+// require('modules/_staticBanner');
+require('modules/subCategoryList')
+import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 
@@ -38,8 +40,9 @@ Nitro.controller(
 		'interested-shelf',
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
-		'static-banner',
-		/*'counter', 'datalayer_track'*/
+		/* 'static-banner' */
+		'counter',
+		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',
 		'dataLayer-banner-home'

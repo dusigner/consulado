@@ -5,7 +5,7 @@
 		background-color: rgb(14, 14, 14);
 		padding: 20px 0;
 		position: relative;
-		
+
 		&:before {
 			background: $green;
 			content: '';
@@ -53,7 +53,7 @@
 			margin-bottom: 0;
 			min-height: 125px;
 			padding: 10px;
-			
+
 			@include breakpoint('small', 'max') {
 				flex-basis: 100%;
 			}
@@ -74,7 +74,7 @@
 					min-height: auto;
 					padding: 0;
 				}
-				
+
 				.shelf__image {
 					display: block;
 					height: 100px;
@@ -92,11 +92,11 @@
 				.shelf__stock {
 					display: none;
 				}
-				
+
 				.shelf__details {
 					padding-left: 40px;
 					position: relative;
-					
+
 					h3 {
 						color: #FFF;
 						font-size: 17px;
@@ -138,9 +138,9 @@
 						.shelf__installment {
 							display: none;
 						}
-						
+
 					}
-					
+
 					.shelf__sku-list {
 						display: none;
 					}
@@ -173,16 +173,16 @@
 			margin-bottom: 0;
 			min-height: 125px;
 			padding: 10px;
-			
+
 			@include breakpoint('large', 'max') {
 				flex-basis: calc(50% - 10px);
-				
+
 				@include breakpoint('small', 'max') {
 					flex-basis: 100%;
 				}
 			}
 
-			
+
 			.counter {
 				margin: 0 auto;
 				&__title {
@@ -191,13 +191,13 @@
 					font-weight: 500;
 					margin-bottom: 0;
 				}
-			
+
 				&__clock {
 					display: flex;
 					margin: 0 auto 5px;
 					width: 162px;
 				}
-			
+
 				&__item {
 					flex-direction: column;
 					.days {
@@ -207,7 +207,7 @@
 					   width: 100%;
 					}
 				}
-			
+
 				&__time {
 					color: $green;
 					display: block;
@@ -216,7 +216,7 @@
 					margin-bottom: -20px;
 					min-width: 25px;
 					text-align: center;
-			
+
 					@include breakpoint('medium', 'max') {
 					   font-size: 38px;
 					   font-weight: 400;
@@ -224,13 +224,13 @@
 					   min-width: auto;
 					}
 				}
-						
+
 				&__colon {
 					color: #626262;
 					font-size: 35px;
 					line-height: 35px;
 					margin: 0 10px;
-			
+
 					@include breakpoint('medium', 'max') {
 					   font-size: 33px;
 					   margin: 0 5px;
@@ -240,7 +240,7 @@
 				&__end-promotion {
 					margin-left: auto;
 					margin-right: auto;
-					
+
 					@include breakpoint('large', 'max') {
 						width: 100%;
 					}
@@ -253,7 +253,7 @@
 					font-weight: 600;
 					min-width: 25px;
 					text-align: center;
-				} 
+				}
 			}
 		}
 
@@ -265,7 +265,7 @@
 			flex-wrap: wrap;
 			margin-bottom: 0;
 			min-height: 125px;
-			
+
 			@include breakpoint('large', 'max') {
 				flex-basis: 100%;
 			}
@@ -283,7 +283,7 @@
 			padding: 14px 0 0;
 			text-align: center;
 			width: 240px;
-			
+
 			&:hover {
 				background-color: transparent;
 				border: 2px solid $btn-promotion;
@@ -295,17 +295,17 @@
 				width: 100%;
 			}
 		}
-		
+
 		.hide {
 			display: none;
 		}
-	
+
 		.button-hidden {
 			flex-basis: calc(50% - 10px);
-	
+
 			@include breakpoint('small', 'max') {
 				flex-basis: 100%;
 			}
 		}
-	}	
+	}
 }
