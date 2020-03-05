@@ -235,3 +235,247 @@ body {
 		}
 	}
 }
+
+//Consumer week
+
+$background-cw: #f4f4f4;
+$cw-txt: #5B5B5B;
+$cw-purple: #702F8F;
+$cw-border: #E3E1E1;
+$cw-button-bg: #FFFFFF;
+$cw-black: #403C3B;
+
+.home-consumer-week {
+	.vitrine-ofertas-interesses,
+	.vitrine-ofertas-alavancas {
+		@include breakpoint('small', 'max') { overflow: hidden; }
+		background-color: $background-cw;
+		padding-top: 38px;
+
+		.box-produto {
+			border: 1px solid #F1F0F0;
+		}
+
+		.interesses-title {
+			@include breakpoint ('small', 'max') { padding: 0 15px; }
+
+			h4 {
+				@include breakpoint ('small', 'max') { text-align: left;}
+				@include rfs(28);
+				color: $cw-txt;
+				font-weight: bold;
+				margin: 0;
+				text-align: center;
+			}
+
+			span {
+				@include breakpoint ('small', 'max') { text-align: left ;}
+				@include rfs(14);
+				color: $cw-txt;
+				display: block;
+				font-weight: 500;
+				margin: 0;
+				text-align: center;
+			}
+		}
+
+		.prateleira-tabs__tabs {
+			@include breakpoint ('small', 'max') {
+				justify-content: space-between;
+				margin: 0 auto 0;
+				padding: 0 10px;
+			}
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-bottom: 32px;
+
+			li {
+				@include breakpoint ('small', 'max') {
+					margin: 0 0 12px;
+					width: 33%;
+					padding: 0 5px;
+				}
+				margin: 0 6px 12px;
+
+				&:nth-child(4), &:nth-child(5) {
+					width: 50%;
+				}
+			}
+
+			.discount-item {
+				@include breakpoint ('small', 'max') { width: 100%; }
+				@include rfs(13);
+				background: $cw-button-bg;
+				border: 1px solid $cw-border;
+				border-radius: 4px;
+				color: $cw-txt;
+				display: inline-block;
+				font-weight: 500;
+				height: 35px;
+				line-height: 2.5;
+				text-align: center;
+				width: 160px;
+
+				&.active,
+				&:hover {
+					background-color: $cw-purple;
+					color: #fff;
+					font-weight: 500;
+				}
+			}
+
+			span {
+				@include breakpoint ('small', 'min') { width: 120px; }
+				display: inline-block;
+			}
+		}
+
+
+		.vitrines {
+			@include breakpoint ('small', 'max') { margin-top: 30px; }
+			margin-top: 42px;
+			position: relative;
+
+			.prateleira {
+				opacity: 1;
+				position: relative;
+				width: 100%;
+				z-index: 1;
+
+				.box-produto {
+					background-color: #fff;
+				}
+
+				h2 {
+					display: none !important;
+				}
+
+				&.not-show {
+					opacity: 0;
+					position: absolute;
+					z-index: -1;
+				}
+
+				ul.slick-slider {
+					@include breakpoint ('medium', 'max') {
+						padding: 0;
+					}
+				}
+			}
+
+			.link-shelf {
+				@include breakpoint('small', 'min') {
+					padding: 34px 0 32px 0;
+					text-align: center;
+				}
+				display: block;
+				padding: 22px 10px 26px 10px;
+				position: relative;
+
+				a {
+					@include rfs(12);
+					color: $cw-black;
+					font-weight: 500;
+
+					&:after {
+						@include icon-get('arrow-right');
+						font-size: 7px;
+						font-weight: bold !important;
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+	}
+
+	.vitrine-ofertas-interesses {
+		.prateleira-tabs__tabs.fiveElements {
+
+			.fifthItem,
+			.fourthItem {
+				@include breakpoint ('small', 'max') { width: 48%; }
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%
+					}
+				}
+			}
+
+			.fourthItem {
+				@include breakpoint ('small', 'max') { order: 5; }
+			}
+
+			.minorButton {
+
+				.discount-item {
+					@include breakpoint ('small', 'max') {
+						width: 100%;
+					}
+				}
+			}
+
+			.fifthItem,
+			.minorButton,
+			.fourthItem {
+
+				&.vista,
+				&.blackfriday {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+
+				&.frete,
+				&.quarenta {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+
+				&.vinte {
+					@include breakpoint ('small', 'max') {
+						margin-left: 0;
+						margin-right: 0;
+					}
+				}
+			}
+		}
+	}
+
+	.hideTab {
+		display: none !important;
+		visibility: hidden !important;
+	}
+
+	.link-obs-desktop {
+		@include breakpoint('small', 'max') { display: none; }
+		@include rfs(12);
+		color: txt-frete;
+		display: none;
+		left: 0;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.interesses-obs {
+		position: relative;
+		top: -5px;
+
+		.link-obs-mobile {
+			@include rfs(12);
+			color: $txt-frete;
+			display: none;
+			padding-left: 10px;
+
+			&.showObs {
+				@include breakpoint('small', 'max') { display: inline-block; }
+			}
+		}
+	}
+}
