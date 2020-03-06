@@ -1,0 +1,39 @@
+@charset 'UTF-8';
+//import font
+@import 'helpers/rfs';
+
+$purple: #702F8F;
+$text-color: #5B5B5B;
+$primary: #9ACA3C;
+
+.alavanca-principal {
+	&__title {
+		@include rfs(30);
+		color: $text-color;
+		span {
+			color: $detail;
+		}
+	}
+	&.box-oferta {
+		&__cards {
+			&__icon {
+				img {
+					width: 100%;
+				}
+			}
+			&__40off {
+				p {
+					@include rfs(30);
+					color: $text-color;
+				}
+				&__percent {
+					@include rfs(30);
+					color: $detail;
+				}
+				&__off {
+					color: $purple;
+				}
+			}
+		}
+	}
+}
