@@ -1,0 +1,121 @@
+@charset 'UTF-8';
+//import font
+@import 'helpers/rfs';
+
+$purple: #702F8F;
+$text-color: #5B5B5B;
+$primary: #9ACA3C;
+
+.alavanca-principal {
+	display: block;
+	margin: 50px auto 20px;
+	&__title {
+		@include rfs(30);
+		color: $text-color;
+		font-weight: 900;
+		margin: 10px auto 40px;
+		text-align: center;
+		span {
+			color: $purple;
+		}
+	}
+	.slick-list {
+		overflow: inherit;
+	}
+	.slick-track {
+		justify-content: space-evenly;
+	}
+	& .box-oferta {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		&__cards {
+			align-content: space-between;
+			border-radius: 4px;
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26);
+			display: flex;
+			flex-flow: wrap;
+			max-width: 100%;
+			min-height: 215px;
+			padding: 14px 10px 25px;
+			width: 208px !important;
+			p {
+				color: #5B5B5B;
+				display: block;
+				font-size: 25px;
+				font-weight: 500;
+				margin: 10px auto -10px;
+				text-align: center;
+				width: 100%;
+			}
+			&__icon {
+				display: block;
+				height: 86px;
+				margin: 0 auto;
+				width: 86px;
+				img {
+					width: 100%;
+				}
+			}
+			&__subtitle	{
+				@include rfs(20);
+				color: $text-color;
+				font-weight: 900;
+				line-height: 22px;
+				margin: 10px auto 18px;
+				text-align: center;
+				width: 100%;
+				span {
+					@include rfs(16);
+				}
+			}
+			&__btn-cta {
+				background-color: $primary;
+				border-radius: 20px;
+				color: $white;
+				display: block;
+				font-size: 13px;
+				height: 32px;
+				line-height: 31px;
+				margin: 0 auto;
+				max-width: 100%;
+				text-align: center;
+				width: 140px;
+			}
+			&__40off {
+				text-align: center;
+				&--percent {
+					@include rfs(47);
+					color: $primary;
+					font-weight: 900;
+					margin: -16px auto -30px;
+					text-align: center;
+					width: 100%;
+				}
+				&--off {
+					@include rfs(32);
+					color: $purple;
+					font-weight: 900;
+					margin: 0 auto;
+					text-align: center;
+					width: 100%;
+					&:after,
+					&:before {
+						background-color: $purple;
+						content: '';
+						display: inline-flex;
+						height: 3px;
+						margin: 0 10px;
+						vertical-align: middle;
+						width: 18px;
+					}
+				}
+			}
+			&:hover {
+				&__btn-cta {
+					border: 1px solid $primary;
+				}
+			}
+		}
+	}
+}
