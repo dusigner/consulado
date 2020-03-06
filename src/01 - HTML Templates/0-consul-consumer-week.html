@@ -233,6 +233,7 @@
 		</div>
     </article>
 
+    <!-- Inicio contador -->
 	<section class="counter__section">
 		<div class="container">
 			<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
@@ -276,7 +277,20 @@
 				</div>
 			</div>
 		</div>
+    </section>
+    <!-- Fim contador -->
+
+    <!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+	<section class="container vitrines">
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome1" />
+		</div>
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome2" />
+		</div>
 	</section>
+	<!-- /VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+
     <!-- Vitrine de categorias -->
     <section class="vitrine-subcategorias">
         <div class="container">
@@ -745,17 +759,6 @@
 	</section>
     <!-- /Tabs Interesses -->
 
-	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
-	<section class="container vitrines">
-		<div class="prateleira-slider">
-			<vtex:contentPlaceHolder id="VitrineHome1" />
-		</div>
-		<div class="prateleira-slider">
-			<vtex:contentPlaceHolder id="VitrineHome2" />
-		</div>
-	</section>
-	<!-- /VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
-
 	<!-- Banner de alavanca home -->
 	<div class="banner-alavancas">
 		<div class="d-md-block d-none">
@@ -769,10 +772,26 @@
 
 	<!-- [ CHAORDIC ] TOP -->
 	<div data-chaordic="top"></div>
-	<!-- /[ CHAORDIC ] TOP -->
+    <!-- /[ CHAORDIC ] TOP -->
+
+    <!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
+	<section class="area-banners">
+		<div class="container">
+			<div class="row">
+				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
+				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
+			</div>
+			<div class="banner-areas">
+				<vtex:contentPlaceHolder id="banner-ecohouse" />
+				<vtex:contentPlaceHolder id="banner-pecas" />
+				<vtex:contentPlaceHolder id="banner-gae" />
+			</div>
+		</div>
+	</section>
+	<!-- /Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
 
 	<!-- [ Desktop ] - Home Banners Secundários -->
-	<section class="banners-secundarios clearfix hide-mobile">
+	<!-- <section class="banners-secundarios clearfix hide-mobile">
 		<div class="container">
 			<div class="row">
 				<div class="prateleira-banners-secundarios">
@@ -788,7 +807,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- /[ Desktop ] - Home Banners Secundários -->
 
 	<!-- [ CHAORDIC ] MIDDLE -->
@@ -796,7 +815,7 @@
 	<!-- /[ CHAORDIC ] MIDDLE -->
 
 	<!-- [ Desktop ] - Home Banners Secundários Três -->
-	<section class="banners-secundarios-mosaico clearfix hide-mobile">
+	<!-- <section class="banners-secundarios-mosaico clearfix hide-mobile">
 		<div class="container">
 			<div class="row">
 				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
@@ -814,28 +833,12 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- /[ Desktop ] - Home Banners Secundários Três -->
 
 	<!-- [ CHAORDIC ] BOTTOM -->
 	<div data-chaordic="bottom"></div>
 	<!-- /[ CHAORDIC ] BOTTOM -->
-
-	<!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
-	<section class="area-banners">
-		<div class="container">
-			<div class="row">
-				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
-				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
-			</div>
-			<div class="banner-areas">
-				<vtex:contentPlaceHolder id="banner-ecohouse" />
-				<vtex:contentPlaceHolder id="banner-pecas" />
-				<vtex:contentPlaceHolder id="banner-gae" />
-			</div>
-		</div>
-	</section>
-	<!-- /Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
 
 	<!-- On Page Search -->
 	<section class="onpage-search">
