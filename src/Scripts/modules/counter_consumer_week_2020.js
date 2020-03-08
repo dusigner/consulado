@@ -9,7 +9,6 @@ Nitro.module('counter', function() {
 	const endDate = $('.counter__offer-prod .prateleira.default h2').text();
 	this.init = () => {
 		this.initCounter();
-		this.getSku();
 	};
 
 	this.initCounter = () => {
@@ -18,6 +17,7 @@ Nitro.module('counter', function() {
 			$buyButton = $('.counter__offer-cta'),
 			$counterSubSection = $('.counter__offer-count'),
 			$counterSection = $('.counter__section'),
+			$counterProd = $('.counter__offer-prod'),
 			$days = $counter.find('.days'),
 			$hours = $counter.find('.hours'),
 			$minutes = $counter.find('.minutes'),
@@ -65,6 +65,7 @@ Nitro.module('counter', function() {
 				$buyButton.addClass('hide');
 				$counterSubSection.addClass('button-hidden');
 				$counter.addClass('hide');
+				$counterProd.addClass('hide');
 				$endMessage.removeClass('hide');
 			}
 
@@ -74,17 +75,6 @@ Nitro.module('counter', function() {
 			$seconds.text(timeRemaining.seconds > 9 ? timeRemaining.seconds : '0' + timeRemaining.seconds);
 		}, 1000);
 	};
-
-	this.getSku = () => {
-		const skuCod = $(this).parents('.box-produtos').find('.detalhes a').attr('href');
-		const skuCodText = $(this).parents('article').find('.detalhes .nome span ul li');
-		// skuCodText.text() === '' && skuCodText.text(skuCod.toUpperCase());
-
-		console.log(skuCod);
-		console.log(skuCodText);
-
-		// .split('/p')[0].split('-').pop();
-	}
 	// Start it
 	this.init();
 });

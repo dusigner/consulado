@@ -1,6 +1,8 @@
 @charset 'UTF-8';
 //import font
 @import 'helpers/rfs';
+@import 'helpers/variables';
+
 
 $purple: #702F8F;
 $text-color: #5B5B5B;
@@ -8,13 +10,16 @@ $primary: #9ACA3C;
 
 .alavanca-principal {
 	display: block;
-	margin: 50px auto 20px;
+	margin: 50px auto 50px;
 	&__title {
 		@include rfs(30);
 		color: $text-color;
 		font-weight: 900;
 		margin: 10px auto 40px;
 		text-align: center;
+		@include breakpoint('small', 'max') {
+			text-align: left;
+		}
 		span {
 			color: $purple;
 		}
@@ -24,6 +29,10 @@ $primary: #9ACA3C;
 	}
 	.slick-track {
 		justify-content: space-evenly;
+		@include breakpoint('small', 'max') {
+			justify-content: flex-start;
+		}
+
 	}
 	& .box-oferta {
 		display: flex;
@@ -31,14 +40,18 @@ $primary: #9ACA3C;
 		justify-content: space-between;
 		&__cards {
 			align-content: space-between;
+			border: 1px solid transparent;
 			border-radius: 4px;
-			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.26);
+			box-shadow: 0 3px 6px rgba(0, 0, 0, 0.14);
 			display: flex;
 			flex-flow: wrap;
 			max-width: 100%;
 			min-height: 215px;
 			padding: 14px 10px 25px;
 			width: 208px !important;
+			@include breakpoint('small', 'max') {
+				margin: 0 15px;
+			}
 			p {
 				color: #5B5B5B;
 				display: block;
@@ -112,6 +125,7 @@ $primary: #9ACA3C;
 				}
 			}
 			&:hover {
+				border: 1px solid $primary;
 				&__btn-cta {
 					border: 1px solid $primary;
 				}
