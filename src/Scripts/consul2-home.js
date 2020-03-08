@@ -52,7 +52,69 @@ Nitro.controller(
 
 		chaordic.init('home');
 
-		$('.tipbar-novo .container .row').slick({
+		$('.box-oferta').slick({
+			mobileFirst: false,
+			slidesToShow: 4,
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			arrows: false,
+			dots: false,
+			responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 3,
+						slidesToScroll: 3,
+						infinite: false,
+						initialSlide: 1,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 2,
+						infinite: false,
+						initialSlide: 1,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 580,
+					settings: {
+						slidesToShow: 2.1,
+						slidesToScroll: 1,
+						infinite: false,
+						initialSlide: 1,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 520,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						infinite: false,
+						initialSlide: 1,
+						index: 0
+					}
+				},
+				{
+					breakpoint: 375,
+					settings: {
+						slidesToShow: 1.1,
+						slidesToScroll: 1,
+						infinite: false,
+						initialSlide: 1,
+						index: 0
+					}
+				}
+			]
+		});
+
+		$('.tipbar-novo .container .row').slick ({
 			mobileFirst: false,
 			slidesToShow: 4,
 			centerPadding: '10px',

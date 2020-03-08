@@ -22,8 +22,8 @@ Nitro.module('dataLayer-home-bf', function() {
 			const label = $(this).text().trim();
 
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - O que te interessa mais?',
-				`Seleção de Alavanca`,
+				'[SQUAD] Semana do Consumidor',
+				`Alavanca de Promoções`,
 				`${label}`
 			);
 		});
@@ -35,13 +35,13 @@ Nitro.module('dataLayer-home-bf', function() {
 				label2 = $(this).parents('.box-produto').attr('data-category');
 
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - O que te interessa mais?',
+				'[SQUAD] Semana do Consumidor',
 				`Seleção de SKU`,
 				`${label1}`
 			);
 
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - O que te interessa mais?',
+				'[SQUAD] Semana do Consumidor',
 				`Seleção de SKU`,
 				`${label2}`
 			);
@@ -51,7 +51,7 @@ Nitro.module('dataLayer-home-bf', function() {
 	this.vitrineAlavancasLink = () => {
 		$('.vitrine-ofertas-interesses').find('.link-shelf a').on('click', function() {
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - O que te interessa mais?',
+				'[SQUAD] Semana do Consumidor',
 				`Seleção de SKU`,
 				`Veja todos os produtos`
 			);
@@ -62,8 +62,8 @@ Nitro.module('dataLayer-home-bf', function() {
 		$('.stories-circle-list__link').on('click', function() {
 			const label = $(this).attr('title');
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - Aproveite as Ofertas',
-				`CTA Stories`,
+				'[SQUAD] Semana do Consumidor',
+				`Stories Mobile`,
 				`${label}`
 			);
 		});
@@ -72,7 +72,7 @@ Nitro.module('dataLayer-home-bf', function() {
 	this.banners = () => {
 		$('.banner-combos a').on('click', function() {
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - BannerBem pensado',
+				'[SQUAD] Semana do Consumidor',
 				`Banner Combo`,
 				`Veja Mais`
 			);
@@ -85,7 +85,7 @@ Nitro.module('dataLayer-home-bf', function() {
 				label2 = $(this).parents('.box-produto').attr('data-category');
 
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - Ofertas especiais para você?',
+				'[SQUAD] Semana do Consumidor',
 				`${label2}`,
 				`${label1}`
 			);
@@ -95,7 +95,7 @@ Nitro.module('dataLayer-home-bf', function() {
 	this.vitrineOfertasLink = () => {
 		$('.vitrine-ofertas-alavancas').find('.link-shelf a').on('click', function() {
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - Ofertas especiais para você',
+				'[SQUAD] Semana do Consumidor',
 				`Seleção de SKU`,
 				`Veja todos os produtos`
 			);
@@ -107,7 +107,7 @@ Nitro.module('dataLayer-home-bf', function() {
 			const title = $(this).find('img'),
 				action = (title.attr('alt').toLowerCase().indexOf('ecohouse') > -1) ? 'Purificador e Refil' : (title.attr('alt').toLowerCase().indexOf('peças') > -1) ? 'Peças e Acessórios' : 'Garantia Estendida';
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Home - Ofertas especiais para você',
+				'[SQUAD] Semana do Consumidor',
 				`${action}`,
 				`Confira`
 			);
@@ -117,7 +117,7 @@ Nitro.module('dataLayer-home-bf', function() {
 	this.searchAllProducts = () => {
 		$('.onpage-search__link').on('click', function() {
 			pushDataLayer(
-				'[SQUAD] BlackFriday2019 - Busca - Está procurando algo especial?',
+				'[SQUAD] Semana do Consumidor',
 				`Diga o que procura e encontramos para você!`,
 				`Ver todos os produtos da loja`
 			);
@@ -131,7 +131,7 @@ Nitro.module('dataLayer-home-bf', function() {
 
 			if ($searchValue.length > 3) {
 				pushDataLayer(
-					'[SQUAD] Pesquisa do site',
+					'[SQUAD] Semana do Consumidor',
 					`Termo de busca`,
 					$searchValue
 				);
