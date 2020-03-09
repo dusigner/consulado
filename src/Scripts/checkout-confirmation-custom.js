@@ -266,9 +266,8 @@ $(window).on('load', function() {
         product = orderPlaced.transactionProducts[j];
         additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
         product_sku = additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId;
-				product_sku = product_sku.replace(/ANA|BNA|UNA|ONA|VNA/g, '');
         products.push({
-          'id' : product_sku,
+          'id' : product_sku.replace(/ANA|BNA/g, ''),
           'id_vtex' : product.id,
           'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
           'name' : product.name,
