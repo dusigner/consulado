@@ -335,30 +335,31 @@ $primary: #9ACA3C;
 				padding: 0;
 				width: 100%;
 			}
-		}
 
-		&-btn {
-			@include responsiveFont(20, 16, true);
-			@include transition(all);
-			background-color: $detail;
-			border: 2px solid transparent;
-			border-radius: 100px;
-			color: #FFF;
-			padding: 15px 0;
-			text-align: center;
-			width: 100%;
-
-			&:hover {
-				background-color: transparent;
-				border: 2px solid $detail;
-				color: $detail;
-				text-decoration: none;
-			}
-
-			@include breakpoint('large', 'max') {
+			a {
+				@include responsiveFont(20, 16, true);
+				@include transition(all);
+				background-color: $detail;
+				border: 2px solid transparent;
+				border-radius: 100px;
+				color: #FFF;
+				padding: 15px 0;
+				text-align: center;
 				width: 100%;
+
+				&:hover {
+					background-color: transparent;
+					border: 2px solid $detail;
+					color: $detail;
+					text-decoration: none;
+				}
+
+				@include breakpoint('large', 'max') {
+					width: 100%;
+				}
 			}
 		}
+
 
 		.hide {
 			display: none;
