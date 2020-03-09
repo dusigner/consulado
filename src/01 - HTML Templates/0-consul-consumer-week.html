@@ -911,8 +911,8 @@
 
     <script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
     <script>
-        $('.box-oferta__cards').each((i, el) => {
-            const $element = $(el),
+        $('.box-oferta__cards').each(function() {
+            const $element = $(this),
                 linkVal = decodeURIComponent($element.find('a').attr('href'));
 
             $element.find('a').attr('href', linkVal)
