@@ -298,6 +298,15 @@ $cw-black: #403C3B;
 					padding: 0 5px;
 				}
 				margin: 0 6px 12px;
+
+				&:nth-child(3) {
+					span {
+						width: 180px;
+					}
+					a {
+						width: 180px;
+					}
+				}
 			}
 
 			.discount-item {
@@ -325,15 +334,6 @@ $cw-black: #403C3B;
 			span {
 				@include breakpoint ('small', 'min') { width: 120px; }
 				display: inline-block;
-
-				&:nth-child(3) {
-					width: 180px;
-				}
-			}
-			a {
-				&:nth-child(3) {
-					width: 180px;
-				}
 			}
 		}
 
