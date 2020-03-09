@@ -909,6 +909,14 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+    <script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+    <script>
+        $('.box-oferta__cards').each((i, el) => {
+            const $element = $(el),
+                linkVal = decodeURIComponent($element.find('a').attr('href'));
+
+            $element.find('a').attr('href', linkVal)
+        });
+    </script>
 </body>
 </html>
