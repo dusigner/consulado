@@ -15,6 +15,7 @@ Nitro.module('dataLayer-home-bf', function() {
 		this.bannersQuality();
 		this.searchAllProducts();
 		this.search();
+		this.newAlavanca();
 	};
 
 	this.tabAlavancasInteresse = () => {
@@ -136,6 +137,20 @@ Nitro.module('dataLayer-home-bf', function() {
 					$searchValue
 				);
 			}
+		});
+	};
+
+	this.newAlavanca = () => {
+		$('.box-oferta__cards a').on('click', ({currentTarget}) => {
+			const $element = $(currentTarget),
+				$elementText = $element.text();
+
+
+				pushDataLayer(
+					'[SQUAD] Semana do Consumidor',
+					`Alavanca de Promoções`,
+					$elementText
+				);
 		});
 	};
 

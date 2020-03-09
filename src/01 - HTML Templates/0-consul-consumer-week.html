@@ -4,7 +4,20 @@
 	<title>Loja Consul - Eletrodomésticos para Sua Casa</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-	<vtex:template id="0-consul-head-content" />
+    <vtex:template id="0-consul-head-content" />
+    <style>
+        @media(min-width: 1024px) {
+            .prateleira-tabs__tabs li:nth-child(3) span, .prateleira-tabs__tabs li:nth-child(3) a {
+                width: 180px!important;
+            }
+        }
+
+        @media(max-width: 1023px) {
+            .prateleira-tabs__tabs li {
+                width: 50%!important;
+            }
+        }
+    </style>
 
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home-cw2020.css?v=<!-- @echo package.version -->" />
 </head>
