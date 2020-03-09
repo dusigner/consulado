@@ -141,9 +141,9 @@ Nitro.module('dataLayer-home-bf', function() {
 	};
 
 	this.newAlavanca = () => {
-		$('.box-oferta__cards a').on('click', ({currentTarget}) => {
+		$(document).on('click', '.box-oferta__cards a', ({currentTarget}) => {
 			const $element = $(currentTarget),
-				$elementText = $element.text();
+				$elementText = $element.parent().find('h3').text();
 
 
 				pushDataLayer(
