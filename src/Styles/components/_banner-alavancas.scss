@@ -1,3 +1,11 @@
+
+// Utility helpers
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/rfs';
+@import 'layout/grid';
+@import 'layout/gridresponsive';
 .banner-alavancas {
 	margin-top: 20px;
 	max-height: 420px;
@@ -9,4 +17,30 @@
 			width: 100%;
 		}
 	}
+
+	@include breakpoint('small', 'min') {
+		.hidden-desk {
+			display: none !important;
+			visibility: hidden;
+		}
+		.hidden-mobile {
+			display: block;
+			visibility: visible;
+		}
+
+
+	}
+
+	@include breakpoint('small', 'max') {
+		.hidden-mobile {
+			display: none !important;
+			visibility: hidden;
+		}
+		.hidden-desk {
+			display: block;
+			visibility: visible;
+		}
+
+	}
+
 }
