@@ -34,23 +34,28 @@ const discountPercentageValidate = (prodListPrice, prodBestPrice) => {
 };
 
 // Troca os espaços do texto por traços e padroniza o tamanho para definirmos o nome das imagens
-const clearText = str => str.replace(/\s+/gmi, '-').toLowerCase();
+const clearText = str => str.replace(/\s+/gmi, '-').replace(/\*/gm, '').toLowerCase();
 
 // Promoção para as prateleiras
 const promoDestaque = produto => {
-	const hasPromo = produto.find('.FlagsHightLight .flag[class*="__promo__"]');
-	const $prodInfo = produto.find('.prod-info, .shelf-item__info');
-	const precoDe = formatValue(produto.find('.de .val').text());
-	const precoPor = formatValue(produto.find('.por .val').text());
-	const desconto = discountCalculate(precoDe, precoPor);
+	const
+		hasPromo = produto.find('.FlagsHightLight .flag[class*="__promo__"]'),
+		hasCashBack = produto.find('.flag[class*="__promo__ganhe"]').length,
+		$prodInfo = produto.find('.prod-info, .shelf-item__info'),
+		precoDe = formatValue(produto.find('.de .val').text()),
+		precoPor = formatValue(produto.find('.por .val').text()),
+		desconto = discountCalculate(precoDe, precoPor);
 
 	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
 	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
 	// if (hasPromo.length) {
-		const promoText = hasPromo.text().split('__');
-		const promoPreTitle = promoText[2];
-		const promoTitle = promoText[3];
-		const promoColor = promoText[4];
+		const
+			promoText = hasPromo.text().split('__'),
+			promoPreTitle = promoText[2],
+			promoTitle = promoText[3],
+			promoColor = promoText[4],
+			cashBackDiscount = promoText[5] ? `R$+${promoText[5]}` : null,
+			promoDiscount = `R$-${discountFormat(desconto)}`;
 
 		const $promoDestaque = `
 			<div class="promo-destaque">
@@ -62,7 +67,7 @@ const promoDestaque = produto => {
 					${promoTitle}
 				</div>
 				<div class="promo-destaque__price">
-					R$-${discountFormat(desconto)}
+					${hasCashBack && cashBackDiscount ? cashBackDiscount : promoDiscount}
 				</div>
 
 				<div class="promo-destaque__bg" style="background: ${promoColor}"></div>
@@ -75,19 +80,24 @@ const promoDestaque = produto => {
 
 // Promoção para a página de produto
 const prodPromoDestaque = () => {
-	const hasPromo = $('.prod-selos .flag[class*="__promo__"]');
-	const $prodPreco = $('.prod-preco');
-	const precoDe = formatValue($prodPreco.find('.skuListPrice').text());
-	const precoPor = formatValue($prodPreco.find('.skuBestPrice').text());
-	const desconto = discountCalculate(precoDe, precoPor);
+	const
+		hasPromo = $('.prod-selos .flag[class*="__promo__"]'),
+		hasCashBack = $('.prod-selos .flag[class*="__promo__ganhe"]').length,
+		$prodPreco = $('.prod-preco'),
+		precoDe = formatValue($prodPreco.find('.skuListPrice').text()),
+		precoPor = formatValue($prodPreco.find('.skuBestPrice').text()),
+		desconto = discountCalculate(precoDe, precoPor);
 
 	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
 	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
 	// if (hasPromo.length) {
-		const promoText = hasPromo.text().split('__');
-		const promoPreTitle = promoText[2];
-		const promoTitle = promoText[3];
-		const promoColor = promoText[4];
+		const
+			promoText = hasPromo.text().split('__'),
+			promoPreTitle = promoText[2],
+			promoTitle = promoText[3],
+			promoColor = promoText[4],
+			cashBackDiscount = promoText[5] ? `R$+${promoText[5].replace('CNS', '')} de desconto` : null,
+			promoDiscount = `R$-${discountFormat(desconto)} de desconto`;
 
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
@@ -97,7 +107,7 @@ const prodPromoDestaque = () => {
 					${promoTitle}
 				</div>
 				<div class="promo-destaque__price" style="color: ${promoColor}">
-					Produto com <span>R$${discountFormat(desconto)} de desconto</span>
+					${hasCashBack && cashBackDiscount ? cashBackDiscount : promoDiscount}
 				</div>
 
 				<div class="promo-destaque__bg" style="background: ${promoColor}"></div>
