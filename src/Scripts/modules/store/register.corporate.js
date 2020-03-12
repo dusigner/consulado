@@ -7,325 +7,327 @@ var getAddress = require('modules/store/getAddress');
 var redirect = require('modules/store/redirect');
 
 Nitro.module('register.corporate', function() {
-	var self = this,
-		primaryInfoComplete = false,
-		$modalRegister = $('#modal-register'),
-		$modalTermo = $('#modal-termo'),
-		$form = $('.form-register');
+    var self = this,
+        primaryInfoComplete = false,
+        $modalRegister = $('#modal-register'),
+        $modalTermo = $('#modal-termo'),
+        $form = $('.form-register');
 
-	this.setup = function() {
-		self.addFormMask();
+    this.setup = function() {
+        self.addFormMask();
 
-		$form.fields = $form.find(
-			'input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]'
-		);
-		$form.fieldEmail = $form.fields.filter('input[name="email"], input[name="confirmEmail"]');
-		$form.primaryFields = $form.find('.primary-info').find($form.fields);
-		$form.fieldDocument = $form.primaryFields.filter('input[name="corporateDocument"]');
-		$form.btnSubmit = $form.find('[type="submit"]');
-		$form.anchorTermo = $form.find('.anchor-termo');
+        $form.fields = $form.find(
+            'input[type="text"], input[type="email"], input[type="tel"], select, input[type="checkbox"]'
+        );
+        $form.fieldEmail = $form.fields.filter('input[name="email"], input[name="confirmEmail"]');
+        $form.primaryFields = $form.find('.primary-info').find($form.fields);
+        $form.fieldDocument = $form.primaryFields.filter('input[name="corporateDocument"]');
+        $form.btnSubmit = $form.find('[type="submit"]');
+        $form.anchorTermo = $form.find('.anchor-termo');
 
-		$form.submit(this.submit.bind($form));
+        $form.submit(this.submit.bind($form));
 
-		$(store)
-			.on('store.user.not-found', this.fillUserEmail)
-			.on('store.user.revalidation', this.fillUserEmail);
+        $(store)
+            .on('store.user.not-found', this.fillUserEmail)
+            .on('store.user.revalidation', this.fillUserEmail);
 
-		$modalRegister
-			.on('elementOpenVtexModal', function() {
-				$modalRegister.find('.steps').slick({
-					infinite: false,
-					dots: false,
-					arrows: false,
-					draggable: false
-				});
-			})
-			.on('elementCloseVtexModal', function() {
-				$modalRegister.find('.steps').slick('unslick');
-			});
+        $modalRegister
+            .on('elementOpenVtexModal', function() {
+                $modalRegister.find('.steps').slick({
+                    infinite: false,
+                    dots: false,
+                    arrows: false,
+                    draggable: false
+                });
+            })
+            .on('elementCloseVtexModal', function() {
+                $modalRegister.find('.steps').slick('unslick');
+            });
 
-		$modalRegister.find('.buttons a').click(function() {
-			$modalRegister.find('.steps').slick('slickGoTo', '0');
-		});
+        $modalRegister.find('.buttons a').click(function() {
+            $modalRegister.find('.steps').slick('slickGoTo', '0');
+        });
 
-		$modalRegister.find('.checkbox #isFreeStateRegistration').change(function() {
-			if (this.checked) {
-				$form
-					.find('.stateRegistration')
-					.removeAttr('data-validation')
-					.val('Isento')
-					.attr('readonly', 'readonly');
-				$form
-					.find('#xContribuinteICMS')
-					.removeAttr('checked')
-					.attr('disabled', 'disabled');
-			} else {
-				$form
-					.find('.stateRegistration')
-					.attr('data-validation', 'required stateRegistration')
-					.val('')
-					.removeAttr('readonly');
-				$form.find('#xContribuinteICMS').removeAttr('disabled');
-			}
-		});
+        $modalRegister.find('.checkbox #isFreeStateRegistration').change(function() {
+            if (this.checked) {
+                $form
+                    .find('.stateRegistration')
+                    .removeAttr('data-validation')
+                    .val('Isento')
+                    .attr('readonly', 'readonly');
+                $form
+                    .find('#xContribuinteICMS')
+                    .removeAttr('checked')
+                    .attr('disabled', 'disabled');
+            } else {
+                $form
+                    .find('.stateRegistration')
+                    .attr('data-validation', 'required stateRegistration')
+                    .val('')
+                    .removeAttr('readonly');
+                $form.find('#xContribuinteICMS').removeAttr('disabled');
+            }
+        });
 
-		$modalRegister.find('.checkbox #xContribuinteICMS').change(function() {
-			if (this.checked) {
-				$form
-					.find('#isFreeStateRegistration')
-					.removeAttr('checked')
-					.attr('disabled', 'disabled');
-			} else {
-				$form.find('#isFreeStateRegistration').removeAttr('disabled');
-			}
-		});
+        $modalRegister.find('.checkbox #xContribuinteICMS').change(function() {
+            if (this.checked) {
+                $form
+                    .find('#isFreeStateRegistration')
+                    .removeAttr('checked')
+                    .attr('disabled', 'disabled');
+            } else {
+                $form.find('#isFreeStateRegistration').removeAttr('disabled');
+            }
+        });
 
-		//verifica se o campo de inscrição tem os caracteres necessários
-		$form.find('.form-control').not('.email, .confirmEmail, .tradeName, .firstName, .lastName, .corporateName, .addressName, .neighborhood, .state, .city, .complement').keyup(function() {
-			var val = $(this).val();
-			val = val.replace(/[a-zA-Z]/g, '');
-			val = val.replace(/[^\w\s]/gi, '');
-			$(this).val(val);
-		});
 
-		$form.find('.tradeName, .firstName, .lastName, .corporateName, .addressName, .neighborhood, .state, .city').keyup(function() {
-			var val = $(this).val();
-			val = val.replace(/[0-9]/g, '');
-			val = val.replace(/[^\w\s]/gi, '');
-			$(this).val(val);
-		});
+        //verifica se o campo de inscrição tem os caracteres necessários
+        $form.find('.form-control').not('.email, .confirmEmail, .tradeName, .firstName, .lastName, .corporateName, .addressName, .neighborhood, .state, .city, .complement').keyup(function() {
+            var val = $(this).val();
+            val = val.replace(/[a-zA-Z]/g, '');
+            val = val.replace(/[^\w\s]/gi, '');
+            $(this).val(val);
+        });
 
-		$form.anchorTermo.click(function(e) {
-			e.preventDefault();
-			$modalTermo.vtexModal();
-		});
-	};
+        $form.find('.tradeName, .firstName, .lastName, .corporateName, .addressName, .neighborhood, .state, .city').keyup(function() {
+            var val = $(this).val();
+            val = val.replace(/[0-9]/g, '');
+            val = val.replace(/[^\w\s]/gi, '');
+            $(this).val(val);
+        });
 
-	this.addFormMask = function() {
-		$form.find('.corporateDocument').inputmask({
-			mask: '99.999.999/9999-99',
-			greedy: false,
-			clearIncomplete: true
-		});
+        $form.anchorTermo.click(function(e) {
+            e.preventDefault();
+            $modalTermo.vtexModal();
+        });
+    };
 
-		$form.find('.postalCode').inputmask({
-			mask: '99999-999',
-			greedy: false,
-			clearIncomplete: true,
-			oncomplete: function() {
-				var poscalCode = $(this)
-					.val()
-					.replace(/\D/g, '');
-				getAddress.byPostalCode(poscalCode).done(function(endereco) {
-					// prettier-ignore
-					endereco.neighborhood
-						? $form
-							.find('.neighborhood')
-							.val(endereco.neighborhood)
-							.trigger('change')
-							.attr('readonly', 'readonly')
-						: $form
-							.find('.neighborhood')
-							.val('')
-							.removeAttr('readonly');
-					// prettier-ignore
-					endereco.city
-						? $form
-							.find('.city')
-							.val(endereco.city)
-							.trigger('change')
-							.attr('readonly', 'readonly')
-						: $form
-							.find('.city')
-							.val('')
-							.removeAttr('readonly');
-					// prettier-ignore
-					endereco.street
-						? $form
-							.find('.addressName')
-							.val(endereco.street)
-							.trigger('change')
-							.attr('readonly', 'readonly')
-						: $form
-							.find('.addressName')
-							.val('')
-							.removeAttr('readonly');
-					// prettier-ignore
-					endereco.state
-						? $form
-							.find('.state')
-							.val(endereco.state)
-							.trigger('change')
-							.attr('readonly', 'readonly')
-						: $form
-							.find('.state')
-							.val('')
-							.removeAttr('readonly');
-				});
-			}
-		});
 
-		$form.find('.phone, .xAdditionalPhone').inputmask({
-			mask: '(99) 9999-9999[9]',
-			greedy: false,
-			clearIncomplete: true
-		});
-	};
+    this.addFormMask = function() {
+        $form.find('.corporateDocument').inputmask({
+            mask: '99.999.999/9999-99',
+            greedy: false,
+            clearIncomplete: true
+        });
 
-	this.fillUserEmail = function(e, email) {
-		dataLayer.push({ event: 'emailNãoCadastrado' });
+        $form.find('.postalCode').inputmask({
+            mask: '99999-999',
+            greedy: false,
+            clearIncomplete: true,
+            oncomplete: function() {
+                var poscalCode = $(this)
+                    .val()
+                    .replace(/\D/g, '');
+                getAddress.byPostalCode(poscalCode).done(function(endereco) {
+                    // prettier-ignore
+                    endereco.neighborhood ?
+                        $form
+                        .find('.neighborhood')
+                        .val(endereco.neighborhood)
+                        .trigger('change')
+                        .attr('readonly', 'readonly') :
+                        $form
+                        .find('.neighborhood')
+                        .val('')
+                        .removeAttr('readonly');
+                    // prettier-ignore
+                    endereco.city ?
+                        $form
+                        .find('.city')
+                        .val(endereco.city)
+                        .trigger('change')
+                        .attr('readonly', 'readonly') :
+                        $form
+                        .find('.city')
+                        .val('')
+                        .removeAttr('readonly');
+                    // prettier-ignore
+                    endereco.street ?
+                        $form
+                        .find('.addressName')
+                        .val(endereco.street)
+                        .trigger('change')
+                        .attr('readonly', 'readonly') :
+                        $form
+                        .find('.addressName')
+                        .val('')
+                        .removeAttr('readonly');
+                    // prettier-ignore
+                    endereco.state ?
+                        $form
+                        .find('.state')
+                        .val(endereco.state)
+                        .trigger('change')
+                        .attr('readonly', 'readonly') :
+                        $form
+                        .find('.state')
+                        .val('')
+                        .removeAttr('readonly');
+                });
+            }
+        });
 
-		$form.fieldEmail.val(email).attr('readonly', 'readonly');
+        $form.find('.phone, .xAdditionalPhone').inputmask({
+            mask: '(99) 9999-9999[9]',
+            greedy: false,
+            clearIncomplete: true
+        });
+    };
 
-		$modalRegister.vtexModal({static: true});
-	};
+    this.fillUserEmail = function(e, email) {
+        dataLayer.push({ event: 'emailNãoCadastrado' });
 
-	this.error = function(message, $field) {
-		$field = message !== false ? $field : $form.btnSubmit;
+        $form.fieldEmail.val(email).attr('readonly', 'readonly');
 
-		$form.btnSubmit.removeClass('loading');
+        $modalRegister.vtexModal({ static: true });
+    };
 
-		$field
-			.data({
-				title: message || this.data('msg-error'),
-				html: true,
-				placement: 'top',
-				trigger: 'manual'
-			})
-			.tooltip('show');
-	};
+    this.error = function(message, $field) {
+        $field = message !== false ? $field : $form.btnSubmit;
 
-	this.getDocument = function(document) {
-		return (document || $form.fieldDocument.val() || '').replace(/[^\d]+/g, '');
-	};
+        $form.btnSubmit.removeClass('loading');
 
-	/*
-	busca na tabela de clientes pelo cnpj, caso cnpj não for encontrado
-	avança para o passo seguinte do form
-	*/
-	this.validCompany = function() {
-		return CRM.clientSearchByCorporateDocument(self.getDocument()).done(function(data) {
-			if (data && !$('#modal-register').hasClass('revalidation')) {
-				dataLayer.push({ event: 'formularioInvalido' });
-				self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
-			} else {
-				self.nextStep();
-			}
-		});
-	};
+        $field
+            .data({
+                title: message || this.data('msg-error'),
+                html: true,
+                placement: 'top',
+                trigger: 'manual'
+            })
+            .tooltip('show');
+    };
 
-	this.nextStep = function() {
-		dataLayer.push({ event: 'cadastroValidado' });
-		$form.btnSubmit.removeClass('loading');
-		primaryInfoComplete = true;
-		$modalRegister.find('.steps').slick('slickGoTo', '1');
-		$modalRegister.find('.buttons a').fadeIn();
-	};
+    this.getDocument = function(document) {
+        return (document || $form.fieldDocument.val() || '').replace(/[^\d]+/g, '');
+    };
 
-	this.prepareUserData = function(data) {
-		var dataUser = {};
+    /*
+    busca na tabela de clientes pelo cnpj, caso cnpj não for encontrado
+    avança para o passo seguinte do form
+    */
+    this.validCompany = function() {
+        return CRM.clientSearchByCorporateDocument(self.getDocument()).done(function(data) {
+            if (data && !$('#modal-register').hasClass('revalidation')) {
+                dataLayer.push({ event: 'formularioInvalido' });
+                self.error.call($form, 'Esse CNPJ já foi cadastrado.', $form.fieldDocument);
+            } else {
+                self.nextStep();
+            }
+        });
+    };
 
-		dataUser.businessPhone = data.phone;
-		dataUser.corporateDocument = self.getDocument(data.corporateDocument);
-		dataUser.corporateName = data.corporateName;
-		dataUser.email = data.email;
-		dataUser.firstName = data.firstName;
-		dataUser.homePhone = data.phone;
-		dataUser.isCorporate = true;
-		dataUser.isFreeStateRegistration = data.isFreeStateRegistration;
-		dataUser.lastName = data.lastName;
-		dataUser.phone = data.phone;
-		dataUser.stateRegistration = data.stateRegistration;
-		dataUser.tradeName = data.tradeName;
-		dataUser.xAdditionalPhone = data.xAdditionalPhone;
-		dataUser.xBusinessType = data.xBusinessType;
-		dataUser.xContribuinteICMS = data.xContribuinteICMS;
-		dataUser.xRegimeApuracaoPIS = data.xRegimeApuracaoPIS;
-		dataUser.xValidationPJ = 'pendente';
+    this.nextStep = function() {
+        dataLayer.push({ event: 'cadastroValidado' });
+        $form.btnSubmit.removeClass('loading');
+        primaryInfoComplete = true;
+        $modalRegister.find('.steps').slick('slickGoTo', '1');
+        $modalRegister.find('.buttons a').fadeIn();
+    };
 
-		return dataUser;
-	};
-	this.prepareLocationData = function(data, result) {
-		var dataAddress = {};
+    this.prepareUserData = function(data) {
+        var dataUser = {};
 
-		if (result && result.Id) {
-			dataAddress.userId = result.Id.replace('CL-', '');
-		}
+        dataUser.businessPhone = data.phone;
+        dataUser.corporateDocument = self.getDocument(data.corporateDocument);
+        dataUser.corporateName = data.corporateName;
+        dataUser.email = data.email;
+        dataUser.firstName = data.firstName;
+        dataUser.homePhone = data.phone;
+        dataUser.isCorporate = true;
+        dataUser.isFreeStateRegistration = data.isFreeStateRegistration;
+        dataUser.lastName = data.lastName;
+        dataUser.phone = data.phone;
+        dataUser.stateRegistration = data.stateRegistration;
+        dataUser.tradeName = data.tradeName;
+        dataUser.xAdditionalPhone = data.xAdditionalPhone;
+        dataUser.xBusinessType = data.xBusinessType;
+        dataUser.xContribuinteICMS = data.xContribuinteICMS;
+        dataUser.xRegimeApuracaoPIS = data.xRegimeApuracaoPIS;
+        dataUser.xValidationPJ = 'pendente';
 
-		dataAddress.addressName = data.addressName;
-		dataAddress.addressType = 'residential';
-		dataAddress.city = data.city;
-		dataAddress.complement = data.complement;
-		dataAddress.country = 'BRA';
-		dataAddress.neighborhood = data.neighborhood;
-		dataAddress.number = data.number;
-		dataAddress.postalCode = data.postalCode;
-		dataAddress.receiverName = data.firstName + ' ' + data.lastName;
-		dataAddress.state = data.state;
-		dataAddress.street = data.addressName;
+        return dataUser;
+    };
+    this.prepareLocationData = function(data, result) {
+        var dataAddress = {};
 
-		return dataAddress;
-	};
+        if (result && result.Id) {
+            dataAddress.userId = result.Id.replace('CL-', '');
+        }
 
-	this.register = function() {
-		var data = {};
+        dataAddress.addressName = data.addressName;
+        dataAddress.addressType = 'residential';
+        dataAddress.city = data.city;
+        dataAddress.complement = data.complement;
+        dataAddress.country = 'BRA';
+        dataAddress.neighborhood = data.neighborhood;
+        dataAddress.number = data.number;
+        dataAddress.postalCode = data.postalCode;
+        dataAddress.receiverName = data.firstName + ' ' + data.lastName;
+        dataAddress.state = data.state;
+        dataAddress.street = data.addressName;
 
-		$.map($form.serializeArray(), function(x) {
-			if (!x.value || x.value === '') {
-				return;
-			}
-			if (x.value === 'on') {
-				//chenge checkbox on - off to true - false
-				data[x.name] = true;
-			} else if (x.value === 'off') {
-				data[x.name] = false;
-			} else {
-				data[x.name] = x.value;
-			}
-		});
+        return dataAddress;
+    };
 
-		if (data.phone) {
-			data.phone = '+55' + data.phone;
-		}
+    this.register = function() {
+        var data = {};
 
-		var dataRegister = JSON.stringify(self.prepareUserData(data));
+        $.map($form.serializeArray(), function(x) {
+            if (!x.value || x.value === '') {
+                return;
+            }
+            if (x.value === 'on') {
+                //chenge checkbox on - off to true - false
+                data[x.name] = true;
+            } else if (x.value === 'off') {
+                data[x.name] = false;
+            } else {
+                data[x.name] = x.value;
+            }
+        });
 
-		CRM.insertCadastroSerialize({ dados: dataRegister });
+        if (data.phone) {
+            data.phone = '+55' + data.phone;
+        }
 
-		CRM.insertClient(self.prepareUserData(data))
-			.then(self.prepareLocationData.bind(self, data))
-			.then(CRM.insertLocation)
-			.done(
-				$('#modal-register').hasClass('revalidation')
-					? redirect.revalidation.bind(self, data)
-					: redirect.register.bind(self, data)
-			)
-			.done(self.resetForm)
-			.fail(self.error.bind($form, false));
-	};
+        var dataRegister = JSON.stringify(self.prepareUserData(data));
 
-	this.resetForm = function() {
-		$form.btnSubmit.removeClass('loading');
+        CRM.insertCadastroSerialize({ dados: dataRegister });
 
-		$modalRegister.vtexModal('close');
-	};
+        CRM.insertClient(self.prepareUserData(data))
+            .then(self.prepareLocationData.bind(self, data))
+            .then(CRM.insertLocation)
+            .done(
+                $('#modal-register').hasClass('revalidation') ?
+                redirect.revalidation.bind(self, data) :
+                redirect.register.bind(self, data)
+            )
+            .done(self.resetForm)
+            .fail(self.error.bind($form, false));
+    };
 
-	this.submit = function(e) {
-		e.preventDefault();
+    this.resetForm = function() {
+        $form.btnSubmit.removeClass('loading');
 
-		//this = form;
+        $modalRegister.vtexModal('close');
+    };
 
-		if (!$form.btnSubmit.is('.loading')) {
-			if (primaryInfoComplete) {
-				//first step done
-				validation.validate(this.fields, $form.btnSubmit).done(self.register);
-			} else {
-				validation.validate(this.primaryFields, $form.btnSubmit).done(self.validCompany);
-			}
-		}
+    this.submit = function(e) {
+        e.preventDefault();
 
-		return false;
-	};
+        //this = form;
 
-	this.setup();
+        if (!$form.btnSubmit.is('.loading')) {
+            if (primaryInfoComplete) {
+                //first step done
+                validation.validate(this.fields, $form.btnSubmit).done(self.register);
+            } else {
+                validation.validate(this.primaryFields, $form.btnSubmit).done(self.validCompany);
+            }
+        }
+
+        return false;
+    };
+
+    this.setup();
 });

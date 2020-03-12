@@ -4,7 +4,20 @@
 	<title>Loja Consul - Eletrodomésticos para Sua Casa</title>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-	<vtex:template id="0-consul-head-content" />
+    <vtex:template id="0-consul-head-content" />
+    <style>
+        @media(min-width: 1024px) {
+            .prateleira-tabs__tabs li:nth-child(3) span, .prateleira-tabs__tabs li:nth-child(3) a {
+                width: 180px!important;
+            }
+        }
+
+        @media(max-width: 1023px) {
+            .prateleira-tabs__tabs li {
+                width: 50%!important;
+            }
+        }
+    </style>
 
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home-cw2020.css?v=<!-- @echo package.version -->" />
 </head>
@@ -36,10 +49,10 @@
 				<li
 					class="stories-circle-list__item"
 					data-storie-card-title="Ofertas da #Semana do consumidor#"
-					data-storie-card-collection-id="1833"
+					data-storie-card-collection-id="1861"
 					data-storie-card-collection-id-qa="205"
 				>
-					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1833" title="Semana do consumidor">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1861" title="Semana do consumidor">
 						<span class="stories-circle-list__image">
 							<img src="/arquivos/stories-promocao-a-vista-2x.png" alt="Semana do consumidor" />
 						</span>
@@ -51,61 +64,45 @@
 				<li
 					class="stories-circle-list__item"
 					data-storie-card-title="Produtos com #frete grátis!#"
-					data-storie-card-collection-id="1834"
+					data-storie-card-collection-id="1870"
 					data-storie-card-collection-id-qa="166"
 				>
-					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1834" title="Frete Grátis">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1870" title="Parcelas a partir de R$45">
 						<span class="stories-circle-list__image">
-							<img src="/arquivos/stories-promocao-frete-gratis-2x.png" alt="Frete Grátis" />
+							<img src="/arquivos/stories-promocao-frete-gratis-2x.png" alt="Parcelas a partir de R$45" />
 						</span>
 
-						<strong class="stories-circle-list__title">Frete Grátis</strong>
+						<strong class="stories-circle-list__title">Parcelas <br /> a partir de R$45</strong>
 					</a>
 				</li>
 
                 <li
                     class="stories-circle-list__item"
                     data-storie-card-title="Antecipadas!"
-                    data-storie-card-collection-id="1837"
+                    data-storie-card-collection-id="1863"
                     data-storie-card-collection-id-qa="193"
                 >
-                    <a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1837" title="Antecipadas">
+                    <a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1863" title="Antecipadas">
                         <span class="stories-circle-list__image">
                             <img src="/arquivos/stories-promocao-bf-antecipadas-2x.png" alt="Antecipadas" />
                         </span>
 
-                        <strong class="stories-circle-list__title">Antecipadas</strong>
+                        <strong class="stories-circle-list__title">Combos</strong>
                     </a>
                 </li>
-
-
-				<li
-                class="stories-circle-list__item"
-                data-storie-card-title="Produtos com #20% OFF#"
-                data-storie-card-collection-id="1836"
-                data-storie-card-collection-id-qa="206"
-				>
-                <a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1836" title="20% OFF">
-                    <span class="stories-circle-list__image">
-                        <img src="/arquivos/stories-promocao-20-off-2x.png" alt="20% OFF" />
-                    </span>
-
-                    <strong class="stories-circle-list__title">20% OFF</strong>
-                </a>
-            </li>
 
             <li
                 class="stories-circle-list__item"
                 data-storie-card-title="Produtos com #40% OFF#"
-                data-storie-card-collection-id="1835"
+                data-storie-card-collection-id="1860"
                 data-storie-card-collection-id-qa="193"
             >
-                <a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1835" title="40% OFF">
+                <a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1860" title="Até 40% OFF">
                     <span class="stories-circle-list__image">
-                        <img src="/arquivos/stories-promocao-40-off-2x.png" alt="40% OFF" />
+                        <img src="/arquivos/stories-promocao-40-off-2x.png" alt="Até 40% OFF" />
                     </span>
 
-                    <strong class="stories-circle-list__title">40% OFF</strong>
+                    <strong class="stories-circle-list__title">Até 40% OFF</strong>
                 </a>
             </li>
 
@@ -231,7 +228,9 @@
 				</li>
 			</ul>
 		</div>
-    </article>
+	</article>
+
+	<vtex:template id="0-consul-footer-2019-newsletter" />
 
 	<section class="alavanca-principal">
 		<div class="container">
@@ -240,23 +239,23 @@
 				<div class="box-oferta__cards">
 					<div class="box-oferta__cards__icon"><img src="/arquivos/icone-top-10-ofertas.png" alt="Top 10 ofertas"/></div>
 					<h3 class="box-oferta__cards__subtitle">Top 10 Ofertas</h3>
-					<a href="#" class="box-oferta__cards__btn-cta">Ver produtos</a>
+					<a href="https://loja.consul.com.br/busca?fq%3DH%3A1861" class="box-oferta__cards__btn-cta">Ver produtos</a>
 				</div>
 				<div class="box-oferta__cards">
 					<div class="box-oferta__cards__icon"><img src="/arquivos/icon-combos.png" alt="Comobs"/></div>
 					<h3 class="box-oferta__cards__subtitle">Combos</h3>
-					<a href="#" class="box-oferta__cards__btn-cta">Ver produtos</a>
+					<a href="https://loja.consul.com.br/busca?fq%3DH%3A1863" class="box-oferta__cards__btn-cta">Ver produtos</a>
 				</div>
 				<div class="box-oferta__cards">
 					<div class="box-oferta__cards__icon"><img src="/arquivos/icone-parcelas.png" alt="Parcelas"/></div>
-					<h3 class="box-oferta__cards__subtitle">Parcelas<br/> <span>à partir de R$45</span></h3>
-					<a href="#" class="box-oferta__cards__btn-cta">Ver produtos</a>
+					<h3 class="box-oferta__cards__subtitle">Parcelas<br /><span>a partir de R$45</span></h3>
+					<a href="https://loja.consul.com.br/busca?fq%3DH%3A1870" class="box-oferta__cards__btn-cta">Ver produtos</a>
 				</div>
 				<div class="box-oferta__cards">
 					<p>Até</p>
 					<h3 class="box-oferta__cards__40off--percent">40%</h3>
 					<h4 class="box-oferta__cards__40off--off">off</h4>
-					<a href="#" class="box-oferta__cards__btn-cta">Ver produtos</a>
+					<a href="https://loja.consul.com.br/busca?fq%3DH%3A1860" class="box-oferta__cards__btn-cta">Ver produtos</a>
 				</div>
 			</div>
 		</div>
@@ -785,10 +784,10 @@
 
 	<!-- Banner de alavanca home -->
 	<div class="banner-alavancas">
-		<div class="d-md-block d-none">
+		<div class="hidden-mobile">
 			<vtex:contentPlaceHolder id="BannerAlavancaDesk" />
 		</div>
-		<div class="d-md-none d-block">
+		<div class="hidden-desk">
 			<vtex:contentPlaceHolder id="BannerAlavancaMobile" />
 		</div>
 	</div>
@@ -800,7 +799,7 @@
 
     <!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
 	<section class="area-banners">
-		<div class="container">
+		<div class="container" style="text-align: center;">
 			<div class="row">
 				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
 				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
@@ -917,7 +916,6 @@
 	<!-- Footer 2019 -->
 	<footer class="footer-2019" data-module="footer-2019">
 		<vtex:template id="0-consul-footer-2019-servicos" />
-		<vtex:template id="0-consul-footer-2019-newsletter" />
 		<vtex:template id="0-consul-footer-2019-atendimento" />
 		<vtex:template id="0-consul-footer-2019-menu" />
 		<vtex:template id="0-consul-footer-2019-bottom" />
@@ -925,6 +923,14 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+    <script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+    <script>
+        $('.box-oferta__cards').each(function() {
+            const $element = $(this),
+                linkVal = decodeURIComponent($element.find('a').attr('href'));
+
+            $element.find('a').attr('href', linkVal)
+        });
+    </script>
 </body>
 </html>
