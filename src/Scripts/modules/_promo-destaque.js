@@ -119,7 +119,7 @@ const prodPromoDestaque = () => {
 };
 
 // Inicia a promoção somente na página de produto
-if ($('body').hasClass('produto')) {
+if ($('body').hasClass('produto-v2')) {
 	prodPromoDestaque();
 }
 
