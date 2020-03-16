@@ -133,7 +133,13 @@
 			</ul>
 		</div>
 	</article>
+
+<!-- [Barra Newsletter - Cadastro email] -->
+<vtex:template id="0-consul-footer-2019-newsletter" />
+<!-- [/Barra Newsletter - Cadastro email] -->
+
 <!-- Vitrine de categorias -->
+
 <section class="vitrine-subcategorias">
 	<div class="container">
 		<div class="title">
@@ -584,6 +590,48 @@
 	</div>
 </section>
 <!-- /Vitrine de categorias-->
+
+<!-- inicio contador -->
+<section class="counter__section">
+	<div class="container">
+		<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
+
+		<div class="counter__offer">
+			<div class="counter__offer-prod">
+				<vtex:contentPlaceHolder id="contadorOferta" />
+			</div>
+			<div class="counter__offer-count">
+
+			<div class="counter">
+				<div class="counter__title"> <span>Corre!</span> Essa oferta encerra em </div>
+					<div class="counter__clock">
+							<div class="counter__item">
+								<span class="counter__time hours"></span>
+								<span class="counter__timetext">Horas</span>
+							</div>
+							<div class="counter__item">
+								<span class="counter__time minutes"></span>
+								<span class="counter__timetext">Minutos</span>
+							</div>
+							<div class="counter__item">
+								<span class="counter__time seconds"></span>
+								<span class="counter__timetext">Segundos</span>
+							</div>
+					</div>
+					<div class="counter__title"> Ou enquanto durar o estoque! </div>
+			</div>
+			<div class="counter__end-promotion hide">
+				<span class="counter__end-message">Essa oferta acabou :(</span>
+			</div>
+			</div>
+			<div class="counter__offer-cta">
+				<vtex:contentPlaceHolder id="CounterBtnCta" />
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Fim contador -->
+
 	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
 	<section class="container vitrines">
 		<div class="prateleira-slider">
@@ -729,7 +777,6 @@
 	<!-- Footer 2019 -->
 	<footer class="footer-2019" data-module="footer-2019">
 		<vtex:template id="0-consul-footer-2019-servicos" />
-		<vtex:template id="0-consul-footer-2019-newsletter" />
 		<vtex:template id="0-consul-footer-2019-atendimento" />
 		<vtex:template id="0-consul-footer-2019-menu" />
 		<vtex:template id="0-consul-footer-2019-bottom" />
