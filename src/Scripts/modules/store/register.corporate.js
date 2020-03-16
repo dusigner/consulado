@@ -174,6 +174,9 @@ Nitro.module('register.corporate', function() {
         });
     };
 
+
+    // Função que abre a modal de cadastro da pré home
+
     this.fillUserEmail = function(e, email) {
         dataLayer.push({ event: 'emailNãoCadastrado' });
 
@@ -308,8 +311,12 @@ Nitro.module('register.corporate', function() {
 
     this.resetForm = function() {
         $form.btnSubmit.removeClass('loading');
-
-        $modalRegister.vtexModal('close');
+        $('#vtex-modal-register').hide();
+        alert("Cadastro realizado com sucesso!");
+        setTimeout(function(){
+              location.reload();
+        }, 1000);
+        // $modalRegister.vtexModal('close');
     };
 
     this.submit = function(e) {
@@ -320,7 +327,8 @@ Nitro.module('register.corporate', function() {
         if (!$form.btnSubmit.is('.loading')) {
             if (primaryInfoComplete) {
                 //first step done
-                validation.validate(this.fields, $form.btnSubmit).done(self.register);
+               validation.validate(this.fields, $form.btnSubmit).done(self.register);
+
             } else {
                 validation.validate(this.primaryFields, $form.btnSubmit).done(self.validCompany);
             }
