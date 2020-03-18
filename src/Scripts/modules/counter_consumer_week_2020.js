@@ -54,6 +54,8 @@ Nitro.module('counter', function() {
 			if (timeRemaining === null) {
 				$counterSection.addClass('hide');
 				return;
+			} else {
+				$counterSection.removeClass('hide');
 			}
 
 			if (
@@ -66,6 +68,7 @@ Nitro.module('counter', function() {
 				$counterSubSection.addClass('button-hidden');
 				$counter.addClass('hide');
 				$counterProd.addClass('hide');
+				$counterSection.addClass('hide');
 				$endMessage.removeClass('hide');
 			}
 

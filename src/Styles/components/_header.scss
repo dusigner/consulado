@@ -62,8 +62,6 @@ body {
 			min-height: $mobile-header-height;
 		}
 
-		height: 60px;
-
 		&.menu-scroll {
 			@include breakpoint(small, 'max') {
 				height: unset;

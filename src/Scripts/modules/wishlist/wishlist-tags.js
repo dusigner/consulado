@@ -12,7 +12,7 @@ const wishTags = {
     startEvents() {
         $document.on('click', wishButton, ({currentTarget}) => {
             const $element = $(currentTarget),
-            productID = $element.attr('data-idproduto');
+            productID = $element.parents('.box-produto').find('.product_field_770 ul li').text();
 
             if (window.location.href.indexOf('_secure/minhaconta') === -1) {
                 pushDataLayer(
