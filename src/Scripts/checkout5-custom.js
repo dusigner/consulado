@@ -833,6 +833,7 @@ $(document).on('ready', function() {
 										status: 'error'
 									});
 								});
+								$('#modal-info-pj').modal();
 						}
 					});
 				}
