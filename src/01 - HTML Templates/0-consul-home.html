@@ -111,9 +111,9 @@
 		right: 25px;
 	">SAIBA MAIS</span></div>
 
-	<div class="covid-modal hide-mobile" style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 10; display: none;"><span class="close-covid" style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a href="/atendimento" style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000" style="             transform: translate(50%);         " /></div>
+	<div class="covid-modal hide-mobile" style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 21; display: none;"><span class="close-covid" style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a href="/atendimento" style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000" style="             transform: translate(50%);         " /></div>
 
-	<div class="covid-modal-mobile hide-desk" style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 10; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
+	<div class="covid-modal-mobile hide-desk" style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 21; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
 		<h3 style="
 		font-weight: 500;
 		color: #000000;
@@ -133,7 +133,7 @@
 	">SAIBA MAIS</a>
 	<span class="close-covid" style="position: absolute;top: 4px;right: 15px;z-index: 10;font-size: 25px;cursor: pointer;">X</span></div>
 
-	<div class="covid-overlay" style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 9; top: 0px; opacity: 0.4; cursor: pointer; display: none;"></div>
+	<div class="covid-overlay" style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 20; top: 0px; opacity: 0.4; cursor: pointer; display: none;"></div>
 	<!-- /Covid Alert -->
 
 	<!-- [ Tipbar ] -->
@@ -847,7 +847,7 @@
             $('.covid-overlay').show();
         });
 
-        $('.covid-modal .close-covid').on('click', function() {
+        $(document).on('click', '.covid-modal .close-covid', function() {
 			$('.covid-modal').hide();
 			$('.covid-modal-mobile').hide();
             $('.covid-overlay').hide();
