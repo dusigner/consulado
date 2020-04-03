@@ -42,21 +42,15 @@ body {
 			@include breakpoint(small, 'max') {
 				@include rfs(15);
 				background-color: #F5F5F5;
-				border: none;
+				border-bottom: 2px solid $green;
 				display: block;
-				height: 36px;
+				height: 50px;
 				margin: 0;
+				margin-bottom: 10px;
 				max-width: 100%;
 				padding: 0;
 				text-indent: 15px;
 				width: 100%;
-
-			}
-
-			@media screen and (max-width: 320px) {
-				@include responsiveFont(12, 16, true);
-			}
-
 
 			.loader {
 				display: none;
@@ -72,7 +66,8 @@ body {
 			}
 
 			&:focus {
-				border-color: #c2c2c2;
+				border-width: 4px;
+				height: 60px;
 				outline: none;
 			}
 
@@ -81,15 +76,18 @@ body {
 			}
 
 			&::placeholder {
-				@include rfs(11);
+				@include rfs(15);
 				color: #707070;
 				font-weight: bold;
 
 				@include breakpoint ('small', 'max') {
-					@include rfs(9);
+					@include rfs(12);
+					font-weight: bold;
 				}
 			}
 		}
+
+	}
 
 		.form-search {
 			float: left;
@@ -113,9 +111,11 @@ body {
 				transform: translateY(-50%);
 
 				@include breakpoint(small, 'max') {
+					font-size: 32px;
 					left: unset;
 					line-height: 30px;
-					right: 0;
+					right: 10px;
+					top: 34px;
 					width: 50px;
 				}
 
