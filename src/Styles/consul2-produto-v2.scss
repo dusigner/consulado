@@ -58,3 +58,18 @@
 @import 'components/produto/trust-vox';
 @import 'components/produto/recurrence-v2';
 // @import 'components/produto/quiz-install';
+
+.produto-v2.produto-indisponivel {
+	.formas-pagamento-container {
+		display: none;
+	}
+	.descricao-produto {
+		display: none;
+	}
+	.prod-sku-options {
+		display: none;
+	}
+	.produtos-adicionais {
+		display: none;
+	}
+}
