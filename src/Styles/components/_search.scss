@@ -111,11 +111,11 @@ body {
 				transform: translateY(-50%);
 
 				@include breakpoint(small, 'max') {
-					font-size: 32px;
+					font-size: 28px;
 					left: unset;
 					line-height: 30px;
 					right: 10px;
-					top: 34px;
+					top: 35px;
 					width: 50px;
 				}
 
