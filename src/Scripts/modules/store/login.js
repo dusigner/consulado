@@ -26,6 +26,7 @@ Nitro.module('login', function() {
 
 		$form.fieldEmail = $form.find('input[name="email"]');
 
+		this.redirect();
 		this.init();
 	};
 
@@ -152,6 +153,16 @@ Nitro.module('login', function() {
 		$modalRegister.find('.phone').val(data.homePhone);
 		$modalRegister.find('.xAdditionalPhone').val(data.xAdditionalPhone);
 	};
+
+	this.redirect = () => {
+		$('.vtex-modal .close').on('click', () => {
+			const pathName = window.location.pathname;
+
+			if(pathName.indexOf('login') !== -1) {
+				window.location.href = '/';
+			}
+		});
+	}
 
 	this.setup();
 });
