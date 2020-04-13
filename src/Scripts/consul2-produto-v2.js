@@ -70,6 +70,8 @@ Nitro.controller(
 		} else {
 			$('body').addClass('produto-indisponivel');
 			$('.calc-frete').hide();
+			$('.prod-more-info').hide();
+			$('.cta-containers').hide();
 		}
 
 		var $reference = $('.reference'),
@@ -92,6 +94,17 @@ Nitro.controller(
 			}
 		});
 
+		//Vitrine do Produto indisponível
+		const vitrineRelacionada = $('.portal-notify-me-ref').find('.notifyme');
+
+		vitrineRelacionada.parent()
+		.append($('#relacionados')
+		.slick({
+			infinite: true,
+			slidesToShow: 1,
+			slidesToScroll: 1
+		})
+	);
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
