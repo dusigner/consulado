@@ -26,6 +26,44 @@
 $mobile-header-height: 84px;
 
 body {
+
+	.covid-shipping-guarantee {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-flow: row wrap;
+		background-color: #9ACA3C;
+		color: #FFF;
+		font-weight: 500;
+		div {
+			display: flex;
+			justify-content: center;
+    		align-items: center;
+			img {
+				margin-right: 20px;
+				max-height: 40px;
+				width: auto;
+			}
+		}
+		b {
+			color: #4B4848;
+			font-weight: bold;
+		}
+		button,
+		button:focus,
+		button:active,
+		button:hover {
+			background: #FFF;
+			color: #9ACA3C;
+			padding: 4px 36px;
+			max-height: 30px;
+			min-width: 190px;
+			font-size: 16px;
+			border-radius: 30px;
+			border: none;
+		}
+	}
+
 	.pre-header {
 		background: $gray-c;
 		font-family: 'Open Sans';
