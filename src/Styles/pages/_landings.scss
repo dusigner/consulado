@@ -29,5 +29,16 @@ body.is-landing-page {
 		  quando a página é criada com contexto de busca
 	 */
 	.resultado-busca { @include hide-conditional; }
+
+
 }
 
+// Landing Page Comunicado Covid-19
+.container-lp-covid {
+	@media(max-width: 800px) { margin-top: 16px }
+
+	.banner {
+		width: 100%;
+		height: auto;
+	}
+}
