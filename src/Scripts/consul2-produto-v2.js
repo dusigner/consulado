@@ -72,6 +72,7 @@ Nitro.controller(
 			$('.calc-frete').hide();
 			$('.prod-more-info').hide();
 			$('.cta-containers').hide();
+			$('.secure').hide();
 		}
 
 		var $reference = $('.reference'),
@@ -96,10 +97,29 @@ Nitro.controller(
 
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		vitrineRelacionada.append($('#relacionados-top'));
-
-		const vitrine2 = $('.main').find('#especificacoes');
-		vitrine2.after($('#relacionados'));
+		vitrineRelacionada.find($('#relacionados-top .prateleira > ul').not('.slick-initialized').slick({
+			infinite: false,
+			slidesToShow: 2.2,
+			slidesToScroll: 2.2,
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						dots: true,
+						slidesToShow: 2,
+						slidesToScroll: 2
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						dots: true,
+						slidesToShow: 1,
+						slidesToScroll: 1
+					}
+				}
+			]
+		}));
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
