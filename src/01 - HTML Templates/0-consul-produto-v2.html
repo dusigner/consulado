@@ -147,24 +147,25 @@
 					<!-- /Comprar produto -->
 
 
-					<!-- Produtos relacionados - Vtex -->
-					<section id="relacionados" class="slider">
+					<!-- Produtos relacionados de produto indisponível - Vtex -->
+					<section id="relacionados-top" class="slider">
 						<div class="container">
-							<p class="pre-title">
-								<vtex:contentPlaceHolder id="Relacionados - Titulo" />
+							<p class="relacionados-title">
+								<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Título" />
 							</p>
 						</div>
 						<div class="container">
 							<div class="row">
 								<div class="prateleira-slider clearfix">
-									<vtex:contentPlaceHolder id="Relacionados" />
+									<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Coleção" />
 								</div>
 							</div>
 						</div>
 					</section>
-					<!-- /Produtos relacionados - Vtex -->
+					<!-- Produtos relacionados de produto indisponível - Vtex -->
 
-					<!-- Frete -->
+
+					 <!-- Frete -->
 					<div class="calc-frete">
 						<div class="title-frete">
 							<i class="icon icon-truck-bold"></i>
@@ -335,7 +336,22 @@
 			</div>
 		</section>
 
-		<!-- aqui tava os prod relacionados antes -->
+		<!-- Produtos relacionados - Vtex -->
+		<section id="relacionados" class="slider">
+			<div class="container">
+				<p class="pre-title">
+					<vtex:contentPlaceHolder id="Relacionados - Titulo" />
+				</p>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="prateleira-slider clearfix">
+						<vtex:contentPlaceHolder id="Relacionados" />
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Produtos relacionados - Vtex -->
 
 		<section id="detalhes" class="detalhes"></section>
 		<section id="video" class="video"></section>

@@ -95,16 +95,11 @@ Nitro.controller(
 		});
 
 		//Vitrine do Produto indisponível
-		const vitrineRelacionada = $('.portal-notify-me-ref').find('.notifyme');
+		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
+		vitrineRelacionada.append($('#relacionados-top'));
 
-		vitrineRelacionada.parent()
-		.append($('#relacionados')
-		.slick({
-			infinite: true,
-			slidesToShow: 1,
-			slidesToScroll: 1
-		})
-	);
+		const vitrine2 = $('.main').find('#especificacoes');
+		vitrine2.after($('#relacionados'));
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
