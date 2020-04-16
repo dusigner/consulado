@@ -34,6 +34,12 @@ body.compare {
 			padding: 0;
 		}
 	}
+
+	@media screen and (max-device-width: 768px){
+		#vtex-callcenter .cc-pa3-ns {
+			display: none;
+		}
+	}
 }
 
 .corpo-comparacao {
@@ -74,6 +80,8 @@ body.compare {
 					@include breakpoint('small', 'max') {
 						align-items: flex-start;
 						margin-bottom: 15px;
+						overflow-x: scroll;
+						overflow-y: hidden;
 					}
 					align-items: flex-end;
 					display: flex;
@@ -93,7 +101,8 @@ body.compare {
 					width: calc(100% / 4);
 					@include breakpoint('small', 'max') {
 						max-width: 100%;
-						width: calc(100% / 2);
+						width: 100% !important;
+						padding-right: 10px;
 					}
 
 					&:first-child {
@@ -105,6 +114,11 @@ body.compare {
 					& > .produto {
 						margin: 0 auto;
 						width: 90%;
+
+						@include breakpoint('small', 'max') {
+							margin: 0 auto;
+							width: 100% !important;
+						}
 
 						.default.prateleira {
 							& > ul {
@@ -118,9 +132,21 @@ body.compare {
 									& > article {
 										height: auto;
 										min-height: inherit;
+										border: unset;
+
 										.detalhes {
 											height: auto;
 											min-height: inherit;
+
+											@include breakpoint('small', 'max') {
+												padding-bottom: 15px;
+											}
+
+											.price {
+												@include breakpoint('small', 'max') {
+													min-height: 75px;
+												}
+											}
 										}
 									}
 
@@ -452,19 +478,29 @@ body {
 
 			.box-produto {
 
-				border-right: 1px solid #e4e4e4;
+				// border-right: 1px solid #e4e4e4;
 				min-height: auto;
 				padding: 0;
+				border: unset;
+
+				@include breakpoint('small', 'max') {
+					max-width: 100%;
+				}
 
 				h3.nome {
 					font-size: 1.142rem;
 					margin-bottom: 0;
-					> span {
-						display: none;
-					}
 
 					@include breakpoint('small', 'max') {
-						font-size: 1rem;
+						font-size: 12px;
+						align-items: center;
+						display: flex;
+						min-height: 78px;
+						justify-content: center;
+					}
+
+					> span {
+						display: none;
 					}
 				}
 
@@ -509,6 +545,18 @@ body {
 					border: 1px solid #e4e4e4;
 					margin: 2.5%;
 					width: 45%;
+				}
+			}
+
+			tr {
+				@media screen and (max-device-width: 768px) and (orientation: landscape){
+					th {
+						display: none;
+					}
+
+					.diff-highlight-container {
+						display: block;
+					}
 				}
 			}
 		}
