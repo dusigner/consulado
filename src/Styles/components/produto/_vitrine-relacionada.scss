@@ -5,7 +5,10 @@ $gray-dark: #5B5B5B;
 $purple: #8437A8;
 $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
+
+
 .portal-notify-me-ref {
+	margin-bottom: 10px;
 	.notifyme-title {
 		@include rfs(23);
 		color: $green;
@@ -30,18 +33,19 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	}
 }
 #relacionados-top {
+		border-top: 1px solid #ccc;
 		.relacionados-title {
 			display: none;
 		}
 		h2 {
 			@include rfs(18);
 			color: $gray-dark;
-			margin-bottom: 0;
-			margin-top: 20px;
+			margin-bottom: -3px;
+			margin-top: 25px;
 		}
 		.pre-title-relacionados {
 			@include rfs(14);
-			margin: 0;
+			margin: 0 0 26px 0;
 		}
 		.wishlist__container {
 			display: none;
@@ -51,20 +55,29 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			width: 100%;
 		}
 		.prateleira-slider {
-			margin-top: -12px;
+			@include breakpoint('small', 'min') {
+				margin-top: -12px;
+			}
 			h2 {
 				display: none;
 			}
 			.slick-track .slick-slide {
-				margin: 0 16px 0 0;
-				@include breakpoint('small', 'max') {
-					width: 180px !important;
+				margin: 0 10px 0 0;
 			}
-		}
+			.slick-prev {
+				&.slick-disabled {
+					display: none;
+				}
+			}
+			.slick-next  {
+				&.slick-disabled {
+					display: none;
+				}
+			}
 
 		.box-produto {
 			height: 280px;
-			margin: 0 auto;
+			margin: 0;
 			width: 180px;
 			.image {
 				margin: 0 auto;
@@ -85,6 +98,15 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			}
 			.detalhes .prod-info {
 				border: none;
+				.adicional {
+					padding-left: 0;
+					strong {
+						font-weight: 500;
+						.val {
+							font-weight: 500;
+						}
+					}
+				}
 				.adicional:before {
 					display: none;
 				}
@@ -127,9 +149,6 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	@include breakpoint('medium', 'max') {
 	background: #fff;
     position: relative;
-    right: 2px;
-    top: 15px;
     width: 100%;
-    z-index: 99;
 	}
 }

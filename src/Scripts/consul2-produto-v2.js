@@ -73,6 +73,7 @@ Nitro.controller(
 			$('.prod-more-info').hide();
 			$('.cta-containers').hide();
 			$('.secure').hide();
+			$('.product-info-bar').hide();
 		}
 
 		var $reference = $('.reference'),
@@ -96,40 +97,48 @@ Nitro.controller(
 		});
 
 		//Vitrine do Produto indisponível
+
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		vitrineRelacionada.find($('#relacionados-top .prateleira > ul').not('.slick-initialized').slick({
-			slidesToShow: 2,
-			centerPadding: '10px',
+		vitrineRelacionada.append($('#relacionados-top .prateleira > ul').not('.slick-initialized').slick({
+			slidesToShow: 2.2,
+			slidesToScroll: 1,
+			centerPadding: '0px',
 			fade: false,
+			infinite: false,
 			cssEase: 'ease',
 			easing: 'linear',
 			responsive: [
 				{
 					breakpoint: 990,
 					settings: {
-						slidesToShow: 2.1,
-						slidesToScroll: 2,
-						centerPadding: '30px',
-						infinite: false,
-						initialSlide: 1,
-						centerMode: true,
-						index: 0
+						slidesToShow: 2.2,
+						slidesToScroll: 1,
+						centerPadding: '0px',
+						// infinite: false,
+						// initialSlide: 1,
+						// centerMode: true,
+						// index: 0
 					}
 				},
 				{
 					breakpoint: 768,
 					settings: {
-						slidesToShow: 2.1,
-						slidesToScroll: 2,
-						centerPadding: '30px',
+						slidesToShow: 1.5,
+						slidesToScroll: 1,
 						infinite: false,
 						initialSlide: 1,
 						centerMode: true,
+						centerPadding: '0px',
 						index: 0
 					}
 				}
 			]
 		}));
+
+		//mensagem de sucesso
+		const msgDeSucesso = $('.portal-notify-me-ref').find('.sku-notifyme-success .notifyme-success');
+
+		// msgDeSucesso
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
