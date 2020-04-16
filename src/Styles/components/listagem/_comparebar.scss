@@ -278,6 +278,7 @@
 		right: 1rem;
 		top: 24px;
 		z-index: 5;
+		cursor: pointer;
 
 		&:focus { outline: none; }
 
@@ -289,8 +290,17 @@
 		}
 	}
 
+	.compare-bar__buttons {
+		@include breakpoint('small', 'max') {
+			display: flex;
+			justify-content: center;
+		}
+	}
+
 	// Active state
 	&.-is--closed {
+		cursor: pointer;
+
 		@include breakpoint('small', 'max') { max-height: 60px; }
 		max-height: 90px;
 
@@ -325,14 +335,19 @@
 
 		// Buttons
 		.compare-bar__buttons {
-			@include breakpoint('small', 'max') { display: none; }
+			@include breakpoint('small', 'max') {
+				display: none;
+			}
+
 			@include breakpoint('small', 'min') {
-				@include breakpoint('medium', 'max') { transform: translateY(10%); }
 				margin: 0;
 				position: absolute;
 				right: .5rem;
 				top: -10px;
-				//transform: translateY(20%);
+			}
+
+			@include breakpoint('medium', 'max') {
+				transform: translateY(10%);
 			}
 		}
 

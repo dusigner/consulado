@@ -86,7 +86,7 @@ Nitro.module('chaordic', function() {
 	this.init = function(name, productId) {
 		name ? (API.APIPARAMS.name = name) : '';
 		productId ? (API.APIPARAMS.productId = productId) : '';
-		if ($('[chaordic]').length > 0) {
+		if ($('[data-chaordic]').length > 0) {
 			if (!API.APIPARAMS.deviceId) {
 				var checkDeviceId = setInterval(function() {
 					if (window.getCookie('chaordic_browserId')) {
@@ -104,7 +104,7 @@ Nitro.module('chaordic', function() {
 			$window.scroll(self.loadProducts).scroll();
 
 			//Click nos produtos da chaordic devem disparar o tracking antes de redirecionar
-			$(document).on('click', '[chaordic] article a', function(e) {
+			$(document).on('click', '[data-chaordic] article a', function(e) {
 				e.preventDefault();
 
 				var $link = $(this);
@@ -129,7 +129,7 @@ Nitro.module('chaordic', function() {
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
 	 */
 	this.getRecommendations = function() {
-		var $shelfs = $('[chaordic]').not('.chaordic--run');
+		var $shelfs = $('[data-chaordic]').not('.chaordic--run');
 
 		if ($shelfs.length <= 0) {
 			return false;
@@ -206,7 +206,7 @@ Nitro.module('chaordic', function() {
 	 * Função de ação do scroll que acha prateleira e roda carregamento da vitrine quando estiver na tela (cuidado ao confundir $shelf, com $self, ou self hihi)
 	 */
 	this.loadProducts = function() {
-		var $shelfs = $('[chaordic] .js-content-lazy:not(".vtex-load")');
+		var $shelfs = $('[data-chaordic] .js-content-lazy:not(".vtex-load")');
 
 		if ($shelfs.length <= 0) {
 			return false;
@@ -219,7 +219,7 @@ Nitro.module('chaordic', function() {
 			var $self = $(this),
 				itemTop = $self.offset().top,
 				itemBottom = $self.offset().top + $self.outerHeight(),
-				position = $self.parents('[chaordic]').data('chaordic');
+				position = $self.parents('[data-chaordic]').data('chaordic');
 
 			if ($self.is(':visible') && (windowBottom >= itemTop && windowTop <= itemBottom)) {
 				$self.addClass('vtex-load');
@@ -244,7 +244,7 @@ Nitro.module('chaordic', function() {
 							//Rodar modulo de prateleira para montar %OFF e etc
 							Nitro.module('prateleira');
 
-							$self.parents('[chaordic]').addClass('chaordic--runned');
+							$self.parents('[data-chaordic]').addClass('chaordic--runned');
 							//$self.removeClass('js-content-lazy');
 						});
 				}
