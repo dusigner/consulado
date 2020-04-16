@@ -23,10 +23,13 @@
     var html_banners             = document.querySelectorAll('.box-banner');
     window.dataLayer_banners = window.dataLayer_banners || [];
     var banner;
+    var id;
+    var canPersist;
+    var position = 0;
     if(html_banners) {
         for(var i = 0, max = html_banners.length ; i < max ; i+=1) {
-            banner = html_banners[i].querySelector('a img');
-            if(banner) {
+            banner = html_banners[i].querySelector('img');
+            if(banner && html_banners[i].offsetHeight > 0 && !(html_banners[i].classList.contains('slick-cloned'))) {
               html_banners[i].querySelector('a').addEventListener('mousedown', function(event) {
                 window.dataLayer = window.dataLayer || [];
                 var banner,
@@ -38,7 +41,7 @@
                     if(window.dataLayer[j].page.promos) {
                       promos = window.dataLayer[j].page.promos;
                       for(var k = 0, max_impressionPromos = promos.length ; k < max_impressionPromos ; k += 1) {
-                        if(promos[k].id == id) {
+                        if(promos[k].id === id) {
                           banner = promos[k];
                           break;
                         }
@@ -52,12 +55,22 @@
                   'promos': [banner]
                 });
               });
-              window.dataLayer_banners.push({
-                 'id': banner.getAttribute('src').split('/')[5],
-                 'name' : banner.getAttribute('alt'),
-                 'creative' : banner.getAttribute('src').split('/')[6].split('.')[0],
-                 'position' : (i + 1)
-              });
+              id = banner.getAttribute('src').split('/')[5];
+              canPersist = true;
+              for(var db = 0, max_db = window.dataLayer_banners.length ; db < max_db ; db+=1) {
+                if(window.dataLayer_banners[db].id && (window.dataLayer_banners[db].id === id)) {
+                  canPersist = false;
+                }
+              }
+              if(canPersist) {
+                window.dataLayer_banners.push({
+                   'id': id,
+                   'name' : banner.getAttribute('alt'),
+                   'creative' : banner.getAttribute('src').split('/')[6].split('.')[0],
+                   'position' : (position + 1)
+                });
+                position+= 1;
+              }
             }
         }
     }
@@ -107,7 +120,8 @@
               'category_sap': product.categorySAP,
               'color': product.color,
               'fullId': product.fullId,
-              'originalPrice': product.originalPrice
+              'originalPrice': product.originalPrice,
+              'comboName': product.comboName ? product.comboName : ''
             }));
             window.dataLayer.push({
               'event': 'productClick',
@@ -117,17 +131,20 @@
           ids.push(id);
         }
       }
-      if(! firstRun) {
-        if(ids.length) {
-          for(var j = 0, max = window.dataLayer.length ; j < max ; j += 1) {
-            if(window.dataLayer[j].page && window.dataLayer[j].page.impressions) {
-              updateImpressions(ids);
-              break;
+      if(! (document.location.hostname.indexOf('busca') >= 0)) {
+        console.log('its not search');
+        if(! firstRun) {
+          if(ids.length) {
+            for(var j = 0, max = window.dataLayer.length ; j < max ; j += 1) {
+              if(window.dataLayer[j].page && window.dataLayer[j].page.impressions) {
+                updateImpressions(ids);
+                break;
+              }
             }
           }
+        } else {
+          setObserverOnShelf();
         }
-      } else {
-        setObserverOnShelf();
       }
     }
   }
@@ -156,11 +173,18 @@
   function setAddToCartEvent() {
     document.body.addEventListener('mousedown', function(event) {
       var elem = event.target;
-
       if(elem.getAttribute('href') && elem.getAttribute('href').indexOf('/checkout/cart/add') >= 0) {
         var product;
         for(var i = 0, max = window.dataLayer.length ; i < max ; i += 1) {
-          if(window.dataLayer[i].page && window.dataLayer[i].page.product) {
+          if(window.dataLayer[i].page && window.dataLayer[i].page.impressions && window.dataLayer[i].page.impressions.length) {
+            for(var indexImpressions = 0, maxImpressions = window.dataLayer[i].page.impressions.length ; indexImpressions < maxImpressions ; indexImpressions+=1) {
+                console.log(elem.parentElement.parentElement.getAttribute('data-idproduto'));
+                if(window.dataLayer[i].page.impressions[indexImpressions].id_vtex == elem.parentElement.parentElement.getAttribute('data-idproduto')) {
+                  product = window.dataLayer[i].page.impressions[indexImpressions];
+                  break;
+                }
+            }
+          } else if(window.dataLayer[i].page && window.dataLayer[i].page.product) {
             product = window.dataLayer[i].page.product;
             break;
           }
@@ -169,7 +193,8 @@
           'category_sap': product.categorySAP,
           'color': product.color,
           'fullId': product.fullId,
-          'originalPrice': product.originalPrice
+          'originalPrice': product.originalPrice,
+          'comboName': product.comboName ? product.comboName : ''
         }));
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -247,7 +272,7 @@
             'category': window.dataLayer[i].productCategoryName,
             'department': window.dataLayer[i].productDepartmentName,
             'color': document.querySelector('.value-field.Cor') ? document.querySelector('.value-field.Cor').innerText : '',
-            'comboName': ''
+            'comboName': additionalInfo ? additionalInfo.comboName : ''
           };
         }
         break;
@@ -279,13 +304,25 @@
         step = 'home';
         window.dataLayer_pageName = 'home';
         window.product_list_name = 'home';
+        break;
       default:
         step = window.dataLayer_pageName;
     }
 
+    window.productList = window.productList || [];
+    var aux_prod;
+    var aux_combo_name;
     for(var p = 0, max_products = window.productList.length ; p < max_products ; p+=1) {
       if(window.productList[p].list ==  '' || typeof window.productList[p].list == 'undefined') {
         window.productList[p].list = window.product_list_name;
+      }
+      if(document.location.pathname.indexOf('combos') >= 0) {
+        aux_prod = document.querySelector('[data-idproduto="' + window.productList[p].id_vtex + '"]');
+        if(aux_prod) {
+          aux_combo_name = aux_prod.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('data-name-combos');
+          console.log(aux_combo_name);
+          window.productList[p].comboName = aux_combo_name;
+        }
       }
     }
 
@@ -340,13 +377,19 @@
       }
     });
   }
-  if(! document.location.hostname.indexOf('busca') >= 0) {
-    window.pushDataLayer(false);
+
+  window.onload  = function() {
+    init();
   }
   window.onload  = (function() {
     setPromos();
     setProducts(true);
     setAddToCartEvent();
+    if(! (document.location.hostname.indexOf('busca') >= 0)) {
+      setTimeout(function() {
+        window.pushDataLayer(false);
+      }, 1000);
+    }
   });
 
 })(window, document);
