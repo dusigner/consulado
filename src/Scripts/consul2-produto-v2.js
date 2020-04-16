@@ -98,24 +98,34 @@ Nitro.controller(
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 		vitrineRelacionada.find($('#relacionados-top .prateleira > ul').not('.slick-initialized').slick({
-			infinite: false,
-			slidesToShow: 2.2,
-			slidesToScroll: 2.2,
+			slidesToShow: 2,
+			centerPadding: '10px',
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
 			responsive: [
 				{
 					breakpoint: 990,
 					settings: {
-						dots: true,
-						slidesToShow: 2,
-						slidesToScroll: 2
+						slidesToShow: 2.1,
+						slidesToScroll: 2,
+						centerPadding: '30px',
+						infinite: false,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
 					}
 				},
 				{
 					breakpoint: 768,
 					settings: {
-						dots: true,
-						slidesToShow: 1,
-						slidesToScroll: 1
+						slidesToShow: 2.1,
+						slidesToScroll: 2,
+						centerPadding: '30px',
+						infinite: false,
+						initialSlide: 1,
+						centerMode: true,
+						index: 0
 					}
 				}
 			]
