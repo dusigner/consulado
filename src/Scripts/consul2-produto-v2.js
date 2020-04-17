@@ -98,7 +98,7 @@ Nitro.controller(
 
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		const initVitrine = vitrineRelacionada.append($('#relacionados-top'));
+		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
 				initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
 				slidesToShow: 2.2,
 				slidesToScroll: 1,
@@ -130,12 +130,6 @@ Nitro.controller(
 					}
 				]
 			});
-
-		//mensagem de sucesso
-		// const msgDeSucesso = $('.portal-notify-me-ref').find('.sku-notifyme-success .notifyme-success');
-		// initVitrine.prepend(msgDeSucesso);
-
-		// msgDeSucesso
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
