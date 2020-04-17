@@ -6,9 +6,15 @@ $purple: #8437A8;
 $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 
+.produto-indisponivel {
+	#relacionados-top {
+		display: block;
+	}
+}
 
 .portal-notify-me-ref {
 	margin-bottom: 10px;
+	max-width: 100%;
 	.notifyme-title {
 		@include rfs(23);
 		color: $green;
@@ -34,6 +40,10 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 }
 #relacionados-top {
 		border-top: 1px solid #ccc;
+		display: none;
+		margin-top: 22px;
+		max-width: 100%;
+		width: 460px;
 		.relacionados-title {
 			display: none;
 		}
@@ -43,9 +53,13 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			margin-bottom: -3px;
 			margin-top: 25px;
 		}
+		p {
+			padding: 0;
+		}
 		.pre-title-relacionados {
 			@include rfs(14);
 			margin: 0 0 26px 0;
+			padding: 0;
 		}
 		.wishlist__container {
 			display: none;
@@ -63,6 +77,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			}
 			.slick-track .slick-slide {
 				margin: 0 10px 0 0;
+				width: 100% !important;
 			}
 			.slick-prev {
 				&.slick-disabled {
@@ -79,6 +94,9 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			height: 280px;
 			margin: 0;
 			width: 180px;
+			p {
+				padding: 0;
+			}
 			.image {
 				margin: 0 auto;
 				max-width: 100%;

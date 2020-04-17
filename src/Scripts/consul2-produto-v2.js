@@ -70,10 +70,10 @@ Nitro.controller(
 		} else {
 			$('body').addClass('produto-indisponivel');
 			$('.calc-frete').hide();
-			$('.prod-more-info').hide();
-			$('.cta-containers').hide();
 			$('.secure').hide();
-			$('.product-info-bar').hide();
+			$('.cta-containers').hide();
+			$('.prod-more-info').hide();
+
 		}
 
 		var $reference = $('.reference'),
@@ -97,46 +97,43 @@ Nitro.controller(
 		});
 
 		//Vitrine do Produto indisponível
-
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		vitrineRelacionada.append($('#relacionados-top .prateleira > ul').not('.slick-initialized').slick({
-			slidesToShow: 2.2,
-			slidesToScroll: 1,
-			centerPadding: '0px',
-			fade: false,
-			infinite: false,
-			cssEase: 'ease',
-			easing: 'linear',
-			responsive: [
-				{
-					breakpoint: 990,
-					settings: {
-						slidesToShow: 2.2,
-						slidesToScroll: 1,
-						centerPadding: '0px',
-						// infinite: false,
-						// initialSlide: 1,
-						// centerMode: true,
-						// index: 0
+		const initVitrine = vitrineRelacionada.append($('#relacionados-top'));
+				initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
+				slidesToShow: 2.2,
+				slidesToScroll: 1,
+				centerPadding: '0px',
+				fade: false,
+				infinite: false,
+				cssEase: 'ease',
+				easing: 'linear',
+				responsive: [
+					{
+						breakpoint: 990,
+						settings: {
+							slidesToShow: 2.2,
+							slidesToScroll: 1,
+							centerPadding: '0px',
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 1.5,
+							slidesToScroll: 1,
+							infinite: false,
+							initialSlide: 1,
+							centerMode: true,
+							centerPadding: '0px',
+							index: 0
+						}
 					}
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 1.5,
-						slidesToScroll: 1,
-						infinite: false,
-						initialSlide: 1,
-						centerMode: true,
-						centerPadding: '0px',
-						index: 0
-					}
-				}
-			]
-		}));
+				]
+			});
 
 		//mensagem de sucesso
-		const msgDeSucesso = $('.portal-notify-me-ref').find('.sku-notifyme-success .notifyme-success');
+		// const msgDeSucesso = $('.portal-notify-me-ref').find('.sku-notifyme-success .notifyme-success');
+		// initVitrine.prepend(msgDeSucesso);
 
 		// msgDeSucesso
 
@@ -148,6 +145,7 @@ Nitro.controller(
 
 				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
 					$('.product-info-bar').addClass('formas-pagamento-is--active');
+
 				} else {
 					$('.product-info-bar').removeClass('formas-pagamento-is--active');
 					$('.formas-pagamento-container').removeClass('is--active');
