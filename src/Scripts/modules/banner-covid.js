@@ -26,34 +26,32 @@ window.addBannerCovid = function() {
 
     document.querySelectorAll('.saiba-mais-covid').forEach(function(item) {
         item.addEventListener('click', () => {
-            console.log("Click Banner")
-            // dataLayer.push({
-            //     category: 'banner_garantia_de_entrega_covid',
-            //     action: 'saiba_mais',
-            //     label: 'saiba_mais_superior',
-            //     event: 'generic'
-            // });
+            dataLayer.push({
+                category: 'banner_garantia_de_entrega_covid',
+                action: 'saiba_mais',
+                label: 'saiba_mais_superior',
+                event: 'generic'
+            });
         })
     })
 
     var vitrine = document.querySelector('.container.vitrines.covid ul')
 
     if (vitrine) {
-        // dataLayer.push({
-        //     category: 'lp_garantia_de_entrega_covid',
-        //     action: 'viability_sugestão_de_compra',
-        //     label: 'o_que_voce_precisa_na_sua_casa',
-        //     event: 'generic'
-        // })
+        dataLayer.push({
+            category: 'lp_garantia_de_entrega_covid',
+            action: 'viability_sugestão_de_compra',
+            label: 'o_que_voce_precisa_na_sua_casa',
+            event: 'generic'
+        })
 
         vitrine.addEventListener('click', function() {
-            console.log("Click produto")
-            // dataLayer.push({
-            //     category: 'lp_garantia_de_entrega_covid',
-            //     action: 'clique_produto',
-            //     label: 'comprar',
-            //     event: 'generic'
-            // })
+            dataLayer.push({
+                category: 'lp_garantia_de_entrega_covid',
+                action: 'clique_produto',
+                label: 'comprar',
+                event: 'generic'
+            })
         })
     }
 }
