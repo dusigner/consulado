@@ -5,7 +5,7 @@ window.addBannerCovid = function() {
         <div class="hide-small hide-extra-small">
             <div class="covid-shipping-guarantee">
                 <div>
-                    <img src="/arquivos/landing-covid/covid-shipping-guarantee-icon.svg" alt="Icone garantia de entrega" />
+                    <img src="/arquivos/covid-shipping-guarantee-icon.png" alt="Icone garantia de entrega" />
                     <span>Estamos <b>entregando normalmente</b>, conheça as medidas que tomamos para sua <b>segurança</b> contra o Covid-19.</span>
                 </div>
                 <a href="/covid" class="saiba-mais-covid">Saiba mais</a>
@@ -15,7 +15,7 @@ window.addBannerCovid = function() {
     const bannerMobile = `
         <div class="hide-medium hide-large hide-extra-large">
             <div class="covid-shipping-guarantee-mobile">
-                <img src="/arquivos/landing-covid/covid-shipping-guarantee-icon.svg" alt="Icone garantia de entrega" />
+                <img src="/arquivos/covid-shipping-guarantee-icon.png" alt="Icone garantia de entrega" />
                 <span>Estamos <b>entregando normalmente</b></span>
                 <a href="/covid" class="saiba-mais-covid">Saiba mais</a>
             </div>
