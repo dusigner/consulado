@@ -2,6 +2,7 @@
 
 .top-navigation {
 //	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
+	background-color: #ffffff;
 	border-top: 1px solid #e4e4e4;
     bottom: 1px;
 	position: relative;
@@ -410,6 +411,47 @@ $menu-colors: (
 
 			&:hover { background-color: $value; }
 		}
+	}
+}
+
+.covid-shipping-guarantee-mobile {
+	display: flex;
+	width: 100%;
+	max-height: 40px;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-flow: row nowrap;
+	background: #9ACA3C;
+	color: #FFF;
+	font-weight: 500;
+	span {
+		font-size: 14px;
+	}
+	img {
+		position: absolute;
+		opacity: 0.3;
+		left: -20px;
+		top: -10px;
+		max-height: 90px;
+		height: 60px;
+		width: auto;
+	}
+	b {
+		color: #4B4848;
+		font-weight: bold;
+	}
+	a,
+	a:active:focus,
+	a:active,
+	a:hover {
+		background: #FFF;
+		color: #9ACA3C;
+		padding: 4px;
+		max-height: 30px;
+		font-size: 14px;
+		border-radius: 30px;
+		text-align: center;
+		margin: 10px 0px;
 	}
 }
 
