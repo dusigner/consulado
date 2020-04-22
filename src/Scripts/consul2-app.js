@@ -65,6 +65,7 @@ require('modules/customLogin');
 require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
 require('modules/wishlist/wishlist-init');
+require('modules/banner-covid');
 
 const changeCallcenterLinks = () => {
 	if (
