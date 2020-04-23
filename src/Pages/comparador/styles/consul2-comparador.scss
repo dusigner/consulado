@@ -43,6 +43,7 @@ body.compare {
 		.footer-bottom {
 			padding: 1.5em 5%;
 		}
+
 	}
 
 	@media screen and (max-device-width: 768px){
@@ -631,6 +632,8 @@ body {
 							@include breakpoint('small', 'max') {
 								height: auto;
 								width: auto;
+								border: unset;
+								background: unset;
 							}
 						}
 
@@ -791,6 +794,10 @@ body {
 
 							input {
 								margin-right: 7px;
+								height: auto;
+								width: auto;
+								border: unset;
+								background: unset;
 
 								&:after {
 									content: '';
