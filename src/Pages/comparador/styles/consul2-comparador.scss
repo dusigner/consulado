@@ -65,9 +65,9 @@ body.compare {
 			@include breakpoint('small', 'max') {
 				background-color: #fff;
 				margin-bottom: 1rem;
-				padding: 1em .5em 60px .5em;
+				padding: .5em .5em 60px;
 				position: relative;
-				width: calc(100%);
+				width: 100%;
 				z-index: 3;
 			}
 			display: block;
@@ -79,7 +79,7 @@ body.compare {
 				&:not(.remover) {
 					@include breakpoint('small', 'max') {
 						align-items: flex-start;
-						margin-bottom: 15px;
+						margin-bottom: -10px!important;
 						overflow-x: scroll;
 						overflow-y: hidden;
 					}
@@ -101,8 +101,19 @@ body.compare {
 					width: calc(100% / 4);
 					@include breakpoint('small', 'max') {
 						max-width: 100%;
-						width: 100% !important;
-						padding-right: 10px;
+						width: 45% !important;
+						margin: 2.5%;
+						border-radius: 5px;
+					}
+
+					.flag {
+						@include breakpoint('small', 'max') {
+							bottom: 62px;
+							display: inline;
+							height: 35px;
+							right: -4px;
+							width: 35px;
+						}
 					}
 
 					&:first-child {
@@ -129,22 +140,103 @@ body.compare {
 									position: relative;
 									width: 100%;
 
+									@include breakpoint('small', 'max') {
+										border: 1px solid #e4e4e4;
+										margin: 0;
+										max-width: 100%;
+										position: relative;
+										width: 100%;
+										border-radius: 5px;
+									}
+
 									& > article {
 										height: auto;
 										min-height: inherit;
 										border: unset;
+
+										@include breakpoint('small', 'max') {
+											height: auto;
+											min-height: inherit;
+											width: auto;
+											padding: 0 11px;
+											border-radius: 5px;
+										}
 
 										.detalhes {
 											height: auto;
 											min-height: inherit;
 
 											@include breakpoint('small', 'max') {
-												padding-bottom: 15px;
+												padding-bottom: 10px;
+											}
+
+											.image {
+												@include breakpoint('small', 'max') {
+													display: block;
+													line-height: 0;
+													position: relative;
+													text-align: center;
+												}
+											}
+
+											.wishlist__container {
+												@include breakpoint('small', 'max') {
+													height: auto;
+												}
+											}
+
+											.prod-info {
+												@include breakpoint('small', 'max') {
+													border-top: 1px solid #f4f2f1;
+													line-height: normal;
+													margin-top: .5em;
+													padding-top: .3em;
+												}
 											}
 
 											.price {
 												@include breakpoint('small', 'max') {
 													min-height: 75px;
+													text-align: center;
+												}
+
+												.de {
+													@include breakpoint('small', 'max') {
+														font-size: calc(.6rem + .09412vw);
+													}
+												}
+
+												.por {
+													@include breakpoint('small', 'max') {
+														color: #702f8f;
+														font-size: 12px;
+														font-weight: 500;
+														line-height: 1.2;
+
+														.off {
+															font-size: .625rem;
+															border-radius: 100px;
+															color: #fff;
+															position: absolute;
+															right: 4px;
+															top: 75px;
+															font-size: 8px;
+															padding: 4px 10px;
+															z-index: 1;
+
+															&:not(:empty)+.product-with-discount {
+																top: 98px;
+																right: 3px;
+																font-size: 8px;
+																padding: 4px 10px;
+															}
+														}
+
+														.val {
+															font-size: calc(.65rem + .65882vw);
+															margin: 0 0 .4em;
+														}
+													}
 												}
 											}
 										}
@@ -154,6 +246,29 @@ body.compare {
 										@include breakpoint('extra-small', 'max') { min-height: 90px; }
 										font-size: 14px;
 										min-height: 60px;
+
+										@include breakpoint('small', 'max') {
+											font-size: 12px!important;
+											min-height: 60px!important;
+    										margin-bottom: 10px;
+										}
+									}
+
+									@include breakpoint('small', 'max') {
+										.remove-button {
+											background: #bbb;
+											border-radius: 100%;
+											cursor: pointer;
+											display: block;
+											height: 18px;
+											position: absolute;
+											right: 5px;
+											top: 5px;
+											-webkit-transition: all .2s ease;
+											transition: all .2s ease;
+											width: 18px;
+											z-index: 1;
+										}
 									}
 
 									.features { display: none }
@@ -166,6 +281,32 @@ body.compare {
 										.parcelado,
 										.from {
 											margin-top: auto;
+										}
+									}
+
+									@include breakpoint('small', 'max') {
+										overflow: hidden;
+										min-height: 49px!important;
+										margin: 5px 0;
+										font-size: 11px!important;
+										text-align: left;
+
+										.discount-boleto {
+											font-size: .50rem!important;
+											color: #736c6b;
+											padding-left: 20px;
+											position: relative;
+
+											span {
+												font-size: .50rem!important;
+											}
+										}
+
+										.adicional {
+											font-size: .50rem!important;
+											color: #736c6b;
+											padding-left: 20px;
+											position: relative;
 										}
 									}
 								}
@@ -723,6 +864,11 @@ body {
 		justify-content: space-between;
 		margin-bottom: 2rem;
 		margin-top: 3rem;
+
+		@include breakpoint('small', 'max') {
+			margin-bottom: 0!important;
+			margin-top: 2rem!important;
+		}
 	}
 }
 
@@ -772,6 +918,99 @@ body {
 			}
 			.form-check {
 				margin: 0 !important;
+			}
+		}
+	}
+}
+
+@include breakpoint('small', 'max') {
+	body {
+		.corpo-comparacao {
+			table {
+				thead {
+					tr {
+						th.diff-highlight-container {
+							bottom: 0;
+							background: #702F8F;
+							border-radius: inherit;
+							width: 100%!important;
+						}
+
+						> th {
+							// border: 1px solid #e4e4e4;
+							margin: 2.5%;
+							width: 45%;
+							border-radius: 5px;
+							background: #fff;
+							border-right: 0;
+							border: unset;
+
+							.diff-highlight {
+								display: flex;
+								align-items: center;
+								border: unset;
+								padding: 0;
+								height: 40px;
+
+								> div {
+									width: 70%;
+									display: flex;
+								}
+
+								.form-check {
+									display: flex;
+									align-items: center;
+
+									h6 {
+										color: #fff;
+										font-weight: 100;
+									}
+
+									input {
+										margin-right: 0;
+
+										&:after {
+											content: '';
+											background: #702f8e;
+											border: 1px solid #BBBBBB;
+											width: 13px;
+											height: 13px;
+											display: block;
+											border-radius: 50%;
+										}
+
+										&:checked {
+											&:after {
+												background: #fff;
+												box-shadow: 0px 0px 0px 1px #702f8e, 0px 0px 0px 2px #702f8e, 0px 0px 0px 3px #fff;
+												z-index: 5;
+												border: unset;
+											}
+										}
+									}
+								}
+
+								> span {
+									white-space: nowrap;
+									background: #5C2775;
+									color: #fff;
+									height: 39px;
+									display: flex;
+									font-size: 0;
+									width: auto;
+									padding-right: 10px!important;
+									align-items: center;
+									padding-left: 10px !important;
+
+									&:after {
+										content: 'Comparar destacando:';
+										font-size: 12px;
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
