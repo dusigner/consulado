@@ -616,6 +616,14 @@ body {
 						padding: 18px 0;
 					}
 
+					> div {
+						@include breakpoint('small', 'max') {
+							width: 70%;
+							display: flex;
+							align-items: center;
+						}
+					}
+
 					.form-check {
 						align-items: center;
 						display: inline-flex;
@@ -630,10 +638,12 @@ body {
 							width: 20px;
 
 							@include breakpoint('small', 'max') {
-								height: auto;
-								width: auto;
-								border: unset;
-								background: unset;
+								height: 0!important;
+								width: 0!important;
+								border: unset!important;
+								background: unset!important;
+								margin-bottom: 13px!important;
+								margin-right: 20px!important;
 							}
 						}
 
@@ -1034,6 +1044,14 @@ body {
 
 									input {
 										margin-right: 0;
+										@include breakpoint('small', 'max') {
+											height: 0;
+											width: 0;
+											border: unset;
+											background: unset;
+											margin-bottom: 13px;
+											margin-right: 14px;
+										}
 
 										&:after {
 											content: '';
