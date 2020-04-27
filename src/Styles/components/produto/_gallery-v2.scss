@@ -296,7 +296,7 @@
 		}
 	}
 }
-@include breakpoint(small, 'min') {
+@include breakpoint(medium, 'min') {
 	.position-sticky-prod {
 		position: sticky;
 		top: 15px;

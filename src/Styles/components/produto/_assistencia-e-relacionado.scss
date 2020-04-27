@@ -11,53 +11,47 @@
 }
 
 .product {
-	&-assist {
-		@extend %flex-center;
-		@include breakpoint(small, 'max') { padding: 20px 0; }
-		flex-wrap: wrap;
-		margin: 0 auto;
-		padding: 60px 0 120px;
-		.container {
-			> h2 {
-				@include breakpoint(small, 'max') {
-					text-align: left;
-				}
-				@include rfs(28);
-				color: #5B5B5B;
-				font-weight: bold !important;
-				line-height: 1.1;
-				margin: 8px 0;
-				width: 100%;
-			}
-			> p {
-				@include breakpoint(small, 'max') {
-					text-align: left;
-				}
-				@include rfs(14);
-				font-weight: 500;
-				margin: 0 auto;
-				width: 100%;
-			}
-		}
-		&-row {
-			@extend %flex-center;
-			@include breakpoint(small, 'max') {
-				flex-wrap: wrap;
-				margin-top: 25px;
-			}
-			flex-wrap: nowrap;
-			justify-content: space-between;
-			margin-top: 40px;
-			width: 100%;
-		}
-		&-block {
-			@extend %flex-center;
-			@include breakpoint(small, 'max') {
-				padding: 15px 0;
-				width: 100%;
-			}
-			flex-wrap: wrap;
-			padding: 0 5px;
+    &-assist {
+        @extend %flex-center;
+        flex-wrap: wrap;
+        margin: 60px auto 120px;
+        > h2 {
+            @include breakpoint(small, 'max') {
+                @include rfs(20);
+                text-align: left;
+            }
+            @include rfs(28);
+            font-weight: bold !important;
+            line-height: 1.1;
+            margin: 8px 0;
+            width: 100%;
+        }
+        > p {
+            @include breakpoint(small, 'max') {
+                text-align: left;
+            }
+            margin: 0 auto;
+            width: 100%;
+        }
+        &-row {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                flex-wrap: wrap;
+                margin-top: 25px;
+            }
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin-top: 40px;
+            width: 100%;
+        }
+        &-block {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                padding: 15px 0;
+                width: 100%;
+            }
+            flex-wrap: wrap;
+            padding: 0 5px;
 
 			&.parts {
 				cursor: not-allowed;

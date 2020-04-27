@@ -4,26 +4,17 @@
 
 <article class="box-produto $product.CategoryName #if($product.HasBestPrice) withDe #else outDe #end #if($product.NumbersOfInstallment > 1) withAdicional #else outAdicional  #end #if ($product.IsInStock) comEstoque #else semEstoque #end" data-idproduto="$id" data-department="$product.DepartmentName" data-category="$product.CategoryName" data-percent="$product.ListPriceMinusBestPriceInPercent">
 	<div class="detalhes">
-		<div class="product-infos-wrap">
-			<a href="$uri" title="$escapedName" class="image">
-				<!-- <span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span> -->
-				<!-- <span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span> -->
-				<span class="img backup">$product.GetImageTag(210, 210)</span>
-				$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
+		<a href="$uri" title="$escapedName" class="image">
+			<!-- <span class="img main">$product.GetImageTag(345, 345, "prateleiraPrincipal")</span> -->
+			<!-- <span class="img hover">$product.GetImageTag(345, 345, "prateleiraPerspectiva")</span> -->
+			<span class="img backup">$product.GetImageTag(210, 210)</span>
+			$product.ProductField(<!-- @echo shelfProductFieldSelos -->)
 
-				<div class="FlagsHightLight">
-					$product.DiscountHightLight
-					$product.HightLight
-				</div>
-			</a>
-			<div class="wishlist__container">
-				<div class="wishlist__button" data-idproduto="$id" title="Adicionar aos favoritos">
-					<i></i>
-					<div class="wishlist__loader"><div></div><div></div><div></div><div></div></div>
-					<span>Adicionar aos favoritos</span>
-				</div>
+			<div class="FlagsHightLight">
+				$product.DiscountHightLight
+				$product.HightLight
 			</div>
-		</div>
+		</a>
 
 		<div class="hide">$product.InsertSku</div>
 
