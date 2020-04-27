@@ -56,6 +56,9 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	margin-top: 22px;
 	max-width: 100%;
 	width: 460px;
+	.promo-destaque  {
+		display: none;
+	}
 	.relacionados-title {
 		display: none;
 	}
@@ -123,6 +126,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			}
 		}
 		.flag,
+		.promo-destaque,
 		.ts-shelf-container {
 			display: none;
 		}
