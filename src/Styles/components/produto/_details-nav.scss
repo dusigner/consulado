@@ -1,3 +1,16 @@
+$bg-light-gray: #f4f2f1;
+$bg-gray: #FCFCFC;
+$color-box-shadow: #000029;
+$color-dark-gray: #736C6B;
+$color-light-blue: #0FB6DE;
+$color-white: #fff;
+
+%flex-center {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .prod-details-nav {
 	background-color: #f4f2f1;
 	min-height: 95px;

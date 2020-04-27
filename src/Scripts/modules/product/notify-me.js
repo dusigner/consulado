@@ -14,7 +14,7 @@ Nitro.module('notify-me', function() {
 	notifyMeButton
 		.parent()
 		.append(
-			'<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
+			// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
 		);
 
 	notifyMeButton.val('Avise-me');

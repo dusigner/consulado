@@ -39,25 +39,25 @@
 				width: 100%;
 			}
 		}
-		&-row {
-			@extend %flex-center;
-			@include breakpoint(small, 'max') {
-				flex-wrap: wrap;
-				margin-top: 25px;
-			}
-			flex-wrap: nowrap;
-			justify-content: space-between;
-			margin-top: 40px;
-			width: 100%;
-		}
-		&-block {
-			@extend %flex-center;
-			@include breakpoint(small, 'max') {
-				padding: 15px 0;
-				width: 100%;
-			}
-			flex-wrap: wrap;
-			padding: 0 5px;
+        &-row {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                flex-wrap: wrap;
+                margin-top: 25px;
+            }
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin-top: 40px;
+            width: 100%;
+        }
+        &-block {
+            @extend %flex-center;
+            @include breakpoint(small, 'max') {
+                padding: 15px 0;
+                width: 100%;
+            }
+            flex-wrap: wrap;
+            padding: 0 5px;
 
 			&.parts {
 				cursor: not-allowed;

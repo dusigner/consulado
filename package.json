@@ -1,7 +1,7 @@
 {
 	"name": "consul",
 	"accountName": "consul",
-	"version": "v6.83.89",
+	"version": "v6.83.90",
 	"author": "Jussi Platform Team",
 	"private": true,
 	"secureUrl": true,
@@ -103,8 +103,7 @@
 		"deploy-qa-pj-pages": "git checkout stage && git pull && gulp deploy --account=consulqa2 --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos && git add . && git commit -m 'deploy-qa-pj-pages' && git push",
 		"create-controller": "node node_modules/jussitb createController",
 		"create-module": "node node_modules/jussitb createModule",
-		"create-page": "node node_modules/jussitb createPage --account consul",
-		"test": "node node_modules/karma/bin/karma start karma.conf.js"
+		"create-page": "node node_modules/jussitb createPage --account consul"
 	},
 	"husky": {
 		"hooks": {
