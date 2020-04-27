@@ -108,12 +108,14 @@
 		if (this.settings.static && $(e.target).is('.close')) {
 			this.modal.fadeOut(this.settings.close);
 			triggerEventClose(this.element);
-			
+			window.location.href = '/';
+
 		} else if ((!e || $(e.target).is(this.modal) || $(e.target).is('.close') || e.keyCode === 27) && !this.settings.static) {
 			this.modal.fadeOut(this.settings.close);
 			triggerEventClose(this.element);
+			window.location.href = '/';
 		}
-		
+
 	};
 
 	Modal.prototype.destroy = function(e) {
