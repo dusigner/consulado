@@ -115,10 +115,6 @@
 			triggerEventClose(this.element);
 			window.location.href = '/';
 		}
-<<<<<<< HEAD
-
-=======
->>>>>>> 75157b2c982df494855738fab8caa7bb49f2fbcf
 	};
 
 	Modal.prototype.destroy = function(e) {
