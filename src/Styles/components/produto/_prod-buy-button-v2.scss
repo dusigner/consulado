@@ -31,6 +31,10 @@
 	}
 }
 
+.product-info-bar {
+	display: none;
+}
+
 
 #BuyButton {
 	@include breakpoint('medium', 'max') {
