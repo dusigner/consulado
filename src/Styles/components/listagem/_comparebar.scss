@@ -335,6 +335,8 @@
 				position: absolute;
 				right: .5rem;
 				top: -10px;
+				display: flex;
+				justify-content: center;
 			}
 
 			@include breakpoint('medium', 'max') {
