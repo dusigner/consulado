@@ -22,6 +22,13 @@ body.produto {
 	}
 }
 
+body.produto-disponivel,
+body.produto-indisponivel {
+	.prod-info {
+		display: block;
+	}
+}
+
 .prod-info {
 	@include breakpoint('medium', 'max') {
 		display: flex;
@@ -29,6 +36,7 @@ body.produto {
 	}
 	padding: 0;
 	position: relative;
+	display: none;
 
 	.prod-selos {
 		display: none!important;

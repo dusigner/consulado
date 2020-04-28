@@ -67,6 +67,7 @@ Nitro.controller(
 		// botão comprar estiver exibindo na página
 		if ($('#BuyButton .buy-button').is(':visible')) {
 			$('.secure').show();
+			$('body').addClass('produto-disponivel');
 		} else {
 			$('body').addClass('produto-indisponivel');
 			$('.calc-frete').hide();
