@@ -1,7 +1,7 @@
 'use strict';
 
-Nitro.controller('compare', function() {	
-	
+Nitro.controller('compare', function() {
+
 	var self = this,
 		$titlePage = $('.compare-produtos-wrapper > h2'),
 		$body = $('body'),
@@ -24,10 +24,10 @@ Nitro.controller('compare', function() {
 			if(!$(this).hasClass('Características') && !$(this).hasClass('remover')) {
 				$(this).remove();
 			}
-			
+
 		});
 	};
-	
+
 	this.revemoveVoltage = () => {
 		$('.corpo-comparacao table tbody tr').each(function() {
 			let voltagem = $(this).find('th').text();
@@ -141,9 +141,9 @@ Nitro.controller('compare', function() {
 
 				$(window).on('scroll', function() {
 					$(this).scrollTop() > 360 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
+					$(this).scrollTop() > 360 ? $body.addClass('-is-mobile--active') : $body.removeClass('-is-mobile--active');
 					$(this).scrollTop() >= 100 && $('thead.dadosCompar').length === 1 ? $('thead.dadosCompar').clone().prependTo('body').addClass('barraFixa') : '';
 				});
-
 				// $thDiff.addClass('d-none');
 				// $corpoComparacao.find('table thead').append(`<tr>HEHEHEH</tr>`);
 
@@ -158,7 +158,7 @@ Nitro.controller('compare', function() {
 						txtStr = $('.title .link').text(),
 						firstWord = txtStr.split(' ')[0],
 						compareBar = $('.corpo-comparacao thead tr:nth-child(2)'),
-						qntCompare = $('.corpo-comparacao th .produto').length;					
+						qntCompare = $('.corpo-comparacao th .produto').length;
 
 					$(this).scrollTop() >= 460 ? $body.addClass('-is-desktop--active') : $body.removeClass('-is-desktop--active');
 					$(this).scrollTop() >= 160 && $('thead.dadosCompar').length === 1 ? $('thead.dadosCompar').clone().prependTo('body').addClass('barraFixa') : '';
