@@ -226,6 +226,8 @@
 			text-align: center;
 			top: calc(100% + 5px);
 			width: 100%;
+			display: flex;
+			justify-content: center;
 		}
 		margin-top: 1.5rem;
 
@@ -335,8 +337,6 @@
 				position: absolute;
 				right: .5rem;
 				top: -10px;
-				display: flex;
-				justify-content: center;
 			}
 
 			@include breakpoint('medium', 'max') {
