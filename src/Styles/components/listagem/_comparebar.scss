@@ -278,7 +278,6 @@
 		right: 1rem;
 		top: 24px;
 		z-index: 5;
-		cursor: pointer;
 
 		&:focus { outline: none; }
 
@@ -290,16 +289,8 @@
 		}
 	}
 
-	.compare-bar__buttons {
-		@include breakpoint('small', 'max') {
-			display: flex;
-			justify-content: center;
-		}
-	}
-
 	// Active state
 	&.-is--closed {
-		cursor: pointer;
 
 		@include breakpoint('small', 'max') { max-height: 60px; }
 		max-height: 90px;
