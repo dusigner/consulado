@@ -31,6 +31,10 @@
 	}
 }
 
+.product-info-bar {
+	display: none;
+}
+
 
 #BuyButton {
 	@include breakpoint('medium', 'max') {
@@ -38,6 +42,11 @@
 		right: 2px;
 		top: 15px;
 		width: 50%;
+	}
+
+	@include breakpoint('small', 'max') {
+		width: 100%;
+		position: relative;
 	}
 
 	.secure {
