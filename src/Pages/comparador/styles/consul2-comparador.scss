@@ -35,7 +35,6 @@ body.compare {
 		}
 	}
 
-<<<<<<< HEAD
 	@include breakpoint('small', 'max') {
 		.container {
 			max-width: 100%!important;
@@ -54,8 +53,6 @@ body.compare {
 	}
 }
 
-=======
->>>>>>> bugfix/ICD-1112_compare-product-layout
 .corpo-comparacao {
 	&.highlight {
 		&-eq {
@@ -93,13 +90,9 @@ body.compare {
 				&:not(.remover) {
 					@include breakpoint('small', 'max') {
 						align-items: flex-start;
-<<<<<<< HEAD
 						margin-bottom: -10px!important;
 						overflow-x: scroll;
 						overflow-y: hidden;
-=======
-						margin-bottom: 15px;
->>>>>>> bugfix/ICD-1112_compare-product-layout
 					}
 					align-items: flex-end;
 					display: flex;
@@ -119,7 +112,6 @@ body.compare {
 					width: calc(100% / 4);
 					@include breakpoint('small', 'max') {
 						max-width: 100%;
-<<<<<<< HEAD
 						width: 45% !important;
 						margin: 2.5%;
 						border-radius: 5px;
@@ -133,8 +125,6 @@ body.compare {
 							right: -7px;
 							width: 35px;
 						}
-=======
->>>>>>> bugfix/ICD-1112_compare-product-layout
 					}
 
 					&:first-child {
@@ -168,7 +158,6 @@ body.compare {
 									& > article {
 										height: auto;
 										min-height: inherit;
-<<<<<<< HEAD
 										border: unset;
 
 										@include breakpoint('small', 'max') {
@@ -255,11 +244,6 @@ body.compare {
 														}
 													}
 												}
-=======
-										.detalhes {
-											height: auto;
-											min-height: inherit;
->>>>>>> bugfix/ICD-1112_compare-product-layout
 											}
 										}
 									.nome {
@@ -895,7 +879,6 @@ body {
 					}
 				}
 			}
-<<<<<<< HEAD
 
 			tr {
 				background: #F8F8F8;
@@ -910,8 +893,6 @@ body {
 					}
 				}
 			}
-=======
->>>>>>> master
 		}
 
 		.corpo-comparacao table thead {
