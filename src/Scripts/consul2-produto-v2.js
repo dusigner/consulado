@@ -96,7 +96,6 @@ Nitro.controller(
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
 
-<<<<<<< HEAD
 			if (!$('body').hasClass('produto-indisponivel')) {
 				$(window).scroll(function(e) {
 					e.preventDefault();
@@ -111,15 +110,6 @@ Nitro.controller(
 					}
 				})
 			}
-=======
-				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
-					$('.product-info-bar').addClass('formas-pagamento-is--active');
-				} else {
-					$('.product-info-bar').removeClass('formas-pagamento-is--active');
-					$('.formas-pagamento-container').removeClass('is--active');
-				}
-			});
->>>>>>> bugfix/ICD-1112_compare-product-layout
 		}
 
 		const $document = $(document),
