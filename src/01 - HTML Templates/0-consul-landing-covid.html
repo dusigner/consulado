@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Loja Consul - Garantia de entrega</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="covid">
+
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<div class="container-lp-covid">
+		<div class="banner">
+			<img class="banner-img" alt="Banner Covid 1" src="/arquivos/b1.png" />
+			<img class="banner-img hide-extra-small" alt="Banner Covid 2" src="/arquivos/b2.png" />
+		</div>
+
+		<div class="container content">
+			<p class="title">Estamos adotando medidas bem pensadas para garantirmos uma comunicação transparente e a
+				melhor experiência possível a <b>você, consumidor.</b></p>
+			<div class="container-item">
+				<img alt="Ícone Protocolo de prevenção" src="/arquivos/topic-1.png" />
+				<p>Adotamos um <b>novo protocolo de prevenção nas fábricas</b>, incluindo distância física mínima entre
+					operadores.</p>
+			</div>
+			<div class="container-item">
+				<img alt="Ícone prevenção e higienização" src="/arquivos/topic-2.png" />
+				<p>Orientamos frequentemente nossas transportadoras e seus colaboradores com dicas de <b>prevenção e
+						higienização</b>.</p>
+			</div>
+			<div class="container-item">
+				<img alt="Ícone operadores remotos" src="/arquivos/topic-3.png" />
+				<p>Montamos nossa central de atendimento com <b>operadores remotos</b>.</p>
+			</div>
+			<div class="container-item">
+				<img alt="Ícone compromisso com os prazos de entrega" src="/arquivos/topic-4.png" />
+				<p>Reforçamos nosso <b>compromisso com os prazos de entrega</b>, de acordo com diretrizes estaduais.</p>
+			</div>
+		</div>
+
+		<div class="dicas-container">
+			<div class="container">
+				<div class="icone-dicas-container">
+					<img alt="Ícone dicas de entrega" src="/arquivos/ico-entregasegura.png" />
+					<span>Dicas para uma entrega segura</span>
+				</div>
+				<div class="itens-dicas-container">
+					<p>Higienize suas mãos com sabonete ou álcool em gel antes e depois de receber seus produtos.</p>
+					<p>Não esqueça de descartar suas embalagens!</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="container container-canais-atendimento">
+			<div class="card-canais-atendimento">
+
+				<h3>Para saber mais, acesse nossos canais de atendimento:</h3>
+
+				<div>
+					<div>
+						<h5>CENTRAL TELEFÔNICA</h5>
+						<p>(11) 3003 0777 <br /> Capitais e regiões metropolitanas</p>
+						<p>0800 970 0777 <br />Outras localidades</p>
+						<p>Segunda-feira à sábado, de 8 às 22h (exceto feriados)</p>
+					</div>
+					<div>
+						<h5>CENTRAL DE ATENDIMENTO ONLINE</h5>
+						<a href="https://consul.custhelp.com/">Acesse aqui</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<h3>Nossas entregas estão funcionando <b>normalmente</b>, <b>compre</b> com <b>segurança!</b></h3>
+			<section class="container vitrines covid">
+				<div class="prateleira-slider">
+					<vtex:contentPlaceHolder id="VitrineLandingCovid" />
+				</div>
+			</section>
+		</div>
+
+	</div>
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+	<script>
+		if (window.addBannerCovid) window.addBannerCovid()
+	</script>
+</body>
+
+</html>

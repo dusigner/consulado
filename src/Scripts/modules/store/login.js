@@ -25,7 +25,6 @@ Nitro.module('login', function() {
 		});
 
 		$form.fieldEmail = $form.find('input[name="email"]');
-
 		this.redirect();
 		this.init();
 	};

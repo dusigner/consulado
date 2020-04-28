@@ -165,7 +165,7 @@ body {
 			}
 
 			.minorButton {
-				@include breakpoint ('small', 'max') { width: 30% }
+				//@include breakpoint ('small', 'max') { width: 30% }
 
 				.discount-item {
 					@include breakpoint ('small', 'max') {
