@@ -9,7 +9,7 @@ Nitro.module('static-banner', function() {
 				autoplaySpeed: 7000,
 				mobileFirst: true,
 				dots: true,
-				arrows: false
+				arrows: false,
 			});
 	};
 

@@ -70,10 +70,6 @@ Nitro.controller(
 		} else {
 			$('body').addClass('produto-indisponivel');
 			$('.calc-frete').hide();
-			$('.secure').hide();
-			$('.cta-containers').hide();
-			$('.prod-more-info').hide();
-
 		}
 
 		var $reference = $('.reference'),
@@ -96,40 +92,6 @@ Nitro.controller(
 			}
 		});
 
-		//Vitrine do Produto indisponível
-		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
-				initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
-				slidesToShow: 2.2,
-				slidesToScroll: 1,
-				centerPadding: '0px',
-				fade: false,
-				infinite: false,
-				cssEase: 'ease',
-				easing: 'linear',
-				responsive: [
-					{
-						breakpoint: 990,
-						settings: {
-							slidesToShow: 2.2,
-							slidesToScroll: 1,
-							centerPadding: '0px',
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 1.5,
-							slidesToScroll: 1,
-							infinite: false,
-							initialSlide: 1,
-							centerMode: true,
-							centerPadding: '0px',
-							index: 0
-						}
-					}
-				]
-			});
 
 			const formProduto = $('body').find('.produto-indisponivel');
 				  formProduto.find($('.notifyme-title-div')).append(`
@@ -172,7 +134,6 @@ Nitro.controller(
 
 				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
 					$('.product-info-bar').addClass('formas-pagamento-is--active');
-
 				} else {
 					$('.product-info-bar').removeClass('formas-pagamento-is--active');
 					$('.formas-pagamento-container').removeClass('is--active');
