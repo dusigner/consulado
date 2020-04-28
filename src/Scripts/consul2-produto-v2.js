@@ -95,19 +95,23 @@ Nitro.controller(
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
-			$(window).scroll(function(e) {
-				e.preventDefault();
-				var _pos = $(window).scrollTop();
 
-				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
-					$('.product-info-bar').addClass('formas-pagamento-is--active');
-				} else {
-					$('.product-info-bar').removeClass('formas-pagamento-is--active');
-					$('.formas-pagamento-container').removeClass('is--active');
-				}
-			});
+			if (!$('body').hasClass('produto-indisponivel')) {
+				$('.product-info-bar').css('display', 'block');
+				$(window).scroll(function(e) {
+					e.preventDefault();
+					var _pos = $(window).scrollTop();
+
+					if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
+						$('.product-info-bar').addClass('formas-pagamento-is--active');
+
+					} else {
+						$('.product-info-bar').removeClass('formas-pagamento-is--active');
+						$('.formas-pagamento-container').removeClass('is--active');
+					}
+				})
+			}
 		}
-
 		const $document = $(document),
 			$cepInput = '#calculoFrete .prefixo input';
 

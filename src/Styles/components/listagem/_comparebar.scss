@@ -161,7 +161,7 @@
 		&-name {
 			@include breakpoint('small', 'max') {
 				display: inline-block;
-				font-size: 1rem;
+				font-size: 12px;
 				padding: .5rem;
 				vertical-align: middle;
 				width: calc(100% - 85px);
