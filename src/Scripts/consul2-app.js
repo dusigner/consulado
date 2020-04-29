@@ -66,6 +66,7 @@ require('modules/isTelevendasCorp');
 require('modules/store/callcenter');
 require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
+require('modules/logoffUser');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -111,7 +112,8 @@ Nitro.setup(
 		'landing-gae-compra-interno',
 		'chatHome',
 		'isTelevendasCorp',
-		'callcenter'
+		'callcenter',
+		'logoffUser'
 	],
 	function() {
 		var path = window.location.pathname;
