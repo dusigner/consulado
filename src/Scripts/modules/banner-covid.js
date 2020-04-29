@@ -2,9 +2,9 @@
 
 require('../vendors/slick');
 
-var alreadySendEvent = false
+let alreadySendEvent = false
 
-window.addBannerCovid = function() {
+window.addBannerCovid = () => {
     const bannerDesk = `
         <div class="hide-small hide-extra-small">
             <div class="covid-shipping-guarantee">
@@ -28,7 +28,7 @@ window.addBannerCovid = function() {
     $('body').prepend($.parseHTML(bannerDesk))
     $('header').prepend($.parseHTML(bannerMobile))
 
-    document.querySelectorAll('.saiba-mais-covid').forEach(function(item) {
+    document.querySelectorAll('.saiba-mais-covid').forEach(item => {
         item.addEventListener('click', () => {
             dataLayer.push({
                 category: 'banner_garantia_de_entrega_covid',
@@ -39,17 +39,19 @@ window.addBannerCovid = function() {
         })
     })
 
-    function isScrolledIntoView(elem) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
+    const isScrolledIntoView = elem => {
+        if (elem) {
+            var docViewTop = $(window).scrollTop();
+            var docViewBottom = docViewTop + $(window).height();
 
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
+            var elemTop = $(elem).offset().top;
+            var elemBottom = elemTop + $(elem).height();
 
-        return ((elemBottom - 100 <= docViewBottom) && (elemTop - 100 >= docViewTop));
+            return ((elemBottom - 100 <= docViewBottom) && (elemTop - 100 >= docViewTop));
+        }
     }
 
-    document.addEventListener('scroll', function() {
+    document.addEventListener('scroll', () => {
         if (isScrolledIntoView(document.querySelector('.container.vitrines.covid ul li')) && !alreadySendEvent) {
             dataLayer.push({
                 category: 'lp_garantia_de_entrega_covid',
@@ -63,7 +65,7 @@ window.addBannerCovid = function() {
 
     var ul = document.querySelector('.container.vitrines.covid ul')
 
-    ul.addEventListener('click', function() {
+    ul.addEventListener('click', () => {
         dataLayer.push({
             category: 'lp_garantia_de_entrega_covid',
             action: 'clique_produto',
@@ -141,4 +143,41 @@ window.addBannerCovid = function() {
             }
         ]
     })
+}
+
+window.addBannerCovidPosVenda = () => {
+    const banner = $.parseHTML(
+        `<div class="container" style="margin-top: 20px;">
+            <img
+                id="bannerCovidPosVenda"
+                class="hide-extra-small"
+                src="/arquivos/Banner-Covid-Posvenda.png"
+                style="max-width: 100%"
+            />
+            <img
+                id="bannerCovidPosVenda"
+                class="hide-small hide-medium hide-large hide-extra-large"
+                src="/arquivos/Banner-Covid-Posvenda-mobile.png"
+                style="max-width: 100%"
+            />
+        </div>`)[0]
+
+    const appTop = document.querySelector('#app-top')
+    const myOrders = document.querySelector('#myorders')
+
+    if (appTop) appTop.append(banner)
+    if (myOrders) myOrders.prepend(banner)
+
+    document.querySelectorAll('#bannerCovidPosVenda').forEach(banner => {
+        banner.addEventListener('click', () => {
+            console.log("clicou no banner")
+            // dataLayer.push({
+            //     category: 'lp_garantia_de_entrega_covid',
+            //     action: 'clique_produto',
+            //     label: 'comprar',
+            //     event: 'generic'
+            // })
+        })
+    })
+
 }
