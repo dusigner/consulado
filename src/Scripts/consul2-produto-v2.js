@@ -112,7 +112,6 @@ Nitro.controller(
 				})
 			}
 		}
-
 		const $document = $(document),
 			$cepInput = '#calculoFrete .prefixo input';
 
