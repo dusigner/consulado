@@ -168,16 +168,41 @@ window.addBannerCovidPosVenda = () => {
     if (appTop) appTop.append(banner)
     if (myOrders) myOrders.prepend(banner)
 
-    document.querySelectorAll('#bannerCovidPosVenda').forEach(banner => {
-        banner.addEventListener('click', () => {
-            console.log("clicou no banner")
-            // dataLayer.push({
-            //     category: 'lp_garantia_de_entrega_covid',
-            //     action: 'clique_produto',
-            //     label: 'comprar',
-            //     event: 'generic'
-            // })
+    const btnImprimir = document.querySelector('#print-bank-invoice')
+    const btnMyOrders = document.querySelector('.cconf-myorders-button')
+    const btnContinue = document.querySelector('.cconf-continue-button')
+    const bannerPorto = document.querySelector('#bannerPorto')
+
+    if (btnImprimir) btnImprimir.addEventListener('click', () => {
+        dataLayer.push({
+            category: 'protocolo_de_seguranca_covid',
+            action: 'clique_imprimir',
+            label: 'imprimir_boleto',
+            event: 'generic'
         })
     })
-
+    if (btnMyOrders) btnMyOrders.addEventListener('click', () => {
+        dataLayer.push({
+            category: 'protocolo_de_seguranca_covid',
+            action: 'clique_meus_pedidos',
+            label: 'ir_para_meus_pedidos',
+            event: 'generic'
+        })
+    })
+    if (btnContinue) btnContinue.addEventListener('click', () => {
+        dataLayer.push({
+            category: 'protocolo_de_seguranca_covid',
+            action: 'clique_nova_compra',
+            label: 'realizar_nova_compra',
+            event: 'generic'
+        })
+    })
+    if (bannerPorto) bannerPorto.addEventListener('click', () => {
+        dataLayer.push({
+            category: 'protocolo_de_seguranca_covid',
+            action: 'clique_rede_autorizada',
+            label: 'clique_e_agende',
+            event: 'generic'
+        })
+    })
 }
