@@ -76,7 +76,22 @@
 	.promo-destaque {
 		display: none;
 	}
-	// .prod-info {
-	// 	display: none;
-	// }
+	.notifyme-success {
+		h2 {
+			color: #403c3b;
+			font-size: 16px;
+			margin: 0 auto 5px;
+		}
+		p {
+			float: left;
+			font-size: 14px;
+			line-height: 25px;
+			margin: 0 auto;
+			max-width: 100%;
+			width: 320px;
+		}
+		.icone-check {
+			background-image: url('/arquivos/cns-icon-video-pdp.jpg');
+		}
+	}
 }

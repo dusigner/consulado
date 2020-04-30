@@ -95,6 +95,9 @@ Nitro.controller(
 			}
 		});
 
+		//Mensagem de Sucesso do Formulário Avise-me
+		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
+
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
@@ -129,39 +132,6 @@ Nitro.controller(
 					}
 				]
 			});
-
-			const formProduto = $('body').find('.produto-indisponivel');
-				  formProduto.find($('.notifyme-title-div')).append(`
-						<div class="notifyme-title-div" style="">
-							<h3 class="notifymetitle notifyme-title">Produto temporariamente indisponível</h3>
-						</div>
-						<form action="/no-cache/AviseMe.aspx" style="">
-							<fieldset class="sku-notifyme-form notifyme-form">
-								<p>Seja avisado quando estiver disponível
-									<br>Ou entre em contato com nosso
-									<a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a>
-								</p>
-								<input id="cerv-name" class="sku-notifyme-client-name notifyme-client-name" placeholder="Digite seu nome..." size="20" type="text" name="notifymeClientName" id="notifymeClientName" style="display: inline-block;">
-								<input id="cerv-email" class="sku-notifyme-client-email notifyme-client-email" placeholder="Digite seu e-mail..." size="20" type="text" name="notifymeClientEmail" id="notifymeClientEmail" style="display: inline-block;">
-								<input id="cerv-tel" class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">
-								<input id="cerv-submit" class="btn-ok sku-notifyme-button-ok notifyme-button-ok" value="Avise-me" type="button" name="notifymeButtonOK" id="notifymeButtonOK" style="display: inline-block;">
-								<p class="form-status" style="display:none;"></p>
-								<input type="hidden" class="sku-notifyme-skuid notifyme-skuid" name="notifymeIdSku" value="2004086" style="display: none;">
-							</fieldset>
-						</form>
-						<p class="notifyme-loading-message" style="display: none">
-							<span class="sku-notifyme-loading notifyme-loading">Carregando...</span>
-						</p>
-						<fieldset class="success" style="display:none;">
-							<label>
-								<em><span class="sku-notifyme-success notifyme-success">Cadastrado com sucesso, assim que o produto for disponibilizado você receberá um email avisando.</span></em>
-							</label>
-						</fieldset>
-						<fieldset class="error" style="display: none">
-							<label><span class="sku-notifyme-error   notifyme-error"></span></label>
-						</fieldset>
-					</div>
-			`);
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
