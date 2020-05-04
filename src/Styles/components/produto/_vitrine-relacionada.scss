@@ -34,20 +34,6 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		input[type='password'],
 		input[type='tel'] {
 			margin-bottom: 10px;
-
-			&.after:after {
-				color: #736c6b;
-				content: ' ';
-				display: block;
-				font-size: 44px;
-				z-index: 99;
-				position: relative;
-				top: 0;
-				right: 0px;
-				width: 100px;
-				height: 100px;
-				background: rgb(230, 0, 0);
-			}
 		}
 		p {
 			color: $gray-dark;
