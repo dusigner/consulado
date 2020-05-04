@@ -34,6 +34,20 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		input[type='password'],
 		input[type='tel'] {
 			margin-bottom: 10px;
+
+			&.after:after {
+				color: #736c6b;
+				content: ' ';
+				display: block;
+				font-size: 44px;
+				z-index: 99;
+				position: relative;
+				top: 0;
+				right: 0px;
+				width: 100px;
+				height: 100px;
+				background: rgb(230, 0, 0);
+			}
 		}
 		p {
 			color: $gray-dark;
@@ -56,20 +70,23 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	margin-top: 22px;
 	max-width: 100%;
 	width: 460px;
+	.promo-destaque  {
+		display: none;
+	}
 	.relacionados-title {
 		display: none;
 	}
 	h2 {
-		@include rfs(18);
 		color: $gray-dark;
-		margin-bottom: -3px;
+		font-size: 16px;
+		margin-bottom: 0;
 		margin-top: 25px;
 	}
 	p {
 		padding: 0;
 	}
 	.pre-title-relacionados {
-		@include rfs(14);
+		font-size: 14px;
 		margin: 0 0 26px 0;
 		padding: 0;
 	}
@@ -92,13 +109,69 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			width: 100% !important;
 		}
 		.slick-prev {
+		    height: 100%;
+    		width: 32px;
+
+			&::before {
+				background-image: url('/arquivos/icon-left-slider-vitrine.png');
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				height: 22px;
+				left: 0;
+				position: absolute;
+				top: 46%;
+				width: 12px;
+				z-index: 3;
+
+			}
+			&::after {
+				background-image: linear-gradient(90deg, #ffffff 20%, rgba(0, 0, 0, 0) 120%);
+				content: '';
+				display: inline-block;
+				height: 100%;
+				left: 0;
+				position: absolute;
+				top: 0;
+				width: 40px;
+				z-index: 1;
+			}
 			&.slick-disabled {
-				display: none;
+				display: none !important;
 			}
 		}
 		.slick-next  {
+
+			height: 100%;
+    		width: 32px;
+			&::before {
+				background-image: url('/arquivos/icon-right-slider-vitrine.png');
+				background-repeat: no-repeat;
+				background-size: contain;
+				content: '';
+				height: 22px;
+				position: absolute;
+				right: 0;
+				top: 46%;
+				width: 12px;
+				z-index: 3;
+			}
+			&::after {
+				background-image: linear-gradient(-90deg, #ffffff 40%, rgba(0, 0, 0, 0) 160%);
+				content: '';
+				display: inline-block;
+				height: 100%;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 40px;
+				z-index: 1;
+			}
 			&.slick-disabled {
-				display: none;
+				cursor: auto;
+				filter: grayscale(100%);
+				opacity: 0.4 !important;
+
 			}
 		}
 
@@ -123,6 +196,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			}
 		}
 		.flag,
+		.promo-destaque,
 		.ts-shelf-container {
 			display: none;
 		}
