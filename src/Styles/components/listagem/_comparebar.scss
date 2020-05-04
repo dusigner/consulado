@@ -161,7 +161,7 @@
 		&-name {
 			@include breakpoint('small', 'max') {
 				display: inline-block;
-				font-size: 1rem;
+				font-size: 12px;
 				padding: .5rem;
 				vertical-align: middle;
 				width: calc(100% - 85px);
@@ -226,6 +226,8 @@
 			text-align: center;
 			top: calc(100% + 5px);
 			width: 100%;
+			display: flex;
+			justify-content: center;
 		}
 		margin-top: 1.5rem;
 
@@ -335,8 +337,6 @@
 				position: absolute;
 				right: .5rem;
 				top: -10px;
-				display: flex;
-				justify-content: center;
 			}
 
 			@include breakpoint('medium', 'max') {

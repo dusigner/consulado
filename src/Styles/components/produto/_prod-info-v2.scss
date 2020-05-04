@@ -85,4 +85,10 @@ body.produto {
 .cta-containers {
 	@include breakpoint ('medium', 'max') { flex-direction: column; }
 	display: flex;
+
+	.social {
+		@include breakpoint ('small', 'max') {
+			margin-top: 23px;
+		}
+	}
 }
