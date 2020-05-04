@@ -97,7 +97,7 @@ Nitro.controller(
 
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
-
+		$('.notifyme-client-email').append().html('<span>*</html>');
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
