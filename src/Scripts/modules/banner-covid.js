@@ -65,7 +65,7 @@ window.addBannerCovid = () => {
 
     var ul = document.querySelector('.container.vitrines.covid ul')
 
-    ul.addEventListener('click', () => {
+    if (ul) ul.addEventListener('click', () => {
         dataLayer.push({
             category: 'lp_garantia_de_entrega_covid',
             action: 'clique_produto',
