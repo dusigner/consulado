@@ -38,6 +38,8 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
 
+	require('modules/banner-covid');
+
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
