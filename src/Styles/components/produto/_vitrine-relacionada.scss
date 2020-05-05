@@ -22,6 +22,18 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		color: $green;
 		margin-top: 0;
 	}
+	.subtitle-page {
+		color: $gray-dark;
+		font-size: 14px;
+		line-height: 20px;
+		margin: 0;
+		padding: 5px 0 30px;
+		a {
+			color: $purple;
+			font-weight: 500;
+		}
+
+	}
 	.notifyme-button-ok {
 		@include rfs(15);
 		height: 35px;
