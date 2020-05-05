@@ -147,7 +147,7 @@ window.addBannerCovid = () => {
 
 window.addBannerCovidPosVenda = () => {
     const banner = $.parseHTML(
-        `<div class="container" style="margin-top: 20px;">
+        `<div class="banner-pos-venda-covid" style="margin-top: 20px;">
             <img
                 id="bannerCovidPosVenda"
                 class="hide-extra-small"
@@ -165,7 +165,10 @@ window.addBannerCovidPosVenda = () => {
     const appTop = document.querySelector('#app-top')
     const myOrders = document.querySelector('#myorders')
 
-    if (appTop) appTop.append(banner)
+    if (appTop) {
+        banner.classList.add('container')
+        appTop.append(banner)
+    }
     if (myOrders) myOrders.prepend(banner)
 
     const btnImprimir = document.querySelector('#print-bank-invoice')
