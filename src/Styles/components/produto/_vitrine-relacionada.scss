@@ -143,7 +143,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 				z-index: 3;
 			}
 			&::after {
-				background-image: linear-gradient(-90deg, #ffffff 40%, rgba(0, 0, 0, 0) 160%);
+				background-image: linear-gradient(-90deg, #ffffff 40%, rgba(255, 255, 255, 0) 160%);
 				content: '';
 				display: inline-block;
 				height: 100%;
