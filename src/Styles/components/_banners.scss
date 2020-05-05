@@ -1,5 +1,6 @@
 .banners,
 .banners-mobile {
+	padding-top: 16px !important;
 	position: relative;
 
 	.container {
@@ -101,7 +102,6 @@
 
 	// [ Mobile ] - Banner principal
 	&.banner-mobile {
-		padding-top: 56px !important;
 		.box-banner {
 			img {
 				left: 0;
