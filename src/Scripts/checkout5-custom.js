@@ -59,6 +59,8 @@ $(document).on('ready', function() {
 	require('modules/counting-working-days');
 	require('modules/checkout/reinput');
 
+	require('modules/banner-covid');
+
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 	Nitro.setup(
