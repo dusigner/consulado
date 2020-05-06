@@ -19,6 +19,7 @@ import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/product/product-tags';
 import 'modules/chaordic';
+import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
 	'produto-v2',
@@ -41,6 +42,7 @@ Nitro.controller(
 		'deliveryTime',
 		'recurrence',
 		'product-tags',
+		'dataLayer-product',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -98,6 +100,11 @@ Nitro.controller(
 
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
+
+		//Mensagem após envio
+		$('.portal-notify-me-ref').find('.sku-notifyme-form p').remove();
+		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
+
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
