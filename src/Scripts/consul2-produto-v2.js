@@ -19,6 +19,7 @@ import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/product/product-tags';
 import 'modules/chaordic';
+import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
 	'produto-v2',
@@ -41,6 +42,7 @@ Nitro.controller(
 		'deliveryTime',
 		'recurrence',
 		'product-tags',
+		'dataLayer-product',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
