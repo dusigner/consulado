@@ -24,9 +24,6 @@ Nitro.module('dataLayer-product', function() {
 				`${$label}`
 			);
 
-			console.log('deu certooo: 01 ')
-			console.log($label)
-
 			return false;
 		});
 	};
@@ -42,9 +39,6 @@ Nitro.module('dataLayer-product', function() {
 						`exibicao cadastro sucesso`,
 						`${$label}`
 					);
-
-					console.log('deu certooo: 02 ')
-					console.log($label)
 
 					return false;
 				}
