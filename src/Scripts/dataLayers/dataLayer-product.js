@@ -59,20 +59,22 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.visibleVitrineSimilarProducts = () => {
-		if ( $('.portal-notify-me-ref').is(':visible') ) {
-			if ( !$('body').hasClass('dataLayerVitrineSimilar') ) {
-				$('body').addClass('dataLayerVitrineSimilar');
-				if ( $('.portal-notify-me-ref').is(':visible') ) {
-					const $label = $('.position-sticky-prod .productName').text();
+		setInterval(function() {
+			if ( $('.portal-notify-me-ref').is(':visible') ) {
+				if ( !$('body').hasClass('dataLayerVitrineSimilar') ) {
+					$('body').addClass('dataLayerVitrineSimilar');
+					if ( $('.portal-notify-me-ref').is(':visible') ) {
+						const $label = $('.position-sticky-prod .productName').text();
 
-					pushDataLayer(
-						`${$category}`,
-						`exibicao produto indisponivel`,
-						`${$label}`
-					);
+						pushDataLayer(
+							`${$category}`,
+							`exibicao produto indisponivel`,
+							`${$label}`
+						);
+					}
 				}
 			}
-		}
+		}, 50)
 	};
 
 	this.nameProductUnavailable = () => {
