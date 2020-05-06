@@ -41,6 +41,8 @@ Nitro.module('notify-me', function() {
 	// $('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
 	// $('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
+	$('.sku-notifyme-client-email.notifyme-client-email').attr('placeholder', '* Digite seu e-mail...')
+
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
 		var dataObj = {
 			email: $('#notifymeClientEmail').val(),
