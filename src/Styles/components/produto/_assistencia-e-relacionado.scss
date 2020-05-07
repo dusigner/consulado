@@ -17,6 +17,13 @@
 		flex-wrap: wrap;
 		margin: 0 auto;
 		padding: 60px 0 120px;
+
+		.text-center {
+			text-align: left;
+			display: block;
+			width: 100%;
+		}
+
 		.container {
 			> h2 {
 				@include breakpoint(small, 'max') {
