@@ -74,6 +74,7 @@ Nitro.controller(
 			$('.secure').hide();
 			$('.cta-containers').hide();
 			$('.prod-more-info').hide();
+
 		}
 
 		var $reference = $('.reference'),
