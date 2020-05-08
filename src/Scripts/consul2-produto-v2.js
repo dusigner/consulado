@@ -65,7 +65,7 @@ Nitro.controller(
 
 		// Exibe Informação de "Compra segura" quando o
 		// botão comprar estiver exibindo na página
-		if ($('#BuyButton .buy-button').is(':visible')) {
+		if ( skuJson.available === true ) {
 			$('.secure').show();
 			$('body').addClass('produto-disponivel');
 		} else {
@@ -102,37 +102,37 @@ Nitro.controller(
 		//Vitrine do Produto indisponível
 		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
-				initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
-				slidesToShow: 2.2,
-				slidesToScroll: 1,
-				centerPadding: '0px',
-				fade: false,
-				infinite: false,
-				cssEase: 'ease',
-				easing: 'linear',
-				responsive: [
-					{
-						breakpoint: 990,
-						settings: {
-							slidesToShow: 2.2,
-							slidesToScroll: 1,
-							centerPadding: '0px',
-						}
-					},
-					{
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 1.5,
-							slidesToScroll: 1,
-							infinite: false,
-							initialSlide: 1,
-							centerMode: true,
-							centerPadding: '0px',
-							index: 0
-						}
+		initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
+			slidesToShow: 2.2,
+			slidesToScroll: 1,
+			centerPadding: '0px',
+			fade: false,
+			infinite: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						slidesToShow: 2.2,
+						slidesToScroll: 1,
+						centerPadding: '0px',
 					}
-				]
-			});
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 1.5,
+						slidesToScroll: 1,
+						infinite: false,
+						initialSlide: 1,
+						centerMode: true,
+						centerPadding: '0px',
+						index: 0
+					}
+				}
+			]
+		});
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
