@@ -67,7 +67,7 @@ Nitro.controller(
 
 		// Exibe Informação de "Compra segura" quando o
 		// botão comprar estiver exibindo na página
-		if ($('#BuyButton .buy-button').is(':visible')) {
+		if ( skuJson.available === true ) {
 			$('.secure').show();
 			$('body').addClass('produto-disponivel');
 		} else {
