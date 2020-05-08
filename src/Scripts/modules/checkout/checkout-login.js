@@ -20,9 +20,7 @@ Nitro.module('checkout-login', function(){
 			faceLogin : false,
 			googleLogin : false
 		},
-		templates = {
-
-		}
+		templates = {}
 
 	this.init = () => {
 		self.accessModalLogin();
@@ -140,7 +138,6 @@ Nitro.module('checkout-login', function(){
 		location.href = '/checkout/#/profile';
 	};
 
-	// modal login
 	this.accessModalLogin = () => {
 		$('body').on('click', '.modal-custom-login .modal-custom-login-btn.google_access', () => {
 			self.socialModalLogin('Google');
