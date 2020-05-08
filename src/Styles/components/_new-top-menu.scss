@@ -1,0 +1,786 @@
+@charset 'UTF-8';
+
+.cont-search {
+	.text-search {
+		background-color: #F1F0F0 !important;
+		font-size: 14px;
+		font-weight: 500;
+	}
+	.form-search {
+		.icon-consul-loupe {
+			text-shadow: 1px 1px 0px #9aca3c;
+		}
+	}
+}
+
+.top-navigation {
+	background: linear-gradient(90deg, #FAF9F9 50%, #fff 50%);
+	border-top: none;
+    bottom: none;
+	position: relative;
+    z-index: 16;
+
+	.menu-department {
+	//	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
+		display: flex;
+		justify-content: space-between;
+
+		// @-webkit-keyframes fadeInLeft {
+		// 	0% {
+		// 		-webkit-transform: translateX(-20px);
+		// 		opacity: 0;
+		// 		transform: translateX(-20px);
+		// 	}
+
+		// 	100% {
+		// 		-webkit-transform: translateX(0);
+		// 		opacity: 1;
+		// 		transform: translateX(0);
+		// 	}
+		// }
+
+		// @keyframes fadeInLeft {
+		// 	0% {
+		// 		-ms-transform: translateX(-20px);
+		// 		-webkit-transform: translateX(-20px);
+		// 		opacity: 0;
+		// 		transform: translateX(-20px);
+		// 	}
+
+		// 	100% {
+		// 		-ms-transform: translateX(0);
+		// 		-webkit-transform: translateX(0);
+		// 		opacity: 1;
+		// 		transform: translateX(0);
+		// 	}
+		// }
+
+		// .fadeInLeft {
+		// 	-webkit-animation-name: fadeInLeft;
+		// 	animation-name: fadeInLeft;
+		// }
+
+		.first-level {
+			animation: fadeInSlide 0.3s ease;
+		}
+
+		& > .item:nth-child(5) {
+			white-space: nowrap;
+		}
+	}
+}
+
+// [ Desktop ] - Menu
+.menu-department {
+	margin: 0 auto;
+	// max-width: 1110px;
+	// position: relative;
+	width: 100%;
+
+	@include breakpoint(extra-large, 'max') { font-size: 13px; }
+	@include breakpoint(large, 'max')       { font-size: 12px; }
+	@include breakpoint(medium, 'max')      { font-size: 11px; }
+
+	// &,
+	// a,
+	// .submenu { @include singleTransition(); }
+
+	// .menu-category {
+	// 	&:before { @include contentBefore(); }
+	// }
+
+	&.no-border { border-color: #ffffff; }
+
+	& > .item {
+		@include responsiveFont(16);
+		background-color: #fff;
+		flex-basis: auto;
+		flex-grow: 1;
+		padding: 1em 1.25em;
+
+		// &.item-cervejeira {
+		// 	border-right: 2px solid $green;
+		// 	bottom: 1px;
+		// 	box-shadow: 0 0 6px #e4e4e4;
+		// 	padding-top: 1.2em;
+		// 	position: relative;
+		// 	right: 1px;
+		// }
+
+		& > a {
+			color: $green;
+			text-align: center;
+			width: 100%;
+
+			// &[title='Cervejeira'] {
+			// 	@include responsiveFont(14);
+			// 	font-weight: bold;
+
+			// 	@include breakpoint('small', 'max') {
+			// 		font-weight: 100;
+			// 	}
+			// }
+
+			@include breakpoint ('small', 'max') {
+				@include rfs (14);
+				color: $gray-d;
+				font-weight: 500;
+				height: 60px;
+				line-height: 2.5;
+				padding-left: 20px;
+				text-align: left;
+			}
+		}
+
+		&#menu-cupons {
+			//background-color: #f4f2f1;
+			display: none;
+
+			a {
+				@include responsiveFont(16);
+				color: #736C6B;
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	a {
+		color: $green;
+		display: block;
+		text-decoration: none;
+	}
+
+	.dropdown {
+		@include rfs(16);
+		background-color: #FAF9F9;
+		flex: 0 0 210px;
+		padding-left: 45px;
+
+		// margin: 0 calculate-em(5) 0 0;
+		a[title='Departamentos'] {
+			display: inline;
+			position: relative;
+			text-transform: uppercase;
+			z-index: 4;
+			@include breakpoint(extra-large, 'max') {
+				font-size: 14px;
+			}
+		}
+		.icon-hamburger {
+			border-bottom: 2px solid $green;
+			border-top: 2px solid $green;
+			color: $green;
+			cursor: pointer;
+			height: 12px;
+			left: auto;
+			margin-left: -28px;
+			position: absolute;
+			top: 20px;
+			z-index: 1;
+
+			&:before {
+				background-color: $green;
+				content: '';
+				width: 46%;
+			}
+
+			&:after {
+				background-color: $green;
+				content: '';
+				height: 2px;
+				left: 0;
+				margin-top: -1px;
+				position: absolute;
+				top: 50%;
+				width: 46%;
+			}
+
+			@include breakpoint ('extra-large', 'max') {
+				height: 10px;
+				top: 18px;
+			}
+		}
+	}
+
+	// ===============================================================
+	// NATAL
+	// ===============================================================
+	.btn_natal {
+		background-color: $green;
+		border-radius: 18px;
+		padding: 0 20px 0 15px;
+
+		@include breakpoint(small, 'max') {
+			background: #ffffff;
+		}
+		img {
+			vertical-align: middle;
+
+			@include breakpoint(small, 'max') {
+				display: none;
+			}
+		}
+		a {
+			color: #ffffff;
+			display: inline-block;
+
+			@include breakpoint(small, 'max') {
+				color: $green;
+			}
+		}
+	}
+
+	.control-hide {
+		display: none;
+	}
+
+	.control {
+		display: inline-block;
+	}
+
+	.customItemMenu {
+		@include breakpoint('large', 'max') {
+			font-size: 11px;
+			padding: 0 6px 0 5px;
+		}
+		@include breakpoint(small, 'max') {
+			background-color: #fff;
+			border-radius: 0;
+			font-weight: normal;
+		}
+		background-color: $green;
+		border-radius: 18px;
+		font-size: 14px;
+		font-weight: bold;
+		// margin-left: 0;
+		padding: 0 20px;
+		position: relative;
+		text-transform: uppercase;
+
+		&.hide { display: none; }
+
+		img {
+			@include breakpoint('large', 'max') {
+				margin-left: 4px;
+				max-width: 15px;
+			}
+			@include breakpoint(small, 'max') { display: none; }
+			display: inline;
+			margin-right: 7px;
+			vertical-align: middle;
+
+		}
+
+		a {
+			color: #ffffff;
+			display: inline-block;
+
+			@include breakpoint(small, 'max') {
+				color: $green;
+				width: 100%;
+			}
+		}
+
+		p {
+			display: inline;
+			margin: 0;
+			vertical-align: bottom;
+		}
+
+	}
+}
+
+// [ Desktop ] - Menu - ATIVO
+.dropdown {
+	&.topmenu-active {
+		position: initial;
+
+		a[title='Departamentos'] {
+			color: $txt-gray;
+			text-indent: 0;
+			z-index: 10;
+		}
+
+		.icon-hamburger {
+			color: $green;
+		}
+
+		.first-level {
+			display: block;
+			text-align: left;
+		}
+	}
+}
+
+//New submenu
+.submenu {
+	background-color: #fff;
+	position: absolute;
+	z-index: 5;
+
+	.item {
+		line-height: inherit;
+		text-align: left;
+
+		a { display: block; }
+	}
+}
+
+// Menu - Categorias
+.menu-category {
+	@include responsiveFont(20, 16, true);
+	border: 1px solid #c2c2c2;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	display: none;
+	left: 0;
+	padding: 42px 30px 20px 30px;
+	top: 50px;
+	width: 100%;
+
+	&:before {
+		background-color: #fff;
+		border: 1px solid #c2c2c2;
+		border-bottom: 0;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		height: 60px;
+		left: -1px;
+		right: -1px;
+		top: -60px;
+		z-index: 100;
+	}
+
+	&:after {
+		border-top: 1px solid $gray;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		width: calc(100% - 60px);
+	}
+
+	&:hover > .item { opacity: .6; }
+
+	& > .item {
+		display: inline-block;
+		margin-bottom: 20px;
+		margin-right: 2%;
+		transition: all .4s ease;
+		vertical-align: top;
+		width: 31%;
+
+		@include breakpoint(large, 'max') { text-align: center; }
+
+		&:hover { opacity: 1; }
+
+		.icon {
+			@include responsiveFont(38);
+			display: inline-block;
+			height: 48px;
+			width: 48px;
+
+			@include breakpoint(large, 'min') {
+				float: left;
+				margin-bottom: 25px;
+				margin-right: 15px;
+			}
+		}
+
+		a {
+			@include responsiveFont(18);
+			font-weight: 400;
+			margin-bottom: 6px;
+		}
+	}
+}
+
+// Menu - Subcategorias
+.menu-subcategory {
+	background-color: transparent;
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	width: calc(100% - 68px);
+
+	@include breakpoint(large, 'max') { width: 100%; }
+
+	.item {
+		display: inline-block;
+		margin-right: 8px;
+
+		a {
+			@include responsiveFont(15, 16, true);
+			border: 1px solid #c2c2c2;
+			border-radius: 50px;
+			color: #736c6b;
+			font-weight: 200;
+			padding: 2px 6px;
+			transition: .4s all ease;
+		}
+
+		&:hover a:hover { color: #fff; }
+	}
+}
+
+$menu-colors: (
+	'gelar'      : #702f8f,
+	'cozinhar'   : #007dc3,
+	'lavar'      : #0fb6de,
+	'beber'      : #ec008c,
+	'refrescar'  : #fdb912,
+	'servicos'   : #f47921
+);
+
+@each $key, $value in $menu-colors {
+	.item-#{$key} {
+		& > a,
+		.icon { color: $value; }
+
+		&:hover .menu-subcategory a {
+			border-color: $value;
+			color:  $value;
+
+			&:hover { background-color: $value; }
+		}
+	}
+}
+
+.covid-shipping-guarantee-mobile {
+	align-items: center;
+	background: $green;
+	color: #FFF;
+	display: flex;
+	flex-flow: row nowrap;
+	font-weight: 500;
+	justify-content: space-evenly;
+	max-height: 40px;
+	width: 100%;
+	span {
+		font-size: 14px;
+	}
+	img {
+		height: 60px;
+		left: -20px;
+		max-height: 90px;
+		opacity: 0.3;
+		position: absolute;
+		top: -10px;
+		width: auto;
+	}
+	b {
+		color: #4B4848;
+		font-weight: bold;
+	}
+	a,
+	a:active:focus,
+	a:active,
+	a:hover {
+		background: #FFF;
+		border-radius: 30px;
+		color: $green;
+		font-size: 14px;
+		margin: 10px 0;
+		max-height: 30px;
+		padding: 4px;
+		text-align: center;
+	}
+}
+
+//Menu mobile
+.menu-mobile {
+	@include breakpoint(768px, 'min') { display: none; }
+	background-color: #fff;
+	height: 50px;
+	overflow: hidden;
+	position: relative;
+	transition: all 300ms linear;
+
+	.icon-logo-consul {
+		color: $green;
+	}
+
+	// Ícone menu
+	.open-menu-mobile {
+		@include singleTransition();
+		background-color: #fff;
+		cursor: pointer;
+		float: left;
+		height: 50px;
+		position: relative;
+		width: 40px;
+		z-index: 10;
+
+		.icon-hamburger,
+		.txt { position: absolute; }
+
+		.icon-hamburger {
+			border-color: $green;
+			left: 10px;
+			top: 18px;
+
+			&:before {
+				background-color: $green;
+				width: 46%;
+			}
+
+			&:after {
+				background-color: $green;
+				content: '';
+				height: 2px;
+				left: 0;
+				margin-top: -1px;
+				position: absolute;
+				top: 50%;
+				width: 46%;
+			}
+		}
+
+		.txt {
+			color: #ffffff;
+			display: none;
+			left: 60px;
+			top: 15px;
+
+			&:before {
+				content: 'MENU';
+				font-size: 14px;
+				font-weight: 700;
+			}
+		}
+
+	}
+
+	// Submenus
+	.menu-department {
+		background-color: $gray-l;
+		border-top: 0;
+		display: none;
+		padding: 0;
+		text-align: left;
+		z-index: 11;
+
+
+		.menu-title {
+			cursor: pointer;
+			padding: 12px 0;
+			text-align: center;
+
+			.icon-arrow-left { left: 26px; }
+
+			.title {
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+
+		.item {
+			margin: 0;
+			padding: 0 10px;
+			text-align: left;
+			width: 100%;
+
+			@include breakpoint('small', 'max') {
+				padding: 0;
+				text-align: unset;
+			}
+
+			a {
+				@include rfs(14);
+				font-weight: 500;
+			}
+
+			&:first-child a { border: none; }
+
+			&.txt-gray {
+				background-color: #F1F0F0;
+
+				&:last-child { display: none; }
+
+				a {
+					&[href*='tel:551130037872'] { color: $purple; }
+				}
+			}
+
+			&.sub-itens {
+				position: relative;
+
+				& > a { position: relative; }
+
+				.icon-arrow-down {
+					@include responsiveFont(6, 16, true);
+					color: $gray;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					transition: all .3s linear;
+
+					@include breakpoint('small', 'max') {
+						color: $green;
+					}
+				}
+
+				.submenu {
+					display: none;
+					position: initial;
+					transition: none;
+					width: 100%;
+
+					li {
+						border: none;
+						padding: 0 35px;
+
+						a {
+							border: none;
+							color: $txt-gray;
+						}
+					}
+				}
+
+				&.open {
+					.icon-arrow-down { transform: rotate(180deg); }
+				}
+			}
+
+			.icon {
+				@include responsiveFont(36);
+				display: inline-block;
+				margin-right: 18px;
+				vertical-align: middle;
+				@include breakpoint(small, 'max') {
+					@include responsiveFont(20);
+				}
+			}
+
+			@each $key, $value in $menu-colors {
+				&.item-#{$key} {
+					a { color: $value; }
+				}
+			}
+		}
+
+		.item-department {
+			background-color: #fff;
+
+			&.item-verao {
+
+				&:before {
+					content: url('/arquivos/ico-sol-verde.png');
+					float: left;
+					margin: 10px 10px 0 0;
+				}
+
+				a {
+					font-size: 14px;
+					text-transform: uppercase;
+				}
+
+			}
+		}
+
+		a {
+			@include responsiveFont(16, 16, true);
+			border-top: 1px solid $gray;
+			padding: 12px 0;
+		}
+	}
+
+	// Item departamentos
+	.sub-itens {
+		& > a { position: relative; }
+
+		.icon-arrow-right {
+			color: $gray-d;
+			right: 25px;
+		}
+	}
+
+	.slide-right { transition: all 350ms linear; }
+
+	.txt-gray a { color: $txt-gray; }
+
+	// Televendas
+	a[title^='Televendas'] { font-weight: 400; }
+
+
+	// Controle de ações do menu com base no item pai ( menu-mobile )
+	&.menu-active {
+		// Ícone menu
+		.open-menu-mobile {
+			background-color: #fff;
+
+			.icon-hamburger {
+				border-color: transparent;
+
+				&:after {
+					display: none;
+				}
+
+				&:before {
+					@include icon-get( close-icon );
+					background-color: transparent;
+					color: $green;
+					font-size: 16px;
+					left: 0;
+					top: -1px;
+				}
+			}
+
+			.txt {
+				color: $txt-gray;
+
+				&:before { content: 'FECHAR'; }
+			}
+		}
+
+		// Item departamento
+		.menu-department {
+			display: block;
+
+			.logout {
+				display: block;
+
+				&.hide {
+					display: none;
+				}
+			}
+		}
+
+		&.sub-first-itens-active {
+			.item.item-active {
+				.second-level {
+					display: block!important;
+					left: 0 !important;
+				}
+			}
+		}
+	}
+
+	&                     { height: auto; }
+	&.sub-itens-active    { height: 353px; }
+	&.para-gelar          { height: 403px; }
+	&.para-embutir        { height: 352px; }
+	&.para-cozinhar       { height: 505px; }
+	&.para-beber          { height: 302px; }
+	&.para-refrescar      { height: 302px; }
+	&.para-lavar-e-limpar { height: 352px; }
+	&.outros              { height: 200px; }
+	&[class*='servi']     { height: 98px; }
+}
+
+
+// Fix para iPad
+@include breakpoint(760px, 'min') {
+	@include breakpoint(768px, 'max') {
+		.menu-mobile {
+			@include show-conditional();
+			display: block !important;
+			visibility: visible!important;
+			width: 100%;
+		}
+
+		.top-navigation { @include hide-conditional();}
+	}
+}
