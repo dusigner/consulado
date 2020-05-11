@@ -8,7 +8,7 @@
 	}
 	.form-search {
 		.icon-consul-loupe {
-			text-shadow: 1px 1px 0px #9aca3c;
+			text-shadow: 1px 1px 0 #9aca3c;
 		}
 	}
 }
@@ -176,7 +176,7 @@
 			left: auto;
 			margin-left: -28px;
 			position: absolute;
-			top: 20px;
+			top: 22px;
 			z-index: 1;
 
 			&:before {
@@ -297,7 +297,7 @@
 		position: initial;
 
 		a[title='Departamentos'] {
-			color: $txt-gray;
+			color: $green;
 			text-indent: 0;
 			z-index: 10;
 		}
@@ -307,8 +307,12 @@
 		}
 
 		.first-level {
-			display: block;
+			border-top: 1px solid $gray;
+			display: flex;
+			flex-direction: column;
+			padding: 40px 0;
 			text-align: left;
+
 		}
 	}
 }
@@ -319,9 +323,20 @@
 	position: absolute;
 	z-index: 5;
 
+	.container {
+		display: flex;
+		flex-flow: nowrap;
+		justify-content: space-between;
+		padding: 0;
+	};
+
 	.item {
+		display: flex;
+		flex-direction: column;
 		line-height: inherit;
+		max-width: 100%;
 		text-align: left;
+		width: auto;
 
 		a { display: block; }
 	}
@@ -336,7 +351,7 @@
 	display: none;
 	left: 0;
 	padding: 42px 30px 20px 30px;
-	top: 50px;
+	top: 100%;
 	width: 100%;
 
 	&:before {
@@ -350,15 +365,6 @@
 		right: -1px;
 		top: -60px;
 		z-index: 100;
-	}
-
-	&:after {
-		border-top: 1px solid $gray;
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		width: calc(100% - 60px);
 	}
 
 	&:hover > .item { opacity: .6; }
@@ -402,18 +408,16 @@
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
-	width: calc(100% - 68px);
+	width: 100%;
 
 	@include breakpoint(large, 'max') { width: 100%; }
 
 	.item {
-		display: inline-block;
+		display: flex;
 		margin-right: 8px;
 
 		a {
-			@include responsiveFont(15, 16, true);
-			border: 1px solid #c2c2c2;
-			border-radius: 50px;
+			@include rfs(15);
 			color: #736c6b;
 			font-weight: 200;
 			padding: 2px 6px;
