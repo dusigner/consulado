@@ -63,6 +63,8 @@ $(document).on('ready', function() {
 
 	require('modules/banner-covid');
 
+	require('dataLayers/dataLayer-checkout');
+
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 	Nitro.setup(
@@ -78,7 +80,8 @@ $(document).on('ready', function() {
 			'checkout.default-message',
 			// 'customLogin',
 			'callcenter',
-			'checkout-login'
+			'checkout-login',
+			'dataLayer-checkout',
 		],
 		function(
 			/*chaordic*/
