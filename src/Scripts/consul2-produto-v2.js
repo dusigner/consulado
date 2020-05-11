@@ -437,9 +437,10 @@ Nitro.controller(
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
-
-		if ( $('#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide').length === 1 ) {
-			$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
+		if ($(window).width() <= 1024) {
+			if ( $('#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide').length === 1 ) {
+				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
+			}
 		}
 	}
 );
