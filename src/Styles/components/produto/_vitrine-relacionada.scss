@@ -62,6 +62,11 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		}
 	}
 }
+
+.relacionados-top-one .slick-track {
+	transform: translate(0)!important;
+}
+
 #relacionados-top {
 	border-top: 1px solid #ccc;
 	display: none;
