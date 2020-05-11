@@ -1,6 +1,4 @@
 {
-<<<<<<< HEAD
-=======
     "consul": {
         "files/checkout-confirmation-custom.js": {
             "content": "394c78924ddbbc7dac2eb2f1256a150a",
@@ -451,7 +449,6 @@
             "lastUpdate": "2020-05-07T13:17:22.230Z"
         }
     },
->>>>>>> bugfix/ICD-1153-email-required-message
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
             "content": "11b550dc3a373e32bf9b6b2abee657b6",
