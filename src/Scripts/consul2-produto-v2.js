@@ -35,11 +35,11 @@ Nitro.controller(
 		'sku-select',
 		'produtos-adicionais',
 		'boleto',
-		'notify-me',
 		'share',
 		'upsell',
 		'deliveryTime',
 		'recurrence',
+		'notify-me',
 		'product-tags',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
