@@ -11,11 +11,19 @@ Nitro.module('notify-me', function() {
 		.addClass('notifyme-televendas');
 	var notifyMeButton = $('.portal-notify-me-ref').find('.notifyme-button-ok');
 
+<<<<<<< HEAD
 	// notifyMeButton
 	// 	.parent()
 	// 	.append(
 	// 		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
 	// 	);
+=======
+	notifyMeButton
+		.parent()
+		.append
+		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
+		();
+>>>>>>> 846c3794e70b7bd9f66df9be5964d0e2db85520f
 
 	notifyMeButton.val('Avise-me');
 	if (typeof televendas !== 'undefined') {
@@ -63,8 +71,6 @@ Nitro.module('notify-me', function() {
 
 	});
 
-	$("#notifymeClientEmail'").after('<span style="display: none;" class="validate-erro">Preencha todos os campos corretamente.</span>');
-
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
 		var dataObj = {
 			email: $('#notifymeClientEmail').val(),
@@ -72,16 +78,6 @@ Nitro.module('notify-me', function() {
 			produto: $('.productName').text(),
 			telefone: $('#notifymeClientPhone').val()
 		};
-
-		var $email= $('#notifymeClientEmail').val();
-
-		var $emailFilter= /^.+@.+\..{2,}$/;
-		var $illegalChars= /[\(\)\<\>\,\;\:\\\/\"\[\]]/
-
-		if(!($emailFilter.test($email))||$email.match($illegalChars)) {
-			$('#notifymeClientEmail').addClass('is--error');
-			$('#notifymeClientEmail .validate-erro').css('display', 'block');
-		}
 
 		$.ajax({
 			url: '/api/ds/pub/documents/NT',
