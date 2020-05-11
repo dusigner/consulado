@@ -41,6 +41,28 @@ Nitro.module('notify-me', function() {
 	// $('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
 	// $('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
+	$('.sku-notifyme-client-email.notifyme-client-email').attr('placeholder', '* Digite seu e-mail...');
+	$('#notifymeClientEmail').after('<span style="display: none;" class="validate-erro">Preencha todos os campos corretamente.</span>');
+
+	$('.notifyme.sku-notifyme #notifymeButtonOK').on('click', function() {
+		var $email = $('#notifymeClientEmail').val();
+
+		var $emailFilter = /^.+@.+\..{2,}$/;
+
+		var $illegalChars = /[\(\)\<\>\,\;\:\\\/\"\[\]]/;
+
+		if (!$emailFilter.test($email) || $email.match($illegalChars)) {
+
+			$('#notifymeClientEmail').addClass('is--error');
+			$('.sku-notifyme-form .validate-erro').css('display', 'block');
+
+		} else {
+			$('#notifymeClientEmail').removeClass('is--error');
+			$('.sku-notifyme-form .validate-erro').css('display', 'none');
+		}
+
+	});
+
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
 		var dataObj = {
 			email: $('#notifymeClientEmail').val(),
