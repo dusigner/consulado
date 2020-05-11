@@ -11,19 +11,11 @@ Nitro.module('notify-me', function() {
 		.addClass('notifyme-televendas');
 	var notifyMeButton = $('.portal-notify-me-ref').find('.notifyme-button-ok');
 
-<<<<<<< HEAD
 	// notifyMeButton
 	// 	.parent()
 	// 	.append(
 	// 		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
 	// 	);
-=======
-	notifyMeButton
-		.parent()
-		.append
-		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
-		();
->>>>>>> 846c3794e70b7bd9f66df9be5964d0e2db85520f
 
 	notifyMeButton.val('Avise-me');
 	if (typeof televendas !== 'undefined') {
