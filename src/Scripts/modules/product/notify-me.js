@@ -11,11 +11,19 @@ Nitro.module('notify-me', function() {
 		.addClass('notifyme-televendas');
 	var notifyMeButton = $('.portal-notify-me-ref').find('.notifyme-button-ok');
 
+<<<<<<< HEAD
 	// notifyMeButton
 	// 	.parent()
 	// 	.append(
 	// 		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
 	// 	);
+=======
+	notifyMeButton
+		.parent()
+		.append
+		// '<a href="#relacionados" class="primary-button notifyme-button-ok scroll-to">Veja outros produtos relacionados</a>'
+		();
+>>>>>>> 846c3794e70b7bd9f66df9be5964d0e2db85520f
 
 	notifyMeButton.val('Avise-me');
 	if (typeof televendas !== 'undefined') {
@@ -41,6 +49,7 @@ Nitro.module('notify-me', function() {
 	// $('.notifyme-client-email').after('<input class="sku-notifyme-client-phone notifyme-client-phone" placeholder="Digite seu telefone..." type="tel" name="notifymeClientPhone" id="notifymeClientPhone" style="display: inline-block;">');
 	// $('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
+<<<<<<< HEAD
 	$('.sku-notifyme-client-email.notifyme-client-email').attr('placeholder', '* Digite seu e-mail...');
 	$('#notifymeClientEmail').after('<span style="display: none;" class="validate-erro">Preencha todos os campos corretamente.</span>');
 
@@ -62,6 +71,11 @@ Nitro.module('notify-me', function() {
 		}
 
 	});
+=======
+	$("#notifymeClientEmail'").after(
+		'<span style="display: none;" class="validate-erro">Preencha todos os campos corretamente.</span>'
+	);
+>>>>>>> 846c3794e70b7bd9f66df9be5964d0e2db85520f
 
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {
 		var dataObj = {
@@ -70,6 +84,14 @@ Nitro.module('notify-me', function() {
 			produto: $('.productName').text(),
 			telefone: $('#notifymeClientPhone').val()
 		};
+
+		var $email = $('#notifymeClientEmail').val();
+		var $emailFilter = /^.+@.+\..{2,}$/;
+		var $illegalChars = /[\(\)\<\>\,\;\:\\\/\"\[\]]/;
+		if (!$emailFilter.test($email) || $email.match($illegalChars)) {
+			$('#notifymeClientEmail').addClass('is--error');
+			$('#notifymeClientEmail .validate-erro').css('display', 'block');
+		}
 
 		$.ajax({
 			url: '/api/ds/pub/documents/NT',
