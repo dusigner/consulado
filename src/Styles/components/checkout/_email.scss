@@ -9,11 +9,15 @@ body {
 		border-top: none;
 
 		&-h {
-			margin-top: 60px;
+			margin-top: 95px;
+
+			@include breakpoint('small', 'max') {
+				margin-top: 68px;
+			}
 		}
 
 		label {
-			@include rfs(24);
+			font-size: 24px;
 			color: $textColor;
 			font-weight: bold;
 			line-height: 1;
@@ -21,16 +25,29 @@ body {
 			text-align: center;
 
 			&:before {
-				background: url('/arquivos/icon-mail-checkout.png') no-repeat top;
+				background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTUiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA1NSA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjY4NjcgMTIuNzQxN0MxNC4wNzE0IDEyLjc0MTcgMTIuNzIwNiAxNC4wNDggMTIuNzIwNiAxNS42NjIyVjM3LjA3OTVDMTIuNzIwNiAzOC42OTM3IDE0LjA3MTQgNDAgMTUuNjg2NyA0MEg1MS42MTU0QzUzLjIzMDcgNDAgNTQuNTgxNiAzOC42OTM3IDU0LjU4MTYgMzcuMDc5NVYxNS42NjIyQzU0LjU4MTYgMTQuMDQ4IDUzLjIzMDcgMTIuNzQxNyA1MS42MTU0IDEyLjc0MTdIMTUuNjg2N1pNMTYuMTg4NyAxNC42ODg3SDUxLjExMzRMMzQuNTAyOSAyOS41MzQ4QzM0LjA4ODcgMjkuOTA0OSAzMy4yMTM1IDI5LjkwNDkgMzIuNzk5MiAyOS41MzQ4TDE2LjE4ODcgMTQuNjg4N1pNMTQuNjY3NiAxNS45MzZMMjYuODIxMyAyNi43OTY4TDE0LjY2NzYgMzYuODY2NVYxNS45MzZaTTUyLjYzNDUgMTUuOTM2VjM2Ljg2NjVMNDAuNDgwOSAyNi43OTY4TDUyLjYzNDUgMTUuOTM2Wk0yOC4yOTY4IDI4LjEyMDFMMzEuNTA2MyAzMC45Nzk4QzMyLjcyMzUgMzIuMDY3NiAzNC41Nzg2IDMyLjA2NzYgMzUuNzk1OCAzMC45Nzk4TDM5LjAwNTQgMjguMTIwMUw1MS4wMDY5IDM4LjA1M0gxNi4yOTUyTDI4LjI5NjggMjguMTIwMVoiIGZpbGw9IiM0NzQ3NDciLz4KPHJlY3QgeD0iMTQuNTM3OCIgd2lkdGg9IjEuODE3MjIiIGhlaWdodD0iNy4yNjg4OCIgcng9IjAuOTA4NjEiIGZpbGw9IiNDNEM0QzQiLz4KPHJlY3QgeD0iMi43MjU4MyIgeT0iNC4wMTA3NCIgd2lkdGg9IjEuODE3MjIiIGhlaWdodD0iNy4yNjg4OCIgcng9IjAuOTA4NjEiIHRyYW5zZm9ybT0icm90YXRlKC00NSAyLjcyNTgzIDQuMDEwNzQpIiBmaWxsPSIjQzRDNEM0Ii8+CjxyZWN0IHk9IjE2LjM1NSIgd2lkdGg9IjEuODE3MjIiIGhlaWdodD0iNy4yNjg4OCIgcng9IjAuOTA4NjEiIHRyYW5zZm9ybT0icm90YXRlKC05MCAwIDE2LjM1NSkiIGZpbGw9IiNDNEM0QzQiLz4KPC9zdmc+Cg==") no-repeat;
 				background-size: contain;
 				content: '';
 				display: inline-block;
-				height: 72px;
-				left: 49%;
+				height: 40px;
+				left: 50%;
 				position: absolute;
-				top: 15px;
+				top: 53px;
 				transform: translateX(-50%);
-				width: 72px;
+				width: 55px;
+
+				@include breakpoint('small', 'max') {
+					top: 37px;
+    				left: 49%;
+				}
+			}
+
+			span {
+				@include breakpoint('small', 'max') {
+					font-size: 16px !important;
+					width: 239px;
+					line-height: 21px !important;
+				}
 			}
 
 			span,
@@ -39,17 +56,21 @@ body {
 			}
 
 			small {
-				@include rfs(14);
-				color: $textColorLittle;
-				margin-top: 12px;
+				font-size: 16px;
+				color: #474747;
+				margin-top: 7px;
+
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+				}
 			}
 
 			span {
 				@include breakpoint('small', 'max') {
-					@include rfs(18);
+					font-size: 14px;
 					display: inline-block;
 					text-align: center;
-					width: 245px;
+					width: 241px;
 				}
 			}
 		}
@@ -61,34 +82,60 @@ body {
 		}
 		.client-email {
 			@include breakpoint('small', 'max') {
-				width: 264px !important;
+				width: 100%!important;
 			}
 			float: none;
-			margin: 30px auto 0;
+			margin: 24px auto 0;
 			width: 320px!important;
 
 			&:before {
-				color: $textColor3;
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+				}
 				content: 'Digite seu e-mail';
-				font-family: 'Open sans';
 				text-align: center;
+				font-size: 16px;
+				color: #474747;
+				font-weight: 500;
+			}
+
+			.validate-erro {
+				font-size: 12px;
+				color: #000;
+				line-height: 18px;
+				display: block;
+				margin-top: 7px;
+
+				@include breakpoint('small', 'max') {
+					font-size: 10px;
+				}
 			}
 
 			#client-pre-email {
 				@include breakpoint('small', 'max') {
-					margin: 15px auto 20px;
-					width: 264px !important;
+					margin: 15px auto 24px;
+					width: 240px !important;
 				}
 				@include rfs(12);
 				color: $textColor3;
 				display: block;
 				font-weight: 500;
 				height: 45px;
-				margin: 0 auto;
+				margin: 15px auto 0;
 				padding-right: 20px;
 				position: relative;
 				text-align: center;
-				width: 300px;
+				width: 280px;
+				border: 1px solid #ccc;
+
+				&.is--error {
+					border: 1px solid #FF9696;
+
+					@include breakpoint('small', 'max') {
+						margin: 15px auto 0;
+						width: 240px !important;
+					}
+				}
 
 				&::placeholder {
 					@include rfs(12);
@@ -98,37 +145,47 @@ body {
 					top: 50%;
 				}
 
-				&.error {
-					border-color: $red-error;
-					box-shadow: none;
-				}
+				// &.error {
+				// 	border-color: $red-error;
+				// 	box-shadow: none;
+				// }
 			}
 			#btn-client-pre-email {
-				@include breakpoint('small', 'max') {
-					height: 32px;
-					margin: 0 auto;
-					right: 50%;
-					transform: translateX(50%);
-					width: 140px;
-				}
-				background-color: $green;
-				border: 2px solid $green;
-				display: block;
-				height: 32px;
+				background-color: #474747;
+				border: 2px solid #474747;
+				display: flex;
+    			height: 40px;
 				line-height: 0;
 				margin: 20px auto 0;
 				padding: 0 !important;
 				position: relative;
-				width: 140px;
+				width: 200px;
+
+				@include breakpoint('small', 'max') {
+					height: 40px;
+					margin: 0 auto;
+					right: 50%;
+					transform: translateX(50%);
+					width: 200px;
+				}
+
+				&.is--error {
+					margin: 13px auto 0;
+				}
 
 				span {
 					@include rfs(12);
 					color: #fff;
 					display: inline-block;
-					font-weight: 500;
+					font-weight: 700;
 					margin: 0 auto;
 					text-align: center;
 					width: 100px;
+					font-size: 16px;
+
+					@include breakpoint('small', 'max') {
+						font-size: 14px;
+					}
 				}
 			}
 		}
@@ -136,20 +193,30 @@ body {
 		.emailInfo {
 			@include breakpoint('small', 'max') {
 				@include breakpoint('extra-small', 'max') { width: 100%; }
-				padding: 20px 20px 15px 35px;
+				padding: 20px 12px 15px 12px;
 				width: 400px;
-
+				margin: 32px auto 0;
 			}
 			background-color: $bgcolor;
-			margin: 50px auto 0;
+			margin: 42px auto 0;
 			padding: 30px 85px 30px 55px;
 			width: 470px;
 
 			h3 {
-				@include rfs(12);
-				color: $textColor;
+				font-size: 14px;
+				color: #000;
 				font-weight: 500;
 				margin-top: 0;
+
+				@include breakpoint('small', 'max') {
+					font-size: 12px;
+				}
+			}
+
+			ul {
+				@include breakpoint('small', 'max') {
+					padding: 0 6px;
+				}
 			}
 
 			.icon-lock {
@@ -157,6 +224,7 @@ body {
 			}
 
 			.icon-ok {
+				margin-bottom: 3px;
 				&:before {
 					color: $textColor;
 					font-size: 7px;
@@ -169,17 +237,23 @@ body {
 			}
 
 			span {
-				@include rfs(12);
-				color: $textColorLittle;
+				font-size: 14px;
+				color: #000;
 				font-family: 'Open sans';
 				padding-left: 12px;
+
+				@include breakpoint('small', 'max') {
+					font-size: 12px;
+				}
 			}
 		}
 
 		#orderform-to-cart {
-			@include breakpoint('small', 'max') { width: 140px; }
-			@include rfs(12);
-			color: $textColor;
+			@include breakpoint('small', 'max') {
+				width: 160px;
+			}
+			font-size: 14px;
+			color: #474747;
 			display: inline-block;
 			font-weight: 500;
 			position: relative;
@@ -191,16 +265,12 @@ body {
 				@include icon-get('left-arrow');
 				font-size: 10px;
 				position: absolute;
-				right: 130px;
+				left: -5px;
 				top: 5px;
 			}
 		}
 
 		.help.error {
-			@include breakpoint('small', 'max') {
-				right: 0;
-				top: 75px;
-			}
 			@include rfs(10);
 			color: $red-error;
 			font-family: 'Open Sans';
@@ -208,6 +278,92 @@ body {
 			position: absolute;
 			right: 10px;
 			top: 65px;
+			display: none!important;
+		}
+
+		.modal-custom-login {
+			margin-top: 29px;
+			display: block;
+
+			@include breakpoint('small', 'max') {
+				margin-top: 79px;
+			}
+
+			&--title {
+				color: #969696;
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 19px;
+				margin-bottom: 19px;
+				display: block;
+
+				@include breakpoint('small', 'max') {
+					font-size: 14px;
+					width: 149px;
+					margin: 0 auto;
+					margin-bottom: 16px;
+				}
+			}
+
+			&--box {
+				display: flex;
+				justify-content: space-between;
+				width: 95%;
+				align-items: center;
+				margin: 0 auto;
+			}
+
+			&-btn {
+				border-radius: 20px;
+				height: 40px;
+				border: unset;
+				width: 48%;
+				font-size: 14px;
+				font-weight: 600;
+				line-height: 17px;
+				outline: 0;
+				display: flex;
+				justify-content: center;
+				position: relative;
+				padding: 5px 15px 5px 34px;
+
+				&.facebook_access {
+					background: #1877F1;
+
+					&:before {
+						content: '';
+						background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTciIHZpZXdCb3g9IjAgMCAxNyAxNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3IDguNUMxNyAzLjgwNjMgMTMuMTkzNyAwIDguNSAwQzMuODA2MyAwIDAgMy44MDYzIDAgOC41QzAgMTMuMTkzNyAzLjgwNjMgMTcgOC41IDE3QzguNTQ5OTMgMTcgOC41OTk2MSAxNi45OTkgOC42NDk0MSAxNi45OTgxVjEwLjM4MTJINi44MjMyNFY4LjI1MjkySDguNjQ5NDFWNi42ODY4QzguNjQ5NDEgNC44NzA0OCA5Ljc1ODIyIDMuODgxOTEgMTEuMzc4NCAzLjg4MTkxQzEyLjE1NDMgMy44ODE5MSAxMi44MjEyIDMuOTM5NzYgMTMuMDE1NiAzLjk2NTU3VjUuODYzODVIMTEuODk4NEMxMS4wMTcgNS44NjM4NSAxMC44NDYzIDYuMjgyNzggMTAuODQ2MyA2Ljg5NzQzVjguMjUyOTJIMTIuOTUzOUwxMi42NzkyIDEwLjM4MTJIMTAuODQ2M1YxNi42NzE2QzE0LjM5OTEgMTUuNjUzMSAxNyAxMi4zNzk4IDE3IDguNVoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=") no-repeat;
+						background-size: 100%;
+						display: block;
+						width: 17px;
+						height: 17px;
+						margin-right: 9px;
+						position: absolute;
+    					left: 16px;
+					}
+
+					&:hover {
+						color: white;
+					}
+				}
+
+				&.google_access {
+					color: #767074;
+					background: #FFFFFF;
+					border: 2px solid #D2D2D2;
+
+					&:before {
+						content: '';
+						background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMuNTQ1OTkgOS42NjkxOEwyLjk4OTA1IDExLjc0ODNMMC45NTM0MjEgMTEuNzkxNEMwLjM0NTA2OCAxMC42NjMgMCA5LjM3MjA1IDAgOC4wMDAxNUMwIDYuNjczNTQgMC4zMjI2MyA1LjQyMjUyIDAuODk0NTE0IDQuMzIwOTdIMC44OTQ5NTFMMi43MDcyMyA0LjY1MzIyTDMuNTAxMTIgNi40NTQ2M0MzLjMzNDk2IDYuOTM5MDQgMy4yNDQzOSA3LjQ1OTA1IDMuMjQ0MzkgOC4wMDAxNUMzLjI0NDQ2IDguNTg3NDEgMy4zNTA4MyA5LjE1MDA3IDMuNTQ1OTkgOS42NjkxOFoiIGZpbGw9IiNGQkJCMDAiLz4KPHBhdGggZD0iTTE1Ljg2MDIgNi41MDU1NUMxNS45NTIxIDYuOTg5NSAxNiA3LjQ4OTI5IDE2IDguMDAwMDhDMTYgOC41NzI4NCAxNS45Mzk4IDkuMTMxNTMgMTUuODI1MSA5LjY3MDQ1QzE1LjQzNTYgMTEuNTA0MyAxNC40MTggMTMuMTA1NyAxMy4wMDg0IDE0LjIzODlMMTMuMDA3OSAxNC4yMzg0TDEwLjcyNTMgMTQuMTIyTDEwLjQwMjIgMTIuMTA1MkMxMS4zMzc2IDExLjU1NjYgMTIuMDY4NiAxMC42OTgyIDEyLjQ1MzcgOS42NzA0NUg4LjE3NTc4VjYuNTA1NTVIMTIuNTE2MUgxNS44NjAyWiIgZmlsbD0iIzUxOEVGOCIvPgo8cGF0aCBkPSJNMTMuMDA4MyAxNC4yMzg2TDEzLjAwODcgMTQuMjM5QzExLjYzNzcgMTUuMzQxIDkuODk2MTYgMTYuMDAwNCA4LjAwMDMyIDE2LjAwMDRDNC45NTM2OCAxNi4wMDA0IDIuMzA0ODUgMTQuMjk3NSAwLjk1MzYxMyAxMS43OTE1TDMuNTQ2MTkgOS42NjkzQzQuMjIxNzkgMTEuNDcyNCA1Ljk2MTE2IDEyLjc1NTkgOC4wMDAzMiAxMi43NTU5QzguODc2OCAxMi43NTU5IDkuNjk3OTQgMTIuNTE5IDEwLjQwMjUgMTIuMTA1NEwxMy4wMDgzIDE0LjIzODZaIiBmaWxsPSIjMjhCNDQ2Ii8+CjxwYXRoIGQ9Ik0xMy4xMDY2IDEuODQxNzhMMTAuNTE0OSAzLjk2MzU2QzkuNzg1NjcgMy41MDc3NCA4LjkyMzY2IDMuMjQ0NDMgOC4wMDAxNCAzLjI0NDQzQzUuOTE0ODMgMy4yNDQ0MyA0LjE0MjkzIDQuNTg2ODUgMy41MDExNyA2LjQ1NDZMMC44OTQ5NjkgNC4zMjA5NEgwLjg5NDUzMUMyLjIyNTk5IDEuNzUzODcgNC45MDgyMiAwIDguMDAwMTQgMEM5Ljk0MTI3IDAgMTEuNzIxMSAwLjY5MTQ0OCAxMy4xMDY2IDEuODQxNzhaIiBmaWxsPSIjRjE0MzM2Ii8+Cjwvc3ZnPgo=");
+						display: block;
+						width: 16px;
+						height: 16px;
+						margin-right: 9px;
+						position: absolute;
+    					left: 16px;
+					}
+				}
+			}
 		}
 	}
 }

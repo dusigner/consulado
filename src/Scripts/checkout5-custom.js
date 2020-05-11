@@ -50,10 +50,12 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
+	// custom checkout login
+	require('modules/checkout/checkout-login');
 	// require('components/testeab-entrega');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
-	require('modules/customLogin');
+	// require('modules/customLogin');
 	require('modules/store/callcenter');
 	// require('modules/chaordic');
 	require('modules/counting-working-days');
@@ -74,8 +76,9 @@ $(document).on('ready', function() {
 			'reinput',
 			/* 'testeab-entrega', */
 			'checkout.default-message',
-			'customLogin',
+			// 'customLogin',
 			'callcenter',
+			'checkout-login'
 		],
 		function(
 			/*chaordic*/
