@@ -3,7 +3,7 @@
 .portal-notify-me-ref {
 	.notifyme-title {
 		@include rfs(18px);
-		color: #5B5B5B;
+		color: #5b5b5b;
 		font-weight: bold;
 		line-height: 24px;
 		margin-bottom: 0;
@@ -22,11 +22,17 @@
 			margin: 10px 0;
 			padding: 10px;
 
-			em { font-style: normal; }
+			em {
+				font-style: normal;
+			}
 		}
 
-		&.success { color: $txt-gray; }
-		&.error { color: $orange; }
+		&.success {
+			color: $txt-gray;
+		}
+		&.error {
+			color: $orange;
+		}
 	}
 
 	form p {
@@ -36,7 +42,7 @@
 		padding: 1em 0 1.5em 0;
 
 		a {
-			color: #8437A8;
+			color: #8437a8;
 			font-weight: 500;
 		}
 	}
@@ -47,7 +53,7 @@
 		@include singleTransition();
 		@include rfs(14px);
 		background-color: #fff;
-		border: 1px solid #E3E1E1;
+		border: 1px solid #e3e1e1;
 		border-radius: 4px;
 		color: $txt-gray;
 		font-weight: 200;
@@ -57,6 +63,9 @@
 			background-color: #fff;
 			border-color: $gray-d;
 			outline: none;
+		}
+		&.is--error {
+			margin: 13px auto 0;
 		}
 	}
 
@@ -71,20 +80,35 @@
 		width: 100%;
 
 		&:before {
-			content: ' ';
+			content: " ";
 			display: block;
 		}
-
-		&:focus { outline: none;}
+		.validate-erro {
+			font-size: 12px;
+			color: #000;
+			line-height: 18px;
+			display: block;
+			margin-top: 7px;
+			@include breakpoint("small", "max") {
+				font-size: 10px;
+			}
+		}
+		&:focus {
+			outline: none;
+		}
 	}
 
 	// Placeholder color
-	@include inputPlaceholderColor( $txt-gray );
+	@include inputPlaceholderColor($txt-gray);
 
 	// Esconder na barra de detalhes do produto
-	.prod-details-nav & { @include hide-conditional(); }
+	.prod-details-nav & {
+		@include hide-conditional();
+	}
 }
 
 .content_botoes_televendas {
-	.portal-notify-me-ref { display: none; }
+	.portal-notify-me-ref {
+		display: none;
+	}
 }
