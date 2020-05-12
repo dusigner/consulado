@@ -68,9 +68,9 @@ body.body-order-form .container-main {
 	@include breakpoint('small', 'max') {
 		margin-top: 20px;
 
-		#payment-data {
-			display: none;
-		}
+		// #payment-data {
+		// 	display: none;
+		// }
 
 		.cart-template.mini-cart.span4 {
 			// display: none;
@@ -394,7 +394,7 @@ body {
 				}
 			}
 			.client-pre-email {
-				padding: 0 20px;
+				// padding: 0 20px;
 
 				#btn-client-pre-email {
 					display: block;
