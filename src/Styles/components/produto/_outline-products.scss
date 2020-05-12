@@ -1,0 +1,44 @@
+@charset 'UTF-8';
+
+.outline-products {
+	&-description {
+		background: #FAF9F9;
+		padding: 15px;
+		display: block;
+		margin-bottom: 40px;
+
+		span {
+			font-size: 12px;
+			line-height: 17px;
+			display: block;
+			font-weight: 500;
+		}
+	}
+
+	&-changes {
+		&--title {
+			font-size: calc(0.8875rem + 0.51765vw);
+			color: #9aca3c;
+			margin: 0;
+		}
+
+		&--text {
+			font-size: 14px;
+			margin: 21px 0;
+		}
+
+		&--sub {
+			color: #5B5B5B;
+			display: block;
+			font-weight: 700;
+			font-size: 13px;
+			margin: 0 0 4px;
+		}
+
+		&-items {
+			span {
+				font-size: 14px;
+			}
+		}
+	}
+}

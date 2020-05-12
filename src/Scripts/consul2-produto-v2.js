@@ -18,8 +18,8 @@ import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/product/product-tags';
+import 'modules/product/outline-products';
 import 'modules/chaordic';
-import 'modules/product/outlineProducts';
 import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
@@ -44,7 +44,7 @@ Nitro.controller(
 		'notify-me',
 		'product-tags',
 		'dataLayer-product',
-		'outlineProducts',
+		'outline-products',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
