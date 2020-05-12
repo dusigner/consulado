@@ -331,23 +331,33 @@
 	};
 
 	.item {
+		align-content: start;
 		display: flex;
-		flex-direction: column;
+		flex-flow: wrap;
 		line-height: inherit;
 		max-width: 100%;
 		text-align: left;
 		width: auto;
 
-		a { display: block; }
+		.icon {
+			color: $purple;
+			font-size: 28px !important;
+			height: 32px;
+			width: 32px;
+
+		}
+		a {
+			color: $gray-d;
+			strong {
+				display: block;
+			}
+		 }
 	}
 }
 
 // Menu - Categorias
 .menu-category {
 	@include responsiveFont(20, 16, true);
-	border: 1px solid #c2c2c2;
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
 	display: none;
 	left: 0;
 	padding: 42px 30px 20px 30px;
@@ -428,28 +438,28 @@
 	}
 }
 
-$menu-colors: (
-	'gelar'      : #702f8f,
-	'cozinhar'   : #007dc3,
-	'lavar'      : #0fb6de,
-	'beber'      : #ec008c,
-	'refrescar'  : #fdb912,
-	'servicos'   : #f47921
-);
+// $menu-colors: (
+// 	'gelar'      : #702f8f,
+// 	'cozinhar'   : #007dc3,
+// 	'lavar'      : #0fb6de,
+// 	'beber'      : #ec008c,
+// 	'refrescar'  : #fdb912,
+// 	'servicos'   : #f47921
+// );
 
-@each $key, $value in $menu-colors {
-	.item-#{$key} {
-		& > a,
-		.icon { color: $value; }
+// @each $key, $value in $menu-colors {
+// 	.item-#{$key} {
+// 		& > a,
+// 		.icon { color: $value; }
 
-		&:hover .menu-subcategory a {
-			border-color: $value;
-			color:  $value;
+// 		&:hover .menu-subcategory a {
+// 			border-color: $value;
+// 			color:  $value;
 
-			&:hover { background-color: $value; }
-		}
-	}
-}
+// 			&:hover { background-color: $value; }
+// 		}
+// 	}
+// }
 
 .covid-shipping-guarantee-mobile {
 	align-items: center;
@@ -645,22 +655,6 @@ $menu-colors: (
 
 				&.open {
 					.icon-arrow-down { transform: rotate(180deg); }
-				}
-			}
-
-			.icon {
-				@include responsiveFont(36);
-				display: inline-block;
-				margin-right: 18px;
-				vertical-align: middle;
-				@include breakpoint(small, 'max') {
-					@include responsiveFont(20);
-				}
-			}
-
-			@each $key, $value in $menu-colors {
-				&.item-#{$key} {
-					a { color: $value; }
 				}
 			}
 		}
