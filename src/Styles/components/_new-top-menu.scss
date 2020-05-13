@@ -14,59 +14,71 @@
 }
 
 .top-navigation {
-	background: linear-gradient(90deg, #FAF9F9 50%, #fff 50%);
+	background: linear-gradient(90deg, #faf9f9 20%, #fff 0%);
 	border-top: none;
     bottom: none;
 	position: relative;
     z-index: 16;
 
+	.container {
+		padding: 0;
+	}
 	.menu-department {
 	//	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
 		display: flex;
 		justify-content: space-between;
 
-		// @-webkit-keyframes fadeInLeft {
-		// 	0% {
-		// 		-webkit-transform: translateX(-20px);
-		// 		opacity: 0;
-		// 		transform: translateX(-20px);
-		// 	}
+		@-webkit-keyframes fadeInLeft {
+			0% {
+				-webkit-transform: translateX(-20px);
+				opacity: 0;
+				transform: translateX(-20px);
+			}
 
-		// 	100% {
-		// 		-webkit-transform: translateX(0);
-		// 		opacity: 1;
-		// 		transform: translateX(0);
-		// 	}
-		// }
+			100% {
+				-webkit-transform: translateX(0);
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
 
-		// @keyframes fadeInLeft {
-		// 	0% {
-		// 		-ms-transform: translateX(-20px);
-		// 		-webkit-transform: translateX(-20px);
-		// 		opacity: 0;
-		// 		transform: translateX(-20px);
-		// 	}
+		@keyframes fadeInLeft {
+			0% {
+				-ms-transform: translateX(-20px);
+				-webkit-transform: translateX(-20px);
+				opacity: 0;
+				transform: translateX(-20px);
+			}
 
-		// 	100% {
-		// 		-ms-transform: translateX(0);
-		// 		-webkit-transform: translateX(0);
-		// 		opacity: 1;
-		// 		transform: translateX(0);
-		// 	}
-		// }
+			100% {
+				-ms-transform: translateX(0);
+				-webkit-transform: translateX(0);
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
 
-		// .fadeInLeft {
-		// 	-webkit-animation-name: fadeInLeft;
-		// 	animation-name: fadeInLeft;
-		// }
+		.fadeInLeft {
+			-webkit-animation-name: fadeInLeft;
+			animation-name: fadeInLeft;
+		}
 
 		.first-level {
-			animation: fadeInSlide 0.3s ease;
+			animation: fadeInLeft 0.3s ease;
 		}
 
 		& > .item:nth-child(5) {
 			white-space: nowrap;
 		}
+	}
+}
+
+body header {
+	.container {
+		padding: 0;
+	}
+	.cont-logo {
+		flex: 0 0 210px;
 	}
 }
 
@@ -310,7 +322,7 @@
 			border-top: 1px solid $gray;
 			display: flex;
 			flex-direction: column;
-			padding: 40px 0;
+			padding: 0;
 			text-align: left;
 
 		}
@@ -320,6 +332,7 @@
 //New submenu
 .submenu {
 	background-color: #fff;
+	padding-top: 10px;
 	position: absolute;
 	z-index: 5;
 
@@ -328,7 +341,14 @@
 		flex-flow: nowrap;
 		justify-content: space-between;
 		padding: 0;
-	};
+	}
+
+	a:first-of-type {
+		color: $gray-d;
+		font-size: 14px;
+		font-weight: normal;
+		line-height: 16px;
+	}
 
 	.item {
 		align-content: start;
@@ -336,6 +356,7 @@
 		flex-flow: wrap;
 		line-height: inherit;
 		max-width: 100%;
+		padding: 34px 0;
 		text-align: left;
 		width: auto;
 
@@ -346,12 +367,13 @@
 			width: 32px;
 
 		}
+
 		a {
-			color: $gray-d;
 			strong {
 				display: block;
 			}
 		 }
+
 	}
 }
 
@@ -363,19 +385,6 @@
 	padding: 42px 30px 20px 30px;
 	top: 100%;
 	width: 100%;
-
-	&:before {
-		background-color: #fff;
-		border: 1px solid #c2c2c2;
-		border-bottom: 0;
-		border-top-left-radius: 20px;
-		border-top-right-radius: 20px;
-		height: 60px;
-		left: -1px;
-		right: -1px;
-		top: -60px;
-		z-index: 100;
-	}
 
 	&:hover > .item { opacity: .6; }
 
@@ -423,43 +432,36 @@
 	@include breakpoint(large, 'max') { width: 100%; }
 
 	.item {
+		border-bottom: 1px solid #E3E1E1;
 		display: flex;
-		margin-right: 8px;
+		margin-block-end: 0;
+		margin-right: 25px;
+		padding: 16px 0;
 
 		a {
-			@include rfs(15);
+			@include rfs(13);
 			color: #736c6b;
-			font-weight: 200;
-			padding: 2px 6px;
+			font-weight: 500;
+			line-height: normal;
+			padding: 2px 0;
 			transition: .4s all ease;
 		}
+		&.item-servicos {
+			background-color: #FAF9F9;
+			padding-left: 15px;
+		 }
 
-		&:hover a:hover { color: #fff; }
+		&:last-of-type {
+			border: 0;
+		}
 	}
 }
+.item-servicos {
 
-// $menu-colors: (
-// 	'gelar'      : #702f8f,
-// 	'cozinhar'   : #007dc3,
-// 	'lavar'      : #0fb6de,
-// 	'beber'      : #ec008c,
-// 	'refrescar'  : #fdb912,
-// 	'servicos'   : #f47921
-// );
-
-// @each $key, $value in $menu-colors {
-// 	.item-#{$key} {
-// 		& > a,
-// 		.icon { color: $value; }
-
-// 		&:hover .menu-subcategory a {
-// 			border-color: $value;
-// 			color:  $value;
-
-// 			&:hover { background-color: $value; }
-// 		}
-// 	}
-// }
+	& ul li:nth-child(-n+2):nth-last-child(-n+2) {
+		margin-right: 0;
+	}
+}
 
 .covid-shipping-guarantee-mobile {
 	align-items: center;
