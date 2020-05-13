@@ -4,6 +4,32 @@ $textColor3: #595453;
 $bgcolor: #FAF9F9;
 $red-error: #9B1C29;
 
+body.validate-continue {
+	.validate-erro-continue {
+		padding-bottom: 21px;
+		font-size: 12px;
+		color: #B52130;
+		line-height: 18px;
+		display: block;
+		margin-top: 7px;
+	}
+
+	.client-pre-email label:before {
+		top: 93px!important;
+		left: 49%;
+	}
+
+	.step.accordion-group.client-profile-data.active {
+		margin-bottom: 77px;
+	}
+}
+
+body.validate-email {
+	#shipping-data {
+		margin-top: 46px;
+	}
+}
+
 body {
 	.client-pre-email {
 		border-top: none;
@@ -99,15 +125,17 @@ body {
 				font-weight: 500;
 			}
 
-			.validate-erro {
+			.validate-erro-email {
 				font-size: 12px;
-				color: #000;
+				color: #B52130;
 				line-height: 18px;
 				display: block;
-				margin-top: 7px;
+				width: 80%;
+   				margin: 10px auto 0;
 
 				@include breakpoint('small', 'max') {
-					font-size: 10px;
+				width: 70%;
+				font-size: 9px;
 				}
 			}
 

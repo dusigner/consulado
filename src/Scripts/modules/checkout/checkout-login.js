@@ -91,8 +91,16 @@ Nitro.module('checkout-login', function(){
 		$('.pre-email .client-email').append(templates.defaultLayout);
 	};
 
+	this.removeDefault = () => {
+		$('body').removeClass('validate-continue');
+		$('body').removeClass('validate-email');
+		$('.validate-erro-continue').css('display', 'none');
+		$('.client-email .validate-erro-email').css('display', 'none');
+	}
+
 	this.htmlErrorValidadeEmail = () => {
-		$('.client-email #client-pre-email').after('<span style="display: none;" class="validate-erro">Não foi possível realizar o login, por favor tente novamente ou escolha outra forma de login.</span>');
+		$('.row-fluid.orderform-template #orderform-to-cart').before('<span style="display: none;" class="validate-erro-continue">Não foi possível realizar o login, por favor tente </br> novamente ou escolha outra forma de login.</span>');
+		$('.client-email #client-pre-email').after('<span style="display: none;" class="validate-erro-email"><strong>Insira um email válido: </strong> Inclua um “@” no endereço. “joao” está com um “@” faltando.</span>');
 	};
 
 	this.validateEmail = () => {
@@ -104,8 +112,22 @@ Nitro.module('checkout-login', function(){
 			var $illegalChars= /[\(\)\<\>\,\;\:\\\/\"\[\]]/
 
 			if(!($emailFilter.test($email))||$email.match($illegalChars)) {
-				$('.client-email #client-pre-email, .client-email #btn-client-pre-email').addClass('is--error');
-				$('.client-email .validate-erro').css('display', 'block');
+
+				if ( $email.length ) {
+					$('.client-email #client-pre-email, .client-email #btn-client-pre-email').addClass('is--error');
+					$('.validate-erro-continue').css('display', 'none');
+					$('body').removeClass('validate-continue');
+					$('body').addClass('validate-email');
+					$('.client-email .validate-erro-email').css('display', 'block');
+				} else {
+					$('.client-email #client-pre-email, .client-email #btn-client-pre-email').removeClass('is--error');
+					$('.client-email .validate-erro-email').css('display', 'none');
+					$('body').removeClass('validate-email');
+					$('body').addClass('validate-continue');
+					$('.validate-erro-continue').css('display', 'block');
+				}
+			} else {
+				self.removeDefault();
 			}
 		});
 	};
@@ -135,6 +157,7 @@ Nitro.module('checkout-login', function(){
 	};
 
 	this.redirectModalUrl = () => {
+		self.removeDefault();
 		location.href = '/checkout/#/profile';
 	};
 
