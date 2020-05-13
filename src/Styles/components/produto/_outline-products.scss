@@ -42,4 +42,20 @@
 			}
 		}
 	}
+
+	&-item {
+		display: flex;
+
+		&-image {
+			width: 100px;
+			height: auto;
+			display: flex;
+			align-items: center;
+
+			#outlineProducts-image {
+				width: 90px;
+				height: auto;
+			}
+		}
+	}
 }

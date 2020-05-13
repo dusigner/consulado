@@ -14,14 +14,14 @@ Nitro.module('outline-products', function() {
 				<p class="outline-products-changes--sub">O que mudou:</p>
 				<ul class="outline-products-changes-items"></ul>
 			</div>
-			<div class="outline-products-item">
+			<a class="outline-products-item" id="outlineProducts-link" href="">
 				<div class="outline-products-item-image">
 					<img id="outlineProducts-image" src="" alt="product">
 				</div>
 				<div class="outline-products-item-info">
 					<h2 id="outlineProducts-name"></h2>
 				</div>
-			</div>
+			</a>
 		</div>
 		`);
 
@@ -67,7 +67,9 @@ Nitro.module('outline-products', function() {
 							var $productLink = $data.link;
 							var $productReference = $data.productReference;
 							var $productImage = $data.items[0].images[0].imageUrl;
+
 							$('#outlineProducts-name').html($productName);
+							$('#outlineProducts-link').attr('href', $productLink);
 							$('#outlineProducts-image').attr('src', $productImage);
 						}
 					})
