@@ -102,7 +102,7 @@ Nitro.module('checkout-login', function(){
 
 	this.htmlErrorValidadeEmail = () => {
 		$('.row-fluid.orderform-template #orderform-to-cart').before('<span style="display: none;" class="validate-erro-continue">Não foi possível realizar o login, por favor tente </br> novamente ou escolha outra forma de login.</span>');
-		$('.client-email #client-pre-email').after('<span style="display: none;" class="validate-erro-email"><strong>Insira um email válido: </strong> Inclua um “@” no endereço. “joao” está com um “@” faltando.</span>');
+		$('.client-email #client-pre-email').after('<span style="display: none;" class="validate-erro-email"><strong>Insira um email válido: </strong> Inclua um “@” no endereço. "<span id="validate-erro-email-message"></span>" está com um “@” faltando.</span>');
 	};
 
 	this.validateEmail = () => {
@@ -119,6 +119,7 @@ Nitro.module('checkout-login', function(){
 					$('.client-email #client-pre-email, .client-email #btn-client-pre-email').addClass('is--error');
 					$('.validate-erro-continue').css('display', 'none');
 					$('body').removeClass('validate-continue');
+					$('#validate-erro-email-message').html($email);
 					$('body').addClass('validate-email');
 					$('.client-email .validate-erro-email').css('display', 'block');
 				} else {
