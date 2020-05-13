@@ -127,6 +127,7 @@ Nitro.module('checkout-login', function(){
 					$('body').removeClass('validate-email');
 					$('body').addClass('validate-continue');
 					$('.validate-erro-continue').css('display', 'block');
+					$('html').scrollTop(0)
 				}
 			} else {
 				self.removeDefault();
