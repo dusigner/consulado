@@ -31,6 +31,8 @@ Nitro.module('checkout-login', function(){
 		setEnviroment();
 
 		function setEnviroment () {
+			$('#client-pre-email').get(0).type = 'text';
+
 			self.request(routes.getToken, userInfos.initialCallback)
 				.done(function(response) {
 					userInfos.authenticationToken = response.authenticationToken;
