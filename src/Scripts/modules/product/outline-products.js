@@ -1,58 +1,74 @@
 'use strict';
 Nitro.module('outline-products', function() {
 	this.init = function() {
-		var _product_id = skuJson_0.productId;
+		var $product_id = skuJson_0.productId;
 
 		$('#BuyButton').after(`
 		<div id="outlineProducts" class="outline-products">
-			<div class="outline-products-description"></div>
+			<div class="outline-products-description">
+				<p id="outlineProducts-description"></p>
+			</div>
 			<div class="outline-products-changes">
 				<h3 class="outline-products-changes--title">Produto fora de linha</h3>
 				<p class="outline-products-changes--text">Confira as opções de produtos similares.</p>
 				<p class="outline-products-changes--sub">O que mudou:</p>
 				<ul class="outline-products-changes-items"></ul>
 			</div>
+			<div class="outline-products-item">
+				<div class="outline-products-item-image">
+					<img id="outlineProducts-image" src="" alt="product">
+				</div>
+				<div class="outline-products-item-info">
+					<h2 id="outlineProducts-name"></h2>
+				</div>
+			</div>
 		</div>
 		`);
 
-		var _sku = '';
+		var $sku = '';
 
 		$.ajax({
 			type: 'GET',
 			async: true,
 			url:
-            `/api/catalog_system/pub/products/search?fq=productId:${_product_id}`,
+            `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
 			success: function (data) {
 				if ( data[0][`Produtos Substitutos`] ) {
 					console.log(data[0]);
 
-					_sku = data[0][`Produtos Substitutos`];
-					var _skuChange = data[0][`O que mudou?`][0];
-					var _skuChangeArray = _skuChange.split(',');
+					$sku = data[0][`Produtos Substitutos`];
+					var $skuChange = data[0][`O que mudou?`][0];
+					var $skuChangeArray = $skuChange.split(',');
 
-					var _skuDescription = data[0][`Mensagem: Descrição`][0];
+					var $skuDescription = data[0][`Mensagem: Descrição`][0];
 
-					$('#outlineProducts .outline-products-description').append(`<span>${_skuDescription}</span>`);
+					$('#outlineProducts .outline-products-description #outlineProducts-description').html($skuDescription);
 
-					$.each(_skuChangeArray, function(key, value) {
+					$.each($skuChangeArray, function(key, value) {
 						$('#outlineProducts .outline-products-changes-items').append(`<li><span>${value}</span></li>`);
 					})
 				}
 			}
 		})
 		setInterval(function () {
-			if ( _sku.length) {
+			if ( $sku.length) {
 				if ( !$('body').hasClass('is--product') ) {
 					$('body').addClass('is--product')
 					$.ajax({
 						async: true,
 						type: 'GET',
 						url:
-                        `/api/catalog_system/pub/products/search?fq=skuId:${_sku}`,
+                        `/api/catalog_system/pub/products/search?fq=skuId:${$sku}`,
 						success: function (data) {
+							var $data = data[0];
+
 							console.log(data);
-							var _name = data[0].productName;
-							$('#relacionados-top .relacionados-title').append(`<span>nomee: ${_name}</span>`);
+							var $productName = $data.productTitle;
+							var $productLink = $data.link;
+							var $productReference = $data.productReference;
+							var $productImage = $data.items[0].images[0].imageUrl;
+							$('#outlineProducts-name').html($productName);
+							$('#outlineProducts-image').attr('src', $productImage);
 						}
 					})
 				}
