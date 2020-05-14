@@ -21,7 +21,6 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
-import 'modules/product/load-products';
 
 Nitro.controller(
 	'produto-v2',
@@ -46,7 +45,6 @@ Nitro.controller(
 		'product-tags',
 		'dataLayer-product',
 		'outline-products',
-		'load-products',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,

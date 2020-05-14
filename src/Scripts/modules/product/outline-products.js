@@ -2,14 +2,24 @@
 
 import floatToCurrency from 'components/float-to-currency';
 
-Nitro.module('outline-products', function() {
-	this.init = function() {
-		var $product_id = skuJson_0.productId;
+Nitro.module('outline-products',function() {
+	var self = this
 
+	this.init = function() {
+		this.htmlProductsOutline();
+		this.searchProductInfo();
+		this.toggleDescriptionMobile();
+	};
+
+	this.htmlProductsOutline = () => {
 		$('#BuyButton').after(`
 		<div id="outlineProducts" class="outline-products">
 			<div class="outline-products-description">
 				<p id="outlineProducts-description"></p>
+				<p class="outline-products-description-text">
+					Descrição do produto
+					<span id="outlineProducts-description-mobile"></span>
+				</p>
 			</div>
 			<div class="outline-products-changes">
 				<h3 class="outline-products-changes--title">Produto fora de linha</h3>
@@ -36,6 +46,10 @@ Nitro.module('outline-products', function() {
 			</a>
 		</div>
 		`);
+	};
+
+	this.searchProductInfo = () => {
+		var $product_id = skuJson_0.productId;
 
 		var $sku = '';
 
@@ -50,20 +64,29 @@ Nitro.module('outline-products', function() {
 
 					$('body').addClass('product-outline-accept')
 
+
+
 					$sku = data[0][`Produtos Substitutos`];
+
 					var $skuChange = data[0][`O que mudou?`][0];
 					var $skuChangeArray = $skuChange.split(',');
 
 					var $skuDescription = data[0][`Mensagem: Descrição`][0];
 
 					$('#outlineProducts .outline-products-description #outlineProducts-description').html($skuDescription);
+					if ( $(window).width() < 1024 ) {
+						$('#outlineProducts .outline-products-description #outlineProducts-description-mobile').html($skuDescription);
+					}
 
 					$.each($skuChangeArray, function(key, value) {
 						$('#outlineProducts .outline-products-changes-items').append(`<li><span>${value}</span></li>`);
 					})
+				} else {
+					self.loadProducts();
 				}
 			}
 		})
+
 		setInterval(function () {
 			if ( $sku.length) {
 				if ( !$('body').hasClass('product-outline') ) {
@@ -105,6 +128,51 @@ Nitro.module('outline-products', function() {
 				}
 			}
 		}, 100);
-	};
+	}
+
+	this.toggleDescriptionMobile = () => {
+		if ( $(window).width() < 1024 ) {
+			$('body').on('click', '.outline-products-description-text', function(){
+				$(this).toggleClass('is--active');
+				$('#outlineProducts-description-mobile').toggleClass('is--active');
+			})
+		}
+	}
+
+	this.loadProducts = () => {
+		if ( skuJson.available === true ) {
+			$('.secure').show();
+			$('body').addClass('produto-disponivel');
+		} else {
+			if ( !$('body').hasClass('product-outline-accept') ) {
+				$('body').addClass('produto-indisponivel');
+				$('.calc-frete').hide();
+				$('.secure').hide();
+				$('.cta-containers').hide();
+				$('.prod-more-info').hide();
+			}
+		}
+
+		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
+		if ($(window).width() <= 1024) {
+
+			if (!$('body').hasClass('produto-indisponivel')) {
+				$('.product-info-bar').css('display', 'block');
+				$(window).scroll(function(e) {
+					e.preventDefault();
+					var _pos = $(window).scrollTop();
+
+					if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
+						$('.product-info-bar').addClass('formas-pagamento-is--active');
+
+					} else {
+						$('.product-info-bar').removeClass('formas-pagamento-is--active');
+						$('.formas-pagamento-container').removeClass('is--active');
+					}
+				})
+			}
+		}
+	}
+
 	this.init();
 });

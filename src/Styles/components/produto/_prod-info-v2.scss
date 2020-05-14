@@ -26,14 +26,18 @@ body.produto-disponivel,
 body.produto-indisponivel {
 	.prod-info {
 		display: block;
+		@include breakpoint('medium', 'max') {
+			display: flex;
+			flex-direction: column;
+		}
 	}
 }
 
 .prod-info {
-	@include breakpoint('medium', 'max') {
-		display: flex;
-		flex-direction: column;
-	}
+	// @include breakpoint('medium', 'max') {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// }
 	padding: 0;
 	position: relative;
 	display: none;
