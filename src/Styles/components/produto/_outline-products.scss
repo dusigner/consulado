@@ -1,5 +1,22 @@
 @charset 'UTF-8';
 
+body.product-outline {
+	.prod-info {
+		display: block;
+
+		.formas-pagamento-container,
+		.prod-sku-options,
+		.descricao-produto,
+		.produtos-adicionais,
+		#BuyButton,
+		.calc-frete,
+		.cta-containers,
+		.row.prod-more-info {
+			display: none;
+		}
+	}
+}
+
 .outline-products {
 	&-description {
 		background: #FAF9F9;
@@ -45,7 +62,7 @@
 
 	&-item {
 		display: flex;
-		width: 79%;
+		width: 352px;
 		box-shadow: 1px 1px 7px 1px #c7c7c747;
 		padding: 8px 23px 8px 11px;
 		margin-top: 15px;
@@ -74,11 +91,42 @@
 					font-size: 13px;
 					font-weight: bold;
 					line-height: 16px;
+					margin: 0;
 
 					#outlineProducts-reference {
 						font-weight: 400;
 						margin-left: 13px;
 					}
+				}
+			}
+
+			&--price {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 10px 0 5px;
+
+				h3 {
+					margin: 0;
+				}
+
+				#outlineProducts-priceOf {
+					color: #8437A8;
+					font-weight: 300;
+					font-size: 13px;
+				}
+
+				#outlineProducts-price {
+					color: #9ACA3B;
+					font-size: 15px;
+				}
+			}
+
+			&--priceBillet {
+				#outlineProducts-priceBillet {
+					font-size: 11px;
+					font-weight: 500;
+					margin: 0;
 				}
 			}
 		}

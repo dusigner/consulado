@@ -25,6 +25,13 @@ Nitro.module('outline-products', function() {
 					<div class="outline-products-item-info--name">
 
 					</div>
+					<div class="outline-products-item-info--price">
+						<h3 id="outlineProducts-priceOf"></h3>
+						<h3 id="outlineProducts-price"></h3>
+					</div>
+					<div class="outline-products-item-info--priceBillet">
+						<h3 id="outlineProducts-priceBillet"></h3>
+					</div>
 				</div>
 			</a>
 		</div>
@@ -40,6 +47,8 @@ Nitro.module('outline-products', function() {
 			success: function (data) {
 				if ( data[0][`Produtos Substitutos`] ) {
 					console.log(data[0]);
+
+					$('body').addClass('product-outline-accept')
 
 					$sku = data[0][`Produtos Substitutos`];
 					var $skuChange = data[0][`O que mudou?`][0];
@@ -57,8 +66,8 @@ Nitro.module('outline-products', function() {
 		})
 		setInterval(function () {
 			if ( $sku.length) {
-				if ( !$('body').hasClass('is--product') ) {
-					$('body').addClass('is--product')
+				if ( !$('body').hasClass('product-outline') ) {
+					$('body').addClass('product-outline')
 					$.ajax({
 						async: true,
 						type: 'GET',
@@ -78,13 +87,19 @@ Nitro.module('outline-products', function() {
 
 							console.log($productPrice, $productPriceOf, $productPriceBillet)
 
+							// image/link
+							$('#outlineProducts-link').attr('href', $productLink);
+							$('#outlineProducts-image').attr('src', $productImage);
+							// name
 							$('.outline-products-item-info--name').append(`
 								<h2 id="outlineProducts-name">${$productName}
 								<span id="outlineProducts-reference">${$productReference}</span>
 								</h2>
 							`);
-							$('#outlineProducts-link').attr('href', $productLink);
-							$('#outlineProducts-image').attr('src', $productImage);
+							// price
+							$('#outlineProducts-priceOf').html(`De ${$productPriceOf}`);
+							$('#outlineProducts-price').html(`Por ${$productPrice}`);
+							$('#outlineProducts-priceBillet').html(`ou ${$productPrice} em até 12x de ${$productPriceBillet} s/ juros`);
 						}
 					})
 				}
