@@ -45,16 +45,41 @@
 
 	&-item {
 		display: flex;
+		width: 79%;
+		box-shadow: 1px 1px 7px 1px #c7c7c747;
+		padding: 8px 23px 8px 11px;
+		margin-top: 15px;
 
 		&-image {
 			width: 100px;
 			height: auto;
 			display: flex;
 			align-items: center;
+			padding-right: 10px;
 
 			#outlineProducts-image {
-				width: 90px;
+				width: 82px;
 				height: auto;
+			}
+		}
+
+		&-info {
+
+			&--name {
+				display: flex;
+
+				#outlineProducts-name {
+					color: #5B5B5B;
+					font: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial, sans-serif;
+					font-size: 13px;
+					font-weight: bold;
+					line-height: 16px;
+
+					#outlineProducts-reference {
+						font-weight: 400;
+						margin-left: 13px;
+					}
+				}
 			}
 		}
 	}

@@ -1,4 +1,7 @@
 'use strict';
+
+import floatToCurrency from 'components/float-to-currency';
+
 Nitro.module('outline-products', function() {
 	this.init = function() {
 		var $product_id = skuJson_0.productId;
@@ -19,7 +22,9 @@ Nitro.module('outline-products', function() {
 					<img id="outlineProducts-image" src="" alt="product">
 				</div>
 				<div class="outline-products-item-info">
-					<h2 id="outlineProducts-name"></h2>
+					<div class="outline-products-item-info--name">
+
+					</div>
 				</div>
 			</a>
 		</div>
@@ -67,8 +72,17 @@ Nitro.module('outline-products', function() {
 							var $productLink = $data.link;
 							var $productReference = $data.productReference;
 							var $productImage = $data.items[0].images[0].imageUrl;
+							var $productPrice = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price);
+							var $productPriceOf = floatToCurrency($data.items[0].sellers[0].commertialOffer.ListPrice);
+							var $productPriceBillet = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price / 12);
 
-							$('#outlineProducts-name').html($productName);
+							console.log($productPrice, $productPriceOf, $productPriceBillet)
+
+							$('.outline-products-item-info--name').append(`
+								<h2 id="outlineProducts-name">${$productName}
+								<span id="outlineProducts-reference">${$productReference}</span>
+								</h2>
+							`);
 							$('#outlineProducts-link').attr('href', $productLink);
 							$('#outlineProducts-image').attr('src', $productImage);
 						}
