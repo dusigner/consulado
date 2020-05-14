@@ -60,7 +60,6 @@ Nitro.module('notify-me', function() {
 			$('#notifymeClientEmail').removeClass('is--error');
 			$('.sku-notifyme-form .validate-erro').css('display', 'none');
 		}
-
 	});
 
 	$('.portal-notify-me-ref').on('notifyMeSubmitted.vtex', function() {

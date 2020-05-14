@@ -18,6 +18,7 @@ import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/product/product-tags';
+import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
 
@@ -43,6 +44,7 @@ Nitro.controller(
 		'notify-me',
 		'product-tags',
 		'dataLayer-product',
+		'outline-products',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -67,17 +69,18 @@ Nitro.controller(
 
 		// Exibe Informação de "Compra segura" quando o
 		// botão comprar estiver exibindo na página
-		if ( skuJson.available === true ) {
-			$('.secure').show();
-			$('body').addClass('produto-disponivel');
-		} else {
-			$('body').addClass('produto-indisponivel');
-			$('.calc-frete').hide();
-			$('.secure').hide();
-			$('.cta-containers').hide();
-			$('.prod-more-info').hide();
-
-		}
+		// if ( skuJson.available === true ) {
+		// 	$('.secure').show();
+		// 	$('body').addClass('produto-disponivel');
+		// } else {
+		// 	if ( !$('body').hasClass('product-outline') ) {
+		// 		$('body').addClass('produto-indisponivel');
+		// 		$('.calc-frete').hide();
+		// 		$('.secure').hide();
+		// 		$('.cta-containers').hide();
+		// 		$('.prod-more-info').hide();
+		// 	}
+		// }
 
 		var $reference = $('.reference'),
 			$productSku = $('.productSku');
@@ -143,24 +146,25 @@ Nitro.controller(
 		});
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
-		if ($(window).width() <= 1024) {
+		// if ($(window).width() <= 1024) {
 
-			if (!$('body').hasClass('produto-indisponivel')) {
-				$('.product-info-bar').css('display', 'block');
-				$(window).scroll(function(e) {
-					e.preventDefault();
-					var _pos = $(window).scrollTop();
+		// 	if (!$('body').hasClass('produto-indisponivel')) {
+		// 		$('.product-info-bar').css('display', 'block');
+		// 		$(window).scroll(function(e) {
+		// 			e.preventDefault();
+		// 			var _pos = $(window).scrollTop();
 
-					if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
-						$('.product-info-bar').addClass('formas-pagamento-is--active');
+		// 			if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
+		// 				$('.product-info-bar').addClass('formas-pagamento-is--active');
 
-					} else {
-						$('.product-info-bar').removeClass('formas-pagamento-is--active');
-						$('.formas-pagamento-container').removeClass('is--active');
-					}
-				})
-			}
-		}
+		// 			} else {
+		// 				$('.product-info-bar').removeClass('formas-pagamento-is--active');
+		// 				$('.formas-pagamento-container').removeClass('is--active');
+		// 			}
+		// 		})
+		// 	}
+		// }
+
 		const $document = $(document),
 			$cepInput = '#calculoFrete .prefixo input';
 
