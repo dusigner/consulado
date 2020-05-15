@@ -147,7 +147,20 @@ body.produto {
 			z-index: 9999;
 
 			@include breakpoint('small', 'max') {
-				display: none!important;
+				background-color: #9aca3c;
+				border: 1px solid #9aca3c;
+				border-radius: 40px;
+				color: #fff;
+				display: block;
+				font-size: 15px;
+				font-weight: normal;
+				margin: 0;
+				padding: 12px 20px;
+				text-align: center;
+				z-index: 9999;
+				line-height: 6px;
+				height: 32px;
+				margin-top: 15px;
 			}
 		}
 
@@ -180,7 +193,15 @@ body.produto-indisponivel {
 
 	.sku-notifyme { display: block !important; }
 
-	#BuyButton .buy-button { display: none; }
+	#BuyButton .buy-button {
+		display: none;
+	}
+}
+
+#BuyButton .buy-button.buy-button-ref {
+	@include breakpoint ('small', 'max') {
+		display: none!important;
+	}
 }
 
 .social {
