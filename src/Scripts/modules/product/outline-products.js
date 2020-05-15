@@ -146,6 +146,7 @@ Nitro.module('outline-products',function() {
 		} else {
 			if ( !$('body').hasClass('product-outline-accept') ) {
 				$('body').addClass('produto-indisponivel');
+				$('.portal-notify-me-ref .subtitle-page').html('Confira as opções de produtos similares ou seja avisado quando estifer disponível');
 				$('.calc-frete').hide();
 				$('.secure').hide();
 				$('.cta-containers').hide();
