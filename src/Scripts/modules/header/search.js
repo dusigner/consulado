@@ -123,10 +123,10 @@ Nitro.module('search', function() {
 								if ( !$('.ac-container').hasClass('is--search')) {
 									$('.ac-container').addClass('is--search');
 									var closeSearch = document.querySelector('.ac-title-top-search');
-									closeSearch.append($.parseHTML('<p class="icon-close">X</p>')[0]);
+									closeSearch.append($.parseHTML('<p type="button" class=".icon-close" style="margin: 3px; color: #9aca3c; font-weight: bold; cursor: pointer;">X</p>')[0]);
 									closeSearch.style.display = 'flex'
 									closeSearch.style.justifyContent= 'space-between'
-									closeSearch.style.fontWeight= 'bold'
+
 									document.querySelector('.icon-close').addEventListener('click', function(){
 										document.querySelector('.ac-container').style.display = 'none'
 									})
