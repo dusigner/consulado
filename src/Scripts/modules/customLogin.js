@@ -209,7 +209,7 @@ Nitro.module('customLogin', function() {
 										'</div>' +
 										'<div class="custom-login-buttons--checkbox">' +
 										'<input type="checkbox" class="custom-login-btn-check" value="Concordo">' +
-										'<span>Li e concordo com os <a href="https://consul.custhelp.com/app/answers/detail/a_id/511" target="_blank">termos e condições</a></span>' +
+										'<span>Li e concordo com os <a href="http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Politica_de_Privacidade_CONSUL.pdf" target="_blank">termos e condições</a></span>' +
 										'</div>' +
 										'<div class="custom-login-buttons--action--box">' +
 										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
