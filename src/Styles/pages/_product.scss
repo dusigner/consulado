@@ -145,6 +145,10 @@ body.produto {
 			padding: 12px 20px;
 			text-align: center;
 			z-index: 9999;
+
+			@include breakpoint('small', 'max') {
+				display: none!important;
+			}
 		}
 
 		.btn_click_call {
