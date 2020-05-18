@@ -29,6 +29,24 @@ body.product-outline {
 // }
 
 .outline-products {
+	.is--mobile {
+		@include breakpoint('small', 'min') {
+			display: none;
+		}
+	}
+
+	.outline-products-changes--title {
+		@include breakpoint('small', 'max') {
+			margin-bottom: 14px;
+		}
+	}
+
+	.is--desktop {
+		@include breakpoint('small', 'max') {
+			display: none;
+		}
+	}
+
 	&-description {
 		background: #FAF9F9;
 		padding: 15px;
