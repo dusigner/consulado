@@ -34,6 +34,56 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		}
 
 	}
+
+	.box-produto {
+		&:hover {
+			.promo-destaque__bg {
+				transform: translateX(-148px);
+			}
+		}
+	}
+
+	.promo-destaque {
+		&__icon {
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			background-size: 18px !important;
+			height: 18px;
+			left: 8px;
+			top: 50%;
+			transform: translateY(-50%);
+			transition: opacity .2s ease;
+			width: 18px;
+		}
+
+		&__text {
+			font-size: 6px;
+			left: 0;
+			line-height: 100%;
+			padding-left: 33px;
+			text-align: left;
+			text-indent: 0;
+			transition: color .2s ease, transform .2s ease;
+			z-index: 1;
+		}
+
+		&__bg {
+			border-radius: 4px;
+			left: 100%;
+			transform: translateX(-80px);
+			transition: transform .2s ease;
+			width: 100%;
+		}
+
+		&__price {
+			font-size: 10px;
+			color: #fff;
+			line-height: 13px;
+			right: 14px;
+			z-index: 10;
+		}
+	}
+
 	.notifyme-button-ok {
 		@include rfs(15);
 		height: 35px;
@@ -72,9 +122,9 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	margin-top: 22px;
 	max-width: 100%;
 	width: 460px;
-	.promo-destaque  {
-		display: none;
-	}
+	// .promo-destaque  {
+	// 	display: none;
+	// }
 	.relacionados-title {
 		display: none;
 	}
@@ -210,8 +260,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 				}
 			}
 		}
-		.flag,
-		.promo-destaque,
+
 		.ts-shelf-container {
 			display: none;
 		}
@@ -254,9 +303,6 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 						@include rfs(18);
 						line-height: 10px;
 						margin: 12px 0;
-					}
-					.off {
-						display: none !important;
 					}
 				}
 			}
