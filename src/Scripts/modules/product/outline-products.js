@@ -14,6 +14,7 @@ Nitro.module('outline-products',function() {
 	this.htmlProductsOutline = () => {
 		$('#BuyButton').after(`
 		<div id="outlineProducts" class="outline-products">
+			<h3 class="outline-products-changes--title is--mobile">Produto fora de linha</h3>
 			<div class="outline-products-description">
 				<p id="outlineProducts-description"></p>
 				<p class="outline-products-description-text">
@@ -22,7 +23,7 @@ Nitro.module('outline-products',function() {
 				</p>
 			</div>
 			<div class="outline-products-changes">
-				<h3 class="outline-products-changes--title">Produto fora de linha</h3>
+				<h3 class="outline-products-changes--title is--desktop">Produto fora de linha</h3>
 				<p class="outline-products-changes--text">Confira as opções de produtos similares.</p>
 				<p class="outline-products-changes--sub">O que mudou:</p>
 				<ul class="outline-products-changes-items"></ul>
