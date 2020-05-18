@@ -60,6 +60,16 @@
 @import 'components/produto/vitrine-relacionada';
 // @import 'components/produto/quiz-install';
 
+.produto-v2.produto-disponivel {
+	.formas-pagamento-container {
+		display: block;
+	}
+
+	.prod-sku-options {
+		display: flex;
+	}
+}
+
 .produto-v2.produto-indisponivel {
 	.formas-pagamento-container {
 		display: none;
