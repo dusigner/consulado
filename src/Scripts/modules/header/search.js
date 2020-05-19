@@ -28,21 +28,7 @@ Nitro.module('search', function() {
 	//     $(document).trigger('search', $searchContainer.is('.search-active') ? null : false);
 	// });
 
-	$('.cont-search .text-search').on('click', function() {
-		setTimeout(function(){
-			if ( !$('.ac-container').hasClass('is--search')) {
-				$('.ac-container').addClass('is--search');
-				var closeSearch = document.querySelector('.ac-title-top-search');
-				closeSearch.append($.parseHTML('<p type="button" class="icon-close" style="margin: 3px; color: #9aca3c; font-weight: bold; cursor: pointer;">X</p>')[0]);
-				closeSearch.style.display = 'flex'
-				closeSearch.style.justifyContent= 'space-between'
-			}
-		}, 500)
-	})
-
-	$('body').on('click', '.ac-container .icon-close', function(){
-		document.querySelector('.ac-container').style.display = 'none'
-	})
+	// console.log('foiii')
 
 	if (store.isCorp) {
 		var loadContent = $.debounce(function(term) {
