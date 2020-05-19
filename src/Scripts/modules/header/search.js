@@ -118,6 +118,21 @@ Nitro.module('search', function() {
 						($results.index($focus) <= 0 ? $searchField : $results.eq($results.index($focus) - 1))
 							.focus()
 							.addClass('active');
+						$('.cont-search .text-search').on('click', function() {
+							setTimeout(function(){
+								if ( !$('.ac-container').hasClass('is--search')) {
+									$('.ac-container').addClass('is--search');
+									var closeSearch = document.querySelector('.ac-title-top-search');
+									closeSearch.append($.parseHTML('<p type="button" class=".icon-close" style="margin: 3px; color: #9aca3c; font-weight: bold; cursor: pointer;">X</p>')[0]);
+									closeSearch.style.display = 'flex'
+									closeSearch.style.justifyContent= 'space-between'
+
+									document.querySelector('.icon-close').addEventListener('click', function(){
+										document.querySelector('.ac-container').style.display = 'none'
+									})
+								}
+							}, 500)
+						})
 					}
 
 					return false;
