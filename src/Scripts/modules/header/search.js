@@ -28,6 +28,8 @@ Nitro.module('search', function() {
 	//     $(document).trigger('search', $searchContainer.is('.search-active') ? null : false);
 	// });
 
+	// console.log('foiii')
+
 	if (store.isCorp) {
 		var loadContent = $.debounce(function(term) {
 			console.info('loadContent', term);
