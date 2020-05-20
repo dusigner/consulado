@@ -6,7 +6,7 @@
 'use strict';
 
 import 'popper.js';
-import 'bs/src/dropdown';
+// import 'bs/src/dropdown';
 import 'modules/input-box';
 import 'Dust/product/color-selector.html';
 
