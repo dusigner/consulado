@@ -36,14 +36,17 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	}
 
 	.box-produto {
-		&:hover {
-			.promo-destaque__bg {
-				transform: translateX(-148px);
-			}
-		}
+		// &:hover {
+		// 	.promo-destaque__bg {
+		// 		transform: translateX(-148px);
+		// 	}
+		// }
 	}
 
 	.promo-destaque {
+		order: 2;
+		margin: 0 0 5px;
+
 		&__icon {
 			background-position: 0 0;
 			background-repeat: no-repeat;
@@ -69,10 +72,19 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 
 		&__bg {
 			border-radius: 4px;
-			left: 100%;
-			transform: translateX(-80px);
+			left: 0;
+			transform: unset;
 			transition: transform .2s ease;
 			width: 100%;
+		}
+
+		&__text {
+			color: #fff!important;
+			transform: translate(-3px, -50%);
+		}
+
+		&__icon:nth-child(2) {
+			opacity: 1;
 		}
 
 		&__price {
@@ -116,6 +128,31 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	transform: translate(0)!important;
 }
 
+body #relacionados-top {
+	.prod-selos,
+	.FlagsHightLight,
+	.flag {
+		background-size: contain !important;
+		bottom: 0;
+		height: 40px;
+		transition: opacity .3s ease;
+		width: 40px;
+		z-index: 3;
+		position: absolute;
+		right: 0;
+	}
+
+	.box-produto .detalhes .prod-info .price .por .off, .box-produto .detalhes .prod-info .price .por .product-with-discount {
+		font-size: 9px;
+		border-radius: 100px;
+		color: #fff;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 1;
+	}
+}
+
 #relacionados-top {
 	border-top: 1px solid #ccc;
 	display: none;
@@ -128,6 +165,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	.relacionados-title {
 		display: none;
 	}
+
 	h2 {
 		color: $gray-dark;
 		font-size: 16px;
@@ -241,9 +279,14 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		// }
 
 	.box-produto {
-		height: 280px;
+		min-height: 280px;
 		margin: 0;
 		width: 180px;
+
+		@include breakpoint('small', 'max') {
+			width: 100%;
+		}
+
 		p {
 			padding: 0;
 		}
@@ -251,8 +294,10 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			margin: 0 auto;
 			max-width: 100%;
 			width: 90px;
+			position: unset;
 			&:hover:before {
-				display: none;
+				height: 40px;
+				width: 40px;
 			}
 			@include breakpoint('medium', 'max') {
 				span {
@@ -288,8 +333,12 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 				font-size: 13px;
 				font-weight: bold;
 				line-height: 16px;
+				display: flex;
+				margin: 23px 0 5px;
+				order: 1;
 			}
 			.price {
+				order: 3;
 				.de {
 					.val {
 						color: $purple;

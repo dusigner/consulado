@@ -133,7 +133,7 @@ Nitro.controller(
 				{
 					breakpoint: 768,
 					settings: {
-						slidesToShow: 1.5,
+						slidesToShow: 1.7,
 						slidesToScroll: 1,
 						infinite: false,
 						initialSlide: 1,
