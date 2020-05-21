@@ -5,21 +5,28 @@ Nitro.module('dataLayer-product', function() {
 	this.init = () => {
 		checkInlineDatalayers();
 
+		// product unavailable
 		this.notifyMe();
 		this.notifyMeSuccess();
 		this.similarProduct();
 		this.nameProductUnavailable();
 		this.visibleVitrineSimilarProducts();
+
+		// outline product
+		this.nameProductOutline();
+		this.visibleVitrineOutlineProducts();
+		this.similarOutlineProduct();
 	};
 
-	var $category = '[SQUAD] Reposicao de pecas';
+	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
+	var $categoryOutline = '[SQUAD] Produto Fora-Linha';
 
 	this.notifyMe = () => {
 		$('#BuyButton .portal-notify-me-ref #notifymeButtonOK').on('click', function() {
 			const $label = $(this).val();
 
 			pushDataLayer(
-				`${$category}`,
+				`${$categoryUnavailable}`,
 				`click envio formulario avisa-me`,
 				`${$label}`
 			);
@@ -35,7 +42,7 @@ Nitro.module('dataLayer-product', function() {
 					const $label = $('#BuyButton .portal-notify-me-ref .sku-notifyme-success.notifyme-success').text().trim();
 
 					pushDataLayer(
-						`${$category}`,
+						`${$categoryUnavailable}`,
 						`exibicao cadastro sucesso`,
 						`${$label}`
 					);
@@ -51,7 +58,7 @@ Nitro.module('dataLayer-product', function() {
 			const $label = $(this).find('h3.nome').text().trim();
 
 			pushDataLayer(
-				`${$category}`,
+				`${$categoryUnavailable}`,
 				`click produto similar`,
 				`${$label}`
 			);
@@ -67,7 +74,7 @@ Nitro.module('dataLayer-product', function() {
 						const $label = $('.position-sticky-prod .productName').text();
 
 						pushDataLayer(
-							`${$category}`,
+							`${$categoryUnavailable}`,
 							`exibicao produto indisponivel`,
 							`${$label}`
 						);
@@ -86,13 +93,59 @@ Nitro.module('dataLayer-product', function() {
 					const $label = $('#relacionados-top .prateleira > h2').text();
 
 					pushDataLayer(
-						'[SQUAD] Reposicao de pecas',
+						`${$categoryUnavailable}`,
 						`exibicao produto similar`,
 						`${$label}`
 					);
 				}
 			}
 		}, 50)
+	};
+
+	this.visibleVitrineOutlineProducts = () => {
+		setInterval(function() {
+			if ( $('#outlineProducts-name').length === 1 ) {
+				if ( !$('body').hasClass('dataLayerVitrineProductOutline') ) {
+					$('body').addClass('dataLayerVitrineProductOutline');
+
+					pushDataLayer(
+						`${$categoryOutline}`,
+						`exibicao produto fora-linha`,
+						`Vitrine Produto fora de linha`
+					);
+				}
+			}
+		}, 50)
+	};
+
+	this.nameProductOutline = () => {
+		setInterval(function() {
+			if ( $('body').hasClass('product-outline') ) {
+				if ( !$('body').hasClass('dataLayerProductOutline') ) {
+					$('body').addClass('dataLayerProductOutline');
+
+					const $label = $('.productName').text();
+
+					pushDataLayer(
+						`${$categoryOutline}`,
+						`exibição vitrine`,
+						`${$label}`
+					);
+				}
+			}
+		}, 50)
+	};
+
+	this.similarOutlineProduct = () => {
+		$(document).on('click', '#outlineProducts-link', function() {
+			const $label = $(this).find('#outlineProducts-name').text().trim();
+
+			pushDataLayer(
+				`${$categoryOutline}`,
+				`click produto similar`,
+				`${$label}`
+			);
+		});
 	};
 
 	this.init();
