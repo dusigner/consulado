@@ -4,6 +4,7 @@
 	@include breakpoint('medium', 'max') { margin-top: 2.5em; }
 	display: flex;
 	justify-content: space-between;
+	display: none;
 
 	.sku-title-label {
 		@include rfs(12px);
