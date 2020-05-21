@@ -67,6 +67,7 @@ require('modules/store/callcenter');
 require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
 require('modules/logoffUser');
+require('dataLayers/dataLayer-new-header-menu');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -113,7 +114,8 @@ Nitro.setup(
 		'chatHome',
 		'isTelevendasCorp',
 		'callcenter',
-		'logoffUser'
+		'logoffUser',
+		'dataLayer-new-header-menu'
 	],
 	function() {
 		var path = window.location.pathname;
