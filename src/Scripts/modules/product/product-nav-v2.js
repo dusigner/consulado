@@ -5,7 +5,7 @@ Nitro.module('product-nav', function() {
 	var $window = $(window),
 		nav = $('.prod-details-nav'),
 		navItems = nav.find('.item a'),
-		navStart = $('#BuyButton.buy-button'),
+		navStart = $('#BuyButton .buy-button'),
 		sections = navItems.map(function() {
 			var item = $($(this).attr('href'));
 			if (item.length) {
@@ -44,7 +44,7 @@ Nitro.module('product-nav', function() {
 	}, 250);
 
 	$(document).on('nav', function(e, nav) {
-		navStart = $('#BuyButton.buy-button');
+		navStart = $('#BuyButton .buy-button');
 		scrollEvent();
 		navItems
 			.filter('a[href="#' + nav + '"]')
