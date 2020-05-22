@@ -1,18 +1,30 @@
 @charset 'UTF-8';
 
-body .cont-search {
-	@include breakpoint(medium, 'min') {
-		width: 56% !important;
+
+body {
+	.pre-header {
+		.container {
+			padding: 0 !important;
+		}
+		.col-6 {
+			padding-left: 0 !important;
+		}
 	}
-	z-index: 6 !important;
-	.text-search {
-		background-color: #F1F0F0 !important;
-		font-size: 14px;
-		font-weight: 500;
-	}
-	.form-search {
-		.icon-consul-loupe {
-			text-shadow: 1px 1px 0 #9aca3c;
+
+	 .cont-search {
+		@include breakpoint(medium, 'min') {
+			width: 56% !important;
+		}
+		z-index: 6 !important;
+		.text-search {
+			background-color: #F1F0F0 !important;
+			font-size: 14px;
+			font-weight: 500;
+		}
+		.form-search {
+			.icon-consul-loupe {
+				text-shadow: 1px 1px 0 #9aca3c;
+			}
 		}
 	}
 }
@@ -82,6 +94,10 @@ body header {
 	}
 	.cont-logo {
 		flex: 0 0 210px !important;
+		padding-left: 0;
+	}
+	.logo {
+		padding: 5px 18px 0 0;
 	}
 }
 
@@ -170,7 +186,7 @@ body header {
 		@include rfs(16);
 		background-color: #FAF9F9;
 		flex: 0 0 210px;
-		padding-left: 45px;
+		padding-left: 30px;
 
 		// margin: 0 calculate-em(5) 0 0;
 		a[title='Departamentos'] {
