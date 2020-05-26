@@ -61,6 +61,28 @@
 @import 'components/produto/outline-products';
 // @import 'components/produto/quiz-install';
 
+.produto-indisponivel {
+	#relacionados {
+		display: none!important;
+	}
+}
+
+#relacionados {
+	.box-produto .detalhes .prod-info .price .por .off, .box-produto .detalhes .prod-info .price .por .product-with-discount {
+		font-size: .625rem;
+		border-radius: 100px;
+		color: #fff;
+		position: absolute;
+		right: 15px;
+		top: -64px;
+		z-index: 1;
+
+		@include breakpoint('small', 'min') {
+			top: -34px;
+		}
+	}
+}
+
 .produto-v2.produto-indisponivel {
 	.formas-pagamento-container {
 		display: none;
