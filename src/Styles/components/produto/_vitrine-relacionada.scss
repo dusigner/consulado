@@ -336,6 +336,8 @@ body #relacionados-top {
 				display: flex;
 				margin: 23px 0 5px;
 				order: 1;
+				display: flex;
+				flex-direction: column;
 			}
 			.price {
 				order: 3;
