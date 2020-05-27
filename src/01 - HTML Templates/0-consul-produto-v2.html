@@ -250,6 +250,31 @@
 			</div>
 		</div>
 		<!-- /Formas de pagamento -->
+
+		<!-- Formulario avise-me indisponível -->
+		<style>
+		.body-form {
+			display: none;
+		}
+		.body-form {
+			display: block;
+		}
+		</style>
+		<script>
+			function showForm(id) {
+				if (document.getElementById(id).style.display == 'block') {
+					document.getElementById(id).style.display = 'none';
+				} else {
+					document.getElementById(id).style.display ='block';
+				}
+			}
+		</script>
+		<div class="formulario-container" value="showForm" onClick="showForm()">
+			<span>Avise-me quando o produto estiver disponível</span>
+			<div id="formulário-indisponivel" class="body-form">
+			</div>
+		</div>
+		<!-- Formulario avise-me indisponível -->
 	</div>
 	<!-- Barra de informação de produto -->
 

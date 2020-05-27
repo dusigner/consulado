@@ -258,6 +258,17 @@ Nitro.controller(
 			});
 		};
 
+		/* DROPDOWN Formulario avise-me quando indisponível */
+		$('.notifyme .sku-notifyme').clone().appendTo('.body-form')
+		function showForm(id) {
+			if (document.getElementById(id).style.display == 'block') {
+				document.getElementById(id).style.display = 'none';
+			} else {
+				document.getElementById(id).style.display ='block';
+			}
+		}
+		/* DROPDOWN Formulario avise-me quando indisponível */
+
 		//Compre Junto
 		$('.comprar-junto a').text('compre junto');
 
