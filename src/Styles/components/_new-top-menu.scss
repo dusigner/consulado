@@ -481,6 +481,36 @@ body header {
 		margin-right: 0;
 	}
 }
+//teste AB
+.testeB {
+.menu-category .item .icon {
+	display: none;
+}
+	.submenu a:first-of-type {
+		padding-left: 0;
+		&::after {
+			background-color: #9aca3c;
+			border-radius: 4px;
+			content: '';
+			display: block;
+			height: 3px;
+			margin-top: 6px;
+			width: 26px;
+		}
+	}
+	.menu-subcategory .item a {
+		&::after {
+			display: none !important;
+			margin: 0;
+		}
+	}
+	//menu mobile teste ab
+	.title-menu-mobile {
+		.icon {
+			display: none !important;
+		}
+	}
+}
 // Menu - Subcategorias
 .menu-subcategory {
 	background-color: transparent;
@@ -637,6 +667,13 @@ body header {
 		text-align: left;
 		z-index: 11;
 
+		&.testeB {
+			.item.sub-itens .submenu li a {
+				&::after {
+					display: none;
+				}
+			}
+		}
 
 		.menu-title {
 			cursor: pointer;

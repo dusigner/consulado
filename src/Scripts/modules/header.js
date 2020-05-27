@@ -9,6 +9,10 @@ require('modules/header/cart');
 // require('modules/header/tooltip');
 
 Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover', 'cart' /* 'tooltip' */], function() {
+	//teste ab new layout header
+
+	// $('body').find('.menu-department').addClass('testeB');
+
 	var $body = $('body'),
 		$document = $(document);
 
