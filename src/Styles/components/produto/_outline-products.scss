@@ -65,6 +65,14 @@ body.product-outline {
 		}
 
 		&-text {
+			display: none!important;
+
+			@include breakpoint('small', 'max') {
+				display: block!important;
+			}
+		}
+
+		&-text {
 			font-size: 12px;
 			font-weight: 500;
 			transition: all .3s linear;
