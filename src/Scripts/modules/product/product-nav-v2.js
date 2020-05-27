@@ -5,7 +5,7 @@ Nitro.module('product-nav', function() {
 	var $window = $(window),
 		nav = $('.prod-details-nav'),
 		navItems = nav.find('.item a'),
-		navStart = $('#BuyButton .buy-button'),
+		navStart = $('#BuyButton.buy-button'),
 		sections = navItems.map(function() {
 			var item = $($(this).attr('href'));
 			if (item.length) {
@@ -15,9 +15,11 @@ Nitro.module('product-nav', function() {
 		navHeight = 100;
 
 	var scrollEvent = $.throttle(function() {
-		var top = $window.scrollTop();
+		var top = $(document).scrollTop();
 
-		if (top >= navStart.offset().top + 45) {
+		console.log('top', top);
+
+		if (top >= $('.buy-button').offset().top + 45) {
 			nav.parent().addClass('fixed-bar');
 			nav.addClass('pinned').css('top', 0);
 		} else {
@@ -42,7 +44,7 @@ Nitro.module('product-nav', function() {
 	}, 250);
 
 	$(document).on('nav', function(e, nav) {
-		navStart = $('#BuyButton .buy-button');
+		navStart = $('#BuyButton.buy-button');
 		scrollEvent();
 		navItems
 			.filter('a[href="#' + nav + '"]')
@@ -50,7 +52,7 @@ Nitro.module('product-nav', function() {
 			.removeClass('hide');
 	});
 
-	$window.scroll(scrollEvent).scroll();
+	$(document).scroll(scrollEvent).scroll();
 
 	$('.row.anchors button').on('click', () => {
 		$('html, body').animate({ scrollTop: 0 }, 1000);
@@ -68,7 +70,7 @@ Nitro.module('product-nav', function() {
 
 	$window.load(function() {
 		//Ajuste especificacoes tecnicas - modelos compativeis
-		$('#especificacoes .specs h4').each(function() {
+		$('#especificacoes.specs h4').each(function() {
 			if ($(this).text() === 'Modelos Compatíveis') {
 				$(this)
 					.parent()
