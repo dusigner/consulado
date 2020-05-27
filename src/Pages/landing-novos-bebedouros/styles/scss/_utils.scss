@@ -1,0 +1,87 @@
+// Colors
+$color_dark_gray: #403c3b;
+$color_main_green: #9aca3c;
+$color_main_blue: #007dc4;
+$color_main_white: #faf9f9;
+$color_secundary_blue: #0fb6de;
+
+// Container
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+
+.d-none {
+  display: none !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.pb-2 {
+  padding-bottom: 8px;
+}
+
+.pt-2 {
+  padding-top: 8px;
+}
+
+.ml-2,
+.mx-2 {
+  margin-left: 8px !important;
+}
+
+.mr-2,
+.mx-2 {
+  margin-right: 8px !important;
+}
+
+.align-self-end {
+  align-self: flex-end !important;
+}
+
+@media (min-width: 768px) {
+  .d-md-block {
+    display: block !important;
+  }
+
+  .d-md-none {
+    display: none !important;
+  }
+
+  .d-md-inline {
+    display: inline !important;
+  }
+
+  .d-md-flex {
+    display: flex !important;
+  }
+
+  .pb-md-0 {
+    padding-bottom: 0;
+  }
+}
