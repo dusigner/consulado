@@ -379,16 +379,3 @@ body #relacionados-top {
 		padding: 0;
 	}
 }
-
-// WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
-setInterval(function() {
-    if ($("#banner-spin").length === 0) {
-        const image = '<img id="banner-spin" src="https://spinp.vteximg.com.br/arquivos/spinpay_vtex_default4.png"/>';
-        if ($(".box-payment-spinpay").length !== 0)
-            $(".box-payment-spinpay").html(image);
-        if ($(".SpinPayPaymentGroup").length !== 0)
-            $(".SpinPayPaymentGroup").html(image);
-        $('#payment-group-SpinPayPaymentGroup').children().css("background-image", "url('https://spinp.vteximg.com.br/arquivos/spinpay_vtex_icon2.png'");
-        $('#payment-group-SpinPayPaymentGroup').children().html('Pagamento Instantâneo');
-    }
-}, 100);
