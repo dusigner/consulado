@@ -350,7 +350,7 @@ $(document).ready(function () {
         },
       });
 
-      $.post("/api/dataentities/HF/documents", JSON.stringify(body)).then((retorno) => {
+      $.post("/api/dataentities/LP/documents", JSON.stringify(body)).then((retorno) => {
         // Reset input values
         nome.val("");
         email.val("");
