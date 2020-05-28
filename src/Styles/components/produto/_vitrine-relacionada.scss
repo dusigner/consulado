@@ -15,9 +15,15 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	}
 
 	#form-title {
+		@include rfs(12px);
 		display: block!important;
 		position: relative;
 		cursor: pointer;
+		display: block;
+		font-weight: 500;
+		padding: 10px 10px 10px 20px;
+		position: relative;
+		transition: text-indent .3s;
 
 		form {
 			position: absolute;
@@ -33,6 +39,29 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 				opacity: 1;
 				transition: .8 ease-in-out;
 				visibility: visible;
+				border: 1px solid #f1f0f0;
+				border-bottom: 2px solid $green;
+				box-shadow: 0 5px 6px rgba(0, 0, 0, .16);
+				left: 0;
+				opacity: 1;
+				position: absolute;
+				width: 100%;
+				z-index: 10;
+			}
+
+			&:before {
+				@include icon-get('bottom-arrow');
+				@include breakpoint('small', 'max') {
+					@include icon-get('top-arrow');
+				}
+				@include rfs(6px);
+				left: 0;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				transition: transform .3s;
+
+				.is--active & { transform: translate(10px, -50%) rotate(-180deg); }
 			}
 		}
 	}
