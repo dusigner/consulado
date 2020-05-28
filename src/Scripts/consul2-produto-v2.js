@@ -259,14 +259,13 @@ Nitro.controller(
 		};
 
 		/* DROPDOWN Formulario avise-me quando indisponível */
-		$('.notifyme .sku-notifyme').clone().appendTo('.body-form')
-		function showForm(id) {
-			if (document.getElementById(id).style.display == 'block') {
-				document.getElementById(id).style.display = 'none';
-			} else {
-				document.getElementById(id).style.display ='block';
-			}
-		}
+		$('.portal-notify-me-ref form').before('<span id="form-title" style="display: none;">Avise-me quando o produto estiver disponível</span>');
+
+		$('#form-unavailable form').clone().appendTo("#form-unavailable #form-title");
+
+		$('#form-unavailable #form-title').on('click', function() {
+			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active')
+		})
 		/* DROPDOWN Formulario avise-me quando indisponível */
 
 		//Compre Junto

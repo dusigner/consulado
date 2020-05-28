@@ -14,6 +14,33 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		display: none;
 	}
 
+	#form-title {
+		display: block!important;
+		position: relative;
+		cursor: pointer;
+
+		form {
+			position: absolute;
+			top: 26px;
+			z-index: 1;
+			background: #fff;
+			display: block!important;
+			opacity: 0;
+			visibility: hidden;
+			transition: .8 ease-in-out;
+
+			&.is--active {
+				opacity: 1;
+				transition: .8 ease-in-out;
+				visibility: visible;
+			}
+		}
+	}
+
+	form {
+		display: none!important;
+	}
+
 .portal-notify-me-ref {
 	margin-bottom: 10px;
 	max-width: 100%;
