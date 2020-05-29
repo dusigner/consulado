@@ -24,11 +24,13 @@ ul {
   color: #fff;
   background-color: transparent;
   border: 1px solid #fff;
-  padding: 12px 38px;
+  padding: 12px 53px;
   border-radius: 100px;
   text-decoration: none;
   text-align: center;
   display: inline-block;
+  font-size: 14px;
+  line-height: 1;
 
   &--outline-light {
     transition: 0.3s all ease-in-out;
@@ -105,6 +107,10 @@ ul {
   &:focus {
     outline: none;
   }
+
+  @media screen and (min-width: 1024px) {
+    min-width: 180px;
+  }
 }
 
 .main-title {
@@ -133,6 +139,7 @@ ul {
   &__title {
     font-size: 3.25em;
     font-weight: normal;
+    margin-bottom: 0;
   }
 
   &__text {
@@ -210,7 +217,8 @@ ul {
     font-style: normal;
     font-weight: 500;
     font-size: 2em;
-    line-height: 1.5;
+    line-height: 1.2;
+    margin-bottom: 0;
   }
 
   &__text {
@@ -250,6 +258,13 @@ ul {
   font-family: "Consul";
   overflow: hidden;
 
+  @media screen and (max-width: 1023px) {
+    margin-top: 55px;
+  }
+  .container {
+    padding: 0 15px !important;
+  }
+
   nav {
     flex-grow: 1;
     display: flex;
@@ -270,6 +285,19 @@ ul {
     }
   }
 
+  .cta.cta--green {
+    margin: 10px 0;
+    font-size: 14px;
+    padding: 11px 35px 12px 41px;
+    line-height: 1.1;
+    min-width: auto;
+
+    @media screen and (max-width: 1023px) {
+      padding: 7px 15px 9px 20px;
+      min-width: 100px;
+    }
+  }
+
   ul {
     display: inline-flex;
     list-style-type: none;
@@ -277,12 +305,8 @@ ul {
     justify-content: space-between;
 
     li {
-      padding: 20px;
+      padding: 0 20px;
     }
-  }
-
-  .cta {
-    margin: 10px 0;
   }
 
   @media screen and (max-width: 768px) {
@@ -340,6 +364,10 @@ ul {
     animation: fadeIn 0.5s;
     top: 0;
     z-index: 10;
+
+    @media screen and (max-width: 1023px) {
+      top: 85px;
+    }
   }
 
   &.inactive {
@@ -413,6 +441,8 @@ $main-intro--bottom: 80px;
         font-size: 38px;
         font-weight: bold;
         margin-top: 10px;
+        margin-bottom: 0;
+        line-height: 1.3;
 
         @media (max-width: 640px) {
           font-size: 28px;
@@ -422,6 +452,7 @@ $main-intro--bottom: 80px;
       &--subtitle {
         text-transform: uppercase;
         font-size: 18px;
+        margin-bottom: 0;
       }
 
       &--info {
@@ -747,6 +778,10 @@ $main-intro--bottom: 80px;
   padding: 30px 15px;
   overflow: hidden;
 
+  .cta-product-mobile {
+    margin: 20px 0;
+  }
+
   .container {
     padding: 0 15px !important;
   }
@@ -793,6 +828,10 @@ $main-intro--bottom: 80px;
   background-color: $color_secundary_blue;
   padding: 30px 15px;
   overflow: hidden;
+
+  .cta-product-mobile {
+    margin: 20px 0;
+  }
 
   .container {
     padding: 0 15px !important;
@@ -1098,6 +1137,7 @@ $main-intro--bottom: 80px;
         .terms-and-conditions {
           a {
             color: #fff;
+            text-decoration: underline;
           }
 
           .label-container {
@@ -1152,6 +1192,10 @@ $main-intro--bottom: 80px;
               display: none;
             }
           }
+        }
+
+        .feedback-msg {
+          font-size: 14px;
         }
       }
     }
@@ -1224,12 +1268,17 @@ $main-intro--bottom: 80px;
     img {
       width: 100%;
       display: block;
+      transition: 0.3s all ease-in-out;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     .main-title {
       margin-right: 35px;
       max-width: 335px;
-      margin: auto;
+      // margin: auto;
     }
   }
 
@@ -1303,7 +1352,7 @@ $main-intro--bottom: 80px;
       .main-title {
         font-size: 24px;
         text-align: center;
-        padding: 0 40px;
+        padding: 0 20px;
       }
 
       .ambiente-feature {
