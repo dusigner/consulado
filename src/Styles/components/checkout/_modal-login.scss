@@ -129,3 +129,55 @@
 		}
 	}
 }
+
+.checkout-modal-custom-login--forms {
+	position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	z-index: 9999999999;
+	background: #fff;
+
+	&-options {
+		&-items {
+			&-top {
+				font-family: inherit;
+				font-weight: 200;
+				line-height: 20px;
+				font-size: 16px;
+				padding: 9px 15px;
+				background: #f7f7f7;
+				border-bottom: 1px solid #eee;
+				position: relative;
+
+				h3 {
+					margin: 10px 0;
+				}
+
+				&-close {
+					position: absolute;
+					top: -7px;
+					right: -8px;
+					padding: 0;
+					width: 25px;
+					height: 25px;
+					border: none;
+				}
+			}
+		}
+	}
+
+	#checkout-mail_pass_login {
+		display: none;
+	}
+
+	&__overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background: #00000091;
+		z-index: 9999;
+		bottom: 0;
+		width: 100%;
+	}
+}
