@@ -342,21 +342,40 @@ $(document).ready(function () {
 			$(this).find('#agree').focus();
 			feedback.text('por favor, assinale o termo abaixo');
 		} else {
-			// Envio:
-			$.ajaxSetup({
-				headers: {
-					'Content-Type': 'application/json',
-					Accept: 'application/vnd.vtex.ds.v10+json',
-				},
-			});
 
-			$.post('/api/dataentities/LP/documents', JSON.stringify(body)).then((retorno) => {
-				// Reset input values
-				nome.val('');
-				email.val('');
-				tel.val('');
-				feedback.text('Dados enviados com sucesso!');
-			});
+			// Envio:
+			// $.ajaxSetup({
+			// 	headers: {
+			// 		"Content-Type": 'application/json',
+			// 		Accept: 'application/vnd.vtex.ds.v10+json',
+			// 	},
+			// });
+
+			// $.post('/api/dataentities/PB/documents', JSON.stringify(body)).then((retorno) => {
+			// 	// Reset input values
+			// 	nome.val('');
+			// 	email.val('');
+			// 	tel.val('');
+			// 	feedback.text('Dados enviados com sucesso!');
+			// });
+
+			var data = JSON.stringify(body);
+
+			$.ajax({
+				headers: {
+					"Content-Type": 'application/json',
+					"Accept": 'application/vnd.vtex.ds.v10+json',
+				},
+				type: "POST",
+				url: '/api/dataentities/PB/documents',
+				data: data,
+				success: function (res) {
+					nome.val('');
+					email.val('');
+					tel.val('');
+					feedback.text('Dados enviados com sucesso!');
+				}
+			})
 		}
 	});
 });
