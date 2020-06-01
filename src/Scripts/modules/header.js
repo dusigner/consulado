@@ -45,11 +45,19 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 				closeSearch.css('justifyContent', 'space-between')
 			}
 		}, 500)
-	})
+	});
 
 	$('body').on('click', '.ac-container .icon-close', function(){
 		$('.ac-container').css('display', 'none');
 	})
+
+	const input_search = $('body').find('.cont-search input');
+	console.log(input_search);
+	if(input_search[1].length == 0) {
+		alert('busca');
+	} else {
+		alert('x');
+	}
 
 	menuMobile.find('.open-menu-mobile').click(function(e) {
 		e.preventDefault();
