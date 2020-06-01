@@ -29,35 +29,42 @@ Nitro.module('checkout-login', function(){
 					'<div class="checkout-modal-custom-login--forms-options">' +
 						'<div class="checkout-modal-custom-login--forms-options-items">' +
 							'<div class="checkout-modal-custom-login--forms-options-items-top">' +
-								'<h2 id="checkout-login-modal-user"></h2>' +
+								'<div class="checkout-modal-custom-login-mail_pass_block">' +
+									'<div class="checkout-modal-custom-login-mail_pass_block-top">' +
+										'<i class="icon-user"></i>' +
+										'<h2 id="checkout-login-modal-user"></h2>' +
+									'</div>' +
+								'</div>' +
 								'<h3 class="checkout-modal-custom-login--forms-options-items-top--text">Use uma das opções para confirmar sua identidade</h3>' +
 								'<button type="button" class="checkout-modal-custom-login--forms-options-items-top-close">×</button>' +
 							'</div>' +
 							'<div class="checkout-modal-custom-login--forms-options-items-bottom">' +
 								'<button id="checkout-login-modal-key" type="button" class="checkout-modal-custom-login--forms-options-items-bottom-buttons">Receber chave de acesso rápido por email</button>' +
-								'<button id="checkout-login-modal-email" type="button" class="checkout-modal-custom-login--forms-options-items-bottom-buttons">Receber chave de acesso rápido por email</button>' +
+								'<button id="checkout-login-modal-email" type="button" class="checkout-modal-custom-login--forms-options-items-bottom-buttons">Entra com e-mail e senha</button>' +
 							'</div>' +
+							// login key
+							'<form class="checkout-modal-custom-login--forms-key">' +
+								'<input type="text" id="custom_login_email" placeholder="seu@email.com.br" class="custom-label" name="custom_login_email" autocomplete="off">' +
+								'<div class="checkout-modal-custom-login--forms-key-buttons">' +
+									'<span class="checkout-modal-custom-login--forms-key-buttons-close"><i class="icon-arrow-left"></i>Voltar</span>' +
+									'<button type="submit" class="checkout-login-modal-continue" type="button">Confirmar</button>' +
+								'</div>' +
+							'</form>' +
+							// login email
+							'<form class="checkout-modal-custom-login--forms-email">' +
+									'<div class="checkout-modal-custom-email--inputbox">' +
+										'<input type="text" id="login" placeholder="seu@email.com.br" class="custom-label" name="login" autocomplete="off">' +
+									'</div>' +
+									'<div class="checkout-modal-custom-password--inputbox">' +
+										'<input type="password" id="password" placeholder="Senha" class="custom-label" name="password">' +
+									'</div>' +
+									'<div class="checkout-modal-custom-login--forms-email-buttons">' +
+										'<span class="checkout-modal-custom-login--forms-email-buttons-close"><i class="icon-arrow-left"></i>Voltar</span>' +
+										'<button class="checkout-login-modal-continue" type="button">Confirmar</button>' +
+									'</div>' +
+								'</div>' +
+							'</form>' +
 						'</div>' +
-					'</div>' +
-					'<div id="checkout-mail_pass_login">' +
-						'<p class="checkout-modal-custom-login--sectitles">Entre com um email e senha:</p>' +
-						'<form id="checkout-modal-custom-login--form">' +
-							'<div class="checkout-modal-custom-login-mail_pass_login">' +
-								'<div class="checkout-modal-custom-email--inputbox">' +
-									'<input type="text" id="login" placeholder="seu@email.com.br" class="custom-label" name="login" autocomplete="off">' +
-								'</div>' +
-								'<div class="checkout-modal-custom-password--inputbox">' +
-									'<input type="password" id="password" placeholder="Senha" class="custom-label" name="password">' +
-								'</div>' +
-								'<div class="checkout-modal-custom-login--formOptions">' +
-									'<span class="forget_pass">Esqueci minha senha</span>' +
-									'<span class="no_pass">Não tenho uma senha</span>' +
-								'</div>' +
-								'<div class="checkout-custom-login-buttons--action--box">' +
-								'<input type="submit" class="checkout-custom-login-btn checkout-btn-custom-secondary" value="Entrar">' +
-								'</div>' +
-							'</div>' +
-						'</form>' +
 					'</div>' +
 				'</div>' +
 				'<div class="checkout-modal-custom-login--forms__overlay"></div>',
@@ -119,6 +126,9 @@ Nitro.module('checkout-login', function(){
 		self.htmlErrorValidadeEmail();
 		self.validateEmail();
 		self.verifyLogged();
+		self.onCloseModal();
+		self.onModalLogin();
+		self.logginSubmit();
 
 		// init functions
 		setEnviroment();
@@ -310,6 +320,75 @@ Nitro.module('checkout-login', function(){
 				}, function(err) {
 					helpers.printError(err);
 				});
+		})
+	}
+
+	this.onCloseModal = () => {
+		$('body').on('click', '.checkout-modal-custom-login--forms-options-items-top-close, .checkout-modal-custom-login--forms__overlay', function(){
+			$('.checkout-modal-custom-login--forms, .checkout-modal-custom-login--forms__overlay').removeClass('is--active');
+		})
+	}
+
+	this.onModalLogin = () => {
+		$('body').on('click', '.link.edit.address-edit, .link.create.address-create, #edit-profile-data, .client-profile-data .link-box-edit.btn.btn-small', function() {
+			vtexjs.checkout.getOrderForm().done(function (_user_infos) {
+				if (_user_infos.loggedIn !== true) {
+					if ( !$('.checkout-modal-custom-login--forms').hasClass('is--input') ) {
+						$('.checkout-modal-custom-login--forms').addClass('is--input')
+						var $email = $('.client-profile-email .email').text();
+						$('#checkout-login-modal-user').html($email);
+						$('.checkout-modal-custom-login--forms-key #custom_login_email').val($email)
+						$('.checkout-modal-custom-email--inputbox #login').val($email)
+					}
+					$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+					$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+					$('.checkout-modal-custom-login--forms-options-items-bottom').addClass('is--active');
+					$('.checkout-modal-custom-login--forms, .checkout-modal-custom-login--forms__overlay').addClass('is--active');
+				}
+			});
+		})
+
+		$('body').on('click', '#checkout-login-modal-key', function(){
+			$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key').addClass('is--active');
+		});
+
+		$('body').on('click', '.checkout-modal-custom-login--forms-key-buttons-close, .checkout-modal-custom-login--forms-email-buttons-close', function() {
+			$('.checkout-modal-custom-login--forms-options-items-bottom').addClass('is--active');
+			$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+		});
+
+		$('body').on('click', '#checkout-login-modal-email', function(){
+			$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-email').addClass('is--active');
+			$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+		});
+	}
+
+	this.logginSubmit = () => {
+		$('body').on('submit', '.checkout-modal-custom-login--forms-key', function(e) {
+			e.preventDefault();
+			userInfos.email = helpers.formtoobj($(this)).custom_login_email;
+
+			if(helpers.isEmail(userInfos.email)) {
+
+				self.request(routes.getEmailAcessKey,{
+					email: userInfos.email,
+					authenticationToken: userInfos.authenticationToken
+				}).then(function(){
+					self.setKeysLayout();
+					console.log('deu certo');
+				}, function() {
+					helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
+					console.log('deu erro2');
+				});
+
+			} else {
+				helpers.printError('E-mail inválido.');
+				console.log('deu erro');
+			}
 		})
 	}
 
