@@ -848,6 +848,9 @@ body header {
 		}
 
 		.busca-mobile {
+			@include breakpoint('medium', 'min') {
+				display: none;
+			}
 			display: block;
 			height: auto;
 			position: relative;
