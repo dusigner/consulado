@@ -451,6 +451,7 @@
     },
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
+<<<<<<< HEAD
             "content": "a1fbaef1339231daa78b8c63b086ae35",
             "lastUpdate": "2020-06-02T14:20:37.443Z"
         },
@@ -469,38 +470,73 @@
         "files/checkout5-custom.min.js": {
             "content": "8ba58a8528a8578a7ebc52a75023f8ba",
             "lastUpdate": "2020-06-02T14:20:37.450Z"
+=======
+            "content": "5565cce00745c9cd24684d5070cdb9df",
+            "lastUpdate": "2020-06-02T14:33:23.324Z"
+        },
+        "files/checkout-confirmation-custom.min.js": {
+            "content": "5565cce00745c9cd24684d5070cdb9df",
+            "lastUpdate": "2020-06-02T14:33:23.326Z"
+        },
+        "files/checkout5-custom.css": {
+            "content": "386b5fa331f84e170ca6c424f5e4a432",
+            "lastUpdate": "2020-06-02T14:33:23.327Z"
+        },
+        "files/checkout5-custom.js": {
+            "content": "6b0abc078e8cea8d11816fd29f644d00",
+            "lastUpdate": "2020-06-02T14:33:23.330Z"
+        },
+        "files/checkout5-custom.min.js": {
+            "content": "6b0abc078e8cea8d11816fd29f644d00",
+            "lastUpdate": "2020-06-02T14:33:23.331Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-account.css": {
-            "content": "a98f9c1c55f24e35e38af151988005c0",
-            "lastUpdate": "2020-05-29T19:02:50.289Z"
+            "content": "a478bbea9acfa4f26a64628de1393ec5",
+            "lastUpdate": "2020-06-02T14:26:32.232Z"
         },
         "files/consul2-app.min.js": {
+<<<<<<< HEAD
             "content": "c7f5656606023f52c99d6285a71d4be0",
             "lastUpdate": "2020-06-02T14:20:37.451Z"
+=======
+            "content": "25218ff4bae9cfc2cea975dc94826fd7",
+            "lastUpdate": "2020-06-02T14:33:23.333Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-bf-2018.css": {
             "content": "d6cf553878690ca4bb9e2916b1dd782a",
             "lastUpdate": "2020-05-05T18:49:45.992Z"
         },
         "files/consul2-bf.css": {
-            "content": "136530a7d1157a0604018e63f908a492",
-            "lastUpdate": "2020-05-29T19:02:50.292Z"
+            "content": "93df178d93ba18c24c3b972ece50de26",
+            "lastUpdate": "2020-06-02T14:26:32.235Z"
         },
         "files/consul2-cervejeiras.css": {
-            "content": "ccf06ae2cc259c1be1fcfcd981f3441f",
-            "lastUpdate": "2020-05-29T19:02:50.294Z"
+            "content": "a758a88a3e0b7857aec7704d49c2eb1a",
+            "lastUpdate": "2020-06-02T14:26:32.236Z"
         },
         "files/consul2-cervejeiras.min.js": {
+<<<<<<< HEAD
             "content": "6d490638cf657afd3028e2773b4e6244",
             "lastUpdate": "2020-06-02T14:20:37.453Z"
+=======
+            "content": "d7bfe0d22f5432740599185d5aa8944d",
+            "lastUpdate": "2020-06-02T14:33:23.338Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-coupon.css": {
             "content": "5681d7bc8c2b894d1fbb5e76fcf8a8d7",
             "lastUpdate": "2020-05-05T18:49:45.997Z"
         },
         "files/consul2-cta.min.js": {
+<<<<<<< HEAD
             "content": "58a8bd08a2bb22020d262bd6be299fc4",
             "lastUpdate": "2020-06-02T14:20:37.454Z"
+=======
+            "content": "3f1f51bda321c042a55b51117f9bb27f",
+            "lastUpdate": "2020-06-02T14:33:23.340Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-fonts.css": {
             "content": "30af80459c5d644a3c0be84fef72246c",
@@ -515,6 +551,7 @@
             "lastUpdate": "2020-05-05T18:49:46.003Z"
         },
         "files/consul2-home-bf2019.css": {
+<<<<<<< HEAD
             "content": "ab7a293ee61c8db87f4384481c102536",
             "lastUpdate": "2020-06-02T14:20:37.455Z"
         },
@@ -529,28 +566,55 @@
         "files/consul2-home.min.js": {
             "content": "26fe61e75823566562b028fe955a8afc",
             "lastUpdate": "2020-06-02T14:20:37.458Z"
+=======
+            "content": "854420280455c36f916f2023da900ff8",
+            "lastUpdate": "2020-06-02T14:33:23.343Z"
+        },
+        "files/consul2-home-cw2020.css": {
+            "content": "b20276ba812d3073274c17113d59a3d1",
+            "lastUpdate": "2020-06-02T14:33:23.347Z"
+        },
+        "files/consul2-home.css": {
+            "content": "7e99eb98200465a01cf40de199fdefb4",
+            "lastUpdate": "2020-06-02T14:33:23.349Z"
+        },
+        "files/consul2-home.min.js": {
+            "content": "7c83f4c71f66749d4210032ab7f6b245",
+            "lastUpdate": "2020-06-02T14:33:23.351Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-icons.css": {
             "content": "ae93c4b15b3cde21bddf23f782563c3a",
             "lastUpdate": "2020-05-05T18:49:46.008Z"
         },
         "files/consul2-institucional.css": {
+<<<<<<< HEAD
             "content": "47c30247d56cc8f1332e54364fd43fab",
             "lastUpdate": "2020-06-02T14:20:37.458Z"
+=======
+            "content": "65cc2e33965080382e99abf174629fde",
+            "lastUpdate": "2020-06-02T14:33:23.353Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-linha-embutir.css": {
-            "content": "63c2644923d06827d85a8dc040827197",
-            "lastUpdate": "2020-05-29T19:02:50.300Z"
+            "content": "bcc6220fd80b0dabaf8a111ba7baae6e",
+            "lastUpdate": "2020-06-02T14:26:32.250Z"
         },
         "files/consul2-linha-embutir.min.js": {
+<<<<<<< HEAD
             "content": "451321221d736101ecc3ff8f0302e25e",
             "lastUpdate": "2020-06-02T14:20:37.459Z"
+=======
+            "content": "a201fc66e58bea1b0146abe5c5d75b86",
+            "lastUpdate": "2020-06-02T14:33:23.356Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-listagem-embutidos.css": {
-            "content": "ea877d84501af6c00a63cb1301cabe23",
-            "lastUpdate": "2020-05-29T19:02:50.303Z"
+            "content": "7a6d18d0890c0a23ed21446eb03dca4d",
+            "lastUpdate": "2020-06-02T14:26:32.256Z"
         },
         "files/consul2-listagem-embutidos.min.js": {
+<<<<<<< HEAD
             "content": "9012b91aa2d5b97441ac455542db1c8b",
             "lastUpdate": "2020-06-02T14:20:37.460Z"
         },
@@ -565,12 +629,29 @@
         "files/consul2-login.css": {
             "content": "3974e5446bd2b29bb62a39de24cfa385",
             "lastUpdate": "2020-06-02T14:20:37.462Z"
+=======
+            "content": "24764d963fd454d0e06218efaa951e58",
+            "lastUpdate": "2020-06-02T14:33:23.360Z"
+        },
+        "files/consul2-listagem.css": {
+            "content": "f50fd872dd0d9eaf572e2ceedab053bc",
+            "lastUpdate": "2020-06-02T14:33:23.362Z"
+        },
+        "files/consul2-listagem.min.js": {
+            "content": "33f7383a6a729da80aaa383b0e130d24",
+            "lastUpdate": "2020-06-02T14:33:23.365Z"
+        },
+        "files/consul2-login.css": {
+            "content": "16ee19c38bd9579e91ca11ce3cf54f5e",
+            "lastUpdate": "2020-06-02T14:33:23.368Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "files/consul2-myorders.css": {
-            "content": "a1241ff187068110aac33d11c385fa24",
-            "lastUpdate": "2020-05-29T19:02:50.310Z"
+            "content": "7e14af54b2b291d14d922dcfbf8f2dd2",
+            "lastUpdate": "2020-06-02T14:26:32.265Z"
         },
         "files/consul2-myorders.min.js": {
+<<<<<<< HEAD
             "content": "7c342c90eff9488db6321f68d92b6180",
             "lastUpdate": "2020-06-02T14:20:37.462Z"
         },
@@ -601,6 +682,38 @@
         "files/consul2-style.css": {
             "content": "d705be4cf970f10534aef892e0fbd688",
             "lastUpdate": "2020-06-02T14:20:37.466Z"
+=======
+            "content": "e9a09edb2f465f26bfa6178320b57701",
+            "lastUpdate": "2020-06-02T14:33:23.371Z"
+        },
+        "files/consul2-produto-v2.css": {
+            "content": "cd5d221d7ccd835a0c079928c95442a5",
+            "lastUpdate": "2020-06-02T14:33:23.373Z"
+        },
+        "files/consul2-produto-v2.min.js": {
+            "content": "6f02c77e52c24ab24edd1be4dc850d90",
+            "lastUpdate": "2020-06-02T14:33:23.376Z"
+        },
+        "files/consul2-produto.css": {
+            "content": "08a900be287a03ae23f1f78d462ee095",
+            "lastUpdate": "2020-06-02T14:33:23.380Z"
+        },
+        "files/consul2-produto.min.js": {
+            "content": "8a7a144e47a42a834f943ccd3ca128c4",
+            "lastUpdate": "2020-06-02T14:33:23.383Z"
+        },
+        "files/consul2-shared.css": {
+            "content": "c5e05e0153a5e8c984eefa014d7f9d22",
+            "lastUpdate": "2020-06-02T14:33:23.386Z"
+        },
+        "files/consul2-shared.min.js": {
+            "content": "cb98955ebf78d10a4a77f19ba6e21e72",
+            "lastUpdate": "2020-06-02T14:33:23.388Z"
+        },
+        "files/consul2-style.css": {
+            "content": "85edf48265ac34255371c32825460aa9",
+            "lastUpdate": "2020-06-02T14:33:23.391Z"
+>>>>>>> e5a75aa049dc6a1f6884fde156e5e7baf4fbfc2c
         },
         "arquivos/consul-icons.svg.css": {
             "content": "d41d8cd98f00b204e9800998ecf8427e",
@@ -611,8 +724,8 @@
             "lastUpdate": "2020-05-05T18:49:52.801Z"
         },
         "arquivos/consulcoheadline_std_bd-webfont.svg.css": {
-            "content": "16d773b2abf55348648e124557d1b876",
-            "lastUpdate": "2020-05-29T19:02:55.975Z"
+            "content": "7c1edfcd005b803656a6ce5771639655",
+            "lastUpdate": "2020-06-02T14:26:35.478Z"
         },
         "arquivos/consulcoheadline_std_bd-webfont.ttf.css": {
             "content": "5d20b3bf4856b474497772b93ca5edd4",
@@ -631,8 +744,8 @@
             "lastUpdate": "2020-05-05T18:49:52.807Z"
         },
         "arquivos/consulcoheadline_std_lt-webfont.svg.css": {
-            "content": "d6bb27df6e91e2f28aa165b3bc69a2ad",
-            "lastUpdate": "2020-05-29T19:02:55.978Z"
+            "content": "9310afe71921eccdec8f1c2295a40d6a",
+            "lastUpdate": "2020-06-02T14:26:35.484Z"
         },
         "arquivos/consulcoheadline_std_lt-webfont.ttf.css": {
             "content": "0b5ea22ef1f79c158550b50e688ba445",
@@ -651,8 +764,8 @@
             "lastUpdate": "2020-05-05T18:49:52.813Z"
         },
         "arquivos/consulcoheadline_std_rg-webfont.svg.css": {
-            "content": "82a968dd5198f07106292c33ac28cb43",
-            "lastUpdate": "2020-05-29T19:02:55.980Z"
+            "content": "929f9f03b1b8023348e5990709d61a25",
+            "lastUpdate": "2020-06-02T14:26:35.488Z"
         },
         "arquivos/consulcoheadline_std_rg-webfont.ttf.css": {
             "content": "b630c09e3ee56c6a0d05fa6bc4889b02",
@@ -671,8 +784,8 @@
             "lastUpdate": "2020-05-05T18:49:52.821Z"
         },
         "arquivos/whirlpool2.svg.css": {
-            "content": "e9c289347bedbf61f2905f709f8213ce",
-            "lastUpdate": "2020-05-29T19:02:55.981Z"
+            "content": "f338b6a98422f3bca293f6aa1e6a3da5",
+            "lastUpdate": "2020-06-02T14:26:35.491Z"
         },
         "arquivos/whirlpool2.ttf.css": {
             "content": "e7639a56979c74776fa35cd1bdc03968",
