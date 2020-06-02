@@ -363,10 +363,10 @@ $(document).ready(function () {
 
 			$.ajax({
 				headers: {
-					"Content-Type": 'application/json',
-					"Accept": 'application/vnd.vtex.ds.v10+json',
+					'Content-Type': 'application/json',
+					'Accept': 'application/vnd.vtex.ds.v10+json',
 				},
-				type: "POST",
+				type: 'POST',
 				url: '/api/dataentities/PB/documents',
 				data: data,
 				success: function (res) {
