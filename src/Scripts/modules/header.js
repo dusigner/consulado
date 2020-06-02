@@ -56,12 +56,12 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	});
 
 	if($(window).width() < 798) {
-			const searchForm = $('.cont-search .form-search input');
+			const searchForm = $($('.cont-search .form-search input').text());
 			searchForm.on('keyup', function() {
 
 			let icone = $('.form-search .icon-consul-loupe');
 
-			if(searchForm.length === 0) {
+			if(searchForm.text().length === 0) {
 				icone.addClass('icon-consul-loupe');
 				icone.removeClass('icon-close');
 			} else {
