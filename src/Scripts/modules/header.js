@@ -55,19 +55,23 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		$('.ac-container').css('display', 'none');
 	});
 
-	const searchForm = $('.busca-mobile .form-search');
-	const searchField = searchForm.find('input');
-		  searchField.on('keyup focus', function() {
-		// var value = $.trim($(this).val());
+	if($(window).width() < 798) {
+			const searchForm = $('.cont-search .form-search input');
+			searchForm.on('keyup', function() {
 
-		// console.log('input change', value);
+			let icone = $('.form-search .icon-consul-loupe');
 
-		if(searchField.length === 0) {
-			console.log('busca');
-		} else {
-			console.log('x');
-		}
-	});
+			if(searchForm.length === 0) {
+				icone.addClass('icon-consul-loupe');
+				icone.removeClass('icon-close');
+			} else {
+				icone.addClass('icon-close');
+				icone.removeClass('icon-consul-loupe');
+			}
+		});
+	}
+
+
 
 
 	menuMobile.find('.open-menu-mobile').click(function(e) {
