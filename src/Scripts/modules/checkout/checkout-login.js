@@ -38,6 +38,7 @@ Nitro.module('checkout-login', function(){
 								'<h3 class="checkout-modal-custom-login--forms-options-items-top--text">Use uma das opções para confirmar sua identidade</h3>' +
 								'<button type="button" class="checkout-modal-custom-login--forms-options-items-top-close">×</button>' +
 							'</div>' +
+							'<span class="checkout-modal-custom-login--forms-error"></span>' +
 							'<div class="checkout-modal-custom-login--forms-options-items-bottom">' +
 								'<button id="checkout-login-modal-key" type="button" class="checkout-modal-custom-login--forms-options-items-bottom-buttons">Receber chave de acesso rápido por email</button>' +
 								'<button id="checkout-login-modal-email" type="button" class="checkout-modal-custom-login--forms-options-items-bottom-buttons">Entra com e-mail e senha</button>' +
@@ -50,6 +51,20 @@ Nitro.module('checkout-login', function(){
 									'<button type="submit" class="checkout-login-modal-continue" type="button">Confirmar</button>' +
 								'</div>' +
 							'</form>' +
+							'<form class="checkout-modal-custom-login--forms-key-fields">' +
+								'<div class="checkout-modal-custom-login--forms-key-fields-block">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+									'<input type="tel" maxlength="1" class="acess_key_value">' +
+								'</div>' +
+								'<div class="checkout-modal-custom-login--forms-key-fields-buttons">' +
+									'<span class="checkout-modal-custom-login--forms-key-fields-buttons-close"><i class="icon-arrow-left"></i>Voltar</span>' +
+									'<button type="submit" class="checkout-modal-custom-login--forms-key-fields-buttons-continue" type="submit">Confirmar</button>' +
+								'</div>' +
+							'</form>' +
 							// login email
 							'<form class="checkout-modal-custom-login--forms-email">' +
 									'<div class="checkout-modal-custom-email--inputbox">' +
@@ -60,7 +75,7 @@ Nitro.module('checkout-login', function(){
 									'</div>' +
 									'<div class="checkout-modal-custom-login--forms-email-buttons">' +
 										'<span class="checkout-modal-custom-login--forms-email-buttons-close"><i class="icon-arrow-left"></i>Voltar</span>' +
-										'<button class="checkout-login-modal-continue" type="button">Confirmar</button>' +
+										'<button class="checkout-login-modal-continue" type="submit">Confirmar</button>' +
 									'</div>' +
 								'</div>' +
 							'</form>' +
@@ -119,7 +134,8 @@ Nitro.module('checkout-login', function(){
 					return false;
 				}
 			},
-		}
+		},
+		hasDigit = '(?=.*?[0-9])'
 
 	this.init = () => {
 		self.accessModalLogin();
@@ -291,12 +307,11 @@ Nitro.module('checkout-login', function(){
 	};
 
 	function reload() {
-		console.log('deu certo')
-		// if (returnUrl) {
-		// 	window.location = window.location.origin + returnUrl;
-		// } else {
-		// 	location.reload();
-		// }
+		if (returnUrl) {
+			window.location = window.location.origin + returnUrl;
+		} else {
+			location.reload();
+		}
 	}
 
 	this.setListeners = () => {
@@ -313,7 +328,7 @@ Nitro.module('checkout-login', function(){
 						helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
 						reload();
 					} else if (data.authStatus === 'WrongCredentials') {
-						helpers.printError('E-mail ou senha inválidos.');
+						$('.checkout-modal-custom-login--forms-error').html('E-mail ou senha inválidos.');
 					} else {
 						helpers.printError(data.authStatus);
 					}
@@ -325,13 +340,19 @@ Nitro.module('checkout-login', function(){
 
 	this.onCloseModal = () => {
 		$('body').on('click', '.checkout-modal-custom-login--forms-options-items-top-close, .checkout-modal-custom-login--forms__overlay', function(){
+			self.removeError();
 			$('.checkout-modal-custom-login--forms, .checkout-modal-custom-login--forms__overlay').removeClass('is--active');
 		})
+	}
+
+	this.removeError = () => {
+		$('.checkout-modal-custom-login--forms-error').html('');
 	}
 
 	this.onModalLogin = () => {
 		$('body').on('click', '.link.edit.address-edit, .link.create.address-create, #edit-profile-data, .client-profile-data .link-box-edit.btn.btn-small', function() {
 			vtexjs.checkout.getOrderForm().done(function (_user_infos) {
+				self.removeError();
 				if (_user_infos.loggedIn !== true) {
 					if ( !$('.checkout-modal-custom-login--forms').hasClass('is--input') ) {
 						$('.checkout-modal-custom-login--forms').addClass('is--input')
@@ -349,47 +370,133 @@ Nitro.module('checkout-login', function(){
 		})
 
 		$('body').on('click', '#checkout-login-modal-key', function(){
+			self.removeError();
 			$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
 			$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key-fields').removeClass('is--active');
 			$('.checkout-modal-custom-login--forms-key').addClass('is--active');
 		});
 
 		$('body').on('click', '.checkout-modal-custom-login--forms-key-buttons-close, .checkout-modal-custom-login--forms-email-buttons-close', function() {
-			$('.checkout-modal-custom-login--forms-options-items-bottom').addClass('is--active');
+			self.removeError();
 			$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
 			$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key-fields').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-options-items-bottom').addClass('is--active');
 		});
 
 		$('body').on('click', '#checkout-login-modal-email', function(){
+			self.removeError();
 			$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
-			$('.checkout-modal-custom-login--forms-email').addClass('is--active');
+			$('.checkout-modal-custom-login--forms-key-fields').removeClass('is--active');
 			$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-email').addClass('is--active');
 		});
+
+		$('body').on('click', '.checkout-modal-custom-login--forms-key-buttons .checkout-login-modal-continue', function(){
+			var $email	= $('.checkout-modal-custom-login--forms-key #custom_login_email').val();
+
+			var $emailFilter=/^.+@.+\..{2,}$/;
+			var $illegalChars= /[\(\)\<\>\,\;\:\\\/\"\[\]]/
+
+			if(!($emailFilter.test($email))||$email.match($illegalChars)) {
+				$('.checkout-modal-custom-login--forms-error').html('E-mail inválido.');
+			} else {
+				self.removeError();
+				$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
+				$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+				$('.checkout-modal-custom-login--forms-key').removeClass('is--active');
+				$('.checkout-modal-custom-login--forms-key-fields').addClass('is--active');
+			}
+		});
+
+		$('body').on('click', '.checkout-modal-custom-login--forms-key-fields-buttons-close', function() {
+			self.removeError();
+			$('.checkout-modal-custom-login--forms-options-items-bottom').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-email').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key-fields').removeClass('is--active');
+			$('.checkout-modal-custom-login--forms-key').addClass('is--active');
+		})
 	}
 
 	this.logginSubmit = () => {
-		$('body').on('submit', '.checkout-modal-custom-login--forms-key', function(e) {
-			e.preventDefault();
-			userInfos.email = helpers.formtoobj($(this)).custom_login_email;
+		$('body')
+			.on('submit', '.checkout-modal-custom-login--forms-key', function(e) {
+				e.preventDefault();
 
-			if(helpers.isEmail(userInfos.email)) {
+				userInfos.email = helpers.formtoobj($(this)).custom_login_email;
 
-				self.request(routes.getEmailAcessKey,{
-					email: userInfos.email,
-					authenticationToken: userInfos.authenticationToken
-				}).then(function(){
-					self.setKeysLayout();
-					console.log('deu certo');
-				}, function() {
-					helpers.printError('Ops, encontramos um erro, por favor tente novamente mais tarde.');
-					console.log('deu erro2');
+				if(helpers.isEmail(userInfos.email)) {
+
+					self.request(routes.getEmailAcessKey,{
+						email: userInfos.email,
+						authenticationToken: userInfos.authenticationToken
+					}).then(function(){
+						// console.log('deu certo');
+					}, function() {
+						$('.checkout-modal-custom-login--forms-error').html('Ops, encontramos um erro, por favor tente novamente mais tarde.');
+					});
+
+				} else {
+					$('.checkout-modal-custom-login--forms-error').html('E-mail inválido.');
+				}
+			})
+
+			.on('submit', '.checkout-modal-custom-login--forms-key-fields', function(e) {
+				e.preventDefault();
+
+				var key = '';
+
+				$(this).find('.acess_key_value').each(function() {
+					key += $(this).val();
 				});
 
-			} else {
-				helpers.printError('E-mail inválido.');
-				console.log('deu erro');
-			}
-		})
+				if (key.length < 6 || key.length > 6) {
+					$('.checkout-modal-custom-login--forms-error').html('Chave de acesso inválida. Verifique a digitação.');
+				} else {
+					self.request(routes.authenticateByEmailKey,
+						{
+							login: userInfos.email,
+							accesskey: key,
+							authenticationToken: userInfos.authenticationToken
+						}
+					).then(function(data) {
+						if (data.authStatus === 'Success') {
+							helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
+							reload();
+						} else if (data.authStatus === 'WrongCredentials') {
+							$('.checkout-modal-custom-login--forms-error').html('Chave de acesso inválida. Verifique a digitação.');
+						} else {
+							helpers.printError(data.authStatus);
+						}
+					}, function(err) {
+						helpers.printError(err);
+					});
+				}
+			})
+
+			.on('submit', '.checkout-modal-custom-login--forms-email', function(e) {
+				e.preventDefault();
+				var params = $.extend(helpers.formtoobj($(this)), {
+					recaptcha: '',
+					authenticationToken: userInfos.authenticationToken
+				});
+				// console.log(params);
+				self.request(routes.authenticateLogin, params)
+					.then(function(data) {
+						if (data.authStatus === 'Success') {
+							helpers.authenticateUser([data.authCookie, data.accountAuthCookie], data.expiresIn);
+							reload();
+						} else if (data.authStatus === 'WrongCredentials') {
+							$('.checkout-modal-custom-login--forms-error').html('E-mail ou senha inválidos.');
+							helpers.printError('E-mail ou senha inválidos.');
+						} else {
+							helpers.printError(data.authStatus);
+						}
+					}, function(err) {
+						helpers.printError(err);
+					});
+			})
 	}
 
 	// init functions

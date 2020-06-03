@@ -137,7 +137,7 @@
     transform: translate(-50%, -50%);
 	z-index: 9999999999;
 	background: #fff;
-	min-width: 444px;
+	width: 444px;
 	opacity: 0;
 	visibility: hidden;
 	height: 0;
@@ -146,6 +146,15 @@
 		opacity: 1;
 		visibility: visible;
 		height: auto;
+	}
+
+	&-error {
+		text-align: center;
+		display: block;
+		margin-top: 12px;
+		position: relative;
+		top: 9px;
+		color: red;
 	}
 
 	&-options-items-bottom {
@@ -187,6 +196,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			outline: 0;
 
 			&-close {
 				color: #0088cc;
@@ -205,7 +215,84 @@
 				width: 150px;
 				height: 40px;
 				box-shadow: 0 0 8px 1px #cececeb3;
+				outline: 0;
 
+
+				&:hover {
+					background: #9aca3c;
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	&-key-fields {
+		padding: 32px;
+		opacity: 0;
+		visibility: hidden;
+		height: 0;
+		padding: 0;
+
+		&-block {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 30px;
+
+			input {
+				border: 1px solid #ccc;
+				border-radius: 8px;
+				color: transparent;
+				font-size: 20px;
+				height: 60px;
+				margin: 0 10px;
+				padding: 0;
+				text-align: center;
+				text-shadow: 0 0 0 #736c6b;
+				width: 44px;
+				background-color: #fff;
+				box-sizing: border-box;
+				outline: 0;
+
+				&:focus {
+					background: #9aca3c;
+					box-shadow: unset;
+					border-color: unset;
+					color: #fff;
+				}
+			}
+		}
+
+		&.is--active {
+			opacity: 1;
+			visibility: visible;
+			height: auto;
+			padding: 32px;
+		}
+
+		&-buttons {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			outline: 0;
+
+			&-close {
+				color: #0088cc;
+				text-decoration: none;
+				cursor: pointer;
+				font-size: 14px;
+				font-weight: 100;
+
+				.icon-arrow-left {
+					margin-right: 8px;
+				}
+			}
+
+			button {
+				border: none;
+				width: 150px;
+				height: 40px;
+				box-shadow: 0 0 8px 1px #cececeb3;
+				outline: 0;
 
 				&:hover {
 					background: #9aca3c;
@@ -248,6 +335,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+			outline: 0;
 
 			&-close {
 				color: #0088cc;
@@ -266,6 +354,7 @@
 				width: 150px;
 				height: 40px;
 				box-shadow: 0 0 8px 1px #cececeb3;
+				outline: 0;
 
 				&:hover {
 					background: #9aca3c;
