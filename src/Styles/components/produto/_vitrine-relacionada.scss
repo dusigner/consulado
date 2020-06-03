@@ -17,12 +17,10 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 	#form-title {
 		@include rfs(12px);
 		display: block !important;
-		position: relative;
 		cursor: pointer;
 		display: block;
 		font-weight: 500;
 		padding: 10px 10px 10px 20px;
-		position: relative;
 		transition: text-indent 0.3s;
 		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		padding: 10px 10px 10px 20px;
@@ -31,13 +29,20 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
 
+		// Parent active state
+		.is--active & {
+			background-color: #fcfcfc;
+			border-bottom: 1px solid #f1f0f0;
+			text-indent: 15px;
+		}
+
 		&:before {
 			@include icon-get("bottom-arrow");
 			@include breakpoint("small", "max") {
 				@include icon-get("top-arrow");
 			}
 			@include rfs(6px);
-			left: 0;
+			left: 5px;
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
@@ -53,7 +58,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			top: 26px;
 			z-index: 1;
 			background: #fff;
-			display: block !important;
+			display: none !important;
 			opacity: 0;
 			visibility: hidden;
 			transition: 0.8 ease-in-out;
@@ -65,17 +70,26 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 				border: 1px solid #f1f0f0;
 				border-bottom: 2px solid $green;
 				box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
-				left: 0;
+				left: 0px;
 				opacity: 1;
 				position: absolute;
 				width: 100%;
 				z-index: 10;
+				display: block !important;
+
+				// .is--active & {
+				// 	transform: translate(10px, -50%) rotate(-180deg);
+				// }
 			}
 		}
 	}
 
 	form {
 		display: none !important;
+
+		.is--active:before { //ou :before
+			display: block !important;
+		}
 	}
 
 	.portal-notify-me-ref {
