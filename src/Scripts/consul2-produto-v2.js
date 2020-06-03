@@ -261,10 +261,10 @@ Nitro.controller(
 		/* DROPDOWN Formulario avise-me quando indisponível */
 		$('.portal-notify-me-ref form').before('<span id="form-title" style="display: none;">Avise-me quando o produto estiver disponível</span>');
 
-		$('#form-unavailable form').clone().appendTo("#form-unavailable #form-title");
+		$('#form-unavailable form').clone().appendTo('#form-unavailable #form-title');
 
 		$('#form-unavailable #form-title').on('click', function() {
-			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active')
+			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active') //or addClass
 		})
 		/* DROPDOWN Formulario avise-me quando indisponível */
 
