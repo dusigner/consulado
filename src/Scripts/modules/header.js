@@ -56,21 +56,25 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	});
 
 	if($(window).width() < 798) {
-			const searchForm = $($('.cont-search .form-search input').text());
-			searchForm.on('keyup', function() {
-
+			const searchForm = $('.cont-search .form-search input');
 			let icone = $('.form-search .icon-consul-loupe');
 
-			if(searchForm.text().length === 0) {
-				icone.addClass('icon-consul-loupe');
+			$(searchForm).on('keyup', function() {
+			if($(this).val().length === 0) {
 				icone.removeClass('icon-close');
+				icone.addClass('icon-consul-loupe');
 			} else {
 				icone.addClass('icon-close');
 				icone.removeClass('icon-consul-loupe');
 			}
 		});
-	}
 
+		$(icone).on('click', function(){
+			$('.cont-search .form-search input').val("");
+			icone.removeClass('icon-close');
+			icone.addClass('icon-consul-loupe');
+		});
+	}
 
 
 
