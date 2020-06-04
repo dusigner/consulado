@@ -386,7 +386,7 @@
 					font-weight: 400;
 
 					@include breakpoint('small', 'max') {
-						font-size: 13px;
+						font-size: 12px;
 					}
 
 					@media (max-width: 340) {
@@ -454,6 +454,14 @@
 					box-shadow: 0 0 8px 1px #cececeb3;
 					outline: 0;
 					border: unset;
+
+					@include breakpoint('small', 'max') {
+						font-size: 11px;
+					}
+
+					@media (max-width: 340) {
+						font-size: 10px;
+					}
 
 					&:hover {
 						color: #fff;
