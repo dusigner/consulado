@@ -18,12 +18,6 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	//Teste A B
 	$('body').addClass('teste-A');
 
-	if($('body').hasClass('teste-A')) {
-	  $('body').removeClass('teste-B');
-	}
-	else {
-	   $('div').removeClass('teste-A');
-	}
 
 	// Menu mobile
 	var topMenu = $('.menu-department'),
