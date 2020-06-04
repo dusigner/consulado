@@ -16,7 +16,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		$document = $(document);
 
 	//Teste A B
-	$('body').addClass('teste-B');
+	$('body').addClass('teste-A');
 
 	if($('body').hasClass('teste-A')) {
 	  $('body').removeClass('teste-B');
