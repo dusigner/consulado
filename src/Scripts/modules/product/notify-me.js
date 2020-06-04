@@ -70,6 +70,9 @@ Nitro.module('notify-me', function() {
 			telefone: $('#notifymeClientPhone').val()
 		};
 
+		$('#form-title').remove();
+		$('.portal-notify-me-ref form').remove();
+
 		$.ajax({
 			url: '/api/ds/pub/documents/NT',
 			type: 'POST',
