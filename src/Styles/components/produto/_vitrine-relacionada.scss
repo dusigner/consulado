@@ -19,22 +19,17 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		display: block !important;
 		cursor: pointer;
 		font-weight: 500;
-		transition: text-indent 0.3s;
 		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		padding: 10px 10px 10px 20px;
 		position: relative;
 		transition: text-indent 0.3s;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
-		border-top: 1px solid #E3E1E1;
+		border-top: 1px solid #e3e1e1;
+		transform: translate(0px, -50%) rotate(0deg);
 
-		&.is--active { overflow: inherit; }
-
-		// Parent active state
 		.is--active & {
-			background-color: #fcfcfc;
-			border-bottom: 1px solid #f1f0f0;
-			text-indent: 15px;
+			transform: translate(0px, -50%) rotate(-180deg);
 		}
 
 		&:before {
@@ -47,15 +42,15 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			transition: transform .3s;
-
-			.is--active & {
-				transform: translate(10px, -50%) rotate(-180deg);
-			}
+			transition: transform 0.3s;
+			content: "";
+			transform: translate(0px, -50%) rotate(-180deg);
+			text-transform: none !important;
 		}
 	}
 
 	form {
+		@include rfs(12px);
 		position: absolute;
 		z-index: 1;
 		background: #fff;
@@ -65,16 +60,18 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		transition: 0.8 ease-in-out;
 		width: 100%;
 		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+		// Parent active state
+		.is--active & {
+			background-color: #fcfcfc;
+			border-bottom: 1px solid #f1f0f0;
+			text-indent: 15px;
+		}
 
 		&.is--active {
 			opacity: 1;
 			transition: 0.8 ease-in-out;
 			visibility: visible;
 			box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
-
-			 .is--active & {
-				 transform: translate(10px, -50%) rotate(-180deg);
-			 }
 		}
 	}
 
