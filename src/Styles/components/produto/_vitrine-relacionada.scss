@@ -18,9 +18,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		@include rfs(12px);
 		display: block !important;
 		cursor: pointer;
-		display: block;
 		font-weight: 500;
-		padding: 10px 10px 10px 20px;
 		transition: text-indent 0.3s;
 		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		padding: 10px 10px 10px 20px;
@@ -28,6 +26,9 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		transition: text-indent 0.3s;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
+		border-top: 1px solid #E3E1E1;
+
+		&.is--active { overflow: inherit; }
 
 		// Parent active state
 		.is--active & {
@@ -46,7 +47,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			transition: transform 0.3s;
+			transition: transform .3s;
 
 			.is--active & {
 				transform: translate(10px, -50%) rotate(-180deg);
@@ -77,9 +78,9 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 				z-index: 10;
 				display: block !important;
 
-				// .is--active & {
-				// 	transform: translate(10px, -50%) rotate(-180deg);
-				// }
+				 .is--active & {
+				 	transform: translate(10px, -50%) rotate(-180deg);
+				 }
 			}
 		}
 	}
@@ -87,7 +88,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 	form {
 		display: none !important;
 
-		.is--active:before { //ou :before
+		&.is--active { //ou :before
 			display: block !important;
 		}
 	}
