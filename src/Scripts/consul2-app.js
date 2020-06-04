@@ -116,8 +116,8 @@ Nitro.setup(
 		'isTelevendasCorp',
 		'callcenter',
 		'logoffUser',
-		// 'dataLayer-new-header-menu',
-		'dataLayer-menu-antigo'
+		'dataLayer-new-header-menu',
+		// 'dataLayer-menu-antigo'
 	],
 	function() {
 		var path = window.location.pathname;
