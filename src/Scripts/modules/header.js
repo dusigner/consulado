@@ -11,10 +11,19 @@ require('modules/header/cart');
 Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover', 'cart' /* 'tooltip' */], function() {
 	//teste ab new layout header
 
-	// $('body').find('.menu-department').addClass('testeB');
 
 	var $body = $('body'),
 		$document = $(document);
+
+	//Teste A B
+	$('body').addClass('teste-A');
+
+	if($('body').hasClass('teste-A')) {
+	  $('body').removeClass('teste-B');
+	}
+	else {
+	   $('div').removeClass('teste-A');
+	}
 
 	// Menu mobile
 	var topMenu = $('.menu-department'),

@@ -1,6 +1,5 @@
 .banners,
 .banners-mobile {
-	padding-top: 16px !important;
 	position: relative;
 
 	.container {
@@ -41,6 +40,9 @@
 			transform: inherit;
 		}
 	}
+}
+.banners-mobile {
+	padding-top: 8px !important;
 }
 
 // Banner principal DESKTOP
