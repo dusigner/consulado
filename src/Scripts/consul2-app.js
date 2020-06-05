@@ -67,8 +67,8 @@ require('modules/store/callcenter');
 require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
 require('modules/logoffUser');
-// require('dataLayers/dataLayer-new-header-menu');
-require('dataLayers/dataLayer-menu-antigo');
+require('dataLayers/dataLayer-new-header-menu');
+// require('dataLayers/dataLayer-menu-antigo');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -117,7 +117,7 @@ Nitro.setup(
 		'callcenter',
 		'logoffUser',
 		'dataLayer-new-header-menu'
-		//'dataLayer-menu-antigo'
+		// 'dataLayer-menu-antigo'
 	],
 	function() {
 		var path = window.location.pathname;
