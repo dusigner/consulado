@@ -1628,6 +1628,9 @@ $main-intro--bottom: 80px;
 }
 
 .launch-gela {
+	p {
+		margin-bottom: 0 !important;
+	}
 	.price {
 		margin-top: 28px;
 		margin-bottom: 40px;
@@ -1692,6 +1695,10 @@ $main-intro--bottom: 80px;
 				background-color: #fff;
 				border-radius: 50%;
 			}
+		}
+
+		p {
+			margin-bottom: 0 !important;
 		}
 	}
 }
