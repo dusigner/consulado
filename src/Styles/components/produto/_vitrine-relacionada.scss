@@ -43,7 +43,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			top: 50%;
 			transform: translateY(-50%);
 			transition: transform 0.3s;
-			content: "";
+			content: "";
 			transform: translate(0px, -50%) rotate(-180deg);
 			text-transform: none !important;
 		}
