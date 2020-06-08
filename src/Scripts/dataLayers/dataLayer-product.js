@@ -16,6 +16,9 @@ Nitro.module('dataLayer-product', function() {
 		this.nameProductOutline();
 		this.visibleVitrineOutlineProducts();
 		this.similarOutlineProduct();
+
+		// whats
+		// this.clickWhats();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -145,6 +148,19 @@ Nitro.module('dataLayer-product', function() {
 				`click produto similar`,
 				`${$label}`
 			);
+		});
+	};
+
+	this.clickWhats = () => {
+		$('.container-whats-container-link').on('click', function() {
+
+			pushDataLayer(
+				'Promotores',
+				'click_promotores',
+				'PDP'
+			);
+
+			return false;
 		});
 	};
 

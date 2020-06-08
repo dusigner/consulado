@@ -216,23 +216,15 @@ body.produto {
 				align-items: center;
 				justify-content: center;
 				align-self: center;
+				font-weight: 500;
+				cursor: pointer;
 
-				a {
-					color: #FFFFFF;
-					font-weight: 500;
-					align-items: center;
-					display: flex;
-					width: 100%;
-					justify-content: center;
-					height: 32px;
-
-					svg {
-						height: 15px;
-						width: 15px;
-						display: block;
-						position: relative;
-						left: -6px;
-					}
+				svg {
+					height: 15px;
+					width: 15px;
+					display: block;
+					position: relative;
+					left: -6px;
 				}
 			}
 		}
