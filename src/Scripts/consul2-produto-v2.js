@@ -273,6 +273,7 @@ Nitro.controller(
 
 		$('#form-unavailable #form-title').on('click', function() {
 			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active') //or addClass
+			$(this).parents('.portal-notify-me-ref').find('#form-title').toggleClass('is--active') //or addClass
 		})
 		/* DROPDOWN Formulario avise-me quando indisponível */
 

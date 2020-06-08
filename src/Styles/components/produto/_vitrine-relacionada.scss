@@ -19,17 +19,18 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		display: block !important;
 		cursor: pointer;
 		font-weight: 500;
-		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
 		padding: 10px 10px 10px 20px;
 		position: relative;
 		transition: text-indent 0.3s;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
 		border-top: 1px solid #e3e1e1;
-		transform: translate(0px, -50%) rotate(0deg);
 
-		.is--active & {
-			transform: translate(0px, -50%) rotate(-180deg);
+		&.is--active {
+			&:before {
+				transform: translate(0px, -50%) rotate(-180deg);
+			}
 		}
 
 		&:before {
@@ -43,9 +44,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			top: 50%;
 			transform: translateY(-50%);
 			transition: transform 0.3s;
-			content: "";
-			transform: translate(0px, -50%) rotate(-180deg);
-			text-transform: none !important;
+			// transform: translate(5px, 0%) rotate(-180deg);
 		}
 	}
 
@@ -60,6 +59,10 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		transition: 0.8 ease-in-out;
 		width: 100%;
 		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
+		border-bottom: 2px solid #9aca3c;
+		&.is--active:before {
+			transform: translate(5px, -50%) rotate(-180deg);
+		}
 		// Parent active state
 		.is--active & {
 			background-color: #fcfcfc;
