@@ -844,6 +844,72 @@ $(document).ready(function() {
 	});
 
 	// Tag 12
+	var firstAppearanceAmbientes = true;
+	var intervalAmbientes = null;
+
+	$(window).on("scroll", function() {
+		setTimeout(function() {
+			// Features
+			if (
+				firstAppearanceAmbientes &&
+				$("#ambientes").isOnScreen(1, 0.5)
+			) {
+				var counter = 0;
+
+				intervalAmbientes = setInterval(function() {
+					counter++;
+					if (counter >= 12) {
+						clearInterval(intervalAmbientes);
+						return;
+					} else {
+						if (
+							counter == 1 &&
+							$("#ambientes").isOnScreen(1, 0.5)
+						) {
+							console.log("Ambientes 1s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action:
+									"viability_deixa_qualquer_ambiente_mais_bonito",
+								label: "1s"
+							});
+						} else if (
+							counter == 4 &&
+							$("#ambientes").isOnScreen(1, 0.5)
+						) {
+							console.log("Ambientes 4s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action:
+									"viability_deixa_qualquer_ambiente_mais_bonito",
+								label: "4s"
+							});
+						} else if (
+							counter == 10 &&
+							$("#ambientes").isOnScreen(1, 0.5)
+						) {
+							console.log("Ambientes 10s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action:
+									"viability_deixa_qualquer_ambiente_mais_bonito",
+								label: "10s"
+							});
+						}
+					}
+				}, 1000);
+
+				firstAppearanceAmbientes = false;
+			}
+
+			if ($("#ambientes")[0].getBoundingClientRect().bottom < 0) {
+				clearInterval(intervalAmbientes);
+			}
+		}, 500);
+	});
 
 	// Tag 13 (n/a)
 
