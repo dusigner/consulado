@@ -102,6 +102,11 @@ Nitro.controller(
 			}
 		});
 
+		// whats
+		var $url = location.href;
+		var $nameProduct = $('.productName').text();
+		$('.container-whats-container-link a, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=554788041897&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$nameProduct}. Link: ${$url}`);
+
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
 

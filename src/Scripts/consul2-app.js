@@ -68,7 +68,7 @@ require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
 require('modules/logoffUser');
 require('dataLayers/dataLayer-new-header-menu');
-// require('dataLayers/dataLayer-menu-antigo');
+//require('dataLayers/dataLayer-menu-antigo');
 
 const changeCallcenterLinks = () => {
 	if (
