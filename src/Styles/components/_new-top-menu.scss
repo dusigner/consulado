@@ -10,6 +10,19 @@ body {
 	.menu-mobile {
 		display: none;
 	}
+	.icon.icon-close {
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Camada_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 28 28' style='enable-background:new 0 0 28 28;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:none;stroke:%239ACA3C;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.6667;%7D%0A%3C/style%3E%3Cline class='st0' x1='21' y1='7' x2='7' y2='21'/%3E%3Cline class='st0' x1='7' y1='7' x2='21' y2='21'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 20px;
+		position: absolute;
+		right: 14px;
+		top: 14px;
+		width: 20px;
+		&::before {
+			content: none;
+		}
+	}
 	&.teste-A {
 		display: block !important;
 		.menu-teste-A {

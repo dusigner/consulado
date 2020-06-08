@@ -41,13 +41,12 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		return;
 	});
 
-	search
 	$('.cont-search.search .form-search .text-search').on('click', function() {
 		setTimeout(function(){
 			if ( !$('.ac-container').hasClass('is--search')) {
 				$('.ac-container').addClass('is--search');
 				var closeSearch = $('.ac-title-top-search')
-				closeSearch.append('<p type="button" class="icon-close" style="margin: 3px; color: #9aca3c; font-weight: bold; cursor: pointer;">X</p>')
+				closeSearch.append('<p type="button" class="icon icon-close" style="margin: 10px 5px; color: #9aca3c; font-weight: bold; cursor: pointer;"></p>')
 				closeSearch.css('display', 'flex')
 				closeSearch.css('justifyContent', 'space-between')
 			}
