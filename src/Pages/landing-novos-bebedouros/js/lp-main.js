@@ -196,7 +196,81 @@ $(document).ready(function() {
 			counterAnimation(gelaMaisEl, 19, 15, 20);
 			firstAppearanceGM = false;
 		}
+
+		// // Features
+		// if (firstAppearanceFeature && $("#features").isOnScreen(1, 0.5)) {
+		// 	var counter = 0;
+
+		// 	var interval = setInterval(function() {
+		// 		counter++;
+		// 		if (counter >= 12) {
+		// 			clearInterval(interval);
+		// 			return;
+		// 		} else {
+		// 			if (counter == 1) {
+		// 				console.log("1s");
+		// 			} else if (counter == 4) {
+		// 				console.log("4s");
+		// 			} else if (
+		// 				counter == 10 &&
+		// 				$("#features").isOnScreen(1, 0.5)
+		// 			) {
+		// 				console.log("10s");
+		// 			}
+		// 		}
+		// 	}, 1000);
+
+		// 	firstAppearanceFeature = false;
+		// }
 	});
+
+	// Check if element is on the screen
+	$.fn.isOnScreen = function(x, y) {
+		if (x == null || typeof x == "undefined") x = 1;
+		if (y == null || typeof y == "undefined") y = 1;
+
+		var win = $(window);
+
+		var viewport = {
+			top: win.scrollTop(),
+			left: win.scrollLeft()
+		};
+		viewport.right = viewport.left + win.width();
+		viewport.bottom = viewport.top + win.height();
+
+		var height = this.outerHeight();
+		var width = this.outerWidth();
+
+		if (!width || !height) {
+			return false;
+		}
+
+		var bounds = this.offset();
+		bounds.right = bounds.left + width;
+		bounds.bottom = bounds.top + height;
+
+		var visible = !(
+			viewport.right < bounds.left ||
+			viewport.left > bounds.right ||
+			viewport.bottom < bounds.top ||
+			viewport.top > bounds.bottom
+		);
+
+		if (!visible) {
+			return false;
+		}
+
+		var deltas = {
+			top: Math.min(1, (bounds.bottom - viewport.top) / height),
+			bottom: Math.min(1, (viewport.bottom - bounds.top) / height),
+			left: Math.min(1, (bounds.right - viewport.left) / width),
+			right: Math.min(1, (viewport.right - bounds.left) / width)
+		};
+
+		return (
+			deltas.left * deltas.right >= x && deltas.top * deltas.bottom >= y
+		);
+	};
 
 	// Smooth Scroll
 	$("a[href*=#]:not([href=#])").click(function() {
@@ -277,8 +351,6 @@ $(document).ready(function() {
 
 	// Play
 	facilVideoPlay.on("click", function() {
-		console.log("=>");
-		console.log(videoFacilUsar.attr("src"));
 		videoFacilUsar.attr("src", videoFacilUsar.attr("src") + "?autoplay=1");
 		toggleModal(modalFacilUsar);
 	});
@@ -439,7 +511,6 @@ $(document).ready(function() {
 
 				var InstallMents =
 					res[0].items[0].sellers[0].commertialOffer.Installments;
-				console.log(InstallMents);
 
 				var arrayIndex = 0;
 				var largeNumberOfInstallments = 0;
@@ -472,4 +543,355 @@ $(document).ready(function() {
 			}
 		});
 	}
+
+	function removeAcento(text) {
+		text = text.toLowerCase();
+		text = text.replace(new RegExp("[ÁÀÂÃ]", "gi"), "a");
+		text = text.replace(new RegExp("[ÉÈÊ]", "gi"), "e");
+		text = text.replace(new RegExp("[ÍÌÎ]", "gi"), "i");
+		text = text.replace(new RegExp("[ÓÒÔÕ]", "gi"), "o");
+		text = text.replace(new RegExp("[ÚÙÛ]", "gi"), "u");
+		text = text.replace(new RegExp("[Ç]", "gi"), "c");
+		return text;
+	}
+
+	// Tags DataLayer
+	// Tag 1
+	$("#top-navigation--lp li a").on("click", function() {
+		var opcaoClicada = removeAcento(
+			$(this)
+				.text()
+				.replaceAll(" ", "_")
+		);
+
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "clique_menu_superior",
+			label: opcaoClicada
+		});
+	});
+
+	// Tag 2
+	$("#top-navigation--lp .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "eu_quero",
+			label: "menu_superior"
+		});
+	});
+
+	// Tag 3
+	$(".intro-info .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "saiba_mais",
+			label: "banner_superior"
+		});
+	});
+
+	// Tag 4
+	$(".features .features-box__options li").on("click", function() {
+		var opcaoClicada = removeAcento(
+			$(this)
+				.find(".feature-option-select__title")
+				.text()
+				.replaceAll(" ", "_")
+		);
+
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "clique_features_e_beneficios",
+			label: $.trim(opcaoClicada)
+		});
+	});
+
+	// Tag 5
+	var firstAppearanceFeature = true;
+	var intervalFeatures = null;
+
+	$(window).on("scroll", function() {
+		setTimeout(function() {
+			// Features
+			if (firstAppearanceFeature && $("#features").isOnScreen(1, 0.5)) {
+				var counter = 0;
+
+				intervalFeatures = setInterval(function() {
+					counter++;
+					if (counter >= 12) {
+						clearInterval(intervalFeatures);
+						return;
+					} else {
+						if (counter == 1 && $("#features").isOnScreen(1, 0.5)) {
+							console.log("Features 1s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_features_e_beneficios",
+								label: "1s"
+							});
+						} else if (
+							counter == 4 &&
+							$("#features").isOnScreen(1, 0.5)
+						) {
+							console.log("Features 4s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_features_e_beneficios",
+								label: "4s"
+							});
+						} else if (
+							counter == 10 &&
+							$("#features").isOnScreen(1, 0.5)
+						) {
+							console.log("Features 10s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_features_e_beneficios",
+								label: "10s"
+							});
+						}
+					}
+				}, 1000);
+
+				firstAppearanceFeature = false;
+			}
+
+			if ($("#features")[0].getBoundingClientRect().bottom < 0) {
+				clearInterval(intervalFeatures);
+			}
+		}, 500);
+	});
+
+	// Tag 6
+	$("#troca-garrafao, #facil-de-usar").on("click", function() {
+		var opcaoClicada = removeAcento(
+			$(this)
+				.parent()
+				.find(".main-title")
+				.text()
+				.replaceAll(" ", "_")
+		);
+
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "veja_em_acao",
+			label: $.trim(opcaoClicada)
+		});
+	});
+
+	// Tag 7
+	$("#features .features-anchor").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "clique_veja_mais",
+			label: "descubra_qual_o_melhor_produto_para_voce"
+		});
+	});
+
+	// Tag 8
+	var firstAppearanceGelaFacil = true;
+	var intervalGelaFacil = null;
+
+	$(window).on("scroll", function() {
+		setTimeout(function() {
+			// Features
+			if (
+				firstAppearanceGelaFacil &&
+				$("#gela-facil").isOnScreen(1, 0.5)
+			) {
+				var counter = 0;
+
+				intervalGelaFacil = setInterval(function() {
+					counter++;
+					if (counter >= 12) {
+						clearInterval(intervalGelaFacil);
+						return;
+					} else {
+						if (
+							counter == 1 &&
+							$("#gela-facil").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Fácil 1s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_facil",
+								label: "1s"
+							});
+						} else if (
+							counter == 4 &&
+							$("#gela-facil").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Fácil 4s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_facil",
+								label: "4s"
+							});
+						} else if (
+							counter == 10 &&
+							$("#gela-facil").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Fácil 10s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_facil",
+								label: "10s"
+							});
+						}
+					}
+				}, 1000);
+
+				firstAppearanceGelaFacil = false;
+			}
+
+			if ($("#gela-facil")[0].getBoundingClientRect().bottom < 0) {
+				clearInterval(intervalGelaFacil);
+			}
+		}, 500);
+	});
+
+	// Tag 9
+	$("#gela-facil .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "eu_quero",
+			label: "gela_facil"
+		});
+	});
+
+	// Tag 10
+	var firstAppearanceGelaMais = true;
+	var intervalGelaMais = null;
+
+	$(window).on("scroll", function() {
+		setTimeout(function() {
+			// Features
+			if (firstAppearanceGelaMais && $("#gela-mais").isOnScreen(1, 0.5)) {
+				var counter = 0;
+
+				intervalGelaMais = setInterval(function() {
+					counter++;
+					if (counter >= 12) {
+						clearInterval(intervalGelaMais);
+						return;
+					} else {
+						if (
+							counter == 1 &&
+							$("#gela-mais").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Mais 1s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_mais",
+								label: "1s"
+							});
+						} else if (
+							counter == 4 &&
+							$("#gela-mais").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Mais 4s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_mais",
+								label: "4s"
+							});
+						} else if (
+							counter == 10 &&
+							$("#gela-mais").isOnScreen(1, 0.5)
+						) {
+							console.log("Gela Mais 10s");
+							dataLayer.push({
+								event: "generic",
+								category: "lp_bebedouros",
+								action: "viability_gela_mais",
+								label: "10s"
+							});
+						}
+					}
+				}, 1000);
+
+				firstAppearanceGelaMais = false;
+			}
+
+			if ($("#gela-mais")[0].getBoundingClientRect().bottom < 0) {
+				clearInterval(intervalGelaMais);
+			}
+		}, 500);
+	});
+
+	// Tag 11
+	$("#gela-mais .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "eu_quero",
+			label: "gela_mais"
+		});
+	});
+
+	// Tag 12
+
+	// Tag 13 (n/a)
+
+	// Tag 14
+	$("#open--gela-mais").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "eu_quero",
+			label: "gela_mais_em_breve"
+		});
+	});
+
+	// Tag 15 (n/a)
+
+	// Tag 16
+	$("#launch-gela-mais__form .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "avise_me",
+			label: "gela_mais"
+		});
+	});
+
+	// Tag 17
+	$(".launch-gela--facil .cta").on("click", function() {
+		dataLayer.push({
+			event: "generic",
+			category: "lp_bebedouros",
+			action: "comprar",
+			label: "gela_facil"
+		});
+	});
+
+	// Tag 18 ()
+	$(".launch-gela--mais .cta").on("click", function() {
+		var opcaoTexto = $(this).text();
+
+		if (opcaoTexto.toLowerCase() == "comprar") {
+			dataLayer.push({
+				event: "generic",
+				category: "lp_bebedouros",
+				action: "comprar",
+				label: "gela_mais"
+			});
+		}
+	});
+
+	// Tag 19
 });
