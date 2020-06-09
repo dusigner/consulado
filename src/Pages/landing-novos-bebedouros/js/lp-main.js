@@ -401,23 +401,13 @@ $(document).ready(function() {
 	// Main video activation
 	var videoContainer = $("#video-container");
 	var mainVideoPlay = $("#video-container__play");
-	var mainVideoPlayer = document.getElementById("main-video");
+	var mainVideoPlayer = $("#main-video");
 
 	var videoFrame = $("#main-video-frame");
 
 	mainVideoPlay.on("click", function() {
 		videoContainer.css("display", "none");
-		mainVideoPlayer.style.display = "block";
-		videoFrame.attr("src", videoFrame.attr("src") + "?autoplay=1");
-	});
-
-	mainVideoPlayer.addEventListener("timeupdate", function() {
-		if (mainVideoPlayer.currentTime == mainVideoPlayer.duration) {
-			videoContainer.css("display", "block");
-			mainVideoPlayer.style.display = "none";
-			mainVideoPlayer.currentTime = 0;
-			mainVideoPlayer.pause();
-		}
+		mainVideoPlayer.css("display", "block");
 	});
 
 	// Forms
@@ -911,8 +901,6 @@ $(document).ready(function() {
 		}, 500);
 	});
 
-	// Tag 13 (n/a)
-
 	// Tag 14
 	$("#open--gela-mais").on("click", function() {
 		dataLayer.push({
@@ -922,8 +910,6 @@ $(document).ready(function() {
 			label: "gela_mais_em_breve"
 		});
 	});
-
-	// Tag 15 (n/a)
 
 	// Tag 16
 	$("#launch-gela-mais__form .cta").on("click", function() {
@@ -958,6 +944,4 @@ $(document).ready(function() {
 			});
 		}
 	});
-
-	// Tag 19
 });
