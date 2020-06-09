@@ -168,7 +168,7 @@ Nitro.module('dataLayer-product', function() {
 			if ( $($(this)).attr('title') === "Informações de contratação") {
 				pushDataLayer(
 					'Promotores',
-					'click_televendas',
+					'click_atendimento',
 					'PDP'
 				);
 			}
