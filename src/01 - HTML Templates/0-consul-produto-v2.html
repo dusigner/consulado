@@ -8,7 +8,7 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
 	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto-v2.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="/files/consul2-produto-v2.css?v=v1584628161749" />
 </head>
 
 <body data-controller="produto-v2">
@@ -150,7 +150,15 @@
 
 					<!-- Comprar produto -->
 					<div id="BuyButton" class="clearfix">
-						<vtex.cmc:BuyButton />
+						<!--<vtex.cmc:BuyButton />-->
+
+						<!-- Formulario avise-me indisponível -->
+                		<div class="form-container">
+                			<div id="form-unavailable" class="body-form">
+                			    <vtex.cmc:BuyButton />
+                			</div>
+                		</div>
+                		<!-- Formulario avise-me indisponível -->
 
 						<div class="secure">
 							<i class="icon icon icon-cadeado"></i> Compra Segura
@@ -158,24 +166,25 @@
 					</div>
 					<!-- /Comprar produto -->
 
-					<!-- Produtos relacionados de produto indisponível - Vtex -->
+
+                    <!-- Produtos relacionados de produto indisponível - Vtex -->
 					<section id="relacionados-top" class="slider">
-							<div class="container">
-								<p class="relacionados-title">
-									<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Título" />
-								</p>
-							</div>
-							<div class="container">
-								<div class="row">
-									<div class="prateleira-slider clearfix">
-										<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Coleção" />
-									</div>
+						<div class="container">
+							<p class="relacionados-title">
+								<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Título" />
+							</p>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="prateleira-slider clearfix">
+									<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Coleção" />
 								</div>
 							</div>
-						</section>
+						</div>
+					</section>
 					<!-- Produtos relacionados de produto indisponível - Vtex -->
 
-					 <!-- Frete -->
+					<!-- Frete -->
 					<div class="calc-frete">
 						<div class="title-frete">
 							<i class="icon icon-truck-bold"></i>
@@ -316,11 +325,11 @@
 	</div>
 
 	<!-- Chaordic TOP -->
-	<div chaordic="top"></div>
+	<div data-chaordic="top"></div>
 	<!-- /Chaordic TOP -->
 
 	<!-- Chaordic MIDDLE -->
-	<div chaordic="middle"></div>
+	<div data-chaordic="middle"></div>
 	<!-- /Chaordic MIDDLE -->
 
 	<!-- Main -->
@@ -358,9 +367,9 @@
 					</div>
 				</div>
 				<div class="product-assist-block delivery" title="Tipos de entrega">
-					<!-- <div class="first-block">
+					<div class="first-block">
 						<div class="icon-delivery"></div>
-					</div> -->
+					</div>
 					<div class="product-assist-block infos" title="Informações de contratação">
 						<div class="first-block">
 							<div class="icon-infos"></div>
@@ -491,7 +500,7 @@
 	<!-- /Main -->
 
 	<!-- [ CHAORDIC ] BOTTOM -->
-	<div chaordic="bottom"></div>
+	<div data-chaordic="bottom"></div>
 	<!-- /[ CHAORDIC ] BOTTOM -->
 
 	<!-- Trustvox -->
@@ -545,7 +554,7 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-produto-v2.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="/files/consul2-produto-v2.min.js?v=v1584628161749"></script>
 	<script type="text/javascript">
 		var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
 		_trustvox_shelf_rate.push(['_storeId', 3531]);
