@@ -2,6 +2,30 @@
 
 
 body {
+	& .ac-suggest-product {
+		align-items: center;
+		display: flex;
+	}
+	& .ac-product-name {
+		display: table-cell;
+		font-size: 14px;
+		line-height: 20px;
+		padding: 10px 12px;
+		vertical-align: middle;
+		width: 310px;
+	}
+	& .ac-price-api-fail {
+		background-color: #98c63a;
+		border-radius: 25px;
+		color: #fff;
+		padding: 10px 20px;
+		width: 138px !important;
+	}
+	& .ac-suggest-product-image-container {
+		display: table-cell;
+		vertical-align: middle;
+		width: 100px;
+	}
 	.top-navigation {
 		.container {
 			display: none;
