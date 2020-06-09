@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	var featureOptionSelection = $(".feature-option-select");
 	var featureContentOptionSelection = $(".feature-option");
 
-	$(".feature-option-select").on("click", function() {
+	$(".feature-option-select").on("click", function () {
 		OptionFeatureMenuSelected($(this));
 
 		// select slider
@@ -33,13 +33,13 @@ $(document).ready(function() {
 	}
 
 	function cleanFeatureOptionSelection() {
-		featureOptionSelection.each(function() {
+		featureOptionSelection.each(function () {
 			$(this).removeClass("active");
 		});
 	}
 
 	function selectContentOption(optionId) {
-		featureContentOptionSelection.each(function() {
+		featureContentOptionSelection.each(function () {
 			$(this).removeClass("active");
 
 			if ($(this).data("option-content") == optionId) {
@@ -49,27 +49,27 @@ $(document).ready(function() {
 	}
 
 	// Read more
-	$(".custom-product-info").on("click", function() {
+	$(".custom-product-info").on("click", function () {
 		$(this).addClass("show-more");
 	});
 
 	// Form Gela Fácil
-	$("#open--gela-facil").on("click", function() {
+	$("#open--gela-facil").on("click", function () {
 		$("#launch-gela-facil__form").toggleClass("active");
 	});
 
 	// Form Gela Mais
-	$("#open--gela-mais").on("click", function() {
+	$("#open--gela-mais").on("click", function () {
 		$("#launch-gela-mais__form").toggleClass("active");
 	});
 
 	// Close Gela Fácil
-	$("#close-gela-facil").on("click", function() {
+	$("#close-gela-facil").on("click", function () {
 		$("#launch-gela-facil__form").toggleClass("active");
 	});
 
 	// Close Gela Mais
-	$("#close-gela-mais").on("click", function() {
+	$("#close-gela-mais").on("click", function () {
 		$("#launch-gela-mais__form").toggleClass("active");
 	});
 
@@ -87,7 +87,7 @@ $(document).ready(function() {
 		var startRoundTwo = finishRoundOne;
 		var startRoundThree = finishRoundTwo;
 
-		var timer = window.setInterval(function() {
+		var timer = window.setInterval(function () {
 			if (startRoundOne < finishRoundOne) {
 				counterItems.eq(startRoundOne++).addClass("full");
 
@@ -115,19 +115,19 @@ $(document).ready(function() {
 	});
 
 	// Go to slide features box
-	$("#features-box__slider .slick-dots").on("click", function() {
+	$("#features-box__slider .slick-dots").on("click", function () {
 		var slickActiveId = $(this)
 			.find(".slick-active button")
 			.text();
 		var elementOptionMenuTarget = $(
 			".features-box__options li[data-feature-option='" +
-				slickActiveId +
-				"']"
+			slickActiveId +
+			"']"
 		);
 		OptionFeatureMenuSelected(elementOptionMenuTarget);
 		centerOptionFeatureSelected(elementOptionMenuTarget);
 	});
-	$("#features-box__slider").on("afterChange", function(
+	$("#features-box__slider").on("afterChange", function (
 		event,
 		slick,
 		currentSlide,
@@ -136,8 +136,8 @@ $(document).ready(function() {
 		var slickActiveId = currentSlide + 1;
 		var elementOptionMenuTarget = $(
 			".features-box__options li[data-feature-option='" +
-				slickActiveId +
-				"']"
+			slickActiveId +
+			"']"
 		);
 		OptionFeatureMenuSelected(elementOptionMenuTarget);
 		centerOptionFeatureSelected(elementOptionMenuTarget);
@@ -159,7 +159,7 @@ $(document).ready(function() {
 	var gelaFacil = $("#gela-facil");
 	var gelaMais = $("#gela-mais");
 
-	$(window).on("scroll", function(e) {
+	$(window).on("scroll", function (e) {
 		// Nav fixed
 		if ($(window).scrollTop() > 147) {
 			topNav.addClass("fixed");
@@ -174,7 +174,7 @@ $(document).ready(function() {
 			$("#top-navigation--lp a").removeClass("active");
 		}
 
-		$(".scrollspy").each(function() {
+		$(".scrollspy").each(function () {
 			if ($(this).offset().top < scroll + 100) {
 				$("#top-navigation--lp a").removeClass("active");
 
@@ -197,35 +197,10 @@ $(document).ready(function() {
 			firstAppearanceGM = false;
 		}
 
-		// // Features
-		// if (firstAppearanceFeature && $("#features").isOnScreen(1, 0.5)) {
-		// 	var counter = 0;
-
-		// 	var interval = setInterval(function() {
-		// 		counter++;
-		// 		if (counter >= 12) {
-		// 			clearInterval(interval);
-		// 			return;
-		// 		} else {
-		// 			if (counter == 1) {
-		// 				console.log("1s");
-		// 			} else if (counter == 4) {
-		// 				console.log("4s");
-		// 			} else if (
-		// 				counter == 10 &&
-		// 				$("#features").isOnScreen(1, 0.5)
-		// 			) {
-		// 				console.log("10s");
-		// 			}
-		// 		}
-		// 	}, 1000);
-
-		// 	firstAppearanceFeature = false;
-		// }
 	});
 
 	// Check if element is on the screen
-	$.fn.isOnScreen = function(x, y) {
+	$.fn.isOnScreen = function (x, y) {
 		if (x == null || typeof x == "undefined") x = 1;
 		if (y == null || typeof y == "undefined") y = 1;
 
@@ -273,10 +248,10 @@ $(document).ready(function() {
 	};
 
 	// Smooth Scroll
-	$("a[href*=#]:not([href=#])").click(function() {
+	$("a[href*=#]:not([href=#])").click(function () {
 		if (
 			location.pathname.replace(/^\//, "") ==
-				this.pathname.replace(/^\//, "") ||
+			this.pathname.replace(/^\//, "") ||
 			location.hostname == this.hostname
 		) {
 			var target = $(this.hash),
@@ -312,7 +287,7 @@ $(document).ready(function() {
 	var closeModalTrocaGarrafao = $("#modal-troca-garrafao .close-modal");
 
 	// Play (desk)
-	trocaVideoPlay.on("click", function() {
+	trocaVideoPlay.on("click", function () {
 		videoTrocaGarrafao.attr(
 			"src",
 			videoTrocaGarrafao.attr("src") + "?autoplay=1"
@@ -321,7 +296,7 @@ $(document).ready(function() {
 	});
 
 	// Play (mobile)
-	$("#troca-garrafao-mobile").on("click", function() {
+	$("#troca-garrafao-mobile").on("click", function () {
 		videoTrocaGarrafao.attr(
 			"src",
 			videoTrocaGarrafao.attr("src") + "?autoplay=1"
@@ -330,13 +305,13 @@ $(document).ready(function() {
 	});
 
 	// Close
-	closeModalTrocaGarrafao.on("click", function() {
+	closeModalTrocaGarrafao.on("click", function () {
 		stopAllYoutubeVideos();
 		toggleModal(modalTrocaGarrafao);
 	});
 
 	// Click Outside modal
-	modalTrocaGarrafao.on("click", function(e) {
+	modalTrocaGarrafao.on("click", function (e) {
 		if (e.target.className == "modal active") {
 			stopAllYoutubeVideos();
 			toggleModal(modalTrocaGarrafao);
@@ -350,19 +325,19 @@ $(document).ready(function() {
 	var closeModalFacilUsar = $("#modal-facil-de-usar .close-modal");
 
 	// Play
-	facilVideoPlay.on("click", function() {
+	facilVideoPlay.on("click", function () {
 		videoFacilUsar.attr("src", videoFacilUsar.attr("src") + "?autoplay=1");
 		toggleModal(modalFacilUsar);
 	});
 
 	// Play (mobile)
-	$("#facil-de-usar-mobile").on("click", function() {
+	$("#facil-de-usar-mobile").on("click", function () {
 		videoFacilUsar.attr("src", videoFacilUsar.attr("src") + "?autoplay=1");
 		toggleModal(modalFacilUsar);
 	});
 
 	// Close
-	closeModalFacilUsar.on("click", function() {
+	closeModalFacilUsar.on("click", function () {
 		stopAllYoutubeVideos();
 
 		var newSource = $("#video-facil-de-usar")
@@ -374,7 +349,7 @@ $(document).ready(function() {
 	});
 
 	// Click Outside modal
-	modalFacilUsar.on("click", function(e) {
+	modalFacilUsar.on("click", function (e) {
 		if (e.target.className == "modal active") {
 			stopAllYoutubeVideos();
 
@@ -389,7 +364,7 @@ $(document).ready(function() {
 
 	// Stops all youtube videos (class youtube-iframe)
 	function stopAllYoutubeVideos() {
-		$(".youtube-iframe").each(function(index) {
+		$(".youtube-iframe").each(function (index) {
 			var newSource = $(this)
 				.attr("src")
 				.replace("?autoplay=1", "");
@@ -405,13 +380,13 @@ $(document).ready(function() {
 
 	var videoFrame = $("#main-video-frame");
 
-	mainVideoPlay.on("click", function() {
+	mainVideoPlay.on("click", function () {
 		videoContainer.css("display", "none");
 		mainVideoPlayer.css("display", "block");
 	});
 
 	// Forms
-	$(".launch-form").on("submit", function(e) {
+	$(".launch-form").on("submit", function (e) {
 		e.preventDefault();
 		var feedback = $(".feedback-msg");
 		var agree = $(this)
@@ -456,7 +431,7 @@ $(document).ready(function() {
 				type: "POST",
 				url: "/api/dataentities/PB/documents",
 				data: data,
-				success: function(res) {
+				success: function (res) {
 					nome.val("");
 					email.val("");
 					tel.val("");
@@ -476,7 +451,7 @@ $(document).ready(function() {
 			type: "GET",
 			url:
 				"/api/catalog_system/pub/products/search/bebedouro-consul-gela-facil-cjk40ab/p",
-			success: function(res) {
+			success: function (res) {
 				var Price = res[0].items[0].sellers[0].commertialOffer.Price;
 				var ListPrice =
 					res[0].items[0].sellers[0].commertialOffer.ListPrice;
@@ -488,15 +463,15 @@ $(document).ready(function() {
 
 				$("#gela-facil-list-price").text(
 					"R$ " +
-						parseFloat(Price)
-							.toFixed(2)
-							.replace(".", ",")
+					parseFloat(Price)
+						.toFixed(2)
+						.replace(".", ",")
 				);
 				$("#gela-facil-best-price").text(
 					"R$ " +
-						parseFloat(BestPrice)
-							.toFixed(2)
-							.replace(".", ",")
+					parseFloat(BestPrice)
+						.toFixed(2)
+						.replace(".", ",")
 				);
 
 				var InstallMents =
@@ -547,7 +522,7 @@ $(document).ready(function() {
 
 	// Tags DataLayer
 	// Tag 1
-	$("#top-navigation--lp li a").on("click", function() {
+	$("#top-navigation--lp li a").on("click", function () {
 		var opcaoClicada = removeAcento(
 			$(this)
 				.text()
@@ -563,7 +538,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 2
-	$("#top-navigation--lp .cta").on("click", function() {
+	$("#top-navigation--lp .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -573,7 +548,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 3
-	$(".intro-info .cta").on("click", function() {
+	$(".intro-info .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -583,7 +558,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 4
-	$(".features .features-box__options li").on("click", function() {
+	$(".features .features-box__options li").on("click", function () {
 		var opcaoClicada = removeAcento(
 			$(this)
 				.find(".feature-option-select__title")
@@ -603,20 +578,19 @@ $(document).ready(function() {
 	var firstAppearanceFeature = true;
 	var intervalFeatures = null;
 
-	$(window).on("scroll", function() {
-		setTimeout(function() {
+	$(window).on("scroll", function () {
+		setTimeout(function () {
 			// Features
 			if (firstAppearanceFeature && $("#features").isOnScreen(1, 0.5)) {
 				var counter = 0;
 
-				intervalFeatures = setInterval(function() {
+				intervalFeatures = setInterval(function () {
 					counter++;
 					if (counter >= 12) {
 						clearInterval(intervalFeatures);
 						return;
 					} else {
 						if (counter == 1 && $("#features").isOnScreen(1, 0.5)) {
-							console.log("Features 1s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -627,7 +601,6 @@ $(document).ready(function() {
 							counter == 4 &&
 							$("#features").isOnScreen(1, 0.5)
 						) {
-							console.log("Features 4s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -638,7 +611,6 @@ $(document).ready(function() {
 							counter == 10 &&
 							$("#features").isOnScreen(1, 0.5)
 						) {
-							console.log("Features 10s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -659,7 +631,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 6
-	$("#troca-garrafao, #facil-de-usar").on("click", function() {
+	$("#troca-garrafao, #facil-de-usar").on("click", function () {
 		var opcaoClicada = removeAcento(
 			$(this)
 				.parent()
@@ -677,7 +649,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 7
-	$("#features .features-anchor").on("click", function() {
+	$("#features .features-anchor").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -690,8 +662,8 @@ $(document).ready(function() {
 	var firstAppearanceGelaFacil = true;
 	var intervalGelaFacil = null;
 
-	$(window).on("scroll", function() {
-		setTimeout(function() {
+	$(window).on("scroll", function () {
+		setTimeout(function () {
 			// Features
 			if (
 				firstAppearanceGelaFacil &&
@@ -699,7 +671,7 @@ $(document).ready(function() {
 			) {
 				var counter = 0;
 
-				intervalGelaFacil = setInterval(function() {
+				intervalGelaFacil = setInterval(function () {
 					counter++;
 					if (counter >= 12) {
 						clearInterval(intervalGelaFacil);
@@ -709,7 +681,6 @@ $(document).ready(function() {
 							counter == 1 &&
 							$("#gela-facil").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Fácil 1s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -720,7 +691,6 @@ $(document).ready(function() {
 							counter == 4 &&
 							$("#gela-facil").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Fácil 4s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -731,7 +701,6 @@ $(document).ready(function() {
 							counter == 10 &&
 							$("#gela-facil").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Fácil 10s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -752,7 +721,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 9
-	$("#gela-facil .cta").on("click", function() {
+	$("#gela-facil .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -765,13 +734,13 @@ $(document).ready(function() {
 	var firstAppearanceGelaMais = true;
 	var intervalGelaMais = null;
 
-	$(window).on("scroll", function() {
-		setTimeout(function() {
+	$(window).on("scroll", function () {
+		setTimeout(function () {
 			// Features
 			if (firstAppearanceGelaMais && $("#gela-mais").isOnScreen(1, 0.5)) {
 				var counter = 0;
 
-				intervalGelaMais = setInterval(function() {
+				intervalGelaMais = setInterval(function () {
 					counter++;
 					if (counter >= 12) {
 						clearInterval(intervalGelaMais);
@@ -781,7 +750,6 @@ $(document).ready(function() {
 							counter == 1 &&
 							$("#gela-mais").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Mais 1s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -792,7 +760,6 @@ $(document).ready(function() {
 							counter == 4 &&
 							$("#gela-mais").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Mais 4s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -803,7 +770,6 @@ $(document).ready(function() {
 							counter == 10 &&
 							$("#gela-mais").isOnScreen(1, 0.5)
 						) {
-							console.log("Gela Mais 10s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -824,7 +790,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 11
-	$("#gela-mais .cta").on("click", function() {
+	$("#gela-mais .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -837,8 +803,8 @@ $(document).ready(function() {
 	var firstAppearanceAmbientes = true;
 	var intervalAmbientes = null;
 
-	$(window).on("scroll", function() {
-		setTimeout(function() {
+	$(window).on("scroll", function () {
+		setTimeout(function () {
 			// Features
 			if (
 				firstAppearanceAmbientes &&
@@ -846,7 +812,7 @@ $(document).ready(function() {
 			) {
 				var counter = 0;
 
-				intervalAmbientes = setInterval(function() {
+				intervalAmbientes = setInterval(function () {
 					counter++;
 					if (counter >= 12) {
 						clearInterval(intervalAmbientes);
@@ -856,7 +822,6 @@ $(document).ready(function() {
 							counter == 1 &&
 							$("#ambientes").isOnScreen(1, 0.5)
 						) {
-							console.log("Ambientes 1s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -868,7 +833,6 @@ $(document).ready(function() {
 							counter == 4 &&
 							$("#ambientes").isOnScreen(1, 0.5)
 						) {
-							console.log("Ambientes 4s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -880,7 +844,6 @@ $(document).ready(function() {
 							counter == 10 &&
 							$("#ambientes").isOnScreen(1, 0.5)
 						) {
-							console.log("Ambientes 10s");
 							dataLayer.push({
 								event: "generic",
 								category: "lp_bebedouros",
@@ -902,7 +865,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 14
-	$("#open--gela-mais").on("click", function() {
+	$("#open--gela-mais").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -912,7 +875,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 16
-	$("#launch-gela-mais__form .cta").on("click", function() {
+	$("#launch-gela-mais__form .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -922,7 +885,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 17
-	$(".launch-gela--facil .cta").on("click", function() {
+	$(".launch-gela--facil .cta").on("click", function () {
 		dataLayer.push({
 			event: "generic",
 			category: "lp_bebedouros",
@@ -932,7 +895,7 @@ $(document).ready(function() {
 	});
 
 	// Tag 18 ()
-	$(".launch-gela--mais .cta").on("click", function() {
+	$(".launch-gela--mais .cta").on("click", function () {
 		var opcaoTexto = $(this).text();
 
 		if (opcaoTexto.toLowerCase() == "comprar") {
