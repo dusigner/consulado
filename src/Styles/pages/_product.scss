@@ -29,59 +29,6 @@
 	}
 }
 
-html body.produto {
-	.content_botoes_televendas-whats {
-		text-align: center;
-		margin-top: 24px;
-
-		span {
-			font-size: 16px;
-			font-weight: 500;
-		}
-
-		p {
-			font-size: 12px!important;
-			width: 70%;
-			margin: 6px auto 12px!important;
-		}
-
-		a {
-			font-size: 14px;
-			line-height: 15px;
-			text-align: center;
-			width: 100%;
-			border-radius: 50px;
-			background: #702F8F;
-			height: 44px;
-			justify-content: center;
-			align-self: center;
-			color: #FFFFFF;
-			font-weight: 500;
-			align-items: center;
-			display: flex;
-
-			svg {
-				height: 24px;
-				width: 24px;
-				display: block;
-				position: relative;
-				left: -12px;
-			}
-		}
-	}
-
-	#BuyButton {
-		.form-container {
-			width: 49%;
-
-			.buy-button {
-				display: block;
-				width: 100%;
-			}
-		}
-	}
-}
-
 body.produto {
 	overflow: initial!important;
 
@@ -166,65 +113,6 @@ body.produto {
 					display: block;
 
 					.gray { color: $txt-gray; }
-				}
-			}
-		}
-	}
-
-	.container-whats {
-		display: none;
-		@media (min-width: 768px) {
-			display: block;
-		}
-
-		span {
-			font-size: 16px;
-			font-weight: 500;
-		}
-
-		&-container {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-
-			&-text {
-				font-size: 16px;
-				line-height: 20px;
-				align-items: center;
-				color: #736C6B;
-				font-weight: 500;
-				width: 45%;
-
-				p {
-					font-weight: 300;
-					font-size: 12px;
-					line-height: 17px;
-				}
-			}
-
-			&-link {
-				font-size: 12px;
-				line-height: 15px;
-				text-align: center;
-				color: #FFFFFF;
-				width: 47%;
-				border-radius: 50px;
-				display: block;
-				background: #702F8F;
-				height: 32px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				align-self: center;
-				font-weight: 500;
-				cursor: pointer;
-
-				svg {
-					height: 15px;
-					width: 15px;
-					display: block;
-					position: relative;
-					left: -6px;
 				}
 			}
 		}
