@@ -53,7 +53,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		}
 	}
 
-	form {
+	.portal-notify-me-ref form {
 		@include rfs(12px);
 		position: absolute;
 		z-index: 1;
