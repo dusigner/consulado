@@ -57,7 +57,21 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		$('.ac-container').css('display', 'none');
 	});
 
+
+
 	if($(window).width() < 798) {
+
+		const headerNavbar = $('body:not(.produto):not(.pre-home) header');
+
+		$(window).on('scroll', function (e) {
+			// Nav fixed
+			if ($(window).scrollTop() > 147) {
+				headerNavbar.addClass('fixed');
+			} else {
+				headerNavbar.removeClass('fixed');
+			}
+		});
+
 			const searchForm = $('.cont-search .form-search input');
 			let icone = $('.form-search .icon-consul-loupe');
 

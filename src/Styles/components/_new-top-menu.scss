@@ -2,6 +2,16 @@
 
 
 body {
+
+	&>.cont-search {
+		@include breakpoint(medium, 'max') {
+			.text-search {
+				&:focus {
+					height: 40px !important;
+				}
+			}
+		}
+	}
 	& .ac-suggest-product {
 		align-items: center;
 		display: flex;
@@ -55,6 +65,7 @@ body {
 		.menu-teste-B {
 			display: none !important;
 		}
+
 
 .top-navigation {
 //	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
@@ -839,6 +850,7 @@ $menu-colors: (
 			background-color: #F1F0F0 !important;
 			font-size: 14px;
 			font-weight: 500;
+			height: 40px;
 		}
 		.form-search {
 			.icon-consul-loupe {
@@ -1686,39 +1698,39 @@ $menu-colors: (
 			padding: 12px 0;
 		}
 
-		.busca-mobile {
-			@include breakpoint('medium', 'min') {
-				display: none;
-			}
-			display: block;
-			height: auto;
-			position: relative;
+		// .busca-mobile {
+		// 	@include breakpoint('medium', 'min') {
+		// 		display: none;
+		// 	}
+		// 	display: block;
+		// 	height: auto;
+		// 	position: relative;
 
-			 &> .cont-search.search {
-				display: block;
-				height: 40px;
-				position: relative;
-				top: 0;
-				.text-search {
-					border: none;
-					height: 40px;
-					&:focus {
-						height: 40px;
-						outline: none;
-					}
-				}
-				& .form-search {
-					height: 45px;
-					.icon-consul-loupe {
-						color: $gray-d;
-						font-size: 22px;
-						text-shadow: 1px 1px 0 $gray-d;
-						top: 28px;
+		// 	 &> .cont-search.search {
+		// 		display: block;
+		// 		height: 40px;
+		// 		position: relative;
+		// 		top: 0;
+		// 		.text-search {
+		// 			border: none;
+		// 			height: 40px;
+		// 			&:focus {
+		// 				height: 40px;
+		// 				outline: none;
+		// 			}
+		// 		}
+		// 		& .form-search {
+		// 			height: 45px;
+		// 			.icon-consul-loupe {
+		// 				color: $gray-d;
+		// 				font-size: 22px;
+		// 				text-shadow: 1px 1px 0 $gray-d;
+		// 				top: 28px;
 
-					}
-				}
-			}
-		}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 
 	// Item departamentos
