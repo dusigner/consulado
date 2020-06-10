@@ -58,18 +58,19 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	});
 
 
-
 	if($(window).width() < 798) {
 
-		const headerNavbar = $('body:not(.produto):not(.pre-home) header');
+		const headerNavbar = $('header');
 
 		$(window).on('scroll', function (e) {
-			// Nav fixed
-			if ($(window).scrollTop() > 147) {
-				headerNavbar.addClass('fixed');
+			e.preventDefault;
+			if ($(window).scrollTop() > 500) {
+				headerNavbar.css('position','fixed');
+			} else if ($('.ac-container').hasClass('is--search')) {
+				headerNavbar.css('position','absolute');
 			} else {
-				headerNavbar.removeClass('fixed');
-			}
+				headerNavbar.css('position','absolute');
+			};
 		});
 
 			const searchForm = $('.cont-search .form-search input');
@@ -85,7 +86,9 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 			}
 		});
 
-		$(icone).on('click', function(){
+		$(icone).on('click', function(e){
+			console.log(e);
+			alert('teste');
 			$('.cont-search .form-search input').val("");
 			icone.removeClass('icon-close');
 			icone.addClass('icon-consul-loupe');
