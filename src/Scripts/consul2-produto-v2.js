@@ -103,10 +103,6 @@ Nitro.controller(
 		});
 
 		// whats
-		var $url = location.href;
-		var $nameProduct = $('.productName').text();
-		$('.container-whats-container-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=554788041897&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$nameProduct}. Link: ${$url}`);
-
 		var $product_id = skuJson_0.productId;
 
 		$.ajax({
@@ -116,6 +112,10 @@ Nitro.controller(
             `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
 			success: function (data) {
 				if ( (data[0].Whatsapp[0]) == 'Ativo' ) {
+					var $name = data[0].productName;
+					var $url = location.href;
+					$('.container-whats-container-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=554788041897&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
+
 					$('.content_botoes_televendas-whats, .container-whats').addClass('is--active');
 					$('body').addClass('whatsapp');
 				}
