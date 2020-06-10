@@ -19,7 +19,7 @@ Nitro.module('dataLayer-product', function() {
 
 		// whats
 		this.clickWhats();
-		this.clickTelevendas();
+		this.clickAttendance();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -163,14 +163,18 @@ Nitro.module('dataLayer-product', function() {
 		});
 	};
 
-	this.clickTelevendas = () => {
+	this.clickAttendance = () => {
 		$('.prod-more-info a').on('click', function() {
 			if ( $($(this)).attr('title') === "Informações de contratação") {
-				pushDataLayer(
-					'Promotores',
-					'click_atendimento',
-					'PDP'
-				);
+				if ( $('body').hasClass('whatsapp') ) {
+					console.log('salv')
+
+					pushDataLayer(
+						'Promotores',
+						'click_atendimento',
+						'PDP'
+					);
+				}
 			}
 		});
 	};
