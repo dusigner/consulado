@@ -18,7 +18,9 @@ import 'modules/product/recurrence';
 import 'modules/product/deliveryTime';
 import 'modules/product/color-selector';
 import 'modules/product/product-tags';
+import 'modules/product/outline-products';
 import 'modules/chaordic';
+import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
 	'produto-v2',
@@ -35,12 +37,14 @@ Nitro.controller(
 		'sku-select',
 		'produtos-adicionais',
 		'boleto',
-		'notify-me',
 		'share',
 		'upsell',
 		'deliveryTime',
 		'recurrence',
+		'notify-me',
 		'product-tags',
+		'dataLayer-product',
+		'outline-products',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -65,12 +69,18 @@ Nitro.controller(
 
 		// Exibe Informação de "Compra segura" quando o
 		// botão comprar estiver exibindo na página
-		if ($('#BuyButton .buy-button').is(':visible')) {
-			$('.secure').show();
-		} else {
-			$('body').addClass('produto-indisponivel');
-			$('.calc-frete').hide();
-		}
+		// if ( skuJson.available === true ) {
+		// 	$('.secure').show();
+		// 	$('body').addClass('produto-disponivel');
+		// } else {
+		// 	if ( !$('body').hasClass('product-outline') ) {
+		// 		$('body').addClass('produto-indisponivel');
+		// 		$('.calc-frete').hide();
+		// 		$('.secure').hide();
+		// 		$('.cta-containers').hide();
+		// 		$('.prod-more-info').hide();
+		// 	}
+		// }
 
 		var $reference = $('.reference'),
 			$productSku = $('.productSku');
@@ -92,21 +102,68 @@ Nitro.controller(
 			}
 		});
 
+		//Mensagem de Sucesso do Formulário Avise-me
+		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
+
+		//Mensagem após envio
+		$('.portal-notify-me-ref').find('.sku-notifyme-form p').remove();
+		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
+
+		//Vitrine do Produto indisponível
+		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
+		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
+
+		initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
+			slidesToShow: 2.2,
+			slidesToScroll: 1,
+			centerPadding: '0px',
+			fade: false,
+			infinite: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			responsive: [
+				{
+					breakpoint: 990,
+					settings: {
+						slidesToShow: 2.2,
+						slidesToScroll: 1,
+						centerPadding: '0px',
+					}
+				},
+				{
+					breakpoint: 768,
+					settings: {
+						slidesToShow: 1.7,
+						slidesToScroll: 1,
+						infinite: false,
+						initialSlide: 1,
+						centerMode: true,
+						centerPadding: '0px',
+						index: 0
+					}
+				}
+			]
+		});
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
-		if ($(window).width() <= 1024) {
-			$(window).scroll(function(e) {
-				e.preventDefault();
-				var _pos = $(window).scrollTop();
+		// if ($(window).width() <= 1024) {
 
-				if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
-					$('.product-info-bar').addClass('formas-pagamento-is--active');
-				} else {
-					$('.product-info-bar').removeClass('formas-pagamento-is--active');
-					$('.formas-pagamento-container').removeClass('is--active');
-				}
-			});
-		}
+		// 	if (!$('body').hasClass('produto-indisponivel')) {
+		// 		$('.product-info-bar').css('display', 'block');
+		// 		$(window).scroll(function(e) {
+		// 			e.preventDefault();
+		// 			var _pos = $(window).scrollTop();
+
+		// 			if ($('body').hasClass('produto-indisponivel') || (_pos >= ($('#BuyButton').offset().top + 32))) {
+		// 				$('.product-info-bar').addClass('formas-pagamento-is--active');
+
+		// 			} else {
+		// 				$('.product-info-bar').removeClass('formas-pagamento-is--active');
+		// 				$('.formas-pagamento-container').removeClass('is--active');
+		// 			}
+		// 		})
+		// 	}
+		// }
 
 		const $document = $(document),
 			$cepInput = '#calculoFrete .prefixo input';
@@ -200,6 +257,20 @@ Nitro.controller(
 				$opcoesParcelamento.slideUp();
 			});
 		};
+
+		/* DROPDOWN Formulario avise-me quando indisponível */
+		// $('.portal-notify-me-ref form').before('<div id="form-title" style="display: none;"><span id="form-title--notify">Avise-me quando o produto estiver disponível</span></div>');
+
+		// $('#form-unavailable form').clone().appendTo('#form-unavailable #form-title');
+		// $('#form-unavailable form').eq(1).remove();
+
+		$('.portal-notify-me-ref form').before('<div id="form-title" style="display: none;"><span id="form-title--notify">Avise-me quando o produto estiver disponível</span></div>')
+
+		$('#form-unavailable #form-title').on('click', function() {
+			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active') //or addClass
+			$(this).parents('.portal-notify-me-ref').find('#form-title').toggleClass('is--active') //or addClass
+		})
+		/* DROPDOWN Formulario avise-me quando indisponível */
 
 		//Compre Junto
 		$('.comprar-junto a').text('compre junto');
@@ -379,5 +450,10 @@ Nitro.controller(
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
+		if ($(window).width() <= 1024) {
+			if ( $('#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide').length === 1 ) {
+				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
+			}
+		}
 	}
 );

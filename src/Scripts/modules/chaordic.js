@@ -72,8 +72,7 @@ Nitro.module('chaordic', function() {
 					? 'mobile'
 					: 'desktop',
 				deviceId: window.getCookie('chaordic_browserId'),
-				productFormat: 'compact',
-				homologation: true
+				productFormat: 'compact'
 			}
 		},
 		$window = $(window),

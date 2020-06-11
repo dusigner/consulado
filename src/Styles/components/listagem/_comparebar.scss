@@ -161,7 +161,7 @@
 		&-name {
 			@include breakpoint('small', 'max') {
 				display: inline-block;
-				font-size: 1rem;
+				font-size: 12px;
 				padding: .5rem;
 				vertical-align: middle;
 				width: calc(100% - 85px);
@@ -226,6 +226,8 @@
 			text-align: center;
 			top: calc(100% + 5px);
 			width: 100%;
+			display: flex;
+			justify-content: center;
 		}
 		margin-top: 1.5rem;
 
@@ -291,6 +293,7 @@
 
 	// Active state
 	&.-is--closed {
+
 		@include breakpoint('small', 'max') { max-height: 60px; }
 		max-height: 90px;
 
@@ -325,14 +328,19 @@
 
 		// Buttons
 		.compare-bar__buttons {
-			@include breakpoint('small', 'max') { display: none; }
+			@include breakpoint('small', 'max') {
+				display: none;
+			}
+
 			@include breakpoint('small', 'min') {
-				@include breakpoint('medium', 'max') { transform: translateY(10%); }
 				margin: 0;
 				position: absolute;
 				right: .5rem;
 				top: -10px;
-				//transform: translateY(20%);
+			}
+
+			@include breakpoint('medium', 'max') {
+				transform: translateY(10%);
 			}
 		}
 

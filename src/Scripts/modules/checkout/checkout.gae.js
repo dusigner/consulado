@@ -5,12 +5,12 @@
 require('Dust/modal-warranty-desktop.html');
 //require('Dust/modal-warranty-mobile.html');
 
-Nitro.module('checkout.gae', function() {
+Nitro.module('checkout.gae', function () {
 	var self = this,
 		winWidth = $('body').width(),
 		$modalWarranty = $('#modal-warranty');
 
-	this.setup = function() {
+	this.setup = function () {
 		this.link();
 		this.terms();
 		this.removeFromCart();
@@ -25,11 +25,11 @@ Nitro.module('checkout.gae', function() {
 	 *
 	 */
 	this.removeFromCart = () => {
-		$('.item-link-remove').on('click', function() {
+		$('.item-link-remove').on('click', function () {
 			const skus = sessionStorage.getItem('sku-cart').split(','),
 				element = $(this);
 
-			const newListSkus = skus.filter(function(value) {
+			const newListSkus = skus.filter(function (value) {
 				return value !== element.parents('.product-item').attr('data-sku');
 			});
 
@@ -37,7 +37,7 @@ Nitro.module('checkout.gae', function() {
 		});
 	};
 
-	this.installments = function() {
+	this.installments = function () {
 		const sortCountASC = (a, b) => b.count - a.count;
 		return self.orderForm.paymentData.installmentOptions
 			.map(
@@ -48,7 +48,7 @@ Nitro.module('checkout.gae', function() {
 			.sort(sortCountASC)[0].count;
 	};
 
-	this.monthToDays = function(months) {
+	this.monthToDays = function (months) {
 		var CurrentDate = new Date();
 		var nextDate = new Date();
 		nextDate.setMonth(nextDate.getMonth() + months);
@@ -59,11 +59,11 @@ Nitro.module('checkout.gae', function() {
 		return diffDays;
 	};
 
-	this.showMoreMobile = function() {
+	this.showMoreMobile = function () {
 		// console.log('showMoreMobile');
 		$('.show-more i')
 			.off()
-			.on('click', function() {
+			.on('click', function () {
 				$(this)
 					.parent()
 					.parent()
@@ -74,14 +74,14 @@ Nitro.module('checkout.gae', function() {
 			});
 	};
 
-	this.hasAnyActiveWarranty = function() {
+	this.hasAnyActiveWarranty = function () {
 		return (
 			self.orderForm &&
 			self.orderForm.items &&
-			self.orderForm.items.some(function(elem) {
+			self.orderForm.items.some(function (elem) {
 				return (
 					elem.bundleItems.length > 0 &&
-					elem.bundleItems.some(function(bundle) {
+					elem.bundleItems.some(function (bundle) {
 						return bundle.name.indexOf('Garantia') !== -1;
 					})
 				);
@@ -90,7 +90,7 @@ Nitro.module('checkout.gae', function() {
 	};
 
 	//Exibe mensagem info sobre GAE no "resumo do pedido" quando existir garantia ativa
-	this.info = function() {
+	this.info = function () {
 		var $info = $('.garantiaInfo');
 
 		if ($info.length === 0) {
@@ -102,7 +102,7 @@ Nitro.module('checkout.gae', function() {
 		$info.toggleClass('active', self.hasAnyActiveWarranty());
 	};
 
-	this.terms = function() {
+	this.terms = function () {
 		/* validação via modal desativada
 		$('#btn-concordo').off().on('click', function() {
 			var attachmentName = 'Aceite do Termo',
@@ -125,9 +125,9 @@ Nitro.module('checkout.gae', function() {
 
 		$('#modal-services .btn-default')
 			.off()
-			.on('click', function() {
-				self.orderForm.items.forEach(function(elem, elemIndex) {
-					elem.bundleItems.forEach(function(bundle) {
+			.on('click', function () {
+				self.orderForm.items.forEach(function (elem, elemIndex) {
+					elem.bundleItems.forEach(function (bundle) {
 						//$.each(self.orderForm.items, function (i) {
 						if (bundle.name.indexOf('Garantia') !== -1) {
 							return vtexjs.checkout.removeOffering(bundle.id, elemIndex);
@@ -140,7 +140,7 @@ Nitro.module('checkout.gae', function() {
 			});
 	};
 
-	this.addkWarranty = function() {
+	this.addkWarranty = function () {
 		var $self = $(this),
 			index = $self.data('index'),
 			idOffering = $('input[name="warranty-value"]:checked').val(),
@@ -150,10 +150,10 @@ Nitro.module('checkout.gae', function() {
 		if (idOffering !== undefined && liAceito) {
 			$self.addClass('icon-loading');
 
-			vtexjs.checkout.addOffering(idOffering, index).always(function() {
+			vtexjs.checkout.addOffering(idOffering, index).always(function () {
 				$modalWarranty.modal('hide');
 
-				$modalWarranty.on('hidden.bs.modal', function() {
+				$modalWarranty.on('hidden.bs.modal', function () {
 					$self.removeClass('icon-loading');
 				});
 			});
@@ -163,7 +163,7 @@ Nitro.module('checkout.gae', function() {
 			if (liAceito === false && titleOffering !== '(Apenas garantia de fábrica)') {
 				$('.form-termos').addClass('erro');
 
-				setTimeout(function() {
+				setTimeout(function () {
 					$('.form-termos').removeClass('erro');
 				}, 5000);
 			}
@@ -171,7 +171,7 @@ Nitro.module('checkout.gae', function() {
 				$('.box-opcao-garantia').css('border', '2px solid #f78383');
 				$('.modal__table .erro').fadeIn('slow');
 
-				setTimeout(function() {
+				setTimeout(function () {
 					$('.box-opcao-garantia').css('border', '2px solid #e4e4e4');
 					$('.modal__table .erro').fadeOut('slow');
 				}, 5000);
@@ -198,7 +198,7 @@ Nitro.module('checkout.gae', function() {
 		}
 	};
 
-	this.modalWarranty = function(e) {
+	this.modalWarranty = function (e) {
 		e.preventDefault();
 
 		var template = 'modal-warranty-desktop';
@@ -209,9 +209,9 @@ Nitro.module('checkout.gae', function() {
 			product = self.orderForm.items[index];
 
 		// Filtra os serviços disponiveis somente para Garantia
-		var offerings = $.grep(self.orderForm.items[index].offerings, function(value) {
+		var offerings = $.grep(self.orderForm.items[index].offerings, function (value) {
 			return value.name.indexOf('Garantia') !== -1;
-		}).sort(function(a, b) {
+		}).sort(function (a, b) {
 			// I have no idea how it works, but works!
 			return a.price < b.price ? -1 : a.price > b.price ? 1 : 0;
 		});
@@ -230,13 +230,17 @@ Nitro.module('checkout.gae', function() {
 		// Remove GAE 18 months from the GAE object list
 		offerings = $.grep(
 			offerings,
-			function(element) {
+			function (element) {
 				return element.type === 'Seguro Garantia Estendida Original - 18 meses';
 			},
 			true
 		);
 
-		$.each(offerings, function(index, val) {
+		const offerningSeller = offerings.filter(o => {
+			return o.type.indexOf('CNS-') >= 0;
+		});
+
+		$.each(offerningSeller, function (index, val) {
 			if (!val.name.match(/\d+/)) {
 				return;
 			}
@@ -255,7 +259,7 @@ Nitro.module('checkout.gae', function() {
 			// prettier-ignore
 			(data.warranty[index].monthsYear =
 				warrantyTime === 12 ? '1' : warrantyTime === 18 ? '1' : warrantyTime === 24 ? '2' : '3'),
-			(data.warranty[index].isPrimary = warrantyTime === 12 ? true : false);
+				(data.warranty[index].isPrimary = warrantyTime === 12 ? true : false);
 			data.warranty[index].isMiddle = warrantyTime === 24 && offerings.length > 2 ? true : false;
 			data.warranty[index].isLast =
 				(warrantyTime === 36 && offerings.length > 2) || (warrantyTime === 24 && offerings.length < 3)
@@ -286,7 +290,7 @@ Nitro.module('checkout.gae', function() {
 		// 	template = 'modal-warranty-mobile';
 		// }
 
-		dust.render(template, data, function(err, out) {
+		dust.render(template, data, function (err, out) {
 			if (err) {
 				throw new Error('Modal Warranty Dust error: ' + err);
 			}
@@ -295,7 +299,7 @@ Nitro.module('checkout.gae', function() {
 
 			$modalWarranty = $('#modal-warranty');
 
-			$modalWarranty.modal().on('hidden.bs.modal', function() {
+			$modalWarranty.modal().on('hidden.bs.modal', function () {
 				$modalWarranty.remove();
 			});
 
@@ -303,7 +307,7 @@ Nitro.module('checkout.gae', function() {
 
 			// Classe no box de garantia
 			var $anchorGae = $('.anchor-gae');
-			$anchorGae.on('click', function() {
+			$anchorGae.on('click', function () {
 				$anchorGae
 					.not(this)
 					.removeClass('active')
@@ -317,7 +321,7 @@ Nitro.module('checkout.gae', function() {
 			});
 
 			// Abrindo mais detalhes da garantia
-			$('.box-opcao-garantia .show-more').on('click', function() {
+			$('.box-opcao-garantia .show-more').on('click', function () {
 				$(this)
 					.parents('.box-opcao-garantia')
 					.toggleClass('open');
@@ -348,7 +352,7 @@ Nitro.module('checkout.gae', function() {
 			// 	}
 			// });
 
-			$('.abreefecha').click(function() {
+			$('.abreefecha').click(function () {
 				$('.seguro-de-garantia').toggleClass('ativo');
 				$('.close-seguro-garantia.abreefecha').css('top', 0);
 
@@ -362,7 +366,7 @@ Nitro.module('checkout.gae', function() {
 				}
 			});
 
-			$('.abreefecha-pgto').click(function() {
+			$('.abreefecha-pgto').click(function () {
 				$('.autorizacao-de-pgto').toggleClass('ativo');
 
 				if (window.innerWidth < 991) {
@@ -376,7 +380,7 @@ Nitro.module('checkout.gae', function() {
 			});
 
 			// Tagueamento do click de envio
-			$('.garantia-box-proceed .btn-continue.btn-success').on('click', function() {
+			$('.garantia-box-proceed .btn-continue.btn-success').on('click', function () {
 				dataLayer.push({
 					event: 'generic',
 					category: 'cart',
@@ -388,7 +392,7 @@ Nitro.module('checkout.gae', function() {
 				});
 			});
 
-			$('.gae-sub-title.-mobile').on('click', function() {
+			$('.gae-sub-title.-mobile').on('click', function () {
 				var documento = $(this);
 				if (documento.hasClass('-is-active')) {
 					documento.removeClass('-is-active');
@@ -401,7 +405,7 @@ Nitro.module('checkout.gae', function() {
 
 			// Scroll Event to close "modal of modals" buttons, im not proud of this.
 			$('#modal-warranty .modal-body')
-				.scroll(function() {
+				.scroll(function () {
 					if ($('.seguro-de-garantia').hasClass('ativo'))
 						$('.close-seguro-garantia.abreefecha').css('top', $('#modal-warranty .modal-body').scrollTop());
 				})
@@ -409,9 +413,9 @@ Nitro.module('checkout.gae', function() {
 		});
 	};
 
-	this.selectHasWarranty = function($select) {
+	this.selectHasWarranty = function ($select) {
 		var hasWarranty = false;
-		$select.find('option').each(function() {
+		$select.find('option').each(function () {
 			if (
 				$(this)
 					.text()
@@ -424,9 +428,9 @@ Nitro.module('checkout.gae', function() {
 		return hasWarranty;
 	};
 
-	this.hasCurrentWarranty = function($boxService) {
+	this.hasCurrentWarranty = function ($boxService) {
 		var hasWarranty = false;
-		$boxService.each(function() {
+		$boxService.each(function () {
 			if (
 				$(this)
 					.find('.bundle-item-name span')
@@ -439,11 +443,11 @@ Nitro.module('checkout.gae', function() {
 		return hasWarranty;
 	};
 
-	this.link = function() {
+	this.link = function () {
 		var $link = $('<a href="#" class="linkWarranty btn">Adicionar seguro garantia estendida original</a>');
 
 		//adicionando link de GAE em cada item
-		$('.product-item').each(function(i) {
+		$('.product-item').each(function (i) {
 			var $self = $(this),
 				$selfService = $(this).find('.product-service'),
 				$currentLink = $self.find('.linkWarranty'),
@@ -469,7 +473,7 @@ Nitro.module('checkout.gae', function() {
 				Remove a opção do select de serviços
 				quando a opção for de instalação
 			*/
-			$selfService.find('option').each(function() {
+			$selfService.find('option').each(function () {
 				if (
 					$(this)
 						.text()
@@ -489,8 +493,8 @@ Nitro.module('checkout.gae', function() {
 	*
 	* Not even proud about what I had done here. If someone ask me, I will deny until the very end!
 	*/
-	this.autoOpen = function(skuId) {
-		setTimeout(function() {
+	this.autoOpen = function (skuId) {
+		setTimeout(function () {
 			//Inicia o modal com o ultimo produto adicionado,
 			//caso já tenha sido chamado adiciona a classe been-called
 			var $cartTemplate = $('.cart-template');
@@ -513,9 +517,9 @@ Nitro.module('checkout.gae', function() {
 		}, 1500);
 	};
 
-	this.introOpen = function() {
+	this.introOpen = function () {
 		if (winWidth < 960) {
-			setTimeout(function() {
+			setTimeout(function () {
 				var modalIntro = $('#modal-intro-gae');
 
 				if ($.cookie('cns-intro-gae') == null) {
@@ -524,7 +528,7 @@ Nitro.module('checkout.gae', function() {
 					modalIntro.addClass('-is-visible');
 					modalIntro.fadeIn(300);
 
-					$('#modal-intro-gae .btn-confirm').on('click', function() {
+					$('#modal-intro-gae .btn-confirm').on('click', function () {
 						//Clicou no btn então fecha o modal
 						$.cookie('cns-intro-gae', 'cns-intro-gae', { expires: 60 });
 						modalIntro.fadeOut(300);
@@ -542,6 +546,6 @@ Nitro.module('checkout.gae', function() {
 });
 
 /*jshint strict: false */
-dust.filters.intAsCurrency = function(value) {
+dust.filters.intAsCurrency = function (value) {
 	return _.intAsCurrency(value);
 };

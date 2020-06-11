@@ -50,14 +50,20 @@ $(document).on('ready', function() {
 	require('modules/checkout/checkout.cotas');
 	require('modules/checkout/checkout.pj');
 	require('modules/checkout/checkout.default-message');
+	// custom checkout login
+	require('modules/checkout/checkout-login');
 	// require('components/testeab-entrega');
 	require('vendors/jquery.inputmask');
 	require('vendors/slick');
-	require('modules/customLogin');
+	// require('modules/customLogin');
 	require('modules/store/callcenter');
 	// require('modules/chaordic');
 	require('modules/counting-working-days');
 	require('modules/checkout/reinput');
+
+	require('modules/banner-covid');
+
+	require('dataLayers/dataLayer-checkout');
 
 	var CRM = require('modules/store/crm');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
@@ -72,8 +78,10 @@ $(document).on('ready', function() {
 			'reinput',
 			/* 'testeab-entrega', */
 			'checkout.default-message',
-			'customLogin',
+			// 'customLogin',
 			'callcenter',
+			'checkout-login',
+			'dataLayer-checkout',
 		],
 		function(
 			/*chaordic*/
@@ -1357,7 +1365,15 @@ $(document).on('ready', function() {
 })(window, document);
 
 
+// GET PCI SCRIPT
+(function (document, tag) {
+	var scriptTag = document.createElement(tag);
+	var firstScriptTag = document.getElementsByTagName(tag)[0];
+	scriptTag.src = '/files/pci-frontend.js';
+	firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
 
+	$('head').append('<link rel="stylesheet" href="/files/pci-frontend.css" type="text/css" />');
+}(document, 'script'));
 
 
 /*$(window).on('stateUpdated.vtex', function (a, b, c) {

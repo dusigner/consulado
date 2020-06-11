@@ -57,4 +57,80 @@
 @import 'components/produto/assistencia-e-relacionado';
 @import 'components/produto/trust-vox';
 @import 'components/produto/recurrence-v2';
+@import 'components/produto/vitrine-relacionada';
+@import 'components/produto/outline-products';
 // @import 'components/produto/quiz-install';
+
+.produto-indisponivel {
+	#relacionados {
+		display: none!important;
+	}
+}
+
+#relacionados {
+	.box-produto .detalhes .prod-info .price .por .off, .box-produto .detalhes .prod-info .price .por .product-with-discount {
+		font-size: .625rem;
+		border-radius: 100px;
+		color: #fff;
+		position: absolute;
+		right: 15px;
+		top: -64px;
+		z-index: 1;
+
+		@include breakpoint('small', 'min') {
+			top: -34px;
+		}
+	}
+}
+
+.produto-v2.produto-indisponivel {
+	.formas-pagamento-container {
+		display: none;
+	}
+	.mostrarForm {
+		display: none;
+	}
+	.descricao-produto {
+		display: none;
+	}
+	.prod-sku-options {
+		display: none;
+	}
+	.produtos-adicionais {
+		display: none;
+	}
+	.notifyme-success {
+		h2 {
+			color: #403c3b;
+			font-size: 16px;
+			margin: 0 auto 5px;
+		}
+		p {
+			float: left;
+			font-size: 14px;
+			line-height: 25px;
+			margin: 0 auto;
+			max-width: 100%;
+			width: 320px;
+		}
+		.icone-check {
+			background-image: url('/arquivos/icon-check-produto-indisponivel.jpg');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			display: inline-block;
+			height: 24px;
+			position: relative;
+			right: 4px;
+			top: 7px;
+			width: 24px;
+
+		}
+	}
+	.notifyme-loading-message {
+		color: #9aca3c;
+		font: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		margin-top: 18px;
+	}
+}

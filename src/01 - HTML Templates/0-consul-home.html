@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
 <head>
 	<title>Loja Consul - Eletrodomésticos para Sua Casa</title>
 	<vtex:metaTags />
@@ -7,44 +9,47 @@
 	<vtex:template id="0-consul-head-content" />
 
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+	<style>
+		@media (min-width: 768px) {
+			.hide-desk {
+				display: none!important;
+			}
+		}
+	</style>
 </head>
+
 <body data-controller="home">
 
 	<!-- dataLayer -->
-   <div style="display:none;">
-     <script>
-         window.aux_list_name = 'home';
-     </script>
-     <vtex:contentPlaceHolder id="GA Prateleira Ofertas" />
-   </div>
-  <!-- fim dataLayer -->
+	<div style="display:none;">
+		<script>
+			window.aux_list_name = 'home';
+		</script>
+		<vtex:contentPlaceHolder id="GA Prateleira Ofertas" />
+	</div>
+	<!-- fim dataLayer -->
 
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
-
-
-
-
-
 
 	<!-- Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
 
 	<!-- [ Desktop ] - Slider -->
-	<div class="banners hide-extra-small">
+	<div class="banners">
 
 		<!-- Banner -->
 		<div class="banner-principal slides">
 			<vtex:contentPlaceHolder id="SliderHome" />
 		</div>
 		<!-- /Banner -->
-
 		<!-- Abrir regulamento banner -->
 		<div class="container">
 			<div class="row">
-				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
 
 				<!-- Modal regulamento -->
 				<div id="modal-regulamento-banner" style="display: none;">
@@ -69,7 +74,8 @@
 		<!-- Abrir regulamento banner -->
 		<div class="container">
 			<div class="row">
-				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
 
 				<!-- Modal regulamento -->
 				<div id="modal-regulamento-banner" style="display: none;">
@@ -81,6 +87,69 @@
 		<!-- /Abrir regulamento banner -->
 	</div>
 	<!-- /[ Mobile ] - Slider mobile -->
+
+	<!-- [ Desktop ] - Static Banner -->
+	<!-- <div class="banners-static">
+		<div class="container-fluid px-0">
+			<div class="banner-slick">
+				<div class="slider-banner">
+					<vtex:contentPlaceHolder id="slider-home" />
+				</div>
+			</div>
+			<div class="lateral-banners">
+				<vtex:contentPlaceHolder id="lateral-banners" />
+			</div>
+		</div>
+	</div> -->
+	<!-- /[ Desktop ] - Static Banner -->
+
+	<!-- Covid Alert -->
+	<div class="covid-alert" style="display: flex;align-items: center;max-width: 1240px;margin: 15px auto;box-shadow: 2px 1px 1px 1px;cursor: pointer;padding: 0 35px;position: relative;"><svg class="hide-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.6667 0.666668H3.33341C1.86675 0.666668 0.680081 1.86667 0.680081 3.33333L0.666748 27.3333L6.00008 22H24.6667C26.1334 22 27.3334 20.8 27.3334 19.3333V3.33333C27.3334 1.86667 26.1334 0.666668 24.6667 0.666668ZM15.3334 12.6667H12.6667V4.66667H15.3334V12.6667ZM15.3334 18H12.6667V15.3333H15.3334V18Z" fill="#9aca3c"></path></svg><p class="hide-mobile" style="padding: 15px 0;margin: 0 0 0 15px;">
+		<strong style="
+		color: #9aca3c;
+		font-weight: 500;
+	">Estamos juntos com você!</strong>
+	Conheça as medidas que tomamos para sua segurança contra o Covid-19. </p>
+	<p class="hide-desk" style="padding: 15px 0;margin: 0 0 0 15px;">
+		<strong style="
+		color: #9aca3c;
+		font-weight: 500;
+	">Estamos juntos com você!</strong>
+	Conheça as medidas que tomamos para sua segurança contra o Covid-19. <strong style="
+	color: #9aca3c;
+	font-weight: 500;
+	">SAIBA MAIS</strong> </p><span class="hide-mobile" style="
+		color: #9aca3c;
+		font-weight: 500;
+		position: absolute;
+		right: 25px;
+	">SAIBA MAIS</span></div>
+
+	<div class="covid-modal hide-mobile" style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 21; display: none;"><span class="close-covid" style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a href="/atendimento" style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000" style="             transform: translate(50%);         " /></div>
+
+	<div class="covid-modal-mobile hide-desk" style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 21; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
+		<h3 style="
+		font-weight: 500;
+		color: #000000;
+	">Estamos juntos com você!</h3><strong style="
+		color: #9aca3c;
+		font-weight: 500;
+	">Devido ao cenário atual de incertezas, reforçamos o nosso compromisso com você!</strong>
+		<p>Estamos adotando as melhores medidas para garantirmos que você continue criando inúmeras possibilidades na cozinha, da forma mais segura possível até que tudo volte ao normal.
+	</p><p>- Adotamos um novo protocolo de prevenção nos depósitos, incluindo distância física mínima entre operadores.</p><p>- Orientamos frequentemente nossas transportadoras e seus colaboradores com dicas de prevenção e higienização.</p><p>- Reforçamos nosso compromisso com os prazos de entrega, de acordo com diretrizes estaduais.</p>
+
+	<a href="/atendimento" style="
+		margin-top: 40px;
+		display: block;
+		font-weight: 500;
+		color: #9aca3c;
+		text-align: center;
+	">SAIBA MAIS</a>
+	<span class="close-covid" style="position: absolute;top: 4px;right: 15px;z-index: 10;font-size: 25px;cursor: pointer;">X</span></div>
+
+	<div class="covid-overlay" style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 20; top: 0px; opacity: 0.4; cursor: pointer; display: none;"></div>
+	<!-- /Covid Alert -->
+
 	<!-- [ Tipbar ] -->
 	<article class="tipbar-novo">
 		<div class="container">
@@ -93,7 +162,8 @@
 							</div>
 						</div>
 						<div class="col-9">
-							<h2 class="tipbar-novo__title">Loja Oficial</h2><p>Aproveite todas as vantagens de comprar direto da fábrica;</p>
+							<h2 class="tipbar-novo__title">Loja Oficial</h2>
+							<p>Aproveite todas as vantagens de comprar direto da fábrica;</p>
 						</div>
 					</div>
 				</li>
@@ -160,433 +230,500 @@
 				<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
 			</ul>
 		</div>
+			<div class="subcategories-list">
+				<div class="subCategorySection showSubCategory" data-category="geladeiras">
+					<ul class="geladeiras">
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/frost-free" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Frost Free" />
+								<span>Frost Free</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Inox" />
+								<span>Geladeira Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/duplex" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Duplex" />
+								<span>Geladeira Duplex</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/branca" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188592-210-210/Consul_Geladeira_CRM51AB_Imagem_Fontal_Nova.jpg"
+									alt="Geladeira Branca" />
+								<span>Geladeira Branca</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/freezer-embaixo"
+								class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192703-210-210/Consul_Geladeira_CRE44AK_Imagem_Frontal_1.jpg"
+									alt="Geladeira com Freezer Embaixo" />
+								<span>Freezer Embaixo</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg"
+									alt="Geladeira 110v" />
+								<span>Geladeira 110v</span>
+							</a>
+						</li>
 
-		<div class="subcategories-list">
-			<div class="subCategorySection showSubCategory" data-category="geladeiras">
-				<ul class="geladeiras">
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/frost-free" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg" alt="Geladeira Frost Free" />
-							<span>Frost Free</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg" alt="Geladeira Inox" />
-							<span>Geladeira Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/duplex" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg" alt="Geladeira Duplex" />
-							<span>Geladeira Duplex</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/branca" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188592-210-210/Consul_Geladeira_CRM51AB_Imagem_Fontal_Nova.jpg" alt="Geladeira Branca" />
-							<span>Geladeira Branca</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/freezer-embaixo" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/192703-210-210/Consul_Geladeira_CRE44AK_Imagem_Frontal_1.jpg" alt="Geladeira com Freezer Embaixo" />
-							<span>Freezer Embaixo</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/110v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg" alt="Geladeira 110v" />
-							<span>Geladeira 110v</span>
-						</a>
-					</li>
-
-					<li class="list-element">
-						<a href="/eletrodomesticos/geladeira---refrigerador/220v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg" alt="Geladeira 220v" />
-							<span>Geladeira 220v</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/geladeira---refrigerador" class="categoryLink">Veja todas as geladeiras</a>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg"
+									alt="Geladeira 220v" />
+								<span>Geladeira 220v</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/geladeira---refrigerador" class="categoryLink">Veja todas as
+						geladeiras</a>
+				</div>
+				<div class="subCategorySection" data-category="fogoes">
+					<ul class="fogoes">
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/4-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg"
+									alt="Fogão 4 bocas" />
+								<span>Fogão 4 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/5-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogães 5 bocas" />
+								<span>Fogão 5 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/6-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg"
+									alt="Fogão 6 bocas" />
+								<span>Fogão 6 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Inox" />
+								<span>Fogão Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/mesa-de-vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Mesa de Vidro" />
+								<span>Mesa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão a Gás" />
+								<span>Fogão a Gás</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/piso" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Piso" />
+								<span>Fogão Piso</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg"
+									alt="Fogão Branco" />
+								<span>Fogão Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/timer" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg"
+									alt="Fogão com Timer" />
+								<span>Fogão com Timer</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/bivolt" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Fogão Bivolt" />
+								<span>Fogão Bivolt</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/fogao" class="categoryLink">Veja todos os fogões</a>
+				</div>
+				<div class="subCategorySection" data-category="lavadoras">
+					<ul class="lavadoras">
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/8-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186663-210-210/Consul_Lavadora_CWB08AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 8 Kg" />
+								<span>Lavadora 8 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/9-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 9 Kg" />
+								<span>Lavadora 9 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/11-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186684-210-210/Consul_Lavadora_CWH11AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 11 Kg" />
+								<span>Lavadora 11 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/12-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 12 Kg" />
+								<span>Lavadora 12 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/13-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/183302-210-210/Consul_Lavadora_CWE13AB_Imagem_3_4_1600x1400.jpg"
+									alt="Lavadora de Roupas 13 Kg" />
+								<span>Lavadora 13 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/15-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187295-210-210/CWE15_img3quartos-698x698png.jpg"
+									alt="Lavadora de Roupas 15 Kg" />
+								<span>Lavadora 15 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/16-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187779-210-210/Consul_Lavadora_CWL16AB_Imagem-3-.jpg"
+									alt="Lavadora de Roupas 16 Kg" />
+								<span>Lavadora 16 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/branca" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas Branca" />
+								<span>Lavadora Branca</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/cesto-inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas com Cesto Inox" />
+								<span>Com Cesto Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/pequena" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas Pequena" />
+								<span>Lavadora Pequena</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/lavadora-de-roupas" class="categoryLink">Veja todas as lavadoras</a>
+				</div>
+				<div class="subCategorySection" data-category="ar-condicionado">
+					<ul class="ar-condicionado">
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg"
+									alt="Ar-Condicionado 110v" />
+								<span>110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg"
+									alt="Ar-Condicionado 220v" />
+								<span>220v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/inverter" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/204942-210-210/Consul_Ar_Split_CBJ09EB_Imagem_Frontal_Fechado.jpg"
+									alt="Ar-Condicionado Inverter" />
+								<span>Inverter</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/split" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg"
+									alt="Ar-Condicionado Split" />
+								<span>Split</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/janela" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg"
+									alt="Ar-Condicionado Janela" />
+								<span>De Janela</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/ar-condicionado" class="categoryLink">Veja todos os ares
+						condicionados</a>
+				</div>
+				<div class="subCategorySection" data-category="fornos">
+					<ul class="fornos">
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/eletrico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/193582-210-210/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg"
+									alt="Forno Elétrico" />
+								<span>Forno Elétrico</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/forno-de-embutir" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg"
+									alt="Forno de Embutir" />
+								<span>Forno de Embutir</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg"
+									alt="Forno a Gás" />
+								<span>Forno a Gás</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/forno" class="categoryLink">Veja todos os fornos</a>
+				</div>
+				<div class="subCategorySection" data-category="coifas">
+					<ul class="coifas">
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa" />
+								<span>Coifa</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/parede" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa de Parede" />
+								<span>Coifa de Parede</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa de Inox" />
+								<span>Coifa de Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174257-210-210/Consul_Coifa_CAP60AR_Imagem_Frontal_1650x1450.jpg"
+									alt="Coifas de Vidro" />
+								<span>Coifa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/piramidal" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa Piramidal" />
+								<span>Coifa Piramidal</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg"
+									alt="Depurador" />
+								<span>Depurador</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166060-210-210/CAT80GR-depurador-de-ar-consul-80-cm-frontal_1650x1450.jpg"
+									alt="Depurador de Inox" />
+								<span>Depurador de Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/branco"
+								class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg"
+									alt="Depurador Branco" />
+								<span>Depurador Branco</span>
+							</a>
+						</li>
+					</ul>
+					<a href="eletrodomesticos/coifa-e-depurador" class="categoryLink">Veja todas as coifas e
+						depuradores</a>
+				</div>
+				<div class="subCategorySection" data-category="cooktop">
+					<ul class="cooktop">
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/5-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop 5 Bocas" />
+								<span>Cooktop 5 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/4-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg"
+									alt="Cooktop 4 Bocas" />
+								<span>Cooktop 4 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/2-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg"
+									alt="Cooktop 2 Bocas" />
+								<span>Cooktop 2 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/eletrico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Elétrico" />
+								<span>Cooktop Elétrico</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg"
+									alt="Cooktop a Gás" />
+								<span>Cooktop a Gás</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/bivolt" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Bivolt" />
+								<span>Cooktop Bivolt</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/mesa-de-vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Mesa de Vidro" />
+								<span>Mesa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/acendimento-automatico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg"
+									alt="Cooktop Acendimento Automático" />
+								<span>Acendimento Automático</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/cooktop" class="categoryLink">Veja todos os cooktops</a>
+				</div>
+				<div class="subCategorySection" data-category="freezers">
+					<ul class="freezers">
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/freezer-vertical" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187610-210-210/Consul_Freezer_CVU20GB_Imagem_Frontal.jpg"
+									alt="Freezer Vertical" />
+								<span>Freezer Vertical</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/freezer-horizontal" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer Horizontal" />
+								<span>Freezer Horizontal</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer Branco" />
+								<span>Freezer Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer 110v" />
+								<span>Freezer 110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer 220v" />
+								<span>Freezer 220v</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/freezer" class="categoryLink">Veja todos os freezers</a>
+				</div>
+				<div class="subCategorySection" data-category="microondas">
+					<ul class="microondas">
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas Inox" />
+								<span>Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg"
+									alt="Micro-Ondas Branco" />
+								<span>Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/inox-espelhado" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas Espelhado" />
+								<span>Espelhado</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 110v" />
+								<span>110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 220v" />
+								<span>220v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/20-litros" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg"
+									alt="Micro-Ondas 20 Litros" />
+								<span>20 Litros </span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/32-litros" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 32 Litros" />
+								<span>32 Litros</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/micro-ondas" class="categoryLink">Veja todos os micro-ondas</a>
+				</div>
 			</div>
-			<div class="subCategorySection" data-category="fogoes">
-				<ul class="fogoes">
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/4-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg" alt="Fogão 4 bocas" />
-							<span>Fogão 4 bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/5-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogães 5 bocas" />
-							<span>Fogão 5 bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/6-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg" alt="Fogão 6 bocas" />
-							<span>Fogão 6 bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogão Inox" />
-							<span>Fogão Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/mesa-de-vidro" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogão Mesa de Vidro" />
-							<span>Mesa de Vidro</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/a-gas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogão a Gás" />
-							<span>Fogão a Gás</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/piso" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogão Piso" />
-							<span>Fogão Piso</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/branco" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg" alt="Fogão Branco" />
-							<span>Fogão Branco</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/timer" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg" alt="Fogão com Timer" />
-							<span>Fogão com Timer</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/fogao/bivolt" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg" alt="Fogão Fogão Bivolt" />
-							<span>Fogão Bivolt</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/fogao" class="categoryLink">Veja todos os fogões</a>
-			</div>
-			<div class="subCategorySection" data-category="lavadoras">
-				<ul class="lavadoras">
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/8-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/186663-210-210/Consul_Lavadora_CWB08AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas 8 Kg" />
-							<span>Lavadora 8 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/9-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas 9 Kg" />
-							<span>Lavadora 9 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/11-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/186684-210-210/Consul_Lavadora_CWH11AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas 11 Kg" />
-							<span>Lavadora 11 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/12-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas 12 Kg" />
-							<span>Lavadora 12 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/13-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/183302-210-210/Consul_Lavadora_CWE13AB_Imagem_3_4_1600x1400.jpg" alt="Lavadora de Roupas 13 Kg" />
-							<span>Lavadora 13 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/15-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/187295-210-210/CWE15_img3quartos-698x698png.jpg" alt="Lavadora de Roupas 15 Kg" />
-							<span>Lavadora 15 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/16-kg" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/187779-210-210/Consul_Lavadora_CWL16AB_Imagem-3-.jpg" alt="Lavadora de Roupas 16 Kg" />
-							<span>Lavadora 16 Kg</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/branca" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas Branca" />
-							<span>Lavadora Branca</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/cesto-inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas com Cesto Inox" />
-							<span>Com Cesto Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/lavadora-de-roupas/pequena" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg" alt="Lavadora de Roupas Pequena" />
-							<span>Lavadora Pequena</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/lavadora-de-roupas" class="categoryLink">Veja todas as lavadoras</a>
-			</div>
-			<div class="subCategorySection" data-category="ar-condicionado">
-				<ul class="ar-condicionado">
-					<li class="list-element">
-						<a href="/eletrodomesticos/ar-condicionado/110v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg" alt="Ar-Condicionado 110v" />
-							<span>110v</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/ar-condicionado/220v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg" alt="Ar-Condicionado 220v" />
-							<span>220v</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/ar-condicionado/inverter" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/204942-210-210/Consul_Ar_Split_CBJ09EB_Imagem_Frontal_Fechado.jpg" alt="Ar-Condicionado Inverter" />
-							<span>Inverter</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/ar-condicionado/split" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg" alt="Ar-Condicionado Split" />
-							<span>Split</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/ar-condicionado/janela" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg" alt="Ar-Condicionado Janela" />
-							<span>De Janela</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/ar-condicionado" class="categoryLink">Veja todos os ares condicionados</a>
-			</div>
-			<div class="subCategorySection" data-category="fornos">
-				<ul class="fornos">
-					<li class="list-element">
-						<a href="/eletrodomesticos/forno/eletrico" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/193582-210-210/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg" alt="Forno Elétrico" />
-							<span>Forno Elétrico</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/forno/forno-de-embutir" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg" alt="Forno de Embutir" />
-							<span>Forno de Embutir</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/forno/a-gas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg" alt="Forno a Gás" />
-							<span>Forno a Gás</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/forno" class="categoryLink">Veja todos os fornos</a>
-			</div>
-			<div class="subCategorySection" data-category="coifas">
-				<ul class="coifas">
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/coifa" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg" alt="Coifa" />
-							<span>Coifa</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/coifa/parede" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg" alt="Coifa de Parede" />
-							<span>Coifa de Parede</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/coifa/inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg" alt="Coifa de Inox" />
-							<span>Coifa de Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/coifa/vidro" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/174257-210-210/Consul_Coifa_CAP60AR_Imagem_Frontal_1650x1450.jpg" alt="Coifas de Vidro" />
-							<span>Coifa de Vidro</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/coifa/piramidal" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg" alt="Coifa Piramidal" />
-							<span>Coifa Piramidal</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg" alt="Depurador" />
-							<span>Depurador</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/166060-210-210/CAT80GR-depurador-de-ar-consul-80-cm-frontal_1650x1450.jpg" alt="Depurador de Inox" />
-							<span>Depurador de Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/branco" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg" alt="Depurador Branco" />
-							<span>Depurador Branco</span>
-						</a>
-					</li>
-				</ul>
-				<a href="eletrodomesticos/coifa-e-depurador" class="categoryLink">Veja todas as coifas e depuradores</a>
-			</div>
-			<div class="subCategorySection" data-category="cooktop">
-				<ul class="cooktop">
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/5-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg" alt="Cooktop 5 Bocas" />
-							<span>Cooktop 5 Bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/4-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg" alt="Cooktop 4 Bocas" />
-							<span>Cooktop 4 Bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/2-bocas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg" alt="Cooktop 2 Bocas" />
-							<span>Cooktop 2 Bocas</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/eletrico" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg" alt="Cooktop Elétrico" />
-							<span>Cooktop Elétrico</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/a-gas" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg" alt="Cooktop a Gás" />
-							<span>Cooktop a Gás</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/bivolt" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg" alt="Cooktop Bivolt" />
-							<span>Cooktop Bivolt</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/mesa-de-vidro" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg" alt="Cooktop Mesa de Vidro" />
-							<span>Mesa de Vidro</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/cooktop/acendimento-automatico" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg" alt="Cooktop Acendimento Automático" />
-							<span>Acendimento Automático</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/cooktop" class="categoryLink">Veja todos os cooktops</a>
-			</div>
-			<div class="subCategorySection" data-category="freezers">
-				<ul class="freezers">
-					<li class="list-element">
-						<a href="/eletrodomesticos/freezer/freezer-vertical" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/187610-210-210/Consul_Freezer_CVU20GB_Imagem_Frontal.jpg" alt="Freezer Vertical" />
-							<span>Freezer Vertical</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/freezer/freezer-horizontal" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg" alt="Freezer Horizontal" />
-							<span>Freezer Horizontal</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/freezer/branco" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg" alt="Freezer Branco" />
-							<span>Freezer Branco</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/freezer/110v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg" alt="Freezer 110v" />
-							<span>Freezer 110v</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/freezer/220v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg" alt="Freezer 220v" />
-							<span>Freezer 220v</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/freezer" class="categoryLink">Veja todos os freezers</a>
-			</div>
-			<div class="subCategorySection" data-category="microondas">
-				<ul class="microondas">
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/inox" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg" alt="Micro-Ondas Inox" />
-							<span>Inox</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/branco" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg" alt="Micro-Ondas Branco" />
-							<span>Branco</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/inox-espelhado" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg" alt="Micro-Ondas Espelhado" />
-							<span>Espelhado</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/110v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg" alt="Micro-Ondas 110v" />
-							<span>110v</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/220v" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg" alt="Micro-Ondas 220v" />
-							<span>220v</span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/20-litros" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg" alt="Micro-Ondas 20 Litros" />
-							<span>20 Litros </span>
-						</a>
-					</li>
-					<li class="list-element">
-						<a href="/eletrodomesticos/micro-ondas/32-litros" class="subcategory-link">
-							<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg" alt="Micro-Ondas 32 Litros" />
-							<span>32 Litros</span>
-						</a>
-					</li>
-				</ul>
-				<a href="/eletrodomesticos/micro-ondas" class="categoryLink">Veja todos os micro-ondas</a>
-			</div>
-		</div>
 	</div>
 </section>
 <!-- /Vitrine de categorias-->
@@ -655,7 +792,7 @@
 	<!-- /Banner de alavanca home -->
 
 	<!-- [ CHAORDIC ] TOP -->
-	<div data-chaordic="top"></div>
+	<div chaordic="top"></div>
 	<!-- /[ CHAORDIC ] TOP -->
 
 	<!-- [ Desktop ] - Home Banners Secundários -->
@@ -679,7 +816,7 @@
 	<!-- /[ Desktop ] - Home Banners Secundários -->
 
 	<!-- [ CHAORDIC ] MIDDLE -->
-	<div data-chaordic="middle"></div>
+	<div chaordic="middle"></div>
 	<!-- /[ CHAORDIC ] MIDDLE -->
 
 	<!-- [ Desktop ] - Home Banners Secundários Três -->
@@ -705,7 +842,7 @@
 	<!-- /[ Desktop ] - Home Banners Secundários Três -->
 
 	<!-- [ CHAORDIC ] BOTTOM -->
-	<div data-chaordic="bottom"></div>
+	<div chaordic="bottom"></div>
 	<!-- /[ CHAORDIC ] BOTTOM -->
 
 	<!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
@@ -733,17 +870,9 @@
 			</div>
 			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
 				<i class="icon icon-consul-loupe"></i>
-				<input
-					type="text"
-					class="text-search"
-					name="q"
-					required="required"
-					pattern=".{3,}"
-					title="Mínimo de 3 caracteres "
-					placeholder="O que você está procurando hoje?"
-					autocomplete="off"
-					maxlength="100"
-				/>
+				<input type="text" class="text-search" name="q" required="required" pattern=".{3,}"
+					title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off"
+					maxlength="100" />
 				<button type="submit">
 					Buscar
 				</button>
@@ -785,5 +914,25 @@
 	<!-- /Footer 2019 -->
 
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+	<script>
+        $('.covid-alert').on('click', function() {
+			$('.covid-modal').show();
+			$('.covid-modal-mobile').show();
+            $('.covid-overlay').show();
+        });
+
+        $(document).on('click', '.close-covid', function() {
+			$('.covid-modal').hide();
+			$('.covid-modal-mobile').hide();
+            $('.covid-overlay').hide();
+        });
+
+        $('.covid-overlay').on('click', function() {
+			$('.covid-modal').hide();
+			$('.covid-modal-mobile').hide();
+            $(this).hide();
+        });
+	</script>
 </body>
+
 </html>

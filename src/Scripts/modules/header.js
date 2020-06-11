@@ -9,8 +9,15 @@ require('modules/header/cart');
 // require('modules/header/tooltip');
 
 Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover', 'cart' /* 'tooltip' */], function() {
+	//teste ab new layout header
+
+
 	var $body = $('body'),
 		$document = $(document);
+
+	//Teste A B
+	$('body').addClass('teste-A');
+
 
 	// Menu mobile
 	var topMenu = $('.menu-department'),
@@ -33,6 +40,23 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		}
 		return;
 	});
+
+	// search
+	$('.cont-search.search .form-search .text-search').on('click', function() {
+		setTimeout(function(){
+			if ( !$('.ac-container').hasClass('is--search')) {
+				$('.ac-container').addClass('is--search');
+				var closeSearch = $('.ac-title-top-search')
+				closeSearch.append('<p type="button" class="icon-close" style="margin: 3px; color: #9aca3c; font-weight: bold; cursor: pointer;">X</p>')
+				closeSearch.css('display', 'flex')
+				closeSearch.css('justifyContent', 'space-between')
+			}
+		}, 500)
+	})
+
+	$('body').on('click', '.ac-container .icon-close', function(){
+		$('.ac-container').css('display', 'none');
+	})
 
 	menuMobile.find('.open-menu-mobile').click(function(e) {
 		e.preventDefault();

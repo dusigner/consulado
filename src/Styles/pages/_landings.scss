@@ -29,5 +29,144 @@ body.is-landing-page {
 		  quando a página é criada com contexto de busca
 	 */
 	.resultado-busca { @include hide-conditional; }
+
+
 }
 
+// Landing Page Comunicado Covid-19
+.container-lp-covid {
+	@media(max-width: 800px) { margin-top: 56px }
+
+	.banner {
+		background: #F5F5F5;
+		width: 100%;
+		height: 170px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-around;
+		@media(min-width: 800px) { padding: 0px 200px; }
+		img {
+			height: 100%;
+			&:last-of-type {
+				height: 110%;
+			}
+		}
+	}
+
+	.prateleira.default h2 {
+		display: none;
+	}
+
+	.content {
+		p{
+			font-size: 16px;
+			&.title {
+				margin: 20px 0;
+				text-align: center;
+				font-weight: 500;
+				font-size: 24px;
+				@media(min-width: 800px) { padding: 0px 100px; }
+			}
+		}
+		.container-item {
+			justify-content: flex-start;
+			align-items: center;
+			margin-right: 0px;
+			display: flex;
+			flex-flow: row nowrap;
+			margin-bottom: 24px;
+			img {
+				margin-right: 16px;
+			}
+			p {
+				margin: 0px;
+				font-weight: 500;
+				b {
+					color: #9ACA3C;
+					font-size: 1.1em;
+				}
+			}
+		}
+	}
+
+	.dicas-container {
+		background: #9ACA3C;
+		padding: 30px;
+		color: #FFF;
+		div.container {
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+			align-items: center;
+		}
+		.icone-dicas-container {
+			display: flex;
+			align-items: center;
+			max-width: 250px;
+			span {
+				font-size: 20px;
+				font-weight: bold;
+				margin-left: 10px;
+			}
+		}
+		.itens-dicas-container {
+			@media(max-width: 800px) { margin-top: 10px; }
+			p {
+				margin: 10px 0;
+				font-size: 16px;
+				&::before {
+					content: 'a';
+					color: transparent;
+					background: transparent url('/arquivos/arrow-topic.svg') center no-repeat;
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+
+	.container.container-canais-atendimento {
+		background: transparent;
+		@media(max-width: 800px) {
+			margin: 20px 0;
+			padding: 0px;
+			max-width: 100%;
+		}
+		.card-canais-atendimento {
+			@media(min-width: 800px) { margin-top: 40px; }
+			margin-top: 30px;
+			padding: 20px;
+			border: 1px #9ACA3C solid;
+			font-size: 16px;
+			h3 {
+				@media(max-width: 800px) { text-align: left; }
+				margin: 0px;
+				color: #9ACA3C;
+			}
+			div {
+				display: flex;
+				@media(max-width: 800px) { display: block; }
+				justify-content: space-around;
+				h5 {
+					font-size: 18px;
+					font-weight: bold;
+				}
+				a {
+					background: #9ACA3C;
+					color: #FFF;
+					padding: 6px 40px;
+					font-size: 12px;
+					border-radius: 20px;
+				}
+				div { display: block; }
+			}
+		}
+	}
+
+	h3 {
+		text-align: center;
+		font-size: 24px;
+		b {
+			color: #9ACA3C;
+		}
+	}
+}

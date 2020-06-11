@@ -22,13 +22,25 @@ body.produto {
 	}
 }
 
-.prod-info {
-	@include breakpoint('medium', 'max') {
-		display: flex;
-		flex-direction: column;
+body.produto-disponivel,
+body.produto-indisponivel {
+	.prod-info {
+		display: block;
+		@include breakpoint('medium', 'max') {
+			display: flex;
+			flex-direction: column;
+		}
 	}
+}
+
+.prod-info {
+	// @include breakpoint('medium', 'max') {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// }
 	padding: 0;
 	position: relative;
+	display: none;
 
 	.prod-selos {
 		display: none!important;
@@ -85,4 +97,14 @@ body.produto {
 .cta-containers {
 	@include breakpoint ('medium', 'max') { flex-direction: column; }
 	display: flex;
+
+	.social {
+		@include breakpoint ('small', 'max') {
+			margin-top: 23px;
+		}
+	}
+}
+
+.container-whats, .content_botoes_televendas-whats {
+	display: none;
 }

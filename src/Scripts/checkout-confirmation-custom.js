@@ -38,6 +38,8 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.termoColeta');
 	require('modules/checkout/checkout.cotas');
 
+	require('modules/banner-covid');
+
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
@@ -267,7 +269,7 @@ $(window).on('load', function() {
         additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
         product_sku = additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId;
         products.push({
-          'id' : product_sku.replace(/ANA|BNA/g, ''),
+          'id' : product_sku.replace(/(.)NA$/g, ''),
           'id_vtex' : product.id,
           'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
           'name' : product.name,

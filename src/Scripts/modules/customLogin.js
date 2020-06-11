@@ -209,7 +209,7 @@ Nitro.module('customLogin', function() {
 										'</div>' +
 										'<div class="custom-login-buttons--checkbox">' +
 										'<input type="checkbox" class="custom-login-btn-check" value="Concordo">' +
-										'<span>Li e concordo com os <a href="https://consul.custhelp.com/app/answers/detail/a_id/511" target="_blank">termos e condições</a></span>' +
+										'<span>Li e concordo com os <a href="http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Politica_de_Privacidade_CONSUL.pdf" target="_blank">termos e condições</a></span>' +
 										'</div>' +
 										'<div class="custom-login-buttons--action--box">' +
 										'<input type="submit" class="custom-login-btn btn-custom-secondary" value="Entrar">' +
@@ -221,8 +221,8 @@ Nitro.module('customLogin', function() {
 						'<div class="modal-custom-login--buttons">' +
 							'<p class="modal-custom-login--sectitles">Ou entre por uma das opções abaixo:</p>' +
 							'<div class="modal-custom-login--buttons--box">' +
-								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Entrar com <strong>Facebook</strong></button>' : '') +
-								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Entrar com <strong>Google</strong></button>' : '') +
+								((userInfos.faceLogin) ? '<button class="modal-custom-login-btn facebook_access">Facebook</button>' : '') +
+								((userInfos.googleLogin) ? '<button class="modal-custom-login-btn google_access">Google</button>' : '') +
 								'<button class="modal-custom-login-btn mailkey">' + ($(window).width() <= 768  ? 'Chave por e-mail' : 'Receber chave de acesso por email') + '</button>' +
 							'</div>' +
 						'</div>' +

@@ -1,13 +1,13 @@
 {
 	"name": "consul",
 	"accountName": "consul",
-	"version": "v6.83.77",
+	"version": "v6.86.12",
 	"author": "Jussi Platform Team",
 	"private": true,
 	"secureUrl": true,
 	"proxyPort": 3000,
 	"dependencies": {
-		"bootstrap": "4.2.1",
+		"bootstrap": "^4.2.1",
 		"bootstrap-sass": "^3.4.1",
 		"clipboard": "^1.7.1",
 		"crypto-js": "^3.1.9-1",
@@ -65,7 +65,7 @@
 		"jasmine-core": "^3.3.0",
 		"json-loader": "^0.5.7",
 		"jussitb": "^1.4.2",
-		"karma": "^4.0.1",
+		"karma": "^5.0.1",
 		"karma-chrome-launcher": "^2.2.0",
 		"karma-cli": "^2.0.0",
 		"karma-fixture": "^0.2.6",
@@ -74,7 +74,7 @@
 		"karma-jquery": "^0.2.3",
 		"karma-spec-reporter": "0.0.32",
 		"karma-webpack": "^3.0.5",
-		"node-sass": "^4.11.0",
+		"node-sass": "^4.14.1",
 		"postcss-flexibility": "^2.0.0",
 		"prettier": "^1.18.2",
 		"proxy-middleware": "^0.15.0",
@@ -103,8 +103,7 @@
 		"deploy-qa-pj-pages": "git checkout stage && git pull && gulp deploy --account=consulqa2 --page=ALL --nobump && node node_modules/jussitb deploy --account consulqa2 --site consulqa2 --pathFiles arquivos && git add . && git commit -m 'deploy-qa-pj-pages' && git push",
 		"create-controller": "node node_modules/jussitb createController",
 		"create-module": "node node_modules/jussitb createModule",
-		"create-page": "node node_modules/jussitb createPage --account consul",
-		"test": "node node_modules/karma/bin/karma start karma.conf.js"
+		"create-page": "node node_modules/jussitb createPage --account consul"
 	},
 	"husky": {
 		"hooks": {

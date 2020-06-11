@@ -10,21 +10,20 @@ require('components/instagram-stories');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
 // require('components/prateleira-personalizada');
-
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
 require('modules/chatHome');
 require('modules/shelfCategoryHome');
-require('modules/_staticBanner');
+// require('modules/_staticBanner');
 require('modules/interested-shelf');
-require('dataLayers/dataLayer-home-BF.js')
+// require('dataLayers/dataLayer-home-BF.js');
 // require('modules/_staticBanner');
 
 // require('modules/_staticBanner');
-require('modules/subCategoryList')
+require('modules/subCategoryList');
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
-import 'dataLayers/datalayer-vitrine-categorizacao';
+// import 'dataLayers/datalayer-vitrine-categorizacao';
 
 Nitro.controller(
 	'home',
@@ -43,10 +42,11 @@ Nitro.controller(
 		'counter',
 		// 'datalayer_track'
 		'subCategoryList',
-		'dataLayer-vitrine-categorizacao'
+		'dataLayer-vitrine-categorizacao',
+		'dataLayer-banner-home'
 	],
 
-	function(chaordic) {
+	function (chaordic) {
 
 		chaordic.init('home');
 
@@ -262,7 +262,7 @@ Nitro.controller(
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		//chaordic.init('home');
 
-		this.setupSlider = function($currentSlider) {
+		this.setupSlider = function ($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: false,
 				slidesToShow: 4,
@@ -324,7 +324,7 @@ Nitro.controller(
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
-			$('section.slider .pre-title').click(function(e) {
+			$('section.slider .pre-title').click(function (e) {
 				e.preventDefault();
 
 				if ($(this).hasClass('open')) {
@@ -343,7 +343,7 @@ Nitro.controller(
 					$(this)
 						.siblings()
 						.find('.prateleira>ul')
-						.slideDown('slow', function() {
+						.slideDown('slow', function () {
 							self.setupSlider($(this));
 						});
 				}
@@ -358,7 +358,7 @@ Nitro.controller(
 			$('.slider.vitrines h2').addClass('pre-title');
 			self.setupSlider($('.slider.vitrines .prateleira-slider .prateleira>ul'));
 
-			$('.slider.vitrines h2').click(function(e) {
+			$('.slider.vitrines h2').click(function (e) {
 				e.preventDefault();
 
 				$(this).toggleClass('shelf-pre-title--active');
