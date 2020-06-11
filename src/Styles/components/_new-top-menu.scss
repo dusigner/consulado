@@ -2,16 +2,23 @@
 
 
 body {
-
-	&>.cont-search {
+	& .form-search {
+		.icon-consul-loupe {
+			left: -2px !important;
+		}
+	}
+	& .cont-search {
 		@include breakpoint(medium, 'max') {
 			.text-search {
+				height: 50px !important;
+				padding: 0 32px;
 				&:focus {
-					height: 40px !important;
+					height: 50px !important;
 				}
 			}
 		}
 	}
+
 	& .ac-suggest-product {
 		align-items: center;
 		display: flex;
@@ -50,6 +57,7 @@ body {
 		background-size: contain;
 		height: 20px;
 		position: absolute;
+		pointer-events: visible !important;
 		right: 14px;
 		top: 14px;
 		width: 20px;
