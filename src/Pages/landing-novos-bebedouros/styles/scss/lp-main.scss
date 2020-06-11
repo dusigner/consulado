@@ -1281,7 +1281,7 @@ $main-intro--bottom: 80px;
 			width: 100%;
 			display: block;
 			transition: 0.3s all ease-in-out;
-			cursor: pointer;
+		
 			&:hover {
 				transform: scale(1.05);
 			}
@@ -1451,7 +1451,6 @@ $main-intro--bottom: 80px;
 		}
 
 		.counter-item {
-			cursor: pointer;
 			width: 8px;
 			height: 35px;
 			background-color: #73962c;
@@ -1539,6 +1538,7 @@ $main-intro--bottom: 80px;
 	background-color: rgba(0, 0, 0, 0.8);
 	display: none;
 	color: $color_main_white;
+	z-index: 1000;
 
 	&.active {
 		animation: fadeIn 0.3s;
@@ -1565,6 +1565,21 @@ $main-intro--bottom: 80px;
 
 	video {
 		max-height: 80vh;
+	}
+
+	.modal-video {
+
+		iframe {
+			height: 250px;
+
+			@media screen and (min-width: 768px) {
+				height: 350px;
+			}
+
+			@media screen and (min-width: 1024px) {
+				height: 85vh;
+			}
+		}
 	}
 }
 
