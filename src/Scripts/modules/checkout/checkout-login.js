@@ -501,3 +501,4 @@ Nitro.module('checkout-login', function(){
 	// init functions
 	this.init();
 });
+//
