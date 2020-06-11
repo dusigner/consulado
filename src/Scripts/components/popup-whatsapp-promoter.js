@@ -2,10 +2,12 @@
 
 Nitro.module('popup-whatsapp-promoter', function() {
 	this.init = () => {
-		this.html();
+		this.htmlPopup();
+		this.closePopup();
+		this.addTransition();
 	};
 
-	this.html = () => {
+	this.htmlPopup = () => {
 		var $url = location.href;
 		$('body').append(`
 			<div class="popup-whats">
@@ -26,6 +28,19 @@ Nitro.module('popup-whatsapp-promoter', function() {
 				</div>
 			</div>
 		`);
+	};
+
+	this.addTransition = () => {
+		setTimeout(function() {
+			$('.popup-whats').addClass('is--add ');
+		}, 2000)
+	};
+
+	this.closePopup = () => {
+		$('body').on('click', '.popup-whats-container--close', () => {
+			$('.popup-whats').removeClass('is--add ');
+			$('.popup-whats').addClass('is--remove');
+		});
 	};
 
 	this.init();
