@@ -321,7 +321,6 @@ Nitro.module('checkout-login', function(){
 				recaptcha: '',
 				authenticationToken: userInfos.authenticationToken
 			});
-			// console.log(params);
 			self.request(routes.authenticateLogin, params)
 				.then(function(data) {
 					if (data.authStatus === 'Success') {
