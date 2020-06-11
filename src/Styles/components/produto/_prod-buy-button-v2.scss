@@ -15,7 +15,7 @@
 		color: #fff;
 		padding: 7px 15px;
 		text-align: center;
-		width: 50%;
+		width: 100%;
 
 		&:hover {
 			background-color: darken($green, 10%);
@@ -25,7 +25,9 @@
 
 	.buy-button,
 	.secure {
-		@include breakpoint('extra-small', 'max') { flex: 1 0 100%; }
+		@include breakpoint("extra-small", "max") {
+			flex: 1 0 100%;
+		}
 		flex: 1 1 50%;
 		text-align: center;
 	}
@@ -35,28 +37,35 @@
 	display: none;
 }
 
-
 #BuyButton {
-	@include breakpoint('medium', 'max') {
+	@include breakpoint("medium", "max") {
 		position: absolute;
 		right: 2px;
 		top: 15px;
 		width: 50%;
 	}
 
-	@include breakpoint('small', 'max') {
+	@include breakpoint("small", "max") {
 		width: 100%;
 		position: relative;
 	}
 
 	.secure {
-		@include breakpoint('medium', 'max') { @include superHide(); }
+		@include breakpoint("medium", "max") {
+			@include superHide();
+		}
 		@include rfs(12px);
-		color: #E3E1E1;
+		color: #e3e1e1;
 		font-weight: bold;
 		padding: 7px;
 		text-transform: uppercase;
 
-		.icon-cadeado { margin-right: 8px; }
+		.icon-cadeado {
+			margin-right: 8px;
+		}
 	}
+}
+
+#BuyButton .form-container {
+	width: 50%;
 }
