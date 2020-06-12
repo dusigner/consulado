@@ -61,17 +61,13 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	if($(window).width() < 798) {
 
 
-		// $('body').on('click', '.form-search .icon .icon-close', function(){
-		// 	if ($('.ac-container').css('display') == 'none') {
-		// 		$('body').css('overflow', 'inherit');
-		// 	}
-		// });
+		$('body').on('click', '.form-search .icon .icon-close, .open-menu-mobile', function(){
+			$('body').css({'overflow': 'inherit', 'height': 'auto'});
+		});
 
-		// $('body').on('click', '.cont-search .text-search', function(){
-		// 	if ($('.ac-container').css('display') == 'block') {
-		// 		$('body').css('overflow', 'hidden','height','100vh');
-		// 	}
-		// });
+		$('body').on('click', '.cont-search .text-search', function(){
+			$('body').css({'overflow': 'hidden', 'height': '100vh'});
+		});
 
 		const searchForm = $('.cont-search .form-search');
 			searchForm.append('<span></span>');
