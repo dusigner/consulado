@@ -8,6 +8,16 @@
 	justify-content: space-between;
 	margin-bottom: 1em;
 
+	@include breakpoint('small', 'max') {
+		margin-bottom: 40px;
+	}
+
+	.form-container {
+		@include breakpoint('small', 'max') {
+			width: 100%;
+		}
+	}
+
 	.buy-button {
 		@include rfs(12px);
 		background-color: $green;
@@ -16,6 +26,23 @@
 		padding: 7px 15px;
 		text-align: center;
 		width: 100%;
+
+		@include breakpoint('small', 'max') {
+			background-color: #9aca3c;
+			border: 1px solid #9aca3c;
+			border-radius: 40px;
+			color: #fff;
+			display: block;
+			font-size: 15px;
+			font-weight: 700;
+			margin: 0;
+			padding: 12px 20px;
+			text-align: center;
+			z-index: 9999;
+			line-height: 16px;
+			height: 44px;
+			width: 100%;
+		}
 
 		&:hover {
 			background-color: darken($green, 10%);
