@@ -19,6 +19,13 @@ body {
 		}
 	}
 
+	& .ac-container {
+		@include breakpoint(medium, 'max') {
+			height: calc(100vh - 115px);
+			overflow-x: scroll;
+		}
+	}
+
 	& .ac-suggest-product {
 		align-items: center;
 		display: flex;
