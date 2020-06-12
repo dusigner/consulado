@@ -161,6 +161,7 @@ body.produto {
 				line-height: 16px;
 				height: 44px;
 				margin-top: 15px;
+				display: none!important;
 			}
 		}
 
@@ -195,12 +196,6 @@ body.produto-indisponivel {
 
 	#BuyButton .buy-button {
 		display: none;
-	}
-}
-
-#BuyButton .buy-button.buy-button-ref {
-	@include breakpoint ('small', 'max') {
-		display: none!important;
 	}
 }
 
