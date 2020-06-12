@@ -41,21 +41,22 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		return;
 	});
 
-	$('.cont-search.search .form-search .text-search').on('click', function() {
-		setTimeout(function(){
-			if ( !$('.ac-container').hasClass('is--search')) {
-				$('.ac-container').addClass('is--search');
-				var closeSearch = $('.ac-title-top-search')
-				closeSearch.append('<p type="button" class="icon icon-close" style="margin: 10px 5px; color: #9aca3c; font-weight: bold; cursor: pointer;"></p>')
-				closeSearch.css('display', 'flex')
-				closeSearch.css('justifyContent', 'space-between')
-			}
-		}, 500)
-	});
+	// $('.cont-search.search .form-search .text-search').on('click', function() {
+	// 	setTimeout(function(){
+	// 		if ( !$('.ac-container').hasClass('is--search')) {
+	// 			$('.ac-container').addClass('is--search');
+	// 			var closeSearch = $('.ac-title-top-search')
+	// 			closeSearch.append('<p type="button" class="icon icon-close" style="margin: 10px 5px; color: #9aca3c; font-weight: bold; cursor: pointer;"></p>')
+	// 			closeSearch.css('display', 'flex')
+	// 			closeSearch.css('justifyContent', 'space-between')
+	// 		}
+	// 	}, 500)
+	// });
 
-	$('body').on('click', '.ac-container .icon-close', function(){
-		$('.ac-container').css('display', 'none');
-	});
+	// $('body').on('click', '.ac-container .icon-close', function(){
+	// 	$('.ac-container').css('display', 'none');
+	// 	$('body').css({'overflow': 'inherit', 'height': 'auto'});
+	// });
 
 
 	if($(window).width() < 798) {
@@ -82,13 +83,13 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 			$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
 		});
 
-		// $('body').on('click', '.form-search .icon .icon-close', function(){
-		// 	$('body').css({'overflow': 'inherit', 'height': 'auto'});
-		// });
+		$('body').on('click', '.form-search span', function(){
+			$('body').css({'overflow': 'inherit', 'height': 'auto'});
+		});
 
-		// $('body').on('click', '.cont-search .text-search', function(){
-		// 	$('body').css({'overflow': 'hidden', 'height': '100vh'});
-		// });
+		$('body').on('click', '.cont-search .text-search', function(){
+			$('body').css({'overflow': 'hidden', 'height': '100vh'});
+		});
 	}
 
 	$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
