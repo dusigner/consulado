@@ -17,6 +17,7 @@ require('modules/listagem/comparebar');
 //require('custom/modal.cupom10off');
 //require('modules/filters');
 require('dataLayers/dataLayer-categoria');
+require('components/popup-whatsapp-promoter');
 
 Nitro.controller(
 	'listagem',
@@ -29,7 +30,8 @@ Nitro.controller(
 		'calculadorabtu',
 		'busca-chaordic',
 		'comparebar',
-		'dataLayer-categoria'
+		'dataLayer-categoria',
+		'popup-whatsapp-promoter',
 	],
 	function(chaordic) {
 		var $body = $('body');
