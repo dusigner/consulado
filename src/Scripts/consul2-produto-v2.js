@@ -102,6 +102,26 @@ Nitro.controller(
 			}
 		});
 
+		// whats
+		var $product_id = skuJson_0.productId;
+
+		$.ajax({
+			type: 'GET',
+			async: true,
+			url:
+            `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
+			success: function (data) {
+				if ( (data[0][`Grupo - Promotores`])) {
+					var $name = data[0].productName;
+					var $url = location.href;
+					$('.container-whats-container-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
+
+					$('.content_botoes_televendas-whats, .container-whats').addClass('is--active');
+					$('body').addClass('whatsapp');
+				}
+			}
+		})
+
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
 
