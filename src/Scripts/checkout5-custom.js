@@ -1357,10 +1357,7 @@ $(document).on('ready', function() {
 
     setCheckoutEvents();
   }
-
-  window.onload  = (function() {
-    init();
-  });
+  init();
 
 })(window, document);
 
