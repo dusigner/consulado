@@ -13,6 +13,9 @@
 
 <body data-controller="produto-v2">
 	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
+	<!-- Index best price in Google Shopping-->
+	<vtex.cmc:productRichSnippets showGoogle="1" paymentSystemId="4" />
+	<!-- /Index best price in Google Shopping-->
 
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
@@ -95,8 +98,9 @@
 							<!-- Disponibilidade -->
 							<vtex.cmc:Delivery />
 						</div>
-
-						<vtex.cmc:skuPrice />
+						<!-- Insert best price into PDP -->
+						<vtex.cmc:skuPrice paymentSystemId="4"/>
+						<!-- /Insert best price into PDP -->
 					</div>
 
 					<!-- Formas de pagamento -->
