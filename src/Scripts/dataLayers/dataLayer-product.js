@@ -16,6 +16,10 @@ Nitro.module('dataLayer-product', function() {
 		this.nameProductOutline();
 		this.visibleVitrineOutlineProducts();
 		this.similarOutlineProduct();
+
+		// whats
+		this.clickWhats();
+		this.clickAttendance();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -145,6 +149,33 @@ Nitro.module('dataLayer-product', function() {
 				`click produto similar`,
 				`${$label}`
 			);
+		});
+	};
+
+	this.clickWhats = () => {
+		$('.container-whats-container-link').on('click', function() {
+
+			pushDataLayer(
+				'Promotores',
+				'click_promotores',
+				'PDP'
+			);
+		});
+	};
+
+	this.clickAttendance = () => {
+		$('.prod-more-info a').on('click', function() {
+			if ( $($(this)).attr('title') === "Informações de contratação") {
+				if ( $('body').hasClass('whatsapp') ) {
+					console.log('salv')
+
+					pushDataLayer(
+						'Promotores',
+						'click_atendimento',
+						'PDP'
+					);
+				}
+			}
 		});
 	};
 
