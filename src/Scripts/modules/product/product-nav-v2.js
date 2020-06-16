@@ -17,8 +17,6 @@ Nitro.module('product-nav', function() {
 	var scrollEvent = $.throttle(function() {
 		var top = $(document).scrollTop();
 
-		console.log('top', top);
-
 		if (top >= $('.buy-button').offset().top + 45) {
 			nav.parent().addClass('fixed-bar');
 			nav.addClass('pinned').css('top', 0);
