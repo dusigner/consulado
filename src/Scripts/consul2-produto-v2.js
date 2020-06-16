@@ -121,6 +121,13 @@ Nitro.controller(
 				}
 			}
 		})
+<<<<<<< HEAD
+=======
+
+		window.hideContainerWhats = function() {
+			document.querySelector('.container-whats').style.display = 'none';
+		}
+>>>>>>> feature/TAB-48-controle-trafego-promotor
 
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');

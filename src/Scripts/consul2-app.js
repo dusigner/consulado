@@ -116,7 +116,11 @@ Nitro.setup(
 		'isTelevendasCorp',
 		'callcenter',
 		'logoffUser',
+<<<<<<< HEAD
 		'dataLayer-new-header-menu'
+=======
+		'dataLayer-new-header-menu',
+>>>>>>> feature/TAB-48-controle-trafego-promotor
 		// 'dataLayer-menu-antigo'
 	],
 	function() {
