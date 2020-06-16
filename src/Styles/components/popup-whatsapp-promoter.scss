@@ -33,6 +33,11 @@
 			right: 19px;
 			top: 19px;
 			outline: 0;
+
+			@media (max-width: 768px) {
+				right: 2px;
+				top: 4px;
+			}
 		}
 
 		h2 {
@@ -42,6 +47,10 @@
 			margin: 0;
 			font-weight: 700;
 			margin-bottom: 14px;
+
+			@media (max-width: 768px) {
+				font-size: 13px;
+			}
 		}
 
 		p {
@@ -51,6 +60,10 @@
 			color: #fff;
 			font-weight: 400;
 			margin-bottom: 17px;
+
+			@media (max-width: 768px) {
+				font-size: 12px;
+			}
 		}
 
 		&--link {
@@ -66,6 +79,11 @@
 			align-items: center;
 			justify-content: center;
 			display: flex;
+
+			@media (max-width: 768px) {
+				font-size: 11px;
+				width: 100%;
+			}
 
 			svg {
 				margin-right: 10px;
