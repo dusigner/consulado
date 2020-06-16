@@ -130,40 +130,31 @@ Nitro.controller(
 		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
 
 		//Vitrine do Produto indisponível
-		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
+		if ($(window).width() >= 1024) {
+			const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
+			const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
+			// const initVitrine = $('#relacionados-top')
 
-		initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
-			slidesToShow: 2.2,
-			slidesToScroll: 1,
-			centerPadding: '0px',
-			fade: false,
-			infinite: false,
-			cssEase: 'ease',
-			easing: 'linear',
-			responsive: [
-				{
-					breakpoint: 990,
-					settings: {
-						slidesToShow: 2.2,
-						slidesToScroll: 1,
-						centerPadding: '0px',
-					}
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 1.7,
-						slidesToScroll: 1,
-						infinite: false,
-						initialSlide: 1,
-						centerMode: true,
-						centerPadding: '0px',
-						index: 0
-					}
-				}
-			]
-		});
+			initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
+				slidesToShow: 2.2,
+				slidesToScroll: 1,
+				centerPadding: '0px',
+				fade: false,
+				infinite: false,
+				cssEase: 'ease',
+				easing: 'linear',
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 3.2,
+							slidesToScroll: 1,
+							centerPadding: '0px',
+						}
+					},
+				]
+			});
+		}
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		// if ($(window).width() <= 1024) {

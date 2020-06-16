@@ -220,6 +220,35 @@ body #relacionados-top {
 		right: 0;
 	}
 
+	@media (max-width: 340px) {
+		.promo-destaque__bg {
+			transform: translateX(-59px);
+		}
+
+		.promo-destaque__price {
+			right: 6px;
+			font-size: 8px;
+		}
+
+		.promo-destaque__text {
+			font-size: 8px;
+		}
+
+		.prateleira-slider .box-produto .detalhes .prod-info .nome {
+			font-size: 11px;
+		}
+	}
+
+	@include breakpoint('small', 'max') {
+		.prateleira > ul {
+			padding-left: 18px;
+		}
+
+		.slick-slider .slick-list {
+			padding-right: 70px;
+		}
+	}
+
 	.box-produto .detalhes .prod-info .price .por .off,
 	.box-produto .detalhes .prod-info .price .por .product-with-discount {
 		font-size: 9px;
