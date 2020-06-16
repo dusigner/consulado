@@ -116,11 +116,7 @@ Nitro.setup(
 		'isTelevendasCorp',
 		'callcenter',
 		'logoffUser',
-<<<<<<< HEAD
-		'dataLayer-new-header-menu'
-=======
 		'dataLayer-new-header-menu',
->>>>>>> feature/ICD-1169-spot-price
 		// 'dataLayer-menu-antigo'
 	],
 	function() {
