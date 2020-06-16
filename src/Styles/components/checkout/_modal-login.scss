@@ -164,6 +164,10 @@
 		&-options-items-bottom {
 			&.is--active {
 				padding: 32px;
+
+				@media (max-width: 768px) {
+					padding: 16px;
+				}
 			}
 		}
 
@@ -179,6 +183,10 @@
 				visibility: visible;
 				height: auto;
 				padding: 32px;
+
+				@media (max-width: 768px) {
+					padding: 16px;
+				}
 			}
 
 			input {
@@ -257,6 +265,32 @@
 					box-sizing: border-box;
 					outline: 0;
 
+					@media (max-width: 340px) {
+						font-size: 16px;
+						height: 52px;
+						margin: 0 5px;
+						padding: 0;
+						text-align: center;
+						text-shadow: 0 0 0 #736c6b;
+						width: 33px;
+					}
+
+					@media (max-width: 768px) {
+						border: 1px solid #ccc;
+						border-radius: 8px;
+						color: transparent;
+						font-size: 17px;
+						height: 56px;
+						margin: 0 5px;
+						padding: 0;
+						text-align: center;
+						text-shadow: 0 0 0 #736c6b;
+						width: 37px;
+						background-color: #fff;
+						box-sizing: border-box;
+						outline: 0;
+					}
+
 					&:focus {
 						background: #9aca3c;
 						box-shadow: unset;
@@ -271,6 +305,10 @@
 				visibility: visible;
 				height: auto;
 				padding: 32px;
+
+				@media (max-width: 768px) {
+					padding: 16px;
+				}
 			}
 
 			&-buttons {
@@ -318,6 +356,10 @@
 				visibility: visible;
 				height: auto;
 				padding: 32px;
+
+				@media (max-width: 768px) {
+					padding: 16px;
+				}
 			}
 
 			input {
@@ -444,6 +486,10 @@
 						visibility: visible;
 						height: auto;
 						padding: 32px;
+
+						@media (max-width: 768px) {
+							padding: 16px;
+						}
 					}
 
 					&-buttons {
