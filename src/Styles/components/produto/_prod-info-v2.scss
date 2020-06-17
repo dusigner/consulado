@@ -6,6 +6,11 @@ html body.produto {
 		margin-top: 24px;
 		display: none;
 
+		p.content_botoes_televendas-whats-text {
+			width: 100%!important;
+			margin: 10px 0 20px!important;
+		}
+
 		&.is--active {
 			display: block;
 		}
@@ -80,6 +85,8 @@ body.produto {
 		span {
 			font-size: 16px;
 			font-weight: 500;
+			margin-bottom: 10px;
+			display: block;
 		}
 
 		&-container {
@@ -94,45 +101,71 @@ body.produto {
 				color: #736C6B;
 				font-weight: 500;
 				width: 45%;
+				height: auto;
+				justify-content: center;
+				display: block;
 
 				p {
 					font-weight: 300;
 					font-size: 12px;
 					line-height: 17px;
+					margin-top: 10px;
+					margin: 0;
 				}
 			}
 
-			&-link {
-				font-size: 12px;
-				line-height: 15px;
-				text-align: center;
-				color: #FFFFFF;
-				width: 47%;
-				border-radius: 50px;
-				display: block;
-				background: #702F8F;
-				height: 32px;
-				display: flex;
-				align-items: center;
+			&-info {
+				width: 46%;
 				justify-content: center;
-				align-self: center;
+				align-items: center;
+				display: flex;
+				flex-direction: column;
 
-				a {
-					color: #FFFFFF;
-					font-weight: 500;
-					align-items: center;
-					display: flex;
-					width: 100%;
-					justify-content: center;
-					height: 32px;
+				&-link {
+					    font-size: 12px;
+						line-height: 15px;
+						text-align: center;
+						color: #FFFFFF;
+						width: 100%;
+						border-radius: 50px;
+						height: 32px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						align-self: center;
+						background: #702F8F;
+
+					a {
+						font-size: 12px;
+						line-height: 15px;
+						text-align: center;
+						color: #FFFFFF;
+						width: 100%;
+						border-radius: 50px;
+						display: block;
+						background: #702F8F;
+						height: 32px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						align-self: center;
+					}
+
+					svg {
+						height: 15px;
+						width: 15px;
+						display: block;
+						position: relative;
+						left: -6px;
+					}
 				}
 
-				svg {
-					height: 15px;
-					width: 15px;
-					display: block;
-					position: relative;
-					left: -6px;
+
+				p {
+					font-size: 10px;
+					text-align: center;
+					margin: 0;
+					margin-top: 10px;
 				}
 			}
 		}

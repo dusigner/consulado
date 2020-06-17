@@ -114,7 +114,7 @@ Nitro.controller(
 				if ( (data[0][`Grupo - Promotores`])) {
 					var $name = data[0].productName;
 					var $url = location.href;
-					$('.container-whats-container-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
+					$('.container-whats-container-info-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
 
 					$('.content_botoes_televendas-whats, .container-whats').addClass('is--active');
 					$('body').addClass('whatsapp');
