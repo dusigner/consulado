@@ -4,6 +4,8 @@
 require('modules/banners-controller');
 require('modules/slider-banner');
 require('components/instagram-stories');
+require('components/filterFamilySize');
+
 
 //require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
@@ -17,9 +19,7 @@ require('modules/shelfCategoryHome');
 // require('modules/_staticBanner');
 require('modules/interested-shelf');
 // require('dataLayers/dataLayer-home-BF.js');
-// require('modules/_staticBanner');
 
-// require('modules/_staticBanner');
 require('modules/subCategoryList');
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
@@ -31,6 +31,7 @@ Nitro.controller(
 		'chaordic',
 		'slider-banner',
 		'instagram-stories',
+		'filterFamilySize',
 		'lead-newsletter',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
