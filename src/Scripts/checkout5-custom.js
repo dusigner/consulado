@@ -127,6 +127,7 @@ $(document).on('ready', function() {
 				self.shippingSelector();
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
+				self.descountCheckout();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -144,6 +145,17 @@ $(document).on('ready', function() {
 						return self[request] && self[request].call(self);
 					})
 				);
+			};
+
+			this.descountCheckout = () => {
+				$('#remove-gift-card, #btn-add-gift-card').on('click', () => {
+					if ( $('.payment-discounts-list').length >= 1 ) {
+						$('body.body-order-form .box-step-content').addClass('is--descount')
+					}
+				})
+				if ( $('.payment-discounts-list').length >= 1 ) {
+					$('body.body-order-form .box-step-content').addClass('is--descount')
+				}
 			};
 
 			this.shippingSelector = function() {
