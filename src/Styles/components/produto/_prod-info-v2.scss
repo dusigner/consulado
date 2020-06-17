@@ -9,6 +9,7 @@ html body.produto {
 		p.content_botoes_televendas-whats-text {
 			width: 100%!important;
 			margin: 10px 0 20px!important;
+			font-family: 'Open Sans';
 		}
 
 		&.is--active {
@@ -122,7 +123,8 @@ body.produto {
 				flex-direction: column;
 
 				&-link {
-					    font-size: 12px;
+						font-size: 12px;
+						font-weight: 500;
 						line-height: 15px;
 						text-align: center;
 						color: #FFFFFF;
@@ -166,6 +168,7 @@ body.produto {
 					text-align: center;
 					margin: 0;
 					margin-top: 10px;
+					font-family: 'Open Sans';
 				}
 			}
 		}
