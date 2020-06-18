@@ -114,20 +114,17 @@ Nitro.controller(
 				if ( (data[0][`Grupo - Promotores`])) {
 					var $name = data[0].productName;
 					var $url = location.href;
-					$('.container-whats-container-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
+					$('.container-whats-container-info-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
 
 					$('.content_botoes_televendas-whats, .container-whats').addClass('is--active');
 					$('body').addClass('whatsapp');
 				}
 			}
 		})
-<<<<<<< HEAD
-=======
 
-		window.hideContainerWhats = function() {
-			document.querySelector('.container-whats').style.display = 'none';
-		}
->>>>>>> feature/TAB-48-controle-trafego-promotor
+		// window.hideContainerWhats = function() {
+		// 	document.querySelector('.container-whats').style.display = 'none';
+		// }
 
 		//Mensagem de Sucesso do Formulário Avise-me
 		$('#BuyButton').find('.notifyme-success').html('<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>');
@@ -137,40 +134,31 @@ Nitro.controller(
 		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
 
 		//Vitrine do Produto indisponível
-		const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
-		const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
+		if ($(window).width() >= 1024) {
+			const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
+			const initVitrine = vitrineRelacionada.parent().append($('#relacionados-top'));
+			// const initVitrine = $('#relacionados-top')
 
-		initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
-			slidesToShow: 2.2,
-			slidesToScroll: 1,
-			centerPadding: '0px',
-			fade: false,
-			infinite: false,
-			cssEase: 'ease',
-			easing: 'linear',
-			responsive: [
-				{
-					breakpoint: 990,
-					settings: {
-						slidesToShow: 2.2,
-						slidesToScroll: 1,
-						centerPadding: '0px',
-					}
-				},
-				{
-					breakpoint: 768,
-					settings: {
-						slidesToShow: 1.7,
-						slidesToScroll: 1,
-						infinite: false,
-						initialSlide: 1,
-						centerMode: true,
-						centerPadding: '0px',
-						index: 0
-					}
-				}
-			]
-		});
+			initVitrine.find('.prateleira > ul').not('.slick-initialized').slick({
+				slidesToShow: 2.2,
+				slidesToScroll: 1,
+				centerPadding: '0px',
+				fade: false,
+				infinite: false,
+				cssEase: 'ease',
+				easing: 'linear',
+				responsive: [
+					{
+						breakpoint: 1024,
+						settings: {
+							slidesToShow: 3.2,
+							slidesToScroll: 1,
+							centerPadding: '0px',
+						}
+					},
+				]
+			});
+		}
 
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		// if ($(window).width() <= 1024) {
