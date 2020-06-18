@@ -1,17 +1,23 @@
 @charset 'UTF-8';
 
-$icon-preco-a-vista : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAMAAAAS9VDrAAAAPFBMVEUAAABAPDpAPDpAOzpAMDBAOzpAOzpAOjpAPDhAOzpAODhAOztAOjpAOjpAOztAOTlAOzpBPTlAPDlAPDtn8C58AAAAE3RSTlMAwIDwEOCgX0CwIHAwkNBQzz9vwfUj9QAAAV9JREFUKM91k9muBCEIRAXEte1l6v//9Towiz3JrSdMRVIeMKyKeZBiiipv4a6tAkr8VKJZ5tXM0N6+x6OC4rerpBhuKuhLXcKPTvqUHec9SEz4ugwF5fa2riHY9ZsCMe8ATpoSQFKrtLgzQys8ppk4b/O+rp1/YmXFubi9SeXrenK5HklBRMuLttB3vKWphMXNSIazFD5KsRJvt2UjG2+osDt/AmBdz8QmgsTuL+LXrcYClxCXF8mE8aFHyHeSB9hSiWEmaQ5nCHSSfBGp6D5IXUlmNDfhdsZOxL04yWqx27RqtcvvmZdzklR297MZe7L1U+i8CHNDAtSnT0DvkHQEInMtJEt1VzmGaLA4UPLFaWHAKh3OL2GPYYgd5HxIdfaceZBAOD5P3RoLdn+akxxHMFWnwyi+QPm+mXI+7dYtibVftYlkryIvv2OZjI7HxUl8Wr8q0wB2buEfGYBf/QGrfhEE6ynUEwAAAABJRU5ErkJggg==';
-$icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==';
+$icon-preco-a-vista: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAhCAMAAAAS9VDrAAAAPFBMVEUAAABAPDpAPDpAOzpAMDBAOzpAOzpAOjpAPDhAOzpAODhAOztAOjpAOjpAOztAOTlAOzpBPTlAPDlAPDtn8C58AAAAE3RSTlMAwIDwEOCgX0CwIHAwkNBQzz9vwfUj9QAAAV9JREFUKM91k9muBCEIRAXEte1l6v//9Towiz3JrSdMRVIeMKyKeZBiiipv4a6tAkr8VKJZ5tXM0N6+x6OC4rerpBhuKuhLXcKPTvqUHec9SEz4ugwF5fa2riHY9ZsCMe8ATpoSQFKrtLgzQys8ppk4b/O+rp1/YmXFubi9SeXrenK5HklBRMuLttB3vKWphMXNSIazFD5KsRJvt2UjG2+osDt/AmBdz8QmgsTuL+LXrcYClxCXF8mE8aFHyHeSB9hSiWEmaQ5nCHSSfBGp6D5IXUlmNDfhdsZOxL04yWqx27RqtcvvmZdzklR297MZe7L1U+i8CHNDAtSnT0DvkHQEInMtJEt1VzmGaLA4UPLFaWHAKh3OL2GPYYgd5HxIdfaceZBAOD5P3RoLdn+akxxHMFWnwyi+QPm+mXI+7dYtibVftYlkryIvv2OZjI7HxUl8Wr8q0wB2buEfGYBf/QGrfhEE6ynUEwAAAABJRU5ErkJggg==";
+$icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCAMAAAAHbGVJAAAANlBMVEUAAABAPDpAPDpAPDhAOzpAOztAMDBAOzpAOjpAOjpAOTlAODhAOzpAOjpAOztAOzpAPDlAPDu+7ph4AAAAEXRSTlMAwH9A8NAQ4DBfUCCfkHCwb3iku5gAAACSSURBVCjPzc85FoMwDEVRWYNHIPz9bzYibn0sytxGzSv0KZ+KvcJEJyztFVykRoGsiZAokrwqHCleveCVScRe/+VVFjeeO9VlleCUyIBJVpWw68+drryoFv65qtzuewQV46dvqwGTq3Ut20rA5D7YVlmtH9zU9n81hdMabBxSq+S5UY0iJdGBg/cSmPIHkZPe+QKB1w1XN3SUEQAAAABJRU5ErkJggg==";
 
 .prod-preco {
-	p { margin: 0; }
+	p {
+		margin: 0;
+	}
 
 	&.product-has-discount {
 		min-height: 100px;
 
-		em.valor-por { display: inline-block!important; }
+		em.valor-por {
+			display: inline-block !important;
+		}
 
-		.discount-boleto span { display: inline-block!important; }
+		.discount-boleto span {
+			display: inline-block !important;
+		}
 	}
 
 	em {
@@ -21,14 +27,20 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		&.valor-por {
 			font-weight: 500;
 
-			strong { font-weight: 500; }
+			strong {
+				font-weight: 500;
+			}
 		}
 
 		&.valor-de {
-			@include breakpoint('small', 'min') { margin-top: 10px; }
+			@include breakpoint("small", "min") {
+				margin-top: 10px;
+			}
 			display: block;
-			font-size: 0;
+			font-size: -1;
 			line-height: 100%;
+			font-weight: normal;
+			color: #9e9e9e;
 
 			strong {
 				@include rfs(20px);
@@ -38,9 +50,10 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		}
 
 		&.valor-por {
-			font-size: 0;
+			font-size: -1;
 			margin-bottom: 5px;
 			white-space: nowrap;
+			font-weight: normal;
 
 			.skuBestPrice {
 				@include rfs(35px);
@@ -48,11 +61,14 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 				display: inline-block;
 				font-weight: bold;
 			}
+			&:after {
+				content: " à vista";
+			}
 		}
 
 		&.valor-dividido {
 			@include rfs(13);
-			display: block!important;
+			display: block !important;
 			padding-left: 25px;
 			position: relative;
 
@@ -61,7 +77,7 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 				@include square(15px);
 				background: url($icon-preco-parcelado) no-repeat center center;
 				background-size: contain;
-				content: '';
+				content: "";
 				left: 0;
 				position: absolute;
 				top: 50%;
@@ -74,14 +90,22 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 
 					.skuBestInstallmentNumber {
 						&,
-						span { @include rfs(13); }
+						span {
+							@include rfs(13);
+						}
 
-						&:before { content: 'Em até '; }
-						&:after { content: ' '; }
+						&:before {
+							content: "Em até ";
+						}
+						&:after {
+							content: " ";
+						}
 					}
 				}
 
-				&:after { content: ' sem juros'; }
+				&:after {
+					content: " sem juros";
+				}
 			}
 
 			strong {
@@ -89,15 +113,19 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 				position: relative;
 			}
 
-			label { display: inline; }
+			label {
+				display: inline;
+			}
 		}
 
 		.preco-a-vista {
 			@include rfs(18);
 			color: $txt-gray-l;
-			display: block!important;
+			display: block !important;
 
-			span { color: $base-font-color; }
+			span {
+				color: $base-font-color;
+			}
 		}
 	}
 
@@ -117,16 +145,21 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 		white-space: nowrap;
 	}
 
-
 	.preco-a-vista {
-		@include breakpoint('small', 'max') { display: none !important; }
+		@include breakpoint("small", "max") {
+			display: none !important;
+		}
 		color: $txt-gray-l;
-		display: block!important;
+		display: block !important;
 		font-size: 0;
 
-		&:before { @include font-size(18px, true, false); }
+		&:before {
+			@include font-size(18px, true, false);
+		}
 
-		strong { @include font-size(18px, true, false); }
+		strong {
+			@include font-size(18px, true, false);
+		}
 
 		span {
 			@include font-size(18px, true, false);
@@ -137,18 +170,19 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 	}
 
 	.discount-boleto {
-		@include rfs(13);
-		color: #736C6B;
+		@include rfs(16);
+		color: #9BCA3D;
 		display: block;
 		padding-left: 25px;
 		position: relative;
+		font-weight: normal;
 
 		// Icone pagamento
 		&:before {
 			@include square(15px);
 			background: url($icon-preco-a-vista) no-repeat center center;
 			background-size: contain;
-			content: '';
+			content: "";
 			left: 0;
 			position: absolute;
 			top: 50%;
@@ -157,13 +191,16 @@ $icon-preco-parcelado : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaC
 
 		span {
 			@include rfs(13);
-			color: #EC008C;
+			color: #757575;
 			display: none;
 		}
 	}
 
-	.economia-de { display: none; }
+	.economia-de {
+		display: none;
+	}
 
-	@include breakpoint(small, 'max') { padding-top: 20px; }
+	@include breakpoint(small, "max") {
+		padding-top: 20px;
+	}
 }
-
