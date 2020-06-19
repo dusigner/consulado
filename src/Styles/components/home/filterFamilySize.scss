@@ -18,14 +18,7 @@
 		text-decoration: none;
 	}
 	.box {
-		background-image: linear-gradient(to bottom, #3498db, #2980b9);
-		padding: 10px;
-		height: 100px;
-		width: calc(25% - 10px);
-		float: left;
-		margin: 5px;
-		text-align: center;
-		border-radius: 3px;
-		color: #fff;
+		height: auto;
+   		width: 100%;
 	}
 }

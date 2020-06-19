@@ -16,13 +16,11 @@ Nitro.module('filterFamilySize', function() {
 	};
 
 	this.slickVitrineFamilia = () => {
-		var $bannerPrincipal = $('.banners-static .slider-banner');
+		var $vitrineFamilia = $('#vitrines-family').find('.prateleira>ul').not('.slick-initialized');
 
-		$bannerPrincipal
+		$vitrineFamilia
 			.slick({
 				autoplay: true,
-				autoplaySpeed: 7000,
-				mobileFirst: true,
 				dots: true,
 				arrows: false,
 			});
@@ -30,6 +28,7 @@ Nitro.module('filterFamilySize', function() {
 
 	this.init = () => {
 		this.slickVitrineFamilia();
+		this.filterSize();
 	};
 
 	this.init();
