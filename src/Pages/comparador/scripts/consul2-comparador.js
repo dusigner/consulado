@@ -213,7 +213,9 @@ Nitro.controller('compare', function() {
 				.addClass('highlight-'+$('.js-diff-check:checked').val());
 		});
 	};
-
+	vtexjs.checkout.getOrderForm().done(function(res) {
+		console.log(res.paymentData.installmentOptions[0].value)
+	});
 	this.settDiffAndEqRows = function() {
 
 		$('tbody .atributos').each(function() {
