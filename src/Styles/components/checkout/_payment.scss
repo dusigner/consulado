@@ -19,6 +19,13 @@ body {
 	}
 
 	&.body-order-form {
+		&.is--descount {
+			#payment-group {
+				.payment-group-list-btn {
+					margin-top: 36px;
+				}
+			}
+		}
 
 		.payment-discoints-table {
 			tbody {
@@ -721,7 +728,7 @@ body {
 
 					@include breakpoint ('small', 'max') {
 						position: absolute;
-						top: 90px;
+						top: 100px;
 						z-index: 1;
 					}
 				}
