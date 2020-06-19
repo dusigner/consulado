@@ -127,6 +127,7 @@ $(document).on('ready', function() {
 				self.shippingSelector();
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
+				self.descountCheckout();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -145,6 +146,24 @@ $(document).on('ready', function() {
 					})
 				);
 			};
+
+			this.descountCheckout = () => {
+                $('#remove-gift-card, #btn-add-gift-card').on('click', () => {
+                    if ( $('.payment-discounts-list').length >= 1 ) {
+                        $('body.body-order-form .box-step-content').addClass('is--descount');
+                    }
+                })
+                if ( $('.payment-discounts-list').length >= 1 ) {
+                    $('body.body-order-form .box-step-content').addClass('is--descount')
+                }
+                // descount
+                setInterval(function (){
+                    if ( $('.payment-discoints-table .icon-ok').length ) {
+                        var $priceDescountTotal = $('.box-payment-group2 .sight span').eq(1).text();
+                        $('.checkout-container .mini-cart .cart-totalizers tfoot .monetary[data-bind]').html(`${$priceDescountTotal}`);
+                    }
+                }, 100)
+            };
 
 			this.shippingSelector = function() {
 				const $btnShippingSelector = $('.shipping-sla-selector .btn-mini');
@@ -1357,7 +1376,10 @@ $(document).on('ready', function() {
 
     setCheckoutEvents();
   }
-  init();
+
+  window.onload  = (function() {
+    init();
+  });
 
 })(window, document);
 
