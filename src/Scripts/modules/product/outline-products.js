@@ -155,6 +155,11 @@ Nitro.module('outline-products',function() {
 			}
 		}
 
+		if ($('.select-voltage .item-dimension-Voltagem span input').length >= 2) {
+			$('.prod-sku-options').show();
+			$('.select-color').hide();
+		}
+
 		// Esconder/Aparecer barra de preço e comprar em determinada posição da tela
 		if ($(window).width() <= 1024) {
 
