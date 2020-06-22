@@ -72,33 +72,37 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			padding-left: 25px;
 			position: relative;
 
-			// Icone pagamento
-			&:before {
-				@include square(15px);
-				background: url($icon-preco-parcelado) no-repeat center center;
-				background-size: contain;
-				content: "";
-				left: 0;
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-			}
+			// // Icone pagamento
+			// &:before {
+			// 	@include square(15px);
+			// 	background: url($icon-preco-parcelado) no-repeat center center;
+			// 	background-size: contain;
+			// 	content: "";
+			// 	left: 0;
+			// 	position: absolute;
+			// 	top: 50%;
+			// 	transform: translateY(-50%);
+			// }
 
 			& > span {
 				span {
-					font-size: 0;
+					@include rfs(15);
+					text-transform: capitalize;
+					font-size: -1;
 
 					.skuBestInstallmentNumber {
+						font-weight: bold;
 						&,
 						span {
 							@include rfs(13);
 						}
-
 						&:before {
-							content: "Em até ";
+							text-transform: lowercase;
+							content: "em até ";
+							font-weight: normal;
 						}
 						&:after {
-							content: " ";
+							content: "";
 						}
 					}
 				}
@@ -192,7 +196,7 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		span {
 			@include rfs(13);
 			color: #757575;
-			display: none;
+			display: inline;
 		}
 	}
 
