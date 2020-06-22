@@ -1,0 +1,65 @@
+html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns .cconf-alert, body[class*='consul'].body-checkout-confirmation #app-container .ph3-ns .cconf-alert {
+	display: flex;
+	justify-content: space-between;
+
+	.fl {
+		width: 63%;
+	}
+
+	.fr {
+		width: 14%;
+
+		.dark-green {
+			p {
+				text-align: right;
+
+				strong {
+					span {
+						font-size: 0.8125rem;
+					}
+				}
+
+				span {
+					font-size: 0;
+				}
+
+				strong:before {
+					content: 'Total:';
+					display: block;
+				}
+			}
+		}
+	}
+
+	.checkout-billet {
+		width: 15%;
+		float: right;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		text-align: right;
+
+		p {
+			color: #777777;
+			font-size: 12px;
+			white-space: nowrap;
+		}
+
+		button {
+			font-size: 0.8125rem;
+			background: #9aca3c;
+			border: 1px solid #9aca3c;
+			border-radius: 20px;
+			color: #ffffff;
+			font-weight: bold;
+			opacity: 1 !important;
+			padding: 8px 15px;
+			text-align: center;
+			text-transform: uppercase;
+			width: 100%;
+			min-width: 150px;
+			margin-bottom: .5rem;
+			height: 37px;
+		}
+	}
+}
