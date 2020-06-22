@@ -39,6 +39,11 @@ html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns .cconf-al
 		justify-content: flex-end;
 		text-align: right;
 
+		#copyBillet {
+			position: fixed;
+			left: -1000%;
+		}
+
 		p {
 			color: #777777;
 			font-size: 12px;
