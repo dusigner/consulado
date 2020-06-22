@@ -153,7 +153,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.clickWhats = () => {
-		$('.container-whats-container-link').on('click', function() {
+		$('.container-whats-container-info-link, .content_botoes_televendas-whats a').on('click', function() {
 
 			pushDataLayer(
 				'Promotores',
