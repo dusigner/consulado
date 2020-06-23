@@ -38,7 +38,19 @@ Nitro.module('checkout-billet', function() {
 			$('#copyBillet').select()
 			try {
 				var ok = document.execCommand('copy');
-				if (ok) { console.log('Texto copiado para a área de transferência'); }
+				if (ok) {
+					$('.checkout-billet-bottom').addClass('is--billet');
+					if ( $(window).width() >= 768 ) {
+						$('.checkout-billet-bottom--button').text('CÓDIGO COPIADO');
+					} else {
+						$('.checkout-billet-bottom--button').text('CÓD. COPIADO');
+					}
+
+					setTimeout(function(){
+						$('.checkout-billet-bottom').removeClass('is--billet');
+						$('.checkout-billet-bottom--button').text('COPIAR CÓDIGO');
+					}, 2000)
+				}
 			} catch (e) {
 				console.log(e)
 			}
