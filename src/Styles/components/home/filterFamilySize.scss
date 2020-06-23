@@ -5,20 +5,70 @@
 .filter-family-size {
 	display: block;
 	float: left;
-    width: 100%;
+	width: 100%;
+	h2 {
+		text-align: center;
+		span {
+			color: #9ACA3C;
+		}
+	}
+	.row {
+		display: flex;
+		justify-content: center;
+		margin: 0 0 30px 0;
+	}
 	.btn {
-		background: linear-gradient(to bottom, #3498db, #2980b9);
+		background-color: transparent;
 		border: none;
-		color: #ffffff;
-		margin: 5px;
+		font-size: 15px;
+		font-weight: 500;
+		margin: 0 10px;
+		min-height: 36px;
+		width: 174px;
+		&:focus,
+		&:active,
+		&:visited {
+			border: none;
+			outline: none;
+		}
+
 	}
 
 	.active {
-		background: linear-gradient(to bottom, #3cb0fd, #3498db);
+		border: none;
 		text-decoration: none;
 	}
 	.box {
 		height: auto;
    		width: 100%;
+	}
+	#pequena {
+		color: #9ACA3C;
+		&.active {
+			background-color: #9ACA3C;
+			color: #ffffff;
+			font-weight: bold;
+		}
+	}
+	#media {
+		color: #00B7DD;
+		&.active {
+			background-color: #00B7DD;
+			color: #ffffff;
+			font-weight: bold;
+		}
+	}
+	#grande {
+		color: #EC008C;
+		&.active {
+			background-color: #EC008C;
+			color: #ffffff;
+			font-weight: bold;
+		}
+	}
+	#vitrines-family {
+		h2 {
+			display: none;
+		}
 	}
 }
