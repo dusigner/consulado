@@ -9,6 +9,7 @@ require('components/instagram-stories');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
 require('components/lead-newsletter');
+require('components/popup-whatsapp-promoter');
 // require('components/prateleira-personalizada');
 require('modules/chaordic');
 require('modules/bannerDoubleClick');
@@ -43,7 +44,8 @@ Nitro.controller(
 		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',
-		'dataLayer-banner-home'
+		'dataLayer-banner-home',
+		'popup-whatsapp-promoter',
 	],
 
 	function (chaordic) {
