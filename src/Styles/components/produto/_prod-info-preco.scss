@@ -20,105 +20,127 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		}
 	}
 
-	em {
-		font-style: normal;
+	p.descricao-preco {
+		display: flex;
+		flex-wrap: wrap;
+		em {
+			font-style: normal;
 
-		&.valor-de,
-		&.valor-por {
-			font-weight: 500;
-
-			strong {
+			&.valor-de,
+			&.valor-por {
 				font-weight: 500;
+
+				strong {
+					font-weight: 500;
+				}
 			}
-		}
 
-		&.valor-de {
-			@include breakpoint("small", "min") {
-				margin-top: 10px;
+			&.valor-de {
+				@include breakpoint("small", "min") {
+					margin-top: 10px;
+				}
+				display: block;
+				font-size: -1;
+				line-height: 100%;
+				font-weight: normal;
+				color: #9e9e9e;
+
+				order: -1;
+
+				strong {
+					@include rfs(20px);
+					font-weight: 400;
+					text-decoration: line-through;
+				}
 			}
-			display: block;
-			font-size: -1;
-			line-height: 100%;
-			font-weight: normal;
-			color: #9e9e9e;
 
-			strong {
-				@include rfs(20px);
-				font-weight: 400;
-				text-decoration: line-through;
+			&.valor-por {
+				font-size: 0;
+				margin-bottom: 5px;
+				white-space: nowrap;
+				font-weight: normal;
+
+				order: 3;
+
+				.skuBestPrice {
+					&:before {
+						content: "Ou ";
+						color: #9e9e9e;
+						font-size: 16px;
+						font-weight: normal;
+						padding-left: -10px;
+					}
+					@include rfs(16px);
+					color: #757575;
+					display: inline-block;
+					font-weight: bold;
+				}
 			}
-		}
 
-		&.valor-por {
-			font-size: -1;
-			margin-bottom: 5px;
-			white-space: nowrap;
-			font-weight: normal;
+			&.valor-dividido {
+				@include rfs(16px);
+				display: block !important;
+				position: relative;
 
-			.skuBestPrice {
-				@include rfs(35px);
-				color: $green;
-				display: inline-block;
-				font-weight: bold;
-			}
-			&:after {
-				content: " à vista";
-			}
-		}
+				order: 4;
 
-		&.valor-dividido {
-			@include rfs(13);
-			display: block !important;
-			padding-left: 25px;
-			position: relative;
+				// // Icone pagamento
+				// &:before {
+				// 	@include square(15px);
+				// 	background: url($icon-preco-parcelado) no-repeat center center;
+				// 	background-size: contain;
+				// 	content: "";
+				// 	left: 0;
+				// 	position: absolute;
+				// 	top: 50%;
+				// 	transform: translateY(-50%);
+				// }
 
-			// // Icone pagamento
-			// &:before {
-			// 	@include square(15px);
-			// 	background: url($icon-preco-parcelado) no-repeat center center;
-			// 	background-size: contain;
-			// 	content: "";
-			// 	left: 0;
-			// 	position: absolute;
-			// 	top: 50%;
-			// 	transform: translateY(-50%);
-			// }
-
-			& > span {
-				span {
-					@include rfs(15);
-					text-transform: capitalize;
-					font-size: -1;
-
-					.skuBestInstallmentNumber {
-						font-weight: bold;
-						&,
-						span {
-							@include rfs(13);
+				& > span {
+					span {
+						.skuBestPrice {
+							@include rfs(35px);
+							color: $green;
+							display: inline-block;
+							font-weight: bold;
 						}
-						&:before {
-							text-transform: lowercase;
-							content: "em até ";
-							font-weight: normal;
+						@include rfs(15);
+						text-transform: capitalize;
+						font-size: 0 !important;
+
+						.skuBestInstallmentNumber {
+							font-weight: bold;
+							margin-left: 5px;
+							&,
+							span {
+								@include rfs(13);
+								font-weight: 500;
+							}
+							&:before {
+								text-transform: lowercase;
+								content: "em até ";
+								font-weight: normal;
+							}
+							&:after {
+								content: "x ";
+								text-transform: lowercase;
+							}
 						}
-						&:after {
-							content: "";
-						}
+					}
+
+					&:after {
+						content: " sem juros";
 					}
 				}
 
-				&:after {
-					content: " sem juros";
+				strong {
+					display: inline-block;
+					position: relative;
 				}
-			}
 
-			strong {
-				display: inline-block;
-				position: relative;
-			}
-
-			label {
-				display: inline;
+				label {
+					display: inline;
+				}
 			}
 		}
 
@@ -174,29 +196,72 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 	}
 
 	.discount-boleto {
-		@include rfs(16);
-		color: #9BCA3D;
+		@include rfs(20px);
+		color: #9bca3d;
 		display: block;
-		padding-left: 25px;
 		position: relative;
 		font-weight: normal;
 
-		// Icone pagamento
+		//  Icone pagamento
+		//  &:before {
+		//  	@include square(15px);
+		//  	background: url($icon-preco-a-vista) no-repeat center center;
+		//  	background-size: contain;
+		//  	content: "";
+		//  	left: 0;
+		// 	position: absolute;
+		//  	top: 50%;
+		//  	transform: translateY(-50%);
+		// }
+
+		strong {
+			&:before {
+				content: "Por: ";
+				color: #9e9e9e;
+				@include rfs(16px);
+				font-weight: 500;
+				padding-left: -10px;
+			}
+			@include rfs(35);
+			display: inline-block;
+			&:after {
+				content: "à vista";
+				color: #9e9e9e;
+				font-size: 16px;
+				font-weight: normal;
+			}
+		}
+
+		//  Icone pagamento
 		&:before {
-			@include square(15px);
+			@include square(16px);
 			background: url($icon-preco-a-vista) no-repeat center center;
 			background-size: contain;
 			content: "";
 			left: 0;
 			position: absolute;
-			top: 50%;
+			top: 75%;
 			transform: translateY(-50%);
+			display: inline-block;
+		}
+
+		strong {
+			@include rfs(30px);
+			color: #9bca3d;
 		}
 
 		span {
-			@include rfs(13);
-			color: #757575;
-			display: inline;
+			@include rfs(16px);
+			color: #9bca3d;
+			display: inline-flex;
+			padding-left: 25px;
+			margin-bottom: 5px;
+			font-weight: 500;
+			> span {
+				@include rfs(14px);
+				color: #9e9e9e;
+				margin-left: -8%;
+			}
 		}
 	}
 

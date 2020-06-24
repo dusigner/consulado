@@ -16,7 +16,9 @@
 				{/validBestPrice}
 				<em class="valor-dividido price-installments" style="display: block">
 					<span>
-						<span>Ou <strong class="skuBestPrice">{bestPrice|intAsCurrency}</strong>
+						<span>Ou
+							{strings.bestPrice}
+							<strong class="skuBestPrice">{bestPrice|intAsCurrency}</strong>
 
 						<label class="skuBestInstallmentNumber">{installments}<span class="x">x</span></label></span>
 						<strong>
@@ -57,8 +59,7 @@
 			</em>
 			<em class="valor-por price-best-price" style="display: block">
 				{string.bestPrice}
-				<span class="discount-boleto">{bestPrice|intAsCurrency}</span>
-				<!-- <span class="skuBestPrice">{bestPrice|intAsCurrency}</span> -->
+				<span class="skuBestPrice">{bestPrice|intAsCurrency}</span>
 			</em>
 		</p>
 	</div>
