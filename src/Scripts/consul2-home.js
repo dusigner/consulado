@@ -5,6 +5,7 @@ require('modules/banners-controller');
 require('modules/slider-banner');
 require('components/instagram-stories');
 
+
 //require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
@@ -18,10 +19,9 @@ require('modules/shelfCategoryHome');
 // require('modules/_staticBanner');
 require('modules/interested-shelf');
 // require('dataLayers/dataLayer-home-BF.js');
-// require('modules/_staticBanner');
 
-// require('modules/_staticBanner');
 require('modules/subCategoryList');
+
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
@@ -367,5 +367,38 @@ Nitro.controller(
 			});
 			//\ vitrines padrões vtex
 		}
+
+		this.slickVitrineFamilia = () => {
+			var $vitrineFamilia = $('#vitrines-family').find('.prateleira > ul').not('.slick-initialized');
+			$vitrineFamilia.slick({
+				infinite: false,
+				slidesToShow: 4,
+				dots: true,
+				arrows: true,
+			});
+		};
+
+		this.filterSize = () => {
+			$('#vitrines-family > div').hide();
+			$('#vitrines-family > div:first-of-type').show();
+
+
+			const $buttons = $('.btn').click(function() {
+				$('#vitrines-family > div').fadeIn(450);
+				const $card = $('.' + this.id).fadeIn(450);
+				$('#vitrines-family > div').not($card).hide();
+
+				$buttons.removeClass('active');
+				$(this).addClass('active');
+			})
+		};
+
+
+		this.init = () => {
+			this.slickVitrineFamilia();
+			this.filterSize();
+		};
+
+		this.init();
 	}
 );
