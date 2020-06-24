@@ -1,4 +1,4 @@
-html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns {
+html body[class*='consul'].body-checkout-confirmation.is--billet #app-top .ph3-ns {
 	#print-bank-invoice {
 		.link {
 			@media (min-width: 915px) and (max-width: 970px) {
@@ -109,7 +109,9 @@ html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns {
 			}
 		}
 	}
+}
 
+body.is--billet {
 	.checkout-billet {
 		width: 15%;
 		float: right;
@@ -137,6 +139,13 @@ html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns {
 					display: flex;
 					align-self: center;
 					align-items: center;
+
+					@media (max-width: 768px) {
+						background: #fff!important;
+						border: 1px solid #9aca3c!important;
+						border-radius: 20px!important;
+						color: #9aca3c!important;
+					}
 
 					&:before {
 						content: '';
@@ -192,6 +201,21 @@ html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns {
 			min-width: 150px;
 			margin-bottom: .5rem;
 			height: 37px;
+			justify-content: center;
+
+			@media (max-width: 768px) {
+				background: #9aca3c!important;
+				border: 1px solid #9aca3c!important;
+				border-radius: 20px!important;
+				color: #fff!important;
+			}
+
+			&:hover {
+				background: #fff;
+				border: 1px solid #9aca3c;
+				border-radius: 20px;
+				color: #9aca3c;
+			}
 
 			@media (max-width: 1279px) {
 				font-size: 12px;
@@ -217,6 +241,48 @@ html body[class*='consul'].body-checkout-confirmation #app-top .ph3-ns {
 				min-width: 115px;
 				width: 115px;
 				height: 33px;
+			}
+		}
+	}
+
+	.cconf-payment {
+		.checkout-billet {
+			width: 48%;
+			float: left;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			text-align: right;
+			font-size: 11px;
+
+			@media (min-width: 768px) and (max-width: 1120px) {
+				width: 100%;
+			}
+
+			@media (max-width: 768px) {
+				height: auto;
+			}
+
+			button {
+				min-width: 100%;
+				font-size: 11px;
+			}
+		}
+
+		#print-bank-invoice {
+			width: 48%;
+			float: right;
+
+			@media (min-width: 768px) and (max-width: 1120px) {
+				width: 100%;
+			}
+
+			span {
+				font-size: 11px !important;
+				width: 100% !important;
+				padding: 0 0 !important;
+				line-height: 35px;
+				height: 37px;
 			}
 		}
 	}

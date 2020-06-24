@@ -12,22 +12,33 @@ Nitro.module('checkout-billet', function() {
 
 			const $bankInvoice = $('#print-bank-invoice')
 			if ($bankInvoice.length > 0) {
+				$('body').addClass('is--billet');
+
 				var $orderID = $('#order-id').text().split('-')[0];
 				$.getJSON('/api/checkout/pub/orders/order-group/' + $orderID).then((res) => {
 
 					var $codBillet = res[0].paymentData.transactions[0].payments[0].bankIssuedInvoiceIdentificationNumberFormatted;
 
 					$('body[class*=consul].body-checkout-confirmation #app-top .ph3-ns .cconf-alert .fr').before(`
-					<div class="checkout-billet">
-						<div class="checkout-billet-top">
-							<p class="checkout-billet-top--text">Para realizar o pagamento, copie<br />o código do boleto ou imprima.</p>
+						<div class="checkout-billet">
+							<div class="checkout-billet-top">
+								<p class="checkout-billet-top--text">Para realizar o pagamento, copie<br />o código do boleto ou imprima.</p>
+							</div>
+							<input id="copyBillet" value="${$codBillet}" />
+							<div class="checkout-billet-bottom">
+								<button class="checkout-billet-bottom--button">Copiar Código</button>
+							</div>
 						</div>
-						<input id="copyBillet" value="${$codBillet}" />
-						<div class="checkout-billet-bottom">
-							<button class="checkout-billet-bottom--button">Copiar Código</button>
+					`);
+
+					$('.cconf-payment #print-bank-invoice').before(`
+						<div class="checkout-billet">
+							<input id="copyBillet" value="${$codBillet}" />
+							<div class="checkout-billet-bottom">
+								<button class="checkout-billet-bottom--button">Copiar Código</button>
+							</div>
 						</div>
-					</div>
-				`);
+					`);
 				});
 			}
 		}, 1000);
