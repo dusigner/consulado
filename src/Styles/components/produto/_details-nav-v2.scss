@@ -105,6 +105,10 @@ $color-white: #fff;
 		&.info-product {
 			display: none;
 
+			img {
+				max-width: 100%;
+			}
+
 			.product-infos {
 				text-align: left;
 				width: 60%;

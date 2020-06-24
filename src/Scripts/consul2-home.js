@@ -24,7 +24,7 @@ require('modules/interested-shelf');
 require('modules/subCategoryList');
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
-// import 'dataLayers/datalayer-vitrine-categorizacao';
+import 'dataLayers/datalayer-vitrine-categorizacao';
 
 Nitro.controller(
 	'home',

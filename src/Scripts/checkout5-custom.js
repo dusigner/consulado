@@ -127,7 +127,6 @@ $(document).on('ready', function() {
 				self.shippingSelector();
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
-				self.descountCheckout();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
