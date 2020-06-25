@@ -368,34 +368,44 @@ Nitro.controller(
 			//\ vitrines padrões vtex
 		}
 
-		this.slickVitrineFamilia = () => {
-			var $vitrineFamilia = $('#vitrines-family').find('.prateleira > ul').not('.slick-initialized');
-			$vitrineFamilia.slick({
+		// this.slickVitrineFamilia = () => {
+		// 	var $vitrineFamilia = $('#vitrines-family').find('.box ul').not('.slick-initialized');
+
+		// 	$vitrineFamilia.slick({
+		// 		infinite: false,
+		// 		slidesToShow: 4,
+		// 		dots: true,
+		// 		arrows: true,
+		// 	});
+		// };
+
+		this.filterSize = () => {
+			 $('#vitrines-family .box.pequena').show();
+			 $('#vitrines-family .box.pequena .prateleira > ul').not('.slick-initialized').slick({
 				infinite: false,
 				slidesToShow: 4,
 				dots: true,
 				arrows: true,
 			});
-		};
-
-		this.filterSize = () => {
-			$('#vitrines-family > div').hide();
-			$('#vitrines-family > div:first-of-type').show();
-
 
 			const $buttons = $('.btn').click(function() {
 				$('#vitrines-family > div').fadeIn(450);
-				const $card = $('.' + this.id).fadeIn(450);
-				$('#vitrines-family > div').not($card).hide();
 
-				$buttons.removeClass('active');
-				$(this).addClass('active');
-			})
+				const $card = $('.' + this.id).fadeIn(450);
+					$('#vitrines-family > div').not($card).hide();
+					$card.find('.prateleira > ul').not('.slick-initialized').slick({
+						infinite: false,
+						slidesToShow: 4,
+						dots: true,
+						arrows: true,
+					});
+					$buttons.removeClass('active');
+					$(this).addClass('active');
+			});
 		};
 
-
 		this.init = () => {
-			this.slickVitrineFamilia();
+			// this.slickVitrineFamilia();
 			this.filterSize();
 		};
 
