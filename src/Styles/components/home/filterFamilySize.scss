@@ -5,26 +5,39 @@
 .filter-family-size {
 	display: block;
 	float: left;
+	margin: 20px auto 50px;
 	width: 100%;
 	h2 {
+		@include rfs(30);
+		margin-bottom: 33px;
 		text-align: center;
 		span {
 			color: #9ACA3C;
 		}
 	}
+	.cont-linha {
+		overflow-x: auto;
+		width: 100%;
+	}
 	.row {
 		display: flex;
-		justify-content: center;
-		margin: 0 0 30px 0;
+		flex-direction: row;
+		flex-flow: nowrap;
+		justify-content: space-between;
+		margin: 0 auto 33px;
+		width: 660px;
 	}
 	.btn {
 		background-color: transparent;
 		border: none;
+		border-radius: 3px;
 		font-size: 15px;
 		font-weight: 500;
 		margin: 0 10px;
 		min-height: 36px;
-		width: 174px;
+		padding: 10px 14px;
+		position: relative;
+		width: 194px;
 		&:focus,
 		&:active,
 		&:visited {
@@ -39,36 +52,126 @@
 		text-decoration: none;
 	}
 	.box {
+		display: none;
 		height: auto;
    		width: 100%;
 	}
 	#pequena {
 		color: #9ACA3C;
+		padding: 0 0 0 30px;
+		position: relative;
 		&.active {
 			background-color: #9ACA3C;
 			color: #ffffff;
 			font-weight: bold;
+			position: relative;
+			&:before {
+				background-image: url('/arquivos/icon-familias-pequenas-branco.png');
+			}
+		}
+		&:before {
+			background-image: url('/arquivos/icon-familias-pequenas-verde.png');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 20px;
+			left: 14px;
+			margin-right: 0;
+			position: absolute;
+			top: 10px;
+			width: 20px;
 		}
 	}
 	#media {
 		color: #00B7DD;
+		padding: 10px 0 10px 30px;
 		&.active {
 			background-color: #00B7DD;
 			color: #ffffff;
 			font-weight: bold;
+			&:before {
+				background-image: url('/arquivos/icon-familias-medias-branco.png');
+			}
+		}
+		&:before {
+			background-image: url('/arquivos/icon-familias-medias-azul.png');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 26px;
+			left: 15px;
+			margin-right: 10px;
+			position: absolute;
+			top: 8px;
+			width: 30px;
 		}
 	}
 	#grande {
 		color: #EC008C;
+		padding: 10px 0 10px 36px;
 		&.active {
 			background-color: #EC008C;
 			color: #ffffff;
 			font-weight: bold;
+			&:before {
+				background-image: url('/arquivos/icon-familia-grande-branco.png');
+			}
+		}
+		&:before {
+			background-image: url('/arquivos/icon-familia-grande-rosa.png');
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			display: block;
+			height: 28px;
+			left: 12px;
+			position: absolute;
+			top: 8px;
+			width: 30px;
 		}
 	}
 	#vitrines-family {
 		h2 {
 			display: none;
+		}
+		.slick-prev {
+			&::before {
+				content: '\e929';
+			}
+		}
+		.slick-next {
+			&::before {
+				content: '\e92a';
+			}
+		}
+		.slick-next,
+		.slick-prev {
+			height: 20px;
+			width: 20px;
+			&::before {
+				-moz-osx-font-smoothing: grayscale;
+				-webkit-font-smoothing: antialiased;
+				color: #9ACA3C;
+				font-family: 'whirlpool' !important;
+				font-size: 16px;
+				font-style: normal !important;
+				font-variant: normal !important;
+				font-weight: normal !important;
+				line-height: 1;
+				position: relative;
+				text-transform: none !important;
+			}
+			&.slick-disabled {
+				opacity: 0.8;
+				&::before {
+				color: #ccc;
+				}
+			}
 		}
 	}
 }

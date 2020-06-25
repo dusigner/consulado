@@ -715,14 +715,16 @@
 
 <!-- Inicio Filter tamanho família -->
 <section class="filter-family-size">
-	<div class="container">
+	<div class="container-fluid p-0">
 		<h2>Ofertas especiais para <span>cada tamanho de família</span></h2>
-		<div class="row">
-			<button class="btn active" id="pequena"><vtex:contentPlaceHolder id="familiasPequenas" /></button>
-			<button class="btn" id="media"><vtex:contentPlaceHolder id="familiasMedias" /></button>
-			<button class="btn" id="grande"><vtex:contentPlaceHolder id="familiasGrandes" /></button>
+		<div class="cont-linha">
+			<div class="row">
+				<button class="btn active" id="pequena"><vtex:contentPlaceHolder id="familiasPequenas" /></button>
+				<button class="btn" id="media"><vtex:contentPlaceHolder id="familiasMedias" /></button>
+				<button class="btn" id="grande"><vtex:contentPlaceHolder id="familiasGrandes" /></button>
+			</div>
 		</div>
-		<div id="vitrines-family" class="prateleira-slider">
+		<div id="vitrines-family" class="container prateleira-slider">
 			<div class="box pequena"><vtex:contentPlaceHolder id="vitrineFamiliasPequenas" /></div>
 			<div class="box media"><vtex:contentPlaceHolder id="vitrineFamiliasMedias" /></div>
 			<div class="box grande"><vtex:contentPlaceHolder id="vitrineFamiliasGrandes" /></div>
