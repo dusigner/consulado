@@ -112,9 +112,7 @@ Nitro.module('boleto', function() {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							<strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span  class="on-discount">(${cmcDiscountBoleto}% de desconto)</span>
 							<strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span class="on-discount">${cmcDiscountCartao}% de desconto <span style="font-weight: normal; color: ##757575">(boleto ou cartão)</span>
-
 						</p>
 					`;
 				}
