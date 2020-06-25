@@ -402,6 +402,10 @@ body {
 			}
 		}
 	}
+	#app-container {
+		height: 540px;
+		overflow: auto;
+	}
 }
 
 /*## BUGFIX FIREFOX #####################################*/
