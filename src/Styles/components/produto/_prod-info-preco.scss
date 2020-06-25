@@ -259,7 +259,7 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			font-weight: 500;
 			&.on-discount {
 				color: transparent!important;
-				margin-left: -22%!important;
+				// margin-left: -22%!important;
 			}
 			> span {
 				@include rfs(14px);
