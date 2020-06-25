@@ -11,6 +11,14 @@ $self-third: $gray-l!default;
 	to { left: 100%; }
 }
 
+body {
+	div[chaordic="top"] {
+		@include breakpoint(small, 'max') {
+			margin: 0!important;
+		}
+	}
+}
+
 div[chaordic] {
 	//CONTENT PLACEHOLDER MOBILE CHANGES
 	ul.content-placeholder {
