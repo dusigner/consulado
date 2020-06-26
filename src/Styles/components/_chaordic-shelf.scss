@@ -17,6 +17,12 @@ body {
 			margin: 0!important;
 		}
 	}
+
+	div[chaordic="bottom"] {
+		@include breakpoint(small, 'max') {
+			margin: 0!important;
+		}
+	}
 }
 
 div[chaordic] {
