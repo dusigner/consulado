@@ -90,7 +90,7 @@ Nitro.module('dataLayer-checkout', function() {
 	};
 
 	// copy billet
-	this.validateEmail = () => {
+	this.buttonCopy = () => {
 		$('body').on('click', '.checkout-billet-bottom--button', function() {
 			pushDataLayer(
 				`${$categoryCopyBillet}`,
