@@ -39,13 +39,13 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 
 	require('modules/banner-covid');
-	require('modules/checkout/checkout-billet');
+	require('modules/checkout/checkout.billet');
 	require('dataLayers/dataLayer-checkout');
 
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas'], function(phones, termoColeta, cotas) {
+	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas', 'checkout.billet'], function(phones, termoColeta, cotas, billet) {
 		const self = this,
 			$body = $('body');
 
@@ -53,6 +53,7 @@ $(window).on('load', function() {
 			this.closeEbitModal();
 			this.orderPlacedUpdated();
 			this.orderReinput();
+			billet.htmtBillet();
 
 			if (window.hasher) {
 				window.hasher.changed.add(function(current) {

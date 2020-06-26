@@ -1,10 +1,10 @@
 'use strict';
 
-Nitro.module('checkout-billet', function() {
+Nitro.module('checkout.billet', function() {
 	var self = this;
 
 	this.init = () => {
-		this.htmtBillet();
+		this.copyClipToBoard();
 	};
 
 	this.htmtBillet = () => {
