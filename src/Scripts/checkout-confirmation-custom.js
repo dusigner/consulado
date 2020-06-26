@@ -39,6 +39,7 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 
 	require('modules/banner-covid');
+	require('modules/checkout/checkout-billet');
 
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
