@@ -55,6 +55,7 @@ Nitro.module('checkout-billet', function() {
 						$('.checkout-billet-bottom--button').text('CÓDIGO COPIADO');
 					} else {
 						$('.checkout-billet-bottom--button').text('CÓD. COPIADO');
+						$('.checkout-billet-bottom--button').blur();
 					}
 
 					setTimeout(function(){
