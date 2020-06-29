@@ -416,17 +416,9 @@ Nitro.controller(
 					]
 				});
 
-				const $card = $('.' + this.id).fadeIn(450);
-					$('#vitrines-family > div').not($card).hide();
-					$card.find('.prateleira > ul').not('.slick-initialized').slick({
-						infinite: false,
-						slidesToShow: 4,
-						dots: true,
-						arrows: true,
-					});
-					$buttons.removeClass('active');
-					$(this).addClass('active');
-			});
+				$buttons.removeClass('active');
+				$(this).addClass('active');
+			})
 		};
 
 		this.init = () => {
