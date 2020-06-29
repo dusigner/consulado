@@ -5,6 +5,7 @@ require('modules/banners-controller');
 require('modules/slider-banner');
 require('components/instagram-stories');
 
+
 //require('components/tabs-consumidor');
 // require('custom/tabs-descontos');
 require('components/titulo-prateleira');
@@ -18,10 +19,9 @@ require('modules/shelfCategoryHome');
 // require('modules/_staticBanner');
 require('modules/interested-shelf');
 // require('dataLayers/dataLayer-home-BF.js');
-// require('modules/_staticBanner');
 
-// require('modules/_staticBanner');
 require('modules/subCategoryList');
+
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
@@ -367,5 +367,64 @@ Nitro.controller(
 			});
 			//\ vitrines padrões vtex
 		}
+		this.filterSize = () => {
+			$('#vitrines-family .box.pequena').show();
+			$('#vitrines-family .box.pequena .prateleira > ul').not('.slick-initialized').slick({
+				infinite: false,
+				dots: false,
+				mobileFirst: true,
+				responsive: [
+					{
+						breakpoint: 992,
+						settings: {
+							arrows: true,
+							slidesToShow: 4
+						}
+					}
+				]
+			});
+
+			const $buttons = $('.btn').click(function() {
+				$('#vitrines-family > div').fadeIn(450);
+
+				const $card = $('.' + this.id).fadeIn(450);
+				$('#vitrines-family > div').not($card).hide();
+				$card.find('.prateleira > ul').not('.slick-initialized').slick({
+					infinite: false,
+					arrows: true,
+					dots: false,
+					mobileFirst: true,
+					responsive: [
+						{
+							breakpoint: 992,
+							settings: {
+								arrows: true,
+								slidesToShow: 4
+							}
+						},
+						{
+							breakpoint: 768,
+							settings: {
+								arrows: false,
+								dots: true,
+								infinite: false,
+								slidesToScroll: 1,
+								slidesToShow: 1,
+								swipeToSlide: true
+							}
+						}
+					]
+				});
+
+				$buttons.removeClass('active');
+				$(this).addClass('active');
+			})
+		};
+
+		this.init = () => {
+			this.filterSize();
+		};
+
+		this.init();
 	}
 );
