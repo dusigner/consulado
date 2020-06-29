@@ -1372,6 +1372,8 @@ body {
 #app-container {
 	background-color: $gray-m;
 	box-shadow: 0 45px 0 $gray-m;
+	height: 540px;
+	overflow: auto;
 	padding: 20px 50px;
 
 	@include breakpoint('medium', 'max') {
