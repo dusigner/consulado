@@ -97,21 +97,34 @@ Nitro.module('boleto', function() {
 				 * E se a loja for PF e não PJ
 				 * Mostra o desconto de cartão
 				 * Caso contrário, mostra o desconto do boleto
-				 */
+				 *///Remove porcentagem quando for igual a 0%
 				if (cmcDiscountCartao >= cmcDiscountBoleto) {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							1x no cartão de crédito por <strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
+							<strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span class="on-discount">${cmcDiscountCartao}% de desconto  <span style="font-weight: normal; color: ##757575">(boleto ou cartão)</span></span>
 						</p>
 					`;
+
+					setTimeout(function() {
+						if ( cmcDiscountBoleto === 0 ) {
+							$('.discount-boleto .on-discount').addClass('hide--billet');
+						}
+					}, 500)
+
 				} else {
 					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
 					boletoInfo = `
 						<p class="discount-boleto">
-							À vista no boleto por <strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
+							<strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span class="on-discount">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: ##757575">(boleto ou cartão)</span>
 						</p>
 					`;
+
+					setTimeout(function() {
+						if ( cmcDiscountBoleto === 0 ) {
+							$('.discount-boleto .on-discount').addClass('hide--billet');
+						}
+					}, 500)
 				}
 
 				// Etiqueta que exibe a porcentagem do desconto
@@ -143,22 +156,45 @@ Nitro.module('boleto', function() {
 			 * Mostra o desconto de cartão
 			 * Caso contrário, mostra o desconto do boleto
 			 */
+			 //Remove porcentagem quando for igual a 0%
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				//isDiscountOff = cmcDiscountCartao > 0 ? ' (' + cmcDiscountCartao + '% OFF)' : '';
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						1x no cartão de crédito por <strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')}</strong> <span>(${cmcDiscountCartao}% desconto)</span>
+					<strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')} </strong> <span class="on-discount">${cmcDiscountCartao}% de desconto  <span style="font-weight: normal; color: ##757575">(boleto ou cartão)</span></span>
 					</p>
 				`;
+
+				setTimeout(function() {
+					if ( cmcDiscountBoleto === 0 ) {
+						$('.discount-boleto .on-discount').addClass('hide--billet');
+					}
+				}, 500)
+				/*
+				<p class="discount-boleto">
+					<strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')} ${cmcDiscountCartao}% desconto </strong> <span>(boleto ou cartão)</span>
+				</p>
+				*/
 			} else {
 				//isDiscountOff = cmcDiscountBoleto > 0 ? ' (' + cmcDiscountBoleto + '% OFF)' : '';
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'boleto') + '</p>';
 				boletoInfo = `
 					<p class="discount-boleto">
-						À vista no boleto por <strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')}</strong> <span>(${cmcDiscountBoleto}% desconto)</span>
+					<strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')} </strong> <span class="on-discount">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: ##757575">(boleto ou cartão)</span>
 					</p>
 				`;
+
+				setTimeout(function() {
+					if ( cmcDiscountBoleto === 0 ) {
+						$('.discount-boleto .on-discount').addClass('hide--billet');
+					}
+				}, 500)
+				/*
+				<p class="discount-boleto">
+						<strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')} ${cmcDiscountBoleto}% desconto </strong> <span>(boleto ou cartão)</span>
+				</p> //no-exclude
+				*/
 			}
 
 			// Etiqueta que exibe a porcentagem do desconto

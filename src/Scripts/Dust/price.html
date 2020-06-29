@@ -16,7 +16,11 @@
 				{/validBestPrice}
 				<em class="valor-dividido price-installments" style="display: block">
 					<span>
-						<span>ou <label class="skuBestInstallmentNumber">{installments}<span class="x">x</span></label> de </span>
+						<span>Ou
+							{strings.bestPrice}
+							<strong class="skuBestPrice">{bestPrice|intAsCurrency}</strong>
+
+						<label class="skuBestInstallmentNumber">{installments}<span class="x">x</span></label></span>
 						<strong>
 							<label class="skuBestInstallmentValue">{installmentsValue|intAsCurrency}</label>
 							<!-- {#valPercentage}<span>{valPercentage}% OFF</span>{/valPercentage} -->

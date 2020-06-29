@@ -11,6 +11,7 @@
 	border-radius: 3px;
 	width: 70%;
 	transition: .3s ease-in-out;
+	display: none !important;
 
 	&.is--add {
 		transition: .3s ease-in-out;
