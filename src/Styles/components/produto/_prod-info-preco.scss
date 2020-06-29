@@ -213,6 +213,9 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		//  	top: 50%;
 		//  	transform: translateY(-50%);
 		// }
+		p.discount-boleto:before{
+			display: none;
+		}
 
 		strong {
 			&:before {
@@ -225,7 +228,7 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			@include rfs(35);
 			display: inline-block;
 			&:after {
-				content: "à vista";
+				content: " à vista";
 				color: #9e9e9e;
 				font-size: 16px;
 				font-weight: normal;
@@ -258,8 +261,8 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			padding-left: 25px;
 			margin-bottom: 5px;
 			font-weight: 500;
-			&.on-discount {
-				color: transparent!important;
+			&.hide--billet {
+				color: transparent !important;
 				width: 100%;
 				margin-left: -25%;
 			}

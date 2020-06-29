@@ -1,0 +1,289 @@
+html body[class*='consul'].body-checkout-confirmation.is--billet #app-top .ph3-ns {
+	#print-bank-invoice {
+		.link {
+			@media (min-width: 915px) and (max-width: 970px) {
+				font-size: 10px;
+				min-width: 130px;
+				width: 100px;
+			}
+
+			@media (min-width: 720px) and (max-width: 915px) {
+				font-size: 8px;
+				min-width: 115px;
+				width: 115px;
+			}
+
+			@media (max-width: 360px) {
+				white-space: nowrap;
+				font-size: 10px!important;
+			}
+
+			span {
+				@media (max-width: 768px) {
+					font-size: 12px;
+					white-space: nowrap;
+				}
+
+				@media (max-width: 360px) {
+					font-size: 10px!important;
+				}
+			}
+		}
+	}
+
+	.cconf-alert {
+		display: flex;
+		justify-content: space-between;
+
+		@media (min-width: 720px) and (max-width: 970px) {
+			padding: 20px 5px;
+		}
+
+		@media (max-width: 768px) {
+			display: inline-block;
+		}
+
+		@media (max-width: 360px) {
+			padding: 10px;
+		}
+
+		.dark-green {
+			@media (max-width: 1100px) {
+				font-size: 11px;
+			}
+		}
+
+		.fl {
+			@media (min-width: 1100px) and (max-width: 1279px) {
+				width: 60%;
+			}
+
+			@media (min-width: 915px) and (max-width: 1100px) {
+				width: 54%;
+			}
+
+			@media (min-width: 720px) and (max-width: 915px) {
+				width: 60%;
+			}
+
+			width: 63%;
+
+			@media (max-width: 768px) {
+				width: 100%;
+			}
+		}
+
+		.fr {
+			width: 14%;
+
+			@media (min-width: 768px) and (max-width: 1279px) {
+				width: 16%;
+			}
+
+			@media (max-width: 768px) {
+				width: 47%;
+				float: right;
+				margin: 0;
+				height: 105px;
+			}
+
+			.dark-green {
+				p {
+					text-align: right;
+
+					strong {
+						span {
+							font-size: 0.8125rem;
+						}
+					}
+
+					span {
+						font-size: 0;
+					}
+
+					strong:before {
+						content: 'Total:';
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+body.is--billet {
+	.checkout-billet {
+		width: 15%;
+		float: right;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		text-align: right;
+
+		@media (min-width: 768px) and (max-width: 1279px) {
+			width: 18%;
+		}
+
+		@media (max-width: 768px) {
+			width: 47%;
+			height: 105px;
+			float: left;
+		}
+
+		&-bottom {
+			&.is--billet {
+				button {
+					color: #9aca3c;
+					background: #fff;
+					border: 1px solid #9aca3c;
+					display: flex;
+					align-self: center;
+					align-items: center;
+
+					@media (max-width: 768px) {
+						background: #fff!important;
+						border: 1px solid #9aca3c!important;
+						border-radius: 20px!important;
+						color: #9aca3c!important;
+					}
+
+					&:before {
+						content: '';
+						background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUiIGhlaWdodD0iMTAiIHZpZXdCb3g9IjAgMCAxNSAxMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUuNjE5NjMgOS45MjMzNkM1LjQ4NzE2IDkuOTIzNDEgNS4zNTU4OSA5Ljg5NzI5IDUuMjMzNTIgOS44NDY1M0M1LjExMTE2IDkuNzk1NzcgNS4wMDAwMiA5LjcyMTM5IDQuOTA2NDcgOS42Mjc1OUwwLjI5NTU2NCA1LjAxNjYxQzAuMTA2MjkyIDQuODI3MzQgLTUuMDg4MzllLTA4IDQuNTcwNjMgMCA0LjMwMjk2QzUuMDg4NDJlLTA4IDQuMDM1MjkgMC4xMDYyOTIgMy43Nzg1OCAwLjI5NTU2NCAzLjU4OTMxQzAuNDg0ODM2IDMuNDAwMDQgMC43NDE2MTIgMy4yOTM3NSAxLjAwOTI4IDMuMjkzNzVDMS4yNzY5NiAzLjI5Mzc1IDEuNTMzNTkgMy40MDAwNCAxLjcyMjg2IDMuNTg5MzFMNS42MjA3NSA3LjQ4NzJMMTIuODEyMiAwLjI5NTYzNEMxMy4wMDE1IDAuMTA2MzYxIDEzLjI1ODMgMCAxMy41MjYgMEMxMy43OTM2IDAgMTQuMDUwMyAwLjEwNjM2MSAxNC4yMzk1IDAuMjk1NjM0QzE0LjQyODggMC40ODQ5MDYgMTQuNTM1MyAwLjc0MTYxMiAxNC41MzUzIDEuMDA5MjhDMTQuNTM1MyAxLjI3Njk2IDE0LjQyODggMS41MzM2NiAxNC4yMzk1IDEuNzIyOTNMNi4zMjkyOSA5LjYzMzMyQzYuMTQwMzQgOS44MTk5MyA1Ljg4NTIgOS45MjQyIDUuNjE5NjMgOS45MjMzNloiIGZpbGw9IiM5QUNBM0MiLz4KPC9zdmc+Cg==");
+						width: 15px;
+						height: 10px;
+						display: block;
+						margin-right: 3px;
+					}
+				}
+			}
+		}
+
+		#copyBillet {
+			position: fixed;
+			left: -1000%;
+		}
+
+		p {
+			color: #777777;
+			font-size: 12px;
+			white-space: nowrap;
+
+			@media (min-width: 915px) and (max-width: 970px) {
+				font-size: 10px;
+			}
+
+			@media (min-width: 720px) and (max-width: 915px) {
+				font-size: 9px;
+			}
+
+			@media (max-width: 768px) {
+				font-weight: 500;
+			}
+
+			@media (max-width: 360px) {
+				font-size: 10px!important;
+			}
+		}
+
+		button {
+			font-size: 0.8125rem;
+			background: #9aca3c;
+			border: 1px solid #9aca3c;
+			border-radius: 20px;
+			color: #ffffff;
+			font-weight: bold;
+			opacity: 1 !important;
+			padding: 8px 8px;
+			text-align: center;
+			text-transform: uppercase;
+			width: 100%;
+			min-width: 150px;
+			margin-bottom: .5rem;
+			height: 37px;
+			justify-content: center;
+
+			@media (max-width: 768px) {
+				background: #9aca3c!important;
+				border: 1px solid #9aca3c!important;
+				border-radius: 20px!important;
+				color: #fff!important;
+			}
+
+			&:hover {
+				background: #fff;
+				border: 1px solid #9aca3c;
+				border-radius: 20px;
+				color: #9aca3c;
+			}
+
+			@media (max-width: 1279px) {
+				font-size: 12px;
+			}
+
+			@media (max-width: 768px) {
+				min-width: 100%;
+			}
+
+			@media (max-width: 360px) {
+				font-size: 10px!important;
+			}
+
+			@media (min-width: 915px) and (max-width: 970px) {
+				font-size: 10px!important;
+				min-width: 130px;
+				width: 100px;
+				height: 33px;
+			}
+
+			@media (min-width: 720px) and (max-width: 915px) {
+				font-size: 8px!important;
+				min-width: 115px;
+				width: 115px;
+				height: 33px;
+			}
+		}
+	}
+
+	.cconf-payment {
+		.checkout-billet {
+			width: 48%;
+			float: left;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			text-align: right;
+			font-size: 11px;
+
+			@media (min-width: 768px) and (max-width: 1120px) {
+				width: 100%;
+			}
+
+			@media (max-width: 768px) {
+				height: auto;
+			}
+
+			button {
+				min-width: 100%;
+				font-size: 11px;
+			}
+		}
+
+		#print-bank-invoice {
+			width: 48%;
+			float: right;
+
+			@media (min-width: 768px) and (max-width: 1120px) {
+				width: 100%;
+			}
+
+			span {
+				font-size: 11px !important;
+				width: 100% !important;
+				padding: 0 0 !important;
+				line-height: 35px;
+				height: 37px;
+			}
+		}
+	}
+}

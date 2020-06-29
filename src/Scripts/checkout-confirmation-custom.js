@@ -2,6 +2,8 @@
 
 'use strict';
 
+import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
+
 $.ajax({
 	async: false,
 	url: '//io.vtex.com.br/front-libs/bootstrap/2.3.2/js/bootstrap.min.js',
@@ -39,18 +41,27 @@ $(window).on('load', function() {
 	require('modules/checkout/checkout.cotas');
 
 	require('modules/banner-covid');
+	require('modules/checkout/checkout.billet');
+	require('dataLayers/dataLayer-checkout');
 
 	var CRM = require('modules/store/crm.js');
 	var highlightVoltage = require('modules/checkout/checkout.highlight-voltage');
 
-	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas'], function(phones, termoColeta, cotas) {
+	Nitro.setup(['checkout.phones', 'checkout.termoColeta', 'checkout.cotas', 'checkout.billet'], function(phones, termoColeta, cotas, billet) {
 		const self = this,
 			$body = $('body');
 
 		this.init = function() {
+			checkInlineDatalayers();
 			this.closeEbitModal();
 			this.orderPlacedUpdated();
 			this.orderReinput();
+			billet.htmtBillet();
+			// copy billet
+			this.buttonCopy();
+			this.printTicket();
+			this.newBuy();
+			this.buttonRequests();
 
 			if (window.hasher) {
 				window.hasher.changed.add(function(current) {
@@ -69,6 +80,67 @@ $(window).on('load', function() {
 		this.closeEbitModal = () => {
 			$(document).on('click', '.btFechar', () => {
 				$('.boxLight').hide();
+			});
+		};
+
+		// copy billet
+		this.buttonCopy = () => {
+			$('body').on('click', '.checkout-billet-bottom--button', function() {
+				pushDataLayer(
+					`[SQUAD] Pagamento-Boleto`,
+					`click copiar cod`,
+					`botão cop`
+				);
+
+				$('#copyBillet').select()
+				try {
+					var ok = document.execCommand('copy');
+					if (ok) {
+						pushDataLayer(
+							`[SQUAD] Pagamento-Boleto`,
+							`exbicao cod copiado`,
+							`${ok}`
+						);
+					}
+				} catch (e) {
+					console.log(e)
+				}
+			});
+		};
+
+		this.printTicket = () => {
+			$('#print-bank-invoice').on('click', function() {
+				const $label = $(this).text();
+
+				pushDataLayer(
+					`[SQUAD] Pagamento-Boleto`,
+					`click imprimir boleto`,
+					`${$label}`
+				);
+			});
+		};
+
+		this.newBuy = () => {
+			$('body.body-checkout-confirmation #app-container .ph3-ns .cconf-continue-button').on('click', function() {
+				const $label = $(this).text();
+
+				pushDataLayer(
+					`[SQUAD] Pagamento-Boleto`,
+					`click nova compra`,
+					`${$label}`
+				);
+			});
+		};
+
+		this.buttonRequests = () => {
+			$('body.body-checkout-confirmation #app-container .ph3-ns .cconf-myorders-button').on('click', function() {
+				const $label = $(this).text();
+
+				pushDataLayer(
+					`[SQUAD] Pagamento-Boleto`,
+					`click pedidos`,
+					`${$label}`
+				);
 			});
 		};
 
@@ -238,122 +310,122 @@ $(window).on('load', function() {
 
 (function(window, document) {
 
-  "use strict";
+	'use strict';
 
-  function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+	function getCookie(cname) {
+		var name = cname + '=';
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return '';
+	}
 
-  window.pushDataLayer = function(orderPlaced) {
-      window.dataLayer = window.dataLayer || [];
-      var order = [];
-      var products = [];
-      var product;
-      var product_sku;
-      var additionalInfo;
-      products = [];
-      for(var j = 0, max_products = orderPlaced.transactionProducts.length ; j < max_products ; j+=1) {
-        product = orderPlaced.transactionProducts[j];
-        additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
-        product_sku = additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId;
-        products.push({
-          'id' : product_sku.replace(/(.)NA$/g, ''),
-          'id_vtex' : product.id,
-          'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
-          'name' : product.name,
-          'brand' : product.brand,
-          'availability' : "Disponível",
-          'quantity' : product.quantity,
-          'originalPrice' : additionalInfo ? additionalInfo.originalPrice : product.originalPrice,
-          'price' : product.price,
-          'categorySAP' : additionalInfo ? additionalInfo.category_sap :  '',
-          'category' : product.category,
-          'department' : product.categoryTree.length ? product.categoryTree[0] : '',
-          'color' : additionalInfo ? additionalInfo.color : '',
-          'variant' : product.skuName,
-          'coupon' : "",
-          'comboName': additionalInfo ? additionalInfo.comboName : '',
-          'warrantyType' : additionalInfo ? additionalInfo.warrantyType : null,
-          'warrantyPrice' : additionalInfo ? additionalInfo.warrantyPrice : null,
-          'shippingPrice' : additionalInfo ? additionalInfo.shippingPrice : null,
-          'shippingType' : additionalInfo ? additionalInfo.shippingType : null,
-          'shippingTime' : additionalInfo ? additionalInfo.shippingTime : null
-        });
-      }
-      order.push({
-        'id': orderPlaced.transactionId,
-        'revenue' : (orderPlaced.transactionTotal - orderPlaced.transactionShipping),
+	window.pushDataLayer = function(orderPlaced) {
+		window.dataLayer = window.dataLayer || [];
+		var order = [];
+		var products = [];
+		var product;
+		var product_sku;
+		var additionalInfo;
+		products = [];
+		for(var j = 0, max_products = orderPlaced.transactionProducts.length ; j < max_products ; j+=1) {
+			product = orderPlaced.transactionProducts[j];
+			additionalInfo = JSON.parse(localStorage.getItem('product_' + product.id));
+			product_sku = additionalInfo && additionalInfo.ref_id && additionalInfo.ref_id !== '' ? additionalInfo.ref_id : product.skuRefId;
+			products.push({
+				'id' : product_sku.replace(/(.)NA$/g, ''),
+				'id_vtex' : product.id,
+				'fullId': additionalInfo ? additionalInfo.fullId : product.skuRefId,
+				'name' : product.name,
+				'brand' : product.brand,
+				'availability' : 'Disponível',
+				'quantity' : product.quantity,
+				'originalPrice' : additionalInfo ? additionalInfo.originalPrice : product.originalPrice,
+				'price' : product.price,
+				'categorySAP' : additionalInfo ? additionalInfo.category_sap :  '',
+				'category' : product.category,
+				'department' : product.categoryTree.length ? product.categoryTree[0] : '',
+				'color' : additionalInfo ? additionalInfo.color : '',
+				'variant' : product.skuName,
+				'coupon' : '',
+				'comboName': additionalInfo ? additionalInfo.comboName : '',
+				'warrantyType' : additionalInfo ? additionalInfo.warrantyType : null,
+				'warrantyPrice' : additionalInfo ? additionalInfo.warrantyPrice : null,
+				'shippingPrice' : additionalInfo ? additionalInfo.shippingPrice : null,
+				'shippingType' : additionalInfo ? additionalInfo.shippingType : null,
+				'shippingTime' : additionalInfo ? additionalInfo.shippingTime : null
+			});
+		}
+		order.push({
+			'id': orderPlaced.transactionId,
+			'revenue' : (orderPlaced.transactionTotal - orderPlaced.transactionShipping),
       	'shipping' : orderPlaced.transactionShipping,
       	'coupon' : orderPlaced.coupon,
       	'paymentMethod' : orderPlaced.transactionPaymentType.length ? orderPlaced.transactionPaymentType[0].paymentSystemName : '',
-        'installments' : orderPlaced.transactionPaymentType.length ? orderPlaced.transactionPaymentType[0].installments : 1
-      });
-      var user     = {
-        'firstLogin': null,
-        'loginStatus': 'Deslogado',
-        'userId': ''
-      };
-      var userinfo;
-      for(var d = 0, max_dataLayer = window.dataLayer.length ; d < max_dataLayer ; d+=1) {
-        if(window.dataLayer[d].visitorId) {
-          user = {
-            'firstLogin': '',
-            'loginStatus': window.dataLayer[d].visitorLoginState ? 'Logado' : 'Deslogado',
-            'userId': window.dataLayer[d].visitorId
-          };
-          break;
-        }
-      }
-      userinfo = (getCookie('userinfo') != '') ? JSON.parse(getCookie('userinfo')) : '';
-      if(user.loginStatus == 'Deslogado' && (userinfo && userinfo !== '')) {
-        user = {
-          'firstLogin': userinfo.firstLogin,
-          'loginStatus': userinfo.loginStatus,
-          'userId': userinfo.userId
-        }
-      }
+			'installments' : orderPlaced.transactionPaymentType.length ? orderPlaced.transactionPaymentType[0].installments : 1
+		});
+		var user     = {
+			'firstLogin': null,
+			'loginStatus': 'Deslogado',
+			'userId': ''
+		};
+		var userinfo;
+		for(var d = 0, max_dataLayer = window.dataLayer.length ; d < max_dataLayer ; d+=1) {
+			if(window.dataLayer[d].visitorId) {
+				user = {
+					'firstLogin': '',
+					'loginStatus': window.dataLayer[d].visitorLoginState ? 'Logado' : 'Deslogado',
+					'userId': window.dataLayer[d].visitorId
+				};
+				break;
+			}
+		}
+		userinfo = (getCookie('userinfo') != '') ? JSON.parse(getCookie('userinfo')) : '';
+		if(user.loginStatus == 'Deslogado' && (userinfo && userinfo !== '')) {
+			user = {
+				'firstLogin': userinfo.firstLogin,
+				'loginStatus': userinfo.loginStatus,
+				'userId': userinfo.userId
+			}
+		}
 
-      window.dataLayer.push({
-        'event': 'virtualPageview',
-        'step': 'orderPlaced',
-        'page': {
-          'type': 'purchase',
-          'currencyCode': "BRL"
-        },
-        'checkout': {
-          'step': undefined,
-          'order': order,
-          'products' : products
-        },
-        'user': user
-      });
-  }
+		window.dataLayer.push({
+			'event': 'virtualPageview',
+			'step': 'orderPlaced',
+			'page': {
+				'type': 'purchase',
+				'currencyCode': 'BRL'
+			},
+			'checkout': {
+				'step': undefined,
+				'order': order,
+				'products' : products
+			},
+			'user': user
+		});
+	}
 
-  function init(orderPlaced) {
-      window.pushDataLayer(orderPlaced);
-  }
-  window.onload  = (function() {
-    window.dataLayer = window.dataLayer || [];
-    var dataLayer_trigger = setInterval(function() {
-      for(var i = (window.dataLayer.length - 1), min = 0 ; i >= 0 ; i--) {
-        if(window.dataLayer[i].event && window.dataLayer[i].event == "orderPlaced") {
-          init(window.dataLayer[i]);
-          clearInterval(dataLayer_trigger);
-        }
-      }
-    }, 500);
-  });
+	function init(orderPlaced) {
+		window.pushDataLayer(orderPlaced);
+	}
+	window.onload  = (function() {
+		window.dataLayer = window.dataLayer || [];
+		var dataLayer_trigger = setInterval(function() {
+			for(var i = (window.dataLayer.length - 1), min = 0 ; i >= 0 ; i--) {
+				if(window.dataLayer[i].event && window.dataLayer[i].event == 'orderPlaced') {
+					init(window.dataLayer[i]);
+					clearInterval(dataLayer_trigger);
+				}
+			}
+		}, 500);
+	});
 
 })(window, document);
