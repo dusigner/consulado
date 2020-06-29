@@ -367,29 +367,54 @@ Nitro.controller(
 			});
 			//\ vitrines padrões vtex
 		}
-
-		// this.slickVitrineFamilia = () => {
-		// 	var $vitrineFamilia = $('#vitrines-family').find('.box ul').not('.slick-initialized');
-
-		// 	$vitrineFamilia.slick({
-		// 		infinite: false,
-		// 		slidesToShow: 4,
-		// 		dots: true,
-		// 		arrows: true,
-		// 	});
-		// };
-
 		this.filterSize = () => {
-			 $('#vitrines-family .box.pequena').show();
-			 $('#vitrines-family .box.pequena .prateleira > ul').not('.slick-initialized').slick({
+			$('#vitrines-family .box.pequena').show();
+			$('#vitrines-family .box.pequena .prateleira > ul').not('.slick-initialized').slick({
 				infinite: false,
-				slidesToShow: 4,
-				dots: true,
-				arrows: true,
+				dots: false,
+				mobileFirst: true,
+				responsive: [
+					{
+						breakpoint: 992,
+						settings: {
+							arrows: true,
+							slidesToShow: 4
+						}
+					}
+				]
 			});
 
 			const $buttons = $('.btn').click(function() {
 				$('#vitrines-family > div').fadeIn(450);
+
+				const $card = $('.' + this.id).fadeIn(450);
+				$('#vitrines-family > div').not($card).hide();
+				$card.find('.prateleira > ul').not('.slick-initialized').slick({
+					infinite: false,
+					arrows: true,
+					dots: false,
+					mobileFirst: true,
+					responsive: [
+						{
+							breakpoint: 992,
+							settings: {
+								arrows: true,
+								slidesToShow: 4
+							}
+						},
+						{
+							breakpoint: 768,
+							settings: {
+								arrows: false,
+								dots: true,
+								infinite: false,
+								slidesToScroll: 1,
+								slidesToShow: 1,
+								swipeToSlide: true
+							}
+						}
+					]
+				});
 
 				const $card = $('.' + this.id).fadeIn(450);
 					$('#vitrines-family > div').not($card).hide();
@@ -405,7 +430,6 @@ Nitro.controller(
 		};
 
 		this.init = () => {
-			// this.slickVitrineFamilia();
 			this.filterSize();
 		};
 
