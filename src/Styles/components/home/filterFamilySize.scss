@@ -10,13 +10,17 @@
 	h2 {
 		@include rfs(30);
 		margin-bottom: 33px;
+		padding: 0 30px;
 		text-align: center;
 		span {
 			color: #9ACA3C;
 		}
 	}
 	.cont-linha {
+		height: auto;
+		margin-bottom: 33px;
 		overflow-x: auto;
+		padding: 0 25px;
 		width: 100%;
 	}
 	.row {
@@ -24,7 +28,7 @@
 		flex-direction: row;
 		flex-flow: nowrap;
 		justify-content: space-between;
-		margin: 0 auto 33px;
+		margin: 0 auto;
 		width: 660px;
 	}
 	.btn {
