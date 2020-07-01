@@ -8,6 +8,7 @@ Nitro.module('dataLayer-categoria', function() {
 		this.breadCrumb();
 		this.shelfSelectSku();
 		this.bannerDataLayer();
+		this.teste();
 	},
 
 	this.breadCrumb = () => {
@@ -42,6 +43,38 @@ Nitro.module('dataLayer-categoria', function() {
 			);
 		});
 	},
+
+	this.teste = () => {
+		var $categoryVitrine = 'Vitrines_Tamanho-familia';
+
+		$('body').on('click', '.container .list-container .main .vitrine .prateleira ul li .box-produto', function() {
+			var $label = '';
+			var $nameProduct = '';
+
+			$label = $(this).parents('li').find('.promo-destaque__icon').attr('style')
+			$nameProduct = $(this).parents('li').find('.nome').text()
+
+			if ( $label === `background-image: url('/arquivos/cns__promo__famílias-pequenas.png?v=dln')` ) {
+				pushDataLayer(
+					`[SQUAD] ${$categoryVitrine}`,
+					`${$nameProduct}`,
+					`Familias pequenas`
+				);
+			} else if ( $label === `background-image: url('/arquivos/cns__promo__famílias-médias.png?v=dln')` ) {
+				pushDataLayer(
+					`[SQUAD] ${$categoryVitrine}`,
+					`${$nameProduct}`,
+					`Familias médias`
+				);
+			} else if ( $label === `background-image: url('/arquivos/cns__promo__famílias-grandes.png?v=dln')` ) {
+				pushDataLayer(
+					`[SQUAD] ${$categoryVitrine}`,
+					`${$nameProduct}`,
+					`Familias grandes`
+				);
+			}
+		});
+	}
 
 	this.init();
 });
