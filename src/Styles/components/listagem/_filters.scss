@@ -20,6 +20,21 @@
 	order: -1;
 }
 
+body {
+	.box-produto .detalhes .prod-info {
+		flex-direction: column;
+		display: flex;
+
+		div {
+			order: 3;
+		}
+
+		.nome {
+			order: 1;
+		}
+	}
+}
+
 label.Famílias.pequenas:after {
     content: ' ';
     display: inline-block;
