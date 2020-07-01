@@ -426,6 +426,13 @@ Nitro.controller(
 			});
 		}
 
+		if ($('.refino.Tamanho.de.familia label input').length) {
+			$('.refino.Tamanho.de.familia label input').each(function(){
+				var $value = $(this).attr('value');
+				$(this).parents('label').addClass($value)
+			})
+		}
+
 		$('body.listagem.busca:not(.neemu) .more-cat, body.listagem.busca:not(.neemu) .category-list-voltar').on('click', function() {
 			let $modalOverlay = $('body');
 			$(this).toggleClass('-active');
