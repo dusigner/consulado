@@ -8,7 +8,7 @@ Nitro.module('dataLayer-categoria', function() {
 		this.breadCrumb();
 		this.shelfSelectSku();
 		this.bannerDataLayer();
-		this.teste();
+		this.taggingSelo();
 	},
 
 	this.breadCrumb = () => {
@@ -44,7 +44,7 @@ Nitro.module('dataLayer-categoria', function() {
 		});
 	},
 
-	this.teste = () => {
+	this.taggingSelo = () => {
 		var $categoryVitrine = 'Vitrines_Tamanho-familia';
 
 		$('body').on('click', '.container .list-container .main .vitrine .prateleira ul li .box-produto', function() {
