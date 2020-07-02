@@ -12,6 +12,15 @@ Nitro.module('datalayer-vitrine-filter-size-family', function () {
 	};
 
 	this.vitrineFilterFamily = () => {
+		$('.cont-linha').on('click', function () {
+			const acao = $('.cont-linha').find('button.active').text();
+			pushDataLayer(
+				'Vitrines_Tamanho-familia',
+				`click_${acao}`,
+				`filtro-vitrine`
+			);
+		});
+
 		$('#vitrines-family .prateleira .box-produto').on('click', function () {
 			const acao = $(this).find('.prod-info').attr('title');
 			const label = $('.cont-linha').find('button.active').text();
