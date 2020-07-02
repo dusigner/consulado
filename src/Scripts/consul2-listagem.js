@@ -426,8 +426,8 @@ Nitro.controller(
 			});
 		}
 
-		if ($('.refino.Tamanho.de.familia label input').length) {
-			$('.refino.Tamanho.de.familia label input').each(function(){
+		if ($('.refino.Tamanho.de.família label input').length) {
+			$('.refino.Tamanho.de.família label input').each(function(){
 				var $value = $(this).attr('value');
 				$(this).parents('label').addClass($value)
 			})
