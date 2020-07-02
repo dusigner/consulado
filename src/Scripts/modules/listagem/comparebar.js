@@ -29,10 +29,10 @@ Nitro.module('comparebar', function() {
 	var template;
 	var url;
 
-	window.alert = function(e) {
-		console.error(e);
-		return;
-	};
+	// window.alert = function(e) {
+	// 	console.error(e);
+	// 	return;
+	// };
 
 	this.init = function() {
 		this.setMaxQuantity();
