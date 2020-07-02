@@ -12,28 +12,15 @@ Nitro.module('datalayer-vitrine-filter-size-family', function () {
 	};
 
 	this.vitrineFilterFamily = () => {
-
-		let acao = $('#vitrines-family .pequena .prateleira').find('ul li > .box-produto .detalhes .prod-info').attr('title');
-
-		$('#vitrines-family .pequena .prateleira').find('ul li > .box-produto').on('click', function () {
-			acao = $(this).attr('title');
-
+		$('#vitrines-family .prateleira .box-produto').on('click', function () {
+			const acao = $(this).find('.prod-info').attr('title');
+			const label = $('.cont-linha').find('button.active').text();
 			pushDataLayer(
 				'Vitrines_Tamanho-familia',
 				`click_${acao}`,
 				`card_${label}`
 			);
 		});
-
-		// $('.cont-linha').on('click', function () {
-		// 	const label = $(this).find('button');
-
-		// 	pushDataLayer(
-		// 		'Vitrines_Tamanho-familia',
-		// 		`click`,
-		// 		`card_${label}`
-		// 	);
-		// });
 	}
 	this.init();
 });
