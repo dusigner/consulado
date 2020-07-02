@@ -53,7 +53,7 @@ Nitro.module('wishlist-init', () => {
 				wishListStart.favoritesEvents();
 			});
 
-			$('.box-produto .product-infos-wrap a').on('click', (ev) => ev.stopPropagation());
+			$('.box-produto .product-infos-wrap .wishlist__container').on('click', (ev) => $(this).trigger('.box-produto .product-infos-wrap a').stopPropagation());
 		},
 	}
 
