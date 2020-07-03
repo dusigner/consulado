@@ -36,6 +36,11 @@ $default-color-gray-light: #d9d8d8;
 @import './components/menu-footer';
 @import './components/footer-bottom';
 
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  }
+
 .footer-2019 {
 	@include breakpoint('small', 'max') {
 		display: flex;
@@ -45,4 +50,8 @@ $default-color-gray-light: #d9d8d8;
 	:not(.home) & { margin-top: 35px; }
 }
 
-
+.icons-payment-2020 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
