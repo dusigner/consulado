@@ -128,6 +128,7 @@ $(document).on('ready', function() {
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
 				self.descountCheckout();
+				self.searchCheckout();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -146,6 +147,21 @@ $(document).on('ready', function() {
 					})
 				);
 			};
+
+			this.searchCheckout = () => {
+				$('.checkout-container .clearfix.empty-cart-links').html(`
+					<form method="GET" action="https://busca.consul.com.br/busca" class="form-search">
+						<i class="icon icon-consul-loupe"></i>
+						<input type="text" class="text-search" name="q" required="required" pattern=".{3,}" title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off" maxlength="100">
+						<span></span>
+					</form>
+				`)
+
+				$('.form-search .icon').on('click', function(){
+					window.location.href = '/' + encodeURIComponent($('.form-search input').val());
+					$('.form-search').trigger('submit');
+				})
+			}
 
 			this.descountCheckout = () => {
 				$('#remove-gift-card, #btn-add-gift-card').on('click', () => {
