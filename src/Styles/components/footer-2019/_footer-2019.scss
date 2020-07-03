@@ -45,4 +45,8 @@ $default-color-gray-light: #d9d8d8;
 	:not(.home) & { margin-top: 35px; }
 }
 
-
+.icons-payment-2020 {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
