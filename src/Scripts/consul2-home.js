@@ -25,6 +25,7 @@ require('modules/subCategoryList');
 import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
+import 'dataLayers/datalayer-vitrine-filter-size-family';
 
 Nitro.controller(
 	'home',
@@ -44,6 +45,7 @@ Nitro.controller(
 		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',
+		'datalayer-vitrine-filter-size-family',
 		'dataLayer-banner-home',
 		'popup-whatsapp-promoter',
 	],
