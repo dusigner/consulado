@@ -10,9 +10,16 @@ Nitro.module('dataLayer-checkout', function() {
 		this.connectGmail();
 		this.backToCart();
 		this.validateEmail();
+
+		// search empty cart
+		this.cartDisplay();
+		this.searchCart();
+		this.wordSearch();
+		this.vitrineChaordic();
 	};
 
 	var $category = '[SQUAD] Login Facebook-Google';
+	var $categoryDisplay = '[SQUAD] Carrinho vazio';
 
 	this.emailContinue = () => {
 		$('.client-email #btn-client-pre-email').on('click', function() {
@@ -79,6 +86,61 @@ Nitro.module('dataLayer-checkout', function() {
 					`${$label}`
 				);
 			}
+		});
+	};
+
+	this.cartDisplay = () => {
+		if (!$('.table.cart-items tbody tr').length) {
+			pushDataLayer(
+				`${$categoryDisplay}`,
+				`exibicao carrinho vazio`,
+				`exibicao carrinho`
+			);
+		}
+	};
+
+	this.searchCart = () => {
+		$('body').on('click', '.empty-cart-links .text-search', function() {
+
+			pushDataLayer(
+				`${$categoryDisplay}`,
+				`click digitacao`,
+				`uso busca`
+			);
+		});
+	};
+
+	this.wordSearch = () => {
+		$('body').on('submit', '.empty-cart-links .form-search', function() {
+			const $label = $('.empty-cart-links .text-search').val();
+
+			pushDataLayer(
+				`${$categoryDisplay}`,
+				`click buscar palavraPesquisada`,
+				`${$label}`
+			);
+		});
+
+		$('body').on('click', '.empty-cart-links .icon.icon-consul-loupe', function() {
+			const $label = $('.empty-cart-links .text-search').val();
+
+			pushDataLayer(
+				`${$categoryDisplay}`,
+				`click buscar palavraPesquisada`,
+				`${$label}`
+			);
+		});
+	};
+
+	this.vitrineChaordic = () => {
+		$('body').on('click', '.carousel-products .carousel-item', function() {
+			const $label = $(this).find('.name-group a').text();
+
+			pushDataLayer(
+				`${$categoryDisplay}`,
+				`vitrine mais desejados`,
+				`${$label}`
+			);
 		});
 	};
 
