@@ -1233,6 +1233,22 @@ body {
 		.box-payment-option {
 			.sight { padding: 5px 0; }
 
+			// &.picpayPaymentGroup {
+			// 	div {
+			// 		font-size: 0;
+			// 	}
+
+			// 	.payment-picpay-info {
+			// 		&:after {
+			// 			content: 'Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.”';
+			// 			font-size: calc(0.7625rem + 0.04706vw);
+			// 			white-space: pre-wrap;
+			// 			word-wrap: break-word;
+			// 			line-height: 130%;
+			// 		}
+			// 	}
+			// }
+
 			&.bankInvoicePaymentGroup {
 				line-height: 120%;
 
@@ -1245,6 +1261,18 @@ body {
 					white-space: pre-wrap;
 					word-wrap: break-word;
 				}
+
+				// .payment-description {
+				// 	font-size: 0;
+
+				// 	&:after {
+				// 		content: 'A forma de pagamento em boleto bancário não oferece parcelamento. Para fazer o pagamento, imprima o boleto no final do processo de compra. \A\A O Boleto possui o vencimento de 1 dia útil e pode ser pago em qualquer agência bancária ou serviço de internet banking. \A\A Caso não seja pago durante esse período o boleto será automaticamente cancelado. \A\A O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis. \A\A Para emitir o boleto clique em “Finalzar Compra”';
+				// 		font-size: calc(0.7625rem + 0.04706vw);
+				// 		white-space: pre-wrap;
+				// 		word-wrap: break-word;
+				// 		line-height: 130%;
+				// 	}
+				// }
 			}
 
 			&.mercadopagoPaymentGroup,
