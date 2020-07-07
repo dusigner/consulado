@@ -16,7 +16,7 @@
 			flex-direction: column;
 		}
 
-		:not(.home) & { margin-top: 35px; }
+		// :not(.home) & { margin-top: 35px; }
 	}
 
 	.container {
@@ -62,7 +62,7 @@
 			.footer-2019--checkout & {
 				@include breakpoint("small", "max") {
 					margin-right: 4%;
-					width: 60% !important;
+					width: 100% !important;
 
 					img {
 						margin-right: 0;
@@ -158,7 +158,7 @@
 		@include rfs(11);
 
 		// [ Checkout ] - Adaptações
-		.footer-2019--checkout s& {
+		.footer-2019--checkout & {
 			max-width: 100%;
 		}
 
