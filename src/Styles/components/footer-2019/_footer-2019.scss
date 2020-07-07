@@ -55,7 +55,9 @@ $default-color-gray-light: #d9d8d8;
 .icons-payment-2020 {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
+	justify-content: space-between;
+	margin-bottom: 2%;
+	padding-right: 1rem;
 }
 
 @media (max-device-height: 736px) and (max-device-width: 414px)  {
