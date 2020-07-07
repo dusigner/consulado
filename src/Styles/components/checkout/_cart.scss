@@ -25,6 +25,7 @@ body.body-cart {
 				font-size: 21px;
 				top: 8px;
 				cursor: pointer;
+				z-index: 4;
 			}
 
 			input {
@@ -36,6 +37,8 @@ body.body-cart {
 				color: #707070;
 				border: unset;
 				padding-left: 13px;
+				font-family: "consul", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				z-index: 2;
 
 				&::placeholder {
 					font-weight: 500;
