@@ -96,8 +96,19 @@ Nitro.module('dataLayer-checkout', function() {
 					`exibicao carrinho vazio`,
 					`exibicao carrinho`
 				);
-				console.log('foi')
 			}
+		});
+
+		$('body').on('click', '.item-remove a', function() {
+			vtexjs.checkout.getOrderForm().done(function (data) {
+				if ( !data.items.length) {
+					pushDataLayer(
+						`${$categoryDisplay}`,
+						`exibicao carrinho vazio`,
+						`exibicao carrinho`
+					);
+				}
+			});
 		});
 	};
 
