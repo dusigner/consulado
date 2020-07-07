@@ -15,7 +15,6 @@ Nitro.module('dataLayer-checkout', function() {
 		this.cartDisplay();
 		this.searchCart();
 		this.wordSearch();
-		this.vitrineChaordic();
 	};
 
 	var $category = '[SQUAD] Login Facebook-Google';
@@ -90,18 +89,20 @@ Nitro.module('dataLayer-checkout', function() {
 	};
 
 	this.cartDisplay = () => {
-		if (!$('.table.cart-items tbody tr').length) {
-			pushDataLayer(
-				`${$categoryDisplay}`,
-				`exibicao carrinho vazio`,
-				`exibicao carrinho`
-			);
-		}
+		vtexjs.checkout.getOrderForm().done(function (data) {
+			if ( !data.items.length) {
+				pushDataLayer(
+					`${$categoryDisplay}`,
+					`exibicao carrinho vazio`,
+					`exibicao carrinho`
+				);
+				console.log('foi')
+			}
+		});
 	};
 
 	this.searchCart = () => {
 		$('body').on('click', '.empty-cart-links .text-search', function() {
-
 			pushDataLayer(
 				`${$categoryDisplay}`,
 				`click digitacao`,
@@ -113,32 +114,9 @@ Nitro.module('dataLayer-checkout', function() {
 	this.wordSearch = () => {
 		$('body').on('submit', '.empty-cart-links .form-search', function() {
 			const $label = $('.empty-cart-links .text-search').val();
-
 			pushDataLayer(
 				`${$categoryDisplay}`,
 				`click buscar palavraPesquisada`,
-				`${$label}`
-			);
-		});
-
-		$('body').on('click', '.empty-cart-links .icon.icon-consul-loupe', function() {
-			const $label = $('.empty-cart-links .text-search').val();
-
-			pushDataLayer(
-				`${$categoryDisplay}`,
-				`click buscar palavraPesquisada`,
-				`${$label}`
-			);
-		});
-	};
-
-	this.vitrineChaordic = () => {
-		$('body').on('click', '.carousel-products .carousel-item', function() {
-			const $label = $(this).find('.name-group a').text();
-
-			pushDataLayer(
-				`${$categoryDisplay}`,
-				`vitrine mais desejados`,
 				`${$label}`
 			);
 		});
