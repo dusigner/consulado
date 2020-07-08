@@ -11,7 +11,7 @@
 		background-color: $default-color-gray-dark;
 		border-top: none;
 		color: #fff;
-		@include breakpoint('small', 'max') {
+		@include breakpoint("small", "max") {
 			display: flex;
 			flex-direction: column;
 		}
@@ -98,7 +98,7 @@
 						top: 20px;
 					}
 					@include breakpoint("small", "min") {
-						display: none;
+						display: block;
 					}
 				}
 			}
@@ -194,7 +194,7 @@
 	// [ Checkout ] - Adaptações
 	.footer-2019--checkout & {
 		@include breakpoint("small", "max") {
-			display: none;
+			display: block;
 		}
 	}
 }

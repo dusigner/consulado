@@ -746,6 +746,12 @@ body.body-order-form {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	margin-bottom: 2%;
-	padding-right: 1rem;
+	margin: 2% 0 1% 0;
+
+	@media (min-width: 350px) and (max-width: 812px) {
+		a.icons-payment {
+			margin-bottom: 2%;
+			margin-right: 7%;
+		}
+	}
 }
