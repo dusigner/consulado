@@ -65,6 +65,17 @@ object {
 	display: none;
 }
 
+html body.body-order-form {
+	#app-container {
+		height: 540px;
+		overflow: unset;
+	}
+
+	.step #iframe-placeholder-creditCardPaymentGroup {
+		overflow-y: scroll;
+	}
+}
+
 body.body-order-form .container-main {
 	@include breakpoint('small', 'max') {
 		margin-top: 20px;
@@ -402,10 +413,6 @@ body {
 				}
 			}
 		}
-	}
-	#app-container {
-		height: 540px;
-		overflow: auto;
 	}
 }
 

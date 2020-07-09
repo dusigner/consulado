@@ -128,7 +128,11 @@ $(document).on('ready', function() {
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
 				self.descountCheckout();
+<<<<<<< HEAD
 				self.searchCheckout();
+=======
+				self.textDescriptionPayment();
+>>>>>>> bugfix/ICD-1217-change-text-payment-checkout
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -148,6 +152,7 @@ $(document).on('ready', function() {
 				);
 			};
 
+<<<<<<< HEAD
 			this.searchCheckout = () => {
 				$('.checkout-container .clearfix.empty-cart-links').html(`
 					<form method="GET" action="https://busca.consul.com.br/busca" class="form-search">
@@ -162,6 +167,54 @@ $(document).on('ready', function() {
 					$('.form-search').trigger('submit');
 				})
 			}
+=======
+			this.textDescriptionPayment = () => {
+				setInterval(function() {
+					if ( !$('body.body-order-form .accordion-body.collapse.in.payment-body').hasClass('is--descriptions')) {
+						$('body.body-order-form .accordion-body.collapse.in.payment-body').addClass('is--descriptions');
+
+						// PicPay
+						$('.picpayPaymentGroup .payment-picpay-info').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
+						$('.picpayPaymentGroup .payment-picpay-help').remove();
+
+						// billet
+						$('.bankInvoicePaymentGroup .payment-description').html(`
+							A forma de pagamento em boleto bancário não oferece parcelamento. Para fazer o pagamento, imprima o boleto no final do processo de compra. <br><br>
+
+							O Boleto possui o vencimento de 1 dia útil e pode ser pago em qualquer agência bancária ou serviço de internet banking. <br><br>
+
+							Caso não seja pago durante esse período o boleto será automaticamente cancelado. <br><br>
+
+							O prazo de entrega do produto começa a partir da confirmação de pagamento, que pode variar em até 2 dias úteis. <br><br>
+
+							Para emitir o boleto clique em “Finalzar Compra”
+						`);
+
+						// SpinPay
+						$('.SpinPayPaymentGroup .payment-description').html(`
+							Spin Pay é o primeiro gateway de pagamentos instantâneos do Brasil, que conecta pagadores e recebedores, criada para quem quer movimentar recursos de forma simples, rápida e segura. <br><br>
+
+							Pagar com Spin Pay é simples e seguro: <br><br>
+
+							- Selecione o seu banco ou wallet
+							- Confirme a compra no app do seu banco ou escaneie o QR code
+							- Pronto, pagou.
+						`);
+
+						// PayPal
+						$('.newPayPalPaymentGroup .payment-paypal-subtitle').text('O PayPal é a maneira segura e conveniente de você realizar os pagamentos online. Ao fazer uma compra, suas informações financeiras ficam protegidas e não são compartilhadas.');
+
+						// cartao de credito
+						$('#iframe-placeholder-creditCardPaymentGroup').prepend('<span class="checkout-text-description-payment-credit">A Consul aceita os cartões de crédito Visa, MasterCard, Amex, Hipercard, Diners Club e Elo. A liberação pela administradora do cartão pode demorar até 48 horas; <br><br> Na Consul é possível pagar suas contas com até 2 cartões diferentes!</span>');
+
+						// mercado pago
+						$('.mercadopagoPaymentGroup .payment-mercadopago-description-simple').remove();
+						$('.mercadopagoPaymentGroup .payment-mercadopago-account').remove();
+						$('.mercadopagoPaymentGroup .payment-mercadopago-description').html('Com o MercadoPago finalizar sua compra é muito simples e seguro:');
+					}
+				}, 100)
+			};
+>>>>>>> bugfix/ICD-1217-change-text-payment-checkout
 
 			this.descountCheckout = () => {
 				$('#remove-gift-card, #btn-add-gift-card').on('click', () => {
@@ -676,6 +729,8 @@ $(document).on('ready', function() {
 					return;
 				}
 
+
+
 				if (gae.hasAnyActiveWarranty()) {
 					var attachmentName = 'Aceite do Termo',
 						content = { Aceito: 'Aceito' };
@@ -703,6 +758,7 @@ $(document).on('ready', function() {
 						if (self.orderForm.clientProfileData && self.orderForm.clientProfileData.email) {
 							//se ja esta logado, vai para o 'finalizar compra'
 							window.location.href = '#/orderform';
+
 						} else {
 							//se nao esta logado, abre modal pra colocar o email
 							var formLogin = $('.orderform-template .pre-email .client-email').html();
@@ -717,8 +773,10 @@ $(document).on('ready', function() {
 									.val($('#modal-login #client-pre-email').val())
 									.change();
 
+
 								setTimeout(function() {
 									$('.orderform-template #btn-client-pre-email').trigger('click');
+
 								}, 1000);
 							});
 
@@ -748,6 +806,7 @@ $(document).on('ready', function() {
 
 					$fakeButton.on('click', self.clickFakeButton);
 
+
 					$('.btn-place-order').addClass('hide');
 					$('.link-choose-more-products-wrapper #cart-choose-more-products').css('display', 'inline-block');
 				}
@@ -764,6 +823,7 @@ $(document).on('ready', function() {
 							.appendTo('.field-button');
 
 						$fakeButtonClone.on('click', self.clickFakeButton);
+
 					}
 				} else {
 					$('.field-button .monetary').text(
@@ -810,6 +870,7 @@ $(document).on('ready', function() {
 								$('.vtex-front-messages-placeholder').removeClass(
 									'vtex-front-messages-placeholder-opened delivery'
 								);
+
 								$('.scheduled-sla.shipping-option-0').removeClass('active');
 							});
 						}
@@ -818,14 +879,17 @@ $(document).on('ready', function() {
 
 				$('body').on('click', '.shipping-option-item[for*=EntregaAgendada]', function() {
 					$('.btn-go-to-payment').trigger('click');
+
 				});
 
 				if ($('.scheduled-sla.shipping-option-0').length >= 1 && $('.delivery-windows').length < 1) {
 					$('.btn-go-to-payment').trigger('click');
+
 				}
 
 				$('.btn-go-to-payment').click(function() {
 					self.veryfication();
+
 				});
 
 				$('.shipping-option-item-text-wrapper').each(function() {
