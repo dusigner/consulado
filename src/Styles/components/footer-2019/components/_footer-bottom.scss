@@ -29,6 +29,7 @@
 		.footer-2019--checkout & {
 			@include breakpoint("small", "min") {
 				justify-content: flex-start;
+				margin-top: 1%;
 			}
 			@include breakpoint("small", "max") {
 				display: flex;
