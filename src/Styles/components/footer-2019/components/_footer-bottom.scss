@@ -5,6 +5,7 @@
 	border-top: none;
 	color: #fff;
 	padding: 1.5em 0;
+	margin-bottom: -2%;
 
 	// [ Checkout ] - Adaptações
 	.footer-2019--checkout & {
@@ -29,7 +30,7 @@
 		.footer-2019--checkout & {
 			@include breakpoint("small", "min") {
 				justify-content: flex-start;
-				margin-top: 1%;
+				margin-top: 0;
 			}
 			@include breakpoint("small", "max") {
 				display: flex;
@@ -192,6 +193,7 @@
 .vtex-logo-footer {
 	display: block;
 	margin-top: 1em;
+	margin-bottom: -1%;
 
 	// [ Checkout ] - Adaptações
 	.footer-2019--checkout & {
