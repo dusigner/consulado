@@ -1,3 +1,4 @@
+@import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 @import 'helpers/rfs';
 .modal-tira-duvidas {
 	align-items: center;
@@ -8,7 +9,6 @@
     top: 0;
     width: 100%;
     z-index: 99;
-
 }
 #cover {
     background: rgba(0, 0, 0, 0.65);
@@ -25,11 +25,26 @@
   #modal {
 	background: #ffffff;
     display: none;
-    height: auto;
+    height: 600px;
     margin: 0 auto;
     max-width: 100%;
     position: absolute;
     top: 18%;
-    width: 960px;
+    width: 768px;
     z-index: 99;
   }
+.menu-questions {
+	position: relative;
+	.content {
+		box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
+		height: 576px;
+		max-width: 100%;
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 530px;
+		.resposta {
+			display: none;
+		}
+	}
+}
