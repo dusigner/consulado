@@ -128,11 +128,8 @@ $(document).on('ready', function() {
 				self.shippingSelectorInformation();
 				self.limitQuantityCart();
 				self.descountCheckout();
-<<<<<<< HEAD
 				self.searchCheckout();
-=======
 				self.textDescriptionPayment();
->>>>>>> bugfix/ICD-1217-change-text-payment-checkout
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -152,7 +149,6 @@ $(document).on('ready', function() {
 				);
 			};
 
-<<<<<<< HEAD
 			this.searchCheckout = () => {
 				$('.checkout-container .clearfix.empty-cart-links').html(`
 					<form method="GET" action="https://busca.consul.com.br/busca" class="form-search">
@@ -167,7 +163,7 @@ $(document).on('ready', function() {
 					$('.form-search').trigger('submit');
 				})
 			}
-=======
+
 			this.textDescriptionPayment = () => {
 				setInterval(function() {
 					if ( !$('body.body-order-form .accordion-body.collapse.in.payment-body').hasClass('is--descriptions')) {
@@ -214,7 +210,6 @@ $(document).on('ready', function() {
 					}
 				}, 100)
 			};
->>>>>>> bugfix/ICD-1217-change-text-payment-checkout
 
 			this.descountCheckout = () => {
 				$('#remove-gift-card, #btn-add-gift-card').on('click', () => {
