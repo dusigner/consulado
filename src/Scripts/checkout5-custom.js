@@ -170,7 +170,7 @@ $(document).on('ready', function() {
 						$('body.body-order-form .accordion-body.collapse.in.payment-body').addClass('is--descriptions');
 
 						// PicPay
-						$('.picpayPaymentGroup .payment-picpay-info').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
+						$('.picpayPaymentGroup .payment-picpay-info, .payment-picpay-info-mobile').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
 						$('.picpayPaymentGroup .payment-picpay-help').remove();
 
 						// billet
@@ -192,8 +192,8 @@ $(document).on('ready', function() {
 
 							Pagar com Spin Pay é simples e seguro: <br><br>
 
-							- Selecione o seu banco ou wallet
-							- Confirme a compra no app do seu banco ou escaneie o QR code
+							- Selecione o seu banco ou wallet <br>
+							- Confirme a compra no app do seu banco ou escaneie o QR code <br>
 							- Pronto, pagou.
 						`);
 
@@ -209,6 +209,31 @@ $(document).on('ready', function() {
 						$('.mercadopagoPaymentGroup .payment-mercadopago-description').html('Com o MercadoPago finalizar sua compra é muito simples e seguro:');
 					}
 				}, 100)
+
+				$('.payment-group a').on('click', function(){
+					setInterval(function() {
+						$('.picpayPaymentGroup .payment-picpay-info, .payment-picpay-info-mobile').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
+						$('.picpayPaymentGroup .payment-picpay-help').remove();
+
+						// SpinPay
+						$('.SpinPayPaymentGroup .payment-description').html(`
+						Spin Pay é o primeiro gateway de pagamentos instantâneos do Brasil, que conecta pagadores e recebedores, criada para quem quer movimentar recursos de forma simples, rápida e segura. <br><br>
+
+						Pagar com Spin Pay é simples e seguro: <br><br>
+
+						- Selecione o seu banco ou wallet <br>
+						- Confirme a compra no app do seu banco ou escaneie o QR code <br>
+						- Pronto, pagou.
+					`);
+
+						// PayPal
+						$('.newPayPalPaymentGroup .payment-paypal-subtitle').text('O PayPal é a maneira segura e conveniente de você realizar os pagamentos online. Ao fazer uma compra, suas informações financeiras ficam protegidas e não são compartilhadas.');
+						// mercado pago
+						$('.mercadopagoPaymentGroup .payment-mercadopago-description-simple').remove();
+						// $('.mercadopagoPaymentGroup .payment-mercadopago-account').remove();
+						$('.mercadopagoPaymentGroup .payment-mercadopago-description').html('Com o MercadoPago finalizar sua compra é muito simples e seguro:');
+					}, 100)
+				})
 			};
 
 			this.descountCheckout = () => {
