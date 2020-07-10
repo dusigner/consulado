@@ -1,14 +1,18 @@
 @import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 @import 'helpers/rfs';
+
+$grey: #736C6B;
+$green: #9BCA3D;
+
 .modal-tira-duvidas {
 	align-items: center;
-    display: flex;
+  display: flex;
 	justify-content: center;
-    left: 0;
+  left: 0;
 	position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 99;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 }
 #cover {
     background: rgba(0, 0, 0, 0.65);
@@ -36,15 +40,34 @@
 .menu-questions {
 	position: relative;
 	.content {
+		background-color: #fff;
 		box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
-		height: 576px;
+		height: 576px !important;
+		left: 40% !important;
 		max-width: 100%;
 		position: absolute;
-		right: 0;
 		top: 0;
-		width: 530px;
+		width: 460px !important;
 		.resposta {
 			display: none;
 		}
-	}
+  }
+  .menu-main {
+    width: 308px;
+    li {
+		&.toggle {
+			@include rfs(16);
+			color: $grey;
+			cursor: pointer;
+			font-weight: 400;
+			height: 48px;
+			padding: 10px 10px;
+			width: 100%;
+			&.active {
+				background-color: $green;
+				color: #fff;
+			}
+		}
+    }
+  }
 }
