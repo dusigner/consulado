@@ -227,7 +227,15 @@ Nitro.controller(
 			const $element = $(currentTarget);
 			$('#modal-' + $element.data('modal')).vtexModal();
 		});
-		$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
+		// $('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
+		// open modal
+		$('.product-assist-block.delivery a').on('click', function(){
+			$('#modal-tipo-entrega, #modal-tipo-entrega__overlay').addClass('is--modal-active');
+		});
+		// close modal
+		$('#modal-tipo-entrega .close-modal, #modal-tipo-entrega__overlay').on('click', function() {
+			$('#modal-tipo-entrega, #modal-tipo-entrega__overlay').removeClass('is--modal-active');
+		})
 
 		//Opções de parcelamento
 		self.valoresParcelas = function() {

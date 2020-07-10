@@ -10,6 +10,57 @@
 	top: 0;
 }
 
+// modal relacionados
+#modal-tipo-entrega {
+	position: fixed;
+    left: -100%;
+    top: 50%;
+    z-index: 99999999;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 40px 20px 20px;
+	opacity: 0;
+	visibility: hidden;
+	transition: .2s ease-in-out;
+
+	@media (max-width: 768px) {
+		width: 90%;
+		overflow-y: scroll;
+		height: 90%;
+	}
+
+	&.is--modal-active {
+		left: 50%;
+		opacity: 1;
+		visibility: visible;
+		transition: .2s ease-in-out;
+	}
+
+	.close-modal {
+		position: absolute;
+		right: 12px;
+		top: 5px;
+		cursor: pointer;
+	}
+}
+
+#modal-tipo-entrega__overlay {
+	position: fixed;
+    z-index: 99999;
+    background: #0000007a;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+	display: none;
+	transition: .4s ease-in-out;
+
+	&.is--modal-active {
+		display: block;
+		transition: .4s ease-in-out;
+	}
+}
+
 .product {
 	&-assist {
 		@extend %flex-center;
@@ -93,6 +144,29 @@
 			padding: 0 5px;
 			display: flex;
 			flex-direction: column;
+
+			&.installation {
+				.first-block {
+					.icon-corp {
+						&:before {
+							font-family: unset;
+							font-style: inherit;
+							font-variant: unset;
+							font-weight: unset;
+							line-height: unset;
+							speak: unset;
+							text-transform: unset;
+							content: "";
+							font-size: unset;
+							background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjYiIGhlaWdodD0iMjYiIHZpZXdCb3g9IjAgMCAyNiAyNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIuNiIgY3k9IjEyLjYiIHI9IjEyLjEiIHN0cm9rZT0iIzczNkM2QiIvPgo8cGF0aCBkPSJNMTYuMDUxMiAxMS44Nzk1QzE2LjQ2IDEyLjI3MjkgMTYuNDYgMTIuOTI3MyAxNi4wNTEyIDEzLjMyMDdMMTIuMTkzNCAxNy4wMzI4QzExLjU1ODEgMTcuNjQ0MSAxMC41IDE3LjE5MzkgMTAuNSAxNi4zMTIyTDEwLjUgOC44ODc5NUMxMC41IDguMDA2MjkgMTEuNTU4MSA3LjU1NjA1IDEyLjE5MzQgOC4xNjczN0wxNi4wNTEyIDExLjg3OTVaIiBmaWxsPSIjNzM2QzZCIi8+Cjwvc3ZnPgo=);
+							width: 24px;
+							height: 24px;
+							display: block;
+							background-size: 100%;
+						}
+					}
+				}
+			}
 
 			&.parts {
 				cursor: not-allowed;
