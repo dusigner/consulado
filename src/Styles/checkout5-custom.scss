@@ -63,6 +63,17 @@ object {
 	display: none;
 }
 
+html body.body-order-form {
+	#app-container {
+		height: 540px;
+		overflow: unset;
+	}
+
+	.step #iframe-placeholder-creditCardPaymentGroup {
+		overflow-y: scroll;
+	}
+}
+
 body.body-order-form .container-main {
 	@include breakpoint("small", "max") {
 		margin-top: 20px;
@@ -392,10 +403,6 @@ body {
 				}
 			}
 		}
-	}
-	#app-container {
-		height: 540px;
-		overflow: auto;
 	}
 }
 
@@ -754,4 +761,28 @@ body.body-order-form {
 			margin-right: 7%;
 		}
 	}
+}
+
+.picpayPaymentGroup div {
+	font-size: 0;
+}
+
+.payment-picpay-info::after, payment-picpay-info-mobile::after {
+	content: 'Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.';
+	font-size: calc(0.7625rem + 0.04706vw);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	line-height: 130%;
+}
+
+.newPayPalPaymentGroup .payment-paypal-subtitle {
+	font-size: 0;
+}
+
+.newPayPalPaymentGroup .payment-paypal-subtitle::after {
+	content: 'O PayPal é a maneira segura e conveniente de você realizar os pagamentos online. Ao fazer uma compra, suas informações financeiras ficam protegidas e não são compartilhadas.';
+	font-size: calc(0.7625rem + 0.04706vw);
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	line-height: 130%;
 }

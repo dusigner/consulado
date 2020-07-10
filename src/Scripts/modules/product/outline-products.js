@@ -99,31 +99,57 @@ Nitro.module('outline-products',function() {
                         `/api/catalog_system/pub/products/search?fq=skuId:${$sku}`,
 						success: function (data) {
 							var $data = data[0];
+							if ( $data.items[0].sellers[0].commertialOffer.Price > 0 ) {
+								// console.log('foi');
+								var $productName = $data.productTitle;
+								var $productLink = $data.link;
+								var $productReference = $data.productReference;
+								var $productImage = $data.items[0].images[0].imageUrl;
+								var $productPrice = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price);
+								var $productPriceOf = floatToCurrency($data.items[0].sellers[0].commertialOffer.ListPrice);
+								var $productPriceBillet = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price / 12);
 
-							console.log(data);
-							var $productName = $data.productTitle;
-							var $productLink = $data.link;
-							var $productReference = $data.productReference;
-							var $productImage = $data.items[0].images[0].imageUrl;
-							var $productPrice = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price);
-							var $productPriceOf = floatToCurrency($data.items[0].sellers[0].commertialOffer.ListPrice);
-							var $productPriceBillet = floatToCurrency($data.items[0].sellers[0].commertialOffer.Price / 12);
+								// console.log($productPrice, $productPriceOf, $productPriceBillet)
 
-							console.log($productPrice, $productPriceOf, $productPriceBillet)
+								// image/link
+								$('#outlineProducts-link').attr('href', $productLink);
+								$('#outlineProducts-image').attr('src', $productImage);
+								// name
+								$('.outline-products-item-info--name').append(`
+									<h2 id="outlineProducts-name">${$productName}
+									<span id="outlineProducts-reference">${$productReference}</span>
+									</h2>
+								`);
+								// price
+								$('#outlineProducts-priceOf').html(`De ${$productPriceOf}`);
+								$('#outlineProducts-price').html(`Por ${$productPrice}`);
+								$('#outlineProducts-priceBillet').html(`ou ${$productPrice} em até 12x de ${$productPriceBillet} s/ juros`);
+							} else {
+								// console.log('foi2');
+								var $productName2 = $data.productTitle;
+								var $productLink2 = $data.link;
+								var $productReference2 = $data.productReference;
+								var $productImage2 = $data.items[1].images[0].imageUrl;
+								var $productPrice2 = floatToCurrency($data.items[1].sellers[0].commertialOffer.Price);
+								var $productPriceOf2 = floatToCurrency($data.items[1].sellers[0].commertialOffer.ListPrice);
+								var $productPriceBillet2 = floatToCurrency($data.items[1].sellers[0].commertialOffer.Price / 12);
 
-							// image/link
-							$('#outlineProducts-link').attr('href', $productLink);
-							$('#outlineProducts-image').attr('src', $productImage);
-							// name
-							$('.outline-products-item-info--name').append(`
-								<h2 id="outlineProducts-name">${$productName}
-								<span id="outlineProducts-reference">${$productReference}</span>
-								</h2>
-							`);
-							// price
-							$('#outlineProducts-priceOf').html(`De ${$productPriceOf}`);
-							$('#outlineProducts-price').html(`Por ${$productPrice}`);
-							$('#outlineProducts-priceBillet').html(`ou ${$productPrice} em até 12x de ${$productPriceBillet} s/ juros`);
+								// console.log($productPrice, $productPriceOf, $productPriceBillet)
+
+								// image/link
+								$('#outlineProducts-link').attr('href', $productLink2);
+								$('#outlineProducts-image').attr('src', $productImage2);
+								// name
+								$('.outline-products-item-info--name').append(`
+									<h2 id="outlineProducts-name">${$productName2}
+									<span id="outlineProducts-reference">${$productReference2}</span>
+									</h2>
+								`);
+								// price
+								$('#outlineProducts-priceOf').html(`De ${$productPriceOf2}`);
+								$('#outlineProducts-price').html(`Por ${$productPrice2}`);
+								$('#outlineProducts-priceBillet').html(`ou ${$productPrice2} em até 12x de ${$productPriceBillet2} s/ juros`);
+							}
 						}
 					})
 				}

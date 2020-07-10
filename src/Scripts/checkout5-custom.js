@@ -170,7 +170,7 @@ $(document).on('ready', function() {
 						$('body.body-order-form .accordion-body.collapse.in.payment-body').addClass('is--descriptions');
 
 						// PicPay
-						$('.picpayPaymentGroup .payment-picpay-info').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
+						$('.picpayPaymentGroup .payment-picpay-info, .payment-picpay-info-mobile').text('Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.');
 						$('.picpayPaymentGroup .payment-picpay-help').remove();
 
 						// billet
@@ -192,8 +192,8 @@ $(document).on('ready', function() {
 
 							Pagar com Spin Pay é simples e seguro: <br><br>
 
-							- Selecione o seu banco ou wallet
-							- Confirme a compra no app do seu banco ou escaneie o QR code
+							- Selecione o seu banco ou wallet <br>
+							- Confirme a compra no app do seu banco ou escaneie o QR code <br>
 							- Pronto, pagou.
 						`);
 
