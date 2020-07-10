@@ -16,12 +16,38 @@
 		@include breakpoint(small, 'max') { padding: 20px 0; }
 		flex-wrap: wrap;
 		margin: 0 auto;
-		padding: 60px 0 120px;
+		padding: 45px 0;
 
 		.text-center {
-			text-align: left;
+			text-align: center;
 			display: block;
 			width: 100%;
+
+			&:nth-child(1) {
+				font-family: "consul", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: 24px;
+				color: #515151;
+				font-weight: 500;
+				margin: 0 0 29px;
+
+				@include breakpoint(small, 'max') {
+					font-size: 18px;
+					margin: 0 0 7px;
+				}
+			}
+
+			&:nth-child(2) {
+				font-family: "consul", "Helvetica Neue", Helvetica, Arial, sans-serif;
+				color: #736C6B;
+				font-size: 16px;
+				font-weight: 500;
+				margin: 0;
+				margin-bottom: 40px;
+				@include breakpoint(small, 'max') {
+					font-size: 12px;
+					margin-bottom: 0;
+				}
+			}
 		}
 
 		.container {
@@ -64,7 +90,9 @@
                 width: 100%;
             }
             flex-wrap: wrap;
-            padding: 0 5px;
+			padding: 0 5px;
+			display: flex;
+			flex-direction: column;
 
 			&.parts {
 				cursor: not-allowed;
@@ -77,6 +105,7 @@
 					margin: 0;
 					pointer-events: none;
 					width: 100%;
+					text-align: center;
 				}
 
 				&.has--parts {
@@ -100,6 +129,8 @@
 			.first-block {
 				@extend %flex-center;
 				width: 10%;
+				text-align: center;
+				justify-content: center;
 
 				.icon-parts {
 					height: 33px;
@@ -168,37 +199,46 @@
 			}
 
 			.second-block {
-				@extend %flex-center;
 				flex-wrap: wrap;
-				padding-left: 5%;
 				width: 85%;
+				text-align: center;
+				padding: 0;
+				justify-content: center;
+
 				> h3 {
 					@include breakpoint(small, 'max') {
 						@include rfs(14);
 						width: 100%;
+						margin: 4px 0 6px;
 					}
 					@include breakpoint(medium, 'max') {
 						@include rfs(10);
 						width: 100%;
 					}
-					@include rfs(14);
+					font-size: 13px;
+					display: block;
 					color: #736C6B;
-    				font-weight: 500;
-					margin: 0;
+					margin: 16px 0 6px;
 				}
 				> p {
 					@include breakpoint(small, 'max') {
 						@include rfs(12);
-						width: 100%;
+						text-align: center;
+						width: 63%;
+						margin: 0 auto 10px;
 					}
 					@include breakpoint(medium, 'max') {
 						@include rfs(9);
 						width: 100%;
 					}
-					@include rfs(12);
-					margin: 5px 0;
+					font-size: 11px;
 					min-height: 36px;
+					color: #736C6B;
+					margin: 0;
+					font-weight: 100;
+					font-family: "consul", "Helvetica Neue", Helvetica, Arial, sans-serif;
 				}
+
 				> a {
 					@include rfs(12);
 					color: #9aca3c;
@@ -207,6 +247,7 @@
 					@include breakpoint(small, 'max') {
 						@include rfs(12);
 						width: 100%;
+						text-align: center;
 					}
 					@include breakpoint(medium, 'max') {
 						@include rfs(9);
@@ -214,6 +255,24 @@
 					> b {
 						margin-left: 10px;
 					}
+				}
+			}
+
+			> a {
+				@include rfs(12);
+				color: #9aca3c;
+				font-weight: 500;
+
+				@include breakpoint(small, 'max') {
+					@include rfs(12);
+					width: 100%;
+					text-align: center;
+				}
+				@include breakpoint(medium, 'max') {
+					@include rfs(9);
+				}
+				> b {
+					margin-left: 10px;
 				}
 			}
 		}
