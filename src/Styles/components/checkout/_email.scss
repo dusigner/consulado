@@ -182,8 +182,8 @@ body {
 				background-color: #474747;
 				border: 2px solid #474747;
 				display: flex;
-    			height: 40px;
-				line-height: 0;
+				height: 40px;
+				line-height: 34px;
 				margin: 20px auto 0;
 				padding: 0 !important;
 				position: relative;
@@ -348,8 +348,8 @@ body {
 				width: 48%;
 				font-size: 14px;
 				font-weight: 600;
-				line-height: 17px;
-				outline: 0;
+				line-height: 27px;
+				text-align: center;
 				display: flex;
 				justify-content: center;
 				position: relative;
@@ -367,7 +367,8 @@ body {
 						height: 17px;
 						margin-right: 9px;
 						position: absolute;
-    					left: 16px;
+						left: 16px;
+						top: 11px;
 					}
 
 					&:hover {
@@ -379,6 +380,7 @@ body {
 					color: #767074;
 					background: #FFFFFF;
 					border: 2px solid #D2D2D2;
+					line-height: 24px;
 
 					&:before {
 						content: '';
@@ -388,7 +390,8 @@ body {
 						height: 16px;
 						margin-right: 9px;
 						position: absolute;
-    					left: 16px;
+						left: 16px;
+						top: 10px;
 					}
 				}
 			}
