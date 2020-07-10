@@ -5,7 +5,7 @@
 
 	// DEV ENVIROMENT
 	workbox.setConfig({ debug: true });
-    
+
     // CACHE NAMES
 	workbox.core.setCacheNameDetails({
         prefix: 'consul',
@@ -14,7 +14,7 @@
         runtime: 'run-time',
         googleAnalytics: 'ga',
       });
-    
+
     // PRECACHE
     // workbox.precaching.precacheAndRoute([
     //         { url: '../arquivos/consul2-style.css', revision: '/* @echo swVersion */'},
