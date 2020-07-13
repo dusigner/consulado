@@ -70,7 +70,7 @@ body {
 		pointer-events: visible !important;
 		position: absolute;
 		right: 14px;
-		@include breakpoint('medium', 'min') {
+		@include breakpoint(medium, 'min') {
 			top: 21px;
 		}
 		top: 14px;
@@ -79,9 +79,14 @@ body {
 			content: none;
 		}
 	}
-	.menu-header-white-purple {
+	&.menu-white-purple {
 		display: block;
-	}
+		.menu-white-purple {
+			display: flex;
+		}
+		.menu-white-purple {
+			display: block;
+		}
 
 .top-navigation {
 //	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
@@ -168,7 +173,6 @@ body {
 				line-height: 2.5;
 				padding-left: 20px;
 				text-align: left;
-				margin: 0;
 			}
 		}
 
@@ -839,12 +843,13 @@ $menu-colors: (
 	}
 }
 
+	}
 
-
-	&.header-white-purple {
+	&.white-purple {
 		display: block !important;
-		.menu-header-white-purple {
-			display: block;
+
+		.menu-white-purple {
+			display: flex;
 		}
 	.pre-header {
 		.container {
@@ -1845,4 +1850,4 @@ $menu-colors: (
 }
 	}
 
-
+}
