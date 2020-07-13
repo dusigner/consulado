@@ -11,7 +11,7 @@ $('#btn-modal').click(function(){
 
 //   $("ul.content").hide();
   $("ul.menu-main").delegate("li.toggle", "click", function() {
-      $(this).next().toggle("slideLeft").siblings(".content").hide("slideLeft");
+      $(this).next().toggle("fast").siblings(".content").hide("fast");
   });
   $("li.toggle").click(function() {
 	$("li.toggle").removeClass("active");

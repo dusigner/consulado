@@ -48,6 +48,7 @@ $green: #9BCA3D;
     z-index: 99;
   }
 .menu-questions {
+	padding-top: 12px;
 	position: relative;
 	.title-question {
 		color: $green;
@@ -62,6 +63,7 @@ $green: #9BCA3D;
 		left: 308px !important;
 		max-width: 100%;
 		overflow: hidden;
+		padding: 32px 24px 0 !important;
 		position: absolute;
 		top: 0;
 		width: 460px !important;
@@ -100,5 +102,29 @@ $green: #9BCA3D;
 			}
 		}
 	}
-  }
 }
+
+}
+.title-tira-duvidas {
+	align-items: center;
+    display: flex;
+    font-size: 18px;
+	font-weight: 500;
+	padding: 0 12px 10px;
+}
+#btn-modal {
+	align-items: center;
+    display: flex;
+    font-size: 18px;
+	font-weight: 500;
+	padding: 0 12px 10px;
+}
+.title-tira-duvidas,
+  #btn-modal {
+	.icone-questions {
+		display: inline-block;
+		height: auto;
+		margin-right: 15px;
+		width: 80px;
+	}
+  }
