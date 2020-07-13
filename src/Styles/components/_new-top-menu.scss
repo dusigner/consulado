@@ -79,9 +79,20 @@ body {
 			content: none;
 		}
 	}
+<<<<<<< HEAD
 	.menu-header-white-purple {
 		display: block;
 	}
+=======
+	&.menu-white-purple {
+		display: block;
+		.menu-white-purple {
+			display: flex;
+		}
+		.menu-white-purple {
+			display: block;
+		}
+>>>>>>> feature/ICD-1315-header-guide-purple
 
 .top-navigation {
 //	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
@@ -839,7 +850,7 @@ $menu-colors: (
 	}
 }
 
-	}
+
 
 	&.header-white-purple {
 		display: block !important;
@@ -1845,4 +1856,4 @@ $menu-colors: (
 }
 	}
 
-}
+
