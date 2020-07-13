@@ -70,7 +70,7 @@ body {
 		pointer-events: visible !important;
 		position: absolute;
 		right: 14px;
-		@include breakpoint(medium, 'min') {
+		@include breakpoint('medium', 'min') {
 			top: 21px;
 		}
 		top: 14px;
@@ -79,14 +79,9 @@ body {
 			content: none;
 		}
 	}
-	&.teste-A {
-		display: block !important;
-		.menu-teste-A {
-			display: flex;
-		}
-		.menu-teste-B {
-			display: none !important;
-		}
+	.menu-header-white-purple {
+		display: block;
+	}
 
 .top-navigation {
 //	background: linear-gradient(90deg, #fff 50%, #f4f2f1 50%);
@@ -846,13 +841,10 @@ $menu-colors: (
 
 	}
 
-	&.teste-B {
+	&.header-white-purple {
 		display: block !important;
-		.menu-teste-A {
-			display: none !important;
-		}
-		.menu-teste-B {
-			display: flex;
+		.menu-header-white-purple {
+			display: block;
 		}
 	.pre-header {
 		.container {
