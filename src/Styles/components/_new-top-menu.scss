@@ -79,13 +79,13 @@ body {
 			content: none;
 		}
 	}
-	&.teste-A {
-		display: block !important;
-		.menu-teste-A {
+	&.menu-white-purple {
+		display: block;
+		.menu-white-purple {
 			display: flex;
 		}
-		.menu-teste-B {
-			display: none !important;
+		.menu-white-purple {
+			display: block;
 		}
 
 .top-navigation {
@@ -845,12 +845,10 @@ $menu-colors: (
 
 	}
 
-	&.teste-B {
+	&.white-purple {
 		display: block !important;
-		.menu-teste-A {
-			display: none !important;
-		}
-		.menu-teste-B {
+
+		.menu-white-purple {
 			display: flex;
 		}
 	.pre-header {
