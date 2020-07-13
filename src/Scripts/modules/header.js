@@ -16,11 +16,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		$document = $(document);
 
 	//Teste A B
-<<<<<<< HEAD
-	$('body').addClass('header-white-purple');
-=======
 	$('body').addClass('white-purple');
->>>>>>> feature/ICD-1315-header-guide-purple
 
 
 	// Menu mobile
