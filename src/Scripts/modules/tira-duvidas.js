@@ -13,14 +13,18 @@ $('#btn-modal').click(function(){
   $("ul.menu-main").delegate("li.toggle", "click", function() {
       $(this).next().toggle("fast").siblings(".content").hide("fast");
   });
+
   $("li.toggle").click(function() {
 	$("li.toggle").removeClass("active");
 	$(this).addClass("active");
  });
 
-  $("h2").click(function() {
-	var target = $(this).next('div.resposta')
+  $(".pergunta h2").click(function() {
+	$(this).removeClass("active");
+	$(this).addClass("active");
+
+
+	var target = $(this).next('div.resposta');
 	$("div.resposta:visible").not(target).slideUp();
 	target.slideToggle();
-
 });
