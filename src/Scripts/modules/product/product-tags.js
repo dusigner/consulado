@@ -5,10 +5,10 @@ Nitro.module('product-tags', function() {
 
 	this.init = () => {
 		this.tagTrustVox();
-		this.tagPecas();
-		this.tagContratacao();
-		this.tagTiposEntrega();
-		this.tagVendasCorp();
+		// this.tagPecas();
+		// this.tagContratacao();
+		// this.tagTiposEntrega();
+		// this.tagVendasCorp();
 		this.tagDetalhamentoProd();
 		this.tagParcelamento();
 		this.tagGallery();
