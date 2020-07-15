@@ -2,14 +2,82 @@
 
 
 body {
-	.top-navigation {
-		.container {
-			display: none;
+
+	& .cont-search {
+		@include breakpoint(medium, 'max') {
+			.text-search {
+				height: 50px !important;
+				padding: 0 32px;
+				&:focus {
+					height: 50px !important;
+				}
+			}
+		}
+		.form-search {
+			.icon-consul-loupe {
+				left: -2px !important;
+			}
+		}
+
+		.text-search {
+			padding: 0 45px !important;
 		}
 	}
-	.menu-mobile {
-		display: none;
+
+
+	& .ac-container {
+		@include breakpoint(medium, 'max') {
+			height: calc(100vh - 115px);
+			overflow-x: scroll;
+		}
 	}
+	& .ac-suggest-product {
+		align-items: center;
+		display: flex;
+	}
+
+	& .ac-product-name {
+		display: table-cell;
+		font-size: 14px;
+		line-height: 20px;
+		padding: 10px 12px;
+		vertical-align: middle;
+		width: 310px;
+	}
+
+	& .ac-price-api-fail {
+		background-color: #98c63a;
+		border-radius: 25px;
+		color: #fff;
+		padding: 10px 20px;
+		width: 138px !important;
+	}
+
+	& .ac-suggest-product-image-container {
+		display: table-cell;
+		vertical-align: middle;
+		width: 100px;
+	}
+
+	.icon.icon-close {
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 24.1.2, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version='1.1' id='Camada_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 28 28' style='enable-background:new 0 0 28 28;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:none;stroke:%239ACA3C;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.6667;%7D%0A%3C/style%3E%3Cline class='st0' x1='21' y1='7' x2='7' y2='21'/%3E%3Cline class='st0' x1='7' y1='7' x2='21' y2='21'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		height: 20px;
+		pointer-events: visible !important;
+		position: absolute;
+		right: 14px;
+		@include breakpoint(medium, 'min') {
+			top: 21px;
+		}
+		top: 14px;
+		width: 20px;
+		&::before {
+			content: none;
+		}
+	}
+
 	.pre-header {
 		.container {
 			padding: 0 !important;
@@ -49,7 +117,6 @@ body {
 		}
 	}
 
-
 .top-navigation {
 	background: linear-gradient(90deg, #faf9f9 20%, #fff 0%);
 	border-top: none;
@@ -58,8 +125,8 @@ body {
     z-index: 16;
 
 	.container {
-		padding: 0;
 		display: block;
+		padding: 0;
 	}
 	.menu-department {
 		display: flex;
@@ -508,43 +575,6 @@ body {
 	& ul li:nth-child(-n+2):nth-last-child(-n+2) {
 		margin-right: 0;
 		width: 168px !important;
-	}
-}
-//menu verde
-.menu-verde {
-.menu-category .item .icon {
-	display: none;
-}
-	.submenu a:first-of-type {
-		padding-left: 0;
-		&::after {
-			background-color: #9aca3c;
-			border-radius: 4px;
-			content: '';
-			display: block;
-			height: 3px;
-			margin-top: 6px;
-			width: 26px;
-		}
-	}
-	.menu-subcategory .item a {
-		transition: transform .3s ease;
-		&::after {
-			display: none !important;
-			margin: 0;
-		}
-
-		&:hover {
-			color: $purple;
-			font-weight: 600;
-
-		}
-	}
-	//menu mobile teste ab
-	.title-menu-mobile {
-		.icon {
-			display: none !important;
-		}
 	}
 }
 // Menu - Subcategorias
@@ -1004,6 +1034,5 @@ body {
 		.top-navigation { @include hide-conditional();}
 	}
 }
-
 
 }
