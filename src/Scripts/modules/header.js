@@ -16,7 +16,7 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 		$document = $(document);
 
 	//Teste A B
-	$('body').addClass('teste-A');
+	$('body').addClass('white-purple');
 
 
 	// Menu mobile
@@ -60,29 +60,29 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 
 
 
-		const searchForm = $('.cont-search .form-search');
-			searchForm.append('<span></span>');
+	const searchForm = $('.cont-search .form-search');
+	searchForm.append('<span></span>');
 
-		const input = $('.cont-search .form-search input');
+	const input = $('.cont-search .form-search input');
 
-		const icone = searchForm.find($('span'));
+	const icone = searchForm.find($('span'));
 
-			$(input).on('keyup', function(e) {
-				e.preventDefault;
-			if($(this).val() == ' ' || $(this).val() == '') {
-				icone.removeClass('icon icon-close');
-			}else {
-				icone.addClass('icon icon-close');
-			}
-		});
-
-
-
-		icone.on('click', function(){
-			$('body .cont-search .form-search input').val("");
+	$(input).on('keyup', function(e) {
+		e.preventDefault;
+		if($(this).val() == ' ' || $(this).val() == '') {
 			icone.removeClass('icon icon-close');
-			$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
-		});
+		}else {
+			icone.addClass('icon icon-close');
+		}
+	});
+
+
+
+	icone.on('click', function(){
+		$('body .cont-search .form-search input').val('');
+		icone.removeClass('icon icon-close');
+		$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
+	});
 
 	if($(window).width() < 798) {
 		$('body').on('click', '.form-search span', function(){
@@ -96,12 +96,12 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 
 	$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
 
-	$(".cont-search.search .form-search .text-search").keyup(function (e) {
+	$('.cont-search.search .form-search .text-search').keyup(function (e) {
 		if (e.keyCode > 1) {
 			$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'unset');
 		}
 	});
-	$(".cont-search.search .form-search .text-search").keyup(function (e) {
+	$('.cont-search.search .form-search .text-search').keyup(function (e) {
 	   if ($(this).val() == ' ' || $(this).val() == '') {
 			$('body .cont-search .form-search .icon-consul-loupe').css('pointer-events', 'none');
 		}
