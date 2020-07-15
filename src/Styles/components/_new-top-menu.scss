@@ -902,6 +902,7 @@ body {
 		a {
 			@include responsiveFont(16, 16, true);
 			border-top: 1px solid $gray;
+			margin-bottom: 0;
 			padding: 12px 0;
 		}
 
