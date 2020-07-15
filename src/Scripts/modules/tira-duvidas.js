@@ -20,9 +20,9 @@ $('#btn-modal').click(function(){
  });
 
   $(".pergunta h2").click(function() {
-	$(this).removeClass("active");
-	$(this).addClass("active");
 
+	$("h2").removeClass("active");
+	$(this).addClass("active");
 
 	var target = $(this).next('div.resposta');
 	$("div.resposta:visible").not(target).slideUp();
