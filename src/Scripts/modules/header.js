@@ -15,10 +15,6 @@ Nitro.module('header', ['cotas', /* 'search', */ 'welcome-message', 'menu-hover'
 	var $body = $('body'),
 		$document = $(document);
 
-	//Teste A B
-	$('body').addClass('white-purple');
-
-
 	// Menu mobile
 	var topMenu = $('.menu-department'),
 		menuMobile = $('.menu-mobile'),
