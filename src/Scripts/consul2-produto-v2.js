@@ -20,6 +20,7 @@ import 'modules/product/color-selector';
 import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
+import 'modules/tira-duvidas';
 import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
