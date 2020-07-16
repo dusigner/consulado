@@ -1,5 +1,9 @@
 @import '../../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
-@import 'helpers/rfs';
+@import 'src/Styles/helpers/rfs';
+//HELPERS
+@import 'src/Styles/helpers/variables';
+@import 'src/Styles/helpers/mixins';
+@import 'src/Styles/helpers/functions';
 
 $grey: #736C6B;
 $green: #9BCA3D;
@@ -52,22 +56,27 @@ $green: #9BCA3D;
     width: 768px;
     z-index: 99;
   }
-
+  @include breakpoint('small', 'min') {
+	.btn-voltar {
+		display: none;
+	}
+}
   .btn-voltar {
 	display: block;
     height: 30px;
 	position: relative;
     width: 100%;
     z-index: 99;
-
   }
+
 .menu-questions {
     display: flex;
     flex-direction: column;
 	height: 600px;
     justify-content: space-between;
 	padding-top: 12px;
-    position: relative;
+	position: relative;
+
 	.title-question {
 		color: $green;
 		font-size: 28px;
@@ -85,6 +94,10 @@ $green: #9BCA3D;
 		position: absolute;
 		top: 0;
 		width: 460px !important;
+		@include breakpoint('small', 'max') {
+			left: 0;
+			width: 100% !important;
+		}
 
 		.pergunta {
 			h2 {
@@ -134,6 +147,14 @@ $green: #9BCA3D;
   }
   .menu-main {
 	  max-width: 308px;
+	  @include breakpoint('small', 'max') {
+		  max-width: 100%;
+	  }
+	  &:first-child.content {
+		@include breakpoint('small', 'min') {
+			display: block;
+		}
+	}
     li {
 		&.toggle {
 			@include rfs(18);

@@ -1,7 +1,5 @@
 
-$('.btn-voltar').click(function() {
-	$('.content').hide();
-});
+
 
 $('#btn-modal').click(function(){
 	$('#cover, #modal').fadeTo(200,1);
@@ -23,7 +21,12 @@ $('#btn-modal').click(function(){
 	target.slideToggle();
 });
 
+$('.btn-voltar').hide();
 $(".toggle").click(function() {
+	$('.btn-voltar').show();
+	$('.btn-voltar').click(function() {
+		$('.content').hide();
+	});
 	$(".toggle").removeClass("active");
 	$(this).addClass("active");
 	var target = $(this).next('ul.content');
