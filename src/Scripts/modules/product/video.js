@@ -44,4 +44,8 @@ Nitro.module('video', function() {
 		this.render();
 		$(document).trigger('nav', 'video');
 	}
+
+	if ( !$('#video >').length ) {
+		$('.product-assist-block.installation').remove();
+	}
 });
