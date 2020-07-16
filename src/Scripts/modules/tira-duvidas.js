@@ -11,7 +11,7 @@ $('#btn-modal').click(function(){
 
 //   $("ul.content").hide();
   $("ul.menu-main").delegate("li.toggle", "click", function() {
-      $(this).next().toggle("fast").siblings(".content").hide("fast");
+      $(this).next().toggle("fast").siblings(".content");
   });
 
   $("li.toggle").click(function() {
@@ -20,11 +20,14 @@ $('#btn-modal').click(function(){
  });
 
   $(".pergunta h2").click(function() {
-
 	$("h2").removeClass("active");
 	$(this).addClass("active");
 
 	var target = $(this).next('div.resposta');
 	$("div.resposta:visible").not(target).slideUp();
 	target.slideToggle();
+});
+
+$('.voltar').click(function() {
+	$('.content').hide();
 });

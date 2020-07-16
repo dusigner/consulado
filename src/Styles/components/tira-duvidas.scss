@@ -24,8 +24,8 @@ $green: #9BCA3D;
   	width: 100%;
 	  z-index: 99;
 	  .central-atendimento {
-		color: #ACACAC;
 		@include rfs(18);
+		color: #ACACAC;
 		line-height: 24px;
 		padding: 10px 20px;
 	  }
@@ -69,7 +69,7 @@ $green: #9BCA3D;
 		border-left: 1px solid #ccc;
 		display: none;
 		height: 600px !important;
-		left: 308px !important;
+		left: 308px;
 		max-width: 100%;
 		overflow: hidden;
 		padding: 32px 24px 0 !important;
