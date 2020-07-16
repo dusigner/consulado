@@ -52,6 +52,15 @@ $green: #9BCA3D;
     width: 768px;
     z-index: 99;
   }
+
+  .btn-voltar {
+	display: block;
+    height: 30px;
+	position: relative;
+    width: 100%;
+    z-index: 99;
+
+  }
 .menu-questions {
     display: flex;
     flex-direction: column;

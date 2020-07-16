@@ -1,4 +1,8 @@
 
+$('.btn-voltar').click(function() {
+	$('.content').hide();
+});
+
 $('#btn-modal').click(function(){
 	$('#cover, #modal').fadeTo(200,1);
 	$('html').css({"overflow": "hidden", "height": "100vh"});
@@ -9,17 +13,8 @@ $('#btn-modal').click(function(){
 	$('html').css({"overflow": "inherit", "height": "auto"});
   });
 
-//   $("ul.content").hide();
-  $("ul.menu-main").delegate("li.toggle", "click", function() {
-      $(this).next().toggle("fast").siblings(".content");
-  });
+ $(".pergunta h2").click(function() {
 
-  $("li.toggle").click(function() {
-	$("li.toggle").removeClass("active");
-	$(this).addClass("active");
- });
-
-  $(".pergunta h2").click(function() {
 	$("h2").removeClass("active");
 	$(this).addClass("active");
 
@@ -28,6 +23,12 @@ $('#btn-modal').click(function(){
 	target.slideToggle();
 });
 
-$('.voltar').click(function() {
-	$('.content').hide();
+$(".toggle").click(function() {
+	$(".toggle").removeClass("active");
+	$(this).addClass("active");
+	var target = $(this).next('ul.content');
+	$("ul.content:visible").not(target).hide("fast");
+	target.show("fast");
 });
+
+
