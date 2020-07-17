@@ -124,7 +124,7 @@ Nitro.module('chatHome', function() {
 				if (i === 0) {
 					clearInterval(interval);
 					document.getElementById('btn-close-chat').click();
-					window.location = 'https://consul.custhelp.com/app/atendimento';
+					window.location = 'https://atendimento.consul.com.br/atendimento';
 					return false;
 				}
 				i--;
