@@ -26,7 +26,7 @@ $green: #9BCA3D;
 	position: fixed;
   	top: 0;
   	width: 100%;
-	  z-index: 99;
+	z-index: 99999;
 	  .central-atendimento {
 		@include rfs(18);
 		color: #ACACAC;
@@ -58,7 +58,7 @@ $green: #9BCA3D;
   }
   @include breakpoint('small', 'min') {
 	.btn-voltar {
-		display: none;
+		display: none !important;
 	}
 }
   .btn-voltar {
