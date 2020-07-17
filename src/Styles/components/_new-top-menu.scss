@@ -612,13 +612,15 @@ body {
 				&::before {
 					background: transparent url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAATCAYAAABLN4eXAAAABHNCSVQICAgIfAhkiAAAAWJJREFUKJGV0DFIW1EUxvH/d19qt2oRdHLvlNCtcQmIpSlUwcGpFMRBKFL6sqlTJqGL7wklOLgVXOoucXJwiEtpXypSELRDhWQwCF2KNMcpIfDuC3rH853fPfdcrT77PP5o5DYyeIPsUqbNOKnsM+S43MjtFuKdxFOh54ivYT56PxQBc6mqqA2DDvjjTUQtLETLGahbzbrRjF0fDE5ah2cvJss3iHJqmJAZ88WJ8nmjXW/2EUCjVW8MhbAwCINeeB84PfHqe6Nd/+UGwzipxF1s3befhLpONQD5GsL81hFSyZf9t2AqlwZRhPACsN/jyfVVMFBQmB+rIT54242OEbz81Fpr5fqgEH8B3mZMuHFGKWp+/AmgKtVcpzC6J1jMAphm4qTyrVdxncKTjYcAACdYydjhrw8ApH6vD9BsnIQpAOCsy44PbCfhif/JELxuF4//TT6+MGFCB3Isbf+onGYBgDu5JZAx+h4dxAAAAABJRU5ErkJggg==') center center no-repeat;
 					background-size: contain;
-					content: '';
+					content: "";
 					display: block;
 					height: 8px;
-					margin-left: 12px;
+					margin-left: 0;
 					margin-top: -3px;
 					position: absolute;
-				    width: 8px;
+					width: 8px;
+					right: -15px;
+					top: 10px;
 				}
 			}
 		}
