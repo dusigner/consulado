@@ -24,7 +24,7 @@ $('#btn-modal').click(function(){
 $('.btn-voltar').hide();
 $(".toggle").click(function() {
 	$('.btn-voltar').show();
-	$('.btn-voltar').click(function() {
+	$('.btn-voltar, .title-question').click(function() {
 		$('.content').hide();
 	});
 	$(".toggle").removeClass("active");
