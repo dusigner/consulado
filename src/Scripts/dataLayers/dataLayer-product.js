@@ -1,6 +1,7 @@
 import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-product', function() {
+	const self = this
 
 	this.init = () => {
 		checkInlineDatalayers();
@@ -20,6 +21,10 @@ Nitro.module('dataLayer-product', function() {
 		// whats
 		this.clickWhats();
 		this.clickAttendance();
+
+		// assistance_and_related-product
+		this.viewMore();
+		this.scrollUser();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -165,7 +170,7 @@ Nitro.module('dataLayer-product', function() {
 
 	this.clickAttendance = () => {
 		$('.prod-more-info a').on('click', function() {
-			if ( $($(this)).attr('title') === "Informações de contratação") {
+			if ( $($(this)).attr('title') === 'Informações de contratação') {
 				if ( $('body').hasClass('whatsapp') ) {
 					console.log('salv')
 
@@ -178,6 +183,90 @@ Nitro.module('dataLayer-product', function() {
 			}
 		});
 	};
+
+	this.viewMore = () => {
+		$('.product-assist-block a').on('click', function() {
+			var $label = $(this).parents('.product-assist-block').find('.second-block h3').text().trim();
+			var $labelSpace = $label.replace(/ +/g, '_');
+			pushDataLayer(
+				'[SQUAD] PDP_assistencia_e_relacionados',
+				'clique_saiba_mais',
+				`${$labelSpace}`
+			);
+		});
+	};
+
+	var counterms;
+
+	this.userTime = () => {
+		var countms = 0;
+		var val = 0;
+
+		counterms = setInterval(function () {
+			countms = countms + 1 / 100;
+			if ( countms > 1 ) {
+				if ( val === 0 ) {
+					val += 1;
+					pushDataLayer(
+						'[SQUAD] PDP_assistencia_e_relacionados',
+						'viability',
+						`1_segundo`
+					);
+				}
+			}
+			if ( countms > 4 ) {
+				if ( val === 1 ) {
+					val += 1;
+					pushDataLayer(
+						'[SQUAD] PDP_assistencia_e_relacionados',
+						'viability',
+						`4_segundos`
+					);
+				}
+			}
+			if ( countms > 10 ) {
+				if ( val === 2 ) {
+					val += 1;
+					pushDataLayer(
+						'[SQUAD] PDP_assistencia_e_relacionados',
+						'viability',
+						`10_segundos`
+					);
+					clearInterval(counterms);
+				}
+			}
+		}, 10);
+	}
+	this.scrollUser = () => {
+		$(window).scroll(function (event) {
+			var $scroll = $(window).scrollTop();
+			var $scrollAssistence = $('#assistencia').offset().top;
+			var $limitScrollDesk = $('#assistencia .product-assist-block').offset().top;
+			var $limitScrollMob = $('.trustvox-container.container').offset().top;
+
+			if ( $(window).width() > 768 ) {
+				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollDesk - 50 ) {
+					if ( !$('body').hasClass('is--scroll') ) {
+						$('body').addClass('is--scroll');
+						self.userTime();
+					}
+				} else {
+					$('body').removeClass('is--scroll');
+					clearInterval(counterms);
+				}
+			} else {
+				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 ) {
+					if ( !$('body').hasClass('is--scroll') ) {
+						$('body').addClass('is--scroll');
+						self.userTime();
+					}
+				} else {
+					$('body').removeClass('is--scroll');
+					clearInterval(counterms);
+				}
+			}
+		});
+	}
 
 	this.init();
 });
