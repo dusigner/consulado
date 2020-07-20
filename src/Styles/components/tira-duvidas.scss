@@ -98,6 +98,9 @@ $grey-claro: #E5E5E5;
 		@include rfs(28);
 		color: $green;
 		margin: 10px auto 37px;
+		@include breakpoint('small', 'min') {&>.icon-toggle {
+			display: none !important;
+		}}
 		@include breakpoint('small', 'max') {
 			@include rfs (16);
 			align-items: center;
