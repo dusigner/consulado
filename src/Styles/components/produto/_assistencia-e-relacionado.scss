@@ -79,7 +79,7 @@
 				font-size: 24px;
 				color: #515151;
 				font-weight: 500;
-				margin: 0 0 29px;
+				margin: 0 0 11px;
 
 				@include breakpoint(small, 'max') {
 					font-size: 18px;
@@ -93,7 +93,7 @@
 				font-size: 16px;
 				font-weight: 500;
 				margin: 0;
-				margin-bottom: 40px;
+				margin-bottom: 20px;
 				@include breakpoint(small, 'max') {
 					font-size: 12px;
 					margin-bottom: 0;
@@ -138,7 +138,8 @@
             @extend %flex-center;
             @include breakpoint(small, 'max') {
                 padding: 15px 0;
-                width: 100%;
+				width: 100%;
+				margin: 0;
             }
             flex-wrap: wrap;
 			padding: 0 5px;
@@ -278,6 +279,10 @@
 				text-align: center;
 				padding: 0;
 				justify-content: center;
+
+				@include breakpoint(small, 'max') {
+					width: 100%;
+				}
 
 				> h3 {
 					@include breakpoint(small, 'max') {
