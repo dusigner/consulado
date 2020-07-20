@@ -200,8 +200,6 @@ Nitro.module('dataLayer-product', function() {
 
 	this.userTime = () => {
 		var countms = 0;
-		var cronometro = {};
-		var ativo = true;
 		var val = 0;
 
 		counterms = setInterval(function () {
@@ -235,7 +233,6 @@ Nitro.module('dataLayer-product', function() {
 						`10_segundos`
 					);
 					clearInterval(counterms);
-					ativo = false;
 				}
 			}
 		}, 10);
