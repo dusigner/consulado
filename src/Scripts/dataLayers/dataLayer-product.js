@@ -204,7 +204,7 @@ Nitro.module('dataLayer-product', function() {
 
 		counterms = setInterval(function () {
 			countms = countms + 1 / 100;
-			if ( countms > 1 ) {
+			if ( countms >= 1 ) {
 				if ( val === 0 ) {
 					val += 1;
 					pushDataLayer(
@@ -214,7 +214,7 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms > 4 ) {
+			if ( countms >= 4 ) {
 				if ( val === 1 ) {
 					val += 1;
 					pushDataLayer(
@@ -224,7 +224,7 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms > 10 ) {
+			if ( countms >= 10 ) {
 				if ( val === 2 ) {
 					val += 1;
 					pushDataLayer(
