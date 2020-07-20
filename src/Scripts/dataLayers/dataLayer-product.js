@@ -255,6 +255,7 @@ Nitro.module('dataLayer-product', function() {
 					}
 				} else {
 					$('body').removeClass('is--scroll');
+					clearInterval(counterms);
 				}
 			} else {
 				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 ) {
