@@ -327,6 +327,7 @@
 						@include rfs(12);
 						width: 100%;
 						text-align: center;
+						margin: 0;
 					}
 					@include breakpoint(medium, 'max') {
 						@include rfs(9);
