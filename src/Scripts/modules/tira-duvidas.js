@@ -1,3 +1,4 @@
+const { $body } = require("./orders/order.modal.gae");
 
 
 
@@ -21,12 +22,8 @@ $('#btn-modal').click(function(){
 	target.slideToggle();
 });
 
-$('.btn-voltar').hide();
+
 $(".toggle").click(function() {
-	$('.btn-voltar').show();
-	$('.btn-voltar, .title-question').click(function() {
-		$('.content').hide();
-	});
 	$(".toggle").removeClass("active");
 	$(this).addClass("active");
 	var target = $(this).next('ul.content');
@@ -34,4 +31,13 @@ $(".toggle").click(function() {
 	target.show("fast");
 });
 
+if ($('body').width() < 768){
+	$('.btn-voltar').hide();
+	$(".toggle").click(function() {
+		$('.btn-voltar').show();
+		$('.btn-voltar, .title-question').click(function() {
+			$('.content').hide();
+		});
+	});
+}
 
