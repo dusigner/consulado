@@ -246,7 +246,7 @@ Nitro.module('dataLayer-product', function() {
 			var $limitScrollMob = $('.trustvox-container.container').offset().top;
 
 			if ( $(window).width() > 768 ) {
-				if ( $scroll > $scrollAssistence - 320 && $scroll < $limitScrollDesk - 50 ) {
+				if ( $scroll > $scrollAssistence - 400 && $scroll < $limitScrollDesk - 50 ) {
 					if ( !$('body').hasClass('is--scroll') ) {
 						isActive = false;
 						$('body').addClass('is--scroll');
