@@ -68,6 +68,7 @@ require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
 require('modules/logoffUser');
 require('dataLayers/dataLayer-new-header-menu');
+require('modules/tira-duvidas');
 // require('dataLayers/dataLayer-menu-antigo');
 
 const changeCallcenterLinks = () => {
@@ -117,6 +118,7 @@ Nitro.setup(
 		'callcenter',
 		'logoffUser',
 		'dataLayer-new-header-menu',
+		'tiraduvidas',
 		// 'dataLayer-menu-antigo'
 	],
 	function() {
