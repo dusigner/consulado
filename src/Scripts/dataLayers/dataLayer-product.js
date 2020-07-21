@@ -172,7 +172,6 @@ Nitro.module('dataLayer-product', function() {
 		$('.prod-more-info a').on('click', function() {
 			if ( $($(this)).attr('title') === 'Informações de contratação') {
 				if ( $('body').hasClass('whatsapp') ) {
-					console.log('salv')
 
 					pushDataLayer(
 						'Promotores',
@@ -238,6 +237,8 @@ Nitro.module('dataLayer-product', function() {
 		}, 10);
 	}
 	this.scrollUser = () => {
+		var isActive = true;
+
 		$(window).scroll(function (event) {
 			var $scroll = $(window).scrollTop();
 			var $scrollAssistence = $('#assistencia').offset().top;
@@ -245,23 +246,27 @@ Nitro.module('dataLayer-product', function() {
 			var $limitScrollMob = $('.trustvox-container.container').offset().top;
 
 			if ( $(window).width() > 768 ) {
-				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollDesk - 50 ) {
+				if ( $scroll > $scrollAssistence - 240 && $scroll < $limitScrollDesk - 50 ) {
 					if ( !$('body').hasClass('is--scroll') ) {
+						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
 					}
 				} else {
 					$('body').removeClass('is--scroll');
+					isActive = true;
 					clearInterval(counterms);
 				}
 			} else {
-				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 ) {
+				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 && isActive ) {
 					if ( !$('body').hasClass('is--scroll') ) {
+						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
 					}
 				} else {
 					$('body').removeClass('is--scroll');
+					isActive = true;
 					clearInterval(counterms);
 				}
 			}
