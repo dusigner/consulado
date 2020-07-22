@@ -22,7 +22,7 @@ Nitro.module('tiraduvidas', function() {
 		$(".pergunta h2").click(function() {
 
 			$(this).toggleClass("active");
-			$(".pergunta h2").removeClass("active");
+			$("h2").removeClass("active");
 
 			var target = $(this).next('div.resposta');
 			$("div.resposta:visible").not(target).slideUp();
