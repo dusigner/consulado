@@ -20,13 +20,21 @@ Nitro.module('tiraduvidas', function() {
 
 	this.acoordeon = () => {
 		$(".pergunta h2").click(function() {
+			// $('.pergunta h2').removeClass('is--active');
 
-			$(this).toggleClass("active");
-			$(".pergunta h2").removeClass("active");
+			// $(this).toggleClass("active");
+			// $(".pergunta h2").removeClass("active");
 
 			var target = $(this).next('div.resposta');
 			$("div.resposta:visible").not(target).slideUp();
 			target.slideToggle();
+
+			if ( $(this).hasClass('is--active') ) {
+				$(this).removeClass('is--active');
+			} else {
+				$(".pergunta h2").removeClass('is--active');
+				$(this).addClass('is--active');
+			}
 		});
 
 
