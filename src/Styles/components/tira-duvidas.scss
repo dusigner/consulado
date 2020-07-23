@@ -43,15 +43,30 @@ $grey-claro: #E5E5E5;
   	width: 100%;
 	z-index: 99999;
 	  .central-atendimento {
-		@include rfs(20);
 		bottom: 0;
 		color: #ACACAC;
 		line-height: 24px;
-		padding: 10px 20px;
+		padding: 10px 30px 0;
 		position: absolute;
 		z-index: -1;
+		h5,
+		strong,
+		p {
+			font-size: 14px;
+		}
+		h5 {
+			margin: 10px 0 10px;
+		}
+		p {
+			line-height: 18px;
+			margin-bottom: 16px;
+			margin-top: 0;
+		}
 		@include breakpoint('small', 'max') {
+			padding: 10px 20px;
+			position: relative;
 			text-align: center;
+    		top: 40px;
 			width: 100%;
 		}
 	  }
@@ -120,6 +135,7 @@ $grey-claro: #E5E5E5;
 	width: 100%;
 	@include breakpoint('small', 'max') {
 		height: 526px;
+
 	}
 	.title-question {
 		@include rfs(28);
@@ -205,6 +221,13 @@ $grey-claro: #E5E5E5;
 				padding-right: 20px;
 				position: relative;
 
+				&.is--active {
+					.icone-seta {
+						transform: rotate(180deg);
+						transition: .3s ease-in-out;
+					}
+				}
+
 				@include breakpoint('small', 'max') {
 					border-bottom: 0.5px solid #DADADA;
 					font-weight: 600;
@@ -227,6 +250,7 @@ $grey-claro: #E5E5E5;
 					right: 0;
 					top: 8px;
 					width: 16px;
+					transition: .3s ease-in-out;
 				}
 				&.active {
 					color: $grey;
@@ -373,20 +397,6 @@ $grey-claro: #E5E5E5;
 	height: 96px;
 	padding: 16px 20px 10px;
 	width: 308px;
-}
-#btn-modal {
-	align-items: center;
-	background-color: inherit;
-	border: none;
-    display: flex;
-    font-size: 18px;
-	font-weight: 500;
-	line-height: normal;
-	padding: 0 12px 10px;
-    text-align: left;
-}
-.title-tira-duvidas,
-  #btn-modal {
 	.icone-questions {
 		display: inline-block;
 		height: auto;
@@ -400,4 +410,34 @@ $grey-claro: #E5E5E5;
 			width: 100%;
 		}
 	}
-  }
+}
+.icone-questions {
+	margin-right: 20px;
+	width: 84px;
+	@include breakpoint('small', 'max') {
+		width: auto;
+		img {
+			display: block;
+			width: 64px;
+		}
+	}
+	img {
+		display: block;
+		width: 100%;
+	}
+
+}
+#btn-modal {
+	align-items: center;
+	background-color: inherit;
+	border: none;
+	border-top: 1px solid #F3F0EF;
+    display: flex;
+    font-size: 18px;
+	font-weight: 500;
+	line-height: normal;
+	padding: 0 12px 10px;
+	padding-bottom: 22px;
+    padding-top: 16px;
+	text-align: left;
+}
