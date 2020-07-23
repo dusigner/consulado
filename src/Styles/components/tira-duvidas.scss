@@ -172,7 +172,7 @@ $grey-claro: #E5E5E5;
 		height: 600px !important;
 		left: 308px;
 		max-width: 100%;
-	    overflow-y: auto !important;
+	    overflow-y: scroll !important;
 		padding: 32px 24px 0 !important;
 		position: absolute;
 		top: -96px;
@@ -209,6 +209,7 @@ $grey-claro: #E5E5E5;
 					.icone-seta {
 						transform: rotate(180deg);
 						transition: .3s ease-in-out;
+						background-image: url('data:image/svg+xml,%3Csvg width="16" height="10" viewBox="0 0 16 10" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M15.0497 2.801C15.5729 2.28319 15.5729 1.4379 15.0497 0.920093C14.5345 0.410238 13.705 0.409786 13.1893 0.919078L8 6.04349L2.81071 0.919078C2.29497 0.409785 1.46547 0.410238 0.950288 0.920092C0.427064 1.4379 0.427064 2.28319 0.950288 2.801L8 9.77778L15.0497 2.801Z" fill="%239ACA3C"/%3E%3C/svg%3E%0A');
 					}
 				}
 
