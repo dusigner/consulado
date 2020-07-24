@@ -135,6 +135,8 @@
 	}
 }
 
+
+// teste ab
 .main-tabs {
 	text-align: center;
     border-bottom: 1px solid #E3E1E1;
@@ -156,6 +158,36 @@
 		&.is--active {
 			border-bottom: 3px solid #8EC638;
     		font-weight: 500;
+		}
+	}
+}
+
+body .box-options {
+	display: none!important;
+
+	&.is--active {
+		display: block!important;
+	}
+}
+
+html body {
+	.testeB[data-bind="#detalhes"] {
+		#detalhes {
+			display: block!important;
+		}
+
+		#especificacoes {
+			display: none!important;
+		}
+	}
+
+	.testeB[data-bind="#assistencia"] {
+		#detalhes {
+			display: none!important;
+		}
+
+		#especificacoes {
+			display: block!important;
 		}
 	}
 }
