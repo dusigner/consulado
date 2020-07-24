@@ -471,6 +471,24 @@ Nitro.controller(
 			}
 		}
 
+		// tag pro teste ab
+		$('body').addClass('testeAB-detalhes');
+
+		// testeAB
+		if ( $('body').hasClass('testeAB-detalhes')) {
+			$('.testeA').hide();
+			$('.testeB').show();
+
+			var $detalhes = $('.testeA #detalhes').clone();
+			var $especificacoes = $('.testeA #especificacoes');
+
+			$('.testeB #detalhes').html($detalhes);
+			$('.testeB #especificacoes').html($especificacoes);
+		} else {
+			$('.testeA').show();
+			$('.testeB').hide();
+		}
+
 		$('.main-tabs a').on('click', function(){
 			var $class = $(this);
 			var $attr = $class.attr('href');
