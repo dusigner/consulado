@@ -470,5 +470,16 @@ Nitro.controller(
 				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
 			}
 		}
+
+		$('.main-tabs a').on('click', function(){
+			var $class = $(this);
+			var $attr = $class.attr('href');
+			if ( !$class.hasClass('is--active')){
+				$('.main-tabs a').removeClass('is--active');
+				$class.addClass('is--active');
+
+				$('.testeB').attr('data-bind', '' + $attr);
+			}
+		});
 	}
 );

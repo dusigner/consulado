@@ -134,3 +134,28 @@
 		margin-top: 18px;
 	}
 }
+
+.main-tabs {
+	text-align: center;
+    border-bottom: 1px solid #E3E1E1;
+    height: 30px;
+    display: flex;
+	justify-content: center;
+
+	a {
+		height: 30px;
+		font-size: 16px;
+		display: block;
+		color: #686160;
+		font-weight: 100;
+
+		&:nth-child(1) {
+			margin-right: 40px;
+		}
+
+		&.is--active {
+			border-bottom: 3px solid #8EC638;
+    		font-weight: 500;
+		}
+	}
+}
