@@ -172,7 +172,6 @@ Nitro.module('dataLayer-product', function() {
 		$('.prod-more-info a').on('click', function() {
 			if ( $($(this)).attr('title') === 'Informações de contratação') {
 				if ( $('body').hasClass('whatsapp') ) {
-					console.log('salv')
 
 					pushDataLayer(
 						'Promotores',
@@ -204,7 +203,7 @@ Nitro.module('dataLayer-product', function() {
 
 		counterms = setInterval(function () {
 			countms = countms + 1 / 100;
-			if ( countms > 1 ) {
+			if ( countms >= 1 ) {
 				if ( val === 0 ) {
 					val += 1;
 					pushDataLayer(
@@ -214,7 +213,7 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms > 4 ) {
+			if ( countms >= 4 ) {
 				if ( val === 1 ) {
 					val += 1;
 					pushDataLayer(
@@ -224,7 +223,7 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms > 10 ) {
+			if ( countms >= 10 ) {
 				if ( val === 2 ) {
 					val += 1;
 					pushDataLayer(
@@ -238,6 +237,8 @@ Nitro.module('dataLayer-product', function() {
 		}, 10);
 	}
 	this.scrollUser = () => {
+		var isActive = true;
+
 		$(window).scroll(function (event) {
 			var $scroll = $(window).scrollTop();
 			var $scrollAssistence = $('#assistencia').offset().top;
@@ -245,23 +246,27 @@ Nitro.module('dataLayer-product', function() {
 			var $limitScrollMob = $('.trustvox-container.container').offset().top;
 
 			if ( $(window).width() > 768 ) {
-				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollDesk - 50 ) {
+				if ( $scroll > $scrollAssistence - 600 && $scroll < $limitScrollDesk - 50 ) {
 					if ( !$('body').hasClass('is--scroll') ) {
+						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
 					}
 				} else {
 					$('body').removeClass('is--scroll');
+					isActive = true;
 					clearInterval(counterms);
 				}
 			} else {
-				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 ) {
+				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 && isActive ) {
 					if ( !$('body').hasClass('is--scroll') ) {
+						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
 					}
 				} else {
 					$('body').removeClass('is--scroll');
+					isActive = true;
 					clearInterval(counterms);
 				}
 			}
