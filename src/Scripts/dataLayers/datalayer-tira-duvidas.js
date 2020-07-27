@@ -20,15 +20,14 @@ Nitro.module('datalayer-tira-duvidas', function () {
 			);
 		});
 
-		$('li.toggle').on('click', function () {
-			const categoriaFaq = $(this).find('>.active .txt');
+		$('.toggle').on('click', function () {
+			const categoriaFaq = $('.active').find('.txt');
 			const label = categoriaFaq.text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
 			pushDataLayer(
 				'PDP_tira_duvidas',
 				`clique_categoria_faq`,
 				`${label}`
 			);
-			console.log(categoriaFaq.text());
 		});
 		$('.pergunta').on('click', function () {
 			const aberturaFaq = $(this).find('h2.is--active');
@@ -38,7 +37,6 @@ Nitro.module('datalayer-tira-duvidas', function () {
 				`abertura_faq`,
 				`${label}`
 			);
-			console.log(aberturaFaq.text());
 		});
 	}
 	this.init();
