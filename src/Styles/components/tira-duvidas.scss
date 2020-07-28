@@ -433,7 +433,7 @@ $grey-claro: #E5E5E5;
 	background-color: inherit;
 	border: none;
 	border-top: 1px solid #F3F0EF;
-    display: flex;
+    display: none;
     font-size: 18px;
 	font-weight: 500;
 	line-height: normal;
@@ -441,4 +441,9 @@ $grey-claro: #E5E5E5;
 	padding-bottom: 22px;
     padding-top: 16px;
 	text-align: left;
+}
+.ativa-tira-duvidas {
+	#btn-modal {
+		display: flex;
+	}
 }
