@@ -1055,7 +1055,7 @@ $(document).on('ready', function() {
 			}
 
 			this.tiraDuvidas = () => {
-				$('#btn-modal').length === 0 ? $('<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Está com alguma dúvida em relação ao pagamento?</button>').appendTo('.cart-links') : console.log('Button already exist!');
+				$('#btn-modal').length === 0 ? $('<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Está com alguma dúvida em relação ao pagamento?</button>').appendTo('.summary-template-holder') : console.log('Button already exist!');
 
 				$('#btn-modal').click(function () {
 					$('#cover, #modal').fadeTo(200, 1);
@@ -1098,6 +1098,9 @@ $(document).on('ready', function() {
 						});
 					});
 				}
+
+				console.info('Módulo Tira Dúvida Carregou...')
+
 			}
 
 			this.init();

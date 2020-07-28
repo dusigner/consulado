@@ -32,23 +32,22 @@
 // Base styles
 @import "base/main";
 // Layout styles
-@import 'layout/container';
-@import 'components/buttons';
-@import 'components/modal';
-@import 'components/modalLogin';
-@import 'components/checkout/modal-unavailable-modal';
-@import 'components/checkout/modal-info-pj';
-@import 'components/chaordic-shelf';
-@import 'components/produto/selos';
-@import 'components/mod-prateleira';
-@import 'components/callcenter';
-@import 'pages/product';
-@import 'components/checkout/reinput';
-@import 'components/checkout/email';
-@import 'components/checkout/checkout-billet';
+@import "layout/container";
+@import "components/buttons";
+@import "components/modal";
+@import "components/modalLogin";
+@import "components/checkout/modal-unavailable-modal";
+@import "components/checkout/modal-info-pj";
+@import "components/chaordic-shelf";
+@import "components/produto/selos";
+@import "components/mod-prateleira";
+@import "components/callcenter";
+@import "pages/product";
+@import "components/checkout/reinput";
+@import "components/checkout/email";
+@import "components/checkout/checkout-billet";
 
-@import 'components/tira-duvidas.scss';
-
+@import "components/tira-duvidas.scss";
 
 .loading-bg {
 	margin-top: 0;
@@ -770,8 +769,9 @@ body.body-order-form {
 	font-size: 0;
 }
 
-.payment-picpay-info::after, payment-picpay-info-mobile::after {
-	content: 'Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.';
+.payment-picpay-info::after,
+payment-picpay-info-mobile::after {
+	content: "Ao finalizar a compra, um código será exibido. Para pagar, basta escanear o código com seu PicPay. Ainda não tem conta? Baixe o app gratuitamente no Android ou iPhone.";
 	font-size: calc(0.7625rem + 0.04706vw);
 	white-space: pre-wrap;
 	word-wrap: break-word;
@@ -783,9 +783,24 @@ body.body-order-form {
 }
 
 .newPayPalPaymentGroup .payment-paypal-subtitle::after {
-	content: 'O PayPal é a maneira segura e conveniente de você realizar os pagamentos online. Ao fazer uma compra, suas informações financeiras ficam protegidas e não são compartilhadas.';
+	content: "O PayPal é a maneira segura e conveniente de você realizar os pagamentos online. Ao fazer uma compra, suas informações financeiras ficam protegidas e não são compartilhadas.";
 	font-size: calc(0.7625rem + 0.04706vw);
 	white-space: pre-wrap;
 	word-wrap: break-word;
 	line-height: 130%;
+}
+#btn-modal {
+	border: 0;
+	bottom: 30px;
+	color: inherit;
+	font-family: inherit;
+	height: 48px;
+	margin: 10px 0 25px;
+	padding: 0 12px;
+    position: absolute;
+}
+.ativa-tira-duvidas {
+	#btn-modal {
+		display: flex;
+	}
 }
