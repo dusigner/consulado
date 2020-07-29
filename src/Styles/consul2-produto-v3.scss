@@ -16,60 +16,59 @@
 // ===============================================================
 
 // Utility helpers
-@import 'helpers/variables';
-@import 'helpers/functions';
-@import 'helpers/mixins';
-@import 'helpers/whp-modal';
-@import 'helpers/rfs';
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/whp-modal";
+@import "helpers/rfs";
 
 // Component styles
-@import 'components/buttons';
-@import 'components/selos';
-@import 'components/chaordic-shelf';
-@import 'components/mod-prateleira-v2';
+@import "components/buttons";
+@import "components/selos";
+@import "components/chaordic-shelf";
+@import "components/mod-prateleira-v2";
 
-@import 'pages/product';
-@import 'components/produto/gallery-v2';
-@import 'components/produto/prod-title';
-@import 'components/produto/prod-info-v2';
-@import 'components/produto/prod-info-bar';
-@import 'components/produto/prod-info-descricao';
-@import 'components/produto/prod-info-preco';
-@import 'components/produto/prod-info-parcelas-v2';
-@import 'components/produto/prod-info-sku-v2';
-@import 'components/produto/produtos-adicionais';
-@import 'components/produto/prod-buy-button-v2';
-@import 'components/produto/selos';
-@import 'components/produto/frete-v2';
-@import 'components/produto/upsell-prod';
+@import "pages/product";
+@import "components/produto/gallery-v2";
+@import "components/produto/prod-title";
+@import "components/produto/prod-info-v2";
+@import "components/produto/prod-info-bar";
+@import "components/produto/prod-info-descricao";
+@import "components/produto/prod-info-preco";
+@import "components/produto/prod-info-parcelas-v2";
+@import "components/produto/prod-info-sku-v2";
+@import "components/produto/produtos-adicionais";
+@import "components/produto/prod-buy-button-v2";
+@import "components/produto/selos";
+@import "components/produto/frete-v2";
+@import "components/produto/upsell-prod";
 
-
-
-@import 'components/produto/details-nav-v2';
-@import 'components/produto/video-lancamento';
-@import 'components/produto/detalhes';
-@import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes-v2';
-@import 'components/produto/modal.sku';
-@import 'components/produto/modal.entrega';
-@import 'components/produto/special-content';
-@import 'components/produto/recurrence-modal';
-@import 'components/produto/assistencia-e-relacionado';
-@import 'components/produto/trust-vox';
-@import 'components/produto/recurrence-v2';
-@import 'components/produto/vitrine-relacionada';
-@import 'components/produto/outline-products';
+@import "components/produto/details-nav-v2";
+@import "components/produto/video-lancamento";
+@import "components/produto/detalhes";
+@import "components/produto/detalhes-lancamento";
+@import "components/produto/especificacoes-v2";
+@import "components/produto/modal.sku";
+@import "components/produto/modal.entrega";
+@import "components/produto/special-content";
+@import "components/produto/recurrence-modal";
+@import "components/produto/assistencia-e-relacionado";
+@import "components/produto/trust-vox";
+@import "components/produto/recurrence-v2";
+@import "components/produto/vitrine-relacionada";
+@import "components/produto/outline-products";
 // @import 'components/produto/quiz-install';
 
 .produto-indisponivel {
 	#relacionados {
-		display: none!important;
+		display: none !important;
 	}
 }
 
 #relacionados {
-	.box-produto .detalhes .prod-info .price .por .off, .box-produto .detalhes .prod-info .price .por .product-with-discount {
-		font-size: .625rem;
+	.box-produto .detalhes .prod-info .price .por .off,
+	.box-produto .detalhes .prod-info .price .por .product-with-discount {
+		font-size: 0.625rem;
 		border-radius: 100px;
 		color: #fff;
 		position: absolute;
@@ -77,7 +76,7 @@
 		top: -64px;
 		z-index: 1;
 
-		@include breakpoint('small', 'min') {
+		@include breakpoint("small", "min") {
 			top: -34px;
 		}
 	}
@@ -114,7 +113,7 @@
 			width: 320px;
 		}
 		.icone-check {
-			background-image: url('/arquivos/icon-check-produto-indisponivel.jpg');
+			background-image: url("/arquivos/icon-check-produto-indisponivel.jpg");
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -124,24 +123,23 @@
 			right: 4px;
 			top: 7px;
 			width: 24px;
-
 		}
 	}
 	.notifyme-loading-message {
 		color: #9aca3c;
-		font: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
+			sans-serif;
 		font-weight: bold;
 		margin-top: 18px;
 	}
 }
 
-
 // teste ab
 .main-tabs {
 	text-align: center;
-    border-bottom: 1px solid #E3E1E1;
-    height: 30px;
-    display: flex;
+	border-bottom: 1px solid #e3e1e1;
+	height: 30px;
+	display: flex;
 	justify-content: center;
 
 	a {
@@ -156,38 +154,62 @@
 		}
 
 		&.is--active {
-			border-bottom: 3px solid #8EC638;
-    		font-weight: 500;
+			border-bottom: 3px solid #8ec638;
+			font-weight: 500;
 		}
 	}
 }
 
 body .box-options {
-	display: none!important;
+	display: none !important;
 
 	&.is--active {
-		display: block!important;
+		display: block !important;
 	}
 }
 
 html body {
 	.testeB[data-bind="#detalhes"] {
 		#detalhes {
-			display: block!important;
+			display: block !important;
+		}
+
+		.item h3 {
+			display: flex;
+			align-items: center;
+			color: #000000;
+		}
+
+		#detalhes .item.item-half .image {
+			float: right;
+			width: 40%;
+			z-index: 0;
+			border: 1px solid #9aca3c;
+			border-radius: 7px;
+		}
+
+		#detalhes .item.item-single .image {
+			background-size: contain;
+			margin-right: 10%;
+		}
+
+		#detalhes .item .image {
+			background-size: contain;
+			margin-left: 10%;
 		}
 
 		#especificacoes {
-			display: none!important;
+			display: none !important;
 		}
 	}
 
 	.testeB[data-bind="#assistencia"] {
 		#detalhes {
-			display: none!important;
+			display: none !important;
 		}
 
 		#especificacoes {
-			display: block!important;
+			display: block !important;
 		}
 	}
 }
