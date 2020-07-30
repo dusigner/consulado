@@ -55,6 +55,7 @@ Nitro.controller(
 
 		galleryv2.init();
 
+		$('body').addClass('testeAB-detalhes'); //teste A-B detalhes
 
 		// Teste AB
 		var urlTesteAb = window.location.search;

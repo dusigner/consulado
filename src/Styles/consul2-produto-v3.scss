@@ -172,6 +172,7 @@ html body {
 	.testeB[data-bind="#detalhes"] {
 		#detalhes {
 			display: block !important;
+			margin: 0 8% 0 4%;
 		}
 
 		.item h3 {
@@ -180,9 +181,33 @@ html body {
 			color: #000000;
 		}
 
-		#detalhes .item.item-half .image {
+		.item .text {
+			padding: 0;
+			position: relative;
+			margin-left: 5%;
+		}
+
+		.item p {
+			font-size: 14px;
+			margin-top: 10px;
+			flex-wrap: wrap;
+			padding-top: 10px;
+			color: #000000;
+			display: flex;
+		}
+
+		.item.item-extrafull .image,
+		.item.item-full .image {
+			left: 0;
+			min-height: 682px;
+			position: absolute;
+			width: 100%;
+			border: 1px solid #9aca3c;
+			border-radius: 7px;
+		}
+
+		.item.item-half .image {
 			float: right;
-			width: 40%;
 			z-index: 0;
 			border: 1px solid #9aca3c;
 			border-radius: 7px;
@@ -190,12 +215,65 @@ html body {
 
 		#detalhes .item.item-single .image {
 			background-size: contain;
-			margin-right: 10%;
+			width: 50%!important;
 		}
 
-		#detalhes .item .image {
+		#detalhes .item .text .detail {
+			background: transparent;
+			position: relative;
+			z-index: 1;
+			margin-left: 5%;
+			color: #9aca3c;
+			border-radius: 7px!important;
+		} // box cinza transparente
+
+		#detalhes .item .text {
+			background: rgba(0, 0, 0, 0.6);
+			position: relative;
+			z-index: 1;
+			margin-left: 5%;
+			border-radius: 7px!important;
+		}
+
+		#detalhes .item .text h3 {
+			color: #000000;
+		}
+
+
+		.item.item-full .text:before {
+			content: "";
+			width: 105%!important;
+			background: rgba(0, 0, 0, 0.6)!important;
+			margin-left: -2%!important;
+			border-radius: 7px!important;
+		} // box cinza transparente
+
+		#detalhes .item h3 {
+			font-weight: 700;
+			line-height: 1em;
+			margin-bottom: 0;
+		} // texto de dentro do box cinza transparente
+
+		.item .image {
 			background-size: contain;
 			margin-left: 10%;
+		}
+
+		.item.item-full .image {
+			left: 0;
+			min-height: 682px;
+			position: absolute;
+			width: 100%;
+			border: 1px solid #9aca3c;
+			border-radius: 7px;
+		} // imagem com box cinza transparente
+
+		.item.item-full .text:before {
+			content: "";
+			width: 105%;
+			background: rgba(0, 0, 0, 0.6)!important;
+			margin-left: -2%;
+			border-radius: 7px;
 		}
 
 		#especificacoes {
@@ -206,6 +284,7 @@ html body {
 	.testeB[data-bind="#assistencia"] {
 		#detalhes {
 			display: none !important;
+			margin: 0 10% 0 10%;
 		}
 
 		#especificacoes {
