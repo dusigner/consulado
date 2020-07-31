@@ -172,19 +172,20 @@ html body {
 	.testeB[data-bind="#detalhes"] {
 		#detalhes {
 			display: block !important;
-			margin: 0 8% 0 4%;
+			margin: 0 5% 0 5%;
 		}
 
-		.item h3 {
-			display: flex;
-			align-items: center;
-			color: #000000;
-		}
+		// #detalhes .item .text h3:nth-child(1+2) {
+		// 	display: flex;
+		// 	align-items: center;
+		// 	color: #7159c1;
+		// }
 
 		.item .text {
 			padding: 0;
 			position: relative;
 			margin-left: 5%;
+			color: #fff;
 		}
 
 		.item p {
@@ -215,37 +216,40 @@ html body {
 
 		#detalhes .item.item-single .image {
 			background-size: contain;
-			width: 50%!important;
+			width: 50% !important;
 		}
 
-		#detalhes .item .text .detail {
-			background: transparent;
-			position: relative;
-			z-index: 1;
-			margin-left: 5%;
-			color: #9aca3c;
-			border-radius: 7px!important;
-		} // box cinza transparente
+		// #detalhes .item .text {
+		// 	background: transparent;
+		// 	position: relative;
+		// 	z-index: 1;
+		// 	margin-left: 5%;
+		// 	color: #9aca3c;
+		// 	border-radius: 7px!important;
+		// } // box cinza transparente
 
 		#detalhes .item .text {
 			background: rgba(0, 0, 0, 0.6);
 			position: relative;
 			z-index: 1;
-			margin-left: 5%;
-			border-radius: 7px!important;
+			color: #fff !important;
+			border-radius: 7px !important;
 		}
 
-		#detalhes .item .text h3 {
-			color: #000000;
+		#detalhes .item .text h3:nth(10) {
+			color: #fff;
 		}
 
+		#detalhes .item .text p {
+			color: #fff;
+		}
 
 		.item.item-full .text:before {
 			content: "";
-			width: 105%!important;
-			background: rgba(0, 0, 0, 0.6)!important;
-			margin-left: -2%!important;
-			border-radius: 7px!important;
+			width: 105% !important;
+			background: rgba(0, 0, 0, 0.6) !important;
+			margin-left: -2% !important;
+			border-radius: 7px !important;
 		} // box cinza transparente
 
 		#detalhes .item h3 {
@@ -256,11 +260,10 @@ html body {
 
 		.item .image {
 			background-size: contain;
-			margin-left: 10%;
+			// margin-left: 10%;
 		}
 
 		.item.item-full .image {
-			left: 0;
 			min-height: 682px;
 			position: absolute;
 			width: 100%;
@@ -271,7 +274,7 @@ html body {
 		.item.item-full .text:before {
 			content: "";
 			width: 105%;
-			background: rgba(0, 0, 0, 0.6)!important;
+			background: rgba(0, 0, 0, 0.6) !important;
 			margin-left: -2%;
 			border-radius: 7px;
 		}
