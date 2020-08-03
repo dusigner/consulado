@@ -5,7 +5,11 @@ import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
+<<<<<<< HEAD
 import 'modules/product/details'; //trocar por v3
+=======
+import 'modules/product/details-v3';
+>>>>>>> 297a6c682b992fe3ef0c2608a8ad02f79c9e40bc
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
@@ -31,7 +35,7 @@ Nitro.controller(
 		'galleryv2',
 		'product-nav',
 		'video',
-		'details',
+		'details-v3',
 		'specifications-v2',
 		'selos',
 		'sku-select',
@@ -55,7 +59,8 @@ Nitro.controller(
 
 		galleryv2.init();
 
-		$('body').addClass('testeAB-detalhes'); //teste A-B detalhes
+		//teste A-B detalhes
+		// $('body').addClass('testeAB-detalhes');
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
