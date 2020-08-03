@@ -29,12 +29,12 @@ Nitro.module('details', function() {
 			},
 			{
 				item: 'item-half item-right',
-				text: 'text-left col-v2 l4',
+				text: 'text-left col-v2 l6',
 				image: ''
 			},
 			{
 				item: 'item-half',
-				text: 'text-right col-v2 l4',
+				text: 'text-right col-v2 l6',
 				image: ''
 			},
 			{

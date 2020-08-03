@@ -175,11 +175,23 @@ html body {
 			margin: 0 5% 0 5%;
 		}
 
-		// #detalhes .item .text h3:nth-child(1+2) {
-		// 	display: flex;
-		// 	align-items: center;
-		// 	color: #7159c1;
-		// }
+		#detalhes .item h3 {
+			color: #000000;
+			font-weight: bold;
+			line-height: 1em;
+			margin-bottom: 0px;
+		}
+
+		#detalhes .item p {
+			color: #000000;
+			line-height: 1em;
+		}
+
+		.item.item-half .image {
+			float: right;
+			width: 50% !important;
+			z-index: 0;
+		}
 
 		.item .text {
 			padding: 0;
@@ -219,45 +231,6 @@ html body {
 			width: 50% !important;
 		}
 
-		// #detalhes .item .text {
-		// 	background: transparent;
-		// 	position: relative;
-		// 	z-index: 1;
-		// 	margin-left: 5%;
-		// 	color: #9aca3c;
-		// 	border-radius: 7px!important;
-		// } // box cinza transparente
-
-		#detalhes .item .text {
-			background: rgba(0, 0, 0, 0.6);
-			position: relative;
-			z-index: 1;
-			color: #fff !important;
-			border-radius: 7px !important;
-		}
-
-		#detalhes .item .text h3 {
-			color: #fff;
-		}
-
-		#detalhes .item .text p {
-			color: #fff;
-		}
-
-		.item.item-full .text:before {
-			content: "";
-			width: 105% !important;
-			background: rgba(0, 0, 0, 0.6) !important;
-			margin-left: -2% !important;
-			border-radius: 7px !important;
-		} // box cinza transparente
-
-		#detalhes .item h3 {
-			font-weight: 700;
-			line-height: 1em;
-			margin-bottom: 0;
-		} // texto de dentro do box cinza transparente
-
 		.item .image {
 			background-size: contain;
 			// margin-left: 10%;
@@ -271,12 +244,27 @@ html body {
 			border-radius: 7px;
 		} // imagem com box cinza transparente
 
-		.item.item-full .text:before {
-			content: "";
-			width: 105%;
-			background: rgba(0, 0, 0, 0.6) !important;
-			margin-left: -2%;
-			border-radius: 7px;
+		.item-full {
+			.text {
+				background-color: rgba(0, 0, 0, 0.6) !important;
+				border-radius: 7px;
+				color: #ffffff;
+				padding: 0 21px 0 33px;
+
+				h3 {
+					color: #fff !important;
+				}
+
+				p {
+					color: #fff !important;
+				}
+
+				&:before {
+					background-color: transparent !important;
+					content: "";
+					left: -1050%;
+				}
+			}
 		}
 
 		#especificacoes {
