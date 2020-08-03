@@ -9,7 +9,9 @@
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto.css?v=<!-- @echo package.version -->" />
 </head>
 <body data-controller="produto">
-	<vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" />
+	<!-- Index best price in Google Shopping-->
+	<vtex.cmc:productRichSnippets  paymentSystemId="4" />
+	<!-- /Index best price in Google Shopping-->
 
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
@@ -45,7 +47,7 @@
 					<!-- <div class="trustvox-rating"> -->
 					<div class="trustvox-rating">
 						<a class="trustvox-fluid-jump trustvox-widget-rating" href="#trustvox-reviews" title="Pergunte e veja opiniões de quem já comprou">
-							<div class="trustvox-shelf-container" data-trustvox-product-code-js="skuJson.productId" data-trustvox-should-skip-filter="true" data-trustvox-display-rate-schema="true"></div>
+							<div class="trustvox-shelf-container" data-trustvox-product-code-js="skuJson.productId" data-trustvox-should-skip-filter="true" data-trustvox-display-rate-schema="false"></div>
 							<span class="rating-click-here">Ver avaliações</span>
 						</a>
 					</div>
