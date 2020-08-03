@@ -5,11 +5,7 @@ import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
-<<<<<<< HEAD
-import 'modules/product/details'; //trocar por v3
-=======
-import 'modules/product/details-v3';
->>>>>>> 297a6c682b992fe3ef0c2608a8ad02f79c9e40bc
+import 'modules/product/details-v3'; //trocar por v3
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
@@ -61,6 +57,7 @@ Nitro.controller(
 
 		//teste A-B detalhes
 		// $('body').addClass('testeAB-detalhes');
+		$('.detalhes .box-options .is--active').append('<h2 class="title-detalhes">Conheça o produto</h2><p class="no-doubt">Tudo pensado para não haver dúvidas</p>');
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
