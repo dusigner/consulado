@@ -21,16 +21,16 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 
 	#form-title {
 		@include rfs(12px);
-		display: block !important;
-		cursor: pointer;
-		font-weight: 500;
-		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
-		padding: 10px 10px 10px 20px;
-		position: relative;
-		transition: text-indent 0.3s;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
 		border-top: 1px solid #e3e1e1;
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+		cursor: pointer;
+		display: block !important;
+		font-weight: 500;
+		padding: 10px 10px 10px 20px;
+		position: relative;
+		transition: text-indent 0.3s;
 
 		&.is--active {
 			&:before {
@@ -55,16 +55,16 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 
 	.portal-notify-me-ref form {
 		@include rfs(12px);
-		position: absolute;
-		z-index: 1;
 		background: #fff;
+		border-bottom: 2px solid #9aca3c;
+		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		display: block !important;
 		opacity: 0;
-		visibility: hidden;
+		position: absolute;
 		transition: 0.8 ease-in-out;
+		visibility: hidden;
 		width: 100%;
-		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
-		border-bottom: 2px solid #9aca3c;
+		z-index: 1;
 		&.is--active:before {
 			transform: translate(5px, -50%) rotate(-180deg);
 		}
@@ -113,13 +113,13 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			}
 		}
 
-		.box-produto {
+		//.box-produto {
 			// &:hover {
 			// 	.promo-destaque__bg {
 			// 		transform: translateX(-148px);
 			// 	}
 			// }
-		}
+		//}
 
 		.promo-destaque {
 			order: 2;
@@ -138,12 +138,14 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			}
 
 			&__text {
+				color: #fff !important;
 				font-size: 6px;
 				left: 0;
 				line-height: 100%;
 				padding-left: 33px;
 				text-align: left;
 				text-indent: 0;
+				transform: translate(-3px, -50%);
 				transition: color 0.2s ease, transform 0.2s ease;
 				z-index: 1;
 			}
@@ -156,18 +158,13 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 				width: 100%;
 			}
 
-			&__text {
-				color: #fff !important;
-				transform: translate(-3px, -50%);
-			}
-
 			&__icon:nth-child(2) {
 				opacity: 1;
 			}
 
 			&__price {
-				font-size: 10px;
 				color: #fff;
+				font-size: 10px;
 				line-height: 13px;
 				right: 14px;
 				z-index: 10;
@@ -180,7 +177,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			margin-top: 4px;
 			width: 200px;
 		}
-		form {
+		& form {
 			input[type="text"],
 			input[type="email"],
 			input[type="password"],
@@ -270,6 +267,18 @@ body #relacionados-top {
 	// .promo-destaque  {
 	// 	display: none;
 	// }
+
+	.container {
+		padding: 0;
+		width: 100%;
+	}
+	.row {
+		margin: 0 auto;
+	}
+	.slick-slider {
+		width: 100%;
+	}
+
 	.relacionados-title {
 		display: none;
 	}
@@ -291,16 +300,22 @@ body #relacionados-top {
 	.wishlist__container {
 		display: none;
 	}
-	.container {
-		padding: 0;
+	.prateleira {
 		width: 100%;
 	}
 	.prateleira-slider {
-		@include breakpoint("small", "min") {
+		width: 100%;
+		@include breakpoint('small', 'min') {
 			margin-top: -12px;
 		}
 		h2 {
 			display: none;
+		}
+		.slick-track {
+			@include breakpoint('medium', 'min') {
+				max-width: 440px;
+				width: 100% !important;
+			}
 		}
 		.slick-track .slick-slide {
 			margin: 0 10px 0 0;
@@ -442,15 +457,14 @@ body #relacionados-top {
 				}
 				.nome {
 					color: $gray-dark;
+					display: flex;
+					flex-direction: column;
 					font: $font-family;
 					font-size: 13px;
 					font-weight: bold;
 					line-height: 16px;
-					display: flex;
 					margin: 23px 0 5px;
 					order: 1;
-					display: flex;
-					flex-direction: column;
 				}
 				.price {
 					order: 3;
