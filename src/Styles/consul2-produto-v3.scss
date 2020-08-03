@@ -184,7 +184,7 @@ html body {
 		.item .text {
 			padding: 0;
 			position: relative;
-			margin-left: 5%;
+			margin-left: 0;
 			color: #fff;
 		}
 
@@ -236,7 +236,7 @@ html body {
 			border-radius: 7px !important;
 		}
 
-		#detalhes .item .text h3:nth(10) {
+		#detalhes .item .text h3 {
 			color: #fff;
 		}
 
