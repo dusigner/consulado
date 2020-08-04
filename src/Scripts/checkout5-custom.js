@@ -1055,7 +1055,17 @@ $(document).on('ready', function() {
 			}
 
 			this.tiraDuvidas = () => {
-				$('#btn-modal').length === 0 ? $('<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Está com alguma dúvida em relação ao pagamento?</button>').appendTo('.summary-template-holder') : console.log('Button already exist!');
+				const btn = '<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Está com alguma dúvida em relação ao pagamento?</button>';
+				const pushDataLayer = (cat, act, lbl) => {
+					dataLayer.push({
+						event: 'generic',
+						category: cat,
+						action: act,
+						label: lbl
+					});
+				}
+
+				$('#btn-modal').length === 0 ? ($(window).width > 767 ? $('.cart-template.full-cart .summary-template-holder').append(btn) : $('.cart-template.full-cart .extensions-checkout-buttons-container').append(btn)) : console.info('Button already exists!');
 
 				$('#btn-modal').click(function () {
 					$('#cover, #modal').fadeTo(200, 1);
@@ -1068,7 +1078,9 @@ $(document).on('ready', function() {
 				});
 
 				$('.pergunta h2').click(function () {
+					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
 					var target = $(this).next('div.resposta');
+
 					$('div.resposta:visible').not(target).slideUp();
 					target.slideToggle();
 
@@ -1078,15 +1090,29 @@ $(document).on('ready', function() {
 						$('.pergunta h2').removeClass('is--active');
 						$(this).addClass('is--active');
 					}
+
+					pushDataLayer(
+						'PDP_tira_duvidas',
+						`clique_categoria_faq`,
+						`${label}`
+					);
 				});
 
-
 				$('.toggle').click(function () {
+					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+					var target = $(this).next('ul.content');
+
 					$('.toggle').removeClass('active');
 					$(this).addClass('active');
-					var target = $(this).next('ul.content');
+
 					$('ul.content:visible').not(target).hide('fast');
 					target.show('fast');
+
+					pushDataLayer(
+						'PDP_tira_duvidas',
+						`abertura_faq`,
+						`${label}`
+					);
 				});
 
 				if ($('body').width() < 768) {
@@ -1098,9 +1124,6 @@ $(document).on('ready', function() {
 						});
 					});
 				}
-
-				console.info('Módulo Tira Dúvida Carregou...')
-
 			}
 
 			this.init();
