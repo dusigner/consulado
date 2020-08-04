@@ -56,8 +56,7 @@ Nitro.controller(
 		galleryv2.init();
 
 		//teste A-B detalhes
-		// $('body').addClass('testeAB-detalhes');
-		// $('.detalhes .box-options .is--active').append('<h2 class="title-detalhes">Conheça o produto</h2><p class="no-doubt">Tudo pensado para não haver dúvidas</p>');
+		$('body').addClass('testeAB-detalhes');
 
 		// Teste AB
 		var urlTesteAb = window.location.search;

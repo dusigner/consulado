@@ -171,6 +171,7 @@ body .box-options {
 html body {
 	.box-options .title-detalhes {
 		@include rfs(26);
+		display: block !important;
 		align-items: center;
 		color: #515151;
 		display: block;
@@ -180,6 +181,7 @@ html body {
 
 	.box-options .no-doubt {
 		@include rfs(14);
+		display: block !important;
 		align-items: center;
 		color: #736c6b;
 		display: block;
@@ -194,9 +196,48 @@ html body {
 			margin: 0 5% 0 5%;
 		}
 
+		//ajustes de responsividade
+		#detalhes .item.item-single .image {
+			@media (max-width: 60em) {
+				width: 100% !important;
+				margin: auto;
+			}
+		}
+
+		#detalhes .item.item-right .image {
+			@media (max-width: 60em) {
+				float: none;
+				margin: auto;
+				width: 100% !important;
+			}
+		}
+
+		#detalhes .item.item-half .image {
+			@media (max-width: 60em) {
+				float: none;
+				margin: auto;
+				width: 100% !important;
+			}
+		}
+
+		#detalhes .item {
+			@media (max-width: 48em) {
+				margin-bottom: 40px;
+			}
+		}
+
+		#detalhes {
+			@media (max-width: 736px) {
+				margin: 0 5% 0 5%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+		//fim dos ajustes de responsividade
+
 		#detalhes .item h3 {
 			@include rfs(32);
-			color: #000000;
 			font-weight: bold;
 			line-height: 1em;
 			margin-bottom: 0px;
@@ -211,10 +252,10 @@ html body {
 		.item .text {
 			padding: 0;
 			margin-top: 3%;
+			color: #515151;
 			margin-bottom: 3%;
 			position: relative;
 			margin-left: -10%;
-			color: #000000;
 		}
 
 		.item.item-extrafull .image,
@@ -239,10 +280,6 @@ html body {
 			width: 50% !important;
 		}
 
-		.item .image {
-			background-size: contain;
-		}
-
 		.item.item-full .image {
 			min-height: 682px;
 			position: absolute;
@@ -255,7 +292,6 @@ html body {
 			.text {
 				background-color: rgba(0, 0, 0, 0.6) !important;
 				border-radius: 7px;
-				color: #ffffff;
 				margin-left: 0;
 				padding: 0 21px 0 33px;
 
@@ -264,7 +300,7 @@ html body {
 				}
 
 				p {
-					color: #fff;
+					color: #fff !important;
 				}
 
 				&:before {
@@ -282,8 +318,8 @@ html body {
 
 	.testeB[data-bind="#assistencia"] {
 		#detalhes {
-			display: none !important;
-			margin: 0 10% 0 10%;
+			display: block !important;
+			margin: 0 5% 0 5%;
 		}
 
 		#especificacoes {

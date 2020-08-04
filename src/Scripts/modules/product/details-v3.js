@@ -34,7 +34,7 @@ Nitro.module('details-v3', function() {
 			},
 			{
 				item: 'item-half',
-				text: 'text-right col-v2 l6',
+				text: 'text-left col-v2 l6',
 				image: ''
 			},
 			{
