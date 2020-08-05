@@ -169,31 +169,52 @@ body .box-options {
 }
 
 html body {
-	.box-options .title-detalhes {
-		@include rfs(26);
-		display: block !important;
-		align-items: center;
-		color: #515151;
-		display: block;
-		margin-bottom: -1%;
-		text-align: center;
-	}
+	// .box-options .is--active .title-detalhes {
+	// 	@include rfs(26);
+	// 	display: block !important;
+	// 	align-items: center;
+	// 	color: #515151;
+	// 	display: block;
+	// 	margin-bottom: -1%;
+	// 	text-align: center;
+	// }
 
-	.box-options .no-doubt {
-		@include rfs(14);
-		display: block !important;
-		align-items: center;
-		color: #736c6b;
-		display: block;
-		font-weight: 1em;
-		margin-bottom: 1%;
-		text-align: center;
-	}
+	// .box-options .is--active .no-doubt {
+	// 	@include rfs(14);
+	// 	display: block !important;
+	// 	align-items: center;
+	// 	color: #736c6b;
+	// 	display: block;
+	// 	font-weight: 1em;
+	// 	margin-bottom: 1%;
+	// 	text-align: center;
+	// }
 
 	.testeB[data-bind="#detalhes"] {
 		#detalhes {
 			display: block !important;
 			margin: 0 5% 0 5%;
+		}
+
+		#detalhes .box-options .is--active .title-detalhes {
+			@include rfs(26);
+			display: block !important;
+			align-items: center;
+			color: #515151;
+			display: block;
+			margin-bottom: -1%;
+			text-align: center;
+		}
+
+		#detalhes .box-options .is--active .no-doubt {
+			@include rfs(14);
+			display: block !important;
+			align-items: center;
+			color: #736c6b;
+			display: block;
+			font-weight: 1em;
+			margin-bottom: 1%;
+			text-align: center;
 		}
 
 		//ajustes de responsividade
@@ -249,8 +270,8 @@ html body {
 			z-index: 0;
 		}
 
-		.item .text {
-			padding: 0;
+		#detalhes .item .text {
+			padding: 0 0 0 25px;
 			margin-top: 3%;
 			color: #515151;
 			margin-bottom: 3%;
@@ -292,7 +313,7 @@ html body {
 			.text {
 				background-color: rgba(0, 0, 0, 0.6) !important;
 				border-radius: 7px;
-				margin-left: 0;
+				margin-left: 0!important;
 				padding: 0 21px 0 33px;
 
 				h3 {
