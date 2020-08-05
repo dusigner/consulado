@@ -5,7 +5,7 @@ require('Dust/details.html');
 require('Dust/detailsLancamento.html');
 require('../../vendors/jquery.whp-modal');
 
-Nitro.module('details', function() {
+Nitro.module('details-v3', function() {
 	var $detalhes = $('#detalhes'),
 		data = {
 			items: [],
@@ -19,22 +19,22 @@ Nitro.module('details', function() {
 		styleMap = [
 			{
 				item: 'item-half item-single',
-				text: 'text-left col-v2 l5',
+				text: 'text-left col-v2 l6',
 				image: ''
 			},
 			{
 				item: 'item-full',
-				text: 'text-left col-v2 l7 m12 offset-l2',
+				text: 'text-left col-v3 l7 m12 offset-l2',
 				image: ''
 			},
 			{
 				item: 'item-half item-right',
-				text: 'text-left col-v2 l4',
+				text: 'text-left col-v2 l6',
 				image: ''
 			},
 			{
 				item: 'item-half',
-				text: 'text-right col-v2 l4',
+				text: 'text-left col-v2 l6',
 				image: ''
 			},
 			{
