@@ -823,6 +823,10 @@ body.consulqa {
 	}
 }
 
+#relacionados {
+	margin-top: 35px;
+}
+
 #relacionados,
 #quem-viu-clicou {
 	@include breakpoint(small, 'max') {

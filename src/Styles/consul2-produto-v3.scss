@@ -134,7 +134,6 @@
 	}
 }
 
-// teste ab
 .main-tabs {
 	text-align: center;
 	border-bottom: 1px solid #e3e1e1;
@@ -169,27 +168,6 @@ body .box-options {
 }
 
 html body {
-	// .box-options .is--active .title-detalhes {
-	// 	@include rfs(26);
-	// 	display: block !important;
-	// 	align-items: center;
-	// 	color: #515151;
-	// 	display: block;
-	// 	margin-bottom: -1%;
-	// 	text-align: center;
-	// }
-
-	// .box-options .is--active .no-doubt {
-	// 	@include rfs(14);
-	// 	display: block !important;
-	// 	align-items: center;
-	// 	color: #736c6b;
-	// 	display: block;
-	// 	font-weight: 1em;
-	// 	margin-bottom: 1%;
-	// 	text-align: center;
-	// }
-
 	.testeB[data-bind="#detalhes"] {
 		#detalhes {
 			display: block !important;
@@ -313,7 +291,7 @@ html body {
 			.text {
 				background-color: rgba(0, 0, 0, 0.6) !important;
 				border-radius: 7px;
-				margin-left: 0!important;
+				margin-left: 0 !important;
 				padding: 0 21px 0 33px;
 
 				h3 {

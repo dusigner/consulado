@@ -13,9 +13,8 @@
 </head>
 
 <body data-controller="produto-v2">
-	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 	<!-- Index best price in Google Shopping-->
-	<vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" paymentSystemId="4" />
+	<vtex.cmc:productRichSnippets paymentSystemId="4" />
 	<!-- /Index best price in Google Shopping-->
 
 	<!-- Top Header -->
@@ -36,14 +35,10 @@
 		</div>
 	</div>
 
-
-
-
-
 	<!-- Main -->
 	<div class="main clearfix">
 		<div class="container clearfix">
-			<div class="row no-margin">
+			<div class="row m-0">
 				<!-- Box-left -->
 				<div class="col-v2 l7 m12 gutters-on position-sticky-prod">
 					<div class="prod-title" itemscope="" itemtype="http://schema.org/Product">
@@ -239,7 +234,7 @@
 					</div>
 
 					<div class="row prod-more-info">
-						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420"
+						<a href="https://atendimento.consul.com.br/faq?step=2&amp;category=419,420"
 							title="Informações de contratação" target="_blank">Informações de contratação</a>
 						<a href="#" class="tipo-de-entrega" title="Tipos de entrega" data-modal="tipo-entrega">Tipos de
 							entrega</a>
@@ -269,9 +264,11 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- /Box-right -->
 			</div>
+			<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Ficou com alguma dúvida? A Consul te ajuda.</button>
 		</div>
 	</div>
 	<!-- /main -->
@@ -336,7 +333,7 @@
 									<div class="trustvox-shelf-container"
 										data-trustvox-product-code-js="skuJson.productId"
 										data-trustvox-should-skip-filter="true"
-										data-trustvox-display-rate-schema="true"></div>
+										data-trustvox-display-rate-schema="false"></div>
 									<span class="rating-click-here">Ver avaliações</span>
 								</a>
 							</div>
@@ -369,6 +366,187 @@
 		</section>
 	</div>
 
+
+	<!-- Modal Tira Dúvidas -->
+	<div class="modal-tira-duvidas">
+		<vtex.cmc:modalTiraDuvidas />
+		 <!-- <div class="container-fluid p-0">
+			<div class="row">
+				<div class="title-tira-duvidas"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Tira Dúvidas Consul</div>
+				<div class="menu-questions">
+					<ul class="menu-main">
+						<li class="toggle active"><span class="icon-toggle forma-pgmto"></span><span>Formas de Pagamento</span><span class="icone-seta"></span></li>
+						<ul class="content d-md-block">
+							<span class="btn-voltar">Voltar</span>
+							<h2 class="title-question"><span class="icon-toggle forma-pgmto"></span><span>Formas de Pagamento</span><span class="icone-seta"></span></h2>
+							<li class="pergunta"><h2>Pic Pay <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Para realizar sua compra Consul usando o Picpay, você pode adicionar saldo em sua carteira PicPay ou fazer o cadastro de um cartão de crédito. Também é possível retirar o dinheiro do seu app direto para sua conta bancária. Dica: o seu dinheiro na carteira PicPay rende diariamente.<br/>
+
+Para adicionar dinheiro na sua conta, você precisa estar cadastrado e entrar no app. Toque em “Adicionar”, selecione boleto bancário, transferência ou Banco Original, e siga o passo a passo indicado no app. Conheça os prazos: <br/>
+Transferência via TED: é rapidinho, em até 1 hora útil o valor estará na sua conta PicPay
+Transferência via DOC: leva um pouco mais de tempo, pedimos até 1 dia útil
+Adição por boleto: após o pagamento do boleto, o prazo é de 2 dias úteis para entrar na sua conta PicPay
+Banco Original: é na hora!<br/>
+
+Você também pode adicionar um cartão de crédito na sua conta PIcPay.<br>
+Se você é o próprio titular do cartão, basta abrir o app, ir em “Carteira”, tocar em “Adicionar cartão de crédito”, inserir as informações solicitadas e pronto! Caso o cartão não esteja no seu nome, você também pode cadastrá-lo no app, mas para isso é necessário ter a autorização do titular do cartão, beleza? No momento de inserir as informações, lembre-se que é o CPF e o telefone do titular do cartão de crédito que você precisa cadastrar.<br>
+
+Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecionar a aba “Store” e a opção “Pagar Conta”. É possível quitar seu boleto com o saldo da sua carteira PicPay ou com o cartão de crédito cadastrado no app. Caso decida pelo pagamento com o cartão, você pode parcelar em até 12x!
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Mercado Pago <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Carteira Digital que permite a compra via cartão de crédito ou boleto bancário à vista, exatamente como faz para pagar as suas despesas básicas, como água, luz e telefone.<br/>
+										Ou você pode inserir saldo e usá-lo quando quiser para compras ou para recargar o seu celular.<br/>
+
+										O processo é simples:<br/>
+										Você escolhe seu produto Consul e escolhe a opção "Mercado Pago" na forma de pagamento.<br/>
+										Você só terá um custo de parcelamento se decidir pagar parcelado com cartão de crédito. Mantemos o seu dinheiro protegido até que esteja de acordo. Se tiver algum problema, basta acionar nossos canais de atendimento.<br/>
+
+										Se já realizou um pagamento e descobriu que faltou uma parte, por exemplo, o frete, você pode:<br/>
+
+										1. Acessar "Atividade" na sua conta do Mercado Pago.<br/>
+										2. Buscar o seu pagamento e escolher "Adicionar dinheiro no Mercado Pago".
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>PayPal <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Com o PayPal, você pode pagar seu produto Consul como quiser: basta adicionar seus cartões de crédito à sua carteira do PayPal. Quando quiser pagar, acesse sua conta com seu nome de usuário e senha e escolher qual deles quer usar.<br/>
+
+										Você não precisa compartilhar os dados do seu cartão de crédito ou preencher formulário enormes. Você só precisa de seu e-mail e senha do PayPal para finalizar sua compra.<br/>
+
+										E não precisa ter saldo na sua conta do PayPal para comprar com o PayPal. Como acontece quando você faz compras em uma loja física, você pode escolher pagar por seus produtos com qualquer cartão de crédito adicionado à carteira do PayPal.<br/>
+
+										Para adicionar um cartão, acesse sua conta do PayPal. Na seção Perfil, clique em Adicionar cartão de crédito. Selecione o tipo do cartão, informe os dados solicitados e clique em Salvar. Pronto!
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Spin Pay <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Spin Pay é um gateway de pagamentos instantâneos que conecta pagadores e a loja Consul. Ele foi criado para quem quer movimentar recursos de forma simples, rápida e segura.<br/>
+										Pagar com Spin Pay é simples e seguro:<br/>
+
+										No checkout, escolha "Pagamento Instantâneo". Selecione o seu banco ou wallet. Confirme a compra no app do seu banco ou escaneie o QR code. Pronto! Sua compra na Loja Consul está pronta!
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Boleto Bancário <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Pagar dessa forma é super simples: basta selecionar o pagamento via boleto e seguir o passo-a-passo da sua emissão. Você terá 1 (um) dia útil para pagá-lo em qualquer banco ou estabelecimento conveniado, como Lotéricas e Correios, ou até mesmo via aplicativos. Caso isso não aconteça, seu pedido será cancelado de forma automática e uma possível nova compra estará sujeita à disponibilidade do produto. Esta modalidade de pagamente geralmente conta com algum desconto extra.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Cartão de Crédito <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Se você tem cartão de crédito, pode dividir o pagamento da sua compra em até 12x, mas observe sempre o limite máximo de parcelas para cada produto. <br/>
+										Selecione seu produto, escolha para via cartão, digite seus dados de segurança. Fique tranquilo! Na Loja Consul, seus dados estão seguros. Aqui você também pode dividir seu pagamaneto em até 2 cartões.<br/>
+										Confira sempre as taxas de juros e o limite estabelecidos para o seu cartão.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Transferência Bancária <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Nesta modalidade, você paga à vista direto da sua conta bancária para a Loja Consul. A confirmação do pagamento é instantânea, ao finalizar o processo a loja já é comunicada do pagamento e seu produto está liberado para o envio.<br/>
+										Optando pela transferência bancária online, você é redirecionados para a página de pagamento do seu banco. Após o Login, é solicitada a confirmação do pagamento e logo você é redirecionada para a Loja Consul.<br/>
+										Confira sempre se seu banco disponibiliza esta funcionalidade.
+									</p>
+								</div>
+							</li>
+						</ul>
+						<li class="toggle"><span class="icon-toggle frete"></span><span>Modalidades de Frete</span><span class="icone-seta"></span></li>
+						<ul class="content">
+							<span class="btn-voltar">Voltar</span>
+							<h2 class="title-question"><span class="icon-toggle frete"></span><span>Modalidades de Frete</span><span class="icone-seta"></span></h2>
+							<li class="pergunta"><h2>Entrega Convencional<span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p> Com ela, logo após a confirmação do pagamento você tem previsibilidade de quando receberá seu produto. Na compra de mais de um produto, as entregas podem ocorrer em datas diferentes, caso saiam de centros de distribuições distintos.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Entrega Econômica<span class="icone-seta"></span></h2>
+								<div class="resposta"> <p>Ideal para quem quer economizar e pode esperar um pouco mais para receber seu produto. Você continua com as informações de rastreio, mas a entrega pode demorar um pouco mais que o modelo convencional.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Entrega Agendada<span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Aqui já é possível agendar a data e o turno em que você deseja receber o seu produto. Ideal para quem tem limitação de data ou horário para entrega e quer ter certeza de quando receberá o seu produto.</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Entrega Rápida<span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Perfeita para quem tem urgência em receber seu produto e pode pagar um pouco mais por isso. A entrega pode ser feita em horários flexíveis e, em algumas regiões, pode ocorrer em até 48h após a confirmação do pedido.<br/>
+										Escolha aquela que mais se adequa à sua necessidade e boas compras!
+									</p>
+								</div>
+							</li>
+						</ul>
+						<li class="toggle"><span class="icon-toggle garantia"></span><span>Garantia Estendida</span><span class="icone-seta"></span></li>
+						<ul class="content">
+							<span class="btn-voltar">Voltar</span>
+							<h2 class="title-question"><span class="icon-toggle garantia"></span><span>Garantia Estendida</span><span class="icone-seta"></span></h2>
+							<li class="pergunta"><h2>O que é o Seguro Garantia Estendida Original? <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Seu produto Consul já conta com a garantia de fábrica de 12 meses a partir da emissão de sua nota fiscal. Mas estendendo a garantia do seu produto, você tem mais tranquilidade por até 3 anos adicionais. É fácil e custa pouco!
+										Você pode contratar o Seguro Garantia Estendida Original no momento da compra do seu produto Consul e seu valor pode ser parcelado junto com o total do pedido.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Como posso contratar o Seguro Garantia Estendida Original do meu produto? <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>No momento da compra do seu produto, você poderá estender sua garantia por até 3 anos.
+										Logo após escolher o produto e a voltagem correta, uma tela surgirá com a sugestão das vigências e seus respectivos valores. Escolha o que mais se adequa à sua necessidade e garanta sua tranquilidade por ainda mais tempo!
+										Se preferir, clique em "Adicionar Seguro Garantia Original", escolha a vigência ideal e seu valor será adicionado ao carrinho. Simples, não é?
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Como acesso o bilhete da garantia estendida original do meu produto? <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Logo que o seu pedido for faturado, você receberá o bilhete do Seguro Garantia Estendida Original do seu produto via e-mail. É importante guardá-lo para seu uso em caso de imprevistos.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>Como posso acessar a seguradora?	 <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Em caso de imprevistos, você poderá acessar a Assurant, seguradora responsável pelo seu atendimento especializado, de duas formas:<br/>
+										Chat online: basta <a href="https://www.assurant.com.br">acessar</a>. Lá você pode entrar na área do cliente e clicar em Chat Online. <br/>
+										Telefone: ligue para o número <a href="tel:0800 773 5077">0800 773 5077</a> (ou <a href="tel:0800 726 6363">0800 726 6363</a>, para deficientes auditivos e de fala). O atendimento é feito 24 horas / 7 dias por semana.<br/>
+
+										Mas atenção! Se houver algum imprevisto com o seu produto no período em até 1 ano após a emissão da sua nota fiscal, acione gratuitamente sua garantia de fábrica através dos canais de atendimento Consul.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>O que o Seguro Garantia Estendida Original cobre? <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>Estendendo a garantia do seu produto, você conta com assistência técnica especializada quantas vezes seu produto precisar, peças 100% originais de fábrica e a troca do seu produto em caso de impossibilidade de reparo coberto.
+									</p>
+								</div>
+							</li>
+							<li class="pergunta"><h2>O que o Seguro Garantia Estendida Original não cobre? <span class="icone-seta"></span></h2>
+								<div class="resposta">
+									<p>O Seguro Garantia Estendida Original do seu produto não cobre danos estéticos, avarias causadas por uso inadequado e reparos em produtos que já foram trocados.
+									</p>
+								</div>
+							</li>
+						</ul>
+					</ul>
+					<div class="central-atendimento">
+						<h5>CENTRAL TELEFÔNICA</h5>
+
+						<strong>Capitais e regiões metropolitanas</strong>
+						<p>(11) 3007 0777</p>
+
+						<strong>Outras localidades</strong>
+						<p>0800 970 0777<br/>Seg à Sáb, de 8 às 22h <br/> (exceto feriados)</p>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	</div>
+
 	<!-- Chaordic TOP -->
 	<div chaordic="top"></div>
 	<!-- /Chaordic TOP -->
@@ -382,7 +560,7 @@
 		<section id="especificacoes" class="content-toggle">
 
 		</section>
-		<section id="assistencia" class="product-assist container">
+		<!-- <section id="assistencia" class="product-assist container">
 			<h2 class="text-center">
 				Assistência e Relacionados
 			</h2>
@@ -407,7 +585,7 @@
 					<div class="second-block">
 						<h3>Informações de contratação</h3>
 						<p>Tire suas dúvidas sobre categorias e produtos</p>
-						<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420" target="_blank">Veja
+						<a href="https://atendimento.consul.com.br/faq?step=2&amp;category=419,420" target="_blank">Veja
 							mais <b>></b></a>
 					</div>
 				</div>
@@ -416,7 +594,7 @@
 						<div class="second-block">
 							<h3>Informações de contratação</h3>
 							<p>Tire suas dúvidas sobre categorias e produtos</p>
-							<a href="https://consul.custhelp.com/app/faq?step=2&amp;category=419,420"
+							<a href="https://atendimento.consul.com.br/faq?step=2&amp;category=419,420"
 								target="_blank">Veja
 								mais <b>></b></a>
 						</div>
@@ -443,7 +621,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 		<!-- Produtos relacionados - Vtex -->
 		<section id="relacionados" class="slider">
@@ -478,44 +656,6 @@
 				</div>
 			</div>
 
-			<!-- Modal tipos de entrega -->
-			<div id="modal-tipo-entrega" data-title="Tipos de entrega">
-				<span class="close-modal">X</span>
-				<!-- Texto blackfriday -->
-				<strong>Entrega Convencional</strong>
-				<ul class="list">
-					<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada
-						região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu
-						produto.</li>
-				</ul>
-				<br />
-
-				<strong>Entrega Convencional Agendada</strong>
-				<ul class="list">
-					<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.
-					</li>
-				</ul>
-				<br />
-
-				<strong>Entrega Econômica</strong>
-				<ul class="list">
-					<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa
-						agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor
-						menor pelo serviço.</li>
-				</ul>
-				<br />
-
-				<strong>Entrega Rápida</strong>
-				<ul class="list">
-					<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data
-						certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem
-						ocorrer até as 20hs em dias úteis.</li>
-				</ul>
-				<br />
-				<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
-			</div>
-			<!-- /Modal tipos de entrega -->
-
 			<!-- Modal entrega premium -->
 			<div id="modal-entrega-premium" data-title="Entrega Premium">
 				<ul class="list">
@@ -538,9 +678,113 @@
 	</div>
 	<!-- /Main -->
 
+	<!-- Modal tipos de entrega -->
+	<div id="modal-tipo-entrega" data-title="Tipos de entrega">
+		<span class="close-modal">X</span>
+		<!-- Texto blackfriday -->
+		<strong>Entrega Convencional</strong>
+		<ul class="list">
+			<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada
+				região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu
+				produto.</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Convencional Agendada</strong>
+		<ul class="list">
+			<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.
+			</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Econômica</strong>
+		<ul class="list">
+			<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa
+				agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor
+				menor pelo serviço.</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Rápida</strong>
+		<ul class="list">
+			<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data
+				certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem
+				ocorrer até as 20hs em dias úteis.</li>
+		</ul>
+		<br />
+		<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
+	</div>
+	<div id="modal-tipo-entrega__overlay"></div>
+	<!-- /Modal tipos de entrega -->
+
 	<!-- [ CHAORDIC ] BOTTOM -->
 	<div chaordic="bottom"></div>
 	<!-- /[ CHAORDIC ] BOTTOM -->
+
+	<section id="assistencia" class="product-assist container">
+		<h2 class="text-center">
+			Assistência e Relacionados
+		</h2>
+		<p class="text-center">
+			Tudo pensado para não haver dúvidas
+		</p>
+
+		<div class="product-assist-row">
+			<div class="product-assist-block infos" title="Informações de contratação">
+				<div class="first-block">
+					<div class="icon-infos"></div>
+				</div>
+				<div class="second-block">
+					<h3>Informações de contratação</h3>
+					<p>Tire suas dúvidas sobre categorias e produtos</p>
+				</div>
+				<a href="https://atendimento.consul.com.br/encontrar-produto" target="_blank">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block delivery" title="Tipos de entrega">
+				<div class="first-block">
+					<div class="icon-delivery"></div>
+				</div>
+				<div class="second-block">
+					<h3>Tipos de entrega</h3>
+					<p>Conheça nossos tipos de entrega e qual o melhor para você</p>
+				</div>
+				<a data-modal="tipo-entrega-new">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block parts" title="Peças para este produto">
+				<div class="first-block">
+					<div class="icon-parts"></div>
+				</div>
+				<div class="second-block">
+					<h3>Peças para este produto</h3>
+					<p>Encontre as peças adicionais ou de retroca deste produto</p>
+				</div>
+				<a href="" class="btn-pecas-produto">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block installation" title="Dicas de instalação">
+				<div class="first-block">
+					<div class="icon-corp"></div>
+				</div>
+				<div class="second-block">
+					<h3>Dicas de instalação</h3>
+					<p>Tire suas dúvidas sobre categorias e produtos</p>
+				</div>
+				<a href="#video" class="scroll-to">Veja mais <b>></b></a>
+			</div>
+			<div class="product-assist-block corp" title="Vendas corporativas">
+				<div class="first-block">
+					<div class="icon-corp"></div>
+				</div>
+				<div class="second-block">
+					<h3>Vendas corporativas</h3>
+					<p>Temos um atendimento dedicado para perfis corporativos</p>
+					<a href="http://loja.consulempresa.com.br" target="_blank">Veja mais <b>></b></a>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- Trustvox -->
 	<div class="trustvox-container container">

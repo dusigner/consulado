@@ -5,7 +5,7 @@ import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
-import 'modules/product/details-v3'; //trocar por v3
+import 'modules/product/details-v3';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
 import 'modules/product/sku-select';
@@ -472,9 +472,6 @@ Nitro.controller(
 				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
 			}
 		}
-
-		// tag pro teste ab
-		$('body').addClass('testeAB-detalhes');
 
 		// testeAB
 		if ( $('body').hasClass('testeAB-detalhes')) {
