@@ -246,7 +246,7 @@ body #relacionados-top {
 		}
 	}
 	.prateleira > ul {
-		padding-left: 20px;
+		padding-left: 0;
 	}
 
 	.slick-slider .slick-list {
@@ -258,9 +258,13 @@ body #relacionados-top {
 		color: #fff;
 		font-size: 9px;
 		position: absolute;
-		right: 0;
-		top: 0;
+		right: -10px;
+		top: -120px;
 		z-index: 1;
+		@include breakpoint ('small', 'min') {
+			right: -5px;
+			top: -100px;
+		}
 	}
 }
 
@@ -323,12 +327,14 @@ body #relacionados-top {
 				max-width: 440px;
 				width: 100% !important;
 			}
-		}
-
-		.slick-track .slick-slide {
-			margin: 0 auto;
-			padding: 0 20px;
-			width: 100%;
+			.slick-slide {
+				margin: 0 10px 0 0;
+				width: 100%;
+				@include breakpoint(768px, 'max') {
+					margin: 0 auto;
+					width: 100% !important;
+				}
+			}
 		}
 		.slick-prev {
 			height: 100%;
@@ -424,9 +430,10 @@ body #relacionados-top {
 			min-height: 280px;
 			width: 180px;
 
-			@include breakpoint('small', 'max') {
+			@include breakpoint(767px, 'max') {
+				margin: 0 auto;
 				padding: 30px 20px;
-				width: 100%;
+				width: calc(100% - 40px);
 			}
 
 			p {
