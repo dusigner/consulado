@@ -3,7 +3,7 @@
 $green: #9aca3c;
 $gray-dark: #5b5b5b;
 $purple: #8437a8;
-$font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
+$font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial,
 	sans-serif;
 
 .produto-indisponivel {
@@ -15,33 +15,33 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 	}
 
 	.form-container {
-		width: 100%!important;
-		display: block!important;
+		display: block ;
+		width: 100% !important;
 	}
 
 	#form-title {
 		@include rfs(12px);
-		display: block !important;
-		cursor: pointer;
-		font-weight: 500;
-		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
-		padding: 10px 10px 10px 20px;
-		position: relative;
-		transition: text-indent 0.3s;
 		background-color: #fcfcfc;
 		border-bottom: 1px solid #f1f0f0;
 		border-top: 1px solid #e3e1e1;
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.16);
+		cursor: pointer;
+		display: block !important;
+		font-weight: 500;
+		padding: 10px 10px 10px 20px;
+		position: relative;
+		transition: text-indent 0.3s;
 
 		&.is--active {
 			&:before {
-				transform: translate(0px, -50%) rotate(-180deg);
+				transform: translate(0, -50%) rotate(-180deg);
 			}
 		}
 
 		&:before {
-			@include icon-get("bottom-arrow");
-			@include breakpoint("small", "max") {
-				@include icon-get("top-arrow");
+			@include icon-get('bottom-arrow');
+			@include breakpoint('small', 'max') {
+				@include icon-get('top-arrow');
 			}
 			@include rfs(6px);
 			left: 5px;
@@ -55,16 +55,16 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 
 	.portal-notify-me-ref form {
 		@include rfs(12px);
-		position: absolute;
-		z-index: 1;
 		background: #fff;
+		border-bottom: 2px solid #9aca3c;
+		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		display: block !important;
 		opacity: 0;
-		visibility: hidden;
+		position: absolute;
 		transition: 0.8 ease-in-out;
+		visibility: hidden;
 		width: 100%;
-		box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
-		border-bottom: 2px solid #9aca3c;
+		z-index: 1;
 		&.is--active:before {
 			transform: translate(5px, -50%) rotate(-180deg);
 		}
@@ -76,10 +76,10 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 		}
 
 		&.is--active {
+			box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 			opacity: 1;
 			transition: 0.8 ease-in-out;
 			visibility: visible;
-			box-shadow: 0 5px 6px rgba(0, 0, 0, 0.16);
 		}
 	}
 
@@ -113,17 +113,17 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			}
 		}
 
-		.box-produto {
+		//.box-produto {
 			// &:hover {
 			// 	.promo-destaque__bg {
 			// 		transform: translateX(-148px);
 			// 	}
 			// }
-		}
+		//}
 
 		.promo-destaque {
-			order: 2;
 			margin: 0 0 5px;
+			order: 2;
 
 			&__icon {
 				background-position: 0 0;
@@ -138,12 +138,14 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			}
 
 			&__text {
+				color: #fff !important;
 				font-size: 6px;
 				left: 0;
 				line-height: 100%;
 				padding-left: 33px;
 				text-align: left;
 				text-indent: 0;
+				transform: translate(-3px, -50%);
 				transition: color 0.2s ease, transform 0.2s ease;
 				z-index: 1;
 			}
@@ -156,18 +158,13 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 				width: 100%;
 			}
 
-			&__text {
-				color: #fff !important;
-				transform: translate(-3px, -50%);
-			}
-
 			&__icon:nth-child(2) {
 				opacity: 1;
 			}
 
 			&__price {
-				font-size: 10px;
 				color: #fff;
+				font-size: 10px;
 				line-height: 13px;
 				right: 14px;
 				z-index: 10;
@@ -180,11 +177,11 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 			margin-top: 4px;
 			width: 200px;
 		}
-		form {
-			input[type="text"],
-			input[type="email"],
-			input[type="password"],
-			input[type="tel"] {
+		& form {
+			input[type='text'],
+			input[type='email'],
+			input[type='password'],
+			input[type='tel'] {
 				margin-bottom: 10px;
 			}
 			p {
@@ -195,7 +192,7 @@ $font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial
 	}
 	#BuyButton,
 	.prod-details-nav #BuyButtonDetails {
-		@include breakpoint("medium", "max") {
+		@include breakpoint('medium', 'max') {
 			background: #fff;
 			position: relative;
 			width: 100%;
@@ -213,11 +210,11 @@ body #relacionados-top {
 		background-size: contain !important;
 		bottom: 0;
 		height: 40px;
+		position: absolute;
+		right: 0;
 		transition: opacity 0.3s ease;
 		width: 40px;
 		z-index: 3;
-		position: absolute;
-		right: 0;
 	}
 
 	@media (max-width: 340px) {
@@ -226,8 +223,8 @@ body #relacionados-top {
 		}
 
 		.promo-destaque__price {
-			right: 6px;
 			font-size: 8px;
+			right: 6px;
 		}
 
 		.promo-destaque__text {
@@ -241,23 +238,33 @@ body #relacionados-top {
 
 	@include breakpoint('small', 'max') {
 		.prateleira > ul {
-			padding-left: 18px;
+			padding-left: 0;
 		}
 
 		.slick-slider .slick-list {
-			padding-right: 70px;
+			padding-right: 0;
 		}
 	}
+	.prateleira > ul {
+		padding-left: 0;
+	}
 
+	.slick-slider .slick-list {
+		padding-right: 20px;
+	}
 	.box-produto .detalhes .prod-info .price .por .off,
 	.box-produto .detalhes .prod-info .price .por .product-with-discount {
-		font-size: 9px;
 		border-radius: 100px;
 		color: #fff;
+		font-size: 9px;
 		position: absolute;
-		right: 0;
-		top: 0;
+		right: -10px;
+		top: -120px;
 		z-index: 1;
+		@include breakpoint ('small', 'min') {
+			right: -5px;
+			top: -100px;
+		}
 	}
 }
 
@@ -270,6 +277,19 @@ body #relacionados-top {
 	// .promo-destaque  {
 	// 	display: none;
 	// }
+
+	.container {
+		padding: 0;
+		width: 100%;
+	}
+	.row {
+		margin: 0 auto;
+	}
+	.slick-slider {
+		padding: 0;
+		width: 100%;
+	}
+
 	.relacionados-title {
 		display: none;
 	}
@@ -291,30 +311,40 @@ body #relacionados-top {
 	.wishlist__container {
 		display: none;
 	}
-	.container {
-		padding: 0;
+	.prateleira {
 		width: 100%;
 	}
 	.prateleira-slider {
-		@include breakpoint("small", "min") {
+		width: 100%;
+		@include breakpoint('small', 'min') {
 			margin-top: -12px;
 		}
 		h2 {
 			display: none;
 		}
-		.slick-track .slick-slide {
-			margin: 0 10px 0 0;
-			width: 100% !important;
+		.slick-track {
+			@include breakpoint('medium', 'min') {
+				max-width: 440px;
+				width: 100% !important;
+			}
+			.slick-slide {
+				margin: 0 10px 0 0;
+				width: 100%;
+				@include breakpoint(768px, 'max') {
+					margin: 0 auto;
+					width: 100% !important;
+				}
+			}
 		}
 		.slick-prev {
 			height: 100%;
 			width: 32px;
 
 			&::before {
-				background-image: url("/arquivos/icon-left-slider-vitrine.png");
+				background-image: url('/arquivos/icon-left-slider-vitrine.png');
 				background-repeat: no-repeat;
 				background-size: contain;
-				content: "";
+				content: '';
 				height: 22px;
 				left: 0;
 				position: absolute;
@@ -322,20 +352,22 @@ body #relacionados-top {
 				width: 12px;
 				z-index: 3;
 			}
-			&::after {
-				background-image: linear-gradient(
-					90deg,
-					#ffffff 20%,
-					rgba(255, 255, 255, 0) 120%
-				);
-				content: "";
-				display: inline-block;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 40px;
-				z-index: 1;
+			@include breakpoint ('small', 'min') {
+				&::after {
+					background-image: linear-gradient(
+						90deg,
+						#ffffff 20%,
+						rgba(255, 255, 255, 0) 120%
+					);
+					content: '';
+					display: inline-block;
+					height: 100%;
+					left: 0;
+					position: absolute;
+					top: 0;
+					width: 40px;
+					z-index: 1;
+				}
 			}
 			&.slick-disabled {
 				display: none !important;
@@ -345,10 +377,10 @@ body #relacionados-top {
 			height: 100%;
 			width: 32px;
 			&::before {
-				background-image: url("/arquivos/icon-right-slider-vitrine.png");
+				background-image: url('/arquivos/icon-right-slider-vitrine.png');
 				background-repeat: no-repeat;
 				background-size: contain;
-				content: "";
+				content: '';
 				height: 22px;
 				position: absolute;
 				right: 0;
@@ -356,25 +388,27 @@ body #relacionados-top {
 				width: 12px;
 				z-index: 3;
 			}
-			&::after {
-				background-image: linear-gradient(
-					-90deg,
-					#ffffff 40%,
-					rgba(255, 255, 255, 0) 160%
-				);
-				content: "";
-				display: inline-block;
-				height: 100%;
-				position: absolute;
-				right: 0;
-				top: 0;
-				width: 40px;
-				z-index: 1;
-			}
-			&.slick-disabled {
-				cursor: auto;
-				filter: grayscale(100%);
-				opacity: 0.4 !important;
+			@include breakpoint ('small', 'min') {
+				&::after {
+					background-image: linear-gradient(
+						-90deg,
+						#ffffff 40%,
+						rgba(255, 255, 255, 0) 160%
+					);
+					content: '';
+					display: inline-block;
+					height: 100%;
+					position: absolute;
+					right: 0;
+					top: 0;
+					width: 40px;
+					z-index: 1;
+				}
+				&.slick-disabled {
+					cursor: auto;
+					filter: grayscale(100%);
+					opacity: 0.4 !important;
+				}
 			}
 		}
 		// .slick-list {
@@ -392,12 +426,14 @@ body #relacionados-top {
 		// }
 
 		.box-produto {
-			min-height: 280px;
 			margin: 0;
+			min-height: 280px;
 			width: 180px;
 
-			@include breakpoint("small", "max") {
-				width: 100%;
+			@include breakpoint(767px, 'max') {
+				margin: 0 auto;
+				padding: 30px 20px;
+				width: calc(100% - 40px);
 			}
 
 			p {
@@ -406,13 +442,13 @@ body #relacionados-top {
 			.image {
 				margin: 0 auto;
 				max-width: 100%;
-				width: 90px;
 				position: unset;
+				width: 90px;
 				&:hover:before {
 					height: 40px;
 					width: 40px;
 				}
-				@include breakpoint("medium", "max") {
+				@include breakpoint('medium', 'max') {
 					span {
 						min-height: 100px;
 					}
@@ -424,6 +460,7 @@ body #relacionados-top {
 			}
 			.detalhes .prod-info {
 				border: none;
+				padding: 0;
 				.adicional {
 					padding-left: 0;
 					strong {
@@ -442,15 +479,14 @@ body #relacionados-top {
 				}
 				.nome {
 					color: $gray-dark;
+					display: flex;
+					flex-direction: column;
 					font: $font-family;
 					font-size: 13px;
 					font-weight: bold;
 					line-height: 16px;
-					display: flex;
 					margin: 23px 0 5px;
 					order: 1;
-					display: flex;
-					flex-direction: column;
 				}
 				.price {
 					order: 3;
