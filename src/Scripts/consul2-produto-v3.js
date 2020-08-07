@@ -55,8 +55,7 @@ Nitro.controller(
 
 		galleryv2.init();
 
-		//teste A-B detalhes
-		$('body').addClass('testeAB-detalhes');
+
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
@@ -473,7 +472,12 @@ Nitro.controller(
 			}
 		}
 
+
 		// testeAB
+
+		//teste A-B detalhes
+		$('body').addClass('testeAB-detalhes');
+
 		if ( $('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();
@@ -483,9 +487,15 @@ Nitro.controller(
 
 			$('.testeB #detalhes').html($detalhes);
 			$('.testeB #especificacoes').html($especificacoes);
+			$('.detalhes_v2').remove();
+			$('.detalhes-v3-css').show();
+
 		} else {
 			$('.testeA').show();
 			$('.testeB').hide();
+			$('.detalhes_v2').show();
+			$('.detalhes-v3-css').remove();
+
 		}
 
 		$('.main-tabs a').on('click', function(){

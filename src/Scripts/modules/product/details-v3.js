@@ -19,12 +19,12 @@ Nitro.module('details-v3', function() {
 		styleMap = [
 			{
 				item: 'item-half item-single',
-				text: 'text-left col-v2 l6',
-				image: ''
+				text: 'text-left col-6',
+				image: 'bg-contain'
 			},
 			{
 				item: 'item-full',
-				text: 'text-left col-v3 l7 m12 offset-l2',
+				text: 'text-left col-12',
 				image: ''
 			},
 			{
@@ -39,7 +39,7 @@ Nitro.module('details-v3', function() {
 			},
 			{
 				item: 'item-extrafull item-center',
-				text: 'col-v2 l6 offset-l4 m12 offset-m3',
+				text: 'col-12',
 				image: ''
 			}
 		];
