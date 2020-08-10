@@ -105,7 +105,7 @@ Nitro.controller(
 		});
 
 		$('input:radio').click(function() {
-			$('#ShowVoltage').text($(this).val());
+			$('#showVoltage').text($(this).val());
 		}); // Mostra a a voltagem selecionada
 
 		// whats
