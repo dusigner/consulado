@@ -97,7 +97,7 @@ const prodPromoDestaque = () => {
 			promoTitle = promoText[3],
 			promoColor = promoText[4],
 			cashBackDiscount = promoText[5] ? `R$+${promoText[5].replace('CNS', '')} de desconto` : null,
-			promoDiscount = `R$-${discountFormat(desconto)} de desconto`;
+			promoDiscount = `R$${discountFormat(desconto)} de desconto`;
 
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
@@ -119,8 +119,10 @@ const prodPromoDestaque = () => {
 };
 
 // Inicia a promoção somente na página de produto
-if ($('body').hasClass('produto-v2')) {
+if ($('body').hasClass('produto-v3')) {
 	prodPromoDestaque();
+
+	console.log('Funcionando');
 }
 
 export default promoDestaque;
