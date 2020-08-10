@@ -205,10 +205,15 @@
 	}
 
 //teste AB
+
 	& .detalhes-v3-css {
+		.row {
+			position: relative;
+		}
 		.border-detalhes-img {
 			border: 1px solid #9aca3c;
 			border-radius: 7px;
+			overflow: hidden;
 		}
 		&.item {
 			&.item-half {
@@ -227,14 +232,17 @@
 					float: none;
 					width: 100%;
 					z-index: initial;
-					&.bg-contain {
-						background-size: contain;
+					&.bg-cover {
+						background-position: center center;
+						background-repeat: no-repeat;
+						background-size: cover;
+						height: auto;
 						width: 100%;
 					}
 				}
 			}
 			h3 {
-				color: #000000;
+				color: #000;
 				font-weight: 500;
 				line-height: normal;
 				margin-bottom: 30px;
@@ -243,6 +251,29 @@
 				color: #000;
 				font-weight: normal;
 				margin-top: 10px;
+			}
+			& .text-top {
+				padding-top: 6em;
+			}
+			& .texto-escuro {
+				background-color: rgba(0, 0, 0, 0.6);
+				border-radius: 7px;
+				bottom: 30px;
+				left: 30px;
+				padding: 20px 30px 25px;
+				position: absolute;
+				z-index: 1;
+				h3 {
+					@include rfs(26);
+					color: #fff;
+					margin: 0 0 12px;
+				}
+				p {
+					@include rfs(16);
+					color: #fff;
+					margin: 0;
+				}
+
 			}
 			&.item-full {
 				padding: 0;
