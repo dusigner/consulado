@@ -97,7 +97,7 @@ const prodPromoDestaque = () => {
 			promoTitle = promoText[3],
 			promoColor = promoText[4],
 			cashBackDiscount = promoText[5] ? `R$+${promoText[5].replace('CNS', '')} de desconto` : null,
-			promoDiscount = `R$${discountFormat(desconto)} de desconto`;
+			promoDiscount = `<span class="promo-destaque__price--discount-value">R$${discountFormat(desconto)}</span><span class="promo-destaque__price--discount-text">de desconto já aplicado</span>`;
 
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
