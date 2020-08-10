@@ -15,7 +15,7 @@
 <body data-controller="produto-v3">
 	<!-- <vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" /> -->
 	<!-- Index best price in Google Shopping-->
-	<vtex.cmc:productRichSnippets showGoogle="1" googleRate="1" paymentSystemId="4" />
+	<vtex.cmc:productRichSnippets paymentSystemId="4" />
 	<!-- /Index best price in Google Shopping-->
 
 	<!-- Top Header -->
@@ -473,7 +473,10 @@
 				<a href="#assistencia">Especificações técnicas</a>
 			</div>
 
-			<section id="detalhes" class="detalhes box-options is--active"></section>
+			<section id="detalhes" class="detalhes box-options is--active">
+				<h2 class="title-detalhes">Conheça o produto</h2>
+			    <p class="no-doubt">Tudo pensado para não haver dúvidas</p>
+			</section>
 			<section id="especificacoes" class="content-toggle box-options"></section>
 
 			<section id="assistencia" class="product-assist container">
@@ -562,8 +565,10 @@
 		<div class="hide">
 			<vtex.cmc:ProductDescription />
 			<vtex.cmc:productSpecification />
-
+			<!-- Modal Confirme de confirmação de voltagem selecionada -->
 			<div id="modal-sku" data-title="Selecione a voltagem">
+				<h1 class="title-check-voltage">O produto escolhido é</h1>
+					<p>Confirme a voltagem antes de prosseguir</p>
 				<div class="row options">
 					<vtex.cmc:skuSelection />
 				</div>
@@ -571,6 +576,8 @@
 					<vtex.cmc:BuyButton />
 				</div>
 			</div>
+			<!-- /Modal Confirme de confirmação de voltagem selecionada -->
+
 
 			<!-- Modal tipos de entrega -->
 			<div id="modal-tipo-entrega" data-title="Tipos de entrega">

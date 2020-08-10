@@ -76,6 +76,10 @@ Nitro.module('select-voltage', function () {
 		$('.modal-quick-view__container--product-list').toggle();
 	};
 
+	$('input:radio').click(function() {
+		$('#ShowVoltage').text($(this).val());
+	}); // Mostra a a voltagem selecionada
+
 	app.loadSelectVoltagem = function () {
 		var imagens = $('.combos-product-list__item'),
 			titles = $('.product-quick-view__title');
