@@ -809,15 +809,19 @@ body.body-order-form {
 	border: 0;
 	color: inherit;
 	font-family: inherit;
-	padding: 0;
+	padding: 0 !important;
+	position: absolute;
 	@include breakpoint(medium, 'min') {
 		bottom: 30px;
 		height: 48px;
 		margin: 10px 0 25px;
-		position: absolute;
 	}
 	@include breakpoint(small, 'max') {
+		align-items: center;
 		font-size: 14px;
+		justify-content: flex-end;
 		margin-top: 5px;
+		position: relative;
+		width: 100%;
 	}
 }
