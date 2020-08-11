@@ -476,6 +476,7 @@ Nitro.controller(
 		// testeAB
 
 		//teste A-B detalhes
+
 		$('body').addClass('testeAB-detalhes');
 
 		if ( $('body').hasClass('testeAB-detalhes')) {
@@ -508,5 +509,6 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
+		$('.main-tabs').after('<h2 class="title-detalhes">Conheça o produto</h2> <p>Tudo pensado para não haver dúvidas</p>');
 	}
 );

@@ -31,21 +31,27 @@ Nitro.module('details-v3', function() {
 			},
 			{
 				item: 'item-half item-right',
-				text: 'text-left col-v2 l6',
+				text: 'text-left col-v2 l6 col-6 text-top',
 				image: 'bg-cover ',
 				coluna: 'col-6'
 			},
 			{
 				item: 'item-half',
-				text: 'text-left col-v2 l6',
+				text: 'text-left col-v2 l6 col-6 text-top',
 				image: 'bg-cover ',
 				coluna: 'col-6'
 			},
 			{
 				item: 'item-extrafull item-center',
-				text: 'col-12',
+				text: 'col-8 texto-escuro',
 				image: 'bg-cover ',
 				coluna: 'col-12'
+			},
+			{
+				item: 'item-half item-single',
+				text: 'text-left col-6 text-top',
+				coluna: 'col-6',
+				image: 'bg-cover'
 			}
 		];
 
