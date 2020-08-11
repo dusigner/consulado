@@ -207,6 +207,10 @@
 //teste AB
 
 	& .detalhes-v3-css {
+		.container {
+			margin: 0 auto;
+			max-width: 1120px;
+		}
 		.row {
 			position: relative;
 		}
@@ -232,14 +236,21 @@
 					float: none;
 					width: 100%;
 					z-index: initial;
-					&.bg-cover {
-						background-position: center center;
-						background-repeat: no-repeat;
-						background-size: cover;
-						height: auto;
-						width: 100%;
-					}
 				}
+			}
+			& .bg-cover {
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: auto;
+				width: 100%;
+			}
+			& .bg-contain {
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				height: auto;
+				width: 100%;
 			}
 			h3 {
 				color: #000;
@@ -263,6 +274,10 @@
 				padding: 20px 30px 25px;
 				position: absolute;
 				z-index: 1;
+				&:before,
+				&::after {
+					content: none;
+				}
 				h3 {
 					@include rfs(26);
 					color: #fff;

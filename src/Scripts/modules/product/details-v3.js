@@ -26,25 +26,25 @@ Nitro.module('details-v3', function() {
 			{
 				item: 'item-full',
 				text: 'text-left col-8 texto-escuro',
-				image: 'col-12',
+				image: 'col-12 bg-cover',
 				coluna: 'col-12'
 			},
 			{
 				item: 'item-half item-right',
 				text: 'text-left col-v2 l6',
-				image: '',
+				image: 'bg-cover ',
 				coluna: 'col-6'
 			},
 			{
 				item: 'item-half',
 				text: 'text-left col-v2 l6',
-				image: '',
+				image: 'bg-cover ',
 				coluna: 'col-6'
 			},
 			{
 				item: 'item-extrafull item-center',
 				text: 'col-12',
-				image: '',
+				image: 'bg-cover ',
 				coluna: 'col-12'
 			}
 		];
