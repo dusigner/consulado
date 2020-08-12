@@ -509,6 +509,74 @@ $(document).ready(function () {
 		});
 	}
 
+	gelaMaisLoadInfo();
+
+	function gelaMaisLoadInfo() {
+		$.ajax({
+			headers: {
+				"Access-Control-Allow-Origin": "*"
+			},
+			type: "GET",
+			url:
+				"/api/catalog_system/pub/products/search/bebedouro-consul-gela-facil-cjk40ab/p",
+			success: function (res) {
+				var Price = res[0].items[0].sellers[0].commertialOffer.Price;
+				var ListPrice =
+					res[0].items[0].sellers[0].commertialOffer.ListPrice;
+				var BestPrice = ListPrice > Price ? Price : ListPrice;
+
+				if (Price == BestPrice) {
+					$("#gela-mais-list-price").css("display", "none");
+				}
+
+				$("#gela-mais-list-price").text(
+					"R$ " +
+					parseFloat(Price)
+						.toFixed(2)
+						.replace(".", ",")
+				);
+				$("#gela-mais-best-price").text(
+					"R$ " +
+					parseFloat(BestPrice)
+						.toFixed(2)
+						.replace(".", ",")
+				);
+
+				var InstallMents =
+					res[0].items[0].sellers[0].commertialOffer.Installments;
+
+				var arrayIndex = 0;
+				var largeNumberOfInstallments = 0;
+
+				for (var i = 0; i < InstallMents.length; i++) {
+					if (
+						InstallMents[i].NumberOfInstallments >
+						largeNumberOfInstallments
+					) {
+						largeNumberOfInstallments =
+							InstallMents[i].NumberOfInstallments;
+						arrayIndex = i;
+					}
+				}
+
+				var semJuros =
+					parseInt(InstallMents[arrayIndex].InterestRate) == 0
+						? "sem juros"
+						: "";
+				var installmentsText =
+					'Em até <span class="vezes">' +
+					InstallMents[arrayIndex].NumberOfInstallments +
+					'x</span> <span class="val">R$ ' +
+					parseFloat(InstallMents[arrayIndex].Value)
+						.toFixed(2)
+						.replace(".", ",") +
+					"</span> " +
+					semJuros;
+				$("#gela-mais-adicional").html(installmentsText);
+			}
+		});
+	}
+
 	function removeAcento(text) {
 		text = text.toLowerCase();
 		text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
