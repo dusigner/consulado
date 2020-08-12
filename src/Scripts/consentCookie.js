@@ -1,16 +1,12 @@
-'use strict';
-
-require('../Styles/');
-
 // Insert the message to display
-var message = 'Este site usa cookies, você concorda?';
+var message = 'Este site salva seu histórico de uso. Ao continuar navegando você concorda com a política de privacidade. ';
 // Insert the Url with the page cookies description
 var coockieUrl = 'cookie.html';
 // Insert number of days until the cookie expires
-var cookieLife = 60;
+var cookieLife = 90; //90 days according to LGPD
 // Text of buttons
-var btnYes = 'Yes, I agree';
-var btnNo = 'No, give me more info';
+var btnYes = 'Aceitar';
+var btnNo = 'Fechar';
 // Add banner to the top or bottom of the page
 var position = true;    // Default is bottom
 // To active extra feature give true
