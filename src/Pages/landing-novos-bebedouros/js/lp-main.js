@@ -518,7 +518,7 @@ $(document).ready(function () {
 			},
 			type: "GET",
 			url:
-				"/api/catalog_system/pub/products/search/bebedouro-consul-gela-facil-cjk40ab/p",
+				"/api/catalog_system/pub/products/search/bebedouro-consul-gela-mais-cjd42ab/p",
 			success: function (res) {
 				var Price = res[0].items[0].sellers[0].commertialOffer.Price;
 				var ListPrice =
