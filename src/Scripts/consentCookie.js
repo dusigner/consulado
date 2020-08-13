@@ -40,18 +40,18 @@ function checkCookie() {
 	if (!getCookie()) {
 
 		// Create button "Yes" with text
-		var newbutton2 = document.createElement('button');
-		newbutton2.setAttribute('id','yes');
-		newbutton2.setAttribute('onclick','cookieYes()');
-		var textButton2 = document.createTextNode(btnYes);
-		newbutton2.appendChild(textButton2);
+		var newbutton1 = document.createElement('button');
+		newbutton1.setAttribute('id','yes');
+		newbutton1.setAttribute('onclick','cookieYes()');
+		var textButton1 = document.createTextNode(btnYes);
+		newbutton1.appendChild(textButton1);
 
 		// Create button "More Info" with text
-		var newbutton1 = document.createElement('button');
-		newbutton1.setAttribute('id','no');
-		newbutton1.setAttribute('onclick','cookieNo()');
-		var textButton1 = document.createTextNode(btnNo);
-		newbutton1.appendChild(textButton1);
+		var newbutton2 = document.createElement('button');
+		newbutton2.setAttribute('id','no');
+		newbutton2.setAttribute('onclick','cookieNo()');
+		var textButton2 = document.createTextNode(btnNo);
+		newbutton2.appendChild(textButton2);
 
 		// Create p with message
 		var newdesc = document.createElement('h1');
