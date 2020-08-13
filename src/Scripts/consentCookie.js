@@ -1,12 +1,18 @@
 // Insert the message to display
-var message = 'Este site salva seu histórico de uso. Ao continuar navegando você concorda com a política de privacidade. ';
+var message = 'Este site salva seu histórico de uso. Ao continuar navegando você concorda com a';
+// link redirect to privacity politics
+var textpolice = 'política de privacidade';
+// url of police politics
+var urlPolice = 'http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Politica_de_Privacidade_CONSUL.pdf'
+// exclamation purple
+var exclamation = '!';
 // Insert the Url with the page cookies description
 var coockieUrl = 'cookie.html';
 // Insert number of days until the cookie expires
 var cookieLife = 90; //90 days according to LGPD
 // Text of buttons
-var btnYes = 'Aceitar';
 var btnNo = 'Fechar';
+var btnYes = 'Aceitar';
 // Add banner to the top or bottom of the page
 var position = true;    // Default is bottom
 // To active extra feature give true
@@ -22,8 +28,8 @@ function getCookie() {
 	var ca = document.cookie.split(';');
 	for(var i = 0; i < ca.length; i++) {
 		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+		while (c.charAt(0) === ' ') c = c.substring(1);
+		if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
 	}
 	return '';
 }
@@ -48,16 +54,41 @@ function checkCookie() {
 		newbutton2.appendChild(textButton2);
 
 		// Create p with message
-		var newp = document.createElement('p');
+		var newdesc = document.createElement('h1');
+		newdesc.setAttribute('id', 'description')
 		var text = document.createTextNode(message);
-		newp.appendChild(text);
+		// newdesc.setAttribute('append','urlPolice()')
+		newdesc.appendChild(text);
+
+		// Create p with exclamation
+		var newp = document.createElement('p');
+		var textp = document.createTextNode(exclamation);
+		newp.appendChild(textp);
+
+		// Create p with exclamation
+		var newlink = document.createElement('a');
+		newlink.setAttribute('id','url');
+		var textlink = document.createTextNode(textpolice);
+		newlink.setAttribute('onclick','urlPolice()');
+		newlink.appendChild(textlink);
+
+		var info = document.createElement('div');
+		info.setAttribute('id','cookie-banner-info');
+		info.appendChild(newp);
+		info.appendChild(newdesc);
+
+		newdesc.appendChild(newlink);
+
+		var options = document.createElement('div');
+		options.setAttribute('id','cookie-banner-options');
+		options.appendChild(newbutton1);
+		options.appendChild(newbutton2);
 
 		// Create banner
 		var newdiv = document.createElement('div');
 		newdiv.setAttribute('id','cookie-banner');
-		newp.appendChild(newbutton1);
-		newp.appendChild(newbutton2);
-		newdiv.appendChild(newp);
+		newdiv.appendChild(info);
+		newdiv.appendChild(options);
 
 		if (position) {
 			document.body.appendChild(newdiv);
