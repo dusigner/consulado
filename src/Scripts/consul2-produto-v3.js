@@ -509,6 +509,6 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
-		$('.main-tabs').after('<h2 class="title-detalhes">Conheça o produto</h2> <p>Tudo pensado para não haver dúvidas</p>');
+		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
 	}
 );
