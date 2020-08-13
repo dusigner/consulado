@@ -1,5 +1,5 @@
 // Insert the message to display
-var message = 'Este site salva seu histórico de uso. Ao continuar navegando você concorda com a ';
+var message = 'Este site salva seu histórico de uso. Ao continuar navegando você concorda com a';
 // link redirect to privacity politics
 var textpolice = 'política de privacidade';
 // url of police politics
@@ -28,8 +28,8 @@ function getCookie() {
 	var ca = document.cookie.split(';');
 	for(var i = 0; i < ca.length; i++) {
 		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+		while (c.charAt(0) === ' ') c = c.substring(1);
+		if (c.indexOf(name) === 0) return c.substring(name.length, c.length);
 	}
 	return '';
 }
@@ -72,14 +72,23 @@ function checkCookie() {
 		newlink.setAttribute('onclick','urlPolice()');
 		newlink.appendChild(textlink);
 
+		var info = document.createElement('div');
+		info.setAttribute('id','cookie-banner-info');
+		info.appendChild(newp);
+		info.appendChild(newdesc);
+
+		newdesc.appendChild(newlink);
+
+		var options = document.createElement('div');
+		options.setAttribute('id','cookie-banner-options');
+		options.appendChild(newbutton1);
+		options.appendChild(newbutton2);
+
 		// Create banner
 		var newdiv = document.createElement('div');
 		newdiv.setAttribute('id','cookie-banner');
-		newdiv.appendChild(newbutton1);
-		newdiv.appendChild(newbutton2);
-		newdiv.appendChild(newp);
-		newdiv.appendChild(newdesc);
-		newdiv.appendChild(newlink);
+		newdiv.appendChild(info);
+		newdiv.appendChild(options);
 
 		if (position) {
 			document.body.appendChild(newdiv);
