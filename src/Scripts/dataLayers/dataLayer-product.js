@@ -246,26 +246,7 @@ Nitro.module('dataLayer-product', function() {
 		var interval = null;
 
 		var lyrics = {
-			2: 'And so I cry sometimes When I\'m lying in bed just to get it all out',
-			7: 'What\'s in my head',
-			10: 'And I, I am feeling a little peculiar',
-			16: 'And so I wake in the morning',
-			18: 'And I step outside',
-			19: 'And I take a deep breath and I get real high',
-			23: 'And I scream from the top of my lungs',
-			25: 'What\'s going on?',
-			29: 'And I say, hey yeah yeah, hey yeah yeah',
-			36: 'I said hey, what\'s going on?',
-			43: 'And I say, hey yeah yeah, hey yeah yeah',
-			49: 'I said hey, what\'s going on?',
-			57: 'And he tries, oh my god do I try',
-			62: 'I try all the time, in this institution',
-			70: 'And heeeee prays, oh my god do I pray',
-			76: 'I pray every single day',
-			80: 'For a revolution',
-			85: 'And I say, hey yeah yeah, hey yeah yeah',
-			91: 'I said hey, what\'s going on?',
-			100: 'Chega... dá trabalho demais sincronizar'
+			2: 'Teste'
 		};
 
 		// Adicionando Youtube iframe API
