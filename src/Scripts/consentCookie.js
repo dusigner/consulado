@@ -123,7 +123,6 @@ function cookieYes() {
 
 // Function cookieNo() that opens the cookie page
 function cookieNo() {
-	window.open(urlPolice);
 	document.getElementById('cookie-banner').style.display = 'none';
 }
 
