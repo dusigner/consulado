@@ -6,8 +6,6 @@ var textpolice = 'política de privacidade';
 var urlPolice = 'http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Politica_de_Privacidade_CONSUL.pdf'
 // exclamation purple
 var exclamation = '!';
-// Insert the Url with the page cookies description
-var coockieUrl = 'cookie.html';
 // Insert number of days until the cookie expires
 var cookieLife = 90; //90 days according to LGPD
 // Text of buttons
@@ -42,14 +40,14 @@ function checkCookie() {
 		// Create button "Yes" with text
 		var newbutton1 = document.createElement('button');
 		newbutton1.setAttribute('id','yes');
-		newbutton1.setAttribute('onclick','cookieYes()');
+		newbutton1.onclick = () => { cookieYes() };
 		var textButton1 = document.createTextNode(btnYes);
 		newbutton1.appendChild(textButton1);
 
 		// Create button "More Info" with text
 		var newbutton2 = document.createElement('button');
 		newbutton2.setAttribute('id','no');
-		newbutton2.setAttribute('onclick','cookieNo()');
+		newbutton2.onclick = () => { cookieNo() };
 		var textButton2 = document.createTextNode(btnNo);
 		newbutton2.appendChild(textButton2);
 
@@ -69,7 +67,7 @@ function checkCookie() {
 		var newlink = document.createElement('a');
 		newlink.setAttribute('id','url');
 		var textlink = document.createTextNode(textpolice);
-		newlink.setAttribute('onclick','urlPolice()');
+		newlink.onclick = () => { showPolice() };
 		newlink.appendChild(textlink);
 
 		var info = document.createElement('div');
@@ -125,5 +123,11 @@ function cookieYes() {
 
 // Function cookieNo() that opens the cookie page
 function cookieNo() {
-	location.href = coockieUrl;
+	window.open(urlPolice);
+	document.getElementById('cookie-banner').style.display = 'none';
+}
+
+// Function showPolice() just open a new tab to see polices from
+function showPolice() {
+	window.open(urlPolice);
 }
