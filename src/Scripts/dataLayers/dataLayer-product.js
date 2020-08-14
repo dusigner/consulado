@@ -6,6 +6,11 @@ Nitro.module('dataLayer-product', function() {
 	this.init = () => {
 		checkInlineDatalayers();
 
+		this.seeRates();
+		this.unknownCep();
+		this.mainTabsOptions();
+		this.ytTrackerEvents();
+
 		// product unavailable
 		this.notifyMe();
 		this.notifyMeSuccess();
@@ -194,6 +199,126 @@ Nitro.module('dataLayer-product', function() {
 			);
 		});
 	};
+
+	this.seeRates = () => {
+		$('.trustvox-fluid-jump .rating-click-here').on('click', function() {
+			pushDataLayer(
+				'PDP_vitrine_superior',
+				'clique',
+				'ver_avaliacoes'
+			);
+		});
+	};
+
+	this.unknownCep = () => {
+		$('body').find('.lnkExterno').on('click', function() {
+			pushDataLayer(
+				'PDP_vitrine_superior',
+				'clique',
+				'nao_sei_meu_cep'
+			);
+		});
+	};
+
+	this.mainTabsOptions = () => {
+		$('.main-tabs a').on('click', function() {
+			let option = $(this).text();
+			pushDataLayer(
+				'PDP_compre_junto',
+				'menu_detalhes_especificacoes',
+				`${option}`
+			);
+		});
+	};
+
+	this.ytTrackerEvents = () => {
+		var tag = document.createElement('script');
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+
+		$('.mfp-iframe').attr('enablejsapi', "1");
+
+		var player;
+
+		var videoDuration = 0;
+
+		var videotime = 0;
+
+		var interval = null;
+
+		var lyrics = {
+			2: 'And so I cry sometimes When I\'m lying in bed just to get it all out',
+			7: 'What\'s in my head',
+			10: 'And I, I am feeling a little peculiar',
+			16: 'And so I wake in the morning',
+			18: 'And I step outside',
+			19: 'And I take a deep breath and I get real high',
+			23: 'And I scream from the top of my lungs',
+			25: 'What\'s going on?',
+			29: 'And I say, hey yeah yeah, hey yeah yeah',
+			36: 'I said hey, what\'s going on?',
+			43: 'And I say, hey yeah yeah, hey yeah yeah',
+			49: 'I said hey, what\'s going on?',
+			57: 'And he tries, oh my god do I try',
+			62: 'I try all the time, in this institution',
+			70: 'And heeeee prays, oh my god do I pray',
+			76: 'I pray every single day',
+			80: 'For a revolution',
+			85: 'And I say, hey yeah yeah, hey yeah yeah',
+			91: 'I said hey, what\'s going on?',
+			100: 'Chega... dá trabalho demais sincronizar'
+		};
+
+		// Adicionando Youtube iframe API
+		tag.src = 'https://www.youtube.com/iframe_api';
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// Método chamado automaticamente pela api do youtube
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('mfp-iframe', {
+				events: {
+					'onReady': onPlayerReady
+				},
+				playerVars: {
+					rel: 0,
+					showinfo: 0
+				}
+			});
+		}
+
+		// Método chamado nos eventos do player
+		function onPlayerReady(event) {
+			// obtendo a duração do video, em segundos
+			videoDuration = parseInt(player.getDuration());
+
+			// aplicando o intervalo de 1 em 1 segundo
+			interval = setInterval(discoverTime, 1000);
+		}
+
+		// método utilizado para descobrir o tempo atual do vídeo
+		function discoverTime() {
+			if (player && player.getCurrentTime) {
+				videotime = parseInt(player.getCurrentTime());
+			}
+
+			if (videotime < videoDuration && lyrics[videotime] !== undefined) {
+				fireEvent(videotime);
+			}
+
+			if (videotime > videoDuration) {
+				clearInterval(interval);
+			}
+
+			var timePercent = (videotime * 100) / videoDuration;
+
+			console.log(timePercent);
+		}
+
+		// Aqui vem sua lógica para que algo seja feito ao atingir o tempo desejado no video
+		function fireEvent(index) {
+			console.log(lyrics[index]);
+		}
+	};
+
 
 	var counterms;
 
