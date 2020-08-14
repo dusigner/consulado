@@ -57,8 +57,7 @@ Nitro.controller(
 
 		galleryv2.init();
 
-		//teste A-B detalhes
-		$('body').addClass('testeAB-detalhes');
+
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
@@ -479,7 +478,13 @@ Nitro.controller(
 			}
 		}
 
+
 		// testeAB
+
+		//teste A-B detalhes
+
+		$('body').addClass('testeAB-detalhes');
+
 		if ( $('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();
@@ -489,9 +494,15 @@ Nitro.controller(
 
 			$('.testeB #detalhes').html($detalhes);
 			$('.testeB #especificacoes').html($especificacoes);
+			$('.detalhes_v2').remove();
+			$('.detalhes-v3-css').show();
+
 		} else {
 			$('.testeA').show();
 			$('.testeB').hide();
+			$('.detalhes_v2').show();
+			$('.detalhes-v3-css').remove();
+
 		}
 
 		$('.main-tabs a').on('click', function(){
@@ -504,5 +515,6 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
+		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
 	}
 );
