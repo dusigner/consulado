@@ -7,7 +7,7 @@ var urlPolice = 'http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Po
 // exclamation purple
 var exclamation = '!';
 // Insert the Url with the page cookies description
-var coockieUrl = 'cookie.html';
+var coockieUrl = 'http://whirlpool.s3.amazonaws.com/wp-content/uploads/2020/05/Politica_de_Privacidade_CONSUL.pdf';
 // Insert number of days until the cookie expires
 var cookieLife = 90; //90 days according to LGPD
 // Text of buttons
