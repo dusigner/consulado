@@ -254,12 +254,16 @@
 				}
 			}
 			&.item-extrafull {
+				padding: 0;
 				.texto-escuro {
 					@include breakpoint(small, 'max') {
 						left: 0;
 					}
 					left: inherit;
 					right: 30px;
+				}
+				.image {
+					position: relative;
 				}
 			}
 			& .bg-cover {
@@ -353,12 +357,6 @@
 				.container {
 					padding: 0;
 				}
-				.image {
-					position: relative;
-				}
-			}
-			&.item-extrafull {
-				padding: 0;
 				.image {
 					position: relative;
 				}
