@@ -48,7 +48,10 @@ Nitro.controller(
 		'outline-products',
 		'consentCookie',
 	],
+
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
+
+
 		var self = this,
 			$body = $('body');
 
@@ -515,6 +518,39 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
-		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
-	}
+
+		// testeAB TopBar PDP
+		self.topBarABTest = () => {
+			if ( $('body').hasClass('testeAB-detalhes')) {
+				console.log('batata');
+				$('.prod-details-nav .info-product').css('height', '5.4rem');
+				$('.prod-details-nav .box-infos p').css('font-size', '14px');
+				$('.prod-details-nav .details-preco').find('.descricao-preco').css('text-align', 'left');
+				$('.prod-details-nav .valor-de').css('font-size', '12px');
+				$('.prod-details-nav .valor-de').find('strong').css('font-size', '12px');
+
+				$('.prod-details-nav .valor-por').css('font-size', '12px');
+				$('.prod-details-nav .valor-por').find('strong').css('font-size', '18px');
+
+				$('.prod-details-nav .nav-price').css({
+					'padding' : '0',
+					'align-items' : 'center',
+				});
+				$('.prod-details-nav .skuBestInstallmentValue').css('font-size', '12px');
+				$('.prod-details-nav .skuBestInstallmentNumber').css('font-size', '12px');
+
+				$('.prod-details-nav .anchors').css('height', '2.57rem');
+				$('.prod-details-nav .anchors .container').css('padding-top', '0');
+				$('.prod-details-nav .anchors .item').css('font-size', '0.87rem');
+				$('.prod-details-nav .anchors button').hide();
+			}
+
+
+		};
+
+		self.topBarABTest();
+
+
+	},
+
 );
