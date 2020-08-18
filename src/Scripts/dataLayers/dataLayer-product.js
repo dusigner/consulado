@@ -8,7 +8,6 @@ Nitro.module('dataLayer-product', function() {
 
 		this.seeRates();
 		this.unknownCep();
-		this.mainTabsOptions();
 		this.ytTrackerEvents();
 
 		// product unavailable
@@ -220,16 +219,7 @@ Nitro.module('dataLayer-product', function() {
 		});
 	};
 
-	this.mainTabsOptions = () => {
-		$('.main-tabs a').on('click', function() {
-			let option = $(this).text();
-			pushDataLayer(
-				'PDP_compre_junto',
-				'menu_detalhes_especificacoes',
-				`${option}`
-			);
-		});
-	};
+
 
 	this.ytTrackerEvents = () => {
 		var tag = document.createElement('script');
