@@ -249,13 +249,15 @@ Nitro.module('dataLayer-product', function() {
 			2: 'Teste'
 		};
 
+		var iframeId = $('#video').find('iframe').attr(id);
+
 		// Adicionando Youtube iframe API
 		tag.src = 'https://www.youtube.com/iframe_api';
 		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 		// Método chamado automaticamente pela api do youtube
 		function onYouTubeIframeAPIReady() {
-			player = new YT.Player('mfp-iframe', {
+			player = new YT.Player(iframeId, {
 				events: {
 					'onReady': onPlayerReady
 				},
