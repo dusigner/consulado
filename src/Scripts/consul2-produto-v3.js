@@ -21,6 +21,7 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
+import 'consentCookie';
 
 Nitro.controller(
 	'produto-v3',
@@ -45,6 +46,7 @@ Nitro.controller(
 		'product-tags',
 		'dataLayer-product',
 		'outline-products',
+		'consentCookie',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -55,8 +57,7 @@ Nitro.controller(
 
 		galleryv2.init();
 
-		//teste A-B detalhes
-		$('body').addClass('testeAB-detalhes');
+
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
@@ -473,7 +474,13 @@ Nitro.controller(
 			}
 		}
 
+
 		// testeAB
+
+		//teste A-B detalhes
+
+		$('body').addClass('testeAB-detalhes');
+
 		if ( $('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();
@@ -483,9 +490,15 @@ Nitro.controller(
 
 			$('.testeB #detalhes').html($detalhes);
 			$('.testeB #especificacoes').html($especificacoes);
+			$('.detalhes_v2').remove();
+			$('.detalhes-v3-css').show();
+
 		} else {
 			$('.testeA').show();
 			$('.testeB').hide();
+			$('.detalhes_v2').show();
+			$('.detalhes-v3-css').remove();
+
 		}
 
 		$('.main-tabs a').on('click', function(){
@@ -498,5 +511,6 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
+		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
 	}
 );

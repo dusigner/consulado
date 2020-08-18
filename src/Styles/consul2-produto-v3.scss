@@ -16,47 +16,48 @@
 // ===============================================================
 
 // Utility helpers
-@import "helpers/variables";
-@import "helpers/functions";
-@import "helpers/mixins";
-@import "helpers/whp-modal";
-@import "helpers/rfs";
+@import 'helpers/variables';
+@import 'helpers/functions';
+@import 'helpers/mixins';
+@import 'helpers/whp-modal';
+@import 'helpers/rfs';
+@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 // Component styles
-@import "components/buttons";
-@import "components/selos";
-@import "components/chaordic-shelf";
-@import "components/mod-prateleira-v2";
+@import 'components/buttons';
+@import 'components/selos';
+@import 'components/chaordic-shelf';
+@import 'components/mod-prateleira-v2';
 
-@import "pages/product";
-@import "components/produto/gallery-v2";
-@import "components/produto/prod-title";
-@import "components/produto/prod-info-v2";
-@import "components/produto/prod-info-bar";
-@import "components/produto/prod-info-descricao";
-@import "components/produto/prod-info-preco";
-@import "components/produto/prod-info-parcelas-v2";
-@import "components/produto/prod-info-sku-v2";
-@import "components/produto/produtos-adicionais";
-@import "components/produto/prod-buy-button-v2";
-@import "components/produto/selos";
-@import "components/produto/frete-v2";
-@import "components/produto/upsell-prod";
+@import 'pages/product';
+@import 'components/produto/gallery-v2';
+@import 'components/produto/prod-title';
+@import 'components/produto/prod-info-v2';
+@import 'components/produto/prod-info-bar';
+@import 'components/produto/prod-info-descricao';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/prod-info-parcelas-v2';
+@import 'components/produto/prod-info-sku-v2';
+@import 'components/produto/produtos-adicionais';
+@import 'components/produto/prod-buy-button-v2';
+@import 'components/produto/selos';
+@import 'components/produto/frete-v2';
+@import 'components/produto/upsell-prod';
 
-@import "components/produto/details-nav-v2";
-@import "components/produto/video-lancamento";
-@import "components/produto/detalhes";
-@import "components/produto/detalhes-lancamento";
-@import "components/produto/especificacoes-v2";
-@import "components/produto/modal.sku";
-@import "components/produto/modal.entrega";
-@import "components/produto/special-content";
-@import "components/produto/recurrence-modal";
-@import "components/produto/assistencia-e-relacionado";
-@import "components/produto/trust-vox";
-@import "components/produto/recurrence-v2";
-@import "components/produto/vitrine-relacionada";
-@import "components/produto/outline-products";
+@import 'components/produto/details-nav-v2';
+@import 'components/produto/video-lancamento';
+@import 'components/produto/detalhes-v3';
+@import 'components/produto/detalhes-lancamento';
+@import 'components/produto/especificacoes-v2';
+@import 'components/produto/modal.sku';
+@import 'components/produto/modal.entrega';
+@import 'components/produto/special-content';
+@import 'components/produto/recurrence-modal';
+@import 'components/produto/assistencia-e-relacionado';
+@import 'components/produto/trust-vox';
+@import 'components/produto/recurrence-v2';
+@import 'components/produto/vitrine-relacionada';
+@import 'components/produto/outline-products';
 // @import 'components/produto/quiz-install';
 
 .produto-indisponivel {
@@ -68,15 +69,15 @@
 #relacionados {
 	.box-produto .detalhes .prod-info .price .por .off,
 	.box-produto .detalhes .prod-info .price .por .product-with-discount {
-		font-size: 0.625rem;
 		border-radius: 100px;
 		color: #fff;
+		font-size: 0.625rem;
 		position: absolute;
 		right: 15px;
 		top: -64px;
 		z-index: 1;
 
-		@include breakpoint("small", "min") {
+		@include breakpoint('small', 'min') {
 			top: -34px;
 		}
 	}
@@ -113,7 +114,7 @@
 			width: 320px;
 		}
 		.icone-check {
-			background-image: url("/arquivos/icon-check-produto-indisponivel.jpg");
+			background-image: url('/arquivos/icon-check-produto-indisponivel.jpg');
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -127,26 +128,37 @@
 	}
 	.notifyme-loading-message {
 		color: #9aca3c;
-		font: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
+		font: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial,
 			sans-serif;
 		font-weight: bold;
 		margin-top: 18px;
 	}
 }
+.prod-title {
+	float: left !important;
+	margin-bottom: 25px;
+}
+.prod-selos {
+	top: 90px;
+}
+.container {
+    padding: 0 15px;
+}
 
+//Teste AB Detalhes
 .main-tabs {
-	text-align: center;
 	border-bottom: 1px solid #e3e1e1;
-	height: 30px;
 	display: flex;
+	height: 30px;
 	justify-content: center;
+	text-align: center;
 
 	a {
-		height: 30px;
-		font-size: 16px;
-		display: block;
 		color: #686160;
+		display: block;
+		font-size: 16px;
 		font-weight: 100;
+		height: 30px;
 
 		&:nth-child(1) {
 			margin-right: 40px;
@@ -168,161 +180,50 @@ body .box-options {
 }
 
 html body {
-	.testeB[data-bind="#detalhes"] {
-		#detalhes {
-			display: block !important;
-			margin: 0 5% 0 5%;
-		}
-
-		#detalhes .box-options .is--active .title-detalhes {
-			@include rfs(26);
-			display: block !important;
-			align-items: center;
-			color: #515151;
-			display: block;
-			margin-bottom: -1%;
-			text-align: center;
-		}
-
-		#detalhes .box-options .is--active .no-doubt {
-			@include rfs(14);
-			display: block !important;
-			align-items: center;
-			color: #736c6b;
-			display: block;
-			font-weight: 1em;
-			margin-bottom: 1%;
-			text-align: center;
-		}
-
-		//ajustes de responsividade
-		#detalhes .item.item-single .image {
-			@media (max-width: 60em) {
-				width: 100% !important;
-				margin: auto;
-			}
-		}
-
-		#detalhes .item.item-right .image {
-			@media (max-width: 60em) {
-				float: none;
-				margin: auto;
-				width: 100% !important;
-			}
-		}
-
-		#detalhes .item.item-half .image {
-			@media (max-width: 60em) {
-				float: none;
-				margin: auto;
-				width: 100% !important;
-			}
-		}
-
-		#detalhes .item {
-			@media (max-width: 48em) {
-				margin-bottom: 40px;
-			}
-		}
-
-		#detalhes {
-			@media (max-width: 736px) {
-				margin: 0 5% 0 5%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-		}
-		//fim dos ajustes de responsividade
-
-		#detalhes .item h3 {
-			@include rfs(32);
-			font-weight: bold;
-			line-height: 1em;
-			margin-bottom: 0px;
-		}
-
-		.item.item-half .image {
-			float: right;
-			width: 50% !important;
-			z-index: 0;
-		}
-
-		#detalhes .item .text {
-			padding: 0 0 0 25px;
-			margin-top: 3%;
-			color: #515151;
-			margin-bottom: 3%;
-			position: relative;
-			margin-left: -10%;
-		}
-
-		.item.item-extrafull .image,
-		.item.item-full .image {
-			left: 0;
-			min-height: 682px;
-			position: absolute;
-			width: 100%;
-			border: 1px solid #9aca3c;
-			border-radius: 7px;
-		}
-
-		.item.item-half .image {
-			float: right;
-			z-index: 0;
-			border: 1px solid #9aca3c;
-			border-radius: 7px;
-		}
-
-		#detalhes .item.item-single .image {
-			background-size: contain;
-			width: 50% !important;
-		}
-
-		.item.item-full .image {
-			min-height: 682px;
-			position: absolute;
-			width: 100%;
-			border: 1px solid #9aca3c;
-			border-radius: 7px;
-		} // imagem com box cinza transparente
-
-		.item-full {
-			.text {
-				background-color: rgba(0, 0, 0, 0.6) !important;
-				border-radius: 7px;
-				margin-left: 0 !important;
-				padding: 0 21px 0 33px;
-
-				h3 {
-					color: #fff !important;
-				}
-
-				p {
-					color: #fff !important;
-				}
-
-				&:before {
-					background-color: transparent !important;
-					content: "";
-					left: -1050%;
-				}
-			}
-		}
-
-		#especificacoes {
+	.testeA {
+		.detalhes-v3-css {
 			display: none !important;
 		}
 	}
+	.testeB[data-bind='#detalhes'] {
+		#detalhes {
+			display: block !important;
+			margin: 0 auto;
+			max-width: 100%;
+			width: 1140px;
+			.detalhes-v3-css {
+				display: block;
+			}
+			.detalhes {
+				.detalhes_v2 {
+					display: none !important;
+				}
+			}
+		}
+		#especificacoes {
+			display: none !important;
+		}
 
-	.testeB[data-bind="#assistencia"] {
+	}
+
+	.testeB[data-bind='#assistencia'] {
 		#detalhes {
 			display: none !important;
 			margin: 0 5% 0 5%;
+			.detalhes-v3-css {
+				display: none !important;
+				visibility: hidden;
+			}
 		}
 
 		#especificacoes {
 			display: block !important;
 		}
+		.detalhes_v2 {
+			display: block;
+		}
+	}
+	.detalhes_v2 {
+		display: none;
 	}
 }
