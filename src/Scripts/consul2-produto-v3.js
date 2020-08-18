@@ -21,6 +21,7 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
+import 'dataLayers/dataLayer-main-tabs';
 import 'consentCookie';
 
 Nitro.controller(
@@ -46,6 +47,7 @@ Nitro.controller(
 		'product-tags',
 		'dataLayer-product',
 		'outline-products',
+		'dataLayer-main-tabs',
 		'consentCookie',
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
