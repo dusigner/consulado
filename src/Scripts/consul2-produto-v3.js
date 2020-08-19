@@ -502,8 +502,5 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
-		$('input:radio').click(function() {
-			$('#showVoltage').text($(this).val());
-		});
 	}
 );
