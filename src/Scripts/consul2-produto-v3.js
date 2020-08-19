@@ -107,6 +107,10 @@ Nitro.controller(
 			}
 		});
 
+		$('input:radio').click(function() {
+			$('#showVoltage').text($(this).val());
+		}); // Mostra a a voltagem selecionada
+
 		// whats
 		var $product_id = skuJson_0.productId;
 

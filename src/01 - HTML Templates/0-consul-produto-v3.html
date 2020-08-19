@@ -562,8 +562,10 @@
 		<div class="hide">
 			<vtex.cmc:ProductDescription />
 			<vtex.cmc:productSpecification />
-
+			<!-- Modal Confirme de confirmação de voltagem selecionada -->
 			<div id="modal-sku" data-title="Selecione a voltagem">
+				<h1 class="title-check-voltage">O produto escolhido é<p id="#ShowVoltage"></p></h1>
+					<p class="double-check" >Confirme a voltagem antes de prosseguir</p>
 				<div class="row options">
 					<vtex.cmc:skuSelection />
 				</div>
@@ -571,6 +573,8 @@
 					<vtex.cmc:BuyButton />
 				</div>
 			</div>
+			<!-- /Modal Confirme de confirmação de voltagem selecionada -->
+
 
 			<!-- Modal tipos de entrega -->
 			<div id="modal-tipo-entrega" data-title="Tipos de entrega">
