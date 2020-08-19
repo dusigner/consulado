@@ -8,7 +8,7 @@ import 'modules/product/product-nav-v2';
 import 'modules/product/details-v3';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
-import 'modules/product/sku-select';
+import 'modules/product/sku-select-v3';
 import 'modules/product/produtos-adicionais';
 import 'modules/product/boleto';
 import 'modules/product/notify-me';
@@ -35,7 +35,7 @@ Nitro.controller(
 		'details-v3',
 		'specifications-v2',
 		'selos',
-		'sku-select',
+		'sku-select-v3',
 		'produtos-adicionais',
 		'boleto',
 		'share',
@@ -515,6 +515,9 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
+<<<<<<< HEAD
 		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
+=======
+>>>>>>> feature/ICD-1290-select-voltage
 	}
 );
