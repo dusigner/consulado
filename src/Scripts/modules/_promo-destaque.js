@@ -81,7 +81,7 @@ const promoDestaque = produto => {
 // Promoção para a página de produto
 const prodPromoDestaque = () => {
 	const
-		hasPromo = $('.prod-selos .flag[class*="__promo__"]'),
+		hasPromo = $('.prod-selos .flag[class*="__promo__"]').first(),
 		hasCashBack = $('.prod-selos .flag[class*="__promo__ganhe"]').length,
 		$prodPreco = $('.prod-preco'),
 		precoDe = formatValue($prodPreco.find('.skuListPrice').text()),
@@ -96,12 +96,18 @@ const prodPromoDestaque = () => {
 			promoPreTitle = promoText[2],
 			promoTitle = promoText[3],
 			promoColor = promoText[4],
-			checkIcon = `<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-			<path d="M5.84551 10.4067C5.71262 10.4068 5.58094 10.3806 5.4582 10.3297C5.33545 10.2788 5.22397 10.2041 5.13013 10.11L0.504858 5.4847C0.314997 5.29484 0.208374 5.03733 0.208374 4.76883C0.208374 4.50032 0.314997 4.24282 0.504858 4.05296C0.69472 3.8631 0.952296 3.75647 1.2208 3.75647C1.48931 3.75647 1.74674 3.8631 1.9366 4.05296L5.84663 7.96299L13.0605 0.749023C13.2504 0.559162 13.508 0.452469 13.7765 0.452469C14.045 0.452469 14.3024 0.559162 14.4923 0.749023C14.6821 0.938885 14.7889 1.19639 14.7889 1.4649C14.7889 1.7334 14.6821 1.99091 14.4923 2.18077L6.55738 10.1158C6.36783 10.303 6.1119 10.4076 5.84551 10.4067Z" fill="${promoColor}"/>
-			</svg>
-			`,
+			checkIcon = `
+				<svg width="15" height="11" viewBox="0 0 15 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M5.84551 10.4067C5.71262 10.4068 5.58094 10.3806 5.4582 10.3297C5.33545 10.2788 5.22397 10.2041 5.13013 10.11L0.504858 5.4847C0.314997 5.29484 0.208374 5.03733 0.208374 4.76883C0.208374 4.50032 0.314997 4.24282 0.504858 4.05296C0.69472 3.8631 0.952296 3.75647 1.2208 3.75647C1.48931 3.75647 1.74674 3.8631 1.9366 4.05296L5.84663 7.96299L13.0605 0.749023C13.2504 0.559162 13.508 0.452469 13.7765 0.452469C14.045 0.452469 14.3024 0.559162 14.4923 0.749023C14.6821 0.938885 14.7889 1.19639 14.7889 1.4649C14.7889 1.7334 14.6821 1.99091 14.4923 2.18077L6.55738 10.1158C6.36783 10.303 6.1119 10.4076 5.84551 10.4067Z" fill="${promoColor}"/>
+				</svg>`
+			,
 			cashBackDiscount = promoText[5] ? `R$+${promoText[5].replace('CNS', '')} de desconto` : null,
-			promoDiscount = `<span class="promo-destaque__price--discount-value"><span>${checkIcon}</span> R$${discountFormat(desconto)} </span><span class="promo-destaque__price--discount-text">de desconto já aplicado</span>`;
+			promoDiscount = `
+				<span class="promo-destaque__price--discount-value">
+					<span>${checkIcon}</span>R$${discountFormat(desconto)}
+				</span>
+				<span class="promo-destaque__price--discount-text">de desconto já aplicado</span>
+			`;
 
 		const $promoDestaque = `
 			<div class="promo-destaque promo-produto">
