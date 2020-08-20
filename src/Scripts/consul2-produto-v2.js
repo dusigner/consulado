@@ -486,5 +486,8 @@ Nitro.controller(
 				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
 			}
 		}
+		$('input:radio').click(function() {
+			$('#showVoltage').text($(this).val());
+		});
 	}
 );
