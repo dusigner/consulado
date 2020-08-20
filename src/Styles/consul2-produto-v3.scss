@@ -205,8 +205,7 @@ html body {
 		}
 
 	}
-
-	.testeB[data-bind='#assistencia'] {
+	.testeB[data-bind='#especificacoes'] {
 		#detalhes {
 			display: none !important;
 			margin: 0 5% 0 5%;
@@ -217,12 +216,64 @@ html body {
 		}
 
 		#especificacoes {
+			background-color: rgb(140, 218, 23);
 			display: block !important;
+			.detalhes-v3-css {
+				display: block !important;
+				visibility: visible;
+			}
+			.specs__links {
+				width: 100%;
+			}
+			.specs__links-title {
+				@include rfs(24);
+				font-weight: 500;
+				margin: 0 0 12px;
+			}
+			.specs__links-paragrafo {
+				display: inline;
+			}
+			.specs__links-content-row {
+				margin-bottom: 12px;
+				padding-left: 40px;
+			}
+			.specs__links-content-list {
+				background-color: #ccc;
+				float: right;
+				justify-content: flex-end;
+				width: 998px;
+			}
+			.specs__list {
+				display: inline;
+			}
 		}
-		.detalhes_v2 {
-			display: block;
+		.detalhes {
+			.detalhes_v2 {
+				display: none !important;
+			}
+		}
+		.specs__additionalInfo {
+			display: none !important;
 		}
 	}
+
+	// .testeB[data-bind='#assistencia'] {
+	// 	#detalhes {
+	// 		display: none !important;
+	// 		margin: 0 5% 0 5%;
+	// 		.detalhes-v3-css {
+	// 			display: none !important;
+	// 			visibility: hidden;
+	// 		}
+	// 	}
+
+	// 	#especificacoes {
+	// 		display: block !important;
+	// 	}
+	// 	.detalhes_v2 {
+	// 		display: block;
+	// 	}
+	// }
 	.detalhes_v2 {
 		display: none;
 	}
