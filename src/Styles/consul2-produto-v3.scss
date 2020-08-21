@@ -48,7 +48,7 @@
 @import 'components/produto/video-lancamento';
 @import 'components/produto/detalhes-v3';
 @import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes-v2';
+@import 'components/produto/especificacoes-v3';
 @import 'components/produto/modal.sku';
 @import 'components/produto/modal.entrega';
 @import 'components/produto/special-content';
@@ -184,6 +184,12 @@ html body {
 		.detalhes-v3-css {
 			display: none !important;
 		}
+		#especificacoes {
+			.specs__links-paragrafo {
+				display: none;
+				visibility: hidden;
+			}
+		}
 	}
 	.testeB[data-bind='#detalhes'] {
 		#detalhes {
@@ -216,44 +222,16 @@ html body {
 		}
 
 		#especificacoes {
-			background-color: rgb(140, 218, 23);
 			display: block !important;
 			.detalhes-v3-css {
 				display: block !important;
 				visibility: visible;
-			}
-			.specs__links {
-				width: 100%;
-			}
-			.specs__links-title {
-				@include rfs(24);
-				font-weight: 500;
-				margin: 0 0 12px;
-			}
-			.specs__links-paragrafo {
-				display: inline;
-			}
-			.specs__links-content-row {
-				margin-bottom: 12px;
-				padding-left: 40px;
-			}
-			.specs__links-content-list {
-				background-color: #ccc;
-				float: right;
-				justify-content: flex-end;
-				width: 998px;
-			}
-			.specs__list {
-				display: inline;
 			}
 		}
 		.detalhes {
 			.detalhes_v2 {
 				display: none !important;
 			}
-		}
-		.specs__additionalInfo {
-			display: none !important;
 		}
 	}
 
@@ -274,6 +252,7 @@ html body {
 	// 		display: block;
 	// 	}
 	// }
+
 	.detalhes_v2 {
 		display: none;
 	}
