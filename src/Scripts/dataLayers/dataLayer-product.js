@@ -209,7 +209,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.unknownCep = () => {
-		$('body').find('.lnkExterno').on('click', function() {
+		$('.cep-busca a').on('click', function() {
 			pushDataLayer(
 				'PDP_vitrine_superior',
 				'clique',
