@@ -8,7 +8,6 @@ Nitro.module('dataLayer-product', function() {
 
 		this.seeRates();
 		this.unknownCep();
-		this.ytTrackerEvents();
 
 		// product unavailable
 		this.notifyMe();
@@ -217,79 +216,6 @@ Nitro.module('dataLayer-product', function() {
 				'nao_sei_meu_cep'
 			);
 		});
-	};
-
-
-
-	this.ytTrackerEvents = () => {
-		var tag = document.createElement('script');
-		var firstScriptTag = document.getElementsByTagName('script')[0];
-
-		$('.mfp-iframe').attr('enablejsapi', "1");
-
-		var player;
-
-		var videoDuration = 0;
-
-		var videotime = 0;
-
-		var interval = null;
-
-		var lyrics = {
-			2: 'Teste'
-		};
-
-		var iframeId = $('#video').find('iframe').attr(id);
-
-		// Adicionando Youtube iframe API
-		tag.src = 'https://www.youtube.com/iframe_api';
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		// Método chamado automaticamente pela api do youtube
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player(iframeId, {
-				events: {
-					'onReady': onPlayerReady
-				},
-				playerVars: {
-					rel: 0,
-					showinfo: 0
-				}
-			});
-		}
-
-		// Método chamado nos eventos do player
-		function onPlayerReady(event) {
-			// obtendo a duração do video, em segundos
-			videoDuration = parseInt(player.getDuration());
-
-			// aplicando o intervalo de 1 em 1 segundo
-			interval = setInterval(discoverTime, 1000);
-		}
-
-		// método utilizado para descobrir o tempo atual do vídeo
-		function discoverTime() {
-			if (player && player.getCurrentTime) {
-				videotime = parseInt(player.getCurrentTime());
-			}
-
-			if (videotime < videoDuration && lyrics[videotime] !== undefined) {
-				fireEvent(videotime);
-			}
-
-			if (videotime > videoDuration) {
-				clearInterval(interval);
-			}
-
-			var timePercent = (videotime * 100) / videoDuration;
-
-			console.log(timePercent);
-		}
-
-		// Aqui vem sua lógica para que algo seja feito ao atingir o tempo desejado no video
-		function fireEvent(index) {
-			console.log(lyrics[index]);
-		}
 	};
 
 
