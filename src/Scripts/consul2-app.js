@@ -21,6 +21,7 @@ require('vendors/slick');
 require('vendors/ajax.localstorage');
 require('vendors/vtex-modal');
 require('vendors/dust-helpers');
+require('consentCookie');
 
 if (VERSION) {
 	console.info(
@@ -70,6 +71,7 @@ require('modules/logoffUser');
 require('dataLayers/dataLayer-new-header-menu');
 require('modules/tira-duvidas');
 require('dataLayers/datalayer-tira-duvidas');
+require('consentCookie');
 // require('dataLayers/dataLayer-menu-antigo');
 
 const changeCallcenterLinks = () => {
@@ -120,7 +122,8 @@ Nitro.setup(
 		'logoffUser',
 		'dataLayer-new-header-menu',
 		'tiraduvidas',
-		'datalayer-tira-duvidas'
+		'datalayer-tira-duvidas',
+		'consentCookie',
 		// 'dataLayer-menu-antigo'
 	],
 	function() {
