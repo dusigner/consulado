@@ -21,7 +21,7 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
-import 'consentCookie';
+import 'dataLayers/dataLayer-main-tabs';
 
 Nitro.controller(
 	'produto-v3',
@@ -46,7 +46,7 @@ Nitro.controller(
 		'product-tags',
 		'dataLayer-product',
 		'outline-products',
-		'consentCookie',
+		'dataLayer-main-tabs',
 	],
 
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
@@ -141,7 +141,7 @@ Nitro.controller(
 
 		//Mensagem após envio
 		$('.portal-notify-me-ref').find('.sku-notifyme-form p').remove();
-		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
+		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108009700777" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 970 0777</a></p>');
 
 		//Vitrine do Produto indisponível
 		if ($(window).width() >= 1024) {
@@ -518,6 +518,7 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
+<<<<<<< HEAD
 
 		// testeAB TopBar PDP
 		self.topBarABTest = () => {
@@ -553,4 +554,11 @@ Nitro.controller(
 
 	},
 
+=======
+<<<<<<< HEAD
+		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
+=======
+>>>>>>> feature/ICD-1290-select-voltage
+	}
+>>>>>>> feature/change-numbers
 );
