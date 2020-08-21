@@ -298,9 +298,9 @@
 }
 @include breakpoint(medium, 'min') {
 	.position-sticky-prod {
-		position: sticky;
+		position: relative;
 		top: 15px;
-		z-index: 15;
+		z-index: 6;
 	}
 }
 
