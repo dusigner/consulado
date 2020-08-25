@@ -154,23 +154,23 @@ const Smartbeer = {
 
 		const sendData = (clientData) => {
 			$.ajax({
-                "headers": {
-                    "Accept": "application/vnd.vtex.ds.v10+json",
-                    "Content-Type": "application/json"
-                },
-                "url": `/api/dataentities/NT/documents`,
-                "async": true,
-                "crossDomain": true,
-                "type": "PATCH",
-                "data": JSON.stringify(clientData)
-            }).success(() => {
+				'headers': {
+					'Accept': 'application/vnd.vtex.ds.v10+json',
+					'Content-Type': 'application/json'
+				},
+				'url': `/api/dataentities/NT/documents`,
+				'async': true,
+				'crossDomain': true,
+				'type': 'PATCH',
+				'data': JSON.stringify(clientData)
+			}).success(() => {
 				$('.form-status').text('Dados enviados com sucesso!').show();
-            }).fail(() => {
-                $('.form-status').text('Ocorreu um erro, tente novamente mais tarde').show();
-            }).done(() =>{
-                setTimeout(() => {
-                    $('.form-status').fadeOut(500);
-                }, 5000);
+			}).fail(() => {
+				$('.form-status').text('Ocorreu um erro, tente novamente mais tarde').show();
+			}).done(() =>{
+				setTimeout(() => {
+					$('.form-status').fadeOut(500);
+				}, 5000);
 			});
 		}
 
@@ -187,7 +187,7 @@ const Smartbeer = {
 					<fieldset class="sku-notifyme-form notifyme-form">
 						<p>Seja avisado quando estiver disponível
 							<br>Ou entre em contato com nosso
-							<a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a>
+							<a href="tel:+551108009700777" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 970 0777</a>
 						</p>
 						<input id="cerv-name" class="sku-notifyme-client-name notifyme-client-name" placeholder="Digite seu nome..." size="20" type="text" name="notifymeClientName" id="notifymeClientName" style="display: inline-block;">
 						<input id="cerv-email" class="sku-notifyme-client-email notifyme-client-email" placeholder="Digite seu e-mail..." size="20" type="text" name="notifymeClientEmail" id="notifymeClientEmail" style="display: inline-block;">
