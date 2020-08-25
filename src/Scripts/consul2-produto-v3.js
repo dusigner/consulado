@@ -515,9 +515,6 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
-<<<<<<< HEAD
 		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
-=======
->>>>>>> feature/ICD-1290-select-voltage
 	}
 );
