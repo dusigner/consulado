@@ -184,7 +184,65 @@ html body {
 		.detalhes-v3-css {
 			display: none !important;
 		}
+
+		.seo-text {
+			max-width: 1120px;
+			margin: 0 auto;
+			margin-bottom: 60px;
+
+			@media screen and (max-width: 600px) {
+				background-color: #FAF9F9;
+				margin: .5em 0 1em 0;
+				padding: 0 35px 25px;
+			}
+
+			.productDescription {
+				font-size: 18px;
+				line-height: 137.8%;
+				color: #686160;
+				text-align: center;
+
+				@media screen and (max-width: 600px) {
+					font-size: 0.75rem;
+					color: #736C6B;
+					max-height: 100px;
+					overflow-y: scroll;
+					padding-right: 20px;
+					text-align: left;
+				}
+			}
+		}
 	}
+
+	.testeB {
+		.seo-text {
+			max-width: 1120px;
+			margin: 0 auto;
+			margin-bottom: 60px;
+
+			@media screen and (max-width: 600px) {
+				background-color: #FAF9F9;
+				margin: .5em 0 1em 0;
+				padding: 0 35px 25px;
+			}
+			.productDescription {
+				font-size: 18px;
+				line-height: 137.8%;
+				color: #686160;
+				text-align: center;
+
+				@media screen and (max-width: 600px) {
+					font-size: 0.75rem;
+					color: #736C6B;
+					max-height: 100px;
+					overflow-y: scroll;
+					padding-right: 20px;
+					text-align: left;
+				}
+			}
+		}
+	}
+
 	.testeB[data-bind='#detalhes'] {
 		#detalhes {
 			display: block !important;
