@@ -8,7 +8,7 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex.cmc:productRichSnippets showFacebook="1" />
 	<vtex:template id="0-consul-head-content" />
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto-v3.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="/files/consul2-produto-v3.css?v=v1598386366258" />
 
 </head>
 
@@ -356,12 +356,10 @@
 			<div class="row anchors">
 				<div class="container">
 					<ul>
-						<li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
-						<li class="item"><a href="#assistencia" class="scroll-to">Assistência e relacionados</a></li>
-						<li class="item"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
-						<li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
-						<li class="item hide"><a href="#opcionais" class="scroll-to">Opcionais</a></li>
-						<li class="item"><a href="#trustvox-reviews" class="scroll-to">Avaliações</a></li>
+						<li class="item"><a href="#specsdetails" class="scroll-to">Detalhes/Especificações Técnicas</a></li>
+						<li class="item"><a href="#assistencia" class="scroll-to">Assistência e Relacionados</a></li>
+						<li class="item"><a href="#video" class="scroll-to">Vídeo</a></li>
+						<li class="item hide"><a href="#trustvox-reviews" class="scroll-to">Avaliações</a></li>
 					</ul>
 					<button class="right">Voltar ao topo</button>
 				</div>
@@ -465,9 +463,17 @@
 
 			<section id="detalhes" class="detalhes"></section>
 			<section id="video" class="video"></section>
+
+			<!-- Descrição do produto -->
+			<div class="descricao-produto seo-text" itemprop="description">
+				<vtex.cmc:ProductDescription />
+			</div>
+			<!-- /Descrição do produto -->
+
 		</div>
 
 		<div class="testeB">
+			<div id="specsdetails"></div>
 			<div class="main-tabs">
 				<a href="#detalhes" class="is--active">Detalhes</a>
 				<a href="#assistencia">Especificações técnicas</a>
@@ -476,6 +482,12 @@
 			<section id="detalhes" class="detalhes box-options is--active"></section>
 			<section id="especificacoes" class="content-toggle box-options"></section>
 
+			<!-- Descrição do produto -->
+			<div class="descricao-produto seo-text" itemprop="description">
+				<vtex.cmc:ProductDescription />
+			</div>
+			<!-- /Descrição do produto -->
+
 			<section id="assistencia" class="product-assist container">
 				<h2 class="text-center">
 					Assistência e Relacionados
@@ -483,6 +495,7 @@
 				<p class="text-center">
 					Tudo pensado para não haver dúvidas
 				</p>
+			<!-- teste comentario -->
 				<div class="product-assist-row">
 					<div class="product-assist-block parts" title="Peças para este produto">
 						<div class="first-block">
@@ -565,7 +578,7 @@
 			<!-- Modal Confirme de confirmação de voltagem selecionada -->
 			<div id="modal-sku">
 				<h1 class="title-check-voltage">O produto escolhido é<p id="#showVoltage"></p></h1>
-					<p class="double-check" >Confirme a voltagem antes de prosseguir</p>
+					<p class="double-check">Confirme a voltagem antes de prosseguir</p>
 				<div class="row options">
 					<vtex.cmc:skuSelection />
 				</div>
@@ -691,7 +704,7 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-produto-v3.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="/files/consul2-produto-v3.min.js?v=v1598386366258"></script>
 
 	<script type="text/javascript">
 		var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
