@@ -484,6 +484,7 @@ Nitro.controller(
 		//teste A-B detalhes
 
 		$('body').addClass('testeAB-detalhes');
+
 		if ( $('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();

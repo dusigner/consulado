@@ -161,6 +161,9 @@ Nitro.module('specifications-v3', function() {
 			$this.parents('.specs__section').toggleClass('inactive');
 		});
 
-
+		$('.btn-ver-mais-especs').click(function (){
+			$('.especs-toggle').toggleClass('active-toggle');
+		});
 	}
+
 });

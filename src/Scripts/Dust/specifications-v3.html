@@ -1,83 +1,91 @@
-<div class="specs__title">
-	<div class="container">
-		<h2 class="specs__title-main">Especificações <span>técnicas</span></h2>
-		<h4 class="specs__title-sub">Medidas, itens, especificações e informações sobre o produto</h4>
-		<i class="icon icon-consul-clipboard"></i>
-		<i class="icon icon-arrow-left"></i>
-	</div>
-</div>
-<div class="specs__measure specs__section">
-	<div class="container">
-		<h4 class="specs__measure-title">
-			Medidas
-			<i class="icon icon-top-arrow"></i>
-		</h4>
-		<div class="specs__measure-selector specs__list">
-			<a href="javascript:void(0)" class="specs__measure-selector-withoutBox" data-selector="sem-caixa">Sem caixa</a>
-			<a href="javascript:void(0)" class="specs__measure-selector-withBox" data-selector="com-caixa">Com caixa</a>
+<div class="especs-toggle">
+	<div class="specs__title">
+		<div class="container">
+			<h2 class="specs__title-main">Especificações <span>técnicas</span></h2>
+			<h4 class="specs__title-sub">Medidas, itens, especificações e informações sobre o produto</h4>
+			<i class="icon icon-consul-clipboard"></i>
+			<i class="icon icon-arrow-left"></i>
 		</div>
-		<div class="specs__measure-content specs__list">
-			<div class="specs__measure-box">
-				<div class="specs__measure-content-width">
-					<p>Largura</p>
-					<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.width}cm</h4>
-					<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.width}cm</h4>
-				</div>
-				<div class="specs__measure-content-height">
-					<p>Altura</p>
-					<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.height}cm</h4>
-					<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.height}cm</h4>
-				</div>
-				<div class="specs__measure-content-length">
-					<p>Profundidade</p>
-					<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.length}cm</h4>
-					<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.length}cm</h4>
-				</div>
-				<div class="specs__measure-content-weight">
-					<p>Peso</p>
-					<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.weight}kg</h4>
-					<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.weight}kg</h4>
+	</div>
+
+	<div class="specs__measure specs__section">
+		<div class="container">
+			<h4 class="specs__measure-title">
+				Medidas
+				<i class="icon icon-top-arrow"></i>
+			</h4>
+			<div class="specs__measure-selector specs__list">
+				<a href="javascript:void(0)" class="specs__measure-selector-withoutBox" data-selector="sem-caixa">Sem caixa</a>
+				<a href="javascript:void(0)" class="specs__measure-selector-withBox" data-selector="com-caixa">Com caixa</a>
+			</div>
+			<div class="specs__measure-content specs__list">
+				<div class="specs__measure-box">
+					<div class="specs__measure-content-width">
+						<p>Largura</p>
+						<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.width}cm</h4>
+						<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.width}cm</h4>
+					</div>
+					<div class="specs__measure-content-height">
+						<p>Altura</p>
+						<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.height}cm</h4>
+						<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.height}cm</h4>
+					</div>
+					<div class="specs__measure-content-length">
+						<p>Profundidade</p>
+						<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.length}cm</h4>
+						<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.length}cm</h4>
+					</div>
+					<div class="specs__measure-content-weight">
+						<p>Peso</p>
+						<h4 class="withoutBox" data-selector="sem-caixa">{dimensions.weight}kg</h4>
+						<h4 class="withBox" data-selector="com-caixa">{dimensionsBox.weight}kg</h4>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<div class="specs__items specs__section">
-	<div class="container">
-		<h4 class="specs__items-title">
-			Itens
-			<i class="icon icon-top-arrow"></i>
-		</h4>
-		<div class="specs__items-content specs__list">
-			<ul class="specs__items-list">
-				{#items}
-				<li class="specs__items-row">
-					<p class="specs__items-content-title">{key}</p>
-					<h4 class="specs__items-content-value">{value}</h4>
-				</li>
-				{/items}
-			</ul>
+
+	<div class="specs__items specs__section">
+		<div class="container">
+			<h4 class="specs__items-title">
+				Itens
+				<i class="icon icon-top-arrow"></i>
+			</h4>
+			<div class="specs__items-content specs__list">
+				<ul class="specs__items-list">
+					{#items}
+					<li class="specs__items-row">
+						<p class="specs__items-content-title">{key}</p>
+						<h4 class="specs__items-content-value">{value}</h4>
+					</li>
+					{/items}
+				</ul>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="specs__specs specs__section">
-	<div class="container">
-		<h4 class="specs__specs-title">
-			Especificações
-			<i class="icon icon-top-arrow"></i>
-		</h4>
-		<div class="specs__specs-content specs__list">
-			<ul class="specs__specs-list">
-				{#specs}
-				<li class="specs__specs-row {key}">
-					<p class="specs__items-content-title">{key}</p>
-					<h4 class="specs__items-content-value">{value}</h4>
-				</li>
-				{/specs}
-			</ul>
+
+
+	<div class="specs__specs specs__section">
+		<div class="container">
+			<h4 class="specs__specs-title">
+				Especificações
+				<i class="icon icon-top-arrow"></i>
+			</h4>
+			<div class="specs__specs-content specs__list">
+				<ul class="specs__specs-list">
+					{#specs}
+					<li class="specs__specs-row {key}">
+						<p class="specs__items-content-title">{key}</p>
+						<h4 class="specs__items-content-value">{value}</h4>
+					</li>
+					{/specs}
+				</ul>
+			</div>
 		</div>
 	</div>
+<button class="btn-ver-mais-especs">ver mais <span class="icone-seta"></span></button>
 </div>
+
 <div class="specs__footer-content">
 	<div class="container">
 		<div class="specs__additionalInfo specs__section">
