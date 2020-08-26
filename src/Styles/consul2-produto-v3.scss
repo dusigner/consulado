@@ -48,7 +48,7 @@
 @import 'components/produto/video-lancamento';
 @import 'components/produto/detalhes-v3';
 @import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes-v2';
+@import 'components/produto/especificacoes-v3';
 @import 'components/produto/modal.sku';
 @import 'components/produto/modal.entrega';
 @import 'components/produto/special-content';
@@ -184,6 +184,12 @@ html body {
 		.detalhes-v3-css {
 			display: none !important;
 		}
+		#especificacoes {
+			.specs__links-paragrafo {
+				display: none;
+				visibility: hidden;
+			}
+		}
 	}
 	.testeB[data-bind='#detalhes'] {
 		#detalhes {
@@ -205,8 +211,7 @@ html body {
 		}
 
 	}
-
-	.testeB[data-bind='#assistencia'] {
+	.testeB[data-bind='#especificacoes'] {
 		#detalhes {
 			display: none !important;
 			margin: 0 5% 0 5%;
@@ -218,11 +223,36 @@ html body {
 
 		#especificacoes {
 			display: block !important;
+			.detalhes-v3-css {
+				display: block !important;
+				visibility: visible;
+			}
 		}
-		.detalhes_v2 {
-			display: block;
+		.detalhes {
+			.detalhes_v2 {
+				display: none !important;
+			}
 		}
 	}
+
+	// .testeB[data-bind='#assistencia'] {
+	// 	#detalhes {
+	// 		display: none !important;
+	// 		margin: 0 5% 0 5%;
+	// 		.detalhes-v3-css {
+	// 			display: none !important;
+	// 			visibility: hidden;
+	// 		}
+	// 	}
+
+	// 	#especificacoes {
+	// 		display: block !important;
+	// 	}
+	// 	.detalhes_v2 {
+	// 		display: block;
+	// 	}
+	// }
+
 	.detalhes_v2 {
 		display: none;
 	}

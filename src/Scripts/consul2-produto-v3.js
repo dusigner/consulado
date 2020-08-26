@@ -6,7 +6,7 @@ import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
 import 'modules/product/details-v3';
-import 'modules/product/specifications-v2';
+import 'modules/product/specifications-v3';
 import 'modules/product/selos';
 import 'modules/product/sku-select-v3';
 import 'modules/product/produtos-adicionais';
@@ -33,7 +33,7 @@ Nitro.controller(
 		'product-nav',
 		'video',
 		'details-v3',
-		'specifications-v2',
+		'specifications-v3',
 		'selos',
 		'sku-select-v3',
 		'produtos-adicionais',
@@ -516,5 +516,4 @@ Nitro.controller(
 			}
 		});
 		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
-	}
-);
+	});
