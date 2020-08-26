@@ -191,9 +191,12 @@ html body {
 			margin-bottom: 60px;
 
 			@media screen and (max-width: 600px) {
-				background-color: #FAF9F9;
-				margin: .5em 0 1em 0;
-				padding: 0 35px 25px;
+				background: #faf9f9;
+				padding: 25px;
+				max-width: 21rem;
+				margin: 0 auto;
+				border-radius: 4px;
+				margin-bottom: 40px;
 			}
 
 			.productDescription {
@@ -221,9 +224,12 @@ html body {
 			margin-bottom: 60px;
 
 			@media screen and (max-width: 600px) {
-				background-color: #FAF9F9;
-				margin: .5em 0 1em 0;
-				padding: 0 35px 25px;
+				background: #faf9f9;
+				padding: 25px;
+				max-width: 21rem;
+				margin: 0 auto;
+				border-radius: 4px;
+				margin-bottom: 40px;
 			}
 			.productDescription {
 				font-size: 18px;
