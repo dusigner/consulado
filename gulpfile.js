@@ -144,7 +144,7 @@ const gitTag = (done) => {
 			done();
 		} else {
 			shell.exec('git for-each-ref --count=1 --sort=-creatordate --format "%(refname)" refs/tags', function (code, stdout) {
-				pkg.version = stdout.replace('refs/tags/v', '').trim();
+				pkg.version = stdout.replace('refs/tags/v', '').replace('.0','.').trim();
 
 				preprocessContext = {
 					context: {
