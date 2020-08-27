@@ -188,6 +188,8 @@ html body {
 		}
 
 		.seo-text {
+			width: 92%;
+			max-width: 1120px;
 			margin: 0 auto;
 			margin-bottom: 60px;
 			max-width: 1120px;
@@ -195,14 +197,14 @@ html body {
 			@media screen and (max-width: 600px) {
 				background: #faf9f9;
 				padding: 25px;
-				max-width: 21rem;
+				width: 92%;
 				margin: 0 auto;
 				border-radius: 4px;
 				margin-bottom: 40px;
 			}
 
 			.productDescription {
-				font-size: 18px;
+				font-size: .75rem;
 				line-height: 137.8%;
 				color: #686160;
 				text-align: center;
@@ -227,6 +229,8 @@ html body {
 
 	.testeB {
 		.seo-text {
+			width: 92%;
+			max-width: 1120px;
 			margin: 0 auto;
 			margin-bottom: 60px;
 			max-width: 1120px;
@@ -234,14 +238,14 @@ html body {
 			@media screen and (max-width: 600px) {
 				background: #faf9f9;
 				padding: 25px;
-				max-width: 21rem;
+				width: 92%;
 				margin: 0 auto;
 				border-radius: 4px;
 				margin-bottom: 40px;
 			}
+
 			.productDescription {
-				color: #686160;
-				font-size: 18px;
+				font-size: .75rem;
 				line-height: 137.8%;
 				text-align: center;
 
