@@ -16,7 +16,9 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		}
 
 		.discount-boleto span {
-			display: inline-block !important;
+			align-items: center;
+			display: flex;
+			position: relative;
 		}
 	}
 
@@ -201,6 +203,7 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		display: block;
 		position: relative;
 		font-weight: normal;
+		width: 100%;
 
 		//  Icone pagamento
 		//  &:before {
@@ -235,19 +238,6 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			}
 		}
 
-		//  Icone pagamento
-		&:before {
-			@include square(16px);
-			background: url($icon-preco-a-vista) no-repeat center center;
-			background-size: contain;
-			content: "";
-			left: 0;
-			position: absolute;
-			top: 75%;
-			transform: translateY(-50%);
-			display: inline-block;
-		}
-
 		strong {
 			@include rfs(30px);
 			color: #9bca3d;
@@ -258,18 +248,39 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			@include rfs(16px);
 			color: #9bca3d;
 			display: inline-flex;
-			padding-left: 25px;
-			margin-bottom: 5px;
 			font-weight: 500;
+
 			&.hide--billet {
 				color: transparent !important;
-				width: 100%;
 				margin-left: -25%;
+				width: 100%;
+
+				&:before {
+					content: none;
+				}
 			}
 			> span {
 				@include rfs(14px);
 				color: #9e9e9e;
-				margin-left: -8%;
+				margin-left: 4px;
+			}
+		}
+
+		> span {
+			margin-bottom: 5px;
+			padding-left: 25px;
+
+			//  Icone pagamento
+			&:before {
+				@include square(16px);
+				background: url($icon-preco-a-vista) no-repeat center center;
+				background-size: contain;
+				content: "";
+				left: 0;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				display: inline-block;
 			}
 		}
 	}

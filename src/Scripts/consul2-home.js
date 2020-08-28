@@ -47,8 +47,7 @@ Nitro.controller(
 		'dataLayer-vitrine-categorizacao',
 		'datalayer-vitrine-filter-size-family',
 		'dataLayer-banner-home',
-		'popup-whatsapp-promoter',
-		'consentCookie',
+		'popup-whatsapp-promoter'
 	],
 
 	function (chaordic) {
