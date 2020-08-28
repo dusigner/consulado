@@ -492,6 +492,9 @@ Nitro.controller(
 			$('.testeA').hide();
 			$('.testeB').show();
 
+			$('.btest').show();
+			$('.atest').hide();
+
 			var $detalhes = $('.testeA #detalhes').clone();
 			var $especificacoes = $('.testeA #especificacoes');
 
@@ -503,6 +506,10 @@ Nitro.controller(
 		} else {
 			$('.testeA').show();
 			$('.testeB').hide();
+
+			$('.atest').show();
+			$('.btest').hide();
+
 			$('.detalhes_v2').show();
 			$('.detalhes-v3-css').remove();
 

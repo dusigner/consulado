@@ -281,6 +281,12 @@ html body {
 		}
 
 	}
+	#specsdetails,
+	#assistenciaB,
+	#videoB {
+		position: relative;
+		height: 5rem;
+	}
 	.testeB[data-bind='#especificacoes'] {
 		#detalhes {
 			display: none !important;
@@ -326,6 +332,7 @@ html body {
 	.detalhes_v2 {
 		display: none;
 	}
+
 }
 
 h1.title-check-voltage {
