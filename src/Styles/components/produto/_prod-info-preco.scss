@@ -251,17 +251,14 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			font-weight: 500;
 
 			&.hide--billet {
-				color: transparent !important;
-				margin-left: -25%;
+				display: none;
+				position: relative;
 				width: 100%;
-
-				&:before {
-					content: none;
-				}
 			}
 			> span {
 				@include rfs(14px);
 				color: #9e9e9e;
+				display: contents;
 				margin-left: 4px;
 			}
 		}
