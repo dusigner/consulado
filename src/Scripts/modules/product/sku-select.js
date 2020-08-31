@@ -159,7 +159,25 @@ Nitro.module('sku-select', function() {
 		}
 	};
 
+	this.voltageSelectorModal = () => {
+		$('body').append(`
+			<div class="voltageModalWindow">
+				<div class="voltageModal">
+					<p class="selected-voltage">O produto escolhido é 110V</p>
+					<p class="confirmation-message">Confirme a voltagem antes de prosseguir</p>
+				</div>
+			</div>
+		`);
+		var voltageModal = $('.voltageModalWindow')
 
+		$('.buy-button').click(function(e){
+			e.preventDefault();
+			voltageModal.addClass('voltageSelectorIsOpen');
+			voltageModal.fadeIn();
+		})
+	};
+
+	this.voltageSelectorModal();
 	this.unavailableSKU();
 	this.hideSkuSelector();
 });
