@@ -174,6 +174,7 @@ Nitro.module('sku-select', function() {
 			e.preventDefault();
 			voltageModal.addClass('voltageSelectorIsOpen');
 			voltageModal.fadeIn();
+
 		})
 	};
 
