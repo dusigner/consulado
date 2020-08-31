@@ -157,7 +157,7 @@ Nitro.module('boleto', function() {
 			 * Caso contrário, mostra o desconto do boleto
 			 */
 			 //Remove porcentagem quando for igual a 0%
-			if (cmcDiscountCartao === cmcDiscountBoleto) {
+			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				//isDiscountOff = cmcDiscountCartao > 0 ? ' (' + cmcDiscountCartao + '% OFF)' : '';
 				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
 				boletoInfo = `
@@ -167,8 +167,8 @@ Nitro.module('boleto', function() {
 				`;
 
 				setTimeout(function() {
-					if ( cmcDiscountCartao === 0 && cmcDiscountBoleto === 0) {
-						$('.discount-boleto .on-discount').remove(); // Caso a condição seja aceita, o elemento '.on-discont' será removido.
+					if ( cmcDiscountBoleto === 0) {
+						$('.discount-boleto .on-discount').addClass('hide--billet');
 					}
 				}, 500)
 				/*
