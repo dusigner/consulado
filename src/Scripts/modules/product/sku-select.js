@@ -199,6 +199,12 @@ Nitro.module('sku-select', function() {
 			voltageModal.addClass('voltageSelectorIsOpen');
 		});
 
+		$('.cont-prod-details-nav .buy-button').click(function(e){
+			e.preventDefault();
+
+			voltageModal.addClass('voltageSelectorIsOpen');
+		});
+
 		$('.closeModal').click(function(){
 			$(voltageModal).removeClass('voltageSelectorIsOpen');
 		})
@@ -209,18 +215,20 @@ Nitro.module('sku-select', function() {
 			};
 		});
 
-		$('#modal-sku .buy-button').click(function(e){
-			if(!$('input[data-dimension=Voltagem]').is(":checked")) {
-				alert('Selecione uma voltagem!');
 
-			}
-		});
+
+		$('#modal-sku .row.button').hide();
 
 		$('input[data-dimension=Voltagem]').click(function(){
 			var selectedVoltage = $(this).val();
 
 			$('.title-check-voltage').find('#showVoltage').text('');
 			$('.title-check-voltage').find('#showVoltage').append(selectedVoltage);
+
+			setTimeout(function(){
+				$('#modal-sku .row.button').show();
+			}, 1500);
+
 		});
 	};
 
