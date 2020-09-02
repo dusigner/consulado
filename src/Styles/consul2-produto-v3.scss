@@ -190,7 +190,72 @@ html body {
 				visibility: hidden;
 			}
 		}
+
+		.seo-text {
+			width: 92%;
+			max-width: 1120px;
+			margin: 0 auto;
+			margin-bottom: 60px;
+
+			@media screen and (max-width: 600px) {
+				background: #faf9f9;
+				padding: 25px;
+				width: 92%;
+				margin: 0 auto;
+				border-radius: 4px;
+				margin-bottom: 40px;
+			}
+
+			.productDescription {
+				font-size: .75rem;
+				line-height: 137.8%;
+				color: #686160;
+				text-align: center;
+
+				@media screen and (max-width: 600px) {
+					color: #736C6B;
+					max-height: 100px;
+					overflow-y: scroll;
+					padding-right: 20px;
+					text-align: left;
+				}
+			}
+		}
 	}
+
+	.testeB {
+		.seo-text {
+			width: 92%;
+			max-width: 1120px;
+			margin: 0 auto;
+			margin-bottom: 60px;
+
+			@media screen and (max-width: 600px) {
+				background: #faf9f9;
+				padding: 25px;
+				width: 92%;
+				margin: 0 auto;
+				border-radius: 4px;
+				margin-bottom: 40px;
+			}
+
+			.productDescription {
+				font-size: .75rem;
+				line-height: 137.8%;
+				color: #686160;
+				text-align: center;
+
+				@media screen and (max-width: 600px) {
+					color: #736C6B;
+					max-height: 100px;
+					overflow-y: scroll;
+					padding-right: 20px;
+					text-align: left;
+				}
+			}
+		}
+	}
+
 	.testeB[data-bind='#detalhes'] {
 		#detalhes {
 			display: block !important;
