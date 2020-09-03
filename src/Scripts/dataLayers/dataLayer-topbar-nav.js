@@ -17,6 +17,14 @@ Nitro.module('dataLayer-topbar-nav', function() {
                 `${$option}`
 			);
 		});
+
+		$('.prod-details-nav .nav-price #BuyButtonDetails .buy-button').on('click', function(){
+			pushDataLayer(
+				`PDP_barra_fixada`,
+                `clique`,
+                `cta_comprar`
+			);
+		});
 	};
 
 	this.init();
