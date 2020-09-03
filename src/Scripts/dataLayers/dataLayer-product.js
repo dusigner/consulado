@@ -25,6 +25,9 @@ Nitro.module('dataLayer-product', function() {
 		// assistance_and_related-product
 		this.viewMore();
 		this.scrollUser();
+
+		// new topbar
+		this.topBarNavOptions();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -180,6 +183,14 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
+		});
+	};
+
+	this.topBarNavOptions = () => {
+		console.log('batata');
+		$('.cont-prod-details-nav.fixed-bar .prod-details-nav').find('ul li').on('click', function() {
+			var $option = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+			console.log($option);
 		});
 	};
 
