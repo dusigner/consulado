@@ -7,7 +7,6 @@ Nitro.module('dataLayer-product', function() {
 		checkInlineDatalayers();
 
 		this.seeRates();
-		this.unknownCep();
 
 		// product unavailable
 		this.notifyMe();
@@ -204,16 +203,6 @@ Nitro.module('dataLayer-product', function() {
 				'PDP_vitrine_superior',
 				'clique',
 				'ver_avaliacoes'
-			);
-		});
-	};
-
-	this.unknownCep = () => {
-		$('.cep-busca a').on('click', function() {
-			pushDataLayer(
-				'PDP_vitrine_superior',
-				'clique',
-				'nao_sei_meu_cep'
 			);
 		});
 	};
