@@ -22,6 +22,7 @@ import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
 import 'dataLayers/dataLayer-main-tabs';
+import 'dataLayers/dataLayer-topbar-nav';
 
 Nitro.controller(
 	'produto-v3',
@@ -47,6 +48,7 @@ Nitro.controller(
 		'dataLayer-product',
 		'outline-products',
 		'dataLayer-main-tabs',
+		'dataLayer-topbar-nav',
 	],
 
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
