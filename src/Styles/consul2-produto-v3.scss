@@ -172,10 +172,10 @@
 }
 
 body .box-options {
-	display: none !important;
+	display: none;
 
 	&.is--active {
-		display: block !important;
+		display: block;
 	}
 }
 
