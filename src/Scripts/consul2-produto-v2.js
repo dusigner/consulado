@@ -554,6 +554,9 @@ Nitro.controller(
 		};
 		//favorites product
 
+		//ativa teste A-B favorites product
+		$(".wishlist__button").addClass(".wishlist__button-active");
+
 		(function(window, document, $) {
 			$(function() {
 				Index.init();
