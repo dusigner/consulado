@@ -110,7 +110,7 @@ Nitro.controller(
 		//favoritar produto
 		$("#wishlist-product).find(.wishlist__button").attr(
 			"data-idproduto",
-			$skuJson.productId
+			"skuJson"
 		);
 
 		// whats
