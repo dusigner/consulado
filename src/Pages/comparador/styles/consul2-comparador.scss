@@ -11,11 +11,11 @@
 */
 
 // Utility helpers
-@import 'helpers/variables';
-@import 'helpers/functions';
-@import 'helpers/mixins';
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
 
-@import 'consul2-listagem';
+@import "consul2-listagem";
 
 @mixin diffHighlight() {
 	background-color: #e4e4e4;
@@ -35,18 +35,17 @@ body.compare {
 		}
 	}
 
-	@include breakpoint('small', 'max') {
+	@include breakpoint("small", "max") {
 		.container {
-			max-width: 100%!important;
+			max-width: 100% !important;
 		}
 
 		.footer-bottom {
 			padding: 1.5em 5%;
 		}
-
 	}
 
-	@media screen and (max-device-width: 768px){
+	@media screen and (max-device-width: 768px) {
 		#vtex-callcenter .cc-pa3-ns {
 			display: none;
 		}
@@ -56,16 +55,20 @@ body.compare {
 .corpo-comparacao {
 	&.highlight {
 		&-eq {
-			.atributos.eq { @include diffHighlight() }
+			.atributos.eq {
+				@include diffHighlight();
+			}
 		}
 
 		&-diff {
-			.atributos.diff { @include diffHighlight() }
+			.atributos.diff {
+				@include diffHighlight();
+			}
 		}
 	}
 
 	table {
-		@include breakpoint('small', 'max') {
+		@include breakpoint("small", "max") {
 			// padding-top: 500px;
 			position: relative;
 		}
@@ -73,24 +76,24 @@ body.compare {
 		width: 100%;
 
 		thead {
-			@include breakpoint('small', 'max') {
+			@include breakpoint("small", "max") {
 				background-color: #fff;
 				margin-bottom: 1rem;
-				padding: .5em .5em 60px;
+				padding: 0.5em 0.5em 60px;
 				position: relative;
 				width: 100%;
 				z-index: 3;
 			}
 			display: block;
 			margin-bottom: 3rem;
-			transition: top .5s ease;
+			transition: top 0.5s ease;
 			z-index: 4;
 
 			tr {
 				&:not(.remover) {
-					@include breakpoint('small', 'max') {
+					@include breakpoint("small", "max") {
 						align-items: flex-start;
-						margin-bottom: -10px!important;
+						margin-bottom: -10px !important;
 						overflow-x: scroll;
 						overflow-y: hidden;
 					}
@@ -103,14 +106,16 @@ body.compare {
 					display: none;
 				}
 
-				@include breakpoint('medium', 'min') {
-					th:first-child { width: 25%; }
+				@include breakpoint("medium", "min") {
+					th:first-child {
+						width: 25%;
+					}
 				}
 
 				th {
 					max-width: 300px;
 					width: calc(100% / 4);
-					@include breakpoint('small', 'max') {
+					@include breakpoint("small", "max") {
 						max-width: 100%;
 						width: 45% !important;
 						margin: 2.5%;
@@ -118,7 +123,7 @@ body.compare {
 					}
 
 					.flag {
-						@include breakpoint('small', 'max') {
+						@include breakpoint("small", "max") {
 							bottom: 69px;
 							display: inline;
 							height: 35px;
@@ -128,16 +133,20 @@ body.compare {
 					}
 
 					&:first-child {
-						& > .produto { margin-left: 0; }
+						& > .produto {
+							margin-left: 0;
+						}
 					}
 
-					&:last-child { text-align: center; }
+					&:last-child {
+						text-align: center;
+					}
 
 					& > .produto {
 						margin: 0 auto;
 						width: 90%;
 
-						@include breakpoint('small', 'max') {
+						@include breakpoint("small", "max") {
 							margin: 0 auto;
 							width: 100% !important;
 						}
@@ -151,7 +160,7 @@ body.compare {
 									position: relative;
 									width: 100%;
 
-									@include breakpoint('small', 'max') {
+									@include breakpoint("small", "max") {
 										border: 1px solid #e4e4e4;
 										margin: 0;
 										max-width: 100%;
@@ -165,7 +174,7 @@ body.compare {
 										min-height: inherit;
 										border: unset;
 
-										@include breakpoint('small', 'max') {
+										@include breakpoint("small", "max") {
 											height: auto;
 											min-height: inherit;
 											width: auto;
@@ -177,12 +186,18 @@ body.compare {
 											height: auto;
 											min-height: inherit;
 
-											@include breakpoint('small', 'max') {
+											@include breakpoint(
+												"small",
+												"max"
+											) {
 												padding-bottom: 10px;
 											}
 
 											.image {
-												@include breakpoint('small', 'max') {
+												@include breakpoint(
+													"small",
+													"max"
+												) {
 													display: block;
 													line-height: 0;
 													position: relative;
@@ -191,41 +206,59 @@ body.compare {
 											}
 
 											.wishlist__container {
-												@include breakpoint('small', 'max') {
+												@include breakpoint(
+													"small",
+													"max"
+												) {
 													height: auto;
 												}
 											}
 
 											.prod-info {
-												@include breakpoint('small', 'max') {
-													border-top: 1px solid #f4f2f1;
+												@include breakpoint(
+													"small",
+													"max"
+												) {
+													border-top: 1px solid
+														#f4f2f1;
 													line-height: normal;
-													margin-top: .5em;
-													padding-top: .3em;
+													margin-top: 0.5em;
+													padding-top: 0.3em;
 												}
 											}
 
 											.price {
-												@include breakpoint('small', 'max') {
+												@include breakpoint(
+													"small",
+													"max"
+												) {
 													min-height: 75px;
 													text-align: center;
 												}
 
 												.de {
-													@include breakpoint('small', 'max') {
-														font-size: calc(.6rem + .09412vw);
+													@include breakpoint(
+														"small",
+														"max"
+													) {
+														font-size: calc(
+															0.6rem + 0.09412vw
+														);
 													}
 												}
 
 												.por {
-													@include breakpoint('small', 'max') {
+													@include breakpoint(
+														"small",
+														"max"
+													) {
 														color: #702f8f;
 														font-size: 12px;
 														font-weight: 500;
 														line-height: 1.2;
 
 														.off {
-															font-size: .625rem;
+															font-size: 0.625rem;
 															border-radius: 100px;
 															color: #fff;
 															position: absolute;
@@ -235,17 +268,22 @@ body.compare {
 															padding: 4px 10px;
 															z-index: 1;
 
-															&:not(:empty)+.product-with-discount {
+															&:not(:empty)
+																+ .product-with-discount {
 																top: 98px;
 																right: 3px;
 																font-size: 8px;
-																padding: 4px 10px;
+																padding: 4px
+																	10px;
 															}
 														}
 
 														.val {
-															font-size: calc(.65rem + .65882vw);
-															margin: 0 0 .4em;
+															font-size: calc(
+																0.65rem +
+																	0.65882vw
+															);
+															margin: 0 0 0.4em;
 														}
 													}
 												}
@@ -254,18 +292,23 @@ body.compare {
 									}
 
 									.nome {
-										@include breakpoint('extra-small', 'max') { min-height: 90px; }
+										@include breakpoint(
+											"extra-small",
+											"max"
+										) {
+											min-height: 90px;
+										}
 										font-size: 14px;
 										min-height: 60px;
 
-										@include breakpoint('small', 'max') {
-											font-size: 12px!important;
-											min-height: 60px!important;
-    										margin-bottom: 10px;
+										@include breakpoint("small", "max") {
+											font-size: 12px !important;
+											min-height: 60px !important;
+											margin-bottom: 10px;
 										}
 									}
 
-									@include breakpoint('small', 'max') {
+									@include breakpoint("small", "max") {
 										.remove-button {
 											background: #bbb;
 											border-radius: 100%;
@@ -275,14 +318,16 @@ body.compare {
 											position: absolute;
 											right: 5px;
 											top: 5px;
-											-webkit-transition: all .2s ease;
-											transition: all .2s ease;
+											-webkit-transition: all 0.2s ease;
+											transition: all 0.2s ease;
 											width: 18px;
 											z-index: 1;
 										}
 									}
 
-									.features { display: none }
+									.features {
+										display: none;
+									}
 
 									.prices-info {
 										display: flex;
@@ -295,26 +340,26 @@ body.compare {
 										}
 									}
 
-									@include breakpoint('small', 'max') {
+									@include breakpoint("small", "max") {
 										overflow: hidden;
-										min-height: 49px!important;
+										min-height: 49px !important;
 										margin: 5px 0;
-										font-size: 11px!important;
+										font-size: 11px !important;
 										text-align: left;
 
 										.discount-boleto {
-											font-size: .50rem!important;
+											font-size: 0.5rem !important;
 											color: #736c6b;
 											padding-left: 20px;
 											position: relative;
 
 											span {
-												font-size: .50rem!important;
+												font-size: 0.5rem !important;
 											}
 										}
 
 										.adicional {
-											font-size: .50rem!important;
+											font-size: 0.5rem !important;
 											color: #736c6b;
 											padding-left: 20px;
 											position: relative;
@@ -333,27 +378,29 @@ body.compare {
 			width: 100%;
 
 			tr {
-				border-bottom: solid 2px  #e4e4e4;
+				border-bottom: solid 2px #e4e4e4;
 				display: none;
 				position: relative;
 				width: 100%;
 
-				@include breakpoint('small', 'max') {
+				@include breakpoint("small", "max") {
 					border-bottom: none;
 					padding: 0 5%;
 
 					&:not(.specs-title):not(.remover) {
 						&:before,
-						&:after { opacity: 0; }
+						&:after {
+							opacity: 0;
+						}
 					}
 				}
 
-				&[class*='Caracter'],
+				&[class*="Caracter"],
 				&.specs-title,
 				&.remover {
 					display: flex;
 
-					@include breakpoint('small', 'max') {
+					@include breakpoint("small", "max") {
 						display: block;
 
 						th {
@@ -367,7 +414,7 @@ body.compare {
 					}
 
 					td:first-child {
-						@include breakpoint('extra-small', 'max') {
+						@include breakpoint("extra-small", "max") {
 							display: none;
 						}
 					}
@@ -377,26 +424,28 @@ body.compare {
 				&:after {
 					background: #e4e4e4;
 					bottom: -2px;
-					content: '';
+					content: "";
 					height: 2px;
 					position: absolute;
 					width: 50%;
 				}
 
 				&.specs-title {
-					background-color: #3B3B3A;
+					background-color: #3b3b3a;
 					font-size: 16px;
 					height: 43px;
 					z-index: 3;
 
-					@include breakpoint('small', 'max') {
-						display: flex!important;
+					@include breakpoint("small", "max") {
+						display: flex !important;
 					}
 
 					&:before {
-						@include breakpoint('extra-small', 'max') { height: 45px; }
-						background: #3B3B3A;
-						content: '';
+						@include breakpoint("extra-small", "max") {
+							height: 45px;
+						}
+						background: #3b3b3a;
+						content: "";
 						height: 43px;
 						left: 50%;
 						position: absolute;
@@ -406,18 +455,22 @@ body.compare {
 						z-index: -5;
 					}
 
-					&:after { content: none; }
+					&:after {
+						content: none;
+					}
 
 					td {
-						@include breakpoint('extra-small', 'max') { padding-top: 12px; }
-						color: #FFFFFF;
+						@include breakpoint("extra-small", "max") {
+							padding-top: 12px;
+						}
+						color: #ffffff;
 						font-weight: 700;
 						padding-left: 0;
 						text-align: left;
 						text-transform: uppercase;
 
 						&:first-child {
-							display: flex!important;
+							display: flex !important;
 							width: 100%;
 							font-size: 16px;
 						}
@@ -425,16 +478,18 @@ body.compare {
 				}
 
 				&.remover {
-					background-color: #3B3B3A;
+					background-color: #3b3b3a;
 					z-index: 3;
 
 					a {
-						@include breakpoint('small', 'max') { padding: .7em 1.5em; }
+						@include breakpoint("small", "max") {
+							padding: 0.7em 1.5em;
+						}
 					}
 
 					&:after {
-						background: #3B3B3A;
-						content: '';
+						background: #3b3b3a;
+						content: "";
 						height: calc(100% + 5px);
 						left: 50%;
 						position: absolute;
@@ -444,9 +499,13 @@ body.compare {
 					}
 				}
 
-				&:before { right: 100%; }
+				&:before {
+					right: 100%;
+				}
 
-				&:after { left: 100%; }
+				&:after {
+					left: 100%;
+				}
 
 				&:last-child {
 					border-bottom: 0;
@@ -459,7 +518,9 @@ body.compare {
 					td {
 						&:first-child {
 							width: 25%;
-							@include breakpoint('small', 'max') { display: none; }
+							@include breakpoint("small", "max") {
+								display: none;
+							}
 						}
 					}
 				}
@@ -468,12 +529,14 @@ body.compare {
 				// 	background: #e4e4e4;
 				// }
 
-				&:first-child { display: none; }
+				&:first-child {
+					display: none;
+				}
 
 				th,
 				td {
-					color: #3B3B3A;
-					padding: .7rem 15px;
+					color: #3b3b3a;
+					padding: 0.7rem 15px;
 					text-align: center;
 				}
 
@@ -488,18 +551,16 @@ body.compare {
 					max-width: 300px;
 					vertical-align: top;
 					width: calc(100% / 4);
-					@include breakpoint('small', 'max') {
+					@include breakpoint("small", "max") {
 						width: calc(100% / 100);
 					}
 				}
 			}
 		}
 
-
 		.selection-product {
 			display: none;
 		}
-
 	}
 
 	// fallbacks
@@ -520,7 +581,7 @@ body.compare {
 	.diff-highlight {
 		.form-check-inline {
 			display: inline-flex;
-			margin-right: .75rem;
+			margin-right: 0.75rem;
 			label {
 				margin-left: 6px;
 			}
@@ -535,7 +596,7 @@ body.compare {
 }
 
 body.-is-mobile--active {
-	@media screen and (max-device-width: 768px) and (orientation: landscape){
+	@media screen and (max-device-width: 768px) and (orientation: landscape) {
 		.cont-search {
 			display: none !important;
 			.form-search {
@@ -558,19 +619,20 @@ body {
 	overflow-x: hidden;
 
 	thead.barraFixa {
-
-
-		@media (min-width: 60em) {	padding: 0 90px; }
-		@media (min-width: 60em) {	padding: 0 90px; }
-
+		@media (min-width: 60em) {
+			padding: 0 90px;
+		}
+		@media (min-width: 60em) {
+			padding: 0 90px;
+		}
 
 		background: #fff;
-		border-bottom: 1px solid #BBBBBB;
+		border-bottom: 1px solid #bbbbbb;
 		left: 0;
 		position: fixed;
 		right: 0;
 		top: -400px;
-		transition: .8s ease-out all;
+		transition: 0.8s ease-out all;
 		z-index: 22;
 
 		tr.remover {
@@ -584,8 +646,12 @@ body {
 			max-width: 1100px;
 			padding-bottom: 5px;
 
-			@media (max-width: 959px) {	max-width: 768px; }
-			@media (max-width: 48em) {	padding-bottom: 60px; }
+			@media (max-width: 959px) {
+				max-width: 768px;
+			}
+			@media (max-width: 48em) {
+				padding-bottom: 60px;
+			}
 
 			> th {
 				max-width: 300px;
@@ -606,7 +672,6 @@ body {
 				}
 
 				.diff-highlight {
-
 					text-align: left;
 
 					> span {
@@ -617,7 +682,7 @@ body {
 					}
 
 					> div {
-						@include breakpoint('small', 'max') {
+						@include breakpoint("small", "max") {
 							width: 70%;
 							display: flex;
 							align-items: center;
@@ -637,18 +702,16 @@ body {
 							margin-right: 5px;
 							width: 20px;
 
-							@include breakpoint('small', 'max') {
-								height: 0!important;
-								width: 0!important;
-								border: unset!important;
-								background: unset!important;
-								margin-bottom: 13px!important;
-								margin-right: 20px!important;
+							@include breakpoint("small", "max") {
+								height: 0 !important;
+								width: 0 !important;
+								border: unset !important;
+								background: unset !important;
+								margin-bottom: 13px !important;
+								margin-right: 20px !important;
 							}
 						}
-
 					}
-
 				}
 			}
 		}
@@ -672,13 +735,12 @@ body {
 			}
 
 			.box-produto {
-
 				// border-right: 1px solid #e4e4e4;
 				min-height: auto;
 				padding: 0;
 				border: unset;
 
-				@include breakpoint('small', 'max') {
+				@include breakpoint("small", "max") {
 					max-width: 100%;
 				}
 
@@ -686,7 +748,7 @@ body {
 					font-size: 1.142rem;
 					margin-bottom: 0;
 
-					@include breakpoint('small', 'max') {
+					@include breakpoint("small", "max") {
 						font-size: 12px;
 						align-items: center;
 						display: flex;
@@ -704,31 +766,31 @@ body {
 				}
 
 				.price {
-					@include breakpoint('small', 'max') {
-						display: block!important;
+					@include breakpoint("small", "max") {
+						display: block !important;
 
 						.discount-boleto,
 						.adicional {
-							display: none!important;
+							display: none !important;
 						}
 
 						.por {
 							.off {
-								display: none!important;
+								display: none !important;
 							}
 
 							.product-with-discount {
-								display: none!important;
+								display: none !important;
 							}
 
 							.val {
-								font-size: calc(.65rem + .65882vw)!important;
+								font-size: calc(0.65rem + 0.65882vw) !important;
 							}
 						}
 
 						.de {
 							.val {
-								font-size: calc(.6rem + .09412vw)!important;
+								font-size: calc(0.6rem + 0.09412vw) !important;
 							}
 						}
 					}
@@ -744,26 +806,25 @@ body {
 					}
 				}
 			}
-
 		}
 	}
 
 	&.-is-desktop--active {
 		thead.barraFixa {
 			top: 0;
-			transition: .8s ease-out all;
+			transition: 0.8s ease-out all;
 		}
 
 		.corpo-comparacao table thead {
 			opacity: 0;
-			transition: .8s ease-out all;
+			transition: 0.8s ease-out all;
 		}
 	}
 
 	&.-is-mobile--active {
 		thead.barraFixa {
 			top: 0;
-			transition: .8s ease-out all;
+			transition: 0.8s ease-out all;
 			z-index: 99;
 
 			.remove-button {
@@ -776,7 +837,7 @@ body {
 
 				.diff-highlight-container {
 					bottom: -2px;
-					background: #702F8F;
+					background: #702f8f;
 					border-radius: inherit;
 					height: 42px;
 				}
@@ -810,9 +871,9 @@ body {
 								background: unset;
 
 								&:after {
-									content: '';
+									content: "";
 									background: #702f8e;
-									border: 1px solid #BBBBBB;
+									border: 1px solid #bbbbbb;
 									width: 13px;
 									height: 13px;
 									display: block;
@@ -822,7 +883,9 @@ body {
 								&:checked {
 									&:after {
 										background: #fff;
-										box-shadow: 0px 0px 0px 1px #702f8e, 0px 0px 0px 2px #702f8e, 0px 0px 0px 3px #fff;
+										box-shadow: 0px 0px 0px 1px #702f8e,
+											0px 0px 0px 2px #702f8e,
+											0px 0px 0px 3px #fff;
 										z-index: 5;
 										border: unset;
 									}
@@ -832,22 +895,22 @@ body {
 
 						> span {
 							white-space: nowrap;
-							background: #5C2775;
+							background: #5c2775;
 							color: #fff;
 							height: 39px;
 							display: flex;
 							font-size: 0;
 							width: auto;
-							padding-right: 10px!important;
+							padding-right: 10px !important;
 							align-items: center;
 							padding-left: 10px !important;
 
-							@media screen and (max-device-width: 768px) and (orientation: landscape){
+							@media screen and (max-device-width: 768px) and (orientation: landscape) {
 								width: 30%;
 							}
 
 							&:after {
-								content: 'Comparar destacando:';
+								content: "Comparar destacando:";
 								font-size: 12px;
 							}
 						}
@@ -902,9 +965,9 @@ body {
 			}
 
 			tr {
-				background: #F8F8F8;
+				background: #f8f8f8;
 
-				@media screen and (max-device-width: 768px) and (orientation: landscape){
+				@media screen and (max-device-width: 768px) and (orientation: landscape) {
 					th {
 						display: none;
 					}
@@ -918,7 +981,7 @@ body {
 
 		.corpo-comparacao table thead {
 			opacity: 0;
-			transition: .8s ease-out all;
+			transition: 0.8s ease-out all;
 		}
 	}
 }
@@ -930,24 +993,26 @@ body {
 
 .compare-produtos-wrapper {
 	> h2 {
-		@include breakpoint('extra-small', 'max') {
-			div + div { display: none }
+		@include breakpoint("extra-small", "max") {
+			div + div {
+				display: none;
+			}
 		}
 		display: none;
 		justify-content: space-between;
 		margin-bottom: 2rem;
 		margin-top: 3rem;
 
-		@include breakpoint('small', 'max') {
-			margin-bottom: 0!important;
-			margin-top: 2rem!important;
+		@include breakpoint("small", "max") {
+			margin-bottom: 0 !important;
+			margin-top: 2rem !important;
 			margin-left: 5%;
 		}
 	}
 }
 
 .remove-button {
-	background: #BBBBBB;
+	background: #bbbbbb;
 	border-radius: 100%;
 	cursor: pointer;
 	display: block;
@@ -955,12 +1020,12 @@ body {
 	position: absolute;
 	right: 5px;
 	top: 5px;
-	transition: all .2s ease;
+	transition: all 0.2s ease;
 	width: 20px;
 	z-index: 1;
 	&:after {
 		background: #fff;
-		content: '';
+		content: "";
 		height: 2.5px;
 		left: 4px;
 		margin-top: -1.25px;
@@ -977,7 +1042,7 @@ body {
 
 // Destacar diferenças
 .diff-highlight-container {
-	@include breakpoint('small', 'max') {
+	@include breakpoint("small", "max") {
 		bottom: 10px;
 		left: 0;
 		margin: 0 !important;
@@ -998,7 +1063,7 @@ body {
 	}
 }
 
-@include breakpoint('small', 'max') {
+@include breakpoint("small", "max") {
 	body {
 		.corpo-comparacao {
 			table {
@@ -1006,9 +1071,9 @@ body {
 					tr {
 						th.diff-highlight-container {
 							bottom: 0;
-							background: #702F8F;
+							background: #702f8f;
 							border-radius: inherit;
-							width: 100%!important;
+							width: 100% !important;
 							height: 42px;
 						}
 
@@ -1044,7 +1109,7 @@ body {
 
 									input {
 										margin-right: 0;
-										@include breakpoint('small', 'max') {
+										@include breakpoint("small", "max") {
 											height: 0;
 											width: 0;
 											border: unset;
@@ -1054,9 +1119,9 @@ body {
 										}
 
 										&:after {
-											content: '';
+											content: "";
 											background: #702f8e;
-											border: 1px solid #BBBBBB;
+											border: 1px solid #bbbbbb;
 											width: 13px;
 											height: 13px;
 											display: block;
@@ -1066,7 +1131,10 @@ body {
 										&:checked {
 											&:after {
 												background: #fff;
-												box-shadow: 0px 0px 0px 1px #702f8e, 0px 0px 0px 2px #702f8e, 0px 0px 0px 3px #fff;
+												box-shadow: 0px 0px 0px 1px
+														#702f8e,
+													0px 0px 0px 2px #702f8e,
+													0px 0px 0px 3px #fff;
 												z-index: 5;
 												border: unset;
 											}
@@ -1076,18 +1144,18 @@ body {
 
 								> span {
 									white-space: nowrap;
-									background: #5C2775;
+									background: #5c2775;
 									color: #fff;
 									height: 39px;
 									display: flex;
 									font-size: 0;
 									width: auto;
-									padding-right: 10px!important;
+									padding-right: 10px !important;
 									align-items: center;
 									padding-left: 10px !important;
 
 									&:after {
-										content: 'Comparar destacando:';
+										content: "Comparar destacando:";
 										font-size: 12px;
 									}
 								}
@@ -1102,37 +1170,41 @@ body {
 
 .diff-highlight {
 	// @include breakpoint('extra-small', 'max') { margin: 0 .7em!important; }
-	@include breakpoint('small', 'max') {
-		border: 1px solid #3B3B3A;
-		padding: .5em;
+	@include breakpoint("small", "max") {
+		border: 1px solid #3b3b3a;
+		padding: 0.5em;
 
 		span {
-			color: #3B3B3A;
+			color: #3b3b3a;
 			display: inline-block;
 			width: 25%;
 		}
 
 		span,
 		h6 {
-			@include breakpoint('extra-small', 'max') { font-size: 12px; }
+			@include breakpoint("extra-small", "max") {
+				font-size: 12px;
+			}
 		}
 
 		& > div {
 			display: inline-block;
 			width: 70%;
 
-			@media screen and (max-device-width: 768px) and (orientation: landscape){
+			@media screen and (max-device-width: 768px) and (orientation: landscape) {
 				display: flex;
 				width: 60%;
 				justify-content: center;
 			}
 		}
-		br { display: none; }
+		br {
+			display: none;
+		}
 	}
 
 	.form-check-diff,
 	.form-check-eq {
-		@include breakpoint('small', 'max') {
+		@include breakpoint("small", "max") {
 			margin: 0;
 			width: 45%;
 		}
