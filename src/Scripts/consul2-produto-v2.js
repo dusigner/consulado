@@ -21,9 +21,6 @@ import "modules/product/product-tags";
 import "modules/product/outline-products";
 import "modules/chaordic";
 import "dataLayers/dataLayer-product";
-import "modules/cache-selector";
-import "modules/wishlist-init";
-import "modules/wishlist-utils";
 
 Nitro.controller(
 	"produto-v2",
@@ -47,10 +44,7 @@ Nitro.controller(
 		"notify-me",
 		"product-tags",
 		"dataLayer-product",
-		"outline-products",
-		"cache-selector",
-		"wishlist-init",
-		"wishlist-utils"
+		"outline-products"
 	],
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
@@ -106,12 +100,6 @@ Nitro.controller(
 				self.valoresParcelas();
 			}
 		});
-
-		//favoritar produto
-		$("#wishlist-product).find(.wishlist__button").attr(
-			"data-idproduto",
-			"skuJson"
-		);
 
 		// whats
 		var $product_id = skuJson_0.productId;
@@ -433,6 +421,7 @@ Nitro.controller(
 				Index.changeQntStoq();
 				Index.getPecasRelacionadas();
 			},
+
 			getPecasRelacionadas: function() {
 				var $btnPecas = $(".btn-pecas-produto"),
 					$pecasModels =
@@ -549,9 +538,26 @@ Nitro.controller(
 			}
 		};
 
+		//favorites product
+		var wishlist = {
+			init: function() {
+				wishlist.setProductId();
+			},
+			setProductId: function() {
+				const wishlistButton = $("#wishlist-product").find(
+					".wishlist__button"
+				);
+				!!wishlistButton && !!$product_id
+					? wishlistButton.attr("data-idproduto", $product_id)
+					: wishlistButton.attr("data-idproduto", null);
+			}
+		};
+		//favorites product
+
 		(function(window, document, $) {
 			$(function() {
 				Index.init();
+				wishlist.init();
 			});
 		})(window, document, jQuery);
 
