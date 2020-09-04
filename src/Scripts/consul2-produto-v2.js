@@ -555,7 +555,7 @@ Nitro.controller(
 		//favorites product
 
 		//ativa teste A-B favorites product
-		$(".wishlist__button").addClass(".wishlist__button-active");
+		//$(".wishlist__container").css("display", "block")
 
 		(function(window, document, $) {
 			$(function() {
