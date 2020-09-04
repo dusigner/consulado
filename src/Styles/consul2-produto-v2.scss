@@ -59,34 +59,28 @@
 @import "components/produto/outline-products";
 @import "components/produto//wishlist";
 
-<<<<<<< HEAD
+@import "components/produto/details-nav-v2";
+@import "components/produto/video-lancamento";
+@import "components/produto/detalhes";
+@import "components/produto/detalhes-lancamento";
+@import "components/produto/especificacoes-v2";
+@import "components/produto/modal.sku";
+@import "components/produto/modal.entrega";
+@import "components/produto/special-content";
+@import "components/produto/recurrence-modal";
+@import "components/produto/assistencia-e-relacionado";
+@import "components/produto/trust-vox";
+@import "components/produto/recurrence-v2";
+@import "components/produto/vitrine-relacionada";
+@import "components/produto/outline-products";
+@import "components/produto/voltage-selector-modal";
 
-@import 'components/produto/details-nav-v2';
-@import 'components/produto/video-lancamento';
-@import 'components/produto/detalhes';
-@import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes-v2';
-@import 'components/produto/modal.sku';
-@import 'components/produto/modal.entrega';
-@import 'components/produto/special-content';
-@import 'components/produto/recurrence-modal';
-@import 'components/produto/assistencia-e-relacionado';
-@import 'components/produto/trust-vox';
-@import 'components/produto/recurrence-v2';
-@import 'components/produto/vitrine-relacionada';
-@import 'components/produto/outline-products';
-@import 'components/produto/voltage-selector-modal';
-
-@import 'components/tira-duvidas';
-@import 'consentCookie';
-=======
 @import "components/tira-duvidas";
 @import "consentCookie";
->>>>>>> feature/ICD-1379-favorites-pdp
 
 // @import 'components/produto/quiz-install';
 
-@include breakpoint(medium, 'min') {
+@include breakpoint(medium, "min") {
 	.position-sticky-prod {
 		position: relative;
 		top: 15px;

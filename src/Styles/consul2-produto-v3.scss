@@ -16,51 +16,49 @@
 // ===============================================================
 
 // Utility helpers
-@import 'helpers/variables';
-@import 'helpers/functions';
-@import 'helpers/mixins';
-@import 'helpers/whp-modal';
-@import 'helpers/rfs';
-@import '/node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/whp-modal";
+@import "helpers/rfs";
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // Component styles
-@import 'components/buttons';
-@import 'components/selos';
-@import 'components/chaordic-shelf';
-@import 'components/mod-prateleira-v2';
+@import "components/buttons";
+@import "components/selos";
+@import "components/chaordic-shelf";
+@import "components/mod-prateleira-v2";
 
-@import 'pages/product';
-@import 'components/produto/gallery-v3';
-@import 'components/produto/prod-title';
-@import 'components/produto/prod-info-v2';
-@import 'components/produto/prod-info-bar';
-@import 'components/produto/prod-info-descricao';
-@import 'components/produto/prod-info-preco';
-@import 'components/produto/prod-info-parcelas-v2';
-@import 'components/produto/prod-info-sku-v2';
-@import 'components/produto/produtos-adicionais';
-@import 'components/produto/prod-buy-button-v2';
-@import 'components/produto/selos';
-@import 'components/produto/frete-v2';
-@import 'components/produto/upsell-prod';
+@import "pages/product";
+@import "components/produto/gallery-v3";
+@import "components/produto/prod-title";
+@import "components/produto/prod-info-v2";
+@import "components/produto/prod-info-bar";
+@import "components/produto/prod-info-descricao";
+@import "components/produto/prod-info-preco";
+@import "components/produto/prod-info-parcelas-v2";
+@import "components/produto/prod-info-sku-v2";
+@import "components/produto/produtos-adicionais";
+@import "components/produto/prod-buy-button-v2";
+@import "components/produto/selos";
+@import "components/produto/frete-v2";
+@import "components/produto/upsell-prod";
 
-@import 'components/produto/details-nav-v2';
-@import 'components/produto/video-lancamento';
-@import 'components/produto/detalhes-v3';
-@import 'components/produto/detalhes-lancamento';
-@import 'components/produto/especificacoes-v3';
-@import 'components/produto/modal.sku';
-@import 'components/produto/modal.entrega';
-@import 'components/produto/special-content';
-@import 'components/produto/recurrence-modal';
-@import 'components/produto/assistencia-e-relacionado';
-@import 'components/produto/trust-vox';
-@import 'components/produto/recurrence-v2';
-@import 'components/produto/vitrine-relacionada';
-@import 'components/produto/outline-products';
+@import "components/produto/details-nav-v2";
+@import "components/produto/video-lancamento";
+@import "components/produto/detalhes-v3";
+@import "components/produto/detalhes-lancamento";
+@import "components/produto/especificacoes-v3";
+@import "components/produto/modal.sku";
+@import "components/produto/modal.entrega";
+@import "components/produto/special-content";
+@import "components/produto/recurrence-modal";
+@import "components/produto/assistencia-e-relacionado";
+@import "components/produto/trust-vox";
+@import "components/produto/recurrence-v2";
+@import "components/produto/vitrine-relacionada";
+@import "components/produto/outline-products";
 // @import 'components/produto/quiz-install';
-
-
 
 .produto-indisponivel {
 	#relacionados {
@@ -79,7 +77,7 @@
 		top: -64px;
 		z-index: 1;
 
-		@include breakpoint('small', 'min') {
+		@include breakpoint("small", "min") {
 			top: -34px;
 		}
 	}
@@ -116,7 +114,7 @@
 			width: 320px;
 		}
 		.icone-check {
-			background-image: url('/arquivos/icon-check-produto-indisponivel.jpg');
+			background-image: url("/arquivos/icon-check-produto-indisponivel.jpg");
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -130,7 +128,7 @@
 	}
 	.notifyme-loading-message {
 		color: #9aca3c;
-		font: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial,
+		font: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
 			sans-serif;
 		font-weight: bold;
 		margin-top: 18px;
@@ -144,7 +142,7 @@
 	top: 90px;
 }
 .container {
-    padding: 0 15px;
+	padding: 0 15px;
 }
 
 //Teste AB Detalhes
@@ -186,15 +184,6 @@ html body {
 		.detalhes-v3-css {
 			display: none !important;
 		}
-<<<<<<< HEAD
-=======
-		#especificacoes {
-			.specs__links-paragrafo {
-				display: none;
-				visibility: hidden;
-			}
-		}
->>>>>>> feature/ICD-1379-favorites-pdp
 
 		.seo-text {
 			width: 92%;
@@ -213,13 +202,13 @@ html body {
 			}
 
 			.productDescription {
-				font-size: .75rem;
+				font-size: 0.75rem;
 				line-height: 137.8%;
 				color: #686160;
 				text-align: center;
 
 				@media screen and (max-width: 600px) {
-					color: #736C6B;
+					color: #736c6b;
 					font-size: 0.75rem;
 					max-height: 100px;
 					overflow-y: scroll;
@@ -228,8 +217,8 @@ html body {
 				}
 			}
 		}
-			#especificacoes {
-				.specs__links-paragrafo {
+		#especificacoes {
+			.specs__links-paragrafo {
 				display: none;
 				visibility: hidden;
 			}
@@ -254,12 +243,12 @@ html body {
 			}
 
 			.productDescription {
-				font-size: .75rem;
+				font-size: 0.75rem;
 				line-height: 137.8%;
 				text-align: center;
 
 				@media screen and (max-width: 600px) {
-					color: #736C6B;
+					color: #736c6b;
 					font-size: 0.75rem;
 					max-height: 100px;
 					overflow-y: scroll;
@@ -270,7 +259,7 @@ html body {
 		}
 	}
 
-	.testeB[data-bind='#detalhes'] {
+	.testeB[data-bind="#detalhes"] {
 		#detalhes {
 			display: block !important;
 			margin: 0 auto;
@@ -288,7 +277,6 @@ html body {
 		#especificacoes {
 			display: none !important;
 		}
-
 	}
 	#specsdetails,
 	#assistenciaB,
@@ -297,7 +285,7 @@ html body {
 		position: relative;
 		height: 5rem;
 	}
-	.testeB[data-bind='#especificacoes'] {
+	.testeB[data-bind="#especificacoes"] {
 		#detalhes {
 			display: none !important;
 			margin: 0 5% 0 5%;
@@ -342,13 +330,11 @@ html body {
 	.detalhes_v2 {
 		display: none;
 	}
-
 }
 
 h1.title-check-voltage {
-    align-items: center;
+	align-items: center;
 	display: flex;
-    font-size: 20px;
-    justify-content: center;
+	font-size: 20px;
+	justify-content: center;
 }
-
