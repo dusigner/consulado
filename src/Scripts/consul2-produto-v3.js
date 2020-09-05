@@ -521,13 +521,24 @@ Nitro.controller(
 
 		$('.main-tabs a').on('click', function(){
 			var $class = $(this);
-			var $attr = $class.attr('href');
+			let $option = $($class).text();
+			// var $attr = $class.attr('href');
 			if ( !$class.hasClass('is--active')){
 				$('.main-tabs a').removeClass('is--active');
 				$class.addClass('is--active');
-
-				$('.testeB').attr('data-bind', '' + $attr);
+				// $('.testeB').attr('data-bind', '' + $attr);
 			}
+
+			if ( $option === 'Detalhes' ) {
+				$( '.testeB #detalhes' ).addClass('is--active');
+				$( '.testeB #especificacoes' ).removeClass('is--active');
+
+			} else {
+				$( '.testeB #detalhes' ).removeClass('is--active');
+				$( '.testeB #especificacoes' ).addClass('is--active');
+			}
+
+
 		});
 
 		// testeAB TopBar PDP
