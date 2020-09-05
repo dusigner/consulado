@@ -56,22 +56,22 @@ Nitro.module('sku-select', function() {
 	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 	$(window).on('skuSelected.vtex', function(a, b, c) {
-		var templateVoltagem = {
-			template:
-				'<div id="modal-voltagem" class="modal-voltagem">' +
-				'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
-				'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
-				'</div>'
-		};
+		// var templateVoltagem = {
+		// 	template:
+		// 		'<div id="modal-voltagem" class="modal-voltagem">' +
+		// 		'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
+		// 		'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
+		// 		'</div>'
+		// };
 
 		$('#vtex-modal-sku .sku-indisponivel .btn-avise').css('top', '0px');
 
 		$('#modal-sku').addClass('sku-indisponivel');
 
 		if ($(window).width() <= 768) {
-			if ($('.modal-voltagem').length === 0) {
-				$('#modal-sku .options').append(templateVoltagem.template);
-			}
+			// if ($('.modal-voltagem').length === 0) {
+			// 	$('#modal-sku .options').append(templateVoltagem.template);
+			// }
 
 			if (!c.available) {
 				$('.modal-voltagem').show();
@@ -201,6 +201,12 @@ Nitro.module('sku-select', function() {
 			});
 
 			$('.cont-prod-details-nav .buy-button').click(function(e){
+				e.preventDefault();
+
+				voltageModal.addClass('voltageSelectorIsOpen');
+			});
+
+			$('.product-info-bar__buy .buy-button').click(function(e){
 				e.preventDefault();
 
 				voltageModal.addClass('voltageSelectorIsOpen');
