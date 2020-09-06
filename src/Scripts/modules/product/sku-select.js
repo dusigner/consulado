@@ -224,7 +224,7 @@ Nitro.module('sku-select', function() {
 
 
 
-			$('#modal-sku .row.button').hide();
+			$('#modal-sku .button .buy-button').css('cursor', 'not-allowed').attr('onclick', 'return false');
 
 			$('input[data-dimension=Voltagem]').click(function(){
 				var selectedVoltage = $(this).val();
@@ -233,8 +233,8 @@ Nitro.module('sku-select', function() {
 				$('.title-check-voltage').find('#showVoltage').append(selectedVoltage);
 
 				setTimeout(function(){
-					$('#modal-sku .row.button').show();
-				}, 1500);
+					$('#modal-sku .button a.buy-button').css('cursor', 'pointer').removeAttr('onclick');
+				}, 1000);
 
 			});
 		}
