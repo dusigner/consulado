@@ -19,23 +19,44 @@
         background: #FFFFFF;
         box-shadow: 0px 20px 15px rgba(0, 0, 0, 0.25);
         border-radius: 5px;
+        @media screen and(max-width: 768px) {
+            max-width: 95%;
+            padding: 10px;
+        }
+        max-width: 100%;
         .closeModal {
             position: absolute;
             top: 0;
             right: 0;
             padding: 20px 18px;
+
+            @media screen and (max-width: 768px) {
+                padding: 10px;
+            }
             svg {
                 cursor: pointer;
+
+                @media screen and (max-width: 768px) {
+                    width: .7rem;
+                }
             }
         }
         .title-check-voltage, .showVoltage{
             font-style: normal;
             font-weight: normal;
-            font-size: 28px;
+            font-size: 1.75rem;
             line-height: 135.18%;
             text-align: center;
             color: #736C6B;
             padding-top: 20px;
+
+            @media screen and (max-width: 768px) {
+                font-size: 1.5rem;
+            }
+
+            @media screen and (max-width: 325px) {
+                padding-top: 0;
+            }
         }
 
         #showVoltage{
@@ -49,6 +70,10 @@
             justify-content: center;
             align-items: center;
             padding-bottom: 20px;
+
+            @media screen and (max-width: 768px) {
+                padding-bottom: 5px;
+            }
 
             .sku-selector-container{
                 display: flex;
@@ -65,6 +90,11 @@
                     align-items: center;
                     justify-content: center;
                     top: 1rem;
+
+                    @media screen and (max-width: 768px) {
+                        max-width: 55%;
+                        top: .3rem;
+                    }
                 }
             }
         }

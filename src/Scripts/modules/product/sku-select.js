@@ -56,22 +56,22 @@ Nitro.module('sku-select', function() {
 	$('#notifymeClientPhone').inputmask('(99) 9999[9]-9999');
 
 	$(window).on('skuSelected.vtex', function(a, b, c) {
-		var templateVoltagem = {
-			template:
-				'<div id="modal-voltagem" class="modal-voltagem">' +
-				'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
-				'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
-				'</div>'
-		};
+		// var templateVoltagem = {
+		// 	template:
+		// 		'<div id="modal-voltagem" class="modal-voltagem">' +
+		// 		'<div class="txt-indisponivel">O produto está disponível apenas em <strong>uma voltagem</strong> nos nossos estoques</div>' +
+		// 		'<a href="#" class="btn-avise">Avise-me disponibilidade</a>' +
+		// 		'</div>'
+		// };
 
 		$('#vtex-modal-sku .sku-indisponivel .btn-avise').css('top', '0px');
 
 		$('#modal-sku').addClass('sku-indisponivel');
 
 		if ($(window).width() <= 768) {
-			if ($('.modal-voltagem').length === 0) {
-				$('#modal-sku .options').append(templateVoltagem.template);
-			}
+			// if ($('.modal-voltagem').length === 0) {
+			// 	$('#modal-sku .options').append(templateVoltagem.template);
+			// }
 
 			if (!c.available) {
 				$('.modal-voltagem').show();
@@ -206,6 +206,12 @@ Nitro.module('sku-select', function() {
 				voltageModal.addClass('voltageSelectorIsOpen');
 			});
 
+			$('.product-info-bar__buy .buy-button').click(function(e){
+				e.preventDefault();
+
+				voltageModal.addClass('voltageSelectorIsOpen');
+			});
+
 			$('.closeModal').click(function(){
 				$(voltageModal).removeClass('voltageSelectorIsOpen');
 			})
@@ -218,7 +224,7 @@ Nitro.module('sku-select', function() {
 
 
 
-			$('#modal-sku .row.button').hide();
+			$('#modal-sku .button .buy-button').css('cursor', 'not-allowed').attr('onclick', 'return false');
 
 			$('input[data-dimension=Voltagem]').click(function(){
 				var selectedVoltage = $(this).val();
@@ -227,8 +233,8 @@ Nitro.module('sku-select', function() {
 				$('.title-check-voltage').find('#showVoltage').append(selectedVoltage);
 
 				setTimeout(function(){
-					$('#modal-sku .row.button').show();
-				}, 1500);
+					$('#modal-sku .button a.buy-button').css('cursor', 'pointer').removeAttr('onclick');
+				}, 1000);
 
 			});
 		}
