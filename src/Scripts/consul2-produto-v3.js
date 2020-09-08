@@ -23,7 +23,6 @@ import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
 import 'dataLayers/dataLayer-main-tabs';
 import 'dataLayers/dataLayer-topbar-nav';
-import 'dataLayers/dataLayer-video-button';
 
 Nitro.controller(
 	'produto-v3',
@@ -50,7 +49,6 @@ Nitro.controller(
 		'outline-products',
 		'dataLayer-main-tabs',
 		'dataLayer-topbar-nav',
-		'dataLayer-video-button',
 	],
 
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
