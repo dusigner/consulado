@@ -129,6 +129,16 @@ Nitro.module('product-tags', function() {
 				$position = String(parseInt($element.parent().attr('data-slick-index')) + 1),
 				$productId = $('.reference .productReference').text();
 
+				console.info($element);
+
+				if($element.hasClass('thumb-video')) {
+					dataLayer.push({
+						event: 'generic',
+						category: `PDP_vitrine_superior`,
+						action: `clique`,
+						label: `video_do_produto`,
+					})
+				}
 			dataLayer.push({
 				event: 'generic',
 				category: '[SQUAD] Produto',
