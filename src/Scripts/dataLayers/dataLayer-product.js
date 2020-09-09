@@ -1,6 +1,6 @@
 import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
 
-Nitro.module('dataLayer-product', function() {
+Nitro.module('dataLayer-product', function () {
 	const self = this
 
 	this.init = () => {
@@ -25,13 +25,14 @@ Nitro.module('dataLayer-product', function() {
 		// assistance_and_related-product
 		this.viewMore();
 		this.scrollUser();
+		this.favoritesProduct();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
 	var $categoryOutline = '[SQUAD] Produto Fora-Linha';
 
 	this.notifyMe = () => {
-		$('#BuyButton .portal-notify-me-ref #notifymeButtonOK').on('click', function() {
+		$('#BuyButton .portal-notify-me-ref #notifymeButtonOK').on('click', function () {
 			const $label = $(this).val();
 
 			pushDataLayer(
@@ -45,9 +46,9 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.notifyMeSuccess = () => {
-		$('#BuyButton .portal-notify-me-ref #notifymeButtonOK').on('click', function() {
-			setTimeout(function() {
-				if ( $('#BuyButton .portal-notify-me-ref .success').is(':visible') ) {
+		$('#BuyButton .portal-notify-me-ref #notifymeButtonOK').on('click', function () {
+			setTimeout(function () {
+				if ($('#BuyButton .portal-notify-me-ref .success').is(':visible')) {
 					const $label = $('#BuyButton .portal-notify-me-ref .sku-notifyme-success.notifyme-success').text().trim();
 
 					pushDataLayer(
@@ -63,7 +64,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.similarProduct = () => {
-		$(document).on('click', '#relacionados-top .prateleira-slider li .box-produto', function() {
+		$(document).on('click', '#relacionados-top .prateleira-slider li .box-produto', function () {
 			const $label = $(this).find('h3.nome').text().trim();
 
 			pushDataLayer(
@@ -74,12 +75,22 @@ Nitro.module('dataLayer-product', function() {
 		});
 	};
 
+	this.favoritesProduct = () => {
+		$(".wishlist__button").click(function () {
+			pushDataLayer(
+				`PDP_vitrine_superior`,
+				`clique`,
+				`favoritar`
+			);
+		})
+	};
+
 	this.visibleVitrineSimilarProducts = () => {
-		setInterval(function() {
-			if ( $('.portal-notify-me-ref').is(':visible') ) {
-				if ( !$('body').hasClass('dataLayerVitrineSimilar') ) {
+		setInterval(function () {
+			if ($('.portal-notify-me-ref').is(':visible')) {
+				if (!$('body').hasClass('dataLayerVitrineSimilar')) {
 					$('body').addClass('dataLayerVitrineSimilar');
-					if ( $('.portal-notify-me-ref').is(':visible') ) {
+					if ($('.portal-notify-me-ref').is(':visible')) {
 						const $label = $('.position-sticky-prod .productName').text();
 
 						pushDataLayer(
@@ -94,9 +105,9 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.nameProductUnavailable = () => {
-		setInterval(function() {
-			if ( $('body').hasClass('produto-indisponivel') ) {
-				if ( !$('body').hasClass('dataLayerProductUnavailable') ) {
+		setInterval(function () {
+			if ($('body').hasClass('produto-indisponivel')) {
+				if (!$('body').hasClass('dataLayerProductUnavailable')) {
 					$('body').addClass('dataLayerProductUnavailable');
 
 					const $label = $('#relacionados-top .prateleira > h2').text();
@@ -112,9 +123,9 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.visibleVitrineOutlineProducts = () => {
-		setInterval(function() {
-			if ( $('#outlineProducts-name').length === 1 ) {
-				if ( !$('body').hasClass('dataLayerVitrineProductOutline') ) {
+		setInterval(function () {
+			if ($('#outlineProducts-name').length === 1) {
+				if (!$('body').hasClass('dataLayerVitrineProductOutline')) {
 					$('body').addClass('dataLayerVitrineProductOutline');
 
 					pushDataLayer(
@@ -128,9 +139,9 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.nameProductOutline = () => {
-		setInterval(function() {
-			if ( $('body').hasClass('product-outline') ) {
-				if ( !$('body').hasClass('dataLayerProductOutline') ) {
+		setInterval(function () {
+			if ($('body').hasClass('product-outline')) {
+				if (!$('body').hasClass('dataLayerProductOutline')) {
 					$('body').addClass('dataLayerProductOutline');
 
 					const $label = $('.productName').text();
@@ -146,7 +157,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.similarOutlineProduct = () => {
-		$(document).on('click', '#outlineProducts-link', function() {
+		$(document).on('click', '#outlineProducts-link', function () {
 			const $label = $(this).find('#outlineProducts-name').text().trim();
 
 			pushDataLayer(
@@ -158,7 +169,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.clickWhats = () => {
-		$('.container-whats-container-info-link, .content_botoes_televendas-whats a').on('click', function() {
+		$('.container-whats-container-info-link, .content_botoes_televendas-whats a').on('click', function () {
 
 			pushDataLayer(
 				'Promotores',
@@ -169,9 +180,9 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.clickAttendance = () => {
-		$('.prod-more-info a').on('click', function() {
-			if ( $($(this)).attr('title') === 'Informações de contratação') {
-				if ( $('body').hasClass('whatsapp') ) {
+		$('.prod-more-info a').on('click', function () {
+			if ($($(this)).attr('title') === 'Informações de contratação') {
+				if ($('body').hasClass('whatsapp')) {
 
 					pushDataLayer(
 						'Promotores',
@@ -184,7 +195,7 @@ Nitro.module('dataLayer-product', function() {
 	};
 
 	this.viewMore = () => {
-		$('.product-assist-block a').on('click', function() {
+		$('.product-assist-block a').on('click', function () {
 			var $label = $(this).parents('.product-assist-block').find('.second-block h3').text().trim();
 			var $labelSpace = $label.replace(/ +/g, '_');
 			pushDataLayer(
@@ -203,8 +214,8 @@ Nitro.module('dataLayer-product', function() {
 
 		counterms = setInterval(function () {
 			countms = countms + 1 / 100;
-			if ( countms >= 1 ) {
-				if ( val === 0 ) {
+			if (countms >= 1) {
+				if (val === 0) {
 					val += 1;
 					pushDataLayer(
 						'[SQUAD] PDP_assistencia_e_relacionados',
@@ -213,8 +224,8 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms >= 4 ) {
-				if ( val === 1 ) {
+			if (countms >= 4) {
+				if (val === 1) {
 					val += 1;
 					pushDataLayer(
 						'[SQUAD] PDP_assistencia_e_relacionados',
@@ -223,8 +234,8 @@ Nitro.module('dataLayer-product', function() {
 					);
 				}
 			}
-			if ( countms >= 10 ) {
-				if ( val === 2 ) {
+			if (countms >= 10) {
+				if (val === 2) {
 					val += 1;
 					pushDataLayer(
 						'[SQUAD] PDP_assistencia_e_relacionados',
@@ -245,9 +256,9 @@ Nitro.module('dataLayer-product', function() {
 			var $limitScrollDesk = $('#assistencia .product-assist-block').offset().top;
 			var $limitScrollMob = $('.trustvox-container.container').offset().top;
 
-			if ( $(window).width() > 768 ) {
-				if ( $scroll > $scrollAssistence - 600 && $scroll < $limitScrollDesk - 50 ) {
-					if ( !$('body').hasClass('is--scroll') ) {
+			if ($(window).width() > 768) {
+				if ($scroll > $scrollAssistence - 600 && $scroll < $limitScrollDesk - 50) {
+					if (!$('body').hasClass('is--scroll')) {
 						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
@@ -258,8 +269,8 @@ Nitro.module('dataLayer-product', function() {
 					clearInterval(counterms);
 				}
 			} else {
-				if ( $scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 && isActive ) {
-					if ( !$('body').hasClass('is--scroll') ) {
+				if ($scroll > $scrollAssistence - 200 && $scroll < $limitScrollMob - 200 && isActive) {
+					if (!$('body').hasClass('is--scroll')) {
 						isActive = false;
 						$('body').addClass('is--scroll');
 						self.userTime();
