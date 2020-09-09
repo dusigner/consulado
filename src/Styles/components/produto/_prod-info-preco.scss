@@ -250,8 +250,8 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			display: inline-flex;
 			font-weight: 500;
 
-			&.hide--billet {
-				display: none;
+			&.show--billet {
+				display: flex !important;
 				position: relative;
 				width: 100%;
 			}
