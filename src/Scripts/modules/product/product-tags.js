@@ -106,14 +106,14 @@ Nitro.module('product-tags', function() {
 			if (!$element.parents('.formas-pagamento-container').hasClass('is--active')) {
 				dataLayer.push({
 					event: 'generic',
-					category: '[SQUAD] Produto',
-					action: 'Formas de parcelamento',
-					label: 'Abrir'
+					category: 'PDP_vitrine_superior',
+					action: 'clique',
+					label: 'formas_de_pagamento'
 				});
 			} else {
 				dataLayer.push({
 					event: 'generic',
-					category: '[SQUAD] Produto',
+					category: 'PDP_vitrine_superior',
 					action: 'Formas de parcelamento',
 					label: 'Fechar'
 				});

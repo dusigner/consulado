@@ -6,6 +6,8 @@ Nitro.module('dataLayer-product', function() {
 	this.init = () => {
 		checkInlineDatalayers();
 
+		this.seeRates();
+
 		// product unavailable
 		this.notifyMe();
 		this.notifyMeSuccess();
@@ -194,6 +196,17 @@ Nitro.module('dataLayer-product', function() {
 			);
 		});
 	};
+
+	this.seeRates = () => {
+		$('.trustvox-fluid-jump .rating-click-here').on('click', function() {
+			pushDataLayer(
+				'PDP_vitrine_superior',
+				'clique',
+				'ver_avaliacoes'
+			);
+		});
+	};
+
 
 	var counterms;
 
