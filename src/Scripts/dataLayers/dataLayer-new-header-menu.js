@@ -30,11 +30,19 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			);
 		});
 
+		$('.pre-header').find('.facilita-consul').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`blog_facilita_consul`
+			);
+		});
+
 		$('.menu, .menu-mobile').find('.icon-hamburger, a[title="Departamentos"]').on('click', function () {
 			pushDataLayer(
 				'Novo-Header',
-				`click_menu-departamentos`,
-				`novo-menu`
+				`click_menu - departamentos`,
+				`novo - menu`
 			);
 		});
 
@@ -45,8 +53,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			acao = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_menu-${acao}`,
-				`novo-menu`
+				`click_menu - ${acao}`,
+				`novo - menu`
 			);
 		});
 
@@ -57,8 +65,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			acaoM = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_menu-${acaoM}`,
-				`novo-menu-mobile`
+				`click_menu - ${acaoM}`,
+				`novo - menu - mobile`
 			);
 		});
 
@@ -71,8 +79,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			cozinhar = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${cozinhar}`,
-				`hover-cozinhar`
+				`click_hover - ${cozinhar}`,
+				`hover - cozinhar`
 			);
 		});
 
@@ -82,8 +90,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			gelar = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${gelar}`,
-				`hover-gelar`
+				`click_hover - ${gelar}`,
+				`hover - gelar`
 			);
 		});
 
@@ -93,8 +101,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			climatizar = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${climatizar}`,
-				`hover-climatizar`
+				`click_hover - ${climatizar}`,
+				`hover - climatizar`
 			);
 		});
 
@@ -104,8 +112,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			limpeza = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${limpeza}`,
-				`hover-lavar-limpar`
+				`click_hover - ${limpeza}`,
+				`hover - lavar - limpar`
 			);
 		});
 
@@ -115,8 +123,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			beber = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${beber}`,
-				`hover-beber`
+				`click_hover - ${beber}`,
+				`hover - beber`
 			);
 		});
 
@@ -126,8 +134,8 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			servicos = $(this).attr('title');
 			pushDataLayer(
 				'Novo-Header',
-				`click_hover-${servicos}`,
-				`hover-outros`
+				`click_hover - ${servicos}`,
+				`hover - outros`
 			);
 		});
 	};
