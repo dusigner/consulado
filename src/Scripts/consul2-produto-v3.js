@@ -25,6 +25,7 @@ import 'dataLayers/dataLayer-main-tabs';
 import 'dataLayers/dataLayer-topbar-nav';
 import 'modules/listagem/comparebar';
 
+import 'modules/product/compare';
 
 Nitro.controller(
 	'produto-v3',
@@ -53,6 +54,7 @@ Nitro.controller(
 		'dataLayer-topbar-nav',
 		'topBarV2',
 		'comparebar',
+		'compare'
 
 	],
 
