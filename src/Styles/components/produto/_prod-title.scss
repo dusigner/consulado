@@ -1,5 +1,7 @@
 .prod-title {
 	float: right !important;
+	z-index: 99;
+	position: relative;
 
 	.produto-v2 & { float: none !important; }
 
@@ -32,6 +34,19 @@
 		}
 		.productSku {
 			display: block;
+		}
+
+		.product-compare {
+			display: flex;
+			box-sizing: border-box;
+			align-items: center;
+			justify-content: start;
+
+			label {
+				font-size: .8rem;
+				font-weight: 300;
+				display: inline-block;
+			}
 		}
 	}
 }
