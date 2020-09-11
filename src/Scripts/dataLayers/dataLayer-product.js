@@ -78,7 +78,7 @@ Nitro.module('dataLayer-product', function () {
 	};
 
 	this.favoritesProduct = () => {
-		$(".wishlist__button").click(function () {
+		$(".produto.produto-v2").find(".wishlist__button").click(function () {
 			pushDataLayer(
 				`PDP_vitrine_superior`,
 				`clique`,
