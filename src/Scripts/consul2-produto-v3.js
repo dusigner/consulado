@@ -490,7 +490,7 @@ Nitro.controller(
 
 		//teste A-B detalhes
 
-		$('body').addClass('testeAB-detalhes');
+		// $('body').addClass('testeAB-detalhes');
 
 		if ($('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
@@ -543,7 +543,9 @@ Nitro.controller(
 
 		// testeAB TopBar PDP
 		self.topBarABTest = () => {
-			if ($('body').hasClass('testeAB-detalhes')) {
+			// $('body').addClass('testeAB-topbar');
+
+			if ( $('body').hasClass('testeAB-topbar')) {
 				$('.prod-details-nav .info-product').css('height', '5.4rem');
 				$('.prod-details-nav .box-infos p').css('font-size', '14px');
 				$('.prod-details-nav .details-preco').find('.descricao-preco').css('text-align', 'left');

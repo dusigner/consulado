@@ -99,7 +99,7 @@ Nitro.module('gallery-v3', function() {
 
 		//testeAB
 
-		$('body').addClass('testeAB-video-vitrine');
+		// $('body').addClass('testeAB-video-vitrine');
 
 		if ( $('body').hasClass('testeAB-video-vitrine')) {
 			$('.galleryThumbs').parent().removeClass('.teste-video-A');
