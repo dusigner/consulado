@@ -25,7 +25,6 @@ Nitro.module('dataLayer-product', function () {
 		// assistance_and_related-product
 		this.viewMore();
 		this.scrollUser();
-		this.favoritesProduct();
 	};
 
 	var $categoryUnavailable = '[SQUAD] Reposicao de pecas';
@@ -73,16 +72,6 @@ Nitro.module('dataLayer-product', function () {
 				`${$label}`
 			);
 		});
-	};
-
-	this.favoritesProduct = () => {
-		$(".produto.produto-v2").find(".wishlist__button").click(function () {
-			pushDataLayer(
-				`PDP_vitrine_superior`,
-				`clique`,
-				`favoritar`
-			);
-		})
 	};
 
 	this.visibleVitrineSimilarProducts = () => {

@@ -11,7 +11,7 @@
 		width: 100%;
 		z-index: 1;
 		&.wished {
-			.wishlist__button {
+			.wishlist__button-pdp {
 				font-weight: bold;
 				i {
 					&:before {
@@ -29,7 +29,7 @@
 			}
 		}
 		&.loading {
-			.wishlist__button {
+			.wishlist__button-pdp {
 				pointer-events: none;
 				i {
 					display: none;
@@ -71,7 +71,7 @@
 			}
 		}
 	}
-	&__button {
+	&__button-pdp {
 		@extend %flex-center;
 		height: 100%;
 		width: 100%;

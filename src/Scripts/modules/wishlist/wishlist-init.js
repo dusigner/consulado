@@ -6,7 +6,7 @@ import wishTags from './wishlist-tags.js';
 import { dataBaseFetch, changingEvent, patchVariantFetch } from './wishlist-utils.js';
 import cacheSelector from './cache-selector.js';
 
-const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton } = El;
+const El = cacheSelector.utils, { $document, userApi, wishContainer, wishButton, wishButtonPDP } = El;
 
 Nitro.module('wishlist-init', () => {
 
@@ -17,6 +17,7 @@ Nitro.module('wishlist-init', () => {
 				fetch(userApi).then(res => res.json().then((res) => {
 					setTimeout(() => {
 						Methods.setFavoriteds(res);
+						Methods.setFavoritedsPDP(res);
 						wishTags.init();
 					}, 1250);
 				}));
@@ -53,7 +54,40 @@ Nitro.module('wishlist-init', () => {
 				wishListStart.favoritesEvents();
 			});
 
-			$('.box-produto .product-infos-wrap .wishlist__container').on('click', (ev) => $(this).trigger('.box-produto .product-infos-wrap a').stopPropagation());
+			$('.box-produto .product-infos-wrap .wishlist__container').on('click', function(){
+				$(this).trigger('.box-produto .product-infos-wrap a').stopPropagation();
+			});
+		},
+
+		async setFavoritedsPDP(res) {
+			if (res.IsUserDefined) {
+				const response = await dataBaseFetch(res.Email);
+
+				response.length &&
+					response.map(i => i.productReference &&
+						i.productReference.split(',').forEach((item) => {
+							$(`.wishlist__button-pdp[data-idproduto=${item}]`).each((i, el) => {
+								const $element = $(el);
+
+								changingEvent($element);
+							});
+						}));
+
+				Methods._handleFavoritesPDP(res);
+
+			} else {
+				Methods._handleFavoritesPDP(res);
+			}
+		},
+
+		_handleFavoritesPDP(res) {
+			$document.on('click', wishButtonPDP, ({currentTarget}) => {
+				const $element = $(currentTarget),
+					productID = $element.parents(wishContainer).find(wishButtonPDP).attr('data-idproduto'),
+					wishListStart = new wishList(productID, res, $element);
+
+				wishListStart.favoritesEvents();
+			});
 		},
 	}
 

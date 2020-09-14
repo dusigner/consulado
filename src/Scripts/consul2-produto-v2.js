@@ -1,54 +1,54 @@
 /* global $: true, Nitro: true */
-"use strict";
+'use strict';
 
-import "modules/product/video";
-import "modules/product/sku-fetch";
-import "modules/product/gallery-v2";
-import "modules/product/product-nav-v2";
-import "modules/product/details";
-import "modules/product/specifications-v2";
-import "modules/product/selos";
-import "modules/product/sku-select";
-import "modules/product/produtos-adicionais";
-import "modules/product/boleto";
-import "modules/product/notify-me";
-import "modules/product/share";
-import "modules/product/upsell";
-import "modules/product/recurrence";
-import "modules/product/deliveryTime";
-import "modules/product/color-selector";
-import "modules/product/product-tags";
-import "modules/product/outline-products";
-import "modules/chaordic";
-import "dataLayers/dataLayer-product";
+import 'modules/product/video';
+import 'modules/product/sku-fetch';
+import 'modules/product/gallery-v2';
+import 'modules/product/product-nav-v2';
+import 'modules/product/details';
+import 'modules/product/specifications-v2';
+import 'modules/product/selos';
+import 'modules/product/sku-select';
+import 'modules/product/produtos-adicionais';
+import 'modules/product/boleto';
+import 'modules/product/notify-me';
+import 'modules/product/share';
+import 'modules/product/upsell';
+import 'modules/product/recurrence';
+import 'modules/product/deliveryTime';
+import 'modules/product/color-selector';
+import 'modules/product/product-tags';
+import 'modules/product/outline-products';
+import 'modules/chaordic';
+import 'dataLayers/dataLayer-product';
 
 Nitro.controller(
-	"produto-v2",
+	'produto-v2',
 	[
-		"chaordic",
-		"color-selector",
-		"sku-fetch",
-		"galleryv2",
-		"product-nav",
-		"video",
-		"details",
-		"specifications-v2",
-		"selos",
-		"sku-select",
-		"produtos-adicionais",
-		"boleto",
-		"share",
-		"upsell",
-		"deliveryTime",
-		"recurrence",
-		"notify-me",
-		"product-tags",
-		"dataLayer-product",
-		"outline-products"
+		'chaordic',
+		'color-selector',
+		'sku-fetch',
+		'galleryv2',
+		'product-nav',
+		'video',
+		'details',
+		'specifications-v2',
+		'selos',
+		'sku-select',
+		'produtos-adicionais',
+		'boleto',
+		'share',
+		'upsell',
+		'deliveryTime',
+		'recurrence',
+		'notify-me',
+		'product-tags',
+		'dataLayer-product',
+		'outline-products'
 	],
-	function(chaordic, colorSelector, skuFetch, galleryv2) {
+	function (chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
-			$body = $("body");
+			$body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
 		//chaordic.init('product', window.skuJson.productId);
@@ -57,13 +57,13 @@ Nitro.controller(
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
-		var testeA = "testeab=a";
-		var testeB = "testeab=b";
+		var testeA = 'testeab=a';
+		var testeB = 'testeab=b';
 
 		if (urlTesteAb.indexOf(testeA) >= 0) {
-			$body.addClass("ab-test__mobile--show-b");
+			$body.addClass('ab-test__mobile--show-b');
 		} else if (urlTesteAb.indexOf(testeB) >= 0) {
-			$body.addClass("ab-test__mobile--show-b");
+			$body.addClass('ab-test__mobile--show-b');
 		}
 
 		// Exibe Informação de "Compra segura" quando o
@@ -81,21 +81,21 @@ Nitro.controller(
 		// 	}
 		// }
 
-		var $reference = $(".reference"),
-			$productSku = $(".productSku");
+		var $reference = $('.reference'),
+			$productSku = $('.productSku');
 
 		//TROCA DE NOMES PRODUCT / SKUREF
 		$(document)
-			.on("skuSelected.vtex", function() {
-				$reference.addClass("hide");
-				$productSku.removeClass("hide");
+			.on('skuSelected.vtex', function () {
+				$reference.addClass('hide');
+				$productSku.removeClass('hide');
 			})
-			.on("skuUnselected.vtex", function() {
-				$productSku.addClass("hide");
-				$reference.removeClass("hide");
+			.on('skuUnselected.vtex', function () {
+				$productSku.addClass('hide');
+				$reference.removeClass('hide');
 			});
 
-		$(document).ajaxComplete(function(e, xhr, settings) {
+		$(document).ajaxComplete(function (e, xhr, settings) {
 			if (/outrasformasparcelamento/.test(settings.url)) {
 				self.valoresParcelas();
 			}
@@ -105,75 +105,75 @@ Nitro.controller(
 		var $product_id = skuJson_0.productId;
 
 		$.ajax({
-			type: "GET",
+			type: 'GET',
 			async: true,
 			url: `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
-			success: function(data) {
+			success: function (data) {
 				if (data[0][`Grupo - Promotores`]) {
 					var $name = data[0].productName;
 					var $url = location.href;
 					$(
-						".container-whats-container-info-link, .content_botoes_televendas-whats a"
+						'.container-whats-container-info-link, .content_botoes_televendas-whats a'
 					).attr(
-						"href",
+						'href',
 						`https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`
 					);
 
 					$(
-						".content_botoes_televendas-whats, .container-whats"
-					).addClass("is--active");
-					$("body").addClass("whatsapp");
+						'.content_botoes_televendas-whats, .container-whats'
+					).addClass('is--active');
+					$('body').addClass('whatsapp');
 				}
 			}
 		});
 
-		window.hideContainerWhats = function() {
-			document.querySelector(".container-whats").style.display = "none";
+		window.hideContainerWhats = function () {
+			document.querySelector('.container-whats').style.display = 'none';
 		};
 
 		//Mensagem de Sucesso do Formulário Avise-me
-		$("#BuyButton")
-			.find(".notifyme-success")
+		$('#BuyButton')
+			.find('.notifyme-success')
 			.html(
 				'<h2><span class="icone-check"></span> Cadastrado com sucesso!</h2> <p>Você receberá um e-mail avisando, assim que o produto for disponibilizado.</p>'
 			);
 
 		//Mensagem após envio
-		$(".portal-notify-me-ref")
-			.find(".sku-notifyme-form p")
+		$('.portal-notify-me-ref')
+			.find('.sku-notifyme-form p')
 			.remove();
-		$(".portal-notify-me-ref")
-			.find(".notifymetitle")
+		$('.portal-notify-me-ref')
+			.find('.notifymetitle')
 			.after(
 				'<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108009700777 title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 970 0777</a></p>'
 			);
 
 		//Vitrine do Produto indisponível
 		if ($(window).width() >= 1024) {
-			const vitrineRelacionada = $(".portal-notify-me-ref").find("form");
+			const vitrineRelacionada = $('.portal-notify-me-ref').find('form');
 			const initVitrine = vitrineRelacionada
 				.parent()
-				.append($("#relacionados-top"));
+				.append($('#relacionados-top'));
 			// const initVitrine = $('#relacionados-top')
 
 			initVitrine
-				.find(".prateleira > ul")
-				.not(".slick-initialized")
+				.find('.prateleira > ul')
+				.not('.slick-initialized')
 				.slick({
 					slidesToShow: 2.2,
 					slidesToScroll: 1,
-					centerPadding: "0px",
+					centerPadding: '0px',
 					fade: false,
 					infinite: false,
-					cssEase: "ease",
-					easing: "linear",
+					cssEase: 'ease',
+					easing: 'linear',
 					responsive: [
 						{
 							breakpoint: 1024,
 							settings: {
 								slidesToShow: 2.2,
 								slidesToScroll: 1,
-								centerPadding: "0px"
+								centerPadding: '0px'
 							}
 						},
 						{
@@ -181,7 +181,7 @@ Nitro.controller(
 							settings: {
 								slidesToShow: 2,
 								slidesToScroll: 2,
-								centerPadding: "0px"
+								centerPadding: '0px'
 							}
 						}
 					]
@@ -209,26 +209,26 @@ Nitro.controller(
 		// }
 
 		const $document = $(document),
-			$cepInput = "#calculoFrete .prefixo input";
+			$cepInput = '#calculoFrete .prefixo input';
 
-		$document.on("change", $cepInput, ({ currentTarget }) => {
+		$document.on('change', $cepInput, ({ currentTarget }) => {
 			const $element = $(currentTarget);
 			$element.val()
-				? $element.parent().addClass("has--cep")
-				: $element.parent().removeClass("has--cep");
+				? $element.parent().addClass('has--cep')
+				: $element.parent().removeClass('has--cep');
 		});
 
-		var $slider = $("section.slider .prateleira-slider .prateleira>ul").not(
-			".slick-initialized"
+		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not(
+			'.slick-initialized'
 		);
 
-		this.setupSlider = function($currentSlider) {
+		this.setupSlider = function ($currentSlider) {
 			const quantity =
 				$currentSlider.length > 0 &&
-				$currentSlider[0].childElementCount < 3
+					$currentSlider[0].childElementCount < 3
 					? $currentSlider[0].childElementCount
 					: 3;
-			$currentSlider.not(".slick-initialized").slick({
+			$currentSlider.not('.slick-initialized').slick({
 				infinite: true,
 				slidesToShow: quantity,
 				slidesToScroll: quantity,
@@ -253,80 +253,80 @@ Nitro.controller(
 			});
 
 			//ajusta para mobile - prateleira slider
-			$("section.slider .prateleira-slider .prateleira ul")
-				.find(".detalhes>a")
-				.addClass("col-xs-6 col-md-12");
+			$('section.slider .prateleira-slider .prateleira ul')
+				.find('.detalhes>a')
+				.addClass('col-xs-6 col-md-12');
 		};
 
 		//setup modal
-		$("a[data-modal]").on("click", ({ currentTarget }) => {
+		$('a[data-modal]').on('click', ({ currentTarget }) => {
 			const $element = $(currentTarget);
-			$("#modal-" + $element.data("modal")).vtexModal();
+			$('#modal-' + $element.data('modal')).vtexModal();
 		});
 		// $('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 		// open modal
-		$(".product-assist-block.delivery a").on("click", function() {
-			$("#modal-tipo-entrega, #modal-tipo-entrega__overlay").addClass(
-				"is--modal-active"
+		$('.product-assist-block.delivery a').on('click', function () {
+			$('#modal-tipo-entrega, #modal-tipo-entrega__overlay').addClass(
+				'is--modal-active'
 			);
 		});
 		// close modal
-		$("#modal-tipo-entrega .close-modal, #modal-tipo-entrega__overlay").on(
-			"click",
-			function() {
+		$('#modal-tipo-entrega .close-modal, #modal-tipo-entrega__overlay').on(
+			'click',
+			function () {
 				$(
-					"#modal-tipo-entrega, #modal-tipo-entrega__overlay"
-				).removeClass("is--modal-active");
+					'#modal-tipo-entrega, #modal-tipo-entrega__overlay'
+				).removeClass('is--modal-active');
 			}
 		);
 
 		//Opções de parcelamento
-		self.valoresParcelas = function() {
-			var $valoresParcelas = $(".valores-parcelas"),
-				$showParcelas = $valoresParcelas.find(".titulo-parcelamento"),
+		self.valoresParcelas = function () {
+			var $valoresParcelas = $('.valores-parcelas'),
+				$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 				$opcoesParcelamento = $valoresParcelas.find(
-					".other-payment-method-ul"
+					'.other-payment-method-ul'
 				),
 				installmentQuantity = skuJson.skus[0].installments;
 
 			if (installmentQuantity === 1) {
-				$(".formas-pagamento-container").css("display", "none");
+				$('.formas-pagamento-container').css('display', 'none');
 			}
 
-			$opcoesParcelamento.find("li").each(function() {
-				var $numeroParcelas = $(this).find("span:first-child"),
-					numeroParcelas = $numeroParcelas.text().split("X")[0],
-					$valorParcela = $(this).find("strong"),
+			$opcoesParcelamento.find('li').each(function () {
+				var $numeroParcelas = $(this).find('span:first-child'),
+					numeroParcelas = $numeroParcelas.text().split('X')[0],
+					$valorParcela = $(this).find('strong'),
 					valorParcela = parseFloat(
 						$valorParcela
 							.text()
-							.replace(".", "")
-							.replace(",", ".")
-							.split("R$")[1]
+							.replace('.', '')
+							.replace(',', '.')
+							.split('R$')[1]
 					),
-					text = $numeroParcelas.text().replace("de", ""),
+					text = $numeroParcelas.text().replace('de', ''),
 					precoTotal = parseFloat(
 						numeroParcelas * valorParcela
 					).toFixed(2);
 
 				$(this).append(
 					'<span class="valor-total">Total: R$ ' +
-						precoTotal.toString().replace(".", ",") +
-						"</span>"
+					precoTotal.toString().replace('.', ',') +
+					'</span>'
 				);
 				$numeroParcelas.text(text);
-				$valorParcela.text("de " + $valorParcela.text());
+				$valorParcela.text('de ' + $valorParcela.text());
 			});
 
 			// Exibe as opções de parcelamento
-			$showParcelas.click(function() {
+			$showParcelas.click(function () {
 				$(this)
-					.parents(".formas-pagamento-container")
-					.toggleClass("is--active");
+					.parents('.formas-pagamento-container')
+					.toggleClass('is--active');
 			});
 
-			$(".select-voltage .select.skuList label").click(function() {
-				$valoresParcelas.find(">p").slideUp();
+			$('.select-voltage .select.skuList label').click(function () {
+				$valoresParcelas.find('>p').slideUp();
 				$opcoesParcelamento.slideUp();
 			});
 		};
@@ -337,75 +337,75 @@ Nitro.controller(
 		// $('#form-unavailable form').clone().appendTo('#form-unavailable #form-title');
 		// $('#form-unavailable form').eq(1).remove();
 
-		$(".portal-notify-me-ref form").before(
+		$('.portal-notify-me-ref form').before(
 			'<div id="form-title" style="display: none;"><span id="form-title--notify">Avise-me quando o produto estiver disponível</span></div>'
 		);
 
-		$("#form-unavailable #form-title").on("click", function() {
+		$('#form-unavailable #form-title').on('click', function () {
 			$(this)
-				.parents(".portal-notify-me-ref")
-				.find("form")
-				.toggleClass("is--active"); //or addClass
+				.parents('.portal-notify-me-ref')
+				.find('form')
+				.toggleClass('is--active'); //or addClass
 			$(this)
-				.parents(".portal-notify-me-ref")
-				.find("#form-title")
-				.toggleClass("is--active"); //or addClass
+				.parents('.portal-notify-me-ref')
+				.find('#form-title')
+				.toggleClass('is--active'); //or addClass
 		});
 		/* DROPDOWN Formulario avise-me quando indisponível */
 
 		//Compre Junto
-		$(".comprar-junto a").text("compre junto");
+		$('.comprar-junto a').text('compre junto');
 
 		//Google PLA
 		if (
-			$.getParameterByName("utmi_cp") === "pla" ||
-			$.cookie("google_pla")
+			$.getParameterByName('utmi_cp') === 'pla' ||
+			$.cookie('google_pla')
 		) {
-			$.cookie("google_pla", true, {
-				path: "/",
+			$.cookie('google_pla', true, {
+				path: '/',
 				expires: 1
 			});
 
-			$("body").addClass("google-pla");
+			$('body').addClass('google-pla');
 		}
 
 		//inicia automaticamente prateleiras sliders no desktop
 		self.setupSlider($slider);
 		if ($(window).width() > 768) {
-			$("html, body").animate({ scrollTop: 190 }, 1500);
+			$('html, body').animate({ scrollTop: 190 }, 1500);
 		}
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
-			$("section.slider .pre-title").click(function(e) {
+			$('section.slider .pre-title').click(function (e) {
 				e.preventDefault();
 
-				if ($(this).hasClass("open")) {
-					$(this).removeClass("open");
+				if ($(this).hasClass('open')) {
+					$(this).removeClass('open');
 					$(this)
 						.siblings()
-						.find(".prateleira>ul")
+						.find('.prateleira>ul')
 						.slideUp();
 				} else {
-					$("section.slider .open")
+					$('section.slider .open')
 						.siblings()
-						.find(".prateleira>ul")
+						.find('.prateleira>ul')
 						.slideUp();
-					$("section.slider .open").removeClass("open");
-					$(this).addClass("open");
+					$('section.slider .open').removeClass('open');
+					$(this).addClass('open');
 					$(this)
 						.siblings()
-						.find(".prateleira>ul")
-						.slideDown("slow", function() {
+						.find('.prateleira>ul')
+						.slideDown('slow', function () {
 							self.setupSlider($(this));
 						});
 				}
 			});
 
-			$("section.slider")
+			$('section.slider')
 				.eq(0)
-				.find(".pre-title")
-				.trigger("click");
+				.find('.pre-title')
+				.trigger('click');
 		}
 
 		self.valoresParcelas();
@@ -416,23 +416,23 @@ Nitro.controller(
 		// var users = 0;
 
 		var Index = {
-			init: function() {
+			init: function () {
 				// console.log('init');
 				Index.changeQntStoq();
 				Index.getPecasRelacionadas();
 			},
 
-			getPecasRelacionadas: function() {
-				var $btnPecas = $(".btn-pecas-produto"),
+			getPecasRelacionadas: function () {
+				var $btnPecas = $('.btn-pecas-produto'),
 					$pecasModels =
-						$(".value-field.Pecas-compativeis").length > 0
-							? $(".value-field.Pecas-compativeis").html()
+						$('.value-field.Pecas-compativeis').length > 0
+							? $('.value-field.Pecas-compativeis').html()
 							: false,
-					url = "//loja.consul.com.br/busca?",
+					url = '//loja.consul.com.br/busca?',
 					testNumber = new RegExp(/^\d/);
 				// console.log('sim');
 				if ($pecasModels) {
-					$pecasModels = $pecasModels.replace(/\s+/g, "").split(";");
+					$pecasModels = $pecasModels.replace(/\s+/g, '').split(';');
 					$pecasModels = $pecasModels.filter((item, pos) => {
 						return (
 							$pecasModels.indexOf(item) === pos &&
@@ -440,32 +440,32 @@ Nitro.controller(
 						);
 					});
 					$pecasModels.forEach(val => {
-						url += "fq=alternateIds_RefId:" + val + "&";
+						url += 'fq=alternateIds_RefId:' + val + '&';
 					});
 					$btnPecas
-						.attr("href", url)
-						.parents(".product-assist-block")
-						.attr("title", "Peças para este produto")
-						.addClass("has--parts");
+						.attr('href', url)
+						.parents('.product-assist-block')
+						.attr('title', 'Peças para este produto')
+						.addClass('has--parts');
 				}
 				// else{
 				// 	console.log('não');
 				// }
 			},
-			changeQntStoq: function() {
+			changeQntStoq: function () {
 				Index.getQntStoq();
-				setInterval(function() {
+				setInterval(function () {
 					Index.getQntStoq();
 				}, 900000);
 			},
 
-			getQntStoq: function() {
+			getQntStoq: function () {
 				Index.getAPI(
-					"/api/catalog_system/pub/products/search?fq=productId:" +
-						window.skuJson.productId
-				).then(function(data) {
+					'/api/catalog_system/pub/products/search?fq=productId:' +
+					window.skuJson.productId
+				).then(function (data) {
 					if (data[0].items.length >= 2) {
-						if (data[0].items[0].name === "110V") {
+						if (data[0].items[0].name === '110V') {
 							qnt110v =
 								data[0].items[0].sellers[0].commertialOffer
 									.AvailableQuantity;
@@ -492,64 +492,64 @@ Nitro.controller(
 
 						Index.calcQntStoqOnly(qnt110v);
 
-						if (nome === "BIVOLT" && qnt110v === 0) {
-							$(".usuarios-ativos").hide();
-						} else if (nome === "110V" && qnt110v === 0) {
-							$(".usuarios-ativos").hide();
-						} else if (nome === "220V" && qnt110v === 0) {
-							$(".usuarios-ativos").hide();
+						if (nome === 'BIVOLT' && qnt110v === 0) {
+							$('.usuarios-ativos').hide();
+						} else if (nome === '110V' && qnt110v === 0) {
+							$('.usuarios-ativos').hide();
+						} else if (nome === '220V' && qnt110v === 0) {
+							$('.usuarios-ativos').hide();
 						}
 					}
 				});
 			},
 
-			calcQntStoqOnly: function(qnt110v) {
+			calcQntStoqOnly: function (qnt110v) {
 				if (qnt110v > 3) {
-					$("#qnt_stoke").hide();
+					$('#qnt_stoke').hide();
 				} else if (qnt110v === 0) {
-					$(".usuarios-ativos").hide();
+					$('.usuarios-ativos').hide();
 				} else if (qnt110v <= 3) {
-					$("#qnt_stoke").show();
+					$('#qnt_stoke').show();
 				} else {
-					$("#qnt_stoke").show();
+					$('#qnt_stoke').show();
 				}
 			},
 
-			calcQntStoq: function(qnt110v, qnt220v) {
+			calcQntStoq: function (qnt110v, qnt220v) {
 				if (qnt110v > 3 && qnt220v > 3) {
-					$("#qnt_stoke").hide();
+					$('#qnt_stoke').hide();
 				} else if (qnt110v === 0 && qnt220v === 0) {
-					$(".usuarios-ativos").hide();
+					$('.usuarios-ativos').hide();
 				} else if (qnt110v === 0 && qnt220v > 3) {
-					$("#qnt_stoke").hide();
+					$('#qnt_stoke').hide();
 				} else if (qnt110v > 3 && qnt220v === 0) {
-					$("#qnt_stoke").hide();
+					$('#qnt_stoke').hide();
 				} else if (qnt110v === 0 && qnt220v <= 3) {
-					$("#qnt_stoke").show();
+					$('#qnt_stoke').show();
 				} else if (qnt110v <= 3 && qnt220v === 0) {
-					$("#qnt_stoke").show();
+					$('#qnt_stoke').show();
 				} else if (qnt110v <= 3 && qnt220v <= 3) {
-					$("#qnt_stoke").show();
+					$('#qnt_stoke').show();
 				}
 			},
 
-			getAPI: function(url) {
+			getAPI: function (url) {
 				return $.get(url);
 			}
 		};
 
 		//favorites product
 		var wishlist = {
-			init: function() {
+			init: function () {
 				wishlist.setProductId();
 			},
-			setProductId: function() {
-				const wishlistButton = $("#wishlist-product").find(
-					".wishlist__button"
+			setProductId: function () {
+				const wishlistButton = $('#wishlist-product').find(
+					'.wishlist__button-pdp'
 				);
 				!!wishlistButton && !!$product_id
-					? wishlistButton.attr("data-idproduto", $product_id)
-					: wishlistButton.attr("data-idproduto", null);
+					? wishlistButton.attr('data-idproduto', $product_id)
+					: wishlistButton.attr('data-idproduto', null);
 			}
 		};
 		//favorites product
@@ -557,31 +557,31 @@ Nitro.controller(
 		//ativa teste A-B favorites product
 		//$(".wishlist__container").css("display", "block")
 
-		(function(window, document, $) {
-			$(function() {
+		(function (window, document, $) {
+			$(function () {
 				Index.init();
 				wishlist.init();
 			});
 		})(window, document, jQuery);
 
-		$(".bread-crumb li:not(:first):not(:last)").on("click", function() {
-			$(".bread-crumb").addClass("show-active");
+		$('.bread-crumb li:not(:first):not(:last)').on('click', function () {
+			$('.bread-crumb').addClass('show-active');
 		});
 
-		$(".secure").removeClass("col-v2 l2 offset-l1");
+		$('.secure').removeClass('col-v2 l2 offset-l1');
 		if ($(window).width() <= 1024) {
 			if (
 				$(
-					"#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide"
+					'#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide'
 				).length === 1
 			) {
 				$(
-					"#BuyButton .notifyme.sku-notifyme #relacionados-top"
-				).addClass("relacionados-top-one");
+					'#BuyButton .notifyme.sku-notifyme #relacionados-top'
+				).addClass('relacionados-top-one');
 			}
 		}
-		$("input:radio").click(function() {
-			$("#showVoltage").text($(this).val());
+		$('input:radio').click(function () {
+			$('#showVoltage').text($(this).val());
 		});
 	}
 );
