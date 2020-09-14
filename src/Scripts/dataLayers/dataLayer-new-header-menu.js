@@ -94,7 +94,6 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			);
 		});
 		
-
 		//click menu header
 		let acao = $('.menu').find('.menu-header-category a').attr('title');
 
