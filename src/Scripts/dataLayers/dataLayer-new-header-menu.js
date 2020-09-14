@@ -30,11 +30,59 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			);
 		});
 
-		$('.pre-header').find('.facilita-consul').on('click', function () {
+		$('.pre-header').find('.tb-facilita-consul').on('click', function () {
 			pushDataLayer(
 				'Novo-Header',
 				`top_bar`,
 				`blog_facilita_consul`
+			);
+		});
+
+		$('.pre-header').find('.tb-loja-virtual').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`loja_virtual`
+			);
+		});
+
+		$('.pre-header').find('.tb-vendas-corporativas').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`vendas_corporativas`
+			);
+		});
+
+		$('.pre-header').find('.tb-televendas').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`televendas_sac`
+			);
+		});
+
+		$('.pre-header').find('.tb-televendas-sac').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`televendas_sac`
+			);
+		});
+
+		$('.pre-header').find('.tb-televendas').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`televendas`
+			);
+		});
+
+		$('.pre-header').find('.tb-central-de-atendimento').on('click', function () {
+			pushDataLayer(
+				'Novo-Header',
+				`top_bar`,
+				`central_de_atendimento`
 			);
 		});
 
@@ -45,6 +93,7 @@ Nitro.module('dataLayer-new-header-menu', function () {
 				`novo - menu`
 			);
 		});
+		
 
 		//click menu header
 		let acao = $('.menu').find('.menu-header-category a').attr('title');
