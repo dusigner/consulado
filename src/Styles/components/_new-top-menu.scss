@@ -215,6 +215,28 @@ body {
 		// 	right: 1px;
 		// }
 
+		&.item-pecas {
+			background-color: #9ACA3C;
+			position: relative;
+			display: flex;
+
+			a {
+				color: #fff;
+			}
+
+			@media (max-width: 1120px){
+				&::before {
+					content: none;
+				}
+			}
+
+			&::before {
+				content: url('https://consulqa.vteximg.com.br/arquivos/ids/162170/pecas-icons.svg');
+				margin-right: 10px;
+				display: flex;
+			}
+		}
+
 		& > a {
 			color: $green;
 			text-align: center;
