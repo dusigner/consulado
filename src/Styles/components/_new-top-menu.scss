@@ -218,7 +218,7 @@ body {
 		&.item-pecas {
 			background-color: #9ACA3C;
 			position: relative;
-			padding: 1em 40px;
+			display: flex;
 
 			a {
 				color: #fff;
@@ -231,10 +231,9 @@ body {
 			}
 
 			&::before {
-				position: absolute;
 				content: url('https://consulqa.vteximg.com.br/arquivos/ids/162170/pecas-icons.svg');
-				left: 15px;
-				top: 25%;
+				margin-right: 10px;
+				display: flex;
 			}
 		}
 
