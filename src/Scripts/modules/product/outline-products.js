@@ -203,7 +203,7 @@ Nitro.module('outline-products', function () {
 		if ($(window).width() <= 1024) {
 
 			if (!$('body').hasClass('produto-indisponivel')) {
-				$('.product-info-bar').css('display', 'block');
+				$('.product-info-bar').css('display', 'none');
 				$(window).scroll(function (e) {
 					e.preventDefault();
 					var _pos = $(window).scrollTop();
