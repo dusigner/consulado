@@ -117,6 +117,12 @@
 					</div>
 					<!-- /Formas de pagamento -->
 
+					<!-- Descrição do produto -->
+					<div class="descricao-produto" itemprop="description">
+						<vtex.cmc:ProductDescription />
+					</div>
+					<!-- /Descrição do produto -->
+
 					<!-- Selos do produto -->
 					<div class="prod-selos show-medium">
 						<vtex.cmc:discountHightLight />
@@ -347,12 +353,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="row anchors">
+			<div class="row anchors atest">
 				<div class="container">
 					<ul>
-						<li class="item"><a href="#specsdetails" class="scroll-to">Detalhes/Especificações Técnicas</a></li>
-						<li class="item"><a href="#assistance" class="scroll-to">Assistência e Relacionados</a></li>
-						<li class="item"><a href="#video" class="scroll-to">Vídeo</a></li>
+						<li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
+						<li class="item"><a href="#assistencia" class="scroll-to">Assistência e relacionados</a></li>
+						<li class="item"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
+						<li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
+						<li class="item hide"><a href="#opcionais" class="scroll-to">Opcionais</a></li>
 						<li class="item"><a href="#trustvox-reviews" class="scroll-to">Avaliações</a></li>
 					</ul>
 					<button class="right">Voltar ao topo</button>
@@ -386,7 +394,6 @@
 			<section id="especificacoes" class="content-toggle">
 
 			</section>
-			<div id="assistance"></div>
 			<section id="assistencia" class="product-assist container">
 				<h2 class="text-center">
 					Assistência e Relacionados
@@ -468,11 +475,9 @@
 			<!-- /Produtos relacionados - Vtex -->
 
 			<section id="detalhes" class="detalhes"></section>
-
-			<div id="video"></div>
 			<section id="video" class="video"></section>
 
-			<!-- Descrição do produto -->
+			<!-- Descrição do produto v3-->
 			<div class="descricao-produto seo-text" itemprop="description">
 				<vtex.cmc:ProductDescription />
 			</div>
@@ -483,8 +488,8 @@
 		<div class="testeB">
 			<div id="specsdetails"></div>
 			<div class="main-tabs">
-				<a href="#detalhes" class="is--active">Detalhes</a>
-				<a href="#especificacoes">Especificações técnicas</a>
+				<a class="is--active">Detalhes</a>
+				<a>Especificações técnicas</a>
 			</div>
 
 			<section id="detalhes" class="detalhes box-options is--active"></section>
@@ -504,7 +509,6 @@
 				<p class="text-center">
 					Tudo pensado para não haver dúvidas
 				</p>
-			<!-- teste comentario -->
 				<div class="product-assist-row">
 					<div class="product-assist-block parts" title="Peças para este produto">
 						<div class="first-block">
@@ -588,7 +592,7 @@
 			<!-- Modal Confirme de confirmação de voltagem selecionada -->
 			<div id="modal-sku">
 				<h1 class="title-check-voltage">O produto escolhido é<p id="#showVoltage"></p></h1>
-					<p class="double-check">Confirme a voltagem antes de prosseguir</p>
+					<p class="double-check" >Confirme a voltagem antes de prosseguir</p>
 				<div class="row options">
 					<vtex.cmc:skuSelection />
 				</div>

@@ -65,3 +65,14 @@ $default-color-gray-light: #d9d8d8;
 		}
 	}
 }
+
+@media (max-device-height: 736px) and (max-device-width: 414px)  {
+	a {
+		margin-right: 10%;
+		margin-bottom: 2%;
+	}
+}
+
+.footer-bottom__text {
+	padding-top: 0;
+}

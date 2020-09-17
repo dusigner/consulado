@@ -53,7 +53,7 @@ Nitro.controller(
 
 	],
 
-	function(chaordic, colorSelector, skuFetch, galleryv2) {
+	function (chaordic, colorSelector, skuFetch, galleryv2) {
 
 
 		var self = this,
@@ -97,22 +97,22 @@ Nitro.controller(
 
 		//TROCA DE NOMES PRODUCT / SKUREF
 		$(document)
-			.on('skuSelected.vtex', function() {
+			.on('skuSelected.vtex', function () {
 				$reference.addClass('hide');
 				$productSku.removeClass('hide');
 			})
-			.on('skuUnselected.vtex', function() {
+			.on('skuUnselected.vtex', function () {
 				$productSku.addClass('hide');
 				$reference.removeClass('hide');
 			});
 
-		$(document).ajaxComplete(function(e, xhr, settings) {
+		$(document).ajaxComplete(function (e, xhr, settings) {
 			if (/outrasformasparcelamento/.test(settings.url)) {
 				self.valoresParcelas();
 			}
 		});
 
-		$('input:radio').click(function() {
+		$('input:radio').click(function () {
 			$('#showVoltage').text($(this).val());
 		}); // Mostra a a voltagem selecionada
 
@@ -123,9 +123,9 @@ Nitro.controller(
 			type: 'GET',
 			async: true,
 			url:
-            `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
+				`/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
 			success: function (data) {
-				if ( (data[0][`Grupo - Promotores`])) {
+				if ((data[0][`Grupo - Promotores`])) {
 					var $name = data[0].productName;
 					var $url = location.href;
 					$('.container-whats-container-info-link, .content_botoes_televendas-whats a').attr('href', `https://api.whatsapp.com/send?phone=5547988292017&&text=Olá, vim do site Consul e gostaria de falar sobre a (o) ${$name}. Link: ${$url}`);
@@ -136,7 +136,7 @@ Nitro.controller(
 			}
 		})
 
-		window.hideContainerWhats = function() {
+		window.hideContainerWhats = function () {
 			document.querySelector('.container-whats').style.display = 'none';
 		}
 
@@ -197,14 +197,14 @@ Nitro.controller(
 		const $document = $(document),
 			$cepInput = '#calculoFrete .prefixo input';
 
-		$document.on('change', $cepInput, ({currentTarget}) => {
+		$document.on('change', $cepInput, ({ currentTarget }) => {
 			const $element = $(currentTarget);
 			$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
 		});
 
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
-		this.setupSlider = function($currentSlider) {
+		this.setupSlider = function ($currentSlider) {
 			const quantity = ($currentSlider.length > 0 && $currentSlider[0].childElementCount < 3) ? $currentSlider[0].childElementCount : 3;
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: true,
@@ -237,14 +237,14 @@ Nitro.controller(
 		};
 
 		//setup modal
-		$('a[data-modal]').on('click', ({currentTarget}) => {
+		$('a[data-modal]').on('click', ({ currentTarget }) => {
 			const $element = $(currentTarget);
 			$('#modal-' + $element.data('modal')).vtexModal();
 		});
 		$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 
 		//Opções de parcelamento
-		self.valoresParcelas = function() {
+		self.valoresParcelas = function () {
 			var $valoresParcelas = $('.valores-parcelas'),
 				$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 				$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul'),
@@ -254,7 +254,7 @@ Nitro.controller(
 				$('.formas-pagamento-container').css('display', 'none');
 			}
 
-			$opcoesParcelamento.find('li').each(function() {
+			$opcoesParcelamento.find('li').each(function () {
 				var $numeroParcelas = $(this).find('span:first-child'),
 					numeroParcelas = $numeroParcelas.text().split('X')[0],
 					$valorParcela = $(this).find('strong'),
@@ -276,12 +276,12 @@ Nitro.controller(
 			});
 
 			// Exibe as opções de parcelamento
-			$showParcelas.click(function() {
+			$showParcelas.click(function () {
 				$(this).parents('.formas-pagamento-container').toggleClass('is--active');
 			});
 
 
-			$('.select-voltage .select.skuList label').click(function() {
+			$('.select-voltage .select.skuList label').click(function () {
 				$valoresParcelas.find('>p').slideUp();
 				$opcoesParcelamento.slideUp();
 			});
@@ -295,7 +295,7 @@ Nitro.controller(
 
 		$('.portal-notify-me-ref form').before('<div id="form-title" style="display: none;"><span id="form-title--notify">Avise-me quando o produto estiver disponível</span></div>')
 
-		$('#form-unavailable #form-title').on('click', function() {
+		$('#form-unavailable #form-title').on('click', function () {
 			$(this).parents('.portal-notify-me-ref').find('form').toggleClass('is--active') //or addClass
 			$(this).parents('.portal-notify-me-ref').find('#form-title').toggleClass('is--active') //or addClass
 		})
@@ -317,12 +317,12 @@ Nitro.controller(
 		//inicia automaticamente prateleiras sliders no desktop
 		self.setupSlider($slider);
 		if ($(window).width() > 768) {
-			$('html, body').animate( { scrollTop: 190 }, 1500 );
+			$('html, body').animate({ scrollTop: 190 }, 1500);
 		}
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
-			$('section.slider .pre-title').click(function(e) {
+			$('section.slider .pre-title').click(function (e) {
 				e.preventDefault();
 
 				if ($(this).hasClass('open')) {
@@ -341,7 +341,7 @@ Nitro.controller(
 					$(this)
 						.siblings()
 						.find('.prateleira>ul')
-						.slideDown('slow', function() {
+						.slideDown('slow', function () {
 							self.setupSlider($(this));
 						});
 				}
@@ -361,12 +361,12 @@ Nitro.controller(
 		// var users = 0;
 
 		var Index = {
-			init: function() {
+			init: function () {
 				// console.log('init');
 				Index.changeQntStoq();
 				Index.getPecasRelacionadas();
 			},
-			getPecasRelacionadas: function() {
+			getPecasRelacionadas: function () {
 				var $btnPecas = $('.btn-pecas-produto'),
 					$pecasModels =
 						$('.value-field.Pecas-compativeis').length > 0
@@ -393,16 +393,16 @@ Nitro.controller(
 				// 	console.log('não');
 				// }
 			},
-			changeQntStoq: function() {
+			changeQntStoq: function () {
 				Index.getQntStoq();
-				setInterval(function() {
+				setInterval(function () {
 					Index.getQntStoq();
 				}, 900000);
 			},
 
-			getQntStoq: function() {
+			getQntStoq: function () {
 				Index.getAPI('/api/catalog_system/pub/products/search?fq=productId:' + window.skuJson.productId).then(
-					function(data) {
+					function (data) {
 						if (data[0].items.length >= 2) {
 							if (data[0].items[0].name === '110V') {
 								qnt110v = data[0].items[0].sellers[0].commertialOffer.AvailableQuantity;
@@ -433,7 +433,7 @@ Nitro.controller(
 				);
 			},
 
-			calcQntStoqOnly: function(qnt110v) {
+			calcQntStoqOnly: function (qnt110v) {
 				if (qnt110v > 3) {
 					$('#qnt_stoke').hide();
 				} else if (qnt110v === 0) {
@@ -445,7 +445,7 @@ Nitro.controller(
 				}
 			},
 
-			calcQntStoq: function(qnt110v, qnt220v) {
+			calcQntStoq: function (qnt110v, qnt220v) {
 				if (qnt110v > 3 && qnt220v > 3) {
 					$('#qnt_stoke').hide();
 				} else if (qnt110v === 0 && qnt220v === 0) {
@@ -463,24 +463,24 @@ Nitro.controller(
 				}
 			},
 
-			getAPI: function(url) {
+			getAPI: function (url) {
 				return $.get(url);
 			}
 		};
 
-		(function(window, document, $) {
-			$(function() {
+		(function (window, document, $) {
+			$(function () {
 				Index.init();
 			});
 		})(window, document, jQuery);
 
-		$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb li:not(:first):not(:last)').on('click', function () {
 			$('.bread-crumb').addClass('show-active');
 		});
 
 		$('.secure').removeClass('col-v2 l2 offset-l1');
 		if ($(window).width() <= 1024) {
-			if ( $('#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide').length === 1 ) {
+			if ($('#BuyButton .notifyme.sku-notifyme #relacionados-top .prateleira > ul li.slick-slide').length === 1) {
 				$('#BuyButton .notifyme.sku-notifyme #relacionados-top').addClass('relacionados-top-one')
 			}
 		}
@@ -492,7 +492,7 @@ Nitro.controller(
 
 		// $('body').addClass('testeAB-detalhes');
 
-		if ( $('body').hasClass('testeAB-detalhes')) {
+		if ($('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();
 
@@ -537,6 +537,8 @@ Nitro.controller(
 				$('.testeB #detalhes').removeClass('is--active');
 				$('.testeB #especificacoes').addClass('is--active');
 			}
+
+
 		});
 
 		// testeAB TopBar PDP
@@ -554,8 +556,8 @@ Nitro.controller(
 				$('.prod-details-nav .valor-por').find('strong').css('font-size', '18px');
 
 				$('.prod-details-nav .nav-price').css({
-					'padding' : '0',
-					'align-items' : 'center',
+					'padding': '0',
+					'align-items': 'center',
 				});
 				$('.prod-details-nav .skuBestInstallmentValue').css('font-size', '12px');
 				$('.prod-details-nav .skuBestInstallmentNumber').css('font-size', '12px');
