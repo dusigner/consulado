@@ -131,7 +131,7 @@ Nitro.controller(
 
 		//Mensagem após envio
 		$('.portal-notify-me-ref').find('.sku-notifyme-form p').remove();
-		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
+		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108009700777 title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 970 0777</a></p>');
 
 		//Vitrine do Produto indisponível
 		if ($(window).width() >= 1024) {

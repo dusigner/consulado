@@ -130,6 +130,7 @@ $(document).on('ready', function() {
 				self.descountCheckout();
 				self.searchCheckout();
 				self.textDescriptionPayment();
+				self.tiraDuvidas();
 
 				this.orderFormUpdated(null, window.vtexjs && window.vtexjs.checkout.orderForm);
 
@@ -1051,6 +1052,84 @@ $(document).on('ready', function() {
 			this.cookieFormat = (cookie, str) => {
 				//Funcao auxiliar para trazer somente o valor desejado dos cookies de userinfo e shippingdata.
 				return decodeURIComponent(cookie.split(str)[1].split('/')[0]);
+			}
+
+			this.tiraDuvidas = () => {
+				const btn = '<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Está com alguma dúvida em relação ao pagamento?</button>';
+				const pushDataLayer = (cat, act, lbl) => {
+					dataLayer.push({
+						event: 'generic',
+						category: cat,
+						action: act,
+						label: lbl
+					});
+					console.info('Datalayer', {
+						event: 'generic',
+						category: cat,
+						action: act,
+						label: lbl
+					})
+				}
+
+				$('#btn-modal').length === 0 ? $('.cart-template.full-cart .extensions-checkout-buttons-container').append(btn) : console.info('Button already exists!');
+
+				$('#btn-modal').click(function () {
+					$('#cover, #modal').fadeTo(200, 1);
+					$('html').css({ 'overflow': 'hidden', 'height': '100vh' });
+				});
+
+				$('#close, #cover').click(function () {
+					$('#cover, #modal').fadeTo(200, 0).hide();
+					$('html').css({ 'overflow': 'inherit', 'height': 'auto' });
+				});
+
+				$('.pergunta h2').click(function () {
+					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+					var target = $(this).next('div.resposta');
+
+					$('div.resposta:visible').not(target).slideUp();
+					target.slideToggle();
+
+					if ($(this).hasClass('is--active')) {
+						$(this).removeClass('is--active');
+					} else {
+						$('.pergunta h2').removeClass('is--active');
+						$(this).addClass('is--active');
+						pushDataLayer(
+							'PDP_tira_duvidas',
+							`clique_categoria_faq`,
+							`${label}`
+						);
+					}
+
+				});
+
+				$('.toggle').click(function () {
+					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+					var target = $(this).next('ul.content');
+
+					$('.toggle').removeClass('active');
+					$(this).addClass('active');
+
+					$('ul.content:visible').not(target).hide('fast');
+					target.show('fast');
+
+					pushDataLayer(
+						'PDP_tira_duvidas',
+						`abertura_faq`,
+						`${label}`
+					);
+				});
+
+				if ($('body').width() < 768) {
+					$('.btn-voltar').hide();
+					$('.toggle').click(function () {
+						$('.btn-voltar').show();
+						$('.btn-voltar, .title-question').click(function () {
+							$('.content').hide();
+						});
+					});
+				}
 			}
 
 			this.init();

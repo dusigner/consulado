@@ -62,6 +62,8 @@
 @import 'components/produto/voltage-selector-modal';
 
 @import 'components/tira-duvidas';
+@import 'consentCookie';
+
 // @import 'components/produto/quiz-install';
 
 .produto-indisponivel {
@@ -135,5 +137,9 @@
 		font: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		font-weight: bold;
 		margin-top: 18px;
+	}
+	.detalhes-v3-css {
+		display: none;
+		visibility: hidden;
 	}
 }

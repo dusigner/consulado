@@ -3,10 +3,10 @@
 
 import 'modules/product/video';
 import 'modules/product/sku-fetch';
-import 'modules/product/gallery-v2';
+import 'modules/product/gallery-v3';
 import 'modules/product/product-nav-v2';
 import 'modules/product/details-v3';
-import 'modules/product/specifications-v2';
+import 'modules/product/specifications-v3';
 import 'modules/product/selos';
 import 'modules/product/sku-select-v3';
 import 'modules/product/produtos-adicionais';
@@ -21,6 +21,8 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
+import 'dataLayers/dataLayer-main-tabs';
+import 'dataLayers/dataLayer-topbar-nav';
 
 Nitro.controller(
 	'produto-v3',
@@ -28,11 +30,11 @@ Nitro.controller(
 		'chaordic',
 		'color-selector',
 		'sku-fetch',
-		'galleryv2',
+		'gallery-v3',
 		'product-nav',
 		'video',
 		'details-v3',
-		'specifications-v2',
+		'specifications-v3',
 		'selos',
 		'sku-select-v3',
 		'produtos-adicionais',
@@ -45,8 +47,15 @@ Nitro.controller(
 		'product-tags',
 		'dataLayer-product',
 		'outline-products',
+		'dataLayer-main-tabs',
+		'dataLayer-topbar-nav',
+		'topBarV2',
+
 	],
+
 	function(chaordic, colorSelector, skuFetch, galleryv2) {
+
+
 		var self = this,
 			$body = $('body');
 
@@ -55,8 +64,7 @@ Nitro.controller(
 
 		galleryv2.init();
 
-		//teste A-B detalhes
-		$('body').addClass('testeAB-detalhes');
+
 
 		// Teste AB
 		var urlTesteAb = window.location.search;
@@ -137,7 +145,7 @@ Nitro.controller(
 
 		//Mensagem após envio
 		$('.portal-notify-me-ref').find('.sku-notifyme-form p').remove();
-		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108007227872" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 722 7872</a></p>');
+		$('.portal-notify-me-ref').find('.notifymetitle').after('<p class="subtitle-page">Seja avisado quando estiver disponível<br>Ou entre em contato com nosso <a href="tel:+551108009700777" title="Televendas" class="show-personal-inline notifyme-televendas">Televendas 0800 970 0777</a></p>');
 
 		//Vitrine do Produto indisponível
 		if ($(window).width() >= 1024) {
@@ -477,19 +485,38 @@ Nitro.controller(
 			}
 		}
 
+
 		// testeAB
+
+		//teste A-B detalhes
+
+		$('body').addClass('testeAB-detalhes');
+
 		if ( $('body').hasClass('testeAB-detalhes')) {
 			$('.testeA').hide();
 			$('.testeB').show();
+
+			$('.btest').show();
+			$('.atest').hide();
 
 			var $detalhes = $('.testeA #detalhes').clone();
 			var $especificacoes = $('.testeA #especificacoes');
 
 			$('.testeB #detalhes').html($detalhes);
 			$('.testeB #especificacoes').html($especificacoes);
+			$('.detalhes_v2').remove();
+			$('.detalhes-v3-css').show();
+
 		} else {
 			$('.testeA').show();
 			$('.testeB').hide();
+
+			$('.atest').show();
+			$('.btest').hide();
+
+			$('.detalhes_v2').show();
+			$('.detalhes-v3-css').remove();
+
 		}
 
 		$('.main-tabs a').on('click', function(){
@@ -502,5 +529,40 @@ Nitro.controller(
 				$('.testeB').attr('data-bind', '' + $attr);
 			}
 		});
-	}
+		$('.detalhes-v3-css').parent().before('<h2 class="title-detalhes">Conheça o produto</h2> <p class="subtitle-detalhes">Tudo pensado para não haver dúvidas</p>');
+
+		// testeAB TopBar PDP
+		self.topBarABTest = () => {
+			if ( $('body').hasClass('testeAB-detalhes')) {
+				console.log('batata');
+				$('.prod-details-nav .info-product').css('height', '5.4rem');
+				$('.prod-details-nav .box-infos p').css('font-size', '14px');
+				$('.prod-details-nav .details-preco').find('.descricao-preco').css('text-align', 'left');
+				$('.prod-details-nav .valor-de').css('font-size', '12px');
+				$('.prod-details-nav .valor-de').find('strong').css('font-size', '12px');
+
+				$('.prod-details-nav .valor-por').css('font-size', '12px');
+				$('.prod-details-nav .valor-por').find('strong').css('font-size', '18px');
+
+				$('.prod-details-nav .nav-price').css({
+					'padding' : '0',
+					'align-items' : 'center',
+				});
+				$('.prod-details-nav .skuBestInstallmentValue').css('font-size', '12px');
+				$('.prod-details-nav .skuBestInstallmentNumber').css('font-size', '12px');
+
+				$('.prod-details-nav .anchors').css('height', '2.57rem');
+				$('.prod-details-nav .anchors .container').css('padding-top', '0');
+				$('.prod-details-nav .anchors .item').css('font-size', '0.87rem');
+				$('.prod-details-nav .anchors button').hide();
+			}
+
+
+		};
+
+		self.topBarABTest();
+
+
+	},
+
 );

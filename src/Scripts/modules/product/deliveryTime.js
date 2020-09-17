@@ -48,7 +48,7 @@ Nitro.module('deliveryTime', ['workingdays-counter'], (workingDays) => {
 			if (calculaFrete === 'calcula') {
 				$loadingFret.removeClass('loading');
 				$containerFrete.addClass('active');
-				$containerFrete.prepend('<i class="closed"></i>');
+				// $containerFrete.prepend('<i class="closed"></i>');//remove to better usability
 				if (flag === 1) {
 					dataLayer.push({
 						event: 'simuladorCEP',

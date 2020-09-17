@@ -388,3 +388,62 @@
 .slick-dots {
 	display: none!important;
 }
+//teste AB
+body.testeAB-video-vitrine {
+	.teste-video-B {
+		.galleryThumbs {
+			.slick-track {
+				align-content: center;
+				align-items: center;
+				display: flex;
+				flex-flow: column wrap;
+				height: 370px !important;
+				justify-content: flex-start;
+			}
+			.slick-list {
+				overflow: inherit;
+			}
+			.slick-slide {
+				margin: 0 14px 14px 0;
+			}
+			.video-b {
+				height: auto;
+				left: 0;
+				margin-top: 10px;
+				position: absolute !important;
+				top: 100%;
+   				width: 100%!important;
+				.thumb-video {
+					background: #fff;
+					border: 1px solid $green;
+					border-radius: 100px;
+					height: auto;
+					padding: 5px 10px 5px 5px;
+					width: 170px;
+					&:after {
+						background-image: url('data:image/svg+xml,%3Csvg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="13.0668" cy="13.2" r="12.1" stroke="%239ACA3C"/%3E%3Cpath d="M16.5178 12.4793C16.9266 12.8727 16.9266 13.527 16.5178 13.9204L12.66 17.6326C12.0247 18.2439 10.9666 17.7936 10.9666 16.912L10.9666 9.48768C10.9666 8.60602 12.0247 8.15578 12.66 8.7671L16.5178 12.4793Z" fill="%239ACA3C"/%3E%3C/svg%3E%0A');
+						background-position: top center;
+						background-repeat: no-repeat;
+						background-size: contain;
+						content: '';
+						display: block;
+						float: left;
+						height: 30px;
+						margin-right: 5px;
+						width: 30px;
+					}
+					&:before {
+						color: $green;
+						content: 'Vídeo do produto';
+						display: inline-block;
+						font-size: 14px;
+						font-weight: 500;
+						padding-top: 5px;
+					}
+				}
+			}
+		}
+	}
+
+}
+

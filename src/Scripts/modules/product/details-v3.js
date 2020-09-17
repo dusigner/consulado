@@ -19,28 +19,39 @@ Nitro.module('details-v3', function() {
 		styleMap = [
 			{
 				item: 'item-half item-single',
-				text: 'text-left col-v2 l6',
-				image: ''
+				text: 'text-left col-6 text-top',
+				coluna: 'col-6',
+				image: 'bg-cover'
 			},
 			{
 				item: 'item-full',
-				text: 'text-left col-v3 l7 m12 offset-l2',
-				image: ''
+				text: 'text-left col-8 texto-escuro',
+				image: 'col-12 bg-cover',
+				coluna: 'col-12'
 			},
 			{
 				item: 'item-half item-right',
-				text: 'text-left col-v2 l6',
-				image: ''
+				text: 'text-left col-v2 l6 col-6 text-top',
+				image: 'bg-cover ',
+				coluna: 'col-6'
 			},
 			{
 				item: 'item-half',
-				text: 'text-left col-v2 l6',
-				image: ''
+				text: 'text-left col-v2 l6 col-6 text-top',
+				image: 'bg-cover ',
+				coluna: 'col-6'
 			},
 			{
 				item: 'item-extrafull item-center',
-				text: 'col-v2 l6 offset-l4 m12 offset-m3',
-				image: ''
+				text: 'col-8 texto-escuro',
+				image: 'bg-cover ',
+				coluna: 'col-12'
+			},
+			{
+				item: 'item-half item-single',
+				text: 'text-left col-6 text-top',
+				coluna: 'col-6',
+				image: 'bg-cover'
 			}
 		];
 
