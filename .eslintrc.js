@@ -24,6 +24,7 @@ module.exports = {
 		_: true,
 		_jussi: true,
 		skuJson: true,
+		skuJson_0: true,
 		$: true,
 		dataLayer: true,
 		define: true,

@@ -62,7 +62,7 @@ Nitro.module('outline-products', function () {
 				`/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
 			success: function (data) {
 				if (data[0][`Produtos Substitutos`]) {
-					console.log(data[0]);
+					// console.log(data[0]);
 
 					$('body').addClass('product-outline-accept')
 
