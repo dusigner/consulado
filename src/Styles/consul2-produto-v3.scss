@@ -60,6 +60,7 @@
 @import 'components/produto/vitrine-relacionada';
 @import 'components/produto/outline-products';
 @import 'components/listagem/comparebar';
+@import 'components/produto/prod-wishlist_compare';
 
 // @import 'components/produto/quiz-install';
 
@@ -139,7 +140,6 @@
 }
 .prod-title {
 	float: left !important;
-	margin-bottom: 25px;
 }
 .prod-selos {
 	top: 90px;

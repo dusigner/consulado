@@ -6,7 +6,8 @@ Nitro.module('compare', function() {
 		name: skuJson.name,
 		cache: skuJson.skus[0].cacheVersionUsedToCallCheckout,
 		image: skuJson.skus[0].image,
-		category: vtxctx.categoryName
+		category: vtxctx.categoryName,
+		categoryId: vtxctx.categoryId,
 	}
 
 	let prodsToCompare = [];
@@ -17,31 +18,61 @@ Nitro.module('compare', function() {
 	};
 
 	self.build = () => {
-		const prodTitle = document.querySelector('.prod-title');
 
-		const content = `
-			<div class="prod-compare" style="display: inline-block; width: 100%;">
-				<div class="container" style="align-itens: center; display: flex; justify-content: flex-start;">
-					<input type="checkbox" id="${prodData.cache}" class="compare-product-checkbox" rel="${prodData.id}"/>
-					<label htmlFor="${prodData.cache}">Comparar produto</label>
+		let prodTitle = $('.prod-title');
+
+		let content = `
+			<div class="prod-wishlist_compare">
+				<div class="product-compare">
+					<input type="checkbox" id="${ prodData.cache }" rel="${ prodData.id }"/>
+					<label for="${ prodData.cache }" htmlFor="${ prodData.cache }">Comparar produto</label>
 				</div>
 			</div>
 		`;
 
-		prodTitle.insertAdjacentHTML('afterend', content);
+		prodTitle.after(content);
 	};
 
 	self.addToCompare = () => {
 
-		const prodCompare = document.querySelector('.prod-compare');
+		const prodCompare = document.querySelector('.product-compare');
 		// prodCompare ? console.info('prodCompare existe') : console.info('prodCompare não existe');
 		prodCompare.addEventListener('click', () => {
+
+			dataLayer.push({
+				event: 'generic',
+				category: 'PDP_vitrine_superior',
+				action: 'clique',
+				label: 'comparar_produto'
+			});
+
+			const $compareBar = $('.compare-bar');
+			$compareBar.addClass('-is--active');
+
 			const prod = {
 				category: prodData.category,
 				image: prodData.image,
 				rel: prodData.id,
 				title: prodData.name
 			}
+
+			const $productCompare = $('.compare-bar__product').first().addClass('-has-product');
+
+			$productCompare.html('<div class="compare-bar__product-close js-remove-item" data-text="' +
+				prod.title +
+				'" data-rel="' +
+				prod.rel +
+				'"></div>' +
+				'<div class="compare-bar__product-image">' +
+				'<img src="' +
+				prod.image +
+				'" alt="' +
+				prod.title +
+				'" />' +
+				'</div>' +
+				'<div class="compare-bar__product-name">' +
+				prod.title +
+				'</div>');
 
 			// console.info({
 			// 	category: prodData.category,
@@ -50,21 +81,46 @@ Nitro.module('compare', function() {
 			// 	title: prodData.name
 			// });
 
-			if(localStorage.getItem('comparador') === null) {
-				window.localStorage.setItem('comparador', []);
+			if(localStorage.getItem('comparadorPdp') === null) {
+				window.localStorage.setItem('comparadorPdp', []);
 				window.localStorage.setItem('comparadorContador', 0);
 			}
 
-			if (parseInt(localStorage.getItem('comparadorContador')) <= 2) {
+			if (parseInt(localStorage.getItem('comparadorContador')) <= 100) {
 				prodsToCompare.push(prod);
-				window.localStorage.setItem('comparador', JSON.stringify(prodsToCompare));
+				window.localStorage.setItem('comparadorPdp', JSON.stringify(prodsToCompare));
 				window.localStorage.setItem('comparadorContador', (parseInt(localStorage.getItem('comparadorContador')) + 1));
 			} else {
 				console.warn('Já estamos comparando 3 itens!');
 			}
 
+			let categoryIdStr = prodData.categoryId.toString();
+
+			let $link = `https://consulqa.vtexcommercestable.com.br/api/catalog_system/pub/category/${categoryIdStr}`
+
+			$.ajax({
+				url: $link,
+				type: 'GET',
+				dataType: 'json',
+			}).done(function(data) {
+					console.log("...redirecionando");
+					setTimeout(function(){
+						window.location.replace(data.url);
+					}, 1500);
+				}).fail(function(error){
+					console.warn(error);
+				})
+
+
+			// setTimeout(function(){
+			// 	window.location.replace(`/${prodData.department}/${prodData.categoryurl}`);
+			// }, 1500);
+
+
 			// console.info(JSON.parse(window.localStorage.getItem('comparador')));
 		});
+
+
 	}
 
 	self.init();
