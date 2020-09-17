@@ -11,7 +11,7 @@
 		width: 100%;
 		z-index: 1;
 		&.wished {
-			.wishlist__button {
+			.wishlist__button-pdp {
 				font-weight: bold;
 				i {
 					&:before {
@@ -26,10 +26,18 @@
 				strong {
 					color: #9ACA3C
 				}
+				span {
+					font-size: 0;
+
+					&::before {
+						content: 'Desfavoritar';
+						font-size: 13px;
+					}
+				}
 			}
 		}
 		&.loading {
-			.wishlist__button {
+			.wishlist__button-pdp {
 				pointer-events: none;
 				i {
 					display: none;
@@ -71,7 +79,7 @@
 			}
 		}
 	}
-	&__button {
+	&__button-pdp {
 		@extend %flex-center;
 		height: 100%;
 		width: 100%;
@@ -92,6 +100,7 @@
 			line-height: 15px;
 			margin-left: 5px;
 			text-align: center;
+			display: flex;
 		}
 	}
 }
