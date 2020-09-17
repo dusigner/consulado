@@ -40,6 +40,7 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 			&.valor-de {
 				@include breakpoint("small", "min") {
 					margin-top: 10px;
+					width: 100%;
 				}
 				display: block;
 				font-size: -1;
@@ -245,14 +246,15 @@ $icon-preco-parcelado: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAAAaCA
 		}
 
 		span {
+			position: relative;
+
 			@include rfs(16px);
 			color: #9bca3d;
 			display: inline-flex;
 			font-weight: 500;
 
-			&.hide--billet {
-				display: none;
-				position: relative;
+			&.show--billet {
+				display: inline-flex !important;
 				width: 100%;
 			}
 			> span {
