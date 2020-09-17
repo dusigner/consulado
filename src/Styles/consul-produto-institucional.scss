@@ -1,0 +1,51 @@
+@import "utils";
+
+* {
+	padding: 0;
+	margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: "Consul";
+	background-color: #F4F2F1;
+};
+
+.container-blog-facilita {
+    background: #F4F2F1;
+    display: grid;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 5px;
+    margin: 5px;
+    flex-flow: column wrap;
+    justify-content: space-between;
+}
+
+.card-blog {
+  background-color: #fff;
+  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 24px;
+}
+
+.btn-saiba-mais a {
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 12px 53px;
+    border-radius: 100px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+
+    @media screen and (max-width: 1023px) {
+        padding: 7px 15px 9px 20px;
+        min-width: 100px;
+    }
+}
