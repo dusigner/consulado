@@ -2,13 +2,14 @@
 
 import floatToCurrency from 'components/float-to-currency';
 
-Nitro.module('outline-products',function() {
+Nitro.module('outline-products', function () {
 	var self = this
 
-	this.init = function() {
+	this.init = function () {
 		this.htmlProductsOutline();
 		this.searchProductInfo();
 		this.toggleDescriptionMobile();
+		this.loadProducts();
 	};
 
 	this.htmlProductsOutline = () => {
@@ -58,9 +59,9 @@ Nitro.module('outline-products',function() {
 			type: 'GET',
 			async: true,
 			url:
-            `/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
+				`/api/catalog_system/pub/products/search?fq=productId:${$product_id}`,
 			success: function (data) {
-				if ( data[0][`Produtos Substitutos`] ) {
+				if (data[0][`Produtos Substitutos`]) {
 					console.log(data[0]);
 
 					$('body').addClass('product-outline-accept')
@@ -75,11 +76,11 @@ Nitro.module('outline-products',function() {
 					var $skuDescription = data[0][`Mensagem: Descrição`][0];
 
 					$('#outlineProducts .outline-products-description #outlineProducts-description').html($skuDescription);
-					if ( $(window).width() < 1024 ) {
+					if ($(window).width() < 1024) {
 						$('#outlineProducts .outline-products-description #outlineProducts-description-mobile').html($skuDescription);
 					}
 
-					$.each($skuChangeArray, function(key, value) {
+					$.each($skuChangeArray, function (key, value) {
 						$('#outlineProducts .outline-products-changes-items').append(`<li><span>${value}</span></li>`);
 					})
 				} else {
@@ -89,17 +90,17 @@ Nitro.module('outline-products',function() {
 		})
 
 		setInterval(function () {
-			if ( $sku.length) {
-				if ( !$('body').hasClass('product-outline') ) {
+			if ($sku.length) {
+				if (!$('body').hasClass('product-outline')) {
 					$('body').addClass('product-outline')
 					$.ajax({
 						async: true,
 						type: 'GET',
 						url:
-                        `/api/catalog_system/pub/products/search?fq=skuId:${$sku}`,
+							`/api/catalog_system/pub/products/search?fq=skuId:${$sku}`,
 						success: function (data) {
 							var $data = data[0];
-							if ( $data.items[0].sellers[0].commertialOffer.Price > 0 ) {
+							if ($data.items[0].sellers[0].commertialOffer.Price > 0) {
 								// console.log('foi');
 								var $productName = $data.productTitle;
 								var $productLink = $data.link;
@@ -158,20 +159,32 @@ Nitro.module('outline-products',function() {
 	}
 
 	this.toggleDescriptionMobile = () => {
-		if ( $(window).width() < 1024 ) {
-			$('body').on('click', '.outline-products-description-text', function(){
+		if ($(window).width() < 1024) {
+			$('body').on('click', '.outline-products-description-text', function () {
 				$(this).toggleClass('is--active');
 				$('#outlineProducts-description-mobile').toggleClass('is--active');
 			})
 		}
 	}
 
+
 	this.loadProducts = () => {
-		if ( skuJson.available === true ) {
+		$('.select.skuList.item-dimension-Voltagem input').on('change', function () {
+			if ($(this).hasClass('item_unavaliable')) {
+				$('body').removeClass('produto-disponivel');
+				$('body').addClass('produto-indisponivel');
+
+			}
+			else {
+				$('body').addClass('produto-disponivel');
+				$('body').removeClass('produto-indisponivel');
+			}
+		});
+		if (skuJson.available === true) {
 			$('.secure').show();
 			$('body').addClass('produto-disponivel');
 		} else {
-			if ( !$('body').hasClass('product-outline-accept') ) {
+			if (!$('body').hasClass('product-outline-accept')) {
 				$('body').addClass('produto-indisponivel');
 				$('.portal-notify-me-ref .subtitle-page').html('Confira as opções de produtos similares ou seja avisado quando estifer disponível');
 				$('.calc-frete').hide();
@@ -190,8 +203,8 @@ Nitro.module('outline-products',function() {
 		if ($(window).width() <= 1024) {
 
 			if (!$('body').hasClass('produto-indisponivel')) {
-				$('.product-info-bar').css('display', 'block');
-				$(window).scroll(function(e) {
+				$('.product-info-bar').css('display', 'none');
+				$(window).scroll(function (e) {
 					e.preventDefault();
 					var _pos = $(window).scrollTop();
 
