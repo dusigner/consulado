@@ -23,6 +23,9 @@ import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
 import 'dataLayers/dataLayer-main-tabs';
 import 'dataLayers/dataLayer-topbar-nav';
+import 'modules/listagem/comparebar';
+
+import 'modules/product/compare';
 
 Nitro.controller(
 	'produto-v3',
@@ -50,6 +53,8 @@ Nitro.controller(
 		'dataLayer-main-tabs',
 		'dataLayer-topbar-nav',
 		'topBarV2',
+		'comparebar',
+		'compare'
 
 	],
 

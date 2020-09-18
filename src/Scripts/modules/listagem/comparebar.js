@@ -40,6 +40,8 @@ Nitro.module('comparebar', function() {
 		this.updateCategory();
 		this.toggleBar();
 
+		this.comparePdp();
+
 		setTimeout(function() {
 			self.setInputs();
 		}, 100);
@@ -349,6 +351,58 @@ Nitro.module('comparebar', function() {
 				.removeClass('selected');
 			self.removeProductsToCompare(productId);
 		});
+	};
+
+	this.comparePdp = () => {
+		if($('body').hasClass('categoria') && JSON.parse(localStorage.getItem('comparadorPdp')) != null){
+			var produtos = JSON.parse(localStorage.getItem('comparadorPdp'));
+
+			var produto = produtos[0];
+
+			console.log(produto);
+
+			if ( produtos.length > 0 ) {
+
+
+
+				setTimeout(function(){
+					self.addProductsInfo(produto.rel, produto.image, produto.title, produto.category);
+
+					self.addProductsToCompare(itensToCompare, produto.rel);
+
+					self.verifyClass(produto);
+				},1500);
+
+			}
+
+			window.localStorage.removeItem('comparadorPdp');
+			window.localStorage.removeItem('comparadorContador');
+
+
+			// setTimeout(function() {
+			// 	var $productBar = $('.compare-bar__product');
+
+			// 	if ($productBar.length === 3) {
+			// 		$productBar.first().addClass('-has-product').html('<div class="compare-bar__product-close js-remove-item" data-text="' +
+			// 		produto.title +
+			// 		'" data-rel="' +
+			// 		produto.rel +
+			// 		'"></div>' +
+			// 		'<div class="compare-bar__product-image">' +
+			// 		'<img src="' +
+			// 		produto.image +
+			// 		'" alt="' +
+			// 		produto.title +
+			// 		'" />' +
+			// 		'</div>' +
+			// 		'<div class="compare-bar__product-name">' +
+			// 		produto.title +
+			// 		'</div>');
+			// 	}
+			// }, 2000);
+
+		}
+
 	};
 
 	this.init();
