@@ -23,6 +23,12 @@ body {
 				label {
 					padding: 5px 0 5px 20px;
 
+					&:before {
+						font-size: 9px;
+						left: 2.5px;
+						top: 12px;
+					}
+
 					&:after {
 						width: 15px;
 						height: 15px;
