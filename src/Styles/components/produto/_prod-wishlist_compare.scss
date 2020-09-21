@@ -23,6 +23,15 @@ body {
 				label {
 					padding: 5px 0 5px 20px;
 
+					&:before {
+						font-size: 9px;
+						left: 2.5px;
+						top: 12px;
+						@media screen and (max-width:700px) {
+							top: 10px;
+						}
+					}
+
 					&:after {
 						width: 15px;
 						height: 15px;
