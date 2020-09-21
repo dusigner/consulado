@@ -1,3 +1,43 @@
+.container-banner-home {
+	display: flex;
+
+	@include breakpoint(780px, 'max') {
+		flex-direction: column;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+}
+
+.container-banner-home .banners {
+	width: 50%;
+	@include breakpoint(780px, 'max') { width: 100%; }
+}
+
+.container-banner-home .banners-static-home {
+	display: flex;
+	@include breakpoint(780px, 'max') { display: none; }
+}
+
+.container-banner-home .banners-static-home-tablet {
+	display: none;
+	@include breakpoint(780px, 'max') { display: flex; }
+	@include breakpoint(360px, 'max') { display: none; }
+}
+
+.banners-static-home-mobile {
+	display: none;
+	flex-direction: column;
+	@include breakpoint(360px, 'max') { display: flex; }
+}
+
+.container-banner-home .banner-principal {
+	min-height: 400px;
+	max-height: 400px;
+}
+
 .banners,
 .banners-mobile {
 	position: relative;
@@ -60,7 +100,7 @@
 	}
 
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
-	@include breakpoint(extra-large, 'min') { min-height: 340px; max-height: 340px;}
+	@include breakpoint(extra-large, 'min') { min-height: 400px; max-height: 400px;}
 
 	.box-banner {
 		position: absolute;

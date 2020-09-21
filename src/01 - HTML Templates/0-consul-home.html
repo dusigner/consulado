@@ -41,28 +41,47 @@
 	<!-- /Header -->
 
 	<!-- [ Desktop ] - Slider -->
-	<div class="banners">
 
-		<!-- Banner -->
-		<div class="banner-principal slides">
-			<vtex:contentPlaceHolder id="SliderHome" />
-		</div>
-		<!-- /Banner -->
-		<!-- Abrir regulamento banner -->
-		<div class="container">
-			<div class="row">
-				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
-					regulamento</a>
+	<div class="container-banner-home">
+		<div class="banners">
 
-				<!-- Modal regulamento -->
-				<div id="modal-regulamento-banner" style="display: none;">
-					<vtex.cmc:regulamentoBannerHomeCNS />
-				</div>
-				<!-- /Modal regulamento -->
+			<!-- Banner -->
+			<div class="banner-principal slides">
+				<vtex:contentPlaceHolder id="SliderHome" />
 			</div>
+			<!-- /Banner -->
+			<!-- Abrir regulamento banner -->
+			<div class="container">
+				<div class="row">
+					<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+						regulamento</a>
+
+					<!-- Modal regulamento -->
+					<div id="modal-regulamento-banner" style="display: none;">
+						<vtex.cmc:regulamentoBannerHomeCNS />
+					</div>
+					<!-- /Modal regulamento -->
+				</div>
+			</div>
+			<!-- Abrir regulamento banner -->
 		</div>
-		<!-- Abrir regulamento banner -->
+
+		<div class="banners-static-home">
+			<vtex:contentPlaceHolder id="BannerFixoHome1" />
+			<vtex:contentPlaceHolder id="BannerFixoHome2" />
+		</div>
+
+		<div class="banners-static-home-tablet">
+			<vtex:contentPlaceHolder id="BannerFixoTabletHome1" />
+			<vtex:contentPlaceHolder id="BannerFixoTabletHome2" />
+		</div>
+
+		<div class="banners-static-home-mobile">
+			<vtex:contentPlaceHolder id="BannerFixoMobileHome1" />
+			<vtex:contentPlaceHolder id="BannerFixoMobileHome2" />
+		</div>
 	</div>
+
 	<!-- /[ Desktop ] - Slider -->
 
 	<!-- [ Mobile ] - Slider mobile -->
