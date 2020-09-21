@@ -173,7 +173,7 @@ Nitro.module('sku-select', function() {
 
 	// MODAL DE SELETOR DE VOLTAGEM NO BOTÃO DE COMPRE
 	this.voltageSelectorModal = () => {
-		if (!skuJson.dimensions.length === 0){
+		if (skuJson.dimensions.length !== 0){
 			if(skuJson.dimensionsMap.Voltagem[0] !== 'Sem Voltagem') {
 				$('body').append(`
 					<div class="voltageModalWindow">
