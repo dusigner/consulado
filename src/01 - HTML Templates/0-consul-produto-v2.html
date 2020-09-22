@@ -63,227 +63,163 @@
 						</h1>
 					</div>
 
-		<!-- Main -->
-		<div class="main clearfix">
-			<div class="container clearfix">
-				<div class="row m-0">
-					<!-- Box-left -->
-					<div class="col-v2 l7 m12 gutters-on position-sticky-prod">
+					<!-- Favoritar produtos -->
+					<div id="wishlist-product" class="wishlist__container">
 						<div
-							class="prod-title"
-							itemscope=""
-							itemtype="http://schema.org/Product"
+							class="wishlist__button-pdp"
+							data-idproduto=""
+							title="Favoritar"
 						>
-							<h1 class="lead" itemprop="name">
-								<vtex.cmc:productName />
-								<span class="reference">
-									<vtex.cmc:productReference
-								/></span>
-								<span class="productSku hide">
-									<vtex.cmc:skuReference
-								/></span>
-								<!-- Trustvox Estrelas -->
-								<div class="trustvox-rating">
-									<a
-										class="trustvox-fluid-jump trustvox-widget-rating"
-										href="#trustvox-reviews"
-										title="Pergunte e veja opiniões de quem já comprou"
-									>
-										<div
-											class="trustvox-shelf-container"
-											data-trustvox-product-code-js="skuJson.productId"
-											data-trustvox-should-skip-filter="true"
-											data-trustvox-display-rate-schema="true"
-										></div>
-										<span class="rating-click-here"
-											>Ver avaliações</span
-										>
-									</a>
-								</div>
-								<!-- /Trustvox -->
-							</h1>
-						</div>
-						<!-- Favoritar produtos -->
-						<div id="wishlist-product" class="wishlist__container">
-							<div
-								class="wishlist__button-pdp"
-								data-idproduto=""
-								title="Favoritar"
-							>
-								<i></i>
-								<div class="wishlist__loader">
-									<div></div>
-									<div></div>
-									<div></div>
-									<div></div>
-								</div>
-								<span>Favoritar</span>
+							<i></i>
+							<div class="wishlist__loader">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
 							</div>
+							<span>Favoritar</span>
 						</div>
-						<!-- /Favoritar produtos -->
-						<div class="prod-image">
-							<div class="prod-selos hide-small">
-								<vtex.cmc:discountHightLight />
-								<vtex.cmc:hightLight />
-							</div>
+					</div>
+					<!-- /Favoritar produtos -->
 
-							<!-- Controle: imagem do produto -->
-							<div class="prod-galeria text-center">
-								<vtex.cmc:ProductImage zoom="off" />
-							</div>
-							<!-- /Controle: imagem do produto -->
+			    	<div class="prod-image">
+						<div class="prod-selos hide-small">
+							<vtex.cmc:discountHightLight />
+							<vtex.cmc:hightLight />
+						</div>
+
+						<!-- Controle: imagem do produto -->
+						<div class="prod-galeria text-center">
+							<vtex.cmc:ProductImage zoom="off" />
+						</div>
+						<!-- /Controle: imagem do produto -->
+					</div>
+				</div>
+				<!-- /Box-left -->
+
+				<!-- Box-right -->
+				<div class="col-v2 l5 m12 gutters-on prod-info">
+					<div class="prod-preco">
+						<div class="usuarios-ativos">
+							<h4 id="qnt_stoke">Últimas unidades no estoque</h4>
+							<p class="qtn_pessoas_on"><span id="pessoas_on"></span> pessoas estão visualizando essa
+								promoção no momento</p>
+						</div>
+
+						<div class="hide">
+							<!-- Histórico de preço -->
+							<vtex.cmc:StockKeepingUnitPriceHistory Months="6" Percentile="100" />
+
+							<!-- Disponibilidade -->
+							<vtex.cmc:Delivery />
 						</div>
 						<!-- Insert best price into PDP -->
 						<vtex.cmc:skuPrice paymentSystemId="4"/>
 						<!-- /Insert best price into PDP -->
 					</div>
-					<!-- /Box-left -->
 
-					<!-- Box-right -->
-					<div class="col-v2 l5 m12 gutters-on prod-info">
-						<div class="prod-preco">
-							<div class="usuarios-ativos">
-								<h4 id="qnt_stoke">
-									Últimas unidades no estoque
-								</h4>
-								<p class="qtn_pessoas_on">
-									<span id="pessoas_on"></span> pessoas estão
-									visualizando essa promoção no momento
-								</p>
-							</div>
+					<!-- Formas de pagamento -->
+					<div class="formas-pagamento-container">
+						<div class="valores-parcelas">
+							<vtex.cmc:OtherPaymentMethod />
 
-							<div class="hide">
-								<!-- Histórico de preço -->
-								<vtex.cmc:StockKeepingUnitPriceHistory
-									Months="6"
-									Percentile="100"
-								/>
-
-								<!-- Disponibilidade -->
-								<vtex.cmc:Delivery />
-							</div>
-							<!-- Insert best price into PDP -->
-							<vtex.cmc:skuPrice paymentSystemId="4" />
-							<!-- /Insert best price into PDP -->
+							<p>
+								Para financiamento com juros de 0,99% a.m. <br />
+								- Custo Efetivo Total (CET) máximo de 12,55% a.a.
+							</p>
 						</div>
+					</div>
+					<!-- /Formas de pagamento -->
 
-						<!-- Formas de pagamento -->
-						<div class="formas-pagamento-container">
-							<div class="valores-parcelas">
-								<vtex.cmc:OtherPaymentMethod />
+					<!-- Descrição do produto -->
+					<div class="descricao-produto" itemprop="description">
+						<vtex.cmc:ProductDescription />
+					</div>
+					<!-- /Descrição do produto -->
 
-								<p>
-									Para financiamento com juros de 0,99% a.m.
-									<br />
-									- Custo Efetivo Total (CET) máximo de 12,55%
-									a.a.
-								</p>
+					<!-- Selos do produto -->
+					<div class="prod-selos show-medium">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:HightLight />
+					</div>
+					<!-- /Selos do produto -->
+
+					<!-- Opções de SKU -->
+					<div class="prod-sku-options">
+						<!-- Selecionar voltagem -->
+						<div class="prod-sku-selector">
+							<strong class="sku-title-label">Selecione a voltagem</strong>
+							<div class="select-voltage">
+								<vtex.cmc:skuSelection />
 							</div>
 						</div>
-						<!-- /Formas de pagamento -->
+						<!-- /Selecionar voltagem -->
 
-						<!-- Descrição do produto -->
-						<div class="descricao-produto" itemprop="description">
-							<vtex.cmc:ProductDescription />
+						<!-- Selecionar a cor -->
+						<div class="select-color">
+							<div class="product-select-color -js-product-color"></div>
 						</div>
-						<!-- /Descrição do produto -->
+						<!-- /Selecionar a cor -->
+					</div>
+					<!-- /Opções de SKU -->
 
-						<!-- Selos do produto -->
-						<div class="prod-selos show-medium">
-							<vtex.cmc:discountHightLight />
-							<vtex.cmc:HightLight />
-						</div>
-						<!-- /Selos do produto -->
+					<!-- Produtos adicionais -->
+					<div class="produtos-adicionais"></div>
+					<!-- /Produtos adicionais -->
 
-						<!-- Opções de SKU -->
-						<div class="prod-sku-options">
-							<!-- Selecionar voltagem -->
-							<div class="prod-sku-selector">
-								<strong class="sku-title-label"
-									>Selecione a voltagem</strong
-								>
-								<div class="select-voltage">
-									<vtex.cmc:skuSelection />
-								</div>
-							</div>
-							<!-- /Selecionar voltagem -->
+					<!-- Comprar produto -->
+					<div id="BuyButton" class="clearfix">
+						<!--<vtex.cmc:BuyButton />-->
 
-							<!-- Selecionar a cor -->
-							<div class="select-color">
-								<div
-									class="product-select-color -js-product-color"
-								></div>
-							</div>
-							<!-- /Selecionar a cor -->
-						</div>
-						<!-- /Opções de SKU -->
-
-						<!-- Produtos adicionais -->
-						<div class="produtos-adicionais"></div>
-						<!-- /Produtos adicionais -->
-
-						<!-- Comprar produto -->
-						<div id="BuyButton" class="clearfix">
-							<!--<vtex.cmc:BuyButton />-->
-
-							<!-- Formulario avise-me indisponível -->
-							<div class="form-container">
-								<div id="form-unavailable" class="body-form">
-									<vtex.cmc:BuyButton />
-								</div>
-							</div>
-							<!-- Formulario avise-me indisponível -->
-
-							<div class="secure">
-								<i class="icon icon icon-cadeado"></i> Compra
-								Segura
-							</div>
-						</div>
-						<!-- /Comprar produto -->
-
-						<!-- Produtos relacionados de produto indisponível - Vtex -->
-						<section id="relacionados-top" class="slider">
-							<div class="container">
-								<p class="relacionados-title">
-									<vtex:contentPlaceHolder
-										id="Produto Indisponível - Relacionados Título"
-									/>
-								</p>
-							</div>
-							<div class="container">
-								<div class="row">
-									<div
-										class="prateleira-slider sasasas clearfix"
-									>
-										<vtex:contentPlaceHolder
-											id="Produto Indisponível - Relacionados Coleção"
-										/>
-									</div>
-								</div>
-							</div>
-						</section>
-						<!-- Produtos relacionados de produto indisponível - Vtex -->
-
-						<!-- Frete -->
-						<div class="calc-frete">
-							<div class="title-frete">
-								<i class="icon icon-truck-bold"></i>
-								<p>
-									Calcular o prazo <br />
-									e valor de entrega
-								</p>
-							</div>
-							<vtex.cmc:shippingValue />
-						</div>
-						<!-- /Frete -->
-
-						<div class="cta-containers">
-							<div class="btn-pecas-produto">
-								<a href="#">Peças para este produto</a>
-							</div>
-
-							<div class="content_botoes_televendas">
+						<!-- Formulario avise-me indisponível -->
+				 <div class="form-container">
+							<div id="form-unavailable" class="body-form">
 								<vtex.cmc:BuyButton />
+							</div>
+						</div>
+						<!-- Formulario avise-me indisponível -->
+
+						<div class="secure">
+							<i class="icon icon icon-cadeado"></i> Compra Segura
+						</div>
+					</div>
+					<!-- /Comprar produto -->
+
+
+					<!-- Produtos relacionados de produto indisponível - Vtex -->
+					<section id="relacionados-top" class="slider">
+						<div class="container">
+							<p class="relacionados-title">
+								<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Título" />
+							</p>
+						</div>
+						<div class="container">
+							<div class="row">
+								<div class="prateleira-slider sasasas clearfix">
+									<vtex:contentPlaceHolder id="Produto Indisponível - Relacionados Coleção" />
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- Produtos relacionados de produto indisponível - Vtex -->
+
+					<!-- Frete -->
+					<div class="calc-frete">
+						<div class="title-frete">
+							<i class="icon icon-truck-bold"></i>
+							<p>
+								Calcular o prazo <br />
+								e valor de entrega
+							</p>
+						</div>
+						<vtex.cmc:shippingValue />
+					</div>
+					<!-- /Frete -->
+
+					<div class="cta-containers">
+						<div class="btn-pecas-produto">
+							<a href="#">Peças para este produto</a>
+						</div>
 
 						<div class="content_botoes_televendas">
 							<vtex.cmc:BuyButton />
@@ -305,38 +241,14 @@
 								<p class="content_botoes_televendas-whats-text">10h até 21h Segunda à Sexta - 10h até 16h Sábado.<br />Sem atendimento aos domingos.</p>
 							</div>
 
-							<div class="social">
-								<a id="shareBtn" class="compartilharFc"></a>
-								<a
-									id="compartilharTw"
-									rel="nofollow"
-									href=""
-								></a>
-								<a id="compartilharEmail"></a>
-							</div>
+							<p>Ou compre pelo telefone</p>
+							<a href="tel:112739-4826" class="btn_click_call">Televendas</a>
 						</div>
 
-						<div class="row prod-more-info">
-							<a
-								href="https://atendimento.consul.com.br/faq?step=2&amp;category=419,420"
-								title="Informações de contratação"
-								target="_blank"
-								>Informações de contratação</a
-							>
-							<a
-								href="#"
-								class="tipo-de-entrega"
-								title="Tipos de entrega"
-								data-modal="tipo-entrega"
-								>Tipos de entrega</a
-							>
-							<!-- <a href="#" class="col-v2 l4 m12 entrega-premium" title="Entrega Premium" data-modal="entrega-premium">Entrega Premium</a> -->
-							<a
-								href="http://loja.consulempresa.com.br"
-								class="show-personal"
-								title="Vendas Corporativas"
-								>Vendas Corporativas</a
-							>
+						<div class="social">
+							<a id="shareBtn" class="compartilharFc"></a>
+							<a id="compartilharTw" rel="nofollow" href=""></a>
+							<a id="compartilharEmail"></a>
 						</div>
 					</div>
 
@@ -371,49 +283,48 @@
 							</div>
 						</div>
 					</div>
-					<!-- /Box-right -->
+
 				</div>
-				<button id="btn-modal">
-					<div class="icone-questions">
-						<img src="/arquivos/cns-selo-tira-duvidas.png" />
-					</div>
-					Ficou com alguma dúvida? A Consul te ajuda.
-				</button>
+				<!-- /Box-right -->
 			</div>
 			<button id="btn-modal"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Ficou com alguma dúvida? A Consul te ajuda.</button>
 		</div>
-		<!-- /main -->
+	</div>
+	<!-- /main -->
 
-		<!-- Barra de informação de produto -->
-		<div class="product-info-bar">
-			<div class="product-info-bar__container">
-				<!-- Preço produto -->
-				<div class="product-info-bar__price">
-					<vtex.cmc:skuPrice />
-				</div>
-				<!-- /Preço produto -->
-
-				<!-- Comprar -->
-				<div class="product-info-bar__buy">
-					<vtex.cmc:BuyButton />
-				</div>
-				<!-- /Comprar -->
+	<!-- Barra de informação de produto -->
+	<div class="product-info-bar">
+		<div class="product-info-bar__container">
+			<!-- Preço produto -->
+			<div class="product-info-bar__price">
+				<vtex.cmc:skuPrice />
 			</div>
+			<!-- /Preço produto -->
 
-			<!-- Formas de pagamento -->
-			<div class="formas-pagamento-container">
-				<div class="valores-parcelas">
-					<vtex.cmc:OtherPaymentMethod />
-
-					<p>
-						Para financiamento com juros de 0,99% a.m. <br />
-						- Custo Efetivo Total (CET) máximo de 12,55% a.a.
-					</p>
-				</div>
+			<!-- Comprar -->
+			<div class="product-info-bar__buy">
+				<vtex.cmc:BuyButton />
 			</div>
-			<!-- /Formas de pagamento -->
+			<!-- /Comprar -->
 		</div>
-		<!-- Barra de informação de produto -->
+
+		<!-- Formas de pagamento -->
+		<div class="formas-pagamento-container">
+			<div class="valores-parcelas">
+				<vtex.cmc:OtherPaymentMethod />
+
+				<p>
+					Para financiamento com juros de 0,99% a.m. <br />
+					- Custo Efetivo Total (CET) máximo de 12,55% a.a.
+				</p>
+			</div>
+		</div>
+		<!-- /Formas de pagamento -->
+	</div>
+	<!-- Barra de informação de produto -->
+
+
+
 
 
 
@@ -445,59 +356,40 @@
 									<span class="rating-click-here">Ver avaliações</span>
 								</a>
 							</div>
-						</div>
-						<div class="right clearfix nav-price">
-							<div id="BuyButtonDetails">
-								<vtex.cmc:BuyButton />
-							</div>
-							<div class="details-preco">
-								<vtex.cmc:skuPrice />
-							</div>
+							<!-- /Trustvox -->
 						</div>
 					</div>
-				</div>
-				<div class="row anchors">
-					<div class="container">
-						<ul>
-							<li class="item">
-								<a href="#especificacoes" class="scroll-to"
-									>Especificações técnicas</a
-								>
-							</li>
-							<li class="item">
-								<a href="#assistencia" class="scroll-to"
-									>Assistência e relacionados</a
-								>
-							</li>
-							<li class="item">
-								<a href="#detalhes" class="scroll-to"
-									>Detalhes</a
-								>
-							</li>
-							<li class="item hide">
-								<a href="#video" class="scroll-to">Vídeo</a>
-							</li>
-							<li class="item hide">
-								<a href="#opcionais" class="scroll-to"
-									>Opcionais</a
-								>
-							</li>
-							<li class="item">
-								<a href="#trustvox-reviews" class="scroll-to"
-									>Avaliações</a
-								>
-							</li>
-						</ul>
-						<button class="right">Voltar ao topo</button>
+					<div class="right clearfix nav-price">
+						<div id="BuyButtonDetails">
+							<vtex.cmc:BuyButton />
+						</div>
+						<div class="details-preco">
+							<vtex.cmc:skuPrice />
+						</div>
 					</div>
 				</div>
 			</div>
+			<div class="row anchors">
+				<div class="container">
+					<ul>
+						<li class="item"><a href="#especificacoes" class="scroll-to">Especificações técnicas</a></li>
+						<li class="item"><a href="#assistencia" class="scroll-to">Assistência e relacionados</a></li>
+						<li class="item"><a href="#detalhes" class="scroll-to">Detalhes</a></li>
+						<li class="item hide"><a href="#video" class="scroll-to">Vídeo</a></li>
+						<li class="item hide"><a href="#opcionais" class="scroll-to">Opcionais</a></li>
+						<li class="item"><a href="#trustvox-reviews" class="scroll-to">Avaliações</a></li>
+					</ul>
+					<button class="right">Voltar ao topo</button>
+				</div>
+			</div>
 		</section>
+	</div>
 
-		<!-- Modal Tira Dúvidas -->
-		<div class="modal-tira-duvidas">
-			<vtex.cmc:modalTiraDuvidas />
-			<!-- <div class="container-fluid p-0">
+
+	<!-- Modal Tira Dúvidas -->
+	<div class="modal-tira-duvidas">
+		<vtex.cmc:modalTiraDuvidas />
+		<!-- <div class="container-fluid p-0">
 			<div class="row">
 				<div class="title-tira-duvidas"><div class="icone-questions"><img src="/arquivos/cns-selo-tira-duvidas.png"/></div>Tira Dúvidas Consul</div>
 				<div class="menu-questions">
@@ -691,20 +583,22 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 				</div>
 			</div>
 		</div> -->
-		</div>
+	</div>
 
-		<!-- Chaordic TOP -->
-		<div chaordic="top"></div>
-		<!-- /Chaordic TOP -->
+	<!-- Chaordic TOP -->
+	<div chaordic="top"></div>
+	<!-- /Chaordic TOP -->
 
-		<!-- Chaordic MIDDLE -->
-		<div chaordic="middle"></div>
-		<!-- /Chaordic MIDDLE -->
+	<!-- Chaordic MIDDLE -->
+	<div chaordic="middle"></div>
+	<!-- /Chaordic MIDDLE -->
 
-		<!-- Main -->
-		<div class="main clearfix after-prod">
-			<section id="especificacoes" class="content-toggle"></section>
-			<!-- <section id="assistencia" class="product-assist container">
+	<!-- Main -->
+	<div class="main clearfix after-prod">
+		<section id="especificacoes" class="content-toggle">
+
+		</section>
+		<!-- <section id="assistencia" class="product-assist container">
 			<h2 class="text-center">
 				Assistência e Relacionados
 			</h2>
@@ -767,142 +661,25 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 			</div>
 		</section> -->
 
-			<!-- Produtos relacionados - Vtex -->
-			<section id="relacionados" class="slider">
-				<div class="container">
-					<p class="pre-title">
-						<vtex:contentPlaceHolder id="Relacionados - Titulo" />
-					</p>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="prateleira-slider clearfix">
-							<vtex:contentPlaceHolder id="Relacionados" />
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- /Produtos relacionados - Vtex -->
-
-			<section id="detalhes" class="detalhes"></section>
-			<section id="video" class="video"></section>
-
-			<div class="hide">
-				<vtex.cmc:ProductDescription />
-				<vtex.cmc:productSpecification />
-
-				<div id="modal-sku" data-title="Selecione a voltagem">
-					<h1 class="title-check-voltage">
-						O produto escolhido é
-						<p id="#showVoltage"></p>
-					</h1>
-					<p class="double-check">
-						Confirme a voltagem antes de prosseguir
-					</p>
-					<div class="row options">
-						<vtex.cmc:skuSelection />
-					</div>
-					<div class="row button">
-						<vtex.cmc:BuyButton />
-					</div>
-				</div>
-
-				<!-- Modal entrega premium -->
-				<div id="modal-entrega-premium" data-title="Entrega Premium">
-					<ul class="list">
-						<li>
-							Tenha o melhor produto e o nosso melhor tipo de
-							entrega.
-						</li>
-						<li>
-							Com essa opção você terá uma experiência
-							diferenciada e seu produto desembalado, higienizado
-							e instalado*.
-						</li>
-						<li>
-							Tudo isso feito por um profissional que realmente
-							conhece o produto!
-						</li>
-						<li>
-							Além disso, você terá o atendimento diferenciado do
-							nosso consultor Consul, que acompanhará todo seu
-							processo de entrega e tirará qualquer dúvida por
-							email ou telefone.
-						</li>
-						<li>
-							Conte também com o nosso sistema de agendamento
-							personalizado por telefone, onde a nossa
-							transportadora parceira entrará em contato por
-							telefone para agendar sua entrega.
-						</li>
-						<li>
-							<small
-								>*A instalação é válida somente para Geladeiras,
-								Freezers, Frigobares e Micro-Ondas.</small
-							>
-						</li>
-					</ul>
-				</div>
-				<!-- Modal entrega premium -->
+		<!-- Produtos relacionados - Vtex -->
+		<section id="relacionados" class="slider">
+			<div class="container">
+				<p class="pre-title">
+					<vtex:contentPlaceHolder id="Relacionados - Titulo" />
+				</p>
 			</div>
-		</div>
-		<!-- /Main -->
+			<div class="container">
+				<div class="row">
+					<div class="prateleira-slider clearfix">
+						<vtex:contentPlaceHolder id="Relacionados" />
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Produtos relacionados - Vtex -->
 
-		<!-- Modal tipos de entrega -->
-		<div id="modal-tipo-entrega" data-title="Tipos de entrega">
-			<span class="close-modal">X</span>
-			<!-- Texto blackfriday -->
-			<strong>Entrega Convencional</strong>
-			<ul class="list">
-				<li>
-					Para quem é tradicional, é a nossa entrega padrão do site
-					com um prazo específico para cada região. Não tem uma data
-					certa agendada, informamos o prazo máximo para a entrega do
-					seu produto.
-				</li>
-			</ul>
-			<br />
-
-			<strong>Entrega Convencional Agendada</strong>
-			<ul class="list">
-				<li>
-					Para quem gosta de se planejar, escolha o dia e o período
-					que gostaria de receber o seu produto.
-				</li>
-			</ul>
-			<br />
-
-			<strong>Entrega Econômica</strong>
-			<ul class="list">
-				<li>
-					Para quem não tem pressa em receber o produto e prefere
-					economizar. Não tem uma data certa agendada, seu prazo
-					máximo é maior do que o da nossa entrega padrão, porém você
-					paga um valor menor pelo serviço.
-				</li>
-			</ul>
-			<br />
-
-			<strong>Entrega Rápida</strong>
-			<ul class="list">
-				<li>
-					Para quem tem pressa em receber o seu produto, entregamos em
-					até 4 dias úteis*. Não tem uma data certa agendada, porém
-					seu produto chega rapidinho!<br />As entregas nesta
-					modalidade podem ocorrer até as 20hs em dias úteis.
-				</li>
-			</ul>
-			<br />
-			<p>
-				*Todas as entregas sujeitas a disponibilidade por produto e CEP.
-			</p>
-		</div>
-		<div id="modal-tipo-entrega__overlay"></div>
-		<!-- /Modal tipos de entrega -->
-
-		<!-- [ CHAORDIC ] BOTTOM -->
-		<div chaordic="bottom"></div>
-		<!-- /[ CHAORDIC ] BOTTOM -->
+		<section id="detalhes" class="detalhes"></section>
+		<section id="video" class="video"></section>
 
 		<div class="hide">
 			<vtex.cmc:ProductDescription />
@@ -920,149 +697,135 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 			</div>
 			<!-- /Modal Confirme de confirmação de voltagem selecionada -->
 
-				<div
-					class="product-assist-block delivery"
-					title="Tipos de entrega"
-				>
-					<div class="first-block">
-						<div class="icon-delivery"></div>
-					</div>
-					<div class="second-block">
-						<h3>Tipos de entrega</h3>
-						<p>
-							Conheça nossos tipos de entrega e qual o melhor para
-							você
-						</p>
-					</div>
-					<a data-modal="tipo-entrega-new">Veja mais <b>></b></a>
-				</div>
-
-				<div
-					class="product-assist-block parts"
-					title="Peças para este produto"
-				>
-					<div class="first-block">
-						<div class="icon-parts"></div>
-					</div>
-					<div class="second-block">
-						<h3>Peças para este produto</h3>
-						<p>
-							Encontre as peças adicionais ou de retroca deste
-							produto
-						</p>
-					</div>
-					<a href="" class="btn-pecas-produto">Veja mais <b>></b></a>
-				</div>
-
-				<div
-					class="product-assist-block installation"
-					title="Dicas de instalação"
-				>
-					<div class="first-block">
-						<div class="icon-corp"></div>
-					</div>
-					<div class="second-block">
-						<h3>Dicas de instalação</h3>
-						<p>Tire suas dúvidas sobre categorias e produtos</p>
-					</div>
-					<a href="#video" class="scroll-to">Veja mais <b>></b></a>
-				</div>
-				<div
-					class="product-assist-block corp"
-					title="Vendas corporativas"
-				>
-					<div class="first-block">
-						<div class="icon-corp"></div>
-					</div>
-					<div class="second-block">
-						<h3>Vendas corporativas</h3>
-						<p>
-							Temos um atendimento dedicado para perfis
-							corporativos
-						</p>
-						<a
-							href="http://loja.consulempresa.com.br"
-							target="_blank"
-							>Veja mais <b>></b></a
-						>
-					</div>
-				</div>
+			<!-- Modal entrega premium -->
+			<div id="modal-entrega-premium" data-title="Entrega Premium">
+				<ul class="list">
+					<li>Tenha o melhor produto e o nosso melhor tipo de entrega.</li>
+					<li>Com essa opção você terá uma experiência diferenciada e seu produto desembalado, higienizado e
+						instalado*.</li>
+					<li>Tudo isso feito por um profissional que realmente conhece o produto!</li>
+					<li>Além disso, você terá o atendimento diferenciado do nosso consultor Consul, que acompanhará todo
+						seu processo de entrega e tirará qualquer dúvida por email ou telefone.</li>
+					<li>Conte também com o nosso sistema de agendamento personalizado por telefone, onde a nossa
+						transportadora parceira entrará em contato por telefone para agendar sua entrega.</li>
+					<li>
+						<small>*A instalação é válida somente para Geladeiras, Freezers, Frigobares e
+							Micro-Ondas.</small>
+					</li>
+				</ul>
 			</div>
-		</section>
-
-		<!-- Trustvox -->
-		<div class="trustvox-container container">
-			<h3 id="trustvox-reviews">
-				Pergunte e veja opiniões de quem já comprou
-			</h3>
-			<div id="_trustvox_widget"></div>
-		</div>
-		<!-- /Trustvox -->
-
-		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-		<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5801703bb1e23dde"></script> -->
-
-		<!-- Modal custom Share -->
-		<div
-			id="modal-custom-share"
-			data-title="Compartilhar por e-mail"
-			style="display: none;"
-		>
-			<form id="formshare" action="">
-				<div class="form-group">
-					<label for="remetente">De:</label>
-					<input
-						type="email"
-						class="form-control"
-						id="remetente"
-						placeholder="E-mail remetente"
-						required="required"
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-					/>
-				</div>
-				<div class="form-group">
-					<label for="destinatario">Para:</label>
-					<input
-						type="email"
-						class="form-control"
-						id="destinatario"
-						placeholder="E-mail destinatário"
-						required="required"
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-					/>
-				</div>
-				<div class="form-group">
-					<label for="nomeremetente">Nome:</label>
-					<input
-						type="text"
-						class="form-control"
-						id="nomeremetente"
-						placeholder="Nome"
-						required="required"
-					/>
-				</div>
-				<div class="form-group">
-					<label for="assuntoemail">Assunto:</label>
-					<input
-						type="text"
-						class="form-control"
-						id="assuntoemail"
-						placeholder="Assunto"
-					/>
-				</div>
-				<div class="form-group">
-					<label for="mensagememail">Mensagem:</label>
-					<textarea
-						class="form-control"
-						id="mensagememail"
-					></textarea>
-				</div>
-				<button type="submit" class="btn btn-default">Enviar</button>
-
-				<div class="enviadocomsucesso">e-mail enviado com sucesso</div>
-			</form>
+			<!-- Modal entrega premium -->
 		</div>
 	</div>
+	<!-- /Main -->
+
+	<!-- Modal tipos de entrega -->
+	<div id="modal-tipo-entrega" data-title="Tipos de entrega">
+		<span class="close-modal">X</span>
+		<!-- Texto blackfriday -->
+		<strong>Entrega Convencional</strong>
+		<ul class="list">
+			<li>Para quem é tradicional, é a nossa entrega padrão do site com um prazo específico para cada
+				região. Não tem uma data certa agendada, informamos o prazo máximo para a entrega do seu
+				produto.</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Convencional Agendada</strong>
+		<ul class="list">
+			<li>Para quem gosta de se planejar, escolha o dia e o período que gostaria de receber o seu produto.
+			</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Econômica</strong>
+		<ul class="list">
+			<li>Para quem não tem pressa em receber o produto e prefere economizar. Não tem uma data certa
+				agendada, seu prazo máximo é maior do que o da nossa entrega padrão, porém você paga um valor
+				menor pelo serviço.</li>
+		</ul>
+		<br />
+
+		<strong>Entrega Rápida</strong>
+		<ul class="list">
+			<li>Para quem tem pressa em receber o seu produto, entregamos em até 4 dias úteis*. Não tem uma data
+				certa agendada, porém seu produto chega rapidinho!<br />As entregas nesta modalidade podem
+				ocorrer até as 20hs em dias úteis.</li>
+		</ul>
+		<br />
+		<p>*Todas as entregas sujeitas a disponibilidade por produto e CEP.</p>
+	</div>
+	<div id="modal-tipo-entrega__overlay"></div>
+	<!-- /Modal tipos de entrega -->
+
+	<!-- [ CHAORDIC ] BOTTOM -->
+	<div chaordic="bottom"></div>
+	<!-- /[ CHAORDIC ] BOTTOM -->
+
+	<section id="assistencia" class="product-assist container">
+		<h2 class="text-center">
+			Assistência e Relacionados
+		</h2>
+		<p class="text-center">
+			Tudo pensado para não haver dúvidas
+		</p>
+
+		<div class="product-assist-row">
+			<div class="product-assist-block infos" title="Informações de contratação">
+				<div class="first-block">
+					<div class="icon-infos"></div>
+				</div>
+				<div class="second-block">
+					<h3>Informações de contratação</h3>
+					<p>Tire suas dúvidas sobre categorias e produtos</p>
+				</div>
+				<a href="https://atendimento.consul.com.br/encontrar-produto" target="_blank">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block delivery" title="Tipos de entrega">
+				<div class="first-block">
+					<div class="icon-delivery"></div>
+				</div>
+				<div class="second-block">
+					<h3>Tipos de entrega</h3>
+					<p>Conheça nossos tipos de entrega e qual o melhor para você</p>
+				</div>
+				<a data-modal="tipo-entrega-new">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block parts" title="Peças para este produto">
+				<div class="first-block">
+					<div class="icon-parts"></div>
+				</div>
+				<div class="second-block">
+					<h3>Peças para este produto</h3>
+					<p>Encontre as peças adicionais ou de retroca deste produto</p>
+				</div>
+				<a href="" class="btn-pecas-produto">Veja mais <b>></b></a>
+			</div>
+
+			<div class="product-assist-block installation" title="Dicas de instalação">
+				<div class="first-block">
+					<div class="icon-corp"></div>
+				</div>
+				<div class="second-block">
+					<h3>Dicas de instalação</h3>
+					<p>Tire suas dúvidas sobre categorias e produtos</p>
+				</div>
+				<a href="#video" class="scroll-to">Veja mais <b>></b></a>
+			</div>
+			<div class="product-assist-block corp" title="Vendas corporativas">
+				<div class="first-block">
+					<div class="icon-corp"></div>
+				</div>
+				<div class="second-block">
+					<h3>Vendas corporativas</h3>
+					<p>Temos um atendimento dedicado para perfis corporativos</p>
+					<a href="http://loja.consulempresa.com.br" target="_blank">Veja mais <b>></b></a>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!-- Trustvox -->
 	<div class="trustvox-container container">
@@ -1115,7 +878,7 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-produto-v2.min.js?v=<!-- @echo package.version -->"></script>
+	<script src="/files/consul2-produto-v2.min.js?v=v1600350811809"></script>
 	<script type="text/javascript">
 		var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
 		_trustvox_shelf_rate.push(['_storeId', 3531]);
@@ -1139,11 +902,8 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 				$('html, body').animate({ scrollTop: offset }, 500);
 			});
 		});
-		</script>
-		<script
-			async="true"
-			type="text/javascript"
-			src="//static.trustvox.com.br/sincero/sincero.js"
-		></script>
-	</body>
+	</script>
+	<script async="true" type="text/javascript" src="//static.trustvox.com.br/sincero/sincero.js"></script>
+</body>
+
 </html>
