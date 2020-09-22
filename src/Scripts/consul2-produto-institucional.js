@@ -2,7 +2,7 @@
 
 Nitro.module('slider-facilita-blog', [], function () {
     this.sliderFacilita = function () {
-        $('.container-cards').slick({
+        $('.card-blog').slick({
             dots: true,
             infinite: true,
             speed: 1000,
@@ -10,7 +10,7 @@ Nitro.module('slider-facilita-blog', [], function () {
             adaptiveHeight: true,
             responsive: [
                 {
-                    breakpoint: 1024,
+                    breakpoint: 1275,
                     settings: {
                         slidesToShow: 3,
                         slidesToScroll: 3,
@@ -19,10 +19,10 @@ Nitro.module('slider-facilita-blog', [], function () {
                     }
                 },
                 {
-                    breakpoint: 768,
+                    breakpoint: 667,
                     settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
                         arrows: true
                     }
                 },
