@@ -11,7 +11,7 @@
         href="<!-- @echo assetsPath -->/consul2-produto-institucional.css?v=<!-- @echo package.version -->" />
 </head>
 
-<body data-controller="produto produto-institucional">
+<body data-controller="produto-institucional">
     <!-- Index best price in Google Shopping-->
     <vtex.cmc:productRichSnippets paymentSystemId="4" />
     <!-- /Index best price in Google Shopping-->
@@ -117,15 +117,14 @@
     <vtex:template id="0-consul-footer-2019-after" />
     <!-- /Footer 2019 -->
 
-    <script src="<!-- @echo assetsPath -->/consul2-produto-v2.min.js?v=<!-- @echo package.version -->"></script>
+    <script
+        src="<!-- @echo assetsPath -->/consul2-produto-institucional.min.js?v=<!-- @echo package.version -->"></script>
     <script>
         if (window.addBannerCovid) window.addBannerCovid();
         var tag = document.createElement("script");
         var firstScriptTag = document.getElementsByTagName(
             "script"
         )[0];
-
-
     </script>
 </body>
 

@@ -1,42 +1,65 @@
+/* global $: true, Nitro: true */
 'use strict';
 
-Nitro.module('slider-facilita-blog', [], function () {
-    this.sliderFacilita = function () {
-        $('.card-blog').slick({
-            dots: true,
-            infinite: true,
-            speed: 1000,
-            slidesToShow: 1,
-            adaptiveHeight: true,
-            responsive: [
-                {
-                    breakpoint: 1275,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 667,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        arrows: true
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        arrows: true
-                    }
-                }
-            ]
+// import 'modules/product/video';
+// import 'modules/product/sku-fetch';
+// import 'modules/product/gallery-v2';
+// import 'modules/product/product-nav-v2';
+// import 'modules/product/details';
+// import 'modules/product/specifications-v2';
+// import 'modules/product/selos';
+// import 'modules/product/sku-select';
+// import 'modules/product/produtos-adicionais';
+// import 'modules/product/boleto';
+// import 'modules/product/notify-me';
+// import 'modules/product/share';
+// import 'modules/product/upsell';
+// import 'modules/product/recurrence';
+// import 'modules/product/deliveryTime';
+// import 'modules/product/color-selector';
+// import 'modules/product/product-tags';
+// import 'modules/product/outline-products';
+// import 'modules/chaordic';
+// import 'dataLayers/dataLayer-product';
+import 'modules/produto-institucional/produto-institucional';
+
+Nitro.controller(
+    'produto-institucional',
+    [
+        'produto-institucional'
+        // 'chaordic',
+        // 'color-selector',
+        // 'sku-fetch',
+        // 'galleryv2',
+        // 'product-nav',
+        // 'video',
+        // 'details',
+        // 'specifications-v2',
+        // 'selos',
+        // 'sku-select',
+        // 'produtos-adicionais',
+        // 'boleto',
+        // 'share',
+        // 'upsell',
+        // 'deliveryTime',
+        // 'recurrence',
+        // 'notify-me',
+        // 'product-tags',
+        // 'dataLayer-product',
+        // 'outline-products',
+    ]
+)
+
+let sbSlick = function () {
+    var screenWidth = $(window).width();
+    //Slick slider intro mobile
+    if (screenWidth <= '660') {
+        $('.container-cards').slick({
+            autoplay: true,
+            autoplaySpeed: 1000,
+            arrows: false,
+            dots: true
         });
     }
-
-    this.sliderFacilita()
-});
+    this.sbSlick()
+};

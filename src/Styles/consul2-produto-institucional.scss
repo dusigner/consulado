@@ -11,7 +11,7 @@
 body {
 	font-family: "Consul";
 	background-color: #F4F2F1;
-	max-width: 1275px;
+	max-width: 1920px;
 };
 
 .top-navigation--lp {
@@ -128,7 +128,6 @@ body {
 		z-index: 1;
 		animation: fadeIn 0.5s;
 		top: 0;
-		z-index: 10;
 
 		@media screen and (max-width: 1023px) {
 			top: 85px;
@@ -143,7 +142,6 @@ body {
 .container-blog-facilita {
   background-color: #F4F2F1;
   margin-top: 5%;
-  width: 100%;
 }
 
 .text-blog-facilita {
@@ -186,9 +184,7 @@ body {
 
 .container-cards {
 	display: flex;
-	grid-template-columns: repeat(3, 1fr);
-	grid-gap: 20px;
-	max-width: 100%;
+	justify-content: space-between;
 	align-items: center;
 	justify-content: center;
 	padding-right: 35px;
@@ -197,6 +193,8 @@ body {
 
 .card-blog {
 	box-sizing: border-box;
+	margin-left: 15px;
+	margin-right: 15px;
 	border-radius: 5px;
 	padding-right: 15px;
 	padding-left: 15px;
@@ -211,7 +209,6 @@ body {
 }
 
 .card-body-blog {
-	font-style: normal;
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 29px;
@@ -224,7 +221,6 @@ body {
 	font-weight: 300;
 	font-size: 16px;
 	text-align: left;
-
 	line-height: 29px;
 	letter-spacing: 0.035em;
 	color: #4A4A4A;
