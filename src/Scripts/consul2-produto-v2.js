@@ -21,6 +21,7 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
+import 'modules/wishlist/wishlist-check-users'
 
 Nitro.controller(
 	'produto-v2',
@@ -44,7 +45,8 @@ Nitro.controller(
 		'notify-me',
 		'product-tags',
 		'dataLayer-product',
-		'outline-products'
+		'outline-products',
+		'favourite-user-not-logged',
 	],
 	function (chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
