@@ -167,3 +167,14 @@ $(window).load(changeCallcenterLinks);
 
 // 	}
 // });
+
+// TesteAB e-promotor home
+window.showBannerPromotor = function(mobile, desk) {
+    const liveChatId = '3b5663e6-26c6-4fdc-a69c-61841c3edc9f'
+
+    const device = window.mobileCheck() ? mobile : desk
+    const containerWhatsClass = window.mobileCheck() ? '.content_botoes_televendas' : '.container-whats'
+
+    if (device === 'whats') document.querySelector(containerWhatsClass).style.display = 'block';
+    if (device === 'liveChat') window.liveChat('init', liveChatId);
+}
