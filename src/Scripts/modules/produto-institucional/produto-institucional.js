@@ -1,20 +1,19 @@
 'use strict';
 
-$('.container-cards').addClass('carousel').slick({
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    slidesToScroll: 3,
-    responsive: [
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 3,
-                infinite: true,
-                dots: true
-            }
-        }
-    ]
+Nitro.module('facilita-blog', function () {
+    this.slickFacilita = () => {
+        var $facilitaBlog = $('.container-cards .carousel');
+        $facilitaBlog
+            .slick({
+                autoplay: true,
+                autoplaySpeed: 7000,
+                mobileFirst: true,
+                dots: true,
+                arrows: false,
+            });
+    };
+    this.init = () => {
+        this.slickFacilita();
+    };
+    this.init();
 });
