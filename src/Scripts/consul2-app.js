@@ -178,7 +178,9 @@ window.mobileCheck = function() {
 
 // TesteAB e-promotor home
 window.showBannerPromotor = function(mobile, desk) {
-    const liveChatId = '3b5663e6-26c6-4fdc-a69c-61841c3edc9f'
+	const liveChatId = '3b5663e6-26c6-4fdc-a69c-61841c3edc9f'
+
+	window.localStorage.setItem('bannerPromotor', `${mobile},${desk}`)
 
 	const device = window.mobileCheck() ? mobile : desk
 
@@ -187,9 +189,7 @@ window.showBannerPromotor = function(mobile, desk) {
 
     const containerWhatsClass = window.mobileCheck() ? '.content_botoes_televendas' : '.container-whats'
 
-    if (device === 'whats') {
-		document.querySelector(containerWhatsClass).style.display = 'block';
-	}
+    if (device === 'whats') document.querySelector(containerWhatsClass).style.display = 'block';
 
     if (device === 'liveChat') {
 
@@ -200,4 +200,11 @@ window.showBannerPromotor = function(mobile, desk) {
 
 		window.liveChat('init', liveChatId);
 	}
+}
+
+let bannerPromotor = localStorage.getItem('bannerPromotor')
+
+if(bannerPromotor) {
+	const [mobile, desk] = bannerPromotor.split(',')
+	window.showBannerPromotor(mobile, desk)
 }
