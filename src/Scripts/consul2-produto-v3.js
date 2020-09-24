@@ -473,9 +473,26 @@ Nitro.controller(
 			}
 		};
 
+		//favorites product
+		var wishlist = {
+			init: function () {
+				wishlist.setProductId();
+			},
+			setProductId: function () {
+				const wishlistButton = $('#wishlist-product').find(
+					'.wishlist__button-pdp'
+				);
+				!!wishlistButton && !!$product_id
+					? wishlistButton.attr('data-idproduto', $product_id)
+					: wishlistButton.attr('data-idproduto', null);
+			}
+		};
+		//favorites product
+
 		(function (window, document, $) {
 			$(function () {
 				Index.init();
+				wishlist.init();
 			});
 		})(window, document, jQuery);
 
