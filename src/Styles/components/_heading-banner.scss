@@ -273,3 +273,31 @@ body.listagem {
 		}
 	}
 }
+
+.container-epromotor {
+	display: none;
+	background: #f5f5f5;
+	float: left;
+	width: 100%;
+	margin: 20px auto 50px
+}
+
+.container-epromotor.show {
+	display: block;
+}
+
+.container-epromotor a {
+	text-decoration: none;
+	display: block;
+}
+
+.container-epromotor a img {
+	display: block;
+	max-width: 100%;
+	@include breakpoint(400px, 'max') { display: none; }
+}
+
+.container-epromotor a img.mobile {
+	display: none;
+	@include breakpoint(400px, 'max') { display: block; margin: 0 auto; }
+}

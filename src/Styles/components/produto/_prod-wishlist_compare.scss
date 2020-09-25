@@ -2,6 +2,8 @@ body {
 	.prod-wishlist_compare {
 		display: flex;
 		flex: 1;
+		justify-content: start;
+		align-items: center;
 
 		width: 100%;
 		height: auto;
@@ -13,6 +15,10 @@ body {
 		.product-compare {
 			display: none;
 		}
+
+		.wishlist__container {
+			display: none;
+		} //test ab desactive change block to active
 	}
 
 	&.testeAB-compare {
@@ -20,6 +26,10 @@ body {
 		.prod-wishlist_compare {
 			.product-compare {
 				display: flex;
+				margin-left: 15px;
+				@media screen and (max-width:768px) {
+					margin-left: 0;
+				}
 				label {
 					padding: 5px 0 5px 20px;
 
@@ -41,5 +51,39 @@ body {
 
 		}
 
+	}
+
+	&.testeAB-favourite {
+		.prod-wishlist_compare {
+			.wishlist__container {
+				display: flex;
+				max-width: 100px;
+
+				.wishlist__button-pdp{
+					span {
+						font-size: 1rem;
+
+						@media screen and (max-width:768px) {
+							font-size: .75rem;
+						}
+					}
+				}
+
+				&.wished {
+					max-width: 125px;
+					.wishlist__button-pdp{
+						span {
+							font-size: 0;
+							&:before {
+								font-size: 1rem;
+								@media screen and (max-width:768px) {
+									font-size: .75rem;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
