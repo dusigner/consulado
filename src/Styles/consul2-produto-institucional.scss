@@ -173,9 +173,12 @@ body {
 	}
 
 	.card-title-blog {
-		padding-top: 20px;
-		font-size: 24px;
+		padding: 10px 10px 0 10px;
+		font-size: 20px;
 		text-align: left;
+		font-style: normal;
+		font-weight: medium;
+		color: #4A4A4A;
 	}
 
 	.img-facilita-consul {
@@ -215,11 +218,10 @@ body {
 		box-sizing: border-box;
 		margin-left: 10px;
 		margin-right: 10px;
-		margin-bottom: 20px;
 		border-radius: 5px;
 		padding-right: 10px;
 		padding-left: 10px;
-		padding-bottom: 20px;
+		padding-bottom: 15px;
 		justify-content: space-around;
 		background: #FFFF;
 		text-align: center;
@@ -253,6 +255,7 @@ body {
 		line-height: 25px;
 		letter-spacing: 0.035em;
 		color: #4A4A4A;
+		padding: 10px 10px 0 10px;
 
 		@media screen and (max-width: 600px) {
 			font-size: 12px;
