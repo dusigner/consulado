@@ -129,9 +129,9 @@ Nitro.controller(
 			}
 		});
 
-		// window.hideContainerWhats = function () {
-		// 	document.querySelector('.container-whats').style.display = 'none';
-		// };
+		window.hideContainerWhats = function () {
+			document.querySelector('.container-whats').style.display = 'none';
+		};
 
 		// Controle do container do promotor e liveChat para controle via Optimize
 
@@ -150,10 +150,9 @@ Nitro.controller(
 			const device = window.mobileCheck() ? mobile : desk
 			const containerWhatsClass = window.mobileCheck() ? '.content_botoes_televendas' : '.container-whats'
 
-
-			// Controle do container do promotor e liveChat para controle via Optimize
-			document.querySelector('.container-whats').style.display = 'none';
-			document.querySelector('.content_botoes_televendas').style.display = 'none';
+			if (device === 'whats') document.querySelector(containerWhatsClass).style.display = 'block';
+			if (device === 'liveChat') window.liveChat('init', liveChatId);
+		}
 
 			window.mobileCheck = function () {
 				let check = false;
