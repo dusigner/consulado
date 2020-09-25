@@ -148,7 +148,7 @@ body {
 	.text-blog-facilita {
 		font-weight: 300;
 		font-size: 16px;
-		line-height: 29px;
+		line-height: 24px;
 		display: flex;
 		align-items: center;
 		text-align: center;
@@ -215,25 +215,34 @@ body {
 		box-sizing: border-box;
 		margin-left: 10px;
 		margin-right: 10px;
+		margin-bottom: 20px;
 		border-radius: 5px;
 		padding-right: 10px;
 		padding-left: 10px;
 		padding-bottom: 20px;
-		justify-content: space-between;
+		justify-content: space-around;
 		background: #FFFF;
 		text-align: center;
 		box-sizing: border-box;
 		border-radius: 5px;
 		width: 400px;
-		height: 600px;
+		height: 605px;
+
+		@media screen and (max-width: 600px) {
+			height: 590px;
+		}
 	}
 
 	.card-body-blog {
 		font-weight: 300;
 		font-size: 16px;
-		line-height: 29px;
+		line-height: 25px;
 		letter-spacing: 0.035em;
 		color: #4A4A4A;
+
+		@media screen and (max-width: 600px) {
+			height: 590px;
+		}
 	}
 
 	.card-text-blog {
@@ -241,9 +250,14 @@ body {
 		font-weight: 300;
 		font-size: 16px;
 		text-align: left;
-		line-height: 29px;
+		line-height: 25px;
 		letter-spacing: 0.035em;
 		color: #4A4A4A;
+
+		@media screen and (max-width: 600px) {
+			font-size: 12px;
+			margin-bottom: 30px;
+		}
 	}
 
 	.btn-saiba-mais {
@@ -259,7 +273,7 @@ body {
 
 		@media screen and (max-width: 1023px) {
 			padding: 7px 15px 9px 20px;
-			min-width: 100px;
+			min-width: 110px;
 		}
 	}
 
