@@ -184,21 +184,43 @@ window.showBannerPromotor = function(mobile, desk) {
 
 	const device = window.mobileCheck() ? mobile : desk
 
+	// Banner Home e PDC
 	const containerBanner = document.querySelector('.container-epromotor')
-	containerBanner.classList.add('show')
+	if(containerBanner) containerBanner.classList.add('show')
 
     const containerWhatsClass = window.mobileCheck() ? '.content_botoes_televendas' : '.container-whats'
 
-    if (device === 'whats') document.querySelector(containerWhatsClass).style.display = 'block';
+    if (device === 'whats') {
+		// Container PDP
+		if(containerWhatsClass){
+			document.querySelector(containerWhatsClass).style.display = 'block';
+		}
+	}
 
     if (device === 'liveChat') {
 
-		containerBanner.querySelector('a').addEventListener('click', e => {
-			e.preventDefault();
-			document.querySelector('#ib-button-messaging-icon').click()
-		})
+		// Banner HOME e PDC
+		if(containerBanner){
+			containerBanner.querySelector('a').addEventListener('click', e => {
+				e.preventDefault();
+				document.querySelector('#ib-button-messaging-icon').click()
+			})
+		}
 
-		window.liveChat('init', liveChatId);
+		// Tempo carregamento lip live chat
+
+		let runned = false;
+		let timeout;
+
+		function tryToRun() {
+			if (!runned) {
+				if (window.liveChat) {
+					window.liveChat('init', liveChatId)
+					runned = true;
+				}else timeout = setTimeout(tryToRun, 1000);
+			}
+		}
+		tryToRun();
 	}
 }
 
