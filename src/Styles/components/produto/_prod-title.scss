@@ -1,5 +1,7 @@
 .prod-title {
 	float: right !important;
+	z-index: 99;
+	position: relative;
 
 	.produto-v2 & { float: none !important; }
 
