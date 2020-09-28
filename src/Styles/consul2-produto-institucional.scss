@@ -142,8 +142,11 @@ body {
 
 .container-blog-facilita {
 	background-color: #F4F2F1;
-	margin-top: 5%;
-
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
 
 	.text-blog-facilita {
 		font-weight: 300;
@@ -170,6 +173,12 @@ body {
 			padding-left: 25px;
 			padding-right: 25px;
 		}
+
+		@media screen and (max-width: 1920px) {
+			display: block;
+			padding-right: 250px;
+			padding-left: 250px;
+		}
 	}
 
 	.card-title-blog {
@@ -190,6 +199,10 @@ body {
 		margin-top: 10px;
 		max-height: 237px;
 		max-width: 100%;
+
+		@media screen and (max-width: 1920px) {
+			width: 94% !important;
+		}
 	}
 
 	.logo-facilita-blog {
@@ -201,12 +214,16 @@ body {
 	}
 
 	.container-cards {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		justify-content: center;
+		position: relative;
+		width: 100%;
 		padding-right: 50px;
 		padding-left: 50px;
+		margin-left: 30px !important;
+
+
+		@media screen and (max-width: 1920px) {
+			margin-left: 180px !important;
+		}
 	}
 
 	.carousel {
@@ -215,23 +232,24 @@ body {
 	}
 
 	.card-blog {
-		box-sizing: border-box;
 		margin-left: 10px;
 		margin-right: 10px;
 		border-radius: 5px;
-		padding-right: 10px;
-		padding-left: 10px;
-		padding-bottom: 15px;
-		justify-content: space-around;
+		padding: 0;
 		background: #FFFF;
 		text-align: center;
-		box-sizing: border-box;
 		border-radius: 5px;
 		width: 400px;
 		height: 605px;
+		display: flex;
+		align-content: center;
 
 		@media screen and (max-width: 600px) {
 			height: 590px;
+		}
+
+		@media screen and (max-width: 1920px) {
+			width: 360px !important;
 		}
 	}
 
