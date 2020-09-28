@@ -1,6 +1,6 @@
 'use strict';
 
-Nitro.module('compare', function() {
+Nitro.module('compare', function () {
 	let prodData = {
 		id: skuJson.productId,
 		name: skuJson.name,
@@ -24,8 +24,8 @@ Nitro.module('compare', function() {
 		let content = `
 			<div class="prod-wishlist_compare">
 				<div class="product-compare">
-					<input type="checkbox" id="${ prodData.cache }" rel="${ prodData.id }"/>
-					<label for="${ prodData.cache }" htmlFor="${ prodData.cache }">Comparar produto</label>
+					<input type="checkbox" id="${prodData.cache}" rel="${prodData.id}"/>
+					<label for="${prodData.cache}" htmlFor="${prodData.cache}">Comparar produto</label>
 				</div>
 			</div>
 		`;
@@ -81,7 +81,7 @@ Nitro.module('compare', function() {
 			// 	title: prodData.name
 			// });
 
-			if(localStorage.getItem('comparadorPdp') === null) {
+			if (localStorage.getItem('comparadorPdp') === null) {
 				window.localStorage.setItem('comparadorPdp', []);
 				window.localStorage.setItem('comparadorContador', 0);
 			}
@@ -96,31 +96,29 @@ Nitro.module('compare', function() {
 
 			let categoryIdStr = prodData.categoryId.toString();
 
-			let $link = `https://consulqa.vtexcommercestable.com.br/api/catalog_system/pub/category/${categoryIdStr}`
+			let $link = `/api/catalog_system/pub/category/${categoryIdStr}`;
 
 			$.ajax({
+				async: true,
+				crossDomain: true,
 				url: $link,
 				type: 'GET',
 				dataType: 'json',
-			}).done(function(data) {
-					console.log("...redirecionando");
-					setTimeout(function(){
-						window.location.replace(data.url);
-					}, 1500);
-				}).fail(function(error){
-					console.warn(error);
-				})
-
+			}).done(function (data) {
+				console.info("...redirecionando");
+				setTimeout(function () {
+					window.location.replace(data.url);
+				}, 1500);
+			}).fail(function (error) {
+				console.warn(error);
+			});
 
 			// setTimeout(function(){
 			// 	window.location.replace(`/${prodData.department}/${prodData.categoryurl}`);
 			// }, 1500);
 
-
 			// console.info(JSON.parse(window.localStorage.getItem('comparador')));
 		});
-
-
 	}
 
 	self.init();

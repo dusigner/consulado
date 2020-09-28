@@ -50,7 +50,7 @@ module.exports = {
 		'no-console': [
 			1,
 			{
-				allow: ['assert', 'info', 'error']
+				allow: ['assert', 'info', 'error', 'warn']
 			}
 		],
 		'no-debugger': 1,
