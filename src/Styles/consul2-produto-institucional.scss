@@ -142,11 +142,8 @@ body {
 
 .container-blog-facilita {
 	background-color: #F4F2F1;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	align-content: center;
-	justify-content: center;
+	margin-top: 5%;
+
 
 	.text-blog-facilita {
 		font-weight: 300;
@@ -173,21 +170,11 @@ body {
 			padding-left: 25px;
 			padding-right: 25px;
 		}
-
-		@media screen and (max-width: 1920px) {
-			display: block;
-			padding-right: 250px;
-			padding-left: 250px;
-		}
 	}
 
 	.card-title-blog {
-		padding: 10px 10px 0 10px;
-		font-size: 20px;
+		font-size: 24px;
 		text-align: left;
-		font-style: normal;
-		font-weight: medium;
-		color: #4A4A4A;
 	}
 
 	.img-facilita-consul {
@@ -196,13 +183,13 @@ body {
 		border-radius: 5px;
 		display: flex;
 		justify-content: center;
-		margin-top: 10px;
-		max-height: 237px;
-		max-width: 100%;
+		margin-bottom: 10px;
+		height: 100%;
+		width: 100%;
+	}
 
-		@media screen and (max-width: 1920px) {
-			width: 94% !important;
-		}
+	.container-image {
+		padding-top: 10px;
 	}
 
 	.logo-facilita-blog {
@@ -214,16 +201,14 @@ body {
 	}
 
 	.container-cards {
-		position: relative;
-		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		justify-content: center;
 		padding-right: 50px;
 		padding-left: 50px;
-		margin-left: 30px !important;
-
-
-		@media screen and (max-width: 1920px) {
-			margin-left: 180px !important;
-		}
+		max-width: 1263px;
+		margin: 0 auto;
 	}
 
 	.carousel {
@@ -234,22 +219,26 @@ body {
 	.card-blog {
 		margin-left: 10px;
 		margin-right: 10px;
+		margin-bottom: 20px;
 		border-radius: 5px;
-		padding: 0;
+		padding-right: 15px;
+		padding-left: 15px;
+		padding-bottom: 20px;
+		justify-content: space-around;
 		background: #FFFF;
 		text-align: center;
+		box-sizing: border-box;
 		border-radius: 5px;
-		width: 400px;
-		height: 605px;
-		display: flex;
-		align-content: center;
+		width: 380 !important;
+		height: 615px !important;
 
 		@media screen and (max-width: 600px) {
 			height: 590px;
 		}
 
 		@media screen and (max-width: 1920px) {
-			width: 360px !important;
+			width: 401px;
+			height: 660px;
 		}
 	}
 
@@ -273,7 +262,6 @@ body {
 		line-height: 25px;
 		letter-spacing: 0.035em;
 		color: #4A4A4A;
-		padding: 10px 10px 0 10px;
 
 		@media screen and (max-width: 600px) {
 			font-size: 12px;
