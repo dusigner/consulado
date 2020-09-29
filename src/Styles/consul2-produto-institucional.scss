@@ -140,49 +140,84 @@ body {
 }
 
 // Video background
-.video {
-	padding: 75px 0;
 
-	.container {
-		padding: 0 15px !important;
-	}
+#container-video {
+	display: flex;
 
-	.video-container {
-		position: relative;
 
-		&__background {
-			width: 100%;
-		}
+	background: #FFFFFF;
 
-		&__play {
-			cursor: pointer;
-			position: absolute;
-			width: 175px;
-			height: 175px;
-			background: rgba(0, 0, 0, 0.3);
-			border: 1px solid #ffffff;
-			border-radius: 50%;
-			top: 50%;
-			right: 50%;
-			transform: translate(50%, -50%);
+	padding-left: 55px;
+
+	.background-light {
+		display: flex;
+		align-items: left;
+		justify-content: left;
+		background: #FFFFFF;
+		width: 25%;
+
+		.bem-pensado {
+			color: #403C3B;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 36px;
 			display: flex;
-			justify-content: center;
-			align-items: center;
+			align-items: right;
+			left: 13.76%;
+			right: 67.13%;
+			top: 38.87%;
+			bottom: 59.97%;
 		}
 
-		&::before {
-			content: "";
+		.pra-voce {
+			color: #8AC922;
+			font-weight: bold;
+			font-size: 24px;
+			line-height: 36px;
+			display: flex;
+			align-items: right;
+			padding: 15px;
+		}
+
+		.video-bem-pensado {
 			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			background-color: rgba(0, 0, 0, 0.2);
+			width: 944px;
+			height: 543.46px;
+			left: 91px;
+			top: 2559px;
 		}
 	}
 
-	.main-video {
-		display: block;
+	.background-black {
+		display: flex;
+		align-items: right;
+		justify-content: right;
+		width: 960px;
+		height: 840px;
+		left: 683px;
+		top: 3188px;
+
+		.reinvente {
+			color: #FFFFFF;
+			font-style: normal;
+			font-weight: bold;
+			font-size: 32px;
+			line-height: 36px;
+			display: flex;
+			align-items: center;
+			padding: 15px;
+		}
+
+		.play {
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 32px;
+			line-height: 36px;
+			display: flex;
+			align-items: center;
+			padding: 15px;
+		}
 	}
 }
 
@@ -262,7 +297,6 @@ body {
 		margin: 0 auto;
 	}
 
-	//slick
 	.carousel {
 		width: 1000px;
 		margin: 0 auto;
