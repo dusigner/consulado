@@ -20,7 +20,7 @@ Nitro.module('beneficios', function() {
             $(this).toggleClass('is-active');
             $(this).parent().find('.accordion').slideToggle();
 
-            $('.videos iframe').attr('src', dataVideo)
+            $('.container-benefits .videos iframe').attr('src', dataVideo)
         });
     }
 

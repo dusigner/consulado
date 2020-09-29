@@ -8,10 +8,8 @@ Nitro.controller(
     [
         'beneficios',
     ],
+
+    function(){
+
+    }
 );
-
-function teste(){
-    console.log('batata')
-}
-
-teste();
