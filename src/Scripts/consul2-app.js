@@ -224,6 +224,9 @@ window.showBannerPromotor = function(mobile, desk) {
 	}
 }
 
+// Controle do container do promotor e liveChat para controle via Optimize
+document.querySelector('.container-whats').style.display = 'none';
+document.querySelector('.content_botoes_televendas').style.display = 'none';
 let bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 
 if(bannerPromotor) {
