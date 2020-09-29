@@ -180,7 +180,7 @@ window.mobileCheck = function() {
 window.showBannerPromotor = function(mobile, desk) {
 	const liveChatId = '3b5663e6-26c6-4fdc-a69c-61841c3edc9f'
 
-	window.localStorage.setItem('bannerPromotor', `${mobile},${desk}`)
+	window.localStorage.setItem('bannerPromotorTestAB', `${mobile},${desk}`)
 
 	const device = window.mobileCheck() ? mobile : desk
 
@@ -224,7 +224,7 @@ window.showBannerPromotor = function(mobile, desk) {
 	}
 }
 
-let bannerPromotor = localStorage.getItem('bannerPromotor')
+let bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 
 if(bannerPromotor) {
 	const [mobile, desk] = bannerPromotor.split(',')
