@@ -5,13 +5,22 @@ $('.container-cards').slick({
     arrows: false,
     slidesToShow: 3,
     slidesToScroll: 3,
+    mobileFirst: true,
     responsive: [{
-        breakpoint: 375,
+        breakpoint: 300,
         settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true,
             dots: true
         }
-    }]
+    },
+    {
+        breakpoint: 1200,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+        }
+    }
+    ]
 });

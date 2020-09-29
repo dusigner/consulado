@@ -41,6 +41,27 @@
 		</div>
 	</section>
 
+
+	<!-- Video Bem pensado -->
+	<section class="video d-block d-md-block">
+		<div class="container">
+			<div id="video-container" class="video-container">
+				<img class="video-container__background" src="/arquivos/video-background.png" alt="Video" />
+				<div id="video-container__play" class="video-container__play">
+					<svg width="46" height="77" viewBox="0 0 46 77" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M44.8077 36.1322C46.1318 37.3239 46.1318 39.4002 44.8077 40.5919L5.971 75.5452C4.04044 77.2828 0.9641 75.9127 0.9641 73.3154L0.964103 3.40868C0.964103 0.81136 4.04044 -0.558716 5.97101 1.17881L44.8077 36.1322Z"
+							fill="white" />
+					</svg>
+				</div>
+			</div>
+			<div id="main-video" class="main-video">
+				<div id="main-video-frame" data-video-id="PRr7HF6SIfU"></div>
+			</div>
+		</div>
+	</section>
+	<!-- Video Bem pensado -->
+
 	<!-- Blog Facilita Consul -->
 	<section class="container-blog-facilita">
 		<div class="title-blog-facilita">
@@ -114,10 +135,103 @@
 	</script>
 	<script>
 		if (window.addBannerCovid) window.addBannerCovid();
-		var tag = document.createElement("script");
-		var firstScriptTag = document.getElementsByTagName(
+		let tag = document.createElement("script");
+		let firstScriptTag = document.getElementsByTagName(
 			"script"
 		)[0];
+
+		// O container do video
+		let playerDiv = document.getElementById("main-video-frame");
+
+		let videoId = playerDiv.getAttribute("data-video-id");
+
+		// inicializando o player
+		let player;
+
+		let videoDuration = 0;
+
+		// inicializando o contador do tempo do video
+		let videotime = 0;
+
+		// inicializando intervalo
+		let intervalVideo = null;
+
+		// Adicionando Youtube iframe API
+		tag.src = "https://www.youtube.com/iframe_api";
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// Método chamado automaticamente pela api do youtube
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player("main-video-frame", {
+				height: 650,
+				width: "100%",
+				videoId: videoId,
+				events: {
+					onReady: onPlayerReady
+				},
+				playerVars: {
+					rel: 0,
+					showinfo: 0
+				}
+			});
+		}
+
+		// Método chamado nos eventos do player
+		function onPlayerReady(event) {
+			// obtendo a duração do video, em segundos
+			videoDuration = parseInt(player.getDuration());
+			// aplicando o intervalo de 1 em 1 segundo
+			intervalVideo = setInterval(discoverTime, 1000);
+		}
+
+		// método utilizado para descobrir o tempo atual do vídeo
+		function discoverTime() {
+			if (player) {
+				if (player.getCurrentTime) {
+					videoDuration = parseInt(player.getDuration());
+					videotime = parseInt(player.getCurrentTime());
+
+					if (videotime == parseInt(videoDuration * 0.25)) {
+						dataLayer.push({
+							event: "generic",
+							category: "pdp-institucional",
+							action: "video",
+							label: "25%"
+						});
+					} else if (videotime == parseInt(videoDuration * 0.5)) {
+						dataLayer.push({
+							event: "generic",
+							category: "pdp-institucional",
+							action: "video",
+							label: "50%"
+						});
+					} else if (videotime == parseInt(videoDuration * 0.75)) {
+						dataLayer.push({
+							event: "generic",
+							category: "pdp-institucional",
+							action: "video",
+							label: "75%"
+						});
+					} else if (videotime == videoDuration) {
+						dataLayer.push({
+							event: "generic",
+							category: "pdp-institucional",
+							action: "video",
+							label: "100%"
+						});
+					}
+				}
+			}
+
+			if (videotime == videoDuration) {
+				clearInterval(intervalVideo);
+				let videoContainer = document.getElementById("video-container");
+				let mainVideo = document.getElementById("main-video");
+
+				mainVideo.style.display = "none";
+				videoContainer.style.display = "block";
+			}
+		}
 
 	</script>
 	<script type="text/javascript" src="https://cdn.awsli.com.br/910/910263/arquivos/slick.js"> </script>
