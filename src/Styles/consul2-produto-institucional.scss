@@ -143,80 +143,79 @@ body {
 
 #container-video {
 	display: flex;
-
-
 	background: #FFFFFF;
-
 	padding-left: 55px;
 
-	.background-light {
-		display: flex;
-		align-items: left;
-		justify-content: left;
-		background: #FFFFFF;
-		width: 25%;
+	.bg-light-black {
+		background: rgb(64, 60, 59);
+		background: linear-gradient(270deg, rgba(64, 60, 59, 1) 50%, rgba(255, 255, 255, 1) 50%, rgba(251, 251, 251, 1) 50%);
+		height: 720px;
+		width: 100%;
+		color: #FFFFFF;
+
+		.title {
+			padding: 15px 0 0 80px;
+			line-height: 36px;
+		}
 
 		.bem-pensado {
 			color: #403C3B;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 24px;
-			line-height: 36px;
-			display: flex;
-			align-items: right;
-			left: 13.76%;
-			right: 67.13%;
-			top: 38.87%;
-			bottom: 59.97%;
+			font-size: 32px;
+			margin: 0;
+		}
+
+		.video-bem-pensado {
+			flex: 1;
 		}
 
 		.pra-voce {
 			color: #8AC922;
 			font-weight: bold;
-			font-size: 24px;
-			line-height: 36px;
+			font-size: 32px;
+			margin-bottom: 30px;
+		}
+
+		.content-video {
 			display: flex;
-			align-items: right;
-			padding: 15px;
+
+			iframe {
+				width: 944px;
+				height: 543.46px;
+				border-radius: 5px;
+			}
 		}
 
-		.video-bem-pensado {
-			position: absolute;
-			width: 944px;
-			height: 543.46px;
-			left: 91px;
-			top: 2559px;
-		}
-	}
+		.text {
+			padding: 15% 250px 0 40px;
 
-	.background-black {
-		display: flex;
-		align-items: right;
-		justify-content: right;
-		width: 960px;
-		height: 840px;
-		left: 683px;
-		top: 3188px;
+			@media screen and (max-width: 1366px) {
+				padding: 15% 120px 0 40px;
+			}
+
+		}
 
 		.reinvente {
 			color: #FFFFFF;
-			font-style: normal;
-			font-weight: bold;
-			font-size: 32px;
-			line-height: 36px;
-			display: flex;
-			align-items: center;
-			padding: 15px;
+			font-size: 16px;
+			margin-bottom: 30px;
+			font-weight: normal;
+			line-height: 27px;
 		}
 
 		.play {
 			color: #FFFFFF;
-			font-weight: bold;
-			font-size: 32px;
-			line-height: 36px;
-			display: flex;
-			align-items: center;
-			padding: 15px;
+			font-size: 16px;
+			line-height: 23px;
+
+			&:after {
+				margin-top: 5px;
+				background-color: #9aca3c;
+				content: ' ';
+				display: block;
+				height: 2px;
+				position: absolute;
+				width: 25px;
+			}
 		}
 	}
 }
@@ -225,7 +224,6 @@ body {
 .container-blog-facilita {
 	background-color: #F4F2F1;
 	margin-top: 5%;
-
 
 	.text-blog-facilita {
 		font-weight: 300;
