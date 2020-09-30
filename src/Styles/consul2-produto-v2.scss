@@ -21,6 +21,8 @@
 @import "helpers/mixins";
 @import "helpers/whp-modal";
 @import "helpers/rfs";
+@import 'helpers/fix-header-bootstrap4';
+@import 'helpers/fix-footer-bootstrap4';
 
 // Component styles
 @import "components/buttons";
