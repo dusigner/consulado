@@ -219,7 +219,7 @@ window.showBannerPromotor = function(mobile, desk) {
 				if (window.liveChat) {
 					window.liveChat('init', liveChatId)
 					runnedChat = true;
-				}else timeoutChat = setTimeout(tryToRun, 1000);
+				}else timeoutChat = setTimeout(tryToRunChat, 1000);
 			}
 		}
 		tryToRunChat();
