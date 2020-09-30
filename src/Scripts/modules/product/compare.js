@@ -19,18 +19,16 @@ Nitro.module('compare', function () {
 
 	self.build = () => {
 
-		let prodTitle = $('.prod-title');
+		let prodTitle = $('.prod-wishlist_compare');
 
 		let content = `
-			<div class="prod-wishlist_compare">
 				<div class="product-compare">
 					<input type="checkbox" id="${prodData.cache}" rel="${prodData.id}"/>
 					<label for="${prodData.cache}" htmlFor="${prodData.cache}">Comparar produto</label>
 				</div>
-			</div>
 		`;
 
-		prodTitle.after(content);
+		prodTitle.append(content);
 	};
 
 	self.addToCompare = () => {
