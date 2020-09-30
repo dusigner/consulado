@@ -194,6 +194,8 @@ window.showBannerPromotor = function(mobile, desk) {
 		// Container PDP
 		const containerWhats = document.querySelector(containerWhatsClass)
 		if(containerWhats){
+			console.clear()
+			console.log(containerWhatsClass)
 			document.querySelector(containerWhatsClass).style.display = 'block';
 		}
 	}
@@ -225,15 +227,12 @@ window.showBannerPromotor = function(mobile, desk) {
 }
 
 // Controle do container do promotor e liveChat para controle via Optimize
-
-let bannerPromotor
-
 if(document.querySelector('.container-whats')){
 	document.querySelector('.container-whats').style.display = 'none';
 	document.querySelector('.content_botoes_televendas').style.display = 'none';
-	bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 }
 
+let bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 
 if(bannerPromotor) {
 	const [mobile, desk] = bannerPromotor.split(',')
