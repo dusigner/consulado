@@ -10,7 +10,7 @@ Nitro.controller(
 	[
 		'produto-institucional',
 		'beneficios',
-		'specifications-v3'
+		'specifications-institutional'
 	],
 
 	function () {}

@@ -7,9 +7,9 @@
 
 'use strict';
 
-require('Dust/specifications-v3.html');
+require('Dust/specifications-institutional.html');
 
-Nitro.module('specifications-v3', function () {
+Nitro.module('specifications-institutional', function () {
 	var self = this,
 		$holder = $('#especificacoes'),
 		$caracteristicas = $('#caracteristicas'),
@@ -90,7 +90,7 @@ Nitro.module('specifications-v3', function () {
 	});
 
 	this.render = function () {
-		dust.render('specifications-v3', data, function (err, out) {
+		dust.render('specifications-institutional', data, function (err, out) {
 			if (err) {
 				throw new Error('Specifications Dust error: ' + err);
 			}
