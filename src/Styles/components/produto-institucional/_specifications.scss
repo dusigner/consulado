@@ -223,6 +223,7 @@ $bar-color: #d9d8d8;
 				@include rfs(20);
 				color: $title-color;
 				line-height: 1;
+				margin-top: 26.6px;
 
 				&:after {
 					border-bottom: 3px solid $border-color;
