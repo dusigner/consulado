@@ -192,7 +192,8 @@ window.showBannerPromotor = function(mobile, desk) {
 
     if (device === 'whats') {
 		// Container PDP
-		if(containerWhatsClass){
+		const containerWhats = document.querySelector(containerWhatsClass)
+		if(containerWhats){
 			document.querySelector(containerWhatsClass).style.display = 'block';
 		}
 	}
@@ -208,19 +209,18 @@ window.showBannerPromotor = function(mobile, desk) {
 		}
 
 		// Tempo carregamento lip live chat
+		let runnedChat = false;
+		let timeoutChat;
 
-		let runned = false;
-		let timeout;
-
-		function tryToRun() {
-			if (!runned) {
+		function tryToRunChat() {
+			if (!runnedChat) {
 				if (window.liveChat) {
 					window.liveChat('init', liveChatId)
-					runned = true;
-				}else timeout = setTimeout(tryToRun, 1000);
+					runnedChat = true;
+				}else timeoutChat = setTimeout(tryToRun, 1000);
 			}
 		}
-		tryToRun();
+		tryToRunChat();
 	}
 }
 
