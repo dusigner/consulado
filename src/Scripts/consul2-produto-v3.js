@@ -567,7 +567,7 @@ Nitro.controller(
 		self.topBarABTest = () => {
 			// $('body').addClass('testeAB-topbar');
 
-			if ( $('body').hasClass('testeAB-topbar')) {
+			if ($('body').hasClass('testeAB-topbar')) {
 				$('.prod-details-nav .info-product').css('height', '5.4rem');
 				$('.prod-details-nav .box-infos p').css('font-size', '14px');
 				$('.prod-details-nav .details-preco').find('.descricao-preco').css('text-align', 'left');
