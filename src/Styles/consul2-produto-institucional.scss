@@ -41,8 +41,7 @@ body {
 	max-width: 1920px;
 }
 
-;
-
+// Topbar
 .top-navigation--pdp {
 	background-color: $color_dark_gray;
 	color: #fff;
@@ -167,10 +166,179 @@ body {
 	}
 }
 
+// Video background
+.container-bempensado {
+
+	&__desktop {
+
+		@media screen and (max-width: 768px) {
+			display: none;
+		}
+
+		#container-video {
+			display: flex;
+			background: #FFFFFF;
+			padding-left: 55px;
+
+			.bg-light-black {
+				background: rgb(64, 60, 59);
+				background: linear-gradient(270deg, rgba(64, 60, 59, 1) 50%, rgba(255, 255, 255, 1) 50%, rgba(64, 60, 59, 1) 50%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 50%);
+				height: 720px;
+				width: 100%;
+				color: #FFFFFF;
+
+				.title {
+					padding: 15px 0 0 80px;
+					line-height: 36px;
+				}
+
+				.bem-pensado {
+					color: #403C3B;
+					font-size: 32px;
+					margin: 0;
+				}
+
+				.video-bem-pensado {
+					flex: 1;
+				}
+
+				.pra-voce {
+					color: #8AC922;
+					font-weight: bold;
+					font-size: 32px;
+					margin-bottom: 30px;
+				}
+
+				.content-video {
+					display: flex;
+
+					iframe {
+						width: 944px;
+						height: 543.46px;
+						border-radius: 5px;
+					}
+				}
+
+				.text {
+					padding: 15% 250px 0 40px;
+
+					@media screen and (max-width: 1366px) {
+						padding: 15% 120px 0 40px;
+					}
+
+				}
+
+				.reinvente {
+					color: #FFFFFF;
+					font-size: 16px;
+					margin-bottom: 30px;
+					font-weight: normal;
+					line-height: 27px;
+				}
+
+				.play {
+					color: #FFFFFF;
+					font-size: 16px;
+					line-height: 23px;
+
+					&:after {
+						margin-top: 5px;
+						background-color: #9aca3c;
+						content: ' ';
+						display: block;
+						height: 2px;
+						position: absolute;
+						width: 25px;
+					}
+				}
+			}
+		}
+	}
+
+	&__mobile {
+
+		@media screen and (min-width: 768px) {
+			display: none;
+		}
+
+		.content-video {
+			display: flex;
+			padding-bottom: 20px;
+			width: 100%;
+
+			iframe {
+				width: 100%;
+				height: 100%;
+				border-radius: 5px;
+			}
+		}
+
+		.video-bem-pensado {
+			margin: 0 auto;
+		}
+
+		.bg-light-black {
+			background: #403C3B;
+		}
+
+		.title {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			line-height: 20px;
+			font-size: 16px;
+		}
+
+		.bem-pensado {
+			padding-top: 30px;
+			color: #FFFFFF;
+		}
+
+		.pra-voce {
+			color: #8AC922;
+		}
+
+		.text {
+			padding-left: 12%;
+			padding-right: 12%;
+		}
+
+		.reinvente {
+			color: #FFFFFF;
+			font-size: 16px;
+			margin-bottom: 15px;
+			font-weight: normal;
+			line-height: 27px;
+		}
+
+		.play {
+			color: #FFFFFF;
+			font-size: 16px;
+			line-height: 23px;
+
+			&:after {
+				margin-top: 5px;
+				background-color: #9aca3c;
+				content: ' ';
+				display: block;
+				height: 2px;
+				position: absolute;
+				width: 25px;
+			}
+		}
+
+
+
+	}
+
+}
+
+
+
+// Blog Facilita
 .container-blog-facilita {
 	background-color: #F4F2F1;
 	margin-top: 5%;
-
 
 	.text-blog-facilita {
 		font-weight: 300;
