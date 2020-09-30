@@ -61,6 +61,7 @@
 @import 'components/produto/outline-products';
 @import 'components/listagem/comparebar';
 @import 'components/produto/prod-wishlist_compare';
+@import "components/produto/wishlist";
 
 // @import 'components/produto/quiz-install';
 
@@ -340,4 +341,11 @@ h1.title-check-voltage {
 	display: flex;
 	font-size: 20px;
 	justify-content: center;
+}
+
+.wishlist__container {
+	display: none;
+	@media only screen and (max-width: 600px) {
+		margin-top: -15px;
+	}
 }
