@@ -1,47 +1,41 @@
 <div class="mobile container-benefits__title">
-    <h1 class="section-title">Features e Benefícios</h1>
+    <h1 class="section-title">Benefícios</h1>
 </div>
 <div class="mobile container-benefits__topics">
     <div class="benefits">
 
         <div class="benefits__item is-active">
-            <h2 id="practicality" class="title is-active" data-video="https://www.youtube.com/embed/WAk-wEp0v7g?controls=0&amp;rel=0&amp;enablejsapi=1">Maior praticidade pra você</h2>
+            <h2 id="practicality" class="title is-active">Maior praticidade pra você</h2>
             <div class="accordion">
                 <p>Pegar e organizar os alimentos na sua geladeira nunca foi tão simples. Com essa nova configuração fica bem mais fácil de vocês guardar, pegar e organizar seus alimentos nas prateleiras e no gavetão de verdura. Por que Bem Pensado é ter a geladeira sempre organizada!</p>
 
                 <div class="videos">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WAk-wEp0v7g?controls=0&amp;rel=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <div class="player" data-video-id="pHpIfmk3Ew4"></div>
                 </div>
-
-                <p> + Benefícios exclusivos:</p>
 
             </div>
         </div>
 
         <div class="benefits__item">
-            <h2 id="creativity" class="title" data-video="https://www.youtube.com/embed/5c2PG2BxNvI?controls=0&amp;rel=0&amp;enablejsapi=1">Cozinha mais criativa</h2>
+            <h2 id="creativity" class="title">Cozinha mais criativa</h2>
             <div class="accordion">
                 <p>Reinvente a sua cozinha com o design moderno da nova geladeira Consul com freezer embaixo.</p>
 
                 <div class="videos">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5c2PG2BxNvI?controls=0&amp;rel=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <div class="player" data-video-id="pHpIfmk3Ew4"></div>
                 </div>
-
-                <p> + Benefícios exclusivos:</p>
 
             </div>
         </div>
 
         <div class="benefits__item">
-            <h2 id="see-all" class="title" data-video="https://www.youtube.com/embed/XvpG_5zXtjE?controls=0&amp;rel=0&amp;enablejsapi=1">Veja tudo em um piscar de olhos</h2>
+            <h2 id="see-all" class="title">Veja tudo em um piscar de olhos</h2>
             <div class="accordion">
-                <p>Pegar e organizar os alimentos na sua geladeira nunca foi tão simples. Com essa nova configuração fica bem mais fácil de vocês guardar, pegar e organizar seus alimentos nas prateleiras e no gavetão de verdura. Por que Bem Pensado é ter a geladeira sempre organizada!</p>
+                <p>Com o freezer embaixo e a refrigerador em cima, os alimentos mais usados ficam na altura dos seus olhos, o que facilita você ver tudo que tem na sua geladeira e não esquecer nenhum ingrediente.</p>
 
                 <div class="videos">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/XvpG_5zXtjE?controls=0&amp;rel=0&amp;enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                    <div class="player" data-video-id="pHpIfmk3Ew4"></div>
                 </div>
-
-                <p> + Benefícios exclusivos:</p>
 
             </div>
         </div>
@@ -50,3 +44,108 @@
 
 
 </div>
+
+
+<script type="text/javascript">
+    var tag = document.createElement('script');
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+
+    // O container do video
+    var playerDiv = document.querySelectorAll('#benefits-lp .player');
+
+    var player;
+
+    var playerArr = [];
+
+    var videoDuration = 0;
+
+    // inicializando o contador do tempo do video
+    var videotime = 0;
+
+    // inicializando intervalo
+    var interval = null;
+
+    // Adicionando Youtube iframe API
+    tag.src = 'https://www.youtube.com/iframe_api';
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Método chamado automaticamente pela api do youtube
+    function onYouTubeIframeAPIReady() {
+        playerDiv.forEach(function(p, i) {
+            player = new YT.Player(p, {
+                height: 650,
+                width: "100%",
+                videoId: p.dataset.videoId,
+                events: {
+                    onReady: onPlayerReady
+                },
+                playerVars: {
+                    rel: 0,
+                    showinfo: 0
+                }
+            });
+
+            playerArr.push(player);
+        })
+
+    }
+    // Método chamado nos eventos do player
+    function onPlayerReady(event) {
+
+        // obtendo a duração do video, em segundos
+        videoDuration = playerArr.map(function(p){
+            return parseInt(p.getDuration());
+        })
+        // aplicando o intervalo de 1 em 1 segundo
+        intervalVideo = setInterval(discoverTime, 1000);
+    }
+
+    // método utilizado para descobrir o tempo atual do vídeo
+    function discoverTime() {
+        playerArr.map(function(p){
+            if (p) {
+                if (p.getCurrentTime) {
+                    videoDuration = parseInt(p.getDuration());
+                    videotime = parseInt(p.getCurrentTime());
+                    if (videotime == parseInt(videoDuration * 0.25)) {
+                        dataLayer.push({
+                            event: "generic",
+                            category: "pdp-institucional",
+                            action: "beneficios",
+                            label:"video_do_produto_25%"
+                        });
+                    } else if (videotime == parseInt(videoDuration * 0.5)) {
+                        dataLayer.push({
+                            event: "generic",
+                            category: "pdp-institucional",
+                            action: "beneficios",
+                            label:"video_do_produto_50%"
+                        });
+                    } else if (videotime == parseInt(videoDuration * 0.75)) {
+                        dataLayer.push({
+                            event: "generic",
+                            category: "pdp-institucional",
+                            action: "beneficios",
+                            label:"video_do_produto_75%"
+                        });
+                    } else if (videotime == videoDuration) {
+                        dataLayer.push({
+                            event: "generic",
+                            category: "pdp-institucional",
+                            action: "beneficios",
+                            label:"video_do_produto_100%"
+                        });
+                    }
+                }
+            }
+            if (videotime == videoDuration) {
+                clearInterval(intervalVideo);
+                // let videoContainer = document.getElementById("video-container");
+                // let mainVideo = document.getElementById("player");
+                // mainVideo.style.display = "none";
+                // videoContainer.style.display = "block";
+            }
+        })
+
+    }
+</script>
