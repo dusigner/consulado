@@ -53,66 +53,9 @@
 	</section>
 	<!-- Video Bem pensado -->
 
-
-
 	<!-- Blog Facilita Consul -->
-	<section class="container-blog-facilita">
-		<div class="title-blog-facilita">
-			<img src="/arquivos/facilita-logo.png" alt="Facilita Logo" title="Facilita Logo"
-				class="logo-facilita-blog"></img>
-			<h1 class="text-blog-facilita">
-				Pensada para facilitar a organização e a limpeza do seu refrigerador, a Geladeira Branca com Freezer
-				embaixo
-				oferece praticidade na hora de armazenar os seus alimentos. Com controle de temperatura externo e turbo
-				freezer.
-			</h1>
-		</div>
-		<div class="container-cards">
-			<div class="card-blog">
-				<div class="container-image">
-					<img src="/arquivos/post01.png" class="img-facilita-consul" alt="Facilita Consul" />
-				</div>
-				<div class="card-body-blog">
-					<h5 class="card-title-blog">O que fazer com as embalagens do eletrodoméstico novo?</h5>
-					<p class="card-text-blog">Hoje, mais do que nunca, é essencial dar o destino correto para o lixo,
-						para causar o menor
-						impacto na natureza possível. Plástico bolha é reciclável? Onde eu jogo o isopor? O que fazer
-						com todo aquele papelão? Respondemos essas e outras dúvidas para você.</p>
-					<a href="https://www.consul.com.br/facilita-consul/ihhh-agora/como-descartar-embalagem-de-eletrodomesticos/"
-						class="btn-saiba-mais">Saiba mais</a>
-				</div>
-			</div>
-			<div class="card-blog">
-				<div class="container-image">
-					<img src="/arquivos/post02.png" class="img-facilita-consul" alt="Facilita Consul" />
-				</div>
-				<div class="card-body-blog">
-					<h5 class="card-title-blog">Quais as vantagens da geladeira com congelador embaixo?</h5>
-					<p class="card-text-blog">A geladeira com freezer embaixo, também conhecida como inverse ou
-						invertida, é um dos modelos mais modernos do mercado e, por isso, chama a atenção de quem quer
-						reformular ou dar um upgrade na cozinha. Mas, você sabe qual a vantagem de investir nesse
-						modelo?</p>
-					<a href="https://www.consul.com.br/facilita-consul/bem-pensado-para-voce/geladeira-com-freezer-embaixo/"
-						class="btn-saiba-mais">Saiba mais</a>
-				</div>
-			</div>
-			<div class="card-blog">
-				<div class="container-image">
-					<img src="/arquivos/post03.png" class="img-facilita-consul" alt="Facilita Consul" />
-				</div>
-				<div class="card-body-blog">
-					<h5 class="card-title-blog">Como calcular o consumo de energia dos eletrodomésticos?</h5>
-					<p class="card-text-blog">O consumo de energia elétrica é um daqueles gastos rotineiros para o qual
-						estamos sempre procurando formas de economizar. Uma das formas de se fazer isso, além de
-						mudanças nos hábitos diários, é saber exatamente o que está consumindo essa energia.</p>
-					<a href="https://www.consul.com.br/facilita-consul/bem-pensado-para-voce/consumo-de-energia-de-eletrodomestico/"
-						class="btn-saiba-mais">Saiba mais</a>
-				</div>
-			</div>
-		</div>
-	</section>
+	<vtex.cmc:favilitaBlog />
 	<!-- /Blog Facilita Consul -->
-
 
 	<!-- Footer 2019 -->
 	<footer class="footer-2019" data-module="footer-2019">
@@ -126,107 +69,7 @@
 
 	<script src="<!-- @echo assetsPath -->/consul2-produto-institucional.min.js?v=<!-- @echo package.version -->">
 	</script>
-	<script>
-		if (window.addBannerCovid) window.addBannerCovid();
-		let tag = document.createElement("script");
-		let firstScriptTag = document.getElementsByTagName(
-			"script"
-		)[0];
 
-		// O container do video
-		let playerDiv = document.getElementById("main-video-frame");
-
-		let videoId = playerDiv.getAttribute("data-video-id");
-
-		// inicializando o player
-		let player;
-
-		let videoDuration = 0;
-
-		// inicializando o contador do tempo do video
-		let videotime = 0;
-
-		// inicializando intervalo
-		let intervalVideo = null;
-
-		// Adicionando Youtube iframe API
-		tag.src = "https://www.youtube.com/iframe_api";
-		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-		// Método chamado automaticamente pela api do youtube
-		function onYouTubeIframeAPIReady() {
-			player = new YT.Player("main-video-frame", {
-				height: 650,
-				width: "100%",
-				videoId: videoId,
-				events: {
-					onReady: onPlayerReady
-				},
-				playerVars: {
-					rel: 0,
-					showinfo: 0
-				}
-			});
-		}
-
-		// Método chamado nos eventos do player
-		function onPlayerReady(event) {
-			// obtendo a duração do video, em segundos
-			videoDuration = parseInt(player.getDuration());
-			// aplicando o intervalo de 1 em 1 segundo
-			intervalVideo = setInterval(discoverTime, 1000);
-		}
-
-		// método utilizado para descobrir o tempo atual do vídeo
-		function discoverTime() {
-			if (player) {
-				if (player.getCurrentTime) {
-					videoDuration = parseInt(player.getDuration());
-					videotime = parseInt(player.getCurrentTime());
-
-					if (videotime == parseInt(videoDuration * 0.25)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "video",
-							label: "25%"
-						});
-					} else if (videotime == parseInt(videoDuration * 0.5)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "video",
-							label: "50%"
-						});
-					} else if (videotime == parseInt(videoDuration * 0.75)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "video",
-							label: "75%"
-						});
-					} else if (videotime == videoDuration) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "video",
-							label: "100%"
-						});
-					}
-				}
-			}
-
-			if (videotime == videoDuration) {
-				clearInterval(intervalVideo);
-				let videoContainer = document.getElementById("video-container");
-				let mainVideo = document.getElementById("main-video");
-
-				mainVideo.style.display = "none";
-				videoContainer.style.display = "block";
-			}
-		}
-
-	</script>
 	<script type="text/javascript" src="https://cdn.awsli.com.br/910/910263/arquivos/slick.js"> </script>
 	<style>
 		@import url("https://cdn.awsli.com.br/910/910263/arquivos/slick.css");
