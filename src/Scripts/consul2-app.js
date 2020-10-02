@@ -194,9 +194,8 @@ window.showBannerPromotor = function(mobile, desk) {
 		// Container PDP
 		const containerWhats = document.querySelector(containerWhatsClass)
 		if(containerWhats){
-			console.clear()
-			console.log(containerWhatsClass)
 			document.querySelector(containerWhatsClass).style.display = 'block';
+			if (window.mobileCheck()) document.querySelector('.content_botoes_televendas-whats').classList.add('is--active')
 		}
 	}
 

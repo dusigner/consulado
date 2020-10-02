@@ -172,12 +172,12 @@
 .container-epromotor a img {
 	display: block;
 	max-width: 100%;
-	@include breakpoint(500px, 'max') { display: none; }
+	@include breakpoint(600px, 'max') { display: none; }
 }
 
 .container-epromotor a img.mobile {
 	display: none;
-	@include breakpoint(500px, 'max') { display: block; margin: 0 auto; }
+	@include breakpoint(600px, 'max') { display: block; margin: 0 auto; }
 }
 
 
