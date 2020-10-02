@@ -100,7 +100,7 @@ Nitro.module('specifications', function () {
 
 		$(window).scroll(function (event) {
 			var $scroll = $(window).scrollTop();
-			var $scrollSpecification = $('#especificacoes').offset().top;
+			var $scrollSpecification = $('#specifications-lp').offset().top;
 
 			if ($scroll > $scrollSpecification - 600) {
 				if (!$('body').hasClass('is--scroll')) {

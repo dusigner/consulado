@@ -1,83 +1,41 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
-
-
-
 <head>
-
 	<title>Loja Consul - Página de Produto Institucional</title>
-
 	<vtex:metaTags />
-
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
-
 	<vtex:template id="0-consul-head-content" />
-
 	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto-institucional.css?v=<!-- @echo package.version -->" />
-
 </head>
-
-
-
 <body data-controller="produto-institucional">
-
 	<!-- Index best price in Google Shopping-->
-
 	<vtex.cmc:productRichSnippets paymentSystemId="4" />
-
 	<!-- /Index best price in Google Shopping-->
 
-
-
 	<!-- Top Header -->
-
 	<vtex:template id="0-consul-top-header" />
-
 	<!-- /Top Header -->
 
-
-
 	<!-- Header -->
-
 	<vtex:template id="0-consul-header" />
-
 	<!-- /Header -->
 
-
-
-	<!-- LP Content -->
-
-	<section id="top-navigation--pdp" class="top-navigation--pdp">
-
-		<div class="container d-flex justify-content-between">
-
-			<nav>
-
-				<ul>
-
-					<li><a href="#features">Features e Benefícios</a></li>
-
-					<li><a href="#gela-facil">Gela Fácil</a></li>
-
-					<li><a href="#gela-mais">Gela Mais</a></li>
-
-					<li>
-
-						<a href="#ambientes">Bonitos em qualquer ambiente</a>
-
-					</li>
-
+	<!-- Fixed Bar -->
+	<section id="fixed-bar" class="navigation-sticked">
+		<div class="container">
+			<nav class="navigation-sticked-nav">
+				<ul class="navigation-sticked-list">
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link" href="#benefits-lp">Benefícios</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link" href="#features">Características</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link" href="#campaign">Campanha</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link" href="#specifications-lp">Especificações</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link" href="#facilita">Facilita</a></li>
 				</ul>
-
 			</nav>
-
-			<a class="cta cta--green" href="#eu-quero">Eu quero!</a>
-
+			<a class="navigation-sticked-cta cta--green" href="#features">Eu quero!</a>
 		</div>
-
 	</section>
-
+	<!-- /Fixed Bar -->
 
 	<!-- Benefícios Consul -->
 	<section id="benefits-lp" class="container-benefits">
@@ -89,10 +47,10 @@
 			<vtex.cmc:benefitsInstitutionalProductMobile />
 		</div>
 	</section>
-	<!--  Benefícios Consul -->
+	<!-- /Benefícios Consul -->
 
 	<!-- Especificações Técnicas -->
-	<section id="especificacoes" class="technical-specifications">
+	<section id="specifications-lp" class="container-specifications">
 		<div class="specs__title">
 			<div class="container">
 				<h2 class="specs__title-main">Especificações <span>técnicas</span></h2>
@@ -262,7 +220,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Especificações Técnicas -->
+	<!-- /Especificações Técnicas -->
 
 	<!-- Video Bem pensado -->
 	<section id="bempensado-lp" class="container-bempensado">
@@ -274,13 +232,10 @@
 			<vtex.cmc:videoBemPensadoMobile />
 		</div>
 	</section>
-	<!-- Video Bem pensado -->
-
-
+	<!-- /Video Bem pensado -->
 
 	<!-- Blog Facilita Consul -->
-
-	<section class="container-blog-facilita">
+	<section id="facilita" class="container-blog-facilita">
 
 		<div class="title-blog-facilita">
 
@@ -381,58 +336,25 @@
 		</div>
 
 	</section>
-
 	<!-- /Blog Facilita Consul -->
 
-
-
-
-
 	<!-- Footer 2019 -->
-
 	<footer class="footer-2019" data-module="footer-2019">
-
 		<vtex:template id="0-consul-footer-2019-servicos" />
-
 		<vtex:template id="0-consul-footer-2019-atendimento" />
-
 		<vtex:template id="0-consul-footer-2019-menu" />
-
 		<vtex:template id="0-consul-footer-2019-bottom" />
-
 	</footer>
 
 	<vtex:template id="0-consul-footer-2019-after" />
-
 	<!-- /Footer 2019 -->
 
-
-
-	<script src="<!-- @echo assetsPath -->/consul2-produto-institucional.min.js?v=<!-- @echo package.version -->">
-
-	</script>
-
+	<script src="<!-- @echo assetsPath -->/consul2-produto-institucional.min.js?v=<!-- @echo package.version -->"></script>
 	<script>
 		if (window.addBannerCovid) window.addBannerCovid();
-
 		var tag = document.createElement("script");
-
-		var firstScriptTag = document.getElementsByTagName(
-
-			"script"
-
-		)[0];
-
+		var firstScriptTag = document.getElementsByTagName("script")[0];
 	</script>
-
-	<script type="text/javascript" src="https://cdn.awsli.com.br/910/910263/arquivos/slick.js"> </script>
-
-	<style>
-		@import url("https://cdn.awsli.com.br/910/910263/arquivos/slick.css");
-	</style>
-
+	<script type="text/javascript" src="https://cdn.awsli.com.br/910/910263/arquivos/slick.js"></script>
 </body>
-
-
-
 </html>
