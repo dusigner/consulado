@@ -2,9 +2,9 @@
 'use strict';
 
 // import 'modules/product/video';
-// import 'modules/product/sku-fetch';
+import 'modules/product/sku-fetch';
 // import 'modules/product/gallery-v2';
-// import 'modules/product/product-nav-v2';
+ import 'modules/product/product-nav-v2';
 // import 'modules/product/details';
 // import 'modules/product/specifications-v2';
 // import 'modules/product/selos';
@@ -21,17 +21,18 @@
 // import 'modules/product/outline-products';
 // import 'modules/chaordic';
 // import 'dataLayers/dataLayer-product';
+import 'modules/caracteristicas';
 import 'modules/produto-institucional/produto-institucional';
 
 Nitro.controller(
     'produto-institucional',
     [
-        'produto-institucional'
+        'produto-institucional',
         // 'chaordic',
         // 'color-selector',
-        // 'sku-fetch',
+        'sku-fetch',
         // 'galleryv2',
-        // 'product-nav',
+        'product-nav',
         // 'video',
         // 'details',
         // 'specifications-v2',
