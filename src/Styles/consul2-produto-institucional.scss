@@ -38,7 +38,6 @@
 body {
 	font-family: "Consul";
 	background-color: #F4F2F1;
-	max-width: 1920px;
 }
 
 // Topbar
@@ -170,6 +169,7 @@ body {
 .container-bempensado {
 
 	&__desktop {
+		margin: 0 auto;
 
 		@media screen and (max-width: 768px) {
 			display: none;
@@ -178,7 +178,8 @@ body {
 		#container-video {
 			display: flex;
 			background: #FFFFFF;
-			padding-left: 55px;
+			margin: 0 auto;
+
 
 			.bg-light-black {
 				background: rgb(64, 60, 59);
@@ -216,16 +217,16 @@ body {
 						width: 944px;
 						height: 543.46px;
 						border-radius: 5px;
+						margin: 0 auto;
+						margin-left: 20px;
+						margin-right: 20px;
 					}
 				}
 
 				.text {
-					padding: 15% 250px 0 40px;
-
-					@media screen and (max-width: 1366px) {
-						padding: 15% 120px 0 40px;
-					}
-
+					padding-top: 15%;
+					margin-left: 10px;
+					margin-right: 5%;
 				}
 
 				.reinvente {
@@ -333,10 +334,10 @@ body {
 
 }
 
-
-
 // Blog Facilita
 .container-blog-facilita {
+	max-width: 1206px;
+	margin: 0 auto;
 	background-color: #F4F2F1;
 	margin-top: 5%;
 

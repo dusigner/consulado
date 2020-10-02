@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 
 
@@ -14,7 +15,8 @@
 
 	<vtex:template id="0-consul-head-content" />
 
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-produto-institucional.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet"
+		href="<!-- @echo assetsPath -->/consul2-produto-institucional.css?v=<!-- @echo package.version -->" />
 
 </head>
 
@@ -46,38 +48,53 @@
 
 
 
-	<!-- LP Content -->
-
-	<section id="top-navigation--pdp" class="top-navigation--pdp">
-
-		<div class="container d-flex justify-content-between">
-
-			<nav>
-
-				<ul>
-
-					<li><a href="#features">Features e Benefícios</a></li>
-
-					<li><a href="#gela-facil">Gela Fácil</a></li>
-
-					<li><a href="#gela-mais">Gela Mais</a></li>
-
-					<li>
-
-						<a href="#ambientes">Bonitos em qualquer ambiente</a>
-
-					</li>
-
+	<!-- Fixed Bar -->
+	<section id="fixed-bar-lp" class="navigation-sticked">
+		<div class="container">
+			<nav class="navigation-sticked-nav">
+				<ul class="navigation-sticked-list">
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link"
+							href="#benefits-lp">Benefícios</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link"
+							href="#caracteristicas-lp">Características</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link"
+							href="#bempensado-lp">Campanha</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link"
+							href="#specifications-lp">Especificações</a></li>
+					<li class="navigation-sticked-item"><a class="navigation-sticked-link"
+							href="#container-blog-facilita">Facilita</a></li>
 				</ul>
-
 			</nav>
-
-			<a class="cta cta--green" href="#eu-quero">Eu quero!</a>
-
+			<a class="navigation-sticked-cta cta--green" href="#caracteristicas-lp">Eu quero!</a>
 		</div>
-
 	</section>
+	<!-- /Fixed Bar -->
 
+	<!-- Main Banner -->
+	<section id="main-banner-lp" class="container-main-banner">
+		<vtex:contentPlaceHolder id="mainBanner" />
+	</section>
+	<!-- /Main Banner -->
+
+	<!-- Características -->
+	<section class="caracteristicas-lp">
+		<div class="product-info-bar">
+			<div class="product-info-bar__container">
+				<!-- Preço produto -->
+				<div class="product-info-bar__price">
+					<vtex.cmc:skuPrice />
+				</div>
+				<!-- /Preço produto -->
+
+				<!-- Comprar -->
+				<div class="product-info-bar__buy">
+					<vtex.cmc:BuyButton />
+				</div>
+				<!-- /Comprar -->
+			</div>
+		</div>
+	</section>
+	<!-- Fim Características -->
 
 	<!-- Benefícios Consul -->
 	<section id="benefits-lp" class="container-benefits">
@@ -92,19 +109,22 @@
 	<!--  Benefícios Consul -->
 
 	<!-- Especificações Técnicas -->
-	<section id="especificacoes" class="technical-specifications">
+	<section id="specifications-lp" class="container-specifications">
 		<div class="specs__title">
 			<div class="container">
 				<h2 class="specs__title-main">Especificações <span>técnicas</span></h2>
-				<h4 class="specs__title-sub">Medidas, itens, especificações e informações sobre o produto</h4><i class="icon icon-consul-clipboard"></i><i class="icon icon-arrow-left"></i>
+				<h4 class="specs__title-sub">Medidas, itens, especificações e informações sobre o produto</h4><i
+					class="icon icon-consul-clipboard"></i><i class="icon icon-arrow-left"></i>
 			</div>
 		</div>
 		<div class="specs__measure specs__section">
 			<div class="container">
 				<h4 class="specs__measure-title">Medidas<i class="icon icon-top-arrow"></i></h4>
 				<div class="specs__measure-selector specs__list">
-					<a href="javascript:void(0)" class="specs__measure-selector-withoutBox active" data-selector="sem-caixa">Sem caixa</a>
-					<a href="javascript:void(0)" class="specs__measure-selector-withBox" data-selector="com-caixa">Com caixa</a>
+					<a href="javascript:void(0)" class="specs__measure-selector-withoutBox active"
+						data-selector="sem-caixa">Sem caixa</a>
+					<a href="javascript:void(0)" class="specs__measure-selector-withBox" data-selector="com-caixa">Com
+						caixa</a>
 				</div>
 				<div class="specs__measure-content specs__list">
 					<div class="specs__measure-box">
@@ -252,10 +272,20 @@
 					<h4 class="specs__links-title">Downloads<i class="icon icon-top-arrow"></i></h4>
 					<div class="specs__links-content specs__list">
 						<ul class="specs__links-content-list">
-							<li class="specs__links-content-row"><a href="https://dr0ni321kumyw.cloudfront.net/wp-content/uploads/2019/05/Consul_Geladeira_CRE44AK_Manual_Vers%C3%A3o_Impress%C3%A3o.pdf" class="specs__links-content-element" target="_blank">Manual do Produto</a></li>
-							<li class="specs__links-content-row"><a href="https://dr0ni321kumyw.cloudfront.net/wp-content/uploads/2019/05/Consul_Geladeira_CRE44AK_Guia_Rapido_Vers%C3%A3o_Digital.pdf" class="specs__links-content-element" target="_blank">Guia Rápido</a></li>
-							<li class="specs__links-content-row"><a href="/arquivos/Consul_Geladeira_CRE44AK_Selo_Inmetro_127v.jpg" class="specs__links-content-element" target="_blank">Classificação Energética 110v</a></li>
-							<li class="specs__links-content-row"><a href="/arquivos/Consul_Geladeira_CRE44AK_Selo_Inmetro_220v.jpg" class="specs__links-content-element" target="_blank">Classificação Energética 220v</a></li>
+							<li class="specs__links-content-row"><a
+									href="https://dr0ni321kumyw.cloudfront.net/wp-content/uploads/2019/05/Consul_Geladeira_CRE44AK_Manual_Vers%C3%A3o_Impress%C3%A3o.pdf"
+									class="specs__links-content-element" target="_blank">Manual do Produto</a></li>
+							<li class="specs__links-content-row"><a
+									href="https://dr0ni321kumyw.cloudfront.net/wp-content/uploads/2019/05/Consul_Geladeira_CRE44AK_Guia_Rapido_Vers%C3%A3o_Digital.pdf"
+									class="specs__links-content-element" target="_blank">Guia Rápido</a></li>
+							<li class="specs__links-content-row"><a
+									href="/arquivos/Consul_Geladeira_CRE44AK_Selo_Inmetro_127v.jpg"
+									class="specs__links-content-element" target="_blank">Classificação Energética
+									110v</a></li>
+							<li class="specs__links-content-row"><a
+									href="/arquivos/Consul_Geladeira_CRE44AK_Selo_Inmetro_220v.jpg"
+									class="specs__links-content-element" target="_blank">Classificação Energética
+									220v</a></li>
 						</ul>
 					</div>
 				</div>
@@ -276,117 +306,9 @@
 	</section>
 	<!-- Video Bem pensado -->
 
-
-
 	<!-- Blog Facilita Consul -->
-
-	<section class="container-blog-facilita">
-
-		<div class="title-blog-facilita">
-
-			<img src="/arquivos/facilita-logo.png" alt="Facilita Logo" title="Facilita Logo" class="logo-facilita-blog"></img>
-
-			<h1 class="text-blog-facilita">
-
-				Pensada para facilitar a organização e a limpeza do seu refrigerador, a Geladeira Branca com Freezer
-
-				embaixo
-
-				oferece praticidade na hora de armazenar os seus alimentos. Com controle de temperatura externo e turbo
-
-				freezer.
-
-			</h1>
-
-		</div>
-
-		<div class="container-cards">
-
-			<div class="card-blog">
-
-				<div class="container-image">
-
-					<img src="/arquivos/post01.png" class="img-facilita-consul" alt="Facilita Consul" />
-
-				</div>
-
-				<div class="card-body-blog">
-
-					<h5 class="card-title-blog">O que fazer com as embalagens do eletrodoméstico novo?</h5>
-
-					<p class="card-text-blog">Hoje, mais do que nunca, é essencial dar o destino correto para o lixo,
-
-						para causar o menor
-
-						impacto na natureza possível. Plástico bolha é reciclável? Onde eu jogo o isopor? O que fazer
-
-						com todo aquele papelão? Respondemos essas e outras dúvidas para você.</p>
-
-					<a href="https://www.consul.com.br/facilita-consul/ihhh-agora/como-descartar-embalagem-de-eletrodomesticos/" class="btn-saiba-mais">Saiba mais</a>
-
-				</div>
-
-			</div>
-
-			<div class="card-blog">
-
-				<div class="container-image">
-
-					<img src="/arquivos/post02.png" class="img-facilita-consul" alt="Facilita Consul" />
-
-				</div>
-
-				<div class="card-body-blog">
-
-					<h5 class="card-title-blog">Quais as vantagens da geladeira com congelador embaixo?</h5>
-
-					<p class="card-text-blog">A geladeira com freezer embaixo, também conhecida como inverse ou
-
-						invertida, é um dos modelos mais modernos do mercado e, por isso, chama a atenção de quem quer
-
-						reformular ou dar um upgrade na cozinha. Mas, você sabe qual a vantagem de investir nesse
-
-						modelo?</p>
-
-					<a href="https://www.consul.com.br/facilita-consul/bem-pensado-para-voce/geladeira-com-freezer-embaixo/" class="btn-saiba-mais">Saiba mais</a>
-
-				</div>
-
-			</div>
-
-			<div class="card-blog">
-
-				<div class="container-image">
-
-					<img src="/arquivos/post03.png" class="img-facilita-consul" alt="Facilita Consul" />
-
-				</div>
-
-				<div class="card-body-blog">
-
-					<h5 class="card-title-blog">Como calcular o consumo de energia dos eletrodomésticos?</h5>
-
-					<p class="card-text-blog">O consumo de energia elétrica é um daqueles gastos rotineiros para o qual
-
-						estamos sempre procurando formas de economizar. Uma das formas de se fazer isso, além de
-
-						mudanças nos hábitos diários, é saber exatamente o que está consumindo essa energia.</p>
-
-					<a href="https://www.consul.com.br/facilita-consul/bem-pensado-para-voce/consumo-de-energia-de-eletrodomestico/" class="btn-saiba-mais">Saiba mais</a>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</section>
-
+	<vtex.cmc:facilitaBlog />
 	<!-- /Blog Facilita Consul -->
-
-
-
-
 
 	<!-- Footer 2019 -->
 
@@ -407,29 +329,8 @@
 	<!-- /Footer 2019 -->
 
 
+	<script src="/files/consul2-produto-institucional.min.js?v=v1601577000696"></script>
 
-	<script src="<!-- @echo assetsPath -->/consul2-produto-institucional.min.js?v=<!-- @echo package.version -->">
-
-	</script>
-
-	<script>
-		if (window.addBannerCovid) window.addBannerCovid();
-
-		var tag = document.createElement("script");
-
-		var firstScriptTag = document.getElementsByTagName(
-
-			"script"
-
-		)[0];
-
-	</script>
-
-	<script type="text/javascript" src="https://cdn.awsli.com.br/910/910263/arquivos/slick.js"> </script>
-
-	<style>
-		@import url("https://cdn.awsli.com.br/910/910263/arquivos/slick.css");
-	</style>
 
 </body>
 

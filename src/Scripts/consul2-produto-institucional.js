@@ -13,7 +13,7 @@ Nitro.controller(
 		'specifications'
 	],
 
-	function () {}
+	function () { }
 )
 
 let sbSlick = function () {
