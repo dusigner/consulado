@@ -1,0 +1,99 @@
+#main-banner-lp {
+    background-color: #83CD26;
+    overflow: hidden;
+    .main-banner {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding-left: 5%;
+
+        @media screen and (max-width: 768px) {
+            max-height: 389px;
+        }
+
+        &__text {
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            z-index: 1;
+            max-width: 430px;
+            margin-left: 2rem;
+            @media screen and (max-width: 768px) {
+                max-width: 48%;
+            }
+
+            .pre-title {
+                font-size: 1.125rem;
+                text-transform: uppercase;
+                font-weight: 400;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1em;
+                    letter-spacing: 1px;
+                }
+            }
+
+            .main-title {
+                @media screen and (max-width: 768px) {
+                    margin-top: 0;
+                }
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5rem;
+                @media screen and (max-width: 768px) {
+                    display: none;
+                }
+            }
+
+            .cta {
+                color: #ffffff;
+                font-weight: 700;
+                position: relative;
+                padding-left: 22px;
+                @media screen and (max-width: 768px) {
+                    padding-left: 15px;
+                }
+
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 9px;
+                    height: 9px;
+                    border-bottom: 2px solid #ffffff;
+                    border-right: 2px solid #ffffff;
+                    position: absolute;
+                    left: 0;
+                    border-radius: 1px;
+                    transform: translateY(-50%) rotate(45deg);
+                    top: 41%;
+                    @media screen and (max-width: 768px) {
+                        width: 5.5px;
+                        height: 5.5px;
+                    }
+                }
+            }
+
+        }
+        &__gif {
+            display: flex;
+            flex: 2;
+            left: -3rem;
+            position: relative;
+            @media screen and (max-width: 768px) {
+                height: 389px;
+                left: 10%;
+            }
+
+            img {
+                @media screen and (max-width: 768px) {
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+}
