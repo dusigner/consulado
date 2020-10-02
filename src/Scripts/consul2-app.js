@@ -193,8 +193,9 @@ window.showBannerPromotor = function (mobile, desk) {
 	if (device === 'whats') {
 		// Container PDP
 		const containerWhats = document.querySelector(containerWhatsClass)
-		if (containerWhats) {
+		if(containerWhats){
 			document.querySelector(containerWhatsClass).style.display = 'block';
+			if (window.mobileCheck()) document.querySelector('.content_botoes_televendas-whats').classList.add('is--active')
 		}
 	}
 
@@ -217,7 +218,7 @@ window.showBannerPromotor = function (mobile, desk) {
 				if (window.liveChat) {
 					window.liveChat('init', liveChatId)
 					runnedChat = true;
-				} else timeoutChat = setTimeout(tryToRun, 1000);
+				}else timeoutChat = setTimeout(tryToRunChat, 1000);
 			}
 		}
 		tryToRunChat();
@@ -225,8 +226,11 @@ window.showBannerPromotor = function (mobile, desk) {
 }
 
 // Controle do container do promotor e liveChat para controle via Optimize
-document.querySelector('.container-whats') ? document.querySelector('.container-whats').style.display = 'none' : '';
-document.querySelector('.content_botoes_televendas') ? document.querySelector('.content_botoes_televendas').style.display = 'none' : '';
+if(document.querySelector('.container-whats')){
+	document.querySelector('.container-whats').style.display = 'none';
+	document.querySelector('.content_botoes_televendas').style.display = 'none';
+}
+
 let bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 
 if (bannerPromotor) {
