@@ -87,6 +87,10 @@
                         display: none;
                     }
 
+                    &:hover {
+                        cursor: pointer;
+                    }
+
                     &:before {
                         content: '+';
                         display: flex;
