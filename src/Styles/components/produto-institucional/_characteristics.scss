@@ -36,16 +36,50 @@
             .section-title {
                 margin-bottom: 4.5rem;
                 font-weight: 700;
+
+                @media screen and(max-width:768px) {
+                    margin-bottom: 1rem;
+                    font-size: 1.5rem;
+                }
             }
 
-            .product-characteristics {
-                margin-bottom: 1rem;
-                font-weight: 400;
+            .product-description {
+                display: none;
+
+                &.is-active {
+                    display: block;
+                    @media screen and(max-width:768px) {
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                    }
+                }
+
+                .product-characteristics {
+                    margin-bottom: 1rem;
+                    font-weight: 400;
+                    @media screen and(max-width:768px) {
+                        font-size: 1.25rem;
+                        font-weight: 700;
+                    }
+
+                    span {
+                        display: none;
+                        @media screen and(max-width:768px) {
+                            display: block;
+                        }
+                    }
+                }
+
+                .product-characteristics-description {
+                    line-height: 1.72rem;
+                    @media screen and(max-width:768px) {
+                        font-size: .87rem;
+                        margin-top: 65vh;
+                    }
+                }
             }
 
-            .product-characteristics-description {
-                line-height: 1.72rem;
-            }
         }
         &__image {
             display: flex;
@@ -57,6 +91,10 @@
 
             @media screen and(max-width:768px) {
                 left: 0;
+                width: 95%;
+                right: 0;
+                top: 16%;
+                margin: 0 auto;
             }
 
             img {
@@ -85,6 +123,9 @@
 
                     span {
                         display: none;
+                        @media screen and (max-width: 768px) {
+                            font-size: .75rem;
+                        }
                     }
 
                     &:hover {
@@ -160,7 +201,7 @@
                                     content: '5';
                                     width: 1.5rem;
                                     height: 1.5rem;
-                                    font-size: 1em;
+                                    font-size: .75rem;
                                 }
                             }
 
@@ -220,7 +261,7 @@
                                     content: '4';
                                     width: 1.5rem;
                                     height: 1.5rem;
-                                    font-size: 1em;
+                                    font-size: .75rem;
                                 }
                             }
 
@@ -280,7 +321,7 @@
                                     content: '3';
                                     width: 1.5rem;
                                     height: 1.5rem;
-                                    font-size: 1em;
+                                    font-size: .75rem;
                                 }
                             }
 
@@ -340,7 +381,7 @@
                                     content: '2';
                                     width: 1.5rem;
                                     height: 1.5rem;
-                                    font-size: 1em;
+                                    font-size: .75rem;
                                 }
                             }
 
@@ -400,7 +441,7 @@
                                     content: '1';
                                     width: 1.5rem;
                                     height: 1.5rem;
-                                    font-size: 1em;
+                                    font-size: .75rem;
                                 }
                             }
 
