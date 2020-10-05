@@ -5,13 +5,14 @@ Nitro.module('characteristics', function () {
 	this.init = function () {
         this.handleChangeImage();
         this.seeMoreDescription();
+        this.dataLayerFeaturesInstitutional();
 	};
 
 	this.handleChangeImage = () => {
         let pathImage;
         let button = $('.characteristics-block__image .image-buttons .image-buttons__item');
         let textDescription = $('.characteristics-block__text .product-description');
-        console.log(textDescription)
+
         $(button).on('click', function(){
             let buttonClicked = $(this);
             if ($(button).hasClass('is-active')) {
@@ -49,6 +50,92 @@ Nitro.module('characteristics', function () {
                 $(this).text('LEIA MAIS')
             }
         })
+    }
+
+    this.dataLayerFeaturesInstitutional = () => {
+        let button = $('.characteristics-block__image .image-buttons .image-buttons__item');
+        $(button).on('click', function(){
+            let option = $(this).find('span').text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+            dataLayer.push({
+                event: 'generic',
+                category: 'PDP_institucional',
+                action: 'features ',
+                label: `veja_mais_${option}`
+            })
+        })
+
+        $(button).mouseover(function() {
+            let option = $(this).find('span').text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+            dataLayer.push({
+                event: 'generic',
+                category: 'PDP_institucional',
+                action: 'features ',
+                label: `veja_mais_${option}`
+            })
+        });
+
+        // Viability DataLayer
+
+        var firstFeaturesInstitucional = true;
+	    var intervalFeaturesInstitucional = null;
+
+        $(window).on('scroll', function () {
+            setTimeout(function () {
+                // Features
+                if (firstFeaturesInstitucional && $('#caracteristicas-lp').isOnScreen(1, 0.5)) {
+                    var counter = 0;
+
+                    intervalFeaturesInstitucional = setInterval(function () {
+                        counter++;
+                        if (counter >= 12) {
+                            clearInterval(intervalFeaturesInstitucional);
+                            return;
+                        } else {
+                            if (
+                                counter == 1 &&
+                                $('#caracteristicas-lp').isOnScreen(1, 0.5)
+                            ) {
+                                dataLayer.push({
+                                    event: 'generic',
+                                    category: 'PDP_institucional',
+                                    action: 'features ',
+                                    label: 'viability_features_1_segundo'
+                                })
+                            } else if (
+                                counter == 4 &&
+                                $('#caracteristicas-lp').isOnScreen(1, 0.5)
+                            ) {
+                                dataLayer.push({
+                                    event: 'generic',
+                                    category: 'PDP_institucional',
+                                    action: 'features ',
+                                    label: 'viability_features_4_segundos'
+                                })
+                            } else if (
+                                counter == 10 &&
+                                $('#caracteristicas-lp').isOnScreen(1, 0.5)
+                            ) {
+                                dataLayer.push({
+                                    event: 'generic',
+                                    category: 'PDP_institucional',
+                                    action: 'features ',
+                                    label: 'viability_features_10_segundos'
+                                })
+                            }
+                        }
+                    }, 1000);
+
+                    firstFeaturesInstitucional = false;
+                }
+
+                if ($('#caracteristicas-lp')[0].getBoundingClientRect().bottom < 0) {
+                    clearInterval(intervalFeaturesInstitucional);
+                }
+            }, 500);
+        });
+
+        // Viability DataLayer
+
     }
 
 	this.init();
