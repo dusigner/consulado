@@ -84,10 +84,14 @@ body {
 	font-family: "Consul";
 	overflow: hidden;
 	position: sticky;
-	top: -1;
+	top: -1px;
 	z-index: 1;
 
 	.container {
+		@include breakpoint("small", "max") {
+			padding: 0 10px !important;
+		}
+
 		align-items: center;
 		display: flex;
 		justify-content: space-between;

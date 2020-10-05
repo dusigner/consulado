@@ -33,9 +33,24 @@ Nitro.module('specifications', function () {
 	self.specs = () => {
 		$('.specs__see-more__button').bind('click', function (e) {
 			e.preventDefault();
+
 			$('.specs__container').toggleClass('active');
 			$('.specs__see-more').toggleClass('active');
+
+			if ($('.specs__see-more').hasClass('active')) {
+				$(this).addClass('see-less').html('Veja menos');
+			} else {
+				$(this).removeClass('see-less').html('Veja mais');
+
+				let hash = $('.specs__see-more__button[href^="#"]').attr('href'),
+					targetOffset = $(hash).offset().top;
+
+				$('html, body').animate({
+					scrollTop: targetOffset - 56
+				}, 500);
+			}
 		});
+
 	},
 
 	self.dataLayerSpecsLinks = () => {
