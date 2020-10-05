@@ -2,6 +2,10 @@
     display: flex;
     height: 738px;
     align-items: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
     .characteristics-block {
         display: flex;
         align-items: center;
@@ -13,6 +17,7 @@
 
         @media screen and (max-width:768px) {
             width: 100%;
+            height: 795px;
         }
         &__text {
             display: flex;
@@ -51,7 +56,7 @@
                     @media screen and(max-width:768px) {
                         display: flex;
                         flex-direction: column;
-                        height: 100%;
+                        height: 650px;
                     }
                 }
 
@@ -59,14 +64,17 @@
                     margin-bottom: 1rem;
                     font-weight: 400;
                     @media screen and(max-width:768px) {
-                        font-size: 1.25rem;
-                        font-weight: 700;
+                        display: none;
                     }
 
-                    span {
+                    &.mobile {
                         display: none;
                         @media screen and(max-width:768px) {
-                            display: block;
+                            font-size: 1.25rem;
+                            font-weight: 700;
+                            display: flex;
+                            min-height: 60px;
+                            justify-content: center;
                         }
                     }
                 }
@@ -75,7 +83,64 @@
                     line-height: 1.72rem;
                     @media screen and(max-width:768px) {
                         font-size: .87rem;
-                        margin-top: 65vh;
+                        margin-top: 131%;
+                        max-height: 110px;
+                        overflow: hidden;
+                    }
+
+                    &.is-open {
+                        @media screen and(max-width:768px) {
+                            max-height: 100%;
+                            overflow: visible;
+                        }
+                    }
+                }
+
+                .product-characteristics-see-more {
+                    display: none;
+                    @media screen and (max-width: 768px) {
+                        display: block;
+                        box-shadow: 0px -15px 45px 16px #8ac922;
+                        position: relative;
+                        font-size: .87rem;
+                        font-weight: 500;
+                    }
+
+                    &:after {
+                        @media screen and (max-width: 768px) {
+                            content: '';
+                            width: 9px;
+                            height: 9px;
+                            border-right: 2px solid #ffffff;
+                            border-bottom: 2px solid #ffffff;
+                            display: block;
+                            position: absolute;
+                            right: 34%;
+                            top: 40%;
+                            transform: translateY(-50%) rotate(45deg);
+                        }
+                    }
+
+                    &.is-open {
+                        @media screen and (max-width: 768px) {
+                            box-shadow: none;
+                            margin-top: 5px;
+                        }
+
+                        &:after {
+                            @media screen and (max-width: 768px) {
+                                content: '';
+                                width: 9px;
+                                height: 9px;
+                                border-right: 2px solid #ffffff;
+                                border-bottom: 2px solid #ffffff;
+                                display: block;
+                                position: absolute;
+                                right: 31%;
+                                top: 60%;
+                                transform: translateY(-50%) rotate(-135deg);
+                            }
+                        }
                     }
                 }
             }
@@ -90,10 +155,11 @@
             }
 
             @media screen and(max-width:768px) {
-                left: 0;
-                width: 95%;
+                width: 90%;
+                max-height: 65%;
+                top: 17%;
                 right: 0;
-                top: 16%;
+                left: 0;
                 margin: 0 auto;
             }
 
@@ -108,6 +174,11 @@
                 transform: translateX(50%);
                 width: 100%;
                 height: 100%;
+
+                @media screen and (max-width: 768px) {
+                    right: 46%;
+                }
+
                 &.white {
                     display: none;
                 }
@@ -155,6 +226,12 @@
                     &:nth-child(1) {
                         top: 18%;
                         right: 36%;
+                        &:before {
+                            @media screen and (max-width:768px) {
+                                content: '5';
+                                font-size: .75rem;
+                            }
+                        }
                         &:hover {
                             right: 4%;
                             display: flex;
@@ -216,6 +293,12 @@
                     &:nth-child(2) {
                         top: 25%;
                         right: 67%;
+                        &:before {
+                            @media screen and (max-width:768px) {
+                                content: '4';
+                                font-size: .75rem;
+                            }
+                        }
                         &:hover {
                             right: 37%;
                             display: flex;
@@ -276,6 +359,12 @@
                     &:nth-child(3) {
                         top: 39%;
                         right: 53%;
+                        &:before {
+                            @media screen and (max-width:768px) {
+                                content: '3';
+                                font-size: .75rem;
+                            }
+                        }
                         &:hover {
                             right: 26%;
                             display: flex;
@@ -336,6 +425,12 @@
                     &:nth-child(4) {
                         top: 52%;
                         right: 42%;
+                        &:before {
+                            @media screen and (max-width:768px) {
+                                content: '2';
+                                font-size: .75rem;
+                            }
+                        }
                         &:hover {
                             right: 10%;
                             display: flex;
@@ -396,6 +491,12 @@
                     &:nth-child(5) {
                         top: 73%;
                         right: 39%;
+                        &:before {
+                            @media screen and (max-width:768px) {
+                                content: '1';
+                                font-size: .75rem;
+                            }
+                        }
                         &:hover {
                             right: 8%;
                             display: flex;

@@ -3,7 +3,8 @@
 Nitro.module('characteristics', function () {
 
 	this.init = function () {
-		this.handleChangeImage();
+        this.handleChangeImage();
+        this.seeMoreDescription();
 	};
 
 	this.handleChangeImage = () => {
@@ -33,6 +34,21 @@ Nitro.module('characteristics', function () {
             })
 
         });
+    }
+
+    this.seeMoreDescription = () => {
+        $('.product-characteristics-see-more').on('click', function(){
+
+            $(this).toggleClass('is-open');
+
+            $(this).parent().find('.product-characteristics-description').toggleClass('is-open');
+
+            if($(this).text() === 'LEIA MAIS') {
+                $(this).text('LEIA MENOS')
+            } else {
+                $(this).text('LEIA MAIS')
+            }
+        })
     }
 
 	this.init();
