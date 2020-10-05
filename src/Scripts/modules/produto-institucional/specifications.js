@@ -46,7 +46,7 @@ Nitro.module('specifications', function () {
 					targetOffset = $(hash).offset().top;
 
 				$('html, body').animate({
-					scrollTop: targetOffset - 56
+					scrollTop: targetOffset - 57
 				}, 500);
 			}
 		});
