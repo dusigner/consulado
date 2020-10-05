@@ -42,10 +42,77 @@
 	</section>
 
 	<!-- Características -->
-	<section class="caracteristicas-lp">
+	<section  class="caracteristicas-lp" id="caracteristicas-lp">
 		<!-- fazer aqui modulo imagem animada -->
 		<div class="caracteristicas-lp--pricing">
-			<h1 id=caracteristicas-nome></h1>
+			<div class="caracteristicas-lp--pricing">
+				<div class="product-info-bar">
+					<div class="product-info-bar__container">
+						<h1 class="product-info-bar__title">
+							<vtex.cmc:productName />
+							<small><vtex.cmc:productReference/></small>
+						</h1>
+
+						<!-- Preço produto -->
+						<div class="product-info-bar__price">
+							<vtex.cmc:skuPrice paymentSystemId="4" />
+						</div>
+						<!-- /Preço produto -->
+
+						 <!-- Formas de pagamento -->
+						 <div class="formas-pagamento-container">
+							<div class="valores-parcelas">
+								<vtex.cmc:OtherPaymentMethod />
+								<p>
+									Para financiamento com juros de 0,99% a.m. <br />
+									- Custo Efetivo Total (CET) máximo de 12,55% a.a.
+								</p>
+							</div>
+						</div>
+						<!-- /Formas de pagamento -->
+
+						<!-- Selos do produto -->
+						<div class="prod-selos show-medium">
+							<vtex.cmc:discountHightLight />
+							<vtex.cmc:HightLight />
+						</div>
+						<!-- /Selos do produto -->
+
+						<!-- Opções de SKU -->
+						<div class="prod-sku-options">
+							<!-- Selecionar voltagem -->
+							<div class="prod-sku-selector">
+								<strong class="sku-title-label">Selecione a voltagem</strong>
+								<div class="select-voltage">
+									<vtex.cmc:skuSelection />
+								</div>
+							</div>
+							<!-- /Selecionar voltagem -->
+						</div>
+						<!-- /Opções de SKU -->
+
+
+						<!-- Comprar -->
+						<div class="product-info-bar__buy">
+							<vtex.cmc:BuyButton />
+						</div>
+						<!-- /Comprar -->
+
+						<!-- Frete -->
+						<div class="calc-frete">
+							<div class="title-frete">
+								<i class="icon icon-truck-bold"></i>
+								<p>
+									Calcular o prazo <br />
+									e valor de entrega
+								</p>
+							</div>
+							<vtex.cmc:shippingValue />
+						</div>
+						<!-- /Frete -->
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<!-- Fim Características -->

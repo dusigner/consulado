@@ -1,4 +1,16 @@
 @import "../Pages/landing-novos-bebedouros/styles/scss/utils";
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/rfs";
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "components/prod-institucional-caracteristicas-price";
+@import 'components/produto/prod-info-parcelas-v2';
+@import 'components/produto/frete-v2';
+@import 'components/produto/trust-vox';
+@import 'components/selos';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/prod-buy-button-v2';
 
 * {
 	padding: 0;
@@ -199,7 +211,6 @@ body {
 
 	.container-cards {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		justify-content: center;
 		padding-right: 50px;
@@ -221,10 +232,8 @@ body {
 		padding-left: 10px;
 		padding-bottom: 20px;
 		justify-content: space-around;
-		background: #FFFF;
+		background: #FFF;
 		text-align: center;
-		box-sizing: border-box;
-		border-radius: 5px;
 		width: 400px;
 		height: 605px;
 
