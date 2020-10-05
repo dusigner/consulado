@@ -13,7 +13,44 @@ Nitro.controller(
 		'specifications'
 	],
 
-	function () { }
+	function () {
+		$('.navigation-sticked-link[href^="#"]').on('click', function(e) {
+			e.preventDefault();
+			$('.navigation-sticked-link').removeClass('active');
+			$(this).addClass('active');
+
+			let hash = $(this).attr('href'),
+				targetOffset = $(hash).offset().top;
+
+			$('html, body').animate({
+				scrollTop: targetOffset - 56
+			}, 500);
+		});
+
+		/**
+		 * fixed top bar with carousel in mobile;
+		 */
+		if($(window).width() < 700) {
+			$('.navigation-sticked-list').slick({
+				arrows: false,
+				dots: false,
+				infinite: false,
+				mobileFirst: true,
+				slidesToScroll: 1,
+				slidesToShow: 1,
+				variableWidth: true,
+				responsive: [
+					{
+						breakpoint: 300,
+						settings: {
+							slidesToScroll: 1,
+							slidesToShow: 2,
+						}
+					}
+				]
+			});
+		}
+	}
 )
 
 let sbSlick = function () {
