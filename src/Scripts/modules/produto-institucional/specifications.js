@@ -31,14 +31,10 @@ Nitro.module('specifications', function () {
 	// Função responsável por controlar o efeito de exibir ou não as especificações do produto em dispositivos móveis.
 
 	self.specs = () => {
-		$('.specs__measure, .specs__items, .specs__specs, .specs__additionalInfo, .specs__links').find('h4').on('click', function () {
-			let $this = $(this);
-			$this.toggleClass('specActive');
-			$this.parents('.specs__section').toggleClass('inactive');
-		});
-
-		$('.btn-ver-mais-especs').click(function () {
-			$('.especs-toggle').toggleClass('active-toggle');
+		$('.specs__see-more__button').bind('click', function (e) {
+			e.preventDefault();
+			$('.specs__container').toggleClass('active');
+			$('.specs__see-more').toggleClass('active');
 		});
 	},
 
