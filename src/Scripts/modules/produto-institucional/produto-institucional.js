@@ -1,6 +1,5 @@
-var self = this,
-$body = $('body');
-var $reference = $('.reference'),
+			var self = this,
+			$reference = $('.reference'),
 			$productSku = $('.productSku');
 
 		//TROCA DE NOMES PRODUCT / SKUREF
@@ -24,7 +23,6 @@ var $reference = $('.reference'),
 			$('#showVoltage').text($(this).val());
 		}); // Mostra a a voltagem selecionada
 
-
 $('.container-cards').slick({
     dots: false,
     infinite: false,
@@ -43,9 +41,21 @@ $('.container-cards').slick({
     }]
 });
 
+if ( skuJson.available === true ) {
+		$('.secure').show();
+		$('body').addClass('produto-disponivel');
+	} else {
+		if ( !$('body').hasClass('product-outline') ) {
+			$('body').addClass('produto-indisponivel');
+			$('.calc-frete').hide();
+			$('.secure').hide();
+			$('.cta-containers').hide();
+			$('.prod-more-info').hide();
+		}
+	}
+
 //Opções de parcelamento
 self.valoresParcelas = function () {
-	console.log('deu');
 	var $valoresParcelas = $('.valores-parcelas'),
 		$showParcelas = $valoresParcelas.find('.titulo-parcelamento'),
 		$opcoesParcelamento = $valoresParcelas.find('.other-payment-method-ul'),
@@ -102,6 +112,13 @@ const $document = $(document),
 	const $element = $(currentTarget);
 		$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
 	});
+
+//setup modal
+	$('a[data-modal]').on('click', ({ currentTarget }) => {
+		const $element = $(currentTarget);
+		$('#modal-' + $element.data('modal')).vtexModal();
+	});
+	$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 
 
 	// this.init = () => {

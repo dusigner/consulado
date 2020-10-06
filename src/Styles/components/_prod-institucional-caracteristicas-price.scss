@@ -1,5 +1,6 @@
 $grey: #616161;
 $green: #9ACA3C;
+$green-dark: #609220;
 $pink: #EC008E;
 
 .caracteristicas-lp--pricing {
@@ -33,6 +34,9 @@ $pink: #EC008E;
 		&__price {
 			font-style: normal;
 			text-align: left;
+			& .descricao-preco {
+				margin-bottom: -15px;
+			}
 			& .valor-de {
 				color: $grey;
 				font-style: normal;
@@ -58,13 +62,19 @@ $pink: #EC008E;
 				}
 			}
 			.preco-a-vista {
-				display: none;
+				display: none !important;
+				visibility: hidden;
 			}
 			& .valor-dividido {
 				@include rfs(14);
+				bottom: 25px;
 				color: $grey;
+				display: flex;
 				font-style: normal;
 				font-weight: 400;
+				left: 20%;
+				margin: 5px 0;
+				position: relative;
 				text-align: left;
 				strong {
 					font-weight: 500;
@@ -74,22 +84,79 @@ $pink: #EC008E;
 					display: inline-block;
 					width: auto;
 				}
+				span {
+					color: #fff;
+					visibility: hidden;
+				}
 				.skuBestInstallmentValue {
-					margin-left: 5px;
+					color: $grey;
+					margin-left: -15px;
+					visibility: visible;
+				}
+				.skuBestInstallmentNumber {
+					color: $grey;
+					visibility: visible;
+					span {
+						color: $grey;
+						visibility: visible;
+					}
+					&::before {
+						color: $grey;
+						content: ' em até ';
+						font-weight: 400;
+					}
+					&::after {
+						color: $grey;
+						content: ' de ';
+						font-weight: 400;
+					}
+				}
+			}
+
+			//desconto do boleto
+			& .on-discount {
+				@include rfs(15);
+				color: $green-dark;
+				font-style: normal;
+				font-weight: 500;
+				left: 0;
+				margin: 4px 0 0;
+				span {
+					color: $grey;
+					font-weight: 300;
+				}
+				strong {
+					display: none;
+				}
+			}
+			& .valor-discount {
+				display: flex;
+				flex-flow: column-reverse;
+				 strong {
+					 @include rfs(14);
+					 color: $grey;
+					 display: inline-block;
+					 font-style: normal;
+					 &::before {
+					 	@include rfs(14);
+						 color: $grey;
+						 content: 'Ou ';
+						 font-weight: 400;
+					 }
 				}
 			}
 		}
 		&__buy {
-			background-color: $green;
-			border-radius: 50px;
-			height: 48px;
-			margin: 20px 0 0;
-			max-width: 100%;
-			width: 200px;
 			a {
-				@include rfs (16px);
+				@include rfs (16);
+				background-color: $green;
+				border-radius: 50px;
 				color: #fff;
 				font-weight: 500;
+				height: 48px;
+				margin: 20px 0 0;
+				max-width: 100%;
+				width: 100%;
 				&:hover {
 					height: 100%;
 					line-height: 34px;
@@ -157,5 +224,8 @@ $pink: #EC008E;
 		#popupCalculoFreteWrapper {
 			display: block;
 		}
+	}
+	.shipping-value {
+		display: none;
 	}
 }
