@@ -35,7 +35,7 @@ $pink: #EC008E;
 			font-style: normal;
 			text-align: left;
 			& .descricao-preco {
-				margin-bottom: -15px;
+				margin-bottom: 0;
 			}
 			& .valor-de {
 				color: $grey;
@@ -51,6 +51,7 @@ $pink: #EC008E;
 				color: $green;
 				font-style: normal;
 				font-weight: 700;
+				margin-bottom: 6px;
 				text-align: left;
 				&::after {
 					@include rfs(16);
@@ -66,13 +67,13 @@ $pink: #EC008E;
 				visibility: hidden;
 			}
 			& .valor-dividido {
-				@include rfs(14);
-				bottom: 25px;
+				@include rfs(15);
+				bottom: 28px;
 				color: $grey;
 				display: flex;
 				font-style: normal;
 				font-weight: 400;
-				left: 20%;
+				left: 22%;
 				margin: 5px 0;
 				position: relative;
 				text-align: left;
@@ -89,11 +90,18 @@ $pink: #EC008E;
 					visibility: hidden;
 				}
 				.skuBestInstallmentValue {
+					@include rfs(15);
 					color: $grey;
 					margin-left: -15px;
 					visibility: visible;
+					&::after {
+						color: $grey;
+						content: ' sem juros ';
+						font-weight: 400;
+					}
 				}
 				.skuBestInstallmentNumber {
+					@include rfs(15);
 					color: $grey;
 					visibility: visible;
 					span {
@@ -115,12 +123,12 @@ $pink: #EC008E;
 
 			//desconto do boleto
 			& .on-discount {
-				@include rfs(15);
+				@include rfs(16);
 				color: $green-dark;
 				font-style: normal;
 				font-weight: 500;
 				left: 0;
-				margin: 4px 0 0;
+				margin: 0 0 2px 0;
 				span {
 					color: $grey;
 					font-weight: 300;
@@ -133,12 +141,12 @@ $pink: #EC008E;
 				display: flex;
 				flex-flow: column-reverse;
 				 strong {
-					 @include rfs(14);
+					 @include rfs(15);
 					 color: $grey;
 					 display: inline-block;
 					 font-style: normal;
 					 &::before {
-					 	@include rfs(14);
+					 	@include rfs(15);
 						 color: $grey;
 						 content: 'Ou ';
 						 font-weight: 400;
@@ -146,22 +154,25 @@ $pink: #EC008E;
 				}
 			}
 		}
-		&__buy {
-			a {
-				@include rfs (16);
-				background-color: $green;
-				border-radius: 50px;
-				color: #fff;
-				font-weight: 500;
-				height: 48px;
-				margin: 20px 0 0;
-				max-width: 100%;
-				width: 100%;
-				&:hover {
-					height: 100%;
-					line-height: 34px;
-				}
-			}
+	}
+	#BuyButton .buy-button,
+	.product-info-bar__buy .buy-button {
+		@include rfs(16);
+		background-color: $green;
+		border-radius: 50px;
+		color: #fff;
+		font-weight: 500;
+		height: 48px;
+		margin: 20px 0 0;
+		max-width: 100%;
+		padding: 12px 0;
+		width: 200px !important;
+		&:hover {
+			background-color: $green-dark;
+			height: 48px;
+			line-height: 34px;
+			padding: 7px 0;
+			width: 200px;
 		}
 	}
 	.valores-parcelas {
@@ -189,19 +200,28 @@ $pink: #EC008E;
 			font-weight: 700;
 			height: 24px;
 			line-height: 27px;
+			position: relative;
 			text-align: center;
+			top: 20px;
 			visibility: visible;
 			width: 80px;
 		}
 	}
 	.formas-pagamento-container {
-		margin-top: 8px;
+		margin-bottom: 44px;
+		margin-top: -55px;
+		position: relative;
+		width: 100%;
 	}
 	//voltagem
 	.prod-sku-selector {
+		display: inline-block;
+		margin: 12px 0 10px;
+		padding: 0;
 		.sku-title-label {
-			@include rfs(14);
+			@include rfs(15);
 			font-weight: 500;
+			padding-bottom: 0;
 		}
 		.specification {
 			display: none;
@@ -227,5 +247,32 @@ $pink: #EC008E;
 	}
 	.shipping-value {
 		display: none;
+	}
+	#modal-sku {
+		h1 {
+			p {
+				display: inline-block !important;
+				margin-left: 10px;
+			}
+		}
+		.buy-button {
+			@include rfs(16);
+			background-color: $green;
+			border-radius: 50px;
+			color: #fff;
+			font-weight: 500;
+			height: 48px;
+			margin: 20px 0 0;
+			max-width: 100%;
+			padding: 12px 0;
+			width: 200px !important;
+			&:hover {
+				background-color: $green-dark;
+				height: 48px;
+				line-height: 34px;
+				padding: 7px 0;
+				width: 200px;
+			}
+		}
 	}
 }
