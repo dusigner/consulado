@@ -6,6 +6,7 @@ Nitro.module('characteristics', function () {
         this.handleChangeImage();
         this.seeMoreDescription();
         this.dataLayerFeaturesInstitutional();
+        this.handleSwitchColor();
 	};
 
 	this.handleChangeImage = () => {
@@ -136,6 +137,15 @@ Nitro.module('characteristics', function () {
 
         // Viability DataLayer
 
+    }
+
+    this.handleSwitchColor = () => {
+        if (window.location.href.indexOf('branca') > -1) {
+            $('.characteristics-block__image img').attr('src', '/arquivos/branca-acabamento-evox.png');
+
+            $('.characteristics-block__image .image-buttons.evox').css('display', 'none');
+            $('.characteristics-block__image .image-buttons.white').css('display', 'block');
+        }
     }
 
 	this.init();
