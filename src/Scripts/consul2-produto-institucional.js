@@ -1,15 +1,21 @@
 /* global $: true, Nitro: true */
 'use strict';
 
+import { pushDataLayer } from 'modules/_datalayer-inline';
 import 'modules/produto-institucional/benefits';
-import {
-	pushDataLayer
-} from 'modules/_datalayer-inline';
 import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/specifications';
 import 'modules/produto-institucional/main-banner-datalayer';
 import 'modules/produto-institucional/video-bem-pensado';
 import 'modules/produto-institucional/characteristics-block';
+import 'modules/product/sku-fetch';
+import 'modules/product/selos';
+import 'modules/product/sku-select-v3';
+import 'modules/product/voltage-modal';
+import 'modules/product/boleto';
+import 'modules/product/notify-me';
+import 'modules/product/deliveryTime';
+import 'modules/product/outline-products';
 
 Nitro.controller(
 	'produto-institucional',
@@ -19,6 +25,14 @@ Nitro.controller(
 		'specifications',
 		'main-banner-datalayer',
 		'video-bem-pensado',
+		'sku-fetch',
+		'selos',
+		'sku-select-v3',
+		'voltage-modal',
+		'boleto',
+		'deliveryTime',
+		'notify-me',
+		'outline-products',
 	],
 
 	function () {

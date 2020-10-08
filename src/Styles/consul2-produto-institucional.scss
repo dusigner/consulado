@@ -23,11 +23,26 @@
 @import "helpers/rfs";
 
 // Component styles
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../Pages/landing-novos-bebedouros/styles/scss/utils";
 @import "components/produto-institucional/benefits";
 @import "components/produto-institucional/specifications";
 @import "components/produto-institucional/main-banner";
 @import "components/produto-institucional/characteristics";
+@import "components/prod-institucional-caracteristicas-price";
+@import 'components/produto/modal.sku';
+@import 'components/produto/prod-info-parcelas-v2';
+@import 'components/produto/frete-v2';
+@import 'components/produto/trust-vox';
+@import 'components/selos';
+@import 'components/produto/selos';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/prod-buy-button-v2';
+@import 'components/checkbox';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/outline-products';
+@import "components/produto/prod-info-sku-v2";
+@import 'components/produto/voltage-selector-modal';
 
 * {
 	box-sizing: border-box;
@@ -433,7 +448,6 @@ body {
 
 	.container-cards {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
 		justify-content: center;
 		padding-right: 50px;
