@@ -9,6 +9,7 @@ import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/specifications';
 import 'modules/produto-institucional/main-banner-datalayer';
 import 'modules/produto-institucional/video-bem-pensado';
+import 'modules/produto-institucional/characteristics-block';
 
 Nitro.controller(
 	'produto-institucional',
@@ -147,7 +148,7 @@ $(document).ready(function () {
 			deltas.left * deltas.right >= x && deltas.top * deltas.bottom >= y
 		);
 	};
-})
+});
 
 let sbSlick = function () {
 	var screenWidth = $(window).width();

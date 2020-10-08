@@ -27,6 +27,7 @@
 @import "components/produto-institucional/benefits";
 @import "components/produto-institucional/specifications";
 @import "components/produto-institucional/main-banner";
+@import "components/produto-institucional/characteristics";
 
 * {
 	box-sizing: border-box;
@@ -52,20 +53,19 @@ body {
 	}
 
 	.top-navigation {
-		background: #9ACA3C;
+		background: #9aca3c;
 
 		.menu-department {
-
-			>.item,
-			>.dropdown {
+			> .item,
+			> .dropdown {
 				background-color: transparent;
 
-				>i,
-				>a {
+				> i,
+				> a {
 					color: #ffffff;
 				}
 
-				>i {
+				> i {
 					border-color: #ffffff;
 
 					&::before,
@@ -162,7 +162,7 @@ body {
 		@include breakpoint("small", "max") {
 			flex: 1;
 			font-size: 14px;
-			margin: .5rem 0;
+			margin: 0.5rem 0;
 			max-width: 96px;
 		}
 
@@ -179,7 +179,7 @@ body {
 		width: 100%;
 
 		&.cta--green {
-			background-color: #9ACA3C;
+			background-color: #9aca3c;
 		}
 	}
 
@@ -196,7 +196,6 @@ body {
 
 // Video background
 .container-bempensado {
-
 	&__desktop {
 		margin: 0 auto;
 
@@ -206,16 +205,22 @@ body {
 
 		#container-video {
 			display: flex;
-			background: #FFFFFF;
+			background: #ffffff;
 			margin: 0 auto;
-
 
 			.bg-light-black {
 				background: rgb(64, 60, 59);
-				background: linear-gradient(270deg, rgba(64, 60, 59, 1) 50%, rgba(255, 255, 255, 1) 50%, rgba(64, 60, 59, 1) 50%, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 50%);
+				background: linear-gradient(
+					270deg,
+					rgba(64, 60, 59, 1) 50%,
+					rgba(255, 255, 255, 1) 50%,
+					rgba(64, 60, 59, 1) 50%,
+					rgba(255, 255, 255, 1) 50%,
+					rgba(255, 255, 255, 1) 50%
+				);
 				height: 720px;
 				width: 100%;
-				color: #FFFFFF;
+				color: #ffffff;
 
 				.title {
 					padding: 15px 0 0 80px;
@@ -223,7 +228,7 @@ body {
 				}
 
 				.bem-pensado {
-					color: #403C3B;
+					color: #403c3b;
 					font-size: 32px;
 					margin: 0;
 				}
@@ -233,7 +238,7 @@ body {
 				}
 
 				.pra-voce {
-					color: #8AC922;
+					color: #8ac922;
 					font-weight: bold;
 					font-size: 32px;
 					margin-bottom: 30px;
@@ -259,7 +264,7 @@ body {
 				}
 
 				.reinvente {
-					color: #FFFFFF;
+					color: #ffffff;
 					font-size: 16px;
 					margin-bottom: 30px;
 					font-weight: normal;
@@ -267,14 +272,14 @@ body {
 				}
 
 				.play {
-					color: #FFFFFF;
+					color: #ffffff;
 					font-size: 16px;
 					line-height: 23px;
 
 					&:after {
 						margin-top: 5px;
 						background-color: #9aca3c;
-						content: ' ';
+						content: " ";
 						display: block;
 						height: 2px;
 						position: absolute;
@@ -297,7 +302,6 @@ body {
 			padding-bottom: 20px;
 			justify-content: space-between;
 
-
 			iframe {
 				width: 302.77px;
 				height: 174.3px;
@@ -310,7 +314,7 @@ body {
 		}
 
 		.bg-light-black {
-			background: #403C3B;
+			background: #403c3b;
 		}
 
 		.title {
@@ -323,11 +327,11 @@ body {
 
 		.bem-pensado {
 			padding-top: 30px;
-			color: #FFFFFF;
+			color: #ffffff;
 		}
 
 		.pra-voce {
-			color: #8AC922;
+			color: #8ac922;
 		}
 
 		.text {
@@ -336,7 +340,7 @@ body {
 		}
 
 		.reinvente {
-			color: #FFFFFF;
+			color: #ffffff;
 			font-size: 16px;
 			margin-bottom: 15px;
 			font-weight: normal;
@@ -344,14 +348,14 @@ body {
 		}
 
 		.play {
-			color: #FFFFFF;
+			color: #ffffff;
 			font-size: 16px;
 			line-height: 23px;
 
 			&:after {
 				margin-top: 5px;
 				background-color: #9aca3c;
-				content: ' ';
+				content: " ";
 				display: block;
 				height: 2px;
 				position: absolute;
@@ -365,7 +369,7 @@ body {
 .container-blog-facilita {
 	max-width: 1920px;
 	margin: 0 auto;
-	background-color: #F4F2F1;
+	background-color: #f4f2f1;
 	margin-top: 5%;
 
 	.text-blog-facilita {
@@ -376,7 +380,7 @@ body {
 		padding-bottom: 25px;
 		text-align: center;
 		margin: 0 auto;
-		color: #4A4A4A;
+		color: #4a4a4a;
 		max-width: 1000px;
 
 		@media screen and (min-width: 400px) {
@@ -406,7 +410,7 @@ body {
 
 	.img-facilita-consul {
 		align-items: center;
-		border: 1px solid #F1F0F0;
+		border: 1px solid #f1f0f0;
 		border-radius: 5px;
 		display: flex;
 		justify-content: center;
@@ -424,7 +428,7 @@ body {
 		margin: 0 auto;
 		width: 328px;
 		height: 80px;
-		background-image: url('/arquivos/facilita-logo1.png') no-repeat;
+		background-image: url("/arquivos/facilita-logo1.png") no-repeat;
 	}
 
 	.container-cards {
@@ -452,7 +456,7 @@ body {
 		padding-left: 15px;
 		padding-bottom: 20px;
 		justify-content: space-around;
-		background: #FFFF;
+		background: #ffff;
 		text-align: center;
 		box-sizing: border-box;
 		border-radius: 5px;
@@ -479,7 +483,7 @@ body {
 		font-size: 16px;
 		line-height: 15px;
 		letter-spacing: 0.035em;
-		color: #4A4A4A;
+		color: #4a4a4a;
 
 		@media screen and (max-width: 600px) {
 			height: 590px;
@@ -493,7 +497,7 @@ body {
 		text-align: left;
 		line-height: 25px;
 		letter-spacing: 0.035em;
-		color: #4A4A4A;
+		color: #4a4a4a;
 
 		@media screen and (max-width: 600px) {
 			font-size: 12px;
@@ -503,7 +507,7 @@ body {
 
 	.btn-saiba-mais {
 		color: #fff;
-		background-color: #8AC922;
+		background-color: #8ac922;
 		padding: 12px 53px;
 		border-radius: 100px;
 		text-decoration: none;
@@ -519,7 +523,7 @@ body {
 	}
 
 	.slick-dots li.slick-active button {
-		background: #C4C4C4;
+		background: #c4c4c4;
 	}
 
 	.slick-dots {
