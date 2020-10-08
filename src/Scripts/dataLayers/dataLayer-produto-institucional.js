@@ -9,6 +9,7 @@ Nitro.module('dataLayer-produto-institucional', function () {
 	self.init = () => {
 		checkInlineDatalayers();
 		self.tagProdInstitucional();
+		self.tagBemPensado();
 	};
 
 	self.tagProdInstitucional = () => {
@@ -81,6 +82,7 @@ Nitro.module('dataLayer-produto-institucional', function () {
 		};
 
 		// Tag viability
+
 		var firstAppearanceBlogFacilita = true;
 		var intervalBlogFacilita = null;
 
@@ -89,7 +91,7 @@ Nitro.module('dataLayer-produto-institucional', function () {
 				// Features
 				if (
 					firstAppearanceBlogFacilita &&
-					$('#container-blog-facilita').isOnScreen(1, 0.5)
+					$('.container-blog-facilita').isOnScreen(1, 0.5)
 				) {
 					var counter = 0;
 
@@ -101,46 +103,156 @@ Nitro.module('dataLayer-produto-institucional', function () {
 						} else {
 							if (
 								counter == 1 &&
-								$('#container-blog-facilita').isOnScreen(1, 0.5)
+								$('.container-blog-facilita').isOnScreen(1, 0.5)
 							) {
 								dataLayer.push({
 									event: 'generic',
 									category: 'PDP_institucional',
 									action: 'facilita_consul_pdp',
-									label: 'viability_facilita_1s'
+									label: 'viability_facilita_1segundo'
 								});
 							} else if (
 								counter == 4 &&
-								$('#container-blog-facilita').isOnScreen(1, 0.5)
+								$('.container-blog-facilita').isOnScreen(1, 0.5)
 							) {
 								dataLayer.push({
 									event: 'generic',
 									category: 'PDP_institucional',
 									action: 'facilita_consul_pdp',
-									label: 'viability_facilita_4s'
+									label: 'viability_facilita_4segundos'
 								});
 							} else if (
 								counter == 10 &&
-								$('#container-blog-facilita').isOnScreen(1, 0.5)
+								$('.container-blog-facilita').isOnScreen(1, 0.5)
 							) {
 								dataLayer.push({
 									event: 'generic',
 									category: 'PDP_institucional',
 									action: 'facilita_consul_pdp',
-									label: 'viability_facilita_10s'
+									label: 'viability_facilita_10segundos'
 								});
 							}
 						}
 					}, 1000);
-
 					firstAppearanceBlogFacilita = false;
 				}
 
-				if ($('#container-blog-facilita')[0].getBoundingClientRect().bottom < 0) {
+				if ($('.container-blog-facilita')[0].getBoundingClientRect().bottom < 0) {
 					clearInterval(intervalBlogFacilita);
 				}
 			}, 500);
 		});
 	};
+
+	self.tagBemPensado = () => {
+		// TAG viability Bem Pensado
+		// Check if element is on the screen
+		$.fn.isOnScreen = function (x, y) {
+			if (x == null || typeof x == 'undefined') x = 1;
+			if (y == null || typeof y == 'undefined') y = 1;
+
+			var win = $(window);
+
+			var viewport = {
+				top: win.scrollTop(),
+				left: win.scrollLeft()
+			};
+			viewport.right = viewport.left + win.width();
+			viewport.bottom = viewport.top + win.height();
+
+			var height = this.outerHeight();
+			var width = this.outerWidth();
+
+			if (!width || !height) {
+				return false;
+			}
+
+			var bounds = this.offset();
+			bounds.right = bounds.left + width;
+			bounds.bottom = bounds.top + height;
+
+			var visible = !(
+				viewport.right < bounds.left ||
+				viewport.left > bounds.right ||
+				viewport.bottom < bounds.top ||
+				viewport.top > bounds.bottom
+			);
+
+			if (!visible) {
+				return false;
+			}
+
+			var deltas = {
+				top: Math.min(1, (bounds.bottom - viewport.top) / height),
+				bottom: Math.min(1, (viewport.bottom - bounds.top) / height),
+				left: Math.min(1, (bounds.right - viewport.left) / width),
+				right: Math.min(1, (viewport.right - bounds.left) / width)
+			};
+
+			return (
+				deltas.left * deltas.right >= x && deltas.top * deltas.bottom >= y
+			);
+		};
+
+		var firstAppearanceBemPensado = true;
+		var intervalBemPensado = null;
+
+		$(window).on('scroll', function () {
+			setTimeout(function () {
+				// Features
+				if (
+					firstAppearanceBemPensado &&
+					$('#bempensado-lp').isOnScreen(1, 0.5)
+				) {
+					var counter = 0;
+
+					intervalBemPensado = setInterval(function () {
+						counter++;
+						if (counter >= 12) {
+							clearInterval(intervalBemPensado);
+							return;
+						} else {
+							if (
+								counter == 1 &&
+								$('#bempensado-lp').isOnScreen(1, 0.5)
+							) {
+								dataLayer.push({
+									event: 'generic',
+									category: 'PDP_institucional',
+									action: 'bem_pensado',
+									label: 'viability_pensado_1segundo'
+								});
+							} else if (
+								counter == 4 &&
+								$('#bempensado-lp').isOnScreen(1, 0.5)
+							) {
+								dataLayer.push({
+									event: 'generic',
+									category: 'PDP_institucional',
+									action: 'bem_pensado',
+									label: 'viability_pensado_4segundos'
+								});
+							} else if (
+								counter == 10 &&
+								$('#bempensado-lp').isOnScreen(1, 0.5)
+							) {
+								dataLayer.push({
+									event: 'generic',
+									category: 'PDP_institucional',
+									action: 'bem_pensado',
+									label: 'viability_pensado_10segundos'
+								});
+							}
+						}
+					}, 1000);
+					firstAppearanceBemPensado = false;
+				}
+
+				if ($('#bempensado-lp')[0].getBoundingClientRect().bottom < 0) {
+					clearInterval(intervalBemPensado);
+				}
+			}, 500);
+		});
+	}
 	self.init();
 });
