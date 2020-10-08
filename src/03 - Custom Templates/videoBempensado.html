@@ -7,7 +7,7 @@
 
 		<div class="content-video">
 			<div class="video-bem-pensado">
-				<div id="main-video-frame" data-video-id="pHpIfmk3Ew4"></div>
+				<div class="player" data-video-id="pHpIfmk3Ew4"></div>
 			</div>
 			<div class="text">
 				<h3 class="reinvente">Reinvente sua cozinha com as novas geladeiras com freezer embaixo da Consul.
@@ -17,103 +17,3 @@
 		</div>
 	</div>
 </section>
-<script>
-	var tag = document.createElement('script');
-	var firstScriptTag = document.getElementsByTagName(
-		'script'
-	)[0];
-
-	// O container do video
-	var playerDiv = document.getElementById('main-video-frame');
-
-	var videoId = playerDiv.getAttribute('data-video-id');
-
-	// inicializando o player
-	var player;
-
-	var videoDuration = 0;
-
-	// inicializando o contador do tempo do video
-	var videotime = 0;
-
-	// inicializando intervalo
-	var intervalVideo = null;
-
-	// Adicionando Youtube iframe API
-	tag.src = 'https://www.youtube.com/iframe_api';
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-	// Método chamado automaticamente pela api do youtube
-	function onYouTubeIframeAPIReady() {
-		player = new YT.Player('main-video-frame', {
-			height: 650,
-			width: '100%',
-			videoId: videoId,
-			events: {
-				onReady: onPlayerReady
-			},
-			playerVars: {
-				rel: 0,
-				showinfo: 0
-			}
-		});
-	}
-
-	// Método chamado nos eventos do player
-	function onPlayerReady(event) {
-		// obtendo a duração do video, em segundos
-		videoDuration = parseInt(player.getDuration());
-		// aplicando o intervalo de 1 em 1 segundo
-		intervalVideo = setInterval(discoverTime, 1000);
-	}
-
-	// método utilizado para descobrir o tempo atual do vídeo
-	function discoverTime() {
-		if (player) {
-			if (player.getCurrentTime) {
-				videoDuration = parseInt(player.getDuration());
-				videotime = parseInt(player.getCurrentTime());
-
-				if (videotime == parseInt(videoDuration * 0.25)) {
-					dataLayer.push({
-						event: 'generic',
-						category: 'PDP_institucional',
-						action: 'bem_pensado',
-						label: 'bem_pensado_25%'
-					});
-				} else if (videotime == parseInt(videoDuration * 0.5)) {
-					dataLayer.push({
-						event: 'generic',
-						category: 'PDP_institucional',
-						action: 'bem_pensado',
-						label: 'bem_pensado_50%'
-					});
-				} else if (videotime == parseInt(videoDuration * 0.75)) {
-					dataLayer.push({
-						event: 'generic',
-						category: 'PDP_institucional',
-						action: 'bem_pensado',
-						label: 'bem_pensado_75%'
-					});
-				} else if (videotime == videoDuration) {
-					dataLayer.push({
-						event: 'generic',
-						category: 'PDP_institucional',
-						action: 'bem_pensado',
-						label: 'bem_pensado_100%'
-					});
-				}
-			}
-		}
-
-		if (videotime == videoDuration) {
-			clearInterval(intervalVideo);
-			var videoContainer = document.getElementById('video-container');
-			var mainVideo = document.getElementById('main-video');
-
-			mainVideo.style.display = 'block';
-			videoContainer.style.display = 'block';
-		}
-	}
-
-</script>

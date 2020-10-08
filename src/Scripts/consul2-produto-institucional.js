@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* global $: true, Nitro: true */
 'use strict';
 
@@ -94,6 +95,22 @@ Nitro.controller(
 			});
 		})(window, document, jQuery);
 	}
+=======
+'use strict'
+import 'dataLayers/dataLayer-produto-institucional';
+import 'modules/produto-institucional/blog-facilita';
+import 'modules/produto-institucional/video-bem-pensado';
+
+Nitro.controller(
+    'produto-institucional',
+    [
+        'dataLayer-produto-institucional',
+        'slick-produto-institucional',
+        'video-bem-pensado',
+    ],
+
+    function () {}
+>>>>>>> feature/ICD-1417-video-bem-pensado
 )
 
 $(document).ready(function(){
