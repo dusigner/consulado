@@ -1,13 +1,12 @@
 @import "../Pages/landing-novos-bebedouros/styles/scss/utils";
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "helpers/variables";
 @import "helpers/functions";
 @import "helpers/mixins";
 @import "helpers/whp-modal";
 @import "helpers/rfs";
-@import 'components/produto/voltage-selector-modal';
-@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import 'components/produto/modal.sku';
 @import "components/prod-institucional-caracteristicas-price";
+@import 'components/produto/modal.sku';
 @import 'components/produto/prod-info-parcelas-v2';
 @import 'components/produto/frete-v2';
 @import 'components/produto/trust-vox';
@@ -19,6 +18,7 @@
 @import 'components/produto/prod-info-preco';
 @import 'components/produto/outline-products';
 @import "components/produto/prod-info-sku-v2";
+@import 'components/produto/voltage-selector-modal';
 
 * {
 	padding: 0;

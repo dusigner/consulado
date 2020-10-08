@@ -45,73 +45,110 @@
 	<section  class="caracteristicas-lp" id="caracteristicas-lp">
 		<!-- fazer aqui modulo imagem animada -->
 		<div class="caracteristicas-lp--pricing">
-			<div class="caracteristicas-lp--pricing">
-				<div class="product-info-bar">
-					<div class="product-info-bar__container">
-						<h1 class="product-info-bar__title">
-							<vtex.cmc:productName />
-							<small><vtex.cmc:productReference/></small>
-						</h1>
+    		<div class="product-info-bar">
+    			<div class="product-info-bar__container">
+    			    <h1 class="product-info-bar__title">
+						<vtex.cmc:productName />
+						<small><vtex.cmc:productReference/></small>
+						<!-- Trustvox Estrelas -->
+							<div class="trustvox-rating">
+								<a class="trustvox-fluid-jump trustvox-widget-rating">
+								<div class="trustvox-shelf-container"
+										data-trustvox-product-code-js="skuJson.productId"
+										data-trustvox-should-skip-filter="true"
+										data-trustvox-display-rate-schema="true"></div>
+							</a>
+					    </div>
+					<!-- /Trustvox -->
+					</h1>
 
 						<!-- Preço produto -->
-						<div class="product-info-bar__price">
-							<vtex.cmc:skuPrice paymentSystemId="4" />
-						</div>
-						<!-- /Preço produto -->
+    				<div class="product-info-bar__price">
+    					<vtex.cmc:skuPrice paymentSystemId="4" />
+    				</div>
+    				<!-- /Preço produto -->
 
-						 <!-- Formas de pagamento -->
-						 <div class="formas-pagamento-container">
-							<div class="valores-parcelas">
-								<vtex.cmc:OtherPaymentMethod />
-								<p>
-									Para financiamento com juros de 0,99% a.m. <br />
-									- Custo Efetivo Total (CET) máximo de 12,55% a.a.
-								</p>
-							</div>
+					   <!-- Formas de pagamento -->
+					<div class="formas-pagamento-container">
+						<div class="valores-parcelas">
+							<vtex.cmc:OtherPaymentMethod />
+							<p>
+								Para financiamento com juros de 0,99% a.m. <br />
+								- Custo Efetivo Total (CET) máximo de 12,55% a.a.
+							</p>
 						</div>
-						<!-- /Formas de pagamento -->
-
-						<!-- Selos do produto -->
-						<div class="prod-selos show-medium">
-							<vtex.cmc:discountHightLight />
-							<vtex.cmc:HightLight />
-						</div>
-						<!-- /Selos do produto -->
-
-						<!-- Opções de SKU -->
-						<div class="prod-sku-options">
-							<!-- Selecionar voltagem -->
-							<div class="prod-sku-selector">
-								<strong class="sku-title-label">Selecione a voltagem</strong>
-								<div class="select-voltage">
-									<vtex.cmc:skuSelection />
-								</div>
-							</div>
-							<!-- /Selecionar voltagem -->
-						</div>
-						<!-- /Opções de SKU -->
-
-						<!-- Comprar -->
-						<div class="product-info-bar__buy">
-							<vtex.cmc:BuyButton />
-						</div>
-						<!-- /Comprar -->
-
-						<!-- Frete -->
-						<div class="calc-frete">
-							<div class="title-frete">
-								<i class="icon icon-truck-bold"></i>
-								<p>
-									Calcular o prazo <br />
-									e valor de entrega
-								</p>
-							</div>
-							<vtex.cmc:shippingValue />
-						</div>
-						<!-- /Frete -->
 					</div>
-				</div>
-			</div>
+					<!-- /Formas de pagamento -->
+
+					<!-- Selos do produto -->
+					<div class="prod-selos show-medium">
+						<vtex.cmc:discountHightLight />
+						<vtex.cmc:HightLight />
+					</div>
+					<!-- /Selos do produto -->
+
+					<!-- Opções de SKU -->
+					<div class="seletores">
+					<div class="prod-sku-options">
+						<!-- Selecionar voltagem -->
+						<div class="prod-sku-selector">
+							<strong class="sku-title-label">Selecione a voltagem</strong>
+							<div class="select-voltage">
+								<vtex.cmc:skuSelection />
+							</div>
+						</div>
+						<!-- /Selecionar voltagem -->
+					</div>
+					<span class="linha"></span>
+					<div class="seletor">
+							<p>Selecione a cor</p>
+							<a class="botao-seletor" href="https://consulqa.vtexcommercestable.com.br/geladeira-consul-bem-estar-437-litros-platinum-com-horta-em-casa-evox-crm55ak/p?lid=66e15531-6925-4dc4-8aea-26765e5dc3ca"><span class="cinza"></span></a>
+							<a class="botao-seletor" href="https://consulqa.vtexcommercestable.com.br/geladeira-consul-bem-estar-437-litros-branca-com-horta-em-casa-crm55ab/p?lid=66e15531-6925-4dc4-8aea-26765e5dc3ca"><span class="branco"></span></a>
+					</div>
+					</div>
+					<!-- /Opções de SKU -->
+
+    				<!-- Comprar -->
+    				<div class="product-info-bar__buy" id="BuyButton">
+						<!-- Formulario avise-me indisponível -->
+                		<div class="form-container">
+                			<div id="form-unavailable" class="body-form">
+                			    <vtex.cmc:BuyButton />
+                			</div>
+                		</div>
+                		<!-- Formulario avise-me indisponível -->
+					</div>
+    				<!-- /Comprar -->
+
+                	<!-- Frete -->
+					<div class="calc-frete">
+						<div class="title-frete">
+							<i class="icon icon-truck-bold"></i>
+							<p>
+								Digite seu CEP e calcule o prazo e valor da entrega
+							</p>
+						</div>
+						<vtex.cmc:shippingValue />
+					</div>
+					<!-- /Frete -->
+
+					<!-- Modal Confirme de confirmação de voltagem selecionada -->
+					<div class="hide">
+                		<div id="modal-sku">
+                			<h1 class="title-check-voltage">O produto escolhido é<p id="#showVoltage"></p></h1>
+                				<p class="double-check" >Confirme a voltagem antes de prosseguir</p>
+                			<div class="row options">
+                				<vtex.cmc:skuSelection />
+                			</div>
+                			<div class="row button">
+                				<vtex.cmc:BuyButton />
+                			</div>
+                		</div>
+            		</div>
+            		<!-- /Modal Confirme de confirmação de voltagem selecionada -->
+
+    			</div>
+    		</div>
 		</div>
 	</section>
 	<!-- Fim Características -->
