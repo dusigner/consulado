@@ -120,3 +120,9 @@ const $document = $(document),
 		$('#modal-' + $element.data('modal')).vtexModal();
 	});
 	$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
+
+	//seletor cores
+	if (window.location.href.indexOf('branca') > -1) {
+		$('.botao-seletor.white').addClass('is-active');
+		$('.botao-seletor.evox').removeClass('is-active');
+	}
