@@ -1,9 +1,10 @@
-<<<<<<< HEAD
 /* global $: true, Nitro: true */
 'use strict';
 
 import 'modules/produto-institucional/benefits';
-import { pushDataLayer } from 'modules/_datalayer-inline';
+import {
+	pushDataLayer
+} from 'modules/_datalayer-inline';
 import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/specifications';
 import 'modules/produto-institucional/main-banner-datalayer';
@@ -13,19 +14,19 @@ Nitro.controller(
 	[
 		'beneficios',
 		'produto-institucional',
-        'specifications',
-        'main-banner-datalayer',
+		'specifications',
+		'main-banner-datalayer',
 	],
 
 	function () {
 		const fixedBar = {
-			init: function() {
+			init: function () {
 				fixedBar.carouselMobile();
 				fixedBar.anchor();
 			},
 
-			carouselMobile: function() {
-				if($(window).width() < 700) {
+			carouselMobile: function () {
+				if ($(window).width() < 700) {
 					$('.navigation-sticked-list').slick({
 						arrows: false,
 						dots: false,
@@ -34,21 +35,19 @@ Nitro.controller(
 						slidesToScroll: 1,
 						slidesToShow: 1,
 						variableWidth: true,
-						responsive: [
-							{
-								breakpoint: 300,
-								settings: {
-									slidesToScroll: 1,
-									slidesToShow: 2,
-								}
+						responsive: [{
+							breakpoint: 300,
+							settings: {
+								slidesToScroll: 1,
+								slidesToShow: 2,
 							}
-						]
+						}]
 					});
 				}
 			},
 
-			anchor: function() {
-				$('.navigation-sticked-link[href^="#"]').on('click', function(e) {
+			anchor: function () {
+				$('.navigation-sticked-link[href^="#"]').on('click', function (e) {
 					e.preventDefault();
 
 					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
@@ -70,7 +69,7 @@ Nitro.controller(
 					);
 				});
 
-				$('.navigation-sticked-cta[href^="#"]').on('click', function(e) {
+				$('.navigation-sticked-cta[href^="#"]').on('click', function (e) {
 					e.preventDefault();
 
 					let hash = $(this).attr('href'),
@@ -95,27 +94,11 @@ Nitro.controller(
 			});
 		})(window, document, jQuery);
 	}
-=======
-'use strict'
-import 'dataLayers/dataLayer-produto-institucional';
-import 'modules/produto-institucional/blog-facilita';
-import 'modules/produto-institucional/video-bem-pensado';
-
-Nitro.controller(
-    'produto-institucional',
-    [
-        'dataLayer-produto-institucional',
-        'slick-produto-institucional',
-        'video-bem-pensado',
-    ],
-
-    function () {}
->>>>>>> feature/ICD-1417-video-bem-pensado
 )
 
-$(document).ready(function(){
-    // Check if element is on the screen
-    // Necessário para checagem de viability
+$(document).ready(function () {
+	// Check if element is on the screen
+	// Necessário para checagem de viability
 	$.fn.isOnScreen = function (x, y) {
 		if (x == null || typeof x == 'undefined') x = 1;
 		if (y == null || typeof y == 'undefined') y = 1;
