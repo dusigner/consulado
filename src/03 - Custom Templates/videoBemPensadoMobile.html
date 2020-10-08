@@ -1,124 +1,18 @@
-<section id='container-video'>
-	<div class='bg-light-black'>
-		<div class='title'>
-			<h2 class='bem-pensado'>Bem pensado</h2>
-			<h2 class='pra-voce'>pra você</h2>
+<section id="container-video">
+	<div class="bg-light-black">
+		<div class="title">
+			<h2 class="bem-pensado">Bem pensado</h2>
+			<h2 class="pra-voce">pra você</h2>
 		</div>
-		<div class='text'>
-			<h3 class='reinvente'>Reinvente sua cozinha com as novas geladeiras com freezer embaixo da Consul.</h3>
-			<h3 class='play'>Dê o play </br> e conheça nossa campanha.</h3>
+		<div class="text">
+			<h3 class="reinvente">Reinvente sua cozinha com as novas geladeiras com freezer embaixo da Consul.</h3>
+			<h3 class="play">Dê o play </br> e conheça nossa campanha.</h3>
 		</div>
 
-		<div class='content-video'>
-			<div class='video-bem-pensado'>
-				<div class='player' data-video-id='0MhRjVnAMrc'></div>
+		<div class="content-video">
+			<div class="video-bem-pensado">
+				<div class="player" data-video-id="pHpIfmk3Ew4"></div>
 			</div>
 		</div>
 	</div>
 </section>
-<script type="text/javascript">
-	var tag = document.createElement('script');
-	var firstScriptTag = document.getElementsByTagName(
-		'script'
-	)[0];
-
-	// O container do video
-	var playerDiv = document.querySelectorAll('#bempensado-lp .player');
-
-	// var videoId = playerDiv.getAttribute('data-video-id');
-
-	// inicializando o player
-	var player;
-
-	var playerArr = [];
-
-	var videoDuration = 0;
-
-	// inicializando o contador do tempo do video
-	var videotime = 0;
-
-	// inicializando intervalo
-	var intervalVideo = null;
-
-	// Adicionando Youtube iframe API
-	tag.src = 'https://www.youtube.com/iframe_api';
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-	// Método chamado automaticamente pela api do youtube
-	function onYouTubeIframeAPIReady() {
-		playerDiv.forEach(function (p, i) {
-			player = new YT.Player(p, {
-				height: 650,
-				width: '100%',
-				videoId: p.dataset.videoId,
-				events: {
-					onReady: onPlayerReady
-				},
-				playerVars: {
-					rel: 0,
-					showinfo: 0
-				}
-			});
-			playerArr.push(player);
-		})
-	}
-
-	// Método chamado nos eventos do player
-	function onPlayerReady(event) {
-
-		// obtendo a duração do video, em segundos
-		videoDuration = playerArr.map(function (p) {
-			return parseInt(p.getDuration());
-		})
-		// aplicando o intervalo de 1 em 1 segundo
-		intervalVideo = setInterval(discoverTime, 1000);
-	}
-
-	function discoverTime() {
-		playerArr.map(function (p) {
-			if (p) {
-				if (p.getCurrentTime) {
-					videoDuration = parseInt(p.getDuration());
-					videotime = parseInt(p.getCurrentTime());
-					if (videotime == parseInt(videoDuration * 0.25)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "beneficios",
-							label: "video_do_produto_25%"
-						});
-					} else if (videotime == parseInt(videoDuration * 0.5)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "beneficios",
-							label: "video_do_produto_50%"
-						});
-					} else if (videotime == parseInt(videoDuration * 0.75)) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "beneficios",
-							label: "video_do_produto_75%"
-						});
-					} else if (videotime == videoDuration) {
-						dataLayer.push({
-							event: "generic",
-							category: "pdp-institucional",
-							action: "beneficios",
-							label: "video_do_produto_100%"
-						});
-					}
-				}
-			}
-			if (videotime == videoDuration) {
-				clearInterval(intervalVideo);
-				// let videoContainer = document.getElementById("video-container");
-				// let mainVideo = document.getElementById("player");
-				// mainVideo.style.display = "none";
-				// videoContainer.style.display = "block";
-			}
-		})
-	}
-
-</script>
