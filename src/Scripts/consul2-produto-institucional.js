@@ -8,6 +8,7 @@ import {
 import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/specifications';
 import 'modules/produto-institucional/main-banner-datalayer';
+import 'modules/produto-institucional/video-bem-pensado';
 
 Nitro.controller(
 	'produto-institucional',
@@ -16,6 +17,7 @@ Nitro.controller(
 		'produto-institucional',
 		'specifications',
 		'main-banner-datalayer',
+		'video-bem-pensado',
 	],
 
 	function () {
