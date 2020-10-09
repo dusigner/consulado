@@ -97,6 +97,7 @@ body {
 .navigation-sticked {
 	@include breakpoint("small", "max") {
 		margin-top: 1rem;
+		top: -1px;
 	}
 
 	background-color: $color_dark_gray;
@@ -104,8 +105,8 @@ body {
 	font-family: "Consul";
 	overflow: hidden;
 	position: sticky;
-	top: -1px;
-	z-index: 9999;
+	top: 0;
+	z-index: 9;
 
 	.container {
 		@include breakpoint("small", "max") {
@@ -211,8 +212,13 @@ body {
 
 // Video background
 .container-bempensado {
+	background: rgb(255,255,255);
+	background: linear-gradient(90deg, rgba(255,255,255,1) 50%, rgba(64,60,59,1) 50%);
+
 	&__desktop {
 		margin: 0 auto;
+		max-width: 1206px;
+		padding-bottom: 85px;
 
 		@media screen and (max-width: 768px) {
 			display: none;
@@ -220,25 +226,15 @@ body {
 
 		#container-video {
 			display: flex;
-			background: #ffffff;
 			margin: 0 auto;
 
 			.bg-light-black {
-				background: rgb(64, 60, 59);
-				background: linear-gradient(
-					270deg,
-					rgba(64, 60, 59, 1) 50%,
-					rgba(255, 255, 255, 1) 50%,
-					rgba(64, 60, 59, 1) 50%,
-					rgba(255, 255, 255, 1) 50%,
-					rgba(255, 255, 255, 1) 50%
-				);
-				height: 720px;
 				width: 100%;
 				color: #ffffff;
 
 				.title {
-					padding: 15px 0 0 80px;
+					padding: 0 0 0 80px;
+					margin: 76px 0 63px;
 					line-height: 36px;
 				}
 
@@ -268,14 +264,16 @@ body {
 						height: 543.46px;
 						border-radius: 5px;
 						margin: 0 auto;
-						margin-left: 20px;
-						margin-right: 20px;
 					}
 				}
 
 				.text {
-					padding-top: 15%;
+					padding-top: 0;
 					margin-left: 30px;
+					display: flex;
+					flex-flow: column nowrap;
+					align-items: center;
+					justify-content: center;
 				}
 
 				.reinvente {
@@ -382,43 +380,66 @@ body {
 
 // Blog Facilita
 .container-blog-facilita {
-	max-width: 1920px;
+	@include breakpoint("small", "max") {
+		padding: 20px 0 0;
+	}
+
 	margin: 0 auto;
 	background-color: #f4f2f1;
-	margin-top: 5%;
+	padding: 63px 0 49px;
+
+	.title-blog-facilita {
+		@include breakpoint("small", "max") {
+			margin-bottom: 20px;
+		}
+
+		margin: 0 auto 46px;
+		max-width: 1206px;
+	}
 
 	.text-blog-facilita {
-		font-weight: 300;
-		font-size: 16px;
-		line-height: 24px;
-		display: flex;
-		padding-bottom: 25px;
-		text-align: center;
-		margin: 0 auto;
-		color: #4a4a4a;
-		max-width: 1000px;
+		&-desktop{
+			@include breakpoint("small", "max") {
+				display: none;
+			}
 
-		@media screen and (min-width: 400px) {
-			padding-left: 75px;
-			padding-right: 75px;
+			font-weight: 300;
+			font-size: 16px;
+			line-height: 28.85px;
+			display: flex;
+			text-align: center;
+			margin: 0 auto;
+			color: #4a4a4a;
+			max-width: 1000px;
+			letter-spacing: 0.35px;
 		}
 
-		@media screen and (min-width: 600px) {
-			padding-left: 45px;
-			padding-right: 45px;
+		&-mobile {
+			@include breakpoint("small", "min") {
+				display: none;
+			}
+
+			font-weight: 300;
+			font-size: 12px;
+			line-height: 21.64px;
+			display: flex;
+			text-align: center;
+			margin: 0 auto;
+			color: #4a4a4a;
+			max-width: 1000px;
+			letter-spacing: 0.35px;
+			padding: 0 40px;
 		}
 
-		@media screen and (min-width: 350px) {
-			padding-left: 25px;
-			padding-right: 25px;
-		}
 	}
 
 	.card-title-blog {
 		font-size: 24px;
 		text-align: left;
+		line-height: 29.5px;
+		font-weight: 500;
 
-		@media screen and (min-width: 300px) {
+		@media screen and (max-width: 600px) {
 			font-size: 17px;
 		}
 	}
@@ -435,60 +456,39 @@ body {
 	}
 
 	.container-image {
-		padding-top: 10px;
+		margin-bottom: 25px;
 	}
 
 	.logo-facilita-blog {
+		@include breakpoint("small", "max") {
+			max-width: 210px;
+			height: auto;
+			margin-bottom: 0;
+		}
+
 		display: block;
-		margin: 0 auto;
+		margin: 0 auto 1rem;
 		width: 328px;
 		height: 80px;
-		background-image: url("/arquivos/facilita-logo1.png") no-repeat;
 	}
 
-	.container-cards {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding-right: 50px;
-		padding-left: 50px;
-		max-width: 1263px;
+	.container-cards:not(.slick-slider) {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0 30px;
 		margin: 0 auto;
-	}
-
-	.carousel {
-		width: 1000px;
-		margin: 0 auto;
+		max-width: 1206px;
 	}
 
 	.card-blog {
-		margin-left: 10px;
-		margin-right: 10px;
-		margin-bottom: 20px;
 		border-radius: 5px;
-		padding-right: 15px;
-		padding-left: 15px;
-		padding-bottom: 20px;
-		justify-content: space-around;
-		background: #ffff;
+		padding: 17px 16px;
+		background: #ffffff;
 		text-align: center;
 		box-sizing: border-box;
-		border-radius: 5px;
-		width: 380 !important;
-		height: 615px !important;
 
-		@media screen and (max-width: 600px) {
-			height: 590px;
-		}
-
-		@media screen and (max-width: 1920px) {
-			width: 401px;
-			height: 660px;
-		}
-
-		@media screen and (min-width: 300px) {
-			width: 401px;
-			height: 551px !important;
+		&.slick-slide {
+			margin: 0 1rem;
 		}
 	}
 
@@ -498,10 +498,7 @@ body {
 		line-height: 15px;
 		letter-spacing: 0.035em;
 		color: #4a4a4a;
-
-		@media screen and (max-width: 600px) {
-			height: 590px;
-		}
+		padding: 0 10px;
 	}
 
 	.card-text-blog {
@@ -509,38 +506,104 @@ body {
 		font-weight: 300;
 		font-size: 16px;
 		text-align: left;
-		line-height: 25px;
+		line-height: 28.5px;
 		letter-spacing: 0.035em;
 		color: #4a4a4a;
+		min-height: 228px;
 
-		@media screen and (max-width: 600px) {
+		@include breakpoint("small", "max") {
 			font-size: 12px;
+			line-height: 24px;
 			margin-bottom: 30px;
+			min-height: 150px;
 		}
 	}
 
 	.btn-saiba-mais {
-		color: #fff;
+		color: #ffffff;
 		background-color: #8ac922;
-		padding: 12px 53px;
+		padding: 8px 16px;
 		border-radius: 100px;
 		text-decoration: none;
 		text-align: center;
-		display: inline-block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		font-size: 14px;
 		line-height: 1;
+		margin: 0 auto 24px;
+		min-height: 40px;
+		width: 180px;
 
-		@media screen and (max-width: 1023px) {
-			padding: 7px 15px 9px 20px;
-			min-width: 110px;
+		@include breakpoint("small", "max") {
+			max-width: 140px;
+			margin-bottom: 14px;
 		}
 	}
 
-	.slick-dots li.slick-active button {
-		background: #c4c4c4;
-	}
-
 	.slick-dots {
-		bottom: -40px;
+		bottom: 0;
+		padding: 8px 0;
+		position: relative;
+
+		li {
+			height: 10px !important;
+			margin: 10px 5px;
+			width: 10px !important;
+
+			button {
+				width: 10px;
+				height: 10px;
+				margin: 0;
+			}
+
+			&.slick-active {
+				button {
+					background-color: #c4c4c4;
+				}
+			}
+		}
+	}
+}
+
+// SEO
+.container-seo {
+	.container {
+		@include breakpoint("small", "max") {
+			padding: 25px 30px;
+		}
+
+		padding: 20px 0 20px 70px;
+
+		p {
+			@include breakpoint("small", "max") {
+				line-height: 20px;
+				margin: 0;
+
+				br {
+					display: none;
+				}
+			}
+
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 300;
+			line-height: 30px;
+			text-align: center;
+			margin: 20px 0;
+		}
+	}
+}
+
+// Footer
+footer {
+	margin-top: 0 !important;
+
+	.container {
+		@include breakpoint("small", "max") {
+			padding: 0 16px;
+		}
+
+		padding: 0;
 	}
 }

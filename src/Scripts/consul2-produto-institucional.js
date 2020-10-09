@@ -25,6 +25,7 @@ Nitro.controller(
 		'specifications',
 		'main-banner-datalayer',
 		'video-bem-pensado',
+		'characteristics',
 		'sku-fetch',
 		'selos',
 		'sku-select-v3',

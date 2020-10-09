@@ -1,67 +1,74 @@
-			var self = this,
-			$reference = $('.reference'),
-			$productSku = $('.productSku');
+var self = this,
+	$reference = $('.reference'),
+	$productSku = $('.productSku');
 
-		//TROCA DE NOMES PRODUCT / SKUREF
-		$(document)
-			.on('skuSelected.vtex', function () {
-				$reference.addClass('hide');
-				$productSku.removeClass('hide');
-			})
-			.on('skuUnselected.vtex', function () {
-				$productSku.addClass('hide');
-				$reference.removeClass('hide');
-			});
+//TROCA DE NOMES PRODUCT / SKUREF
+$(document)
+	.on('skuSelected.vtex', function () {
+		$reference.addClass('hide');
+		$productSku.removeClass('hide');
+	})
+	.on('skuUnselected.vtex', function () {
+		$productSku.addClass('hide');
+		$reference.removeClass('hide');
+	});
 
-		$(document).ajaxComplete(function (e, xhr, settings) {
-			if (/outrasformasparcelamento/.test(settings.url)) {
-				self.valoresParcelas();
-			}
-		});
-
-		$('input:radio').click(function () {
-			$('#showVoltage').text($(this).val());
-		}); // Mostra a a voltagem selecionada
-
-$('.container-cards').slick({
-    dots: false,
-    infinite: false,
-    speed: 300,
-    arrows: false,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    mobileFirst: true,
-    responsive: [{
-        breakpoint: 300,
-        settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true
-        }
-    },
-    {
-        breakpoint: 1200,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-        }
-    }
-    ]
+$(document).ajaxComplete(function (e, xhr, settings) {
+	if (/outrasformasparcelamento/.test(settings.url)) {
+		self.valoresParcelas();
+	}
 });
 
-if ( skuJson.available === true ) {
-		$('.secure').show();
-		$('body').addClass('produto-disponivel');
-	} else {
-		if ( !$('body').hasClass('product-outline') ) {
-			$('body').addClass('produto-indisponivel');
-			$('.calc-frete').hide();
-			$('.secure').hide();
-			$('.cta-containers').hide();
-			$('.prod-more-info').hide();
-		}
+$('input:radio').click(function () {
+	$('#showVoltage').text($(this).val());
+}); // Mostra a a voltagem selecionada
+
+if($(window).width() < 768 || $('.container-cards').children() > 3) {
+	$('.container-cards').slick({
+		arrows: false,
+		dots: true,
+		infinite: true,
+		mobileFirst: true,
+		slidesToScroll: 3,
+		slidesToShow: 3,
+		responsive: [
+			{
+				breakpoint: 300,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				}
+			},
+			{
+				breakpoint: 700,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2
+				}
+			},
+			{
+				breakpoint: 1200,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3
+				}
+			}
+		]
+	});
+}
+
+if (skuJson.available === true) {
+	$('.secure').show();
+	$('body').addClass('produto-disponivel');
+} else {
+	if (!$('body').hasClass('product-outline')) {
+		$('body').addClass('produto-indisponivel');
+		$('.calc-frete').hide();
+		$('.secure').hide();
+		$('.cta-containers').hide();
+		$('.prod-more-info').hide();
 	}
+}
 
 //Opções de parcelamento
 self.valoresParcelas = function () {
@@ -117,21 +124,21 @@ self.valoresParcelas();
 //Cep
 const $document = $(document),
 	$cepInput = '#calculoFrete .prefixo input';
-	$document.on('change', $cepInput, ({ currentTarget }) => {
+$document.on('change', $cepInput, ({ currentTarget }) => {
 	const $element = $(currentTarget);
-		$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
-	});
-	$(".cep-busca a").html("Não sabe o CEP?").attr("href","Não sabe o CEP?");
+	$element.val() ? $element.parent().addClass('has--cep') : $element.parent().removeClass('has--cep');
+});
+$(".cep-busca a").html("Não sabe o CEP?").attr("href", "Não sabe o CEP?");
 
 //setup modal
-	$('a[data-modal]').on('click', ({ currentTarget }) => {
-		const $element = $(currentTarget);
-		$('#modal-' + $element.data('modal')).vtexModal();
-	});
-	$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
+$('a[data-modal]').on('click', ({ currentTarget }) => {
+	const $element = $(currentTarget);
+	$('#modal-' + $element.data('modal')).vtexModal();
+});
+$('.close-modal').on('click', () => $('#vtex-modal-tipo-entrega.vtex-modal').trigger('click'));
 
-	//seletor cores
-	if (window.location.href.indexOf('branca') > -1) {
-		$('.botao-seletor.white').addClass('is-active');
-		$('.botao-seletor.evox').removeClass('is-active');
-	}
+//seletor cores
+if (window.location.href.indexOf('branca') > -1) {
+	$('.botao-seletor.white').addClass('is-active');
+	$('.botao-seletor.evox').removeClass('is-active');
+}
