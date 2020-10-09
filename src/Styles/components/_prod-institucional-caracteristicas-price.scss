@@ -458,11 +458,16 @@ $roxo: #712f8f;
 				}
 			}
 			.frete-calcular {
+				right: 2px;
+				top: 2px;
+
 				#btnFreteSimulacao {
 					@include rfs(14);
 					color: $roxo;
 					padding: 14px 15px;
 					text-transform: none;
+					background: #ffffff;
+					border-radius: 0;
 				}
 			}
 			.cep-busca {
