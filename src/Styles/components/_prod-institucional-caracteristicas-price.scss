@@ -18,9 +18,11 @@ $roxo: #712f8f;
 		padding: 14px 16px;
 		width: calc(100% - 16px);
 	}
+	width: 60%;
+
 	.product-info-bar {
 		display: block !important;
-		margin: 0 auto;
+		margin: 0 auto 0 280px;
 		max-width: 100%;
 		width: 440px;
 		&__container {
@@ -81,17 +83,25 @@ $roxo: #712f8f;
 				visibility: hidden;
 			}
 			& .valor-dividido {
-				@media (max-width: 370px) {
-					bottom: 0;
-					left: -20px;
+				@include breakpoint('small', 'max') {
+					left: 95px;
+					bottom: 25px;
+					width: calc(100% - 95px);
+					right: 0;
 				}
+
+				@media (max-width: 370px) {
+					left: 85px;
+    				width: calc(100% - 80px);
+				}
+
 				@include rfs(15);
-				bottom: 26px;
+				bottom: 28px;
 				color: $grey;
 				display: inline-block;
 				font-style: normal;
 				font-weight: 400;
-				left: 88px;
+				left: 98px;
 				margin: 5px 0;
 				position: relative;
 				right: 100%;
@@ -173,6 +183,10 @@ $roxo: #712f8f;
 				}
 			}
 		}
+
+		@include breakpoint('small', 'max') {
+			margin: 0 auto;
+		}
 	}
 	#BuyButton .buy-button,
 	.product-info-bar__buy .buy-button {
@@ -251,6 +265,16 @@ $roxo: #712f8f;
 				padding: 10px 20px;
 				transition: none;
 				width: 100%;
+
+				@include breakpoint('small', 'max') {
+					padding: 0;
+
+					li {
+						span, strong {
+							width: auto;
+						}
+					}
+				}
 			}
 		}
 	}
@@ -448,11 +472,12 @@ $roxo: #712f8f;
 				position: relative;
 				top: -8px;
 				@include breakpoint('small', 'max') {
-					left: auto;
-					position: absolute;
-					right: 3px;
-					top: -26px;
-					z-index: 9;
+					width: 100%;
+					left: 0;
+					display: flex;
+					justify-content: flex-end;
+					top: -59%;
+					z-index: 2;
 				}
 			}
 		}
