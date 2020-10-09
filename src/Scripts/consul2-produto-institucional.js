@@ -8,6 +8,7 @@ import 'modules/produto-institucional/specifications';
 import 'modules/produto-institucional/main-banner-datalayer';
 import 'modules/produto-institucional/video-bem-pensado';
 import 'modules/produto-institucional/characteristics-block';
+import 'dataLayers/dataLayer-produto-institucional';
 import 'modules/product/sku-fetch';
 import 'modules/product/selos';
 import 'modules/product/sku-select-v3';
@@ -26,6 +27,7 @@ Nitro.controller(
 		'main-banner-datalayer',
 		'video-bem-pensado',
 		'characteristics',
+		'dataLayer-produto-institucional',
 		'sku-fetch',
 		'selos',
 		'sku-select-v3',
@@ -33,7 +35,7 @@ Nitro.controller(
 		'boleto',
 		'deliveryTime',
 		'notify-me',
-		'outline-products',
+		'outline-products'
 	],
 
 	function () {
@@ -165,16 +167,3 @@ $(document).ready(function () {
 	};
 });
 
-let sbSlick = function () {
-	var screenWidth = $(window).width();
-	//Slick slider intro mobile
-	if (screenWidth <= '660') {
-		$('.container-cards').slick({
-			autoplay: true,
-			autoplaySpeed: 1000,
-			arrows: false,
-			dots: true
-		});
-	}
-	this.sbSlick()
-};
