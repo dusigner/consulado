@@ -436,7 +436,7 @@ $bar-color: #D9D8D8;
 
 			.container {
 				@include breakpoint('small', 'max') {
-					padding: 0 1rem;
+					padding: 35px 1rem 0;
 				}
 
 				display: flex;
