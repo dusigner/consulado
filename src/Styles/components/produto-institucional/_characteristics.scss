@@ -81,11 +81,20 @@
 
                 .product-characteristics-description {
                     line-height: 1.72rem;
+
                     @media screen and(max-width:768px) {
                         font-size: .87rem;
                         margin-top: 131%;
                         max-height: 110px;
                         overflow: hidden;
+                    }
+
+                    @media screen and(max-width: 415px) {
+                        margin-top: 118%;
+                    }
+
+                    @media screen and(max-width: 376px) {
+                        margin-top: 131%
                     }
 
                     &.is-open {
