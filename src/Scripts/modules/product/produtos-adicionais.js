@@ -75,7 +75,10 @@ Nitro.module('produtos-adicionais', function() {
 	this.getProducts = (prodRefCode, prodType) => {
 		fetch(`/api/catalog_system/pub/products/search?${prodRefCode}`)
 			.then(resp => resp.json())
-			.then(data => this.printProducts(data, prodType))
+			.then((data) => {
+				this.printProducts(data, prodType)
+				this.addProdToCart(data)
+			})
 			.then(() => this.loadingAnimation())
 			.then(() => this.showProducts(prodType))
 			.catch(error => {
@@ -261,6 +264,49 @@ Nitro.module('produtos-adicionais', function() {
 	this.updateButtonLink = (link) => {
 		$buyButton.attr('href', link);
 	};
+
+	this.addProdToCart = (product, prodType) => {
+		const products = product;
+		const productCheckbox = $('.produto-adicional.available');
+
+		products.map(function(product){
+			const item = {
+				id: product.items[0].itemId,
+				quantity: 1,
+				seller: '1'
+			};
+
+			$(productCheckbox).on('click', function(){
+				if(!$(productCheckbox).hasClass('is--active')) {
+					vtexjs.checkout.addToCart([item], null, 3)
+					.done(function(orderForm) {
+						console.info('batata');
+						console.info(orderForm);
+					});
+				} else {
+					vtexjs.checkout.getOrderForm()
+					.then(function(orderForm) {
+					var itemIndex = 0
+					var item = orderForm.items[itemIndex];
+					var itemsToRemove = [
+						{
+							"index": 0,
+							"quantity": 0,
+						}
+					]
+					console.info(item);
+					return vtexjs.checkout.removeItems(itemsToRemove);
+					})
+					.done(function(orderForm) {
+					console.info('batata1');
+					console.info(orderForm);
+					});
+				}
+
+			})
+
+		})
+	}
 
 	// Exibe os produtos
 	this.printProducts = (data, prodType) => {
