@@ -68,7 +68,7 @@ body {
 	}
 
 	.top-navigation {
-		background: #9aca3c;
+		background: linear-gradient(90deg,#8BBA34 50%,#9ACA3C 0);
 
 		.menu-department {
 			> .item,
@@ -87,6 +87,10 @@ body {
 					&::after {
 						background: #ffffff;
 					}
+				}
+
+				&.menu-header-category {
+					background-color: #9ACA3C;
 				}
 			}
 		}
