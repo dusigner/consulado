@@ -1,6 +1,9 @@
 .container-banner-home {
 	display: flex;
-	@include breakpoint(780px, 'max') { flex-direction: column; }
+
+	@include breakpoint(780px, 'max') {
+		flex-direction: column;
+	}
 }
 
 .container-banner-home .banner {
@@ -9,13 +12,19 @@
 
 .container-banner-home .banners {
 	width: 50%;
-	@include breakpoint(780px, 'max') { width: 100%; }
+
+	@include breakpoint(780px, 'max') {
+		width: 100%;
+	}
 }
 
 .container-banner-home .banners-static-home {
 	display: flex;
 	width: 50%;
-	@include breakpoint(780px, 'max') { display: none; }
+
+	@include breakpoint(780px, 'max') {
+		display: none;
+	}
 
 	.box-banner {
 		width: 50%;
@@ -28,8 +37,14 @@
 
 .container-banner-home .banners-static-home-tablet {
 	display: none;
-	@include breakpoint(780px, 'max') { display: flex; }
-	@include breakpoint(470px, 'max') { display: none; }
+
+	@include breakpoint(780px, 'max') {
+		display: flex;
+	}
+
+	@include breakpoint(470px, 'max') {
+		display: none;
+	}
 }
 
 .banners-static-home img,
@@ -37,13 +52,22 @@
 .banners-static-home-mobile img {
 	display: block;
 	width: 100%;
+
 }
 
 .banners-static-home-mobile {
 	display: none;
 	flex-direction: column;
 	align-items: center;
-	@include breakpoint(470px, 'max') { display: flex; }
+
+	.box-banner {
+		width: 100%;
+		margin-bottom: -25px;
+	}
+
+	@include breakpoint(470px, 'max') {
+		display: flex;
+	}
 }
 
 .container-banner-home .banner-principal {
@@ -53,11 +77,16 @@
 
 .banner-principal.slides.mobile {
 	display: none;
-	@include breakpoint(470px, 'max') { display: unset; }
+
+	@include breakpoint(470px, 'max') {
+		display: unset;
+	}
 }
 
 .banner-principal.slides.desktop {
-	@include breakpoint(470px, 'max') { display: none; }
+	@include breakpoint(470px, 'max') {
+		display: none;
+	}
 }
 
 .home-cta-mobile-banner {
@@ -80,7 +109,9 @@
 	left: 50%;
 	transform: translate3d(-50%, 0, 0);
 
-	@include breakpoint(470px, 'max') { display: flex; }
+	@include breakpoint(470px, 'max') {
+		display: flex;
+	}
 }
 
 .banners,
@@ -126,6 +157,7 @@
 		}
 	}
 }
+
 .banners-mobile {
 	padding-top: 8px !important;
 }
@@ -141,16 +173,21 @@
 		opacity: .5;
 		width: 30px;
 
-		&:before { color: #fff; }
+		&:before {
+			color: #fff;
+		}
 	}
 
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
-	@include breakpoint(extra-large, 'min') { min-height: 400px; max-height: 400px;}
+	@include breakpoint(extra-large, 'min') {
+		min-height: 400px;
+		max-height: 400px;
+	}
 
 	.box-banner {
 		position: absolute;
 		top: 0;
-		width: 100%;
+		width: 100% !important;
 
 		a {
 			display: block;
@@ -161,8 +198,15 @@
 		}
 
 		img {
-			@include breakpoint(1900px, 'min') { width: 100%; }		// Não me orgulho do que foi feito nesta linha
-			@include breakpoint(small, 'max') {	max-width: 100%; }
+			@include breakpoint(1900px, 'min') {
+				width: 100%;
+			}
+
+			// Não me orgulho do que foi feito nesta linha
+			@include breakpoint(small, 'max') {
+				max-width: 100%;
+			}
+
 			display: block;
 			height: auto;
 			left: 50%;
