@@ -180,7 +180,7 @@ window.mobileCheck = function() {
 window.showBannerPromotor = function(mobile, desk) {
 	const liveChatId = '3b5663e6-26c6-4fdc-a69c-61841c3edc9f'
 
-	window.localStorage.setItem('bannerPromotor', `${mobile},${desk}`)
+	window.localStorage.setItem('bannerPromotorTestAB', `${mobile},${desk}`)
 
 	const device = window.mobileCheck() ? mobile : desk
 
@@ -192,7 +192,10 @@ window.showBannerPromotor = function(mobile, desk) {
 
     if (device === 'whats') {
 		// Container PDP
-		if(containerWhatsClass){
+		const containerWhats = document.querySelector(containerWhatsClass)
+		if(containerWhats){
+			console.clear()
+			console.log(containerWhatsClass)
 			document.querySelector(containerWhatsClass).style.display = 'block';
 		}
 	}
@@ -208,23 +211,28 @@ window.showBannerPromotor = function(mobile, desk) {
 		}
 
 		// Tempo carregamento lip live chat
+		let runnedChat = false;
+		let timeoutChat;
 
-		let runned = false;
-		let timeout;
-
-		function tryToRun() {
-			if (!runned) {
+		function tryToRunChat() {
+			if (!runnedChat) {
 				if (window.liveChat) {
 					window.liveChat('init', liveChatId)
-					runned = true;
-				}else timeout = setTimeout(tryToRun, 1000);
+					runnedChat = true;
+				}else timeoutChat = setTimeout(tryToRunChat, 1000);
 			}
 		}
-		tryToRun();
+		tryToRunChat();
 	}
 }
 
-let bannerPromotor = localStorage.getItem('bannerPromotor')
+// Controle do container do promotor e liveChat para controle via Optimize
+if(document.querySelector('.container-whats')){
+	document.querySelector('.container-whats').style.display = 'none';
+	document.querySelector('.content_botoes_televendas').style.display = 'none';
+}
+
+let bannerPromotor = localStorage.getItem('bannerPromotorTestAB')
 
 if(bannerPromotor) {
 	const [mobile, desk] = bannerPromotor.split(',')

@@ -1,1 +1,305 @@
 @import "components/produto-institucional/benefits";
+@import "../Pages/landing-novos-bebedouros/styles/scss/utils";
+@import "/node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/whp-modal";
+@import "helpers/rfs";
+@import "components/prod-institucional-caracteristicas-price";
+@import 'components/produto/modal.sku';
+@import 'components/produto/prod-info-parcelas-v2';
+@import 'components/produto/frete-v2';
+@import 'components/produto/trust-vox';
+@import 'components/selos';
+@import 'components/produto/selos';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/prod-buy-button-v2';
+@import 'components/checkbox';
+@import 'components/produto/prod-info-preco';
+@import 'components/produto/outline-products';
+@import "components/produto/prod-info-sku-v2";
+@import 'components/produto/voltage-selector-modal';
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: "Consul";
+	background-color: #F4F2F1;
+	max-width: 1920px;
+}
+
+;
+
+.top-navigation--pdp {
+	background-color: $color_dark_gray;
+	color: #fff;
+	font-family: "Consul";
+	overflow: hidden;
+
+	@media screen and (max-width: 1023px) {
+		margin-top: 55px;
+	}
+
+	.container {
+		padding: 0 15px !important;
+	}
+
+	nav {
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-right: 40px;
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+
+		&.active {
+			color: $color_main-green;
+		}
+	}
+
+	.cta.cta--green {
+		margin: 10px 0;
+		font-size: 14px;
+		padding: 11px 35px 12px 41px;
+		line-height: 1.1;
+		min-width: auto;
+
+		@media screen and (max-width: 1023px) {
+			padding: 7px 15px 9px 20px;
+			min-width: 100px;
+		}
+	}
+
+	ul {
+		display: inline-flex;
+		list-style-type: none;
+		width: 100%;
+		justify-content: space-between;
+
+		li {
+			padding: 0 20px;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		background-color: #333;
+
+		.container {
+			align-items: center;
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				width: 70%;
+				background: linear-gradient(to left,
+						#333333 50%,
+						rgba(51, 51, 51, 0) 100%);
+			}
+		}
+
+		nav {
+			overflow-x: scroll;
+			margin-right: 5px;
+		}
+
+		.cta {
+			font-size: 12px;
+			display: block;
+			padding: 5px 0;
+			min-width: 100px;
+			text-align: center;
+		}
+
+		ul {
+			li {
+				padding: 0 10px;
+
+				&:first-child {
+					padding-left: 0;
+				}
+
+				a {
+					font-size: 12px;
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+
+	&.fixed {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		animation: fadeIn 0.5s;
+		top: 0;
+
+		@media screen and (max-width: 1023px) {
+			top: 85px;
+		}
+	}
+
+	&.inactive {
+		display: none;
+	}
+}
+
+.container-blog-facilita {
+	background-color: #F4F2F1;
+	margin-top: 5%;
+
+
+	.text-blog-facilita {
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 24px;
+		display: flex;
+		align-items: center;
+		text-align: center;
+		color: #4A4A4A;
+		padding-left: 200px;
+		padding-right: 200px;
+
+		@media screen and (max-width: 400px) {
+			padding-left: 75px;
+			padding-right: 75px;
+		}
+
+		@media screen and (max-width: 600px) {
+			padding-left: 45px;
+			padding-right: 45px;
+		}
+
+		@media screen and (max-width: 350px) {
+			padding-left: 25px;
+			padding-right: 25px;
+		}
+	}
+
+	.card-title-blog {
+		padding-top: 20px;
+		font-size: 24px;
+		text-align: left;
+	}
+
+	.img-facilita-consul {
+		align-items: center;
+		border: 1px solid #F1F0F0;
+		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		margin-top: 10px;
+		max-height: 237px;
+		max-width: 100%;
+	}
+
+	.logo-facilita-blog {
+		display: block;
+		margin: 0 auto;
+		width: 328px;
+		height: 80px;
+		background-image: url('/arquivos/facilita-logo1.png') no-repeat;
+	}
+
+	.container-cards {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-right: 50px;
+		padding-left: 50px;
+	}
+
+	.carousel {
+		width: 1000px;
+		margin: 0 auto;
+	}
+
+	.card-blog {
+		box-sizing: border-box;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 20px;
+		border-radius: 5px;
+		padding-right: 10px;
+		padding-left: 10px;
+		padding-bottom: 20px;
+		justify-content: space-around;
+		background: #FFF;
+		text-align: center;
+		width: 400px;
+		height: 605px;
+
+		@media screen and (max-width: 600px) {
+			height: 590px;
+		}
+	}
+
+	.card-body-blog {
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 25px;
+		letter-spacing: 0.035em;
+		color: #4A4A4A;
+
+		@media screen and (max-width: 600px) {
+			height: 590px;
+		}
+	}
+
+	.card-text-blog {
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		text-align: left;
+		line-height: 25px;
+		letter-spacing: 0.035em;
+		color: #4A4A4A;
+
+		@media screen and (max-width: 600px) {
+			font-size: 12px;
+			margin-bottom: 30px;
+		}
+	}
+
+	.btn-saiba-mais {
+		color: #fff;
+		background-color: #8AC922;
+		padding: 12px 53px;
+		border-radius: 100px;
+		text-decoration: none;
+		text-align: center;
+		display: inline-block;
+		font-size: 14px;
+		line-height: 1;
+
+		@media screen and (max-width: 1023px) {
+			padding: 7px 15px 9px 20px;
+			min-width: 110px;
+		}
+	}
+
+	.slick-dots li.slick-active button {
+		background: #C4C4C4;
+	}
+
+	.slick-dots {
+		bottom: -40px;
+	}
+}
