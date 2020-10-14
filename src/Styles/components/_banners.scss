@@ -87,7 +87,7 @@
 	display: none;
 
 	@include breakpoint(470px, 'max') {
-		display: block !important;
+		display: none !important;
 	}
 }
 
