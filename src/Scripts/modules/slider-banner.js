@@ -18,7 +18,7 @@ Nitro.module('slider-banner', [], function () {
 			.slick({
 				autoplay: true,
 				autoplaySpeed: 7000,
-				// mobileFirst: true,
+				mobileFirst: true,
 				dots: false,
 				arrows: true,
 				responsive: [{
@@ -58,7 +58,7 @@ Nitro.module('slider-banner', [], function () {
 		});
 
 		// //	SLICK BANNER AREAS
-		// $('.banner-principal.slides.mobile').slick({
+		// $('.banner-principal .slides .mobile').slick({
 		// 	infinite: true,
 		// 	arrows: true,
 		// 	slidesToShow: 1,
