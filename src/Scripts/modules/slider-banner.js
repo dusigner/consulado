@@ -14,6 +14,7 @@ Nitro.module('slider-banner', [], function () {
 			//if ($(window).width() <= 470) qtdBanners = $('.banners-mobile .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
 		});
 
+
 		$bannerPrincipal
 			.slick({
 				autoplay: true,

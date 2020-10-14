@@ -78,14 +78,16 @@
 .banner-principal.slides.mobile {
 	display: block !important;
 
-	@include breakpoint(470px, 'max') {
+	@include breakpoint(470px, 'min') {
 		display: unset;
 	}
 }
 
 .banner-principal.slides.desktop {
+	display: none;
+
 	@include breakpoint(470px, 'max') {
-		display: none;
+		display: block !important;
 	}
 }
 
