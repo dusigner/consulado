@@ -76,7 +76,7 @@
 }
 
 .banner-principal.slides.mobile {
-	display: none;
+	display: block !important;
 
 	@include breakpoint(470px, 'max') {
 		display: unset;
@@ -171,10 +171,21 @@
 	.slick-arrow {
 		margin: 0 10px;
 		opacity: .5;
-		width: 30px;
+		width: 35px;
+		height: 35px;
+		top: 50%;
+		z-index: 50;
+		border: 1px solid #E3E1E1;
+		box-sizing: border-box;
+		border-radius: 2px;
+
 
 		&:before {
-			color: #fff;
+			color: #9ACA3C;
+			width: 16px;
+			height: 16px;
+			opacity: 10;
+
 		}
 	}
 
@@ -233,6 +244,28 @@
 
 	// [ Mobile ] - Banner principal
 	&.banner-mobile {
+
+		.slick-arrow {
+			margin: 0 10px;
+			opacity: .5;
+			width: 35px;
+			height: 35px;
+			top: 50%;
+			z-index: 50;
+			border: 1px solid #E3E1E1;
+			box-sizing: border-box;
+			border-radius: 2px;
+
+
+			&:before {
+				color: #9ACA3C;
+				width: 16px;
+				height: 16px;
+				opacity: 10;
+
+			}
+		}
+
 		.box-banner {
 			img {
 				left: 0;
