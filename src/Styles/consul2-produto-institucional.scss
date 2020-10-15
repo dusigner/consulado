@@ -1,4 +1,31 @@
+@charset 'UTF-8';
+
+/*! =================================================
+	* Theme Name: Layout - // @echo package.accountName
+	* Description: CSS desenvolvido para // @echo package.name
+	* Author: // @echo package.author
+	* Empresa: Jüssi
+	* Author URI: http://www.jussi.com.br/
+	* Version: // @echo package.version
+	=================================================
+*/
+/*!*/
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+// Utility helpers
+@import "helpers/variables";
+@import "helpers/functions";
+@import "helpers/mixins";
+@import "helpers/whp-modal";
+@import "helpers/rfs";
+
+// Component styles
 @import "../Pages/landing-novos-bebedouros/styles/scss/utils";
+@import "components/produto-institucional/benefits";
+@import "components/produto-institucional/specifications";
 
 * {
 	padding: 0;
@@ -173,9 +200,12 @@ body {
 	}
 
 	.card-title-blog {
-		padding-top: 20px;
 		font-size: 24px;
 		text-align: left;
+
+		@media screen and (min-width: 300px) {
+			font-size: 17px;
+		}
 	}
 
 	.img-facilita-consul {
@@ -184,9 +214,13 @@ body {
 		border-radius: 5px;
 		display: flex;
 		justify-content: center;
-		margin-top: 10px;
-		max-height: 237px;
-		max-width: 100%;
+		margin-bottom: 10px;
+		height: 100%;
+		width: 100%;
+	}
+
+	.container-image {
+		padding-top: 10px;
 	}
 
 	.logo-facilita-blog {
@@ -204,6 +238,8 @@ body {
 		justify-content: center;
 		padding-right: 50px;
 		padding-left: 50px;
+		max-width: 1263px;
+		margin: 0 auto;
 	}
 
 	.carousel {
@@ -212,24 +248,33 @@ body {
 	}
 
 	.card-blog {
-		box-sizing: border-box;
 		margin-left: 10px;
 		margin-right: 10px;
 		margin-bottom: 20px;
 		border-radius: 5px;
-		padding-right: 10px;
-		padding-left: 10px;
+		padding-right: 15px;
+		padding-left: 15px;
 		padding-bottom: 20px;
 		justify-content: space-around;
 		background: #FFFF;
 		text-align: center;
 		box-sizing: border-box;
 		border-radius: 5px;
-		width: 400px;
-		height: 605px;
+		width: 380 !important;
+		height: 615px !important;
 
 		@media screen and (max-width: 600px) {
 			height: 590px;
+		}
+
+		@media screen and (max-width: 1920px) {
+			width: 401px;
+			height: 660px;
+		}
+
+		@media screen and (min-width: 300px) {
+			width: 401px;
+			height: 551px !important;
 		}
 	}
 
