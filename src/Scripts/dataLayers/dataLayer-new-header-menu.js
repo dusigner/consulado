@@ -106,17 +106,30 @@ Nitro.module('dataLayer-new-header-menu', function () {
 			);
 		});
 
-		//menu mobil
-		let acaoM = $('.menu-department').find('.item-department a').attr('title');
+		//menu mobile
 
-		$('.menu-department').find('.item-department a').on('click', function () {
-			acaoM = $(this).attr('title').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();;
-			pushDataLayer(
-				'Novo-Header',
-				`click_menu-${acaoM}`,
-				`novo-menu-mobile`
-			);
-		});
+		if ($(window).width() < 768) {
+
+			let acaoM = $('.menu-department').find('.item-department a').attr('title');
+
+			$('.menu-department').find('.item-department a').on('click', function () {
+				acaoM = $(this).attr('title').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();;
+				pushDataLayer(
+					'Novo-Header',
+					`click_menu-${acaoM}`,
+					`novo-menu-mobile`
+				);
+			});
+
+			$('.search-coupons-mobile .coupons-block a').on('click', function () {
+				pushDataLayer(
+					'Novo-Header',
+					`click_cupons_mobile`,
+					`novo-menu`
+				);
+			});
+
+		}
 
 	};
 	this.newMenuDepartament = () => {
