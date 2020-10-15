@@ -216,6 +216,7 @@ body {
 .container-bempensado {
 
 	&__desktop {
+		margin: 0 auto;
 
 		@media screen and (max-width: 768px) {
 			display: none;
@@ -224,7 +225,8 @@ body {
 		#container-video {
 			display: flex;
 			background: #FFFFFF;
-			padding-left: 55px;
+			margin: 0 auto;
+
 
 			.bg-light-black {
 				background: rgb(64, 60, 59);
@@ -244,8 +246,8 @@ body {
 					margin: 0;
 				}
 
-				.video-bem-pensado {
-					flex: 1;
+				#video-bem-pensado {
+					margin-left: 30px;
 				}
 
 				.pra-voce {
@@ -257,21 +259,21 @@ body {
 
 				.content-video {
 					display: flex;
+					margin: 0 auto;
 
 					iframe {
 						width: 944px;
 						height: 543.46px;
 						border-radius: 5px;
+						margin: 0 auto;
+						margin-left: 20px;
+						margin-right: 20px;
 					}
 				}
 
 				.text {
-					padding: 15% 250px 0 40px;
-
-					@media screen and (max-width: 1366px) {
-						padding: 15% 120px 0 40px;
-					}
-
+					padding-top: 15%;
+					margin-left: 30px;
 				}
 
 				.reinvente {
@@ -302,6 +304,7 @@ body {
 	}
 
 	&__mobile {
+		margin: 0 auto;
 
 		@media screen and (min-width: 768px) {
 			display: none;
@@ -310,11 +313,12 @@ body {
 		.content-video {
 			display: flex;
 			padding-bottom: 20px;
-			width: 100%;
+			justify-content: space-between;
+
 
 			iframe {
-				width: 100%;
-				height: 100%;
+				width: 302.77px;
+				height: 174.3px;
 				border-radius: 5px;
 			}
 		}
@@ -372,17 +376,13 @@ body {
 				width: 25px;
 			}
 		}
-
-
-
 	}
-
 }
-
-
 
 // Blog Facilita
 .container-blog-facilita {
+	max-width: 1920px;
+	margin: 0 auto;
 	background-color: #F4F2F1;
 	margin-top: 5%;
 
@@ -391,23 +391,23 @@ body {
 		font-size: 16px;
 		line-height: 24px;
 		display: flex;
-		align-items: center;
+		padding-bottom: 25px;
 		text-align: center;
+		margin: 0 auto;
 		color: #4A4A4A;
-		padding-left: 200px;
-		padding-right: 200px;
+		max-width: 1000px;
 
-		@media screen and (max-width: 400px) {
+		@media screen and (min-width: 400px) {
 			padding-left: 75px;
 			padding-right: 75px;
 		}
 
-		@media screen and (max-width: 600px) {
+		@media screen and (min-width: 600px) {
 			padding-left: 45px;
 			padding-right: 45px;
 		}
 
-		@media screen and (max-width: 350px) {
+		@media screen and (min-width: 350px) {
 			padding-left: 25px;
 			padding-right: 25px;
 		}
