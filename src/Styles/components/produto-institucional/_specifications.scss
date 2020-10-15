@@ -8,6 +8,10 @@ $bgcolorall: #FAF9F9;
 $bar-color: #D9D8D8;
 
 #specifications-lp {
+	@include breakpoint('small', 'min') {
+		padding-top: 40px;
+	}
+
 	background-color: $bgcolorall;
 
 	li {
@@ -23,13 +27,12 @@ $bar-color: #D9D8D8;
 					padding: 35px 0;
 				}
 
-				padding-bottom: 1rem;
-				padding-top: 1rem;
+				padding: 1rem 0;
 			}
 
 			&-main {
 				@include breakpoint('small', 'max') {
-					margin: 0;
+					margin-bottom: 10px;
 					min-height: 31px;
 				}
 
@@ -419,17 +422,26 @@ $bar-color: #D9D8D8;
 			}
 
 			.container {
+				@include breakpoint('small', 'max') {
+					padding: 0 1rem;
+				}
+
+				padding: 0;
 				position: relative;
 			}
 		}
 
 		&__footer {
-			background-color: $bgcolorfooter;
+			background-color: #efedee;
 
 			.container {
+				@include breakpoint('small', 'max') {
+					padding: 35px 1rem 0;
+				}
+
 				display: flex;
 				padding-bottom: 35px;
-				padding-top: 35px;
+				padding: 35px 0;
 			}
 		}
 
@@ -443,7 +455,7 @@ $bar-color: #D9D8D8;
 				width: 100%;
 
 				&.active {
-					background-color: #F1F0F0;
+					background-color: #efedee;
 					box-shadow: none;
 					position: relative;
 

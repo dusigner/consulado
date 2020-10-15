@@ -101,11 +101,12 @@ $roxo: #712f8f;
 				display: inline-block;
 				font-style: normal;
 				font-weight: 400;
-				left: 98px;
+				left: 100px;
 				margin: 5px 0;
 				position: relative;
 				right: 100%;
 				text-align: left;
+				width: calc(100% - 110px);
 				strong {
 					font-weight: 500;
 				}
@@ -457,11 +458,16 @@ $roxo: #712f8f;
 				}
 			}
 			.frete-calcular {
+				right: 2px;
+				top: 2px;
+
 				#btnFreteSimulacao {
 					@include rfs(14);
 					color: $roxo;
 					padding: 14px 15px;
 					text-transform: none;
+					background: #ffffff;
+					border-radius: 0;
 				}
 			}
 			.cep-busca {
@@ -471,12 +477,13 @@ $roxo: #712f8f;
 				left: -180px;
 				position: relative;
 				top: -8px;
+
 				@include breakpoint('small', 'max') {
 					width: 100%;
 					left: 0;
 					display: flex;
 					justify-content: flex-end;
-					top: -59%;
+					top: -77px;
 					z-index: 2;
 				}
 			}
