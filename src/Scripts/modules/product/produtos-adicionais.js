@@ -75,7 +75,10 @@ Nitro.module('produtos-adicionais', function() {
 	this.getProducts = (prodRefCode, prodType) => {
 		fetch(`/api/catalog_system/pub/products/search?${prodRefCode}`)
 			.then(resp => resp.json())
-			.then(data => this.printProducts(data, prodType))
+			.then((data) => {
+				this.printProducts(data, prodType)
+				this.addProdToCart(data)
+			})
 			.then(() => this.loadingAnimation())
 			.then(() => this.showProducts(prodType))
 			.catch(error => {
@@ -262,6 +265,54 @@ Nitro.module('produtos-adicionais', function() {
 		$buyButton.attr('href', link);
 	};
 
+	this.addProdToCart = (product, prodType) => {
+		const products = product;
+		const productCheckbox = $('.produto-adicional.available');
+
+		$(productCheckbox).on('click', function(){
+			let clickedProduct = $(this);
+			let item = {
+				id: parseInt($(clickedProduct).parent().attr('id')),
+				quantity: 1,
+				seller: '1'
+			};
+
+			if(!$(clickedProduct).hasClass('is--active')) {
+				vtexjs.checkout.addToCart([item], null, 3)
+				.done(function(orderForm) {
+					console.info(orderForm);
+				});
+			} else {
+				vtexjs.checkout.getOrderForm()
+				.then(function(orderForm) {
+
+					orderForm.items.forEach(function(item, index){
+						if($(clickedProduct).parent().attr('id') === item.id) {
+							console.info(item, index);
+							var itemIndex = index;
+							var itemsToRemove = [
+								{
+									"index": itemIndex,
+									"quantity": 0,
+								}
+							]
+
+							return vtexjs.checkout.removeItems(itemsToRemove);
+
+						}
+					})
+
+
+				})
+				.done(function(orderForm) {
+					console.info('Produto Removido!');
+				});
+			}
+
+		})
+
+	}
+
 	// Exibe os produtos
 	this.printProducts = (data, prodType) => {
 		const $container =  $additionalProdBox.find('.loading-container');
@@ -285,7 +336,7 @@ Nitro.module('produtos-adicionais', function() {
 
 		// Product Kit
 		const prodTemplate = `
-			<div class="produtos-adicionais__content" data-prodtype="${prodType}">
+			<div id="${productSku}" class="produtos-adicionais__content" data-prodtype="${prodType}">
 				<div class="produto-adicional ${AvailableQuantity ? 'available' : ''}" data-sku="&sku=${productSku}&qty=1&seller=1&redirect=true&sc=3">
 					<div class="produto-adicional__item produto-adicional__item-image">
 						<img src="${productImage}" alt="${productTitle}" />
