@@ -33,7 +33,7 @@ Nitro.controller(
 		'dataLayer-categoria',
 		'popup-whatsapp-promoter',
 	],
-	function(chaordic) {
+	function (chaordic) {
 		var $body = $('body');
 
 		//INICIA CHAMADA DAS VITRINES CHAORDIC
@@ -49,10 +49,10 @@ Nitro.controller(
 		var testeA = 'testeab=a';
 		var testeB = 'testeab=b';
 
-		if ( urlTesteAb.indexOf(testeA) >= 0 ) {
+		if (urlTesteAb.indexOf(testeA) >= 0) {
 			$body.addClass('ab-test__mobile--show-b');
 		}
-		else if ( urlTesteAb.indexOf(testeB) >= 0 ) {
+		else if (urlTesteAb.indexOf(testeB) >= 0) {
 			$body.addClass('ab-test__mobile--show-b');
 			// teste vitrine chaordic
 			$body.addClass('test__vitrine--show-b');
@@ -67,9 +67,9 @@ Nitro.controller(
 			ignoreFilters = ['OrderByNameASC', 'OrderByNameDESC', 'OrderByReviewRateDESC'],
 			urlParams = _.urlParams(); //parse params from url
 
-		var $filters = $filterOptions.filter(function() {
+		var $filters = $filterOptions.filter(function () {
 			return $(this).val() !== '' && ignoreFilters.indexOf($(this).val()) === -1;
-		}).map(function() {
+		}).map(function () {
 
 			var self = $(this);
 
@@ -101,7 +101,7 @@ Nitro.controller(
 		($('body').hasClass('categoria')) ? $('.breadcrumb').removeClass('hide-medium').removeClass('hide-large').removeClass('hide-extra-large') : '';
 
 		//Get all elements on breadcrumb except the first and the last. Insert a function to add class show-active on first div parent
-		$('.bread-crumb li:not(:first):not(:last)').on('click', function() {
+		$('.bread-crumb li:not(:first):not(:last)').on('click', function () {
 			$('.bread-crumb').addClass('show-active');
 		});
 
@@ -118,7 +118,7 @@ Nitro.controller(
 				$moreCatHolder = $('<div class="single-filter-wrapper more-cat"><h5>Mais categorias</h5></div>');
 				$moreCatList = $('<ul />');
 
-				$dropElements.each(function() {
+				$dropElements.each(function () {
 					$moreCatList.append('<li>' + $(this).html() + '</li>');
 				});
 
@@ -200,7 +200,7 @@ Nitro.controller(
 		$('.filter-wrapper').remove();
 	}*/
 
-		var activeItem = function(e) {
+		var activeItem = function (e) {
 			e.preventDefault();
 			$(this)
 				.next('ul')
@@ -220,7 +220,7 @@ Nitro.controller(
 				urlRest = window.location.pathname.split('/');
 
 			//get categories count
-			var count = $.grep(mapParams, function(item) {
+			var count = $.grep(mapParams, function (item) {
 				return item === 'c';
 			}).length;
 
@@ -237,16 +237,16 @@ Nitro.controller(
 		//--MEDIA QUERY SCRIPTS
 		//-TABLET RETRATO
 		$(window)
-			.resize(function() {
+			.resize(function () {
 				if ($(window).width() <= 768) {
-					$('.title-filter').click(function(e) {
+					$('.title-filter').click(function (e) {
 						e.preventDefault();
 						$(this)
 							.add('.search-single-navigator')
 							.toggleClass('active');
 					});
 
-					$(document).on('click', '.single-filter-wrapper', function() {
+					$(document).on('click', '.single-filter-wrapper', function () {
 						$(this)
 							.find('ul')
 							.toggleClass('active');
@@ -257,7 +257,7 @@ Nitro.controller(
 
 		var $slider = $('section.slider .prateleira-slider .prateleira>ul').not('.slick-initialized');
 
-		this.setupSlider = function($currentSlider) {
+		this.setupSlider = function ($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
 				infinite: true,
 				slidesToShow: 3,
@@ -294,20 +294,21 @@ Nitro.controller(
 		// Banners categoris
 		var $bannersSlider = $('.category-banner-desktop, .category-banner-mobile').not('.slick-initialized');
 
-		this.setupBannersSlider = function($currentSlider) {
+		this.setupBannersSlider = function ($currentSlider) {
 			$currentSlider.not('.slick-initialized').slick({
 				autoplay: true,
 				autoplaySpeed: 7000,
 				infinite: true,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				arrows: false,
-				dots: true,
+				arrows: true,
+				dots: false,
 				responsive: [
 					{
 						breakpoint: 990,
 						settings: {
-							dots: true,
+							arrows: true,
+							dots: false,
 							slidesToShow: 1,
 							slidesToScroll: 1
 						}
@@ -315,7 +316,8 @@ Nitro.controller(
 					{
 						breakpoint: 480,
 						settings: {
-							dots: true,
+							arrows: true,
+							dots: false,
 							slidesToShow: 1,
 							slidesToScroll: 1
 						}
@@ -365,7 +367,7 @@ Nitro.controller(
 
 		//mobile - abrir vitrines
 		if ($(window).width() <= 768) {
-			$('section.slider .pre-title').click(function(e) {
+			$('section.slider .pre-title').click(function (e) {
 				e.preventDefault();
 
 				if ($(this).hasClass('open')) {
@@ -384,13 +386,13 @@ Nitro.controller(
 					$(this)
 						.siblings()
 						.find('.prateleira>ul')
-						.slideDown('slow', function() {
+						.slideDown('slow', function () {
 							self.setupSlider($(this));
 						});
 				}
 			});
 
-			$('section.slider').each(function() {
+			$('section.slider').each(function () {
 				$(this)
 					.find('.pre-title')
 					.trigger('click');
@@ -416,10 +418,10 @@ Nitro.controller(
 
 		const listagemApoio = $('.listagem-apoio');
 
-		if ($('.listagem-apoio p:empty').length !== 0 ) {
+		if ($('.listagem-apoio p:empty').length !== 0) {
 			listagemApoio.addClass('hideText');
 		} else {
-			listagemApoio.find('.icon-arrow-down').on('click', function(e) {
+			listagemApoio.find('.icon-arrow-down').on('click', function (e) {
 				e.preventDefault();
 
 				$(this).parents('.listagem-apoio').toggleClass('active');
@@ -427,13 +429,13 @@ Nitro.controller(
 		}
 
 		if ($('.refino.Tamanho.de.família label input').length) {
-			$('.refino.Tamanho.de.família label input').each(function(){
+			$('.refino.Tamanho.de.família label input').each(function () {
 				var $value = $(this).attr('value');
 				$(this).parents('label').addClass($value)
 			})
 		}
 
-		$('body.listagem.busca:not(.neemu) .more-cat, body.listagem.busca:not(.neemu) .category-list-voltar').on('click', function() {
+		$('body.listagem.busca:not(.neemu) .more-cat, body.listagem.busca:not(.neemu) .category-list-voltar').on('click', function () {
 			let $modalOverlay = $('body');
 			$(this).toggleClass('-active');
 			$('.category-list-content').toggleClass('-active');
@@ -444,7 +446,7 @@ Nitro.controller(
 					<div class="overlay-listagem showOverlay"></div>
 				`);
 
-				$modalOverlay.find('.overlay-listagem').on('click', function() {
+				$modalOverlay.find('.overlay-listagem').on('click', function () {
 					$('body.listagem.busca:not(.neemu) .more-cat').toggleClass('-active');
 					$('.category-list-content').toggleClass('-active');
 					$('.overlay-listagem').toggleClass('showOverlay');

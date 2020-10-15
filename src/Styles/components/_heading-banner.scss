@@ -22,7 +22,8 @@ body.listagem {
 			}
 		}
 
-		& ~ div.list-container {
+		&~div.list-container {
+			width: 100%;
 			bottom: 80px;
 
 			@include breakpoint ('medium', 'max') {
@@ -33,7 +34,8 @@ body.listagem {
 		&:empty {
 			display: none;
 
-			& ~ div.list-container {
+			&~div.list-container {
+				width: 100%;
 				bottom: 0;
 
 				@include breakpoint ('medium', 'max') {
@@ -44,13 +46,31 @@ body.listagem {
 	}
 
 	.category-banner {
+
 		&-mobile,
 		&-desktop {
+			height: 320px;
 			overflow: hidden;
+			background-color: #424242;
+			border-radius: 2px;
 
-			&.slick-slider { padding: 0; }
+			&.slick-slider {
+				padding: 0;
+			}
 
-			.box-banner a { display: block; width: 100%;}
+			.slick-arrow {
+				margin: 15px;
+				background: #FFFFFF;
+				border-radius: 2px;
+				width: 20px;
+				height: 30px;
+				color: #712F8F;
+			}
+
+			.box-banner a {
+				display: block;
+				width: 100%;
+			}
 
 			img {
 				height: auto;
@@ -74,34 +94,47 @@ body.listagem {
 		}
 
 		&-desktop {
-			@include breakpoint ('extra-small', 'max') { display: none; }
+			@include breakpoint ('extra-small', 'max') {
+				display: none;
+			}
+
 			max-height: 190px;
-			// display: inline-block;
+			display: inline-block;
 			// border: 1px solid #333;
+			width: 100%;
 
 			img {
 				height: auto;
-				max-width: 100%;
+				width: 100%;
 			}
 		}
 	}
 
 	//Página de cervejeiras
 	.heading-banner {
-		@include breakpoint('small', 'max') { background-color: #fff; }
+		@include breakpoint('small', 'max') {
+			background-color: #fff;
+		}
+
 		background-color: #f4f4f4;
 		overflow: hidden;
 		position: relative;
 
-		& > .container {
-			@include breakpoint('small', 'max') { flex-direction: column; }
+		&>.container {
+			@include breakpoint('small', 'max') {
+				flex-direction: column;
+			}
+
 			display: flex;
 			height: 100%;
 			justify-content: space-between;
 		}
 
 		&__pre-title__mobile {
-			@include breakpoint(medium, 'min') { display: none; }
+			@include breakpoint(medium, 'min') {
+				display: none;
+			}
+
 			background: #fff;
 			display: flex;
 			flex-direction: column;
@@ -121,6 +154,7 @@ body.listagem {
 					display: flex;
 					font-weight: bold;
 					text-transform: uppercase;
+
 					&:before {
 						background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAABHNCSVQICAgIfAhkiAAAAoVJREFUSIm91T9ME3EUB/Dve3c1cdE6OOMopJQ6oMZC0lmXspm4lKAyEOnvpKsJccberyQMNSR0ZevkXBPUaE28RqVxg7gwnivXu+dQS3rtlTtC4hvf78/n935/7oCYqLfzqt7Oq7h+5wXH9ggojYDSUU1q1i5a2Wr58siEULN2CSwNISyrOXsvMVL/nHfefnlQSghoeFQAUQGQOypb1YkQItEA7w1DzGgxoxUF6EPL0Y7lQuAA5E5CaDTRB3hPxF9avfepOakCfWg5Z/m5qgOignasSGjsTJ7f/dgQ8ZeYjdCASQAAQODCRyFxJVFxLgBAZewCDGmSoAyBK0ybABzdsZYBgOrtvGLQ9aEx75/NH0w8g4kLmbFzMKUEIA2hFlgUQN90x1qmejuvht8BM1oDJCkQiebsNEQc+FQyV+c/RF69ywAAAB9FMFyYcCIf43rG3haW2kUANWPnVMYuDC1QDW7cGFLOVHeJ5YUITnAFR0kBpKSJAO4oAIzcrnKmugvGCjx5TCZfHe0cmjhbbaBH/a1OSRMeFWEgFzWGo4Bad2Nff7caCEhDpKVydnoMGEQMEEJgoEQ+WbXuxv4gFQWdfaN6pJMAoe3qVyJPep7cNg1+RUw3AvLt7U7lYHifAaRxinRSIPJMyKAVkeCEhH8JywJ8NGo/Xj4NQae49a/6WGAMAYD1ua2F7U7lAADWpremzBQf9bzg1k63chyCfBSTAJHIaKjsGxc+b+qflgb6b0BIXgPyh5gX4wAAMM9rXJvemhLwNTH9r4OciCyA5GbPk8WdbjwAxPx+U2wsgSTwT/EbCF+OnW7lOAkAJNiuwcQEficIHl4USIQMQY96nty/KPDf4i/K5IQ0WzeUuQAAAABJRU5ErkJggg==');
 						content: '';
@@ -131,6 +165,7 @@ body.listagem {
 
 					}
 				}
+
 				.copiar {
 					@include rfs(13);
 					align-items: center;
@@ -138,6 +173,7 @@ body.listagem {
 					cursor: pointer;
 					display: flex;
 					font-weight: bold;
+
 					&:after {
 						background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAABHNCSVQICAgIfAhkiAAAAN1JREFUKJGtkbFRw0AQRd9fX26XQAdWggNGzKgDhiJwTAnuAGIpoQNKQMx4HEgJJYgOzg3sEjiRhQAH/Oz+/jd3t1+M1PRlFcErsOJntWl8cqeC+DTT/VzaiUKhpzQdSMoP1/t2Dmr6kgBS3d0Ukt0BeMQV6JeXnZQCteExSMoK8gUMJrQ00+N2s68CffyNgF0S+hfobHuSD2Druivf5sIRsQo4nkHbzeGl6cth7DlR4D6YLTIIwvO3nqYd1V25ky12Yz+drmVdd7cx/wNfTrtLwDvwDPNMwJHwPPa+AIHnT+m9NBhCAAAAAElFTkSuQmCC');
 						content: '';
@@ -148,6 +184,7 @@ body.listagem {
 					}
 				}
 			}
+
 			.bottom {
 				@include rfs(11);
 				background-color: #702F8F;
@@ -155,6 +192,7 @@ body.listagem {
 				font-weight: bold;
 				padding: 3px 0;
 				text-align: center;
+
 				span {
 					color: #9ACA3C;
 				}
@@ -163,8 +201,14 @@ body.listagem {
 
 		// Title
 		&__title {
-			@include breakpoint('medium', 'max') { padding: 1.8em; }
-			@include breakpoint('small', 'max') { width: 100%; }
+			@include breakpoint('medium', 'max') {
+				padding: 1.8em;
+			}
+
+			@include breakpoint('small', 'max') {
+				width: 100%;
+			}
+
 			align-self: center;
 			max-width: 500px;
 			min-width: 280px;
@@ -184,7 +228,10 @@ body.listagem {
 			}
 
 			&:before {
-				@include breakpoint('small', 'max') { left: -420px; }
+				@include breakpoint('small', 'max') {
+					left: -420px;
+				}
+
 				border-color: transparent transparent $green $green;
 				left: -450px;
 				top: 0;
@@ -192,7 +239,10 @@ body.listagem {
 			}
 
 			&:after {
-				@include breakpoint('medium', 'max') { right: 630px; }
+				@include breakpoint('medium', 'max') {
+					right: 630px;
+				}
+
 				border-color: $green $green transparent transparent;
 				right: 510px;
 				top: 0;
@@ -208,7 +258,9 @@ body.listagem {
 				z-index: 1;
 			}
 
-			h1:empty { display: none; }
+			h1:empty {
+				display: none;
+			}
 
 			span {
 				color: $green;
@@ -219,6 +271,7 @@ body.listagem {
 		// Banner
 		.category-page-top-banner {
 			@include breakpoint('small', 'max') {
+
 				&:before,
 				&:after {
 					background-color: #f4f4f4;
@@ -231,12 +284,19 @@ body.listagem {
 					z-index: 5;
 				}
 
-				&:before { right: 100%; }
-				&:after { left: 100%;}
+				&:before {
+					right: 100%;
+				}
+
+				&:after {
+					left: 100%;
+				}
 			}
+
 			@include breakpoint('small', 'min') {
 				min-height: 160px;
 			}
+
 			align-items: flex-end;
 			background-color: #f4f4f4;
 			display: flex;
@@ -245,13 +305,17 @@ body.listagem {
 
 		.box-banner {
 			@include breakpoint('small', 'min') {
-				@include breakpoint('medium', 'max') { z-index: 0; }
+				@include breakpoint('medium', 'max') {
+					z-index: 0;
+				}
 			}
+
 			@include breakpoint('small', 'max') {
 				margin: 0 auto;
 				width: 100%;
 				z-index: 5;
 			}
+
 			background-color: #f4f4f4;
 			overflow: hidden;
 			position: relative;
@@ -264,7 +328,10 @@ body.listagem {
 			}
 
 			img {
-				@include breakpoint('small', 'max') { max-width: 100%; }
+				@include breakpoint('small', 'max') {
+					max-width: 100%;
+				}
+
 				display: block;
 				height: auto;
 				max-height: 160px;
@@ -294,10 +361,17 @@ body.listagem {
 .container-epromotor a img {
 	display: block;
 	max-width: 100%;
-	@include breakpoint(600px, 'max') { display: none; }
+
+	@include breakpoint(600px, 'max') {
+		display: none;
+	}
 }
 
 .container-epromotor a img.mobile {
 	display: none;
-	@include breakpoint(600px, 'max') { display: block; margin: 0 auto; }
+
+	@include breakpoint(600px, 'max') {
+		display: block;
+		margin: 0 auto;
+	}
 }
