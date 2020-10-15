@@ -6,7 +6,8 @@ Nitro.module('beneficios', function() {
     var self = this;
     self.init = () => {
         this.toggleVideoIframe();
-    }
+        this.benefitsTagsGA();
+    };
 
     self.toggleVideoIframe = () => {
         $('.benefits__item .title').on('click', function(){
@@ -15,12 +16,22 @@ Nitro.module('beneficios', function() {
                 $('.title').removeClass('is-active')
                 $('.accordion').css('display', 'none')
             }
-            let dataVideo = $(this).attr('data-video');
             $(this).parent().toggleClass('is-active')
             $(this).toggleClass('is-active');
             $(this).parent().find('.accordion').slideToggle();
 
-            $('.container-benefits .videos iframe').attr('src', dataVideo)
+        });
+    };
+
+    self.benefitsTagsGA = () => {
+        $('.benefits__item .title').on('click', function(){
+            let benefitOption = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+            dataLayer.push({
+                event: 'generic',
+                category: 'PDP_institucional',
+                action: 'beneficios',
+                label: benefitOption
+            })
         });
     }
 

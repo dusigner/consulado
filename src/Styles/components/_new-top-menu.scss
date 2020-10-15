@@ -219,6 +219,8 @@ body {
 			background-color: #9ACA3C;
 			position: relative;
 			display: flex;
+			align-items: center;
+			justify-content: center;
 
 			a {
 				color: #fff;
@@ -231,9 +233,14 @@ body {
 			}
 
 			&::before {
-				content: url('https://consulqa.vteximg.com.br/arquivos/ids/162170/pecas-icons.svg');
-				margin-right: 10px;
+				background-image: url('/arquivos/ids/162170/pecas-icons.svg');
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 20px;
+				content: '';
 				display: flex;
+				height: 24px;
+				width: 24px;
 			}
 		}
 
@@ -468,10 +475,12 @@ body {
 	z-index: 5;
 
 	.container {
-		display: flex;
-		flex-flow: nowrap;
-		justify-content: space-between;
-		padding: 0;
+		// display: flex;
+		// flex-flow: nowrap;
+		// justify-content: space-between;
+		// padding: 0;
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
 	}
 
 	a:first-of-type {
@@ -582,9 +591,14 @@ body {
 .item-servicos {
 	background-color: #faf9f9;
 	padding-left: 24px !important;
-	padding-top: 44px !important;
-	a {
+	padding-top: 34px !important;
+
+	> a {
+		align-items: flex-end;
+		display: flex;
+		min-height: 32px;
 		padding: 0 !important;
+
 		@media (min-width: 1400px) {
 			&:last-child {
 				position: relative;
@@ -596,7 +610,7 @@ body {
 
 	& ul li:nth-child(-n+2):nth-last-child(-n+2) {
 		margin-right: 0;
-		width: 168px !important;
+		// width: 168px !important;
 	}
 }
 // Menu - Subcategorias

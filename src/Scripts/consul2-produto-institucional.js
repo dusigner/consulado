@@ -1,42 +1,96 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/benefits';
+import { pushDataLayer } from 'modules/_datalayer-inline';
+import 'modules/produto-institucional/produto-institucional';
+import 'modules/produto-institucional/specifications';
 
 Nitro.controller(
 	'produto-institucional',
 	[
-		'produto-institucional',
 		'beneficios',
+		'produto-institucional',
+		'specifications'
 	],
 
 	function () {
-		// Chave seletora para a exibição das especificações do produto com caixa ou sem caixa.
-		const elementSelector = $('.specs__measure-selector'),
-			elementBox = $('.specs__measure-box h4');
+		const fixedBar = {
+			init: function() {
+				fixedBar.carouselMobile();
+				fixedBar.anchor();
+			},
 
-		elementSelector.find('a:first').addClass('active');
-		$(`.specs__measure-box h4[data-selector=${elementSelector.find('a:first').attr('data-selector')}]`).addClass('active');
+			carouselMobile: function() {
+				if($(window).width() < 700) {
+					$('.navigation-sticked-list').slick({
+						arrows: false,
+						dots: false,
+						infinite: false,
+						mobileFirst: true,
+						slidesToScroll: 1,
+						slidesToShow: 1,
+						variableWidth: true,
+						responsive: [
+							{
+								breakpoint: 300,
+								settings: {
+									slidesToScroll: 1,
+									slidesToShow: 2,
+								}
+							}
+						]
+					});
+				}
+			},
 
-		elementSelector.find('a').on('click', function () {
-			elementSelector.find('a').removeClass('active');
-			elementBox.removeClass('active');
+			anchor: function() {
+				$('.navigation-sticked-link[href^="#"]').on('click', function(e) {
+					e.preventDefault();
 
-			$(this).addClass('active');
-			$(`.specs__measure-box h4[data-selector=${$(this).attr('data-selector')}]`).addClass('active');
-		});
+					const label = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
 
-		// Chave seletora para a exibição dos setores de especificações nos dispositivos móveis.
-		$('.specs__measure, .specs__items, .specs__specs, .specs__additionalInfo, .specs__links').find('h4').on('click', function() {
-			let $this = $(this);
-			$this.toggleClass('specActive');
-			$this.parents('.specs__section').toggleClass('inactive');
-		});
+					$('.navigation-sticked-link').removeClass('active');
+					$(this).addClass('active');
 
-		$('.btn-ver-mais-especs').click(function (){
-			$('.especs-toggle').toggleClass('active-toggle');
-		});
+					let hash = $(this).attr('href'),
+						targetOffset = $(hash).offset().top;
+
+					$('html, body').animate({
+						scrollTop: targetOffset - 56
+					}, 500);
+
+					pushDataLayer(
+						'PDP_institucional',
+						'barra_fixada',
+						`${label}`
+					);
+				});
+
+				$('.navigation-sticked-cta[href^="#"]').on('click', function(e) {
+					e.preventDefault();
+
+					let hash = $(this).attr('href'),
+						targetOffset = $(hash).offset().top;
+
+					$('html, body').animate({
+						scrollTop: targetOffset - 56
+					}, 500);
+
+					pushDataLayer(
+						'PDP_institucional',
+						'barra_fixada',
+						'clique_botao_eu_quero'
+					);
+				});
+			},
+		};
+
+		(function (window, document, $) {
+			$(function () {
+				fixedBar.init();
+			});
+		})(window, document, jQuery);
 	}
 )
 
