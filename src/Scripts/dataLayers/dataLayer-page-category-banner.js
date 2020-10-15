@@ -3,29 +3,29 @@
     "use strict";
 
     function getIndexSlick() {
-        var html_banners = document.querySelectorAll('.box-banner');
+        const html_banners = document.querySelectorAll('.box-banner');
         window.dataLayer_banners = window.dataLayer_banners || [];
-        var banner;
-        var id;
-        var canPersist;
-        var position = 0;
+        const banner;
+        const id;
+        const canPersist;
+        const position = 0;
         if (html_banners) {
-            for (var i = 0, max = html_banners.length; i < max; i += 1) {
+            for (const i = 0, max = html_banners.length; i < max; i += 1) {
                 banner = html_banners[i].querySelector('img');
                 if (banner && html_banners[i].offsetHeight > 0 && !(html_banners[i].classList.contains('slick-cloned'))) {
                     html_banners[i].querySelector('a').addEventListener('mousedown', function (event) {
                         window.dataLayer = window.dataLayer || [];
-                        var banner,
-                            promos,
+                        const banner,
+                            infoIndex,
                             id = this.querySelector('img').getAttribute('src').split('/')[5];
 
-                        for (var j = 0, max_dataLayer = window.dataLayer.length; j < max_dataLayer; j += 1) {
+                        for (const j = 0, max_dataLayer = window.dataLayer.length; j < max_dataLayer; j += 1) {
                             if (window.dataLayer[j].page) {
-                                if (window.dataLayer[j].page.promos) {
-                                    promos = window.dataLayer[j].page.promos;
-                                    for (var k = 0, max_impressionPromos = promos.length; k < max_impressionPromos; k += 1) {
-                                        if (promos[k].id === id) {
-                                            banner = promos[k];
+                                if (window.dataLayer[j].page.infoIndex) {
+                                    infoIndex = window.dataLayer[j].page.infoIndex;
+                                    for (const k = 0, max_impressioninfoIndex = infoIndex.length; k < max_impressioninfoIndex; k += 1) {
+                                        if (infoIndex[k].id === id) {
+                                            banner = infoIndex[k];
                                             break;
                                         }
                                     }
@@ -35,12 +35,12 @@
                         }
                         window.dataLayer.push({
                             'event': 'generic',
-                            'promos': [banner]
+                            'infoIndex': [banner]
                         });
                     });
                     id = banner.getAttribute('src').split('/')[5];
                     canPersist = true;
-                    for (var db = 0, max_db = window.dataLayer_banners.length; db < max_db; db += 1) {
+                    for (const db = 0, max_db = window.dataLayer_banners.length; db < max_db; db += 1) {
                         if (window.dataLayer_banners[db].id && (window.dataLayer_banners[db].id === id)) {
                             canPersist = false;
                         }
@@ -60,7 +60,7 @@
     }
 
     window.onload = function () {
-        // init();
+        init();
         getIndexSlick();
     }
 
