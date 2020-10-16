@@ -7,6 +7,7 @@
 
 Nitro.module('counter-bf-2020', function() {
 	const endDate = '2020/11/27';
+
 	this.init = () => {
 		this.initCounter();
 	};

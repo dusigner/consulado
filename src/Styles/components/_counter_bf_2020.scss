@@ -3,7 +3,7 @@
 
 $purple: #702F8F;
 $purple-dark: #481F5C;
-$text-color: #5B5B5B;
+$gray-light:  #C8C8C8;
 $green-primary: #9ACA3C;
 $white: #ffffff;
 
@@ -12,6 +12,7 @@ $white: #ffffff;
 		background-image: url('/arquivos/bg-counter-bf-2020.jpg');
 		background-position: top center;
 		background-repeat: no-repeat;
+		background-size: cover;
 		min-height: 435px;
 		padding-bottom: 20px;
 		position: relative;
@@ -24,6 +25,7 @@ $white: #ffffff;
 		&__container {
 			margin: 0 auto;
 			max-width: 100%;
+			padding: 30px 0 80px;
 			width: 1140px;
 		}
 
@@ -31,17 +33,25 @@ $white: #ffffff;
 			background-image: url('/arquivos/black-title.png');
 			background-position: top center;
 			background-repeat: no-repeat;
-			height: 227px;
+			height: 222px;
 			width: 312px;
 		}
-
+		&__block {
+			align-items: center;
+			display: flex;
+			flex-flow: column;
+		}
 		&__title {
 			@include rfs(40);
+			border-bottom: 1px solid $green-primary;
 			color: #fff;
 			font-weight: 300;
 			line-height: 44px;
-			margin-bottom: 0;
+			margin-bottom: 15px;
+			max-width: 100%;
+			padding-bottom: 15px;
 			text-align: center;
+			width: 354px;
 			strong {
 				color: $green-primary;
 				display: block;
@@ -49,14 +59,25 @@ $white: #ffffff;
 			}
 		}
 		&__clock {
+			align-items: center;
 			color: $white;
 			display: flex;
 			justify-content: space-around;
+			width: 400px;
 		}
 		&__item {
 			display: flex;
 			flex-flow: column;
+			line-height: normal;
 			text-align: center;
+			width: 74px;
+		}
+		.bolinha {
+			background-color: $green-primary;
+			border-radius: 30px;
+			display: inline-block;
+			height: 5px;
+			width: 5px;
 		}
 		&__time {
 			&.days,
@@ -70,5 +91,44 @@ $white: #ffffff;
 		&__timetext {
 			@include rfs(16);
 			font-weight: 300;
+			text-transform: lowercase;
+		}
+		form {
+			margin-top: 36px;
+			label {
+				@include rfs(16);
+				color: $gray-light;
+				font-weight: 500;
+				line-height: normal;
+				margin-bottom: 10px;
+				text-align: left;
+			}
+			input {
+				@include rfs(14);
+				border: 1px solid #E0E0E0;
+				border-radius: 3px;
+				height: 48px;
+				padding: 14px 12px;
+				width: 595px;
+				&::placeholder {
+					@include rfs(14);
+					color: #212121;
+					font-weight: 500;
+				}
+			}
+			.btn-enviar {
+				@include rfs(16);
+				background-color: $green-primary;
+				border: none;
+				border-radius: 30px;
+				color: $white;
+				font-weight: 500;
+				height: 48px;
+				margin-left: 20px;
+				width: 180px;
+				&:hover {
+					background-color: #8fc525;
+				}
+			}
 		}
 	}
