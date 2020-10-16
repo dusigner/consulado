@@ -1,6 +1,6 @@
 import { pushDataLayer } from 'modules/_datalayer-inline';
 
-Nitro.module('dataLayer-embutidos', function() {
+Nitro.module('dataLayer-embutidos', function () {
 
 	this.clickHeaderPlus = () => {
 		$('.box_img .plus').click(e => {
@@ -45,8 +45,8 @@ Nitro.module('dataLayer-embutidos', function() {
 	this.hoverImgs = () => {
 		var timeout = null;
 		$('.box-img').hover(
-			function(e) {
-				timeout = setTimeout(function() {
+			function (e) {
+				timeout = setTimeout(function () {
 					pushDataLayer(
 						'[CB-GOC] Página Built-in',
 						'Mouse hover',
@@ -54,7 +54,7 @@ Nitro.module('dataLayer-embutidos', function() {
 					);
 				}, 3000);
 			},
-			function() {
+			function () {
 				clearTimeout(timeout);
 			}
 		);

@@ -1,6 +1,9 @@
-import { checkInlineDatalayers, pushDataLayer } from 'modules/_datalayer-inline';
+import {
+	checkInlineDatalayers,
+	pushDataLayer
+} from 'modules/_datalayer-inline';
 
-Nitro.module('dataLayer-categoria', function() {
+Nitro.module('dataLayer-categoria', function () {
 
 	this.init = () => {
 		checkInlineDatalayers();
@@ -9,19 +12,20 @@ Nitro.module('dataLayer-categoria', function() {
 		this.shelfSelectSku();
 		this.bannerDataLayer();
 		this.taggingSelo();
+		this.positionBanner();
 	},
 
-	this.breadCrumb = () => {
-		$('.breadcrumb a').click(function() {
-			const category = $(this).text();
+		this.breadCrumb = () => {
+			$('.breadcrumb a').click(function () {
+				const category = $(this).text();
 
-			pushDataLayer(
-				'[SQUAD] Breadcrumb Eletrodomésticos',
-				`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`,
-				`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`
-			);
-		});
-	};
+				pushDataLayer(
+					'[SQUAD] Breadcrumb Eletrodomésticos',
+					`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`,
+					`Ir para a Categoria ${category === 'Consul' || category === 'ConsulQA' ? 'Home' : category}`
+				);
+			});
+		};
 
 	this.shelfSelectSku = () => {
 		$(window).on('shelf.skuChanged', (e, data) => {
@@ -35,7 +39,7 @@ Nitro.module('dataLayer-categoria', function() {
 
 	this.bannerDataLayer = () => {
 		const category = dataLayer[0].categoryName;
-		$('.category-page-top-banner a').on('click', function() {
+		$('.category-page-top-banner a').on('click', function () {
 			pushDataLayer(
 				`[SQUAD] Banner Categoria - ${category}`,
 				'Clique no banner',
@@ -44,37 +48,58 @@ Nitro.module('dataLayer-categoria', function() {
 		});
 	},
 
-	this.taggingSelo = () => {
-		var $categoryVitrine = 'Vitrines_Tamanho-familia';
+		//Posição do banner, nome da PDC mais nome do banner
+		this.positionBanner = () => {
+			$('img').on('click', function () {
+				const getAlt = $(this).attr('alt') //get alt the image
 
-		$('body').on('click', '.container .list-container .main .vitrine .prateleira ul li .box-produto', function() {
-			var $label = '';
-			var $nameProduct = '';
+				const categoryName = dataLayer[0].categoryName; //get name the page category
+				$('.slick-slide a').on('click', function () {
 
-			$label = $(this).parents('li').find('.promo-destaque__icon').attr('style')
-			$nameProduct = $(this).parents('li').find('.nome').text()
+					const slickIndex = $(this).parent().attr('data-slick-index')
+					window.dataLayer.push({
+						event: 'generic',
+						category: `categoria_${categoryName}`,
+						action: `click_banner_${slickIndex}`,
+						label: `${getAlt}`
+					})
+				});
+			})
+		},
 
-			if ( $label === `background-image: url('/arquivos/cns__promo__famílias-pequenas.png?v=dln')` ) {
-				pushDataLayer(
-					`[SQUAD] ${$categoryVitrine}`,
-					`${$nameProduct}`,
-					`Familias pequenas`
-				);
-			} else if ( $label === `background-image: url('/arquivos/cns__promo__famílias-médias.png?v=dln')` ) {
-				pushDataLayer(
-					`[SQUAD] ${$categoryVitrine}`,
-					`${$nameProduct}`,
-					`Familias médias`
-				);
-			} else if ( $label === `background-image: url('/arquivos/cns__promo__famílias-grandes.png?v=dln')` ) {
-				pushDataLayer(
-					`[SQUAD] ${$categoryVitrine}`,
-					`${$nameProduct}`,
-					`Familias grandes`
-				);
-			}
-		});
-	}
+		this.taggingSelo = () => {
+			var $categoryVitrine = 'Vitrines_Tamanho-familia';
+
+			$('body').on('click', '.container .list-container .main .vitrine .prateleira ul li .box-produto', function () {
+				var $label = '';
+				var $nameProduct = '';
+
+				$label = $(this).parents('li').find('.promo-destaque__icon').attr('style')
+				$nameProduct = $(this).parents('li').find('.nome').text()
+
+				if ($label === `background-image: url('/arquivos/cns__promo__famílias-pequenas.png?v=dln')`) {
+					pushDataLayer(
+						`[SQUAD] ${$categoryVitrine}`,
+						`${$nameProduct}`,
+						`Familias pequenas`
+					);
+				} else if ($label === `background-image: url('/arquivos/cns__promo__famílias-médias.png?v=dln')`) {
+					pushDataLayer(
+						`[SQUAD] ${$categoryVitrine}`,
+						`${$nameProduct}`,
+						`Familias médias`
+					);
+				} else if ($label === `background-image: url('/arquivos/cns__promo__famílias-grandes.png?v=dln')`) {
+					pushDataLayer(
+						`[SQUAD] ${$categoryVitrine}`,
+						`${$nameProduct}`,
+						`Familias grandes`
+					);
+				}
+			});
+		}
+
+
 
 	this.init();
 });
