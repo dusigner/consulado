@@ -1,0 +1,75 @@
+@charset 'UTF-8';
+
+// ===============================================================
+/* @IMPORTS */
+// ===============================================================
+
+.launch-form {
+	background-color: #212121;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	padding: 12px;
+	border-radius: 2px;
+	width: 100%;
+
+
+	.txt-main {
+		font-size: 14px;
+		font-weight: normal;
+		color: #FFFFFF;
+	}
+
+	.txt-child {
+		font-size: 14px;
+		font-weight: bold;
+		color: #9BCA3D;
+	}
+
+	.cta .cta--gray {
+		cursor: pointer;
+		background-color: #212121;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: row;
+		margin-top: 10px;
+	}
+
+	button {
+		margin-top: 5px;
+		color: #FFFFFF;
+		border-radius: 50px;
+		background-color: #212121;
+		font-weight: 500;
+		width: 80%;
+		height: 40px;
+		font-size: 14px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	input {
+		display: block;
+		margin-bottom: 12px;
+		width: 70%;
+		border: none;
+		border-radius: 3px;
+		padding: 15px 18px;
+		color: #000;
+
+		&::placeholder {
+			font-size: 16px;
+			color: #000;
+		}
+
+		&::placeholder-show {
+			color: tomato;
+		}
+	}
+
+	.feedback-msg {
+		font-size: 14px;
+	}
+}

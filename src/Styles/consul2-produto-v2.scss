@@ -29,6 +29,7 @@
 @import "components/selos";
 @import "components/chaordic-shelf";
 @import "components/mod-prateleira-v2";
+@import "components/formBestOfferBF";
 
 @import "pages/product";
 @import "components/produto/gallery-v2";
@@ -97,6 +98,7 @@
 }
 
 #relacionados {
+
 	.box-produto .detalhes .prod-info .price .por .off,
 	.box-produto .detalhes .prod-info .price .por .product-with-discount {
 		font-size: 0.625rem;
@@ -117,24 +119,30 @@
 	.formas-pagamento-container {
 		display: none;
 	}
+
 	.mostrarForm {
 		display: none;
 	}
+
 	.descricao-produto {
 		display: none;
 	}
+
 	.prod-sku-options {
 		display: none;
 	}
+
 	.produtos-adicionais {
 		display: none;
 	}
+
 	.notifyme-success {
 		h2 {
 			color: #403c3b;
 			font-size: 16px;
 			margin: 0 auto 5px;
 		}
+
 		p {
 			float: left;
 			font-size: 14px;
@@ -143,6 +151,7 @@
 			max-width: 100%;
 			width: 320px;
 		}
+
 		.icone-check {
 			background-image: url("/arquivos/icon-check-produto-indisponivel.jpg");
 			background-position: center;
@@ -156,6 +165,7 @@
 			width: 24px;
 		}
 	}
+
 	.notifyme-loading-message {
 		color: #9aca3c;
 		font: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
@@ -163,6 +173,7 @@
 		font-weight: bold;
 		margin-top: 18px;
 	}
+
 	.detalhes-v3-css {
 		display: none;
 		visibility: hidden;
@@ -171,7 +182,10 @@
 
 .wishlist__container {
 	display: none;
+
 	@media only screen and (max-width: 600px) {
 		margin-top: -15px;
 	}
-} //test ab desactive change block to active
+}
+
+//test ab desactive change block to active

@@ -5,6 +5,7 @@ import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
+import 'modules/product/formBestOfferBF';
 import 'modules/product/details';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
