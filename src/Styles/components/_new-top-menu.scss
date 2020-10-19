@@ -118,7 +118,7 @@ body {
 	}
 
 .top-navigation {
-	background: linear-gradient(90deg, #faf9f9 20%, #fff 0%);
+	background: linear-gradient(90deg, #faf9f9 50%, #fff 0%);
 	border-top: none;
     bottom: none;
 	position: relative;
@@ -233,7 +233,7 @@ body {
 			}
 
 			&::before {
-				background-image: url('/arquivos/ids/162170/pecas-icons.svg');
+				background-image: url('/arquivos/pecas-icon.svg');
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: 20px;
