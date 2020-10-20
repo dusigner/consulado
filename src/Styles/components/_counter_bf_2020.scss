@@ -38,7 +38,7 @@ $white: #ffffff;
 		background-size: cover;
 		height: 222px;
 		width: 312px;
-		@media(max-width: 768px) {
+		@media(max-width: 641px) {
 			height: 104px;
 			margin-right: 12px;
 			max-width: 100%;
@@ -70,7 +70,7 @@ $white: #ffffff;
 			display: block;
 			margin: 0 auto;
 		}
-		@media (min-width: 768px) {
+		@media (max-width: 641px) {
 			@include rfs(18);
 		}
 	}
@@ -81,7 +81,7 @@ $white: #ffffff;
 		justify-content: space-around;
 		max-width: 100%;
 		width: 400px;
-		@media (min-width: 768px) {
+		@media (max-width: 768px) {
 			width: 100%;
 		}
 	}
@@ -92,7 +92,7 @@ $white: #ffffff;
 		max-width: 100%;
 		text-align: center;
 		width: 74px;
-		@media (min-width: 768px) {
+		@media (max-width: 768px) {
 			width: auto;
 		}
 	}
@@ -110,7 +110,7 @@ $white: #ffffff;
 		&.seconds {
 			@include rfs(32);
 			font-weight: 500;
-			@media (min-width: 768px) {
+			@media (max-width: 641px) {
 				@include rfs(20);
 			}
 		}
@@ -121,8 +121,13 @@ $white: #ffffff;
 		text-transform: lowercase;
 	}
 	form {
-		margin: 36px auto 0;
-		@media (min-width: 768px) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 38px auto 0;
+		max-width: 100%;
+		width: 794px;
+		@media (max-width: 768px) {
 			width: 100%;
 		}
 		label {
@@ -130,7 +135,7 @@ $white: #ffffff;
 			color: $gray-light;
 			font-weight: 500;
 			line-height: normal;
-			margin-bottom: 10px;
+			margin-bottom: 12px;
 			text-align: left;
 		}
 		input {
@@ -139,18 +144,18 @@ $white: #ffffff;
 			border-radius: 3px;
 			display: inline-block;
 			height: 48px;
-			max-width: 100%;
 			padding: 14px 12px;
-			@media (min-width: 768px) {
+			@media (max-width: 641px) {
 				height: 32px;
-				width: 230px;
+				max-width: 100%;
+				width: calc(100% - 102px);
 			}
-			@media (min-width: 768px) {
-				width: 595px;
+			@media (min-width: 642px)  {
+				height: 48px;
+				max-width: 595px;
+				width: calc(100% - 196px);
 			}
-			@media (min-width: 675px) {
-				width: 500px;
-			}
+
 			&::placeholder {
 				@include rfs(14);
 				color: #212121;
@@ -165,12 +170,11 @@ $white: #ffffff;
 			color: $white;
 			font-weight: 500;
 			height: 48px;
-			margin-left: 20px;
 			width: 180px;
 			&:hover {
 				background-color: #8fc525;
 			}
-			@media (min-width: 768px) {
+			@media (max-width: 641px) {
 				height: 32px;
 				width: 92px;
 			}
