@@ -4,6 +4,8 @@
 /* @IMPORTS */
 // ===============================================================
 
+
+
 .launch-form {
 	background-color: #212121;
 	text-align: center;
@@ -12,7 +14,7 @@
 	padding: 12px;
 	border-radius: 2px;
 	width: 100%;
-
+	max-height: 200px;
 
 	.txt-main {
 		font-size: 14px;
@@ -24,11 +26,6 @@
 		font-size: 14px;
 		font-weight: bold;
 		color: #9BCA3D;
-	}
-
-	.cta .cta--gray {
-		cursor: pointer;
-		background-color: #212121;
 	}
 
 	.content {
@@ -48,13 +45,14 @@
 		font-size: 14px;
 		margin-left: 15px;
 		margin-right: 15px;
+		border: 2px solid #FFFFFF;
 	}
 
 	input {
 		display: block;
 		margin-bottom: 12px;
 		width: 70%;
-		border: none;
+		border: 2px solid #9E9E9E;
 		border-radius: 3px;
 		padding: 15px 18px;
 		color: #000;
@@ -71,5 +69,22 @@
 
 	.feedback-msg {
 		font-size: 14px;
+		text-align: left;
+		background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='9' cy='8' r='7' fill='white'/%3E%3Cpath d='M13.657 13.657C16.781 10.533 16.781 5.46702 13.657 2.34301C10.533 -0.781003 5.46702 -0.781003 2.34301 2.34301C-0.781003 5.46702 -0.781003 10.533 2.34301 13.657C5.46702 16.781 10.533 16.781 13.657 13.657ZM7.10501 4.13298C7.30765 3.69393 7.78048 3.45752 8.2533 3.57573C8.70924 3.69393 9.01319 4.13298 8.97942 4.62269C8.96253 4.94354 8.94565 5.24749 8.92876 5.56834C8.86121 6.7504 8.79367 7.93245 8.74301 9.09763C8.72612 9.48602 8.40528 9.78997 8.01689 9.78997C7.61161 9.78997 7.30765 9.48602 7.29077 9.06385C7.27388 8.82744 7.27388 8.59103 7.25699 8.35462C7.20633 7.59472 7.17256 6.83483 7.1219 6.05805C7.08813 5.56834 7.07124 5.07863 7.03747 4.58892C7.02058 4.45383 7.03747 4.28496 7.10501 4.13298ZM8 10.4823C8.54037 10.4823 8.97942 10.9214 8.99631 11.4617C8.99631 12.0021 8.55726 12.4412 8.01689 12.4412C7.4934 12.4412 7.03747 12.0021 7.03747 11.4786C7.02058 10.9383 7.45963 10.4823 8 10.4823Z' fill='%23D93A43'/%3E%3C/svg%3E%0A");
+		background-repeat: no-repeat;
+		padding-left: 25px;
+	}
+
+	.feedback-msg-success {
+		text-align: center;
+
+		strong {
+			color: #9BCA3D;
+		}
+
+		p {
+			font-size: 14px;
+			color: #FFFFFF;
+		}
 	}
 }

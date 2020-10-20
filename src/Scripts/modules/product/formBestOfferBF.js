@@ -1,12 +1,13 @@
 // Forms
 $('.launch-form').on('submit', function (e) {
     e.preventDefault();
-    const feedback = $('.feedback-msg');
-    // const agree = $(this)
-    //     .find('#agree')
-    //     .is(':checked');
 
-    const produto = $(this).find('#produto-escolhido');
+    const feedback = $('.feedback-msg');
+    const feedbackSuccess = $('.feedback-msg-success');
+
+    const inputs = $(this).find('.form-input')
+
+    const produto = $(this).find('#produto-escolhido').attr('data-idproduto');
     const email = $(this).find('#email');
 
     const body = {
@@ -17,7 +18,7 @@ $('.launch-form').on('submit', function (e) {
     // Validações
     if (body.email == '') {
         email.focus();
-        feedback.text('por favor, preencha o e-mail corretamente');
+        feedback.css('display', 'block')
     } else {
         const data = JSON.stringify(body);
 
@@ -27,11 +28,13 @@ $('.launch-form').on('submit', function (e) {
                 Accept: 'application/vnd.vtex.ds.v10+json'
             },
             type: 'POST',
-            url: '/api/dataentities/CL/documents',//Entidade no masterdata que armazena os Lead capturados no Formulário
+            url: '/api/dataentities/LC/documents', //Entidade no masterdata que armazena os Lead capturados no Formulário
             data: data,
             success: function (res) {
                 email.val('');
-                feedback.text('Dados enviados com sucesso!');
+                inputs.remove()
+                feedback.css('display', 'none')
+                feedbackSuccess.css('display', 'block')
             }
         });
     }

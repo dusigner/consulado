@@ -1,17 +1,29 @@
 <form class="launch-form">
-	<div class="text-container">
-		<span class="txt-main">Cadastre seu email para receber as</span>
-		<br />
-		<span class="txt-child">melhores ofertas da Black Friday</span>
+	<div class="form-container">
+		<div class="form-input">
+			<div class="text-container">
+				<span class="txt-main">Cadastre seu email para receber as</span>
+				<br />
+				<span class="txt-child">melhores ofertas da Black Friday</span>
+			</div>
+			<div class="content">
+				<input type="hidden" id="produto-escolhido" name="produto" value="sku-selected" data-idproduto="" />
+				<input type="email" name="email" id="email" placeholder="E-mail" />
+				<button class="cta cta--gray">
+					Cadastrar
+				</button>
+			</div>
+		</div>
+		<div class="feedback-msg" style="display: none; color: #FFFFFF;">
+			<p>Este e-mail não é válido. Digite novamente.</p>
+		</div>
+		<div class="feedback-msg-success" style="display: none;">
+			<p>
+				<strong>
+					Pronto, e-mail cadastrado!
+				</strong>
+				Agora é só aproveitar a Black Friday antes de todo mundo.
+			</p>
+		</div>
 	</div>
-	<div class="content">
-		<input type="hidden" id="produto-escolhido" name="produto" value="sku-selected" />
-		<input type="email" name="email" id="email" placeholder="E-mail" />
-		<button class="cta cta--gray">
-			Cadastrar
-		</button>
-	</div>
-	<div class="feedback-msg" style="color: #9BCA3D; font-weight: 500;"></div>
 </form>
-
-<script src="../Scripts/modules/product/formBestOfferBF.js"></script>
