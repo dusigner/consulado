@@ -231,17 +231,6 @@ body {
 					content: none;
 				}
 			}
-
-			&::before {
-				background-image: url('/arquivos/pecas-icon.svg');
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: 20px;
-				content: '';
-				display: flex;
-				height: 24px;
-				width: 24px;
-			}
 		}
 
 		& > a {
