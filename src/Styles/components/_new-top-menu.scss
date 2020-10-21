@@ -215,6 +215,14 @@ body {
 		// 	right: 1px;
 		// }
 
+		&.menu-header-category {
+			@include breakpoint("small", "min") {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+
 		&.item-pecas {
 			background-color: #9ACA3C;
 			position: relative;
@@ -233,7 +241,7 @@ body {
 			}
 
 			&::before {
-				background-image: url('/arquivos/ids/162170/pecas-icons.svg');
+				background-image: url('/arquivos/pecas-icon.svg');
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: 20px;
@@ -336,7 +344,8 @@ body {
 
 			@include breakpoint ('extra-large', 'max') {
 				height: 10px;
-				top: 18px;
+				top: calc(50% - -2px);
+				transform: translate(0, -50%);
 			}
 		}
 	}
@@ -373,9 +382,9 @@ body {
 		display: none;
 	}
 
-	.control {
-		display: inline-block;
-	}
+	// .control {
+	// 	display: inline-block;
+	// }
 
 	.customItemMenu {
 		@include breakpoint('large', 'max') {
