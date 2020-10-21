@@ -5,29 +5,28 @@ Nitro.module('slider-banner', [], function() {
 
 	this.setupMainSlider = function() {
 		var qtdBanners,
-			$bannerPrincipal =
-				$(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+			// $bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
+			$bannerPrincipal = $('.banners .banner-principal')
 
 		$bannerPrincipal.on('init', function() {
 			qtdBanners = $('.banners .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
 
-			if ($(window).width() <= 768) {
-				qtdBanners = $('.banners-mobile .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
-			}
+			// if ($(window).width() <= 768) qtdBanners = $('.banners-mobile .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
 		});
 
 		$bannerPrincipal
 			.slick({
 				autoplay: true,
 				autoplaySpeed: 7000,
-				mobileFirst: true,
+				// mobileFirst: true,
 				dots: true,
-				arrows: false,
+				arrows: true,
 				responsive: [
 					{
 						breakpoint: 568,
 						settings: {
-							arrows: true
+							arrows: true,
+							dots: false
 						}
 					}
 				]

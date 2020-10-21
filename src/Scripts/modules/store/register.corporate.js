@@ -1,4 +1,3 @@
-/* globals store:true */
 'use strict';
 
 var CRM = require('modules/store/crm');

@@ -60,8 +60,6 @@ Nitro.setup('cta', function() {
 						window.jssalesChannel
 					)
 					.done(orderForm => {
-						console.info('orderForm', orderForm);
-
 						/** In case of success, we redirect the user to the payment checkout step */
 						window.location.replace('/checkout/#/payment');
 					});

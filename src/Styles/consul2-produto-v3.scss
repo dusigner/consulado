@@ -50,7 +50,7 @@
 @import 'components/produto/detalhes-v3';
 @import 'components/produto/detalhes-lancamento';
 @import 'components/produto/especificacoes-v3';
-@import 'components/produto/modal.sku';
+// @import 'components/produto/modal.sku';
 @import 'components/produto/modal.entrega';
 @import 'components/produto/special-content';
 @import 'components/produto/recurrence-modal';
@@ -60,8 +60,10 @@
 @import 'components/produto/vitrine-relacionada';
 @import 'components/produto/outline-products';
 @import 'components/listagem/comparebar';
+@import "components/produto/wishlist";
 @import 'components/produto/prod-wishlist_compare';
 @import "components/produto/wishlist";
+
 
 // @import 'components/produto/quiz-install';
 
@@ -191,7 +193,6 @@ html body {
 
 		.seo-text {
 			width: 92%;
-			max-width: 1120px;
 			margin: 0 auto;
 			margin-bottom: 60px;
 			max-width: 1120px;
@@ -232,7 +233,6 @@ html body {
 	.testeB {
 		.seo-text {
 			width: 92%;
-			max-width: 1120px;
 			margin: 0 auto;
 			margin-bottom: 60px;
 			max-width: 1120px;
