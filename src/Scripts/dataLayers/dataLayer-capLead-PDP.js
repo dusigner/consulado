@@ -9,7 +9,7 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
         checkInlineDatalayers();
 
         this.captureLead();
-        this.captureLead();
+        this.captureSku();
     };
 
     this.captureLead = () => {
@@ -38,6 +38,8 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
         });
     }
 
+
+
     this.captureSku = () => {
         const getParams = (name, href) => {
 
@@ -56,20 +58,18 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
                 return decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
-        //return skuId in url
-        const getSkuJson = () => {
-            const url = $('.buy-button-ref').attr('href')
-            return getParams('sku', url)
-        }
+
+        const url = $('.buy-button-ref').attr('href')
+        const sku = getParams('sku', url)
 
         $('form').on('submit', function () {
             pushDataLayer(
                 'black_friday_2020',
-                'pdp_captação_lead_SKU',
-                `${getSkuJson}`
+                'pdp_captação_lead',
+                `${sku}`
             );
         });
-    },
 
+    },
         this.init();
 });
