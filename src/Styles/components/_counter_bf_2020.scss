@@ -20,6 +20,12 @@ $white: #ffffff;
 		margin-top: 33px;
 		padding-bottom: 14px;
 		padding-top: 14px;
+		.btn-enviar {
+			margin-top: 12px;
+		}
+		& .row {
+			justify-content: center;
+		}
 	}
 	&.show-mobile {
 		display: none;
@@ -58,7 +64,8 @@ $white: #ffffff;
 		padding: 30px 16px 60px;
 		width: 1140px;
 		@media (max-width: 641px) {
-			padding-bottom: 40px;
+			padding-bottom: 20px;
+			padding-top: 20px;
 		}
 	}
 
@@ -187,6 +194,7 @@ $white: #ffffff;
 			@include rfs(14);
 			border: 1px solid #e0e0e0;
 			border-radius: 3px;
+			box-shadow: none;
 			display: inline-block;
 			height: 48px;
 			padding: 14px 12px;
@@ -218,13 +226,70 @@ $white: #ffffff;
 		height: 48px;
 		text-align: center;
 		width: 180px;
-
+		position: relative;
 		&:hover {
 			background-color: #8fc525;
 		}
+		&:active {
+			background-color: #94d417;
+		}
+		@media (min-width: 642px) {
+			margin-left: 16px;
+		}
 		@media (max-width: 641px) {
 			height: 32px;
+			padding: 6px 0;
 			width: 92px;
 		}
 	}
+	.mensagem {
+		@include rfs(20);
+	}
+	// .load {
+	// 	.loading {
+	// 		background-color: red;
+	// 		height: 10px;
+	// 		width: 10px;
+	// 	}
+	// }
+	@keyframes loading {
+		0% { transform: translate(-50%,-50%) rotate(0deg); }
+		100% { transform: translate(-50%,-50%) rotate(360deg); }
+	  }
+	  .loading div {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border: 20px solid #ffffff;
+		border-top-color: transparent;
+		border-radius: 50%;
+	  }
+	  .loading div {
+		animation: loading 1s linear infinite;
+		top: 10px;
+		left: 10px;
+	  }
+	  .load {
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0);
+	  }
+	  .loading {
+		width: 100px;
+		height: 100px;
+		position: relative;
+		transform: translateZ(0) scale(1);
+		backface-visibility: hidden;
+		transform-origin: 0 0; /* see note above */
+	  }
+	  .loading div { box-sizing: content-box; }
 }
+
+* {
+	scroll-behavior: smooth;
+}
+
+
+

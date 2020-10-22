@@ -10,6 +10,7 @@ Nitro.module('counter-bf-2020', function() {
 
 	this.init = () => {
 		this.initCounter();
+		this.enviarEmail();
 	};
 
 	this.initCounter = () => {
@@ -70,6 +71,61 @@ Nitro.module('counter-bf-2020', function() {
 			$seconds.text(timeRemaining.seconds > 9 ? timeRemaining.seconds : '0' + timeRemaining.seconds);
 		}, 1000);
 	};
+	this.enviarEmail = () => {
+		$('.form-envio').on('submit', function (e) {
+			e.preventDefault();
+
+			var mensagem = $('.mensagem');
+			var email = $(this).find('#email');
+
+
+
+			var body = {
+				'email': email.val(),
+				'pagina': 'Página Home',
+				'produto': ''
+			};
+
+			// Validações
+			const validateEmail = (email) => {
+				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+				return re.test(email);
+			}
+			if (body.email == '') {
+				email.focus();
+				mensagem.text('Por favor, preencha o campo de e-mail');
+			} else if (!validateEmail($('#email').val())) {
+				mensagem.text('E-mail inválido!').show(500);
+			} else {
+				$.ajax({
+					headers: {
+						'Content-Type': 'application/json',
+						Accept: 'application/vnd.vtex.ds.v10+json'
+					},
+					type: 'POST',
+					url: '/api/dataentities/TS/documents',
+					data: JSON.stringify(body),
+					beforeSend: function() {
+						$('#send').append('<div class="load"><div class="loading"></div></div>');
+					}
+				}).success(() => {
+					mensagem.text('E-mail cadastrado com sucesso!').show();
+					$('.load').fadeOut(500);
+				}).fail(() => {
+						mensagem.text('Ocorreu um erro, tente novamente mais tarde').show();
+				}).done(() =>{
+					setTimeout(() => {
+						mensagem.fadeOut(500);
+						$('.form-envio').each (() => {
+							this.reset();
+						});
+					}, 5000);
+				});
+
+			}
+		});
+	}
+
 	// Start it
 	this.init();
 });
