@@ -248,8 +248,8 @@ body {
 				@include rfs (14);
 				color: $gray-d;
 				font-weight: 500;
-				height: 60px;
-				line-height: 2.5;
+				// height: 60px;
+				line-height: 2.9;
 				padding-left: 20px;
 				text-align: left;
 			}
@@ -282,7 +282,7 @@ body {
 		// @include rfs(16);
 		background-color: #FAF9F9;
 		flex: 0 0 210px;
-		// padding-left: 30px;
+		padding-left: 2em;
 		// padding-top: 1.4%;
 		justify-content: flex-start;
 
@@ -305,11 +305,9 @@ body {
 			cursor: pointer;
 			height: 12px;
 			left: auto;
-			// margin-left: -28px;
-			// position: absolute;
-			// top: 22px;
+			position: absolute;
 			z-index: 1;
-			margin-right: 10px;
+			margin: 0 0 0 -28px;
 
 			&:before {
 				background-color: $green;
