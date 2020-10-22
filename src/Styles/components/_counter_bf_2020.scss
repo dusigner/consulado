@@ -37,7 +37,6 @@ $white: #ffffff;
 		&.cont-mobile {
 			&.containerc {
 				padding: 10px 0 25px;
-
 			}
 		}
 	}
@@ -76,7 +75,7 @@ $white: #ffffff;
 		background-size: cover;
 		height: 222px;
 		width: 312px;
-		@media(max-width: 641px) {
+		@media (max-width: 641px) {
 			background-position: bottom left;
 			background-size: contain;
 			height: 95px;
@@ -89,7 +88,7 @@ $white: #ffffff;
 		display: flex;
 		flex-flow: column;
 		max-width: 100%;
-		@media(max-width: 641px) {
+		@media (max-width: 641px) {
 			max-width: 60%;
 			min-width: 190px;
 			width: 220px;
@@ -203,7 +202,7 @@ $white: #ffffff;
 				max-width: 100%;
 				width: calc(100% - 102px);
 			}
-			@media (min-width: 642px)  {
+			@media (min-width: 642px) {
 				height: 48px;
 				max-width: 595px;
 				width: calc(100% - 196px);
@@ -224,9 +223,9 @@ $white: #ffffff;
 		color: $white;
 		font-weight: 500;
 		height: 48px;
+		position: relative;
 		text-align: center;
 		width: 180px;
-		position: relative;
 		&:hover {
 			background-color: #8fc525;
 		}
@@ -242,54 +241,28 @@ $white: #ffffff;
 			width: 92px;
 		}
 	}
+	button[disabled],
+	html input[disabled] {
+		background-color: #8aaa62 !important;
+		cursor: default;
+	}
 	.mensagem {
 		@include rfs(20);
 	}
-	// .load {
-	// 	.loading {
-	// 		background-color: red;
-	// 		height: 10px;
-	// 		width: 10px;
-	// 	}
-	// }
-	@keyframes loading {
-		0% { transform: translate(-50%,-50%) rotate(0deg); }
-		100% { transform: translate(-50%,-50%) rotate(360deg); }
-	  }
-	  .loading div {
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		border: 20px solid #ffffff;
-		border-top-color: transparent;
-		border-radius: 50%;
-	  }
-	  .loading div {
-		animation: loading 1s linear infinite;
-		top: 10px;
-		left: 10px;
-	  }
-	  .load {
-		width: 20px;
-		height: 20px;
-		display: inline-block;
-		overflow: hidden;
-		background: rgba(255, 255, 255, 0);
-	  }
-	  .loading {
-		width: 100px;
-		height: 100px;
-		position: relative;
-		transform: translateZ(0) scale(1);
-		backface-visibility: hidden;
-		transform-origin: 0 0; /* see note above */
-	  }
-	  .loading div { box-sizing: content-box; }
+	.load {
+		.loading {
+			background-image: url('/arquivos/gif-loading.gif');
+			background-repeat: no-repeat;
+			background-size: contain;
+			height: 20px;
+			left: 20px;
+			position: absolute;
+			top: 14px;
+			width: 20px;
+		}
+	}
 }
 
 * {
 	scroll-behavior: smooth;
 }
-
-
-

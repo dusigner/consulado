@@ -3,10 +3,10 @@
  * @fileOverview counter
  *
  */
-'use strict';
+"use strict";
 
-Nitro.module('counter-bf-2020', function() {
-	const endDate = '2020/11/27';
+Nitro.module("counter-bf-2020", function() {
+	const endDate = "2020/11/27";
 
 	this.init = () => {
 		this.initCounter();
@@ -14,13 +14,13 @@ Nitro.module('counter-bf-2020', function() {
 	};
 
 	this.initCounter = () => {
-		let $counter = $('.counter-bf-2020'),
-			$endMessage = $('.counter__end-promotion'),
-			$counterSection = $('.bg-counter'),
-			$days = $counter.find('.days'),
-			$hours = $counter.find('.hours'),
-			$minutes = $counter.find('.minutes'),
-			$seconds = $counter.find('.seconds'),
+		let $counter = $(".counter-bf-2020"),
+			$endMessage = $(".counter__end-promotion"),
+			$counterSection = $(".bg-counter"),
+			$days = $counter.find(".days"),
+			$hours = $counter.find(".hours"),
+			$minutes = $counter.find(".minutes"),
+			$seconds = $counter.find(".seconds"),
 			timeRemaining;
 
 		function getTimeRemaining(endDate) {
@@ -49,10 +49,10 @@ Nitro.module('counter-bf-2020', function() {
 			timeRemaining = getTimeRemaining(endDate);
 
 			if (timeRemaining === null) {
-				$counterSection.addClass('hide');
+				$counterSection.addClass("hide");
 				return;
 			} else {
-				$counterSection.removeClass('hide');
+				$counterSection.removeClass("hide");
 			}
 
 			if (
@@ -61,70 +61,92 @@ Nitro.module('counter-bf-2020', function() {
 				timeRemaining.minutes === 0 &&
 				timeRemaining.seconds === 0
 			) {
-				$counterSection.addClass('hide');
-				$endMessage.removeClass('hide');
+				$counterSection.addClass("hide");
+				$endMessage.removeClass("hide");
 			}
 
-			$days.text(timeRemaining.days > 9 ? timeRemaining.days : '0' + timeRemaining.days);
-			$hours.text(timeRemaining.hours > 9 ? timeRemaining.hours : '0' + timeRemaining.hours);
-			$minutes.text(timeRemaining.minutes > 9 ? timeRemaining.minutes : '0' + timeRemaining.minutes);
-			$seconds.text(timeRemaining.seconds > 9 ? timeRemaining.seconds : '0' + timeRemaining.seconds);
+			$days.text(
+				timeRemaining.days > 9
+					? timeRemaining.days
+					: "0" + timeRemaining.days
+			);
+			$hours.text(
+				timeRemaining.hours > 9
+					? timeRemaining.hours
+					: "0" + timeRemaining.hours
+			);
+			$minutes.text(
+				timeRemaining.minutes > 9
+					? timeRemaining.minutes
+					: "0" + timeRemaining.minutes
+			);
+			$seconds.text(
+				timeRemaining.seconds > 9
+					? timeRemaining.seconds
+					: "0" + timeRemaining.seconds
+			);
 		}, 1000);
 	};
 	this.enviarEmail = () => {
-		$('.form-envio').on('submit', function (e) {
+		$(".form-envio").on("submit", function(e) {
 			e.preventDefault();
 
-			var mensagem = $('.mensagem');
-			var email = $(this).find('#email');
-
-
+			var mensagem = $(".mensagem");
+			var email = $(this).find("#email");
 
 			var body = {
-				'email': email.val(),
-				'pagina': 'Página Home',
-				'produto': ''
+				email: email.val(),
+				pagina: "Página Home",
+				produto: ""
 			};
 
 			// Validações
-			const validateEmail = (email) => {
+			const validateEmail = email => {
 				const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 				return re.test(email);
-			}
-			if (body.email == '') {
+			};
+			if (body.email == "") {
 				email.focus();
-				mensagem.text('Por favor, preencha o campo de e-mail');
-			} else if (!validateEmail($('#email').val())) {
-				mensagem.text('E-mail inválido!').show(500);
+				mensagem.text("Por favor, preencha o campo de e-mail");
+			} else if (!validateEmail($("#email").val())) {
+				mensagem.text("<p><span class='icone'></span>Este e-mail não é válido. Digite novamente.</p>").show(500);
 			} else {
 				$.ajax({
 					headers: {
-						'Content-Type': 'application/json',
-						Accept: 'application/vnd.vtex.ds.v10+json'
+						"Content-Type": "application/json",
+						Accept: "application/vnd.vtex.ds.v10+json"
 					},
-					type: 'POST',
-					url: '/api/dataentities/TS/documents',
+					type: "POST",
+					url: "/api/dataentities/TS/documents",
 					data: JSON.stringify(body),
 					beforeSend: function() {
-						$('#send').append('<div class="load"><div class="loading"></div></div>');
+						$("#send").append(
+							'<div class="load"><div class="loading"></div></div>'
+						);
+						$("#send").attr("disabled", "disabled");
 					}
-				}).success(() => {
-					mensagem.text('E-mail cadastrado com sucesso!').show();
-					$('.load').fadeOut(500);
-				}).fail(() => {
-						mensagem.text('Ocorreu um erro, tente novamente mais tarde').show();
-				}).done(() =>{
-					setTimeout(() => {
-						mensagem.fadeOut(500);
-						$('.form-envio').each (() => {
+				})
+					.success(() => {
+						mensagem.text("E-mail cadastrado com sucesso!").show();
+						$(".load").fadeOut(500);
+						$("#send").removeAttr("disabled");
+					})
+					.fail(() => {
+						mensagem
+							.text("Ocorreu um erro, tente novamente mais tarde")
+							.show();
+					})
+					.done(() => {
+						$(".form-envio").each(() => {
 							this.reset();
 						});
-					}, 5000);
-				});
-
+						setTimeout(() => {
+							mensagem.fadeOut(500);
+						}, 5000);
+					});
 			}
 		});
-	}
+	};
 
 	// Start it
 	this.init();
