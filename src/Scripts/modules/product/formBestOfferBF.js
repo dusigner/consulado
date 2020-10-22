@@ -7,12 +7,36 @@ $('.launch-form').on('submit', function (e) {
 
     const inputs = $(this).find('.form-input')
 
-    const produto = $(this).find('#produto-escolhido').attr('data-idproduto');
+    //get param skuId in Url
+    const getParams = (name, href) => {
+
+        if (!name) return false;
+
+        href = href || window.location.href;
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+
+        const regexS = "[\\?&]" + name + "=([^&#]*)";
+        const regex = new RegExp(regexS);
+        const results = regex.exec(href);
+
+        if (results == null)
+            return "";
+        else
+            return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    //return skuId in url
+    const getSkuJson = () => {
+        const url = $('.buy-button-ref').attr('href')
+        return getParams('sku', url)
+    }
+
     const email = $(this).find('#email');
 
     const body = {
         email: email.val(),
-        produto: produto.val()
+        produto: getSkuJson(),
+        pagina: 'Página de Produto'
     };
 
     // Validações
@@ -28,7 +52,7 @@ $('.launch-form').on('submit', function (e) {
                 Accept: 'application/vnd.vtex.ds.v10+json'
             },
             type: 'POST',
-            url: '/api/dataentities/LC/documents', //Entidade no masterdata que armazena os Lead capturados no Formulário
+            url: '/api/dataentities/TS/documents', //Entidade no masterdata que armazena os Lead capturados no Formulário
             data: data,
             success: function (res) {
                 email.val('');
