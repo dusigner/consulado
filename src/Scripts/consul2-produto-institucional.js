@@ -1,14 +1,14 @@
 /* global $: true, Nitro: true */
 'use strict';
 
-import 'modules/produto-institucional/benefits';
 import { pushDataLayer } from 'modules/_datalayer-inline';
+import 'dataLayers/dataLayer-produto-institucional';
+import 'modules/produto-institucional/benefits';
+import 'modules/produto-institucional/characteristics-block';
+import 'modules/produto-institucional/main-banner-datalayer';
 import 'modules/produto-institucional/produto-institucional';
 import 'modules/produto-institucional/specifications';
-import 'modules/produto-institucional/main-banner-datalayer';
 import 'modules/produto-institucional/video-bem-pensado';
-import 'modules/produto-institucional/characteristics-block';
-import 'dataLayers/dataLayer-produto-institucional';
 import 'modules/product/sku-fetch';
 import 'modules/product/selos';
 import 'modules/product/sku-select-v3';

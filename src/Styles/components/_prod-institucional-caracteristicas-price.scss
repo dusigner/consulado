@@ -1,3 +1,6 @@
+@import '../components/produto/prod-info-preco';
+
+$grey-light: #9e9e9e;
 $grey: #616161;
 $green: #9aca3c;
 $green-dark: #609220;
@@ -22,12 +25,14 @@ $roxo: #712f8f;
 
 	.product-info-bar {
 		display: block !important;
-		margin: 0 auto 0 280px;
+		margin: 0 0 0 auto;
 		max-width: 100%;
-		width: 440px;
+		width: 460px;
+
 		&__container {
 			width: 100%;
 		}
+
 		&__title {
 			@include breakpoint('small', 'max') {
 				display: none;
@@ -44,144 +49,171 @@ $roxo: #712f8f;
 				top: -4px;
 			}
 		}
+
 		&__price {
-			font-style: normal;
-			text-align: left;
-			& .descricao-preco {
-				@media (max-width: 370px) {
-					height: 130px;
-				}
-				margin-bottom: 0;
-			}
-			& .valor-de {
-				color: $grey;
-				font-style: normal;
-				font-weight: 500;
-				text-align: left;
-				strong {
-					text-decoration: line-through;
-				}
-			}
-			& .valor-por {
-				@include rfs(32);
-				color: $green;
-				font-style: normal;
-				font-weight: 700;
-				margin-bottom: 6px;
-				text-align: left;
-				&::after {
-					@include rfs(16);
-					color: $grey;
-					content: 'à vista';
-					display: inline-block;
-					font-weight: 400;
-					margin-left: 10px;
-				}
-			}
-			.preco-a-vista {
-				display: none !important;
-				visibility: hidden;
-			}
-			& .valor-dividido {
-				@include breakpoint('small', 'max') {
-					left: 95px;
-					bottom: 25px;
-					width: calc(100% - 95px);
-					right: 0;
-				}
-
-				@media (max-width: 370px) {
-					left: 85px;
-    				width: calc(100% - 80px);
-				}
-
-				@include rfs(15);
-				bottom: 28px;
-				color: $grey;
-				display: inline-block;
-				font-style: normal;
-				font-weight: 400;
-				left: 100px;
-				margin: 5px 0;
-				position: relative;
-				right: 100%;
-				text-align: left;
-				width: calc(100% - 110px);
-				strong {
-					font-weight: 500;
-				}
-				span,
-				label {
-					display: inline-block;
-					width: auto;
-				}
-				span {
-					color: #fff;
-					visibility: hidden;
-				}
-				.skuBestInstallmentValue {
-					@include rfs(15);
-					color: $grey;
-					margin-left: -15px;
-					visibility: visible;
-					&::after {
-						color: $grey;
-						content: ' sem juros ';
-						font-weight: 400;
-					}
-				}
-				.skuBestInstallmentNumber {
-					@include rfs(15);
-					color: $grey;
-					visibility: visible;
-					span {
-						color: $grey;
-						visibility: visible;
-					}
-					&::before {
-						color: $grey;
-						content: ' em até ';
-						font-weight: 400;
-					}
-					&::after {
-						color: $grey;
-						content: ' de ';
-						font-weight: 400;
-					}
-				}
-			}
-
-			//desconto do boleto
-			& .on-discount {
-				@include rfs(16);
-				color: $green-dark;
-				font-style: normal;
-				font-weight: 500;
-				left: 0;
-				margin: 0 0 2px 0;
-				span {
-					color: $grey;
-					font-weight: 300;
-				}
-				strong {
-					display: none;
-				}
-			}
-			& .valor-discount {
-				display: flex;
-				flex-flow: column-reverse;
-				strong {
-					@include rfs(15);
-					color: $grey;
-					display: inline-block;
+			p.descricao-preco {
+				em.valor-de {
+					color: $grey !important;
+					font-size: 1rem;
 					font-style: normal;
-					&::before {
-						@include rfs(15);
-						color: $grey;
-						content: 'Ou ';
-						font-weight: 400;
+					font-weight: 700 !important;
+					margin: 0;
+
+					strong {
+						font-size: 1rem;
+						font-weight: 700 !important;
 					}
 				}
+
+
+				em.valor-por {
+					color: $grey !important;
+					margin: 0;
+
+					strong {
+						color: $grey !important;
+
+						&::before {
+							@include rfs(14);
+							color: $grey;
+							font-weight: 400;
+						}
+					}
+
+				}
+
+				em.valor-discount {
+					display: block;
+					margin: 0;
+
+					strong {
+						align-items: baseline;
+						justify-content: flex-start;
+						color: $green;
+						display: flex;
+						line-height: 1;
+						margin: 8px 0;
+						white-space: break-spaces;
+
+						&::before {
+							@include rfs(32);
+							color: $green;
+							font-weight: 700;
+						}
+
+						&::after {
+							@include rfs(16);
+							color: $grey;
+							font-weight: 700;
+						}
+					}
+
+					.on-discount {
+						color: $green-dark;
+						margin: 0 0 4px;
+						padding: 0;
+
+						span {
+							@include rfs(16);
+							color: $grey-light;
+						}
+
+						&.show--billet {
+							display: flex !important;
+						}
+
+						&::before {
+							content: '+';
+							background: none;
+							height: 100%;
+							position: relative;
+							top: 0;
+							transform: none;
+							width: auto;
+						}
+					}
+				}
+
+				em.valor-dividido {
+					color: $grey !important;
+
+					> span {
+						> span {
+							label {
+								@include rfs(16);
+								font-weight: 400;
+
+								&::before,
+								&::after {
+									@include rfs(14);
+									color: $grey;
+									font-weight: 400;
+								}
+							}
+						}
+
+						> strong {
+							.skuBestInstallmentValue {
+								&::before {
+									@include rfs(14);
+									content: 'de ';
+									color: $grey;
+									font-weight: 400;
+								}
+							}
+						}
+
+						&::after {
+							@include rfs(14);
+							color: $grey;
+							font-weight: 400;
+						}
+					}
+				}
+			}
+		}
+
+		.promo-destaque {
+			&.promo-produto {
+				margin: 0;
+			}
+
+			&__text {
+				@include breakpoint('small', 'max') {
+					width: 120px;
+				}
+
+				width: 120px;
+			}
+
+			&__price {
+				width: calc(100% - 165px);
+			}
+
+			&__economic {
+				@include breakpoint('small', 'max') {
+					width: 100%;
+					left: 0;
+					flex-direction: row;
+					justify-content: flex-start;
+				}
+
+				span + span {
+					color: #ffffff;
+				}
+
+				&--discount-value,
+				&--discount-text
+				 {
+					color: #ffffff;
+				}
+			}
+
+			&__bg {
+				width: 140px;
+				height: auto;
+				top: -1px;
+				bottom: -1px;
 			}
 		}
 
@@ -189,38 +221,65 @@ $roxo: #712f8f;
 			margin: 0 auto;
 		}
 	}
-	#BuyButton .buy-button,
-	.product-info-bar__buy .buy-button {
-		@include breakpoint('small', 'max') {
-			margin-top: 10px;
-			width: 100% !important;
+
+	#BuyButton {
+		.form-container {
+			width: 100%;
 		}
-		@include rfs(16);
-		background-color: $green;
-		border-radius: 50px;
-		color: #fff;
-		font-weight: 500;
-		height: 48px;
-		line-height: normal;
-		margin: 20px 0 0;
-		max-width: 100%;
-		padding: 12px 0;
-		width: 200px !important;
-		&:hover {
-			background-color: $green-dark;
-			height: 48px;
-			width: 200px;
+
+		&.product-info-bar__buy {
+			.buy-button {
+				@include breakpoint('small', 'max') {
+					margin-top: 10px;
+					width: 100% !important;
+				}
+
+				@include rfs(16);
+				background-color: $green;
+				border-radius: 50px;
+				color: #fff;
+				font-weight: 500;
+				height: 48px;
+				line-height: normal;
+				margin: 0;
+				max-width: 100%;
+				padding: 12px 16px;
+				width: 200px !important;
+				display: flex !important;
+				align-items: center;
+				justify-content: center;
+
+				&:hover {
+					background-color: $green-dark;
+					height: 48px;
+					width: 200px;
+				}
+			}
+
+			.portal-notify-me-ref {
+				#notifymeButtonOK {
+					height: 48px;
+					display: flex !important;
+					align-items: center;
+					justify-content: center;
+					padding: 12px 16px;
+				}
+			}
 		}
+	}
+
+	.preco-a-vista.price-cash {
+		display: none !important;
 	}
 
 	//selo desconto
 	.economia-de {
 		color: #fff;
-		display: inline-block;
-		height: 0;
-		line-height: 0;
-		visibility: hidden;
-		width: 0;
+		display: none;
+		font-size: 0;
+		position: relative;
+		top: -16px;
+
 		.economia {
 			@include rfs(12);
 			background-color: $pink;
@@ -233,9 +292,9 @@ $roxo: #712f8f;
 			line-height: 27px;
 			position: relative;
 			text-align: center;
-			top: 20px;
 			visibility: visible;
 			width: 80px;
+
 			&::before {
 				color: #fff;
 				content: '- ';
@@ -244,12 +303,13 @@ $roxo: #712f8f;
 			}
 		}
 	}
+
 	.formas-pagamento-container {
 		display: block;
-		margin-bottom: 44px;
-		margin-top: -55px;
+		margin: 0;
 		position: relative;
 		width: 100%;
+
 		.valores-parcelas {
 			.titulo-parcelamento {
 				@include rfs(14);
@@ -257,9 +317,11 @@ $roxo: #712f8f;
 				font-weight: 400;
 				padding: 10px 0 10px 20px;
 			}
+
 			.other-payment-method-content {
 				padding-right: 16px;
 			}
+
 			.other-payment-method-ul {
 				margin: 10px 8px;
 				max-width: 100%;
@@ -276,6 +338,12 @@ $roxo: #712f8f;
 						}
 					}
 				}
+			}
+
+			p {
+				padding: 0 20px 10px;
+				width: 100%;
+				max-width: none;
 			}
 		}
 	}
@@ -301,6 +369,7 @@ $roxo: #712f8f;
 			}
 		}
 	}
+
 	.prod-sku-options {
 		margin-top: 0;
 		width: 152px;
@@ -311,8 +380,10 @@ $roxo: #712f8f;
 	//seletor de cor
 	.seletores {
 		display: flex;
-		max-width: 100%;
-		width: 320px;
+		max-width: 320px;
+		width: 100%;
+		margin: 25px 0;
+
 		.seletor {
 			display: flex;
 			flex-wrap: wrap;
@@ -326,10 +397,10 @@ $roxo: #712f8f;
 				width: 100%;
 			}
 			.botao-seletor {
-				border: 1px solid #e0e0e0;
+				border: 1px solid #616161;
 				border-radius: 30px;
 				display: inline-block;
-				height: 35px;
+				height: 34px;
 				margin: 0 10px 0 0;
 				padding: 4px;
 				position: relative;
@@ -350,7 +421,7 @@ $roxo: #712f8f;
 					}
 					&.branco {
 						background: #fff;
-						border: 1px solid #f5f5f5;
+						border: 1px solid #e0e0e0;
 					}
 				}
 				&.white {
@@ -464,7 +535,7 @@ $roxo: #712f8f;
 				#btnFreteSimulacao {
 					@include rfs(14);
 					color: $roxo;
-					padding: 14px 15px;
+					padding: 13px 15px;
 					text-transform: none;
 					background: #ffffff;
 					border-radius: 0;
@@ -505,6 +576,7 @@ $roxo: #712f8f;
 		display: none;
 	}
 }
+
 .voltageModalWindow #modal-sku {
 	.title-check-voltage {
 		margin-bottom: 12px;
