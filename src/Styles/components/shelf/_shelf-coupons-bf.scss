@@ -5,7 +5,7 @@
                 display: none;
             }
             .flag {
-                &.cns__promo__ganhe__de-volta-__-702f8f__500 {
+                &.black-friday-coupons {
                     opacity: 1;
                 }
             }
@@ -15,7 +15,7 @@
 
             .flag {
                 display: none;
-                &.cns__promo__ganhe__de-volta-__-702f8f__500 {
+                &.black-friday-coupons {
                     bottom: 0;
                     width: auto;
                     height: 11%;
@@ -24,7 +24,7 @@
                     color: #712F8F;
                     font-weight: bold;
 
-                    display: flex;
+                    display: none;
                     align-items: center;
                     justify-content: space-between;
 

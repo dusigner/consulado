@@ -13,6 +13,8 @@ Nitro.module('coupons-blackfriday-2020', function() {
 		});
 
 		self.copyCouponToClioBoard();
+
+		self.dataLayerBFCoupons();
 	}
 
 	self.formatCouponsBlackFridayVitrine = (coupon, index) => {
@@ -20,7 +22,7 @@ Nitro.module('coupons-blackfriday-2020', function() {
 		if($('body').hasClass('home') || $('body').hasClass('categoria') || $('body').hasClass('listagem')){
 			productBoxes = $('.box-produto .FlagsHightLight p');
 		} else {
-			productBoxes = $('.prod-image .prod-selos p');
+			productBoxes = $('.prod-selos p');
 		}
 
 		$(productBoxes).map(function(product, index){
@@ -28,8 +30,9 @@ Nitro.module('coupons-blackfriday-2020', function() {
 			if($(produto).attr('class').indexOf('blackfriday-2020') > -1) {
 				let collectionId = $(produto).attr('class').split('-');
 				$(coupon).map(function(index, c){
-					if($(c).idCollection === collectionId[-1]) {
-						$(produto).parent().find('.cns__promo__ganhe__de-volta-__-702f8f__500').text($(c)[0].coupon)
+					if($(c)[0].idCollection === collectionId[2]) {
+						$(produto).parent().find('.black-friday-coupons').text($(c)[0].coupon)
+						$(produto).parent().find('.black-friday-coupons').css('display', 'flex')
 					}
 				})
 			}
@@ -39,7 +42,7 @@ Nitro.module('coupons-blackfriday-2020', function() {
 	}
 
 	self.copyCouponToClioBoard = () => {
-		const copyCouponButton = $('.cns__promo__ganhe__de-volta-__-702f8f__500');
+		const copyCouponButton = $('.black-friday-coupons');
 
 		$(copyCouponButton).on('click', function(e){
 			e.preventDefault();
@@ -68,13 +71,45 @@ Nitro.module('coupons-blackfriday-2020', function() {
 		return deferred.promise();
 	};
 
+	self.dataLayerBFCoupons = () => {
+		$(window).load(function(){
+			if($('body').hasClass('produto') && $('.black-friday-coupons').length){
+				let couponName = $('.prod-info .prod-selos .black-friday-coupons').text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+
+				dataLayer.push({
+					event: 'generic',
+					category: 'PDP_cupom',
+					action: 'exbicao_cupom ',
+					label: `exibicao_${couponName}`
+				})
+
+				$('.black-friday-coupons').on('click', function(){
+					dataLayer.push({
+						event: 'generic',
+						category: 'PDP_cupom',
+						action: 'click_copiar_cupom',
+						label: `cupom_${couponName}`
+					})
+
+					setTimeout(function(){
+						dataLayer.push({
+							event: 'generic',
+							category: 'PDP_cupom',
+							action: 'exbicao_codigo_copiado ',
+							label: 'codigo_copiado_sucesso '
+						})
+					}, 1000)
+				})
+			}
+		})
+	}
+
 	if($('body').hasClass('categoria') || $('body').hasClass('listagem')) {
 		$(document).ajaxStop(function () {
 
 			self.init();
 
 			if ($('.see-more').length && $('.see-more button').hasClass('hide')) {
-				console.info('batata');
 				$(this).unbind("ajaxStop");
 			}
 
