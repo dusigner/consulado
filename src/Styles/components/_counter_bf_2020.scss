@@ -196,6 +196,7 @@ $white: #ffffff;
 			box-shadow: none;
 			display: inline-block;
 			height: 48px;
+			margin-bottom: 12px;
 			padding: 14px 12px;
 			@media (max-width: 641px) {
 				height: 32px;
@@ -247,7 +248,27 @@ $white: #ffffff;
 		cursor: default;
 	}
 	.mensagem {
-		@include rfs(20);
+		font-size: 14px;
+		font-weight: 500;
+		.msg-sucesso {
+			color: $green-primary;
+		}
+		p {
+			font-weight: 500;
+			margin: 0;
+			span {
+				background-image: url('/arquivos/aviso-icone.png');
+				background-repeat: no-repeat;
+				background-size: contain;
+				display: inline-block;
+				height: 16px;
+				margin-right: 10px;
+				position: relative;
+				top: 3px;
+				width: 16px;
+			}
+		}
+
 	}
 	.load {
 		.loading {

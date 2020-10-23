@@ -109,7 +109,7 @@ Nitro.module("counter-bf-2020", function() {
 				email.focus();
 				mensagem.text("Por favor, preencha o campo de e-mail");
 			} else if (!validateEmail($("#email").val())) {
-				mensagem.text("<p><span class='icone'></span>Este e-mail não é válido. Digite novamente.</p>").show(500);
+				mensagem.html("<p><span class='icone'></span>Este e-mail não é válido. Digite novamente.</p>").show(500);
 			} else {
 				$.ajax({
 					headers: {
@@ -127,9 +127,16 @@ Nitro.module("counter-bf-2020", function() {
 					}
 				})
 					.success(() => {
-						mensagem.text("E-mail cadastrado com sucesso!").show();
+						mensagem.html("<p class='msg-sucesso'>E-mail cadastrado com sucesso!</p>").show();
 						$(".load").fadeOut(500);
 						$("#send").removeAttr("disabled");
+
+						dataLayer.push({
+							event: 'generic',
+							category: 'teste',
+							action: 'teste',
+							label: 'teste'
+						});
 					})
 					.fail(() => {
 						mensagem
