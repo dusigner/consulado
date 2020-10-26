@@ -1,0 +1,53 @@
+.prod-info {
+    .prod-selos {
+        .tag {
+            width: auto;
+            height: 35px;
+            max-height: 2rem;
+            border-radius: 4px;
+
+            top: 0;
+            left: 0;
+            bottom: 0;
+            margin: 0 .5rem;
+
+            font-size: 12px;
+            color: #ffffff;
+            font-weight: bold;
+            text-indent: 0;
+
+            display: flex;
+            order: 1;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+
+            background-color: #EC008E;
+            position: relative;
+
+            padding: 4px 1rem;
+        }
+
+        .blackfriday-tag {
+            width: auto;
+            height: 35px;
+            max-height: 2rem;
+            border-radius: 4px;
+            top: 0;
+            bottom: 0;
+            margin: 0 .5rem;
+            font-size: 12px;
+            color: #ffffff;
+            font-weight: bold;
+            text-indent: 0;
+            display: flex!important;
+            order: 3;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 2;
+            background-color: #424242;
+            position: relative;
+            padding: 4px 1rem;
+        }
+    }
+}

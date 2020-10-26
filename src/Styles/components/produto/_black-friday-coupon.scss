@@ -23,9 +23,9 @@
         .flag {
 
             &.black-friday-coupons {
-                bottom: 75%;
                 width: auto;
                 height: 35px;
+                max-height: 2rem;
 
                 font-size: 12px;
                 color: #712F8F;
@@ -36,13 +36,15 @@
                 z-index: 4;
                 align-items: center;
                 justify-content: space-between;
+                order: 2;
 
                 border: 1px solid #712F8F;
                 border-radius: 4px;
                 background-color: #ffffff;
 
-                margin: 0;
+                margin: 0 .5rem;
                 position: relative;
+
 
                 &:before {
                     content: 'Cupom';
