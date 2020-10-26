@@ -128,7 +128,7 @@ Nitro.module("counter-bf-2020", function() {
 					}
 				})
 					.success(() => {
-						mensagem.html("<p class='msg-sucesso'>E-mail cadastrado com sucesso!</p>").show();
+						mensagem.html("<p class='msg-sucesso'>Pronto, e-mail cadastrado! Agora é só aproveitar a Black Friday antes de todo mundo.</p>").show();
 						$(".load").fadeOut(500);
 						$("#send").removeAttr("disabled");
 
