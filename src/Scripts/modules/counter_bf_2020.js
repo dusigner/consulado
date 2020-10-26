@@ -11,6 +11,7 @@ Nitro.module("counter-bf-2020", function() {
 	this.init = () => {
 		this.initCounter();
 		this.enviarEmail();
+		this.tagueamento();
 	};
 
 	this.initCounter = () => {
@@ -133,9 +134,9 @@ Nitro.module("counter-bf-2020", function() {
 
 						dataLayer.push({
 							event: 'generic',
-							category: 'teste',
-							action: 'teste',
-							label: 'teste'
+							category: 'black_friday_2020',
+							action: 'home_contador_ofertas',
+							label: 'exibicao_email_cadastrado'
 						});
 					})
 					.fail(() => {
@@ -154,6 +155,35 @@ Nitro.module("counter-bf-2020", function() {
 			}
 		});
 	};
+	this.tagueamento = () => {
+		//click avise-me
+		$('.cont-mobile').find('.btn-enviar').on('click', function(){
+			dataLayer.push({
+				event: 'generic',
+				category: 'black_friday_2020',
+				action: 'home_contador_ofertas',
+				label: 'click_avise_me'
+			})
+		});
+		//click input
+		$('#email').on('click', function(){
+			dataLayer.push({
+				event: 'generic',
+				category: 'black_friday_2020',
+				action: 'home_contador_ofertas',
+				label: 'click_digitacao'
+			})
+		});
+		//click enviar
+		$('#send').on('click', function(){
+			dataLayer.push({
+				event: 'generic',
+				category: 'black_friday_2020',
+				action: 'home_contador_ofertas',
+				label: 'click_enviar'
+			})
+		});
+	}
 
 	// Start it
 	this.init();
