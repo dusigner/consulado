@@ -3,6 +3,7 @@
 
 require('modules/banners-controller');
 require('modules/slider-banner');
+require('modules/product/_slick-module-top');
 require('components/instagram-stories');
 
 
@@ -32,6 +33,7 @@ Nitro.controller(
 	[
 		'chaordic',
 		'slider-banner',
+		'slider-module-prateleira',
 		'instagram-stories',
 		'lead-newsletter',
 		// 'prateleira-personalizada',
@@ -116,7 +118,7 @@ Nitro.controller(
 			]
 		});
 
-		$('.tipbar-novo .container .row').slick ({
+		$('.tipbar-novo .container .row').slick({
 			mobileFirst: false,
 			slidesToShow: 4,
 			centerPadding: '10px',
@@ -386,7 +388,7 @@ Nitro.controller(
 				]
 			});
 
-			const $buttons = $('.btn').click(function() {
+			const $buttons = $('.btn').click(function () {
 				$('#vitrines-family > div').fadeIn(450);
 
 				const $card = $('.' + this.id).fadeIn(450);
