@@ -34,24 +34,27 @@
 		margin-top: 10px;
 	}
 
+	.cta {
+		color: #FFFFFF;
+	}
+
 	button {
 		margin-top: 5px;
-		color: #FFFFFF;
 		border-radius: 50px;
 		background-color: #212121;
 		font-weight: 500;
-		width: 80%;
+		width: 30%;
 		height: 40px;
 		font-size: 14px;
 		margin-left: 15px;
-		margin-right: 15px;
-		border: 2px solid #FFFFFF;
+		margin-right: 10px;
+		border: 2px solid #E0E0E0;
 	}
 
 	input {
 		display: block;
 		margin-bottom: 12px;
-		width: 70%;
+		width: 303, 23px;
 		border: 2px solid #9E9E9E;
 		border-radius: 3px;
 		padding: 15px 18px;
@@ -59,7 +62,7 @@
 
 		&::placeholder {
 			font-size: 16px;
-			color: #000;
+			color: #616161;
 		}
 
 		&::placeholder-show {
