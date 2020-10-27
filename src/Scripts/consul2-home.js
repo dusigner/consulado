@@ -425,8 +425,66 @@ Nitro.controller(
 			})
 		};
 
+		this.moduleTop = () => {
+			$('#content-vitrine .module-top10').show();
+			$('#content-vitrine .module-top10 .prateleira > ul').not('.slick-initialized').slick({
+				infinite: false,
+				dots: true,
+				arrows: true,
+				mobileFirst: true,
+				responsive: [
+					{
+						breakpoint: 992,
+						settings: {
+							arrows: true,
+							slidesToShow: 4
+						}
+					}
+				]
+			});
+
+			const $buttons = $('.btn').click(function () {
+				$('#content-vitrine > div').fadeIn(450);
+
+				const $card = $('.' + this.id).fadeIn(450);
+				$('#content-vitrine > div').not($card).hide();
+				$card.find('.prateleira > ul').not('.slick-initialized').slick({
+					infinite: false,
+					arrows: true,
+					dots: true,
+					mobileFirst: true,
+					responsive: [
+						{
+							breakpoint: 992,
+							settings: {
+								arrows: true,
+								slidesToShow: 4,
+								infinite: false,
+								dots: true
+							}
+						},
+						{
+							breakpoint: 768,
+							settings: {
+								arrows: false,
+								dots: true,
+								infinite: false,
+								slidesToScroll: 1,
+								slidesToShow: 1,
+								swipeToSlide: true
+							}
+						}
+					]
+				});
+
+				$buttons.removeClass('active');
+				$(this).addClass('active');
+			})
+		};
+
 		this.init = () => {
 			this.filterSize();
+			this.moduleTop();
 		};
 
 		this.init();
