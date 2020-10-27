@@ -23,7 +23,7 @@ require('modules/interested-shelf');
 require('modules/subCategoryList');
 
 import 'modules/counter_consumer_week_2020';
-import 'modules/counter_bf_2020';
+import 'modules/counter_pre_bf_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
@@ -42,7 +42,7 @@ Nitro.controller(
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
 		/* 'static-banner' */
-		'counter-bf-2020',
+		'counter-pre-bf-2020',
 		'counter',
 		// 'datalayer_track'
 		'subCategoryList',

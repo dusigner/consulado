@@ -5,7 +5,7 @@
  */
 "use strict";
 
-Nitro.module("counter-bf-2020", function() {
+Nitro.module("counter-pre-bf-2020", function() {
 	const endDate = "2020/11/27";
 
 	this.init = () => {
@@ -128,7 +128,7 @@ Nitro.module("counter-bf-2020", function() {
 					}
 				})
 					.success(() => {
-						mensagem.html("<p class='msg-sucesso'>Pronto, e-mail cadastrado! Agora é só aproveitar a Black Friday antes de todo mundo.</p>").show();
+						mensagem.html("<p><span class='msg-sucesso'>Pronto, e-mail cadastrado!</span> Agora é só aproveitar a Black Friday antes de todo mundo.</p>").show();
 						$(".load").fadeOut(500);
 						$("#send").removeAttr("disabled");
 

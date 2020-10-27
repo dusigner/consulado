@@ -84,9 +84,12 @@ $white: #ffffff;
 		background-image: url("/arquivos/black-title.png");
 		background-position: top center;
 		background-repeat: no-repeat;
-		background-size: cover;
-		height: 222px;
+		background-size: contain;
+		height: 194px;
 		width: 312px;
+		@media (min-width: 642px) and (max-width: 992px) {
+			height: 184px;
+		}
 		@media (max-width: 641px) {
 			background-position: bottom left;
 			background-size: contain;
@@ -260,15 +263,18 @@ $white: #ffffff;
 		cursor: default;
 	}
 	.mensagem {
+		color: #fff;
 		font-size: 14px;
-		font-weight: 500;
+		font-weight: 300;
 		.msg-sucesso {
 			color: $green-primary;
+			font-weight: 700;
 		}
 		p {
-			font-weight: 500;
+			color: #fff;
+			font-weight: 300;
 			margin: 0;
-			span {
+			.icone {
 				background-image: url('/arquivos/aviso-icone.png');
 				background-repeat: no-repeat;
 				background-size: contain;
