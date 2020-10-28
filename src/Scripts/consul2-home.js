@@ -438,8 +438,19 @@ Nitro.controller(
 					{
 						breakpoint: 992,
 						settings: {
-							arrows: true,
+							arrows: false,
 							slidesToShow: 4
+						}
+					},
+					{
+						breakpoint: 375,
+						settings: {
+							arrows: false,
+							dots: true,
+							infinite: false,
+							slidesToScroll: 1,
+							slidesToShow: 1,
+							swipeToSlide: true
 						}
 					}
 				]
@@ -452,14 +463,14 @@ Nitro.controller(
 				$('#content-vitrine > div').not($card).hide();
 				$card.find('.prateleira > ul').not('.slick-initialized').slick({
 					infinite: false,
-					arrows: true,
+					arrows: false,
 					dots: true,
 					mobileFirst: true,
 					responsive: [
 						{
 							breakpoint: 992,
 							settings: {
-								arrows: true,
+								arrows: false,
 								slidesToShow: 4,
 								infinite: false,
 								dots: true

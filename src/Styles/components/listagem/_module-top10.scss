@@ -13,6 +13,12 @@
 		margin-bottom: 60px;
 	}
 
+	.prateleira {
+		h2 {
+			display: none;
+		}
+	}
+
 	.title-top10 {
 		color: #9ACA3C;
 		margin-bottom: 12px;
@@ -21,6 +27,7 @@
 	.msg-top10 {
 		@include rfs(16);
 		color: #FFFFFF;
+		padding: 5px;
 	}
 
 	.slick-arrow {
