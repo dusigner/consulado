@@ -12,6 +12,7 @@ Nitro.module("counter-pre-bf-2020", function() {
 		this.initCounter();
 		this.enviarEmail();
 		this.tagueamento();
+		this.scrollAviseme();
 	};
 
 	this.initCounter = () => {
@@ -184,7 +185,13 @@ Nitro.module("counter-pre-bf-2020", function() {
 			})
 		});
 	}
-
+	this.scrollAviseme = () => {
+		$('.cont-mobile').find('.btn-enviar').on('click',function(){
+			$('html, body').stop().animate({
+				scrollTop: $($(this).attr('href')).offset().top - 100
+			}, 800);
+		});
+	}
 	// Start it
 	this.init();
 });
