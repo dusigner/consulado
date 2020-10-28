@@ -28,17 +28,7 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
                 'click_cadastrar'
             );
         });
-
-        $('form').on('submit', function () {
-            pushDataLayer(
-                'black_friday_2020',
-                'pdp_captação_lead',
-                'click_email_cadastrado'
-            );
-        });
     }
-
-
 
     this.captureSku = () => {
         const getParams = (name, href) => {
@@ -58,7 +48,6 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
                 return decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
-
         const url = $('.buy-button-ref').attr('href')
         const sku = getParams('sku', url)
 
@@ -69,7 +58,7 @@ Nitro.module('dataLayer-captacao-lead-pdp', function () {
                 `${sku}`
             );
         });
-
     },
+
         this.init();
 });

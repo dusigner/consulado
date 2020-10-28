@@ -40,25 +40,38 @@ $('.launch-form').on('submit', function (e) {
     };
 
     // Validações
+    const validateEmail = email => {
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
     if (body.email == '') {
         email.focus();
         feedback.css('display', 'block')
+    } else if (!validateEmail($('#email').val())) {
+        feedback.css('display', 'block').show(500);
     } else {
-        const data = JSON.stringify(body);
-
         $.ajax({
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/vnd.vtex.ds.v10+json'
             },
             type: 'POST',
-            url: '/api/dataentities/TS/documents', //Entidade no masterdata que armazena os Lead capturados no Formulário
-            data: data,
+            url: '/api/dataentities/TS/documents',
+            data: JSON.stringify(body),
             success: function (res) {
                 email.val('');
                 inputs.remove()
                 feedback.css('display', 'none')
                 feedbackSuccess.css('display', 'block')
+
+                $('form').on('submit', function () {
+                    dataLayer.push({
+                        event: 'generic',
+                        category: 'black_friday_2020',
+                        action: 'pdp_captação_lead',
+                        label: 'click_email_cadastrado'
+                    });
+                });
             }
         });
     }
