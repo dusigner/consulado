@@ -22,63 +22,74 @@ body {
 			@include breakpoint ('small', 'max') { padding: 0 15px; }
 
 			h4 {
-				@include breakpoint ('small', 'max') { text-align: left;}
-				@include rfs(28);
-				color: $txt;
+				font-size: 2rem;
+				color: $green;
 				font-weight: bold;
 				margin: 0;
 				text-align: center;
+				margin-bottom: 6px;
+				@include breakpoint ('small', 'max') { text-align: center; font-size: 24px;}
 			}
 
 			span {
-				@include breakpoint ('small', 'max') { text-align: left ;}
-				@include rfs(14);
+				font-size: 1rem;
 				color: $txt;
 				display: block;
 				margin: 0;
 				text-align: center;
+				@include breakpoint ('small', 'max') { text-align: center; font-size: 14px;}
+
 			}
 		}
 
 		.prateleira-tabs__tabs {
-			@include breakpoint ('small', 'max') {
-				justify-content: space-between;
-				margin: 0 auto 0;
-				padding: 0 10px;
-			}
+
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: center;
-			margin-bottom: 32px;
+			margin-bottom: 25px;
+
+			@include breakpoint ('small', 'max') {
+				justify-content: center;
+				margin: 0 auto 0;
+				padding: 0 10px;
+			}
 
 			li {
-				@include breakpoint ('small', 'max') {
-					margin: 0 0 12px;
-					width: 48%;
-				}
 				margin: 0 6px 12px;
+
+				@include breakpoint ('small', 'max') {
+					margin: 0 6px 12px;
+					width: 46%;
+				}
 
 
 			}
 
 			.discount-item {
-				@include breakpoint ('small', 'max') { width: 100%; }
+				@include breakpoint ('small', 'max') { width: 100%; display: flex; justify-content: center; align-items: center;}
 				@include rfs(16);
-				border: 1px solid $border;
+				border: 2px solid #757575;
 				border-radius: 4px;
-				color: $txt;
+				color: #ffffff;
 				display: inline-block;
 				height: 38px;
 				line-height: 2.5;
 				text-align: center;
 				width: 160px;
+				font-weight: 500;
+				background-color: #424242;
 
-				&.active,
-				&:hover {
+				&.active {
+					font-weight: 500;
 					background-color: $green;
+					border: none;
+				}
+				&:hover {
+					background-color: #757575;
 					color: #fff;
-					font-weight: bold;
+					font-weight: 700;
 				}
 			}
 
@@ -91,7 +102,7 @@ body {
 
 		.vitrines {
 			@include breakpoint ('small', 'max') { margin-top: 30px; }
-			margin-top: 42px;
+			margin-top: 25px;
 			position: relative;
 
 			.prateleira {
@@ -170,6 +181,9 @@ body {
 				.discount-item {
 					@include breakpoint ('small', 'max') {
 						width: 100%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 					}
 				}
 			}
@@ -257,19 +271,20 @@ $cw-black: #403C3B;
 		}
 
 		.interesses-title {
-			@include breakpoint ('small', 'max') { padding: 0 15px; }
+			@include breakpoint ('small', 'max') { padding: 0 15px;}
 
 			h4 {
-				@include breakpoint ('small', 'max') { text-align: left;}
 				@include rfs(28);
-				color: $cw-txt;
+				color: $green;
 				font-weight: bold;
 				margin: 0;
 				text-align: center;
+				margin-bottom: 6px;
+				@include breakpoint ('small', 'max') { text-align: center; font-size: 24px;}
 			}
 
 			span {
-				@include breakpoint ('small', 'max') { text-align: left ;}
+				@include breakpoint ('small', 'max') { text-align: center; font-size: 14px;}
 				@include rfs(14);
 				color: $cw-txt;
 				display: block;
@@ -280,24 +295,27 @@ $cw-black: #403C3B;
 		}
 
 		.prateleira-tabs__tabs {
-			@include breakpoint ('small', 'max') {
-				justify-content: space-between;
-				margin: 0 auto 0;
-				padding: 0 10px;
-			}
+
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: center;
-			margin-bottom: 32px;
+			margin-bottom: 25px;
+
+			@include breakpoint ('small', 'max') {
+				margin: 0 auto 0;
+				justify-content: center;
+
+			}
 
 			li {
+				margin: 0 6px 12px;
+
 				@include breakpoint ('small', 'max') {
-					margin: 0 0 12px;
+					margin: 0 6px 12px;
 					width: 50%;
 					padding: 0 5px;
 				}
-				margin: 0 6px 12px;
 
 				&:nth-child(3) {
 					span {
@@ -310,7 +328,7 @@ $cw-black: #403C3B;
 			}
 
 			.discount-item {
-				@include breakpoint ('small', 'max') { width: 100%; }
+				@include breakpoint ('small', 'max') { width: 100%; display: flex; justify-content: center; align-items: center;}
 				@include rfs(13);
 				background: $cw-button-bg;
 				border: 1px solid $cw-border;
@@ -340,7 +358,7 @@ $cw-black: #403C3B;
 
 		.vitrines {
 			@include breakpoint ('small', 'max') { margin-top: 30px; }
-			margin-top: 42px;
+			margin-top: 25px;
 			position: relative;
 
 			.prateleira {
@@ -404,7 +422,10 @@ $cw-black: #403C3B;
 
 				.discount-item {
 					@include breakpoint ('small', 'max') {
-						width: 100%
+						width: 100%;
+						display: flex;
+						justify-content: center;
+						align-items: center;
 					}
 				}
 			}
@@ -418,6 +439,7 @@ $cw-black: #403C3B;
 				.discount-item {
 					@include breakpoint ('small', 'max') {
 						width: 100%;
+
 					}
 				}
 			}
