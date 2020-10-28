@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<title>Loja Consul - Eletrodomésticos para Sua Casa</title>
+	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
+	<vtex:template id="0-consul-head-content" />
+
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
+	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home-bf2020.css?v=<!-- @echo package.version -->" />
+</head>
+
+<body data-controller="home">
+	<!-- Top Header -->
+	<vtex:template id="0-consul-top-header" />
+	<!-- /Top Header -->
+
+	<!-- Header -->
+	<vtex:template id="0-consul-header" />
+	<!-- /Header -->
+
+	<!-- [ Mobile ] - Instagram Stories -->
+	<section class="stories">
+		<strong class="stories__title">Aproveite as ofertas</strong>
+
+		<div class="stories__container">
+			<ul class="stories-circle-list">
+				<li class="stories-circle-list__item" data-storie-card-title="Ofertas da #Black friday#"
+					data-storie-card-collection-id="1833" data-storie-card-collection-id-qa="205">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1833" title="Black friday">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-bf-antecipadas-2x.png" alt="Black friday" />
+						</span>
+
+						<strong class="stories-circle-list__title">Black friday</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #frete grátis!#"
+					data-storie-card-collection-id="1834" data-storie-card-collection-id-qa="166">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1834" title="Frete Grátis">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-frete-gratis-2x.png" alt="Frete Grátis" />
+						</span>
+
+						<strong class="stories-circle-list__title">Frete Grátis <span>*</span></strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #40% OFF#"
+					data-storie-card-collection-id="1835" data-storie-card-collection-id-qa="193">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1835" title="40% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-40-off-2x.png" alt="40% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">40% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #20% OFF#"
+					data-storie-card-collection-id="1836" data-storie-card-collection-id-qa="206">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1836" title="20% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-20-off-2x.png" alt="20% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">20% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com desconto #à vista!#"
+					data-storie-card-collection-id="1837" data-storie-card-collection-id-qa="193">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1837" title="À Vista">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-a-vista-2x.png" alt="À Vista" />
+						</span>
+
+						<strong class="stories-circle-list__title">À Vista</strong>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="stories-card">
+			<div class="stories-card__header">
+				<strong>
+					Produtos atualizados todo dia
+				</strong>
+				<button class="stories-card__close">
+					<i class="icon icon-close-icon"></i>
+				</button>
+			</div>
+
+			<h2 class="stories-card__title"></h2>
+
+			<div class="loading-container absolute-center">
+				<i class="icon-spinner"></i>
+			</div>
+		</div>
+	</section>
+	<!-- /[ Mobile ] - Instagram Stories -->
+
+	<!-- [ Desktop ] - Slider -->
+	<div class="banners hide-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal slides">
+			<vtex:contentPlaceHolder id="SliderHome" />
+		</div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- Abrir regulamento banner -->
+	</div>
+	<!-- /[ Desktop ] - Slider -->
+
+	<!-- [ Mobile ] - Slider mobile -->
+	<div class="banners-mobile show-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal banner-mobile slides">
+			<vtex:contentPlaceHolder id="SliderHomeMobile" />
+		</div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- /Abrir regulamento banner -->
+	</div>
+	<!-- /[ Mobile ] - Slider mobile -->
+
+	<!-- Tipbar -->
+	<article class="tipbar-novo blackfriday">
+		<div class="container">
+			<ul class="row">
+				<li>
+					<div class="tipbar-novo__coluna">
+						<div class="col-3">
+							<div class="tipbar-novo__icone"><i class="icon-loja-oficial"></i></div>
+						</div>
+						<div class="col-9">
+							<h2 class="tipbar-novo__title">Loja Oficial</h2>
+							<p>Aproveite todas as vantagens de comprar direto da fábrica;</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="tipbar-novo__coluna">
+						<div class="col-3">
+							<div class="tipbar-novo__icone"><i class="icon-pagamento-2cartoes"></i></div>
+						</div>
+						<div class="col-9">
+							<h2 class="tipbar-novo__title">Pagamento com 2 cartões</h2>
+							<p>Utilize até 2 cartões para efetuar sua compra;</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="tipbar-novo__coluna">
+						<div class="col-3">
+							<div class="tipbar-novo__icone"><i class="icon-parcelamento"></i></div>
+						</div>
+						<div class="col-9">
+							<h2 class="tipbar-novo__title">Parcelamento</h2>
+							<p>Suas compras em até 12x sem juros no cartão;</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="tipbar-novo__coluna">
+						<div class="col-3">
+							<div class="tipbar-novo__icone"><i class="icon-compra-segura"></i></div>
+						</div>
+						<div class="col-9">
+							<h2 class="tipbar-novo__title">Compra segura</h2>
+							<p>Eleito diamante no ebit segundo recomendação de nossos clientes;</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</article>
+	<!-- /Tipbar -->
+	<!-- inicio contador -->
+	<section class="counter__section">
+		<div class="container">
+			<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
+
+			<div class="counter__offer">
+				<div class="counter__offer-prod">
+					<vtex:contentPlaceHolder id="contadorOferta" />
+				</div>
+				<div class="counter__offer-count">
+
+				<div class="counter">
+					<div class="counter__title"> <span>Corre!</span> Essa oferta encerra em </div>
+						<div class="counter__clock">
+								<div class="counter__item">
+									<span class="counter__time hours"></span>
+									<span class="counter__timetext">Horas</span>
+								</div>
+								<div class="counter__item">
+									<span class="counter__time minutes"></span>
+									<span class="counter__timetext">Minutos</span>
+								</div>
+								<div class="counter__item">
+									<span class="counter__time seconds"></span>
+									<span class="counter__timetext">Segundos</span>
+								</div>
+						</div>
+						<div class="counter__title"> Ou enquanto durar o estoque! </div>
+				</div>
+				<div class="counter__end-promotion hide">
+					<span class="counter__end-message">Essa oferta acabou :(</span>
+				</div>
+				</div>
+				<div class="counter__offer-cta">
+					<vtex:contentPlaceHolder id="CounterBtnCta" />
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Fim contador -->
+	<!-- Tabs Interesses -->
+	<section class="prateleira-tabs vitrine-ofertas-interesses">
+		<div class="interesses-title">
+			<h4>O que te interessa mais?</h4>
+			<span>Selecione uma opção e veja abaixo as melhores ofertas</span>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<div class="interesses-obs"></div>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras" />
+			</div>
+		</div>
+	</section>
+	<!-- /Tabs Interesses -->
+
+	<!-- shelf category home -->
+	<div class="shelf-category-home-container">
+		<div class="container">
+			<h2 class="page-title"> Talvez se interesse por: </h2>
+			<span>Veja nossas melhores ofertas por categorias</span>
+
+			<div class="shelf-category-home">
+
+				<!-- Geladeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/geladeira---refrigerador"
+						title="Geladeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__geladeiras.png" alt="Geladeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/geladeira---refrigerador"
+						title="Geladeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Geladeiras</h2>
+					</a>
+				</div>
+
+				<!-- Fogões -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/fogao" title="Fogões">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fogao.png" alt="Fogões" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/fogao" title="Fogões">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fogões</h2>
+					</a>
+				</div>
+
+				<!-- Lavadoras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/lavadora-de-roupas"
+						title="Lavadoras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__lavadoras.png" alt="Lavadoras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/lavadora-de-roupas"
+						title="Lavadoras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Lavadoras</h2>
+					</a>
+				</div>
+
+				<!-- Ar Condicionado -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/ar-condicionado"
+						title="Ar Condicionado">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__ac.png" alt="Ar Condicionado" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/ar-condicionado"
+						title="Ar Condicionado">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Ares-Condicionados</h2>
+					</a>
+				</div>
+
+				<!-- Freezers -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/freezer" title="Freezer">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__freezer.png" alt="Freezer" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/freezer" title="Freezer">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Freezers</h2>
+					</a>
+				</div>
+
+				<!-- Cervejeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cervejeiras.png" alt="Cervejeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Cervejeiras</h2>
+					</a>
+				</div>
+
+				<!-- Fornos -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/forno" title="Fornos">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fornos.png" alt="Fornos" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/forno" title="Fornos">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fornos</h2>
+					</a>
+				</div>
+
+				<!-- Cooktops -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cooktop" title="Cooktops">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cooktops.png" alt="Cooktops" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cooktop" title="Cooktops">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Cooktops</h2>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /shelf category home -->
+
+	<!-- BANNER COMBO OU ALAVANCA -->
+	<section class="banner-combos">
+		<div class="banner-combos d-none d-md-block">
+			<vtex:contentPlaceHolder id="BannerComboDesktop" />
+		</div>
+		<div class="banner-combos d-block d-md-none">
+			<vtex:contentPlaceHolder id="BannerComboMobile" />
+		</div>
+	</section>
+	<!-- /BANNER COMBO OU ALAVANCA -->
+
+	<!-- Tabs Alavancas -->
+	<section class="prateleira-tabs vitrine-ofertas-alavancas">
+		<div class="interesses-title">
+			<h4>Ofertas especiais para você!</h4>
+			<span>Aproveite os produtos com as melhores ofertas</span>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<div class="interesses-obs"></div>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras2" />
+			</div>
+		</div>
+	</section>
+	<!-- /Tabs Alavancas -->
+
+	<!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
+	<section class="area-banners">
+		<div class="container">
+			<div class="row">
+				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
+				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
+			</div>
+			<div class="banner-areas">
+				<vtex:contentPlaceHolder id="banner-ecohouse" />
+				<vtex:contentPlaceHolder id="banner-pecas" />
+				<vtex:contentPlaceHolder id="banner-gae" />
+			</div>
+		</div>
+	</section>
+	<!-- /Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
+
+	<!-- Chaordic shelf -->
+	<div class="shelf-bf">
+		<!-- [ CHAORDIC ] BOTTOM -->
+		<div data-chaordic="bottom"></div>
+		<!-- /[ CHAORDIC ] BOTTOM -->
+	</div>
+	<!-- /Chaordic shelf -->
+
+	<!-- On Page Search -->
+	<section class="onpage-search">
+		<div class="container">
+			<div class="onpage-search__header">
+				<strong class="onpage-search__title">Está procurando algo especial?</strong>
+				<span class="onpage-search__description">Digite o que procura e encontramos para você!</span>
+			</div>
+			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
+				<i class="icon icon-consul-loupe"></i>
+				<input type="text" class="text-search" name="q" required="required" pattern=".{3,}"
+					title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off"
+					maxlength="100" />
+				<button type="submit">
+					Buscar
+				</button>
+			</form>
+			<div class="onpage-search__footer">
+				<a href="/eletrodomesticos" class="onpage-search__link" title="Ver todos os produtos da loja">
+					Ver todos os produtos da loja
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- Vitrine de categorias -->
+	<section class="vitrine-subcategorias">
+		<div class="container">
+			<div class="title">
+				<h4>Busque por modelos</h4>
+				<span>Selecione uma categoria e veja abaixo nossos modelos</span>
+			</div>
+
+			<div class="categories-list">
+				<ul>
+					<li><a href="javascript:void(0)" class="active" data-category="geladeiras">Geladeiras</a></li>
+					<li><a href="javascript:void(0)" data-category="fogoes">Fogões</a></li>
+					<li><a href="javascript:void(0)" data-category="lavadoras">Lavadoras</a></li>
+					<li><a href="javascript:void(0)" data-category="ar-condicionado">Ar-condicionado</a></li>
+					<li><a href="javascript:void(0)" data-category="fornos">Fornos</a></li>
+					<li><a href="javascript:void(0)" data-category="coifas">Coifas e Depuradores</a></li>
+					<li><a href="javascript:void(0)" data-category="cooktop">Cooktops</a></li>
+					<li><a href="javascript:void(0)" data-category="freezers">Freezers</a></li>
+					<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
+				</ul>
+			</div>
+
+			<div class="subcategories-list">
+				<div class="subCategorySection showSubCategory" data-category="geladeiras">
+					<ul class="geladeiras">
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/frost-free" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Frost Free" />
+								<span>Frost Free</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Inox" />
+								<span>Geladeira Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/duplex" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188781-210-210/Geladeira_Consul_CRM51AK_Imagem_Frontal_Nova.jpg"
+									alt="Geladeira Duplex" />
+								<span>Geladeira Duplex</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/branca" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188592-210-210/Consul_Geladeira_CRM51AB_Imagem_Fontal_Nova.jpg"
+									alt="Geladeira Branca" />
+								<span>Geladeira Branca</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/freezer-embaixo"
+								class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192703-210-210/Consul_Geladeira_CRE44AK_Imagem_Frontal_1.jpg"
+									alt="Geladeira com Freezer Embaixo" />
+								<span>Freezer Embaixo</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg"
+									alt="Geladeira 110v" />
+								<span>Geladeira 110v</span>
+							</a>
+						</li>
+
+						<li class="list-element">
+							<a href="/eletrodomesticos/geladeira---refrigerador/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/169346-210-210/CRM38NK-geladeira-frost-free-340-litros-inox-frontal_1650x1450.jpg"
+									alt="Geladeira 220v" />
+								<span>Geladeira 220v</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/geladeira---refrigerador" class="categoryLink">Veja todas as
+						geladeiras</a>
+				</div>
+				<div class="subCategorySection" data-category="fogoes">
+					<ul class="fogoes">
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/4-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg"
+									alt="Fogão 4 bocas" />
+								<span>Fogão 4 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/5-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogães 5 bocas" />
+								<span>Fogão 5 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/6-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg"
+									alt="Fogão 6 bocas" />
+								<span>Fogão 6 bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Inox" />
+								<span>Fogão Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/mesa-de-vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Mesa de Vidro" />
+								<span>Mesa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão a Gás" />
+								<span>Fogão a Gás</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/piso" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Piso" />
+								<span>Fogão Piso</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174164-210-210/Consul_Fogao_CFS6NAB_Imagem_Frontal_1650x1450.jpg"
+									alt="Fogão Branco" />
+								<span>Fogão Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/timer" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188569-210-210/Fogao_Consul_CFO4VAT_Imagem_Frontal.jpg"
+									alt="Fogão com Timer" />
+								<span>Fogão com Timer</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/fogao/bivolt" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188846-210-210/Fogao_Consul_CFS5VAR_Imagem_Frontal_1.jpg"
+									alt="Fogão Fogão Bivolt" />
+								<span>Fogão Bivolt</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/fogao" class="categoryLink">Veja todos os fogões</a>
+				</div>
+				<div class="subCategorySection" data-category="lavadoras">
+					<ul class="lavadoras">
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/8-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186663-210-210/Consul_Lavadora_CWB08AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 8 Kg" />
+								<span>Lavadora 8 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/9-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 9 Kg" />
+								<span>Lavadora 9 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/11-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186684-210-210/Consul_Lavadora_CWH11AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 11 Kg" />
+								<span>Lavadora 11 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/12-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas 12 Kg" />
+								<span>Lavadora 12 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/13-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/183302-210-210/Consul_Lavadora_CWE13AB_Imagem_3_4_1600x1400.jpg"
+									alt="Lavadora de Roupas 13 Kg" />
+								<span>Lavadora 13 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/15-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187295-210-210/CWE15_img3quartos-698x698png.jpg"
+									alt="Lavadora de Roupas 15 Kg" />
+								<span>Lavadora 15 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/16-kg" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187779-210-210/Consul_Lavadora_CWL16AB_Imagem-3-.jpg"
+									alt="Lavadora de Roupas 16 Kg" />
+								<span>Lavadora 16 Kg</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/branca" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas Branca" />
+								<span>Lavadora Branca</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/cesto-inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191406-210-210/Consul_Lavadora_CWH12AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas com Cesto Inox" />
+								<span>Com Cesto Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/lavadora-de-roupas/pequena" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186677-210-210/Consul_Lavadora_CWB09AB_Imagem_Frontal.jpg"
+									alt="Lavadora de Roupas Pequena" />
+								<span>Lavadora Pequena</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/lavadora-de-roupas" class="categoryLink">Veja todas as lavadoras</a>
+				</div>
+				<div class="subCategorySection" data-category="ar-condicionado">
+					<ul class="ar-condicionado">
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg"
+									alt="Ar-Condicionado 110v" />
+								<span>110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg"
+									alt="Ar-Condicionado 220v" />
+								<span>220v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/inverter" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186781-210-210/Consul_Ar_Split_CBF18EB_Imagem_Frontal_Aberto.jpg"
+									alt="Ar-Condicionado Inverter" />
+								<span>Inverter</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/split" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187280-210-210/Consul_Ar_Split_CBP22CB_Imagem_Frontalpng.jpg"
+									alt="Ar-Condicionado Split" />
+								<span>Split</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/ar-condicionado/janela" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185029-210-210/Consul_Ar_Janela_CCN07DB_Imagem_3_4.jpg"
+									alt="Ar-Condicionado Janela" />
+								<span>De Janela</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/ar-condicionado" class="categoryLink">Veja todos os ares
+						condicionados</a>
+				</div>
+				<div class="subCategorySection" data-category="fornos">
+					<ul class="fornos">
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/eletrico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/193582-210-210/Consul_Forno_COB84AR_Imagem_Frontal_4.jpg"
+									alt="Forno Elétrico" />
+								<span>Forno Elétrico</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/forno-de-embutir" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg"
+									alt="Forno de Embutir" />
+								<span>Forno de Embutir</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/forno/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/188657-210-210/Forno_Consul_COA84BR_Imagem_Frontal.jpg"
+									alt="Forno a Gás" />
+								<span>Forno a Gás</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/forno" class="categoryLink">Veja todos os fornos</a>
+				</div>
+				<div class="subCategorySection" data-category="coifas">
+					<ul class="coifas">
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa" />
+								<span>Coifa</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/parede" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa de Parede" />
+								<span>Coifa de Parede</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa de Inox" />
+								<span>Coifa de Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/174257-210-210/Consul_Coifa_CAP60AR_Imagem_Frontal_1650x1450.jpg"
+									alt="Coifas de Vidro" />
+								<span>Coifa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/coifa/piramidal" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/163520-210-210/CA090BR-coifa-consul-piramidal-90-cm-frontal_1650x1450.jpg"
+									alt="Coifa Piramidal" />
+								<span>Coifa Piramidal</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg"
+									alt="Depurador" />
+								<span>Depurador</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166060-210-210/CAT80GR-depurador-de-ar-consul-80-cm-frontal_1650x1450.jpg"
+									alt="Depurador de Inox" />
+								<span>Depurador de Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/coifa-e-depurador/depurador-de-ar/branco"
+								class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/164250-210-210/CAT60GB-depurador-de-ar-consul-60-cm-frontal_1650x1450.jpg"
+									alt="Depurador Branco" />
+								<span>Depurador Branco</span>
+							</a>
+						</li>
+					</ul>
+					<a href="eletrodomesticos/coifa-e-depurador" class="categoryLink">Veja todas as coifas e
+						depuradores</a>
+				</div>
+				<div class="subCategorySection" data-category="cooktop">
+					<ul class="cooktop">
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/5-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop 5 Bocas" />
+								<span>Cooktop 5 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/4-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg"
+									alt="Cooktop 4 Bocas" />
+								<span>Cooktop 4 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/2-bocas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg"
+									alt="Cooktop 2 Bocas" />
+								<span>Cooktop 2 Bocas</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/eletrico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Elétrico" />
+								<span>Cooktop Elétrico</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/a-gas" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/190121-210-210/Consul_Cooktop_CDC31AE_Imagem_Frontal_1.jpg"
+									alt="Cooktop a Gás" />
+								<span>Cooktop a Gás</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/bivolt" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Bivolt" />
+								<span>Cooktop Bivolt</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/mesa-de-vidro" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/192761-210-210/Consul_Cooktop_CDD75AE_Imagem_Frontal.jpg"
+									alt="Cooktop Mesa de Vidro" />
+								<span>Mesa de Vidro</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/cooktop/acendimento-automatico" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/191680-210-210/Consul_Cooktop_CD060AE_Imagem_Frontal_Alta_11.jpg"
+									alt="Cooktop Acendimento Automático" />
+								<span>Acendimento Automático</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/cooktop" class="categoryLink">Veja todos os cooktops</a>
+				</div>
+				<div class="subCategorySection" data-category="freezers">
+					<ul class="freezers">
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/freezer-vertical" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/187610-210-210/Consul_Freezer_CVU20GB_Imagem_Frontal.jpg"
+									alt="Freezer Vertical" />
+								<span>Freezer Vertical</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/freezer-horizontal" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer Horizontal" />
+								<span>Freezer Horizontal</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer Branco" />
+								<span>Freezer Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer 110v" />
+								<span>Freezer 110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/freezer/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/185033-210-210/Consul_Freezer_CHB53EB_Imagem_3_4.jpg"
+									alt="Freezer 220v" />
+								<span>Freezer 220v</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/freezer" class="categoryLink">Veja todos os freezers</a>
+				</div>
+				<div class="subCategorySection" data-category="microondas">
+					<ul class="microondas">
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/inox" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas Inox" />
+								<span>Inox</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/branco" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg"
+									alt="Micro-Ondas Branco" />
+								<span>Branco</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/inox-espelhado" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas Espelhado" />
+								<span>Espelhado</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/110v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 110v" />
+								<span>110v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/220v" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 220v" />
+								<span>220v</span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/20-litros" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/166085-210-210/CMA20BB-micro-ondas-consul-20-litros-frontal_1650x1450.jpg"
+									alt="Micro-Ondas 20 Litros" />
+								<span>20 Litros </span>
+							</a>
+						</li>
+						<li class="list-element">
+							<a href="/eletrodomesticos/micro-ondas/32-litros" class="subcategory-link">
+								<img src="https://consul.vteximg.com.br/arquivos/ids/184027-210-210/Consul_Micro_ondas_CMS45AR_Imagem_Frontal_1600x140.jpg"
+									alt="Micro-Ondas 32 Litros" />
+								<span>32 Litros</span>
+							</a>
+						</li>
+					</ul>
+					<a href="/eletrodomesticos/micro-ondas" class="categoryLink">Veja todos os micro-ondas</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Vitrine de categorias-->
+
+	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
+	<section class="container vitrines">
+		<div class="prateleira-slider">
+			<vtex:contentPlaceHolder id="VitrineHome1" />
+		</div>
+	</section>
+	<!-- /On Page Search -->
+
+	<!-- Barra verde Black Friday -->
+	<section class="barra-black-verdade">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-4">
+					<h2>Black Friday <br class="d-none d-md-block" />
+						<span>de Verdade!</span></h2>
+				</div>
+				<div class="col-12 col-md-8">
+					<p> A Black Friday ocorre na última sexta-feira de novembro e para conferir os descontos Consul,
+						procure produtos com o selo "Black Friday" em toda nossa loja online e aproveite!</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/Barra verde Black Friday -->
+
+	<!-- Footer 2019 -->
+	<footer class="footer-2019" data-module="footer-2019">
+		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-newsletter" />
+		<vtex:template id="0-consul-footer-2019-atendimento" />
+		<vtex:template id="0-consul-footer-2019-menu" />
+		<vtex:template id="0-consul-footer-2019-bottom" />
+	</footer>
+	<vtex:template id="0-consul-footer-2019-after" />
+	<!-- /Footer 2019 -->
+
+	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
+</body>
+
+</html>

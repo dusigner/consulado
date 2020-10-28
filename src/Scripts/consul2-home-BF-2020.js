@@ -27,9 +27,6 @@ import 'modules/counter_consumer_week_2020';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
 
-//BF 2020
-require('modules/subCategoryList');
-
 Nitro.controller(
 	'home',
 	[
@@ -44,7 +41,7 @@ Nitro.controller(
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
 		/* 'static-banner' */
-		'count-bf-2020',
+		'counter',
 		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',
