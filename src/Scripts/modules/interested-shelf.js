@@ -51,7 +51,7 @@ Nitro.module('interested-shelf', function() {
 
 			shelves.eq($this.attr('data-index')).find('ul').slick({
 				arrows: true,
-				dots: false,
+				dots: true,
 				infinite: false,
 				slidesToShow: 4,
 				slidesToScroll: 3,
@@ -118,7 +118,7 @@ Nitro.module('interested-shelf', function() {
 		shelves.find('ul').slick({
 			adaptiveHeight: false,
 			arrows: true,
-			dots: false,
+			dots: true,
 			infinite: false,
 			slidesToShow: 4,
 			slidesToScroll: 3,
