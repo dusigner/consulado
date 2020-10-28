@@ -64,14 +64,13 @@ $('.launch-form').on('submit', function (e) {
                 feedback.css('display', 'none')
                 feedbackSuccess.css('display', 'block')
 
-                $('form').on('submit', function () {
-                    dataLayer.push({
-                        event: 'generic',
-                        category: 'black_friday_2020',
-                        action: 'pdp_captação_lead',
-                        label: 'click_email_cadastrado'
-                    });
+                dataLayer.push({
+                    event: 'generic',
+                    category: 'black_friday_2020',
+                    action: 'pdp_captação_lead',
+                    label: 'click_email_cadastrado'
                 });
+
             }
         });
     }
