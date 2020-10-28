@@ -27,6 +27,7 @@ import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
+import 'dataLayers/dataLayer-home-BF2020'
 
 Nitro.controller(
 	'home',
@@ -49,7 +50,8 @@ Nitro.controller(
 		'dataLayer-vitrine-categorizacao',
 		'datalayer-vitrine-filter-size-family',
 		'dataLayer-banner-home',
-		'popup-whatsapp-promoter'
+		'popup-whatsapp-promoter',
+		'dataLayer-home-bf-2020'
 	],
 
 	function (chaordic) {
