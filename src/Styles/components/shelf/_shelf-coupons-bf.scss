@@ -127,8 +127,52 @@
                         }
                     }
                 }
+
+                &.blackfriday-tag {
+                    bottom: 28px;
+                    right: 0;
+                    width: auto;
+                    height: 11%;
+                    font-size: 10px;
+                    color: #ffffff;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #424242;
+                    border-radius: 4px;
+                    position: absolute;
+                    padding: 4px 12px;
+                }
+            }
+            .off {
+                bottom: 55px;
+                right: 0;
+                width: auto;
+                height: 11%;
+                min-height: 0;
+                font-size: 10px;
+                color: #ffffff;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #EC008E;
+                border-radius: 4px;
+                position: absolute;
+                padding: 4px 12px;
             }
         }
 
+    }
+
+    .prod-info {
+        .price {
+            .por {
+                .off{
+                    display: none!important;
+                }
+            }
+        }
     }
 }

@@ -71,6 +71,7 @@ require('modules/logoffUser');
 require('dataLayers/dataLayer-new-header-menu');
 require('modules/tira-duvidas');
 require('modules/coupons-blackfriday-2020');
+require('modules/flags');
 require('dataLayers/datalayer-tira-duvidas');
 require('consentCookie');
 // require('dataLayers/dataLayer-menu-antigo');
@@ -126,6 +127,7 @@ Nitro.setup(
 		'datalayer-tira-duvidas',
 		'consentCookie',
 		'coupons-blackfriday-2020',
+		'flags',
 		// 'dataLayer-menu-antigo'
 	],
 	function () {
