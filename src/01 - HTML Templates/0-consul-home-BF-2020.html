@@ -8,91 +8,128 @@
 	<vtex:contentPlaceHolder id="Meta Tags Adicionais" />
 	<vtex:template id="0-consul-head-content" />
 
-	<link rel="stylesheet" href="<!-- @echo assetsPath -->/consul2-home.css?v=<!-- @echo package.version -->" />
-	<style>
-		@media (min-width: 768px) {
-			.hide-desk {
-				display: none!important;
-			}
-		}
-	</style>
-	<!-- Check google search console -->
-	<meta name="google-site-verification" content="vba3l6pt7pw0YMz4DZa7N6v1SyPI62359oYD7_h2Jsw" />
-	<!-- The end Check google search console -->
+	<link rel="stylesheet" href="/files/consul2-home.css?v=v1602865873233" />
+	<link rel="stylesheet" href="/files/consul2-home-bf2020.css?v=v1603932743554" />
 </head>
 
 <body data-controller="home">
-
-	<!-- dataLayer -->
-	<div style="display:none;">
-		<script>
-			window.aux_list_name = 'home';
-		</script>
-		<vtex:contentPlaceHolder id="GA Prateleira Ofertas" />
-	</div>
-	<!-- fim dataLayer -->
-
 	<!-- Top Header -->
 	<vtex:template id="0-consul-top-header" />
 	<!-- /Top Header -->
 
 	<!-- Header -->
-	<vtex:template id="0-consul-header" />
+	<vtex:template id="0-consul-header-bf" />
 	<!-- /Header -->
 
+	<!-- [ Mobile ] - Instagram Stories -->
+	<section class="stories">
+		<strong class="stories__title">Aproveite as ofertas</strong>
+
+		<div class="stories__container">
+			<ul class="stories-circle-list">
+				<li class="stories-circle-list__item" data-storie-card-title="Ofertas da #Black friday#"
+					data-storie-card-collection-id="1833" data-storie-card-collection-id-qa="205">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1833" title="Black friday">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-bf-antecipadas-2x.png" alt="Black friday" />
+						</span>
+
+						<strong class="stories-circle-list__title">Black friday</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #frete grátis!#"
+					data-storie-card-collection-id="1834" data-storie-card-collection-id-qa="166">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1834" title="Frete Grátis">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-frete-gratis-2x.png" alt="Frete Grátis" />
+						</span>
+
+						<strong class="stories-circle-list__title">Frete Grátis <span>*</span></strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #40% OFF#"
+					data-storie-card-collection-id="1835" data-storie-card-collection-id-qa="193">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1835" title="40% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-40-off-2x.png" alt="40% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">40% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com #20% OFF#"
+					data-storie-card-collection-id="1836" data-storie-card-collection-id-qa="206">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1836" title="20% OFF">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-20-off-2x.png" alt="20% OFF" />
+						</span>
+
+						<strong class="stories-circle-list__title">20% OFF</strong>
+					</a>
+				</li>
+
+				<li class="stories-circle-list__item" data-storie-card-title="Produtos com desconto #à vista!#"
+					data-storie-card-collection-id="1837" data-storie-card-collection-id-qa="193">
+					<a class="stories-circle-list__link" href="/busca/?fq%3DH%3A1837" title="À Vista">
+						<span class="stories-circle-list__image">
+							<img src="/arquivos/stories-promocao-a-vista-2x.png" alt="À Vista" />
+						</span>
+
+						<strong class="stories-circle-list__title">À Vista</strong>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="stories-card">
+			<div class="stories-card__header">
+				<strong>
+					Produtos atualizados todo dia
+				</strong>
+				<button class="stories-card__close">
+					<i class="icon icon-close-icon"></i>
+				</button>
+			</div>
+
+			<h2 class="stories-card__title"></h2>
+
+			<div class="loading-container absolute-center">
+				<i class="icon-spinner"></i>
+			</div>
+		</div>
+	</section>
+	<!-- /[ Mobile ] - Instagram Stories -->
+
 	<!-- [ Desktop ] - Slider -->
+	<div class="banners hide-extra-small">
+		<!-- Banner -->
+		<div class="banner-principal slides">
+			<vtex:contentPlaceHolder id="SliderHome" />
+		</div>
+		<!-- /Banner -->
 
-	<div class="container-banner-home">
-		<div class="banners">
-			<!-- Banner -->
-			<div class="banner-principal slides desktop">
-				<vtex:contentPlaceHolder id="SliderHome" />
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
 			</div>
-
-			<div class="banner-principal slides mobile">
-				<vtex:contentPlaceHolder id="SliderHomeMobile" />
-			</div>
-
-			<!-- /Banner -->
-
-			<a href="#" class="home-cta-mobile-banner">Conheça a linha</a>
-
-			<!-- Abrir regulamento banner -->
-    		<!-- <div class="container">
-    			<div class="row">
-    				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
-    					regulamento</a>
-
-    				<div id="modal-regulamento-banner" style="display: none;">
-    					<vtex.cmc:regulamentoBannerHomeCNS />
-    				</div>
-    			</div>
-    		</div> -->
-			<!-- Abrir regulamento banner -->
-
 		</div>
-
-		<div class="banners-static-home">
-			<vtex:contentPlaceHolder id="BannerFixoHome1" />
-			<vtex:contentPlaceHolder id="BannerFixoHome2" />
-		</div>
-
-		<div class="banners-static-home-tablet">
-			<vtex:contentPlaceHolder id="BannerFixoTabletHome1" />
-			<vtex:contentPlaceHolder id="BannerFixoTabletHome2" />
-		</div>
-
-		<div class="banners-static-home-mobile">
-			<vtex:contentPlaceHolder id="BannerFixoMobileHome1" />
-			<vtex:contentPlaceHolder id="BannerFixoMobileHome2" />
-		</div>
+		<!-- Abrir regulamento banner -->
 	</div>
-
 	<!-- /[ Desktop ] - Slider -->
 
 	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
-
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides">
 			<vtex:contentPlaceHolder id="SliderHomeMobile" />
@@ -116,63 +153,14 @@
 	</div>
 	<!-- /[ Mobile ] - Slider mobile -->
 
-	<!-- Covid Alert -->
-	<div class="covid-alert" style="display: flex;align-items: center;max-width: 1240px;margin: 15px auto;box-shadow: 2px 1px 1px 1px;cursor: pointer;padding: 0 35px;position: relative;"><svg class="hide-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.6667 0.666668H3.33341C1.86675 0.666668 0.680081 1.86667 0.680081 3.33333L0.666748 27.3333L6.00008 22H24.6667C26.1334 22 27.3334 20.8 27.3334 19.3333V3.33333C27.3334 1.86667 26.1334 0.666668 24.6667 0.666668ZM15.3334 12.6667H12.6667V4.66667H15.3334V12.6667ZM15.3334 18H12.6667V15.3333H15.3334V18Z" fill="#9aca3c"></path></svg><p class="hide-mobile" style="padding: 15px 0;margin: 0 0 0 15px;">
-		<strong style="
-		color: #9aca3c;
-		font-weight: 500;
-	">Estamos juntos com você!</strong>
-	Conheça as medidas que tomamos para sua segurança contra o Covid-19. </p>
-	<p class="hide-desk" style="padding: 15px 0;margin: 0 0 0 15px;">
-		<strong style="
-		color: #9aca3c;
-		font-weight: 500;
-	">Estamos juntos com você!</strong>
-	Conheça as medidas que tomamos para sua segurança contra o Covid-19. <strong style="
-	color: #9aca3c;
-	font-weight: 500;
-	">SAIBA MAIS</strong> </p><span class="hide-mobile" style="
-		color: #9aca3c;
-		font-weight: 500;
-		position: absolute;
-		right: 25px;
-	">SAIBA MAIS</span></div>
-
-	<div class="covid-modal hide-mobile" style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 21; display: none;"><span class="close-covid" style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a href="/atendimento" style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000" style="             transform: translate(50%);         " /></div>
-
-	<div class="covid-modal-mobile hide-desk" style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 21; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
-		<h3 style="
-		font-weight: 500;
-		color: #000000;
-	">Estamos juntos com você!</h3><strong style="
-		color: #9aca3c;
-		font-weight: 500;
-	">Devido ao cenário atual de incertezas, reforçamos o nosso compromisso com você!</strong>
-		<p>Estamos adotando as melhores medidas para garantirmos que você continue criando inúmeras possibilidades na cozinha, da forma mais segura possível até que tudo volte ao normal.
-	</p><p>- Adotamos um novo protocolo de prevenção nos depósitos, incluindo distância física mínima entre operadores.</p><p>- Orientamos frequentemente nossas transportadoras e seus colaboradores com dicas de prevenção e higienização.</p><p>- Reforçamos nosso compromisso com os prazos de entrega, de acordo com diretrizes estaduais.</p>
-
-	<a href="/atendimento" style="
-		margin-top: 40px;
-		display: block;
-		font-weight: 500;
-		color: #9aca3c;
-		text-align: center;
-	">SAIBA MAIS</a>
-	<span class="close-covid" style="position: absolute;top: 4px;right: 15px;z-index: 10;font-size: 25px;cursor: pointer;">X</span></div>
-
-	<div class="covid-overlay" style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 20; top: 0px; opacity: 0.4; cursor: pointer; display: none;"></div>
-	<!-- /Covid Alert -->
-
-	<!-- [ Tipbar ] -->
-	<article class="tipbar-novo">
+	<!-- Tipbar -->
+	<article class="tipbar-novo blackfriday">
 		<div class="container">
 			<ul class="row">
 				<li>
 					<div class="tipbar-novo__coluna">
 						<div class="col-3">
-							<div class="tipbar-novo__icone">
-								<img src="/arquivos/consul-bf-loja-oficial.png" />
-							</div>
+							<div class="tipbar-novo__icone"><i class="icon-loja-oficial"></i></div>
 						</div>
 						<div class="col-9">
 							<h2 class="tipbar-novo__title">Loja Oficial</h2>
@@ -183,7 +171,7 @@
 				<li>
 					<div class="tipbar-novo__coluna">
 						<div class="col-3">
-							<div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-pagamento.png" /></div>
+							<div class="tipbar-novo__icone"><i class="icon-pagamento-2cartoes"></i></div>
 						</div>
 						<div class="col-9">
 							<h2 class="tipbar-novo__title">Pagamento com 2 cartões</h2>
@@ -194,7 +182,7 @@
 				<li>
 					<div class="tipbar-novo__coluna">
 						<div class="col-3">
-							<div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-parcelamento.png" /></div>
+							<div class="tipbar-novo__icone"><i class="icon-parcelamento"></i></div>
 						</div>
 						<div class="col-9">
 							<h2 class="tipbar-novo__title">Parcelamento</h2>
@@ -205,7 +193,7 @@
 				<li>
 					<div class="tipbar-novo__coluna">
 						<div class="col-3">
-							<div class="tipbar-novo__icone"><img src="/arquivos/consul-bf-compra-segura.png" /></div>
+							<div class="tipbar-novo__icone"><i class="icon-compra-segura"></i></div>
 						</div>
 						<div class="col-9">
 							<h2 class="tipbar-novo__title">Compra segura</h2>
@@ -216,33 +204,279 @@
 			</ul>
 		</div>
 	</article>
-
-<!-- [Barra Newsletter - Cadastro email] -->
-<vtex:template id="0-consul-footer-2019-newsletter" />
-<!-- [/Barra Newsletter - Cadastro email] -->
-
-<!-- Vitrine de categorias -->
-
-<section class="vitrine-subcategorias">
+	<!-- /Tipbar -->
+	<!-- inicio contador -->
+<section class="counter__section">
 	<div class="container">
-		<div class="title">
-			<h4>Busque por modelos</h4>
-			<span>Selecione uma categoria e veja abaixo nossos modelos</span>
-		</div>
+		<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
 
-		<div class="categories-list">
-			<ul>
-				<li><a href="javascript:void(0)" class="active" data-category="geladeiras">Geladeiras</a></li>
-				<li><a href="javascript:void(0)" data-category="fogoes">Fogões</a></li>
-				<li><a href="javascript:void(0)" data-category="lavadoras">Lavadoras</a></li>
-				<li><a href="javascript:void(0)" data-category="ar-condicionado">Ar-condicionado</a></li>
-				<li><a href="javascript:void(0)" data-category="fornos">Fornos</a></li>
-				<li><a href="javascript:void(0)" data-category="coifas">Coifas e Depuradores</a></li>
-				<li><a href="javascript:void(0)" data-category="cooktop">Cooktops</a></li>
-				<li><a href="javascript:void(0)" data-category="freezers">Freezers</a></li>
-				<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
-			</ul>
+		<div class="counter__offer">
+			<div class="counter__offer-prod">
+				<vtex:contentPlaceHolder id="contadorOferta" />
+			</div>
+
+			<div class="counter__offer-cta">
+				<vtex:contentPlaceHolder id="CounterBtnCta" />
+			</div>
 		</div>
+	</div>
+</section>
+<!-- Fim contador -->
+
+	<!-- Tabs Interesses -->
+	<section class="prateleira-tabs vitrine-ofertas-interesses">
+		<div class="interesses-title">
+			<h4>Compra parcelada</h4>
+			<span>Aproveite a Black Friday e compre produtos com parcelas que se encaixam no seu bolso</span>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<div class="interesses-obs"></div>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras" />
+			</div>
+		</div>
+	</section>
+    <!-- /Tabs Interesses -->
+
+    <!-- Inicio Módulo Top 10 -->
+<section class="container-module-top10">
+	<div class="container-fluid p-0">
+		<h1 class="title-top10">TOP 10 Consul</h1>
+		<span class="msg-top10">Confira os nossos produtos mais desejados na Black Friday 2020</span>
+		<div id="content-vitrine" class="container prateleira-slider">
+			<div class="moduleTop10"><vtex:contentPlaceHolder id="moduleTop10" /></div>
+		</div>
+	</div>
+</section>
+<!-- /Fim Módulo Top 10 -->
+
+	<!-- shelf category home -->
+	<div class="shelf-category-home-container">
+		<div class="container">
+			<h2 class="page-title"> Talvez se interesse por: </h2>
+			<span>Veja nossas melhores ofertas por categorias</span>
+
+			<div class="shelf-category-home">
+
+				<!-- Geladeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/geladeira---refrigerador"
+						title="Geladeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__geladeiras.png" alt="Geladeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/geladeira---refrigerador"
+						title="Geladeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Geladeiras</h2>
+					</a>
+				</div>
+
+				<!-- Fogões -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/fogao" title="Fogões">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fogao.png" alt="Fogões" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/fogao" title="Fogões">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fogões</h2>
+					</a>
+				</div>
+
+				<!-- Lavadoras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/lavadora-de-roupas"
+						title="Lavadoras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__lavadoras.png" alt="Lavadoras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/lavadora-de-roupas"
+						title="Lavadoras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Lavadoras</h2>
+					</a>
+				</div>
+
+				<!-- Ar Condicionado -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/ar-condicionado"
+						title="Ar Condicionado">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__ac.png" alt="Ar Condicionado" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/ar-condicionado"
+						title="Ar Condicionado">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Ares-Condicionados</h2>
+					</a>
+				</div>
+
+				<!-- Freezers -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/freezer" title="Freezer">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__freezer.png" alt="Freezer" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/freezer" title="Freezer">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Freezers</h2>
+					</a>
+				</div>
+
+				<!-- Cervejeiras -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cervejeiras.png" alt="Cervejeiras" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cervejeira" title="Cervejeiras">
+						Nossas
+						<h2 class="shelf-category-home-card__title">Cervejeiras</h2>
+					</a>
+				</div>
+
+				<!-- Fornos -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/forno" title="Fornos">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__fornos.png" alt="Fornos" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/forno" title="Fornos">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Fornos</h2>
+					</a>
+				</div>
+
+				<!-- Cooktops -->
+				<div class="shelf-category-home-card">
+					<a class="shelf-category-home-card__image" href="/eletrodomesticos/cooktop" title="Cooktops">
+						<span class="shelf-category-home-card__image-container">
+							<img src="/arquivos/shelf-category-home__cooktops.png" alt="Cooktops" />
+						</span>
+					</a>
+
+					<a class="shelf-category-home-card__text" href="/eletrodomesticos/cooktop" title="Cooktops">
+						Nossos
+						<h2 class="shelf-category-home-card__title">Cooktops</h2>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /shelf category home -->
+
+	<!-- BANNER COMBO OU ALAVANCA -->
+	<section class="banner-combos">
+		<div class="banner-combos d-none d-md-block">
+			<vtex:contentPlaceHolder id="BannerComboDesktop" />
+		</div>
+		<div class="banner-combos d-block d-md-none">
+			<vtex:contentPlaceHolder id="BannerComboMobile" />
+		</div>
+	</section>
+	<!-- /BANNER COMBO OU ALAVANCA -->
+
+	<!-- Tabs Alavancas -->
+	<section class="prateleira-tabs vitrine-ofertas-alavancas">
+		<div class="interesses-title">
+			<h4>Ofertas especiais para você!</h4>
+			<span>Aproveite os produtos com as melhores ofertas</span>
+		</div>
+		<div class="slider container vitrines">
+			<div class="prateleira-slider">
+				<ul class="prateleira-tabs__tabs"></ul>
+				<div class="interesses-obs"></div>
+				<vtex:contentPlaceHolder id="TAB - Prateleiras2" />
+			</div>
+		</div>
+	</section>
+	<!-- /Tabs Alavancas -->
+
+	<!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
+	<section class="area-banners">
+		<div class="container">
+			<div class="row">
+				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
+				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
+			</div>
+			<div class="banner-areas">
+				<vtex:contentPlaceHolder id="banner-ecohouse" />
+				<vtex:contentPlaceHolder id="banner-pecas" />
+				<vtex:contentPlaceHolder id="banner-gae" />
+			</div>
+		</div>
+	</section>
+	<!-- /Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
+
+	<!-- Chaordic shelf -->
+	<div class="shelf-bf">
+		<!-- [ CHAORDIC ] BOTTOM -->
+		<div data-chaordic="bottom"></div>
+		<!-- /[ CHAORDIC ] BOTTOM -->
+	</div>
+	<!-- /Chaordic shelf -->
+
+	<!-- On Page Search -->
+	<section class="onpage-search">
+		<div class="container">
+			<div class="onpage-search__header">
+				<strong class="onpage-search__title">Está procurando algo especial?</strong>
+				<span class="onpage-search__description">Digite o que procura e encontramos para você!</span>
+			</div>
+			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
+				<i class="icon icon-consul-loupe"></i>
+				<input type="text" class="text-search" name="q" required="required" pattern=".{3,}"
+					title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off"
+					maxlength="100" />
+				<button type="submit">
+					Buscar
+				</button>
+			</form>
+			<div class="onpage-search__footer">
+				<a href="/eletrodomesticos" class="onpage-search__link" title="Ver todos os produtos da loja">
+					Ver todos os produtos da loja
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- Vitrine de categorias -->
+	<section class="vitrine-subcategorias">
+		<div class="container">
+			<div class="title">
+				<h4>Busque por modelos</h4>
+				<span>Selecione uma categoria e veja abaixo nossos modelos</span>
+			</div>
+
+			<div class="categories-list">
+				<ul>
+					<li><a href="javascript:void(0)" class="active" data-category="geladeiras">Geladeiras</a></li>
+					<li><a href="javascript:void(0)" data-category="fogoes">Fogões</a></li>
+					<li><a href="javascript:void(0)" data-category="lavadoras">Lavadoras</a></li>
+					<li><a href="javascript:void(0)" data-category="ar-condicionado">Ar-condicionado</a></li>
+					<li><a href="javascript:void(0)" data-category="fornos">Fornos</a></li>
+					<li><a href="javascript:void(0)" data-category="coifas">Coifas e Depuradores</a></li>
+					<li><a href="javascript:void(0)" data-category="cooktop">Cooktops</a></li>
+					<li><a href="javascript:void(0)" data-category="freezers">Freezers</a></li>
+					<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
+				</ul>
+			</div>
+
 			<div class="subcategories-list">
 				<div class="subCategorySection showSubCategory" data-category="geladeiras">
 					<ul class="geladeiras">
@@ -469,7 +703,7 @@
 						</li>
 						<li class="list-element">
 							<a href="/eletrodomesticos/ar-condicionado/inverter" class="subcategory-link">
-								<img src="https://consul.vteximg.com.br/arquivos/ids/204942-210-210/Consul_Ar_Split_CBJ09EB_Imagem_Frontal_Fechado.jpg"
+								<img src="https://consul.vteximg.com.br/arquivos/ids/186781-210-210/Consul_Ar_Split_CBF18EB_Imagem_Frontal_Aberto.jpg"
 									alt="Ar-Condicionado Inverter" />
 								<span>Inverter</span>
 							</a>
@@ -737,217 +971,39 @@
 					<a href="/eletrodomesticos/micro-ondas" class="categoryLink">Veja todos os micro-ondas</a>
 				</div>
 			</div>
-	</div>
-</section>
-<!-- /Vitrine de categorias-->
-
-<!-- Inicio Filter tamanho família -->
-<section class="filter-family-size">
-	<div class="container-fluid p-0">
-		<h2>Ofertas especiais para <span>cada tamanho de família</span></h2>
-		<div class="cont-linha">
-			<div class="row">
-				<button class="btn active" id="pequena"><vtex:contentPlaceHolder id="familiasPequenas" /></button>
-				<button class="btn" id="media"><vtex:contentPlaceHolder id="familiasMedias" /></button>
-				<button class="btn" id="grande"><vtex:contentPlaceHolder id="familiasGrandes" /></button>
-			</div>
 		</div>
-		<div id="vitrines-family" class="container prateleira-slider">
-			<div class="box pequena"><vtex:contentPlaceHolder id="vitrineFamiliasPequenas" /></div>
-			<div class="box media"><vtex:contentPlaceHolder id="vitrineFamiliasMedias" /></div>
-			<div class="box grande"><vtex:contentPlaceHolder id="vitrineFamiliasGrandes" /></div>
-		</div>
-	</div>
-</section>
-<!-- Inicio Filter tamanho família -->
-
-<!-- Banner E-Promotor -->
-	<section class="container-epromotor">
-		<a href="https://api.whatsapp.com/send?phone=5547988292017" target="_blank">
-			<img src="/arquivos/epromotor-banner-home.png" alt="E-Promotor" />
-			<img src="/arquivos/epromotor-banner-home-mobile.png" alt="E-Promotor" class="mobile"/>
-		</a>
 	</section>
-<!-- /Banner E-Promotor -->
-
-<!-- inicio contador -->
-<section class="counter__section hide">
-	<div class="container">
-		<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
-
-		<div class="counter__offer">
-			<div class="counter__offer-prod">
-				<vtex:contentPlaceHolder id="contadorOferta" />
-			</div>
-			<div class="counter__offer-count">
-
-			<div class="counter">
-				<div class="counter__title"> <span>Corre!</span> Essa oferta encerra em </div>
-					<div class="counter__clock">
-							<div class="counter__item">
-								<span class="counter__time hours"></span>
-								<span class="counter__timetext">Horas</span>
-							</div>
-							<div class="counter__item">
-								<span class="counter__time minutes"></span>
-								<span class="counter__timetext">Minutos</span>
-							</div>
-							<div class="counter__item">
-								<span class="counter__time seconds"></span>
-								<span class="counter__timetext">Segundos</span>
-							</div>
-					</div>
-					<div class="counter__title"> Ou enquanto durar o estoque! </div>
-			</div>
-			<div class="counter__end-promotion hide">
-				<span class="counter__end-message">Essa oferta acabou :(</span>
-			</div>
-			</div>
-			<div class="counter__offer-cta">
-				<vtex:contentPlaceHolder id="CounterBtnCta" />
-			</div>
-		</div>
-	</div>
-</section>
-<!-- Fim contador -->
+	<!-- /Vitrine de categorias-->
 
 	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
 	<section class="container vitrines">
 		<div class="prateleira-slider">
 			<vtex:contentPlaceHolder id="VitrineHome1" />
 		</div>
-		<div class="prateleira-slider">
-			<vtex:contentPlaceHolder id="VitrineHome2" />
-		</div>
-	</section>
-	<!-- /VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
-
-	<!-- Banner de alavanca home -->
-	<div class="banner-alavancas">
-		<div class="d-md-block d-none">
-			<vtex:contentPlaceHolder id="BannerAlavancaDesk" />
-		</div>
-		<div class="d-md-none d-block">
-			<vtex:contentPlaceHolder id="BannerAlavancaMobile" />
-		</div>
-	</div>
-	<!-- /Banner de alavanca home -->
-
-	<!-- [ CHAORDIC ] TOP -->
-	<div chaordic="top"></div>
-	<!-- /[ CHAORDIC ] TOP -->
-
-	<!-- [ Desktop ] - Home Banners Secundários -->
-	<section class="banners-secundarios clearfix hide-mobile">
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-banners-secundarios">
-					<div class="banner-secundario banner-secundario1">
-						<vtex:contentPlaceHolder id="BannerSecundario1" />
-					</div>
-					<div class="banner-secundario banner-secundario2">
-						<vtex:contentPlaceHolder id="BannerSecundario2" />
-					</div>
-					<div class="banner-secundario banner-secundario3">
-						<vtex:contentPlaceHolder id="BannerSecundario3" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /[ Desktop ] - Home Banners Secundários -->
-
-	<!-- [ CHAORDIC ] MIDDLE -->
-	<div chaordic="middle"></div>
-	<!-- /[ CHAORDIC ] MIDDLE -->
-
-	<!-- [ Desktop ] - Home Banners Secundários Três -->
-	<section class="banners-secundarios-mosaico clearfix hide-mobile">
-		<div class="container">
-			<div class="row">
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-left">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico4">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario1" />
-					</div>
-				</div>
-				<div class="prateleira-banners-secundarios-mosaico mosaico-secundarios-right">
-					<div class="banner-secundario-mosaico banner-secundario-mosaico5">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario2" />
-					</div>
-					<div class="banner-secundario-mosaico banner-secundario-mosaico6">
-						<vtex:contentPlaceHolder id="BannerMosaicoSecundario3" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /[ Desktop ] - Home Banners Secundários Três -->
-
-	<!-- [ CHAORDIC ] BOTTOM -->
-	<div chaordic="bottom"></div>
-	<!-- /[ CHAORDIC ] BOTTOM -->
-
-	<!-- Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
-	<section class="area-banners">
-		<div class="container">
-			<div class="row">
-				<h2 class="area-banners__title">Bem pensado é garantir serviços de qualidade</h2>
-				<p>Aproveite nossos serviços e tenha mais tranquilidade e segurança</p>
-			</div>
-			<div class="banner-areas">
-				<vtex:contentPlaceHolder id="banner-ecohouse" />
-				<vtex:contentPlaceHolder id="banner-pecas" />
-				<vtex:contentPlaceHolder id="banner-gae" />
-			</div>
-		</div>
-	</section>
-	<!-- /Placeholder para banners de GAE, Peças, Acessórios e Ecohouse -->
-
-	<!-- On Page Search -->
-	<section class="onpage-search">
-		<div class="container">
-			<div class="onpage-search__header">
-				<strong class="onpage-search__title">Está procurando algo especial?</strong>
-				<span class="onpage-search__description">Digite o que procura e encontramos para você!</span>
-			</div>
-			<form method="GET" action="https://busca.consul.com.br/busca" class="onpage-search__form form-search">
-				<i class="icon icon-consul-loupe"></i>
-				<input type="text" class="text-search" name="q" required="required" pattern=".{3,}"
-					title="Mínimo de 3 caracteres " placeholder="O que você está procurando hoje?" autocomplete="off"
-					maxlength="100" />
-				<button type="submit">
-					Buscar
-				</button>
-			</form>
-			<div class="onpage-search__footer">
-				<a href="/eletrodomesticos" class="onpage-search__link" title="Ver todos os produtos da loja">
-					Ver todos os produtos da loja
-				</a>
-			</div>
-		</div>
 	</section>
 	<!-- /On Page Search -->
 
-	<!-- [ Mobile ] - Home Banners Secundários Slick Três -->
-	<section class="banners-secundarios-mobile clearfix show-mobile">
+	<!-- Barra verde Black Friday -->
+	<section class="barra-black-verdade">
 		<div class="container">
 			<div class="row">
-				<div class="prateleira-banners-secundarios-mobile">
-					<div class="banner-secundario-mobile banner-mobile1">
-						<vtex:contentPlaceHolder id="BannerMobileSecundario1" />
-					</div>
-					<div class="banner-secundario-mobile banner-mobile2">
-						<vtex:contentPlaceHolder id="BannerMobileSecundario2" />
-					</div>
+				<div class="col-12 col-md-4">
+					<h2>Black Friday <br class="d-none d-md-block" />
+						<span>de Verdade!</span></h2>
+				</div>
+				<div class="col-12 col-md-8">
+					<p> A Black Friday ocorre na última sexta-feira de novembro e para conferir os descontos Consul,
+						procure produtos com o selo "Black Friday" em toda nossa loja online e aproveite!</p>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- /[ Mobile ] - Home Banners Secundários Slick Três -->
+	<!--/Barra verde Black Friday -->
 
 	<!-- Footer 2019 -->
 	<footer class="footer-2019" data-module="footer-2019">
 		<vtex:template id="0-consul-footer-2019-servicos" />
+		<vtex:template id="0-consul-footer-2019-newsletter" />
 		<vtex:template id="0-consul-footer-2019-atendimento" />
 		<vtex:template id="0-consul-footer-2019-menu" />
 		<vtex:template id="0-consul-footer-2019-bottom" />
@@ -955,26 +1011,33 @@
 	<vtex:template id="0-consul-footer-2019-after" />
 	<!-- /Footer 2019 -->
 
-	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
-	<script>
-        $('.covid-alert').on('click', function() {
-			$('.covid-modal').show();
-			$('.covid-modal-mobile').show();
-            $('.covid-overlay').show();
-        });
+	<script src="/files/consul2-home.min.js?v=v1603918868515"></script>
 
-        $(document).on('click', '.close-covid', function() {
-			$('.covid-modal').hide();
-			$('.covid-modal-mobile').hide();
-            $('.covid-overlay').hide();
-        });
-
-        $('.covid-overlay').on('click', function() {
-			$('.covid-modal').hide();
-			$('.covid-modal-mobile').hide();
-            $(this).hide();
-        });
+		<script type="text/javascript">
+		var _trustvox_shelf_rate = _trustvox_shelf_rate || [];
+		_trustvox_shelf_rate.push(['_storeId', 3531 ]);
+		_trustvox_shelf_rate.push(['_productContainer', 'body']);
+		_trustvox_shelf_rate.push(['_watchSubtree', true]);
 	</script>
+	<script type="text/javascript" async="true" src="//rate.trustvox.com.br/widget.js"></script>
+
+	<script type="text/javascript">
+		window._trustvox =  [];
+		_trustvox.push(['_storeId', 3531 ]);
+
+		_trustvox.push(['_productId',  skuJson.productId]);
+		_trustvox.push(['_productName', skuJson.name]);
+		_trustvox.push(['_productPhotos', [skuJson.skus[0].image]]);
+
+		$(document).ready(function() {
+			$('.trustvox-fluid-jump').on('click', function(event) {
+				event.preventDefault();
+				var offset = $($(this).attr('href')).offset().top;
+				$('html, body').animate({scrollTop:offset}, 500);
+			});
+		});
+	</script>
+	<script async="true" type="text/javascript" src="//static.trustvox.com.br/sincero/sincero.js"></script>
 </body>
 
 </html>
