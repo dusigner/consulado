@@ -22,13 +22,13 @@ require('modules/interested-shelf');
 
 require('modules/subCategoryList');
 
-import 'modules/counter_consumer_week_2020';
+// import 'modules/counter_consumer_week_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
 
 //BF 2020
-require('modules/subCategoryList');
+require('modules/counter_blackfriday_2020');
 
 Nitro.controller(
 	'home',
@@ -44,7 +44,7 @@ Nitro.controller(
 		'dataLayer-home-bf',
 		'shelfCategoryHome',
 		/* 'static-banner' */
-		'count-bf-2020',
+		'counter-bf-2020',
 		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',

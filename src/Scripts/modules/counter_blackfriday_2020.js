@@ -5,13 +5,15 @@
  */
 'use strict';
 
-Nitro.module('count-bf-2020', function() {
-	const endDate = $('.counter__offer-prod .prateleira.default h2').text();
+Nitro.module('counter-bf-2020', function() {
+
 	this.init = () => {
 		this.initCounter();
 	};
 
 	this.initCounter = () => {
+
+
 		let $counter = $('.counter'),
 			$endMessage = $('.counter__end-promotion'),
 			$buyButton = $('.counter__offer-cta'),
@@ -25,6 +27,8 @@ Nitro.module('count-bf-2020', function() {
 			timeRemaining;
 
 		$('.counter__offer-btn').attr('href', $('.counter__offer .shelf__buy-button').attr('href'));
+
+		const endDate = $('.counter__offer-prod .prateleira.default h2').text();
 
 		function getTimeRemaining(endDate) {
 			var today = Date.parse(new Date()),
@@ -46,17 +50,24 @@ Nitro.module('count-bf-2020', function() {
 			}
 
 			return timeRemaining;
-		}
+	};
+		// const lista = $counterProd.find('.prateleira.default');
+		// 	lista.map(function (element, i) {
+		// 	console.log(element, i);
+		// 	const endDate = $(i).find('h2').text();
+		// 	console.log(endDate);
+
+		// });
 
 		setInterval(function() {
 			timeRemaining = getTimeRemaining(endDate);
 
-			// if (timeRemaining === null) {
-			// 	$counterSection.addClass('hide');
-			// 	return;
-			// } else {
-			// 	$counterSection.removeClass('hide');
-			// }
+			if (timeRemaining === null) {
+				$counterSection.addClass('hide');
+				return;
+			} else {
+				$counterSection.removeClass('hide');
+			}
 
 			if (
 				timeRemaining.days === 0 &&
@@ -68,7 +79,6 @@ Nitro.module('count-bf-2020', function() {
 				$counterSubSection.addClass('button-hidden');
 				$counter.addClass('hide');
 				$counterProd.addClass('hide');
-				$counterSection.addClass('hide');
 				$endMessage.removeClass('hide');
 			}
 
