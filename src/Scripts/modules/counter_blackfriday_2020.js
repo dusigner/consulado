@@ -3,90 +3,86 @@
  * @fileOverview counter
  *
  */
-'use strict';
+"use strict";
 
-Nitro.module('counter-bf-2020', function() {
-
+Nitro.module("counter-bf-2020", function() {
 	this.init = () => {
 		this.initCounter();
 	};
 
 	this.initCounter = () => {
-
-
-		let $counter = $('.counter'),
-			$endMessage = $('.counter__end-promotion'),
-			$buyButton = $('.counter__offer-cta'),
-			$counterSubSection = $('.counter__offer-count'),
-			$counterSection = $('.counter__section'),
-			$counterProd = $('.counter__offer-prod'),
-			$days = $counter.find('.days'),
-			$hours = $counter.find('.hours'),
-			$minutes = $counter.find('.minutes'),
-			$seconds = $counter.find('.seconds'),
+		let $counter = $(".counter"),
+			$endMessage = $(".counter__end-promotion"),
+			$buyButton = $(".counter__offer-cta"),
+			$counterSubSection = $(".counter__offer-count"),
+			$counterSection = $(".counter__section"),
+			$counterProd = $(".counter__offer-prod"),
 			timeRemaining;
 
-		$('.counter__offer-btn').attr('href', $('.counter__offer .shelf__buy-button').attr('href'));
+		// $(".counter__offer-btn").attr(
+		// 	"href",
+		// 	$(".counter__offer .shelf__buy-button").attr("href")
+		// );
 
-		const endDate = $('.counter__offer-prod .prateleira.default h2').text();
+		const lista = $counterProd.find(".prateleira.default");
+		lista.map(function(i, element) {
+			const endDate = $(element)
+				.find("h2")
+				.text();
+			// console.log(endDate);
+			// console.log(element);
+			// endDate.split(', ');
 
-		function getTimeRemaining(endDate) {
-			var today = Date.parse(new Date()),
-				finalDate = Date.parse(endDate),
-				total = finalDate - today,
-				seconds = Math.floor((total / 1000) % 60),
-				minutes = Math.floor((total / (1000 * 60)) % 60),
-				hours = Math.floor((total / (1000 * 60 * 60)) % 24),
-				days = Math.floor(total / (1000 * 60 * 60 * 24)),
-				timeRemaining = {
-					days: days >= 0 ? days : 0,
-					hours: hours >= 0 ? hours : 0,
-					minutes: minutes >= 0 ? minutes : 0,
-					seconds: seconds >= 0 ? seconds : 0
-				};
+		$(element).append(`<div id="countdown_dashboard">
+			<div class="dashp">
+			<span class="dashtitle">Dias</span>
+			<p id="days_${i}"></p>
+			</div>
+			<div class="dashp">
+			<span class="dashtitle">Horas</span>
+			<p id="hours_${i}"></p>
+			</div>
+			<div class="dashp">
+			<span class="dashtitle">Minutos</span>
+			<p id="minutes_${i}"></p>
+			</div>
+			<div class="dashp">
+			<span class="dashtitle">Segundos</span>
+			<p id="seconds_${i}"></p>
+			</div>
+		</div>`);
+			function countdown(){
 
-			if (isNaN(finalDate)) {
-				return null;
+				var now = new Date();
+							// Altere a data do seu evento aqui
+				var eventDate = new Date(endDate);
+				var currentTiime = now.getTime();
+				var eventTime = eventDate.getTime();
+				var remTime = eventTime - currentTiime;
+				// calculando o dia, hora, minuto e segundo
+				  var d = Math.floor(remTime / (1000 * 60 * 60 * 24));
+				  var h = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				  var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
+				  var s = Math.floor((remTime % (1000 * 60)) / 1000);
+				document.getElementById("days_" + i).textContent = d;
+				// document.getElementById("days").innerText = d;
+				document.getElementById("hours_" + i).textContent = h;
+				document.getElementById("minutes_" + i).textContent = m;
+				document.getElementById("seconds_" + i).textContent = s;
+				setTimeout(countdown, 1000);
+				// Verifica se acabou o período do evento
+				if (remTime < 0) {
+				clearInterval(countdown);
+				  //document.getElementById("demogrande").innerHTML = "FIM";
+				document.getElementById("days_" + i).innerHTML = " ";
+				document.getElementById("hours_" + i).innerHTML = " ";
+				document.getElementById("minutes_" + i).innerHTML = " ";
+				document.getElementById("seconds_" + i).innerHTML = "<small>FIM</small>";
+				}
 			}
-
-			return timeRemaining;
-	};
-		// const lista = $counterProd.find('.prateleira.default');
-		// 	lista.map(function (element, i) {
-		// 	console.log(element, i);
-		// 	const endDate = $(i).find('h2').text();
-		// 	console.log(endDate);
-
-		// });
-
-		setInterval(function() {
-			timeRemaining = getTimeRemaining(endDate);
-
-			if (timeRemaining === null) {
-				$counterSection.addClass('hide');
-				return;
-			} else {
-				$counterSection.removeClass('hide');
-			}
-
-			if (
-				timeRemaining.days === 0 &&
-				timeRemaining.hours === 0 &&
-				timeRemaining.minutes === 0 &&
-				timeRemaining.seconds === 0
-			) {
-				$buyButton.addClass('hide');
-				$counterSubSection.addClass('button-hidden');
-				$counter.addClass('hide');
-				$counterProd.addClass('hide');
-				$endMessage.removeClass('hide');
-			}
-
-			$days.text(timeRemaining.days > 9 ? timeRemaining.days : '0' + timeRemaining.days);
-			$hours.text(timeRemaining.hours > 9 ? timeRemaining.hours : '0' + timeRemaining.hours);
-			$minutes.text(timeRemaining.minutes > 9 ? timeRemaining.minutes : '0' + timeRemaining.minutes);
-			$seconds.text(timeRemaining.seconds > 9 ? timeRemaining.seconds : '0' + timeRemaining.seconds);
-		}, 1000);
+			countdown();
+		});
+		// const endDate = $('.counter__offer-prod .prateleira.default h2').text();
 	};
 	// Start it
 	this.init();
