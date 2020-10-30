@@ -302,6 +302,106 @@
 			z-index: 1;
 		}
 	}
+
+	&-gbp {
+		// @include breakpoint('small', 'max') {
+		// 	flex-direction: column;
+		// }
+
+		display: flex;
+
+		.banner-slides {
+			flex: 1;
+			overflow: hidden;
+			padding: 0 !important;
+			position: relative;
+
+			.slick-arrow {
+				margin: 0 10px;
+				opacity: .5;
+				width: 35px;
+				height: 35px;
+				top: 50%;
+				z-index: 50;
+				border: 1px solid #E3E1E1;
+				box-sizing: border-box;
+				border-radius: 2px;
+
+
+				&:before {
+					color: #9ACA3C;
+					width: 16px;
+					height: 16px;
+					opacity: 10;
+
+				}
+			}
+
+			// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
+			@include breakpoint(extra-large, 'min') {
+				min-height: 400px;
+				max-height: 400px;
+			}
+
+			.box-banner {
+				position: absolute;
+				top: 0;
+				width: 100% !important;
+
+				a {
+					display: block;
+					height: auto;
+					margin: 0 auto;
+					overflow: hidden;
+					text-align: center;
+				}
+
+				img {
+					@include breakpoint(1900px, 'min') {
+						width: 100%;
+					}
+
+					// Não me orgulho do que foi feito nesta linha
+					@include breakpoint(small, 'max') {
+						max-width: 100%;
+					}
+
+					display: block;
+					height: auto;
+					left: 50%;
+					position: relative;
+					transform: translateX(-50%);
+					width: 1900px;
+				}
+
+				&.slick-slide {
+					margin: 0;
+					overflow: hidden;
+					position: relative;
+				}
+
+				&:first-child {
+					z-index: 1;
+				}
+			}
+		}
+
+		.banner-static {
+			flex: 1;
+
+			.banners-static-home-desktop {
+				display: flex;
+
+				.box-banner {
+					flex: 1;
+
+					a {
+						display: block;
+					}
+				}
+			}
+		}
+	}
 }
 
 #vtex-modal-regulamento-banner {
