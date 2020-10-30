@@ -5,20 +5,31 @@
                 display: none;
             }
             .flag {
-                &.black-friday-coupons {
+                &.black-friday-coupons,
+                &.blackfriday-tag,
+                &.frete-gratis{
                     opacity: 1;
                 }
             }
 
         }
         .FlagsHightLight {
-
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            flex-direction: column-reverse;
+            bottom: 0;
             .flag {
                 display: none;
+                bottom: 0;
                 &.black-friday-coupons {
-                    bottom: 0;
+                    // bottom: 0;
                     width: auto;
                     height: 11%;
+                    margin-top: 2px;
 
                     font-size: 10px;
                     color: #712F8F;
@@ -27,6 +38,7 @@
                     display: none;
                     align-items: center;
                     justify-content: space-between;
+                    position: relative;
 
                     border: 1px solid #712F8F;
                     border-radius: 4px;
@@ -129,37 +141,75 @@
                 }
 
                 &.blackfriday-tag {
-                    bottom: 28px;
+                    // bottom: 28px;
                     right: 0;
+                    position: relative;
+                    margin: 2px 0;
+
                     width: auto;
+                    max-width: 83px;
                     height: 11%;
+
                     font-size: 10px;
                     color: #ffffff;
                     font-weight: bold;
+
                     display: flex;
                     align-items: center;
                     justify-content: center;
+
                     background-color: #424242;
                     border-radius: 4px;
-                    position: absolute;
+                    padding: 4px 12px;
+
+                }
+
+                &.frete-gratis {
+                    // bottom: 85px;
+                    right: 0;
+                    margin: 2px 0;
+
+                    width: auto;
+                    max-width: 83px;
+                    height: 11%;
+                    min-height: 0;
+
+                    font-size: 10px;
+                    color: #ffffff;
+                    font-weight: bold;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    background-color: #0FB6DE;
+                    border-radius: 4px;
+                    position: relative;
                     padding: 4px 12px;
                 }
             }
             .off {
-                bottom: 55px;
+                // bottom: 55px;
                 right: 0;
+                bottom: 0;
+                margin: 2px 0;
+
                 width: auto;
+                max-width: 83px;
                 height: 11%;
                 min-height: 0;
+
                 font-size: 10px;
                 color: #ffffff;
                 font-weight: bold;
+
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
                 background-color: #EC008E;
                 border-radius: 4px;
-                position: absolute;
+                position: relative;
                 padding: 4px 12px;
             }
         }

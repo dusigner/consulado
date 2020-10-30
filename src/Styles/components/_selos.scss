@@ -13,7 +13,6 @@
 			margin-right: 60px;
 			top: 0;
 
-			@include breakpoint(extra-small, 'max') { margin-right: 0; }
 		}
 	}
 }

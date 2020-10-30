@@ -5,7 +5,8 @@ Nitro.module('flags', function() {
 	let self = this;
 
 	self.init = () => {
-        self.formatFlagBFPDP();
+		self.formatFlagBFPDP();
+		self.formatShelfFlagBF();
 		self.formatFlagPercentOff();
 	}
 
@@ -13,9 +14,12 @@ Nitro.module('flags', function() {
 
 		$('.box-produto').map(function(index, item){
 			let flagPercentOff = $(item).find('.prod-info .price .por .off').clone();
-			if($(flagPercentOff[0]).text() !== ''){
-				$(flagPercentOff).removeAttr('style');
-				$(this).find('.FlagsHightLight').append(flagPercentOff[0]);
+
+			if(!$(this).find('.FlagsHightLight .off').length){
+				if($(flagPercentOff[0]).text() !== ''){
+					$(flagPercentOff).removeAttr('style');
+					$(this).find('.FlagsHightLight').append(flagPercentOff[0]);
+				}
 			}
 		})
 		// const flagPercentOff = $('.prod-info .price .por .off').clone();
@@ -30,21 +34,34 @@ Nitro.module('flags', function() {
                 <p class="flag blackfriday-tag">Black Friday</p>
             `);
         }
-
     }
 
-    self.formatFlagBFPDP = () => {
+    self.formatShelfFlagBF = () => {
 
         $('.box-produto').map(function(index, item){
             const blackFridayCoupon = $(item).find('.FlagsHightLight .flag[class*="blackfriday-2020"]')
 			if($(blackFridayCoupon)[0]){
-                console.info('tem')
-				$(this).find('.FlagsHightLight').append((`
-                    <p class="flag blackfriday-tag">Black Friday</p>
-                `));
+				if(!$(this).find('.FlagsHightLight .flag.blackfriday-tag').length){
+					$(this).find('.FlagsHightLight').append((`
+                    	<p class="flag blackfriday-tag">Black Friday</p>
+                	`));
+				}
+
 			}
 		})
     }
 
-    self.init();
+	if($('body').hasClass('categoria') || $('body').hasClass('listagem')) {
+		$(document).ajaxStop(function () {
+
+			self.init();
+
+			if ($('.see-more').length && $('.see-more button').hasClass('hide')) {
+				$(this).unbind("ajaxStop");
+			}
+
+		});
+	} else {
+		self.init();
+	}
 });
