@@ -10,6 +10,11 @@ Nitro.module("counter-bf-2020", function() {
 		this.initCounter();
 	};
 
+	// $(".counter__offer-btn").attr(
+	// 	"href",
+	// 	$(".counter__offer .shelf__buy-button").attr("href")
+	// );
+
 	this.initCounter = () => {
 		let $counter = $(".counter"),
 			$endMessage = $(".counter__end-promotion"),
@@ -19,18 +24,17 @@ Nitro.module("counter-bf-2020", function() {
 			$counterProd = $(".counter__offer-prod"),
 			timeRemaining;
 
-		// $(".counter__offer-btn").attr(
-		// 	"href",
-		// 	$(".counter__offer .shelf__buy-button").attr("href")
-		// );
-
 		const lista = $counterProd.find(".prateleira.default");
 		let itensProd = $(lista).length;
-		console.log(itensProd);
 
-		if($(lista).length == 0) {
+
+		if($(itensProd) === 0) {
 			$counterSection.hide();
+		} else {
+			$counterSection.show();
 		}
+
+
 		lista.map(function(i, element) {
 
 			const endDate = $(element).find("h2").text();
@@ -53,47 +57,59 @@ Nitro.module("counter-bf-2020", function() {
 					<p id="seconds_${i}"></p>
 				</div>
 			</div>`);
-			function countdown(){
 
-				var now = new Date();
-				// Altere a data do seu evento aqui
-				var eventDate = new Date(endDate);
-				var currentTiime = now.getTime();
-				var eventTime = eventDate.getTime();
-				var remTime = eventTime - currentTiime;
 
-				// calculando o dia, hora, minuto e segundo
-				var d = Math.floor(remTime / (1000 * 60 * 60 * 24));
-				var h = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-				var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
-				var s = Math.floor((remTime % (1000 * 60)) / 1000);
-				document.getElementById("days_" + i).textContent = d;
-				document.getElementById("hours_" + i).textContent = h;
-				document.getElementById("minutes_" + i).textContent = m;
-				document.getElementById("seconds_" + i).textContent = s;
-				let tempo = setTimeout(countdown, 1000);
+			countdown(endDate, i);
 
-				// Verifica se acabou o período do evento
-				if (remTime <= 0) {
-					clearInterval(tempo);
-					document.getElementById("days_" + i).innerHTML = " ";
-					document.getElementById("hours_" + i).innerHTML = " ";
-					document.getElementById("minutes_" + i).innerHTML = " ";
-					document.getElementById("seconds_" + i).innerHTML = " ";
-					$(element).hide();
-					itensProd--;
-					console.log(itensProd);
-				}
-
-				// if(itensProd.length === 0) {
-				// 	console.log(itensProd + "teste");
-				// 	$counterSection.hide();
-				// }
-			}
-
-			countdown();
 
 		});
+
+		function countdown(endDate, index){
+			var now = new Date();
+			// Altere a data do seu evento aqui
+			var eventDate = new Date(endDate);
+			var currentTiime = now.getTime();
+			var eventTime = eventDate.getTime();
+			var remTime = eventTime - currentTiime;
+
+			// calculando o dia, hora, minuto e segundo
+			var d = Math.floor(remTime / (1000 * 60 * 60 * 24));
+			var h = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
+			var s = Math.floor((remTime % (1000 * 60)) / 1000);
+			console.log(d, h, m, s);
+
+			document.getElementById("days_" + index).textContent = d;
+
+			// console.log(document.getElementById("days_" + index));
+
+			document.getElementById("hours_" + index).textContent = h;
+			document.getElementById("minutes_" + index).textContent = m;
+			document.getElementById("seconds_" + index).textContent = s;
+
+			console.log(endDate, index);
+
+
+			let tempo = setTimeout(countdown, 1000);
+
+			// Verifica se acabou o período do evento
+			if (remTime <= 0) {
+				clearInterval(tempo);
+				document.getElementById("days_" + index).innerHTML = " ";
+				document.getElementById("hours_" + index).innerHTML = " ";
+				document.getElementById("minutes_" + index).innerHTML = " ";
+				document.getElementById("seconds_" + index).innerHTML = " ";
+				$(lista).hide();
+				itensProd--;
+			}
+
+			// if(itensProd.length === 0) {
+			// 	console.log(itensProd + "teste");
+			// 	$counterSection.hide();
+			// }
+		}
+
+
 
 		//verifica se nao tem nenhuma coleção cadastrada
 		// if($($counterSection).find('.prateleira.default').length === 0) {

@@ -7,6 +7,10 @@ $text-color: #5b5b5b;
 $green-primary: #9aca3c;
 $white: #ffffff;
 
+.hide {
+    display: none;
+    visibility: inherit;
+}
 .counter {
 	&__section {
 		background-color: $green-primary;
