@@ -2,7 +2,7 @@
 'use strict';
 
 require('modules/banners-controller');
-require('modules/slider-banner');
+require('modules/slider-banner-v2');
 require('components/instagram-stories');
 
 

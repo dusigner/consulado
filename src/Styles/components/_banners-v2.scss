@@ -5,20 +5,62 @@
 	position: relative;
 
 	.banner-principal {
-		@media screen and (min-device-width: 1200px) {
-			height: 400px;
-		}
-
 		@media screen and (max-device-width: 1199px) {
 			flex-direction: column;
 		}
 
 		display: flex;
-		flex-flow: row nowrap;
+		flex-wrap: wrap;
 		width: 100%;
+
+		.banner-full {
+			flex: auto;
+			height: 340px;
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+
+			.box-banner {
+				height: 100%;
+				width: 100%;
+
+				a {
+					display: flex;
+					margin: 0;
+					height: 100%;
+					margin: 0 auto;
+					overflow: hidden;
+
+					img {
+						@media screen and (max-device-width: 1199px) {
+							max-height: 392px;
+							width: 100%;
+						}
+
+						@media screen and (min-device-width: 1900px) {
+							width: 100%;
+						}
+
+						display: flex;
+						height: auto;
+						left: 50%;
+						margin: 0;
+						position: relative;
+						transform: translateX(-50%);
+						width: 1900px;
+					}
+				}
+			}
+
+			.slick-list,
+			.slick-track {
+				height: 100%;
+			}
+		}
 
 		.banner-slider {
 			flex: 1;
+			max-width: 100%;
 			min-width: 50%;
 			position: relative;
 
