@@ -563,12 +563,14 @@ $(document).on('ready', function() {
 						}
 						else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
 							recurrence.autoOpen(recurrenceId);
-						} else if (skuId !== '') {
-							if (store && store.isPersonal) {
-								gae.autoOpen(skuId);
-
-							}
 						}
+						//Função que chama o modal de garantia estendida comentada para Black Friday 2020
+						//else if (skuId !== '') {
+						//	if (store && store.isPersonal) {
+						// 		gae.autoOpen(skuId);
+						//  }
+						//}
+						console.log("Função que chama o modal de garantia estendida comentada para Black Friday 2020 || Arquivo em: Scripts/modules/checkout/checkout5-custom.js - linha 568");
 
 						modals = false;
 					}
@@ -1504,6 +1506,45 @@ $(document).on('ready', function() {
 				});
 			}
 		});
+
+	}
+
+	function checkSkuQty() {
+		//DESENHA O BOX COM A MENSAGEM DE ERRO PARA QUANTIDADE DE SKUs
+		const skuQtyMsgCont = document.createElement('div');
+		skuQtyMsgCont.innerHTML = `<div>
+										<p>Você pode adquirir no máximo 5 itens de cada produto por compra.</p>
+										<span id="skuQtyBtnClose">X</pan>
+									</div>`
+		skuQtyMsgCont.classList.add("modalSkuQty");
+		document.body.appendChild(skuQtyMsgCont);
+
+		//CONSTROLA A MENSAGEM
+		const skuQtyContClose = document.getElementById('skuQtyBtnClose');
+		skuQtyContClose.addEventListener('click', skuQtyMsg);
+		function skuQtyMsg(msg) {
+			if(msg === 0) {
+				skuQtyMsgCont.classList.add("modalSkuQtyActive");
+				setTimeout(function(){ skuQtyMsgCont.classList.remove("modalSkuQtyActive"); }, 3000);
+			} else {
+				skuQtyMsgCont.classList.remove("modalSkuQtyActive");
+			}
+		}
+
+		//NA ALTERAÇÃO DE VALOR DE CADA INPUT PERCORRE TODOS E CHECA O VALOR DE CADA UM
+		const skuQtySkusItem = '.quantity input[type=tel]';
+		const skuQtySkusAll = document.querySelectorAll(skuQtySkusItem);
+		skuQtySkusAll.forEach(skuQtyEachBtn => {
+			skuQtyEachBtn.addEventListener('input', () => {
+				for(let i = 0; i < skuQtySkusAll.length; i++) {
+					let skuNum = skuQtySkusAll[i];
+					if (skuNum.value > 5) {
+						skuNum.value = 5;
+						skuQtyMsg(0);
+					}
+				}
+			});
+		});
 	}
 
 	function init() {
@@ -1529,6 +1570,8 @@ $(document).on('ready', function() {
 		}, 500);
 
 		setCheckoutEvents();
+		checkSkuQty();
+
 	}
 
 	window.onload  = (function() {
@@ -1536,6 +1579,39 @@ $(document).on('ready', function() {
 	});
 
 })(window, document);
+
+
+
+
+
+
+
+// //PREVINE DE ADICIONAR MAIS DE 5 ITENS DO MESMO SKUS
+				// var modalSkuQty = `<div class='modalSkuQty' style='border: 10px red solid;'>Você só pode adquirir no máximo 5 itens de cada produto por compra.</div>`
+				// var skuTotals = elem.previousElementSibling.value;
+				// var skuQty = skuQtyVal => {
+				// 	if (skuQtyVal >= 5) {
+				// 		elem.previousElementSibling.value = 5;
+				// 		//document.getElementsByClassName("vtex-front-messages-placeholder").classList.add = "vtex-front-messages-placeholder-opened";
+				// 		//document.getElementsByClassName("vtex-front-messages-type-error").style.opacity = "1";
+				// 		//document.getElementsByClassName("vtex-front-messages-detail").text = "Você só pode adquirir no máximo 5 itens de cada produto por compra.";
+				// 	}
+				// }
+				// elem.addEventListener('click',skuQty(skuTotals));
+	// $skuQtyVal = $self.find('input[type=tel]'),
+	// $btnAddItem = $self.find('.item-quantity-change-increment');
+
+	// //PREVINE DE ADICIONAR MAIS DE 5 SKUS
+	// $btnAddItem.on('click',function(){
+	// 	if ($skuQtyVal.val() >= 2) {
+	// 		$skuQtyVal.val("2");
+	// 		//mensagem de erro
+	// 		console.log($self)
+	// 		$modalSkuQty
+	// 			.clone()
+	// 			.insertAfter(this)
+	// 	}
+	// });
 
 
 // GET PCI SCRIPT
