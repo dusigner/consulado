@@ -152,6 +152,10 @@ body {
 					&:before {
 						font-size: 1.125rem;
 					}
+
+					&.slick-disabled {
+						display: none!important;
+					}
 				}
 
 				.slick-next {
