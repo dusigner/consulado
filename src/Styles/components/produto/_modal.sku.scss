@@ -8,10 +8,24 @@
 	.button { margin: 0; }
 
 	.buy-button {
-		// @extend .primary-button;
-		margin-left: auto;
-		margin-right: auto;
+		@extend .primary-button;
+		@include rfs(16);
+		background-color: #9aca3c;
+		border-radius: 50px;
+		color: #ffffff;
+		font-weight: 500;
+		height: 48px;
 		max-width: 200px;
+		margin: 0 auto;
+		padding: 12px 0;
+		text-align: center;
+		width: 100%;
+
+		&:hover {
+			background-color: #609220;
+			border-color: #609220;
+			color: #ffffff;
+		}
 	}
 
 	.portal-notify-me-ref { display: none; }
