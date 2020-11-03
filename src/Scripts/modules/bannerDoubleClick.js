@@ -9,7 +9,7 @@ Nitro.module('linkDoubleClick', function() {
 	};
 
 	this.checklinkdouble = function() {
-		var $linkBanner = $('.banner-principal .box-banner > a'),
+		var $linkBanner = $('.banner-slider .box-banner > a'),
 			verify,
 			link_left,
 			link_rigth,

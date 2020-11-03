@@ -43,28 +43,11 @@
 	<div class="banners">
 		<!-- Banner -->
 		<div class="banner-principal slides">
-			<vtex:contentPlaceHolder id="SliderHome" />
-		</div>
-
-		<div class="banner-principal-gbp">
-			<div class="banner-slides">
-				<vtex:contentPlaceHolder id="SliderHome2" />
+			<div class="banner-slider">
+				<vtex:contentPlaceHolder id="SliderHomeDesktop" />
 			</div>
 			<div class="banner-static">
-				<div class="banners-static-home-desktop">
-					<vtex:contentPlaceHolder id="BannerStaticDesktopHome1" />
-					<vtex:contentPlaceHolder id="BannerStaticDesktopHome2" />
-				</div>
-
-				<div class="banners-static-home-tablet">
-					<vtex:contentPlaceHolder id="BannerStaticTabletHome1" />
-					<vtex:contentPlaceHolder id="BannerStaticTabletHome2" />
-				</div>
-
-				<div class="banners-static-home-mobile">
-					<vtex:contentPlaceHolder id="BannerStaticMobileHome1" />
-					<vtex:contentPlaceHolder id="BannerStaticMobileHome2" />
-				</div>
+				<vtex:contentPlaceHolder id="StaticHomeDesktop" />
 			</div>
 		</div>
 		<!-- /Banner -->
@@ -87,11 +70,47 @@
 	<!-- /[ Desktop ] - Slider -->
 
 	<!-- [ Mobile ] - Slider mobile -->
+	<div class="banners-tablet">
+
+		<!-- Banner -->
+		<div class="banner-principal banner-tablet slides">
+			<div class="banner-slider">
+				<vtex:contentPlaceHolder id="SliderHomeTablet" />
+			</div>
+			<div class="banner-static">
+				<vtex:contentPlaceHolder id="StaticHomeTablet" />
+			</div>
+		</div>
+		<!-- /Banner -->
+
+		<!-- Abrir regulamento banner -->
+		<div class="container">
+			<div class="row">
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
+					regulamento</a>
+
+				<!-- Modal regulamento -->
+				<div id="modal-regulamento-banner" style="display: none;">
+					<vtex.cmc:regulamentoBannerHomeCNS />
+				</div>
+				<!-- /Modal regulamento -->
+			</div>
+		</div>
+		<!-- /Abrir regulamento banner -->
+	</div>
+	<!-- /[ Mobile ] - Slider mobile -->
+
+	<!-- [ Mobile ] - Slider mobile -->
 	<div class="banners-mobile show-extra-small">
 
 		<!-- Banner -->
 		<div class="banner-principal banner-mobile slides">
-			<vtex:contentPlaceHolder id="SliderHomeMobile" />
+			<div class="banner-slider">
+				<vtex:contentPlaceHolder id="SliderHomeMobile" />
+			</div>
+			<div class="banner-static">
+				<vtex:contentPlaceHolder id="StaticHomeMobile" />
+			</div>
 		</div>
 		<!-- /Banner -->
 
