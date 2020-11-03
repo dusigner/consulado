@@ -12,7 +12,7 @@
 	<style>
 		@media (min-width: 768px) {
 			.hide-desk {
-				display: none!important;
+				display: none !important;
 			}
 		}
 	</style>
@@ -39,6 +39,40 @@
 	<!-- Header -->
 	<vtex:template id="0-consul-header" />
 	<!-- /Header -->
+
+	<!-- Contador BF 2020 Mobile -->
+	<section class="counter-bf-2020 cont-mobile show-mobile">
+		<div class="containerc">
+			<div class="row">
+				<div class="counter-bf-2020__img-black"></div>
+				<div class="counter-bf-2020__block">
+					<div class="counter-bf-2020__clock">
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time days"></span>
+							<span class="counter-bf-2020__timetext">dias</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time hours"></span>
+							<span class="counter-bf-2020__timetext">horas</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time minutes"></span>
+							<span class="counter-bf-2020__timetext">minutos</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time seconds"></span>
+							<span class="counter-bf-2020__timetext">segundos</span>
+						</div>
+					</div>
+					<a href="#coutdown" class="btn-enviar">Avise-me</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Contador BF 2020 mobile  -->
 
 	<!-- [ Desktop ] - Slider -->
 
@@ -117,18 +151,26 @@
 	<!-- /[ Mobile ] - Slider mobile -->
 
 	<!-- Covid Alert -->
-	<div class="covid-alert" style="display: flex;align-items: center;max-width: 1240px;margin: 15px auto;box-shadow: 2px 1px 1px 1px;cursor: pointer;padding: 0 35px;position: relative;"><svg class="hide-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.6667 0.666668H3.33341C1.86675 0.666668 0.680081 1.86667 0.680081 3.33333L0.666748 27.3333L6.00008 22H24.6667C26.1334 22 27.3334 20.8 27.3334 19.3333V3.33333C27.3334 1.86667 26.1334 0.666668 24.6667 0.666668ZM15.3334 12.6667H12.6667V4.66667H15.3334V12.6667ZM15.3334 18H12.6667V15.3333H15.3334V18Z" fill="#9aca3c"></path></svg><p class="hide-mobile" style="padding: 15px 0;margin: 0 0 0 15px;">
-		<strong style="
+	<div class="covid-alert"
+		style="display: flex;align-items: center;max-width: 1240px;margin: 15px auto;box-shadow: 2px 1px 1px 1px;cursor: pointer;padding: 0 35px;position: relative;">
+		<svg class="hide-mobile" width="28" height="28" viewBox="0 0 28 28" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M24.6667 0.666668H3.33341C1.86675 0.666668 0.680081 1.86667 0.680081 3.33333L0.666748 27.3333L6.00008 22H24.6667C26.1334 22 27.3334 20.8 27.3334 19.3333V3.33333C27.3334 1.86667 26.1334 0.666668 24.6667 0.666668ZM15.3334 12.6667H12.6667V4.66667H15.3334V12.6667ZM15.3334 18H12.6667V15.3333H15.3334V18Z"
+				fill="#9aca3c"></path>
+		</svg>
+		<p class="hide-mobile" style="padding: 15px 0;margin: 0 0 0 15px;">
+			<strong style="
 		color: #9aca3c;
 		font-weight: 500;
 	">Estamos juntos com você!</strong>
-	Conheça as medidas que tomamos para sua segurança contra o Covid-19. </p>
-	<p class="hide-desk" style="padding: 15px 0;margin: 0 0 0 15px;">
-		<strong style="
+			Conheça as medidas que tomamos para sua segurança contra o Covid-19. </p>
+		<p class="hide-desk" style="padding: 15px 0;margin: 0 0 0 15px;">
+			<strong style="
 		color: #9aca3c;
 		font-weight: 500;
 	">Estamos juntos com você!</strong>
-	Conheça as medidas que tomamos para sua segurança contra o Covid-19. <strong style="
+			Conheça as medidas que tomamos para sua segurança contra o Covid-19. <strong style="
 	color: #9aca3c;
 	font-weight: 500;
 	">SAIBA MAIS</strong> </p><span class="hide-mobile" style="
@@ -136,11 +178,20 @@
 		font-weight: 500;
 		position: absolute;
 		right: 25px;
-	">SAIBA MAIS</span></div>
+	">SAIBA MAIS</span>
+	</div>
 
-	<div class="covid-modal hide-mobile" style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 21; display: none;"><span class="close-covid" style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a href="/atendimento" style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000" style="             transform: translate(50%);         " /></div>
+	<div class="covid-modal hide-mobile"
+		style="position: fixed; width: 1024px; height: 760px; top: 25%; right: 50%; bottom: 0px; transform: translateX(50%); z-index: 21; display: none;">
+		<span class="close-covid"
+			style="             position: absolute;             top: 4px;             right: 16%;             z-index: 10;             font-size: 20px;             cursor: pointer;         ">X</span><a
+			href="/atendimento"
+			style="             position: absolute;             top: 48%;             right: 20%;             z-index: 10;             font-size: 20px;             cursor: pointer;             width: 130px;             height: 25px;         "></a><img
+			src="https://consul.vteximg.com.br/arquivos/imgmodal.png?v=637212807944300000"
+			style="             transform: translate(50%);         " /></div>
 
-	<div class="covid-modal-mobile hide-desk" style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 21; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
+	<div class="covid-modal-mobile hide-desk"
+		style="position: absolute;width: 300px;height: 760px;top: 25%;right: 50%;bottom: 0px;transform: translateX(50%);z-index: 21; display: none; background: #fff;padding: 0 15px;overflow: scroll;">
 		<h3 style="
 		font-weight: 500;
 		color: #000000;
@@ -148,19 +199,29 @@
 		color: #9aca3c;
 		font-weight: 500;
 	">Devido ao cenário atual de incertezas, reforçamos o nosso compromisso com você!</strong>
-		<p>Estamos adotando as melhores medidas para garantirmos que você continue criando inúmeras possibilidades na cozinha, da forma mais segura possível até que tudo volte ao normal.
-	</p><p>- Adotamos um novo protocolo de prevenção nos depósitos, incluindo distância física mínima entre operadores.</p><p>- Orientamos frequentemente nossas transportadoras e seus colaboradores com dicas de prevenção e higienização.</p><p>- Reforçamos nosso compromisso com os prazos de entrega, de acordo com diretrizes estaduais.</p>
+		<p>Estamos adotando as melhores medidas para garantirmos que você continue criando inúmeras possibilidades na
+			cozinha, da forma mais segura possível até que tudo volte ao normal.
+		</p>
+		<p>- Adotamos um novo protocolo de prevenção nos depósitos, incluindo distância física mínima entre operadores.
+		</p>
+		<p>- Orientamos frequentemente nossas transportadoras e seus colaboradores com dicas de prevenção e
+			higienização.</p>
+		<p>- Reforçamos nosso compromisso com os prazos de entrega, de acordo com diretrizes estaduais.</p>
 
-	<a href="/atendimento" style="
+		<a href="/atendimento" style="
 		margin-top: 40px;
 		display: block;
 		font-weight: 500;
 		color: #9aca3c;
 		text-align: center;
 	">SAIBA MAIS</a>
-	<span class="close-covid" style="position: absolute;top: 4px;right: 15px;z-index: 10;font-size: 25px;cursor: pointer;">X</span></div>
+		<span class="close-covid"
+			style="position: absolute;top: 4px;right: 15px;z-index: 10;font-size: 25px;cursor: pointer;">X</span>
+	</div>
 
-	<div class="covid-overlay" style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 20; top: 0px; opacity: 0.4; cursor: pointer; display: none;"></div>
+	<div class="covid-overlay"
+		style="position: fixed; width: 100%; height: 100%; background: rgb(0, 0, 0); z-index: 20; top: 0px; opacity: 0.4; cursor: pointer; display: none;">
+	</div>
 	<!-- /Covid Alert -->
 
 	<!-- [ Tipbar ] -->
@@ -217,32 +278,74 @@
 		</div>
 	</article>
 
-<!-- [Barra Newsletter - Cadastro email] -->
-<vtex:template id="0-consul-footer-2019-newsletter" />
-<!-- [/Barra Newsletter - Cadastro email] -->
-
-<!-- Vitrine de categorias -->
-
-<section class="vitrine-subcategorias">
-	<div class="container">
-		<div class="title">
-			<h4>Busque por modelos</h4>
-			<span>Selecione uma categoria e veja abaixo nossos modelos</span>
+	<!-- Contador BF 2020 -->
+	<section id="coutdown" class="counter-bf-2020">
+		<div class="counter-bf-2020__container">
+			<div class="row">
+				<div class="counter-bf-2020__img-black"></div>
+				<div class="counter-bf-2020__block">
+					<h1 class="counter-bf-2020__title">Prepare-se para os <strong>melhores preços</strong></h1>
+					<div class="counter-bf-2020__clock">
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time days"></span>
+							<span class="counter-bf-2020__timetext">dias</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time hours"></span>
+							<span class="counter-bf-2020__timetext">horas</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time minutes"></span>
+							<span class="counter-bf-2020__timetext">minutos</span>
+						</div>
+						<span class="bolinha"></span>
+						<div class="counter-bf-2020__item">
+							<span class="counter-bf-2020__time seconds"></span>
+							<span class="counter-bf-2020__timetext">segundos</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<form class="form-envio">
+					<label>Receba as ofertas antecipadas da Black Friday direto no seu e-mail</label>
+					<input type="email" name="email" id="email" placeholder="E-mail" />
+					<button class="btn-enviar" id="send">Enviar</button>
+					<div class="mensagem" style="color: #fff; font-weight: 500;"></div>
+				</form>
+			</div>
 		</div>
+	</section>
+	<!-- /Contador BF 2020 -->
 
-		<div class="categories-list">
-			<ul>
-				<li><a href="javascript:void(0)" class="active" data-category="geladeiras">Geladeiras</a></li>
-				<li><a href="javascript:void(0)" data-category="fogoes">Fogões</a></li>
-				<li><a href="javascript:void(0)" data-category="lavadoras">Lavadoras</a></li>
-				<li><a href="javascript:void(0)" data-category="ar-condicionado">Ar-condicionado</a></li>
-				<li><a href="javascript:void(0)" data-category="fornos">Fornos</a></li>
-				<li><a href="javascript:void(0)" data-category="coifas">Coifas e Depuradores</a></li>
-				<li><a href="javascript:void(0)" data-category="cooktop">Cooktops</a></li>
-				<li><a href="javascript:void(0)" data-category="freezers">Freezers</a></li>
-				<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
-			</ul>
-		</div>
+	<!-- [Barra Newsletter - Cadastro email] -->
+	<vtex:template id="0-consul-footer-2019-newsletter" />
+	<!-- [/Barra Newsletter - Cadastro email] -->
+
+	<!-- Vitrine de categorias -->
+
+	<section class="vitrine-subcategorias">
+		<div class="container">
+			<div class="title">
+				<h4>Busque por modelos</h4>
+				<span>Selecione uma categoria e veja abaixo nossos modelos</span>
+			</div>
+
+			<div class="categories-list">
+				<ul>
+					<li><a href="javascript:void(0)" class="active" data-category="geladeiras">Geladeiras</a></li>
+					<li><a href="javascript:void(0)" data-category="fogoes">Fogões</a></li>
+					<li><a href="javascript:void(0)" data-category="lavadoras">Lavadoras</a></li>
+					<li><a href="javascript:void(0)" data-category="ar-condicionado">Ar-condicionado</a></li>
+					<li><a href="javascript:void(0)" data-category="fornos">Fornos</a></li>
+					<li><a href="javascript:void(0)" data-category="coifas">Coifas e Depuradores</a></li>
+					<li><a href="javascript:void(0)" data-category="cooktop">Cooktops</a></li>
+					<li><a href="javascript:void(0)" data-category="freezers">Freezers</a></li>
+					<li><a href="javascript:void(0)" data-category="microondas">Micro-ondas</a></li>
+				</ul>
+			</div>
 			<div class="subcategories-list">
 				<div class="subCategorySection showSubCategory" data-category="geladeiras">
 					<ul class="geladeiras">
@@ -737,41 +840,50 @@
 					<a href="/eletrodomesticos/micro-ondas" class="categoryLink">Veja todos os micro-ondas</a>
 				</div>
 			</div>
-	</div>
-</section>
-<!-- /Vitrine de categorias-->
+		</div>
+	</section>
+	<!-- /Vitrine de categorias-->
 
-<!-- Inicio Filter tamanho família -->
-<section class="filter-family-size">
-	<div class="container-fluid p-0">
-		<h2>Ofertas especiais para <span>cada tamanho de família</span></h2>
-		<div class="cont-linha">
-			<div class="row">
-				<button class="btn active" id="pequena"><vtex:contentPlaceHolder id="familiasPequenas" /></button>
-				<button class="btn" id="media"><vtex:contentPlaceHolder id="familiasMedias" /></button>
-				<button class="btn" id="grande"><vtex:contentPlaceHolder id="familiasGrandes" /></button>
+	<!-- Inicio Filter tamanho família -->
+	<section class="filter-family-size">
+		<div class="container-fluid p-0">
+			<h2>Ofertas especiais para <span>cada tamanho de família</span></h2>
+			<div class="cont-linha">
+				<div class="row">
+					<button class="btn active" id="pequena">
+						<vtex:contentPlaceHolder id="familiasPequenas" /></button>
+					<button class="btn" id="media">
+						<vtex:contentPlaceHolder id="familiasMedias" /></button>
+					<button class="btn" id="grande">
+						<vtex:contentPlaceHolder id="familiasGrandes" /></button>
+				</div>
+			</div>
+			<div id="vitrines-family" class="container prateleira-slider">
+				<div class="box pequena">
+					<vtex:contentPlaceHolder id="vitrineFamiliasPequenas" />
+				</div>
+				<div class="box media">
+					<vtex:contentPlaceHolder id="vitrineFamiliasMedias" />
+				</div>
+				<div class="box grande">
+					<vtex:contentPlaceHolder id="vitrineFamiliasGrandes" />
+				</div>
 			</div>
 		</div>
-		<div id="vitrines-family" class="container prateleira-slider">
-			<div class="box pequena"><vtex:contentPlaceHolder id="vitrineFamiliasPequenas" /></div>
-			<div class="box media"><vtex:contentPlaceHolder id="vitrineFamiliasMedias" /></div>
-			<div class="box grande"><vtex:contentPlaceHolder id="vitrineFamiliasGrandes" /></div>
-		</div>
-	</div>
-</section>
-<!-- Inicio Filter tamanho família -->
+	</section>
+	<!-- FIm Filter tamanho família -->
 
-<!-- Banner E-Promotor -->
+	<!-- Banner E-Promotor -->
 	<section class="container-epromotor">
 		<a href="https://api.whatsapp.com/send?phone=5547988292017" target="_blank">
 			<img src="/arquivos/epromotor-banner-home.png" alt="E-Promotor" />
-			<img src="/arquivos/epromotor-banner-home-mobile.png" alt="E-Promotor" class="mobile"/>
+			<img src="/arquivos/epromotor-banner-home-mobile.png" alt="E-Promotor" class="mobile" />
 		</a>
 	</section>
-<!-- /Banner E-Promotor -->
+	<!-- /Banner E-Promotor -->
 
-<!-- inicio contador -->
-<section class="counter__section hide">
+	<!-- inicio contador -->
+	<!-- <section class="counter__section hide">
 	<div class="container">
 		<h2 class="counter__title">Confira esta <strong class="counter__title-highlight">super oferta</strong> para você!</h2>
 
@@ -808,8 +920,8 @@
 			</div>
 		</div>
 	</div>
-</section>
-<!-- Fim contador -->
+</section> -->
+	<!-- Fim contador -->
 
 	<!-- VITRINES VTEX - Deixar em cima por conta do tempo de carregamento percebido -->
 	<section class="container vitrines">
@@ -957,23 +1069,23 @@
 
 	<script src="<!-- @echo assetsPath -->/consul2-home.min.js?v=<!-- @echo package.version -->"></script>
 	<script>
-        $('.covid-alert').on('click', function() {
+		$('.covid-alert').on('click', function () {
 			$('.covid-modal').show();
 			$('.covid-modal-mobile').show();
-            $('.covid-overlay').show();
-        });
+			$('.covid-overlay').show();
+		});
 
-        $(document).on('click', '.close-covid', function() {
+		$(document).on('click', '.close-covid', function () {
 			$('.covid-modal').hide();
 			$('.covid-modal-mobile').hide();
-            $('.covid-overlay').hide();
-        });
+			$('.covid-overlay').hide();
+		});
 
-        $('.covid-overlay').on('click', function() {
+		$('.covid-overlay').on('click', function () {
 			$('.covid-modal').hide();
 			$('.covid-modal-mobile').hide();
-            $(this).hide();
-        });
+			$(this).hide();
+		});
 	</script>
 </body>
 
