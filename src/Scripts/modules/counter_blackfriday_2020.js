@@ -16,6 +16,7 @@ Nitro.module("counter-bf-2020", function() {
 	// );
 
 	this.initCounter = () => {
+
 		let $counter = $(".counter"),
 			$endMessage = $(".counter__end-promotion"),
 			$buyButton = $(".counter__offer-cta"),
@@ -26,7 +27,6 @@ Nitro.module("counter-bf-2020", function() {
 
 		const lista = $counterProd.find(".prateleira.default");
 		let itensProd = $(lista).length;
-
 
 		if($(itensProd) === 0) {
 			$counterSection.hide();
@@ -58,13 +58,7 @@ Nitro.module("counter-bf-2020", function() {
 				</div>
 			</div>`);
 
-
-			countdown(endDate, i);
-
-
-		});
-
-		function countdown(endDate, index){
+		function countdown(){
 			var now = new Date();
 			// Altere a data do seu evento aqui
 			var eventDate = new Date(endDate);
@@ -77,55 +71,39 @@ Nitro.module("counter-bf-2020", function() {
 			var h = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
 			var s = Math.floor((remTime % (1000 * 60)) / 1000);
-			console.log(d, h, m, s);
 
-			document.getElementById("days_" + index).textContent = d;
-
-			// console.log(document.getElementById("days_" + index));
-
-			document.getElementById("hours_" + index).textContent = h;
-			document.getElementById("minutes_" + index).textContent = m;
-			document.getElementById("seconds_" + index).textContent = s;
-
-			console.log(endDate, index);
-
+			document.getElementById("days_" + i).textContent = d;
+			document.getElementById("hours_" + i).textContent = h;
+			document.getElementById("minutes_" + i).textContent = m;
+			document.getElementById("seconds_" + i).textContent = s;
 
 			let tempo = setTimeout(countdown, 1000);
 
 			// Verifica se acabou o período do evento
-			if (remTime <= 0) {
-				clearInterval(tempo);
-				document.getElementById("days_" + index).innerHTML = " ";
-				document.getElementById("hours_" + index).innerHTML = " ";
-				document.getElementById("minutes_" + index).innerHTML = " ";
-				document.getElementById("seconds_" + index).innerHTML = " ";
-				$(lista).hide();
-				itensProd--;
-			}
-
-			// if(itensProd.length === 0) {
-			// 	console.log(itensProd + "teste");
-			// 	$counterSection.hide();
-			// }
+				if (remTime <= 0) {
+					clearInterval(tempo);
+					document.getElementById("days_" + i).innerHTML = " ";
+					document.getElementById("hours_" + i).innerHTML = " ";
+					document.getElementById("minutes_" + i).innerHTML = " ";
+					document.getElementById("seconds_" + i).innerHTML = " ";
+					$(element).remove();
+					$(".slick-dots").find("button").first().remove();
+					itensProd--;
+				}
 		}
+		countdown();
+	});
 
+		$('.counter__offer-prod').slick({
+			mobileFirst: false,
+			slidesToShow: 1,
+			fade: false,
+			cssEase: 'ease',
+			easing: 'linear',
+			arrows: true,
+			dots: true
+		});
 
-
-		//verifica se nao tem nenhuma coleção cadastrada
-		// if($($counterSection).find('.prateleira.default').length === 0) {
-		// 	$($counterSection).addClass("hide");
-		// } else {
-		// 	$($counterSection).removeClass("hide");
-		// }
-		// $('.counter__offer-prod').slick({
-		// 	mobileFirst: false,
-		// 	slidesToShow: 1,
-		// 	fade: false,
-		// 	cssEase: 'ease',
-		// 	easing: 'linear',
-		// 	arrows: false,
-		// 	dots: true
-		// });
 	};
 	// Start it
 	this.init();
