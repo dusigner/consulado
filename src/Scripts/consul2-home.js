@@ -3,7 +3,6 @@
 
 require('modules/banners-controller');
 require('modules/slider-banner');
-require('modules/product/_slick-module-top');
 require('components/instagram-stories');
 
 
@@ -24,6 +23,7 @@ require('modules/interested-shelf');
 require('modules/subCategoryList');
 
 import 'modules/counter_consumer_week_2020';
+import 'modules/counter_pre_bf_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
@@ -34,16 +34,16 @@ Nitro.controller(
 	[
 		'chaordic',
 		'slider-banner',
-		'slider-module-prateleira',
 		'instagram-stories',
 		'lead-newsletter',
 		// 'prateleira-personalizada',
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'interested-shelf',
-		'dataLayer-home-bf',
+		'dataLayer-home-bf-2020',
 		'shelfCategoryHome',
 		/* 'static-banner' */
+		'counter-pre-bf-2020',
 		'counter',
 		// 'datalayer_track'
 		'subCategoryList',
@@ -428,8 +428,8 @@ Nitro.controller(
 		};
 
 		this.moduleTop = () => {
-			$('#content-vitrine .module-top10').show();
-			$('#content-vitrine .module-top10 .prateleira > ul').not('.slick-initialized').slick({
+			$('#content-vitrine .moduleTop10').show();
+			$('#content-vitrine .moduleTop10 .prateleira > ul').not('.slick-initialized').slick({
 				infinite: false,
 				dots: true,
 				arrows: true,
@@ -438,7 +438,7 @@ Nitro.controller(
 					{
 						breakpoint: 992,
 						settings: {
-							arrows: false,
+							arrows: true,
 							slidesToShow: 4
 						}
 					},
@@ -472,7 +472,7 @@ Nitro.controller(
 							settings: {
 								arrows: false,
 								slidesToShow: 4,
-								infinite: false,
+								infinite: true,
 								dots: true
 							}
 						},
@@ -481,7 +481,7 @@ Nitro.controller(
 							settings: {
 								arrows: false,
 								dots: true,
-								infinite: false,
+								infinite: true,
 								slidesToScroll: 1,
 								slidesToShow: 1,
 								swipeToSlide: true
