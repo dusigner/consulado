@@ -5,6 +5,7 @@ import 'modules/product/video';
 import 'modules/product/sku-fetch';
 import 'modules/product/gallery-v2';
 import 'modules/product/product-nav-v2';
+import 'modules/product/formBestOfferBF';
 import 'modules/product/details';
 import 'modules/product/specifications-v2';
 import 'modules/product/selos';
@@ -21,6 +22,7 @@ import 'modules/product/product-tags';
 import 'modules/product/outline-products';
 import 'modules/chaordic';
 import 'dataLayers/dataLayer-product';
+import 'dataLayers/dataLayer-capLead-PDP';
 import 'modules/wishlist/wishlist-check-users'
 
 Nitro.controller(
@@ -47,6 +49,7 @@ Nitro.controller(
 		'dataLayer-product',
 		'outline-products',
 		'favourite-user-not-logged',
+		'dataLayer-captacao-lead-pdp'
 	],
 	function (chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,

@@ -26,7 +26,7 @@ const discountFormat = discount => discount.replace('.', ',');
 
 // Verifica se o desconto está dentro do range percentual estabelecido pelas regras de negócio.
 const discountPercentageValidate = (prodListPrice, prodBestPrice) => {
-	const discountPercentage = Math.abs((prodBestPrice / prodListPrice ) - 1).toFixed(2);
+	const discountPercentage = Math.abs((prodBestPrice / prodListPrice) - 1).toFixed(2);
 	const discountMin = 0.05; // Mínimo de 5% de desconto
 	const discountMax = 0.60; // Máximo de 60% de desconto
 
@@ -48,7 +48,7 @@ const promoDestaque = produto => {
 
 	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
 	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
-	// if (hasPromo.length) {
+		// if (hasPromo.length) {
 		const
 			promoText = hasPromo.text().split('__'),
 			promoPreTitle = promoText[2],
@@ -90,7 +90,7 @@ const prodPromoDestaque = () => {
 
 	// if (hasPromo.length && precoDe.length && discountNominalValidate(desconto, precoPor)) {
 	if (hasPromo.length && precoDe.length && discountPercentageValidate(precoDe, precoPor)) {
-	// if (hasPromo.length) {
+		// if (hasPromo.length) {
 		const
 			promoText = hasPromo.text().split('__'),
 			promoPreTitle = promoText[2],
