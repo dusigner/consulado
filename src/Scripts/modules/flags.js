@@ -7,6 +7,7 @@ Nitro.module('flags', function() {
 	self.init = () => {
 		self.formatFlagBFPDP();
 		self.formatShelfFlagBF();
+		self.formatFlagPercent();
 		self.formatFlagPercentOff();
 		self.formatFlagFreeShippingExcept();
 		self.formatFlagFreeShippingExceptPDP();
@@ -24,7 +25,20 @@ Nitro.module('flags', function() {
 				}
 			}
 		})
-		// const flagPercentOff = $('.prod-info .price .por .off').clone();
+	}
+
+	self.formatFlagPercent = () => {
+
+		$('.box-produto').map(function(index, item){
+			let flagPercentOff = $(item).find('.prod-info .price .por .product-with-discount').clone();
+
+			if(!$(this).find('.FlagsHightLight .product-with-discount').length){
+				if($(flagPercentOff[0]).text() !== ''){
+					$(flagPercentOff).removeAttr('style');
+					$(this).find('.FlagsHightLight').append(flagPercentOff[0]);
+				}
+			}
+		})
 	}
 
 	self.formatFlagFreeShippingExcept = () => {
