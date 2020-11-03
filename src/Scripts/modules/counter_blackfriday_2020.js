@@ -22,8 +22,8 @@ Nitro.module("counter-bf-2020", function() {
 			$buyButton = $(".counter__offer-cta"),
 			$counterSubSection = $(".counter__offer-count"),
 			$counterSection = $(".counter__section"),
-			$counterProd = $(".counter__offer-prod"),
-			timeRemaining;
+			$counterProd = $(".counter__offer-prod");
+
 
 		const lista = $counterProd.find(".prateleira.default");
 		let itensProd = $(lista).length;
@@ -39,24 +39,33 @@ Nitro.module("counter-bf-2020", function() {
 
 			const endDate = $(element).find("h2").text();
 
-			$(element).append(`<div id="countdown_dashboard">
-				<div class="dashp">
-					<span class="dashtitle">Dias</span>
+			$(element).append(`<div id="countdown_dashboard" style="height: 100px">
+				<div class="title">Corre! Essa oferta encerra em </div>
+				<div class="dashp hidden">
 					<p id="days_${i}"></p>
+					<span class="dashtitle">Dias</span>
 				</div>
 				<div class="dashp">
-					<span class="dashtitle">Horas</span>
 					<p id="hours_${i}"></p>
+					<span class="dashtitle">Horas</span>
 				</div>
+				<span class="pontos">:</span>
 				<div class="dashp">
-					<span class="dashtitle">Minutos</span>
 					<p id="minutes_${i}"></p>
+					<span class="dashtitle">Minutos</span>
 				</div>
+				<span class="pontos">:</span>
 				<div class="dashp">
-					<span class="dashtitle">Segundos</span>
 					<p id="seconds_${i}"></p>
+					<span class="dashtitle">Segundos</span>
 				</div>
+				<div class="title"> Ou enquanto durar o estoque! </div>
 			</div>`);
+
+
+
+			let botao = $(element).find(".sku_buy");
+			$(element).append(botao);
 
 		function countdown(){
 			var now = new Date();
@@ -72,10 +81,17 @@ Nitro.module("counter-bf-2020", function() {
 			var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
 			var s = Math.floor((remTime % (1000 * 60)) / 1000);
 
+
+			// var d = $days > 9 ? $days : "0" + $days;
+			// var h = $hours > 9 ? $hours : "0" + $hours
+			// var m = $minutes > 9 ? $minutes : "0" + $minutes
+			// var s = $seconds > 9 ? $seconds : "0" + $seconds
+
 			document.getElementById("days_" + i).textContent = d;
 			document.getElementById("hours_" + i).textContent = h;
 			document.getElementById("minutes_" + i).textContent = m;
 			document.getElementById("seconds_" + i).textContent = s;
+
 
 			let tempo = setTimeout(countdown, 1000);
 
@@ -93,17 +109,11 @@ Nitro.module("counter-bf-2020", function() {
 		}
 		countdown();
 	});
-
 		$('.counter__offer-prod').slick({
-			mobileFirst: false,
 			slidesToShow: 1,
-			fade: false,
-			cssEase: 'ease',
-			easing: 'linear',
 			arrows: true,
 			dots: true
 		});
-
 	};
 	// Start it
 	this.init();
