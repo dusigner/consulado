@@ -14,7 +14,7 @@ Nitro.module('coupons-blackfriday-2020', function() {
 
 		self.copyCouponToClioBoard();
 
-		self.dataLayerBFCoupons();
+		// self.dataLayerBFCoupons();
 	}
 
 	self.formatCouponsBlackFridayVitrine = (coupon, index) => {
