@@ -69,6 +69,7 @@ require('modules/wishlist/wishlist-init');
 require('modules/banner-covid');
 require('modules/logoffUser');
 require('dataLayers/dataLayer-new-header-menu');
+require('dataLayers/datalayer-cupons-vitrine');
 require('modules/tira-duvidas');
 require('modules/coupons-blackfriday-2020');
 require('modules/flags');
@@ -128,6 +129,7 @@ Nitro.setup(
 		'consentCookie',
 		'coupons-blackfriday-2020',
 		'flags',
+		'datalayer-cupons-vitrine',
 		// 'dataLayer-menu-antigo'
 	],
 	function () {
