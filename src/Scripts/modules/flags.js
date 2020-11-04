@@ -46,7 +46,6 @@ Nitro.module('flags', function() {
 		$('.box-produto').map(function(index, item){
 			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-exceto"]')
 			const shippingSplited = $(freeShippingFlag).text().split('Grátis')
-			console.info(shippingSplited);
 			if($(freeShippingFlag)[0]){
 				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
 					$(this).find('.FlagsHightLight').append((`

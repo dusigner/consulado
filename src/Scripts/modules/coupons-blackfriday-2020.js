@@ -86,10 +86,10 @@ Nitro.module('coupons-blackfriday-2020', function() {
 
 			$('.black-friday-coupons').on('click', function(){
 				let couponName = $(this).text().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
-
+				let pageCategory = dataLayer[0].pageCategory.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
 				dataLayer.push({
 					event: 'generic',
-					category: 'PDP_cupom',
+					category: `Vitrine_cupom_${pageCategory}`,
 					action: 'click_copiar_cupom',
 					label: `cupom_${couponName}`
 				})
@@ -97,7 +97,7 @@ Nitro.module('coupons-blackfriday-2020', function() {
 				setTimeout(function(){
 					dataLayer.push({
 						event: 'generic',
-						category: 'PDP_cupom',
+						category: `Vitrine_cupom_${pageCategory}`,
 						action: 'exbicao_codigo_copiado ',
 						label: 'codigo_copiado_sucesso '
 					})
