@@ -436,13 +436,14 @@ $grey-claro: #e5e5e5;
 	background-color: inherit;
 	border: none;
 	border-top: 1px solid #f3f0ef;
-	display: none;
+	display: flex;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: normal;
 	outline: none;
 	padding: 0 12px 10px;
 	padding-bottom: 22px;
+	padding-left: 5%;
 	padding-top: 16px;
 	text-align: left;
 }

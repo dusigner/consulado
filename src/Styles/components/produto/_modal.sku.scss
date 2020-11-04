@@ -1,3 +1,5 @@
+@import '../../components/buttons';
+
 #modal-sku {
 	.options {
 		margin: 1em 0;
@@ -8,7 +10,6 @@
 	.button { margin: 0; }
 
 	.buy-button {
-		@extend .primary-button;
 		@include rfs(16);
 		background-color: #9aca3c;
 		border-radius: 50px;
