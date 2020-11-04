@@ -3,19 +3,20 @@
 $green: #9aca3c;
 $gray-dark: #5b5b5b;
 $purple: #8437a8;
-$font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial,
+$font-family: normal normal 1em/1.5 "consul", "Helvetica Neue", Helvetica, Arial,
 	sans-serif;
 
 .produto-indisponivel {
 	#relacionados-top {
 		display: block;
 	}
+
 	.product-info-bar {
 		display: none;
 	}
 
 	.form-container {
-		display: block ;
+		display: block;
 		width: 100% !important;
 	}
 
@@ -39,9 +40,9 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		}
 
 		&:before {
-			@include icon-get('bottom-arrow');
-			@include breakpoint('small', 'max') {
-				@include icon-get('top-arrow');
+			@include icon-get("bottom-arrow");
+			@include breakpoint("small", "max") {
+				@include icon-get("top-arrow");
 			}
 			@include rfs(6px);
 			left: 5px;
@@ -114,11 +115,11 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 		}
 
 		//.box-produto {
-			// &:hover {
-			// 	.promo-destaque__bg {
-			// 		transform: translateX(-148px);
-			// 	}
-			// }
+		// &:hover {
+		// 	.promo-destaque__bg {
+		// 		transform: translateX(-148px);
+		// 	}
+		// }
 		//}
 
 		.promo-destaque {
@@ -178,10 +179,10 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 			width: 200px;
 		}
 		& form {
-			input[type='text'],
-			input[type='email'],
-			input[type='password'],
-			input[type='tel'] {
+			input[type="text"],
+			input[type="email"],
+			input[type="password"],
+			input[type="tel"] {
 				margin-bottom: 10px;
 			}
 			p {
@@ -192,7 +193,7 @@ $font-family: normal normal 1em/1.5 'consul', 'Helvetica Neue', Helvetica, Arial
 	}
 	#BuyButton,
 	.prod-details-nav #BuyButtonDetails {
-		@include breakpoint('medium', 'max') {
+		@include breakpoint("medium", "max") {
 			background: #fff;
 			position: relative;
 			width: 100%;
@@ -236,7 +237,7 @@ body #relacionados-top {
 		}
 	}
 
-	@include breakpoint('small', 'max') {
+	@include breakpoint("small", "max") {
 		.prateleira > ul {
 			padding-left: 0;
 		}
@@ -261,7 +262,7 @@ body #relacionados-top {
 		right: -10px;
 		top: -120px;
 		z-index: 1;
-		@include breakpoint ('small', 'min') {
+		@include breakpoint("small", "min") {
 			right: -5px;
 			top: -100px;
 		}
@@ -316,21 +317,21 @@ body #relacionados-top {
 	}
 	.prateleira-slider {
 		width: 100%;
-		@include breakpoint('small', 'min') {
+		@include breakpoint("small", "min") {
 			margin-top: -12px;
 		}
 		h2 {
 			display: none;
 		}
 		.slick-track {
-			@include breakpoint('medium', 'min') {
+			@include breakpoint("medium", "min") {
 				max-width: 440px;
 				width: 100% !important;
 			}
 			.slick-slide {
 				margin: 0 10px 0 0;
 				width: 100%;
-				@include breakpoint(768px, 'max') {
+				@include breakpoint(768px, "max") {
 					margin: 0 auto;
 					width: 100% !important;
 				}
@@ -341,10 +342,10 @@ body #relacionados-top {
 			width: 32px;
 
 			&::before {
-				background-image: url('/arquivos/icon-left-slider-vitrine.png');
+				background-image: url("/arquivos/icon-left-slider-vitrine.png");
 				background-repeat: no-repeat;
 				background-size: contain;
-				content: '';
+				content: "";
 				height: 22px;
 				left: 0;
 				position: absolute;
@@ -352,14 +353,14 @@ body #relacionados-top {
 				width: 12px;
 				z-index: 3;
 			}
-			@include breakpoint ('small', 'min') {
+			@include breakpoint("small", "min") {
 				&::after {
 					background-image: linear-gradient(
 						90deg,
 						#ffffff 20%,
 						rgba(255, 255, 255, 0) 120%
 					);
-					content: '';
+					content: "";
 					display: inline-block;
 					height: 100%;
 					left: 0;
@@ -377,10 +378,10 @@ body #relacionados-top {
 			height: 100%;
 			width: 32px;
 			&::before {
-				background-image: url('/arquivos/icon-right-slider-vitrine.png');
+				background-image: url("/arquivos/icon-right-slider-vitrine.png");
 				background-repeat: no-repeat;
 				background-size: contain;
-				content: '';
+				content: "";
 				height: 22px;
 				position: absolute;
 				right: 0;
@@ -388,14 +389,14 @@ body #relacionados-top {
 				width: 12px;
 				z-index: 3;
 			}
-			@include breakpoint ('small', 'min') {
+			@include breakpoint("small", "min") {
 				&::after {
 					background-image: linear-gradient(
 						-90deg,
 						#ffffff 40%,
 						rgba(255, 255, 255, 0) 160%
 					);
-					content: '';
+					content: "";
 					display: inline-block;
 					height: 100%;
 					position: absolute;
@@ -430,7 +431,7 @@ body #relacionados-top {
 			min-height: 280px;
 			width: 180px;
 
-			@include breakpoint(767px, 'max') {
+			@include breakpoint(767px, "max") {
 				margin: 0 auto;
 				padding: 30px 20px;
 				width: calc(100% - 40px);
@@ -448,7 +449,7 @@ body #relacionados-top {
 					height: 40px;
 					width: 40px;
 				}
-				@include breakpoint('medium', 'max') {
+				@include breakpoint("medium", "max") {
 					span {
 						min-height: 100px;
 					}
@@ -512,11 +513,28 @@ body #relacionados-top {
 }
 
 #relacionados {
+	padding: 45px 0;
+
+	.container {
+		.row {
+			@include breakpoint('small', 'max') {
+				padding: 0 15px;
+			}
+
+			margin: 0 auto;
+		}
+	}
+
 	h1 {
 		margin: 10px 0 0;
 	}
+
 	p {
 		margin: 0 0 20px;
 		padding: 0;
+	}
+
+	.prateleira-slider {
+		width: 100%;
 	}
 }

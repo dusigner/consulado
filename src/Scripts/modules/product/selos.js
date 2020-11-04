@@ -12,7 +12,7 @@ Nitro.module('selos', function() {
 	$selos = $selos.text().split(', ');
 
 	$selos = $.map($selos, function(v) {
-		return '<p class="product-field-selo ' + $.replaceSpecialChars(v) + '">' + v + '</p>';
+		return '<p class="flag product-field-selo ' + $.replaceSpecialChars(v) + '">' + v + '</p>';
 	}).join('');
 
 	$holder.append($selos);
