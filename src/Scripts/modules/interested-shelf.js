@@ -1,6 +1,6 @@
 import 'vendors/slick';
 
-Nitro.module('interested-shelf', function() {
+Nitro.module('interested-shelf', function () {
 
 	this.createTabList = shelf => {
 		const tabList = shelf.find('.prateleira-tabs__tabs'),
@@ -39,7 +39,7 @@ Nitro.module('interested-shelf', function() {
 			shelves = shelf.find('.prateleira.default'),
 			shelfObs = shelf.find('.link-obs-mobile');
 
-		tabElement.on('click', function() {
+		tabElement.on('click', function () {
 			const $this = $(this);
 			tabElement.removeClass('active');
 			$this.addClass('active');

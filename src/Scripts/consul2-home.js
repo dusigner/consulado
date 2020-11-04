@@ -23,7 +23,7 @@ require('modules/interested-shelf');
 require('modules/subCategoryList');
 
 import 'modules/counter_consumer_week_2020';
-import 'modules/counter_pre_bf_2020';
+// import 'modules/counter_pre_bf_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
@@ -40,10 +40,9 @@ Nitro.controller(
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'interested-shelf',
-		'dataLayer-home-bf-2020',
 		'shelfCategoryHome',
 		/* 'static-banner' */
-		'counter-pre-bf-2020',
+		// 'counter-pre-bf-2020',
 		'counter',
 		// 'datalayer_track'
 		'subCategoryList',
@@ -430,16 +429,27 @@ Nitro.controller(
 		this.moduleTop = () => {
 			$('#content-vitrine .moduleTop10').show();
 			$('#content-vitrine .moduleTop10 .prateleira > ul').not('.slick-initialized').slick({
-				infinite: false,
-				dots: true,
 				arrows: true,
-				mobileFirst: true,
+				dots: true,
+				infinite: false,
+				slidesToShow: 4,
+				slidesToScroll: 3,
 				responsive: [
 					{
-						breakpoint: 992,
+						breakpoint: 990,
 						settings: {
-							arrows: true,
-							slidesToShow: 4
+							slidesToShow: 2.2,
+							slidesToScroll: 2
+						}
+					}
+					,
+					{
+						breakpoint: 480,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1.4,
+							slidesToScroll: 1
 						}
 					},
 					{
@@ -447,10 +457,8 @@ Nitro.controller(
 						settings: {
 							arrows: false,
 							dots: true,
-							infinite: false,
-							slidesToScroll: 1,
-							slidesToShow: 1,
-							swipeToSlide: true
+							slidesToShow: 1.4,
+							slidesToScroll: 1
 						}
 					}
 				]
@@ -462,32 +470,39 @@ Nitro.controller(
 				const $card = $('.' + this.id).fadeIn(450);
 				$('#content-vitrine > div').not($card).hide();
 				$card.find('.prateleira > ul').not('.slick-initialized').slick({
-					infinite: false,
-					arrows: false,
+					adaptiveHeight: false,
+					arrows: true,
 					dots: true,
-					mobileFirst: true,
+					infinite: false,
+					slidesToShow: 4,
+					slidesToScroll: 3,
 					responsive: [
 						{
 							breakpoint: 992,
 							settings: {
-								arrows: false,
-								slidesToShow: 4,
-								infinite: true,
-								dots: true
+								slidesToShow: 2.2,
+								slidesToScroll: 2
 							}
 						},
 						{
-							breakpoint: 768,
+							breakpoint: 480,
 							settings: {
 								arrows: false,
-								dots: true,
-								infinite: true,
+								slidesToShow: 1.4,
 								slidesToScroll: 1,
-								slidesToShow: 1,
-								swipeToSlide: true
+							}
+						},
+						{
+							breakpoint: 375,
+							settings: {
+								arrows: false,
+								slidesToShow: 1.4,
+								slidesToScroll: 1,
+								rtl: true
 							}
 						}
 					]
+
 				});
 
 				$buttons.removeClass('active');

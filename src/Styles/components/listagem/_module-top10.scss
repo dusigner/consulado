@@ -26,7 +26,15 @@
 	.msg-top10 {
 		@include rfs(16);
 		color: #FFFFFF;
-		padding: 5px;
+	}
+
+	#content-vitrine {
+		padding-top: 15px;
+	}
+
+	.prateleira-slider .slick-track .slick-slide {
+		margin: 0 7px;
+		padding: 0 7px;
 	}
 
 	.slick-arrow {
@@ -54,11 +62,13 @@
 	}
 
 	.slick-dots {
-		margin-bottom: -35px;
+		margin-bottom: -40px;
 	}
 
 	li {
-		padding: 12px;
+		margin: 0;
+		padding: 0;
+		width: auto !important;
 
 		article {
 			background-color: #FFFFFF;

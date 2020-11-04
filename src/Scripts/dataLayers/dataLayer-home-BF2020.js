@@ -1,13 +1,10 @@
 import {
-    checkInlineDatalayers,
     pushDataLayer
 } from 'modules/_datalayer-inline';
 
 Nitro.module('dataLayer-home-bf-2020', function () {
 
     this.init = () => {
-        checkInlineDatalayers
-
         this.dataLayerVitrineTop10();
         this.dataLayerTabsParcelas();
     };
