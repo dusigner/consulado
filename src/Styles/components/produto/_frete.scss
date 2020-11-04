@@ -4,7 +4,9 @@
 $template-primary: $orange !default;
 
 body.open-frete {
-	.calc-frete { display: block; }
+	.calc-frete {
+		display: block;
+	}
 }
 
 .calc-frete {
@@ -47,9 +49,12 @@ body.open-frete {
 		}
 	}
 
-	#popupCalculoFreteWrapper { display: none; }
+	#popupCalculoFreteWrapper {
+		display: none;
+	}
 
 	#calculoFrete {
+
 		.header,
 		.footer,
 		.quantity {
@@ -160,7 +165,10 @@ body.open-frete {
 		transition: .2s linear all;
 
 		&.active {
-			@include breakpoint('medium', 'max') { max-width: 513px; }
+			@include breakpoint('medium', 'max') {
+				max-width: 513px;
+			}
+
 			opacity: 1;
 			transition: .3s linear all;
 
@@ -181,8 +189,14 @@ body.open-frete {
 				width: 25px;
 				z-index: 55;
 
-				&::before { display: none; }
-				&:after { content: 'x'; }
+				&::before {
+					display: none;
+				}
+
+				&:after {
+					content: 'x';
+				}
+
 				&:hover {
 					background: #f35216;
 					color: #fff;
@@ -230,6 +244,7 @@ body.open-frete {
 
 					th:first-child {
 						font-size: 0;
+
 						&:after {
 							content: 'Valor';
 							font-size: 14px;
@@ -244,7 +259,9 @@ body.open-frete {
 				display: flex;
 				min-height: 45px;
 
-				&:first-child { border: none; }
+				&:first-child {
+					border: none;
+				}
 
 				th,
 				td {
@@ -255,10 +272,15 @@ body.open-frete {
 					text-align: left;
 					z-index: 1;
 
-					&:empty { display: none; }
+					&:empty {
+						display: none;
+					}
 
 					&:first-child {
-						@include breakpoint('small', 'max') { min-width: 75px; }
+						@include breakpoint('small', 'max') {
+							min-width: 75px;
+						}
+
 						min-width: 115px;
 					}
 
@@ -285,7 +307,9 @@ body.open-frete {
 					padding: 10px 5px;
 				}
 
-				td { color: #736c6b; }
+				td {
+					color: #736c6b;
+				}
 
 				// frete grátis
 				&.frete-gratis {
@@ -314,12 +338,14 @@ body.open-frete {
 							right: 100%;
 							width: 55px;
 						}
+
 						@include breakpoint('medium', 'max') {
 							background: #0fb6de;
 							height: 100%;
 							right: calc(100% + 7px);
 							width: 3px;
 						}
+
 						content: '';
 						z-index: 10;
 					}
@@ -334,9 +360,11 @@ body.open-frete {
 						width: calc(100% + 20px);
 					}
 
-					& + tr { border-color: transparent; }
+					&+tr {
+						border-color: transparent;
+					}
 
-					& + tr.frete-gratis {
+					&+tr.frete-gratis {
 						&:after {
 							border-radius: 0 0 4px 4px;
 							border-top: 1px solid #e3e1e1;

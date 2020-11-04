@@ -117,9 +117,6 @@
 						<vtex.cmc:skuPrice paymentSystemId="4"/>
 						<!-- /Insert best price into PDP -->
 					</div>
-					<!-- Captação de Lead para Black Friday 2020 -->
-						<vtex.cmc:formBestOfferBF />
-					<!-- /Captação de Lead para Black Friday 2020 -->
 
 					<!-- Formas de pagamento -->
 					<div class="formas-pagamento-container">
@@ -133,12 +130,6 @@
 						</div>
 					</div>
 					<!-- /Formas de pagamento -->
-
-					<!-- Descrição do produto -->
-					<div class="descricao-produto" itemprop="description">
-						<vtex.cmc:ProductDescription />
-					</div>
-					<!-- /Descrição do produto -->
 
 					<!-- Selos do produto -->
 					<div class="prod-selos show-medium">
@@ -220,6 +211,7 @@
 					<!-- /Frete -->
 
 					<div class="cta-containers">
+
 						<div class="btn-pecas-produto">
 							<a href="#">Peças para este produto</a>
 						</div>
@@ -247,12 +239,14 @@
 							<p>Ou compre pelo telefone</p>
 							<a href="tel:112739-4826" class="btn_click_call">Televendas</a>
 						</div>
-
-						<div class="social">
-							<a id="shareBtn" class="compartilharFc"></a>
-							<a id="compartilharTw" rel="nofollow" href=""></a>
-							<a id="compartilharEmail"></a>
-						</div>
+						<!-- Captação de Lead para Black Friday 2020 -->
+						<vtex.cmc:formBestOfferBF />
+						<!-- /Captação de Lead para Black Friday 2020 -->
+					</div>
+					<div class="social">
+						<a id="shareBtn" class="compartilharFc"></a>
+						<a id="compartilharTw" rel="nofollow" href=""></a>
+						<a id="compartilharEmail"></a>
 					</div>
 
 					<div class="row prod-more-info">
@@ -683,6 +677,11 @@ Já para pagar um boleto, basta abrir seu PicPay, tocar em “Pagar”, selecion
 
 		<section id="detalhes" class="detalhes"></section>
 		<section id="video" class="video"></section>
+		<!-- Descrição do produto v2-->
+			<div class="descricao-produto" itemprop="description">
+				<vtex.cmc:ProductDescription />
+			</div>
+		<!-- /Descrição do produto -->
 
 		<div class="hide">
 			<vtex.cmc:ProductDescription />
