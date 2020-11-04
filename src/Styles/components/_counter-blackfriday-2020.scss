@@ -104,14 +104,14 @@ $gray-light: #eeeeee;
 							max-width: 100%;
 							padding: 20px 0 20px 29px;
 							pointer-events: none;
-							width: 332px;
+							width: 360px;
 							@include breakpoint('small', 'max') {
 								padding: 0 0 0 15px;
 								width: calc(100% - 104px);
 							}
 
 							.nome {
-								@include rfs(16);
+								@include rfs(18);
 								color: #fff;
 								display: block;
 								flex: initial;
@@ -155,7 +155,7 @@ $gray-light: #eeeeee;
 									text-decoration: none;
 								}
 								.por {
-									@include rfs(28);
+									@include rfs(32);
 									color: $green;
 									display: flex;
 									flex-direction: row;
@@ -168,7 +168,7 @@ $gray-light: #eeeeee;
 										visibility: hidden;
 									}
 									.val {
-										@include rfs(28);
+										@include rfs(32);
 										line-height: normal;
 										margin-bottom: 0;
 									}
@@ -193,12 +193,14 @@ $gray-light: #eeeeee;
 					justify-content: space-between;
 					margin: 0 auto;
 					text-align: center;
-					width: 290px;
+					width: 282px;
 					& .title {
-						font-size: 16px;
+						@include rfs (18);
+						color: #fff;
+						font-weight: 500;
 						margin-bottom: 0;
-						padding-bottom: 6px;
-						text-align: center;
+						padding-bottom: 16px;
+						text-align: left;
 						span {
 							color: $purple;
 							text-shadow: 0 0 1px $purple;
@@ -216,14 +218,14 @@ $gray-light: #eeeeee;
 						color: #ffffff;
 						display: flex;
 						flex-direction: column;
-						margin: 0 15px;
-						max-height: 55px;
+						margin: 0;
+						max-height: 68px;
 						max-width: 100%;
 						min-height: 50px;
 						padding: 3px 0;
 						position: relative;
 						text-align: center;
-						width: 58px;
+						width: 64px;
 
 						#days {
 							display: none;
@@ -240,18 +242,19 @@ $gray-light: #eeeeee;
 							left: 0;
 							position: absolute;
 							right: 0;
+							text-transform: unset;
 							top: 58px;
 						}
 
 						& > p {
 							color: #fff;
 							display: block;
-							font-size: 32px;
-							font-weight: 600;
+							font-size: 40px;
+							font-weight: 500;
 							margin: 0 auto;
 
 							@include breakpoint('medium', 'max') {
-								font-size: 28px;
+								font-size: 22px;
 								font-weight: 400;
 								margin-bottom: -5px;
 								min-width: auto;

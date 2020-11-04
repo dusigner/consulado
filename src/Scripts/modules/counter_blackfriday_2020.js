@@ -39,7 +39,7 @@ Nitro.module("counter-bf-2020", function() {
 
 			const endDate = $(element).find("h2").text();
 
-			$(element).append(`<div id="countdown_dashboard" style="height: 100px">
+			$(element).append(`<div id="countdown_dashboard">
 				<div class="title">Corre! Essa oferta encerra em </div>
 				<div class="dashp hidden">
 					<p id="days_${i}"></p>
@@ -81,11 +81,10 @@ Nitro.module("counter-bf-2020", function() {
 			var m = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
 			var s = Math.floor((remTime % (1000 * 60)) / 1000);
 
-
-			// var d = $days > 9 ? $days : "0" + $days;
-			// var h = $hours > 9 ? $hours : "0" + $hours
-			// var m = $minutes > 9 ? $minutes : "0" + $minutes
-			// var s = $seconds > 9 ? $seconds : "0" + $seconds
+			var d = d > 9 ? d : "0" + d;
+			var h = h > 9 ? h : "0" + h;
+			var m = m > 9 ? m : "0" + m;
+			var s = s > 9 ? s : "0" + s;
 
 			document.getElementById("days_" + i).textContent = d;
 			document.getElementById("hours_" + i).textContent = h;
@@ -107,11 +106,13 @@ Nitro.module("counter-bf-2020", function() {
 					itensProd--;
 				}
 		}
+
 		countdown();
+
 	});
 		$('.counter__offer-prod').slick({
 			slidesToShow: 1,
-			arrows: true,
+			arrows: false,
 			dots: true
 		});
 	};
