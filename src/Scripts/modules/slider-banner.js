@@ -1,37 +1,38 @@
 'use strict';
 
-Nitro.module('slider-banner', [], function() {
+Nitro.module('slider-banner', [], function () {
 	var $buttonOpenRegulamento = $('.open-regulamento');
 
-	this.setupMainSlider = function() {
+	this.setupMainSlider = function () {
 		var qtdBanners,
-			// $bannerPrincipal = $(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
-			$bannerPrincipal = $('.banners .banner-principal')
+			$bannerPrincipal =
+				$(window).width() >= 768 ? $('.banners .banner-principal') : $('.banners-mobile .banner-principal');
 
-		$bannerPrincipal.on('init', function() {
+		$bannerPrincipal.on('init', function () {
 			qtdBanners = $('.banners .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
 
-			// if ($(window).width() <= 768) qtdBanners = $('.banners-mobile .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
+			if ($(window).width() <= 768) {
+				qtdBanners = $('.banners-mobile .banner-principal.slides .slick-slide:not(.slick-cloned)').length;
+			}
 		});
 
 		$bannerPrincipal
 			.slick({
 				autoplay: true,
 				autoplaySpeed: 7000,
-				// mobileFirst: true,
+				mobileFirst: true,
 				dots: true,
-				arrows: true,
+				arrows: false,
 				responsive: [
 					{
 						breakpoint: 568,
 						settings: {
-							arrows: true,
-							dots: false
+							arrows: true
 						}
 					}
 				]
 			})
-			.on('afterChange', function(event, slick, currentSlide) {
+			.on('afterChange', function (event, slick, currentSlide) {
 				if ($('#modal-regulamento-banner').text() !== '' && qtdBanners > 1 && currentSlide === qtdBanners - 1) {
 					$buttonOpenRegulamento.show();
 				} else {
@@ -39,7 +40,7 @@ Nitro.module('slider-banner', [], function() {
 				}
 			});
 
-		$buttonOpenRegulamento.click(function(e) {
+		$buttonOpenRegulamento.click(function (e) {
 			e.preventDefault();
 
 			$('#modal-regulamento-banner').vtexModal({

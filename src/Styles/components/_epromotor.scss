@@ -1,0 +1,35 @@
+.container-epromotor {
+	display: none;
+	background: #f5f5f5;
+	float: left;
+	margin: 20px auto 50px;
+	width: 100%;
+
+	a {
+		display: block;
+		margin: 0 auto;
+		text-decoration: none;
+
+		img {
+			@include breakpoint(400px, "max") {
+				display: none;
+			}
+
+			display: block;
+			max-width: 100%;
+
+			&.mobile {
+				@include breakpoint(400px, "max") {
+					display: block;
+					margin: 0 auto;
+				}
+
+				display: none;
+			}
+		}
+	}
+
+	&.show {
+		display: block;
+	}
+}

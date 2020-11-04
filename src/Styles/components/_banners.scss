@@ -1,79 +1,3 @@
-.container-banner-home {
-	display: flex;
-	@include breakpoint(780px, 'max') { flex-direction: column; }
-}
-
-.container-banner-home .banner {
-	order: 1;
-}
-
-.container-banner-home .banners {
-	width: 50%;
-	@include breakpoint(780px, 'max') { width: 100%; }
-}
-
-.container-banner-home .banners-static-home {
-	display: flex;
-	@include breakpoint(780px, 'max') { display: none; }
-}
-
-.container-banner-home .banners-static-home-tablet {
-	display: none;
-	@include breakpoint(780px, 'max') { display: flex; }
-	@include breakpoint(470px, 'max') { display: none; }
-}
-
-.banners-static-home img,
-.banners-static-home-tablet img,
-.banners-static-home-mobile img {
-	display: block;
-	max-width: 100%;
-}
-
-.banners-static-home-mobile {
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	@include breakpoint(470px, 'max') { display: flex; }
-}
-
-.container-banner-home .banner-principal {
-	min-height: 400px;
-	max-height: 400px;
-}
-
-.banner-principal.slides.mobile {
-	display: none;
-	@include breakpoint(470px, 'max') { display: unset; }
-}
-
-.banner-principal.slides.desktop {
-	@include breakpoint(470px, 'max') { display: none; }
-}
-
-.home-cta-mobile-banner {
-	font-family: "consul";
-	font-size: 16px;
-	color: #ffffff;
-	text-align: center;
-	text-decoration: none;
-	background: #9ACA3C;
-	display: none;
-	align-items: center;
-	justify-content: center;
-	width: 180px;
-	margin: 0 auto;
-	height: 40px;
-	border-radius: 100px;
-
-	position: absolute;
-	bottom: 24px;
-	left: 50%;
-	transform: translate3d(-50%, 0, 0);
-
-	@include breakpoint(470px, 'max') { display: flex; }
-}
-
 .banners,
 .banners-mobile {
 	position: relative;
@@ -117,6 +41,7 @@
 		}
 	}
 }
+
 .banners-mobile {
 	padding-top: 8px !important;
 }
@@ -136,7 +61,7 @@
 	}
 
 	// [ Desktop ] - Altura mínima para evitar o "pulo" do browser no carregamento dos scripts.
-	@include breakpoint(extra-large, 'min') { min-height: 400px; max-height: 400px;}
+	@include breakpoint(extra-large, 'min') { min-height: 340px; max-height: 340px;}
 
 	.box-banner {
 		position: absolute;
