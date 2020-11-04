@@ -12,6 +12,11 @@
 		margin-bottom: 60px;
 	}
 
+	.container {
+		margin: 0 auto;
+		padding: 0 auto;
+	}
+
 	.prateleira {
 		h2 {
 			display: none;
@@ -30,11 +35,18 @@
 
 	#content-vitrine {
 		padding-top: 15px;
+		margin: 0 auto;
+		max-width: 1140px !important;
 	}
 
 	.prateleira-slider .slick-track .slick-slide {
-		margin: 0 7px;
-		padding: 0 7px;
+		margin: 0 8px;
+		padding: 0 6px;
+
+		@media screen and (max-width:600px) {
+			margin: 0 3px;
+			padding: 0 3px;
+		}
 	}
 
 	.slick-arrow {
