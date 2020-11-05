@@ -14,11 +14,11 @@ $gray-light: #eeeeee;
 .counter {
 	&__section {
 		background-color: $bg-gray;
-		padding-bottom: 20px;
+		padding: 50px 0 40px;
 		position: relative;
 
 		> .container {
-			padding: 30px 0 10px;
+			padding: 0;
 		}
 	}
 
@@ -27,7 +27,7 @@ $gray-light: #eeeeee;
 		color: $green;
 		font-weight: 700;
 		line-height: 36px;
-		margin-bottom: 10px;
+		margin-bottom: 24px;
 		margin-top: 0;
 		text-align: center;
 	}
@@ -37,7 +37,6 @@ $gray-light: #eeeeee;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-between;
-		padding-top: 10px;
 
 		@include breakpoint('small', 'max') {
 			display: block;
@@ -58,18 +57,45 @@ $gray-light: #eeeeee;
 				display: flex !important;
 				flex-direction: row;
 				flex-wrap: nowrap;
+				height: 270px;
+				justify-content: space-between;
+				margin-bottom: 0;
+				@media(max-width: 675px) {
+					flex-direction: column;
+					height: auto;
+					justify-content: center;
+				}
+				@media (max-width: 1199px) {
+					align-content: first baseline;
+					flex-wrap: wrap;
+					height: 250px;
+					justify-content: center;
+				}
 				h2 {
 					display: none;
+				}
+				& > ul {
+					max-width: 100%;
+					width: 504px;
+					@media  (max-width: 991px) {
+						margin-right: 0;
+						max-width: 100%;
+						width: auto;
+					}
+					@media (max-width: 1199px) {
+						margin-right: 30px;
+					}
 				}
 				.box-produto {
 					border: none;
 					box-shadow: none;
 					max-width: 100%;
-					padding: 10px 0;
+					padding: 0;
 					width: 100%;
 					.detalhes {
+						align-items: center;
+						display: flex;
 						flex: auto;
-						flex-direction: row;
 						flex-flow: nowrap;
 						.product-infos-wrap {
 							background-color: #fff;
@@ -82,8 +108,14 @@ $gray-light: #eeeeee;
 							pointer-events: none;
 							position: relative;
 							width: 40%;
-							@include breakpoint('phone', 'max') {
-								padding: 10px;
+							@media (max-width: 991px) {
+								border-radius: 5px;
+								height: 116px;
+								padding: 4px;
+								width: 116px;
+								.box-produto .image {
+									position: inherit;
+								}
 								.backup {
 									position: absolute;
 									img {
@@ -105,9 +137,9 @@ $gray-light: #eeeeee;
 							padding: 20px 0 20px 29px;
 							pointer-events: none;
 							width: 360px;
-							@include breakpoint('small', 'max') {
-								padding: 0 0 0 15px;
-								width: calc(100% - 104px);
+							@media (max-width: 991px) {
+								padding: 0 6px 0 20px;
+								width: auto;
 							}
 
 							.nome {
@@ -119,7 +151,14 @@ $gray-light: #eeeeee;
 								font-weight: 500;
 								line-height: 24px;
 								margin: 0 0 20px;
+								@media (max-width: 991px) {
+									font-size: 12px;
+									line-height: 18px;
+									margin-bottom: 12px;
+									max-width: 220px;
+								}
 								span {
+
 									.product-field {
 										color: $bg-gray;
 										line-height: 8px;
@@ -128,6 +167,9 @@ $gray-light: #eeeeee;
 												@include rfs(12);
 												color: $gray-light;
 												font-weight: 400;
+												@media (max-width: 991px) {
+													font-size: 10px;
+												}
 											}
 										}
 									}
@@ -153,6 +195,10 @@ $gray-light: #eeeeee;
 									color: #fff;
 									font-weight: 500;
 									text-decoration: none;
+									@media (max-width: 991px) {
+										color: #9E9E9E;
+										font-size: 12px;
+									}
 								}
 								.por {
 									@include rfs(32);
@@ -172,6 +218,12 @@ $gray-light: #eeeeee;
 										line-height: normal;
 										margin-bottom: 0;
 									}
+									@media (max-width: 991px) {
+										font-size: 16px;
+										.val {
+											font-size: 16px;
+										}
+									}
 								}
 							}
 							.promo-destaque,
@@ -188,12 +240,18 @@ $gray-light: #eeeeee;
 					}
 				}
 				#countdown_dashboard {
+					align-items: baseline;
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: space-between;
-					margin: 0 auto;
+					margin: 0;
 					text-align: center;
-					width: 282px;
+					width: 270px;
+					@media  (max-width: 991px) {
+						justify-content: center;
+						max-width: 100%;
+						width: 240px;
+					}
 					& .title {
 						@include rfs (18);
 						color: #fff;
@@ -201,31 +259,24 @@ $gray-light: #eeeeee;
 						margin-bottom: 0;
 						padding-bottom: 16px;
 						text-align: left;
-						span {
-							color: $purple;
-							text-shadow: 0 0 1px $purple;
-						}
 						&:last-child {
-							font-size: 14px;
-							padding-top: 26px;
+							padding-top: 10px;
+						}
+						@media (max-width: 991px) {
+							padding-bottom: 8px;
+							&:last-child {
+								padding-top: 8px;
+							}
 						}
 					}
 
 					& .dashp {
-						background-color: $bg-gray;
-						border: 1px solid $green;
-						border-radius: 3px;
-						color: #ffffff;
+						background-color: #212121;
 						display: flex;
 						flex-direction: column;
 						margin: 0;
-						max-height: 68px;
-						max-width: 100%;
-						min-height: 50px;
-						padding: 3px 0;
 						position: relative;
 						text-align: center;
-						width: 64px;
 
 						#days {
 							display: none;
@@ -235,29 +286,45 @@ $gray-light: #eeeeee;
 							visibility: hidden !important;
 						}
 						& .dashtitle {
-							bottom: 0;
+							color: #fff;
 							display: block;
-							font-size: 14px;
+							font-size: 16px;
 							font-weight: 400;
-							left: 0;
-							position: absolute;
-							right: 0;
-							text-transform: unset;
-							top: 58px;
+							padding-top: 8px;
+							position: relative;
+							text-transform: lowercase;
+
+							@media  (max-width: 991px) {
+								font-size: 12px;
+							}
 						}
 
 						& > p {
-							color: #fff;
-							display: block;
+							background-color: $bg-gray;
+							border: 1px solid $green;
+							border-radius: 3px;
+							color: #ffffff;
+							display: flex;
+							flex-direction: column;
 							font-size: 40px;
 							font-weight: 500;
-							margin: 0 auto;
+							height: 64px;
+							justify-content: center;
+							margin: 0;
+							max-width: 100%;
+							min-height: 50px;
+							position: relative;
+							text-align: center;
+							width: 64px;
 
-							@include breakpoint('medium', 'max') {
+							@media (max-width: 991px) {
 								font-size: 22px;
-								font-weight: 400;
-								margin-bottom: -5px;
+								font-weight: 500;
+								height: 40px;
+								margin: 0 8px;
+								min-height: auto;
 								min-width: auto;
+								width: 40px;
 							}
 						}
 					}
@@ -267,17 +334,34 @@ $gray-light: #eeeeee;
 						font-weight: 900;
 						position: relative;
 						text-align: center;
+						@media (max-width: 991px) {
+							font-size: 20px;
+						}
 					}
 				}
 			}
 		}
 		.sku_buy {
+			@include rfs(16);
 			background-color: $green;
+			border-radius: 30px;
+			color: #fff;
 			display: block !important;
-			height: 40px;
+			font-weight: 500;
+			height: 48px;
+			max-width: 100%;
+			padding: 10px;
 			position: relative;
-			width: 100px;
+			text-align: center;
+			width: 204px;
 			z-index: 99;
+			@media (max-width: 991px) {
+				font-size: 16px;
+				height: 32px;
+				margin-top: 24px;
+				padding: 4px;
+				width: 160px;
+			}
 		}
 
 		&-count {
@@ -300,26 +384,15 @@ $gray-light: #eeeeee;
 				}
 			}
 		}
-
-		&-btn {
-			@include transition(all);
-			background-color: $purple;
-			border: 2px solid transparent;
-			border-radius: 100px;
-			color: #fff;
-			display: block;
-			font-size: 18px;
-			line-height: 34px;
-			min-height: 40px;
-			text-align: center;
-			width: 100%;
-
-			&:hover {
-				background-color: transparent;
-				border: 2px solid $purple;
-				color: $purple;
-				text-decoration: none;
+	}
+	.slick-dots {
+		li {
+			button {
+				background-color: #757575;
 			}
 		}
 	}
+}
+.vitrine-ofertas-interesses {
+	background-color: #000 !important;
 }

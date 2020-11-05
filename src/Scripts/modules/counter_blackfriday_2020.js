@@ -40,7 +40,7 @@ Nitro.module("counter-bf-2020", function() {
 			const endDate = $(element).find("h2").text();
 
 			$(element).append(`<div id="countdown_dashboard">
-				<div class="title">Corre! Essa oferta encerra em </div>
+				<div class="title">Essas ofertas terminam em </div>
 				<div class="dashp hidden">
 					<p id="days_${i}"></p>
 					<span class="dashtitle">Dias</span>
@@ -63,8 +63,7 @@ Nitro.module("counter-bf-2020", function() {
 			</div>`);
 
 
-
-			let botao = $(element).find(".sku_buy");
+			let botao = $(element).find(".sku_buy").text("Eu quero!");
 			$(element).append(botao);
 
 		function countdown(){
