@@ -563,12 +563,15 @@ $(document).on('ready', function() {
 						}
 						else if ((allProductsIsPurificadores && someProductsHasRecurrence) || (skuId === '' && recurrenceId !== '')) {
 							recurrence.autoOpen(recurrenceId);
-						} else if (skuId !== '') {
-							if (store && store.isPersonal) {
-								gae.autoOpen(skuId);
-
-							}
 						}
+
+						//Função que chama o modal de garantia estendida comentada para Black Friday 2020
+						//else if (skuId !== '') {
+						//	if (store && store.isPersonal) {
+						// 		gae.autoOpen(skuId);
+						//  }
+						//}
+						console.log("Função que chama o modal de garantia estendida comentada para Black Friday 2020 || Arquivo em: Scripts/modules/checkout/checkout5-custom.js - linha 568");
 
 						modals = false;
 					}
