@@ -26,6 +26,11 @@
 	.title-top10 {
 		color: #9ACA3C;
 		margin-bottom: 12px;
+
+		@media screen and (max-width:600px) {
+			margin: 0 15px;
+			padding: 0 15px;
+		}
 	}
 
 	.msg-top10 {
@@ -36,6 +41,7 @@
 	#content-vitrine {
 		padding-top: 15px;
 		margin: 0 auto;
+		padding-right: 0;
 		max-width: 1140px !important;
 	}
 
@@ -44,8 +50,8 @@
 		padding: 0 6px;
 
 		@media screen and (max-width:600px) {
-			margin: 0 3px;
-			padding: 0 3px;
+			margin: 0;
+			padding: 0 6px;
 		}
 	}
 
@@ -92,5 +98,9 @@
 			-moz-box-shadow: 0px 0px 4px 3px rgba(154, 202, 60, 0.5);
 			box-shadow: 0px 0px 4px 3px rgba(154, 202, 60, 0.5);
 		}
+	}
+
+	.prod-info {
+		text-align: left;
 	}
 }
