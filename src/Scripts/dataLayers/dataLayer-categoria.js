@@ -9,6 +9,7 @@ Nitro.module('dataLayer-categoria', function() {
 		this.shelfSelectSku();
 		this.bannerDataLayer();
 		this.taggingSelo();
+		this.dataLayerAlavancasComerciais();
 	},
 
 	this.breadCrumb = () => {
@@ -74,6 +75,18 @@ Nitro.module('dataLayer-categoria', function() {
 				);
 			}
 		});
+	}
+
+	this.dataLayerAlavancasComerciais = () => {
+		$('.category-alavancas-comerciais__banners .box-banner').on('click', function(){
+			const option = $(this).find('a img').attr('alt').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();
+			const categoryName = dataLayer[0].categoryName.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w\-]+/g, '_').toLowerCase();;
+			pushDataLayer(
+				`black_friday_2020`,
+				`categoria_${categoryName}`,
+				`click_alavanca_promocao_${option}`
+			);
+		})
 	}
 
 	this.init();
