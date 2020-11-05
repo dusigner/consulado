@@ -198,7 +198,7 @@ const initLeadsBlackfriday = () => {
 			receberOfertasBlackFriday: categoriasLista,
 			beneficiosBlackFriday: benefits,
 			isNewsletterOptIn: true,
-			newsletterType: 'blackfriday2019'
+			newsletterType: 'blackfriday2020'
 		};
 
 
@@ -310,7 +310,7 @@ var Index = {
 	},
 
 	countdown: function () {
-		var endDate = '2019/11/29',
+		var endDate = '2020/11/27',
 			$countdown = $('.countdown'),
 			$days = $countdown.find('.days.indicators__number'),
 			$hours = $countdown.find('.hours.indicators__number'),
