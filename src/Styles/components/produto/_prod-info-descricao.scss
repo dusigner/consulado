@@ -3,9 +3,10 @@
 	@include breakpoint('medium', 'max') {
 		order: 3;
 	}
-	background-color: #FAF9F9;
-	margin: .5em 0 1em 0;
-	padding: 20px;
+
+	width: 92%;
+	max-width: 1120px;
+	margin: 15px auto 15px;
 
 	.productDescription {
 		@include rfs(12px);
@@ -19,14 +20,18 @@
 			width: 4px;
 		}
 
-		&::-webkit-scrollbar-track { background: #F1F0F0; }
+		&::-webkit-scrollbar-track {
+			background: #F1F0F0;
+		}
 
 		&::-webkit-scrollbar-thumb {
 			background: #BFBEBE;
 			width: 4px;
 		}
 
-		p { margin: 0 0 1.5em 0; }
+		p {
+			margin: 0 0 1.5em 0;
+		}
 
 		br {
 			border-top: 1px solid #BFBEBE;

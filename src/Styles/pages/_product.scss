@@ -2,7 +2,7 @@
 
 @media (max-width: 60em) {
 	.produto-indisponivel .portal-notify-me-ref .notifyme-button-ok {
-		width: 100%!important;
+		width: 100% !important;
 	}
 
 	body #detalhes .item .image {
@@ -30,39 +30,56 @@
 }
 
 body.produto {
-	overflow: initial!important;
+	overflow: initial !important;
 
 	.main {
 		@include breakpoint(small, 'max') {
-			.container { padding: 0 10px; }
+			.container {
+				padding: 0 10px;
+			}
 
-			&.row { margin-bottom: 0; }
+			&.row {
+				margin-bottom: 0;
+			}
 		}
 
 		section.slider {
 			@include breakpoint(small, 'max') {
-				.container { padding: 0; }
-				.slick-dots { bottom: 65px !important; }
+				.container {
+					padding: 0;
+				}
+
+				.slick-dots {
+					bottom: 65px !important;
+				}
 			}
 		}
 
 		h1.lead,
 		h2.title,
-		.item h3 { @include font-size(30px); }
+		.item h3 {
+			@include font-size(30px);
+		}
 
 		h1.lead {
-			@include breakpoint('small', 'max') { margin-bottom: 10px; }
+			@include breakpoint('small', 'max') {
+				margin-bottom: 10px;
+			}
+
 			display: inline-block;
 			margin-bottom: 0;
 		}
 
 		h2.title,
-		.item h3 { font-weight: 300; }
+		.item h3 {
+			font-weight: 300;
+		}
 
 		h2.title {
 			@include font-size(38px);
 			display: inline-block;
 			font-weight: 400;
+
 			@include breakpoint(small, 'max') {
 				@include font-size(24px);
 			}
@@ -75,6 +92,7 @@ body.produto {
 	}
 
 	.preco-a-vista {
+
 		.skuPrice,
 		span {
 			display: none !important;
@@ -83,7 +101,9 @@ body.produto {
 
 	&.google-pla {
 		.prod-preco {
-			.descricao-preco { color: $txt-gray-l; }
+			.descricao-preco {
+				color: $txt-gray-l;
+			}
 
 			em.valor-dividido {
 				@include font-size(21px);
@@ -98,7 +118,7 @@ body.produto {
 					color: $txt-gray-l !important;
 				}
 
-				.skuBestInstallmentValue + span {
+				.skuBestInstallmentValue+span {
 					@include font-size(21px);
 					color: $txt-gray-l !important;
 				}
@@ -112,7 +132,9 @@ body.produto {
 					color: $green !important;
 					display: block;
 
-					.gray { color: $txt-gray; }
+					.gray {
+						color: $txt-gray;
+					}
 				}
 			}
 		}
@@ -126,11 +148,11 @@ body.produto {
 		}
 
 		p {
-				color: #736c6b !important;
-				display: block;
-				font-size: 14px !important;
-				margin: 20px 0 10px 0 !important;
-				text-align: center !important;
+			color: #736c6b !important;
+			display: block;
+			font-size: 14px !important;
+			margin: 20px 0 10px 0 !important;
+			text-align: center !important;
 		}
 
 		.buy-button {
@@ -161,7 +183,7 @@ body.produto {
 				line-height: 16px;
 				height: 44px;
 				margin-top: 15px;
-				display: none!important;
+				display: none !important;
 			}
 		}
 
@@ -182,17 +204,22 @@ body.produto {
 
 /*==========Produto indisponível==========*/
 body.produto-indisponivel {
+
 	.cont-prod-details-nav,
 	.pinned {
 
-		ul { display: block; }
+		ul {
+			display: block;
+		}
 
 		@include breakpoint(small, 'max') {
 			@include hide-conditional();
 		}
 	}
 
-	.sku-notifyme { display: block !important; }
+	.sku-notifyme {
+		display: block !important;
+	}
 
 	#BuyButton .buy-button {
 		display: none;
@@ -264,7 +291,9 @@ div#modal-custom-share {
 	}
 
 	#formshare.sucesso {
-		.enviadocomsucesso { display: block; }
+		.enviadocomsucesso {
+			display: block;
+		}
 	}
 
 	.enviadocomsucesso {
@@ -279,9 +308,9 @@ div#modal-custom-share {
 
 .pinned {
 	margin: 0;
-	position: fixed!important;
+	position: fixed !important;
 	text-align: left;
-	top: 0!important;
+	top: 0 !important;
 	width: 100%;
 	z-index: 4;
 }
@@ -294,17 +323,24 @@ div#modal-custom-share {
 		top: 15px;
 		z-index: 15;
 	}
-	padding-left: 0!important;
+
+	padding-left: 0 !important;
 	position: relative;
 
-	@include breakpoint(small, 'max') { margin-top: 20px; }
+	@include breakpoint(small, 'max') {
+		margin-top: 20px;
+	}
 }
 
 .cont-prod-details-nav {
 	&.fixed-bar {
 		display: block;
 	}
-	@include breakpoint(small, 'max') { display: none; }
+
+	@include breakpoint(small, 'max') {
+		display: none;
+	}
+
 	display: none;
 }
 
@@ -339,15 +375,21 @@ div#modal-custom-share {
 			text-decoration: none;
 		}
 
-		i { display: none; }
+		i {
+			display: none;
+		}
 	}
 }
 
-.overflow-hidden { overflow: hidden; }
+.overflow-hidden {
+	overflow: hidden;
+}
 
 .cep-invalido {
 	.valor {
-		strong { display: none; }
+		strong {
+			display: none;
+		}
 
 		&:after {
 			@include rfs(12);
