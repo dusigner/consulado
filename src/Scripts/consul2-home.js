@@ -27,6 +27,7 @@ import 'modules/counter_pre_bf_2020';
 // import 'modules/datalayer_track';
 import 'dataLayers/datalayer-vitrine-categorizacao';
 import 'dataLayers/datalayer-vitrine-filter-size-family';
+import 'dataLayers/dataLayer-home-BF2020'
 
 Nitro.controller(
 	'home',
@@ -39,7 +40,6 @@ Nitro.controller(
 		/* 'tabs-consumidor', 'tabs-descontos', */ 'linkDoubleClick',
 		'chatHome',
 		'interested-shelf',
-		'dataLayer-home-bf',
 		'shelfCategoryHome',
 		/* 'static-banner' */
 		'counter-pre-bf-2020',
@@ -49,7 +49,8 @@ Nitro.controller(
 		'dataLayer-vitrine-categorizacao',
 		'datalayer-vitrine-filter-size-family',
 		'dataLayer-banner-home',
-		'popup-whatsapp-promoter'
+		'popup-whatsapp-promoter',
+		'dataLayer-home-bf-2020'
 	],
 
 	function (chaordic) {
@@ -118,7 +119,7 @@ Nitro.controller(
 			]
 		});
 
-		$('.tipbar-novo .container .row').slick ({
+		$('.tipbar-novo .container .row').slick({
 			mobileFirst: false,
 			slidesToShow: 4,
 			centerPadding: '10px',
@@ -388,7 +389,7 @@ Nitro.controller(
 				]
 			});
 
-			const $buttons = $('.btn').click(function() {
+			const $buttons = $('.btn').click(function () {
 				$('#vitrines-family > div').fadeIn(450);
 
 				const $card = $('.' + this.id).fadeIn(450);
@@ -425,8 +426,93 @@ Nitro.controller(
 			})
 		};
 
+		this.moduleTop = () => {
+			$('#content-vitrine .moduleTop10').show();
+			$('#content-vitrine .moduleTop10 .prateleira > ul').not('.slick-initialized').slick({
+				arrows: true,
+				dots: true,
+				infinite: false,
+				slidesToShow: 4,
+				slidesToScroll: 3,
+				responsive: [
+					{
+						breakpoint: 990,
+						settings: {
+							slidesToShow: 2.2,
+							slidesToScroll: 2
+						}
+					}
+					,
+					{
+						breakpoint: 480,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1.4,
+							slidesToScroll: 1
+						}
+					},
+					{
+						breakpoint: 375,
+						settings: {
+							arrows: false,
+							dots: true,
+							slidesToShow: 1.4,
+							slidesToScroll: 1
+						}
+					}
+				]
+			});
+
+			const $buttons = $('.btn').click(function () {
+				$('#content-vitrine > div').fadeIn(450);
+
+				const $card = $('.' + this.id).fadeIn(450);
+				$('#content-vitrine > div').not($card).hide();
+				$card.find('.prateleira > ul').not('.slick-initialized').slick({
+					adaptiveHeight: false,
+					arrows: true,
+					dots: true,
+					infinite: false,
+					slidesToShow: 4,
+					slidesToScroll: 3,
+					responsive: [
+						{
+							breakpoint: 992,
+							settings: {
+								slidesToShow: 2.2,
+								slidesToScroll: 2
+							}
+						},
+						{
+							breakpoint: 480,
+							settings: {
+								arrows: false,
+								slidesToShow: 1.4,
+								slidesToScroll: 1,
+							}
+						},
+						{
+							breakpoint: 375,
+							settings: {
+								arrows: false,
+								slidesToShow: 1.4,
+								slidesToScroll: 1,
+								rtl: true
+							}
+						}
+					]
+
+				});
+
+				$buttons.removeClass('active');
+				$(this).addClass('active');
+			})
+		};
+
 		this.init = () => {
 			this.filterSize();
+			this.moduleTop();
 		};
 
 		this.init();
