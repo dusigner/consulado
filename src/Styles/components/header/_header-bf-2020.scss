@@ -1,0 +1,203 @@
+.home-bf-2020 {
+    .header {
+        .menu-mobile {
+            height: 44px;
+            overflow: visible;
+            .open-menu-mobile {
+                background-color: #9ACA3C;
+                height: 100%;
+                width: 52px;
+                i.icon-hamburger {
+                    flex: 1;
+                    top: 50%;
+                    left: 50%;
+                    border-color: #ffffff;
+                    transform: translateX(-50%) translateY(-50%);
+                    &:before, &:after {
+                        background-color: #ffffff;
+                    }
+                }
+            }
+
+            &.menu-active {
+                .open-menu-mobile {
+                    .icon-hamburger {
+                        background: none;
+                        border-color: transparent;
+                        &:before {
+                            color: #ffffff;
+                            background-color: transparent;
+                        }
+
+                        &:after {
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+        .search-coupons-mobile {
+            display: flex;
+            align-items: center;
+            padding-top: 5px;
+            padding-bottom: 6px;
+
+            background: #ffffff;
+
+            @media screen and (min-width: 768px) {
+                display: none;
+            }
+            .cont-search.search {
+                display: flex;
+                position: relative;
+                top: 0;
+                width: 75%;
+                height: auto;
+
+                padding-left: 10px;
+
+                form {
+                    display: flex;
+                    align-items: center;
+
+                    .icon-consul-loupe {
+                        height: auto;
+                        top: 50%;
+                    }
+
+                    .text-search {
+                        border: 1px solid #E0E0E0;
+                        border-radius: 100px;
+                        max-height: 36px;
+                        margin-bottom: 0;
+
+                        padding: 8px 10%!important;
+                        color: #616161;
+                        background-color: transparent!important;
+                    }
+                }
+            }
+
+            .coupons-block {
+                width: 25%;
+                height: auto;
+                padding: 0 15px;
+                display: flex;
+                position: relative;
+                align-items: center;
+                justify-content: center;
+
+                @media screen and (max-width: 376px) {
+                    padding: 0 10px;
+                }
+
+                @media screen and (max-width: 361px) {
+                    padding: 0 8px;
+                }
+
+                @media screen and (max-width: 321px) {
+                    padding: 0 3px;
+                }
+
+                a {
+                    margin: 0 auto;
+
+                    color: #9ACA3C;
+                    font-size: 14px;
+
+                    position: relative;
+                    width: 100%;
+
+                    &:before {
+                        content: '';
+                        background-image: url("data:image/svg+xml,%3Csvg width='26' height='24' viewBox='0 0 26 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.4169 8.87393L19.5307 8.34732C19.2907 8.28394 19.1546 8.04833 19.21 7.79194L19.6971 5.89508C19.7815 5.53223 19.5774 5.17881 19.221 5.07043L17.3347 4.54383C17.0947 4.48045 16.9587 4.24483 17.0141 3.98845L17.5012 2.09159C17.5735 1.82542 17.4786 1.54361 17.2506 1.38355C17.0395 1.2137 16.7414 1.20631 16.5041 1.34333L1.58588 9.95635C1.34854 10.0934 1.20589 10.3553 1.24745 10.623C1.289 10.8907 1.46865 11.1236 1.73535 11.194L3.62161 11.7206C3.86164 11.784 3.99767 12.0196 3.94226 12.276L3.45518 14.1728C3.37083 14.5357 3.57488 14.8891 3.93129 14.9975L5.81756 15.5241C6.05758 15.5875 6.19362 15.8231 6.13821 16.0795L5.65113 17.9763C5.56678 18.3392 5.77083 18.6926 6.12724 18.801L8.01351 19.3276C8.25353 19.391 8.38956 19.6266 8.33416 19.883L7.84708 21.7798C7.77472 22.046 7.86961 22.3278 8.09764 22.4879C8.30872 22.6577 8.60683 22.6651 8.84417 22.5281L23.7624 13.9151C23.9997 13.778 24.1423 13.5162 24.1008 13.2484C24.0592 12.9807 23.8796 12.7478 23.6129 12.6774L21.7266 12.1508C21.4866 12.0874 21.3506 11.8518 21.406 11.5954L21.8931 9.69858C21.9871 9.35256 21.7734 8.9823 21.4169 8.87393ZM8.83987 10.0318C9.41626 9.69898 10.163 9.89616 10.4934 10.4684C10.8237 11.0406 10.6211 11.7859 10.0447 12.1186C9.46835 12.4514 8.72161 12.2542 8.39125 11.682C8.04393 11.1196 8.24654 10.3743 8.83987 10.0318ZM11.5357 16.1496C11.3321 16.1101 11.1671 15.981 11.0602 15.7958C10.9533 15.6107 10.9337 15.4201 10.9916 15.2072L12.8801 8.26009C12.9308 8.07377 13.0615 7.90858 13.231 7.8107C13.4005 7.71283 13.6089 7.68227 13.8222 7.73861C14.0089 7.7879 14.1909 7.90726 14.2977 8.09239C14.4046 8.27751 14.4243 8.46813 14.3664 8.68107L12.485 15.6015C12.3765 16.0008 11.9357 16.2553 11.5357 16.1496ZM16.5181 13.8565C15.9417 14.1893 15.195 13.9921 14.8646 13.4199C14.5342 12.8477 14.7368 12.1024 15.3132 11.7696C15.8896 11.4368 16.6363 11.634 16.9667 12.2062C17.2971 12.7784 17.1114 13.5139 16.5181 13.8565Z' stroke='%239ACA3C'/%3E%3C/svg%3E%0A");
+                        background-position: center;
+                        background-size: cover;
+                        position: absolute;
+                        height: 20px;
+                        width: 20px;
+                        left: 0;
+                    }
+                }
+            }
+
+        }
+
+        .cont-search.search {
+            @media screen and (max-width: 768px) {
+                display: none;
+            }
+        }
+    }
+    .top-navigation {
+        background: linear-gradient(90deg,#8bba34 15%,#9aca3c 0);
+
+        .menu-department {
+            .item{
+                background: none;
+                &.dropdown {
+                    background-color: #8bba34;
+                    i.icon-hamburger {
+                        border-color: #ffffff;
+                        &:before, &:after {
+                            background-color: #ffffff;
+                        }
+                    }
+
+                    .submenu {
+                        li {
+                            a {
+                                color: #736c6b;
+
+                                &:hover {
+                                    color: #7f2893;
+                                }
+                            }
+                        }
+                    }
+
+                    a {
+                        text-transform: capitalize;
+                    }
+                }
+
+                a{
+                    color: #ffffff;
+                    font-size: 14px;
+                }
+
+                &.item-pecas{
+                    &:before {
+                        display: none;
+                    }
+                }
+
+                &#menu-cupons.item-cupons {
+                    display: flex;
+                    position: relative;
+                    align-items: center;
+                    padding-right: 0;
+                    padding-left: 30px;
+                    &:before {
+                        content: '';
+                        background-image: url("data:image/svg+xml,%3Csvg width='26' height='24' viewBox='0 0 26 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.4169 8.87393L19.5307 8.34732C19.2907 8.28394 19.1546 8.04833 19.21 7.79194L19.6971 5.89508C19.7815 5.53223 19.5774 5.17881 19.221 5.07043L17.3347 4.54383C17.0947 4.48045 16.9587 4.24483 17.0141 3.98845L17.5012 2.09159C17.5735 1.82542 17.4786 1.54361 17.2506 1.38355C17.0395 1.2137 16.7414 1.20631 16.5041 1.34333L1.58588 9.95635C1.34854 10.0934 1.20589 10.3553 1.24745 10.623C1.289 10.8907 1.46865 11.1236 1.73535 11.194L3.62161 11.7206C3.86164 11.784 3.99767 12.0196 3.94226 12.276L3.45518 14.1728C3.37083 14.5357 3.57488 14.8891 3.93129 14.9975L5.81756 15.5241C6.05758 15.5875 6.19362 15.8231 6.13821 16.0795L5.65113 17.9763C5.56678 18.3392 5.77083 18.6926 6.12724 18.801L8.01351 19.3276C8.25353 19.391 8.38956 19.6266 8.33416 19.883L7.84708 21.7798C7.77472 22.046 7.86961 22.3278 8.09764 22.4879C8.30872 22.6577 8.60683 22.6651 8.84417 22.5281L23.7624 13.9151C23.9997 13.778 24.1423 13.5162 24.1008 13.2484C24.0592 12.9807 23.8796 12.7478 23.6129 12.6774L21.7266 12.1508C21.4866 12.0874 21.3506 11.8518 21.406 11.5954L21.8931 9.69858C21.9871 9.35256 21.7734 8.9823 21.4169 8.87393ZM8.83987 10.0318C9.41626 9.69898 10.163 9.89616 10.4934 10.4684C10.8237 11.0406 10.6211 11.7859 10.0447 12.1186C9.46835 12.4514 8.72161 12.2542 8.39125 11.682C8.04393 11.1196 8.24654 10.3743 8.83987 10.0318ZM11.5357 16.1496C11.3321 16.1101 11.1671 15.981 11.0602 15.7958C10.9533 15.6107 10.9337 15.4201 10.9916 15.2072L12.8801 8.26009C12.9308 8.07377 13.0615 7.90858 13.231 7.8107C13.4005 7.71283 13.6089 7.68227 13.8222 7.73861C14.0089 7.7879 14.1909 7.90726 14.2977 8.09239C14.4046 8.27751 14.4243 8.46813 14.3664 8.68107L12.485 15.6015C12.3765 16.0008 11.9357 16.2553 11.5357 16.1496ZM16.5181 13.8565C15.9417 14.1893 15.195 13.9921 14.8646 13.4199C14.5342 12.8477 14.7368 12.1024 15.3132 11.7696C15.8896 11.4368 16.6363 11.634 16.9667 12.2062C17.2971 12.7784 17.1114 13.5139 16.5181 13.8565Z' stroke='%23F2F2F2'/%3E%3C/svg%3E%0A");
+                        background-position: center;
+                        background-size: cover;
+                        position: absolute;
+                        height: 20px;
+                        width: 25px;
+                        left: 0;
+                    }
+
+                    a{
+                        color: #ffffff;
+                        font-size: 14px;
+                        font-weight: 400;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+        }
+    }
+}
