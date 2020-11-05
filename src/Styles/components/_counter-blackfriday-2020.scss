@@ -128,14 +128,25 @@ $gray-light: #eeeeee;
 								height: 116px;
 								padding: 4px;
 								width: 116px;
-								.box-produto .image {
-									position: inherit;
+								.box-produto {
+									.image {
+										position: inherit;
+									}
 								}
 								.backup {
 									position: absolute;
 									img {
 										width: 100%;
 									}
+								}
+							}
+							.image {
+								&::before {
+									content: none;
+								}
+								.FlagsHightLight {
+									display: none;
+									visibility: hidden;
 								}
 							}
 							.wishlist__container,

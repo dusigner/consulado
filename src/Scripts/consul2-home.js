@@ -29,6 +29,7 @@ import 'dataLayers/datalayer-vitrine-filter-size-family';
 
 //BF 2020
 require('modules/counter_blackfriday_2020');
+require('dataLayers/dataLayer_counterBF-2020');
 
 Nitro.controller(
 	'home',
@@ -45,12 +46,13 @@ Nitro.controller(
 		'shelfCategoryHome',
 		/* 'static-banner' */
 		'counter-bf-2020',
+		'dataLayer-counterBF-2020',
 		// 'datalayer_track'
 		'subCategoryList',
 		'dataLayer-vitrine-categorizacao',
 		'datalayer-vitrine-filter-size-family',
 		'dataLayer-banner-home',
-		'popup-whatsapp-promoter'
+		'popup-whatsapp-promoter',
 	],
 
 	function (chaordic) {

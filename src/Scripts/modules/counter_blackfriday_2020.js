@@ -10,11 +10,6 @@ Nitro.module("counter-bf-2020", function() {
 		this.initCounter();
 	};
 
-	// $(".counter__offer-btn").attr(
-	// 	"href",
-	// 	$(".counter__offer .shelf__buy-button").attr("href")
-	// );
-
 	this.initCounter = () => {
 
 		let $counterSection = $(".counter__section"),
@@ -23,16 +18,12 @@ Nitro.module("counter-bf-2020", function() {
 
 		const lista = $counterProd.find(".prateleira.default");
 		let itensProd = $(lista).length;
-		console.log(itensProd + "verifica se tem contador");
 
 		if(itensProd === 0) {
 			$counterSection.hide();
 		} else {
 			$counterSection.show();
 		}
-
-
-
 
 		lista.map(function(i, element) {
 
@@ -99,8 +90,7 @@ Nitro.module("counter-bf-2020", function() {
 					document.getElementById("hours_" + i).innerHTML = " ";
 					document.getElementById("minutes_" + i).innerHTML = " ";
 					document.getElementById("seconds_" + i).innerHTML = " ";
-					console.log(element);
-					console.log(itensProd + " verifica se excluiu um item");
+
 					$(element).remove();
 					$(".slick-dots").find(".slick-active").first().hide();
 					itensProd--;
@@ -116,6 +106,8 @@ Nitro.module("counter-bf-2020", function() {
 		infinite: false
 	});
 
+	// $('.counter__offer-prod').on('afterChange', function(event, slick, currentSlide, nextSlide){
+	// 	console.log(event, slick, currentSlide, nextSlide);
 
 	// if (itensProd.length === 0) {
 	// 	$('.counter__offer-prod').remove('slick-slide');
