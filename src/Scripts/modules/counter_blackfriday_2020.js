@@ -17,29 +17,28 @@ Nitro.module("counter-bf-2020", function() {
 
 	this.initCounter = () => {
 
-		let $counter = $(".counter"),
-			$endMessage = $(".counter__end-promotion"),
-			$buyButton = $(".counter__offer-cta"),
-			$counterSubSection = $(".counter__offer-count"),
-			$counterSection = $(".counter__section"),
+		let $counterSection = $(".counter__section"),
 			$counterProd = $(".counter__offer-prod");
 
 
 		const lista = $counterProd.find(".prateleira.default");
 		let itensProd = $(lista).length;
+		console.log(itensProd + "verifica se tem contador");
 
-		if($(itensProd) === 0) {
+		if(itensProd === 0) {
 			$counterSection.hide();
 		} else {
 			$counterSection.show();
 		}
 
 
+
+
 		lista.map(function(i, element) {
 
 			const endDate = $(element).find("h2").text();
 
-			$(element).append(`<div id="countdown_dashboard">
+			$(element).append(`<div class="countdown_dashboard">
 				<div class="title">Essas ofertas terminam em </div>
 				<div class="dashp hidden">
 					<p id="days_${i}"></p>
@@ -100,20 +99,27 @@ Nitro.module("counter-bf-2020", function() {
 					document.getElementById("hours_" + i).innerHTML = " ";
 					document.getElementById("minutes_" + i).innerHTML = " ";
 					document.getElementById("seconds_" + i).innerHTML = " ";
+					console.log(element);
+					console.log(itensProd + " verifica se excluiu um item");
 					$(element).remove();
-					$(".slick-dots").find("button").first().remove();
+					$(".slick-dots").find(".slick-active").first().hide();
 					itensProd--;
 				}
 		}
 
 		countdown();
-
 	});
-		$('.counter__offer-prod').slick({
-			slidesToShow: 1,
-			arrows: false,
-			dots: true
-		});
+	$('.counter__offer-prod').slick({
+		slidesToShow: 1,
+		arrows: false,
+		dots: true,
+		infinite: false
+	});
+
+
+	// if (itensProd.length === 0) {
+	// 	$('.counter__offer-prod').remove('slick-slide');
+	// }
 	};
 	// Start it
 	this.init();
