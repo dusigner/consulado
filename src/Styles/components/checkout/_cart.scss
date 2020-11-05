@@ -343,7 +343,7 @@ body.body-cart {
 						@include breakpoint(small, 'max') { margin-right: 16px; }
 						@include breakpoint(small, 'min') {
 							margin-top: -1px;
-							position: absolute;
+							//position: absolute;
 							text-transform: uppercase;
 							top: 0;
 						}

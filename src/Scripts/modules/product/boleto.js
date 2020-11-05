@@ -66,8 +66,8 @@ Nitro.module('boleto', function () {
 		$.each(window.skuJson.skus, function (i, sku) {
 			sku.valPercentage = sku.cashPercentage = false;
 
-			if (sku.available && sku.listPrice > sku.bestPrice) {
-				valPercentage = Math.floor(((sku.listPrice - sku.bestPrice) / sku.listPrice) * 100);
+			if (sku.available && sku.listPrice > sku.spotPrice) {
+				valPercentage = Math.floor(((sku.listPrice - sku.spotPrice) / sku.listPrice) * 100);
 
 				if (valPercentage >= 20 || (isPurificador && valPercentage >= 5)) {
 					sku.valPercentage = valPercentage;
@@ -99,10 +99,10 @@ Nitro.module('boleto', function () {
 				 * Caso contrário, mostra o desconto do boleto
 				 *///Remove porcentagem quando for igual a 0%
 				if (cmcDiscountCartao >= cmcDiscountBoleto) {
-					// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'cartao') + '</p>';
+					// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span></span><span class="gray">, por</span> ' + priceCash(sku.spotPrice, 'cartao') + '</p>';
 					boletoInfo = `
 						<em class="valor-discount discount-boleto">
-							<strong>${priceCash(sku.bestPrice, 'cartao')}</strong> <span class="on-discount" style="display: none;">${cmcDiscountCartao}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span></span>
+							<strong>${priceCash(sku.spotPrice, 'cartao')}</strong> <span class="on-discount" style="display: none;">${cmcDiscountCartao}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span></span>
 						</em>
 					`;
 
@@ -113,10 +113,10 @@ Nitro.module('boleto', function () {
 					}, 500)
 
 				} else {
-					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.bestPrice, 'boleto') + '</p>';
+					// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span></span><span class="gray">, por</span> ' + priceCash(sku.spotPrice, 'boleto') + '</p>';
 					boletoInfo = `
 						<em class="valor-discount discount-boleto">
-							<strong>${priceCash(sku.bestPrice, 'boleto')}</strong> <span class="on-discount" style="display: none;">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span>
+							<strong>${priceCash(sku.spotPrice, 'boleto')}</strong> <span class="on-discount" style="display: none;">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span>
 						</em>
 					`;
 
@@ -159,10 +159,10 @@ Nitro.module('boleto', function () {
 			//Remove porcentagem quando for igual a 0%
 			if (cmcDiscountCartao >= cmcDiscountBoleto) {
 				//isDiscountOff = cmcDiscountCartao > 0 ? ' (' + cmcDiscountCartao + '% OFF)' : '';
-				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'cartao') + '</p>';
+				// boletoInfo = '<p class="discount-boleto"><span class="bloco">1x no cartão de crédito</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].spotPrice, 'cartao') + '</p>';
 				boletoInfo = `
 					<em class="valor-discount discount-boleto">
-						<strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')} </strong> <span class="on-discount" style="display: none;">${cmcDiscountCartao}% de desconto  <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span></span>
+						<strong>${priceCash(prodAvailable[0].spotPrice, 'cartao')} </strong> <span class="on-discount" style="display: none;">${cmcDiscountCartao}% de desconto  <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span></span>
 					</em>
 				`;
 
@@ -173,15 +173,15 @@ Nitro.module('boleto', function () {
 				}, 500)
 				/*
 				<p class="discount-boleto">
-					<strong>${priceCash(prodAvailable[0].bestPrice, 'cartao')} ${cmcDiscountCartao}% desconto </strong> <span>(boleto ou cartão)</span>
+					<strong>${priceCash(prodAvailable[0].spotPrice, 'cartao')} ${cmcDiscountCartao}% desconto </strong> <span>(boleto ou cartão)</span>
 				</p>
 				*/
 			} else {
 				//isDiscountOff = cmcDiscountBoleto > 0 ? ' (' + cmcDiscountBoleto + '% OFF)' : '';
-				// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].bestPrice, 'boleto') + '</p>';
+				// boletoInfo = '<p class="discount-boleto"><span class="bloco"><span class="gray">ou</span> à vista no boleto</span><span>' + isDiscountOff + '</span><span class="gray">, por</span> ' + priceCash(prodAvailable[0].spotPrice, 'boleto') + '</p>';
 				boletoInfo = `
 					<em class="valor-discount discount-boleto">
-						<strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')} </strong> <span class="on-discount" style="display: none;">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span>
+						<strong>${priceCash(prodAvailable[0].spotPrice, 'boleto')} </strong> <span class="on-discount" style="display: none;">${cmcDiscountBoleto}% de desconto <span style="font-weight: normal; color: #757575">(boleto ou cartão)</span>
 					</em>
 				`;
 
@@ -192,7 +192,7 @@ Nitro.module('boleto', function () {
 				}, 500)
 				/*
 				<p class="discount-boleto">
-						<strong>${priceCash(prodAvailable[0].bestPrice, 'boleto')} ${cmcDiscountBoleto}% desconto </strong> <span>(boleto ou cartão)</span>
+						<strong>${priceCash(prodAvailable[0].spotPrice, 'boleto')} ${cmcDiscountBoleto}% desconto </strong> <span>(boleto ou cartão)</span>
 				</p> //no-exclude
 				*/
 			}
