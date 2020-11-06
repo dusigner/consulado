@@ -76,6 +76,7 @@ require('modules/flags');
 require('dataLayers/datalayer-tira-duvidas');
 require('consentCookie');
 // require('dataLayers/dataLayer-menu-antigo');
+require('modules/header/security-bar');
 
 const changeCallcenterLinks = () => {
 	if (
@@ -130,7 +131,9 @@ Nitro.setup(
 		'coupons-blackfriday-2020',
 		'flags',
 		'datalayer-cupons-vitrine',
-		// 'dataLayer-menu-antigo'
+		// 'dataLayer-menu-antigo',
+		'security-bar'
+
 	],
 	function () {
 		var path = window.location.pathname;
