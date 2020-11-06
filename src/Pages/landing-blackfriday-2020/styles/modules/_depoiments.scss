@@ -111,6 +111,9 @@
 			display: block;
 			margin: 0 auto;
 			width: 90%;
+			@media screen and (max-width: 768px) {
+				min-height: 256px;
+			}
 		}
 
 		&__header {
