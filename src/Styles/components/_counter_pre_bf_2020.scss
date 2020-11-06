@@ -81,12 +81,12 @@ $white: #ffffff;
 	}
 
 	&__img-black {
-		background-image: url("/arquivos/black-title.png");
-		background-position: top center;
+		background-image: url("/arquivos/black-title-2020.png");
+		background-position: top left;
 		background-repeat: no-repeat;
 		background-size: contain;
 		height: 194px;
-		width: 312px;
+		width: 335px;
 		@media (min-width: 642px) and (max-width: 992px) {
 			height: 184px;
 		}
@@ -111,15 +111,16 @@ $white: #ffffff;
 	}
 	&__title {
 		@include rfs(40);
-		border-bottom: 1px solid $green-primary;
 		color: #fff;
 		font-weight: 300;
+		letter-spacing: 0.015em;
 		line-height: 44px;
 		margin-bottom: 15px;
 		max-width: 100%;
 		padding-bottom: 15px;
+		position: relative;
 		text-align: center;
-		width: 354px;
+		width: 365px;
 		strong {
 			color: $green-primary;
 			display: block;
@@ -131,6 +132,19 @@ $white: #ffffff;
 			margin-bottom: 10px;
 			margin-top: 18px;
 			padding-bottom: 10px;
+		}
+		@media (max-width: 768px) {
+			max-width: 301px;
+		}
+		&::after {
+			background-color: #7EA137;
+			bottom: 0;
+			box-shadow: 0px 0px 6px rgba(228, 255, 175, 0.25);
+			content: '';
+			left: 0;
+			position: absolute;
+			width: 100%;
+			height: 1px;
 		}
 	}
 	&__clock {
