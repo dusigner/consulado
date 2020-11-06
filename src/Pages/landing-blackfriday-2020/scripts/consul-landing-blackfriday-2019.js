@@ -238,14 +238,26 @@ const adaptHtmlToSliderMobile = () => {
 }
 
 const initDepoimentsSlider = () => {
-	adaptHtmlToSliderMobile();
+	// adaptHtmlToSliderMobile();
 
 	$('.depoiments__slider').slick({
 		adaptiveHeight: true,
 		slidesToScroll: 1,
 		slidesToShow: 1,
 		dots: true,
-		arrows: true
+		arrows: true,
+
+		responsive: [
+			{
+				breakpoint: 768,
+				settings: {
+					adaptiveHeight: false,
+					dots: true,
+				}
+			}
+		]
+
+
 	});
 }
 
