@@ -73,7 +73,7 @@ Nitro.module('flags', function() {
 
         if(blackFridayCoupon.length) {
             $('.prod-info .prod-selos').append(`
-                <p class="flag blackfriday-tag">Black Friday</p>
+                <p class="flag blackfriday-tag">Oferta Black Friday</p>
             `);
         }
     }
@@ -85,7 +85,7 @@ Nitro.module('flags', function() {
 			if($(blackFridayCoupon)[0]){
 				if(!$(this).find('.FlagsHightLight .flag.blackfriday-tag').length){
 					$(this).find('.FlagsHightLight').append((`
-                    	<p class="flag blackfriday-tag">Black Friday</p>
+                    	<p class="flag blackfriday-tag">Oferta Black Friday</p>
                 	`));
 				}
 			}
