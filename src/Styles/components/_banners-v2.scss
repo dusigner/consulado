@@ -11,6 +11,10 @@
 			width: 100%;
 
 			.banner-full {
+				@media screen and (min-device-width: 1900px) {
+					max-height: 455px;
+				}
+
 				flex: auto;
 				height: 340px;
 				width: 100%;

@@ -53,7 +53,7 @@ $white: #ffffff;
 		}
 	}
 	& .row {
-		align-items: end;
+		align-items: flex-end;
 		display: flex;
 		flex-wrap: nowrap;
 		justify-content: center;
@@ -88,11 +88,13 @@ $white: #ffffff;
 		height: 194px;
 		width: 335px;
 		@media (min-width: 642px) and (max-width: 992px) {
-			height: 184px;
+			background-position: bottom left;
+			height: 155px;
+			width: 300px;
 		}
 		@media (max-width: 641px) {
 			background-position: bottom left;
-			background-size: contain;
+			background-size: 90%;
 			height: 95px;
 			max-width: 40%;
 			min-width: 140px;
@@ -127,13 +129,14 @@ $white: #ffffff;
 			margin: 0 auto;
 		}
 		@media (max-width: 641px) {
-			font-size: 18px;
+			font-size: 18px !important;
 			line-height: normal;
 			margin-bottom: 10px;
 			margin-top: 18px;
 			padding-bottom: 10px;
+			max-width: 182px;
 		}
-		@media (max-width: 768px) {
+		@media (min-width: 768px) and (max-width: 1199px) {
 			max-width: 301px;
 		}
 		&::after {
@@ -193,7 +196,7 @@ $white: #ffffff;
 		font-weight: 300;
 		text-transform: lowercase;
 		@media (max-width: 641px) {
-			font-size: 12px;
+			font-size: 10px !important;
 		}
 	}
 	form {
@@ -205,6 +208,7 @@ $white: #ffffff;
 		width: 794px;
 		@media (max-width: 768px) {
 			margin-top: 20px;
+			max-width: 600px;
 			width: 100%;
 		}
 		label {
@@ -227,15 +231,17 @@ $white: #ffffff;
 			height: 48px;
 			margin-bottom: 12px;
 			padding: 14px 12px;
+			max-width: 100%;
+			width: calc(100% - 196px);
 			@media (max-width: 641px) {
 				height: 32px;
 				max-width: 100%;
 				width: calc(100% - 102px);
 			}
-			@media (min-width: 642px) {
-				height: 48px;
+			@media (min-width: 642px) and (max-width: 1199px) {
+				height: 32px;
 				max-width: 595px;
-				width: calc(100% - 196px);
+				width: calc(100% - 108px);
 			}
 
 			&::placeholder {
@@ -253,6 +259,7 @@ $white: #ffffff;
 		color: $white;
 		font-weight: 500;
 		height: 48px;
+		margin-left: 16px;
 		position: relative;
 		text-align: center;
 		width: 180px;
@@ -262,11 +269,14 @@ $white: #ffffff;
 		&:active {
 			background-color: #94d417;
 		}
-		@media (min-width: 642px) {
-			margin-left: 16px;
+		@media (min-width: 642px) and (max-width: 1199px) {
+			height: 32px;
+			padding: 6px 0;
+			width: 92px;
 		}
 		@media (max-width: 641px) {
 			height: 32px;
+			margin-left: 8px;
 			padding: 6px 0;
 			width: 92px;
 		}
