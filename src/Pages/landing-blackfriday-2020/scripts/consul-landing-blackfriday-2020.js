@@ -233,13 +233,13 @@ const initLeadsBlackfriday = () => {
 const adaptHtmlToSliderMobile = () => {
 	if ($(window).width() < 920) {
 		$('.depoiments__content, .card').unwrap()
-		$('.card').wrap('<div class="mobile-slide"></div>')
+		// $('.card').wrap('<div class="mobile-slide"></div>')
 	}
 }
 
 const initDepoimentsSlider = () => {
-	// adaptHtmlToSliderMobile();
-
+	adaptHtmlToSliderMobile();
+	console.info('batata');
 	$('.depoiments__slider').slick({
 		adaptiveHeight: true,
 		slidesToScroll: 1,
@@ -247,15 +247,15 @@ const initDepoimentsSlider = () => {
 		dots: true,
 		arrows: true,
 
-		responsive: [
-			{
-				breakpoint: 768,
-				settings: {
-					adaptiveHeight: false,
-					dots: true,
-				}
-			}
-		]
+		// responsive: [
+		// 	{
+		// 		breakpoint: 768,
+		// 		settings: {
+		// 			adaptiveHeight: false,
+		// 			dots: true,
+		// 		}
+		// 	}
+		// ]
 
 
 	});
@@ -290,6 +290,18 @@ const createAccordeon = title => {
 				$(event.target).parent().removeClass('is-actived');
 		}
 	})
+}
+
+const blogSlider = () => {
+	if ($(window).width() < 920) {
+		$('.countdown__topics').slick({
+			adaptiveHeight: true,
+			slidesToScroll: 1,
+			slidesToShow: 1,
+			dots: true,
+			arrows: true
+		});
+	}
 }
 
 // -------------------------------------------

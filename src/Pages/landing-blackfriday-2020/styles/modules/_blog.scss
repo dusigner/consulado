@@ -2,6 +2,11 @@
 	background-color: #212121;
 	padding-bottom: 62px;
 
+	@media screen and (max-width:768px) {
+		position: relative;
+		padding-top: 50px;
+	}
+
 	.title {
 		margin-bottom: 32px;
 	}
@@ -12,6 +17,22 @@
 
 		@media (max-width: 920px) {
 			overflow-x: auto;
+		}
+	}
+
+	.container {
+		@media screen and (max-width:768px) {
+			display: flex;
+			overflow: scroll;
+			align-items: center;
+		}
+		.title {
+			@media screen and (max-width:768px) {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+			}
 		}
 	}
 
