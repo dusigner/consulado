@@ -265,7 +265,7 @@ body.busca {
 								background-size: contain;
 								bottom: 0;
 								content: ' ';
-								display: block;
+								display: none;
 								height: 103px;
 								opacity: 0;
 								position: absolute;
@@ -277,7 +277,7 @@ body.busca {
 							}
 
 							&:hover {
-								&:before { opacity: 1; }
+								&:before { opacity: 0; }
 							}
 						}
 					}
@@ -288,8 +288,8 @@ body.busca {
 	.FlagsHightLight,
 	.prod-selos,
 	.flag {
-		height: 30%;
-		width: 30%;
+		height: 100%;
+		width: 100%;
 	}
 }
 
