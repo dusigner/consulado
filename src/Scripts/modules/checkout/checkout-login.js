@@ -282,7 +282,7 @@ Nitro.module('checkout-login', function(){
 
 	this.redirectModalUrl = () => {
 		self.removeDefault();
-		location.href = '/checkout/#/profile';
+		window.location.href = '/checkout/#/profile';
 	};
 
 	this.accessModalLogin = () => {
