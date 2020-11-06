@@ -133,23 +133,23 @@ const setUrlButton = productLink => {
 			}`
 		);
 
-	skuButton.click(() => {
-		const skuName = skuButton
-				.parents('.detalhes')
-				.find('.sku_radio:checked')
-				.parent()
-				.data('title'),
-			productName = skuButton
-				.parents('.detalhes')
-				.find('.image')
-				.attr('title');
+	// skuButton.click(() => {
+	// 	const skuName = skuButton
+	// 			.parents('.detalhes')
+	// 			.find('.sku_radio:checked')
+	// 			.parent()
+	// 			.data('title'),
+	// 		productName = skuButton
+	// 			.parents('.detalhes')
+	// 			.find('.image')
+	// 			.attr('title');
 
-		pushDataLayer(
-			`${productName} ${skuName}`,
-			'Comprar Cervejeira',
-			`Comprar Cervejeira ${productName} ${skuName}`
-		);
-	});
+	// 	pushDataLayer(
+	// 		`${productName} ${skuName}`,
+	// 		'Comprar Cervejeira',
+	// 		`Comprar Cervejeira ${productName} ${skuName}`
+	// 	);
+	// });
 
 	$(window).trigger('shelf.buyButtonRendered', productLink);
 
