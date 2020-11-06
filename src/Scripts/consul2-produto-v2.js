@@ -51,6 +51,7 @@ Nitro.controller(
 		'favourite-user-not-logged',
 		'dataLayer-captacao-lead-pdp'
 	],
+
 	function (chaordic, colorSelector, skuFetch, galleryv2) {
 		var self = this,
 			$body = $('body');

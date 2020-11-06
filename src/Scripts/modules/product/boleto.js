@@ -49,7 +49,7 @@ Nitro.module('boleto', function () {
 		};
 
 		var appendOff = function (el, value) {
-			el.after('<span class="tag"> ' + value + '% OFF</span>');
+			el.append('<span class="tag"> ' + value + '% OFF</span>');
 		};
 
 		//create helper function for price template
@@ -81,7 +81,8 @@ Nitro.module('boleto', function () {
 		});
 
 		if ($prodPreco.find('.valor-de').length > 0 && ((prodAvailable[0].valPercentage >= 5 && dataLayer[0].pageDepartment.toLowerCase() === 'purificador') || prodAvailable[0].valPercentage >= 20)) {
-			appendOff($('.prod-galeria'), prodAvailable[0].valPercentage);
+			// appendOff($('.prod-galeria'), prodAvailable[0].valPercentage);
+			appendOff($('.prod-info .prod-selos'), prodAvailable[0].valPercentage);
 		}
 
 		// A VISTA NO BOLETO

@@ -9,6 +9,7 @@ Nitro.module('dataLayer-vitrine-categorizacao', function () {
 		checkInlineDatalayers();
 
 		this.vitrineSubcategorias();
+
 	};
 
 	this.vitrineSubcategorias = () => {
