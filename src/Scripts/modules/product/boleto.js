@@ -2,7 +2,6 @@
 'use strict';
 
 // require('Dust/price.html');
-
 import dynamicStamps from '../_dynamic-stamps';
 
 Nitro.module('boleto', function () {
