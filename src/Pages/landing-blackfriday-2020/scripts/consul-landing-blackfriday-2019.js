@@ -47,7 +47,7 @@ const shootDataLayer = (event, category, action, label) => {
 const initTags = () => {
 	$('.tips .card .card__link').on('click', e => {
 		const title = $(e.target).parents('.card').find('.card__title').text().trim();
-		shootDataLayer('generic', 'lp_black_friday_2019', 'nossas_dicas', `veja_mais_${title}`);
+		shootDataLayer('generic', 'lp_black_friday_2020', 'nossas_dicas', `veja_mais_${title}`);
 	})
 }
 
@@ -125,7 +125,7 @@ const initLeadsBlackfriday = () => {
 			//exibir msg de erro termo
 		}
 		if (steep1 === true) {
-			shootDataLayer('generic', 'lp_black_friday_2019', 'cadastro', 'quero_agora');
+			shootDataLayer('generic', 'lp_black_friday_2020', 'cadastro', 'quero_agora');
 
 			$('.steep1').fadeOut();
 			$('.steep2').delay(500).fadeIn();
@@ -143,7 +143,7 @@ const initLeadsBlackfriday = () => {
 
 	$('.btn2').on('click', function () {
 		// console.log('#### CLICOU NO BTN 2 ###');
-		shootDataLayer('generic', 'lp_black_friday_2019', 'quais_produtos_ira_aproveitar', 'continuar');
+		shootDataLayer('generic', 'lp_black_friday_2020', 'quais_produtos_ira_aproveitar', 'continuar');
 		$('.steep2').fadeOut();
 		$('.steep3').delay(500).fadeIn();
 
@@ -163,20 +163,20 @@ const initLeadsBlackfriday = () => {
 	});
 
 	$('.steep2 .btn-finished').on('click', function (e) {
-		shootDataLayer('generic', 'lp_black_friday_2019', 'quais_produtos_ira_aproveitar', 'finalizar');
+		shootDataLayer('generic', 'lp_black_friday_2020', 'quais_produtos_ira_aproveitar', 'finalizar');
 		e.preventDefault();
 		generateLead();
 	});
 
 	$('.btn3').on('click', function (e) {
-		shootDataLayer('generic', 'lp_black_friday_2019', 'qual_beneficio_mais_te_atrai', 'continuar');
+		shootDataLayer('generic', 'lp_black_friday_2020', 'qual_beneficio_mais_te_atrai', 'continuar');
 		e.preventDefault();
 
 		generateLead();
 	});
 
 	$('.steep3 .btn-finished').on('click', function (e) {
-		shootDataLayer('generic', 'lp_black_friday_2019', 'qual_beneficio_mais_te_atrai', 'finalizar');
+		shootDataLayer('generic', 'lp_black_friday_2020', 'qual_beneficio_mais_te_atrai', 'finalizar');
 		e.preventDefault();
 		generateLead();
 	});
@@ -204,8 +204,8 @@ const initLeadsBlackfriday = () => {
 
 		// console.log(dataToPatch);
 		$.ajax({
-			url: 'https://api.vtex.com/consul/dataentities/CL/documents',
-			type: 'PATCH',
+			url: '/api/dataentities/CL/documents',
+			type: 'POST',
 			data: JSON.stringify(dataToPatch),
 			headers: {
 				'Content-Type': 'application/json',
