@@ -307,21 +307,12 @@
     },
     "consulqa": {
         "files/checkout-confirmation-custom.js": {
-<<<<<<< HEAD
             "content": "1a5eeca646ecbbe46eba0fc1c233d5be",
             "lastUpdate": "2020-08-06T17:12:08.530Z"
         },
         "files/checkout5-custom.js": {
             "content": "ddda3b4e5312c0fba56f97d08c5341d3",
             "lastUpdate": "2020-08-06T17:12:08.535Z"
-=======
-            "content": "1508e82aa444ab9e0af6d57071453d70",
-            "lastUpdate": "2020-08-06T19:50:06.659Z"
-        },
-        "files/checkout5-custom.js": {
-            "content": "39492edc87dd10b025d895aa880c2c73",
-            "lastUpdate": "2020-08-06T19:50:06.662Z"
->>>>>>> feature/ICD-1290-select-voltage
         },
         "arquivos/checkout-confirmation-custom.min.js": {
             "content": "1508e82aa444ab9e0af6d57071453d70",
@@ -552,7 +543,6 @@
             "lastUpdate": "2020-08-06T19:52:55.266Z"
         },
         "0-consul-produto-v4": {
-<<<<<<< HEAD
             "content": "57d6fffceb81b54e8429e55aa6a53dd2",
             "lastUpdate": "2020-07-30T21:02:38.314Z"
         },
@@ -847,10 +837,6 @@
         "0-consul-top-header": {
             "content": "7f98724a7022ff46c8a8372213f1412f",
             "lastUpdate": "2020-08-06T17:12:13.391Z"
-=======
-            "content": "a34c37ebf704fbb109f1cd13d31023c3",
-            "lastUpdate": "2020-08-06T19:52:55.268Z"
->>>>>>> feature/ICD-1290-select-voltage
         }
     }
 }
