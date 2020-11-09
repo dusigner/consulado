@@ -9,6 +9,7 @@ Nitro.module('flags', function() {
 		self.formatShelfFlagBF();
 		self.formatFlagPercent();
 		self.formatFlagPercentOff();
+		self.formatFlagFreeShippingOnly();
 		self.formatFlagFreeShippingOnlyPDP();
 		self.formatFlagFreeShippingExcept();
 		self.formatFlagFreeShippingExceptPDP();
@@ -50,7 +51,7 @@ Nitro.module('flags', function() {
 			if($(freeShippingFlag)[0]){
 				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
 					$(this).find('.FlagsHightLight').append((`
-                    	<p class="flag frete-gratis-exceto"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+                    	<p class="flag frete-gratis-exceto"> ${shippingSplited[1]}</p>
                 	`));
 				}
 			}
@@ -64,7 +65,7 @@ Nitro.module('flags', function() {
 
         if(freeShippingFlag.length) {
             $('.prod-info .prod-selos').append(`
-				<p class="flag frete-gratis-exceto"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+				<p class="flag frete-gratis-exceto">${shippingSplited[1]}</p>
             `);
         }
 	}
@@ -72,12 +73,26 @@ Nitro.module('flags', function() {
 	self.formatFlagFreeShippingExcept = () => {
 
 		$('.box-produto').map(function(index, item){
+			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-exceto"]')
+			const shippingSplited = $(freeShippingFlag).text().split('Grátis')
+			if($(freeShippingFlag)[0]){
+				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
+					$(this).find('.FlagsHightLight').append((`
+                    	<p class="flag frete-gratis-exceto">${shippingSplited[1]}</p>
+                	`));
+				}
+			}
+		})
+    }
+	self.formatFlagFreeShippingOnly = () => {
+
+		$('.box-produto').map(function(index, item){
 			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-somente"]')
 			const shippingSplited = $(freeShippingFlag).text().split('Somente')
 			if($(freeShippingFlag)[0]){
 				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
 					$(this).find('.FlagsHightLight').append((`
-                    	<p class="flag frete-gratis-somente"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+                    	<p class="flag frete-gratis-somente">${shippingSplited[1]}</p>
                 	`));
 				}
 			}
@@ -90,7 +105,7 @@ Nitro.module('flags', function() {
 		console.info(shippingSplited);
         if(freeShippingFlag.length) {
             $('.prod-info .prod-selos').append(`
-				<p class="flag frete-gratis-somente"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+				<p class="flag frete-gratis-somente">${shippingSplited[1]}</p>
             `);
         }
 	}

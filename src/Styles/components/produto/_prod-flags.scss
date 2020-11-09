@@ -4,20 +4,12 @@
     }
 }
 .prod-info {
-    &:hover {
 
-        .flag {
-            &.black-friday-coupons{
-                opacity: 1;
-            }
-        }
-
-    }
     .prod-selos {
         position: relative;
         width: 100%;
         height: auto;
-        opacity: 1;
+        opacity: 1!important;
         margin: 20px 0;
         top: 0px;
         bottom: 0;
@@ -226,63 +218,47 @@
             padding: 4px 1rem;
         }
 
+        .frete-gratis-somente,
         .frete-gratis-exceto {
             width: auto;
             height: 35px;
             max-height: 1.7rem;
-            border-radius: 4px;
-            top: 0;
-            bottom: 0;
-            margin: 5px;
-            margin-left: 0;
+
             font-size: 12px;
             color: #0FB6DE;
             font-weight: bold;
             text-indent: 0;
-            display: flex !important;
-            order: 3;
+
+            display: flex!important;
+            z-index: 4;
             align-items: center;
             justify-content: space-between;
-            z-index: 2;
-            position: relative;
-            padding: 4px 1rem;
-            background: linear-gradient(90deg, #0FB6DE 40%, #ffffff 40%);
-            border: 1px solid #0FB6DE;
+            order: 3;
 
-            strong {
-                color: #ffffff;
-                margin-right: 5px;
-                padding-right: 10px;
-            }
-        }
-        .frete-gratis-somente {
-            width: auto;
-            height: 35px;
-            max-height: 1.7rem;
+            border: 1px solid #0FB6DE;
             border-radius: 4px;
-            top: 0;
-            bottom: 0;
-            margin: 5px;
-            margin-left: 0;
-            font-size: 12px;
-            color: #0FB6DE;
-            font-weight: bold;
-            text-indent: 0;
-            display: flex !important;
-            order: 3;
-            align-items: center;
-            justify-content: space-between;
-            z-index: 2;
-            position: relative;
-            padding: 4px 1rem;
-            background: linear-gradient(90deg, #0FB6DE 47%, #ffffff 40%);
-            border: 1px solid #0FB6DE;
+            background-color: #ffffff;
 
-            strong {
+            margin: 0 .5rem;
+            margin-left: 0;
+            position: relative;
+            padding-right: 6px;
+
+            &:before {
+                content: 'Frete Grátis';
                 color: #ffffff;
+                background-color: #0FB6DE;
+                width: auto;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                right: 0;
+                position: relative;
                 margin-right: 5px;
-                padding-right: 10px;
+                padding: 4px 8px 4px 12px;
             }
+
         }
     }
 }

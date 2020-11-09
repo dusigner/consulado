@@ -190,56 +190,44 @@
                     padding: 4px 12px;
                 }
 
+                &.frete-gratis-somente,
                 &.frete-gratis-exceto {
-                    right: 0;
-                    bottom: 0;
-                    margin: 2px 0;
                     width: auto;
                     height: 11%;
-                    min-height: 0;
-                    font-size: 10px;
-                    color: #00d4ff;
-                    font-weight: bold;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: #EC008E;
-                    border-radius: 4px;
-                    position: relative;
-                    padding: 4px 12px;
-                    background: linear-gradient(90deg, rgba(0,212,255,1) 39%, rgba(255,255,255,1) 39%);
-                    border: 1px solid #00d4ff;
-                    order: 1;
+                    max-height: 1.7rem;
 
-                    strong {
-                        color: #ffffff;
-                        padding-right: 10px;
-                    }
-                }
-                &.frete-gratis-somente {
-                    right: 0;
-                    bottom: 0;
+                    font-size: 10px;
+                    color: #0FB6DE;
+                    font-weight: bold;
+                    text-indent: 0;
+
+                    display: flex!important;
+                    z-index: 4;
+                    align-items: center;
+                    justify-content: space-between;
+                    order: 3;
+
+                    border: 1px solid #0FB6DE;
+                    border-radius: 4px;
+                    background-color: #ffffff;
+
                     margin: 2px 0;
-                    width: auto;
-                    height: 11%;
-                    min-height: 0;
-                    font-size: 10px;
-                    color: #00d4ff;
-                    font-weight: bold;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: #EC008E;
-                    border-radius: 4px;
                     position: relative;
-                    padding: 4px 12px;
-                    background: linear-gradient(90deg, rgba(0,212,255,1) 47%, rgba(255,255,255,1) 39%);
-                    border: 1px solid #00d4ff;
-                    order: 1;
+                    padding-right: 6px;
 
-                    strong {
+                    &:before {
+                        content: 'Frete Grátis';
                         color: #ffffff;
-                        padding-right: 10px;
+                        background-color: #0FB6DE;
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        right: 0;
+                        position: relative;
+                        margin-right: 5px;
+                        padding: 4px 8px 4px 12px;
                     }
                 }
             }
