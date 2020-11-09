@@ -215,6 +215,32 @@
                         padding-right: 10px;
                     }
                 }
+                &.frete-gratis-somente {
+                    right: 0;
+                    bottom: 0;
+                    margin: 2px 0;
+                    width: auto;
+                    height: 11%;
+                    min-height: 0;
+                    font-size: 10px;
+                    color: #00d4ff;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #EC008E;
+                    border-radius: 4px;
+                    position: relative;
+                    padding: 4px 12px;
+                    background: linear-gradient(90deg, rgba(0,212,255,1) 47%, rgba(255,255,255,1) 39%);
+                    border: 1px solid #00d4ff;
+                    order: 1;
+
+                    strong {
+                        color: #ffffff;
+                        padding-right: 10px;
+                    }
+                }
             }
             .off {
                 // bottom: 55px;

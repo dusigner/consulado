@@ -9,6 +9,7 @@ Nitro.module('flags', function() {
 		self.formatShelfFlagBF();
 		self.formatFlagPercent();
 		self.formatFlagPercentOff();
+		self.formatFlagFreeShippingOnlyPDP();
 		self.formatFlagFreeShippingExcept();
 		self.formatFlagFreeShippingExceptPDP();
 	}
@@ -64,6 +65,33 @@ Nitro.module('flags', function() {
         if(freeShippingFlag.length) {
             $('.prod-info .prod-selos').append(`
 				<p class="flag frete-gratis-exceto"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+            `);
+        }
+	}
+
+	self.formatFlagFreeShippingExcept = () => {
+
+		$('.box-produto').map(function(index, item){
+			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-somente"]')
+			const shippingSplited = $(freeShippingFlag).text().split('Somente')
+			if($(freeShippingFlag)[0]){
+				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
+					$(this).find('.FlagsHightLight').append((`
+                    	<p class="flag frete-gratis-somente"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
+                	`));
+				}
+			}
+		})
+		// const flagPercentOff = $('.prod-info .price .por .off').clone();
+    }
+
+	self.formatFlagFreeShippingOnlyPDP = () => {
+		const freeShippingFlag = $('.prod-info .prod-selos .flag[class*="frete-gratis-somente"]')
+		const shippingSplited = $(freeShippingFlag).text().split('Somente')
+		console.info(shippingSplited);
+        if(freeShippingFlag.length) {
+            $('.prod-info .prod-selos').append(`
+				<p class="flag frete-gratis-somente"><strong>Frete Grátis</strong> ${shippingSplited[1]}</p>
             `);
         }
 	}
