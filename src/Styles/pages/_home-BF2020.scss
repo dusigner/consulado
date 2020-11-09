@@ -2,6 +2,11 @@ body {
 	&.home-bf-2020 {
 		background-color: #212121;
 
+		.box-banner a {
+			display: block;
+			margin: 0;
+		}
+
 		.pre-header {
 			background-color: #171717;
 			color: #616161 !important;
