@@ -82,7 +82,6 @@ Nitro.module('flags', function() {
 				}
 			}
 		})
-		// const flagPercentOff = $('.prod-info .price .por .off').clone();
     }
 
 	self.formatFlagFreeShippingOnlyPDP = () => {
