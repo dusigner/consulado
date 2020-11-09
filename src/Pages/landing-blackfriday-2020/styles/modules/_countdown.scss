@@ -1,0 +1,250 @@
+.countdown {
+	background-color: #242424;
+	padding: 200px 0 40px;
+
+	h2.title {
+		font-size: 2em;
+		line-height: 35px;
+		text-align: left;
+		@media (max-width: 920px) {
+			font-size: 1.2rem;
+		}
+	}
+
+	&__header {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 60px;
+
+		@media (max-width: 920px) {
+			flex-direction: column;
+		}
+
+		.title {
+			@media (max-width: 920px) {
+				margin-bottom: 12px;
+			}
+
+			 br {
+				 @media (max-width: 920px) {
+					display: none;
+				 }
+			 }
+		}
+	}
+
+	&__description {
+		background-color: #333;
+		color: #fff;
+		font-size: .75em;
+		line-height: 25px;
+		padding: 20px 10% 20px 30px;
+		position: relative;
+		width: 75%;
+
+		@media (max-width: 920px) {
+			font-size: 1em;
+			padding: 15px;
+			width: 100%;
+		}
+
+		&::after {
+			content: url('/arquivos/bf2019-countdown-icon.png');
+			display: block;
+			position: absolute;
+			right: 30px;
+			top: 20px;
+
+			@media (max-width: 920px) {
+				display: none;
+			}
+		}
+	}
+
+	&__content {
+		display: flex;
+
+		@media (max-width: 920px) {
+			flex-direction: column;
+		}
+	}
+
+	.slick-dots {
+		bottom: -30px;
+		width: initial;
+	}
+
+	.slick-prev {
+		display: none !important;
+	}
+
+	&__topics {
+		display: flex;
+		position: relative;
+		width: 75%;
+
+		@media (max-width: 920px) {
+			margin-top: 50px;
+			width: 100%;
+		}
+
+		&::after {
+			background-color: #5b5b5b;
+			content: '';
+			height: 80px;
+			position: absolute;
+			right: 10px;
+			top: 35%;
+			width: 2px;
+
+			@media (max-width: 920px) {
+				display: none;
+			}
+		}
+	}
+
+	.topic {
+		flex: 1;
+		@media (max-width: 920px) {
+			margin: 0 40px 0 0;
+		}
+
+		&__icon {
+			margin-bottom: 8px;
+
+			@media (max-width: 920px) {
+				margin: initial;
+			}
+		}
+
+		&__title {
+			border-bottom: 2px solid #5b5b5b;
+			color: #fff;
+			font-size: 1.125em;
+			padding-bottom: 15px;
+			width: 100%;
+
+			@media (max-width: 920px) {
+				font-size: 1.7em;
+			}
+		}
+
+		&__subtitle {
+			color: #fff;
+			font-size: .875em;
+			padding: 15px 0 10px;
+			position: relative;
+
+			@media (max-width: 920px) {
+				font-size: 1.16em;
+				padding-top: 0;
+			}
+
+			&::after {
+				background-color: #9aca3c;
+				border-radius: 3px;
+				content: '';
+				display: block;
+				height: 2px;
+				width: 17px;
+			}
+		}
+
+		&__text {
+			color: #fff;
+			font-size: .75em;
+			line-height: 25px;
+			width: 90%;
+
+			@media (max-width: 920px) {
+			font-size: 1em;
+			}
+		}
+	}
+
+	&__calendar {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+
+		@media (max-width: 920px) {
+			border-bottom: 1px solid #9aca3c;
+			flex-direction: row;
+			order: -1;
+		}
+	}
+
+	&__indicators {
+		border-bottom: 2px solid #5b5b5b;
+		color: #fff;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		padding: 0 10%;
+
+		@media (max-width: 920px) {
+			border: none;
+			grid-column-gap: 15px;
+			padding: 0;
+		}
+
+		&-wrapper {
+			&::before {
+				color: #9aca3c;
+				content: 'Aguarde!';
+				display: block;
+				font-size: 1.125em;
+				font-weight: bold;
+				margin-bottom: 5px;
+				padding: 0 10%;
+
+				@media (max-width: 920px) {
+					font-size: 1.475em;
+					padding:  0;
+				}
+			}
+		}
+
+		.indicators {
+			&__number {
+				font-size: 2.125em;
+				font-weight: bold;
+
+				@media (max-width: 920px) {
+					text-align: center;
+				}
+			}
+
+			&__title {
+				font-size: .75em;
+
+				@media (max-width: 920px) {
+					font-size: 1em;
+					margin-top: 3px;
+					text-align: center;
+				}
+			}
+		}
+	}
+
+	&__final-date {
+		color: #fff;
+		font-size: 7.05em;
+		font-weight: bolder;
+		margin: 0;
+		padding: 0 10%;
+
+		@media (max-width: 920px) {
+			font-size: 5.33em;
+			padding-top: 15px;
+		}
+
+		.small {
+			font-size: 0.21em;
+
+			@media (max-width: 920px) {
+				font-size: .375em;
+			}
+		}
+	}
+}
