@@ -61,10 +61,6 @@
 				}
 			}
 
-			.banner-group {
-				display: flex;
-			}
-
 			.banner-slider {
 				flex: 1;
 				min-width: 50%;
@@ -78,37 +74,6 @@
 						img {
 							@media screen and (max-device-width: 1199px) {
 								max-height: 392px;
-							}
-
-							display: flex;
-							max-height: 400px;
-							margin: 0 auto;
-							width: 100%;
-						}
-					}
-				}
-			}
-
-			.banner-static {
-				@media screen and (max-device-width: 767px) {
-					flex-direction: column;
-				}
-
-				display: flex;
-				flex: 1;
-				flex-flow: row nowrap;
-				position: relative;
-
-				.box-banner {
-					flex: 1;
-
-					a {
-						display: flex;
-						margin: 0;
-
-						img {
-							@media screen and (max-device-width: 768px) {
-								max-height: 240px;
 							}
 
 							display: flex;
@@ -218,38 +183,18 @@
 	&-desktop {
 		@media screen and (min-device-width: 1200px) {
 			display: block;
-
-			.banner-principal {
-				.banner-group {
-					position: absolute;
-					visibility: hidden;
-					width: 100%;
-				}
-			}
 		}
 	}
 
 	&-tablet {
 		@media screen and (min-device-width: 768px) and (max-device-width: 1199px) {
 			display: block;
-
-			.banner-principal {
-				.banner-static {
-					display: none;
-				}
-			}
 		}
 	}
 
 	&-mobile {
 		@media screen and (max-device-width: 767px) {
 			display: block;
-
-			.banner-principal {
-				.banner-static {
-					display: none;
-				}
-			}
 		}
 	}
 
@@ -289,51 +234,6 @@
 				margin: 0 auto;
 				position: static;
 				transform: inherit;
-			}
-		}
-	}
-}
-
-body.testeAB-banners {
-	.banners {
-		&-desktop {
-			@media screen and (min-device-width: 1200px) {
-				display: block;
-
-				.banner-principal {
-					.banner-full {
-						display: none;
-					}
-
-					.banner-group {
-						position: relative;
-						visibility: visible;
-					}
-				}
-			}
-		}
-
-		&-tablet {
-			@media screen and (min-device-width: 768px) and (max-device-width: 1199px) {
-				display: block;
-
-				.banner-principal {
-					.banner-static {
-						display: flex;
-					}
-				}
-			}
-		}
-
-		&-mobile {
-			@media screen and (max-device-width: 767px) {
-				display: block;
-
-				.banner-principal {
-					.banner-static {
-						display: flex;
-					}
-				}
 			}
 		}
 	}

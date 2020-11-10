@@ -103,19 +103,42 @@
 	</section>
 	<!-- /[ Mobile ] - Instagram Stories -->
 
-	<!-- [ Desktop ] - Slider -->
-	<div class="banners hide-extra-small">
-		<!-- Banner -->
-		<div class="banner-principal slides">
-			<vtex:contentPlaceHolder id="SliderHome" />
+	<!-- Banners -->
+	<div class="banners">
+		<!-- Banner [Desktop] -->
+		<div class="banners-desktop">
+			<div class="banner-principal slides">
+				<!-- Banner Full -->
+				<div class="banner-full">
+					<vtex:contentPlaceHolder id="SliderHome" />
+				</div>
+				<!-- /Banner Full -->
+			</div>
 		</div>
-		<!-- /Banner -->
+		<!-- /Banner [Desktop] -->
+		<!-- Banner [Tablet] -->
+		<div class="banners-tablet">
+			<div class="banner-principal slides">
+				<div class="banner-slider">
+					<vtex:contentPlaceHolder id="SliderHomeTablet" />
+				</div>
+			</div>
+		</div>
+		<!-- /Banner [Tablet] -->
+		<!-- Banner [Mobile] -->
+		<div class="banners-mobile">
+			<div class="banner-principal slides">
+				<div class="banner-slider">
+					<vtex:contentPlaceHolder id="SliderHomeMobile" />
+				</div>
+			</div>
+		</div>
+		<!-- /Banner [Mobile] -->
 
 		<!-- Abrir regulamento banner -->
 		<div class="container">
 			<div class="row">
-				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
-					regulamento</a>
+				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o regulamento</a>
 
 				<!-- Modal regulamento -->
 				<div id="modal-regulamento-banner" style="display: none;">
@@ -126,32 +149,7 @@
 		</div>
 		<!-- Abrir regulamento banner -->
 	</div>
-	<!-- /[ Desktop ] - Slider -->
-
-	<!-- [ Mobile ] - Slider mobile -->
-	<div class="banners-mobile show-extra-small">
-		<!-- Banner -->
-		<div class="banner-principal banner-mobile slides">
-			<vtex:contentPlaceHolder id="SliderHomeMobile" />
-		</div>
-		<!-- /Banner -->
-
-		<!-- Abrir regulamento banner -->
-		<div class="container">
-			<div class="row">
-				<a href="#modal-regulamento-banner" title="Acesse o regulamento" class="open-regulamento">Acesse o
-					regulamento</a>
-
-				<!-- Modal regulamento -->
-				<div id="modal-regulamento-banner" style="display: none;">
-					<vtex.cmc:regulamentoBannerHomeCNS />
-				</div>
-				<!-- /Modal regulamento -->
-			</div>
-		</div>
-		<!-- /Abrir regulamento banner -->
-	</div>
-	<!-- /[ Mobile ] - Slider mobile -->
+	<!-- /Banners -->
 
 	<!-- Tipbar -->
 	<article class="tipbar-novo blackfriday">
