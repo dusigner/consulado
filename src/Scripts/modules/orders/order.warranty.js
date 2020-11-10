@@ -260,9 +260,9 @@ var Warranty = {
 		return CRM.clientSearchByEmail(Warranty.profileData.email)
 			.done(function(user) {
 				//check phone
-				if (!user.phone) {
-					user.phone = user.homePhone;
-				}
+				// if (!user.phone) {
+				// 	user.phone = user.homePhone;
+				// }
 
 				$('#vtex-selecione-garantia .close').trigger('click');
 
