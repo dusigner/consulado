@@ -14,7 +14,7 @@ Nitro.module('slider-banner', [], function () {
 			if($(this).children().length > 1) {
 				$(this).slick({
 					arrows: true,
-					autoplay: false,
+					autoplay: true,
 					autoplaySpeed: 7000,
 					dots: true,
 					mobileFirst: true,
@@ -32,7 +32,7 @@ Nitro.module('slider-banner', [], function () {
 			if($(this).children().length > 1) {
 				$(this).slick({
 					arrows: true,
-					autoplay: false,
+					autoplay: true,
 					autoplaySpeed: 7000,
 					dots: false,
 					mobileFirst: true,
