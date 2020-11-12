@@ -18,11 +18,13 @@ Nitro.module('checkout.phones', function() {
 	this.setup = function() {
 		$inputsPhones.inputmask('(99) 9999[9]-9999');
 
-		CRM.clientSearchByEmail(self.getEmailClient())
-			.done(self.fillPhones)
-			.always(function() {
-				$modalMorePhones.modal({ backdrop: 'static' });
-			});
+		// CRM.clientSearchByEmail(self.getEmailClient())
+		// 	.done(self.fillPhones)
+		// 	.always(function() {
+		// 		$modalMorePhones.modal({ backdrop: 'static' });
+		// 	});
+
+		$modalMorePhones.modal({ backdrop: 'static' });
 
 		$formPhones.submit(this.submit);
 
