@@ -1,4 +1,5 @@
-.box-produto{
+
+.box-produto {
     .image {
         &:hover {
             &:before {
@@ -288,6 +289,18 @@
                 }
                 .product-with-discount {
                     display: none!important;
+                }
+            }
+        }
+    }
+}
+
+#relacionados-top {
+    .box-produto {
+        .product-infos-wrap{
+            .image {
+                .FlagsHightLight {
+                    display: none;
                 }
             }
         }

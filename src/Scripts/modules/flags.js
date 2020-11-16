@@ -70,27 +70,13 @@ Nitro.module('flags', function() {
         }
 	}
 
-	self.formatFlagFreeShippingExcept = () => {
-
-		$('.box-produto').map(function(index, item){
-			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-exceto"]')
-			const shippingSplited = $(freeShippingFlag).text().split('Grátis')
-			if($(freeShippingFlag)[0]){
-				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
-					$(this).find('.FlagsHightLight').append((`
-                    	<p class="flag frete-gratis-exceto">${shippingSplited[1]}</p>
-                	`));
-				}
-			}
-		})
-    }
 	self.formatFlagFreeShippingOnly = () => {
 
 		$('.box-produto').map(function(index, item){
 			const freeShippingFlag = $(item).find('.FlagsHightLight .flag[class*="frete-gratis-somente"]')
 			const shippingSplited = $(freeShippingFlag).text().split('Somente')
 			if($(freeShippingFlag)[0]){
-				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-exceto').length){
+				if(!$(this).find('.FlagsHightLight .flag.frete-gratis-somente').length){
 					$(this).find('.FlagsHightLight').append((`
                     	<p class="flag frete-gratis-somente">${shippingSplited[1]}</p>
                 	`));
