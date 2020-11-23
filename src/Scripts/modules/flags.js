@@ -6,12 +6,14 @@ Nitro.module('flags', function() {
 
 	self.init = () => {
 		self.formatFlagBFPDP();
-		self.formatShelfFlagBF();
 		self.formatFlagPercent();
+		self.formatShelfFlagBF();
+		self.formatFlagCashback();
 		self.formatFlagPercentOff();
+		self.formatFlagCashbackPDP();
 		self.formatFlagFreeShippingOnly();
-		self.formatFlagFreeShippingOnlyPDP();
 		self.formatFlagFreeShippingExcept();
+		self.formatFlagFreeShippingOnlyPDP();
 		self.formatFlagFreeShippingExceptPDP();
 	}
 
@@ -88,7 +90,6 @@ Nitro.module('flags', function() {
 	self.formatFlagFreeShippingOnlyPDP = () => {
 		const freeShippingFlag = $('.prod-info .prod-selos .flag[class*="frete-gratis-somente"]')
 		const shippingSplited = $(freeShippingFlag).text().split('Somente')
-		console.info(shippingSplited);
         if(freeShippingFlag.length) {
             $('.prod-info .prod-selos').append(`
 				<p class="flag frete-gratis-somente">${shippingSplited[1]}</p>
@@ -118,6 +119,35 @@ Nitro.module('flags', function() {
 				}
 			}
 		})
+	}
+
+	self.formatFlagCashback = () => {
+
+        $('.box-produto').map(function(index, item){
+			const flagCashback = $(item).find('.FlagsHightLight .flag[class*="has-cashback"]');
+			if($(flagCashback)[0]){
+				let cashbackValue = $(flagCashback).text().split(" ");
+				cashbackValue = cashbackValue[cashbackValue.length - 1]
+				if(!$(this).find('.prod-info .flag.has-cashback').length){
+					$(`
+						<p class="flag has-cashback">Ganhe de volta* • R$${cashbackValue}</p>
+					`).insertAfter($(this).find('.prod-info .nome'));
+				}
+			}
+		})
+	}
+
+	self.formatFlagCashbackPDP = () => {
+		const flagCashback = $('.prod-info .prod-selos .flag[class*="has-cashback"]')
+		const url = 'https://busca.consul.com.br/hotsite/promoblackfriday'
+
+        if(flagCashback.length) {
+			let cashbackValue = $(flagCashback).text().split(" ");
+			cashbackValue = cashbackValue[cashbackValue.length - 1]
+            $(`
+				<p class="flag has-cashback">Ganhe de volta • <span>R$${cashbackValue},00<span>*</span></span> <a href="${url}">Saiba Mais</a></p>
+            `).insertAfter($('.prod-preco'));
+        }
     }
 
 	if($('body').hasClass('categoria') || $('body').hasClass('listagem')) {

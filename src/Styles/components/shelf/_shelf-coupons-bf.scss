@@ -1,3 +1,12 @@
+body.listagem {
+    .box-produto {
+        .prod-info {
+            .has-cashback {
+                order: 2;
+            }
+        }
+    }
+}
 
 .box-produto {
     .image {
@@ -150,7 +159,7 @@
                     margin: 2px 0;
 
                     width: auto;
-                    max-width: 150px;
+                    max-width: 200px;
                     height: 11%;
 
                     font-size: 10px;
@@ -282,6 +291,22 @@
     }
 
     .prod-info {
+        .has-cashback {
+            width: 100%;
+            height: auto;
+            position: relative;
+            font-size: 12px;
+            text-align: center;
+            background-color: #005B6A;
+            color: #ffffff;
+            border-radius: 5px;
+            padding: 8px 0;
+            font-weight: 700;
+            margin-bottom: 10px;
+            top: 0;
+            bottom: 0;
+        }
+
         .price {
             .por {
                 .off{

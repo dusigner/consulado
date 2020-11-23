@@ -4,7 +4,38 @@
     }
 }
 .prod-info {
+    .has-cashback {
+        position: relative;
+        width: 100%;
+        height: auto;
+        font-size: 14px;
+        text-align: center;
+        padding: 9px 19px;
+        background-color: #005B6A;
+        color: #ffffff;
+        font-weight: 700;
+        border-radius: 5px;
+        bottom: 0;
+        margin: 17px 0;
 
+        @media screen and (max-width: 768px) {
+            padding: 7px 19px;
+            margin-bottom: 0;
+        }
+        span {
+            font-weight: 400;
+            span {
+                font-weight: 700;
+            }
+        }
+
+        a {
+            margin-left: 24px;
+            margin-right: 0;
+            color: #ffffff;
+            text-decoration: underline;
+        }
+    }
     .prod-selos {
         position: relative;
         width: 100%;
