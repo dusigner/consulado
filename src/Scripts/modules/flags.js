@@ -145,7 +145,7 @@ Nitro.module('flags', function() {
 			let cashbackValue = $(flagCashback).text().split(" ");
 			cashbackValue = cashbackValue[cashbackValue.length - 1]
             $(`
-				<p class="flag has-cashback">Ganhe de volta • <span>R$${cashbackValue},00<span>*</span></span> <a href="${url}">Saiba Mais</a></p>
+				<p class="flag has-cashback">Ganhe de volta • <span>R$${cashbackValue},00<span>*</span></span> <a href="${url}" target="_blank">Saiba Mais</a></p>
             `).insertAfter($('.prod-preco'));
         }
     }
