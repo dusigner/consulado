@@ -2,8 +2,20 @@ body.listagem {
     .box-produto {
         .prod-info {
             .has-cashback {
-                order: 2;
+                order: 0;
+                margin-bottom: 5px;
             }
+            .promo-destaque {
+                order: 1;
+                margin-top: 5px;
+            }
+            div {
+                order: 3;
+            }
+            .nome {
+                order: 3;
+            }
+
         }
     }
 }
@@ -291,6 +303,18 @@ body.listagem {
     }
 
     .prod-info {
+
+        div {
+            order: 3;
+        }
+        .nome {
+            order: 3;
+        }
+
+        .promo-destaque {
+            order: 2;
+        }
+
         .has-cashback {
             width: 100%;
             height: auto;
@@ -302,9 +326,10 @@ body.listagem {
             border-radius: 5px;
             padding: 8px 0;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             top: 0;
             bottom: 0;
+            order: 1;
         }
 
         .price {
